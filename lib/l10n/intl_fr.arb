@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-30 11:27:31.633257",
+    "@@last_modified": "2026-10-02 02:48:24.710360",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10336,5 +10336,6 @@
     "callTranscriptChooseLanguage": "Quelle langue a été parlée ?",
     "callTranscriptSubscribeForTranscription": "S'abonner pour la transcription",
     "unlockCallTranscript": "Déverrouiller la transcription de l'appel",
-    "activitySummaryUpdateFailed": "Ce résumé n'a pas pu être mis à jour."
+    "activitySummaryUpdateFailed": "Ce résumé n'a pas pu être mis à jour.",
+    "courseNotFound": "Cours introuvable"
 }

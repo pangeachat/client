@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-30 11:27:38.628842",
+    "@@last_modified": "2026-10-02 02:48:29.788710",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10898,5 +10898,6 @@
     "callTranscriptChooseLanguage": "Que idioma foi falado?",
     "callTranscriptSubscribeForTranscription": "Subscrever para transcrição",
     "unlockCallTranscript": "Desbloquear transcrição da chamada",
-    "activitySummaryUpdateFailed": "Não foi possível atualizar este resumo."
+    "activitySummaryUpdateFailed": "Não foi possível atualizar este resumo.",
+    "courseNotFound": "Curso não encontrado"
 }

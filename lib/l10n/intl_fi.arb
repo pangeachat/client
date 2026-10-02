@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-30 11:27:31.769718",
+    "@@last_modified": "2026-10-02 02:48:24.835068",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10018,5 +10018,6 @@
     "callTranscriptChooseLanguage": "Mitä kieltä puhuttiin?",
     "callTranscriptSubscribeForTranscription": "Tilaa litterointi",
     "unlockCallTranscript": "Avaa puhelun litterointi",
-    "activitySummaryUpdateFailed": "Yhteenvedon päivittäminen epäonnistui."
+    "activitySummaryUpdateFailed": "Yhteenvedon päivittäminen epäonnistui.",
+    "courseNotFound": "Kurssia ei löydy"
 }

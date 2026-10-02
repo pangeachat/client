@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-30 11:27:30.987058",
+    "@@last_modified": "2026-10-02 02:48:26.035924",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8200,5 +8200,6 @@
     "callTranscriptChooseLanguage": "¿Qué idioma se habló?",
     "callTranscriptSubscribeForTranscription": "Suscribirse para transcribir",
     "unlockCallTranscript": "Desbloquear transcripción de llamada",
-    "activitySummaryUpdateFailed": "No se pudo actualizar este resumen."
+    "activitySummaryUpdateFailed": "No se pudo actualizar este resumen.",
+    "courseNotFound": "Curso no encontrado"
 }

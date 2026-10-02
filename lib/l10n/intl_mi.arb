@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-30 11:27:36.665394",
+    "@@last_modified": "2026-10-02 02:48:28.147339",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "He aha te reo i kōrerohia?",
     "callTranscriptSubscribeForTranscription": "Ohauru mō te tuhinga",
     "unlockCallTranscript": "Wewete i te tuhinga waea",
-    "activitySummaryUpdateFailed": "Kāore i taea te whakahou i tēnei whakarāpopototanga."
+    "activitySummaryUpdateFailed": "Kāore i taea te whakahou i tēnei whakarāpopototanga.",
+    "courseNotFound": "Kāore i kitea te akoranga"
 }

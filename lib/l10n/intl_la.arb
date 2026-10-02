@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-30 11:27:35.319966",
+    "@@last_modified": "2026-10-02 02:48:27.237613",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Qua lingua locutum est?",
     "callTranscriptSubscribeForTranscription": "Subscribere pro transcriptione",
     "unlockCallTranscript": "Reserare transcriptionem vocis",
-    "activitySummaryUpdateFailed": "Haec summa renovari non potuit."
+    "activitySummaryUpdateFailed": "Haec summa renovari non potuit.",
+    "courseNotFound": "Cursus non inventus"
 }

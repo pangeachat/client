@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-30 11:27:31.448370",
+    "@@last_modified": "2026-10-02 02:48:24.500038",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10841,5 +10841,6 @@
     "callTranscriptChooseLanguage": "Anong wika ang ginamit?",
     "callTranscriptSubscribeForTranscription": "Mag-subscribe para sa transkripsyon",
     "unlockCallTranscript": "I-unlock ang transkripsyon ng tawag",
-    "activitySummaryUpdateFailed": "Hindi ma-update ang buod na ito."
+    "activitySummaryUpdateFailed": "Hindi ma-update ang buod na ito.",
+    "courseNotFound": "Hindi makita ang kurso"
 }

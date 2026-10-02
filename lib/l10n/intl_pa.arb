@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-30 11:27:38.331953",
+    "@@last_modified": "2026-10-02 02:48:29.792283",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "ਕਿਹੜੀ ਭਾਸ਼ਾ ਬੋਲੀ ਗਈ ਸੀ?",
     "callTranscriptSubscribeForTranscription": "ਲਿਖਣ ਲਈ ਗਾਹਕ ਬਣੋ",
     "unlockCallTranscript": "ਕਾਲ ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਅਨਲੌਕ ਕਰੋ",
-    "activitySummaryUpdateFailed": "ਇਹ ਸਾਰਾਂਸ਼ ਅੱਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
+    "activitySummaryUpdateFailed": "ਇਹ ਸਾਰਾਂਸ਼ ਅੱਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।",
+    "courseNotFound": "ਕੋਰਸ ਨਹੀਂ ਮਿਲਿਆ"
 }

@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-30 11:27:40.596751",
+    "@@last_modified": "2026-10-02 02:48:31.912244",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10613,5 +10613,6 @@
     "callTranscriptChooseLanguage": "พูดภาษาอะไร",
     "callTranscriptSubscribeForTranscription": "สมัครสมาชิกเพื่อถอดเสียง",
     "unlockCallTranscript": "ปลดล็อกบทสนทนาการโทร",
-    "activitySummaryUpdateFailed": "ไม่สามารถอัปเดตสรุปนี้ได้"
+    "activitySummaryUpdateFailed": "ไม่สามารถอัปเดตสรุปนี้ได้",
+    "courseNotFound": "ไม่พบหลักสูตร"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-30 11:27:32.584098",
+    "@@last_modified": "2026-10-02 02:48:25.303139",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Dè an cànan a bhathar a' bruidhinn?",
     "callTranscriptSubscribeForTranscription": "Fo-sgrìobh airson tionnsgrìobhadh",
     "unlockCallTranscript": "Fuadaich tionnsgrìobhadh a' ghairm",
-    "activitySummaryUpdateFailed": "Cha b' urrainn an geàrr-chunntas seo ùrachadh."
+    "activitySummaryUpdateFailed": "Cha b' urrainn an geàrr-chunntas seo ùrachadh.",
+    "courseNotFound": "Cùrsa nach deach a lorg"
 }

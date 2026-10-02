@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-30 11:27:34.876958",
+    "@@last_modified": "2026-10-02 02:48:27.015324",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "ಯಾವ ಭಾಷೆಯನ್ನು ಮಾತನಾಡಲಾಗಿದೆ?",
     "callTranscriptSubscribeForTranscription": "ಲಿಪ್ಯಂತರಕ್ಕಾಗಿ ಚಂದಾದಾರರಾಗಿ",
     "unlockCallTranscript": "ಕರೆ ಲಿಪ್ಯಂತರವನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
-    "activitySummaryUpdateFailed": "ಈ ಸಾರಾಂಶವನ್ನು ನವೀಕರಿಸಲಾಗಲಿಲ್ಲ."
+    "activitySummaryUpdateFailed": "ಈ ಸಾರಾಂಶವನ್ನು ನವೀಕರಿಸಲಾಗಲಿಲ್ಲ.",
+    "courseNotFound": "ಕೋರ್ಸ್ ಕಂಡುಬಂದಿಲ್ಲ"
 }

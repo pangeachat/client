@@ -3563,7 +3563,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-30 11:27:32.123456",
+    "@@last_modified": "2026-10-02 02:48:24.942205",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9992,5 +9992,6 @@
     "callTranscriptChooseLanguage": "Cén teanga a labhraíodh?",
     "callTranscriptSubscribeForTranscription": "Liostáil le haghaidh trascríofa",
     "unlockCallTranscript": "Díghlasáil tras-scríbhinn an ghlao",
-    "activitySummaryUpdateFailed": "Níorbh fhéidir an achoimre seo a nuashonrú."
+    "activitySummaryUpdateFailed": "Níorbh fhéidir an achoimre seo a nuashonrú.",
+    "courseNotFound": "Níor aimsíodh an cúrsa"
 }

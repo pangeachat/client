@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-30 11:27:32.953493",
+    "@@last_modified": "2026-10-02 02:48:25.497437",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Hais hom lus twg?",
     "callTranscriptSubscribeForTranscription": "Sau npe kom sau ua ntawv",
     "unlockCallTranscript": "Xauv cov ntawv sau ua lus",
-    "activitySummaryUpdateFailed": "Qhov ntsiab lus no hloov tsis tau."
+    "activitySummaryUpdateFailed": "Qhov ntsiab lus no hloov tsis tau.",
+    "courseNotFound": "Nrhiav tsis tau zaj kawm"
 }

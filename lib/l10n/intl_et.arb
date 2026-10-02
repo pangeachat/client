@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-30 11:27:31.336013",
+    "@@last_modified": "2026-10-02 02:48:24.444772",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9978,5 +9978,6 @@
     "callTranscriptChooseLanguage": "Mis keeles räägiti?",
     "callTranscriptSubscribeForTranscription": "Telli transkriptsioon",
     "unlockCallTranscript": "Ava kõne transkriptsioon",
-    "activitySummaryUpdateFailed": "Seda kokkuvõtet ei saanud värskendada."
+    "activitySummaryUpdateFailed": "Seda kokkuvõtet ei saanud värskendada.",
+    "courseNotFound": "Kursust ei leitud"
 }

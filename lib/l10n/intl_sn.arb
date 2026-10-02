@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-30 11:27:39.754889",
+    "@@last_modified": "2026-10-02 02:48:31.218599",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Mutauro upi wakataurwa?",
     "callTranscriptSubscribeForTranscription": "Nyorera kuti unyorerwe",
     "unlockCallTranscript": "Vhura zvinyorwa zvekufona",
-    "activitySummaryUpdateFailed": "Chidimbu ichi hachina kukwanisa kugadziriswa."
+    "activitySummaryUpdateFailed": "Chidimbu ichi hachina kukwanisa kugadziriswa.",
+    "courseNotFound": "Kosi yacho haipo"
 }

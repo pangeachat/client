@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-30 11:27:33.025890",
+    "@@last_modified": "2026-10-02 02:48:25.365993",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10417,5 +10417,6 @@
     "callTranscriptChooseLanguage": "Koji je jezik bio govoren?",
     "callTranscriptSubscribeForTranscription": "Pretplatite se za prijepis",
     "unlockCallTranscript": "Otključaj prijepis poziva",
-    "activitySummaryUpdateFailed": "Ovaj sažetak nije bilo moguće ažurirati."
+    "activitySummaryUpdateFailed": "Ovaj sažetak nije bilo moguće ažurirati.",
+    "courseNotFound": "Tečaj nije pronađen"
 }

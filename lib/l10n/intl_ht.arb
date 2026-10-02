@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-30 11:27:33.095592",
+    "@@last_modified": "2026-10-02 02:48:27.133271",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Ki lang yo te pale?",
     "callTranscriptSubscribeForTranscription": "Abòne pou transkripsyon",
     "unlockCallTranscript": "Debloke transkripsyon apèl la",
-    "activitySummaryUpdateFailed": "Rezime sa a pa t' kapab mete ajou."
+    "activitySummaryUpdateFailed": "Rezime sa a pa t' kapab mete ajou.",
+    "courseNotFound": "Kou a pa jwenn"
 }

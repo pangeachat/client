@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-30 11:27:33.876957",
+    "@@last_modified": "2026-10-02 02:48:26.296742",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10750,5 +10750,6 @@
     "callTranscriptChooseLanguage": "話された言語は何ですか？",
     "callTranscriptSubscribeForTranscription": "文字起こしを購読する",
     "unlockCallTranscript": "通話記録のロックを解除",
-    "activitySummaryUpdateFailed": "この要約を更新できませんでした。"
+    "activitySummaryUpdateFailed": "この要約を更新できませんでした。",
+    "courseNotFound": "コースが見つかりません"
 }

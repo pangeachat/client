@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-30 11:27:38.379741",
+    "@@last_modified": "2026-10-02 02:48:29.421772",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Ndi chilankhulo chiti chomwe chinalankhulidwa?",
     "callTranscriptSubscribeForTranscription": "Lembetsani kuti mulembedwe",
     "unlockCallTranscript": "Tsegulani zolembedwa za kuyimba",
-    "activitySummaryUpdateFailed": "Chidulechi sichinathe kusinthidwa."
+    "activitySummaryUpdateFailed": "Chidulechi sichinathe kusinthidwa.",
+    "courseNotFound": "Maphunziro sanaperekedwe"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-30 11:27:36.490401",
+    "@@last_modified": "2026-10-02 02:48:27.636650",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Inona no fiteny nampiasaina?",
     "callTranscriptSubscribeForTranscription": "Misoratra anarana ho an'ny fandikana",
     "unlockCallTranscript": "Sokafy ny dika soratra antso",
-    "activitySummaryUpdateFailed": "Tsy afaka navaozina ity famintinana ity."
+    "activitySummaryUpdateFailed": "Tsy afaka navaozina ity famintinana ity.",
+    "courseNotFound": "Tsy hita ny taranja"
 }

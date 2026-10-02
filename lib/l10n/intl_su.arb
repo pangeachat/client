@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-30 11:27:40.265793",
+    "@@last_modified": "2026-10-02 02:48:31.548797",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Basa naon nu diucapkeun?",
     "callTranscriptSubscribeForTranscription": "Langganan pikeun transkripsi",
     "unlockCallTranscript": "Buka konci transkrip telepon",
-    "activitySummaryUpdateFailed": "Ringkesan ieu teu tiasa diropéa."
+    "activitySummaryUpdateFailed": "Ringkesan ieu teu tiasa diropéa.",
+    "courseNotFound": "Kursus teu kapanggih"
 }

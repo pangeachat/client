@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:32.709366",
+    "@@last_modified": "2026-10-02 02:48:25.344960",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10895,5 +10895,6 @@
     "callTranscriptChooseLanguage": "באיזו שפה דיברתם?",
     "callTranscriptSubscribeForTranscription": "הירשם לתימלול",
     "unlockCallTranscript": "פתח את תמלול השיחה",
-    "activitySummaryUpdateFailed": "לא ניתן היה לעדכן את הסיכום הזה."
+    "activitySummaryUpdateFailed": "לא ניתן היה לעדכן את הסיכום הזה.",
+    "courseNotFound": "הקורס לא נמצא"
 }

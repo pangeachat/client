@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-30 11:27:42.010159",
+    "@@last_modified": "2026-10-02 02:48:37.542383",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Loluphi ulwimi oluthethweyo?",
     "callTranscriptSubscribeForTranscription": "Bhalisa ukuze ufumane ukubhalwa phantsi",
     "unlockCallTranscript": "Vula umbhalo wefowuni",
-    "activitySummaryUpdateFailed": "Esi sishwankathelo asikwazanga ukuhlaziywa."
+    "activitySummaryUpdateFailed": "Esi sishwankathelo asikwazanga ukuhlaziywa.",
+    "courseNotFound": "Ikhosi ayifunyanwanga"
 }

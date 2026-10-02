@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-30 11:27:39.763893",
+    "@@last_modified": "2026-10-02 02:48:30.872445",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Çfarë gjuhe u fol?",
     "callTranscriptSubscribeForTranscription": "Abonohu për transkriptim",
     "unlockCallTranscript": "Zhbloko transkriptin e thirrjes",
-    "activitySummaryUpdateFailed": "Ky përmbledhje nuk mund të përditësohej."
+    "activitySummaryUpdateFailed": "Ky përmbledhje nuk mund të përditësohej.",
+    "courseNotFound": "Kursi nuk u gjet"
 }

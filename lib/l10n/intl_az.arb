@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-30 11:27:29.746837",
+    "@@last_modified": "2026-10-02 02:48:25.265341",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Hansı dildə danışılıb?",
     "callTranscriptSubscribeForTranscription": "Transkripsiya üçün abunə olun",
     "unlockCallTranscript": "Zəng transkripsiyasını açın",
-    "activitySummaryUpdateFailed": "Bu xülasə yenilənə bilmədi."
+    "activitySummaryUpdateFailed": "Bu xülasə yenilənə bilmədi.",
+    "courseNotFound": "Kurs tapılmadı"
 }

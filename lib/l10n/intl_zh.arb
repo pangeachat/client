@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-30 11:27:41.859964",
+    "@@last_modified": "2026-10-02 02:48:32.930104",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9981,5 +9981,6 @@
     "callTranscriptChooseLanguage": "说的是什么语言？",
     "callTranscriptSubscribeForTranscription": "订阅转录服务",
     "unlockCallTranscript": "解锁通话记录",
-    "activitySummaryUpdateFailed": "此摘要未能更新。"
+    "activitySummaryUpdateFailed": "此摘要未能更新。",
+    "courseNotFound": "未找到课程"
 }

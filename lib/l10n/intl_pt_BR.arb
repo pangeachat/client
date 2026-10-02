@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:38.307368",
+    "@@last_modified": "2026-10-02 02:48:29.781740",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9981,5 +9981,6 @@
     "callTranscriptChooseLanguage": "Qual idioma foi falado?",
     "callTranscriptSubscribeForTranscription": "Assine para transcrever",
     "unlockCallTranscript": "Desbloquear transcrição da chamada",
-    "activitySummaryUpdateFailed": "Não foi possível atualizar este resumo."
+    "activitySummaryUpdateFailed": "Não foi possível atualizar este resumo.",
+    "courseNotFound": "Curso não encontrado"
 }

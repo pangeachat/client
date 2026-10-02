@@ -1362,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-30 11:27:33.908421",
+    "@@last_modified": "2026-10-02 02:48:25.804912",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10917,5 +10917,6 @@
     "callTranscriptChooseLanguage": "Qual lingua esseva parlate?",
     "callTranscriptSubscribeForTranscription": "Subscriber pro transcription",
     "unlockCallTranscript": "Disblocar transcripto de appellation",
-    "activitySummaryUpdateFailed": "Iste summario non poteva esser actualisate."
+    "activitySummaryUpdateFailed": "Iste summario non poteva esser actualisate.",
+    "courseNotFound": "Curso non trovate"
 }

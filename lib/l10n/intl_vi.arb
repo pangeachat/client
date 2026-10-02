@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:41.683349",
+    "@@last_modified": "2026-10-02 02:48:32.422181",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7273,5 +7273,6 @@
     "callTranscriptChooseLanguage": "Ngôn ngữ được nói là gì?",
     "callTranscriptSubscribeForTranscription": "Đăng ký để chép lại",
     "unlockCallTranscript": "Mở khóa bản chép lại cuộc gọi",
-    "activitySummaryUpdateFailed": "Không thể cập nhật bản tóm tắt này."
+    "activitySummaryUpdateFailed": "Không thể cập nhật bản tóm tắt này.",
+    "courseNotFound": "Không tìm thấy khóa học"
 }

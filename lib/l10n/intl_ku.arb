@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-30 11:27:35.642452",
+    "@@last_modified": "2026-10-02 02:48:34.174643",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "بە چ زمانێک قسە کرا؟",
     "callTranscriptSubscribeForTranscription": "بەشداری بکە بۆ گۆڕین بۆ نووسین",
     "unlockCallTranscript": "کردنەوەی گۆڕینی پەیوەندی بۆ نووسین",
-    "activitySummaryUpdateFailed": "ئەم پوختەیە نوێ نه‌کرایه‌وه‌."
+    "activitySummaryUpdateFailed": "ئەم پوختەیە نوێ نه‌کرایه‌وه‌.",
+    "courseNotFound": "خوولەکە نەدۆزرایەوە"
 }

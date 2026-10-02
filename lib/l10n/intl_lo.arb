@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-30 11:27:36.182236",
+    "@@last_modified": "2026-10-02 02:48:27.607488",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "ເວົ້າພາສາຫຍັງ?",
     "callTranscriptSubscribeForTranscription": "ສະໝັກໃຊ້ສຳລັບການຖອດຂໍ້ຄວາມ",
     "unlockCallTranscript": "ປົດລັອກການຖອດຂໍ້ຄວາມການໂທ",
-    "activitySummaryUpdateFailed": "ບໍ່ສາມາດອັບເດດສະຫຼຸບນີ້ໄດ້."
+    "activitySummaryUpdateFailed": "ບໍ່ສາມາດອັບເດດສະຫຼຸບນີ້ໄດ້.",
+    "courseNotFound": "ບໍ່ພົບຫຼັກສູດ"
 }

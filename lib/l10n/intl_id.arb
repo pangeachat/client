@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:33.763513",
+    "@@last_modified": "2026-10-02 02:48:25.761041",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10054,5 +10054,6 @@
     "callTranscriptChooseLanguage": "Bahasa apa yang digunakan?",
     "callTranscriptSubscribeForTranscription": "Berlangganan untuk transkripsi",
     "unlockCallTranscript": "Buka transkrip panggilan",
-    "activitySummaryUpdateFailed": "Ringkasan ini tidak dapat diperbarui."
+    "activitySummaryUpdateFailed": "Ringkasan ini tidak dapat diperbarui.",
+    "courseNotFound": "Kursus tidak ditemukan"
 }

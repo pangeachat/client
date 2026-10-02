@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-30 11:27:30.667489",
+    "@@last_modified": "2026-10-02 02:48:25.817924",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Chì lingua hè stata parlata?",
     "callTranscriptSubscribeForTranscription": "Abbunà si per a trascrizzione",
     "unlockCallTranscript": "Sbloccà a trascrizzione di a chjama",
-    "activitySummaryUpdateFailed": "Stu riassuntu ùn hà pussutu esse aghjurnatu."
+    "activitySummaryUpdateFailed": "Stu riassuntu ùn hà pussutu esse aghjurnatu.",
+    "courseNotFound": "Corsu micca trovu"
 }

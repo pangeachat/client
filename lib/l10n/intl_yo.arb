@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-30 11:27:42.392792",
+    "@@last_modified": "2026-10-02 02:48:33.002812",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Èdè wo ni a sọ?",
     "callTranscriptSubscribeForTranscription": "Ṣe àbáwọlé fún àkọsílẹ̀",
     "unlockCallTranscript": "Ṣí àkọsílẹ̀ ìpe sílẹ̀",
-    "activitySummaryUpdateFailed": "Kò lè ṣe àtúnṣe àkópọ̀ yìí."
+    "activitySummaryUpdateFailed": "Kò lè ṣe àtúnṣe àkópọ̀ yìí.",
+    "courseNotFound": "Ko ri ikẹkọọ"
 }

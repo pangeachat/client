@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-30 11:27:35.206369",
+    "@@last_modified": "2026-10-02 02:48:26.929285",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Us langwej dɛn bin tɔk?",
     "callTranscriptSubscribeForTranscription": "Sabsakrayb fɔ transkripshɔn",
     "unlockCallTranscript": "Ɔnlɔk kɔl transkript",
-    "activitySummaryUpdateFailed": "Dis samari nɔ kɔn fɔ chenj."
+    "activitySummaryUpdateFailed": "Dis samari nɔ kɔn fɔ chenj.",
+    "courseNotFound": "Di kos nɔ de"
 }

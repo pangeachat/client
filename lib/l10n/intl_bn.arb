@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:29.406416",
+    "@@last_modified": "2026-10-02 02:48:25.483243",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10609,5 +10609,6 @@
     "callTranscriptChooseLanguage": "কোন ভাষায় কথা বলা হয়েছিল?",
     "callTranscriptSubscribeForTranscription": "ট্রান্সক্রিপশনের জন্য সাবস্ক্রাইব করুন",
     "unlockCallTranscript": "কল ট্রান্সক্রিপ্ট আনলক করুন",
-    "activitySummaryUpdateFailed": "এই সারাংশ আপডেট করা যায়নি।"
+    "activitySummaryUpdateFailed": "এই সারাংশ আপডেট করা যায়নি।",
+    "courseNotFound": "কোর্স খুঁজে পাওয়া যায়নি"
 }

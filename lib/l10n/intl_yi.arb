@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-30 11:27:42.459967",
+    "@@last_modified": "2026-10-02 02:48:32.675604",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "וועלכע שפּראַך איז גערעדט געוואָרן?",
     "callTranscriptSubscribeForTranscription": "סובסקריבירן פֿאַר טראַנסקריפּציע",
     "unlockCallTranscript": "אַנשליסן רוף טראַנסקריפּט",
-    "activitySummaryUpdateFailed": "די סומאַריע קען נישט דערהייַנטיקט ווערן."
+    "activitySummaryUpdateFailed": "די סומאַריע קען נישט דערהייַנטיקט ווערן.",
+    "courseNotFound": "קאָרס ניט געפֿונען"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-30 11:27:36.243879",
+    "@@last_modified": "2026-10-02 02:48:27.113228",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Кайсы тилде сүйлөштү?",
     "callTranscriptSubscribeForTranscription": "Транскрипция үчүн жазылуу",
     "unlockCallTranscript": "Чакыруу транскрипциясын ачуу",
-    "activitySummaryUpdateFailed": "Бул корутунду жаңыртылган жок."
+    "activitySummaryUpdateFailed": "Бул корутунду жаңыртылган жок.",
+    "courseNotFound": "Курс табылган жок"
 }

@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-30 11:27:41.821880",
+    "@@last_modified": "2026-10-02 02:48:33.170196",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10938,5 +10938,6 @@
     "callTranscriptChooseLanguage": "說的是哪種語言？",
     "callTranscriptSubscribeForTranscription": "訂閱以獲取轉錄",
     "unlockCallTranscript": "解鎖通話轉錄",
-    "activitySummaryUpdateFailed": "無法更新此摘要。"
+    "activitySummaryUpdateFailed": "無法更新此摘要。",
+    "courseNotFound": "搵唔到課程"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-30 11:27:35.175759",
+    "@@last_modified": "2026-10-02 02:48:27.460574",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Қандай тілде сөйледіңіз?",
     "callTranscriptSubscribeForTranscription": "Транскрипциялау үшін жазылу",
     "unlockCallTranscript": "Қоңырау транскрипциясының құлпын ашу",
-    "activitySummaryUpdateFailed": "Бұл қорытындыны жаңарту мүмкін болмады."
+    "activitySummaryUpdateFailed": "Бұл қорытындыны жаңарту мүмкін болмады.",
+    "courseNotFound": "Курс табылмады"
 }

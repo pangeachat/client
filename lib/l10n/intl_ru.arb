@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-30 11:27:38.913188",
+    "@@last_modified": "2026-10-02 02:48:30.206257",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10953,5 +10953,6 @@
     "callTranscriptChooseLanguage": "На каком языке говорили?",
     "callTranscriptSubscribeForTranscription": "Подписаться на расшифровку",
     "unlockCallTranscript": "Разблокировать расшифровку звонка",
-    "activitySummaryUpdateFailed": "Не удалось обновить сводку."
+    "activitySummaryUpdateFailed": "Не удалось обновить сводку.",
+    "courseNotFound": "Курс не найден"
 }

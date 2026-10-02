@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:31.408939",
+    "@@last_modified": "2026-10-02 02:48:24.442668",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10069,5 +10069,6 @@
     "callTranscriptChooseLanguage": "به چه زبانی صحبت شد؟",
     "callTranscriptSubscribeForTranscription": "برای رونویسی مشترک شوید",
     "unlockCallTranscript": "باز کردن قفل رونویسی تماس",
-    "activitySummaryUpdateFailed": "این خلاصه به‌روز نشد."
+    "activitySummaryUpdateFailed": "این خلاصه به‌روز نشد.",
+    "courseNotFound": "دوره پیدا نشد"
 }

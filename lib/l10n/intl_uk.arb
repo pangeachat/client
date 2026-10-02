@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-30 11:27:41.174742",
+    "@@last_modified": "2026-10-02 02:48:32.277768",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9981,5 +9981,6 @@
     "callTranscriptChooseLanguage": "Якою мовою розмовляли?",
     "callTranscriptSubscribeForTranscription": "Підписатися на транскрипцію",
     "unlockCallTranscript": "Розблокувати стенограму дзвінка",
-    "activitySummaryUpdateFailed": "Не вдалося оновити зведення."
+    "activitySummaryUpdateFailed": "Не вдалося оновити зведення.",
+    "courseNotFound": "Курс не знайдено"
 }

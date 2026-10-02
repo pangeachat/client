@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-30 11:27:37.723887",
+    "@@last_modified": "2026-10-02 02:48:28.521536",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "X’lingwa nstema’?",
     "callTranscriptSubscribeForTranscription": "Abbona għat-traskrizzjoni",
     "unlockCallTranscript": "Nisfrutta t-traskrizzjoni tas-sejħa",
-    "activitySummaryUpdateFailed": "Dan is-sommarju ma setax jiġi aġġornat."
+    "activitySummaryUpdateFailed": "Dan is-sommarju ma setax jiġi aġġornat.",
+    "courseNotFound": "Kors ma nstabx"
 }

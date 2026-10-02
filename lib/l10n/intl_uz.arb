@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-30 11:27:41.319673",
+    "@@last_modified": "2026-10-02 02:48:37.321174",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9985,5 +9985,6 @@
     "callTranscriptChooseLanguage": "Qaysi tilda gapirilgan?",
     "callTranscriptSubscribeForTranscription": "Transkripsiya uchun obuna bo‘lish",
     "unlockCallTranscript": "Qo‘ng‘iroq transkriptini ochish",
-    "activitySummaryUpdateFailed": "Bu xulosa yangilanmadi."
+    "activitySummaryUpdateFailed": "Bu xulosa yangilanmadi.",
+    "courseNotFound": "Kurs topilmadi"
 }

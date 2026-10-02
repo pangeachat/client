@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-30 11:27:36.992439",
+    "@@last_modified": "2026-10-02 02:48:28.486679",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Ямар хэлээр ярьсан бэ?",
     "callTranscriptSubscribeForTranscription": "Хөрвүүлэлтэд бүртгүүлэх",
     "unlockCallTranscript": "Дуудлагын хөрвүүлэлтийг нээх",
-    "activitySummaryUpdateFailed": "Энэ хураангуйг шинэчлэх боломжгүй байсан."
+    "activitySummaryUpdateFailed": "Энэ хураангуйг шинэчлэх боломжгүй байсан.",
+    "courseNotFound": "Сургалт олдсонгүй"
 }

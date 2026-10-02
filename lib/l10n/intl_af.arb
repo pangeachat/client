@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-30 11:27:29.677221",
+    "@@last_modified": "2026-10-02 02:48:25.257909",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Watter taal is gepraat?",
     "callTranscriptSubscribeForTranscription": "Teken in vir transkripsie",
     "unlockCallTranscript": "Ontsluit oproep-transkripsie",
-    "activitySummaryUpdateFailed": "Hierdie opsomming kon nie bygewerk word nie."
+    "activitySummaryUpdateFailed": "Hierdie opsomming kon nie bygewerk word nie.",
+    "courseNotFound": "Kursus nie gevind nie"
 }

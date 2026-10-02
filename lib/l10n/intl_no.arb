@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-30 11:27:37.689874",
+    "@@last_modified": "2026-10-02 02:48:29.432094",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Hvilket språk ble snakket?",
     "callTranscriptSubscribeForTranscription": "Abonner for transkripsjon",
     "unlockCallTranscript": "Lås opp samtaletranskripsjon",
-    "activitySummaryUpdateFailed": "Denne oppsummeringen kunne ikke oppdateres."
+    "activitySummaryUpdateFailed": "Denne oppsummeringen kunne ikke oppdateres.",
+    "courseNotFound": "Kurs ikke funnet"
 }

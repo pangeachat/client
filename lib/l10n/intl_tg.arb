@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-30 11:27:41.054707",
+    "@@last_modified": "2026-10-02 02:48:31.863170",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Бо кадом забон гуфтугӯ шуд?",
     "callTranscriptSubscribeForTranscription": "Барои транскрипсия обуна шавед",
     "unlockCallTranscript": "Транскрипти зангро кушоед",
-    "activitySummaryUpdateFailed": "Ин хулоса нав карда нашуд."
+    "activitySummaryUpdateFailed": "Ин хулоса нав карда нашуд.",
+    "courseNotFound": "Курс ёфт нашуд"
 }

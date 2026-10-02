@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:38.526489",
+    "@@last_modified": "2026-10-02 02:48:30.419776",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10713,5 +10713,6 @@
     "callTranscriptChooseLanguage": "Ce limbă a fost vorbită?",
     "callTranscriptSubscribeForTranscription": "Abonează-te pentru transcriere",
     "unlockCallTranscript": "Deblochează transcrierea apelului",
-    "activitySummaryUpdateFailed": "Acest rezumat nu a putut fi actualizat."
+    "activitySummaryUpdateFailed": "Acest rezumat nu a putut fi actualizat.",
+    "courseNotFound": "Cursul nu a fost găsit"
 }

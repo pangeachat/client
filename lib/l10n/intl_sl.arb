@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-30 11:27:39.340289",
+    "@@last_modified": "2026-10-02 02:48:30.755917",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10926,5 +10926,6 @@
     "callTranscriptChooseLanguage": "Kateri jezik je bil govorjen?",
     "callTranscriptSubscribeForTranscription": "Naročite se na prepisovanje",
     "unlockCallTranscript": "Odkleni prepis klica",
-    "activitySummaryUpdateFailed": "Tega povzetka ni bilo mogoče posodobiti."
+    "activitySummaryUpdateFailed": "Tega povzetka ni bilo mogoče posodobiti.",
+    "courseNotFound": "Tečaja ni mogoče najti"
 }

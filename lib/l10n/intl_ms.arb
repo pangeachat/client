@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-30 11:27:37.069222",
+    "@@last_modified": "2026-10-02 02:48:30.411291",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Bahasa apa yang dituturkan?",
     "callTranscriptSubscribeForTranscription": "Langgan untuk transkripsi",
     "unlockCallTranscript": "Buka kunci transkripsi panggilan",
-    "activitySummaryUpdateFailed": "Ringkasan ini tidak dapat dikemas kini."
+    "activitySummaryUpdateFailed": "Ringkasan ini tidak dapat dikemas kini.",
+    "courseNotFound": "Kursus tidak ditemui"
 }

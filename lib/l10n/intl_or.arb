@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-30 11:27:38.708961",
+    "@@last_modified": "2026-10-02 02:48:29.184237",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "କେଉଁ ଭାଷାରେ କଥାବାର୍ତ୍ତା ହୋଇଥିଲା?",
     "callTranscriptSubscribeForTranscription": "ଟ୍ରାନ୍ସକ୍ରିପସନ୍ ପାଇଁ ସବସ୍କ୍ରାଇବ୍ କରନ୍ତୁ",
     "unlockCallTranscript": "କଲ୍ ଟ୍ରାନ୍ସକ୍ରିପ୍ଟ ଅନଲକ୍ କରନ୍ତୁ",
-    "activitySummaryUpdateFailed": "ଏହି ସାରାଂଶ ଅପଡେଟ୍ ହୋଇପାରିଲା ନାହିଁ।"
+    "activitySummaryUpdateFailed": "ଏହି ସାରାଂଶ ଅପଡେଟ୍ ହୋଇପାରିଲା ନାହିଁ।",
+    "courseNotFound": "କୋର୍ସ ମିଳିଲା ନାହିଁ"
 }

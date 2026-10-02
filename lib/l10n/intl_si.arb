@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-30 11:27:39.369607",
+    "@@last_modified": "2026-10-02 02:48:30.437861",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "කතා කළ භාෂාව කුමක්ද?",
     "callTranscriptSubscribeForTranscription": "පිටපත් කිරීම සඳහා දායක වන්න",
     "unlockCallTranscript": "ඇමතුම් පිටපත අගුළු හරින්න",
-    "activitySummaryUpdateFailed": "මෙම සාරාංශය යාවත්කාලීන කිරීමට නොහැකි විය."
+    "activitySummaryUpdateFailed": "මෙම සාරාංශය යාවත්කාලීන කිරීමට නොහැකි විය.",
+    "courseNotFound": "පාඨමාලාව සොයාගත නොහැක"
 }

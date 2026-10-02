@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-09-30 11:27:38.006946",
+    "@@last_modified": "2026-10-02 02:48:29.122939",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "မည်သည့်ဘာသာစကားဖြင့် ပြောဆိုခဲ့သနည်း။",
     "callTranscriptSubscribeForTranscription": "စာသားအဖြစ်ပြောင်းလဲခြင်းအတွက် စာရင်းသွင်းပါ",
     "unlockCallTranscript": "ခေါ်ဆိုမှုမှတ်တမ်းကို လော့ခ်ဖွင့်ပါ",
-    "activitySummaryUpdateFailed": "ဤအကျဉ်းချုပ်ကို အပ်ဒိတ်လုပ်၍ မရပါ။"
+    "activitySummaryUpdateFailed": "ဤအကျဉ်းချုပ်ကို အပ်ဒိတ်လုပ်၍ မရပါ။",
+    "courseNotFound": "သင်တန်း ရှာမတွေ့ပါ"
 }

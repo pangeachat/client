@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:37.253983",
+    "@@last_modified": "2026-10-02 02:48:28.705488",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10038,5 +10038,6 @@
     "callTranscriptChooseLanguage": "Hvilket språk ble snakket?",
     "callTranscriptSubscribeForTranscription": "Abonner for transkripsjon",
     "unlockCallTranscript": "Lås opp samtaletranskripsjon",
-    "activitySummaryUpdateFailed": "Denne oppsummeringen kunne ikke oppdateres."
+    "activitySummaryUpdateFailed": "Denne oppsummeringen kunne ikke oppdateres.",
+    "courseNotFound": "Finner ikke kurset"
 }

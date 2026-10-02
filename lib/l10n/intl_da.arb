@@ -1334,7 +1334,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-30 11:27:30.639876",
+    "@@last_modified": "2026-10-02 02:48:25.876808",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10901,5 +10901,6 @@
     "callTranscriptChooseLanguage": "Hvilket sprog blev der talt?",
     "callTranscriptSubscribeForTranscription": "Abonnér for transskription",
     "unlockCallTranscript": "Lås op for opkaldstranskription",
-    "activitySummaryUpdateFailed": "Denne oversigt kunne ikke opdateres."
+    "activitySummaryUpdateFailed": "Denne oversigt kunne ikke opdateres.",
+    "courseNotFound": "Kursus ikke fundet"
 }

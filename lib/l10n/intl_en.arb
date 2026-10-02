@@ -4332,6 +4332,7 @@
     "joinOpenSession": "Join open session",
     "noOpenSessions": "No open sessions right now",
     "activityNotFound": "Activity not found",
+    "courseNotFound": "Course not found",
     "starsEarnedOfTotal": "{earned} of {total} stars earned",
     "@starsEarnedOfTotal": {
         "placeholders": {

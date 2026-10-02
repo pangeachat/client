@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-30 11:27:29.460760",
+    "@@last_modified": "2026-10-02 02:48:25.255022",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10287,5 +10287,6 @@
     "callTranscriptChooseLanguage": "ما هي اللغة التي تم التحدث بها؟",
     "callTranscriptSubscribeForTranscription": "اشترك لنسخ المحادثة",
     "unlockCallTranscript": "فتح نسخة المحادثة",
-    "activitySummaryUpdateFailed": "تعذر تحديث هذا الملخص."
+    "activitySummaryUpdateFailed": "تعذر تحديث هذا الملخص.",
+    "courseNotFound": "لم يتم العثور على الدورة التدريبية"
 }

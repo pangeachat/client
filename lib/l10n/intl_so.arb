@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-30 11:27:39.838475",
+    "@@last_modified": "2026-10-02 02:48:36.684014",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Luqaddee lagu hadlay?",
     "callTranscriptSubscribeForTranscription": "Isdiiwaangeli si aad u hesho qoraalka",
     "unlockCallTranscript": "Fur qoraalka wicitaanka",
-    "activitySummaryUpdateFailed": "Soo koobiddaan lama cusboonaysiin karin."
+    "activitySummaryUpdateFailed": "Soo koobiddaan lama cusboonaysiin karin.",
+    "courseNotFound": "Koorsada lama helin"
 }

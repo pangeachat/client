@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:30.820029",
+    "@@last_modified": "2026-10-02 02:48:24.493065",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10926,5 +10926,6 @@
     "callTranscriptChooseLanguage": "Kiun lingvon oni parolis?",
     "callTranscriptSubscribeForTranscription": "Aboni por transskribo",
     "unlockCallTranscript": "Malŝlosi alvokan transskribon",
-    "activitySummaryUpdateFailed": "Ĉi tiu resumo ne povis esti ĝisdatigita."
+    "activitySummaryUpdateFailed": "Ĉi tiu resumo ne povis esti ĝisdatigita.",
+    "courseNotFound": "Kurso ne trovita"
 }

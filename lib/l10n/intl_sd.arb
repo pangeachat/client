@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-30 11:27:39.752568",
+    "@@last_modified": "2026-10-02 02:48:30.412398",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "ڪهڙي ٻولي ڳالهائي وئي؟",
     "callTranscriptSubscribeForTranscription": "لِکڻ لاءِ سبسڪرائب ڪريو",
     "unlockCallTranscript": "ڪال ٽرانسڪرپٽ کوليو",
-    "activitySummaryUpdateFailed": "هي خلاصو اپڊيٽ نه ٿي سگهيو."
+    "activitySummaryUpdateFailed": "هي خلاصو اپڊيٽ نه ٿي سگهيو.",
+    "courseNotFound": "ڪورس نه مليو"
 }

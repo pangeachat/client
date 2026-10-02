@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-30 11:27:39.386961",
+    "@@last_modified": "2026-10-02 02:48:30.295935",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10926,5 +10926,6 @@
     "callTranscriptChooseLanguage": "Akým jazykom sa hovorilo?",
     "callTranscriptSubscribeForTranscription": "Predplatiť si prepis",
     "unlockCallTranscript": "Odomknúť prepis hovoru",
-    "activitySummaryUpdateFailed": "Tento súhrn nebolo možné aktualizovať."
+    "activitySummaryUpdateFailed": "Tento súhrn nebolo možné aktualizovať.",
+    "courseNotFound": "Kurz sa nenašiel"
 }

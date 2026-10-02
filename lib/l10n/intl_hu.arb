@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-30 11:27:34.504248",
+    "@@last_modified": "2026-10-02 02:48:33.066507",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10084,5 +10084,6 @@
     "callTranscriptChooseLanguage": "Milyen nyelven beszéltek?",
     "callTranscriptSubscribeForTranscription": "Feliratkozás az átírásra",
     "unlockCallTranscript": "Hívás átirat feloldása",
-    "activitySummaryUpdateFailed": "Ezt az összefoglalót nem sikerült frissíteni."
+    "activitySummaryUpdateFailed": "Ezt az összefoglalót nem sikerült frissíteni.",
+    "courseNotFound": "A kurzus nem található"
 }

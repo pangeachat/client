@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-30 11:27:33.925009",
+    "@@last_modified": "2026-10-02 02:48:25.704456",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Ի՞նչ լեզվով է խոսվել։",
     "callTranscriptSubscribeForTranscription": "Բաժանորդագրվել տառադարձման համար",
     "unlockCallTranscript": "Բացել զանգի արտագրումը",
-    "activitySummaryUpdateFailed": "Այս ամփոփագիրը հնարավոր չէ թարմացնել։"
+    "activitySummaryUpdateFailed": "Այս ամփոփագիրը հնարավոր չէ թարմացնել։",
+    "courseNotFound": "Դասընթացը չի գտնվել"
 }

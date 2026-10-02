@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-30 11:27:35.851493",
+    "@@last_modified": "2026-10-02 02:48:27.526040",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "Wat fir eng Sprooch gouf geschwat?",
     "callTranscriptSubscribeForTranscription": "Abonnéiert Iech fir d'Transkriptioun",
     "unlockCallTranscript": "Transkript vun Uruff opmaachen",
-    "activitySummaryUpdateFailed": "Dës Zesummefaassung konnt net aktualiséiert ginn."
+    "activitySummaryUpdateFailed": "Dës Zesummefaassung konnt net aktualiséiert ginn.",
+    "courseNotFound": "Cours net fonnt"
 }

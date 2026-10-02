@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-30 11:27:31.757504",
+    "@@last_modified": "2026-10-02 02:48:24.689585",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9981,5 +9981,6 @@
     "callTranscriptChooseLanguage": "Zein hizkuntzatan hitz egin zen?",
     "callTranscriptSubscribeForTranscription": "Harpidetu transkripziorako",
     "unlockCallTranscript": "Desblokeatu deiaren transkripzioa",
-    "activitySummaryUpdateFailed": "Laburpen hau ezin izan da eguneratu."
+    "activitySummaryUpdateFailed": "Laburpen hau ezin izan da eguneratu.",
+    "courseNotFound": "Ikastaroa ez da aurkitu"
 }

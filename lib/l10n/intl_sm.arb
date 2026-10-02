@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-30 11:27:39.789100",
+    "@@last_modified": "2026-10-02 02:48:30.812621",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2389,5 +2389,6 @@
     "callTranscriptChooseLanguage": "O le a le gagana na tautalagia?",
     "callTranscriptSubscribeForTranscription": "Lesitala mo le fa'aliliuga",
     "unlockCallTranscript": "Tatala le fa'aliliuga o le vala'au",
-    "activitySummaryUpdateFailed": "E leʻi mafai ona faʻafouina lenei aotelega."
+    "activitySummaryUpdateFailed": "E leʻi mafai ona faʻafouina lenei aotelega.",
+    "courseNotFound": "E le'i maua le kosi"
 }

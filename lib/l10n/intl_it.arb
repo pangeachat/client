@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:34.223326",
+    "@@last_modified": "2026-10-02 02:48:26.055667",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10054,5 +10054,6 @@
     "callTranscriptChooseLanguage": "Che lingua è stata parlata?",
     "callTranscriptSubscribeForTranscription": "Abbonati per la trascrizione",
     "unlockCallTranscript": "Sblocca trascrizione chiamata",
-    "activitySummaryUpdateFailed": "Impossibile aggiornare questo riepilogo."
+    "activitySummaryUpdateFailed": "Impossibile aggiornare questo riepilogo.",
+    "courseNotFound": "Corso non trovato"
 }
