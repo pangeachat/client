@@ -10,13 +10,13 @@ import 'package:matrix/matrix.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/home/login_loading_dialog.dart';
 import 'package:fluffychat/routes/home/p_sso_dialog.dart';
 import 'package:fluffychat/routes/home/sso_provider_enum.dart';
 import 'package:fluffychat/routes/home/store_login_method_repo.dart';
 import 'package:fluffychat/routes/home/web_sso_helpers.dart';
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -227,8 +227,8 @@ class _PangeaSsoButtonState extends State<PangeaSsoButton> {
     final theme = Theme.of(context);
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: theme.colorScheme.primary,
-        foregroundColor: theme.colorScheme.onPrimary,
+        backgroundColor: theme.colorScheme.primaryContainer,
+        foregroundColor: theme.colorScheme.onPrimaryContainer,
       ),
       child: Row(
         spacing: 8.0,
@@ -239,7 +239,7 @@ class _PangeaSsoButtonState extends State<PangeaSsoButton> {
             height: 20,
             width: 20,
             colorFilter: ColorFilter.mode(
-              theme.colorScheme.onPrimary,
+              theme.colorScheme.onPrimaryContainer,
               BlendMode.srcIn,
             ),
           ),
