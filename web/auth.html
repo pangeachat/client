@@ -3,11 +3,23 @@
 <p>Authentication is complete. If this does not happen automatically, please close the window.</p>
 <script>
   if (window.opener) {
+    // Popup flow (desktop): hand the result to the app's window.
     window.opener.postMessage({
       'flutter-web-auth-2': window.location.href
     }, window.location.origin);
+    window.close();
   } else {
+    // Same-tab flow (phones and in-app browsers, where a popup is refused):
+    // keep the result for the app, then go back to the page the sign-in
+    // started from. Only a page on this origin is a valid return target.
     localStorage.setItem('flutter-web-auth-2', window.location.href);
+    var back = new URLSearchParams(window.location.search).get('return');
+    var target = '/';
+    try {
+      if (back && new URL(back, window.location.origin).origin === window.location.origin) {
+        target = back;
+      }
+    } catch (e) { /* malformed return: land on the root */ }
+    window.location.replace(target);
   }
-  window.close();
 </script>
