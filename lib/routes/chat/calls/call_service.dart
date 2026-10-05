@@ -1590,6 +1590,59 @@ class CallService {
     return sawTheirs ? PeerPresence.gone : PeerPresence.unknown;
   }
 
+  /// Whether the call [ring] was sent from is still standing, for deciding
+  /// whether it is glare.
+  ///
+  /// Narrower than [callerPresence], which asks whether the device that rang
+  /// holds ANY membership. Glare asks about one membership: the one the ring
+  /// names. Only that membership standing says the ring is live, and only
+  /// what that device wrote AFTER the ring can say it is over -- a
+  /// retraction, or a fresh membership because they are now answering a call
+  /// of ours. Anything it wrote before the ring predates the membership the
+  /// ring was sent for, so it says nothing about that ring: a retraction left
+  /// from an earlier call read as "gone" and had genuine simultaneous calling
+  /// written twice, and a membership left from one read as "live".
+  /// Everything else -- including state this device simply has not synced --
+  /// is [PeerPresence.unknown] (pangeachat/.github#410).
+  ///
+  /// Ordered by the server's stamps on both sides, one clock.
+  PeerPresence ringCallPresence(Room room, IncomingCallNotification ring) {
+    final callerId = ring.event.senderId;
+    final deviceId = ring.senderDeviceId;
+    final named = ring.membershipEventId;
+    // A ring that names no membership has nothing narrower to ask about; the
+    // device's own standing is the answer.
+    if (named == null) {
+      return callerPresence(room, callerId, deviceId: deviceId);
+    }
+    final memberStates = room.states[EventTypes.GroupCallMember];
+    if (memberStates == null || memberStates.isEmpty) {
+      return PeerPresence.unknown;
+    }
+    var superseded = false;
+    for (final state in memberStates.values) {
+      if (state.senderId != callerId) continue;
+      // Undated state cannot be put in order against the ring.
+      if (state is! Event) continue;
+      final memberships = state.content['memberships'];
+      if (memberships is! List) continue;
+      if (state.eventId == named) {
+        if (memberships.isNotEmpty) return PeerPresence.live;
+        continue;
+      }
+      // Attributed to a device the way [callerPresence] attributes it.
+      final speaksForEveryDevice =
+          memberships.isEmpty && state.stateKey == callerId;
+      if (!speaksForEveryDevice &&
+          deviceId != null &&
+          !_belongsToDevice(state, memberships, deviceId)) {
+        continue;
+      }
+      if (state.originServerTs.isAfter(ring.orderedAt)) superseded = true;
+    }
+    return superseded ? PeerPresence.gone : PeerPresence.unknown;
+  }
+
   /// Whether a member state event is the work of one particular device.
   ///
   /// The membership's own `device_id` first; the state key only as a fallback,

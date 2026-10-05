@@ -11,6 +11,7 @@ import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
+import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
@@ -71,6 +72,36 @@ class FakeCalls extends CallService {
   }) =>
       callerPresenceOverride ??
       (callerHoldsMembership ? PeerPresence.live : PeerPresence.gone);
+
+  /// What room state says about the call the ring was sent from. Driven by
+  /// the same knobs as [callerPresence]; the real reading -- the membership
+  /// the ring names, ordered against the ring -- is pinned against real room
+  /// state in call_service_test.dart.
+  @override
+  PeerPresence ringCallPresence(
+    matrix.Room room,
+    IncomingCallNotification ring,
+  ) =>
+      callerPresenceOverride ??
+      (callerHoldsMembership ? PeerPresence.live : PeerPresence.gone);
+
+  final _callerStateChanges = StreamController<void>.broadcast();
+
+  @override
+  Stream<void> callerPresenceChanges(matrix.Room room, String callerId) =>
+      _callerStateChanges.stream;
+
+  /// Whether anything is still waiting on the caller's membership to arrive.
+  bool get watchingCallerState => _callerStateChanges.hasListener;
+
+  /// The caller's membership reaching this device's room state, the way a
+  /// sync applies it: the state is written first and the change announced
+  /// after, so a read on the announcement sees what arrived.
+  Future<void> callerStateArrives(PeerPresence presence) async {
+    callerPresenceOverride = presence;
+    _callerStateChanges.add(null);
+    await pumpEventQueue();
+  }
 
   /// Whether the membership a rejoin was offered against is still standing.
   /// False is the crashed-device case, where the server's delayed leave has
@@ -4455,6 +4486,90 @@ void main() {
       calls.callerHoldsMembership = false;
       await calls.peerAlsoCalls(age: const Duration(seconds: 20));
       expect(call.peerAlsoPlaced, isFalse);
+    });
+
+    // pangeachat/.github#410: the same abandoned ring, on a device that has
+    // never synced their membership at all. The reading is then neither live
+    // nor gone, and the ring used to be settled as glare on the spot -- so a
+    // call BACK named them as its caller and left its card to the survivor
+    // path. Silence is not evidence either way: the ring stays undecided
+    // until their membership arrives, and is settled by what arrives.
+    group('a ring whose membership this device has not seen yet', () {
+      test('is not glare once their retraction arrives', () async {
+        final (call, calls, _, _) = await build();
+        await call.start(roomStub(calls.client), video: false);
+        calls.callerPresenceOverride = PeerPresence.unknown;
+        await calls.peerAlsoCalls(age: const Duration(seconds: 20));
+
+        // Undecided, and until something decides it the answer stays the one
+        // that cannot write the call twice.
+        expect(call.peerAlsoPlaced, isTrue);
+        expect(call.peerRingSenderId, '@peer:server');
+        expect(calls.watchingCallerState, isTrue);
+
+        // Their state arrives and says the call the ring was sent from is
+        // over (a retraction, or a fresh membership written since the ring --
+        // which call_service_test pins against real state).
+        await calls.callerStateArrives(PeerPresence.gone);
+        expect(
+          call.peerAlsoPlaced,
+          isFalse,
+          reason: 'their membership says the ring belongs to a call that ended',
+        );
+        expect(call.peerRingSenderId, isNull);
+        expect(call.peerRingMembershipId, isNull);
+        expect(calls.watchingCallerState, isFalse);
+
+        // And it stays settled: nothing re-reads it.
+        await calls.callerStateArrives(PeerPresence.live);
+        expect(call.peerAlsoPlaced, isFalse);
+      });
+
+      test('is glare once the membership it names arrives, and stays glare '
+          'after they hang up', () async {
+        // Genuine simultaneous calling, where each side routinely has not
+        // synced the other's membership when the ring lands. Settling this as
+        // "not glare" would have both sides write the call.
+        final (call, calls, _, _) = await build();
+        await call.start(roomStub(calls.client), video: false);
+        calls.callerPresenceOverride = PeerPresence.unknown;
+        await calls.peerAlsoCalls();
+        expect(call.peerAlsoPlaced, isTrue);
+
+        await calls.callerStateArrives(PeerPresence.live);
+        expect(call.peerAlsoPlaced, isTrue);
+        expect(call.peerRingSenderId, '@peer:server');
+        expect(call.peerRingMembershipId, '\$theirmembership');
+        expect(calls.watchingCallerState, isFalse);
+
+        // Their retraction at the end of the call is the end of THIS call,
+        // not evidence about the ring, and must not undo the decision.
+        await calls.callerStateArrives(PeerPresence.gone);
+        expect(call.peerAlsoPlaced, isTrue);
+        expect(call.peerRingSenderId, '@peer:server');
+      });
+
+      test('stays undecided while what arrives says nothing about the '
+          'call that rang', () async {
+        // State from another of their devices, or older than the ring: the
+        // reading is still unknown, so nothing is settled.
+        final (call, calls, _, _) = await build();
+        await call.start(roomStub(calls.client), video: false);
+        calls.callerPresenceOverride = PeerPresence.unknown;
+        await calls.peerAlsoCalls();
+
+        await calls.callerStateArrives(PeerPresence.unknown);
+        expect(call.peerAlsoPlaced, isTrue);
+        expect(call.peerRingSenderId, '@peer:server');
+        expect(call.peerRingMembershipId, '\$theirmembership');
+        expect(calls.watchingCallerState, isTrue);
+
+        // Hanging up stops the wait and keeps the answer the card is
+        // written on; nothing is left listening.
+        await call.hangUp();
+        expect(calls.watchingCallerState, isFalse);
+        expect(call.peerAlsoPlaced, isTrue);
+      });
     });
 
     test('an old call of theirs is not somebody calling now', () async {
