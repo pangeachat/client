@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:50:39.270501",
+    "@@last_modified": "2026-10-05 13:57:49.102067",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10173,5 +10173,7 @@
     "ssoNetworkBlockedTitle": "로그인 사이트에 연결할 수 없음",
     "ssoNetworkBlockedDesc": "현재 네트워크에서 {provider}에 연결하여 로그인할 수 없습니다. 학교 및 사무실 Wi-Fi에서 차단하는 경우가 많습니다. 대신 이메일로 가입하거나 다른 네트워크로 전환하여 다시 시도할 수 있습니다.",
     "ssoTryAnyway": "그래도 시도",
+    "publicCoursesFilterTooltip": "누구나 참여할 수 있는 코스만 표시",
+    "restrictedCoursesFilterTooltip": "참여를 요청해야 하는 코스만 표시",
     "viewImageLabel": "이미지 보기"
 }

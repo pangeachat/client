@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-05 13:50:38.196175",
+    "@@last_modified": "2026-10-05 13:57:47.972093",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2392,5 +2392,7 @@
     "ssoNetworkBlockedTitle": "Sit koneksyon an pa aksesib",
     "ssoNetworkBlockedDesc": "Rezo sa a pa pèmèt nou jwenn aksè nan {provider} pou konekte ou. Wi-Fi lekòl ak biwo souvan bloke li. Ou ka enskri ak imèl pito, oswa chanje nan yon lòt rezo epi eseye ankò.",
     "ssoTryAnyway": "Eseye kanmenm",
+    "publicCoursesFilterTooltip": "Montre sèlman kou tout moun ka antre",
+    "restrictedCoursesFilterTooltip": "Montre sèlman kou ou dwe mande pou antre",
     "viewImageLabel": "Gade imaj"
 }

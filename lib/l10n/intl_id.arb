@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:50:38.497510",
+    "@@last_modified": "2026-10-05 13:57:48.316835",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10053,5 +10053,7 @@
     "ssoNetworkBlockedTitle": "Situs masuk tidak dapat dijangkau",
     "ssoNetworkBlockedDesc": "Jaringan ini tidak mengizinkan kami menjangkau {provider} untuk masuk. Wi-Fi sekolah dan kantor sering memblokirnya. Anda dapat mendaftar dengan email, atau beralih ke jaringan lain dan coba lagi.",
     "ssoTryAnyway": "Coba lagi",
+    "publicCoursesFilterTooltip": "Tampilkan hanya kursus yang dapat diikuti siapa saja",
+    "restrictedCoursesFilterTooltip": "Tampilkan hanya kursus yang harus Anda minta untuk bergabung",
     "viewImageLabel": "Lihat gambar"
 }

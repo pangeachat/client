@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-05 13:50:37.430614",
+    "@@last_modified": "2026-10-05 13:57:46.786418",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9980,5 +9980,7 @@
     "ssoNetworkBlockedTitle": "Saioa hasteko gunea eskuraezina",
     "ssoNetworkBlockedDesc": "Sare honek ez digu uzten {provider} atzitzen saioa hasteko. Eskolako eta bulegoko Wi-Fi sareek askotan blokeatzen dute. Horren ordez, posta elektronikoarekin erregistra zaitezke, edo beste sare batera aldatu eta berriro saiatu.",
     "ssoTryAnyway": "Dena den, saiatu",
+    "publicCoursesFilterTooltip": "Edonork bat egin dezakeen ikastaroak bakarrik erakutsi",
+    "restrictedCoursesFilterTooltip": "Bat egiteko eskatu behar duzun ikastaroak bakarrik erakutsi",
     "viewImageLabel": "Ikusi irudia"
 }

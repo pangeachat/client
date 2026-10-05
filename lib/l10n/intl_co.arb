@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-05 13:50:36.708523",
+    "@@last_modified": "2026-10-05 13:57:45.942324",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2392,5 +2392,7 @@
     "ssoNetworkBlockedTitle": "Situ di cunnessione inaccessibile",
     "ssoNetworkBlockedDesc": "Sta rete ùn ci permette micca di ghjunghje à {provider} per cunnettavvi. U Wi-Fi di a scola è di l'uffiziu u bluccanu spessu. Pudete iscrivevi cù l'email invece, o passà à un'altra rete è riprovà.",
     "ssoTryAnyway": "Pruvate quantunque",
+    "publicCoursesFilterTooltip": "Mostra solu i corsi à i quali ognunu pò participà",
+    "restrictedCoursesFilterTooltip": "Mostra solu i corsi à i quali duvete dumandà di participà",
     "viewImageLabel": "Vede l'imagine"
 }

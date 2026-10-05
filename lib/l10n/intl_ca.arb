@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:50:36.799414",
+    "@@last_modified": "2026-10-05 13:57:45.751920",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10107,5 +10107,7 @@
     "ssoNetworkBlockedTitle": "Lloc d'inici de sessió inaccessible",
     "ssoNetworkBlockedDesc": "Aquesta xarxa no ens permet connectar amb {provider} per iniciar la sessió. Sovint, les xarxes Wi-Fi d'escoles i oficines bloquegen l'accés. Pots registrar-te amb el correu electrònic o canviar a una altra xarxa i tornar-ho a provar.",
     "ssoTryAnyway": "Prova igualment",
+    "publicCoursesFilterTooltip": "Mostra només els cursos als quals qualsevol es pot unir",
+    "restrictedCoursesFilterTooltip": "Mostra només els cursos als quals has de demanar unió",
     "viewImageLabel": "Veure imatge"
 }

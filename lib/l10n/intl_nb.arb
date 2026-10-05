@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:50:40.253749",
+    "@@last_modified": "2026-10-05 13:57:51.174938",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10037,5 +10037,7 @@
     "ssoNetworkBlockedTitle": "Påloggingsside utilgjengelig",
     "ssoNetworkBlockedDesc": "Dette nettverket hindrer oss i å nå {provider} for å logge deg på. Skole- og kontor-Wi-Fi blokkerer ofte dette. Du kan registrere deg med e-post i stedet, eller bytte til et annet nettverk og prøve igjen.",
     "ssoTryAnyway": "Prøv likevel",
+    "publicCoursesFilterTooltip": "Vis kun kurs alle kan bli med i",
+    "restrictedCoursesFilterTooltip": "Vis kun kurs du må be om å få bli med i",
     "viewImageLabel": "Vis bilde"
 }

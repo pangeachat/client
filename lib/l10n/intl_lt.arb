@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-05 13:50:39.696343",
+    "@@last_modified": "2026-10-05 13:57:50.062062",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10761,5 +10761,7 @@
     "ssoNetworkBlockedTitle": "Prisijungimo svetainė nepasiekiama",
     "ssoNetworkBlockedDesc": "Šis tinklas neleidžia mums pasiekti {provider}, kad galėtumėte prisijungti. Mokyklos ir biuro „Wi-Fi“ dažnai blokuoja prieigą. Galite prisiregistruoti el. paštu arba prisijungti prie kito tinklo ir bandyti dar kartą.",
     "ssoTryAnyway": "Vis tiek bandyti",
+    "publicCoursesFilterTooltip": "Rodyti tik kursus, prie kurių gali prisijungti bet kas",
+    "restrictedCoursesFilterTooltip": "Rodyti tik kursus, prie kurių norint prisijungti reikia prašyti leidimo",
     "viewImageLabel": "Peržiūrėti nuotrauką"
 }

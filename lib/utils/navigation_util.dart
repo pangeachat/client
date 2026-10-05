@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/navigation/course_plan_return.dart';
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -29,6 +31,23 @@ class NavigationUtil {
     } else {
       GoRouter.of(context).go(fallback);
     }
+  }
+
+  /// An activity plan's back arrow under a course context: back to the course
+  /// card, on its full course plan when the plan was opened from there, which
+  /// then scrolls to the Mission the learner left ([CoursePlanReturn]). The
+  /// card that mounts claims focus; the pressed arrow goes with the activity
+  /// panel. See `routing.instructions.md`.
+  static void backFromActivityPlan(BuildContext context) {
+    final router = GoRouter.of(context);
+    final uri = router.routeInformationProvider.value.uri;
+    final activity = activityInfoFor(uri);
+    final courseId = activeSpaceIdFor(uri);
+    if (activity != null && activity.fromCoursePlan && courseId != null) {
+      CoursePlanReturn.arm(courseId: courseId, activityId: activity.activityId);
+    }
+    PanelEntryIntent.instance.armForSwap();
+    router.go(WorkspaceNav.dropActivityOverlay(uri, reopenCourseCard: true));
   }
 
   /// [filter] is the invite page's initial contact filter; [event] is a

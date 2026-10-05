@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:50:38.044238",
+    "@@last_modified": "2026-10-05 13:57:47.643939",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10894,5 +10894,7 @@
     "ssoNetworkBlockedTitle": "אתר ההתחברות אינו זמין",
     "ssoNetworkBlockedDesc": "רשת זו אינה מאפשרת לנו להגיע אל {provider} כדי לחבר אותך. רשתות Wi-Fi בבתי ספר ובמשרדים חוסמות זאת לעיתים קרובות. באפשרותך להירשם באמצעות דוא\"ל במקום זאת, או לעבור לרשת אחרת ולנסות שוב.",
     "ssoTryAnyway": "נסה בכל זאת",
+    "publicCoursesFilterTooltip": "הצג רק קורסים שכל אחד יכול להצטרף אליהם",
+    "restrictedCoursesFilterTooltip": "הצג רק קורסים שאתה צריך לבקש להצטרף אליהם",
     "viewImageLabel": "הצג תמונה"
 }

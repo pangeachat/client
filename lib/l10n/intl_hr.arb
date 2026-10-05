@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-05 13:50:38.194491",
+    "@@last_modified": "2026-10-05 13:57:47.734577",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10416,5 +10416,7 @@
     "ssoNetworkBlockedTitle": "Stranica za prijavu nedostupna",
     "ssoNetworkBlockedDesc": "Ova mreža nam ne dopušta pristup {provider} za vašu prijavu. Školske i uredske Wi-Fi mreže često to blokiraju. Umjesto toga možete se prijaviti e-poštom ili se prebaciti na drugu mrežu i pokušati ponovno.",
     "ssoTryAnyway": "Pokušaj svejedno",
+    "publicCoursesFilterTooltip": "Prikaži samo tečajeve kojima se svatko može pridružiti",
+    "restrictedCoursesFilterTooltip": "Prikaži samo tečajeve za koje je potrebno zatražiti pridruživanje",
     "viewImageLabel": "Prikaži sliku"
 }

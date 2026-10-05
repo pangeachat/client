@@ -11,6 +11,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/world/activity_course_resolver.dart';
+import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Activity detail, rendered as a first-class `left=activity:<id>` panel over the
@@ -128,17 +129,6 @@ class _LeftPanelActivityDetailsSubpageState
     context.go(WorkspaceNav.dropActivityOverlay(uri));
   }
 
-  /// Back returns toward the course: pop history if there's something to pop,
-  /// otherwise just drop the activity token. Either way the course context stays
-  /// (the `?m=course:` scope survives) — this never leaves for a standalone open.
-  void _back() {
-    if (context.canPop()) {
-      context.pop();
-    } else {
-      _close();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     // Once resolved, render the activity — with or without a parent course.
@@ -175,7 +165,9 @@ class _LeftPanelActivityDetailsSubpageState
         children: [
           ActivityLoadingHeader(
             showBack: showBack,
-            onBack: _back,
+            // The same back as the loaded plan's, so the arrow lands on the
+            // same page whether or not the plan has finished resolving.
+            onBack: () => NavigationUtil.backFromActivityPlan(context),
             onClose: _close,
           ),
           const Expanded(

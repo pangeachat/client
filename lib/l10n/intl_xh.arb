@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-05 13:50:42.762069",
+    "@@last_modified": "2026-10-05 13:57:54.685386",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2392,5 +2392,7 @@
     "ssoNetworkBlockedTitle": "Indawo yokungena ayifikeleleki",
     "ssoNetworkBlockedDesc": "Le nethiwekhi ayisivumeli ukuba sifikelele ku-{provider} ukuze sikungenise. IWi-Fi yesikolo neyeofisi isoloko iyivala. Ungabhalisa nge-imeyile endaweni yoko, okanye utshintshele kwenye inethiwekhi uze uzame kwakhona.",
     "ssoTryAnyway": "Zama nangona kunjalo",
+    "publicCoursesFilterTooltip": "Bonisa kuphela izifundo nabani na anokuzijoyina",
+    "restrictedCoursesFilterTooltip": "Bonisa kuphela izifundo ekufuneka ucele ukuzijoyina",
     "viewImageLabel": "Jonga umfanekiso"
 }

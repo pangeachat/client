@@ -316,7 +316,8 @@ user came from:
 - A **back arrow** means there is somewhere to go back to. It pops a page pushed
   within the panel, unfolds a folded master, or — for a panel whose contextual
   parent is present — returns to that parent: an activity plan under a course
-  context closes back to the course card.
+  context closes back to the course card, on the page of the card it was opened
+  from (see Activity plan below).
 - An **X** means closing simply reveals what is beneath: the other panels and
   the map.
 - An **expand/collapse chevron** replaces both where a panel has a **floor
@@ -819,7 +820,7 @@ behaves the same on mobile and desktop.
 | Learning settings (shortcut) | the cluster's **language flag** | right | opens the learning-settings page directly — the flag doubles as a shortcut to it |
 | A settings leaf (password, blocked users, emotes, …) | within its settings page | the settings panel | push |
 | Courses (your courses + add a course) | the **Courses** rail icon | left | open panel (master) — joined-course tiles plus the add-course options (start-my-own / browse / enter-code); Teaching / Learning filter pills when the learner holds both roles, and a search bar past four joined courses ([rules](#single-column-bottom-nav)) |
-| Activity plan | a course's activity list, a map pin (tap) | map content | a left-column `activity:<id>` panel over the map (the nav widget's cavity at half height on narrow, pin visible above), camera on its pin. It claims the single **live view** (a `liveView` sibling of `room`/`session`), so opening it drops any open chat and starting the session drops the plan; it sizes by the registry like a `room` (#7385). When the learner already holds an unfinished session, the bound session room rides in the token param so the plan offers resume instead of a fresh instance (#7257). Its close follows the [affordance rule](#closing-a-panel-x-or-back-arrow): with `?c=` set (opened from the course's activity list, or from a pin on the course-scoped map) a back arrow returns to the course card; with no context (a world-map pin, a standalone shared link) an X reveals the map. **Start** launches the session, which runs as a chat room (one live view) |
+| Activity plan | a course's activity list, a map pin (tap) | map content | a left-column `activity:<id>` panel over the map (the nav widget's cavity at half height on narrow, pin visible above), camera on its pin. It claims the single **live view** (a `liveView` sibling of `room`/`session`), so opening it drops any open chat and starting the session drops the plan; it sizes by the registry like a `room` (#7385). When the learner already holds an unfinished session, the bound session room rides in the token param so the plan offers resume instead of a fresh instance (#7257). Its close follows the [affordance rule](#closing-a-panel-x-or-back-arrow): with `?c=` set (opened from the course's activity list, or from a pin on the course-scoped map) a back arrow returns to the course card. When the activity was opened from the card's full course plan, the back arrow returns to that full plan, scrolled to the activity's Mission, so a learner working down a long plan picks up where they left off (#9367). The token records that the activity was opened from the full plan, so a refresh keeps it. The scroll is a one-time step on arrival and is never stored in the URL. With no context (a world-map pin, a standalone shared link) an X reveals the map. **Start** launches the session, which runs as a chat room (one live view) |
 
 ### A chat's header actions
 

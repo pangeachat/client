@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:50:42.609217",
+    "@@last_modified": "2026-10-05 13:57:54.628801",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7272,5 +7272,7 @@
     "ssoNetworkBlockedTitle": "Không thể truy cập trang web đăng nhập",
     "ssoNetworkBlockedDesc": "Mạng này không cho phép chúng tôi truy cập {provider} để đăng nhập cho bạn. Wi-Fi ở trường học và văn phòng thường chặn điều này. Bạn có thể đăng ký bằng email thay thế, hoặc chuyển sang mạng khác và thử lại.",
     "ssoTryAnyway": "Vẫn thử",
+    "publicCoursesFilterTooltip": "Chỉ hiển thị các khóa học mà bất kỳ ai cũng có thể tham gia",
+    "restrictedCoursesFilterTooltip": "Chỉ hiển thị các khóa học bạn phải yêu cầu để tham gia",
     "viewImageLabel": "Xem hình ảnh"
 }

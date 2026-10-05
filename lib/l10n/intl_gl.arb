@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-05 13:50:37.415772",
+    "@@last_modified": "2026-10-05 13:57:47.307572",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9980,5 +9980,7 @@
     "ssoNetworkBlockedTitle": "Sitio de inicio de sesión inaccesible",
     "ssoNetworkBlockedDesc": "Esta rede non nos permite acceder a {provider} para iniciar a túa sesión. As redes Wi-Fi de escolas e oficinas adoitan bloquealo. Podes rexistrarte con correo electrónico ou cambiar a outra rede e tentalo de novo.",
     "ssoTryAnyway": "Tentar de todos os xeitos",
+    "publicCoursesFilterTooltip": "Mostrar só os cursos aos que calquera se pode unir",
+    "restrictedCoursesFilterTooltip": "Mostrar só os cursos aos que debes solicitar unirte",
     "viewImageLabel": "Ver imaxe"
 }
