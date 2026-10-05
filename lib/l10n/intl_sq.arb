@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-05 12:30:48.350885",
+    "@@last_modified": "2026-10-05 13:57:52.813609",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2392,5 +2392,7 @@
     "activitySummaryUpdateFailed": "Ky përmbledhje nuk mund të përditësohej.",
     "ssoNetworkBlockedTitle": "Sajti i hyrjes i paarritshëm",
     "ssoNetworkBlockedDesc": "Ky rrjet nuk na lejon të arrijmë te {provider} për t'u kyçur. Wi-Fi i shkollës dhe zyrës shpesh e bllokojnë atë. Mund të regjistroheni me email, ose të kaloni në një rrjet tjetër dhe të provoni përsëri.",
-    "ssoTryAnyway": "Provo gjithsesi"
+    "ssoTryAnyway": "Provo gjithsesi",
+    "publicCoursesFilterTooltip": "Shfaq vetëm kurset ku mund të bashkohet kushdo",
+    "restrictedCoursesFilterTooltip": "Shfaq vetëm kurset ku duhet të kërkosh për t'u bashkuar"
 }

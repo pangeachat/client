@@ -17,6 +17,7 @@ import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
 import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
+import 'package:fluffychat/pangea/spaces/course_access_filter.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
@@ -782,6 +783,7 @@ abstract class WorkspaceNav {
     String? initialLanguageFilter,
     bool? allLanguagesFilter,
     String? previewRoomId,
+    CourseAccessFilter? accessFilter,
     String? createCourseId,
     bool showNewCourseInvitePage = false,
     String? privateCourseJoinCode,
@@ -796,6 +798,9 @@ abstract class WorkspaceNav {
     final carriedAllLanguagesFilter =
         matchingTypePanel.firstOrNull?.param?.allLanguagesFilter;
 
+    final carriedAccessFilter =
+        matchingTypePanel.firstOrNull?.param?.accessFilter;
+
     return _mutate(
       current,
       'left',
@@ -809,6 +814,8 @@ abstract class WorkspaceNav {
             allLanguagesFilter:
                 allLanguagesFilter ?? carriedAllLanguagesFilter ?? false,
             previewRoomId: previewRoomId,
+            accessFilter:
+                accessFilter ?? carriedAccessFilter ?? CourseAccessFilter.all,
             createCourseId: createCourseId,
             showNewCourseInvitePage: showNewCourseInvitePage,
             privateCourseJoinCode: privateCourseJoinCode,

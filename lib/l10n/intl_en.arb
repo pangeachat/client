@@ -5578,6 +5578,8 @@
     "allCoursesFilterTooltip": "Show all courses",
     "teachingCoursesFilterTooltip": "Show only courses you teach",
     "learningCoursesFilterTooltip": "Show only courses you're learning in",
+    "publicCoursesFilterTooltip": "Show only courses anyone can join",
+    "restrictedCoursesFilterTooltip": "Show only courses you must ask to join",
     "searchCoursesHint": "Search courses",
     "noCoursesMatchSearch": "No courses match your search.",
     "courseNameHint": "Course name",

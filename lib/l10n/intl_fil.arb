@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-05 12:30:36.635272",
+    "@@last_modified": "2026-10-05 13:57:46.973659",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10844,5 +10844,7 @@
     "activitySummaryUpdateFailed": "Hindi ma-update ang buod na ito.",
     "ssoNetworkBlockedTitle": "Hindi maabot ang site ng pag-sign in",
     "ssoNetworkBlockedDesc": "Hindi kami pinapayagan ng network na ito na maabot ang {provider} para i-sign in ka. Madalas itong hinaharangan ng Wi-Fi ng paaralan at opisina. Maaari kang mag-sign up gamit ang email sa halip, o lumipat sa ibang network at subukang muli.",
-    "ssoTryAnyway": "Subukan pa rin"
+    "ssoTryAnyway": "Subukan pa rin",
+    "publicCoursesFilterTooltip": "Ipakita lang ang mga kurso na maaaring salihan ng sinuman",
+    "restrictedCoursesFilterTooltip": "Ipakita lang ang mga kurso na kailangan mong humingi ng pahintulot para makasali"
 }

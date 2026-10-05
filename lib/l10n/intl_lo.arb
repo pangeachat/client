@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-05 12:30:42.285233",
+    "@@last_modified": "2026-10-05 13:57:50.052940",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2392,5 +2392,7 @@
     "activitySummaryUpdateFailed": "ບໍ່ສາມາດອັບເດດສະຫຼຸບນີ້ໄດ້.",
     "ssoNetworkBlockedTitle": "ບໍ່ສາມາດເຂົ້າເຖິງເວັບໄຊທ໌ເຂົ້າສູ່ລະບົບໄດ້",
     "ssoNetworkBlockedDesc": "ເຄືອຂ່າຍນີ້ບໍ່ອະນຸຍາດໃຫ້ພວກເຮົາເຂົ້າເຖິງ {provider} ເພື່ອເຂົ້າສູ່ລະບົບໃຫ້ທ່ານ. Wi-Fi ຂອງໂຮງຮຽນ ແລະ ຫ້ອງການມັກຈະບລັອກມັນ. ທ່ານສາມາດລົງທະບຽນດ້ວຍອີເມວແທນ, ຫຼືປ່ຽນໄປໃຊ້ເຄືອຂ່າຍອື່ນແລ້ວລອງໃໝ່ອີກຄັ້ງ.",
-    "ssoTryAnyway": "ລອງອີກຄັ້ງ"
+    "ssoTryAnyway": "ລອງອີກຄັ້ງ",
+    "publicCoursesFilterTooltip": "ສະແດງສະເພາະຫຼັກສູດທີ່ໃຜໆກໍເຂົ້າຮ່ວມໄດ້",
+    "restrictedCoursesFilterTooltip": "ສະແດງສະເພາະຫຼັກສູດທີ່ທ່ານຕ້ອງຂໍເຂົ້າຮ່ວມ"
 }

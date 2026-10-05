@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-05 12:30:48.925569",
+    "@@last_modified": "2026-10-05 13:57:53.640600",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2392,5 +2392,7 @@
     "activitySummaryUpdateFailed": "Ringkesan ieu teu tiasa diropéa.",
     "ssoNetworkBlockedTitle": "Situs asup teu tiasa diaksés",
     "ssoNetworkBlockedDesc": "Jaringan ieu ngahalangan kami ngahubungi {provider} pikeun ngasupkeun anjeun. Wi-Fi sakola sareng kantor sering ngahalanganana. Anjeun tiasa ngadaptar nganggo email, atanapi gentos ka jaringan sanés teras cobian deui.",
-    "ssoTryAnyway": "Cobi waé"
+    "ssoTryAnyway": "Cobi waé",
+    "publicCoursesFilterTooltip": "Tampilkeun kursus-kursus anu saha waé tiasa ngiringan",
+    "restrictedCoursesFilterTooltip": "Tampilkeun kursus-kursus anu anjeun kedah nyuhunkeun pikeun ngiringan"
 }

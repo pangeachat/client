@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-05 12:30:33.876469",
+    "@@last_modified": "2026-10-05 13:57:45.289784",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2392,5 +2392,7 @@
     "activitySummaryUpdateFailed": "ይህ ማጠቃለያ ሊዘመን አልቻለም።",
     "ssoNetworkBlockedTitle": "የመግቢያ ጣቢያው አይደረስበትም",
     "ssoNetworkBlockedDesc": "ይህ አውታረ መረብ እርስዎን ለማስገባት ወደ {provider} እንዳንደርስ እየከለከለን ነው። የትምህርት ቤት እና የቢሮ ዋይፋይ ብዙ ጊዜ ያግዱታል። በምትኩ በኢሜል መመዝገብ ወይም ወደ ሌላ አውታረ መረብ ቀይረው እንደገና መሞከር ይችላሉ።",
-    "ssoTryAnyway": "ለማንኛውም ይሞክሩ"
+    "ssoTryAnyway": "ለማንኛውም ይሞክሩ",
+    "publicCoursesFilterTooltip": "ማንም ሰው መቀላቀል የሚችለውን ኮርሶች ብቻ አሳይ",
+    "restrictedCoursesFilterTooltip": "ለመቀላቀል መጠየቅ ያለብዎትን ኮርሶች ብቻ አሳይ"
 }

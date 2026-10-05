@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-05 12:30:35.567813",
+    "@@last_modified": "2026-10-05 13:57:46.007261",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2392,5 +2392,7 @@
     "activitySummaryUpdateFailed": "Ni ellid diweddaru’r crynodeb hwn.",
     "ssoNetworkBlockedTitle": "Safle mewngofnodi’n anghyraeddadwy",
     "ssoNetworkBlockedDesc": "Nid yw’r rhwydwaith hwn yn gadael inni gyrraedd {provider} i’ch mewngofnodi. Mae Wi-Fi ysgol a swyddfa’n aml yn ei rwystro. Gallwch gofrestru gydag e-bost yn lle hynny, neu newid i rwydwaith arall a rhoi cynnig arall arni.",
-    "ssoTryAnyway": "Rhowch gynnig arni beth bynnag"
+    "ssoTryAnyway": "Rhowch gynnig arni beth bynnag",
+    "publicCoursesFilterTooltip": "Dangos dim ond cyrsiau y gall unrhyw un ymuno â nhw",
+    "restrictedCoursesFilterTooltip": "Dangos dim ond cyrsiau y mae'n rhaid i chi ofyn i ymuno â nhw"
 }

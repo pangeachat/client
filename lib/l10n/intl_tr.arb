@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-05 12:30:49.585292",
+    "@@last_modified": "2026-10-05 13:57:53.631201",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10285,5 +10285,7 @@
     "activitySummaryUpdateFailed": "Bu özet güncellenemedi.",
     "ssoNetworkBlockedTitle": "Giriş sitesine ulaşılamıyor",
     "ssoNetworkBlockedDesc": "Bu ağ, giriş yapmanız için {provider} adresine ulaşmamızı engelliyor. Okul ve ofis Wi-Fi'ları genellikle bunu engeller. Bunun yerine e-posta ile kaydolabilir veya başka bir ağa geçip tekrar deneyebilirsiniz.",
-    "ssoTryAnyway": "Yine de dene"
+    "ssoTryAnyway": "Yine de dene",
+    "publicCoursesFilterTooltip": "Yalnızca herkesin katılabileceği kursları göster",
+    "restrictedCoursesFilterTooltip": "Yalnızca katılmak için izin almanız gereken kursları göster"
 }

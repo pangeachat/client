@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-05 12:30:47.132694",
+    "@@last_modified": "2026-10-05 13:57:52.662235",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2392,5 +2392,7 @@
     "activitySummaryUpdateFailed": "هي خلاصو اپڊيٽ نه ٿي سگهيو.",
     "ssoNetworkBlockedTitle": "سائن ان سائيٽ پهچ کان ٻاهر آهي",
     "ssoNetworkBlockedDesc": "هي نيٽ ورڪ اسان کي {provider} تائين پهچڻ نه ٿو ڏئي ته جيئن توهان کي سائن ان ڪري سگهجي. اسڪول ۽ آفيس جو وائي فائي اڪثر ان کي بلاڪ ڪندو آهي. توهان ان جي بدران اي ميل سان سائن اپ ڪري سگهو ٿا، يا ڪنهن ٻئي نيٽ ورڪ تي سوئچ ڪري ٻيهر ڪوشش ڪري سگهو ٿا.",
-    "ssoTryAnyway": "بهرحال ڪوشش ڪريو"
+    "ssoTryAnyway": "بهرحال ڪوشش ڪريو",
+    "publicCoursesFilterTooltip": "صرف اهي ڪورس ڏيکاريو جيڪي ڪو به شامل ٿي سگهي ٿو",
+    "restrictedCoursesFilterTooltip": "صرف اهي ڪورس ڏيکاريو جن ۾ شامل ٿيڻ لاءِ توهان کي پڇڻو پوندو"
 }

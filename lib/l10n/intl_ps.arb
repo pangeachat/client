@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-05 12:30:46.347106",
+    "@@last_modified": "2026-10-05 13:57:52.004958",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2392,5 +2392,7 @@
     "activitySummaryUpdateFailed": "دا لنډیز تازه نشو.",
     "ssoNetworkBlockedTitle": "د ننوتلو سایټ د لاسرسي وړ نه دی",
     "ssoNetworkBlockedDesc": "دا شبکه موږ ته اجازه نه راکوي چې تاسو ته د ننوتلو لپاره {provider} ته ورسیږو. د ښوونځي او دفتر وای فای اکثرا دا بندوي. تاسو کولی شئ د بریښنالیک له لارې نوم لیکنه وکړئ، یا بلې شبکې ته لاړ شئ او بیا هڅه وکړئ.",
-    "ssoTryAnyway": "بیا هم هڅه وکړئ"
+    "ssoTryAnyway": "بیا هم هڅه وکړئ",
+    "publicCoursesFilterTooltip": "یوازې هغه کورسونه وښایاست چې هرڅوک پکې شاملیدلی شي",
+    "restrictedCoursesFilterTooltip": "یوازې هغه کورسونه وښایاست چې تاسو یې د شاملیدو غوښتنه کوئ"
 }

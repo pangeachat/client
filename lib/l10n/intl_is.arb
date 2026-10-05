@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-05 12:30:39.498784",
+    "@@last_modified": "2026-10-05 13:57:48.611909",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2392,5 +2392,7 @@
     "activitySummaryUpdateFailed": "Ekki tókst að uppfæra þessa samantekt.",
     "ssoNetworkBlockedTitle": "Ekki hægt að ná í innskráningarsíðu",
     "ssoNetworkBlockedDesc": "Þetta net leyfir okkur ekki að ná í {provider} til að skrá þig inn. Wi-Fi á skólum og skrifstofum hindrar þetta oft. Þú getur skráð þig með tölvupósti í staðinn, eða skipt um net og reynt aftur.",
-    "ssoTryAnyway": "Reyna samt"
+    "ssoTryAnyway": "Reyna samt",
+    "publicCoursesFilterTooltip": "Sýna aðeins námskeið sem allir geta tekið þátt í",
+    "restrictedCoursesFilterTooltip": "Sýna aðeins námskeið sem þú þarft að biðja um að fá að taka þátt í"
 }

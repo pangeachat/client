@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-05 12:30:39.857244",
+    "@@last_modified": "2026-10-05 13:57:48.595691",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2392,5 +2392,7 @@
     "activitySummaryUpdateFailed": "Enweghị ike imelite nchịkọta a.",
     "ssoNetworkBlockedTitle": "Ebe nbanye anaghị eru",
     "ssoNetworkBlockedDesc": "Netwọkụ a anaghị ekwe ka anyị ruo {provider} iji banye gị. Wi-Fi ụlọ akwụkwọ na ụlọ ọrụ na-egbochikarị ya. Ị nwere ike iji email debanye aha kama, ma ọ bụ gbanwee gaa na netwọkụ ọzọ wee nwaa ọzọ.",
-    "ssoTryAnyway": "Nwaa agbanyeghị"
+    "ssoTryAnyway": "Nwaa agbanyeghị",
+    "publicCoursesFilterTooltip": "Gosi naanị ọmụmụ ihe onye ọ bụla nwere ike isonye",
+    "restrictedCoursesFilterTooltip": "Gosi naanị ọmụmụ ihe ị ga-arịọ ka isonye"
 }

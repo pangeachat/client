@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-05 12:30:35.725951",
+    "@@last_modified": "2026-10-05 13:57:45.993672",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8203,5 +8203,7 @@
     "activitySummaryUpdateFailed": "No se pudo actualizar este resumen.",
     "ssoNetworkBlockedTitle": "Sitio de inicio de sesión inalcanzable",
     "ssoNetworkBlockedDesc": "Esta red no nos permite acceder a {provider} para iniciar sesión. Las redes Wi-Fi de escuelas y oficinas a menudo lo bloquean. Puedes registrarte con tu correo electrónico o cambiar a otra red e intentarlo de nuevo.",
-    "ssoTryAnyway": "Intentar de todos modos"
+    "ssoTryAnyway": "Intentar de todos modos",
+    "publicCoursesFilterTooltip": "Mostrar solo los cursos a los que cualquiera puede unirse",
+    "restrictedCoursesFilterTooltip": "Mostrar solo los cursos a los que debes solicitar unirte"
 }

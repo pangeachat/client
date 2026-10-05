@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-05 12:30:38.042561",
+    "@@last_modified": "2026-10-05 13:57:47.490668",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2392,5 +2392,7 @@
     "activitySummaryUpdateFailed": "ʻAʻole hiki ke hoʻopou hou i kēia hōʻuluʻulu.",
     "ssoNetworkBlockedTitle": "ʻAʻole hiki ke kiʻi i ka pūnaewele ʻeʻe",
     "ssoNetworkBlockedDesc": "ʻAʻole ʻae kēia pūnaewele iā mākou e kiʻi iā {provider} no ka hoʻopaʻa inoa ʻana iā ʻoe. Hoʻopaʻa pinepine ka Wi-Fi kula a me ke keʻena iā ia. Hiki iā ʻoe ke kau inoa me ka leka uila, a i ʻole e hoʻololi i kahi pūnaewele ʻē aʻe a hoʻāʻo hou.",
-    "ssoTryAnyway": "E hoʻāʻo nō"
+    "ssoTryAnyway": "E hoʻāʻo nō",
+    "publicCoursesFilterTooltip": "Hōʻike wale i nā papa e hiki ai i kekahi ke komo",
+    "restrictedCoursesFilterTooltip": "Hōʻike wale i nā papa e pono ai ʻoe e noi e komo"
 }

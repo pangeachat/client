@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 12:30:48.122288",
+    "@@last_modified": "2026-10-05 13:57:54.461613",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10502,5 +10502,7 @@
     "activitySummaryUpdateFailed": "Denna sammanfattning kunde inte uppdateras.",
     "ssoNetworkBlockedTitle": "Inloggningssidan kan inte nås",
     "ssoNetworkBlockedDesc": "Det här nätverket hindrar oss från att nå {provider} för att logga in dig. Skol- och kontors-Wi-Fi blockerar ofta det. Du kan registrera dig med e-post istället, eller byta till ett annat nätverk och försöka igen.",
-    "ssoTryAnyway": "Försök ändå"
+    "ssoTryAnyway": "Försök ändå",
+    "publicCoursesFilterTooltip": "Visa endast kurser som alla kan gå med i",
+    "restrictedCoursesFilterTooltip": "Visa endast kurser du måste be om att få gå med i"
 }
