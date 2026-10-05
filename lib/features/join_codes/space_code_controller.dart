@@ -17,6 +17,7 @@ import 'package:fluffychat/features/join_codes/knock_with_code_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/join_codes/too_many_requests_dialog.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -154,13 +155,28 @@ class SpaceCodeController {
     return L10n.of(context).unableToJoinCourseError;
   }
 
+  /// The code to join with from what was typed or pasted into a code field:
+  /// a pasted course link (`https://app.pangea.chat/<code>`) yields its code
+  /// (#9376), and any other text goes as typed, trimmed — the server alone
+  /// checks the format.
+  static String codeFromInput(String input) {
+    final text = input.trim();
+    final uri = Uri.tryParse(text);
+    if (uri == null || !uri.hasAuthority) return text;
+    final segments = uri.pathSegments.where((s) => s.isNotEmpty);
+    return segments.length == 1 && PRoutes.isJoinCode(segments.single)
+        ? segments.single
+        : text;
+  }
+
   static Future<Result<JoinResponse>> joinSpaceWithCode(
-    String spaceCode, {
+    String input, {
     required Client client,
     String? notFoundError,
     BuildContext? context,
     bool showLoading = true,
   }) async {
+    final spaceCode = codeFromInput(input);
     final inFlight = _inFlightJoins[spaceCode];
     if (inFlight != null) return inFlight;
     final completer = Completer<Result<JoinResponse>>();
