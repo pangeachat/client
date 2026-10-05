@@ -53,3 +53,24 @@ SSOProvider? ssoProviderFromName(String? name) {
   }
   return null;
 }
+
+/// A same-tab sign-in waiting to be finished: both the stored callback and
+/// the provider marker must be present. The marker is written only by the
+/// same-tab flow, so a callback without it belongs to the desktop popup flow
+/// (its tab polls localStorage for it) and must not be touched.
+class PendingSameTabLogin {
+  final String token;
+  final SSOProvider provider;
+  const PendingSameTabLogin(this.token, this.provider);
+}
+
+PendingSameTabLogin? pendingSameTabLogin({
+  required String? storedHref,
+  required String? storedProvider,
+}) {
+  final provider = ssoProviderFromName(storedProvider);
+  if (provider == null) return null;
+  final token = loginTokenFromCallbackHref(storedHref);
+  if (token == null) return null;
+  return PendingSameTabLogin(token, provider);
+}

@@ -48,13 +48,22 @@ class PangeaSsoButton extends StatefulWidget {
     if (!kIsWeb || _pendingChecked) return;
     _pendingChecked = true;
     final storage = html.window.localStorage;
-    final token = loginTokenFromCallbackHref(storage[pendingSsoStorageKey]);
-    final provider = ssoProviderFromName(storage[pendingSsoProviderKey]);
-    if (token == null && provider == null) return;
+    final pending = pendingSameTabLogin(
+      storedHref: storage[pendingSsoStorageKey],
+      storedProvider: storage[pendingSsoProviderKey],
+    );
+    // Only the same-tab flow sets the provider marker. Without it, a stored
+    // callback belongs to the desktop popup flow, whose tab is polling for
+    // it: leave it alone (v5.0.7+2 consumed it here and stranded that tab).
+    if (pending == null) return;
     storage.remove(pendingSsoStorageKey);
     storage.remove(pendingSsoProviderKey);
-    if (token == null || provider == null || !context.mounted) return;
-    await _PangeaSsoButtonState._finishLogin(context, token, provider);
+    if (!context.mounted) return;
+    await _PangeaSsoButtonState._finishLogin(
+      context,
+      pending.token,
+      pending.provider,
+    );
   }
 }
 
