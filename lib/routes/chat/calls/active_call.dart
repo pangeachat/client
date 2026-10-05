@@ -496,9 +496,13 @@ class ActiveCall extends ChangeNotifier {
   /// Null on every platform that needs none.
   final CallForegroundControl? _foreground;
 
+  /// Whether this call has a background-survival service to look after at
+  /// all -- Android only.
+  bool get hasForegroundService => _foreground != null;
+
   /// Whether the service refused the first start -- the microphone permission
   /// dialog was still up -- and is owed a retry the moment that grant lands.
-  /// Spent by [_onMicrophoneLive], re-armed by [foregroundRefused].
+  /// Spent by [_onMicrophoneLive] and [appResumed]; re-armed by any refusal.
   bool _foregroundPending = false;
 
   /// Whether THIS call is the one the service runs for -- the PLATFORM'S
@@ -590,6 +594,14 @@ class ActiveCall extends ChangeNotifier {
       // The service is the call's survival in the background, never its
       // existence. A platform refusal costs that survival, not the call.
       Logs().w('Could not start the call foreground service', e, s);
+      // And a refusal is a refusal however it arrives. Android 12+ says no to
+      // a start from the background by THROWING out of startForegroundService
+      // rather than answering zero, and every retry spends the debt before it
+      // asks -- so a throw left unhandled here left the call owing nothing,
+      // unprotected for the rest of the call however often the learner came
+      // back to the app. Owed again, exactly as a zero is, unless the call is
+      // already coming down and has nothing left to protect.
+      if (!_ending && !_disposed) _foregroundPending = true;
     }
   }
 
@@ -611,11 +623,30 @@ class ActiveCall extends ChangeNotifier {
   /// itself.
   ///
   /// Once per call: the media announces this from the coming-up path only, and
-  /// what it spends is spent. A start the platform then refuses is re-armed by
-  /// [foregroundRefused], which carries its own budget for exactly that.
-  void _onMicrophoneLive() => unawaited(_retryForegroundOnGrant());
+  /// what it spends is spent. A start the platform then refuses is re-armed --
+  /// by [_startForeground] for a zero or a throw, by [foregroundRefused] for a
+  /// promotion that failed after the fact -- and [appResumed] pays it.
+  void _onMicrophoneLive() => unawaited(_payForegroundDebt());
 
-  Future<void> _retryForegroundOnGrant() async {
+  /// The app is back in the foreground: the other moment a service start is
+  /// legal, and the one that recurs.
+  ///
+  /// The microphone grant is answered in a system dialog, and the activity
+  /// resumes the instant that dialog closes -- before the microphone has
+  /// finished publishing -- so on a first call this is the grant itself, taken
+  /// at the earliest moment the platform will allow it. It is also the only
+  /// recovery for the case #410 names: a learner who left the app from the
+  /// dialog, or in the moments after it, has the retry refused from the
+  /// background, and the call then runs unprotected. Their next return to the
+  /// app is the next legal window, and a call that still owes the service asks
+  /// in it.
+  ///
+  /// Owes nothing, asks nothing: a protected call, a call the account refused
+  /// before it ever asked, and a call that is ending are all quiet here. Not
+  /// a loop either -- each attempt is paid for by the learner coming back.
+  void appResumed() => unawaited(_payForegroundDebt());
+
+  Future<void> _payForegroundDebt() async {
     // Settled first, because the entry start was fired unawaited before the
     // join and may still be in the platform's hands. Reading the flag through
     // that window would read "nothing is owed" of a start that is about to come
@@ -629,9 +660,10 @@ class ActiveCall extends ChangeNotifier {
     // [_startForeground] does reconcile a start that lands late, and this is
     // the cheaper half of the same rule, taken before the platform is troubled.
     if (_ending || _disposed) return;
-    // Spent BEFORE the attempt, so the grant produces exactly one. A refusal
-    // re-arms the flag from inside [_startForeground], and that re-arming is
-    // there for [foregroundRefused] to answer, not for this to read again.
+    // Spent BEFORE the attempt, so one legal moment produces exactly one, and
+    // a grant and a resume arriving together share it rather than both asking.
+    // A refusal re-arms the flag from inside [_startForeground], for the NEXT
+    // legal moment to answer, not for this one to read again.
     _foregroundPending = false;
     unawaited(_startForeground(video: _isVideoCall));
   }
