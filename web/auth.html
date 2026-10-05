@@ -9,17 +9,23 @@
     }, window.location.origin);
     window.close();
   } else {
-    // Same-tab flow (phones and in-app browsers, where a popup is refused):
-    // keep the result for the app, then go back to the page the sign-in
-    // started from. Only a page on this origin is a valid return target.
+    // No opener: either the desktop popup (opened with noopener, so the
+    // app's tab polls localStorage for this value and the popup just closes)
+    // or the same-tab flow on phones and in-app browsers, which carries a
+    // `return` page. Only the same-tab flow navigates; the popup must never
+    // load the app, or it would consume the token itself (v5.0.7+2 bug).
     localStorage.setItem('flutter-web-auth-2', window.location.href);
     var back = new URLSearchParams(window.location.search).get('return');
-    var target = '/';
+    var target = null;
     try {
       if (back && new URL(back, window.location.origin).origin === window.location.origin) {
         target = back;
       }
-    } catch (e) { /* malformed return: land on the root */ }
-    window.location.replace(target);
+    } catch (e) { /* malformed return: treat as the popup case */ }
+    if (target) {
+      window.location.replace(target);
+    } else {
+      window.close();
+    }
   }
 </script>

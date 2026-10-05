@@ -85,4 +85,34 @@ void main() {
       expect(ssoProviderFromName(null), isNull);
     });
   });
+
+  group('pendingSameTabLogin', () {
+    const href =
+        'https://app.pangea.chat/auth.html?return=x&loginToken=syl_abc';
+
+    test('needs both the callback and the same-tab provider marker', () {
+      final p = pendingSameTabLogin(storedHref: href, storedProvider: 'google');
+      expect(p?.token, 'syl_abc');
+      expect(p?.provider, SSOProvider.google);
+    });
+
+    test(
+      'a callback without the marker is the popup flow and is left alone',
+      () {
+        // The desktop popup stores the same value for its own tab to poll;
+        // consuming it here stranded that tab on the login page (v5.0.7+2).
+        expect(
+          pendingSameTabLogin(storedHref: href, storedProvider: null),
+          isNull,
+        );
+      },
+    );
+
+    test('a marker without a callback is nothing to finish', () {
+      expect(
+        pendingSameTabLogin(storedHref: null, storedProvider: 'google'),
+        isNull,
+      );
+    });
+  });
 }
