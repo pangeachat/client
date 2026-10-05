@@ -3,7 +3,6 @@ import 'dart:io' show Platform;
 
 import 'package:flutter/foundation.dart';
 
-import 'package:livekit_client/livekit_client.dart' as lk;
 import 'package:matrix/matrix.dart' show Logs;
 import 'package:permission_handler/permission_handler.dart';
 
@@ -26,6 +25,11 @@ import 'package:matrix/matrix.dart'
 
 import 'package:pangea_call_capture/pangea_call_capture.dart'
     show CallForegroundControl;
+
+/// The caller's looping call cues (#8807): a ringback while ringing out, and a
+/// reconnecting tone while the caller's own link to the SFU recovers. The
+/// call-cut cue is a one-shot, not a loop, so it is not one of these.
+enum _RingCue { ringback, reconnecting }
 
 /// One call, owned ABOVE the widget tree.
 ///
@@ -85,6 +89,10 @@ class CallSession extends ChangeNotifier {
 
   bool _muted = false;
   bool _camera = false;
+
+  /// The last-seen ownership hold state, so the camera can be restored exactly
+  /// once on the held->unheld edge.
+  bool _wasMediaHeld = false;
   bool _usedVideo = false;
   bool _reachedCall = false;
   bool _minimized = false;
@@ -373,8 +381,13 @@ class CallSession extends ChangeNotifier {
     _notify();
   }
 
-  bool get muted => _muted;
-  bool get cameraOn => _camera;
+  /// True while the ownership hold has the microphone closed, whatever the
+  /// learner's OWN intent -- the panel shows muted-and-disabled then, and the
+  /// intent is restored on resume.
+  bool get muted => call.mediaHeld || _muted;
+
+  /// False while the ownership hold has the camera closed, for the same reason.
+  bool get cameraOn => !call.mediaHeld && _camera;
 
   /// Whether a capture device could not be opened at all. The call is up and
   /// looks normal; the other person hears nothing.
@@ -387,11 +400,28 @@ class CallSession extends ChangeNotifier {
   /// indistinguishable from a crash — until [dismissFailed].
   bool get isFailed => call.outcome == CallOutcome.failed;
 
+  /// Whether this device left because the learner is carrying the call on
+  /// another of their devices -- the summary then says the call continues
+  /// elsewhere rather than that it ended.
+  bool get movedToOtherDevice => call.outcome == CallOutcome.movedToOtherDevice;
+
   CallStage get stage => call.stage;
   Object? get error => call.error;
   bool get isReconnecting => call.isReconnecting;
   bool get peerReconnecting => call.peerReconnecting;
   bool get peerMuted => call.peerMuted;
+
+  /// Whether the ownership arbiter is holding this device's media closed.
+  bool get mediaHeld => call.mediaHeld;
+
+  /// What the two-devices-one-call arbiter is asking the learner, or null.
+  OwnershipPrompt? get ownershipPrompt => call.ownershipPrompt;
+
+  /// The learner tapped "Use this device": keep the call here.
+  void chooseThisDevice() => call.chooseThisDevice();
+
+  /// The learner tapped "Leave the call here": leave, keep it on the other one.
+  void leaveForOtherDevice() => call.leaveForOtherDevice();
   bool get peerWasBusy => call.peerWasBusy;
   bool get hadPeer => call.hadPeer;
   bool get placedCall => call.placedCall;
@@ -406,21 +436,34 @@ class CallSession extends ChangeNotifier {
     return room.unsafeGetUserFromMemoryOrFallback(id);
   }
 
-  /// Every published video track, ours and theirs. Latches [usedVideo] on the
-  /// way past: nothing can appear on screen without coming through here, so
-  /// this is the one read that cannot miss a remote camera coming on.
-  List<lk.VideoTrack> videoTracks() {
-    final tracks = <lk.VideoTrack>[
-      ...media.room.remoteParticipants.values
-          .expand((p) => p.videoTrackPublications)
-          .map((p) => p.track)
-          .whereType<lk.VideoTrack>(),
-      ...?media.room.localParticipant?.videoTrackPublications
-          .map((p) => p.track)
-          .whereType<lk.VideoTrack>(),
-    ];
-    if (tracks.isNotEmpty) _usedVideo = true;
-    return tracks;
+  /// This device's own user, for the self-view's name and face when its camera
+  /// is off. Resolved the same way as [peer].
+  matrix.User? get me {
+    final id = _myUserId;
+    if (id == null) return null;
+    return room.unsafeGetUserFromMemoryOrFallback(id);
+  }
+
+  /// This device's `_usedVideo` latch, for a test to read after driving
+  /// [videoFeeds]. Not part of the call's surface -- the timeline reads the
+  /// field directly.
+  @visibleForTesting
+  bool get usedVideo => _usedVideo;
+
+  /// Every participant's video feed, the peer's first and this device's last:
+  /// the camera when it is on, and the fact that it is off -- with the avatar
+  /// to fall back to -- when it is not (#8795).
+  ///
+  /// Latches [usedVideo] on the way past, on the same terms the old flat
+  /// `videoTracks()` did: a feed that carries an actual track -- a live camera,
+  /// or one switched off whose last frame is still attached -- means this call
+  /// rendered video. A publication that never produced a track does NOT latch
+  /// here; [_latchVideo], which runs on the call's own clock, is what covers a
+  /// camera coming up while no view is asking.
+  List<CallVideoFeed> videoFeeds() {
+    final feeds = media.videoFeeds();
+    if (feeds.any((feed) => feed.track != null)) _usedVideo = true;
+    return feeds;
   }
 
   // ---------------------------------------------------------------- actions
@@ -450,11 +493,28 @@ class CallSession extends ChangeNotifier {
     _notify();
   }
 
-  /// The caller-side tones. Separate from the banner's ringtone: that one
-  /// belongs to whoever is being called, this one to whoever is calling.
-  late final RingPlayer _tones = tonesOverride ?? RingPlayer();
+  /// The caller-side tones (#8807). Separate from the banner's ringtone: that
+  /// one belongs to whoever is being called, this one to whoever is calling.
+  ///
+  /// Built lazily on the first cue, so a call that plays no cue never
+  /// constructs a player; held so [dispose] can release the native player of
+  /// one that WAS built (a loop or a one-shot cut cue) instead of leaking it.
+  RingPlayer? _tonesInstance;
 
-  bool _busyToned = false;
+  RingPlayer get _tones => _tonesInstance ??=
+      tonesOverride ?? RingPlayer(sound: AssetRingSound.callSignalling());
+
+  /// The keys each looping cue plays under -- one pair per call, so a stop for
+  /// this call cannot silence a later one's cue.
+  String get _ringbackKey => 'ringback:${room.id}';
+  String get _reconnectKey => 'reconnect:${room.id}';
+
+  /// The looping cue currently playing, or null. The tone player is touched
+  /// only when this changes, so a call that plays no loop never builds one.
+  _RingCue? _activeCue;
+
+  /// Whether the one-shot cut cue has already fired for this call.
+  bool _cutToned = false;
 
   /// Routes the ongoing-call notification's buttons into this session,
   /// through the SAME paths the on-screen buttons use -- one mute, one
@@ -481,6 +541,13 @@ class CallSession extends ChangeNotifier {
   }
 
   Future<void> toggleMute() async {
+    // The ownership hold does not let the controls OPEN the microphone, on any
+    // surface -- this is also the foreground notification's mute path. The
+    // learner's own intent is preserved for resume rather than overwritten.
+    if (call.mediaHeld) {
+      Logs().i('Microphone control ignored while held by the devices prompt');
+      return;
+    }
     final next = !_muted;
     // The recorder gate goes up BEFORE muting and comes down only AFTER an
     // unmute has taken — never while the microphone is still muted. On Android
@@ -521,6 +588,10 @@ class CallSession extends ChangeNotifier {
   }
 
   Future<void> toggleCamera() async {
+    if (call.mediaHeld) {
+      Logs().i('Camera control ignored while held by the devices prompt');
+      return;
+    }
     final next = !_camera;
     final bool live;
     try {
@@ -602,18 +673,75 @@ class CallSession extends ChangeNotifier {
     // leaving the control switched on meant the first press turned OFF a
     // camera that had never come on.
     if (_camera && media.cameraFailed) _camera = false;
+    // The ownership hold has just resumed: reopen the camera to the learner's
+    // own intent (the arbiter reopened the microphone; the camera intent lives
+    // here). ONLY for the SURVIVOR carrying on -- a device whose hold clears
+    // because it is LEAVING (chosen against, or a give-up) has its media torn
+    // down, and reopening the camera there would republish it on a device on
+    // its way out. Gated on carriedOn, not merely on the held->unheld edge.
+    if (_wasMediaHeld && !call.mediaHeld && call.carriedOn) {
+      unawaited(media.setCameraEnabled(_camera));
+    }
+    _wasMediaHeld = call.mediaHeld;
     // The outcome is latched the instant the call's fate is decided, seconds
     // before the stage catches up — this is what makes hanging up feel
     // immediate on both sides.
     final outcome = call.outcome;
-    if (outcome == CallOutcome.declined && call.peerWasBusy && !_busyToned) {
-      // Once, and only for a line that was busy: the engaged tone is the
-      // half of "they are on another call" that reaches someone who is not
-      // looking at the screen.
-      _busyToned = true;
-      _tones.busy();
+    // The caller's own call cues (#8807), touched only on a TRANSITION so a
+    // call that plays no loop never builds a tone player:
+    //  - ringing out (placing, unanswered): the ringback tone;
+    //  - reconnecting (answered, but OUR link to the SFU is recovering): the
+    //    reconnecting tone;
+    //  - otherwise (connected and steady, or the call has resolved): no loop.
+    // Keyed on the call, so a stale stop cannot silence a later cue. Ordered
+    // before the cut cue below, which speaks once the call has resolved.
+    _RingCue? cue;
+    if (outcome == null) {
+      if (call.placedCall && !call.hadPeer) {
+        cue = _RingCue.ringback;
+      } else if (call.hadPeer && call.isReconnecting) {
+        cue = _RingCue.reconnecting;
+      }
+    }
+    if (cue != _activeCue) {
+      _activeCue = cue;
+      if (cue == _RingCue.ringback) {
+        _tones.play(_ringbackKey, asset: 'sounds/ringback.mp3');
+      } else if (cue == _RingCue.reconnecting) {
+        _tones.play(_reconnectKey, asset: 'sounds/call.ogg');
+      } else {
+        _tones.stopAll();
+      }
+    }
+    // The call was cut: one cue, once. A line that was busy gets the engaged
+    // tone -- the half of "they are on another call" that reaches someone not
+    // looking at the screen; every other cut gets the call-ended tone.
+    if (outcome != null && !_cutToned) {
+      _cutToned = true;
+      if (call.peerWasBusy) {
+        _tones.busy();
+      } else {
+        _tones.once('sounds/call_ended.mp3');
+      }
     }
     if (outcome != null) {
+      // A device that did NOT carry on -- held then never resumed, walked away
+      // from, or given up because nobody chose it -- leaves no trace: no card,
+      // no transcript half, no analytics, no summary (doc:236). Keyed on the
+      // FACT (carriedOn), not on which outcome fired, so an ordinary `ended`
+      // reached while held is caught alongside `movedToOtherDevice`.
+      if (!call.carriedOn) {
+        _finish();
+        // A MOVED leave still says WHY (the panel reads the outcome), so it
+        // earns a brief moment on screen; a give-up goes at once.
+        if (outcome == CallOutcome.movedToOtherDevice) {
+          _summaryHold = Timer(summaryLifetime, _handover);
+          _notify();
+        } else {
+          _handover();
+        }
+        return;
+      }
       // The card FIRST and immediately: everything it states is known now, and
       // it must not wait for teardown and transcription behind it.
       //
@@ -878,6 +1006,12 @@ class CallSession extends ChangeNotifier {
   /// through here; `hangUp` is idempotent and memoised, so all callers join one
   /// teardown and the record is written once. Deliberately not awaited and not
   /// tied to any widget — it outlives everything visual.
+  ///
+  /// `hangUp` itself is UNCONDITIONAL: a device must always be able to leave
+  /// its call, held or not -- the ownership prompt does not hide the hang-up
+  /// button (`call_panel.dart`), and the ownership machinery may itself have
+  /// already started this same teardown before this ever runs. Only the WRITE
+  /// below is conditional.
   void _finishRecording() {
     if (_recordingFinished) return;
     _recordingFinished = true;
@@ -888,6 +1022,18 @@ class CallSession extends ChangeNotifier {
             try {
               await call.settled;
             } catch (_) {}
+            // A device that did not carry on with the call -- chosen against,
+            // or given up on because nobody chose it -- writes no transcript
+            // half and no analytics (doc:236). `_onCallChanged` already keeps
+            // a non-carrying device from reaching here on the path it drives
+            // (:669), but teardown does not only run from there: `endCall`,
+            // `dismissFailed` and `dispose` all call this function directly,
+            // and `dispose` in particular runs unconditionally (a summary
+            // still on screen, a logout, an app teardown). The rule belongs
+            // at the WRITE itself, not at any one caller, so every path here
+            // is covered by the same check rather than by remembering to
+            // guard each one.
+            if (!call.carriedOn) return;
             // The card is normally already in the timeline by now (written the
             // moment the call ended); this call credits the transcripts against
             // it, and writes the card itself only if that earlier attempt had
@@ -1091,6 +1237,13 @@ class CallSession extends ChangeNotifier {
     if (_disposing) return;
     _disposing = true;
     call.removeListener(_onCallChanged);
+    // The tone player owns a native AudioPlayer; DISPOSE it (not merely stop
+    // it) so no call leaks one -- disposal stops any active loop first, so the
+    // mid-cue stop the now-detached listener can no longer send still happens.
+    // Only if a cue ever built it (a loop OR a one-shot cut cue): a call that
+    // played nothing constructs no player just to tear one down.
+    final tones = _tonesInstance;
+    if (tones != null) unawaited(tones.dispose());
     call.clearForegroundActions();
     _tick?.cancel();
     // A summary still holding its 3s when the holder discards the session --

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_large_card.dart';
@@ -147,8 +146,10 @@ void main() {
   group('selected glow (#7349)', () {
     // The focused card haloes in its state hue (here `available`) with no
     // outline — the same treatment as a selected pin.
-    final glowColor = WorldMapSelection.glow(
-      ActivityPinState.available.accent,
+    Color glowColor(WidgetTester tester) => WorldMapSelection.glow(
+      Theme.of(
+        tester.element(find.byType(Scaffold)),
+      ).colorScheme.secondaryContainer,
     ).first.color;
 
     testWidgets('a focused card casts the state glow around the balloon', (
@@ -156,7 +157,7 @@ void main() {
     ) async {
       await pumpCard(tester, isFocused: true);
       expect(
-        hasStateGlow(tester, glowColor),
+        hasStateGlow(tester, glowColor(tester)),
         isTrue,
         reason: 'the focused card haloes in a state-coloured glow',
       );
@@ -165,7 +166,7 @@ void main() {
     testWidgets('an unfocused card casts no glow', (tester) async {
       await pumpCard(tester, isFocused: false);
       expect(
-        hasStateGlow(tester, glowColor),
+        hasStateGlow(tester, glowColor(tester)),
         isFalse,
         reason: 'only the focused state adds the glow',
       );
@@ -301,16 +302,20 @@ void main() {
     });
 
     testWidgets('in dark mode the available card border maps the mid pin '
-        'colour (primaryColorDark)', (tester) async {
+        'colour (the dark secondaryContainer)', (tester) async {
       await pumpCard(
         tester,
         brightness: Brightness.dark,
         state: ActivityPinState.available,
       );
-      // The mid pin fills with the darker-purple brand constant in dark mode
-      // (#8174); the card's frame must map that same colour, not the light-mode
-      // light-purple fill.
-      expect(cardBorderColor(tester), AppConfig.primaryColorDark);
+      // The mid pin fills with the theme's secondaryContainer, deep in dark
+      // mode (#8174); the card's frame must map that same colour.
+      expect(
+        cardBorderColor(tester),
+        Theme.of(
+          tester.element(find.byType(Scaffold)),
+        ).colorScheme.secondaryContainer,
+      );
     });
 
     testWidgets('inProgress (the completed trail star) renders no body content', (

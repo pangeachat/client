@@ -336,6 +336,12 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       );
 
       if (resp != null) {
+        // First exercise on screen = the clock's zero (#8966). Idempotent, so
+        // every later exercise passing through here leaves it alone. The bump
+        // is what puts the cluster badge up, since it now has a clock to show.
+        session.session?.markStarted();
+        PracticeSessionHolder.instance.bump();
+
         _playExerciseAudio(resp);
         practiceExerciseState.value = AsyncState.loaded(resp);
       } else {

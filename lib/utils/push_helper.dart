@@ -14,6 +14,7 @@ import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/knock_notification_utils.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
+import 'package:fluffychat/features/notifications/notification_avatar_attachment.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -54,29 +55,43 @@ Future<void> pushHelper(
     Logs().e('Push Helper has crashed! Writing into temporary file', e, s);
 
     l10n ??= await lookupL10n(PlatformDispatcher.instance.locale);
-    flutterLocalNotificationsPlugin.show(
-      notification.roomId?.hashCode ?? 0,
-      // #Pangea
-      // l10n.newMessageInFluffyChat,
-      l10n.newMessageInPangeaChat,
-      // Pangea#
-      l10n.openAppToReadMessages,
-      NotificationDetails(
-        iOS: const DarwinNotificationDetails(),
-        android: AndroidNotificationDetails(
-          AppConfig.pushNotificationsChannelId,
-          l10n.incomingMessages,
-          number: notification.counts?.unread,
-          ticker: l10n.unreadChatsInApp(
-            AppSettings.applicationName.value,
-            (notification.counts?.unread ?? 0).toString(),
+    // Awaited, inside its own guard. This fallback fails for exactly the
+    // reasons the original show did — an iOS device that will not save the
+    // notification, a plugin channel that is gone — and unawaited its
+    // rejection surfaced as a SECOND, caller-less unhandled error stacked on
+    // the one being rethrown below, so one failed notification reported twice
+    // (#9053). The rethrow is what the caller reports; this is best-effort.
+    try {
+      await flutterLocalNotificationsPlugin.show(
+        notification.roomId?.hashCode ?? 0,
+        // #Pangea
+        // l10n.newMessageInFluffyChat,
+        l10n.newMessageInPangeaChat,
+        // Pangea#
+        l10n.openAppToReadMessages,
+        NotificationDetails(
+          iOS: const DarwinNotificationDetails(),
+          android: AndroidNotificationDetails(
+            AppConfig.pushNotificationsChannelId,
+            l10n.incomingMessages,
+            number: notification.counts?.unread,
+            ticker: l10n.unreadChatsInApp(
+              AppSettings.applicationName.value,
+              (notification.counts?.unread ?? 0).toString(),
+            ),
+            importance: Importance.high,
+            priority: Priority.max,
+            shortcutId: notification.roomId,
           ),
-          importance: Importance.high,
-          priority: Priority.max,
-          shortcutId: notification.roomId,
         ),
-      ),
-    );
+      );
+    } catch (fallbackError, fallbackStack) {
+      Logs().e(
+        'Push Helper fallback notification also failed',
+        fallbackError,
+        fallbackStack,
+      );
+    }
     rethrow;
   }
 }
@@ -385,7 +400,14 @@ Future<void> _tryPushHelper(
             ),
           ],
   );
-  const iOSPlatformChannelSpecifics = DarwinNotificationDetails();
+  final iOSPlatformChannelSpecifics = DarwinNotificationDetails(
+    attachments: PlatformInfos.isIOS
+        ? await NotificationAvatarAttachment.forRoom(
+            roomAvatarFile,
+            roomId: event.room.id,
+          )
+        : null,
+  );
   final platformChannelSpecifics = NotificationDetails(
     android: androidPlatformChannelSpecifics,
     iOS: iOSPlatformChannelSpecifics,

@@ -8,15 +8,16 @@ import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/onboarding/account_updater.dart';
 import 'package:fluffychat/routes/onboarding/avatar_provider.dart';
 import 'package:fluffychat/routes/onboarding/course_provider.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_header.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_button_state.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_result.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_page_group.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_state_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_step_view.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/trial_info_provider.dart';
-import 'package:fluffychat/widgets/animated_progress_bar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class Onboarding extends StatefulWidget {
@@ -117,6 +118,11 @@ class OnboardingController extends State<Onboarding> {
 
     switch (result) {
       case SuccessNavigationResult(step: final OnboardingStep step):
+        // Drop the focus history before the swap, or the framework hands focus
+        // to the last surviving control it remembers — the app bar's Back
+        // button once it has been pressed — and the screen reader hears it
+        // before the new step's body claims focus (#7582).
+        FocusManager.instance.primaryFocus?.unfocus();
         _step.value = step;
       case ErrorNavigationResult(error: final Object error):
         _error.value = error;
@@ -168,40 +174,20 @@ class OnboardingController extends State<Onboarding> {
           return content;
         }
 
-        // `explicitChildNodes` keeps this a labelled container rather than an
-        // annotation that merges with the first mergeable descendant config it
-        // finds. Without it the page node absorbs a descendant's role — the
-        // step views show a `CircularProgressIndicator` while `BotFace` loads,
-        // and its `loadingSpinner` role lands on the page container, which then
-        // stops being exposed as a labelled group. `container: true` does not
-        // prevent this; only `explicitChildNodes` does.
-        return Semantics(
-          explicitChildNodes: true,
+        // The whole step is one named, focusable group; a new step re-claims
+        // focus for the screen reader (OnboardingPageGroup).
+        return OnboardingPageGroup(
+          stepKey: step,
           label: L10n.of(
             context,
           ).pageLabel(labelByStepIndex(_navigation.currentStepIndex)),
           child: Scaffold(
-            appBar: AppBar(
-              centerTitle: true,
-              title: ConstrainedBox(
-                // Fixed at the widest step's width (840, the language grid)
-                constraints: const BoxConstraints(maxWidth: 840.0),
-                child: Row(
-                  children: [
-                    _navigation.hasPrevStep
-                        ? BackButton(onPressed: _back)
-                        : const SizedBox(width: 40.0),
-                    Expanded(
-                      child: AnimatedProgressBar(
-                        height: 25.0,
-                        widthPercent: _navigation.progress,
-                      ),
-                    ),
-                    const SizedBox(width: 40.0),
-                  ],
-                ),
-              ),
-              automaticallyImplyLeading: false,
+            appBar: OnboardingHeader(
+              hasPrevStep: _navigation.hasPrevStep,
+              progress: _navigation.progress,
+              step: _navigation.currentStepIndex,
+              totalSteps: _navigation.totalSteps,
+              onBack: _back,
             ),
             body: Center(
               // Cap the column at the step's width and pad the sides, so it

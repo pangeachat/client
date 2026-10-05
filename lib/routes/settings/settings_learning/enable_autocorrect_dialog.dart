@@ -11,32 +11,42 @@ import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart'
 /// Platform-specific instructions for enabling device autocorrect. Only shown
 /// on mobile — on web the autocorrect toggle is disabled entirely (see
 /// AutocorrectSettingsTile).
+///
+/// Reached from two places with different framing. The autocorrect settings
+/// toggle keeps each platform's default [title], which warns that the setting
+/// depends on a target-language keyboard. The composer's "Add keyboard"
+/// prompt passes its own — the learner tapped it to add a keyboard, so a
+/// warning that one is required reads as a non sequitur (#8804).
 class EnableAutocorrectDialog extends StatelessWidget {
-  const EnableAutocorrectDialog({super.key});
+  final String? title;
+
+  const EnableAutocorrectDialog({super.key, this.title});
 
   @override
   Widget build(BuildContext context) {
     if (Platform.isIOS) {
-      return IOSEnableAutocorrectDialog();
+      return IOSEnableAutocorrectDialog(title: title);
     }
 
-    return AndroidEnableAutocorrectDialog();
+    return AndroidEnableAutocorrectDialog(title: title);
   }
 }
 
 class IOSEnableAutocorrectDialog extends StatelessWidget {
-  const IOSEnableAutocorrectDialog({super.key});
+  final String? title;
+
+  const IOSEnableAutocorrectDialog({super.key, this.title});
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog.adaptive(
-      title: Text(L10n.of(context).enableAutocorrectWarning),
+      title: Text(title ?? L10n.of(context).enableAutocorrectWarning),
       content: SingleChildScrollView(
         child: Column(
           spacing: 8.0,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(L10n.of(context).enableAutocorrectPopupTitle),
+            Text(L10n.of(context).enableAutocorrectPopupPathIntro),
             Text(
               L10n.of(context).enableAutocorrectPopupSteps,
               textAlign: TextAlign.start,
@@ -68,12 +78,14 @@ class IOSEnableAutocorrectDialog extends StatelessWidget {
 /// keyboard-management screen for the case where the keyboard has no pack for
 /// the language, per target-language-keyboard.instructions.md.
 class AndroidEnableAutocorrectDialog extends StatelessWidget {
-  const AndroidEnableAutocorrectDialog({super.key});
+  final String? title;
+
+  const AndroidEnableAutocorrectDialog({super.key, this.title});
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog.adaptive(
-      title: Text(L10n.of(context).autocorrectAndroidDialogTitle),
+      title: Text(title ?? L10n.of(context).autocorrectAndroidDialogTitle),
       content: SingleChildScrollView(
         child: Column(
           spacing: 8.0,

@@ -13,6 +13,7 @@ import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
@@ -208,12 +209,24 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
   /// peeking at definitions mid-exercise) — the tap resumes the session
   /// instead. See routing.instructions.md § Practice is a persistent
   /// background session.
+  /// Every cluster open arms the panel-entry claim before navigating, so the
+  /// panel that mounts moves keyboard focus off the pressed button and onto
+  /// its first control (routing.instructions.md, "Every panel is a named
+  /// group to assistive tech").
+  void _open(BuildContext context, String location) {
+    PanelEntryIntent.instance.arm();
+    context.go(location);
+  }
+
   bool _resumePracticeInsteadOfAnalytics(
     BuildContext context,
     ConstructTypeEnum type,
   ) {
     if (!PracticeSessionHolder.instance.blocksAnalytics(type)) return false;
-    context.go(WorkspaceNav.openPractice(GoRouterState.of(context).uri, type));
+    _open(
+      context,
+      WorkspaceNav.openPractice(GoRouterState.of(context).uri, type),
+    );
     return true;
   }
 
@@ -229,7 +242,8 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
       return;
     }
 
-    context.go(
+    _open(
+      context,
       WorkspaceNav.openAnalytics(
         GoRouterState.of(context).uri,
         subpage: tab.indicator,
@@ -245,7 +259,8 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
       return;
     }
 
-    context.go(
+    _open(
+      context,
       WorkspaceNav.setRight(GoRouterState.of(context).uri, [
         AnalyticsPanelToken(
           AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
@@ -255,7 +270,8 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
   }
 
   @override
-  void openProfile(BuildContext context) => context.go(
+  void openProfile(BuildContext context) => _open(
+    context,
     WorkspaceNav.openSettings(
       GoRouterState.of(context).uri,
       closeSections: _closeSections(context),
@@ -263,7 +279,8 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
   );
 
   @override
-  void openLevel(BuildContext context) => context.go(
+  void openLevel(BuildContext context) => _open(
+    context,
     WorkspaceNav.openAnalytics(
       GoRouterState.of(context).uri,
       subpage: ProgressIndicatorEnum.level,
@@ -272,7 +289,8 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
   );
 
   @override
-  void openLearningSettings(BuildContext context) => context.go(
+  void openLearningSettings(BuildContext context) => _open(
+    context,
     WorkspaceNav.openSettings(
       GoRouterState.of(context).uri,
       page: 'learning',
@@ -327,7 +345,11 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
   /// SDK refreshes with whatever the last fetch saw — an update signal must
   /// not be answered from it.
   Future<void> _loadProfile({bool fromServer = false}) async {
-    if (_disposed) return;
+    // A deferred fetch can fire after sign-out: the signal landed while
+    // signed in and the quiet timer outlived the session (#9060). A client
+    // with no user id has no profile to load.
+    final userId = client.userID;
+    if (_disposed || userId == null) return;
     if (_loadingProfile) {
       _profileRefreshPending = true;
       return;
@@ -338,7 +360,7 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
       // with an empty profile), so the avatar falls back to the initial.
       final profile = fromServer
           ? await client.getProfileFromUserId(
-              client.userID!,
+              userId,
               maxCacheAge: Duration.zero,
             )
           : await client.fetchOwnProfile();

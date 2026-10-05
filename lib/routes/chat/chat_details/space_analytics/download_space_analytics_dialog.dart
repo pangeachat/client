@@ -4,6 +4,7 @@ import 'package:csv/csv.dart';
 import 'package:excel/excel.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
@@ -72,12 +73,15 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
     );
   }
 
+  /// The per-learner status mark: in progress gold, done green, failed red,
+  /// not started the outline grey.
   Color _downloadStatusColor(String userID) {
     final status = _downloadStatuses[userID];
-    if (status == 1) return Colors.yellow;
-    if (status == 2) return Colors.green;
-    if ((status ?? 0) < 0) return Colors.red;
-    return Colors.grey;
+    final theme = Theme.of(context);
+    if (status == 1) return theme.pangea.goldGraphic;
+    if (status == 2) return theme.pangea.successGraphic;
+    if ((status ?? 0) < 0) return theme.pangea.errorGraphic;
+    return theme.colorScheme.outline;
   }
 
   String? get userL2 =>

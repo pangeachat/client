@@ -9,6 +9,7 @@ import 'package:fluffychat/features/navigation/token_params/activity_token.dart'
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/world/activity_course_resolver.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -111,11 +112,15 @@ class _LeftPanelActivityDetailsSubpageState
     // unscoped, so cap the whole resolve and fall through on timeout. Mirrors
     // launch_activity_session's bound on the same call.
     try {
-      final matches = await ActivityCourseResolver.matchingCourseSpaces(
-        Matrix.of(context).client,
-        activityId,
-        null,
-      ).timeout(const Duration(seconds: 10));
+      final matches =
+          await ActivityCourseResolver.matchingCourseSpaces(
+            Matrix.of(context).client,
+            activityId,
+            null,
+          ).timeoutNamed(
+            const Duration(seconds: 10),
+            'matchingCourseSpaces: activity detail panel',
+          );
       // Drop a STALE completion: a newer resolve (different activity) has
       // superseded this one, so its match must not overwrite the current pin.
       if (!mounted || generation != _resolveGeneration) return;

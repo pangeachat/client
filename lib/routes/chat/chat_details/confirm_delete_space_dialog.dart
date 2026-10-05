@@ -92,6 +92,9 @@ class ConfirmDeleteSpaceDialogState extends State<ConfirmDeleteSpaceDialog> {
               labelText: joinCode != null
                   ? l10n.courseCodeHint
                   : l10n.courseNameHint,
+              // A code or a name is always one line, so enter confirms the
+              // delete instead of typing a newline the comparison would reject.
+              maxLines: 1,
               onSubmitted: (_) => _confirm(),
             ),
           ],

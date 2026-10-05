@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/subscription/repo_v2/billing_portal_repo.dart';
 import 'package:fluffychat/features/subscription/repo_v2/billing_portal_response.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -123,7 +123,7 @@ void main() {
           supportedLocales: L10n.supportedLocales,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
-              seedColor: AppConfig.primaryColor,
+              seedColor: Color(AppSettings.colorSchemeSeedInt.defaultValue),
             ),
           ),
           home: Scaffold(

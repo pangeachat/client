@@ -34,12 +34,13 @@ class _FluffyChatErrorWidgetState extends State<FluffyChatErrorWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Material(
-      color: Colors.orange,
+      color: colorScheme.errorContainer,
       child: Placeholder(
         child: Center(
           child: Material(
-            color: Colors.white.withAlpha(230),
+            color: colorScheme.surface.withAlpha(230),
             borderRadius: BorderRadius.circular(8),
           ),
         ),

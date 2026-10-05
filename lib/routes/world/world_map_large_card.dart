@@ -8,9 +8,9 @@ import 'package:fluffychat/features/languages/language_flag_chip.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_tile_body.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
-import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_pinged_badge.dart';
@@ -116,8 +116,8 @@ class _WorldMapLargeCardAnimatedState extends State<WorldMapLargeCardAnimated>
 /// (`inProgress`) never renders here — it is a gold-star dot, excluded by the
 /// ranking/placement gate before this widget is ever built.
 ///
-/// - **Available** (border maps the mid pin's body colour — light-purple in
-///   light mode, the darker `AppConfig.primaryColorDark` purple in dark;
+/// - **Available** (border maps the mid pin's body colour — the theme's
+///   `secondaryContainer`, pale in light mode and deep in dark;
 ///   dark-purple title) — title, then a row with the L2 language flag, CEFR
 ///   level, and designed party size (a people icon + the role count). No session
 ///   exists yet, so no participant avatars, rating, or stars. Dimmed to 50% when
@@ -125,15 +125,17 @@ class _WorldMapLargeCardAnimatedState extends State<WorldMapLargeCardAnimated>
 /// - **Joinable** (green border) — title, then a door icon + the participant
 ///   row (filled/unfilled avatar circles, one per role). No image, stars, or
 ///   message preview.
-/// - **Ongoing/Pending** (dark-purple border) — same layout as Joinable, an
-///   hourglass icon in place of the door: the learner holds a role, but the
-///   room doesn't yet have enough people for the chat to have started.
+/// - **Ongoing/Pending** (dark-purple border) — the Active card's geometry
+///   (the activity's circular thumbnail leading, title beside it) with the
+///   Joinable body: an hourglass icon in place of the door, then the
+///   participant row — the same row the same session's Chats-list tile shows.
+///   The learner holds a role, but the room doesn't yet have enough people for
+///   the chat to have started.
 /// - **Ongoing/Active** (dark-purple border) — *is* a chat-list tile, sharing
 ///   its body widget ([ActivityTileBody]) with the Chats-list tile for the same
 ///   session: the activity's circular thumbnail leading, and beside it the
 ///   title over the last chat event (with its sender's avatar) over the row of
-///   currently-gained stars — the only large-card state that shows stars, and
-///   the only one with an image.
+///   currently-gained stars — the only large-card state that shows stars.
 ///
 /// Every state lays out against a leading gutter ([_LeadingGutter]) so its
 /// title sits directly above its content on one left edge, with the dismiss X
@@ -232,8 +234,7 @@ class WorldMapLargeCard extends StatelessWidget {
   /// wide: at 44 a two-line title had barely half the card left.
   static const double _thumbnailSize = 40.0;
 
-  bool get _hasThumbnail =>
-      state == ActivityPinState.ongoingActive && liveRoom != null;
+  bool get _hasThumbnail => state.isOngoing && liveRoom != null;
 
   /// Width of the leading gutter. Holds the thumbnail where there is one; on a
   /// plain card it is blank but still wide enough that the corner X, which
@@ -247,10 +248,9 @@ class WorldMapLargeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     // The outer frame (border + caret) maps the mid pin's BODY colour, so the
     // card and its pin read as one state. That is theme-aware: for `available`
-    // in dark mode it is the darker `AppConfig.primaryColorDark` purple
-    // (matching the dark-mode available pin, #8174), not the light-mode
-    // light-purple fill. `bodyColor` == the state hue for every other state and
-    // for light mode, so only available-in-dark changes here.
+    // it is the theme's `secondaryContainer`, deep in dark mode (matching the
+    // dark-mode available pin, #8174) and pale in light. `bodyColor` == the
+    // state hue for every other state.
     final baseAccent = state.bodyColor(context);
 
     // Selected (focused) treatment: NO outline. The state-accent frame darkens
@@ -263,100 +263,109 @@ class WorldMapLargeCard extends StatelessWidget {
         : baseAccent;
 
     // The title (and, on the available card, its body glyphs) use the state's
-    // LABEL colour, which differs from the border accent only for `available`:
-    // its light-purple fill/border is too low-contrast for a light-purple
-    // title on the white card, so the title uses dark purple instead
-    // (world-map.instructions.md, "Pin state"). For every live state
-    // labelColor == accent, so this is a no-op there.
+    // LABEL colour, not the border accent: the accent is a shape on the map,
+    // but the title is TEXT on `colorScheme.surface`, where the raw brand
+    // purple measures 4.2:1 in both themes — under WCAG AA for 13px/14px type
+    // (#8968). The three purple states resolve it through the theme instead
+    // (world-map.instructions.md, "Pin state"); `joinable` keeps its green, so
+    // there labelColor == accent and this stays a no-op.
+    final labelColor = state.labelColor(context);
     final titleColor = isFocused
-        ? WorldMapSelection.darken(state.labelColor)
-        : state.labelColor;
+        ? WorldMapSelection.darken(labelColor)
+        : labelColor;
 
     final cardButton = Semantics(
       label:
           "${L10n.of(context).activityLabel(plan?.title ?? card.title)}, ${state.label(L10n.of(context))}",
       container: true,
-      child: GestureDetector(
-        onTap: onTap,
-        // The glow rides on the card body's own rounded rect (no gap, no border):
-        // the caret directly below sits within its downward bleed, so card and
-        // tail glow as one shape (#7349).
-        child: DecoratedBox(
-          decoration: isFocused
-              ? BoxDecoration(
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        // Mirror the GestureDetector's own hit test rather than the default
+        // opaque one, so the hover region is exactly the tap region and the
+        // card claims no space its tap doesn't already take.
+        hitTestBehavior: HitTestBehavior.deferToChild,
+        child: GestureDetector(
+          onTap: onTap,
+          // The glow rides on the card body's own rounded rect (no gap, no border):
+          // the caret directly below sits within its downward bleed, so card and
+          // tail glow as one shape (#7349).
+          child: DecoratedBox(
+            decoration: isFocused
+                ? BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: WorldMapSelection.glow(baseAccent),
+                  )
+                : const BoxDecoration(),
+            child: Material(
+              elevation: 6,
+              borderRadius: BorderRadius.circular(12),
+              color: Theme.of(context).colorScheme.surface,
+              // Let the card shrink to its content between a floor and the max
+              // width, so an available card with a short title (or a 2-role
+              // pending one) doesn't stretch to fill the full width — a little
+              // size variety (world-map Figma). The marker box stays the max
+              // width and centres the card, so the tail still lands on the pin.
+              child: Container(
+                constraints: const BoxConstraints(
+                  minWidth: PinSize.largeMinWidth,
+                  maxWidth: PinSize.largeWidth,
+                ),
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  boxShadow: WorldMapSelection.glow(baseAccent),
-                )
-              : const BoxDecoration(),
-          child: Material(
-            elevation: 6,
-            borderRadius: BorderRadius.circular(12),
-            color: Theme.of(context).colorScheme.surface,
-            // Let the card shrink to its content between a floor and the max
-            // width, so an available card with a short title (or a 2-role
-            // pending one) doesn't stretch to fill the full width — a little
-            // size variety (world-map Figma). The marker box stays the max
-            // width and centres the card, so the tail still lands on the pin.
-            child: Container(
-              constraints: const BoxConstraints(
-                minWidth: PinSize.largeMinWidth,
-                maxWidth: PinSize.largeWidth,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: accent, width: 4),
-              ),
-              // The card's inset is carried by the CONTENT so this Stack spans
-              // the whole area inside the border, and the X can reach the
-              // corner without overhanging it: an overhang would still PAINT
-              // under `Clip.none`, but hit-testing stops at the parent's box,
-              // leaving most of the button dead to the touch. `passthrough`
-              // keeps the content laid out against the container's constraints.
-              child: Stack(
-                fit: StackFit.passthrough,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(_cardPadding),
-                    child: _LeadingGutter(
-                      width: _gutterWidth,
-                      thumbnail: _hasThumbnail
-                          ? Avatar(
-                              mxContent: liveRoom!.avatar,
-                              name: plan?.title ?? card.title,
-                              size: _thumbnailSize,
-                            )
-                          : null,
-                      child: Column(
-                        spacing: 8.0,
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _CardTitleRow(
-                            title: plan?.title ?? card.title,
-                            titleColor: titleColor,
-                          ),
-                          _CardBody(
-                            card: card,
-                            state: state,
-                            accent: accent,
-                            titleColor: titleColor,
-                            liveRoom: liveRoom,
-                            participants: participants,
-                            openSlots: openSlots,
-                            starsTotal: _starsTotal,
-                            starsEarned: starsEarned,
-                          ),
-                        ],
+                  border: Border.all(color: accent, width: 4),
+                ),
+                // The card's inset is carried by the CONTENT so this Stack spans
+                // the whole area inside the border, and the X can reach the
+                // corner without overhanging it: an overhang would still PAINT
+                // under `Clip.none`, but hit-testing stops at the parent's box,
+                // leaving most of the button dead to the touch. `passthrough`
+                // keeps the content laid out against the container's constraints.
+                child: Stack(
+                  fit: StackFit.passthrough,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(_cardPadding),
+                      child: _LeadingGutter(
+                        width: _gutterWidth,
+                        thumbnail: _hasThumbnail
+                            ? Avatar(
+                                mxContent: liveRoom!.avatar,
+                                name: plan?.title ?? card.title,
+                                size: _thumbnailSize,
+                              )
+                            : null,
+                        child: Column(
+                          spacing: 8.0,
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _CardTitleRow(
+                              title: plan?.title ?? card.title,
+                              titleColor: titleColor,
+                            ),
+                            _CardBody(
+                              card: card,
+                              state: state,
+                              accent: accent,
+                              titleColor: titleColor,
+                              liveRoom: liveRoom,
+                              participants: participants,
+                              openSlots: openSlots,
+                              starsTotal: _starsTotal,
+                              starsEarned: starsEarned,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  if (onClose != null)
-                    Positioned(
-                      top: _cardPadding,
-                      left: _cardPadding,
-                      child: _DismissButton(onPressed: onClose!),
-                    ),
-                ],
+                    if (onClose != null)
+                      Positioned(
+                        top: _cardPadding,
+                        left: _cardPadding,
+                        child: _DismissButton(onPressed: onClose!),
+                      ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -558,6 +567,10 @@ class _CardBody extends StatelessWidget {
       accent: accent,
       participants: liveRoom?.largeCardParticipantIds ?? participants,
       openSlots: liveRoom?.numRemainingRoles ?? openSlots,
+      // The Active body's sender avatar is 24 (ActivityTileBody), and this row
+      // renders in the Chats-list pending tile too — one size keeps the two
+      // states and the two surfaces in step.
+      avatarSize: 24,
     ),
     ActivityPinState.ongoingActive => ActivityTileBody(
       room: liveRoom,

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 import 'package:fluffychat/widgets/presence_builder.dart';
@@ -31,6 +33,13 @@ class Avatar extends StatelessWidget {
   final double? presenceSize;
   final Offset? presenceOffset;
   final Widget? miniIcon;
+
+  /// Reachable by keyboard: a focus node with a gold ring while focused, and
+  /// Enter / Space activate [onTap] (#8868). Opt-in, because several tappable
+  /// avatars sit inside a row or tile that is already the Tab stop and are
+  /// hidden from assistive tech, so focusing them would add a nameless stop.
+  /// Only a named avatar becomes a Tab stop, for the same reason.
+  final bool focusable;
   // Pangea#
 
   const Avatar({
@@ -53,6 +62,7 @@ class Avatar extends StatelessWidget {
     this.presenceSize,
     this.presenceOffset,
     this.miniIcon,
+    this.focusable = false,
     // Pangea#
     super.key,
   });
@@ -97,7 +107,11 @@ class Avatar extends StatelessWidget {
                 : noPic
                 ? Container(
                     decoration: BoxDecoration(
-                      color: backgroundColor ?? name?.lightColorAvatar,
+                      color:
+                          backgroundColor ??
+                          (theme.brightness == Brightness.light
+                              ? name?.avatarColorLight
+                              : name?.avatarColorDark),
                     ),
                     alignment: Alignment.center,
                     child: Text(
@@ -118,7 +132,7 @@ class Avatar extends StatelessWidget {
                     replacement: Center(
                       child: Icon(
                         icon ?? Icons.person_2,
-                        color: theme.colorScheme.tertiary,
+                        color: theme.colorScheme.onSurfaceVariant,
                         size: size / 1.5,
                       ),
                     ),
@@ -138,7 +152,11 @@ class Avatar extends StatelessWidget {
                     placeholder: (_) => noPic
                         ? Container(
                             decoration: BoxDecoration(
-                              color: backgroundColor ?? name?.lightColorAvatar,
+                              color:
+                                  backgroundColor ??
+                                  (theme.brightness == Brightness.light
+                                      ? name?.avatarColorLight
+                                      : name?.avatarColorDark),
                             ),
                             alignment: Alignment.center,
                             child: Text(
@@ -155,7 +173,7 @@ class Avatar extends StatelessWidget {
                         : Center(
                             child: Icon(
                               Icons.person_2,
-                              color: theme.colorScheme.tertiary,
+                              color: theme.colorScheme.onSurfaceVariant,
                               size: size / 1.5,
                             ),
                           ),
@@ -182,10 +200,10 @@ class Avatar extends StatelessWidget {
                 return const SizedBox.shrink();
               }
               final dotColor = presence.presence.isOnline
-                  ? Colors.green
+                  ? Theme.of(context).pangea.successGraphic
                   : presence.presence.isUnavailable
-                  ? Colors.orange
-                  : Colors.grey;
+                  ? Theme.of(context).pangea.warningGraphic
+                  : Theme.of(context).colorScheme.outline;
               return Positioned(
                 // #Pangea
                 // bottom: -3,
@@ -233,6 +251,17 @@ class Avatar extends StatelessWidget {
     // An unnamed avatar carries no useful label, so it is treated as decorative
     // rather than emitted as an unlabelled image/button (an axe violation).
     final avatarName = name != null && name.isNotEmpty ? name : null;
+    // Keyboard-reachable (#8868): the ring target builds the one node that
+    // carries name, role, focus and tap (#8873). A nameless avatar is never a
+    // Tab stop — an unnamed focusable is the defect this exists to avoid.
+    if (onTap != null && focusable && avatarName != null) {
+      return FocusRingTapTarget(
+        onTap: onTap!,
+        shape: RoundedRectangleBorder(borderRadius: borderRadius),
+        label: avatarName,
+        child: container,
+      );
+    }
     final semanticContainer = avatarName == null
         ? ExcludeSemantics(child: container)
         : Semantics(

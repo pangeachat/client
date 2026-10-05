@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/widgets/frame_container.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -56,15 +56,9 @@ class ProFeaturesCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final gold = theme.brightness == Brightness.light
-        ? AppConfig.gold
-        : AppConfig.goldLight;
+    final gold = theme.pangea.goldFixedDim;
     final isColumnMode = FluffyThemes.isColumnMode(context);
-    final foregroundColor =
-        this.foregroundColor ??
-        (theme.brightness == Brightness.light
-            ? theme.colorScheme.onSurface
-            : theme.colorScheme.surface);
+    final foregroundColor = this.foregroundColor ?? theme.pangea.onGoldFixed;
 
     return Semantics(
       label: L10n.of(context).featuresIncludeLabel,
@@ -91,7 +85,9 @@ class ProFeaturesCard extends StatelessWidget {
                 spacing: 8.0,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(e.icon, color: gold, size: 20.0),
+                  // On the surface body a gold mark reads goldGraphic; the
+                  // bright fill gold belongs to the frame and its title.
+                  Icon(e.icon, color: theme.pangea.goldGraphic, size: 20.0),
                   Flexible(
                     child: Semantics(
                       container: true,

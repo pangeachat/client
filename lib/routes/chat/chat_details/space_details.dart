@@ -20,6 +20,7 @@ import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/space_gone_gate.dart';
@@ -28,6 +29,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/course_ping_constants.d
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
+import 'package:fluffychat/routes/chat_list/default_chats_room_extension.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
@@ -113,6 +115,7 @@ class SpaceDetailsController extends State<SpaceDetails> {
       courseRoomId: room.id,
     );
     _loadSummaries();
+    room.joinDefaultChats();
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       _handleCoursePing();
@@ -166,6 +169,7 @@ class SpaceDetailsController extends State<SpaceDetails> {
         courseRoomId: room.id,
       );
       _loadSummaries();
+      room.joinDefaultChats();
     }
 
     if (widget.activeTab == SpaceSettingsTabs.course &&
@@ -201,6 +205,7 @@ class SpaceDetailsController extends State<SpaceDetails> {
         courseId: room.id,
         activityId: activityId,
         sessionRoomId: sessionRoomId,
+        senderId: event.senderId,
       ));
     }
 
@@ -366,7 +371,10 @@ class SpaceDetailsController extends State<SpaceDetails> {
           if (newRoom != null && newRoom.spaceParents.isEmpty) {
             await Matrix.of(context).client
                 .waitForRoomInSync(newRoomId)
-                .timeout(Duration(seconds: 10));
+                .timeoutNamed(
+                  const Duration(seconds: 10),
+                  'waitForRoomInSync: add chat to space',
+                );
           }
           return newRoomId;
         } catch (e, s) {
@@ -438,7 +446,9 @@ class SpaceDetailsController extends State<SpaceDetails> {
               // ([SpaceDetailsContent.sectionPadding]) so the dividers
               // between them run edge-to-edge (#8357 design).
               child: Padding(
-                padding: const EdgeInsetsGeometry.only(top: 16.0),
+                padding: const EdgeInsets.only(
+                  top: SpaceDetailsContent.bodyTopInset,
+                ),
                 child: MaxWidthBody(
                   maxWidth: 900,
                   showBorder: false,

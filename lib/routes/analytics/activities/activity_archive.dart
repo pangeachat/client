@@ -14,8 +14,10 @@ import 'package:fluffychat/features/analytics_data/analytics_init_error_indicato
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -88,18 +90,25 @@ class ActivityArchive extends StatelessWidget {
                           child: Semantics(
                             label: L10n.of(context).starListLabel,
                             container: true,
-                            child: ListView.builder(
-                              key: const PageStorageKey<String>(
-                                'activity-archive',
+                            // One Tab stop for the session list, arrow keys
+                            // inside; Tab lands on the open session (#8935).
+                            child: RovingFocusGroup(
+                              ids: [for (final room in archive) room.id],
+                              selectedId: selectedRoomId,
+                              child: ListView.builder(
+                                key: const PageStorageKey<String>(
+                                  'activity-archive',
+                                ),
+                                physics: const ClampingScrollPhysics(),
+                                itemCount: archive.length,
+                                itemBuilder: (BuildContext context, int i) {
+                                  return AnalyticsActivityItem(
+                                    room: archive[i],
+                                    rovingId: archive[i].id,
+                                    selected: archive[i].id == selectedRoomId,
+                                  );
+                                },
                               ),
-                              physics: const ClampingScrollPhysics(),
-                              itemCount: archive.length,
-                              itemBuilder: (BuildContext context, int i) {
-                                return AnalyticsActivityItem(
-                                  room: archive[i],
-                                  selected: archive[i].id == selectedRoomId,
-                                );
-                              },
                             ),
                           ),
                         ),
@@ -116,16 +125,36 @@ class ActivityArchive extends StatelessWidget {
 class AnalyticsActivityItem extends StatelessWidget {
   final Room room;
   final bool selected;
+
+  /// This row's id in the enclosing [RovingFocusGroup]: the session list is
+  /// one Tab stop, with the arrow keys moving between rows (#8935). Null for
+  /// a row outside a group.
+  final String? rovingId;
+
   const AnalyticsActivityItem({
     super.key,
     required this.room,
     this.selected = false,
+    this.rovingId,
   });
 
   @override
   Widget build(BuildContext context) {
+    final rovingId = this.rovingId;
+    final focusNode = rovingId == null
+        ? null
+        : RovingFocusGroup.nodeOf(context, rovingId);
+
     final activity = room.activityPlan;
-    final title = activity?.title ?? '';
+    // A v3 session's plan is hydrated from CMS, so it can be null (still
+    // loading, or gone from the backend) and can land with an empty title. The
+    // room was named after the activity at creation, so fall back to the room
+    // name rather than a blank row (#9033) — the same rung the start page's
+    // archived session lands on (activities.instructions.md).
+    final planTitle = activity?.title ?? '';
+    final title = planTitle.isNotEmpty
+        ? planTitle
+        : room.getLocalizedDisplayname(MatrixLocals(L10n.of(context)));
     final goals = room.ownRole?.allGoals;
 
     final cefrLevel = room.activitySummaryByL1?.summary?.participants
@@ -142,6 +171,7 @@ class AnalyticsActivityItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppConfig.borderRadius),
           clipBehavior: Clip.hardEdge,
           child: ListTile(
+            focusNode: focusNode,
             visualDensity: const VisualDensity(vertical: -0.5),
             contentPadding: const EdgeInsets.symmetric(horizontal: 8),
             leading: HoverBuilder(

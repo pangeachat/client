@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 /// The gold attention card the course page opens with: [icon] and [title]
@@ -13,9 +14,9 @@ import 'package:fluffychat/l10n/l10n.dart';
 /// [rows] is empty, so each caller can hand over whatever it has.
 class CourseAttentionCard extends StatefulWidget {
   /// The box every card's leading [icon] is drawn in. The two cards mark
-  /// themselves with different glyphs — an outlined bell, a filled "!" disc —
-  /// and a filled shape already reads heavier than an outline at the same
-  /// size, so they are pinned to one box: a bigger icon makes the title
+  /// themselves with different glyphs — an outlined bell, a filled add-person
+  /// disc — and a filled shape already reads heavier than an outline at the
+  /// same size, so they are pinned to one box: a bigger icon makes the title
   /// beside it look bigger too, and the headers stop reading as one ladder.
   static const double iconSize = 20.0;
 
@@ -62,7 +63,7 @@ class _CourseAttentionCardState extends State<CourseAttentionCard> {
         margin: const EdgeInsets.only(bottom: 12.0),
         padding: const EdgeInsets.all(12.0),
         decoration: BoxDecoration(
-          color: AppConfig.goldByTheme(context).withAlpha(30),
+          color: Theme.of(context).pangea.goldFixedDim.withAlpha(30),
           borderRadius: BorderRadius.circular(AppConfig.borderRadius),
         ),
         child: Column(

@@ -124,5 +124,31 @@ ActivityPlanModel activityPlanFromV2(Map<String, dynamic> doc) {
     // fetch (up-fraction 0..1 + rater count).
     ratingAverage: (plan['rating_average'] as num?)?.toDouble(),
     ratingCount: (plan['rating_count'] as num?)?.toInt(),
+    // Who is credited on screen. A plain-text MXID on the wire — no service
+    // resolves the owner's name for us, the client reads their Matrix profile
+    // (`ContentCreatorChip`). Required on both sides of this contract, so its
+    // absence is a break rather than a legacy shape — see `_ownerIdOf`.
+    ownerId: _ownerIdOf(plan, (plan['activity_id'] ?? doc['id']) as String?),
   );
+}
+
+/// The activity's owner MXID, or null with the break reported.
+///
+/// `user_id` is REQUIRED on both sides of this contract — `required: true` on
+/// the CMS collection, and a non-optional `str` on choreo's `ActivityPlan` —
+/// so a missing value is a contract break, not an older row shape. Returning
+/// null silently would land it in a benign value ("credit nobody"), which
+/// error-handling.instructions.md forbids: a path returns the intended result
+/// or reports the error, never something harmless in between. Rendering still
+/// degrades to no credit, which is the safe direction — never to Pangea.
+String? _ownerIdOf(Map<String, dynamic> plan, String? activityId) {
+  final owner = plan['user_id'] as String?;
+  if (owner == null || owner.trim().isEmpty) {
+    ErrorHandler.logError(
+      e: 'v3 activity plan has no user_id — activity renders uncredited',
+      data: {'activityId': activityId, 'title': plan['title']},
+    );
+    return null;
+  }
+  return owner;
 }

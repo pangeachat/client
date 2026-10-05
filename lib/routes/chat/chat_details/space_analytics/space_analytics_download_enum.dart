@@ -65,7 +65,7 @@ enum RequestStatus {
     switch (this) {
       case RequestStatus.available:
       case RequestStatus.unrequested:
-        return theme.colorScheme.primaryContainer;
+        return theme.colorScheme.secondaryContainer;
       case RequestStatus.unavailable:
       case RequestStatus.requested:
         return theme.disabledColor;

@@ -4,11 +4,11 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/pass_through_tooltip.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_pin_shape.dart';
-import 'package:fluffychat/routes/world/world_map_pin_tooltip.dart';
 import 'package:fluffychat/routes/world/world_map_pinged_badge.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
@@ -132,8 +132,10 @@ class _WorldMapDotState extends State<WorldMapDot>
       // would shadow the live pin beneath for the length of the exit.
       child: IgnorePointer(
         ignoring: widget.dying,
-        child: WorldMapPinTooltip(
+        child: PassThroughTooltip(
           message: widget.card.title,
+          // The Semantics below already names the pin.
+          excludeFromSemantics: true,
           child: Semantics(
             button: !widget.dying,
             label: widget.dying
@@ -145,39 +147,48 @@ class _WorldMapDotState extends State<WorldMapDot>
             // activate it (#7591).
             onTap: widget.dying ? null : widget.onTap,
             excludeSemantics: true,
-            child: GestureDetector(
-              onTap: widget.dying ? null : widget.onTap,
-              // A dot's marker box is padded out past its painted circle to
-              // the min touch target ([PinSize.dotTouchTarget]); the whole box
-              // must take the tap, not just the tiny dot (#7688). A mid
-              // teardrop keeps deferring to its silhouette-only painter
-              // hit-test, so its transparent corners still fall through
-              // (#7920).
-              behavior: isDot
-                  ? HitTestBehavior.opaque
-                  : HitTestBehavior.deferToChild,
-              // Sized to the same [PinTier.markerBox] the MarkerLayer gives
-              // this pin, with the painted pin centred in it — a no-op for a
-              // teardrop (box == pin), the touch-target padding for a dot.
-              child: SizedBox.fromSize(
-                size: widget.tier.markerBox(widget.state),
-                child: Center(
-                  child: _withCompletionStar(
-                    widget.tier == PinTier.mid
-                        ? _MediumDotContent(
-                            state: widget.state,
-                            pinged: widget.pinged,
-                            unreadRoom: widget.unreadRoom,
-                            participantsFilled: widget.participantsFilled,
-                            participantsTotal: widget.participantsTotal,
-                            starLevel: widget.starLevel,
-                            isFocused: widget.isFocused,
-                          )
-                        : _SmallDotContent(
-                            state: widget.state,
-                            starLevel: widget.starLevel,
-                            isFocused: widget.isFocused,
-                          ),
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              // Mirror the GestureDetector's own hit test rather than the
+              // default opaque one, so the hover region is exactly the tap
+              // region: a mid teardrop's transparent corners keep falling
+              // through to the pin beneath (#7920). A dying pin never hovers
+              // — the IgnorePointer above takes it out of the hit test.
+              hitTestBehavior: HitTestBehavior.deferToChild,
+              child: GestureDetector(
+                onTap: widget.dying ? null : widget.onTap,
+                // A dot's marker box is padded out past its painted circle to
+                // the min touch target ([PinSize.dotTouchTarget]); the whole box
+                // must take the tap, not just the tiny dot (#7688). A mid
+                // teardrop keeps deferring to its silhouette-only painter
+                // hit-test, so its transparent corners still fall through
+                // (#7920).
+                behavior: isDot
+                    ? HitTestBehavior.opaque
+                    : HitTestBehavior.deferToChild,
+                // Sized to the same [PinTier.markerBox] the MarkerLayer gives
+                // this pin, with the painted pin centred in it — a no-op for a
+                // teardrop (box == pin), the touch-target padding for a dot.
+                child: SizedBox.fromSize(
+                  size: widget.tier.markerBox(widget.state),
+                  child: Center(
+                    child: _withCompletionStar(
+                      widget.tier == PinTier.mid
+                          ? _MediumDotContent(
+                              state: widget.state,
+                              pinged: widget.pinged,
+                              unreadRoom: widget.unreadRoom,
+                              participantsFilled: widget.participantsFilled,
+                              participantsTotal: widget.participantsTotal,
+                              starLevel: widget.starLevel,
+                              isFocused: widget.isFocused,
+                            )
+                          : _SmallDotContent(
+                              state: widget.state,
+                              starLevel: widget.starLevel,
+                              isFocused: widget.isFocused,
+                            ),
+                    ),
                   ),
                 ),
               ),
@@ -286,18 +297,13 @@ class _MediumDotContent extends StatelessWidget {
       participantsTotal,
     );
 
-    // The glyph is white on every mid pin EXCEPT `available` in light mode: its
-    // light-purple fill is too pale for a white "+" to stand out, so there the
-    // icon takes the pin's dark-purple label colour to match the designs (its
-    // former outside label used the same colour). Dark mode keeps white — the
-    // `available` pin fills with the darker `AppConfig.primaryColorDark` purple
-    // there, which a white glyph reads cleanly over (world-map.instructions.md,
-    // "Pin state").
-    final glyphColor =
-        state == ActivityPinState.available &&
-            Theme.of(context).brightness == Brightness.light
-        ? state.labelColor
-        : Colors.white;
+    // The glyph takes the state's own ink (ActivityPinState.onBodyColor):
+    // white on the joinable green, onPrimaryContainer on the ongoing purple
+    // (white sat at 3.17:1 on the lighter dark-mode purple, under the 4.5:1 the
+    // "num/num" count needs), and on `available` white in dark but the
+    // dark-purple label colour in light, where the pale fill is too pale for
+    // white (#8243, #8968; world-map.instructions.md, "Pin state").
+    final glyphColor = state.onBodyColor(context);
 
     // The icon and (for joinable/ongoing-pending) the "num/num" count stack
     // together as a single glyph inside the circular head, rather than the

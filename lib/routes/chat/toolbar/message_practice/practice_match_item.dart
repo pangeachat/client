@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
@@ -127,7 +128,9 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
 
   Color color(BuildContext context) {
     if (isCorrect != null) {
-      return isCorrect! ? AppConfig.success : AppConfig.warning;
+      return isCorrect!
+          ? Theme.of(context).pangea.successGraphic
+          : Theme.of(context).pangea.warningGraphic;
     }
 
     if (isSelected) {

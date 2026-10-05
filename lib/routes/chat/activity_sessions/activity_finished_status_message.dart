@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
-import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -33,6 +29,11 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
 
     final finished = controller.room.isActivityFinished;
 
+    final showsSummaries = MatrixState
+        .pangeaController
+        .subscriptionController
+        .showSubscriptionGatedContent;
+
     return ValueListenableBuilder(
       valueListenable: controller.activityController.summaryFetchFailed,
       builder: (context, fetchFailed, _) {
@@ -42,8 +43,13 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
         // stays collapsed and the rating card above it doesn't get pushed
         // around (#8018). A locally-recorded failure overrides room state,
         // which can't say "error" when the network is down (#8362).
+        // An unsubscribed learner gets no summary section at all: the gate
+        // moved to the chat, where the summary would have been (#8860), and
+        // the error/retry branch below would otherwise offer them a fetch
+        // they cannot make.
         final summarySection =
-            finished &&
+            showsSummaries &&
+                finished &&
                 (fetchFailed ||
                     (summary != null &&
                         summary.summary == null &&
@@ -102,21 +108,6 @@ class _SummarySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!MatrixState
-        .pangeaController
-        .subscriptionController
-        .showSubscriptionGatedContent) {
-      return ErrorIndicator(
-        message: L10n.of(context).subscribeToUnlockActivitySummaries,
-        onTap: () => context.go(
-          WorkspaceNav.openSettings(
-            GoRouterState.of(context).uri,
-            page: 'subscription',
-          ),
-        ),
-      );
-    }
-
     if (hasError) {
       return Column(
         spacing: 8,

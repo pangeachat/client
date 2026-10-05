@@ -51,10 +51,12 @@ class JoinRoomAnalyticsConsentHandler {
       return true;
     }
 
+    final targetLanguage = await room.client.getCourseLanguage(room);
     final noticeResp = await showDialog<OkCancelResult>(
       context: context,
       barrierDismissible: false,
-      builder: (context) => const AnalyticsAccessNoticeDialog(),
+      builder: (context) =>
+          AnalyticsAccessNoticeDialog(targetLanguage: targetLanguage),
     );
 
     if (noticeResp != OkCancelResult.cancel) {

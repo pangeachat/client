@@ -282,11 +282,11 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
                     child: Text(
                       L10n.of(context).clickToAddEmail,
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.primaryContainer,
+                        color: Theme.of(context).colorScheme.inversePrimary,
                         decoration: TextDecoration.underline,
                         decorationColor: Theme.of(
                           context,
-                        ).colorScheme.primaryContainer,
+                        ).colorScheme.inversePrimary,
                       ),
                     ),
                   ),

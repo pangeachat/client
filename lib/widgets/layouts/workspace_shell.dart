@@ -15,6 +15,7 @@ import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
@@ -34,6 +35,7 @@ import 'package:fluffychat/routes/world/course_context_bar.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
+import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/right_panel/workspace_right_panel.dart';
 import 'package:fluffychat/routes/world/world_analytics_bar.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
@@ -88,6 +90,15 @@ GlobalKey _roomKeyFor(String roomId) => _leftRoomKeys.putIfAbsent(
 /// history. Module-level so it survives shell rebuilds. Synced once per build by
 /// [_ShellLayout.resolve]. See `routing.instructions.md`.
 final List<String> _paneRecency = <String>[];
+
+/// Whether the previous shell build showed the wide course context bar — a
+/// `?c=` course with no course card drawn. A course card appearing right
+/// after it grows out of the bar ([CourseCardReveal], #8866); one appearing
+/// from anywhere else (a cold load, the Courses hub) has no bar to grow from,
+/// and a remount that merely swaps the card's section must not replay the
+/// grow. Ephemeral view state like [_paneRecency], synced once per build by
+/// [_ShellLayout.resolve].
+bool _courseBarWasShowing = false;
 
 /// The stable recency identity of an open panel — its *family instance*, not its
 /// current page. Navigating WITHIN a panel changes the token string but must NOT
@@ -225,19 +236,40 @@ int? recencyFocusHint(List<PanelToken> allTokens, List<String> recency) {
 /// side-effects, then assembles the [Stack] from the named `_…Layer` helpers
 /// below — each of which reads only from the bundle. The dense derivation all
 /// lives in [_ShellLayout.resolve].
-/// The workspace's screen-reader browse order (#8755): reading order, not
-/// paint order — the nav rail first, then the open panels, the top-right
-/// chrome, and the map (the backdrop everything overlays) last. Chosen in
-/// review; the browse-order twin of the #7219 focus-order annotations. The
-/// keys live ON each region's own labeled container (not on shell wrappers):
-/// a wrapper annotation forms an extra unlabeled generic node around the
-/// region, and VoiceOver applies its own ordering heuristics to exactly that
-/// shape instead of following the DOM. See routing.instructions.md.
-class BrowseOrder {
-  static const rail = OrdinalSortKey(1);
-  static const leftPanels = OrdinalSortKey(2);
-  static const rightPanels = OrdinalSortKey(3);
-  static const cluster = OrdinalSortKey(4);
+/// One rank per workspace region, feeding BOTH orders a region has — the
+/// screen-reader browse order (#8755) and the keyboard Tab order (#8810).
+/// Reading order, not paint order: the nav rail first, then the open
+/// panels, the top-right chrome, the map's search slot and zoom controls,
+/// and the map — the backdrop everything overlays — last. Chosen in review.
+/// See routing.instructions.md → Every panel is a named group.
+///
+/// The two orders are independent mechanisms that must not drift apart
+/// again (#7219 ranked Tab map-second with the panels unordered while
+/// #8757 keyed browse rail-first, so a keyboard user reached the panel
+/// they had just opened on press ~14 and the rail last):
+///
+/// - [sortKey] orders the semantics tree only. It lives ON each region's
+///   own labeled semantic container, not on a shell wrapper: a wrapper
+///   annotation forms an extra unlabeled generic node around the region,
+///   and VoiceOver applies its own ordering heuristics to exactly that
+///   shape instead of following the DOM.
+/// - [focusOrder] orders Tab, which Flutter routes through its own
+///   traversal policy. It lives on the region's slot in the shell's ordered
+///   [FocusTraversalGroup] (see [WorkspaceShell.build]).
+class WorkspaceOrder {
+  const WorkspaceOrder._(this._rank);
+
+  /// One number, derived twice: the keys are cheap value objects, and a
+  /// stored pair would be a second copy of the rank to keep in step.
+  final double _rank;
+
+  OrdinalSortKey get sortKey => OrdinalSortKey(_rank);
+  NumericFocusOrder get focusOrder => NumericFocusOrder(_rank);
+
+  static const rail = WorkspaceOrder._(1);
+  static const leftPanels = WorkspaceOrder._(2);
+  static const rightPanels = WorkspaceOrder._(3);
+  static const cluster = WorkspaceOrder._(4);
 
   /// The map's search/context slot (and its empty-view card) reads after
   /// the cluster and before the map group. It is a separate top-level node,
@@ -245,8 +277,15 @@ class BrowseOrder {
   /// for VoiceOver ordering (#8755, see WorldMapView.build); everything
   /// else on the map — pins, attribution, zoom controls — lives inside
   /// that group.
-  static const mapChrome = OrdinalSortKey(5);
-  static const map = OrdinalSortKey(6);
+  static const mapChrome = WorkspaceOrder._(5);
+
+  /// Tab only. The zoom controls are children of the map's semantic group,
+  /// so they have no browse position of their own; the keyboard reaches
+  /// them before the map's single stop (its Activities group —
+  /// world-map.instructions.md → Keyboard access), leaving the map as the
+  /// last stop before the cycle wraps back to the rail.
+  static const mapControls = WorkspaceOrder._(6);
+  static const map = WorkspaceOrder._(7);
 }
 
 class WorkspaceShell extends StatelessWidget {
@@ -279,10 +318,11 @@ class WorkspaceShell extends StatelessWidget {
       explicitChildNodes: true,
       child: ScaffoldMessenger(
         child: FocusTraversalGroup(
-          // Tab order on the workspace (#7219): nav rail (1) → the map, whose
-          // reading order puts its search bar + filter pills first (2) → the
-          // user cluster / analytics bar (3). Unordered focusables (open
-          // panels, the narrow nav widget) follow in reading order.
+          // Tab order on the workspace: the [WorkspaceOrder] rank on each
+          // region slot below — rail → open left panels → open right panels
+          // → user cluster / analytics bar → the map's chrome and controls
+          // → the map's own stop last (#7219, re-ranked to the browse order
+          // in #8810). Several panels in one slot keep reading order.
           policy: OrderedTraversalPolicy(),
           child: Scaffold(
             // No bottomNavigationBar slot: the narrow chrome is the FLOATING nav
@@ -299,18 +339,18 @@ class WorkspaceShell extends StatelessWidget {
                 /// camera so a course fit lands in the exposed area: left = rail + column +
                 /// detail; right = the panel zone.
                 FocusTraversalOrder(
-                  order: const NumericFocusOrder(2),
+                  order: WorkspaceOrder.map.focusOrder,
                   child: WorldMap(
                     key: _persistentWorldMapKey,
                     leftOverlayWidth: l.mapLeftOverlay,
                     rightOverlayWidth: l.allocation.mapRightOverlay,
                     bottomOverlayHeight: l.mapBottomOverlay,
                     availableVisibleMapWidth: l.availableVisibleMapWidth,
-                    // The map's top-left slot: the search overlay on the world
-                    // map, the course context bar under a `?c=` scope whose
-                    // panel is closed (#8736).
+                    // The map's top-left slot carries the search overlay on the
+                    // world map, and nothing at all under a `?c=` scope: the
+                    // course names itself from its own panel in the left
+                    // column, in either of its two states (#9037).
                     courseScopeSpaceId: activeSpaceIdFor(state.uri),
-                    coursePanelOpen: l.coursePanelVisible,
                     focus: mapFocusFor(state),
                   ),
                 ),
@@ -320,6 +360,19 @@ class WorkspaceShell extends StatelessWidget {
                 /// blank page, is what a slow first sync shows). Zero-size; it
                 /// is a shell resident so it exists exactly when logged in.
                 DmInviteFerryConsumer(uri: state.uri),
+
+                /// Under a narrow full-screen surface (a live room / session,
+                /// the DM picker) the only map left showing is the safe-area
+                /// bands — the status bar's above its header, the home
+                /// indicator's below its composer. Paint them in the
+                /// surface's own colours so it reads edge to edge (#8879).
+                /// The surface itself keeps the safe-area frame every panel
+                /// has: its overlays (the message toolbar, word cards)
+                /// position against that frame and the zero padding inside
+                /// it, so handing it the insets instead moved every one of
+                /// them.
+                if (l.fullBleedFocus)
+                  const Positioned.fill(child: _FullBleedBackdrop()),
 
                 // Everything above the map respects the device safe area; the
                 // map itself does not (it is full-bleed, see above).
@@ -358,24 +411,29 @@ class WorkspaceShell extends StatelessWidget {
                             valueListenable: WorldMapPinsManager.notifier,
                             builder: (context, pinSheetOpen, child) =>
                                 pinSheetOpen ? const SizedBox.shrink() : child!,
-                            child: _MobileNavLayer(
-                              state: state,
-                              layout: l,
-                              screenPadding: MediaQuery.viewPaddingOf(context),
-                              // Only the keyboard's overlap BEYOND the bottom safe
-                              // area (home indicator) should trim the cavity: once
-                              // the keyboard covers that strip, the SafeArea stops
-                              // reserving it and the bottom-anchored nav layer
-                              // already drops by that much. Trimming by the raw
-                              // inset would double-count it and settle the cavity
-                              // top ~34pt low. Read above the Scaffold, where
-                              // `viewInsets` is still intact (#7754).
-                              keyboardInset:
-                                  (MediaQuery.viewInsetsOf(context).bottom -
-                                          MediaQuery.viewPaddingOf(
-                                            context,
-                                          ).bottom)
-                                      .clamp(0.0, double.infinity),
+                            child: FocusTraversalOrder(
+                              order: WorkspaceOrder.rail.focusOrder,
+                              child: _MobileNavLayer(
+                                state: state,
+                                layout: l,
+                                screenPadding: MediaQuery.viewPaddingOf(
+                                  context,
+                                ),
+                                // Only the keyboard's overlap BEYOND the bottom safe
+                                // area (home indicator) should trim the cavity: once
+                                // the keyboard covers that strip, the SafeArea stops
+                                // reserving it and the bottom-anchored nav layer
+                                // already drops by that much. Trimming by the raw
+                                // inset would double-count it and settle the cavity
+                                // top ~34pt low. Read above the Scaffold, where
+                                // `viewInsets` is still intact (#7754).
+                                keyboardInset:
+                                    (MediaQuery.viewInsetsOf(context).bottom -
+                                            MediaQuery.viewPaddingOf(
+                                              context,
+                                            ).bottom)
+                                        .clamp(0.0, double.infinity),
+                              ),
                             ),
                           ),
 
@@ -392,7 +450,7 @@ class WorkspaceShell extends StatelessWidget {
                               _ShellLayout.chromeMargin,
                             ),
                             child: FocusTraversalOrder(
-                              order: const NumericFocusOrder(1),
+                              order: WorkspaceOrder.rail.focusOrder,
                               child: SpacesNavigationRail(
                                 state: state,
                                 showNavRail: l.navRail,
@@ -420,25 +478,45 @@ class WorkspaceShell extends StatelessWidget {
                               Positioned(
                                 key: ValueKey(l.leftTokens[i].encode()),
                                 // The narrow full-screen focus (a live room / session) is
-                                // FULL-BLEED: no card chrome, edge to edge, top 0 — its own
-                                // app bar absorbs the status-bar inset, and skipping the
-                                // shell's extra safe-area offset removes the doubled top
-                                // padding (#7554). Column-mode / non-focused panels keep
-                                // the card and respect the top inset so their close/back
-                                // control clears the system top bar (#7143); PanelCard's
-                                // 12px top margin aligns them with the top-right cluster.
+                                // FULL-BLEED: no card chrome, top 0 of the safe area, and
+                                // the shell paints the safe-area bands around it in its
+                                // colours ([_ShellLayout.fullBleedFocus]; #7554, #8879).
+                                // Column-mode / non-focused panels keep the card and
+                                // respect the top inset so their close/back control
+                                // clears the system top bar (#7143); PanelCard's 12px top
+                                // margin aligns them with the top-right cluster.
                                 top: 0,
-                                bottom: 0,
+                                // A panel at its FLOOR is only as tall as that
+                                // floor. Stretching it to the column's height
+                                // would leave a full-height transparent slab
+                                // over the map: harmless to paint, but its
+                                // semantics container covers the same rect, and
+                                // on web that reads as a node sitting over the
+                                // map's pins (#8903's failure mode). (#9037)
+                                bottom: l.courseAtFloor && i == 0 ? null : 0,
+                                height: l.courseAtFloor && i == 0
+                                    ? CourseContextBar.height +
+                                          PanelCard.margin.vertical
+                                    : null,
                                 left: l.allocation.left[i].left,
                                 width: l.allocation.left[i].width,
-                                child: LeftPanelLayer(
-                                  token: l.leftTokens[i],
-                                  state: state,
-                                  foldedOver: l.allocation.left[i].foldedOver,
-                                  getRoomKey: _roomKeyFor,
-                                  bare:
-                                      !l.isColumnMode &&
-                                      l.allocation.left[i].vis == PanelVis.full,
+                                child: FocusTraversalOrder(
+                                  order: WorkspaceOrder.leftPanels.focusOrder,
+                                  child: LeftPanelLayer(
+                                    token: l.leftTokens[i],
+                                    state: state,
+                                    foldedOver: l.allocation.left[i].foldedOver,
+                                    getRoomKey: _roomKeyFor,
+                                    bare:
+                                        !l.isColumnMode &&
+                                        l.allocation.left[i].vis ==
+                                            PanelVis.full,
+                                    // The course panel's floor state — the
+                                    // context bar in the card's own slot
+                                    // (#9037).
+                                    atFloor: l.courseAtFloor && i == 0,
+                                    revealFromBar: l.revealCoursePanel,
+                                  ),
                                 ),
                               ),
                         ],
@@ -467,13 +545,16 @@ class WorkspaceShell extends StatelessWidget {
                                 bottom: 0,
                                 left: l.allocation.right[i].left,
                                 width: l.allocation.right[i].width,
-                                child: FocusTraversalGroup(
-                                  policy: OrderedTraversalPolicy(),
-                                  child: WorkspaceRightPanel(
-                                    token: l.rightTokens[i],
-                                    currentUri: state.uri,
-                                    foldedOver:
-                                        l.allocation.right[i].foldedOver,
+                                child: FocusTraversalOrder(
+                                  order: WorkspaceOrder.rightPanels.focusOrder,
+                                  child: FocusTraversalGroup(
+                                    policy: OrderedTraversalPolicy(),
+                                    child: WorkspaceRightPanel(
+                                      token: l.rightTokens[i],
+                                      currentUri: state.uri,
+                                      foldedOver:
+                                          l.allocation.right[i].foldedOver,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -492,7 +573,7 @@ class WorkspaceShell extends StatelessWidget {
                             top: _ShellLayout.chromeMargin,
                             right: _ShellLayout.chromeMargin,
                             child: FocusTraversalOrder(
-                              order: const NumericFocusOrder(3),
+                              order: WorkspaceOrder.cluster.focusOrder,
                               child: WorldUserCluster(key: _userClusterKey),
                             ),
                           )
@@ -517,7 +598,7 @@ class WorkspaceShell extends StatelessWidget {
                                     ),
                                   ),
                               child: FocusTraversalOrder(
-                                order: const NumericFocusOrder(3),
+                                order: WorkspaceOrder.cluster.focusOrder,
                                 child: WorldAnalyticsBar(key: _userClusterKey),
                               ),
                             ),
@@ -529,6 +610,32 @@ class WorkspaceShell extends StatelessWidget {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The safe-area bands behind a narrow full-bleed surface
+/// ([_ShellLayout.fullBleedFocus]): the status-bar band in the app bar's
+/// colour (the surface's header sits right below it), everything else in the
+/// scaffold's (the home-indicator band below its composer). Mounted
+/// full-screen behind the shell's SafeArea layer, so only the bands show.
+class _FullBleedBackdrop extends StatelessWidget {
+  const _FullBleedBackdrop();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return ColoredBox(
+      color: theme.appBarTheme.backgroundColor ?? theme.colorScheme.surface,
+      child: SafeArea(
+        left: false,
+        right: false,
+        bottom: false,
+        child: ColoredBox(
+          color: theme.scaffoldBackgroundColor,
+          child: const SizedBox.expand(),
         ),
       ),
     );
@@ -585,6 +692,12 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   /// activity-start-page.instructions.md.
   static const double _activitySheetMinimizedHeight = 200.0;
 
+  /// The course PREVIEW's minimized rest height (#7826): the cavity handle +
+  /// the header tile + the CTA row, description/modules dropped. Only the
+  /// tapped course rests low — the lists stay full. Kept in step with
+  /// `kCoursePreviewCompactMaxHeight` in selected_course_view.dart.
+  static const double _coursePreviewSheetMinimizedHeight = 188.0;
+
   GoRouterState get state => widget.state;
   _ShellLayout get layout => widget.layout;
 
@@ -606,6 +719,20 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         : layout.leftTokens[layout.cavityIndex!];
     final isCourseCavity = cavityToken?.type.isCoursePanel == true;
     final isActivityCavity = cavityToken?.type == PanelTypesEnum.activity;
+    // The add-course flow's single-course PREVIEW state (#7826): rests low
+    // over the scoped map, unlike the flow's full-height list/form steps.
+    final cavityParam = cavityToken?.param;
+    final isCoursePreviewCavity =
+        cavityToken?.type == PanelTypesEnum.addcoursepage &&
+        cavityParam is AddCoursePageTokenParam &&
+        cavityParam.isCoursePreview;
+    // The own-flow's post-create INVITE step: deterministic full open (own
+    // key, no height memory) so a dragged list/preview height can't carry
+    // onto it.
+    final isCourseInviteCavity =
+        cavityToken?.type == PanelTypesEnum.addcoursepage &&
+        cavityParam is AddCoursePageTokenParam &&
+        cavityParam.showNewCourseInvitePage;
     final cavitySection = cavityToken?.type.cavitySection;
 
     // The floating search bar (routing.instructions.md → Single-column search
@@ -666,16 +793,12 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
           )
         : null;
 
-    // The course context bar takes the search bar's slot while a course is
-    // selected and its cavity is closed — the narrow twin of the web slot
-    // (#8736). With the course card itself open in the cavity the cavity's own
-    // header already names the course, so neither rides above it.
-    final topAttachment = activeSpaceId != null && cavityToken == null
-        ? Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4.0),
-            child: CourseContextBar(spaceId: activeSpaceId),
-          )
-        : searchBar;
+    // Narrow carries NO course context bar. Under `?c=` the course panel is
+    // always mounted at least at its peek, and that peek IS this same header
+    // in this same slot — a bar here would be a verbatim duplicate of the
+    // panel it points at (#8816, narrowing #8736 to wide; see
+    // world-map.instructions.md -> The course context bar).
+    final topAttachment = searchBar;
 
     // Full height: the widget grows until whatever rides above it sits
     // immediately below the analytics bar (routing.instructions.md).
@@ -691,9 +814,10 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       screenPadding: widget.screenPadding,
       hasSearchBar: topAttachment != null,
       // The activity plan has no rail and covers the analytics bar at full, so
-      // its full-height bound extends through both bands.
+      // its full-height bound extends through both bands. The course preview
+      // hides the rail too (#7826) but keeps the analytics bar.
       reserveAnalyticsBar: !isActivityCavity,
-      reserveRail: !isActivityCavity,
+      reserveRail: !isActivityCavity && !isCoursePreviewCavity,
     );
     final maxHeightFraction = screenHeight <= 0
         ? 0.8
@@ -711,6 +835,8 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     double? preferredCavityHeight;
     if (isActivityCavity) {
       preferredCavityHeight = _activitySheetMinimizedHeight;
+    } else if (isCoursePreviewCavity) {
+      preferredCavityHeight = _coursePreviewSheetMinimizedHeight;
     } else if (cavityToken?.type == PanelTypesEnum.chats) {
       final visibleChats = client.rooms
           .where((room) => !room.isHiddenRoom && !room.isSpace)
@@ -752,6 +878,12 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         cavityKey = param is ActivityTokenParam
             ? param.activityId
             : cavityToken.type.name;
+      } else if (isCoursePreviewCavity) {
+        // Distinct keys per step, so push/pop re-derive their own defaults
+        // instead of restoring each other's heights (#7826).
+        cavityKey = '${cavityToken.type.name}:preview';
+      } else if (isCourseInviteCavity) {
+        cavityKey = '${cavityToken.type.name}:invite';
       } else {
         cavityKey = cavityToken.type.name;
       }
@@ -941,30 +1073,42 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             cavityContextId: activeSpaceId,
             // A course card opens at peek (the map leads); the add-course
             // subpages open at full (their content is unrelated to the map,
-            // #8659); other sections and the activity plan open at half (the
-            // plan keeps its pin visible above — the Google Maps UX).
+            // #8659) — except the single-course preview they push, which
+            // rests low (#7826); other sections and the activity plan open at
+            // half (the plan keeps its pin visible above — the Google Maps
+            // UX).
             cavityDefaultsToPeek: cavityToken?.type.defaultCavityToPeek == true,
-            cavityDefaultsToFull: cavityToken?.type.defaultCavityToFull == true,
+            cavityDefaultsToFull:
+                cavityToken?.type.defaultCavityToFull == true &&
+                !isCoursePreviewCavity,
             // Dismissing the activity plan sheet (drag down, or its own back/X)
             // CLOSES the plan — dropping its token clears the map's activity
             // focus (#7614; world-map.instructions.md). Map taps do NOT dismiss:
             // the map stays live around the sheet (mapStaysLive below), so a tap
             // on another pin moves the selection directly. Sections and the
-            // course card keep collapse-not-close.
-            onDismissed: isActivityCavity && cavityToken != null
+            // course card keep collapse-not-close. Dragging a course PREVIEW
+            // down pops back to its list (#7826).
+            onDismissed: cavityToken != null && isActivityCavity
                 ? () => context.go(WorkspaceNav.closeLeft(uri, cavityToken))
+                : isCoursePreviewCavity
+                ? () => context.go(
+                    WorkspaceNav.openAddCoursePage(uri, cavityParam.subpage),
+                  )
                 : null,
-            // The map stays interactive around the activity plan and course card
-            // sheets: taps/pans in the exposed map pass through — tap another pin
-            // to select it directly; panning never dismisses. Dismissal is the
-            // drag-down handle or the sheet's own close control (#7742).
-            mapStaysLive: isActivityCavity || isCourseCavity,
-            // Tapping the plan's minimized rest expands it to full, alongside
-            // dragging up.
-            tapBodyExpands: isActivityCavity,
+            // The map stays interactive around the activity plan, course card,
+            // and course-preview sheets: taps/pans in the exposed map pass
+            // through — tap another pin to select it directly; panning never
+            // dismisses. Dismissal is the drag-down handle or the sheet's own
+            // close control (#7742).
+            mapStaysLive:
+                isActivityCavity || isCourseCavity || isCoursePreviewCavity,
+            // Tapping the plan's (or the course preview's) minimized rest
+            // expands it to full, alongside dragging up.
+            tapBodyExpands: isActivityCavity || isCoursePreviewCavity,
             // The activity plan covers the nav rail and owns the container; its
-            // app-bar X/back is the way out (which restores the rail).
-            hideRail: isActivityCavity,
+            // app-bar X/back is the way out (which restores the rail). The
+            // course preview does the same (#7826).
+            hideRail: isActivityCavity || isCoursePreviewCavity,
             // Publish whether the activity plan is at full — the shell hides the
             // analytics bar under it. Any other cavity reports false, so
             // switching away resets it.
@@ -974,9 +1118,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             preferredCavityHeightPx: preferredCavityHeight,
             // The activity plan's open stop is deterministic: it never remembers a
             // manual resize, so a maximized activity reopens minimized rather than
-            // carrying its height over (activity-start-page.instructions.md). Other
-            // cavities keep their remembered height.
-            rememberHeight: !isActivityCavity,
+            // carrying its height over (activity-start-page.instructions.md). The
+            // course preview and the post-create invite step follow the same
+            // rule (#7826). Other cavities keep their remembered height.
+            rememberHeight:
+                !isActivityCavity &&
+                !isCoursePreviewCavity &&
+                !isCourseInviteCavity,
             topAttachment: topAttachment,
             keyboardInset: widget.keyboardInset,
           );
@@ -984,6 +1132,39 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       ),
     );
   }
+}
+
+/// Whether [token] is the add-course flow's single-course PREVIEW state
+/// (#7826) — shared by the narrow cavity config, the camera's bottom padding,
+/// and the map-context derivation so the three can't disagree.
+bool _tokenIsCoursePreview(PanelToken token) {
+  final param = token.param;
+  return token.type == PanelTypesEnum.addcoursepage &&
+      param is AddCoursePageTokenParam &&
+      param.isCoursePreview;
+}
+
+/// The plan uuid the map should PREVIEW-scope to, or null when no course
+/// preview is open (#7826) — own: from the token; browse: via
+/// [CoursePreviewPlans] once the room summary lands (null until then).
+String? _previewPlanIdFor(List<PanelToken> leftTokens) {
+  for (final token in leftTokens) {
+    if (!_tokenIsCoursePreview(token)) continue;
+    final param = token.param;
+    if (param is! AddCoursePageTokenParam) continue;
+    switch (param.subpage) {
+      case AddCourseSubpageEnum.own:
+        return param.createCourseId;
+      case AddCourseSubpageEnum.browse:
+        final roomId = param.previewRoomId;
+        return roomId == null
+            ? null
+            : CoursePreviewPlans.planIdFor(shortRoomId(roomId));
+      case AddCourseSubpageEnum.private:
+        return null;
+    }
+  }
+  return null;
 }
 
 /// Device-local memory of the last course the learner opened, for the narrow
@@ -1122,6 +1303,16 @@ class _ShellLayout {
   /// `routing.instructions.md` → Single-column analytics nav bar.
   final bool analyticsBarVisible;
 
+  /// A narrow full-screen LEFT surface — a live room / session, the DM
+  /// picker — is FULL-BLEED: it keeps the safe-area frame every panel has,
+  /// and the shell paints the status-bar and home-indicator bands around it
+  /// in the surface's own colours ([_FullBleedBackdrop]), so no map shows
+  /// above its header or below its composer (#7554, #8879). Every other
+  /// narrow ground (the map, a cavity, a right panel under the analytics
+  /// bar) leaves the map visible there. See `routing.instructions.md` →
+  /// Full-screen surfaces.
+  final bool fullBleedFocus;
+
   /// Whether this layout resolved in two-column mode (chrome picks the web rail
   /// + cluster) or narrow mode (the mobile nav widget + analytics bar).
   final bool isColumnMode;
@@ -1138,11 +1329,13 @@ class _ShellLayout {
   /// exposed map above the sheet (#7640). 0 everywhere else.
   final double mapBottomOverlay;
 
-  /// Whether a course panel is actually DRAWN — open in `?left=` and not
-  /// folded away by the allocator. The map's course context bar stands down
-  /// only for a panel the learner can see; a folded one names the course
-  /// nowhere, which is exactly the state the bar exists for (#8736).
-  final bool coursePanelVisible;
+  /// The collapsed course panel is seated at the head of [leftTokens] — draw
+  /// that slot as the context bar rather than the card (#9037).
+  final bool courseAtFloor;
+
+  /// The course card is appearing where the context bar was on the previous
+  /// build, so it grows out of the bar ([CourseCardReveal], #8866).
+  final bool revealCoursePanel;
 
   /// The map actually visible between the open side panels (viewport − left
   /// overlay − right overlay) — drives the pin-density budget
@@ -1164,11 +1357,13 @@ class _ShellLayout {
     required this.hasCavity,
     required this.navWidgetVisible,
     required this.analyticsBarVisible,
+    required this.fullBleedFocus,
     required this.isColumnMode,
     required this.leftInset,
     required this.mapLeftOverlay,
     required this.mapBottomOverlay,
-    required this.coursePanelVisible,
+    required this.courseAtFloor,
+    required this.revealCoursePanel,
     required this.availableVisibleMapWidth,
     required this.mapContext,
     required this.focusedLeftToken,
@@ -1187,7 +1382,27 @@ class _ShellLayout {
     // model as the right column. Every section is token-driven now (the
     // route-driven `_MainView` left card was retired), so the left column is
     // entirely the allocator's; the only fixed left inset is the nav rail.
-    final leftTokens = parseOpenPanels(state.uri).left;
+    final parsedLeft = parseOpenPanels(state.uri).left;
+
+    // A `?c=` context with no `course` token is the course panel COLLAPSED
+    // (routing.instructions.md → Reading a workspace URL), and its collapsed
+    // state — the context bar — is a panel like any other, seated here rather
+    // than drawn as chrome somewhere else (#9037).
+    //
+    // But only when the column is otherwise EMPTY. A one-line bar is not worth
+    // a panel's vertical strip of the workspace, so with anything else open the
+    // collapsed course simply is not seated: the panel beside it keeps the rail
+    // and widens into the freed strip. That is why every producer seats the
+    // course LAST — collapsing then hands its width back without moving what is
+    // open beside it, and expanding takes it back from the same end.
+    //
+    // Wide only: on narrow the nav cavity's peek is the course's floor and the
+    // cavity is always its host (#8816).
+    final courseAtFloor =
+        isColumnMode &&
+        activeSpaceIdFor(state.uri) != null &&
+        parsedLeft.isEmpty;
+    final leftTokens = courseAtFloor ? const [CoursePanelToken()] : parsedLeft;
     final leftDefs = [for (final token in leftTokens) token.type.def];
     final hasLeftTokens = leftTokens.isNotEmpty;
 
@@ -1256,10 +1471,19 @@ class _ShellLayout {
       focusHint: focusHint,
     );
 
-    final coursePanelVisible = [
+    // The course CARD is drawn: a course panel survived and is not the
+    // collapsed one seated above.
+    final courseCardVisible = [
       for (var i = 0; i < leftTokens.length; i++)
-        if (layout.left[i].vis != PanelVis.hidden) leftTokens[i].type,
+        if (layout.left[i].vis != PanelVis.hidden && !(courseAtFloor && i == 0))
+          leftTokens[i].type,
     ].any((type) => type.isCoursePanel);
+
+    // A card drawn where the bar just was grows out of it (#8866).
+    final revealCoursePanel = courseCardVisible && _courseBarWasShowing;
+    // Only a bar that was actually SEATED can be grown out of — a card opening
+    // where nothing was must not replay the grow (#8866).
+    _courseBarWasShowing = courseAtFloor;
 
     // The narrow focus: the one panel the allocator seats full-screen, if any.
     // [focusedIsRight] distinguishes a right panel (renders under the expanded
@@ -1314,6 +1538,14 @@ class _ShellLayout {
         navRail &&
         (focusedNarrowType == null || hasCavity || focusedIsRight);
 
+    // The narrow left focus that covers the nav widget AND the analytics bar
+    // — nothing else of the shell's is drawn, so the bands are painted for it.
+    final fullBleedFocus =
+        !isColumnMode &&
+        focusedNarrowType != null &&
+        !focusedIsRight &&
+        !hasCavity;
+
     // Where the left column ends. With `?left=` panels the allocator computes
     // it (the right edge of the last left panel, `leftCovered`); otherwise it's
     // the fixed chrome inset. The center detail tile and the map's left camera
@@ -1343,6 +1575,13 @@ class _ShellLayout {
           _MobileNavLayerState._activitySheetMinimizedHeight +
           MediaQuery.viewPaddingOf(context).bottom +
           chromeMargin * 2;
+    } else if (hasCavity && _tokenIsCoursePreview(leftTokens[cavityIndex])) {
+      // The course preview's resting sheet (#7826) — the same estimate-not-
+      // live rule as the activity branch above.
+      mapBottomOverlay =
+          _MobileNavLayerState._coursePreviewSheetMinimizedHeight +
+          MediaQuery.viewPaddingOf(context).bottom +
+          chromeMargin * 2;
     }
 
     // The map actually visible between the open side panels — drives the pin
@@ -1355,12 +1594,17 @@ class _ShellLayout {
 
     // Scope the persistent map to the active course (world_v2 context). Set
     // post-frame — the map listens and calls setState, which can't run now.
+    // An open course PREVIEW outranks the `?c=` scope (#7826): it is the more
+    // deliberate, more recent act, and popping it re-derives the usual scope.
+    final previewPlanId = _previewPlanIdFor(leftTokens);
     final coursePlanId = activeSpaceId == null
         ? null
         : Matrix.of(
             context,
           ).client.getRoomById(activeSpaceId)?.coursePlan?.uuid;
-    final MapContext mapContext = coursePlanId == null
+    final MapContext mapContext = previewPlanId != null
+        ? CoursePreviewMapContext(previewPlanId)
+        : coursePlanId == null
         ? const WorldMapContext()
         : CourseMapContext(coursePlanId);
     // A full-screen surface on a narrow screen (a focused panel or a
@@ -1387,11 +1631,13 @@ class _ShellLayout {
       hasCavity: hasCavity,
       navWidgetVisible: navWidgetVisible,
       analyticsBarVisible: analyticsBarVisible,
+      fullBleedFocus: fullBleedFocus,
       isColumnMode: isColumnMode,
       leftInset: leftInset,
       mapLeftOverlay: mapLeftOverlay,
       mapBottomOverlay: mapBottomOverlay,
-      coursePanelVisible: coursePanelVisible,
+      courseAtFloor: courseAtFloor,
+      revealCoursePanel: revealCoursePanel,
       availableVisibleMapWidth: availableVisibleMapWidth,
       mapContext: mapContext,
       focusedLeftToken: focusedLeftToken,

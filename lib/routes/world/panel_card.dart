@@ -12,7 +12,12 @@ import 'package:fluffychat/config/app_config.dart';
 class PanelCard extends StatelessWidget {
   final Widget child;
 
-  const PanelCard({super.key, required this.child});
+  /// When set, the card is drawn top-aligned at this height instead of
+  /// filling its slot — the course card mid-reveal ([CourseCardReveal],
+  /// #8866).
+  final double? height;
+
+  const PanelCard({super.key, required this.child, this.height});
 
   /// The margin every panel insets from its allocator slot (and the gap between
   /// adjacent panels is two of these horizontal insets — see [PanelAllocator]'s
@@ -23,9 +28,8 @@ class PanelCard extends StatelessWidget {
   );
 
   @override
-  Widget build(BuildContext context) => Padding(
-    padding: margin,
-    child: Material(
+  Widget build(BuildContext context) {
+    final card = Material(
       color: Theme.of(context).colorScheme.surface,
       elevation: 4,
       borderRadius: BorderRadius.circular(AppConfig.borderRadius),
@@ -33,6 +37,20 @@ class PanelCard extends StatelessWidget {
       // rounded corners.
       clipBehavior: Clip.antiAlias,
       child: child,
-    ),
-  );
+    );
+    final height = this.height;
+    return Padding(
+      padding: margin,
+      child: height == null
+          ? card
+          : Align(
+              alignment: Alignment.topCenter,
+              child: SizedBox(
+                width: double.infinity,
+                height: height,
+                child: card,
+              ),
+            ),
+    );
+  }
 }

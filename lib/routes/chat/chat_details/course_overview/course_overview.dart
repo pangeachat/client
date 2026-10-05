@@ -5,19 +5,22 @@ import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_catch_up.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
+import 'package:fluffychat/routes/chat/chat_details/course_overview/course_creator_row.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_knock_requests.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_participants_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_button.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_header.dart';
+import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_shortcut.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
@@ -183,6 +186,9 @@ class _CourseOverviewState extends State<CourseOverview> {
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: CourseProgressBar(
                       objectivesProvider: widget.controller.objectivesProvider,
+                      // The course tutorial runs on this page, so this is the
+                      // instance it points at.
+                      tutorialTargetId: TutorialTargetIds.courseProgressBar,
                     ),
                   ),
                 ],
@@ -229,13 +235,14 @@ class _CourseOverviewState extends State<CourseOverview> {
                             // plan"), which is where these activities come
                             // from.
                             icon: Icons.assignment_outlined,
-                            trailing: hasPlan
-                                ? CourseSectionButton(
-                                    section: l10n.activities,
-                                    onPressed: () =>
-                                        _openSubpage(SpaceSettingsTabs.course),
-                                  )
-                                : null,
+                            actions: [
+                              if (hasPlan)
+                                CourseSectionButton(
+                                  section: l10n.activities,
+                                  onPressed: () =>
+                                      _openSubpage(SpaceSettingsTabs.course),
+                                ),
+                            ],
                           ),
                           const SizedBox(height: 8.0),
                           // The shortlist draws from every Mission and ranks a
@@ -251,7 +258,7 @@ class _CourseOverviewState extends State<CourseOverview> {
                                 .controller
                                 .roomSummariesModel
                                 .hasCompletedActivity(
-                                  room.client.userID!,
+                                  room.client.userID,
                                   activityId,
                                 ),
                             objectivesProvider:
@@ -274,29 +281,24 @@ class _CourseOverviewState extends State<CourseOverview> {
                   child: CourseSectionHeader(
                     title: SpaceSettingsTabs.chat.title(context),
                     icon: Icons.forum_outlined,
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        // Creating a course chat is buried in the More
-                        // section's settings list; teachers asked for it
-                        // where the chats are (#8744). Same permission gate
-                        // as that row — the shortcut can't do what the
-                        // setting wouldn't.
-                        if (room.isRoomAdmin &&
-                            room.canChangeStateEvent(EventTypes.SpaceChild))
-                          IconButton(
-                            icon: const Icon(Symbols.chat_add_on),
-                            iconSize: 20.0,
-                            visualDensity: VisualDensity.compact,
-                            tooltip: l10n.createGroupChat,
-                            onPressed: widget.controller.addGroupChat,
-                          ),
-                        CourseSectionButton(
-                          section: SpaceSettingsTabs.chat.title(context),
-                          onPressed: () => _openSubpage(SpaceSettingsTabs.chat),
+                    actions: [
+                      // Creating a course chat is buried in the More
+                      // section's settings list; teachers asked for it
+                      // where the chats are (#8744). Same permission gate
+                      // as that row — the shortcut can't do what the
+                      // setting wouldn't.
+                      if (room.isRoomAdmin &&
+                          room.canChangeStateEvent(EventTypes.SpaceChild))
+                        CourseSectionShortcut(
+                          icon: Symbols.chat_add_on,
+                          tooltip: l10n.createGroupChat,
+                          onPressed: widget.controller.addGroupChat,
                         ),
-                      ],
-                    ),
+                      CourseSectionButton(
+                        section: SpaceSettingsTabs.chat.title(context),
+                        onPressed: () => _openSubpage(SpaceSettingsTabs.chat),
+                      ),
+                    ],
                   ),
                 ),
                 // The chat rows carry their own 8px wrapper (ChatListItem /
@@ -344,14 +346,25 @@ class _CourseOverviewState extends State<CourseOverview> {
                   CourseSectionHeader(
                     title: SpaceSettingsTabs.more.title(context),
                     icon: Icons.settings_outlined,
-                    trailing:
-                        widget.moreButtons.any((b) => b.visible && !b.enabled)
-                        ? CourseSectionButton(
-                            section: SpaceSettingsTabs.more.title(context),
-                            onPressed: () =>
-                                _openSubpage(SpaceSettingsTabs.more),
-                          )
-                        : null,
+                    actions: [
+                      if (widget.moreButtons.any(
+                        (b) => b.visible && !b.enabled,
+                      ))
+                        CourseSectionButton(
+                          section: SpaceSettingsTabs.more.title(context),
+                          onPressed: () => _openSubpage(SpaceSettingsTabs.more),
+                        ),
+                    ],
+                  ),
+                  // Who made the course leads the section's contents: it is
+                  // the one line here that describes the course rather than
+                  // offering a control over it, and it is deliberately NOT at
+                  // the top of the page under the teacher's own description
+                  // (#8819). Blank for a course whose quest records no owner
+                  // — never Pangea's name over someone else's work.
+                  CourseCreatorRow(
+                    questLoader:
+                        widget.controller.objectivesProvider.questLoader,
                   ),
                   // Only the settings this user can act on show inline; the
                   // full list, grayed-out rows included, lives on the All
@@ -398,7 +411,7 @@ class CourseSettingsButtonList extends StatelessWidget {
                   secondary: b.icon,
                   value: b.value,
                   onChanged: b.enabled ? (value) => b.onPressed?.call() : null,
-                  activeThumbColor: AppConfig.activeToggleColor,
+                  activeThumbColor: Theme.of(context).pangea.successFixedDim,
                   // The section already carries the page inset, so the tile
                   // keeps just enough of its own to breathe against the
                   // hover surface's edge; compact so the settings read as

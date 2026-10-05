@@ -401,7 +401,7 @@ void main() {
         },
         'lib/routes/chat/events/text_to_speech/message_read_aloud_controller.dart':
             {'room.id'},
-        'lib/pangea/common/widgets/choice_array.dart': {'roomId'},
+        'lib/pangea/common/widgets/choice_array.dart': {'widget.roomId'},
         // Permanently roomless: a cross-room aggregate has no one room, and
         // choosing one of the rooms a word came from would be a guess.
         'lib/routes/analytics/construct_analytics/vocab_analytics_list_view.dart':

@@ -10,8 +10,10 @@ import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
@@ -77,7 +79,7 @@ class SpacesNavigationRail extends StatelessWidget {
           // Browse-order key on the labeled container itself (#8755) — a
           // shell-level wrapper annotation formed an extra unlabeled node
           // that VoiceOver reordered by its own heuristics.
-          sortKey: BrowseOrder.rail,
+          sortKey: WorkspaceOrder.rail.sortKey,
           child: FocusTraversalGroup(
             policy: OrderedTraversalPolicy(),
             child: StreamBuilder(
@@ -88,7 +90,6 @@ class SpacesNavigationRail extends StatelessWidget {
               builder: (context, _) {
                 final groups = client.coursesByRole(L10n.of(context));
                 final sections = groups.sections;
-
                 return AnimatedContainer(
                   width: naviRailWidth,
                   duration: FluffyThemes.animationDuration,
@@ -113,7 +114,6 @@ class SpacesNavigationRail extends StatelessWidget {
                             // active, muted when not.
                             NaviRailItem(
                               isSelected: isWorld,
-                              backgroundColor: Colors.transparent,
                               // Exclude the logo's semanticsLabel so VoiceOver reads
                               // only the button tooltip ("world"), not the logo name.
                               icon: ExcludeSemantics(
@@ -138,6 +138,7 @@ class SpacesNavigationRail extends StatelessWidget {
                                 context.go(WorkspaceNav.clearAll());
                               },
                               toolTip: L10n.of(context).world,
+                              tutorialTargetId: TutorialTargetIds.navWorld,
                               naviRailWidth: naviRailWidth,
                             ),
                             // 2. Chats — the chat list. Chromeless (no box fill) and
@@ -146,7 +147,6 @@ class SpacesNavigationRail extends StatelessWidget {
                             // the left indicator bar conveys selection.
                             NaviRailItem(
                               isSelected: isChats,
-                              backgroundColor: Colors.transparent,
                               icon: Icon(
                                 Icons.forum_outlined,
                                 size: smallIconWidth,
@@ -168,6 +168,7 @@ class SpacesNavigationRail extends StatelessWidget {
                                 );
                               },
                               toolTip: L10n.of(context).allChats,
+                              tutorialTargetId: TutorialTargetIds.navChats,
                               unreadBadgeFilter: (room) =>
                                   room.firstSpaceParent == null,
                               naviRailWidth: naviRailWidth,
@@ -180,7 +181,6 @@ class SpacesNavigationRail extends StatelessWidget {
                             // rail section — it opens from the top-right cluster.)
                             NaviRailItem(
                               isSelected: isCourseFind,
-                              backgroundColor: Colors.transparent,
                               icon: Icon(
                                 Icons.map_outlined,
                                 size: smallIconWidth,
@@ -195,6 +195,7 @@ class SpacesNavigationRail extends StatelessWidget {
                                 );
                               },
                               toolTip: L10n.of(context).courses,
+                              tutorialTargetId: TutorialTargetIds.navCourses,
                               naviRailWidth: naviRailWidth,
                             ),
                             // A plain Column, NOT a nested ListView: a
@@ -204,35 +205,49 @@ class SpacesNavigationRail extends StatelessWidget {
                             // avatar — on touch devices the drag rubber-bands
                             // against nothing and the rail never scrolls. The
                             // outer ListView is the rail's one scrollable.
+                            // Tab mirrors the screen reader: World, Chats and
+                            // Courses are stops of their own, then the joined
+                            // courses are ONE stop with Up/Down inside (#8877).
+                            // Tab lands on the open course, else the first.
                             Semantics(
                               label: L10n.of(context).joinedCourseListLabel,
-                              child: Column(
-                                children: [
-                                  // 4. The course spaces you're in — in the
-                                  // Courses hub's order (invited · teaching ·
-                                  // learning), with a hairline between groups
-                                  // when the hub shows sections, so the rail
-                                  // mirrors the list (#8425).
-                                  for (final group in sections) ...[
-                                    if (groups.isGrouped &&
-                                        group != sections.first)
-                                      const _RailGroupDivider(),
-                                    for (final space in group.rooms)
-                                      _SpaceItem(
-                                        space: space,
-                                        iconWidth: largeIconWidth,
-                                        naviRailWidth: naviRailWidth,
-                                        // Highlight the course avatar only while the course
-                                        // IS the open section — not merely because `?c=`
-                                        // persists under a chat/room or under the Courses
-                                        // hub (routing decision 5, #8605).
-                                        selected:
-                                            section == AppSection.courses &&
-                                            !hubOpen &&
-                                            activeSpaceId == space.id,
-                                      ),
-                                  ],
+                              child: RovingFocusGroup(
+                                ids: [
+                                  for (final group in sections)
+                                    for (final space in group.rooms) space.id,
                                 ],
+                                selectedId:
+                                    section == AppSection.courses && !hubOpen
+                                    ? activeSpaceId
+                                    : null,
+                                child: Column(
+                                  children: [
+                                    // 4. The course spaces you're in — in the
+                                    // Courses hub's order (invited · teaching ·
+                                    // learning), with a hairline between groups
+                                    // when the hub shows sections, so the rail
+                                    // mirrors the list (#8425).
+                                    for (final group in sections) ...[
+                                      if (groups.isGrouped &&
+                                          group != sections.first)
+                                        const _RailGroupDivider(),
+                                      for (final space in group.rooms)
+                                        _SpaceItem(
+                                          space: space,
+                                          iconWidth: largeIconWidth,
+                                          naviRailWidth: naviRailWidth,
+                                          // Highlight the course avatar only while the course
+                                          // IS the open section — not merely because `?c=`
+                                          // persists under a chat/room or under the Courses
+                                          // hub (routing decision 5, #8605).
+                                          selected:
+                                              section == AppSection.courses &&
+                                              !hubOpen &&
+                                              activeSpaceId == space.id,
+                                        ),
+                                    ],
+                                  ],
+                                ),
                               ),
                             ),
                           ],
@@ -311,8 +326,8 @@ class _SpaceItem extends StatelessWidget {
       room: space,
       builder: (context, knockingUsers) => NaviRailItem(
         toolTip: displayname,
+        rovingId: space.id,
         isSelected: selected,
-        backgroundColor: Colors.transparent,
         borderRadius: BorderRadius.circular(0),
         // The avatar is an opaque banner, so InkWell's behind-the-child focus
         // highlight is imperceptible on it — wear the explicit gold ring

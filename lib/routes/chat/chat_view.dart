@@ -155,9 +155,7 @@ class ChatView extends StatelessWidget {
           future: controller.loadTimelineFuture,
           builder: (BuildContext context, snapshot) {
             // #Pangea
-            if (controller.room.isActivitySession &&
-                controller.room.activityId != null &&
-                !controller.room.isActivityStarted) {
+            if (controller.room.showsActivityStartPage) {
               return ActivitySessionStartPage(
                 activityId: controller.room.activityId!,
                 roomId: controller.roomId,
@@ -179,32 +177,18 @@ class ChatView extends StatelessWidget {
             }
             return Scaffold(
               appBar: AppBar(
-                // #Pangea
-                // actionsIconTheme: IconThemeData(
-                //   color: controller.selectedEvents.isEmpty
-                //       ? null
-                //       : theme.colorScheme.onTertiaryContainer,
-                // ),
-                // backgroundColor: controller.selectedEvents.isEmpty
-                //     ? controller.activeThreadId != null
-                //           ? theme.colorScheme.secondaryContainer
-                //           : null
-                //     : theme.colorScheme.tertiaryContainer,
-                // Pangea#
                 automaticallyImplyLeading: false,
                 leading: controller.selectMode
                     ? IconButton(
                         icon: const Icon(Icons.close),
                         onPressed: controller.clearSelectedEvents,
                         tooltip: L10n.of(context).close,
-                        color: theme.colorScheme.onTertiaryContainer,
                       )
                     : activeThreadId != null
                     ? IconButton(
                         icon: const Icon(Icons.close),
                         onPressed: controller.closeThread,
                         tooltip: L10n.of(context).backToMainChat,
-                        color: theme.colorScheme.onSecondaryContainer,
                       )
                     // #Pangea
                     : controller.widget.backButton != null
@@ -263,8 +247,6 @@ class ChatView extends StatelessWidget {
                               icon: const Icon(Icons.message),
                               label: Text(L10n.of(context).replyInThread),
                               style: TextButton.styleFrom(
-                                foregroundColor:
-                                    theme.colorScheme.onSecondaryContainer,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(4),
                                 ),

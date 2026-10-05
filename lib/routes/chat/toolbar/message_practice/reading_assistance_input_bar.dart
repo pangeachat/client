@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_practice_mode_enum.dart';
@@ -173,10 +174,10 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
         }
 
         if (target == null || activityCompleted) {
-          return const Icon(
+          return Icon(
             Symbols.fitness_center,
             size: 60.0,
-            color: AppConfig.goldLight,
+            color: Theme.of(context).pangea.goldGraphic,
           );
         }
 
@@ -192,10 +193,10 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
           return const _AllDoneWidget();
         }
         if (activityCompleted) {
-          return const Icon(
+          return Icon(
             Symbols.fitness_center,
             size: 60.0,
-            color: AppConfig.goldLight,
+            color: Theme.of(context).pangea.goldGraphic,
           );
         }
 

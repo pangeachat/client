@@ -62,9 +62,7 @@ class MorphDetailsView extends StatelessWidget {
       builder: (context, snapshot) {
         final construct = snapshot.data;
         final level = construct?.lemmaCategory ?? ConstructLevelEnum.seeds;
-        final Color textColor = Theme.of(context).brightness != Brightness.light
-            ? level.color(context)
-            : level.darkColor(context);
+        final Color textColor = level.color(context);
 
         return MaxWidthBody(
           maxWidth: 600.0,

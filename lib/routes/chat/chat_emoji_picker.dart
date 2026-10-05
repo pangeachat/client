@@ -86,14 +86,6 @@ class ChatEmojiPicker extends StatelessWidget {
                               indicatorColor: theme.colorScheme.primary,
                               backgroundColor: theme.colorScheme.surface,
                             ),
-                            skinToneConfig: SkinToneConfig(
-                              dialogBackgroundColor: Color.lerp(
-                                theme.colorScheme.surface,
-                                theme.colorScheme.primaryContainer,
-                                0.75,
-                              )!,
-                              indicatorColor: theme.colorScheme.onSurface,
-                            ),
                             // #Pangea
                             viewOrderConfig: const ViewOrderConfig(
                               middle: EmojiPickerItem.searchBar,

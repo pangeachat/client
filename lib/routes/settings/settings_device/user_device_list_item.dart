@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
 import '../../../utils/date_time_extension.dart';
@@ -31,6 +32,7 @@ class UserDeviceListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final client = Matrix.of(context).client;
     final keys = client
         .userDeviceKeys[Matrix.of(context).client.userID]
@@ -107,14 +109,21 @@ class UserDeviceListItem extends StatelessWidget {
               }
             },
             leading: CircleAvatar(
-              foregroundColor: Colors.white,
-              backgroundColor: keys == null
-                  ? Colors.grey[700]
+              // The verification state as a fill with its own ink.
+              foregroundColor: keys == null
+                  ? theme.colorScheme.onSecondaryContainer
                   : keys.blocked
-                  ? Colors.red
+                  ? theme.colorScheme.onError
                   : keys.verified
-                  ? Colors.green
-                  : Colors.orange,
+                  ? theme.pangea.onSuccessFixed
+                  : theme.pangea.onWarningFixed,
+              backgroundColor: keys == null
+                  ? theme.colorScheme.secondaryContainer
+                  : keys.blocked
+                  ? theme.colorScheme.error
+                  : keys.verified
+                  ? theme.pangea.successFixedDim
+                  : theme.pangea.warningFixedDim,
               child: Icon(userDevice.icon),
             ),
             title: Text(
@@ -140,10 +149,10 @@ class UserDeviceListItem extends StatelessWidget {
                         : L10n.of(context).unverified,
                     style: TextStyle(
                       color: keys.blocked
-                          ? Colors.red
+                          ? theme.colorScheme.error
                           : keys.verified
-                          ? Colors.green
-                          : Colors.orange,
+                          ? theme.pangea.success
+                          : theme.pangea.warning,
                     ),
                   ),
           ),

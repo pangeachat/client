@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
@@ -72,7 +72,7 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: isColumnMode ? 24 : 16,
                                 fontWeight: FontWeight.w900,
-                                color: AppConfig.goldByTheme(context),
+                                color: Theme.of(context).pangea.gold,
                               ),
                             ),
                           ],
@@ -82,7 +82,7 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
                           style: TextStyle(
                             fontSize: isColumnMode ? 24 : 16,
                             fontWeight: FontWeight.w900,
-                            color: AppConfig.goldByTheme(context),
+                            color: Theme.of(context).pangea.gold,
                           ),
                         ),
                       ],

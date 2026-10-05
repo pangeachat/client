@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
@@ -24,9 +25,11 @@ void main() {
   late ExpiringStorageBox cache;
   late GetStorage raw;
 
+  late Directory tempDir;
+
   setUpAll(() async {
     // GetStorage needs path_provider; stub the channel to a temp dir.
-    final tempDir = await Directory.systemTemp.createTemp('expiring_box_test');
+    tempDir = await Directory.systemTemp.createTemp('expiring_box_test');
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
         .setMockMethodCallHandler(
           const MethodChannel('plugins.flutter.io/path_provider'),
@@ -58,19 +61,21 @@ void main() {
   group('expiry', () {
     test('an entry written now reads back until the TTL elapses', () async {
       await cache.write('k', {'v': 1});
-      expect(cache.read('k'), {'v': 1});
+      expect(await cache.read('k'), {'v': 1});
 
       clock = clock.add(ttl);
-      expect(cache.read('k'), {'v': 1}, reason: 'exactly at TTL is still live');
+      expect(await cache.read('k'), {
+        'v': 1,
+      }, reason: 'exactly at TTL is still live');
 
       clock = clock.add(const Duration(seconds: 1));
-      expect(cache.read('k'), isNull, reason: 'past TTL is expired');
+      expect(await cache.read('k'), isNull, reason: 'past TTL is expired');
       expect(raw.hasData('k'), isFalse, reason: 'expired read drops the entry');
     });
 
     test('a missing key is a miss and leaves the box alone', () async {
       await cache.write('other', {'v': 1});
-      expect(cache.read('nope'), isNull);
+      expect(await cache.read('nope'), isNull);
       expect(raw.getKeys<Iterable<String>>(), ['other']);
     });
 
@@ -89,7 +94,7 @@ void main() {
         'not-a-map',
         'payload-not-a-map',
       ]) {
-        expect(cache.read(key), isNull, reason: key);
+        expect(await cache.read(key), isNull, reason: key);
         expect(raw.hasData(key), isFalse, reason: '$key removed');
       }
     });
@@ -102,6 +107,44 @@ void main() {
       expect(raw.hasData('b'), isTrue);
       await cache.erase();
       expect(raw.getKeys<Iterable<String>>(), isEmpty);
+    });
+  });
+
+  group('before the box has loaded', () {
+    // CLIENT-9D3 (#9062): the box is constructed lazily on first use and
+    // reads its file asynchronously; nothing awaits that at boot. A read must
+    // see what is on disk rather than answer a miss from the not-yet-loaded
+    // box, and a write must not race the load on GetStorage's shared handle.
+    test('a read waits for the load and sees what is on disk', () async {
+      const fresh = 'expiring_storage_box_test_fresh_read';
+      await File('${tempDir.path}/$fresh.gs').writeAsString(
+        jsonEncode({
+          'k': {
+            ExpiringStorageBox.timestampKey: clock.toIso8601String(),
+            payloadKey: {'v': 'from-disk'},
+          },
+        }),
+      );
+      final box = ExpiringStorageBox(
+        fresh,
+        ttl: ttl,
+        payloadKey: payloadKey,
+        now: () => clock,
+      );
+      expect(await box.read('k'), {'v': 'from-disk'});
+    });
+
+    test('a write issued straight after construction lands', () async {
+      const fresh = 'expiring_storage_box_test_fresh_write';
+      final box = ExpiringStorageBox(
+        fresh,
+        ttl: ttl,
+        payloadKey: payloadKey,
+        now: () => clock,
+      );
+      await box.write('k', {'v': 1});
+      expect(await box.read('k'), {'v': 1});
+      expect(GetStorage(fresh).read('k')[payloadKey], {'v': 1});
     });
   });
 
@@ -121,15 +164,15 @@ void main() {
 
       expect(raw.hasData('stale-garbage'), isFalse);
       expect(raw.hasData('live-garbage'), isTrue);
-      expect(cache.read('live-garbage'), {'definitely': 'not a model'});
+      expect(await cache.read('live-garbage'), {'definitely': 'not a model'});
     });
 
     test('read returns the stored payload map without copying it', () async {
       await cache.write('k', {
         'nested': {'deep': 1},
       });
-      final first = cache.read('k');
-      final second = cache.read('k');
+      final first = await cache.read('k');
+      final second = await cache.read('k');
       expect(identical(first, second), isTrue);
       expect(identical(first, raw.read('k')[payloadKey]), isTrue);
     });
@@ -142,7 +185,7 @@ void main() {
       await plant('live', clock, {});
 
       // First access: full sweep runs.
-      cache.read('live');
+      await cache.read('live');
       await pumpEventQueue();
       expect(raw.hasData('stale-1'), isFalse);
 
@@ -150,7 +193,7 @@ void main() {
       // an unrelated key.
       clock = clock.add(const Duration(seconds: 30));
       await plant('stale-2', stale, {});
-      cache.read('live');
+      await cache.read('live');
       await pumpEventQueue();
       expect(
         raw.hasData('stale-2'),
@@ -159,13 +202,13 @@ void main() {
       );
 
       // Reading the stale key itself still drops it (per-key expiry check).
-      expect(cache.read('stale-2'), isNull);
+      expect(await cache.read('stale-2'), isNull);
       expect(raw.hasData('stale-2'), isFalse);
 
       // Once the interval has elapsed, the next access sweeps again.
       await plant('stale-3', stale, {});
       clock = clock.add(const Duration(seconds: 31));
-      cache.read('live');
+      await cache.read('live');
       await pumpEventQueue();
       expect(raw.hasData('stale-3'), isFalse, reason: 'sweep after interval');
     });
@@ -183,12 +226,12 @@ void main() {
 
       clock = clock.add(ttl * 2);
       await plant('stale', clock.subtract(ttl * 2), {});
-      longSweep.read('other');
+      await longSweep.read('other');
       await pumpEventQueue();
       expect(raw.hasData('stale'), isTrue, reason: 'still inside interval');
 
       clock = clock.add(const Duration(days: 1));
-      longSweep.read('other');
+      await longSweep.read('other');
       await pumpEventQueue();
       expect(raw.hasData('stale'), isFalse);
     });

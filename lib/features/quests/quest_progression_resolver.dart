@@ -5,11 +5,7 @@
 // activity start page). Pure logic — no Matrix or network — so it stays
 // unit-testable. Design: quests.instructions.md, world-map.instructions.md.
 
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/features/quests/lo_progression.dart';
-import 'package:fluffychat/features/quests/quests_client_extension.dart';
-import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 
 /// How far along a quest the next-Mission gradient reaches before decaying to
 /// zero. The anchor Mission scores 1.0; each Mission further along loses
@@ -73,9 +69,8 @@ class QuestProgress {
   final List<String> orderedMissionIds;
 
   /// The anchor (next) Mission: the first Mission in order whose star total is
-  /// below the threshold; once every Mission is satisfied, the lowest-star
-  /// Mission (so a finished quest keeps pointing at the weakest area). Null only
-  /// when the sequence is empty.
+  /// below the threshold. Null when there is no next step — every scored
+  /// Mission satisfied, or none scored at all.
   final String? anchorMissionId;
 
   final Map<String, int> indexByMission;
@@ -220,26 +215,6 @@ class ProgressionResolution {
     }
     return total.clamp(0.0, kBandCeiling);
   }
-
-  /// Resolve the learner's shared joined-course progression — the SAME inputs and
-  /// resolver as the world map, so the star numbers can never disagree
-  /// (quests.instructions.md). Called by both the header's [CourseProgressBar] and
-  /// the objective list's per-Mission chips; identical cached inputs (the quest
-  /// outline cache + `client.userStarsByActivity`) mean the two can't drift, so a
-  /// second resolve is safe rather than a re-derivation risk.
-  static Future<ProgressionResolution> resolveJoinedProgression(
-    Client client,
-  ) async {
-    final cache = JoinedObjectiveCache();
-    await cache.rebuildFromJoinedCourses(
-      client,
-      // The SAME reporter the world map's rebuild passes — one throttle key,
-      // one severity rule, so this path and the map's can't disagree about a
-      // failure only one of them will end up reporting (#8470).
-      onError: reportCourseOutlineFailure,
-    );
-    return cache.resolution(client.userStarsByActivity);
-  }
 }
 
 /// Resolve progression from each in-scope quest's [outlines] and the learner's
@@ -314,9 +289,9 @@ ProgressionResolution resolveProgression({
 }
 
 /// The anchor (next) Mission for one quest's ordered [seq]: the first Mission
-/// whose rollup is below threshold; once all are satisfied, the lowest-star
-/// Mission, tie-broken by earliest quest order (deterministic, so the anchor
-/// does not flicker between equal-star frames).
+/// whose rollup is below threshold. Null once every scored Mission is
+/// satisfied — a finished quest has no next step, and naming one anyway
+/// pointed the learner back at work already done (#8997).
 ///
 /// Missions absent from [rollup] are unscored — the outline gives them no
 /// activities — so they are skipped. Anchoring one would point the learner at a
@@ -328,15 +303,5 @@ String? _anchorFor(List<String> seq, Map<String, MissionProgress> rollup) {
     if (progress == null) continue;
     if (!progress.satisfied) return missionId;
   }
-  String? lowest;
-  int? lowestStars;
-  for (final missionId in seq) {
-    final progress = rollup[missionId];
-    if (progress == null) continue;
-    if (lowestStars == null || progress.stars < lowestStars) {
-      lowest = missionId;
-      lowestStars = progress.stars;
-    }
-  }
-  return lowest;
+  return null;
 }
