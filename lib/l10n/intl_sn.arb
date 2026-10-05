@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Tarisa makosi eruzhinji",
     "publicInviteDescChat": "Tsvaga vashandisi kuti uvakoke kune chat iyi.",
     "publicInviteDescSpace": "Tsvaga vashandisi kuti uvakoke kune nzvimbo ino.",
-    "useActivityImageAsChatBackground": "Shandisa mufananidzo wechiitiko semashure echati",
     "chatWithSupport": "Chat neRubatsiro",
     "newCourseAccess": "Nokusingaperi, makosi anotsvagwa pachena uye anoda mvumo yemutungamiriri kuti abatane. Unogona kugadzirisa zvigadziriso izvi chero nguva.",
     "onboardingLanguagesTitle": "Uri kudzidza mutauro upi?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Network iyi haitibvumire kusvika ku {provider} kuti tikupinze. Wi-Fi yechikoro neyehofisi inowanzoivharira. Unogona kusaina neemail panzvimbo, kana kuchinja kune imwe network woedza zvakare.",
     "ssoTryAnyway": "Edza zvakadaro",
     "publicCoursesFilterTooltip": "Ratidza makosi anogona kupindwa nemunhu wese",
-    "restrictedCoursesFilterTooltip": "Ratidza makosi aunofanira kukumbira kuti upinde"
+    "restrictedCoursesFilterTooltip": "Ratidza makosi aunofanira kukumbira kuti upinde",
+    "viewImageLabel": "Tarisa mufananidzo"
 }

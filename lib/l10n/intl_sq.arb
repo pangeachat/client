@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Shfletoni kurset publike",
     "publicInviteDescChat": "Kërkoni përdorues për t'i ftuar në këtë bisedë.",
     "publicInviteDescSpace": "Kërkoni përdorues për t'i ftuar në këtë hapësirë.",
-    "useActivityImageAsChatBackground": "Përdor imazhin e aktivitetit si sfond bisede",
     "chatWithSupport": "Bisedoni me Mbështetjen",
     "newCourseAccess": "Si parazgjedhje, kurset janë të kërkueshme publikisht dhe kërkojnë miratimin e administratorit për t'u bashkuar. Këto cilësime mund t'i ndryshoni në çdo kohë.",
     "onboardingLanguagesTitle": "Çfarë gjuhe po mësoni?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Ky rrjet nuk na lejon të arrijmë te {provider} për t'u kyçur. Wi-Fi i shkollës dhe zyrës shpesh e bllokojnë atë. Mund të regjistroheni me email, ose të kaloni në një rrjet tjetër dhe të provoni përsëri.",
     "ssoTryAnyway": "Provo gjithsesi",
     "publicCoursesFilterTooltip": "Shfaq vetëm kurset ku mund të bashkohet kushdo",
-    "restrictedCoursesFilterTooltip": "Shfaq vetëm kurset ku duhet të kërkosh për t'u bashkuar"
+    "restrictedCoursesFilterTooltip": "Shfaq vetëm kurset ku duhet të kërkosh për t'u bashkuar",
+    "viewImageLabel": "Shiko imazhin"
 }

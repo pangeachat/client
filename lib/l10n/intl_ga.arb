@@ -7944,11 +7944,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Comhrá le Tacaíocht",
     "@chatWithSupport": {
         "type": "String",
@@ -9997,5 +9992,6 @@
     "ssoNetworkBlockedDesc": "Níl an líonra seo ag ligean dúinn {provider} a bhaint amach chun tú a shíniú isteach. Is minic a chuireann Wi-Fi scoile agus oifige bac air. Is féidir leat clárú le ríomhphost ina ionad, nó athrú go líonra eile agus triail eile a bhaint as.",
     "ssoTryAnyway": "Bain triail as ar aon nós",
     "publicCoursesFilterTooltip": "Taispeáin cúrsaí ar féidir le duine ar bith a bheith páirteach iontu amháin",
-    "restrictedCoursesFilterTooltip": "Taispeáin cúrsaí nach mór duit iarraidh a bheith páirteach iontu amháin"
+    "restrictedCoursesFilterTooltip": "Taispeáin cúrsaí nach mór duit iarraidh a bheith páirteach iontu amháin",
+    "viewImageLabel": "Amharc ar an íomhá"
 }

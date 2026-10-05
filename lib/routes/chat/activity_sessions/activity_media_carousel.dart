@@ -12,6 +12,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_video_player.d
 import 'package:fluffychat/routes/chat/activity_sessions/activity_video_screen.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_youtube_player.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/widgets/mxc_image_viewer.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
 
 /// The focused-surface media display for an activity (plan page and live
@@ -142,21 +143,22 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
     child: SizedBox(width: size, height: size, child: child),
   );
 
-  Widget _fallback(double size) => ImageByUrl(
-    imageUrl: widget.fallbackImageUrl,
-    width: size,
-    borderRadius: BorderRadius.zero,
-    replacement: SizedBox(height: size),
+  Widget _fallback(double size) => _ExpandableActivityImage(
+    displayUrl: widget.fallbackImageUrl,
+    fullUrl: widget.fallbackImageUrl,
+    size: size,
   );
 
   Widget _buildPage(ActivityMediaBlock block, int index, double size) {
     if (block.isImage) {
       final url = block.displayUrl(size);
-      return ImageByUrl(
-        imageUrl: url != null ? Uri.tryParse(url) : widget.fallbackImageUrl,
-        width: size,
-        borderRadius: BorderRadius.zero,
-        replacement: SizedBox(height: size),
+      final fullUrl = block.resolvedUrl;
+      return _ExpandableActivityImage(
+        displayUrl: url != null ? Uri.tryParse(url) : widget.fallbackImageUrl,
+        fullUrl: fullUrl != null
+            ? Uri.tryParse(fullUrl)
+            : widget.fallbackImageUrl,
+        size: size,
       );
     }
 
@@ -244,4 +246,43 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
         ),
     ],
   );
+}
+
+/// A square image cell that opens [fullUrl] in the full-screen image viewer on
+/// tap, so the learner can see the whole image the square crop cuts off.
+class _ExpandableActivityImage extends StatelessWidget {
+  final Uri? displayUrl;
+  final Uri? fullUrl;
+  final double size;
+
+  const _ExpandableActivityImage({
+    required this.displayUrl,
+    required this.fullUrl,
+    required this.size,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final image = ImageByUrl(
+      imageUrl: displayUrl,
+      width: size,
+      borderRadius: BorderRadius.zero,
+      replacement: SizedBox(height: size),
+    );
+    final fullUrl = this.fullUrl;
+    if (fullUrl == null) return image;
+
+    return FocusRingTapTarget(
+      label: L10n.of(context).viewImageLabel,
+      shape: const RoundedRectangleBorder(),
+      // The ring crosses the image, where no single colour holds 3:1.
+      twoToneRing: true,
+      onTap: () => showDialog(
+        context: context,
+        builder: (_) =>
+            MxcImageViewer(fullUrl, semanticsLabel: L10n.of(context).image),
+      ),
+      child: image,
+    );
+  }
 }

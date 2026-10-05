@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Tirotiro i ngā akoranga tūmatanui",
     "publicInviteDescChat": "Rapua ngā kaiwhakamahi hei tono i a rātou ki tēnei korerorero.",
     "publicInviteDescSpace": "Rapua ngā kaiwhakamahi hei tono i a rātou ki tēnei wāhi.",
-    "useActivityImageAsChatBackground": "Whakamahia te whakaahua mahi hei papamuri korerorero",
     "chatWithSupport": "Korerorero ki te Tautoko",
     "newCourseAccess": "Mā te taunoa, ka taea te rapu tūmatanui i ngā akoranga, ā, me whakaae te kaiwhakahaere kia uru. Ka taea e koe te whakatika i ēnei tautuhinga i ngā wā katoa.",
     "onboardingLanguagesTitle": "He aha te reo e ako ana koe?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Kāore tēnei whatunga e tuku ana kia toro atu mātou ki a {provider} hei takiuru i a koe. He maha ngā wā ka aukatihia e te Wi-Fi o te kura, o te tari rānei. Ka taea e koe te rēhita mā te īmēra, te huri rānei ki tētahi atu whatunga ka ngana anō.",
     "ssoTryAnyway": "Ngana tonu",
     "publicCoursesFilterTooltip": "Whakaaturia ngā akoranga ka taea e te tangata te uru atu",
-    "restrictedCoursesFilterTooltip": "Whakaaturia ngā akoranga me tono koe kia uru atu"
+    "restrictedCoursesFilterTooltip": "Whakaaturia ngā akoranga me tono koe kia uru atu",
+    "viewImageLabel": "Tirohia te atahanga"
 }

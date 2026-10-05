@@ -7850,11 +7850,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "از تصویر فعالیت به عنوان پس‌زمینه چت استفاده کنید",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "چت با پشتیبانی",
     "@chatWithSupport": {
         "type": "String",
@@ -10074,5 +10069,6 @@
     "ssoNetworkBlockedDesc": "این شبکه به ما اجازه نمی‌دهد برای ورود شما به {provider} دسترسی پیدا کنیم. وای‌فای مدرسه و اداره اغلب آن را مسدود می‌کنند. می‌توانید به جای آن با ایمیل ثبت‌نام کنید، یا به شبکه دیگری متصل شوید و دوباره امتحان کنید.",
     "ssoTryAnyway": "به هر حال امتحان کن",
     "publicCoursesFilterTooltip": "فقط دوره‌هایی را نشان بده که همه می‌توانند به آن‌ها بپیوندند",
-    "restrictedCoursesFilterTooltip": "فقط دوره‌هایی را نشان بده که برای پیوستن به آن‌ها باید درخواست دهید"
+    "restrictedCoursesFilterTooltip": "فقط دوره‌هایی را نشان بده که برای پیوستن به آن‌ها باید درخواست دهید",
+    "viewImageLabel": "مشاهده تصویر"
 }

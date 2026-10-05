@@ -8677,11 +8677,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Brug aktivitetsbillede som chatbaggrund",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat med support",
     "@chatWithSupport": {
         "type": "String",
@@ -10906,5 +10901,6 @@
     "ssoNetworkBlockedDesc": "Dette netværk tillader os ikke at nå {provider} for at logge dig ind. Skole- og kontor-Wi-Fi blokerer det ofte. Du kan i stedet tilmelde dig med e-mail eller skifte til et andet netværk og prøve igen.",
     "ssoTryAnyway": "Prøv alligevel",
     "publicCoursesFilterTooltip": "Vis kun kurser, alle kan deltage i",
-    "restrictedCoursesFilterTooltip": "Vis kun kurser, du skal anmode om at deltage i"
+    "restrictedCoursesFilterTooltip": "Vis kun kurser, du skal anmode om at deltage i",
+    "viewImageLabel": "Se billede"
 }

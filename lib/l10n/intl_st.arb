@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Batla lithupelo tsa sechaba",
     "publicInviteDescChat": "Batla basebelisi ho ba memela moqoqong ona.",
     "publicInviteDescSpace": "Batla basebelisi ho ba memela sebakeng sena.",
-    "useActivityImageAsChatBackground": "Sebelisa setšoantšo sa mosebetsi joalo ka bokamorao ba moqoqo",
     "chatWithSupport": "Qoqa le Tšehetso",
     "newCourseAccess": "Ka ho sa feleng, lithupelo li ka batloa ke sechaba 'me li hloka tumello ea molaoli ho kena. U ka fetola litlhophiso tsena neng kapa neng.",
     "onboardingLanguagesTitle": "U ithuta puo efe?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Marang-rang ana ha a re lumelle ho fihlella {provider} ho u kenya. Wi-Fi ea sekolo le ofisi hangata e a e thibela. U ka ingolisa ka imeile ho e-na le hoo, kapa ua fetohela marang-rang a mang 'me ua leka hape.",
     "ssoTryAnyway": "Leka leha ho le joalo",
     "publicCoursesFilterTooltip": "Bontsha lithuto tseo mang kapa mang a ka kenelang ho tsona feela",
-    "restrictedCoursesFilterTooltip": "Bontsha lithuto tseo o tlamehang ho kopa ho kenela ho tsona feela"
+    "restrictedCoursesFilterTooltip": "Bontsha lithuto tseo o tlamehang ho kopa ho kenela ho tsona feela",
+    "viewImageLabel": "Bona setshwantsho"
 }

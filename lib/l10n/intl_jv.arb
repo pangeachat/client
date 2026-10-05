@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Telusuri kursus umum",
     "publicInviteDescChat": "Telusuri pangguna kanggo ngundang menyang obrolan iki.",
     "publicInviteDescSpace": "Telusuri pangguna kanggo ngundang menyang papan iki.",
-    "useActivityImageAsChatBackground": "Gunakake gambar kegiatan minangka latar mburi obrolan",
     "chatWithSupport": "Ngobrol karo Dhukungan",
     "newCourseAccess": "Sacara standar, kursus bisa digoleki sacara umum lan mbutuhake persetujuan admin kanggo gabung. Sampeyan bisa ngowahi setelan iki kapan wae.",
     "onboardingLanguagesTitle": "Basa apa sing lagi sampeyan sinau?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Jaringan iki ora ngidini kita ngakses {provider} kanggo mlebu. Wi-Fi sekolah lan kantor asring mblokir. Sampeyan bisa ndhaptar nganggo email, utawa ngganti jaringan liyane banjur coba maneh.",
     "ssoTryAnyway": "Coba wae",
     "publicCoursesFilterTooltip": "Tampilake mung kursus sing sapa wae bisa melu",
-    "restrictedCoursesFilterTooltip": "Tampilake mung kursus sing kudu njaluk ijin kanggo melu"
+    "restrictedCoursesFilterTooltip": "Tampilake mung kursus sing kudu njaluk ijin kanggo melu",
+    "viewImageLabel": "Deleng gambar"
 }

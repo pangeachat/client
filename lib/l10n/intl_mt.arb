@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Fittex korsijiet pubbliċi",
     "publicInviteDescChat": "Fittex utenti biex tistedinhom f'din iċ-chat.",
     "publicInviteDescSpace": "Fittex utenti biex tistedinhom f'dan l-ispazju.",
-    "useActivityImageAsChatBackground": "Uża l-immaġni tal-attività bħala sfond taċ-chat",
     "chatWithSupport": "Iċċettja mal-Appoġġ",
     "newCourseAccess": "B'mod awtomatiku, il-korsijiet huma pubblikament riċerkabbli u jeħtieġu l-approvazzjoni tal-amministratur biex tingħaqad. Tista' teditja dawn is-settings fi kwalunkwe ħin.",
     "onboardingLanguagesTitle": "Liema lingwa qed titgħallem?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Din in-netwerk mhux qed tħallina nilħqu lil {provider} biex nirreġistrawk. Il-Wi-Fi tal-iskola u l-uffiċċju spiss jimblokkawha. Tista' tirreġistra bl-email minflok, jew taqleb għal netwerk ieħor u terġa' tipprova.",
     "ssoTryAnyway": "Erġa' pprova xorta",
     "publicCoursesFilterTooltip": "Uri biss korsijiet li kulħadd jista' jingħaqad magħhom",
-    "restrictedCoursesFilterTooltip": "Uri biss korsijiet li trid titlob biex tingħaqad magħhom"
+    "restrictedCoursesFilterTooltip": "Uri biss korsijiet li trid titlob biex tingħaqad magħhom",
+    "viewImageLabel": "Ara l-istampa"
 }

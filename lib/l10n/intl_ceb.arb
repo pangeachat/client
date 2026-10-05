@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Pag-browse sa mga publikong kurso",
     "publicInviteDescChat": "Pangita og mga tiggamit aron imbitahon sila niini nga chat.",
     "publicInviteDescSpace": "Pangita og mga tiggamit aron imbitahon sila niini nga espasyo.",
-    "useActivityImageAsChatBackground": "Gamita ang hulagway sa kalihokan isip background sa chat",
     "chatWithSupport": "Pakig-chat sa Suporta",
     "newCourseAccess": "Sa kasagaran, ang mga kurso mahimong pangitaon sa publiko ug nagkinahanglan og pag-uyon sa admin aron makaapil. Mahimo nimong i-edit kini nga mga setting bisan unsang orasa.",
     "onboardingLanguagesTitle": "Unsang pinulongan ang imong gitun-an?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Kini nga network wala nagtugot kanamo nga maabot ang {provider} aron ma-sign in ka. Ang Wi-Fi sa eskwelahan ug opisina kasagaran nagbabag niini. Mahimo kang mag-sign up gamit ang email, o mobalhin sa laing network ug mosulay pag-usab.",
     "ssoTryAnyway": "Sulayi gihapon",
     "publicCoursesFilterTooltip": "Ipakita lang ang mga kurso nga bisan kinsa makasalmot",
-    "restrictedCoursesFilterTooltip": "Ipakita lang ang mga kurso nga kinahanglan kang mangayo og pagtugot aron makasalmot"
+    "restrictedCoursesFilterTooltip": "Ipakita lang ang mga kurso nga kinahanglan kang mangayo og pagtugot aron makasalmot",
+    "viewImageLabel": "Tan-awa ang hulagway"
 }

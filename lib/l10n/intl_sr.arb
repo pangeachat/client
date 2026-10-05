@@ -8706,11 +8706,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu za čat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Razgovarajte sa podrškom",
     "@chatWithSupport": {
         "type": "String",
@@ -10935,5 +10930,6 @@
     "ssoNetworkBlockedDesc": "Ova mreža nam ne dozvoljava da dođemo do {provider} da bismo vas prijavili. Školski i kancelarijski Wi-Fi često blokiraju pristup. Umesto toga, možete se prijaviti putem e-pošte ili preći na drugu mrežu i pokušati ponovo.",
     "ssoTryAnyway": "Pokušajte svejedno",
     "publicCoursesFilterTooltip": "Prikaži samo kurseve kojima se svako može pridružiti",
-    "restrictedCoursesFilterTooltip": "Prikaži samo kurseve za koje moraš tražiti dozvolu za pridruživanje"
+    "restrictedCoursesFilterTooltip": "Prikaži samo kurseve za koje moraš tražiti dozvolu za pridruživanje",
+    "viewImageLabel": "Prikaži sliku"
 }

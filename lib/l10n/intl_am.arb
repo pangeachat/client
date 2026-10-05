@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "ለሁሉም ክፍት የሆኑ ኮርሶችን ያስሱ",
     "publicInviteDescChat": "ወደዚህ ውይይት ለመጋበዝ ተጠቃሚዎችን ይፈልጉ።",
     "publicInviteDescSpace": "ወደዚህ ምህዳር ለመጋበዝ ተጠቃሚዎችን ይፈልጉ።",
-    "useActivityImageAsChatBackground": "የእንቅስቃሴውን ምስል እንደ የውይይት ዳራ ይጠቀሙ",
     "chatWithSupport": "ከድጋፍ ሰጪ ቡድን ጋር ይወያዩ",
     "newCourseAccess": "በነባሪነት፣ ኮርሶች ለሕዝብ ፍለጋ ክፍት ሲሆኑ ለመቀላቀል የአስተዳዳሪ ይሁንታ ያስፈልጋቸዋል። እነዚህን ቅንብሮች በማንኛውም ጊዜ ማስተካከል ይችላሉ።",
     "onboardingLanguagesTitle": "የትኛውን ቋንቋ እየተማሩ ነው?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "ይህ አውታረ መረብ እርስዎን ለማስገባት ወደ {provider} እንዳንደርስ እየከለከለን ነው። የትምህርት ቤት እና የቢሮ ዋይፋይ ብዙ ጊዜ ያግዱታል። በምትኩ በኢሜል መመዝገብ ወይም ወደ ሌላ አውታረ መረብ ቀይረው እንደገና መሞከር ይችላሉ።",
     "ssoTryAnyway": "ለማንኛውም ይሞክሩ",
     "publicCoursesFilterTooltip": "ማንም ሰው መቀላቀል የሚችለውን ኮርሶች ብቻ አሳይ",
-    "restrictedCoursesFilterTooltip": "ለመቀላቀል መጠየቅ ያለብዎትን ኮርሶች ብቻ አሳይ"
+    "restrictedCoursesFilterTooltip": "ለመቀላቀል መጠየቅ ያለብዎትን ኮርሶች ብቻ አሳይ",
+    "viewImageLabel": "ምስል ይመልከቱ"
 }

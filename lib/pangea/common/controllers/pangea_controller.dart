@@ -7,7 +7,6 @@ import 'package:matrix/matrix.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/bot/bot_client_extension.dart';
@@ -24,7 +23,6 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
-import 'package:fluffychat/routes/settings/settings_style/style_settings_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../utils/firebase_analytics.dart';
 
@@ -81,13 +79,6 @@ class PangeaController {
     });
 
     subscriptionController.reinitialize(userID);
-
-    if (userID != null) {
-      StyleSettingsRepo.settings(userID).then((settings) {
-        AppConfig.useActivityImageAsChatBackground =
-            settings.useActivityImageBackground;
-      });
-    }
 
     final client = matrixState.client;
     if (client.prevBatch == null) {

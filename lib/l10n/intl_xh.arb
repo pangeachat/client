@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Khangela iikhosi zikawonke-wonke",
     "publicInviteDescChat": "Khangela abasebenzisi ukubamema kule ncoko.",
     "publicInviteDescSpace": "Khangela abasebenzisi ukubamema kwesi sithuba.",
-    "useActivityImageAsChatBackground": "Sebenzisa umfanekiso womsebenzi njengemvelaphi yencoko",
     "chatWithSupport": "Ncokola neNkxaso",
     "newCourseAccess": "Ngokungagqibekanga, iikhosi ziyakhangelwa esidlangalaleni kwaye zifuna imvume yomlawuli ukungena. Ungazihlela ezi setingi nangaliphi na ixesha.",
     "onboardingLanguagesTitle": "Loluphi ulwimi olufundayo?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Le nethiwekhi ayisivumeli ukuba sifikelele ku-{provider} ukuze sikungenise. IWi-Fi yesikolo neyeofisi isoloko iyivala. Ungabhalisa nge-imeyile endaweni yoko, okanye utshintshele kwenye inethiwekhi uze uzame kwakhona.",
     "ssoTryAnyway": "Zama nangona kunjalo",
     "publicCoursesFilterTooltip": "Bonisa kuphela izifundo nabani na anokuzijoyina",
-    "restrictedCoursesFilterTooltip": "Bonisa kuphela izifundo ekufuneka ucele ukuzijoyina"
+    "restrictedCoursesFilterTooltip": "Bonisa kuphela izifundo ekufuneka ucele ukuzijoyina",
+    "viewImageLabel": "Jonga umfanekiso"
 }

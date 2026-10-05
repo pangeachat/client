@@ -7958,11 +7958,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Aktivitätsbild als Chat-Hintergrund verwenden",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat mit dem Support",
     "@chatWithSupport": {
         "type": "String",
@@ -9973,5 +9968,6 @@
     "ssoNetworkBlockedDesc": "Dieses Netzwerk lässt uns nicht zu {provider} durch, um dich anzumelden. Schul- und Büro-WLAN blockieren dies oft. Du kannst dich stattdessen mit E-Mail anmelden oder zu einem anderen Netzwerk wechseln und es erneut versuchen.",
     "ssoTryAnyway": "Trotzdem versuchen",
     "publicCoursesFilterTooltip": "Nur Kurse anzeigen, denen jeder beitreten kann",
-    "restrictedCoursesFilterTooltip": "Nur Kurse anzeigen, für die du eine Beitrittsanfrage stellen musst"
+    "restrictedCoursesFilterTooltip": "Nur Kurse anzeigen, für die du eine Beitrittsanfrage stellen musst",
+    "viewImageLabel": "Bild ansehen"
 }

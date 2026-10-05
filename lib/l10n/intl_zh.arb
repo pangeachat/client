@@ -7937,11 +7937,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "将活动图像用作聊天背景",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "与支持聊天",
     "@chatWithSupport": {
         "type": "String",
@@ -9986,5 +9981,6 @@
     "ssoNetworkBlockedDesc": "此网络不允许我们访问 {provider} 来登录。学校和办公室的 Wi-Fi 通常会阻止它。您可以改为使用电子邮件注册，或切换到其他网络再试一次。",
     "ssoTryAnyway": "仍然尝试",
     "publicCoursesFilterTooltip": "仅显示任何人都可以加入的课程",
-    "restrictedCoursesFilterTooltip": "仅显示您必须申请才能加入的课程"
+    "restrictedCoursesFilterTooltip": "仅显示您必须申请才能加入的课程",
+    "viewImageLabel": "查看图片"
 }

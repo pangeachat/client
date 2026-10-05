@@ -7860,11 +7860,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Gunakan gambar aktivitas sebagai latar belakang obrolan",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat dengan Dukungan",
     "@chatWithSupport": {
         "type": "String",
@@ -10059,5 +10054,6 @@
     "ssoNetworkBlockedDesc": "Jaringan ini tidak mengizinkan kami menjangkau {provider} untuk masuk. Wi-Fi sekolah dan kantor sering memblokirnya. Anda dapat mendaftar dengan email, atau beralih ke jaringan lain dan coba lagi.",
     "ssoTryAnyway": "Coba lagi",
     "publicCoursesFilterTooltip": "Tampilkan hanya kursus yang dapat diikuti siapa saja",
-    "restrictedCoursesFilterTooltip": "Tampilkan hanya kursus yang harus Anda minta untuk bergabung"
+    "restrictedCoursesFilterTooltip": "Tampilkan hanya kursus yang harus Anda minta untuk bergabung",
+    "viewImageLabel": "Lihat gambar"
 }

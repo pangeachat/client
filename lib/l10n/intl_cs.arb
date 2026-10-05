@@ -8265,11 +8265,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Použít obrázek aktivity jako pozadí chatu",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat s podporou",
     "@chatWithSupport": {
         "type": "String",
@@ -10480,5 +10475,6 @@
     "ssoNetworkBlockedDesc": "Tato síť nám neumožňuje spojit se s {provider} pro vaše přihlášení. Často to blokuje Wi-Fi ve škole nebo v kanceláři. Můžete se místo toho zaregistrovat e-mailem, nebo se přepnout na jinou síť a zkusit to znovu.",
     "ssoTryAnyway": "Přesto zkusit",
     "publicCoursesFilterTooltip": "Zobrazit pouze kurzy, ke kterým se může připojit kdokoli",
-    "restrictedCoursesFilterTooltip": "Zobrazit pouze kurzy, o které musíte požádat o připojení"
+    "restrictedCoursesFilterTooltip": "Zobrazit pouze kurzy, o které musíte požádat o připojení",
+    "viewImageLabel": "Zobrazit obrázek"
 }

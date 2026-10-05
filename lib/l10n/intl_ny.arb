@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Sakani maphunziro a anthu onse",
     "publicInviteDescChat": "Sakani ogwiritsa ntchito kuti muwaitane ku macheza awa.",
     "publicInviteDescSpace": "Sakani ogwiritsa ntchito kuti muwaitane ku malo awa.",
-    "useActivityImageAsChatBackground": "Gwiritsani ntchito chithunzi cha zochitika ngati maziko a macheza",
     "chatWithSupport": "Chezani ndi Thandizo",
     "newCourseAccess": "Mwachisawawa, maphunziro amapezeka pagulu ndipo amafunikira kuvomerezedwa ndi woyang'anira kuti alowe. Mutha kusintha zokonda izi nthawi iliyonse.",
     "onboardingLanguagesTitle": "Kodi mukupanga chilankhulo chotani?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Intaneti iyi ikutiletsa kufika ku {provider} kuti tikulowetseni. Ma Wi-Fi a kusukulu ndi ku ofesi nthawi zambiri amalepheretsa. Mutha kulembetsa ndi imelo m'malo mwake, kapena kusinthira ku intaneti ina ndikuyesanso.",
     "ssoTryAnyway": "Yesani komabe",
     "publicCoursesFilterTooltip": "Onetsani maphunziro okhawo amene aliyense angalowe",
-    "restrictedCoursesFilterTooltip": "Onetsani maphunziro okhawo amene muyenera kupempha kuti mulowe"
+    "restrictedCoursesFilterTooltip": "Onetsani maphunziro okhawo amene muyenera kupempha kuti mulowe",
+    "viewImageLabel": "Onani chithunzi"
 }

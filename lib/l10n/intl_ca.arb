@@ -7884,11 +7884,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Utilitza la imatge d'activitat com a fons de xat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Xateja amb el Suport",
     "@chatWithSupport": {
         "type": "String",
@@ -10113,5 +10108,6 @@
     "ssoNetworkBlockedDesc": "Aquesta xarxa no ens permet connectar amb {provider} per iniciar la sessió. Sovint, les xarxes Wi-Fi d'escoles i oficines bloquegen l'accés. Pots registrar-te amb el correu electrònic o canviar a una altra xarxa i tornar-ho a provar.",
     "ssoTryAnyway": "Prova igualment",
     "publicCoursesFilterTooltip": "Mostra només els cursos als quals qualsevol es pot unir",
-    "restrictedCoursesFilterTooltip": "Mostra només els cursos als quals has de demanar unió"
+    "restrictedCoursesFilterTooltip": "Mostra només els cursos als quals has de demanar unió",
+    "viewImageLabel": "Veure imatge"
 }

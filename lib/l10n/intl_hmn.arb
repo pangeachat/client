@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Tshawb nrhiav cov chav kawm pej xeem",
     "publicInviteDescChat": "Tshawb nrhiav cov neeg siv los caw lawv mus rau hauv kev sib tham no.",
     "publicInviteDescSpace": "Tshawb nrhiav cov neeg siv los caw lawv mus rau hauv qhov chaw no.",
-    "useActivityImageAsChatBackground": "Siv daim duab ua haujlwm ua keeb kwm yav dhau kev sib tham",
     "chatWithSupport": "Sib tham nrog Kev Pabcuam",
     "newCourseAccess": "Los ntawm lub neej ntawd, cov chav kawm tuaj yeem tshawb nrhiav tau rau pej xeem thiab yuav tsum tau tus thawj tswj hwm pom zoo kom koom. Koj tuaj yeem hloov kho cov chaw no txhua lub sijhawm.",
     "onboardingLanguagesTitle": "Koj tab tom kawm hom lus dab tsi?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Lub network no tsis tso cai rau peb mus txog {provider} los pab koj nkag. Feem ntau, tsev kawm ntawv thiab chaw ua haujlwm Wi-Fi thaiv nws. Koj tuaj yeem sau npe nrog email es tsis txhob, los yog hloov mus rau lwm lub network thiab sim dua.",
     "ssoTryAnyway": "Sim txawm li cas los xij",
     "publicCoursesFilterTooltip": "Qhia cov hoob kawm uas leej twg los koom tau xwb",
-    "restrictedCoursesFilterTooltip": "Qhia cov hoob kawm uas koj yuav tsum tau thov koom xwb"
+    "restrictedCoursesFilterTooltip": "Qhia cov hoob kawm uas koj yuav tsum tau thov koom xwb",
+    "viewImageLabel": "Saib duab"
 }

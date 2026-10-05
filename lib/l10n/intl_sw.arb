@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Vinjari kozi za umma",
     "publicInviteDescChat": "Tafuta watumiaji ili kuwaalika kwenye gumzo hili.",
     "publicInviteDescSpace": "Tafuta watumiaji ili kuwaalika kwenye nafasi hii.",
-    "useActivityImageAsChatBackground": "Tumia picha ya shughuli kama mandharinyuma ya gumzo",
     "chatWithSupport": "Piga gumzo na Usaidizi",
     "newCourseAccess": "Kwa chaguo-msingi, kozi zinaweza kutafutwa hadharani na zinahitaji idhini ya msimamizi ili kujiunga. Unaweza kuhariri mipangilio hii wakati wowote.",
     "onboardingLanguagesTitle": "Unajifunza lugha gani?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Mtandao huu hauturuhusu kufikia {provider} ili kukuunganisha. Wi-Fi za shule na ofisi mara nyingi huizuia. Unaweza kujiandikisha kwa barua pepe badala yake, au ubadili mtandao mwingine na ujaribu tena.",
     "ssoTryAnyway": "Jaribu hata hivyo",
     "publicCoursesFilterTooltip": "Onyesha kozi ambazo kila mtu anaweza kujiunga nazo",
-    "restrictedCoursesFilterTooltip": "Onyesha kozi ambazo lazima uombe kujiunga nazo"
+    "restrictedCoursesFilterTooltip": "Onyesha kozi ambazo lazima uombe kujiunga nazo",
+    "viewImageLabel": "Tazama picha"
 }

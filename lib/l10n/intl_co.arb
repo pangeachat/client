@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Sfoglia i corsi publichi",
     "publicInviteDescChat": "Ricercate utilizatori per invità li à stu chat.",
     "publicInviteDescSpace": "Ricercate utilizatori per invità li à stu spaziu.",
-    "useActivityImageAsChatBackground": "Aduprà l'imagine di l'attività cum'è fondu di u chat",
     "chatWithSupport": "Chattà cù u Supportu",
     "newCourseAccess": "Per difettu, i corsi sò cercabili publicamente è necessitanu l'approvazione di l'amministratore per aderisce. Pudete mudificà sti parametri in ogni mumentu.",
     "onboardingLanguagesTitle": "Chì lingua amparate?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Sta rete ùn ci permette micca di ghjunghje à {provider} per cunnettavvi. U Wi-Fi di a scola è di l'uffiziu u bluccanu spessu. Pudete iscrivevi cù l'email invece, o passà à un'altra rete è riprovà.",
     "ssoTryAnyway": "Pruvate quantunque",
     "publicCoursesFilterTooltip": "Mostra solu i corsi à i quali ognunu pò participà",
-    "restrictedCoursesFilterTooltip": "Mostra solu i corsi à i quali duvete dumandà di participà"
+    "restrictedCoursesFilterTooltip": "Mostra solu i corsi à i quali duvete dumandà di participà",
+    "viewImageLabel": "Vede l'imagine"
 }

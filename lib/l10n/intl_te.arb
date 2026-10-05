@@ -8707,11 +8707,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "చాట్ నేపథ్యంగా కార్యకలాప చిత్రాన్ని ఉపయోగించండి",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "సహాయంతో చాట్ చేయండి",
     "@chatWithSupport": {
         "type": "String",
@@ -10936,5 +10931,6 @@
     "ssoNetworkBlockedDesc": "మీరు సైన్ ఇన్ చేయడానికి {provider}ని చేరుకోవడానికి ఈ నెట్‌వర్క్ అనుమతించడం లేదు. పాఠశాల మరియు కార్యాలయ Wi-Fi తరచుగా దీన్ని బ్లాక్ చేస్తాయి. మీరు బదులుగా ఇమెయిల్‌తో సైన్ అప్ చేయవచ్చు లేదా మరొక నెట్‌వర్క్‌కి మారవచ్చు మరియు మళ్లీ ప్రయత్నించవచ్చు.",
     "ssoTryAnyway": "ఏమైనా ప్రయత్నించండి",
     "publicCoursesFilterTooltip": "ఎవరైనా చేరగల కోర్సులను మాత్రమే చూపించు",
-    "restrictedCoursesFilterTooltip": "మీరు చేరమని అడగాల్సిన కోర్సులను మాత్రమే చూపించు"
+    "restrictedCoursesFilterTooltip": "మీరు చేరమని అడగాల్సిన కోర్సులను మాత్రమే చూపించు",
+    "viewImageLabel": "చిత్రాన్ని వీక్షించండి"
 }

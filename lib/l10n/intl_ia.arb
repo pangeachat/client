@@ -8693,11 +8693,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Fala com o Suporte",
     "@chatWithSupport": {
         "type": "String",
@@ -10922,5 +10917,6 @@
     "ssoNetworkBlockedDesc": "Iste rete non nos permitte attinger {provider} pro authentificar vos. Le Wi-Fi de scholas e officios sovente lo bloca. Vos pote registrar vos con e-mail in loco, o cambiar a un altere rete e reprovar.",
     "ssoTryAnyway": "Provar de tote modos",
     "publicCoursesFilterTooltip": "Monstrar solmente cursos a los que tote le mundo pote unir se",
-    "restrictedCoursesFilterTooltip": "Monstrar solmente cursos a los que tu debe demandar de unir te"
+    "restrictedCoursesFilterTooltip": "Monstrar solmente cursos a los que tu debe demandar de unir te",
+    "viewImageLabel": "Vider imagine"
 }

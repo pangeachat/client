@@ -7937,11 +7937,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Usa a imaxe de actividade como fondo de chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chatear co Soporte",
     "@chatWithSupport": {
         "type": "String",
@@ -9986,5 +9981,6 @@
     "ssoNetworkBlockedDesc": "Esta rede non nos permite acceder a {provider} para iniciar a túa sesión. As redes Wi-Fi de escolas e oficinas adoitan bloquealo. Podes rexistrarte con correo electrónico ou cambiar a outra rede e tentalo de novo.",
     "ssoTryAnyway": "Tentar de todos os xeitos",
     "publicCoursesFilterTooltip": "Mostrar só os cursos aos que calquera se pode unir",
-    "restrictedCoursesFilterTooltip": "Mostrar só os cursos aos que debes solicitar unirte"
+    "restrictedCoursesFilterTooltip": "Mostrar só os cursos aos que debes solicitar unirte",
+    "viewImageLabel": "Ver imaxe"
 }

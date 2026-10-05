@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "İctimai kurslara baxın",
     "publicInviteDescChat": "Bu çata dəvət etmək üçün istifadəçiləri axtarın.",
     "publicInviteDescSpace": "Bu məkana dəvət etmək üçün istifadəçiləri axtarın.",
-    "useActivityImageAsChatBackground": "Fəaliyyət şəklini çat fonu kimi istifadə et",
     "chatWithSupport": "Dəstək ilə söhbət et",
     "newCourseAccess": "Standart olaraq, kurslar ictimai axtarışa açıqdır və qoşulmaq üçün administrator təsdiqi tələb edir. Bu ayarları istənilən vaxt redaktə edə bilərsiniz.",
     "onboardingLanguagesTitle": "Hansı dili öyrənirsiniz?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Bu şəbəkə sizin daxil olmağınız üçün {provider} ilə əlaqə saxlamağımıza icazə vermir. Məktəb və ofis Wi-Fi-ları bunu tez-tez bloklayır. Bunun əvəzinə e-poçtla qeydiyyatdan keçə bilərsiniz və ya başqa şəbəkəyə keçib yenidən cəhd edə bilərsiniz.",
     "ssoTryAnyway": "Yenə də cəhd edin",
     "publicCoursesFilterTooltip": "Yalnız hər kəsin qoşula biləcəyi kursları göstər",
-    "restrictedCoursesFilterTooltip": "Yalnız qoşulmaq üçün soruşmalı olduğunuz kursları göstər"
+    "restrictedCoursesFilterTooltip": "Yalnız qoşulmaq üçün soruşmalı olduğunuz kursları göstər",
+    "viewImageLabel": "Şəklə bax"
 }

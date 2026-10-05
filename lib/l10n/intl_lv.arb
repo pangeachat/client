@@ -7937,11 +7937,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Izmantojiet aktivitātes attēlu kā čata fona",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Sarunāties ar atbalstu",
     "@chatWithSupport": {
         "type": "String",
@@ -9986,5 +9981,6 @@
     "ssoNetworkBlockedDesc": "Šis tīkls neļauj mums sasniegt {provider}, lai jūs pieteiktu. Skolas un biroja Wi-Fi bieži to bloķē. Jūs varat reģistrēties ar e-pastu vai pārslēgties uz citu tīklu un mēģināt vēlreiz.",
     "ssoTryAnyway": "Tomēr mēģināt",
     "publicCoursesFilterTooltip": "Rādīt tikai kursus, kuriem var pievienoties ikviens",
-    "restrictedCoursesFilterTooltip": "Rādīt tikai kursus, kuriem jāpieprasa pievienošanās"
+    "restrictedCoursesFilterTooltip": "Rādīt tikai kursus, kuriem jāpieprasa pievienošanās",
+    "viewImageLabel": "Skatīt attēlu"
 }

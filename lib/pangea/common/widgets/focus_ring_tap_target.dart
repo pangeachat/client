@@ -161,7 +161,14 @@ class _FocusRingTapTargetState extends State<FocusRingTapTarget> {
       ),
     );
     if (label == null) return target;
-    return Semantics(button: true, label: label, child: target);
+    // A container, or the button absorbs the text of the widgets beside it
+    // into its own name (#9356).
+    return Semantics(
+      container: true,
+      button: true,
+      label: label,
+      child: target,
+    );
   }
 }
 

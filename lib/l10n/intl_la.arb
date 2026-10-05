@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Explora cursus publicos",
     "publicInviteDescChat": "Quaere utentes ut eos ad hoc colloquium invites.",
     "publicInviteDescSpace": "Quaere utentes ut eos ad hoc spatium invites.",
-    "useActivityImageAsChatBackground": "Utere imagine actionis ut scaena colloquii",
     "chatWithSupport": "Colloquere cum Auxilio",
     "newCourseAccess": "Defalte, cursus publice quaeribiles sunt et approbationem administratoris ad iungendum requirunt. Has optiones quovis tempore mutare potes.",
     "onboardingLanguagesTitle": "Quam linguam discis?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Haec retis nos prohibet ad {provider} pervenire ut te inigas. Wi-Fi scholae et officii saepe id impediunt. Potes proinde per electronicam subscribere, aut ad aliam retem mutare et iterum conari.",
     "ssoTryAnyway": "Nihilominus conare",
     "publicCoursesFilterTooltip": "Ostende tantum cursus quibus quisque iungere potest",
-    "restrictedCoursesFilterTooltip": "Ostende tantum cursus quibus petendum est ut iungas"
+    "restrictedCoursesFilterTooltip": "Ostende tantum cursus quibus petendum est ut iungas",
+    "viewImageLabel": "Imaginem inspice"
 }

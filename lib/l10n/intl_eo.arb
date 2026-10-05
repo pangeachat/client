@@ -8702,11 +8702,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Uzu aktivan bildon kiel ĉatfondon",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Babili kun Subteno",
     "@chatWithSupport": {
         "type": "String",
@@ -10931,5 +10926,6 @@
     "ssoNetworkBlockedDesc": "Ĉi tiu reto ne permesas al ni atingi {provider} por ensaluti vin. Lerneja kaj oficeja retkonekto ofte blokas ĝin. Vi povas registriĝi per retpoŝto anstataŭe, aŭ ŝanĝi al alia reto kaj reprovi.",
     "ssoTryAnyway": "Provu ĉiukaze",
     "publicCoursesFilterTooltip": "Montri nur kursojn al kiuj iu ajn povas aliĝi",
-    "restrictedCoursesFilterTooltip": "Montri nur kursojn al kiuj vi devas peti aliĝon"
+    "restrictedCoursesFilterTooltip": "Montri nur kursojn al kiuj vi devas peti aliĝon",
+    "viewImageLabel": "Vidi bildon"
 }

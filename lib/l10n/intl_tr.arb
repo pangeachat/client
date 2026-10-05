@@ -8058,11 +8058,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Etkinlik resmini sohbet arka planı olarak kullan",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Destek ile Sohbet Et",
     "@chatWithSupport": {
         "type": "String",
@@ -10287,5 +10282,6 @@
     "ssoNetworkBlockedDesc": "Bu ağ, giriş yapmanız için {provider} adresine ulaşmamızı engelliyor. Okul ve ofis Wi-Fi'ları genellikle bunu engeller. Bunun yerine e-posta ile kaydolabilir veya başka bir ağa geçip tekrar deneyebilirsiniz.",
     "ssoTryAnyway": "Yine de dene",
     "publicCoursesFilterTooltip": "Yalnızca herkesin katılabileceği kursları göster",
-    "restrictedCoursesFilterTooltip": "Yalnızca katılmak için izin almanız gereken kursları göster"
+    "restrictedCoursesFilterTooltip": "Yalnızca katılmak için izin almanız gereken kursları göster",
+    "viewImageLabel": "Resmi görüntüle"
 }

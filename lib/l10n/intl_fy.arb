@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Sykje iepenbiere kursussen",
     "publicInviteDescChat": "Sykje brûkers om se út te noegjen foar dizze chat.",
     "publicInviteDescSpace": "Sykje brûkers om se út te noegjen foar dizze romte.",
-    "useActivityImageAsChatBackground": "Brûk aktiviteitsôfbylding as chat-eftergrûn",
     "chatWithSupport": "Chat mei Support",
     "newCourseAccess": "Standert binne kursussen iepenbier te finen en fereaskje se goedkarring fan in behearder om mei te dwaan. Jo kinne dizze ynstellings op elk momint bewurkje.",
     "onboardingLanguagesTitle": "Hokker taal learst?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Dit netwurk lit ús {provider} net berikke om jo oan te melden. Wi-Fi op skoalle en kantoar blokkearret dit faak. Jo kinne ynstee oanmelde mei e-mail, of oerskeakelje nei in oar netwurk en it opnij besykje.",
     "ssoTryAnyway": "Dochs besykje",
     "publicCoursesFilterTooltip": "Lit allinnich kursussen sjen dêr't elkenien oan meidwaan kin",
-    "restrictedCoursesFilterTooltip": "Lit allinnich kursussen sjen dêr't jo om tagong freegje moatte"
+    "restrictedCoursesFilterTooltip": "Lit allinnich kursussen sjen dêr't jo om tagong freegje moatte",
+    "viewImageLabel": "Ofbylding besjen"
 }

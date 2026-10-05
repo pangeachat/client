@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Navige kou piblik yo",
     "publicInviteDescChat": "Chèche itilizatè yo pou envite yo nan chat sa a.",
     "publicInviteDescSpace": "Chèche itilizatè yo pou envite yo nan espas sa a.",
-    "useActivityImageAsChatBackground": "Itilize imaj aktivite a kòm background chat",
     "chatWithSupport": "Chat ak Sipò",
     "newCourseAccess": "Pa defo, kou yo ka chèche piblikman epi yo mande apwobasyon admin pou rantre. Ou ka modifye paramèt sa yo nenpòt ki lè.",
     "onboardingLanguagesTitle": "Ki lang w ap aprann?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Rezo sa a pa pèmèt nou jwenn aksè nan {provider} pou konekte ou. Wi-Fi lekòl ak biwo souvan bloke li. Ou ka enskri ak imèl pito, oswa chanje nan yon lòt rezo epi eseye ankò.",
     "ssoTryAnyway": "Eseye kanmenm",
     "publicCoursesFilterTooltip": "Montre sèlman kou tout moun ka antre",
-    "restrictedCoursesFilterTooltip": "Montre sèlman kou ou dwe mande pou antre"
+    "restrictedCoursesFilterTooltip": "Montre sèlman kou ou dwe mande pou antre",
+    "viewImageLabel": "Gade imaj"
 }

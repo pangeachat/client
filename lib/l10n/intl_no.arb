@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Bla gjennom offentlige kurs",
     "publicInviteDescChat": "Søk etter brukere for å invitere dem til denne chatten.",
     "publicInviteDescSpace": "Søk etter brukere for å invitere dem til dette rommet.",
-    "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
     "chatWithSupport": "Chat med support",
     "newCourseAccess": "Som standard er kurs offentlig søkbare og krever administratorgodkjenning for å bli med. Du kan redigere disse innstillingene når som helst.",
     "onboardingLanguagesTitle": "Hvilket språk lærer du?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Dette nettverket hindrer oss i å nå {provider} for å logge deg på. Skole- og kontor-Wi-Fi blokkerer ofte dette. Du kan registrere deg med e-post i stedet, eller bytte til et annet nettverk og prøve igjen.",
     "ssoTryAnyway": "Prøv likevel",
     "publicCoursesFilterTooltip": "Vis kun kurs alle kan delta i",
-    "restrictedCoursesFilterTooltip": "Vis kun kurs du må spørre om å få delta i"
+    "restrictedCoursesFilterTooltip": "Vis kun kurs du må spørre om å få delta i",
+    "viewImageLabel": "Vis bilde"
 }

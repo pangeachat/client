@@ -8389,11 +8389,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "ใช้ภาพกิจกรรมเป็นพื้นหลังแชท",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "แชทกับฝ่ายสนับสนุน",
     "@chatWithSupport": {
         "type": "String",
@@ -10618,5 +10613,6 @@
     "ssoNetworkBlockedDesc": "เครือข่ายนี้ไม่อนุญาตให้เราเข้าถึง {provider} เพื่อลงชื่อเข้าใช้คุณ Wi-Fi ของโรงเรียนและที่ทำงานมักจะบล็อกไว้ คุณสามารถลงทะเบียนด้วยอีเมลแทน หรือเปลี่ยนไปใช้เครือข่ายอื่นแล้วลองอีกครั้ง",
     "ssoTryAnyway": "ลองอีกครั้ง",
     "publicCoursesFilterTooltip": "แสดงเฉพาะคอร์สที่ทุกคนเข้าร่วมได้",
-    "restrictedCoursesFilterTooltip": "แสดงเฉพาะคอร์สที่คุณต้องขอเข้าร่วม"
+    "restrictedCoursesFilterTooltip": "แสดงเฉพาะคอร์สที่คุณต้องขอเข้าร่วม",
+    "viewImageLabel": "ดูรูปภาพ"
 }

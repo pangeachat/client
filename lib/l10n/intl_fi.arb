@@ -7925,11 +7925,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Käytä aktiviteettikuvaa chat-taustana",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chattaa tuen kanssa",
     "@chatWithSupport": {
         "type": "String",
@@ -10023,5 +10018,6 @@
     "ssoNetworkBlockedDesc": "Tämä verkko estää meitä tavoittamasta palvelua {provider} kirjautuaksesi sisään. Koulun ja toimiston Wi-Fi-verkot estävät sen usein. Voit kirjautua sisään sähköpostilla tai vaihtaa toiseen verkkoon ja yrittää uudelleen.",
     "ssoTryAnyway": "Yritä silti",
     "publicCoursesFilterTooltip": "Näytä vain kurssit, joihin kuka tahansa voi liittyä",
-    "restrictedCoursesFilterTooltip": "Näytä vain kurssit, joihin liittymistä on pyydettävä"
+    "restrictedCoursesFilterTooltip": "Näytä vain kurssit, joihin liittymistä on pyydettävä",
+    "viewImageLabel": "Näytä kuva"
 }

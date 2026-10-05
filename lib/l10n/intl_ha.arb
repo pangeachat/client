@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Duba kwas-kwas na jama'a",
     "publicInviteDescChat": "Nemo masu amfani don gayyatar su zuwa wannan hirar.",
     "publicInviteDescSpace": "Nemo masu amfani don gayyatar su zuwa wannan sararin.",
-    "useActivityImageAsChatBackground": "Yi amfani da hoton aiki a matsayin fuskar baya na hira",
     "chatWithSupport": "Yi hira da Taimako",
     "newCourseAccess": "A bisa al'ada, kwas-kwas na jama'a ne kuma suna buƙatar amincewar mai gudanarwa don shiga. Za ka iya gyara waɗannan saitunan a kowane lokaci.",
     "onboardingLanguagesTitle": "Wane harshe kake koya?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Wannan hanyar sadarwa ba ta barin mu mu kai ga {provider} don shigar da kai. Wi-Fi na makaranta da ofis sukan toshe shi. Zaka iya yin rajista da imel a maimakon haka, ko canza zuwa wata hanyar sadarwa kuma ka sake gwadawa.",
     "ssoTryAnyway": "Gwada ko yaya",
     "publicCoursesFilterTooltip": "Nuna darussa kawai da kowa zai iya shiga",
-    "restrictedCoursesFilterTooltip": "Nuna darussa kawai da dole ne ka nemi izinin shiga"
+    "restrictedCoursesFilterTooltip": "Nuna darussa kawai da dole ne ka nemi izinin shiga",
+    "viewImageLabel": "Duba hoto"
 }

@@ -8489,11 +8489,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal pentru chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat cu Suportul",
     "@chatWithSupport": {
         "type": "String",
@@ -10718,5 +10713,6 @@
     "ssoNetworkBlockedDesc": "Această rețea nu ne permite să ajungem la {provider} pentru a te conecta. Rețelele Wi-Fi de la școală și de la birou blochează adesea acest lucru. Te poți înscrie cu e-mail în schimb sau poți trece la o altă rețea și poți încerca din nou.",
     "ssoTryAnyway": "Încearcă oricum",
     "publicCoursesFilterTooltip": "Afișează doar cursurile la care oricine se poate alătura",
-    "restrictedCoursesFilterTooltip": "Afișează doar cursurile la care trebuie să ceri să te alături"
+    "restrictedCoursesFilterTooltip": "Afișează doar cursurile la care trebuie să ceri să te alături",
+    "viewImageLabel": "Vizualizați imaginea"
 }

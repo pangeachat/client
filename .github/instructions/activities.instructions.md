@@ -132,6 +132,8 @@ An activity's stimulus is a carousel of mixed media — images, audio, and video
 
 Two things shape how the client renders it. First, uploaded media arrives as a reference, not an address, so the client resolves it to a real URL before showing anything — and **every path that prepares an activity for display must resolve, or the media falls back to a placeholder.** YouTube blocks are the exception: they already carry their link. Second, how much of the carousel a surface shows depends on the room it has — a focused surface (the plan page, the live session) presents the whole carousel; a compact surface (a card, a map pin) shows just the first block, standing in for the rest. When an activity has only one piece of media, there is nothing to page through: the carousel degrades to a single display with no navigation controls. [`ActivityMediaBlock`](../../lib/features/activity_sessions/activity_media_block.dart) is the media model.
 
+In the live session the carousel sits at the top of the chat, and tapping an image opens it full screen so the learner sees the whole image. The activity image is never drawn behind the messages: the chat background stays one plain color, because a photo behind the chat made the screen too busy over the map ([#9356](https://github.com/pangeachat/client/issues/9356)).
+
 On the web, media images are fetched in a way that needs the content CDN to allow cross-origin requests; that requirement lives in the org and devops docs, not here.
 
 ## Video: inline in some places, a thumbnail in others

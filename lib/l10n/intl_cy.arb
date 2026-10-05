@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Pori cyrsiau cyhoeddus",
     "publicInviteDescChat": "Chwiliwch am ddefnyddwyr i'w gwahodd i'r sgwrs hon.",
     "publicInviteDescSpace": "Chwiliwch am ddefnyddwyr i'w gwahodd i'r gofod hwn.",
-    "useActivityImageAsChatBackground": "Defnyddio delwedd gweithgaredd fel cefndir sgwrs",
     "chatWithSupport": "Sgwrsio gyda Chefnogaeth",
     "newCourseAccess": "Yn ddiofyn, mae cyrsiau'n chwiliadwy'n gyhoeddus ac mae angen cymeradwyaeth gweinyddwr i ymuno. Gallwch olygu'r gosodiadau hyn unrhyw bryd.",
     "onboardingLanguagesTitle": "Pa iaith ydych chi'n ei dysgu?",
@@ -2394,5 +2393,6 @@
     "ssoNetworkBlockedDesc": "Nid yw’r rhwydwaith hwn yn gadael inni gyrraedd {provider} i’ch mewngofnodi. Mae Wi-Fi ysgol a swyddfa’n aml yn ei rwystro. Gallwch gofrestru gydag e-bost yn lle hynny, neu newid i rwydwaith arall a rhoi cynnig arall arni.",
     "ssoTryAnyway": "Rhowch gynnig arni beth bynnag",
     "publicCoursesFilterTooltip": "Dangos dim ond cyrsiau y gall unrhyw un ymuno â nhw",
-    "restrictedCoursesFilterTooltip": "Dangos dim ond cyrsiau y mae'n rhaid i chi ofyn i ymuno â nhw"
+    "restrictedCoursesFilterTooltip": "Dangos dim ond cyrsiau y mae'n rhaid i chi ofyn i ymuno â nhw",
+    "viewImageLabel": "Gweld delwedd"
 }

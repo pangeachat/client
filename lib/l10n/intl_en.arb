@@ -4803,7 +4803,6 @@
     "browsePublicCourses": "Browse public courses",
     "publicInviteDescChat": "Search for users to invite them to this chat.",
     "publicInviteDescSpace": "Search for users to invite them to this space.",
-    "useActivityImageAsChatBackground": "Use activity image as chat background",
     "chatWithSupport": "Chat with Support",
     "botDisplayName": "Pangea Bot",
     "@botDisplayName": {
@@ -5383,6 +5382,7 @@
     "openDM": "Open direct message",
     "openNewTab": "Open in new tab",
     "viewProfileImageLabel": "View profile image",
+    "viewImageLabel": "View image",
     "profileImageLabel": "Profile image",
     "actionsLabel": "Actions",
     "colorListLabel": "Color list",

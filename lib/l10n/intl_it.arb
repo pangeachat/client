@@ -7860,11 +7860,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chatta con il supporto",
     "@chatWithSupport": {
         "type": "String",
@@ -10059,5 +10054,6 @@
     "ssoNetworkBlockedDesc": "Questa rete non ci permette di raggiungere {provider} per effettuare l'accesso. Le reti Wi-Fi di scuole e uffici spesso lo bloccano. Puoi registrarti con l'email, oppure passare a un'altra rete e riprovare.",
     "ssoTryAnyway": "Riprova comunque",
     "publicCoursesFilterTooltip": "Mostra solo i corsi a cui tutti possono partecipare",
-    "restrictedCoursesFilterTooltip": "Mostra solo i corsi a cui devi chiedere di partecipare"
+    "restrictedCoursesFilterTooltip": "Mostra solo i corsi a cui devi chiedere di partecipare",
+    "viewImageLabel": "Visualizza immagine"
 }

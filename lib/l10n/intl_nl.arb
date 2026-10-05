@@ -7937,11 +7937,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Gebruik activiteit afbeelding als chatachtergrond",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat met Ondersteuning",
     "@chatWithSupport": {
         "type": "String",
@@ -9986,5 +9981,6 @@
     "ssoNetworkBlockedDesc": "Dit netwerk laat ons {provider} niet bereiken om je aan te melden. School- en kantoor-wifi blokkeren dit vaak. Je kunt je in plaats daarvan aanmelden met e-mail, of overschakelen naar een ander netwerk en het opnieuw proberen.",
     "ssoTryAnyway": "Toch proberen",
     "publicCoursesFilterTooltip": "Toon alleen cursussen waar iedereen aan kan deelnemen",
-    "restrictedCoursesFilterTooltip": "Toon alleen cursussen waarvoor je toestemming moet vragen om deel te nemen"
+    "restrictedCoursesFilterTooltip": "Toon alleen cursussen waarvoor je toestemming moet vragen om deel te nemen",
+    "viewImageLabel": "Afbeelding bekijken"
 }

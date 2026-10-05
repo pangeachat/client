@@ -7937,11 +7937,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Выкарыстоўвайце малюнак актыўнасці як фон чата",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Чат з падтрымкай",
     "@chatWithSupport": {
         "type": "String",
@@ -10000,5 +9995,6 @@
     "ssoNetworkBlockedDesc": "Гэтая сетка не дазваляе нам звязацца з {provider} для вашага ўваходу. Школьны і офісны Wi-Fi часта блакуюць яго. Вы можаце зарэгістравацца з дапамогай электроннай пошты або пераключыцца на іншую сетку і паспрабаваць яшчэ раз.",
     "ssoTryAnyway": "Усё роўна паспрабаваць",
     "publicCoursesFilterTooltip": "Паказваць толькі курсы, да якіх можа далучыцца кожны",
-    "restrictedCoursesFilterTooltip": "Паказваць толькі курсы, да якіх трэба запытваць далучэнне"
+    "restrictedCoursesFilterTooltip": "Паказваць толькі курсы, да якіх трэба запытваць далучэнне",
+    "viewImageLabel": "Паглядзець выяву"
 }

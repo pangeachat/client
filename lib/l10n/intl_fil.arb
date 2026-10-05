@@ -8612,11 +8612,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Makipag-chat sa Suporta",
     "@chatWithSupport": {
         "type": "String",
@@ -10846,5 +10841,6 @@
     "ssoNetworkBlockedDesc": "Hindi kami pinapayagan ng network na ito na maabot ang {provider} para i-sign in ka. Madalas itong hinaharangan ng Wi-Fi ng paaralan at opisina. Maaari kang mag-sign up gamit ang email sa halip, o lumipat sa ibang network at subukang muli.",
     "ssoTryAnyway": "Subukan pa rin",
     "publicCoursesFilterTooltip": "Ipakita lang ang mga kurso na maaaring salihan ng sinuman",
-    "restrictedCoursesFilterTooltip": "Ipakita lang ang mga kurso na kailangan mong humingi ng pahintulot para makasali"
+    "restrictedCoursesFilterTooltip": "Ipakita lang ang mga kurso na kailangan mong humingi ng pahintulot para makasali",
+    "viewImageLabel": "Tingnan ang larawan"
 }
