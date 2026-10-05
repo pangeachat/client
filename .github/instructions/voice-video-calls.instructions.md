@@ -222,11 +222,10 @@ the audio is fetched on demand rather than pushed through every sync, and the
 recording inherits the retention already disclosed for voice messages. The merged
 full-call recording is one more such upload, referenced the same way.
 
-The recording-based pass is gated behind `CALL_RECORDING_TRANSCRIPT`, which
-currently defaults off: until it is enabled, each half is the live one
-transcribed during the call (see [Failure is not all-or-nothing]), and the
-recording pass this section describes — with the per-turn `m:ss` timing it makes
-possible — is the opt-in path being rolled out.
+The recording-based pass is on by default. `CALL_RECORDING_TRANSCRIPT=false` is
+its kill switch: with it set, each half is the live one transcribed during the
+call (see [Failure is not all-or-nothing]) instead of the recording pass this
+section describes, with the per-turn `m:ss` timing it makes possible.
 
 A half is one event or it is missing, never a series of parts. Parts need a
 sequence that survives process death across a rejoin, and leave no answer for
