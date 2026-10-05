@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
@@ -134,9 +133,6 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
                                     )
                                   : null,
                             ),
-                            inputFormatters: [
-                              LengthLimitingTextInputFormatter(10),
-                            ],
                           ),
                         );
                       }

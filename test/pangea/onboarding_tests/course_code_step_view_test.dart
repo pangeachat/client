@@ -118,4 +118,52 @@ void main() {
 
     expect(input.bottom, lessThanOrEqualTo(skip.top));
   });
+
+  // #9376 — the input once cut text at 10 characters, so a pasted course link
+  // reached the join as `https://ap`. The join unwraps the link to its code
+  // (SpaceCodeController.codeFromInput); the field has to pass it on whole.
+  testWidgets('a pasted course link reaches the step whole', (tester) async {
+    final state = OnboardingStateController(
+      accountUpdater: MockAccountUpdater(),
+      courseProvider: MockCourseProvider(),
+      avatarProvider: MockAvatarProvider(),
+      trialInfoProvider: MockTrialInfoProvider(),
+    );
+    final step = CourseCodeOnboardingStep(
+      client: client,
+      state: state,
+      maxRemainingSteps: 1,
+    );
+
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('en'),
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Scaffold(
+          body: CourseCodeStepView(
+            step: step,
+            loading: false,
+            error: null,
+            hasNextStep: true,
+            forward: () {},
+            skip: () {},
+          ),
+        ),
+      ),
+    );
+    await tester.pump(Duration.zero);
+    await tester.pump(Duration.zero);
+
+    final l10n = L10n.of(tester.element(find.byType(CourseCodeStepView)));
+    await tester.tap(find.widgetWithText(ElevatedButton, l10n.yes));
+    await tester.pump();
+
+    const link = 'https://app.pangea.chat/abc1234';
+    await tester.enterText(find.byType(TextField), link);
+    // The view hands the text to the step after a 300 ms debounce.
+    await tester.pump(const Duration(milliseconds: 400));
+
+    expect(state.courseCode, link);
+  });
 }
