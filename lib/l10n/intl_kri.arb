@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-02 02:48:26.929285",
+    "@@last_modified": "2026-10-02 14:12:59.380160",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abkazian",
     "elDisplayName": "Grik",
     "missingCourseOutline": "Dis kos nɔ de igen",
-    "missingCourseOutlineCta": "Dis kos nɔ de igen. Pik wan nyu kos plan.",
     "welcome": "Wɛlkɔm",
     "courseRequest": "Kos rikwest",
     "onboarding": "Ɔnbodin",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Sabsakrayb fɔ transkripshɔn",
     "unlockCallTranscript": "Ɔnlɔk kɔl transkript",
     "activitySummaryUpdateFailed": "Dis samari nɔ kɔn fɔ chenj.",
-    "courseNotFound": "Di kos nɔ de"
+    "courseNotFound": "Di kos nɔ de",
+    "askTeacherForNewCourse": "Aks yu ticha foh pik wan nyu kos.",
+    "pickNewCoursePlan": "Pik wan nyu kos plan."
 }

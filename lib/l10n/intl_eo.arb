@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-02 02:48:24.493065",
+    "@@last_modified": "2026-10-02 14:12:57.153721",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10365,7 +10365,6 @@
     "activityLoadFailed": "Ne povis ŝarĝi la aktivecon. Kontrolu vian konekton kaj provu denove.",
     "levelUpChip": "Nivelo {level}!",
     "missingCourseOutline": "Ĉi tiu kurso ne plu estas disponebla",
-    "missingCourseOutlineCta": "Ĉi tiu kurso ne plu estas disponebla. Elektu novan kurson.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10390,10 +10389,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10927,5 +10922,7 @@
     "callTranscriptSubscribeForTranscription": "Aboni por transskribo",
     "unlockCallTranscript": "Malŝlosi alvokan transskribon",
     "activitySummaryUpdateFailed": "Ĉi tiu resumo ne povis esti ĝisdatigita.",
-    "courseNotFound": "Kurso ne trovita"
+    "courseNotFound": "Kurso ne trovita",
+    "askTeacherForNewCourse": "Petu vian instruiston elekti novan kurson.",
+    "pickNewCoursePlan": "Elektu novan kursplanon."
 }

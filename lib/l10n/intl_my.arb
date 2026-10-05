@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-02 02:48:29.122939",
+    "@@last_modified": "2026-10-02 14:13:00.340580",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "အက်ဘ်ခါဇီယန်",
     "elDisplayName": "ဂရိ",
     "missingCourseOutline": "ဤသင်တန်းကို မရရှိနိုင်တော့ပါ",
-    "missingCourseOutlineCta": "ဤသင်တန်းကို မရရှိနိုင်တော့ပါ။ သင်တန်းအစီအစဉ်အသစ်တစ်ခုကို ရွေးချယ်ပါ။",
     "welcome": "ကြိုဆိုပါသည်",
     "courseRequest": "သင်တန်းတောင်းဆိုမှု",
     "onboarding": "အစပြုခြင်း",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "စာသားအဖြစ်ပြောင်းလဲခြင်းအတွက် စာရင်းသွင်းပါ",
     "unlockCallTranscript": "ခေါ်ဆိုမှုမှတ်တမ်းကို လော့ခ်ဖွင့်ပါ",
     "activitySummaryUpdateFailed": "ဤအကျဉ်းချုပ်ကို အပ်ဒိတ်လုပ်၍ မရပါ။",
-    "courseNotFound": "သင်တန်း ရှာမတွေ့ပါ"
+    "courseNotFound": "သင်တန်း ရှာမတွေ့ပါ",
+    "askTeacherForNewCourse": "သင်တန်းအသစ်တစ်ခုရွေးချယ်ဖို့ သင့်ဆရာကို မေးပါ။",
+    "pickNewCoursePlan": "သင်တန်းအစီအစဉ်အသစ်တစ်ခု ရွေးပါ။"
 }

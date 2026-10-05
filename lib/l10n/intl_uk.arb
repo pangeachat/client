@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-02 02:48:32.277768",
+    "@@last_modified": "2026-10-02 14:13:02.600218",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9420,7 +9420,6 @@
     "activityLoadFailed": "Не вдалося завантажити активність. Перевірте своє з'єднання та спробуйте ще раз.",
     "levelUpChip": "Рівень {level}!",
     "missingCourseOutline": "Цей курс більше недоступний",
-    "missingCourseOutlineCta": "Цей курс більше недоступний. Виберіть новий план курсу.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9445,10 +9444,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9982,5 +9977,7 @@
     "callTranscriptSubscribeForTranscription": "Підписатися на транскрипцію",
     "unlockCallTranscript": "Розблокувати стенограму дзвінка",
     "activitySummaryUpdateFailed": "Не вдалося оновити зведення.",
-    "courseNotFound": "Курс не знайдено"
+    "courseNotFound": "Курс не знайдено",
+    "askTeacherForNewCourse": "Попросіть свого вчителя обрати новий курс.",
+    "pickNewCoursePlan": "Виберіть новий план курсу."
 }

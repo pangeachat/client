@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-02 02:48:32.422181",
+    "@@last_modified": "2026-10-02 14:13:02.691112",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6716,7 +6716,6 @@
     "activityLoadFailed": "Không thể tải hoạt động. Kiểm tra kết nối của bạn và thử lại.",
     "levelUpChip": "Cấp độ {level}!",
     "missingCourseOutline": "Khóa học này không còn khả dụng",
-    "missingCourseOutlineCta": "Khóa học này không còn khả dụng. Chọn một kế hoạch khóa học mới.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -6741,10 +6740,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -7274,5 +7269,7 @@
     "callTranscriptSubscribeForTranscription": "Đăng ký để chép lại",
     "unlockCallTranscript": "Mở khóa bản chép lại cuộc gọi",
     "activitySummaryUpdateFailed": "Không thể cập nhật bản tóm tắt này.",
-    "courseNotFound": "Không tìm thấy khóa học"
+    "courseNotFound": "Không tìm thấy khóa học",
+    "askTeacherForNewCourse": "Yêu cầu giáo viên chọn một khóa học mới.",
+    "pickNewCoursePlan": "Chọn một giáo trình mới."
 }

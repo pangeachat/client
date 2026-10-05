@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-02 02:48:25.279257",
+    "@@last_modified": "2026-10-02 14:12:56.371445",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Абхазки",
     "elDisplayName": "Гръцки",
     "missingCourseOutline": "Този курс вече не е наличен",
-    "missingCourseOutlineCta": "Този курс вече не е наличен. Изберете нов учебен план.",
     "welcome": "Добре дошли",
     "courseRequest": "Заявка за курс",
     "onboarding": "Въвеждане",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Абонирайте се за транскрипция",
     "unlockCallTranscript": "Отключване на препис от разговора",
     "activitySummaryUpdateFailed": "Това резюме не можа да бъде актуализирано.",
-    "courseNotFound": "Курсът не е намерен"
+    "courseNotFound": "Курсът не е намерен",
+    "askTeacherForNewCourse": "Помолете учителя си да избере нов курс.",
+    "pickNewCoursePlan": "Изберете нов учебен план."
 }

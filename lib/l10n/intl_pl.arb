@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-02 02:48:29.864592",
+    "@@last_modified": "2026-10-02 14:13:00.826856",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9505,7 +9505,6 @@
     "activityLoadFailed": "Nie można załadować aktywności. Sprawdź swoje połączenie i spróbuj ponownie.",
     "levelUpChip": "Poziom {level}!",
     "missingCourseOutline": "Ten kurs nie jest już dostępny",
-    "missingCourseOutlineCta": "Ten kurs nie jest już dostępny. Wybierz nowy plan kursu.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9530,10 +9529,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10067,5 +10062,7 @@
     "callTranscriptSubscribeForTranscription": "Subskrybuj, aby uzyskać transkrypcję",
     "unlockCallTranscript": "Odblokuj transkrypcję rozmowy",
     "activitySummaryUpdateFailed": "Nie udało się zaktualizować podsumowania.",
-    "courseNotFound": "Kurs nie znaleziony"
+    "courseNotFound": "Kurs nie znaleziony",
+    "askTeacherForNewCourse": "Poproś nauczyciela o wybranie nowego kursu.",
+    "pickNewCoursePlan": "Wybierz nowy plan kursu."
 }

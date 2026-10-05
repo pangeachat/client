@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-02 02:48:30.419776",
+    "@@last_modified": "2026-10-02 14:13:01.097929",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10152,7 +10152,6 @@
     "activityLoadFailed": "Nu s-a putut încărca activitatea. Verifică-ți conexiunea și încearcă din nou.",
     "levelUpChip": "Nivel {level}!",
     "missingCourseOutline": "Acest curs nu mai este disponibil",
-    "missingCourseOutlineCta": "Acest curs nu mai este disponibil. Alege un nou plan de curs.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10177,10 +10176,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10714,5 +10709,7 @@
     "callTranscriptSubscribeForTranscription": "Abonează-te pentru transcriere",
     "unlockCallTranscript": "Deblochează transcrierea apelului",
     "activitySummaryUpdateFailed": "Acest rezumat nu a putut fi actualizat.",
-    "courseNotFound": "Cursul nu a fost găsit"
+    "courseNotFound": "Cursul nu a fost găsit",
+    "askTeacherForNewCourse": "Roagă-ți profesorul să aleagă un curs nou.",
+    "pickNewCoursePlan": "Alege un plan de curs nou."
 }

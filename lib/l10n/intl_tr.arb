@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-02 02:48:31.844671",
+    "@@last_modified": "2026-10-02 14:13:02.213163",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9721,7 +9721,6 @@
     "activityLoadFailed": "Etkinlik yüklenemedi. Bağlantınızı kontrol edin ve tekrar deneyin.",
     "levelUpChip": "Seviye {level}!",
     "missingCourseOutline": "Bu kurs artık mevcut değil",
-    "missingCourseOutlineCta": "Bu kurs artık mevcut değil. Yeni bir kurs planı seçin.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9746,10 +9745,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10283,5 +10278,7 @@
     "callTranscriptSubscribeForTranscription": "Metne çevirme için abone ol",
     "unlockCallTranscript": "Çağrı dökümünü aç",
     "activitySummaryUpdateFailed": "Bu özet güncellenemedi.",
-    "courseNotFound": "Kurs bulunamadı"
+    "courseNotFound": "Kurs bulunamadı",
+    "askTeacherForNewCourse": "Öğretmeninizden yeni bir kurs seçmesini isteyin.",
+    "pickNewCoursePlan": "Yeni bir kurs planı seçin."
 }

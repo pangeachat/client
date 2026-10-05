@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-02 02:48:32.400527",
+    "@@last_modified": "2026-10-02 14:13:02.419646",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "ابخازی",
     "elDisplayName": "یونانی",
     "missingCourseOutline": "یہ کورس اب دستیاب نہیں ہے",
-    "missingCourseOutlineCta": "یہ کورس اب دستیاب نہیں ہے۔ ایک نیا کورس پلان منتخب کریں۔",
     "welcome": "خوش آمدید",
     "courseRequest": "کورس کی درخواست",
     "onboarding": "آن بورڈنگ",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "ٹرانسکرپشن کے لیے سبسکرائب کریں",
     "unlockCallTranscript": "کال ٹرانسکرپٹ کو اَن لاک کریں",
     "activitySummaryUpdateFailed": "اس خلاصے کو اپ ڈیٹ نہیں کیا جا سکا ہے۔",
-    "courseNotFound": "کورس نہیں ملا"
+    "courseNotFound": "کورس نہیں ملا",
+    "askTeacherForNewCourse": "اپنے استاد سے ایک نیا کورس منتخب کرنے کو کہیں۔",
+    "pickNewCoursePlan": "ایک نیا کورس پلان منتخب کریں۔"
 }

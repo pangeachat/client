@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-02 02:48:25.257909",
+    "@@last_modified": "2026-10-02 14:12:56.226019",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abchasies",
     "elDisplayName": "Grieks",
     "missingCourseOutline": "Hierdie kursus is nie meer beskikbaar nie",
-    "missingCourseOutlineCta": "Hierdie kursus is nie meer beskikbaar nie. Kies 'n nuwe kursusplan.",
     "welcome": "Welkom",
     "courseRequest": "Kursusversoek",
     "onboarding": "Aanboordproses",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Teken in vir transkripsie",
     "unlockCallTranscript": "Ontsluit oproep-transkripsie",
     "activitySummaryUpdateFailed": "Hierdie opsomming kon nie bygewerk word nie.",
-    "courseNotFound": "Kursus nie gevind nie"
+    "courseNotFound": "Kursus nie gevind nie",
+    "askTeacherForNewCourse": "Vra jou onderwyser om 'n nuwe kursus te kies.",
+    "pickNewCoursePlan": "Kies 'n nuwe kursusplan."
 }

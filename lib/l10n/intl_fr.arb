@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-02 02:48:24.710360",
+    "@@last_modified": "2026-10-02 14:12:57.538084",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -9775,7 +9775,6 @@
     "activityLoadFailed": "Impossible de charger l'activité. Vérifiez votre connexion et réessayez.",
     "levelUpChip": "Niveau {level} !",
     "missingCourseOutline": "Ce cours n'est plus disponible",
-    "missingCourseOutlineCta": "Ce cours n'est plus disponible. Choisissez un nouveau plan de cours.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9800,10 +9799,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10337,5 +10332,7 @@
     "callTranscriptSubscribeForTranscription": "S'abonner pour la transcription",
     "unlockCallTranscript": "Déverrouiller la transcription de l'appel",
     "activitySummaryUpdateFailed": "Ce résumé n'a pas pu être mis à jour.",
-    "courseNotFound": "Cours introuvable"
+    "courseNotFound": "Cours introuvable",
+    "askTeacherForNewCourse": "Demandez à votre professeur de choisir un nouveau cours.",
+    "pickNewCoursePlan": "Choisissez un nouveau plan de cours."
 }

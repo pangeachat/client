@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-02 02:48:29.792283",
+    "@@last_modified": "2026-10-02 14:13:00.994587",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "ਅਬਖਾਜ਼ੀਅਨ",
     "elDisplayName": "ਯੂਨਾਨੀ",
     "missingCourseOutline": "ਇਹ ਕੋਰਸ ਹੁਣ ਉਪਲਬਧ ਨਹੀਂ ਹੈ",
-    "missingCourseOutlineCta": "ਇਹ ਕੋਰਸ ਹੁਣ ਉਪਲਬਧ ਨਹੀਂ ਹੈ। ਇੱਕ ਨਵੀਂ ਕੋਰਸ ਯੋਜਨਾ ਚੁਣੋ।",
     "welcome": "ਜੀ ਆਇਆਂ ਨੂੰ",
     "courseRequest": "ਕੋਰਸ ਦੀ ਬੇਨਤੀ",
     "onboarding": "ਆਨਬੋਰਡਿੰਗ",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "ਲਿਖਣ ਲਈ ਗਾਹਕ ਬਣੋ",
     "unlockCallTranscript": "ਕਾਲ ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਅਨਲੌਕ ਕਰੋ",
     "activitySummaryUpdateFailed": "ਇਹ ਸਾਰਾਂਸ਼ ਅੱਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।",
-    "courseNotFound": "ਕੋਰਸ ਨਹੀਂ ਮਿਲਿਆ"
+    "courseNotFound": "ਕੋਰਸ ਨਹੀਂ ਮਿਲਿਆ",
+    "askTeacherForNewCourse": "ਆਪਣੇ ਅਧਿਆਪਕ ਨੂੰ ਨਵਾਂ ਕੋਰਸ ਚੁਣਨ ਲਈ ਕਹੋ।",
+    "pickNewCoursePlan": "ਇੱਕ ਨਵਾਂ ਕੋਰਸ ਪਲਾਨ ਚੁਣੋ।"
 }

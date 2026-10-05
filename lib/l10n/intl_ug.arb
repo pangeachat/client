@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-02 02:48:32.013493",
+    "@@last_modified": "2026-10-02 14:13:02.426265",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "ئابخازچە",
     "elDisplayName": "گىرىكچە",
     "missingCourseOutline": "بۇ كۇرس ئەمدى يوق",
-    "missingCourseOutlineCta": "بۇ كۇرس ئەمدى يوق. يېڭى كۇرس پىلانىنى تاللاڭ.",
     "welcome": "خۇش كەپسىز",
     "courseRequest": "كۇرس تەلىپى",
     "onboarding": "ئىش باشلاش",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "تەرجىمە قىلىش ئۈچۈن مۇشتەرى بولۇڭ",
     "unlockCallTranscript": "تېلېفون خاتىرىسىنى ئېچىش",
     "activitySummaryUpdateFailed": "بۇ خۇلاسىنى يېڭىلاش مۇمكىن بولمىدى.",
-    "courseNotFound": "كۇرس تېپىلمىدى"
+    "courseNotFound": "كۇرس تېپىلمىدى",
+    "askTeacherForNewCourse": "ئوقۇتقۇچىڭىزدىن يېڭى دەرس تاللىشىنى سوراڭ.",
+    "pickNewCoursePlan": "يېڭى دەرس پىلانى تاللاڭ."
 }

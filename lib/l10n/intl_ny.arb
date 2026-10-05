@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-02 02:48:29.421772",
+    "@@last_modified": "2026-10-02 14:13:00.609208",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Chiyabkhazi",
     "elDisplayName": "Chigiriki",
     "missingCourseOutline": "Maphunzirowa salipo",
-    "missingCourseOutlineCta": "Maphunzirowa salipo. Sankhani dongosolo latsopano la maphunziro.",
     "welcome": "Takulandirani",
     "courseRequest": "Pempho la maphunziro",
     "onboarding": "Kuyambitsa",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Lembetsani kuti mulembedwe",
     "unlockCallTranscript": "Tsegulani zolembedwa za kuyimba",
     "activitySummaryUpdateFailed": "Chidulechi sichinathe kusinthidwa.",
-    "courseNotFound": "Maphunziro sanaperekedwe"
+    "courseNotFound": "Maphunziro sanaperekedwe",
+    "askTeacherForNewCourse": "Funsani mphunzitsi wanu kuti asankhe maphunziro atsopano.",
+    "pickNewCoursePlan": "Sankhani maphunziro atsopano."
 }

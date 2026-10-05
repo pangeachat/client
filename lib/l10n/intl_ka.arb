@@ -1937,7 +1937,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-02 02:48:26.322658",
+    "@@last_modified": "2026-10-02 14:12:58.991506",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10320,7 +10320,6 @@
     "activityLoadFailed": "აქტივობის დატვირთვა ვერ მოხერხდა. შეამოწმეთ თქვენი კავშირი და სცადეთ კიდევ ერთხელ.",
     "levelUpChip": "დონის {level}!",
     "missingCourseOutline": "ეს კურსი აღარ არის ხელმისაწვდომი",
-    "missingCourseOutlineCta": "ეს კურსი აღარ არის ხელმისაწვდომი. აირჩიეთ ახალი კურსის გეგმა.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10345,10 +10344,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10882,5 +10877,7 @@
     "callTranscriptSubscribeForTranscription": "გამოიწერეთ ტრანსკრიფციისთვის",
     "unlockCallTranscript": "ზარის ტრანსკრიფციის განბლოკვა",
     "activitySummaryUpdateFailed": "ამ შეჯამების განახლება ვერ მოხერხდა.",
-    "courseNotFound": "კურსი ვერ მოიძებნა"
+    "courseNotFound": "კურსი ვერ მოიძებნა",
+    "askTeacherForNewCourse": "სთხოვეთ თქვენს მასწავლებელს, აირჩიოს ახალი კურსი.",
+    "pickNewCoursePlan": "აირჩიეთ კურსის ახალი გეგმა."
 }

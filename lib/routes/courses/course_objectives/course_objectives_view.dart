@@ -811,13 +811,22 @@ class QuestLoadErrorView extends StatelessWidget {
               Semantics(
                 container: true,
                 child: Text(
-                  showAddCourse
-                      ? L10n.of(context).missingCourseOutlineCta
-                      : L10n.of(context).missingCourseOutline,
+                  L10n.of(context).missingCourseOutline,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: Theme.of(context).colorScheme.outline,
                   ),
+                ),
+              ),
+              // The next step: an admin re-selects; a member can't, so they
+              // are pointed at who can.
+              Text(
+                showAddCourse
+                    ? L10n.of(context).pickNewCoursePlan
+                    : L10n.of(context).askTeacherForNewCourse,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.outline,
                 ),
               ),
               if (showAddCourse)

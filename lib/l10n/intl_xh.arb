@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-02 02:48:37.542383",
+    "@@last_modified": "2026-10-02 14:13:02.663925",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Isi-Abkhazian",
     "elDisplayName": "IsiGrike",
     "missingCourseOutline": "Le khosi ayisafumaneki",
-    "missingCourseOutlineCta": "Le khosi ayisafumaneki. Khetha isicwangciso sekhosi esitsha.",
     "welcome": "Wamkelekile",
     "courseRequest": "Isicelo sekhosi",
     "onboarding": "Ukuqala",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Bhalisa ukuze ufumane ukubhalwa phantsi",
     "unlockCallTranscript": "Vula umbhalo wefowuni",
     "activitySummaryUpdateFailed": "Esi sishwankathelo asikwazanga ukuhlaziywa.",
-    "courseNotFound": "Ikhosi ayifunyanwanga"
+    "courseNotFound": "Ikhosi ayifunyanwanga",
+    "askTeacherForNewCourse": "Cela utitshala wakho akhethe ikhosi entsha.",
+    "pickNewCoursePlan": "Khetha isicwangciso esitsha senkqubo."
 }

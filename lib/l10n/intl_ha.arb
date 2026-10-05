@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-02 02:48:25.027802",
+    "@@last_modified": "2026-10-02 14:12:58.109020",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abkhazian",
     "elDisplayName": "Girkanci",
     "missingCourseOutline": "Wannan kwas ɗin ba ya samuwa",
-    "missingCourseOutlineCta": "Wannan kwas ɗin ba ya samuwa. Zaɓi sabon shirin kwas.",
     "welcome": "Barka da zuwa",
     "courseRequest": "Buƙatar kwas",
     "onboarding": "Gabatarwa",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Biyan kuɗi don fassara",
     "unlockCallTranscript": "Buɗe rubutun kiran",
     "activitySummaryUpdateFailed": "Ba a iya sabunta wannan taƙaitaccen bayanin ba.",
-    "courseNotFound": "Ba a samo darasi ba"
+    "courseNotFound": "Ba a samo darasi ba",
+    "askTeacherForNewCourse": "Tambayi malamin ku ya zaɓi sabon kwas.",
+    "pickNewCoursePlan": "Zaɓi sabon tsarin karatu."
 }

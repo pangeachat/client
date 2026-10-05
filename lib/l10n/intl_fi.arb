@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-02 02:48:24.835068",
+    "@@last_modified": "2026-10-02 14:12:57.509345",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9457,7 +9457,6 @@
     "activityLoadFailed": "Toimintoa ei voitu ladata. Tarkista yhteytesi ja yritä uudelleen.",
     "levelUpChip": "Taso {level}!",
     "missingCourseOutline": "Tämä kurssi ei ole enää saatavilla",
-    "missingCourseOutlineCta": "Tämä kurssi ei ole enää saatavilla. Valitse uusi kurssisuunnitelma.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9482,10 +9481,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10019,5 +10014,7 @@
     "callTranscriptSubscribeForTranscription": "Tilaa litterointi",
     "unlockCallTranscript": "Avaa puhelun litterointi",
     "activitySummaryUpdateFailed": "Yhteenvedon päivittäminen epäonnistui.",
-    "courseNotFound": "Kurssia ei löydy"
+    "courseNotFound": "Kurssia ei löydy",
+    "askTeacherForNewCourse": "Pyydä opettajaasi valitsemaan uusi kurssi.",
+    "pickNewCoursePlan": "Valitse uusi kurssisuunnitelma."
 }

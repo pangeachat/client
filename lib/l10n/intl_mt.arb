@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-02 02:48:28.521536",
+    "@@last_modified": "2026-10-02 14:13:00.305832",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abkażjan",
     "elDisplayName": "Grieg",
     "missingCourseOutline": "Dan il-kors m'għadux disponibbli",
-    "missingCourseOutlineCta": "Dan il-kors m'għadux disponibbli. Agħżel pjan ta' kors ġdid.",
     "welcome": "Merħba",
     "courseRequest": "Talba għal kors",
     "onboarding": "Onboarding",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Abbona għat-traskrizzjoni",
     "unlockCallTranscript": "Nisfrutta t-traskrizzjoni tas-sejħa",
     "activitySummaryUpdateFailed": "Dan is-sommarju ma setax jiġi aġġornat.",
-    "courseNotFound": "Kors ma nstabx"
+    "courseNotFound": "Kors ma nstabx",
+    "askTeacherForNewCourse": "Staqsi lill-għalliem tiegħek biex jagħżel kors ġdid.",
+    "pickNewCoursePlan": "Agħżel pjan ġdid tal-kors."
 }

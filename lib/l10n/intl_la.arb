@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-02 02:48:27.237613",
+    "@@last_modified": "2026-10-02 14:12:59.501475",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abasgica",
     "elDisplayName": "Graeca",
     "missingCourseOutline": "Hic cursus non iam praesto est",
-    "missingCourseOutlineCta": "Hic cursus non iam praesto est. Elige novum curriculum.",
     "welcome": "Gratus",
     "courseRequest": "Petitio cursus",
     "onboarding": "Introductio",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Subscribere pro transcriptione",
     "unlockCallTranscript": "Reserare transcriptionem vocis",
     "activitySummaryUpdateFailed": "Haec summa renovari non potuit.",
-    "courseNotFound": "Cursus non inventus"
+    "courseNotFound": "Cursus non inventus",
+    "askTeacherForNewCourse": "Roga magistrum tuum ut novum cursum eligat.",
+    "pickNewCoursePlan": "Novum cursum elige."
 }

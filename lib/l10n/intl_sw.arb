@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-02 02:48:31.378194",
+    "@@last_modified": "2026-10-02 14:13:02.043115",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Kiabkhazi",
     "elDisplayName": "Kigiriki",
     "missingCourseOutline": "Kozi hii haipatikani tena",
-    "missingCourseOutlineCta": "Kozi hii haipatikani tena. Chagua mpango mpya wa kozi.",
     "welcome": "Karibu",
     "courseRequest": "Ombi la kozi",
     "onboarding": "Kuanzisha",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Jisajili ili upate nakala",
     "unlockCallTranscript": "Fungua nakala ya simu",
     "activitySummaryUpdateFailed": "Muhtasari huu haukuweza kusasishwa.",
-    "courseNotFound": "Kozi haikupatikana"
+    "courseNotFound": "Kozi haikupatikana",
+    "askTeacherForNewCourse": "Mwombe mwalimu wako akuchagulie kozi mpya.",
+    "pickNewCoursePlan": "Chagua mpango mpya wa kozi."
 }

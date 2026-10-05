@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-02 02:48:25.875770",
+    "@@last_modified": "2026-10-02 14:12:56.930406",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abkhazeg",
     "elDisplayName": "Groeg",
     "missingCourseOutline": "Nid yw'r cwrs hwn ar gael mwyach",
-    "missingCourseOutlineCta": "Nid yw'r cwrs hwn ar gael mwyach. Dewiswch gynllun cwrs newydd.",
     "welcome": "Croeso",
     "courseRequest": "Cais cwrs",
     "onboarding": "Bwrddio",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Tanysgrifiwch ar gyfer trawsgrifio",
     "unlockCallTranscript": "Datgloi trawsgrifiad galwad",
     "activitySummaryUpdateFailed": "Ni ellid diweddaru’r crynodeb hwn.",
-    "courseNotFound": "Heb ddod o hyd i'r cwrs"
+    "courseNotFound": "Heb ddod o hyd i'r cwrs",
+    "askTeacherForNewCourse": "Gofynnwch i'ch athro ddewis cwrs newydd.",
+    "pickNewCoursePlan": "Dewiswch gynllun cwrs newydd."
 }

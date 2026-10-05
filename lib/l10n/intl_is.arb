@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-02 02:48:26.077504",
+    "@@last_modified": "2026-10-02 14:12:58.781129",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abkasíska",
     "elDisplayName": "Gríska",
     "missingCourseOutline": "Þetta námskeið er ekki lengur í boði",
-    "missingCourseOutlineCta": "Þetta námskeið er ekki lengur í boði. Veldu nýja námskeiðsáætlun.",
     "welcome": "Velkomin",
     "courseRequest": "Námskeiðsbeiðni",
     "onboarding": "Innleiðing",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Gerast áskrifandi að umritun",
     "unlockCallTranscript": "Aflæsa umritun símtals",
     "activitySummaryUpdateFailed": "Ekki tókst að uppfæra þessa samantekt.",
-    "courseNotFound": "Námskeið fannst ekki"
+    "courseNotFound": "Námskeið fannst ekki",
+    "askTeacherForNewCourse": "Biddu kennarann þinn um að velja nýtt námskeið.",
+    "pickNewCoursePlan": "Veldu nýja námsáætlun."
 }

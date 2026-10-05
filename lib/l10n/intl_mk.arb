@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-02 02:48:27.941787",
+    "@@last_modified": "2026-10-02 14:12:59.923272",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Абхазиски",
     "elDisplayName": "Грчки",
     "missingCourseOutline": "Овој курс повеќе не е достапен",
-    "missingCourseOutlineCta": "Овој курс повеќе не е достапен. Изберете нов план за курс.",
     "welcome": "Добредојдовте",
     "courseRequest": "Барање за курс",
     "onboarding": "Воведување",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Претплатете се за транскрипција",
     "unlockCallTranscript": "Отклучи транскрипт на повик",
     "activitySummaryUpdateFailed": "Ова резиме не можеше да се ажурира.",
-    "courseNotFound": "Курсот не е пронајден"
+    "courseNotFound": "Курсот не е пронајден",
+    "askTeacherForNewCourse": "Побарајте од наставникот да избере нов курс.",
+    "pickNewCoursePlan": "Изберете нов план за курс."
 }

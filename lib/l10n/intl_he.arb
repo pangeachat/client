@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-02 02:48:25.344960",
+    "@@last_modified": "2026-10-02 14:12:57.974828",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10334,7 +10334,6 @@
     "activityLoadFailed": "לא ניתן לטעון את הפעילות. בדוק את החיבור שלך ונסה שוב.",
     "levelUpChip": "רמה {level}!",
     "missingCourseOutline": "הקורס הזה אינו זמין יותר",
-    "missingCourseOutlineCta": "הקורס הזה אינו זמין יותר. בחר תוכנית קורס חדשה.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10359,10 +10358,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10896,5 +10891,7 @@
     "callTranscriptSubscribeForTranscription": "הירשם לתימלול",
     "unlockCallTranscript": "פתח את תמלול השיחה",
     "activitySummaryUpdateFailed": "לא ניתן היה לעדכן את הסיכום הזה.",
-    "courseNotFound": "הקורס לא נמצא"
+    "courseNotFound": "הקורס לא נמצא",
+    "askTeacherForNewCourse": "בקש מהמורה שלך לבחור קורס חדש.",
+    "pickNewCoursePlan": "בחר תוכנית קורס חדשה."
 }

@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-02 02:48:27.725339",
+    "@@last_modified": "2026-10-02 14:12:59.553508",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10201,7 +10201,6 @@
     "activityLoadFailed": "Nepavyko įkelti veiklos. Patikrinkite savo ryšį ir bandykite dar kartą.",
     "levelUpChip": "Lygis {level}!",
     "missingCourseOutline": "Šis kursas nebėra prieinamas",
-    "missingCourseOutlineCta": "Šis kursas nebėra prieinamas. Pasirinkite naują kurso planą.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10226,10 +10225,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10763,5 +10758,7 @@
     "callTranscriptSubscribeForTranscription": "Prenumeruoti transkripciją",
     "unlockCallTranscript": "Atrakinti pokalbio transkripciją",
     "activitySummaryUpdateFailed": "Šio suvestinės nepavyko atnaujinti.",
-    "courseNotFound": "Kursas nerastas"
+    "courseNotFound": "Kursas nerastas",
+    "askTeacherForNewCourse": "Paprašykite mokytojo parinkti naują kursą.",
+    "pickNewCoursePlan": "Pasirinkite naują kurso planą."
 }

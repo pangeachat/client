@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-02 02:48:25.704456",
+    "@@last_modified": "2026-10-02 14:12:58.432588",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Աբխազերեն",
     "elDisplayName": "Հունարեն",
     "missingCourseOutline": "Այս դասընթացն այլևս հասանելի չէ",
-    "missingCourseOutlineCta": "Այս դասընթացն այլևս հասանելի չէ։ Ընտրեք նոր դասընթացի պլան։",
     "welcome": "Բարի գալուստ",
     "courseRequest": "Դասընթացի հարցում",
     "onboarding": "Ներածություն",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Բաժանորդագրվել տառադարձման համար",
     "unlockCallTranscript": "Բացել զանգի արտագրումը",
     "activitySummaryUpdateFailed": "Այս ամփոփագիրը հնարավոր չէ թարմացնել։",
-    "courseNotFound": "Դասընթացը չի գտնվել"
+    "courseNotFound": "Դասընթացը չի գտնվել",
+    "askTeacherForNewCourse": "Խնդրեք ձեր ուսուցչին ընտրել նոր դասընթաց։",
+    "pickNewCoursePlan": "Ընտրեք դասընթացի նոր պլան:"
 }

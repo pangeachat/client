@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-02 02:48:26.761309",
+    "@@last_modified": "2026-10-02 14:12:59.192531",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9613,7 +9613,6 @@
     "activityLoadFailed": "활동을 로드할 수 없습니다. 연결을 확인하고 다시 시도하세요.",
     "levelUpChip": "레벨 {level}!",
     "missingCourseOutline": "이 과정은 더 이상 제공되지 않습니다",
-    "missingCourseOutlineCta": "이 과정은 더 이상 제공되지 않습니다. 새로운 과정 계획을 선택하세요.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9638,10 +9637,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10175,5 +10170,7 @@
     "callTranscriptSubscribeForTranscription": "텍스트 변환 구독",
     "unlockCallTranscript": "통화 기록 잠금 해제",
     "activitySummaryUpdateFailed": "이 요약을 업데이트할 수 없었습니다.",
-    "courseNotFound": "과정을 찾을 수 없습니다"
+    "courseNotFound": "과정을 찾을 수 없습니다",
+    "askTeacherForNewCourse": "선생님께 새 코스를 선택해달라고 요청하세요.",
+    "pickNewCoursePlan": "새로운 학습 계획을 선택하세요."
 }

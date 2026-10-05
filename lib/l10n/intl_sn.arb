@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-02 02:48:31.218599",
+    "@@last_modified": "2026-10-02 14:13:01.856753",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abkhazian",
     "elDisplayName": "Greek",
     "missingCourseOutline": "Kosi iyi haichawanikwe",
-    "missingCourseOutlineCta": "Kosi iyi haichawanikwe. Sarudza hurongwa hwekosi hutsva.",
     "welcome": "Tikugashirei",
     "courseRequest": "Chikumbiro chekosi",
     "onboarding": "Kupinda",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Nyorera kuti unyorerwe",
     "unlockCallTranscript": "Vhura zvinyorwa zvekufona",
     "activitySummaryUpdateFailed": "Chidimbu ichi hachina kukwanisa kugadziriswa.",
-    "courseNotFound": "Kosi yacho haipo"
+    "courseNotFound": "Kosi yacho haipo",
+    "askTeacherForNewCourse": "Kumbira mudzidzisi wako kuti asarudze kosi itsva.",
+    "pickNewCoursePlan": "Sarudza chirongwa chitsva chekudzidza."
 }

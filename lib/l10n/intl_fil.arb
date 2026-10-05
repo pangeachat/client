@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-02 02:48:24.500038",
+    "@@last_modified": "2026-10-02 14:12:57.660198",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10280,7 +10280,6 @@
     "activityLoadFailed": "Hindi ma-load ang aktibidad. Suriin ang iyong koneksyon at subukang muli.",
     "levelUpChip": "Antas {level}!",
     "missingCourseOutline": "Ang kursong ito ay hindi na available",
-    "missingCourseOutlineCta": "Ang kursong ito ay hindi na available. Pumili ng bagong plano ng kurso.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10305,10 +10304,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10842,5 +10837,7 @@
     "callTranscriptSubscribeForTranscription": "Mag-subscribe para sa transkripsyon",
     "unlockCallTranscript": "I-unlock ang transkripsyon ng tawag",
     "activitySummaryUpdateFailed": "Hindi ma-update ang buod na ito.",
-    "courseNotFound": "Hindi makita ang kurso"
+    "courseNotFound": "Hindi makita ang kurso",
+    "askTeacherForNewCourse": "Hilingin sa iyong guro na pumili ng bagong kurso.",
+    "pickNewCoursePlan": "Pumili ng bagong plano ng kurso."
 }

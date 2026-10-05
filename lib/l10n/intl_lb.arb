@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-02 02:48:27.526040",
+    "@@last_modified": "2026-10-02 14:12:59.842316",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abchasesch",
     "elDisplayName": "Griichesch",
     "missingCourseOutline": "Dëse Cours ass net méi disponibel",
-    "missingCourseOutlineCta": "Dëse Cours ass net méi disponibel. Wielt en neie Coursplang.",
     "welcome": "Wëllkomm",
     "courseRequest": "Coursufro",
     "onboarding": "Onboarding",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Abonnéiert Iech fir d'Transkriptioun",
     "unlockCallTranscript": "Transkript vun Uruff opmaachen",
     "activitySummaryUpdateFailed": "Dës Zesummefaassung konnt net aktualiséiert ginn.",
-    "courseNotFound": "Cours net fonnt"
+    "courseNotFound": "Cours net fonnt",
+    "askTeacherForNewCourse": "Frot Ären Enseignant en neie Cours ze wielen.",
+    "pickNewCoursePlan": "Wielt en neie Coursplang."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-02 02:48:31.369767",
+    "@@last_modified": "2026-10-02 14:13:01.659777",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Se-Abkhazian",
     "elDisplayName": "Segerike",
     "missingCourseOutline": "Thupelo ena ha e sa fumaneha",
-    "missingCourseOutlineCta": "Thupelo ena ha e sa fumaneha. Khetha moralo o mocha oa thupelo.",
     "welcome": "Amohela",
     "courseRequest": "Kopo ea thupelo",
     "onboarding": "Kenyelletso",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Ngolisa bakeng sa ho ngola",
     "unlockCallTranscript": "Notlolla sengoloa sa mohala",
     "activitySummaryUpdateFailed": "Kakaretso ena e sitilwe ho ntjhafatswa.",
-    "courseNotFound": "Thupelo ha e fumanehe"
+    "courseNotFound": "Thupelo ha e fumanehe",
+    "askTeacherForNewCourse": "Kopa tichere ea hau hore a khethe thupelo e ncha.",
+    "pickNewCoursePlan": "Khetha moralo o mocha oa thuto."
 }

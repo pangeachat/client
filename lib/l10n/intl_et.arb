@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-02 02:48:24.444772",
+    "@@last_modified": "2026-10-02 14:12:57.145378",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9417,7 +9417,6 @@
     "activityLoadFailed": "Tegevust ei õnnestunud laadida. Kontrollige oma ühendust ja proovige uuesti.",
     "levelUpChip": "Tase {level}!",
     "missingCourseOutline": "See kursus ei ole enam saadaval",
-    "missingCourseOutlineCta": "See kursus ei ole enam saadaval. Valige uus kursuse plaan.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9442,10 +9441,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9979,5 +9974,7 @@
     "callTranscriptSubscribeForTranscription": "Telli transkriptsioon",
     "unlockCallTranscript": "Ava kõne transkriptsioon",
     "activitySummaryUpdateFailed": "Seda kokkuvõtet ei saanud värskendada.",
-    "courseNotFound": "Kursust ei leitud"
+    "courseNotFound": "Kursust ei leitud",
+    "askTeacherForNewCourse": "Paluge õpetajal valida uus kursus.",
+    "pickNewCoursePlan": "Vali uus kursuseplaan."
 }

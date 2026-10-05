@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-02 02:48:30.812621",
+    "@@last_modified": "2026-10-02 14:13:01.743326",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abkhazian",
     "elDisplayName": "Eleni",
     "missingCourseOutline": "Ua le toe maua lenei kosi",
-    "missingCourseOutlineCta": "Ua le toe maua lenei kosi. Filifili se fuafuaga fou o kosi.",
     "welcome": "Afio mai",
     "courseRequest": "Talosaga kosi",
     "onboarding": "Fa'afeiloa'iga",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Lesitala mo le fa'aliliuga",
     "unlockCallTranscript": "Tatala le fa'aliliuga o le vala'au",
     "activitySummaryUpdateFailed": "E leʻi mafai ona faʻafouina lenei aotelega.",
-    "courseNotFound": "E le'i maua le kosi"
+    "courseNotFound": "E le'i maua le kosi",
+    "askTeacherForNewCourse": "Fesili i lau faiaoga e filifili se kosi fou.",
+    "pickNewCoursePlan": "Filifili se fuafuaga fou o le kosi."
 }

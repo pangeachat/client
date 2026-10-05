@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-02 02:48:30.437861",
+    "@@last_modified": "2026-10-02 14:13:01.317055",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "අබ්කාසියානු",
     "elDisplayName": "ග්‍රීක",
     "missingCourseOutline": "මෙම පාඨමාලාව තවදුරටත් නොමැත",
-    "missingCourseOutlineCta": "මෙම පාඨමාලාව තවදුරටත් නොමැත. නව පාඨමාලා සැලැස්මක් තෝරන්න.",
     "welcome": "සාදරයෙන් පිළිගනිමු",
     "courseRequest": "පාඨමාලා ඉල්ලීම",
     "onboarding": "අලුතින් එක්වීම",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "පිටපත් කිරීම සඳහා දායක වන්න",
     "unlockCallTranscript": "ඇමතුම් පිටපත අගුළු හරින්න",
     "activitySummaryUpdateFailed": "මෙම සාරාංශය යාවත්කාලීන කිරීමට නොහැකි විය.",
-    "courseNotFound": "පාඨමාලාව සොයාගත නොහැක"
+    "courseNotFound": "පාඨමාලාව සොයාගත නොහැක",
+    "askTeacherForNewCourse": "නව පාඨමාලාවක් තෝරා ගැනීමට ඔබේ ගුරුවරයාගෙන් අසන්න.",
+    "pickNewCoursePlan": "නව පාඨමාලා සැලැස්මක් තෝරන්න."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-02 02:48:25.055741",
+    "@@last_modified": "2026-10-02 14:12:58.200943",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "ʻApakasia",
     "elDisplayName": "Helene",
     "missingCourseOutline": "ʻAʻole loaʻa hou kēia papa",
-    "missingCourseOutlineCta": "ʻAʻole loaʻa hou kēia papa. E koho i kahi papa hou.",
     "welcome": "Welina",
     "courseRequest": "Noi papa",
     "onboarding": "Hoʻolauna",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Kakau inoa no ke kākau ʻana",
     "unlockCallTranscript": "Wehe i ke kākau ʻana o ke kelepona",
     "activitySummaryUpdateFailed": "ʻAʻole hiki ke hoʻopou hou i kēia hōʻuluʻulu.",
-    "courseNotFound": "ʻAʻole i loaʻa ka papa"
+    "courseNotFound": "ʻAʻole i loaʻa ka papa",
+    "askTeacherForNewCourse": "E noi i kāu kumu e koho i papa hou.",
+    "pickNewCoursePlan": "E koho i papa hana hou."
 }

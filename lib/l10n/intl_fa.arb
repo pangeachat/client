@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-02 02:48:24.442668",
+    "@@last_modified": "2026-10-02 14:12:57.591882",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9508,7 +9508,6 @@
     "activityLoadFailed": "نتوانستم فعالیت را بارگذاری کنم. اتصال خود را بررسی کنید و دوباره تلاش کنید.",
     "levelUpChip": "سطح {level}!",
     "missingCourseOutline": "این دوره دیگر در دسترس نیست",
-    "missingCourseOutlineCta": "این دوره دیگر در دسترس نیست. یک برنامه دوره جدید انتخاب کنید.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9533,10 +9532,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10070,5 +10065,7 @@
     "callTranscriptSubscribeForTranscription": "برای رونویسی مشترک شوید",
     "unlockCallTranscript": "باز کردن قفل رونویسی تماس",
     "activitySummaryUpdateFailed": "این خلاصه به‌روز نشد.",
-    "courseNotFound": "دوره پیدا نشد"
+    "courseNotFound": "دوره پیدا نشد",
+    "askTeacherForNewCourse": "از معلم خود بخواهید یک دوره جدید انتخاب کند.",
+    "pickNewCoursePlan": "یک برنامه درسی جدید انتخاب کنید."
 }

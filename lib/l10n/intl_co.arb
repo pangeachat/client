@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-02 02:48:25.817924",
+    "@@last_modified": "2026-10-02 14:12:57.066243",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abcasu",
     "elDisplayName": "Grecu",
     "missingCourseOutline": "Stu corsu ùn hè più dispunibule",
-    "missingCourseOutlineCta": "Stu corsu ùn hè più dispunibule. Sceglite un novu pianu di corsu.",
     "welcome": "Benvenutu",
     "courseRequest": "Dumanda di corsu",
     "onboarding": "Integrazione",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Abbunà si per a trascrizzione",
     "unlockCallTranscript": "Sbloccà a trascrizzione di a chjama",
     "activitySummaryUpdateFailed": "Stu riassuntu ùn hà pussutu esse aghjurnatu.",
-    "courseNotFound": "Corsu micca trovu"
+    "courseNotFound": "Corsu micca trovu",
+    "askTeacherForNewCourse": "Dumandate à u vostru prufessore di sceglie un novu corsu.",
+    "pickNewCoursePlan": "Sceglite un novu pianu di corsu."
 }

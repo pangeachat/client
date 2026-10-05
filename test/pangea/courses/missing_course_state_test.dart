@@ -30,12 +30,8 @@ void main() {
         QuestLoadErrorView(MissingQuestException(), showAddCourse: true),
       );
 
-      expect(
-        find.text(
-          'This course is no longer available. Pick a new course plan.',
-        ),
-        findsOneWidget,
-      );
+      expect(find.text('This course is no longer available'), findsOneWidget);
+      expect(find.text('Pick a new course plan.'), findsOneWidget);
       expect(find.text('Add a course plan'), findsOneWidget);
     });
 
@@ -48,6 +44,10 @@ void main() {
       );
 
       expect(find.text('This course is no longer available'), findsOneWidget);
+      expect(
+        find.text('Ask your teacher to choose a new course.'),
+        findsOneWidget,
+      );
       expect(find.text('Add a course plan'), findsNothing);
     });
 

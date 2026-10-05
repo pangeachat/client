@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-02 02:48:28.394075",
+    "@@last_modified": "2026-10-02 14:13:00.080834",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "അബ്ഖാസിയൻ",
     "elDisplayName": "ഗ്രീക്ക്",
     "missingCourseOutline": "ഈ കോഴ്സ് ഇപ്പോൾ ലഭ്യമല്ല",
-    "missingCourseOutlineCta": "ഈ കോഴ്സ് ഇപ്പോൾ ലഭ്യമല്ല. ഒരു പുതിയ കോഴ്സ് പ്ലാൻ തിരഞ്ഞെടുക്കുക.",
     "welcome": "സ്വാഗതം",
     "courseRequest": "കോഴ്സ് അഭ്യർത്ഥന",
     "onboarding": "ഓൺബോർഡിംഗ്",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "പകർത്തി എഴുതുന്നതിനായി സബ്സ്ക്രൈബ് ചെയ്യുക",
     "unlockCallTranscript": "കോൾ ട്രാൻസ്ക്രിപ്റ്റ് അൺലോക്ക് ചെയ്യുക",
     "activitySummaryUpdateFailed": "ഈ സംഗ്രഹം അപ്ഡേറ്റ് ചെയ്യാനായില്ല.",
-    "courseNotFound": "കോഴ്സ് കണ്ടെത്തിയില്ല"
+    "courseNotFound": "കോഴ്സ് കണ്ടെത്തിയില്ല",
+    "askTeacherForNewCourse": "പുതിയ കോഴ്‌സ് തിരഞ്ഞെടുക്കാൻ നിങ്ങളുടെ അധ്യാപകനോട് ആവശ്യപ്പെടുക.",
+    "pickNewCoursePlan": "ഒരു പുതിയ കോഴ്സ് പ്ലാൻ തിരഞ്ഞെടുക്കുക."
 }

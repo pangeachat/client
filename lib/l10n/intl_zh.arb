@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-02 02:48:32.930104",
+    "@@last_modified": "2026-10-02 14:13:03.259042",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9420,7 +9420,6 @@
     "activityLoadFailed": "无法加载活动。请检查您的连接并重试。",
     "levelUpChip": "等级 {level}！",
     "missingCourseOutline": "此课程不再可用",
-    "missingCourseOutlineCta": "此课程不再可用。请选择一个新的课程计划。",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9445,10 +9444,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9982,5 +9977,7 @@
     "callTranscriptSubscribeForTranscription": "订阅转录服务",
     "unlockCallTranscript": "解锁通话记录",
     "activitySummaryUpdateFailed": "此摘要未能更新。",
-    "courseNotFound": "未找到课程"
+    "courseNotFound": "未找到课程",
+    "askTeacherForNewCourse": "请老师选择新课程。",
+    "pickNewCoursePlan": "选择新的课程计划。"
 }

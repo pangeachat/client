@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-02 02:48:25.761041",
+    "@@last_modified": "2026-10-02 14:12:59.490218",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9493,7 +9493,6 @@
     "activityLoadFailed": "Tidak dapat memuat aktivitas. Periksa koneksi Anda dan coba lagi.",
     "levelUpChip": "Tingkat {level}!",
     "missingCourseOutline": "Kursus ini tidak lagi tersedia",
-    "missingCourseOutlineCta": "Kursus ini tidak lagi tersedia. Pilih rencana kursus baru.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9518,10 +9517,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10055,5 +10050,7 @@
     "callTranscriptSubscribeForTranscription": "Berlangganan untuk transkripsi",
     "unlockCallTranscript": "Buka transkrip panggilan",
     "activitySummaryUpdateFailed": "Ringkasan ini tidak dapat diperbarui.",
-    "courseNotFound": "Kursus tidak ditemukan"
+    "courseNotFound": "Kursus tidak ditemukan",
+    "askTeacherForNewCourse": "Minta guru Anda untuk memilih kursus baru.",
+    "pickNewCoursePlan": "Pilih rencana kursus baru."
 }

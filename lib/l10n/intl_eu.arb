@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-02 02:48:24.689585",
+    "@@last_modified": "2026-10-02 14:12:57.639535",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9420,7 +9420,6 @@
     "activityLoadFailed": "Jarduera kargatzea ezin izan da. Begiratu zure konexioa eta saiatu berriro.",
     "levelUpChip": "Maila {level}!",
     "missingCourseOutline": "Ikastaro hau ez dago eskuragarri",
-    "missingCourseOutlineCta": "Ikastaro hau ez dago eskuragarri. Aukeratu ikastaro berri bat.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9445,10 +9444,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9982,5 +9977,7 @@
     "callTranscriptSubscribeForTranscription": "Harpidetu transkripziorako",
     "unlockCallTranscript": "Desblokeatu deiaren transkripzioa",
     "activitySummaryUpdateFailed": "Laburpen hau ezin izan da eguneratu.",
-    "courseNotFound": "Ikastaroa ez da aurkitu"
+    "courseNotFound": "Ikastaroa ez da aurkitu",
+    "askTeacherForNewCourse": "Eskatu irakasleari ikastaro berri bat aukeratzeko.",
+    "pickNewCoursePlan": "Aukeratu ikastaro-plan berri bat."
 }

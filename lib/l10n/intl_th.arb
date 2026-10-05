@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-02 02:48:31.912244",
+    "@@last_modified": "2026-10-02 14:13:02.287011",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10052,7 +10052,6 @@
     "activityLoadFailed": "ไม่สามารถโหลดกิจกรรมได้ ตรวจสอบการเชื่อมต่อของคุณและลองอีกครั้ง",
     "levelUpChip": "เลเวล {level}!",
     "missingCourseOutline": "หลักสูตรนี้ไม่สามารถใช้งานได้อีกต่อไป",
-    "missingCourseOutlineCta": "หลักสูตรนี้ไม่สามารถใช้งานได้อีกต่อไป กรุณาเลือกแผนหลักสูตรใหม่",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10077,10 +10076,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10614,5 +10609,7 @@
     "callTranscriptSubscribeForTranscription": "สมัครสมาชิกเพื่อถอดเสียง",
     "unlockCallTranscript": "ปลดล็อกบทสนทนาการโทร",
     "activitySummaryUpdateFailed": "ไม่สามารถอัปเดตสรุปนี้ได้",
-    "courseNotFound": "ไม่พบหลักสูตร"
+    "courseNotFound": "ไม่พบหลักสูตร",
+    "askTeacherForNewCourse": "ขอให้คุณครูเลือกคอร์สใหม่",
+    "pickNewCoursePlan": "เลือกแผนการเรียนใหม่"
 }

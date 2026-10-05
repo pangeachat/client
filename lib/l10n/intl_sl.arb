@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-02 02:48:30.755917",
+    "@@last_modified": "2026-10-02 14:13:01.282206",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10365,7 +10365,6 @@
     "activityLoadFailed": "Dejavnosti ni bilo mogoče naložiti. Preverite svojo povezavo in poskusite znova.",
     "levelUpChip": "Raven {level}!",
     "missingCourseOutline": "Ta tečaj ni več na voljo",
-    "missingCourseOutlineCta": "Ta tečaj ni več na voljo. Izberite nov načrt tečaja.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10390,10 +10389,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10927,5 +10922,7 @@
     "callTranscriptSubscribeForTranscription": "Naročite se na prepisovanje",
     "unlockCallTranscript": "Odkleni prepis klica",
     "activitySummaryUpdateFailed": "Tega povzetka ni bilo mogoče posodobiti.",
-    "courseNotFound": "Tečaja ni mogoče najti"
+    "courseNotFound": "Tečaja ni mogoče najti",
+    "askTeacherForNewCourse": "Prosite svojega učitelja, naj izbere nov tečaj.",
+    "pickNewCoursePlan": "Izberite nov učni načrt."
 }

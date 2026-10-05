@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-02 02:48:31.548797",
+    "@@last_modified": "2026-10-02 14:13:01.732825",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abkhazian",
     "elDisplayName": "Yunani",
     "missingCourseOutline": "Kursus ieu teu sayogi deui",
-    "missingCourseOutlineCta": "Kursus ieu teu sayogi deui. Pilih rencana kursus énggal.",
     "welcome": "Wilujeng sumping",
     "courseRequest": "Panyuhun kursus",
     "onboarding": "Onboarding",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Langganan pikeun transkripsi",
     "unlockCallTranscript": "Buka konci transkrip telepon",
     "activitySummaryUpdateFailed": "Ringkesan ieu teu tiasa diropéa.",
-    "courseNotFound": "Kursus teu kapanggih"
+    "courseNotFound": "Kursus teu kapanggih",
+    "askTeacherForNewCourse": "Tanya guru anjeun pikeun milih kursus anyar.",
+    "pickNewCoursePlan": "Pilih rencana kursus anyar."
 }

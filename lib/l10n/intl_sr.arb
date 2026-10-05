@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-02 02:48:30.926576",
+    "@@last_modified": "2026-10-02 14:13:01.738503",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10369,7 +10369,6 @@
     "activityLoadFailed": "Nije moguće učitati aktivnost. Proverite svoju vezu i pokušajte ponovo.",
     "levelUpChip": "Nivo {level}!",
     "missingCourseOutline": "Ovaj kurs više nije dostupan",
-    "missingCourseOutlineCta": "Ovaj kurs više nije dostupan. Izaberite novi plan kursa.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10394,10 +10393,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10931,5 +10926,7 @@
     "callTranscriptSubscribeForTranscription": "Pretplatite se za transkripciju",
     "unlockCallTranscript": "Otključaj transkript poziva",
     "activitySummaryUpdateFailed": "Ovaj rezime nije mogao da se ažurira.",
-    "courseNotFound": "Kurs nije pronađen"
+    "courseNotFound": "Kurs nije pronađen",
+    "askTeacherForNewCourse": "Zatražite od svog nastavnika da odabere novi kurs.",
+    "pickNewCoursePlan": "Izaberite novi plan kursa."
 }

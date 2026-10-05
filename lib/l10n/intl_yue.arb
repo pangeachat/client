@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-02 02:48:33.170196",
+    "@@last_modified": "2026-10-02 14:13:02.929924",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10377,7 +10377,6 @@
     "activityLoadFailed": "無法加載活動。請檢查您的連接並重試。",
     "levelUpChip": "升級到 {level} 級！",
     "missingCourseOutline": "此課程不再可用",
-    "missingCourseOutlineCta": "此課程不再可用。請選擇一個新的課程計劃。",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10402,10 +10401,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10939,5 +10934,7 @@
     "callTranscriptSubscribeForTranscription": "訂閱以獲取轉錄",
     "unlockCallTranscript": "解鎖通話轉錄",
     "activitySummaryUpdateFailed": "無法更新此摘要。",
-    "courseNotFound": "搵唔到課程"
+    "courseNotFound": "搵唔到課程",
+    "askTeacherForNewCourse": "請老師揀個新課程。",
+    "pickNewCoursePlan": "揀個新課程計劃"
 }

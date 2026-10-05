@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-02 02:48:30.295935",
+    "@@last_modified": "2026-10-02 14:13:01.338800",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10365,7 +10365,6 @@
     "activityLoadFailed": "Nepodarilo sa načítať aktivitu. Skontrolujte svoje pripojenie a skúste to znova.",
     "levelUpChip": "Úroveň {level}!",
     "missingCourseOutline": "Tento kurz už nie je k dispozícii",
-    "missingCourseOutlineCta": "Tento kurz už nie je k dispozícii. Vyberte si nový plán kurzu.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10390,10 +10389,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10927,5 +10922,7 @@
     "callTranscriptSubscribeForTranscription": "Predplatiť si prepis",
     "unlockCallTranscript": "Odomknúť prepis hovoru",
     "activitySummaryUpdateFailed": "Tento súhrn nebolo možné aktualizovať.",
-    "courseNotFound": "Kurz sa nenašiel"
+    "courseNotFound": "Kurz sa nenašiel",
+    "askTeacherForNewCourse": "Požiadajte svojho učiteľa, aby vybral nový kurz.",
+    "pickNewCoursePlan": "Vyberte si nový študijný plán."
 }

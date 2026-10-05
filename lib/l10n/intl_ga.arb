@@ -3563,7 +3563,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-02 02:48:24.942205",
+    "@@last_modified": "2026-10-02 14:12:57.565191",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9431,7 +9431,6 @@
     "activityLoadFailed": "Níor éirigh le gníomhaíocht a luchtú. Seiceáil do cheangal agus déan iarracht arís.",
     "levelUpChip": "Leibhéal {level}!",
     "missingCourseOutline": "Níl an cúrsa seo ar fáil a thuilleadh",
-    "missingCourseOutlineCta": "Níl an cúrsa seo ar fáil a thuilleadh. Roghnaigh plean cúrsa nua.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9456,10 +9455,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9993,5 +9988,7 @@
     "callTranscriptSubscribeForTranscription": "Liostáil le haghaidh trascríofa",
     "unlockCallTranscript": "Díghlasáil tras-scríbhinn an ghlao",
     "activitySummaryUpdateFailed": "Níorbh fhéidir an achoimre seo a nuashonrú.",
-    "courseNotFound": "Níor aimsíodh an cúrsa"
+    "courseNotFound": "Níor aimsíodh an cúrsa",
+    "askTeacherForNewCourse": "Iarr ar do mhúinteoir cúrsa nua a roghnú.",
+    "pickNewCoursePlan": "Roghnaigh plean cúrsa nua."
 }

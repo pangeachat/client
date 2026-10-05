@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-02 02:48:30.411291",
+    "@@last_modified": "2026-10-02 14:13:00.290651",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abkhazian",
     "elDisplayName": "Yunani",
     "missingCourseOutline": "Kursus ini tidak lagi tersedia",
-    "missingCourseOutlineCta": "Kursus ini tidak lagi tersedia. Pilih pelan kursus baharu.",
     "welcome": "Selamat datang",
     "courseRequest": "Permintaan kursus",
     "onboarding": "Orientasi",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Langgan untuk transkripsi",
     "unlockCallTranscript": "Buka kunci transkripsi panggilan",
     "activitySummaryUpdateFailed": "Ringkasan ini tidak dapat dikemas kini.",
-    "courseNotFound": "Kursus tidak ditemui"
+    "courseNotFound": "Kursus tidak ditemui",
+    "askTeacherForNewCourse": "Minta guru anda untuk memilih kursus baharu.",
+    "pickNewCoursePlan": "Pilih pelan kursus baharu."
 }

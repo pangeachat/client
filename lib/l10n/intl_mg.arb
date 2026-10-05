@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-02 02:48:27.636650",
+    "@@last_modified": "2026-10-02 14:13:00.010334",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abkhazian",
     "elDisplayName": "Grika",
     "missingCourseOutline": "Tsy misy intsony ity taranja ity",
-    "missingCourseOutlineCta": "Tsy misy intsony ity taranja ity. Misafidiana drafitra taranja vaovao.",
     "welcome": "Tongasoa",
     "courseRequest": "Fangatahana taranja",
     "onboarding": "Fampidirana",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Misoratra anarana ho an'ny fandikana",
     "unlockCallTranscript": "Sokafy ny dika soratra antso",
     "activitySummaryUpdateFailed": "Tsy afaka navaozina ity famintinana ity.",
-    "courseNotFound": "Tsy hita ny taranja"
+    "courseNotFound": "Tsy hita ny taranja",
+    "askTeacherForNewCourse": "Angataho amin'ny mpampianatra anao hisafidy taranja vaovao.",
+    "pickNewCoursePlan": "Mifidiana drafitra fampianarana vaovao."
 }

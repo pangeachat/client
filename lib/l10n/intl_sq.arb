@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-02 02:48:30.872445",
+    "@@last_modified": "2026-10-02 14:13:01.634153",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abkazisht",
     "elDisplayName": "Greqisht",
     "missingCourseOutline": "Ky kurs nuk është më i disponueshëm",
-    "missingCourseOutlineCta": "Ky kurs nuk është më i disponueshëm. Zgjidhni një plan të ri kursi.",
     "welcome": "Mirësevini",
     "courseRequest": "Kërkesë kursi",
     "onboarding": "Orientim",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Abonohu për transkriptim",
     "unlockCallTranscript": "Zhbloko transkriptin e thirrjes",
     "activitySummaryUpdateFailed": "Ky përmbledhje nuk mund të përditësohej.",
-    "courseNotFound": "Kursi nuk u gjet"
+    "courseNotFound": "Kursi nuk u gjet",
+    "askTeacherForNewCourse": "Kërkojini mësuesit tuaj të zgjedhë një kurs të ri.",
+    "pickNewCoursePlan": "Zgjidh një plan të ri kursi."
 }

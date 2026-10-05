@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-02 02:48:33.066507",
+    "@@last_modified": "2026-10-02 14:12:58.127009",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9523,7 +9523,6 @@
     "activityLoadFailed": "Nem sikerült betölteni a tevékenységet. Ellenőrizze a kapcsolatát, és próbálja újra.",
     "levelUpChip": "Szint {level}!",
     "missingCourseOutline": "Ez a kurzus már nem elérhető",
-    "missingCourseOutlineCta": "Ez a kurzus már nem elérhető. Válasszon egy új kurzustervet.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9548,10 +9547,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10085,5 +10080,7 @@
     "callTranscriptSubscribeForTranscription": "Feliratkozás az átírásra",
     "unlockCallTranscript": "Hívás átirat feloldása",
     "activitySummaryUpdateFailed": "Ezt az összefoglalót nem sikerült frissíteni.",
-    "courseNotFound": "A kurzus nem található"
+    "courseNotFound": "A kurzus nem található",
+    "askTeacherForNewCourse": "Kérd meg a tanárodat, hogy válasszon egy új kurzust.",
+    "pickNewCoursePlan": "Válassz új tanfolyamtervet."
 }

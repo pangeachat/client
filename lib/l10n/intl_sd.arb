@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-02 02:48:30.412398",
+    "@@last_modified": "2026-10-02 14:13:01.261633",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "ابخازيان",
     "elDisplayName": "يوناني",
     "missingCourseOutline": "هي ڪورس هاڻي موجود ناهي",
-    "missingCourseOutlineCta": "هي ڪورس هاڻي موجود ناهي. هڪ نئون ڪورس پلان چونڊيو.",
     "welcome": "ڀليڪار",
     "courseRequest": "ڪورس جي درخواست",
     "onboarding": "آن بورڊنگ",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "لِکڻ لاءِ سبسڪرائب ڪريو",
     "unlockCallTranscript": "ڪال ٽرانسڪرپٽ کوليو",
     "activitySummaryUpdateFailed": "هي خلاصو اپڊيٽ نه ٿي سگهيو.",
-    "courseNotFound": "ڪورس نه مليو"
+    "courseNotFound": "ڪورس نه مليو",
+    "askTeacherForNewCourse": "توهان جي استاد کان پڇو ته هڪ نئون ڪورس چونڊيو.",
+    "pickNewCoursePlan": "نئون ڪورس پلان چونڊيو."
 }

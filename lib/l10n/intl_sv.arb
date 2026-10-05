@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-02 02:48:31.302677",
+    "@@last_modified": "2026-10-02 14:13:01.716701",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9938,7 +9938,6 @@
     "activityLoadFailed": "Kunde inte ladda aktiviteten. Kontrollera din anslutning och försök igen.",
     "levelUpChip": "Nivå {level}!",
     "missingCourseOutline": "Denna kurs är inte längre tillgänglig",
-    "missingCourseOutlineCta": "Denna kurs är inte längre tillgänglig. Välj en ny kursplan.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9963,10 +9962,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10500,5 +10495,7 @@
     "callTranscriptSubscribeForTranscription": "Prenumerera för transkription",
     "unlockCallTranscript": "Lås upp samtalstranskription",
     "activitySummaryUpdateFailed": "Denna sammanfattning kunde inte uppdateras.",
-    "courseNotFound": "Kursen hittades inte"
+    "courseNotFound": "Kursen hittades inte",
+    "askTeacherForNewCourse": "Be din lärare att välja en ny kurs.",
+    "pickNewCoursePlan": "Välj en ny kursplan."
 }

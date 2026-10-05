@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-02 02:48:25.911256",
+    "@@last_modified": "2026-10-02 14:12:57.034199",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9407,7 +9407,6 @@
     "activityLoadFailed": "Die Aktivität konnte nicht geladen werden. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
     "levelUpChip": "Level {level}!",
     "missingCourseOutline": "Dieser Kurs ist nicht mehr verfügbar",
-    "missingCourseOutlineCta": "Dieser Kurs ist nicht mehr verfügbar. Wählen Sie einen neuen Kursplan.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9432,10 +9431,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9969,5 +9964,7 @@
     "callTranscriptSubscribeForTranscription": "Für Transkription abonnieren",
     "unlockCallTranscript": "Anruf-Transkript freischalten",
     "activitySummaryUpdateFailed": "Diese Zusammenfassung konnte nicht aktualisiert werden.",
-    "courseNotFound": "Kurs nicht gefunden"
+    "courseNotFound": "Kurs nicht gefunden",
+    "askTeacherForNewCourse": "Bitte deinen Lehrer, einen neuen Kurs auszuwählen.",
+    "pickNewCoursePlan": "Wählen Sie einen neuen Kursplan."
 }

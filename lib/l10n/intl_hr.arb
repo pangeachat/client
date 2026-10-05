@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-02 02:48:25.365993",
+    "@@last_modified": "2026-10-02 14:12:58.076226",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -9856,7 +9856,6 @@
     "activityLoadFailed": "Nije moguće učitati aktivnost. Provjerite svoju vezu i pokušajte ponovo.",
     "levelUpChip": "Nivo {level}!",
     "missingCourseOutline": "Ovaj kurs više nije dostupan",
-    "missingCourseOutlineCta": "Ovaj kurs više nije dostupan. Odaberite novi plan kursa.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9881,10 +9880,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10418,5 +10413,7 @@
     "callTranscriptSubscribeForTranscription": "Pretplatite se za prijepis",
     "unlockCallTranscript": "Otključaj prijepis poziva",
     "activitySummaryUpdateFailed": "Ovaj sažetak nije bilo moguće ažurirati.",
-    "courseNotFound": "Tečaj nije pronađen"
+    "courseNotFound": "Tečaj nije pronađen",
+    "askTeacherForNewCourse": "Zamolite svog učitelja da odabere novi tečaj.",
+    "pickNewCoursePlan": "Odaberite novi plan tečaja."
 }

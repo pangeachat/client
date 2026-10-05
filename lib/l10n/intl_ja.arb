@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-02 02:48:26.296742",
+    "@@last_modified": "2026-10-02 14:12:58.717949",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10189,7 +10189,6 @@
     "activityLoadFailed": "アクティビティを読み込めませんでした。接続を確認して再試行してください。",
     "levelUpChip": "レベル {level}!",
     "missingCourseOutline": "このコースはもはや利用できません",
-    "missingCourseOutlineCta": "このコースはもはや利用できません。新しいコースプランを選択してください。",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10214,10 +10213,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10751,5 +10746,7 @@
     "callTranscriptSubscribeForTranscription": "文字起こしを購読する",
     "unlockCallTranscript": "通話記録のロックを解除",
     "activitySummaryUpdateFailed": "この要約を更新できませんでした。",
-    "courseNotFound": "コースが見つかりません"
+    "courseNotFound": "コースが見つかりません",
+    "askTeacherForNewCourse": "担当の先生に新しいコースを選んでもらいましょう。",
+    "pickNewCoursePlan": "新しいコースプランを選んでください。"
 }

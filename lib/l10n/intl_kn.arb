@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-02 02:48:27.015324",
+    "@@last_modified": "2026-10-02 14:12:59.401812",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "ಅಬ್ಖಾಜಿಯನ್",
     "elDisplayName": "ಗ್ರೀಕ್",
     "missingCourseOutline": "ಈ ಕೋರ್ಸ್ ಇನ್ನು ಮುಂದೆ ಲಭ್ಯವಿಲ್ಲ",
-    "missingCourseOutlineCta": "ಈ ಕೋರ್ಸ್ ಇನ್ನು ಮುಂದೆ ಲಭ್ಯವಿಲ್ಲ. ಹೊಸ ಕೋರ್ಸ್ ಯೋಜನೆಯನ್ನು ಆರಿಸಿ.",
     "welcome": "ಸ್ವಾಗತ",
     "courseRequest": "ಕೋರ್ಸ್ ವಿನಂತಿ",
     "onboarding": "ಆನ್‌ಬೋರ್ಡಿಂಗ್",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "ಲಿಪ್ಯಂತರಕ್ಕಾಗಿ ಚಂದಾದಾರರಾಗಿ",
     "unlockCallTranscript": "ಕರೆ ಲಿಪ್ಯಂತರವನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
     "activitySummaryUpdateFailed": "ಈ ಸಾರಾಂಶವನ್ನು ನವೀಕರಿಸಲಾಗಲಿಲ್ಲ.",
-    "courseNotFound": "ಕೋರ್ಸ್ ಕಂಡುಬಂದಿಲ್ಲ"
+    "courseNotFound": "ಕೋರ್ಸ್ ಕಂಡುಬಂದಿಲ್ಲ",
+    "askTeacherForNewCourse": "ಹೊಸ ಕೋರ್ಸ್ ಆಯ್ಕೆ ಮಾಡಲು ನಿಮ್ಮ ಶಿಕ್ಷಕರನ್ನು ಕೇಳಿ.",
+    "pickNewCoursePlan": "ಹೊಸ ಕೋರ್ಸ್ ಯೋಜನೆಯನ್ನು ಆರಿಸಿ."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-02 02:48:34.174643",
+    "@@last_modified": "2026-10-02 14:12:59.457178",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "ئەبخازی",
     "elDisplayName": "یۆنانی",
     "missingCourseOutline": "ئەم خولە چیتر بەردەست نییە",
-    "missingCourseOutlineCta": "ئەم خولە چیتر بەردەست نییە. پلانێکی خولی نوێ هەڵبژێرە.",
     "welcome": "بەخێربێیت",
     "courseRequest": "داواکاری خول",
     "onboarding": "دەستپێکردن",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "بەشداری بکە بۆ گۆڕین بۆ نووسین",
     "unlockCallTranscript": "کردنەوەی گۆڕینی پەیوەندی بۆ نووسین",
     "activitySummaryUpdateFailed": "ئەم پوختەیە نوێ نه‌کرایه‌وه‌.",
-    "courseNotFound": "خوولەکە نەدۆزرایەوە"
+    "courseNotFound": "خوولەکە نەدۆزرایەوە",
+    "askTeacherForNewCourse": "داوا لە مامۆستاکەت بکە بۆ هەڵبژاردنی کۆرسێکی نوێ.",
+    "pickNewCoursePlan": "پلانێکی نوێی خوێندن هەڵبژێرە."
 }

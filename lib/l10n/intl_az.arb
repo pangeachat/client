@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-02 02:48:25.265341",
+    "@@last_modified": "2026-10-02 14:12:56.384238",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abxaz",
     "elDisplayName": "Yunan",
     "missingCourseOutline": "Bu kurs artıq mövcud deyil",
-    "missingCourseOutlineCta": "Bu kurs artıq mövcud deyil. Yeni bir kurs planı seçin.",
     "welcome": "Xoş gəlmisiniz",
     "courseRequest": "Kurs sorğusu",
     "onboarding": "Bələdçi",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Transkripsiya üçün abunə olun",
     "unlockCallTranscript": "Zəng transkripsiyasını açın",
     "activitySummaryUpdateFailed": "Bu xülasə yenilənə bilmədi.",
-    "courseNotFound": "Kurs tapılmadı"
+    "courseNotFound": "Kurs tapılmadı",
+    "askTeacherForNewCourse": "Müəlliminizdən yeni kurs seçməsini xahiş edin.",
+    "pickNewCoursePlan": "Yeni kurs planı seçin."
 }

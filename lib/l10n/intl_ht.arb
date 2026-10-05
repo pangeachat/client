@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-02 02:48:27.133271",
+    "@@last_modified": "2026-10-02 14:12:58.233675",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abkaz",
     "elDisplayName": "Grèk",
     "missingCourseOutline": "Kou sa a pa disponib ankò",
-    "missingCourseOutlineCta": "Kou sa a pa disponib ankò. Chwazi yon nouvo plan kou.",
     "welcome": "Byenveni",
     "courseRequest": "Demann kou",
     "onboarding": "Onboarding",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Abòne pou transkripsyon",
     "unlockCallTranscript": "Debloke transkripsyon apèl la",
     "activitySummaryUpdateFailed": "Rezime sa a pa t' kapab mete ajou.",
-    "courseNotFound": "Kou a pa jwenn"
+    "courseNotFound": "Kou a pa jwenn",
+    "askTeacherForNewCourse": "Mande pwofesè w la pou l chwazi yon nouvo kou.",
+    "pickNewCoursePlan": "Chwazi yon nouvo plan kou."
 }

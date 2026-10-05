@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-02 02:48:30.206257",
+    "@@last_modified": "2026-10-02 14:13:01.323575",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10392,7 +10392,6 @@
     "activityLoadFailed": "Не удалось загрузить действие. Проверьте ваше соединение и попробуйте снова.",
     "levelUpChip": "Уровень {level}!",
     "missingCourseOutline": "Этот курс больше недоступен",
-    "missingCourseOutlineCta": "Этот курс больше недоступен. Выберите новый план курса.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10417,10 +10416,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10954,5 +10949,7 @@
     "callTranscriptSubscribeForTranscription": "Подписаться на расшифровку",
     "unlockCallTranscript": "Разблокировать расшифровку звонка",
     "activitySummaryUpdateFailed": "Не удалось обновить сводку.",
-    "courseNotFound": "Курс не найден"
+    "courseNotFound": "Курс не найден",
+    "askTeacherForNewCourse": "Попросите учителя выбрать новый курс.",
+    "pickNewCoursePlan": "Выберите новый план курса."
 }

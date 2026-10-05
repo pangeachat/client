@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-02 02:48:25.703409",
+    "@@last_modified": "2026-10-02 14:12:56.627547",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9547,7 +9547,6 @@
     "activityLoadFailed": "No s'ha pogut carregar l'activitat. Comprova la teva connexió i torna a provar-ho.",
     "levelUpChip": "Nivell {level}!",
     "missingCourseOutline": "Aquest curs ja no està disponible",
-    "missingCourseOutlineCta": "Aquest curs ja no està disponible. Tria un nou pla de curs.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9572,10 +9571,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10109,5 +10104,7 @@
     "callTranscriptSubscribeForTranscription": "Subscriu-te per a la transcripció",
     "unlockCallTranscript": "Desbloqueja la transcripció de la trucada",
     "activitySummaryUpdateFailed": "Aquest resum no s'ha pogut actualitzar.",
-    "courseNotFound": "Curs no trobat"
+    "courseNotFound": "Curs no trobat",
+    "askTeacherForNewCourse": "Demana al teu professor que triï un nou curs.",
+    "pickNewCoursePlan": "Tria un nou pla de curs."
 }

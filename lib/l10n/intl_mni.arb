@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-02 02:48:28.178110",
+    "@@last_modified": "2026-10-02 14:13:00.460304",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "আবখাজিয়ান",
     "elDisplayName": "গ্রীক",
     "missingCourseOutline": "অসিগী কোর্স অসি হৌজিক লৈত্ৰে",
-    "missingCourseOutlineCta": "অসিগী কোর্স অসি হৌজিক লৈত্ৰে. অনৌবা কোর্স প্লান অমা খনবীয়ু.",
     "welcome": "তরাম্না ওকচরি",
     "courseRequest": "কোর্স রিকুয়েষ্ট",
     "onboarding": "ওনবোর্দিং",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "ট্রান্সক্রিপশনগীদমক সাবস্ক্রাইব তৌবীয়ু",
     "unlockCallTranscript": "কল ট্রান্সক্রিপ্ট অদু অনলক তৌবীয়ু",
     "activitySummaryUpdateFailed": "असिमरी असी अपडेट तौबा ङम्लोई।",
-    "courseNotFound": "কোর্স ফংদে"
+    "courseNotFound": "কোর্স ফংদে",
+    "askTeacherForNewCourse": "ನಪ್ಪಿಂಗ್‌ಚಾ ಸಿಂಗ್‌ದಾ ಓನ್‌ನಬಾ ಕೋರ್ಸ್‌ ಅಮಾ ಖನ್‌ಬಾ হায়ು।",
+    "pickNewCoursePlan": "খোর্স প্লান অমা খল্লু।"
 }

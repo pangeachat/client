@@ -3548,7 +3548,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-02 02:48:25.159730",
+    "@@last_modified": "2026-10-02 14:12:56.464714",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9422,7 +9422,6 @@
     "activityLoadFailed": "Не ўдалося загрузіць дзейнасць. Праверце сваё злучэнне і паспрабуйце яшчэ раз.",
     "levelUpChip": "Узровень {level}!",
     "missingCourseOutline": "Гэты курс больш недаступны",
-    "missingCourseOutlineCta": "Гэты курс больш недаступны. Выберыце новы план курса.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9447,10 +9446,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9996,5 +9991,7 @@
     "callTranscriptSubscribeForTranscription": "Падпісацца на транскрыпцыю",
     "unlockCallTranscript": "Разблакіраваць стэнаграму званка",
     "activitySummaryUpdateFailed": "Гэтае зводка не можа быць абноўлена.",
-    "courseNotFound": "Курс не знойдзены"
+    "courseNotFound": "Курс не знойдзены",
+    "askTeacherForNewCourse": "Папрасіце настаўніка выбраць новы курс.",
+    "pickNewCoursePlan": "Выберыце новы план курса."
 }

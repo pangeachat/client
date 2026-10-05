@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-10-02 02:48:28.152548",
+    "@@last_modified": "2026-10-02 14:12:59.992145",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "अबखाझियन",
     "elDisplayName": "ग्रीक",
     "missingCourseOutline": "हा अभ्यासक्रम आता उपलब्ध नाही",
-    "missingCourseOutlineCta": "हा अभ्यासक्रम आता उपलब्ध नाही. नवीन अभ्यासक्रम योजना निवडा.",
     "welcome": "स्वागत आहे",
     "courseRequest": "अभ्यासक्रम विनंती",
     "onboarding": "ऑनबोर्डिंग",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "लिप्यंतरणासाठी सदस्यता घ्या",
     "unlockCallTranscript": "कॉल लिप्यंतरण अनलॉक करा",
     "activitySummaryUpdateFailed": "हा सारांश अद्यतनित केला जाऊ शकला नाही.",
-    "courseNotFound": "अभ्यासक्रम सापडला नाही"
+    "courseNotFound": "अभ्यासक्रम सापडला नाही",
+    "askTeacherForNewCourse": "नवीन कोर्स निवडण्यासाठी तुमच्या शिक्षकांना विचारा.",
+    "pickNewCoursePlan": "नवीन अभ्यासक्रम योजना निवडा."
 }

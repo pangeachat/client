@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-02 02:48:28.486679",
+    "@@last_modified": "2026-10-02 14:13:00.081955",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Абхаз",
     "elDisplayName": "Грек",
     "missingCourseOutline": "Энэ хичээл одоогоор байхгүй байна",
-    "missingCourseOutlineCta": "Энэ хичээл одоогоор байхгүй байна. Шинэ хичээлийн төлөвлөгөө сонгоно уу.",
     "welcome": "Тавтай морил",
     "courseRequest": "Хичээлийн хүсэлт",
     "onboarding": "Эхлүүлэх",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Хөрвүүлэлтэд бүртгүүлэх",
     "unlockCallTranscript": "Дуудлагын хөрвүүлэлтийг нээх",
     "activitySummaryUpdateFailed": "Энэ хураангуйг шинэчлэх боломжгүй байсан.",
-    "courseNotFound": "Сургалт олдсонгүй"
+    "courseNotFound": "Сургалт олдсонгүй",
+    "askTeacherForNewCourse": "Багшаасаа шинэ хичээл сонгохыг хүсээрэй.",
+    "pickNewCoursePlan": "Шинэ сургалтын төлөвлөгөө сонгоно уу."
 }

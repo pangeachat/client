@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-10-02 02:48:29.184237",
+    "@@last_modified": "2026-10-02 14:13:00.785331",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "ଆବଖାଜିଆନ୍",
     "elDisplayName": "ଗ୍ରୀକ୍",
     "missingCourseOutline": "ଏହି କୋର୍ସ ଆଉ ଉପଲବ୍ଧ ନାହିଁ",
-    "missingCourseOutlineCta": "ଏହି କୋର୍ସ ଆଉ ଉପଲବ୍ଧ ନାହିଁ। ଏକ ନୂତନ କୋର୍ସ ଯୋଜନା ବାଛନ୍ତୁ।",
     "welcome": "ସ୍ୱାଗତ",
     "courseRequest": "କୋର୍ସ ଅନୁରୋଧ",
     "onboarding": "ଅନବୋର୍ଡିଂ",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "ଟ୍ରାନ୍ସକ୍ରିପସନ୍ ପାଇଁ ସବସ୍କ୍ରାଇବ୍ କରନ୍ତୁ",
     "unlockCallTranscript": "କଲ୍ ଟ୍ରାନ୍ସକ୍ରିପ୍ଟ ଅନଲକ୍ କରନ୍ତୁ",
     "activitySummaryUpdateFailed": "ଏହି ସାରାଂଶ ଅପଡେଟ୍ ହୋଇପାରିଲା ନାହିଁ।",
-    "courseNotFound": "କୋର୍ସ ମିଳିଲା ନାହିଁ"
+    "courseNotFound": "କୋର୍ସ ମିଳିଲା ନାହିଁ",
+    "askTeacherForNewCourse": "ଆପଣଙ୍କ ଶିକ୍ଷକଙ୍କୁ ଏକ ନୂତନ ପାଠ୍ୟକ୍ରମ ବାଛିବାକୁ କୁହନ୍ତୁ।",
+    "pickNewCoursePlan": "ଏକ ନୂତନ ପାଠ୍ୟକ୍ରମ ଯୋଜନା ବାଛନ୍ତୁ।"
 }

@@ -1362,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-02 02:48:25.804912",
+    "@@last_modified": "2026-10-02 14:12:58.643493",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10356,7 +10356,6 @@
     "activityLoadFailed": "Impossibile caricare l'attività. Controlla la tua connessione e riprova.",
     "levelUpChip": "Livello {level}!",
     "missingCourseOutline": "Questo corso non è più disponibile",
-    "missingCourseOutlineCta": "Questo corso non è più disponibile. Scegli un nuovo piano di corso.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10381,10 +10380,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10918,5 +10913,7 @@
     "callTranscriptSubscribeForTranscription": "Subscriber pro transcription",
     "unlockCallTranscript": "Disblocar transcripto de appellation",
     "activitySummaryUpdateFailed": "Iste summario non poteva esser actualisate.",
-    "courseNotFound": "Curso non trovate"
+    "courseNotFound": "Curso non trovate",
+    "askTeacherForNewCourse": "Demanda a tu maestro que selige un nove curso.",
+    "pickNewCoursePlan": "Selige un nove plano de curso."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-02 02:48:25.293055",
+    "@@last_modified": "2026-10-02 14:12:56.486860",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abhaski",
     "elDisplayName": "Grčki",
     "missingCourseOutline": "Ovaj kurs više nije dostupan",
-    "missingCourseOutlineCta": "Ovaj kurs više nije dostupan. Odaberite novi plan kursa.",
     "welcome": "Dobrodošli",
     "courseRequest": "Zahtjev za kurs",
     "onboarding": "Uvod",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Pretplatite se za transkripciju",
     "unlockCallTranscript": "Otključaj transkript poziva",
     "activitySummaryUpdateFailed": "Ovaj sažetak nije moguće ažurirati.",
-    "courseNotFound": "Kurs nije pronađen"
+    "courseNotFound": "Kurs nije pronađen",
+    "askTeacherForNewCourse": "Zamolite svog učitelja da odabere novi kurs.",
+    "pickNewCoursePlan": "Odaberite novi plan kursa."
 }

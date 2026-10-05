@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-02 02:48:27.113228",
+    "@@last_modified": "2026-10-02 14:12:59.370133",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Абхазча",
     "elDisplayName": "Грекче",
     "missingCourseOutline": "Бул курс мындан ары жеткиликтүү эмес",
-    "missingCourseOutlineCta": "Бул курс мындан ары жеткиликтүү эмес. Жаңы курс планын тандаңыз.",
     "welcome": "Кош келиңиз",
     "courseRequest": "Курс суроо",
     "onboarding": "Окутуу",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Транскрипция үчүн жазылуу",
     "unlockCallTranscript": "Чакыруу транскрипциясын ачуу",
     "activitySummaryUpdateFailed": "Бул корутунду жаңыртылган жок.",
-    "courseNotFound": "Курс табылган жок"
+    "courseNotFound": "Курс табылган жок",
+    "askTeacherForNewCourse": "Мугалимиңизден жаңы курсту тандоону сураныңыз.",
+    "pickNewCoursePlan": "Жаңы курс планын тандаңыз."
 }

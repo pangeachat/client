@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-02 02:48:24.978270",
+    "@@last_modified": "2026-10-02 14:12:57.751210",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "અબખાઝિયન",
     "elDisplayName": "ગ્રીક",
     "missingCourseOutline": "આ કોર્સ હવે ઉપલબ્ધ નથી",
-    "missingCourseOutlineCta": "આ કોર્સ હવે ઉપલબ્ધ નથી. નવી કોર્સ યોજના પસંદ કરો.",
     "welcome": "સ્વાગત છે",
     "courseRequest": "કોર્સ વિનંતી",
     "onboarding": "ઓનબોર્ડિંગ",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "ટ્રાન્સક્રિપ્શન માટે સબ્સ્ક્રાઇબ કરો",
     "unlockCallTranscript": "કૉલ ટ્રાન્સક્રિપ્ટ અનલૉક કરો",
     "activitySummaryUpdateFailed": "આ સારાંશ અપડેટ કરી શકાયો નથી.",
-    "courseNotFound": "કોર્સ મળ્યો નથી"
+    "courseNotFound": "કોર્સ મળ્યો નથી",
+    "askTeacherForNewCourse": "તમારા શિક્ષકને નવો કોર્સ પસંદ કરવા કહો.",
+    "pickNewCoursePlan": "નવો કોર્સ પ્લાન પસંદ કરો."
 }

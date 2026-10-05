@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-02 02:48:36.684014",
+    "@@last_modified": "2026-10-02 14:13:01.788794",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -1948,7 +1948,6 @@
     "abDisplayName": "Abkhaziyaan",
     "elDisplayName": "Giriig",
     "missingCourseOutline": "Koorasadani hadda ma heli kartid",
-    "missingCourseOutlineCta": "Koorasadani hadda ma heli kartid. Dooro qorshe koorso cusub.",
     "welcome": "Soo dhowow",
     "courseRequest": "Codsiga koorsada",
     "onboarding": "Hordhac",
@@ -2390,5 +2389,7 @@
     "callTranscriptSubscribeForTranscription": "Isdiiwaangeli si aad u hesho qoraalka",
     "unlockCallTranscript": "Fur qoraalka wicitaanka",
     "activitySummaryUpdateFailed": "Soo koobiddaan lama cusboonaysiin karin.",
-    "courseNotFound": "Koorsada lama helin"
+    "courseNotFound": "Koorsada lama helin",
+    "askTeacherForNewCourse": "Macallinkaaga ka codso inuu doorto kooras cusub.",
+    "pickNewCoursePlan": "Dooro qorshe koorsada cusub."
 }
