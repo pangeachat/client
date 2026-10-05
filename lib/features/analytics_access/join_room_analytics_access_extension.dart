@@ -13,6 +13,7 @@ import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 class JoinResponse {
@@ -172,6 +173,7 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
       if (!room.requireAnalyticsAccess) return;
 
       final courseId = room.coursePlan?.uuid;
+      if (room.isRoomAdmin) return;
       if (courseId == null) {
         Logs().w("Room without courseID in _grantAnalyticsAccess");
         return;
@@ -228,7 +230,12 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
     try {
       final roomIdToCourseId = Map<String, String>.fromEntries(
         rooms
-            .where((r) => r.requireAnalyticsAccess && r.coursePlan != null)
+            .where(
+              (r) =>
+                  r.requireAnalyticsAccess &&
+                  !r.isRoomAdmin &&
+                  r.coursePlan != null,
+            )
             .map((r) => MapEntry(r.id, r.coursePlan!.uuid)),
       );
 
@@ -264,7 +271,9 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
 
 extension JoinRoomAnalyticsAccessRoomExtension on Room {
   bool get shouldShowAnalyticsAccessNotice =>
-      requireAnalyticsAccess && !client.acceptedAccessNotice(id);
+      requireAnalyticsAccess &&
+      !isRoomAdmin &&
+      !client.acceptedAccessNotice(id);
 
   Future<JoinResponse?> joinWithAccessCheck() async {
     await join();
