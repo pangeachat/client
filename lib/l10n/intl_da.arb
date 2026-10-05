@@ -1334,7 +1334,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-05 12:30:34.784107",
+    "@@last_modified": "2026-10-05 13:57:45.998023",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10904,5 +10904,7 @@
     "activitySummaryUpdateFailed": "Denne oversigt kunne ikke opdateres.",
     "ssoNetworkBlockedTitle": "Loginside utilgængelig",
     "ssoNetworkBlockedDesc": "Dette netværk tillader os ikke at nå {provider} for at logge dig ind. Skole- og kontor-Wi-Fi blokerer det ofte. Du kan i stedet tilmelde dig med e-mail eller skifte til et andet netværk og prøve igen.",
-    "ssoTryAnyway": "Prøv alligevel"
+    "ssoTryAnyway": "Prøv alligevel",
+    "publicCoursesFilterTooltip": "Vis kun kurser, alle kan deltage i",
+    "restrictedCoursesFilterTooltip": "Vis kun kurser, du skal anmode om at deltage i"
 }

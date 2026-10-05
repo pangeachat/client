@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-05 12:30:43.933967",
+    "@@last_modified": "2026-10-05 13:57:50.423536",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2392,5 +2392,7 @@
     "activitySummaryUpdateFailed": "Энэ хураангуйг шинэчлэх боломжгүй байсан.",
     "ssoNetworkBlockedTitle": "Нэвтрэх сайт боломжгүй байна",
     "ssoNetworkBlockedDesc": "Энэ сүлжээ таныг нэвтрүүлэхийн тулд {provider} руу нэвтрэхийг зөвшөөрөхгүй байна. Сургууль болон оффисын Wi-Fi үүнийг ихэвчлэн хаадаг. Та оронд нь имэйлээр бүртгүүлэх эсвэл өөр сүлжээнд шилжиж дахин оролдож болно.",
-    "ssoTryAnyway": "Ямартай ч оролдох"
+    "ssoTryAnyway": "Ямартай ч оролдох",
+    "publicCoursesFilterTooltip": "Хэн ч нэгдэж болох сургалтуудыг л харуул",
+    "restrictedCoursesFilterTooltip": "Таны хүсэлтээр нэгдэх ёстой сургалтуудыг л харуул"
 }

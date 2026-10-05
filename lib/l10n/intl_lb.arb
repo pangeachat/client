@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-05 12:30:42.034731",
+    "@@last_modified": "2026-10-05 13:57:49.651102",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2392,5 +2392,7 @@
     "activitySummaryUpdateFailed": "Dës Zesummefaassung konnt net aktualiséiert ginn.",
     "ssoNetworkBlockedTitle": "Umeldungssäit net erreechbar",
     "ssoNetworkBlockedDesc": "Dëst Netzwierk erlaabt eis net, {provider} z'erreechen fir Iech unzemellen. Schoul- an Büro-Wi-Fi blockéieren dacks esou eppes. Dir kënnt Iech amplaz mat E-Mail umellen, oder op en anert Netzwierk wiesselen an et nach eng Kéier probéieren.",
-    "ssoTryAnyway": "Trotzdeem probéieren"
+    "ssoTryAnyway": "Trotzdeem probéieren",
+    "publicCoursesFilterTooltip": "Nëmme Coursë weisen, bei deene jidderee matmaache kann",
+    "restrictedCoursesFilterTooltip": "Nëmme Coursë weisen, bei deene s du muss froen, fir matzemaachen"
 }

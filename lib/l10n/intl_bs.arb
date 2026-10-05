@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-05 12:30:33.383070",
+    "@@last_modified": "2026-10-05 13:57:45.251565",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2392,5 +2392,7 @@
     "activitySummaryUpdateFailed": "Ovaj sažetak nije moguće ažurirati.",
     "ssoNetworkBlockedTitle": "Stranica za prijavu nedostupna",
     "ssoNetworkBlockedDesc": "Ova mreža nam ne dozvoljava da pristupimo {provider} za vašu prijavu. Školske i kancelarijske Wi-Fi mreže često blokiraju pristup. Umjesto toga, možete se prijaviti putem e-pošte ili se prebaciti na drugu mrežu i pokušati ponovo.",
-    "ssoTryAnyway": "Pokušaj svejedno"
+    "ssoTryAnyway": "Pokušaj svejedno",
+    "publicCoursesFilterTooltip": "Prikaži samo kurseve kojima se svako može pridružiti",
+    "restrictedCoursesFilterTooltip": "Prikaži samo kurseve za koje morate tražiti odobrenje za pridruživanje"
 }

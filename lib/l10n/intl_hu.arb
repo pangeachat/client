@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-05 12:30:40.544357",
+    "@@last_modified": "2026-10-05 13:57:48.265018",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10087,5 +10087,7 @@
     "activitySummaryUpdateFailed": "Ezt az összefoglalót nem sikerült frissíteni.",
     "ssoNetworkBlockedTitle": "Bejelentkezési oldal nem elérhető",
     "ssoNetworkBlockedDesc": "Ez a hálózat nem engedi, hogy elérjük a(z) {provider} szolgáltatót a bejelentkezéshez. Az iskolai és irodai Wi-Fi gyakran blokkolja. E-mail címmel is regisztrálhat, vagy válthat másik hálózatra, és újra megpróbálhatja.",
-    "ssoTryAnyway": "Mégis megpróbálom"
+    "ssoTryAnyway": "Mégis megpróbálom",
+    "publicCoursesFilterTooltip": "Csak olyan kurzusok megjelenítése, amelyekhez bárki csatlakozhat",
+    "restrictedCoursesFilterTooltip": "Csak olyan kurzusok megjelenítése, amelyekhez engedélyt kell kérni"
 }

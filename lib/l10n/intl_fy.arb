@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-05 12:30:36.551232",
+    "@@last_modified": "2026-10-05 13:57:47.054399",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2392,5 +2392,7 @@
     "activitySummaryUpdateFailed": "Dizze gearfetting koe net bywurke wurde.",
     "ssoNetworkBlockedTitle": "Oanmeldside net berikber",
     "ssoNetworkBlockedDesc": "Dit netwurk lit ús {provider} net berikke om jo oan te melden. Wi-Fi op skoalle en kantoar blokkearret dit faak. Jo kinne ynstee oanmelde mei e-mail, of oerskeakelje nei in oar netwurk en it opnij besykje.",
-    "ssoTryAnyway": "Dochs besykje"
+    "ssoTryAnyway": "Dochs besykje",
+    "publicCoursesFilterTooltip": "Lit allinnich kursussen sjen dêr't elkenien oan meidwaan kin",
+    "restrictedCoursesFilterTooltip": "Lit allinnich kursussen sjen dêr't jo om tagong freegje moatte"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-05 12:30:40.123445",
+    "@@last_modified": "2026-10-05 13:57:48.896944",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2392,5 +2392,7 @@
     "activitySummaryUpdateFailed": "Ringkesan iki ora bisa dianyari.",
     "ssoNetworkBlockedTitle": "Situs mlebu ora bisa diakses",
     "ssoNetworkBlockedDesc": "Jaringan iki ora ngidini kita ngakses {provider} kanggo mlebu. Wi-Fi sekolah lan kantor asring mblokir. Sampeyan bisa ndhaptar nganggo email, utawa ngganti jaringan liyane banjur coba maneh.",
-    "ssoTryAnyway": "Coba wae"
+    "ssoTryAnyway": "Coba wae",
+    "publicCoursesFilterTooltip": "Tampilake mung kursus sing sapa wae bisa melu",
+    "restrictedCoursesFilterTooltip": "Tampilake mung kursus sing kudu njaluk ijin kanggo melu"
 }

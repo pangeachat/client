@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-05 12:30:50.249514",
+    "@@last_modified": "2026-10-05 13:57:54.811660",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9988,5 +9988,7 @@
     "activitySummaryUpdateFailed": "Bu xulosa yangilanmadi.",
     "ssoNetworkBlockedTitle": "Kirish sayti mavjud emas",
     "ssoNetworkBlockedDesc": "Bu tarmoq sizni tizimga kiritish uchun {provider} ga ulanishimizga ruxsat bermayapti. Maktab va ofis Wi-Fi ko'pincha uni bloklaydi. Buning o'rniga elektron pochta orqali ro'yxatdan o'tishingiz yoki boshqa tarmoqqa o'tib, qayta urinishingiz mumkin.",
-    "ssoTryAnyway": "Baribir urinib ko'ring"
+    "ssoTryAnyway": "Baribir urinib ko'ring",
+    "publicCoursesFilterTooltip": "Faqat har kim qo'shila oladigan kurslarni ko'rsatish",
+    "restrictedCoursesFilterTooltip": "Faqat siz qo'shilish uchun so'rashingiz kerak bo'lgan kurslarni ko'rsatish"
 }

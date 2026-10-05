@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-05 12:30:43.814389",
+    "@@last_modified": "2026-10-05 13:57:50.859586",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2392,5 +2392,7 @@
     "activitySummaryUpdateFailed": "Dan is-sommarju ma setax jiġi aġġornat.",
     "ssoNetworkBlockedTitle": "Sit ta' reġistrazzjoni ma jistax jintlaħaq",
     "ssoNetworkBlockedDesc": "Din in-netwerk mhux qed tħallina nilħqu lil {provider} biex nirreġistrawk. Il-Wi-Fi tal-iskola u l-uffiċċju spiss jimblokkawha. Tista' tirreġistra bl-email minflok, jew taqleb għal netwerk ieħor u terġa' tipprova.",
-    "ssoTryAnyway": "Erġa' pprova xorta"
+    "ssoTryAnyway": "Erġa' pprova xorta",
+    "publicCoursesFilterTooltip": "Uri biss korsijiet li kulħadd jista' jingħaqad magħhom",
+    "restrictedCoursesFilterTooltip": "Uri biss korsijiet li trid titlob biex tingħaqad magħhom"
 }

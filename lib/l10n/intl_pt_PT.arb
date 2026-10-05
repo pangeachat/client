@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-05 12:30:45.973358",
+    "@@last_modified": "2026-10-05 13:57:51.944808",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10901,5 +10901,7 @@
     "activitySummaryUpdateFailed": "Não foi possível atualizar este resumo.",
     "ssoNetworkBlockedTitle": "Site de início de sessão inacessível",
     "ssoNetworkBlockedDesc": "Esta rede não nos permite aceder a {provider} para iniciar a sua sessão. As redes Wi-Fi de escolas e escritórios bloqueiam-no frequentemente. Pode registar-se com e-mail ou mudar para outra rede e tentar novamente.",
-    "ssoTryAnyway": "Tentar na mesma"
+    "ssoTryAnyway": "Tentar na mesma",
+    "publicCoursesFilterTooltip": "Mostrar apenas cursos a que qualquer pessoa se pode juntar",
+    "restrictedCoursesFilterTooltip": "Mostrar apenas cursos a que tem de pedir para se juntar"
 }

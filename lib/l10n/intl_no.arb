@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-05 12:30:45.132996",
+    "@@last_modified": "2026-10-05 13:57:50.979768",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2392,5 +2392,7 @@
     "activitySummaryUpdateFailed": "Denne oppsummeringen kunne ikke oppdateres.",
     "ssoNetworkBlockedTitle": "Påloggingsside utilgjengelig",
     "ssoNetworkBlockedDesc": "Dette nettverket hindrer oss i å nå {provider} for å logge deg på. Skole- og kontor-Wi-Fi blokkerer ofte dette. Du kan registrere deg med e-post i stedet, eller bytte til et annet nettverk og prøve igjen.",
-    "ssoTryAnyway": "Prøv likevel"
+    "ssoTryAnyway": "Prøv likevel",
+    "publicCoursesFilterTooltip": "Vis kun kurs alle kan delta i",
+    "restrictedCoursesFilterTooltip": "Vis kun kurs du må spørre om å få delta i"
 }

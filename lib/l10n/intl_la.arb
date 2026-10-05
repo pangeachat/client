@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-05 12:30:41.607583",
+    "@@last_modified": "2026-10-05 13:57:49.605458",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2392,5 +2392,7 @@
     "activitySummaryUpdateFailed": "Haec summa renovari non potuit.",
     "ssoNetworkBlockedTitle": "Situs initii inaccessibilis",
     "ssoNetworkBlockedDesc": "Haec retis nos prohibet ad {provider} pervenire ut te inigas. Wi-Fi scholae et officii saepe id impediunt. Potes proinde per electronicam subscribere, aut ad aliam retem mutare et iterum conari.",
-    "ssoTryAnyway": "Nihilominus conare"
+    "ssoTryAnyway": "Nihilominus conare",
+    "publicCoursesFilterTooltip": "Ostende tantum cursus quibus quisque iungere potest",
+    "restrictedCoursesFilterTooltip": "Ostende tantum cursus quibus petendum est ut iungas"
 }
