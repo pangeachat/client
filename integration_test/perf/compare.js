@@ -8,12 +8,14 @@
 // same round. Each run is reduced to one value per metric: the median of its
 // passes, leaving out its warm-up passes (a scroll run's first pass carries
 // one-time costs such as image decode; a launch run has no warm-up, since its
-// one pass is the launch). Each round then gives one difference per metric, and a metric
-// counts as changed when it moved the same way in every round: by more than 5%
-// of the baseline for a time, and by more than a quarter of the baseline and at
-// least 3 frames for a count of frames over budget. Counts swing much more than
-// times between identical runs. A slowdown that hits the whole device for a
-// while lands on both runs of its round and cancels out.
+// one pass is the launch). Each round then gives one difference per metric,
+// and a metric counts as changed when it moved the same way in every round:
+// by more than 5% of the baseline and at least 0.1 ms for a time, and by more
+// than a quarter of the baseline and at least 3 frames for a count of frames
+// over budget. A time whose change in every round is under 0.5 ms needs at
+// least five rounds. Counts swing much more than times between identical
+// runs. A slowdown that hits the whole device for a while lands on both runs
+// of its round and cancels out.
 
 const fs = require('fs');
 
@@ -78,10 +80,15 @@ const rows = Object.entries(METRICS).filter(([, pick]) => present(pick)).map(([n
   const deltas = runValues(next, pick).map((v, i) => v - b[i]);
   const baseline = Math.abs(median(b));
   const isCount = name.startsWith('missed');
-  const floor = isCount ? Math.max(0.25 * baseline, 3) : 0.05 * baseline;
-  const beyond = (d) => (isCount ? d > 0.25 * baseline && d >= 3 : d > floor);
-  const verdict = deltas.every(beyond) ? 'WORSE' : deltas.every((d) => beyond(-d)) ? 'better' : 'no change';
-  if (verdict !== 'no change') changed++;
+  const floor = isCount ? Math.max(0.25 * baseline, 3) : Math.max(0.05 * baseline, 0.1);
+  // Rounded to hundredths, so a printed +0.1 means the same to the rule.
+  const r2 = (d) => Math.round(d * 100) / 100;
+  const beyond = (d) => (isCount ? d > 0.25 * baseline && d >= 3 : d > 0.05 * baseline && r2(d) >= 0.1);
+  const moved = deltas.every(beyond) ? 'WORSE' : deltas.every((d) => beyond(-d)) ? 'better' : 'no change';
+  // A small time change needs more rounds before a streak can't be chance.
+  const small = !isCount && deltas.every((d) => Math.abs(d) < 0.5);
+  const verdict = moved !== 'no change' && small && deltas.length < 5 ? 'needs 5 rounds' : moved;
+  if (verdict === 'WORSE' || verdict === 'better') changed++;
   return {
     metric: name,
     baseline: round(median(b)),
