@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Цэцэг, эзэмшсэн үгс",
     "filterAndSearch": "Шүүж хайх",
     "participantsOfTotal": "{total} тоглогчоос {filled} нь",
-    "mapAttributionLabel": "OpenStreetMap-ийн хувь нэмэр оруулагчид, зохиогчийн эрх, лиценз",
     "seeAll": "Бүгдийг харах",
     "seeAllSection": "Бүх {section}-г харах",
     "showMoreOptionsHint": "бусад сонголтыг харах",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Ямар хэлээр ярьсан бэ?",
     "callTranscriptSubscribeForTranscription": "Хөрвүүлэлтэд бүртгүүлэх",
     "unlockCallTranscript": "Дуудлагын хөрвүүлэлтийг нээх",
-    "activitySummaryUpdateFailed": "Энэ хураангуйг шинэчлэх боломжгүй байсан."
+    "activitySummaryUpdateFailed": "Энэ хураангуйг шинэчлэх боломжгүй байсан.",
+    "mapCreditsLabel": "Газрын зургийн эрх: Stadia Maps, OpenMapTiles болон OpenStreetMap"
 }

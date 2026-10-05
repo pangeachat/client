@@ -10613,7 +10613,6 @@
     "constructLevelFlowers": "フラワー、習得済みの単語",
     "filterAndSearch": "フィルターと検索",
     "participantsOfTotal": "{total}人中{filled}人",
-    "mapAttributionLabel": "OpenStreetMapの寄与者、著作権とライセンス",
     "seeAll": "すべて見る",
     "seeAllSection": "{section}をすべて見る",
     "showMoreOptionsHint": "その他のオプションを表示",
@@ -10750,5 +10749,6 @@
     "callTranscriptChooseLanguage": "話された言語は何ですか？",
     "callTranscriptSubscribeForTranscription": "文字起こしを購読する",
     "unlockCallTranscript": "通話記録のロックを解除",
-    "activitySummaryUpdateFailed": "この要約を更新できませんでした。"
+    "activitySummaryUpdateFailed": "この要約を更新できませんでした。",
+    "mapCreditsLabel": "マップクレジット: Stadia Maps, OpenMapTiles, OpenStreetMap"
 }

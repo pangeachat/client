@@ -10625,7 +10625,6 @@
     "constructLevelFlowers": "Gėlės, įvaldyti žodžiai",
     "filterAndSearch": "Filtruoti ir ieškoti",
     "participantsOfTotal": "{filled} iš {total} žaidėjų",
-    "mapAttributionLabel": "„OpenStreetMap“ bendradarbiai, autorių teisės ir licencija",
     "seeAll": "Žr. visus",
     "seeAllSection": "Žr. visus {section}",
     "showMoreOptionsHint": "rodyti daugiau parinkčių",
@@ -10762,5 +10761,6 @@
     "callTranscriptChooseLanguage": "Kokia kalba buvo kalbama?",
     "callTranscriptSubscribeForTranscription": "Prenumeruoti transkripciją",
     "unlockCallTranscript": "Atrakinti pokalbio transkripciją",
-    "activitySummaryUpdateFailed": "Šio suvestinės nepavyko atnaujinti."
+    "activitySummaryUpdateFailed": "Šio suvestinės nepavyko atnaujinti.",
+    "mapCreditsLabel": "Žemėlapio autoriai: Stadia Maps, OpenMapTiles ir OpenStreetMap"
 }

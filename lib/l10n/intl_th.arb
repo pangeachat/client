@@ -10476,7 +10476,6 @@
     "constructLevelFlowers": "ดอกไม้, คำศัพท์ที่เชี่ยวชาญแล้ว",
     "filterAndSearch": "กรองและค้นหา",
     "participantsOfTotal": "{filled} จากผู้เล่นทั้งหมด {total} คน",
-    "mapAttributionLabel": "ผู้ร่วมให้ข้อมูล OpenStreetMap, ลิขสิทธิ์และใบอนุญาต",
     "seeAll": "ดูทั้งหมด",
     "seeAllSection": "ดูทั้งหมด {section}",
     "showMoreOptionsHint": "แสดงตัวเลือกเพิ่มเติม",
@@ -10613,5 +10612,6 @@
     "callTranscriptChooseLanguage": "พูดภาษาอะไร",
     "callTranscriptSubscribeForTranscription": "สมัครสมาชิกเพื่อถอดเสียง",
     "unlockCallTranscript": "ปลดล็อกบทสนทนาการโทร",
-    "activitySummaryUpdateFailed": "ไม่สามารถอัปเดตสรุปนี้ได้"
+    "activitySummaryUpdateFailed": "ไม่สามารถอัปเดตสรุปนี้ได้",
+    "mapCreditsLabel": "เครดิตแผนที่: Stadia Maps, OpenMapTiles และ OpenStreetMap"
 }

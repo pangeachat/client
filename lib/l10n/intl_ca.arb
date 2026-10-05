@@ -9971,7 +9971,6 @@
     "constructLevelFlowers": "Flors, paraules dominades",
     "filterAndSearch": "Filtra i cerca",
     "participantsOfTotal": "{filled} de {total} jugadors",
-    "mapAttributionLabel": "Col·laboradors d'OpenStreetMap, drets d'autor i llicència",
     "seeAll": "Veure-ho tot",
     "seeAllSection": "Veure-ho tot a {section}",
     "showMoreOptionsHint": "mostrar més opcions",
@@ -10108,5 +10107,6 @@
     "callTranscriptChooseLanguage": "En quina llengua es va parlar?",
     "callTranscriptSubscribeForTranscription": "Subscriu-te per a la transcripció",
     "unlockCallTranscript": "Desbloqueja la transcripció de la trucada",
-    "activitySummaryUpdateFailed": "Aquest resum no s'ha pogut actualitzar."
+    "activitySummaryUpdateFailed": "Aquest resum no s'ha pogut actualitzar.",
+    "mapCreditsLabel": "Crèdits del mapa: Stadia Maps, OpenMapTiles i OpenStreetMap"
 }

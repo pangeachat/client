@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Izimbali, amagama asezingeni eliphezulu",
     "filterAndSearch": "Hlunga bese usesha",
     "participantsOfTotal": "{filled} kwabangu-{total} abadlali",
-    "mapAttributionLabel": "Abanikeli be-OpenStreetMap, i-copyright nelayisense",
     "seeAll": "Buka konke",
     "seeAllSection": "Buka konke {section}",
     "showMoreOptionsHint": "bonisa izinketho eziningi",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Yiluphi ulimi olwalukhulunywa?",
     "callTranscriptSubscribeForTranscription": "Bhalisela ukuguqulwa kube umbhalo",
     "unlockCallTranscript": "Vula umbhalo wekholi",
-    "activitySummaryUpdateFailed": "Lesi sifingqo asikwazanga ukubuyekezwa."
+    "activitySummaryUpdateFailed": "Lesi sifingqo asikwazanga ukubuyekezwa.",
+    "mapCreditsLabel": "Amakhredithi emephu: Stadia Maps, OpenMapTiles kanye ne-OpenStreetMap"
 }

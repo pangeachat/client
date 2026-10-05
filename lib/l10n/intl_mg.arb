@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Voninkazo, teny efa mahay",
     "filterAndSearch": "Sivana sy karoka",
     "participantsOfTotal": "{filled} amin'ny mpilalao {total}",
-    "mapAttributionLabel": "Mpanome anjara OpenStreetMap, zon'ny mpamorona ary fahazoan-dàlana",
     "seeAll": "Jereo daholo",
     "seeAllSection": "Jereo daholo ny {section}",
     "showMoreOptionsHint": "asehoy safidy bebe kokoa",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Inona no fiteny nampiasaina?",
     "callTranscriptSubscribeForTranscription": "Misoratra anarana ho an'ny fandikana",
     "unlockCallTranscript": "Sokafy ny dika soratra antso",
-    "activitySummaryUpdateFailed": "Tsy afaka navaozina ity famintinana ity."
+    "activitySummaryUpdateFailed": "Tsy afaka navaozina ity famintinana ity.",
+    "mapCreditsLabel": "Fampiasana sarintany: Stadia Maps, OpenMapTiles ary OpenStreetMap"
 }

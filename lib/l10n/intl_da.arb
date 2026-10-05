@@ -10764,7 +10764,6 @@
     "constructLevelFlowers": "Blomster, mestret ord",
     "filterAndSearch": "Filtrer og søg",
     "participantsOfTotal": "{filled} af {total} spillere",
-    "mapAttributionLabel": "OpenStreetMap-bidragydere, ophavsret og licens",
     "seeAll": "Se alle",
     "seeAllSection": "Se alle {section}",
     "showMoreOptionsHint": "vis flere valgmuligheder",
@@ -10901,5 +10900,6 @@
     "callTranscriptChooseLanguage": "Hvilket sprog blev der talt?",
     "callTranscriptSubscribeForTranscription": "Abonnér for transskription",
     "unlockCallTranscript": "Lås op for opkaldstranskription",
-    "activitySummaryUpdateFailed": "Denne oversigt kunne ikke opdateres."
+    "activitySummaryUpdateFailed": "Denne oversigt kunne ikke opdateres.",
+    "mapCreditsLabel": "Kortkreditering: Stadia Maps, OpenMapTiles og OpenStreetMap"
 }

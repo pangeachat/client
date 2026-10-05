@@ -9947,7 +9947,6 @@
     "constructLevelFlowers": "Virágok, elsajátított szavak",
     "filterAndSearch": "Szűrés és keresés",
     "participantsOfTotal": "{filled}/{total} játékos",
-    "mapAttributionLabel": "OpenStreetMap közreműködők, szerzői jogok és licenc",
     "seeAll": "Összes megtekintése",
     "seeAllSection": "Összes {section} megtekintése",
     "showMoreOptionsHint": "további lehetőségek megjelenítése",
@@ -10084,5 +10083,6 @@
     "callTranscriptChooseLanguage": "Milyen nyelven beszéltek?",
     "callTranscriptSubscribeForTranscription": "Feliratkozás az átírásra",
     "unlockCallTranscript": "Hívás átirat feloldása",
-    "activitySummaryUpdateFailed": "Ezt az összefoglalót nem sikerült frissíteni."
+    "activitySummaryUpdateFailed": "Ezt az összefoglalót nem sikerült frissíteni.",
+    "mapCreditsLabel": "Térkép forrása: Stadia Maps, OpenMapTiles és OpenStreetMap"
 }

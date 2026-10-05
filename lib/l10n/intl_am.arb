@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "አበቦች፣ የተካኑ ቃላት",
     "filterAndSearch": "አጣራ እና ፈልግ",
     "participantsOfTotal": "{filled} ከ {total} ተጫዋቾች",
-    "mapAttributionLabel": "የOpenStreetMap አስተዋፅዖ አድራጊዎች፣ የቅጂ መብት እና ፈቃድ",
     "seeAll": "ሁሉንም ይመልከቱ",
     "seeAllSection": "ሁሉንም {section} ይመልከቱ",
     "showMoreOptionsHint": "ተጨማሪ አማራጮችን አሳይ",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "የተነገረው ቋንቋ የትኛው ነው?",
     "callTranscriptSubscribeForTranscription": "ለጽሑፍ መቀየር ይመዝገቡ",
     "unlockCallTranscript": "የጥሪ ግልባጭ ክፈት",
-    "activitySummaryUpdateFailed": "ይህ ማጠቃለያ ሊዘመን አልቻለም።"
+    "activitySummaryUpdateFailed": "ይህ ማጠቃለያ ሊዘመን አልቻለም።",
+    "mapCreditsLabel": "የካርታ ክሬዲቶች: Stadia Maps, OpenMapTiles እና OpenStreetMap"
 }

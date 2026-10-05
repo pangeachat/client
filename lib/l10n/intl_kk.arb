@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Гүлдер, меңгерілген сөздер",
     "filterAndSearch": "Сүзгілеу және іздеу",
     "participantsOfTotal": "{total} ойыншының {filled}-і",
-    "mapAttributionLabel": "OpenStreetMap қатысушылары, авторлық құқық және лицензия",
     "seeAll": "Барлығын қарау",
     "seeAllSection": "Барлық {section} қарау",
     "showMoreOptionsHint": "қосымша опцияларды көрсету",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Қандай тілде сөйледіңіз?",
     "callTranscriptSubscribeForTranscription": "Транскрипциялау үшін жазылу",
     "unlockCallTranscript": "Қоңырау транскрипциясының құлпын ашу",
-    "activitySummaryUpdateFailed": "Бұл қорытындыны жаңарту мүмкін болмады."
+    "activitySummaryUpdateFailed": "Бұл қорытындыны жаңарту мүмкін болмады.",
+    "mapCreditsLabel": "Карта несиелері: Stadia Maps, OpenMapTiles және OpenStreetMap"
 }

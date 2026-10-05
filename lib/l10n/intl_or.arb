@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "ଫୁଲ, ଆୟତ୍ତ ଶବ୍ଦ",
     "filterAndSearch": "ଫିଲ୍ଟର୍ ଏବଂ ସନ୍ଧାନ କରନ୍ତୁ",
     "participantsOfTotal": "{total} ଖେଳାଳିଙ୍କ ମଧ୍ୟରୁ {filled}",
-    "mapAttributionLabel": "OpenStreetMap ଯୋଗଦାନକାରୀ, କପିରାଇଟ୍ ଏବଂ ଲାଇସେନ୍ସ",
     "seeAll": "ସବୁ ଦେଖନ୍ତୁ",
     "seeAllSection": "ସବୁ {section} ଦେଖନ୍ତୁ",
     "showMoreOptionsHint": "ଅଧିକ ବିକଳ୍ପ ଦେଖାନ୍ତୁ",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "କେଉଁ ଭାଷାରେ କଥାବାର୍ତ୍ତା ହୋଇଥିଲା?",
     "callTranscriptSubscribeForTranscription": "ଟ୍ରାନ୍ସକ୍ରିପସନ୍ ପାଇଁ ସବସ୍କ୍ରାଇବ୍ କରନ୍ତୁ",
     "unlockCallTranscript": "କଲ୍ ଟ୍ରାନ୍ସକ୍ରିପ୍ଟ ଅନଲକ୍ କରନ୍ତୁ",
-    "activitySummaryUpdateFailed": "ଏହି ସାରାଂଶ ଅପଡେଟ୍ ହୋଇପାରିଲା ନାହିଁ।"
+    "activitySummaryUpdateFailed": "ଏହି ସାରାଂଶ ଅପଡେଟ୍ ହୋଇପାରିଲା ନାହିଁ।",
+    "mapCreditsLabel": "ମାନଚିତ୍ର କ୍ରେଡିଟ୍: Stadia Maps, OpenMapTiles ଏବଂ OpenStreetMap"
 }

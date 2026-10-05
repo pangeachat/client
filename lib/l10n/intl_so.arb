@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Ubax, ereyo la bartay",
     "filterAndSearch": "Shaandhee oo raadi",
     "participantsOfTotal": "{filled} ka mid ah {total} ciyaartoy",
-    "mapAttributionLabel": "Kuwa wax ku darsaday OpenStreetMap, xuquuqda daabacaadda iyo shatiga",
     "seeAll": "Arag dhammaan",
     "seeAllSection": "Arag dhammaan {section}",
     "showMoreOptionsHint": "muuji doorashooyin dheeraad ah",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Luqaddee lagu hadlay?",
     "callTranscriptSubscribeForTranscription": "Isdiiwaangeli si aad u hesho qoraalka",
     "unlockCallTranscript": "Fur qoraalka wicitaanka",
-    "activitySummaryUpdateFailed": "Soo koobiddaan lama cusboonaysiin karin."
+    "activitySummaryUpdateFailed": "Soo koobiddaan lama cusboonaysiin karin.",
+    "mapCreditsLabel": "Aqoonsiga khariidadda: Khariidadaha Stadia, OpenMapTiles iyo OpenStreetMap"
 }

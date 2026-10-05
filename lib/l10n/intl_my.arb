@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "ပန်းများ၊ ကျွမ်းကျင်သော စကားလုံးများ",
     "filterAndSearch": "စစ်ထုတ်ပြီး ရှာဖွေပါ",
     "participantsOfTotal": "{total} ကစားသမားများထဲမှ {filled}",
-    "mapAttributionLabel": "OpenStreetMap ပံ့ပိုးသူများ၊ မူပိုင်ခွင့်နှင့် လိုင်စင်",
     "seeAll": "အားလုံးကြည့်ရန်",
     "seeAllSection": "{section} အားလုံးကြည့်ရန်",
     "showMoreOptionsHint": "ရွေးချယ်စရာများ ထပ်ပြရန်",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "မည်သည့်ဘာသာစကားဖြင့် ပြောဆိုခဲ့သနည်း။",
     "callTranscriptSubscribeForTranscription": "စာသားအဖြစ်ပြောင်းလဲခြင်းအတွက် စာရင်းသွင်းပါ",
     "unlockCallTranscript": "ခေါ်ဆိုမှုမှတ်တမ်းကို လော့ခ်ဖွင့်ပါ",
-    "activitySummaryUpdateFailed": "ဤအကျဉ်းချုပ်ကို အပ်ဒိတ်လုပ်၍ မရပါ။"
+    "activitySummaryUpdateFailed": "ဤအကျဉ်းချုပ်ကို အပ်ဒိတ်လုပ်၍ မရပါ။",
+    "mapCreditsLabel": "မြေပုံခရက်ဒစ်များ- Stadia Maps, OpenMapTiles နှင့် OpenStreetMap"
 }

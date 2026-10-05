@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Cvijeće, savladane riječi",
     "filterAndSearch": "Filtriraj i pretraži",
     "participantsOfTotal": "{filled} od {total} igrača",
-    "mapAttributionLabel": "Autori, autorska prava i licenca OpenStreetMap-a",
     "seeAll": "Pogledaj sve",
     "seeAllSection": "Pogledaj sve {section}",
     "showMoreOptionsHint": "prikaži više opcija",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Koji jezik je govoren?",
     "callTranscriptSubscribeForTranscription": "Pretplatite se za transkripciju",
     "unlockCallTranscript": "Otključaj transkript poziva",
-    "activitySummaryUpdateFailed": "Ovaj sažetak nije moguće ažurirati."
+    "activitySummaryUpdateFailed": "Ovaj sažetak nije moguće ažurirati.",
+    "mapCreditsLabel": "Zasluge za mapu: Stadia Maps, OpenMapTiles i OpenStreetMap"
 }

@@ -9844,7 +9844,6 @@
     "constructLevelFlowers": "Ziedi, apgūtie vārdi",
     "filterAndSearch": "Filtrēt un meklēt",
     "participantsOfTotal": "{filled} no {total} spēlētājiem",
-    "mapAttributionLabel": "OpenStreetMap līdzstrādnieki, autortiesības un licence",
     "seeAll": "Skatīt visu",
     "seeAllSection": "Skatīt visu sadaļu {section}",
     "showMoreOptionsHint": "rādīt vairāk opciju",
@@ -9981,5 +9980,6 @@
     "callTranscriptChooseLanguage": "Kādā valodā runājāt?",
     "callTranscriptSubscribeForTranscription": "Abonēt transkripciju",
     "unlockCallTranscript": "Atbloķēt zvanu transkriptu",
-    "activitySummaryUpdateFailed": "Šo kopsavilkumu nevarēja atjaunināt."
+    "activitySummaryUpdateFailed": "Šo kopsavilkumu nevarēja atjaunināt.",
+    "mapCreditsLabel": "Kartes atsauces: Stadia Maps, OpenMapTiles un OpenStreetMap"
 }

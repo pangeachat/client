@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Flè, mo ou metrize",
     "filterAndSearch": "Filtre epi chèche",
     "participantsOfTotal": "{filled} sou {total} jwè",
-    "mapAttributionLabel": "Kontribitè OpenStreetMap, copyright ak lisans",
     "seeAll": "Gade tout",
     "seeAllSection": "Gade tout {section}",
     "showMoreOptionsHint": "montre plis opsyon",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Ki lang yo te pale?",
     "callTranscriptSubscribeForTranscription": "Abòne pou transkripsyon",
     "unlockCallTranscript": "Debloke transkripsyon apèl la",
-    "activitySummaryUpdateFailed": "Rezime sa a pa t' kapab mete ajou."
+    "activitySummaryUpdateFailed": "Rezime sa a pa t' kapab mete ajou.",
+    "mapCreditsLabel": "Kredi kat: Stadia Maps, OpenMapTiles ak OpenStreetMap"
 }

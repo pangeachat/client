@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "ດອກໄມ້, ຄຳສັບທີ່ຮຽນຈົບແລ້ວ",
     "filterAndSearch": "ກັ່ນຕອງ ແລະ ຄົ້ນຫາ",
     "participantsOfTotal": "{filled} ຈາກ {total} ຜູ້ຫຼິ້ນ",
-    "mapAttributionLabel": "ຜູ້ປະກອບສ່ວນ OpenStreetMap, ລິຂະສິດ ແລະ ໃບອະນຸຍາດ",
     "seeAll": "ເບິ່ງທັງໝົດ",
     "seeAllSection": "ເບິ່ງທັງໝົດ {section}",
     "showMoreOptionsHint": "ສະແດງຕົວເລືອກເພີ່ມເຕີມ",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "ເວົ້າພາສາຫຍັງ?",
     "callTranscriptSubscribeForTranscription": "ສະໝັກໃຊ້ສຳລັບການຖອດຂໍ້ຄວາມ",
     "unlockCallTranscript": "ປົດລັອກການຖອດຂໍ້ຄວາມການໂທ",
-    "activitySummaryUpdateFailed": "ບໍ່ສາມາດອັບເດດສະຫຼຸບນີ້ໄດ້."
+    "activitySummaryUpdateFailed": "ບໍ່ສາມາດອັບເດດສະຫຼຸບນີ້ໄດ້.",
+    "mapCreditsLabel": "ຂໍ້ມູນແຜນທີ່: Stadia Maps, OpenMapTiles ແລະ OpenStreetMap"
 }

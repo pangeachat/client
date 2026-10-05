@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "گۈللەر، پىششىق سۆزلەر",
     "filterAndSearch": "سۈزۈش ۋە ئىزدەش",
     "participantsOfTotal": "{total} قويغۇچنىڭ {filled} ى",
-    "mapAttributionLabel": "OpenStreetMap تۆھپىكارلىرى، نەشر ھوقۇقى ۋە ئىجازەتنامىسى",
     "seeAll": "ھەممىنى كۆرۈش",
     "seeAllSection": "بارلىق {section}نى كۆرۈش",
     "showMoreOptionsHint": "تېخىمۇ كۆپ تاللاشلارنى كۆرسەت",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "قايسى تىلدا سۆزلەنگەن؟",
     "callTranscriptSubscribeForTranscription": "تەرجىمە قىلىش ئۈچۈن مۇشتەرى بولۇڭ",
     "unlockCallTranscript": "تېلېفون خاتىرىسىنى ئېچىش",
-    "activitySummaryUpdateFailed": "بۇ خۇلاسىنى يېڭىلاش مۇمكىن بولمىدى."
+    "activitySummaryUpdateFailed": "بۇ خۇلاسىنى يېڭىلاش مۇمكىن بولمىدى.",
+    "mapCreditsLabel": "خەرىتە ئىناۋىتى: Stadia Maps, OpenMapTiles ۋە OpenStreetMap"
 }

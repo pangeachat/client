@@ -132,6 +132,13 @@ class Environment {
         "Frontend URL NOT FOUND";
   }
 
+  /// Stadia Maps API key for native builds only; see `MapTiles`. Web builds
+  /// never carry it: Stadia authenticates web by domain, and the web `.env`
+  /// is publicly served. `isInitialized` because widget tests build maps
+  /// without loading an env.
+  static String? get stadiaMapsApiKey =>
+      dotenv.isInitialized ? dotenv.env["STADIA_MAPS_API_KEY"] : null;
+
   static String? get testUsername => dotenv.env["TEST_MATRIX_USERNAME"];
 
   static String? get testPassword => dotenv.env["TEST_MATRIX_PASSWORD"];

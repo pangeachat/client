@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "ಹೂವುಗಳು, ಕರಗತವಾದ ಪದಗಳು",
     "filterAndSearch": "ಫಿಲ್ಟರ್ ಮಾಡಿ ಮತ್ತು ಹುಡುಕಿ",
     "participantsOfTotal": "{total} ಆಟಗಾರರಲ್ಲಿ {filled}",
-    "mapAttributionLabel": "ಓಪನ್‌ಸ್ಟ್ರೀಟ್‌ಮ್ಯಾಪ್ ಕೊಡುಗೆದಾರರು, ಹಕ್ಕುಸ್ವಾಮ್ಯ ಮತ್ತು ಪರವಾನಗಿ",
     "seeAll": "ಎಲ್ಲವನ್ನೂ ನೋಡಿ",
     "seeAllSection": "ಎಲ್ಲವನ್ನೂ ನೋಡಿ {section}",
     "showMoreOptionsHint": "ಇನ್ನಷ್ಟು ಆಯ್ಕೆಗಳನ್ನು ತೋರಿಸಿ",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "ಯಾವ ಭಾಷೆಯನ್ನು ಮಾತನಾಡಲಾಗಿದೆ?",
     "callTranscriptSubscribeForTranscription": "ಲಿಪ್ಯಂತರಕ್ಕಾಗಿ ಚಂದಾದಾರರಾಗಿ",
     "unlockCallTranscript": "ಕರೆ ಲಿಪ್ಯಂತರವನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
-    "activitySummaryUpdateFailed": "ಈ ಸಾರಾಂಶವನ್ನು ನವೀಕರಿಸಲಾಗಲಿಲ್ಲ."
+    "activitySummaryUpdateFailed": "ಈ ಸಾರಾಂಶವನ್ನು ನವೀಕರಿಸಲಾಗಲಿಲ್ಲ.",
+    "mapCreditsLabel": "ನಕ್ಷೆ ಕ್ರೆಡಿಟ್‌ಗಳು: ಸ್ಟೇಡಿಯಾ ಮ್ಯಾಪ್ಸ್, ಓಪನ್‌ಮ್ಯಾಪ್‌ಟೈಲ್ಸ್ ಮತ್ತು ಓಪನ್‌ಸ್ಟ್ರೀಟ್‌ಮ್ಯಾಪ್"
 }

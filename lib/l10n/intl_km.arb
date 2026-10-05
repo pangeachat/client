@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "ផ្កា ពាក្យដែលស្ទាត់ជំនាញ",
     "filterAndSearch": "ត្រង និងស្វែងរក",
     "participantsOfTotal": "អ្នកលេង {filled} នៃ {total} នាក់",
-    "mapAttributionLabel": "អ្នករួមចំណែក OpenStreetMap, ការរក្សាសិទ្ធិ និងអាជ្ញាប័ណ្ណ",
     "seeAll": "មើលទាំងអស់",
     "seeAllSection": "មើល {section} ទាំងអស់",
     "showMoreOptionsHint": "បង្ហាញជម្រើសច្រើនទៀត",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "តើនិយាយភាសាអ្វី?",
     "callTranscriptSubscribeForTranscription": "ជាវសម្រាប់ការបំប្លែង",
     "unlockCallTranscript": "ដោះសោប្រតិចារិកការហៅទូរសព្ទ",
-    "activitySummaryUpdateFailed": "សេចក្ដីសង្ខេបនេះមិនអាចអាប់ដេតបានទេ។"
+    "activitySummaryUpdateFailed": "សេចក្ដីសង្ខេបនេះមិនអាចអាប់ដេតបានទេ។",
+    "mapCreditsLabel": "ការផ្ដល់កិត្តិយសផែនទី៖ Stadia Maps, OpenMapTiles និង OpenStreetMap"
 }

@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Blóm, orð sem hefur verið náð tökum á",
     "filterAndSearch": "Sía og leita",
     "participantsOfTotal": "{filled} af {total} spilurum",
-    "mapAttributionLabel": "OpenStreetMap þátttakendur, höfundarréttur og leyfi",
     "seeAll": "Sjá allt",
     "seeAllSection": "Sjá allt {section}",
     "showMoreOptionsHint": "sýna fleiri valkosti",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Hvaða tungumál var talað?",
     "callTranscriptSubscribeForTranscription": "Gerast áskrifandi að umritun",
     "unlockCallTranscript": "Aflæsa umritun símtals",
-    "activitySummaryUpdateFailed": "Ekki tókst að uppfæra þessa samantekt."
+    "activitySummaryUpdateFailed": "Ekki tókst að uppfæra þessa samantekt.",
+    "mapCreditsLabel": "Kortaupplýsingar: Stadia Maps, OpenMapTiles og OpenStreetMap"
 }

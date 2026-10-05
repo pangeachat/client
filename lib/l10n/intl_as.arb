@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "ফুল, আয়ত্ত কৰা শব্দ",
     "filterAndSearch": "ফিল্টাৰ আৰু সন্ধান কৰক",
     "participantsOfTotal": "{total} জন খেলুৱৈৰ ভিতৰত {filled} জন",
-    "mapAttributionLabel": "OpenStreetMap অৱদানকাৰী, স্বত্বাধিকাৰ আৰু অনুজ্ঞাপত্ৰ",
     "seeAll": "সকলো চাওক",
     "seeAllSection": "সকলো চাওক {section}",
     "showMoreOptionsHint": "অধিক বিকল্প দেখুৱাওক",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "কোন ভাষা কোৱা হৈছিল?",
     "callTranscriptSubscribeForTranscription": "লিখিত ৰূপলৈ ৰূপান্তৰ কৰিবলৈ সদস্যতা লওক",
     "unlockCallTranscript": "কল ট্ৰান্সক্ৰিপ্ট আনলক কৰক",
-    "activitySummaryUpdateFailed": "এই সাৰাংশটো আপডেইট কৰিব পৰা নগ’ল।"
+    "activitySummaryUpdateFailed": "এই সাৰাংশটো আপডেইট কৰিব পৰা নগ’ল।",
+    "mapCreditsLabel": "মানচিত্ৰৰ ক্ৰেডিটসমূহ: Stadia Maps, OpenMapTiles আৰু OpenStreetMap"
 }

@@ -9848,7 +9848,6 @@
     "constructLevelFlowers": "Gullar, oʻzlashtirilgan soʻzlar",
     "filterAndSearch": "Filtrlash va qidirish",
     "participantsOfTotal": "{total} o'yinchidan {filled} nafari",
-    "mapAttributionLabel": "OpenStreetMap ishtirokchilari, mualliflik huquqi va litsenziyasi",
     "seeAll": "Hammasini koʻrish",
     "seeAllSection": "Barcha {section}ni koʻrish",
     "showMoreOptionsHint": "koʻproq variantlarni koʻrsatish",
@@ -9985,5 +9984,6 @@
     "callTranscriptChooseLanguage": "Qaysi tilda gapirilgan?",
     "callTranscriptSubscribeForTranscription": "Transkripsiya uchun obuna bo‘lish",
     "unlockCallTranscript": "Qo‘ng‘iroq transkriptini ochish",
-    "activitySummaryUpdateFailed": "Bu xulosa yangilanmadi."
+    "activitySummaryUpdateFailed": "Bu xulosa yangilanmadi.",
+    "mapCreditsLabel": "Xarita mualliflari: Stadia Maps, OpenMapTiles va OpenStreetMap"
 }

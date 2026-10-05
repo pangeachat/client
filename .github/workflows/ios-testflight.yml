@@ -38,6 +38,9 @@ jobs:
   build_ios_testflight:
     runs-on: macos-15
     environment: ${{ inputs.environment }}
+    permissions:
+      id-token: write # OIDC token for AWS Secrets Manager
+      contents: read
     outputs:
       version: ${{ steps.version.outputs.version }}
     env:
@@ -70,6 +73,19 @@ jobs:
         env:
           GOOGLE_SERVICES_PLIST: ${{ secrets.GOOGLE_SERVICES_PLIST }}
         run: ./scripts/configure-firebase-messaging.sh
+      # Stadia Maps key for the map tiles (#8603). Native builds carry it in
+      # the bundled .env; web builds never do, since Stadia checks their
+      # domain. The OIDC role's grant is in devops terraform/<env>/iam/github-oidc.
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a # v4
+        with:
+          role-to-assume: ${{ inputs.environment == 'production' && secrets.AWS_ROLE_ARN_PROD || secrets.AWS_ROLE_ARN_STAGING }}
+          aws-region: us-east-1
+      - name: Fetch the Stadia Maps key from AWS Secrets Manager
+        uses: aws-actions/aws-secretsmanager-get-secrets@8493673611c1b9db1ceb7c01340109b83eb5e7d4 # v2
+        with:
+          secret-ids: |
+            STADIA_MAPS_API_KEY, /${{ inputs.environment == 'production' && 'prod' || 'staging' }}/client/stadia-maps-api-key
       - name: Update env files to selected environment
         run: |
           rm -f .env
@@ -78,6 +94,7 @@ jobs:
           # Dark until the choreo backend is enabled: the session fails pre-`ready`
           # and the recorder falls back to batch (today's behavior).
           echo "LIVE_STREAMING_STT_ENABLED=true" >> .env
+          echo "STADIA_MAPS_API_KEY=$STADIA_MAPS_API_KEY" >> .env
       - name: Apply .env patch
         run: git apply ./scripts/enable_mobile_env.patch
       - name: Remove Emoji Font

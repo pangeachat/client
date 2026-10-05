@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Lule, fjalë të zotëruara",
     "filterAndSearch": "Filtro dhe kërko",
     "participantsOfTotal": "{filled} nga {total} lojtarë",
-    "mapAttributionLabel": "Kontribuesit e OpenStreetMap, të drejtat e autorit dhe licenca",
     "seeAll": "Shiko të gjitha",
     "seeAllSection": "Shiko të gjitha {section}",
     "showMoreOptionsHint": "shfaq më shumë opsione",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Çfarë gjuhe u fol?",
     "callTranscriptSubscribeForTranscription": "Abonohu për transkriptim",
     "unlockCallTranscript": "Zhbloko transkriptin e thirrjes",
-    "activitySummaryUpdateFailed": "Ky përmbledhje nuk mund të përditësohej."
+    "activitySummaryUpdateFailed": "Ky përmbledhje nuk mund të përditësohej.",
+    "mapCreditsLabel": "Kreditet e hartës: Stadia Maps, OpenMapTiles dhe OpenStreetMap"
 }

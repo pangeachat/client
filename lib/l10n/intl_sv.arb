@@ -10362,7 +10362,6 @@
     "constructLevelFlowers": "Blommor, ord du kan",
     "filterAndSearch": "Filtrera och sök",
     "participantsOfTotal": "{filled} av {total} spelare",
-    "mapAttributionLabel": "OpenStreetMap-bidragsgivare, upphovsrätt och licens",
     "seeAll": "Visa alla",
     "seeAllSection": "Visa alla {section}",
     "showMoreOptionsHint": "visa fler alternativ",
@@ -10499,5 +10498,6 @@
     "callTranscriptChooseLanguage": "Vilket språk talades?",
     "callTranscriptSubscribeForTranscription": "Prenumerera för transkription",
     "unlockCallTranscript": "Lås upp samtalstranskription",
-    "activitySummaryUpdateFailed": "Denna sammanfattning kunde inte uppdateras."
+    "activitySummaryUpdateFailed": "Denna sammanfattning kunde inte uppdateras.",
+    "mapCreditsLabel": "Kartkrediter: Stadia Maps, OpenMapTiles och OpenStreetMap"
 }

@@ -9929,7 +9929,6 @@
     "constructLevelFlowers": "Kwiaty, opanowane słowa",
     "filterAndSearch": "Filtruj i szukaj",
     "participantsOfTotal": "{filled} z {total} graczy",
-    "mapAttributionLabel": "Współtwórcy OpenStreetMap, prawa autorskie i licencja",
     "seeAll": "Zobacz wszystkie",
     "seeAllSection": "Zobacz wszystkie {section}",
     "showMoreOptionsHint": "pokaż więcej opcji",
@@ -10066,5 +10065,6 @@
     "callTranscriptChooseLanguage": "W jakim języku mówiono?",
     "callTranscriptSubscribeForTranscription": "Subskrybuj, aby uzyskać transkrypcję",
     "unlockCallTranscript": "Odblokuj transkrypcję rozmowy",
-    "activitySummaryUpdateFailed": "Nie udało się zaktualizować podsumowania."
+    "activitySummaryUpdateFailed": "Nie udało się zaktualizować podsumowania.",
+    "mapCreditsLabel": "Źródło map: Stadia Maps, OpenMapTiles i OpenStreetMap"
 }

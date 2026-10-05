@@ -10476,7 +10476,6 @@
     "constructLevelFlowers": "Bláthanna, focail máistrithe",
     "filterAndSearch": "Scag agus cuardaigh",
     "participantsOfTotal": "{filled} de {total} imreoirí",
-    "mapAttributionLabel": "Ranníocóirí OpenStreetMap, cóipcheart agus ceadúnas",
     "seeAll": "Féach ar fad",
     "seeAllSection": "Féach ar {section} ar fad",
     "showMoreOptionsHint": "taispeáin tuilleadh roghanna",
@@ -10613,5 +10612,6 @@
     "callTranscriptChooseLanguage": "Cén teanga a labhraíodh?",
     "callTranscriptSubscribeForTranscription": "Liostáil le haghaidh trascríofa",
     "unlockCallTranscript": "Díghlasáil trascríbhinn glaonna",
-    "activitySummaryUpdateFailed": "Níorbh fhéidir an achoimre seo a nuashonrú."
+    "activitySummaryUpdateFailed": "Níorbh fhéidir an achoimre seo a nuashonrú.",
+    "mapCreditsLabel": "Léarscáil creidmheasanna: Stadia Maps, OpenMapTiles agus OpenStreetMap"
 }

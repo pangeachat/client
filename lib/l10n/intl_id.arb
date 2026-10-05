@@ -9917,7 +9917,6 @@
     "constructLevelFlowers": "Bunga, kata-kata yang dikuasai",
     "filterAndSearch": "Filter dan cari",
     "participantsOfTotal": "{filled} dari {total} pemain",
-    "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta, dan lisensi",
     "seeAll": "Lihat semua",
     "seeAllSection": "Lihat semua {section}",
     "showMoreOptionsHint": "tampilkan opsi lainnya",
@@ -10054,5 +10053,6 @@
     "callTranscriptChooseLanguage": "Bahasa apa yang digunakan?",
     "callTranscriptSubscribeForTranscription": "Berlangganan untuk transkripsi",
     "unlockCallTranscript": "Buka transkrip panggilan",
-    "activitySummaryUpdateFailed": "Ringkasan ini tidak dapat diperbarui."
+    "activitySummaryUpdateFailed": "Ringkasan ini tidak dapat diperbarui.",
+    "mapCreditsLabel": "Kredit peta: Stadia Maps, OpenMapTiles, dan OpenStreetMap"
 }

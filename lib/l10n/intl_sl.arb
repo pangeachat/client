@@ -10789,7 +10789,6 @@
     "constructLevelFlowers": "Rože, obvladane besede",
     "filterAndSearch": "Filtriraj in išči",
     "participantsOfTotal": "{filled} od {total} igralcev",
-    "mapAttributionLabel": "Sodelavci OpenStreetMap, avtorske pravice in licenca",
     "seeAll": "Poglej vse",
     "seeAllSection": "Poglej vse {section}",
     "showMoreOptionsHint": "pokaži več možnosti",
@@ -10926,5 +10925,6 @@
     "callTranscriptChooseLanguage": "Kateri jezik je bil govorjen?",
     "callTranscriptSubscribeForTranscription": "Naročite se na prepisovanje",
     "unlockCallTranscript": "Odkleni prepis klica",
-    "activitySummaryUpdateFailed": "Tega povzetka ni bilo mogoče posodobiti."
+    "activitySummaryUpdateFailed": "Tega povzetka ni bilo mogoče posodobiti.",
+    "mapCreditsLabel": "Zasluge za zemljevid: Stadia Maps, OpenMapTiles in OpenStreetMap"
 }

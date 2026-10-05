@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Lipalesa, mantsoe a tsejoang hantle",
     "filterAndSearch": "Hlotha le ho batla",
     "participantsOfTotal": "Libapali tse {filled} ho tse {total}",
-    "mapAttributionLabel": "Bafani ba OpenStreetMap, litokelo tsa ho kopitsa le laesense",
     "seeAll": "Bona kaofela",
     "seeAllSection": "Bona {section} kaofela",
     "showMoreOptionsHint": "bontsha likhetho tse ling",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Ho ne ho buuwa puo efe?",
     "callTranscriptSubscribeForTranscription": "Ngolisa bakeng sa ho ngola",
     "unlockCallTranscript": "Notlolla sengoloa sa mohala",
-    "activitySummaryUpdateFailed": "Kakaretso ena e sitilwe ho ntjhafatswa."
+    "activitySummaryUpdateFailed": "Kakaretso ena e sitilwe ho ntjhafatswa.",
+    "mapCreditsLabel": "Liteboho tsa 'mapa: Limmapa tsa Stadia, OpenMapTiles le OpenStreetMap"
 }

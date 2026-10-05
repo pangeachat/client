@@ -10758,7 +10758,6 @@
     "constructLevelFlowers": "פרחים, מילים שנלמדו",
     "filterAndSearch": "סינון וחיפוש",
     "participantsOfTotal": "{filled} מתוך {total} שחקנים",
-    "mapAttributionLabel": "תורמי OpenStreetMap, זכויות יוצרים ורישיון",
     "seeAll": "הצג הכל",
     "seeAllSection": "הצג הכל {section}",
     "showMoreOptionsHint": "הצג אפשרויות נוספות",
@@ -10895,5 +10894,6 @@
     "callTranscriptChooseLanguage": "באיזו שפה דיברתם?",
     "callTranscriptSubscribeForTranscription": "הירשם לתימלול",
     "unlockCallTranscript": "פתח את תמלול השיחה",
-    "activitySummaryUpdateFailed": "לא ניתן היה לעדכן את הסיכום הזה."
+    "activitySummaryUpdateFailed": "לא ניתן היה לעדכן את הסיכום הזה.",
+    "mapCreditsLabel": "קרדיטים למפה: Stadia Maps, OpenMapTiles ו-OpenStreetMap"
 }

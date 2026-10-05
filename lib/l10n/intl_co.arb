@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Fiori, parolle ammaestrate",
     "filterAndSearch": "Filtrà è circà",
     "participantsOfTotal": "{filled} di {total} ghjucadori",
-    "mapAttributionLabel": "Cuntributori OpenStreetMap, copyright è licenza",
     "seeAll": "Vede tuttu",
     "seeAllSection": "Vede tuttu {section}",
     "showMoreOptionsHint": "mostra più opzioni",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Chì lingua hè stata parlata?",
     "callTranscriptSubscribeForTranscription": "Abbunà si per a trascrizzione",
     "unlockCallTranscript": "Sbloccà a trascrizzione di a chjama",
-    "activitySummaryUpdateFailed": "Stu riassuntu ùn hà pussutu esse aghjurnatu."
+    "activitySummaryUpdateFailed": "Stu riassuntu ùn hà pussutu esse aghjurnatu.",
+    "mapCreditsLabel": "Crediti di a carta: Stadia Maps, OpenMapTiles è OpenStreetMap"
 }

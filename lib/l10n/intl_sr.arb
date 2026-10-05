@@ -10793,7 +10793,6 @@
     "constructLevelFlowers": "Cveće, savladane reči",
     "filterAndSearch": "Filtriraj i pretraži",
     "participantsOfTotal": "{filled} od {total} igrača",
-    "mapAttributionLabel": "OpenStreetMap saradnici, autorska prava i licenca",
     "seeAll": "Pogledaj sve",
     "seeAllSection": "Pogledaj sve {section}",
     "showMoreOptionsHint": "prikaži više opcija",
@@ -10930,5 +10929,6 @@
     "callTranscriptChooseLanguage": "Koji jezik je bio u upotrebi?",
     "callTranscriptSubscribeForTranscription": "Pretplatite se za transkripciju",
     "unlockCallTranscript": "Otključaj transkript poziva",
-    "activitySummaryUpdateFailed": "Ovaj rezime nije mogao da se ažurira."
+    "activitySummaryUpdateFailed": "Ovaj rezime nije mogao da se ažurira.",
+    "mapCreditsLabel": "Zasluge za mapu: Stadia Maps, OpenMapTiles i OpenStreetMap"
 }

@@ -9455,7 +9455,6 @@
     "constructLevelFlowers": "མེ་ཏོག བྱང་ཆུབ་པའི་ཚིག",
     "filterAndSearch": "ཚགས་འདེམས་དང་འཚོལ་བཤེར།",
     "participantsOfTotal": "རྩེད་མཁན་ {total} ནང་ནས་ {filled}",
-    "mapAttributionLabel": "OpenStreetMap ལ་མཉམ་ཞུགས་བྱེད་མཁན་ཚོ། བདག་དབང་དང་ཆོག་མཆན།",
     "seeAll": "ཚང་མ་གཟིགས།",
     "seeAllSection": "{section} ཚང་མ་གཟིགས།",
     "showMoreOptionsHint": "འདེམས་ངོ་མང་ཙམ་བསྟན་",
@@ -9592,5 +9591,6 @@
     "callTranscriptChooseLanguage": "སྐད་ཡིག་གང་ཞིག་བཤད་པ་ཡིན་ནམ།",
     "callTranscriptSubscribeForTranscription": "ཡིག་སྒྱུར་བྱེད་པར་ཐོ་འགོད་བྱེད་དགོས།",
     "unlockCallTranscript": "ཁ་པར་གྱི་ཡིག་སྒྱུར་འབྱེད་པ།",
-    "activitySummaryUpdateFailed": "སྙན་ཐོ་འདི་གསར་སྒྱུར་བྱེད་མ་ཐུབ།"
+    "activitySummaryUpdateFailed": "སྙན་ཐོ་འདི་གསར་སྒྱུར་བྱེད་མ་ཐུབ།",
+    "mapCreditsLabel": "ផែនទីཡི་ཡོན་ཏན་: Stadia Maps, OpenMapTiles དང་ OpenStreetMap"
 }

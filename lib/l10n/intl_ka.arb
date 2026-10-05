@@ -10744,7 +10744,6 @@
     "constructLevelFlowers": "ყვავილები, ათვისებული სიტყვები",
     "filterAndSearch": "გაფილტვრა და ძიება",
     "participantsOfTotal": "{filled} / {total} მოთამაშე",
-    "mapAttributionLabel": "OpenStreetMap-ის კონტრიბუტორები, საავტორო უფლებები და ლიცენზია",
     "seeAll": "ყველას ნახვა",
     "seeAllSection": "ყველა {section}-ის ნახვა",
     "showMoreOptionsHint": "მეტი ვარიანტის ჩვენება",
@@ -10881,5 +10880,6 @@
     "callTranscriptChooseLanguage": "რა ენაზე საუბრობდით?",
     "callTranscriptSubscribeForTranscription": "გამოიწერეთ ტრანსკრიფციისთვის",
     "unlockCallTranscript": "ზარის ტრანსკრიფციის განბლოკვა",
-    "activitySummaryUpdateFailed": "ამ შეჯამების განახლება ვერ მოხერხდა."
+    "activitySummaryUpdateFailed": "ამ შეჯამების განახლება ვერ მოხერხდა.",
+    "mapCreditsLabel": "რუკის კრედიტები: Stadia Maps, OpenMapTiles და OpenStreetMap"
 }

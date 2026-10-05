@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "ګلان، ماسټر شوې کلمې",
     "filterAndSearch": "فلټر او لټون",
     "participantsOfTotal": "د {total} لوبغاړو څخه {filled}",
-    "mapAttributionLabel": "د OpenStreetMap مرسته کوونکي، د چاپ حق او جواز",
     "seeAll": "ټول وګورئ",
     "seeAllSection": "ټول {section} وګورئ",
     "showMoreOptionsHint": "نور انتخابونه وښایاست",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "کومه ژبه ویل شوې وه؟",
     "callTranscriptSubscribeForTranscription": "د ژباړې لپاره ګډون وکړئ",
     "unlockCallTranscript": "د زنګ لیږد خلاص کړئ",
-    "activitySummaryUpdateFailed": "دا لنډیز تازه نشو."
+    "activitySummaryUpdateFailed": "دا لنډیز تازه نشو.",
+    "mapCreditsLabel": "د نقشې کریډیټونه: Stadia Maps, OpenMapTiles او OpenStreetMap"
 }

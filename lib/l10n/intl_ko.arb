@@ -10037,7 +10037,6 @@
     "constructLevelFlowers": "꽃, 마스터한 단어",
     "filterAndSearch": "필터 및 검색",
     "participantsOfTotal": "{total}명 중 {filled}명",
-    "mapAttributionLabel": "OpenStreetMap 기여자, 저작권 및 라이선스",
     "seeAll": "모두 보기",
     "seeAllSection": "{section} 모두 보기",
     "showMoreOptionsHint": "더 많은 옵션 보기",
@@ -10174,5 +10173,6 @@
     "callTranscriptChooseLanguage": "어떤 언어를 사용했나요?",
     "callTranscriptSubscribeForTranscription": "텍스트 변환 구독",
     "unlockCallTranscript": "통화 기록 잠금 해제",
-    "activitySummaryUpdateFailed": "이 요약을 업데이트할 수 없었습니다."
+    "activitySummaryUpdateFailed": "이 요약을 업데이트할 수 없었습니다.",
+    "mapCreditsLabel": "지도 출처: Stadia Maps, OpenMapTiles 및 OpenStreetMap"
 }

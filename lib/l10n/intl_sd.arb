@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "فلاورس، ماهر لفظ",
     "filterAndSearch": "فلٽر ۽ ڳولا ڪريو",
     "participantsOfTotal": "{total} رانديگرن مان {filled}",
-    "mapAttributionLabel": "اوپن اسٽريٽ ميپ جا حصو وٺندڙ، ڪاپي رائيٽ ۽ لائسنس",
     "seeAll": "سڀ ڏسو",
     "seeAllSection": "سڀ ڏسو {section}",
     "showMoreOptionsHint": "وڌيڪ آپشن ڏيکاريو",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "ڪهڙي ٻولي ڳالهائي وئي؟",
     "callTranscriptSubscribeForTranscription": "لِکڻ لاءِ سبسڪرائب ڪريو",
     "unlockCallTranscript": "ڪال ٽرانسڪرپٽ کوليو",
-    "activitySummaryUpdateFailed": "هي خلاصو اپڊيٽ نه ٿي سگهيو."
+    "activitySummaryUpdateFailed": "هي خلاصو اپڊيٽ نه ٿي سگهيو.",
+    "mapCreditsLabel": "نقشي جا ڪريڊٽ: اسٽيڊيا ميپس، اوپن ميپ ٽائيلز ۽ اوپن اسٽريٽ ميپ"
 }

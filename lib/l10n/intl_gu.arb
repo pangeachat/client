@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "ફૂલો, નિપુણ શબ્દો",
     "filterAndSearch": "ફિલ્ટર કરો અને શોધો",
     "participantsOfTotal": "{total} ખેલાડીઓમાંથી {filled}",
-    "mapAttributionLabel": "OpenStreetMap ફાળો આપનારાઓ, કૉપિરાઇટ અને લાઇસન્સ",
     "seeAll": "બધા જુઓ",
     "seeAllSection": "બધા જુઓ {section}",
     "showMoreOptionsHint": "વધુ વિકલ્પો બતાવો",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "કઈ ભાષા બોલવામાં આવી હતી?",
     "callTranscriptSubscribeForTranscription": "ટ્રાન્સક્રિપ્શન માટે સબ્સ્ક્રાઇબ કરો",
     "unlockCallTranscript": "કૉલ ટ્રાન્સક્રિપ્ટ અનલૉક કરો",
-    "activitySummaryUpdateFailed": "આ સારાંશ અપડેટ કરી શકાયો નથી."
+    "activitySummaryUpdateFailed": "આ સારાંશ અપડેટ કરી શકાયો નથી.",
+    "mapCreditsLabel": "નકશા ક્રેડિટ્સ: Stadia Maps, OpenMapTiles અને OpenStreetMap"
 }

@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Mga bulak, hanas nga mga pulong",
     "filterAndSearch": "Filter ug pangita",
     "participantsOfTotal": "{filled} sa {total} ka magdudula",
-    "mapAttributionLabel": "Mga nag-amot sa OpenStreetMap, copyright ug lisensya",
     "seeAll": "Tan-awa tanan",
     "seeAllSection": "Tan-awa tanan {section}",
     "showMoreOptionsHint": "ipakita ang dugang nga kapilian",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Unsang pinulongan ang gisulti?",
     "callTranscriptSubscribeForTranscription": "Mag-subscribe para sa transcription",
     "unlockCallTranscript": "I-unlock ang transcript sa tawag",
-    "activitySummaryUpdateFailed": "Dili ma-update kining summary."
+    "activitySummaryUpdateFailed": "Dili ma-update kining summary.",
+    "mapCreditsLabel": "Mga kredito sa mapa: Stadia Maps, OpenMapTiles ug OpenStreetMap"
 }

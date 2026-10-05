@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Paj, cov lus kawm tiav",
     "filterAndSearch": "Lim thiab tshawb",
     "participantsOfTotal": "{filled} ntawm {total} tus neeg ua si",
-    "mapAttributionLabel": "OpenStreetMap cov neeg koom tes, txoj cai luam tawm thiab daim ntawv tso cai",
     "seeAll": "Saib tag nrho",
     "seeAllSection": "Saib tag nrho {section}",
     "showMoreOptionsHint": "qhia ntau txoj kev xaiv ntxiv",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Hais hom lus twg?",
     "callTranscriptSubscribeForTranscription": "Sau npe kom sau ua ntawv",
     "unlockCallTranscript": "Xauv cov ntawv sau ua lus",
-    "activitySummaryUpdateFailed": "Qhov ntsiab lus no hloov tsis tau."
+    "activitySummaryUpdateFailed": "Qhov ntsiab lus no hloov tsis tau.",
+    "mapCreditsLabel": "Daim ntawv qhia chaw: Stadia Maps, OpenMapTiles thiab OpenStreetMap"
 }

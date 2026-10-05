@@ -2256,7 +2256,6 @@
     "constructLevelFlowers": "Blodau, geiriau wedi'u meistroli",
     "filterAndSearch": "Hidlo a chwilio",
     "participantsOfTotal": "{filled} o {total} chwaraewr",
-    "mapAttributionLabel": "Cyfranwyr OpenStreetMap, hawlfraint a thrwydded",
     "seeAll": "Gweld y cyfan",
     "seeAllSection": "Gweld pob {section}",
     "showMoreOptionsHint": "dangos mwy o opsiynau",
@@ -2389,5 +2388,6 @@
     "callTranscriptChooseLanguage": "Pa iaith gafodd ei siarad?",
     "callTranscriptSubscribeForTranscription": "Tanysgrifiwch ar gyfer trawsgrifio",
     "unlockCallTranscript": "Datgloi trawsgrifiad galwad",
-    "activitySummaryUpdateFailed": "Ni ellid diweddaru’r crynodeb hwn."
+    "activitySummaryUpdateFailed": "Ni ellid diweddaru’r crynodeb hwn.",
+    "mapCreditsLabel": "Credydau map: Stadia Maps, OpenMapTiles ac OpenStreetMap"
 }
