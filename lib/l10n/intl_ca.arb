@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:30.405659",
+    "@@last_modified": "2026-10-05 12:30:34.768284",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10108,5 +10108,8 @@
     "callTranscriptChooseLanguage": "En quina llengua es va parlar?",
     "callTranscriptSubscribeForTranscription": "Subscriu-te per a la transcripció",
     "unlockCallTranscript": "Desbloqueja la transcripció de la trucada",
-    "activitySummaryUpdateFailed": "Aquest resum no s'ha pogut actualitzar."
+    "activitySummaryUpdateFailed": "Aquest resum no s'ha pogut actualitzar.",
+    "ssoNetworkBlockedTitle": "Lloc d'inici de sessió inaccessible",
+    "ssoNetworkBlockedDesc": "Aquesta xarxa no ens permet connectar amb {provider} per iniciar la sessió. Sovint, les xarxes Wi-Fi d'escoles i oficines bloquegen l'accés. Pots registrar-te amb el correu electrònic o canviar a una altra xarxa i tornar-ho a provar.",
+    "ssoTryAnyway": "Prova igualment"
 }

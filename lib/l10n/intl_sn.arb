@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-30 11:27:39.754889",
+    "@@last_modified": "2026-10-05 12:30:47.817450",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "Mutauro upi wakataurwa?",
     "callTranscriptSubscribeForTranscription": "Nyorera kuti unyorerwe",
     "unlockCallTranscript": "Vhura zvinyorwa zvekufona",
-    "activitySummaryUpdateFailed": "Chidimbu ichi hachina kukwanisa kugadziriswa."
+    "activitySummaryUpdateFailed": "Chidimbu ichi hachina kukwanisa kugadziriswa.",
+    "ssoNetworkBlockedTitle": "Saiti yekupinda haisvikike",
+    "ssoNetworkBlockedDesc": "Network iyi haitibvumire kusvika ku {provider} kuti tikupinze. Wi-Fi yechikoro neyehofisi inowanzoivharira. Unogona kusaina neemail panzvimbo, kana kuchinja kune imwe network woedza zvakare.",
+    "ssoTryAnyway": "Edza zvakadaro"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-30 11:27:29.474011",
+    "@@last_modified": "2026-10-05 12:30:33.288275",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "На какъв език се говореше?",
     "callTranscriptSubscribeForTranscription": "Абонирайте се за транскрипция",
     "unlockCallTranscript": "Отключване на препис от разговора",
-    "activitySummaryUpdateFailed": "Това резюме не можа да бъде актуализирано."
+    "activitySummaryUpdateFailed": "Това резюме не можа да бъде актуализирано.",
+    "ssoNetworkBlockedTitle": "Сайтът за вход е недостъпен",
+    "ssoNetworkBlockedDesc": "Тази мрежа не ни позволява да достигнем до {provider}, за да ви впишем. Училищните и офис Wi-Fi мрежи често го блокират. Можете да се регистрирате с имейл вместо това или да превключите към друга мрежа и да опитате отново.",
+    "ssoTryAnyway": "Все пак опитай"
 }

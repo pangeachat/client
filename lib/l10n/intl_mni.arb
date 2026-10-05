@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-30 11:27:37.228546",
+    "@@last_modified": "2026-10-05 12:30:44.060354",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "কনাগুম্বা অমুন্না কয়া ঙাংখি?",
     "callTranscriptSubscribeForTranscription": "ট্রান্সক্রিপশনগীদমক সাবস্ক্রাইব তৌবীয়ু",
     "unlockCallTranscript": "কল ট্রান্সক্রিপ্ট অদু অনলক তৌবীয়ু",
-    "activitySummaryUpdateFailed": "असिमरी असी अपडेट तौबा ङम्लोई।"
+    "activitySummaryUpdateFailed": "असिमरी असी अपडेट तौबा ङम्लोई।",
+    "ssoNetworkBlockedTitle": "সাইন-ইন সাইট য়ৌদ্রে",
+    "ssoNetworkBlockedDesc": "অসি নেটৱার্ক অসিনা নখোঙবু সাইন ইন তৌনবা {provider} য়ৌহনদে। স্কুল অমসুং ওফিসকী ৱাই-ফাইনা মদু থিংজবা য়াই। নখোঙনা ইমেলগা লোইননা সাইন আপ তৌবা য়াই, নত্ত্রগা অতোপ্পা নেটৱার্ক অমা শীজিন্নদুনা অমুক হন্না ট্রাই তৌবা য়াই।",
+    "ssoTryAnyway": "ট্রাই তৌবা"
 }

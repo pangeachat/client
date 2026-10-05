@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-30 11:27:32.831428",
+    "@@last_modified": "2026-10-05 12:30:38.042561",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "He aha ka ʻōlelo i ʻōlelo ʻia?",
     "callTranscriptSubscribeForTranscription": "Kakau inoa no ke kākau ʻana",
     "unlockCallTranscript": "Wehe i ke kākau ʻana o ke kelepona",
-    "activitySummaryUpdateFailed": "ʻAʻole hiki ke hoʻopou hou i kēia hōʻuluʻulu."
+    "activitySummaryUpdateFailed": "ʻAʻole hiki ke hoʻopou hou i kēia hōʻuluʻulu.",
+    "ssoNetworkBlockedTitle": "ʻAʻole hiki ke kiʻi i ka pūnaewele ʻeʻe",
+    "ssoNetworkBlockedDesc": "ʻAʻole ʻae kēia pūnaewele iā mākou e kiʻi iā {provider} no ka hoʻopaʻa inoa ʻana iā ʻoe. Hoʻopaʻa pinepine ka Wi-Fi kula a me ke keʻena iā ia. Hiki iā ʻoe ke kau inoa me ka leka uila, a i ʻole e hoʻololi i kahi pūnaewele ʻē aʻe a hoʻāʻo hou.",
+    "ssoTryAnyway": "E hoʻāʻo nō"
 }

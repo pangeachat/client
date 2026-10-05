@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-30 11:27:35.319966",
+    "@@last_modified": "2026-10-05 12:30:41.607583",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "Qua lingua locutum est?",
     "callTranscriptSubscribeForTranscription": "Subscribere pro transcriptione",
     "unlockCallTranscript": "Reserare transcriptionem vocis",
-    "activitySummaryUpdateFailed": "Haec summa renovari non potuit."
+    "activitySummaryUpdateFailed": "Haec summa renovari non potuit.",
+    "ssoNetworkBlockedTitle": "Situs initii inaccessibilis",
+    "ssoNetworkBlockedDesc": "Haec retis nos prohibet ad {provider} pervenire ut te inigas. Wi-Fi scholae et officii saepe id impediunt. Potes proinde per electronicam subscribere, aut ad aliam retem mutare et iterum conari.",
+    "ssoTryAnyway": "Nihilominus conare"
 }

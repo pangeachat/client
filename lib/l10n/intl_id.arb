@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:33.763513",
+    "@@last_modified": "2026-10-05 12:30:38.664012",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10054,5 +10054,8 @@
     "callTranscriptChooseLanguage": "Bahasa apa yang digunakan?",
     "callTranscriptSubscribeForTranscription": "Berlangganan untuk transkripsi",
     "unlockCallTranscript": "Buka transkrip panggilan",
-    "activitySummaryUpdateFailed": "Ringkasan ini tidak dapat diperbarui."
+    "activitySummaryUpdateFailed": "Ringkasan ini tidak dapat diperbarui.",
+    "ssoNetworkBlockedTitle": "Situs masuk tidak dapat dijangkau",
+    "ssoNetworkBlockedDesc": "Jaringan ini tidak mengizinkan kami menjangkau {provider} untuk masuk. Wi-Fi sekolah dan kantor sering memblokirnya. Anda dapat mendaftar dengan email, atau beralih ke jaringan lain dan coba lagi.",
+    "ssoTryAnyway": "Coba lagi"
 }

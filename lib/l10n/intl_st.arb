@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-30 11:27:40.239737",
+    "@@last_modified": "2026-10-05 12:30:49.106459",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "Ho ne ho buuwa puo efe?",
     "callTranscriptSubscribeForTranscription": "Ngolisa bakeng sa ho ngola",
     "unlockCallTranscript": "Notlolla sengoloa sa mohala",
-    "activitySummaryUpdateFailed": "Kakaretso ena e sitilwe ho ntjhafatswa."
+    "activitySummaryUpdateFailed": "Kakaretso ena e sitilwe ho ntjhafatswa.",
+    "ssoNetworkBlockedTitle": "Sebaka sa ho kena ha se fihlellehe",
+    "ssoNetworkBlockedDesc": "Marang-rang ana ha a re lumelle ho fihlella {provider} ho u kenya. Wi-Fi ea sekolo le ofisi hangata e a e thibela. U ka ingolisa ka imeile ho e-na le hoo, kapa ua fetohela marang-rang a mang 'me ua leka hape.",
+    "ssoTryAnyway": "Leka leha ho le joalo"
 }

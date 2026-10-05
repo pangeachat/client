@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:37.425422",
+    "@@last_modified": "2026-10-05 12:30:44.541993",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9981,5 +9981,8 @@
     "callTranscriptChooseLanguage": "Welke taal werd er gesproken?",
     "callTranscriptSubscribeForTranscription": "Abonneren voor transcriptie",
     "unlockCallTranscript": "Ontgrendel gespreksafschrift",
-    "activitySummaryUpdateFailed": "Deze samenvatting kon niet worden bijgewerkt."
+    "activitySummaryUpdateFailed": "Deze samenvatting kon niet worden bijgewerkt.",
+    "ssoNetworkBlockedTitle": "Aanmeldingssite onbereikbaar",
+    "ssoNetworkBlockedDesc": "Dit netwerk laat ons {provider} niet bereiken om je aan te melden. School- en kantoor-wifi blokkeren dit vaak. Je kunt je in plaats daarvan aanmelden met e-mail, of overschakelen naar een ander netwerk en het opnieuw proberen.",
+    "ssoTryAnyway": "Toch proberen"
 }

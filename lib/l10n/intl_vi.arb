@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:41.683349",
+    "@@last_modified": "2026-10-05 12:30:50.202394",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7273,5 +7273,8 @@
     "callTranscriptChooseLanguage": "Ngôn ngữ được nói là gì?",
     "callTranscriptSubscribeForTranscription": "Đăng ký để chép lại",
     "unlockCallTranscript": "Mở khóa bản chép lại cuộc gọi",
-    "activitySummaryUpdateFailed": "Không thể cập nhật bản tóm tắt này."
+    "activitySummaryUpdateFailed": "Không thể cập nhật bản tóm tắt này.",
+    "ssoNetworkBlockedTitle": "Không thể truy cập trang web đăng nhập",
+    "ssoNetworkBlockedDesc": "Mạng này không cho phép chúng tôi truy cập {provider} để đăng nhập cho bạn. Wi-Fi ở trường học và văn phòng thường chặn điều này. Bạn có thể đăng ký bằng email thay thế, hoặc chuyển sang mạng khác và thử lại.",
+    "ssoTryAnyway": "Vẫn thử"
 }

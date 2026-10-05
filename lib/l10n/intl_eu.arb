@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-30 11:27:31.757504",
+    "@@last_modified": "2026-10-05 12:30:36.910252",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9981,5 +9981,8 @@
     "callTranscriptChooseLanguage": "Zein hizkuntzatan hitz egin zen?",
     "callTranscriptSubscribeForTranscription": "Harpidetu transkripziorako",
     "unlockCallTranscript": "Desblokeatu deiaren transkripzioa",
-    "activitySummaryUpdateFailed": "Laburpen hau ezin izan da eguneratu."
+    "activitySummaryUpdateFailed": "Laburpen hau ezin izan da eguneratu.",
+    "ssoNetworkBlockedTitle": "Saioa hasteko gunea eskuraezina",
+    "ssoNetworkBlockedDesc": "Sare honek ez digu uzten {provider} atzitzen saioa hasteko. Eskolako eta bulegoko Wi-Fi sareek askotan blokeatzen dute. Horren ordez, posta elektronikoarekin erregistra zaitezke, edo beste sare batera aldatu eta berriro saiatu.",
+    "ssoTryAnyway": "Dena den, saiatu"
 }

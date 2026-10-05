@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-30 11:27:29.856829",
+    "@@last_modified": "2026-10-05 12:30:33.967019",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "কোন ভাষা কোৱা হৈছিল?",
     "callTranscriptSubscribeForTranscription": "লিখিত ৰূপলৈ ৰূপান্তৰ কৰিবলৈ সদস্যতা লওক",
     "unlockCallTranscript": "কল ট্ৰান্সক্ৰিপ্ট আনলক কৰক",
-    "activitySummaryUpdateFailed": "এই সাৰাংশটো আপডেইট কৰিব পৰা নগ’ল।"
+    "activitySummaryUpdateFailed": "এই সাৰাংশটো আপডেইট কৰিব পৰা নগ’ল।",
+    "ssoNetworkBlockedTitle": "ছাইন-ইন ছাইটত উপনীত হ'ব পৰা নাই",
+    "ssoNetworkBlockedDesc": "এই নেটৱৰ্কে আপোনাক ছাইন ইন কৰিবলৈ {provider} লৈ যাবলৈ নিদিয়াহে। বিদ্যালয় আৰু কাৰ্যালয়ৰ Wi-Fi-এ ইয়াক প্ৰায়ে ব্লক কৰে। আপুনি ইয়াৰ পৰিৱৰ্তে ইমেইলৰ সৈতে ছাইন আপ কৰিব পাৰে, অথবা আন এটা নেটৱৰ্কলৈ সলনি কৰি পুনৰ চেষ্টা কৰিব পাৰে।",
+    "ssoTryAnyway": "যিকোনো প্ৰকাৰে চেষ্টা কৰক"
 }

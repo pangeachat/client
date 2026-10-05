@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-30 11:27:35.206369",
+    "@@last_modified": "2026-10-05 12:30:41.473150",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "Us langwej dɛn bin tɔk?",
     "callTranscriptSubscribeForTranscription": "Sabsakrayb fɔ transkripshɔn",
     "unlockCallTranscript": "Ɔnlɔk kɔl transkript",
-    "activitySummaryUpdateFailed": "Dis samari nɔ kɔn fɔ chenj."
+    "activitySummaryUpdateFailed": "Dis samari nɔ kɔn fɔ chenj.",
+    "ssoNetworkBlockedTitle": "Sayn-in sayt nɔ de rich",
+    "ssoNetworkBlockedDesc": "Dis netwɔk nɔ de mek wi rich {provider} fɔ sayn yu in. Skul ɛn ɔfis Wi-Fi kin blɔk am. Yu go ebul sayn-ɔp wit imel instɛd, ɔ chenj to ɔda netwɔk ɛn tray igen.",
+    "ssoTryAnyway": "Tray ɛnitin"
 }

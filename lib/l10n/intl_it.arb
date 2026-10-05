@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:34.223326",
+    "@@last_modified": "2026-10-05 12:30:39.531349",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10054,5 +10054,8 @@
     "callTranscriptChooseLanguage": "Che lingua è stata parlata?",
     "callTranscriptSubscribeForTranscription": "Abbonati per la trascrizione",
     "unlockCallTranscript": "Sblocca trascrizione chiamata",
-    "activitySummaryUpdateFailed": "Impossibile aggiornare questo riepilogo."
+    "activitySummaryUpdateFailed": "Impossibile aggiornare questo riepilogo.",
+    "ssoNetworkBlockedTitle": "Sito di accesso irraggiungibile",
+    "ssoNetworkBlockedDesc": "Questa rete non ci permette di raggiungere {provider} per effettuare l'accesso. Le reti Wi-Fi di scuole e uffici spesso lo bloccano. Puoi registrarti con l'email, oppure passare a un'altra rete e riprovare.",
+    "ssoTryAnyway": "Riprova comunque"
 }

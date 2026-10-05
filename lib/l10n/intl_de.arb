@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-30 11:27:30.606426",
+    "@@last_modified": "2026-10-05 12:30:35.133107",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9968,5 +9968,8 @@
     "callTranscriptChooseLanguage": "Welche Sprache wurde gesprochen?",
     "callTranscriptSubscribeForTranscription": "Für Transkription abonnieren",
     "unlockCallTranscript": "Anruf-Transkript freischalten",
-    "activitySummaryUpdateFailed": "Diese Zusammenfassung konnte nicht aktualisiert werden."
+    "activitySummaryUpdateFailed": "Diese Zusammenfassung konnte nicht aktualisiert werden.",
+    "ssoNetworkBlockedTitle": "Anmeldeseite nicht erreichbar",
+    "ssoNetworkBlockedDesc": "Dieses Netzwerk lässt uns nicht zu {provider} durch, um dich anzumelden. Schul- und Büro-WLAN blockieren dies oft. Du kannst dich stattdessen mit E-Mail anmelden oder zu einem anderen Netzwerk wechseln und es erneut versuchen.",
+    "ssoTryAnyway": "Trotzdem versuchen"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-30 11:27:34.504248",
+    "@@last_modified": "2026-10-05 12:30:40.544357",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10084,5 +10084,8 @@
     "callTranscriptChooseLanguage": "Milyen nyelven beszéltek?",
     "callTranscriptSubscribeForTranscription": "Feliratkozás az átírásra",
     "unlockCallTranscript": "Hívás átirat feloldása",
-    "activitySummaryUpdateFailed": "Ezt az összefoglalót nem sikerült frissíteni."
+    "activitySummaryUpdateFailed": "Ezt az összefoglalót nem sikerült frissíteni.",
+    "ssoNetworkBlockedTitle": "Bejelentkezési oldal nem elérhető",
+    "ssoNetworkBlockedDesc": "Ez a hálózat nem engedi, hogy elérjük a(z) {provider} szolgáltatót a bejelentkezéshez. Az iskolai és irodai Wi-Fi gyakran blokkolja. E-mail címmel is regisztrálhat, vagy válthat másik hálózatra, és újra megpróbálhatja.",
+    "ssoTryAnyway": "Mégis megpróbálom"
 }

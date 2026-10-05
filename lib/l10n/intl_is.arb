@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-30 11:27:33.884447",
+    "@@last_modified": "2026-10-05 12:30:39.498784",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "Hvaða tungumál var talað?",
     "callTranscriptSubscribeForTranscription": "Gerast áskrifandi að umritun",
     "unlockCallTranscript": "Aflæsa umritun símtals",
-    "activitySummaryUpdateFailed": "Ekki tókst að uppfæra þessa samantekt."
+    "activitySummaryUpdateFailed": "Ekki tókst að uppfæra þessa samantekt.",
+    "ssoNetworkBlockedTitle": "Ekki hægt að ná í innskráningarsíðu",
+    "ssoNetworkBlockedDesc": "Þetta net leyfir okkur ekki að ná í {provider} til að skrá þig inn. Wi-Fi á skólum og skrifstofum hindrar þetta oft. Þú getur skráð þig með tölvupósti í staðinn, eða skipt um net og reynt aftur.",
+    "ssoTryAnyway": "Reyna samt"
 }

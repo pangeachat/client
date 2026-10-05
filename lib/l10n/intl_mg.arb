@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-30 11:27:36.490401",
+    "@@last_modified": "2026-10-05 12:30:43.150115",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "Inona no fiteny nampiasaina?",
     "callTranscriptSubscribeForTranscription": "Misoratra anarana ho an'ny fandikana",
     "unlockCallTranscript": "Sokafy ny dika soratra antso",
-    "activitySummaryUpdateFailed": "Tsy afaka navaozina ity famintinana ity."
+    "activitySummaryUpdateFailed": "Tsy afaka navaozina ity famintinana ity.",
+    "ssoNetworkBlockedTitle": "Tsy azo idirana ny tranokala fidirana",
+    "ssoNetworkBlockedDesc": "Tsy mamela anay hiditra amin'ny {provider} ity tambajotra ity mba hampidirana anao. Matetika manakana izany ny Wi-Fi any an-tsekoly sy any amin'ny birao. Azonao atao ny misoratra anarana amin'ny mailaka, na mifindra amin'ny tambajotra hafa ary manandrana indray.",
+    "ssoTryAnyway": "Andramo ihany"
 }

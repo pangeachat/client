@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-30 11:27:29.746837",
+    "@@last_modified": "2026-10-05 12:30:33.890365",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "Hansı dildə danışılıb?",
     "callTranscriptSubscribeForTranscription": "Transkripsiya üçün abunə olun",
     "unlockCallTranscript": "Zəng transkripsiyasını açın",
-    "activitySummaryUpdateFailed": "Bu xülasə yenilənə bilmədi."
+    "activitySummaryUpdateFailed": "Bu xülasə yenilənə bilmədi.",
+    "ssoNetworkBlockedTitle": "Giriş saytı əlçatan deyil",
+    "ssoNetworkBlockedDesc": "Bu şəbəkə sizin daxil olmağınız üçün {provider} ilə əlaqə saxlamağımıza icazə vermir. Məktəb və ofis Wi-Fi-ları bunu tez-tez bloklayır. Bunun əvəzinə e-poçtla qeydiyyatdan keçə bilərsiniz və ya başqa şəbəkəyə keçib yenidən cəhd edə bilərsiniz.",
+    "ssoTryAnyway": "Yenə də cəhd edin"
 }

@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-30 11:27:31.448370",
+    "@@last_modified": "2026-10-05 12:30:36.635272",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10841,5 +10841,8 @@
     "callTranscriptChooseLanguage": "Anong wika ang ginamit?",
     "callTranscriptSubscribeForTranscription": "Mag-subscribe para sa transkripsyon",
     "unlockCallTranscript": "I-unlock ang transkripsyon ng tawag",
-    "activitySummaryUpdateFailed": "Hindi ma-update ang buod na ito."
+    "activitySummaryUpdateFailed": "Hindi ma-update ang buod na ito.",
+    "ssoNetworkBlockedTitle": "Hindi maabot ang site ng pag-sign in",
+    "ssoNetworkBlockedDesc": "Hindi kami pinapayagan ng network na ito na maabot ang {provider} para i-sign in ka. Madalas itong hinaharangan ng Wi-Fi ng paaralan at opisina. Maaari kang mag-sign up gamit ang email sa halip, o lumipat sa ibang network at subukang muli.",
+    "ssoTryAnyway": "Subukan pa rin"
 }

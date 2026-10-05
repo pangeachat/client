@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-30 11:27:41.859964",
+    "@@last_modified": "2026-10-05 12:30:52.868184",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9981,5 +9981,8 @@
     "callTranscriptChooseLanguage": "说的是什么语言？",
     "callTranscriptSubscribeForTranscription": "订阅转录服务",
     "unlockCallTranscript": "解锁通话记录",
-    "activitySummaryUpdateFailed": "此摘要未能更新。"
+    "activitySummaryUpdateFailed": "此摘要未能更新。",
+    "ssoNetworkBlockedTitle": "无法访问登录网站",
+    "ssoNetworkBlockedDesc": "此网络不允许我们访问 {provider} 来登录。学校和办公室的 Wi-Fi 通常会阻止它。您可以改为使用电子邮件注册，或切换到其他网络再试一次。",
+    "ssoTryAnyway": "仍然尝试"
 }

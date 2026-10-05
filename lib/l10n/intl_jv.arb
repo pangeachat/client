@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-30 11:27:34.141601",
+    "@@last_modified": "2026-10-05 12:30:40.123445",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "Basa apa sing diucapake?",
     "callTranscriptSubscribeForTranscription": "Langganan kanggo transkripsi",
     "unlockCallTranscript": "Bukak kunci transkrip telpon",
-    "activitySummaryUpdateFailed": "Ringkesan iki ora bisa dianyari."
+    "activitySummaryUpdateFailed": "Ringkesan iki ora bisa dianyari.",
+    "ssoNetworkBlockedTitle": "Situs mlebu ora bisa diakses",
+    "ssoNetworkBlockedDesc": "Jaringan iki ora ngidini kita ngakses {provider} kanggo mlebu. Wi-Fi sekolah lan kantor asring mblokir. Sampeyan bisa ndhaptar nganggo email, utawa ngganti jaringan liyane banjur coba maneh.",
+    "ssoTryAnyway": "Coba wae"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-30 11:27:38.913188",
+    "@@last_modified": "2026-10-05 12:30:46.698357",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10953,5 +10953,8 @@
     "callTranscriptChooseLanguage": "На каком языке говорили?",
     "callTranscriptSubscribeForTranscription": "Подписаться на расшифровку",
     "unlockCallTranscript": "Разблокировать расшифровку звонка",
-    "activitySummaryUpdateFailed": "Не удалось обновить сводку."
+    "activitySummaryUpdateFailed": "Не удалось обновить сводку.",
+    "ssoNetworkBlockedTitle": "Сайт входа недоступен",
+    "ssoNetworkBlockedDesc": "Эта сеть не позволяет нам связаться с {provider} для входа. Школьный и офисный Wi-Fi часто блокируют его. Вы можете зарегистрироваться по электронной почте или переключиться на другую сеть и попробовать снова.",
+    "ssoTryAnyway": "Всё равно попробовать"
 }
