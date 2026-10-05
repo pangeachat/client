@@ -12,6 +12,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/spaces/course_access_filter.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/course_search_controller.dart';
@@ -22,6 +23,10 @@ class PublicCourseSearchController
   final Client client;
   PublicCourseSearchController({required this.client})
     : super(getCourseName: (p) => p.room.name ?? '');
+
+  final ValueNotifier<CourseAccessFilter> accessFilter = ValueNotifier(
+    CourseAccessFilter.all,
+  );
 
   String? _nextBatch;
   final List<PublicCoursesChunk> _resultsCache = [];
@@ -40,7 +45,8 @@ class PublicCourseSearchController
   /// 1) Are not already in the list of visible courses
   /// 2) Are not a course that the user is already in
   /// 3) Have a resolved plan, so a card can be rendered for them
-  /// 4) Match the search term, if any exists
+  /// 4) Match the access filter
+  /// 5) Match the search term, if any exists
   List<PublicCoursesChunk> get _coursesToAdd {
     final courses = List<PublicCoursesChunk>.from(_resultsCache);
 
@@ -67,8 +73,12 @@ class PublicCourseSearchController
       (c) => _coursePlans[c.courseId] != null,
     );
 
+    final accessibleCourses = renderableCourses.where(
+      accessFilter.value.includes,
+    );
+
     // filter by search term
-    List<PublicCoursesChunk> filtered = renderableCourses.toList();
+    List<PublicCoursesChunk> filtered = accessibleCourses.toList();
     final searchText = searchController.text.trim().toLowerCase();
     if (searchText.isNotEmpty) {
       filtered = filtered.where((chunk) {
@@ -114,6 +124,22 @@ class PublicCourseSearchController
     return filtered;
   }
 
+  void setAccessFilter(CourseAccessFilter filter) {
+    if (accessFilter.value == filter) return;
+    accessFilter.value = filter;
+    reload();
+  }
+
+  @override
+  bool get emptyResultIsUnexpected =>
+      accessFilter.value == CourseAccessFilter.all;
+
+  @override
+  void disposeCourseSearch() {
+    accessFilter.dispose();
+    super.disposeCourseSearch();
+  }
+
   @override
   void reset() {
     _nextBatch = null;
@@ -133,6 +159,7 @@ class PublicCourseSearchController
         GoRouterState.of(context).uri,
         AddCourseSubpageEnum.browse,
         previewRoomId: course.room.roomId,
+        accessFilter: accessFilter.value,
         initialLanguageFilter: lang,
         allLanguagesFilter: lang == null,
       ),
@@ -173,7 +200,7 @@ class PublicCourseSearchController
         !fullyLoaded &&
         batches < _maxBatchesPerLoad &&
         loadedCourses.length - startingCount < _pageTarget) {
-      await _loadNextBatch();
+      await _loadNextBatch(generation);
       if (disposed || loadGeneration != generation) return;
       setLoadedCourses([...loadedCourses, ..._coursesToAdd]);
       setFilteredCourses(AsyncLoaded(filteredCourses));
@@ -182,9 +209,13 @@ class PublicCourseSearchController
   }
 
   /// Load and cache the next 10 public courses and course plans if applicable
-  Future<void> _loadNextBatch() async {
+  Future<void> _loadNextBatch(int generation) async {
     if (fullyLoaded) return;
     final coursesResult = await _requestPublicCourses();
+    // A filter change while a request was in flight cleared the cache and
+    // restarted paging. This batch answers the old filters, and its cursor
+    // would make the new load skip pages.
+    if (disposed || loadGeneration != generation) return;
     if (coursesResult.isError) {
       loadingMore.value = false;
       return;
@@ -209,6 +240,7 @@ class PublicCourseSearchController
         .toList();
 
     final coursePlansResult = await _requestCoursePlans(undiscoveredCourseIds);
+    if (disposed || loadGeneration != generation) return;
     if (coursePlansResult.isError) {
       loadingMore.value = false;
       return;

@@ -17,6 +17,11 @@ class CourseSearchView<T> extends StatelessWidget {
   final String notFoundButtonLabel;
   final String labelText;
   final CourseSearchController<T> courseSearch;
+
+  /// Extra filters under the language filter and search row. They stay put
+  /// while the name search is open, and combine with it.
+  final Widget? filters;
+
   const CourseSearchView({
     super.key,
     required this.title,
@@ -26,6 +31,7 @@ class CourseSearchView<T> extends StatelessWidget {
     required this.notFoundButtonLabel,
     required this.labelText,
     required this.courseSearch,
+    this.filters,
   });
 
   @override
@@ -101,6 +107,7 @@ class CourseSearchView<T> extends StatelessWidget {
                   ],
                 ),
               ),
+              ?filters,
               ValueListenableBuilder(
                 valueListenable: courseSearch.filteredCoursesLoader,
                 builder: (context, state, _) {
