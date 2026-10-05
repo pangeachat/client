@@ -328,19 +328,25 @@ class ActiveCall extends ChangeNotifier {
     // One subscription: a direct call has one other person, so every ring
     // that reaches this stream is theirs.
     _ringEvidence ??= calls
-        .callerPresenceChanges(room, ring.event.senderId)
-        .listen((_) => _onRingEvidence(room));
+        .callerStateUpdates(room, ring.event.senderId)
+        .listen(_onRingEvidence);
   }
 
-  /// Settles each undecided ring on the first reading that speaks for it,
-  /// and never re-reads a settled one -- so their hanging up at the end of a
-  /// genuine simultaneous call cannot undo the glare it was, and their
+  /// Settles each undecided ring on the first state event that speaks for
+  /// it, and never re-reads a settled one -- so their hanging up at the end
+  /// of a genuine simultaneous call cannot undo the glare it was, and their
   /// answering a call back of ours cannot turn the ring it superseded into
   /// glare.
-  void _onRingEvidence(matrix.Room room) {
+  ///
+  /// Judged from each event AS IT ARRIVED, in order, never from room state
+  /// re-read afterwards. Room state keeps only the newest event per key, so
+  /// a sync carrying their membership and then their retraction re-reads as
+  /// the retraction alone, and a genuine simultaneous call read back that
+  /// way was dropped as a call that had already ended -- written twice.
+  void _onRingEvidence(StrippedStateEvent state) {
     if (_ending) return;
     for (final ring in List.of(_undecidedRings)) {
-      switch (calls.ringCallPresence(room, ring)) {
+      switch (calls.ringEvidenceIn(state, ring)) {
         case PeerPresence.live:
           _settleGlare(ring);
           return;

@@ -2607,6 +2607,82 @@ void main() {
         );
       },
     );
+
+    // The SDK applies a sync's state one event at a time, announcing each
+    // on onRoomState, but listeners run after the whole batch. So re-reading
+    // room state from a listener sees only the newest event per key; the
+    // payloads still carry every event, in order. Glare settled on a ring
+    // that arrived undecided reads the payloads for exactly this reason.
+    test('a membership and its retraction in one sync arrive as two '
+        'payloads, in order, though state keeps only the retraction', () async {
+      final roomId = '!batch${seq++}:fakeServer.notExisting';
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(user: me),
+        deviceId: 'GHTYAJCE',
+      );
+      await client.handleSync(
+        SyncUpdate(
+          nextBatch: 'b0',
+          rooms: RoomsUpdate(join: {roomId: JoinedRoomUpdate()}),
+        ),
+      );
+      final room = client.getRoomById(roomId)!;
+      final service = CallService(client);
+      final ring = IncomingCallNotification(
+        event: Event(
+          type: PangeaEventTypes.callNotification,
+          content: {
+            'application': {
+              'type': 'm.call',
+              'notification_type': 'ring',
+              'device_id': 'PHONE',
+              'sender_ts': ringAt.millisecondsSinceEpoch,
+              'lifetime': 30000,
+            },
+            'm.relates_to': {'rel_type': 'm.reference', 'event_id': named},
+          },
+          eventId: r'$ring',
+          senderId: caller,
+          originServerTs: ringAt,
+          room: room,
+        ),
+        myUserId: me,
+        alreadyJoined: false,
+      );
+      final seen = <PeerPresence>[];
+      final sub = service
+          .callerStateUpdates(room, caller)
+          .listen((state) => seen.add(service.ringEvidenceIn(state, ring)));
+      await client.handleSync(
+        SyncUpdate(
+          nextBatch: 'b1',
+          rooms: RoomsUpdate(
+            join: {
+              roomId: JoinedRoomUpdate(
+                timeline: TimelineUpdate(
+                  events: [
+                    member(named, 'PHONE', holding: true, at: ringAt),
+                    member(r'$left', 'PHONE', holding: false, at: after),
+                  ],
+                ),
+              ),
+            },
+          ),
+        ),
+      );
+      await pumpEventQueue();
+      await sub.cancel();
+
+      expect(seen, [PeerPresence.live, PeerPresence.gone]);
+      expect(
+        service.ringCallPresence(room, ring),
+        PeerPresence.gone,
+        reason: 'room state re-read after the batch has only the retraction',
+      );
+    });
   });
 
   group('whether a standing return offer still means anything', () {

@@ -86,20 +86,54 @@ class FakeCalls extends CallService {
       (callerHoldsMembership ? PeerPresence.live : PeerPresence.gone);
 
   final _callerStateChanges = StreamController<void>.broadcast();
+  final _callerStateUpdates = StreamController<StrippedStateEvent>.broadcast();
 
   @override
   Stream<void> callerPresenceChanges(matrix.Room room, String callerId) =>
       _callerStateChanges.stream;
 
-  /// Whether anything is still waiting on the caller's membership to arrive.
-  bool get watchingCallerState => _callerStateChanges.hasListener;
+  @override
+  Stream<StrippedStateEvent> callerStateUpdates(
+    matrix.Room room,
+    String callerId,
+  ) => _callerStateUpdates.stream;
 
-  /// The caller's membership reaching this device's room state, the way a
-  /// sync applies it: the state is written first and the change announced
-  /// after, so a read on the announcement sees what arrived.
-  Future<void> callerStateArrives(PeerPresence presence) async {
-    callerPresenceOverride = presence;
-    _callerStateChanges.add(null);
+  /// Whether anything is still waiting on the caller's membership to arrive.
+  bool get watchingCallerState =>
+      _callerStateChanges.hasListener || _callerStateUpdates.hasListener;
+
+  /// A member state event from the peer's ringing device.
+  Event peerMember(String eventId, {required bool holding, DateTime? at}) =>
+      Event(
+        type: EventTypes.GroupCallMember,
+        content: {
+          'memberships': holding
+              ? [
+                  {'call_id': '!r:server', 'device_id': 'PEERDEVICE'},
+                ]
+              : const <Object?>[],
+        },
+        eventId: eventId,
+        senderId: '@peer:server',
+        originServerTs: at ?? DateTime.now(),
+        stateKey: '_@peer:server_PEERDEVICE',
+        room: matrix.Room(id: '!r:server', client: client),
+      );
+
+  /// One sync applying the caller's state events, the way the SDK applies
+  /// them: each written to room state and announced in turn, synchronously,
+  /// with the listeners running only after the whole batch. A re-read of
+  /// room state from any listener therefore sees only [collapsed] -- the
+  /// newest event per key -- while the payloads carry every event in order.
+  Future<void> callerStateBatch(
+    List<Event> events, {
+    required PeerPresence collapsed,
+  }) async {
+    for (final event in events) {
+      callerPresenceOverride = collapsed;
+      _callerStateUpdates.add(event);
+      _callerStateChanges.add(null);
+    }
     await pumpEventQueue();
   }
 
@@ -4507,10 +4541,10 @@ void main() {
         expect(call.peerRingSenderId, '@peer:server');
         expect(calls.watchingCallerState, isTrue);
 
-        // Their state arrives and says the call the ring was sent from is
-        // over (a retraction, or a fresh membership written since the ring --
-        // which call_service_test pins against real state).
-        await calls.callerStateArrives(PeerPresence.gone);
+        // They gave up: the device that rang retracts, after the ring.
+        await calls.callerStateBatch([
+          calls.peerMember(r'$left', holding: false),
+        ], collapsed: PeerPresence.gone);
         expect(
           call.peerAlsoPlaced,
           isFalse,
@@ -4520,8 +4554,26 @@ void main() {
         expect(call.peerRingMembershipId, isNull);
         expect(calls.watchingCallerState, isFalse);
 
-        // And it stays settled: nothing re-reads it.
-        await calls.callerStateArrives(PeerPresence.live);
+        // They then ANSWER our call back. Nothing is listening, and nothing
+        // re-reads the settled ring.
+        await calls.callerStateBatch([
+          calls.peerMember(r'$answer', holding: true),
+        ], collapsed: PeerPresence.gone);
+        expect(call.peerAlsoPlaced, isFalse);
+      });
+
+      test('is not glare when the first thing to arrive is their answer to '
+          'our call back', () async {
+        // A fresh membership written after the ring, not the one it names.
+        final (call, calls, _, _) = await build();
+        await call.start(roomStub(calls.client), video: false);
+        calls.callerPresenceOverride = PeerPresence.unknown;
+        await calls.peerAlsoCalls(age: const Duration(seconds: 20));
+        expect(call.peerAlsoPlaced, isTrue);
+
+        await calls.callerStateBatch([
+          calls.peerMember(r'$answer', holding: true),
+        ], collapsed: PeerPresence.gone);
         expect(call.peerAlsoPlaced, isFalse);
       });
 
@@ -4536,7 +4588,9 @@ void main() {
         await calls.peerAlsoCalls();
         expect(call.peerAlsoPlaced, isTrue);
 
-        await calls.callerStateArrives(PeerPresence.live);
+        await calls.callerStateBatch([
+          calls.peerMember(r'$theirmembership', holding: true),
+        ], collapsed: PeerPresence.live);
         expect(call.peerAlsoPlaced, isTrue);
         expect(call.peerRingSenderId, '@peer:server');
         expect(call.peerRingMembershipId, '\$theirmembership');
@@ -4544,21 +4598,56 @@ void main() {
 
         // Their retraction at the end of the call is the end of THIS call,
         // not evidence about the ring, and must not undo the decision.
-        await calls.callerStateArrives(PeerPresence.gone);
+        await calls.callerStateBatch([
+          calls.peerMember(r'$left', holding: false),
+        ], collapsed: PeerPresence.gone);
         expect(call.peerAlsoPlaced, isTrue);
         expect(call.peerRingSenderId, '@peer:server');
       });
 
+      test('is glare when the membership it names and their retraction land '
+          'in ONE sync', () async {
+        // Room state keeps only the newest event per key, so re-reading it
+        // after this sync finds only the retraction -- and a genuine
+        // simultaneous call read back that way looks like a call that had
+        // already ended, so both sides write it. The membership was live
+        // when it arrived, and it arrived first.
+        final (call, calls, _, _) = await build();
+        await call.start(roomStub(calls.client), video: false);
+        calls.callerPresenceOverride = PeerPresence.unknown;
+        await calls.peerAlsoCalls();
+        expect(call.peerAlsoPlaced, isTrue);
+
+        await calls.callerStateBatch([
+          calls.peerMember(r'$theirmembership', holding: true),
+          calls.peerMember(r'$left', holding: false),
+        ], collapsed: PeerPresence.gone);
+        expect(
+          call.peerAlsoPlaced,
+          isTrue,
+          reason: 'the membership the ring names was live as it arrived',
+        );
+        expect(call.peerRingSenderId, '@peer:server');
+        expect(call.peerRingMembershipId, '\$theirmembership');
+        expect(calls.watchingCallerState, isFalse);
+      });
+
       test('stays undecided while what arrives says nothing about the '
           'call that rang', () async {
-        // State from another of their devices, or older than the ring: the
-        // reading is still unknown, so nothing is settled.
+        // A membership left from an earlier call, written before the ring:
+        // it predates the membership the ring was sent for.
         final (call, calls, _, _) = await build();
         await call.start(roomStub(calls.client), video: false);
         calls.callerPresenceOverride = PeerPresence.unknown;
         await calls.peerAlsoCalls();
 
-        await calls.callerStateArrives(PeerPresence.unknown);
+        await calls.callerStateBatch([
+          calls.peerMember(
+            r'$old',
+            holding: false,
+            at: DateTime.now().subtract(const Duration(minutes: 5)),
+          ),
+        ], collapsed: PeerPresence.unknown);
         expect(call.peerAlsoPlaced, isTrue);
         expect(call.peerRingSenderId, '@peer:server');
         expect(call.peerRingMembershipId, '\$theirmembership');
