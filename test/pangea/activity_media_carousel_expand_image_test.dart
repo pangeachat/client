@@ -28,13 +28,20 @@ void main() {
     resolvedMediumUrl: mediumUrl,
   );
 
-  Widget subject(ActivityMediaCarousel carousel) => MaterialApp(
-    localizationsDelegates: L10n.localizationsDelegates,
-    supportedLocales: L10n.supportedLocales,
-    home: Scaffold(
-      body: Center(child: SizedBox(width: 300, child: carousel)),
-    ),
-  );
+  Widget subject(ActivityMediaCarousel carousel, {Widget? below}) =>
+      MaterialApp(
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Scaffold(
+          // A list, like the chat timeline: under a Scrollable, loose text
+          // merges into the nearest semantics node.
+          body: ListView(
+            children: [
+              Column(children: [carousel, ?below]),
+            ],
+          ),
+        ),
+      );
 
   Future<Uri> tapAndReadViewerUrl(WidgetTester tester) async {
     await tester.tap(find.bySemanticsLabel('View image'));
@@ -46,6 +53,24 @@ void main() {
     final handle = tester.ensureSemantics();
     await tester.pumpWidget(
       subject(const ActivityMediaCarousel(media: [image])),
+    );
+    await tester.pumpAndSettle();
+
+    expectOneNodeControl(tester, 'View image');
+    handle.dispose();
+  });
+
+  // In the chat the description sits right below the carousel, and the button
+  // absorbed its text into its own name.
+  testWidgets('text beside the image stays out of the button name', (
+    tester,
+  ) async {
+    final handle = tester.ensureSemantics();
+    await tester.pumpWidget(
+      subject(
+        const ActivityMediaCarousel(media: [image]),
+        below: const Text('Plan where to meet'),
+      ),
     );
     await tester.pumpAndSettle();
 
