@@ -21,6 +21,7 @@ import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
@@ -164,13 +165,15 @@ class SpaceCodeController {
   }
 
   /// The code to join with from what was typed or pasted into a code field:
-  /// a pasted course link (`https://app.pangea.chat/<code>`) yields its code
-  /// (#9376), and any other text goes as typed, trimmed — the server alone
-  /// checks the format.
+  /// a pasted course link on this build's own app host (`FRONTEND_URL`, so
+  /// `https://app.pangea.chat/<code>` on production) yields its code (#9376),
+  /// and any other text goes as typed, trimmed — the server alone checks the
+  /// format.
   static String codeFromInput(String input) {
     final text = input.trim();
     final uri = Uri.tryParse(text);
-    if (uri == null || !uri.hasAuthority) return text;
+    final appHost = Uri.tryParse(Environment.frontendURL)?.host;
+    if (uri == null || !uri.hasAuthority || uri.host != appHost) return text;
     final segments = uri.pathSegments.where((s) => s.isNotEmpty);
     return segments.length == 1 && PRoutes.isJoinCode(segments.single)
         ? segments.single
