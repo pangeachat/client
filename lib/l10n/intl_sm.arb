@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-02 14:13:01.743326",
+    "@@last_modified": "2026-10-05 13:57:52.989551",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Suʻe kosi lautele",
     "publicInviteDescChat": "Suʻe tagata faʻaoga e valaʻaulia i latou i lenei talanoaga.",
     "publicInviteDescSpace": "Suʻe tagata faʻaoga e valaʻaulia i latou i lenei avanoa.",
-    "useActivityImageAsChatBackground": "Faʻaaoga le ata o le gaioiga e fai ma talaaga o le talanoaga",
     "chatWithSupport": "Talanoa ma le Lagolago",
     "newCourseAccess": "E masani lava, e mafai ona suʻeina kosi e tagata lautele ma manaʻomia le faʻamaoniga a le pule e auai. E mafai ona e faʻasaʻo nei faʻatulagaga i soʻo se taimi.",
     "onboardingLanguagesTitle": "O le a le gagana o loʻo e aʻoaʻoina?",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "E leʻi mafai ona faʻafouina lenei aotelega.",
     "courseNotFound": "E le'i maua le kosi",
     "askTeacherForNewCourse": "Fesili i lau faiaoga e filifili se kosi fou.",
-    "pickNewCoursePlan": "Filifili se fuafuaga fou o le kosi."
+    "pickNewCoursePlan": "Filifili se fuafuaga fou o le kosi.",
+    "ssoNetworkBlockedTitle": "E le mafai ona maua le nofoaga e saini ai",
+    "ssoNetworkBlockedDesc": "E le mafai e lenei fesoʻotaʻiga ona matou maua {provider} e saini ai oe. E masani ona poloka e le Wi-Fi a le aʻoga ma le ofisa. E mafai ona e lesitala i le imeli, pe sui i se isi fesoʻotaʻiga ma toe taumafai.",
+    "ssoTryAnyway": "Taumafai lava",
+    "publicCoursesFilterTooltip": "Fa'aali na'o a'oa'oga e mafai e so'o se tasi ona auai",
+    "restrictedCoursesFilterTooltip": "Fa'aali na'o a'oa'oga e tatau ona e talosaga e auai",
+    "viewImageLabel": "Vaʻai le ata"
 }

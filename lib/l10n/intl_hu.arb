@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-02 14:12:58.127009",
+    "@@last_modified": "2026-10-05 13:57:48.265018",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -7860,11 +7860,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Használja az aktivitás képet csevegési háttérként",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Csevegés a Támogatással",
     "@chatWithSupport": {
         "type": "String",
@@ -10082,5 +10077,11 @@
     "activitySummaryUpdateFailed": "Ezt az összefoglalót nem sikerült frissíteni.",
     "courseNotFound": "A kurzus nem található",
     "askTeacherForNewCourse": "Kérd meg a tanárodat, hogy válasszon egy új kurzust.",
-    "pickNewCoursePlan": "Válassz új tanfolyamtervet."
+    "pickNewCoursePlan": "Válassz új tanfolyamtervet.",
+    "ssoNetworkBlockedTitle": "Bejelentkezési oldal nem elérhető",
+    "ssoNetworkBlockedDesc": "Ez a hálózat nem engedi, hogy elérjük a(z) {provider} szolgáltatót a bejelentkezéshez. Az iskolai és irodai Wi-Fi gyakran blokkolja. E-mail címmel is regisztrálhat, vagy válthat másik hálózatra, és újra megpróbálhatja.",
+    "ssoTryAnyway": "Mégis megpróbálom",
+    "publicCoursesFilterTooltip": "Csak olyan kurzusok megjelenítése, amelyekhez bárki csatlakozhat",
+    "restrictedCoursesFilterTooltip": "Csak olyan kurzusok megjelenítése, amelyekhez engedélyt kell kérni",
+    "viewImageLabel": "Kép megtekintése"
 }

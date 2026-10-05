@@ -68,7 +68,6 @@ abstract class AppConfig {
       "https://play.google.com/store/account/subscriptions";
   static String googlePlayHistoryUrl =
       "https://play.google.com/store/account/orderhistory";
-  static bool useActivityImageAsChatBackground = true;
   static const int overlayAnimationDuration = 250;
   static const double toolbarMaxHeight = 250.0;
   static const double toolbarMinWidth = 350.0;

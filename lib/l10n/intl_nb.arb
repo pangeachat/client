@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-02 14:13:00.312829",
+    "@@last_modified": "2026-10-05 13:57:51.174938",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -7993,11 +7993,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat med støtte",
     "@chatWithSupport": {
         "type": "String",
@@ -10036,5 +10031,11 @@
     "activitySummaryUpdateFailed": "Denne oppsummeringen kunne ikke oppdateres.",
     "courseNotFound": "Finner ikke kurset",
     "askTeacherForNewCourse": "Be læreren din om å velge et nytt kurs.",
-    "pickNewCoursePlan": "Velg en ny kursplan."
+    "pickNewCoursePlan": "Velg en ny kursplan.",
+    "ssoNetworkBlockedTitle": "Påloggingsside utilgjengelig",
+    "ssoNetworkBlockedDesc": "Dette nettverket hindrer oss i å nå {provider} for å logge deg på. Skole- og kontor-Wi-Fi blokkerer ofte dette. Du kan registrere deg med e-post i stedet, eller bytte til et annet nettverk og prøve igjen.",
+    "ssoTryAnyway": "Prøv likevel",
+    "publicCoursesFilterTooltip": "Vis kun kurs alle kan bli med i",
+    "restrictedCoursesFilterTooltip": "Vis kun kurs du må be om å få bli med i",
+    "viewImageLabel": "Vis bilde"
 }

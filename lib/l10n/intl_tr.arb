@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-02 14:13:02.213163",
+    "@@last_modified": "2026-10-05 13:57:53.631201",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -8058,11 +8058,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Etkinlik resmini sohbet arka planı olarak kullan",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Destek ile Sohbet Et",
     "@chatWithSupport": {
         "type": "String",
@@ -10280,5 +10275,11 @@
     "activitySummaryUpdateFailed": "Bu özet güncellenemedi.",
     "courseNotFound": "Kurs bulunamadı",
     "askTeacherForNewCourse": "Öğretmeninizden yeni bir kurs seçmesini isteyin.",
-    "pickNewCoursePlan": "Yeni bir kurs planı seçin."
+    "pickNewCoursePlan": "Yeni bir kurs planı seçin.",
+    "ssoNetworkBlockedTitle": "Giriş sitesine ulaşılamıyor",
+    "ssoNetworkBlockedDesc": "Bu ağ, giriş yapmanız için {provider} adresine ulaşmamızı engelliyor. Okul ve ofis Wi-Fi'ları genellikle bunu engeller. Bunun yerine e-posta ile kaydolabilir veya başka bir ağa geçip tekrar deneyebilirsiniz.",
+    "ssoTryAnyway": "Yine de dene",
+    "publicCoursesFilterTooltip": "Yalnızca herkesin katılabileceği kursları göster",
+    "restrictedCoursesFilterTooltip": "Yalnızca katılmak için izin almanız gereken kursları göster",
+    "viewImageLabel": "Resmi görüntüle"
 }

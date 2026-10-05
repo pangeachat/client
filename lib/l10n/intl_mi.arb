@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-02 14:13:00.129342",
+    "@@last_modified": "2026-10-05 13:57:50.257329",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Tirotiro i ngā akoranga tūmatanui",
     "publicInviteDescChat": "Rapua ngā kaiwhakamahi hei tono i a rātou ki tēnei korerorero.",
     "publicInviteDescSpace": "Rapua ngā kaiwhakamahi hei tono i a rātou ki tēnei wāhi.",
-    "useActivityImageAsChatBackground": "Whakamahia te whakaahua mahi hei papamuri korerorero",
     "chatWithSupport": "Korerorero ki te Tautoko",
     "newCourseAccess": "Mā te taunoa, ka taea te rapu tūmatanui i ngā akoranga, ā, me whakaae te kaiwhakahaere kia uru. Ka taea e koe te whakatika i ēnei tautuhinga i ngā wā katoa.",
     "onboardingLanguagesTitle": "He aha te reo e ako ana koe?",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "Kāore i taea te whakahou i tēnei whakarāpopototanga.",
     "courseNotFound": "Kāore i kitea te akoranga",
     "askTeacherForNewCourse": "Tonoa tō kaiako kia kōwhiri i tētahi akoranga hou.",
-    "pickNewCoursePlan": "Kōwhiria he mahere akoranga hou."
+    "pickNewCoursePlan": "Kōwhiria he mahere akoranga hou.",
+    "ssoNetworkBlockedTitle": "Kāore e taea te toro atu ki te pae takiuru",
+    "ssoNetworkBlockedDesc": "Kāore tēnei whatunga e tuku ana kia toro atu mātou ki a {provider} hei takiuru i a koe. He maha ngā wā ka aukatihia e te Wi-Fi o te kura, o te tari rānei. Ka taea e koe te rēhita mā te īmēra, te huri rānei ki tētahi atu whatunga ka ngana anō.",
+    "ssoTryAnyway": "Ngana tonu",
+    "publicCoursesFilterTooltip": "Whakaaturia ngā akoranga ka taea e te tangata te uru atu",
+    "restrictedCoursesFilterTooltip": "Whakaaturia ngā akoranga me tono koe kia uru atu",
+    "viewImageLabel": "Tirohia te atahanga"
 }

@@ -3,6 +3,7 @@ import 'package:collection/collection.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/features/navigation/token_params/token_param.dart';
+import 'package:fluffychat/pangea/spaces/course_access_filter.dart';
 
 enum AddCourseSubpageEnum {
   own,
@@ -26,6 +27,10 @@ class AddCoursePageTokenParam extends TokenParam {
   // public browsing options
   final String? previewRoomId;
 
+  // Carried like the language filter, so the browse list's access pill
+  // survives opening a course preview and coming back.
+  final CourseAccessFilter accessFilter;
+
   // new course options
   final String? createCourseId;
   final bool showNewCourseInvitePage;
@@ -38,6 +43,7 @@ class AddCoursePageTokenParam extends TokenParam {
     this.initialLanguageFilter,
     this.allLanguagesFilter = false,
     this.previewRoomId,
+    this.accessFilter = CourseAccessFilter.all,
     this.createCourseId,
     this.privateCourseJoinCode,
     this.showNewCourseInvitePage = false,
@@ -79,6 +85,7 @@ class AddCoursePageTokenParam extends TokenParam {
           subpage: subpage,
           initialLanguageFilter: initialLanguageFilter,
           allLanguagesFilter: allLanguagesFilter,
+          accessFilter: accessFilter,
         );
       case AddCourseSubpageEnum.private:
         return null;
@@ -122,6 +129,10 @@ class AddCoursePageTokenParam extends TokenParam {
 
     final encodedAllLanguagesFilter = allLanguagesFilter ? 'a' : null;
 
+    final encodedAccessFilter = accessFilter != CourseAccessFilter.all
+        ? 'r${accessFilter.name}'
+        : null;
+
     switch (subpage) {
       case AddCourseSubpageEnum.browse:
         final encodedPreviewRoomId =
@@ -137,6 +148,7 @@ class AddCoursePageTokenParam extends TokenParam {
           route,
           ?encodedLanguage,
           ?encodedAllLanguagesFilter,
+          ?encodedAccessFilter,
         ]);
       case AddCourseSubpageEnum.private:
         return TokenFields.join([encodedSubpage, ?encodedJoinCode]);
@@ -190,6 +202,18 @@ class AddCoursePageTokenParam extends TokenParam {
 
     final allLanguagesFilter = params.any((p) => p == 'a');
 
+    final encodedAccessFilterEntry = params
+        .firstWhereOrNull((p) => p.startsWith('r'))
+        ?.substring(1);
+
+    // A hand-edited, unknown filter name opens the list unfiltered, as an
+    // undecodable language field opens it on the raw field.
+    final accessFilter =
+        (encodedAccessFilterEntry != null
+            ? CourseAccessFilter.fromName(encodedAccessFilterEntry)
+            : null) ??
+        CourseAccessFilter.all;
+
     switch (subpage) {
       case AddCourseSubpageEnum.browse:
         if (parts.length > 1) {
@@ -200,6 +224,7 @@ class AddCoursePageTokenParam extends TokenParam {
             previewRoomId: previewRoomId,
             initialLanguageFilter: languageFilter,
             allLanguagesFilter: allLanguagesFilter,
+            accessFilter: accessFilter,
           );
         }
 
@@ -207,6 +232,7 @@ class AddCoursePageTokenParam extends TokenParam {
           subpage: subpage,
           initialLanguageFilter: languageFilter,
           allLanguagesFilter: allLanguagesFilter,
+          accessFilter: accessFilter,
         );
       case AddCourseSubpageEnum.private:
         return AddCoursePageTokenParam(
@@ -249,6 +275,7 @@ class AddCoursePageTokenParam extends TokenParam {
       other.previewRoomId == previewRoomId &&
       other.createCourseId == createCourseId &&
       other.initialLanguageFilter == initialLanguageFilter &&
+      other.accessFilter == accessFilter &&
       other.privateCourseJoinCode == privateCourseJoinCode &&
       other.showNewCourseInvitePage == showNewCourseInvitePage;
 
@@ -258,6 +285,7 @@ class AddCoursePageTokenParam extends TokenParam {
     previewRoomId,
     createCourseId,
     initialLanguageFilter,
+    accessFilter,
     privateCourseJoinCode,
     showNewCourseInvitePage,
   );

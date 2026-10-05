@@ -1362,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-02 14:12:58.643493",
+    "@@last_modified": "2026-10-05 13:57:48.497866",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8693,11 +8693,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Fala com o Suporte",
     "@chatWithSupport": {
         "type": "String",
@@ -10915,5 +10910,11 @@
     "activitySummaryUpdateFailed": "Iste summario non poteva esser actualisate.",
     "courseNotFound": "Curso non trovate",
     "askTeacherForNewCourse": "Demanda a tu maestro que selige un nove curso.",
-    "pickNewCoursePlan": "Selige un nove plano de curso."
+    "pickNewCoursePlan": "Selige un nove plano de curso.",
+    "ssoNetworkBlockedTitle": "Sito de authentification inaccessibile",
+    "ssoNetworkBlockedDesc": "Iste rete non nos permitte attinger {provider} pro authentificar vos. Le Wi-Fi de scholas e officios sovente lo bloca. Vos pote registrar vos con e-mail in loco, o cambiar a un altere rete e reprovar.",
+    "ssoTryAnyway": "Provar de tote modos",
+    "publicCoursesFilterTooltip": "Monstrar solmente cursos a los que tote le mundo pote unir se",
+    "restrictedCoursesFilterTooltip": "Monstrar solmente cursos a los que tu debe demandar de unir te",
+    "viewImageLabel": "Vider imagine"
 }

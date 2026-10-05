@@ -11,6 +11,8 @@ Tapping a course in the add-course lists (browse public / start my own) should s
 
 A course is offered in either list only when its quest resolves **and** carries at least one Mission. A quest with no Missions has no activities under it, so its card reads "0 activities" and there is nothing behind the card to open: browse used to list these while the preview refused them, which the learner saw as "Oops, something went wrong" (#9088). The same rule was first written for start-my-own alone (#7700) and is now applied once, wherever a course plan is resolved, so neither list can offer a card the preview will reject.
 
+**Browse filters by how a course is joined** (#9358). Under the language filter, the browse list shows three pills: **All** (the default), **Public** (courses anyone can join straight away, join rule `public`) and **Restricted** (courses where the learner asks to join and an admin lets them in, join rule `knock`). "Restricted" is the same word the lock icon on a course tile uses. A published course with any other join rule shows under All only. The pills combine with the language filter and the name search. The catalog does not filter by join rule ([public-courses.instructions.md](../../../synapse-pangea-chat/.github/instructions/public-courses.instructions.md)), so the list filters the pages it fetches and keeps fetching until a load adds a page of matching courses or the catalog runs out. Like the language filter, the choice survives opening a course's preview and coming back.
+
 ## The flow
 
 - The **lists open at full height** on narrow — nothing behind them matters yet ([routing.instructions.md](routing.instructions.md), #8659).

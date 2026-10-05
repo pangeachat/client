@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-02 14:13:00.305832",
+    "@@last_modified": "2026-10-05 13:57:50.859586",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Fittex korsijiet pubbliċi",
     "publicInviteDescChat": "Fittex utenti biex tistedinhom f'din iċ-chat.",
     "publicInviteDescSpace": "Fittex utenti biex tistedinhom f'dan l-ispazju.",
-    "useActivityImageAsChatBackground": "Uża l-immaġni tal-attività bħala sfond taċ-chat",
     "chatWithSupport": "Iċċettja mal-Appoġġ",
     "newCourseAccess": "B'mod awtomatiku, il-korsijiet huma pubblikament riċerkabbli u jeħtieġu l-approvazzjoni tal-amministratur biex tingħaqad. Tista' teditja dawn is-settings fi kwalunkwe ħin.",
     "onboardingLanguagesTitle": "Liema lingwa qed titgħallem?",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "Dan is-sommarju ma setax jiġi aġġornat.",
     "courseNotFound": "Kors ma nstabx",
     "askTeacherForNewCourse": "Staqsi lill-għalliem tiegħek biex jagħżel kors ġdid.",
-    "pickNewCoursePlan": "Agħżel pjan ġdid tal-kors."
+    "pickNewCoursePlan": "Agħżel pjan ġdid tal-kors.",
+    "ssoNetworkBlockedTitle": "Sit ta' reġistrazzjoni ma jistax jintlaħaq",
+    "ssoNetworkBlockedDesc": "Din in-netwerk mhux qed tħallina nilħqu lil {provider} biex nirreġistrawk. Il-Wi-Fi tal-iskola u l-uffiċċju spiss jimblokkawha. Tista' tirreġistra bl-email minflok, jew taqleb għal netwerk ieħor u terġa' tipprova.",
+    "ssoTryAnyway": "Erġa' pprova xorta",
+    "publicCoursesFilterTooltip": "Uri biss korsijiet li kulħadd jista' jingħaqad magħhom",
+    "restrictedCoursesFilterTooltip": "Uri biss korsijiet li trid titlob biex tingħaqad magħhom",
+    "viewImageLabel": "Ara l-istampa"
 }

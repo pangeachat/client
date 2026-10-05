@@ -1937,7 +1937,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-02 14:12:58.991506",
+    "@@last_modified": "2026-10-05 13:57:49.186934",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8657,11 +8657,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "გამოიყენეთ აქტივობის სურათი ჩეთის ფონად",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "ჩატი მხარდაჭერასთან",
     "@chatWithSupport": {
         "type": "String",
@@ -10879,5 +10874,11 @@
     "activitySummaryUpdateFailed": "ამ შეჯამების განახლება ვერ მოხერხდა.",
     "courseNotFound": "კურსი ვერ მოიძებნა",
     "askTeacherForNewCourse": "სთხოვეთ თქვენს მასწავლებელს, აირჩიოს ახალი კურსი.",
-    "pickNewCoursePlan": "აირჩიეთ კურსის ახალი გეგმა."
+    "pickNewCoursePlan": "აირჩიეთ კურსის ახალი გეგმა.",
+    "ssoNetworkBlockedTitle": "შესვლის საიტი მიუწვდომელია",
+    "ssoNetworkBlockedDesc": "ეს ქსელი ხელს გვიშლის {provider}-თან დაკავშირებაში თქვენი შესასვლელად. სკოლისა და ოფისის Wi-Fi ხშირად ბლოკავს მას. შეგიძლიათ დარეგისტრირდეთ ელფოსტით, ან გადახვიდეთ სხვა ქსელზე და სცადოთ ხელახლა.",
+    "ssoTryAnyway": "მაინც სცადე",
+    "publicCoursesFilterTooltip": "აჩვენე მხოლოდ კურსები, რომლებზეც ნებისმიერს შეუძლია გაწევრიანება",
+    "restrictedCoursesFilterTooltip": "აჩვენე მხოლოდ კურსები, რომლებზეც გაწევრიანების მოთხოვნაა საჭირო",
+    "viewImageLabel": "სურათის ნახვა"
 }

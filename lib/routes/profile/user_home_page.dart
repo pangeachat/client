@@ -257,7 +257,12 @@ class _UserHomePageState extends State<UserHomePage> {
                                 onTap: avatar != null
                                     ? () => showDialog(
                                         context: context,
-                                        builder: (_) => MxcImageViewer(avatar),
+                                        builder: (_) => MxcImageViewer(
+                                          avatar,
+                                          semanticsLabel: L10n.of(
+                                            context,
+                                          ).profileImageLabel,
+                                        ),
                                       )
                                     : null,
                               ),

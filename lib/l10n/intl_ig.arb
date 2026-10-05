@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-02 14:12:58.776611",
+    "@@last_modified": "2026-10-05 13:57:48.595691",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Chọgharịa usoro ọmụmụ ọha",
     "publicInviteDescChat": "Chọọ ndị ọrụ ka ị kpọọ ha na nkata a.",
     "publicInviteDescSpace": "Chọọ ndị ọrụ ka ị kpọọ ha na oghere a.",
-    "useActivityImageAsChatBackground": "Jiri onyonyo ọrụ dị ka ndabere nkata",
     "chatWithSupport": "Soro Nkwado kparịta ụka",
     "newCourseAccess": "Na ndabara, enwere ike ịchọta usoro ọmụmụ n'ihu ọha ma chọọ nkwado nchịkwa ka ị sonye. Ị nwere ike dezie ntọala ndị a n'oge ọ bụla.",
     "onboardingLanguagesTitle": "Kedu asụsụ ị na-amụ?",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "Enweghị ike imelite nchịkọta a.",
     "courseNotFound": "Achọtaghị usoro ọmụmụ",
     "askTeacherForNewCourse": "Jụọ onye nkuzi gị ka ọ họrọ nkuzi ọhụrụ.",
-    "pickNewCoursePlan": "Họrọ atụmatụ ọmụmụ ihe ọhụrụ."
+    "pickNewCoursePlan": "Họrọ atụmatụ ọmụmụ ihe ọhụrụ.",
+    "ssoNetworkBlockedTitle": "Ebe nbanye anaghị eru",
+    "ssoNetworkBlockedDesc": "Netwọkụ a anaghị ekwe ka anyị ruo {provider} iji banye gị. Wi-Fi ụlọ akwụkwọ na ụlọ ọrụ na-egbochikarị ya. Ị nwere ike iji email debanye aha kama, ma ọ bụ gbanwee gaa na netwọkụ ọzọ wee nwaa ọzọ.",
+    "ssoTryAnyway": "Nwaa agbanyeghị",
+    "publicCoursesFilterTooltip": "Gosi naanị ọmụmụ ihe onye ọ bụla nwere ike isonye",
+    "restrictedCoursesFilterTooltip": "Gosi naanị ọmụmụ ihe ị ga-arịọ ka isonye",
+    "viewImageLabel": "Lee onyonyo"
 }

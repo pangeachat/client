@@ -3093,7 +3093,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-10-02 14:12:58.014158",
+    "@@last_modified": "2026-10-05 13:57:47.729205",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8389,11 +8389,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "चैट पृष्ठभूमि के रूप में गतिविधि छवि का उपयोग करें",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "सहायता से चैट करें",
     "@chatWithSupport": {
         "type": "String",
@@ -10611,5 +10606,11 @@
     "activitySummaryUpdateFailed": "यह सारांश अपडेट नहीं किया जा सका।",
     "courseNotFound": "कोर्स नहीं मिला",
     "askTeacherForNewCourse": "अपने शिक्षक से नया कोर्स चुनने के लिए कहें।",
-    "pickNewCoursePlan": "एक नई कोर्स योजना चुनें।"
+    "pickNewCoursePlan": "एक नई कोर्स योजना चुनें।",
+    "ssoNetworkBlockedTitle": "साइन-इन साइट तक नहीं पहुँचा जा सकता",
+    "ssoNetworkBlockedDesc": "यह नेटवर्क आपको साइन इन करने के लिए {provider} तक पहुँचने नहीं दे रहा है। स्कूल और ऑफिस का वाई-फाई अक्सर इसे ब्लॉक कर देता है। आप इसके बजाय ईमेल से साइन अप कर सकते हैं, या किसी दूसरे नेटवर्क पर स्विच करके फिर से कोशिश कर सकते हैं।",
+    "ssoTryAnyway": "फिर भी कोशिश करें",
+    "publicCoursesFilterTooltip": "केवल वे कोर्स दिखाएं जिनमें कोई भी शामिल हो सकता है",
+    "restrictedCoursesFilterTooltip": "केवल वे कोर्स दिखाएं जिनमें शामिल होने के लिए आपको पूछना होगा",
+    "viewImageLabel": "छवि देखें"
 }

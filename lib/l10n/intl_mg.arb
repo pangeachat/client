@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-02 14:13:00.010334",
+    "@@last_modified": "2026-10-05 13:57:50.142608",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Jereo ny taranja ho an'ny daholobe",
     "publicInviteDescChat": "Tadiavo ireo mpampiasa mba hanasa azy ireo amin'ity resaka ity.",
     "publicInviteDescSpace": "Tadiavo ireo mpampiasa mba hanasa azy ireo amin'ity toerana ity.",
-    "useActivityImageAsChatBackground": "Ampiasao ny sarin'ny hetsika ho toy ny fiavian'ny resaka",
     "chatWithSupport": "Miresaka amin'ny Fanohanana",
     "newCourseAccess": "Amin'ny alàlan'ny default, ny taranja dia azo karohina ampahibemaso ary mitaky fankatoavan'ny mpitantana vao afaka miditra. Azonao atao ny manova ireo toe-javatra ireo amin'ny fotoana rehetra.",
     "onboardingLanguagesTitle": "Inona no fiteny ianaranao?",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "Tsy afaka navaozina ity famintinana ity.",
     "courseNotFound": "Tsy hita ny taranja",
     "askTeacherForNewCourse": "Angataho amin'ny mpampianatra anao hisafidy taranja vaovao.",
-    "pickNewCoursePlan": "Mifidiana drafitra fampianarana vaovao."
+    "pickNewCoursePlan": "Mifidiana drafitra fampianarana vaovao.",
+    "ssoNetworkBlockedTitle": "Tsy azo idirana ny tranokala fidirana",
+    "ssoNetworkBlockedDesc": "Tsy mamela anay hiditra amin'ny {provider} ity tambajotra ity mba hampidirana anao. Matetika manakana izany ny Wi-Fi any an-tsekoly sy any amin'ny birao. Azonao atao ny misoratra anarana amin'ny mailaka, na mifindra amin'ny tambajotra hafa ary manandrana indray.",
+    "ssoTryAnyway": "Andramo ihany",
+    "publicCoursesFilterTooltip": "Asehoy ireo taranja azon'ny rehetra idirana ihany",
+    "restrictedCoursesFilterTooltip": "Asehoy ireo taranja tsy maintsy angatahana idirana ihany",
+    "viewImageLabel": "Jereo ny sary"
 }

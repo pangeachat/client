@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-02 14:13:02.663925",
+    "@@last_modified": "2026-10-05 13:57:54.685386",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Khangela iikhosi zikawonke-wonke",
     "publicInviteDescChat": "Khangela abasebenzisi ukubamema kule ncoko.",
     "publicInviteDescSpace": "Khangela abasebenzisi ukubamema kwesi sithuba.",
-    "useActivityImageAsChatBackground": "Sebenzisa umfanekiso womsebenzi njengemvelaphi yencoko",
     "chatWithSupport": "Ncokola neNkxaso",
     "newCourseAccess": "Ngokungagqibekanga, iikhosi ziyakhangelwa esidlangalaleni kwaye zifuna imvume yomlawuli ukungena. Ungazihlela ezi setingi nangaliphi na ixesha.",
     "onboardingLanguagesTitle": "Loluphi ulwimi olufundayo?",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "Esi sishwankathelo asikwazanga ukuhlaziywa.",
     "courseNotFound": "Ikhosi ayifunyanwanga",
     "askTeacherForNewCourse": "Cela utitshala wakho akhethe ikhosi entsha.",
-    "pickNewCoursePlan": "Khetha isicwangciso esitsha senkqubo."
+    "pickNewCoursePlan": "Khetha isicwangciso esitsha senkqubo.",
+    "ssoNetworkBlockedTitle": "Indawo yokungena ayifikeleleki",
+    "ssoNetworkBlockedDesc": "Le nethiwekhi ayisivumeli ukuba sifikelele ku-{provider} ukuze sikungenise. IWi-Fi yesikolo neyeofisi isoloko iyivala. Ungabhalisa nge-imeyile endaweni yoko, okanye utshintshele kwenye inethiwekhi uze uzame kwakhona.",
+    "ssoTryAnyway": "Zama nangona kunjalo",
+    "publicCoursesFilterTooltip": "Bonisa kuphela izifundo nabani na anokuzijoyina",
+    "restrictedCoursesFilterTooltip": "Bonisa kuphela izifundo ekufuneka ucele ukuzijoyina",
+    "viewImageLabel": "Jonga umfanekiso"
 }

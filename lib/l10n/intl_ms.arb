@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-02 14:13:00.290651",
+    "@@last_modified": "2026-10-05 13:57:50.781097",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Semak imbas kursus awam",
     "publicInviteDescChat": "Cari pengguna untuk menjemput mereka ke sembang ini.",
     "publicInviteDescSpace": "Cari pengguna untuk menjemput mereka ke ruang ini.",
-    "useActivityImageAsChatBackground": "Gunakan imej aktiviti sebagai latar belakang sembang",
     "chatWithSupport": "Sembang dengan Sokongan",
     "newCourseAccess": "Secara lalai, kursus boleh dicari secara awam dan memerlukan kelulusan pentadbir untuk menyertai. Anda boleh mengedit tetapan ini pada bila-bila masa.",
     "onboardingLanguagesTitle": "Bahasa apa yang anda pelajari?",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "Ringkasan ini tidak dapat dikemas kini.",
     "courseNotFound": "Kursus tidak ditemui",
     "askTeacherForNewCourse": "Minta guru anda untuk memilih kursus baharu.",
-    "pickNewCoursePlan": "Pilih pelan kursus baharu."
+    "pickNewCoursePlan": "Pilih pelan kursus baharu.",
+    "ssoNetworkBlockedTitle": "Laman web log masuk tidak dapat dicapai",
+    "ssoNetworkBlockedDesc": "Rangkaian ini tidak membenarkan kami mencapai {provider} untuk log masuk anda. Wi-Fi sekolah dan pejabat sering menyekatnya. Anda boleh mendaftar dengan e-mel sebagai ganti, atau beralih ke rangkaian lain dan cuba lagi.",
+    "ssoTryAnyway": "Cuba juga",
+    "publicCoursesFilterTooltip": "Tunjukkan hanya kursus yang boleh disertai sesiapa sahaja",
+    "restrictedCoursesFilterTooltip": "Tunjukkan hanya kursus yang anda perlu minta untuk sertai",
+    "viewImageLabel": "Lihat imej"
 }

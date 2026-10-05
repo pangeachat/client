@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-02 14:12:58.200943",
+    "@@last_modified": "2026-10-05 13:57:47.490668",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "E huli i nā papa ākea",
     "publicInviteDescChat": "E huli i nā mea hoʻohana e kono iā lākou i kēia kamaʻilio.",
     "publicInviteDescSpace": "E huli i nā mea hoʻohana e kono iā lākou i kēia wahi.",
-    "useActivityImageAsChatBackground": "E hoʻohana i ke kiʻi hana ma ke ʻano he kāʻei kua kamaʻilio",
     "chatWithSupport": "Kamaʻilio me ke Kākoʻo",
     "newCourseAccess": "Ma ke ʻano paʻamau, hiki ke huli ākea ʻia nā papa a koi ʻia ka ʻae a ke poʻo no ke komo ʻana. Hiki iā ʻoe ke hoʻoponopono i kēia mau hoʻonohonoho i kēlā me kēia manawa.",
     "onboardingLanguagesTitle": "He aha ka ʻōlelo āu e aʻo nei?",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "ʻAʻole hiki ke hoʻopou hou i kēia hōʻuluʻulu.",
     "courseNotFound": "ʻAʻole i loaʻa ka papa",
     "askTeacherForNewCourse": "E noi i kāu kumu e koho i papa hou.",
-    "pickNewCoursePlan": "E koho i papa hana hou."
+    "pickNewCoursePlan": "E koho i papa hana hou.",
+    "ssoNetworkBlockedTitle": "ʻAʻole hiki ke kiʻi i ka pūnaewele ʻeʻe",
+    "ssoNetworkBlockedDesc": "ʻAʻole ʻae kēia pūnaewele iā mākou e kiʻi iā {provider} no ka hoʻopaʻa inoa ʻana iā ʻoe. Hoʻopaʻa pinepine ka Wi-Fi kula a me ke keʻena iā ia. Hiki iā ʻoe ke kau inoa me ka leka uila, a i ʻole e hoʻololi i kahi pūnaewele ʻē aʻe a hoʻāʻo hou.",
+    "ssoTryAnyway": "E hoʻāʻo nō",
+    "publicCoursesFilterTooltip": "Hōʻike wale i nā papa e hiki ai i kekahi ke komo",
+    "restrictedCoursesFilterTooltip": "Hōʻike wale i nā papa e pono ai ʻoe e noi e komo",
+    "viewImageLabel": "Nānā kiʻi"
 }

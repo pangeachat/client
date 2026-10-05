@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-02 14:12:57.591882",
+    "@@last_modified": "2026-10-05 13:57:46.740276",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -7850,11 +7850,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "از تصویر فعالیت به عنوان پس‌زمینه چت استفاده کنید",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "چت با پشتیبانی",
     "@chatWithSupport": {
         "type": "String",
@@ -10067,5 +10062,11 @@
     "activitySummaryUpdateFailed": "این خلاصه به‌روز نشد.",
     "courseNotFound": "دوره پیدا نشد",
     "askTeacherForNewCourse": "از معلم خود بخواهید یک دوره جدید انتخاب کند.",
-    "pickNewCoursePlan": "یک برنامه درسی جدید انتخاب کنید."
+    "pickNewCoursePlan": "یک برنامه درسی جدید انتخاب کنید.",
+    "ssoNetworkBlockedTitle": "سایت ورود به سیستم در دسترس نیست",
+    "ssoNetworkBlockedDesc": "این شبکه به ما اجازه نمی‌دهد برای ورود شما به {provider} دسترسی پیدا کنیم. وای‌فای مدرسه و اداره اغلب آن را مسدود می‌کنند. می‌توانید به جای آن با ایمیل ثبت‌نام کنید، یا به شبکه دیگری متصل شوید و دوباره امتحان کنید.",
+    "ssoTryAnyway": "به هر حال امتحان کن",
+    "publicCoursesFilterTooltip": "فقط دوره‌هایی را نشان بده که همه می‌توانند به آن‌ها بپیوندند",
+    "restrictedCoursesFilterTooltip": "فقط دوره‌هایی را نشان بده که برای پیوستن به آن‌ها باید درخواست دهید",
+    "viewImageLabel": "مشاهده تصویر"
 }

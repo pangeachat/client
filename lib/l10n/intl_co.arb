@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-02 14:12:57.066243",
+    "@@last_modified": "2026-10-05 13:57:45.942324",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Sfoglia i corsi publichi",
     "publicInviteDescChat": "Ricercate utilizatori per invità li à stu chat.",
     "publicInviteDescSpace": "Ricercate utilizatori per invità li à stu spaziu.",
-    "useActivityImageAsChatBackground": "Aduprà l'imagine di l'attività cum'è fondu di u chat",
     "chatWithSupport": "Chattà cù u Supportu",
     "newCourseAccess": "Per difettu, i corsi sò cercabili publicamente è necessitanu l'approvazione di l'amministratore per aderisce. Pudete mudificà sti parametri in ogni mumentu.",
     "onboardingLanguagesTitle": "Chì lingua amparate?",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "Stu riassuntu ùn hà pussutu esse aghjurnatu.",
     "courseNotFound": "Corsu micca trovu",
     "askTeacherForNewCourse": "Dumandate à u vostru prufessore di sceglie un novu corsu.",
-    "pickNewCoursePlan": "Sceglite un novu pianu di corsu."
+    "pickNewCoursePlan": "Sceglite un novu pianu di corsu.",
+    "ssoNetworkBlockedTitle": "Situ di cunnessione inaccessibile",
+    "ssoNetworkBlockedDesc": "Sta rete ùn ci permette micca di ghjunghje à {provider} per cunnettavvi. U Wi-Fi di a scola è di l'uffiziu u bluccanu spessu. Pudete iscrivevi cù l'email invece, o passà à un'altra rete è riprovà.",
+    "ssoTryAnyway": "Pruvate quantunque",
+    "publicCoursesFilterTooltip": "Mostra solu i corsi à i quali ognunu pò participà",
+    "restrictedCoursesFilterTooltip": "Mostra solu i corsi à i quali duvete dumandà di participà",
+    "viewImageLabel": "Vede l'imagine"
 }

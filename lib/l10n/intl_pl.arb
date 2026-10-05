@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-02 14:13:00.826856",
+    "@@last_modified": "2026-10-05 13:57:51.670262",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -7851,11 +7851,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Użyj obrazu aktywności jako tła czatu",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Czat z pomocą",
     "@chatWithSupport": {
         "type": "String",
@@ -10064,5 +10059,11 @@
     "activitySummaryUpdateFailed": "Nie udało się zaktualizować podsumowania.",
     "courseNotFound": "Kurs nie znaleziony",
     "askTeacherForNewCourse": "Poproś nauczyciela o wybranie nowego kursu.",
-    "pickNewCoursePlan": "Wybierz nowy plan kursu."
+    "pickNewCoursePlan": "Wybierz nowy plan kursu.",
+    "ssoNetworkBlockedTitle": "Witryna logowania niedostępna",
+    "ssoNetworkBlockedDesc": "Ta sieć uniemożliwia nam połączenie z {provider} w celu zalogowania. Często blokują to sieci Wi-Fi w szkołach i biurach. Zamiast tego możesz zarejestrować się za pomocą adresu e-mail lub przełączyć się na inną sieć i spróbować ponownie.",
+    "ssoTryAnyway": "Mimo to spróbuj",
+    "publicCoursesFilterTooltip": "Pokaż tylko kursy, do których każdy może dołączyć",
+    "restrictedCoursesFilterTooltip": "Pokaż tylko kursy, do których musisz poprosić o dołączenie",
+    "viewImageLabel": "Wyświetl obraz"
 }

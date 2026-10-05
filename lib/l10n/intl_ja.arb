@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-02 14:12:58.717949",
+    "@@last_modified": "2026-10-05 13:57:48.603201",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -8526,11 +8526,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "サポートとチャット",
     "@chatWithSupport": {
         "type": "String",
@@ -10748,5 +10743,11 @@
     "activitySummaryUpdateFailed": "この要約を更新できませんでした。",
     "courseNotFound": "コースが見つかりません",
     "askTeacherForNewCourse": "担当の先生に新しいコースを選んでもらいましょう。",
-    "pickNewCoursePlan": "新しいコースプランを選んでください。"
+    "pickNewCoursePlan": "新しいコースプランを選んでください。",
+    "ssoNetworkBlockedTitle": "サインインサイトに接続できません",
+    "ssoNetworkBlockedDesc": "このネットワークでは、サインインのために{provider}に接続できません。学校や職場のWi-Fiではよくブロックされます。代わりにメールで登録するか、別のネットワークに切り替えて再試行してください。",
+    "ssoTryAnyway": "とにかく試す",
+    "publicCoursesFilterTooltip": "誰でも参加できるコースのみを表示",
+    "restrictedCoursesFilterTooltip": "参加申請が必要なコースのみを表示",
+    "viewImageLabel": "画像を表示"
 }

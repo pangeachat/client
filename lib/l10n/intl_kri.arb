@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-02 14:12:59.380160",
+    "@@last_modified": "2026-10-05 13:57:49.551360",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Luk fɔ pɔblik kos dɛn",
     "publicInviteDescChat": "Sɛch fɔ yuzas fɔ invayt dɛn to dis chat.",
     "publicInviteDescSpace": "Sɛch fɔ yuzas fɔ invayt dɛn to dis spes.",
-    "useActivityImageAsChatBackground": "Yuz aktiviti imej as chat bakgrawnd",
     "chatWithSupport": "Chat wit Sapot",
     "newCourseAccess": "Bay difɔlt, kos dɛn kin pɔblikli sɛch ɛn nid admin apruval fɔ jɔyn. Yu kin ɛdit dis sƐtin dɛn ɛnitaym.",
     "onboardingLanguagesTitle": "Wetin na di langwej we yu de lan?",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "Dis samari nɔ kɔn fɔ chenj.",
     "courseNotFound": "Di kos nɔ de",
     "askTeacherForNewCourse": "Aks yu ticha foh pik wan nyu kos.",
-    "pickNewCoursePlan": "Pik wan nyu kos plan."
+    "pickNewCoursePlan": "Pik wan nyu kos plan.",
+    "ssoNetworkBlockedTitle": "Sayn-in sayt nɔ de rich",
+    "ssoNetworkBlockedDesc": "Dis netwɔk nɔ de mek wi rich {provider} fɔ sayn yu in. Skul ɛn ɔfis Wi-Fi kin blɔk am. Yu go ebul sayn-ɔp wit imel instɛd, ɔ chenj to ɔda netwɔk ɛn tray igen.",
+    "ssoTryAnyway": "Tray ɛnitin",
+    "publicCoursesFilterTooltip": "Sho onli kɔsis we ɛnibɔdi kɛn jɔyn",
+    "restrictedCoursesFilterTooltip": "Sho onli kɔsis we yu fɔ aks fɔ jɔyn",
+    "viewImageLabel": "Luk pikcho"
 }

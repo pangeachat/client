@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-02 14:13:01.261633",
+    "@@last_modified": "2026-10-05 13:57:52.662235",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "عوامي ڪورس براؤز ڪريو",
     "publicInviteDescChat": "هن چيٽ ۾ دعوت ڏيڻ لاءِ استعمال ڪندڙن کي ڳوليو.",
     "publicInviteDescSpace": "هن اسپيس ۾ دعوت ڏيڻ لاءِ استعمال ڪندڙن کي ڳوليو.",
-    "useActivityImageAsChatBackground": "سرگرمي جي تصوير کي چيٽ جي پس منظر طور استعمال ڪريو",
     "chatWithSupport": "سپورٽ سان چيٽ ڪريو",
     "newCourseAccess": "ڊفالٽ طور، ڪورس عوامي طور تي ڳولي سگهجن ٿا ۽ شامل ٿيڻ لاءِ ايڊمن جي منظوري جي ضرورت آهي. توهان اهي سيٽنگون ڪنهن به وقت تبديل ڪري سگهو ٿا.",
     "onboardingLanguagesTitle": "توهان ڪهڙي ٻولي سکي رهيا آهيو؟",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "هي خلاصو اپڊيٽ نه ٿي سگهيو.",
     "courseNotFound": "ڪورس نه مليو",
     "askTeacherForNewCourse": "توهان جي استاد کان پڇو ته هڪ نئون ڪورس چونڊيو.",
-    "pickNewCoursePlan": "نئون ڪورس پلان چونڊيو."
+    "pickNewCoursePlan": "نئون ڪورس پلان چونڊيو.",
+    "ssoNetworkBlockedTitle": "سائن ان سائيٽ پهچ کان ٻاهر آهي",
+    "ssoNetworkBlockedDesc": "هي نيٽ ورڪ اسان کي {provider} تائين پهچڻ نه ٿو ڏئي ته جيئن توهان کي سائن ان ڪري سگهجي. اسڪول ۽ آفيس جو وائي فائي اڪثر ان کي بلاڪ ڪندو آهي. توهان ان جي بدران اي ميل سان سائن اپ ڪري سگهو ٿا، يا ڪنهن ٻئي نيٽ ورڪ تي سوئچ ڪري ٻيهر ڪوشش ڪري سگهو ٿا.",
+    "ssoTryAnyway": "بهرحال ڪوشش ڪريو",
+    "publicCoursesFilterTooltip": "صرف اهي ڪورس ڏيکاريو جيڪي ڪو به شامل ٿي سگهي ٿو",
+    "restrictedCoursesFilterTooltip": "صرف اهي ڪورس ڏيکاريو جن ۾ شامل ٿيڻ لاءِ توهان کي پڇڻو پوندو",
+    "viewImageLabel": "تصوير ڏسو"
 }

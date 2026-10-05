@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-02 14:12:56.356377",
+    "@@last_modified": "2026-10-05 13:57:45.224532",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -8385,11 +8385,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "চ্যাট ব্যাকগ্রাউন্ড হিসেবে কার্যকলাপের ছবি ব্যবহার করুন",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "সমর্থনের সাথে চ্যাট করুন",
     "@chatWithSupport": {
         "type": "String",
@@ -10607,5 +10602,11 @@
     "activitySummaryUpdateFailed": "এই সারাংশ আপডেট করা যায়নি।",
     "courseNotFound": "কোর্স খুঁজে পাওয়া যায়নি",
     "askTeacherForNewCourse": "আপনার শিক্ষককে একটি নতুন কোর্স বেছে নিতে বলুন।",
-    "pickNewCoursePlan": "একটি নতুন কোর্স পরিকল্পনা বেছে নিন।"
+    "pickNewCoursePlan": "একটি নতুন কোর্স পরিকল্পনা বেছে নিন।",
+    "ssoNetworkBlockedTitle": "সাইন-ইন সাইট অ্যাক্সেসযোগ্য নয়",
+    "ssoNetworkBlockedDesc": "এই নেটওয়ার্কটি আপনাকে সাইন ইন করার জন্য {provider}-এর সাথে সংযোগ স্থাপন করতে দিচ্ছে না। স্কুল এবং অফিসের Wi-Fi প্রায়শই এটি ব্লক করে। আপনি এর পরিবর্তে ইমেল দিয়ে সাইন আপ করতে পারেন, অথবা অন্য নেটওয়ার্কে স্যুইচ করে আবার চেষ্টা করতে পারেন।",
+    "ssoTryAnyway": "যাইহোক চেষ্টা করুন",
+    "publicCoursesFilterTooltip": "শুধুমাত্র সেই কোর্সগুলি দেখান যেগুলিতে যে কেউ যোগ দিতে পারে",
+    "restrictedCoursesFilterTooltip": "শুধুমাত্র সেই কোর্সগুলি দেখান যেগুলিতে যোগদানের জন্য আপনাকে অনুরোধ করতে হবে",
+    "viewImageLabel": "ছবি দেখুন"
 }

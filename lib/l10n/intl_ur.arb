@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-02 14:13:02.419646",
+    "@@last_modified": "2026-10-05 13:57:54.553215",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "عوامی کورسز براؤز کریں",
     "publicInviteDescChat": "صارفین کو اس چیٹ میں مدعو کرنے کے لیے تلاش کریں۔",
     "publicInviteDescSpace": "صارفین کو اس جگہ میں مدعو کرنے کے لیے تلاش کریں۔",
-    "useActivityImageAsChatBackground": "سرگرمی کی تصویر کو چیٹ کے پس منظر کے طور پر استعمال کریں",
     "chatWithSupport": "سپورٹ کے ساتھ چیٹ کریں",
     "newCourseAccess": "بطور ڈیفالٹ، کورسز عوامی طور پر قابل تلاش ہیں اور شامل ہونے کے لیے ایڈمن کی منظوری درکار ہوتی ہے۔ آپ ان ترتیبات کو کسی بھی وقت ترمیم کر سکتے ہیں۔",
     "onboardingLanguagesTitle": "آپ کون سی زبان سیکھ رہے ہیں؟",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "اس خلاصے کو اپ ڈیٹ نہیں کیا جا سکا ہے۔",
     "courseNotFound": "کورس نہیں ملا",
     "askTeacherForNewCourse": "اپنے استاد سے ایک نیا کورس منتخب کرنے کو کہیں۔",
-    "pickNewCoursePlan": "ایک نیا کورس پلان منتخب کریں۔"
+    "pickNewCoursePlan": "ایک نیا کورس پلان منتخب کریں۔",
+    "ssoNetworkBlockedTitle": "سائن ان سائٹ تک رسائی نہیں ہو سکتی",
+    "ssoNetworkBlockedDesc": "یہ نیٹ ورک ہمیں آپ کو سائن ان کرنے کے لیے {provider} تک رسائی کی اجازت نہیں دے رہا ہے۔ اسکول اور دفتر کا وائی فائی اکثر اسے بلاک کر دیتا ہے۔ آپ اس کے بجائے ای میل کے ساتھ سائن اپ کر سکتے ہیں، یا کسی دوسرے نیٹ ورک پر سوئچ کر کے دوبارہ کوشش کر سکتے ہیں۔",
+    "ssoTryAnyway": "پھر بھی کوشش کریں",
+    "publicCoursesFilterTooltip": "صرف وہ کورسز دکھائیں جن میں کوئی بھی شامل ہو سکتا ہے",
+    "restrictedCoursesFilterTooltip": "صرف وہ کورسز دکھائیں جن میں شامل ہونے کے لیے آپ کو درخواست کرنی ہوگی",
+    "viewImageLabel": "تصویر دیکھیں"
 }

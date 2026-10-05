@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-02 14:12:57.509345",
+    "@@last_modified": "2026-10-05 13:57:46.951485",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -7925,11 +7925,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Käytä aktiviteettikuvaa chat-taustana",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chattaa tuen kanssa",
     "@chatWithSupport": {
         "type": "String",
@@ -10016,5 +10011,11 @@
     "activitySummaryUpdateFailed": "Yhteenvedon päivittäminen epäonnistui.",
     "courseNotFound": "Kurssia ei löydy",
     "askTeacherForNewCourse": "Pyydä opettajaasi valitsemaan uusi kurssi.",
-    "pickNewCoursePlan": "Valitse uusi kurssisuunnitelma."
+    "pickNewCoursePlan": "Valitse uusi kurssisuunnitelma.",
+    "ssoNetworkBlockedTitle": "Kirjautumissivusto ei tavoitettavissa",
+    "ssoNetworkBlockedDesc": "Tämä verkko estää meitä tavoittamasta palvelua {provider} kirjautuaksesi sisään. Koulun ja toimiston Wi-Fi-verkot estävät sen usein. Voit kirjautua sisään sähköpostilla tai vaihtaa toiseen verkkoon ja yrittää uudelleen.",
+    "ssoTryAnyway": "Yritä silti",
+    "publicCoursesFilterTooltip": "Näytä vain kurssit, joihin kuka tahansa voi liittyä",
+    "restrictedCoursesFilterTooltip": "Näytä vain kurssit, joihin liittymistä on pyydettävä",
+    "viewImageLabel": "Näytä kuva"
 }

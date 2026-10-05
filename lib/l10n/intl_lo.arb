@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-02 14:12:59.614538",
+    "@@last_modified": "2026-10-05 13:57:50.052940",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "ຊອກຫາຫຼັກສູດສາທາລະນະ",
     "publicInviteDescChat": "ຊອກຫາຜູ້ໃຊ້ເພື່ອເຊີນພວກເຂົາເຂົ້າຮ່ວມການສົນທະນານີ້.",
     "publicInviteDescSpace": "ຊອກຫາຜູ້ໃຊ້ເພື່ອເຊີນພວກເຂົາເຂົ້າຮ່ວມພື້ນທີ່ນີ້.",
-    "useActivityImageAsChatBackground": "ໃຊ້ຮູບພາບກິດຈະກຳເປັນພື້ນຫຼັງການສົນທະນາ",
     "chatWithSupport": "ສົນທະນາກັບຝ່າຍຊ່ວຍເຫຼືອ",
     "newCourseAccess": "ໂດຍຄ່າເລີ່ມຕົ້ນ, ຫຼັກສູດຕ່າງໆສາມາດຄົ້ນຫາໄດ້ສາທາລະນະ ແລະ ຕ້ອງການການອະນຸມັດຈາກຜູ້ບໍລິຫານເພື່ອເຂົ້າຮ່ວມ. ທ່ານສາມາດແກ້ໄຂການຕັ້ງຄ່າເຫຼົ່ານີ້ໄດ້ທຸກເວລາ.",
     "onboardingLanguagesTitle": "ທ່ານກຳລັງຮຽນພາສາຫຍັງ?",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "ບໍ່ສາມາດອັບເດດສະຫຼຸບນີ້ໄດ້.",
     "courseNotFound": "ບໍ່ພົບຫຼັກສູດ",
     "askTeacherForNewCourse": "ຂໍໃຫ້ຄູສອນຂອງທ່ານເລືອກຫຼັກສູດໃໝ່.",
-    "pickNewCoursePlan": "ເລືອກແຜນການຮຽນໃໝ່."
+    "pickNewCoursePlan": "ເລືອກແຜນການຮຽນໃໝ່.",
+    "ssoNetworkBlockedTitle": "ບໍ່ສາມາດເຂົ້າເຖິງເວັບໄຊທ໌ເຂົ້າສູ່ລະບົບໄດ້",
+    "ssoNetworkBlockedDesc": "ເຄືອຂ່າຍນີ້ບໍ່ອະນຸຍາດໃຫ້ພວກເຮົາເຂົ້າເຖິງ {provider} ເພື່ອເຂົ້າສູ່ລະບົບໃຫ້ທ່ານ. Wi-Fi ຂອງໂຮງຮຽນ ແລະ ຫ້ອງການມັກຈະບລັອກມັນ. ທ່ານສາມາດລົງທະບຽນດ້ວຍອີເມວແທນ, ຫຼືປ່ຽນໄປໃຊ້ເຄືອຂ່າຍອື່ນແລ້ວລອງໃໝ່ອີກຄັ້ງ.",
+    "ssoTryAnyway": "ລອງອີກຄັ້ງ",
+    "publicCoursesFilterTooltip": "ສະແດງສະເພາະຫຼັກສູດທີ່ໃຜໆກໍເຂົ້າຮ່ວມໄດ້",
+    "restrictedCoursesFilterTooltip": "ສະແດງສະເພາະຫຼັກສູດທີ່ທ່ານຕ້ອງຂໍເຂົ້າຮ່ວມ",
+    "viewImageLabel": "ເບິ່ງຮູບພາບ"
 }

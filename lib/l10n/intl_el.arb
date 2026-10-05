@@ -3400,7 +3400,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-02 14:12:57.220491",
+    "@@last_modified": "2026-10-05 13:57:46.295438",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -8632,11 +8632,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Χρησιμοποιήστε την εικόνα δραστηριότητας ως φόντο συνομιλίας",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Συνομιλία με Υποστήριξη",
     "@chatWithSupport": {
         "type": "String",
@@ -10854,5 +10849,11 @@
     "activitySummaryUpdateFailed": "Αυτή η σύνοψη δεν ήταν δυνατό να ενημερωθεί.",
     "courseNotFound": "Το μάθημα δεν βρέθηκε",
     "askTeacherForNewCourse": "Ζητήστε από τον δάσκαλό σας να επιλέξει ένα νέο μάθημα.",
-    "pickNewCoursePlan": "Επιλέξτε ένα νέο πρόγραμμα μαθημάτων."
+    "pickNewCoursePlan": "Επιλέξτε ένα νέο πρόγραμμα μαθημάτων.",
+    "ssoNetworkBlockedTitle": "Ο ιστότοπος σύνδεσης δεν είναι προσβάσιμος",
+    "ssoNetworkBlockedDesc": "Αυτό το δίκτυο δεν μας επιτρέπει να επικοινωνήσουμε με το {provider} για να συνδεθείτε. Τα δίκτυα Wi-Fi σχολείων και γραφείων συχνά το μπλοκάρουν. Μπορείτε να εγγραφείτε με email αντ' αυτού, ή να συνδεθείτε σε άλλο δίκτυο και να δοκιμάσετε ξανά.",
+    "ssoTryAnyway": "Δοκιμάστε ούτως ή άλλως",
+    "publicCoursesFilterTooltip": "Εμφάνιση μόνο μαθημάτων στα οποία μπορεί να συμμετάσχει ο καθένας",
+    "restrictedCoursesFilterTooltip": "Εμφάνιση μόνο μαθημάτων στα οποία πρέπει να ζητήσετε να συμμετάσχετε",
+    "viewImageLabel": "Προβολή εικόνας"
 }

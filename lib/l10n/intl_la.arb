@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-02 14:12:59.501475",
+    "@@last_modified": "2026-10-05 13:57:49.605458",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Explora cursus publicos",
     "publicInviteDescChat": "Quaere utentes ut eos ad hoc colloquium invites.",
     "publicInviteDescSpace": "Quaere utentes ut eos ad hoc spatium invites.",
-    "useActivityImageAsChatBackground": "Utere imagine actionis ut scaena colloquii",
     "chatWithSupport": "Colloquere cum Auxilio",
     "newCourseAccess": "Defalte, cursus publice quaeribiles sunt et approbationem administratoris ad iungendum requirunt. Has optiones quovis tempore mutare potes.",
     "onboardingLanguagesTitle": "Quam linguam discis?",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "Haec summa renovari non potuit.",
     "courseNotFound": "Cursus non inventus",
     "askTeacherForNewCourse": "Roga magistrum tuum ut novum cursum eligat.",
-    "pickNewCoursePlan": "Novum cursum elige."
+    "pickNewCoursePlan": "Novum cursum elige.",
+    "ssoNetworkBlockedTitle": "Situs initii inaccessibilis",
+    "ssoNetworkBlockedDesc": "Haec retis nos prohibet ad {provider} pervenire ut te inigas. Wi-Fi scholae et officii saepe id impediunt. Potes proinde per electronicam subscribere, aut ad aliam retem mutare et iterum conari.",
+    "ssoTryAnyway": "Nihilominus conare",
+    "publicCoursesFilterTooltip": "Ostende tantum cursus quibus quisque iungere potest",
+    "restrictedCoursesFilterTooltip": "Ostende tantum cursus quibus petendum est ut iungas",
+    "viewImageLabel": "Imaginem inspice"
 }

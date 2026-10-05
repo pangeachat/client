@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-02 14:12:58.498989",
+    "@@last_modified": "2026-10-05 13:57:48.721384",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -7860,11 +7860,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chatta con il supporto",
     "@chatWithSupport": {
         "type": "String",
@@ -10052,5 +10047,11 @@
     "activitySummaryUpdateFailed": "Impossibile aggiornare questo riepilogo.",
     "courseNotFound": "Corso non trovato",
     "askTeacherForNewCourse": "Chiedi al tuo insegnante di scegliere un nuovo corso.",
-    "pickNewCoursePlan": "Scegli un nuovo piano di corso."
+    "pickNewCoursePlan": "Scegli un nuovo piano di corso.",
+    "ssoNetworkBlockedTitle": "Sito di accesso irraggiungibile",
+    "ssoNetworkBlockedDesc": "Questa rete non ci permette di raggiungere {provider} per effettuare l'accesso. Le reti Wi-Fi di scuole e uffici spesso lo bloccano. Puoi registrarti con l'email, oppure passare a un'altra rete e riprovare.",
+    "ssoTryAnyway": "Riprova comunque",
+    "publicCoursesFilterTooltip": "Mostra solo i corsi a cui tutti possono partecipare",
+    "restrictedCoursesFilterTooltip": "Mostra solo i corsi a cui devi chiedere di partecipare",
+    "viewImageLabel": "Visualizza immagine"
 }

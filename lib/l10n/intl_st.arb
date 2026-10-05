@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-02 14:13:01.659777",
+    "@@last_modified": "2026-10-05 13:57:53.534835",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Batla lithupelo tsa sechaba",
     "publicInviteDescChat": "Batla basebelisi ho ba memela moqoqong ona.",
     "publicInviteDescSpace": "Batla basebelisi ho ba memela sebakeng sena.",
-    "useActivityImageAsChatBackground": "Sebelisa setšoantšo sa mosebetsi joalo ka bokamorao ba moqoqo",
     "chatWithSupport": "Qoqa le Tšehetso",
     "newCourseAccess": "Ka ho sa feleng, lithupelo li ka batloa ke sechaba 'me li hloka tumello ea molaoli ho kena. U ka fetola litlhophiso tsena neng kapa neng.",
     "onboardingLanguagesTitle": "U ithuta puo efe?",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "Kakaretso ena e sitilwe ho ntjhafatswa.",
     "courseNotFound": "Thupelo ha e fumanehe",
     "askTeacherForNewCourse": "Kopa tichere ea hau hore a khethe thupelo e ncha.",
-    "pickNewCoursePlan": "Khetha moralo o mocha oa thuto."
+    "pickNewCoursePlan": "Khetha moralo o mocha oa thuto.",
+    "ssoNetworkBlockedTitle": "Sebaka sa ho kena ha se fihlellehe",
+    "ssoNetworkBlockedDesc": "Marang-rang ana ha a re lumelle ho fihlella {provider} ho u kenya. Wi-Fi ea sekolo le ofisi hangata e a e thibela. U ka ingolisa ka imeile ho e-na le hoo, kapa ua fetohela marang-rang a mang 'me ua leka hape.",
+    "ssoTryAnyway": "Leka leha ho le joalo",
+    "publicCoursesFilterTooltip": "Bontsha lithuto tseo mang kapa mang a ka kenelang ho tsona feela",
+    "restrictedCoursesFilterTooltip": "Bontsha lithuto tseo o tlamehang ho kopa ho kenela ho tsona feela",
+    "viewImageLabel": "Bona setshwantsho"
 }

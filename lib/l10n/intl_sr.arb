@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-02 14:13:01.738503",
+    "@@last_modified": "2026-10-05 13:57:52.931303",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -8706,11 +8706,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu za čat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Razgovarajte sa podrškom",
     "@chatWithSupport": {
         "type": "String",
@@ -10928,5 +10923,11 @@
     "activitySummaryUpdateFailed": "Ovaj rezime nije mogao da se ažurira.",
     "courseNotFound": "Kurs nije pronađen",
     "askTeacherForNewCourse": "Zatražite od svog nastavnika da odabere novi kurs.",
-    "pickNewCoursePlan": "Izaberite novi plan kursa."
+    "pickNewCoursePlan": "Izaberite novi plan kursa.",
+    "ssoNetworkBlockedTitle": "Sajt za prijavu je nedostupan",
+    "ssoNetworkBlockedDesc": "Ova mreža nam ne dozvoljava da dođemo do {provider} da bismo vas prijavili. Školski i kancelarijski Wi-Fi često blokiraju pristup. Umesto toga, možete se prijaviti putem e-pošte ili preći na drugu mrežu i pokušati ponovo.",
+    "ssoTryAnyway": "Pokušajte svejedno",
+    "publicCoursesFilterTooltip": "Prikaži samo kurseve kojima se svako može pridružiti",
+    "restrictedCoursesFilterTooltip": "Prikaži samo kurseve za koje moraš tražiti dozvolu za pridruživanje",
+    "viewImageLabel": "Prikaži sliku"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-02 14:13:01.634153",
+    "@@last_modified": "2026-10-05 13:57:52.813609",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Shfletoni kurset publike",
     "publicInviteDescChat": "Kërkoni përdorues për t'i ftuar në këtë bisedë.",
     "publicInviteDescSpace": "Kërkoni përdorues për t'i ftuar në këtë hapësirë.",
-    "useActivityImageAsChatBackground": "Përdor imazhin e aktivitetit si sfond bisede",
     "chatWithSupport": "Bisedoni me Mbështetjen",
     "newCourseAccess": "Si parazgjedhje, kurset janë të kërkueshme publikisht dhe kërkojnë miratimin e administratorit për t'u bashkuar. Këto cilësime mund t'i ndryshoni në çdo kohë.",
     "onboardingLanguagesTitle": "Çfarë gjuhe po mësoni?",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "Ky përmbledhje nuk mund të përditësohej.",
     "courseNotFound": "Kursi nuk u gjet",
     "askTeacherForNewCourse": "Kërkojini mësuesit tuaj të zgjedhë një kurs të ri.",
-    "pickNewCoursePlan": "Zgjidh një plan të ri kursi."
+    "pickNewCoursePlan": "Zgjidh një plan të ri kursi.",
+    "ssoNetworkBlockedTitle": "Sajti i hyrjes i paarritshëm",
+    "ssoNetworkBlockedDesc": "Ky rrjet nuk na lejon të arrijmë te {provider} për t'u kyçur. Wi-Fi i shkollës dhe zyrës shpesh e bllokojnë atë. Mund të regjistroheni me email, ose të kaloni në një rrjet tjetër dhe të provoni përsëri.",
+    "ssoTryAnyway": "Provo gjithsesi",
+    "publicCoursesFilterTooltip": "Shfaq vetëm kurset ku mund të bashkohet kushdo",
+    "restrictedCoursesFilterTooltip": "Shfaq vetëm kurset ku duhet të kërkosh për t'u bashkuar",
+    "viewImageLabel": "Shiko imazhin"
 }

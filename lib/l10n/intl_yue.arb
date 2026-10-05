@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-02 14:13:02.929924",
+    "@@last_modified": "2026-10-05 13:57:54.547419",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -8709,11 +8709,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "與支援聊天",
     "@chatWithSupport": {
         "type": "String",
@@ -10936,5 +10931,11 @@
     "activitySummaryUpdateFailed": "無法更新此摘要。",
     "courseNotFound": "搵唔到課程",
     "askTeacherForNewCourse": "請老師揀個新課程。",
-    "pickNewCoursePlan": "揀個新課程計劃"
+    "pickNewCoursePlan": "揀個新課程計劃",
+    "ssoNetworkBlockedTitle": "無法連線到登入網站",
+    "ssoNetworkBlockedDesc": "此網絡無法連線到 {provider} 以登入。學校和辦公室的 Wi-Fi 通常會封鎖此連線。你可以改用電郵註冊，或切換到其他網絡再試一次。",
+    "ssoTryAnyway": "仍然嘗試",
+    "publicCoursesFilterTooltip": "淨係顯示所有人都可以參加嘅課程",
+    "restrictedCoursesFilterTooltip": "淨係顯示你需要申請先可以參加嘅課程",
+    "viewImageLabel": "睇圖"
 }

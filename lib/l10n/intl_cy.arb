@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-02 14:12:56.930406",
+    "@@last_modified": "2026-10-05 13:57:46.007261",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Pori cyrsiau cyhoeddus",
     "publicInviteDescChat": "Chwiliwch am ddefnyddwyr i'w gwahodd i'r sgwrs hon.",
     "publicInviteDescSpace": "Chwiliwch am ddefnyddwyr i'w gwahodd i'r gofod hwn.",
-    "useActivityImageAsChatBackground": "Defnyddio delwedd gweithgaredd fel cefndir sgwrs",
     "chatWithSupport": "Sgwrsio gyda Chefnogaeth",
     "newCourseAccess": "Yn ddiofyn, mae cyrsiau'n chwiliadwy'n gyhoeddus ac mae angen cymeradwyaeth gweinyddwr i ymuno. Gallwch olygu'r gosodiadau hyn unrhyw bryd.",
     "onboardingLanguagesTitle": "Pa iaith ydych chi'n ei dysgu?",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "Ni ellid diweddaru’r crynodeb hwn.",
     "courseNotFound": "Heb ddod o hyd i'r cwrs",
     "askTeacherForNewCourse": "Gofynnwch i'ch athro ddewis cwrs newydd.",
-    "pickNewCoursePlan": "Dewiswch gynllun cwrs newydd."
+    "pickNewCoursePlan": "Dewiswch gynllun cwrs newydd.",
+    "ssoNetworkBlockedTitle": "Safle mewngofnodi’n anghyraeddadwy",
+    "ssoNetworkBlockedDesc": "Nid yw’r rhwydwaith hwn yn gadael inni gyrraedd {provider} i’ch mewngofnodi. Mae Wi-Fi ysgol a swyddfa’n aml yn ei rwystro. Gallwch gofrestru gydag e-bost yn lle hynny, neu newid i rwydwaith arall a rhoi cynnig arall arni.",
+    "ssoTryAnyway": "Rhowch gynnig arni beth bynnag",
+    "publicCoursesFilterTooltip": "Dangos dim ond cyrsiau y gall unrhyw un ymuno â nhw",
+    "restrictedCoursesFilterTooltip": "Dangos dim ond cyrsiau y mae'n rhaid i chi ofyn i ymuno â nhw",
+    "viewImageLabel": "Gweld delwedd"
 }

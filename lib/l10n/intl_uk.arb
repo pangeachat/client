@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-02 14:13:02.600218",
+    "@@last_modified": "2026-10-05 13:57:54.538715",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -7937,11 +7937,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Використовувати зображення активності як фон чату",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Чат з підтримкою",
     "@chatWithSupport": {
         "type": "String",
@@ -9979,5 +9974,11 @@
     "activitySummaryUpdateFailed": "Не вдалося оновити зведення.",
     "courseNotFound": "Курс не знайдено",
     "askTeacherForNewCourse": "Попросіть свого вчителя обрати новий курс.",
-    "pickNewCoursePlan": "Виберіть новий план курсу."
+    "pickNewCoursePlan": "Виберіть новий план курсу.",
+    "ssoNetworkBlockedTitle": "Сайт входу недоступний",
+    "ssoNetworkBlockedDesc": "Ця мережа не дозволяє нам зв’язатися з {provider} для входу. Шкільний та офісний Wi-Fi часто блокують його. Ви можете зареєструватися за допомогою електронної пошти або переключитися на іншу мережу та спробувати ще раз.",
+    "ssoTryAnyway": "Все одно спробувати",
+    "publicCoursesFilterTooltip": "Показувати лише курси, до яких може приєднатися будь-хто",
+    "restrictedCoursesFilterTooltip": "Показувати лише курси, до яких потрібно запитувати дозвіл на приєднання",
+    "viewImageLabel": "Переглянути зображення"
 }

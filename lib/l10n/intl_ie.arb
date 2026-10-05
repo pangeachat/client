@@ -3093,7 +3093,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-02 14:12:58.650017",
+    "@@last_modified": "2026-10-05 13:57:48.523062",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8389,11 +8389,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat le Tacaíocht",
     "@chatWithSupport": {
         "type": "String",
@@ -10611,5 +10606,11 @@
     "activitySummaryUpdateFailed": "Níorbh fhéidir an achoimre seo a nuashonrú.",
     "courseNotFound": "Cúrsa gan aimsiú",
     "askTeacherForNewCourse": "Iarr ar do mhúinteoir cúrsa nua a roghnú.",
-    "pickNewCoursePlan": "Roghnaigh plean cúrsa nua."
+    "pickNewCoursePlan": "Roghnaigh plean cúrsa nua.",
+    "ssoNetworkBlockedTitle": "Ní féidir suíomh sínithe isteach a bhaint amach",
+    "ssoNetworkBlockedDesc": "Níl an líonra seo ag ligean dúinn {provider} a bhaint amach chun tú a shíniú isteach. Is minic a chuireann Wi-Fi scoile agus oifige bac air. Is féidir leat clárú le ríomhphost ina ionad, nó aistrigh go líonra eile agus bain triail eile as.",
+    "ssoTryAnyway": "Bain triail as ar aon nós",
+    "publicCoursesFilterTooltip": "Taispeáin cúrsaí ar féidir le duine ar bith a bheith páirteach iontu amháin",
+    "restrictedCoursesFilterTooltip": "Taispeáin cúrsaí nach mór duit a iarraidh a bheith páirteach iontu amháin",
+    "viewImageLabel": "Féach ar an íomhá"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-02 14:12:57.034199",
+    "@@last_modified": "2026-10-05 13:57:46.120717",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -7958,11 +7958,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Aktivitätsbild als Chat-Hintergrund verwenden",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat mit dem Support",
     "@chatWithSupport": {
         "type": "String",
@@ -9966,5 +9961,11 @@
     "activitySummaryUpdateFailed": "Diese Zusammenfassung konnte nicht aktualisiert werden.",
     "courseNotFound": "Kurs nicht gefunden",
     "askTeacherForNewCourse": "Bitte deinen Lehrer, einen neuen Kurs auszuwählen.",
-    "pickNewCoursePlan": "Wählen Sie einen neuen Kursplan."
+    "pickNewCoursePlan": "Wählen Sie einen neuen Kursplan.",
+    "ssoNetworkBlockedTitle": "Anmeldeseite nicht erreichbar",
+    "ssoNetworkBlockedDesc": "Dieses Netzwerk lässt uns nicht zu {provider} durch, um dich anzumelden. Schul- und Büro-WLAN blockieren dies oft. Du kannst dich stattdessen mit E-Mail anmelden oder zu einem anderen Netzwerk wechseln und es erneut versuchen.",
+    "ssoTryAnyway": "Trotzdem versuchen",
+    "publicCoursesFilterTooltip": "Nur Kurse anzeigen, denen jeder beitreten kann",
+    "restrictedCoursesFilterTooltip": "Nur Kurse anzeigen, für die du eine Beitrittsanfrage stellen musst",
+    "viewImageLabel": "Bild ansehen"
 }

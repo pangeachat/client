@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-02 14:13:02.787743",
+    "@@last_modified": "2026-10-05 13:57:54.898277",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "בראַוזן עפֿנטלעכע קורסן",
     "publicInviteDescChat": "זוכן באַניצער צו פֿאַרבעטן זיי צו דעם שמועס.",
     "publicInviteDescSpace": "זוכן באַניצער צו פֿאַרבעטן זיי צו דעם פּלאַץ.",
-    "useActivityImageAsChatBackground": "ניצן אַקטיוויטעט בילד ווי שמועס הינטערגרונט",
     "chatWithSupport": "שמועסן מיט שטיצע",
     "newCourseAccess": "פֿון פֿריִערדיק, קורסן זענען עפֿנטלעך זוךבאַר און פֿאָדערן אַדמין באַשטעטיקונג צו אַרײַנשליסן. איר קענט רעדאַגירן די סעטינגס אין יעדער צײַט.",
     "onboardingLanguagesTitle": "וועלכע שפּראַך לערנט איר?",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "די סומאַריע קען נישט דערהייַנטיקט ווערן.",
     "courseNotFound": "קאָרס ניט געפֿונען",
     "askTeacherForNewCourse": "בעט דיין לערער צו קלייַבן אַ נײַעם קורס.",
-    "pickNewCoursePlan": "קלויבט אויס א נײַעם קורס־פּלאַן."
+    "pickNewCoursePlan": "קלויבט אויס א נײַעם קורס־פּלאַן.",
+    "ssoNetworkBlockedTitle": "די אַרייַנגאַנג־פּלאַץ איז נישט צוטריטלעך",
+    "ssoNetworkBlockedDesc": "די נעץ לאָזט אונדז נישט דערגרייכן {provider} כּדי אײַך אַרײַנצוגעבן. שולע און אָפיס ווי־פי בלאקירן דאָס אָפֿט. איר קענט זיך אַנשטאָט דעם רעגיסטרירן מיט אימעיל, אָדער בייטן צו אַן אַנדער נעץ און פּרוּוון ווידער.",
+    "ssoTryAnyway": "פּרוּווט סײַ ווי",
+    "publicCoursesFilterTooltip": "ווייַזן בלויז קורסן וואָס יעדער איינער קען זיך אייַנשליסן",
+    "restrictedCoursesFilterTooltip": "ווייַזן בלויז קורסן וואָס איר מוזט בעטן זיך אייַנצושליסן",
+    "viewImageLabel": "זען בילד"
 }

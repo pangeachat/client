@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-02 14:12:56.486860",
+    "@@last_modified": "2026-10-05 13:57:45.251565",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Pregledajte javne kurseve",
     "publicInviteDescChat": "Pretražite korisnike da ih pozovete u ovaj chat.",
     "publicInviteDescSpace": "Pretražite korisnike da ih pozovete u ovaj prostor.",
-    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata",
     "chatWithSupport": "Chat s podrškom",
     "newCourseAccess": "Po defaultu, kursevi su javno pretraživi i zahtijevaju odobrenje administratora za pridruživanje. Ove postavke možete urediti u bilo kojem trenutku.",
     "onboardingLanguagesTitle": "Koji jezik učite?",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "Ovaj sažetak nije moguće ažurirati.",
     "courseNotFound": "Kurs nije pronađen",
     "askTeacherForNewCourse": "Zamolite svog učitelja da odabere novi kurs.",
-    "pickNewCoursePlan": "Odaberite novi plan kursa."
+    "pickNewCoursePlan": "Odaberite novi plan kursa.",
+    "ssoNetworkBlockedTitle": "Stranica za prijavu nedostupna",
+    "ssoNetworkBlockedDesc": "Ova mreža nam ne dozvoljava da pristupimo {provider} za vašu prijavu. Školske i kancelarijske Wi-Fi mreže često blokiraju pristup. Umjesto toga, možete se prijaviti putem e-pošte ili se prebaciti na drugu mrežu i pokušati ponovo.",
+    "ssoTryAnyway": "Pokušaj svejedno",
+    "publicCoursesFilterTooltip": "Prikaži samo kurseve kojima se svako može pridružiti",
+    "restrictedCoursesFilterTooltip": "Prikaži samo kurseve za koje morate tražiti odobrenje za pridruživanje",
+    "viewImageLabel": "Prikaži sliku"
 }

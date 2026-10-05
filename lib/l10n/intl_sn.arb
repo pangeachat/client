@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-02 14:13:01.856753",
+    "@@last_modified": "2026-10-05 13:57:52.888329",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Tarisa makosi eruzhinji",
     "publicInviteDescChat": "Tsvaga vashandisi kuti uvakoke kune chat iyi.",
     "publicInviteDescSpace": "Tsvaga vashandisi kuti uvakoke kune nzvimbo ino.",
-    "useActivityImageAsChatBackground": "Shandisa mufananidzo wechiitiko semashure echati",
     "chatWithSupport": "Chat neRubatsiro",
     "newCourseAccess": "Nokusingaperi, makosi anotsvagwa pachena uye anoda mvumo yemutungamiriri kuti abatane. Unogona kugadzirisa zvigadziriso izvi chero nguva.",
     "onboardingLanguagesTitle": "Uri kudzidza mutauro upi?",
@@ -2391,5 +2390,11 @@
     "activitySummaryUpdateFailed": "Chidimbu ichi hachina kukwanisa kugadziriswa.",
     "courseNotFound": "Kosi yacho haipo",
     "askTeacherForNewCourse": "Kumbira mudzidzisi wako kuti asarudze kosi itsva.",
-    "pickNewCoursePlan": "Sarudza chirongwa chitsva chekudzidza."
+    "pickNewCoursePlan": "Sarudza chirongwa chitsva chekudzidza.",
+    "ssoNetworkBlockedTitle": "Saiti yekupinda haisvikike",
+    "ssoNetworkBlockedDesc": "Network iyi haitibvumire kusvika ku {provider} kuti tikupinze. Wi-Fi yechikoro neyehofisi inowanzoivharira. Unogona kusaina neemail panzvimbo, kana kuchinja kune imwe network woedza zvakare.",
+    "ssoTryAnyway": "Edza zvakadaro",
+    "publicCoursesFilterTooltip": "Ratidza makosi anogona kupindwa nemunhu wese",
+    "restrictedCoursesFilterTooltip": "Ratidza makosi aunofanira kukumbira kuti upinde",
+    "viewImageLabel": "Tarisa mufananidzo"
 }

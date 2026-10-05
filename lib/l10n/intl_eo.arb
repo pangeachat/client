@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-02 14:12:57.153721",
+    "@@last_modified": "2026-10-05 13:57:46.858090",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -8702,11 +8702,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Uzu aktivan bildon kiel ĉatfondon",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Babili kun Subteno",
     "@chatWithSupport": {
         "type": "String",
@@ -10924,5 +10919,11 @@
     "activitySummaryUpdateFailed": "Ĉi tiu resumo ne povis esti ĝisdatigita.",
     "courseNotFound": "Kurso ne trovita",
     "askTeacherForNewCourse": "Petu vian instruiston elekti novan kurson.",
-    "pickNewCoursePlan": "Elektu novan kursplanon."
+    "pickNewCoursePlan": "Elektu novan kursplanon.",
+    "ssoNetworkBlockedTitle": "Ensaluta retejo neatingebla",
+    "ssoNetworkBlockedDesc": "Ĉi tiu reto ne permesas al ni atingi {provider} por ensaluti vin. Lerneja kaj oficeja retkonekto ofte blokas ĝin. Vi povas registriĝi per retpoŝto anstataŭe, aŭ ŝanĝi al alia reto kaj reprovi.",
+    "ssoTryAnyway": "Provu ĉiukaze",
+    "publicCoursesFilterTooltip": "Montri nur kursojn al kiuj iu ajn povas aliĝi",
+    "restrictedCoursesFilterTooltip": "Montri nur kursojn al kiuj vi devas peti aliĝon",
+    "viewImageLabel": "Vidi bildon"
 }
