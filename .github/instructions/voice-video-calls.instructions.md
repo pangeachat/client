@@ -213,6 +213,15 @@ call card is not that anchor: only one side writes it, and a call both people
 reloaded out of leaves none, which would strand the other half in exactly the
 case a transcript is most wanted.
 
+The words of a half travel in its event; the audio does not. A recording is a
+Matrix media upload, exactly like a voice message: the bytes live in the
+homeserver's media store — the same S3-backed store voice-message audio already
+uses — and the event carries only an `mxc://` reference and the recording's
+metadata. A half's event therefore stays small enough to ride the timeline while
+the audio is fetched on demand rather than pushed through every sync, and the
+recording inherits the retention already disclosed for voice messages. The merged
+full-call recording is one more such upload, referenced the same way.
+
 The recording-based pass is gated behind `CALL_RECORDING_TRANSCRIPT`, which
 currently defaults off: until it is enabled, each half is the live one
 transcribed during the call (see [Failure is not all-or-nothing]), and the
