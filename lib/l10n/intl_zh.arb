@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-16 10:14:24.885194",
+    "@@last_modified": "2026-10-05 12:30:52.868184",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9936,5 +9936,8 @@
     "orchestratorFeedbackNoAwards": "此回合未授予任何星级，因此此处没有什么可质疑的。",
     "orchestratorFeedbackCommentRequired": "添加评论，以便我们知道要修复什么",
     "orchestratorFeedbackSubmit": "发送",
-    "orchestratorFeedbackThanks": "已标记。谢谢！"
+    "orchestratorFeedbackThanks": "已标记。谢谢！",
+    "ssoNetworkBlockedTitle": "无法访问登录网站",
+    "ssoNetworkBlockedDesc": "此网络不允许我们访问 {provider} 来登录。学校和办公室的 Wi-Fi 通常会阻止它。您可以改为使用电子邮件注册，或切换到其他网络再试一次。",
+    "ssoTryAnyway": "仍然尝试"
 }

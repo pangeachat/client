@@ -3563,7 +3563,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-16 10:14:09.998005",
+    "@@last_modified": "2026-10-05 12:30:37.546544",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9947,5 +9947,8 @@
     "orchestratorFeedbackNoAwards": "Níor bronnadh aon réaltaí sa seal seo, mar sin níl aon rud le ceistiú anseo.",
     "orchestratorFeedbackCommentRequired": "Cuir trácht leis ionas go mbeidh a fhios againn cad atá le socrú",
     "orchestratorFeedbackSubmit": "Seol",
-    "orchestratorFeedbackThanks": "Bratach curtha. Go raibh maith agat!"
+    "orchestratorFeedbackThanks": "Bratach curtha. Go raibh maith agat!",
+    "ssoNetworkBlockedTitle": "Suíomh sínithe isteach do-rochtain",
+    "ssoNetworkBlockedDesc": "Níl an líonra seo ag ligean dúinn {provider} a bhaint amach chun tú a shíniú isteach. Is minic a chuireann Wi-Fi scoile agus oifige bac air. Is féidir leat clárú le ríomhphost ina ionad, nó athrú go líonra eile agus triail eile a bhaint as.",
+    "ssoTryAnyway": "Bain triail as ar aon nós"
 }

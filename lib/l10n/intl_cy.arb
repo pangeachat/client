@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-16 10:14:08.325654",
+    "@@last_modified": "2026-10-05 12:30:35.567813",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Ni ddyfarnodd y tro hwn unrhyw sêr, felly does dim byd i'w gwestiynu yma.",
     "orchestratorFeedbackCommentRequired": "Ychwanegwch sylw fel ein bod yn gwybod beth i'w drwsio",
     "orchestratorFeedbackSubmit": "Anfon",
-    "orchestratorFeedbackThanks": "Wedi'i fflagio. Diolch!"
+    "orchestratorFeedbackThanks": "Wedi'i fflagio. Diolch!",
+    "ssoNetworkBlockedTitle": "Safle mewngofnodi’n anghyraeddadwy",
+    "ssoNetworkBlockedDesc": "Nid yw’r rhwydwaith hwn yn gadael inni gyrraedd {provider} i’ch mewngofnodi. Mae Wi-Fi ysgol a swyddfa’n aml yn ei rwystro. Gallwch gofrestru gydag e-bost yn lle hynny, neu newid i rwydwaith arall a rhoi cynnig arall arni.",
+    "ssoTryAnyway": "Rhowch gynnig arni beth bynnag"
 }

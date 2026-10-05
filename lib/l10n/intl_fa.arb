@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:09.337200",
+    "@@last_modified": "2026-10-05 12:30:36.041255",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10024,5 +10024,8 @@
     "orchestratorFeedbackNoAwards": "در این نوبت هیچ ستاره‌ای اهدا نشد، بنابراین چیزی برای اعتراض وجود ندارد.",
     "orchestratorFeedbackCommentRequired": "یک نظر اضافه کنید تا بدانیم چه چیزی را باید اصلاح کنیم",
     "orchestratorFeedbackSubmit": "ارسال",
-    "orchestratorFeedbackThanks": "پرچم‌گذاری شد. ممنون!"
+    "orchestratorFeedbackThanks": "پرچم‌گذاری شد. ممنون!",
+    "ssoNetworkBlockedTitle": "سایت ورود به سیستم در دسترس نیست",
+    "ssoNetworkBlockedDesc": "این شبکه به ما اجازه نمی‌دهد برای ورود شما به {provider} دسترسی پیدا کنیم. وای‌فای مدرسه و اداره اغلب آن را مسدود می‌کنند. می‌توانید به جای آن با ایمیل ثبت‌نام کنید، یا به شبکه دیگری متصل شوید و دوباره امتحان کنید.",
+    "ssoTryAnyway": "به هر حال امتحان کن"
 }

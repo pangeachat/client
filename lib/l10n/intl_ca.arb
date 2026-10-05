@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:07.351804",
+    "@@last_modified": "2026-10-05 12:30:34.768284",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10063,5 +10063,8 @@
     "orchestratorFeedbackNoAwards": "Aquesta ronda no ha atorgat cap estrella, així que no hi ha res a qüestionar.",
     "orchestratorFeedbackCommentRequired": "Afegeix un comentari perquè sapiguem què hem de solucionar",
     "orchestratorFeedbackSubmit": "Envia",
-    "orchestratorFeedbackThanks": "Marcar. Gràcies!"
+    "orchestratorFeedbackThanks": "Marcar. Gràcies!",
+    "ssoNetworkBlockedTitle": "Lloc d'inici de sessió inaccessible",
+    "ssoNetworkBlockedDesc": "Aquesta xarxa no ens permet connectar amb {provider} per iniciar la sessió. Sovint, les xarxes Wi-Fi d'escoles i oficines bloquegen l'accés. Pots registrar-te amb el correu electrònic o canviar a una altra xarxa i tornar-ho a provar.",
+    "ssoTryAnyway": "Prova igualment"
 }

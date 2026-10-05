@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-16 10:14:23.866861",
+    "@@last_modified": "2026-10-05 12:30:49.865281",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9936,5 +9936,8 @@
     "orchestratorFeedbackNoAwards": "Цей хід не приніс зірок, тому тут немає про що повідомляти.",
     "orchestratorFeedbackCommentRequired": "Додайте коментар, щоб ми знали, що виправити",
     "orchestratorFeedbackSubmit": "Надіслати",
-    "orchestratorFeedbackThanks": "Повідомлено. Дякуємо!"
+    "orchestratorFeedbackThanks": "Повідомлено. Дякуємо!",
+    "ssoNetworkBlockedTitle": "Сайт входу недоступний",
+    "ssoNetworkBlockedDesc": "Ця мережа не дозволяє нам зв’язатися з {provider} для входу. Шкільний та офісний Wi-Fi часто блокують його. Ви можете зареєструватися за допомогою електронної пошти або переключитися на іншу мережу та спробувати ще раз.",
+    "ssoTryAnyway": "Все одно спробувати"
 }

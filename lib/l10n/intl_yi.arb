@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-16 10:14:25.499516",
+    "@@last_modified": "2026-10-05 12:30:51.502541",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "די דאָזיקע ריי האָט נישט באַלוינט קיין שטערן, אַזוי אַז ס'איז נישטאָ וואָס צו פֿרעגן דאָ.",
     "orchestratorFeedbackCommentRequired": "לייגט צו אַ קאָמענטאַר כּדי מיר זאָלן וויסן וואָס צו פֿאַרריכטן",
     "orchestratorFeedbackSubmit": "שיקן",
-    "orchestratorFeedbackThanks": "פֿאַרפֿאָנט. אַ דאַנק!"
+    "orchestratorFeedbackThanks": "פֿאַרפֿאָנט. אַ דאַנק!",
+    "ssoNetworkBlockedTitle": "די אַרייַנגאַנג־פּלאַץ איז נישט צוטריטלעך",
+    "ssoNetworkBlockedDesc": "די נעץ לאָזט אונדז נישט דערגרייכן {provider} כּדי אײַך אַרײַנצוגעבן. שולע און אָפיס ווי־פי בלאקירן דאָס אָפֿט. איר קענט זיך אַנשטאָט דעם רעגיסטרירן מיט אימעיל, אָדער בייטן צו אַן אַנדער נעץ און פּרוּוון ווידער.",
+    "ssoTryAnyway": "פּרוּווט סײַ ווי"
 }

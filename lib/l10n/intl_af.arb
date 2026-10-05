@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-16 10:14:05.815167",
+    "@@last_modified": "2026-10-05 12:30:33.496360",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Hierdie beurt het geen sterre toegeken nie, so daar is niks om hier te bevraagteken nie.",
     "orchestratorFeedbackCommentRequired": "Voeg 'n opmerking by sodat ons weet wat om reg te maak",
     "orchestratorFeedbackSubmit": "Stuur",
-    "orchestratorFeedbackThanks": "Gerapporteer. Dankie!"
+    "orchestratorFeedbackThanks": "Gerapporteer. Dankie!",
+    "ssoNetworkBlockedTitle": "Aanmeldingswerf onbereikbaar",
+    "ssoNetworkBlockedDesc": "Hierdie netwerk laat ons nie toe om {provider} te bereik om jou aan te meld nie. Skool- en kantoor-Wi-Fi blokkeer dit dikwels. Jy kan eerder met e-pos aanmeld, of na 'n ander netwerk oorskakel en weer probeer.",
+    "ssoTryAnyway": "Probeer in elk geval"
 }

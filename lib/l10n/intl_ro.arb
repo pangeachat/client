@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:19.469185",
+    "@@last_modified": "2026-10-05 12:30:46.587727",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10668,5 +10668,8 @@
     "orchestratorFeedbackNoAwards": "Această rundă nu a acordat stele, deci nu este nimic de pus la îndoială aici.",
     "orchestratorFeedbackCommentRequired": "Adaugă un comentariu ca să știm ce să remediem",
     "orchestratorFeedbackSubmit": "Trimite",
-    "orchestratorFeedbackThanks": "Semnalat. Mulțumim!"
+    "orchestratorFeedbackThanks": "Semnalat. Mulțumim!",
+    "ssoNetworkBlockedTitle": "Site-ul de conectare este inaccesibil",
+    "ssoNetworkBlockedDesc": "Această rețea nu ne permite să ajungem la {provider} pentru a te conecta. Rețelele Wi-Fi de la școală și de la birou blochează adesea acest lucru. Te poți înscrie cu e-mail în schimb sau poți trece la o altă rețea și poți încerca din nou.",
+    "ssoTryAnyway": "Încearcă oricum"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-16 10:14:11.209742",
+    "@@last_modified": "2026-10-05 12:30:38.753939",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Lub sijhawm no tsis muaj hnub qub, yog li tsis muaj dab tsi yuav nug.",
     "orchestratorFeedbackCommentRequired": "Ntxiv ib nqe lus kom peb paub yuav kho li cas",
     "orchestratorFeedbackSubmit": "Xa",
-    "orchestratorFeedbackThanks": "Taw lawm. Ua tsaug!"
+    "orchestratorFeedbackThanks": "Taw lawm. Ua tsaug!",
+    "ssoNetworkBlockedTitle": "Qhov chaw nkag tsis tuaj yeem mus txog",
+    "ssoNetworkBlockedDesc": "Lub network no tsis tso cai rau peb mus txog {provider} los pab koj nkag. Feem ntau, tsev kawm ntawv thiab chaw ua haujlwm Wi-Fi thaiv nws. Koj tuaj yeem sau npe nrog email es tsis txhob, los yog hloov mus rau lwm lub network thiab sim dua.",
+    "ssoTryAnyway": "Sim txawm li cas los xij"
 }

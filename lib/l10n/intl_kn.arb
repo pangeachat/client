@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-16 10:14:13.800117",
+    "@@last_modified": "2026-10-05 12:30:40.838513",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "ಈ ತಿರುವಿನಲ್ಲಿ ಯಾವುದೇ ನಕ್ಷತ್ರಗಳನ್ನು ನೀಡಲಾಗಿಲ್ಲ, ಆದ್ದರಿಂದ ಇಲ್ಲಿ ಪ್ರಶ್ನಿಸಲು ಏನೂ ಇಲ್ಲ.",
     "orchestratorFeedbackCommentRequired": "ನಾವು ಏನನ್ನು ಸರಿಪಡಿಸಬೇಕು ಎಂದು ತಿಳಿಯಲು ಕಾಮೆಂಟ್ ಸೇರಿಸಿ",
     "orchestratorFeedbackSubmit": "ಕಳುಹಿಸಿ",
-    "orchestratorFeedbackThanks": "ಫ್ಲ್ಯಾಗ್ ಮಾಡಲಾಗಿದೆ. ಧನ್ಯವಾದಗಳು!"
+    "orchestratorFeedbackThanks": "ಫ್ಲ್ಯಾಗ್ ಮಾಡಲಾಗಿದೆ. ಧನ್ಯವಾದಗಳು!",
+    "ssoNetworkBlockedTitle": "ಸೈನ್-ಇನ್ ಸೈಟ್ ತಲುಪಲಾಗುತ್ತಿಲ್ಲ",
+    "ssoNetworkBlockedDesc": "ನಿಮ್ಮನ್ನು ಸೈನ್ ಇನ್ ಮಾಡಲು {provider} ಅನ್ನು ತಲುಪಲು ಈ ನೆಟ್‌ವರ್ಕ್ ನಮಗೆ ಅನುಮತಿಸುತ್ತಿಲ್ಲ. ಶಾಲೆ ಮತ್ತು ಕಚೇರಿ ವೈ-ಫೈ ಸಾಮಾನ್ಯವಾಗಿ ಇದನ್ನು ನಿರ್ಬಂಧಿಸುತ್ತದೆ. ನೀವು ಬದಲಿಗೆ ಇಮೇಲ್ ಮೂಲಕ ಸೈನ್ ಅಪ್ ಮಾಡಬಹುದು, ಅಥವಾ ಇನ್ನೊಂದು ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಬದಲಾಯಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಬಹುದು.",
+    "ssoTryAnyway": "ಹೇಗಾದರೂ ಪ್ರಯತ್ನಿಸಿ"
 }

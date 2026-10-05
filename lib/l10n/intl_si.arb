@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-16 10:14:21.417022",
+    "@@last_modified": "2026-10-05 12:30:47.151449",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "මෙම වාරයේ තරු ප්‍රදානය නොකළ නිසා, මෙහි ප්‍රශ්න කිරීමට කිසිවක් නැත.",
     "orchestratorFeedbackCommentRequired": "අපට නිවැරදි කළ යුතු දේ දැන ගැනීමට අදහසක් එක් කරන්න",
     "orchestratorFeedbackSubmit": "යවන්න",
-    "orchestratorFeedbackThanks": "සලකුණු කරන ලදී. ස්තූතියි!"
+    "orchestratorFeedbackThanks": "සලකුණු කරන ලදී. ස්තූතියි!",
+    "ssoNetworkBlockedTitle": "පිවිසුම් අඩවියට ළඟා විය නොහැක",
+    "ssoNetworkBlockedDesc": "ඔබව පුරනය කිරීමට {provider} වෙත ළඟා වීමට මෙම ජාලය අපට ඉඩ නොදේ. පාසල් සහ කාර්යාල Wi-Fi බොහෝ විට එය අවහිර කරයි. ඔබට ඒ වෙනුවට විද්‍යුත් තැපෑලෙන් ලියාපදිංචි විය හැක, නැතහොත් වෙනත් ජාලයකට මාරු වී නැවත උත්සාහ කරන්න.",
+    "ssoTryAnyway": "කෙසේ හෝ උත්සාහ කරන්න"
 }

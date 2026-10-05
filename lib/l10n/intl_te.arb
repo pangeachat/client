@@ -1324,7 +1324,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-09-16 10:14:23.116139",
+    "@@last_modified": "2026-10-05 12:30:49.535916",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10886,5 +10886,8 @@
     "orchestratorFeedbackNoAwards": "ఈ మలుపులో నక్షత్రాలు ఇవ్వబడలేదు, కాబట్టి ఇక్కడ ప్రశ్నించడానికి ఏమీ లేదు.",
     "orchestratorFeedbackCommentRequired": "మేము ఏమి సరిదిద్దాలో తెలుసుకోవడానికి ఒక వ్యాఖ్యను జోడించండి",
     "orchestratorFeedbackSubmit": "పంపు",
-    "orchestratorFeedbackThanks": "ఫ్లాగ్ చేయబడింది. ధన్యవాదాలు!"
+    "orchestratorFeedbackThanks": "ఫ్లాగ్ చేయబడింది. ధన్యవాదాలు!",
+    "ssoNetworkBlockedTitle": "సైన్-ఇన్ సైట్ అందుబాటులో లేదు",
+    "ssoNetworkBlockedDesc": "మీరు సైన్ ఇన్ చేయడానికి {provider}ని చేరుకోవడానికి ఈ నెట్‌వర్క్ అనుమతించడం లేదు. పాఠశాల మరియు కార్యాలయ Wi-Fi తరచుగా దీన్ని బ్లాక్ చేస్తాయి. మీరు బదులుగా ఇమెయిల్‌తో సైన్ అప్ చేయవచ్చు లేదా మరొక నెట్‌వర్క్‌కి మారవచ్చు మరియు మళ్లీ ప్రయత్నించవచ్చు.",
+    "ssoTryAnyway": "ఏమైనా ప్రయత్నించండి"
 }

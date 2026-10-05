@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-16 10:14:14.731958",
+    "@@last_modified": "2026-10-05 12:30:41.473150",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Dis tɔn nɔ gi yu ɛni star, so nɔtin nɔ de fɔ kwɛstion ya.",
     "orchestratorFeedbackCommentRequired": "Put kɔmɛnt so wi go no wetin fɔ fiks",
     "orchestratorFeedbackSubmit": "Sɛn",
-    "orchestratorFeedbackThanks": "Dɛn dɔn flag am. Tɛnki!"
+    "orchestratorFeedbackThanks": "Dɛn dɔn flag am. Tɛnki!",
+    "ssoNetworkBlockedTitle": "Sayn-in sayt nɔ de rich",
+    "ssoNetworkBlockedDesc": "Dis netwɔk nɔ de mek wi rich {provider} fɔ sayn yu in. Skul ɛn ɔfis Wi-Fi kin blɔk am. Yu go ebul sayn-ɔp wit imel instɛd, ɔ chenj to ɔda netwɔk ɛn tray igen.",
+    "ssoTryAnyway": "Tray ɛnitin"
 }

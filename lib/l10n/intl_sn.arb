@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-16 10:14:21.512769",
+    "@@last_modified": "2026-10-05 12:30:47.817450",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Kutendeuka uku hakuna kupa nyenyedzi, saka hapana chekubvunza pano.",
     "orchestratorFeedbackCommentRequired": "Wedzera chirevo kuti tizive chekugadzirisa",
     "orchestratorFeedbackSubmit": "Tumira",
-    "orchestratorFeedbackThanks": "Yamaka. Ndatenda!"
+    "orchestratorFeedbackThanks": "Yamaka. Ndatenda!",
+    "ssoNetworkBlockedTitle": "Saiti yekupinda haisvikike",
+    "ssoNetworkBlockedDesc": "Network iyi haitibvumire kusvika ku {provider} kuti tikupinze. Wi-Fi yechikoro neyehofisi inowanzoivharira. Unogona kusaina neemail panzvimbo, kana kuchinja kune imwe network woedza zvakare.",
+    "ssoTryAnyway": "Edza zvakadaro"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-16 10:14:16.395110",
+    "@@last_modified": "2026-10-05 12:30:43.150115",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Tsy nisy kintana nomena tamin'ity fihodinana ity, ka tsy misy azo anontaniana eto.",
     "orchestratorFeedbackCommentRequired": "Ampio fanehoan-kevitra mba ho fantatray izay tokony ahitsy",
     "orchestratorFeedbackSubmit": "Alefaso",
-    "orchestratorFeedbackThanks": "Voamarika. Misaotra!"
+    "orchestratorFeedbackThanks": "Voamarika. Misaotra!",
+    "ssoNetworkBlockedTitle": "Tsy azo idirana ny tranokala fidirana",
+    "ssoNetworkBlockedDesc": "Tsy mamela anay hiditra amin'ny {provider} ity tambajotra ity mba hampidirana anao. Matetika manakana izany ny Wi-Fi any an-tsekoly sy any amin'ny birao. Azonao atao ny misoratra anarana amin'ny mailaka, na mifindra amin'ny tambajotra hafa ary manandrana indray.",
+    "ssoTryAnyway": "Andramo ihany"
 }

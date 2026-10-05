@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:23.060174",
+    "@@last_modified": "2026-10-05 12:30:49.233550",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10028,5 +10028,8 @@
     "orchestratorFeedbackNoAwards": "இந்த முறை எந்த நட்சத்திரங்களும் வழங்கப்படவில்லை, எனவே இங்கே கேள்வி கேட்க எதுவும் இல்லை.",
     "orchestratorFeedbackCommentRequired": "நாங்கள் எதைச் சரிசெய்ய வேண்டும் என்பதை அறிய ஒரு கருத்தைச் சேர்க்கவும்",
     "orchestratorFeedbackSubmit": "அனுப்பு",
-    "orchestratorFeedbackThanks": "கொடியிடப்பட்டது. நன்றி!"
+    "orchestratorFeedbackThanks": "கொடியிடப்பட்டது. நன்றி!",
+    "ssoNetworkBlockedTitle": "உள்நுழைவு தளம் அணுக முடியாதது",
+    "ssoNetworkBlockedDesc": "உங்களை உள்நுழைய வைக்க {provider} ஐ அணுக இந்த நெட்வொர்க் எங்களை அனுமதிக்கவில்லை. பள்ளி மற்றும் அலுவலக வைஃபை பெரும்பாலும் இதைத் தடுக்கிறது. அதற்கு பதிலாக நீங்கள் மின்னஞ்சல் மூலம் பதிவு செய்யலாம் அல்லது வேறு நெட்வொர்க்கிற்கு மாறி மீண்டும் முயற்சி செய்யலாம்.",
+    "ssoTryAnyway": "எப்படியும் முயற்சி செய்"
 }

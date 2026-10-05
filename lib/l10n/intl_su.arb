@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-16 10:14:22.344048",
+    "@@last_modified": "2026-10-05 12:30:48.925569",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Giliran ieu teu meunang béntang, jadi teu aya nu tiasa ditaroskeun.",
     "orchestratorFeedbackCommentRequired": "Tambihkeun koméntar supados urang terang naon nu kedah dilereskeun",
     "orchestratorFeedbackSubmit": "Kirim",
-    "orchestratorFeedbackThanks": "Dilaporkeun. Hatur nuhun!"
+    "orchestratorFeedbackThanks": "Dilaporkeun. Hatur nuhun!",
+    "ssoNetworkBlockedTitle": "Situs asup teu tiasa diaksés",
+    "ssoNetworkBlockedDesc": "Jaringan ieu ngahalangan kami ngahubungi {provider} pikeun ngasupkeun anjeun. Wi-Fi sakola sareng kantor sering ngahalanganana. Anjeun tiasa ngadaptar nganggo email, atanapi gentos ka jaringan sanés teras cobian deui.",
+    "ssoTryAnyway": "Cobi waé"
 }

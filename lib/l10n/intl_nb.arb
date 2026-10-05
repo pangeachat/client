@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:17.665921",
+    "@@last_modified": "2026-10-05 12:30:44.372718",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9993,5 +9993,8 @@
     "orchestratorFeedbackNoAwards": "Denne runden ga ingen stjerner, så det er ingenting å stille spørsmål ved her.",
     "orchestratorFeedbackCommentRequired": "Legg til en kommentar slik at vi vet hva vi skal fikse",
     "orchestratorFeedbackSubmit": "Send",
-    "orchestratorFeedbackThanks": "Rapportert. Takk!"
+    "orchestratorFeedbackThanks": "Rapportert. Takk!",
+    "ssoNetworkBlockedTitle": "Påloggingsside utilgjengelig",
+    "ssoNetworkBlockedDesc": "Dette nettverket hindrer oss i å nå {provider} for å logge deg på. Skole- og kontor-Wi-Fi blokkerer ofte dette. Du kan registrere deg med e-post i stedet, eller bytte til et annet nettverk og prøve igjen.",
+    "ssoTryAnyway": "Prøv likevel"
 }

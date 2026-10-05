@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-16 10:14:23.607477",
+    "@@last_modified": "2026-10-05 12:30:50.211211",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Ин давр ситораҳо надод, аз ин рӯ дар ин ҷо чизе барои савол додан нест.",
     "orchestratorFeedbackCommentRequired": "Шарҳ илова кунед, то бидонем, ки чиро ислоҳ кунем",
     "orchestratorFeedbackSubmit": "Ирсол",
-    "orchestratorFeedbackThanks": "Қайд карда шуд. Ташаккур!"
+    "orchestratorFeedbackThanks": "Қайд карда шуд. Ташаккур!",
+    "ssoNetworkBlockedTitle": "Сайти воридшавӣ дастнорас аст",
+    "ssoNetworkBlockedDesc": "Ин шабака ба мо имкон намедиҳад, ки барои ворид шудан ба {provider} дастрасӣ пайдо кунем. Wi-Fi-и мактаб ва офис аксар вақт онро маҳкам мекунанд. Шумо метавонед ба ҷои ин бо почтаи электронӣ сабти ном кунед ё ба шабакаи дигар гузаред ва дубора кӯшиш кунед.",
+    "ssoTryAnyway": "Ба ҳар ҳол кӯшиш кунед"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-16 10:14:16.588269",
+    "@@last_modified": "2026-10-05 12:30:42.833325",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Овој потег не додели ѕвезди, така што нема што да се доведува во прашање тука.",
     "orchestratorFeedbackCommentRequired": "Додадете коментар за да знаеме што да поправиме",
     "orchestratorFeedbackSubmit": "Испрати",
-    "orchestratorFeedbackThanks": "Пријавено. Благодарам!"
+    "orchestratorFeedbackThanks": "Пријавено. Благодарам!",
+    "ssoNetworkBlockedTitle": "Веб-страницата за најавување е недостапна",
+    "ssoNetworkBlockedDesc": "Оваа мрежа не ни дозволува да стигнеме до {provider} за да ве најавиме. Училишниот и канцеларискиот Wi-Fi често го блокираат. Може да се регистрирате со е-пошта наместо тоа, или да се префрлите на друга мрежа и да се обидете повторно.",
+    "ssoTryAnyway": "Сепак, обидете се"
 }

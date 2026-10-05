@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-16 10:14:24.347877",
+    "@@last_modified": "2026-10-05 12:30:51.694487",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "بۇ نۆۋەتتە يۇلتۇز مۇكاپاتلانمىدى، شۇڭا بۇ يەردە گۇمانلىنىدىغان ھېچقانداق نەرسە يوق.",
     "orchestratorFeedbackCommentRequired": "بىر باھا قوشۇڭ، شۇنداق قىلساق نېمىنى ئوڭشاشنى بىلىمىز",
     "orchestratorFeedbackSubmit": "يوللاڭ",
-    "orchestratorFeedbackThanks": "بەلگە قىلىندى. رەھمەت!"
+    "orchestratorFeedbackThanks": "بەلگە قىلىندى. رەھمەت!",
+    "ssoNetworkBlockedTitle": "كىرىش تور بېكىتىگە يېتىپ بولغىلى بولمىدى",
+    "ssoNetworkBlockedDesc": "بۇ تور سىزنى كىرگۈزۈش ئۈچۈن بىزنىڭ {provider} غا يېتىشىمىزگە يول قويمىدى. مەكتەپ ۋە ئىشخانا Wi-Fi دائىم ئۇنى چەكلەيدۇ. ئەكسىچە ئېلخەت ئارقىلىق تىزىملاتسىڭىز ياكى باشقا تورغا ئالماشتۇرۇپ قايتا سىناپ باقسىڭىز بولىدۇ.",
+    "ssoTryAnyway": "قانداقلا بولمىسۇن سىناپ بېقىڭ"
 }

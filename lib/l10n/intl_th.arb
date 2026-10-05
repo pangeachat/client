@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-16 10:14:23.135677",
+    "@@last_modified": "2026-10-05 12:30:49.267153",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10568,5 +10568,8 @@
     "orchestratorFeedbackNoAwards": "เทิร์นนี้ไม่ได้รับดาว ดังนั้นจึงไม่มีอะไรต้องตั้งคำถามที่นี่",
     "orchestratorFeedbackCommentRequired": "เพิ่มความคิดเห็นเพื่อให้เราทราบว่าจะแก้ไขอะไร",
     "orchestratorFeedbackSubmit": "ส่ง",
-    "orchestratorFeedbackThanks": "ตั้งค่าสถานะแล้ว ขอบคุณ!"
+    "orchestratorFeedbackThanks": "ตั้งค่าสถานะแล้ว ขอบคุณ!",
+    "ssoNetworkBlockedTitle": "เข้าสู่ระบบไม่ได้",
+    "ssoNetworkBlockedDesc": "เครือข่ายนี้ไม่อนุญาตให้เราเข้าถึง {provider} เพื่อลงชื่อเข้าใช้คุณ Wi-Fi ของโรงเรียนและที่ทำงานมักจะบล็อกไว้ คุณสามารถลงทะเบียนด้วยอีเมลแทน หรือเปลี่ยนไปใช้เครือข่ายอื่นแล้วลองอีกครั้ง",
+    "ssoTryAnyway": "ลองอีกครั้ง"
 }

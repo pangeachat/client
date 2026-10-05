@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-16 10:14:09.128775",
+    "@@last_modified": "2026-10-05 12:30:36.123793",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9973,5 +9973,8 @@
     "orchestratorFeedbackNoAwards": "Tällä kierroksella ei jaettu tähtiä, joten tässä ei ole mitään kyseenalaistettavaa.",
     "orchestratorFeedbackCommentRequired": "Lisää kommentti, jotta tiedämme mitä korjata",
     "orchestratorFeedbackSubmit": "Lähetä",
-    "orchestratorFeedbackThanks": "Merkitty. Kiitos!"
+    "orchestratorFeedbackThanks": "Merkitty. Kiitos!",
+    "ssoNetworkBlockedTitle": "Kirjautumissivusto ei tavoitettavissa",
+    "ssoNetworkBlockedDesc": "Tämä verkko estää meitä tavoittamasta palvelua {provider} kirjautuaksesi sisään. Koulun ja toimiston Wi-Fi-verkot estävät sen usein. Voit kirjautua sisään sähköpostilla tai vaihtaa toiseen verkkoon ja yrittää uudelleen.",
+    "ssoTryAnyway": "Yritä silti"
 }

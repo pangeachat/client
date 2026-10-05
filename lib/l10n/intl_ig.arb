@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-16 10:14:13.064793",
+    "@@last_modified": "2026-10-05 12:30:39.857244",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Ntụgharị a enyeghị kpakpando ọ bụla, yabụ na ọ nweghị ihe ị ga-ajụ ebe a.",
     "orchestratorFeedbackCommentRequired": "Tinye okwu ka anyị mara ihe anyị ga-edozi",
     "orchestratorFeedbackSubmit": "Zipụ",
-    "orchestratorFeedbackThanks": "Akọwapụtara. Daalụ!"
+    "orchestratorFeedbackThanks": "Akọwapụtara. Daalụ!",
+    "ssoNetworkBlockedTitle": "Ebe nbanye anaghị eru",
+    "ssoNetworkBlockedDesc": "Netwọkụ a anaghị ekwe ka anyị ruo {provider} iji banye gị. Wi-Fi ụlọ akwụkwọ na ụlọ ọrụ na-egbochikarị ya. Ị nwere ike iji email debanye aha kama, ma ọ bụ gbanwee gaa na netwọkụ ọzọ wee nwaa ọzọ.",
+    "ssoTryAnyway": "Nwaa agbanyeghị"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-09-16 10:14:16.152983",
+    "@@last_modified": "2026-10-05 12:30:44.169289",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "ഈ അവസരത്തിൽ സ്റ്റാറുകളൊന്നും ലഭിച്ചില്ല, അതിനാൽ ഇവിടെ ചോദ്യം ചെയ്യാൻ ഒന്നുമില്ല.",
     "orchestratorFeedbackCommentRequired": "എന്താണ് ശരിയാക്കേണ്ടതെന്ന് അറിയാൻ ഒരു കമന്റ് ചേർക്കുക",
     "orchestratorFeedbackSubmit": "അയയ്ക്കുക",
-    "orchestratorFeedbackThanks": "ഫ്ലാഗ് ചെയ്തു. നന്ദി!"
+    "orchestratorFeedbackThanks": "ഫ്ലാഗ് ചെയ്തു. നന്ദി!",
+    "ssoNetworkBlockedTitle": "സൈൻ-ഇൻ സൈറ്റ് ലഭ്യമല്ല",
+    "ssoNetworkBlockedDesc": "നിങ്ങളെ സൈൻ ഇൻ ചെയ്യാൻ {provider} എന്ന സൈറ്റിൽ എത്താൻ ഈ നെറ്റ്‌വർക്ക് ഞങ്ങളെ അനുവദിക്കുന്നില്ല. സ്കൂളുകളിലെയും ഓഫീസുകളിലെയും വൈഫൈ പലപ്പോഴും ഇത് തടയും. നിങ്ങൾക്ക് പകരം ഇമെയിൽ ഉപയോഗിച്ച് സൈൻ അപ്പ് ചെയ്യാം, അല്ലെങ്കിൽ മറ്റൊരു നെറ്റ്‌വർക്കിലേക്ക് മാറി വീണ്ടും ശ്രമിക്കുക.",
+    "ssoTryAnyway": "എന്തായാലും ശ്രമിക്കുക"
 }

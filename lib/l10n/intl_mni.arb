@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-16 10:14:17.890010",
+    "@@last_modified": "2026-10-05 12:30:44.060354",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "असी टर्न असिना स्टार पीदे, मर्मदी असीदा खंगनिबा अमुत्तंग लैते।",
     "orchestratorFeedbackCommentRequired": "अमुक फगत्निबा करिनो हैबिदु खंगनिबाना कमेंट अम पीयू",
     "orchestratorFeedbackSubmit": "थमो",
-    "orchestratorFeedbackThanks": "फ्लैग तौरे। थगत्चरी!"
+    "orchestratorFeedbackThanks": "फ्लैग तौरे। थगत्चरी!",
+    "ssoNetworkBlockedTitle": "সাইন-ইন সাইট য়ৌদ্রে",
+    "ssoNetworkBlockedDesc": "অসি নেটৱার্ক অসিনা নখোঙবু সাইন ইন তৌনবা {provider} য়ৌহনদে। স্কুল অমসুং ওফিসকী ৱাই-ফাইনা মদু থিংজবা য়াই। নখোঙনা ইমেলগা লোইননা সাইন আপ তৌবা য়াই, নত্ত্রগা অতোপ্পা নেটৱার্ক অমা শীজিন্নদুনা অমুক হন্না ট্রাই তৌবা য়াই।",
+    "ssoTryAnyway": "ট্রাই তৌবা"
 }

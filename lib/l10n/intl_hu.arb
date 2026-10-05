@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-16 10:14:11.753231",
+    "@@last_modified": "2026-10-05 12:30:40.544357",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10039,5 +10039,8 @@
     "orchestratorFeedbackNoAwards": "Ez a kör nem osztott ki csillagokat, így nincs mit megkérdőjelezni.",
     "orchestratorFeedbackCommentRequired": "Adjon hozzá egy megjegyzést, hogy tudjuk, mit kell javítani",
     "orchestratorFeedbackSubmit": "Küldés",
-    "orchestratorFeedbackThanks": "Megjelölve. Köszönjük!"
+    "orchestratorFeedbackThanks": "Megjelölve. Köszönjük!",
+    "ssoNetworkBlockedTitle": "Bejelentkezési oldal nem elérhető",
+    "ssoNetworkBlockedDesc": "Ez a hálózat nem engedi, hogy elérjük a(z) {provider} szolgáltatót a bejelentkezéshez. Az iskolai és irodai Wi-Fi gyakran blokkolja. E-mail címmel is regisztrálhat, vagy válthat másik hálózatra, és újra megpróbálhatja.",
+    "ssoTryAnyway": "Mégis megpróbálom"
 }

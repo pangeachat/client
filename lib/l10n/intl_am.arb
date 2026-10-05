@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-16 10:14:06.381323",
+    "@@last_modified": "2026-10-05 12:30:33.876469",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "ይህ ዙር ምንም ኮከቦችን አልሸለመም፣ ስለዚህ እዚህ የሚጠየቅ ነገር የለም።",
     "orchestratorFeedbackCommentRequired": "ምን ማስተካከል እንዳለብን እንድናውቅ አስተያየት ያክሉ",
     "orchestratorFeedbackSubmit": "ላክ",
-    "orchestratorFeedbackThanks": "ምልክት ተደርጓል። እናመሰግናለን!"
+    "orchestratorFeedbackThanks": "ምልክት ተደርጓል። እናመሰግናለን!",
+    "ssoNetworkBlockedTitle": "የመግቢያ ጣቢያው አይደረስበትም",
+    "ssoNetworkBlockedDesc": "ይህ አውታረ መረብ እርስዎን ለማስገባት ወደ {provider} እንዳንደርስ እየከለከለን ነው። የትምህርት ቤት እና የቢሮ ዋይፋይ ብዙ ጊዜ ያግዱታል። በምትኩ በኢሜል መመዝገብ ወይም ወደ ሌላ አውታረ መረብ ቀይረው እንደገና መሞከር ይችላሉ።",
+    "ssoTryAnyway": "ለማንኛውም ይሞክሩ"
 }

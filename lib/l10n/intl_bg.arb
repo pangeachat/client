@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-16 10:14:06.083688",
+    "@@last_modified": "2026-10-05 12:30:33.288275",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Този ход не донесе звезди, така че няма какво да се оспорва тук.",
     "orchestratorFeedbackCommentRequired": "Добавете коментар, за да знаем какво да поправим",
     "orchestratorFeedbackSubmit": "Изпрати",
-    "orchestratorFeedbackThanks": "Докладвано. Благодарим!"
+    "orchestratorFeedbackThanks": "Докладвано. Благодарим!",
+    "ssoNetworkBlockedTitle": "Сайтът за вход е недостъпен",
+    "ssoNetworkBlockedDesc": "Тази мрежа не ни позволява да достигнем до {provider}, за да ви впишем. Училищните и офис Wi-Fi мрежи често го блокират. Можете да се регистрирате с имейл вместо това или да превключите към друга мрежа и да опитате отново.",
+    "ssoTryAnyway": "Все пак опитай"
 }

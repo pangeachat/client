@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-16 10:14:13.393503",
+    "@@last_modified": "2026-10-05 12:30:40.123445",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Giliran iki ora menehi lintang, dadi ora ana sing perlu ditakokake ing kene.",
     "orchestratorFeedbackCommentRequired": "Tambahna komentar supaya kita ngerti apa sing kudu didandani",
     "orchestratorFeedbackSubmit": "Kirim",
-    "orchestratorFeedbackThanks": "Wis ditandhani. Matur nuwun!"
+    "orchestratorFeedbackThanks": "Wis ditandhani. Matur nuwun!",
+    "ssoNetworkBlockedTitle": "Situs mlebu ora bisa diakses",
+    "ssoNetworkBlockedDesc": "Jaringan iki ora ngidini kita ngakses {provider} kanggo mlebu. Wi-Fi sekolah lan kantor asring mblokir. Sampeyan bisa ndhaptar nganggo email, utawa ngganti jaringan liyane banjur coba maneh.",
+    "ssoTryAnyway": "Coba wae"
 }

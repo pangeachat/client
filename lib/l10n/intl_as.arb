@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-16 10:14:06.484601",
+    "@@last_modified": "2026-10-05 12:30:33.967019",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "এই পালত কোনো তৰা দিয়া হোৱা নাছিল, গতিকে ইয়াত প্ৰশ্ন কৰিবলৈ একো নাই।",
     "orchestratorFeedbackCommentRequired": "এটা মন্তব্য যোগ কৰক যাতে আমি কি ঠিক কৰিব লাগে জানিব পাৰো",
     "orchestratorFeedbackSubmit": "প্ৰেৰণ কৰক",
-    "orchestratorFeedbackThanks": "ফ্লেগ কৰা হৈছে। ধন্যবাদ!"
+    "orchestratorFeedbackThanks": "ফ্লেগ কৰা হৈছে। ধন্যবাদ!",
+    "ssoNetworkBlockedTitle": "ছাইন-ইন ছাইটত উপনীত হ'ব পৰা নাই",
+    "ssoNetworkBlockedDesc": "এই নেটৱৰ্কে আপোনাক ছাইন ইন কৰিবলৈ {provider} লৈ যাবলৈ নিদিয়াহে। বিদ্যালয় আৰু কাৰ্যালয়ৰ Wi-Fi-এ ইয়াক প্ৰায়ে ব্লক কৰে। আপুনি ইয়াৰ পৰিৱৰ্তে ইমেইলৰ সৈতে ছাইন আপ কৰিব পাৰে, অথবা আন এটা নেটৱৰ্কলৈ সলনি কৰি পুনৰ চেষ্টা কৰিব পাৰে।",
+    "ssoTryAnyway": "যিকোনো প্ৰকাৰে চেষ্টা কৰক"
 }

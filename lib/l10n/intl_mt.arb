@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-16 10:14:17.921062",
+    "@@last_modified": "2026-10-05 12:30:43.814389",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Din id-dawra ma tat l-ebda stilla, allura m'hemm xejn x'tiddubita hawn.",
     "orchestratorFeedbackCommentRequired": "Żid kumment biex inkunu nafu x'għandna nirranġaw",
     "orchestratorFeedbackSubmit": "Ibgħat",
-    "orchestratorFeedbackThanks": "Immarkat. Grazzi!"
+    "orchestratorFeedbackThanks": "Immarkat. Grazzi!",
+    "ssoNetworkBlockedTitle": "Sit ta' reġistrazzjoni ma jistax jintlaħaq",
+    "ssoNetworkBlockedDesc": "Din in-netwerk mhux qed tħallina nilħqu lil {provider} biex nirreġistrawk. Il-Wi-Fi tal-iskola u l-uffiċċju spiss jimblokkawha. Tista' tirreġistra bl-email minflok, jew taqleb għal netwerk ieħor u terġa' tipprova.",
+    "ssoTryAnyway": "Erġa' pprova xorta"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-16 10:14:22.865841",
+    "@@last_modified": "2026-10-05 12:30:49.585292",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10237,5 +10237,8 @@
     "orchestratorFeedbackNoAwards": "Bu turda yıldız verilmedi, bu yüzden burada sorgulanacak bir şey yok.",
     "orchestratorFeedbackCommentRequired": "Neyi düzelteceğimizi bilmemiz için bir yorum ekleyin",
     "orchestratorFeedbackSubmit": "Gönder",
-    "orchestratorFeedbackThanks": "İşaretlendi. Teşekkürler!"
+    "orchestratorFeedbackThanks": "İşaretlendi. Teşekkürler!",
+    "ssoNetworkBlockedTitle": "Giriş sitesine ulaşılamıyor",
+    "ssoNetworkBlockedDesc": "Bu ağ, giriş yapmanız için {provider} adresine ulaşmamızı engelliyor. Okul ve ofis Wi-Fi'ları genellikle bunu engeller. Bunun yerine e-posta ile kaydolabilir veya başka bir ağa geçip tekrar deneyebilirsiniz.",
+    "ssoTryAnyway": "Yine de dene"
 }

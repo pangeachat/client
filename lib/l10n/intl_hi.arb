@@ -3093,7 +3093,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-09-16 10:14:10.596335",
+    "@@last_modified": "2026-10-05 12:30:37.843848",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10568,5 +10568,8 @@
     "orchestratorFeedbackNoAwards": "इस बारी में कोई स्टार नहीं दिया गया, इसलिए यहाँ सवाल उठाने के लिए कुछ भी नहीं है।",
     "orchestratorFeedbackCommentRequired": "एक टिप्पणी जोड़ें ताकि हमें पता चले कि क्या ठीक करना है",
     "orchestratorFeedbackSubmit": "भेजें",
-    "orchestratorFeedbackThanks": "फ़्लैग किया गया। धन्यवाद!"
+    "orchestratorFeedbackThanks": "फ़्लैग किया गया। धन्यवाद!",
+    "ssoNetworkBlockedTitle": "साइन-इन साइट तक नहीं पहुँचा जा सकता",
+    "ssoNetworkBlockedDesc": "यह नेटवर्क आपको साइन इन करने के लिए {provider} तक पहुँचने नहीं दे रहा है। स्कूल और ऑफिस का वाई-फाई अक्सर इसे ब्लॉक कर देता है। आप इसके बजाय ईमेल से साइन अप कर सकते हैं, या किसी दूसरे नेटवर्क पर स्विच करके फिर से कोशिश कर सकते हैं।",
+    "ssoTryAnyway": "फिर भी कोशिश करें"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:17.778481",
+    "@@last_modified": "2026-10-05 12:30:44.541993",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9936,5 +9936,8 @@
     "orchestratorFeedbackNoAwards": "Deze beurt heeft geen sterren toegekend, dus er is hier niets om in twijfel te trekken.",
     "orchestratorFeedbackCommentRequired": "Voeg een opmerking toe zodat we weten wat we moeten oplossen",
     "orchestratorFeedbackSubmit": "Verzenden",
-    "orchestratorFeedbackThanks": "Gemarkeerd. Bedankt!"
+    "orchestratorFeedbackThanks": "Gemarkeerd. Bedankt!",
+    "ssoNetworkBlockedTitle": "Aanmeldingssite onbereikbaar",
+    "ssoNetworkBlockedDesc": "Dit netwerk laat ons {provider} niet bereiken om je aan te melden. School- en kantoor-wifi blokkeren dit vaak. Je kunt je in plaats daarvan aanmelden met e-mail, of overschakelen naar een ander netwerk en het opnieuw proberen.",
+    "ssoTryAnyway": "Toch proberen"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-16 10:14:26.159896",
+    "@@last_modified": "2026-10-05 12:30:51.948396",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Leli thuba alizange linikeze zinkanyezi, ngakho-ke akukho ongakubuza lapha.",
     "orchestratorFeedbackCommentRequired": "Faka amazwana ukuze sazi ukuthi yini okufanele siyilungise",
     "orchestratorFeedbackSubmit": "Thumela",
-    "orchestratorFeedbackThanks": "Kuphawuliwe. Ngiyabonga!"
+    "orchestratorFeedbackThanks": "Kuphawuliwe. Ngiyabonga!",
+    "ssoNetworkBlockedTitle": "Indawo yokungena ayitholakali",
+    "ssoNetworkBlockedDesc": "Le nethiwekhi ayisivumeli ukuthi sifinyelele ku-{provider} ukuze sikungenise. I-Wi-Fi yesikole neyehhovisi ivame ukuyivimba. Ungabhalisa nge-imeyili esikhundleni salokho, noma ushintshele kwenye inethiwekhi bese uzama futhi.",
+    "ssoTryAnyway": "Zama noma kunjalo"
 }

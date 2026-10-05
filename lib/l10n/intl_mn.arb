@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-16 10:14:16.963283",
+    "@@last_modified": "2026-10-05 12:30:43.933967",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Энэ эргэлтэд од олгогдоогүй тул энд эргэлзэх зүйл алга.",
     "orchestratorFeedbackCommentRequired": "Юуг засах ёстойг мэдэхийн тулд сэтгэгдэл нэмнэ үү",
     "orchestratorFeedbackSubmit": "Илгээх",
-    "orchestratorFeedbackThanks": "Тэмдэглэгдсэн. Баярлалаа!"
+    "orchestratorFeedbackThanks": "Тэмдэглэгдсэн. Баярлалаа!",
+    "ssoNetworkBlockedTitle": "Нэвтрэх сайт боломжгүй байна",
+    "ssoNetworkBlockedDesc": "Энэ сүлжээ таныг нэвтрүүлэхийн тулд {provider} руу нэвтрэхийг зөвшөөрөхгүй байна. Сургууль болон оффисын Wi-Fi үүнийг ихэвчлэн хаадаг. Та оронд нь имэйлээр бүртгүүлэх эсвэл өөр сүлжээнд шилжиж дахин оролдож болно.",
+    "ssoTryAnyway": "Ямартай ч оролдох"
 }

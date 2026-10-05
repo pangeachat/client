@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-16 10:14:14.772499",
+    "@@last_modified": "2026-10-05 12:30:41.644958",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Бул бурулуш эч кандай жылдыз берген жок, ошондуктан бул жерде суроо бере турган эч нерсе жок.",
     "orchestratorFeedbackCommentRequired": "Эмнени оңдошубуз керектигин билүү үчүн комментарий кошуңуз",
     "orchestratorFeedbackSubmit": "Жөнөтүү",
-    "orchestratorFeedbackThanks": "Белгиленди. Рахмат!"
+    "orchestratorFeedbackThanks": "Белгиленди. Рахмат!",
+    "ssoNetworkBlockedTitle": "Кирүү сайты жеткиликсиз",
+    "ssoNetworkBlockedDesc": "Бул тармак сизди киргизүү үчүн {provider} жетүүгө мүмкүнчүлүк бербей жатат. Мектеп жана кеңсе Wi-Fi тармактары аны көп учурда бөгөттөйт. Анын ордуна электрондук почта аркылуу катталсаңыз болот, же башка тармакка которулуп кайра аракет кылыңыз.",
+    "ssoTryAnyway": "Баары бир аракет кылуу"
 }

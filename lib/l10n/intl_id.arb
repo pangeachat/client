@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:12.018121",
+    "@@last_modified": "2026-10-05 12:30:38.664012",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10009,5 +10009,8 @@
     "orchestratorFeedbackNoAwards": "Giliran ini tidak memberikan bintang, jadi tidak ada yang perlu dipertanyakan di sini.",
     "orchestratorFeedbackCommentRequired": "Tambahkan komentar agar kami tahu apa yang harus diperbaiki",
     "orchestratorFeedbackSubmit": "Kirim",
-    "orchestratorFeedbackThanks": "Ditandai. Terima kasih!"
+    "orchestratorFeedbackThanks": "Ditandai. Terima kasih!",
+    "ssoNetworkBlockedTitle": "Situs masuk tidak dapat dijangkau",
+    "ssoNetworkBlockedDesc": "Jaringan ini tidak mengizinkan kami menjangkau {provider} untuk masuk. Wi-Fi sekolah dan kantor sering memblokirnya. Anda dapat mendaftar dengan email, atau beralih ke jaringan lain dan coba lagi.",
+    "ssoTryAnyway": "Coba lagi"
 }

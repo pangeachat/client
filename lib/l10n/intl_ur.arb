@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-16 10:14:24.022096",
+    "@@last_modified": "2026-10-05 12:30:50.172888",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "اس باری میں کوئی ستارہ نہیں دیا گیا، لہذا یہاں سوال کرنے کے لیے کچھ نہیں ہے۔",
     "orchestratorFeedbackCommentRequired": "ایک تبصرہ شامل کریں تاکہ ہمیں معلوم ہو کہ کیا ٹھیک کرنا ہے",
     "orchestratorFeedbackSubmit": "بھیجیں",
-    "orchestratorFeedbackThanks": "پرچم لگا دیا گیا۔ شکریہ!"
+    "orchestratorFeedbackThanks": "پرچم لگا دیا گیا۔ شکریہ!",
+    "ssoNetworkBlockedTitle": "سائن ان سائٹ تک رسائی نہیں ہو سکتی",
+    "ssoNetworkBlockedDesc": "یہ نیٹ ورک ہمیں آپ کو سائن ان کرنے کے لیے {provider} تک رسائی کی اجازت نہیں دے رہا ہے۔ اسکول اور دفتر کا وائی فائی اکثر اسے بلاک کر دیتا ہے۔ آپ اس کے بجائے ای میل کے ساتھ سائن اپ کر سکتے ہیں، یا کسی دوسرے نیٹ ورک پر سوئچ کر کے دوبارہ کوشش کر سکتے ہیں۔",
+    "ssoTryAnyway": "پھر بھی کوشش کریں"
 }

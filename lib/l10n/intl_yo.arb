@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-16 10:14:26.067270",
+    "@@last_modified": "2026-10-05 12:30:51.666448",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Ìgbésẹ̀ yìí kò fúnni ní ìràwọ̀ kankan, nítorí náà kò sí ohun tí a lè bèèrè nípa rẹ̀ níbí.",
     "orchestratorFeedbackCommentRequired": "Fi àlàyé kún un kí a lè mọ ohun tí a fẹ́ túnṣe",
     "orchestratorFeedbackSubmit": "Ránṣẹ́",
-    "orchestratorFeedbackThanks": "Ti fi sílẹ̀. Ẹ ṣeun!"
+    "orchestratorFeedbackThanks": "Ti fi sílẹ̀. Ẹ ṣeun!",
+    "ssoNetworkBlockedTitle": "Aaye ìforúkọsílẹ̀ kò ṣeé dé",
+    "ssoNetworkBlockedDesc": "Nẹ́tíwọ̀kì yìí kò jẹ́ kí a dé {provider} láti fi ọ́ wọlé. Wi-Fi ilé-ìwé àti ọ́fíìsì sábà máa ń dí i lọ́nà. O lè forúkọsílẹ̀ pẹ̀lú imeeli dípò, tàbí yípadà sí nẹ́tíwọ̀kì mìíràn kí o sì tún gbìyànjú.",
+    "ssoTryAnyway": "Gbìyànjú lọ́nàkọnà"
 }

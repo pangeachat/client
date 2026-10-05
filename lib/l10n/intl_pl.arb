@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-16 10:14:19.223420",
+    "@@last_modified": "2026-10-05 12:30:45.288625",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10021,5 +10021,8 @@
     "orchestratorFeedbackNoAwards": "Ta tura nie przyznała żadnych gwiazdek, więc nie ma tu nic do kwestionowania.",
     "orchestratorFeedbackCommentRequired": "Dodaj komentarz, abyśmy wiedzieli, co naprawić",
     "orchestratorFeedbackSubmit": "Wyślij",
-    "orchestratorFeedbackThanks": "Zgłoszono. Dziękujemy!"
+    "orchestratorFeedbackThanks": "Zgłoszono. Dziękujemy!",
+    "ssoNetworkBlockedTitle": "Witryna logowania niedostępna",
+    "ssoNetworkBlockedDesc": "Ta sieć uniemożliwia nam połączenie z {provider} w celu zalogowania. Często blokują to sieci Wi-Fi w szkołach i biurach. Zamiast tego możesz zarejestrować się za pomocą adresu e-mail lub przełączyć się na inną sieć i spróbować ponownie.",
+    "ssoTryAnyway": "Mimo to spróbuj"
 }

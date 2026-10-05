@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-16 10:14:10.358671",
+    "@@last_modified": "2026-10-05 12:30:37.392932",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "આ વારામાં કોઈ સ્ટાર મળ્યો નથી, તેથી અહીં પ્રશ્ન કરવા જેવું કંઈ નથી.",
     "orchestratorFeedbackCommentRequired": "એક ટિપ્પણી ઉમેરો જેથી અમને ખબર પડે કે શું સુધારવું છે",
     "orchestratorFeedbackSubmit": "મોકલો",
-    "orchestratorFeedbackThanks": "ફ્લેગ કર્યું. આભાર!"
+    "orchestratorFeedbackThanks": "ફ્લેગ કર્યું. આભાર!",
+    "ssoNetworkBlockedTitle": "સાઇન-ઇન સાઇટ પહોંચી શકાય તેવી નથી",
+    "ssoNetworkBlockedDesc": "આ નેટવર્ક તમને સાઇન ઇન કરવા માટે {provider} સુધી પહોંચવા દેતું નથી. શાળા અને ઑફિસનું Wi-Fi ઘણીવાર તેને બ્લૉક કરે છે. તમે તેના બદલે ઇમેઇલ વડે સાઇન અપ કરી શકો છો અથવા બીજા નેટવર્ક પર સ્વિચ કરીને ફરી પ્રયાસ કરી શકો છો.",
+    "ssoTryAnyway": "તો પણ પ્રયાસ કરો"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-16 10:14:22.851042",
+    "@@last_modified": "2026-10-05 12:30:48.668152",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Zamu hii haikutoa nyota zozote, kwa hivyo hakuna cha kuhoji hapa.",
     "orchestratorFeedbackCommentRequired": "Ongeza maoni ili tujue nini cha kurekebisha",
     "orchestratorFeedbackSubmit": "Tuma",
-    "orchestratorFeedbackThanks": "Imewekewa alama. Asante!"
+    "orchestratorFeedbackThanks": "Imewekewa alama. Asante!",
+    "ssoNetworkBlockedTitle": "Tovuti ya kuingia haipatikani",
+    "ssoNetworkBlockedDesc": "Mtandao huu hauturuhusu kufikia {provider} ili kukuunganisha. Wi-Fi za shule na ofisi mara nyingi huizuia. Unaweza kujiandikisha kwa barua pepe badala yake, au ubadili mtandao mwingine na ujaribu tena.",
+    "ssoTryAnyway": "Jaribu hata hivyo"
 }

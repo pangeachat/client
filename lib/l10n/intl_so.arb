@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-16 10:14:21.603470",
+    "@@last_modified": "2026-10-05 12:30:48.764482",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Wareeggan ma jirin xiddigo la bixiyay, sidaa darteed ma jirto wax halkan laga su'aalo.",
     "orchestratorFeedbackCommentRequired": "Ku dar faallo si aan u ogaano waxa la hagaajinayo",
     "orchestratorFeedbackSubmit": "Dir",
-    "orchestratorFeedbackThanks": "La calaamadeeyay. Waad mahadsan tahay!"
+    "orchestratorFeedbackThanks": "La calaamadeeyay. Waad mahadsan tahay!",
+    "ssoNetworkBlockedTitle": "Goobta soo-galitaanka lama gaari karo",
+    "ssoNetworkBlockedDesc": "Shabakaddani nama ogolaaneyso inaan gaarno {provider} si aan kuugu soo galino. Wi-Fi-ga dugsiga iyo xafiiska ayaa inta badan xira. Waxaad ku diiwaan gelin kartaa email ahaan, ama waxaad u wareegi kartaa shabakad kale oo aad mar kale isku dayi kartaa.",
+    "ssoTryAnyway": "Sikastaba isku day"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-16 10:14:14.741347",
+    "@@last_modified": "2026-10-05 12:30:41.607583",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Hoc tempore nullae stellae datae sunt, ergo nihil hic quaerendum est.",
     "orchestratorFeedbackCommentRequired": "Adde commentarium ut sciamus quid corrigendum sit",
     "orchestratorFeedbackSubmit": "Mitte",
-    "orchestratorFeedbackThanks": "Notatum. Gratias!"
+    "orchestratorFeedbackThanks": "Notatum. Gratias!",
+    "ssoNetworkBlockedTitle": "Situs initii inaccessibilis",
+    "ssoNetworkBlockedDesc": "Haec retis nos prohibet ad {provider} pervenire ut te inigas. Wi-Fi scholae et officii saepe id impediunt. Potes proinde per electronicam subscribere, aut ad aliam retem mutare et iterum conari.",
+    "ssoTryAnyway": "Nihilominus conare"
 }

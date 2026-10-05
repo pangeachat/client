@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-16 10:14:15.047724",
+    "@@last_modified": "2026-10-05 12:30:42.034731",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "Dës Ronn huet keng Stäre verginn, also gëtt et hei näischt a Fro ze stellen.",
     "orchestratorFeedbackCommentRequired": "Füügt e Kommentar bäi, fir datt mir wëssen wat ze fixéieren ass",
     "orchestratorFeedbackSubmit": "Schécken",
-    "orchestratorFeedbackThanks": "Markéiert. Merci!"
+    "orchestratorFeedbackThanks": "Markéiert. Merci!",
+    "ssoNetworkBlockedTitle": "Umeldungssäit net erreechbar",
+    "ssoNetworkBlockedDesc": "Dëst Netzwierk erlaabt eis net, {provider} z'erreechen fir Iech unzemellen. Schoul- an Büro-Wi-Fi blockéieren dacks esou eppes. Dir kënnt Iech amplaz mat E-Mail umellen, oder op en anert Netzwierk wiesselen an et nach eng Kéier probéieren.",
+    "ssoTryAnyway": "Trotzdeem probéieren"
 }

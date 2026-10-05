@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:24.319698",
+    "@@last_modified": "2026-10-05 12:30:50.202394",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7228,5 +7228,8 @@
     "orchestratorFeedbackNoAwards": "Lượt này không có ngôi sao nào được trao, nên không có gì để thắc mắc ở đây.",
     "orchestratorFeedbackCommentRequired": "Thêm bình luận để chúng tôi biết cần sửa gì",
     "orchestratorFeedbackSubmit": "Gửi",
-    "orchestratorFeedbackThanks": "Đã gắn cờ. Cảm ơn!"
+    "orchestratorFeedbackThanks": "Đã gắn cờ. Cảm ơn!",
+    "ssoNetworkBlockedTitle": "Không thể truy cập trang web đăng nhập",
+    "ssoNetworkBlockedDesc": "Mạng này không cho phép chúng tôi truy cập {provider} để đăng nhập cho bạn. Wi-Fi ở trường học và văn phòng thường chặn điều này. Bạn có thể đăng ký bằng email thay thế, hoặc chuyển sang mạng khác và thử lại.",
+    "ssoTryAnyway": "Vẫn thử"
 }

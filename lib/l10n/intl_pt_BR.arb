@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:19.412102",
+    "@@last_modified": "2026-10-05 12:30:45.545635",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9936,5 +9936,8 @@
     "orchestratorFeedbackNoAwards": "Esta rodada não concedeu estrelas, então não há nada para questionar aqui.",
     "orchestratorFeedbackCommentRequired": "Adicione um comentário para sabermos o que corrigir",
     "orchestratorFeedbackSubmit": "Enviar",
-    "orchestratorFeedbackThanks": "Sinalizado. Obrigado!"
+    "orchestratorFeedbackThanks": "Sinalizado. Obrigado!",
+    "ssoNetworkBlockedTitle": "Site de login indisponível",
+    "ssoNetworkBlockedDesc": "Esta rede não nos permite acessar {provider} para fazer seu login. Wi-Fis de escolas e escritórios geralmente bloqueiam isso. Você pode se inscrever com e-mail ou mudar para outra rede e tentar novamente.",
+    "ssoTryAnyway": "Tentar mesmo assim"
 }

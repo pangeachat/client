@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-16 10:14:20.290984",
+    "@@last_modified": "2026-10-05 12:30:46.347106",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2340,5 +2340,8 @@
     "orchestratorFeedbackNoAwards": "دې وار هیڅ ستوري نه دي ورکړل شوي، نو دلته د پوښتنې لپاره هیڅ نشته.",
     "orchestratorFeedbackCommentRequired": "یو نظر اضافه کړئ ترڅو موږ پوه شو چې څه سم کړو",
     "orchestratorFeedbackSubmit": "استول",
-    "orchestratorFeedbackThanks": "په نښه شو. مننه!"
+    "orchestratorFeedbackThanks": "په نښه شو. مننه!",
+    "ssoNetworkBlockedTitle": "د ننوتلو سایټ د لاسرسي وړ نه دی",
+    "ssoNetworkBlockedDesc": "دا شبکه موږ ته اجازه نه راکوي چې تاسو ته د ننوتلو لپاره {provider} ته ورسیږو. د ښوونځي او دفتر وای فای اکثرا دا بندوي. تاسو کولی شئ د بریښنالیک له لارې نوم لیکنه وکړئ، یا بلې شبکې ته لاړ شئ او بیا هڅه وکړئ.",
+    "ssoTryAnyway": "بیا هم هڅه وکړئ"
 }

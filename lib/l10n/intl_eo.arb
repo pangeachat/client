@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:08.066616",
+    "@@last_modified": "2026-10-05 12:30:35.284639",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10881,5 +10881,8 @@
     "orchestratorFeedbackNoAwards": "Ĉi tiu vico ne aljuĝis stelojn, do estas nenio pridubinda ĉi tie.",
     "orchestratorFeedbackCommentRequired": "Aldonu komenton por ke ni sciu kion ripari",
     "orchestratorFeedbackSubmit": "Sendi",
-    "orchestratorFeedbackThanks": "Raportita. Dankon!"
+    "orchestratorFeedbackThanks": "Raportita. Dankon!",
+    "ssoNetworkBlockedTitle": "Ensaluta retejo neatingebla",
+    "ssoNetworkBlockedDesc": "Ĉi tiu reto ne permesas al ni atingi {provider} por ensaluti vin. Lerneja kaj oficeja retkonekto ofte blokas ĝin. Vi povas registriĝi per retpoŝto anstataŭe, aŭ ŝanĝi al alia reto kaj reprovi.",
+    "ssoTryAnyway": "Provu ĉiukaze"
 }

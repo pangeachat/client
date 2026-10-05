@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-16 10:14:12.525849",
+    "@@last_modified": "2026-10-05 12:30:39.531349",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10009,5 +10009,8 @@
     "orchestratorFeedbackNoAwards": "Questo turno non ha assegnato stelle, quindi non c'è nulla da mettere in discussione qui.",
     "orchestratorFeedbackCommentRequired": "Aggiungi un commento in modo da sapere cosa correggere",
     "orchestratorFeedbackSubmit": "Invia",
-    "orchestratorFeedbackThanks": "Contenuto segnalato. Grazie!"
+    "orchestratorFeedbackThanks": "Contenuto segnalato. Grazie!",
+    "ssoNetworkBlockedTitle": "Sito di accesso irraggiungibile",
+    "ssoNetworkBlockedDesc": "Questa rete non ci permette di raggiungere {provider} per effettuare l'accesso. Le reti Wi-Fi di scuole e uffici spesso lo bloccano. Puoi registrarti con l'email, oppure passare a un'altra rete e riprovare.",
+    "ssoTryAnyway": "Riprova comunque"
 }
