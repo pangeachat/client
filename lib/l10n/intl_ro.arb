@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 12:30:46.587727",
+    "@@last_modified": "2026-10-05 13:50:41.286940",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -8489,11 +8489,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal pentru chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat cu Suportul",
     "@chatWithSupport": {
         "type": "String",
@@ -10716,5 +10711,6 @@
     "activitySummaryUpdateFailed": "Acest rezumat nu a putut fi actualizat.",
     "ssoNetworkBlockedTitle": "Site-ul de conectare este inaccesibil",
     "ssoNetworkBlockedDesc": "Această rețea nu ne permite să ajungem la {provider} pentru a te conecta. Rețelele Wi-Fi de la școală și de la birou blochează adesea acest lucru. Te poți înscrie cu e-mail în schimb sau poți trece la o altă rețea și poți încerca din nou.",
-    "ssoTryAnyway": "Încearcă oricum"
+    "ssoTryAnyway": "Încearcă oricum",
+    "viewImageLabel": "Vizualizați imaginea"
 }

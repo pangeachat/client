@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 12:30:38.049612",
+    "@@last_modified": "2026-10-05 13:50:38.044238",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -8671,11 +8671,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "השתמש בתמונה של הפעילות כרקע לצ'אט",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "צ'אט עם תמיכה",
     "@chatWithSupport": {
         "type": "String",
@@ -10898,5 +10893,6 @@
     "activitySummaryUpdateFailed": "לא ניתן היה לעדכן את הסיכום הזה.",
     "ssoNetworkBlockedTitle": "אתר ההתחברות אינו זמין",
     "ssoNetworkBlockedDesc": "רשת זו אינה מאפשרת לנו להגיע אל {provider} כדי לחבר אותך. רשתות Wi-Fi בבתי ספר ובמשרדים חוסמות זאת לעיתים קרובות. באפשרותך להירשם באמצעות דוא\"ל במקום זאת, או לעבור לרשת אחרת ולנסות שוב.",
-    "ssoTryAnyway": "נסה בכל זאת"
+    "ssoTryAnyway": "נסה בכל זאת",
+    "viewImageLabel": "הצג תמונה"
 }

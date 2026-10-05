@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-05 12:30:51.948396",
+    "@@last_modified": "2026-10-05 13:50:42.852667",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Phequlula izifundo zomphakathi",
     "publicInviteDescChat": "Sesha abasebenzisi ukuze ubameme kule ngxoxo.",
     "publicInviteDescSpace": "Sesha abasebenzisi ukuze ubameme kule ndawo.",
-    "useActivityImageAsChatBackground": "Sebenzisa isithombe somsebenzi njengesizinda sengxoxo",
     "chatWithSupport": "Xoxa Nosekelo",
     "newCourseAccess": "Ngokuzenzakalelayo, izifundo ziyasesheka emphakathini futhi zidinga imvume yomphathi ukuze ujoyine. Ungahlela lezi zilungiselelo nganoma yisiphi isikhathi.",
     "onboardingLanguagesTitle": "Yiluphi ulimi olufundayo?",
@@ -2392,5 +2391,6 @@
     "activitySummaryUpdateFailed": "Lesi sifingqo asikwazanga ukubuyekezwa.",
     "ssoNetworkBlockedTitle": "Indawo yokungena ayitholakali",
     "ssoNetworkBlockedDesc": "Le nethiwekhi ayisivumeli ukuthi sifinyelele ku-{provider} ukuze sikungenise. I-Wi-Fi yesikole neyehhovisi ivame ukuyivimba. Ungabhalisa nge-imeyili esikhundleni salokho, noma ushintshele kwenye inethiwekhi bese uzama futhi.",
-    "ssoTryAnyway": "Zama noma kunjalo"
+    "ssoTryAnyway": "Zama noma kunjalo",
+    "viewImageLabel": "Buka isithombe"
 }

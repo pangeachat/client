@@ -2919,7 +2919,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-10-05 12:30:34.887923",
+    "@@last_modified": "2026-10-05 13:50:36.334278",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7100,11 +7100,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat with Support",
     "@chatWithSupport": {
         "type": "String",
@@ -9595,5 +9590,6 @@
     "activitySummaryUpdateFailed": "སྙན་ཐོ་འདི་གསར་སྒྱུར་བྱེད་མ་ཐུབ།",
     "ssoNetworkBlockedTitle": "ནང་འཛུལ་དྲ་རྒྱ་འབྲེལ་མཐུད་མེད།",
     "ssoNetworkBlockedDesc": "དྲ་རྒྱ་འདིས་ཁྱེད་རང་ནང་འཛུལ་བྱེད་པར་ {provider} དང་འབྲེལ་མཐུད་བྱེད་དུ་འཇུག་གི་མེད། སློབ་གྲྭ་དང་ལས་ཁུངས་ཀྱི་ཝའེ་ཧྥའེ་ཡིས་དེ་བཀག་སྡོམ་བྱེད་པ་རྒྱུན་ལྡན་རེད། ཁྱེད་ཀྱིས་དེ་བརྗེས་ནས་གློག་འཕྲིན་བརྒྱུད་ནས་ཐོ་འགོད་བྱེད་ཆོག་གམ་ཡང་ན་དྲ་རྒྱ་གཞན་ཞིག་ལ་བརྗེ་ནས་ཡང་བསྐྱར་ཚོད་ལྟ་བྱེད་ཆོག",
-    "ssoTryAnyway": "གང་ལྟར་ཚོད་ལྟ་བྱོས།"
+    "ssoTryAnyway": "གང་ལྟར་ཚོད་ལྟ་བྱོས།",
+    "viewImageLabel": "པར་ལ་ལྟ་བ།"
 }

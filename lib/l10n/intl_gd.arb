@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-05 12:30:36.958389",
+    "@@last_modified": "2026-10-05 13:50:37.573207",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Dèan brobhsadh air cùrsaichean poblach",
     "publicInviteDescChat": "Lorg luchd-cleachdaidh gus cuireadh a thoirt dhaibh don chòmhradh seo.",
     "publicInviteDescSpace": "Lorg luchd-cleachdaidh gus cuireadh a thoirt dhaibh don àite seo.",
-    "useActivityImageAsChatBackground": "Cleachd ìomhaigh gnìomhachd mar chùl-raon còmhradh",
     "chatWithSupport": "Còmhradh le Taic",
     "newCourseAccess": "Gu gnàthach, tha cùrsaichean rim faighinn gu poblach agus feumaidh iad cead rianadair airson a dhol a-steach. Faodaidh tu na roghainnean sin a dheasachadh aig àm sam bith.",
     "onboardingLanguagesTitle": "Dè an cànan a tha thu ag ionnsachadh?",
@@ -2392,5 +2391,6 @@
     "activitySummaryUpdateFailed": "Cha b' urrainn an geàrr-chunntas seo ùrachadh.",
     "ssoNetworkBlockedTitle": "Làrach-lìn logadh a-steach do-ruigsinneach",
     "ssoNetworkBlockedDesc": "Chan eil an lìonra seo a' leigeil leinn {provider} a ruighinn gus do logadh a-steach. Bidh Wi-Fi sgoile is oifise gu tric ga bhacadh. Faodaidh tu clàradh le post-d na àite, no atharrachadh gu lìonra eile agus feuchainn a-rithist.",
-    "ssoTryAnyway": "Feuch co-dhiù"
+    "ssoTryAnyway": "Feuch co-dhiù",
+    "viewImageLabel": "Seall an dealbh"
 }

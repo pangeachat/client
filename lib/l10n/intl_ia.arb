@@ -1362,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-05 12:30:38.917868",
+    "@@last_modified": "2026-10-05 13:50:38.492475",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8693,11 +8693,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Fala com o Suporte",
     "@chatWithSupport": {
         "type": "String",
@@ -10920,5 +10915,6 @@
     "activitySummaryUpdateFailed": "Iste summario non poteva esser actualisate.",
     "ssoNetworkBlockedTitle": "Sito de authentification inaccessibile",
     "ssoNetworkBlockedDesc": "Iste rete non nos permitte attinger {provider} pro authentificar vos. Le Wi-Fi de scholas e officios sovente lo bloca. Vos pote registrar vos con e-mail in loco, o cambiar a un altere rete e reprovar.",
-    "ssoTryAnyway": "Provar de tote modos"
+    "ssoTryAnyway": "Provar de tote modos",
+    "viewImageLabel": "Vider imagine"
 }

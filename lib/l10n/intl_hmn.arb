@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-05 12:30:38.753939",
+    "@@last_modified": "2026-10-05 13:50:38.213417",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Tshawb nrhiav cov chav kawm pej xeem",
     "publicInviteDescChat": "Tshawb nrhiav cov neeg siv los caw lawv mus rau hauv kev sib tham no.",
     "publicInviteDescSpace": "Tshawb nrhiav cov neeg siv los caw lawv mus rau hauv qhov chaw no.",
-    "useActivityImageAsChatBackground": "Siv daim duab ua haujlwm ua keeb kwm yav dhau kev sib tham",
     "chatWithSupport": "Sib tham nrog Kev Pabcuam",
     "newCourseAccess": "Los ntawm lub neej ntawd, cov chav kawm tuaj yeem tshawb nrhiav tau rau pej xeem thiab yuav tsum tau tus thawj tswj hwm pom zoo kom koom. Koj tuaj yeem hloov kho cov chaw no txhua lub sijhawm.",
     "onboardingLanguagesTitle": "Koj tab tom kawm hom lus dab tsi?",
@@ -2392,5 +2391,6 @@
     "activitySummaryUpdateFailed": "Qhov ntsiab lus no hloov tsis tau.",
     "ssoNetworkBlockedTitle": "Qhov chaw nkag tsis tuaj yeem mus txog",
     "ssoNetworkBlockedDesc": "Lub network no tsis tso cai rau peb mus txog {provider} los pab koj nkag. Feem ntau, tsev kawm ntawv thiab chaw ua haujlwm Wi-Fi thaiv nws. Koj tuaj yeem sau npe nrog email es tsis txhob, los yog hloov mus rau lwm lub network thiab sim dua.",
-    "ssoTryAnyway": "Sim txawm li cas los xij"
+    "ssoTryAnyway": "Sim txawm li cas los xij",
+    "viewImageLabel": "Saib duab"
 }

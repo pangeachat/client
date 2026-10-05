@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-05 12:30:48.925569",
+    "@@last_modified": "2026-10-05 13:50:42.076983",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Kotéktak kursus umum",
     "publicInviteDescChat": "Milarian pangguna pikeun ngajak aranjeunna ka obrolan ieu.",
     "publicInviteDescSpace": "Milarian pangguna pikeun ngajak aranjeunna ka rohangan ieu.",
-    "useActivityImageAsChatBackground": "Anggo gambar kagiatan salaku latar obrolan",
     "chatWithSupport": "Ngobrol sareng Dukungan",
     "newCourseAccess": "Sacara standar, kursus tiasa dipilarian sacara umum sareng peryogi persetujuan admin pikeun gabung. Anjeun tiasa ngédit setélan ieu iraha waé.",
     "onboardingLanguagesTitle": "Basa naon anu anjeun diajar?",
@@ -2392,5 +2391,6 @@
     "activitySummaryUpdateFailed": "Ringkesan ieu teu tiasa diropéa.",
     "ssoNetworkBlockedTitle": "Situs asup teu tiasa diaksés",
     "ssoNetworkBlockedDesc": "Jaringan ieu ngahalangan kami ngahubungi {provider} pikeun ngasupkeun anjeun. Wi-Fi sakola sareng kantor sering ngahalanganana. Anjeun tiasa ngadaptar nganggo email, atanapi gentos ka jaringan sanés teras cobian deui.",
-    "ssoTryAnyway": "Cobi waé"
+    "ssoTryAnyway": "Cobi waé",
+    "viewImageLabel": "Témbongkeun gambar"
 }

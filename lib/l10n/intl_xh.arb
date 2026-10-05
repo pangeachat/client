@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-05 12:30:50.890861",
+    "@@last_modified": "2026-10-05 13:50:42.762069",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Khangela iikhosi zikawonke-wonke",
     "publicInviteDescChat": "Khangela abasebenzisi ukubamema kule ncoko.",
     "publicInviteDescSpace": "Khangela abasebenzisi ukubamema kwesi sithuba.",
-    "useActivityImageAsChatBackground": "Sebenzisa umfanekiso womsebenzi njengemvelaphi yencoko",
     "chatWithSupport": "Ncokola neNkxaso",
     "newCourseAccess": "Ngokungagqibekanga, iikhosi ziyakhangelwa esidlangalaleni kwaye zifuna imvume yomlawuli ukungena. Ungazihlela ezi setingi nangaliphi na ixesha.",
     "onboardingLanguagesTitle": "Loluphi ulwimi olufundayo?",
@@ -2392,5 +2391,6 @@
     "activitySummaryUpdateFailed": "Esi sishwankathelo asikwazanga ukuhlaziywa.",
     "ssoNetworkBlockedTitle": "Indawo yokungena ayifikeleleki",
     "ssoNetworkBlockedDesc": "Le nethiwekhi ayisivumeli ukuba sifikelele ku-{provider} ukuze sikungenise. IWi-Fi yesikolo neyeofisi isoloko iyivala. Ungabhalisa nge-imeyile endaweni yoko, okanye utshintshele kwenye inethiwekhi uze uzame kwakhona.",
-    "ssoTryAnyway": "Zama nangona kunjalo"
+    "ssoTryAnyway": "Zama nangona kunjalo",
+    "viewImageLabel": "Jonga umfanekiso"
 }

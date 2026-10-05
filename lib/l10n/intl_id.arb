@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 12:30:38.664012",
+    "@@last_modified": "2026-10-05 13:50:38.497510",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -7860,11 +7860,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Gunakan gambar aktivitas sebagai latar belakang obrolan",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat dengan Dukungan",
     "@chatWithSupport": {
         "type": "String",
@@ -10057,5 +10052,6 @@
     "activitySummaryUpdateFailed": "Ringkasan ini tidak dapat diperbarui.",
     "ssoNetworkBlockedTitle": "Situs masuk tidak dapat dijangkau",
     "ssoNetworkBlockedDesc": "Jaringan ini tidak mengizinkan kami menjangkau {provider} untuk masuk. Wi-Fi sekolah dan kantor sering memblokirnya. Anda dapat mendaftar dengan email, atau beralih ke jaringan lain dan coba lagi.",
-    "ssoTryAnyway": "Coba lagi"
+    "ssoTryAnyway": "Coba lagi",
+    "viewImageLabel": "Lihat gambar"
 }

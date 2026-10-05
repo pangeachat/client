@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-05 12:30:43.814389",
+    "@@last_modified": "2026-10-05 13:50:40.256298",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Fittex korsijiet pubbliċi",
     "publicInviteDescChat": "Fittex utenti biex tistedinhom f'din iċ-chat.",
     "publicInviteDescSpace": "Fittex utenti biex tistedinhom f'dan l-ispazju.",
-    "useActivityImageAsChatBackground": "Uża l-immaġni tal-attività bħala sfond taċ-chat",
     "chatWithSupport": "Iċċettja mal-Appoġġ",
     "newCourseAccess": "B'mod awtomatiku, il-korsijiet huma pubblikament riċerkabbli u jeħtieġu l-approvazzjoni tal-amministratur biex tingħaqad. Tista' teditja dawn is-settings fi kwalunkwe ħin.",
     "onboardingLanguagesTitle": "Liema lingwa qed titgħallem?",
@@ -2392,5 +2391,6 @@
     "activitySummaryUpdateFailed": "Dan is-sommarju ma setax jiġi aġġornat.",
     "ssoNetworkBlockedTitle": "Sit ta' reġistrazzjoni ma jistax jintlaħaq",
     "ssoNetworkBlockedDesc": "Din in-netwerk mhux qed tħallina nilħqu lil {provider} biex nirreġistrawk. Il-Wi-Fi tal-iskola u l-uffiċċju spiss jimblokkawha. Tista' tirreġistra bl-email minflok, jew taqleb għal netwerk ieħor u terġa' tipprova.",
-    "ssoTryAnyway": "Erġa' pprova xorta"
+    "ssoTryAnyway": "Erġa' pprova xorta",
+    "viewImageLabel": "Ara l-istampa"
 }

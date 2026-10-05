@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-05 12:30:49.865281",
+    "@@last_modified": "2026-10-05 13:50:42.556993",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -7937,11 +7937,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Використовувати зображення активності як фон чату",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Чат з підтримкою",
     "@chatWithSupport": {
         "type": "String",
@@ -9984,5 +9979,6 @@
     "activitySummaryUpdateFailed": "Не вдалося оновити зведення.",
     "ssoNetworkBlockedTitle": "Сайт входу недоступний",
     "ssoNetworkBlockedDesc": "Ця мережа не дозволяє нам зв’язатися з {provider} для входу. Шкільний та офісний Wi-Fi часто блокують його. Ви можете зареєструватися за допомогою електронної пошти або переключитися на іншу мережу та спробувати ще раз.",
-    "ssoTryAnyway": "Все одно спробувати"
+    "ssoTryAnyway": "Все одно спробувати",
+    "viewImageLabel": "Переглянути зображення"
 }

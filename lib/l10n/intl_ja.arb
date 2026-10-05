@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-05 12:30:39.830277",
+    "@@last_modified": "2026-10-05 13:50:38.794655",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -8526,11 +8526,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "サポートとチャット",
     "@chatWithSupport": {
         "type": "String",
@@ -10753,5 +10748,6 @@
     "activitySummaryUpdateFailed": "この要約を更新できませんでした。",
     "ssoNetworkBlockedTitle": "サインインサイトに接続できません",
     "ssoNetworkBlockedDesc": "このネットワークでは、サインインのために{provider}に接続できません。学校や職場のWi-Fiではよくブロックされます。代わりにメールで登録するか、別のネットワークに切り替えて再試行してください。",
-    "ssoTryAnyway": "とにかく試す"
+    "ssoTryAnyway": "とにかく試す",
+    "viewImageLabel": "画像を表示"
 }

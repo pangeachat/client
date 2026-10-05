@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-05 12:30:43.831954",
+    "@@last_modified": "2026-10-05 13:50:39.875864",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Tirotiro i ngā akoranga tūmatanui",
     "publicInviteDescChat": "Rapua ngā kaiwhakamahi hei tono i a rātou ki tēnei korerorero.",
     "publicInviteDescSpace": "Rapua ngā kaiwhakamahi hei tono i a rātou ki tēnei wāhi.",
-    "useActivityImageAsChatBackground": "Whakamahia te whakaahua mahi hei papamuri korerorero",
     "chatWithSupport": "Korerorero ki te Tautoko",
     "newCourseAccess": "Mā te taunoa, ka taea te rapu tūmatanui i ngā akoranga, ā, me whakaae te kaiwhakahaere kia uru. Ka taea e koe te whakatika i ēnei tautuhinga i ngā wā katoa.",
     "onboardingLanguagesTitle": "He aha te reo e ako ana koe?",
@@ -2392,5 +2391,6 @@
     "activitySummaryUpdateFailed": "Kāore i taea te whakahou i tēnei whakarāpopototanga.",
     "ssoNetworkBlockedTitle": "Kāore e taea te toro atu ki te pae takiuru",
     "ssoNetworkBlockedDesc": "Kāore tēnei whatunga e tuku ana kia toro atu mātou ki a {provider} hei takiuru i a koe. He maha ngā wā ka aukatihia e te Wi-Fi o te kura, o te tari rānei. Ka taea e koe te rēhita mā te īmēra, te huri rānei ki tētahi atu whatunga ka ngana anō.",
-    "ssoTryAnyway": "Ngana tonu"
+    "ssoTryAnyway": "Ngana tonu",
+    "viewImageLabel": "Tirohia te atahanga"
 }

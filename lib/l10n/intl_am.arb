@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-05 12:30:33.876469",
+    "@@last_modified": "2026-10-05 13:50:36.215742",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "ለሁሉም ክፍት የሆኑ ኮርሶችን ያስሱ",
     "publicInviteDescChat": "ወደዚህ ውይይት ለመጋበዝ ተጠቃሚዎችን ይፈልጉ።",
     "publicInviteDescSpace": "ወደዚህ ምህዳር ለመጋበዝ ተጠቃሚዎችን ይፈልጉ።",
-    "useActivityImageAsChatBackground": "የእንቅስቃሴውን ምስል እንደ የውይይት ዳራ ይጠቀሙ",
     "chatWithSupport": "ከድጋፍ ሰጪ ቡድን ጋር ይወያዩ",
     "newCourseAccess": "በነባሪነት፣ ኮርሶች ለሕዝብ ፍለጋ ክፍት ሲሆኑ ለመቀላቀል የአስተዳዳሪ ይሁንታ ያስፈልጋቸዋል። እነዚህን ቅንብሮች በማንኛውም ጊዜ ማስተካከል ይችላሉ።",
     "onboardingLanguagesTitle": "የትኛውን ቋንቋ እየተማሩ ነው?",
@@ -2392,5 +2391,6 @@
     "activitySummaryUpdateFailed": "ይህ ማጠቃለያ ሊዘመን አልቻለም።",
     "ssoNetworkBlockedTitle": "የመግቢያ ጣቢያው አይደረስበትም",
     "ssoNetworkBlockedDesc": "ይህ አውታረ መረብ እርስዎን ለማስገባት ወደ {provider} እንዳንደርስ እየከለከለን ነው። የትምህርት ቤት እና የቢሮ ዋይፋይ ብዙ ጊዜ ያግዱታል። በምትኩ በኢሜል መመዝገብ ወይም ወደ ሌላ አውታረ መረብ ቀይረው እንደገና መሞከር ይችላሉ።",
-    "ssoTryAnyway": "ለማንኛውም ይሞክሩ"
+    "ssoTryAnyway": "ለማንኛውም ይሞክሩ",
+    "viewImageLabel": "ምስል ይመልከቱ"
 }

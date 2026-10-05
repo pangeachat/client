@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-05 12:30:42.164915",
+    "@@last_modified": "2026-10-05 13:50:39.696343",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8538,11 +8538,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Naudoti veiklos vaizdą kaip pokalbio foną",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Pokalbis su palaikymu",
     "@chatWithSupport": {
         "type": "String",
@@ -10765,5 +10760,6 @@
     "activitySummaryUpdateFailed": "Šio suvestinės nepavyko atnaujinti.",
     "ssoNetworkBlockedTitle": "Prisijungimo svetainė nepasiekiama",
     "ssoNetworkBlockedDesc": "Šis tinklas neleidžia mums pasiekti {provider}, kad galėtumėte prisijungti. Mokyklos ir biuro „Wi-Fi“ dažnai blokuoja prieigą. Galite prisiregistruoti el. paštu arba prisijungti prie kito tinklo ir bandyti dar kartą.",
-    "ssoTryAnyway": "Vis tiek bandyti"
+    "ssoTryAnyway": "Vis tiek bandyti",
+    "viewImageLabel": "Peržiūrėti nuotrauką"
 }

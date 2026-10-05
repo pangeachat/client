@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-05 12:30:49.106459",
+    "@@last_modified": "2026-10-05 13:50:41.836406",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Batla lithupelo tsa sechaba",
     "publicInviteDescChat": "Batla basebelisi ho ba memela moqoqong ona.",
     "publicInviteDescSpace": "Batla basebelisi ho ba memela sebakeng sena.",
-    "useActivityImageAsChatBackground": "Sebelisa setšoantšo sa mosebetsi joalo ka bokamorao ba moqoqo",
     "chatWithSupport": "Qoqa le Tšehetso",
     "newCourseAccess": "Ka ho sa feleng, lithupelo li ka batloa ke sechaba 'me li hloka tumello ea molaoli ho kena. U ka fetola litlhophiso tsena neng kapa neng.",
     "onboardingLanguagesTitle": "U ithuta puo efe?",
@@ -2392,5 +2391,6 @@
     "activitySummaryUpdateFailed": "Kakaretso ena e sitilwe ho ntjhafatswa.",
     "ssoNetworkBlockedTitle": "Sebaka sa ho kena ha se fihlellehe",
     "ssoNetworkBlockedDesc": "Marang-rang ana ha a re lumelle ho fihlella {provider} ho u kenya. Wi-Fi ea sekolo le ofisi hangata e a e thibela. U ka ingolisa ka imeile ho e-na le hoo, kapa ua fetohela marang-rang a mang 'me ua leka hape.",
-    "ssoTryAnyway": "Leka leha ho le joalo"
+    "ssoTryAnyway": "Leka leha ho le joalo",
+    "viewImageLabel": "Bona setshwantsho"
 }

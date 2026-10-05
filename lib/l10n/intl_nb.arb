@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 12:30:44.372718",
+    "@@last_modified": "2026-10-05 13:50:40.253749",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -7993,11 +7993,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat med støtte",
     "@chatWithSupport": {
         "type": "String",
@@ -10041,5 +10036,6 @@
     "activitySummaryUpdateFailed": "Denne oppsummeringen kunne ikke oppdateres.",
     "ssoNetworkBlockedTitle": "Påloggingsside utilgjengelig",
     "ssoNetworkBlockedDesc": "Dette nettverket hindrer oss i å nå {provider} for å logge deg på. Skole- og kontor-Wi-Fi blokkerer ofte dette. Du kan registrere deg med e-post i stedet, eller bytte til et annet nettverk og prøve igjen.",
-    "ssoTryAnyway": "Prøv likevel"
+    "ssoTryAnyway": "Prøv likevel",
+    "viewImageLabel": "Vis bilde"
 }

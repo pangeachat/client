@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-05 12:30:52.868184",
+    "@@last_modified": "2026-10-05 13:50:43.103356",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -7937,11 +7937,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "将活动图像用作聊天背景",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "与支持聊天",
     "@chatWithSupport": {
         "type": "String",
@@ -9984,5 +9979,6 @@
     "activitySummaryUpdateFailed": "此摘要未能更新。",
     "ssoNetworkBlockedTitle": "无法访问登录网站",
     "ssoNetworkBlockedDesc": "此网络不允许我们访问 {provider} 来登录。学校和办公室的 Wi-Fi 通常会阻止它。您可以改为使用电子邮件注册，或切换到其他网络再试一次。",
-    "ssoTryAnyway": "仍然尝试"
+    "ssoTryAnyway": "仍然尝试",
+    "viewImageLabel": "查看图片"
 }

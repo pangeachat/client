@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 12:30:45.545635",
+    "@@last_modified": "2026-10-05 13:50:41.148363",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -7932,11 +7932,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Usar imagem da atividade como fundo do chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Converse com o Suporte",
     "@chatWithSupport": {
         "type": "String",
@@ -9984,5 +9979,6 @@
     "activitySummaryUpdateFailed": "Não foi possível atualizar este resumo.",
     "ssoNetworkBlockedTitle": "Site de login indisponível",
     "ssoNetworkBlockedDesc": "Esta rede não nos permite acessar {provider} para fazer seu login. Wi-Fis de escolas e escritórios geralmente bloqueiam isso. Você pode se inscrever com e-mail ou mudar para outra rede e tentar novamente.",
-    "ssoTryAnyway": "Tentar mesmo assim"
+    "ssoTryAnyway": "Tentar mesmo assim",
+    "viewImageLabel": "Ver imagem"
 }

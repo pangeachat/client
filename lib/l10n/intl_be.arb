@@ -3548,7 +3548,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-05 12:30:33.316743",
+    "@@last_modified": "2026-10-05 13:50:36.173880",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -7937,11 +7937,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Выкарыстоўвайце малюнак актыўнасці як фон чата",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Чат з падтрымкай",
     "@chatWithSupport": {
         "type": "String",
@@ -9998,5 +9993,6 @@
     "activitySummaryUpdateFailed": "Гэтае зводка не можа быць абноўлена.",
     "ssoNetworkBlockedTitle": "Сайт для ўваходу недаступны",
     "ssoNetworkBlockedDesc": "Гэтая сетка не дазваляе нам звязацца з {provider} для вашага ўваходу. Школьны і офісны Wi-Fi часта блакуюць яго. Вы можаце зарэгістравацца з дапамогай электроннай пошты або пераключыцца на іншую сетку і паспрабаваць яшчэ раз.",
-    "ssoTryAnyway": "Усё роўна паспрабаваць"
+    "ssoTryAnyway": "Усё роўна паспрабаваць",
+    "viewImageLabel": "Паглядзець выяву"
 }

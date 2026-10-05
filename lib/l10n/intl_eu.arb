@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-05 12:30:36.910252",
+    "@@last_modified": "2026-10-05 13:50:37.430614",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -7937,11 +7937,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Erabili jarduera irudia txat atzeko plano gisa",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Txatatu Laguntzarekin",
     "@chatWithSupport": {
         "type": "String",
@@ -9984,5 +9979,6 @@
     "activitySummaryUpdateFailed": "Laburpen hau ezin izan da eguneratu.",
     "ssoNetworkBlockedTitle": "Saioa hasteko gunea eskuraezina",
     "ssoNetworkBlockedDesc": "Sare honek ez digu uzten {provider} atzitzen saioa hasteko. Eskolako eta bulegoko Wi-Fi sareek askotan blokeatzen dute. Horren ordez, posta elektronikoarekin erregistra zaitezke, edo beste sare batera aldatu eta berriro saiatu.",
-    "ssoTryAnyway": "Dena den, saiatu"
+    "ssoTryAnyway": "Dena den, saiatu",
+    "viewImageLabel": "Ikusi irudia"
 }

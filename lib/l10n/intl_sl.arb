@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-05 12:30:47.262556",
+    "@@last_modified": "2026-10-05 13:50:41.638950",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8702,11 +8702,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Uporabi sliko dejavnosti kot ozadje klepeta",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Pogovorite se s podporo",
     "@chatWithSupport": {
         "type": "String",
@@ -10929,5 +10924,6 @@
     "activitySummaryUpdateFailed": "Tega povzetka ni bilo mogoče posodobiti.",
     "ssoNetworkBlockedTitle": "Mesto za prijavo ni dosegljivo",
     "ssoNetworkBlockedDesc": "To omrežje nam ne dovoljuje, da dosežemo {provider} za vašo prijavo. Šolski in pisarniški Wi-Fi to pogosto blokirata. Namesto tega se lahko prijavite z e-pošto ali preklopite na drugo omrežje in poskusite znova.",
-    "ssoTryAnyway": "Vseeno poskusi"
+    "ssoTryAnyway": "Vseeno poskusi",
+    "viewImageLabel": "Ogled slike"
 }

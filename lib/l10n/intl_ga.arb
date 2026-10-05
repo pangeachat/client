@@ -3563,7 +3563,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-05 12:30:37.546544",
+    "@@last_modified": "2026-10-05 13:50:37.761572",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -7944,11 +7944,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Comhrá le Tacaíocht",
     "@chatWithSupport": {
         "type": "String",
@@ -9995,5 +9990,6 @@
     "activitySummaryUpdateFailed": "Níorbh fhéidir an achoimre seo a nuashonrú.",
     "ssoNetworkBlockedTitle": "Suíomh sínithe isteach do-rochtain",
     "ssoNetworkBlockedDesc": "Níl an líonra seo ag ligean dúinn {provider} a bhaint amach chun tú a shíniú isteach. Is minic a chuireann Wi-Fi scoile agus oifige bac air. Is féidir leat clárú le ríomhphost ina ionad, nó athrú go líonra eile agus triail eile a bhaint as.",
-    "ssoTryAnyway": "Bain triail as ar aon nós"
+    "ssoTryAnyway": "Bain triail as ar aon nós",
+    "viewImageLabel": "Amharc ar an íomhá"
 }

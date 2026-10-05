@@ -3535,7 +3535,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-10-05 12:30:42.149204",
+    "@@last_modified": "2026-10-05 13:50:39.582624",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -7937,11 +7937,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Izmantojiet aktivitātes attēlu kā čata fona",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Sarunāties ar atbalstu",
     "@chatWithSupport": {
         "type": "String",
@@ -9984,5 +9979,6 @@
     "activitySummaryUpdateFailed": "Šo kopsavilkumu nevarēja atjaunināt.",
     "ssoNetworkBlockedTitle": "Pieteikšanās vietne nav sasniedzama",
     "ssoNetworkBlockedDesc": "Šis tīkls neļauj mums sasniegt {provider}, lai jūs pieteiktu. Skolas un biroja Wi-Fi bieži to bloķē. Jūs varat reģistrēties ar e-pastu vai pārslēgties uz citu tīklu un mēģināt vēlreiz.",
-    "ssoTryAnyway": "Tomēr mēģināt"
+    "ssoTryAnyway": "Tomēr mēģināt",
+    "viewImageLabel": "Skatīt attēlu"
 }

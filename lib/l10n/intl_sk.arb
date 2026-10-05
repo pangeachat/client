@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-05 12:30:47.064061",
+    "@@last_modified": "2026-10-05 13:50:41.182440",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -8702,11 +8702,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Použiť obrázok aktivity ako pozadie chatu",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chatovať s podporou",
     "@chatWithSupport": {
         "type": "String",
@@ -10929,5 +10924,6 @@
     "activitySummaryUpdateFailed": "Tento súhrn nebolo možné aktualizovať.",
     "ssoNetworkBlockedTitle": "Prihlasovacia stránka je nedostupná",
     "ssoNetworkBlockedDesc": "Táto sieť nám neumožňuje pripojiť sa k {provider} a prihlásiť vás. Často to blokujú školské a kancelárske Wi-Fi siete. Namiesto toho sa môžete zaregistrovať e-mailom alebo prejsť na inú sieť a skúsiť to znova.",
-    "ssoTryAnyway": "Aj tak skúsiť"
+    "ssoTryAnyway": "Aj tak skúsiť",
+    "viewImageLabel": "Zobraziť obrázok"
 }

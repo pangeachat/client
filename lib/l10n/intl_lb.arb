@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-05 12:30:42.034731",
+    "@@last_modified": "2026-10-05 13:50:39.643267",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Ëffentlech Coursen duerchsichen",
     "publicInviteDescChat": "Sicht no Benotzer fir se an dëse Chat anzelaaden.",
     "publicInviteDescSpace": "Sicht no Benotzer fir se an dëse Raum anzelaaden.",
-    "useActivityImageAsChatBackground": "Aktivitéitsbild als Chat-Hannergrond benotzen",
     "chatWithSupport": "Chat mam Support",
     "newCourseAccess": "Standardméisseg sinn d'Coursen ëffentlech sichbar a erfuerderen d'Zoustëmmung vum Admin fir matzemaachen. Dir kënnt dës Astellungen zu all Moment änneren.",
     "onboardingLanguagesTitle": "Wat fir eng Sprooch léiert Dir?",
@@ -2392,5 +2391,6 @@
     "activitySummaryUpdateFailed": "Dës Zesummefaassung konnt net aktualiséiert ginn.",
     "ssoNetworkBlockedTitle": "Umeldungssäit net erreechbar",
     "ssoNetworkBlockedDesc": "Dëst Netzwierk erlaabt eis net, {provider} z'erreechen fir Iech unzemellen. Schoul- an Büro-Wi-Fi blockéieren dacks esou eppes. Dir kënnt Iech amplaz mat E-Mail umellen, oder op en anert Netzwierk wiesselen an et nach eng Kéier probéieren.",
-    "ssoTryAnyway": "Trotzdeem probéieren"
+    "ssoTryAnyway": "Trotzdeem probéieren",
+    "viewImageLabel": "Bild ukucken"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-05 12:30:51.666448",
+    "@@last_modified": "2026-10-05 13:50:42.806704",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Ṣawari awọn ẹkọ gbangba",
     "publicInviteDescChat": "Wa awọn olumulo lati pe wọn si iwiregbe yii.",
     "publicInviteDescSpace": "Wa awọn olumulo lati pe wọn si aaye yii.",
-    "useActivityImageAsChatBackground": "Lo aworan iṣẹ ṣiṣe bi abẹlẹ iwiregbe",
     "chatWithSupport": "Iwiregbe pẹlu Atilẹyin",
     "newCourseAccess": "Nipa aiyipada, awọn ẹkọ jẹ wiwa ni gbangba ati nilo ifọwọsi alakoso lati darapọ mọ. O le ṣatunkọ awọn eto wọnyi nigbakugba.",
     "onboardingLanguagesTitle": "Ede wo ni o n kọ?",
@@ -2392,5 +2391,6 @@
     "activitySummaryUpdateFailed": "Kò lè ṣe àtúnṣe àkópọ̀ yìí.",
     "ssoNetworkBlockedTitle": "Aaye ìforúkọsílẹ̀ kò ṣeé dé",
     "ssoNetworkBlockedDesc": "Nẹ́tíwọ̀kì yìí kò jẹ́ kí a dé {provider} láti fi ọ́ wọlé. Wi-Fi ilé-ìwé àti ọ́fíìsì sábà máa ń dí i lọ́nà. O lè forúkọsílẹ̀ pẹ̀lú imeeli dípò, tàbí yípadà sí nẹ́tíwọ̀kì mìíràn kí o sì tún gbìyànjú.",
-    "ssoTryAnyway": "Gbìyànjú lọ́nàkọnà"
+    "ssoTryAnyway": "Gbìyànjú lọ́nàkọnà",
+    "viewImageLabel": "Wo aworan"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-05 12:30:41.607583",
+    "@@last_modified": "2026-10-05 13:50:39.464699",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Explora cursus publicos",
     "publicInviteDescChat": "Quaere utentes ut eos ad hoc colloquium invites.",
     "publicInviteDescSpace": "Quaere utentes ut eos ad hoc spatium invites.",
-    "useActivityImageAsChatBackground": "Utere imagine actionis ut scaena colloquii",
     "chatWithSupport": "Colloquere cum Auxilio",
     "newCourseAccess": "Defalte, cursus publice quaeribiles sunt et approbationem administratoris ad iungendum requirunt. Has optiones quovis tempore mutare potes.",
     "onboardingLanguagesTitle": "Quam linguam discis?",
@@ -2392,5 +2391,6 @@
     "activitySummaryUpdateFailed": "Haec summa renovari non potuit.",
     "ssoNetworkBlockedTitle": "Situs initii inaccessibilis",
     "ssoNetworkBlockedDesc": "Haec retis nos prohibet ad {provider} pervenire ut te inigas. Wi-Fi scholae et officii saepe id impediunt. Potes proinde per electronicam subscribere, aut ad aliam retem mutare et iterum conari.",
-    "ssoTryAnyway": "Nihilominus conare"
+    "ssoTryAnyway": "Nihilominus conare",
+    "viewImageLabel": "Imaginem inspice"
 }

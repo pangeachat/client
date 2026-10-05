@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-05 12:30:37.589070",
+    "@@last_modified": "2026-10-05 13:50:38.096437",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Duba kwas-kwas na jama'a",
     "publicInviteDescChat": "Nemo masu amfani don gayyatar su zuwa wannan hirar.",
     "publicInviteDescSpace": "Nemo masu amfani don gayyatar su zuwa wannan sararin.",
-    "useActivityImageAsChatBackground": "Yi amfani da hoton aiki a matsayin fuskar baya na hira",
     "chatWithSupport": "Yi hira da Taimako",
     "newCourseAccess": "A bisa al'ada, kwas-kwas na jama'a ne kuma suna buƙatar amincewar mai gudanarwa don shiga. Za ka iya gyara waɗannan saitunan a kowane lokaci.",
     "onboardingLanguagesTitle": "Wane harshe kake koya?",
@@ -2392,5 +2391,6 @@
     "activitySummaryUpdateFailed": "Ba a iya sabunta wannan taƙaitaccen bayanin ba.",
     "ssoNetworkBlockedTitle": "Shafin shiga ba ya samuwa",
     "ssoNetworkBlockedDesc": "Wannan hanyar sadarwa ba ta barin mu mu kai ga {provider} don shigar da kai. Wi-Fi na makaranta da ofis sukan toshe shi. Zaka iya yin rajista da imel a maimakon haka, ko canza zuwa wata hanyar sadarwa kuma ka sake gwadawa.",
-    "ssoTryAnyway": "Gwada ko yaya"
+    "ssoTryAnyway": "Gwada ko yaya",
+    "viewImageLabel": "Duba hoto"
 }

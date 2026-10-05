@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 12:30:36.041255",
+    "@@last_modified": "2026-10-05 13:50:37.400605",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -7850,11 +7850,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "از تصویر فعالیت به عنوان پس‌زمینه چت استفاده کنید",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "چت با پشتیبانی",
     "@chatWithSupport": {
         "type": "String",
@@ -10072,5 +10067,6 @@
     "activitySummaryUpdateFailed": "این خلاصه به‌روز نشد.",
     "ssoNetworkBlockedTitle": "سایت ورود به سیستم در دسترس نیست",
     "ssoNetworkBlockedDesc": "این شبکه به ما اجازه نمی‌دهد برای ورود شما به {provider} دسترسی پیدا کنیم. وای‌فای مدرسه و اداره اغلب آن را مسدود می‌کنند. می‌توانید به جای آن با ایمیل ثبت‌نام کنید، یا به شبکه دیگری متصل شوید و دوباره امتحان کنید.",
-    "ssoTryAnyway": "به هر حال امتحان کن"
+    "ssoTryAnyway": "به هر حال امتحان کن",
+    "viewImageLabel": "مشاهده تصویر"
 }

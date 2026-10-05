@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-05 12:30:34.941602",
+    "@@last_modified": "2026-10-05 13:50:36.871661",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Pag-browse sa mga publikong kurso",
     "publicInviteDescChat": "Pangita og mga tiggamit aron imbitahon sila niini nga chat.",
     "publicInviteDescSpace": "Pangita og mga tiggamit aron imbitahon sila niini nga espasyo.",
-    "useActivityImageAsChatBackground": "Gamita ang hulagway sa kalihokan isip background sa chat",
     "chatWithSupport": "Pakig-chat sa Suporta",
     "newCourseAccess": "Sa kasagaran, ang mga kurso mahimong pangitaon sa publiko ug nagkinahanglan og pag-uyon sa admin aron makaapil. Mahimo nimong i-edit kini nga mga setting bisan unsang orasa.",
     "onboardingLanguagesTitle": "Unsang pinulongan ang imong gitun-an?",
@@ -2392,5 +2391,6 @@
     "activitySummaryUpdateFailed": "Dili ma-update kining summary.",
     "ssoNetworkBlockedTitle": "Dili maabot ang site sa pag-sign-in",
     "ssoNetworkBlockedDesc": "Kini nga network wala nagtugot kanamo nga maabot ang {provider} aron ma-sign in ka. Ang Wi-Fi sa eskwelahan ug opisina kasagaran nagbabag niini. Mahimo kang mag-sign up gamit ang email, o mobalhin sa laing network ug mosulay pag-usab.",
-    "ssoTryAnyway": "Sulayi gihapon"
+    "ssoTryAnyway": "Sulayi gihapon",
+    "viewImageLabel": "Tan-awa ang hulagway"
 }

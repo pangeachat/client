@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-05 12:30:45.517056",
+    "@@last_modified": "2026-10-05 13:50:40.757977",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Sakani maphunziro a anthu onse",
     "publicInviteDescChat": "Sakani ogwiritsa ntchito kuti muwaitane ku macheza awa.",
     "publicInviteDescSpace": "Sakani ogwiritsa ntchito kuti muwaitane ku malo awa.",
-    "useActivityImageAsChatBackground": "Gwiritsani ntchito chithunzi cha zochitika ngati maziko a macheza",
     "chatWithSupport": "Chezani ndi Thandizo",
     "newCourseAccess": "Mwachisawawa, maphunziro amapezeka pagulu ndipo amafunikira kuvomerezedwa ndi woyang'anira kuti alowe. Mutha kusintha zokonda izi nthawi iliyonse.",
     "onboardingLanguagesTitle": "Kodi mukupanga chilankhulo chotani?",
@@ -2392,5 +2391,6 @@
     "activitySummaryUpdateFailed": "Chidulechi sichinathe kusinthidwa.",
     "ssoNetworkBlockedTitle": "Malo olowera safikika",
     "ssoNetworkBlockedDesc": "Intaneti iyi ikutiletsa kufika ku {provider} kuti tikulowetseni. Ma Wi-Fi a kusukulu ndi ku ofesi nthawi zambiri amalepheretsa. Mutha kulembetsa ndi imelo m'malo mwake, kapena kusinthira ku intaneti ina ndikuyesanso.",
-    "ssoTryAnyway": "Yesani komabe"
+    "ssoTryAnyway": "Yesani komabe",
+    "viewImageLabel": "Onani chithunzi"
 }

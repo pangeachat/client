@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-05 12:30:37.392932",
+    "@@last_modified": "2026-10-05 13:50:37.706773",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "સાર્વજનિક કોર્સ બ્રાઉઝ કરો",
     "publicInviteDescChat": "વપરાશકર્તાઓને આ ચેટમાં આમંત્રિત કરવા માટે શોધો.",
     "publicInviteDescSpace": "વપરાશકર્તાઓને આ સ્પેસમાં આમંત્રિત કરવા માટે શોધો.",
-    "useActivityImageAsChatBackground": "ચેટ બેકગ્રાઉન્ડ તરીકે પ્રવૃત્તિની છબીનો ઉપયોગ કરો",
     "chatWithSupport": "સપોર્ટ સાથે ચેટ કરો",
     "newCourseAccess": "ડિફૉલ્ટ રૂપે, કોર્સ સાર્વજનિક રીતે શોધી શકાય છે અને જોડાવા માટે એડમિનની મંજૂરીની જરૂર છે. તમે આ સેટિંગ્સને કોઈપણ સમયે સંપાદિત કરી શકો છો.",
     "onboardingLanguagesTitle": "તમે કઈ ભાષા શીખી રહ્યા છો?",
@@ -2392,5 +2391,6 @@
     "activitySummaryUpdateFailed": "આ સારાંશ અપડેટ કરી શકાયો નથી.",
     "ssoNetworkBlockedTitle": "સાઇન-ઇન સાઇટ પહોંચી શકાય તેવી નથી",
     "ssoNetworkBlockedDesc": "આ નેટવર્ક તમને સાઇન ઇન કરવા માટે {provider} સુધી પહોંચવા દેતું નથી. શાળા અને ઑફિસનું Wi-Fi ઘણીવાર તેને બ્લૉક કરે છે. તમે તેના બદલે ઇમેઇલ વડે સાઇન અપ કરી શકો છો અથવા બીજા નેટવર્ક પર સ્વિચ કરીને ફરી પ્રયાસ કરી શકો છો.",
-    "ssoTryAnyway": "તો પણ પ્રયાસ કરો"
+    "ssoTryAnyway": "તો પણ પ્રયાસ કરો",
+    "viewImageLabel": "છબી જુઓ"
 }

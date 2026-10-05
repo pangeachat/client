@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-05 12:30:35.133107",
+    "@@last_modified": "2026-10-05 13:50:36.787064",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -7958,11 +7958,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Aktivitätsbild als Chat-Hintergrund verwenden",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat mit dem Support",
     "@chatWithSupport": {
         "type": "String",
@@ -9971,5 +9966,6 @@
     "activitySummaryUpdateFailed": "Diese Zusammenfassung konnte nicht aktualisiert werden.",
     "ssoNetworkBlockedTitle": "Anmeldeseite nicht erreichbar",
     "ssoNetworkBlockedDesc": "Dieses Netzwerk lässt uns nicht zu {provider} durch, um dich anzumelden. Schul- und Büro-WLAN blockieren dies oft. Du kannst dich stattdessen mit E-Mail anmelden oder zu einem anderen Netzwerk wechseln und es erneut versuchen.",
-    "ssoTryAnyway": "Trotzdem versuchen"
+    "ssoTryAnyway": "Trotzdem versuchen",
+    "viewImageLabel": "Bild ansehen"
 }

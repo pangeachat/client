@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-05 12:30:48.764482",
+    "@@last_modified": "2026-10-05 13:50:41.691180",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Baadh koorsooyinka guud",
     "publicInviteDescChat": "Raadi isticmaalayaal si aad ugu casuunto sheekadan.",
     "publicInviteDescSpace": "Raadi isticmaalayaal si aad ugu casuunto meeshan.",
-    "useActivityImageAsChatBackground": "U isticmaal sawirka waxqabadka asalka sheekada",
     "chatWithSupport": "La sheekayso Taageerada",
     "newCourseAccess": "Sida caadiga ah, koorsooyinka waa la raadin karaa si guud waxayna u baahan yihiin oggolaansho maamul si loogu biiro. Waxaad wax ka beddeli kartaa dejimahan wakhti kasta.",
     "onboardingLanguagesTitle": "Luqaddee ayaad baranaysaa?",
@@ -2392,5 +2391,6 @@
     "activitySummaryUpdateFailed": "Soo koobiddaan lama cusboonaysiin karin.",
     "ssoNetworkBlockedTitle": "Goobta soo-galitaanka lama gaari karo",
     "ssoNetworkBlockedDesc": "Shabakaddani nama ogolaaneyso inaan gaarno {provider} si aan kuugu soo galino. Wi-Fi-ga dugsiga iyo xafiiska ayaa inta badan xira. Waxaad ku diiwaan gelin kartaa email ahaan, ama waxaad u wareegi kartaa shabakad kale oo aad mar kale isku dayi kartaa.",
-    "ssoTryAnyway": "Sikastaba isku day"
+    "ssoTryAnyway": "Sikastaba isku day",
+    "viewImageLabel": "Daawo sawirka"
 }

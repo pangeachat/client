@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-05 12:30:38.233820",
+    "@@last_modified": "2026-10-05 13:50:38.194491",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -8193,11 +8193,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Razgovarajte s podrškom",
     "@chatWithSupport": {
         "type": "String",
@@ -10420,5 +10415,6 @@
     "activitySummaryUpdateFailed": "Ovaj sažetak nije bilo moguće ažurirati.",
     "ssoNetworkBlockedTitle": "Stranica za prijavu nedostupna",
     "ssoNetworkBlockedDesc": "Ova mreža nam ne dopušta pristup {provider} za vašu prijavu. Školske i uredske Wi-Fi mreže često to blokiraju. Umjesto toga možete se prijaviti e-poštom ili se prebaciti na drugu mrežu i pokušati ponovno.",
-    "ssoTryAnyway": "Pokušaj svejedno"
+    "ssoTryAnyway": "Pokušaj svejedno",
+    "viewImageLabel": "Prikaži sliku"
 }

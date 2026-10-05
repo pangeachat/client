@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-05 12:30:36.123793",
+    "@@last_modified": "2026-10-05 13:50:37.428262",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -7925,11 +7925,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Käytä aktiviteettikuvaa chat-taustana",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chattaa tuen kanssa",
     "@chatWithSupport": {
         "type": "String",
@@ -10021,5 +10016,6 @@
     "activitySummaryUpdateFailed": "Yhteenvedon päivittäminen epäonnistui.",
     "ssoNetworkBlockedTitle": "Kirjautumissivusto ei tavoitettavissa",
     "ssoNetworkBlockedDesc": "Tämä verkko estää meitä tavoittamasta palvelua {provider} kirjautuaksesi sisään. Koulun ja toimiston Wi-Fi-verkot estävät sen usein. Voit kirjautua sisään sähköpostilla tai vaihtaa toiseen verkkoon ja yrittää uudelleen.",
-    "ssoTryAnyway": "Yritä silti"
+    "ssoTryAnyway": "Yritä silti",
+    "viewImageLabel": "Näytä kuva"
 }

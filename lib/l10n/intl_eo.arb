@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 12:30:35.284639",
+    "@@last_modified": "2026-10-05 13:50:36.935128",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -8702,11 +8702,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Uzu aktivan bildon kiel ĉatfondon",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Babili kun Subteno",
     "@chatWithSupport": {
         "type": "String",
@@ -10929,5 +10924,6 @@
     "activitySummaryUpdateFailed": "Ĉi tiu resumo ne povis esti ĝisdatigita.",
     "ssoNetworkBlockedTitle": "Ensaluta retejo neatingebla",
     "ssoNetworkBlockedDesc": "Ĉi tiu reto ne permesas al ni atingi {provider} por ensaluti vin. Lerneja kaj oficeja retkonekto ofte blokas ĝin. Vi povas registriĝi per retpoŝto anstataŭe, aŭ ŝanĝi al alia reto kaj reprovi.",
-    "ssoTryAnyway": "Provu ĉiukaze"
+    "ssoTryAnyway": "Provu ĉiukaze",
+    "viewImageLabel": "Vidi bildon"
 }

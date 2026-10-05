@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-05 12:30:48.350885",
+    "@@last_modified": "2026-10-05 13:50:41.788843",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Shfletoni kurset publike",
     "publicInviteDescChat": "Kërkoni përdorues për t'i ftuar në këtë bisedë.",
     "publicInviteDescSpace": "Kërkoni përdorues për t'i ftuar në këtë hapësirë.",
-    "useActivityImageAsChatBackground": "Përdor imazhin e aktivitetit si sfond bisede",
     "chatWithSupport": "Bisedoni me Mbështetjen",
     "newCourseAccess": "Si parazgjedhje, kurset janë të kërkueshme publikisht dhe kërkojnë miratimin e administratorit për t'u bashkuar. Këto cilësime mund t'i ndryshoni në çdo kohë.",
     "onboardingLanguagesTitle": "Çfarë gjuhe po mësoni?",
@@ -2392,5 +2391,6 @@
     "activitySummaryUpdateFailed": "Ky përmbledhje nuk mund të përditësohej.",
     "ssoNetworkBlockedTitle": "Sajti i hyrjes i paarritshëm",
     "ssoNetworkBlockedDesc": "Ky rrjet nuk na lejon të arrijmë te {provider} për t'u kyçur. Wi-Fi i shkollës dhe zyrës shpesh e bllokojnë atë. Mund të regjistroheni me email, ose të kaloni në një rrjet tjetër dhe të provoni përsëri.",
-    "ssoTryAnyway": "Provo gjithsesi"
+    "ssoTryAnyway": "Provo gjithsesi",
+    "viewImageLabel": "Shiko imazhin"
 }
