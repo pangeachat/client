@@ -95,7 +95,7 @@ class ActivitySummary extends StatelessWidget {
           maxWidth: FluffyThemes.columnWidth * 1.5,
         ),
         child: Column(
-          spacing: 4.0,
+          spacing: 16.0,
           children: [
             if (goals != null)
               ActivityGoalsDropdown(
