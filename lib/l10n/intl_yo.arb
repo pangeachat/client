@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-30 11:27:42.392792",
+    "@@last_modified": "2026-10-05 12:30:51.666448",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "Èdè wo ni a sọ?",
     "callTranscriptSubscribeForTranscription": "Ṣe àbáwọlé fún àkọsílẹ̀",
     "unlockCallTranscript": "Ṣí àkọsílẹ̀ ìpe sílẹ̀",
-    "activitySummaryUpdateFailed": "Kò lè ṣe àtúnṣe àkópọ̀ yìí."
+    "activitySummaryUpdateFailed": "Kò lè ṣe àtúnṣe àkópọ̀ yìí.",
+    "ssoNetworkBlockedTitle": "Aaye ìforúkọsílẹ̀ kò ṣeé dé",
+    "ssoNetworkBlockedDesc": "Nẹ́tíwọ̀kì yìí kò jẹ́ kí a dé {provider} láti fi ọ́ wọlé. Wi-Fi ilé-ìwé àti ọ́fíìsì sábà máa ń dí i lọ́nà. O lè forúkọsílẹ̀ pẹ̀lú imeeli dípò, tàbí yípadà sí nẹ́tíwọ̀kì mìíràn kí o sì tún gbìyànjú.",
+    "ssoTryAnyway": "Gbìyànjú lọ́nàkọnà"
 }

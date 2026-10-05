@@ -3400,7 +3400,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-09-30 11:27:31.044633",
+    "@@last_modified": "2026-10-05 12:30:36.933667",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10856,5 +10856,8 @@
     "callTranscriptChooseLanguage": "Ποια γλώσσα ομιλήθηκε;",
     "callTranscriptSubscribeForTranscription": "Εγγραφείτε για μεταγραφή",
     "unlockCallTranscript": "Ξεκλείδωμα μεταγραφής κλήσης",
-    "activitySummaryUpdateFailed": "Αυτή η σύνοψη δεν ήταν δυνατό να ενημερωθεί."
+    "activitySummaryUpdateFailed": "Αυτή η σύνοψη δεν ήταν δυνατό να ενημερωθεί.",
+    "ssoNetworkBlockedTitle": "Ο ιστότοπος σύνδεσης δεν είναι προσβάσιμος",
+    "ssoNetworkBlockedDesc": "Αυτό το δίκτυο δεν μας επιτρέπει να επικοινωνήσουμε με το {provider} για να συνδεθείτε. Τα δίκτυα Wi-Fi σχολείων και γραφείων συχνά το μπλοκάρουν. Μπορείτε να εγγραφείτε με email αντ' αυτού, ή να συνδεθείτε σε άλλο δίκτυο και να δοκιμάσετε ξανά.",
+    "ssoTryAnyway": "Δοκιμάστε ούτως ή άλλως"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-30 11:27:35.642452",
+    "@@last_modified": "2026-10-05 12:30:42.109504",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "بە چ زمانێک قسە کرا؟",
     "callTranscriptSubscribeForTranscription": "بەشداری بکە بۆ گۆڕین بۆ نووسین",
     "unlockCallTranscript": "کردنەوەی گۆڕینی پەیوەندی بۆ نووسین",
-    "activitySummaryUpdateFailed": "ئەم پوختەیە نوێ نه‌کرایه‌وه‌."
+    "activitySummaryUpdateFailed": "ئەم پوختەیە نوێ نه‌کرایه‌وه‌.",
+    "ssoNetworkBlockedTitle": "ماڵپەڕی چوونەژوورەوە بەردەست نییە",
+    "ssoNetworkBlockedDesc": "ئەم تۆڕە ڕێگەمان نادات بگەینە {provider} بۆ ئەوەی بچیتە ژوورەوە. وایفای قوتابخانە و ئۆفیس زۆرجار ڕێگری لێدەکەن. دەتوانیت لەبری ئەوە بە ئیمەیڵ ناونووسی بکەیت، یان بگۆڕیت بۆ تۆڕێکی تر و دووبارە هەوڵبدەیتەوە.",
+    "ssoTryAnyway": "هەر هەوڵبدە"
 }

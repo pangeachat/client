@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-30 11:27:33.925009",
+    "@@last_modified": "2026-10-05 12:30:39.542422",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "Ի՞նչ լեզվով է խոսվել։",
     "callTranscriptSubscribeForTranscription": "Բաժանորդագրվել տառադարձման համար",
     "unlockCallTranscript": "Բացել զանգի արտագրումը",
-    "activitySummaryUpdateFailed": "Այս ամփոփագիրը հնարավոր չէ թարմացնել։"
+    "activitySummaryUpdateFailed": "Այս ամփոփագիրը հնարավոր չէ թարմացնել։",
+    "ssoNetworkBlockedTitle": "Մուտքի կայքն անհասանելի է",
+    "ssoNetworkBlockedDesc": "Այս ցանցը թույլ չի տալիս մեզ հասնել {provider}՝ ձեզ մուտք գործելու համար։ Դպրոցական և գրասենյակային Wi-Fi-ը հաճախ արգելափակում է այն։ Դուք կարող եք փոխարենը գրանցվել էլփոստով կամ անցնել այլ ցանցի և նորից փորձել։",
+    "ssoTryAnyway": "Միևնույն է՝ փորձել"
 }

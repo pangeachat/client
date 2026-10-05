@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-30 11:27:35.175759",
+    "@@last_modified": "2026-10-05 12:30:41.980255",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "Қандай тілде сөйледіңіз?",
     "callTranscriptSubscribeForTranscription": "Транскрипциялау үшін жазылу",
     "unlockCallTranscript": "Қоңырау транскрипциясының құлпын ашу",
-    "activitySummaryUpdateFailed": "Бұл қорытындыны жаңарту мүмкін болмады."
+    "activitySummaryUpdateFailed": "Бұл қорытындыны жаңарту мүмкін болмады.",
+    "ssoNetworkBlockedTitle": "Кіру сайты қолжетімсіз",
+    "ssoNetworkBlockedDesc": "Бұл желі сізге кіру үшін {provider} қызметіне жетуімізге мүмкіндік бермейді. Мектеп және кеңсе Wi-Fi желілері оны жиі бұғаттайды. Оның орнына электрондық пошта арқылы тіркелуге немесе басқа желіге ауысып, қайта әрекет етуге болады.",
+    "ssoTryAnyway": "Бәрібір әрекет ету"
 }

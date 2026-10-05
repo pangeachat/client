@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-30 11:27:41.319673",
+    "@@last_modified": "2026-10-05 12:30:50.249514",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9985,5 +9985,8 @@
     "callTranscriptChooseLanguage": "Qaysi tilda gapirilgan?",
     "callTranscriptSubscribeForTranscription": "Transkripsiya uchun obuna bo‘lish",
     "unlockCallTranscript": "Qo‘ng‘iroq transkriptini ochish",
-    "activitySummaryUpdateFailed": "Bu xulosa yangilanmadi."
+    "activitySummaryUpdateFailed": "Bu xulosa yangilanmadi.",
+    "ssoNetworkBlockedTitle": "Kirish sayti mavjud emas",
+    "ssoNetworkBlockedDesc": "Bu tarmoq sizni tizimga kiritish uchun {provider} ga ulanishimizga ruxsat bermayapti. Maktab va ofis Wi-Fi ko'pincha uni bloklaydi. Buning o'rniga elektron pochta orqali ro'yxatdan o'tishingiz yoki boshqa tarmoqqa o'tib, qayta urinishingiz mumkin.",
+    "ssoTryAnyway": "Baribir urinib ko'ring"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:30.820029",
+    "@@last_modified": "2026-10-05 12:30:35.284639",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10926,5 +10926,8 @@
     "callTranscriptChooseLanguage": "Kiun lingvon oni parolis?",
     "callTranscriptSubscribeForTranscription": "Aboni por transskribo",
     "unlockCallTranscript": "Malŝlosi alvokan transskribon",
-    "activitySummaryUpdateFailed": "Ĉi tiu resumo ne povis esti ĝisdatigita."
+    "activitySummaryUpdateFailed": "Ĉi tiu resumo ne povis esti ĝisdatigita.",
+    "ssoNetworkBlockedTitle": "Ensaluta retejo neatingebla",
+    "ssoNetworkBlockedDesc": "Ĉi tiu reto ne permesas al ni atingi {provider} por ensaluti vin. Lerneja kaj oficeja retkonekto ofte blokas ĝin. Vi povas registriĝi per retpoŝto anstataŭe, aŭ ŝanĝi al alia reto kaj reprovi.",
+    "ssoTryAnyway": "Provu ĉiukaze"
 }

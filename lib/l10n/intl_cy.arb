@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-30 11:27:30.838274",
+    "@@last_modified": "2026-10-05 12:30:35.567813",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "Pa iaith gafodd ei siarad?",
     "callTranscriptSubscribeForTranscription": "Tanysgrifiwch ar gyfer trawsgrifio",
     "unlockCallTranscript": "Datgloi trawsgrifiad galwad",
-    "activitySummaryUpdateFailed": "Ni ellid diweddaru’r crynodeb hwn."
+    "activitySummaryUpdateFailed": "Ni ellid diweddaru’r crynodeb hwn.",
+    "ssoNetworkBlockedTitle": "Safle mewngofnodi’n anghyraeddadwy",
+    "ssoNetworkBlockedDesc": "Nid yw’r rhwydwaith hwn yn gadael inni gyrraedd {provider} i’ch mewngofnodi. Mae Wi-Fi ysgol a swyddfa’n aml yn ei rwystro. Gallwch gofrestru gydag e-bost yn lle hynny, neu newid i rwydwaith arall a rhoi cynnig arall arni.",
+    "ssoTryAnyway": "Rhowch gynnig arni beth bynnag"
 }

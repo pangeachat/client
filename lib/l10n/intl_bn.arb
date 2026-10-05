@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:29.406416",
+    "@@last_modified": "2026-10-05 12:30:33.400604",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10609,5 +10609,8 @@
     "callTranscriptChooseLanguage": "কোন ভাষায় কথা বলা হয়েছিল?",
     "callTranscriptSubscribeForTranscription": "ট্রান্সক্রিপশনের জন্য সাবস্ক্রাইব করুন",
     "unlockCallTranscript": "কল ট্রান্সক্রিপ্ট আনলক করুন",
-    "activitySummaryUpdateFailed": "এই সারাংশ আপডেট করা যায়নি।"
+    "activitySummaryUpdateFailed": "এই সারাংশ আপডেট করা যায়নি।",
+    "ssoNetworkBlockedTitle": "সাইন-ইন সাইট অ্যাক্সেসযোগ্য নয়",
+    "ssoNetworkBlockedDesc": "এই নেটওয়ার্কটি আপনাকে সাইন ইন করার জন্য {provider}-এর সাথে সংযোগ স্থাপন করতে দিচ্ছে না। স্কুল এবং অফিসের Wi-Fi প্রায়শই এটি ব্লক করে। আপনি এর পরিবর্তে ইমেল দিয়ে সাইন আপ করতে পারেন, অথবা অন্য নেটওয়ার্কে স্যুইচ করে আবার চেষ্টা করতে পারেন।",
+    "ssoTryAnyway": "যাইহোক চেষ্টা করুন"
 }

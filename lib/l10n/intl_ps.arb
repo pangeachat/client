@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-30 11:27:38.347183",
+    "@@last_modified": "2026-10-05 12:30:46.347106",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "کومه ژبه ویل شوې وه؟",
     "callTranscriptSubscribeForTranscription": "د ژباړې لپاره ګډون وکړئ",
     "unlockCallTranscript": "د زنګ لیږد خلاص کړئ",
-    "activitySummaryUpdateFailed": "دا لنډیز تازه نشو."
+    "activitySummaryUpdateFailed": "دا لنډیز تازه نشو.",
+    "ssoNetworkBlockedTitle": "د ننوتلو سایټ د لاسرسي وړ نه دی",
+    "ssoNetworkBlockedDesc": "دا شبکه موږ ته اجازه نه راکوي چې تاسو ته د ننوتلو لپاره {provider} ته ورسیږو. د ښوونځي او دفتر وای فای اکثرا دا بندوي. تاسو کولی شئ د بریښنالیک له لارې نوم لیکنه وکړئ، یا بلې شبکې ته لاړ شئ او بیا هڅه وکړئ.",
+    "ssoTryAnyway": "بیا هم هڅه وکړئ"
 }

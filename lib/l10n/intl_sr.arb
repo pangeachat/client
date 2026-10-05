@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-30 11:27:39.747848",
+    "@@last_modified": "2026-10-05 12:30:48.300024",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10930,5 +10930,8 @@
     "callTranscriptChooseLanguage": "Koji jezik je bio u upotrebi?",
     "callTranscriptSubscribeForTranscription": "Pretplatite se za transkripciju",
     "unlockCallTranscript": "Otključaj transkript poziva",
-    "activitySummaryUpdateFailed": "Ovaj rezime nije mogao da se ažurira."
+    "activitySummaryUpdateFailed": "Ovaj rezime nije mogao da se ažurira.",
+    "ssoNetworkBlockedTitle": "Sajt za prijavu je nedostupan",
+    "ssoNetworkBlockedDesc": "Ova mreža nam ne dozvoljava da dođemo do {provider} da bismo vas prijavili. Školski i kancelarijski Wi-Fi često blokiraju pristup. Umesto toga, možete se prijaviti putem e-pošte ili preći na drugu mrežu i pokušati ponovo.",
+    "ssoTryAnyway": "Pokušajte svejedno"
 }

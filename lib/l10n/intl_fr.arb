@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-30 11:27:31.633257",
+    "@@last_modified": "2026-10-05 12:31:59.927563",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10336,5 +10336,8 @@
     "callTranscriptChooseLanguage": "Quelle langue a été parlée ?",
     "callTranscriptSubscribeForTranscription": "S'abonner pour la transcription",
     "unlockCallTranscript": "Déverrouiller la transcription de l'appel",
-    "activitySummaryUpdateFailed": "Ce résumé n'a pas pu être mis à jour."
+    "activitySummaryUpdateFailed": "Ce résumé n'a pas pu être mis à jour.",
+    "ssoNetworkBlockedTitle": "Site de connexion inaccessible",
+    "ssoNetworkBlockedDesc": "Ce réseau ne nous permet pas d'atteindre {provider} pour vous connecter. Les réseaux Wi-Fi scolaires et professionnels le bloquent souvent. Vous pouvez vous inscrire par e-mail à la place, ou passer à un autre réseau et réessayer.",
+    "ssoTryAnyway": "Essayer quand même"
 }

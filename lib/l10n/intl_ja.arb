@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-30 11:27:33.876957",
+    "@@last_modified": "2026-10-05 12:30:39.830277",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10750,5 +10750,8 @@
     "callTranscriptChooseLanguage": "話された言語は何ですか？",
     "callTranscriptSubscribeForTranscription": "文字起こしを購読する",
     "unlockCallTranscript": "通話記録のロックを解除",
-    "activitySummaryUpdateFailed": "この要約を更新できませんでした。"
+    "activitySummaryUpdateFailed": "この要約を更新できませんでした。",
+    "ssoNetworkBlockedTitle": "サインインサイトに接続できません",
+    "ssoNetworkBlockedDesc": "このネットワークでは、サインインのために{provider}に接続できません。学校や職場のWi-Fiではよくブロックされます。代わりにメールで登録するか、別のネットワークに切り替えて再試行してください。",
+    "ssoTryAnyway": "とにかく試す"
 }

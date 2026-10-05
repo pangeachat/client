@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-30 11:27:39.763893",
+    "@@last_modified": "2026-10-05 12:30:48.350885",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "Çfarë gjuhe u fol?",
     "callTranscriptSubscribeForTranscription": "Abonohu për transkriptim",
     "unlockCallTranscript": "Zhbloko transkriptin e thirrjes",
-    "activitySummaryUpdateFailed": "Ky përmbledhje nuk mund të përditësohej."
+    "activitySummaryUpdateFailed": "Ky përmbledhje nuk mund të përditësohej.",
+    "ssoNetworkBlockedTitle": "Sajti i hyrjes i paarritshëm",
+    "ssoNetworkBlockedDesc": "Ky rrjet nuk na lejon të arrijmë te {provider} për t'u kyçur. Wi-Fi i shkollës dhe zyrës shpesh e bllokojnë atë. Mund të regjistroheni me email, ose të kaloni në një rrjet tjetër dhe të provoni përsëri.",
+    "ssoTryAnyway": "Provo gjithsesi"
 }

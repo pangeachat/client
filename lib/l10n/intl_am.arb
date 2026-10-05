@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-30 11:27:29.780929",
+    "@@last_modified": "2026-10-05 12:30:33.876469",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "የተነገረው ቋንቋ የትኛው ነው?",
     "callTranscriptSubscribeForTranscription": "ለጽሑፍ መቀየር ይመዝገቡ",
     "unlockCallTranscript": "የጥሪ ግልባጭ ክፈት",
-    "activitySummaryUpdateFailed": "ይህ ማጠቃለያ ሊዘመን አልቻለም።"
+    "activitySummaryUpdateFailed": "ይህ ማጠቃለያ ሊዘመን አልቻለም።",
+    "ssoNetworkBlockedTitle": "የመግቢያ ጣቢያው አይደረስበትም",
+    "ssoNetworkBlockedDesc": "ይህ አውታረ መረብ እርስዎን ለማስገባት ወደ {provider} እንዳንደርስ እየከለከለን ነው። የትምህርት ቤት እና የቢሮ ዋይፋይ ብዙ ጊዜ ያግዱታል። በምትኩ በኢሜል መመዝገብ ወይም ወደ ሌላ አውታረ መረብ ቀይረው እንደገና መሞከር ይችላሉ።",
+    "ssoTryAnyway": "ለማንኛውም ይሞክሩ"
 }

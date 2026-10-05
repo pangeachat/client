@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-30 11:27:37.689874",
+    "@@last_modified": "2026-10-05 12:30:45.132996",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "Hvilket språk ble snakket?",
     "callTranscriptSubscribeForTranscription": "Abonner for transkripsjon",
     "unlockCallTranscript": "Lås opp samtaletranskripsjon",
-    "activitySummaryUpdateFailed": "Denne oppsummeringen kunne ikke oppdateres."
+    "activitySummaryUpdateFailed": "Denne oppsummeringen kunne ikke oppdateres.",
+    "ssoNetworkBlockedTitle": "Påloggingsside utilgjengelig",
+    "ssoNetworkBlockedDesc": "Dette nettverket hindrer oss i å nå {provider} for å logge deg på. Skole- og kontor-Wi-Fi blokkerer ofte dette. Du kan registrere deg med e-post i stedet, eller bytte til et annet nettverk og prøve igjen.",
+    "ssoTryAnyway": "Prøv likevel"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-30 11:27:36.992439",
+    "@@last_modified": "2026-10-05 12:30:43.933967",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "Ямар хэлээр ярьсан бэ?",
     "callTranscriptSubscribeForTranscription": "Хөрвүүлэлтэд бүртгүүлэх",
     "unlockCallTranscript": "Дуудлагын хөрвүүлэлтийг нээх",
-    "activitySummaryUpdateFailed": "Энэ хураангуйг шинэчлэх боломжгүй байсан."
+    "activitySummaryUpdateFailed": "Энэ хураангуйг шинэчлэх боломжгүй байсан.",
+    "ssoNetworkBlockedTitle": "Нэвтрэх сайт боломжгүй байна",
+    "ssoNetworkBlockedDesc": "Энэ сүлжээ таныг нэвтрүүлэхийн тулд {provider} руу нэвтрэхийг зөвшөөрөхгүй байна. Сургууль болон оффисын Wi-Fi үүнийг ихэвчлэн хаадаг. Та оронд нь имэйлээр бүртгүүлэх эсвэл өөр сүлжээнд шилжиж дахин оролдож болно.",
+    "ssoTryAnyway": "Ямартай ч оролдох"
 }

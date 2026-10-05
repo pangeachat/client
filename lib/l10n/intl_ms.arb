@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-30 11:27:37.069222",
+    "@@last_modified": "2026-10-05 12:30:43.261917",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "Bahasa apa yang dituturkan?",
     "callTranscriptSubscribeForTranscription": "Langgan untuk transkripsi",
     "unlockCallTranscript": "Buka kunci transkripsi panggilan",
-    "activitySummaryUpdateFailed": "Ringkasan ini tidak dapat dikemas kini."
+    "activitySummaryUpdateFailed": "Ringkasan ini tidak dapat dikemas kini.",
+    "ssoNetworkBlockedTitle": "Laman web log masuk tidak dapat dicapai",
+    "ssoNetworkBlockedDesc": "Rangkaian ini tidak membenarkan kami mencapai {provider} untuk log masuk anda. Wi-Fi sekolah dan pejabat sering menyekatnya. Anda boleh mendaftar dengan e-mel sebagai ganti, atau beralih ke rangkaian lain dan cuba lagi.",
+    "ssoTryAnyway": "Cuba juga"
 }

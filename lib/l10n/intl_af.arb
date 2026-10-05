@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-30 11:27:29.677221",
+    "@@last_modified": "2026-10-05 12:30:33.496360",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "Watter taal is gepraat?",
     "callTranscriptSubscribeForTranscription": "Teken in vir transkripsie",
     "unlockCallTranscript": "Ontsluit oproep-transkripsie",
-    "activitySummaryUpdateFailed": "Hierdie opsomming kon nie bygewerk word nie."
+    "activitySummaryUpdateFailed": "Hierdie opsomming kon nie bygewerk word nie.",
+    "ssoNetworkBlockedTitle": "Aanmeldingswerf onbereikbaar",
+    "ssoNetworkBlockedDesc": "Hierdie netwerk laat ons nie toe om {provider} te bereik om jou aan te meld nie. Skool- en kantoor-Wi-Fi blokkeer dit dikwels. Jy kan eerder met e-pos aanmeld, of na 'n ander netwerk oorskakel en weer probeer.",
+    "ssoTryAnyway": "Probeer in elk geval"
 }

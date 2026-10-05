@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-30 11:27:31.882472",
+    "@@last_modified": "2026-10-05 12:30:36.923543",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9981,5 +9981,8 @@
     "callTranscriptChooseLanguage": "Que idioma se falou?",
     "callTranscriptSubscribeForTranscription": "Subscribirse para transcribir",
     "unlockCallTranscript": "Desbloquear transcrición da chamada",
-    "activitySummaryUpdateFailed": "Non foi posíbel actualizar este resumo."
+    "activitySummaryUpdateFailed": "Non foi posíbel actualizar este resumo.",
+    "ssoNetworkBlockedTitle": "Sitio de inicio de sesión inaccesible",
+    "ssoNetworkBlockedDesc": "Esta rede non nos permite acceder a {provider} para iniciar a túa sesión. As redes Wi-Fi de escolas e oficinas adoitan bloquealo. Podes rexistrarte con correo electrónico ou cambiar a outra rede e tentalo de novo.",
+    "ssoTryAnyway": "Tentar de todos os xeitos"
 }

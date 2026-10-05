@@ -3093,7 +3093,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-30 11:27:40.596751",
+    "@@last_modified": "2026-10-05 12:30:49.267153",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10613,5 +10613,8 @@
     "callTranscriptChooseLanguage": "พูดภาษาอะไร",
     "callTranscriptSubscribeForTranscription": "สมัครสมาชิกเพื่อถอดเสียง",
     "unlockCallTranscript": "ปลดล็อกบทสนทนาการโทร",
-    "activitySummaryUpdateFailed": "ไม่สามารถอัปเดตสรุปนี้ได้"
+    "activitySummaryUpdateFailed": "ไม่สามารถอัปเดตสรุปนี้ได้",
+    "ssoNetworkBlockedTitle": "เข้าสู่ระบบไม่ได้",
+    "ssoNetworkBlockedDesc": "เครือข่ายนี้ไม่อนุญาตให้เราเข้าถึง {provider} เพื่อลงชื่อเข้าใช้คุณ Wi-Fi ของโรงเรียนและที่ทำงานมักจะบล็อกไว้ คุณสามารถลงทะเบียนด้วยอีเมลแทน หรือเปลี่ยนไปใช้เครือข่ายอื่นแล้วลองอีกครั้ง",
+    "ssoTryAnyway": "ลองอีกครั้ง"
 }

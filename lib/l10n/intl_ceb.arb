@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-30 11:27:30.387513",
+    "@@last_modified": "2026-10-05 12:30:34.941602",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "Unsang pinulongan ang gisulti?",
     "callTranscriptSubscribeForTranscription": "Mag-subscribe para sa transcription",
     "unlockCallTranscript": "I-unlock ang transcript sa tawag",
-    "activitySummaryUpdateFailed": "Dili ma-update kining summary."
+    "activitySummaryUpdateFailed": "Dili ma-update kining summary.",
+    "ssoNetworkBlockedTitle": "Dili maabot ang site sa pag-sign-in",
+    "ssoNetworkBlockedDesc": "Kini nga network wala nagtugot kanamo nga maabot ang {provider} aron ma-sign in ka. Ang Wi-Fi sa eskwelahan ug opisina kasagaran nagbabag niini. Mahimo kang mag-sign up gamit ang email, o mobalhin sa laing network ug mosulay pag-usab.",
+    "ssoTryAnyway": "Sulayi gihapon"
 }

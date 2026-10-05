@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-30 11:27:39.752568",
+    "@@last_modified": "2026-10-05 12:30:47.132694",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "ڪهڙي ٻولي ڳالهائي وئي؟",
     "callTranscriptSubscribeForTranscription": "لِکڻ لاءِ سبسڪرائب ڪريو",
     "unlockCallTranscript": "ڪال ٽرانسڪرپٽ کوليو",
-    "activitySummaryUpdateFailed": "هي خلاصو اپڊيٽ نه ٿي سگهيو."
+    "activitySummaryUpdateFailed": "هي خلاصو اپڊيٽ نه ٿي سگهيو.",
+    "ssoNetworkBlockedTitle": "سائن ان سائيٽ پهچ کان ٻاهر آهي",
+    "ssoNetworkBlockedDesc": "هي نيٽ ورڪ اسان کي {provider} تائين پهچڻ نه ٿو ڏئي ته جيئن توهان کي سائن ان ڪري سگهجي. اسڪول ۽ آفيس جو وائي فائي اڪثر ان کي بلاڪ ڪندو آهي. توهان ان جي بدران اي ميل سان سائن اپ ڪري سگهو ٿا، يا ڪنهن ٻئي نيٽ ورڪ تي سوئچ ڪري ٻيهر ڪوشش ڪري سگهو ٿا.",
+    "ssoTryAnyway": "بهرحال ڪوشش ڪريو"
 }

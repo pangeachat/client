@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-30 11:27:32.413079",
+    "@@last_modified": "2026-10-05 12:30:37.392932",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "કઈ ભાષા બોલવામાં આવી હતી?",
     "callTranscriptSubscribeForTranscription": "ટ્રાન્સક્રિપ્શન માટે સબ્સ્ક્રાઇબ કરો",
     "unlockCallTranscript": "કૉલ ટ્રાન્સક્રિપ્ટ અનલૉક કરો",
-    "activitySummaryUpdateFailed": "આ સારાંશ અપડેટ કરી શકાયો નથી."
+    "activitySummaryUpdateFailed": "આ સારાંશ અપડેટ કરી શકાયો નથી.",
+    "ssoNetworkBlockedTitle": "સાઇન-ઇન સાઇટ પહોંચી શકાય તેવી નથી",
+    "ssoNetworkBlockedDesc": "આ નેટવર્ક તમને સાઇન ઇન કરવા માટે {provider} સુધી પહોંચવા દેતું નથી. શાળા અને ઑફિસનું Wi-Fi ઘણીવાર તેને બ્લૉક કરે છે. તમે તેના બદલે ઇમેઇલ વડે સાઇન અપ કરી શકો છો અથવા બીજા નેટવર્ક પર સ્વિચ કરીને ફરી પ્રયાસ કરી શકો છો.",
+    "ssoTryAnyway": "તો પણ પ્રયાસ કરો"
 }

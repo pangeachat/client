@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-30 11:27:36.291457",
+    "@@last_modified": "2026-10-05 12:30:42.833325",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2389,5 +2389,8 @@
     "callTranscriptChooseLanguage": "На кој јазик се зборуваше?",
     "callTranscriptSubscribeForTranscription": "Претплатете се за транскрипција",
     "unlockCallTranscript": "Отклучи транскрипт на повик",
-    "activitySummaryUpdateFailed": "Ова резиме не можеше да се ажурира."
+    "activitySummaryUpdateFailed": "Ова резиме не можеше да се ажурира.",
+    "ssoNetworkBlockedTitle": "Веб-страницата за најавување е недостапна",
+    "ssoNetworkBlockedDesc": "Оваа мрежа не ни дозволува да стигнеме до {provider} за да ве најавиме. Училишниот и канцеларискиот Wi-Fi често го блокираат. Може да се регистрирате со е-пошта наместо тоа, или да се префрлите на друга мрежа и да се обидете повторно.",
+    "ssoTryAnyway": "Сепак, обидете се"
 }

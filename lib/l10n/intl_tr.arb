@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-30 11:27:40.744925",
+    "@@last_modified": "2026-10-05 12:30:49.585292",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10282,5 +10282,8 @@
     "callTranscriptChooseLanguage": "Hangi dil konuşuldu?",
     "callTranscriptSubscribeForTranscription": "Metne çevirme için abone ol",
     "unlockCallTranscript": "Çağrı dökümünü aç",
-    "activitySummaryUpdateFailed": "Bu özet güncellenemedi."
+    "activitySummaryUpdateFailed": "Bu özet güncellenemedi.",
+    "ssoNetworkBlockedTitle": "Giriş sitesine ulaşılamıyor",
+    "ssoNetworkBlockedDesc": "Bu ağ, giriş yapmanız için {provider} adresine ulaşmamızı engelliyor. Okul ve ofis Wi-Fi'ları genellikle bunu engeller. Bunun yerine e-posta ile kaydolabilir veya başka bir ağa geçip tekrar deneyebilirsiniz.",
+    "ssoTryAnyway": "Yine de dene"
 }
