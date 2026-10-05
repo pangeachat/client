@@ -109,32 +109,6 @@ class CourseInvitePageController extends State<CourseInvitePage>
     return spaceId;
   }
 
-  Future<bool> get _isPublic async {
-    final client = Matrix.of(context).client;
-    String spaceId;
-    try {
-      spaceId = await getSpaceId();
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"created_course_id": widget.courseId},
-      );
-      return true;
-    }
-    // The page can be gone by the time the creation resolves; its switch will
-    // never render, so don't spend a directory read on it.
-    if (!mounted) return true;
-
-    try {
-      final visibility = await client.getRoomVisibilityOnDirectory(spaceId);
-      return visibility == Visibility.public;
-    } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"space_id": spaceId});
-      return true;
-    }
-  }
-
   Future<bool> get _requireAnalyticsAccess async {
     final client = Matrix.of(context).client;
     String spaceId;
@@ -154,26 +128,6 @@ class CourseInvitePageController extends State<CourseInvitePage>
     return room.requireAnalyticsAccess;
   }
 
-  Future<void> _setVisibility(bool value) async {
-    final client = Matrix.of(context).client;
-    try {
-      final spaceId = await getSpaceId();
-      await client.setRoomVisibilityOnDirectory(
-        spaceId,
-        visibility: value ? Visibility.public : Visibility.private,
-      );
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"created_course_id": widget.courseId, "visibility": value},
-      );
-      rethrow;
-    } finally {
-      if (mounted) setState(() {});
-    }
-  }
-
   Future<void> _setRequireAnalyticsAccess(bool value) async {
     final client = Matrix.of(context).client;
     try {
@@ -188,7 +142,10 @@ class CourseInvitePageController extends State<CourseInvitePage>
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {"created_course_id": widget.courseId, "visibility": value},
+        data: {
+          "created_course_id": widget.courseId,
+          "require_analytics_access": value,
+        },
       );
       rethrow;
     } finally {
@@ -369,35 +326,6 @@ class CourseInvitePageController extends State<CourseInvitePage>
                       child: Column(
                         spacing: 8.0,
                         children: [
-                          Row(
-                            spacing: 8.0,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  L10n.of(context).visibilityToggleTitle,
-                                  style: theme.textTheme.bodyMedium,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              FutureBuilder(
-                                future: _isPublic,
-                                builder: (context, snapshot) {
-                                  final value = snapshot.data ?? true;
-                                  return Switch(
-                                    value: value,
-                                    onChanged: (v) => showFutureLoadingDialog(
-                                      context: context,
-                                      future: () => _setVisibility(v),
-                                    ),
-                                    activeThumbColor: Theme.of(
-                                      context,
-                                    ).pangea.successFixedDim,
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
                           Row(
                             spacing: 8.0,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

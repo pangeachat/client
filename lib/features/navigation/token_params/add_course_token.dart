@@ -76,6 +76,11 @@ class AddCoursePageTokenParam extends TokenParam {
     }
   }
 
+  /// The start-my-own preview, which carries the "Who can join?" row above
+  /// Create course and so rests taller than a browse preview.
+  bool get isCreateCoursePreview =>
+      subpage == AddCourseSubpageEnum.own && isCoursePreview;
+
   @override
   AddCoursePageTokenParam? get poppedParam {
     switch (subpage) {

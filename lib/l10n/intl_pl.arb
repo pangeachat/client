@@ -2209,8 +2209,6 @@
     "@files": {},
     "discover": "Odkrywaj",
     "@discover": {},
-    "restricted": "Ograniczone",
-    "@restricted": {},
     "decline": "Odmów",
     "@decline": {},
     "nothingFound": "Nic nie odnaleziono...",
@@ -3317,17 +3315,8 @@
     "introductions": "Wprowadzenia",
     "announcements": "Ogłoszenia",
     "activities": "Aktywności",
-    "access": "Dostęp",
-    "howSpaceCanBeFound": "Jak można znaleźć ten kurs",
     "private": "Prywatny",
-    "cannotBeFoundInSearch": "Nie można znaleźć w wyszukiwarce",
     "public": "Publiczny",
-    "visibleToCommunity": "Widoczny dla szerszej społeczności Pangea Chat poprzez \"Znajdź kurs\"",
-    "howSpaceCanBeJoined": "Jak można dołączyć do tego kursu",
-    "canBeFoundVia": "Można znaleźć przez:",
-    "canBeFoundViaInvitation": "• zaproszenie",
-    "canBeFoundViaCodeOrLink": "• kod lub link",
-    "canBeFoundViaKnock": "• prośba o dołączenie i zatwierdzenie przez administratora",
     "sendActivities": "Wyślij aktywności",
     "directMessage": "Wiadomość prywatna",
     "newDirectMessage": "Nowa wiadomość prywatna",
@@ -3386,7 +3375,6 @@
     "inviteDesc": "Przez nazwę użytkownika, kod lub link",
     "editCourseDesc": "Tutaj możesz edytować tytuł kursu, opis itp.",
     "permissionsDesc": "Ustaw uprawnienia, takie jak kto może zapraszać użytkowników, wysyłać wiadomości, tworzyć czaty itp.",
-    "accessDesc": "Możesz uczynić swój kurs otwartym dla świata! Lub, uczynić go prywatnym i bezpiecznym.",
     "createGroupChatDesc": "Podczas gdy sesje aktywności zaczynają się i kończą, czaty grupowe pozostaną otwarte do rutynowej komunikacji.",
     "deleteDesc": "Tylko administratorzy mogą usunąć kurs. To działanie destrukcyjne, które usuwa wszystkich użytkowników i kasuje wszystkie wybrane czaty w kursie. Postępuj ostrożnie.",
     "whatNow": "Co teraz?",
@@ -5698,47 +5686,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6009,10 +5961,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7803,11 +7751,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Domyślnie kursy są publicznie wyszukiwalne i wymagają zatwierdzenia przez administratora, aby do nich dołączyć. Możesz edytować te ustawienia w dowolnym momencie.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Jakiego języka się uczysz?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8670,11 +8613,6 @@
     },
     "closeEmojiMenu": "Zamknij menu emoji",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "Zezwól innym na wyszukiwanie twojego kursu",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10140,5 +10078,11 @@
     "playWithBotNowMessage": "Nikt jeszcze nie dołączył. Pangea Bot może zająć wolne miejsce teraz, albo możesz poczekać.",
     "keepWaiting": "Czekaj dalej",
     "botTookSeatAfterAnHour": "Ta sesja była otwarta przez godzinę, więc Pangea Bot zajął wolne miejsce.",
-    "botTookSeatAfterADay": "Ta sesja była otwarta przez ponad dzień, więc Pangea Bot zajął wolne miejsce. Wyślij wiadomość, aby rozpocząć."
+    "botTookSeatAfterADay": "Ta sesja była otwarta przez ponad dzień, więc Pangea Bot zajął wolne miejsce. Wyślij wiadomość, aby rozpocząć.",
+    "whoCanJoin": "Kto może dołączyć?",
+    "approvalRequired": "Wymagana zgoda",
+    "courseAccessPublicDesc": "Każdy może znaleźć ten kurs i dołączyć do niego.",
+    "courseAccessApprovalRequiredDesc": "Każdy może znaleźć ten kurs i poprosić o dołączenie. Ty zatwierdzasz każde zgłoszenie.",
+    "courseAccessPrivateDesc": "Tylko osoby z Twoim zaproszeniem lub kodem kursu mogą dołączyć. Kurs nie pojawia się w wyszukiwarce.",
+    "courseAccessCodeNote": "Uczniowie z Twoim kodem kursu lub zaproszeniem mogą dołączyć od razu, niezależnie od Twojego wyboru."
 }

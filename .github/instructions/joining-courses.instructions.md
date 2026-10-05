@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/features/join_codes/**,lib/routes/chat_list/**,lib/routes/courses/**,lib/routes/onboarding/**,lib/pangea/spaces/**,lib/utils/url_launcher.dart,lib/config/routes.dart,web/index.html,ios/Runner/Runner.entitlements,android/app/src/main/AndroidManifest.xml"
+applyTo: "lib/features/join_codes/**,lib/features/course_access/**,lib/pangea/common/widgets/course_access_sheet.dart,lib/routes/chat_list/**,lib/routes/courses/**,lib/routes/onboarding/**,lib/pangea/spaces/**,lib/utils/url_launcher.dart,lib/config/routes.dart,web/index.html,ios/Runner/Runner.entitlements,android/app/src/main/AndroidManifest.xml"
 ---
 
 # Joining Courses — Client Design
@@ -24,6 +24,24 @@ How users join courses (Matrix spaces) through three routes: class link, class c
 All three routes converge on the user becoming a `Membership.join` member of the course space. Child rooms (announcements, introductions, activity chats) are joined separately afterward.
 
 A course carries its own target language — the quest's, the same field its info chips show — and a learner whose learning language differs can switch from the course's language chip, before joining and after. That behavior is [Switching from context](profile.instructions.md#switching-from-context); joining a course never changes what the learner is learning on its own.
+
+---
+
+## Course access
+
+A teacher chooses who can find and join their course from three settings ([`CourseAccess`](../../lib/features/course_access/course_access.dart), #9359). Each setting is a pair of Matrix settings: whether the course is listed in the directory that course search reads, and the course's join rule.
+
+| Setting | In course search | Join rule | Someone without an invite or code can… |
+| --- | --- | --- | --- |
+| **Public** | Listed | `public` | find it and join straight away |
+| **Approval required** | Listed | `knock` | find it and ask to join (Route 3) |
+| **Private** | Not listed | `knock` | do nothing |
+
+- A class link, a class code (Routes 1 and 2) and an admin's invite work under every setting and never wait for approval, because the server admits a valid code without a knock. The sheet says so, so a teacher who picks Approval required knows their own students are not held up.
+- New courses start on Approval required.
+- The teacher sets access in the "Who can join?" sheet ([`CourseAccessSheet`](../../lib/pangea/common/widgets/course_access_sheet.dart)), the only place the three descriptions appear. Two rows open it, each showing the current setting: one above Create course on the create-course preview ([course-preview.instructions.md § The page](course-preview.instructions.md#the-page)), and one in the course's More section, which replaces the old Access page.
+- Done commits the choice; dismissing the sheet changes nothing. From the settings row, Done applies the change straight away.
+- A course whose pair matches none of the three — for example one that is unlisted but has the `public` join rule, which the old Access page allowed — shows no setting selected until the teacher picks one.
 
 ---
 

@@ -2439,8 +2439,6 @@
         "type": "String",
         "count": {}
     },
-    "restricted": "Cheklangan",
-    "@restricted": {},
     "knockRestricted": "Taqillatish cheklangan",
     "@knockRestricted": {},
     "goToSpace": "Maydonga o‘tish: {space}",
@@ -3410,17 +3408,8 @@
     "introductions": "Tanishuvlar",
     "announcements": "E'lonlar",
     "activities": "Faoliyatlar",
-    "access": "Kirish",
-    "howSpaceCanBeFound": "Bu kurs qanday topilishi mumkin",
     "private": "Maxfiy",
-    "cannotBeFoundInSearch": "Qidiruvda topilmaydi",
     "public": "Jamoat",
-    "visibleToCommunity": "\"Find a course\" orqali keng Pangea Chat jamoatiga ko'rinadi",
-    "howSpaceCanBeJoined": "Bu kurs qanday qo'shilishi mumkin",
-    "canBeFoundVia": "Topilishi mumkin:",
-    "canBeFoundViaInvitation": "• taklifnoma orqali",
-    "canBeFoundViaCodeOrLink": "• kod yoki havola orqali",
-    "canBeFoundViaKnock": "• so'rov yuborish va administrator tasdiqlashi",
     "sendActivities": "Faoliyatlarni yuborish",
     "directMessage": "To'g'ridan-to'g'ri xabar",
     "newDirectMessage": "Yangi to'g'ridan-to'g'ri xabar",
@@ -3479,7 +3468,6 @@
     "inviteDesc": "Foydalanuvchi nomi, kod yoki havola orqali",
     "editCourseDesc": "Bu yerda siz kurs nomi, tavsifi va boshqalarni tahrirlashingiz mumkin.",
     "permissionsDesc": "Kimlar foydalanuvchilarni taklif qilish, xabar yuborish, chatlar yaratish va boshqalar kabi ruxsatlarni belgilash.",
-    "accessDesc": "Kursingizni dunyo uchun ochishingiz mumkin! Yoki, kursingizni shaxsiy va xavfsiz qiling.",
     "createGroupChatDesc": "Faoliyat sessiyalari boshlanib va tugagan joyda, guruh chatlari muntazam muloqot uchun ochiq qoladi.",
     "deleteDesc": "Faqat administratorlar kursni o‘chirishi mumkin. Bu xavfli harakat bo‘lib, barcha foydalanuvchilarni olib tashlaydi va kurs ichidagi barcha tanlangan chatlarni o‘chiradi. Ehtiyot bo‘ling.",
     "whatNow": "Endi nima qilish kerak?",
@@ -3844,7 +3832,6 @@
     "publicInviteDescChat": "Ushbu chatga taklif qilish uchun foydalanuvchilarni qidiring.",
     "publicInviteDescSpace": "Ushbu maydonga taklif qilish uchun foydalanuvchilarni qidiring.",
     "chatWithSupport": "Qo'llab-quvvatlash bilan chat",
-    "newCourseAccess": "Standart holda, kurslar ochiq qidiruvda bo'lib, ularga qo'shilish uchun admin tasdiqlashi talab etiladi. Siz bu sozlamalarni istalgan vaqtda o'zgartirishingiz mumkin.",
     "onboardingLanguagesTitle": "Qaysi tilni o'rganmoqdasiz?",
     "supportSubtitle": "Savollaringiz bormi? Biz yordam berishga tayyormiz!",
     "autoIGCToolName": "Yuborishda avtomatik tekshirish",
@@ -6156,47 +6143,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6467,10 +6418,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7959,10 +7906,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@onboardingLanguagesTitle": {
         "type": "String",
         "placeholders": {}
@@ -8589,11 +8532,6 @@
     },
     "closeEmojiMenu": "Emojilar menyusini yopish",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "Boshqalar sizning kursingizni qidirishiga ruxsat berish",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10059,5 +9997,11 @@
     "playWithBotNowMessage": "Hali hech kim qo‘shilmadi. Pangea Bot hozir bo‘sh o‘rinni egallashi mumkin yoki kutishda davom etishingiz mumkin.",
     "keepWaiting": "Kutishda davom etish",
     "botTookSeatAfterAnHour": "Bu sessiya bir soat davomida ochiq edi, shuning uchun Pangea Bot bo‘sh o‘rinni egalladi.",
-    "botTookSeatAfterADay": "Bu sessiya bir kundan ortiq ochiq edi, shuning uchun Pangea Bot bo‘sh o‘rinni egalladi. Boshlash uchun xabar yuboring."
+    "botTookSeatAfterADay": "Bu sessiya bir kundan ortiq ochiq edi, shuning uchun Pangea Bot bo‘sh o‘rinni egalladi. Boshlash uchun xabar yuboring.",
+    "whoCanJoin": "Kimlar qoʻshila oladi?",
+    "approvalRequired": "Tasdiqlash talab qilinadi",
+    "courseAccessPublicDesc": "Har kim bu kursni topishi va unga qoʻshilishi mumkin.",
+    "courseAccessApprovalRequiredDesc": "Har kim bu kursni topishi va qoʻshilishni soʻrashi mumkin. Har bir soʻrovni siz tasdiqlaysiz.",
+    "courseAccessPrivateDesc": "Faqat sizning taklifnomangiz yoki kurs kodingizga ega boʻlganlar qoʻshila oladi. Kurs qidiruvda koʻrinmaydi.",
+    "courseAccessCodeNote": "Kurs kodingiz yoki taklifnomangizga ega boʻlgan talabalar, nima tanlashingizdan qatʼi nazar, darhol qoʻshila oladilar."
 }
