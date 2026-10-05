@@ -2412,8 +2412,6 @@
     },
     "files": "الملفات",
     "@files": {},
-    "restricted": "مقيد",
-    "@restricted": {},
     "knockRestricted": "قيود النقر",
     "@knockRestricted": {},
     "searchMore": "ابحث أكثر...",
@@ -3233,17 +3231,8 @@
     "introductions": "المقدمات",
     "announcements": "الإعلانات",
     "activities": "الأنشطة",
-    "access": "الوصول",
-    "howSpaceCanBeFound": "كيفية العثور على هذه الدورة",
     "private": "خاص",
-    "cannotBeFoundInSearch": "لا يمكن العثور عليها في البحث",
     "public": "عام",
-    "visibleToCommunity": "مرئية لمجتمع دردشة بانجيا الأوسع عبر \"ابحث عن دورة\"",
-    "howSpaceCanBeJoined": "كيفية الانضمام إلى هذه الدورة",
-    "canBeFoundVia": "يمكن العثور عليها عبر:",
-    "canBeFoundViaInvitation": "• دعوة",
-    "canBeFoundViaCodeOrLink": "• رمز أو رابط",
-    "canBeFoundViaKnock": "• طلب الانضمام وموافقة المسؤول",
     "sendActivities": "إرسال الأنشطة",
     "directMessage": "رسالة مباشرة",
     "newDirectMessage": "رسالة مباشرة جديدة",
@@ -3302,7 +3291,6 @@
     "inviteDesc": "عن طريق اسم المستخدم، أو الرمز، أو الرابط",
     "editCourseDesc": "هنا يمكنك تحرير عنوان الدورة، الوصف، إلخ.",
     "permissionsDesc": "حدد الأذونات مثل من يمكنه دعوة المستخدمين، إرسال الرسائل، إنشاء الدردشات، إلخ.",
-    "accessDesc": "يمكنك جعل دورتك مفتوحة للعالم! أو، جعل دورتك خاصة وآمنة.",
     "createGroupChatDesc": "بينما تبدأ وتنتهي جلسات النشاط، ستظل الدردشات الجماعية مفتوحة للتواصل الروتيني.",
     "deleteDesc": "يمكن للمسؤولين فقط حذف الدورة. هذا إجراء تدميري يزيل جميع المستخدمين ويحذف جميع الدردشات المختارة داخل الدورة. تابع بحذر.",
     "whatNow": "ماذا الآن؟",
@@ -5966,47 +5954,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6277,10 +6229,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8072,11 +8020,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "بشكل افتراضي، الدورات قابلة للبحث علنًا وتتطلب موافقة المسؤول للانضمام. يمكنك تعديل هذه الإعدادات في أي وقت.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "ما اللغة التي تتعلمها؟",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8948,11 +8891,6 @@
     },
     "closeEmojiMenu": "إغلاق قائمة الرموز التعبيرية",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "السماح للآخرين بالبحث عن دورتك",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10288,5 +10226,11 @@
     "ssoTryAnyway": "المحاولة على أي حال",
     "publicCoursesFilterTooltip": "إظهار الدورات التدريبية التي يمكن لأي شخص الانضمام إليها فقط",
     "restrictedCoursesFilterTooltip": "إظهار الدورات التدريبية التي يجب عليك طلب الانضمام إليها فقط",
-    "viewImageLabel": "عرض الصورة"
+    "viewImageLabel": "عرض الصورة",
+    "whoCanJoin": "من يمكنه الانضمام؟",
+    "approvalRequired": "الموافقة مطلوبة",
+    "courseAccessPublicDesc": "يمكن لأي شخص العثور على هذه الدورة والانضمام إليها.",
+    "courseAccessApprovalRequiredDesc": "يمكن لأي شخص العثور على هذه الدورة وطلب الانضمام. أنت توافق على كل طلب.",
+    "courseAccessPrivateDesc": "يمكن فقط للأشخاص الذين لديهم دعوتك أو رمز الدورة الانضمام. لا تظهر الدورة في البحث.",
+    "courseAccessCodeNote": "يمكن للطلاب الذين لديهم رمز الدورة أو دعوة الانضمام على الفور، بغض النظر عن اختيارك."
 }

@@ -8,6 +8,7 @@ import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
@@ -213,16 +214,24 @@ void main() {
         expect(parsed.eventId, isNull);
       });
 
-      test('a details page with no filter round-trips (edit/access/…)', () {
-        final param = RoomTokenParam(
-          id: '!abc',
-          subpage: 'details/edit',
-        ).build();
-        expect(param, '!abc/details/edit');
-        final parsed = RoomTokenParam.parse(param);
-        expect(parsed.id, '!abc');
-        expect(parsed.subpage, 'details/edit');
-        expect(parsed.filter, isNull);
+      test(
+        'a details page with no filter round-trips (edit/permissions/…)',
+        () {
+          final param = RoomTokenParam(
+            id: '!abc',
+            subpage: 'details/edit',
+          ).build();
+          expect(param, '!abc/details/edit');
+          final parsed = RoomTokenParam.parse(param);
+          expect(parsed.id, '!abc');
+          expect(parsed.subpage, 'details/edit');
+          expect(parsed.filter, isNull);
+        },
+      );
+
+      test('a link to the retired access page opens the course (#9359)', () {
+        expect(RoomSubpageTokenParam.parse('access').subpage, isNull);
+        expect(RoomSubpageTokenParam.parse('details/access').subpage, isNull);
       });
 
       test(

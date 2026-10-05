@@ -2587,8 +2587,6 @@
         "type": "String",
         "count": {}
     },
-    "restricted": "Абмежавана",
-    "@restricted": {},
     "goToSpace": "Перайсці да прасторы: {space}",
     "@goToSpace": {
         "type": "String",
@@ -3416,17 +3414,8 @@
     "introductions": "Уводзіны",
     "announcements": "Абвесткі",
     "activities": "Мерапрыемствы",
-    "access": "Доступ",
-    "howSpaceCanBeFound": "Як можна знайсці гэты курс",
     "private": "Прыватны",
-    "cannotBeFoundInSearch": "Немагчыма знайсці ў пошуку",
     "public": "Публічны",
-    "visibleToCommunity": "Відзімы для шырокай супольнасці Pangea Chat праз \"Знайсці курс\"",
-    "howSpaceCanBeJoined": "Як можна далучыцца да гэтага курса",
-    "canBeFoundVia": "Можа быць знойдзены праз:",
-    "canBeFoundViaInvitation": "• запрашэнне",
-    "canBeFoundViaCodeOrLink": "• код або спасылка",
-    "canBeFoundViaKnock": "• запыт на далучэнне і зацвярджэнне адміністратара",
     "sendActivities": "Адправіць мерапрыемствы",
     "directMessage": "Прамое паведамленне",
     "newDirectMessage": "Новае прамое паведамленне",
@@ -3485,7 +3474,6 @@
     "inviteDesc": "Запрашэнне па імя карыстальніка, па кодзе або спасылцы",
     "editCourseDesc": "Тут вы можаце рэдагаваць назву курса, апісанне і г.д.",
     "permissionsDesc": "Усталюйце дазволы, такія як хто можа запрашаць карыстальнікаў, адпраўляць паведамленні, ствараць чаты і г.д.",
-    "accessDesc": "Вы можаце зрабіць свой курс адкрытым для свету! Або зрабіць яго прыватным і бяспечным.",
     "createGroupChatDesc": "У той час як пачынаюцца і заканчваюцца сесіі дзейнасці, групавыя чаты застануцца адкрытымі для звычайнай камунікацыі.",
     "deleteDesc": "Толькі адміністратары могуць выдаліць курс. Гэта деструктыўная дзея, якая выдаляе ўсіх карыстальнікаў і ўсе выбраныя чаты ў межах курса. Выконвайце асцярожна.",
     "whatNow": "Што цяпер?",
@@ -5836,47 +5824,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6147,10 +6099,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7942,11 +7890,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Па змаўчанні курсы з'яўляюцца адкрытымі для пошуку і патрабуюць адабрэння адміністратара для далучэння. Вы можаце змяняць гэтыя налады ў любы час.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Якую мову вы вывучаеце?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8652,11 +8595,6 @@
     },
     "closeEmojiMenu": "Зачыніць меню эмодзі",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "Дазволіць іншым шукаць ваш курс",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9996,5 +9934,11 @@
     "ssoTryAnyway": "Усё роўна паспрабаваць",
     "publicCoursesFilterTooltip": "Паказваць толькі курсы, да якіх можа далучыцца кожны",
     "restrictedCoursesFilterTooltip": "Паказваць толькі курсы, да якіх трэба запытваць далучэнне",
-    "viewImageLabel": "Паглядзець выяву"
+    "viewImageLabel": "Паглядзець выяву",
+    "whoCanJoin": "Хто можа далучыцца?",
+    "approvalRequired": "Патрабуецца адабрэнне",
+    "courseAccessPublicDesc": "Любы можа знайсці і далучыцца да гэтага курса.",
+    "courseAccessApprovalRequiredDesc": "Любы можа знайсці гэты курс і запытаць далучэнне. Вы ўхваляеце кожны запыт.",
+    "courseAccessPrivateDesc": "Далучыцца могуць толькі людзі з вашым запрашэннем або кодам курса. Курс не з'яўляецца ў пошуку.",
+    "courseAccessCodeNote": "Студэнты з вашым кодам курса або запрашэннем могуць далучыцца адразу, незалежна ад вашага выбару."
 }

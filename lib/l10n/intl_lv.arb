@@ -2406,8 +2406,6 @@
     "@gallery": {},
     "files": "Datnes",
     "@files": {},
-    "restricted": "Ierobežots",
-    "@restricted": {},
     "knockRestricted": "Pieklauvēt ierobežotajiem",
     "@knockRestricted": {},
     "sendCanceled": "Sūtīšana atcelta",
@@ -3416,17 +3414,8 @@
     "introductions": "Ievads",
     "announcements": "Paziņojumi",
     "activities": "Aktivitātes",
-    "access": "Piekļuve",
-    "howSpaceCanBeFound": "Kā šī kursa var atrast",
     "private": "Privāts",
-    "cannotBeFoundInSearch": "Nevar atrast meklēšanā",
     "public": "Publisks",
-    "visibleToCommunity": "Redzams plašākajai Pangea Chat kopienai caur \"Atrodi kursu\"",
-    "howSpaceCanBeJoined": "Kā šis kurss var tikt pievienots",
-    "canBeFoundVia": "Var atrast caur:",
-    "canBeFoundViaInvitation": "• ielūgums",
-    "canBeFoundViaCodeOrLink": "• kods vai saite",
-    "canBeFoundViaKnock": "• pieprasījums pievienoties un administratora apstiprinājums",
     "sendActivities": "Sūtīt aktivitātes",
     "directMessage": "Tiešā ziņa",
     "newDirectMessage": "Jauna tiešā ziņa",
@@ -3472,7 +3461,6 @@
     "inviteDesc": "Ar lietotājvārdu, ar kodu vai saiti",
     "editCourseDesc": "Šeit jūs varat rediģēt kursa nosaukumu, aprakstu utt.",
     "permissionsDesc": "Iestatiet atļaujas, piemēram, kas var uzaicināt lietotājus, sūtīt ziņojumus, veidot čatus utt.",
-    "accessDesc": "Jūs varat padarīt savu kursu atvērtu pasaulei! Vai arī padarīt kursu privātu un drošu.",
     "createGroupChatDesc": "Kamēr aktivitāšu sesijas sākas un beidzas, grupu čati paliks atvērti ikdienas saziņai.",
     "deleteDesc": "Tikai administratori var dzēst kursu. Šī ir postoša darbība, kas izdzēš visus lietotājus un dzēš visus atlasītos čatus kursā. Esiet uzmanīgs.",
     "whatNow": "Kas tagad?",
@@ -5836,47 +5824,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6147,10 +6099,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7942,11 +7890,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Pēc noklusējuma kursi ir publiski meklējami un prasa administratora apstiprinājumu pievienošanai. Jūs varat rediģēt šos iestatījumus jebkurā laikā.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Kuru valodu tu mācies?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8638,11 +8581,6 @@
     },
     "closeEmojiMenu": "Aizvērt emocijzīmju izvēlni",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "Atļaut citiem meklēt jūsu kursu",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9982,5 +9920,11 @@
     "ssoTryAnyway": "Tomēr mēģināt",
     "publicCoursesFilterTooltip": "Rādīt tikai kursus, kuriem var pievienoties ikviens",
     "restrictedCoursesFilterTooltip": "Rādīt tikai kursus, kuriem jāpieprasa pievienošanās",
-    "viewImageLabel": "Skatīt attēlu"
+    "viewImageLabel": "Skatīt attēlu",
+    "whoCanJoin": "Kas var pievienoties?",
+    "approvalRequired": "Nepieciešams apstiprinājums",
+    "courseAccessPublicDesc": "Ikviens var atrast un pievienoties šim kursam.",
+    "courseAccessApprovalRequiredDesc": "Ikviens var atrast šo kursu un lūgt pievienoties. Jūs apstiprināt katru pieprasījumu.",
+    "courseAccessPrivateDesc": "Tikai personas ar jūsu ielūgumu vai kursa kodu var pievienoties. Kurss neparādās meklēšanā.",
+    "courseAccessCodeNote": "Studenti ar jūsu kursa kodu vai ielūgumu var pievienoties nekavējoties, neatkarīgi no jūsu izvēles."
 }

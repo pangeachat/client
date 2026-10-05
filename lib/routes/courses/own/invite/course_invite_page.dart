@@ -105,30 +105,6 @@ class CourseInvitePageController extends State<CourseInvitePage>
     return spaceId;
   }
 
-  Future<bool> get _isPublic async {
-    String spaceId;
-    try {
-      spaceId = await getSpaceId();
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"created_course_id": widget.courseId},
-      );
-      return true;
-    }
-
-    try {
-      final visibility = await Matrix.of(
-        context,
-      ).client.getRoomVisibilityOnDirectory(spaceId);
-      return visibility == Visibility.public;
-    } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"space_id": spaceId});
-      return true;
-    }
-  }
-
   Future<bool> get _requireAnalyticsAccess async {
     String spaceId;
     try {
@@ -147,25 +123,6 @@ class CourseInvitePageController extends State<CourseInvitePage>
     return room.requireAnalyticsAccess;
   }
 
-  Future<void> _setVisibility(bool value) async {
-    try {
-      final spaceId = await getSpaceId();
-      await Matrix.of(context).client.setRoomVisibilityOnDirectory(
-        spaceId,
-        visibility: value ? Visibility.public : Visibility.private,
-      );
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"created_course_id": widget.courseId, "visibility": value},
-      );
-      rethrow;
-    } finally {
-      if (mounted) setState(() {});
-    }
-  }
-
   Future<void> _setRequireAnalyticsAccess(bool value) async {
     try {
       final spaceId = await getSpaceId();
@@ -179,7 +136,10 @@ class CourseInvitePageController extends State<CourseInvitePage>
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {"created_course_id": widget.courseId, "visibility": value},
+        data: {
+          "created_course_id": widget.courseId,
+          "require_analytics_access": value,
+        },
       );
       rethrow;
     } finally {
@@ -360,35 +320,6 @@ class CourseInvitePageController extends State<CourseInvitePage>
                       child: Column(
                         spacing: 8.0,
                         children: [
-                          Row(
-                            spacing: 8.0,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  L10n.of(context).visibilityToggleTitle,
-                                  style: theme.textTheme.bodyMedium,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              FutureBuilder(
-                                future: _isPublic,
-                                builder: (context, snapshot) {
-                                  final value = snapshot.data ?? true;
-                                  return Switch(
-                                    value: value,
-                                    onChanged: (v) => showFutureLoadingDialog(
-                                      context: context,
-                                      future: () => _setVisibility(v),
-                                    ),
-                                    activeThumbColor: Theme.of(
-                                      context,
-                                    ).pangea.successFixedDim,
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
                           Row(
                             spacing: 8.0,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

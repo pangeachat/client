@@ -1136,7 +1136,6 @@
     "unreadChatsInApp": "{appname}: {unread} წაკითხული ჩატი",
     "noDatabaseEncryption": "მონაცემთა ბაზის დაშიფვრა ამ პლატფორმაზე არ არის მხარდაჭერილი",
     "thereAreCountUsersBlocked": "ამჟამად ბლოკირებულია {count} მომხმარებელი.",
-    "restricted": "შეზღუდული",
     "knockRestricted": "შეზღუდული დარეკვა",
     "goToSpace": "გადადი სივრცეში: {space}",
     "markAsUnread": "ჩაწერე წაკითხულად",
@@ -1805,17 +1804,8 @@
     "introductions": "შესავალი",
     "announcements": "შეტყობინებები",
     "activities": "აქტივობები",
-    "access": "წვდომა",
-    "howSpaceCanBeFound": "როგორ შეიძლება ამ კურსის მოძებნა",
     "private": "პირადი",
-    "cannotBeFoundInSearch": "ძებნაში ვერ მოიძებნება",
     "public": "საჯარო",
-    "visibleToCommunity": "ხილვადი პანგეა ჩატ საზოგადოებისთვის \"კურსის მოძებნა\" მეშვეობით",
-    "howSpaceCanBeJoined": "როგორ შეიძლება შეუერთდე ამ კურსს",
-    "canBeFoundVia": "შეიძლება იპოვოთ მეშვეობით:",
-    "canBeFoundViaInvitation": "• მოწვევა",
-    "canBeFoundViaCodeOrLink": "• კოდი ან ლინკი",
-    "canBeFoundViaKnock": "• მოთხოვნა შეუერთების და ადმინისტრატორის დამტკიცება",
     "sendActivities": "გაგზავნეთ აქტივობები",
     "directMessage": "მხოლოდ შეტყობინება",
     "newDirectMessage": "ახალი პირდაპირი შეტყობინება",
@@ -1874,7 +1864,6 @@
     "inviteDesc": "მომხმარებლის სახელით, კოდით ან ლინკით",
     "editCourseDesc": "აქ შეგიძლიათ შეცვალოთ კურსის სათაური, აღწერა და სხვა.",
     "permissionsDesc": "დააყენეთ დაშვებები, როგორიცაა ვინ შეუძლია მოწვევა, მესიჯების გაგზავნა, ჩატების შექმნა და სხვა.",
-    "accessDesc": "თქვენ შეგიძლიათ გახსნათ თქვენი კურსი მსოფლიოისთვის! ან, გახადოთ თქვენი კურსი პირადი და უსაფრთხო.",
     "createGroupChatDesc": "სადაც იწყება და მთავრდება აქტივობის სესია, ჯგუფური ჩატები დარჩება ღია რეგულარული კომუნიკაციისთვის.",
     "deleteDesc": "მხოლოდ ადმინისტრატორებს შეუძლიათ კურსის წაშლა. ეს არის განადგურების მოქმედება, რომელიც წაშლის ყველა მომხმარებელს და ყველა არჩეულ ჩატს კურსის ფარგლებში. გთხოვთ, გამოიჩინოთ სიფრთხილე.",
     "whatNow": "ახლა რა?",
@@ -3744,10 +3733,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6556,47 +6541,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6867,10 +6816,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8662,11 +8607,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "ნაგულისხმევად, კურსები საჯაროდ საძიებელია და საჭიროებს ადმინისტრატორის დამტკიცებას გაწვდვისთვის. შეგიძლიათ ამ პარამეტრების რედაქტირება ნებისმიერ დროს.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "რომელი ენა სწავლობთ?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9538,11 +9478,6 @@
     },
     "closeEmojiMenu": "დახურეთ ემოჯი მენიუ",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "დართეთ სხვებს თქვენი კურსის ძიება",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10882,5 +10817,11 @@
     "ssoTryAnyway": "მაინც სცადე",
     "publicCoursesFilterTooltip": "აჩვენე მხოლოდ კურსები, რომლებზეც ნებისმიერს შეუძლია გაწევრიანება",
     "restrictedCoursesFilterTooltip": "აჩვენე მხოლოდ კურსები, რომლებზეც გაწევრიანების მოთხოვნაა საჭირო",
-    "viewImageLabel": "სურათის ნახვა"
+    "viewImageLabel": "სურათის ნახვა",
+    "whoCanJoin": "ვინ შეიძლება შემოუერთდეს?",
+    "approvalRequired": "დადასტურებაა საჭირო",
+    "courseAccessPublicDesc": "ნებისმიერს შეუძლია ამ კურსის პოვნა და შემოერთება.",
+    "courseAccessApprovalRequiredDesc": "ნებისმიერს შეუძლია ამ კურსის პოვნა და შემოერთების მოთხოვნა. თქვენ ადასტურებთ თითოეულ მოთხოვნას.",
+    "courseAccessPrivateDesc": "მხოლოდ თქვენი მოწვევით ან კურსის კოდით მოსულ ადამიანებს შეუძლიათ შემოერთება. კურსი არ გამოჩნდება ძიებაში.",
+    "courseAccessCodeNote": "სტუდენტებს თქვენი კურსის კოდით ან მოწვევით შეუძლიათ დაუყოვნებლივ შემოერთება, რასაც არ უნდა აირჩევთ."
 }

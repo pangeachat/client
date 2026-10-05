@@ -2613,7 +2613,6 @@
     "unreadChatsInApp": "{appname}: {unread} conversas não lidas",
     "noDatabaseEncryption": "Criptografia do banco de dados não é suportada nesta plataforma",
     "thereAreCountUsersBlocked": "Atualmente há {count} usuários bloqueados.",
-    "restricted": "Restrito",
     "knockRestricted": "Permissão de toque restrita",
     "goToSpace": "Ir para o espaço: {space}",
     "markAsUnread": "Marcar como não lida",
@@ -3282,17 +3281,8 @@
     "introductions": "Apresentações",
     "announcements": "Anúncios",
     "activities": "Atividades",
-    "access": "Acesso",
-    "howSpaceCanBeFound": "Como este curso pode ser encontrado",
     "private": "Privado",
-    "cannotBeFoundInSearch": "Não pode ser encontrado na pesquisa",
     "public": "Público",
-    "visibleToCommunity": "Visível para a comunidade mais ampla do Pangea Chat via \"Encontrar um curso\"",
-    "howSpaceCanBeJoined": "Como este curso pode ser ingressado",
-    "canBeFoundVia": "Pode ser encontrado via:",
-    "canBeFoundViaInvitation": "• convite",
-    "canBeFoundViaCodeOrLink": "• código ou link",
-    "canBeFoundViaKnock": "• solicitação para entrar e aprovação do administrador",
     "sendActivities": "Enviar atividades",
     "directMessage": "Mensagem Direta",
     "newDirectMessage": "Nova mensagem direta",
@@ -3351,7 +3341,6 @@
     "inviteDesc": "Por nome de usuário, por código ou link",
     "editCourseDesc": "Aqui você pode editar o título do curso, descrição, etc.",
     "permissionsDesc": "Defina permissões como quem pode convidar usuários, enviar mensagens, criar chats, etc.",
-    "accessDesc": "Você pode tornar seu curso aberto ao mundo! Ou, tornar seu curso privado e seguro.",
     "createGroupChatDesc": "Enquanto sessões de atividade começam e terminam, os chats em grupo permanecerão abertos para comunicação rotineira.",
     "deleteDesc": "Somente administradores podem excluir um curso. Esta é uma ação destrutiva que remove todos os usuários e exclui todos os chats selecionados dentro do curso. Proceda com cautela.",
     "whatNow": "E agora?",
@@ -3796,10 +3785,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6600,47 +6585,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6911,10 +6860,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8706,11 +8651,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Por padrão, os cursos são pesquisáveis publicamente e requerem aprovação do administrador para participar. Você pode editar essas configurações a qualquer momento.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Qual idioma você está aprendendo?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9582,11 +9522,6 @@
     },
     "closeEmojiMenu": "Fechar menu de emojis",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "Permitir que outros pesquisem seu curso",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10926,5 +10861,11 @@
     "ssoTryAnyway": "Tentar mesmo assim",
     "publicCoursesFilterTooltip": "Mostrar apenas cursos que qualquer pessoa pode participar",
     "restrictedCoursesFilterTooltip": "Mostrar apenas cursos para os quais você deve pedir para participar",
-    "viewImageLabel": "Ver imagem"
+    "viewImageLabel": "Ver imagem",
+    "whoCanJoin": "Quem pode entrar?",
+    "approvalRequired": "Aprovação necessária",
+    "courseAccessPublicDesc": "Qualquer pessoa pode encontrar e entrar neste curso.",
+    "courseAccessApprovalRequiredDesc": "Qualquer pessoa pode encontrar este curso e pedir para entrar. Você aprova cada pedido.",
+    "courseAccessPrivateDesc": "Apenas pessoas com seu convite ou código do curso podem entrar. O curso não aparece na pesquisa.",
+    "courseAccessCodeNote": "Alunos com seu código do curso ou um convite podem entrar imediatamente, independentemente da sua escolha."
 }

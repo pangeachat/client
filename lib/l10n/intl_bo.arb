@@ -2807,17 +2807,8 @@
     "introductions": "བཀའ་རྟེན་ཚུལ།",
     "announcements": "सूचना",
     "activities": "क्रियाकलापहरू",
-    "access": "प्रवेश",
-    "howSpaceCanBeFound": "यस कोर्सलाई कसरी भेट्टाउने",
     "private": "निजी",
-    "cannotBeFoundInSearch": "खोजीमा भेट्टाउन सकिँदैन",
     "public": "सार्वजनिक",
-    "visibleToCommunity": "\"फाइन्ड अ कोर्स\" मार्फत व्यापक पाङ्गिया च्याट समुदायलाई देख्न सकिन्छ",
-    "howSpaceCanBeJoined": "यस कोर्समा कसरी सामेल हुने",
-    "canBeFoundVia": "माध्यमबाट भेट्टाउन सकिन्छ:",
-    "canBeFoundViaInvitation": "• निमन्त्रणा",
-    "canBeFoundViaCodeOrLink": "• कोड वा लिङ्क",
-    "canBeFoundViaKnock": "• अनुरोध गर्न र प्रशासकको स्वीकृति",
     "sendActivities": "क्रियाकलापहरू पठाउनुहोस्",
     "directMessage": "གནང་བའི་ཚེས་ཁུལ།",
     "newDirectMessage": "གནང་བའི་ཚེས་ཁུལ་གསར་པ།",
@@ -2876,7 +2867,6 @@
     "inviteDesc": "མིང་ཚིགས་ལུས་པ། ལུས་པ་ལས་གནང་། ལུས་པ་ལས་འབད།",
     "editCourseDesc": "འདིའི་ནང་ཁུངས་སྤྱོད་ལེན་འབད་ནས་སློབ་ཚན་མཐོ་རིང་བསྐྱར་བསྐྱར་བཟོ།",
     "permissionsDesc": "གནད་སྡེའི་གནད་སྡེ་ལས་འགན་ཁུངས་སྤྱོད་ལེན་འབད། ལུས་པ་ལས་འབད་མི་ཚོའི་ལས་འགན་ལས་འགན་ཁུངས་ལ་འགྱོ།",
-    "accessDesc": "ཁྱེད་རང་གི་སློབ་ཚན་ལ་འགྱོ་བ་ལུས་པ་ལས་འབད་ནས་འབད་རོགས། ຫོད་ན་ཁྱེད་རང་གི་སློབ་ཚན་གང་འདི་ལས་འགན་ལས་འབད་ན་གནང་བ།",
     "createGroupChatDesc": "འདི་ནས་ལས་འགན་སྐར་མ་ལོག་བརྗེ་བ་ལས་འགན་ལས་འབད་ནས་ལོག་བརྗེ་བ་ལས་འགན་ལས་འབད།",
     "deleteDesc": "གནད་སྡེ་ལས་འགན་ལས་འབད་ན་དགོས། འདི་ནས་ལས་འགན་ལས་འབད་ན་སྤྱོད་ལེན་འབད་མི་ཚོའི་ལས་འགན་ལས་འབད་ན་ལས་འགན་ལས་འབད།",
     "whatNow": "ད་ལྟ་ག་རེ་ཡོད།",
@@ -5675,47 +5665,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -5989,10 +5943,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
@@ -6229,7 +6179,6 @@
     "unreadChatsInApp": "{appname}: {unread} མེད་ལེན་ཚོད་ཚིག",
     "noDatabaseEncryption": "གདམ་ཁ་ལག་ལེན་འབད་མི་ཚུལ་ལ་འབྱོར་མི་འདུག",
     "thereAreCountUsersBlocked": "ད་ལྟ་ན་ཁྱེད་རང་གིས {count} ལག་ལེན་མེད་ཚོད་ཚིག་ཡོད།",
-    "restricted": "གདན་སྤྱོད་བྱེད",
     "knockRestricted": "ཁྱེད་རང་གི་ལེན་སྤྱོད་བྱེད་མི་འདུག",
     "goToSpace": "ནང་ལ་ནོར་བརྗེ་བ: {space}",
     "markAsUnread": "མེད་ལེན་བྱེད",
@@ -6335,10 +6284,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -7102,11 +7047,6 @@
     },
     "chatWithSupport": "Chat with Support",
     "@chatWithSupport": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "newCourseAccess": "Biy default, kursi biyo publicly searchable e biyo require admin approval to join. Yu can edit these settings at any time.",
-    "@newCourseAccess": {
         "type": "String",
         "placeholders": {}
     },
@@ -8249,11 +8189,6 @@
     },
     "closeEmojiMenu": "Tutup menu emoji",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "Bolehkah orang lain mencari kursus anda",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9593,5 +9528,11 @@
     "ssoTryAnyway": "གང་ལྟར་ཚོད་ལྟ་བྱོས།",
     "publicCoursesFilterTooltip": "སུ་ཡང་ཞུགས་ཆོག་པའི་སློབ་ཚན་ཁོ་ན་བསྟན་པ།",
     "restrictedCoursesFilterTooltip": "ཁྱེད་ཀྱིས་ཞུགས་རྒྱུར་རེ་བ་བྱེད་དགོས་པའི་སློབ་ཚན་ཁོ་ན་བསྟན་པ།",
-    "viewImageLabel": "པར་ལ་ལྟ་བ།"
+    "viewImageLabel": "པར་ལ་ལྟ་བ།",
+    "whoCanJoin": "སུས་མཉམ་ཞུགས་བྱེད་ཐུབ་བམ།",
+    "approvalRequired": "ཆོག་མཆན་དགོས།",
+    "courseAccessPublicDesc": "སུ་ཞིག་ཡིན་རུང་སློབ་ཚན་འདི་རྙེད་པ་དང་མཉམ་ཞུགས་བྱེད་ཐུབ།",
+    "courseAccessApprovalRequiredDesc": "སུ་ཞིག་ཡིན་རུང་སློབ་ཚན་འདི་རྙེད་པ་དང་མཉམ་ཞུགས་བྱེད་ཆེད་རེ་བ་འདོན་ཐུབ། ཁྱེད་ཀྱིས་རེ་བ་རེ་རེ་བཞིན་ཆོག་མཆན་སྤྲོད་དགོས།",
+    "courseAccessPrivateDesc": "ཁྱེད་ཀྱི་གདན་ཞུ་བྱས་པའམ་སློབ་ཚན་ཨང་གྲངས་ཡོད་པའི་མི་དག་གིས་མ་གཏོགས་མཉམ་ཞུགས་བྱེད་མི་ཐུབ། སློབ་ཚན་འདི་འཚོལ་བཤེར་ནང་མི་ཐོན།",
+    "courseAccessCodeNote": "ཁྱེད་ཀྱི་སློབ་ཚན་ཨང་གྲངས་སམ་གདན་ཞུ་ཡོད་པའི་སློབ་མ་ཚོས་ཁྱེད་ཀྱིས་གང་འདེམས་རུང་འཕྲལ་དུ་མཉམ་ཞུགས་བྱེད་ཐུབ།"
 }

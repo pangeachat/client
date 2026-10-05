@@ -1716,8 +1716,6 @@
             }
         }
     },
-    "restricted": "Begrenset",
-    "@restricted": {},
     "updateInstalled": "🎉 Oppdatering {version} installert!",
     "@updateInstalled": {
         "type": "String",
@@ -3326,17 +3324,8 @@
     "introductions": "Introduksjoner",
     "announcements": "Kunngjøringer",
     "activities": "Aktiviteter",
-    "access": "Tilgang",
-    "howSpaceCanBeFound": "Hvordan dette kurset kan finnes",
     "private": "Privat",
-    "cannotBeFoundInSearch": "Kan ikke finnes i søk",
     "public": "Offentlig",
-    "visibleToCommunity": "Synlig for det bredere Pangea Chat-samfunnet via \"Finn et kurs\"",
-    "howSpaceCanBeJoined": "Hvordan dette kurset kan bli med i",
-    "canBeFoundVia": "Kan finnes via:",
-    "canBeFoundViaInvitation": "• invitasjon",
-    "canBeFoundViaCodeOrLink": "• kode eller lenke",
-    "canBeFoundViaKnock": "• forespørsel om å bli med og administratorgodkjenning",
     "sendActivities": "Send aktiviteter",
     "directMessage": "Direktemelding",
     "newDirectMessage": "Ny direktemelding",
@@ -3395,7 +3384,6 @@
     "inviteDesc": "Med brukernavn, kode eller lenke",
     "editCourseDesc": "Her kan du redigere kursnavn, beskrivelse, osv.",
     "permissionsDesc": "Sett tillatelser som hvem som kan invitere brukere, sende meldinger, opprette chatter, osv.",
-    "accessDesc": "Du kan gjøre kurset ditt åpent for alle! Eller, gjør kurset ditt privat og sikkert.",
     "createGroupChatDesc": "Mens aktivitetsøkter starter og slutter, vil gruppechatter forbli åpne for rutinemessig kommunikasjon.",
     "deleteDesc": "Bare administratorer kan slette et kurs. Dette er en ødeleggende handling som fjerner alle brukere og sletter alle valgte chatter innen kurset. Vær forsiktig.",
     "whatNow": "Hva nå?",
@@ -5892,47 +5880,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6203,10 +6155,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7998,11 +7946,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Som standard er kurs offentlig søkbare og krever administratortillatelse for å bli med. Du kan redigere disse innstillingene når som helst.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Hvilket språk lærer du?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8695,11 +8638,6 @@
     },
     "closeEmojiMenu": "Lukk emoji-meny",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "Tillat andre å søke etter kurset ditt",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10039,5 +9977,11 @@
     "ssoTryAnyway": "Prøv likevel",
     "publicCoursesFilterTooltip": "Vis kun kurs alle kan bli med i",
     "restrictedCoursesFilterTooltip": "Vis kun kurs du må be om å få bli med i",
-    "viewImageLabel": "Vis bilde"
+    "viewImageLabel": "Vis bilde",
+    "whoCanJoin": "Hvem kan bli med?",
+    "approvalRequired": "Godkjenning kreves",
+    "courseAccessPublicDesc": "Alle kan finne og bli med på dette kurset.",
+    "courseAccessApprovalRequiredDesc": "Alle kan finne dette kurset og be om å bli med. Du godkjenner hver forespørsel.",
+    "courseAccessPrivateDesc": "Bare personer med din invitasjon eller kurskode kan bli med. Kurset vises ikke i søk.",
+    "courseAccessCodeNote": "Studenter med din kurskode eller en invitasjon kan bli med med en gang, uansett hva du velger."
 }

@@ -2252,8 +2252,6 @@
         "type": "String",
         "count": {}
     },
-    "restricted": "தடைசெய்யப்பட்டது",
-    "@restricted": {},
     "moderatorLevel": "{level} - மதிப்பீட்டாளர்",
     "@moderatorLevel": {
         "type": "String",
@@ -3335,17 +3333,8 @@
     "introductions": "அறிமுகங்கள்",
     "announcements": "அறிவிப்புகள்",
     "activities": "செயல்பாடுகள்",
-    "access": "அணுகல்",
-    "howSpaceCanBeFound": "இந்த பாடத்திட்டம் எப்படி கண்டுபிடிக்கலாம்",
     "private": "தனிப்பட்ட",
-    "cannotBeFoundInSearch": "தேடலில் கண்டுபிடிக்க முடியாது",
     "public": "பொது",
-    "visibleToCommunity": "\"பங்கேயா\" என்ற விரிவான பங்கேயா சமூகத்திற்கு காண்பிக்கப்படுகின்றது",
-    "howSpaceCanBeJoined": "இந்த பாடத்திட்டம் எப்படி சேர்க்கலாம்",
-    "canBeFoundVia": "கண்டுபிடிக்கப்படலாம்:",
-    "canBeFoundViaInvitation": "• அழைப்பு",
-    "canBeFoundViaCodeOrLink": "• குறியீடு அல்லது இணைப்பு",
-    "canBeFoundViaKnock": "• சேர்க்க கோரிக்கை மற்றும் நிர்வாக அனுமதி",
     "sendActivities": "செயல்பாடுகளை அனுப்பவும்",
     "directMessage": "நேரடி செய்தி",
     "newDirectMessage": "புதிய நேரடி செய்தி",
@@ -3404,7 +3393,6 @@
     "inviteDesc": "பயனர்பெயர், குறியீடு அல்லது இணைப்பு மூலம்",
     "editCourseDesc": "இங்கே நீங்கள் பாடத்தின் தலைப்பு, விளக்கம் ஆகியவற்றை திருத்தலாம்.",
     "permissionsDesc": "யார் பயனர்களை அழைக்கலாம், செய்திகள் அனுப்பலாம், உரையாடலை உருவாக்கலாம் போன்ற அனுமதிகளை அமைக்கவும்.",
-    "accessDesc": "உங்கள் பாடத்தைக் உலகிற்கு திறக்கலாம்! அல்லது, தனிப்பட்ட மற்றும் பாதுகாப்பானதாக மாற்றவும்.",
     "createGroupChatDesc": "செயல்பாட்டுக் கூட்டங்கள் தொடங்கும் மற்றும் முடிவடையும் இடம், குழு உரையாடல்கள் வழக்கமான தொடர்புக்கு திறந்தவையாக இருக்கும்.",
     "deleteDesc": "பாடத்தைக் நீக்குவதற்கு மட்டுமே நிர்வாகிகள் அனுமதிக்கின்றனர். இது அனைத்து பயனர்களையும் நீக்கி, தேர்ந்தெடுத்த அனைத்து உரையாடல்களையும் அழிக்கும் அழிப்பான நடவடிக்கை. கவனமாக செயல்படவும்.",
     "whatNow": "இப்போது என்ன?",
@@ -5758,47 +5746,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6069,10 +6021,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7864,11 +7812,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "இயல்பாக, பாடங்கள் பொதுவாக தேடக்கூடியவை மற்றும் சேர்வதற்கு நிர்வாகத்தின் அங்கீகாரம் தேவை. நீங்கள் எப்போது வேண்டுமானாலும் இந்த அமைப்புகளை திருத்தலாம்.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "நீங்கள் எது மொழி கற்றுக்கொள்கிறீர்கள்?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8730,11 +8673,6 @@
     },
     "closeEmojiMenu": "எமோஜி மெனுவை மூடு",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "மற்றவர்கள் உங்கள் பாடத்திற்காக தேட அனுமதிக்கவும்",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10074,5 +10012,11 @@
     "ssoTryAnyway": "எப்படியும் முயற்சி செய்",
     "publicCoursesFilterTooltip": "யாரும் சேரக்கூடிய படிப்புகளை மட்டும் காட்டு",
     "restrictedCoursesFilterTooltip": "நீங்கள் சேர அனுமதி கேட்க வேண்டிய படிப்புகளை மட்டும் காட்டு",
-    "viewImageLabel": "படத்தைப் பார்"
+    "viewImageLabel": "படத்தைப் பார்",
+    "whoCanJoin": "யார் சேரலாம்?",
+    "approvalRequired": "அனுமதி தேவை",
+    "courseAccessPublicDesc": "யார் வேண்டுமானாலும் இந்தக் கோர்ஸைக் கண்டறிந்து சேரலாம்.",
+    "courseAccessApprovalRequiredDesc": "யார் வேண்டுமானாலும் இந்தக் கோர்ஸைக் கண்டறிந்து சேரக் கோரலாம். ஒவ்வொரு கோரிக்கைக்கும் நீங்கள் அனுமதி அளிக்க வேண்டும்.",
+    "courseAccessPrivateDesc": "உங்கள் அழைப்பு அல்லது கோர்ஸ் குறியீடு உள்ளவர்கள் மட்டுமே சேர முடியும். இந்தக் கோர்ஸ் தேடலில் தோன்றாது.",
+    "courseAccessCodeNote": "உங்கள் கோர்ஸ் குறியீடு அல்லது அழைப்பு உள்ள மாணவர்கள், நீங்கள் எதைத் தேர்ந்தெடுத்தாலும் உடனடியாகச் சேரலாம்."
 }

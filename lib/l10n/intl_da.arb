@@ -533,7 +533,6 @@
     "unreadChatsInApp": "{appname}: {unread} ulæste chats",
     "noDatabaseEncryption": "Databasekryptering understøttes ikke på denne platform",
     "thereAreCountUsersBlocked": "Lige nu er der {count} brugere blokeret.",
-    "restricted": "Begrænset",
     "knockRestricted": "Knock-begrænset",
     "goToSpace": "Gå til rum: {space}",
     "markAsUnread": "Marker som ulæst",
@@ -1202,17 +1201,8 @@
     "introductions": "Introduktioner",
     "announcements": "Meddelelser",
     "activities": "Aktiviteter",
-    "access": "Adgang",
-    "howSpaceCanBeFound": "Hvordan dette kursus kan findes",
     "private": "Privat",
-    "cannotBeFoundInSearch": "Kan ikke findes i søgning",
     "public": "Offentlig",
-    "visibleToCommunity": "Synlig for det bredere Pangea Chat-fællesskab via \"Find et kursus\"",
-    "howSpaceCanBeJoined": "Hvordan dette kursus kan tilsluttes",
-    "canBeFoundVia": "Kan findes via:",
-    "canBeFoundViaInvitation": "• invitation",
-    "canBeFoundViaCodeOrLink": "• kode eller link",
-    "canBeFoundViaKnock": "• anmodning om at deltage og godkendelse af administrator",
     "sendActivities": "Send aktiviteter",
     "directMessage": "Direkte besked",
     "newDirectMessage": "Ny direkte besked",
@@ -1271,7 +1261,6 @@
     "inviteDesc": "Efter brugernavn, kode eller link",
     "editCourseDesc": "Her kan du redigere kursustitel, beskrivelse osv.",
     "permissionsDesc": "Indstil tilladelser såsom hvem der kan invitere brugere, sende beskeder, oprette chats osv.",
-    "accessDesc": "Du kan gøre dit kursus åbent for alle! Eller gøre det privat og sikkert.",
     "createGroupChatDesc": "Mens aktivitetsessioner starter og slutter, forbliver gruppechats åbne for rutinemæssig kommunikation.",
     "deleteDesc": "Kun administratorer kan slette et kursus. Dette er en destruktiv handling, der fjerner alle brugere og sletter alle valgte chats inden for kurset. Vær forsigtig.",
     "whatNow": "Hvad nu?",
@@ -3764,10 +3753,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6576,47 +6561,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6887,10 +6836,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8682,11 +8627,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Som standard er kurser offentligt søgbare og kræver administratorgodkendelse for at deltage. Du kan redigere disse indstillinger når som helst.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Hvilket sprog lærer du?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9558,11 +9498,6 @@
     },
     "closeEmojiMenu": "Luk emoji-menu",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "Tillad andre at søge efter dit kursus",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10902,5 +10837,11 @@
     "ssoTryAnyway": "Prøv alligevel",
     "publicCoursesFilterTooltip": "Vis kun kurser, alle kan deltage i",
     "restrictedCoursesFilterTooltip": "Vis kun kurser, du skal anmode om at deltage i",
-    "viewImageLabel": "Se billede"
+    "viewImageLabel": "Se billede",
+    "whoCanJoin": "Hvem kan deltage?",
+    "approvalRequired": "Godkendelse påkrævet",
+    "courseAccessPublicDesc": "Alle kan finde og deltage i dette kursus.",
+    "courseAccessApprovalRequiredDesc": "Alle kan finde dette kursus og anmode om at deltage. Du godkender hver anmodning.",
+    "courseAccessPrivateDesc": "Kun personer med din invitation eller kursuskode kan deltage. Kurset vises ikke i søgninger.",
+    "courseAccessCodeNote": "Studerende med din kursuskode eller en invitation kan deltage med det samme, uanset hvad du vælger."
 }

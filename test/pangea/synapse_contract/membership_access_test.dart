@@ -5,6 +5,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
+import 'package:fluffychat/features/course_access/course_access.dart';
+import 'package:fluffychat/features/course_access/course_access_room_extension.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/knock_with_code_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
@@ -121,6 +123,44 @@ void main() {
         isA<String>().having((c) => c.isNotEmpty, 'non-empty', true),
       );
       expect(newCode, isNot(oldCode));
+    });
+  });
+
+  // joining-courses.instructions.md § Course access (#9359): each setting is a
+  // directory listing plus a join rule, and switching keeps the course code.
+  group('course access settings', () {
+    test('each setting lands on the server and reads back', () async {
+      final (roomId, code) = await makeCourse(suffix: 'course-access');
+      final room = clientA.getRoomById(roomId)!;
+
+      for (final access in [
+        CourseAccess.public,
+        CourseAccess.private,
+        CourseAccess.approvalRequired,
+      ]) {
+        await room.setCourseAccess(access);
+
+        expect(
+          await clientA.getRoomVisibilityOnDirectory(roomId),
+          access.visibility,
+        );
+        final joinRules = (await ContractHarness.serverState(
+          clientA,
+          roomId,
+        ))['m.room.join_rules']?[''];
+        expect(joinRules?['join_rule'], access.joinRule.name);
+        expect(
+          joinRules?['access_code'],
+          code,
+          reason: 'changing access must not lose the course code',
+        );
+
+        await ContractHarness.waitUntil(
+          clientA,
+          () => room.joinRules == access.joinRule,
+        );
+        expect(await room.fetchCourseAccess(), access);
+      }
     });
   });
 

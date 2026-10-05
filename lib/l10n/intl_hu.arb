@@ -2402,8 +2402,6 @@
     "@files": {},
     "commandHint_unignore": "Adott matrix ID figyelembe vétele",
     "@commandHint_unignore": {},
-    "restricted": "Korlátozott",
-    "@restricted": {},
     "knockRestricted": "Kopogás korlátozva",
     "@knockRestricted": {},
     "hideRedactedMessages": "Szerkesztett üzenetek elrejtése",
@@ -3329,17 +3327,8 @@
     "introductions": "Bemutatkozások",
     "announcements": "Bejelentések",
     "activities": "Tevékenységek",
-    "access": "Hozzáférés",
-    "howSpaceCanBeFound": "Hogyan található meg ez a kurzus",
     "private": "Privát",
-    "cannotBeFoundInSearch": "Nem található meg a keresésben",
     "public": "Nyilvános",
-    "visibleToCommunity": "Látható a Pangea Chat szélesebb közössége számára a \"Keress egy kurzust\" segítségével",
-    "howSpaceCanBeJoined": "Hogyan lehet csatlakozni ehhez a kurzushoz",
-    "canBeFoundVia": "Megtalálható a következő révén:",
-    "canBeFoundViaInvitation": "• meghívó",
-    "canBeFoundViaCodeOrLink": "• kód vagy link",
-    "canBeFoundViaKnock": "• kérés csatlakozni és admin jóváhagyásával",
     "sendActivities": "Aktivitások küldése",
     "directMessage": "Közvetlen üzenet",
     "newDirectMessage": "Új közvetlen üzenet",
@@ -3398,7 +3387,6 @@
     "inviteDesc": "Felhasználónév, kód vagy link alapján",
     "editCourseDesc": "Itt szerkesztheted a kurzus címét, leírását stb.",
     "permissionsDesc": "Állíts be jogosultságokat, például ki küldhet meghívókat, üzeneteket, csoportokat hozhat létre stb.",
-    "accessDesc": "Nyilvánossá teheted a kurzusodat a világ számára! Vagy, tedd priváttá és biztonságossá.",
     "createGroupChatDesc": "Míg az aktivitási ülések kezdete és vége, a csoportos beszélgetések nyitva maradnak a rutinszerű kommunikációhoz.",
     "deleteDesc": "Csak az adminok törölhetnek kurzust. Ez egy destruktív művelet, amely minden felhasználót eltávolít és törli az összes kiválasztott csoportot a kurzuson belül. Légy óvatos.",
     "whatNow": "Most mi?",
@@ -5759,47 +5747,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6070,10 +6022,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7865,11 +7813,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Alapértelmezés szerint a kurzusok nyilvánosan kereshetők, és adminisztrátori jóváhagyás szükséges a csatlakozáshoz. Ezeket a beállításokat bármikor módosíthatja.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Milyen nyelvet tanulsz?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8741,11 +8684,6 @@
     },
     "closeEmojiMenu": "Emoji menü bezárása",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "Engedje meg másoknak, hogy keresni tudjanak a kurzusára",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10085,5 +10023,11 @@
     "ssoTryAnyway": "Mégis megpróbálom",
     "publicCoursesFilterTooltip": "Csak olyan kurzusok megjelenítése, amelyekhez bárki csatlakozhat",
     "restrictedCoursesFilterTooltip": "Csak olyan kurzusok megjelenítése, amelyekhez engedélyt kell kérni",
-    "viewImageLabel": "Kép megtekintése"
+    "viewImageLabel": "Kép megtekintése",
+    "whoCanJoin": "Ki csatlakozhat?",
+    "approvalRequired": "Jóváhagyás szükséges",
+    "courseAccessPublicDesc": "Bárki megtalálhatja és csatlakozhat ehhez a kurzushoz.",
+    "courseAccessApprovalRequiredDesc": "Bárki megtalálhatja ezt a kurzust, és kérheti a csatlakozást. Ön hagyja jóvá az egyes kéréseket.",
+    "courseAccessPrivateDesc": "Csak azok csatlakozhatnak, akiknek van meghívójuk vagy kurzuskódjuk. A kurzus nem jelenik meg a keresésben.",
+    "courseAccessCodeNote": "A kurzuskóddal vagy meghívóval rendelkező diákok azonnal csatlakozhatnak, bármit is választ."
 }

@@ -18,7 +18,7 @@ enum CourseAccessFilter {
   String label(L10n l10n) => switch (this) {
     CourseAccessFilter.all => l10n.all,
     CourseAccessFilter.public => l10n.public,
-    CourseAccessFilter.restricted => l10n.restricted,
+    CourseAccessFilter.restricted => l10n.approvalRequired,
   };
 
   String tooltip(L10n l10n) => switch (this) {

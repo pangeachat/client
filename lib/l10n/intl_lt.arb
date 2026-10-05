@@ -2168,7 +2168,6 @@
     "unreadChatsInApp": "{appname}: {unread} neskaitytų pokalbių",
     "noDatabaseEncryption": "Šios platformos nepalaiko duomenų bazės šifravimo",
     "thereAreCountUsersBlocked": "Šiuo metu užblokuota {count} vartotojų.",
-    "restricted": "Apribota",
     "knockRestricted": "Paspaudimo funkcija apribota",
     "goToSpace": "Eiti į erdvę: {space}",
     "markAsUnread": "Pažymėti kaip neskaitytą",
@@ -2835,17 +2834,8 @@
     "introductions": "Įvados",
     "announcements": "Pranešimai",
     "activities": "Veiklos",
-    "access": "Prieiga",
-    "howSpaceCanBeFound": "Kaip galima rasti šį kursą",
     "private": "Privatus",
-    "cannotBeFoundInSearch": "Negalima rasti paieškoje",
     "public": "Viešas",
-    "visibleToCommunity": "Matomas platesnei Pangea pokalbių bendruomenei per \"Rasti kursą\"",
-    "howSpaceCanBeJoined": "Kaip galima prisijungti prie šio kurso",
-    "canBeFoundVia": "Gali būti rastas per:",
-    "canBeFoundViaInvitation": "• kvietimą",
-    "canBeFoundViaCodeOrLink": "• kodą arba nuorodą",
-    "canBeFoundViaKnock": "• prašymą prisijungti ir administratoriaus patvirtinimą",
     "sendActivities": "Siųsti veiklas",
     "directMessage": "Tiesioginė žinutė",
     "newDirectMessage": "Nauja tiesioginė žinutė",
@@ -2904,7 +2894,6 @@
     "inviteDesc": "Per vartotojo vardą, kodą ar nuorodą",
     "editCourseDesc": "Čia galite redaguoti kurso pavadinimą, aprašymą ir kt.",
     "permissionsDesc": "Nustatykite leidimus, pvz., kas gali pakviesti naudotojus, siųsti žinutes, kurti pokalbius ir kt.",
-    "accessDesc": "Galite padaryti savo kursą atvirą visiems! Arba, padaryti jį privačiu ir saugiu.",
     "createGroupChatDesc": "Nors veiklos sesijos prasideda ir baigiasi, grupiniai pokalbiai liks atviri kasdieniam bendravimui.",
     "deleteDesc": "Tik tik administratori gali ištrinti kursą. Tai yra destruktyvus veiksmas, kuris pašalina visus naudotojus ir ištrina visus pasirinktus pokalbius kurse. Būkite atsargūs.",
     "whatNow": "Kas dabar?",
@@ -3633,10 +3622,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6437,47 +6422,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6748,10 +6697,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8543,11 +8488,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Pagal numatytuosius nustatymus, kursai yra viešai ieškomi ir reikalauja administratoriaus patvirtinimo prisijungti. Šiuos nustatymus galite redaguoti bet kada.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Kokią kalbą mokotės?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9419,11 +9359,6 @@
     },
     "closeEmojiMenu": "Uždaryti emocijų meniu",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "Leisti kitiems ieškoti jūsų kurso",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10763,5 +10698,11 @@
     "ssoTryAnyway": "Vis tiek bandyti",
     "publicCoursesFilterTooltip": "Rodyti tik kursus, prie kurių gali prisijungti bet kas",
     "restrictedCoursesFilterTooltip": "Rodyti tik kursus, prie kurių norint prisijungti reikia prašyti leidimo",
-    "viewImageLabel": "Peržiūrėti nuotrauką"
+    "viewImageLabel": "Peržiūrėti nuotrauką",
+    "whoCanJoin": "Kas gali prisijungti?",
+    "approvalRequired": "Reikalingas patvirtinimas",
+    "courseAccessPublicDesc": "Kiekvienas gali rasti ir prisijungti prie šio kurso.",
+    "courseAccessApprovalRequiredDesc": "Kiekvienas gali rasti šį kursą ir paprašyti prisijungti. Jūs patvirtinate kiekvieną užklausą.",
+    "courseAccessPrivateDesc": "Tik žmonės, turintys jūsų kvietimą arba kurso kodą, gali prisijungti. Kursas nerodomas paieškoje.",
+    "courseAccessCodeNote": "Studentai, turintys jūsų kurso kodą arba kvietimą, gali prisijungti iš karto, kad ir ką pasirinktumėte."
 }

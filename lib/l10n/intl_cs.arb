@@ -2364,7 +2364,6 @@
     "unreadChatsInApp": "{appname}: {unread} nepřečtených chatů",
     "noDatabaseEncryption": "Šifrování databáze není na této platformě podporováno",
     "thereAreCountUsersBlocked": "Právě je zablokováno {count} uživatelů.",
-    "restricted": "Omezeno",
     "knockRestricted": "Omezené klepnutí",
     "goToSpace": "Přejít do prostoru: {space}",
     "markAsUnread": "Označit jako nepřečtené",
@@ -3031,17 +3030,8 @@
     "introductions": "Představení",
     "announcements": "Oznámení",
     "activities": "Aktivity",
-    "access": "Přístup",
-    "howSpaceCanBeFound": "Jak lze tento kurz najít",
     "private": "Soukromé",
-    "cannotBeFoundInSearch": "Nelze najít ve vyhledávání",
     "public": "Veřejné",
-    "visibleToCommunity": "Viditelné pro širší komunitu Pangea Chat prostřednictvím \"Najít kurz\"",
-    "howSpaceCanBeJoined": "Jak se lze do tohoto kurzu připojit",
-    "canBeFoundVia": "Lze najít přes:",
-    "canBeFoundViaInvitation": "• pozvánka",
-    "canBeFoundViaCodeOrLink": "• kód nebo odkaz",
-    "canBeFoundViaKnock": "• žádost o připojení a schválení správce",
     "sendActivities": "Odeslat aktivity",
     "directMessage": "Přímá zpráva",
     "newDirectMessage": "Nová přímá zpráva",
@@ -3100,7 +3090,6 @@
     "inviteDesc": "Podle uživatelského jména, kódu nebo odkazu",
     "editCourseDesc": "Zde můžete upravit název kurzu, popis atd.",
     "permissionsDesc": "Nastavte oprávnění, například kdo může zvát uživatele, posílat zprávy, vytvářet chaty atd.",
-    "accessDesc": "Můžete udělat svůj kurz otevřený pro celý svět! Nebo ho udělat soukromým a zabezpečeným.",
     "createGroupChatDesc": "Zatímco se začínají a končí aktivity, skupinové chaty zůstanou otevřené pro rutinní komunikaci.",
     "deleteDesc": "Pouze správci mohou smazat kurz. Jedná se o destruktivní akci, která odstraní všechny uživatele a smaže všechny vybrané chaty v kurzu. Postupujte opatrně.",
     "whatNow": "Co teď?",
@@ -3360,10 +3349,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6164,47 +6149,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6475,10 +6424,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8270,11 +8215,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Ve výchozím nastavení jsou kurzy veřejně vyhledatelné a vyžadují schválení administrátora pro připojení. Tyto nastavení můžete kdykoli upravit.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Jaký jazyk se učíte?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9132,11 +9072,6 @@
     },
     "closeEmojiMenu": "Zavřít nabídku emoji",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "Povolit ostatním vyhledávat váš kurz",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10476,5 +10411,11 @@
     "ssoTryAnyway": "Přesto zkusit",
     "publicCoursesFilterTooltip": "Zobrazit pouze kurzy, ke kterým se může připojit kdokoli",
     "restrictedCoursesFilterTooltip": "Zobrazit pouze kurzy, o které musíte požádat o připojení",
-    "viewImageLabel": "Zobrazit obrázek"
+    "viewImageLabel": "Zobrazit obrázek",
+    "whoCanJoin": "Kdo se může připojit?",
+    "approvalRequired": "Vyžadováno schválení",
+    "courseAccessPublicDesc": "Kdokoli může tento kurz najít a připojit se k němu.",
+    "courseAccessApprovalRequiredDesc": "Kdokoli může tento kurz najít a požádat o připojení. Každou žádost schválíte.",
+    "courseAccessPrivateDesc": "Připojit se mohou pouze lidé s vaší pozvánkou nebo kódem kurzu. Kurz se nezobrazuje ve vyhledávání.",
+    "courseAccessCodeNote": "Studenti s kódem kurzu nebo pozvánkou se mohou připojit okamžitě, bez ohledu na to, co si vyberete."
 }

@@ -2166,8 +2166,6 @@
     },
     "commandHint_unignore": "Unignore an ID maitrís tugtha",
     "@commandHint_unignore": {},
-    "restricted": "Srianta",
-    "@restricted": {},
     "goToSpace": "Téigh go dtí an spás: {space}",
     "@goToSpace": {
         "type": "String",
@@ -3431,17 +3429,8 @@
     "introductions": "Réamhráite",
     "announcements": "Fógraí",
     "activities": "Gníomhaíochtaí",
-    "access": "Rochtain",
-    "howSpaceCanBeFound": "Conas is féidir an cúrsa seo a aimsiú",
     "private": "Príobháideach",
-    "cannotBeFoundInSearch": "Ní féidir é a aimsiú sa chuardach",
     "public": "Poiblí",
-    "visibleToCommunity": "Feictear don phobail Pangea Chat níos leithne tríd \"Faigh cúrsa\"",
-    "howSpaceCanBeJoined": "Conas is féidir an cúrsa seo a bheith páirteach ann",
-    "canBeFoundVia": "Is féidir é a aimsiú trí:",
-    "canBeFoundViaInvitation": "• cuireadh",
-    "canBeFoundViaCodeOrLink": "• cód nó nasc",
-    "canBeFoundViaKnock": "• iarratas chun páirt a ghlacadh agus ceadú riarthóra",
     "sendActivities": "Seol gníomhaíochtaí",
     "directMessage": "Teachtaireacht Dhíreach",
     "newDirectMessage": "Teachtaireacht Dhíreach Nua",
@@ -3500,7 +3489,6 @@
     "inviteDesc": "Glaoigh ar ainm úsáideora, cód nó nasc",
     "editCourseDesc": "Anseo is féidir leat teideal na cúrsa, cur síos, srl. a chur in eagar",
     "permissionsDesc": "Socraigh ceadanna mar cé a d'fhéadfadh cuireadh a thabhairt do dhaoine, teachtaireachtaí a sheoladh, comhráite a chruthú, srl.",
-    "accessDesc": "Is féidir leat do chúrsa a dhéanamh oscailte don domhan! Nó, déan do chúrsa príobháideach agus slán.",
     "createGroupChatDesc": "De réir mar a thosaíonn agus a chríochnaíonn seisiúin gníomhaíochta, fanfaidh comhráite grúpa oscailte le haghaidh cumarsáide rialta.",
     "deleteDesc": "Ní féidir le haon riarthóirí cúrsa a scriosadh ach amháin. Is gníomh díobhálach é seo a bhaint go léir na húsáideoirí agus a scriosadh na comhráite uile roghnaithe laistigh den chúrsa. Bí cúramach le do thoil.",
     "whatNow": "Cad atá le déanamh anois?",
@@ -5843,47 +5831,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6154,10 +6106,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7949,11 +7897,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "De réir réamhshocraithe, tá cúrsaí inrochtana go poiblí agus éilíonn siad cead ó riarachán chun páirt a ghlacadh. Is féidir leat na socruithe seo a chur in eagar ag am ar bith.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Cén teanga atá á foghlaim agat?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8649,11 +8592,6 @@
     },
     "closeEmojiMenu": "Dún an rogha emoji",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "Lig do dhaoine eile cuardach a dhéanamh ar do chúrsa",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9993,5 +9931,11 @@
     "ssoTryAnyway": "Bain triail as ar aon nós",
     "publicCoursesFilterTooltip": "Taispeáin cúrsaí ar féidir le duine ar bith a bheith páirteach iontu amháin",
     "restrictedCoursesFilterTooltip": "Taispeáin cúrsaí nach mór duit iarraidh a bheith páirteach iontu amháin",
-    "viewImageLabel": "Amharc ar an íomhá"
+    "viewImageLabel": "Amharc ar an íomhá",
+    "whoCanJoin": "Cé atá in ann páirt a ghlacadh?",
+    "approvalRequired": "Ceadaítear iarratais",
+    "courseAccessPublicDesc": "Is féidir le duine ar bith an cúrsa seo a aimsiú agus páirt a ghlacadh ann.",
+    "courseAccessApprovalRequiredDesc": "Is féidir le duine ar bith an cúrsa seo a aimsiú agus iarratas a dhéanamh chun páirt a ghlacadh. Ceadaíonn tú gach iarratas.",
+    "courseAccessPrivateDesc": "Ní féidir ach le daoine a bhfuil do chuireadh nó cód cúrsa acu páirt a ghlacadh. Ní thaispeántar an cúrsa sa chuardach.",
+    "courseAccessCodeNote": "Is féidir le mic léinn a bhfuil do chód cúrsa nó cuireadh acu páirt a ghlacadh láithreach, is cuma cad a roghnaíonn tú."
 }

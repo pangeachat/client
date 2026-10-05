@@ -2393,7 +2393,6 @@
     "unreadChatsInApp": "{appname}: {unread} olästa chattar",
     "noDatabaseEncryption": "Databas-kryptering stöds inte på denna plattform",
     "thereAreCountUsersBlocked": "Just nu är {count} användare blockerade.",
-    "restricted": "Begränsad",
     "knockRestricted": "Knackbegränsad",
     "goToSpace": "Gå till utrymme: {space}",
     "markAsUnread": "Markera som oläst",
@@ -3060,17 +3059,8 @@
     "introductions": "Introduktioner",
     "announcements": "Meddelanden",
     "activities": "Aktiviteter",
-    "access": "Åtkomst",
-    "howSpaceCanBeFound": "Hur denna kurs kan hittas",
     "private": "Privat",
-    "cannotBeFoundInSearch": "Kan inte hittas i sökningen",
     "public": "Offentlig",
-    "visibleToCommunity": "Synlig för det bredare Pangea Chat-samhället via \"Hitta en kurs\"",
-    "howSpaceCanBeJoined": "Hur denna kurs kan anslutas",
-    "canBeFoundVia": "Kan hittas via:",
-    "canBeFoundViaInvitation": "• inbjudan",
-    "canBeFoundViaCodeOrLink": "• kod eller länk",
-    "canBeFoundViaKnock": "• begär att gå med och administratörsgodkännande",
     "sendActivities": "Skicka aktiviteter",
     "directMessage": "Direktmeddelande",
     "newDirectMessage": "Nytt direktmeddelande",
@@ -3129,7 +3119,6 @@
     "inviteDesc": "Via användarnamn, kod eller länk",
     "editCourseDesc": "Här kan du redigera kursens titel, beskrivning, etc.",
     "permissionsDesc": "Ställ in behörigheter som vem som kan bjuda in användare, skicka meddelanden, skapa chattar, etc.",
-    "accessDesc": "Du kan göra din kurs öppen för världen! Eller, gör din kurs privat och säker.",
     "createGroupChatDesc": "Medan aktivitetsessioner startar och slutar, förblir gruppchattar öppna för rutinkommunikation.",
     "deleteDesc": "Endast administratörer kan radera en kurs. Detta är en destruktiv åtgärd som tar bort alla användare och raderar alla valda chattar inom kursen. Fortsätt med försiktighet.",
     "whatNow": "Vad nu?",
@@ -3370,10 +3359,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6174,47 +6159,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6485,10 +6434,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8280,11 +8225,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Som standard är kurser offentligt sökbara och kräver administratörsgodkännande för att gå med. Du kan redigera dessa inställningar när som helst.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Vilket språk lär du dig?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9156,11 +9096,6 @@
     },
     "closeEmojiMenu": "Stäng emoji-menyn",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "Tillåt andra att söka efter din kurs",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10500,5 +10435,11 @@
     "ssoTryAnyway": "Försök ändå",
     "publicCoursesFilterTooltip": "Visa endast kurser som alla kan gå med i",
     "restrictedCoursesFilterTooltip": "Visa endast kurser du måste be om att få gå med i",
-    "viewImageLabel": "Visa bild"
+    "viewImageLabel": "Visa bild",
+    "whoCanJoin": "Vem kan gå med?",
+    "approvalRequired": "Godkännande krävs",
+    "courseAccessPublicDesc": "Vem som helst kan hitta och gå med i den här kursen.",
+    "courseAccessApprovalRequiredDesc": "Vem som helst kan hitta den här kursen och be om att få gå med. Du godkänner varje förfrågan.",
+    "courseAccessPrivateDesc": "Endast personer med din inbjudan eller kurskod kan gå med. Kursen visas inte i sökresultaten.",
+    "courseAccessCodeNote": "Elever med din kurskod eller en inbjudan kan gå med direkt, oavsett vad du väljer."
 }

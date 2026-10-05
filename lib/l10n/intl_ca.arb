@@ -2375,8 +2375,6 @@
     "@knock": {},
     "knocking": "S'està picant",
     "@knocking": {},
-    "restricted": "Restringit",
-    "@restricted": {},
     "knockRestricted": "No es pot picar a la porta",
     "@knockRestricted": {},
     "goToSpace": "Ves a l'espai {space}",
@@ -3309,17 +3307,8 @@
     "introductions": "Presentacions",
     "announcements": "Anuncis",
     "activities": "Activitats",
-    "access": "Accés",
-    "howSpaceCanBeFound": "Com es pot trobar aquest curs",
     "private": "Privat",
-    "cannotBeFoundInSearch": "No es pot trobar a la cerca",
     "public": "Públic",
-    "visibleToCommunity": "Visible per a la comunitat més àmplia de Pangea Chat a través de \"Troba un curs\"",
-    "howSpaceCanBeJoined": "Com es pot unir a aquest curs",
-    "canBeFoundVia": "Es pot trobar a través de:",
-    "canBeFoundViaInvitation": "• invitació",
-    "canBeFoundViaCodeOrLink": "• codi o enllaç",
-    "canBeFoundViaKnock": "• sol·licitud d'entrada i aprovació de l'administrador",
     "sendActivities": "Envia activitats",
     "directMessage": "Missatge directe",
     "newDirectMessage": "Nou missatge directe",
@@ -3378,7 +3367,6 @@
     "inviteDesc": "Per nom d'usuari, per codi o enllaç",
     "editCourseDesc": "Aquí pots editar el títol del curs, la descripció, etc.",
     "permissionsDesc": "Estableix permisos com qui pot convidar usuaris, enviar missatges, crear xats, etc.",
-    "accessDesc": "Pots fer que el teu curs sigui obert al món! O bé, fer que el teu curs sigui privat i segur.",
     "createGroupChatDesc": "Mentre que les sessions d'activitat comencen i acaben, els xats de grup romandran oberts per a la comunicació rutinària.",
     "deleteDesc": "Només els administradors poden eliminar un curs. Aquesta és una acció destructiva que elimina tots els usuaris i elimina tots els xats seleccionats dins del curs. Procedeix amb precaució.",
     "whatNow": "I ara què?",
@@ -5783,47 +5771,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6094,10 +6046,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7889,11 +7837,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Per defecte, els cursos són cercables públicament i requereixen l'aprovació de l'administrador per unir-se. Podeu editar aquestes configuracions en qualsevol moment.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Quina llengua estàs aprenent?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8765,11 +8708,6 @@
     },
     "closeEmojiMenu": "Tanca el menú d'emoji",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "Permetre que altres busquin el teu curs",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10109,5 +10047,11 @@
     "ssoTryAnyway": "Prova igualment",
     "publicCoursesFilterTooltip": "Mostra només els cursos als quals qualsevol es pot unir",
     "restrictedCoursesFilterTooltip": "Mostra només els cursos als quals has de demanar unió",
-    "viewImageLabel": "Veure imatge"
+    "viewImageLabel": "Veure imatge",
+    "whoCanJoin": "Qui es pot unir?",
+    "approvalRequired": "Aprovació necessària",
+    "courseAccessPublicDesc": "Qualsevol pot trobar i unir-se a aquest curs.",
+    "courseAccessApprovalRequiredDesc": "Qualsevol pot trobar aquest curs i demanar unir-s'hi. Tu aproves cada sol·licitud.",
+    "courseAccessPrivateDesc": "Només les persones amb la teva invitació o codi de curs es poden unir. El curs no apareix a la cerca.",
+    "courseAccessCodeNote": "Els estudiants amb el teu codi de curs o una invitació es poden unir de seguida, sigui quina sigui la teva elecció."
 }

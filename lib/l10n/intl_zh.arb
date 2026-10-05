@@ -2418,8 +2418,6 @@
     },
     "knockRestricted": "“请求加入”请求受限",
     "@knockRestricted": {},
-    "restricted": "受限",
-    "@restricted": {},
     "swipeRightToLeftToReply": "从右向左滑动进行回复",
     "@swipeRightToLeftToReply": {},
     "alwaysUse24HourFormat": "否",
@@ -3426,17 +3424,8 @@
     "introductions": "介绍",
     "announcements": "公告",
     "activities": "活动",
-    "access": "访问权限",
-    "howSpaceCanBeFound": "如何找到此课程",
     "private": "私密",
-    "cannotBeFoundInSearch": "搜索中无法找到",
     "public": "公开",
-    "visibleToCommunity": "通过“查找课程”对更广泛的潘盖亚聊天社区可见",
-    "howSpaceCanBeJoined": "如何加入此课程",
-    "canBeFoundVia": "可以通过以下方式找到：",
-    "canBeFoundViaInvitation": "• 邀请",
-    "canBeFoundViaCodeOrLink": "• 代码或链接",
-    "canBeFoundViaKnock": "• 请求加入并由管理员批准",
     "sendActivities": "发送活动",
     "directMessage": "私信",
     "newDirectMessage": "新私信",
@@ -3495,7 +3484,6 @@
     "inviteDesc": "通过用户名、代码或链接",
     "editCourseDesc": "在这里你可以编辑课程标题、描述等。",
     "permissionsDesc": "设置权限，例如谁可以邀请用户、发送消息、创建聊天等。",
-    "accessDesc": "你可以让你的课程对全世界开放！或者，将你的课程设为私密且安全。",
     "createGroupChatDesc": "活动会话开始和结束，而群聊将保持开放以进行日常沟通。",
     "deleteDesc": "只有管理员可以删除课程。这是一个破坏性操作，会删除所有用户和课程内的所有选定聊天。请谨慎操作。",
     "whatNow": "接下来怎么办？",
@@ -5836,47 +5824,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6147,10 +6099,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7942,11 +7890,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "默认情况下，课程是公开可搜索的，并且需要管理员批准才能加入。您可以随时编辑这些设置。",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "你正在学习什么语言？",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8638,11 +8581,6 @@
     },
     "closeEmojiMenu": "关闭表情菜单",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "允许他人搜索您的课程",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9982,5 +9920,11 @@
     "ssoTryAnyway": "仍然尝试",
     "publicCoursesFilterTooltip": "仅显示任何人都可以加入的课程",
     "restrictedCoursesFilterTooltip": "仅显示您必须申请才能加入的课程",
-    "viewImageLabel": "查看图片"
+    "viewImageLabel": "查看图片",
+    "whoCanJoin": "谁可以加入？",
+    "approvalRequired": "需要批准",
+    "courseAccessPublicDesc": "任何人都可以找到并加入此课程。",
+    "courseAccessApprovalRequiredDesc": "任何人都可以找到此课程并申请加入。您需要批准每个请求。",
+    "courseAccessPrivateDesc": "只有收到您的邀请或课程代码的人才能加入。此课程不会出现在搜索结果中。",
+    "courseAccessCodeNote": "无论您选择什么，拥有您的课程代码或邀请的学生都可以立即加入。"
 }

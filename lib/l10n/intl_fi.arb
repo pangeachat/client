@@ -2505,8 +2505,6 @@
         "type": "String",
         "count": {}
     },
-    "restricted": "Rajoitettu",
-    "@restricted": {},
     "knockRestricted": "Koputus rajoitettu",
     "@knockRestricted": {},
     "goToSpace": "Siirry tilaan: {space}",
@@ -3404,17 +3402,8 @@
     "introductions": "Esittelyt",
     "announcements": "Ilmoitukset",
     "activities": "Toiminnot",
-    "access": "Pääsy",
-    "howSpaceCanBeFound": "Kuinka tämä kurssi löytyy",
     "private": "Yksityinen",
-    "cannotBeFoundInSearch": "Ei löydy haussa",
     "public": "Julkinen",
-    "visibleToCommunity": "Näkyvissä laajemman Pangea Chat -yhteisön kautta \"Löydä kurssi\"",
-    "howSpaceCanBeJoined": "Kuinka tähän kurssiin voi liittyä",
-    "canBeFoundVia": "Löydettävissä kautta:",
-    "canBeFoundViaInvitation": "• kutsu",
-    "canBeFoundViaCodeOrLink": "• koodi tai linkki",
-    "canBeFoundViaKnock": "• pyytää liittymistä ja ylläpidon hyväksyntä",
     "sendActivities": "Lähetä aktiviteetteja",
     "directMessage": "Yksityisviesti",
     "newDirectMessage": "Uusi yksityisviesti",
@@ -3473,7 +3462,6 @@
     "inviteDesc": "Kutsulla käyttäjänimellä, koodilla tai linkillä",
     "editCourseDesc": "Täällä voit muokata kurssin otsikkoa, kuvausta jne.",
     "permissionsDesc": "Aseta oikeudet, kuten kuka voi kutsua käyttäjiä, lähettää viestejä, luoda keskusteluja jne.",
-    "accessDesc": "Voit tehdä kurssistasi avoimen maailmalle! Tai tehdä siitä yksityisen ja turvallisen.",
     "createGroupChatDesc": "Sillä aikaa kun aktiviteettisessiot alkavat ja päättyvät, ryhmäkeskustelut pysyvät avoimina säännöllistä viestintää varten.",
     "deleteDesc": "Vain ylläpitäjät voivat poistaa kurssin. Tämä on tuhoava toimenpide, joka poistaa kaikki käyttäjät ja poistaa kaikki valitut keskustelut kurssin sisällä. Toimi varoen.",
     "whatNow": "Mitä nyt?",
@@ -5824,47 +5812,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6135,10 +6087,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7930,11 +7878,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Oletusarvoisesti kurssit ovat julkisesti haettavissa ja vaativat ylläpitäjän hyväksynnän liittymiseen. Voit muokata näitä asetuksia milloin tahansa.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Mitä kieltä opit?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8675,11 +8618,6 @@
     },
     "closeEmojiMenu": "Sulje emojivalikko",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "Salli muiden etsiä kurssiasi",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10019,5 +9957,11 @@
     "ssoTryAnyway": "Yritä silti",
     "publicCoursesFilterTooltip": "Näytä vain kurssit, joihin kuka tahansa voi liittyä",
     "restrictedCoursesFilterTooltip": "Näytä vain kurssit, joihin liittymistä on pyydettävä",
-    "viewImageLabel": "Näytä kuva"
+    "viewImageLabel": "Näytä kuva",
+    "whoCanJoin": "Kuka voi liittyä?",
+    "approvalRequired": "Hyväksyntä vaaditaan",
+    "courseAccessPublicDesc": "Kuka tahansa voi löytää ja liittyä tälle kurssille.",
+    "courseAccessApprovalRequiredDesc": "Kuka tahansa voi löytää tämän kurssin ja pyytää liittymistä. Hyväksyt jokaisen pyynnön.",
+    "courseAccessPrivateDesc": "Vain henkilöt, joilla on kutsusi tai kurssikoodisi, voivat liittyä. Kurssi ei näy haussa.",
+    "courseAccessCodeNote": "Opiskelijat, joilla on kurssikoodisi tai kutsu, voivat liittyä heti, riippumatta valinnastasi."
 }

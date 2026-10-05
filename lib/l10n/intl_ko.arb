@@ -2415,8 +2415,6 @@
     },
     "gallery": "갤러리",
     "@gallery": {},
-    "restricted": "스페이스 멤버로 제한",
-    "@restricted": {},
     "knockRestricted": "스페이스 멤버만 참가 요청 가능",
     "@knockRestricted": {},
     "swipeRightToLeftToReply": "오른쪽에서 왼쪽으로 스와이프해서 답장",
@@ -3279,17 +3277,8 @@
     "introductions": "소개",
     "announcements": "공지사항",
     "activities": "활동",
-    "access": "접근",
-    "howSpaceCanBeFound": "이 강좌를 찾는 방법",
     "private": "비공개",
-    "cannotBeFoundInSearch": "검색에서 찾을 수 없음",
     "public": "공개",
-    "visibleToCommunity": "\"강좌 찾기\"를 통해 더 넓은 판게아 채팅 커뮤니티에 표시됨",
-    "howSpaceCanBeJoined": "이 강좌에 참여하는 방법",
-    "canBeFoundVia": "다음 방법으로 찾을 수 있음:",
-    "canBeFoundViaInvitation": "• 초대",
-    "canBeFoundViaCodeOrLink": "• 코드 또는 링크",
-    "canBeFoundViaKnock": "• 요청 후 관리자 승인",
     "sendActivities": "활동 보내기",
     "directMessage": "개인 메시지",
     "newDirectMessage": "새 개인 메시지",
@@ -3348,7 +3337,6 @@
     "inviteDesc": "사용자 이름, 코드 또는 링크로 초대",
     "editCourseDesc": "여기서 코스 제목, 설명 등을 편집할 수 있습니다.",
     "permissionsDesc": "초대할 수 있는 사용자, 메시지 보내기, 채팅 만들기 등의 권한을 설정하세요.",
-    "accessDesc": "코스를 공개하거나 비공개로 안전하게 설정할 수 있습니다!",
     "createGroupChatDesc": "활동 세션이 시작되고 종료되는 동안, 그룹 채팅은 일상적인 소통을 위해 열려 있습니다.",
     "deleteDesc": "코스는 관리자만 삭제할 수 있습니다. 이는 모든 사용자와 선택된 채팅을 삭제하는 파괴적인 작업입니다. 신중히 진행하세요.",
     "whatNow": "이제 무엇을 할까요?",
@@ -5849,47 +5837,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6160,10 +6112,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7955,11 +7903,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "기본적으로 과정은 공개적으로 검색 가능하며 참여하려면 관리자 승인이 필요합니다. 언제든지 이러한 설정을 수정할 수 있습니다.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "어떤 언어를 배우고 있나요?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8831,11 +8774,6 @@
     },
     "closeEmojiMenu": "이모지 메뉴 닫기",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "다른 사람들이 당신의 강좌를 검색할 수 있도록 허용",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10175,5 +10113,11 @@
     "ssoTryAnyway": "그래도 시도",
     "publicCoursesFilterTooltip": "누구나 참여할 수 있는 코스만 표시",
     "restrictedCoursesFilterTooltip": "참여를 요청해야 하는 코스만 표시",
-    "viewImageLabel": "이미지 보기"
+    "viewImageLabel": "이미지 보기",
+    "whoCanJoin": "누가 참여할 수 있나요?",
+    "approvalRequired": "승인 필요",
+    "courseAccessPublicDesc": "누구나 이 코스를 찾아 참여할 수 있습니다.",
+    "courseAccessApprovalRequiredDesc": "누구나 이 코스를 찾아 참여를 요청할 수 있습니다. 각 요청을 승인해야 합니다.",
+    "courseAccessPrivateDesc": "초대 또는 코스 코드가 있는 사람만 참여할 수 있습니다. 이 코스는 검색에 표시되지 않습니다.",
+    "courseAccessCodeNote": "코스 코드 또는 초대가 있는 학생은 무엇을 선택하든 즉시 참여할 수 있습니다."
 }

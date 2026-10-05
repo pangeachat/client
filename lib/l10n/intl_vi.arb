@@ -453,8 +453,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "restricted": "Bị hạn chế",
-    "@restricted": {},
     "newSpace": "Không gian mới",
     "@newSpace": {},
     "all": "Tất cả",
@@ -2673,14 +2671,8 @@
     "constructUseCollected": "Được thu thập trong trò chuyện",
     "deleteChatDesc": "Bạn có chắc chắn muốn xóa trò chuyện này không? Nó sẽ bị xóa cho tất cả người tham gia và tất cả tin nhắn trong trò chuyện sẽ không còn khả dụng cho việc thực hành hoặc phân tích học tập.",
     "activities": "Hoạt động",
-    "access": "Truy cập",
     "private": "Riêng tư",
-    "cannotBeFoundInSearch": "Không thể tìm thấy trong tìm kiếm",
     "public": "Công khai",
-    "canBeFoundVia": "Có thể tìm thấy qua:",
-    "canBeFoundViaInvitation": "• lời mời",
-    "canBeFoundViaCodeOrLink": "• mã hoặc liên kết",
-    "canBeFoundViaKnock": "• yêu cầu tham gia và sự chấp thuận của quản trị viên",
     "sendActivities": "Gửi hoạt động",
     "directMessage": "Tin nhắn trực tiếp",
     "newDirectMessage": "Tin nhắn trực tiếp mới",
@@ -2734,35 +2726,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -2887,9 +2855,6 @@
     "deleteSpaceDesc": "Khóa học và bất kỳ cuộc trò chuyện nào đã chọn sẽ bị xóa cho tất cả các thành viên và tất cả các tin nhắn trong cuộc trò chuyện sẽ không còn khả dụng để thực hành hoặc phân tích học tập. Hành động này không thể hoàn tác.",
     "configureSpace": "Cấu hình khóa học",
     "changeTheNameOfTheSpace": "Thay đổi tên của khóa học",
-    "howSpaceCanBeFound": "Khóa học này có thể được tìm thấy như thế nào",
-    "visibleToCommunity": "Hiển thị cho cộng đồng Chat Pangea rộng hơn qua \"Tìm khóa học\"",
-    "howSpaceCanBeJoined": "Khóa học này có thể được tham gia như thế nào",
     "aUserIsKnocking": "Có 1 người dùng đang yêu cầu tham gia khóa học của bạn",
     "usersAreKnocking": "{users} người dùng đang yêu cầu tham gia khóa học của bạn",
     "deleteEmptySpaceDesc": "Khóa học sẽ bị xóa cho tất cả các thành viên. Hành động này không thể hoàn tác.",
@@ -2927,7 +2892,6 @@
     "inviteDesc": "Bằng tên người dùng, mã hoặc liên kết",
     "editCourseDesc": "Tại đây bạn có thể chỉnh sửa tiêu đề, mô tả của khóa học, v.v.",
     "permissionsDesc": "Thiết lập quyền như ai có thể mời người dùng, gửi tin nhắn, tạo cuộc trò chuyện, v.v.",
-    "accessDesc": "Bạn có thể làm cho khóa học của mình mở cho thế giới! Hoặc, làm cho khóa học của bạn riêng tư và an toàn.",
     "createGroupChatDesc": "Trong khi các phiên hoạt động bắt đầu và kết thúc, nhóm trò chuyện sẽ luôn mở để giao tiếp định kỳ.",
     "deleteDesc": "Chỉ quản trị viên mới có thể xóa khóa học. Đây là hành động phá hủy, sẽ xóa tất cả người dùng và tất cả các cuộc trò chuyện đã chọn trong khóa học. Hãy cẩn thận khi thực hiện.",
     "whatNow": "Bây giờ làm gì?",
@@ -3045,18 +3009,6 @@
         "placeholders": {}
     },
     "@changeTheNameOfTheSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
         "type": "String",
         "placeholders": {}
     },
@@ -3235,10 +3187,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -5058,11 +5006,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Theo mặc định, các khóa học có thể tìm kiếm công khai và yêu cầu sự chấp thuận của quản trị viên để tham gia. Bạn có thể chỉnh sửa các cài đặt này bất kỳ lúc nào.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Bạn đang học ngôn ngữ nào?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -5934,11 +5877,6 @@
     },
     "closeEmojiMenu": "Đóng menu biểu tượng cảm xúc",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "Cho phép người khác tìm kiếm khóa học của bạn",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -7274,5 +7212,11 @@
     "ssoTryAnyway": "Vẫn thử",
     "publicCoursesFilterTooltip": "Chỉ hiển thị các khóa học mà bất kỳ ai cũng có thể tham gia",
     "restrictedCoursesFilterTooltip": "Chỉ hiển thị các khóa học bạn phải yêu cầu để tham gia",
-    "viewImageLabel": "Xem hình ảnh"
+    "viewImageLabel": "Xem hình ảnh",
+    "whoCanJoin": "Ai có thể tham gia?",
+    "approvalRequired": "Cần phê duyệt",
+    "courseAccessPublicDesc": "Bất kỳ ai cũng có thể tìm và tham gia khóa học này.",
+    "courseAccessApprovalRequiredDesc": "Bất kỳ ai cũng có thể tìm khóa học này và yêu cầu tham gia. Bạn sẽ phê duyệt từng yêu cầu.",
+    "courseAccessPrivateDesc": "Chỉ những người có lời mời hoặc mã khóa học của bạn mới có thể tham gia. Khóa học sẽ không xuất hiện trong tìm kiếm.",
+    "courseAccessCodeNote": "Học viên có mã khóa học hoặc lời mời của bạn có thể tham gia ngay lập tức, bất kể bạn chọn cài đặt nào."
 }

@@ -2414,8 +2414,6 @@
     "@searchMore": {},
     "knockRestricted": "Koputa piiratud ligipääsuga jututoa uksele",
     "@knockRestricted": {},
-    "restricted": "Piiratud",
-    "@restricted": {},
     "gallery": "Galerii",
     "@gallery": {},
     "files": "Failid",
@@ -3436,17 +3434,8 @@
     "introductions": "Tutvustused",
     "announcements": "Teated",
     "activities": "Tegevused",
-    "access": "Juhtimine",
-    "howSpaceCanBeFound": "Kuidas seda ruumi leida",
     "private": "Privaatne",
-    "cannotBeFoundInSearch": "Ei leia otsingus",
     "public": "Avalik",
-    "visibleToCommunity": "Nähtav laiemale Pangea Chat kogukonnale \"Leia oma inimesed\" kaudu",
-    "howSpaceCanBeJoined": "Kuidas seda ruumi saab liituda",
-    "canBeFoundVia": "Leida saab läbi:",
-    "canBeFoundViaInvitation": "• kutse",
-    "canBeFoundViaCodeOrLink": "• kood või link",
-    "canBeFoundViaKnock": "• taotlus liitumiseks ja administraatori nõusolek",
     "sendActivities": "Saada tegevusi",
     "directMessage": "Otse sõnum",
     "newDirectMessage": "Uus otse sõnum",
@@ -5749,47 +5738,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -5945,7 +5898,6 @@
     "inviteDesc": "Kasutajanime, koodi või lingi kaudu",
     "editCourseDesc": "Siin saate redigeerida kursuse pealkirja, kirjelduid jne.",
     "permissionsDesc": "Seadke õigused, näiteks kes saab kutsuda kasutajaid, saata sõnumeid, luua vestlusi jne.",
-    "accessDesc": "Saate teha oma kursuse avatud maailmale! Või muuda oma kursus privaatseks ja turvaliseks.",
     "createGroupChatDesc": "Kuna tegevussessioonid algavad ja lõpevad, jäävad grupivestlused avatuks regulaarseks suhtlemiseks.",
     "deleteDesc": "Ainult administraatorid saavad kursust kustutada. See on hävitav tegevus, mis eemaldab kõik kasutajad ja kustutab kõik valitud vestlused kursuse sees. Olge ettevaatlik.",
     "whatNow": "Mis nüüd?",
@@ -6158,10 +6110,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7953,11 +7901,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Vaikimisi on kursused avalikult otsitavad ja liitumiseks on vajalik administraatori heakskiit. Sa saad neid seadeid igal ajal muuta.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Millist keelt sa õpid?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8635,11 +8578,6 @@
     },
     "closeEmojiMenu": "Sulge emotikonide menüü",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "Luba teistel otsida sinu kursust",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -9979,5 +9917,11 @@
     "ssoTryAnyway": "Proovi ikkagi",
     "publicCoursesFilterTooltip": "Näita ainult kursuseid, millega igaüks saab liituda",
     "restrictedCoursesFilterTooltip": "Näita ainult kursuseid, millega liitumiseks pead luba küsima",
-    "viewImageLabel": "Vaata pilti"
+    "viewImageLabel": "Vaata pilti",
+    "whoCanJoin": "Kes saab liituda?",
+    "approvalRequired": "Vajalik on heakskiit",
+    "courseAccessPublicDesc": "Igaüks saab selle kursuse leida ja sellega liituda.",
+    "courseAccessApprovalRequiredDesc": "Igaüks saab selle kursuse leida ja liitumist paluda. Teie kinnitate iga taotluse.",
+    "courseAccessPrivateDesc": "Ainult teie kutse või kursuse koodiga inimesed saavad liituda. Kursus ei ilmu otsingutulemustes.",
+    "courseAccessCodeNote": "Õpilased, kellel on teie kursuse kood või kutse, saavad kohe liituda, olenemata teie valikust."
 }

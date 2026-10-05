@@ -523,7 +523,6 @@
     "unreadChatsInApp": "{appname}: {unread} చదవని చాట్స్",
     "noDatabaseEncryption": "ఈ ప్లాట్‌ఫారమ్‌పై డేటాబేస్ గుప్తీకరణ మద్దతు లేదు",
     "thereAreCountUsersBlocked": "ప్రస్తుతం {count} వినియోగదారులు బ్లాక్ చేయబడ్డారు.",
-    "restricted": "పట్టుబడింది",
     "knockRestricted": "నొక్కడం పరిమితమైంది",
     "goToSpace": "స్పేస్‌కు వెళ్లండి: {space}",
     "markAsUnread": "చదవని గా గుర్తించండి",
@@ -1192,17 +1191,8 @@
     "introductions": "పరిచయాలు",
     "announcements": "ప్రకటనలు",
     "activities": "చర్యలు",
-    "access": "ప్రవేశం",
-    "howSpaceCanBeFound": "ఈ కోర్సును ఎలా కనుగొనవచ్చు",
     "private": "ప్రైవేట్",
-    "cannotBeFoundInSearch": "శోధనలో కనుగొనలేరు",
     "public": "పబ్లిక్",
-    "visibleToCommunity": "\"Find a course\" ద్వారా విస్తృత Pangea చాట్ సముదాయానికి కనిపిస్తుంది",
-    "howSpaceCanBeJoined": "ఈ కోర్సులో ఎలా చేరవచ్చు",
-    "canBeFoundVia": "ద్వారా కనుగొనవచ్చు:",
-    "canBeFoundViaInvitation": "• ఆహ్వానం",
-    "canBeFoundViaCodeOrLink": "• కోడ్ లేదా లింక్",
-    "canBeFoundViaKnock": "• చేరడానికి అభ్యర్థన మరియు అడ్మిన్ ఆమోదం",
     "sendActivities": "కార్యకలాపాలను పంపండి",
     "directMessage": "నేరుగా సందేశం",
     "newDirectMessage": "కొత్త నేరుగా సందేశం",
@@ -1261,7 +1251,6 @@
     "inviteDesc": "యూజర్‌నేమ్, కోడ్ లేదా లింక్ ద్వారా",
     "editCourseDesc": "ఇక్కడ మీరు కోర్సు శీర్షిక, వివరణ, మొదలైనవి సవరించవచ్చు.",
     "permissionsDesc": "అనుమతులను సెట్ చేయండి, ఉదాహరణకు ఎవరు యూజర్లను ఆహ్వానించగలరు, సందేశాలు పంపగలరు, చాట్‌లు సృష్టించగలరు, మొదలైనవి.",
-    "accessDesc": "మీ కోర్సును ప్రపంచానికి తెరవవచ్చు! లేదా, మీ కోర్సును ప్రైవేట్ చేసి భద్రపరచవచ్చు.",
     "createGroupChatDesc": "అభ్యాస సెషన్లు ప్రారంభమై ముగిసే సమయంలో, గుంపు చాట్‌లు సాధారణ కమ్యూనికేషన్ కోసం తెరవబడతాయి.",
     "deleteDesc": "కేవలం అడ్మిన్లు మాత్రమే కోర్సును తొలగించగలరు. ఇది ఒక ధ్వంసక చర్యగా ఉంటుంది, ఇది అన్ని వినియోగదారులను తొలగిస్తుంది మరియు కోర్సులోని అన్ని ఎంపిక చేసిన చాట్‌లను డిలీట్ చేస్తుంది. జాగ్రత్తగా ముందుకు పోవండి.",
     "whatNow": "ఇప్పుడు ఏమి చేయాలి?",
@@ -3794,10 +3783,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6606,47 +6591,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6917,10 +6866,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8712,11 +8657,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "డిఫాల్ట్‌గా, కోర్సులు ప్రజా శోధనకు అందుబాటులో ఉంటాయి మరియు చేరడానికి అడ్మిన్ ఆమోదం అవసరం. మీరు ఈ సెట్టింగులను ఎప్పుడైనా సవరించవచ్చు.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "మీరు ఏ భాష నేర్చుకుంటున్నారు?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9588,11 +9528,6 @@
     },
     "closeEmojiMenu": "ఎమోజీ మెనును మూసివేయండి",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "ఇతరులకు మీ కోర్సును శోధించడానికి అనుమతించండి",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10932,5 +10867,11 @@
     "ssoTryAnyway": "ఏమైనా ప్రయత్నించండి",
     "publicCoursesFilterTooltip": "ఎవరైనా చేరగల కోర్సులను మాత్రమే చూపించు",
     "restrictedCoursesFilterTooltip": "మీరు చేరమని అడగాల్సిన కోర్సులను మాత్రమే చూపించు",
-    "viewImageLabel": "చిత్రాన్ని వీక్షించండి"
+    "viewImageLabel": "చిత్రాన్ని వీక్షించండి",
+    "whoCanJoin": "ఎవరు చేరగలరు?",
+    "approvalRequired": "ఆమోదం అవసరం",
+    "courseAccessPublicDesc": "ఎవరైనా ఈ కోర్సును కనుగొని చేరవచ్చు.",
+    "courseAccessApprovalRequiredDesc": "ఎవరైనా ఈ కోర్సును కనుగొని చేరడానికి అడగవచ్చు. మీరు ప్రతి అభ్యర్థనను ఆమోదించాలి.",
+    "courseAccessPrivateDesc": "మీ ఆహ్వానం లేదా కోర్సు కోడ్ ఉన్నవారు మాత్రమే చేరగలరు. కోర్సు శోధనలో కనిపించదు.",
+    "courseAccessCodeNote": "మీ కోర్సు కోడ్ లేదా ఆహ్వానం ఉన్న విద్యార్థులు, మీరు ఏది ఎంచుకున్నా వెంటనే చేరగలరు."
 }

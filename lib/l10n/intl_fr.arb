@@ -2346,8 +2346,6 @@
         "type": "String",
         "count": {}
     },
-    "restricted": "Limité",
-    "@restricted": {},
     "knockRestricted": "Frapper à la porte limité",
     "@knockRestricted": {},
     "groupName": "Nom du groupe",
@@ -3229,17 +3227,8 @@
     "introductions": "Présentations",
     "announcements": "Annonces",
     "activities": "Activités",
-    "access": "Accès",
-    "howSpaceCanBeFound": "Comment ce cours peut être trouvé",
     "private": "Privé",
-    "cannotBeFoundInSearch": "Impossible à trouver dans la recherche",
     "public": "Public",
-    "visibleToCommunity": "Visible à la communauté plus large de Pangea Chat via \"Trouver un cours\"",
-    "howSpaceCanBeJoined": "Comment ce cours peut être rejoint",
-    "canBeFoundVia": "Peut être trouvé via :",
-    "canBeFoundViaInvitation": "• invitation",
-    "canBeFoundViaCodeOrLink": "• code ou lien",
-    "canBeFoundViaKnock": "• demande de rejoindre et approbation de l'administrateur",
     "sendActivities": "Envoyer des activités",
     "directMessage": "Message direct",
     "newDirectMessage": "Nouveau message direct",
@@ -3298,7 +3287,6 @@
     "inviteDesc": "Par nom d'utilisateur, par code ou lien",
     "editCourseDesc": "Ici, vous pouvez modifier le titre du cours, la description, etc.",
     "permissionsDesc": "Définissez les autorisations telles que qui peut inviter des utilisateurs, envoyer des messages, créer des discussions, etc.",
-    "accessDesc": "Vous pouvez rendre votre cours accessible au monde entier ! Ou, rendre votre cours privé et sécurisé.",
     "createGroupChatDesc": "Alors que les sessions d'activité commencent et se terminent, les discussions de groupe resteront ouvertes pour la communication de routine.",
     "deleteDesc": "Seuls les administrateurs peuvent supprimer un cours. Il s'agit d'une action destructive qui supprime tous les utilisateurs et supprime toutes les discussions sélectionnées dans le cours. Proceed with caution.",
     "whatNow": "Et maintenant ?",
@@ -6026,47 +6014,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6337,10 +6289,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8132,11 +8080,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Par défaut, les cours sont recherchables publiquement et nécessitent l'approbation d'un administrateur pour rejoindre. Vous pouvez modifier ces paramètres à tout moment.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Quelle langue apprenez-vous ?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8993,11 +8936,6 @@
     },
     "closeEmojiMenu": "Fermer le menu des émojis",
     "@closeEmojiMenu": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityToggleTitle": "Autoriser les autres à rechercher votre cours",
-    "@visibilityToggleTitle": {
         "type": "String",
         "placeholders": {}
     },
@@ -10337,5 +10275,11 @@
     "ssoTryAnyway": "Essayer quand même",
     "publicCoursesFilterTooltip": "Afficher uniquement les cours que tout le monde peut rejoindre",
     "restrictedCoursesFilterTooltip": "Afficher uniquement les cours pour lesquels vous devez demander à être admis",
-    "viewImageLabel": "Voir l'image"
+    "viewImageLabel": "Voir l'image",
+    "whoCanJoin": "Qui peut s'inscrire ?",
+    "approvalRequired": "Approbation requise",
+    "courseAccessPublicDesc": "Tout le monde peut trouver et rejoindre ce cours.",
+    "courseAccessApprovalRequiredDesc": "Tout le monde peut trouver ce cours et demander à le rejoindre. Vous approuvez chaque demande.",
+    "courseAccessPrivateDesc": "Seules les personnes disposant de votre invitation ou du code du cours peuvent s'inscrire. Le cours n'apparaît pas dans les résultats de recherche.",
+    "courseAccessCodeNote": "Les étudiants disposant de votre code de cours ou d'une invitation peuvent s'inscrire immédiatement, quel que soit votre choix."
 }

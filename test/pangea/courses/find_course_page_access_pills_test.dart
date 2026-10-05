@@ -173,14 +173,17 @@ void main() {
       await settle();
       expect(find.widgetWithText(FilterChip, 'All'), findsOneWidget);
       expect(find.widgetWithText(FilterChip, 'Public'), findsOneWidget);
-      expect(find.widgetWithText(FilterChip, 'Restricted'), findsOneWidget);
+      expect(
+        find.widgetWithText(FilterChip, 'Approval required'),
+        findsOneWidget,
+      );
       expect(tileTitles(tester), unorderedEquals(['!open', '!ask']));
 
       await tester.tap(find.widgetWithText(FilterChip, 'Public'));
       await settle();
       expect(tileTitles(tester), ['!open']);
 
-      await tester.tap(find.widgetWithText(FilterChip, 'Restricted'));
+      await tester.tap(find.widgetWithText(FilterChip, 'Approval required'));
       await settle();
       expect(tileTitles(tester), ['!ask']);
     }, cms);
