@@ -3,11 +3,29 @@
 <p>Authentication is complete. If this does not happen automatically, please close the window.</p>
 <script>
   if (window.opener) {
+    // Popup flow (desktop): hand the result to the app's window.
     window.opener.postMessage({
       'flutter-web-auth-2': window.location.href
     }, window.location.origin);
+    window.close();
   } else {
+    // No opener: either the desktop popup (opened with noopener, so the
+    // app's tab polls localStorage for this value and the popup just closes)
+    // or the same-tab flow on phones and in-app browsers, which carries a
+    // `return` page. Only the same-tab flow navigates; the popup must never
+    // load the app, or it would consume the token itself (v5.0.7+2 bug).
     localStorage.setItem('flutter-web-auth-2', window.location.href);
+    var back = new URLSearchParams(window.location.search).get('return');
+    var target = null;
+    try {
+      if (back && new URL(back, window.location.origin).origin === window.location.origin) {
+        target = back;
+      }
+    } catch (e) { /* malformed return: treat as the popup case */ }
+    if (target) {
+      window.location.replace(target);
+    } else {
+      window.close();
+    }
   }
-  window.close();
 </script>
