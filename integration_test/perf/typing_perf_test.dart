@@ -59,6 +59,13 @@ void main() => benchmark(
     run.target = roomId;
     perfOutput('PERF signed in; chat with the bot: $roomId');
 
+    // The benchmark binding leaves text input to the real keyboard, which a
+    // test cannot type on. Flutter's test keyboard sends the same editing
+    // updates through the platform text channel, so the field, its
+    // controller and writing assistance's listeners all see real typing. It
+    // is registered before the chat opens, so the composer's keyboard
+    // connection goes to it.
+    tester.testTextInput.register();
     FluffyChatApp.router.go('/?left=chats,room:$roomId');
     final page = find.byType(ChatPageWithRoom);
     await waitFor(
@@ -80,12 +87,11 @@ void main() => benchmark(
     // Let the chat settle before measuring.
     await pause(tester, const Duration(seconds: 8));
 
-    // The benchmark binding leaves text input to the real keyboard, which a
-    // test cannot type on. Flutter's test keyboard sends the same editing
-    // updates through the platform text channel, so the field, its
-    // controller and writing assistance's listeners all see real typing.
-    tester.testTextInput.register();
     try {
+      // The composer took focus when the chat opened, before the test
+      // keyboard was there; refocusing connects it to the test keyboard.
+      FocusManager.instance.primaryFocus?.unfocus();
+      await pause(tester, const Duration(milliseconds: 500));
       await tester.showKeyboard(field);
       final passes = <Map<String, Object?>>[];
       for (var pass = 0; pass < 5; pass++) {
@@ -112,6 +118,15 @@ void main() => benchmark(
             keyed();
             await pause(tester, _keystroke);
           });
+        }
+        // The keystrokes go through the test keyboard; if it was not attached
+        // to the composer they went nowhere, and the pass measured an idle
+        // screen.
+        if (chat.sendController.text != _sentence) {
+          fail(
+            'Pass ${pass + 1}: the composer holds "${chat.sendController.text}", '
+            'not the typed sentence.',
+          );
         }
         tester.testTextInput.updateEditingValue(TextEditingValue.empty);
         keyed();
