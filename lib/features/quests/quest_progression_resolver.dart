@@ -218,22 +218,27 @@ class ProgressionResolution {
   QuestStarSummary? questStars(String? courseId) =>
       forCourse(courseId)?.starSummary;
 
-  /// With [courseId], only that course decides. Without it, locked only when
-  /// at least one in-scope course lists [activityId] and every such course has
-  /// it locked — an activity outside the learner's courses is never locked.
-  bool isActivityLocked(String activityId, {String? courseId}) {
+  /// The courses whose locks keep [activityId] from being started — empty
+  /// when it is unlocked. With [courseId], only that course decides. Without
+  /// it, every in-scope course that lists the activity must lock it; an
+  /// activity outside the learner's courses is never locked.
+  List<String> coursesLocking(String activityId, {String? courseId}) {
     if (courseId != null) {
-      return forCourse(courseId)?.isActivityLocked(activityId) ?? false;
+      final locked = forCourse(courseId)?.isActivityLocked(activityId) ?? false;
+      return locked ? [courseId] : const [];
     }
-    var listed = false;
+    final locking = <String>[];
     for (final quest in quests) {
       final locked = quest.isActivityLocked(activityId);
       if (locked == null) continue;
-      if (!locked) return false;
-      listed = true;
+      if (!locked) return const [];
+      locking.add(quest.courseId);
     }
-    return listed;
+    return locking;
   }
+
+  bool isActivityLocked(String activityId, {String? courseId}) =>
+      coursesLocking(activityId, courseId: courseId).isNotEmpty;
 
   /// The next-Mission gradient (0..[kBandCeiling]) for an activity carrying
   /// [objectiveRefs]: 1.0 at a quest's anchor Mission, decaying linearly to 0

@@ -6,10 +6,11 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 
-/// Online presence for the members of the join list's open sessions, so the
-/// list can sort by and show when each session was last active. A non-member
-/// can't read a session's timeline, so presence is the closest signal to
-/// "will anyone answer" (#9333 prototype).
+/// Live online presence for a set of users — the join list's open-session
+/// members and the waiting room's coursemates — so those surfaces can sort by,
+/// count and show who is around (#9333 prototype). Each user is fetched once;
+/// after that only the SDK's presence stream updates it, since a re-fetch
+/// returns the SDK's cached value anyway.
 class SessionPresenceTracker extends ChangeNotifier {
   final Client client;
   final Map<String, CachedPresence> _presences = {};
@@ -36,19 +37,29 @@ class SessionPresenceTracker extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// The most recent moment any of [userIds] was online, or null when none
-  /// of their presence is known.
+  /// The most recent moment any of [userIds] was seen online, or null when
+  /// none of their presence is known.
   DateTime? lastActiveOf(Iterable<String> userIds) {
     DateTime? latest;
     for (final id in userIds) {
-      final presence = _presences[id];
-      if (presence == null) continue;
-      final at = presence.currentlyActive == true
-          ? DateTime.now()
-          : presence.lastActiveTimestamp;
+      final at = _presences[id]?.lastSeenAt;
       if (at != null && (latest == null || at.isAfter(latest))) latest = at;
     }
     return latest;
+  }
+
+  /// How many of [userIds] are online right now — the same rule as the green
+  /// presence dot on an avatar.
+  int onlineCount(Iterable<String> userIds) =>
+      userIds.where((id) => _presences[id]?.presence.isOnline ?? false).length;
+
+  /// Most recent first, unknown last — the order every presence-sorted list
+  /// uses.
+  static int compareRecentFirst(DateTime? a, DateTime? b) {
+    if (a == b) return 0;
+    if (a == null) return 1;
+    if (b == null) return -1;
+    return b.compareTo(a);
   }
 
   @override
@@ -56,4 +67,10 @@ class SessionPresenceTracker extends ChangeNotifier {
     _sub.cancel();
     super.dispose();
   }
+}
+
+extension on CachedPresence {
+  /// Now for someone currently active, else their last active time.
+  DateTime? get lastSeenAt =>
+      currentlyActive == true ? DateTime.now() : lastActiveTimestamp;
 }

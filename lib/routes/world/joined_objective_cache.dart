@@ -156,7 +156,6 @@ class JoinedObjectiveCache {
               starsToUnlock:
                   starsToUnlockOf?.call(key) ?? kDefaultStarsToUnlockObjective,
               earnableByActivity: o.earnableByActivity,
-              locksExempt: locksExemptOf?.call(key) ?? false,
             ),
           );
         } catch (e, s) {

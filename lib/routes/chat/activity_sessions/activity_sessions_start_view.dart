@@ -119,7 +119,10 @@ class ActivitySessionStartView extends StatelessWidget {
             leading: Padding(
               padding: const EdgeInsets.only(left: 4.0),
               child: Center(
-                child: (embedded && controller.widget.roomId != null)
+                child:
+                    (embedded &&
+                        controller.widget.roomId != null &&
+                        activityInfoFor(uri)?.fromJoinList == true)
                     // A session viewed from the join list → back to the list.
                     ? IconButton(
                         tooltip: MaterialLocalizations.of(

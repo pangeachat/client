@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -5,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_preview_repo.dart';
 import 'package:fluffychat/features/activity_sessions/play_with_bot_intent.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
@@ -20,7 +23,9 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start_view.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
+import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -75,25 +80,35 @@ class NotStartedSessionController extends State<NotStartedSession>
   NotStartedSubPage _subPage = NotStartedSubPage.main;
   final _goalsHandler = GoalsSubscriptionHandler();
 
-  /// Starting a new session is locked by course progression; joining an open
-  /// one never is. Null while resolving, which reads as unlocked.
-  bool? _isLocked;
-  bool get isLocked => _isLocked == true;
+  /// The courses whose progression locks starting a new session; joining an
+  /// open one never is. Empty while resolving, which reads as unlocked.
+  List<Room> _lockingCourses = const [];
+  List<Room> get lockingCourses => _lockingCourses;
+  bool get isLocked => _lockingCourses.isNotEmpty;
 
   /// The join list was opened for the learner because the activity had open
   /// sessions, rather than by a tap (#9333 prototype).
   bool _landedOnJoinList = false;
 
+  /// Stars are room state on the learner's sessions, so a sync can unlock
+  /// this activity while its page is open.
+  StreamSubscription? _lockRefreshSub;
+
   @override
   void initState() {
     super.initState();
     _resolveLock();
+    _lockRefreshSub = Matrix.of(context).client.onSync.stream
+        .where((s) => s.hasRoomUpdate)
+        .rateLimit(const Duration(seconds: 5))
+        .listen((_) => _resolveLock());
     _syncJoinListLanding();
   }
 
   @override
   void didUpdateWidget(NotStartedSession oldWidget) {
     super.didUpdateWidget(oldWidget);
+    if (oldWidget.course?.id != widget.course?.id) _resolveLock();
     _syncJoinListLanding();
   }
 
@@ -119,11 +134,22 @@ class NotStartedSessionController extends State<NotStartedSession>
   }
 
   Future<void> _resolveLock() async {
-    final locked = await Matrix.of(
-      context,
-    ).client.isActivityLocked(widget.activityId, courseId: widget.course?.id);
-    if (mounted) setState(() => _isLocked = locked);
+    final courses = await Matrix.of(context).client.coursesLockingActivity(
+      widget.activityId,
+      courseId: widget.course?.id,
+    );
+    if (mounted) setState(() => _lockingCourses = courses);
   }
+
+  /// Open [course] on its course plan, where the learner's current Mission
+  /// is — the way to unlock this activity.
+  void goToLockingCourse(Room course) => context.go(
+    WorkspaceNav.openCourse(
+      GoRouterState.of(context).uri,
+      course.id,
+      tab: SpaceSettingsTabs.course,
+    ),
+  );
 
   @override
   void didChangeDependencies() {
@@ -133,6 +159,7 @@ class NotStartedSessionController extends State<NotStartedSession>
 
   @override
   void dispose() {
+    _lockRefreshSub?.cancel();
     _goalsHandler.cancel();
     super.dispose();
   }
@@ -278,16 +305,11 @@ class NotStartedSessionController extends State<NotStartedSession>
   bool get offersBot => (widget.activity?.req.numberOfParticipants ?? 0) == 2;
 
   /// Pick a role, then the session launches with the bot already added.
-  void playWithBot() {
-    if (isLocked) return;
-    PlayWithBotIntent.set(widget.activityId, withBot: true);
-    startNewActivity();
-  }
+  void playWithBot() => startNewActivity(withBot: true);
 
   /// Join someone's open session if there is one, else start a session and
   /// wait for people.
   void playWithHuman() {
-    PlayWithBotIntent.set(widget.activityId, withBot: false);
     if (openSessionCount > 0) {
       goToJoinPage();
     } else {
@@ -295,8 +317,11 @@ class NotStartedSessionController extends State<NotStartedSession>
     }
   }
 
-  void startNewActivity() {
+  /// Every start says whether the bot comes along, so an earlier "Play with
+  /// Pangea Bot" that was backed out of can't carry into a later start.
+  void startNewActivity({bool withBot = false}) {
     if (isLocked) return;
+    PlayWithBotIntent.set(widget.activityId, withBot: withBot);
     //Nothing to jump to if container is minimized, so skip
     if (widget.scrollController.hasClients) widget.scrollController.jumpTo(0);
     final course = widget.course;
@@ -356,34 +381,65 @@ class NotStartedSessionController extends State<NotStartedSession>
     ),
   );
 
+  /// Join [roomId] from the join list. With exactly one open role, it is
+  /// claimed straight away and the learner lands in the session; otherwise
+  /// the session opens for viewing, to pick a role (#9333 prototype).
   Future<void> joinActivityByRoomId(String roomId) async {
-    final room = Matrix.of(context).client.getRoomById(roomId);
-    if (room != null && room.membership == Membership.join) {
-      _viewSession(roomId);
-      return;
-    }
-
+    final client = Matrix.of(context).client;
     final resp = await showFutureLoadingDialog(
       context: context,
       future: () async {
-        await Matrix.of(context).client.joinRoom(
-          roomId,
-          via: widget.course?.spaceChildren
-              .firstWhereOrNull((child) => child.roomId == roomId)
-              ?.via,
-        );
-
-        final room = Matrix.of(context).client.getRoomById(roomId);
-        if (room == null || room.membership != Membership.join) {
-          await Matrix.of(context).client.waitForRoomInSync(roomId, join: true);
+        final existing = client.getRoomById(roomId);
+        if (existing == null || existing.membership != Membership.join) {
+          await client.joinRoom(
+            roomId,
+            via: widget.course?.spaceChildren
+                .firstWhereOrNull((child) => child.roomId == roomId)
+                ?.via,
+          );
+          final joined = client.getRoomById(roomId);
+          if (joined == null || joined.membership != Membership.join) {
+            await client.waitForRoomInSync(roomId, join: true);
+          }
         }
+        return _claimOnlyOpenRole(client.getRoomById(roomId));
       },
     );
-
-    if (!resp.isError) {
-      await ActivitySessionPreviewRepo.set(roomId);
-      if (!mounted) return;
+    if (resp.isError) return;
+    await ActivitySessionPreviewRepo.set(roomId);
+    if (!mounted) return;
+    if (resp.result == true) {
+      NavigationUtil.goToSpaceRoute(roomId, [], context);
+    } else {
       _viewSession(roomId);
+    }
+  }
+
+  /// Whether the learner holds a role in [room] after this: already had one,
+  /// or the session had exactly one open role and it was claimed now.
+  Future<bool> _claimOnlyOpenRole(Room? room) async {
+    final activity = widget.activity;
+    if (room == null || activity == null) return false;
+    if (room.hasPickedRole) return true;
+    // Seat math needs each holder's membership (left holders free a seat).
+    await room.requestParticipants(
+      const [Membership.join, Membership.invite, Membership.knock],
+      false,
+      true,
+    );
+    final taken = room.assignedRoles?.keys.toSet() ?? const <String>{};
+    final open = [
+      for (final role in activity.roles.values)
+        if (!taken.contains(role.id)) role,
+    ];
+    if (open.length != 1) return false;
+    try {
+      await room.joinActivity(open.single);
+      return true;
+    } on RoleException {
+      // silent-ok: someone took the seat first; the session opens for
+      // viewing instead, where the role picker shows what's left.
+      return false;
     }
   }
 

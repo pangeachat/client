@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/utils/elapsed_time_format.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/archived_session_controller.dart';
@@ -11,6 +10,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/confirmed_role_session_
 import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
+import 'package:fluffychat/routes/chat/calls/call_panel.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/layouts/cavity_controls.dart';
@@ -261,7 +261,7 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
           if (!controller.isLocked)
             ActivitySessionCTAButton(
               L10n.of(context).startOwn,
-              controller.startNewActivity,
+              () => controller.startNewActivity(),
               secondary: true,
               icon: ActivityPinState.available.icon,
             ),
@@ -357,6 +357,18 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
                   L10n.of(context).lockedMissionRequirement,
                   textAlign: TextAlign.center,
                 ),
+                // Where to go to unlock it: each course that locks it.
+                for (final course in controller.lockingCourses)
+                  ActivitySessionCTAButton(
+                    L10n.of(context).unlockInCourse(
+                      course.getLocalizedDisplayname(
+                        MatrixLocals(L10n.of(context)),
+                      ),
+                    ),
+                    () => controller.goToLockingCourse(course),
+                    secondary: true,
+                    icon: Icons.lock_open_outlined,
+                  ),
                 if (controller.openSessionCount > 0)
                   ActivitySessionCTAButton(
                     '${L10n.of(context).joinOpenSession} (${controller.openSessionCount})',
@@ -436,9 +448,15 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
                 filled: true,
               )
             : _ActivityCtaChip(
-                label: l10n.lockedMissionRequirement,
-                icon: Icons.lock,
-                onPressed: null,
+                label: l10n.unlockInCourse(
+                  controller.lockingCourses.first.getLocalizedDisplayname(
+                    MatrixLocals(l10n),
+                  ),
+                ),
+                icon: Icons.lock_open_outlined,
+                onPressed: () => controller.goToLockingCourse(
+                  controller.lockingCourses.first,
+                ),
                 filled: true,
               ),
       );
@@ -615,33 +633,31 @@ class _ConfirmedRoleSessionCTAButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
+    // Bringing people in leads; the bot is the quieter fallback at the bottom
+    // (#9333 prototype). Practice sits beside the status line as something to
+    // do meanwhile, not another way to play.
     return Column(
       mainAxisSize: .min,
+      spacing: 16.0,
       children: [
         _WaitingStatusLine(controller),
-        const SizedBox(height: 16.0),
-        // Bringing people in leads; the bot is the quieter fallback at the
-        // bottom (#9333 prototype).
-        if (controller.showInviteOptions) ...[
+        if (controller.showInviteOptions)
           ActivitySessionCTAButton(
-            L10n.of(context).inviteFriends,
+            l10n.inviteFriends,
             controller.inviteFriends,
           ),
-          const SizedBox(height: 16.0),
-        ],
-        if (controller.showPingCourse) ...[
+        if (controller.showPingCourse)
           FutureBuilder(
             future: controller.canPingParticipants,
             builder: (context, snapshot) => ActivitySessionCTAButton(
-              L10n.of(context).pingParticipants,
+              l10n.pingParticipants,
               snapshot.data == true ? controller.pingCourse : null,
             ),
           ),
-          const SizedBox(height: 16.0),
-        ],
         if (controller.showInviteOptions)
           ActivitySessionCTAButton(
-            L10n.of(context).playWithBot,
+            l10n.playWithBot,
             controller.enablePlayWithBot ? controller.playWithBot : null,
             secondary: true,
           ),
@@ -726,8 +742,9 @@ class _WaitingStatusLine extends StatelessWidget {
     );
     return Wrap(
       alignment: WrapAlignment.center,
+      crossAxisAlignment: WrapCrossAlignment.center,
       spacing: 16.0,
-      runSpacing: 4.0,
+      runSpacing: 8.0,
       children: [
         ValueListenableBuilder(
           valueListenable: controller.clock,
@@ -740,19 +757,23 @@ class _WaitingStatusLine extends StatelessWidget {
               children: [
                 Icon(Icons.schedule, size: 16.0, color: style?.color),
                 Text(
-                  l10n.waitingFor(
-                    ElapsedTimeFormat.compact(now.difference(since), l10n),
-                  ),
+                  l10n.waitingFor(formatCallDuration(now.difference(since))),
                   style: style,
                 ),
               ],
             );
           },
         ),
-        ValueListenableBuilder(
-          valueListenable: controller.activeCourseMembers,
-          builder: (context, count, _) {
-            if (count == null) return const SizedBox.shrink();
+        ListenableBuilder(
+          listenable: Listenable.merge([
+            controller.coursemateIds,
+            controller.presence,
+          ]),
+          builder: (context, _) {
+            if (controller.coursemateIds.value == null) {
+              return const SizedBox.shrink();
+            }
+            final count = controller.onlineCoursemateCount;
             return Row(
               mainAxisSize: MainAxisSize.min,
               spacing: 6.0,
@@ -766,7 +787,7 @@ class _WaitingStatusLine extends StatelessWidget {
                 ),
                 Flexible(
                   child: Text(
-                    l10n.activeInCourse(
+                    l10n.onlineInCourse(
                       count,
                       controller.course?.getLocalizedDisplayname(
                             MatrixLocals(l10n),
@@ -781,6 +802,27 @@ class _WaitingStatusLine extends StatelessWidget {
               ],
             );
           },
+        ),
+        ActionChip(
+          avatar: Icon(
+            Icons.menu_book_outlined,
+            size: 16.0,
+            color: theme.pangea.onGoldFixed,
+          ),
+          label: Text(
+            controller.practicedWhileWaiting
+                ? l10n.practiceAgain
+                : l10n.practiceWhileWaiting,
+          ),
+          // The fixed gold pair (the Admin badge's): bright gold with
+          // near-black ink, the same in both themes and well over AA.
+          labelStyle: theme.textTheme.labelMedium?.copyWith(
+            color: theme.pangea.onGoldFixed,
+          ),
+          backgroundColor: theme.pangea.goldFixedDim,
+          side: BorderSide.none,
+          visualDensity: VisualDensity.compact,
+          onPressed: controller.practiceWhileWaiting,
         ),
       ],
     );

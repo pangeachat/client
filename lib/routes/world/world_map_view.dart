@@ -488,8 +488,8 @@ class _WorldMapViewState extends State<WorldMapView>
     }
 
     final visible = widget.controller.visiblePins;
-    // No lock layering: the controller's signals pass through unchanged — nothing
-    // is ever locked now, progression only ranks (#7186).
+    // Locks layer on beside the signals, not inside them: a locked pin keeps
+    // its state colouring rules, then draws gray and ranks last (#9333).
     final signals = widget.controller.signals;
     final lockedIds = {
       for (final c in visible)

@@ -4340,6 +4340,12 @@
         }
     },
     "lockedMissionRequirement": "Finish earlier missions to unlock",
+    "unlockInCourse": "Unlock in {course}",
+    "@unlockInCourse": {
+        "placeholders": {
+            "course": {"type": "String"}
+        }
+    },
     "missionLockedStars": "Locked. {earned} of {required} stars from earlier missions needed to unlock",
     "@missionLockedStars": {
         "placeholders": {
@@ -5065,48 +5071,33 @@
     "vocabLevelsDescSeed": "This is where new vocab words will appear!",
     "readingAssistanceTutorialCollectToken": "Select words to learn more about them",
     "playWithOthers": "Play with others",
-    "sessionActiveNow": "Active now",
-    "sessionActiveAgo": "Active {duration} ago",
-    "@sessionActiveAgo": {
+    "practiceWhileWaiting": "Practice while you wait",
+    "practiceAgain": "Practice again",
+    "backToActivity": "Back to activity",
+    "joinedYourActivity": "{name} joined your activity",
+    "@joinedYourActivity": {
         "placeholders": {
-            "duration": {"type": "String"}
+            "name": {"type": "String"}
         }
     },
+    "openRole": "Open: {role}",
+    "@openRole": {
+        "placeholders": {
+            "role": {"type": "String"}
+        }
+    },
+    "roleAlreadyDone": "You've already completed this role",
     "waitingFor": "Waiting {duration}",
     "@waitingFor": {
         "placeholders": {
             "duration": {"type": "String"}
         }
     },
-    "activeInCourse": "{count} active in {course}",
-    "@activeInCourse": {
+    "onlineInCourse": "{count} online in {course}",
+    "@onlineInCourse": {
         "placeholders": {
             "count": {"type": "int"},
             "course": {"type": "String"}
-        }
-    },
-    "elapsedSeconds": "{count}s",
-    "@elapsedSeconds": {
-        "placeholders": {
-            "count": {"type": "int"}
-        }
-    },
-    "elapsedMinutes": "{count}m",
-    "@elapsedMinutes": {
-        "placeholders": {
-            "count": {"type": "int"}
-        }
-    },
-    "elapsedHours": "{count}h",
-    "@elapsedHours": {
-        "placeholders": {
-            "count": {"type": "int"}
-        }
-    },
-    "elapsedDays": "{count}d",
-    "@elapsedDays": {
-        "placeholders": {
-            "count": {"type": "int"}
         }
     },
     "teachingThisCourseTitle": "I'm teaching this course",

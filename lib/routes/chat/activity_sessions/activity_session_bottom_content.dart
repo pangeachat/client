@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/room_summaries/activity_summary_status_enum.dart';
@@ -15,6 +17,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart'
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/session_last_active_label.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/session_presence_tracker.dart';
+import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivitySessionBottomContent extends StatelessWidget {
@@ -164,6 +167,13 @@ class _ActivitySummaryStatusSectionState
   void initState() {
     super.initState();
     _presence = SessionPresenceTracker(Matrix.of(context).client);
+    _watchMembers();
+  }
+
+  @override
+  void didUpdateWidget(_ActivitySummaryStatusSection oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _watchMembers();
   }
 
   @override
@@ -172,36 +182,60 @@ class _ActivitySummaryStatusSectionState
     super.dispose();
   }
 
-  DateTime? _lastActiveOf(RoomSummaryResponse summary) => _isOpenList
-      ? _presence.lastActiveOf(summary.membershipSummary.keys)
-      : null;
+  void _watchMembers() {
+    if (!_isOpenList) return;
+    _presence.watch([
+      for (final summary in widget.roomSummaries.values)
+        ..._joinedMembersOf(summary),
+    ]);
+  }
+
+  /// Only members still in the session count toward its activity: someone
+  /// who left or was only invited says nothing about who will answer.
+  static Iterable<String> _joinedMembersOf(RoomSummaryResponse summary) =>
+      summary.membershipSummary.entries
+          .where((e) => e.value == Membership.join.name)
+          .map((e) => e.key);
+
+  /// The open roles of [summary], each flagged when the learner has already
+  /// completed it in another session ([completedRoleIds]), so they can pick
+  /// a session before joining (#9333 prototype).
+  List<({String name, bool done})> _openRolesOf(
+    RoomSummaryResponse summary,
+    Set<String> completedRoleIds,
+  ) {
+    final plan = summary.resolvedActivityPlan;
+    if (!_isOpenList || plan == null) return const [];
+    return [
+      for (final id in summary.openRoleIds)
+        if (plan.roles[id] != null)
+          (name: plan.roles[id]!.name, done: completedRoleIds.contains(id)),
+    ];
+  }
+
+  DateTime? _lastActiveOf(RoomSummaryResponse summary) =>
+      _isOpenList ? _presence.lastActiveOf(_joinedMembersOf(summary)) : null;
 
   @override
   Widget build(BuildContext context) {
-    if (_isOpenList) {
-      _presence.watch([
-        for (final summary in widget.roomSummaries.values)
-          ...summary.membershipSummary.keys,
-      ]);
-    }
     return ListenableBuilder(
       listenable: _presence,
       builder: (context, _) {
         final theme = Theme.of(context);
         final entries = widget.roomSummaries.entries.toList();
+        final completedRoles = _isOpenList
+            ? Matrix.of(context).client.completedRolesByActivity
+            : const <String, Set<String>>{};
         if (_isOpenList) {
           // Most recently active first, so the sessions most likely to answer
-          // are the easiest to join; unknown last, room id breaks ties so the
-          // order holds still between rebuilds.
+          // are the easiest to join; room id breaks ties so the order holds
+          // still between rebuilds.
           entries.sort((a, b) {
-            final aAt = _lastActiveOf(a.value);
-            final bAt = _lastActiveOf(b.value);
-            if (aAt != bAt) {
-              if (aAt == null) return 1;
-              if (bAt == null) return -1;
-              return bAt.compareTo(aAt);
-            }
-            return a.key.compareTo(b.key);
+            final byRecent = SessionPresenceTracker.compareRecentFirst(
+              _lastActiveOf(a.value),
+              _lastActiveOf(b.value),
+            );
+            return byRecent != 0 ? byRecent : a.key.compareTo(b.key);
           });
         }
         return Padding(
@@ -228,6 +262,10 @@ class _ActivitySummaryStatusSectionState
                   pinged: e.key == widget.pingedRoomId,
                   showLastActive: _isOpenList,
                   lastActive: _lastActiveOf(e.value),
+                  openRoles: _openRolesOf(
+                    e.value,
+                    completedRoles[e.value.activityId] ?? const {},
+                  ),
                   onTap: () => widget.onTap(e.key),
                 ),
             ],
@@ -248,6 +286,9 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
   final bool showLastActive;
   final DateTime? lastActive;
 
+  /// The seats a joiner can take, flagged when already completed.
+  final List<({String name, bool done})> openRoles;
+
   final VoidCallback onTap;
 
   const _ActivitySessionDetailsTile({
@@ -255,6 +296,7 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
     required this.pinged,
     required this.showLastActive,
     required this.lastActive,
+    this.openRoles = const [],
     required this.onTap,
   });
 
@@ -289,8 +331,43 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                 spacing: 24.0,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (showLastActive)
-                    SessionLastActiveLabel(lastActive: lastActive),
+                  if (showLastActive || openRoles.isNotEmpty)
+                    Wrap(
+                      spacing: 12.0,
+                      runSpacing: 6.0,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        if (showLastActive)
+                          SessionLastActiveLabel(lastActive: lastActive),
+                        for (final role in openRoles)
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            spacing: 4.0,
+                            children: [
+                              Icon(
+                                Icons.person_outline,
+                                size: 14.0,
+                                color: theme.colorScheme.primary,
+                              ),
+                              Text(
+                                L10n.of(context).openRole(role.name),
+                                style: theme.textTheme.labelMedium?.copyWith(
+                                  color: theme.colorScheme.primary,
+                                ),
+                              ),
+                              if (role.done)
+                                Tooltip(
+                                  message: L10n.of(context).roleAlreadyDone,
+                                  child: Icon(
+                                    Icons.check_circle,
+                                    size: 14.0,
+                                    color: theme.pangea.success,
+                                  ),
+                                ),
+                            ],
+                          ),
+                      ],
+                    ),
                   if (activitySummary != null)
                     Row(
                       spacing: 12.0,

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -9,7 +10,9 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/bot_activty_role_room_extension.dart';
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -18,6 +21,8 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_
 import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start_view.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/bot_join_error_dialog.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/session_presence_tracker.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/waiting_room_join_watcher.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -47,31 +52,34 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   Timer? _pingCooldown;
   final _goalsHandler = GoalsSubscriptionHandler();
 
-  /// A course member counts as active if they were online this recently.
-  static const Duration activeWindow = Duration(minutes: 5);
-
   /// Ticks every second, driving the waiting timer.
   /// Only the widgets that read it rebuild.
   final ValueNotifier<DateTime> clock = ValueNotifier(DateTime.now());
   Timer? _clockTimer;
 
-  /// Coursemates (not you, not the bot) online in the last [activeWindow];
-  /// null until counted, or when the session has no source course.
-  final ValueNotifier<int?> activeCourseMembers = ValueNotifier(null);
-  Timer? _activeCountTimer;
+  /// Live presence of the course's members, kept current by the SDK's
+  /// presence stream — no polling.
+  late final SessionPresenceTracker presence;
+
+  /// The course's joined members other than you and the bot; null until
+  /// loaded, or when the session has no source course.
+  final ValueNotifier<List<String>?> coursemateIds = ValueNotifier(null);
+
+  /// The learner went to practice from here, so the button now reads
+  /// "Practice again".
+  bool practicedWhileWaiting = false;
 
   @override
   void initState() {
     super.initState();
+    // Back in the waiting room: no need to be told someone joined.
+    WaitingRoomJoinWatcher.stop();
+    presence = SessionPresenceTracker(widget.room.client);
     _clockTimer = Timer.periodic(
       const Duration(seconds: 1),
       (_) => clock.value = DateTime.now(),
     );
-    _countActiveCourseMembers();
-    _activeCountTimer = Timer.periodic(
-      const Duration(seconds: 30),
-      (_) => _countActiveCourseMembers(),
-    );
+    _loadCoursemates();
   }
 
   @override
@@ -84,9 +92,9 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   void dispose() {
     _pingCooldown?.cancel();
     _clockTimer?.cancel();
-    _activeCountTimer?.cancel();
     clock.dispose();
-    activeCourseMembers.dispose();
+    presence.dispose();
+    coursemateIds.dispose();
     _goalsHandler.cancel();
     super.dispose();
   }
@@ -98,27 +106,24 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
     return create is Event ? create.originServerTs : null;
   }
 
-  Future<void> _countActiveCourseMembers() async {
-    if (!mounted) return;
+  /// Coursemates online right now — the avatar presence dot's rule.
+  int get onlineCoursemateCount =>
+      presence.onlineCount(coursemateIds.value ?? const []);
+
+  Future<void> _loadCoursemates() async {
     final course = this.course;
     if (course == null) return;
     final client = widget.room.client;
     try {
       final members = await course.requestParticipants([Membership.join]);
-      final cutoff = DateTime.now().subtract(activeWindow);
-      var count = 0;
-      for (final member in members) {
-        if (member.id == client.userID || member.id == BotName.byEnvironment) {
-          continue;
-        }
-        final presence = await client.fetchCurrentPresence(member.id);
-        final lastActive = presence.lastActiveTimestamp;
-        if (presence.currentlyActive == true ||
-            (lastActive != null && lastActive.isAfter(cutoff))) {
-          count++;
-        }
-      }
-      if (mounted) activeCourseMembers.value = count;
+      final ids = [
+        for (final member in members)
+          if (member.id != client.userID && member.id != BotName.byEnvironment)
+            member.id,
+      ];
+      if (!mounted) return;
+      presence.watch(ids);
+      coursemateIds.value = ids;
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -127,6 +132,19 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
         level: SentryLevel.warning,
       );
     }
+  }
+
+  /// Practice vocab while waiting. Practice opens beside the session on wide
+  /// screens; wherever it opens, the learner is told when someone joins.
+  void practiceWhileWaiting() {
+    setState(() => practicedWhileWaiting = true);
+    WaitingRoomJoinWatcher.watch(widget.room);
+    context.go(
+      WorkspaceNav.openPractice(
+        GoRouterState.of(context).uri,
+        ConstructTypeEnum.vocab,
+      ),
+    );
   }
 
   /// The course whose roster the ping reaches and the active count reads:

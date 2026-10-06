@@ -208,6 +208,11 @@ class SelectRoleSessionController extends State<SelectRoleSession>
         courseId: widget.course?.id,
       )) {
         _confirmed = false;
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(L10n.of(context).lockedMissionRequirement)),
+          );
+        }
         return;
       }
       if (!mounted) return;

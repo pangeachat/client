@@ -275,7 +275,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
       unawaited(_leaveViewedSession(room));
     }
     context.go(
-      WorkspaceNav.openActivity(
+      WorkspaceNav.closeActivitySession(
         GoRouterState.of(context).uri,
         widget.activityId,
       ),
