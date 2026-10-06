@@ -9580,5 +9580,8 @@
     "callMicrophoneMessage": "Pangea Chat ལ་ཁ་པར་བརྒྱབ་ཆེད་དུ་ཁྱེད་ཀྱི་སྒྲ་སྡུད་འཕྲུལ་ཆས་དགོས། དེའི་ནང་དུ་བཀག་པའི་བརྡ་འཕྲིན་གྱི་ངོས་ནས་ལན་བརྒྱབ་པའི་ཁ་པར་ཡང་ཚུད་ཡོད།",
     "callMicrophoneOffTitle": "ཁྱེད་ཀྱི་ཁ་པར་འབྲེལ་མཐུད་བྱུང་མེད།",
     "callMicrophoneOffMessage": "Pangea Chat གྱིས་ཁྱེད་ཀྱི་སྒྲ་སྡུད་འཕྲུལ་ཆས་བེད་སྤྱོད་གནང་ཐུབ་ཀྱི་མེད། སྒྲིག་སྦྱོར་ནང་དུ་སྒྲ་སྡུད་འཕྲུལ་ཆས་འབྱེད་པར་མནོན།",
-    "mapCreditsLabel": "ផែនទីཡི་ཡོན་ཏན་: Stadia Maps, OpenMapTiles དང་ OpenStreetMap"
+    "mapCreditsLabel": "ផែនទីཡི་ཡོན་ཏན་: Stadia Maps, OpenMapTiles དང་ OpenStreetMap",
+    "activityLaunchFindingCourses": "ཁྱེད་ཀྱི་སློབ་ཚན་འཚོལ་བཞིན་པ།",
+    "activityLaunchCreatingRoom": "ཁྱེད་ཀྱི་བྱེད་སྒོ་བཟོ་བཞིན་པ།",
+    "activityLaunchOpeningRoom": "ཁྱེད་ཀྱི་བྱེད་སྒོ་འབྱེད་བཞིན་པ།"
 }

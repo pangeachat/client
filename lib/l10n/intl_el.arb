@@ -10844,5 +10844,8 @@
     "callMicrophoneMessage": "Το Pangea Chat χρειάζεται το μικρόφωνό σας για κλήσεις, συμπεριλαμβανομένων των κλήσεων που απαντάτε από την οθόνη κλειδώματος.",
     "callMicrophoneOffTitle": "Η κλήση σας δεν συνδέθηκε",
     "callMicrophoneOffMessage": "Το Pangea Chat δεν μπορεί να χρησιμοποιήσει το μικρόφωνό σας. Πατήστε για να το ενεργοποιήσετε στις Ρυθμίσεις.",
-    "mapCreditsLabel": "Συντελεστές χάρτη: Stadia Maps, OpenMapTiles και OpenStreetMap"
+    "mapCreditsLabel": "Συντελεστές χάρτη: Stadia Maps, OpenMapTiles και OpenStreetMap",
+    "activityLaunchFindingCourses": "Εύρεση των μαθημάτων σας…",
+    "activityLaunchCreatingRoom": "Δημιουργία της δραστηριότητάς σας…",
+    "activityLaunchOpeningRoom": "Άνοιγμα της δραστηριότητάς σας…"
 }

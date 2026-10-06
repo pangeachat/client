@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat се нуждае от микрофона ви за разговори, включително разговори, на които отговаряте от заключения екран.",
     "callMicrophoneOffTitle": "Връзката за разговора не беше осъществена",
     "callMicrophoneOffMessage": "Pangea Chat не може да използва микрофона ви. Докоснете, за да го включите в Настройки.",
-    "mapCreditsLabel": "Карта: Stadia Maps, OpenMapTiles и OpenStreetMap"
+    "mapCreditsLabel": "Карта: Stadia Maps, OpenMapTiles и OpenStreetMap",
+    "activityLaunchFindingCourses": "Търсене на курсове…",
+    "activityLaunchCreatingRoom": "Създаване на дейност…",
+    "activityLaunchOpeningRoom": "Отваряне на дейност…"
 }

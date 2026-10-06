@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "লক স্ক্ৰীণৰ পৰা উত্তৰ দিয়া কলসমূহকে ধৰি কলৰ বাবে পেংগিয়া চেটক আপোনাৰ মাইক্ৰ'ফোনৰ প্ৰয়োজন।",
     "callMicrophoneOffTitle": "আপোনাৰ কল সংযোগ হোৱা নাই",
     "callMicrophoneOffMessage": "পেংগিয়া চেটে আপোনাৰ মাইক্ৰ'ফোন ব্যৱহাৰ কৰিব নোৱাৰে। ছেটিংছত ইয়াক অন কৰিবলৈ টেপ কৰক।",
-    "mapCreditsLabel": "মানচিত্ৰৰ ক্ৰেডিটসমূহ: Stadia Maps, OpenMapTiles আৰু OpenStreetMap"
+    "mapCreditsLabel": "মানচিত্ৰৰ ক্ৰেডিটসমূহ: Stadia Maps, OpenMapTiles আৰু OpenStreetMap",
+    "activityLaunchFindingCourses": "আপোনাৰ পাঠ্যক্ৰমসমূহ বিচাৰি উলিওৱা হৈছে…",
+    "activityLaunchCreatingRoom": "আপোনাৰ কাৰ্য্যকলাপ সৃষ্টি কৰা হৈছে…",
+    "activityLaunchOpeningRoom": "আপোনাৰ কাৰ্য্যকলাপ খোলা হৈছে…"
 }

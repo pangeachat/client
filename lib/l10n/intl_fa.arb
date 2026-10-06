@@ -10057,5 +10057,8 @@
     "callMicrophoneMessage": "پنگه‌آ چت برای تماس‌ها، از جمله تماس‌هایی که از صفحه قفل پاسخ می‌دهید، به میکروفون شما نیاز دارد.",
     "callMicrophoneOffTitle": "تماس شما وصل نشد",
     "callMicrophoneOffMessage": "پنگه‌آ چت نمی‌تواند از میکروفون شما استفاده کند. برای روشن کردن آن در تنظیمات ضربه بزنید.",
-    "mapCreditsLabel": "اعتبار نقشه: Stadia Maps, OpenMapTiles و OpenStreetMap"
+    "mapCreditsLabel": "اعتبار نقشه: Stadia Maps, OpenMapTiles و OpenStreetMap",
+    "activityLaunchFindingCourses": "در حال یافتن دوره‌های شما…",
+    "activityLaunchCreatingRoom": "در حال ایجاد فعالیت شما…",
+    "activityLaunchOpeningRoom": "در حال باز کردن فعالیت شما…"
 }

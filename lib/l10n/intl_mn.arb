@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Пангеа Чат дуудлага хийхэд таны микрофон хэрэгтэй, үүнд түгжигдсэн дэлгэцээс хариулах дуудлага багтана.",
     "callMicrophoneOffTitle": "Таны дуудлага холбогдоогүй байна",
     "callMicrophoneOffMessage": "Пангеа Чат таны микрофоныг ашиглах боломжгүй байна. Тохиргооноос асаахын тулд товшино уу.",
-    "mapCreditsLabel": "Газрын зургийн эрх: Stadia Maps, OpenMapTiles болон OpenStreetMap"
+    "mapCreditsLabel": "Газрын зургийн эрх: Stadia Maps, OpenMapTiles болон OpenStreetMap",
+    "activityLaunchFindingCourses": "Таны хичээлүүдийг хайж байна…",
+    "activityLaunchCreatingRoom": "Таны үйлдлийг үүсгэж байна…",
+    "activityLaunchOpeningRoom": "Таны үйлдлийг нээж байна…"
 }

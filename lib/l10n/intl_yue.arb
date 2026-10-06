@@ -10926,5 +10926,8 @@
     "callMicrophoneMessage": "Pangea Chat 需要使用你的咪高風進行通話，包括從鎖定畫面接聽的通話。",
     "callMicrophoneOffTitle": "你的通話未能連接",
     "callMicrophoneOffMessage": "Pangea Chat 無法使用你的咪高風。輕按以在「設定」中開啟。",
-    "mapCreditsLabel": "地圖來源：Stadia Maps、OpenMapTiles 同 OpenStreetMap"
+    "mapCreditsLabel": "地圖來源：Stadia Maps、OpenMapTiles 同 OpenStreetMap",
+    "activityLaunchFindingCourses": "搵緊你嘅課程…",
+    "activityLaunchCreatingRoom": "建立緊你嘅活動…",
+    "activityLaunchOpeningRoom": "開緊你嘅活動…"
 }

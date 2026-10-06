@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat benodig jou mikrofoon vir oproepe, insluitend oproepe wat jy vanaf die sluitskerm beantwoord.",
     "callMicrophoneOffTitle": "Jou oproep het nie gekoppel nie",
     "callMicrophoneOffMessage": "Pangea Chat kan nie jou mikrofoon gebruik nie. Tik om dit in Instellings aan te skakel.",
-    "mapCreditsLabel": "Kaartkrediete: Stadia Maps, OpenMapTiles en OpenStreetMap"
+    "mapCreditsLabel": "Kaartkrediete: Stadia Maps, OpenMapTiles en OpenStreetMap",
+    "activityLaunchFindingCourses": "Vind jou kursusse…",
+    "activityLaunchCreatingRoom": "Skep jou aktiwiteit…",
+    "activityLaunchOpeningRoom": "Maak jou aktiwiteit oop…"
 }

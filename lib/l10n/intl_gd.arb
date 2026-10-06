@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Tha feum aig Pangea Chat air a’ mhicreofon agad airson gairmean, a’ gabhail a-steach gairmean a fhreagras tu bhon sgrìn-ghlasaidh.",
     "callMicrophoneOffTitle": "Cha do cheangail a’ ghairm agad",
     "callMicrophoneOffMessage": "Chan urrainn do Pangea Chat am micreofon agad a chleachdadh. Tap air gus a thionndadh air ann an Roghainnean.",
-    "mapCreditsLabel": "Urrasan-mhapa: Stadia Maps, OpenMapTiles agus OpenStreetMap"
+    "mapCreditsLabel": "Urrasan-mhapa: Stadia Maps, OpenMapTiles agus OpenStreetMap",
+    "activityLaunchFindingCourses": "A' lorg nan cùrsaichean agad…",
+    "activityLaunchCreatingRoom": "A' cruthachadh do ghnìomhachd…",
+    "activityLaunchOpeningRoom": "A' fosgladh do ghnìomhachd…"
 }

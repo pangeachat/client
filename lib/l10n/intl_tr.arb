@@ -10270,5 +10270,8 @@
     "callMicrophoneMessage": "Pangea Chat'in, kilit ekranından yanıtladığınız aramalar da dahil olmak üzere aramalar için mikrofonunuza erişmesi gerekiyor.",
     "callMicrophoneOffTitle": "Aramanız bağlanmadı",
     "callMicrophoneOffMessage": "Pangea Chat mikrofonunuzu kullanamıyor. Ayarlar'dan açmak için dokunun.",
-    "mapCreditsLabel": "Harita bilgileri: Stadia Maps, OpenMapTiles ve OpenStreetMap"
+    "mapCreditsLabel": "Harita bilgileri: Stadia Maps, OpenMapTiles ve OpenStreetMap",
+    "activityLaunchFindingCourses": "Kurslarınız bulunuyor…",
+    "activityLaunchCreatingRoom": "Etkinliğiniz oluşturuluyor…",
+    "activityLaunchOpeningRoom": "Etkinliğiniz açılıyor…"
 }

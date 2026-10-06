@@ -10487,5 +10487,8 @@
     "callMicrophoneMessage": "Pangea Chat behöver din mikrofon för samtal, inklusive samtal du svarar på från låsskärmen.",
     "callMicrophoneOffTitle": "Ditt samtal kopplades inte upp",
     "callMicrophoneOffMessage": "Pangea Chat kan inte använda din mikrofon. Tryck för att aktivera den i Inställningar.",
-    "mapCreditsLabel": "Kartkrediter: Stadia Maps, OpenMapTiles och OpenStreetMap"
+    "mapCreditsLabel": "Kartkrediter: Stadia Maps, OpenMapTiles och OpenStreetMap",
+    "activityLaunchFindingCourses": "Hittar dina kurser…",
+    "activityLaunchCreatingRoom": "Skapar din aktivitet…",
+    "activityLaunchOpeningRoom": "Öppnar din aktivitet…"
 }

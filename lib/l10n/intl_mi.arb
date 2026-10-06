@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Me whai hopuoro a Pangea Chat mō ngā waea, tae atu ki ngā waea ka whakautua e koe mai i te mata maukati.",
     "callMicrophoneOffTitle": "Kāore i hono tō waea",
     "callMicrophoneOffMessage": "Kāore e taea e Pangea Chat te whakamahi i tō hopuoro. Pāwhiritia kia whakakāhia i ngā Tautuhinga.",
-    "mapCreditsLabel": "Ngā takoha mahere: Stadia Maps, OpenMapTiles me OpenStreetMap"
+    "mapCreditsLabel": "Ngā takoha mahere: Stadia Maps, OpenMapTiles me OpenStreetMap",
+    "activityLaunchFindingCourses": "E kimi ana i ō akoranga…",
+    "activityLaunchCreatingRoom": "E waihanga ana i tō mahi…",
+    "activityLaunchOpeningRoom": "E huaki ana i tō mahi…"
 }

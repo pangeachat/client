@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat inahitaji maikrofoni yako kwa simu, ikijumuisha simu unazopokea ukiwa kwenye skrini iliyofungwa.",
     "callMicrophoneOffTitle": "Simu yako haikuunganishwa",
     "callMicrophoneOffMessage": "Pangea Chat haiwezi kutumia maikrofoni yako. Gusa ili kuiwasha kwenye Mipangilio.",
-    "mapCreditsLabel": "Mikopo ya ramani: Ramani za Stadia, OpenMapTiles na OpenStreetMap"
+    "mapCreditsLabel": "Mikopo ya ramani: Ramani za Stadia, OpenMapTiles na OpenStreetMap",
+    "activityLaunchFindingCourses": "Tunatafuta kozi zako…",
+    "activityLaunchCreatingRoom": "Tunatayarisha shughuli yako…",
+    "activityLaunchOpeningRoom": "Tunafungua shughuli yako…"
 }

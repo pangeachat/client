@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat peryogi mikropon anjeun pikeun nelepon, kalebet telepon anu anjeun jawab tina layar konci.",
     "callMicrophoneOffTitle": "Telepon anjeun teu nyambung",
     "callMicrophoneOffMessage": "Pangea Chat teu tiasa nganggo mikropon anjeun. Ketok pikeun ngahurungkeunana dina Setélan.",
-    "mapCreditsLabel": "Kredit peta: Stadia Maps, OpenMapTiles sareng OpenStreetMap"
+    "mapCreditsLabel": "Kredit peta: Stadia Maps, OpenMapTiles sareng OpenStreetMap",
+    "activityLaunchFindingCourses": "Milarian kursus anjeun…",
+    "activityLaunchCreatingRoom": "Nyiptakeun kagiatan anjeun…",
+    "activityLaunchOpeningRoom": "Muka kagiatan anjeun…"
 }

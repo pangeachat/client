@@ -10941,5 +10941,8 @@
     "callMicrophoneMessage": "Pangea Chat требуется доступ к микрофону для звонков, включая звонки, на которые вы отвечаете с экрана блокировки.",
     "callMicrophoneOffTitle": "Не удалось подключиться к звонку",
     "callMicrophoneOffMessage": "Pangea Chat не может использовать ваш микрофон. Нажмите, чтобы включить его в настройках.",
-    "mapCreditsLabel": "Авторы карты: Stadia Maps, OpenMapTiles и OpenStreetMap"
+    "mapCreditsLabel": "Авторы карты: Stadia Maps, OpenMapTiles и OpenStreetMap",
+    "activityLaunchFindingCourses": "Поиск ваших курсов…",
+    "activityLaunchCreatingRoom": "Создание вашей активности…",
+    "activityLaunchOpeningRoom": "Открытие вашей активности…"
 }

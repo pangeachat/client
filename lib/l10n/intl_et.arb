@@ -9966,5 +9966,8 @@
     "callMicrophoneMessage": "Pangea Chat vajab kõnede jaoks teie mikrofoni, sealhulgas kõnede jaoks, millele vastate lukustuskuvalt.",
     "callMicrophoneOffTitle": "Teie kõne ei ühendunud",
     "callMicrophoneOffMessage": "Pangea Chat ei saa teie mikrofoni kasutada. Puudutage, et see seadetes sisse lülitada.",
-    "mapCreditsLabel": "Kaardi autorid: Stadia Maps, OpenMapTiles ja OpenStreetMap"
+    "mapCreditsLabel": "Kaardi autorid: Stadia Maps, OpenMapTiles ja OpenStreetMap",
+    "activityLaunchFindingCourses": "Kursuste otsimine…",
+    "activityLaunchCreatingRoom": "Tegevuse loomine…",
+    "activityLaunchOpeningRoom": "Tegevuse avamine…"
 }

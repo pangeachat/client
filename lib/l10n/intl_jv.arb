@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat mbutuhake mikroponmu kanggo nelpon, kalebu telpon sing kokangkat saka layar kunci.",
     "callMicrophoneOffTitle": "Telponmu ora nyambung",
     "callMicrophoneOffMessage": "Pangea Chat ora bisa nggunakake mikroponmu. Tutul kanggo nguripake ing Setelan.",
-    "mapCreditsLabel": "Kredhit peta: Stadia Maps, OpenMapTiles lan OpenStreetMap"
+    "mapCreditsLabel": "Kredhit peta: Stadia Maps, OpenMapTiles lan OpenStreetMap",
+    "activityLaunchFindingCourses": "Nggoleki kursusmu…",
+    "activityLaunchCreatingRoom": "Nggawe aktivitasmu…",
+    "activityLaunchOpeningRoom": "Mbukak aktivitasmu…"
 }

@@ -10006,5 +10006,8 @@
     "callMicrophoneMessage": "Pangea Chat tarvitsee mikrofonisi puheluihin, myös lukitusnäytöltä vastaamiisi puheluihin.",
     "callMicrophoneOffTitle": "Puhelu ei yhdistynyt",
     "callMicrophoneOffMessage": "Pangea Chat ei voi käyttää mikrofonia. Napauta ottaaksesi sen käyttöön asetuksista.",
-    "mapCreditsLabel": "Karttatiedot: Stadia Maps, OpenMapTiles ja OpenStreetMap"
+    "mapCreditsLabel": "Karttatiedot: Stadia Maps, OpenMapTiles ja OpenStreetMap",
+    "activityLaunchFindingCourses": "Etsitään kurssejasi…",
+    "activityLaunchCreatingRoom": "Luodaan aktiviteettiasi…",
+    "activityLaunchOpeningRoom": "Avataan aktiviteettiasi…"
 }

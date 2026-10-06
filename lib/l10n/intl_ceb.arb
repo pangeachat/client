@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Kinahanglan sa Pangea Chat ang imong mikropono para sa mga tawag, apil na ang mga tawag nga imong tubagon gikan sa lock screen.",
     "callMicrophoneOffTitle": "Wala nakakonekta ang imong tawag",
     "callMicrophoneOffMessage": "Dili magamit sa Pangea Chat ang imong mikropono. I-tap aron i-on kini sa Settings.",
-    "mapCreditsLabel": "Mga kredito sa mapa: Stadia Maps, OpenMapTiles ug OpenStreetMap"
+    "mapCreditsLabel": "Mga kredito sa mapa: Stadia Maps, OpenMapTiles ug OpenStreetMap",
+    "activityLaunchFindingCourses": "Nangita sa imong mga kurso…",
+    "activityLaunchCreatingRoom": "Gihimo ang imong kalihokan…",
+    "activityLaunchOpeningRoom": "Giablihan ang imong kalihokan…"
 }

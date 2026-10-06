@@ -10701,5 +10701,8 @@
     "callMicrophoneMessage": "Pangea Chat are nevoie de microfonul tău pentru apeluri, inclusiv pentru apelurile la care răspunzi din ecranul de blocare.",
     "callMicrophoneOffTitle": "Apelul tău nu s-a conectat",
     "callMicrophoneOffMessage": "Pangea Chat nu poate folosi microfonul tău. Atinge pentru a-l activa din Setări.",
-    "mapCreditsLabel": "Credite hartă: Stadia Maps, OpenMapTiles și OpenStreetMap"
+    "mapCreditsLabel": "Credite hartă: Stadia Maps, OpenMapTiles și OpenStreetMap",
+    "activityLaunchFindingCourses": "Se caută cursurile tale…",
+    "activityLaunchCreatingRoom": "Se creează activitatea ta…",
+    "activityLaunchOpeningRoom": "Se deschide activitatea ta…"
 }

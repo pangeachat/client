@@ -199,13 +199,16 @@ class SelectRoleSessionController extends State<SelectRoleSession>
     } else if (widget.roomId != null) {
       await showFutureLoadingDialog(context: context, future: _joinActivity);
     } else {
+      final l10n = L10n.of(context);
       final resp = await showFutureLoadingDialog(
         context: context,
-        future: () => Matrix.of(context).client.launchActivitySession(
-          activity,
-          activity.roles[selectedRoleId],
-          primarySpace: widget.course,
-        ),
+        futureWithStatus: (setStatus) =>
+            Matrix.of(context).client.launchActivitySession(
+              activity,
+              activity.roles[selectedRoleId],
+              primarySpace: widget.course,
+              onStage: (stage) => setStatus(stage.label(l10n)),
+            ),
       );
 
       if (!resp.isError) {

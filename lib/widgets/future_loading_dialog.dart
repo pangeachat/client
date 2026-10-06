@@ -17,6 +17,9 @@ Future<Result<T>> showFutureLoadingDialog<T>({
   required BuildContext context,
   Future<T> Function()? future,
   Future<T> Function(void Function(double?) setProgress)? futureWithProgress,
+  // Replaces the label with what the future is doing now, for a wait long
+  // enough that the learner should be told (interaction-latency doc).
+  Future<T> Function(void Function(String) setStatus)? futureWithStatus,
   String? title,
   String? backLabel,
   bool barrierDismissible = false,
@@ -31,10 +34,15 @@ Future<Result<T>> showFutureLoadingDialog<T>({
   bool popOnSuccess = true,
   // Pangea#
 }) async {
-  assert(future != null || futureWithProgress != null);
+  assert(
+    future != null || futureWithProgress != null || futureWithStatus != null,
+  );
   final onProgressStream = StreamController<double?>();
+  final onStatusStream = StreamController<String>();
   final futureExec =
-      futureWithProgress?.call(onProgressStream.add) ?? future!();
+      futureWithProgress?.call(onProgressStream.add) ??
+      futureWithStatus?.call(onStatusStream.add) ??
+      future!();
   final resultFuture = ResultFuture(futureExec);
 
   if (delay) {
@@ -70,6 +78,7 @@ Future<Result<T>> showFutureLoadingDialog<T>({
       backLabel: backLabel,
       exceptionContext: exceptionContext,
       onProgressStream: onProgressStream.stream,
+      onStatusStream: onStatusStream.stream,
       // #Pangea
       showError: showError,
       onError: onError,
@@ -89,6 +98,7 @@ class LoadingDialog<T> extends StatefulWidget {
   final Future<T> future;
   final ExceptionContext? exceptionContext;
   final Stream<double?> onProgressStream;
+  final Stream<String>? onStatusStream;
   // #Pangea
   final bool Function(Object)? showError;
   final Object? Function(Object, StackTrace?)? onError;
@@ -104,6 +114,7 @@ class LoadingDialog<T> extends StatefulWidget {
     this.backLabel,
     this.exceptionContext,
     required this.onProgressStream,
+    this.onStatusStream,
     // #Pangea
     this.showError,
     this.onError,
@@ -124,10 +135,21 @@ class LoadingDialogState<T> extends State<LoadingDialog> {
   Object? _result;
   String? _successMessage;
   // Pangea#
+  String? _status;
+  StreamSubscription<String>? _statusSubscription;
+
+  @override
+  void dispose() {
+    _statusSubscription?.cancel();
+    super.dispose();
+  }
 
   @override
   void initState() {
     super.initState();
+    _statusSubscription = widget.onStatusStream?.listen(
+      (status) => setState(() => _status = status),
+    );
     // #Pangea
     // widget.future.then(
     //   (result) => Navigator.of(context).pop<Result<T>>(Result.value(result)),
@@ -182,7 +204,10 @@ class LoadingDialogState<T> extends State<LoadingDialog> {
     //     : widget.title ?? L10n.of(context).loadingPleaseWait;
     final titleLabel = exception != null
         ? exception.toLocalizedString(context, widget.exceptionContext)
-        : _successMessage ?? widget.title ?? L10n.of(context).loadingPleaseWait;
+        : _successMessage ??
+              _status ??
+              widget.title ??
+              L10n.of(context).loadingPleaseWait;
     // Pangea#
 
     return AlertDialog.adaptive(
@@ -213,9 +238,13 @@ class LoadingDialogState<T> extends State<LoadingDialog> {
               // #Pangea: a live region so the settled result (error or success)
               // is announced to screen readers; the loading state is already
               // read when the dialog opens, so the region only flips on once
-              // there is a result (WCAG 4.1.3, #7203).
+              // there is a result (WCAG 4.1.3, #7203). A status reported
+              // mid-wait is announced the same way, on each change.
               child: Semantics(
-                liveRegion: exception != null || _successMessage != null,
+                liveRegion:
+                    exception != null ||
+                    _successMessage != null ||
+                    _status != null,
                 child: Text(
                   titleLabel,
                   maxLines: 4,

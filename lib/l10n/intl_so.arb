@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat waxay u baahan tahay makarafoonkaaga wicitaanada, oo ay ku jiraan wicitaanada aad ka jawaabto shaashadda qufulka.",
     "callMicrophoneOffTitle": "Wicitaankaagu ma xirmin",
     "callMicrophoneOffMessage": "Pangea Chat ma isticmaali karto makarafoonkaaga. Taabo si aad uga shiddo Settings.",
-    "mapCreditsLabel": "Aqoonsiga khariidadda: Khariidadaha Stadia, OpenMapTiles iyo OpenStreetMap"
+    "mapCreditsLabel": "Aqoonsiga khariidadda: Khariidadaha Stadia, OpenMapTiles iyo OpenStreetMap",
+    "activityLaunchFindingCourses": "Waxaan raadinayaa koorsooyinkaaga…",
+    "activityLaunchCreatingRoom": "Waxaan abuurayaa hawshaada…",
+    "activityLaunchOpeningRoom": "Waxaan furayaa hawshaada…"
 }

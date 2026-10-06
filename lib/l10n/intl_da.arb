@@ -10889,5 +10889,8 @@
     "callMicrophoneMessage": "Pangea Chat skal bruge din mikrofon til opkald, herunder opkald, du besvarer fra låseskærmen.",
     "callMicrophoneOffTitle": "Dit opkald blev ikke forbundet",
     "callMicrophoneOffMessage": "Pangea Chat kan ikke bruge din mikrofon. Tryk for at slå den til i Indstillinger.",
-    "mapCreditsLabel": "Kortkreditering: Stadia Maps, OpenMapTiles og OpenStreetMap"
+    "mapCreditsLabel": "Kortkreditering: Stadia Maps, OpenMapTiles og OpenStreetMap",
+    "activityLaunchFindingCourses": "Finder dine kurser…",
+    "activityLaunchCreatingRoom": "Opretter din aktivitet…",
+    "activityLaunchOpeningRoom": "Åbner din aktivitet…"
 }
