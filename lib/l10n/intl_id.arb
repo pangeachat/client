@@ -9488,7 +9488,6 @@
     "activityLoadFailed": "Tidak dapat memuat aktivitas. Periksa koneksi Anda dan coba lagi.",
     "levelUpChip": "Tingkat {level}!",
     "missingCourseOutline": "Kursus ini tidak lagi tersedia",
-    "missingCourseOutlineCta": "Kursus ini tidak lagi tersedia. Pilih rencana kursus baru.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9513,10 +9512,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10050,6 +10045,9 @@
     "callTranscriptSubscribeForTranscription": "Berlangganan untuk transkripsi",
     "unlockCallTranscript": "Buka transkrip panggilan",
     "activitySummaryUpdateFailed": "Ringkasan ini tidak dapat diperbarui.",
+    "courseNotFound": "Kursus tidak ditemukan",
+    "askTeacherForNewCourse": "Minta guru Anda untuk memilih kursus baru.",
+    "pickNewCoursePlan": "Pilih rencana kursus baru.",
     "ssoNetworkBlockedTitle": "Situs masuk tidak dapat dijangkau",
     "ssoNetworkBlockedDesc": "Jaringan ini tidak mengizinkan kami menjangkau {provider} untuk masuk. Wi-Fi sekolah dan kantor sering memblokirnya. Anda dapat mendaftar dengan email, atau beralih ke jaringan lain dan coba lagi.",
     "ssoTryAnyway": "Coba lagi",

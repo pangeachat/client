@@ -9488,7 +9488,6 @@
     "activityLoadFailed": "Impossibile caricare l'attività. Controlla la tua connessione e riprova.",
     "levelUpChip": "Livello {level}!",
     "missingCourseOutline": "Questo corso non è più disponibile",
-    "missingCourseOutlineCta": "Questo corso non è più disponibile. Scegli un nuovo piano di corso.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9513,10 +9512,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10050,6 +10045,9 @@
     "callTranscriptSubscribeForTranscription": "Abbonati per la trascrizione",
     "unlockCallTranscript": "Sblocca trascrizione chiamata",
     "activitySummaryUpdateFailed": "Impossibile aggiornare questo riepilogo.",
+    "courseNotFound": "Corso non trovato",
+    "askTeacherForNewCourse": "Chiedi al tuo insegnante di scegliere un nuovo corso.",
+    "pickNewCoursePlan": "Scegli un nuovo piano di corso.",
     "ssoNetworkBlockedTitle": "Sito di accesso irraggiungibile",
     "ssoNetworkBlockedDesc": "Questa rete non ci permette di raggiungere {provider} per effettuare l'accesso. Le reti Wi-Fi di scuole e uffici spesso lo bloccano. Puoi registrarti con l'email, oppure passare a un'altra rete e riprovare.",
     "ssoTryAnyway": "Riprova comunque",

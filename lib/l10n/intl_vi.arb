@@ -6711,7 +6711,6 @@
     "activityLoadFailed": "Không thể tải hoạt động. Kiểm tra kết nối của bạn và thử lại.",
     "levelUpChip": "Cấp độ {level}!",
     "missingCourseOutline": "Khóa học này không còn khả dụng",
-    "missingCourseOutlineCta": "Khóa học này không còn khả dụng. Chọn một kế hoạch khóa học mới.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -6736,10 +6735,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -7269,6 +7264,9 @@
     "callTranscriptSubscribeForTranscription": "Đăng ký để chép lại",
     "unlockCallTranscript": "Mở khóa bản chép lại cuộc gọi",
     "activitySummaryUpdateFailed": "Không thể cập nhật bản tóm tắt này.",
+    "courseNotFound": "Không tìm thấy khóa học",
+    "askTeacherForNewCourse": "Yêu cầu giáo viên chọn một khóa học mới.",
+    "pickNewCoursePlan": "Chọn một giáo trình mới.",
     "ssoNetworkBlockedTitle": "Không thể truy cập trang web đăng nhập",
     "ssoNetworkBlockedDesc": "Mạng này không cho phép chúng tôi truy cập {provider} để đăng nhập cho bạn. Wi-Fi ở trường học và văn phòng thường chặn điều này. Bạn có thể đăng ký bằng email thay thế, hoặc chuyển sang mạng khác và thử lại.",
     "ssoTryAnyway": "Vẫn thử",

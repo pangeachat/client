@@ -10047,7 +10047,6 @@
     "activityLoadFailed": "Não foi possível carregar a atividade. Verifique sua conexão e tente novamente.",
     "levelUpChip": "Nível {level}!",
     "missingCourseOutline": "Este curso não está mais disponível",
-    "missingCourseOutlineCta": "Este curso não está mais disponível. Escolha um novo plano de curso.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10072,10 +10071,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10609,6 +10604,9 @@
     "callTranscriptSubscribeForTranscription": "Liostáil le haghaidh trascríofa",
     "unlockCallTranscript": "Díghlasáil trascríbhinn glaonna",
     "activitySummaryUpdateFailed": "Níorbh fhéidir an achoimre seo a nuashonrú.",
+    "courseNotFound": "Cúrsa gan aimsiú",
+    "askTeacherForNewCourse": "Iarr ar do mhúinteoir cúrsa nua a roghnú.",
+    "pickNewCoursePlan": "Roghnaigh plean cúrsa nua.",
     "ssoNetworkBlockedTitle": "Ní féidir suíomh sínithe isteach a bhaint amach",
     "ssoNetworkBlockedDesc": "Níl an líonra seo ag ligean dúinn {provider} a bhaint amach chun tú a shíniú isteach. Is minic a chuireann Wi-Fi scoile agus oifige bac air. Is féidir leat clárú le ríomhphost ina ionad, nó aistrigh go líonra eile agus bain triail eile as.",
     "ssoTryAnyway": "Bain triail as ar aon nós",

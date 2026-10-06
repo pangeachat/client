@@ -9419,7 +9419,6 @@
     "activityLoadFailed": "Faoliyatni yuklab bo'lmadi. Ulanishingizni tekshiring va qaytadan urinib ko'ring.",
     "levelUpChip": "Daraja {level}!",
     "missingCourseOutline": "Ushbu kurs endi mavjud emas",
-    "missingCourseOutlineCta": "Ushbu kurs endi mavjud emas. Yangi kurs rejasini tanlang.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9444,10 +9443,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9981,6 +9976,9 @@
     "callTranscriptSubscribeForTranscription": "Transkripsiya uchun obuna bo‘lish",
     "unlockCallTranscript": "Qo‘ng‘iroq transkriptini ochish",
     "activitySummaryUpdateFailed": "Bu xulosa yangilanmadi.",
+    "courseNotFound": "Kurs topilmadi",
+    "askTeacherForNewCourse": "Oʻqituvchingizdan yangi kurs tanlashni soʻrang.",
+    "pickNewCoursePlan": "Yangi kurs rejasini tanlang.",
     "ssoNetworkBlockedTitle": "Kirish sayti mavjud emas",
     "ssoNetworkBlockedDesc": "Bu tarmoq sizni tizimga kiritish uchun {provider} ga ulanishimizga ruxsat bermayapti. Maktab va ofis Wi-Fi ko'pincha uni bloklaydi. Buning o'rniga elektron pochta orqali ro'yxatdan o'tishingiz yoki boshqa tarmoqqa o'tib, qayta urinishingiz mumkin.",
     "ssoTryAnyway": "Baribir urinib ko'ring",

@@ -9503,7 +9503,6 @@
     "activityLoadFailed": "نتوانستم فعالیت را بارگذاری کنم. اتصال خود را بررسی کنید و دوباره تلاش کنید.",
     "levelUpChip": "سطح {level}!",
     "missingCourseOutline": "این دوره دیگر در دسترس نیست",
-    "missingCourseOutlineCta": "این دوره دیگر در دسترس نیست. یک برنامه دوره جدید انتخاب کنید.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9528,10 +9527,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10065,6 +10060,9 @@
     "callTranscriptSubscribeForTranscription": "برای رونویسی مشترک شوید",
     "unlockCallTranscript": "باز کردن قفل رونویسی تماس",
     "activitySummaryUpdateFailed": "این خلاصه به‌روز نشد.",
+    "courseNotFound": "دوره پیدا نشد",
+    "askTeacherForNewCourse": "از معلم خود بخواهید یک دوره جدید انتخاب کند.",
+    "pickNewCoursePlan": "یک برنامه درسی جدید انتخاب کنید.",
     "ssoNetworkBlockedTitle": "سایت ورود به سیستم در دسترس نیست",
     "ssoNetworkBlockedDesc": "این شبکه به ما اجازه نمی‌دهد برای ورود شما به {provider} دسترسی پیدا کنیم. وای‌فای مدرسه و اداره اغلب آن را مسدود می‌کنند. می‌توانید به جای آن با ایمیل ثبت‌نام کنید، یا به شبکه دیگری متصل شوید و دوباره امتحان کنید.",
     "ssoTryAnyway": "به هر حال امتحان کن",

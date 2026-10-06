@@ -9026,7 +9026,6 @@
     "activityLoadFailed": "Couldn't load the activity. Check your connection and try again.",
     "levelUpChip": "Level {level}!",
     "missingCourseOutline": "Ita course is no longer available",
-    "missingCourseOutlineCta": "Ita course is no longer available. Pick a new course plan.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9051,10 +9050,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9588,6 +9583,9 @@
     "callTranscriptSubscribeForTranscription": "ཡིག་སྒྱུར་བྱེད་པར་ཐོ་འགོད་བྱེད་དགོས།",
     "unlockCallTranscript": "ཁ་པར་གྱི་ཡིག་སྒྱུར་འབྱེད་པ།",
     "activitySummaryUpdateFailed": "སྙན་ཐོ་འདི་གསར་སྒྱུར་བྱེད་མ་ཐུབ།",
+    "courseNotFound": "སློབ་ཚན་མ་རྙེད།",
+    "askTeacherForNewCourse": "དགེ་རྒན་ལ་སློབ་ཚན་གསར་པ་ཞིག་འདེམས་དགོས་པར་ཞུ་བསྐུལ་བྱེད་ပါ။",
+    "pickNewCoursePlan": "སློབ་ཚན་གསར་པ་ཞིག་འདེམས་རོགས།",
     "ssoNetworkBlockedTitle": "ནང་འཛུལ་དྲ་རྒྱ་འབྲེལ་མཐུད་མེད།",
     "ssoNetworkBlockedDesc": "དྲ་རྒྱ་འདིས་ཁྱེད་རང་ནང་འཛུལ་བྱེད་པར་ {provider} དང་འབྲེལ་མཐུད་བྱེད་དུ་འཇུག་གི་མེད། སློབ་གྲྭ་དང་ལས་ཁུངས་ཀྱི་ཝའེ་ཧྥའེ་ཡིས་དེ་བཀག་སྡོམ་བྱེད་པ་རྒྱུན་ལྡན་རེད། ཁྱེད་ཀྱིས་དེ་བརྗེས་ནས་གློག་འཕྲིན་བརྒྱུད་ནས་ཐོ་འགོད་བྱེད་ཆོག་གམ་ཡང་ན་དྲ་རྒྱ་གཞན་ཞིག་ལ་བརྗེ་ནས་ཡང་བསྐྱར་ཚོད་ལྟ་བྱེད་ཆོག",
     "ssoTryAnyway": "གང་ལྟར་ཚོད་ལྟ་བྱོས།",

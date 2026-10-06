@@ -9851,7 +9851,6 @@
     "activityLoadFailed": "Nije moguće učitati aktivnost. Provjerite svoju vezu i pokušajte ponovo.",
     "levelUpChip": "Nivo {level}!",
     "missingCourseOutline": "Ovaj kurs više nije dostupan",
-    "missingCourseOutlineCta": "Ovaj kurs više nije dostupan. Odaberite novi plan kursa.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9876,10 +9875,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10413,6 +10408,9 @@
     "callTranscriptSubscribeForTranscription": "Pretplatite se za prijepis",
     "unlockCallTranscript": "Otključaj prijepis poziva",
     "activitySummaryUpdateFailed": "Ovaj sažetak nije bilo moguće ažurirati.",
+    "courseNotFound": "Tečaj nije pronađen",
+    "askTeacherForNewCourse": "Zamolite svog učitelja da odabere novi tečaj.",
+    "pickNewCoursePlan": "Odaberite novi plan tečaja.",
     "ssoNetworkBlockedTitle": "Stranica za prijavu nedostupna",
     "ssoNetworkBlockedDesc": "Ova mreža nam ne dopušta pristup {provider} za vašu prijavu. Školske i uredske Wi-Fi mreže često to blokiraju. Umjesto toga možete se prijaviti e-poštom ili se prebaciti na drugu mrežu i pokušati ponovno.",
     "ssoTryAnyway": "Pokušaj svejedno",

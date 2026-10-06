@@ -9542,7 +9542,6 @@
     "activityLoadFailed": "No s'ha pogut carregar l'activitat. Comprova la teva connexió i torna a provar-ho.",
     "levelUpChip": "Nivell {level}!",
     "missingCourseOutline": "Aquest curs ja no està disponible",
-    "missingCourseOutlineCta": "Aquest curs ja no està disponible. Tria un nou pla de curs.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9567,10 +9566,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10104,6 +10099,9 @@
     "callTranscriptSubscribeForTranscription": "Subscriu-te per a la transcripció",
     "unlockCallTranscript": "Desbloqueja la transcripció de la trucada",
     "activitySummaryUpdateFailed": "Aquest resum no s'ha pogut actualitzar.",
+    "courseNotFound": "Curs no trobat",
+    "askTeacherForNewCourse": "Demana al teu professor que triï un nou curs.",
+    "pickNewCoursePlan": "Tria un nou pla de curs.",
     "ssoNetworkBlockedTitle": "Lloc d'inici de sessió inaccessible",
     "ssoNetworkBlockedDesc": "Aquesta xarxa no ens permet connectar amb {provider} per iniciar la sessió. Sovint, les xarxes Wi-Fi d'escoles i oficines bloquegen l'accés. Pots registrar-te amb el correu electrònic o canviar a una altra xarxa i tornar-ho a provar.",
     "ssoTryAnyway": "Prova igualment",

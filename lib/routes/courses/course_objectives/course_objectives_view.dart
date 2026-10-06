@@ -626,7 +626,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
             case AsyncIdle():
               return const Center(child: CircularProgressIndicator.adaptive());
             case AsyncError(error: final error):
-              return _QuestLoadErrorView(
+              return QuestLoadErrorView(
                 error,
                 showAddCourse: widget.room?.isRoomAdmin == true,
               );
@@ -637,7 +637,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
               final groups = widget.objectivesProvider.filteredObjectiveGroups;
               final anchorId = widget.objectivesProvider.anchorMissionId;
               if (groups.isEmpty) {
-                return _QuestLoadErrorView(
+                return QuestLoadErrorView(
                   MissingQuestException(),
                   showAddCourse: widget.room?.isRoomAdmin == true,
                 );
@@ -842,11 +842,18 @@ class _PingedActivityBar extends StatelessWidget {
   }
 }
 
-class _QuestLoadErrorView extends StatelessWidget {
+/// The course plan's failed-load state. A missing quest (#7479) offers an
+/// admin the re-select CTA and tells everyone else the course is gone (#380).
+@visibleForTesting
+class QuestLoadErrorView extends StatelessWidget {
   final Object error;
   final bool showAddCourse;
 
-  const _QuestLoadErrorView(this.error, {required this.showAddCourse});
+  const QuestLoadErrorView(
+    this.error, {
+    super.key,
+    required this.showAddCourse,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -860,13 +867,22 @@ class _QuestLoadErrorView extends StatelessWidget {
               Semantics(
                 container: true,
                 child: Text(
-                  showAddCourse
-                      ? L10n.of(context).missingCourseOutlineCta
-                      : L10n.of(context).missingCourseOutline,
+                  L10n.of(context).missingCourseOutline,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: Theme.of(context).colorScheme.outline,
                   ),
+                ),
+              ),
+              // The next step: an admin re-selects; a member can't, so they
+              // are pointed at who can.
+              Text(
+                showAddCourse
+                    ? L10n.of(context).pickNewCoursePlan
+                    : L10n.of(context).askTeacherForNewCourse,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.outline,
                 ),
               ),
               if (showAddCourse)

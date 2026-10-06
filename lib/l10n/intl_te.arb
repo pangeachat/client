@@ -10365,7 +10365,6 @@
     "activityLoadFailed": "కార్యకలాపాన్ని లోడ్ చేయలేకపోయారు. మీ కనెక్షన్‌ను తనిఖీ చేసి మళ్లీ ప్రయత్నించండి.",
     "levelUpChip": "స్థాయి {level}!",
     "missingCourseOutline": "ఈ కోర్సు ఇకపై అందుబాటులో లేదు",
-    "missingCourseOutlineCta": "ఈ కోర్సు ఇకపై అందుబాటులో లేదు. కొత్త కోర్సు ప్రణాళికను ఎంచుకోండి.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10390,10 +10389,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10927,6 +10922,9 @@
     "callTranscriptSubscribeForTranscription": "ట్రాన్స్‌క్రిప్షన్ కోసం సబ్‌స్క్రైబ్ చేయండి",
     "unlockCallTranscript": "కాల్ ట్రాన్స్‌క్రిప్ట్‌ను అన్‌లాక్ చేయండి",
     "activitySummaryUpdateFailed": "ఈ సారాంశాన్ని అప్‌డేట్ చేయలేకపోయాము.",
+    "courseNotFound": "కోర్సు కనుగొనబడలేదు",
+    "askTeacherForNewCourse": "కొత్త కోర్సును ఎంచుకోమని మీ టీచర్‌ని అడగండి.",
+    "pickNewCoursePlan": "కొత్త కోర్సు ప్లాన్‌ను ఎంచుకోండి.",
     "ssoNetworkBlockedTitle": "సైన్-ఇన్ సైట్ అందుబాటులో లేదు",
     "ssoNetworkBlockedDesc": "మీరు సైన్ ఇన్ చేయడానికి {provider}ని చేరుకోవడానికి ఈ నెట్‌వర్క్ అనుమతించడం లేదు. పాఠశాల మరియు కార్యాలయ Wi-Fi తరచుగా దీన్ని బ్లాక్ చేస్తాయి. మీరు బదులుగా ఇమెయిల్‌తో సైన్ అప్ చేయవచ్చు లేదా మరొక నెట్‌వర్క్‌కి మారవచ్చు మరియు మళ్లీ ప్రయత్నించవచ్చు.",
     "ssoTryAnyway": "ఏమైనా ప్రయత్నించండి",

@@ -10387,7 +10387,6 @@
     "activityLoadFailed": "Не удалось загрузить действие. Проверьте ваше соединение и попробуйте снова.",
     "levelUpChip": "Уровень {level}!",
     "missingCourseOutline": "Этот курс больше недоступен",
-    "missingCourseOutlineCta": "Этот курс больше недоступен. Выберите новый план курса.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10412,10 +10411,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10949,6 +10944,9 @@
     "callTranscriptSubscribeForTranscription": "Подписаться на расшифровку",
     "unlockCallTranscript": "Разблокировать расшифровку звонка",
     "activitySummaryUpdateFailed": "Не удалось обновить сводку.",
+    "courseNotFound": "Курс не найден",
+    "askTeacherForNewCourse": "Попросите учителя выбрать новый курс.",
+    "pickNewCoursePlan": "Выберите новый план курса.",
     "ssoNetworkBlockedTitle": "Сайт входа недоступен",
     "ssoNetworkBlockedDesc": "Эта сеть не позволяет нам связаться с {provider} для входа. Школьный и офисный Wi-Fi часто блокируют его. Вы можете зарегистрироваться по электронной почте или переключиться на другую сеть и попробовать снова.",
     "ssoTryAnyway": "Всё равно попробовать",

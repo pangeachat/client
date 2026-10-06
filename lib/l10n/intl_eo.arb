@@ -10360,7 +10360,6 @@
     "activityLoadFailed": "Ne povis ŝarĝi la aktivecon. Kontrolu vian konekton kaj provu denove.",
     "levelUpChip": "Nivelo {level}!",
     "missingCourseOutline": "Ĉi tiu kurso ne plu estas disponebla",
-    "missingCourseOutlineCta": "Ĉi tiu kurso ne plu estas disponebla. Elektu novan kurson.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10385,10 +10384,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10922,6 +10917,9 @@
     "callTranscriptSubscribeForTranscription": "Aboni por transskribo",
     "unlockCallTranscript": "Malŝlosi alvokan transskribon",
     "activitySummaryUpdateFailed": "Ĉi tiu resumo ne povis esti ĝisdatigita.",
+    "courseNotFound": "Kurso ne trovita",
+    "askTeacherForNewCourse": "Petu vian instruiston elekti novan kurson.",
+    "pickNewCoursePlan": "Elektu novan kursplanon.",
     "ssoNetworkBlockedTitle": "Ensaluta retejo neatingebla",
     "ssoNetworkBlockedDesc": "Ĉi tiu reto ne permesas al ni atingi {provider} por ensaluti vin. Lerneja kaj oficeja retkonekto ofte blokas ĝin. Vi povas registriĝi per retpoŝto anstataŭe, aŭ ŝanĝi al alia reto kaj reprovi.",
     "ssoTryAnyway": "Provu ĉiukaze",
