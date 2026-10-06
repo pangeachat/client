@@ -5,17 +5,26 @@ import 'package:fluffychat/features/join_codes/request_room_code_extension.dart'
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 extension JoinRuleExtension on Client {
+  /// A fresh join code, or null if the request fails. A failure is logged and
+  /// the room is created without a code, so this never throws.
+  Future<String?> requestJoinCodeOrNull() async {
+    try {
+      return await requestSpaceCode();
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+      return null;
+    }
+  }
+
+  /// [joinCode] lets a caller start the code request early, alongside other
+  /// work; without it, the code is requested here.
   Future<StateEvent> generateCustomJoinRules(
     JoinRules joinRule, {
     String? allowRoomId,
     List<String>? allowRoomIds,
+    Future<String?>? joinCode,
   }) async {
-    String? joinCode;
-    try {
-      joinCode = await requestSpaceCode();
-    } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {'joinRule': joinRule});
-    }
+    final accessCode = await (joinCode ?? requestJoinCodeOrNull());
 
     final allRoomIds = {?allowRoomId, ...?allowRoomIds};
     final customJoinRules = CustomJoinRulesModel(
@@ -25,7 +34,7 @@ extension JoinRuleExtension on Client {
                 .map((id) => {'type': 'm.room_membership', 'room_id': id})
                 .toList()
           : null,
-      accessCode: joinCode,
+      accessCode: accessCode,
     );
 
     return StateEvent(

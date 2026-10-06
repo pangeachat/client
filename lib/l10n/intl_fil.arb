@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-05 13:57:46.973659",
+    "@@last_modified": "2026-10-06 16:17:26.317454",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10840,5 +10840,8 @@
     "ssoTryAnyway": "Subukan pa rin",
     "publicCoursesFilterTooltip": "Ipakita lang ang mga kurso na maaaring salihan ng sinuman",
     "restrictedCoursesFilterTooltip": "Ipakita lang ang mga kurso na kailangan mong humingi ng pahintulot para makasali",
-    "viewImageLabel": "Tingnan ang larawan"
+    "viewImageLabel": "Tingnan ang larawan",
+    "activityLaunchFindingCourses": "Hinahanap ang iyong mga kurso…",
+    "activityLaunchCreatingRoom": "Ginagawa ang iyong aktibidad…",
+    "activityLaunchOpeningRoom": "Binubuksan ang iyong aktibidad…"
 }

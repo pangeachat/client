@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-05 13:57:52.393235",
+    "@@last_modified": "2026-10-06 16:17:31.974227",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10925,5 +10925,8 @@
     "ssoTryAnyway": "Aj tak skúsiť",
     "publicCoursesFilterTooltip": "Zobraziť iba kurzy, do ktorých sa môže zapojiť ktokoľvek",
     "restrictedCoursesFilterTooltip": "Zobraziť iba kurzy, do ktorých sa musíte prihlásiť",
-    "viewImageLabel": "Zobraziť obrázok"
+    "viewImageLabel": "Zobraziť obrázok",
+    "activityLaunchFindingCourses": "Hľadáme vaše kurzy…",
+    "activityLaunchCreatingRoom": "Vytvárame vašu aktivitu…",
+    "activityLaunchOpeningRoom": "Otvárame vašu aktivitu…"
 }

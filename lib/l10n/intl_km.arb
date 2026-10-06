@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-10-05 13:57:49.209572",
+    "@@last_modified": "2026-10-06 16:17:28.376851",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "ព្យាយាមម្ដងទៀត",
     "publicCoursesFilterTooltip": "បង្ហាញតែវគ្គសិក្សាដែលអ្នកណាក៏អាចចូលរួមបាន",
     "restrictedCoursesFilterTooltip": "បង្ហាញតែវគ្គសិក្សាដែលអ្នកត្រូវស្នើសុំដើម្បីចូលរួម",
-    "viewImageLabel": "មើលរូបភាព"
+    "viewImageLabel": "មើលរូបភាព",
+    "activityLaunchFindingCourses": "កំពុងស្វែងរកវគ្គសិក្សារបស់អ្នក…",
+    "activityLaunchCreatingRoom": "កំពុងបង្កើតសកម្មភាពរបស់អ្នក…",
+    "activityLaunchOpeningRoom": "កំពុងបើកសកម្មភាពរបស់អ្នក…"
 }

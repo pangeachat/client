@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-05 13:57:52.795330",
+    "@@last_modified": "2026-10-06 16:17:32.112133",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "Sikastaba isku day",
     "publicCoursesFilterTooltip": "Tus koorsooyinka qof kasta ku biiri karo",
     "restrictedCoursesFilterTooltip": "Tus koorsooyinka ay tahay inaad codsato si aad ugu biirto",
-    "viewImageLabel": "Daawo sawirka"
+    "viewImageLabel": "Daawo sawirka",
+    "activityLaunchFindingCourses": "Waxaan raadinayaa koorsooyinkaaga…",
+    "activityLaunchCreatingRoom": "Waxaan abuurayaa hawshaada…",
+    "activityLaunchOpeningRoom": "Waxaan furayaa hawshaada…"
 }

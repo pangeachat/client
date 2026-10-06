@@ -1263,7 +1263,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-05 13:57:54.547419",
+    "@@last_modified": "2026-10-06 16:17:34.054676",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10937,5 +10937,8 @@
     "ssoTryAnyway": "仍然嘗試",
     "publicCoursesFilterTooltip": "淨係顯示所有人都可以參加嘅課程",
     "restrictedCoursesFilterTooltip": "淨係顯示你需要申請先可以參加嘅課程",
-    "viewImageLabel": "睇圖"
+    "viewImageLabel": "睇圖",
+    "activityLaunchFindingCourses": "搵緊你嘅課程…",
+    "activityLaunchCreatingRoom": "建立緊你嘅活動…",
+    "activityLaunchOpeningRoom": "開緊你嘅活動…"
 }

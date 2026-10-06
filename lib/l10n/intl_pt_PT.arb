@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-05 13:57:51.944808",
+    "@@last_modified": "2026-10-06 16:17:31.187431",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10897,5 +10897,8 @@
     "ssoTryAnyway": "Tentar na mesma",
     "publicCoursesFilterTooltip": "Mostrar apenas cursos a que qualquer pessoa se pode juntar",
     "restrictedCoursesFilterTooltip": "Mostrar apenas cursos a que tem de pedir para se juntar",
-    "viewImageLabel": "Ver imagem"
+    "viewImageLabel": "Ver imagem",
+    "activityLaunchFindingCourses": "A encontrar os seus cursos…",
+    "activityLaunchCreatingRoom": "A criar a sua atividade…",
+    "activityLaunchOpeningRoom": "A abrir a sua atividade…"
 }

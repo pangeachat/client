@@ -2919,7 +2919,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-10-05 13:57:45.473216",
+    "@@last_modified": "2026-10-06 16:17:24.380294",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9591,5 +9591,8 @@
     "ssoTryAnyway": "གང་ལྟར་ཚོད་ལྟ་བྱོས།",
     "publicCoursesFilterTooltip": "སུ་ཡང་ཞུགས་ཆོག་པའི་སློབ་ཚན་ཁོ་ན་བསྟན་པ།",
     "restrictedCoursesFilterTooltip": "ཁྱེད་ཀྱིས་ཞུགས་རྒྱུར་རེ་བ་བྱེད་དགོས་པའི་སློབ་ཚན་ཁོ་ན་བསྟན་པ།",
-    "viewImageLabel": "པར་ལ་ལྟ་བ།"
+    "viewImageLabel": "པར་ལ་ལྟ་བ།",
+    "activityLaunchFindingCourses": "ཁྱེད་ཀྱི་སློབ་ཚན་འཚོལ་བཞིན་པ།",
+    "activityLaunchCreatingRoom": "ཁྱེད་ཀྱི་བྱེད་སྒོ་བཟོ་བཞིན་པ།",
+    "activityLaunchOpeningRoom": "ཁྱེད་ཀྱི་བྱེད་སྒོ་འབྱེད་བཞིན་པ།"
 }

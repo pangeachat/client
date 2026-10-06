@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-05 13:57:46.786418",
+    "@@last_modified": "2026-10-06 16:17:25.579386",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9980,5 +9980,8 @@
     "ssoTryAnyway": "Dena den, saiatu",
     "publicCoursesFilterTooltip": "Edonork bat egin dezakeen ikastaroak bakarrik erakutsi",
     "restrictedCoursesFilterTooltip": "Bat egiteko eskatu behar duzun ikastaroak bakarrik erakutsi",
-    "viewImageLabel": "Ikusi irudia"
+    "viewImageLabel": "Ikusi irudia",
+    "activityLaunchFindingCourses": "Zure ikastaroak bilatzen…",
+    "activityLaunchCreatingRoom": "Zure jarduera sortzen…",
+    "activityLaunchOpeningRoom": "Zure jarduera irekitzen…"
 }

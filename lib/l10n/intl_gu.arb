@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-05 13:57:47.634215",
+    "@@last_modified": "2026-10-06 16:17:27.750308",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "તો પણ પ્રયાસ કરો",
     "publicCoursesFilterTooltip": "ફક્ત એવા અભ્યાસક્રમો બતાવો જેમાં કોઈપણ જોડાઈ શકે",
     "restrictedCoursesFilterTooltip": "ફક્ત એવા અભ્યાસક્રમો બતાવો જેમાં જોડાવા માટે તમારે પૂછવું પડશે",
-    "viewImageLabel": "છબી જુઓ"
+    "viewImageLabel": "છબી જુઓ",
+    "activityLaunchFindingCourses": "તમારા અભ્યાસક્રમો શોધી રહ્યાં છીએ…",
+    "activityLaunchCreatingRoom": "તમારી પ્રવૃત્તિ બનાવી રહ્યાં છીએ…",
+    "activityLaunchOpeningRoom": "તમારી પ્રવૃત્તિ ખોલી રહ્યાં છીએ…"
 }

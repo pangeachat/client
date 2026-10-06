@@ -3400,7 +3400,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-05 13:57:46.295438",
+    "@@last_modified": "2026-10-06 16:17:24.878020",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10855,5 +10855,8 @@
     "ssoTryAnyway": "Δοκιμάστε ούτως ή άλλως",
     "publicCoursesFilterTooltip": "Εμφάνιση μόνο μαθημάτων στα οποία μπορεί να συμμετάσχει ο καθένας",
     "restrictedCoursesFilterTooltip": "Εμφάνιση μόνο μαθημάτων στα οποία πρέπει να ζητήσετε να συμμετάσχετε",
-    "viewImageLabel": "Προβολή εικόνας"
+    "viewImageLabel": "Προβολή εικόνας",
+    "activityLaunchFindingCourses": "Εύρεση των μαθημάτων σας…",
+    "activityLaunchCreatingRoom": "Δημιουργία της δραστηριότητάς σας…",
+    "activityLaunchOpeningRoom": "Άνοιγμα της δραστηριότητάς σας…"
 }

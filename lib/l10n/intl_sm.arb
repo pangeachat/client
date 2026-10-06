@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-05 13:57:52.989551",
+    "@@last_modified": "2026-10-06 16:17:31.797094",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "Taumafai lava",
     "publicCoursesFilterTooltip": "Fa'aali na'o a'oa'oga e mafai e so'o se tasi ona auai",
     "restrictedCoursesFilterTooltip": "Fa'aali na'o a'oa'oga e tatau ona e talosaga e auai",
-    "viewImageLabel": "Vaʻai le ata"
+    "viewImageLabel": "Vaʻai le ata",
+    "activityLaunchFindingCourses": "Su'e au kosi…",
+    "activityLaunchCreatingRoom": "Fausia lau gaioiga…",
+    "activityLaunchOpeningRoom": "Tatala lau gaioiga…"
 }

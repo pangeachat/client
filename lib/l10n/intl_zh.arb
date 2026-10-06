@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-05 13:57:54.788119",
+    "@@last_modified": "2026-10-06 16:17:34.210944",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9980,5 +9980,8 @@
     "ssoTryAnyway": "仍然尝试",
     "publicCoursesFilterTooltip": "仅显示任何人都可以加入的课程",
     "restrictedCoursesFilterTooltip": "仅显示您必须申请才能加入的课程",
-    "viewImageLabel": "查看图片"
+    "viewImageLabel": "查看图片",
+    "activityLaunchFindingCourses": "正在查找您的课程…",
+    "activityLaunchCreatingRoom": "正在创建您的活动…",
+    "activityLaunchOpeningRoom": "正在打开您的活动…"
 }

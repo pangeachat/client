@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-05 13:57:46.120717",
+    "@@last_modified": "2026-10-06 16:17:24.831912",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9967,5 +9967,8 @@
     "ssoTryAnyway": "Trotzdem versuchen",
     "publicCoursesFilterTooltip": "Nur Kurse anzeigen, denen jeder beitreten kann",
     "restrictedCoursesFilterTooltip": "Nur Kurse anzeigen, für die du eine Beitrittsanfrage stellen musst",
-    "viewImageLabel": "Bild ansehen"
+    "viewImageLabel": "Bild ansehen",
+    "activityLaunchFindingCourses": "Kurse werden gesucht…",
+    "activityLaunchCreatingRoom": "Aktivität wird erstellt…",
+    "activityLaunchOpeningRoom": "Aktivität wird geöffnet…"
 }

@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-05 13:57:54.811660",
+    "@@last_modified": "2026-10-06 16:17:33.526843",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9984,5 +9984,8 @@
     "ssoTryAnyway": "Baribir urinib ko'ring",
     "publicCoursesFilterTooltip": "Faqat har kim qo'shila oladigan kurslarni ko'rsatish",
     "restrictedCoursesFilterTooltip": "Faqat siz qo'shilish uchun so'rashingiz kerak bo'lgan kurslarni ko'rsatish",
-    "viewImageLabel": "Rasmni koʻrish"
+    "viewImageLabel": "Rasmni koʻrish",
+    "activityLaunchFindingCourses": "Kurslaringizni topish…",
+    "activityLaunchCreatingRoom": "Faoliyatingizni yaratish…",
+    "activityLaunchOpeningRoom": "Faoliyatingizni ochish…"
 }

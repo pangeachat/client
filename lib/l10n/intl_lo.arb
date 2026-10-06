@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-05 13:57:50.052940",
+    "@@last_modified": "2026-10-06 16:17:29.397878",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "ລອງອີກຄັ້ງ",
     "publicCoursesFilterTooltip": "ສະແດງສະເພາະຫຼັກສູດທີ່ໃຜໆກໍເຂົ້າຮ່ວມໄດ້",
     "restrictedCoursesFilterTooltip": "ສະແດງສະເພາະຫຼັກສູດທີ່ທ່ານຕ້ອງຂໍເຂົ້າຮ່ວມ",
-    "viewImageLabel": "ເບິ່ງຮູບພາບ"
+    "viewImageLabel": "ເບິ່ງຮູບພາບ",
+    "activityLaunchFindingCourses": "ກຳລັງຊອກຫາຫຼັກສູດຂອງທ່ານ…",
+    "activityLaunchCreatingRoom": "ກຳລັງສ້າງກິດຈະກຳຂອງທ່ານ…",
+    "activityLaunchOpeningRoom": "ກຳລັງເປີດກິດຈະກຳຂອງທ່ານ…"
 }

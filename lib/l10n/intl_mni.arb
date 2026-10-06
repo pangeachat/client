@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-05 13:57:52.797550",
+    "@@last_modified": "2026-10-06 16:17:30.194448",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "ট্রাই তৌবা",
     "publicCoursesFilterTooltip": "খুনাইনা কাওনবা কোর্সশিং খেন্না উৎনবা",
     "restrictedCoursesFilterTooltip": "নাকোইনবা কোর্সশিং খেন্না উৎনবা",
-    "viewImageLabel": "ꯏꯃꯦꯖ ꯎꯕ"
+    "viewImageLabel": "ꯏꯃꯦꯖ ꯎꯕ",
+    "activityLaunchFindingCourses": "ನೋಂಗ್ಚುಪ್‌ಸಿಂಗ್‌ಬಾ ಖುರೈರಿಂಗ್‌ಬಾ…",
+    "activityLaunchCreatingRoom": "ನೋಂಗ್ಚುಪ್‌ಸಿಂಗ್‌ಬಾ ಖುರೈರಿಂಗ್‌ಬಾ…",
+    "activityLaunchOpeningRoom": "ನೋಂಗ್ಚುಪ್‌ಸಿಂಗ್‌ಬಾ ಖುರೈರಿಂಗ್‌ಬಾ…"
 }

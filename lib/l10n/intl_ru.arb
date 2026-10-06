@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-05 13:57:52.189535",
+    "@@last_modified": "2026-10-06 16:17:31.718805",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10952,5 +10952,8 @@
     "ssoTryAnyway": "Всё равно попробовать",
     "publicCoursesFilterTooltip": "Показывать только курсы, к которым может присоединиться любой желающий",
     "restrictedCoursesFilterTooltip": "Показывать только курсы, к которым нужно запросить доступ",
-    "viewImageLabel": "Посмотреть изображение"
+    "viewImageLabel": "Посмотреть изображение",
+    "activityLaunchFindingCourses": "Поиск ваших курсов…",
+    "activityLaunchCreatingRoom": "Создание вашей активности…",
+    "activityLaunchOpeningRoom": "Открытие вашей активности…"
 }

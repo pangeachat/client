@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-05 13:57:45.420486",
+    "@@last_modified": "2026-10-06 16:17:23.669233",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "Все пак опитай",
     "publicCoursesFilterTooltip": "Показване само на курсове, към които всеки може да се присъедини",
     "restrictedCoursesFilterTooltip": "Показване само на курсове, за които трябва да поискате присъединяване",
-    "viewImageLabel": "Преглед на изображението"
+    "viewImageLabel": "Преглед на изображението",
+    "activityLaunchFindingCourses": "Търсене на курсове…",
+    "activityLaunchCreatingRoom": "Създаване на дейност…",
+    "activityLaunchOpeningRoom": "Отваряне на дейност…"
 }

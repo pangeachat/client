@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-05 13:57:47.734577",
+    "@@last_modified": "2026-10-06 16:17:26.743517",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10416,5 +10416,8 @@
     "ssoTryAnyway": "Pokušaj svejedno",
     "publicCoursesFilterTooltip": "Prikaži samo tečajeve kojima se svatko može pridružiti",
     "restrictedCoursesFilterTooltip": "Prikaži samo tečajeve za koje je potrebno zatražiti pridruživanje",
-    "viewImageLabel": "Prikaži sliku"
+    "viewImageLabel": "Prikaži sliku",
+    "activityLaunchFindingCourses": "Tražim vaše tečajeve…",
+    "activityLaunchCreatingRoom": "Stvaram vašu aktivnost…",
+    "activityLaunchOpeningRoom": "Otvaram vašu aktivnost…"
 }

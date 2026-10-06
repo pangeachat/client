@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-05 13:57:52.515182",
+    "@@last_modified": "2026-10-06 16:17:32.416224",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "කෙසේ හෝ උත්සාහ කරන්න",
     "publicCoursesFilterTooltip": "ඕනෑම කෙනෙකුට සම්බන්ධ විය හැකි පාඨමාලා පමණක් පෙන්වන්න",
     "restrictedCoursesFilterTooltip": "ඔබට සම්බන්ධ වීමට ඉල්ලීම් කළ යුතු පාඨමාලා පමණක් පෙන්වන්න",
-    "viewImageLabel": "රූපය බලන්න"
+    "viewImageLabel": "රූපය බලන්න",
+    "activityLaunchFindingCourses": "ඔබේ පාඨමාලා සොයමින්...",
+    "activityLaunchCreatingRoom": "ඔබේ ක්‍රියාකාරකම සාදමින්...",
+    "activityLaunchOpeningRoom": "ඔබේ ක්‍රියාකාරකම විවෘත කරමින්..."
 }

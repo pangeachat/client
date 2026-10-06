@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-05 13:57:53.488018",
+    "@@last_modified": "2026-10-06 16:17:32.545553",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "Jaribu hata hivyo",
     "publicCoursesFilterTooltip": "Onyesha kozi ambazo kila mtu anaweza kujiunga nazo",
     "restrictedCoursesFilterTooltip": "Onyesha kozi ambazo lazima uombe kujiunga nazo",
-    "viewImageLabel": "Tazama picha"
+    "viewImageLabel": "Tazama picha",
+    "activityLaunchFindingCourses": "Tunatafuta kozi zako…",
+    "activityLaunchCreatingRoom": "Tunatayarisha shughuli yako…",
+    "activityLaunchOpeningRoom": "Tunafungua shughuli yako…"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:51.705685",
+    "@@last_modified": "2026-10-06 16:17:31.354313",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10712,5 +10712,8 @@
     "ssoTryAnyway": "Încearcă oricum",
     "publicCoursesFilterTooltip": "Afișează doar cursurile la care oricine se poate alătura",
     "restrictedCoursesFilterTooltip": "Afișează doar cursurile la care trebuie să ceri să te alături",
-    "viewImageLabel": "Vizualizați imaginea"
+    "viewImageLabel": "Vizualizați imaginea",
+    "activityLaunchFindingCourses": "Se caută cursurile tale…",
+    "activityLaunchCreatingRoom": "Se creează activitatea ta…",
+    "activityLaunchOpeningRoom": "Se deschide activitatea ta…"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-05 13:57:45.921891",
+    "@@last_modified": "2026-10-06 16:17:25.067501",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "Sulayi gihapon",
     "publicCoursesFilterTooltip": "Ipakita lang ang mga kurso nga bisan kinsa makasalmot",
     "restrictedCoursesFilterTooltip": "Ipakita lang ang mga kurso nga kinahanglan kang mangayo og pagtugot aron makasalmot",
-    "viewImageLabel": "Tan-awa ang hulagway"
+    "viewImageLabel": "Tan-awa ang hulagway",
+    "activityLaunchFindingCourses": "Nangita sa imong mga kurso…",
+    "activityLaunchCreatingRoom": "Gihimo ang imong kalihokan…",
+    "activityLaunchOpeningRoom": "Giablihan ang imong kalihokan…"
 }

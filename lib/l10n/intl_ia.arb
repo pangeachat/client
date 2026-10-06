@@ -1362,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-05 13:57:48.497866",
+    "@@last_modified": "2026-10-06 16:17:27.568071",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10916,5 +10916,8 @@
     "ssoTryAnyway": "Provar de tote modos",
     "publicCoursesFilterTooltip": "Monstrar solmente cursos a los que tote le mundo pote unir se",
     "restrictedCoursesFilterTooltip": "Monstrar solmente cursos a los que tu debe demandar de unir te",
-    "viewImageLabel": "Vider imagine"
+    "viewImageLabel": "Vider imagine",
+    "activityLaunchFindingCourses": "Cercante tu cursos…",
+    "activityLaunchCreatingRoom": "Creante tu activitate…",
+    "activityLaunchOpeningRoom": "Aperiente tu activitate…"
 }
