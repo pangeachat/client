@@ -17,7 +17,7 @@ import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_state_mode
 import 'package:fluffychat/routes/chat/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/routes/chat/composer_keyboard_context.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
-import 'package:fluffychat/utils/markdown_context_builder.dart';
+import 'package:fluffychat/utils/markdown_context_menu.dart';
 import 'package:fluffychat/utils/text_editing_value_caret_extension.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 import '../../widgets/avatar.dart';
@@ -485,8 +485,10 @@ class InputBar extends StatelessWidget {
             // readOnly: readOnly,
             // contextMenuBuilder: (c, e) =>
             //     markdownContextBuilder(c, e, controller),
-            contextMenuBuilder: (c, e) =>
-                markdownContextBuilder(c, e, controller!),
+            contextMenuBuilder: (_, editableTextState) => MarkdownContextMenu(
+              editableTextState: editableTextState,
+              controller: controller!,
+            ),
             onTap: () => _onInputTap(context),
             autocorrect: autocorrect,
             // Tell the keyboard which language is being typed so its
