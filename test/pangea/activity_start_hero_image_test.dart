@@ -5,9 +5,11 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_goals_dropdown.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
@@ -18,18 +20,20 @@ import 'package:fluffychat/widgets/url_image_widget.dart';
 import 'activity_session_fixtures.dart';
 import 'one_node_control.dart';
 
-/// No role cards and no goals: the goals dropdown stays mounted as an overlay
-/// but renders nothing, so the hero reads nothing from the start page's state
-/// or the app's controllers.
+/// No goals: the goals dropdown stays mounted as an overlay but renders
+/// nothing, so it reads nothing from the app's controllers.
 class _BareSession implements ActivitySessionStateController {
+  @override
+  final bool showRoleCards;
+
+  _BareSession({this.showRoleCards = false});
+
   @override
   List<ActivityRoleGoal>? get selectedRoleGoals => null;
   @override
   Set<String> get selectedRoleCompletedGoalIds => const {};
   @override
   bool get goalsStartCollapsed => false;
-  @override
-  bool get showRoleCards => false;
   @override
   bool get showDescriptionSection => false;
   @override
@@ -48,6 +52,21 @@ class _BareSession implements ActivitySessionStateController {
   bool showStarsCard(String id) => false;
   @override
   Set<String> completedGoalIdsForRole(String id) => const {};
+}
+
+/// The start page with no session room, course or tutorial: what the role
+/// cards read from it, without a mounted page or Matrix client.
+class _RoomlessStartState extends ActivitySessionStartState {
+  @override
+  Room? get activityRoom => null;
+  @override
+  Room? get courseParent => null;
+  @override
+  Map<String, ActivityRoleModel> get assignedRoles => const {};
+  @override
+  String? get activityRolesTargetId => null;
+  @override
+  void onTutorialSurfaceChanged() {}
 }
 
 /// #9351 — tapping an image hero fades the overlays and shows the whole image,
@@ -73,6 +92,7 @@ void main() {
     WidgetTester tester,
     List<ActivityMediaBlock> media, {
     bool settle = true,
+    bool showRoleCards = false,
   }) async {
     final activity = twoRoleActivityPlan().withMedia(media);
     await tester.pumpWidget(
@@ -84,10 +104,11 @@ void main() {
           body: ListView(
             children: [
               ActivityStartHero(
-                controller: ActivitySessionStartState(),
-                sessionController: _BareSession(),
+                controller: _RoomlessStartState(),
+                sessionController: _BareSession(showRoleCards: showRoleCards),
                 activity: activity,
               ),
+              const Text('Below the hero'),
             ],
           ),
         ),
@@ -207,6 +228,40 @@ void main() {
     expectExpanded(tester);
     handle.dispose();
   });
+
+  // The role cards make the hero taller than its image. Removing them once
+  // they have faded must not pull the page below up, nor push it back down
+  // when they return.
+  testWidgets(
+    'the text below the hero stays put as the image opens and closes',
+    (tester) async {
+      final handle = tester.ensureSemantics();
+      await pumpHero(tester, const [image], showRoleCards: true);
+      final below = find.text('Below the hero');
+      final start = tester.getTopLeft(below);
+      expect(
+        start.dy,
+        greaterThan(375.0),
+        reason: 'role cards extend the hero',
+      );
+
+      Future<void> expectBelowStill(String when) async {
+        await tester.pump(const Duration(milliseconds: 100));
+        expect(tester.getTopLeft(below), start, reason: 'mid-fade $when');
+        await tester.pumpAndSettle();
+        expect(tester.getTopLeft(below), start, reason: 'after $when');
+      }
+
+      await tester.tap(viewImage());
+      await expectBelowStill('opening');
+      expectExpanded(tester);
+
+      await tester.tap(close());
+      await expectBelowStill('closing');
+      expectCollapsed(tester);
+      handle.dispose();
+    },
+  );
 
   testWidgets('a video hero still offers Play video, not View image', (
     tester,

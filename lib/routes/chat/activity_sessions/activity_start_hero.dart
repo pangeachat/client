@@ -78,6 +78,10 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
   /// controls (see the class doc). Restored the moment the media is closed.
   bool _overlaysMounted = true;
 
+  /// The hero's height while the media is open: the height it had with the
+  /// overlays in place, so the page below doesn't move when they leave.
+  double _openHeight = _bgHeight;
+
   final FocusNode _posterFocus = FocusNode(debugLabel: 'activity hero poster');
 
   /// Whether the mounting player should claim focus: true when the poster was
@@ -106,8 +110,10 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
       );
       return;
     }
+    final height = context.size!.height;
     setState(() {
       _playerAutofocus = _posterFocus.hasFocus;
+      _openHeight = height;
       _mediaOpen = true;
       _overlaysMounted = true; // kept for the fade-out, dropped by _onFadedOut
     });
@@ -162,15 +168,17 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
         // play badge when the lead block is a video/YouTube clip). The opened
         // media carries its own close control, so nothing is stacked above it.
         //
-        // Non-positioned, so it anchors the Stack's height at [_bgHeight] in
-        // every state. The hero sits in a scroll view (unbounded height), so the
-        // Stack sizes to its non-positioned children. While open the overlays
-        // are removed and the role cards were the only other non-positioned
-        // child; without this anchor the Stack would collapse to zero, unsizing
-        // the player and leaving an empty scroll gap below the video (#7490).
+        // Non-positioned, so it anchors the Stack's height in every state. The
+        // hero sits in a scroll view (unbounded height), so the Stack sizes to
+        // its non-positioned children. While open the overlays are removed and
+        // the role cards were the only other non-positioned child; without this
+        // anchor the Stack would collapse to zero, unsizing the player and
+        // leaving an empty scroll gap below the video (#7490). It anchors at
+        // [_openHeight] while open, so the media takes the role cards' space
+        // and the text below stays put.
         SizedBox(
           width: double.infinity,
-          height: _bgHeight,
+          height: _mediaOpen ? _openHeight : _bgHeight,
           child: LayoutBuilder(
             builder: (context, constraints) =>
                 _background(theme, constraints.maxWidth),
