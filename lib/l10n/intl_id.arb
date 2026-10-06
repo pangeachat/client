@@ -8696,7 +8696,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Pilih kata untuk mempelajari lebih lanjut tentangnya",
     "requireAnalyticsAccessTitle": "Memerlukan akses analitik untuk bergabung",
-    "requireAnalyticsAccessDesc": "Peserta harus memberikan akses ke analitik pembelajaran mereka untuk bergabung dengan kursus ini",
     "analyticsAccessNoticeTitle": "Akses Analitik Diperlukan",
     "analyticsAccessNoticeDesc": "Dengan bergabung dengan kursus ini, Anda setuju untuk memberikan akses kepada admin ke analitik pembelajaran Anda.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8704,10 +8703,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10072,5 +10067,6 @@
     "courseAccessPublicDesc": "Siapa pun dapat menemukan dan bergabung dengan kursus ini.",
     "courseAccessApprovalRequiredDesc": "Siapa pun dapat menemukan kursus ini dan meminta untuk bergabung. Anda menyetujui setiap permintaan.",
     "courseAccessPrivateDesc": "Hanya orang dengan undangan atau kode kursus Anda yang dapat bergabung. Kursus ini tidak muncul dalam pencarian.",
-    "courseAccessCodeNote": "Siswa dengan kode kursus atau undangan Anda dapat langsung bergabung, apa pun pilihan Anda."
+    "courseAccessCodeNote": "Siswa dengan kode kursus atau undangan Anda dapat langsung bergabung, apa pun pilihan Anda.",
+    "requireAnalyticsAccessSummary": "Siswa membagikan progres belajar mereka kepada Anda saat mereka bergabung."
 }

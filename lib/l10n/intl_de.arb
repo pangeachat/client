@@ -8610,7 +8610,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Wählen Sie Wörter aus, um mehr über sie zu erfahren",
     "requireAnalyticsAccessTitle": "Analytikzugang erforderlich, um beizutreten",
-    "requireAnalyticsAccessDesc": "Teilnehmer müssen den Zugriff auf ihre Lernanalysen gewähren, um an diesem Kurs teilzunehmen",
     "analyticsAccessNoticeTitle": "Analytikzugang erforderlich",
     "analyticsAccessNoticeDesc": "Durch die Teilnahme an diesem Kurs stimmen Sie zu, den Administratoren Zugriff auf Ihre Lernanalysen zu gewähren.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8618,10 +8617,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9986,5 +9981,6 @@
     "courseAccessPublicDesc": "Jeder kann diesen Kurs finden und beitreten.",
     "courseAccessApprovalRequiredDesc": "Jeder kann diesen Kurs finden und eine Beitrittsanfrage senden. Du genehmigst jede Anfrage.",
     "courseAccessPrivateDesc": "Nur Personen mit deiner Einladung oder deinem Kurscode können beitreten. Der Kurs erscheint nicht in der Suche.",
-    "courseAccessCodeNote": "Schüler mit deinem Kurscode oder einer Einladung können sofort beitreten, egal was du wählst."
+    "courseAccessCodeNote": "Schüler mit deinem Kurscode oder einer Einladung können sofort beitreten, egal was du wählst.",
+    "requireAnalyticsAccessSummary": "Schüler teilen ihren Lernfortschritt mit dir, wenn sie beitreten."
 }

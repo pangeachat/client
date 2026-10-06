@@ -8975,7 +8975,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Sélectionnez des mots pour en savoir plus à leur sujet",
     "requireAnalyticsAccessTitle": "Accès aux analyses requis pour rejoindre",
-    "requireAnalyticsAccessDesc": "Les participants doivent accorder l'accès à leurs analyses d'apprentissage pour rejoindre ce cours",
     "analyticsAccessNoticeTitle": "Accès aux analyses requis",
     "analyticsAccessNoticeDesc": "En rejoignant ce cours, vous acceptez d'accorder aux administrateurs l'accès à vos analyses d'apprentissage.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8983,10 +8982,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10351,5 +10346,6 @@
     "courseAccessPublicDesc": "Tout le monde peut trouver et rejoindre ce cours.",
     "courseAccessApprovalRequiredDesc": "Tout le monde peut trouver ce cours et demander à le rejoindre. Vous approuvez chaque demande.",
     "courseAccessPrivateDesc": "Seules les personnes disposant de votre invitation ou du code du cours peuvent s'inscrire. Le cours n'apparaît pas dans les résultats de recherche.",
-    "courseAccessCodeNote": "Les étudiants disposant de votre code de cours ou d'une invitation peuvent s'inscrire immédiatement, quel que soit votre choix."
+    "courseAccessCodeNote": "Les étudiants disposant de votre code de cours ou d'une invitation peuvent s'inscrire immédiatement, quel que soit votre choix.",
+    "requireAnalyticsAccessSummary": "Les élèves partagent leurs progrès d'apprentissage avec vous lorsqu'ils rejoignent."
 }

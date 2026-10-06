@@ -1830,7 +1830,6 @@
     "vocabLevelsDescSeed": "Ka puta mai ngā kupu kupu hou ki konei!",
     "readingAssistanceTutorialCollectToken": "Kōwhiria ngā kupu kia ako anō mō rātou",
     "requireAnalyticsAccessTitle": "Me whai wāhi tātari raraunga kia uru mai ai",
-    "requireAnalyticsAccessDesc": "Me tuku e ngā kaiuru te uru ki ā rātou tātari raraunga ako kia uru mai ai ki tēnei akoranga",
     "moreOptions": "He kōwhiringa anō",
     "analyticsAccessNoticeTitle": "Me Whai Wāhi Tātari Raraunga",
     "analyticsAccessNoticeDesc": "Mā te uru mai ki tēnei akoranga, ka whakaae koe ki te tuku i ngā kaiwhakahaere ki te uru ki ō tātari raraunga ako.",
@@ -2510,5 +2509,6 @@
     "courseAccessPublicDesc": "Ka taea e te tangata te kimi me te uru mai ki tēnei akoranga.",
     "courseAccessApprovalRequiredDesc": "Ka taea e te tangata te kimi i tēnei akoranga me te tono kia uru mai. Māu e whakaae ia tono.",
     "courseAccessPrivateDesc": "Ko ngā tāngata anake kei a rātou tō pōwhiri, tō waehere akoranga rānei ka uru mai. Kāore te akoranga e puta i te rapunga.",
-    "courseAccessCodeNote": "Ka taea e ngā ākonga kei a rātou tō waehere akoranga, tō pōwhiri rānei te uru mai tonu, ahakoa te mea ka kōwhiria e koe."
+    "courseAccessCodeNote": "Ka taea e ngā ākonga kei a rātou tō waehere akoranga, tō pōwhiri rānei te uru mai tonu, ahakoa te mea ka kōwhiria e koe.",
+    "requireAnalyticsAccessSummary": "Ka tohatoha ngā ākonga i ō rātou tūnga ako ki a koe ina uru mai rātou."
 }

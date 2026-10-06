@@ -8660,7 +8660,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Valitse sanoja oppiaksesi niistä lisää",
     "requireAnalyticsAccessTitle": "Vaadi analytiikkapääsy liittymiseen",
-    "requireAnalyticsAccessDesc": "Osallistujien on myönnettävä pääsy oppimisanalyyseihinsa liittyäkseen tähän kurssiin",
     "analyticsAccessNoticeTitle": "Analytiikkapääsy vaaditaan",
     "analyticsAccessNoticeDesc": "Liittymällä tähän kurssiin hyväksyt, että ylläpitäjät saavat pääsyn oppimisanalyyseihisi.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8668,10 +8667,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10036,5 +10031,6 @@
     "courseAccessPublicDesc": "Kuka tahansa voi löytää ja liittyä tälle kurssille.",
     "courseAccessApprovalRequiredDesc": "Kuka tahansa voi löytää tämän kurssin ja pyytää liittymistä. Hyväksyt jokaisen pyynnön.",
     "courseAccessPrivateDesc": "Vain henkilöt, joilla on kutsusi tai kurssikoodisi, voivat liittyä. Kurssi ei näy haussa.",
-    "courseAccessCodeNote": "Opiskelijat, joilla on kurssikoodisi tai kutsu, voivat liittyä heti, riippumatta valinnastasi."
+    "courseAccessCodeNote": "Opiskelijat, joilla on kurssikoodisi tai kutsu, voivat liittyä heti, riippumatta valinnastasi.",
+    "requireAnalyticsAccessSummary": "Oppilaat jakavat oppimisen edistymisensä kanssasi liittyessään."
 }

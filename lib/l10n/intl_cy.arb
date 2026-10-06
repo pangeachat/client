@@ -1830,7 +1830,6 @@
     "vocabLevelsDescSeed": "Dyma lle bydd geiriau geirfa newydd yn ymddangos!",
     "readingAssistanceTutorialCollectToken": "Dewiswch eiriau i ddysgu mwy amdanynt",
     "requireAnalyticsAccessTitle": "Angen mynediad dadansoddeg i ymuno",
-    "requireAnalyticsAccessDesc": "Rhaid i gyfranogwyr roi mynediad i'w dadansoddeg dysgu i ymuno â'r cwrs hwn",
     "moreOptions": "Mwy o opsiynau",
     "analyticsAccessNoticeTitle": "Mynediad Dadansoddeg Angenrheidiol",
     "analyticsAccessNoticeDesc": "Trwy ymuno â'r cwrs hwn, rydych chi'n cytuno i roi mynediad i weinyddwyr i'ch dadansoddeg dysgu.",
@@ -2510,5 +2509,6 @@
     "courseAccessPublicDesc": "Gall unrhyw un ddod o hyd i'r cwrs hwn ac ymuno ag ef.",
     "courseAccessApprovalRequiredDesc": "Gall unrhyw un ddod o hyd i'r cwrs hwn a gofyn i ymuno. Rydych chi'n cymeradwyo pob cais.",
     "courseAccessPrivateDesc": "Dim ond pobl sydd â'ch gwahoddiad neu god cwrs all ymuno. Nid yw'r cwrs yn ymddangos mewn chwiliad.",
-    "courseAccessCodeNote": "Gall myfyrwyr sydd â'ch cod cwrs neu wahoddiad ymuno ar unwaith, beth bynnag a ddewiswch."
+    "courseAccessCodeNote": "Gall myfyrwyr sydd â'ch cod cwrs neu wahoddiad ymuno ar unwaith, beth bynnag a ddewiswch.",
+    "requireAnalyticsAccessSummary": "Mae myfyrwyr yn rhannu eu cynnydd dysgu gyda chi pan fyddant yn ymuno."
 }

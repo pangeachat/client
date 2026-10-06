@@ -1830,7 +1830,6 @@
     "vocabLevelsDescSeed": "Mona ke moo mantswe a matjha a tla hlaha teng!",
     "readingAssistanceTutorialCollectToken": "Kgetha mantswe ho ithuta haholwanyane ka ona",
     "requireAnalyticsAccessTitle": "Ho hlokeha phihlello ya analytics ho kena",
-    "requireAnalyticsAccessDesc": "Bankakarolo ba tlameha ho fana ka phihlello ya analytics ya bona ya ho ithuta ho kena thupelong ena",
     "moreOptions": "Dikgetho tse ding",
     "analyticsAccessNoticeTitle": "Phihlello ya Analytics e a Hlokeha",
     "analyticsAccessNoticeDesc": "Ka ho kena thupelong ena, o dumela ho fa batsamaisi phihlello ya analytics ya hao ya ho ithuta.",
@@ -2510,5 +2509,6 @@
     "courseAccessPublicDesc": "Mang kapa mang a ka fumana le ho kenela thupelo ena.",
     "courseAccessApprovalRequiredDesc": "Mang kapa mang a ka fumana thupelo ena mme a kopa ho kenela. O amohela kopo ka 'ngoe.",
     "courseAccessPrivateDesc": "Ke batho ba nang le memo kapa khoutu ea thupelo ea hau feela ba ka kenelang. Thupelo ha e hlahe lipatlisisong.",
-    "courseAccessCodeNote": "Baithuti ba nang le khoutu ea thupelo ea hau kapa memo ba ka kenela hang-hang, ho sa tsotellehe hore na u khetha eng."
+    "courseAccessCodeNote": "Baithuti ba nang le khoutu ea thupelo ea hau kapa memo ba ka kenela hang-hang, ho sa tsotellehe hore na u khetha eng.",
+    "requireAnalyticsAccessSummary": "Baithuti ba arolelana tsoelo-pele ea bona ea ho ithuta le uena ha ba kena."
 }

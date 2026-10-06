@@ -8921,7 +8921,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Daha fazla bilgi edinmek için kelimeleri seçin",
     "requireAnalyticsAccessTitle": "Katılmak için analiz erişimi gereklidir",
-    "requireAnalyticsAccessDesc": "Katılımcıların bu kursa katılmak için öğrenme analizlerine erişim izni vermesi gerekmektedir",
     "analyticsAccessNoticeTitle": "Analiz Erişimi Gereklidir",
     "analyticsAccessNoticeDesc": "Bu kursa katılarak, yöneticilere öğrenme analizlerinize erişim izni vermeyi kabul edersiniz.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8929,10 +8928,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10297,5 +10292,6 @@
     "courseAccessPublicDesc": "Herkes bu kursu bulabilir ve katılabilir.",
     "courseAccessApprovalRequiredDesc": "Herkes bu kursu bulabilir ve katılma isteği gönderebilir. Her isteği siz onaylarsınız.",
     "courseAccessPrivateDesc": "Sadece davetiyeniz veya kurs kodunuz olan kişiler katılabilir. Kurs aramalarda görünmez.",
-    "courseAccessCodeNote": "Kurs kodunuz veya davetiyeniz olan öğrenciler, ne seçerseniz seçin, hemen katılabilirler."
+    "courseAccessCodeNote": "Kurs kodunuz veya davetiyeniz olan öğrenciler, ne seçerseniz seçin, hemen katılabilirler.",
+    "requireAnalyticsAccessSummary": "Öğrenciler katıldıklarında öğrenme ilerlemelerini sizinle paylaşır."
 }

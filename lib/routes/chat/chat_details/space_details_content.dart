@@ -316,7 +316,7 @@ List<ButtonDetails> _courseSettingsButtons(
     // client only reads the course's setting (org admin-dash doc).
     ButtonDetails(
       title: l10n.requireAnalyticsAccessTitle,
-      description: l10n.requireAnalyticsAccessDesc,
+      description: l10n.requireAnalyticsAccessSummary,
       icon: const Icon(Symbols.bar_chart_4_bars, size: 30.0),
       onPressed: () => showFutureLoadingDialog(
         context: context,

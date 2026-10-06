@@ -76,7 +76,7 @@ class AddCoursePageTokenParam extends TokenParam {
     }
   }
 
-  /// The start-my-own preview, which carries the "Who can join?" row above
+  /// The start-my-own preview, which carries the course settings rows above
   /// Create course and so rests taller than a browse preview.
   bool get isCreateCoursePreview =>
       subpage == AddCourseSubpageEnum.own && isCoursePreview;

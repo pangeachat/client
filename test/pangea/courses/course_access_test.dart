@@ -7,6 +7,7 @@ import 'package:fluffychat/features/course_access/course_access.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/course_access_sheet.dart';
+import 'package:fluffychat/routes/courses/own/course_creation_settings_widget.dart';
 import 'package:fluffychat/routes/courses/own/selected_course_view.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 
@@ -137,7 +138,8 @@ void main() {
     Future<void> pumpPreview(
       WidgetTester tester, {
       required double height,
-      CourseAccess? access,
+      bool creating = true,
+      ValueChanged<bool>? onChangedRequireAnalyticsAccess,
     }) async {
       tester.view.physicalSize = Size(400, height);
       tester.view.devicePixelRatio = 1.0;
@@ -150,38 +152,81 @@ void main() {
             course: plan,
             onTapCta: () {},
             ctaButtonText: 'Create course',
-            access: access,
-            onTapAccess: access == null ? null : () {},
+            creationSettings: creating
+                ? CourseCreationSettings(
+                    access: CourseAccess.initial,
+                    onTapAccess: () {},
+                    requireAnalyticsAccess: true,
+                    onChangedRequireAnalyticsAccess:
+                        onChangedRequireAnalyticsAccess ?? (_) {},
+                  )
+                : null,
           ),
         ),
       );
       await tester.pumpAndSettle();
     }
 
-    testWidgets('shows the access row above Create course at its rest', (
+    const analyticsTitle = 'Require analytics access to join';
+    const analyticsSummary =
+        'Students share their learning progress with you when they join.';
+
+    testWidgets('shows both settings above Create course at its rest', (
       tester,
     ) async {
-      // Tall enough for the header, the row and the CTA, but still the
+      // Tall enough for the header, both rows and the CTA, but still the
       // resting height: the description is dropped.
-      await pumpPreview(tester, height: 280, access: CourseAccess.initial);
+      await pumpPreview(tester, height: 340);
 
       expect(find.text('Who can join?'), findsOneWidget);
       expect(find.text('Approval required'), findsOneWidget);
-      expect(find.text('Create course'), findsOneWidget);
+      expect(find.text(analyticsTitle), findsOneWidget);
+      expect(find.text(analyticsSummary), findsOneWidget);
       expect(find.text('STEM and professional life.'), findsNothing);
       expect(
         tester.getBottomLeft(find.text('Approval required')).dy,
+        lessThan(tester.getTopLeft(find.text(analyticsTitle)).dy),
+      );
+      expect(
+        tester.getBottomLeft(find.text(analyticsSummary)).dy,
         lessThan(tester.getTopLeft(find.text('Create course')).dy),
       );
     });
 
-    testWidgets('a preview that does not create a course has no access row', (
+    testWidgets('the analytics switch reports the new value', (tester) async {
+      bool? changedTo;
+      await pumpPreview(
+        tester,
+        height: 340,
+        onChangedRequireAnalyticsAccess: (value) => changedTo = value,
+      );
+
+      await tester.tap(find.byType(Switch));
+      await tester.pumpAndSettle();
+
+      expect(changedTo, isFalse);
+    });
+
+    testWidgets('a rest too short for the rows keeps Create course in view', (
       tester,
     ) async {
-      await pumpPreview(tester, height: 800);
+      // Long copy or large text can make the rows taller than the rest
+      // allows; they clip at the top instead of overflowing.
+      await pumpPreview(tester, height: 200);
+
+      expect(tester.takeException(), isNull);
+      final createBottom = tester.getBottomLeft(find.text('Create course')).dy;
+      expect(createBottom, lessThanOrEqualTo(200));
+    });
+
+    testWidgets('a preview that does not create a course has no settings', (
+      tester,
+    ) async {
+      await pumpPreview(tester, height: 800, creating: false);
 
       expect(find.text('Create course'), findsOneWidget);
       expect(find.text('Who can join?'), findsNothing);
+      expect(find.text(analyticsTitle), findsNothing);
     });
   });
 }

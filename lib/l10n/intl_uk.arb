@@ -8623,7 +8623,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Виберіть слова, щоб дізнатися про них більше",
     "requireAnalyticsAccessTitle": "Необхідний доступ до аналітики для приєднання",
-    "requireAnalyticsAccessDesc": "Учасники повинні надати доступ до своїх навчальних аналітик, щоб приєднатися до цього курсу",
     "analyticsAccessNoticeTitle": "Необхідний доступ до аналітики",
     "analyticsAccessNoticeDesc": "Приєднуючись до цього курсу, ви погоджуєтеся надати адміністраторам доступ до своїх навчальних аналітик.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8631,10 +8630,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9999,5 +9994,6 @@
     "courseAccessPublicDesc": "Будь-хто може знайти цей курс і приєднатися до нього.",
     "courseAccessApprovalRequiredDesc": "Будь-хто може знайти цей курс і надіслати запит на приєднання. Ви схвалюєте кожен запит.",
     "courseAccessPrivateDesc": "Приєднатися можуть лише ті, хто має ваше запрошення або код курсу. Курс не відображається в пошуку.",
-    "courseAccessCodeNote": "Студенти з вашим кодом курсу або запрошенням можуть приєднатися одразу, незалежно від вашого вибору."
+    "courseAccessCodeNote": "Студенти з вашим кодом курсу або запрошенням можуть приєднатися одразу, незалежно від вашого вибору.",
+    "requireAnalyticsAccessSummary": "Студенти діляться з вами своїм прогресом у навчанні, коли приєднуються."
 }

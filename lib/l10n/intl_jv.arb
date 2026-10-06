@@ -1830,7 +1830,6 @@
     "vocabLevelsDescSeed": "Iki minangka papan tembung kosakata anyar bakal katon!",
     "readingAssistanceTutorialCollectToken": "Pilih tembung kanggo sinau luwih akeh babagan tembung kasebut",
     "requireAnalyticsAccessTitle": "Mbutuhake akses analitik kanggo gabung",
-    "requireAnalyticsAccessDesc": "Peserta kudu menehi akses menyang analitik sinau kanggo gabung kursus iki",
     "moreOptions": "Pilihan liyane",
     "analyticsAccessNoticeTitle": "Akses Analitik Dibutuhake",
     "analyticsAccessNoticeDesc": "Kanthi gabung kursus iki, sampeyan setuju menehi akses admin menyang analitik sinau sampeyan.",
@@ -2510,5 +2509,6 @@
     "courseAccessPublicDesc": "Sapa wae bisa nemokake lan gabung kursus iki.",
     "courseAccessApprovalRequiredDesc": "Sapa wae bisa nemokake kursus iki lan njaluk gabung. Sampeyan nyetujoni saben panjaluk.",
     "courseAccessPrivateDesc": "Mung wong sing duwe undhangan utawa kode kursus sampeyan sing bisa gabung. Kursus iki ora katon ing panelusuran.",
-    "courseAccessCodeNote": "Siswa sing duwe kode kursus utawa undhangan sampeyan bisa langsung gabung, apa wae sing sampeyan pilih."
+    "courseAccessCodeNote": "Siswa sing duwe kode kursus utawa undhangan sampeyan bisa langsung gabung, apa wae sing sampeyan pilih.",
+    "requireAnalyticsAccessSummary": "Siswa nuduhake kemajuan sinau karo sampeyan nalika gabung."
 }

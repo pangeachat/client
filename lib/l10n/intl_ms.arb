@@ -1830,7 +1830,6 @@
     "vocabLevelsDescSeed": "Di sinilah perkataan perbendaharaan kata baharu akan muncul!",
     "readingAssistanceTutorialCollectToken": "Pilih perkataan untuk mengetahui lebih lanjut mengenainya",
     "requireAnalyticsAccessTitle": "Memerlukan akses analitik untuk menyertai",
-    "requireAnalyticsAccessDesc": "Peserta mesti memberikan akses kepada analitik pembelajaran mereka untuk menyertai kursus ini",
     "moreOptions": "Pilihan lain",
     "analyticsAccessNoticeTitle": "Akses Analitik Diperlukan",
     "analyticsAccessNoticeDesc": "Dengan menyertai kursus ini, anda bersetuju untuk memberikan pentadbir akses kepada analitik pembelajaran anda.",
@@ -2510,5 +2509,6 @@
     "courseAccessPublicDesc": "Sesiapa sahaja boleh mencari dan menyertai kursus ini.",
     "courseAccessApprovalRequiredDesc": "Sesiapa sahaja boleh mencari kursus ini dan meminta untuk menyertai. Anda meluluskan setiap permintaan.",
     "courseAccessPrivateDesc": "Hanya orang yang mempunyai jemputan atau kod kursus anda boleh menyertai. Kursus ini tidak muncul dalam carian.",
-    "courseAccessCodeNote": "Pelajar dengan kod kursus anda atau jemputan boleh menyertai serta-merta, walau apa pun yang anda pilih."
+    "courseAccessCodeNote": "Pelajar dengan kod kursus anda atau jemputan boleh menyertai serta-merta, walau apa pun yang anda pilih.",
+    "requireAnalyticsAccessSummary": "Pelajar berkongsi kemajuan pembelajaran mereka dengan anda apabila mereka menyertai."
 }

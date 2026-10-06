@@ -9398,7 +9398,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Pasirinkite žodžius, kad sužinotumėte daugiau apie juos",
     "requireAnalyticsAccessTitle": "Reikia analitikos prieigos, kad prisijungtumėte",
-    "requireAnalyticsAccessDesc": "Dalyviai turi suteikti prieigą prie savo mokymosi analitikos, kad galėtų prisijungti prie šio kurso",
     "analyticsAccessNoticeTitle": "Reikalinga analitikos prieiga",
     "analyticsAccessNoticeDesc": "Prisijungdami prie šio kurso, sutinkate suteikti administratoriams prieigą prie savo mokymosi analitikos.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9406,10 +9405,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10774,5 +10769,6 @@
     "courseAccessPublicDesc": "Kiekvienas gali rasti ir prisijungti prie šio kurso.",
     "courseAccessApprovalRequiredDesc": "Kiekvienas gali rasti šį kursą ir paprašyti prisijungti. Jūs patvirtinate kiekvieną užklausą.",
     "courseAccessPrivateDesc": "Tik žmonės, turintys jūsų kvietimą arba kurso kodą, gali prisijungti. Kursas nerodomas paieškoje.",
-    "courseAccessCodeNote": "Studentai, turintys jūsų kurso kodą arba kvietimą, gali prisijungti iš karto, kad ir ką pasirinktumėte."
+    "courseAccessCodeNote": "Studentai, turintys jūsų kurso kodą arba kvietimą, gali prisijungti iš karto, kad ir ką pasirinktumėte.",
+    "requireAnalyticsAccessSummary": "Mokiniai prisijungę dalijasi su jumis savo mokymosi pažanga."
 }

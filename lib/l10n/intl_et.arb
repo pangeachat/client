@@ -8620,7 +8620,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Vali sõnad, et neist rohkem teada saada",
     "requireAnalyticsAccessTitle": "Nõua analüütika juurdepääsu liitumiseks",
-    "requireAnalyticsAccessDesc": "Osalejad peavad andma juurdepääsu oma õpikogemuse analüütikale, et liituda selle kursusega",
     "analyticsAccessNoticeTitle": "Nõutav analüütika juurdepääs",
     "analyticsAccessNoticeDesc": "Liitudes selle kursusega, nõustute andma administraatoritele juurdepääsu oma õpikogemuse analüütikale.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8628,10 +8627,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9996,5 +9991,6 @@
     "courseAccessPublicDesc": "Igaüks saab selle kursuse leida ja sellega liituda.",
     "courseAccessApprovalRequiredDesc": "Igaüks saab selle kursuse leida ja liitumist paluda. Teie kinnitate iga taotluse.",
     "courseAccessPrivateDesc": "Ainult teie kutse või kursuse koodiga inimesed saavad liituda. Kursus ei ilmu otsingutulemustes.",
-    "courseAccessCodeNote": "Õpilased, kellel on teie kursuse kood või kutse, saavad kohe liituda, olenemata teie valikust."
+    "courseAccessCodeNote": "Õpilased, kellel on teie kursuse kood või kutse, saavad kohe liituda, olenemata teie valikust.",
+    "requireAnalyticsAccessSummary": "Õpilased jagavad sinuga oma õppimise edenemist, kui nad liituvad."
 }

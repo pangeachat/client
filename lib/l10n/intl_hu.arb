@@ -8726,7 +8726,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Válassza ki a szavakat, hogy többet tudjon meg róluk",
     "requireAnalyticsAccessTitle": "Elemzési hozzáférés szükséges a csatlakozáshoz",
-    "requireAnalyticsAccessDesc": "A résztvevőknek engedélyezniük kell az elemzési adataikhoz való hozzáférést a kurzushoz való csatlakozáshoz",
     "analyticsAccessNoticeTitle": "Elemzési hozzáférés szükséges",
     "analyticsAccessNoticeDesc": "A kurzushoz való csatlakozással beleegyezését adja, hogy az adminisztrátorok hozzáférjenek az elemzési adataihoz.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8734,10 +8733,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10102,5 +10097,6 @@
     "courseAccessPublicDesc": "Bárki megtalálhatja és csatlakozhat ehhez a kurzushoz.",
     "courseAccessApprovalRequiredDesc": "Bárki megtalálhatja ezt a kurzust, és kérheti a csatlakozást. Ön hagyja jóvá az egyes kéréseket.",
     "courseAccessPrivateDesc": "Csak azok csatlakozhatnak, akiknek van meghívójuk vagy kurzuskódjuk. A kurzus nem jelenik meg a keresésben.",
-    "courseAccessCodeNote": "A kurzuskóddal vagy meghívóval rendelkező diákok azonnal csatlakozhatnak, bármit is választ."
+    "courseAccessCodeNote": "A kurzuskóddal vagy meghívóval rendelkező diákok azonnal csatlakozhatnak, bármit is választ.",
+    "requireAnalyticsAccessSummary": "A diákok megosztják veled a tanulási folyamatukat, amikor csatlakoznak."
 }

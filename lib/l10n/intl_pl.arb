@@ -8708,7 +8708,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Wybierz słowa, aby dowiedzieć się o nich więcej",
     "requireAnalyticsAccessTitle": "Wymagaj dostępu do analityki, aby dołączyć",
-    "requireAnalyticsAccessDesc": "Uczestnicy muszą przyznać dostęp do swoich analiz uczenia się, aby dołączyć do tego kursu",
     "analyticsAccessNoticeTitle": "Wymagany dostęp do analityki",
     "analyticsAccessNoticeDesc": "Dołączając do tego kursu, zgadzasz się na udzielenie administratorom dostępu do swoich analiz uczenia się.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8716,10 +8715,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10084,5 +10079,6 @@
     "courseAccessPublicDesc": "Każdy może znaleźć ten kurs i dołączyć do niego.",
     "courseAccessApprovalRequiredDesc": "Każdy może znaleźć ten kurs i poprosić o dołączenie. Ty zatwierdzasz każde zgłoszenie.",
     "courseAccessPrivateDesc": "Tylko osoby z Twoim zaproszeniem lub kodem kursu mogą dołączyć. Kurs nie pojawia się w wyszukiwarce.",
-    "courseAccessCodeNote": "Uczniowie z Twoim kodem kursu lub zaproszeniem mogą dołączyć od razu, niezależnie od Twojego wyboru."
+    "courseAccessCodeNote": "Uczniowie z Twoim kodem kursu lub zaproszeniem mogą dołączyć od razu, niezależnie od Twojego wyboru.",
+    "requireAnalyticsAccessSummary": "Uczniowie udostępniają Ci swoje postępy w nauce, gdy dołączają."
 }

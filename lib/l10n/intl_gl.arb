@@ -8623,7 +8623,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Selecciona palabras para aprender máis sobre elas",
     "requireAnalyticsAccessTitle": "Require acceso á analítica para unirse",
-    "requireAnalyticsAccessDesc": "Os participantes deben conceder acceso á súa analítica de aprendizaxe para unirse a este curso",
     "analyticsAccessNoticeTitle": "Acceso á analítica requirido",
     "analyticsAccessNoticeDesc": "Ao unirte a este curso, aceptas conceder acceso aos administradores á túa analítica de aprendizaxe.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8631,10 +8630,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9999,5 +9994,6 @@
     "courseAccessPublicDesc": "Calquera pode atopar e unirse a este curso.",
     "courseAccessApprovalRequiredDesc": "Calquera pode atopar este curso e solicitar unirse. Ti aprobas cada solicitude.",
     "courseAccessPrivateDesc": "Só as persoas coa túa invitación ou código de curso poden unirse. O curso non aparece na busca.",
-    "courseAccessCodeNote": "Os estudantes co teu código de curso ou unha invitación poden unirse de inmediato, elixas o que elixas."
+    "courseAccessCodeNote": "Os estudantes co teu código de curso ou unha invitación poden unirse de inmediato, elixas o que elixas.",
+    "requireAnalyticsAccessSummary": "Os estudantes comparten o seu progreso de aprendizaxe contigo cando se unen."
 }

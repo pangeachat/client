@@ -1830,7 +1830,6 @@
     "vocabLevelsDescSeed": "Dis na usay nyu vɔkyabulari wɔd dɛn go apia!",
     "readingAssistanceTutorialCollectToken": "Pik wɔd dɛn fɔ lan mɔ bɔt dɛn",
     "requireAnalyticsAccessTitle": "Need analitiks akses fɔ jɔyn",
-    "requireAnalyticsAccessDesc": "Patisipant dɛn fɔ gi akses to dɛn lanin analitiks fɔ jɔyn dis kɔs",
     "moreOptions": "Mɔ ɔpshɔn dɛn",
     "analyticsAccessNoticeTitle": "Analitiks Akses Nid",
     "analyticsAccessNoticeDesc": "Bay we yu jɔyn dis kɔs, yu agri fɔ gi admin dɛn akses to yu lanin analitiks.",
@@ -2510,5 +2509,6 @@
     "courseAccessPublicDesc": "Ɛnibɔdi kin fɛn ɛn jɔyn dis kos.",
     "courseAccessApprovalRequiredDesc": "Ɛnibɔdi kin fɛn dis kos ɛn aks fɔ jɔyn. Yu go agri ɔl di rɛkwɛst dɛn.",
     "courseAccessPrivateDesc": "Na pɔsin dɛn we gɛt yu invayt ɔ kos kod nɔmɔ kin jɔyn. Di kos nɔ de sho insay sach.",
-    "courseAccessCodeNote": "Student dɛn we gɛt yu kos kod ɔ invayt kin jɔyn wantɛm, ilɛk wetin yu pik."
+    "courseAccessCodeNote": "Student dɛn we gɛt yu kos kod ɔ invayt kin jɔyn wantɛm, ilɛk wetin yu pik.",
+    "requireAnalyticsAccessSummary": "Di studɛnt dɛn kin shɛb dɛn lanin prɔgrɛs wit yu we dɛn jɔyn."
 }

@@ -8623,7 +8623,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Izvēlieties vārdus, lai uzzinātu vairāk par tiem",
     "requireAnalyticsAccessTitle": "Nepieciešama analītikas piekļuve, lai pievienotos",
-    "requireAnalyticsAccessDesc": "Dalībniekiem jāpiešķir piekļuve viņu mācību analītikai, lai pievienotos šim kursam",
     "analyticsAccessNoticeTitle": "Nepieciešama analītikas piekļuve",
     "analyticsAccessNoticeDesc": "Pievienojoties šim kursam, jūs piekrītat piešķirt administratoriem piekļuvi jūsu mācību analītikai.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8631,10 +8630,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9999,5 +9994,6 @@
     "courseAccessPublicDesc": "Ikviens var atrast un pievienoties šim kursam.",
     "courseAccessApprovalRequiredDesc": "Ikviens var atrast šo kursu un lūgt pievienoties. Jūs apstiprināt katru pieprasījumu.",
     "courseAccessPrivateDesc": "Tikai personas ar jūsu ielūgumu vai kursa kodu var pievienoties. Kurss neparādās meklēšanā.",
-    "courseAccessCodeNote": "Studenti ar jūsu kursa kodu vai ielūgumu var pievienoties nekavējoties, neatkarīgi no jūsu izvēles."
+    "courseAccessCodeNote": "Studenti ar jūsu kursa kodu vai ielūgumu var pievienoties nekavējoties, neatkarīgi no jūsu izvēles.",
+    "requireAnalyticsAccessSummary": "Studenti kopīgo ar jums savu mācību progresu, kad viņi pievienojas."
 }

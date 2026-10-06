@@ -1830,7 +1830,6 @@
     "vocabLevelsDescSeed": "Hic nova vocabula apparebunt!",
     "readingAssistanceTutorialCollectToken": "Verba selige ut plura de eis discas",
     "requireAnalyticsAccessTitle": "Aditus ad analytica requiritur ut participes",
-    "requireAnalyticsAccessDesc": "Participes aditum ad sua analytica discendi concedere debent ut huic cursui intersint",
     "moreOptions": "Plures optiones",
     "analyticsAccessNoticeTitle": "Aditus ad Analytica Requiritur",
     "analyticsAccessNoticeDesc": "Huic cursui intersendo, consentis ut administratoribus aditum ad tua analytica discendi concedas.",
@@ -2510,5 +2509,6 @@
     "courseAccessPublicDesc": "Quilibet hunc cursum invenire et iungere potest.",
     "courseAccessApprovalRequiredDesc": "Quilibet hunc cursum invenire et iungere petere potest. Tuam approbationem cuique petitioni dabis.",
     "courseAccessPrivateDesc": "Solum homines cum tua invitatione vel codice cursus iungere possunt. Cursus in quaestionibus non apparet.",
-    "courseAccessCodeNote": "Discipuli cum codice cursus tui vel invitatione statim iungere possunt, quidquid elegeris."
+    "courseAccessCodeNote": "Discipuli cum codice cursus tui vel invitatione statim iungere possunt, quidquid elegeris.",
+    "requireAnalyticsAccessSummary": "Discipuli suum profectum discendi tecum communicant cum iungunt."
 }

@@ -9386,7 +9386,6 @@
     },
     "readingAssistanceTutorialCollectToken": "学ぶための単語を選択してください",
     "requireAnalyticsAccessTitle": "参加するには分析アクセスが必要です",
-    "requireAnalyticsAccessDesc": "参加者はこのコースに参加するために学習分析へのアクセスを許可する必要があります",
     "analyticsAccessNoticeTitle": "分析アクセスが必要です",
     "analyticsAccessNoticeDesc": "このコースに参加することで、管理者にあなたの学習分析へのアクセスを許可することに同意します。",
     "@readingAssistanceTutorialCollectToken": {
@@ -9394,10 +9393,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10762,5 +10757,6 @@
     "courseAccessPublicDesc": "誰でもこのコースを見つけて参加できます。",
     "courseAccessApprovalRequiredDesc": "誰でもこのコースを見つけて参加をリクエストできます。各リクエストを承認してください。",
     "courseAccessPrivateDesc": "招待またはコースコードを持つ人のみが参加できます。このコースは検索に表示されません。",
-    "courseAccessCodeNote": "選択内容にかかわらず、コースコードまたは招待状を持つ生徒はすぐに参加できます。"
+    "courseAccessCodeNote": "選択内容にかかわらず、コースコードまたは招待状を持つ生徒はすぐに参加できます。",
+    "requireAnalyticsAccessSummary": "生徒が参加すると、学習の進捗状況があなたと共有されます。"
 }

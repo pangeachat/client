@@ -8623,7 +8623,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Hitzak hautatu ikasteko gehiago jakiteko",
     "requireAnalyticsAccessTitle": "Analitika sarbidea beharrezkoa da bat egiteko",
-    "requireAnalyticsAccessDesc": "Parte-hartzaileek ikaskuntza analitikaren sarbidea eman behar dute ikastaro honetan parte hartzeko",
     "analyticsAccessNoticeTitle": "Analitika Sarbidea Beharrezkoa",
     "analyticsAccessNoticeDesc": "Ikastaro honetan parte hartuz, administratzaileei zure ikaskuntza analitikaren sarbidea emateko ados zaude.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8631,10 +8630,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9999,5 +9994,6 @@
     "courseAccessPublicDesc": "Edonork aurki dezake ikastaro hau eta parte hartu.",
     "courseAccessApprovalRequiredDesc": "Edonork aurki dezake ikastaro hau eta parte hartzeko eskatu. Eskaera bakoitza zuk onartzen duzu.",
     "courseAccessPrivateDesc": "Zure gonbidapena edo ikastaro-kodea dutenek bakarrik har dezakete parte. Ikastaroa ez da bilaketan agertzen.",
-    "courseAccessCodeNote": "Zure ikastaro-kodea edo gonbidapena duten ikasleek berehala har dezakete parte, zuk aukeratzen duzuna edozein dela ere."
+    "courseAccessCodeNote": "Zure ikastaro-kodea edo gonbidapena duten ikasleek berehala har dezakete parte, zuk aukeratzen duzuna edozein dela ere.",
+    "requireAnalyticsAccessSummary": "Ikasleek haien ikaskuntza-aurrerapena zurekin partekatzen dute bat egiten dutenean."
 }

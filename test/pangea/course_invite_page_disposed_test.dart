@@ -24,12 +24,12 @@ import 'get_test_client.dart';
 /// CLIENT-EYE / CLIENT-EYF — the course invite page resolves its space id by
 /// awaiting the creation completer and then a state sync, and the page is
 /// routed away from while that wait is pending: the Invite button's own
-/// `getSpaceId` call navigates on completion, and every `_isPublic` /
-/// `_requireAnalyticsAccess` future the FutureBuilders created along the way
-/// is parked on the same completer. Each of those read `Matrix.of(context)`
-/// after its await, and `State.context` on a disposed State throws a null
-/// check — twelve times in one second on the reporting device, once per
-/// rebuild that had created a future.
+/// `getSpaceId` call navigates on completion, and (until #9359 moved the
+/// page's settings switches onto the create-course page) every switch's
+/// FutureBuilder parked a lookup on the same completer. Each of those read
+/// `Matrix.of(context)` after its await, and `State.context` on a disposed
+/// State throws a null check — twelve times in one second on the reporting
+/// device, once per rebuild that had created a future.
 ///
 /// The page now resolves the client before it awaits. This disposes the page
 /// mid-wait, completes the creation, and asserts the pending lookup still
@@ -183,8 +183,8 @@ void main() {
           // 30 s timer of its own around the fetch.
           await tester.pump(const Duration(seconds: 31));
 
-          // The parked `_isPublic` futures resumed after the page was gone and
-          // must not spend a directory read on a switch that will never render.
+          // Nothing on the page reads the room directory, before or after it
+          // is gone.
           expect(
             FakeMatrixApi.calledEndpoints.keys.where(
               (path) => path.contains('/directory/list/room/'),
