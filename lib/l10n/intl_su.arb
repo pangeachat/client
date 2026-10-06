@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-29 11:11:34.062212",
+    "@@last_modified": "2026-10-05 13:57:53.640600",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Kotéktak kursus umum",
     "publicInviteDescChat": "Milarian pangguna pikeun ngajak aranjeunna ka obrolan ieu.",
     "publicInviteDescSpace": "Milarian pangguna pikeun ngajak aranjeunna ka rohangan ieu.",
-    "useActivityImageAsChatBackground": "Anggo gambar kagiatan salaku latar obrolan",
     "chatWithSupport": "Ngobrol sareng Dukungan",
     "newCourseAccess": "Sacara standar, kursus tiasa dipilarian sacara umum sareng peryogi persetujuan admin pikeun gabung. Anjeun tiasa ngédit setélan ieu iraha waé.",
     "onboardingLanguagesTitle": "Basa naon anu anjeun diajar?",
@@ -2383,5 +2382,17 @@
     "courseCodeSaved": "Kode kursus {code} disimpen",
     "courseCodeSavedExplanation": "Daptar atawa asup sarta kami baris nambahkeun anjeun kana kursus anjeun.",
     "moderationRefusedContactDetails": "Pesen anjeun teu dikirim. Filter otomatis manggihan detil kontak, sapertos nomer telepon. Punten hapus teras cobian deui.",
-    "moderationRefusedProfanity": "Pesen anjeun teu dikirim. Filter otomatis manggihan kecap anu teu diidinan dina obrolan. Punten gentos teras cobian deui."
+    "moderationRefusedProfanity": "Pesen anjeun teu dikirim. Filter otomatis manggihan kecap anu teu diidinan dina obrolan. Punten gentos teras cobian deui.",
+    "callTranscriptTranscribeButton": "Transkripsi",
+    "callTranscriptAudioUnavailable": "Rekaman nu disimpen ti {name} teu tiasa diunduh, janten teu tiasa ditranskripsi.",
+    "callTranscriptChooseLanguage": "Basa naon nu diucapkeun?",
+    "callTranscriptSubscribeForTranscription": "Langganan pikeun transkripsi",
+    "unlockCallTranscript": "Buka konci transkrip telepon",
+    "activitySummaryUpdateFailed": "Ringkesan ieu teu tiasa diropéa.",
+    "ssoNetworkBlockedTitle": "Situs asup teu tiasa diaksés",
+    "ssoNetworkBlockedDesc": "Jaringan ieu ngahalangan kami ngahubungi {provider} pikeun ngasupkeun anjeun. Wi-Fi sakola sareng kantor sering ngahalanganana. Anjeun tiasa ngadaptar nganggo email, atanapi gentos ka jaringan sanés teras cobian deui.",
+    "ssoTryAnyway": "Cobi waé",
+    "publicCoursesFilterTooltip": "Tampilkeun kursus-kursus anu saha waé tiasa ngiringan",
+    "restrictedCoursesFilterTooltip": "Tampilkeun kursus-kursus anu anjeun kedah nyuhunkeun pikeun ngiringan",
+    "viewImageLabel": "Témbongkeun gambar"
 }

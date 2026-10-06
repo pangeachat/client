@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 11:11:28.386906",
+    "@@last_modified": "2026-10-05 13:57:49.102067",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -7950,11 +7950,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "활동 이미지를 채팅 배경으로 사용",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "지원팀과 채팅하기",
     "@chatWithSupport": {
         "type": "String",
@@ -10168,5 +10163,17 @@
     "courseCodeSaved": "코스 코드 {code} 저장됨",
     "courseCodeSavedExplanation": "가입하거나 로그인하시면 코스에 추가해 드립니다.",
     "moderationRefusedContactDetails": "메시지가 전송되지 않았습니다. 자동 필터에서 전화번호와 같은 연락처 정보를 감지했습니다. 해당 정보를 삭제하고 다시 시도해 주세요.",
-    "moderationRefusedProfanity": "메시지가 전송되지 않았습니다. 자동 필터에서 채팅에서 허용되지 않는 단어를 감지했습니다. 해당 단어를 변경하고 다시 시도해 주세요."
+    "moderationRefusedProfanity": "메시지가 전송되지 않았습니다. 자동 필터에서 채팅에서 허용되지 않는 단어를 감지했습니다. 해당 단어를 변경하고 다시 시도해 주세요.",
+    "callTranscriptTranscribeButton": "텍스트 변환",
+    "callTranscriptAudioUnavailable": "{name}의 저장된 녹음을 다운로드할 수 없어 텍스트로 변환할 수 없습니다.",
+    "callTranscriptChooseLanguage": "어떤 언어를 사용했나요?",
+    "callTranscriptSubscribeForTranscription": "텍스트 변환 구독",
+    "unlockCallTranscript": "통화 기록 잠금 해제",
+    "activitySummaryUpdateFailed": "이 요약을 업데이트할 수 없었습니다.",
+    "ssoNetworkBlockedTitle": "로그인 사이트에 연결할 수 없음",
+    "ssoNetworkBlockedDesc": "현재 네트워크에서 {provider}에 연결하여 로그인할 수 없습니다. 학교 및 사무실 Wi-Fi에서 차단하는 경우가 많습니다. 대신 이메일로 가입하거나 다른 네트워크로 전환하여 다시 시도할 수 있습니다.",
+    "ssoTryAnyway": "그래도 시도",
+    "publicCoursesFilterTooltip": "누구나 참여할 수 있는 코스만 표시",
+    "restrictedCoursesFilterTooltip": "참여를 요청해야 하는 코스만 표시",
+    "viewImageLabel": "이미지 보기"
 }

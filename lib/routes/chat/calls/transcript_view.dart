@@ -9,6 +9,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/subscription/widgets/locked_preview_banner.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_box.dart';
@@ -24,6 +26,8 @@ import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_tokens.dart';
 import 'package:fluffychat/routes/chat/calls/turn_timeline.dart';
+import 'package:fluffychat/routes/chat/calls/whole_call_transcriber.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/utils/multi_platform_audio_player.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -184,6 +188,25 @@ class CallTranscriptView extends StatefulWidget {
   @visibleForTesting
   final DateTime Function()? now;
 
+  /// Injected only by tests, standing in for the [WholeCallTranscriber] task
+  /// 3's on-demand Transcribe button and language picker drive (#8792). Built
+  /// the same way it is unit-tested (`whole_call_transcriber_test.dart`) --
+  /// with plain fake seams, no server and no widgets -- so a widget test here
+  /// controls exactly what the button produces without wiring a real STT
+  /// pipeline or subscription controller. Production builds its own via
+  /// [WholeCallTranscriber.forCall], reusing the same construction
+  /// `matrix.dart` uses for the call-end auto-producer.
+  @visibleForTesting
+  final WholeCallTranscriber? transcriber;
+
+  /// Injected only by tests, standing in for
+  /// `MatrixState.pangeaController.pLanguageStore.targetOptions` -- the
+  /// language list task 3's picker offers when a peer's languages do not
+  /// resolve automatically -- so a test controls exactly which languages are
+  /// on offer without needing a populated language store.
+  @visibleForTesting
+  final List<LanguageModel>? pickerLanguages;
+
   const CallTranscriptView({
     required this.room,
     required this.callKey,
@@ -192,6 +215,8 @@ class CallTranscriptView extends StatefulWidget {
     this.audioPlayerFactory,
     this.mergedFileLoader,
     this.now,
+    this.transcriber,
+    this.pickerLanguages,
     super.key,
   });
 
@@ -390,6 +415,61 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// drain the instant it settles. Reset by [_load] (a [_retry] starts a fresh
   /// epoch), set when [_feedLoadController]'s reads complete.
   bool _initialReadsSettled = false;
+
+  /// Task 3's (#8792) on-demand Transcribe drive. Built once, from the SAME
+  /// construction `matrix.dart` uses for the call-end auto-producer, so the
+  /// button posts through the identical seams (subscription gate, peer
+  /// language resolution, STT, send) the rest of the feature already trusts.
+  /// [WholeCallTranscriber] needs no `BuildContext`, so this can be built
+  /// eagerly rather than lazily on first tap.
+  late final WholeCallTranscriber _transcriber =
+      widget.transcriber ?? _buildTranscriber();
+
+  /// Speakers for whom the on-demand Transcribe button is currently running
+  /// (task 3). Shown as the [_Loading] shimmer in place of the button --
+  /// purely a view-local flag: [WholeCallTranscriber]'s own in-flight guard is
+  /// keyed by recording DEVICE and invisible from here, so this is what stops
+  /// a second tap on the same half's button while the first is still running.
+  final Set<String> _onDemandInFlight = {};
+
+  /// Speakers whose most recent on-demand attempt reported the saved audio
+  /// itself unusable (UNAVAILABLE-TERMINAL, spec section 4) -- the bytes would
+  /// not download, or speech-to-text produced nothing.
+  /// [WholeCallTranscriber.transcribeHalfOnDemand] now answers with a typed
+  /// [OnDemandTranscriptionResult], so this is added ONLY for
+  /// [OnDemandTranscriptionResult.audioUnavailable] and never for a transient
+  /// (no manifest yet) or not-yet-possible (no recording, gate unsatisfied)
+  /// outcome, which stay retryable. Terminal for this screen instance, matching
+  /// the design's own "not a button that cannot work" -- a download that just
+  /// failed is not retried by tapping again.
+  final Set<String> _onDemandUnavailable = {};
+
+  WholeCallTranscriber _buildTranscriber() => WholeCallTranscriber.forCall(
+    room: widget.room,
+    // The repo answers with a Result; the sink's contract is a value or a
+    // throw, exactly as `matrix.dart`'s own construction of this seam reads --
+    // reused verbatim so the on-demand path is transcribed by the identical
+    // route the call-end auto-producer already uses.
+    transcribe: (request) async {
+      final result = await SpeechToTextRepo.instance.get(request);
+      final value = result.asValue;
+      if (value == null) {
+        throw result.asError?.error ?? StateError('speech-to-text failed');
+      }
+      return value.value;
+    },
+    // Read at run time on every entry, never cached -- the root principle
+    // that entitlement is checked at READ time (spec section 3).
+    isSubscribed: () => MatrixState
+        .pangeaController
+        .subscriptionController
+        .showSubscriptionGatedContent,
+    peerLanguages: (userId) async {
+      final profile = await MatrixState.pangeaController.userController
+          .getPublicAnalyticsProfile(userId);
+      return (l1: profile.baseLanguage, l2: profile.targetLanguage);
+    },
+  );
 
   @override
   void initState() {
@@ -905,6 +985,90 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       }
       _load();
     });
+  }
+
+  /// Runs task 3's on-demand Transcribe button for [speakerId] (#8792).
+  ///
+  /// Resolves the peer's languages FIRST, through the exact resolver
+  /// [_transcriber] itself uses internally, so an unresolved pair opens the
+  /// LANGUAGE PICKER (spec section 4 bullet 3) instead of calling
+  /// [WholeCallTranscriber.transcribeHalfOnDemand] only to have it decline on
+  /// a condition already known here. A produced half is picked up by
+  /// re-reading the transcript through the same live-refresh path a sync
+  /// would use ([_refreshTranscript]) rather than waiting for the next one --
+  /// the learner just asked for this, and the half's event is already
+  /// acknowledged by the server by the time `transcribeHalfOnDemand` returns.
+  Future<void> _onTranscribeTapped(String speakerId) async {
+    if (_onDemandInFlight.contains(speakerId)) return;
+    setState(() {
+      _onDemandInFlight.add(speakerId);
+      _onDemandUnavailable.remove(speakerId);
+    });
+    try {
+      final resolved = await _transcriber.resolvePeerLanguages(speakerId);
+      String? language;
+      if (resolved.l1 == null || resolved.l2 == null) {
+        if (!mounted) return;
+        language = await _pickLanguage();
+        // Dismissed without a choice: nothing to do, and this is not the
+        // UNAVAILABLE-TERMINAL case, so the plain button stays offered.
+        if (language == null) return;
+      }
+      final result = await _transcriber.transcribeHalfOnDemand(
+        callKey: widget.callKey,
+        speakerId: speakerId,
+        language: language,
+      );
+      if (!mounted) return;
+      switch (result) {
+        // A half was produced, or one was already present: re-read so it shows.
+        case OnDemandTranscriptionResult.produced:
+        case OnDemandTranscriptionResult.alreadyPresent:
+          final fetch =
+              widget.fetcher ?? relationsFetcherFor(widget.room.client);
+          await _refreshTranscript(fetch);
+        // The saved audio itself is unusable (the bytes would not download, or
+        // speech-to-text produced nothing). The ONLY outcome terminal for this
+        // screen: the half is marked "audio unavailable" and the button is not
+        // offered again. See [_onDemandUnavailable]'s own doc.
+        case OnDemandTranscriptionResult.audioUnavailable:
+          setState(() => _onDemandUnavailable.add(speakerId));
+        // Transient or not-yet-possible -- a download that failed on a network
+        // or homeserver blip, no manifest arrived yet, no recording names this
+        // speaker, or the gate was not satisfied on this entry. Left RETRYABLE:
+        // the ordinary button reappears rather than locking into a terminal note
+        // over what a later tap may resolve.
+        case OnDemandTranscriptionResult.downloadFailed:
+        case OnDemandTranscriptionResult.manifestPending:
+        case OnDemandTranscriptionResult.noRecording:
+        case OnDemandTranscriptionResult.disabled:
+          break;
+      }
+    } catch (e, s) {
+      // A network hiccup resolving the peer's languages or posting the half --
+      // distinct from `transcribeHalfOnDemand`'s own false, which never
+      // throws (every fallible step inside it -- download, transcription --
+      // already catches its own failure and answers false instead). Logged,
+      // never swallowed benignly, and left RETRYABLE (unlike audio-
+      // unavailable): the ordinary button reappears rather than locking into
+      // a terminal note over what may only be transient.
+      Logs().w('On-demand call transcription failed for $speakerId', e, s);
+    } finally {
+      if (mounted) setState(() => _onDemandInFlight.remove(speakerId));
+    }
+  }
+
+  /// Task 3's LANGUAGE PICKER (spec section 4 bullet 3): shown when the
+  /// peer's languages did not resolve automatically. Returns the chosen
+  /// language code, or null when the picker was dismissed without a choice.
+  Future<String?> _pickLanguage() {
+    final languages =
+        widget.pickerLanguages ??
+        MatrixState.pangeaController.pLanguageStore.targetOptions;
+    return showDialog<String>(
+      context: context,
+      builder: (context) => _LanguagePickerDialog(languages: languages),
+    );
   }
 
   @override
@@ -1686,6 +1850,31 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     required ThemeData theme,
     required L10n l10n,
   }) {
+    // WHOLE-TRANSCRIPT PAYWALL (#8792 task 3). Read live here, at the top of
+    // every build of this section, never cached in State: the root principle
+    // is that entitlement is re-checked AT READ TIME on every derived
+    // surface, so a subscribed->unsubscribed downgrade re-locks on the very
+    // next rebuild (spec section "Root principle"). Replaces the WHOLE
+    // conversation body -- caveats, turns/per-speaker sections, and the notes
+    // below them -- with one banner, so neither half's words (nor the shape
+    // of who said how much) render for an unsubscribed viewer. The
+    // recordings/Full-call audio ABOVE this section is NOT gated: the paywall
+    // audit (#8792) found only the transcript WORDS reachable outside
+    // `transcript_view.dart`, never the raw audio, which already plays for
+    // anybody in the room today.
+    if (!MatrixState
+        .pangeaController
+        .subscriptionController
+        .showSubscriptionGatedContent) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        child: LockedPreviewBanner(
+          label: l10n.unlockCallTranscript,
+          fontSize: 16,
+        ),
+      );
+    }
+
     // A half with no transcript event of its own but WITH a saved recording is
     // not absent: its audio uploaded and the transcript of it is still being
     // produced (a device publishes its transcript just after its audio -- see
@@ -1773,6 +1962,19 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
               transcribing: transcribing(half),
               theme: theme,
               l10n: l10n,
+              // Task 3 (#8792): the recordings the view already fetches name
+              // which speakers have a manifest recording -- `recordingTimes`
+              // is keyed by sender exactly for this (see its own doc above).
+              // Never on the VIEWER's OWN half: the on-demand path only produces
+              // a PEER's half (`_produceOnePeer` refuses `spokenBy == self`), so
+              // offering it on one's own absent half is a button that can only
+              // no-op. The viewer's own half is the ordinary call-end flow's job.
+              hasRecording:
+                  half.senderId != me &&
+                  recordingTimes.containsKey(half.senderId),
+              onDemandInFlight: _onDemandInFlight.contains(half.senderId),
+              onDemandUnavailable: _onDemandUnavailable.contains(half.senderId),
+              onTranscribe: () => unawaited(_onTranscribeTapped(half.senderId)),
             ),
 
         // BELOW the conversation, never inside it. Absent, silent and
@@ -2589,12 +2791,34 @@ class _HalfSection extends StatelessWidget {
   final ThemeData theme;
   final L10n l10n;
 
+  /// Task 3 (#8792): whether a MANIFEST recording is known for this half's
+  /// speaker -- read from the recordings the view already fetches -- which is
+  /// what gates offering the on-demand Transcribe button in the ABSENT branch
+  /// below. Absent + no recording gets the plain "No transcript" note only.
+  final bool hasRecording;
+
+  /// Whether task 3's on-demand Transcribe button is currently running for
+  /// this speaker. Shown as the [_Loading] shimmer in its place.
+  final bool onDemandInFlight;
+
+  /// Whether the last on-demand attempt for this speaker came back unusable
+  /// -- the saved audio could not be downloaded (UNAVAILABLE-TERMINAL). A
+  /// terminal note in place of the button, never a silently-stuck spinner.
+  final bool onDemandUnavailable;
+
+  /// Runs task 3's on-demand Transcribe flow for this half's speaker.
+  final VoidCallback onTranscribe;
+
   const _HalfSection({
     required this.half,
     required this.name,
     required this.transcribing,
     required this.theme,
     required this.l10n,
+    required this.hasRecording,
+    required this.onDemandInFlight,
+    required this.onDemandUnavailable,
+    required this.onTranscribe,
   });
 
   @override
@@ -2630,7 +2854,31 @@ class _HalfSection extends StatelessWidget {
     // silent": a silent speaker still writes an empty half, and that case is
     // the one below.
     if (half.state == HalfState.absent) {
-      return [_Muted(text: l10n.callTranscriptNone(name))];
+      // Task 3 (#8792): a terminal note over the button, never a stuck one --
+      // see [onDemandUnavailable]'s own doc for why a plain false maps here.
+      if (onDemandUnavailable) {
+        return [_Muted(text: l10n.callTranscriptAudioUnavailable(name))];
+      }
+      if (onDemandInFlight) {
+        return [_Loading(text: l10n.callTranscriptTranscribing(name))];
+      }
+      return [
+        _Muted(text: l10n.callTranscriptNone(name)),
+        // A manifest recording exists for this speaker's unit but nobody has
+        // transcribed it yet -- offer to on demand, rather than only ever
+        // waiting for a subscriber to open this screen after the auto path
+        // already had its chance (spec section 4 bullet 2).
+        if (hasRecording) ...[
+          const SizedBox(height: 4),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: TextButton(
+              onPressed: onTranscribe,
+              child: Text(l10n.callTranscriptTranscribeButton),
+            ),
+          ),
+        ],
+      ];
     }
 
     // Shared with the notes drawn under the timeline, because it is the same
@@ -2659,6 +2907,35 @@ class _HalfSection extends StatelessWidget {
         _Caveat(text: l10n.callTranscriptPartial(name)),
       ],
     ];
+  }
+}
+
+/// Task 3's (#8792) language picker: a plain list, shown when the peer's
+/// languages did not resolve automatically (`getPublicAnalyticsProfile`
+/// returned a null pair) and the viewer taps Transcribe anyway.
+///
+/// Deliberately NOT `PLanguageDropdown`/`PLanguageDialog` -- those save the
+/// choice to the VIEWER'S OWN profile settings, which is not what this picker
+/// is for: it names the language the TAPPED SPEAKER used on their saved
+/// recording, a one-off choice for this transcription attempt only.
+class _LanguagePickerDialog extends StatelessWidget {
+  final List<LanguageModel> languages;
+
+  const _LanguagePickerDialog({required this.languages});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
+    return SimpleDialog(
+      title: Text(l10n.callTranscriptChooseLanguage),
+      children: [
+        for (final language in languages)
+          SimpleDialogOption(
+            onPressed: () => Navigator.of(context).pop(language.langCode),
+            child: Text(language.getDisplayName(l10n)),
+          ),
+      ],
+    );
   }
 }
 

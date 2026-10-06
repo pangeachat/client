@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-29 11:11:33.082730",
+    "@@last_modified": "2026-10-05 13:57:52.393235",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -8702,11 +8702,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Použiť obrázok aktivity ako pozadie chatu",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chatovať s podporou",
     "@chatWithSupport": {
         "type": "String",
@@ -10920,5 +10915,17 @@
     "courseCodeSaved": "Kód kurzu {code} uložený",
     "courseCodeSavedExplanation": "Zaregistrujte sa alebo sa prihláste a my vás pridáme do vášho kurzu.",
     "moderationRefusedContactDetails": "Vaša správa nebola odoslaná. Automatický filter našiel kontaktné údaje, napríklad telefónne číslo. Odstráňte ich a skúste to znova.",
-    "moderationRefusedProfanity": "Vaša správa nebola odoslaná. Automatický filter našiel slovo, ktoré v chate nepovoľujeme. Zmeňte ho a skúste to znova."
+    "moderationRefusedProfanity": "Vaša správa nebola odoslaná. Automatický filter našiel slovo, ktoré v chate nepovoľujeme. Zmeňte ho a skúste to znova.",
+    "callTranscriptTranscribeButton": "Prepis",
+    "callTranscriptAudioUnavailable": "Uloženú nahrávku od {name} sa nepodarilo stiahnuť, takže ju nebolo možné prepísať.",
+    "callTranscriptChooseLanguage": "Akým jazykom sa hovorilo?",
+    "callTranscriptSubscribeForTranscription": "Predplatiť si prepis",
+    "unlockCallTranscript": "Odomknúť prepis hovoru",
+    "activitySummaryUpdateFailed": "Tento súhrn nebolo možné aktualizovať.",
+    "ssoNetworkBlockedTitle": "Prihlasovacia stránka je nedostupná",
+    "ssoNetworkBlockedDesc": "Táto sieť nám neumožňuje pripojiť sa k {provider} a prihlásiť vás. Často to blokujú školské a kancelárske Wi-Fi siete. Namiesto toho sa môžete zaregistrovať e-mailom alebo prejsť na inú sieť a skúsiť to znova.",
+    "ssoTryAnyway": "Aj tak skúsiť",
+    "publicCoursesFilterTooltip": "Zobraziť iba kurzy, do ktorých sa môže zapojiť ktokoľvek",
+    "restrictedCoursesFilterTooltip": "Zobraziť iba kurzy, do ktorých sa musíte prihlásiť",
+    "viewImageLabel": "Zobraziť obrázok"
 }

@@ -3828,4 +3828,364 @@ void main() {
       expect(half.accounting.readerShortened, isFalse);
     });
   });
+
+  group('whole-call transcript: peer provenance and cross-writer dedup', () {
+    const carol = '@carol:example.com';
+
+    // A peer-produced half: [writer]'s client transcribed [spokenBy]'s saved
+    // audio. Its device id is the SPEAKER's recording device (the unit key),
+    // exactly as the producer writes it.
+    TranscriptCandidate peer({
+      required String writer,
+      required String spokenBy,
+      required String eventId,
+      String device = 'devA',
+      List<String> texts = const ['peer copy'],
+      int ts = 1000,
+    }) => TranscriptCandidate(
+      senderId: writer,
+      eventId: eventId,
+      spokenBy: spokenBy,
+      sourceAudioEventId: '\$audio-$spokenBy-$device',
+      deviceId: device,
+      originServerTs: ts,
+      segments: [for (final text in texts) TranscriptSegment(text)],
+      accounting: const HalfAccounting(
+        chunksCaptured: 2,
+        chunksTranscribed: 2,
+        declared: true,
+      ),
+    );
+
+    // A speaker's own half -- no spokenBy.
+    TranscriptCandidate own({
+      required String speaker,
+      required String eventId,
+      String device = 'devA',
+      List<String> texts = const ['my own words'],
+      int ts = 1000,
+    }) => TranscriptCandidate(
+      senderId: speaker,
+      eventId: eventId,
+      deviceId: device,
+      originServerTs: ts,
+      segments: [for (final text in texts) TranscriptSegment(text)],
+      accounting: const HalfAccounting(
+        chunksCaptured: 2,
+        chunksTranscribed: 2,
+        declared: true,
+      ),
+    );
+
+    test('a VALID peer half renders under the SPEAKER, not its writer', () {
+      final transcript = assembleTranscript(
+        candidates: [
+          peer(writer: bob, spokenBy: alice, eventId: '\$p1', texts: ['hola']),
+        ],
+        expectedSenders: [alice, bob],
+        provenance: const {'\$p1': ProvenanceState.valid},
+      );
+      // The peer-produced words are ALICE's, because she is who spoke them.
+      expect(_halfFor(transcript, alice).segments.map((s) => s.text), ['hola']);
+      // Bob wrote no half OF HIS OWN, so his section is absent -- the words are
+      // not collapsed onto the writer.
+      expect(_halfFor(transcript, bob).state, HalfState.absent);
+    });
+
+    test('an INVALID-TERMINAL peer half falls back to its WRITER', () {
+      final transcript = assembleTranscript(
+        candidates: [
+          peer(
+            writer: bob,
+            spokenBy: alice,
+            eventId: '\$p1',
+            texts: ['dubious'],
+          ),
+        ],
+        expectedSenders: [alice, bob],
+        provenance: const {'\$p1': ProvenanceState.invalidTerminal},
+      );
+      // The rejected claim reads as the legacy shape: the writer's own half.
+      expect(_halfFor(transcript, bob).segments.map((s) => s.text), [
+        'dubious',
+      ]);
+      expect(_halfFor(transcript, alice).state, HalfState.absent);
+    });
+
+    test('AUTHENTIC beats a peer transcription of the same unit', () {
+      // Alice's own half and bob's VALID transcription of the same alice/devA
+      // audio. Alice's own record of her words must win. Peer listed first, to
+      // prove the choice is order-independent.
+      final transcript = assembleTranscript(
+        candidates: [
+          peer(
+            writer: bob,
+            spokenBy: alice,
+            eventId: '\$p1',
+            texts: ['peer copy'],
+          ),
+          own(speaker: alice, eventId: '\$a1', texts: ['my own words']),
+        ],
+        expectedSenders: [alice, bob],
+        provenance: const {'\$p1': ProvenanceState.valid},
+      );
+      expect(_halfFor(transcript, alice).segments.map((s) => s.text), [
+        'my own words',
+      ]);
+    });
+
+    test(
+      "a writer's own re-run supersedes its earlier attempt (latest ts)",
+      () {
+        // Same writer, same unit, two attempts. The later one wins.
+        final transcript = assembleTranscript(
+          candidates: [
+            peer(
+              writer: bob,
+              spokenBy: alice,
+              eventId: '\$early',
+              ts: 1000,
+              texts: ['early run'],
+            ),
+            peer(
+              writer: bob,
+              spokenBy: alice,
+              eventId: '\$late',
+              ts: 2000,
+              texts: ['later run'],
+            ),
+          ],
+          expectedSenders: [alice, bob],
+          provenance: const {
+            '\$early': ProvenanceState.valid,
+            '\$late': ProvenanceState.valid,
+          },
+        );
+        expect(_halfFor(transcript, alice).segments.map((s) => s.text), [
+          'later run',
+        ]);
+      },
+    );
+
+    test('a different writer cannot supersede another by posting later', () {
+      // Two writers transcribed the same alice/devA audio. The lower writer id
+      // (@bob) wins, though it posted EARLIER than @carol -- the lane is a
+      // stable identity, not the clock, so one writer cannot churn over
+      // another's half.
+      final transcript = assembleTranscript(
+        candidates: [
+          peer(
+            writer: bob,
+            spokenBy: alice,
+            eventId: '\$b',
+            ts: 1000,
+            texts: ['bob transcription'],
+          ),
+          peer(
+            writer: carol,
+            spokenBy: alice,
+            eventId: '\$c',
+            ts: 5000,
+            texts: ['carol transcription'],
+          ),
+        ],
+        expectedSenders: [alice, bob],
+        provenance: const {
+          '\$b': ProvenanceState.valid,
+          '\$c': ProvenanceState.valid,
+        },
+      );
+      expect(_halfFor(transcript, alice).segments.map((s) => s.text), [
+        'bob transcription',
+      ]);
+    });
+
+    test('a residual tie (same lane, same ts) is broken by event id', () {
+      final transcript = assembleTranscript(
+        candidates: [
+          peer(
+            writer: bob,
+            spokenBy: alice,
+            eventId: '\$zzz',
+            ts: 1000,
+            texts: ['zzz'],
+          ),
+          peer(
+            writer: bob,
+            spokenBy: alice,
+            eventId: '\$aaa',
+            ts: 1000,
+            texts: ['aaa'],
+          ),
+        ],
+        expectedSenders: [alice, bob],
+        provenance: const {
+          '\$zzz': ProvenanceState.valid,
+          '\$aaa': ProvenanceState.valid,
+        },
+      );
+      // Lower event id wins, deterministically.
+      expect(_halfFor(transcript, alice).segments.map((s) => s.text), ['aaa']);
+    });
+
+    test(
+      'an UNAVAILABLE peer half is not words and does not block the real half',
+      () {
+        // Alice's audio is gone (unavailable); bob spoke his own half. Alice must
+        // not show the unavailable peer words, and bob's real half must render.
+        final transcript = assembleTranscript(
+          candidates: [
+            peer(
+              writer: bob,
+              spokenBy: alice,
+              eventId: '\$p1',
+              texts: ['unavailable'],
+            ),
+            own(
+              speaker: bob,
+              eventId: '\$b1',
+              device: 'devB',
+              texts: ['bob spoke'],
+            ),
+          ],
+          expectedSenders: [alice, bob],
+          provenance: const {'\$p1': ProvenanceState.unavailableTerminal},
+        );
+        expect(_halfFor(transcript, alice).segments, isEmpty);
+        expect(_halfFor(transcript, alice).state, isNot(HalfState.present));
+        expect(_halfFor(transcript, bob).segments.map((s) => s.text), [
+          'bob spoke',
+        ]);
+      },
+    );
+
+    test(
+      'a PENDING peer half is excluded and never attributed to its writer',
+      () {
+        final transcript = assembleTranscript(
+          candidates: [
+            peer(
+              writer: bob,
+              spokenBy: alice,
+              eventId: '\$p1',
+              texts: ['pending'],
+            ),
+          ],
+          expectedSenders: [alice, bob],
+          provenance: const {'\$p1': ProvenanceState.pendingTransient},
+        );
+        // Neither the speaker nor the writer shows the held-out words.
+        expect(_halfFor(transcript, alice).segments, isEmpty);
+        expect(_halfFor(transcript, bob).segments, isEmpty);
+      },
+    );
+
+    test(
+      'a peer half missing from a non-empty map defaults to PENDING (never sender)',
+      () {
+        // A resolver that dropped an entry must fail safe toward showing nothing,
+        // never toward forging the words onto the writer.
+        final transcript = assembleTranscript(
+          candidates: [
+            peer(
+              writer: bob,
+              spokenBy: alice,
+              eventId: '\$missing',
+              texts: ['orphan'],
+            ),
+          ],
+          expectedSenders: [alice, bob],
+          // Non-empty map, but the candidate's own id is absent from it.
+          provenance: const {'\$other': ProvenanceState.valid},
+        );
+        expect(_halfFor(transcript, alice).segments, isEmpty);
+        expect(_halfFor(transcript, bob).segments, isEmpty);
+      },
+    );
+
+    test('one half per (speaker, device) unit -- one source wins', () {
+      // Two VALID peer transcriptions of the SAME alice/devA audio from two
+      // writers: exactly one half results for alice, and exactly one section.
+      final transcript = assembleTranscript(
+        candidates: [
+          peer(
+            writer: bob,
+            spokenBy: alice,
+            eventId: '\$b',
+            texts: ['bob copy'],
+          ),
+          peer(
+            writer: carol,
+            spokenBy: alice,
+            eventId: '\$c',
+            texts: ['carol copy'],
+          ),
+        ],
+        expectedSenders: [alice, bob],
+        provenance: const {
+          '\$b': ProvenanceState.valid,
+          '\$c': ProvenanceState.valid,
+        },
+      );
+      expect(
+        transcript.halves.where((h) => h.senderId == alice),
+        hasLength(1),
+        reason: 'exactly one section per speaker',
+      );
+      final alicesHalf = _halfFor(transcript, alice);
+      expect(
+        alicesHalf.deviceCount,
+        1,
+        reason: 'one recording device for the unit',
+      );
+      // The lower writer lane (@bob) supplied the single kept half.
+      expect(alicesHalf.segments.map((s) => s.text), ['bob copy']);
+    });
+
+    test(
+      'with no provenance map, a candidate carrying spokenBy is held out',
+      () {
+        // The legacy call path passes no map. A peer claim it cannot resolve is
+        // pending -- excluded -- never collapsed to the writer.
+        final transcript = assembleTranscript(
+          candidates: [
+            peer(
+              writer: bob,
+              spokenBy: alice,
+              eventId: '\$p1',
+              texts: ['unresolved'],
+            ),
+          ],
+          expectedSenders: [alice, bob],
+        );
+        expect(_halfFor(transcript, alice).segments, isEmpty);
+        expect(_halfFor(transcript, bob).segments, isEmpty);
+      },
+    );
+
+    test(
+      'an authentic-only read is unchanged whether or not a map is passed',
+      () {
+        final candidates = [
+          own(speaker: alice, eventId: '\$a1', texts: ['alice']),
+          own(speaker: bob, eventId: '\$b1', device: 'devB', texts: ['bob']),
+        ];
+        final without = assembleTranscript(
+          candidates: candidates,
+          expectedSenders: [alice, bob],
+        );
+        final withEmpty = assembleTranscript(
+          candidates: candidates,
+          expectedSenders: [alice, bob],
+          provenance: const {},
+        );
+        expect(_halfFor(without, alice).segments.map((s) => s.text), ['alice']);
+        expect(_halfFor(withEmpty, alice).segments.map((s) => s.text), [
+          'alice',
+        ]);
+        expect(_halfFor(without, bob).segments.map((s) => s.text), ['bob']);
+        expect(_halfFor(withEmpty, bob).segments.map((s) => s.text), ['bob']);
+      },
+    );
+  });
 }

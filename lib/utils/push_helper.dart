@@ -384,16 +384,6 @@ Future<void> _tryPushHelper(
         ? null
         : <AndroidNotificationAction>[
             AndroidNotificationAction(
-              FluffyChatNotificationActions.reply.name,
-              l10n.reply,
-              inputs: [
-                AndroidNotificationActionInput(label: l10n.writeAMessage),
-              ],
-              cancelNotification: false,
-              allowGeneratedReplies: true,
-              semanticAction: SemanticAction.reply,
-            ),
-            AndroidNotificationAction(
               FluffyChatNotificationActions.markAsRead.name,
               l10n.markAsRead,
               semanticAction: SemanticAction.markAsRead,

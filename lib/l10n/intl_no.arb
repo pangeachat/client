@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-29 11:11:31.736983",
+    "@@last_modified": "2026-10-05 13:57:50.979768",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Bla gjennom offentlige kurs",
     "publicInviteDescChat": "Søk etter brukere for å invitere dem til denne chatten.",
     "publicInviteDescSpace": "Søk etter brukere for å invitere dem til dette rommet.",
-    "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
     "chatWithSupport": "Chat med support",
     "newCourseAccess": "Som standard er kurs offentlig søkbare og krever administratorgodkjenning for å bli med. Du kan redigere disse innstillingene når som helst.",
     "onboardingLanguagesTitle": "Hvilket språk lærer du?",
@@ -2383,5 +2382,17 @@
     "courseCodeSaved": "Kurskode {code} lagret",
     "courseCodeSavedExplanation": "Registrer deg eller logg inn, så legger vi deg til kurset ditt.",
     "moderationRefusedContactDetails": "Meldingen din ble ikke sendt. Et automatisk filter fant kontaktdetaljer, som et telefonnummer. Vennligst fjern dem og prøv igjen.",
-    "moderationRefusedProfanity": "Meldingen din ble ikke sendt. Et automatisk filter fant et ord vi ikke tillater i chatten. Vennligst endre det og prøv igjen."
+    "moderationRefusedProfanity": "Meldingen din ble ikke sendt. Et automatisk filter fant et ord vi ikke tillater i chatten. Vennligst endre det og prøv igjen.",
+    "callTranscriptTranscribeButton": "Transkriber",
+    "callTranscriptAudioUnavailable": "Det lagrede opptaket fra {name} kunne ikke lastes ned, så det kunne ikke transkriberes.",
+    "callTranscriptChooseLanguage": "Hvilket språk ble snakket?",
+    "callTranscriptSubscribeForTranscription": "Abonner for transkripsjon",
+    "unlockCallTranscript": "Lås opp samtaletranskripsjon",
+    "activitySummaryUpdateFailed": "Denne oppsummeringen kunne ikke oppdateres.",
+    "ssoNetworkBlockedTitle": "Påloggingsside utilgjengelig",
+    "ssoNetworkBlockedDesc": "Dette nettverket hindrer oss i å nå {provider} for å logge deg på. Skole- og kontor-Wi-Fi blokkerer ofte dette. Du kan registrere deg med e-post i stedet, eller bytte til et annet nettverk og prøve igjen.",
+    "ssoTryAnyway": "Prøv likevel",
+    "publicCoursesFilterTooltip": "Vis kun kurs alle kan delta i",
+    "restrictedCoursesFilterTooltip": "Vis kun kurs du må spørre om å få delta i",
+    "viewImageLabel": "Vis bilde"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-29 11:11:36.939570",
+    "@@last_modified": "2026-10-05 13:57:54.967720",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Ṣawari awọn ẹkọ gbangba",
     "publicInviteDescChat": "Wa awọn olumulo lati pe wọn si iwiregbe yii.",
     "publicInviteDescSpace": "Wa awọn olumulo lati pe wọn si aaye yii.",
-    "useActivityImageAsChatBackground": "Lo aworan iṣẹ ṣiṣe bi abẹlẹ iwiregbe",
     "chatWithSupport": "Iwiregbe pẹlu Atilẹyin",
     "newCourseAccess": "Nipa aiyipada, awọn ẹkọ jẹ wiwa ni gbangba ati nilo ifọwọsi alakoso lati darapọ mọ. O le ṣatunkọ awọn eto wọnyi nigbakugba.",
     "onboardingLanguagesTitle": "Ede wo ni o n kọ?",
@@ -2383,5 +2382,17 @@
     "courseCodeSaved": "Koodu ikẹkọọ {code} ti wà ní ìpamọ́",
     "courseCodeSavedExplanation": "Forúkọ sílẹ̀ tàbí wọlé, a ó sì fi kún ọ sí ikẹkọọ rẹ.",
     "moderationRefusedContactDetails": "A kò fi ifiranṣẹ rẹ ranṣẹ. Àlàyé aládàáṣe rí àwọn àlàyé ìbánisọ̀rọ̀, bíi nọ́ńbà tẹlifóònù. Jọ̀wọ́ yọ wọ́n kúrò kí o sì tún gbìyànjú.",
-    "moderationRefusedProfanity": "A kò fi ifiranṣẹ rẹ ranṣẹ. Àlàyé aládàáṣe rí ọ̀rọ̀ kan tí a kò gbà láàyè nínú ìjíròrò. Jọ̀wọ́ yí i padà kí o sì tún gbìyànjú."
+    "moderationRefusedProfanity": "A kò fi ifiranṣẹ rẹ ranṣẹ. Àlàyé aládàáṣe rí ọ̀rọ̀ kan tí a kò gbà láàyè nínú ìjíròrò. Jọ̀wọ́ yí i padà kí o sì tún gbìyànjú.",
+    "callTranscriptTranscribeButton": "Ṣe àkọsílẹ̀",
+    "callTranscriptAudioUnavailable": "Ìgbàsílẹ̀ tí a fipamọ́ láti ọ̀dọ̀ {name} kò lè ṣe ìgbàsílẹ̀, nítorí náà kò lè ṣe àkọsílẹ̀.",
+    "callTranscriptChooseLanguage": "Èdè wo ni a sọ?",
+    "callTranscriptSubscribeForTranscription": "Ṣe àbáwọlé fún àkọsílẹ̀",
+    "unlockCallTranscript": "Ṣí àkọsílẹ̀ ìpe sílẹ̀",
+    "activitySummaryUpdateFailed": "Kò lè ṣe àtúnṣe àkópọ̀ yìí.",
+    "ssoNetworkBlockedTitle": "Aaye ìforúkọsílẹ̀ kò ṣeé dé",
+    "ssoNetworkBlockedDesc": "Nẹ́tíwọ̀kì yìí kò jẹ́ kí a dé {provider} láti fi ọ́ wọlé. Wi-Fi ilé-ìwé àti ọ́fíìsì sábà máa ń dí i lọ́nà. O lè forúkọsílẹ̀ pẹ̀lú imeeli dípò, tàbí yípadà sí nẹ́tíwọ̀kì mìíràn kí o sì tún gbìyànjú.",
+    "ssoTryAnyway": "Gbìyànjú lọ́nàkọnà",
+    "publicCoursesFilterTooltip": "Fi àwọn ìdánilẹ́kọ̀ọ́ tí ẹnikẹ́ni lè darapọ̀ mọ́ hàn nìkan",
+    "restrictedCoursesFilterTooltip": "Fi àwọn ìdánilẹ́kọ̀ọ́ tí o gbọ́dọ̀ béèrè láti darapọ̀ mọ́ hàn nìkan",
+    "viewImageLabel": "Wo aworan"
 }

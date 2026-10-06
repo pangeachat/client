@@ -3093,7 +3093,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-09-29 11:11:26.170164",
+    "@@last_modified": "2026-10-05 13:57:47.729205",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8389,11 +8389,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "चैट पृष्ठभूमि के रूप में गतिविधि छवि का उपयोग करें",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "सहायता से चैट करें",
     "@chatWithSupport": {
         "type": "String",
@@ -10607,5 +10602,17 @@
     "courseCodeSaved": "कोर्स कोड {code} सहेजा गया",
     "courseCodeSavedExplanation": "साइन अप करें या लॉग इन करें और हम आपको आपके कोर्स में जोड़ देंगे।",
     "moderationRefusedContactDetails": "आपका संदेश नहीं भेजा गया। एक स्वचालित फ़िल्टर को संपर्क विवरण, जैसे फ़ोन नंबर मिला। कृपया उन्हें हटा दें और पुनः प्रयास करें।",
-    "moderationRefusedProfanity": "आपका संदेश नहीं भेजा गया। एक स्वचालित फ़िल्टर को एक ऐसा शब्द मिला जिसकी हम चैट में अनुमति नहीं देते हैं। कृपया इसे बदलें और पुनः प्रयास करें।"
+    "moderationRefusedProfanity": "आपका संदेश नहीं भेजा गया। एक स्वचालित फ़िल्टर को एक ऐसा शब्द मिला जिसकी हम चैट में अनुमति नहीं देते हैं। कृपया इसे बदलें और पुनः प्रयास करें।",
+    "callTranscriptTranscribeButton": "लिप्यंतरित करें",
+    "callTranscriptAudioUnavailable": "{name} से सहेजी गई रिकॉर्डिंग डाउनलोड नहीं की जा सकी, इसलिए इसे लिप्यंतरित नहीं किया जा सका।",
+    "callTranscriptChooseLanguage": "कौन सी भाषा बोली गई थी?",
+    "callTranscriptSubscribeForTranscription": "लिप्यंतरण के लिए सदस्यता लें",
+    "unlockCallTranscript": "कॉल ट्रांसक्रिप्ट अनलॉक करें",
+    "activitySummaryUpdateFailed": "यह सारांश अपडेट नहीं किया जा सका।",
+    "ssoNetworkBlockedTitle": "साइन-इन साइट तक नहीं पहुँचा जा सकता",
+    "ssoNetworkBlockedDesc": "यह नेटवर्क आपको साइन इन करने के लिए {provider} तक पहुँचने नहीं दे रहा है। स्कूल और ऑफिस का वाई-फाई अक्सर इसे ब्लॉक कर देता है। आप इसके बजाय ईमेल से साइन अप कर सकते हैं, या किसी दूसरे नेटवर्क पर स्विच करके फिर से कोशिश कर सकते हैं।",
+    "ssoTryAnyway": "फिर भी कोशिश करें",
+    "publicCoursesFilterTooltip": "केवल वे कोर्स दिखाएं जिनमें कोई भी शामिल हो सकता है",
+    "restrictedCoursesFilterTooltip": "केवल वे कोर्स दिखाएं जिनमें शामिल होने के लिए आपको पूछना होगा",
+    "viewImageLabel": "छवि देखें"
 }

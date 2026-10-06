@@ -50,8 +50,8 @@ void main() {
 
   setUp(() => dotenv.testLoad(mergeWith: {'CHOREO_API': choreoApi}));
 
-  /// A distinct activity per call — the repo memoizes successes for 10 minutes
-  /// on roomId + activityId + langCode.
+  /// A distinct source row per call — the repo memoizes successes for 10
+  /// minutes on roomId + source row + viewer L1.
   var seq = 0;
   ActivitySummaryRequestModel request() => ActivitySummaryRequestModel(
     activity: ActivityPlanModel(
@@ -69,10 +69,10 @@ void main() {
       learningObjective: 'lo',
       instructions: 'i',
       vocab: const [],
-      activityId: 'act-${seq++}',
+      activityId: 'act',
     ),
-    activityResults: const [],
-    contentFeedback: const [],
+    sourceRequestHash: 'row-${seq++}',
+    viewerL1: 'es',
   );
 
   Future<Object?> fetchError(int status, {String body = ''}) async {

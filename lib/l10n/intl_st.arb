@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-29 11:11:34.346262",
+    "@@last_modified": "2026-10-05 13:57:53.534835",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Batla lithupelo tsa sechaba",
     "publicInviteDescChat": "Batla basebelisi ho ba memela moqoqong ona.",
     "publicInviteDescSpace": "Batla basebelisi ho ba memela sebakeng sena.",
-    "useActivityImageAsChatBackground": "Sebelisa setšoantšo sa mosebetsi joalo ka bokamorao ba moqoqo",
     "chatWithSupport": "Qoqa le Tšehetso",
     "newCourseAccess": "Ka ho sa feleng, lithupelo li ka batloa ke sechaba 'me li hloka tumello ea molaoli ho kena. U ka fetola litlhophiso tsena neng kapa neng.",
     "onboardingLanguagesTitle": "U ithuta puo efe?",
@@ -2383,5 +2382,17 @@
     "courseCodeSaved": "Khoutu ea thupelo {code} e bolokiloe",
     "courseCodeSavedExplanation": "Ingolise kapa u kene 'me re tla u kenya thupelong ea hau.",
     "moderationRefusedContactDetails": "Molaetsa wa hao ha o a romelwa. Sesefa sa boitsebiso se fumane dintlha tsa ho ikopanya, jwalo ka nomoro ya mohala. Ka kopo di tlose mme o leke hape.",
-    "moderationRefusedProfanity": "Molaetsa wa hao ha o a romelwa. Sesefa sa boitsebiso se fumane lentswe leo re sa le dumelleng moqoqong. Ka kopo le fetole mme o leke hape."
+    "moderationRefusedProfanity": "Molaetsa wa hao ha o a romelwa. Sesefa sa boitsebiso se fumane lentswe leo re sa le dumelleng moqoqong. Ka kopo le fetole mme o leke hape.",
+    "callTranscriptTranscribeButton": "Ngola",
+    "callTranscriptAudioUnavailable": "Rekoto e bolokilweng ho tswa ho {name} ha e a ka ya jarollwa, ka hona ha e a ka ya ngolwa.",
+    "callTranscriptChooseLanguage": "Ho ne ho buuwa puo efe?",
+    "callTranscriptSubscribeForTranscription": "Ngolisa bakeng sa ho ngola",
+    "unlockCallTranscript": "Notlolla sengoloa sa mohala",
+    "activitySummaryUpdateFailed": "Kakaretso ena e sitilwe ho ntjhafatswa.",
+    "ssoNetworkBlockedTitle": "Sebaka sa ho kena ha se fihlellehe",
+    "ssoNetworkBlockedDesc": "Marang-rang ana ha a re lumelle ho fihlella {provider} ho u kenya. Wi-Fi ea sekolo le ofisi hangata e a e thibela. U ka ingolisa ka imeile ho e-na le hoo, kapa ua fetohela marang-rang a mang 'me ua leka hape.",
+    "ssoTryAnyway": "Leka leha ho le joalo",
+    "publicCoursesFilterTooltip": "Bontsha lithuto tseo mang kapa mang a ka kenelang ho tsona feela",
+    "restrictedCoursesFilterTooltip": "Bontsha lithuto tseo o tlamehang ho kopa ho kenela ho tsona feela",
+    "viewImageLabel": "Bona setshwantsho"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-29 11:11:26.029246",
+    "@@last_modified": "2026-10-05 13:57:47.634215",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "સાર્વજનિક કોર્સ બ્રાઉઝ કરો",
     "publicInviteDescChat": "વપરાશકર્તાઓને આ ચેટમાં આમંત્રિત કરવા માટે શોધો.",
     "publicInviteDescSpace": "વપરાશકર્તાઓને આ સ્પેસમાં આમંત્રિત કરવા માટે શોધો.",
-    "useActivityImageAsChatBackground": "ચેટ બેકગ્રાઉન્ડ તરીકે પ્રવૃત્તિની છબીનો ઉપયોગ કરો",
     "chatWithSupport": "સપોર્ટ સાથે ચેટ કરો",
     "newCourseAccess": "ડિફૉલ્ટ રૂપે, કોર્સ સાર્વજનિક રીતે શોધી શકાય છે અને જોડાવા માટે એડમિનની મંજૂરીની જરૂર છે. તમે આ સેટિંગ્સને કોઈપણ સમયે સંપાદિત કરી શકો છો.",
     "onboardingLanguagesTitle": "તમે કઈ ભાષા શીખી રહ્યા છો?",
@@ -2383,5 +2382,17 @@
     "courseCodeSaved": "કોર્સ કોડ {code} સાચવવામાં આવ્યો",
     "courseCodeSavedExplanation": "સાઇન અપ કરો અથવા લૉગ ઇન કરો અને અમે તમને તમારા કોર્સમાં ઉમેરીશું.",
     "moderationRefusedContactDetails": "તમારો સંદેશ મોકલવામાં આવ્યો નથી. સ્વચાલિત ફિલ્ટરને ફોન નંબર જેવી સંપર્ક વિગતો મળી છે. કૃપા કરીને તેને દૂર કરો અને ફરી પ્રયાસ કરો.",
-    "moderationRefusedProfanity": "તમારો સંદેશ મોકલવામાં આવ્યો નથી. સ્વચાલિત ફિલ્ટરને એવો શબ્દ મળ્યો છે જેની અમે ચેટમાં મંજૂરી આપતા નથી. કૃપા કરીને તેને બદલો અને ફરી પ્રયાસ કરો."
+    "moderationRefusedProfanity": "તમારો સંદેશ મોકલવામાં આવ્યો નથી. સ્વચાલિત ફિલ્ટરને એવો શબ્દ મળ્યો છે જેની અમે ચેટમાં મંજૂરી આપતા નથી. કૃપા કરીને તેને બદલો અને ફરી પ્રયાસ કરો.",
+    "callTranscriptTranscribeButton": "ટ્રાન્સક્રાઇબ કરો",
+    "callTranscriptAudioUnavailable": "{name} માંથી સાચવેલી રેકોર્ડિંગ ડાઉનલોડ કરી શકાઈ નથી, તેથી તેને ટ્રાન્સક્રાઇબ કરી શકાઈ નથી.",
+    "callTranscriptChooseLanguage": "કઈ ભાષા બોલવામાં આવી હતી?",
+    "callTranscriptSubscribeForTranscription": "ટ્રાન્સક્રિપ્શન માટે સબ્સ્ક્રાઇબ કરો",
+    "unlockCallTranscript": "કૉલ ટ્રાન્સક્રિપ્ટ અનલૉક કરો",
+    "activitySummaryUpdateFailed": "આ સારાંશ અપડેટ કરી શકાયો નથી.",
+    "ssoNetworkBlockedTitle": "સાઇન-ઇન સાઇટ પહોંચી શકાય તેવી નથી",
+    "ssoNetworkBlockedDesc": "આ નેટવર્ક તમને સાઇન ઇન કરવા માટે {provider} સુધી પહોંચવા દેતું નથી. શાળા અને ઑફિસનું Wi-Fi ઘણીવાર તેને બ્લૉક કરે છે. તમે તેના બદલે ઇમેઇલ વડે સાઇન અપ કરી શકો છો અથવા બીજા નેટવર્ક પર સ્વિચ કરીને ફરી પ્રયાસ કરી શકો છો.",
+    "ssoTryAnyway": "તો પણ પ્રયાસ કરો",
+    "publicCoursesFilterTooltip": "ફક્ત એવા અભ્યાસક્રમો બતાવો જેમાં કોઈપણ જોડાઈ શકે",
+    "restrictedCoursesFilterTooltip": "ફક્ત એવા અભ્યાસક્રમો બતાવો જેમાં જોડાવા માટે તમારે પૂછવું પડશે",
+    "viewImageLabel": "છબી જુઓ"
 }

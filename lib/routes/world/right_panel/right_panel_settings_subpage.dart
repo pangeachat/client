@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
+import 'package:fluffychat/features/subscription/utils/storefront_gate.dart';
 import 'package:fluffychat/routes/profile/user_home_page.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
 import 'package:fluffychat/routes/settings/settings_chat/settings_chat.dart';
@@ -70,7 +72,13 @@ class RightPanelSettingsSubpage extends StatelessWidget {
       case 'subscription/history':
         return SubscriptionHistory(closeButton: closeButton);
       case 'subscription/discount':
-        return DiscountCodePage(closeButton: closeButton);
+        // A deep link must not reach code entry where the button is hidden.
+        return allowsInAppDiscountCode(
+              isWeb: kIsWeb,
+              platform: defaultTargetPlatform,
+            )
+            ? DiscountCodePage(closeButton: closeButton)
+            : SettingsSubscription(closeButton: closeButton);
       case 'subscription/selected':
         final planId = param?.planId;
         return planId != null

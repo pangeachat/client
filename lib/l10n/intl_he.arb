@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 11:11:26.253932",
+    "@@last_modified": "2026-10-05 13:57:47.643939",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -8671,11 +8671,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "השתמש בתמונה של הפעילות כרקע לצ'אט",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "צ'אט עם תמיכה",
     "@chatWithSupport": {
         "type": "String",
@@ -10889,5 +10884,17 @@
     "courseCodeSaved": "קוד קורס {code} נשמר",
     "courseCodeSavedExplanation": "הירשם או התחבר ואנו נוסיף אותך לקורס שלך.",
     "moderationRefusedContactDetails": "ההודעה שלך לא נשלחה. מסנן אוטומטי זיהה פרטי התקשרות, כמו מספר טלפון. אנא הסר אותם ונסה שוב.",
-    "moderationRefusedProfanity": "ההודעה שלך לא נשלחה. מסנן אוטומטי זיהה מילה שאנו לא מאפשרים בצ'אט. אנא שנה אותה ונסה שוב."
+    "moderationRefusedProfanity": "ההודעה שלך לא נשלחה. מסנן אוטומטי זיהה מילה שאנו לא מאפשרים בצ'אט. אנא שנה אותה ונסה שוב.",
+    "callTranscriptTranscribeButton": "תמלול",
+    "callTranscriptAudioUnavailable": "ההקלטה השמורה מ{name} לא ניתנת להורדה, ולכן לא ניתן לתמלל אותה.",
+    "callTranscriptChooseLanguage": "באיזו שפה דיברתם?",
+    "callTranscriptSubscribeForTranscription": "הירשם לתימלול",
+    "unlockCallTranscript": "פתח את תמלול השיחה",
+    "activitySummaryUpdateFailed": "לא ניתן היה לעדכן את הסיכום הזה.",
+    "ssoNetworkBlockedTitle": "אתר ההתחברות אינו זמין",
+    "ssoNetworkBlockedDesc": "רשת זו אינה מאפשרת לנו להגיע אל {provider} כדי לחבר אותך. רשתות Wi-Fi בבתי ספר ובמשרדים חוסמות זאת לעיתים קרובות. באפשרותך להירשם באמצעות דוא\"ל במקום זאת, או לעבור לרשת אחרת ולנסות שוב.",
+    "ssoTryAnyway": "נסה בכל זאת",
+    "publicCoursesFilterTooltip": "הצג רק קורסים שכל אחד יכול להצטרף אליהם",
+    "restrictedCoursesFilterTooltip": "הצג רק קורסים שאתה צריך לבקש להצטרף אליהם",
+    "viewImageLabel": "הצג תמונה"
 }

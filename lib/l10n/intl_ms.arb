@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-29 11:11:30.492117",
+    "@@last_modified": "2026-10-05 13:57:50.781097",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Semak imbas kursus awam",
     "publicInviteDescChat": "Cari pengguna untuk menjemput mereka ke sembang ini.",
     "publicInviteDescSpace": "Cari pengguna untuk menjemput mereka ke ruang ini.",
-    "useActivityImageAsChatBackground": "Gunakan imej aktiviti sebagai latar belakang sembang",
     "chatWithSupport": "Sembang dengan Sokongan",
     "newCourseAccess": "Secara lalai, kursus boleh dicari secara awam dan memerlukan kelulusan pentadbir untuk menyertai. Anda boleh mengedit tetapan ini pada bila-bila masa.",
     "onboardingLanguagesTitle": "Bahasa apa yang anda pelajari?",
@@ -2383,5 +2382,17 @@
     "courseCodeSaved": "Kod kursus {code} disimpan",
     "courseCodeSavedExplanation": "Daftar atau log masuk dan kami akan menambahkan anda ke kursus anda.",
     "moderationRefusedContactDetails": "Mesej anda tidak dihantar. Penapis automatik menemui butiran hubungan, seperti nombor telefon. Sila alih keluar dan cuba lagi.",
-    "moderationRefusedProfanity": "Mesej anda tidak dihantar. Penapis automatik menemui perkataan yang tidak kami benarkan dalam sembang. Sila ubah dan cuba lagi."
+    "moderationRefusedProfanity": "Mesej anda tidak dihantar. Penapis automatik menemui perkataan yang tidak kami benarkan dalam sembang. Sila ubah dan cuba lagi.",
+    "callTranscriptTranscribeButton": "Transkripsi",
+    "callTranscriptAudioUnavailable": "Rakaman yang disimpan daripada {name} tidak dapat dimuat turun, jadi ia tidak dapat ditranskripsi.",
+    "callTranscriptChooseLanguage": "Bahasa apa yang dituturkan?",
+    "callTranscriptSubscribeForTranscription": "Langgan untuk transkripsi",
+    "unlockCallTranscript": "Buka kunci transkripsi panggilan",
+    "activitySummaryUpdateFailed": "Ringkasan ini tidak dapat dikemas kini.",
+    "ssoNetworkBlockedTitle": "Laman web log masuk tidak dapat dicapai",
+    "ssoNetworkBlockedDesc": "Rangkaian ini tidak membenarkan kami mencapai {provider} untuk log masuk anda. Wi-Fi sekolah dan pejabat sering menyekatnya. Anda boleh mendaftar dengan e-mel sebagai ganti, atau beralih ke rangkaian lain dan cuba lagi.",
+    "ssoTryAnyway": "Cuba juga",
+    "publicCoursesFilterTooltip": "Tunjukkan hanya kursus yang boleh disertai sesiapa sahaja",
+    "restrictedCoursesFilterTooltip": "Tunjukkan hanya kursus yang anda perlu minta untuk sertai",
+    "viewImageLabel": "Lihat imej"
 }

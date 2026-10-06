@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 11:11:33.916825",
+    "@@last_modified": "2026-10-05 13:57:52.931303",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -8706,11 +8706,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu za čat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Razgovarajte sa podrškom",
     "@chatWithSupport": {
         "type": "String",
@@ -10924,5 +10919,17 @@
     "courseCodeSaved": "Kod kursa {code} sačuvan",
     "courseCodeSavedExplanation": "Registrujte se ili se prijavite i mi ćemo vas dodati na vaš kurs.",
     "moderationRefusedContactDetails": "Vaša poruka nije poslata. Automatski filter je pronašao detalje za kontakt, kao što je broj telefona. Uklonite ih i pokušajte ponovo.",
-    "moderationRefusedProfanity": "Vaša poruka nije poslata. Automatski filter je pronašao reč koju ne dozvoljavamo u ćaskanju. Promenite je i pokušajte ponovo."
+    "moderationRefusedProfanity": "Vaša poruka nije poslata. Automatski filter je pronašao reč koju ne dozvoljavamo u ćaskanju. Promenite je i pokušajte ponovo.",
+    "callTranscriptTranscribeButton": "Prepiši",
+    "callTranscriptAudioUnavailable": "Sačuvani snimak od {name} nije mogao da se preuzme, tako da nije mogao da bude prepisan.",
+    "callTranscriptChooseLanguage": "Koji jezik je bio u upotrebi?",
+    "callTranscriptSubscribeForTranscription": "Pretplatite se za transkripciju",
+    "unlockCallTranscript": "Otključaj transkript poziva",
+    "activitySummaryUpdateFailed": "Ovaj rezime nije mogao da se ažurira.",
+    "ssoNetworkBlockedTitle": "Sajt za prijavu je nedostupan",
+    "ssoNetworkBlockedDesc": "Ova mreža nam ne dozvoljava da dođemo do {provider} da bismo vas prijavili. Školski i kancelarijski Wi-Fi često blokiraju pristup. Umesto toga, možete se prijaviti putem e-pošte ili preći na drugu mrežu i pokušati ponovo.",
+    "ssoTryAnyway": "Pokušajte svejedno",
+    "publicCoursesFilterTooltip": "Prikaži samo kurseve kojima se svako može pridružiti",
+    "restrictedCoursesFilterTooltip": "Prikaži samo kurseve za koje moraš tražiti dozvolu za pridruživanje",
+    "viewImageLabel": "Prikaži sliku"
 }

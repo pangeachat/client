@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:matrix/matrix.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 
@@ -29,11 +28,6 @@ Future<String?> getDatabaseCipher() async {
     // Pangea#
     final containsEncryptionKey =
         await secureStorage.read(key: _passwordStorageKey) != null;
-    // #Pangea
-    Sentry.addBreadcrumb(
-      Breadcrumb(message: 'containsEncryptionKey: $containsEncryptionKey'),
-    );
-    // Pangea#
     if (!containsEncryptionKey) {
       final rng = Random.secure();
       final list = Uint8List(32);
@@ -55,29 +49,12 @@ Future<String?> getDatabaseCipher() async {
         .delete(key: _passwordStorageKey)
         .catchError((_) {});
     Logs().w('Database encryption is not supported on this platform', e);
-    // #Pangea
-    Sentry.addBreadcrumb(
-      Breadcrumb(
-        message:
-            'Database encryption is not supported on this platform. Error message: ${e.message}',
-        data: {'exception': e},
-      ),
-    );
-    // Pangea#
     _sendNoEncryptionWarning(e);
   } catch (e, s) {
     const FlutterSecureStorage()
         .delete(key: _passwordStorageKey)
         .catchError((_) {});
     Logs().w('Unable to init database encryption', e, s);
-    // #Pangea
-    Sentry.addBreadcrumb(
-      Breadcrumb(
-        message: 'Unable to init database encryption',
-        data: {'exception': e, 'stackTrace': s},
-      ),
-    );
-    // Pangea#
     _sendNoEncryptionWarning(e);
   }
 
@@ -90,12 +67,6 @@ void _sendNoEncryptionWarning(Object exception) async {
   if (isStored == true) return;
 
   // #Pangea
-  Sentry.addBreadcrumb(
-    Breadcrumb(
-      message: 'No database encryption',
-      data: {'exception': exception},
-    ),
-  );
   // final l10n = await lookupL10n(PlatformDispatcher.instance.locale);
   // ClientManager.sendInitNotification(
   //   l10n.noDatabaseEncryption,

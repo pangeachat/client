@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 11:11:27.373861",
+    "@@last_modified": "2026-10-05 13:57:48.721384",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -7860,11 +7860,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chatta con il supporto",
     "@chatWithSupport": {
         "type": "String",
@@ -10048,5 +10043,17 @@
     "courseCodeSaved": "Codice corso {code} salvato",
     "courseCodeSavedExplanation": "Iscriviti o accedi e ti aggiungeremo al tuo corso.",
     "moderationRefusedContactDetails": "Il tuo messaggio non è stato inviato. Un filtro automatico ha rilevato dettagli di contatto, come un numero di telefono. Rimuovili e riprova.",
-    "moderationRefusedProfanity": "Il tuo messaggio non è stato inviato. Un filtro automatico ha rilevato una parola che non è consentita in chat. Modificala e riprova."
+    "moderationRefusedProfanity": "Il tuo messaggio non è stato inviato. Un filtro automatico ha rilevato una parola che non è consentita in chat. Modificala e riprova.",
+    "callTranscriptTranscribeButton": "Trascrivi",
+    "callTranscriptAudioUnavailable": "La registrazione salvata da {name} non può essere scaricata, quindi non può essere trascritta.",
+    "callTranscriptChooseLanguage": "Che lingua è stata parlata?",
+    "callTranscriptSubscribeForTranscription": "Abbonati per la trascrizione",
+    "unlockCallTranscript": "Sblocca trascrizione chiamata",
+    "activitySummaryUpdateFailed": "Impossibile aggiornare questo riepilogo.",
+    "ssoNetworkBlockedTitle": "Sito di accesso irraggiungibile",
+    "ssoNetworkBlockedDesc": "Questa rete non ci permette di raggiungere {provider} per effettuare l'accesso. Le reti Wi-Fi di scuole e uffici spesso lo bloccano. Puoi registrarti con l'email, oppure passare a un'altra rete e riprovare.",
+    "ssoTryAnyway": "Riprova comunque",
+    "publicCoursesFilterTooltip": "Mostra solo i corsi a cui tutti possono partecipare",
+    "restrictedCoursesFilterTooltip": "Mostra solo i corsi a cui devi chiedere di partecipare",
+    "viewImageLabel": "Visualizza immagine"
 }

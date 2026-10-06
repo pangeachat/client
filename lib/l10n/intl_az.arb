@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-29 11:11:23.353216",
+    "@@last_modified": "2026-10-05 13:57:45.205239",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "İctimai kurslara baxın",
     "publicInviteDescChat": "Bu çata dəvət etmək üçün istifadəçiləri axtarın.",
     "publicInviteDescSpace": "Bu məkana dəvət etmək üçün istifadəçiləri axtarın.",
-    "useActivityImageAsChatBackground": "Fəaliyyət şəklini çat fonu kimi istifadə et",
     "chatWithSupport": "Dəstək ilə söhbət et",
     "newCourseAccess": "Standart olaraq, kurslar ictimai axtarışa açıqdır və qoşulmaq üçün administrator təsdiqi tələb edir. Bu ayarları istənilən vaxt redaktə edə bilərsiniz.",
     "onboardingLanguagesTitle": "Hansı dili öyrənirsiniz?",
@@ -2383,5 +2382,17 @@
     "courseCodeSaved": "{code} kurs kodu yadda saxlanıldı",
     "courseCodeSavedExplanation": "Qeydiyyatdan keçin və ya daxil olun, biz sizi kursunuza əlavə edəcəyik.",
     "moderationRefusedContactDetails": "Mesajınız göndərilmədi. Avtomatik filtr telefon nömrəsi kimi əlaqə məlumatları aşkar etdi. Zəhmət olmasa, onları silin və yenidən cəhd edin.",
-    "moderationRefusedProfanity": "Mesajınız göndərilmədi. Avtomatik filtr çatda icazə verilməyən bir söz aşkar etdi. Zəhmət olmasa, onu dəyişdirin və yenidən cəhd edin."
+    "moderationRefusedProfanity": "Mesajınız göndərilmədi. Avtomatik filtr çatda icazə verilməyən bir söz aşkar etdi. Zəhmət olmasa, onu dəyişdirin və yenidən cəhd edin.",
+    "callTranscriptTranscribeButton": "Transkripsiya et",
+    "callTranscriptAudioUnavailable": "{name} qeydə alınmış səsi yüklənmədi, buna görə də transkripsiya edilə bilmədi.",
+    "callTranscriptChooseLanguage": "Hansı dildə danışılıb?",
+    "callTranscriptSubscribeForTranscription": "Transkripsiya üçün abunə olun",
+    "unlockCallTranscript": "Zəng transkripsiyasını açın",
+    "activitySummaryUpdateFailed": "Bu xülasə yenilənə bilmədi.",
+    "ssoNetworkBlockedTitle": "Giriş saytı əlçatan deyil",
+    "ssoNetworkBlockedDesc": "Bu şəbəkə sizin daxil olmağınız üçün {provider} ilə əlaqə saxlamağımıza icazə vermir. Məktəb və ofis Wi-Fi-ları bunu tez-tez bloklayır. Bunun əvəzinə e-poçtla qeydiyyatdan keçə bilərsiniz və ya başqa şəbəkəyə keçib yenidən cəhd edə bilərsiniz.",
+    "ssoTryAnyway": "Yenə də cəhd edin",
+    "publicCoursesFilterTooltip": "Yalnız hər kəsin qoşula biləcəyi kursları göstər",
+    "restrictedCoursesFilterTooltip": "Yalnız qoşulmaq üçün soruşmalı olduğunuz kursları göstər",
+    "viewImageLabel": "Şəklə bax"
 }

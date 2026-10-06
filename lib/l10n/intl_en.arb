@@ -3932,6 +3932,17 @@
     "callTranscriptFullCall": "Full call",
     "callTranscriptPreparingRecording": "Preparing the full recording…",
     "callTranscriptNoRecording": "No recording of the full call.",
+    "callTranscriptTranscribeButton": "Transcribe",
+    "callTranscriptAudioUnavailable": "The saved recording from {name} could not be downloaded, so it could not be transcribed.",
+    "@callTranscriptAudioUnavailable": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptChooseLanguage": "What language was spoken?",
+    "callTranscriptSubscribeForTranscription": "Subscribe for transcription",
     "leaveSpaceDescription": "By leaving the course, you will leave all of the chats within it. Other users will see that you have left the course.",
     "constructUseCorMmDesc": "Correct message meaning",
     "constructUseIncMmDesc": "Incorrect message meaning",
@@ -4176,6 +4187,7 @@
         }
     },
     "activitySummaryError": "Activity summaries unavailable",
+    "activitySummaryUpdateFailed": "This summary could not be updated.",
     "requestSummaries": "Request summaries",
     "requestAccessTitle": "Request analytics access?",
     "requestAccessDesc": "Would you like to request access to view participant analytics?\n\nIf participants agree, you will be able to view their:\n    • total vocabulary\n    • total grammar concepts\n    • total activity sessions completed\n    • the specific grammar concepts used, correctly and incorrectly\n\nYou will not be able to view their:\n    • messages in chats outside the course\n    • vocabulary list",
@@ -4761,6 +4773,10 @@
     "ssoDialogTitle": "Waiting for sign in to complete",
     "ssoDialogDesc": "We opened a new tab so you can sign in securely.",
     "ssoDialogHelpText": "🤔 If you didn't see the new tab, please check your popup blocker.",
+    "ssoNetworkBlockedTitle": "Sign-in site unreachable",
+    "ssoNetworkBlockedDesc": "This network is not letting us reach {provider} to sign you in. School and office Wi-Fi often block it. You can sign up with email instead, or switch to another network and try again.",
+    "@ssoNetworkBlockedDesc": {"placeholders": {"provider": {"type": "String"}}},
+    "ssoTryAnyway": "Try anyway",
     "disableLanguageToolsTitle": "Disable language tools",
     "disableLanguageToolsDesc": "Would you like to disable automatic language assistance?",
     "screenSizeWarning": "For the best experience using this application, please expand your screen size.",
@@ -4795,7 +4811,6 @@
     "browsePublicCourses": "Browse public courses",
     "publicInviteDescChat": "Search for users to invite them to this chat.",
     "publicInviteDescSpace": "Search for users to invite them to this space.",
-    "useActivityImageAsChatBackground": "Use activity image as chat background",
     "chatWithSupport": "Chat with Support",
     "botDisplayName": "Pangea Bot",
     "@botDisplayName": {
@@ -4836,6 +4851,7 @@
     "unlockEmojiMode": "Unlock emoji mode",
     "unlockMessagePractice": "Unlock message practice",
     "unlockWritingAssistance": "Unlock writing assistance",
+    "unlockCallTranscript": "Unlock call transcript",
     "managementSnackbarMessage": "We launched subscription management in a new tab. If you didn't see the new tab, please check your popup blocker.",
     "getStarted": "Get started",
     "hideEvents": "Hide events",
@@ -5422,6 +5438,7 @@
     "openDM": "Open direct message",
     "openNewTab": "Open in new tab",
     "viewProfileImageLabel": "View profile image",
+    "viewImageLabel": "View image",
     "profileImageLabel": "Profile image",
     "actionsLabel": "Actions",
     "colorListLabel": "Color list",
@@ -5617,6 +5634,8 @@
     "allCoursesFilterTooltip": "Show all courses",
     "teachingCoursesFilterTooltip": "Show only courses you teach",
     "learningCoursesFilterTooltip": "Show only courses you're learning in",
+    "publicCoursesFilterTooltip": "Show only courses anyone can join",
+    "restrictedCoursesFilterTooltip": "Show only courses you must ask to join",
     "searchCoursesHint": "Search courses",
     "noCoursesMatchSearch": "No courses match your search.",
     "courseNameHint": "Course name",

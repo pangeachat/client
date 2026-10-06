@@ -1362,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-29 11:11:27.440661",
+    "@@last_modified": "2026-10-05 13:57:48.497866",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8693,11 +8693,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Fala com o Suporte",
     "@chatWithSupport": {
         "type": "String",
@@ -10911,5 +10906,17 @@
     "courseCodeSaved": "Codice de curso {code} salvate",
     "courseCodeSavedExplanation": "Registra te o aperi session e nos te addera a tu curso.",
     "moderationRefusedContactDetails": "Tu message non esseva inviate. Un filtro automatic trovava datos de contacto, como un numero de telephono. Per favor, remove los e reprova.",
-    "moderationRefusedProfanity": "Tu message non esseva inviate. Un filtro automatic trovava un parola que nos non permitte in le chat. Per favor, cambia lo e reprova."
+    "moderationRefusedProfanity": "Tu message non esseva inviate. Un filtro automatic trovava un parola que nos non permitte in le chat. Per favor, cambia lo e reprova.",
+    "callTranscriptTranscribeButton": "Transcriber",
+    "callTranscriptAudioUnavailable": "Le registration salvate de {name} non poteva esser discargate, ergo illo non poteva esser transcribite.",
+    "callTranscriptChooseLanguage": "Qual lingua esseva parlate?",
+    "callTranscriptSubscribeForTranscription": "Subscriber pro transcription",
+    "unlockCallTranscript": "Disblocar transcripto de appellation",
+    "activitySummaryUpdateFailed": "Iste summario non poteva esser actualisate.",
+    "ssoNetworkBlockedTitle": "Sito de authentification inaccessibile",
+    "ssoNetworkBlockedDesc": "Iste rete non nos permitte attinger {provider} pro authentificar vos. Le Wi-Fi de scholas e officios sovente lo bloca. Vos pote registrar vos con e-mail in loco, o cambiar a un altere rete e reprovar.",
+    "ssoTryAnyway": "Provar de tote modos",
+    "publicCoursesFilterTooltip": "Monstrar solmente cursos a los que tote le mundo pote unir se",
+    "restrictedCoursesFilterTooltip": "Monstrar solmente cursos a los que tu debe demandar de unir te",
+    "viewImageLabel": "Vider imagine"
 }

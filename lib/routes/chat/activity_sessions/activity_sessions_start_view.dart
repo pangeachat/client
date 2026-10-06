@@ -12,7 +12,6 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/languages/context_language_switch_target.dart';
 import 'package:fluffychat/features/languages/language_flag_chip.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
-import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -35,6 +34,7 @@ import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orche
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
+import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -135,17 +135,8 @@ class ActivitySessionStartView extends StatelessWidget {
                           context,
                         ).backButtonTooltip,
                         icon: const Icon(Icons.arrow_back),
-                        onPressed: () {
-                          // The course card that mounts claims focus; this
-                          // arrow goes with the activity panel.
-                          PanelEntryIntent.instance.armForSwap();
-                          GoRouter.of(context).go(
-                            WorkspaceNav.dropActivityOverlay(
-                              uri,
-                              reopenCourseCard: true,
-                            ),
-                          );
-                        },
+                        onPressed: () =>
+                            NavigationUtil.backFromActivityPlan(context),
                       )
                     : embedded
                     // Unscoped (pin entry) → X dismisses to the map.

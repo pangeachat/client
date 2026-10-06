@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-29 11:11:25.058885",
+    "@@last_modified": "2026-10-05 13:57:46.951485",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -7925,11 +7925,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Käytä aktiviteettikuvaa chat-taustana",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chattaa tuen kanssa",
     "@chatWithSupport": {
         "type": "String",
@@ -10012,5 +10007,17 @@
     "courseCodeSaved": "Kurssikoodi {code} tallennettu",
     "courseCodeSavedExplanation": "Rekisteröidy tai kirjaudu sisään, niin lisäämme sinut kurssillesi.",
     "moderationRefusedContactDetails": "Viestisi ei lähetetty. Automaattinen suodatin löysi yhteystietoja, kuten puhelinnumeron. Poista ne ja yritä uudelleen.",
-    "moderationRefusedProfanity": "Viestisi ei lähetetty. Automaattinen suodatin löysi sanan, jota emme salli chatissa. Muuta sitä ja yritä uudelleen."
+    "moderationRefusedProfanity": "Viestisi ei lähetetty. Automaattinen suodatin löysi sanan, jota emme salli chatissa. Muuta sitä ja yritä uudelleen.",
+    "callTranscriptTranscribeButton": "Transkriboi",
+    "callTranscriptAudioUnavailable": "Tallennetun äänitteen lataaminen käyttäjältä {name} epäonnistui, joten sitä ei voitu litteroida.",
+    "callTranscriptChooseLanguage": "Mitä kieltä puhuttiin?",
+    "callTranscriptSubscribeForTranscription": "Tilaa litterointi",
+    "unlockCallTranscript": "Avaa puhelun litterointi",
+    "activitySummaryUpdateFailed": "Yhteenvedon päivittäminen epäonnistui.",
+    "ssoNetworkBlockedTitle": "Kirjautumissivusto ei tavoitettavissa",
+    "ssoNetworkBlockedDesc": "Tämä verkko estää meitä tavoittamasta palvelua {provider} kirjautuaksesi sisään. Koulun ja toimiston Wi-Fi-verkot estävät sen usein. Voit kirjautua sisään sähköpostilla tai vaihtaa toiseen verkkoon ja yrittää uudelleen.",
+    "ssoTryAnyway": "Yritä silti",
+    "publicCoursesFilterTooltip": "Näytä vain kurssit, joihin kuka tahansa voi liittyä",
+    "restrictedCoursesFilterTooltip": "Näytä vain kurssit, joihin liittymistä on pyydettävä",
+    "viewImageLabel": "Näytä kuva"
 }

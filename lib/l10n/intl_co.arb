@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-29 11:11:24.082908",
+    "@@last_modified": "2026-10-05 13:57:45.942324",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Sfoglia i corsi publichi",
     "publicInviteDescChat": "Ricercate utilizatori per invità li à stu chat.",
     "publicInviteDescSpace": "Ricercate utilizatori per invità li à stu spaziu.",
-    "useActivityImageAsChatBackground": "Aduprà l'imagine di l'attività cum'è fondu di u chat",
     "chatWithSupport": "Chattà cù u Supportu",
     "newCourseAccess": "Per difettu, i corsi sò cercabili publicamente è necessitanu l'approvazione di l'amministratore per aderisce. Pudete mudificà sti parametri in ogni mumentu.",
     "onboardingLanguagesTitle": "Chì lingua amparate?",
@@ -2383,5 +2382,17 @@
     "courseCodeSaved": "Codice di corsu {code} salvatu",
     "courseCodeSavedExplanation": "Iscrivetevi o cunnettatevi è vi aghjunghjeremu à u vostru corsu.",
     "moderationRefusedContactDetails": "U vostru messagiu ùn hè statu mandatu. Un filtru automaticu hà trovu dati di cuntattu, cum'è un numeru di telefunu. Per piacè, cacciateli è riprovate.",
-    "moderationRefusedProfanity": "U vostru messagiu ùn hè statu mandatu. Un filtru automaticu hà trovu una parolla chì ùn permettemu micca in chat. Per piacè, cambiatela è riprovate."
+    "moderationRefusedProfanity": "U vostru messagiu ùn hè statu mandatu. Un filtru automaticu hà trovu una parolla chì ùn permettemu micca in chat. Per piacè, cambiatela è riprovate.",
+    "callTranscriptTranscribeButton": "Trascribe",
+    "callTranscriptAudioUnavailable": "A registrazione salvata da {name} ùn hà pussutu esse scaricata, dunque ùn hà pussutu esse trascritta.",
+    "callTranscriptChooseLanguage": "Chì lingua hè stata parlata?",
+    "callTranscriptSubscribeForTranscription": "Abbunà si per a trascrizzione",
+    "unlockCallTranscript": "Sbloccà a trascrizzione di a chjama",
+    "activitySummaryUpdateFailed": "Stu riassuntu ùn hà pussutu esse aghjurnatu.",
+    "ssoNetworkBlockedTitle": "Situ di cunnessione inaccessibile",
+    "ssoNetworkBlockedDesc": "Sta rete ùn ci permette micca di ghjunghje à {provider} per cunnettavvi. U Wi-Fi di a scola è di l'uffiziu u bluccanu spessu. Pudete iscrivevi cù l'email invece, o passà à un'altra rete è riprovà.",
+    "ssoTryAnyway": "Pruvate quantunque",
+    "publicCoursesFilterTooltip": "Mostra solu i corsi à i quali ognunu pò participà",
+    "restrictedCoursesFilterTooltip": "Mostra solu i corsi à i quali duvete dumandà di participà",
+    "viewImageLabel": "Vede l'imagine"
 }

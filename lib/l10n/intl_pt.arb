@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 11:11:32.125523",
+    "@@last_modified": "2026-10-05 13:57:51.894386",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -8701,11 +8701,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Usar imagem da atividade como fundo do chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Converse com o Suporte",
     "@chatWithSupport": {
         "type": "String",
@@ -10919,5 +10914,17 @@
     "courseCodeSaved": "Código do curso {code} salvo",
     "courseCodeSavedExplanation": "Cadastre-se ou faça login e nós o adicionaremos ao seu curso.",
     "moderationRefusedContactDetails": "Sua mensagem não foi enviada. Um filtro automático encontrou detalhes de contato, como um número de telefone. Remova-os e tente novamente.",
-    "moderationRefusedProfanity": "Sua mensagem não foi enviada. Um filtro automático encontrou uma palavra que não permitimos no chat. Por favor, altere-a e tente novamente."
+    "moderationRefusedProfanity": "Sua mensagem não foi enviada. Um filtro automático encontrou uma palavra que não permitimos no chat. Por favor, altere-a e tente novamente.",
+    "callTranscriptTranscribeButton": "Transcrever",
+    "callTranscriptAudioUnavailable": "A gravação salva de {name} não pôde ser baixada, então não pôde ser transcrita.",
+    "callTranscriptChooseLanguage": "Qual idioma foi falado?",
+    "callTranscriptSubscribeForTranscription": "Assine para transcrever",
+    "unlockCallTranscript": "Desbloquear transcrição da chamada",
+    "activitySummaryUpdateFailed": "Não foi possível atualizar este resumo.",
+    "ssoNetworkBlockedTitle": "Site de login inacessível",
+    "ssoNetworkBlockedDesc": "Esta rede não nos permite acessar {provider} para fazer seu login. Redes Wi-Fi de escolas e escritórios geralmente bloqueiam isso. Você pode se inscrever com e-mail ou mudar para outra rede e tentar novamente.",
+    "ssoTryAnyway": "Tentar mesmo assim",
+    "publicCoursesFilterTooltip": "Mostrar apenas cursos que qualquer pessoa pode participar",
+    "restrictedCoursesFilterTooltip": "Mostrar apenas cursos para os quais você deve pedir para participar",
+    "viewImageLabel": "Ver imagem"
 }

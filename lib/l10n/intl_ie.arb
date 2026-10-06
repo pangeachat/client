@@ -3093,7 +3093,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-29 11:11:27.960773",
+    "@@last_modified": "2026-10-05 13:57:48.523062",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8389,11 +8389,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat le Tacaíocht",
     "@chatWithSupport": {
         "type": "String",
@@ -10607,5 +10602,17 @@
     "courseCodeSaved": "Cód cúrsa {code} sábháilte",
     "courseCodeSavedExplanation": "Cláraigh nó logáil isteach agus cuirfimid le do chúrsa thú.",
     "moderationRefusedContactDetails": "Níor seoladh do theachtaireacht. Fuair scagaire uathoibríoch sonraí teagmhála, cosúil le huimhir theileafóin. Bain iad le do thoil agus bain triail eile as.",
-    "moderationRefusedProfanity": "Níor seoladh do theachtaireacht. Fuair scagaire uathoibríoch focal nach gceadaímid sa chomhrá. Athraigh é le do thoil agus bain triail eile as."
+    "moderationRefusedProfanity": "Níor seoladh do theachtaireacht. Fuair scagaire uathoibríoch focal nach gceadaímid sa chomhrá. Athraigh é le do thoil agus bain triail eile as.",
+    "callTranscriptTranscribeButton": "Trascríobh",
+    "callTranscriptAudioUnavailable": "Níorbh fhéidir an taifeadadh sábháilte ó {name} a íoslódáil, mar sin níorbh fhéidir é a thrascríobh.",
+    "callTranscriptChooseLanguage": "Cén teanga a labhraíodh?",
+    "callTranscriptSubscribeForTranscription": "Liostáil le haghaidh trascríofa",
+    "unlockCallTranscript": "Díghlasáil trascríbhinn glaonna",
+    "activitySummaryUpdateFailed": "Níorbh fhéidir an achoimre seo a nuashonrú.",
+    "ssoNetworkBlockedTitle": "Ní féidir suíomh sínithe isteach a bhaint amach",
+    "ssoNetworkBlockedDesc": "Níl an líonra seo ag ligean dúinn {provider} a bhaint amach chun tú a shíniú isteach. Is minic a chuireann Wi-Fi scoile agus oifige bac air. Is féidir leat clárú le ríomhphost ina ionad, nó aistrigh go líonra eile agus bain triail eile as.",
+    "ssoTryAnyway": "Bain triail as ar aon nós",
+    "publicCoursesFilterTooltip": "Taispeáin cúrsaí ar féidir le duine ar bith a bheith páirteach iontu amháin",
+    "restrictedCoursesFilterTooltip": "Taispeáin cúrsaí nach mór duit a iarraidh a bheith páirteach iontu amháin",
+    "viewImageLabel": "Féach ar an íomhá"
 }

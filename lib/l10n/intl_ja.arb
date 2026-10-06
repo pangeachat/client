@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-29 11:11:27.582011",
+    "@@last_modified": "2026-10-05 13:57:48.603201",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -8526,11 +8526,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "サポートとチャット",
     "@chatWithSupport": {
         "type": "String",
@@ -10744,5 +10739,17 @@
     "courseCodeSaved": "コースコード {code} が保存されました",
     "courseCodeSavedExplanation": "サインアップまたはログインすると、コースに追加されます。",
     "moderationRefusedContactDetails": "メッセージは送信されませんでした。自動フィルターが電話番号などの連絡先の詳細を検出しました。削除してもう一度お試しください。",
-    "moderationRefusedProfanity": "メッセージは送信されませんでした。自動フィルターがチャットで許可されていない単語を検出しました。変更してもう一度お試しください。"
+    "moderationRefusedProfanity": "メッセージは送信されませんでした。自動フィルターがチャットで許可されていない単語を検出しました。変更してもう一度お試しください。",
+    "callTranscriptTranscribeButton": "文字起こし",
+    "callTranscriptAudioUnavailable": "{name}の保存された録音をダウンロードできなかったため、文字起こしできませんでした。",
+    "callTranscriptChooseLanguage": "話された言語は何ですか？",
+    "callTranscriptSubscribeForTranscription": "文字起こしを購読する",
+    "unlockCallTranscript": "通話記録のロックを解除",
+    "activitySummaryUpdateFailed": "この要約を更新できませんでした。",
+    "ssoNetworkBlockedTitle": "サインインサイトに接続できません",
+    "ssoNetworkBlockedDesc": "このネットワークでは、サインインのために{provider}に接続できません。学校や職場のWi-Fiではよくブロックされます。代わりにメールで登録するか、別のネットワークに切り替えて再試行してください。",
+    "ssoTryAnyway": "とにかく試す",
+    "publicCoursesFilterTooltip": "誰でも参加できるコースのみを表示",
+    "restrictedCoursesFilterTooltip": "参加申請が必要なコースのみを表示",
+    "viewImageLabel": "画像を表示"
 }

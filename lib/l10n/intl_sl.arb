@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-29 11:11:33.221172",
+    "@@last_modified": "2026-10-05 13:57:52.676336",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8702,11 +8702,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Uporabi sliko dejavnosti kot ozadje klepeta",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Pogovorite se s podporo",
     "@chatWithSupport": {
         "type": "String",
@@ -10920,5 +10915,17 @@
     "courseCodeSaved": "Koda tečaja {code} je shranjena",
     "courseCodeSavedExplanation": "Prijavite se ali se registrirajte in dodali vas bomo v tečaj.",
     "moderationRefusedContactDetails": "Vaše sporočilo ni bilo poslano. Samodejni filter je zaznal podatke za stik, kot je telefonska številka. Odstranite jih in poskusite znova.",
-    "moderationRefusedProfanity": "Vaše sporočilo ni bilo poslano. Samodejni filter je zaznal besedo, ki je v klepetu ne dovoljujemo. Prosimo, spremenite jo in poskusite znova."
+    "moderationRefusedProfanity": "Vaše sporočilo ni bilo poslano. Samodejni filter je zaznal besedo, ki je v klepetu ne dovoljujemo. Prosimo, spremenite jo in poskusite znova.",
+    "callTranscriptTranscribeButton": "Prepiši",
+    "callTranscriptAudioUnavailable": "Shranjene posnetke od {name} ni bilo mogoče prenesti, zato jih ni bilo mogoče prepisati.",
+    "callTranscriptChooseLanguage": "Kateri jezik je bil govorjen?",
+    "callTranscriptSubscribeForTranscription": "Naročite se na prepisovanje",
+    "unlockCallTranscript": "Odkleni prepis klica",
+    "activitySummaryUpdateFailed": "Tega povzetka ni bilo mogoče posodobiti.",
+    "ssoNetworkBlockedTitle": "Mesto za prijavo ni dosegljivo",
+    "ssoNetworkBlockedDesc": "To omrežje nam ne dovoljuje, da dosežemo {provider} za vašo prijavo. Šolski in pisarniški Wi-Fi to pogosto blokirata. Namesto tega se lahko prijavite z e-pošto ali preklopite na drugo omrežje in poskusite znova.",
+    "ssoTryAnyway": "Vseeno poskusi",
+    "publicCoursesFilterTooltip": "Prikaži samo tečaje, ki se jim lahko pridruži kdorkoli",
+    "restrictedCoursesFilterTooltip": "Prikaži samo tečaje, za katere moraš zaprositi za pridružitev",
+    "viewImageLabel": "Ogled slike"
 }

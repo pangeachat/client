@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-29 11:11:25.033104",
+    "@@last_modified": "2026-10-05 13:57:46.556552",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -7948,11 +7948,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Vestle Toega",
     "@chatWithSupport": {
         "type": "String",
@@ -9972,5 +9967,17 @@
     "courseCodeSaved": "Kursuse kood {code} salvestatud",
     "courseCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind kursusele.",
     "moderationRefusedContactDetails": "Sinu sõnumit ei saadetud. Automaatne filter tuvastas kontaktandmed, näiteks telefoninumbri. Palun eemalda need ja proovi uuesti.",
-    "moderationRefusedProfanity": "Sinu sõnumit ei saadetud. Automaatne filter tuvastas sõna, mida me vestluses ei luba. Palun muuda seda ja proovi uuesti."
+    "moderationRefusedProfanity": "Sinu sõnumit ei saadetud. Automaatne filter tuvastas sõna, mida me vestluses ei luba. Palun muuda seda ja proovi uuesti.",
+    "callTranscriptTranscribeButton": "Transkribeeri",
+    "callTranscriptAudioUnavailable": "Salvestatud heli {name} kasutajalt ei saanud alla laadida, seega ei saanud seda transkribeerida.",
+    "callTranscriptChooseLanguage": "Mis keeles räägiti?",
+    "callTranscriptSubscribeForTranscription": "Telli transkriptsioon",
+    "unlockCallTranscript": "Ava kõne transkriptsioon",
+    "activitySummaryUpdateFailed": "Seda kokkuvõtet ei saanud värskendada.",
+    "ssoNetworkBlockedTitle": "Sisselogimisleht pole kättesaadav",
+    "ssoNetworkBlockedDesc": "See võrk ei lase meil teid sisse logimiseks {provider} lehele suunata. Kooli ja kontori Wi-Fi blokeerivad seda sageli. Saate selle asemel registreeruda e-posti teel või minna üle teisele võrgule ja uuesti proovida.",
+    "ssoTryAnyway": "Proovi ikkagi",
+    "publicCoursesFilterTooltip": "Näita ainult kursuseid, millega igaüks saab liituda",
+    "restrictedCoursesFilterTooltip": "Näita ainult kursuseid, millega liitumiseks pead luba küsima",
+    "viewImageLabel": "Vaata pilti"
 }

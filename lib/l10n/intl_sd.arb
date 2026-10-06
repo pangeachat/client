@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-29 11:11:33.432506",
+    "@@last_modified": "2026-10-05 13:57:52.662235",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "عوامي ڪورس براؤز ڪريو",
     "publicInviteDescChat": "هن چيٽ ۾ دعوت ڏيڻ لاءِ استعمال ڪندڙن کي ڳوليو.",
     "publicInviteDescSpace": "هن اسپيس ۾ دعوت ڏيڻ لاءِ استعمال ڪندڙن کي ڳوليو.",
-    "useActivityImageAsChatBackground": "سرگرمي جي تصوير کي چيٽ جي پس منظر طور استعمال ڪريو",
     "chatWithSupport": "سپورٽ سان چيٽ ڪريو",
     "newCourseAccess": "ڊفالٽ طور، ڪورس عوامي طور تي ڳولي سگهجن ٿا ۽ شامل ٿيڻ لاءِ ايڊمن جي منظوري جي ضرورت آهي. توهان اهي سيٽنگون ڪنهن به وقت تبديل ڪري سگهو ٿا.",
     "onboardingLanguagesTitle": "توهان ڪهڙي ٻولي سکي رهيا آهيو؟",
@@ -2383,5 +2382,17 @@
     "courseCodeSaved": "ڪورس ڪوڊ {code} محفوظ ڪيو ويو",
     "courseCodeSavedExplanation": "سائن اپ ڪريو يا لاگ اِن ٿيو ۽ اسان توهان کي توهان جي ڪورس ۾ شامل ڪنداسين.",
     "moderationRefusedContactDetails": "توهان جو پيغام موڪليو نه ويو. هڪ خودڪار فلٽر کي رابطي جي تفصيل مليا، جهڙوڪ فون نمبر. مهرباني ڪري انهن کي هٽايو ۽ ٻيهر ڪوشش ڪريو.",
-    "moderationRefusedProfanity": "توهان جو پيغام موڪليو نه ويو. هڪ خودڪار فلٽر کي هڪ لفظ مليو جيڪو اسان چيٽ ۾ اجازت نه ٿا ڏيون. مهرباني ڪري ان کي تبديل ڪريو ۽ ٻيهر ڪوشش ڪريو."
+    "moderationRefusedProfanity": "توهان جو پيغام موڪليو نه ويو. هڪ خودڪار فلٽر کي هڪ لفظ مليو جيڪو اسان چيٽ ۾ اجازت نه ٿا ڏيون. مهرباني ڪري ان کي تبديل ڪريو ۽ ٻيهر ڪوشش ڪريو.",
+    "callTranscriptTranscribeButton": "لِکڻ",
+    "callTranscriptAudioUnavailable": "{name} کان محفوظ ڪيل رڪارڊنگ ڊائونلوڊ نه ٿي سگهي، تنهنڪري ان کي لکي نه سگهيو.",
+    "callTranscriptChooseLanguage": "ڪهڙي ٻولي ڳالهائي وئي؟",
+    "callTranscriptSubscribeForTranscription": "لِکڻ لاءِ سبسڪرائب ڪريو",
+    "unlockCallTranscript": "ڪال ٽرانسڪرپٽ کوليو",
+    "activitySummaryUpdateFailed": "هي خلاصو اپڊيٽ نه ٿي سگهيو.",
+    "ssoNetworkBlockedTitle": "سائن ان سائيٽ پهچ کان ٻاهر آهي",
+    "ssoNetworkBlockedDesc": "هي نيٽ ورڪ اسان کي {provider} تائين پهچڻ نه ٿو ڏئي ته جيئن توهان کي سائن ان ڪري سگهجي. اسڪول ۽ آفيس جو وائي فائي اڪثر ان کي بلاڪ ڪندو آهي. توهان ان جي بدران اي ميل سان سائن اپ ڪري سگهو ٿا، يا ڪنهن ٻئي نيٽ ورڪ تي سوئچ ڪري ٻيهر ڪوشش ڪري سگهو ٿا.",
+    "ssoTryAnyway": "بهرحال ڪوشش ڪريو",
+    "publicCoursesFilterTooltip": "صرف اهي ڪورس ڏيکاريو جيڪي ڪو به شامل ٿي سگهي ٿو",
+    "restrictedCoursesFilterTooltip": "صرف اهي ڪورس ڏيکاريو جن ۾ شامل ٿيڻ لاءِ توهان کي پڇڻو پوندو",
+    "viewImageLabel": "تصوير ڏسو"
 }

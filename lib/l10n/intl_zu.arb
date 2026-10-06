@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-29 11:11:36.466461",
+    "@@last_modified": "2026-10-05 13:57:55.531927",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Phequlula izifundo zomphakathi",
     "publicInviteDescChat": "Sesha abasebenzisi ukuze ubameme kule ngxoxo.",
     "publicInviteDescSpace": "Sesha abasebenzisi ukuze ubameme kule ndawo.",
-    "useActivityImageAsChatBackground": "Sebenzisa isithombe somsebenzi njengesizinda sengxoxo",
     "chatWithSupport": "Xoxa Nosekelo",
     "newCourseAccess": "Ngokuzenzakalelayo, izifundo ziyasesheka emphakathini futhi zidinga imvume yomphathi ukuze ujoyine. Ungahlela lezi zilungiselelo nganoma yisiphi isikhathi.",
     "onboardingLanguagesTitle": "Yiluphi ulimi olufundayo?",
@@ -2383,5 +2382,17 @@
     "courseCodeSaved": "Ikhodi yekhosi {code} ilondoloziwe",
     "courseCodeSavedExplanation": "Bhalisa noma ungene futhi sizokufaka ekosini lakho.",
     "moderationRefusedContactDetails": "Umlayezo wakho awuthunyelwanga. Isihlungi esizenzakalelayo sithole imininingwane yokuxhumana, njengenombolo yocingo. Sicela uyisuse bese uzama futhi.",
-    "moderationRefusedProfanity": "Umlayezo wakho awuthunyelwanga. Isihlungi esizenzakalelayo sithole igama esingalivumi engxoxweni. Sicela ulishintshe bese uzama futhi."
+    "moderationRefusedProfanity": "Umlayezo wakho awuthunyelwanga. Isihlungi esizenzakalelayo sithole igama esingalivumi engxoxweni. Sicela ulishintshe bese uzama futhi.",
+    "callTranscriptTranscribeButton": "Guqula ube umbhalo",
+    "callTranscriptAudioUnavailable": "Okurekhodiwe okugciniwe okuvela ku-{name} akukwazanga ukulandwa, ngakho-ke akukwazanga ukuguqulwa kube umbhalo.",
+    "callTranscriptChooseLanguage": "Yiluphi ulimi olwalukhulunywa?",
+    "callTranscriptSubscribeForTranscription": "Bhalisela ukuguqulwa kube umbhalo",
+    "unlockCallTranscript": "Vula umbhalo wekholi",
+    "activitySummaryUpdateFailed": "Lesi sifingqo asikwazanga ukubuyekezwa.",
+    "ssoNetworkBlockedTitle": "Indawo yokungena ayitholakali",
+    "ssoNetworkBlockedDesc": "Le nethiwekhi ayisivumeli ukuthi sifinyelele ku-{provider} ukuze sikungenise. I-Wi-Fi yesikole neyehhovisi ivame ukuyivimba. Ungabhalisa nge-imeyili esikhundleni salokho, noma ushintshele kwenye inethiwekhi bese uzama futhi.",
+    "ssoTryAnyway": "Zama noma kunjalo",
+    "publicCoursesFilterTooltip": "Bonisa kuphela izifundo noma ubani angajoyina",
+    "restrictedCoursesFilterTooltip": "Bonisa kuphela izifundo okumele ucele ukuzijoyina",
+    "viewImageLabel": "Buka isithombe"
 }

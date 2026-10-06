@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 11:11:34.205227",
+    "@@last_modified": "2026-10-05 13:57:53.537451",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -7859,11 +7859,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "செயல்பாட்டு படத்தை உரையாடல் பின்னணி ஆக பயன்படுத்தவும்",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "ஆதரவுடன் உரையாடவும்",
     "@chatWithSupport": {
         "type": "String",
@@ -10067,5 +10062,17 @@
     "courseCodeSaved": "பாடத்திட்டக் குறியீடு {code} சேமிக்கப்பட்டது",
     "courseCodeSavedExplanation": "பதிவு செய்யவும் அல்லது உள்நுழையவும், உங்களை உங்கள் பாடத்திட்டத்தில் சேர்ப்போம்.",
     "moderationRefusedContactDetails": "உங்கள் செய்தி அனுப்பப்படவில்லை. தானியங்கு வடிகட்டி தொலைபேசி எண் போன்ற தொடர்பு விவரங்களைக் கண்டறிந்தது. அவற்றை அகற்றிவிட்டு மீண்டும் முயற்சிக்கவும்.",
-    "moderationRefusedProfanity": "உங்கள் செய்தி அனுப்பப்படவில்லை. தானியங்கு வடிகட்டி அரட்டையில் நாங்கள் அனுமதிக்காத ஒரு வார்த்தையைக் கண்டறிந்தது. அதை மாற்றிவிட்டு மீண்டும் முயற்சிக்கவும்."
+    "moderationRefusedProfanity": "உங்கள் செய்தி அனுப்பப்படவில்லை. தானியங்கு வடிகட்டி அரட்டையில் நாங்கள் அனுமதிக்காத ஒரு வார்த்தையைக் கண்டறிந்தது. அதை மாற்றிவிட்டு மீண்டும் முயற்சிக்கவும்.",
+    "callTranscriptTranscribeButton": "படியெடுக்கவும்",
+    "callTranscriptAudioUnavailable": "{name} இலிருந்து சேமிக்கப்பட்ட பதிவு பதிவிறக்க முடியவில்லை, எனவே அதை படியெடுக்க முடியவில்லை.",
+    "callTranscriptChooseLanguage": "எந்த மொழி பேசப்பட்டது?",
+    "callTranscriptSubscribeForTranscription": "படியெடுத்தலுக்கு குழுசேரவும்",
+    "unlockCallTranscript": "அழைப்புப் படியெடுத்தலைத் திறக்கவும்",
+    "activitySummaryUpdateFailed": "இந்தச் சுருக்கத்தைப் புதுப்பிக்க முடியவில்லை.",
+    "ssoNetworkBlockedTitle": "உள்நுழைவு தளம் அணுக முடியாதது",
+    "ssoNetworkBlockedDesc": "உங்களை உள்நுழைய வைக்க {provider} ஐ அணுக இந்த நெட்வொர்க் எங்களை அனுமதிக்கவில்லை. பள்ளி மற்றும் அலுவலக வைஃபை பெரும்பாலும் இதைத் தடுக்கிறது. அதற்கு பதிலாக நீங்கள் மின்னஞ்சல் மூலம் பதிவு செய்யலாம் அல்லது வேறு நெட்வொர்க்கிற்கு மாறி மீண்டும் முயற்சி செய்யலாம்.",
+    "ssoTryAnyway": "எப்படியும் முயற்சி செய்",
+    "publicCoursesFilterTooltip": "யாரும் சேரக்கூடிய படிப்புகளை மட்டும் காட்டு",
+    "restrictedCoursesFilterTooltip": "நீங்கள் சேர அனுமதி கேட்க வேண்டிய படிப்புகளை மட்டும் காட்டு",
+    "viewImageLabel": "படத்தைப் பார்"
 }

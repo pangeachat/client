@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-29 11:11:30.682026",
+    "@@last_modified": "2026-10-05 13:57:50.257329",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Tirotiro i ngā akoranga tūmatanui",
     "publicInviteDescChat": "Rapua ngā kaiwhakamahi hei tono i a rātou ki tēnei korerorero.",
     "publicInviteDescSpace": "Rapua ngā kaiwhakamahi hei tono i a rātou ki tēnei wāhi.",
-    "useActivityImageAsChatBackground": "Whakamahia te whakaahua mahi hei papamuri korerorero",
     "chatWithSupport": "Korerorero ki te Tautoko",
     "newCourseAccess": "Mā te taunoa, ka taea te rapu tūmatanui i ngā akoranga, ā, me whakaae te kaiwhakahaere kia uru. Ka taea e koe te whakatika i ēnei tautuhinga i ngā wā katoa.",
     "onboardingLanguagesTitle": "He aha te reo e ako ana koe?",
@@ -2383,5 +2382,17 @@
     "courseCodeSaved": "Kua tiakina te waehere akoranga {code}",
     "courseCodeSavedExplanation": "Rēhita, takiuru rānei, ā, mā mātou koe e tāpiri ki tō akoranga.",
     "moderationRefusedContactDetails": "Kāore i tukuna tō karere. I kitea e tētahi tātari aunoa ngā taipitopito whakapā, pērā i te tau waea. Tēnā tangohia aua mea ka ngana anō.",
-    "moderationRefusedProfanity": "Kāore i tukuna tō karere. I kitea e tētahi tātari aunoa tētahi kupu kāore mātou e whakaae ana ki te kōrerorero. Tēnā hurihia ka ngana anō."
+    "moderationRefusedProfanity": "Kāore i tukuna tō karere. I kitea e tētahi tātari aunoa tētahi kupu kāore mātou e whakaae ana ki te kōrerorero. Tēnā hurihia ka ngana anō.",
+    "callTranscriptTranscribeButton": "Tuhia",
+    "callTranscriptAudioUnavailable": "Kāore i taea te tikiake i te rekoata i tiakina mai i a {name}, nō reira kāore i taea te tuhi.",
+    "callTranscriptChooseLanguage": "He aha te reo i kōrerohia?",
+    "callTranscriptSubscribeForTranscription": "Ohauru mō te tuhinga",
+    "unlockCallTranscript": "Wewete i te tuhinga waea",
+    "activitySummaryUpdateFailed": "Kāore i taea te whakahou i tēnei whakarāpopototanga.",
+    "ssoNetworkBlockedTitle": "Kāore e taea te toro atu ki te pae takiuru",
+    "ssoNetworkBlockedDesc": "Kāore tēnei whatunga e tuku ana kia toro atu mātou ki a {provider} hei takiuru i a koe. He maha ngā wā ka aukatihia e te Wi-Fi o te kura, o te tari rānei. Ka taea e koe te rēhita mā te īmēra, te huri rānei ki tētahi atu whatunga ka ngana anō.",
+    "ssoTryAnyway": "Ngana tonu",
+    "publicCoursesFilterTooltip": "Whakaaturia ngā akoranga ka taea e te tangata te uru atu",
+    "restrictedCoursesFilterTooltip": "Whakaaturia ngā akoranga me tono koe kia uru atu",
+    "viewImageLabel": "Tirohia te atahanga"
 }

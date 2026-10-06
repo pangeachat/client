@@ -2080,7 +2080,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-29 11:11:25.206207",
+    "@@last_modified": "2026-10-05 13:57:46.973659",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -8612,11 +8612,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Makipag-chat sa Suporta",
     "@chatWithSupport": {
         "type": "String",
@@ -10835,5 +10830,17 @@
     "courseCodeSaved": "Na-save ang course code na {code}",
     "courseCodeSavedExplanation": "Mag-sign up o mag-log in at idadagdag ka namin sa iyong kurso.",
     "moderationRefusedContactDetails": "Hindi naipadala ang iyong mensahe. Nakakita ang awtomatikong filter ng mga detalye sa pakikipag-ugnayan, tulad ng numero ng telepono. Pakialisin ang mga ito at subukang muli.",
-    "moderationRefusedProfanity": "Hindi naipadala ang iyong mensahe. Nakakita ang awtomatikong filter ng salitang hindi namin pinapayagan sa chat. Pakipalitan ito at subukang muli."
+    "moderationRefusedProfanity": "Hindi naipadala ang iyong mensahe. Nakakita ang awtomatikong filter ng salitang hindi namin pinapayagan sa chat. Pakipalitan ito at subukang muli.",
+    "callTranscriptTranscribeButton": "I-transcribe",
+    "callTranscriptAudioUnavailable": "Hindi ma-download ang na-save na recording mula kay {name}, kaya hindi ito ma-transcribe.",
+    "callTranscriptChooseLanguage": "Anong wika ang ginamit?",
+    "callTranscriptSubscribeForTranscription": "Mag-subscribe para sa transkripsyon",
+    "unlockCallTranscript": "I-unlock ang transkripsyon ng tawag",
+    "activitySummaryUpdateFailed": "Hindi ma-update ang buod na ito.",
+    "ssoNetworkBlockedTitle": "Hindi maabot ang site ng pag-sign in",
+    "ssoNetworkBlockedDesc": "Hindi kami pinapayagan ng network na ito na maabot ang {provider} para i-sign in ka. Madalas itong hinaharangan ng Wi-Fi ng paaralan at opisina. Maaari kang mag-sign up gamit ang email sa halip, o lumipat sa ibang network at subukang muli.",
+    "ssoTryAnyway": "Subukan pa rin",
+    "publicCoursesFilterTooltip": "Ipakita lang ang mga kurso na maaaring salihan ng sinuman",
+    "restrictedCoursesFilterTooltip": "Ipakita lang ang mga kurso na kailangan mong humingi ng pahintulot para makasali",
+    "viewImageLabel": "Tingnan ang larawan"
 }

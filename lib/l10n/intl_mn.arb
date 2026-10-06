@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-29 11:11:30.683260",
+    "@@last_modified": "2026-10-05 13:57:50.423536",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Нийтийн хичээлүүдийг үзэх",
     "publicInviteDescChat": "Энэ чатад урих хэрэглэгчдийг хайна уу.",
     "publicInviteDescSpace": "Энэ орон зайд урих хэрэглэгчдийг хайна уу.",
-    "useActivityImageAsChatBackground": "Үйл ажиллагааны зургийг чатын дэвсгэр зураг болгон ашиглах",
     "chatWithSupport": "Дэмжлэгтэй чатлах",
     "newCourseAccess": "Анхдагчаар, хичээлүүд олон нийтэд хайгдах боломжтой бөгөөд нэгдэхийн тулд админы зөвшөөрөл шаарддаг. Та эдгээр тохиргоог хүссэн үедээ засах боломжтой.",
     "onboardingLanguagesTitle": "Та ямар хэл сурч байна вэ?",
@@ -2383,5 +2382,17 @@
     "courseCodeSaved": "Хичээлийн код {code} хадгалагдсан",
     "courseCodeSavedExplanation": "Бүртгүүлэх эсвэл нэвтрэх үед таныг хичээлд нэгтгэх болно.",
     "moderationRefusedContactDetails": "Таны зурвас илгээгдсэнгүй. Автомат шүүлтүүр утасны дугаар гэх мэт холбоо барих мэдээллийг оллоо. Устгаад дахин оролдоно уу.",
-    "moderationRefusedProfanity": "Таны зурвас илгээгдсэнгүй. Автомат шүүлтүүр чатанд зөвшөөрөгдөөгүй үг оллоо. Үгийг өөрчлөөд дахин оролдоно уу."
+    "moderationRefusedProfanity": "Таны зурвас илгээгдсэнгүй. Автомат шүүлтүүр чатанд зөвшөөрөгдөөгүй үг оллоо. Үгийг өөрчлөөд дахин оролдоно уу.",
+    "callTranscriptTranscribeButton": "Хөрвүүлэх",
+    "callTranscriptAudioUnavailable": "{name}-ээс хадгалсан бичлэгийг татаж авах боломжгүй байсан тул хөрвүүлж чадсангүй.",
+    "callTranscriptChooseLanguage": "Ямар хэлээр ярьсан бэ?",
+    "callTranscriptSubscribeForTranscription": "Хөрвүүлэлтэд бүртгүүлэх",
+    "unlockCallTranscript": "Дуудлагын хөрвүүлэлтийг нээх",
+    "activitySummaryUpdateFailed": "Энэ хураангуйг шинэчлэх боломжгүй байсан.",
+    "ssoNetworkBlockedTitle": "Нэвтрэх сайт боломжгүй байна",
+    "ssoNetworkBlockedDesc": "Энэ сүлжээ таныг нэвтрүүлэхийн тулд {provider} руу нэвтрэхийг зөвшөөрөхгүй байна. Сургууль болон оффисын Wi-Fi үүнийг ихэвчлэн хаадаг. Та оронд нь имэйлээр бүртгүүлэх эсвэл өөр сүлжээнд шилжиж дахин оролдож болно.",
+    "ssoTryAnyway": "Ямартай ч оролдох",
+    "publicCoursesFilterTooltip": "Хэн ч нэгдэж болох сургалтуудыг л харуул",
+    "restrictedCoursesFilterTooltip": "Таны хүсэлтээр нэгдэх ёстой сургалтуудыг л харуул",
+    "viewImageLabel": "Зураг харах"
 }

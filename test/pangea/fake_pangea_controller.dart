@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/features/user/public_profile_model.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
@@ -20,17 +21,50 @@ class FakePangeaController implements PangeaController {
   @override
   final UserController userController;
 
+  @override
+  final SubscriptionController subscriptionController;
+
   /// [analyticsProfiles] serves a public analytics profile per user id — the
   /// course leaderboard ranks on these; anyone absent gets an empty profile.
+  /// [subscribed] answers `subscriptionController.showSubscriptionGatedContent`
+  /// -- true by default, matching what the REAL controller answers before its
+  /// own state resolves (`SubscriptionLoading`), so a test that never mentions
+  /// subscriptions keeps seeing gated content exactly as it did before this
+  /// field existed (#8792).
   FakePangeaController({
     String? userL1Code = 'en',
     String? accessToken,
     Map<String, AnalyticsProfileModel> analyticsProfiles = const {},
+    bool subscribed = true,
   }) : userController = _FakeUserController(
          userL1Code,
          accessToken,
          analyticsProfiles,
-       );
+       ),
+       subscriptionController = _FakeSubscriptionController(subscribed);
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) => null;
+}
+
+/// A [SubscriptionController] whose gate is a plain fixed answer rather than
+/// the real controller's RevenueCat-backed state machine.
+///
+/// #8792's paywall needs a viewer that is subscribed or is not, without
+/// driving the real controller's private `_state`/`_inTrialWindow` machinery
+/// -- the latter reaches back into `MatrixState.pangeaController
+/// .userController.inTrialWindow()`, which is one more seam a test of an
+/// unrelated feature should not have to wire. A test that wants a viewer to
+/// DOWNGRADE mid-test installs a SECOND `FakePangeaController` over
+/// `MatrixState.pangeaController` rather than mutating this one in place --
+/// see the paywall's own "checked at read time" root principle, which is what
+/// makes swapping the whole controller equivalent to flipping this field
+/// would have been.
+class _FakeSubscriptionController implements SubscriptionController {
+  _FakeSubscriptionController(this.showSubscriptionGatedContent);
+
+  @override
+  final bool showSubscriptionGatedContent;
 
   @override
   dynamic noSuchMethod(Invocation invocation) => null;

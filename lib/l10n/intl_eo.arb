@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 11:11:24.669425",
+    "@@last_modified": "2026-10-05 13:57:46.858090",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -8702,11 +8702,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Uzu aktivan bildon kiel ĉatfondon",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Babili kun Subteno",
     "@chatWithSupport": {
         "type": "String",
@@ -10920,5 +10915,17 @@
     "courseCodeSaved": "Kurskodo {code} konservita",
     "courseCodeSavedExplanation": "Registriĝu aŭ ensalutu kaj ni aldonos vin al via kurso.",
     "moderationRefusedContactDetails": "Via mesaĝo ne estis sendita. Aŭtomata filtrilo trovis kontaktajn detalojn, kiel telefonnumeron. Bonvolu forigi ilin kaj reprovi.",
-    "moderationRefusedProfanity": "Via mesaĝo ne estis sendita. Aŭtomata filtrilo trovis vorton, kiun ni ne permesas en la babilejo. Bonvolu ŝanĝi ĝin kaj reprovi."
+    "moderationRefusedProfanity": "Via mesaĝo ne estis sendita. Aŭtomata filtrilo trovis vorton, kiun ni ne permesas en la babilejo. Bonvolu ŝanĝi ĝin kaj reprovi.",
+    "callTranscriptTranscribeButton": "Transskribi",
+    "callTranscriptAudioUnavailable": "La konservita registraĵo de {name} ne povis esti elŝutita, do ĝi ne povis esti transskribita.",
+    "callTranscriptChooseLanguage": "Kiun lingvon oni parolis?",
+    "callTranscriptSubscribeForTranscription": "Aboni por transskribo",
+    "unlockCallTranscript": "Malŝlosi alvokan transskribon",
+    "activitySummaryUpdateFailed": "Ĉi tiu resumo ne povis esti ĝisdatigita.",
+    "ssoNetworkBlockedTitle": "Ensaluta retejo neatingebla",
+    "ssoNetworkBlockedDesc": "Ĉi tiu reto ne permesas al ni atingi {provider} por ensaluti vin. Lerneja kaj oficeja retkonekto ofte blokas ĝin. Vi povas registriĝi per retpoŝto anstataŭe, aŭ ŝanĝi al alia reto kaj reprovi.",
+    "ssoTryAnyway": "Provu ĉiukaze",
+    "publicCoursesFilterTooltip": "Montri nur kursojn al kiuj iu ajn povas aliĝi",
+    "restrictedCoursesFilterTooltip": "Montri nur kursojn al kiuj vi devas peti aliĝon",
+    "viewImageLabel": "Vidi bildon"
 }

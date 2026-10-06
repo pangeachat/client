@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-29 11:11:32.067335",
+    "@@last_modified": "2026-10-05 13:57:51.438243",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Sakani maphunziro a anthu onse",
     "publicInviteDescChat": "Sakani ogwiritsa ntchito kuti muwaitane ku macheza awa.",
     "publicInviteDescSpace": "Sakani ogwiritsa ntchito kuti muwaitane ku malo awa.",
-    "useActivityImageAsChatBackground": "Gwiritsani ntchito chithunzi cha zochitika ngati maziko a macheza",
     "chatWithSupport": "Chezani ndi Thandizo",
     "newCourseAccess": "Mwachisawawa, maphunziro amapezeka pagulu ndipo amafunikira kuvomerezedwa ndi woyang'anira kuti alowe. Mutha kusintha zokonda izi nthawi iliyonse.",
     "onboardingLanguagesTitle": "Kodi mukupanga chilankhulo chotani?",
@@ -2383,5 +2382,17 @@
     "courseCodeSaved": "Nambala ya kosi {code} yasungidwa",
     "courseCodeSavedExplanation": "Lembetsani kapena lowani ndipo tidzakulowetsani mu kosi yanu.",
     "moderationRefusedContactDetails": "Uthenga wanu sunatumizidwe. Chosefera chazokha chapeza zambiri zokhudzana ndi inu, monga nambala yafoni. Chonde zichotseni ndikuyesanso.",
-    "moderationRefusedProfanity": "Uthenga wanu sunatumizidwe. Chosefera chazokha chapeza mawu omwe sitilola macheza. Chonde sinthani ndikuyesanso."
+    "moderationRefusedProfanity": "Uthenga wanu sunatumizidwe. Chosefera chazokha chapeza mawu omwe sitilola macheza. Chonde sinthani ndikuyesanso.",
+    "callTranscriptTranscribeButton": "Lembani",
+    "callTranscriptAudioUnavailable": "Kujambula kosungidwa kuchokera kwa {name} sikunathe kutsitsidwa, choncho sikunathe kulembedwa.",
+    "callTranscriptChooseLanguage": "Ndi chilankhulo chiti chomwe chinalankhulidwa?",
+    "callTranscriptSubscribeForTranscription": "Lembetsani kuti mulembedwe",
+    "unlockCallTranscript": "Tsegulani zolembedwa za kuyimba",
+    "activitySummaryUpdateFailed": "Chidulechi sichinathe kusinthidwa.",
+    "ssoNetworkBlockedTitle": "Malo olowera safikika",
+    "ssoNetworkBlockedDesc": "Intaneti iyi ikutiletsa kufika ku {provider} kuti tikulowetseni. Ma Wi-Fi a kusukulu ndi ku ofesi nthawi zambiri amalepheretsa. Mutha kulembetsa ndi imelo m'malo mwake, kapena kusinthira ku intaneti ina ndikuyesanso.",
+    "ssoTryAnyway": "Yesani komabe",
+    "publicCoursesFilterTooltip": "Onetsani maphunziro okhawo amene aliyense angalowe",
+    "restrictedCoursesFilterTooltip": "Onetsani maphunziro okhawo amene muyenera kupempha kuti mulowe",
+    "viewImageLabel": "Onani chithunzi"
 }

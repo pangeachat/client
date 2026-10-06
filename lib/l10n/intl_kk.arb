@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-29 11:11:28.037140",
+    "@@last_modified": "2026-10-05 13:57:49.200998",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Жалпыға қолжетімді курстарды шолу",
     "publicInviteDescChat": "Осы чатқа шақыру үшін пайдаланушыларды іздеңіз.",
     "publicInviteDescSpace": "Осы кеңістікке шақыру үшін пайдаланушыларды іздеңіз.",
-    "useActivityImageAsChatBackground": "Әрекет кескінін чат фоны ретінде пайдалану",
     "chatWithSupport": "Қолдау қызметімен сөйлесу",
     "newCourseAccess": "Әдепкі бойынша, курстар жалпыға қолжетімді және қосылу үшін әкімшінің мақұлдауын талап етеді. Бұл параметрлерді кез келген уақытта өңдей аласыз.",
     "onboardingLanguagesTitle": "Қандай тілді үйреніп жатырсыз?",
@@ -2383,5 +2382,17 @@
     "courseCodeSaved": "{code} курс коды сақталды",
     "courseCodeSavedExplanation": "Тіркеліңіз немесе жүйеге кіріңіз, сонда біз сізді курсқа қосамыз.",
     "moderationRefusedContactDetails": "Хабар жіберілмеді. Автоматты сүзгі телефон нөмірі сияқты байланыс деректерін тапты. Оларды жойып, қайта көріңіз.",
-    "moderationRefusedProfanity": "Хабар жіберілмеді. Автоматты сүзгі чатта рұқсат етілмеген сөзді тапты. Оны өзгертіп, қайта көріңіз."
+    "moderationRefusedProfanity": "Хабар жіберілмеді. Автоматты сүзгі чатта рұқсат етілмеген сөзді тапты. Оны өзгертіп, қайта көріңіз.",
+    "callTranscriptTranscribeButton": "Транскрипциялау",
+    "callTranscriptAudioUnavailable": "{name} сақталған жазбасын жүктеп алу мүмкін болмады, сондықтан оны транскрипциялау мүмкін емес.",
+    "callTranscriptChooseLanguage": "Қандай тілде сөйледіңіз?",
+    "callTranscriptSubscribeForTranscription": "Транскрипциялау үшін жазылу",
+    "unlockCallTranscript": "Қоңырау транскрипциясының құлпын ашу",
+    "activitySummaryUpdateFailed": "Бұл қорытындыны жаңарту мүмкін болмады.",
+    "ssoNetworkBlockedTitle": "Кіру сайты қолжетімсіз",
+    "ssoNetworkBlockedDesc": "Бұл желі сізге кіру үшін {provider} қызметіне жетуімізге мүмкіндік бермейді. Мектеп және кеңсе Wi-Fi желілері оны жиі бұғаттайды. Оның орнына электрондық пошта арқылы тіркелуге немесе басқа желіге ауысып, қайта әрекет етуге болады.",
+    "ssoTryAnyway": "Бәрібір әрекет ету",
+    "publicCoursesFilterTooltip": "Кез келген адам қосыла алатын курстарды ғана көрсету",
+    "restrictedCoursesFilterTooltip": "Қосылу үшін сұрау қажет курстарды ғана көрсету",
+    "viewImageLabel": "Суретті көру"
 }

@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-29 11:11:35.180364",
+    "@@last_modified": "2026-10-05 13:57:54.811660",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -3863,7 +3863,6 @@
     "knockDesc": "Sizning so'rovingiz kurs adminiga yuborildi! Ular tasdiqlagan taqdirda sizga kirishga ruxsat beriladi.",
     "publicInviteDescChat": "Ushbu chatga taklif qilish uchun foydalanuvchilarni qidiring.",
     "publicInviteDescSpace": "Ushbu maydonga taklif qilish uchun foydalanuvchilarni qidiring.",
-    "useActivityImageAsChatBackground": "Faoliyat rasmidan chat fonini foydalanish",
     "chatWithSupport": "Qo'llab-quvvatlash bilan chat",
     "newCourseAccess": "Standart holda, kurslar ochiq qidiruvda bo'lib, ularga qo'shilish uchun admin tasdiqlashi talab etiladi. Siz bu sozlamalarni istalgan vaqtda o'zgartirishingiz mumkin.",
     "onboardingLanguagesTitle": "Qaysi tilni o'rganmoqdasiz?",
@@ -8009,10 +8008,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@chatWithSupport": {
         "type": "String",
         "placeholders": {}
@@ -9979,5 +9974,17 @@
     "courseCodeSaved": "Kurs kodi {code} saqlandi",
     "courseCodeSavedExplanation": "Roʻyxatdan oʻting yoki tizimga kiring va biz sizni kursingizga qoʻshamiz.",
     "moderationRefusedContactDetails": "Xabaringiz yuborilmadi. Avtomatik filtr telefon raqami kabi aloqa ma'lumotlarini topdi. Iltimos, ularni olib tashlang va qayta urinib ko'ring.",
-    "moderationRefusedProfanity": "Xabaringiz yuborilmadi. Avtomatik filtr chatda ruxsat etilmagan so'zni topdi. Iltimos, uni o'zgartiring va qayta urinib ko'ring."
+    "moderationRefusedProfanity": "Xabaringiz yuborilmadi. Avtomatik filtr chatda ruxsat etilmagan so'zni topdi. Iltimos, uni o'zgartiring va qayta urinib ko'ring.",
+    "callTranscriptTranscribeButton": "Transkripsiya qilish",
+    "callTranscriptAudioUnavailable": "{name}dan saqlangan yozuvni yuklab bo‘lmadi, shuning uchun uni transkripsiya qilib bo‘lmadi.",
+    "callTranscriptChooseLanguage": "Qaysi tilda gapirilgan?",
+    "callTranscriptSubscribeForTranscription": "Transkripsiya uchun obuna bo‘lish",
+    "unlockCallTranscript": "Qo‘ng‘iroq transkriptini ochish",
+    "activitySummaryUpdateFailed": "Bu xulosa yangilanmadi.",
+    "ssoNetworkBlockedTitle": "Kirish sayti mavjud emas",
+    "ssoNetworkBlockedDesc": "Bu tarmoq sizni tizimga kiritish uchun {provider} ga ulanishimizga ruxsat bermayapti. Maktab va ofis Wi-Fi ko'pincha uni bloklaydi. Buning o'rniga elektron pochta orqali ro'yxatdan o'tishingiz yoki boshqa tarmoqqa o'tib, qayta urinishingiz mumkin.",
+    "ssoTryAnyway": "Baribir urinib ko'ring",
+    "publicCoursesFilterTooltip": "Faqat har kim qo'shila oladigan kurslarni ko'rsatish",
+    "restrictedCoursesFilterTooltip": "Faqat siz qo'shilish uchun so'rashingiz kerak bo'lgan kurslarni ko'rsatish",
+    "viewImageLabel": "Rasmni koʻrish"
 }

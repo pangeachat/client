@@ -25,7 +25,7 @@ Starting a session opens it once the new room has reached the client with its in
 
 The activity's start page doesn't store its own state; it reads it from the room — whether a room exists yet, whether the learner is in it, whether they've taken a role, whether every role is filled. From those facts it moves through a short sequence (not started → picking a role → in with a role → session full) and shows the right thing at each step: the waiting room (ping the course, play with the bot, or invite a friend — pinging is limited to once a minute so it can't be spammed), the role picker, or the live activity.
 
-When a session counts as "ended" is the org doc's call. The client's part is firing the summary once that happens, and keeping a short-lived local cache of the room's analytics so the page doesn't re-fetch on every visit.
+When a session counts as ended, and how the bot makes its summary, are the org doc's call ([activity-summary.instructions.md](../../../.github/.github/instructions/activity-summary.instructions.md)). The client shows the summary from the room state the bot writes. A viewer whose first language differs from the summary's sees it translated. The loading placeholder stays up while the translation is fetched, and if the translation fails, the viewer sees the summary in its original language. The client writes the room's analytics when no client has yet, and it sends a learner's retry or feedback as a request the bot serves. It also keeps a short-lived local cache of the room's analytics, so the page doesn't re-fetch on every visit.
 
 The page's **layout and gestures** — the mobile grow-before-scroll sheet, the header and info row, the CTA row, and how it owns its container over the nav rail and analytics bar — are their own concern: [activity-start-page.instructions.md](activity-start-page.instructions.md).
 
@@ -47,7 +47,7 @@ The header's left slot, opposite the chevron, carries the session's language chi
 
 A header with no goals to show falls back to a plain **"Activity actions"** title in the same spot — no stars, but it still opens to the same end-activity buttons. This covers the admin or teacher who joins a session without taking a role (no goals of their own, but they still need "End for all") and any case where a role's goals can't be resolved — a legacy plan, or a failure loading or generating them — so a learner is never stranded without a way to end the activity.
 
-Once the summary lands the header goes away and the summary carries the goals — under the participant picker, not above it. The stars there follow the pick: selecting a coursemate swaps their feedback card *and* their goal list, so the two always describe the same person. With no pick the viewer sees their own goals, and an observer who never took a role sees the first participant's ([#8672](https://github.com/pangeachat/client/issues/8672)).
+Once the summary lands the header goes away and the summary carries the goals — under the participant picker, not above it. The stars there follow the pick: selecting a coursemate swaps their feedback card *and* their goal list, so the two always describe the same person. With no pick the viewer sees their own goals, and an observer who never took a role sees the first participant's ([#8672](https://github.com/pangeachat/client/issues/8672)). If a learner's feedback leads to a regeneration that fails, the summary they already had stays on screen, with a short note that it could not be updated.
 
 ### Reporting a wrong star (staging only)
 
@@ -69,11 +69,11 @@ The profile star counter ([`totalStarsEarned`](../../lib/routes/chat/choreograph
 
 ## The Stars list
 
-A saved session's row ([`AnalyticsActivityItem`](../../lib/routes/analytics/activities/activity_archive.dart)) is the learner's record of that session: the activity's title (the room's name once the plan is gone), their stars, their level, the XP they earned, and how many different vocabulary and grammar items they used. Every number comes from the summary saved with the session, so the row and the end-of-activity card can never disagree. Tapping a row opens the session.
+A saved session's row ([`AnalyticsActivityItem`](../../lib/routes/analytics/activities/activity_archive.dart)) is the learner's record of that session: the activity's title (the room's name once the plan is gone), their stars, their level, the XP they earned, and how many different vocabulary and grammar items they used. Every number comes from the summary and analytics saved with the session, so the row and the end-of-activity card can never disagree. Tapping a row opens the session.
 
 The stats sit under the stars as one compact line — XP first, in the gold that marks XP everywhere else, then a vocabulary count and a grammar count behind the same two icons the analytics bar uses for words and grammar. The counts are of distinct items used in that session, not of items new to the learner: the saved summary does not record which were new, and the row never shows a number the summary cannot back. A count of zero shows as zero rather than dropping the stat, so the rows stay aligned down the list.
 
-A session with no saved summary — an older one, or one whose generation failed — keeps its title and stars and shows nothing else: no level, no stats, and no gap where they would be. A summary is saved per display language, so a learner who has since changed their first language sees that same reduced row.
+A session with no saved summary — an older one, or one whose generation failed — keeps its title and stars and shows nothing else: no level, no stats, and no gap where they would be. Sessions summarized before the bot made the summary saved one per display language, so a learner who has since changed their first language sees that same reduced row for those sessions.
 
 The open row carries the selected fill, and XP gives up the gold there so it stays readable against it.
 
@@ -131,6 +131,8 @@ An activity opens one of two ways: as an overlay over the world map (when the le
 An activity's stimulus is a carousel of mixed media — images, audio, and video (uploaded or from YouTube) — in a set order; a single image is just a carousel of one. The kinds of block and the rules for resolving and rendering them are the org doc's. What the client owns is turning that list into something the learner can see.
 
 Two things shape how the client renders it. First, uploaded media arrives as a reference, not an address, so the client resolves it to a real URL before showing anything — and **every path that prepares an activity for display must resolve, or the media falls back to a placeholder.** YouTube blocks are the exception: they already carry their link. Second, how much of the carousel a surface shows depends on the room it has — a focused surface (the plan page, the live session) presents the whole carousel; a compact surface (a card, a map pin) shows just the first block, standing in for the rest. When an activity has only one piece of media, there is nothing to page through: the carousel degrades to a single display with no navigation controls. [`ActivityMediaBlock`](../../lib/features/activity_sessions/activity_media_block.dart) is the media model.
+
+In the live session the carousel sits at the top of the chat, and tapping an image opens it full screen so the learner sees the whole image. The activity image is never drawn behind the messages: the chat background stays one plain color, because a photo behind the chat made the screen too busy over the map ([#9356](https://github.com/pangeachat/client/issues/9356)).
 
 On the web, media images are fetched in a way that needs the content CDN to allow cross-origin requests; that requirement lives in the org and devops docs, not here.
 

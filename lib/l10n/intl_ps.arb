@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-29 11:11:32.197899",
+    "@@last_modified": "2026-10-05 13:57:52.004958",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "عام کورسونه وګورئ",
     "publicInviteDescChat": "د کاروونکو لټون وکړئ ترڅو دوی دې چټ ته بلنه ورکړئ.",
     "publicInviteDescSpace": "د کاروونکو لټون وکړئ ترڅو دوی دې ځای ته بلنه ورکړئ.",
-    "useActivityImageAsChatBackground": "د فعالیت انځور د چټ شالید په توګه وکاروئ",
     "chatWithSupport": "د ملاتړ سره چټ وکړئ",
     "newCourseAccess": "په ډیفالټ، کورسونه په عامه توګه د لټون وړ دي او د شاملیدو لپاره د مدیر تصویب ته اړتیا لري. تاسو کولی شئ دا تنظیمات په هر وخت کې سم کړئ.",
     "onboardingLanguagesTitle": "تاسو کومه ژبه زده کوئ؟",
@@ -2383,5 +2382,17 @@
     "courseCodeSaved": "د کورس کوډ {code} خوندي شو",
     "courseCodeSavedExplanation": "نوم لیکنه وکړئ یا ننوتل او موږ به تاسو خپل کورس ته اضافه کړو.",
     "moderationRefusedContactDetails": "ستاسو پیغام ونه لیږدول شو. یو اتوماتیک فلټر د اړیکو معلومات وموندل، لکه د تلیفون شمیره. مهرباني وکړئ هغه لرې کړئ او بیا هڅه وکړئ.",
-    "moderationRefusedProfanity": "ستاسو پیغام ونه لیږدول شو. یو اتوماتیک فلټر یوه کلمه وموندله چې موږ یې په چیټ کې اجازه نه ورکوو. مهرباني وکړئ هغه بدله کړئ او بیا هڅه وکړئ."
+    "moderationRefusedProfanity": "ستاسو پیغام ونه لیږدول شو. یو اتوماتیک فلټر یوه کلمه وموندله چې موږ یې په چیټ کې اجازه نه ورکوو. مهرباني وکړئ هغه بدله کړئ او بیا هڅه وکړئ.",
+    "callTranscriptTranscribeButton": "ژباړه",
+    "callTranscriptAudioUnavailable": "د {name} څخه خوندي شوی ریکارډ ډاونلوډ نشو، نو له همدې امله ژباړل کیدی نشي.",
+    "callTranscriptChooseLanguage": "کومه ژبه ویل شوې وه؟",
+    "callTranscriptSubscribeForTranscription": "د ژباړې لپاره ګډون وکړئ",
+    "unlockCallTranscript": "د زنګ لیږد خلاص کړئ",
+    "activitySummaryUpdateFailed": "دا لنډیز تازه نشو.",
+    "ssoNetworkBlockedTitle": "د ننوتلو سایټ د لاسرسي وړ نه دی",
+    "ssoNetworkBlockedDesc": "دا شبکه موږ ته اجازه نه راکوي چې تاسو ته د ننوتلو لپاره {provider} ته ورسیږو. د ښوونځي او دفتر وای فای اکثرا دا بندوي. تاسو کولی شئ د بریښنالیک له لارې نوم لیکنه وکړئ، یا بلې شبکې ته لاړ شئ او بیا هڅه وکړئ.",
+    "ssoTryAnyway": "بیا هم هڅه وکړئ",
+    "publicCoursesFilterTooltip": "یوازې هغه کورسونه وښایاست چې هرڅوک پکې شاملیدلی شي",
+    "restrictedCoursesFilterTooltip": "یوازې هغه کورسونه وښایاست چې تاسو یې د شاملیدو غوښتنه کوئ",
+    "viewImageLabel": "انځور وګورئ"
 }

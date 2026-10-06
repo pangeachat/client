@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-29 11:11:25.907767",
+    "@@last_modified": "2026-10-05 13:57:47.307572",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7937,11 +7937,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Usa a imaxe de actividade como fondo de chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chatear co Soporte",
     "@chatWithSupport": {
         "type": "String",
@@ -9975,5 +9970,17 @@
     "courseCodeSaved": "Código do curso {code} gardado",
     "courseCodeSavedExplanation": "Rexístrate ou inicia sesión e engadirémoste ao teu curso.",
     "moderationRefusedContactDetails": "A túa mensaxe non foi enviada. Un filtro automático atopou detalles de contacto, como un número de teléfono. Elimínaos e téntao de novo.",
-    "moderationRefusedProfanity": "A túa mensaxe non foi enviada. Un filtro automático atopou unha palabra que non permitimos no chat. Cámbiaa e téntao de novo."
+    "moderationRefusedProfanity": "A túa mensaxe non foi enviada. Un filtro automático atopou unha palabra que non permitimos no chat. Cámbiaa e téntao de novo.",
+    "callTranscriptTranscribeButton": "Transcribir",
+    "callTranscriptAudioUnavailable": "Non se puido descargar a gravación gardada de {name}, polo que non se puido transcribir.",
+    "callTranscriptChooseLanguage": "Que idioma se falou?",
+    "callTranscriptSubscribeForTranscription": "Subscribirse para transcribir",
+    "unlockCallTranscript": "Desbloquear transcrición da chamada",
+    "activitySummaryUpdateFailed": "Non foi posíbel actualizar este resumo.",
+    "ssoNetworkBlockedTitle": "Sitio de inicio de sesión inaccesible",
+    "ssoNetworkBlockedDesc": "Esta rede non nos permite acceder a {provider} para iniciar a túa sesión. As redes Wi-Fi de escolas e oficinas adoitan bloquealo. Podes rexistrarte con correo electrónico ou cambiar a outra rede e tentalo de novo.",
+    "ssoTryAnyway": "Tentar de todos os xeitos",
+    "publicCoursesFilterTooltip": "Mostrar só os cursos aos que calquera se pode unir",
+    "restrictedCoursesFilterTooltip": "Mostrar só os cursos aos que debes solicitar unirte",
+    "viewImageLabel": "Ver imaxe"
 }

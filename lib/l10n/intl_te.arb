@@ -1324,7 +1324,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-09-29 11:11:34.586361",
+    "@@last_modified": "2026-10-05 13:57:53.700813",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -8707,11 +8707,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "చాట్ నేపథ్యంగా కార్యకలాప చిత్రాన్ని ఉపయోగించండి",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "సహాయంతో చాట్ చేయండి",
     "@chatWithSupport": {
         "type": "String",
@@ -10925,5 +10920,17 @@
     "courseCodeSaved": "కోర్సు కోడ్ {code} సేవ్ చేయబడింది",
     "courseCodeSavedExplanation": "సైన్ అప్ చేయండి లేదా లాగిన్ అవ్వండి మరియు మిమ్మల్ని మీ కోర్సులో చేరుస్తాము.",
     "moderationRefusedContactDetails": "మీ సందేశం పంపబడలేదు. ఫోన్ నంబర్ వంటి సంప్రదింపు వివరాలను ఆటోమేటిక్ ఫిల్టర్ కనుగొంది. దయచేసి వాటిని తీసివేసి మళ్లీ ప్రయత్నించండి.",
-    "moderationRefusedProfanity": "మీ సందేశం పంపబడలేదు. చాట్‌లో మేము అనుమతించని పదాన్ని ఆటోమేటిక్ ఫిల్టర్ కనుగొంది. దయచేసి దానిని మార్చి మళ్లీ ప్రయత్నించండి."
+    "moderationRefusedProfanity": "మీ సందేశం పంపబడలేదు. చాట్‌లో మేము అనుమతించని పదాన్ని ఆటోమేటిక్ ఫిల్టర్ కనుగొంది. దయచేసి దానిని మార్చి మళ్లీ ప్రయత్నించండి.",
+    "callTranscriptTranscribeButton": "ట్రాన్స్‌క్రైబ్ చేయి",
+    "callTranscriptAudioUnavailable": "{name} నుండి సేవ్ చేసిన రికార్డింగ్ డౌన్‌లోడ్ చేయబడలేదు, కాబట్టి దానిని ట్రాన్స్‌క్రైబ్ చేయలేము.",
+    "callTranscriptChooseLanguage": "ఏ భాష మాట్లాడబడింది?",
+    "callTranscriptSubscribeForTranscription": "ట్రాన్స్‌క్రిప్షన్ కోసం సబ్‌స్క్రైబ్ చేయండి",
+    "unlockCallTranscript": "కాల్ ట్రాన్స్‌క్రిప్ట్‌ను అన్‌లాక్ చేయండి",
+    "activitySummaryUpdateFailed": "ఈ సారాంశాన్ని అప్‌డేట్ చేయలేకపోయాము.",
+    "ssoNetworkBlockedTitle": "సైన్-ఇన్ సైట్ అందుబాటులో లేదు",
+    "ssoNetworkBlockedDesc": "మీరు సైన్ ఇన్ చేయడానికి {provider}ని చేరుకోవడానికి ఈ నెట్‌వర్క్ అనుమతించడం లేదు. పాఠశాల మరియు కార్యాలయ Wi-Fi తరచుగా దీన్ని బ్లాక్ చేస్తాయి. మీరు బదులుగా ఇమెయిల్‌తో సైన్ అప్ చేయవచ్చు లేదా మరొక నెట్‌వర్క్‌కి మారవచ్చు మరియు మళ్లీ ప్రయత్నించవచ్చు.",
+    "ssoTryAnyway": "ఏమైనా ప్రయత్నించండి",
+    "publicCoursesFilterTooltip": "ఎవరైనా చేరగల కోర్సులను మాత్రమే చూపించు",
+    "restrictedCoursesFilterTooltip": "మీరు చేరమని అడగాల్సిన కోర్సులను మాత్రమే చూపించు",
+    "viewImageLabel": "చిత్రాన్ని వీక్షించండి"
 }

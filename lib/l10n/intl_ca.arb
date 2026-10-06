@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-29 11:11:24.033124",
+    "@@last_modified": "2026-10-05 13:57:45.751920",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -7884,11 +7884,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Utilitza la imatge d'activitat com a fons de xat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Xateja amb el Suport",
     "@chatWithSupport": {
         "type": "String",
@@ -10102,5 +10097,17 @@
     "courseCodeSaved": "Codi de curs {code} desat",
     "courseCodeSavedExplanation": "Registra't o inicia sessió i t'afegirem al teu curs.",
     "moderationRefusedContactDetails": "El teu missatge no s'ha enviat. Un filtre automàtic ha detectat dades de contacte, com ara un número de telèfon. Si us plau, elimina-les i torna-ho a provar.",
-    "moderationRefusedProfanity": "El teu missatge no s'ha enviat. Un filtre automàtic ha detectat una paraula que no permetem al xat. Si us plau, canvia-la i torna-ho a provar."
+    "moderationRefusedProfanity": "El teu missatge no s'ha enviat. Un filtre automàtic ha detectat una paraula que no permetem al xat. Si us plau, canvia-la i torna-ho a provar.",
+    "callTranscriptTranscribeButton": "Transcriure",
+    "callTranscriptAudioUnavailable": "No s'ha pogut descarregar l'enregistrament desat de {name}, per tant no s'ha pogut transcriure.",
+    "callTranscriptChooseLanguage": "En quina llengua es va parlar?",
+    "callTranscriptSubscribeForTranscription": "Subscriu-te per a la transcripció",
+    "unlockCallTranscript": "Desbloqueja la transcripció de la trucada",
+    "activitySummaryUpdateFailed": "Aquest resum no s'ha pogut actualitzar.",
+    "ssoNetworkBlockedTitle": "Lloc d'inici de sessió inaccessible",
+    "ssoNetworkBlockedDesc": "Aquesta xarxa no ens permet connectar amb {provider} per iniciar la sessió. Sovint, les xarxes Wi-Fi d'escoles i oficines bloquegen l'accés. Pots registrar-te amb el correu electrònic o canviar a una altra xarxa i tornar-ho a provar.",
+    "ssoTryAnyway": "Prova igualment",
+    "publicCoursesFilterTooltip": "Mostra només els cursos als quals qualsevol es pot unir",
+    "restrictedCoursesFilterTooltip": "Mostra només els cursos als quals has de demanar unió",
+    "viewImageLabel": "Veure imatge"
 }

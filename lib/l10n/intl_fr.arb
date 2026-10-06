@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-29 11:11:25.067809",
+    "@@last_modified": "2026-10-05 13:57:46.809157",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -8127,11 +8127,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Utiliser l'image d'activité comme arrière-plan de chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Discuter avec le support",
     "@chatWithSupport": {
         "type": "String",
@@ -10330,5 +10325,17 @@
     "courseCodeSaved": "Code de cours {code} enregistré",
     "courseCodeSavedExplanation": "Inscrivez-vous ou connectez-vous et nous vous ajouterons à votre cours.",
     "moderationRefusedContactDetails": "Votre message n'a pas été envoyé. Un filtre automatique a détecté des coordonnées, comme un numéro de téléphone. Veuillez les supprimer et réessayer.",
-    "moderationRefusedProfanity": "Votre message n'a pas été envoyé. Un filtre automatique a détecté un mot que nous n'autorisons pas dans le chat. Veuillez le modifier et réessayer."
+    "moderationRefusedProfanity": "Votre message n'a pas été envoyé. Un filtre automatique a détecté un mot que nous n'autorisons pas dans le chat. Veuillez le modifier et réessayer.",
+    "callTranscriptTranscribeButton": "Transcrire",
+    "callTranscriptAudioUnavailable": "L'enregistrement sauvegardé de {name} n'a pas pu être téléchargé, il n'a donc pas pu être transcrit.",
+    "callTranscriptChooseLanguage": "Quelle langue a été parlée ?",
+    "callTranscriptSubscribeForTranscription": "S'abonner pour la transcription",
+    "unlockCallTranscript": "Déverrouiller la transcription de l'appel",
+    "activitySummaryUpdateFailed": "Ce résumé n'a pas pu être mis à jour.",
+    "ssoNetworkBlockedTitle": "Site de connexion inaccessible",
+    "ssoNetworkBlockedDesc": "Ce réseau ne nous permet pas d'atteindre {provider} pour vous connecter. Les réseaux Wi-Fi scolaires et professionnels le bloquent souvent. Vous pouvez vous inscrire par e-mail à la place, ou passer à un autre réseau et réessayer.",
+    "ssoTryAnyway": "Essayer quand même",
+    "publicCoursesFilterTooltip": "Afficher uniquement les cours que tout le monde peut rejoindre",
+    "restrictedCoursesFilterTooltip": "Afficher uniquement les cours pour lesquels vous devez demander à être admis",
+    "viewImageLabel": "Voir l'image"
 }

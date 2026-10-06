@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-29 11:11:23.137781",
+    "@@last_modified": "2026-10-05 13:57:45.048486",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Blaai deur openbare kursusse",
     "publicInviteDescChat": "Soek vir gebruikers om hulle na hierdie klets te nooi.",
     "publicInviteDescSpace": "Soek vir gebruikers om hulle na hierdie spasie te nooi.",
-    "useActivityImageAsChatBackground": "Gebruik aktiwiteitsprent as kletsagtergrond",
     "chatWithSupport": "Klets met Ondersteuning",
     "newCourseAccess": "By verstek is kursusse publiek soekbaar en vereis admin-goedkeuring om aan te sluit. Jy kan hierdie instellings enige tyd wysig.",
     "onboardingLanguagesTitle": "Watter taal leer jy?",
@@ -2383,5 +2382,17 @@
     "courseCodeSaved": "Kursuskode {code} gestoor",
     "courseCodeSavedExplanation": "Registreer of meld aan en ons sal jou by jou kursus voeg.",
     "moderationRefusedContactDetails": "Jou boodskap is nie gestuur nie. 'n Outomatiese filter het kontakbesonderhede, soos 'n telefoonnommer, gevind. Verwyder dit asseblief en probeer weer.",
-    "moderationRefusedProfanity": "Jou boodskap is nie gestuur nie. 'n Outomatiese filter het 'n woord gevind wat ons nie in die klets toelaat nie. Verander dit asseblief en probeer weer."
+    "moderationRefusedProfanity": "Jou boodskap is nie gestuur nie. 'n Outomatiese filter het 'n woord gevind wat ons nie in die klets toelaat nie. Verander dit asseblief en probeer weer.",
+    "callTranscriptTranscribeButton": "Transkribeer",
+    "callTranscriptAudioUnavailable": "Die gestoorde opname van {name} kon nie afgelaai word nie, en kon dus nie getranskribeer word nie.",
+    "callTranscriptChooseLanguage": "Watter taal is gepraat?",
+    "callTranscriptSubscribeForTranscription": "Teken in vir transkripsie",
+    "unlockCallTranscript": "Ontsluit oproep-transkripsie",
+    "activitySummaryUpdateFailed": "Hierdie opsomming kon nie bygewerk word nie.",
+    "ssoNetworkBlockedTitle": "Aanmeldingswerf onbereikbaar",
+    "ssoNetworkBlockedDesc": "Hierdie netwerk laat ons nie toe om {provider} te bereik om jou aan te meld nie. Skool- en kantoor-Wi-Fi blokkeer dit dikwels. Jy kan eerder met e-pos aanmeld, of na 'n ander netwerk oorskakel en weer probeer.",
+    "ssoTryAnyway": "Probeer in elk geval",
+    "publicCoursesFilterTooltip": "Wys slegs kursusse waarby enigiemand kan aansluit",
+    "restrictedCoursesFilterTooltip": "Wys slegs kursusse waarvoor jy moet vra om aan te sluit",
+    "viewImageLabel": "Sien prent"
 }

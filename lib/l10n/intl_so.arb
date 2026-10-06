@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-29 11:11:34.116162",
+    "@@last_modified": "2026-10-05 13:57:52.795330",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "Baadh koorsooyinka guud",
     "publicInviteDescChat": "Raadi isticmaalayaal si aad ugu casuunto sheekadan.",
     "publicInviteDescSpace": "Raadi isticmaalayaal si aad ugu casuunto meeshan.",
-    "useActivityImageAsChatBackground": "U isticmaal sawirka waxqabadka asalka sheekada",
     "chatWithSupport": "La sheekayso Taageerada",
     "newCourseAccess": "Sida caadiga ah, koorsooyinka waa la raadin karaa si guud waxayna u baahan yihiin oggolaansho maamul si loogu biiro. Waxaad wax ka beddeli kartaa dejimahan wakhti kasta.",
     "onboardingLanguagesTitle": "Luqaddee ayaad baranaysaa?",
@@ -2383,5 +2382,17 @@
     "courseCodeSaved": "Koodhka koorsada {code} waa la keydiyay",
     "courseCodeSavedExplanation": "Isdiiwaangeli ama soo gal waxaanan kugu dari doonaa koorsadaada.",
     "moderationRefusedContactDetails": "Fariintaada lama dirin. Shaandheeye otomaatig ah ayaa helay faahfaahin xiriir, sida nambar taleefan. Fadlan ka saar oo mar kale isku day.",
-    "moderationRefusedProfanity": "Fariintaada lama dirin. Shaandheeye otomaatig ah ayaa helay eray aanan u oggolaanayn sheekaysiga. Fadlan beddel oo mar kale isku day."
+    "moderationRefusedProfanity": "Fariintaada lama dirin. Shaandheeye otomaatig ah ayaa helay eray aanan u oggolaanayn sheekaysiga. Fadlan beddel oo mar kale isku day.",
+    "callTranscriptTranscribeButton": "Qor",
+    "callTranscriptAudioUnavailable": "Duubista la keydiyay ee {name} lama soo dejisan karin, sidaa darteed lama qori karin.",
+    "callTranscriptChooseLanguage": "Luqaddee lagu hadlay?",
+    "callTranscriptSubscribeForTranscription": "Isdiiwaangeli si aad u hesho qoraalka",
+    "unlockCallTranscript": "Fur qoraalka wicitaanka",
+    "activitySummaryUpdateFailed": "Soo koobiddaan lama cusboonaysiin karin.",
+    "ssoNetworkBlockedTitle": "Goobta soo-galitaanka lama gaari karo",
+    "ssoNetworkBlockedDesc": "Shabakaddani nama ogolaaneyso inaan gaarno {provider} si aan kuugu soo galino. Wi-Fi-ga dugsiga iyo xafiiska ayaa inta badan xira. Waxaad ku diiwaan gelin kartaa email ahaan, ama waxaad u wareegi kartaa shabakad kale oo aad mar kale isku dayi kartaa.",
+    "ssoTryAnyway": "Sikastaba isku day",
+    "publicCoursesFilterTooltip": "Tus koorsooyinka qof kasta ku biiri karo",
+    "restrictedCoursesFilterTooltip": "Tus koorsooyinka ay tahay inaad codsato si aad ugu biirto",
+    "viewImageLabel": "Daawo sawirka"
 }

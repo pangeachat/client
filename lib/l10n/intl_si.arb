@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-29 11:11:33.381794",
+    "@@last_modified": "2026-10-05 13:57:52.515182",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -1701,7 +1701,6 @@
     "browsePublicCourses": "පොදු පාඨමාලා පිරික්සන්න",
     "publicInviteDescChat": "මෙම චැට් එකට ආරාධනා කිරීමට පරිශීලකයින් සොයන්න.",
     "publicInviteDescSpace": "මෙම අවකාශයට ආරාධනා කිරීමට පරිශීලකයින් සොයන්න.",
-    "useActivityImageAsChatBackground": "ක්‍රියාකාරකම් රූපය චැට් පසුබිම ලෙස භාවිතා කරන්න",
     "chatWithSupport": "සහාය සමඟ කතාබස් කරන්න",
     "newCourseAccess": "පෙරනිමියෙන්, පාඨමාලා පොදුවේ සෙවිය හැකි අතර සම්බන්ධ වීමට පරිපාලක අනුමැතිය අවශ්‍ය වේ. ඔබට ඕනෑම වේලාවක මෙම සැකසුම් සංස්කරණය කළ හැක.",
     "onboardingLanguagesTitle": "ඔබ ඉගෙන ගන්නා භාෂාව කුමක්ද?",
@@ -2383,5 +2382,17 @@
     "courseCodeSaved": "පාඨමාලා කේතය {code} සුරැකිණි",
     "courseCodeSavedExplanation": "ලියාපදිංචි වන්න හෝ ලොග් වන්න, එවිට අපි ඔබව ඔබේ පාඨමාලාවට එකතු කරන්නෙමු.",
     "moderationRefusedContactDetails": "ඔබගේ පණිවිඩය යවා නැත. ස්වයංක්‍රීය පෙරහනක් මගින් දුරකථන අංකයක් වැනි සම්බන්ධතා තොරතුරු හමු විය. කරුණාකර ඒවා ඉවත් කර නැවත උත්සාහ කරන්න.",
-    "moderationRefusedProfanity": "ඔබගේ පණිවිඩය යවා නැත. ස්වයංක්‍රීය පෙරහනක් මගින් කතාබස් තුළ අපට ඉඩ දිය නොහැකි වචනයක් හමු විය. කරුණාකර එය වෙනස් කර නැවත උත්සාහ කරන්න."
+    "moderationRefusedProfanity": "ඔබගේ පණිවිඩය යවා නැත. ස්වයංක්‍රීය පෙරහනක් මගින් කතාබස් තුළ අපට ඉඩ දිය නොහැකි වචනයක් හමු විය. කරුණාකර එය වෙනස් කර නැවත උත්සාහ කරන්න.",
+    "callTranscriptTranscribeButton": "පිටපත් කරන්න",
+    "callTranscriptAudioUnavailable": "{name} වෙතින් සුරකින ලද පටිගත කිරීම බාගත කිරීමට නොහැකි විය, එබැවින් එය පිටපත් කිරීමට නොහැකි විය.",
+    "callTranscriptChooseLanguage": "කතා කළ භාෂාව කුමක්ද?",
+    "callTranscriptSubscribeForTranscription": "පිටපත් කිරීම සඳහා දායක වන්න",
+    "unlockCallTranscript": "ඇමතුම් පිටපත අගුළු හරින්න",
+    "activitySummaryUpdateFailed": "මෙම සාරාංශය යාවත්කාලීන කිරීමට නොහැකි විය.",
+    "ssoNetworkBlockedTitle": "පිවිසුම් අඩවියට ළඟා විය නොහැක",
+    "ssoNetworkBlockedDesc": "ඔබව පුරනය කිරීමට {provider} වෙත ළඟා වීමට මෙම ජාලය අපට ඉඩ නොදේ. පාසල් සහ කාර්යාල Wi-Fi බොහෝ විට එය අවහිර කරයි. ඔබට ඒ වෙනුවට විද්‍යුත් තැපෑලෙන් ලියාපදිංචි විය හැක, නැතහොත් වෙනත් ජාලයකට මාරු වී නැවත උත්සාහ කරන්න.",
+    "ssoTryAnyway": "කෙසේ හෝ උත්සාහ කරන්න",
+    "publicCoursesFilterTooltip": "ඕනෑම කෙනෙකුට සම්බන්ධ විය හැකි පාඨමාලා පමණක් පෙන්වන්න",
+    "restrictedCoursesFilterTooltip": "ඔබට සම්බන්ධ වීමට ඉල්ලීම් කළ යුතු පාඨමාලා පමණක් පෙන්වන්න",
+    "viewImageLabel": "රූපය බලන්න"
 }
