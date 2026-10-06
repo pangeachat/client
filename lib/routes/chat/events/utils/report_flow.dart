@@ -1,0 +1,172 @@
+import 'package:matrix/matrix.dart';
+
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/chat/events/utils/report_api_extension.dart';
+
+/// The id of the revision of [event] the reporter is looking at.
+///
+/// An edited message renders its latest `m.replace` (only the author's own
+/// edits count — the same rule [Event.getDisplayEvent] applies when drawing
+/// it), so that replacement is what gets reported and snapshotted, never the
+/// original text the reporter no longer sees.
+String displayedRevisionId(Event event, Timeline timeline) =>
+    event.getDisplayEvent(timeline).eventId;
+
+/// A course space's joined members and their power levels, as far as this
+/// client can see them.
+class CourseRoster {
+  final String courseId;
+
+  /// Joined members only, keyed by user id.
+  final Map<String, int> joinedPowerLevels;
+
+  const CourseRoster({required this.courseId, required this.joinedPowerLevels});
+
+  bool hasStudent(String userId, {required String botId}) {
+    if (userId == botId) return false;
+    final powerLevel = joinedPowerLevels[userId];
+    return powerLevel != null && powerLevel < 100;
+  }
+}
+
+/// The courses a report belongs to — the client-side mirror of the module's
+/// rule (trust-and-safety.instructions.md, "Course ownership"): the reported
+/// user's student courses, or, only when the reported user is a student in
+/// none of them, the reporter's student courses. A teacher reporting their own
+/// student therefore notifies that student's course and none of the
+/// teacher's other courses.
+///
+/// Limited to the courses this client is joined to: a course of the reported
+/// user's that the reporter is not in is invisible here, though the module
+/// still files the report there.
+List<String> reportCourseIds({
+  required String subjectId,
+  required String reporterId,
+  required String botId,
+  required List<CourseRoster> courses,
+}) {
+  List<String> studentCoursesOf(String userId) => courses
+      .where((c) => c.hasStudent(userId, botId: botId))
+      .map((c) => c.courseId)
+      .toList();
+
+  final subjectCourses = studentCoursesOf(subjectId);
+  if (subjectCourses.isNotEmpty) return subjectCourses;
+  return studentCoursesOf(reporterId);
+}
+
+/// The DM a course admin receives about a report: a pointer to the Safety
+/// page and nothing else. It never carries the message, the reason or the
+/// reported user — the Safety page shows those to the admins entitled to see
+/// them, and a DM with the text in it would itself read as the abuse it
+/// reports.
+Map<String, Object> reportPointerContent(String body) => {
+  'msgtype': PangeaEventTypes.report,
+  'body': body,
+};
+
+/// A course admin a report can be pointed out to, with the course they admin.
+class ReportRecipient<T> {
+  final T admin;
+  final String courseName;
+
+  const ReportRecipient(this.admin, this.courseName);
+}
+
+/// How a report ended.
+enum ReportOutcome {
+  /// The module recorded the report.
+  captured,
+
+  /// The module never confirmed it and the reporter chose not to retry. The
+  /// failure was already reported to Sentry by [ReportFlow.capture].
+  notCaptured,
+}
+
+/// "Report message", capture first.
+///
+/// The module records the report before anything else happens, for every
+/// report — offensive or not, whether or not a course admin is found — so no
+/// report depends on a teacher lookup succeeding. Only after the module has
+/// confirmed it are course admins pointed to the Safety page.
+class ReportFlow<T> {
+  /// Sends the report to the module; true once it is recorded. Reports its
+  /// own failures, so a false here is never silent.
+  final Future<bool> Function(ReportSubmission report) capture;
+
+  /// Asks the reporter whether to try again after [capture] failed.
+  final Future<bool> Function() offerRetry;
+
+  /// Tells the reporter the report is recorded.
+  final void Function() confirmCaptured;
+
+  /// The admins of the report's courses (see [reportCourseIds]).
+  final Future<List<ReportRecipient<T>>> Function() lookupCourseAdmins;
+
+  /// Lets the reporter choose who gets the pointer DM; null or empty sends
+  /// none.
+  final Future<List<ReportRecipient<T>>?> Function(
+    List<ReportRecipient<T>> admins,
+  )
+  selectRecipients;
+
+  /// Sends [content] to [recipient] in a DM.
+  final Future<void> Function(
+    ReportRecipient<T> recipient,
+    Map<String, Object> content,
+  )
+  sendPointer;
+
+  /// The pointer text for the named course: "A message was reported in
+  /// [courseName] — see Safety".
+  final String Function(String courseName) pointerBody;
+
+  /// Records a non-offensive report in Sentry.
+  final void Function(ReportSubmission report) recordNonOffensive;
+
+  const ReportFlow({
+    required this.capture,
+    required this.offerRetry,
+    required this.confirmCaptured,
+    required this.lookupCourseAdmins,
+    required this.selectRecipients,
+    required this.sendPointer,
+    required this.pointerBody,
+    required this.recordNonOffensive,
+  });
+
+  Future<ReportOutcome> run(
+    ReportSubmission report, {
+    required bool offensive,
+  }) async {
+    if (!await captureWithRetry(report)) return ReportOutcome.notCaptured;
+    confirmCaptured();
+
+    if (!offensive) {
+      recordNonOffensive(report);
+      return ReportOutcome.captured;
+    }
+
+    final admins = await lookupCourseAdmins();
+    if (admins.isEmpty) return ReportOutcome.captured;
+
+    final selected = await selectRecipients(admins);
+    if (selected == null) return ReportOutcome.captured;
+    for (final recipient in selected) {
+      await sendPointer(
+        recipient,
+        reportPointerContent(pointerBody(recipient.courseName)),
+      );
+    }
+    return ReportOutcome.captured;
+  }
+
+  /// Sends [report] until the module records it or the reporter gives up.
+  /// Every attempt carries the same [ReportSubmission.reportId].
+  Future<bool> captureWithRetry(ReportSubmission report) async {
+    while (true) {
+      if (await capture(report)) return true;
+      if (!await offerRetry()) return false;
+    }
+  }
+}

@@ -2,13 +2,19 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:uuid/uuid.dart';
 
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/chat/events/utils/report_api_extension.dart';
+import 'package:fluffychat/routes/chat/events/utils/report_flow.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -33,7 +39,7 @@ void reportEvent(
       AdaptiveModalAction(value: 2, label: L10n.of(context).other),
     ],
   );
-  if (score == null) return;
+  if (score == null || !context.mounted) return;
 
   final reason = await showTextInputDialog(
     context: context,
@@ -50,151 +56,200 @@ void reportEvent(
     },
   );
 
-  if (reason == null) return;
+  if (reason == null || !context.mounted) return;
 
-  if (score == 1) {
-    await reportOffensiveMessage(
-      context,
-      event.room.id,
-      reason,
-      event.senderId,
-      event.content['body'].toString(),
-    );
-    controller.clearSelectedEvents();
-    return;
+  final timeline = controller.timeline;
+  final report = ReportSubmission(
+    // Generated once here and reused by every retry below.
+    reportId: const Uuid().v4(),
+    roomId: event.room.id,
+    eventId: timeline == null
+        // No timeline means no edits are loaded either, so what the reporter
+        // sees is the event itself.
+        ? event.eventId
+        : displayedRevisionId(event, timeline),
+    reason: reason,
+  );
+
+  final client = Matrix.of(context).client;
+  final l10n = L10n.of(context);
+  await ReportFlow<SpaceTeacher>(
+    capture: (report) => _captureReport(context, client, report),
+    offerRetry: () => _offerReportRetry(context),
+    confirmCaptured: () {
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBarAnnounced(SnackBar(content: Text(l10n.reportSent)));
+    },
+    lookupCourseAdmins: () => _lookupCourseAdmins(context, client, event),
+    selectRecipients: (admins) async {
+      if (!context.mounted) return null;
+      final selected = await showDialog<List<SpaceTeacher>>(
+        context: context,
+        useRootNavigator: false,
+        builder: (BuildContext context) => TeacherSelectDialog(
+          teachers: admins.map((admin) => admin.admin).toList(),
+        ),
+      );
+      return selected
+          ?.map((teacher) => ReportRecipient(teacher, teacher.courseName))
+          .toList();
+    },
+    sendPointer: (recipient, content) async {
+      if (!context.mounted) return;
+      await showFutureLoadingDialog(
+        context: context,
+        future: () async {
+          final dm = await getReportsDM(
+            recipient.admin.teacher,
+            recipient.admin.space,
+          );
+          await dm.sendEvent(content);
+        },
+      );
+    },
+    pointerBody: l10n.reportPointerMessage,
+    recordNonOffensive: recordNonOffensiveReport,
+  ).run(report, offensive: score == 1);
+}
+
+/// Sends [report] to the module behind a loading dialog; true once recorded.
+///
+/// A failure is reported to Sentry here, exactly once per attempt, with ids
+/// only — never the reason, which is the reporter's own words.
+Future<bool> _captureReport(
+  BuildContext context,
+  Client client,
+  ReportSubmission report,
+) async {
+  Future<Object?> attempt() async {
+    try {
+      await client.captureReport(report);
+      return null;
+    } catch (e, s) {
+      await ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          'report_id': report.reportId,
+          'room_id': report.roomId,
+          'event_id': report.eventId,
+        },
+      );
+      return e;
+    }
   }
 
-  final data = {
-    "content": event.content,
-    "eventID": event.eventId,
-    "roomID": event.room.id,
-    "userID": event.senderId,
-    "reason": reason,
-  };
-  Sentry.addBreadcrumb(Breadcrumb(data: data));
+  if (!context.mounted) return await attempt() == null;
+  final result = await showFutureLoadingDialog<Object?>(
+    context: context,
+    future: attempt,
+  );
+  return !result.isError && result.result == null;
+}
+
+/// Tells the reporter the report was not sent and asks whether to retry.
+Future<bool> _offerReportRetry(BuildContext context) async {
+  if (!context.mounted) return false;
+  final l10n = L10n.of(context);
+  final answer = await showOkCancelAlertDialog(
+    context: context,
+    title: l10n.reportMessage,
+    message: l10n.reportNotSent,
+    okLabel: l10n.tryAgain,
+    cancelLabel: l10n.cancel,
+  );
+  return answer == OkCancelResult.ok;
+}
+
+/// The non-bot admins of the report's courses ([reportCourseIds]), other than
+/// the reporter, each once.
+Future<List<ReportRecipient<SpaceTeacher>>> _lookupCourseAdmins(
+  BuildContext context,
+  Client client,
+  Event event,
+) async {
+  // The reporter has left the chat: there is nowhere to ask whom to notify.
+  // The report itself is already recorded, so this skips only the pointer DM.
+  if (!context.mounted) return const [];
+  final result = await showFutureLoadingDialog<List<SpaceTeacher>>(
+    context: context,
+    future: () => getReportTeachers(client, event.senderId),
+  );
+  return (result.result ?? const <SpaceTeacher>[])
+      .map((teacher) => ReportRecipient(teacher, teacher.courseName))
+      .toList();
+}
+
+/// Records a non-offensive report in Sentry: which event, never what it says
+/// or why it was reported. The report itself is on the Safety page.
+void recordNonOffensiveReport(ReportSubmission report) {
+  Sentry.addBreadcrumb(
+    Breadcrumb(
+      data: {
+        'eventID': report.eventId,
+        'roomID': report.roomId,
+        'reportID': report.reportId,
+      },
+    ),
+  );
   Sentry.captureException(
-    "User reported message with eventId ${event.eventId}",
+    'User reported message with eventId ${report.eventId}',
     stackTrace: StackTrace.current,
     withScope: (scope) {
-      scope.fingerprint = ['user-report', event.eventId];
+      scope.fingerprint = ['user-report', report.eventId];
     },
   );
 }
 
-Future<void> reportOffensiveMessage(
-  BuildContext context,
-  String roomId,
-  String? reason,
-  String reportedUserId,
-  String reportedMessage,
-) async {
-  final Room? reportedInRoom = Matrix.of(context).client.getRoomById(roomId);
-  if (reportedInRoom == null) {
-    throw ("Null room with id $roomId in reportMessage");
-  }
-
-  final resp = await showFutureLoadingDialog<List<SpaceTeacher>>(
-    context: context,
-    future: () async {
-      final List<SpaceTeacher> teachers = await getReportTeachers(
-        context,
-        reportedInRoom,
-      );
-      if (teachers.isEmpty) {
-        throw L10n.of(context).noTeachersFound;
-      }
-      return teachers;
-    },
-  );
-
-  if (resp.isError || resp.result == null || resp.result!.isEmpty) {
-    return;
-  }
-
-  final List<SpaceTeacher>? selectedTeachers = await showDialog(
-    context: context,
-    useRootNavigator: false,
-    builder: (BuildContext context) =>
-        TeacherSelectDialog(teachers: resp.result!),
-  );
-
-  if (selectedTeachers == null || selectedTeachers.isEmpty) {
-    return;
-  }
-
-  await showFutureLoadingDialog(
-    context: context,
-    future: () async {
-      final List<Room> reportDMs = [];
-      for (final SpaceTeacher teacher in selectedTeachers) {
-        final Room reportDM = await getReportsDM(
-          teacher.teacher,
-          teacher.space,
-        );
-        reportDMs.add(reportDM);
-      }
-
-      final String reportingUserId = Matrix.of(context).client.userID ?? "";
-      final String roomName = reportedInRoom.getLocalizedDisplayname();
-      final String messageTitle = L10n.of(
-        context,
-      ).reportMessageTitle(reportingUserId, reportedUserId, roomName);
-      final String messageBody = L10n.of(
-        context,
-      ).reportMessageBody(reportedMessage, reason ?? L10n.of(context).none);
-      final String message = "$messageTitle\n\n$messageBody";
-      for (final Room reportDM in reportDMs) {
-        final event = <String, dynamic>{
-          'msgtype': PangeaEventTypes.report,
-          'body': message,
-        };
-        await reportDM.sendEvent(event);
-      }
-    },
-  );
-}
-
+/// The non-bot admins of the courses a report about [subjectId] belongs to
+/// ([reportCourseIds]), excluding the reporter, each listed once with the
+/// first such course.
 Future<List<SpaceTeacher>> getReportTeachers(
-  BuildContext context,
-  Room room,
+  Client client,
+  String subjectId,
 ) async {
-  // create a list of teachers and their assosiated spaces
-  // prioritize the spaces that are parents of the report room
-  final List<SpaceTeacher> teachers = [];
+  final reporterId = client.userID;
+  if (reporterId == null) return const [];
 
-  final List<Room> reportRoomParentSpaces = room.spaceParents
-      .where((parentSpace) => parentSpace.roomId != null)
-      .map(
-        (parentSpace) =>
-            Matrix.of(context).client.getRoomById(parentSpace.roomId!),
+  final courses = client.rooms
+      .where(
+        (room) =>
+            room.membership == Membership.join &&
+            room.getState(PangeaEventTypes.coursePlan) != null,
       )
-      .where((parentSpace) => parentSpace != null)
-      .cast<Room>()
       .toList();
 
-  for (final Room space in reportRoomParentSpaces) {
-    final List<User> spaceTeachers = await space.nonBotRoomAdmins;
-    for (final User spaceTeacher in spaceTeachers) {
-      if (!teachers.any((teacher) => teacher.teacher.id == spaceTeacher.id) &&
-          spaceTeacher.id != Matrix.of(context).client.userID) {
-        teachers.add(SpaceTeacher(spaceTeacher, space));
-      }
-    }
+  final rosters = <String, CourseRoster>{};
+  final admins = <String, List<User>>{};
+  for (final course in courses) {
+    final members = await course.requestParticipants([Membership.join]);
+    rosters[course.id] = CourseRoster(
+      courseId: course.id,
+      joinedPowerLevels: {for (final m in members) m.id: m.powerLevel},
+    );
+    admins[course.id] = members
+        .where((m) => m.powerLevel >= 100 && m.id != BotName.byEnvironment)
+        .toList();
   }
 
-  final List<Room> otherSpaces = Matrix.of(context).client.rooms
-      .where((room) => room.isSpace && !reportRoomParentSpaces.contains(room))
-      .toList();
+  final courseIds = reportCourseIds(
+    subjectId: subjectId,
+    reporterId: reporterId,
+    botId: BotName.byEnvironment,
+    courses: rosters.values.toList(),
+  );
 
-  for (final space in otherSpaces) {
-    for (final spaceTeacher in await space.nonBotRoomAdmins) {
-      if (!teachers.any((teacher) => teacher.teacher.id == spaceTeacher.id) &&
-          spaceTeacher.id != Matrix.of(context).client.userID) {
-        teachers.add(SpaceTeacher(spaceTeacher, space));
-      }
+  final teachers = <SpaceTeacher>[];
+  for (final courseId in courseIds) {
+    final course = courses.firstWhere((room) => room.id == courseId);
+    for (final admin in admins[courseId]!) {
+      if (admin.id == reporterId) continue;
+      if (teachers.any((t) => t.teacher.id == admin.id)) continue;
+      teachers.add(SpaceTeacher(admin, course));
     }
   }
-
   return teachers;
 }
 
@@ -257,4 +312,6 @@ class SpaceTeacher {
   final Room space;
 
   SpaceTeacher(this.teacher, this.space);
+
+  String get courseName => space.getLocalizedDisplayname();
 }
