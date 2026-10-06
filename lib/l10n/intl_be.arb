@@ -3536,7 +3536,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-05 13:57:45.022452",
+    "@@last_modified": "2026-10-06 12:20:50.532363",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -8690,7 +8690,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Выберыце словы, каб даведацца пра іх больш",
     "requireAnalyticsAccessTitle": "Патрабуецца доступ да аналітыкі для ўдзелу",
-    "requireAnalyticsAccessDesc": "Удзельнікі павінны даць доступ да сваёй навучальнай аналітыкі, каб далучыцца да гэтага курса",
     "analyticsAccessNoticeTitle": "Патрабуецца доступ да аналітыкі",
     "analyticsAccessNoticeDesc": "Далучаючыся да гэтага курса, вы згаджаецеся даць адміністратарам доступ да вашай навучальнай аналітыкі.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8698,10 +8697,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9940,5 +9935,6 @@
     "courseAccessPublicDesc": "Любы можа знайсці і далучыцца да гэтага курса.",
     "courseAccessApprovalRequiredDesc": "Любы можа знайсці гэты курс і запытаць далучэнне. Вы ўхваляеце кожны запыт.",
     "courseAccessPrivateDesc": "Далучыцца могуць толькі людзі з вашым запрашэннем або кодам курса. Курс не з'яўляецца ў пошуку.",
-    "courseAccessCodeNote": "Студэнты з вашым кодам курса або запрашэннем могуць далучыцца адразу, незалежна ад вашага выбару."
+    "courseAccessCodeNote": "Студэнты з вашым кодам курса або запрашэннем могуць далучыцца адразу, незалежна ад вашага выбару.",
+    "requireAnalyticsAccessSummary": "Студэнты дзеляцца з вамі сваім прагрэсам у навучанні, калі далучаюцца."
 }

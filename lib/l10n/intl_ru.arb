@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-05 13:57:52.189535",
+    "@@last_modified": "2026-10-06 12:20:58.800741",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -9648,7 +9648,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Выберите слова, чтобы узнать о них больше",
     "requireAnalyticsAccessTitle": "Требуется доступ к аналитике для участия",
-    "requireAnalyticsAccessDesc": "Участники должны предоставить доступ к своей учебной аналитике, чтобы присоединиться к этому курсу",
     "analyticsAccessNoticeTitle": "Требуется доступ к аналитике",
     "analyticsAccessNoticeDesc": "Присоединяясь к этому курсу, вы соглашаетесь предоставить администраторам доступ к вашей учебной аналитике.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9656,10 +9655,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10898,5 +10893,6 @@
     "courseAccessPublicDesc": "Любой может найти и присоединиться к этому курсу.",
     "courseAccessApprovalRequiredDesc": "Любой может найти этот курс и запросить присоединение. Вы одобряете каждый запрос.",
     "courseAccessPrivateDesc": "Присоединиться могут только люди с вашим приглашением или кодом курса. Курс не отображается в поиске.",
-    "courseAccessCodeNote": "Студенты с вашим кодом курса или приглашением могут присоединиться сразу, независимо от вашего выбора."
+    "courseAccessCodeNote": "Студенты с вашим кодом курса или приглашением могут присоединиться сразу, независимо от вашего выбора.",
+    "requireAnalyticsAccessSummary": "Учащиеся делятся с вами своим прогрессом в обучении, когда присоединяются."
 }

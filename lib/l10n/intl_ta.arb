@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:53.537451",
+    "@@last_modified": "2026-10-06 12:21:01.009692",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -8768,7 +8768,6 @@
     },
     "readingAssistanceTutorialCollectToken": "கற்றுக்கொள்ள மேலும் தகவலுக்கு வார்த்தைகளை தேர்ந்தெடுக்கவும்",
     "requireAnalyticsAccessTitle": "சேர்வதற்கு பகுப்பாய்வு அணுகல் தேவை",
-    "requireAnalyticsAccessDesc": "பங்கேற்பாளர்கள் இந்த பாடத்தில் சேர்வதற்கு தங்கள் கற்றல் பகுப்பாய்வுக்கு அணுகலை வழங்க வேண்டும்",
     "analyticsAccessNoticeTitle": "பகுப்பாய்வு அணுகல் தேவை",
     "analyticsAccessNoticeDesc": "இந்த பாடத்தில் சேர்வதன் மூலம், நீங்கள் நிர்வாகிகளுக்கு உங்கள் கற்றல் பகுப்பாய்வுக்கு அணுகலை வழங்க ஒப்புக்கொள்கிறீர்கள்.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8776,10 +8775,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10018,5 +10013,6 @@
     "courseAccessPublicDesc": "யார் வேண்டுமானாலும் இந்தக் கோர்ஸைக் கண்டறிந்து சேரலாம்.",
     "courseAccessApprovalRequiredDesc": "யார் வேண்டுமானாலும் இந்தக் கோர்ஸைக் கண்டறிந்து சேரக் கோரலாம். ஒவ்வொரு கோரிக்கைக்கும் நீங்கள் அனுமதி அளிக்க வேண்டும்.",
     "courseAccessPrivateDesc": "உங்கள் அழைப்பு அல்லது கோர்ஸ் குறியீடு உள்ளவர்கள் மட்டுமே சேர முடியும். இந்தக் கோர்ஸ் தேடலில் தோன்றாது.",
-    "courseAccessCodeNote": "உங்கள் கோர்ஸ் குறியீடு அல்லது அழைப்பு உள்ள மாணவர்கள், நீங்கள் எதைத் தேர்ந்தெடுத்தாலும் உடனடியாகச் சேரலாம்."
+    "courseAccessCodeNote": "உங்கள் கோர்ஸ் குறியீடு அல்லது அழைப்பு உள்ள மாணவர்கள், நீங்கள் எதைத் தேர்ந்தெடுத்தாலும் உடனடியாகச் சேரலாம்.",
+    "requireAnalyticsAccessSummary": "மாணவர்கள் சேரும்போது அவர்களின் கற்றல் முன்னேற்றத்தை உங்களுடன் பகிர்ந்துகொள்வார்கள்."
 }

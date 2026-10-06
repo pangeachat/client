@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-05 13:57:52.795330",
+    "@@last_modified": "2026-10-06 12:21:00.098019",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Halkan waa meesha ay ku soo bixi doonaan erayada cusub ee eray-bixinta!",
     "readingAssistanceTutorialCollectToken": "Dooro erayo si aad wax badan uga barato",
     "requireAnalyticsAccessTitle": "U baahan oggolaansho falanqeyn si aad ugu biirto",
-    "requireAnalyticsAccessDesc": "Ka qaybgalayaashu waa inay oggolaadaan helitaanka falanqeyntooda waxbarasho si ay ugu biiraan koorsadan",
     "moreOptions": "Dookhyo dheeraad ah",
     "analyticsAccessNoticeTitle": "Oggolaanshaha Falanqaynta ayaa Loo Baahan Yahay",
     "analyticsAccessNoticeDesc": "Markaad ku biirto koorsadan, waxaad oggolaatay inaad maamulayaasha siiso oggolaansho ay ku helaan falanqayntaada waxbarasho.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Qof kastaa wuu heli karaa oo ku soo biiri karaa koorsadan.",
     "courseAccessApprovalRequiredDesc": "Qof kastaa wuu heli karaa koorsadan oo wuxuu codsan karaa inuu ku soo biiro. Adiga ayaa ansixinaya codsi kasta.",
     "courseAccessPrivateDesc": "Kaliya dadka leh martiqaadkaaga ama koodhka koorsada ayaa ku soo biiri kara. Koorsadu kama soo muuqato raadinta.",
-    "courseAccessCodeNote": "Ardayda leh koodhka koorsadaada ama martiqaadku waxay isla markiiba ku soo biiri karaan, wax kasta oo aad doorato."
+    "courseAccessCodeNote": "Ardayda leh koodhka koorsadaada ama martiqaadku waxay isla markiiba ku soo biiri karaan, wax kasta oo aad doorato.",
+    "requireAnalyticsAccessSummary": "Ardaydu waxay kula wadaagaan horumarkooda waxbarasho marka ay ku soo biiraan."
 }

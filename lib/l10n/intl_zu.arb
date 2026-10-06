@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-05 13:57:55.531927",
+    "@@last_modified": "2026-10-06 12:21:03.137587",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Lapha kuzovela amagama amasha esilulumagama!",
     "readingAssistanceTutorialCollectToken": "Khetha amagama ukuze ufunde kabanzi ngawo",
     "requireAnalyticsAccessTitle": "Funa ukufinyelela kuzibalo ukuze ujoyine",
-    "requireAnalyticsAccessDesc": "Abahlanganyeli kufanele banikeze ukufinyelela kuzibalo zabo zokufunda ukuze bajoyine lesi sifundo",
     "moreOptions": "Izinketho ezengeziwe",
     "analyticsAccessNoticeTitle": "Ukufinyelela Kuzibalo Kuyadingeka",
     "analyticsAccessNoticeDesc": "Ngokujoyina lesi sifundo, uyavuma ukunikeza abaphathi ukufinyelela kuzibalo zakho zokufunda.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Noma ubani angathola futhi ajoyine le khosi.",
     "courseAccessApprovalRequiredDesc": "Noma ubani angathola le khosi futhi acele ukuyijoyina. Uvumela isicelo ngasinye.",
     "courseAccessPrivateDesc": "Abantu abanesimemo sakho noma ikhodi yekhosi kuphela abangajoyina. Ikhosi ayiveli ekusesheni.",
-    "courseAccessCodeNote": "Abafundi abanekhodi yekhosi yakho noma isimemo bangajoyina ngokushesha, noma ngabe ukhetha ini."
+    "courseAccessCodeNote": "Abafundi abanekhodi yekhosi yakho noma isimemo bangajoyina ngokushesha, noma ngabe ukhetha ini.",
+    "requireAnalyticsAccessSummary": "Abafundi babelana ngenqubekelaphambili yabo yokufunda nawe uma bejoyina."
 }

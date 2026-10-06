@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-05 13:57:47.466858",
+    "@@last_modified": "2026-10-06 12:20:52.877212",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "A nan ne sabbin kalmomi za su bayyana!",
     "readingAssistanceTutorialCollectToken": "Zaɓi kalmomi don ƙarin koyo game da su",
     "requireAnalyticsAccessTitle": "Ana buƙatar damar nazarin bayanai don shiga",
-    "requireAnalyticsAccessDesc": "Dole ne mahalarta su ba da damar samun damar nazarin bayanan karatunsu don shiga wannan kwas ɗin",
     "moreOptions": "Ƙarin zaɓuɓɓuka",
     "analyticsAccessNoticeTitle": "Ana Bukatar Damar Nazarin Bayanai",
     "analyticsAccessNoticeDesc": "Ta hanyar shiga wannan kwas ɗin, ka amince da ba wa masu gudanarwa damar samun damar nazarin bayanan karatunka.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Kowa zai iya samu kuma ya shiga wannan kwas ɗin.",
     "courseAccessApprovalRequiredDesc": "Kowa zai iya samun wannan kwas ɗin kuma ya nemi shiga. Kai ne za ka amince da kowace buƙata.",
     "courseAccessPrivateDesc": "Mutane masu gayyatarka ko lambar kwas ɗinka ne kawai za su iya shiga. Kwas ɗin ba zai bayyana a bincike ba.",
-    "courseAccessCodeNote": "Ɗalibai masu lambar kwas ɗinka ko gayyata za su iya shiga nan da nan, duk abin da ka zaɓa."
+    "courseAccessCodeNote": "Ɗalibai masu lambar kwas ɗinka ko gayyata za su iya shiga nan da nan, duk abin da ka zaɓa.",
+    "requireAnalyticsAccessSummary": "Ɗalibai suna raba ci gaban karatunsu da kai idan suka shiga."
 }

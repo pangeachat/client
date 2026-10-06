@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/course_access/course_access.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
@@ -14,7 +13,7 @@ import 'package:fluffychat/routes/courses/add_course_tile.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/course_cta_row.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
-import 'package:fluffychat/routes/courses/own/course_access_row_widget.dart';
+import 'package:fluffychat/routes/courses/own/course_creation_settings_widget.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -51,10 +50,9 @@ class SelectedCourseView extends StatelessWidget {
   /// middle when supplied — the restored course-preview modules list (#7826).
   final QuestObjectivesLoader? objectivesProvider;
 
-  /// The course's access setting, shown in a row above the CTA when the CTA
-  /// creates the course — course-preview.instructions.md § The page.
-  final CourseAccess? access;
-  final VoidCallback? onTapAccess;
+  /// The settings shown above the CTA when the CTA creates the course —
+  /// course-preview.instructions.md § The page.
+  final CourseCreationSettings? creationSettings;
 
   const SelectedCourseView({
     super.key,
@@ -68,8 +66,7 @@ class SelectedCourseView extends StatelessWidget {
     required this.onTapCta,
     required this.ctaButtonText,
     this.objectivesProvider,
-    this.access,
-    this.onTapAccess,
+    this.creationSettings,
   });
 
   @override
@@ -77,9 +74,7 @@ class SelectedCourseView extends StatelessWidget {
     final theme = Theme.of(context);
     final course = this.course;
     final content = this.content;
-    final access = this.access;
-    final onTapAccess = this.onTapAccess;
-    final showAccessRow = access != null && onTapAccess != null;
+    final creationSettings = this.creationSettings;
 
     return Scaffold(
       body: LayoutBuilder(
@@ -87,7 +82,9 @@ class SelectedCourseView extends StatelessWidget {
           final compact =
               bodyConstraints.maxHeight <
               kCoursePreviewCompactMaxHeight +
-                  (showAccessRow ? CourseAccessRow.heightAllowance : 0.0);
+                  (creationSettings != null
+                      ? CourseCreationSettings.heightAllowance
+                      : 0.0);
 
           final header = Padding(
             padding: const EdgeInsets.fromLTRB(4.0, 4.0, 12.0, 0.0),
@@ -145,8 +142,7 @@ class SelectedCourseView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       spacing: 8.0,
                       children: [
-                        if (showAccessRow)
-                          CourseAccessRow(access: access, onTap: onTapAccess),
+                        ?creationSettings,
                         CourseCtaRow(
                           primary: CourseCtaAction(
                             label: ctaButtonText,
@@ -157,13 +153,20 @@ class SelectedCourseView extends StatelessWidget {
                     );
 
                     // The minimized rest: nothing that scrolls, so an upward
-                    // drag grows the sheet unopposed (grow-before-scroll).
+                    // drag grows the sheet unopposed (grow-before-scroll). The
+                    // CTA holds the bottom; if long copy or large text makes
+                    // the rows taller than the rest allows, they clip at the
+                    // top rather than overflow.
                     if (compact) {
                       return Padding(
                         padding: const EdgeInsets.fromLTRB(12.0, 0, 12.0, 12.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [const Spacer(), ctaRow],
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: SingleChildScrollView(
+                            reverse: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            child: ctaRow,
+                          ),
                         ),
                       );
                     }

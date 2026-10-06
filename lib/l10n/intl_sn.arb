@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-05 13:57:52.888329",
+    "@@last_modified": "2026-10-06 12:21:00.046875",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Pano ndipo pachabuda mazwi matsva evokabhurari!",
     "readingAssistanceTutorialCollectToken": "Sarudza mazwi kuti udzidze zvakawanda nezvawo",
     "requireAnalyticsAccessTitle": "Kumbira kuwana analytics kuti ubatanidze",
-    "requireAnalyticsAccessDesc": "Vatori vechikamu vanofanira kupa mvumo yekuwana analytics yavo yekudzidza kuti vabatane nekosi iyi",
     "moreOptions": "Zvimwe zvingasarudzwa",
     "analyticsAccessNoticeTitle": "Kuwana Analytics Kunodiwa",
     "analyticsAccessNoticeDesc": "Nekubatana nekosi iyi, unobvuma kupa maadmin mukana kune analytics yako yekudzidza.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Chero ani zvake anogona kuwana nekujoina kosi iyi.",
     "courseAccessApprovalRequiredDesc": "Chero ani zvake anogona kuwana kosi iyi uye kukumbira kujoina. Iwe unobvumidza chikumbiro chimwe nechimwe.",
     "courseAccessPrivateDesc": "Vanhu chete vane kokero yako kana kodhi yekosi ndivo vanogona kujoina. Kosi yacho haioneke mukutsvaga.",
-    "courseAccessCodeNote": "Vadzidzi vane kodhi yako yekosi kana kokero vanogona kujoina ipapo ipapo, chero chaunosarudza."
+    "courseAccessCodeNote": "Vadzidzi vane kodhi yako yekosi kana kokero vanogona kujoina ipapo ipapo, chero chaunosarudza.",
+    "requireAnalyticsAccessSummary": "Vadzidzi vanogovana newe kufambira mberi kwavo pakudzidza pavanopinda."
 }

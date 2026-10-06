@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-05 13:57:54.553215",
+    "@@last_modified": "2026-10-06 12:21:01.964960",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "یہاں نئے الفاظ ظاہر ہوں گے!",
     "readingAssistanceTutorialCollectToken": "الفاظ کے بارے میں مزید جاننے کے لیے انہیں منتخب کریں",
     "requireAnalyticsAccessTitle": "شامل ہونے کے لیے تجزیات تک رسائی درکار ہے",
-    "requireAnalyticsAccessDesc": "شرکاء کو اس کورس میں شامل ہونے کے لیے اپنے سیکھنے کے تجزیات تک رسائی دینی ہوگی",
     "moreOptions": "مزید اختیارات",
     "analyticsAccessNoticeTitle": "تجزیات تک رسائی درکار ہے",
     "analyticsAccessNoticeDesc": "اس کورس میں شامل ہو کر، آپ اپنے سیکھنے کے تجزیات تک ایڈمنز کو رسائی دینے پر رضامند ہیں۔",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "کوئی بھی اس کورس کو تلاش کر سکتا ہے اور اس میں شامل ہو سکتا ہے۔",
     "courseAccessApprovalRequiredDesc": "کوئی بھی اس کورس کو تلاش کر سکتا ہے اور شامل ہونے کی درخواست کر سکتا ہے۔ آپ ہر درخواست کی منظوری دیتے ہیں۔",
     "courseAccessPrivateDesc": "صرف وہ لوگ شامل ہو سکتے ہیں جن کے پاس آپ کی دعوت یا کورس کوڈ ہو۔ کورس تلاش میں ظاہر نہیں ہوتا۔",
-    "courseAccessCodeNote": "آپ جو بھی انتخاب کریں، آپ کے کورس کوڈ یا دعوت نامے والے طلباء فوراً شامل ہو سکتے ہیں۔"
+    "courseAccessCodeNote": "آپ جو بھی انتخاب کریں، آپ کے کورس کوڈ یا دعوت نامے والے طلباء فوراً شامل ہو سکتے ہیں۔",
+    "requireAnalyticsAccessSummary": "طلباء شامل ہونے پر آپ کے ساتھ اپنی سیکھنے کی پیشرفت کا اشتراک کرتے ہیں۔"
 }

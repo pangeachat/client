@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:49.102067",
+    "@@last_modified": "2026-10-06 12:20:54.982532",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -8869,7 +8869,6 @@
     },
     "readingAssistanceTutorialCollectToken": "배우고 싶은 단어를 선택하세요",
     "requireAnalyticsAccessTitle": "참여를 위해 분석 접근 권한 필요",
-    "requireAnalyticsAccessDesc": "참여자는 이 과정에 참여하기 위해 학습 분석에 대한 접근 권한을 부여해야 합니다.",
     "analyticsAccessNoticeTitle": "분석 접근 권한 필요",
     "analyticsAccessNoticeDesc": "이 과정에 참여함으로써, 귀하는 관리자에게 귀하의 학습 분석에 대한 접근 권한을 부여하는 것에 동의합니다.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8877,10 +8876,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10119,5 +10114,6 @@
     "courseAccessPublicDesc": "누구나 이 코스를 찾아 참여할 수 있습니다.",
     "courseAccessApprovalRequiredDesc": "누구나 이 코스를 찾아 참여를 요청할 수 있습니다. 각 요청을 승인해야 합니다.",
     "courseAccessPrivateDesc": "초대 또는 코스 코드가 있는 사람만 참여할 수 있습니다. 이 코스는 검색에 표시되지 않습니다.",
-    "courseAccessCodeNote": "코스 코드 또는 초대가 있는 학생은 무엇을 선택하든 즉시 참여할 수 있습니다."
+    "courseAccessCodeNote": "코스 코드 또는 초대가 있는 학생은 무엇을 선택하든 즉시 참여할 수 있습니다.",
+    "requireAnalyticsAccessSummary": "학생들이 참여하면 학습 진행 상황을 공유합니다."
 }

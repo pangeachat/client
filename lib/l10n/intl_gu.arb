@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-05 13:57:47.634215",
+    "@@last_modified": "2026-10-06 12:20:52.451925",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "અહીં નવા શબ્દભંડોળના શબ્દો દેખાશે!",
     "readingAssistanceTutorialCollectToken": "શબ્દો વિશે વધુ જાણવા માટે તેમને પસંદ કરો",
     "requireAnalyticsAccessTitle": "જોડાવા માટે એનાલિટિક્સ એક્સેસ જરૂરી છે",
-    "requireAnalyticsAccessDesc": "ભાગ લેનારાઓએ આ કોર્સમાં જોડાવા માટે તેમના લર્નિંગ એનાલિટિક્સનો એક્સેસ આપવો આવશ્યક છે",
     "moreOptions": "વધુ વિકલ્પો",
     "analyticsAccessNoticeTitle": "એનાલિટિક્સ એક્સેસ જરૂરી છે",
     "analyticsAccessNoticeDesc": "આ કોર્સમાં જોડાઈને, તમે એડમિનને તમારા લર્નિંગ એનાલિટિક્સનો એક્સેસ આપવા માટે સંમત થાઓ છો.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "કોઈપણ આ કોર્સ શોધી શકે છે અને જોડાઈ શકે છે.",
     "courseAccessApprovalRequiredDesc": "કોઈપણ આ કોર્સ શોધી શકે છે અને જોડાવા માટે પૂછી શકે છે. તમે દરેક વિનંતીને મંજૂર કરો છો.",
     "courseAccessPrivateDesc": "ફક્ત તમારા આમંત્રણ અથવા કોર્સ કોડ ધરાવતા લોકો જ જોડાઈ શકે છે. કોર્સ શોધમાં દેખાશે નહીં.",
-    "courseAccessCodeNote": "તમારા કોર્સ કોડ અથવા આમંત્રણ ધરાવતા વિદ્યાર્થીઓ તમે ગમે તે પસંદ કરો, તરત જ જોડાઈ શકે છે."
+    "courseAccessCodeNote": "તમારા કોર્સ કોડ અથવા આમંત્રણ ધરાવતા વિદ્યાર્થીઓ તમે ગમે તે પસંદ કરો, તરત જ જોડાઈ શકે છે.",
+    "requireAnalyticsAccessSummary": "વિદ્યાર્થીઓ જોડાતી વખતે તમારી સાથે તેમની શીખવાની પ્રગતિ શેર કરે છે."
 }

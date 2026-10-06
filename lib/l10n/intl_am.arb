@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-05 13:57:45.289784",
+    "@@last_modified": "2026-10-06 12:20:50.562048",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "አዲስ የቃላት ዝርዝር እዚህ ይታያል!",
     "readingAssistanceTutorialCollectToken": "ስለ ቃላት የበለጠ ለማወቅ ይምረጧቸው",
     "requireAnalyticsAccessTitle": "ለመቀላቀል የመማር ትንታኔ መዳረሻ ያስፈልጋል",
-    "requireAnalyticsAccessDesc": "ተሳታፊዎች ይህንን ኮርስ ለመቀላቀል የመማር ትንታኔዎቻቸውን እንዲያገኙ መፍቀድ አለባቸው",
     "moreOptions": "ተጨማሪ አማራጮች",
     "analyticsAccessNoticeTitle": "የትንታኔ መዳረሻ ያስፈልጋል",
     "analyticsAccessNoticeDesc": "ይህንን ኮርስ በመቀላቀል፣ አስተዳዳሪዎች የመማር ትንታኔዎችዎን እንዲያገኙ መፍቀድዎን ተስማምተዋል።",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "ማንኛውም ሰው ይህን ኮርስ ማግኘት እና መቀላቀል ይችላል።",
     "courseAccessApprovalRequiredDesc": "ማንኛውም ሰው ይህን ኮርስ ማግኘት እና ለመቀላቀል መጠየቅ ይችላል። እያንዳንዱን ጥያቄ እርስዎ ያጸድቃሉ።",
     "courseAccessPrivateDesc": "የእርስዎ ግብዣ ወይም የኮርስ ኮድ ያላቸው ሰዎች ብቻ መቀላቀል ይችላሉ። ኮርሱ በፍለጋ ውስጥ አይታይም።",
-    "courseAccessCodeNote": "የእርስዎን የኮርስ ኮድ ወይም ግብዣ ያላቸው ተማሪዎች፣ ምንም ቢመርጡ ወዲያውኑ መቀላቀል ይችላሉ።"
+    "courseAccessCodeNote": "የእርስዎን የኮርስ ኮድ ወይም ግብዣ ያላቸው ተማሪዎች፣ ምንም ቢመርጡ ወዲያውኑ መቀላቀል ይችላሉ።",
+    "requireAnalyticsAccessSummary": "ተማሪዎች ሲቀላቀሉ የመማር ሂደታቸውን ለእርስዎ ያጋራሉ።"
 }

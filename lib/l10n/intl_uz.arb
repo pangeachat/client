@@ -2871,7 +2871,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-05 13:57:54.811660",
+    "@@last_modified": "2026-10-06 12:21:02.519743",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -8680,7 +8680,6 @@
     },
     "readingAssistanceTutorialCollectToken": "O'rganish uchun so'zlarni tanlang",
     "requireAnalyticsAccessTitle": "Qo'shilish uchun analitika kirishini talab qiladi",
-    "requireAnalyticsAccessDesc": "Ishtirokchilar ushbu kursga qo'shilish uchun o'zlarining o'rganish analitikalariga kirish huquqini berishlari kerak",
     "analyticsAccessNoticeTitle": "Analitika kirishi talab qilinadi",
     "analyticsAccessNoticeDesc": "Ushbu kursga qo'shilish orqali siz adminlarga o'z o'rganish analitikangizga kirish huquqini berishga rozi bo'lasiz.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8688,10 +8687,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9930,5 +9925,6 @@
     "courseAccessPublicDesc": "Har kim bu kursni topishi va unga qoʻshilishi mumkin.",
     "courseAccessApprovalRequiredDesc": "Har kim bu kursni topishi va qoʻshilishni soʻrashi mumkin. Har bir soʻrovni siz tasdiqlaysiz.",
     "courseAccessPrivateDesc": "Faqat sizning taklifnomangiz yoki kurs kodingizga ega boʻlganlar qoʻshila oladi. Kurs qidiruvda koʻrinmaydi.",
-    "courseAccessCodeNote": "Kurs kodingiz yoki taklifnomangizga ega boʻlgan talabalar, nima tanlashingizdan qatʼi nazar, darhol qoʻshila oladilar."
+    "courseAccessCodeNote": "Kurs kodingiz yoki taklifnomangizga ega boʻlgan talabalar, nima tanlashingizdan qatʼi nazar, darhol qoʻshila oladilar.",
+    "requireAnalyticsAccessSummary": "O‘quvchilar qo‘shilganlarida o‘rganish jarayonlarini siz bilan bo‘lishadilar."
 }

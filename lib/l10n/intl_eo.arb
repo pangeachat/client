@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:46.858090",
+    "@@last_modified": "2026-10-06 12:20:51.423158",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -9618,7 +9618,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Elektu vortojn por lerni pli pri ili",
     "requireAnalyticsAccessTitle": "Postuli aliron al analitiko por aliĝi",
-    "requireAnalyticsAccessDesc": "Partoprenantoj devas doni aliron al siaj lernaj analitiko por aliĝi al ĉi tiu kurso",
     "analyticsAccessNoticeTitle": "Aldona aliro al analitiko postulata",
     "analyticsAccessNoticeDesc": "Per aliĝo al ĉi tiu kurso, vi konsentas doni al administrantoj aliron al viaj lernaj analitiko.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9626,10 +9625,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10868,5 +10863,6 @@
     "courseAccessPublicDesc": "Ĉiu povas trovi kaj aliĝi al ĉi tiu kurso.",
     "courseAccessApprovalRequiredDesc": "Ĉiu povas trovi ĉi tiun kurson kaj peti aliĝon. Vi aprobas ĉiun peton.",
     "courseAccessPrivateDesc": "Nur homoj kun via invito aŭ kurskodo povas aliĝi. La kurso ne aperas en serĉo.",
-    "courseAccessCodeNote": "Studentoj kun via kurskodo aŭ invito povas aliĝi tuj, kion ajn vi elektas."
+    "courseAccessCodeNote": "Studentoj kun via kurskodo aŭ invito povas aliĝi tuj, kion ajn vi elektas.",
+    "requireAnalyticsAccessSummary": "Studentoj kunhavigas sian lernan progreson kun vi kiam ili aliĝas."
 }

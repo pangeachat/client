@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-05 13:57:52.989551",
+    "@@last_modified": "2026-10-06 12:20:59.459414",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "O iinei o le a aliali mai ai upu fou!",
     "readingAssistanceTutorialCollectToken": "Filifili upu e aʻoaʻo atili ai e uiga ia i latou",
     "requireAnalyticsAccessTitle": "Manaʻomia le avanoa i auʻiliʻiliga e auai",
-    "requireAnalyticsAccessDesc": "E tatau i tagata auai ona tuʻuina atu le avanoa i a latou auʻiliʻiliga aʻoaʻoga e auai i lenei kosi",
     "moreOptions": "Nisi filifiliga",
     "analyticsAccessNoticeTitle": "Manaʻomia le Avanoa i Auʻiliʻiliga",
     "analyticsAccessNoticeDesc": "I le auai i lenei kosi, e te malie e tuʻuina atu i pule le avanoa i au auʻiliʻiliga aʻoaʻoga.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "E mafai e so'o se tasi ona su'e ma auai i lenei kosi.",
     "courseAccessApprovalRequiredDesc": "E mafai e so'o se tasi ona su'e lenei kosi ma talosaga e auai. E te fa'atagaina talosaga ta'itasi.",
     "courseAccessPrivateDesc": "Na'o tagata e iai lau vala'aulia po'o le code o le kosi e mafai ona auai. E le aliali mai le kosi i su'esu'ega.",
-    "courseAccessCodeNote": "E mafai e tamaiti a'oga e iai lau code o le kosi po'o se vala'aulia ona auai loa, po'o le a lava lau filifiliga."
+    "courseAccessCodeNote": "E mafai e tamaiti a'oga e iai lau code o le kosi po'o se vala'aulia ona auai loa, po'o le a lava lau filifiliga.",
+    "requireAnalyticsAccessSummary": "E faʻasoa e tamaiti aʻoga a latou alualu i luma aʻoaʻoga ia te oe pe a latou auai."
 }

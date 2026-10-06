@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-05 13:57:45.251565",
+    "@@last_modified": "2026-10-06 12:20:50.698968",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Ovdje će se pojaviti nove riječi iz rječnika!",
     "readingAssistanceTutorialCollectToken": "Odaberite riječi da biste saznali više o njima",
     "requireAnalyticsAccessTitle": "Za pridruživanje je potreban pristup analitici",
-    "requireAnalyticsAccessDesc": "Učesnici moraju odobriti pristup svojoj analitici učenja da bi se pridružili ovom kursu",
     "moreOptions": "Više opcija",
     "analyticsAccessNoticeTitle": "Potreban pristup analitici",
     "analyticsAccessNoticeDesc": "Pridruživanjem ovom kursu, slažete se da administratorima odobrite pristup vašoj analitici učenja.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Svako može pronaći i pridružiti se ovom kursu.",
     "courseAccessApprovalRequiredDesc": "Svako može pronaći ovaj kurs i zatražiti pridruživanje. Vi odobravate svaki zahtjev.",
     "courseAccessPrivateDesc": "Samo se osobe s vašom pozivnicom ili kodom kursa mogu pridružiti. Kurs se ne pojavljuje u pretrazi.",
-    "courseAccessCodeNote": "Studenti s vašim kodom kursa ili pozivnicom mogu se odmah pridružiti, bez obzira na vaš izbor."
+    "courseAccessCodeNote": "Studenti s vašim kodom kursa ili pozivnicom mogu se odmah pridružiti, bez obzira na vaš izbor.",
+    "requireAnalyticsAccessSummary": "Učenici dijele svoj napredak u učenju s vama kada se pridruže."
 }

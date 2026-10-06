@@ -3389,7 +3389,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-05 13:57:46.295438",
+    "@@last_modified": "2026-10-06 12:20:51.799948",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -9548,7 +9548,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Επιλέξτε λέξεις για να μάθετε περισσότερα γι' αυτές",
     "requireAnalyticsAccessTitle": "Απαιτείται πρόσβαση σε αναλύσεις για να συμμετάσχετε",
-    "requireAnalyticsAccessDesc": "Οι συμμετέχοντες πρέπει να παραχωρήσουν πρόσβαση στις αναλύσεις μάθησής τους για να συμμετάσχουν σε αυτό το μάθημα",
     "analyticsAccessNoticeTitle": "Απαιτείται πρόσβαση σε αναλύσεις",
     "analyticsAccessNoticeDesc": "Με την συμμετοχή σας σε αυτό το μάθημα, συμφωνείτε να παραχωρήσετε στους διαχειριστές πρόσβαση στις αναλύσεις μάθησής σας.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9556,10 +9555,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10798,5 +10793,6 @@
     "courseAccessPublicDesc": "Οποιοσδήποτε μπορεί να βρει και να συμμετάσχει σε αυτό το μάθημα.",
     "courseAccessApprovalRequiredDesc": "Οποιοσδήποτε μπορεί να βρει αυτό το μάθημα και να ζητήσει να συμμετάσχει. Εσείς εγκρίνετε κάθε αίτημα.",
     "courseAccessPrivateDesc": "Μόνο άτομα με την πρόσκλησή σας ή τον κωδικό μαθήματος μπορούν να συμμετάσχουν. Το μάθημα δεν εμφανίζεται στην αναζήτηση.",
-    "courseAccessCodeNote": "Οι μαθητές με τον κωδικό μαθήματος ή μια πρόσκληση μπορούν να συμμετάσχουν αμέσως, ό,τι κι αν επιλέξετε."
+    "courseAccessCodeNote": "Οι μαθητές με τον κωδικό μαθήματος ή μια πρόσκληση μπορούν να συμμετάσχουν αμέσως, ό,τι κι αν επιλέξετε.",
+    "requireAnalyticsAccessSummary": "Οι μαθητές μοιράζονται την πρόοδό τους στην εκμάθηση μαζί σας όταν συμμετέχουν."
 }

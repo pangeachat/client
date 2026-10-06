@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-05 13:57:48.611909",
+    "@@last_modified": "2026-10-06 12:20:54.379051",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Hér munu ný orð birtast!",
     "readingAssistanceTutorialCollectToken": "Veldu orð til að læra meira um þau",
     "requireAnalyticsAccessTitle": "Krefjast aðgangs að greiningum til að taka þátt",
-    "requireAnalyticsAccessDesc": "Þátttakendur verða að veita aðgang að námsgreiningum sínum til að taka þátt í þessu námskeiði",
     "moreOptions": "Fleiri valkostir",
     "analyticsAccessNoticeTitle": "Aðgangur að greiningum nauðsynlegur",
     "analyticsAccessNoticeDesc": "Með því að taka þátt í þessu námskeiði samþykkir þú að veita stjórnendum aðgang að námsgreiningum þínum.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Allir geta fundið og tekið þátt í þessu námskeiði.",
     "courseAccessApprovalRequiredDesc": "Allir geta fundið þetta námskeið og beðið um aðgang. Þú samþykkir hverja beiðni.",
     "courseAccessPrivateDesc": "Aðeins þeir sem hafa boð eða námskeiðskóða geta tekið þátt. Námskeiðið birtist ekki í leitarniðurstöðum.",
-    "courseAccessCodeNote": "Nemendur með námskeiðskóðann þinn eða boð geta tekið þátt strax, sama hvað þú velur."
+    "courseAccessCodeNote": "Nemendur með námskeiðskóðann þinn eða boð geta tekið þátt strax, sama hvað þú velur.",
+    "requireAnalyticsAccessSummary": "Nemendur deila námsframvindu sinni með þér þegar þeir ganga til liðs."
 }

@@ -1313,7 +1313,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-05 13:57:53.700813",
+    "@@last_modified": "2026-10-06 12:21:00.855912",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -9623,7 +9623,6 @@
     },
     "readingAssistanceTutorialCollectToken": "వివరంగా తెలుసుకోవడానికి పదాలను ఎంచుకోండి",
     "requireAnalyticsAccessTitle": "చేరడానికి విశ్లేషణ యాక్సెస్ అవసరం",
-    "requireAnalyticsAccessDesc": "ఈ కోర్సులో చేరడానికి పాల్గొనేవారు తమ అభ్యాస విశ్లేషణకు యాక్సెస్ ఇవ్వాలి",
     "analyticsAccessNoticeTitle": "విశ్లేషణ యాక్సెస్ అవసరం",
     "analyticsAccessNoticeDesc": "ఈ కోర్సులో చేరడం ద్వారా, మీరు నిర్వాహకులకు మీ అభ్యాస విశ్లేషణకు యాక్సెస్ ఇవ్వడానికి అంగీకరిస్తున్నారు.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9631,10 +9630,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10873,5 +10868,6 @@
     "courseAccessPublicDesc": "ఎవరైనా ఈ కోర్సును కనుగొని చేరవచ్చు.",
     "courseAccessApprovalRequiredDesc": "ఎవరైనా ఈ కోర్సును కనుగొని చేరడానికి అడగవచ్చు. మీరు ప్రతి అభ్యర్థనను ఆమోదించాలి.",
     "courseAccessPrivateDesc": "మీ ఆహ్వానం లేదా కోర్సు కోడ్ ఉన్నవారు మాత్రమే చేరగలరు. కోర్సు శోధనలో కనిపించదు.",
-    "courseAccessCodeNote": "మీ కోర్సు కోడ్ లేదా ఆహ్వానం ఉన్న విద్యార్థులు, మీరు ఏది ఎంచుకున్నా వెంటనే చేరగలరు."
+    "courseAccessCodeNote": "మీ కోర్సు కోడ్ లేదా ఆహ్వానం ఉన్న విద్యార్థులు, మీరు ఏది ఎంచుకున్నా వెంటనే చేరగలరు.",
+    "requireAnalyticsAccessSummary": "విద్యార్థులు చేరినప్పుడు వారి అభ్యాస పురోగతిని మీతో పంచుకుంటారు."
 }

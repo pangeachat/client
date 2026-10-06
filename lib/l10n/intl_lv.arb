@@ -3523,7 +3523,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-10-05 13:57:50.047195",
+    "@@last_modified": "2026-10-06 12:20:55.588914",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -8676,7 +8676,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Izvēlieties vārdus, lai uzzinātu vairāk par tiem",
     "requireAnalyticsAccessTitle": "Nepieciešama analītikas piekļuve, lai pievienotos",
-    "requireAnalyticsAccessDesc": "Dalībniekiem jāpiešķir piekļuve viņu mācību analītikai, lai pievienotos šim kursam",
     "analyticsAccessNoticeTitle": "Nepieciešama analītikas piekļuve",
     "analyticsAccessNoticeDesc": "Pievienojoties šim kursam, jūs piekrītat piešķirt administratoriem piekļuvi jūsu mācību analītikai.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8684,10 +8683,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9926,5 +9921,6 @@
     "courseAccessPublicDesc": "Ikviens var atrast un pievienoties šim kursam.",
     "courseAccessApprovalRequiredDesc": "Ikviens var atrast šo kursu un lūgt pievienoties. Jūs apstiprināt katru pieprasījumu.",
     "courseAccessPrivateDesc": "Tikai personas ar jūsu ielūgumu vai kursa kodu var pievienoties. Kurss neparādās meklēšanā.",
-    "courseAccessCodeNote": "Studenti ar jūsu kursa kodu vai ielūgumu var pievienoties nekavējoties, neatkarīgi no jūsu izvēles."
+    "courseAccessCodeNote": "Studenti ar jūsu kursa kodu vai ielūgumu var pievienoties nekavējoties, neatkarīgi no jūsu izvēles.",
+    "requireAnalyticsAccessSummary": "Studenti kopīgo ar jums savu mācību progresu, kad viņi pievienojas."
 }

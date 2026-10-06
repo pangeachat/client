@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-05 13:57:46.556552",
+    "@@last_modified": "2026-10-06 12:20:51.794663",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -8673,7 +8673,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Vali sõnad, et neist rohkem teada saada",
     "requireAnalyticsAccessTitle": "Nõua analüütika juurdepääsu liitumiseks",
-    "requireAnalyticsAccessDesc": "Osalejad peavad andma juurdepääsu oma õpikogemuse analüütikale, et liituda selle kursusega",
     "analyticsAccessNoticeTitle": "Nõutav analüütika juurdepääs",
     "analyticsAccessNoticeDesc": "Liitudes selle kursusega, nõustute andma administraatoritele juurdepääsu oma õpikogemuse analüütikale.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8681,10 +8680,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9923,5 +9918,6 @@
     "courseAccessPublicDesc": "Igaüks saab selle kursuse leida ja sellega liituda.",
     "courseAccessApprovalRequiredDesc": "Igaüks saab selle kursuse leida ja liitumist paluda. Teie kinnitate iga taotluse.",
     "courseAccessPrivateDesc": "Ainult teie kutse või kursuse koodiga inimesed saavad liituda. Kursus ei ilmu otsingutulemustes.",
-    "courseAccessCodeNote": "Õpilased, kellel on teie kursuse kood või kutse, saavad kohe liituda, olenemata teie valikust."
+    "courseAccessCodeNote": "Õpilased, kellel on teie kursuse kood või kutse, saavad kohe liituda, olenemata teie valikust.",
+    "requireAnalyticsAccessSummary": "Õpilased jagavad sinuga oma õppimise edenemist, kui nad liituvad."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-05 13:57:45.048486",
+    "@@last_modified": "2026-10-06 12:20:50.594770",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Dit is waar nuwe woordeskat sal verskyn!",
     "readingAssistanceTutorialCollectToken": "Kies woorde om meer daaroor te leer",
     "requireAnalyticsAccessTitle": "Vereis analise-toegang om aan te sluit",
-    "requireAnalyticsAccessDesc": "Deelnemers moet toegang tot hul leeranalise verleen om by hierdie kursus aan te sluit",
     "moreOptions": "Meer opsies",
     "analyticsAccessNoticeTitle": "Analise-toegang Vereis",
     "analyticsAccessNoticeDesc": "Deur by hierdie kursus aan te sluit, stem jy in om aan admins toegang tot jou leeranalise te verleen.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Enigeen kan hierdie kursus vind en aansluit.",
     "courseAccessApprovalRequiredDesc": "Enigeen kan hierdie kursus vind en vra om aan te sluit. Jy keur elke versoek goed.",
     "courseAccessPrivateDesc": "Slegs mense met jou uitnodiging of kursuskode kan aansluit. Die kursus verskyn nie in soektogte nie.",
-    "courseAccessCodeNote": "Studente met jou kursuskode of 'n uitnodiging kan dadelik aansluit, wat jy ook al kies."
+    "courseAccessCodeNote": "Studente met jou kursuskode of 'n uitnodiging kan dadelik aansluit, wat jy ook al kies.",
+    "requireAnalyticsAccessSummary": "Studente deel hul leervordering met jou wanneer hulle aansluit."
 }

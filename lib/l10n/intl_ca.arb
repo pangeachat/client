@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:45.751920",
+    "@@last_modified": "2026-10-06 12:20:51.532921",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -8803,7 +8803,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Selecciona paraules per aprendre'n més",
     "requireAnalyticsAccessTitle": "Requereix accés a l'analítica per unir-se",
-    "requireAnalyticsAccessDesc": "Els participants han de concedir accés a les seves analítiques d'aprenentatge per unir-se a aquest curs",
     "analyticsAccessNoticeTitle": "Accés a l'analítica requerit",
     "analyticsAccessNoticeDesc": "En unir-te a aquest curs, acceptes concedir als administradors accés a les teves analítiques d'aprenentatge.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8811,10 +8810,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10053,5 +10048,6 @@
     "courseAccessPublicDesc": "Qualsevol pot trobar i unir-se a aquest curs.",
     "courseAccessApprovalRequiredDesc": "Qualsevol pot trobar aquest curs i demanar unir-s'hi. Tu aproves cada sol·licitud.",
     "courseAccessPrivateDesc": "Només les persones amb la teva invitació o codi de curs es poden unir. El curs no apareix a la cerca.",
-    "courseAccessCodeNote": "Els estudiants amb el teu codi de curs o una invitació es poden unir de seguida, sigui quina sigui la teva elecció."
+    "courseAccessCodeNote": "Els estudiants amb el teu codi de curs o una invitació es poden unir de seguida, sigui quina sigui la teva elecció.",
+    "requireAnalyticsAccessSummary": "Els estudiants comparteixen el seu progrés d'aprenentatge amb tu quan s'uneixen."
 }

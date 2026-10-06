@@ -3082,7 +3082,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-05 13:57:53.552278",
+    "@@last_modified": "2026-10-06 12:21:01.187309",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9305,7 +9305,6 @@
     },
     "readingAssistanceTutorialCollectToken": "เลือกคำเพื่อเรียนรู้เพิ่มเติมเกี่ยวกับพวกเขา",
     "requireAnalyticsAccessTitle": "ต้องการการเข้าถึงการวิเคราะห์เพื่อเข้าร่วม",
-    "requireAnalyticsAccessDesc": "ผู้เข้าร่วมต้องอนุญาตการเข้าถึงการวิเคราะห์การเรียนรู้ของตนเพื่อเข้าร่วมหลักสูตรนี้",
     "analyticsAccessNoticeTitle": "ต้องการการเข้าถึงการวิเคราะห์",
     "analyticsAccessNoticeDesc": "โดยการเข้าร่วมหลักสูตรนี้ คุณตกลงที่จะอนุญาตให้ผู้ดูแลระบบเข้าถึงการวิเคราะห์การเรียนรู้ของคุณ",
     "@readingAssistanceTutorialCollectToken": {
@@ -9313,10 +9312,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10555,5 +10550,6 @@
     "courseAccessPublicDesc": "ทุกคนสามารถค้นหาและเข้าร่วมคอร์สนี้ได้",
     "courseAccessApprovalRequiredDesc": "ทุกคนสามารถค้นหาคอร์สนี้และขอเข้าร่วมได้ คุณต้องอนุมัติแต่ละคำขอ",
     "courseAccessPrivateDesc": "เฉพาะผู้ที่ได้รับคำเชิญหรือรหัสคอร์สของคุณเท่านั้นที่เข้าร่วมได้ คอร์สนี้จะไม่ปรากฏในการค้นหา",
-    "courseAccessCodeNote": "นักเรียนที่มีรหัสคอร์สหรือคำเชิญของคุณสามารถเข้าร่วมได้ทันที ไม่ว่าคุณจะเลือกอะไรก็ตาม"
+    "courseAccessCodeNote": "นักเรียนที่มีรหัสคอร์สหรือคำเชิญของคุณสามารถเข้าร่วมได้ทันที ไม่ว่าคุณจะเลือกอะไรก็ตาม",
+    "requireAnalyticsAccessSummary": "นักเรียนจะแชร์ความคืบหน้าในการเรียนรู้กับคุณเมื่อเข้าร่วม"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-05 13:57:45.099339",
+    "@@last_modified": "2026-10-06 12:20:50.744969",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -8986,7 +8986,6 @@
     },
     "readingAssistanceTutorialCollectToken": "اختر الكلمات لتتعلم المزيد عنها",
     "requireAnalyticsAccessTitle": "يتطلب الوصول إلى التحليلات للانضمام",
-    "requireAnalyticsAccessDesc": "يجب على المشاركين منح الوصول إلى تحليلات التعلم الخاصة بهم للانضمام إلى هذه الدورة",
     "analyticsAccessNoticeTitle": "يتطلب الوصول إلى التحليلات",
     "analyticsAccessNoticeDesc": "من خلال الانضمام إلى هذه الدورة، فإنك توافق على منح المسؤولين الوصول إلى تحليلات التعلم الخاصة بك.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8994,10 +8993,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10232,5 +10227,6 @@
     "courseAccessPublicDesc": "يمكن لأي شخص العثور على هذه الدورة والانضمام إليها.",
     "courseAccessApprovalRequiredDesc": "يمكن لأي شخص العثور على هذه الدورة وطلب الانضمام. أنت توافق على كل طلب.",
     "courseAccessPrivateDesc": "يمكن فقط للأشخاص الذين لديهم دعوتك أو رمز الدورة الانضمام. لا تظهر الدورة في البحث.",
-    "courseAccessCodeNote": "يمكن للطلاب الذين لديهم رمز الدورة أو دعوة الانضمام على الفور، بغض النظر عن اختيارك."
+    "courseAccessCodeNote": "يمكن للطلاب الذين لديهم رمز الدورة أو دعوة الانضمام على الفور، بغض النظر عن اختيارك.",
+    "requireAnalyticsAccessSummary": "يشارك الطلاب تقدمهم التعليمي معك عند انضمامهم."
 }

@@ -5043,7 +5043,6 @@
     "vocabLevelsDescSeed": "This is where new vocab words will appear!",
     "readingAssistanceTutorialCollectToken": "Select words to learn more about them",
     "requireAnalyticsAccessTitle": "Require analytics access to join",
-    "requireAnalyticsAccessDesc": "Participants must grant access to their learning analytics to join this course",
     "moreOptions": "More options",
     "showMoreOptionsHint": "show more options",
     "@showMoreOptionsHint": {
@@ -5755,5 +5754,9 @@
     "courseAccessCodeNote": "Students with your course code or an invite can join right away, whatever you choose.",
     "@courseAccessCodeNote": {
         "description": "Note under the three course access settings: a course code or an invite admits a student without approval under every setting."
+    },
+    "requireAnalyticsAccessSummary": "Students share their learning progress with you when they join.",
+    "@requireAnalyticsAccessSummary": {
+        "description": "Subtitle of the Require analytics access to join switch, on the create-course page and in the course's settings: what students share when the course requires it."
     }
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-05 13:57:48.595691",
+    "@@last_modified": "2026-10-06 12:20:54.268486",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Nke a bụ ebe okwu okwu ọhụrụ ga-apụta!",
     "readingAssistanceTutorialCollectToken": "Họrọ okwu ka ịmụtakwuo gbasara ha",
     "requireAnalyticsAccessTitle": "Chọrọ ohere nyocha iji sonye",
-    "requireAnalyticsAccessDesc": "Ndị sonyere ga-enye ohere ịnweta nyocha mmụta ha iji sonye na ọmụmụ ihe a",
     "moreOptions": "Nhọrọ ndị ọzọ",
     "analyticsAccessNoticeTitle": "Achọrọ ohere nyocha",
     "analyticsAccessNoticeDesc": "Site na isonye na ọmụmụ ihe a, ị kwenyere inye ndị nchịkwa ohere ịnweta nyocha mmụta gị.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Onye ọ bụla nwere ike ịchọta ma sonye na nkuzi a.",
     "courseAccessApprovalRequiredDesc": "Onye ọ bụla nwere ike ịchọta nkuzi a ma rịọ ka ọ sonye. Ị na-akwado arịrịọ ọ bụla.",
     "courseAccessPrivateDesc": "Naanị ndị nwere òkù gị ma ọ bụ koodu nkuzi nwere ike isonye. Nkuzi ahụ anaghị apụta na ọchụchọ.",
-    "courseAccessCodeNote": "Ụmụ akwụkwọ nwere koodu nkuzi gị ma ọ bụ òkù nwere ike isonye ozugbo, n'agbanyeghị ihe ị họọrọ."
+    "courseAccessCodeNote": "Ụmụ akwụkwọ nwere koodu nkuzi gị ma ọ bụ òkù nwere ike isonye ozugbo, n'agbanyeghị ihe ị họọrọ.",
+    "requireAnalyticsAccessSummary": "Ụmụ akwụkwọ na-ekerịta ọganihu mmụta ha na gị mgbe ha sonyeere."
 }

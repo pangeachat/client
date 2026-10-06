@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-05 13:57:52.797550",
+    "@@last_modified": "2026-10-06 12:20:58.662613",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Asida vocabulary wahe tharani!",
     "readingAssistanceTutorialCollectToken": "Wahe-singgi maramda henna khangnanaba wahe-sing select toubiyu",
     "requireAnalyticsAccessTitle": "Join toubanaba analytics access darkar oi",
-    "requireAnalyticsAccessDesc": "Participants-singna course asida join toubanaba makhoigi learning analytics-ta access piba darkar oi",
     "moreOptions": "Henna option-sing",
     "analyticsAccessNoticeTitle": "Analytics Access Darkar Oi",
     "analyticsAccessNoticeDesc": "Course asida join toubaga, nangna nanggi learning analytics-ta admin-singda access piba yajare.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "कनागूंना कोर्स असि फंग्बा अमसुंग सरुक् याबा ङम्गनि।",
     "courseAccessApprovalRequiredDesc": "कनागूंना कोर्स असि फंग्बा अमसुंग सरुक् यानबा हाइबा ङम्गनि। नहक्ना हाइरक्पा खुदिंमक् अनायबा पीगदबनि।",
     "courseAccessPrivateDesc": "नहक्कि इन्भाइट नत्त्रगा कोर्स कोड लीबा मीशिंग्ना खक्तना सरुक् याबा ङम्गनि। कोर्स असि सर्चता उदोक्लोई।",
-    "courseAccessCodeNote": "नहक्कि कोर्स कोड नत्त्रगा इन्भाइट लीबा स्टुडेन्टशिंग्ना, नहक्ना खन्बा खुदिंमक्, अथुबामक् सरुक् याबा ङम्गनि।"
+    "courseAccessCodeNote": "नहक्कि कोर्स कोड नत्त्रगा इन्भाइट लीबा स्टुडेन्टशिंग्ना, नहक्ना खन्बा खुदिंमक्, अथुबामक् सरुक् याबा ङम्गनि।",
+    "requireAnalyticsAccessSummary": "মহৈরোইশিংনা মখোয়গী লার্নিং প্রোগ্রেস অদু নখোয়গা শেয়ার তৌগনি মখোয় জয়েন তৌরকপা মতমদা।"
 }

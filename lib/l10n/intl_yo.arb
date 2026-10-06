@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-05 13:57:54.967720",
+    "@@last_modified": "2026-10-06 12:21:03.001050",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Níbi yìí ni àwọn ọ̀rọ̀ ìwé tuntun yóò ti farahàn!",
     "readingAssistanceTutorialCollectToken": "Yan àwọn ọ̀rọ̀ láti kọ́ ẹ̀kọ́ púpọ̀ sí i nípa wọn",
     "requireAnalyticsAccessTitle": "Nílò àyè sí àwọn àtúpalẹ̀ láti darapọ̀",
-    "requireAnalyticsAccessDesc": "Àwọn olùkópa gbọ́dọ̀ fún àyè sí àwọn àtúpalẹ̀ ẹ̀kọ́ wọn láti darapọ̀ mọ́ ẹ̀kọ́ yìí",
     "moreOptions": "Àwọn àṣàyàn púpọ̀ sí i",
     "analyticsAccessNoticeTitle": "Àyè sí Àtúpalẹ̀ Nílò",
     "analyticsAccessNoticeDesc": "Nípa dídarapọ̀ mọ́ ẹ̀kọ́ yìí, o gbà láti fún àwọn adarí àyè sí àwọn àtúpalẹ̀ ẹ̀kọ́ rẹ.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Ẹnikẹ́ni lè rí, kí ó sì darapọ̀ mọ́ ìkẹ́kọ̀ọ́ yìí.",
     "courseAccessApprovalRequiredDesc": "Ẹnikẹ́ni lè rí ìkẹ́kọ̀ọ́ yìí, kí ó sì béèrè láti darapọ̀. Ìwọ yóò fọwọ́sí gbogbo ìbéèrè.",
     "courseAccessPrivateDesc": "Àwọn ènìyàn tí ó ní ìwé ìkésíni rẹ tàbí koodu ìkẹ́kọ̀ọ́ nìkan ló lè darapọ̀. Ìkẹ́kọ̀ọ́ náà kò ní hàn nínú àwárí.",
-    "courseAccessCodeNote": "Àwọn akẹ́kọ̀ọ́ tí ó ní koodu ìkẹ́kọ̀ọ́ rẹ tàbí ìwé ìkésíni lè darapọ̀ lẹ́sẹ̀kẹsẹ̀, ohunkóhun tí o bá yàn."
+    "courseAccessCodeNote": "Àwọn akẹ́kọ̀ọ́ tí ó ní koodu ìkẹ́kọ̀ọ́ rẹ tàbí ìwé ìkésíni lè darapọ̀ lẹ́sẹ̀kẹsẹ̀, ohunkóhun tí o bá yàn.",
+    "requireAnalyticsAccessSummary": "Àwọn akẹ́kọ̀ọ́ máa ń pín ìtẹ̀síwájú ẹ̀kọ́ wọn pẹ̀lú rẹ nígbà tí wọ́n bá darapọ̀."
 }

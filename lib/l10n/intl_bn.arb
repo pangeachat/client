@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:45.224532",
+    "@@last_modified": "2026-10-06 12:20:50.600946",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -9301,7 +9301,6 @@
     },
     "readingAssistanceTutorialCollectToken": "শিখতে আরও জানার জন্য শব্দ নির্বাচন করুন",
     "requireAnalyticsAccessTitle": "যোগ দিতে বিশ্লেষণ অ্যাক্সেস প্রয়োজন",
-    "requireAnalyticsAccessDesc": "অংশগ্রহণকারীদের এই কোর্সে যোগ দিতে তাদের শেখার বিশ্লেষণে অ্যাক্সেস দিতে হবে",
     "analyticsAccessNoticeTitle": "বিশ্লেষণ অ্যাক্সেস প্রয়োজন",
     "analyticsAccessNoticeDesc": "এই কোর্সে যোগ দিয়ে, আপনি প্রশাসকদের আপনার শেখার বিশ্লেষণে অ্যাক্সেস দিতে সম্মত হন।",
     "@readingAssistanceTutorialCollectToken": {
@@ -9309,10 +9308,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10551,5 +10546,6 @@
     "courseAccessPublicDesc": "যে কেউ এই কোর্সটি খুঁজে নিতে এবং এতে যোগ দিতে পারবে।",
     "courseAccessApprovalRequiredDesc": "যে কেউ এই কোর্সটি খুঁজে নিতে এবং যোগদানের অনুরোধ করতে পারবে। প্রতিটি অনুরোধ আপনাকে অনুমোদন করতে হবে।",
     "courseAccessPrivateDesc": "শুধুমাত্র আপনার আমন্ত্রণ বা কোর্স কোড যাদের কাছে আছে, তারাই যোগ দিতে পারবে। কোর্সটি অনুসন্ধানে দেখা যাবে না।",
-    "courseAccessCodeNote": "আপনার কোর্স কোড বা আমন্ত্রণ আছে এমন শিক্ষার্থীরা আপনি যা-ই বেছে নিন না কেন, সাথে সাথেই যোগ দিতে পারবে।"
+    "courseAccessCodeNote": "আপনার কোর্স কোড বা আমন্ত্রণ আছে এমন শিক্ষার্থীরা আপনি যা-ই বেছে নিন না কেন, সাথে সাথেই যোগ দিতে পারবে।",
+    "requireAnalyticsAccessSummary": "শিক্ষার্থীরা যখন আপনার সাথে যোগ দেয় তখন তারা তাদের শেখার অগ্রগতি আপনার সাথে শেয়ার করে।"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:54.461613",
+    "@@last_modified": "2026-10-06 12:21:00.914946",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9191,7 +9191,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Välj ord för att lära dig mer om dem",
     "requireAnalyticsAccessTitle": "Kräv analysåtkomst för att delta",
-    "requireAnalyticsAccessDesc": "Deltagare måste ge åtkomst till sina lärandeanalyser för att delta i den här kursen",
     "analyticsAccessNoticeTitle": "Analysåtkomst krävs",
     "analyticsAccessNoticeDesc": "Genom att delta i den här kursen godkänner du att ge administratörer åtkomst till dina lärandeanalyser.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9199,10 +9198,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10441,5 +10436,6 @@
     "courseAccessPublicDesc": "Vem som helst kan hitta och gå med i den här kursen.",
     "courseAccessApprovalRequiredDesc": "Vem som helst kan hitta den här kursen och be om att få gå med. Du godkänner varje förfrågan.",
     "courseAccessPrivateDesc": "Endast personer med din inbjudan eller kurskod kan gå med. Kursen visas inte i sökresultaten.",
-    "courseAccessCodeNote": "Elever med din kurskod eller en inbjudan kan gå med direkt, oavsett vad du väljer."
+    "courseAccessCodeNote": "Elever med din kurskod eller en inbjudan kan gå med direkt, oavsett vad du väljer.",
+    "requireAnalyticsAccessSummary": "Elever delar sina framsteg med dig när de går med."
 }

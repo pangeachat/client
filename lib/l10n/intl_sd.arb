@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-05 13:57:52.662235",
+    "@@last_modified": "2026-10-06 12:21:02.395225",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "هي اهو هنڌ آهي جتي نوان لفظ ظاهر ٿيندا!",
     "readingAssistanceTutorialCollectToken": "لفظ چونڊيو انهن بابت وڌيڪ سکڻ لاءِ",
     "requireAnalyticsAccessTitle": "شامل ٿيڻ لاءِ تجزياتي رسائي جي ضرورت آهي",
-    "requireAnalyticsAccessDesc": "شرڪت ڪندڙن کي هن ڪورس ۾ شامل ٿيڻ لاءِ پنهنجي سکيا جي تجزياتي تائين رسائي ڏيڻ گهرجي",
     "moreOptions": "وڌيڪ آپشن",
     "analyticsAccessNoticeTitle": "تجزياتي رسائي گهربل",
     "analyticsAccessNoticeDesc": "هن ڪورس ۾ شامل ٿيڻ سان، توهان پنهنجي سکيا جي تجزياتي تائين منتظمين کي رسائي ڏيڻ تي متفق آهيو.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "ڪو به هي ڪورس ڳولي سگهي ٿو ۽ شامل ٿي سگهي ٿو.",
     "courseAccessApprovalRequiredDesc": "ڪو به هي ڪورس ڳولي سگهي ٿو ۽ شامل ٿيڻ لاءِ پڇي سگهي ٿو. توهان هر درخواست جي منظوري ڏيندا.",
     "courseAccessPrivateDesc": "صرف اهي ماڻهو شامل ٿي سگهن ٿا جن وٽ توهان جي دعوت يا ڪورس ڪوڊ آهي. ڪورس ڳولا ۾ ظاهر نه ٿيندو.",
-    "courseAccessCodeNote": "توهان جي ڪورس ڪوڊ يا دعوت سان شاگرد فوري طور تي شامل ٿي سگهن ٿا، جيڪو به توهان چونڊيو."
+    "courseAccessCodeNote": "توهان جي ڪورس ڪوڊ يا دعوت سان شاگرد فوري طور تي شامل ٿي سگهن ٿا، جيڪو به توهان چونڊيو.",
+    "requireAnalyticsAccessSummary": "شاگرد جڏهن شامل ٿيندا آهن ته توهان سان پنهنجي سکيا جي ترقي شيئر ڪندا آهن."
 }

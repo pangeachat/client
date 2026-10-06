@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-05 13:57:45.921891",
+    "@@last_modified": "2026-10-06 12:20:51.175299",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Dinhi magpakita ang bag-ong mga pulong sa bokabularyo!",
     "readingAssistanceTutorialCollectToken": "Pagpili og mga pulong aron makat-on pa bahin niini",
     "requireAnalyticsAccessTitle": "Nagkinahanglan og access sa analytics aron makaapil",
-    "requireAnalyticsAccessDesc": "Ang mga partisipante kinahanglang mohatag og access sa ilang learning analytics aron makaapil niini nga kurso",
     "moreOptions": "Dugang mga kapilian",
     "analyticsAccessNoticeTitle": "Gikinahanglan ang Access sa Analytics",
     "analyticsAccessNoticeDesc": "Pinaagi sa pag-apil niini nga kurso, miuyon ka nga hatagan ang mga admin og access sa imong learning analytics.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Bisan kinsa makakita ug makaapil niini nga kurso.",
     "courseAccessApprovalRequiredDesc": "Bisan kinsa makakita niini nga kurso ug makapangayo nga moapil. Ikaw ang mo-aprubar sa matag hangyo.",
     "courseAccessPrivateDesc": "Ang mga tawo lang nga adunay imong imbitasyon o course code ang makaapil. Ang kurso dili makita sa search.",
-    "courseAccessCodeNote": "Ang mga estudyante nga adunay imong course code o imbitasyon makaapil dayon, bisan unsa pa ang imong pilion."
+    "courseAccessCodeNote": "Ang mga estudyante nga adunay imong course code o imbitasyon makaapil dayon, bisan unsa pa ang imong pilion.",
+    "requireAnalyticsAccessSummary": "Ang mga estudyante mopaambit sa ilang pag-uswag sa pagkat-on kanimo kon sila moapil."
 }

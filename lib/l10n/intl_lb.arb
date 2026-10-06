@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-05 13:57:49.651102",
+    "@@last_modified": "2026-10-06 12:20:55.579570",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Hei erschéngen nei Vokabulärwierder!",
     "readingAssistanceTutorialCollectToken": "Wielt Wierder fir méi iwwer si ze léieren",
     "requireAnalyticsAccessTitle": "Analysedaten-Zougang erfuerderlech fir matzemaachen",
-    "requireAnalyticsAccessDesc": "D'Participante mussen Zougang zu hire Léieranalysedaten erlaben fir dëse Cours matzemaachen",
     "moreOptions": "Méi Optiounen",
     "analyticsAccessNoticeTitle": "Analysedaten-Zougang erfuerderlech",
     "analyticsAccessNoticeDesc": "Andeems Dir dëse Cours matmaacht, stëmmt Dir zou, den Administrateuren Zougang zu Äre Léieranalysedaten ze ginn.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Jidderee kann dëse Cours fannen a matmaachen.",
     "courseAccessApprovalRequiredDesc": "Jidderee kann dëse Cours fannen a froen, fir matzemaachen. Dir stëmmt all Ufro zou.",
     "courseAccessPrivateDesc": "Nëmme Leit mat Ärer Invitatioun oder Ärem Cours-Code kënne matmaachen. De Cours erschéngt net an der Sich.",
-    "courseAccessCodeNote": "Studente mat Ärem Cours-Code oder enger Invitatioun kënne direkt matmaachen, egal wat Dir wielt."
+    "courseAccessCodeNote": "Studente mat Ärem Cours-Code oder enger Invitatioun kënne direkt matmaachen, egal wat Dir wielt.",
+    "requireAnalyticsAccessSummary": "D'Studente deelen hire Léierfortschrëtt mat Iech, wann se bäitrieden."
 }

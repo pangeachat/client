@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-05 13:57:52.004958",
+    "@@last_modified": "2026-10-06 12:20:58.176296",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "دا هغه ځای دی چې نوي لغتونه به څرګند شي!",
     "readingAssistanceTutorialCollectToken": "د دوی په اړه د نورو زده کړې لپاره کلمې وټاکئ",
     "requireAnalyticsAccessTitle": "د ګډون لپاره د تحلیلونو لاسرسي ته اړتیا لري",
-    "requireAnalyticsAccessDesc": "ګډون کوونکي باید د دې کورس سره د یوځای کیدو لپاره خپلو زده کړو تحلیلونو ته لاسرسی ورکړي",
     "moreOptions": "نور انتخابونه",
     "analyticsAccessNoticeTitle": "د تحلیلونو لاسرسی اړین دی",
     "analyticsAccessNoticeDesc": "د دې کورس سره په یوځای کیدو سره، تاسو موافق یاست چې مدیرانو ته ستاسو د زده کړې تحلیلونو ته لاسرسی ورکړئ.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "هرڅوک کولی شي دا کورس ومومي او ګډون وکړي.",
     "courseAccessApprovalRequiredDesc": "هرڅوک کولی شي دا کورس ومومي او د ګډون غوښتنه وکړي. تاسو هره غوښتنه تایید کوئ.",
     "courseAccessPrivateDesc": "یوازې هغه خلک چې ستاسو بلنه یا د کورس کوډ لري کولی شي ګډون وکړي. کورس په لټون کې نه ښکاري.",
-    "courseAccessCodeNote": "هغه زده کونکي چې ستاسو د کورس کوډ یا بلنه لري کولی شي سمدستي ګډون وکړي، هرڅه چې تاسو غوره کوئ."
+    "courseAccessCodeNote": "هغه زده کونکي چې ستاسو د کورس کوډ یا بلنه لري کولی شي سمدستي ګډون وکړي، هرڅه چې تاسو غوره کوئ.",
+    "requireAnalyticsAccessSummary": "زده کوونکي ستاسو سره د دوی د زده کړې پرمختګ شریکوي کله چې دوی ګډون کوي."
 }

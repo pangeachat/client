@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:52.931303",
+    "@@last_modified": "2026-10-06 12:21:00.235800",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -9622,7 +9622,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Izaberite reči da biste saznali više o njima",
     "requireAnalyticsAccessTitle": "Zahteva se pristup analitici za pridruživanje",
-    "requireAnalyticsAccessDesc": "Učesnici moraju odobriti pristup svojim analitikama učenja da bi se pridružili ovom kursu",
     "analyticsAccessNoticeTitle": "Zahteva se pristup analitici",
     "analyticsAccessNoticeDesc": "Pridruživanjem ovom kursu, slažete se da administratorima omogućite pristup vašim analitikama učenja.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9630,10 +9629,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10872,5 +10867,6 @@
     "courseAccessPublicDesc": "Svako može pronaći i pridružiti se ovom kursu.",
     "courseAccessApprovalRequiredDesc": "Svako može pronaći ovaj kurs i zatražiti pridruživanje. Vi odobravate svaki zahtev.",
     "courseAccessPrivateDesc": "Samo ljudi sa vašom pozivnicom ili kodom kursa mogu se pridružiti. Kurs se ne pojavljuje u pretrazi.",
-    "courseAccessCodeNote": "Studenti sa vašim kodom kursa ili pozivnicom mogu se odmah pridružiti, bez obzira na vaš izbor."
+    "courseAccessCodeNote": "Studenti sa vašim kodom kursa ili pozivnicom mogu se odmah pridružiti, bez obzira na vaš izbor.",
+    "requireAnalyticsAccessSummary": "Učenici dele svoj napredak u učenju sa vama kada se pridruže."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-05 13:57:50.979768",
+    "@@last_modified": "2026-10-06 12:20:57.302307",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Det er her nye vokabularord vil dukke opp!",
     "readingAssistanceTutorialCollectToken": "Velg ord for å lære mer om dem",
     "requireAnalyticsAccessTitle": "Krever tilgang til analyse for å bli med",
-    "requireAnalyticsAccessDesc": "Deltakere må gi tilgang til læringsanalysene sine for å bli med på dette kurset",
     "moreOptions": "Flere alternativer",
     "analyticsAccessNoticeTitle": "Tilgang til analyse kreves",
     "analyticsAccessNoticeDesc": "Ved å bli med på dette kurset godtar du å gi administratorer tilgang til læringsanalysene dine.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Alle kan finne og bli med på dette kurset.",
     "courseAccessApprovalRequiredDesc": "Alle kan finne dette kurset og be om å bli med. Du godkjenner hver forespørsel.",
     "courseAccessPrivateDesc": "Bare personer med din invitasjon eller kurskode kan bli med. Kurset vises ikke i søk.",
-    "courseAccessCodeNote": "Studenter med din kurskode eller en invitasjon kan bli med med en gang, uansett hva du velger."
+    "courseAccessCodeNote": "Studenter med din kurskode eller en invitasjon kan bli med med en gang, uansett hva du velger.",
+    "requireAnalyticsAccessSummary": "Elevene deler læringsfremgangen sin med deg når de blir med."
 }

@@ -1791,7 +1791,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-05 13:57:52.676336",
+    "@@last_modified": "2026-10-06 12:20:59.293969",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9618,7 +9618,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Izberite besede, da se o njih naučite več",
     "requireAnalyticsAccessTitle": "Zahtevajte dostop do analitike za pridružitev",
-    "requireAnalyticsAccessDesc": "Udeleženci morajo odobriti dostop do svojih učnih analitik, da se pridružijo temu tečaju",
     "analyticsAccessNoticeTitle": "Zahtevan dostop do analitike",
     "analyticsAccessNoticeDesc": "Z vstopom v ta tečaj se strinjate, da administratorjem omogočite dostop do vaših učnih analitik.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9626,10 +9625,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10868,5 +10863,6 @@
     "courseAccessPublicDesc": "Vsakdo lahko najde in se pridruži temu tečaju.",
     "courseAccessApprovalRequiredDesc": "Vsakdo lahko najde ta tečaj in prosi za pridružitev. Vsako zahtevo odobrite vi.",
     "courseAccessPrivateDesc": "Pridružijo se lahko samo osebe z vašim povabilom ali kodo tečaja. Tečaj se ne prikaže v iskanju.",
-    "courseAccessCodeNote": "Študenti z vašo kodo tečaja ali povabilom se lahko pridružijo takoj, ne glede na vašo izbiro."
+    "courseAccessCodeNote": "Študenti z vašo kodo tečaja ali povabilom se lahko pridružijo takoj, ne glede na vašo izbiro.",
+    "requireAnalyticsAccessSummary": "Učenci delijo svoj napredek pri učenju z vami, ko se pridružijo."
 }

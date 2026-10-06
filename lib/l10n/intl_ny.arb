@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-05 13:57:51.438243",
+    "@@last_modified": "2026-10-06 12:21:03.975322",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Apa ndi pamene mawu atsopano adzawonekera!",
     "readingAssistanceTutorialCollectToken": "Sankhani mawu kuti mudziwe zambiri za iwo",
     "requireAnalyticsAccessTitle": "Pemphani mwayi wofufuza kuti mulowe",
-    "requireAnalyticsAccessDesc": "Ophunzira ayenera kupereka mwayi wofufuza maphunziro awo kuti alowe nawo mu maphunzirowa",
     "moreOptions": "Zosankha zambiri",
     "analyticsAccessNoticeTitle": "Mwayi Wofufuza Ukufunika",
     "analyticsAccessNoticeDesc": "Polowa nawo mu maphunzirowa, mukuvomereza kupereka mwayi kwa oyang'anira kuti apeze zambiri za maphunziro anu.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Aliyense angapeze ndi kulowa maphunzirowa.",
     "courseAccessApprovalRequiredDesc": "Aliyense angapeze maphunzirowa ndikupempha kulowa. Inu mumavomereza pempho lililonse.",
     "courseAccessPrivateDesc": "Anthu okhawo omwe ali ndi kuitana kwanu kapena nambala ya maphunzirowa ndi omwe angalowe. Maphunzirowa saonekera pakufufuza.",
-    "courseAccessCodeNote": "Ophunzira omwe ali ndi nambala yanu ya maphunziro kapena kuitana angalowe nthawi yomweyo, ziribe kanthu zomwe mwasankha."
+    "courseAccessCodeNote": "Ophunzira omwe ali ndi nambala yanu ya maphunziro kapena kuitana angalowe nthawi yomweyo, ziribe kanthu zomwe mwasankha.",
+    "requireAnalyticsAccessSummary": "Ophunzira amagawana nanu momwe akupitira patsogolo pakuphunzira akalowa nawo."
 }

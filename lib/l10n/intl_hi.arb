@@ -3082,7 +3082,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-10-05 13:57:47.729205",
+    "@@last_modified": "2026-10-06 12:20:52.872054",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9305,7 +9305,6 @@
     },
     "readingAssistanceTutorialCollectToken": "शब्दों का चयन करें ताकि उनके बारे में अधिक जान सकें",
     "requireAnalyticsAccessTitle": "शामिल होने के लिए एनालिटिक्स एक्सेस की आवश्यकता है",
-    "requireAnalyticsAccessDesc": "भागीदारों को इस पाठ्यक्रम में शामिल होने के लिए अपने शिक्षण एनालिटिक्स तक पहुंच प्रदान करनी होगी",
     "analyticsAccessNoticeTitle": "एनालिटिक्स एक्सेस आवश्यक",
     "analyticsAccessNoticeDesc": "इस पाठ्यक्रम में शामिल होकर, आप प्रशासकों को अपने शिक्षण एनालिटिक्स तक पहुंच प्रदान करने के लिए सहमत होते हैं।",
     "@readingAssistanceTutorialCollectToken": {
@@ -9313,10 +9312,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10555,5 +10550,6 @@
     "courseAccessPublicDesc": "कोई भी इस कोर्स को ढूँढ सकता है और इसमें शामिल हो सकता है।",
     "courseAccessApprovalRequiredDesc": "कोई भी इस कोर्स को ढूँढ सकता है और शामिल होने का अनुरोध कर सकता है। आप प्रत्येक अनुरोध को अनुमोदित करते हैं।",
     "courseAccessPrivateDesc": "केवल आपके आमंत्रण या कोर्स कोड वाले लोग ही शामिल हो सकते हैं। कोर्स खोज में दिखाई नहीं देता है।",
-    "courseAccessCodeNote": "आपके कोर्स कोड या आमंत्रण वाले छात्र तुरंत शामिल हो सकते हैं, चाहे आप कुछ भी चुनें।"
+    "courseAccessCodeNote": "आपके कोर्स कोड या आमंत्रण वाले छात्र तुरंत शामिल हो सकते हैं, चाहे आप कुछ भी चुनें।",
+    "requireAnalyticsAccessSummary": "छात्र जुड़ने पर अपनी सीखने की प्रगति आपके साथ साझा करते हैं।"
 }

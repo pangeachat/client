@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-05 13:57:53.488018",
+    "@@last_modified": "2026-10-06 12:21:00.954521",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Hapa ndipo maneno mapya ya msamiati yataonekana!",
     "readingAssistanceTutorialCollectToken": "Chagua maneno ili kujifunza zaidi kuyahusu",
     "requireAnalyticsAccessTitle": "Inahitaji ufikiaji wa uchanganuzi ili kujiunga",
-    "requireAnalyticsAccessDesc": "Washiriki lazima watoe ufikiaji wa uchanganuzi wao wa kujifunza ili kujiunga na kozi hii",
     "moreOptions": "Chaguo zaidi",
     "analyticsAccessNoticeTitle": "Ufikiaji wa Uchanganuzi Unahitajika",
     "analyticsAccessNoticeDesc": "Kwa kujiunga na kozi hii, unakubali kuwapa wasimamizi ufikiaji wa uchanganuzi wako wa kujifunza.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Mtu yeyote anaweza kupata na kujiunga na kozi hii.",
     "courseAccessApprovalRequiredDesc": "Mtu yeyote anaweza kupata kozi hii na kuomba kujiunga. Unaidhinisha kila ombi.",
     "courseAccessPrivateDesc": "Ni watu tu walio na mwaliko wako au msimbo wa kozi wanaoweza kujiunga. Kozi haionekani kwenye utafutaji.",
-    "courseAccessCodeNote": "Wanafunzi walio na msimbo wako wa kozi au mwaliko wanaweza kujiunga mara moja, bila kujali unachochagua."
+    "courseAccessCodeNote": "Wanafunzi walio na msimbo wako wa kozi au mwaliko wanaweza kujiunga mara moja, bila kujali unachochagua.",
+    "requireAnalyticsAccessSummary": "Wanafunzi hushiriki maendeleo yao ya kujifunza nawe wanapojiunga."
 }

@@ -3082,7 +3082,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-05 13:57:48.523062",
+    "@@last_modified": "2026-10-06 12:20:53.566376",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9305,7 +9305,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Roghnaigh focail chun tuilleadh eolais a fháil fúthu",
     "requireAnalyticsAccessTitle": "Teastaíonn rochtain ar anailísí chun páirt a ghlacadh",
-    "requireAnalyticsAccessDesc": "Caithfidh rannpháirtithe rochtain a thabhairt ar a n-anailísí foghlama chun páirt a ghlacadh sa chúrsa seo",
     "analyticsAccessNoticeTitle": "Rochtain ar anailísí riachtanach",
     "analyticsAccessNoticeDesc": "Trí pháirt a ghlacadh sa chúrsa seo, aontaíonn tú rochtain a thabhairt do na hoifigigh ar do n-anailísí foghlama.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9313,10 +9312,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10555,5 +10550,6 @@
     "courseAccessPublicDesc": "Is féidir le duine ar bith an cúrsa seo a aimsiú agus a bheith páirteach ann.",
     "courseAccessApprovalRequiredDesc": "Is féidir le duine ar bith an cúrsa seo a aimsiú agus iarraidh a bheith páirteach ann. Ceadaíonn tú gach iarratas.",
     "courseAccessPrivateDesc": "Ní féidir ach le daoine a bhfuil do chuireadh nó cód cúrsa acu a bheith páirteach. Ní fheictear an cúrsa i gcuardach.",
-    "courseAccessCodeNote": "Is féidir le mic léinn a bhfuil do chód cúrsa nó cuireadh acu a bheith páirteach láithreach, cibé rud a roghnaíonn tú."
+    "courseAccessCodeNote": "Is féidir le mic léinn a bhfuil do chód cúrsa nó cuireadh acu a bheith páirteach láithreach, cibé rud a roghnaíonn tú.",
+    "requireAnalyticsAccessSummary": "Roinneann mic léinn a ndul chun cinn foghlama leat nuair a thagann siad isteach."
 }

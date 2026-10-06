@@ -20,6 +20,7 @@ import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
+import 'package:fluffychat/routes/courses/own/course_creation_settings_widget.dart';
 import 'package:fluffychat/routes/courses/own/selected_course_view.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -57,6 +58,9 @@ class SelectedCourseController extends State<SelectedCourse>
 
   /// The access setting the course is created with.
   CourseAccess access = CourseAccess.initial;
+
+  /// Whether joining the new course requires sharing learning analytics.
+  bool requireAnalyticsAccess = true;
 
   @override
   initState() {
@@ -138,7 +142,7 @@ class SelectedCourseController extends State<SelectedCourse>
             sdk.StateEvent(
               type: PangeaEventTypes.courseSettings,
               content: CourseSettingsModel(
-                requireAnalyticsAccess: true,
+                requireAnalyticsAccess: requireAnalyticsAccess,
               ).toJson(),
             ),
           ],
@@ -163,6 +167,9 @@ class SelectedCourseController extends State<SelectedCourse>
     if (chosen == null || !mounted) return;
     setState(() => access = chosen);
   }
+
+  void setRequireAnalyticsAccess(bool value) =>
+      setState(() => requireAnalyticsAccess = value);
 
   Future<void> addCourseToSpace(CoursePlanModel course) async {
     if (widget.spaceId == null) {
@@ -210,7 +217,13 @@ class SelectedCourseController extends State<SelectedCourse>
     onTapCta: submit,
     ctaButtonText: buttonText,
     objectivesProvider: _objectivesLoader,
-    access: widget.mode == SelectedCourseMode.launch ? access : null,
-    onTapAccess: chooseAccess,
+    creationSettings: widget.mode == SelectedCourseMode.launch
+        ? CourseCreationSettings(
+            access: access,
+            onTapAccess: chooseAccess,
+            requireAnalyticsAccess: requireAnalyticsAccess,
+            onChangedRequireAnalyticsAccess: setRequireAnalyticsAccess,
+          )
+        : null,
   );
 }

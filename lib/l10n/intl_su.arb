@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-05 13:57:53.640600",
+    "@@last_modified": "2026-10-06 12:21:00.526840",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Di dieu kecap-kecap kosakata anyar bakal muncul!",
     "readingAssistanceTutorialCollectToken": "Pilih kecap pikeun diajar leuwih seueur ngeunaan éta",
     "requireAnalyticsAccessTitle": "Peryogi aksés analitik pikeun ngagabung",
-    "requireAnalyticsAccessDesc": "Pamilon kedah masihan aksés kana analitik diajar maranéhanana pikeun ngagabung kana kursus ieu",
     "moreOptions": "Pilihan séjén",
     "analyticsAccessNoticeTitle": "Aksés Analitik Diperyogikeun",
     "analyticsAccessNoticeDesc": "Ku ngagabung kana kursus ieu, anjeun satuju pikeun masihan aksés ka admin kana analitik diajar anjeun.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Saha waé tiasa milarian sareng ngagabung kana kursus ieu.",
     "courseAccessApprovalRequiredDesc": "Saha waé tiasa milarian kursus ieu sareng nyuhunkeun ngagabung. Anjeun nyatujuan unggal paménta.",
     "courseAccessPrivateDesc": "Ngan jalma anu gaduh uleman atanapi kode kursus anjeun anu tiasa ngagabung. Kursus ieu henteu muncul dina pamilarian.",
-    "courseAccessCodeNote": "Murid anu gaduh kode kursus anjeun atanapi uleman tiasa langsung ngagabung, naon waé anu anjeun pilih."
+    "courseAccessCodeNote": "Murid anu gaduh kode kursus anjeun atanapi uleman tiasa langsung ngagabung, naon waé anu anjeun pilih.",
+    "requireAnalyticsAccessSummary": "Murid ngabagikeun kamajuan diajarna ka anjeun nalika aranjeunna ngagabung."
 }

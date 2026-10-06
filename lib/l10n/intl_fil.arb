@@ -2069,7 +2069,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-05 13:57:46.973659",
+    "@@last_modified": "2026-10-06 12:20:51.971347",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -9533,7 +9533,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Pumili ng mga salita upang matuto pa tungkol sa mga ito",
     "requireAnalyticsAccessTitle": "Kailangan ng access sa analytics upang sumali",
-    "requireAnalyticsAccessDesc": "Dapat bigyan ng access ng mga kalahok ang kanilang learning analytics upang makasali sa kursong ito",
     "analyticsAccessNoticeTitle": "Kinakailangan ang Access sa Analytics",
     "analyticsAccessNoticeDesc": "Sa pagsali sa kursong ito, sumasang-ayon kang bigyan ng access ang mga admin sa iyong learning analytics.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9541,10 +9540,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10783,5 +10778,6 @@
     "courseAccessPublicDesc": "Kahit sino ay puwedeng makahanap at makasali sa kursong ito.",
     "courseAccessApprovalRequiredDesc": "Kahit sino ay puwedeng makahanap ng kursong ito at humiling na sumali. Ikaw ang mag-aapruba sa bawat kahilingan.",
     "courseAccessPrivateDesc": "Tanging ang mga taong may imbitasyon o course code mo lang ang puwedeng sumali. Hindi lalabas ang kurso sa paghahanap.",
-    "courseAccessCodeNote": "Ang mga estudyanteng may course code mo o imbitasyon ay puwedeng sumali kaagad, anuman ang piliin mo."
+    "courseAccessCodeNote": "Ang mga estudyanteng may course code mo o imbitasyon ay puwedeng sumali kaagad, anuman ang piliin mo.",
+    "requireAnalyticsAccessSummary": "Ibinabahagi sa iyo ng mga mag-aaral ang kanilang pag-unlad sa pag-aaral kapag sumali sila."
 }

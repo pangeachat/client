@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-05 13:57:45.205239",
+    "@@last_modified": "2026-10-06 12:20:50.567243",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Yeni lüğət sözləri burada görünəcək!",
     "readingAssistanceTutorialCollectToken": "Onlar haqqında daha çox öyrənmək üçün sözləri seçin",
     "requireAnalyticsAccessTitle": "Qoşulmaq üçün analitika icazəsi tələb edin",
-    "requireAnalyticsAccessDesc": "İştirakçılar bu kursa qoşulmaq üçün öyrənmə analitikasına giriş icazəsi verməlidirlər",
     "moreOptions": "Daha çox seçim",
     "analyticsAccessNoticeTitle": "Analitikaya Giriş Tələb Olunur",
     "analyticsAccessNoticeDesc": "Bu kursa qoşulmaqla siz adminlərə öyrənmə analitikanıza giriş icazəsi verməyə razılaşırsınız.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Hər kəs bu kursu tapa və ona qoşula bilər.",
     "courseAccessApprovalRequiredDesc": "Hər kəs bu kursu tapa və qoşulmaq üçün sorğu göndərə bilər. Hər bir sorğunu siz təsdiq edirsiniz.",
     "courseAccessPrivateDesc": "Yalnız sizin dəvətiniz və ya kurs kodunuz olan şəxslər qoşula bilər. Kurs axtarışda görünmür.",
-    "courseAccessCodeNote": "Kurs kodunuz və ya dəvətiniz olan tələbələr, nə seçməyinizdən asılı olmayaraq, dərhal qoşula bilərlər."
+    "courseAccessCodeNote": "Kurs kodunuz və ya dəvətiniz olan tələbələr, nə seçməyinizdən asılı olmayaraq, dərhal qoşula bilərlər.",
+    "requireAnalyticsAccessSummary": "Tələbələr qoşulduqda öyrənmə tərəqqilərini sizinlə bölüşürlər."
 }

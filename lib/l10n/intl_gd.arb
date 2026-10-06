@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-05 13:57:47.465161",
+    "@@last_modified": "2026-10-06 12:20:52.632945",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Seo far an nochd faclan briathrachais ùra!",
     "readingAssistanceTutorialCollectToken": "Tagh faclan gus barrachd ionnsachadh mun deidhinn",
     "requireAnalyticsAccessTitle": "Feum air ruigsinneachd anailisean airson a dhol a-steach",
-    "requireAnalyticsAccessDesc": "Feumaidh com-pàirtichean ruigsinneachd a thoirt do na h-anailisean ionnsachaidh aca gus a dhol a-steach don chùrsa seo",
     "moreOptions": "Barrachd roghainnean",
     "analyticsAccessNoticeTitle": "Feum air Ruigsinneachd Anailisean",
     "analyticsAccessNoticeDesc": "Le bhith a' tighinn a-steach don chùrsa seo, tha thu ag aontachadh ruigsinneachd a thoirt do rianairean air na h-anailisean ionnsachaidh agad.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Faodaidh duine sam bith an cùrsa seo a lorg is tighinn a-steach.",
     "courseAccessApprovalRequiredDesc": "Faodaidh duine sam bith an cùrsa seo a lorg is iarraidh tighinn a-steach. Feumaidh tu gach iarrtas a cheadachadh.",
     "courseAccessPrivateDesc": "Chan urrainn ach daoine aig a bheil an cuireadh no còd-cùrsa agad tighinn a-steach. Cha nochd an cùrsa ann an rannsachadh.",
-    "courseAccessCodeNote": "Faodaidh oileanaich aig a bheil an còd-cùrsa no cuireadh agad tighinn a-steach sa bhad, ge b' e dè a thaghas tu."
+    "courseAccessCodeNote": "Faodaidh oileanaich aig a bheil an còd-cùrsa no cuireadh agad tighinn a-steach sa bhad, ge b' e dè a thaghas tu.",
+    "requireAnalyticsAccessSummary": "Bidh oileanaich a’ roinn an adhartais ionnsachaidh leat nuair a thèid iad a-steach."
 }

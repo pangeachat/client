@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-05 13:57:52.813609",
+    "@@last_modified": "2026-10-06 12:20:59.824691",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Këtu do të shfaqen fjalë të reja fjalori!",
     "readingAssistanceTutorialCollectToken": "Zgjidhni fjalë për të mësuar më shumë rreth tyre",
     "requireAnalyticsAccessTitle": "Kërkohet qasje në analitikë për t'u bashkuar",
-    "requireAnalyticsAccessDesc": "Pjesëmarrësit duhet të japin qasje në analitikën e tyre të të mësuarit për t'u bashkuar me këtë kurs",
     "moreOptions": "Më shumë opsione",
     "analyticsAccessNoticeTitle": "Kërkohet Qasje në Analitikë",
     "analyticsAccessNoticeDesc": "Duke u bashkuar me këtë kurs, ju pranoni t'u jepni administratorëve qasje në analitikën tuaj të të mësuarit.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Kushdo mund ta gjejë dhe t'i bashkohet këtij kursi.",
     "courseAccessApprovalRequiredDesc": "Kushdo mund ta gjejë këtë kurs dhe të kërkojë të bashkohet. Ju miratoni çdo kërkesë.",
     "courseAccessPrivateDesc": "Vetëm personat me ftesën ose kodin tuaj të kursit mund të bashkohen. Kursi nuk shfaqet në kërkim.",
-    "courseAccessCodeNote": "Studentët me kodin e kursit ose një ftesë mund të bashkohen menjëherë, pavarësisht se çfarë zgjidhni."
+    "courseAccessCodeNote": "Studentët me kodin e kursit ose një ftesë mund të bashkohen menjëherë, pavarësisht se çfarë zgjidhni.",
+    "requireAnalyticsAccessSummary": "Studentët ndajnë progresin e tyre të të nxënit me ju kur bashkohen."
 }

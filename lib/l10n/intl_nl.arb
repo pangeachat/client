@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:51.021835",
+    "@@last_modified": "2026-10-06 12:20:57.148001",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -8676,7 +8676,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Selecteer woorden om er meer over te leren",
     "requireAnalyticsAccessTitle": "Analytics-toegang vereist om deel te nemen",
-    "requireAnalyticsAccessDesc": "Deelnemers moeten toegang tot hun leeranalyses verlenen om aan deze cursus deel te nemen",
     "analyticsAccessNoticeTitle": "Analytics-toegang vereist",
     "analyticsAccessNoticeDesc": "Door deel te nemen aan deze cursus stem je ermee in dat beheerders toegang krijgen tot je leeranalyses.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8684,10 +8683,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9926,5 +9921,6 @@
     "courseAccessPublicDesc": "Iedereen kan deze cursus vinden en eraan deelnemen.",
     "courseAccessApprovalRequiredDesc": "Iedereen kan deze cursus vinden en vragen om deel te nemen. Jij keurt elk verzoek goed.",
     "courseAccessPrivateDesc": "Alleen mensen met jouw uitnodiging of cursuscode kunnen deelnemen. De cursus verschijnt niet in de zoekresultaten.",
-    "courseAccessCodeNote": "Studenten met jouw cursuscode of een uitnodiging kunnen direct deelnemen, wat je ook kiest."
+    "courseAccessCodeNote": "Studenten met jouw cursuscode of een uitnodiging kunnen direct deelnemen, wat je ook kiest.",
+    "requireAnalyticsAccessSummary": "Studenten delen hun leerproces met je wanneer ze meedoen."
 }

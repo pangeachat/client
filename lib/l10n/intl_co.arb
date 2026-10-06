@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-05 13:57:45.942324",
+    "@@last_modified": "2026-10-06 12:20:51.962467",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Hè quì ch'elle cumparisceranu e parolle nove di vucabulariu!",
     "readingAssistanceTutorialCollectToken": "Selezziunate e parolle per amparà di più nantu à elle",
     "requireAnalyticsAccessTitle": "Richiede l'accessu à l'analitiche per participà",
-    "requireAnalyticsAccessDesc": "I participanti devenu cuncede l'accessu à e so analitiche d'amparera per participà à stu corsu",
     "moreOptions": "Più d'opzioni",
     "analyticsAccessNoticeTitle": "Accessu à l'Analitiche Richiestu",
     "analyticsAccessNoticeDesc": "Participendu à stu corsu, accettate di cuncede à l'amministratori l'accessu à e vostre analitiche d'amparera.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Qualsiasi persona pò truvà è unisce à stu corsu.",
     "courseAccessApprovalRequiredDesc": "Qualsiasi persona pò truvà stu corsu è dumandà d'unisce. Voi appruvate ogni dumanda.",
     "courseAccessPrivateDesc": "Solu e persone cù u vostru invitu o codice di corsu ponu unisce. U corsu ùn apparisce micca in a ricerca.",
-    "courseAccessCodeNote": "I studienti cù u vostru codice di corsu o un invitu ponu unisce subitu, qualunque sia a vostra scelta."
+    "courseAccessCodeNote": "I studienti cù u vostru codice di corsu o un invitu ponu unisce subitu, qualunque sia a vostra scelta.",
+    "requireAnalyticsAccessSummary": "I studienti sparteranu i so prugressi d'apprendimentu cun voi quandu si uniscenu."
 }

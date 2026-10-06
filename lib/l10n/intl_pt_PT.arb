@@ -2548,7 +2548,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-05 13:57:51.944808",
+    "@@last_modified": "2026-10-06 12:20:58.532314",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9590,7 +9590,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Selecione palavras para saber mais sobre elas",
     "requireAnalyticsAccessTitle": "Requerer acesso à análise para participar",
-    "requireAnalyticsAccessDesc": "Os participantes devem conceder acesso às suas análises de aprendizado para participar deste curso",
     "analyticsAccessNoticeTitle": "Acesso à Análise Necessário",
     "analyticsAccessNoticeDesc": "Ao participar deste curso, você concorda em conceder acesso aos administradores às suas análises de aprendizado.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9598,10 +9597,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10840,5 +10835,6 @@
     "courseAccessPublicDesc": "Qualquer pessoa pode encontrar e aderir a este curso.",
     "courseAccessApprovalRequiredDesc": "Qualquer pessoa pode encontrar este curso e pedir para aderir. Irá aprovar cada pedido.",
     "courseAccessPrivateDesc": "Apenas pessoas com o seu convite ou código de curso podem aderir. O curso não aparece na pesquisa.",
-    "courseAccessCodeNote": "Os alunos com o seu código de curso ou um convite podem aderir de imediato, independentemente da sua escolha."
+    "courseAccessCodeNote": "Os alunos com o seu código de curso ou um convite podem aderir de imediato, independentemente da sua escolha.",
+    "requireAnalyticsAccessSummary": "Os alunos partilham o seu progresso de aprendizagem consigo quando aderem."
 }

@@ -1926,7 +1926,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-05 13:57:49.186934",
+    "@@last_modified": "2026-10-06 12:20:54.434708",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9573,7 +9573,6 @@
     },
     "readingAssistanceTutorialCollectToken": "აირჩიეთ სიტყვები, რომ მეტი გაიგოთ მათზე",
     "requireAnalyticsAccessTitle": "ანალიტიკის წვდომა საჭიროა გაწვდისთვის",
-    "requireAnalyticsAccessDesc": "მონაწილეებს უნდა მიაწვდონ წვდომა თავიანთი სასწავლო ანალიტიკაზე, რომ ამ კურსში გაწვდონ",
     "analyticsAccessNoticeTitle": "ანალიტიკის წვდომა საჭიროა",
     "analyticsAccessNoticeDesc": "ამ კურსში გაწვდით, თქვენ თანხმდებით, რომ ადმინისტრატორებს მიაწვდონ წვდომა თქვენს სასწავლო ანალიტიკაზე.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9581,10 +9580,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10823,5 +10818,6 @@
     "courseAccessPublicDesc": "ნებისმიერს შეუძლია ამ კურსის პოვნა და შემოერთება.",
     "courseAccessApprovalRequiredDesc": "ნებისმიერს შეუძლია ამ კურსის პოვნა და შემოერთების მოთხოვნა. თქვენ ადასტურებთ თითოეულ მოთხოვნას.",
     "courseAccessPrivateDesc": "მხოლოდ თქვენი მოწვევით ან კურსის კოდით მოსულ ადამიანებს შეუძლიათ შემოერთება. კურსი არ გამოჩნდება ძიებაში.",
-    "courseAccessCodeNote": "სტუდენტებს თქვენი კურსის კოდით ან მოწვევით შეუძლიათ დაუყოვნებლივ შემოერთება, რასაც არ უნდა აირჩევთ."
+    "courseAccessCodeNote": "სტუდენტებს თქვენი კურსის კოდით ან მოწვევით შეუძლიათ დაუყოვნებლივ შემოერთება, რასაც არ უნდა აირჩევთ.",
+    "requireAnalyticsAccessSummary": "მოსწავლეები გიზიარებენ თავიანთ პროგრესს, როდესაც ისინი უერთდებიან."
 }

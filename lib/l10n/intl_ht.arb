@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-05 13:57:47.972093",
+    "@@last_modified": "2026-10-06 12:20:53.520380",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Se isit la nouvo mo vokabilè yo ap parèt!",
     "readingAssistanceTutorialCollectToken": "Chwazi mo pou aprann plis sou yo",
     "requireAnalyticsAccessTitle": "Mande aksè analiz pou rantre",
-    "requireAnalyticsAccessDesc": "Patizan yo dwe bay aksè a analiz aprantisaj yo pou rantre nan kou sa a",
     "moreOptions": "Plis opsyon",
     "analyticsAccessNoticeTitle": "Aksè Analiz Obligatwa",
     "analyticsAccessNoticeDesc": "Lè ou rantre nan kou sa a, ou dakò pou bay admin yo aksè a analiz aprantisaj ou.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Nenpòt moun ka jwenn epi antre nan kou sa a.",
     "courseAccessApprovalRequiredDesc": "Nenpòt moun ka jwenn kou sa a epi mande pou antre. Ou apwouve chak demann.",
     "courseAccessPrivateDesc": "Se sèlman moun ki gen envitasyon w oswa kòd kou a ki ka antre. Kou a pa parèt nan rechèch.",
-    "courseAccessCodeNote": "Elèv ki gen kòd kou w la oswa yon envitasyon ka antre touswit, kèlkeswa sa w chwazi."
+    "courseAccessCodeNote": "Elèv ki gen kòd kou w la oswa yon envitasyon ka antre touswit, kèlkeswa sa w chwazi.",
+    "requireAnalyticsAccessSummary": "Elèv yo pataje pwogrè aprantisaj yo avèk ou lè yo rantre."
 }

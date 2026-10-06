@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:54.628801",
+    "@@last_modified": "2026-10-06 12:21:01.929766",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -5972,7 +5972,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Chọn từ để tìm hiểu thêm về chúng",
     "requireAnalyticsAccessTitle": "Cần quyền truy cập phân tích để tham gia",
-    "requireAnalyticsAccessDesc": "Người tham gia phải cấp quyền truy cập vào phân tích học tập của họ để tham gia khóa học này",
     "analyticsAccessNoticeTitle": "Cần quyền truy cập phân tích",
     "analyticsAccessNoticeDesc": "Bằng cách tham gia khóa học này, bạn đồng ý cấp quyền truy cập cho quản trị viên vào phân tích học tập của bạn.",
     "@readingAssistanceTutorialCollectToken": {
@@ -5980,10 +5979,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7218,5 +7213,6 @@
     "courseAccessPublicDesc": "Bất kỳ ai cũng có thể tìm và tham gia khóa học này.",
     "courseAccessApprovalRequiredDesc": "Bất kỳ ai cũng có thể tìm khóa học này và yêu cầu tham gia. Bạn sẽ phê duyệt từng yêu cầu.",
     "courseAccessPrivateDesc": "Chỉ những người có lời mời hoặc mã khóa học của bạn mới có thể tham gia. Khóa học sẽ không xuất hiện trong tìm kiếm.",
-    "courseAccessCodeNote": "Học viên có mã khóa học hoặc lời mời của bạn có thể tham gia ngay lập tức, bất kể bạn chọn cài đặt nào."
+    "courseAccessCodeNote": "Học viên có mã khóa học hoặc lời mời của bạn có thể tham gia ngay lập tức, bất kể bạn chọn cài đặt nào.",
+    "requireAnalyticsAccessSummary": "Học viên chia sẻ tiến độ học tập với bạn khi họ tham gia."
 }

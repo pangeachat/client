@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-05 13:57:45.993672",
+    "@@last_modified": "2026-10-06 12:20:52.612378",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -6899,7 +6899,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Selecciona palabras para aprender más sobre ellas",
     "requireAnalyticsAccessTitle": "Requiere acceso a análisis para unirse",
-    "requireAnalyticsAccessDesc": "Los participantes deben otorgar acceso a sus análisis de aprendizaje para unirse a este curso",
     "analyticsAccessNoticeTitle": "Acceso a Análisis Requerido",
     "analyticsAccessNoticeDesc": "Al unirte a este curso, aceptas otorgar a los administradores acceso a tus análisis de aprendizaje.",
     "@readingAssistanceTutorialCollectToken": {
@@ -6907,10 +6906,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8145,5 +8140,6 @@
     "courseAccessPublicDesc": "Cualquiera puede encontrar y unirse a este curso.",
     "courseAccessApprovalRequiredDesc": "Cualquiera puede encontrar este curso y solicitar unirse. Tú apruebas cada solicitud.",
     "courseAccessPrivateDesc": "Solo las personas con tu invitación o código de curso pueden unirse. El curso no aparece en las búsquedas.",
-    "courseAccessCodeNote": "Los estudiantes con tu código de curso o una invitación pueden unirse de inmediato, elijas lo que elijas."
+    "courseAccessCodeNote": "Los estudiantes con tu código de curso o una invitación pueden unirse de inmediato, elijas lo que elijas.",
+    "requireAnalyticsAccessSummary": "Los estudiantes comparten su progreso de aprendizaje contigo cuando se unen."
 }

@@ -2909,7 +2909,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-10-05 13:57:45.473216",
+    "@@last_modified": "2026-10-06 12:20:51.108888",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8284,7 +8284,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Pilih kata-kata untuk belajar lebih lanjut tentang mereka",
     "requireAnalyticsAccessTitle": "Memerlukan akses analitik untuk bergabung",
-    "requireAnalyticsAccessDesc": "Peserta harus memberikan akses ke analitik pembelajaran mereka untuk bergabung dengan kursus ini",
     "analyticsAccessNoticeTitle": "Akses Analitik Diperlukan",
     "analyticsAccessNoticeDesc": "Dengan bergabung dengan kursus ini, Anda setuju untuk memberikan akses kepada admin ke analitik pembelajaran Anda.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8292,10 +8291,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9534,5 +9529,6 @@
     "courseAccessPublicDesc": "སུ་ཞིག་ཡིན་རུང་སློབ་ཚན་འདི་རྙེད་པ་དང་མཉམ་ཞུགས་བྱེད་ཐུབ།",
     "courseAccessApprovalRequiredDesc": "སུ་ཞིག་ཡིན་རུང་སློབ་ཚན་འདི་རྙེད་པ་དང་མཉམ་ཞུགས་བྱེད་ཆེད་རེ་བ་འདོན་ཐུབ། ཁྱེད་ཀྱིས་རེ་བ་རེ་རེ་བཞིན་ཆོག་མཆན་སྤྲོད་དགོས།",
     "courseAccessPrivateDesc": "ཁྱེད་ཀྱི་གདན་ཞུ་བྱས་པའམ་སློབ་ཚན་ཨང་གྲངས་ཡོད་པའི་མི་དག་གིས་མ་གཏོགས་མཉམ་ཞུགས་བྱེད་མི་ཐུབ། སློབ་ཚན་འདི་འཚོལ་བཤེར་ནང་མི་ཐོན།",
-    "courseAccessCodeNote": "ཁྱེད་ཀྱི་སློབ་ཚན་ཨང་གྲངས་སམ་གདན་ཞུ་ཡོད་པའི་སློབ་མ་ཚོས་ཁྱེད་ཀྱིས་གང་འདེམས་རུང་འཕྲལ་དུ་མཉམ་ཞུགས་བྱེད་ཐུབ།"
+    "courseAccessCodeNote": "ཁྱེད་ཀྱི་སློབ་ཚན་ཨང་གྲངས་སམ་གདན་ཞུ་ཡོད་པའི་སློབ་མ་ཚོས་ཁྱེད་ཀྱིས་གང་འདེམས་རུང་འཕྲལ་དུ་མཉམ་ཞུགས་བྱེད་ཐུབ།",
+    "requireAnalyticsAccessSummary": "སློབ་མ་ཚོས་ཁྱེད་ལ་མཉམ་ཞུགས་བྱེད་སྐབས་སློབ་སྦྱོང་གི་ཡར་རྒྱས་མཉམ་སྤྱོད་བྱེད་ཀྱི་རེད།"
 }

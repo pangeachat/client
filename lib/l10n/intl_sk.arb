@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-05 13:57:52.393235",
+    "@@last_modified": "2026-10-06 12:20:59.054826",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -9618,7 +9618,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Vyberte slová, aby ste sa o nich dozvedeli viac",
     "requireAnalyticsAccessTitle": "Vyžaduje sa prístup k analytike na pripojenie",
-    "requireAnalyticsAccessDesc": "Účastníci musia poskytnúť prístup k svojim analytickým údajom o učení, aby sa mohli pripojiť k tomuto kurzu",
     "analyticsAccessNoticeTitle": "Vyžaduje sa prístup k analytike",
     "analyticsAccessNoticeDesc": "Pripojením sa k tomuto kurzu súhlasíte s poskytnutím prístupu administrátorom k vašim analytickým údajom o učení.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9626,10 +9625,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10868,5 +10863,6 @@
     "courseAccessPublicDesc": "Ktokoľvek môže nájsť a pripojiť sa k tomuto kurzu.",
     "courseAccessApprovalRequiredDesc": "Ktokoľvek môže nájsť tento kurz a požiadať o pripojenie. Každú žiadosť schvaľujete vy.",
     "courseAccessPrivateDesc": "Pripojiť sa môžu iba ľudia s vašou pozvánkou alebo kódom kurzu. Kurz sa nezobrazuje vo vyhľadávaní.",
-    "courseAccessCodeNote": "Študenti s kódom kurzu alebo pozvánkou sa môžu pripojiť okamžite, bez ohľadu na to, čo si vyberiete."
+    "courseAccessCodeNote": "Študenti s kódom kurzu alebo pozvánkou sa môžu pripojiť okamžite, bez ohľadu na to, čo si vyberiete.",
+    "requireAnalyticsAccessSummary": "Študenti s vami zdieľajú svoj pokrok v učení, keď sa pripoja."
 }

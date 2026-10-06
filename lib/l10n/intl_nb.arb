@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:51.174938",
+    "@@last_modified": "2026-10-06 12:20:56.854477",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -8733,7 +8733,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Velg ord for å lære mer om dem",
     "requireAnalyticsAccessTitle": "Krever tilgang til analyser for å bli med",
-    "requireAnalyticsAccessDesc": "Deltakere må gi tilgang til sine læringsanalyser for å bli med i dette kurset",
     "analyticsAccessNoticeTitle": "Tilgang til analyser kreves",
     "analyticsAccessNoticeDesc": "Ved å bli med i dette kurset, godtar du å gi administratorer tilgang til dine læringsanalyser.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8741,10 +8740,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9983,5 +9978,6 @@
     "courseAccessPublicDesc": "Alle kan finne og bli med på dette kurset.",
     "courseAccessApprovalRequiredDesc": "Alle kan finne dette kurset og be om å bli med. Du godkjenner hver forespørsel.",
     "courseAccessPrivateDesc": "Bare personer med din invitasjon eller kurskode kan bli med. Kurset vises ikke i søk.",
-    "courseAccessCodeNote": "Studenter med din kurskode eller en invitasjon kan bli med med en gang, uansett hva du velger."
+    "courseAccessCodeNote": "Studenter med din kurskode eller en invitasjon kan bli med med en gang, uansett hva du velger.",
+    "requireAnalyticsAccessSummary": "Elevene deler læringsfremgangen sin med deg når de blir med."
 }

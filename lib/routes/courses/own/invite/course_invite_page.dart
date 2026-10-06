@@ -7,7 +7,6 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
-import 'package:fluffychat/features/analytics_access/course_settings_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_client_extension.dart';
@@ -15,7 +14,6 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -103,48 +101,6 @@ class CourseInvitePageController extends State<CourseInvitePage>
     }
 
     return spaceId;
-  }
-
-  Future<bool> get _requireAnalyticsAccess async {
-    String spaceId;
-    try {
-      spaceId = await getSpaceId();
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"created_course_id": widget.courseId},
-      );
-      return true;
-    }
-
-    final room = Matrix.of(context).client.getRoomById(spaceId);
-    if (room == null) return true;
-    return room.requireAnalyticsAccess;
-  }
-
-  Future<void> _setRequireAnalyticsAccess(bool value) async {
-    try {
-      final spaceId = await getSpaceId();
-      final room = Matrix.of(context).client.getRoomById(spaceId);
-      if (room == null) {
-        throw Exception('Room not found');
-      }
-
-      await room.setRequireAnalyticsAccess(value);
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "created_course_id": widget.courseId,
-          "require_analytics_access": value,
-        },
-      );
-      rethrow;
-    } finally {
-      if (mounted) setState(() {});
-    }
   }
 
   @override
@@ -313,45 +269,6 @@ class CourseInvitePageController extends State<CourseInvitePage>
                           style: theme.textTheme.titleMedium,
                         ),
                       ],
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16.0),
-                      constraints: BoxConstraints(maxWidth: 400.0),
-                      child: Column(
-                        spacing: 8.0,
-                        children: [
-                          Row(
-                            spacing: 8.0,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  L10n.of(context).requireAnalyticsAccessTitle,
-                                  style: theme.textTheme.bodyMedium,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              FutureBuilder(
-                                future: _requireAnalyticsAccess,
-                                builder: (context, snapshot) {
-                                  final value = snapshot.data ?? true;
-                                  return Switch(
-                                    value: value,
-                                    onChanged: (v) => showFutureLoadingDialog(
-                                      context: context,
-                                      future: () =>
-                                          _setRequireAnalyticsAccess(v),
-                                    ),
-                                    activeThumbColor: Theme.of(
-                                      context,
-                                    ).pangea.successFixedDim,
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
                     ),
                   ],
                 ),

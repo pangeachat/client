@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-05 13:57:50.142608",
+    "@@last_modified": "2026-10-06 12:20:56.154523",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Eto no hisehoan'ny voambolana vaovao!",
     "readingAssistanceTutorialCollectToken": "Safidio ny teny hianarana bebe kokoa momba azy ireo",
     "requireAnalyticsAccessTitle": "Mitaky fidirana amin'ny analytics mba hidirana",
-    "requireAnalyticsAccessDesc": "Ny mpandray anjara dia tsy maintsy manome fidirana amin'ny analytics fianarany mba hidirana amin'ity fianarana ity",
     "moreOptions": "Safidy bebe kokoa",
     "analyticsAccessNoticeTitle": "Ilaina ny fidirana amin'ny Analytics",
     "analyticsAccessNoticeDesc": "Amin'ny fidirana amin'ity fianarana ity, manaiky ianao hanome fidirana amin'ny analytics fianaranao ho an'ny mpitantana.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Afaka mahita sy miditra amin'ity taranja ity ny rehetra.",
     "courseAccessApprovalRequiredDesc": "Afaka mahita ity taranja ity ny rehetra ary mangataka hiditra. Ianao no mankatoa ny fangatahana tsirairay.",
     "courseAccessPrivateDesc": "Ireo olona manana fanasana na kaody taranja avy aminao ihany no afaka miditra. Tsy hiseho amin'ny fikarohana ity taranja ity.",
-    "courseAccessCodeNote": "Afaka miditra avy hatrany ny mpianatra manana ny kaody taranjao na fanasana, na inona na inona safidinao."
+    "courseAccessCodeNote": "Afaka miditra avy hatrany ny mpianatra manana ny kaody taranjao na fanasana, na inona na inona safidinao.",
+    "requireAnalyticsAccessSummary": "Mizara ny fivoaran'ny fianarany aminao ny mpianatra rehefa miditra."
 }

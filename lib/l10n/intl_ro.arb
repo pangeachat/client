@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:51.705685",
+    "@@last_modified": "2026-10-06 12:20:58.798164",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -9405,7 +9405,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Selectați cuvintele pentru a învăța mai multe despre ele",
     "requireAnalyticsAccessTitle": "Necesită acces la analize pentru a se alătura",
-    "requireAnalyticsAccessDesc": "Participanții trebuie să acorde acces la analizele lor de învățare pentru a se alătura acestui curs",
     "analyticsAccessNoticeTitle": "Acces la analize necesar",
     "analyticsAccessNoticeDesc": "Prin alăturarea acestui curs, sunteți de acord să acordați administratorilor acces la analizele dumneavoastră de învățare.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9413,10 +9412,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10655,5 +10650,6 @@
     "courseAccessPublicDesc": "Oricine poate găsi și se poate alătura acestui curs.",
     "courseAccessApprovalRequiredDesc": "Oricine poate găsi acest curs și poate cere să se alăture. Tu aprobi fiecare cerere.",
     "courseAccessPrivateDesc": "Doar persoanele cu invitația sau codul tău de curs se pot alătura. Cursul nu apare în căutări.",
-    "courseAccessCodeNote": "Studenții cu codul cursului tău sau o invitație se pot alătura imediat, indiferent ce alegi."
+    "courseAccessCodeNote": "Studenții cu codul cursului tău sau o invitație se pot alătura imediat, indiferent ce alegi.",
+    "requireAnalyticsAccessSummary": "Elevii îți partajează progresul lor de învățare atunci când se alătură."
 }

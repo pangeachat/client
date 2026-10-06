@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:48.721384",
+    "@@last_modified": "2026-10-06 12:20:54.273070",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -8749,7 +8749,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Seleziona le parole per saperne di più",
     "requireAnalyticsAccessTitle": "Richiedere l'accesso all'analisi per partecipare",
-    "requireAnalyticsAccessDesc": "I partecipanti devono concedere l'accesso alle loro analisi di apprendimento per partecipare a questo corso",
     "analyticsAccessNoticeTitle": "Accesso all'analisi richiesto",
     "analyticsAccessNoticeDesc": "Partecipando a questo corso, accetti di concedere agli amministratori l'accesso alle tue analisi di apprendimento.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8757,10 +8756,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9999,5 +9994,6 @@
     "courseAccessPublicDesc": "Chiunque può trovare e unirsi a questo corso.",
     "courseAccessApprovalRequiredDesc": "Chiunque può trovare questo corso e chiedere di partecipare. Tu approvi ogni richiesta.",
     "courseAccessPrivateDesc": "Solo le persone con il tuo invito o codice corso possono partecipare. Il corso non appare nella ricerca.",
-    "courseAccessCodeNote": "Gli studenti con il tuo codice corso o un invito possono partecipare immediatamente, qualunque sia la tua scelta."
+    "courseAccessCodeNote": "Gli studenti con il tuo codice corso o un invito possono partecipare immediatamente, qualunque sia la tua scelta.",
+    "requireAnalyticsAccessSummary": "Gli studenti condividono i loro progressi di apprendimento con te quando si uniscono."
 }

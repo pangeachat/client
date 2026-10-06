@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:55.267876",
+    "@@last_modified": "2026-10-06 12:21:03.218546",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -8782,7 +8782,6 @@
     },
     "readingAssistanceTutorialCollectToken": "選擇單詞以了解更多信息",
     "requireAnalyticsAccessTitle": "需要分析訪問權限才能加入",
-    "requireAnalyticsAccessDesc": "參與者必須授予訪問其學習分析的權限才能加入此課程",
     "analyticsAccessNoticeTitle": "需要分析訪問權限",
     "analyticsAccessNoticeDesc": "通過加入此課程，您同意授予管理員訪問您的學習分析的權限。",
     "@readingAssistanceTutorialCollectToken": {
@@ -8790,10 +8789,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10032,5 +10027,6 @@
     "courseAccessPublicDesc": "任何人都可以找到並加入此課程。",
     "courseAccessApprovalRequiredDesc": "任何人都可以找到此課程並請求加入。您需要核准每個請求。",
     "courseAccessPrivateDesc": "只有收到您的邀請或課程代碼的人才能加入。此課程不會出現在搜尋結果中。",
-    "courseAccessCodeNote": "無論您選擇哪種方式，擁有您的課程代碼或邀請的學生都可以立即加入。"
+    "courseAccessCodeNote": "無論您選擇哪種方式，擁有您的課程代碼或邀請的學生都可以立即加入。",
+    "requireAnalyticsAccessSummary": "學生加入時會與您分享他們的學習進度。"
 }

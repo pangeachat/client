@@ -1323,7 +1323,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-05 13:57:45.998023",
+    "@@last_modified": "2026-10-06 12:20:51.390630",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -9593,7 +9593,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Vælg ord for at lære mere om dem",
     "requireAnalyticsAccessTitle": "Krav om adgang til analyser for at deltage",
-    "requireAnalyticsAccessDesc": "Deltagere skal give adgang til deres læringsanalyser for at deltage i dette kursus",
     "analyticsAccessNoticeTitle": "Adgang til analyser kræves",
     "analyticsAccessNoticeDesc": "Ved at deltage i dette kursus accepterer du at give administratorer adgang til dine læringsanalyser.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9601,10 +9600,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10843,5 +10838,6 @@
     "courseAccessPublicDesc": "Alle kan finde og deltage i dette kursus.",
     "courseAccessApprovalRequiredDesc": "Alle kan finde dette kursus og anmode om at deltage. Du godkender hver anmodning.",
     "courseAccessPrivateDesc": "Kun personer med din invitation eller kursuskode kan deltage. Kurset vises ikke i søgninger.",
-    "courseAccessCodeNote": "Studerende med din kursuskode eller en invitation kan deltage med det samme, uanset hvad du vælger."
+    "courseAccessCodeNote": "Studerende med din kursuskode eller en invitation kan deltage med det samme, uanset hvad du vælger.",
+    "requireAnalyticsAccessSummary": "Elever deler deres læringsfremskridt med dig, når de tilmelder sig."
 }

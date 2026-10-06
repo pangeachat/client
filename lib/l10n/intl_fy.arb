@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-05 13:57:47.054399",
+    "@@last_modified": "2026-10-06 12:20:52.568165",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Hjir sille nije wurdskatwurden ferskine!",
     "readingAssistanceTutorialCollectToken": "Selektearje wurden om der mear oer te learen",
     "requireAnalyticsAccessTitle": "Tagong ta analytika fereaske om mei te dwaan",
-    "requireAnalyticsAccessDesc": "Dielnimmers moatte tagong ta harren learanalytika jaan om oan dizze kursus mei te dwaan",
     "moreOptions": "Mear opsjes",
     "analyticsAccessNoticeTitle": "Tagong ta analytika fereaske",
     "analyticsAccessNoticeDesc": "Troch mei te dwaan oan dizze kursus, stimst yn mei it jaan fan tagong oan admins ta dyn learanalytika.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Elkenien kin dizze kursus fine en meidwaan.",
     "courseAccessApprovalRequiredDesc": "Elkenien kin dizze kursus fine en freegje om mei te dwaan. Jo goedkarre elk fersyk.",
     "courseAccessPrivateDesc": "Allinnich minsken mei jo útnoeging of kursuskoade kinne meidwaan. De kursus ferskynt net yn sykresultaten.",
-    "courseAccessCodeNote": "Studinten mei jo kursuskoade of in útnoeging kinne fuortendaliks meidwaan, wat jo ek kieze."
+    "courseAccessCodeNote": "Studinten mei jo kursuskoade of in útnoeging kinne fuortendaliks meidwaan, wat jo ek kieze.",
+    "requireAnalyticsAccessSummary": "Studinten diele harren learfoarútgong mei jo as se meidogge."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-05 13:57:47.490668",
+    "@@last_modified": "2026-10-06 12:20:54.626893",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Ma ʻaneʻi e ʻike ʻia ai nā huaʻōlelo hou!",
     "readingAssistanceTutorialCollectToken": "E koho i nā huaʻōlelo no ke aʻo hou ʻana e pili ana iā lākou",
     "requireAnalyticsAccessTitle": "Pono ke komo i ka ʻikepili no ke komo ʻana",
-    "requireAnalyticsAccessDesc": "Pono nā mea komo e hāʻawi i ke komo i kā lākou ʻikepili aʻo no ke komo ʻana i kēia papa",
     "moreOptions": "Nā koho hou aʻe",
     "analyticsAccessNoticeTitle": "Pono ke Komo i ka ʻIkepili",
     "analyticsAccessNoticeDesc": "Ma ke komo ʻana i kēia papa, ʻae ʻoe e hāʻawi i nā luna i ke komo i kāu ʻikepili aʻo.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Hiki i kekahi ke loaʻa a komo i kēia papa.",
     "courseAccessApprovalRequiredDesc": "Hiki i kekahi ke loaʻa i kēia papa a noi e komo. Nāu e ʻae i kēlā me kēia noi.",
     "courseAccessPrivateDesc": "ʻO ka poʻe wale nō me kāu kono a i ʻole code papa e hiki ke komo. ʻAʻole e hōʻike ʻia ka papa ma ka huli ʻana.",
-    "courseAccessCodeNote": "Hiki i nā haumāna me kāu code papa a i ʻole he kono ke komo koke, ʻoiai ke koho āu."
+    "courseAccessCodeNote": "Hiki i nā haumāna me kāu code papa a i ʻole he kono ke komo koke, ʻoiai ke koho āu.",
+    "requireAnalyticsAccessSummary": "Kaʻana like nā haumāna i ko lākou holomua aʻo me ʻoe ke komo lākou."
 }

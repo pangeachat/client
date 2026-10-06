@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-05 13:57:50.859586",
+    "@@last_modified": "2026-10-06 12:20:56.454778",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -1837,7 +1837,6 @@
     "vocabLevelsDescSeed": "Dan huwa fejn se jidhru kliem ġdid tal-vokabularju!",
     "readingAssistanceTutorialCollectToken": "Agħżel kliem biex titgħallem aktar dwarhom",
     "requireAnalyticsAccessTitle": "Jeħtieġ aċċess għall-analitika biex tingħaqad",
-    "requireAnalyticsAccessDesc": "Il-parteċipanti jridu jagħtu aċċess għall-analitika tat-tagħlim tagħhom biex jingħaqdu ma' dan il-kors",
     "moreOptions": "Aktar għażliet",
     "analyticsAccessNoticeTitle": "Aċċess għall-Analitika Meħtieġ",
     "analyticsAccessNoticeDesc": "Billi tingħaqad ma' dan il-kors, taqbel li tagħti lill-amministraturi aċċess għall-analitika tat-tagħlim tiegħek.",
@@ -2387,5 +2386,6 @@
     "courseAccessPublicDesc": "Kulħadd jista' jsib u jingħaqad ma' dan il-kors.",
     "courseAccessApprovalRequiredDesc": "Kulħadd jista' jsib dan il-kors u jitlob biex jingħaqad. Inti tapprova kull talba.",
     "courseAccessPrivateDesc": "Nies biss bl-istedina tiegħek jew bil-kodiċi tal-kors jistgħu jingħaqdu. Il-kors ma jidhirx fit-tfittxija.",
-    "courseAccessCodeNote": "Studenti bil-kodiċi tal-kors tiegħek jew stedina jistgħu jingħaqdu minnufih, tkun xi tkun tagħżel."
+    "courseAccessCodeNote": "Studenti bil-kodiċi tal-kors tiegħek jew stedina jistgħu jingħaqdu minnufih, tkun xi tkun tagħżel.",
+    "requireAnalyticsAccessSummary": "L-istudenti jaqsmu l-progress tagħhom fit-tagħlim miegħek meta jingħaqdu."
 }

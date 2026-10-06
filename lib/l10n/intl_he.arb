@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:47.643939",
+    "@@last_modified": "2026-10-06 12:20:52.828374",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -9587,7 +9587,6 @@
     },
     "readingAssistanceTutorialCollectToken": "בחר מילים כדי ללמוד עליהן יותר",
     "requireAnalyticsAccessTitle": "דרוש גישה לניתוחי נתונים כדי להצטרף",
-    "requireAnalyticsAccessDesc": "משתתפים חייבים להעניק גישה לניתוחי הלמידה שלהם כדי להצטרף לקורס זה",
     "analyticsAccessNoticeTitle": "דרושה גישה לניתוחי נתונים",
     "analyticsAccessNoticeDesc": "בהצטרפות לקורס זה, אתה מסכים להעניק למנהלים גישה לניתוחי הלמידה שלך.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9595,10 +9594,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10837,5 +10832,6 @@
     "courseAccessPublicDesc": "כל אחד יכול למצוא ולהצטרף לקורס זה.",
     "courseAccessApprovalRequiredDesc": "כל אחד יכול למצוא את הקורס הזה ולבקש להצטרף. אתה מאשר כל בקשה.",
     "courseAccessPrivateDesc": "רק אנשים עם ההזמנה או קוד הקורס שלך יכולים להצטרף. הקורס לא יופיע בחיפוש.",
-    "courseAccessCodeNote": "תלמידים עם קוד הקורס שלך או הזמנה יכולים להצטרף מיד, לא משנה מה תבחר."
+    "courseAccessCodeNote": "תלמידים עם קוד הקורס שלך או הזמנה יכולים להצטרף מיד, לא משנה מה תבחר.",
+    "requireAnalyticsAccessSummary": "סטודנטים משתפים איתך את התקדמות הלמידה שלהם כשהם מצטרפים."
 }
