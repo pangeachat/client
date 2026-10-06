@@ -274,7 +274,6 @@ void main() {
       expect(
         reportCourseIds(
           subjectId: subjectId,
-          reporterId: reporterId,
           botId: botId,
           courses: [
             course('!a', {subjectId: 0, reporterId: 0}),
@@ -290,7 +289,6 @@ void main() {
       expect(
         reportCourseIds(
           subjectId: subjectId,
-          reporterId: reporterId,
           botId: botId,
           courses: [
             course('!mine', {subjectId: 0, reporterId: 100}),
@@ -301,20 +299,39 @@ void main() {
       );
     });
 
-    test('when the reported user is a student nowhere, the reporter\'s '
-        'student courses', () {
+    test(
+      'a course admin, or a member who has left, is not a student there',
+      () {
+        expect(
+          reportCourseIds(
+            subjectId: subjectId,
+            botId: botId,
+            courses: [
+              course('!admin', {subjectId: 100, reporterId: 0}),
+              course('!left', {reporterId: 0}),
+            ],
+          ),
+          isEmpty,
+        );
+      },
+    );
+
+    test('a reported user who is a student in none of the visible courses '
+        'is never placed in the reporter\'s courses', () {
+      // The module may file this report under a course of the reported
+      // user's that the reporter cannot see; pointing the reporter's own
+      // admins at their Safety page would send them to a report that is not
+      // there.
       expect(
         reportCourseIds(
           subjectId: subjectId,
-          reporterId: reporterId,
           botId: botId,
           courses: [
-            course('!a', {subjectId: 100, reporterId: 0}),
-            course('!b', {reporterId: 0}),
-            course('!c', {reporterId: 100}),
+            course('!a', {reporterId: 0}),
+            course('!b', {subjectId: 100, reporterId: 0}),
           ],
         ),
-        ['!a', '!b'],
+        isEmpty,
       );
     });
 
@@ -322,25 +339,9 @@ void main() {
       expect(
         reportCourseIds(
           subjectId: botId,
-          reporterId: reporterId,
           botId: botId,
           courses: [
-            course('!a', {botId: 50}),
-            course('!b', {reporterId: 0}),
-          ],
-        ),
-        ['!b'],
-      );
-    });
-
-    test('neither side a student anywhere: no course', () {
-      expect(
-        reportCourseIds(
-          subjectId: subjectId,
-          reporterId: reporterId,
-          botId: botId,
-          courses: [
-            course('!a', {subjectId: 100, reporterId: 100}),
+            course('!a', {botId: 50, reporterId: 0}),
           ],
         ),
         isEmpty,

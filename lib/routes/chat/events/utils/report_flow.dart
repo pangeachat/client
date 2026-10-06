@@ -29,31 +29,30 @@ class CourseRoster {
   }
 }
 
-/// The courses a report belongs to — the client-side mirror of the module's
-/// rule (trust-and-safety.instructions.md, "Course ownership"): the reported
-/// user's student courses, or, only when the reported user is a student in
-/// none of them, the reporter's student courses. A teacher reporting their own
-/// student therefore notifies that student's course and none of the
-/// teacher's other courses.
+/// The courses whose admins may be pointed to a report: the courses this
+/// client can see in which the reported user is a student.
 ///
-/// Limited to the courses this client is joined to: a course of the reported
-/// user's that the reporter is not in is invisible here, though the module
-/// still files the report there.
+/// The module files a report under the reported user's student courses, or,
+/// only when the reported user is a student nowhere, under the reporter's
+/// (trust-and-safety.instructions.md, "Course ownership"). This client sees
+/// only the courses the reporter has joined, so it can confirm the first case
+/// but never the second: a reported user who is a student in none of the
+/// reporter's courses may still be one in a course the reporter is not in,
+/// where the module files the report instead. Falling back to the reporter's
+/// courses here would then point admins at a Safety page the report is not
+/// on. So the client never falls back; a report it cannot place still
+/// reaches the Safety page, only without a DM.
+///
+/// A teacher reporting their own student therefore notifies that student's
+/// course and none of the teacher's other courses.
 List<String> reportCourseIds({
   required String subjectId,
-  required String reporterId,
   required String botId,
   required List<CourseRoster> courses,
-}) {
-  List<String> studentCoursesOf(String userId) => courses
-      .where((c) => c.hasStudent(userId, botId: botId))
-      .map((c) => c.courseId)
-      .toList();
-
-  final subjectCourses = studentCoursesOf(subjectId);
-  if (subjectCourses.isNotEmpty) return subjectCourses;
-  return studentCoursesOf(reporterId);
-}
+}) => courses
+    .where((c) => c.hasStudent(subjectId, botId: botId))
+    .map((c) => c.courseId)
+    .toList();
 
 /// The DM a course admin receives about a report: a pointer to the Safety
 /// page and nothing else. It never carries the message, the reason or the

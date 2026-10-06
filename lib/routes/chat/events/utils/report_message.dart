@@ -15,6 +15,7 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
+import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -56,7 +57,14 @@ void reportEvent(
     },
   );
 
-  if (reason == null || !context.mounted) return;
+  if (reason == null) return;
+
+  // From here the report must outlive the chat screen: leaving the chat while
+  // it is being sent would otherwise take the retry prompt with it. The root
+  // navigator stays mounted for as long as the app runs.
+  final flowContext =
+      FluffyChatApp.router.routerDelegate.navigatorKey.currentContext ??
+      context;
 
   final timeline = controller.timeline;
   final report = ReportSubmission(
@@ -71,22 +79,22 @@ void reportEvent(
     reason: reason,
   );
 
-  final client = Matrix.of(context).client;
-  final l10n = L10n.of(context);
+  final client = Matrix.of(flowContext).client;
+  final l10n = L10n.of(flowContext);
   await ReportFlow<SpaceTeacher>(
-    capture: (report) => _captureReport(context, client, report),
-    offerRetry: () => _offerReportRetry(context),
+    capture: (report) => _captureReport(flowContext, client, report),
+    offerRetry: () => _offerReportRetry(flowContext, report),
     confirmCaptured: () {
-      if (!context.mounted) return;
+      if (!flowContext.mounted) return;
       ScaffoldMessenger.of(
-        context,
+        flowContext,
       ).showSnackBarAnnounced(SnackBar(content: Text(l10n.reportSent)));
     },
-    lookupCourseAdmins: () => _lookupCourseAdmins(context, client, event),
+    lookupCourseAdmins: () => _lookupCourseAdmins(flowContext, client, event),
     selectRecipients: (admins) async {
-      if (!context.mounted) return null;
+      if (!flowContext.mounted) return null;
       final selected = await showDialog<List<SpaceTeacher>>(
-        context: context,
+        context: flowContext,
         useRootNavigator: false,
         builder: (BuildContext context) => TeacherSelectDialog(
           teachers: admins.map((admin) => admin.admin).toList(),
@@ -97,9 +105,9 @@ void reportEvent(
           .toList();
     },
     sendPointer: (recipient, content) async {
-      if (!context.mounted) return;
+      if (!flowContext.mounted) return;
       await showFutureLoadingDialog(
-        context: context,
+        context: flowContext,
         future: () async {
           final dm = await getReportsDM(
             recipient.admin.teacher,
@@ -150,8 +158,23 @@ Future<bool> _captureReport(
 }
 
 /// Tells the reporter the report was not sent and asks whether to retry.
-Future<bool> _offerReportRetry(BuildContext context) async {
-  if (!context.mounted) return false;
+Future<bool> _offerReportRetry(
+  BuildContext context,
+  ReportSubmission report,
+) async {
+  if (!context.mounted) {
+    // Only reachable while the app itself is going away. The failed attempt
+    // is already in Sentry; this records that it was also the last one.
+    await ErrorHandler.logError(
+      e: 'A report was not recorded and there was no screen to offer a retry on',
+      data: {
+        'report_id': report.reportId,
+        'room_id': report.roomId,
+        'event_id': report.eventId,
+      },
+    );
+    return false;
+  }
   final l10n = L10n.of(context);
   final answer = await showOkCancelAlertDialog(
     context: context,
@@ -236,7 +259,6 @@ Future<List<SpaceTeacher>> getReportTeachers(
 
   final courseIds = reportCourseIds(
     subjectId: subjectId,
-    reporterId: reporterId,
     botId: BotName.byEnvironment,
     courses: rosters.values.toList(),
   );
