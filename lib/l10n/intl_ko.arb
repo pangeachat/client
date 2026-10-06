@@ -3075,9 +3075,6 @@
     "why": "왜?",
     "definition": "정의",
     "reportToTeacher": "이 메시지를 누구에게 신고하시겠습니까?",
-    "reportMessageTitle": "{reportingUserId}님이 채팅 {roomName}에서 {reportedUserId}의 메시지를 신고했습니다",
-    "reportMessageBody": "메시지: {reportedMessage}\n이유: {reason}",
-    "noTeachersFound": "신고할 선생님을 찾을 수 없습니다",
     "trialExpiration": "무료 체험이 {expiration}에 만료됩니다",
     "freeTrialDesc": "신규 사용자는 일주일간 무료 체험을 받습니다",
     "activateTrial": "무료 7일 체험 시작",
@@ -4964,35 +4961,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

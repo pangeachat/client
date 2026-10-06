@@ -3131,9 +3131,6 @@
     "why": "ஏன்?",
     "definition": "வரையறை",
     "reportToTeacher": "இந்த செய்தியை யாருக்கு அறிக்கை செய்ய விரும்புகிறீர்கள்?",
-    "reportMessageTitle": "{reportingUserId} என்பவர் {reportedUserId} இன் செய்தியை {roomName} இல் அறிக்கை செய்துள்ளார்",
-    "reportMessageBody": "செய்தி: {reportedMessage}\nகாரணம்: {reason}",
-    "noTeachersFound": "அறிக்கை செய்ய ஆசிரியர்கள் இல்லை",
     "trialExpiration": "உங்கள் இலவச சோதனை {expiration} அன்று முடிவடைகிறது",
     "freeTrialDesc": "புதிய பயனர்கள் பங்கேயா சந்தையில் ஒரு வார இலவச சோதனை பெறுகிறார்கள்",
     "activateTrial": "இலவச 7-நாள் சோதனை",
@@ -4873,35 +4870,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

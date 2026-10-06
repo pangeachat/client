@@ -1466,9 +1466,6 @@
     "why": "Zakaj?",
     "definition": "Definicija",
     "reportToTeacher": "Kom želite prijaviti to sporočilo?",
-    "reportMessageTitle": "{reportingUserId} je prijavil sporočilo od {reportedUserId} v klepetu {roomName}",
-    "reportMessageBody": "Sporočilo: {reportedMessage}\nRazlog: {reason}",
-    "noTeachersFound": "Ni najdenih učiteljev za prijavo",
     "trialExpiration": "Vaša brezplačna preizkusna doba poteče {expiration}",
     "freeTrialDesc": "Novi uporabniki prejmejo enotedensko brezplačno preizkusno različico Pangea Chata",
     "activateTrial": "Brezplačna 7-dnevna preizkusna različica",
@@ -5716,35 +5713,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

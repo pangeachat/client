@@ -5654,35 +5654,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@trialExpiration": {
         "type": "String",
         "placeholders": {
@@ -8884,9 +8855,6 @@
     },
     "exampleSentence": "Пример предложения",
     "reportToTeacher": "Кому вы хотите пожаловаться на это сообщение?",
-    "reportMessageTitle": "{reportingUserId} пожаловался на сообщение от {reportedUserId} в чате {roomName}",
-    "reportMessageBody": "Сообщение: {reportedMessage}\nПричина: {reason}",
-    "noTeachersFound": "Не найдено учителей для отправки жалобы",
     "trialExpiration": "Ваша бесплатная пробная версия заканчивается {expiration}",
     "freeTrialDesc": "Новые пользователи получают недельный бесплатный пробный период Pangea Chat",
     "constructUseCollected": "Собрано в чате",

@@ -2639,9 +2639,6 @@
     "total": "کل: ",
     "noDataFound": "کوئی ڈیٹا نہیں ملا",
     "reportToTeacher": "ཁྱེད་ཀྱང་འདི་ལ་འགྱོ་སྤྱོད་འདི་ལ་གནང་བ་སྤྱོད་ཀྱི་རེད།",
-    "reportMessageTitle": "{reportingUserId} འདི་ལ་འབྲེལ་བའི་ཚེས་གྲངས {reportedUserId} འདི་ལ་འབྲེལ་བའི་ཚེས་གྲངས {roomName} ལ་འབྲེལ་བའི་ཚེས་གྲངས",
-    "reportMessageBody": "ཚེས་གྲངས: {reportedMessage}\nལེགས་སྤྱོད: {reason}",
-    "noTeachersFound": "འདི་ལ་འགྱོ་སྤྱོད་འདི་ལ་འབྲེལ་བའི་སློབ་དཔོན་མེད།",
     "trialExpiration": "ཁྱེད་ཀྱང་གནང་བའི་སྤྱི་ཚེས {expiration} ལ་སྟེང་འགྱོའི་ཡོད།",
     "freeTrialDesc": "གསར་བའི་རོགས་མིང་ཚོས་སྤྱི་ཚེས་དུས་སུ་གནང་བའི་སྤྱི་ཚེས་གཅིག་ལ་སྤྱོད་ཚུལ།",
     "activateTrial": "རོགས་མིང་ཚོས་སྤྱི་ཚེས 7 ཉིན་ལ་སྤྱོད་ཚུལ།",
@@ -4942,35 +4939,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

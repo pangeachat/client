@@ -3226,9 +3226,6 @@
     "why": "Nima uchun?",
     "definition": "Taqrif",
     "reportToTeacher": "Bu xabarni kimga xabar qilmoqchisiz?",
-    "reportMessageTitle": "{reportingUserId} chatda {reportedUserId} dan xabarni xabar qildi {roomName}",
-    "reportMessageBody": "Xabar: {reportedMessage}\nSabab: {reason}",
-    "noTeachersFound": "Xabar qilinadigan o'qituvchi topilmadi",
     "trialExpiration": "Bepul sinov muddati {expiration} da tugaydi",
     "freeTrialDesc": "Yangi foydalanuvchilar uchun Pangea Chat ning bir haftalik bepul sinovi taqdim etiladi",
     "activateTrial": "Bepul 7 kunlik sinov",
@@ -5324,35 +5321,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

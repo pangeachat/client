@@ -2398,9 +2398,6 @@
     "why": "Зашто?",
     "definition": "Дефиниција",
     "reportToTeacher": "Коме желите да пријавите ову поруку?",
-    "reportMessageTitle": "{reportingUserId} је пријавио поруку од {reportedUserId} у чату {roomName}",
-    "reportMessageBody": "Порука: {reportedMessage}\nРазлог: {reason}",
-    "noTeachersFound": "Нема пронађених наставника за пријаву",
     "trialExpiration": "Ваша бесплатна проба истиче на {expiration}",
     "freeTrialDesc": "Нови корисници добијају једну недељу бесплатне пробе Пангее Чат",
     "activateTrial": "Активирај бесплатну пробу од 7 дана",
@@ -5720,35 +5717,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

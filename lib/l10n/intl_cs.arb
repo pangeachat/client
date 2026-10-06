@@ -2827,9 +2827,6 @@
     "why": "Proč?",
     "definition": "Definice",
     "reportToTeacher": "Komu chcete nahlásit tuto zprávu?",
-    "reportMessageTitle": "{reportingUserId} nahlásil zprávu od {reportedUserId} v chatu {roomName}",
-    "reportMessageBody": "Zpráva: {reportedMessage}\nDůvod: {reason}",
-    "noTeachersFound": "Nebyli nalezeni žádní učitelé k nahlášení",
     "trialExpiration": "Váš bezplatný zkušební čas vyprší dne {expiration}",
     "freeTrialDesc": "Noví uživatelé získávají týdenní bezplatnou zkušební verzi Pangea Chat",
     "activateTrial": "Aktivovat bezplatnou 7denní zkušební verzi",
@@ -5279,35 +5276,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

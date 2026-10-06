@@ -3227,9 +3227,6 @@
     "why": "Cén fáth?",
     "definition": "Sainmhíniú",
     "reportToTeacher": "Cé acu mhaith leat tuairisciú a dhéanamh ar an teachtaireacht seo?",
-    "reportMessageTitle": "Tá {reportingUserId} tuairisciú ar theachtaireacht ó {reportedUserId} sa chomhrá {roomName}",
-    "reportMessageBody": "Teachtaireacht: {reportedMessage}\nCúis: {reason}",
-    "noTeachersFound": "Níl múinteoirí le fáil le tuairisciú orthu",
     "trialExpiration": "Críochnaíonn do thriail saor in aisce ar {expiration}",
     "freeTrialDesc": "Faigheann úsáideoirí nua triail saor in aisce ar feadh seachtain de Pangea Chat",
     "activateTrial": "Triail Saor in Aisce 7 Lá",
@@ -4958,35 +4955,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

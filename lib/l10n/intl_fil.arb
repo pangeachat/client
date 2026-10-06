@@ -1733,9 +1733,6 @@
     "why": "Bakit?",
     "definition": "Depinisyon",
     "reportToTeacher": "Kanino mo nais i-report ang mensaheng ito?",
-    "reportMessageTitle": "{reportingUserId} ay nag-ulat ng isang mensahe mula kay {reportedUserId} sa chat {roomName}",
-    "reportMessageBody": "Mensahe: {reportedMessage}\nDahilan: {reason}",
-    "noTeachersFound": "Walang natagpuang guro na maaaring i-report",
     "trialExpiration": "Mag-e-expire ang iyong libreng pagsubok sa {expiration}",
     "freeTrialDesc": "Nakakatanggap ang mga bagong user ng isang linggong libreng pagsubok sa Pangea Chat",
     "activateTrial": "Libreng 7-Araw na Pagsubok",
@@ -5642,35 +5639,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

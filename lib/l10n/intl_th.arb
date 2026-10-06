@@ -2757,9 +2757,6 @@
     "why": "ทำไม?",
     "definition": "คำจำกัดความ",
     "reportToTeacher": "คุณต้องการรายงานข้อความนี้ให้ใคร?",
-    "reportMessageTitle": "{reportingUserId} ได้รายงานข้อความจาก {reportedUserId} ในแชท {roomName}",
-    "reportMessageBody": "ข้อความ: {reportedMessage}\nเหตุผล: {reason}",
-    "noTeachersFound": "ไม่พบครูที่จะรายงาน",
     "trialExpiration": "การทดลองใช้งานฟรีของคุณจะหมดอายุใน {expiration}",
     "freeTrialDesc": "ผู้ใช้ใหม่จะได้รับการทดลองใช้งานฟรีหนึ่งสัปดาห์ของ Pangea Chat",
     "activateTrial": "ทดลองใช้งานฟรี 7 วัน",
@@ -5403,35 +5400,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

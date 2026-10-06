@@ -3221,9 +3221,6 @@
     "why": "Waarom?",
     "definition": "Definitie",
     "reportToTeacher": "Aan wie wilt u dit bericht melden?",
-    "reportMessageTitle": "{reportingUserId} heeft een bericht gerapporteerd van {reportedUserId} in de chat {roomName}",
-    "reportMessageBody": "Bericht: {reportedMessage}\nReden: {reason}",
-    "noTeachersFound": "Geen leraren gevonden om te rapporteren",
     "trialExpiration": "Uw gratis proefperiode verloopt op {expiration}",
     "freeTrialDesc": "Nieuwe gebruikers krijgen een gratis proefperiode van één week voor Pangea Chat",
     "activateTrial": "Gratis proefperiode van 7 dagen",
@@ -4951,35 +4948,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

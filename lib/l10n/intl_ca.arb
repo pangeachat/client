@@ -3105,9 +3105,6 @@
     "why": "Per què?",
     "definition": "Definició",
     "reportToTeacher": "A qui vols informar d'aquest missatge?",
-    "reportMessageTitle": "{reportingUserId} ha reportat un missatge de {reportedUserId} a la conversa {roomName}",
-    "reportMessageBody": "Missatge: {reportedMessage}\nMotiu: {reason}",
-    "noTeachersFound": "No s'han trobat mestres per informar-hi",
     "trialExpiration": "La teva prova gratuïta expira el {expiration}",
     "freeTrialDesc": "Els nous usuaris reben una prova gratuïta d'una setmana de Pangea Chat",
     "activateTrial": "Prova gratuïta de 7 dies",
@@ -4898,35 +4895,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

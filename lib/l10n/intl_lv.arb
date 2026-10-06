@@ -3212,9 +3212,6 @@
     "why": "Kāpēc?",
     "definition": "Definīcija",
     "reportToTeacher": "Kam vēlaties ziņot šo ziņojumu?",
-    "reportMessageTitle": "{reportingUserId} ir ziņojis par ziņojumu no {reportedUserId} čatā {roomName}",
-    "reportMessageBody": "Ziņojums: {reportedMessage}\nIemesls: {reason}",
-    "noTeachersFound": "Nav atrasts skolotājs ziņošanai",
     "trialExpiration": "Jūsu bezmaksas izmēģinājuma termiņš beidzas {expiration}",
     "freeTrialDesc": "Jauniem lietotājiem ir viena nedēļa bezmaksas Pangea Chat izmēģinājuma",
     "activateTrial": "Bezmaksas 7 dienu izmēģinājums",
@@ -4951,35 +4948,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

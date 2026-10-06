@@ -3064,9 +3064,6 @@
     "why": "Γιατί;",
     "definition": "Ορισμός",
     "reportToTeacher": "Σε ποιον θέλετε να αναφέρετε αυτό το μήνυμα;",
-    "reportMessageTitle": "{reportingUserId} ανέφερε ένα μήνυμα από τον {reportedUserId} στη συνομιλία {roomName}",
-    "reportMessageBody": "Μήνυμα: {reportedMessage}\nΑιτία: {reason}",
-    "noTeachersFound": "Δεν βρέθηκαν δάσκαλοι για αναφορά",
     "trialExpiration": "Η δωρεάν δοκιμή σας λήγει στις {expiration}",
     "freeTrialDesc": "Οι νέοι χρήστες λαμβάνουν μια εβδομάδα δωρεάν δοκιμής του Pangea Chat",
     "activateTrial": "Δωρεάν 7-ήμερη Δοκιμή",
@@ -5646,35 +5643,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

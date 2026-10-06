@@ -3140,9 +3140,6 @@
     "why": "Mengapa?",
     "definition": "Definisi",
     "reportToTeacher": "Siapa yang ingin Anda laporkan pesan ini?",
-    "reportMessageTitle": "{reportingUserId} telah melaporkan pesan dari {reportedUserId} di obrolan {roomName}",
-    "reportMessageBody": "Pesan: {reportedMessage}\nAlasan: {reason}",
-    "noTeachersFound": "Tidak ada guru yang ditemukan untuk dilaporkan",
     "trialExpiration": "Masa percobaan gratis Anda berakhir pada {expiration}",
     "freeTrialDesc": "Pengguna baru menerima masa percobaan gratis satu minggu untuk Pangea Chat",
     "activateTrial": "Percobaan Gratis 7 Hari",
@@ -4874,35 +4871,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

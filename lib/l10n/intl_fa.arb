@@ -3130,9 +3130,6 @@
     "why": "چرا؟",
     "definition": "تعریف",
     "reportToTeacher": "می‌خواهید این پیام را به چه کسی گزارش دهید؟",
-    "reportMessageTitle": "{reportingUserId} یک پیام از {reportedUserId} در چت {roomName} گزارش کرده است",
-    "reportMessageBody": "پیام: {reportedMessage}\nدلیل: {reason}",
-    "noTeachersFound": "هیچ معلمی برای گزارش یافت نشد",
     "trialExpiration": "آزمایش رایگان شما در تاریخ {expiration} به پایان می‌رسد",
     "freeTrialDesc": "کاربران جدید یک هفته آزمایش رایگان پنگئا چت دریافت می‌کنند",
     "activateTrial": "آزمایش رایگان 7 روزه",
@@ -4864,35 +4861,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

@@ -2687,9 +2687,6 @@
     "why": "De ce?",
     "definition": "Definiție",
     "reportToTeacher": "Cui vrei să raportezi acest mesaj?",
-    "reportMessageTitle": "{reportingUserId} a raportat un mesaj de la {reportedUserId} în chat-ul {roomName}",
-    "reportMessageBody": "Mesaj: {reportedMessage}\nMotiv: {reason}",
-    "noTeachersFound": "Nu au fost găsiți profesori pentru raportare",
     "trialExpiration": "Perioada de probă gratuită expiră la {expiration}",
     "freeTrialDesc": "Utilizatorii noi primesc o perioadă de probă gratuită de o săptămână pentru Pangea Chat",
     "activateTrial": "Perioadă de probă gratuită de 7 zile",
@@ -5503,35 +5500,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

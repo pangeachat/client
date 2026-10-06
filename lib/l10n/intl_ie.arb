@@ -2757,9 +2757,6 @@
     "why": "Proque?",
     "definition": "Definition",
     "reportToTeacher": "A qui vole tu reportar iste message?",
-    "reportMessageTitle": "{reportingUserId} ha reportate un message de {reportedUserId} in le chat {roomName}",
-    "reportMessageBody": "Message: {reportedMessage}\nRation: {reason}",
-    "noTeachersFound": "Nula maestri trovate por reportar",
     "trialExpiration": "Vostre perìo de prova gratuite expira en {expiration}",
     "freeTrialDesc": "Novos usatores recive un septimana de prova gratuita de Pangea Chat",
     "activateTrial": "Prova Gratuita de 7 Dies",
@@ -5403,35 +5400,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

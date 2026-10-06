@@ -2856,9 +2856,6 @@
     "why": "Varför?",
     "definition": "Definition",
     "reportToTeacher": "Vem vill du rapportera detta meddelande till?",
-    "reportMessageTitle": "{reportingUserId} har rapporterat ett meddelande från {reportedUserId} i chatten {roomName}",
-    "reportMessageBody": "Meddelande: {reportedMessage}\nOrsak: {reason}",
-    "noTeachersFound": "Inga lärare hittades att rapportera till",
     "trialExpiration": "Din gratis provperiod löper ut den {expiration}",
     "freeTrialDesc": "Nya användare får en veckas gratis provperiod av Pangea Chat",
     "activateTrial": "Gratis 7-dagars provperiod",
@@ -5289,35 +5286,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

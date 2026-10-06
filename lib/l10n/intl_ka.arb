@@ -1601,9 +1601,6 @@
     "why": "რატომ?",
     "definition": "განმარტება",
     "reportToTeacher": "ვის გსურთ ამ შეტყობინების შეტყობინება?",
-    "reportMessageTitle": "{reportingUserId} შეტყობინება გაასაჯაროვა {reportedUserId}-ისგან ჩატში {roomName}",
-    "reportMessageBody": "შეტყობინება: {reportedMessage}\nმიზეზი: {reason}",
-    "noTeachersFound": "მასწავლებელი ვერ მოიძებნა შეტყობინებისთვის",
     "trialExpiration": "თქვენს უფასო ცდას ვადა ამოიწურება {expiration}",
     "freeTrialDesc": "ახალი მომხმარებლები იღებენ ერთკვირიან უფასო ცდას Pangea Chat-ის",
     "activateTrial": "უფასო 7-დღიანი საცდელი პერიოდი",
@@ -5671,35 +5668,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

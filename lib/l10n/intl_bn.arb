@@ -2762,9 +2762,6 @@
     "why": "কেন?",
     "definition": "সংজ্ঞা",
     "reportToTeacher": "আপনি এই বার্তা কার কাছে রিপোর্ট করতে চান?",
-    "reportMessageTitle": "{reportingUserId} একটি বার্তা রিপোর্ট করেছে {reportedUserId} থেকে {roomName} চ্যাটে",
-    "reportMessageBody": "বার্তা: {reportedMessage}\nকারণ: {reason}",
-    "noTeachersFound": "রিপোর্ট করার জন্য কোনও শিক্ষক পাওয়া যায়নি",
     "trialExpiration": "আপনার ফ্রি ট্রায়াল {expiration} তারিখে শেষ হবে",
     "freeTrialDesc": "নতুন ব্যবহারকারীরা পাঞ্জিয়া চ্যাটের এক সপ্তাহের ফ্রি ট্রায়াল পান",
     "activateTrial": "ফ্রি ৭-দিনের ট্রায়াল",
@@ -5399,35 +5396,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

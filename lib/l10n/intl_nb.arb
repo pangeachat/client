@@ -3122,9 +3122,6 @@
     "why": "Hvorfor?",
     "definition": "Definisjon",
     "reportToTeacher": "Hvem vil du rapportere denne meldingen til?",
-    "reportMessageTitle": "{reportingUserId} har rapportert en melding fra {reportedUserId} i chatten {roomName}",
-    "reportMessageBody": "Melding: {reportedMessage}\nÅrsak: {reason}",
-    "noTeachersFound": "Ingen lærere funnet å rapportere til",
     "trialExpiration": "Din gratis prøveperiode utløper den {expiration}",
     "freeTrialDesc": "Nye brukere får en ukes gratis prøveperiode av Pangea Chat",
     "activateTrial": "Gratis 7-dagers prøveperiode",
@@ -5007,35 +5004,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

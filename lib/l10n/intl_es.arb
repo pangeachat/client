@@ -3191,32 +3191,6 @@
     "why": "¿Por qué?",
     "definition": "Definición",
     "reportToTeacher": "¿A quién desea informar de este mensaje?",
-    "reportMessageTitle": "{reportingUserId} ha informado de un mensaje de {reportedUserId} en el chat {roomName}.",
-    "@reportMessageTitle": {
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "reportMessageBody": "Mensaje: {reportedMessage}\nMotivo: {reason}",
-    "@reportMessageBody": {
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "noTeachersFound": "No se han encontrado profesores a los que informar",
     "trialExpiration": "Su prueba gratuita caduca el {expiration}.",
     "@trialExpiration": {
         "placeholders": {

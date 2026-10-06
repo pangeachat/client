@@ -998,9 +998,6 @@
     "why": "Hvorfor?",
     "definition": "Definition",
     "reportToTeacher": "Hvem vil du rapportere denne besked til?",
-    "reportMessageTitle": "{reportingUserId} har rapporteret en besked fra {reportedUserId} i chatten {roomName}",
-    "reportMessageBody": "Besked: {reportedMessage}\nÅrsag: {reason}",
-    "noTeachersFound": "Ingen lærere fundet til rapportering",
     "trialExpiration": "Din gratis prøveperiode udløber den {expiration}",
     "freeTrialDesc": "Nye brugere får en gratis prøveperiode på en uge med Pangea Chat",
     "activateTrial": "Gratis 7-dages prøve",
@@ -5691,35 +5688,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

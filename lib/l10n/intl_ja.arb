@@ -2613,9 +2613,6 @@
     "why": "なぜ？",
     "definition": "定義",
     "reportToTeacher": "このメッセージを誰に報告しますか？",
-    "reportMessageTitle": "{reportingUserId}がチャット{roomName}で{reportedUserId}のメッセージを報告しました",
-    "reportMessageBody": "メッセージ: {reportedMessage}\n理由: {reason}",
-    "noTeachersFound": "報告する教師が見つかりません",
     "trialExpiration": "無料トライアルは {expiration} に終了します",
     "freeTrialDesc": "新規ユーザーはPangea Chatの1週間無料トライアルを受けられます",
     "activateTrial": "無料の7日間トライアルを開始",
@@ -5540,35 +5537,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

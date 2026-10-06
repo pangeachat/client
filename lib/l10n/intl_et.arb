@@ -3232,9 +3232,6 @@
     "why": "Miks?",
     "definition": "Määratlus",
     "reportToTeacher": "Kellele soovite seda sõnumit teatada?",
-    "reportMessageTitle": "{reportingUserId} on teatanud sõnumist {reportedUserId} vestluses {roomName}",
-    "reportMessageBody": "Sõnum: {reportedMessage}\nPõhjus: {reason}",
-    "noTeachersFound": "Õpetajaid ei leitud teatamiseks",
     "trialExpiration": "Teie tasuta prooviperiood lõpeb {expiration}",
     "freeTrialDesc": "Uued kasutajad saavad ühe nädala tasuta Pangea Chat-i prooviperioodi",
     "activateTrial": "Tasuta 7-päevane proov",
@@ -4864,35 +4861,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

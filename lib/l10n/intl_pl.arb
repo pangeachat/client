@@ -3133,9 +3133,6 @@
     "why": "Dlaczego?",
     "definition": "Definicja",
     "reportToTeacher": "Do kogo chcesz zgłosić tę wiadomość?",
-    "reportMessageTitle": "{reportingUserId} zgłosił wiadomość od {reportedUserId} w czacie {roomName}",
-    "reportMessageBody": "Wiadomość: {reportedMessage}\nPowód: {reason}",
-    "noTeachersFound": "Nie znaleziono nauczycieli do zgłoszenia",
     "trialExpiration": "Twój darmowy okres próbny wygasa {expiration}",
     "freeTrialDesc": "Nowi użytkownicy otrzymują tygodniowy darmowy okres próbny Pangea Chat",
     "activateTrial": "Darmowy 7-dniowy okres próbny",
@@ -4866,35 +4863,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

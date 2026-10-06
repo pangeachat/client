@@ -3040,9 +3040,6 @@
     "why": "Neden?",
     "definition": "Tanım",
     "reportToTeacher": "Bu mesajı kime bildirmek istiyorsunuz?",
-    "reportMessageTitle": "{reportingUserId} kullanıcısı, {roomName} sohbetinde {reportedUserId} kullanıcısının mesajını bildirdi",
-    "reportMessageBody": "Mesaj: {reportedMessage}\nNeden: {reason}",
-    "noTeachersFound": "Bildirilmek üzere öğretmen bulunamadı",
     "trialExpiration": "Ücretsiz deneme süreniz {expiration} tarihinde sona eriyor",
     "freeTrialDesc": "Yeni kullanıcılar Pangea Chat'te bir hafta ücretsiz deneme süresi kazanır",
     "activateTrial": "Ücretsiz 7 Günlük Deneme",
@@ -5072,35 +5069,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

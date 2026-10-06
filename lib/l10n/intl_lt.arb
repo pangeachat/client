@@ -2631,9 +2631,6 @@
     "why": "Kodėl?",
     "definition": "Apibrėžimas",
     "reportToTeacher": "Kam norite pranešti apie šį pranešimą?",
-    "reportMessageTitle": "{reportingUserId} pranešė apie žinutę iš {reportedUserId} pokalbyje {roomName}",
-    "reportMessageBody": "Žinutė: {reportedMessage}\nPriežastis: {reason}",
-    "noTeachersFound": "Nerasta mokytojų pranešti",
     "trialExpiration": "Jūsų nemokamas bandomasis laikotarpis baigsis {expiration}",
     "freeTrialDesc": "Nauji vartotojai gauna vienos savaitės nemokamą Pangea Chat bandomąjį laikotarpį",
     "activateTrial": "Aktyvuoti 7 dienų nemokamą bandomąjį laikotarpį",
@@ -5552,35 +5549,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },

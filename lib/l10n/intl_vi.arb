@@ -1818,32 +1818,6 @@
     "why": "Tại sao?",
     "definition": "Định nghĩa",
     "reportToTeacher": "Bạn muốn báo cáo tin nhắn này cho giáo viên nào?",
-    "reportMessageTitle": "{reportingUserId} đã báo cáo tin nhắn của {reportedUserId} trong phòng {roomName}",
-    "@reportMessageTitle": {
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "reportMessageBody": "Tin nhắn: {reportedMessage}\nLý do: {reason}",
-    "@reportMessageBody": {
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "noTeachersFound": "Không tìm thấy giáo viên nào để báo cáo",
     "yourGlobalUserIdIs": "ID người dùng toàn cục của bạn là: ",
     "knocking": "Đang yêu cầu tham gia",
     "trialExpiration": "Bản dùng thử của bạn sẽ hết hạn vào {expiration}",

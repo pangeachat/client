@@ -3112,9 +3112,6 @@
     "why": "為什麼？",
     "definition": "定義",
     "reportToTeacher": "你想向誰舉報此訊息？",
-    "reportMessageTitle": "{reportingUserId} 在聊天室 {roomName} 中舉報了來自 {reportedUserId} 的訊息",
-    "reportMessageBody": "訊息：{reportedMessage}\n原因：{reason}",
-    "noTeachersFound": "找不到可舉報的老師",
     "trialExpiration": "您的免費試用期將於 {expiration} 到期",
     "freeTrialDesc": "新用戶可獲得一週的 Pangea 聊天免費試用",
     "activateTrial": "免費7天試用",
@@ -4888,35 +4885,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
