@@ -17,9 +17,10 @@ class CourseCreationSettings extends StatelessWidget {
   final ValueChanged<bool> onChangedRequireAnalyticsAccess;
 
   /// The height both rows and their gaps add above the CTA, which the
-  /// preview's resting height and compact threshold grow by. The switch row
-  /// allows for a two-line subtitle.
-  static const double heightAllowance = 168.0;
+  /// preview's resting height and compact threshold grow by: both rows as
+  /// they lay out on a phone, with the switch row's title and subtitle on two
+  /// lines each.
+  static const double heightAllowance = 176.0;
 
   const CourseCreationSettings({
     super.key,
@@ -71,26 +72,65 @@ class CourseCreationSettings extends StatelessWidget {
             ],
           ),
         ),
-        SwitchListTile(
-          value: requireAnalyticsAccess,
-          onChanged: onChangedRequireAnalyticsAccess,
-          visualDensity: VisualDensity.compact,
-          shape: shape,
-          activeThumbColor: theme.pangea.successFixedDim,
-          secondary: CircleAvatar(
-            backgroundColor: theme.colorScheme.secondaryContainer,
-            foregroundColor: theme.colorScheme.onSecondaryContainer,
-            child: const Icon(Symbols.bar_chart_4_bars),
-          ),
-          title: Text(
-            l10n.requireAnalyticsAccessTitle,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-          subtitle: Text(
-            l10n.requireAnalyticsAccessSummary,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
+        // Built like the tile above rather than as a SwitchListTile, so the
+        // subtitle can run under the switch instead of being squeezed beside
+        // it. MergeSemantics reads it as one switch, as SwitchListTile does.
+        MergeSemantics(
+          child: Ink(
+            decoration: ShapeDecoration(shape: shape),
+            child: InkWell(
+              customBorder: shape,
+              onTap: () =>
+                  onChangedRequireAnalyticsAccess(!requireAnalyticsAccess),
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(
+                  16.0,
+                  8.0,
+                  24.0,
+                  12.0,
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 16.0,
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: theme.colorScheme.secondaryContainer,
+                      foregroundColor: theme.colorScheme.onSecondaryContainer,
+                      child: const Icon(Symbols.bar_chart_4_bars),
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            spacing: 8.0,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  l10n.requireAnalyticsAccessTitle,
+                                  style: theme.textTheme.titleMedium,
+                                ),
+                              ),
+                              Switch(
+                                value: requireAnalyticsAccess,
+                                onChanged: onChangedRequireAnalyticsAccess,
+                                activeThumbColor: theme.pangea.successFixedDim,
+                              ),
+                            ],
+                          ),
+                          Text(
+                            l10n.requireAnalyticsAccessSummary,
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: theme.colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
       ],

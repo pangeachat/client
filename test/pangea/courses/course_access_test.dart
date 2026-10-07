@@ -207,6 +207,42 @@ void main() {
       expect(changedTo, isFalse);
     });
 
+    testWidgets('tapping anywhere on the analytics row flips the switch', (
+      tester,
+    ) async {
+      bool? changedTo;
+      await pumpPreview(
+        tester,
+        height: 340,
+        onChangedRequireAnalyticsAccess: (value) => changedTo = value,
+      );
+
+      await tester.tap(find.text(analyticsSummary));
+      await tester.pumpAndSettle();
+
+      expect(changedTo, isFalse);
+    });
+
+    testWidgets('the analytics subtitle shows in full on a phone', (
+      tester,
+    ) async {
+      await pumpPreview(tester, height: 340);
+
+      final summary = tester.widget<Text>(find.text(analyticsSummary));
+      expect(summary.maxLines, isNull);
+      expect(summary.overflow, isNot(TextOverflow.ellipsis));
+    });
+
+    testWidgets('the analytics row reads as one switch', (tester) async {
+      final semantics = tester.ensureSemantics();
+      await pumpPreview(tester, height: 340);
+
+      final node = tester.getSemantics(find.byType(Switch));
+      expect(node.label, contains(analyticsTitle));
+      expect(node.label, contains(analyticsSummary));
+      semantics.dispose();
+    });
+
     testWidgets('a rest too short for the rows keeps Create course in view', (
       tester,
     ) async {
