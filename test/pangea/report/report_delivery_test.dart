@@ -9,6 +9,7 @@ import 'package:http/testing.dart';
 import 'package:matrix/encryption/utils/key_verification.dart';
 import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shared_preferences_platform_interface/shared_preferences_platform_interface.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -233,14 +234,11 @@ void main() {
         'the old copy is never sent as the refused id again, and it goes '
         'once the new id is recorded', () async {
       final moved = successorReportId('old-id');
-      final failing = _RememberFails(
-        await SharedPreferences.getInstance(),
-        failFor: moved,
-      );
+      final failing = store;
       await failing.remember(userId, submission('old-id'));
       final sent = <String>[];
 
-      // The new id fails too: the device keeps only the marked old copy.
+      // The new id fails too: the device keeps only the moved copy.
       await replayPendingReports(
         store: failing,
         userId: userId,
@@ -288,6 +286,11 @@ void main() {
         );
 
         expect(sent, ['old-id', successorReportId('old-id')]);
+        expect(
+          failing.pending(userId),
+          isEmpty,
+          reason: 'the unmoved copy under the refused id must go too',
+        );
       },
     );
 
@@ -305,6 +308,35 @@ void main() {
         successorReportId(old.reportId),
       ]);
     });
+
+    test(
+      'after a refused write the store reads what is really stored',
+      () async {
+        final platform = _FlakyPlatformStore();
+        SharedPreferencesStorePlatform.instance = platform;
+        SharedPreferences.resetStatic();
+        final flaky = await PendingReportStore.open();
+        final old = submission('old-id');
+        final moved = old.withReportId(successorReportId(old.reportId));
+        await flaky.remember(userId, old);
+
+        // The move is refused by the platform, but the cache took it.
+        platform.refuseNextWrite = true;
+        await expectLater(
+          flaky.markRejected(userId, old.reportId),
+          throwsStateError,
+        );
+        // So storing the moved report must really write it.
+        await flaky.remember(userId, moved);
+
+        SharedPreferences.resetStatic();
+        final afterRestart = await PendingReportStore.open();
+        expect(
+          afterRestart.pending(userId).map((r) => r.reportId),
+          contains(moved.reportId),
+        );
+      },
+    );
 
     test('a 409 is a conflict, not a failure and not a success', () async {
       expect(
@@ -935,19 +967,6 @@ class _ForgetFails extends PendingReportStore {
       throw StateError('disk full');
 }
 
-/// A store that cannot write one report id, as a full disk might.
-class _RememberFails extends PendingReportStore {
-  final String failFor;
-
-  _RememberFails(super.prefs, {required this.failFor});
-
-  @override
-  Future<void> remember(String userId, ReportSubmission report) async {
-    if (report.reportId == failFor) throw StateError('disk full');
-    await super.remember(userId, report);
-  }
-}
-
 /// A store that cannot move a refused copy, as a full or locked disk might.
 class _MarkFails extends PendingReportStore {
   _MarkFails(super.prefs);
@@ -955,4 +974,21 @@ class _MarkFails extends PendingReportStore {
   @override
   Future<void> markRejected(String userId, String reportId) async =>
       throw StateError('disk full');
+}
+
+/// A platform store that refuses one write when told to, as a full disk
+/// would, after the preference cache has already taken the value.
+class _FlakyPlatformStore extends InMemorySharedPreferencesStore {
+  _FlakyPlatformStore() : super.empty();
+
+  bool refuseNextWrite = false;
+
+  @override
+  Future<bool> setValue(String valueType, String key, Object value) async {
+    if (refuseNextWrite) {
+      refuseNextWrite = false;
+      return false;
+    }
+    return super.setValue(valueType, key, value);
+  }
 }

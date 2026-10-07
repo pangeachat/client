@@ -85,15 +85,35 @@ class PendingReportStore {
     return pending(userId);
   }
 
-  /// Stores [report]. A copy already listed under its id — stored under it,
-  /// or moved to it by [markRejected] — is left as it is.
+  /// Runs one write. A write that fails can leave the preference cache
+  /// holding a value the platform store never took, so the cache is re-read
+  /// from the platform store before the failure is raised: every later read
+  /// — and so every later decision to write or skip — sees what is really
+  /// stored.
+  Future<void> _write(Future<bool> Function() write) async {
+    bool ok;
+    try {
+      ok = await write();
+    } catch (_) {
+      await _prefs.reload();
+      rethrow;
+    }
+    if (!ok) {
+      await _prefs.reload();
+      throw StateError('the pending report write was refused');
+    }
+  }
+
+  /// Stores [report]. A copy that [markRejected] already moved to this id,
+  /// under its original key, is left as it is rather than duplicated.
   Future<void> remember(String userId, ReportSubmission report) async {
-    if (_entries(userId).any((e) => e.$2.reportId == report.reportId)) return;
-    final ok = await _prefs.setString(
-      _key(userId, report.reportId),
-      jsonEncode(report.toJson()),
-    );
-    if (!ok) throw StateError('the pending report write was refused');
+    final key = _key(userId, report.reportId);
+    if (_entries(
+      userId,
+    ).any((e) => e.$2.reportId == report.reportId && e.$1 != key)) {
+      return;
+    }
+    await _write(() => _prefs.setString(key, jsonEncode(report.toJson())));
   }
 
   /// Moves the copy listed under [reportId], which the module refused with a
@@ -104,16 +124,14 @@ class PendingReportStore {
     if (entry.isEmpty) throw StateError('no stored copy to mark');
     final (key, _, json) = entry.first;
     json[_generationsField] = (json[_generationsField] as int? ?? 0) + 1;
-    final ok = await _prefs.setString(key, jsonEncode(json));
-    if (!ok) throw StateError('the pending report write was refused');
+    await _write(() => _prefs.setString(key, jsonEncode(json)));
   }
 
   /// Drops every copy listed under [reportId].
   Future<void> forget(String userId, String reportId) async {
     for (final (key, report, _) in _entries(userId)) {
       if (report.reportId != reportId) continue;
-      final ok = await _prefs.remove(key);
-      if (!ok) throw StateError('the pending report removal was refused');
+      await _write(() => _prefs.remove(key));
     }
   }
 }
@@ -145,12 +163,14 @@ Future<void> replayPendingReports({
     }
   }
 
-  // Each entry: the report, and whether it was already moved this run.
-  final queue = [
-    for (final report in await store.pendingFromDisk(userId)) (report, false),
+  // Each entry: the report, whether it was already moved this run, and a
+  // refused id whose copy could not be moved and must go once it is recorded.
+  final queue = <(ReportSubmission, bool, String?)>[
+    for (final report in await store.pendingFromDisk(userId))
+      (report, false, null),
   ];
   while (queue.isNotEmpty) {
-    final (report, rotated) = queue.removeAt(0);
+    final (report, rotated, unmoved) = queue.removeAt(0);
     final result = await attempt(report);
     if (result == CaptureResult.failed) continue;
     if (result == CaptureResult.conflict) {
@@ -158,7 +178,7 @@ Future<void> replayPendingReports({
       // copy then stays under the refused id until the store works again. A
       // report already moved once this run is sent again only on the next
       // start, so a run cannot loop.
-      await guarded(
+      final moved = await guarded(
         () => store.markRejected(userId, report.reportId),
         'markRejected',
       );
@@ -166,13 +186,16 @@ Future<void> replayPendingReports({
         queue.add((
           report.withReportId(successorReportId(report.reportId)),
           true,
+          moved ? unmoved : report.reportId,
         ));
       }
       continue;
     }
     // Recorded. A failed forget means a resend next start, which is harmless:
     // the module stores a report id once.
-    await guarded(() => store.forget(userId, report.reportId), 'forget');
+    for (final id in [report.reportId, ?unmoved]) {
+      await guarded(() => store.forget(userId, id), 'forget');
+    }
   }
 }
 
