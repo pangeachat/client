@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
@@ -19,6 +20,8 @@ import 'package:fluffychat/features/room_summaries/activity_summary_status_enum.
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
@@ -136,12 +139,30 @@ class NotStartedSessionController extends State<NotStartedSession>
     }
   }
 
+  /// How long the start buttons wait on a lock check before giving up on it.
+  static const Duration _lockCheckLimit = Duration(seconds: 10);
+
   Future<void> _resolveLock() async {
     final check = ++_lockCheck;
-    final courses = await Matrix.of(context).client.coursesLockingActivity(
-      widget.activityId,
-      courseId: widget.course?.id,
-    );
+    List<Room> courses;
+    try {
+      courses = await Matrix.of(context).client
+          .coursesLockingActivity(
+            widget.activityId,
+            courseId: widget.course?.id,
+          )
+          .timeoutNamed(_lockCheckLimit, 'lock check: activity start page');
+    } catch (e, s) {
+      // A failed or stuck check must not hold the start buttons on their
+      // loading bar: fail open, as the resolver does before progress loads.
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'activityId': widget.activityId},
+        level: SentryLevel.warning,
+      );
+      courses = const [];
+    }
     if (!mounted || check != _lockCheck) return;
     final previous = _lockingCourses;
     final unchanged =

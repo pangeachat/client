@@ -79,16 +79,24 @@ class _ActivityLockOutlines {
       [room.id, room.coursePlan?.uuid, room.teacherMode.toJson()],
   ]);
 
+  /// The outlines for the joined courses as they are now. A rebuild already
+  /// running for an older course set is waited out and then checked again,
+  /// so a course joined meanwhile is never answered with stale outlines.
   Future<JoinedObjectiveCache> current() async {
-    final signature = _currentSignature;
-    final failedAt = _failedAt;
-    final retryDue =
-        failedAt != null &&
-        DateTime.now().difference(failedAt) > _retryAfterFailure;
-    if (signature != _signature || retryDue) {
-      await (_rebuilding ??= _rebuild(signature));
+    while (true) {
+      final pending = _rebuilding;
+      if (pending != null) {
+        await pending;
+        continue;
+      }
+      final signature = _currentSignature;
+      final failedAt = _failedAt;
+      final retryDue =
+          failedAt != null &&
+          DateTime.now().difference(failedAt) > _retryAfterFailure;
+      if (signature == _signature && !retryDue) return _cache;
+      await (_rebuilding = _rebuild(signature));
     }
-    return _cache;
   }
 
   Future<void> _rebuild(String signature) async {

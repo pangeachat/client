@@ -1366,6 +1366,7 @@ class _WorldMapViewState extends State<WorldMapView>
                       mapController: widget.controller.mapController,
                       cards: [...render.largeCards, ...render.nonLargeCards],
                       stateOf: render.stateOf,
+                      lockedOf: render.lockedOf,
                       onTap: widget.controller.openActivity,
                       // Seat summary for live pins (#8753) — the same derivation the
                       // drawn seat circles use, so announced and drawn never drift.

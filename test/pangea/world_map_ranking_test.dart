@@ -737,6 +737,21 @@ void main() {
       expect(withTrail.ordered.toSet(), {'live', 'prog'});
       expect(withTrail.ordered.length, 2);
     });
+
+    test('a locked progressed pin takes no reserved trail slot', () {
+      final pins = [_card('a'), _card('b'), _card('prog')];
+      final result = rank(
+        pins,
+        {for (final p in pins) p.activityId: const PinSignals()},
+        largeBudget: 0,
+        midBudget: 2,
+        trailBudget: 1,
+        progressedIds: {'prog'},
+        lockedIds: {'prog'},
+      );
+      // Locked, it ranks last and is not rescued by the trail reservation.
+      expect(result.ordered, ['a', 'b']);
+    });
   });
 
   group('rankPins — no live-session tier gate', () {

@@ -150,6 +150,12 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
     );
   }
 
+  /// Locked by course progression and not rescued by a live (open or
+  /// ongoing) session, which is never locked.
+  bool _isCardLocked(String activityId) =>
+      (widget.isLocked?.call(activityId) ?? false) &&
+      !(widget.liveStateByActivity(activityId).state?.isLive ?? false);
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -167,7 +173,12 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
             // cards and scrolling them into view
             // (accessibility.instructions.md, "One Tab stop per list").
             child: RovingFocusGroup(
-              ids: [for (final a in widget.activities) a.activityId],
+              // A locked card is not a tap target, so it is left out of the
+              // arrow-key order; otherwise a key press would land on nothing.
+              ids: [
+                for (final a in widget.activities)
+                  if (!_isCardLocked(a.activityId)) a.activityId,
+              ],
               child: ListView.separated(
                 controller: _scrollController,
                 scrollDirection: Axis.horizontal,
@@ -197,9 +208,7 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                       complete ||
                       liveState.state != null ||
                       ref.plan.req.numberOfParticipants <= available;
-                  final locked =
-                      (widget.isLocked?.call(ref.activityId) ?? false) &&
-                      !(liveState.state?.isLive ?? false);
+                  final locked = _isCardLocked(ref.activityId);
                   final card = Stack(
                     // The card's state banner peeks past its top-left
                     // corner, so this wrapping Stack must not clip it.

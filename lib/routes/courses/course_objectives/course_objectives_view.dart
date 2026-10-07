@@ -133,17 +133,15 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   bool get _pingedSectionSeen => _seenPingedActivityId == _pingedActivityId;
 
-  /// Missions the learner folded or unfolded, by id — each flips its
-  /// default, which is folded for a locked Mission and open otherwise. Held
-  /// here rather than in each [ObjectiveSection] because the list builds
-  /// lazily and disposes sections scrolled out of view (#9248).
-  final Set<String> _toggledMissionIds = {};
+  /// Whether the learner folded (true) or opened (false) each Mission they
+  /// touched, by id. Untouched Missions fall back to the default — folded
+  /// when locked, open otherwise — and a choice survives the Mission
+  /// unlocking. Held here rather than in each [ObjectiveSection] because the
+  /// list builds lazily and disposes sections scrolled out of view (#9248).
+  final Map<String, bool> _collapsedByChoice = {};
 
-  void _toggleMissionCollapsed(String missionId) => setState(() {
-    if (!_toggledMissionIds.remove(missionId)) {
-      _toggledMissionIds.add(missionId);
-    }
-  });
+  void _setMissionCollapsed(String missionId, bool collapsed) =>
+      setState(() => _collapsedByChoice[missionId] = collapsed);
 
   /// This list is the course card's full course plan — the one surface an
   /// activity's back arrow returns to (routing.instructions.md).
@@ -741,6 +739,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                               group.objective.id,
                             )
                           : null;
+                      final collapsed =
+                          widget.collapsibleMissions &&
+                          (_collapsedByChoice[group.objective.id] ??
+                              lock != null);
                       return ObjectiveSection(
                         key: i == pingedGroupIndex
                             ? _pingedSectionKey
@@ -750,12 +752,12 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                         pingedActivityId: i == pingedGroupIndex
                             ? pingedActivityId
                             : null,
-                        collapsed:
-                            widget.collapsibleMissions &&
-                            (lock != null) !=
-                                _toggledMissionIds.contains(group.objective.id),
+                        collapsed: collapsed,
                         onToggleCollapsed: widget.collapsibleMissions
-                            ? () => _toggleMissionCollapsed(group.objective.id)
+                            ? () => _setMissionCollapsed(
+                                group.objective.id,
+                                !collapsed,
+                              )
                             : null,
                         isUpNext: group.objective.id == anchorId,
                         group: group,

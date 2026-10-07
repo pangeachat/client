@@ -499,7 +499,9 @@ RankingResult rankPins({
     ranked: ranked,
     n: largeBudget + midBudget + smallBudget,
     trailBudget: trailBudget,
-    progressedIds: progressedIds,
+    // A locked activity keeps its earned stars but never takes a reserved
+    // trail slot from an unlocked pin.
+    progressedIds: progressedIds.difference(lockedIds),
   );
 
   // No tier eligibility gate lives here any more: `mid` fills purely by score,
