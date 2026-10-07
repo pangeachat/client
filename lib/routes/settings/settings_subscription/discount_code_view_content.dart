@@ -12,15 +12,10 @@ import 'package:fluffychat/widgets/matrix.dart';
 class DiscountCodeViewContent extends StatelessWidget {
   final DiscountCodeViewModel viewModel;
   final void Function(CheckoutRequest) onSubscribe;
-
-  /// False where the learner may not type a code (iOS): the input area is
-  /// never built, so only a link-borne code can reach the plans.
-  final bool allowManualEntry;
   const DiscountCodeViewContent({
     super.key,
     required this.viewModel,
     required this.onSubscribe,
-    this.allowManualEntry = true,
   });
 
   @override
@@ -94,7 +89,7 @@ class DiscountCodeViewContent extends StatelessWidget {
             ],
           ),
         ),
-        if (allowManualEntry) inputArea,
+        inputArea,
       ],
     );
 
@@ -102,7 +97,7 @@ class DiscountCodeViewContent extends StatelessWidget {
       valueListenable: viewModel.loader,
       builder: (context, state, _) {
         return switch (state) {
-          AsyncIdle() => allowManualEntry ? inputArea : const SizedBox.shrink(),
+          AsyncIdle() => inputArea,
           AsyncLoading() => LinearProgressIndicator(),
           AsyncError() => errorDisplay,
           AsyncLoaded(value: final response) => () {

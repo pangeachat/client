@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
-import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_content.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_title.dart';
@@ -18,21 +14,12 @@ import 'package:fluffychat/widgets/matrix.dart';
 class DiscountCodePage extends StatefulWidget {
   final Widget closeButton;
 
-  /// The code a gift link carried in, validated at once with no field shown
-  /// (subscriptions.instructions.md § Gift link).
+  /// The code a gift link carried in, validated at once so the page opens on
+  /// the plans with the discount applied (subscriptions.instructions.md §
+  /// Gift link). A rejected code shows the usual error with the field.
   final String? linkCode;
 
-  /// Whether the learner may type a code on this page. Never on iOS, where
-  /// App Review rejects the field (Apple 3.1.1, #9316); a rejected link code
-  /// then falls back to the plan page instead of offering the field.
-  final bool allowManualEntry;
-
-  const DiscountCodePage({
-    super.key,
-    required this.closeButton,
-    this.linkCode,
-    this.allowManualEntry = true,
-  });
+  const DiscountCodePage({super.key, required this.closeButton, this.linkCode});
 
   @override
   DiscountCodePageState createState() => DiscountCodePageState();
@@ -45,45 +32,10 @@ class DiscountCodePageState extends State<DiscountCodePage>
     initialCode: widget.linkCode,
   );
 
-  bool _watchingLinkCode = false;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (_watchingLinkCode || widget.allowManualEntry) return;
-    _watchingLinkCode = true;
-    _viewModel.loader.addListener(_fallBackOnRejectedLinkCode);
-  }
-
   @override
   void dispose() {
-    if (_watchingLinkCode) {
-      _viewModel.loader.removeListener(_fallBackOnRejectedLinkCode);
-    }
     _viewModel.dispose();
     super.dispose();
-  }
-
-  /// With no field to retype into, a link code that fails validation shows
-  /// the usual error and leaves for the plan page, as the bare discount deep
-  /// link does on this platform.
-  void _fallBackOnRejectedLinkCode() {
-    final rejected = switch (_viewModel.loader.value) {
-      AsyncError() => true,
-      AsyncLoaded(value: final response) => response.valid != true,
-      _ => false,
-    };
-    if (!rejected || !mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(L10n.of(context).invalidDiscountCode)),
-    );
-    context.go(
-      WorkspaceNav.openSettings(
-        GoRouterState.of(context).uri,
-        page: 'subscription',
-        seatMenu: false,
-      ),
-    );
   }
 
   @override
@@ -126,7 +78,6 @@ class DiscountCodePageState extends State<DiscountCodePage>
                 child: DiscountCodeViewContent(
                   viewModel: _viewModel,
                   onSubscribe: processCheckoutRequest,
-                  allowManualEntry: widget.allowManualEntry,
                 ),
               ),
             ),

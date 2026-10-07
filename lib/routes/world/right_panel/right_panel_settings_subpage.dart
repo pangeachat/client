@@ -1,8 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
-import 'package:fluffychat/features/subscription/utils/storefront_gate.dart';
 import 'package:fluffychat/routes/profile/user_home_page.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
 import 'package:fluffychat/routes/settings/settings_chat/settings_chat.dart';
@@ -72,24 +70,13 @@ class RightPanelSettingsSubpage extends StatelessWidget {
       case 'subscription/history':
         return SubscriptionHistory(closeButton: closeButton);
       case SettingsTokenParam.discountPage:
-        final fieldAllowed = allowsInAppDiscountCode(
-          isWeb: kIsWeb,
-          platform: defaultTargetPlatform,
+        // On iOS the paywall hides its button to this page, so the page is
+        // reached by link there; it opens everywhere, with a gift link's code
+        // applied at once (subscriptions.instructions.md § Gift link).
+        return DiscountCodePage(
+          closeButton: closeButton,
+          linkCode: param?.promoCode,
         );
-        // A gift link's code is applied on every platform with no field
-        // shown; without one, a deep link must not reach code entry where
-        // the button is hidden (subscriptions.instructions.md § Gift link).
-        final linkCode = param?.promoCode;
-        if (linkCode != null) {
-          return DiscountCodePage(
-            closeButton: closeButton,
-            linkCode: linkCode,
-            allowManualEntry: fieldAllowed,
-          );
-        }
-        return fieldAllowed
-            ? DiscountCodePage(closeButton: closeButton)
-            : SettingsSubscription(closeButton: closeButton);
       case 'subscription/selected':
         final planId = param?.planId;
         return planId != null
