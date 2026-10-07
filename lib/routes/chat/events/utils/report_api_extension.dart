@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
-import 'package:uuid/uuid.dart';
 
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -87,8 +86,7 @@ extension ReportEventApiExtension on Api {
       final streamed = await httpClient.send(request);
       if (streamed.statusCode == 409) {
         // Decided by the status alone, before the body: a 409 must not turn
-        // into a generic failure — and leave the refused id to be resent —
-        // because its body then broke off or stalled.
+        // into a generic failure because its body then broke off or stalled.
         unawaited(
           streamed.stream.drain<void>().catchError((_) {
             // silent-ok: the 409 is already decided; the body carries
@@ -194,26 +192,14 @@ class ReportCaptureException implements Exception {
   String toString() => 'ReportCaptureException: $description';
 }
 
-/// The report id a report moves to after its id met a 409.
-///
-/// Derived from the rejected id (a name-based UUID), not random: every copy
-/// of the app — a second tab, a replay racing the foreground send, a replay
-/// of a copy a crash left behind — moves the same report to the same id, so
-/// the module, idempotent on that id, still records it once.
-String successorReportId(String rejectedId) => const Uuid().v5(
-  Namespace.url.value,
-  'https://pangea.chat/report-successor/$rejectedId',
-);
-
 /// How one attempt to record a report ended.
 enum CaptureResult {
   /// The module answered 200 with this report's incident id.
   recorded,
 
   /// A 409: this report id is already the module's for a different reporter
-  /// or event. It can never be recorded under this id, so the stored copy is
-  /// dropped and the report starts again under a new id. A genuine retry
-  /// never sees this: it sends the same id, event and reporter.
+  /// or event, so it can never be recorded under it. A genuine retry never
+  /// sees this: it resends the same id, event and reporter.
   conflict,
 
   /// Anything else. Even a refusal is kept and resent: a 404 is also what a

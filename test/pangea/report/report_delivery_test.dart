@@ -9,7 +9,6 @@ import 'package:http/testing.dart';
 import 'package:matrix/encryption/utils/key_verification.dart';
 import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shared_preferences_platform_interface/shared_preferences_platform_interface.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -81,6 +80,7 @@ void main() {
         SharedPreferences.resetStatic();
         final afterRestart = await PendingReportStore.open();
         await replayPendingReports(
+          newReportId: () => 'fresh-id',
           store: afterRestart,
           userId: userId,
           attempt: serverAnswering(200),
@@ -91,6 +91,7 @@ void main() {
 
         // Confirmed, so the next start sends nothing.
         await replayPendingReports(
+          newReportId: () => 'fresh-id',
           store: await PendingReportStore.open(),
           userId: userId,
           attempt: serverAnswering(200),
@@ -104,401 +105,13 @@ void main() {
       await store.remember(userId, stored);
 
       await replayPendingReports(
+        newReportId: () => 'fresh-id',
         store: store,
         userId: userId,
         attempt: serverAnswering(503),
       );
 
       expect(store.pending(userId).map((r) => r.reportId), ['id-503']);
-    });
-
-    test('a conflicting id moves to a new one, stored before the old goes, '
-        'and is sent under it', () async {
-      await store.remember(userId, submission('id-409'));
-      final answers = [409, 200];
-      final api = apiWith((request) async {
-        final body = jsonDecode(request.body) as Map<String, dynamic>;
-        sentBodies.add(body);
-        final status = answers.removeAt(0);
-        return http.Response(
-          jsonEncode(
-            status == 200
-                ? {'incident_id': 'report:${body['report_id']}'}
-                : {'errcode': 'M_UNKNOWN'},
-          ),
-          status,
-          request: request,
-        );
-      });
-
-      await replayPendingReports(
-        store: store,
-        userId: userId,
-        attempt: (report) => attemptReportCapture(api, report),
-      );
-
-      expect(sentBodies.map((b) => b['report_id']), [
-        'id-409',
-        successorReportId('id-409'),
-      ]);
-      expect(sentBodies.last['reason'], sentBodies.first['reason']);
-      expect(store.pending(userId), isEmpty);
-    });
-
-    test(
-      'a conflict whose new id also fails is kept under the new id',
-      () async {
-        await store.remember(userId, submission('id-409'));
-        final results = [CaptureResult.conflict, CaptureResult.failed];
-
-        await replayPendingReports(
-          store: store,
-          userId: userId,
-          attempt: (_) async => results.removeAt(0),
-        );
-
-        expect(store.pending(userId).map((r) => r.reportId), [
-          successorReportId('id-409'),
-        ]);
-      },
-    );
-
-    test('the id after a conflict is the same for every sender', () {
-      const rejected = '3f1c6a52-1f0e-4d43-9a43-7c0c6f6fbb0e';
-      final successor = successorReportId(rejected);
-      expect(successorReportId(rejected), successor);
-      expect(successor, isNot(rejected));
-      expect(successorReportId('another-id'), isNot(successor));
-      expect(
-        successor,
-        matches(
-          RegExp(
-            r'^[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$',
-          ),
-        ),
-      );
-    });
-
-    test('a crash between storing the new id and dropping the old one '
-        'still records the report once', () async {
-      final old = submission('8a1d0e38-6c43-4d6c-9e57-1c2c0a6a5b11');
-      final moved = old.withReportId(successorReportId(old.reportId));
-      // Both copies left behind by the crash.
-      await store.remember(userId, old);
-      await store.remember(userId, moved);
-      final recordedIds = <String>{};
-
-      await replayPendingReports(
-        store: store,
-        userId: userId,
-        attempt: (report) async {
-          if (report.reportId == old.reportId) return CaptureResult.conflict;
-          recordedIds.add(report.reportId);
-          return CaptureResult.recorded;
-        },
-      );
-
-      expect(recordedIds, {moved.reportId});
-      expect(store.pending(userId), isEmpty);
-    });
-
-    test(
-      'a second conflict moves the report on again, sent next start',
-      () async {
-        await store.remember(userId, submission('first'));
-        final sent = <String>[];
-
-        await replayPendingReports(
-          store: store,
-          userId: userId,
-          attempt: (report) async {
-            sent.add(report.reportId);
-            return CaptureResult.conflict;
-          },
-        );
-
-        final once = successorReportId('first');
-        expect(sent, ['first', once]);
-        expect(store.pending(userId).map((r) => r.reportId), [
-          successorReportId(once),
-        ]);
-        expect(
-          store.pending(userId),
-          hasLength(1),
-          reason: 'moved in place: one copy, never a second key',
-        );
-      },
-    );
-
-    test('a refused copy is listed only under its new id from then on, and '
-        'goes once that is recorded', () async {
-      final moved = successorReportId('old-id');
-      final failing = store;
-      await failing.remember(userId, submission('old-id'));
-      final sent = <String>[];
-
-      // The new id fails: the device keeps only the moved copy.
-      await replayPendingReports(
-        store: failing,
-        userId: userId,
-        attempt: (report) async {
-          sent.add(report.reportId);
-          return report.reportId == 'old-id'
-              ? CaptureResult.conflict
-              : CaptureResult.failed;
-        },
-      );
-      expect(sent, ['old-id', moved]);
-      expect(failing.pending(userId).map((r) => r.reportId), [moved]);
-
-      // Next start: only the new id is sent, and once recorded nothing is
-      // left.
-      sent.clear();
-      await replayPendingReports(
-        store: failing,
-        userId: userId,
-        attempt: (report) async {
-          sent.add(report.reportId);
-          return CaptureResult.recorded;
-        },
-      );
-      expect(sent, [moved]);
-      expect(failing.pending(userId), isEmpty);
-    });
-
-    test(
-      'a copy whose move cannot be stored is still sent under the new id',
-      () async {
-        final failing = _MarkFails(await SharedPreferences.getInstance());
-        await failing.remember(userId, submission('old-id'));
-        final sent = <String>[];
-
-        await replayPendingReports(
-          store: failing,
-          userId: userId,
-          attempt: (report) async {
-            sent.add(report.reportId);
-            return report.reportId == 'old-id'
-                ? CaptureResult.conflict
-                : CaptureResult.recorded;
-          },
-        );
-
-        expect(sent, ['old-id', successorReportId('old-id')]);
-        expect(
-          failing.pending(userId),
-          isEmpty,
-          reason: 'the unmoved copy under the refused id must go too',
-        );
-      },
-    );
-
-    test('storing a moved report again keeps the one copy', () async {
-      final old = submission('old-id');
-      await store.remember(userId, old);
-      await store.markRejected(userId, old.reportId);
-
-      await store.remember(
-        userId,
-        old.withReportId(successorReportId(old.reportId)),
-      );
-
-      expect(store.pending(userId).map((r) => r.reportId), [
-        successorReportId(old.reportId),
-      ]);
-    });
-
-    test(
-      'after a refused write the store reads what is really stored',
-      () async {
-        final platform = _FlakyPlatformStore();
-        SharedPreferencesStorePlatform.instance = platform;
-        SharedPreferences.resetStatic();
-        final flaky = await PendingReportStore.open();
-        final old = submission('old-id');
-        final moved = old.withReportId(successorReportId(old.reportId));
-        await flaky.remember(userId, old);
-
-        // The move is refused by the platform, but the cache took it.
-        platform.refuseNextWrite = true;
-        await expectLater(
-          flaky.markRejected(userId, old.reportId),
-          throwsStateError,
-        );
-        // So storing the moved report must really write it.
-        await flaky.remember(userId, moved);
-
-        SharedPreferences.resetStatic();
-        final afterRestart = await PendingReportStore.open();
-        expect(
-          afterRestart.pending(userId).map((r) => r.reportId),
-          contains(moved.reportId),
-        );
-      },
-    );
-
-    test('a copy that cannot be moved is dropped under the refused id even '
-        'when the new id then fails', () async {
-      final failing = _MarkFails(await SharedPreferences.getInstance());
-      await failing.remember(userId, submission('old-id'));
-
-      await replayPendingReports(
-        store: failing,
-        userId: userId,
-        attempt: (report) async => report.reportId == 'old-id'
-            ? CaptureResult.conflict
-            : CaptureResult.failed,
-      );
-
-      expect(failing.pending(userId).map((r) => r.reportId), [
-        successorReportId('old-id'),
-      ]);
-    });
-
-    test('a resend of the refused id cannot undo its move', () async {
-      final old = submission('old-id');
-      await store.remember(userId, old);
-      await store.markRejected(userId, old.reportId);
-
-      // The foreground send of the same report remembers it again.
-      await store.remember(userId, old);
-
-      expect(store.pending(userId).map((r) => r.reportId), [
-        successorReportId(old.reportId),
-      ]);
-    });
-
-    test('a 409 counts even when its body breaks off', () async {
-      final api = MatrixApi(
-        homeserver: Uri.parse('https://hs.example.invalid'),
-        accessToken: 'reporter-token',
-        httpClient: _StatusOnlyClient(409),
-      );
-      expect(
-        await attemptReportCapture(api, submission('id-409')),
-        CaptureResult.conflict,
-      );
-    });
-
-    test('replay skips a report a foreground send settled meanwhile', () async {
-      await store.remember(userId, submission('a'));
-      await store.remember(userId, submission('b'));
-      final sent = <String>[];
-
-      await replayPendingReports(
-        store: store,
-        userId: userId,
-        attempt: (report) async {
-          sent.add(report.reportId);
-          // Meanwhile the foreground records the other one.
-          final other = report.reportId == 'a' ? 'b' : 'a';
-          await store.forget(userId, other);
-          return CaptureResult.failed;
-        },
-      );
-
-      expect(sent, hasLength(1));
-    });
-
-    test('when neither the move nor the new id can be stored, the copy '
-        'stays rather than the report being lost', () async {
-      final failing = _MarkAndRememberFail(
-        await SharedPreferences.getInstance(),
-      );
-      await store.remember(userId, submission('old-id'));
-      final sent = <String>[];
-
-      await replayPendingReports(
-        store: failing,
-        userId: userId,
-        attempt: (report) async {
-          sent.add(report.reportId);
-          return report.reportId == 'old-id'
-              ? CaptureResult.conflict
-              : CaptureResult.failed;
-        },
-      );
-
-      expect(sent, ['old-id', successorReportId('old-id')]);
-      expect(failing.pending(userId).map((r) => r.reportId), ['old-id']);
-    });
-
-    test('a copy that could be neither moved nor replaced goes once its new '
-        'id is recorded', () async {
-      final failing = _MarkAndRememberFail(
-        await SharedPreferences.getInstance(),
-      );
-      await store.remember(userId, submission('old-id'));
-
-      await replayPendingReports(
-        store: failing,
-        userId: userId,
-        attempt: (report) async => report.reportId == 'old-id'
-            ? CaptureResult.conflict
-            : CaptureResult.recorded,
-      );
-
-      expect(failing.pending(userId), isEmpty);
-    });
-
-    test('replay writes each report again before sending it', () async {
-      final platform = _FlakyPlatformStore();
-      SharedPreferencesStorePlatform.instance = platform;
-      SharedPreferences.resetStatic();
-      final flaky = await PendingReportStore.open();
-      await flaky.remember(userId, submission('id'));
-      final before = platform.writeAttempts;
-
-      await replayPendingReports(
-        store: flaky,
-        userId: userId,
-        attempt: (_) async => CaptureResult.failed,
-      );
-
-      expect(platform.writeAttempts, before + 1);
-    });
-
-    test('storing a moved report writes its moved copy again', () async {
-      final platform = _FlakyPlatformStore();
-      SharedPreferencesStorePlatform.instance = platform;
-      SharedPreferences.resetStatic();
-      final flaky = await PendingReportStore.open();
-      final old = submission('old-id');
-      await flaky.remember(userId, old);
-      await flaky.markRejected(userId, old.reportId);
-      final before = platform.writeAttempts;
-
-      await flaky.remember(
-        userId,
-        old.withReportId(successorReportId(old.reportId)),
-      );
-
-      expect(platform.writeAttempts, before + 1);
-      expect(flaky.pending(userId).map((r) => r.reportId), [
-        successorReportId(old.reportId),
-      ]);
-    });
-
-    test('a write the platform refused is written again, even though the '
-        'platform reports it back', () async {
-      final platform = _FlakyPlatformStore(keepRefusedValues: true);
-      SharedPreferencesStorePlatform.instance = platform;
-      SharedPreferences.resetStatic();
-      final flaky = await PendingReportStore.open();
-      final report = submission('id');
-
-      platform.refuseNextWrite = true;
-      await expectLater(flaky.remember(userId, report), throwsStateError);
-      await flaky.remember(userId, report);
-
-      expect(platform.writeAttempts, 2);
-    });
-
-    test('a 409 is a conflict, not a failure and not a success', () async {
-      expect(
-        await serverAnswering(409)(submission('id-409')),
-        CaptureResult.conflict,
-      );
     });
 
     test(
@@ -508,6 +121,7 @@ void main() {
         await store.remember(userId, submission('id-404'));
 
         await replayPendingReports(
+          newReportId: () => 'fresh-id',
           store: store,
           userId: userId,
           attempt: serverAnswering(404),
@@ -523,6 +137,7 @@ void main() {
         await store.remember('@someone-else:example.invalid', submission('x'));
 
         await replayPendingReports(
+          newReportId: () => 'fresh-id',
           store: store,
           userId: userId,
           attempt: serverAnswering(200),
@@ -532,6 +147,53 @@ void main() {
         expect(store.pending('@someone-else:example.invalid'), hasLength(1));
       },
     );
+
+    test('a 409 drops the copy and sends once under a fresh id', () async {
+      await store.remember(userId, submission('id-409'));
+      final sent = <String>[];
+
+      await replayPendingReports(
+        newReportId: () => 'fresh-id',
+        store: store,
+        userId: userId,
+        attempt: (report) async {
+          sent.add(report.reportId);
+          return report.reportId == 'id-409'
+              ? CaptureResult.conflict
+              : CaptureResult.recorded;
+        },
+      );
+
+      expect(sent, ['id-409', 'fresh-id']);
+      expect(store.pending(userId), isEmpty);
+    });
+
+    test('a 409 whose fresh send fails keeps only the fresh copy', () async {
+      await store.remember(userId, submission('id-409'));
+
+      await replayPendingReports(
+        newReportId: () => 'fresh-id',
+        store: store,
+        userId: userId,
+        attempt: (report) async => report.reportId == 'id-409'
+            ? CaptureResult.conflict
+            : CaptureResult.failed,
+      );
+
+      expect(store.pending(userId).map((r) => r.reportId), ['fresh-id']);
+    });
+
+    test('a 409 is a conflict, even when its body breaks off', () async {
+      final api = MatrixApi(
+        homeserver: Uri.parse('https://hs.example.invalid'),
+        accessToken: 'reporter-token',
+        httpClient: _StatusOnlyClient(409),
+      );
+      expect(
+        await attemptReportCapture(api, submission('id-409')),
+        CaptureResult.conflict,
+      );
+    });
 
     test('remember replaces a copy with the same report id', () async {
       await store.remember(userId, submission('same'));
@@ -590,6 +252,7 @@ void main() {
 
       final replayed = <String>[];
       await replayPendingReports(
+        newReportId: () => 'fresh-id',
         store: thisTab,
         userId: userId,
         attempt: (report) async {
@@ -612,6 +275,7 @@ void main() {
       await harness
           .capture(() async {
             await replayPendingReports(
+              newReportId: () => 'fresh-id',
               store: store,
               userId: userId,
               attempt: (report) async {
@@ -826,59 +490,6 @@ void main() {
         '/_matrix/client/v3/rooms/!course%3Ax/members',
         '/_matrix/client/v3/rooms/!course%3Ax/state/m.room.power_levels/',
       ]);
-    });
-  });
-
-  group('isCurrentCourseAdmin', () {
-    MatrixApi rosterServer() => apiWith((request) async {
-      if (request.url.path.endsWith('/members')) {
-        return http.Response(
-          jsonEncode({
-            'chunk': [
-              for (final user in ['@teacher:x', '@demoted:x'])
-                {
-                  'type': 'm.room.member',
-                  'event_id': '\$$user',
-                  'room_id': '!course:x',
-                  'sender': user,
-                  'state_key': user,
-                  'origin_server_ts': 1,
-                  'content': {'membership': 'join'},
-                },
-            ],
-          }),
-          200,
-          request: request,
-        );
-      }
-      return http.Response(
-        jsonEncode({
-          'users': {'@teacher:x': 100, '@left:x': 100},
-        }),
-        200,
-        request: request,
-      );
-    });
-
-    test('an admin still joined at power level 100', () async {
-      expect(
-        await isCurrentCourseAdmin(rosterServer(), '!course:x', '@teacher:x'),
-        isTrue,
-      );
-    });
-
-    test('a demoted admin', () async {
-      expect(
-        await isCurrentCourseAdmin(rosterServer(), '!course:x', '@demoted:x'),
-        isFalse,
-      );
-    });
-
-    test('an admin who has left the course', () async {
-      expect(
-        await isCurrentCourseAdmin(rosterServer(), '!course:x', '@left:x'),
-        isFalse,
-      );
     });
   });
 
@@ -1120,51 +731,6 @@ class _ForgetFails extends PendingReportStore {
 
   @override
   Future<void> forget(String userId, String reportId) async =>
-      throw StateError('disk full');
-}
-
-/// A store that cannot move a refused copy, as a full or locked disk might.
-class _MarkFails extends PendingReportStore {
-  _MarkFails(super.prefs);
-
-  @override
-  Future<void> markRejected(String userId, String reportId) async =>
-      throw StateError('disk full');
-}
-
-/// A platform store that refuses one write when told to, as a full disk
-/// would, after the preference cache has already taken the value. With
-/// [keepRefusedValues] it also keeps the refused value in memory, as
-/// Android's preferences do when the commit to disk fails.
-class _FlakyPlatformStore extends InMemorySharedPreferencesStore {
-  _FlakyPlatformStore({this.keepRefusedValues = false}) : super.empty();
-
-  final bool keepRefusedValues;
-  bool refuseNextWrite = false;
-  int writeAttempts = 0;
-
-  @override
-  Future<bool> setValue(String valueType, String key, Object value) async {
-    writeAttempts++;
-    if (refuseNextWrite) {
-      refuseNextWrite = false;
-      if (keepRefusedValues) await super.setValue(valueType, key, value);
-      return false;
-    }
-    return super.setValue(valueType, key, value);
-  }
-}
-
-/// A store that can neither move a refused copy nor store a new one.
-class _MarkAndRememberFail extends PendingReportStore {
-  _MarkAndRememberFail(super.prefs);
-
-  @override
-  Future<void> markRejected(String userId, String reportId) async =>
-      throw StateError('disk full');
-
-  @override
-  Future<void> remember(String userId, ReportSubmission report) async =>
       throw StateError('disk full');
 }
 

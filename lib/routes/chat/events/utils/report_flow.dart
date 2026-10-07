@@ -97,20 +97,14 @@ class ReportFlow<T> {
   /// Stores the report on the device before each attempt, so it is replayed
   /// with the same report id if the app dies before the module confirms it.
   /// Idempotent per report id.
-  /// True once the copy is stored.
-  final Future<bool> Function(ReportSubmission report) remember;
+  final Future<void> Function(ReportSubmission report) remember;
 
   /// Drops the stored copy once the module has recorded the report, or once
   /// its id turns out to belong to another report.
   final Future<void> Function(ReportSubmission report) forget;
 
-  /// Moves the stored copy of a report refused with a 409 to its new id, in
-  /// place, so it is never sent under the refused id again. True once moved.
-  final Future<bool> Function(ReportSubmission report) markRejected;
-
-  /// The id a report moves to after [CaptureResult.conflict] on the given id
-  /// (production: [successorReportId]).
-  final String Function(String rejectedId) newReportId;
+  /// A fresh report id, for the resend after a [CaptureResult.conflict].
+  final String Function() newReportId;
 
   /// Asks the reporter whether to try again after [capture] failed.
   final Future<bool> Function() offerRetry;
@@ -147,7 +141,6 @@ class ReportFlow<T> {
     required this.remember,
     required this.forget,
     required this.newReportId,
-    required this.markRejected,
     required this.offerRetry,
     required this.confirmCaptured,
     required this.lookupCourseAdmins,
@@ -189,49 +182,27 @@ class ReportFlow<T> {
   ///
   /// Every retry carries the same [ReportSubmission.reportId], with one
   /// exception: a [CaptureResult.conflict] means that id is already the
-  /// module's for another report, so it can never be recorded under it. The
-  /// old id is forgotten — never replayed — and the report continues as a
-  /// fresh submission under the id [newReportId] derives from it.
+  /// module's for another report. Its stored copy is dropped and the report
+  /// is sent once more as a fresh submission under [newReportId]; if that
+  /// send fails too, the reporter gets the usual retry prompt.
   ///
   /// The report is stored before every attempt and forgotten only once the
   /// module has recorded it, so a report the reporter gives up on — or that
   /// the app is killed in the middle of — is resent on the next start.
   Future<ReportSubmission?> captureWithRetry(ReportSubmission report) async {
     var current = report;
-    // Copies under refused ids that stayed only because the new id could not
-    // be stored yet; each goes as soon as it can.
-    final unmoved = <ReportSubmission>[];
-    Future<void> dropUnmoved() async {
-      for (final copy in unmoved) {
-        await forget(copy);
-      }
-      unmoved.clear();
-    }
-
     while (true) {
-      if (await remember(current)) await dropUnmoved();
-      final result = await capture(current);
+      await remember(current);
+      var result = await capture(current);
+      if (result == CaptureResult.conflict) {
+        await forget(current);
+        current = current.withReportId(newReportId());
+        await remember(current);
+        result = await capture(current);
+      }
       if (result == CaptureResult.recorded) {
         await forget(current);
-        await dropUnmoved();
         return current;
-      }
-      if (result == CaptureResult.conflict) {
-        final fresh = current.withReportId(newReportId(current.reportId));
-        // The stored copy moves to the new id in place, one write, so it is
-        // never sent as the refused id again. If that write fails, the new
-        // id is stored on its own and the copy under the refused id dropped.
-        // Only while the new id cannot be stored either does the old copy
-        // stay: losing the report is worse than resending a refused id,
-        // which only meets the same 409 and moves to the same successor.
-        if (!await markRejected(current)) {
-          if (await remember(fresh)) {
-            await forget(current);
-          } else {
-            unmoved.add(current);
-          }
-        }
-        current = fresh;
       }
       if (!await offerRetry()) return null;
     }

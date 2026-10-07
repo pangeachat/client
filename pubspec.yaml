@@ -172,9 +172,6 @@ dev_dependencies:
     sdk: flutter
   license_checker: ^1.6.2
   pedantic: ^1.11.0
-  # Test-only: a platform store that refuses a write, for the pending-report
-  # store's failed-write path (test/pangea/report/).
-  shared_preferences_platform_interface: ^2.4.1
   # Test-only: the streaming-STT recorder widget test fakes the wakelock plugin
   # via its platform interface (MockPlatformInterfaceMixin) so the recorder's
   # reset path does not hit a real platform channel.

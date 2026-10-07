@@ -155,7 +155,7 @@ void main() {
     late List<String> calls;
     late List<ReportSubmission> captured;
     late List<CaptureResult> captureResults;
-    late Set<String> failingWrites;
+    late List<String> sentryIds;
     late List<bool> retryAnswers;
     late List<ReportRecipient<String>> admins;
     late List<Map<String, Object>> sentContents;
@@ -169,7 +169,7 @@ void main() {
       calls = [];
       captured = [];
       captureResults = [];
-      failingWrites = {};
+      sentryIds = [];
       retryAnswers = [];
       admins = [];
       sentContents = [];
@@ -183,16 +183,9 @@ void main() {
             ? CaptureResult.recorded
             : captureResults.removeAt(0);
       },
-      remember: (submission) async {
-        calls.add('remember:${submission.reportId}');
-        return !failingWrites.contains(submission.reportId);
-      },
-      forget: (submission) async => calls.add('forget:${submission.reportId}'),
-      newReportId: (_) => 'fresh-report-id',
-      markRejected: (submission) async {
-        calls.add('markRejected:${submission.reportId}');
-        return !failingWrites.contains('mark:${submission.reportId}');
-      },
+      remember: (submission) async => calls.add('remember'),
+      forget: (submission) async => calls.add('forget'),
+      newReportId: () => 'fresh-report-id',
       offerRetry: () async {
         calls.add('offerRetry');
         return retryAnswers.removeAt(0);
@@ -211,8 +204,10 @@ void main() {
         sentContents.add(content);
       },
       pointerBody: l10n.reportPointerMessage,
-      recordNonOffensive: (recorded) =>
-          calls.add('sentry:${recorded.reportId}'),
+      recordNonOffensive: (recorded) {
+        calls.add('sentry');
+        sentryIds.add(recorded.reportId);
+      },
     );
 
     test('an offensive report is captured before any teacher lookup', () async {
@@ -222,9 +217,9 @@ void main() {
 
       expect(outcome, ReportOutcome.captured);
       expect(calls, [
-        'remember:${report.reportId}',
+        'remember',
         'capture',
-        'forget:${report.reportId}',
+        'forget',
         'confirm',
         'lookup',
         'select',
@@ -239,13 +234,7 @@ void main() {
 
       expect(outcome, ReportOutcome.captured);
       expect(captured, [report]);
-      expect(calls, [
-        'remember:${report.reportId}',
-        'capture',
-        'forget:${report.reportId}',
-        'confirm',
-        'lookup',
-      ]);
+      expect(calls, ['remember', 'capture', 'forget', 'confirm', 'lookup']);
     });
 
     test(
@@ -255,13 +244,7 @@ void main() {
 
         expect(outcome, ReportOutcome.captured);
         expect(captured, [report]);
-        expect(calls, [
-          'remember:${report.reportId}',
-          'capture',
-          'forget:${report.reportId}',
-          'confirm',
-          'sentry:${report.reportId}',
-        ]);
+        expect(calls, ['remember', 'capture', 'forget', 'confirm', 'sentry']);
       },
     );
 
@@ -286,17 +269,17 @@ void main() {
         jsonEncode(report.toJson()),
       });
       expect(calls, [
-        'remember:${report.reportId}',
+        'remember',
         'capture',
         'offerRetry',
-        'remember:${report.reportId}',
+        'remember',
         'capture',
         'offerRetry',
-        'remember:${report.reportId}',
+        'remember',
         'capture',
-        'forget:${report.reportId}',
+        'forget',
         'confirm',
-        'sentry:${report.reportId}',
+        'sentry',
       ]);
     });
 
@@ -312,125 +295,55 @@ void main() {
         expect(outcome, ReportOutcome.notCaptured);
         expect(
           calls,
-          ['remember:${report.reportId}', 'capture', 'offerRetry'],
+          ['remember', 'capture', 'offerRetry'],
           reason: 'the stored copy must stay for the replay on the next start',
         );
       },
     );
 
-    test(
-      'a conflicting id is dropped and the report goes on under a new one',
-      () async {
-        captureResults = [CaptureResult.conflict, CaptureResult.recorded];
-        retryAnswers = [true];
+    test('a 409 drops the old copy and sends once under a fresh id', () async {
+      captureResults = [CaptureResult.conflict, CaptureResult.recorded];
 
-        final outcome = await flow().run(report, offensive: false);
+      final outcome = await flow().run(report, offensive: false);
 
-        expect(outcome, ReportOutcome.captured);
-        expect(captured.map((s) => s.reportId), [
-          report.reportId,
-          'fresh-report-id',
-        ]);
-        expect(captured.last.toJson()..remove('report_id'), {
-          'room_id': report.roomId,
-          'event_id': report.eventId,
-          'reason': report.reason,
-        });
-        expect(calls, [
-          'remember:${report.reportId}',
-          'capture',
-          'markRejected:${report.reportId}',
-          'offerRetry',
-          'remember:fresh-report-id',
-          'capture',
-          'forget:fresh-report-id',
-          'confirm',
-          'sentry:fresh-report-id',
-        ]);
-      },
-    );
-
-    test(
-      'after a conflict, declining keeps the copy, moved to the new id',
-      () async {
-        captureResults = [CaptureResult.conflict];
-        retryAnswers = [false];
-
-        final outcome = await flow().run(report, offensive: false);
-
-        expect(outcome, ReportOutcome.notCaptured);
-        expect(calls, [
-          'remember:${report.reportId}',
-          'capture',
-          'markRejected:${report.reportId}',
-          'offerRetry',
-        ]);
-      },
-    );
-
-    test('after a conflict, a copy that could not be moved is dropped at '
-        'once, with the new id stored on its own', () async {
-      captureResults = [CaptureResult.conflict];
-      retryAnswers = [false];
-      failingWrites = {'mark:${report.reportId}'};
-
-      await flow().run(report, offensive: false);
-
-      expect(calls, [
-        'remember:${report.reportId}',
-        'capture',
-        'markRejected:${report.reportId}',
-        'remember:fresh-report-id',
-        'forget:${report.reportId}',
-        'offerRetry',
+      expect(outcome, ReportOutcome.captured);
+      expect(captured.map((s) => s.reportId), [
+        report.reportId,
+        'fresh-report-id',
       ]);
+      expect(captured.last.toJson()..remove('report_id'), {
+        'room_id': report.roomId,
+        'event_id': report.eventId,
+        'reason': report.reason,
+      });
+      expect(calls, [
+        'remember',
+        'capture',
+        'forget',
+        'remember',
+        'capture',
+        'forget',
+        'confirm',
+        'sentry',
+      ]);
+      expect(sentryIds, ['fresh-report-id']);
     });
 
-    test(
-      'after a conflict whose move fails, neither id is left once recorded',
-      () async {
-        captureResults = [CaptureResult.conflict, CaptureResult.recorded];
-        retryAnswers = [true];
-        var failNext = true;
-        final forgotten = <String>[];
-        final flow = ReportFlow<String>(
-          capture: (s) async => captureResults.removeAt(0),
-          remember: (s) async {
-            if (s.reportId == 'fresh-report-id' && failNext) {
-              failNext = false;
-              return false;
-            }
-            return true;
-          },
-          forget: (s) async => forgotten.add(s.reportId),
-          newReportId: (_) => 'fresh-report-id',
-          markRejected: (s) async => false,
-          offerRetry: () async => retryAnswers.removeAt(0),
-          confirmCaptured: () {},
-          lookupCourseAdmins: () async => [],
-          selectRecipients: (found) async => found,
-          sendPointer: (_, _) async {},
-          pointerBody: (course) => course,
-          recordNonOffensive: (_) {},
-        );
-
-        expect(
-          await flow.run(report, offensive: false),
-          ReportOutcome.captured,
-        );
-        expect(forgotten.toSet(), {report.reportId, 'fresh-report-id'});
-      },
-    );
-
-    test('after a conflict, the old copy stays when neither the move nor '
-        'the new id can be stored', () async {
-      captureResults = [CaptureResult.conflict];
+    test('a 409 whose fresh send fails shows the usual retry prompt', () async {
+      captureResults = [CaptureResult.conflict, CaptureResult.failed];
       retryAnswers = [false];
-      failingWrites = {'mark:${report.reportId}', 'fresh-report-id'};
 
-      await flow().run(report, offensive: false);
+      final outcome = await flow().run(report, offensive: false);
 
-      expect(calls, isNot(contains('forget:${report.reportId}')));
+      expect(outcome, ReportOutcome.notCaptured);
+      expect(calls, [
+        'remember',
+        'capture',
+        'forget',
+        'remember',
+        'capture',
+        'offerRetry',
+      ]);
     });
 
     test('a stored copy is kept until the module confirms it', () async {
@@ -440,11 +353,8 @@ void main() {
       final outcome = await flow().run(report, offensive: false);
 
       expect(outcome, ReportOutcome.notCaptured);
-      expect(calls, isNot(contains('forget:${report.reportId}')));
-      expect(
-        calls.where((c) => c == 'remember:${report.reportId}'),
-        hasLength(2),
-      );
+      expect(calls, isNot(contains('forget')));
+      expect(calls.where((c) => c == 'remember'), hasLength(2));
     });
 
     test(

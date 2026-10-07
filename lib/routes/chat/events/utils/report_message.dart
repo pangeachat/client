@@ -187,12 +187,7 @@ Future<ReportOutcome?> submitReport({
       report,
       'forget',
     ),
-    newReportId: successorReportId,
-    markRejected: (report) => _storeSafely(
-      () async => (await pending()).markRejected(reporterId, report.reportId),
-      report,
-      'markRejected',
-    ),
+    newReportId: () => const Uuid().v4(),
     offerRetry: () => _offerReportRetry(uiContext, report),
     confirmCaptured: () {
       if (messenger == null || !messenger.mounted) return;
@@ -217,15 +212,6 @@ Future<ReportOutcome?> submitReport({
       await showFutureLoadingDialog(
         context: uiContext,
         future: () async {
-          // Checked again at sending: the reporter may have held the picker
-          // open while the admin was removed or demoted.
-          if (!await isCurrentCourseAdmin(
-            client,
-            recipient.admin.space.id,
-            recipient.admin.teacher.id,
-          )) {
-            return;
-          }
           final dm = await getReportsDM(
             recipient.admin.teacher,
             recipient.admin.space,
@@ -243,14 +229,13 @@ Future<ReportOutcome?> submitReport({
 /// stops the report from being sent: refusing to send because the device
 /// could not keep a backup copy would lose more reports than it saves. The
 /// write is tried again before every attempt.
-Future<bool> _storeSafely(
+Future<void> _storeSafely(
   Future<void> Function() write,
   ReportSubmission report,
   String operation,
 ) async {
   try {
     await write();
-    return true;
   } catch (e, s) {
     await ErrorHandler.logError(
       e: e,
@@ -260,7 +245,6 @@ Future<bool> _storeSafely(
         'report_id': report.reportId,
       },
     );
-    return false;
   }
 }
 
@@ -412,18 +396,6 @@ Future<CourseRoster> courseRosterFromServer(
           e.stateKey!: levelOf(e.stateKey!),
     },
   );
-}
-
-/// Whether [userId] is, on the homeserver right now, joined to [courseId]
-/// at course-admin power level.
-@visibleForTesting
-Future<bool> isCurrentCourseAdmin(
-  MatrixApi api,
-  String courseId,
-  String userId,
-) async {
-  final roster = await courseRosterFromServer(api, courseId);
-  return (roster.joinedPowerLevels[userId] ?? -1) >= 100;
 }
 
 /// The non-bot admins of the courses a report about [subjectId] belongs to
