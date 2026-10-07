@@ -54,10 +54,14 @@ void main() {
   });
 
   group('DiscountCodeViewModel link code (subscriptions § Gift link)', () {
-    test('a gift link\'s code is filled in and validated at once', () {
+    test('a gift link\'s code is filled in and validated at once', () async {
       late DiscountCodeViewModel viewModel;
-      // The validation call has no backend here; what is under test is that
-      // the code is taken up and the request starts without a tap.
+      // Drives the real repo singleton, as the other repo tests do. With no
+      // signed-in MatrixState its `createRequests` throws before any request
+      // is built, so the validation fails deterministically and off the
+      // network; that specific failure is asserted below, so a hang or a
+      // pre-validation failure cannot pass. The zone guard contains only the
+      // constructor's unrelated plan-list load (see setUp above).
       runZonedGuarded(
         () => viewModel = DiscountCodeViewModel(
           userID: '@u:test',
@@ -66,7 +70,14 @@ void main() {
         (_, _) {},
       );
       expect(viewModel.controller.text, 'TESOL26-alice2026');
-      expect(viewModel.loader.value, isNot(isA<AsyncIdle>()));
+      // Started synchronously, before any tap: never idle.
+      expect(viewModel.loader.value, isA<AsyncLoading>());
+
+      await pumpEventQueue();
+      final settled = viewModel.loader.value;
+      expect(settled, isA<AsyncError>());
+      final error = (settled as AsyncError).error;
+      expect(error.toString(), contains('pangeaController'));
       viewModel.dispose();
     });
   });
