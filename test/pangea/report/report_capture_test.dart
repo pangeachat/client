@@ -155,6 +155,7 @@ void main() {
     late List<String> calls;
     late List<ReportSubmission> captured;
     late List<CaptureResult> captureResults;
+    late Set<String> failingWrites;
     late List<bool> retryAnswers;
     late List<ReportRecipient<String>> admins;
     late List<Map<String, Object>> sentContents;
@@ -168,6 +169,7 @@ void main() {
       calls = [];
       captured = [];
       captureResults = [];
+      failingWrites = {};
       retryAnswers = [];
       admins = [];
       sentContents = [];
@@ -181,8 +183,10 @@ void main() {
             ? CaptureResult.recorded
             : captureResults.removeAt(0);
       },
-      remember: (submission) async =>
-          calls.add('remember:${submission.reportId}'),
+      remember: (submission) async {
+        calls.add('remember:${submission.reportId}');
+        return !failingWrites.contains(submission.reportId);
+      },
       forget: (submission) async => calls.add('forget:${submission.reportId}'),
       newReportId: () => 'fresh-report-id',
       offerRetry: () async {
@@ -331,8 +335,8 @@ void main() {
         expect(calls, [
           'remember:${report.reportId}',
           'capture',
-          'forget:${report.reportId}',
           'remember:fresh-report-id',
+          'forget:${report.reportId}',
           'offerRetry',
           'remember:fresh-report-id',
           'capture',
@@ -355,12 +359,23 @@ void main() {
         expect(calls, [
           'remember:${report.reportId}',
           'capture',
-          'forget:${report.reportId}',
           'remember:fresh-report-id',
+          'forget:${report.reportId}',
           'offerRetry',
         ]);
       },
     );
+
+    test('after a conflict, the old copy stays if the new one cannot be '
+        'stored', () async {
+      captureResults = [CaptureResult.conflict];
+      retryAnswers = [false];
+      failingWrites = {'fresh-report-id'};
+
+      await flow().run(report, offensive: false);
+
+      expect(calls, isNot(contains('forget:${report.reportId}')));
+    });
 
     test('a stored copy is kept until the module confirms it', () async {
       captureResults = [CaptureResult.failed, CaptureResult.failed];

@@ -229,13 +229,14 @@ Future<ReportOutcome?> submitReport({
 /// stops the report from being sent: refusing to send because the device
 /// could not keep a backup copy would lose more reports than it saves. The
 /// write is tried again before every attempt.
-Future<void> _storeSafely(
+Future<bool> _storeSafely(
   Future<void> Function() write,
   ReportSubmission report,
   String operation,
 ) async {
   try {
     await write();
+    return true;
   } catch (e, s) {
     await ErrorHandler.logError(
       e: e,
@@ -245,6 +246,7 @@ Future<void> _storeSafely(
         'report_id': report.reportId,
       },
     );
+    return false;
   }
 }
 

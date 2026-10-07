@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:uuid/uuid.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/events/utils/report_api_extension.dart';
@@ -84,35 +85,53 @@ class PendingReportStore {
 }
 
 /// Sends every report [userId] left unconfirmed, each with its original
-/// report id, and forgets the ones the module confirms or reports as a
-/// conflicting id. One that fails again
-/// stays for the next start; its failure is already in Sentry. A failure to
-/// forget one report is reported and does not stop the others.
+/// report id, and forgets the ones the module confirms. One that fails again
+/// stays for the next start; its failure is already in Sentry.
+///
+/// A [CaptureResult.conflict] means the id is already the module's for
+/// another report, so the report is moved to a new id from [newReportId] —
+/// the new copy stored before the old one is dropped — and sent once more
+/// under it now. A store failure is reported and never stops the others.
 Future<void> replayPendingReports({
   required PendingReportStore store,
   required String userId,
   required Future<CaptureResult> Function(ReportSubmission report) attempt,
+  required String Function() newReportId,
 }) async {
-  for (final report in await store.pendingFromDisk(userId)) {
-    // A conflict means this id belongs to another report: it can never be
-    // recorded under it, so it is dropped rather than replayed forever. There
-    // is no reporter here to restart it under a new id.
-    final result = await attempt(report);
-    if (result == CaptureResult.failed) continue;
+  Future<bool> guarded(Future<void> Function() write, String what) async {
     try {
-      await store.forget(userId, report.reportId);
+      await write();
+      return true;
     } catch (e, s) {
-      // Replayed again next start, which is harmless: the module stores a
-      // report id once.
       await ErrorHandler.logError(
         e: e,
         s: s,
-        data: {
-          'where': 'PendingReportStore.forget',
-          'report_id': report.reportId,
-        },
+        data: {'where': 'PendingReportStore.$what'},
       );
+      return false;
     }
+  }
+
+  final queue = [
+    for (final report in await store.pendingFromDisk(userId)) (report, false),
+  ];
+  while (queue.isNotEmpty) {
+    final (report, rotated) = queue.removeAt(0);
+    final result = await attempt(report);
+    if (result == CaptureResult.failed) continue;
+    if (result == CaptureResult.conflict) {
+      // A report already moved once this run waits for the next start
+      // rather than rotating again.
+      if (rotated) continue;
+      final fresh = report.withReportId(newReportId());
+      if (!await guarded(() => store.remember(userId, fresh), 'remember')) {
+        continue;
+      }
+      queue.add((fresh, true));
+    }
+    // Replayed again next start if this fails, which is harmless: the module
+    // stores a report id once.
+    await guarded(() => store.forget(userId, report.reportId), 'forget');
   }
 }
 
@@ -139,6 +158,7 @@ class PendingReportReplay {
         attempt: (report) async => _disposed
             ? CaptureResult.failed
             : attemptReportCapture(client, report),
+        newReportId: () => const Uuid().v4(),
       );
     } catch (e, s) {
       // The reports stay stored and are tried again on the next start.

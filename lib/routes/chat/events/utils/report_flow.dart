@@ -97,7 +97,8 @@ class ReportFlow<T> {
   /// Stores the report on the device before each attempt, so it is replayed
   /// with the same report id if the app dies before the module confirms it.
   /// Idempotent per report id.
-  final Future<void> Function(ReportSubmission report) remember;
+  /// True once the copy is stored.
+  final Future<bool> Function(ReportSubmission report) remember;
 
   /// Drops the stored copy once the module has recorded the report, or once
   /// its id turns out to belong to another report.
@@ -199,11 +200,12 @@ class ReportFlow<T> {
         return current;
       }
       if (result == CaptureResult.conflict) {
-        await forget(current);
-        current = current.withReportId(newReportId());
-        // Stored now, so the fresh submission survives the reporter
-        // declining the retry below.
-        await remember(current);
+        final fresh = current.withReportId(newReportId());
+        // The fresh copy is stored before the old one goes, so the report
+        // is on the device at every moment. If it cannot be stored, the old
+        // copy stays: a replay meets the same 409 and rotates it there.
+        if (await remember(fresh)) await forget(current);
+        current = fresh;
       }
       if (!await offerRetry()) return null;
     }

@@ -80,6 +80,7 @@ void main() {
         SharedPreferences.resetStatic();
         final afterRestart = await PendingReportStore.open();
         await replayPendingReports(
+          newReportId: () => 'rotated-id',
           store: afterRestart,
           userId: userId,
           attempt: serverAnswering(200),
@@ -90,6 +91,7 @@ void main() {
 
         // Confirmed, so the next start sends nothing.
         await replayPendingReports(
+          newReportId: () => 'rotated-id',
           store: await PendingReportStore.open(),
           userId: userId,
           attempt: serverAnswering(200),
@@ -103,6 +105,7 @@ void main() {
       await store.remember(userId, stored);
 
       await replayPendingReports(
+        newReportId: () => 'rotated-id',
         store: store,
         userId: userId,
         attempt: serverAnswering(503),
@@ -111,23 +114,53 @@ void main() {
       expect(store.pending(userId).map((r) => r.reportId), ['id-503']);
     });
 
-    test('a conflicting id is dropped and never replayed again', () async {
+    test('a conflicting id moves to a new one, stored before the old goes, '
+        'and is sent under it', () async {
       await store.remember(userId, submission('id-409'));
+      final answers = [409, 200];
+      final api = apiWith((request) async {
+        final body = jsonDecode(request.body) as Map<String, dynamic>;
+        sentBodies.add(body);
+        final status = answers.removeAt(0);
+        return http.Response(
+          jsonEncode(
+            status == 200
+                ? {'incident_id': 'report:${body['report_id']}'}
+                : {'errcode': 'M_UNKNOWN'},
+          ),
+          status,
+          request: request,
+        );
+      });
 
       await replayPendingReports(
+        newReportId: () => 'rotated-id',
         store: store,
         userId: userId,
-        attempt: serverAnswering(409),
+        attempt: (report) => attemptReportCapture(api, report),
       );
+
+      expect(sentBodies.map((b) => b['report_id']), ['id-409', 'rotated-id']);
+      expect(sentBodies.last['reason'], sentBodies.first['reason']);
       expect(store.pending(userId), isEmpty);
-
-      await replayPendingReports(
-        store: store,
-        userId: userId,
-        attempt: serverAnswering(200),
-      );
-      expect(sentBodies, hasLength(1));
     });
+
+    test(
+      'a conflict whose new id also fails is kept under the new id',
+      () async {
+        await store.remember(userId, submission('id-409'));
+        final results = [CaptureResult.conflict, CaptureResult.failed];
+
+        await replayPendingReports(
+          newReportId: () => 'rotated-id',
+          store: store,
+          userId: userId,
+          attempt: (_) async => results.removeAt(0),
+        );
+
+        expect(store.pending(userId).map((r) => r.reportId), ['rotated-id']);
+      },
+    );
 
     test('a 409 is a conflict, not a failure and not a success', () async {
       expect(
@@ -143,6 +176,7 @@ void main() {
         await store.remember(userId, submission('id-404'));
 
         await replayPendingReports(
+          newReportId: () => 'rotated-id',
           store: store,
           userId: userId,
           attempt: serverAnswering(404),
@@ -158,6 +192,7 @@ void main() {
         await store.remember('@someone-else:example.invalid', submission('x'));
 
         await replayPendingReports(
+          newReportId: () => 'rotated-id',
           store: store,
           userId: userId,
           attempt: serverAnswering(200),
@@ -225,6 +260,7 @@ void main() {
 
       final replayed = <String>[];
       await replayPendingReports(
+        newReportId: () => 'rotated-id',
         store: thisTab,
         userId: userId,
         attempt: (report) async {
@@ -247,6 +283,7 @@ void main() {
       await harness
           .capture(() async {
             await replayPendingReports(
+              newReportId: () => 'rotated-id',
               store: store,
               userId: userId,
               attempt: (report) async {
