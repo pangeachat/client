@@ -163,6 +163,7 @@ void main() {
     WidgetTester tester,
     QuestOutline value, {
     String? courseRoomId,
+    bool showActivityCount = true,
   }) async {
     QuestRepo.debugBuildOutline = (_, {String? courseRoomId}) async =>
         Result.value(value);
@@ -178,6 +179,7 @@ void main() {
             body: CourseInfoChips(
               questId,
               courseRoomId: courseRoomId,
+              showActivityCount: showActivityCount,
               fontSize: 12.0,
               iconSize: 12.0,
             ),
@@ -215,6 +217,26 @@ void main() {
 
     expect(find.text('2 activities'), findsOneWidget);
   });
+
+  testWidgets(
+    'showActivityCount: false drops only the activity chip — the course page '
+    'leaves the star total as the sole course goal (#9390)',
+    (tester) async {
+      await pumpChips(
+        tester,
+        outline([
+          group('lo-1', ['a', 'b', 'c']),
+        ]),
+        showActivityCount: false,
+      );
+
+      expect(find.byIcon(Icons.location_on), findsNothing);
+      expect(find.textContaining('activit'), findsNothing);
+      // The language and level chips are untouched by the opt-out.
+      expect(find.byIcon(Icons.language), findsOneWidget);
+      expect(find.byIcon(Icons.school), findsOneWidget);
+    },
+  );
 
   testWidgets('a single activity reads in the singular', (tester) async {
     await pumpChips(
