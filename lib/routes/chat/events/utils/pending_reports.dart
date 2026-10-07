@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:matrix/matrix.dart';
@@ -10,14 +11,16 @@ import 'package:fluffychat/routes/chat/events/utils/report_api_extension.dart';
 /// survives the app being killed mid-send.
 ///
 /// A report is written here before each attempt and removed only when the
-/// module confirms it, so whatever is left is replayed on the next start with its original
-/// `report_id` — which the module stores once, however many times it
-/// arrives.
+/// module confirms it, so whatever is left is replayed on the next start
+/// with its original `report_id` — which the module stores once, however
+/// many times it arrives.
 ///
-/// Keyed by the reporter's user id: a report can only be sent with the
-/// reporter's own token.
+/// One preference per report, keyed by the reporter's user id (a report can
+/// only be sent with the reporter's own token) and the report id. Each write
+/// touches only its own key, so two copies of the app — two web tabs — each
+/// holding a stale preference cache cannot erase each other's reports.
 class PendingReportStore {
-  static const prefsKey = 'pangea.pending_reports';
+  static const keyPrefix = 'pangea.pending_report';
 
   final SharedPreferences _prefs;
 
@@ -26,52 +29,49 @@ class PendingReportStore {
   static Future<PendingReportStore> open() async =>
       PendingReportStore(await SharedPreferences.getInstance());
 
-  Map<String, List<ReportSubmission>> _readAll() {
-    final raw = _prefs.getString(prefsKey);
-    if (raw == null) return {};
-    final decoded = jsonDecode(raw) as Map<String, dynamic>;
-    return decoded.map(
-      (userId, reports) => MapEntry(
-        userId,
-        (reports as List)
-            .map((r) => ReportSubmission.fromJson(r as Map<String, dynamic>))
-            .toList(),
-      ),
-    );
+  static String _userPrefix(String userId) => '$keyPrefix|$userId|';
+
+  static String _key(String userId, String reportId) =>
+      '${_userPrefix(userId)}$reportId';
+
+  /// [userId]'s stored reports. A stored value that cannot be read is
+  /// reported — by its key, never its contents, which hold the reason — and
+  /// skipped; it is left in place rather than deleted.
+  List<ReportSubmission> pending(String userId) {
+    final prefix = _userPrefix(userId);
+    final reports = <ReportSubmission>[];
+    for (final key in _prefs.getKeys().where((k) => k.startsWith(prefix))) {
+      try {
+        reports.add(
+          ReportSubmission.fromJson(
+            jsonDecode(_prefs.getString(key)!) as Map<String, dynamic>,
+          ),
+        );
+      } catch (e) {
+        // Not the caught error: a FormatException quotes the stored text.
+        unawaited(
+          ErrorHandler.logError(
+            e: 'A stored pending report is unreadable (${e.runtimeType})',
+            data: {'key': key.substring(keyPrefix.length)},
+          ),
+        );
+      }
+    }
+    return reports;
   }
 
-  Future<void> _writeAll(Map<String, List<ReportSubmission>> all) async {
-    all.removeWhere((_, reports) => reports.isEmpty);
-    final ok = await _prefs.setString(
-      prefsKey,
-      jsonEncode(
-        all.map(
-          (userId, reports) =>
-              MapEntry(userId, reports.map((r) => r.toJson()).toList()),
-        ),
-      ),
-    );
-    if (!ok) throw StateError('pending report store write was refused');
-  }
-
-  List<ReportSubmission> pending(String userId) => _readAll()[userId] ?? [];
-
-  /// Adds [report], or replaces the copy with the same report id.
+  /// Stores [report], replacing any copy with the same report id.
   Future<void> remember(String userId, ReportSubmission report) async {
-    final all = _readAll();
-    all[userId] = [
-      ...?all[userId]?.where((r) => r.reportId != report.reportId),
-      report,
-    ];
-    await _writeAll(all);
+    final ok = await _prefs.setString(
+      _key(userId, report.reportId),
+      jsonEncode(report.toJson()),
+    );
+    if (!ok) throw StateError('the pending report write was refused');
   }
 
   Future<void> forget(String userId, String reportId) async {
-    final all = _readAll();
-    final reports = all[userId];
-    if (reports == null) return;
-    all[userId] = reports.where((r) => r.reportId != reportId).toList();
-    await _writeAll(all);
+    final ok = await _prefs.remove(_key(userId, reportId));
+    if (!ok) throw StateError('the pending report removal was refused');
   }
 }
 

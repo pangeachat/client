@@ -148,7 +148,66 @@ void main() {
       await store.remember(userId, submission('same'));
       await store.remember(userId, submission('other'));
 
-      expect(store.pending(userId).map((r) => r.reportId), ['same', 'other']);
+      expect(store.pending(userId).map((r) => r.reportId).toSet(), {
+        'same',
+        'other',
+      });
+      expect(store.pending(userId), hasLength(2));
+    });
+  });
+
+  group('the pending store under stress', () {
+    final harness = SentryCaptureHarness();
+    late List<String?> printed;
+    late void Function(String?, {int? wrapWidth}) originalDebugPrint;
+
+    setUp(() async {
+      await harness.init();
+      printed = [];
+      originalDebugPrint = debugPrint;
+      debugPrint = (message, {wrapWidth}) => printed.add(message);
+    });
+
+    tearDown(() async {
+      debugPrint = originalDebugPrint;
+      await harness.close();
+    });
+
+    test('two app copies with stale caches keep both reports', () async {
+      SharedPreferences.setMockInitialValues({});
+      final tabA = await PendingReportStore.open();
+      // A second tab loads its own cache before tab A writes anything.
+      SharedPreferences.resetStatic();
+      final tabB = await PendingReportStore.open();
+
+      await tabA.remember(userId, submission('from-tab-a'));
+      await tabB.remember(userId, submission('from-tab-b'));
+
+      SharedPreferences.resetStatic();
+      final afterRestart = await PendingReportStore.open();
+      expect(afterRestart.pending(userId).map((r) => r.reportId).toSet(), {
+        'from-tab-a',
+        'from-tab-b',
+      });
+    });
+
+    test('an unreadable stored report is reported without its text', () async {
+      SharedPreferences.setMockInitialValues({
+        'flutter.${PendingReportStore.keyPrefix}|$userId|broken':
+            '{"reason":"$sentinel',
+      });
+      final store = await PendingReportStore.open();
+      await store.remember(userId, submission('fine'));
+
+      late List<ReportSubmission> pending;
+      final event = await harness.capture(() {
+        pending = store.pending(userId);
+      });
+
+      expect(pending.map((r) => r.reportId), ['fine']);
+      expect(jsonEncode(event.toJson()), isNot(contains(sentinel)));
+      expect(printed, isNotEmpty);
+      expect(printed.join('\n'), isNot(contains(sentinel)));
     });
   });
 
