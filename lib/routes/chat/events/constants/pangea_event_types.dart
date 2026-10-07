@@ -78,6 +78,10 @@ class PangeaEventTypes {
   static const knockedRooms = 'org.pangea.knocked_rooms';
   static const notificationSettings = 'org.pangea.notification_settings';
 
+  /// Account data the admin dashboard writes: the session rooms it joined this
+  /// user to so they could review them.
+  static const adminReviewRooms = 'pangea.admin_review';
+
   static const accessNoticeShown = 'org.pangea.analytics_access_notice_shown';
 
   static const firstBotDMMessage = "pangea_first_bot_dm_message";

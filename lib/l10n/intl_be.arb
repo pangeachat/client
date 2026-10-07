@@ -9350,7 +9350,6 @@
     "activityLoadFailed": "Не ўдалося загрузіць дзейнасць. Праверце сваё злучэнне і паспрабуйце яшчэ раз.",
     "levelUpChip": "Узровень {level}!",
     "missingCourseOutline": "Гэты курс больш недаступны",
-    "missingCourseOutlineCta": "Гэты курс больш недаступны. Выберыце новы план курса.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9375,10 +9374,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9924,6 +9919,9 @@
     "callTranscriptSubscribeForTranscription": "Падпісацца на транскрыпцыю",
     "unlockCallTranscript": "Разблакіраваць стэнаграму званка",
     "activitySummaryUpdateFailed": "Гэтае зводка не можа быць абноўлена.",
+    "courseNotFound": "Курс не знойдзены",
+    "askTeacherForNewCourse": "Папрасіце настаўніка выбраць новы курс.",
+    "pickNewCoursePlan": "Выберыце новы план курса.",
     "ssoNetworkBlockedTitle": "Сайт для ўваходу недаступны",
     "ssoNetworkBlockedDesc": "Гэтая сетка не дазваляе нам звязацца з {provider} для вашага ўваходу. Школьны і офісны Wi-Fi часта блакуюць яго. Вы можаце зарэгістравацца з дапамогай электроннай пошты або пераключыцца на іншую сетку і паспрабаваць яшчэ раз.",
     "ssoTryAnyway": "Усё роўна паспрабаваць",

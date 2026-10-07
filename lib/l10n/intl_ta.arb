@@ -9440,7 +9440,6 @@
     "activityLoadFailed": "செயல்பாட்டை ஏற்ற முடியவில்லை. உங்கள் இணைப்பை சரிபார்க்கவும் மற்றும் மீண்டும் முயற்சிக்கவும்.",
     "levelUpChip": "அடுக்கு {level}!",
     "missingCourseOutline": "இந்த பாடம் இனி கிடைக்கவில்லை",
-    "missingCourseOutlineCta": "இந்த பாடம் இனி கிடைக்கவில்லை. புதிய பாட திட்டத்தை தேர்ந்தெடுக்கவும்.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9465,10 +9464,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10002,6 +9997,9 @@
     "callTranscriptSubscribeForTranscription": "படியெடுத்தலுக்கு குழுசேரவும்",
     "unlockCallTranscript": "அழைப்புப் படியெடுத்தலைத் திறக்கவும்",
     "activitySummaryUpdateFailed": "இந்தச் சுருக்கத்தைப் புதுப்பிக்க முடியவில்லை.",
+    "courseNotFound": "பாடநெறி காணப்படவில்லை",
+    "askTeacherForNewCourse": "புதிய பாடத்திட்டத்தைத் தேர்வுசெய்ய உங்கள் ஆசிரியரிடம் கேளுங்கள்.",
+    "pickNewCoursePlan": "புதிய பாடத்திட்டத்தைத் தேர்ந்தெடுக்கவும்.",
     "ssoNetworkBlockedTitle": "உள்நுழைவு தளம் அணுக முடியாதது",
     "ssoNetworkBlockedDesc": "உங்களை உள்நுழைய வைக்க {provider} ஐ அணுக இந்த நெட்வொர்க் எங்களை அனுமதிக்கவில்லை. பள்ளி மற்றும் அலுவலக வைஃபை பெரும்பாலும் இதைத் தடுக்கிறது. அதற்கு பதிலாக நீங்கள் மின்னஞ்சல் மூலம் பதிவு செய்யலாம் அல்லது வேறு நெட்வொர்க்கிற்கு மாறி மீண்டும் முயற்சி செய்யலாம்.",
     "ssoTryAnyway": "எப்படியும் முயற்சி செய்",

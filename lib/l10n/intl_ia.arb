@@ -10281,7 +10281,6 @@
     "activityLoadFailed": "Impossibile caricare l'attività. Controlla la tua connessione e riprova.",
     "levelUpChip": "Livello {level}!",
     "missingCourseOutline": "Questo corso non è più disponibile",
-    "missingCourseOutlineCta": "Questo corso non è più disponibile. Scegli un nuovo piano di corso.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10306,10 +10305,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10843,6 +10838,9 @@
     "callTranscriptSubscribeForTranscription": "Subscriber pro transcription",
     "unlockCallTranscript": "Disblocar transcripto de appellation",
     "activitySummaryUpdateFailed": "Iste summario non poteva esser actualisate.",
+    "courseNotFound": "Curso non trovate",
+    "askTeacherForNewCourse": "Demanda a tu maestro que selige un nove curso.",
+    "pickNewCoursePlan": "Selige un nove plano de curso.",
     "ssoNetworkBlockedTitle": "Sito de authentification inaccessibile",
     "ssoNetworkBlockedDesc": "Iste rete non nos permitte attinger {provider} pro authentificar vos. Le Wi-Fi de scholas e officios sovente lo bloca. Vos pote registrar vos con e-mail in loco, o cambiar a un altere rete e reprovar.",
     "ssoTryAnyway": "Provar de tote modos",

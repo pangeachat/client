@@ -10265,7 +10265,6 @@
     "activityLoadFailed": "Kunne ikke indlæse aktiviteten. Tjek din forbindelse og prøv igen.",
     "levelUpChip": "Niveau {level}!",
     "missingCourseOutline": "Dette kursus er ikke længere tilgængeligt",
-    "missingCourseOutlineCta": "Dette kursus er ikke længere tilgængeligt. Vælg en ny kursusplan.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10290,10 +10289,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10827,6 +10822,9 @@
     "callTranscriptSubscribeForTranscription": "Abonnér for transskription",
     "unlockCallTranscript": "Lås op for opkaldstranskription",
     "activitySummaryUpdateFailed": "Denne oversigt kunne ikke opdateres.",
+    "courseNotFound": "Kursus ikke fundet",
+    "askTeacherForNewCourse": "Bed din lærer om at vælge et nyt kursus.",
+    "pickNewCoursePlan": "Vælg en ny kursusplan.",
     "ssoNetworkBlockedTitle": "Loginside utilgængelig",
     "ssoNetworkBlockedDesc": "Dette netværk tillader os ikke at nå {provider} for at logge dig ind. Skole- og kontor-Wi-Fi blokerer det ofte. Du kan i stedet tilmelde dig med e-mail eller skifte til et andet netværk og prøve igen.",
     "ssoTryAnyway": "Prøv alligevel",

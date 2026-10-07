@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_vocab_matcher.dart';
 import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
@@ -35,9 +36,9 @@ class SttTranscriptTokens extends StatelessWidget {
   final void Function(PangeaToken)? onClick;
   final bool Function(PangeaToken)? isSelected;
 
-  /// Lower-cased target vocab lemmas for the room's activity, or null when
-  /// the room has no activity plan. Spoken words whose lemma is in this set
-  /// get the gold highlight, matching typed messages (issue #7659).
+  /// Lower-cased target vocab entries for the room's activity, or null when
+  /// the room has no activity plan. Spoken words [ActivityVocabMatcher] finds
+  /// in it get the gold highlight, matching typed messages (issue #7659).
   final Set<String>? vocabLemmas;
   final SttTranscriptTokenPresentationResolver? presentationForToken;
   final Set<PangeaTokenText>? newTokensOverride;
@@ -67,9 +68,11 @@ class SttTranscriptTokens extends StatelessWidget {
     }
 
     final messageCharacters = model.transcript.text.characters;
+    final tokens = this.tokens;
     final newTokens =
         newTokensOverride ??
         TokensUtil.instance.getNewTokens(eventId, tokens, model.langCode);
+    final vocabMatcher = ActivityVocabMatcher(tokens, vocabLemmas);
 
     return WholeTextSemantics(
       text: model.transcript.text,
@@ -104,9 +107,8 @@ class SttTranscriptTokens extends StatelessWidget {
                   tokenPosition.startIndex,
                   tokenPosition.endIndex,
                 );
-                final isVocabHighlight = TokenRenderingUtil.isVocabHighlight(
-                  token.lemma.text,
-                  vocabLemmas,
+                final isVocabHighlight = vocabMatcher.matchedTokens.contains(
+                  token,
                 );
 
                 return WidgetSpan(

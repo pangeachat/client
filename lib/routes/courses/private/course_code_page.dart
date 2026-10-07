@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:go_router/go_router.dart';
 
@@ -221,9 +220,6 @@ class CourseCodePageState extends State<CourseCodePage> {
                               prefixIcon: Icon(Icons.key_outlined),
                             ),
                             onFieldSubmitted: (_) => _submit(),
-                            inputFormatters: [
-                              LengthLimitingTextInputFormatter(10),
-                            ],
                           ),
                           SizedBox(
                             width: double.infinity,

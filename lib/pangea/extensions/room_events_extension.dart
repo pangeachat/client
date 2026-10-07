@@ -10,7 +10,10 @@ extension EventsRoomExtension on Room {
     for (final child in spaceChildren) {
       if (child.roomId == null) continue;
       final Room? room = client.getRoomById(child.roomId!);
-      if (room == null || room.isHiddenRoom) continue;
+      // Kept on leave, unlike rooms that are only hidden from the lists.
+      if (room == null || room.isAnalyticsRoom || room.hasArchivedActivity) {
+        continue;
+      }
       try {
         await room.leave();
       } catch (e, s) {

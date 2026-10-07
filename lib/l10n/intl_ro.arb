@@ -10077,7 +10077,6 @@
     "activityLoadFailed": "Nu s-a putut încărca activitatea. Verifică-ți conexiunea și încearcă din nou.",
     "levelUpChip": "Nivel {level}!",
     "missingCourseOutline": "Acest curs nu mai este disponibil",
-    "missingCourseOutlineCta": "Acest curs nu mai este disponibil. Alege un nou plan de curs.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10102,10 +10101,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10639,6 +10634,9 @@
     "callTranscriptSubscribeForTranscription": "Abonează-te pentru transcriere",
     "unlockCallTranscript": "Deblochează transcrierea apelului",
     "activitySummaryUpdateFailed": "Acest rezumat nu a putut fi actualizat.",
+    "courseNotFound": "Cursul nu a fost găsit",
+    "askTeacherForNewCourse": "Roagă-ți profesorul să aleagă un curs nou.",
+    "pickNewCoursePlan": "Alege un plan de curs nou.",
     "ssoNetworkBlockedTitle": "Site-ul de conectare este inaccesibil",
     "ssoNetworkBlockedDesc": "Această rețea nu ne permite să ajungem la {provider} pentru a te conecta. Rețelele Wi-Fi de la școală și de la birou blochează adesea acest lucru. Te poți înscrie cu e-mail în schimb sau poți trece la o altă rețea și poți încerca din nou.",
     "ssoTryAnyway": "Încearcă oricum",

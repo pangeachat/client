@@ -10114,7 +10114,6 @@
     "activityLoadFailed": "アクティビティを読み込めませんでした。接続を確認して再試行してください。",
     "levelUpChip": "レベル {level}!",
     "missingCourseOutline": "このコースはもはや利用できません",
-    "missingCourseOutlineCta": "このコースはもはや利用できません。新しいコースプランを選択してください。",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10139,10 +10138,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10676,6 +10671,9 @@
     "callTranscriptSubscribeForTranscription": "文字起こしを購読する",
     "unlockCallTranscript": "通話記録のロックを解除",
     "activitySummaryUpdateFailed": "この要約を更新できませんでした。",
+    "courseNotFound": "コースが見つかりません",
+    "askTeacherForNewCourse": "担当の先生に新しいコースを選んでもらいましょう。",
+    "pickNewCoursePlan": "新しいコースプランを選んでください。",
     "ssoNetworkBlockedTitle": "サインインサイトに接続できません",
     "ssoNetworkBlockedDesc": "このネットワークでは、サインインのために{provider}に接続できません。学校や職場のWi-Fiではよくブロックされます。代わりにメールで登録するか、別のネットワークに切り替えて再試行してください。",
     "ssoTryAnyway": "とにかく試す",

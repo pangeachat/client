@@ -1,6 +1,6 @@
 ---
 applyTo: "lib/features/activity_sessions/**,lib/features/quests/**,lib/routes/analytics/activities/**,lib/routes/chat/activity_sessions/**,lib/routes/chat/chat_details/**"
-description: "Client design for activities: thin cards, the start page's room-driven state, navigation, and the media carousel (video next)."
+description: "Client design for activities: thin cards, the start page's room-driven state, navigation, the media carousel (video next), and how target vocab is matched in messages."
 ---
 
 # Activity System
@@ -21,6 +21,16 @@ On the write side, starting a session shares it into **every joined course the a
 
 Starting a session opens it once the new room has reached the client with its initial state, including the launcher's role, which is usually one sync after the server creates it. Sharing into courses and the bot invite finish in the background, and a room panel whose room hasn't synced yet shows a loading state for up to 10 seconds before the room-unavailable panel.
 
+## Sessions a teacher only reviewed stay out of their chats
+
+When a teacher opens a student's session from the admin dashboard, the dashboard joins the teacher to that session room so they can read it. The teacher takes no part in that conversation, so the room stays out of every chat list and unread badge, the same way an archived activity does ([#9364](https://github.com/pangeachat/client/issues/9364)).
+
+- **The dashboard keeps the list.** It records each room it joined for review in the teacher's `pangea.admin_review` account data, as a `room_ids` list. The record lives on the teacher's account rather than in the room, because a profile change rewrites the teacher's membership in every room and would erase a mark kept there.
+- **Taking a role ends the review.** A listed room shows again once the teacher takes a role in the session, because the teacher is then a participant.
+- **A direct link still opens it.** The room is hidden from the lists, but a link to it still opens it, so the dashboard's Open chat link keeps working.
+- **Leaving a course leaves these rooms too.** Leaving a course keeps only the teacher's analytics rooms and archived activities; a review room is left with the course.
+- **Muting these rooms, and later leaving them, is the dashboard's job, not the client's.**
+
 ## The start page mirrors the room
 
 The activity's start page doesn't store its own state; it reads it from the room — whether a room exists yet, whether the learner is in it, whether they've taken a role, whether every role is filled. From those facts it moves through a short sequence (not started → picking a role → in with a role → session full) and shows the right thing at each step: the waiting room (ping the course, play with the bot, or invite a friend — pinging is limited to once a minute so it can't be spammed), the role picker, or the live activity.
@@ -28,6 +38,14 @@ The activity's start page doesn't store its own state; it reads it from the room
 When a session counts as ended, and how the bot makes its summary, are the org doc's call ([activity-summary.instructions.md](../../../.github/.github/instructions/activity-summary.instructions.md)). The client shows the summary from the room state the bot writes. A viewer whose first language differs from the summary's sees it translated. The loading placeholder stays up while the translation is fetched, and if the translation fails, the viewer sees the summary in its original language. The client writes the room's analytics when no client has yet, and it sends a learner's retry or feedback as a request the bot serves. It also keeps a short-lived local cache of the room's analytics, so the page doesn't re-fetch on every visit.
 
 The page's **layout and gestures** — the mobile grow-before-scroll sheet, the header and info row, the CTA row, and how it owns its container over the nav rail and analytics bar — are their own concern: [activity-start-page.instructions.md](activity-start-page.instructions.md).
+
+## Target vocab in the conversation
+
+An activity's suggested vocab is a list of entries in the target language. An entry is usually one word, but the generator also emits set phrases ("hace sol", "cómo te llamas"), and a curriculum's vocab list keeps its phrases whole, so a phrase is one entry everywhere the client shows vocab: the chips on the start page and in the summary, the gold highlight in messages, and the used state.
+
+One rule, [`ActivityVocabMatcher`](../../lib/features/activity_sessions/activity_vocab_matcher.dart), decides where an entry appears in a message. A single-word entry matches a token by lemma, so "llueve" counts for "llover". A phrase matches a run of consecutive tokens where each word equals the token's text or its lemma, case-insensitively, so "hace sol" matches "Hace sol" and "ir de compras" matches "voy de compras"; punctuation between the words breaks the run. Every token in a matched run gets the gold highlight, in typed messages and spoken transcripts alike, and the same matches turn the chips gold as used, so the highlight and the chips can never disagree. The match runs once per message as it renders, so it costs nothing a learner can notice.
+
+Analytics stays word-grained: a phrase in a message writes only its single-word constructs, as before, so the used state comes from the room's messages, not from the learner's analytics. A phrase entry is tagged `phrase` where a word carries its part of speech; the client treats that tag as a content word, so the chip gets the new-word underline and a tap collects the phrase as its own construct, the same as tapping a noun.
 
 ## The goal header
 
@@ -131,6 +149,8 @@ An activity opens one of two ways: as an overlay over the world map (when the le
 An activity's stimulus is a carousel of mixed media — images, audio, and video (uploaded or from YouTube) — in a set order; a single image is just a carousel of one. The kinds of block and the rules for resolving and rendering them are the org doc's. What the client owns is turning that list into something the learner can see.
 
 Two things shape how the client renders it. First, uploaded media arrives as a reference, not an address, so the client resolves it to a real URL before showing anything — and **every path that prepares an activity for display must resolve, or the media falls back to a placeholder.** YouTube blocks are the exception: they already carry their link. Second, how much of the carousel a surface shows depends on the room it has — a focused surface (the plan page, the live session) presents the whole carousel; a compact surface (a card, a map pin) shows just the first block, standing in for the rest. When an activity has only one piece of media, there is nothing to page through: the carousel degrades to a single display with no navigation controls. [`ActivityMediaBlock`](../../lib/features/activity_sessions/activity_media_block.dart) is the media model.
+
+On the plan page the lead block fills the top of the page, cropped to fit, with the goals and role cards over it. Tapping a lead image shows all of it in place: the goals, role cards and fade disappear, the image shows uncropped on a black band, and a close button above it, or a second tap on the image, brings back the cropped view and the overlays ([#9351](https://github.com/pangeachat/client/issues/9351)). A playing video clears the overlays the same way. The image opens in place on every platform, because an image has no webview to escape the mobile sheet. For the keyboard the image is one button, "View image": Enter or Space opens and closes it, and closing it from the close button puts focus back on the image.
 
 In the live session the carousel sits at the top of the chat, and tapping an image opens it full screen so the learner sees the whole image. The activity image is never drawn behind the messages: the chat background stays one plain color, because a photo behind the chat made the screen too busy over the map ([#9356](https://github.com/pangeachat/client/issues/9356)).
 

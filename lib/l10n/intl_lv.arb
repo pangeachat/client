@@ -9348,7 +9348,6 @@
     "activityLoadFailed": "Neizdevās ielādēt aktivitāti. Pārbaudiet savu savienojumu un mēģiniet vēlreiz.",
     "levelUpChip": "Līmenis {level}!",
     "missingCourseOutline": "Šis kurss vairs nav pieejams",
-    "missingCourseOutlineCta": "Šis kurss vairs nav pieejams. Izvēlieties jaunu kursa plānu.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9373,10 +9372,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9910,6 +9905,9 @@
     "callTranscriptSubscribeForTranscription": "Abonēt transkripciju",
     "unlockCallTranscript": "Atbloķēt zvanu transkriptu",
     "activitySummaryUpdateFailed": "Šo kopsavilkumu nevarēja atjaunināt.",
+    "courseNotFound": "Kurss nav atrasts",
+    "askTeacherForNewCourse": "Palūdziet savam skolotājam izvēlēties jaunu kursu.",
+    "pickNewCoursePlan": "Izvēlieties jaunu kursa plānu.",
     "ssoNetworkBlockedTitle": "Pieteikšanās vietne nav sasniedzama",
     "ssoNetworkBlockedDesc": "Šis tīkls neļauj mums sasniegt {provider}, lai jūs pieteiktu. Skolas un biroja Wi-Fi bieži to bloķē. Jūs varat reģistrēties ar e-pastu vai pārslēgties uz citu tīklu un mēģināt vēlreiz.",
     "ssoTryAnyway": "Tomēr mēģināt",

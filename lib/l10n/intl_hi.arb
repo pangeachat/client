@@ -9977,7 +9977,6 @@
     "activityLoadFailed": "गतिविधि लोड नहीं हो सकी। अपने कनेक्शन की जांच करें और फिर से प्रयास करें।",
     "levelUpChip": "स्तर {level}!",
     "missingCourseOutline": "यह पाठ्यक्रम अब उपलब्ध नहीं है",
-    "missingCourseOutlineCta": "यह पाठ्यक्रम अब उपलब्ध नहीं है। एक नया पाठ्यक्रम योजना चुनें।",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10002,10 +10001,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10539,6 +10534,9 @@
     "callTranscriptSubscribeForTranscription": "लिप्यंतरण के लिए सदस्यता लें",
     "unlockCallTranscript": "कॉल ट्रांसक्रिप्ट अनलॉक करें",
     "activitySummaryUpdateFailed": "यह सारांश अपडेट नहीं किया जा सका।",
+    "courseNotFound": "कोर्स नहीं मिला",
+    "askTeacherForNewCourse": "अपने शिक्षक से नया कोर्स चुनने के लिए कहें।",
+    "pickNewCoursePlan": "एक नई कोर्स योजना चुनें।",
     "ssoNetworkBlockedTitle": "साइन-इन साइट तक नहीं पहुँचा जा सकता",
     "ssoNetworkBlockedDesc": "यह नेटवर्क आपको साइन इन करने के लिए {provider} तक पहुँचने नहीं दे रहा है। स्कूल और ऑफिस का वाई-फाई अक्सर इसे ब्लॉक कर देता है। आप इसके बजाय ईमेल से साइन अप कर सकते हैं, या किसी दूसरे नेटवर्क पर स्विच करके फिर से कोशिश कर सकते हैं।",
     "ssoTryAnyway": "फिर भी कोशिश करें",

@@ -9385,7 +9385,6 @@
     "activityLoadFailed": "Toimintoa ei voitu ladata. Tarkista yhteytesi ja yritä uudelleen.",
     "levelUpChip": "Taso {level}!",
     "missingCourseOutline": "Tämä kurssi ei ole enää saatavilla",
-    "missingCourseOutlineCta": "Tämä kurssi ei ole enää saatavilla. Valitse uusi kurssisuunnitelma.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9410,10 +9409,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9947,6 +9942,9 @@
     "callTranscriptSubscribeForTranscription": "Tilaa litterointi",
     "unlockCallTranscript": "Avaa puhelun litterointi",
     "activitySummaryUpdateFailed": "Yhteenvedon päivittäminen epäonnistui.",
+    "courseNotFound": "Kurssia ei löydy",
+    "askTeacherForNewCourse": "Pyydä opettajaasi valitsemaan uusi kurssi.",
+    "pickNewCoursePlan": "Valitse uusi kurssisuunnitelma.",
     "ssoNetworkBlockedTitle": "Kirjautumissivusto ei tavoitettavissa",
     "ssoNetworkBlockedDesc": "Tämä verkko estää meitä tavoittamasta palvelua {provider} kirjautuaksesi sisään. Koulun ja toimiston Wi-Fi-verkot estävät sen usein. Voit kirjautua sisään sähköpostilla tai vaihtaa toiseen verkkoon ja yrittää uudelleen.",
     "ssoTryAnyway": "Yritä silti",

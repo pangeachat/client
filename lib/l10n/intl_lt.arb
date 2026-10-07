@@ -10126,7 +10126,6 @@
     "activityLoadFailed": "Nepavyko įkelti veiklos. Patikrinkite savo ryšį ir bandykite dar kartą.",
     "levelUpChip": "Lygis {level}!",
     "missingCourseOutline": "Šis kursas nebėra prieinamas",
-    "missingCourseOutlineCta": "Šis kursas nebėra prieinamas. Pasirinkite naują kurso planą.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10151,10 +10150,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10688,6 +10683,9 @@
     "callTranscriptSubscribeForTranscription": "Prenumeruoti transkripciją",
     "unlockCallTranscript": "Atrakinti pokalbio transkripciją",
     "activitySummaryUpdateFailed": "Šio suvestinės nepavyko atnaujinti.",
+    "courseNotFound": "Kursas nerastas",
+    "askTeacherForNewCourse": "Paprašykite mokytojo parinkti naują kursą.",
+    "pickNewCoursePlan": "Pasirinkite naują kurso planą.",
     "ssoNetworkBlockedTitle": "Prisijungimo svetainė nepasiekiama",
     "ssoNetworkBlockedDesc": "Šis tinklas neleidžia mums pasiekti {provider}, kad galėtumėte prisijungti. Mokyklos ir biuro „Wi-Fi“ dažnai blokuoja prieigą. Galite prisiregistruoti el. paštu arba prisijungti prie kito tinklo ir bandyti dar kartą.",
     "ssoTryAnyway": "Vis tiek bandyti",

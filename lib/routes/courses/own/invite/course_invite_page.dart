@@ -54,6 +54,10 @@ class CourseInvitePageController extends State<CourseInvitePage>
   }
 
   Future<String> getSpaceId() async {
+    // Resolve the client before any await. The page is routed away from while
+    // the creation completer or the state sync is still pending, and reading
+    // `context` on a disposed State throws a null check (CLIENT-EYE / EYF).
+    final client = Matrix.of(context).client;
     final completer = widget.courseCreationCompleter;
     if (completer == null) {
       // No live creation completer (reload / back). The route param is the
@@ -62,16 +66,16 @@ class CourseInvitePageController extends State<CourseInvitePage>
       // room matched this way already has that state, so no sync wait is needed.
       // (initState redirects away when no such room exists; this throw is a
       // belt-and-suspenders for that race.)
-      final room = Matrix.of(context).client.getRoomByCourseId(widget.courseId);
+      final room = client.getRoomByCourseId(widget.courseId);
       if (room == null) {
         throw Exception("No course room for plan ${widget.courseId}");
       }
       return room.id;
     }
     final spaceId = await completer.future;
-    final room = Matrix.of(context).client.getRoomById(spaceId);
+    final room = client.getRoomById(spaceId);
 
-    final roomStateStream = Matrix.of(context).client.onRoomState.stream;
+    final roomStateStream = client.onRoomState.stream;
     final futures = [
       if (room == null) roomStateStream.firstWhere((e) => e.roomId == spaceId),
       if (room?.coursePlan == null)

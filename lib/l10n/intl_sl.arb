@@ -10290,7 +10290,6 @@
     "activityLoadFailed": "Dejavnosti ni bilo mogoče naložiti. Preverite svojo povezavo in poskusite znova.",
     "levelUpChip": "Raven {level}!",
     "missingCourseOutline": "Ta tečaj ni več na voljo",
-    "missingCourseOutlineCta": "Ta tečaj ni več na voljo. Izberite nov načrt tečaja.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10315,10 +10314,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10852,6 +10847,9 @@
     "callTranscriptSubscribeForTranscription": "Naročite se na prepisovanje",
     "unlockCallTranscript": "Odkleni prepis klica",
     "activitySummaryUpdateFailed": "Tega povzetka ni bilo mogoče posodobiti.",
+    "courseNotFound": "Tečaja ni mogoče najti",
+    "askTeacherForNewCourse": "Prosite svojega učitelja, naj izbere nov tečaj.",
+    "pickNewCoursePlan": "Izberite nov učni načrt.",
     "ssoNetworkBlockedTitle": "Mesto za prijavo ni dosegljivo",
     "ssoNetworkBlockedDesc": "To omrežje nam ne dovoljuje, da dosežemo {provider} za vašo prijavo. Šolski in pisarniški Wi-Fi to pogosto blokirata. Namesto tega se lahko prijavite z e-pošto ali preklopite na drugo omrežje in poskusite znova.",
     "ssoTryAnyway": "Vseeno poskusi",

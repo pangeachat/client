@@ -9348,7 +9348,6 @@
     "activityLoadFailed": "Jarduera kargatzea ezin izan da. Begiratu zure konexioa eta saiatu berriro.",
     "levelUpChip": "Maila {level}!",
     "missingCourseOutline": "Ikastaro hau ez dago eskuragarri",
-    "missingCourseOutlineCta": "Ikastaro hau ez dago eskuragarri. Aukeratu ikastaro berri bat.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9373,10 +9372,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9910,6 +9905,9 @@
     "callTranscriptSubscribeForTranscription": "Harpidetu transkripziorako",
     "unlockCallTranscript": "Desblokeatu deiaren transkripzioa",
     "activitySummaryUpdateFailed": "Laburpen hau ezin izan da eguneratu.",
+    "courseNotFound": "Ikastaroa ez da aurkitu",
+    "askTeacherForNewCourse": "Eskatu irakasleari ikastaro berri bat aukeratzeko.",
+    "pickNewCoursePlan": "Aukeratu ikastaro-plan berri bat.",
     "ssoNetworkBlockedTitle": "Saioa hasteko gunea eskuraezina",
     "ssoNetworkBlockedDesc": "Sare honek ez digu uzten {provider} atzitzen saioa hasteko. Eskolako eta bulegoko Wi-Fi sareek askotan blokeatzen dute. Horren ordez, posta elektronikoarekin erregistra zaitezke, edo beste sare batera aldatu eta berriro saiatu.",
     "ssoTryAnyway": "Dena den, saiatu",

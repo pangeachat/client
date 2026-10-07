@@ -9646,7 +9646,6 @@
     "activityLoadFailed": "تعذر تحميل النشاط. تحقق من اتصالك وحاول مرة أخرى.",
     "levelUpChip": "المستوى {level}!",
     "missingCourseOutline": "لم يعد هذا المقرر متاحًا",
-    "missingCourseOutlineCta": "لم يعد هذا المقرر متاحًا. اختر خطة مقرر جديدة.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9671,10 +9670,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10216,6 +10211,9 @@
     "callTranscriptSubscribeForTranscription": "اشترك لنسخ المحادثة",
     "unlockCallTranscript": "فتح نسخة المحادثة",
     "activitySummaryUpdateFailed": "تعذر تحديث هذا الملخص.",
+    "courseNotFound": "لم يتم العثور على الدورة التدريبية",
+    "askTeacherForNewCourse": "اطلب من معلمك اختيار دورة تدريبية جديدة.",
+    "pickNewCoursePlan": "اختر خطة دراسية جديدة.",
     "ssoNetworkBlockedTitle": "موقع تسجيل الدخول غير متاح",
     "ssoNetworkBlockedDesc": "لا تسمح لنا هذه الشبكة بالوصول إلى {provider} لتسجيل دخولك. غالبًا ما تحظر شبكات Wi-Fi المدرسية والمكتبية ذلك. يمكنك التسجيل باستخدام البريد الإلكتروني بدلاً من ذلك، أو التبديل إلى شبكة أخرى والمحاولة مرة أخرى.",
     "ssoTryAnyway": "المحاولة على أي حال",

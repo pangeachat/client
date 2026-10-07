@@ -9335,7 +9335,6 @@
     "activityLoadFailed": "Die Aktivität konnte nicht geladen werden. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
     "levelUpChip": "Level {level}!",
     "missingCourseOutline": "Dieser Kurs ist nicht mehr verfügbar",
-    "missingCourseOutlineCta": "Dieser Kurs ist nicht mehr verfügbar. Wählen Sie einen neuen Kursplan.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9360,10 +9359,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9897,6 +9892,9 @@
     "callTranscriptSubscribeForTranscription": "Für Transkription abonnieren",
     "unlockCallTranscript": "Anruf-Transkript freischalten",
     "activitySummaryUpdateFailed": "Diese Zusammenfassung konnte nicht aktualisiert werden.",
+    "courseNotFound": "Kurs nicht gefunden",
+    "askTeacherForNewCourse": "Bitte deinen Lehrer, einen neuen Kurs auszuwählen.",
+    "pickNewCoursePlan": "Wählen Sie einen neuen Kursplan.",
     "ssoNetworkBlockedTitle": "Anmeldeseite nicht erreichbar",
     "ssoNetworkBlockedDesc": "Dieses Netzwerk lässt uns nicht zu {provider} durch, um dich anzumelden. Schul- und Büro-WLAN blockieren dies oft. Du kannst dich stattdessen mit E-Mail anmelden oder zu einem anderen Netzwerk wechseln und es erneut versuchen.",
     "ssoTryAnyway": "Trotzdem versuchen",

@@ -10,6 +10,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_vocab_matcher.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
@@ -69,15 +70,17 @@ class HtmlMessage extends StatelessWidget {
 
   /// Overrides the room-activity vocab lemmas as the gold-highlight set —
   /// used by the analytics example messages to mark the construct's forms.
-  /// Must already be lower-cased (see [TokenRenderingUtil.isVocabHighlight]).
+  /// Must already be lower-cased (see [ActivityVocabMatcher]).
   final Set<String>? vocabLemmas;
 
-  /// Target vocab lemmas for the gold highlight, computed once per build so
-  /// the per-token render loop doesn't rebuild the set for every token
-  /// (issue #7659). Defaults to the room activity's target vocab; null when
+  /// Where the target vocab appears in this message, computed once per build
+  /// so the per-token render loop doesn't re-walk the tokens (issue #7659).
+  /// Defaults to the room activity's target vocab; matches nothing when
   /// neither an override nor an activity plan exists.
-  late final Set<String>? _activityVocabLemmas =
-      vocabLemmas ?? controller.room.activityPlan?.vocabLemmas;
+  late final ActivityVocabMatcher _vocabMatcher = ActivityVocabMatcher(
+    tokens ?? const [],
+    vocabLemmas ?? controller.room.activityPlan?.vocabLemmas,
+  );
 
   /// Message-level inputs of the per-node render, computed once per build
   /// instead of once per HTML node (issue #8393): the message text style
@@ -514,11 +517,7 @@ class HtmlMessage extends StatelessWidget {
             isFirstNewToken;
 
         final isVocabHighlight =
-            token != null &&
-            TokenRenderingUtil.isVocabHighlight(
-              token.lemma.text,
-              _activityVocabLemmas,
-            );
+            token != null && _vocabMatcher.matchedTokens.contains(token);
 
         final tokenWidth = _renderer.tokenTextWidthForContainer(
           node.text,

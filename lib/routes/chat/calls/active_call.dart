@@ -270,30 +270,99 @@ class ActiveCall extends ChangeNotifier {
     if (began != null && DateTime.now().isAfter(began.add(_glareWindow))) {
       return;
     }
-    // And EVIDENCE, not just timing: the device that rang is still holding a
-    // call. Arrival time alone cannot tell a ring sent a moment ago from one
-    // sent twenty seconds ago and delivered now -- a call of theirs that
+    // And EVIDENCE, not just timing: the call the ring was sent from is still
+    // standing. Arrival time alone cannot tell a ring sent a moment ago from
+    // one sent twenty seconds ago and delivered now -- a call of theirs that
     // already ended stays valid for its whole lifetime, and counting it made
     // this side stand aside from writing a call the other side was not
     // writing either. Their membership answers it without reference to any
     // clock: somebody mid-call is still in the room's state, somebody who
     // gave up is not.
     final room = _room;
-    if (room != null &&
-        calls.callerPresence(
-              room,
-              event.senderId,
-              deviceId: ring.senderDeviceId,
-            ) ==
-            PeerPresence.gone) {
+    if (room == null) {
+      _settleGlare(ring);
       return;
     }
+    switch (calls.ringCallPresence(room, ring)) {
+      case PeerPresence.gone:
+        return;
+      case PeerPresence.live:
+        _settleGlare(ring);
+      case PeerPresence.unknown:
+        // Nothing in this device's state speaks for that call yet, and either
+        // guess is wrong somewhere (pangeachat/.github#410). Read as live, a
+        // call BACK placed seconds after they gave up ringing us is taken as
+        // simultaneous, names them as its caller, and leaves its card to the
+        // survivor path. Read as gone, genuine simultaneous calling -- where
+        // each side often has not synced the other yet -- has both sides
+        // write the call. So it is not decided here: it is decided by their
+        // membership when it arrives.
+        _deferGlare(room, ring);
+    }
+  }
+
+  void _settleGlare(IncomingCallNotification ring) {
     _peerAlsoPlaced = true;
-    _peerRingSenderId = event.senderId;
+    _peerRingSenderId = ring.event.senderId;
     // Their ring names THEIR membership -- on glare, whichever side loses the
     // tie-break stamps the winner's membership as the call's identity, and
     // this is the only place the loser ever learns it.
     _peerRingMembershipId = ring.membershipEventId;
+    _stopAwaitingRingEvidence();
+  }
+
+  /// Rings that might be glare, waiting for the membership that decides it.
+  ///
+  /// Until it arrives each one counts as glare: that is the answer the call
+  /// had before this wait existed, and of the two wrong answers it is the
+  /// one that cannot put the call in the conversation twice -- the survivor
+  /// path still recovers its card if the other side never writes it. The
+  /// wait only ever moves a ring OUT of glare on evidence, or confirms it.
+  final List<IncomingCallNotification> _undecidedRings = [];
+
+  StreamSubscription<void>? _ringEvidence;
+
+  void _deferGlare(matrix.Room room, IncomingCallNotification ring) {
+    if (_peerAlsoPlaced) return;
+    _undecidedRings.add(ring);
+    // One subscription: a direct call has one other person, so every ring
+    // that reaches this stream is theirs.
+    _ringEvidence ??= calls
+        .callerStateUpdates(room, ring.event.senderId)
+        .listen(_onRingEvidence);
+  }
+
+  /// Settles each undecided ring on the first state event that speaks for
+  /// it, and never re-reads a settled one -- so their hanging up at the end
+  /// of a genuine simultaneous call cannot undo the glare it was, and their
+  /// answering a call back of ours cannot turn the ring it superseded into
+  /// glare.
+  ///
+  /// Judged from each event AS IT ARRIVED, in order, never from room state
+  /// re-read afterwards. Room state keeps only the newest event per key, so
+  /// a sync carrying their membership and then their retraction re-reads as
+  /// the retraction alone, and a genuine simultaneous call read back that
+  /// way was dropped as a call that had already ended -- written twice.
+  void _onRingEvidence(StrippedStateEvent state) {
+    if (_ending) return;
+    for (final ring in List.of(_undecidedRings)) {
+      switch (calls.ringEvidenceIn(state, ring)) {
+        case PeerPresence.live:
+          _settleGlare(ring);
+          return;
+        case PeerPresence.gone:
+          _undecidedRings.remove(ring);
+        case PeerPresence.unknown:
+          break;
+      }
+    }
+    if (_undecidedRings.isEmpty) _stopAwaitingRingEvidence();
+  }
+
+  void _stopAwaitingRingEvidence() {
+    _undecidedRings.clear();
+    unawaited(_ringEvidence?.cancel());
+    _ringEvidence = null;
   }
 
   /// Moves this call's start back, so a test can put a ring's ARRIVAL late
@@ -311,20 +380,29 @@ class ActiveCall extends ChangeNotifier {
   /// the room. Knowing it lets exactly one of them do so — and knowing it from
   /// their ring rather than from an ordering means a call nobody answered,
   /// which only ever runs teardown on the caller's side, is still written.
-  bool get peerAlsoPlaced => _peerAlsoPlaced;
+  ///
+  /// A ring still waiting on the membership that decides it counts (see
+  /// [_undecidedRings]).
+  bool get peerAlsoPlaced => _peerAlsoPlaced || _undecidedRings.isNotEmpty;
 
   /// Who sent the ring that told us they were calling too.
   ///
   /// The other side of a simultaneous call, named by the one event that proves
   /// it happened. It settles which of the two writes the call when the room
   /// itself cannot say who the other person is.
-  String? get peerRingSenderId => _peerRingSenderId;
+  String? get peerRingSenderId =>
+      _peerAlsoPlaced ? _peerRingSenderId : _undecidedRing?.event.senderId;
 
   String? _peerRingSenderId;
 
+  IncomingCallNotification? get _undecidedRing =>
+      _undecidedRings.isEmpty ? null : _undecidedRings.first;
+
   /// The membership event the peer's simultaneous ring pointed at, when there
   /// was one. The glare loser's route to the call's shared identity.
-  String? get peerRingMembershipId => _peerRingMembershipId;
+  String? get peerRingMembershipId => _peerAlsoPlaced
+      ? _peerRingMembershipId
+      : _undecidedRing?.membershipEventId;
 
   String? _peerRingMembershipId;
 
@@ -496,9 +574,13 @@ class ActiveCall extends ChangeNotifier {
   /// Null on every platform that needs none.
   final CallForegroundControl? _foreground;
 
+  /// Whether this call has a background-survival service to look after at
+  /// all -- Android only.
+  bool get hasForegroundService => _foreground != null;
+
   /// Whether the service refused the first start -- the microphone permission
   /// dialog was still up -- and is owed a retry the moment that grant lands.
-  /// Spent by [_onMicrophoneLive], re-armed by [foregroundRefused].
+  /// Spent by [_onMicrophoneLive] and [appResumed]; re-armed by any refusal.
   bool _foregroundPending = false;
 
   /// Whether THIS call is the one the service runs for -- the PLATFORM'S
@@ -590,6 +672,14 @@ class ActiveCall extends ChangeNotifier {
       // The service is the call's survival in the background, never its
       // existence. A platform refusal costs that survival, not the call.
       Logs().w('Could not start the call foreground service', e, s);
+      // And a refusal is a refusal however it arrives. Android 12+ says no to
+      // a start from the background by THROWING out of startForegroundService
+      // rather than answering zero, and every retry spends the debt before it
+      // asks -- so a throw left unhandled here left the call owing nothing,
+      // unprotected for the rest of the call however often the learner came
+      // back to the app. Owed again, exactly as a zero is, unless the call is
+      // already coming down and has nothing left to protect.
+      if (!_ending && !_disposed) _foregroundPending = true;
     }
   }
 
@@ -611,11 +701,30 @@ class ActiveCall extends ChangeNotifier {
   /// itself.
   ///
   /// Once per call: the media announces this from the coming-up path only, and
-  /// what it spends is spent. A start the platform then refuses is re-armed by
-  /// [foregroundRefused], which carries its own budget for exactly that.
-  void _onMicrophoneLive() => unawaited(_retryForegroundOnGrant());
+  /// what it spends is spent. A start the platform then refuses is re-armed --
+  /// by [_startForeground] for a zero or a throw, by [foregroundRefused] for a
+  /// promotion that failed after the fact -- and [appResumed] pays it.
+  void _onMicrophoneLive() => unawaited(_payForegroundDebt());
 
-  Future<void> _retryForegroundOnGrant() async {
+  /// The app is back in the foreground: the other moment a service start is
+  /// legal, and the one that recurs.
+  ///
+  /// The microphone grant is answered in a system dialog, and the activity
+  /// resumes the instant that dialog closes -- before the microphone has
+  /// finished publishing -- so on a first call this is the grant itself, taken
+  /// at the earliest moment the platform will allow it. It is also the only
+  /// recovery for the case #410 names: a learner who left the app from the
+  /// dialog, or in the moments after it, has the retry refused from the
+  /// background, and the call then runs unprotected. Their next return to the
+  /// app is the next legal window, and a call that still owes the service asks
+  /// in it.
+  ///
+  /// Owes nothing, asks nothing: a protected call, a call the account refused
+  /// before it ever asked, and a call that is ending are all quiet here. Not
+  /// a loop either -- each attempt is paid for by the learner coming back.
+  void appResumed() => unawaited(_payForegroundDebt());
+
+  Future<void> _payForegroundDebt() async {
     // Settled first, because the entry start was fired unawaited before the
     // join and may still be in the platform's hands. Reading the flag through
     // that window would read "nothing is owed" of a start that is about to come
@@ -629,9 +738,10 @@ class ActiveCall extends ChangeNotifier {
     // [_startForeground] does reconcile a start that lands late, and this is
     // the cheaper half of the same rule, taken before the platform is troubled.
     if (_ending || _disposed) return;
-    // Spent BEFORE the attempt, so the grant produces exactly one. A refusal
-    // re-arms the flag from inside [_startForeground], and that re-arming is
-    // there for [foregroundRefused] to answer, not for this to read again.
+    // Spent BEFORE the attempt, so one legal moment produces exactly one, and
+    // a grant and a resume arriving together share it rather than both asking.
+    // A refusal re-arms the flag from inside [_startForeground], for the NEXT
+    // legal moment to answer, not for this one to read again.
     _foregroundPending = false;
     unawaited(_startForeground(video: _isVideoCall));
   }
@@ -2293,6 +2403,8 @@ class ActiveCall extends ChangeNotifier {
       _joinAttempt = null;
       unawaited(_peerRings?.cancel());
       _peerRings = null;
+      unawaited(_ringEvidence?.cancel());
+      _ringEvidence = null;
       Logs().w('Cannot start a call; this account is already in one');
       // The outcome too, not only the stage: the session's failed state and
       // the start-guard's "dismiss a dead call" both key off the outcome, and
@@ -2480,6 +2592,10 @@ class ActiveCall extends ChangeNotifier {
     _declines = null;
     unawaited(_peerRings?.cancel());
     _peerRings = null;
+    // Only the wait stops. A ring still undecided keeps counting as glare,
+    // which is the answer the card is written on.
+    unawaited(_ringEvidence?.cancel());
+    _ringEvidence = null;
     _waitingForPeer?.cancel();
     _waitingForPeer = null;
     _lateRing?.cancel();

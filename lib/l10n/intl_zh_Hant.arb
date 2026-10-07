@@ -9454,7 +9454,6 @@
     "activityLoadFailed": "無法加載活動。請檢查您的連接並重試。",
     "levelUpChip": "升級到 {level} 級！",
     "missingCourseOutline": "此課程不再可用",
-    "missingCourseOutlineCta": "此課程不再可用。請選擇一個新的課程計劃。",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9479,10 +9478,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10016,6 +10011,9 @@
     "callTranscriptSubscribeForTranscription": "訂閱以取得轉錄",
     "unlockCallTranscript": "解鎖通話記錄",
     "activitySummaryUpdateFailed": "無法更新此摘要。",
+    "courseNotFound": "找不到課程",
+    "askTeacherForNewCourse": "請老師選擇新課程。",
+    "pickNewCoursePlan": "選擇新的課程計畫。",
     "ssoNetworkBlockedTitle": "無法連線到登入網站",
     "ssoNetworkBlockedDesc": "此網路不允許我們連線到 {provider} 以登入。學校和辦公室的 Wi-Fi 通常會阻擋此連線。您可以改用電子郵件註冊，或切換到其他網路再試一次。",
     "ssoTryAnyway": "仍然嘗試",

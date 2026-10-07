@@ -10220,7 +10220,6 @@
     "activityLoadFailed": "Δεν ήταν δυνατή η φόρτωση της δραστηριότητας. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
     "levelUpChip": "Επίπεδο {level}!",
     "missingCourseOutline": "Αυτό το μάθημα δεν είναι πλέον διαθέσιμο",
-    "missingCourseOutlineCta": "Αυτό το μάθημα δεν είναι πλέον διαθέσιμο. Επιλέξτε ένα νέο σχέδιο μαθήματος.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10245,10 +10244,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10782,6 +10777,9 @@
     "callTranscriptSubscribeForTranscription": "Εγγραφείτε για μεταγραφή",
     "unlockCallTranscript": "Ξεκλείδωμα μεταγραφής κλήσης",
     "activitySummaryUpdateFailed": "Αυτή η σύνοψη δεν ήταν δυνατό να ενημερωθεί.",
+    "courseNotFound": "Το μάθημα δεν βρέθηκε",
+    "askTeacherForNewCourse": "Ζητήστε από τον δάσκαλό σας να επιλέξει ένα νέο μάθημα.",
+    "pickNewCoursePlan": "Επιλέξτε ένα νέο πρόγραμμα μαθημάτων.",
     "ssoNetworkBlockedTitle": "Ο ιστότοπος σύνδεσης δεν είναι προσβάσιμος",
     "ssoNetworkBlockedDesc": "Αυτό το δίκτυο δεν μας επιτρέπει να επικοινωνήσουμε με το {provider} για να συνδεθείτε. Τα δίκτυα Wi-Fi σχολείων και γραφείων συχνά το μπλοκάρουν. Μπορείτε να εγγραφείτε με email αντ' αυτού, ή να συνδεθείτε σε άλλο δίκτυο και να δοκιμάσετε ξανά.",
     "ssoTryAnyway": "Δοκιμάστε ούτως ή άλλως",

@@ -9839,7 +9839,6 @@
     "activityLoadFailed": "Nepodařilo se načíst aktivitu. Zkontrolujte své připojení a zkuste to znovu.",
     "levelUpChip": "Úroveň {level}!",
     "missingCourseOutline": "Tento kurz již není k dispozici",
-    "missingCourseOutlineCta": "Tento kurz již není k dispozici. Vyberte nový plán kurzu.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9864,10 +9863,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10401,6 +10396,9 @@
     "callTranscriptSubscribeForTranscription": "Předplatit si přepis",
     "unlockCallTranscript": "Odemknout přepis hovoru",
     "activitySummaryUpdateFailed": "Tento souhrn nelze aktualizovat.",
+    "courseNotFound": "Kurz nenalezen",
+    "askTeacherForNewCourse": "Požádejte svého učitele, aby vybral nový kurz.",
+    "pickNewCoursePlan": "Vyberte si nový studijní plán.",
     "ssoNetworkBlockedTitle": "Přihlašovací stránka je nedostupná",
     "ssoNetworkBlockedDesc": "Tato síť nám neumožňuje spojit se s {provider} pro vaše přihlášení. Často to blokuje Wi-Fi ve škole nebo v kanceláři. Můžete se místo toho zaregistrovat e-mailem, nebo se přepnout na jinou síť a zkusit to znovu.",
     "ssoTryAnyway": "Přesto zkusit",

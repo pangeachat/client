@@ -9345,7 +9345,6 @@
     "activityLoadFailed": "Tegevust ei õnnestunud laadida. Kontrollige oma ühendust ja proovige uuesti.",
     "levelUpChip": "Tase {level}!",
     "missingCourseOutline": "See kursus ei ole enam saadaval",
-    "missingCourseOutlineCta": "See kursus ei ole enam saadaval. Valige uus kursuse plaan.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9370,10 +9369,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9907,6 +9902,9 @@
     "callTranscriptSubscribeForTranscription": "Telli transkriptsioon",
     "unlockCallTranscript": "Ava kõne transkriptsioon",
     "activitySummaryUpdateFailed": "Seda kokkuvõtet ei saanud värskendada.",
+    "courseNotFound": "Kursust ei leitud",
+    "askTeacherForNewCourse": "Paluge õpetajal valida uus kursus.",
+    "pickNewCoursePlan": "Vali uus kursuseplaan.",
     "ssoNetworkBlockedTitle": "Sisselogimisleht pole kättesaadav",
     "ssoNetworkBlockedDesc": "See võrk ei lase meil teid sisse logimiseks {provider} lehele suunata. Kooli ja kontori Wi-Fi blokeerivad seda sageli. Saate selle asemel registreeruda e-posti teel või minna üle teisele võrgule ja uuesti proovida.",
     "ssoTryAnyway": "Proovi ikkagi",

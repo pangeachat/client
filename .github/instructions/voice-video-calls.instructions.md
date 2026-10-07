@@ -222,11 +222,10 @@ the audio is fetched on demand rather than pushed through every sync, and the
 recording inherits the retention already disclosed for voice messages. The merged
 full-call recording is one more such upload, referenced the same way.
 
-The recording-based pass is gated behind `CALL_RECORDING_TRANSCRIPT`, which
-currently defaults off: until it is enabled, each half is the live one
-transcribed during the call (see [Failure is not all-or-nothing]), and the
-recording pass this section describes — with the per-turn `m:ss` timing it makes
-possible — is the opt-in path being rolled out.
+The recording-based pass is on by default. `CALL_RECORDING_TRANSCRIPT=false` is
+its kill switch: with it set, each half is the live one transcribed during the
+call (see [Failure is not all-or-nothing]) instead of the recording pass this
+section describes, with the per-turn `m:ss` timing it makes possible.
 
 A half is one event or it is missing, never a series of parts. Parts need a
 sequence that survives process death across a rejoin, and leave no answer for
@@ -388,11 +387,13 @@ Everything else degrades rather than fails:
 - A camera that will not open is a degraded call, not a failed one.
 - A local participant that never materialises is reported on screen as the other
   person not being able to hear, rather than dropping the call.
-- A half whose recording never uploaded is transcribed from the audio the device read
-  live during the call; the two halves are decided independently, so one side failing to
-  upload still leaves a whole, correctly ordered transcript. Losing a recording costs that
-  half its playback audio and its finer positioning — not its transcript, nor the analytics
-  drawn from it.
+- A half whose recording never uploaded still gets its recording-based transcript,
+  because the device transcribes its own recording on the device; the upload only decides
+  whether that half has playback audio. A half falls back to the audio the device read
+  live during the call only when its recording cannot be transcribed in time. The two
+  halves are decided independently, so one side failing still leaves a whole, correctly
+  ordered transcript. A recording that was still uploading when the app was killed is
+  uploaded on the next launch.
 
 ## Platform gates
 
