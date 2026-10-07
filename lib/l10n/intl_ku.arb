@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-05 13:57:49.779617",
+    "@@last_modified": "2026-10-07 09:01:45.902654",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "هەر هەوڵبدە",
     "publicCoursesFilterTooltip": "تەنها ئەو کۆرسانە پیشان بدە کە هەرکەسێک دەتوانێت بەشداری بکات",
     "restrictedCoursesFilterTooltip": "تەنها ئەو کۆرسانە پیشان بدە کە دەبێت داوای بەشداریکردنیان بکەیت",
-    "viewImageLabel": "وێنەکە ببینە"
+    "viewImageLabel": "وێنەکە ببینە",
+    "reportSent": "ڕاپۆرت نێردرا",
+    "reportNotSent": "ڕاپۆرتەکەت نەنێردرا. پەیوەندییەکەت بپشکنە و دووبارە هەوڵ بدەوە.",
+    "reportPointerMessage": "پەیامێک لە {courseName} ڕاپۆرت کرا — سەیری سەلامەتی بکە"
 }

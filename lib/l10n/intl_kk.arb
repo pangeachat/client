@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-05 13:57:49.200998",
+    "@@last_modified": "2026-10-07 09:01:35.912767",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "Бәрібір әрекет ету",
     "publicCoursesFilterTooltip": "Кез келген адам қосыла алатын курстарды ғана көрсету",
     "restrictedCoursesFilterTooltip": "Қосылу үшін сұрау қажет курстарды ғана көрсету",
-    "viewImageLabel": "Суретті көру"
+    "viewImageLabel": "Суретті көру",
+    "reportSent": "Хабар жіберілді",
+    "reportNotSent": "Хабарыңыз жіберілмеді. Байланысты тексеріп, қайталап көріңіз.",
+    "reportPointerMessage": "{courseName} курсында хабарлама жіберілді — Қауіпсіздікті қараңыз"
 }

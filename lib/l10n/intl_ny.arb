@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-05 13:57:51.438243",
+    "@@last_modified": "2026-10-07 09:01:41.072427",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "Yesani komabe",
     "publicCoursesFilterTooltip": "Onetsani maphunziro okhawo amene aliyense angalowe",
     "restrictedCoursesFilterTooltip": "Onetsani maphunziro okhawo amene muyenera kupempha kuti mulowe",
-    "viewImageLabel": "Onani chithunzi"
+    "viewImageLabel": "Onani chithunzi",
+    "reportSent": "Lipoti latumizidwa",
+    "reportNotSent": "Lipoti lanu silinatumizidwe. Onani intaneti yanu ndikuyesanso.",
+    "reportPointerMessage": "Uthenga unanenedwa mu {courseName} — onani Chitetezo"
 }

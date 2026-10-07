@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-05 13:57:49.551360",
+    "@@last_modified": "2026-10-07 09:01:39.507401",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "Tray ɛnitin",
     "publicCoursesFilterTooltip": "Sho onli kɔsis we ɛnibɔdi kɛn jɔyn",
     "restrictedCoursesFilterTooltip": "Sho onli kɔsis we yu fɔ aks fɔ jɔyn",
-    "viewImageLabel": "Luk pikcho"
+    "viewImageLabel": "Luk pikcho",
+    "reportSent": "Dɛn dɔn sɛn di ripot",
+    "reportNotSent": "Yu ripot nɔ go dɔn sɛn. Chɛk yu kɔnɛkshɔn ɛn tray igen.",
+    "reportPointerMessage": "Dɛn ripot wan mɛsej insay {courseName} — si Sefti"
 }

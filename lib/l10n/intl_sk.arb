@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-05 13:57:52.393235",
+    "@@last_modified": "2026-10-07 09:01:42.998012",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10893,5 +10893,8 @@
     "ssoTryAnyway": "Aj tak skúsiť",
     "publicCoursesFilterTooltip": "Zobraziť iba kurzy, do ktorých sa môže zapojiť ktokoľvek",
     "restrictedCoursesFilterTooltip": "Zobraziť iba kurzy, do ktorých sa musíte prihlásiť",
-    "viewImageLabel": "Zobraziť obrázok"
+    "viewImageLabel": "Zobraziť obrázok",
+    "reportSent": "Nahlásenie odoslané",
+    "reportNotSent": "Vaše nahlásenie sa nepodarilo odoslať. Skontrolujte pripojenie a skúste to znova.",
+    "reportPointerMessage": "V kurze {courseName} bola nahlásená správa – pozrite si Bezpečnosť"
 }

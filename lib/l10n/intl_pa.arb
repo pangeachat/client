@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-05 13:57:51.749180",
+    "@@last_modified": "2026-10-07 09:01:41.587571",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "ਫਿਰ ਵੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ",
     "publicCoursesFilterTooltip": "ਸਿਰਫ਼ ਉਹ ਕੋਰਸ ਦਿਖਾਓ ਜਿਨ੍ਹਾਂ ਵਿੱਚ ਕੋਈ ਵੀ ਸ਼ਾਮਲ ਹੋ ਸਕਦਾ ਹੈ",
     "restrictedCoursesFilterTooltip": "ਸਿਰਫ਼ ਉਹ ਕੋਰਸ ਦਿਖਾਓ ਜਿਨ੍ਹਾਂ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਣ ਲਈ ਤੁਹਾਨੂੰ ਪੁੱਛਣਾ ਪਵੇਗਾ",
-    "viewImageLabel": "ਤਸਵੀਰ ਦੇਖੋ"
+    "viewImageLabel": "ਤਸਵੀਰ ਦੇਖੋ",
+    "reportSent": "ਰਿਪੋਰਟ ਭੇਜੀ ਗਈ",
+    "reportNotSent": "ਤੁਹਾਡੀ ਰਿਪੋਰਟ ਭੇਜੀ ਨਹੀਂ ਜਾ ਸਕੀ। ਆਪਣਾ ਕਨੈਕਸ਼ਨ ਜਾਂਚੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
+    "reportPointerMessage": "{courseName} ਵਿੱਚ ਇੱਕ ਸੁਨੇਹਾ ਰਿਪੋਰਟ ਕੀਤਾ ਗਿਆ ਸੀ — ਸੁਰੱਖਿਆ ਦੇਖੋ"
 }

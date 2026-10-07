@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-05 13:57:52.515182",
+    "@@last_modified": "2026-10-07 09:01:43.090952",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "කෙසේ හෝ උත්සාහ කරන්න",
     "publicCoursesFilterTooltip": "ඕනෑම කෙනෙකුට සම්බන්ධ විය හැකි පාඨමාලා පමණක් පෙන්වන්න",
     "restrictedCoursesFilterTooltip": "ඔබට සම්බන්ධ වීමට ඉල්ලීම් කළ යුතු පාඨමාලා පමණක් පෙන්වන්න",
-    "viewImageLabel": "රූපය බලන්න"
+    "viewImageLabel": "රූපය බලන්න",
+    "reportSent": "වාර්තාව යවන ලදි",
+    "reportNotSent": "ඔබගේ වාර්තාව යැවිය නොහැකි විය. ඔබගේ සම්බන්ධතාවය පරීක්ෂා කර නැවත උත්සාහ කරන්න.",
+    "reportPointerMessage": "{courseName} හි පණිවිඩයක් වාර්තා කරන ලදි — ආරක්ෂාව බලන්න"
 }

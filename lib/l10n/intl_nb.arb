@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:51.174938",
+    "@@last_modified": "2026-10-07 09:01:40.195467",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10005,5 +10005,8 @@
     "ssoTryAnyway": "Prøv likevel",
     "publicCoursesFilterTooltip": "Vis kun kurs alle kan bli med i",
     "restrictedCoursesFilterTooltip": "Vis kun kurs du må be om å få bli med i",
-    "viewImageLabel": "Vis bilde"
+    "viewImageLabel": "Vis bilde",
+    "reportSent": "Rapport sendt",
+    "reportNotSent": "Rapporten din kunne ikke sendes. Sjekk tilkoblingen din og prøv igjen.",
+    "reportPointerMessage": "En melding ble rapportert i {courseName} – se Sikkerhet"
 }

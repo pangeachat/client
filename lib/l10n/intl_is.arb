@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-05 13:57:48.611909",
+    "@@last_modified": "2026-10-07 09:01:35.051473",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "Reyna samt",
     "publicCoursesFilterTooltip": "Sýna aðeins námskeið sem allir geta tekið þátt í",
     "restrictedCoursesFilterTooltip": "Sýna aðeins námskeið sem þú þarft að biðja um að fá að taka þátt í",
-    "viewImageLabel": "Skoða mynd"
+    "viewImageLabel": "Skoða mynd",
+    "reportSent": "Tilkynning send",
+    "reportNotSent": "Ekki tókst að senda tilkynninguna þína. Athugaðu nettenginguna þína og reyndu aftur.",
+    "reportPointerMessage": "Skilaboð voru tilkynnt í {courseName} — sjá Öryggi"
 }

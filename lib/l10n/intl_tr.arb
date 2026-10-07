@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-05 13:57:53.631201",
+    "@@last_modified": "2026-10-07 09:01:45.302631",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10249,5 +10249,8 @@
     "ssoTryAnyway": "Yine de dene",
     "publicCoursesFilterTooltip": "Yalnızca herkesin katılabileceği kursları göster",
     "restrictedCoursesFilterTooltip": "Yalnızca katılmak için izin almanız gereken kursları göster",
-    "viewImageLabel": "Resmi görüntüle"
+    "viewImageLabel": "Resmi görüntüle",
+    "reportSent": "Rapor gönderildi",
+    "reportNotSent": "Raporunuz gönderilemedi. Bağlantınızı kontrol edip tekrar deneyin.",
+    "reportPointerMessage": "{courseName} içinde bir mesaj bildirildi — Güvenlik bölümüne bakın"
 }

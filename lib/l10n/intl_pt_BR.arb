@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:51.822604",
+    "@@last_modified": "2026-10-07 09:01:41.866311",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9948,5 +9948,8 @@
     "ssoTryAnyway": "Tentar mesmo assim",
     "publicCoursesFilterTooltip": "Mostrar apenas cursos que qualquer pessoa pode participar",
     "restrictedCoursesFilterTooltip": "Mostrar apenas cursos que você precisa pedir para participar",
-    "viewImageLabel": "Ver imagem"
+    "viewImageLabel": "Ver imagem",
+    "reportSent": "Denúncia enviada",
+    "reportNotSent": "Sua denúncia não pôde ser enviada. Verifique sua conexão e tente novamente.",
+    "reportPointerMessage": "Uma mensagem foi denunciada em {courseName} — veja Segurança"
 }

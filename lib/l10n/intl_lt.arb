@@ -2964,7 +2964,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-05 13:57:50.062062",
+    "@@last_modified": "2026-10-07 09:01:37.916537",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10729,5 +10729,8 @@
     "ssoTryAnyway": "Vis tiek bandyti",
     "publicCoursesFilterTooltip": "Rodyti tik kursus, prie kurių gali prisijungti bet kas",
     "restrictedCoursesFilterTooltip": "Rodyti tik kursus, prie kurių norint prisijungti reikia prašyti leidimo",
-    "viewImageLabel": "Peržiūrėti nuotrauką"
+    "viewImageLabel": "Peržiūrėti nuotrauką",
+    "reportSent": "Pranešimas išsiųstas",
+    "reportNotSent": "Nepavyko išsiųsti jūsų pranešimo. Patikrinkite ryšį ir bandykite dar kartą.",
+    "reportPointerMessage": "Pranešta apie žinutę {courseName} – žr. Sauga"
 }

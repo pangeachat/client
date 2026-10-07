@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-05 13:57:49.651102",
+    "@@last_modified": "2026-10-07 09:01:37.791319",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "Trotzdeem probéieren",
     "publicCoursesFilterTooltip": "Nëmme Coursë weisen, bei deene jidderee matmaache kann",
     "restrictedCoursesFilterTooltip": "Nëmme Coursë weisen, bei deene s du muss froen, fir matzemaachen",
-    "viewImageLabel": "Bild ukucken"
+    "viewImageLabel": "Bild ukucken",
+    "reportSent": "Rapport geschéckt",
+    "reportNotSent": "Äre Rapport konnt net geschéckt ginn. Kuckt Är Verbindung a probéiert et nach eng Kéier.",
+    "reportPointerMessage": "Eng Noriicht gouf am Cours {courseName} gemellt — kuckt Sécherheet"
 }

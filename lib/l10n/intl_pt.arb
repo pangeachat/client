@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:51.894386",
+    "@@last_modified": "2026-10-07 09:01:42.086343",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10892,5 +10892,8 @@
     "ssoTryAnyway": "Tentar mesmo assim",
     "publicCoursesFilterTooltip": "Mostrar apenas cursos que qualquer pessoa pode participar",
     "restrictedCoursesFilterTooltip": "Mostrar apenas cursos para os quais você deve pedir para participar",
-    "viewImageLabel": "Ver imagem"
+    "viewImageLabel": "Ver imagem",
+    "reportSent": "Denúncia enviada",
+    "reportNotSent": "Não foi possível enviar sua denúncia. Verifique sua conexão e tente novamente.",
+    "reportPointerMessage": "Uma mensagem foi denunciada em {courseName} — veja Segurança"
 }

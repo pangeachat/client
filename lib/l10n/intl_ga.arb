@@ -3560,7 +3560,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-05 13:57:47.468284",
+    "@@last_modified": "2026-10-07 09:01:32.365908",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9959,5 +9959,8 @@
     "ssoTryAnyway": "Bain triail as ar aon nós",
     "publicCoursesFilterTooltip": "Taispeáin cúrsaí ar féidir le duine ar bith a bheith páirteach iontu amháin",
     "restrictedCoursesFilterTooltip": "Taispeáin cúrsaí nach mór duit iarraidh a bheith páirteach iontu amháin",
-    "viewImageLabel": "Amharc ar an íomhá"
+    "viewImageLabel": "Amharc ar an íomhá",
+    "reportSent": "Tugadh tuairisc",
+    "reportNotSent": "Níorbh fhéidir do thuairisc a sheoladh. Seiceáil do nasc agus bain triail eile as.",
+    "reportPointerMessage": "Tugadh tuairisc ar theachtaireacht i {courseName} — féach Sábháilteacht"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:49.102067",
+    "@@last_modified": "2026-10-07 09:01:36.873629",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10141,5 +10141,8 @@
     "ssoTryAnyway": "그래도 시도",
     "publicCoursesFilterTooltip": "누구나 참여할 수 있는 코스만 표시",
     "restrictedCoursesFilterTooltip": "참여를 요청해야 하는 코스만 표시",
-    "viewImageLabel": "이미지 보기"
+    "viewImageLabel": "이미지 보기",
+    "reportSent": "신고가 전송되었습니다",
+    "reportNotSent": "신고를 보낼 수 없습니다. 연결 상태를 확인하고 다시 시도해 주세요.",
+    "reportPointerMessage": "{courseName}에서 메시지가 신고되었습니다. 안전을 참조하세요."
 }

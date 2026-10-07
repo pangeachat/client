@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-05 13:57:46.809157",
+    "@@last_modified": "2026-10-07 09:01:33.166637",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10303,5 +10303,8 @@
     "ssoTryAnyway": "Essayer quand même",
     "publicCoursesFilterTooltip": "Afficher uniquement les cours que tout le monde peut rejoindre",
     "restrictedCoursesFilterTooltip": "Afficher uniquement les cours pour lesquels vous devez demander à être admis",
-    "viewImageLabel": "Voir l'image"
+    "viewImageLabel": "Voir l'image",
+    "reportSent": "Signalement envoyé",
+    "reportNotSent": "Votre signalement n'a pas pu être envoyé. Vérifiez votre connexion et réessayez.",
+    "reportPointerMessage": "Un message a été signalé dans {courseName} — voir Sécurité"
 }

@@ -2077,7 +2077,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-05 13:57:46.973659",
+    "@@last_modified": "2026-10-07 09:01:30.905224",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10808,5 +10808,8 @@
     "ssoTryAnyway": "Subukan pa rin",
     "publicCoursesFilterTooltip": "Ipakita lang ang mga kurso na maaaring salihan ng sinuman",
     "restrictedCoursesFilterTooltip": "Ipakita lang ang mga kurso na kailangan mong humingi ng pahintulot para makasali",
-    "viewImageLabel": "Tingnan ang larawan"
+    "viewImageLabel": "Tingnan ang larawan",
+    "reportSent": "Naipadala ang ulat",
+    "reportNotSent": "Hindi maipadala ang iyong ulat. Tingnan ang iyong koneksyon at subukang muli.",
+    "reportPointerMessage": "May naiulat na mensahe sa {courseName} — tingnan ang Kaligtasan"
 }

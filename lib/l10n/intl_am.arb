@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-05 13:57:45.289784",
+    "@@last_modified": "2026-10-07 09:01:28.627623",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "ለማንኛውም ይሞክሩ",
     "publicCoursesFilterTooltip": "ማንም ሰው መቀላቀል የሚችለውን ኮርሶች ብቻ አሳይ",
     "restrictedCoursesFilterTooltip": "ለመቀላቀል መጠየቅ ያለብዎትን ኮርሶች ብቻ አሳይ",
-    "viewImageLabel": "ምስል ይመልከቱ"
+    "viewImageLabel": "ምስል ይመልከቱ",
+    "reportSent": "ሪፖርት ተልኳል",
+    "reportNotSent": "ሪፖርትዎ ሊላክ አልቻለም። ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ።",
+    "reportPointerMessage": "በ{courseName} ውስጥ መልዕክት ሪፖርት ተደርጓል — ደህንነትን ይመልከቱ"
 }

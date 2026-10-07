@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-05 13:57:46.120717",
+    "@@last_modified": "2026-10-07 09:01:29.540665",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9935,5 +9935,8 @@
     "ssoTryAnyway": "Trotzdem versuchen",
     "publicCoursesFilterTooltip": "Nur Kurse anzeigen, denen jeder beitreten kann",
     "restrictedCoursesFilterTooltip": "Nur Kurse anzeigen, für die du eine Beitrittsanfrage stellen musst",
-    "viewImageLabel": "Bild ansehen"
+    "viewImageLabel": "Bild ansehen",
+    "reportSent": "Bericht gesendet",
+    "reportNotSent": "Ihr Bericht konnte nicht gesendet werden. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+    "reportPointerMessage": "Eine Nachricht wurde in {courseName} gemeldet – siehe Sicherheit"
 }

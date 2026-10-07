@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:47.643939",
+    "@@last_modified": "2026-10-07 09:01:32.165987",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10862,5 +10862,8 @@
     "ssoTryAnyway": "נסה בכל זאת",
     "publicCoursesFilterTooltip": "הצג רק קורסים שכל אחד יכול להצטרף אליהם",
     "restrictedCoursesFilterTooltip": "הצג רק קורסים שאתה צריך לבקש להצטרף אליהם",
-    "viewImageLabel": "הצג תמונה"
+    "viewImageLabel": "הצג תמונה",
+    "reportSent": "הדיווח נשלח",
+    "reportNotSent": "הדיווח שלך לא נשלח. בדוק את החיבור שלך ונסה שוב.",
+    "reportPointerMessage": "הודעה דווחה ב{courseName} — ראה בטיחות"
 }

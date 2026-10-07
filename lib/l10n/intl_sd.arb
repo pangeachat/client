@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-05 13:57:52.662235",
+    "@@last_modified": "2026-10-07 09:01:43.326619",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "بهرحال ڪوشش ڪريو",
     "publicCoursesFilterTooltip": "صرف اهي ڪورس ڏيکاريو جيڪي ڪو به شامل ٿي سگهي ٿو",
     "restrictedCoursesFilterTooltip": "صرف اهي ڪورس ڏيکاريو جن ۾ شامل ٿيڻ لاءِ توهان کي پڇڻو پوندو",
-    "viewImageLabel": "تصوير ڏسو"
+    "viewImageLabel": "تصوير ڏسو",
+    "reportSent": "رپورٽ موڪلي وئي",
+    "reportNotSent": "توهان جي رپورٽ موڪلي نه سگهجي. پنهنجو ڪنيڪشن چيڪ ڪريو ۽ ٻيهر ڪوشش ڪريو.",
+    "reportPointerMessage": "{courseName} ۾ هڪ پيغام جي رپورٽ ڪئي وئي آهي — حفاظت ڏسو"
 }

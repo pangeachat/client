@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-05 13:57:45.048486",
+    "@@last_modified": "2026-10-07 09:01:28.434722",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "Probeer in elk geval",
     "publicCoursesFilterTooltip": "Wys slegs kursusse waarby enigiemand kan aansluit",
     "restrictedCoursesFilterTooltip": "Wys slegs kursusse waarvoor jy moet vra om aan te sluit",
-    "viewImageLabel": "Sien prent"
+    "viewImageLabel": "Sien prent",
+    "reportSent": "Verslag gestuur",
+    "reportNotSent": "Jou verslag kon nie gestuur word nie. Kontroleer jou verbinding en probeer weer.",
+    "reportPointerMessage": "’n Boodskap is in {courseName} gerapporteer — sien Veiligheid"
 }

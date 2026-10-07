@@ -3545,7 +3545,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-05 13:57:45.022452",
+    "@@last_modified": "2026-10-07 09:01:28.504630",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9962,5 +9962,8 @@
     "ssoTryAnyway": "Усё роўна паспрабаваць",
     "publicCoursesFilterTooltip": "Паказваць толькі курсы, да якіх можа далучыцца кожны",
     "restrictedCoursesFilterTooltip": "Паказваць толькі курсы, да якіх трэба запытваць далучэнне",
-    "viewImageLabel": "Паглядзець выяву"
+    "viewImageLabel": "Паглядзець выяву",
+    "reportSent": "Справаздача адпраўлена",
+    "reportNotSent": "Ваша справаздача не можа быць адпраўлена. Праверце злучэнне і паспрабуйце зноў.",
+    "reportPointerMessage": "Паведамленне было паведамлена ў {courseName} — глядзіце Бяспека"
 }

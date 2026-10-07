@@ -2556,7 +2556,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-05 13:57:51.944808",
+    "@@last_modified": "2026-10-07 09:01:42.644908",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10865,5 +10865,8 @@
     "ssoTryAnyway": "Tentar na mesma",
     "publicCoursesFilterTooltip": "Mostrar apenas cursos a que qualquer pessoa se pode juntar",
     "restrictedCoursesFilterTooltip": "Mostrar apenas cursos a que tem de pedir para se juntar",
-    "viewImageLabel": "Ver imagem"
+    "viewImageLabel": "Ver imagem",
+    "reportSent": "Denúncia enviada",
+    "reportNotSent": "Não foi possível enviar a sua denúncia. Verifique a sua ligação e tente novamente.",
+    "reportPointerMessage": "Uma mensagem foi denunciada em {courseName} — ver Segurança"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-05 13:57:52.004958",
+    "@@last_modified": "2026-10-07 09:01:42.176613",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "بیا هم هڅه وکړئ",
     "publicCoursesFilterTooltip": "یوازې هغه کورسونه وښایاست چې هرڅوک پکې شاملیدلی شي",
     "restrictedCoursesFilterTooltip": "یوازې هغه کورسونه وښایاست چې تاسو یې د شاملیدو غوښتنه کوئ",
-    "viewImageLabel": "انځور وګورئ"
+    "viewImageLabel": "انځور وګورئ",
+    "reportSent": "راپور ولېږل شو",
+    "reportNotSent": "ستاسو راپور نشو لېږل کېدای. خپله اړیکه وګورئ او بیا هڅه وکړئ.",
+    "reportPointerMessage": "په {courseName} کې یو پیغام راپور شوی — خوندیتوب وګورئ"
 }

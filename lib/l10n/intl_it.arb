@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:48.721384",
+    "@@last_modified": "2026-10-07 09:01:34.398208",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10021,5 +10021,8 @@
     "ssoTryAnyway": "Riprova comunque",
     "publicCoursesFilterTooltip": "Mostra solo i corsi a cui tutti possono partecipare",
     "restrictedCoursesFilterTooltip": "Mostra solo i corsi a cui devi chiedere di partecipare",
-    "viewImageLabel": "Visualizza immagine"
+    "viewImageLabel": "Visualizza immagine",
+    "reportSent": "Segnalazione inviata",
+    "reportNotSent": "Impossibile inviare la segnalazione. Controlla la tua connessione e riprova.",
+    "reportPointerMessage": "È stato segnalato un messaggio in {courseName} — vedi Sicurezza"
 }

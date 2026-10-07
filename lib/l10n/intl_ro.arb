@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:51.705685",
+    "@@last_modified": "2026-10-07 09:01:42.466720",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10680,5 +10680,8 @@
     "ssoTryAnyway": "Încearcă oricum",
     "publicCoursesFilterTooltip": "Afișează doar cursurile la care oricine se poate alătura",
     "restrictedCoursesFilterTooltip": "Afișează doar cursurile la care trebuie să ceri să te alături",
-    "viewImageLabel": "Vizualizați imaginea"
+    "viewImageLabel": "Vizualizați imaginea",
+    "reportSent": "Raport trimis",
+    "reportNotSent": "Raportul tău nu a putut fi trimis. Verifică-ți conexiunea și încearcă din nou.",
+    "reportPointerMessage": "Un mesaj a fost raportat în {courseName} — vezi Siguranță"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-05 13:57:48.490655",
+    "@@last_modified": "2026-10-07 09:01:36.589322",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "Միևնույն է՝ փորձել",
     "publicCoursesFilterTooltip": "Ցուցադրել միայն այն դասընթացները, որոնց յուրաքանչյուրը կարող է միանալ",
     "restrictedCoursesFilterTooltip": "Ցուցադրել միայն այն դասընթացները, որոնց միանալու համար պետք է հարցում ուղարկել",
-    "viewImageLabel": "Դիտել նկարը"
+    "viewImageLabel": "Դիտել նկարը",
+    "reportSent": "Հաղորդումն ուղարկված է",
+    "reportNotSent": "Ձեր հաղորդումը չհաջողվեց ուղարկել։ Ստուգեք ինտերնետ կապը և նորից փորձեք։",
+    "reportPointerMessage": "{courseName} դասընթացում հաղորդագրություն է ուղարկվել. տե՛ս «Անվտանգություն» բաժինը"
 }

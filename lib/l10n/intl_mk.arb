@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-05 13:57:50.263794",
+    "@@last_modified": "2026-10-07 09:01:38.907507",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "Сепак, обидете се",
     "publicCoursesFilterTooltip": "Прикажи само курсеви на кои секој може да се приклучи",
     "restrictedCoursesFilterTooltip": "Прикажи само курсеви за кои мора да побараш да се приклучиш",
-    "viewImageLabel": "Погледни слика"
+    "viewImageLabel": "Погледни слика",
+    "reportSent": "Извештајот е испратен",
+    "reportNotSent": "Вашиот извештај не можеше да биде испратен. Проверете ја вашата врска и обидете се повторно.",
+    "reportPointerMessage": "Пораката е пријавена во {courseName} — видете Безбедност"
 }

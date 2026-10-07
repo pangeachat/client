@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-05 13:57:52.888329",
+    "@@last_modified": "2026-10-07 09:01:43.970879",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "Edza zvakadaro",
     "publicCoursesFilterTooltip": "Ratidza makosi anogona kupindwa nemunhu wese",
     "restrictedCoursesFilterTooltip": "Ratidza makosi aunofanira kukumbira kuti upinde",
-    "viewImageLabel": "Tarisa mufananidzo"
+    "viewImageLabel": "Tarisa mufananidzo",
+    "reportSent": "Chirevo chatumirwa",
+    "reportNotSent": "Chirevo chako hachina kutumirwa. Tarisa internet yako woedza zvakare.",
+    "reportPointerMessage": "Meseji yakashumwa mu{courseName} — ona Kuchengeteka"
 }

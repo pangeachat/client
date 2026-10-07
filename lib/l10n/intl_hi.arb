@@ -3090,7 +3090,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-10-05 13:57:47.729205",
+    "@@last_modified": "2026-10-07 09:01:33.147656",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10580,5 +10580,8 @@
     "ssoTryAnyway": "फिर भी कोशिश करें",
     "publicCoursesFilterTooltip": "केवल वे कोर्स दिखाएं जिनमें कोई भी शामिल हो सकता है",
     "restrictedCoursesFilterTooltip": "केवल वे कोर्स दिखाएं जिनमें शामिल होने के लिए आपको पूछना होगा",
-    "viewImageLabel": "छवि देखें"
+    "viewImageLabel": "छवि देखें",
+    "reportSent": "रिपोर्ट भेज दी गई",
+    "reportNotSent": "आपकी रिपोर्ट भेजी नहीं जा सकी। अपना कनेक्शन जाँचें और फिर से कोशिश करें।",
+    "reportPointerMessage": "{courseName} में एक मैसेज रिपोर्ट किया गया था — सुरक्षा देखें"
 }

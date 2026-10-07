@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-05 13:57:51.670262",
+    "@@last_modified": "2026-10-07 09:01:41.414538",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10033,5 +10033,8 @@
     "ssoTryAnyway": "Mimo to spróbuj",
     "publicCoursesFilterTooltip": "Pokaż tylko kursy, do których każdy może dołączyć",
     "restrictedCoursesFilterTooltip": "Pokaż tylko kursy, do których musisz poprosić o dołączenie",
-    "viewImageLabel": "Wyświetl obraz"
+    "viewImageLabel": "Wyświetl obraz",
+    "reportSent": "Zgłoszenie wysłane",
+    "reportNotSent": "Twoje zgłoszenie nie mogło zostać wysłane. Sprawdź połączenie i spróbuj ponownie.",
+    "reportPointerMessage": "Wiadomość została zgłoszona w {courseName} — zobacz Bezpieczeństwo"
 }

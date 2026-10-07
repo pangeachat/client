@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-05 13:57:48.265018",
+    "@@last_modified": "2026-10-07 09:01:33.546310",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10051,5 +10051,8 @@
     "ssoTryAnyway": "Mégis megpróbálom",
     "publicCoursesFilterTooltip": "Csak olyan kurzusok megjelenítése, amelyekhez bárki csatlakozhat",
     "restrictedCoursesFilterTooltip": "Csak olyan kurzusok megjelenítése, amelyekhez engedélyt kell kérni",
-    "viewImageLabel": "Kép megtekintése"
+    "viewImageLabel": "Kép megtekintése",
+    "reportSent": "Jelentés elküldve",
+    "reportNotSent": "A jelentés nem küldhető el. Ellenőrizze az internetkapcsolatát, és próbálja újra.",
+    "reportPointerMessage": "Üzenet jelentve a {courseName} kurzusban – lásd a Biztonság menüpontot"
 }

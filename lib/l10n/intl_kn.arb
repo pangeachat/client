@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-05 13:57:49.340157",
+    "@@last_modified": "2026-10-07 09:01:37.783609",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "ಹೇಗಾದರೂ ಪ್ರಯತ್ನಿಸಿ",
     "publicCoursesFilterTooltip": "ಯಾರಾದರೂ ಸೇರಬಹುದಾದ ಕೋರ್ಸ್‌ಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ",
     "restrictedCoursesFilterTooltip": "ನೀವು ಸೇರಲು ಕೇಳಬೇಕಾದ ಕೋರ್ಸ್‌ಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ",
-    "viewImageLabel": "ಚಿತ್ರವನ್ನು ವೀಕ್ಷಿಸಿ"
+    "viewImageLabel": "ಚಿತ್ರವನ್ನು ವೀಕ್ಷಿಸಿ",
+    "reportSent": "ವರದಿ ಕಳುಹಿಸಲಾಗಿದೆ",
+    "reportNotSent": "ನಿಮ್ಮ ವರದಿಯನ್ನು ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    "reportPointerMessage": "{courseName} ನಲ್ಲಿ ಸಂದೇಶವನ್ನು ವರದಿ ಮಾಡಲಾಗಿದೆ — ಸುರಕ್ಷತೆಯನ್ನು ನೋಡಿ"
 }

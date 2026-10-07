@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-05 13:57:45.205239",
+    "@@last_modified": "2026-10-07 09:01:28.452835",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "Yenə də cəhd edin",
     "publicCoursesFilterTooltip": "Yalnız hər kəsin qoşula biləcəyi kursları göstər",
     "restrictedCoursesFilterTooltip": "Yalnız qoşulmaq üçün soruşmalı olduğunuz kursları göstər",
-    "viewImageLabel": "Şəklə bax"
+    "viewImageLabel": "Şəklə bax",
+    "reportSent": "Hesabat göndərildi",
+    "reportNotSent": "Hesabatınız göndərilə bilmədi. İnternet bağlantınızı yoxlayın və yenidən cəhd edin.",
+    "reportPointerMessage": "{courseName} kursunda bir mesaj bildirildi — Təhlükəsizliyə baxın"
 }

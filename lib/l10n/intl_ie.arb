@@ -3090,7 +3090,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-05 13:57:48.523062",
+    "@@last_modified": "2026-10-07 09:01:34.767821",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10580,5 +10580,8 @@
     "ssoTryAnyway": "Bain triail as ar aon nós",
     "publicCoursesFilterTooltip": "Taispeáin cúrsaí ar féidir le duine ar bith a bheith páirteach iontu amháin",
     "restrictedCoursesFilterTooltip": "Taispeáin cúrsaí nach mór duit a iarraidh a bheith páirteach iontu amháin",
-    "viewImageLabel": "Féach ar an íomhá"
+    "viewImageLabel": "Féach ar an íomhá",
+    "reportSent": "Tuarascáil seolta",
+    "reportNotSent": "Níorbh fhéidir do thuarascáil a sheoladh. Seiceáil do nasc agus bain triail eile as.",
+    "reportPointerMessage": "Tuairiscíodh teachtaireacht i {courseName} — féach Sábháilteacht"
 }

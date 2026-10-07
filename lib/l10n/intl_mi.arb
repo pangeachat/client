@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-05 13:57:50.257329",
+    "@@last_modified": "2026-10-07 09:01:39.580464",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "Ngana tonu",
     "publicCoursesFilterTooltip": "Whakaaturia ngā akoranga ka taea e te tangata te uru atu",
     "restrictedCoursesFilterTooltip": "Whakaaturia ngā akoranga me tono koe kia uru atu",
-    "viewImageLabel": "Tirohia te atahanga"
+    "viewImageLabel": "Tirohia te atahanga",
+    "reportSent": "Kua tukuna te pūrongo",
+    "reportNotSent": "Kāore i taea te tuku i tō pūrongo. Tirohia tō hononga ka ngana anō.",
+    "reportPointerMessage": "I pūrongotia tētahi karere i roto i a {courseName} — tirohia te Haumaru"
 }

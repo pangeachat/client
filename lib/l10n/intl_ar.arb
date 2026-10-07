@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-05 13:57:45.099339",
+    "@@last_modified": "2026-10-07 09:01:28.312668",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10254,5 +10254,8 @@
     "ssoTryAnyway": "المحاولة على أي حال",
     "publicCoursesFilterTooltip": "إظهار الدورات التدريبية التي يمكن لأي شخص الانضمام إليها فقط",
     "restrictedCoursesFilterTooltip": "إظهار الدورات التدريبية التي يجب عليك طلب الانضمام إليها فقط",
-    "viewImageLabel": "عرض الصورة"
+    "viewImageLabel": "عرض الصورة",
+    "reportSent": "تم إرسال البلاغ",
+    "reportNotSent": "تعذر إرسال بلاغك. تحقق من اتصالك وحاول مرة أخرى.",
+    "reportPointerMessage": "تم الإبلاغ عن رسالة في {courseName} — راجع الأمان"
 }

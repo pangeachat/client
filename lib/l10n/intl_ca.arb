@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:45.751920",
+    "@@last_modified": "2026-10-07 09:01:31.984471",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10075,5 +10075,8 @@
     "ssoTryAnyway": "Prova igualment",
     "publicCoursesFilterTooltip": "Mostra només els cursos als quals qualsevol es pot unir",
     "restrictedCoursesFilterTooltip": "Mostra només els cursos als quals has de demanar unió",
-    "viewImageLabel": "Veure imatge"
+    "viewImageLabel": "Veure imatge",
+    "reportSent": "Informe enviat",
+    "reportNotSent": "No s'ha pogut enviar l'informe. Comprova la connexió i torna-ho a provar.",
+    "reportPointerMessage": "S'ha informat d'un missatge a {courseName}; consulta Seguretat"
 }

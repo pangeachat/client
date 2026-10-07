@@ -1799,7 +1799,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-05 13:57:52.676336",
+    "@@last_modified": "2026-10-07 09:01:43.297672",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10893,5 +10893,8 @@
     "ssoTryAnyway": "Vseeno poskusi",
     "publicCoursesFilterTooltip": "Prikaži samo tečaje, ki se jim lahko pridruži kdorkoli",
     "restrictedCoursesFilterTooltip": "Prikaži samo tečaje, za katere moraš zaprositi za pridružitev",
-    "viewImageLabel": "Ogled slike"
+    "viewImageLabel": "Ogled slike",
+    "reportSent": "Poročilo poslano",
+    "reportNotSent": "Vašega poročila ni bilo mogoče poslati. Preverite povezavo in poskusite znova.",
+    "reportPointerMessage": "Sporočilo je bilo prijavljeno v {courseName} – glejte Varnost"
 }

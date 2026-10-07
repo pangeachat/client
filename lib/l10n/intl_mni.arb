@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-05 13:57:52.797550",
+    "@@last_modified": "2026-10-07 09:01:39.916530",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "ট্রাই তৌবা",
     "publicCoursesFilterTooltip": "খুনাইনা কাওনবা কোর্সশিং খেন্না উৎনবা",
     "restrictedCoursesFilterTooltip": "নাকোইনবা কোর্সশিং খেন্না উৎনবা",
-    "viewImageLabel": "ꯏꯃꯦꯖ ꯎꯕ"
+    "viewImageLabel": "ꯏꯃꯦꯖ ꯎꯕ",
+    "reportSent": "রিপোর্ট থাজিনখ্রে",
+    "reportNotSent": "নখোয়গী রিপোর্ট থাজিনবা ঙমদ্রে। নখোয়গী কনেক্সন চেক তৌদুনা অমুক হন্না ট্রাই তৌবীয়ু।",
+    "reportPointerMessage": "{courseName} দা মেসেজ অমা রিপোর্ট তৌখ্রে — সেফটিদা য়েংবীয়ু"
 }

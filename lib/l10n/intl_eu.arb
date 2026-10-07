@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-05 13:57:46.786418",
+    "@@last_modified": "2026-10-07 09:01:30.681737",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9948,5 +9948,8 @@
     "ssoTryAnyway": "Dena den, saiatu",
     "publicCoursesFilterTooltip": "Edonork bat egin dezakeen ikastaroak bakarrik erakutsi",
     "restrictedCoursesFilterTooltip": "Bat egiteko eskatu behar duzun ikastaroak bakarrik erakutsi",
-    "viewImageLabel": "Ikusi irudia"
+    "viewImageLabel": "Ikusi irudia",
+    "reportSent": "Txostena bidali da",
+    "reportNotSent": "Ezin izan da zure txostena bidali. Egiaztatu konexioa eta saiatu berriro.",
+    "reportPointerMessage": "Mezu bat salatu da {courseName} ikastaroan — ikusi Segurtasuna"
 }

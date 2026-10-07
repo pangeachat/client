@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-05 13:57:54.085827",
+    "@@last_modified": "2026-10-07 09:01:46.235966",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "قانداقلا بولمىسۇن سىناپ بېقىڭ",
     "publicCoursesFilterTooltip": "ھەرقانداق ئادەم قاتناشالايدىغان دەرسلەرنىلا كۆرسەت",
     "restrictedCoursesFilterTooltip": "قاتنىشىش ئۈچۈن ئىلتىماس قىلىشقا تېگىشلىك دەرسلەرنىلا كۆرسەت",
-    "viewImageLabel": "رەسىمنى كۆرۈش"
+    "viewImageLabel": "رەسىمنى كۆرۈش",
+    "reportSent": "دوكلات يوللاندى",
+    "reportNotSent": "دوكلاتىڭىز يوللانمىدى. ئۇلىنىشىڭىزنى تەكشۈرۈپ قايتا سىناڭ.",
+    "reportPointerMessage": "{courseName} دە بىر ئۇچۇر دوكلات قىلىندى — بىخەتەرلىكنى كۆرۈڭ"
 }

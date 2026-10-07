@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-05 13:57:47.895422",
+    "@@last_modified": "2026-10-07 09:01:33.922509",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "Sim txawm li cas los xij",
     "publicCoursesFilterTooltip": "Qhia cov hoob kawm uas leej twg los koom tau xwb",
     "restrictedCoursesFilterTooltip": "Qhia cov hoob kawm uas koj yuav tsum tau thov koom xwb",
-    "viewImageLabel": "Saib duab"
+    "viewImageLabel": "Saib duab",
+    "reportSent": "Daim ntawv qhia raug xa lawm",
+    "reportNotSent": "Koj daim ntawv qhia xa tsis tau. Saib koj qhov txuas thiab sim dua.",
+    "reportPointerMessage": "Ib tsab ntawv raug qhia hauv {courseName} — saib Kev Nyab Xeeb"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-05 13:57:55.531927",
+    "@@last_modified": "2026-10-07 09:01:47.387494",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "Zama noma kunjalo",
     "publicCoursesFilterTooltip": "Bonisa kuphela izifundo noma ubani angajoyina",
     "restrictedCoursesFilterTooltip": "Bonisa kuphela izifundo okumele ucele ukuzijoyina",
-    "viewImageLabel": "Buka isithombe"
+    "viewImageLabel": "Buka isithombe",
+    "reportSent": "Umbiko uthunyelwe",
+    "reportNotSent": "Umbiko wakho awukwazanga ukuthunyelwa. Hlola uxhumano lwakho bese uzama futhi.",
+    "reportPointerMessage": "Umlayezo ubikwe ku-{courseName} — bona ukuphepha"
 }

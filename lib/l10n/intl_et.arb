@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-05 13:57:46.556552",
+    "@@last_modified": "2026-10-07 09:01:30.977182",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9945,5 +9945,8 @@
     "ssoTryAnyway": "Proovi ikkagi",
     "publicCoursesFilterTooltip": "Näita ainult kursuseid, millega igaüks saab liituda",
     "restrictedCoursesFilterTooltip": "Näita ainult kursuseid, millega liitumiseks pead luba küsima",
-    "viewImageLabel": "Vaata pilti"
+    "viewImageLabel": "Vaata pilti",
+    "reportSent": "Aruanne saadetud",
+    "reportNotSent": "Teie aruannet ei saanud saata. Kontrollige oma ühendust ja proovige uuesti.",
+    "reportPointerMessage": "Sõnumist teatati kursusel {courseName} – vaadake jaotist „Ohutus“"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:46.858090",
+    "@@last_modified": "2026-10-07 09:01:45.891702",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10893,5 +10893,8 @@
     "ssoTryAnyway": "Provu ĉiukaze",
     "publicCoursesFilterTooltip": "Montri nur kursojn al kiuj iu ajn povas aliĝi",
     "restrictedCoursesFilterTooltip": "Montri nur kursojn al kiuj vi devas peti aliĝon",
-    "viewImageLabel": "Vidi bildon"
+    "viewImageLabel": "Vidi bildon",
+    "reportSent": "Raporto sendita",
+    "reportNotSent": "Via raporto ne povis esti sendita. Kontrolu vian konekton kaj reprovu.",
+    "reportPointerMessage": "Mesaĝo estis raportita en {courseName} — vidu Sekurecon"
 }

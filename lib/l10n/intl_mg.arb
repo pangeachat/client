@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-05 13:57:50.142608",
+    "@@last_modified": "2026-10-07 09:01:38.457665",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "Andramo ihany",
     "publicCoursesFilterTooltip": "Asehoy ireo taranja azon'ny rehetra idirana ihany",
     "restrictedCoursesFilterTooltip": "Asehoy ireo taranja tsy maintsy angatahana idirana ihany",
-    "viewImageLabel": "Jereo ny sary"
+    "viewImageLabel": "Jereo ny sary",
+    "reportSent": "Tatitra nalefa",
+    "reportNotSent": "Tsy afaka nalefa ny tatitrao. Hamarino ny fifandraisanao ary andramo indray.",
+    "reportPointerMessage": "Nisy hafatra notaterina tao amin'ny {courseName} — jereo ny Fiarovana"
 }

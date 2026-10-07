@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-05 13:57:47.972093",
+    "@@last_modified": "2026-10-07 09:01:33.662012",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2393,5 +2393,8 @@
     "ssoTryAnyway": "Eseye kanmenm",
     "publicCoursesFilterTooltip": "Montre sèlman kou tout moun ka antre",
     "restrictedCoursesFilterTooltip": "Montre sèlman kou ou dwe mande pou antre",
-    "viewImageLabel": "Gade imaj"
+    "viewImageLabel": "Gade imaj",
+    "reportSent": "Rapò a voye",
+    "reportNotSent": "Rapò ou a pa t' kapab voye. Tcheke koneksyon ou epi eseye ankò.",
+    "reportPointerMessage": "Yon mesaj te rapòte nan {courseName} — gade Sekirite"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-05 13:57:47.307572",
+    "@@last_modified": "2026-10-07 09:01:32.599931",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9948,5 +9948,8 @@
     "ssoTryAnyway": "Tentar de todos os xeitos",
     "publicCoursesFilterTooltip": "Mostrar só os cursos aos que calquera se pode unir",
     "restrictedCoursesFilterTooltip": "Mostrar só os cursos aos que debes solicitar unirte",
-    "viewImageLabel": "Ver imaxe"
+    "viewImageLabel": "Ver imaxe",
+    "reportSent": "Informe enviado",
+    "reportNotSent": "Non se puido enviar o teu informe. Comproba a túa conexión e téntao de novo.",
+    "reportPointerMessage": "Informouse dunha mensaxe en {courseName} — consulta Seguridade"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-05 13:57:46.712062",
+    "@@last_modified": "2026-10-07 09:01:30.269948",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10442,5 +10442,8 @@
     "ssoTryAnyway": "Přesto zkusit",
     "publicCoursesFilterTooltip": "Zobrazit pouze kurzy, ke kterým se může připojit kdokoli",
     "restrictedCoursesFilterTooltip": "Zobrazit pouze kurzy, o které musíte požádat o připojení",
-    "viewImageLabel": "Zobrazit obrázek"
+    "viewImageLabel": "Zobrazit obrázek",
+    "reportSent": "Hlášení odesláno",
+    "reportNotSent": "Vaše hlášení se nepodařilo odeslat. Zkontrolujte připojení a zkuste to znovu.",
+    "reportPointerMessage": "Zpráva byla nahlášena v {courseName} – viz Bezpečnost"
 }

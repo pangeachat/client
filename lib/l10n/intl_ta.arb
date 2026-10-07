@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:53.537451",
+    "@@last_modified": "2026-10-07 09:01:45.291808",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10040,5 +10040,8 @@
     "ssoTryAnyway": "எப்படியும் முயற்சி செய்",
     "publicCoursesFilterTooltip": "யாரும் சேரக்கூடிய படிப்புகளை மட்டும் காட்டு",
     "restrictedCoursesFilterTooltip": "நீங்கள் சேர அனுமதி கேட்க வேண்டிய படிப்புகளை மட்டும் காட்டு",
-    "viewImageLabel": "படத்தைப் பார்"
+    "viewImageLabel": "படத்தைப் பார்",
+    "reportSent": "புகார் அனுப்பப்பட்டது",
+    "reportNotSent": "உங்கள் புகாரை அனுப்ப முடியவில்லை. உங்கள் இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.",
+    "reportPointerMessage": "{courseName} இல் ஒரு செய்தி புகாரளிக்கப்பட்டது — பாதுகாப்பைப் பார்க்கவும்"
 }
