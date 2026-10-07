@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:46.858090",
+    "@@last_modified": "2026-10-06 12:20:51.423158",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -2006,7 +2006,6 @@
     "unreadChatsInApp": "{appname}: {unread} nelegitaj konversacioj",
     "noDatabaseEncryption": "Datumbaza ĉifrado ne estas subtenata en ĉi tiu platformo",
     "thereAreCountUsersBlocked": "Nuntempe estas {count} uzantoj blokitaj.",
-    "restricted": "Restriktita",
     "knockRestricted": "Knock limigita",
     "goToSpace": "Iru al spaco: {space}",
     "markAsUnread": "Marki kiel nelegitan",
@@ -2673,17 +2672,8 @@
     "introductions": "Enkondukoj",
     "announcements": "Anoncoj",
     "activities": "Aktivecoj",
-    "access": "Aksesoj",
-    "howSpaceCanBeFound": "Kiel ĉi tiu kurso povas esti trovita",
     "private": "Private",
-    "cannotBeFoundInSearch": "Ne povas esti trovita en serĉo",
     "public": "Publika",
-    "visibleToCommunity": "Videbla al la pli vasta Pangea Chat-komunumo per \"Trovu kurson\"",
-    "howSpaceCanBeJoined": "Kiel oni povas aliĝi al ĉi tiu kurso",
-    "canBeFoundVia": "Eblas trovi per:",
-    "canBeFoundViaInvitation": "• invito",
-    "canBeFoundViaCodeOrLink": "• kodo aŭ ligilo",
-    "canBeFoundViaKnock": "• peto aliĝi kaj administranto aprobas",
     "sendActivities": "Sendu agadojn",
     "directMessage": "Rekta mesaĝo",
     "newDirectMessage": "Nova rekta mesaĝo",
@@ -2742,7 +2732,6 @@
     "inviteDesc": "Per uzantnomo, per kodo aŭ ligilo",
     "editCourseDesc": "Ĉi tie vi povas redakti la titolon, priskribon, ktp. de la kurso.",
     "permissionsDesc": "Agordi permesojn kiel kiu povas inviti uzantojn, sendi mesaĝojn, krei babilejojn, ktp.",
-    "accessDesc": "Vi povas fari vian kurson malfermita al la mondo! Aŭ, fari vian kurson private kaj sekura.",
     "createGroupChatDesc": "Dum agado-sesioj komenciĝas kaj finiĝas, grupaj babilejoj restos malfermita por regula komunikado.",
     "deleteDesc": "Nur administrantoj povas forigi kurson. Ĉi tio estas detrua ago kiu forigas ĉiujn uzantojn kaj forigas ĉiujn elektitajn babilejojn ene de la kurso. Estu singarda.",
     "whatNow": "Kio nun?",
@@ -3797,10 +3786,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6601,47 +6586,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6912,10 +6861,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8707,11 +8652,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Laŭ la defaŭlto, kursoj estas publike serĉeblaj kaj postulas administran aprobon por aliĝi. Vi povas redakti ĉi tiujn agordojn iam ajn.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Kian lingvon vi lernas?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9586,11 +9526,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Permesi aliajn serĉi vian kurson",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "Neniam maltrafu chaton!",
     "enableNotificationsDesc": "Permesu notifikojn por Pangea Chat kaj restu konektita kun viaj lingvaj amikoj!",
     "enableNotifications": "Permesu notifikojn",
@@ -9683,7 +9618,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Elektu vortojn por lerni pli pri ili",
     "requireAnalyticsAccessTitle": "Postuli aliron al analitiko por aliĝi",
-    "requireAnalyticsAccessDesc": "Partoprenantoj devas doni aliron al siaj lernaj analitiko por aliĝi al ĉi tiu kurso",
     "analyticsAccessNoticeTitle": "Aldona aliro al analitiko postulata",
     "analyticsAccessNoticeDesc": "Per aliĝo al ĉi tiu kurso, vi konsentas doni al administrantoj aliron al viaj lernaj analitiko.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9691,10 +9625,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10925,5 +10855,12 @@
     "ssoTryAnyway": "Provu ĉiukaze",
     "publicCoursesFilterTooltip": "Montri nur kursojn al kiuj iu ajn povas aliĝi",
     "restrictedCoursesFilterTooltip": "Montri nur kursojn al kiuj vi devas peti aliĝon",
-    "viewImageLabel": "Vidi bildon"
+    "viewImageLabel": "Vidi bildon",
+    "whoCanJoin": "Kiu povas aliĝi?",
+    "approvalRequired": "Aprobo necesa",
+    "courseAccessPublicDesc": "Ĉiu povas trovi kaj aliĝi al ĉi tiu kurso.",
+    "courseAccessApprovalRequiredDesc": "Ĉiu povas trovi ĉi tiun kurson kaj peti aliĝon. Vi aprobas ĉiun peton.",
+    "courseAccessPrivateDesc": "Nur homoj kun via invito aŭ kurskodo povas aliĝi. La kurso ne aperas en serĉo.",
+    "courseAccessCodeNote": "Studentoj kun via kurskodo aŭ invito povas aliĝi tuj, kion ajn vi elektas.",
+    "requireAnalyticsAccessSummary": "Studentoj kunhavigas sian lernan progreson kun vi kiam ili aliĝas."
 }

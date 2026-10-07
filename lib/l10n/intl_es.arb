@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-05 13:57:45.993672",
+    "@@last_modified": "2026-10-06 12:20:52.612378",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -2473,8 +2473,6 @@
             }
         }
     },
-    "restricted": "Restringido",
-    "@restricted": {},
     "requestedKeyVerification": "{sender} ha pedido verificación de clave",
     "@requestedKeyVerification": {
         "type": "String",
@@ -3712,17 +3710,8 @@
     "deleteChatDesc": "¿Estás seguro de que deseas eliminar este chat? Se eliminará para todos los participantes y todos los mensajes dentro del chat ya no estarán disponibles para práctica o análisis de aprendizaje.",
     "deleteSpaceDesc": "El espacio y cualquier chat y/o subespacio seleccionado se eliminarán para todos los participantes y todos los mensajes dentro del chat ya no estarán disponibles para práctica o análisis de aprendizaje. Esta acción no se puede deshacer.",
     "activities": "Actividades",
-    "access": "Acceso",
-    "howSpaceCanBeFound": "Cómo se puede encontrar este espacio",
     "private": "Privado",
-    "cannotBeFoundInSearch": "No se puede encontrar en la búsqueda",
     "public": "Público",
-    "visibleToCommunity": "Visible para la comunidad más amplia de Pangea Chat a través de \"Encuentra a tu gente\"",
-    "howSpaceCanBeJoined": "Cómo se puede unirse a este espacio",
-    "canBeFoundVia": "Se puede encontrar a través de:",
-    "canBeFoundViaInvitation": "• invitación",
-    "canBeFoundViaCodeOrLink": "• código o enlace",
-    "canBeFoundViaKnock": "• solicitud para unirse y aprobación del administrador",
     "sendActivities": "Enviar actividades",
     "directMessage": "Mensaje directo",
     "newDirectMessage": "Nuevo mensaje directo",
@@ -3774,47 +3763,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -3981,7 +3934,6 @@
     "inviteDesc": "Por nombre de usuario, por código o enlace",
     "editCourseDesc": "Aquí puedes editar el título, la descripción, etc., del curso.",
     "permissionsDesc": "Configura permisos como quién puede invitar usuarios, enviar mensajes, crear chats, etc.",
-    "accessDesc": "¡Puedes hacer que tu curso sea abierto al mundo! O, hacer que tu curso sea privado y seguro.",
     "createGroupChatDesc": "Mientras que las sesiones de actividad comienzan y terminan, los chats grupales permanecerán abiertos para la comunicación rutinaria.",
     "deleteDesc": "Solo los administradores pueden eliminar un curso. Esta es una acción destructiva que elimina a todos los usuarios y elimina todos los chats seleccionados dentro del curso. Procede con precaución.",
     "whatNow": "¿Y ahora?",
@@ -4245,10 +4197,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -6067,11 +6015,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Por defecto, los cursos son buscables públicamente y requieren aprobación del administrador para unirse. Puedes editar estas configuraciones en cualquier momento.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "¿Qué idioma estás aprendiendo?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -6864,11 +6807,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Permitir que otros busquen tu curso",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "¡Nunca te pierdas un chat!",
     "enableNotificationsDesc": "¡Permite las notificaciones para Pangea Chat y mantente conectado con tus amigos de idiomas!",
     "enableNotifications": "Permitir notificaciones",
@@ -6961,7 +6899,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Selecciona palabras para aprender más sobre ellas",
     "requireAnalyticsAccessTitle": "Requiere acceso a análisis para unirse",
-    "requireAnalyticsAccessDesc": "Los participantes deben otorgar acceso a sus análisis de aprendizaje para unirse a este curso",
     "analyticsAccessNoticeTitle": "Acceso a Análisis Requerido",
     "analyticsAccessNoticeDesc": "Al unirte a este curso, aceptas otorgar a los administradores acceso a tus análisis de aprendizaje.",
     "@readingAssistanceTutorialCollectToken": {
@@ -6969,10 +6906,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8199,5 +8132,12 @@
     "ssoTryAnyway": "Intentar de todos modos",
     "publicCoursesFilterTooltip": "Mostrar solo los cursos a los que cualquiera puede unirse",
     "restrictedCoursesFilterTooltip": "Mostrar solo los cursos a los que debes solicitar unirte",
-    "viewImageLabel": "Ver imagen"
+    "viewImageLabel": "Ver imagen",
+    "whoCanJoin": "¿Quién puede unirse?",
+    "approvalRequired": "Se requiere aprobación",
+    "courseAccessPublicDesc": "Cualquiera puede encontrar y unirse a este curso.",
+    "courseAccessApprovalRequiredDesc": "Cualquiera puede encontrar este curso y solicitar unirse. Tú apruebas cada solicitud.",
+    "courseAccessPrivateDesc": "Solo las personas con tu invitación o código de curso pueden unirse. El curso no aparece en las búsquedas.",
+    "courseAccessCodeNote": "Los estudiantes con tu código de curso o una invitación pueden unirse de inmediato, elijas lo que elijas.",
+    "requireAnalyticsAccessSummary": "Los estudiantes comparten su progreso de aprendizaje contigo cuando se unen."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:46.740276",
+    "@@last_modified": "2026-10-06 12:20:51.957188",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -2478,8 +2478,6 @@
         "type": "String",
         "count": {}
     },
-    "restricted": "محدودشده",
-    "@restricted": {},
     "knockRestricted": "در زدن محدود",
     "@knockRestricted": {},
     "goToSpace": "رفتن به فضا: {space}",
@@ -3334,17 +3332,8 @@
     "introductions": "معرفی‌ها",
     "announcements": "اعلامیه‌ها",
     "activities": "فعالیت‌ها",
-    "access": "دسترسی",
-    "howSpaceCanBeFound": "چگونه این دوره قابل پیدا کردن است",
     "private": "خصوصی",
-    "cannotBeFoundInSearch": "در جستجو قابل پیدا کردن نیست",
     "public": "عمومی",
-    "visibleToCommunity": "قابل مشاهده برای جامعه گسترده‌تر چت پنگئا از طریق \"پیدا کردن دوره\"",
-    "howSpaceCanBeJoined": "چگونه می‌توان به این دوره پیوست",
-    "canBeFoundVia": "می‌تواند از طریق:",
-    "canBeFoundViaInvitation": "• دعوت‌نامه",
-    "canBeFoundViaCodeOrLink": "• کد یا لینک",
-    "canBeFoundViaKnock": "• درخواست پیوستن و تایید مدیر",
     "sendActivities": "ارسال فعالیت‌ها",
     "directMessage": "پیام مستقیم",
     "newDirectMessage": "پیام مستقیم جدید",
@@ -3403,7 +3392,6 @@
     "inviteDesc": "با نام کاربری، با کد یا لینک",
     "editCourseDesc": "در اینجا می‌توانید عنوان، توضیحات و موارد دیگر دوره را ویرایش کنید.",
     "permissionsDesc": "مجوزها را تنظیم کنید، مانند اینکه چه کسی می‌تواند کاربران را دعوت کند، پیام ارسال کند، چت ایجاد کند و غیره.",
-    "accessDesc": "می‌توانید دوره خود را برای جهان باز کنید! یا، دوره خود را خصوصی و امن کنید.",
     "createGroupChatDesc": "در حالی که جلسات فعالیت شروع و پایان می‌یابند، چت‌های گروهی برای ارتباط روتین باقی خواهند ماند.",
     "deleteDesc": "فقط مدیران می‌توانند دوره را حذف کنند. این یک اقدام مخرب است که تمام کاربران را حذف می‌کند و تمام چت‌های انتخاب شده درون دوره را حذف می‌کند. با احتیاط اقدام کنید.",
     "whatNow": "حالا چه؟",
@@ -5749,47 +5737,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6060,10 +6012,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7855,11 +7803,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "به طور پیش‌فرض، دوره‌ها به صورت عمومی قابل جستجو هستند و برای پیوستن به آن‌ها نیاز به تأیید مدیر دارند. شما می‌توانید این تنظیمات را در هر زمان ویرایش کنید.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "شما در حال یادگیری چه زبانی هستید؟",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8729,11 +8672,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "اجازه دهید دیگران دوره شما را جستجو کنند",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "هرگز یک چت را از دست ندهید!",
     "enableNotificationsDesc": "اجازه دهید اعلان‌ها برای چت Pangea فعال شوند و با دوستان زبان خود در ارتباط باشید!",
     "enableNotifications": "اجازه دهید اعلان‌ها فعال شوند",
@@ -8826,7 +8764,6 @@
     },
     "readingAssistanceTutorialCollectToken": "کلمات را برای یادگیری بیشتر انتخاب کنید",
     "requireAnalyticsAccessTitle": "برای پیوستن به دسترسی به تجزیه و تحلیل نیاز است",
-    "requireAnalyticsAccessDesc": "شرکت‌کنندگان باید دسترسی به تجزیه و تحلیل یادگیری خود را برای پیوستن به این دوره اعطا کنند",
     "analyticsAccessNoticeTitle": "دسترسی به تجزیه و تحلیل مورد نیاز است",
     "analyticsAccessNoticeDesc": "با پیوستن به این دوره، شما موافقت می‌کنید که به مدیران دسترسی به تجزیه و تحلیل یادگیری خود را اعطا کنید.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8834,10 +8771,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10068,5 +10001,12 @@
     "ssoTryAnyway": "به هر حال امتحان کن",
     "publicCoursesFilterTooltip": "فقط دوره‌هایی را نشان بده که همه می‌توانند به آن‌ها بپیوندند",
     "restrictedCoursesFilterTooltip": "فقط دوره‌هایی را نشان بده که برای پیوستن به آن‌ها باید درخواست دهید",
-    "viewImageLabel": "مشاهده تصویر"
+    "viewImageLabel": "مشاهده تصویر",
+    "whoCanJoin": "چه کسی می‌تواند بپیوندد؟",
+    "approvalRequired": "نیاز به تأیید",
+    "courseAccessPublicDesc": "هر کسی می‌تواند این دوره را پیدا کرده و به آن بپیوندد.",
+    "courseAccessApprovalRequiredDesc": "هر کسی می‌تواند این دوره را پیدا کرده و درخواست پیوستن دهد. شما هر درخواست را تأیید می‌کنید.",
+    "courseAccessPrivateDesc": "فقط افرادی که دعوت‌نامه یا کد دوره شما را دارند می‌توانند بپیوندند. دوره در جستجو ظاهر نمی‌شود.",
+    "courseAccessCodeNote": "دانش‌آموزانی که کد دوره یا دعوت‌نامه شما را دارند، هر انتخابی که داشته باشید، می‌توانند بلافاصله بپیوندند.",
+    "requireAnalyticsAccessSummary": "دانش‌آموزان هنگام پیوستن، پیشرفت یادگیری خود را با شما به اشتراک می‌گذارند."
 }

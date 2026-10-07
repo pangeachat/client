@@ -561,7 +561,6 @@
     "unreadChatsInApp": "{appname}: {unread} chat non lege",
     "noDatabaseEncryption": "Le encryption del base de datos non es supportate in iste piattaforma",
     "thereAreCountUsersBlocked": "Actualmente, il ha {count} usatores bloccate.",
-    "restricted": "Restricte",
     "knockRestricted": "Knock restricte",
     "goToSpace": "Vade a le spatio: {space}",
     "markAsUnread": "Marca como non lege",
@@ -1230,17 +1229,8 @@
     "introductions": "Introductiones",
     "announcements": "Anuncios",
     "activities": "Activitates",
-    "access": "Acceso",
-    "howSpaceCanBeFound": "Como iste curso pote esser trovate",
     "private": "Privat",
-    "cannotBeFoundInSearch": "Non pote esser trovate in le recerca",
     "public": "Public",
-    "visibleToCommunity": "Visibile a le communitate plus large de Pangea Chat via \"Trova un curso\"",
-    "howSpaceCanBeJoined": "Como iste curso pote esser juncite",
-    "canBeFoundVia": "Pote esser trovate via:",
-    "canBeFoundViaInvitation": "• invitation",
-    "canBeFoundViaCodeOrLink": "• codice o ligamine",
-    "canBeFoundViaKnock": "• requesto de aderir e approbation del administrator",
     "sendActivities": "Manda actividades",
     "directMessage": "Message directe",
     "newDirectMessage": " nove message directe",
@@ -1299,7 +1289,6 @@
     "inviteDesc": "Per nomine de usator, per codice o ligamine",
     "editCourseDesc": "Ici tu pote modificar le titulo del curso, description, etc.",
     "permissionsDesc": "Configura le permissiones como qui pote invitar usatores, mandar message, crear chats, etc.",
-    "accessDesc": "Tu pote face tu curso aperte al mundo! O, face tu curso private e secure.",
     "createGroupChatDesc": "Dove le sessiones de activitate comencia e termina, le chats de grupo remanera aperte pro communication routine.",
     "deleteDesc": "Solo le administratores pote delere un curso. Iste es un action destructive que remove tote le usatores e delere tote le chats selectate in le curso. Procede con cautela.",
     "whatNow": "Que face ora?",
@@ -1362,7 +1351,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-05 13:57:48.497866",
+    "@@last_modified": "2026-10-06 12:20:53.741860",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -3780,10 +3769,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6592,47 +6577,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6903,10 +6852,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8698,11 +8643,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Per default, kursusene er offentlig søkbare og krever admin-godkjenning for å bli med. Du kan redigere disse innstillingene når som helst.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Kia lingvo vi lernas?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9577,11 +9517,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Permet a l'autri de cercar per ton cors",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "Nekas neperduokite pokalbio!",
     "enableNotificationsDesc": "Leiskite pranešimus Pangea pokalbiui ir likite susijungę su savo kalbos draugais!",
     "enableNotifications": "Leiskite pranešimus",
@@ -9674,7 +9609,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Selecciona palabras para aprender más sobre ellas",
     "requireAnalyticsAccessTitle": "Requiere acceso a análisis para unirse",
-    "requireAnalyticsAccessDesc": "Los participantes deben otorgar acceso a sus análisis de aprendizaje para unirse a este curso",
     "analyticsAccessNoticeTitle": "Acceso a Análisis Requerido",
     "analyticsAccessNoticeDesc": "Al unirte a este curso, aceptas otorgar a los administradores acceso a tus análisis de aprendizaje.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9682,10 +9616,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10916,5 +10846,12 @@
     "ssoTryAnyway": "Provar de tote modos",
     "publicCoursesFilterTooltip": "Monstrar solmente cursos a los que tote le mundo pote unir se",
     "restrictedCoursesFilterTooltip": "Monstrar solmente cursos a los que tu debe demandar de unir te",
-    "viewImageLabel": "Vider imagine"
+    "viewImageLabel": "Vider imagine",
+    "whoCanJoin": "Qui pote adherer?",
+    "approvalRequired": "Approbation requirite",
+    "courseAccessPublicDesc": "Qualcunque persona pote trovar e adherer a iste curso.",
+    "courseAccessApprovalRequiredDesc": "Qualcunque persona pote trovar iste curso e demandar de adherer. Tu approba cata requesta.",
+    "courseAccessPrivateDesc": "Solmente personas con tu invitation o codice de curso pote adherer. Le curso non appare in le recerca.",
+    "courseAccessCodeNote": "Studentes con tu codice de curso o un invitation pote adherer immediatemente, non importa lo que tu selige.",
+    "requireAnalyticsAccessSummary": "Le studentes condivide lor progresso de apprender con vos quando illos se junge."
 }

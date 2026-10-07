@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-05 13:57:46.786418",
+    "@@last_modified": "2026-10-06 12:20:52.102464",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -2416,8 +2416,6 @@
     },
     "searchMore": "Bilatu gehiago...",
     "@searchMore": {},
-    "restricted": "Mugatuta",
-    "@restricted": {},
     "knockRestricted": "Eskatu baimena sarrera mugatua duen txatean",
     "@knockRestricted": {},
     "swipeRightToLeftToReply": "Herrestatu eskuin-ezker erantzuteko",
@@ -3426,17 +3424,8 @@
     "introductions": "Aurkezpenak",
     "announcements": "Albisteak",
     "activities": "Jarduerak",
-    "access": "Sarrera",
-    "howSpaceCanBeFound": "Nola aurki daiteke ikastaro hau",
     "private": "Pribatua",
-    "cannotBeFoundInSearch": "Ez da bilaketetan aurki daiteke",
     "public": "Publikoa",
-    "visibleToCommunity": "Ikusgai Pangea Chat komunitate zabalagoaren bidez \"Ikusi ikastaroa\"",
-    "howSpaceCanBeJoined": "Nola elkartu ikastaro hau",
-    "canBeFoundVia": "Aurki daiteke bidez:",
-    "canBeFoundViaInvitation": "• gonbidapena",
-    "canBeFoundViaCodeOrLink": "• kodea edo esteka",
-    "canBeFoundViaKnock": "• eskatu elkartzeko eta administratzailearen onespena",
     "sendActivities": "Bidali ekintzak",
     "directMessage": "Mezu zuzena",
     "newDirectMessage": "Mezu zuzena berria",
@@ -3495,7 +3484,6 @@
     "inviteDesc": "Erabiltzaile-izena, kodea edo esteka bidez",
     "editCourseDesc": "Hemen ikastaroaren izena, deskribapena, eta abar editatu ditzakezu",
     "permissionsDesc": "Ezarri baimenak, hala nola nor gonbidatu dezakeen erabiltzaileak, mezularitza bidali, txateak sortu, eta abar",
-    "accessDesc": "Zure ikastaroa mundu osoari irekita egin dezakezu! Edo, ikastaroa pribatua eta segurua egin",
     "createGroupChatDesc": "Ekintza saioak hasten eta bukatzen diren bitartean, talde txat hauek komunikazio erregularrerako irekita egongo dira",
     "deleteDesc": "Administratzaileek bakarrik ezabatu dezakete ikastaroa. Hau ekintza suntsitzailea da, erabiltzaile guztiak ezabatzen ditu eta ikastaroaren barruan aukeratutako txat guztiak ezabatzen ditu. Kontuz ibili",
     "whatNow": "Zer orain?",
@@ -5836,47 +5824,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6147,10 +6099,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7942,11 +7890,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Lehenetsitako, ikastaroak publikoan bilatzeko modukoak dira eta administratzailearen onarpena behar dute bat egiteko. Ezarpen hauek edonon aldatu ditzakezu.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Zer hizkuntza ikasten ari zara?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8641,11 +8584,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Utzi besteek zure ikastaroa bilatzea",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "Ez galdu txat bat ere!",
     "enableNotificationsDesc": "Baieztatu Pangea Chat-eko jakinarazpenak eta mantendu harremanetan zure hizkuntza lagunekin!",
     "enableNotifications": "Baieztatu jakinarazpenak",
@@ -8738,7 +8676,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Hitzak hautatu ikasteko gehiago jakiteko",
     "requireAnalyticsAccessTitle": "Analitika sarbidea beharrezkoa da bat egiteko",
-    "requireAnalyticsAccessDesc": "Parte-hartzaileek ikaskuntza analitikaren sarbidea eman behar dute ikastaro honetan parte hartzeko",
     "analyticsAccessNoticeTitle": "Analitika Sarbidea Beharrezkoa",
     "analyticsAccessNoticeDesc": "Ikastaro honetan parte hartuz, administratzaileei zure ikaskuntza analitikaren sarbidea emateko ados zaude.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8746,10 +8683,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9980,5 +9913,12 @@
     "ssoTryAnyway": "Dena den, saiatu",
     "publicCoursesFilterTooltip": "Edonork bat egin dezakeen ikastaroak bakarrik erakutsi",
     "restrictedCoursesFilterTooltip": "Bat egiteko eskatu behar duzun ikastaroak bakarrik erakutsi",
-    "viewImageLabel": "Ikusi irudia"
+    "viewImageLabel": "Ikusi irudia",
+    "whoCanJoin": "Nork har dezake parte?",
+    "approvalRequired": "Onarpena behar da",
+    "courseAccessPublicDesc": "Edonork aurki dezake ikastaro hau eta parte hartu.",
+    "courseAccessApprovalRequiredDesc": "Edonork aurki dezake ikastaro hau eta parte hartzeko eskatu. Eskaera bakoitza zuk onartzen duzu.",
+    "courseAccessPrivateDesc": "Zure gonbidapena edo ikastaro-kodea dutenek bakarrik har dezakete parte. Ikastaroa ez da bilaketan agertzen.",
+    "courseAccessCodeNote": "Zure ikastaro-kodea edo gonbidapena duten ikasleek berehala har dezakete parte, zuk aukeratzen duzuna edozein dela ere.",
+    "requireAnalyticsAccessSummary": "Ikasleek haien ikaskuntza-aurrerapena zurekin partekatzen dute bat egiten dutenean."
 }

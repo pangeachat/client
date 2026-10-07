@@ -365,7 +365,7 @@ abstract class WorkspaceNav {
     return next;
   });
 
-  /// Open a course-management page (invite / edit / access / permissions /
+  /// Open a course-management page (invite / edit / permissions /
   /// emotes / change-course) as the course card's DETAIL — a `coursepage` panel
   /// beside the `course` master that coexists when width allows and folds to a
   /// push when not, mirroring settings menu→page ([openSettings]). The card's

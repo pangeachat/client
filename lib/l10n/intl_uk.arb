@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-05 13:57:54.538715",
+    "@@last_modified": "2026-10-06 12:21:01.533966",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -2367,8 +2367,6 @@
     },
     "commandHint_ignore": "Ігнорувати цей Matrix ID",
     "@commandHint_ignore": {},
-    "restricted": "Обмежено",
-    "@restricted": {},
     "swipeRightToLeftToReply": "Посунути праворуч або ліворуч, щоб відповісти",
     "@swipeRightToLeftToReply": {},
     "calls": "Виклики",
@@ -3426,17 +3424,8 @@
     "introductions": "Вступи",
     "announcements": "Оголошення",
     "activities": "Діяльність",
-    "access": "Доступ",
-    "howSpaceCanBeFound": "Як можна знайти цей курс",
     "private": "Приватний",
-    "cannotBeFoundInSearch": "Не можна знайти у пошуку",
     "public": "Публічний",
-    "visibleToCommunity": "Видимий для ширшої спільноти Pangea Chat через \"Знайти курс\"",
-    "howSpaceCanBeJoined": "Як можна приєднатися до цього курсу",
-    "canBeFoundVia": "Може бути знайдено через:",
-    "canBeFoundViaInvitation": "• запрошення",
-    "canBeFoundViaCodeOrLink": "• код або посилання",
-    "canBeFoundViaKnock": "• запит на приєднання та схвалення адміністратора",
     "sendActivities": "Надіслати активності",
     "directMessage": "Пряме повідомлення",
     "newDirectMessage": "Нове пряме повідомлення",
@@ -3495,7 +3484,6 @@
     "inviteDesc": "За ім'ям користувача, за кодом або посиланням",
     "editCourseDesc": "Тут ви можете редагувати назву курсу, опис тощо.",
     "permissionsDesc": "Встановіть дозволи, такі як хто може запрошувати користувачів, надсилати повідомлення, створювати чати тощо.",
-    "accessDesc": "Ви можете зробити свій курс відкритим для світу! Або зробити його приватним і захищеним.",
     "createGroupChatDesc": "Оскільки сесії активності починаються і закінчуються, групові чати залишаться відкритими для рутинного спілкування.",
     "deleteDesc": "Тільки адміністратори можуть видалити курс. Це руйнівна дія, яка видаляє всіх користувачів і всі обрані чати в межах курсу. Дійте обережно.",
     "whatNow": "Що далі?",
@@ -5836,47 +5824,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6147,10 +6099,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7942,11 +7890,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "За замовчуванням курси є загальнодоступними для пошуку і вимагають схвалення адміністратора для приєднання. Ви можете редагувати ці налаштування в будь-який час.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Яку мову ви вивчаєте?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8641,11 +8584,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Дозволити іншим шукати ваш курс",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "Ніколи не пропустіть чат!",
     "enableNotificationsDesc": "Дозвольте сповіщення для Pangea Chat і залишайтеся на зв'язку зі своїми мовними друзями!",
     "enableNotifications": "Дозволити сповіщення",
@@ -8738,7 +8676,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Виберіть слова, щоб дізнатися про них більше",
     "requireAnalyticsAccessTitle": "Необхідний доступ до аналітики для приєднання",
-    "requireAnalyticsAccessDesc": "Учасники повинні надати доступ до своїх навчальних аналітик, щоб приєднатися до цього курсу",
     "analyticsAccessNoticeTitle": "Необхідний доступ до аналітики",
     "analyticsAccessNoticeDesc": "Приєднуючись до цього курсу, ви погоджуєтеся надати адміністраторам доступ до своїх навчальних аналітик.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8746,10 +8683,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9980,5 +9913,12 @@
     "ssoTryAnyway": "Все одно спробувати",
     "publicCoursesFilterTooltip": "Показувати лише курси, до яких може приєднатися будь-хто",
     "restrictedCoursesFilterTooltip": "Показувати лише курси, до яких потрібно запитувати дозвіл на приєднання",
-    "viewImageLabel": "Переглянути зображення"
+    "viewImageLabel": "Переглянути зображення",
+    "whoCanJoin": "Хто може приєднатися?",
+    "approvalRequired": "Потрібне схвалення",
+    "courseAccessPublicDesc": "Будь-хто може знайти цей курс і приєднатися до нього.",
+    "courseAccessApprovalRequiredDesc": "Будь-хто може знайти цей курс і надіслати запит на приєднання. Ви схвалюєте кожен запит.",
+    "courseAccessPrivateDesc": "Приєднатися можуть лише ті, хто має ваше запрошення або код курсу. Курс не відображається в пошуку.",
+    "courseAccessCodeNote": "Студенти з вашим кодом курсу або запрошенням можуть приєднатися одразу, незалежно від вашого вибору.",
+    "requireAnalyticsAccessSummary": "Студенти діляться з вами своїм прогресом у навчанні, коли приєднуються."
 }

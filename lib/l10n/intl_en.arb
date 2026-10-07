@@ -2667,8 +2667,6 @@
         "type": "String",
         "count": {}
     },
-    "restricted": "Restricted",
-    "@restricted": {},
     "knockRestricted": "Knock restricted",
     "@knockRestricted": {},
     "goToSpace": "Go to space: {space}",
@@ -4085,17 +4083,8 @@
             "language": {}
         }
     },
-    "access": "Access",
-    "howSpaceCanBeFound": "How this course can be found",
     "private": "Private",
-    "cannotBeFoundInSearch": "Cannot be found in search",
     "public": "Public",
-    "visibleToCommunity": "Visible to the broader Pangea Chat community via \"Find a course\"",
-    "howSpaceCanBeJoined": "How this course can be joined",
-    "canBeFoundVia": "Can be found via:",
-    "canBeFoundViaInvitation": "• invitation",
-    "canBeFoundViaCodeOrLink": "• code or link",
-    "canBeFoundViaKnock": "• request to join and admin approval",
     "sendActivities": "Send activities",
     "directMessage": "Direct Message",
     "newDirectMessage": "New direct message",
@@ -4250,7 +4239,6 @@
     "inviteDesc": "By username, by code or link",
     "editCourseDesc": "Here you can edit course title, description, etc.",
     "permissionsDesc": "Set permissions such as who can invite users, send messages, create chats, etc.",
-    "accessDesc": "You can make your course open to the world! Or, make your course private and secure.",
     "createGroupChatDesc": "Whereas activity sessions start and end, group chats will stay open for routine communication.",
     "deleteDesc": "Only admins can delete a course. This is a destructive action which removes all users and deletes all selected chats within the course. Proceed with caution.",
     "whatNow": "What now?",
@@ -4813,7 +4801,6 @@
     "@supportDisplayName": {
         "description": "Display name shown for the Support account in place of its server-side profile name."
     },
-    "newCourseAccess": "By default, courses are publicly searchable and require admin approval to join. You can edit these settings at any time.",
     "onboardingLanguagesTitle": "What language are you learning?",
     "supportSubtitle": "Questions? We're here to help!",
     "autoIGCToolName": "Enable writing assistance",
@@ -4995,7 +4982,6 @@
     "messageLanguage": "Message language",
     "messageLanguageUpdated": "Message language updated!",
     "closeEmojiMenu": "Close emoji menu",
-    "visibilityToggleTitle": "Allow others to search for your course",
     "subscribedToUnlockTools": "Subscribe to unlock interactive translation and grammar checking, audio playback, personalized practice exercises, and learning analytics!",
     "unlockPracticeActivities": "Unlock practice exercises",
     "noAnalyticsActivitiesAvailable": "Wow, you've completed all available activities! Send more messages to unlock more practice exercises.",
@@ -5058,7 +5044,6 @@
     "vocabLevelsDescSeed": "This is where new vocab words will appear!",
     "readingAssistanceTutorialCollectToken": "Select words to learn more about them",
     "requireAnalyticsAccessTitle": "Require analytics access to join",
-    "requireAnalyticsAccessDesc": "Participants must grant access to their learning analytics to join this course",
     "moreOptions": "More options",
     "showMoreOptionsHint": "show more options",
     "@showMoreOptionsHint": {
@@ -5747,5 +5732,33 @@
     "courseCodeSavedExplanation": "Sign up or log in and we'll add you to your course.",
     "@courseCodeSavedExplanation": {
         "description": "Line under the saved-course-code card on the sign-up and login pages."
+    },
+    "whoCanJoin": "Who can join?",
+    "@whoCanJoin": {
+        "description": "Title of the sheet where a teacher picks who can find and join their course, and label of the rows that open it on the create-course preview and in the course's settings."
+    },
+    "approvalRequired": "Approval required",
+    "@approvalRequired": {
+        "description": "Name of the course access setting where anyone can find the course and ask to join, and an admin approves each request. Also the tooltip on the lock icon of such courses and the browse filter for them."
+    },
+    "courseAccessPublicDesc": "Anyone can find and join this course.",
+    "@courseAccessPublicDesc": {
+        "description": "Description of the Public course access setting, shown to the teacher choosing it."
+    },
+    "courseAccessApprovalRequiredDesc": "Anyone can find this course and ask to join. You approve each request.",
+    "@courseAccessApprovalRequiredDesc": {
+        "description": "Description of the Approval required course access setting, shown to the teacher choosing it."
+    },
+    "courseAccessPrivateDesc": "Only people with your invite or course code can join. The course doesn't appear in search.",
+    "@courseAccessPrivateDesc": {
+        "description": "Description of the Private course access setting, shown to the teacher choosing it."
+    },
+    "courseAccessCodeNote": "Students with your course code or an invite can join right away, whatever you choose.",
+    "@courseAccessCodeNote": {
+        "description": "Note under the three course access settings: a course code or an invite admits a student without approval under every setting."
+    },
+    "requireAnalyticsAccessSummary": "Students share their learning progress with you when they join.",
+    "@requireAnalyticsAccessSummary": {
+        "description": "Subtitle of the Require analytics access to join switch, on the create-course page and in the course's settings: what students share when the course requires it."
     }
 }

@@ -33,6 +33,7 @@ import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
 import 'package:fluffychat/routes/chat_list/dm_list_tile.dart';
 import 'package:fluffychat/routes/chat_list/friend_dm_prompt.dart';
+import 'package:fluffychat/routes/courses/own/course_creation_settings_widget.dart';
 import 'package:fluffychat/routes/world/course_context_bar.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_courses_list_view.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
@@ -713,8 +714,15 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   /// The course PREVIEW's minimized rest height (#7826): the cavity handle +
   /// the header tile + the CTA row, description/modules dropped. Only the
   /// tapped course rests low — the lists stay full. Kept in step with
-  /// `kCoursePreviewCompactMaxHeight` in selected_course_view.dart.
+  /// `kCoursePreviewCompactMaxHeight` in selected_course_view.dart. The
+  /// create-course preview rests taller by its settings rows.
   static const double _coursePreviewSheetMinimizedHeight = 188.0;
+
+  static double _coursePreviewRestHeight(Object? param) =>
+      _coursePreviewSheetMinimizedHeight +
+      (param is AddCoursePageTokenParam && param.isCreateCoursePreview
+          ? CourseCreationSettings.heightAllowance
+          : 0.0);
 
   GoRouterState get state => widget.state;
   _ShellLayout get layout => widget.layout;
@@ -854,7 +862,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     if (isActivityCavity) {
       preferredCavityHeight = _activitySheetMinimizedHeight;
     } else if (isCoursePreviewCavity) {
-      preferredCavityHeight = _coursePreviewSheetMinimizedHeight;
+      preferredCavityHeight = _coursePreviewRestHeight(cavityParam);
     } else if (cavityToken?.type == PanelTypesEnum.chats) {
       final visibleChats = client.rooms
           .where((room) => !room.isHiddenRoom && !room.isSpace)
@@ -1630,7 +1638,9 @@ class _ShellLayout {
       // The course preview's resting sheet (#7826) — the same estimate-not-
       // live rule as the activity branch above.
       mapBottomOverlay =
-          _MobileNavLayerState._coursePreviewSheetMinimizedHeight +
+          _MobileNavLayerState._coursePreviewRestHeight(
+            leftTokens[cavityIndex].param,
+          ) +
           MediaQuery.viewPaddingOf(context).bottom +
           chromeMargin * 2;
     }

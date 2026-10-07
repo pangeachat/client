@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:51.822604",
+    "@@last_modified": "2026-10-06 12:21:01.258771",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -2409,8 +2409,6 @@
             }
         }
     },
-    "restricted": "Restrito",
-    "@restricted": {},
     "knockRestricted": "Bater na porta restrito",
     "@knockRestricted": {},
     "searchMore": "Pesquisar mais...",
@@ -3425,17 +3423,8 @@
     "introductions": "Apresentações",
     "announcements": "Anúncios",
     "activities": "Atividades",
-    "access": "Acesso",
-    "howSpaceCanBeFound": "Como este curso pode ser encontrado",
     "private": "Privado",
-    "cannotBeFoundInSearch": "Não pode ser encontrado na pesquisa",
     "public": "Público",
-    "visibleToCommunity": "Visível para a comunidade mais ampla do Pangea Chat via \"Encontrar um curso\"",
-    "howSpaceCanBeJoined": "Como este curso pode ser ingressado",
-    "canBeFoundVia": "Pode ser encontrado via:",
-    "canBeFoundViaInvitation": "• convite",
-    "canBeFoundViaCodeOrLink": "• código ou link",
-    "canBeFoundViaKnock": "• solicitação para entrar e aprovação do administrador",
     "sendActivities": "Enviar atividades",
     "directMessage": "Mensagem direta",
     "newDirectMessage": "Nova mensagem direta",
@@ -3494,7 +3483,6 @@
     "inviteDesc": "Por nome de usuário, por código ou link",
     "editCourseDesc": "Aqui você pode editar o título do curso, descrição, etc.",
     "permissionsDesc": "Defina permissões como quem pode convidar usuários, enviar mensagens, criar chats, etc.",
-    "accessDesc": "Você pode tornar seu curso aberto ao mundo! Ou, tornar seu curso privado e seguro.",
     "createGroupChatDesc": "Enquanto as sessões de atividade começam e terminam, os chats em grupo permanecerão abertos para comunicação rotineira.",
     "deleteDesc": "Somente administradores podem excluir um curso. Esta é uma ação destrutiva que remove todos os usuários e exclui todos os chats selecionados dentro do curso. Proceda com cautela.",
     "whatNow": "E agora?",
@@ -5847,47 +5835,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6158,10 +6110,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7937,11 +7885,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Por padrão, os cursos são pesquisáveis publicamente e requerem aprovação do administrador para ingressar. Você pode editar essas configurações a qualquer momento.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Qual idioma você está aprendendo?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8641,11 +8584,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Permitir que outros pesquisem seu curso",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "Nunca perca um bate-papo!",
     "enableNotificationsDesc": "Permita notificações para o Pangea Chat e mantenha-se conectado com seus amigos de idioma!",
     "enableNotifications": "Permitir notificações",
@@ -8738,7 +8676,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Selecione palavras para aprender mais sobre elas",
     "requireAnalyticsAccessTitle": "Requer acesso à análise para participar",
-    "requireAnalyticsAccessDesc": "Os participantes devem conceder acesso às suas análises de aprendizado para participar deste curso",
     "analyticsAccessNoticeTitle": "Acesso à Análise Necessário",
     "analyticsAccessNoticeDesc": "Ao participar deste curso, você concorda em conceder acesso aos administradores às suas análises de aprendizado.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8746,10 +8683,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9980,5 +9913,12 @@
     "ssoTryAnyway": "Tentar mesmo assim",
     "publicCoursesFilterTooltip": "Mostrar apenas cursos que qualquer pessoa pode participar",
     "restrictedCoursesFilterTooltip": "Mostrar apenas cursos que você precisa pedir para participar",
-    "viewImageLabel": "Ver imagem"
+    "viewImageLabel": "Ver imagem",
+    "whoCanJoin": "Quem pode entrar?",
+    "approvalRequired": "Aprovação necessária",
+    "courseAccessPublicDesc": "Qualquer pessoa pode encontrar e entrar neste curso.",
+    "courseAccessApprovalRequiredDesc": "Qualquer pessoa pode encontrar este curso e pedir para entrar. Você aprova cada solicitação.",
+    "courseAccessPrivateDesc": "Apenas pessoas com seu convite ou código do curso podem entrar. O curso não aparece na pesquisa.",
+    "courseAccessCodeNote": "Alunos com o código do seu curso ou um convite podem entrar imediatamente, independentemente da sua escolha.",
+    "requireAnalyticsAccessSummary": "Os alunos compartilham o progresso de aprendizado com você quando eles entram."
 }

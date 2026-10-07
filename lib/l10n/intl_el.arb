@@ -2599,7 +2599,6 @@
     "unreadChatsInApp": "{appname}: {unread} μη αναγνωσμένα chats",
     "noDatabaseEncryption": "Η κρυπτογράφηση βάσης δεδομένων δεν υποστηρίζεται σε αυτήν την πλατφόρμα",
     "thereAreCountUsersBlocked": "Αυτήν τη στιγμή υπάρχουν {count} αποκλεισμένοι χρήστες.",
-    "restricted": "Περιορισμένο",
     "knockRestricted": "Περιορισμός χτυπήματος",
     "goToSpace": "Μεταβείτε στον χώρο: {space}",
     "markAsUnread": "Σήμανση ως μη αναγνωσμένο",
@@ -3268,17 +3267,8 @@
     "introductions": "Εισαγωγές",
     "announcements": "Ανακοινώσεις",
     "activities": "Δραστηριότητες",
-    "access": "Πρόσβαση",
-    "howSpaceCanBeFound": "Πώς μπορεί να βρεθεί αυτό το μάθημα",
     "private": "Ιδιωτικό",
-    "cannotBeFoundInSearch": "Δεν μπορεί να βρεθεί στην αναζήτηση",
     "public": "Δημόσιο",
-    "visibleToCommunity": "Ορατό στην ευρύτερη κοινότητα Pangea Chat μέσω \"Βρες ένα μάθημα\"",
-    "howSpaceCanBeJoined": "Πώς μπορεί να ενταχθεί αυτό το μάθημα",
-    "canBeFoundVia": "Μπορεί να βρεθεί μέσω:",
-    "canBeFoundViaInvitation": "• πρόσκληση",
-    "canBeFoundViaCodeOrLink": "• κωδικός ή σύνδεσμος",
-    "canBeFoundViaKnock": "• αίτημα συμμετοχής και έγκριση διαχειριστή",
     "sendActivities": "Αποστολή δραστηριοτήτων",
     "directMessage": "Άμεσο μήνυμα",
     "newDirectMessage": "Νέο άμεσο μήνυμα",
@@ -3337,7 +3327,6 @@
     "inviteDesc": "Με όνομα χρήστη, με κωδικό ή σύνδεσμο",
     "editCourseDesc": "Εδώ μπορείτε να επεξεργαστείτε τον τίτλο, την περιγραφή και άλλα στοιχεία του μαθήματος.",
     "permissionsDesc": "Ορίστε δικαιώματα, όπως ποιος μπορεί να προσκαλεί χρήστες, να στέλνει μηνύματα, να δημιουργεί συνομιλίες κ.λπ.",
-    "accessDesc": "Μπορείτε να κάνετε το μάθημά σας ανοιχτό στον κόσμο! Ή, να το κρατήσετε ιδιωτικό και ασφαλές.",
     "createGroupChatDesc": "Ενώ οι συνεδρίες δραστηριοτήτων ξεκινούν και τελειώνουν, οι ομαδικές συνομιλίες θα παραμένουν ανοιχτές για τακτική επικοινωνία.",
     "deleteDesc": "Μόνο διαχειριστές μπορούν να διαγράψουν ένα μάθημα. Αυτή είναι μια καταστροφική ενέργεια που αφαιρεί όλους τους χρήστες και διαγράφει όλες τις επιλεγμένες συνομιλίες εντός του μαθήματος. Προχωρήστε με προσοχή.",
     "whatNow": "Τι τώρα;",
@@ -3400,7 +3389,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-05 13:57:46.295438",
+    "@@last_modified": "2026-10-06 12:20:51.799948",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -3727,10 +3716,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6531,47 +6516,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6842,10 +6791,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8637,11 +8582,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Από προεπιλογή, τα μαθήματα είναι δημόσια αναζητήσιμα και απαιτούν έγκριση διαχειριστή για να συμμετάσχετε. Μπορείτε να επεξεργαστείτε αυτές τις ρυθμίσεις οποιαδήποτε στιγμή.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Ποια γλώσσα μαθαίνετε;",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9516,11 +9456,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Επιτρέψτε στους άλλους να αναζητούν το μάθημά σας",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "Ποτέ μην χάσετε μια συνομιλία!",
     "enableNotificationsDesc": "Επιτρέψτε τις ειδοποιήσεις για το Pangea Chat και μείνετε συνδεδεμένοι με τους φίλους σας στη γλώσσα!",
     "enableNotifications": "Επιτρέψτε τις ειδοποιήσεις",
@@ -9613,7 +9548,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Επιλέξτε λέξεις για να μάθετε περισσότερα γι' αυτές",
     "requireAnalyticsAccessTitle": "Απαιτείται πρόσβαση σε αναλύσεις για να συμμετάσχετε",
-    "requireAnalyticsAccessDesc": "Οι συμμετέχοντες πρέπει να παραχωρήσουν πρόσβαση στις αναλύσεις μάθησής τους για να συμμετάσχουν σε αυτό το μάθημα",
     "analyticsAccessNoticeTitle": "Απαιτείται πρόσβαση σε αναλύσεις",
     "analyticsAccessNoticeDesc": "Με την συμμετοχή σας σε αυτό το μάθημα, συμφωνείτε να παραχωρήσετε στους διαχειριστές πρόσβαση στις αναλύσεις μάθησής σας.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9621,10 +9555,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10855,5 +10785,12 @@
     "ssoTryAnyway": "Δοκιμάστε ούτως ή άλλως",
     "publicCoursesFilterTooltip": "Εμφάνιση μόνο μαθημάτων στα οποία μπορεί να συμμετάσχει ο καθένας",
     "restrictedCoursesFilterTooltip": "Εμφάνιση μόνο μαθημάτων στα οποία πρέπει να ζητήσετε να συμμετάσχετε",
-    "viewImageLabel": "Προβολή εικόνας"
+    "viewImageLabel": "Προβολή εικόνας",
+    "whoCanJoin": "Ποιος μπορεί να συμμετάσχει;",
+    "approvalRequired": "Απαιτείται έγκριση",
+    "courseAccessPublicDesc": "Οποιοσδήποτε μπορεί να βρει και να συμμετάσχει σε αυτό το μάθημα.",
+    "courseAccessApprovalRequiredDesc": "Οποιοσδήποτε μπορεί να βρει αυτό το μάθημα και να ζητήσει να συμμετάσχει. Εσείς εγκρίνετε κάθε αίτημα.",
+    "courseAccessPrivateDesc": "Μόνο άτομα με την πρόσκλησή σας ή τον κωδικό μαθήματος μπορούν να συμμετάσχουν. Το μάθημα δεν εμφανίζεται στην αναζήτηση.",
+    "courseAccessCodeNote": "Οι μαθητές με τον κωδικό μαθήματος ή μια πρόσκληση μπορούν να συμμετάσχουν αμέσως, ό,τι κι αν επιλέξετε.",
+    "requireAnalyticsAccessSummary": "Οι μαθητές μοιράζονται την πρόοδό τους στην εκμάθηση μαζί σας όταν συμμετέχουν."
 }

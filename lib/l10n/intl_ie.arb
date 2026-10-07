@@ -2294,7 +2294,6 @@
     "unreadChatsInApp": "{appname}: {unread} chat sin leger",
     "noDatabaseEncryption": "Le encryption del base de datos non es supportate in iste piattaforma",
     "thereAreCountUsersBlocked": "Actualmente ha {count} usatores blocate.",
-    "restricted": "Restrictet",
     "knockRestricted": "Knock restrictet",
     "goToSpace": "Vade a space: {space}",
     "markAsUnread": "Marca como non leger",
@@ -2961,17 +2960,8 @@
     "introductions": "Introductiones",
     "announcements": "Anuncios",
     "activities": "Activitates",
-    "access": "Acceso",
-    "howSpaceCanBeFound": "Como iste curso pote esser trovate",
     "private": "Privat",
-    "cannotBeFoundInSearch": "Non pote esser trovate in le recerca",
     "public": "Public",
-    "visibleToCommunity": "Visibile al communitate plus large de Pangea Chat per \"Trova un curso\"",
-    "howSpaceCanBeJoined": "Como iste curso pote esser juncite",
-    "canBeFoundVia": "Pote esser trovate per:",
-    "canBeFoundViaInvitation": "• invitation",
-    "canBeFoundViaCodeOrLink": "• codice o ligamine",
-    "canBeFoundViaKnock": "• requesta de juncar e approbation del administrator",
     "sendActivities": "Manda activitates",
     "directMessage": "Messegg directe",
     "newDirectMessage": "Nove messegg directe",
@@ -3030,7 +3020,6 @@
     "inviteDesc": "Per nomine de usator, per codice o ligamine",
     "editCourseDesc": "Ici tu pote editar le titulo, description, etc. de le cors.",
     "permissionsDesc": "Stabilir permissiones como qui pote invitar usatores, mandar messages, crear chats, etc.",
-    "accessDesc": "Tu pote face tu cors aperta al mundo! O, face tu cors private e secur.",
     "createGroupChatDesc": "Dum que le sessiones de activitate comencia e termina, le chat de gruppo remanera aperta pro communication routine.",
     "deleteDesc": "Solmen administratores pote deletar un cors. Iste es un action destructive que remove tote usatores e delete tote le chats selectate in le cors. Procede con cautela.",
     "whatNow": "Que ora?",
@@ -3093,7 +3082,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-05 13:57:48.523062",
+    "@@last_modified": "2026-10-06 12:20:53.566376",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -3484,10 +3473,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6288,47 +6273,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6599,10 +6548,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8394,11 +8339,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "De fao, is eardh a tha ann an coircean a tha ri fhaighinn gu poblach agus tha feum air aontachadh bho rianadair gus freagairt. Faodaidh tu na suidheachaidhean sin a dheasachadh aig àm sam bith.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Cén teanga atá á foghlaim agat?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9273,11 +9213,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Permitir que outros procurem o seu curso",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "Ná bíodh caillte ar comhrá!",
     "enableNotificationsDesc": "Cuir cead do rabhadh do Pangea Chat agus fan i dteagmháil le do chairde teanga!",
     "enableNotifications": "Cuir cead do rabhadh",
@@ -9370,7 +9305,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Roghnaigh focail chun tuilleadh eolais a fháil fúthu",
     "requireAnalyticsAccessTitle": "Teastaíonn rochtain ar anailísí chun páirt a ghlacadh",
-    "requireAnalyticsAccessDesc": "Caithfidh rannpháirtithe rochtain a thabhairt ar a n-anailísí foghlama chun páirt a ghlacadh sa chúrsa seo",
     "analyticsAccessNoticeTitle": "Rochtain ar anailísí riachtanach",
     "analyticsAccessNoticeDesc": "Trí pháirt a ghlacadh sa chúrsa seo, aontaíonn tú rochtain a thabhairt do na hoifigigh ar do n-anailísí foghlama.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9378,10 +9312,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10612,5 +10542,12 @@
     "ssoTryAnyway": "Bain triail as ar aon nós",
     "publicCoursesFilterTooltip": "Taispeáin cúrsaí ar féidir le duine ar bith a bheith páirteach iontu amháin",
     "restrictedCoursesFilterTooltip": "Taispeáin cúrsaí nach mór duit a iarraidh a bheith páirteach iontu amháin",
-    "viewImageLabel": "Féach ar an íomhá"
+    "viewImageLabel": "Féach ar an íomhá",
+    "whoCanJoin": "Cé atá in ann a bheith páirteach?",
+    "approvalRequired": "Ceadaítear é",
+    "courseAccessPublicDesc": "Is féidir le duine ar bith an cúrsa seo a aimsiú agus a bheith páirteach ann.",
+    "courseAccessApprovalRequiredDesc": "Is féidir le duine ar bith an cúrsa seo a aimsiú agus iarraidh a bheith páirteach ann. Ceadaíonn tú gach iarratas.",
+    "courseAccessPrivateDesc": "Ní féidir ach le daoine a bhfuil do chuireadh nó cód cúrsa acu a bheith páirteach. Ní fheictear an cúrsa i gcuardach.",
+    "courseAccessCodeNote": "Is féidir le mic léinn a bhfuil do chód cúrsa nó cuireadh acu a bheith páirteach láithreach, cibé rud a roghnaíonn tú.",
+    "requireAnalyticsAccessSummary": "Roinneann mic léinn a ndul chun cinn foghlama leat nuair a thagann siad isteach."
 }

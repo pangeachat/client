@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:55.267876",
+    "@@last_modified": "2026-10-06 12:21:03.218546",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -2376,8 +2376,6 @@
     "@sendReadReceiptsDescription": {},
     "formattedMessages": "格式化訊息",
     "@formattedMessages": {},
-    "restricted": "受限",
-    "@restricted": {},
     "goToSpace": "前往空間：{space}",
     "@goToSpace": {
         "type": "String",
@@ -3316,17 +3314,8 @@
     "introductions": "介紹",
     "announcements": "公告",
     "activities": "活動",
-    "access": "訪問",
-    "howSpaceCanBeFound": "如何找到此課程",
     "private": "私人",
-    "cannotBeFoundInSearch": "在搜索中找不到",
     "public": "公開",
-    "visibleToCommunity": "通過“查找課程”對更廣泛的Pangea聊天社區可見",
-    "howSpaceCanBeJoined": "如何加入此課程",
-    "canBeFoundVia": "可以通過以下方式找到：",
-    "canBeFoundViaInvitation": "• 邀請",
-    "canBeFoundViaCodeOrLink": "• 代碼或链接",
-    "canBeFoundViaKnock": "• 設置申請加入和管理員的批重",
     "sendActivities": "送送活動",
     "directMessage": "直接信檔",
     "newDirectMessage": "新的直接信檔",
@@ -3385,7 +3374,6 @@
     "inviteDesc": "通過用戶名、代碼或鏈接邀請",
     "editCourseDesc": "在此處您可以編輯課程標題、描述等。",
     "permissionsDesc": "設置權限，例如誰可以邀請用戶、發送消息、創建聊天等。",
-    "accessDesc": "您可以讓您的課程向全世界開放！或者，將您的課程設為私有且安全。",
     "createGroupChatDesc": "活動會話開始和結束，而群聊將保持開放以進行日常交流。",
     "deleteDesc": "只有管理員可以刪除課程。這是一個破壞性操作，會刪除所有用戶並刪除課程內所有選擇的聊天。請謹慎操作。",
     "whatNow": "接下來怎麼辦？",
@@ -5773,47 +5761,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6084,10 +6036,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7863,11 +7811,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "預設情況下，課程是公開可搜尋的，並且需要管理員批准才能加入。您可以隨時編輯這些設置。",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "你正在學習什麼語言？",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8747,11 +8690,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "允許他人搜尋您的課程",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "永遠不會錯過聊天！",
     "enableNotificationsDesc": "允許 Pangea Chat 的通知，與你的語言夥伴保持聯繫！",
     "enableNotifications": "允許通知",
@@ -8844,7 +8782,6 @@
     },
     "readingAssistanceTutorialCollectToken": "選擇單詞以了解更多信息",
     "requireAnalyticsAccessTitle": "需要分析訪問權限才能加入",
-    "requireAnalyticsAccessDesc": "參與者必須授予訪問其學習分析的權限才能加入此課程",
     "analyticsAccessNoticeTitle": "需要分析訪問權限",
     "analyticsAccessNoticeDesc": "通過加入此課程，您同意授予管理員訪問您的學習分析的權限。",
     "@readingAssistanceTutorialCollectToken": {
@@ -8852,10 +8789,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10086,5 +10019,12 @@
     "ssoTryAnyway": "仍然嘗試",
     "publicCoursesFilterTooltip": "只顯示任何人都可以加入的課程",
     "restrictedCoursesFilterTooltip": "只顯示您必須申請才能加入的課程",
-    "viewImageLabel": "檢視圖片"
+    "viewImageLabel": "檢視圖片",
+    "whoCanJoin": "誰可以加入？",
+    "approvalRequired": "需要核准",
+    "courseAccessPublicDesc": "任何人都可以找到並加入此課程。",
+    "courseAccessApprovalRequiredDesc": "任何人都可以找到此課程並請求加入。您需要核准每個請求。",
+    "courseAccessPrivateDesc": "只有收到您的邀請或課程代碼的人才能加入。此課程不會出現在搜尋結果中。",
+    "courseAccessCodeNote": "無論您選擇哪種方式，擁有您的課程代碼或邀請的學生都可以立即加入。",
+    "requireAnalyticsAccessSummary": "學生加入時會與您分享他們的學習進度。"
 }

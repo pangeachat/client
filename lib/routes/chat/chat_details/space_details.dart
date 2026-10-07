@@ -7,6 +7,8 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/course_access/course_access.dart';
+import 'package:fluffychat/features/course_access/course_access_room_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
@@ -22,6 +24,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
+import 'package:fluffychat/pangea/common/widgets/course_access_sheet.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/space_gone_gate.dart';
@@ -78,6 +81,10 @@ class SpaceDetailsController extends State<SpaceDetails> {
 
   StreamSubscription? _spaceGoneSubscription;
 
+  /// The course's access setting, for the More section's "Who can join?" row.
+  /// Null until fetched, or when it matches none of the three settings.
+  CourseAccess? courseAccess;
+
   Room get room => widget.room;
 
   QuestObjectivesLoader get objectivesProvider => _objectivesProvider;
@@ -116,6 +123,7 @@ class SpaceDetailsController extends State<SpaceDetails> {
       courseRoomId: room.id,
     );
     _loadSummaries();
+    _loadCourseAccess();
     room.joinDefaultChats();
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -170,6 +178,8 @@ class SpaceDetailsController extends State<SpaceDetails> {
         courseRoomId: room.id,
       );
       _loadSummaries();
+      courseAccess = null;
+      _loadCourseAccess();
       room.joinDefaultChats();
     }
 
@@ -251,7 +261,29 @@ class SpaceDetailsController extends State<SpaceDetails> {
     context.go(location);
   }
 
-  /// Open a course-management page (edit / access / permissions / change-course)
+  Future<void> _loadCourseAccess() async {
+    if (!room.isRoomAdmin) return;
+    final roomId = room.id;
+    try {
+      final access = await room.fetchCourseAccess();
+      if (mounted && room.id == roomId) setState(() => courseAccess = access);
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'room_id': roomId});
+    }
+  }
+
+  Future<void> chooseCourseAccess() async {
+    final chosen = await CourseAccessSheet.show(context, courseAccess);
+    if (chosen == null || chosen == courseAccess || !mounted) return;
+    final result = await showFutureLoadingDialog(
+      context: context,
+      future: () => room.setCourseAccess(chosen),
+    );
+    if (result.isError || !mounted) return;
+    setState(() => courseAccess = chosen);
+  }
+
+  /// Open a course-management page (edit / permissions / change-course)
   /// as the card's DETAIL — a `coursepage` panel beside the card that coexists
   /// when width allows and folds to a push when not, keeping the `?m=` filter
   /// and the rest of the workspace. See `routing.instructions.md`.

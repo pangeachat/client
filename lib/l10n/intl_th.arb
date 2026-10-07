@@ -2292,7 +2292,6 @@
     "unreadChatsInApp": "{appname}: {unread} การสนทนาที่ไม่ได้อ่าน",
     "noDatabaseEncryption": "การเข้ารหัสฐานข้อมูลไม่ได้รับการสนับสนุนบนแพลตฟอร์มนี้",
     "thereAreCountUsersBlocked": "ขณะนี้มีผู้ใช้ที่ถูกบล็อกจำนวน {count}",
-    "restricted": "ถูกจำกัด",
     "knockRestricted": "การเคาะถูกจำกัด",
     "goToSpace": "ไปยังพื้นที่: {space}",
     "markAsUnread": "ทำเครื่องหมายว่าไม่ได้อ่าน",
@@ -2962,17 +2961,8 @@
     "introductions": "คำแนะนำ",
     "announcements": "ประกาศ",
     "activities": "กิจกรรม",
-    "access": "การเข้าถึง",
-    "howSpaceCanBeFound": "วิธีที่สามารถค้นหาห้องนี้ได้",
     "private": "ส่วนตัว",
-    "cannotBeFoundInSearch": "ไม่สามารถค้นหาได้ในผลการค้นหา",
     "public": "สาธารณะ",
-    "visibleToCommunity": "มองเห็นได้ในชุมชน Pangea Chat กว้างขึ้นผ่าน \"ค้นหาคอร์ส\"",
-    "howSpaceCanBeJoined": "วิธีการเข้าร่วมคอร์สนี้",
-    "canBeFoundVia": "สามารถค้นหาได้โดย:",
-    "canBeFoundViaInvitation": "• คำเชิญ",
-    "canBeFoundViaCodeOrLink": "• รหัสหรือลิงก์",
-    "canBeFoundViaKnock": "• คำขอเข้าร่วมและการอนุมัติจากผู้ดูแลระบบ",
     "sendActivities": "ส่งกิจกรรม",
     "directMessage": "ข้อความส่วนตัว",
     "newDirectMessage": "ข้อความส่วนตัวใหม่",
@@ -3030,7 +3020,6 @@
     "inviteDesc": "เชิญโดยชื่อผู้ใช้ โดยรหัส หรือ ลิงก์",
     "editCourseDesc": "ที่นี่คุณสามารถแก้ไขชื่อคำอธิบายของหลักสูตร ฯลฯ",
     "permissionsDesc": "ตั้งค่าสิทธิ์ เช่น ใครสามารถเชิญผู้ใช้ ส่งข้อความ สร้างแชท ฯลฯ",
-    "accessDesc": "คุณสามารถทำให้หลักสูตรของคุณเปิดสู่โลก หรือ ทำให้เป็นส่วนตัวและปลอดภัย",
     "createGroupChatDesc": "ในขณะที่เซสชันกิจกรรมเริ่มและสิ้นสุด กลุ่มแชทจะเปิดอยู่เพื่อการสื่อสารประจำวัน",
     "deleteDesc": "เฉพาะผู้ดูแลระบบเท่านั้นที่สามารถลบหลักสูตรได้ นี่เป็นการดำเนินการที่ทำลายล้าง ซึ่งจะลบผู้ใช้ทั้งหมดและลบแชทที่เลือกภายในหลักสูตร โปรดดำเนินการด้วยความระมัดระวัง",
     "whatNow": "ตอนนี้ทำอะไรดี?",
@@ -3093,7 +3082,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-05 13:57:53.552278",
+    "@@last_modified": "2026-10-06 12:21:01.187309",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -3484,10 +3473,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6288,47 +6273,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6599,10 +6548,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8394,11 +8339,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "ตามค่าเริ่มต้น หลักสูตรจะสามารถค้นหาได้สาธารณะและต้องการการอนุมัติจากผู้ดูแลระบบเพื่อเข้าร่วม คุณสามารถแก้ไขการตั้งค่าเหล่านี้ได้ตลอดเวลา",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "คุณกำลังเรียนภาษาอะไรอยู่?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9273,11 +9213,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "อนุญาตให้ผู้อื่นค้นหาหลักสูตรของคุณ",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "ไม่พลาดการสนทนา!",
     "enableNotificationsDesc": "อนุญาตการแจ้งเตือนสำหรับ Pangea Chat และเชื่อมต่อกับเพื่อนที่พูดภาษาของคุณ!",
     "enableNotifications": "อนุญาตการแจ้งเตือน",
@@ -9370,7 +9305,6 @@
     },
     "readingAssistanceTutorialCollectToken": "เลือกคำเพื่อเรียนรู้เพิ่มเติมเกี่ยวกับพวกเขา",
     "requireAnalyticsAccessTitle": "ต้องการการเข้าถึงการวิเคราะห์เพื่อเข้าร่วม",
-    "requireAnalyticsAccessDesc": "ผู้เข้าร่วมต้องอนุญาตการเข้าถึงการวิเคราะห์การเรียนรู้ของตนเพื่อเข้าร่วมหลักสูตรนี้",
     "analyticsAccessNoticeTitle": "ต้องการการเข้าถึงการวิเคราะห์",
     "analyticsAccessNoticeDesc": "โดยการเข้าร่วมหลักสูตรนี้ คุณตกลงที่จะอนุญาตให้ผู้ดูแลระบบเข้าถึงการวิเคราะห์การเรียนรู้ของคุณ",
     "@readingAssistanceTutorialCollectToken": {
@@ -9378,10 +9312,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10612,5 +10542,12 @@
     "ssoTryAnyway": "ลองอีกครั้ง",
     "publicCoursesFilterTooltip": "แสดงเฉพาะคอร์สที่ทุกคนเข้าร่วมได้",
     "restrictedCoursesFilterTooltip": "แสดงเฉพาะคอร์สที่คุณต้องขอเข้าร่วม",
-    "viewImageLabel": "ดูรูปภาพ"
+    "viewImageLabel": "ดูรูปภาพ",
+    "whoCanJoin": "ใครเข้าร่วมได้บ้าง?",
+    "approvalRequired": "ต้องได้รับการอนุมัติ",
+    "courseAccessPublicDesc": "ทุกคนสามารถค้นหาและเข้าร่วมคอร์สนี้ได้",
+    "courseAccessApprovalRequiredDesc": "ทุกคนสามารถค้นหาคอร์สนี้และขอเข้าร่วมได้ คุณต้องอนุมัติแต่ละคำขอ",
+    "courseAccessPrivateDesc": "เฉพาะผู้ที่ได้รับคำเชิญหรือรหัสคอร์สของคุณเท่านั้นที่เข้าร่วมได้ คอร์สนี้จะไม่ปรากฏในการค้นหา",
+    "courseAccessCodeNote": "นักเรียนที่มีรหัสคอร์สหรือคำเชิญของคุณสามารถเข้าร่วมได้ทันที ไม่ว่าคุณจะเลือกอะไรก็ตาม",
+    "requireAnalyticsAccessSummary": "นักเรียนจะแชร์ความคืบหน้าในการเรียนรู้กับคุณเมื่อเข้าร่วม"
 }

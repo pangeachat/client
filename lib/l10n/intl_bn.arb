@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:45.224532",
+    "@@last_modified": "2026-10-06 12:20:50.600946",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -2297,7 +2297,6 @@
     "unreadChatsInApp": "{appname}: {unread} টি পড়া বাকি চ্যাট",
     "noDatabaseEncryption": "এই প্ল্যাটফর্মে ডেটাবেস এনক্রিপশন সমর্থিত নয়",
     "thereAreCountUsersBlocked": "এখন {count} জন ব্যবহারকারী ব্লক করা হয়েছে।",
-    "restricted": "নিষিদ্ধ",
     "knockRestricted": "নক নিষিদ্ধ",
     "goToSpace": "স্থান: {space} এ যান",
     "markAsUnread": "পড়া বাকি হিসেবে চিহ্নিত করুন",
@@ -2965,17 +2964,8 @@
     "introductions": "পরিচিতি",
     "announcements": "ঘোষণাগুলি",
     "activities": "ক্রিয়াকলাপ",
-    "access": "প্রবেশ",
-    "howSpaceCanBeFound": "এই কোর্সটি কিভাবে খুঁজে পাওয়া যাবে",
     "private": "ব্যক্তিগত",
-    "cannotBeFoundInSearch": "খুঁজে পাওয়া যাবে না",
     "public": "পাবলিক",
-    "visibleToCommunity": "\"ফাইন্ড এ কোর্স\" এর মাধ্যমে বৃহত্তর পাঞ্জিয়া চ্যাট সম্প্রদায়ের জন্য দৃশ্যমান",
-    "howSpaceCanBeJoined": "এই কোর্সে কিভাবে যোগদান করবেন",
-    "canBeFoundVia": "পাওয়া যেতে পারে:",
-    "canBeFoundViaInvitation": "• আমন্ত্রণ",
-    "canBeFoundViaCodeOrLink": "• কোড বা লিঙ্ক",
-    "canBeFoundViaKnock": "• যোগদানের অনুরোধ এবং অ্যাডমিনের অনুমোদন",
     "sendActivities": "কার্যকলাপ পাঠান",
     "directMessage": "ডাইরেক্ট মেসেজ",
     "newDirectMessage": "নতুন ডাইরেক্ট মেসেজ",
@@ -3034,7 +3024,6 @@
     "inviteDesc": "ব্যবহারকারীর নাম, কোড বা লিঙ্কের মাধ্যমে",
     "editCourseDesc": "এখানে আপনি কোর্সের শিরোনাম, বিবরণ ইত্যাদি সম্পাদনা করতে পারেন।",
     "permissionsDesc": "অনুমতিসমূহ সেট করুন যেমন কারা আমন্ত্রণ জানাতে পারে, বার্তা পাঠাতে পারে, চ্যাট তৈরি করতে পারে, ইত্যাদি।",
-    "accessDesc": "আপনি আপনার কোর্সকে বিশ্বব্যাপী উন্মুক্ত করতে পারেন! অথবা, আপনার কোর্সকে ব্যক্তিগত এবং নিরাপদ করে তুলুন।",
     "createGroupChatDesc": "যেখানে কার্যকলাপ সেশন শুরু হয় এবং শেষ হয়, সেখানে গ্রুপ চ্যাটগুলি রুটিন যোগাযোগের জন্য খোলা থাকবে।",
     "deleteDesc": "শুধুমাত্র অ্যাডমিনরা কোর্স মুছে দিতে পারেন। এটি একটি ধ্বংসাত্মক ক্রিয়া যা সমস্ত ব্যবহারকারীকে সরিয়ে দেয় এবং কোর্সের মধ্যে নির্বাচিত সমস্ত চ্যাট মুছে দেয়। সাবধানতার সাথে এগিয়ে যান।",
     "whatNow": "এখন কি?",
@@ -3480,10 +3469,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6284,47 +6269,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6595,10 +6544,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8390,11 +8335,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "ডিফল্টভাবে, কোর্সগুলি জনসাধারণের জন্য অনুসন্ধানযোগ্য এবং যোগদানের জন্য প্রশাসক অনুমোদনের প্রয়োজন। আপনি যে কোনও সময় এই সেটিংসগুলি সম্পাদনা করতে পারেন।",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "আপনি কোন ভাষা শিখছেন?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9269,11 +9209,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "অন্যান্যদের আপনার কোর্স খুঁজে পেতে অনুমতি দিন",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "কখনো একটি চ্যাট মিস করবেন না!",
     "enableNotificationsDesc": "Pangea চ্যাটের জন্য নোটিফিকেশন অনুমোদন করুন এবং আপনার ভাষার বন্ধুদের সাথে সংযুক্ত থাকুন!",
     "enableNotifications": "নোটিফিকেশন অনুমোদন করুন",
@@ -9366,7 +9301,6 @@
     },
     "readingAssistanceTutorialCollectToken": "শিখতে আরও জানার জন্য শব্দ নির্বাচন করুন",
     "requireAnalyticsAccessTitle": "যোগ দিতে বিশ্লেষণ অ্যাক্সেস প্রয়োজন",
-    "requireAnalyticsAccessDesc": "অংশগ্রহণকারীদের এই কোর্সে যোগ দিতে তাদের শেখার বিশ্লেষণে অ্যাক্সেস দিতে হবে",
     "analyticsAccessNoticeTitle": "বিশ্লেষণ অ্যাক্সেস প্রয়োজন",
     "analyticsAccessNoticeDesc": "এই কোর্সে যোগ দিয়ে, আপনি প্রশাসকদের আপনার শেখার বিশ্লেষণে অ্যাক্সেস দিতে সম্মত হন।",
     "@readingAssistanceTutorialCollectToken": {
@@ -9374,10 +9308,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10608,5 +10538,12 @@
     "ssoTryAnyway": "যাইহোক চেষ্টা করুন",
     "publicCoursesFilterTooltip": "শুধুমাত্র সেই কোর্সগুলি দেখান যেগুলিতে যে কেউ যোগ দিতে পারে",
     "restrictedCoursesFilterTooltip": "শুধুমাত্র সেই কোর্সগুলি দেখান যেগুলিতে যোগদানের জন্য আপনাকে অনুরোধ করতে হবে",
-    "viewImageLabel": "ছবি দেখুন"
+    "viewImageLabel": "ছবি দেখুন",
+    "whoCanJoin": "কে কে যোগ দিতে পারবে?",
+    "approvalRequired": "অনুমোদন প্রয়োজন",
+    "courseAccessPublicDesc": "যে কেউ এই কোর্সটি খুঁজে নিতে এবং এতে যোগ দিতে পারবে।",
+    "courseAccessApprovalRequiredDesc": "যে কেউ এই কোর্সটি খুঁজে নিতে এবং যোগদানের অনুরোধ করতে পারবে। প্রতিটি অনুরোধ আপনাকে অনুমোদন করতে হবে।",
+    "courseAccessPrivateDesc": "শুধুমাত্র আপনার আমন্ত্রণ বা কোর্স কোড যাদের কাছে আছে, তারাই যোগ দিতে পারবে। কোর্সটি অনুসন্ধানে দেখা যাবে না।",
+    "courseAccessCodeNote": "আপনার কোর্স কোড বা আমন্ত্রণ আছে এমন শিক্ষার্থীরা আপনি যা-ই বেছে নিন না কেন, সাথে সাথেই যোগ দিতে পারবে।",
+    "requireAnalyticsAccessSummary": "শিক্ষার্থীরা যখন আপনার সাথে যোগ দেয় তখন তারা তাদের শেখার অগ্রগতি আপনার সাথে শেয়ার করে।"
 }

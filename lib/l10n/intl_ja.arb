@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-05 13:57:48.603201",
+    "@@last_modified": "2026-10-06 12:20:54.166006",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -2150,7 +2150,6 @@
     "unreadChatsInApp": "{appname}：未読のチャット {unread} 件",
     "noDatabaseEncryption": "このプラットフォームではデータベースの暗号化はサポートされていません",
     "thereAreCountUsersBlocked": "現在、{count}人のユーザーがブロックされています。",
-    "restricted": "制限付き",
     "knockRestricted": "ノック制限",
     "goToSpace": "スペースに移動：{space}",
     "markAsUnread": "未読としてマーク",
@@ -2817,17 +2816,8 @@
     "introductions": "自己紹介",
     "announcements": "お知らせ",
     "activities": "アクティビティ",
-    "access": "アクセス",
-    "howSpaceCanBeFound": "このコースの見つけ方",
     "private": "プライベート",
-    "cannotBeFoundInSearch": "検索で見つかりません",
     "public": "パブリック",
-    "visibleToCommunity": "「コースを見つける」経由でPangeaチャットコミュニティに表示されます",
-    "howSpaceCanBeJoined": "このコースへの参加方法",
-    "canBeFoundVia": "次の方法で見つけることができます：",
-    "canBeFoundViaInvitation": "• 招待",
-    "canBeFoundViaCodeOrLink": "• コードまたはリンク",
-    "canBeFoundViaKnock": "• 参加リクエストと管理者承認",
     "sendActivities": "アクティビティを送信",
     "directMessage": "ダイレクトメッセージ",
     "newDirectMessage": "新しいダイレクトメッセージ",
@@ -2886,7 +2876,6 @@
     "inviteDesc": "ユーザー名、コードまたはリンクで招待",
     "editCourseDesc": "ここでコースのタイトル、説明などを編集できます。",
     "permissionsDesc": "招待、メッセージ送信、チャット作成などの権限を設定します。",
-    "accessDesc": "コースを公開して世界に向けることも、プライベートで安全に保つこともできます。",
     "createGroupChatDesc": "アクティビティセッションは開始と終了がありますが、グループチャットは日常的なコミュニケーションのために開いたままにします。",
     "deleteDesc": "コースを削除できるのは管理者のみです。これはすべてのユーザーを削除し、コース内のすべての選択されたチャットを削除する破壊的な操作です。注意して進めてください。",
     "whatNow": "次はどうする？",
@@ -3621,10 +3610,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6425,47 +6410,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6736,10 +6685,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8531,11 +8476,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "デフォルトでは、コースは公開検索可能で、参加するには管理者の承認が必要です。これらの設定はいつでも編集できます。",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "どの言語を学んでいますか？",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9410,11 +9350,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "他の人があなたのコースを検索できるようにする",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "チャットを見逃さないで！",
     "enableNotificationsDesc": "Pangea Chatの通知を許可して、言語仲間とつながりましょう！",
     "enableNotifications": "通知を許可する",
@@ -9507,7 +9442,6 @@
     },
     "readingAssistanceTutorialCollectToken": "学ぶための単語を選択してください",
     "requireAnalyticsAccessTitle": "参加するには分析アクセスが必要です",
-    "requireAnalyticsAccessDesc": "参加者はこのコースに参加するために学習分析へのアクセスを許可する必要があります",
     "analyticsAccessNoticeTitle": "分析アクセスが必要です",
     "analyticsAccessNoticeDesc": "このコースに参加することで、管理者にあなたの学習分析へのアクセスを許可することに同意します。",
     "@readingAssistanceTutorialCollectToken": {
@@ -9515,10 +9449,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10749,5 +10679,12 @@
     "ssoTryAnyway": "とにかく試す",
     "publicCoursesFilterTooltip": "誰でも参加できるコースのみを表示",
     "restrictedCoursesFilterTooltip": "参加申請が必要なコースのみを表示",
-    "viewImageLabel": "画像を表示"
+    "viewImageLabel": "画像を表示",
+    "whoCanJoin": "誰が参加できますか？",
+    "approvalRequired": "承認が必要",
+    "courseAccessPublicDesc": "誰でもこのコースを見つけて参加できます。",
+    "courseAccessApprovalRequiredDesc": "誰でもこのコースを見つけて参加をリクエストできます。各リクエストを承認してください。",
+    "courseAccessPrivateDesc": "招待またはコースコードを持つ人のみが参加できます。このコースは検索に表示されません。",
+    "courseAccessCodeNote": "選択内容にかかわらず、コースコードまたは招待状を持つ生徒はすぐに参加できます。",
+    "requireAnalyticsAccessSummary": "生徒が参加すると、学習の進捗状況があなたと共有されます。"
 }

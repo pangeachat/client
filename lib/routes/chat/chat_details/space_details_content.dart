@@ -308,7 +308,7 @@ List<ButtonDetails> _courseSettingsButtons(
     ),
     ButtonDetails(
       title: l10n.requireAnalyticsAccessTitle,
-      description: l10n.requireAnalyticsAccessDesc,
+      description: l10n.requireAnalyticsAccessSummary,
       icon: const Icon(Symbols.bar_chart_4_bars, size: 30.0),
       onPressed: () => showFutureLoadingDialog(
         context: context,
@@ -326,10 +326,13 @@ List<ButtonDetails> _courseSettingsButtons(
       enabled: room.isRoomAdmin,
     ),
     ButtonDetails(
-      title: l10n.access,
-      description: l10n.accessDesc,
-      icon: const Icon(Icons.shield_outlined, size: 30.0),
-      onPressed: () => controller.openCoursePage(RoomSubpageEnum.access),
+      title: l10n.whoCanJoin,
+      description: controller.courseAccess?.label(l10n),
+      icon: Icon(
+        controller.courseAccess?.icon ?? Icons.shield_outlined,
+        size: 30.0,
+      ),
+      onPressed: controller.chooseCourseAccess,
       enabled: room.isRoomAdmin && room.spaceParents.isEmpty,
     ),
     ButtonDetails(
