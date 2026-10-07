@@ -225,6 +225,12 @@ class WholeCallTranscriber {
   /// recording this NEVER transcribes (that half is the ordinary flow's).
   final String selfUserId;
 
+  /// This device, so the backfill can tell its OWN recording -- whose half this
+  /// device writes itself -- from one another device of the same account left
+  /// behind when the learner moved the call (client#9173), which it recovers
+  /// like any peer's.
+  final String? selfDeviceId;
+
   /// The call's two members. A recording whose sender is not one of them is not
   /// this call's and is never transcribed; a `spokenBy` is only ever one of them.
   final Set<String> participants;
@@ -267,6 +273,7 @@ class WholeCallTranscriber {
 
   WholeCallTranscriber({
     required this.selfUserId,
+    this.selfDeviceId,
     required this.participants,
     required this.isEnabled,
     required this.discover,
@@ -415,6 +422,7 @@ class WholeCallTranscriber {
 
     return WholeCallTranscriber(
       selfUserId: self,
+      selfDeviceId: client.deviceID,
       participants: participants,
       isEnabled: () => Environment.callRecordingTranscript && isSubscribed(),
       discover: discover,
@@ -465,11 +473,18 @@ class WholeCallTranscriber {
     }
     final manifest = await discover(callKey);
     if (!manifest.resolved) return OnDemandTranscriptionResult.manifestPending;
-    final recording = _recordingForSpeaker(manifest.recordings, speakerId);
-    if (recording == null) return OnDemandTranscriptionResult.noRecording;
-    if (_skip(await readTranscript(callKey), speakerId)) {
-      return OnDemandTranscriptionResult.alreadyPresent;
-    }
+    final transcript = await readTranscript(callKey);
+    final recordings = [
+      for (final r in manifest.recordings)
+        if (r.senderId == speakerId && !_isOwnRecording(r)) r,
+    ];
+    if (recordings.isEmpty) return OnDemandTranscriptionResult.noRecording;
+    // The first of the speaker's recordings still without a half; a moved call
+    // leaves one speaker several (client#9173).
+    final recording = recordings
+        .where((r) => !_skip(transcript, speakerId, r.content.deviceId))
+        .firstOrNull;
+    if (recording == null) return OnDemandTranscriptionResult.alreadyPresent;
     return _produceOnePeer(callKey, recording, chosenLanguage: language);
   }
 
@@ -480,15 +495,16 @@ class WholeCallTranscriber {
     final transcript = await readTranscript(callKey);
     for (final recording in recordings) {
       final speaker = recording.senderId;
-      // The invoker's own recording is the ordinary flow's half, and a recording
+      // This device's own recording is the ordinary flow's half, and a recording
       // whose sender is not on the call is not this call's -- neither is ever
-      // transcribed as a peer half.
-      if (speaker == selfUserId) continue;
+      // transcribed here. ANOTHER device of this account is recovered like a
+      // peer: a learner who moved the call left its stretch on that device.
+      if (_isOwnRecording(recording)) continue;
       if (!participants.contains(speaker)) continue;
       // Skip a unit that already has a half on screen -- an authentic half (the
       // peer was subscribed and posted their own) or a VALID peer-produced one
       // (another subscriber already backfilled it). Both read the deduped output.
-      if (_skip(transcript, speaker)) continue;
+      if (_skip(transcript, speaker, recording.content.deviceId)) continue;
       // A per-recording boundary: `_produceOnePeer` can still throw (language
       // resolution, speech-to-text or the send), and one failing recording must
       // not abort the backfill and leave every LATER peer recording unprocessed.
@@ -515,20 +531,25 @@ class WholeCallTranscriber {
     // Defensive: both callers already exclude self and non-participants, so this
     // is unreached in practice -- reported as no-recording so the view never
     // marks such a half unavailable off a guard that cannot fire.
-    if (speaker == selfUserId) return OnDemandTranscriptionResult.noRecording;
+    if (_isOwnRecording(recording)) {
+      return OnDemandTranscriptionResult.noRecording;
+    }
     if (!participants.contains(speaker)) {
       return OnDemandTranscriptionResult.noRecording;
     }
 
-    final device = recording.content.deviceId ?? '';
+    final device = recording.content.deviceId;
+    // Keyed by speaker AND device: a moved call leaves one speaker several
+    // recordings, each its own unit of work.
+    final flight = '$speaker|${device ?? ''}';
     // Check-and-add is atomic: there is no await between them, so two concurrent
     // runs for one device cannot both pass. A concurrent pass holding the lock
     // means a half for this exact unit is already being written, so this reads
     // as already-present: the view re-reads rather than marking it unavailable.
-    if (_inFlight.contains(device)) {
+    if (_inFlight.contains(flight)) {
       return OnDemandTranscriptionResult.alreadyPresent;
     }
-    _inFlight.add(device);
+    _inFlight.add(flight);
     try {
       final resolved = await resolvePeerLanguages(speaker);
       // The target language drives the whole provider chain, so it must be the
@@ -546,7 +567,7 @@ class WholeCallTranscriber {
       // Re-read before spending speech-to-text: the transcript that gated this
       // in [_backfillPeers] may be stale, and a peer authentic half or another
       // subscriber's valid half may have landed since.
-      if (_skip(await readTranscript(callKey), speaker)) {
+      if (_skip(await readTranscript(callKey), speaker, device)) {
         return OnDemandTranscriptionResult.alreadyPresent;
       }
 
@@ -577,7 +598,7 @@ class WholeCallTranscriber {
 
       // Re-check once more before sending: STT is the slow step, and a half may
       // have landed while it ran.
-      if (_skip(await readTranscript(callKey), speaker)) {
+      if (_skip(await readTranscript(callKey), speaker, device)) {
         return OnDemandTranscriptionResult.alreadyPresent;
       }
 
@@ -592,20 +613,31 @@ class WholeCallTranscriber {
       );
       return OnDemandTranscriptionResult.produced;
     } finally {
-      _inFlight.remove(device);
+      _inFlight.remove(flight);
     }
   }
 
-  /// Whether [speaker] already has a half in the assembled transcript. A half
-  /// that resolved to words or an empty-but-present authentic half both count;
-  /// only a truly absent speaker (no half, or one held out as pending/invalid)
-  /// is produced. This is the union of the two skip predicates -- an authentic
-  /// half and a VALID peer half both attribute to [speaker] here, and a 1:1 DM
-  /// has one recording per unit, so the speaker key IS the unit key.
-  bool _skip(CallTranscript transcript, String speaker) =>
+  /// Whether [speaker]'s recording from [device] already has a half in the
+  /// assembled transcript. A half that resolved to words or an empty-but-
+  /// present authentic half both count; only an absent one is produced. Keyed
+  /// by speaker AND device (client#9173): a moved call leaves one speaker a
+  /// recording per device. A half that names no devices -- an older writer --
+  /// speaks for the speaker's whole side, as it always did.
+  bool _skip(CallTranscript transcript, String speaker, String? device) =>
       transcript.halves.any(
-        (half) => half.senderId == speaker && half.state != HalfState.absent,
+        (half) =>
+            half.senderId == speaker &&
+            half.state != HalfState.absent &&
+            (device == null ||
+                half.deviceIds.isEmpty ||
+                half.deviceIds.contains(device)),
       );
+
+  /// This device's own recording, whose half it writes itself.
+  bool _isOwnRecording(CallAudioRecording recording) =>
+      recording.senderId == selfUserId &&
+      (recording.content.deviceId == null ||
+          recording.content.deviceId == selfDeviceId);
 
   /// Both participants of the 1:1 DM are known. A half is signed by [selfUserId]
   /// (the writer) and keyed by a unit that needs exactly two members; an empty
@@ -613,16 +645,6 @@ class WholeCallTranscriber {
   /// not established, so nothing is produced -- the writer and the txn lane must
   /// never be empty, and a `spokenBy` must be a real participant.
   bool get _identityKnown => selfUserId.isNotEmpty && participants.length == 2;
-
-  CallAudioRecording? _recordingForSpeaker(
-    List<CallAudioRecording> recordings,
-    String speaker,
-  ) {
-    for (final recording in recordings) {
-      if (recording.senderId == speaker) return recording;
-    }
-    return null;
-  }
 
   /// Where the peer's recording began on the PEER's own device clock, so the
   /// produced half's utterances land on the peer's clock exactly as if the peer

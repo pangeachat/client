@@ -1,3 +1,4 @@
+import 'package:fluffychat/routes/chat/calls/call_audio_closure.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_repo.dart';
 
@@ -19,11 +20,11 @@ sealed class CallAudioMergeVerdict {
   const CallAudioMergeVerdict();
 }
 
-/// A `pangea.call_audio_merged` event for this call already exists.
+/// A TRUSTED merge of the whole call already exists (`isTrustedWholeMerge`).
 ///
 /// Retire: remove any durable index entry for this call and do nothing more.
-/// Checked FIRST, ahead of every other question, because an already-merged
-/// call is done regardless of what its halves currently look like.
+/// A merge that is not trusted -- partial, overclaiming, invalid -- never
+/// produces this (client#9173).
 class AlreadyMerged extends CallAudioMergeVerdict {
   const AlreadyMerged();
 
@@ -45,14 +46,11 @@ class AlreadyMerged extends CallAudioMergeVerdict {
 /// assert against directly rather than pattern-matching a free-form message:
 /// - `'not-a-dm'` -- the room is not a 1:1 DM (a group/non-DM call is out of
 ///   v1 scope).
-/// - `'more-than-two-halves'` -- more than two `pangea.call_audio` events
-///   were found for this call (a mid-call device switch; v2).
-/// - `'user-with-multiple-halves'` -- two halves share a sender, meaning that
-///   user recorded from more than one tenure during the call (also a device
-///   switch, v2). This is the same underlying condition as
-///   `'more-than-two-halves'` when there are exactly two halves from one
-///   sender; it is reported under this reason rather than that one because
-///   the halves-count check runs first and passes for exactly two.
+/// - a closure reason from `closeCall` (client#9173): `'unlinked-same-sender'`
+///   (two of one speaker's devices both carried on), `'inconsistent-links'`,
+///   `'chain-too-long'`, `'duplicate-device-half'`.
+/// - `'supersession-cap'` -- the call already holds [maxSupersessions]
+///   merges.
 /// - `'unplaceable-half'` -- a truncated, null-`fileStartSfuMs`, or
 ///   non-pcm16-mono half can never become a clean expected half no matter how
 ///   many more times this call is evaluated.
@@ -139,10 +137,15 @@ class Mergeable extends CallAudioMergeVerdict {
   /// reads its type honestly instead of trusting an invariant it cannot see.
   final int? mergedStartSfuMs;
 
+  /// Where each half that handed the call on is cut, by event id (see
+  /// `ClosedCall.trimEndSfuMs`). Empty for a call nobody moved.
+  final Map<String, int> trimEndSfuMs;
+
   const Mergeable({
     required this.myRank,
     required this.coverageEventIds,
     required this.mergedStartSfuMs,
+    this.trimEndSfuMs = const {},
   });
 
   @override
@@ -237,120 +240,110 @@ bool _matchesMe(CallAudioRecording half, String myUserId, String? myDeviceId) =>
     half.content.deviceId == myDeviceId;
 
 /// Decides what this device should do about one call's `pangea.call_audio`
-/// halves -- PURELY, from exactly the four inputs given. No I/O, no Matrix
-/// client, no `DateTime.now()`: every branch below is a fact about [halves],
-/// [isDmRoom], [myUserId], [myDeviceId], and [mergedExists] alone, which is
-/// what makes every verdict unit-testable and mutation-provable without a
-/// homeserver.
+/// halves -- PURELY, from the inputs given. No I/O, no clock.
 ///
-/// [halves] -- every `pangea.call_audio` half found for this call (from
-/// `fetchCallAudio`), in whatever order the caller fetched them; this
-/// function does not depend on that order.
-/// [isDmRoom] -- whether the room is a 1:1 DM. `true`/`false` when known,
-/// `null` when not yet known (room state may still be loading) -- `null` is
-/// NOT the same as `false` and must never be treated as one.
-/// [myUserId] -- this device's own Matrix user id.
-/// [myDeviceId] -- this device's own device id, or null if this device does
-/// not know it yet.
-/// [mergedExists] -- whether a `pangea.call_audio_merged` event for this call
-/// has already been found.
+/// [halves] -- every `pangea.call_audio` half found for this call. [merged] --
+/// every `pangea.call_audio_merged` event found for it. [participants] -- the
+/// direct chat's two members. [isDmRoom] is null while the room is not yet
+/// known, which is NOT the same as false.
 ///
-/// The checks below run in EXACTLY this order, and the order is load-bearing
-/// -- a later check's precondition depends on every earlier one having
-/// already been ruled out, so reordering them changes what gets decided, not
-/// just how fast:
-/// 1. [mergedExists] -> [AlreadyMerged].
-/// 2. `isDmRoom == false` -> [TerminallyIneligible] (`'not-a-dm'`).
-/// 3. `isDmRoom == null` -> [PendingIncomplete] (DM-ness not yet known).
-/// 4. More than two halves -> [TerminallyIneligible]
-///    (`'more-than-two-halves'`).
-/// 5. Two halves share a sender -> [TerminallyIneligible]
-///    (`'user-with-multiple-halves'`); this also covers the 2-halves,
-///    1-sender case.
-/// 6. Fewer than two halves -> [PendingIncomplete] (the peer's half has not
-///    arrived).
-/// 7. Either of the (now exactly two, two-distinct-sender) halves is not
-///    placeable -> [TerminallyIneligible] (`'unplaceable-half'`).
-/// 8. Neither half was posted by this device -> [NotCandidate].
-/// 9. This device posted one of the two halves -> [Mergeable].
+/// The order is load-bearing (client#9173):
+/// 1. `isDmRoom == false` -> [TerminallyIneligible] (`'not-a-dm'`); null ->
+///    [PendingIncomplete].
+/// 2. H, the halves, cannot ever be the whole call (`closeCall`) ->
+///    [TerminallyIneligible] with the closure's reason -- e.g.
+///    `'unlinked-same-sender'`, two devices of one speaker that both carried
+///    on.
+/// 3. H is not the whole call YET -> [PendingIncomplete].
+/// 4. A TRUSTED merge of exactly H exists (`isTrustedWholeMerge`) ->
+///    [AlreadyMerged]. A merge that is invalid, overclaims, or covers less than
+///    H retires nothing: the call is merged again under the coverage that is
+///    true, which is a different transaction.
+/// 5. A half cannot be placed -> [TerminallyIneligible] (`'unplaceable-half'`).
+/// 6. [maxSupersessions] earlier merges of part of H already exist ->
+///    [TerminallyIneligible] (`'supersession-cap'`).
+/// 7. This device posted no half of H, or its half handed the call on (a
+///    device the call moved FROM never mixes) -> [NotCandidate].
+/// 8. Otherwise [Mergeable], ranked among the halves that END a speaker's
+///    side -- the only halves whose devices mix.
 CallAudioMergeVerdict decideCallAudioMerge({
   required List<CallAudioRecording> halves,
+  required List<CallAudioMergedRecording> merged,
   required bool? isDmRoom,
+  required Set<String> participants,
+  required String callKey,
   required String myUserId,
   required String? myDeviceId,
-  required bool mergedExists,
 }) {
-  // 1. A merged event already exists: nothing left to decide.
-  if (mergedExists) return const AlreadyMerged();
-
-  // 2. Explicitly known to be a non-DM (group) room: out of v1 scope, and
-  // that fact can never change for this call.
   if (isDmRoom == false) return const TerminallyIneligible('not-a-dm');
-
-  // 3. DM-ness is not yet known. This is NOT terminal -- room state may still
-  // be loading, and a later trigger may find it a DM.
   if (isDmRoom == null) return const PendingIncomplete();
 
-  // Room is confirmed a DM from here on.
-
-  // 4. A third (or later) half means a mid-call device switch, which this
-  // decision core never merges (v2 scope).
-  if (halves.length > 2) {
-    return const TerminallyIneligible('more-than-two-halves');
+  final closure = closeCall(halves, participants);
+  final ClosedCall closed;
+  switch (closure) {
+    case BrokenCall(:final reason):
+      return TerminallyIneligible(reason);
+    case OpenCall():
+      return const PendingIncomplete();
+    case final ClosedCall c:
+      closed = c;
   }
 
-  // 5. Two halves from the SAME sender means that user has more than one
-  // tenure of the recording -- a device switch, same as check 4 but caught
-  // here because the half count alone (<=2) did not already catch it. This
-  // also covers the case of exactly two halves both from one sender.
-  final distinctSenders = halves.map((h) => h.senderId).toSet();
-  if (distinctSenders.length < halves.length) {
-    return const TerminallyIneligible('user-with-multiple-halves');
+  if (merged.any(
+    (m) => isTrustedWholeMerge(
+      merged: m,
+      closed: closed,
+      participants: participants,
+      callKey: callKey,
+    ),
+  )) {
+    return const AlreadyMerged();
   }
 
-  // 6. Fewer than two halves: the peer's half has not shown up yet. Not
-  // terminal -- it may still arrive.
-  if (halves.length < 2) return const PendingIncomplete();
-
-  // From here: EXACTLY two halves, from two DISTINCT senders -- the DM's two
-  // members, derived from the halves themselves rather than from room
-  // membership or `callPeerOf`.
-
-  // 7. Both halves must be placeable, or this call can never produce a clean
-  // merged file.
-  if (halves.any((h) => !_isPlaceable(h))) {
+  final h = closed.halves;
+  if (h.any((half) => !_isPlaceable(half))) {
     return const TerminallyIneligible('unplaceable-half');
   }
+  // Only real supersessions count toward the cap: participants' merges of this
+  // call that covered a STRICT part of what H is now -- each one an earlier,
+  // smaller whole the call has since grown past. A merge naming anything outside H
+  // is not a step H grew from, so a flood of those cannot use up the cap.
+  final ids = {for (final half in h) half.eventId};
+  final superseded = {
+    for (final m in merged)
+      if (participants.contains(m.senderId) &&
+          m.content.callKey == callKey &&
+          ids.containsAll(m.content.sourceEventIds) &&
+          m.content.sourceEventIds.toSet().length < ids.length)
+        m.content.coverageHash,
+  };
+  if (superseded.length >= maxSupersessions) {
+    return const TerminallyIneligible('supersession-cap');
+  }
 
-  // 8. Is this device one of the two posters?
-  if (!halves.any((h) => _matchesMe(h, myUserId, myDeviceId))) {
+  final mine = h.where((half) => _matchesMe(half, myUserId, myDeviceId));
+  if (mine.isEmpty || mine.first.content.handedOverTo != null) {
     return const NotCandidate();
   }
 
-  // 9. This device posted one of the two halves. Rank the two `(senderId,
-  // deviceId)` candidates deterministically, sort the coverage, and take the
-  // earlier start.
-  final candidates =
-      halves
-          .map((h) => _Candidate(h.senderId, h.content.deviceId ?? ''))
-          .toList()
-        ..sort(_compareCandidates);
-
-  // myDeviceId is guaranteed non-null here: check 8 only matched if
-  // myDeviceId != null, so this candidate's own key was never substituted.
+  final candidates = [
+    for (final half in h)
+      if (half.content.handedOverTo == null)
+        _Candidate(half.senderId, half.content.deviceId ?? ''),
+  ]..sort(_compareCandidates);
   final myRank = candidates.indexWhere(
     (c) => c.senderId == myUserId && c.deviceId == myDeviceId,
   );
 
-  final coverageEventIds = halves.map((h) => h.eventId).toList()..sort();
-
-  final mergedStartSfuMs = halves
-      .map((h) => h.content.fileStartSfuMs!)
-      .reduce((a, b) => a < b ? a : b);
-
   return Mergeable(
     myRank: myRank,
-    coverageEventIds: coverageEventIds,
-    mergedStartSfuMs: mergedStartSfuMs,
+    coverageEventIds: h.map((half) => half.eventId).toList()..sort(),
+    mergedStartSfuMs: closed.startSfuMs,
+    trimEndSfuMs: closed.trimEndSfuMs,
   );
 }
+
+/// How many merges one call may accumulate before no more are posted: each
+/// supersession needs H to have grown, and a speaker's chain is bounded, so
+/// this only ever stops a call that is misbehaving.
+const maxSupersessions = 8;

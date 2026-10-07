@@ -284,6 +284,14 @@ class CallService {
         final room = client.getRoomById(roomId);
         return room == null ? null : room.directChatMatrixID != null;
       },
+      // The two people a merge may cover: this account and the direct
+      // chat's other member. Fewer while the room is unknown, which the
+      // decision reads as "not yet", never as a verdict.
+      participants: (roomId) {
+        final peer = client.getRoomById(roomId)?.directChatMatrixID;
+        final me = client.userID;
+        return {?me, ?peer};
+      },
       index: index,
       myUserId: () => client.userID ?? '',
       myDeviceId: () => client.deviceID,

@@ -15,8 +15,8 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_box.dart';
 import 'package:fluffychat/routes/chat/audio_player.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_closure.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
-import 'package:fluffychat/routes/chat/calls/call_audio_merged_selection.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_repo.dart';
 import 'package:fluffychat/routes/chat/calls/call_playback_controller.dart';
 import 'package:fluffychat/routes/chat/calls/call_recordings_load.dart';
@@ -243,8 +243,8 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// Isolated from both the transcript AND the halves the same way [_recordings]
   /// is: [_loadMerged] catches and logs, so a slow or failed merged read never
   /// holds up -- or takes down -- either. The player picks ONE of these to show
-  /// via [selectMergedRow]; a stray extra merge in room history is not this
-  /// screen's problem to resolve.
+  /// via [_trustedMergedRow]: a merge that is not a trusted merge of the whole
+  /// call is never shown.
   late Future<List<CallAudioMergedRecording>> _merged;
 
   /// The "Full call" slot's loading state machine (spec section 3). Fed the
@@ -370,6 +370,37 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// settle ([_feedLoadController]) and on every displayed swap.
   int _shownHalfCount = 0;
   bool _shownHasMerge = false;
+  List<CallAudioRecording> _shownRecordings = const [];
+
+  /// The two people a merge may cover, or fewer while the peer is unknown.
+  Set<String> get _mergeParticipants => {
+    ?widget.room.client.userID,
+    ?callPeerOf(widget.room),
+  };
+
+  /// The ONE merged row to show: a trusted merge of the WHOLE call
+  /// (client#9173) -- covering every half the room holds, each speaker's moved
+  /// call included -- or null. A merge that covers less than every known half
+  /// is never shown, so a moved call never plays as if half of it were all of
+  /// it.
+  CallAudioMergedRecording? _trustedMergedRow(
+    List<CallAudioRecording> halves,
+    List<CallAudioMergedRecording> merged,
+  ) {
+    final participants = _mergeParticipants;
+    final closure = closeCall(halves, participants);
+    if (closure is! ClosedCall) return null;
+    return selectTrustedMerge(
+      merged: merged,
+      closed: closure,
+      participants: participants,
+      callKey: widget.callKey,
+    );
+  }
+
+  /// Whether [halves] can never be merged into one whole call.
+  bool _neverMergeable(List<CallAudioRecording> halves) =>
+      closeCall(halves, _mergeParticipants) is BrokenCall;
 
   /// What the currently-DISPLAYED [_transcript] future resolved to, or null
   /// before the initial read has landed.
@@ -623,15 +654,13 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       }
       final recs = results[0] as List<CallAudioRecording>;
       final mergedList = results[1] as List<CallAudioMergedRecording>;
-      final mergedRow = selectMergedRow(mergedList, recs.length);
-      // More than two halves is a mid-call device switch: `selectMergedRow`
-      // suppresses the merge for v1, so NO merge is ever coming. Feed the
-      // machine zero MERGEABLE halves in that case, so it resolves `none` (the
-      // note, immediately) rather than sitting in `pendingMerge` shimmering
-      // out the full grace for a merge that will never arrive. A `<= 2`-half
-      // call with no merge yet still feeds its real count, so it correctly
-      // waits (pendingMerge) for a merge that genuinely might land.
-      final mergeableHalfCount = recs.length > 2 ? 0 : recs.length;
+      final mergedRow = _trustedMergedRow(recs, mergedList);
+      // Halves that can never be one whole call (two devices of one speaker
+      // that both carried on, a broken chain) will never be merged: feed the
+      // machine zero MERGEABLE halves so it resolves `none` (the note, at once)
+      // rather than shimmering out the grace for a merge that cannot arrive.
+      // Anything else feeds its real count and waits for a merge that may.
+      final mergeableHalfCount = _neverMergeable(recs) ? 0 : recs.length;
       _loadController.update(
         readsInFlight: false,
         halfCount: mergeableHalfCount,
@@ -640,6 +669,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       // What these DISPLAYED futures resolved to, so a later [_refreshRecordings]
       // only swaps (and rebuilds) on a material change (see that method).
       _shownHalfCount = recs.length;
+      _shownRecordings = recs;
       _shownHasMerge = mergedRow != null;
       // The initial reads have fed the machine; live refreshes may now run.
       _initialReadsSettled = true;
@@ -796,8 +826,11 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     // per-device list; a shrunk one leaves the displayed rows untouched.
     final shrank = recs.length < _shownHalfCount;
     final effectiveHalfCount = shrank ? _shownHalfCount : recs.length;
-    final mergedRow = selectMergedRow(mergedList, effectiveHalfCount);
-    final mergeableHalfCount = effectiveHalfCount > 2 ? 0 : effectiveHalfCount;
+    // A shrunk read is a failed read, not fewer halves: judge the merge
+    // against the halves already shown in that case.
+    final judged = shrank ? _shownRecordings : recs;
+    final mergedRow = _trustedMergedRow(judged, mergedList);
+    final mergeableHalfCount = _neverMergeable(judged) ? 0 : effectiveHalfCount;
     // FEED, never reset: `readsInFlight` stays false, so the true->false edge
     // that stamps the grace does NOT fire again and the monotonic grace keeps
     // running (see [CallRecordingsLoadController]'s own doc against re-stamps).
@@ -834,6 +867,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         if (!shrank) {
           _recordings = SynchronousFuture(recs);
           _shownHalfCount = recs.length;
+          _shownRecordings = recs;
         }
         _merged = SynchronousFuture(mergedList);
         _shownHasMerge = mergedRow != null;
@@ -1686,17 +1720,13 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
                 builder: (context, mergedSnapshot) {
                   final mergedList =
                       mergedSnapshot.data ?? const <CallAudioMergedRecording>[];
-                  // The ONE merged row to show, or null when there is no merge
-                  // or the call switched devices mid-way (more than two halves,
-                  // out of v1 scope). Suppression is keyed on the number of
-                  // halves the room actually shows, which is why the count
-                  // comes from `recordings` rather than the merge's coverage.
+                  // The ONE merged row to show: a trusted merge of every half
+                  // the room actually shows (see [_trustedMergedRow]), or null.
                   //
-                  // Deferred until BOTH reads are done: `selectMergedRow`'s
-                  // half count is only trustworthy once `recordings` has
-                  // landed. If the merged read finishes FIRST, the count is
-                  // transiently 0, which would show the player -- then the
-                  // recordings read landing with >2 halves would SUPPRESS it,
+                  // Deferred until BOTH reads are done: the halves are only
+                  // trustworthy once `recordings` has landed. If the merged
+                  // read finishes FIRST the halves are transiently none -- and
+                  // a recordings read landing afterwards could withdraw it,
                   // unmounting a possibly-playing merged player mid-frame. Not
                   // showing it until the count is settled keeps the bar on its
                   // shimmer (the load machine is `loading` until both land) and
@@ -1706,7 +1736,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
                           ConnectionState.done &&
                       mergedSnapshot.connectionState == ConnectionState.done;
                   final mergedRow = readsSettled
-                      ? selectMergedRow(mergedList, recordings.length)
+                      ? _trustedMergedRow(recordings, mergedList)
                       : null;
 
                   // Rebuilt here, not reused from above, because only here is

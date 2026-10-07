@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_merge_decision.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_merged_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_repo.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 
@@ -9,6 +10,32 @@ const _callKey = '\$membership:example.com';
 const _alice = '@alice:example.com';
 const _bob = '@bob:example.com';
 const _carol = '@carol:example.com';
+
+/// The direct chat's two members.
+const _dm = {_alice, _bob};
+
+/// A trusted merge of the plain call `[_half(_alice, 'A1'), _half(_bob, 'B1')]`.
+CallAudioMergedRecording _wholeMerge({
+  List<String> sources = const ['\$A1_ev', '\$B1_ev'],
+  bool? complete = true,
+}) => CallAudioMergedRecording(
+  eventId: '\$merged',
+  senderId: _alice,
+  originServerTs: DateTime.fromMillisecondsSinceEpoch(0),
+  content: CallAudioMergedContent(
+    callKey: _callKey,
+    url: 'mxc://example.com/merged',
+    mimetype: 'audio/wav',
+    size: 4096,
+    durationMs: 30000,
+    sampleRate: 16000,
+    channels: 1,
+    codec: kCallAudioCodec,
+    mergedStartSfuMs: 1000,
+    sourceEventIds: sources,
+    complete: complete,
+  ),
+);
 
 /// Builds one placeable-by-default `pangea.call_audio` half. Every
 /// decision-tree test starts from a half that would pass step 7 on its own
@@ -21,6 +48,9 @@ CallAudioRecording _half(
   String codec = kCallAudioCodec,
   int channels = 1,
   String? eventId,
+  String? from,
+  String? to,
+  int durationMs = 30000,
 }) {
   return CallAudioRecording(
     eventId: eventId ?? '\$${device ?? sender}_ev',
@@ -29,10 +59,12 @@ CallAudioRecording _half(
     content: CallAudioContent(
       callKey: _callKey,
       deviceId: device,
+      continuedFrom: from,
+      handedOverTo: to,
       url: 'mxc://example.com/audio',
       mimetype: 'audio/wav',
       size: 4096,
-      durationMs: 30000,
+      durationMs: durationMs,
       sampleRate: 16000,
       channels: channels,
       codec: codec,
@@ -53,7 +85,9 @@ void main() {
         isDmRoom: true,
         myUserId: _alice,
         myDeviceId: 'A1',
-        mergedExists: true,
+        merged: [_wholeMerge()],
+        participants: _dm,
+        callKey: _callKey,
       );
       expect(verdict, const AlreadyMerged());
     });
@@ -64,7 +98,9 @@ void main() {
         isDmRoom: false,
         myUserId: _alice,
         myDeviceId: 'A1',
-        mergedExists: false,
+        merged: const [],
+        participants: _dm,
+        callKey: _callKey,
       );
       expect(verdict, const TerminallyIneligible('not-a-dm'));
     });
@@ -75,32 +111,49 @@ void main() {
         isDmRoom: null,
         myUserId: _alice,
         myDeviceId: 'A1',
-        mergedExists: false,
+        merged: const [],
+        participants: _dm,
+        callKey: _callKey,
       );
       expect(verdict, const PendingIncomplete());
     });
 
-    test("TerminallyIneligible('more-than-two-halves') for three halves", () {
+    // client#9173: a call is the halves of its two participants; a half from
+    // anyone else is not part of it and neither blocks nor joins the merge.
+    test('a half from someone outside the chat is not part of the call', () {
       final verdict = decideCallAudioMerge(
         halves: [_half(_alice, 'A1'), _half(_bob, 'B1'), _half(_carol, 'C1')],
         isDmRoom: true,
         myUserId: _alice,
         myDeviceId: 'A1',
-        mergedExists: false,
+        merged: const [],
+        participants: _dm,
+        callKey: _callKey,
       );
-      expect(verdict, const TerminallyIneligible('more-than-two-halves'));
+      expect(
+        verdict,
+        const Mergeable(
+          myRank: 0,
+          coverageEventIds: ['\$A1_ev', '\$B1_ev'],
+          mergedStartSfuMs: 1000,
+        ),
+      );
     });
 
-    test("TerminallyIneligible('user-with-multiple-halves') for two halves "
+    // client#9173: two halves from one speaker that are not chained -- two of
+    // their devices that both carried on -- can never be one whole call.
+    test("TerminallyIneligible('unlinked-same-sender') for two unlinked halves "
         'from the same sender', () {
       final verdict = decideCallAudioMerge(
         halves: [_half(_alice, 'A1'), _half(_alice, 'A2')],
         isDmRoom: true,
         myUserId: _alice,
         myDeviceId: 'A1',
-        mergedExists: false,
+        merged: const [],
+        participants: _dm,
+        callKey: _callKey,
       );
-      expect(verdict, const TerminallyIneligible('user-with-multiple-halves'));
+      expect(verdict, const TerminallyIneligible('unlinked-same-sender'));
     });
 
     test('PendingIncomplete for one half (the peer has not posted yet)', () {
@@ -109,7 +162,9 @@ void main() {
         isDmRoom: true,
         myUserId: _alice,
         myDeviceId: 'A1',
-        mergedExists: false,
+        merged: const [],
+        participants: _dm,
+        callKey: _callKey,
       );
       expect(verdict, const PendingIncomplete());
     });
@@ -120,7 +175,9 @@ void main() {
         isDmRoom: true,
         myUserId: _alice,
         myDeviceId: 'A1',
-        mergedExists: false,
+        merged: const [],
+        participants: _dm,
+        callKey: _callKey,
       );
       expect(verdict, const TerminallyIneligible('unplaceable-half'));
     });
@@ -132,7 +189,9 @@ void main() {
         isDmRoom: true,
         myUserId: _alice,
         myDeviceId: 'A1',
-        mergedExists: false,
+        merged: const [],
+        participants: _dm,
+        callKey: _callKey,
       );
       expect(verdict, const TerminallyIneligible('unplaceable-half'));
     });
@@ -167,7 +226,9 @@ void main() {
         isDmRoom: true,
         myUserId: _alice,
         myDeviceId: 'A1',
-        mergedExists: false,
+        merged: const [],
+        participants: _dm,
+        callKey: _callKey,
       );
       expect(verdict, const TerminallyIneligible('unplaceable-half'));
     });
@@ -197,7 +258,9 @@ void main() {
         isDmRoom: true,
         myUserId: _alice,
         myDeviceId: 'A1',
-        mergedExists: false,
+        merged: const [],
+        participants: _dm,
+        callKey: _callKey,
       );
       expect(verdict, const TerminallyIneligible('unplaceable-half'));
     });
@@ -213,7 +276,9 @@ void main() {
           isDmRoom: true,
           myUserId: _alice,
           myDeviceId: 'A1',
-          mergedExists: false,
+          merged: const [],
+          participants: _dm,
+          callKey: _callKey,
         );
         expect(verdict, const TerminallyIneligible('unplaceable-half'));
       },
@@ -226,7 +291,9 @@ void main() {
         isDmRoom: true,
         myUserId: _alice,
         myDeviceId: 'A1',
-        mergedExists: false,
+        merged: const [],
+        participants: _dm,
+        callKey: _callKey,
       );
       expect(verdict, const TerminallyIneligible('unplaceable-half'));
     });
@@ -238,7 +305,9 @@ void main() {
         isDmRoom: true,
         myUserId: _carol,
         myDeviceId: 'C1',
-        mergedExists: false,
+        merged: const [],
+        participants: _dm,
+        callKey: _callKey,
       );
       expect(verdict, const NotCandidate());
     });
@@ -262,7 +331,9 @@ void main() {
         isDmRoom: true,
         myUserId: _alice,
         myDeviceId: 'A1',
-        mergedExists: false,
+        merged: const [],
+        participants: _dm,
+        callKey: _callKey,
       );
       expect(
         verdict,
@@ -284,7 +355,9 @@ void main() {
         isDmRoom: true,
         myUserId: _bob,
         myDeviceId: 'B1',
-        mergedExists: false,
+        merged: const [],
+        participants: _dm,
+        callKey: _callKey,
       );
       expect(
         verdict,
@@ -309,7 +382,9 @@ void main() {
         isDmRoom: true,
         myUserId: _alice,
         myDeviceId: 'A1',
-        mergedExists: false,
+        merged: const [],
+        participants: _dm,
+        callKey: _callKey,
       );
       expect(
         verdict,
@@ -337,7 +412,9 @@ void main() {
         isDmRoom: true,
         myUserId: _alice,
         myDeviceId: 'A1',
-        mergedExists: false,
+        merged: const [],
+        participants: _dm,
+        callKey: _callKey,
       );
       expect(
         verdict,
@@ -358,7 +435,9 @@ void main() {
         isDmRoom: true,
         myUserId: _alice,
         myDeviceId: 'A1',
-        mergedExists: false,
+        merged: const [],
+        participants: _dm,
+        callKey: _callKey,
       );
       expect(
         verdict,
@@ -378,7 +457,9 @@ void main() {
           isDmRoom: true,
           myUserId: _alice,
           myDeviceId: 'A1',
-          mergedExists: false,
+          merged: const [],
+          participants: _dm,
+          callKey: _callKey,
         );
         expect(verdict, const PendingIncomplete());
       },
@@ -395,7 +476,9 @@ void main() {
         isDmRoom: true,
         myUserId: _alice,
         myDeviceId: 'A9',
-        mergedExists: false,
+        merged: const [],
+        participants: _dm,
+        callKey: _callKey,
       );
       expect(verdict, const NotCandidate());
     });
@@ -406,15 +489,18 @@ void main() {
     // flips exactly one of these RED, which the single-condition fixtures above
     // cannot catch.
     group('precedence (the earlier rule wins when conditions overlap)', () {
-      test('rule 1 over 2: mergedExists AND not-a-dm -> AlreadyMerged', () {
+      // client#9173: DM-ness is decided first; a merge no longer short-cuts it.
+      test('not-a-dm over a trusted merge -> not-a-dm', () {
         final verdict = decideCallAudioMerge(
           halves: [_half(_alice, 'A1'), _half(_bob, 'B1')],
           isDmRoom: false,
           myUserId: _alice,
           myDeviceId: 'A1',
-          mergedExists: true,
+          merged: [_wholeMerge()],
+          participants: _dm,
+          callKey: _callKey,
         );
-        expect(verdict, const AlreadyMerged());
+        expect(verdict, const TerminallyIneligible('not-a-dm'));
       });
 
       test('rule 2 over 4: not-a-dm AND three halves -> not-a-dm', () {
@@ -423,36 +509,39 @@ void main() {
           isDmRoom: false,
           myUserId: _alice,
           myDeviceId: 'A1',
-          mergedExists: false,
+          merged: const [],
+          participants: _dm,
+          callKey: _callKey,
         );
         expect(verdict, const TerminallyIneligible('not-a-dm'));
       });
 
-      test('rule 4 over 5: three halves, two sharing a sender -> '
-          'more-than-two-halves (not user-with-multiple-halves)', () {
+      test('two unchained halves from one sender beside the peer -> '
+          'unlinked-same-sender, whatever the third half is', () {
         final verdict = decideCallAudioMerge(
           halves: [_half(_alice, 'A1'), _half(_alice, 'A2'), _half(_bob, 'B1')],
           isDmRoom: true,
           myUserId: _alice,
           myDeviceId: 'A1',
-          mergedExists: false,
+          merged: const [],
+          participants: _dm,
+          callKey: _callKey,
         );
-        expect(verdict, const TerminallyIneligible('more-than-two-halves'));
+        expect(verdict, const TerminallyIneligible('unlinked-same-sender'));
       });
 
-      test('rule 5 over 7: two halves from one sender, one truncated -> '
-          'user-with-multiple-halves (not unplaceable-half)', () {
+      test('closure over placeability: two halves from one sender, one '
+          'truncated -> unlinked-same-sender (not unplaceable-half)', () {
         final verdict = decideCallAudioMerge(
           halves: [_half(_alice, 'A1', truncated: true), _half(_alice, 'A2')],
           isDmRoom: true,
           myUserId: _alice,
           myDeviceId: 'A1',
-          mergedExists: false,
+          merged: const [],
+          participants: _dm,
+          callKey: _callKey,
         );
-        expect(
-          verdict,
-          const TerminallyIneligible('user-with-multiple-halves'),
-        );
+        expect(verdict, const TerminallyIneligible('unlinked-same-sender'));
       });
 
       test('rule 7 over 8: an unplaceable half in a call this device did not '
@@ -462,7 +551,9 @@ void main() {
           isDmRoom: true,
           myUserId: _carol,
           myDeviceId: 'C1',
-          mergedExists: false,
+          merged: const [],
+          participants: _dm,
+          callKey: _callKey,
         );
         expect(verdict, const TerminallyIneligible('unplaceable-half'));
       });
@@ -474,7 +565,9 @@ void main() {
           isDmRoom: null,
           myUserId: _alice,
           myDeviceId: 'A1',
-          mergedExists: false,
+          merged: const [],
+          participants: _dm,
+          callKey: _callKey,
         );
         expect(verdict, const PendingIncomplete());
       });
@@ -489,10 +582,209 @@ void main() {
           isDmRoom: true,
           myUserId: _alice,
           myDeviceId: 'A1',
-          mergedExists: false,
+          merged: const [],
+          participants: _dm,
+          callKey: _callKey,
         );
         expect(verdict, const PendingIncomplete());
       });
+    });
+  });
+
+  group('a call the learner moved between devices (client#9173)', () {
+    // Alice moved from A1 to A2 at 5000; Bob stayed on B1.
+    final a1 = _half(_alice, 'A1', to: 'A2', fileStartSfuMs: 1000);
+    final a2 = _half(_alice, 'A2', from: 'A1', fileStartSfuMs: 5000);
+    final b1 = _half(_bob, 'B1', fileStartSfuMs: 1200);
+
+    CallAudioMergeVerdict decide(
+      List<CallAudioRecording> halves, {
+      String me = _alice,
+      String device = 'A2',
+      List<CallAudioMergedRecording> merged = const [],
+    }) => decideCallAudioMerge(
+      halves: halves,
+      merged: merged,
+      isDmRoom: true,
+      participants: _dm,
+      callKey: _callKey,
+      myUserId: me,
+      myDeviceId: device,
+    );
+
+    CallAudioMergedRecording merge(
+      List<String> sources, {
+      bool? complete = true,
+      int start = 1000,
+      int durationMs = 34000,
+      String id = '\$m',
+    }) => CallAudioMergedRecording(
+      eventId: id,
+      senderId: _bob,
+      originServerTs: DateTime.fromMillisecondsSinceEpoch(0),
+      content: CallAudioMergedContent(
+        callKey: _callKey,
+        url: 'mxc://example.com/merged',
+        mimetype: 'audio/wav',
+        size: 4096,
+        durationMs: durationMs,
+        sampleRate: 16000,
+        channels: 1,
+        codec: kCallAudioCodec,
+        mergedStartSfuMs: start,
+        sourceEventIds: sources,
+        complete: complete,
+      ),
+    );
+
+    final all = ['\$A1_ev', '\$A2_ev', '\$B1_ev'];
+
+    test('a closed chain is merged whole, the moved-from half cut where its '
+        'successor began', () {
+      final verdict = decide([a1, a2, b1]);
+      expect(verdict, isA<Mergeable>());
+      final m = verdict as Mergeable;
+      expect(m.coverageEventIds, all);
+      expect(m.mergedStartSfuMs, 1000);
+      expect(m.trimEndSfuMs, {'\$A1_ev': 5000});
+      expect(m.myRank, 0, reason: 'A2 and B1 mix; A1 does not');
+    });
+
+    test('one side of a link is enough to chain', () {
+      final a2Unlinked = _half(_alice, 'A2', fileStartSfuMs: 5000);
+      expect(decide([a1, a2Unlinked, b1]), isA<Mergeable>());
+    });
+
+    test('the device the call moved FROM never mixes', () {
+      expect(decide([a1, a2, b1], device: 'A1'), const NotCandidate());
+    });
+
+    test('a link to a half not yet in the room waits', () {
+      expect(decide([a1, b1]), const PendingIncomplete());
+      expect(decide([a2, b1]), const PendingIncomplete());
+    });
+
+    test('a chain longer than four devices is never merged', () {
+      final chain = [
+        _half(_alice, 'A1', to: 'A2'),
+        _half(_alice, 'A2', to: 'A3'),
+        _half(_alice, 'A3', to: 'A4'),
+        _half(_alice, 'A4', to: 'A5'),
+        _half(_alice, 'A5'),
+      ];
+      expect(
+        decide([...chain, b1], device: 'A5'),
+        const TerminallyIneligible('chain-too-long'),
+      );
+    });
+
+    test('links that disagree are never merged', () {
+      final a3 = _half(_alice, 'A3', from: 'A1', fileStartSfuMs: 7000);
+      expect(
+        decide([a1, a2, a3, b1]),
+        const TerminallyIneligible('inconsistent-links'),
+      );
+    });
+
+    test('only a trusted merge of the WHOLE call retires it', () {
+      expect(decide([a1, a2, b1], merged: [merge(all)]), const AlreadyMerged());
+      // Covering part of the call, claiming incompleteness, starting in the
+      // wrong place, or too short to hold the call retires nothing.
+      for (final m in [
+        merge(['\$A2_ev', '\$B1_ev']),
+        merge(all, complete: false),
+        merge(all, start: 1200),
+        merge(all, durationMs: 2000),
+      ]) {
+        expect(decide([a1, a2, b1], merged: [m]), isA<Mergeable>());
+      }
+    });
+
+    test('a merge without `complete` is trusted only for a plain call', () {
+      expect(
+        decideCallAudioMerge(
+          halves: [_half(_alice, 'A1'), _half(_bob, 'B1')],
+          merged: [_wholeMerge(complete: null)],
+          isDmRoom: true,
+          participants: _dm,
+          callKey: _callKey,
+          myUserId: _alice,
+          myDeviceId: 'A1',
+        ),
+        const AlreadyMerged(),
+      );
+      expect(
+        decide([a1, a2, b1], merged: [merge(all, complete: null)]),
+        isA<Mergeable>(),
+      );
+    });
+
+    // @a moved twice (A1 -> A2 -> A3): four halves, fifteen possible parts.
+    final c1 = _half(_alice, 'A1', to: 'A2', fileStartSfuMs: 1000);
+    final c2 = _half(_alice, 'A2', from: 'A1', to: 'A3', fileStartSfuMs: 5000);
+    final c3 = _half(_alice, 'A3', from: 'A2', fileStartSfuMs: 9000);
+    final four = [c1, c2, c3, b1];
+    List<CallAudioMergedRecording> earlier(int n) {
+      const ids = ['\$A1_ev', '\$A2_ev', '\$A3_ev', '\$B1_ev'];
+      final out = <CallAudioMergedRecording>[];
+      for (var mask = 1; out.length < n; mask++) {
+        out.add(
+          merge(
+            [
+              for (var i = 0; i < 4; i++)
+                if (mask & (1 << i) != 0) ids[i],
+            ],
+            id: '\$m$mask',
+            complete: false,
+          ),
+        );
+      }
+      return out;
+    }
+
+    test('a call may be superseded up to eight times', () {
+      expect(
+        decide(four, device: 'A3', merged: earlier(7)),
+        isA<Mergeable>(),
+        reason: 'seven distinct earlier coverages: one more is allowed',
+      );
+    });
+
+    test('no more merges once a call has been superseded eight times', () {
+      expect(
+        decide(four, device: 'A3', merged: earlier(8)),
+        const TerminallyIneligible('supersession-cap'),
+      );
+    });
+
+    test('a merge of all of H that is not trusted is not a supersession', () {
+      expect(
+        decide(
+          four,
+          device: 'A3',
+          merged: [
+            ...earlier(7),
+            merge(
+              ['\$A1_ev', '\$A2_ev', '\$A3_ev', '\$B1_ev'],
+              id: '\$whole-but-short',
+              durationMs: 1,
+            ),
+          ],
+        ),
+        isA<Mergeable>(),
+      );
+    });
+
+    test('merges naming halves outside the call do not use up the cap', () {
+      expect(
+        decide(
+          [a1, a2, b1],
+          merged: [
+            for (var i = 0; i < 8; i++) merge(['\$x$i'], id: '\$x$i'),
+          ],
+        ),
+        isA<Mergeable>(),
+      );
     });
   });
 }

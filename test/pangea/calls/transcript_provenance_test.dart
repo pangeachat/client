@@ -28,7 +28,20 @@ CallAudioContent _audio({
   sampleRate: 16000,
   channels: 1,
   codec: kCallAudioCodec,
+  // Placeable, as every recording a merge is made from is.
+  clockAnchor: const ClockAnchor(sfuMs: 1000, deviceMs: 1000),
+  recordingStartedOffsetFromDeviceJoinMs: 0,
 );
+
+/// Bob's own recording of the call: with an alice recording, the WHOLE call a
+/// trusted manifest covers (client#9173).
+const _audioB = '\$audioB';
+final _bobServed = {
+  _audioB: FetchedAudioEvent(
+    senderId: bob,
+    content: _audio(deviceId: 'devB'),
+  ),
+};
 
 CallAudioMergedRecording _manifest({
   required String eventId,
@@ -50,6 +63,10 @@ CallAudioMergedRecording _manifest({
     channels: 1,
     codec: kCallAudioCodec,
     sourceEventIds: sourceEventIds,
+    // A trusted merge of the whole call: starting where its halves start and
+    // saying it mixed all of them.
+    mergedStartSfuMs: 1000,
+    complete: true,
   ),
 );
 
@@ -129,6 +146,7 @@ void main() {
               senderId: alice,
               content: _audio(deviceId: 'devA'),
             ),
+            ..._bobServed,
           },
         );
         final states = await _resolve(
@@ -145,7 +163,7 @@ void main() {
             _manifest(
               eventId: '\$m1',
               sender: bob,
-              sourceEventIds: ['\$audioA'],
+              sourceEventIds: ['\$audioA', _audioB],
             ),
           ],
           fetcher: fetcher,
@@ -163,6 +181,7 @@ void main() {
             senderId: alice,
             content: _audio(deviceId: 'devB'),
           ),
+          ..._bobServed,
         },
       );
       final states = await _resolve(
@@ -176,7 +195,11 @@ void main() {
           ),
         ],
         mergedRecordings: [
-          _manifest(eventId: '\$m1', sender: bob, sourceEventIds: ['\$audioA']),
+          _manifest(
+            eventId: '\$m1',
+            sender: bob,
+            sourceEventIds: ['\$audioA', _audioB],
+          ),
         ],
         fetcher: fetcher,
       );
@@ -188,6 +211,10 @@ void main() {
       final fetcher = _Fetcher(
         serve: {
           '\$audioA': FetchedAudioEvent(senderId: bob, content: _audio()),
+          '\$audioAlice': FetchedAudioEvent(
+            senderId: alice,
+            content: _audio(deviceId: 'devAlice'),
+          ),
         },
       );
       final states = await _resolve(
@@ -200,7 +227,11 @@ void main() {
           ),
         ],
         mergedRecordings: [
-          _manifest(eventId: '\$m1', sender: bob, sourceEventIds: ['\$audioA']),
+          _manifest(
+            eventId: '\$m1',
+            sender: bob,
+            sourceEventIds: ['\$audioA', '\$audioAlice'],
+          ),
         ],
         fetcher: fetcher,
       );
@@ -260,6 +291,7 @@ void main() {
               senderId: alice,
               content: _audio(deviceId: 'devB'),
             ),
+            ..._bobServed,
           },
         );
         final states = await _resolve(
@@ -276,7 +308,7 @@ void main() {
             _manifest(
               eventId: '\$m1',
               sender: bob,
-              sourceEventIds: ['\$audioReal'],
+              sourceEventIds: ['\$audioReal', _audioB],
             ),
           ],
           fetcher: fetcher,
@@ -291,44 +323,46 @@ void main() {
       },
     );
 
-    test(
-      'a redacted source is UNAVAILABLE, not pending and not the writer',
-      () async {
-        final fetcher = _Fetcher(
-          serve: {
-            '\$audioReal': FetchedAudioEvent(
-              senderId: alice,
-              content: _audio(),
-            ),
-            '\$audioGone': FetchedAudioEvent(senderId: alice, redacted: true),
-          },
-        );
-        final states = await _resolve(
-          candidates: [
-            _peer(
-              writer: bob,
-              spokenBy: alice,
-              eventId: '\$t1',
-              sourceAudioEventId: '\$audioGone',
-            ),
-          ],
-          mergedRecordings: [
-            _manifest(
-              eventId: '\$m1',
-              sender: bob,
-              sourceEventIds: ['\$audioReal', '\$audioGone'],
-            ),
-          ],
-          fetcher: fetcher,
-        );
-        expect(states['\$t1'], ProvenanceState.unavailableTerminal);
-      },
-    );
-
-    test('a not-found source (in the manifest) is UNAVAILABLE', () async {
+    // client#9173: a merge is trusted only when EVERY source it lists is a
+    // participant's recording of this call, so one listing a source that is
+    // gone is never the manifest -- the claim waits rather than resolving
+    // against a merge that cannot be the whole call.
+    test('a manifest listing a redacted source is not trusted: the claim stays '
+        'PENDING, never the writer', () async {
       final fetcher = _Fetcher(
         serve: {
           '\$audioReal': FetchedAudioEvent(senderId: alice, content: _audio()),
+          '\$audioGone': FetchedAudioEvent(senderId: alice, redacted: true),
+          ..._bobServed,
+        },
+      );
+      final states = await _resolve(
+        candidates: [
+          _peer(
+            writer: bob,
+            spokenBy: alice,
+            eventId: '\$t1',
+            sourceAudioEventId: '\$audioGone',
+          ),
+        ],
+        mergedRecordings: [
+          _manifest(
+            eventId: '\$m1',
+            sender: bob,
+            sourceEventIds: ['\$audioReal', '\$audioGone', _audioB],
+          ),
+        ],
+        fetcher: fetcher,
+      );
+      expect(states['\$t1'], ProvenanceState.pendingTransient);
+    });
+
+    test('a manifest listing a source that is not found is not trusted: the '
+        'claim stays PENDING', () async {
+      final fetcher = _Fetcher(
+        serve: {
+          '\$audioReal': FetchedAudioEvent(senderId: alice, content: _audio()),
+          ..._bobServed,
         },
         gone: {'\$audioGone'},
       );
@@ -345,12 +379,12 @@ void main() {
           _manifest(
             eventId: '\$m1',
             sender: bob,
-            sourceEventIds: ['\$audioReal', '\$audioGone'],
+            sourceEventIds: ['\$audioReal', '\$audioGone', _audioB],
           ),
         ],
         fetcher: fetcher,
       );
-      expect(states['\$t1'], ProvenanceState.unavailableTerminal);
+      expect(states['\$t1'], ProvenanceState.pendingTransient);
     });
 
     test('a transient fetch failure is PENDING (retryable)', () async {
@@ -482,20 +516,20 @@ void main() {
       },
     );
 
-    test('a device-LESS half with a device-less source is INVALID', () async {
-      // The source resolves to the named speaker's own audio for this call, and
-      // BOTH the half and the source carry no device. `null == null` would bind
-      // them on no shared identity at all; a unit needs a device.
+    test('a device-LESS half is INVALID even against its speaker\'s own '
+        'audio in the manifest', () async {
+      // The source resolves to the named speaker's own audio for this call, in
+      // a trusted manifest, but the half names no device. A unit is (call,
+      // speaker, device): a half that cannot say which device's recording it
+      // is never binds to one. (A device-less SOURCE can never be in a trusted
+      // manifest at all since client#9173.)
       final fetcher = _Fetcher(
         serve: {
           '\$audioReal': FetchedAudioEvent(
             senderId: alice,
             content: _audio(deviceId: 'devReal'),
           ),
-          '\$audioNull': FetchedAudioEvent(
-            senderId: alice,
-            content: _audio(deviceId: null),
-          ),
+          ..._bobServed,
         },
       );
       final states = await _resolve(
@@ -504,18 +538,15 @@ void main() {
             writer: bob,
             spokenBy: alice,
             eventId: '\$t1',
-            sourceAudioEventId: '\$audioNull',
+            sourceAudioEventId: '\$audioReal',
             device: null,
           ),
         ],
         mergedRecordings: [
-          // The real source validates the manifest so it IS selected; the
-          // device-less source is in it (membership is the full id set) but is
-          // not a validated unit.
           _manifest(
             eventId: '\$m1',
             sender: bob,
-            sourceEventIds: ['\$audioReal', '\$audioNull'],
+            sourceEventIds: ['\$audioReal', _audioB],
           ),
         ],
         fetcher: fetcher,
@@ -630,6 +661,7 @@ void main() {
                 senderId: alice,
                 content: _audio(deviceId: 'devA'),
               ),
+              ..._bobServed,
             },
           );
           final claims = [
@@ -648,7 +680,7 @@ void main() {
               _manifest(
                 eventId: '\$m1',
                 sender: bob,
-                sourceEventIds: ['\$audioA'],
+                sourceEventIds: ['\$audioA', _audioB],
               ),
             ],
             fetcher: fetcher,
@@ -656,10 +688,48 @@ void main() {
           expect(states.values, everyElement(ProvenanceState.valid));
           expect(
             fetcher.calls,
-            ['\$audioA'],
+            unorderedEquals(['\$audioA', _audioB]),
             reason:
-                'one fetch for the source, despite 50 claims plus validation',
+                'one fetch per listed source, despite 50 claims plus '
+                'validation',
           );
+        },
+      );
+
+      test(
+        'a manifest of PART of the call is not the manifest (client#9173)',
+        () async {
+          // It names alice's recording but not bob's, so it is not a merge of
+          // the whole call; a claim against it waits rather than resolving.
+          final fetcher = _Fetcher(
+            serve: {
+              '\$audioA': FetchedAudioEvent(
+                senderId: alice,
+                content: _audio(deviceId: 'devA'),
+              ),
+              ..._bobServed,
+            },
+          );
+          final states = await _resolve(
+            candidates: [
+              _peer(
+                writer: bob,
+                spokenBy: alice,
+                eventId: '\$t1',
+                sourceAudioEventId: '\$audioA',
+                device: 'devA',
+              ),
+            ],
+            mergedRecordings: [
+              _manifest(
+                eventId: '\$m1',
+                sender: bob,
+                sourceEventIds: ['\$audioA'],
+              ),
+            ],
+            fetcher: fetcher,
+          );
+          expect(states['\$t1'], ProvenanceState.pendingTransient);
         },
       );
 
@@ -704,8 +774,8 @@ void main() {
     test(
       'breaks a validated-coverage tie by the total order, not list order',
       () async {
-        // Two participant-authored manifests, EACH validating exactly one source
-        // (equal coverage). List order puts the LATER-ts one first; the total
+        // Two participant-authored manifests, EACH a trusted whole call of two
+        // sources (equal coverage). List order puts the LATER-ts one first; the total
         // order must still pick the EARLIER-ts one. Mutation: dropping
         // `_manifestOutranks`'s tie-break (returning only `count > bestCount`)
         // keeps the first-in-list manifest -> RED.
@@ -714,6 +784,14 @@ void main() {
             '\$srcLate': FetchedAudioEvent(
               senderId: alice,
               content: _audio(deviceId: 'devLate'),
+            ),
+            '\$srcLateBob': FetchedAudioEvent(
+              senderId: bob,
+              content: _audio(deviceId: 'devLateBob'),
+            ),
+            '\$srcEarlyAlice': FetchedAudioEvent(
+              senderId: alice,
+              content: _audio(deviceId: 'devEarlyAlice'),
             ),
             '\$srcEarly': FetchedAudioEvent(
               senderId: bob,
@@ -726,13 +804,13 @@ void main() {
             _manifest(
               eventId: '\$mLate',
               sender: bob,
-              sourceEventIds: ['\$srcLate'],
+              sourceEventIds: ['\$srcLate', '\$srcLateBob'],
               ts: 2000,
             ),
             _manifest(
               eventId: '\$mEarly',
               sender: bob,
-              sourceEventIds: ['\$srcEarly'],
+              sourceEventIds: ['\$srcEarlyAlice', '\$srcEarly'],
               ts: 1000,
             ),
           ],

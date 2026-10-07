@@ -76,6 +76,12 @@ class CallAudioMergedContent {
   /// one) -- never for an instance built directly by some other caller.
   final List<String> sourceEventIds;
 
+  /// Whether the writer mixed EVERY half of the call it names -- both speakers,
+  /// every device each used, nothing skipped or cut at the ceiling
+  /// (client#9173). Null on a merge written before the field existed; see
+  /// `isTrustedWholeMerge` for what such a merge is trusted for.
+  final bool? complete;
+
   const CallAudioMergedContent({
     required this.callKey,
     required this.url,
@@ -87,6 +93,7 @@ class CallAudioMergedContent {
     required this.codec,
     this.mergedStartSfuMs,
     required this.sourceEventIds,
+    this.complete,
   });
 
   /// The relation type and the event type are the same string, exactly
@@ -226,6 +233,7 @@ class CallAudioMergedContent {
     'codec': codec,
     'merged_start_sfu_ms': ?mergedStartSfuMs,
     'source_event_ids': canonicalSourceEventIds(sourceEventIds),
+    'complete': ?complete,
     'm.relates_to': {'rel_type': relType, 'event_id': callKey},
   };
 
@@ -321,6 +329,10 @@ class CallAudioMergedContent {
       codec: codec,
       mergedStartSfuMs: mergedStartRaw is int ? mergedStartRaw : null,
       sourceEventIds: sourceEventIds,
+      complete: switch (content['complete']) {
+        final bool flag => flag,
+        _ => null,
+      },
     );
   }
 

@@ -19,6 +19,7 @@ library;
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/routes/chat/calls/call_audio_closure.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_repo.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
@@ -253,10 +254,11 @@ bool _manifestOutranks(
 /// The one manifest to resolve peer claims against, or null when none is
 /// genuine yet.
 ///
-/// A manifest that validates NOTHING is not selected: its coverage says nothing
-/// at all, and treating it as "the manifest" would turn every real peer half
-/// into a not-in-manifest reject (attributed to its writer) on the strength of a
-/// flood. With no genuine manifest, peer claims stay pending until one arrives.
+/// Only a trusted manifest has a count at all: a flood, a partial merge or one
+/// listing anything that is not a participant's recording of this call is never
+/// "the manifest", so it cannot turn real peer halves into not-in-manifest
+/// rejects. With no trusted manifest, peer claims stay pending until one
+/// arrives.
 CallAudioMergedRecording? _selectManifest(
   List<CallAudioMergedRecording> manifests,
   Map<String, int> validatedCounts,
@@ -282,11 +284,13 @@ CallAudioMergedRecording? _selectManifest(
 /// `sourceAudioEventId` is in the manifest the reader will select — never an
 /// alternate the producer chose by list order or on a transient miss.
 ///
-/// The rule (unchanged, lifted out of [resolveTranscriptProvenance]): among the
-/// participant-authored merges of THIS call, count each one's VALIDATED source
-/// coverage through [resolve] and pick the greatest by [_selectManifest]'s total
-/// order (validated count, then earliest ts, then sender id, then merged event
-/// id). [uncertain] is true when any validation fetch came back
+/// The rule: among the participant-authored merges of THIS call, only a
+/// TRUSTED merge of the whole call it covers counts (`isTrustedWholeMerge`,
+/// client#9173) -- every listed source resolves through [resolve] to a
+/// validated unit and those units close into the whole call -- and the greatest
+/// is picked by [_selectManifest]'s total order (coverage, then earliest ts,
+/// then sender id, then merged event id). [uncertain] is true when any
+/// validation fetch came back
 /// [AudioResolutionKind.pending]: the true manifest may have been undercounted,
 /// so a caller must NOT commit to the selection — the reader holds affected
 /// claims pending, and the producer treats it as "no manifest yet" and retries.
@@ -310,22 +314,54 @@ selectCallAudioManifest({
         merged,
   ];
 
-  final validatedCounts = <String, int>{};
+  // Only a TRUSTED merge of the whole call it covers is a manifest
+  // (client#9173): every listed source must resolve to a participant's own
+  // recording of this call, those recordings must close into the whole call
+  // (`closeCall`), and the merge must cover exactly them -- the same test the
+  // merge coordinator retires a call on and the view shows a merge on. One
+  // source that is not a validated unit disqualifies the merge; one that could
+  // not be looked up makes the selection uncertain rather than deciding.
+  final trustedCounts = <String, int>{};
   var uncertain = false;
   for (final manifest in manifests) {
-    var validated = 0;
-    // De-duplicated defensively -- `fromJson` already canonicalises, but the
-    // count must not depend on that continuing to hold.
+    final halves = <CallAudioRecording>[];
+    var usable = true;
     for (final id in manifest.content.sourceEventIds.toSet()) {
       final resolution = await resolve(id);
-      if (resolution.kind == AudioResolutionKind.pending) uncertain = true;
-      if (resolution.isValidatedUnitFor(participants, callKey)) validated++;
+      if (resolution.kind == AudioResolutionKind.pending) {
+        uncertain = true;
+        usable = false;
+        continue;
+      }
+      if (!resolution.isValidatedUnitFor(participants, callKey)) {
+        usable = false;
+        continue;
+      }
+      halves.add(
+        CallAudioRecording(
+          eventId: id,
+          senderId: resolution.senderId!,
+          originServerTs: resolution.originServerTs ?? manifest.originServerTs,
+          content: resolution.content!,
+        ),
+      );
     }
-    validatedCounts[manifest.eventId] = validated;
+    if (!usable) continue;
+    final closure = closeCall(halves, participants);
+    if (closure is! ClosedCall) continue;
+    if (!isTrustedWholeMerge(
+      merged: manifest,
+      closed: closure,
+      participants: participants,
+      callKey: callKey,
+    )) {
+      continue;
+    }
+    trustedCounts[manifest.eventId] = halves.length;
   }
 
   return (
-    manifest: _selectManifest(manifests, validatedCounts),
+    manifest: _selectManifest(manifests, trustedCounts),
     uncertain: uncertain,
   );
 }
