@@ -104,13 +104,15 @@ class PendingReportStore {
     }
   }
 
-  /// Stores [report]. A copy that [markRejected] already moved to this id,
-  /// under its original key, is left as it is rather than duplicated.
+  /// Stores [report] unless it is already stored: under its own key — a
+  /// report id always names the same report, and rewriting that key could
+  /// undo a move [markRejected] made to it — or as a copy [markRejected]
+  /// moved to this id. The cache is trustworthy here because [_write]
+  /// re-reads the platform store after any refused write.
   Future<void> remember(String userId, ReportSubmission report) async {
     final key = _key(userId, report.reportId);
-    if (_entries(
-      userId,
-    ).any((e) => e.$2.reportId == report.reportId && e.$1 != key)) {
+    if (_prefs.containsKey(key) ||
+        _entries(userId).any((e) => e.$2.reportId == report.reportId)) {
       return;
     }
     await _write(() => _prefs.setString(key, jsonEncode(report.toJson())));
@@ -163,39 +165,34 @@ Future<void> replayPendingReports({
     }
   }
 
-  // Each entry: the report, whether it was already moved this run, and a
-  // refused id whose copy could not be moved and must go once it is recorded.
-  final queue = <(ReportSubmission, bool, String?)>[
-    for (final report in await store.pendingFromDisk(userId))
-      (report, false, null),
+  // Each entry: the report, and whether it was already moved this run.
+  final queue = [
+    for (final report in await store.pendingFromDisk(userId)) (report, false),
   ];
   while (queue.isNotEmpty) {
-    final (report, rotated, unmoved) = queue.removeAt(0);
+    final (report, rotated) = queue.removeAt(0);
     final result = await attempt(report);
     if (result == CaptureResult.failed) continue;
+    final fresh = report.withReportId(successorReportId(report.reportId));
     if (result == CaptureResult.conflict) {
-      // Sent under the new id now even if the move could not be stored; the
-      // copy then stays under the refused id until the store works again. A
-      // report already moved once this run is sent again only on the next
-      // start, so a run cannot loop.
       final moved = await guarded(
         () => store.markRejected(userId, report.reportId),
         'markRejected',
       );
-      if (!rotated) {
-        queue.add((
-          report.withReportId(successorReportId(report.reportId)),
-          true,
-          moved ? unmoved : report.reportId,
-        ));
+      if (!moved) {
+        // The new id is stored on its own, and the copy under the refused id
+        // is dropped regardless: a refused id must never be replayed.
+        await guarded(() => store.remember(userId, fresh), 'remember');
+        await guarded(() => store.forget(userId, report.reportId), 'forget');
       }
+      // Sent under the new id now. A report already moved once this run is
+      // sent again only on the next start, so a run cannot loop.
+      if (!rotated) queue.add((fresh, true));
       continue;
     }
     // Recorded. A failed forget means a resend next start, which is harmless:
     // the module stores a report id once.
-    for (final id in [report.reportId, ?unmoved]) {
-      await guarded(() => store.forget(userId, id), 'forget');
-    }
+    await guarded(() => store.forget(userId, report.reportId), 'forget');
   }
 }
 

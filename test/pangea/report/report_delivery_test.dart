@@ -230,15 +230,14 @@ void main() {
       },
     );
 
-    test('a conflict is sent under the new id even when it cannot be stored, '
-        'the old copy is never sent as the refused id again, and it goes '
-        'once the new id is recorded', () async {
+    test('a refused copy is listed only under its new id from then on, and '
+        'goes once that is recorded', () async {
       final moved = successorReportId('old-id');
       final failing = store;
       await failing.remember(userId, submission('old-id'));
       final sent = <String>[];
 
-      // The new id fails too: the device keeps only the moved copy.
+      // The new id fails: the device keeps only the moved copy.
       await replayPendingReports(
         store: failing,
         userId: userId,
@@ -337,6 +336,37 @@ void main() {
         );
       },
     );
+
+    test('a copy that cannot be moved is dropped under the refused id even '
+        'when the new id then fails', () async {
+      final failing = _MarkFails(await SharedPreferences.getInstance());
+      await failing.remember(userId, submission('old-id'));
+
+      await replayPendingReports(
+        store: failing,
+        userId: userId,
+        attempt: (report) async => report.reportId == 'old-id'
+            ? CaptureResult.conflict
+            : CaptureResult.failed,
+      );
+
+      expect(failing.pending(userId).map((r) => r.reportId), [
+        successorReportId('old-id'),
+      ]);
+    });
+
+    test('a resend of the refused id cannot undo its move', () async {
+      final old = submission('old-id');
+      await store.remember(userId, old);
+      await store.markRejected(userId, old.reportId);
+
+      // The foreground send of the same report remembers it again.
+      await store.remember(userId, old);
+
+      expect(store.pending(userId).map((r) => r.reportId), [
+        successorReportId(old.reportId),
+      ]);
+    });
 
     test('a 409 is a conflict, not a failure and not a success', () async {
       expect(

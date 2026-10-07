@@ -368,26 +368,26 @@ void main() {
       },
     );
 
-    test('after a conflict, a copy that could not be moved goes once the '
-        'report is recorded under the new id', () async {
-      captureResults = [CaptureResult.conflict, CaptureResult.recorded];
-      retryAnswers = [true];
+    test('after a conflict, a copy that could not be moved is dropped at '
+        'once, with the new id stored on its own', () async {
+      captureResults = [CaptureResult.conflict];
+      retryAnswers = [false];
       failingWrites = {'mark:${report.reportId}'};
 
       await flow().run(report, offensive: false);
 
-      expect(
-        calls,
-        containsAllInOrder([
-          'markRejected:${report.reportId}',
-          'forget:${report.reportId}',
-        ]),
-      );
-      expect(calls, contains('forget:fresh-report-id'));
+      expect(calls, [
+        'remember:${report.reportId}',
+        'capture',
+        'markRejected:${report.reportId}',
+        'remember:fresh-report-id',
+        'forget:${report.reportId}',
+        'offerRetry',
+      ]);
     });
 
     test(
-      'an old id kept by a failed write goes once the new id is recorded',
+      'after a conflict whose move fails, neither id is left once recorded',
       () async {
         captureResults = [CaptureResult.conflict, CaptureResult.recorded];
         retryAnswers = [true];
