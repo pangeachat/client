@@ -495,6 +495,8 @@ void main() {
     late Client client;
     late FakeMatrixApi server;
     late List<Map<String, dynamic>> received;
+    late List<Set<String>> storedWhenSent;
+    late bool serverFails;
     late PendingReportStore store;
     late L10n l10n;
 
@@ -503,12 +505,21 @@ void main() {
       store = await PendingReportStore.open();
       l10n = await lookupL10n(const Locale('en'));
       received = [];
+      storedWhenSent = [];
+      serverFails = false;
       server = FakeMatrixApi()
         ..api['GET']!['/.well-known/matrix/client'] = (req) => {};
       server.api['POST']!['/_synapse/client/pangea/v1/report'] = (body) {
         final decoded = jsonDecode(body as String) as Map<String, dynamic>;
         received.add(decoded);
-        return {'incident_id': 'report:${decoded['report_id']}'};
+        // What the device held at the moment the request left: the copy
+        // must already be there, before any answer.
+        storedWhenSent.add(
+          store.pending(client.userID!).map((r) => r.reportId).toSet(),
+        );
+        return serverFails
+            ? {'errcode': 'M_UNKNOWN'}
+            : {'incident_id': 'report:${decoded['report_id']}'};
       };
       client = Client(
         'report wiring test',
@@ -548,9 +559,12 @@ void main() {
       },
     );
 
-    testWidgets('sends the report to the module and keeps no copy', (
-      tester,
-    ) async {
+    /// Reports a message through [submitReport] as a reporter would: "Other",
+    /// a reason, OK. [onRetryPrompt] answers the retry prompt if it appears.
+    Future<ReportOutcome?> report(
+      WidgetTester tester, {
+      String? onRetryPrompt,
+    }) async {
       late BuildContext chatContext;
       await tester.pumpWidget(
         MaterialApp(
@@ -599,12 +613,35 @@ void main() {
       await tester.enterText(find.byType(TextField), 'he is rude');
       await tester.tap(find.text(l10n.ok));
       // The client answers through real I/O, so real time has to pass too.
-      for (var i = 0; i < 100 && !done; i++) {
+      for (
+        var i = 0;
+        i < 100 && !done && find.text(l10n.reportNotSent).evaluate().isEmpty;
+        i++
+      ) {
         await tester.runAsync(
           () => Future<void>.delayed(const Duration(milliseconds: 20)),
         );
         await tester.pump(const Duration(milliseconds: 100));
       }
+
+      if (onRetryPrompt != null) {
+        expect(find.text(l10n.reportNotSent), findsOneWidget);
+        // The reason dialog may still be animating out beneath the prompt.
+        await tester.tap(find.text(onRetryPrompt).last);
+        for (var i = 0; i < 100 && !done; i++) {
+          await tester.runAsync(
+            () => Future<void>.delayed(const Duration(milliseconds: 20)),
+          );
+          await tester.pump(const Duration(milliseconds: 100));
+        }
+      }
+      return outcome;
+    }
+
+    testWidgets('sends the report to the module and keeps no copy', (
+      tester,
+    ) async {
+      final outcome = await report(tester);
 
       expect(outcome, ReportOutcome.captured);
       expect(received, hasLength(1));
@@ -612,8 +649,24 @@ void main() {
       expect(received.single['event_id'], r'$reported:example.invalid');
       expect(received.single['reason'], 'he is rude');
       expect(received.single['report_id'], isA<String>());
+      expect(
+        storedWhenSent.single,
+        {received.single['report_id']},
+        reason: 'the copy is written before the request leaves',
+      );
       expect(store.pending(client.userID!), isEmpty);
       expect(find.text(l10n.reportSent), findsOneWidget);
+    });
+
+    testWidgets('a failed report the reporter gives up on stays stored, '
+        'under the id it was sent with', (tester) async {
+      serverFails = true;
+
+      final outcome = await report(tester, onRetryPrompt: l10n.cancel);
+
+      expect(outcome, ReportOutcome.notCaptured);
+      final kept = store.pending(client.userID!);
+      expect(kept.map((r) => r.toJson()), [received.single]);
     });
   });
 }
