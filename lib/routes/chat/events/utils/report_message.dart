@@ -31,11 +31,7 @@ Future<Room> getReportsDM(User teacher, Room space) async {
     membersOf: (roomId) async {
       final room = client.getRoomById(roomId);
       if (room == null || room.membership != Membership.join) return null;
-      final members = await room.requestParticipants([
-        Membership.join,
-        Membership.invite,
-      ]);
-      return members.map((m) => m.id).toSet();
+      return currentJoinedOrInvited(client, roomId);
     },
     createFresh: () => client.startDirectChat(
       teacher.id,
@@ -45,6 +41,25 @@ Future<Room> getReportsDM(User teacher, Room space) async {
   );
   space.setSpaceChild(roomId, suggested: false);
   return client.getRoomById(roomId)!;
+}
+
+/// Who is joined to or invited into [roomId], as the homeserver has it now.
+///
+/// Asked of the server rather than read from the local member list, which
+/// the SDK serves from cache when it looks complete — and so would miss an
+/// invite that has not synced yet.
+@visibleForTesting
+Future<Set<String>> currentJoinedOrInvited(MatrixApi api, String roomId) async {
+  final events = await api.getMembersByRoom(roomId) ?? const [];
+  return events
+      .where(
+        (e) =>
+            e.content['membership'] == Membership.join.name ||
+            e.content['membership'] == Membership.invite.name,
+      )
+      .map((e) => e.stateKey)
+      .nonNulls
+      .toSet();
 }
 
 /// The room to send a report pointer to [adminId] in.
@@ -158,16 +173,17 @@ Future<ReportOutcome?> submitReport({
   );
 
   final l10n = L10n.of(uiContext);
-  final pending = store ?? await PendingReportStore.open();
+  Future<PendingReportStore> pending() async =>
+      store ?? await PendingReportStore.open();
   return ReportFlow<SpaceTeacher>(
     capture: (report) => _captureReport(uiContext, client, report),
     remember: (report) => _storeSafely(
-      () => pending.remember(reporterId, report),
+      () async => (await pending()).remember(reporterId, report),
       report,
       'remember',
     ),
     forget: (report) => _storeSafely(
-      () => pending.forget(reporterId, report.reportId),
+      () async => (await pending()).forget(reporterId, report.reportId),
       report,
       'forget',
     ),
@@ -208,9 +224,10 @@ Future<ReportOutcome?> submitReport({
   ).run(report, offensive: score == 1);
 }
 
-/// Runs a pending-report store write. A failed write is reported and does
-/// not stop the report: it is still sent now, only without the copy that
-/// would let a later start replay it.
+/// Runs a pending-report store operation. A failure is reported and never
+/// stops the report from being sent: refusing to send because the device
+/// could not keep a backup copy would lose more reports than it saves. The
+/// write is tried again before every attempt.
 Future<void> _storeSafely(
   Future<void> Function() write,
   ReportSubmission report,

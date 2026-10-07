@@ -84,50 +84,53 @@ extension ReportEventApiExtension on Api {
       throw ReportCaptureException('transport failed (${e.runtimeType})');
     }
 
+    // Decoded here, never through `response.body`: that getter picks a
+    // charset from the server's Content-Type and throws, quoting it, when
+    // the header is malformed.
+    final body = utf8.decode(response.bodyBytes, allowMalformed: true);
+
     if (response.statusCode != 200) {
       // This call bypasses `Requests` (Synapse endpoint, Matrix SDK client and
       // token), so it raises the typed failure itself rather than throwing the
-      // response — see repos-and-error-handling.instructions.md. The typed
-      // failure never carries the body, only its errcode — and not the
-      // body's `detail`, which the shared parser would prefer and which a
-      // server can fill with anything, the reason included.
+      // response — see repos-and-error-handling.instructions.md. Its detail is
+      // one of a fixed set of Matrix errcodes, never text from the body: an
+      // errcode-shaped string can still be the reason echoed back.
       throw PangeaHttpException(
         statusCode: response.statusCode,
         method: request.method,
         path: PangeaHttpException.normalizePath(request.url),
-        detail: _errcodeOf(response.body),
+        detail: _knownErrcodeOf(body),
         retryAfter: PangeaHttpException.retryAfterFromResponse(response),
       );
     }
 
     final Object? decoded;
     try {
-      decoded = jsonDecode(response.body);
+      decoded = jsonDecode(body);
     } catch (_) {
       // Not rethrown: a FormatException quotes the source it failed on.
       throw const ReportCaptureException('200 with an unreadable body');
     }
     final incidentId = decoded is Map ? decoded['incident_id'] : null;
-    if (incidentId is! String) {
-      // A 200 without the contract's incident id means we cannot tell whether
-      // the module recorded this report. Treated as a failure so the reporter
-      // is offered a retry, which is safe: the same report_id is never stored
-      // twice.
-      throw const ReportCaptureException('200 without an incident_id');
+    if (incidentId != 'report:${report.reportId}') {
+      // Anything but this report's own incident id means we cannot tell
+      // whether the module recorded THIS report. Treated as a failure, so the
+      // stored copy is kept and the reporter is offered a retry, which is
+      // safe: the same report_id is never stored twice.
+      throw const ReportCaptureException(
+        '200 without this report\'s incident_id',
+      );
     }
-    return incidentId;
+    return incidentId as String;
   }
 }
 
-/// The body's Matrix `errcode`, only when it has an errcode's shape
-/// (`M_FORBIDDEN`, `ORG.PANGEA.X`): an identifier, never free text.
-String? _errcodeOf(String body) {
+/// The body's Matrix `errcode` when it is one of [_knownErrcodes], else null.
+String? _knownErrcodeOf(String body) {
   try {
     final decoded = jsonDecode(body);
     final errcode = decoded is Map ? decoded['errcode'] : null;
-    return errcode is String && _errcodeShape.hasMatch(errcode)
-        ? errcode
-        : null;
+    return _knownErrcodes.contains(errcode) ? errcode as String : null;
   } catch (_) {
     // silent-ok: an unreadable error body just has no errcode; the status is
     // still reported.
@@ -135,7 +138,22 @@ String? _errcodeOf(String body) {
   }
 }
 
-final _errcodeShape = RegExp(r'^[A-Z][A-Z0-9_.]{0,63}$');
+/// The errcodes a report request can meaningfully come back with. Only these
+/// are copied into an error; any other value is dropped, because a server
+/// that echoes the request can put the reason where an errcode belongs.
+const _knownErrcodes = {
+  'M_FORBIDDEN',
+  'M_NOT_FOUND',
+  'M_UNRECOGNIZED',
+  'M_UNKNOWN',
+  'M_BAD_JSON',
+  'M_NOT_JSON',
+  'M_MISSING_PARAM',
+  'M_INVALID_PARAM',
+  'M_LIMIT_EXCEEDED',
+  'M_UNKNOWN_TOKEN',
+  'M_MISSING_TOKEN',
+};
 
 /// A report request that failed in a way no HTTP status describes. Carries a
 /// fixed description only — never anything the server sent back.
@@ -150,21 +168,14 @@ class ReportCaptureException implements Exception {
 
 /// How one attempt to record a report ended.
 enum CaptureResult {
-  /// The module answered 200 with an incident id.
+  /// The module answered 200 with this report's incident id.
   recorded,
 
-  /// The module refused it in a way a retry cannot change: the event is
-  /// unknown, not in that room, not visible to the reporter, or the request
-  /// is malformed.
-  rejected,
-
-  /// Anything else — offline, a timeout, a server error, an unreadable
-  /// answer. Worth trying again with the same report id.
+  /// Anything else. Even a refusal is kept and resent: a 404 is also what a
+  /// homeserver without the module yet answers, so no failure is taken as
+  /// final.
   failed,
 }
-
-/// Statuses that a retry with the same body can never turn into a 200.
-const _rejectedStatuses = {400, 403, 404, 422};
 
 /// One attempt at recording [report]. Reports a failure to Sentry once, with
 /// ids only — never the reason, which is the reporter's own words, and never
@@ -186,8 +197,6 @@ Future<CaptureResult> attemptReportCapture(
         'event_id': report.eventId,
       },
     );
-    return e is PangeaHttpException && _rejectedStatuses.contains(e.statusCode)
-        ? CaptureResult.rejected
-        : CaptureResult.failed;
+    return CaptureResult.failed;
   }
 }

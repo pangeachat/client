@@ -116,6 +116,33 @@ void main() {
       );
     });
 
+    test('a malformed Content-Type does not lose a confirmation', () async {
+      final api = MatrixApi(
+        homeserver: Uri.parse('https://hs.example.invalid'),
+        accessToken: 'reporter-token',
+        httpClient: MockClient(
+          (request) async => http.Response.bytes(
+            utf8.encode(
+              jsonEncode({'incident_id': 'report:${report.reportId}'}),
+            ),
+            200,
+            headers: {'content-type': 'application/json; charset="broken'},
+            request: request,
+          ),
+        ),
+      );
+      expect(await api.captureReport(report), 'report:${report.reportId}');
+    });
+
+    test('a 200 naming another report is not taken as recorded', () async {
+      await expectLater(
+        apiAnswering(200, {
+          'incident_id': 'report:some-other-report',
+        }).captureReport(report),
+        throwsA(isA<ReportCaptureException>()),
+      );
+    });
+
     test('a 200 without an incident_id is not taken as recorded', () async {
       await expectLater(
         apiAnswering(200, {}).captureReport(report),
@@ -239,8 +266,10 @@ void main() {
         'remember',
         'capture',
         'offerRetry',
+        'remember',
         'capture',
         'offerRetry',
+        'remember',
         'capture',
         'forget',
         'confirm',
@@ -266,14 +295,15 @@ void main() {
       },
     );
 
-    test('a refused report is forgotten: no retry could change it', () async {
-      captureResults = [CaptureResult.rejected];
-      retryAnswers = [false];
+    test('a stored copy is kept until the module confirms it', () async {
+      captureResults = [CaptureResult.failed, CaptureResult.failed];
+      retryAnswers = [true, false];
 
       final outcome = await flow().run(report, offensive: false);
 
       expect(outcome, ReportOutcome.notCaptured);
-      expect(calls, ['remember', 'capture', 'forget', 'offerRetry']);
+      expect(calls, isNot(contains('forget')));
+      expect(calls.where((c) => c == 'remember'), hasLength(2));
     });
 
     test(

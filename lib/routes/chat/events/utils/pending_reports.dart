@@ -9,9 +9,8 @@ import 'package:fluffychat/routes/chat/events/utils/report_api_extension.dart';
 /// Reports the module has not yet confirmed, kept on the device so a report
 /// survives the app being killed mid-send.
 ///
-/// A report is written here before its first attempt and removed only when
-/// the module confirms it (or refuses it in a way no retry can change), so
-/// whatever is left is replayed on the next start with its original
+/// A report is written here before each attempt and removed only when the
+/// module confirms it, so whatever is left is replayed on the next start with its original
 /// `report_id` — which the module stores once, however many times it
 /// arrives.
 ///
@@ -77,8 +76,8 @@ class PendingReportStore {
 }
 
 /// Sends every report [userId] left unconfirmed, each with its original
-/// report id, and forgets the ones the module has settled. One that fails
-/// again stays for the next start; its failure is already in Sentry.
+/// report id, and forgets the ones the module confirms. One that fails again
+/// stays for the next start; its failure is already in Sentry.
 Future<void> replayPendingReports({
   required PendingReportStore store,
   required String userId,
@@ -86,7 +85,7 @@ Future<void> replayPendingReports({
 }) async {
   for (final report in store.pending(userId)) {
     final result = await attempt(report);
-    if (result != CaptureResult.failed) {
+    if (result == CaptureResult.recorded) {
       await store.forget(userId, report.reportId);
     }
   }

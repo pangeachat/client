@@ -78,9 +78,8 @@ enum ReportOutcome {
   captured,
 
   /// The module never confirmed it and the reporter chose not to retry. The
-  /// failure was already reported to Sentry by [ReportFlow.capture]; unless
-  /// the module refused it outright, it stays stored and is replayed on the
-  /// next start.
+  /// failure was already reported to Sentry by [ReportFlow.capture]; the
+  /// report stays stored and is replayed on the next start.
   notCaptured,
 }
 
@@ -95,12 +94,12 @@ class ReportFlow<T> {
   /// failures, so a result other than recorded is never silent.
   final Future<CaptureResult> Function(ReportSubmission report) capture;
 
-  /// Stores the report on the device before its first attempt, so it is
-  /// replayed with the same report id if the app dies before the module
-  /// confirms it.
+  /// Stores the report on the device before each attempt, so it is replayed
+  /// with the same report id if the app dies before the module confirms it.
+  /// Idempotent per report id.
   final Future<void> Function(ReportSubmission report) remember;
 
-  /// Drops the stored copy once the module has settled the report.
+  /// Drops the stored copy once the module has recorded the report.
   final Future<void> Function(ReportSubmission report) forget;
 
   /// Asks the reporter whether to try again after [capture] failed.
@@ -175,15 +174,16 @@ class ReportFlow<T> {
   /// Sends [report] until the module records it or the reporter gives up.
   /// Every attempt carries the same [ReportSubmission.reportId].
   ///
-  /// The stored copy outlives a reporter who gives up after a failure: it is
-  /// forgotten only once the module has recorded the report, or refused it
-  /// in a way no retry can change.
+  /// The report is stored before every attempt and forgotten only once the
+  /// module has recorded it, so a report the reporter gives up on — or that
+  /// the app is killed in the middle of — is resent on the next start.
   Future<bool> captureWithRetry(ReportSubmission report) async {
-    await remember(report);
     while (true) {
-      final result = await capture(report);
-      if (result != CaptureResult.failed) await forget(report);
-      if (result == CaptureResult.recorded) return true;
+      await remember(report);
+      if (await capture(report) == CaptureResult.recorded) {
+        await forget(report);
+        return true;
+      }
       if (!await offerRetry()) return false;
     }
   }

@@ -75,7 +75,9 @@ void main() {
         final stored = submission('8a1d0e38-6c43-4d6c-9e57-1c2c0a6a5b11');
         await store.remember(userId, stored);
 
-        // A fresh store, as after a restart: only the device copy carries it.
+        // As after a restart: the in-memory cache is gone, only what reached
+        // the platform store is left.
+        SharedPreferences.resetStatic();
         final afterRestart = await PendingReportStore.open();
         await replayPendingReports(
           store: afterRestart,
@@ -110,8 +112,9 @@ void main() {
     });
 
     test(
-      'a report the module refuses for good is not replayed again',
+      'a refused report is kept too: only a confirmation forgets it',
       () async {
+        // A homeserver without the module yet also answers 404.
         await store.remember(userId, submission('id-404'));
 
         await replayPendingReports(
@@ -120,7 +123,7 @@ void main() {
           attempt: serverAnswering(404),
         );
 
-        expect(store.pending(userId), isEmpty);
+        expect(store.pending(userId).map((r) => r.reportId), ['id-404']);
       },
     );
 
@@ -170,6 +173,7 @@ void main() {
     Future<void> expectNoSentinelLeaks(
       MockClientHandler handler, {
       required CaptureResult expected,
+      String leaked = sentinel,
     }) async {
       final report = submission('leak-check');
       late CaptureResult result;
@@ -178,10 +182,10 @@ void main() {
       });
 
       expect(result, expected);
-      expect(jsonEncode(event.toJson()), isNot(contains(sentinel)));
-      expect(event.throwable.toString(), isNot(contains(sentinel)));
+      expect(jsonEncode(event.toJson()), isNot(contains(leaked)));
+      expect(event.throwable.toString(), isNot(contains(leaked)));
       expect(printed, isNotEmpty);
-      expect(printed.join('\n'), isNot(contains(sentinel)));
+      expect(printed.join('\n'), isNot(contains(leaked)));
     }
 
     test('a truncated 200 that echoes the reason', () async {
@@ -203,6 +207,30 @@ void main() {
       );
     });
 
+    test('an errcode-shaped echo of the reason', () async {
+      await expectNoSentinelLeaks(
+        (request) async => http.Response(
+          jsonEncode({'errcode': 'BULLYING_SENTINEL'}),
+          403,
+          request: request,
+        ),
+        expected: CaptureResult.failed,
+        leaked: 'BULLYING_SENTINEL',
+      );
+    });
+
+    test('a malformed Content-Type header', () async {
+      await expectNoSentinelLeaks(
+        (request) async => http.Response.bytes(
+          utf8.encode('{"incident_id": "x"}'),
+          200,
+          headers: {'content-type': 'application/json; charset=$sentinel'},
+          request: request,
+        ),
+        expected: CaptureResult.failed,
+      );
+    });
+
     test('a transport failure whose message quotes the reason', () async {
       await expectNoSentinelLeaks(
         (request) async => throw http.ClientException(sentinel, request.url),
@@ -215,6 +243,45 @@ void main() {
         (request) async => throw StateError(sentinel),
         expected: CaptureResult.failed,
       );
+    });
+  });
+
+  group('currentJoinedOrInvited', () {
+    test('asks the homeserver, and counts pending invites', () async {
+      late Uri asked;
+      final api = apiWith((request) async {
+        asked = request.url;
+        return http.Response(
+          jsonEncode({
+            'chunk': [
+              for (final (user, membership) in [
+                ('@reporter:x', 'join'),
+                ('@admin:x', 'join'),
+                ('@invited:x', 'invite'),
+                ('@gone:x', 'leave'),
+              ])
+                {
+                  'type': 'm.room.member',
+                  'event_id': '\$$user',
+                  'room_id': '!dm:x',
+                  'sender': user,
+                  'state_key': user,
+                  'origin_server_ts': 1,
+                  'content': {'membership': membership},
+                },
+            ],
+          }),
+          200,
+          request: request,
+        );
+      });
+
+      expect(await currentJoinedOrInvited(api, '!dm:x'), {
+        '@reporter:x',
+        '@admin:x',
+        '@invited:x',
+      });
+      expect(asked.path, '/_matrix/client/v3/rooms/!dm%3Ax/members');
     });
   });
 
