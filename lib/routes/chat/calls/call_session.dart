@@ -41,6 +41,13 @@ import 'package:pangea_call_capture/pangea_call_capture.dart'
 /// call-cut cue is a one-shot, not a loop, so it is not one of these.
 enum _RingCue { ringback, reconnecting }
 
+/// Where this device's halves sit in a call the learner moved between their
+/// devices (client#9173): filled once before the record finishes, read by the
+/// transcript and audio writers.
+class _HalfLinks {
+  ({String? continuedFrom, String? handedOverTo})? value;
+}
+
 /// One call, owned ABOVE the widget tree.
 ///
 /// A call is not a screen. The user minimizes it, reads other chats, comes
@@ -96,6 +103,14 @@ class CallSession extends ChangeNotifier {
 
   final String? _myUserId;
   final String? _peerUserId;
+  final _HalfLinks _halfLinks;
+  final CallAudioRecorder? _audioRecorder;
+
+  /// The links the audio half was handed when it was published, so a test can
+  /// see that the audio half carries the same links as the transcript half.
+  @visibleForTesting
+  ({String? continuedFrom, String? handedOverTo})? get audioHalfLinksForTest =>
+      _audioRecorder?.halfLinks;
 
   bool _muted = false;
   bool _camera = false;
@@ -148,7 +163,11 @@ class CallSession extends ChangeNotifier {
     this.platformLabels,
     this.tonesOverride,
     bool fullscreen = false,
+    _HalfLinks? halfLinks,
+    CallAudioRecorder? audioRecorder,
   }) : _record = record,
+       _audioRecorder = audioRecorder,
+       _halfLinks = halfLinks ?? _HalfLinks(),
        _myUserId = myUserId,
        _peerUserId = peerUserId,
        _fullscreen = fullscreen,
@@ -378,6 +397,11 @@ class CallSession extends ChangeNotifier {
           )
         : null;
 
+    // Where this device's halves sit in a call the learner moved between their
+    // devices (client#9173). Filled once by the session before the record
+    // finishes, and read by both writers below.
+    final halfLinks = _HalfLinks();
+
     // This device's transcript half, written through [send]. One function for
     // the real publish and for freezing the live half into the durable
     // recording record, so the two can never build different events.
@@ -447,6 +471,8 @@ class CallSession extends ChangeNotifier {
       // record is deliberately free of anything to do with media,
       // and this is the same seam that already knows the room.
       clockAnchor: media.clockAnchor,
+      continuedFrom: halfLinks.value?.continuedFrom,
+      handedOverTo: halfLinks.value?.handedOverTo,
     );
 
     final record =
@@ -501,11 +527,13 @@ class CallSession extends ChangeNotifier {
           // `wasCarrier`, not `carriedOn`, precisely so this line cannot be
           // misread as the ownership arbiter's unrelated `carriedOn`: the value
           // is `capture.wasCarryingBeforeLastStop`, the recorder's carrier fact.
-          publishCallAudio: ({required String? callKey}) =>
-              audioRecorder.finish(
-                wasCarrier: capture.wasCarryingBeforeLastStop,
-                callKey: callKey,
-              ),
+          publishCallAudio: ({required String? callKey}) {
+            audioRecorder.halfLinks = halfLinks.value;
+            return audioRecorder.finish(
+              wasCarrier: capture.wasCarryingBeforeLastStop,
+              callKey: callKey,
+            );
+          },
           // Gated on the same flag as the recorder's transcription above: when
           // ON, CallRecord prefers this device's whole-recording segments over
           // the live-chunk ones and publishes the audio half FIRST so they are
@@ -610,6 +638,8 @@ class CallSession extends ChangeNotifier {
       platformLabels: platformLabels,
       fullscreen: fullscreen,
       tonesOverride: tonesOverride,
+      halfLinks: halfLinks,
+      audioRecorder: audioRecorder,
     );
   }
 
@@ -1039,7 +1069,18 @@ class CallSession extends ChangeNotifier {
       // no transcript half, no analytics, no summary (doc:236). Keyed on the
       // FACT (carriedOn), not on which outcome fired, so an ordinary `ended`
       // reached while held is caught alongside `movedToOtherDevice`.
-      if (!call.carriedOn) {
+      //
+      // A PREDECESSOR is the exception (client#9173): the learner moved the
+      // call on from it, so the stretch it captured is nobody else's. It
+      // publishes that stretch -- half, audio, credit -- and, when the call
+      // continues on the other device, writes no card: the call is not over.
+      final predecessor = !call.carriedOn && call.isPredecessor;
+      if (predecessor && outcome == CallOutcome.movedToOtherDevice) {
+        Logs().i('This device handed the call on; publishing its stretch');
+        _finishRecording();
+      }
+      if (!call.carriedOn &&
+          !(predecessor && outcome != CallOutcome.movedToOtherDevice)) {
         _finish();
         // A MOVED leave still says WHY (the panel reads the outcome), so it
         // earns a brief moment on screen; a give-up goes at once.
@@ -1343,13 +1384,14 @@ class CallSession extends ChangeNotifier {
             // at the WRITE itself, not at any one caller, so every path here
             // is covered by the same check rather than by remembering to
             // guard each one.
-            if (!call.carriedOn) return;
+            if (!call.carriedOn && !call.isPredecessor) return;
             // The card is normally already in the timeline by now (written the
             // moment the call ended); this call credits the transcripts against
             // it, and writes the card itself only if that earlier attempt had
             // failed outright.
 
             final identity = _callIdentity;
+            _halfLinks.value ??= await _resolveHalfLinks(identity.key);
             // Awaited rather than returned so the merge kick below runs after
             // this device's own half is finished + posted. `_record.finish`
             // returns `Future<void>`, so this preserves the callback's prior
@@ -1378,7 +1420,11 @@ class CallSession extends ChangeNotifier {
               captureRefused: microphoneRefused,
               answered: call.hadPeer,
               declined: call.wasDeclined,
-              writeTimelineEvent: _writesTheCall,
+              // A call that continues on another device is not over, so the
+              // device it moved on from writes no card for it.
+              writeTimelineEvent:
+                  _writesTheCall &&
+                  call.outcome != CallOutcome.movedToOtherDevice,
               callerId: identity.caller,
               callKey: identity.key,
               anchorEventId: notificationEventId ?? call.callAnchorId,
@@ -1551,6 +1597,98 @@ class CallSession extends ChangeNotifier {
     }
   }
 
+  /// Every event relating to [key] under [relType], within the reader's
+  /// usual page and event ceilings. Throws when it could not look.
+  Future<List<MatrixEvent>> _fetchRelated(
+    RelationsFetcher relations,
+    String key,
+    String relType,
+  ) async {
+    final events = <MatrixEvent>[];
+    String? from;
+    for (var page = 0; page < kMaxRelationPages; page++) {
+      final batch = await relations(
+        roomId: room.id,
+        eventId: key,
+        relType: relType,
+        from: from,
+      );
+      events.addAll(batch.chunk);
+      from = batch.nextBatch;
+      if (from == null || events.length >= kMaxRelationEvents) break;
+    }
+    return events;
+  }
+
+  /// Seam for the half-link lookup in tests.
+  @visibleForTesting
+  Future<List<MatrixEvent>> Function(String key, String relType)?
+  relatedEventsOverride;
+
+  /// How long the finish waits to learn which device it continued from.
+  static const _linkLookupWithin = Duration(seconds: 5);
+
+  /// Where this device's halves sit in a call the learner moved (client#9173).
+  ///
+  /// HANDED OVER TO: set only on a predecessor that left because the call
+  /// moved on -- the sibling it moved to. A device that ended (nobody chose)
+  /// handed nothing over.
+  ///
+  /// CONTINUED FROM: set only when this account already has a half for this
+  /// call that says it was handed over to THIS device. Read from the room
+  /// rather than inferred, so a link is only ever written to a half that
+  /// exists: a race the other device rightly discarded leaves nothing to
+  /// point at, and a reader is never sent waiting for a half that will not
+  /// come.
+  Future<({String? continuedFrom, String? handedOverTo})> _resolveHalfLinks(
+    String? key,
+  ) async {
+    final handedOverTo = !call.carriedOn ? call.continuingOnDeviceId : null;
+    final me = _myUserId;
+    final device = room.client.deviceID;
+    String? continuedFrom;
+    if (key != null && me != null && device != null && call.sawSibling) {
+      try {
+        final fetch =
+            relatedEventsOverride ??
+            (String k, String rel) =>
+                _fetchRelated(relationsFetcherFor(room.client), k, rel);
+        final found = await Future.wait([
+          fetch(key, CallAudioContent.relType),
+          fetch(key, CallTranscriptContent.relType),
+        ]).timeout(_linkLookupWithin);
+        continuedFrom = handedOverFrom(
+          found.expand((events) => events),
+          me: me,
+          myDeviceId: device,
+        );
+      } catch (e, s) {
+        Logs().w('Could not look for the half this device continued', e, s);
+      }
+    }
+    return (continuedFrom: continuedFrom, handedOverTo: handedOverTo);
+  }
+
+  /// The device whose half says it handed this call over to [myDeviceId]:
+  /// one of [me]'s own halves, from a different device of the account.
+  @visibleForTesting
+  static String? handedOverFrom(
+    Iterable<MatrixEvent> events, {
+    required String me,
+    required String myDeviceId,
+  }) {
+    for (final event in events) {
+      if (event.senderId != me) continue;
+      final content = event.content;
+      final to = CallTranscriptContent.usableDeviceId(
+        content['handed_over_to'],
+      );
+      final from = CallTranscriptContent.usableDeviceId(content['device_id']);
+      if (to == myDeviceId && from != null && from != myDeviceId) return from;
+    }
+    return null;
+  }
+
   CallKeyClock _buildKeyClock() {
     final client = room.client;
     final relations = relationsFetcherFor(client);
@@ -1574,22 +1712,8 @@ class CallSession extends ChangeNotifier {
         }
         throw StateError('the call clock was not sent');
       },
-      fetchClockEvents: (key) async {
-        final events = <MatrixEvent>[];
-        String? from;
-        for (var page = 0; page < kMaxRelationPages; page++) {
-          final batch = await relations(
-            roomId: room.id,
-            eventId: key,
-            relType: CallClockContent.type,
-            from: from,
-          );
-          events.addAll(batch.chunk);
-          from = batch.nextBatch;
-          if (from == null || events.length >= kMaxRelationEvents) break;
-        }
-        return events;
-      },
+      fetchClockEvents: (key) =>
+          _fetchRelated(relations, key, CallClockContent.type),
       fetchEvent: room.getEventById,
       clockArrivals: client.onTimelineEvent.stream.where(
         (e) => e.room.id == room.id && e.type == CallClockContent.type,

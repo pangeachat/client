@@ -118,6 +118,42 @@ class CallOwnership {
   _PendingChoice _pending = _PendingChoice.none;
   bool _carriedOn = true;
 
+  /// Each sibling's SFU join as it read the FIRST time this device saw it, by
+  /// device id. Unlike [_siblingFirstSeen] it is never cleared on departure:
+  /// a sibling that leaves and rejoins takes a later join, and letting that
+  /// overwrite the first would turn an answer race into a handover
+  /// (client#9173).
+  final Map<String, int> _siblingFirstJoinSfu = {};
+
+  /// Whether the other person was already here when this device first saw a
+  /// sibling, latched at that first sighting.
+  bool? _talkingAtFirstSibling;
+
+  /// Every sibling's first-sighting SFU join this device latched.
+  Iterable<int> get siblingFirstJoinSfuMs => _siblingFirstJoinSfu.values;
+
+  /// Whether this device had a talk segment before it first saw a sibling.
+  bool get talkedBeforeFirstSibling => _talkingAtFirstSibling ?? false;
+
+  /// Whether this device has ever seen one of its siblings in this call.
+  bool get sawSibling => _talkingAtFirstSibling != null;
+
+  /// Latches what a predecessor decision needs from this reading:
+  /// [joinSfuById] is each present sibling's SFU join (null when the SFU has
+  /// not stated one yet), [talking] whether a talk segment has opened. Only
+  /// first values are kept.
+  void noteSiblings({
+    required Map<String, int?> joinSfuById,
+    required bool talking,
+  }) {
+    if (joinSfuById.isEmpty) return;
+    _talkingAtFirstSibling ??= talking;
+    for (final entry in joinSfuById.entries) {
+      final join = entry.value;
+      if (join != null) _siblingFirstJoinSfu.putIfAbsent(entry.key, () => join);
+    }
+  }
+
   /// Whether this device carried on. Read at the finish seam.
   bool get carriedOn => _carriedOn;
 
@@ -139,6 +175,8 @@ class CallOwnership {
     _claimedAt = null;
     _pending = _PendingChoice.none;
     _carriedOn = true;
+    _siblingFirstJoinSfu.clear();
+    _talkingAtFirstSibling = null;
   }
 
   /// Re-derives the whole decision from the current reading.

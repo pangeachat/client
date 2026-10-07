@@ -12,6 +12,7 @@ import 'package:fluffychat/routes/chat/calls/call_key_clock.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_ownership.dart';
+import 'package:fluffychat/routes/chat/calls/call_predecessor.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/capture_election.dart';
@@ -159,7 +160,22 @@ class ActiveCall extends ChangeNotifier {
 
   /// The two-devices-one-call arbiter (call-device-ownership.instructions.md),
   /// driven on every roster recompute and every presence tick.
-  final CallOwnership _ownership = CallOwnership();
+  final CallOwnership _ownership;
+
+  /// A monotonic clock for the ring bound (client#9173), and where it read
+  /// just before this device began connecting to the SFU. Every reading below
+  /// is relative to that, so adding it to this device's SFU join can only
+  /// overstate the instant it describes.
+  final Stopwatch _mono = Stopwatch()..start();
+  int? _connectStartMono;
+  int? _ringReturnedMono;
+  int? _peerRingArrivedMono;
+  final Map<String, int> _ringArrivedMono = {};
+
+  /// The sibling this device's call continues on, latched when it leaves for
+  /// one: the sibling whose claim it observed, or the only sibling present
+  /// when the learner left here. Null when it ended rather than moved.
+  String? _continuingOnDeviceId;
 
   /// Whether the arbiter is holding this device's microphone and camera closed.
   bool _mediaHeld = false;
@@ -251,6 +267,9 @@ class ActiveCall extends ChangeNotifier {
       alreadyJoined: false,
     );
     if (!ring.shouldRing(DateTime.now())) return;
+    // Noted on arrival, before glare is decided: if it is decided as glare,
+    // this is the bound on when their ring went out (client#9173).
+    _ringArrivedMono[event.eventId] ??= _mono.elapsedMilliseconds;
     // And only if it was sent at about the moment this call began. Anything
     // else is a different call of theirs — one they gave up on before we rang
     // back, or a new one placed while we were already in this — and counting
@@ -304,6 +323,12 @@ class ActiveCall extends ChangeNotifier {
 
   void _settleGlare(IncomingCallNotification ring) {
     _peerAlsoPlaced = true;
+    // The ring that made this glare reached us no later than this; a ring we
+    // never timed is bounded by now, which is later still.
+    final arrived =
+        _ringArrivedMono[ring.event.eventId] ?? _mono.elapsedMilliseconds;
+    final held = _peerRingArrivedMono;
+    _peerRingArrivedMono = held == null || arrived > held ? arrived : held;
     _peerRingSenderId = ring.event.senderId;
     // Their ring names THEIR membership -- on glare, whichever side loses the
     // tie-break stamps the winner's membership as the call's identity, and
@@ -450,7 +475,13 @@ class ActiveCall extends ChangeNotifier {
     required this.media,
     required this.capture,
     CallForegroundControl? foreground,
-  }) : _foreground = foreground {
+
+    /// The two-devices arbiter. Tests of the recorder election hand in one
+    /// fixed at a decision the real arbiter reaches, so the election can be
+    /// pinned in that state without replaying the whole ownership exchange.
+    @visibleForTesting CallOwnership? ownership,
+  }) : _foreground = foreground,
+       _ownership = ownership ?? CallOwnership() {
     // Wired here rather than at connect, so a tap that dies during the very
     // first attach is heard too. The recorder is built per call, so nothing
     // else is ever listening on this.
@@ -904,7 +935,15 @@ class ActiveCall extends ChangeNotifier {
     // Only when there is somebody to stand aside FOR. Alone in the call it
     // still records: there is nobody to produce a duplicate with, and refusing
     // would cost the call's analytics to prevent nothing.
-    final elected = (me != null || siblings.isEmpty) && election.shouldRecord;
+    // A HELD device is FROZEN (client#9173): the election neither starts nor
+    // stops its recorder. Whatever it was doing when the hold began it keeps
+    // doing -- capturing digital silence while held -- so the stretch before
+    // the hold stays on the device that captured it, and a device that joined
+    // into a hold never starts one. Unheld devices elect exactly as before.
+    final held = _mediaHeld;
+    final elected = held
+        ? capture.isRecording
+        : (me != null || siblings.isEmpty) && election.shouldRecord;
 
     // Recorded SYNCHRONOUSLY, here, at the moment the election decides — never
     // handed to the stop as an argument. Teardown stops the recorder directly,
@@ -912,7 +951,7 @@ class ActiveCall extends ChangeNotifier {
     // while this election's reconcile is still queued; an argument would have
     // arrived after the audio had already gone. And being level-triggered it
     // cannot inherit an intent from an election that was later reversed.
-    final successor = elected ? null : election.recordingSuccessor;
+    final successor = elected || held ? null : election.recordingSuccessor;
     // FACTS, not a conclusion. Every argument below is something read off the
     // roster, and the rule that turns them into a verdict lives in one place —
     // so a term cannot be got wrong here without being wrong for every caller.
@@ -1028,6 +1067,9 @@ class ActiveCall extends ChangeNotifier {
     // deferring to it; what it must not do is start a recorder with no track.
     final recording = _wanted && !_ending ? track : null;
     final wanted = recording != null;
+    // Read live: a hold that began after the election ran still never STARTS
+    // a recorder. Keeping one already running is the election's own answer.
+    if (wanted && _mediaHeld && !capture.isRecording) return;
     // The truth, not the cache. [_capturing] records what this side last DID,
     // and a recorder whose tap died has stopped without this side doing
     // anything — so "already recording" can be a statement about a recording
@@ -1626,6 +1668,36 @@ class ActiveCall extends ChangeNotifier {
   /// half or analytics.
   bool get carriedOn => _ownership.carriedOn;
 
+  /// Whether this device is leaving as the call's PREDECESSOR: the learner
+  /// moved the call on from it, rather than it losing an answer race. A
+  /// predecessor publishes the stretch it captured even though it did not
+  /// carry on. See [CallPredecessor].
+  bool get isPredecessor => CallPredecessor.isPredecessor(
+    talkedBeforeFirstSibling: _ownership.talkedBeforeFirstSibling,
+    siblingFirstJoinSfuMs: _ownership.siblingFirstJoinSfuMs,
+    ringUpperSfuMs: _ringUpperSfuMs,
+  );
+
+  int? get _ringUpperSfuMs {
+    final start = _connectStartMono;
+    int? since(int? mark) =>
+        mark == null || start == null ? null : mark - start;
+    return CallPredecessor.ringUpperSfuMs(
+      anchorSfuMs: media.clockAnchor?.sfuMs,
+      placed: _placed,
+      peerAlsoPlaced: _peerAlsoPlaced,
+      rejoined: _rejoining,
+      ringReturnedAfterConnectStartMs: since(_ringReturnedMono),
+      peerRingArrivedAfterConnectStartMs: since(_peerRingArrivedMono),
+    );
+  }
+
+  /// The sibling this call moved on to, when it moved; else null.
+  String? get continuingOnDeviceId => _continuingOnDeviceId;
+
+  /// Whether this device has ever shared this call with a sibling.
+  bool get sawSibling => _ownership.sawSibling;
+
   /// What the arbiter is asking the learner, or null.
   OwnershipPrompt? get ownershipPrompt => _ownershipPrompt;
 
@@ -1669,12 +1741,30 @@ class ActiveCall extends ChangeNotifier {
           break;
       }
     }
+    _ownership.noteSiblings(
+      joinSfuById: {
+        for (final id in present)
+          id: CallClockContent.sfuJoinMs(switch (roster.siblingIdentity(id)) {
+            final identity? => media.sfuJoinStampsFor(identity),
+            null => null,
+          }, roster.siblingJoinTime(id)),
+      },
+      talking: _talkStartedAt != null,
+    );
     final decision = _ownership.update(
       presentSiblingIds: present,
       silentSiblingIds: silent,
       siblingClaimObserved: claim,
       now: DateTime.now(),
     );
+    if (decision.endSelf && decision.endReason == LeaveReason.continuing) {
+      final claimant = present.where(
+        (id) => roster.siblingChosen(id) == ChosenState.chosen,
+      );
+      _continuingOnDeviceId ??= claimant.length == 1
+          ? claimant.single
+          : (claimant.isEmpty && present.length == 1 ? present.single : null);
+    }
     return _applyOwnership(decision);
   }
 
@@ -1918,6 +2008,7 @@ class ActiveCall extends ChangeNotifier {
           membershipEventId: anchor,
           video: _isVideoCall,
         );
+        _ringReturnedMono ??= _mono.elapsedMilliseconds;
         _catchUpOnDeclines();
       } catch (e, s) {
         Logs().w('Could not ring after the membership arrived', e, s);
@@ -2231,6 +2322,7 @@ class ActiveCall extends ChangeNotifier {
       // The service's retry is NOT taken here. Connecting publishes the camera
       // after the microphone, and the retry belongs at the grant rather than at
       // the end of everything that follows it -- see [_onMicrophoneLive].
+      _connectStartMono = _mono.elapsedMilliseconds;
       await _step(() => media.connect(grant, video: video));
       // Not when the camera never opened: the ongoing-call notification
       // would advertise a video call that is running on audio.
@@ -2302,6 +2394,12 @@ class ActiveCall extends ChangeNotifier {
       // while the first handover settles, and reading afterwards would have this
       // call believe nobody ever answered — no teardown when they left, and the
       // conversation recorded as unanswered.
+      // Ownership FIRST (client#9173): a device joining a call one of its
+      // siblings is already in is held from its very first roster reading, so
+      // the election below finds it frozen and it never starts recording until
+      // the learner resumes it here. An end it decides is a hangup already in
+      // flight; the steps below stand down on it.
+      _driveOwnership();
       if (roster.hasPeer) _notePeerPresent();
 
       // Elect before announcing, so recording begins with the first word rather
@@ -2404,6 +2502,7 @@ class ActiveCall extends ChangeNotifier {
           membershipEventId: membershipId,
           video: video,
         );
+        _ringReturnedMono ??= _mono.elapsedMilliseconds;
         // A decline can beat our own send home; replay one if it did.
         _catchUpOnDeclines();
         // A hangup landing inside the send above moves the stage to ended

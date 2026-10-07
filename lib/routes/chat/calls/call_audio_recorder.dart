@@ -374,6 +374,12 @@ class _AudioRecordingCanceled implements Exception {
 class CallAudioRecorder implements CallAudioRecordingSink {
   final String senderId;
   final String? deviceId;
+
+  /// Where this half sits in a call the learner moved between their devices
+  /// (client#9173). Set by the session once, BEFORE [finish] -- the content of
+  /// a half is fixed for the whole publish, so a later change would make a
+  /// resend a different event.
+  ({String? continuedFrom, String? handedOverTo})? halfLinks;
   final CallAudioSender send;
   final CallAudioUploader upload;
 
@@ -1247,6 +1253,8 @@ class CallAudioRecorder implements CallAudioRecordingSink {
       CallAudioContent(
         callKey: p.callKey,
         deviceId: deviceId,
+        continuedFrom: halfLinks?.continuedFrom,
+        handedOverTo: halfLinks?.handedOverTo,
         url: url,
         mimetype: 'audio/wav',
         size: p.wav.length,
@@ -1476,6 +1484,8 @@ class CallAudioRecorder implements CallAudioRecordingSink {
               // True iff the size/duration ceiling actually cut this
               // generation's tail.
               truncated: gen.cappedLogged,
+              continuedFrom: halfLinks?.continuedFrom,
+              handedOverTo: halfLinks?.handedOverTo,
             ),
             deadline: budget.cap(kCallHalfNetworkDeadline),
             step: 'send',

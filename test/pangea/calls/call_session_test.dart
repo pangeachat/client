@@ -9,6 +9,7 @@ import 'package:matrix/matrix.dart' as matrix;
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_key_clock.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
@@ -2187,6 +2188,257 @@ void main() {
       },
     );
   });
+  group('a call the learner moved between their devices (#9173)', () {
+    // This device's SFU join, ten minutes before every sibling's whole-second
+    // join the fake roster reports (2026-08-29 12:00 UTC): far past the ring.
+    final myJoin = DateTime.utc(2026, 8, 29, 11, 50).millisecondsSinceEpoch;
+
+    test('the device it moved on from publishes its stretch, linked to the '
+        'device it went to, and writes no card', () async {
+      final client = await _bareClient();
+      final room = _RecordingRoom(id: '!r:server', client: client);
+      final media = _FakeMedia();
+      final session = CallSession.start(
+        room: room,
+        video: false,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        notificationEventId: r'$ring',
+        callerMembershipEventId: r'$caller-membership',
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      media.anchorClocksTo((secondsMs: myJoin, ms: 0));
+      await pumpEventQueue();
+      final roster = media.fakeRoster!;
+      // A conversation first...
+      roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV'};
+      roster.recompute();
+      await pumpEventQueue();
+      // ...then the learner picks up their other device and chooses it.
+      final sib = '${client.userID}:SIBLINGDEV';
+      roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV', sib};
+      roster.attributes = {
+        sib: {CallRoster.chosenAttribute: 'yes'},
+      };
+      roster.recompute();
+      await pumpEventQueue();
+      await pumpEventQueue();
+
+      expect(session.call.outcome, CallOutcome.movedToOtherDevice);
+      expect(session.call.isPredecessor, isTrue);
+      final halves = [
+        for (var i = 0; i < room.sent.length; i++)
+          if (room.sentTypes[i] == CallTranscriptContent.relType) room.sent[i],
+      ];
+      expect(halves, hasLength(1), reason: 'its stretch is nobody else\'s');
+      expect(halves.single['handed_over_to'], 'SIBLINGDEV');
+      expect(halves.single.containsKey('continued_from'), isFalse);
+      expect(
+        session.audioHalfLinksForTest,
+        (continuedFrom: null, handedOverTo: 'SIBLINGDEV'),
+        reason: 'the audio half carries the same links',
+      );
+      expect(room.cards, isEmpty, reason: 'the call is not over');
+      // Credit is written by the same finish as the half; with no words
+      // transcribed here there are no uses to credit, so the half is what
+      // shows the finish ran.
+      session.dispose();
+      await pumpEventQueue();
+    });
+
+    test('the device that PLACED the call writes no card for it when it '
+        'moves on: the call is not over', () async {
+      final client = await _bareClient();
+      final room = _RecordingRoom(id: '!r:server', client: client);
+      final media = _FakeMedia();
+      final session = CallSession.start(
+        room: room,
+        video: false,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+        tonesOverride: RingPlayer(sound: _FakeSound()),
+      );
+      media.anchorClocksTo((secondsMs: myJoin, ms: 0));
+      await pumpEventQueue();
+      expect(session.placedCall, isTrue);
+      final roster = media.fakeRoster!;
+      roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV'};
+      roster.recompute();
+      await pumpEventQueue();
+      final sib = '${client.userID}:SIBLINGDEV';
+      roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV', sib};
+      roster.attributes = {
+        sib: {CallRoster.chosenAttribute: 'yes'},
+      };
+      roster.recompute();
+      await pumpEventQueue();
+      await pumpEventQueue();
+
+      expect(session.call.outcome, CallOutcome.movedToOtherDevice);
+      expect(session.call.isPredecessor, isTrue);
+      expect([
+        for (var i = 0; i < room.sent.length; i++)
+          if (room.sentTypes[i] == CallTranscriptContent.relType) room.sent[i],
+      ], hasLength(1));
+      expect(room.cards, isEmpty, reason: 'the call carries on elsewhere');
+      session.dispose();
+      await pumpEventQueue();
+    });
+
+    for (final where in [
+      CallAudioContent.relType,
+      CallTranscriptContent.relType,
+    ]) {
+      test('the device it moved on to links its half to the one it continued, '
+          'once that half is in the room ($where)', () async {
+        final client = await _bareClient();
+        final room = _RecordingRoom(id: '!r:server', client: client);
+        final media = _FakeMedia();
+        final session = CallSession.start(
+          room: room,
+          video: false,
+          callService: _FakeCalls(client),
+          transcribe: (request) async =>
+              SpeechToTextResponseModel(results: const []),
+          userL1: 'en',
+          userL2: 'es',
+          analytics: (eventId, uses, language) async {},
+          onReleased: (_) {},
+          notificationEventId: r'$ring',
+          callerMembershipEventId: r'$caller-membership',
+          mediaOverride: media,
+          captureOverride: CallCaptureService(sink: _NullSink()),
+        );
+        final asked = <String>[];
+        session.relatedEventsOverride = (key, relType) async {
+          asked.add(relType);
+          // Only the relation under test holds the sibling's half.
+          if (relType != where) return const [];
+          return [
+            // Another account's half handed to us is not ours to continue.
+            matrix.MatrixEvent(
+              type: relType,
+              content: {'device_id': 'FRIENDDEV', 'handed_over_to': 'GHTYAJCE'},
+              eventId: r'$theirs',
+              senderId: '@friend:fakeServer.notExisting',
+              originServerTs: DateTime.now(),
+            ),
+            matrix.MatrixEvent(
+              type: relType,
+              content: {
+                'device_id': 'SIBLINGDEV',
+                'handed_over_to': 'GHTYAJCE',
+              },
+              eventId: r'$sibling-half',
+              senderId: client.userID!,
+              originServerTs: DateTime.now(),
+            ),
+          ];
+        };
+        await pumpEventQueue();
+        final roster = media.fakeRoster!;
+        final sib = '${client.userID}:SIBLINGDEV';
+        roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV', sib};
+        roster.attributes = {
+          sib: {CallRoster.chosenAttribute: 'no'},
+        };
+        roster.recompute();
+        await pumpEventQueue();
+        // The sibling leaves: this device is the one the call carries on.
+        roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV'};
+        roster.recompute();
+        await pumpEventQueue();
+        expect(session.call.carriedOn, isTrue);
+
+        session.endCall();
+        await pumpEventQueue();
+        await pumpEventQueue();
+        final halves = [
+          for (var i = 0; i < room.sent.length; i++)
+            if (room.sentTypes[i] == CallTranscriptContent.relType)
+              room.sent[i],
+        ];
+        expect(halves, hasLength(1));
+        expect(halves.single['continued_from'], 'SIBLINGDEV');
+        expect(halves.single.containsKey('handed_over_to'), isFalse);
+        expect(
+          session.audioHalfLinksForTest,
+          (continuedFrom: 'SIBLINGDEV', handedOverTo: null),
+          reason: 'the audio half carries the same links',
+        );
+        expect(asked, isNotEmpty);
+        session.dispose();
+        await pumpEventQueue();
+      });
+    }
+
+    test(
+      'a device that never shared the call with a sibling does not look',
+      () async {
+        final (session, _, _) = await build();
+        var looked = false;
+        session.relatedEventsOverride = (key, relType) async {
+          looked = true;
+          return const [];
+        };
+        session.endCall();
+        await pumpEventQueue();
+        await pumpEventQueue();
+        expect(looked, isFalse);
+      },
+    );
+
+    test('which own half it continued from is read strictly', () {
+      matrix.MatrixEvent half(String sender, Map<String, Object?> content) =>
+          matrix.MatrixEvent(
+            type: CallTranscriptContent.relType,
+            content: content,
+            eventId: r'$e',
+            senderId: sender,
+            originServerTs: DateTime.now(),
+          );
+      String? from(List<matrix.MatrixEvent> events) =>
+          CallSession.handedOverFrom(events, me: '@me:s', myDeviceId: 'MINE');
+      expect(
+        from([
+          half('@me:s', {'device_id': 'PHONE', 'handed_over_to': 'MINE'}),
+        ]),
+        'PHONE',
+      );
+      expect(
+        from([
+          half('@me:s', {'device_id': 'PHONE', 'handed_over_to': 'OTHER'}),
+        ]),
+        isNull,
+      );
+      expect(
+        from([
+          half('@you:s', {'device_id': 'PHONE', 'handed_over_to': 'MINE'}),
+        ]),
+        isNull,
+      );
+      expect(
+        from([
+          half('@me:s', {'device_id': 'MINE', 'handed_over_to': 'MINE'}),
+        ]),
+        isNull,
+      );
+    });
+  });
+
   group(
     'two devices, one call -- a leave that did not carry on writes nothing',
     () {
