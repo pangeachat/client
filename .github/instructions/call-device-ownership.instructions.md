@@ -262,10 +262,14 @@ The chosen device's own recording carries a gap where it was muted. That is alre
 
 A device that neither rang nor was rung has no ring to learn the call's key from. Every device in a call records the key in its account's private data for the room, and records it again after a rejoin. A joining device trusts that record only while the device that wrote it is in the call beside it and its membership is still current. A rejoining device trusts its own record written with the membership it returns to. Otherwise it takes the latest ring whose call is still being held. With neither, it has no key, as before.
 
+## When the learner moves a call rather than answering twice
+
+A device that leaves because the learner moved the call to another of their devices publishes what it captured before the move: its half, its recording and its credit. That stretch is nobody else's. It writes no card, because the call is not over. A move is told apart from two devices answering the same ring on the SFU's clock. The device had to be talking to the other person before it first saw its sibling, and the sibling had to join later than the ring could still have been answered: the ring's longest lifetime plus margins for clock skew, a slow answer and a coarse join stamp. Inside that window it is a race, and the device that did not carry on still writes nothing. A device whose call moved names the device it moved to on its half, and the device that carries on names the device it continued from, but only once that half is in the room. A link never points at a half that does not exist.
+
 ## What this changes elsewhere
 
 1. **The parent doc's "one device per account records, elected among that account's own devices."** Refined: one device per account is unmuted in the call, and that device records. The election is not retired — it still runs, with one candidate — and removing it is not this change's job.
-2. **The election's discard of captured audio stops being reachable in the steady state.** Nothing depends on it once no two devices of an account are capturing at once. It stays as defence.
+2. While a device is held it takes no part in choosing who records. It neither starts nor stops recording because of the election. Whatever it was doing when the hold began it keeps doing, capturing silence while held, so the stretch before the hold stays on the device that captured it. A device that joins beside a sibling never starts. Only a device that is not held runs the election, unchanged.
 3. **Capability stops deciding anything.** A learner whose chosen device has a broken microphone gets an unrecorded call where the old election would have handed the recording to the other phone. Their recourse is to choose the other device, which is a tap. That is a real narrowing and it is the price of putting the decision with the person.
 4. **The parent doc's "a half is one event or it is missing, never a series of parts"** becomes one event per DEVICE, still never parts from one device. A device id is not a sequence and a device writes once.
 

@@ -220,6 +220,8 @@ the audio is fetched on demand rather than pushed through every sync, and the
 recording inherits the retention already disclosed for voice messages. The merged
 full-call recording is one more such upload, referenced the same way.
 
+A call the learner moved between their devices leaves one speaker a recording on each device, each naming the device it came from and the one it went to. The full-call recording is made only from the whole call: both people, every device each used, linked in order. One of the devices the call ended on mixes it, and it cuts each moved-from recording where the next device began. A full-call recording that covers less than the whole call, cannot vouch for every recording it names, or does not say it is complete is never shown, never stops another device from making the true one, and never anchors a transcript. Two recordings from one person that are not linked mean two devices both carried on; that call keeps its separate recordings and gets no full-call recording.
+
 The recording-based pass is on by default. `CALL_RECORDING_TRANSCRIPT=false` is
 its kill switch: with it set, each half is the live one transcribed during the
 call (see [Failure is not all-or-nothing]) instead of the recording pass this
