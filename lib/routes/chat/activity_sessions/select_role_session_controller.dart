@@ -202,32 +202,40 @@ class SelectRoleSessionController extends State<SelectRoleSession>
     } else if (widget.roomId != null) {
       await showFutureLoadingDialog(context: context, future: _joinActivity);
     } else {
-      // A `?launch` link must not start a session the course has locked.
-      if (await Matrix.of(context).client.isActivityLocked(
-        activity.activityId,
-        courseId: widget.course?.id,
-      )) {
+      final client = Matrix.of(context).client;
+      var locked = false;
+      final resp = await showFutureLoadingDialog(
+        context: context,
+        future: () async {
+          // A `?launch` link must not start a session the course has locked.
+          locked = await client.isActivityLocked(
+            activity.activityId,
+            courseId: widget.course?.id,
+          );
+          if (locked) return null;
+          return client.launchActivitySession(
+            activity,
+            activity.roles[selectedRoleId],
+            primarySpace: widget.course,
+          );
+        },
+      );
+      if (resp.isError || resp.result == null) {
+        // No session was made: drop any bot choice so it can't carry into a
+        // later launch, and let Confirm work again.
+        PlayWithBotIntent.consume(activity.activityId);
         _confirmed = false;
-        if (mounted) {
+        if (locked && mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(L10n.of(context).lockedMissionRequirement)),
           );
+          return;
         }
-        return;
       }
-      if (!mounted) return;
-      final resp = await showFutureLoadingDialog(
-        context: context,
-        future: () => Matrix.of(context).client.launchActivitySession(
-          activity,
-          activity.roles[selectedRoleId],
-          primarySpace: widget.course,
-        ),
-      );
 
-      if (!resp.isError) {
+      if (!resp.isError && resp.result != null) {
         roomId = resp.result;
-        final room = Matrix.of(context).client.getRoomById(roomId!);
+        final room = client.getRoomById(roomId!);
         if (PlayWithBotIntent.consume(activity.activityId) &&
             room != null &&
             mounted) {

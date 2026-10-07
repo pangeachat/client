@@ -81,17 +81,22 @@ class NotStartedSessionController extends State<NotStartedSession>
   final _goalsHandler = GoalsSubscriptionHandler();
 
   /// The courses whose progression locks starting a new session; joining an
-  /// open one never is. Empty while resolving, which reads as unlocked.
-  List<Room> _lockingCourses = const [];
-  List<Room> get lockingCourses => _lockingCourses;
-  bool get isLocked => _lockingCourses.isNotEmpty;
+  /// open one never is. Null until the first check lands — the start buttons
+  /// wait for it rather than flashing and vanishing.
+  List<Room>? _lockingCourses;
+  List<Room> get lockingCourses => _lockingCourses ?? const [];
+  bool get isLocked => lockingCourses.isNotEmpty;
+  bool get lockResolved => _lockingCourses != null;
+
+  /// Bumped per check, so an older check that finishes late is dropped.
+  int _lockCheck = 0;
 
   /// The join list was opened for the learner because the activity had open
-  /// sessions, rather than by a tap (#9333 prototype).
+  /// sessions, rather than by a tap.
   bool _landedOnJoinList = false;
 
-  /// Stars are room state on the learner's sessions, so a sync can unlock
-  /// this activity while its page is open.
+  /// Stars and teacher flags are room state, so a sync can change the lock
+  /// while the page is open; only syncs carrying them re-check.
   StreamSubscription? _lockRefreshSub;
 
   @override
@@ -99,8 +104,8 @@ class NotStartedSessionController extends State<NotStartedSession>
     super.initState();
     _resolveLock();
     _lockRefreshSub = Matrix.of(context).client.onSync.stream
-        .where((s) => s.hasRoomUpdate)
-        .rateLimit(const Duration(seconds: 5))
+        .where(ActivityLockClientExtension.syncAffectsLocks)
+        .rateLimit(const Duration(seconds: 2))
         .listen((_) => _resolveLock());
     _syncJoinListLanding();
   }
@@ -123,9 +128,7 @@ class NotStartedSessionController extends State<NotStartedSession>
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) goToJoinPage();
       });
-    } else if (!hasOpen &&
-        _landedOnJoinList &&
-        _subPage == NotStartedSubPage.join) {
+    } else if (!hasOpen && _subPage == NotStartedSubPage.join) {
       _landedOnJoinList = false;
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) goToMainPage();
@@ -134,11 +137,17 @@ class NotStartedSessionController extends State<NotStartedSession>
   }
 
   Future<void> _resolveLock() async {
+    final check = ++_lockCheck;
     final courses = await Matrix.of(context).client.coursesLockingActivity(
       widget.activityId,
       courseId: widget.course?.id,
     );
-    if (mounted) setState(() => _lockingCourses = courses);
+    if (!mounted || check != _lockCheck) return;
+    final previous = _lockingCourses;
+    final unchanged =
+        previous != null &&
+        previous.map((r) => r.id).join() == courses.map((r) => r.id).join();
+    if (!unchanged) setState(() => _lockingCourses = courses);
   }
 
   /// Open [course] on its course plan, where the learner's current Mission
@@ -300,8 +309,8 @@ class NotStartedSessionController extends State<NotStartedSession>
     NavigationUtil.goToSpaceRoute(joinedActivityRoomId!, [], context);
   }
 
-  /// A two-seat activity offers "Play with a bot" beside "Play with a human";
-  /// larger ones need people, so they offer a single Start (#9333 prototype).
+  /// A two-seat activity offers "Play with others" beside "Play with Pangea
+  /// Bot"; larger ones need people, so they offer a single Start.
   bool get offersBot => (widget.activity?.req.numberOfParticipants ?? 0) == 2;
 
   /// Pick a role, then the session launches with the bot already added.
@@ -372,7 +381,7 @@ class NotStartedSessionController extends State<NotStartedSession>
   }
 
   /// Show a session from the join list inside this activity's panel, so its
-  /// close is a back arrow to the list (#9333 prototype).
+  /// close is a back arrow to the list.
   void _viewSession(String roomId) => context.go(
     WorkspaceNav.openActivitySession(
       GoRouterState.of(context).uri,
@@ -383,7 +392,7 @@ class NotStartedSessionController extends State<NotStartedSession>
 
   /// Join [roomId] from the join list. With exactly one open role, it is
   /// claimed straight away and the learner lands in the session; otherwise
-  /// the session opens for viewing, to pick a role (#9333 prototype).
+  /// the session opens for viewing, to pick a role.
   Future<void> joinActivityByRoomId(String roomId) async {
     final client = Matrix.of(context).client;
     final resp = await showFutureLoadingDialog(

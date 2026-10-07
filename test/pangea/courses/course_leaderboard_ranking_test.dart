@@ -7,9 +7,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/course_plans/courses/course_teacher_room_extension.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
+import 'package:fluffychat/pangea/common/widgets/role_badge.dart';
 import 'package:fluffychat/pangea/spaces/course_leaderboard.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import '../get_test_client.dart';
 
 /// The one ranking behind the course page's Leaderboard section and its full
@@ -196,5 +199,89 @@ void main() {
     expect(board.ranked.first.user.id, '@bob:fakeServer.notExisting');
     expect(board.ranked.first.language, 'de');
     expect(board.ranked.last.language, 'fr');
+  });
+
+  group("the \"I'm teaching this course\" flag (#9333)", () {
+    void flagTeaching(String localpart, {bool teaching = true}) =>
+        room.setState(
+          Event(
+            type: PangeaEventTypes.courseTeacher,
+            content: {'teaching': teaching},
+            stateKey: '@$localpart:fakeServer.notExisting',
+            senderId: '@$localpart:fakeServer.notExisting',
+            eventId: '\$teaching-$localpart',
+            originServerTs: DateTime.now(),
+            room: room,
+          ),
+        );
+
+    test('a teaching admin stays in the admin line but is not ranked', () {
+      final users = [
+        member('teacher', powerLevel: SpaceConstants.powerLevelOfAdmin),
+        member('student'),
+      ];
+      flagTeaching('teacher');
+      final board = CourseLeaderboard.rank(
+        users,
+        langCode: 'es',
+        profileOf: (_) => null,
+      );
+
+      expect(board.admins.map((u) => u.id), [
+        '@teacher:fakeServer.notExisting',
+      ]);
+      expect(board.ranked.map((e) => e.user.id), [
+        '@student:fakeServer.notExisting',
+      ]);
+    });
+
+    test('an admin whose flag is off is still ranked', () {
+      final users = [
+        member('teacher', powerLevel: SpaceConstants.powerLevelOfAdmin),
+      ];
+      flagTeaching('teacher', teaching: false);
+      final board = CourseLeaderboard.rank(
+        users,
+        langCode: 'es',
+        profileOf: (_) => null,
+      );
+
+      expect(board.ranked.map((e) => e.user.id), [
+        '@teacher:fakeServer.notExisting',
+      ]);
+    });
+
+    test('a non-admin with a stale flag is not teaching, and is ranked', () {
+      final users = [member('demoted')];
+      flagTeaching('demoted');
+
+      expect(room.isTeaching('@demoted:fakeServer.notExisting'), isFalse);
+      final board = CourseLeaderboard.rank(
+        users,
+        langCode: 'es',
+        profileOf: (_) => null,
+      );
+      expect(board.ranked.map((e) => e.user.id), [
+        '@demoted:fakeServer.notExisting',
+      ]);
+    });
+
+    test('the role badge reads teacher for a teaching admin only', () {
+      final teacher = member(
+        'teacher',
+        powerLevel: SpaceConstants.powerLevelOfAdmin,
+      );
+      final admin = member(
+        'admin',
+        powerLevel: SpaceConstants.powerLevelOfAdmin,
+      );
+      final demoted = member('demoted');
+      flagTeaching('teacher');
+      flagTeaching('demoted');
+
+      expect(RoleBadgeType.forMember(teacher), RoleBadgeType.teacher);
+      expect(RoleBadgeType.forMember(admin), RoleBadgeType.admin);
+      expect(RoleBadgeType.forMember(demoted), isNull);
+    });
   });
 }

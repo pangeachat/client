@@ -1,9 +1,9 @@
-// The shared client-side next-Mission resolver. Nothing is locked, so the
-// question is not "is this allowed?" but "where should the learner go next?" —
-// resolved ONCE from data the client already holds and shared by every surface
-// that preferences by progression (the world map's Priority matrix, the
-// activity start page). Pure logic — no Matrix or network — so it stays
-// unit-testable. Design: quests.instructions.md, world-map.instructions.md.
+// The shared client-side next-Mission resolver: where the learner should go
+// next, and which Missions are still locked — resolved ONCE from data the
+// client already holds and shared by every surface that ranks or locks by
+// progression (the world map's Priority matrix, the course plan, the activity
+// start page). Pure logic — no Matrix or network — so it stays unit-testable.
+// Design: quests.instructions.md, world-map.instructions.md.
 
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/mission_lock.dart';

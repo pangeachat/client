@@ -47,6 +47,9 @@ class ObjectiveSection extends StatelessWidget {
   /// cumulative stars toward unlocking it, and its cards open nothing.
   final MissionLock? lock;
 
+  /// Per-activity lock, passed through to [ActivityCarousel.isLocked].
+  final bool Function(String activityId)? isActivityLocked;
+
   /// The activity a course ping pointed at, when it lives in this section —
   /// its card gets the bell badge (#8319). Null everywhere else.
   final String? pingedActivityId;
@@ -78,6 +81,7 @@ class ObjectiveSection extends StatelessWidget {
     required this.availableParticipants,
     required this.progress,
     this.lock,
+    this.isActivityLocked,
     this.pingedActivityId,
     this.collapsed = false,
     this.onToggleCollapsed,
@@ -286,7 +290,7 @@ class ObjectiveSection extends StatelessWidget {
               cardWidth: cardWidth,
               cardHeight: cardHeight,
               interactive: interactive,
-              locked: lock != null,
+              isLocked: isActivityLocked,
             ),
         ],
       ),

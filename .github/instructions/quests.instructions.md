@@ -1,15 +1,15 @@
 ---
 applyTo: "lib/features/quests/**,lib/features/course_plans/**,lib/routes/courses/course_objectives/**"
-description: "Client-side next-Mission resolver — the one shared answer to 'which Mission should this learner work on next, per quest?', its inputs (joined-course Mission sequences + per-Mission star rollup), and the ranking surfaces that read it."
+description: "Client-side next-Mission resolver — the one shared answer to 'which Mission should this learner work on next, and which are still locked?', its inputs (joined-course Mission sequences + per-Mission star rollup), the teacher switch, and the surfaces that read it."
 ---
 
 # Quests & Learning-Objective Progression (Client)
 
-A **Quest** is the learner's ordered journey through **Learning Objectives** (learner-facing label: **Missions**). The cross-repo model — what a Mission is, the star satisfaction threshold, and the rule that progression is **soft** (an ordered suggestion that only *ranks* content, never locks it) — lives in the org doc [`quests-and-learning-objectives`](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md). This doc owns the **client-side resolver**: how the app computes, from data it already holds, each quest's **next Mission** — the single ranking input the world map and other surfaces preference toward.
+A **Quest** is the learner's ordered journey through **Learning Objectives** (learner-facing label: **Missions**). The cross-repo model — what a Mission is and the star satisfaction threshold — lives in the org doc [`quests-and-learning-objectives`](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md). This doc owns the **client-side resolver**: how the app computes, from data it already holds, each quest's **next Mission** (the ranking input the world map and other surfaces preference toward) and which Missions are still **locked** ([client#9333](https://github.com/pangeachat/client/issues/9333), which replaced the earlier soft-progression rule).
 
 ## One shared resolver
 
-Nothing is locked, so the question is not "is this allowed?" but "where should the learner go next?" — and that is asked by many surfaces, so it is resolved **once** into a single shared answer, never re-derived per surface (re-deriving invites two surfaces drifting on the same question). It is built from two inputs the client already holds:
+Two questions — "where should the learner go next?" and "what is still locked?" — are asked by many surfaces, so both are resolved **once** from the same star totals into a single shared answer, never re-derived per surface (re-deriving invites two surfaces drifting on the same question). It is built from two inputs the client already holds:
 
 - **The ordered Mission sequences** of the learner's in-scope quests — their joined courses by default, or whatever the world map's quest filter selects — each quest's outline (ordered Mission ids + the activities under each), cached and rebuilt on course join/leave.
 - **The per-Mission star rollup** — a **star** is one orchestrator-awarded activity goal, read from awarded-goal state on the learner's own session rooms. Per activity, the learner's stars are their **best single session** (the most goals awarded to them in any one session of it — repeat sessions do not accumulate); the Mission total sums those per-activity bests across the Mission's distinct activities. Both rules are the org doc's satisfaction model. No server-side progression endpoint is needed: every session that earned a star is a room the client can read. (Same collectible pattern as vocab/grammar — see [analytics-system.instructions.md](analytics-system.instructions.md).)
@@ -18,14 +18,30 @@ From those, the resolver finds each quest's **anchor (next) Mission**: the **fir
 
 **Progression star totals are per course, never blended across them** ([client#7771](https://github.com/pangeachat/client/issues/7771)) — the separate per-person total on a participant card is a different quantity, not an exception to this (below). Missions are a shared catalog reused across quests, so two joined courses routinely carry the same Mission with *different* activities. A star total only means something against the activity set it was summed over: rolling several courses together would clamp one course's effective threshold against another course's content and credit its stars, and would silently undo that course's activity pins. Accumulation across quests is the *consumer's* job (the map's band), not a property of the totals. Where two courses genuinely list the **same** activity, each counts it once on its own — that needs no merging, since both outlines carry it.
 
-**Fail soft.** A surface that asks before the resolver is built simply has no anchor yet and ranks on plain relevance — a cold open (e.g. an activity link opened without visiting the map first) is never blocked, because nothing is ever blocked. The resolver only sharpens ordering; its absence degrades to neutral ranking, not to a wall.
+**Fail soft.** A surface that asks before the resolver is built simply has no anchor yet and ranks on plain relevance, and shows nothing as locked — a cold open (e.g. an activity link opened without visiting the map first) is never walled off by progress that hasn't loaded. Its absence degrades to neutral ranking, not to a wall.
+
+## Mission locks
+
+Missions unlock in quest order, so a class works through the same small set of activities together instead of facing the whole plan at once.
+
+- **A Mission is open once every earlier Mission with activities has reached its effective threshold.** Each earlier Mission counts only up to its own threshold, so extra stars in one Mission never open a later one: with thresholds of 10, twenty stars in the first Mission still leaves the third locked at 10/20. The first Mission is always open, and a Mission with no activities is skipped. [`QuestProgress.lockFor`](../../lib/features/quests/quest_progression_resolver.dart) returns the lock with those cumulative numbers ([`MissionLock`](../../lib/features/quests/mission_lock.dart)).
+- **Locks stop starting a session, never joining one.** A classmate's open session, and any session the learner already holds a role in, stays reachable even under a locked Mission.
+- **An activity is locked only when every Mission it sits under is locked**, so one shared with an open Mission stays startable.
+- **Per course.** With a course open, only that course's locks count. On the plain world map an activity is locked only when every joined course that lists it locks it, and an activity outside the learner's courses never locks. A course the learner is only previewing locks nothing.
+- **Where locks show:** the course plan (below), the map's [locked pins](world-map.instructions.md#locked-pins), and the [start page](activity-start-page.instructions.md#the-cta-row), which offers "Unlock in {course}" for each course that locks the activity, opening that course on its course plan.
+
+## I'm teaching this course
+
+A course admin plays as a student by default. A switch in the course's settings, **"I'm teaching this course"**, marks that admin as the course's teacher: every Mission is unlocked for them, and they are left out of the [leaderboard](course-leaderboard.instructions.md) ranking. Turning it off makes them a student again, ranked with all their stars and locked by them.
+
+The switch is per admin, off by default, and stored in the course room under the admin's own user id ([`CourseTeacherRoomExtension`](../../lib/features/course_plans/courses/course_teacher_room_extension.dart)), so every member can read it. Only a current admin counts as a teacher, so a demoted admin's leftover switch stops counting. The resolver reads it fresh on every resolve, so flipping it takes effect on the next sync.
 
 ## Consumed by
 
 Every surface that preferences by progression reads the *same* shared resolver, so the answer is consistent and computed once:
 
 - the [world map](world-map.instructions.md) — the Priority matrix raises activities carrying the anchor Mission to the top of the relevance band, decaying for Missions further along; per-activity star progress renders as a fill (see its pin-display section);
-- the **activity start page** — opens directly into play for every activity (nothing is gated), showing star progress and, where relevant, that this is a next-Mission activity;
+- the **activity start page** — blocks starting a locked activity and names the courses that lock it ([Mission locks](#mission-locks));
 - the **course page's Activities row** — the same Priority matrix, scored over the course's own activities (below);
 - the **course panel's star display** (below);
 - the course/quest list and the powerups cluster, as they are built for v3.
@@ -75,9 +91,10 @@ The course page opens on a shortlist: one row of activity cards headed **Activit
 
 The row is ranked by the **same [Priority matrix](world-map.instructions.md#priority-matrix) the world map ranks pins by**, scored over the course's own activities: an open session a coursemate can be joined in leads, a recruiting ping raises one further, then whatever the course's next Mission points at. One shared score means the course page and the map cannot drift apart as its weights are tuned.
 
-Four things differ from the map, each following from where the row sits:
+Five things differ from the map, each following from where the row sits:
 
 - **A session the learner already holds a role in is filtered out of the row.** The row suggests what to start next; a session already under way is resumed from the course's Chats section.
+- **A locked activity is filtered out**, unless a classmate's open session on it is waiting — joining is never locked.
 - **A finished activity is filtered out too** ([client#8901](https://github.com/pangeachat/client/issues/8901)). The map demotes a done activity and keeps it as the learner's trail; a shortlist of what to do next has no room for what is done, and a checked-off card at the end of the row read as a stale suggestion. The full plan behind "See all" still shows it, check overlay and all. The one exception is a coursemate's open session on it — that is still something to join, so it stays in the row as joinable.
 - **The relevance band is this course's own**, never the map's cross-quest sum — a course surface reads only its own course's progress (the per-course scoping rule above).
 - **The map's first-map penalty, its dismissal penalty and its recency term do not apply.** A course's activities were hand-picked by its author, so a 3+ role one is part of the syllabus rather than a newcomer's dead end; there is no large card here to dismiss; and the row has no per-session start time to decay, so a learner reading the page does not watch it reorder itself.
@@ -103,7 +120,8 @@ Each Mission's header on the full course plan tells the learner at a glance whet
 
 - **Up next** — the shared resolver's anchor for this course. Its header carries an "Up next" label, and its statement and star count take the `primary` accent; the label says the state in words, so it is never colour alone. Nothing wraps the section: a band or an outline around header and cards was tried and dropped, because a tint shows the carousel's surface-coloured scroll-arrow strip as a notch and any inset throws the section's margins off against its neighbours. At most one Mission per course wears it, and a satisfied Mission never does — once the whole course is satisfied there is no anchor, so no Mission carries the label ([client#8997](https://github.com/pangeachat/client/issues/8997)).
 - **Satisfied** — stars at or past the effective threshold. The gold star before the fraction becomes a green check and the header text drops to `onSurfaceVariant`, so finished work reads as done without disappearing: its activities stay in view and playable, since a learner can still raise a per-activity best.
-- **Later** — everything else, plain.
+- **Later** — open but not yet next, plain.
+- **Locked** — a lock and the cumulative stars toward unlocking it (e.g. 10/20) in place of the star count, in muted text. A locked Mission starts collapsed; tapping its header opens it like any other. Its cards are gray behind a lock and open nothing, except a card with an open or ongoing session, which stays tappable.
 
 The emphasis lives on the Mission header alone, never on the section or its activity cards: the card states above keep their meaning under an Up-next header.
 
@@ -113,7 +131,7 @@ The design — what a pin means, why it lives in course state and never the ques
 
 - The pin travels on the course space's teacher-mode state (`TeacherModeModel.pinnedActivitiesByObjective`: Mission id → pinned `activity_id` content ids). Null, a missing Mission key, or an empty list all mean unrestricted.
 - Restriction is a **pure copy** at the outline boundary (`QuestOutline.restrictedTo`) — never a mutation of the quest-outline cache, which is shared across courses referencing the same quest; that copy is what lets the same quest run restricted in one course and open in another.
-- **One rule, one home**: `effectivePinnedActivityIds` carries the fail-open rule (no pin, empty pin, or an all-stale pin → unrestricted, so a pin can never make a Mission unsatisfiable). Both the outline restriction and the course-scoped map's marker filter call it. The world-scoped map is deliberately never filtered — everything stays playable everywhere.
+- **One rule, one home**: `effectivePinnedActivityIds` carries the fail-open rule (no pin, empty pin, or an all-stale pin → unrestricted, so a pin can never make a Mission unsatisfiable). Both the outline restriction and the course-scoped map's marker filter call it. The world-scoped map is deliberately never filtered by pins — a pin narrows what counts toward a Mission, not what appears.
 - The resolver is **pin-unaware by construction**: star attribution and the effective-threshold clamp both derive from the outline's per-Mission activity sets, so a filtered outline scopes attribution and clamps against the pinned set with no resolver changes. This holds only because totals are per course (above) — a cross-course rollup would re-admit the very activities the pin excluded ([client#7771](https://github.com/pangeachat/client/issues/7771)).
 - Previews and non-joined contexts pass no pins — there is no learner progress to scope, and fail-open is the default everywhere.
 - The teacher editing surface is deferred to the admin panel ([admin-dash#30](https://github.com/pangeachat/admin-dash/issues/30)); until it ships, pins are written to course room state directly.
@@ -123,6 +141,5 @@ The design — what a pin means, why it lives in course state and never the ques
 File GitHub issues for these and link them here.
 
 - A persisted per-Mission star total (server-side rollup) once reading every session room client-side becomes too costly at catalog scale.
-- Teacher-set **hard** restrictions (an opt-in gate on top of the soft default), if classroom demand appears — deliberately not built today (see the org doc). Distinct from per-course activity pinning (above), which is built and restricts *which activities satisfy*, not *when Missions are reachable*.
 - Implement the joinable/open activity card design — [pangeachat/client#7669](https://github.com/pangeachat/client/issues/7669).
 - Design hint indicating an activity needs more people to start — [pangeachat/client#6810](https://github.com/pangeachat/client/issues/6810).

@@ -265,8 +265,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
   /// Back out of a session viewed from the join list: leave it if no role
   /// was picked (joining only to look shouldn't keep you a member), then
-  /// return to the activity, which lands on its join list again
-  /// (#9333 prototype).
+  /// return to the activity, which lands on its join list again.
   void backToJoinList() {
     final room = activityRoom;
     if (room != null &&

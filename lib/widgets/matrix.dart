@@ -19,6 +19,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_auto_save_service.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_state_repair.dart';
+import 'package:fluffychat/features/activity_sessions/play_with_bot_intent.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
@@ -933,6 +934,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           // Best-effort like the store write, and it never throws. The iOS
           // notification extension must not keep a signed-out session's token.
           unawaited(NseSession.clear());
+          PlayWithBotIntent.clear();
           _accountsChanged();
           // Pangea#
         }

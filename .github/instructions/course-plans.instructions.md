@@ -128,20 +128,9 @@ Returned by `CourseActivityRepo.get()`. Full activity plan with all fields (titl
 
 ---
 
-## 7. Topic Unlock Logic — `ActivitySummariesProvider`
+## 7. Unlocking
 
-[`ActivitySummariesProvider`](../../lib/pangea/course_plans/course_activities/activity_summaries_provider.dart) is a mixin that determines which topic is "active" for a user. Topics are sequential — a user must complete activities in topic N before topic N+1 unlocks.
-
-### `currentTopicId()` logic
-
-Iterates topics in order. For each topic:
-1. Checks `activityListComplete` — requires ALL activities for the topic to be loaded
-2. Calls `_hasCompletedTopic()` — checks if the user has archived enough activity sessions
-3. Returns the first incomplete topic
-
-### `_hasCompletedTopic()` dependency on activity data
-
-The unlock heuristic counts "two-person activities" via `topic.loadedActivities.values.where((a) => a.req.numberOfParticipants <= 2).length`. This is the only reason all activities need to be loaded for unlock computation. If `numberOfParticipants` were available without loading full activity objects, `loadAllActivities()` could be eliminated from the page load path.
+Topic unlocking is gone with the v1 course view. Missions now unlock by stars — see [quests.instructions.md](quests.instructions.md#mission-locks).
 
 ---
 

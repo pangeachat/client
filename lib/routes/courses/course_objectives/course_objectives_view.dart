@@ -133,14 +133,15 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   bool get _pingedSectionSeen => _seenPingedActivityId == _pingedActivityId;
 
-  /// Missions the learner folded, by id. Held here rather than in each
-  /// [ObjectiveSection] because the list builds lazily and disposes sections
-  /// scrolled out of view (#9248).
-  final Set<String> _collapsedMissionIds = {};
+  /// Missions the learner folded or unfolded, by id — each flips its
+  /// default, which is folded for a locked Mission and open otherwise. Held
+  /// here rather than in each [ObjectiveSection] because the list builds
+  /// lazily and disposes sections scrolled out of view (#9248).
+  final Set<String> _toggledMissionIds = {};
 
   void _toggleMissionCollapsed(String missionId) => setState(() {
-    if (!_collapsedMissionIds.remove(missionId)) {
-      _collapsedMissionIds.add(missionId);
+    if (!_toggledMissionIds.remove(missionId)) {
+      _toggledMissionIds.add(missionId);
     }
   });
 
@@ -735,6 +736,11 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     separatorBuilder: (_, _) => const SizedBox(height: 24.0),
                     itemBuilder: (context, i) {
                       final group = groups[i];
+                      final lock = hasProgress
+                          ? widget.objectivesProvider.missionLock(
+                              group.objective.id,
+                            )
+                          : null;
                       return ObjectiveSection(
                         key: i == pingedGroupIndex
                             ? _pingedSectionKey
@@ -744,9 +750,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                         pingedActivityId: i == pingedGroupIndex
                             ? pingedActivityId
                             : null,
-                        collapsed: _collapsedMissionIds.contains(
-                          group.objective.id,
-                        ),
+                        collapsed:
+                            widget.collapsibleMissions &&
+                            (lock != null) !=
+                                _toggledMissionIds.contains(group.objective.id),
                         onToggleCollapsed: widget.collapsibleMissions
                             ? () => _toggleMissionCollapsed(group.objective.id)
                             : null,
@@ -758,10 +765,9 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                                 group.objective.id,
                               )
                             : null,
-                        lock: hasProgress
-                            ? widget.objectivesProvider.missionLock(
-                                group.objective.id,
-                              )
+                        lock: lock,
+                        isActivityLocked: hasProgress
+                            ? widget.objectivesProvider.isActivityLocked
                             : null,
                         onTap: _openActivity,
                         userStarsByActivity: _userStarsByActivity,

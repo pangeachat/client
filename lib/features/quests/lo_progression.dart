@@ -1,8 +1,7 @@
 // One course's ordered objective (Mission) sequence and its per-objective
 // activities, built from a quest outline. The shared data shape the next-Mission
 // resolver (quest_progression_resolver.dart) consumes. Pure — no Matrix or
-// network. Nothing is locked anymore; progression only ranks (#7186). Design:
-// quests.instructions.md.
+// network. Design: quests.instructions.md.
 
 /// The default number of stars (orchestrator-awarded activity goals) the learner
 /// must earn in an objective to satisfy it and unlock the next one in the
@@ -42,7 +41,7 @@ class CourseLoOutline {
   final Map<String, int> earnableByActivity;
 
   /// True when the learner is teaching this course, so every Mission is
-  /// unlocked for them (#9333 prototype).
+  /// unlocked for them.
   final bool locksExempt;
 
   const CourseLoOutline({

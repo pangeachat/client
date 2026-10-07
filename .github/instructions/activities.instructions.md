@@ -25,6 +25,14 @@ Starting a session opens it once the new room has reached the client with its in
 
 The activity's start page doesn't store its own state; it reads it from the room — whether a room exists yet, whether the learner is in it, whether they've taken a role, whether every role is filled. From those facts it moves through a short sequence (not started → picking a role → in with a role → session full) and shows the right thing at each step: the waiting room (ping the course, play with the bot, or invite a friend — pinging is limited to once a minute so it can't be spammed), the role picker, or the live activity.
 
+A few steps are taken for the learner, to keep them out of choices that don't matter ([client#9333](https://github.com/pangeachat/client/issues/9333)):
+
+- **Joining from the join list with exactly one open role** claims that role straight away and lands the learner in the session. With two or more open roles the role picker stays; if someone takes the seat first, the session opens for viewing instead.
+- **Play with Pangea Bot** adds the bot as soon as the new session exists, after the learner picks a role. If the bot fails to join, the waiting room's bot button re-invites it.
+- **A session viewed from the join list** opens inside the activity with a back arrow to the list; backing out without taking a role leaves the room, so looking doesn't leave the learner a member.
+
+**Which course a session belongs to.** A session is shared into every joined course that lists its activity, so it has no single home course. For now the waiting room's online count, **Ping** and **Invite** all use the course the session was started from (`Room.sourceCourse`), and the waiting room names that course so a learner browsing another course can tell. Which course a shared session should belong to is still being discussed ([discussion #9328](https://github.com/pangeachat/client/discussions/9328)).
+
 When a session counts as ended, and how the bot makes its summary, are the org doc's call ([activity-summary.instructions.md](../../../.github/.github/instructions/activity-summary.instructions.md)). The client shows the summary from the room state the bot writes. A viewer whose first language differs from the summary's sees it translated. The loading placeholder stays up while the translation is fetched, and if the translation fails, the viewer sees the summary in its original language. The client writes the room's analytics when no client has yet, and it sends a learner's retry or feedback as a request the bot serves. It also keeps a short-lived local cache of the room's analytics, so the page doesn't re-fetch on every visit.
 
 The page's **layout and gestures** — the mobile grow-before-scroll sheet, the header and info row, the CTA row, and how it owns its container over the nav rail and analytics bar — are their own concern: [activity-start-page.instructions.md](activity-start-page.instructions.md).

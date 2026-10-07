@@ -5,8 +5,8 @@ import 'package:fluffychat/utils/date_time_extension.dart';
 
 /// When an open session's members were last online, worded like the user
 /// profile's presence line ("Currently active" / "Last active: 3:42 PM"),
-/// from [SessionPresenceTracker] (#9333 prototype). Renders nothing when no
-/// member's presence is known.
+/// from [SessionPresenceTracker]. Renders nothing when no member's presence
+/// is known.
 class SessionLastActiveLabel extends StatelessWidget {
   final DateTime? lastActive;
 

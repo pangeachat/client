@@ -9,7 +9,7 @@ The course page's people section is a **Leaderboard** ([client#9212](https://git
 
 ## Who is ranked, and how
 
-- **Every joined member is ranked, admins included.** The bot is never ranked — it earns nothing — and does not appear on the leaderboard at all.
+- **Every joined member is ranked except teachers** — admins who turned on "I'm teaching this course" ([quests.instructions.md](quests.instructions.md#im-teaching-this-course)). A teacher still appears in the admin line, wearing a **Teacher** badge in place of Admin. The bot is never ranked — it earns nothing — and does not appear on the leaderboard at all.
 - **Invited and knocking users are not ranked.** They appear only on the full page, at the bottom, wearing their Invited or Knocking badge and no stats.
 - **Order**: stars in the course's language, most first; level breaks a tie; then display name A to Z, then Matrix id. Equal members therefore keep one fixed order across loads instead of swapping places, and no rank is shown as a tie.
 - The stars and level are the member's public-profile totals for the course's language — [quests.instructions.md](quests.instructions.md) ("Two star quantities") owns what those numbers mean. A course with no language recorded ranks each member on their own target language, the same fallback the old cards used.

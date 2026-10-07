@@ -158,7 +158,7 @@ class _ActivitySummaryStatusSection extends StatefulWidget {
 class _ActivitySummaryStatusSectionState
     extends State<_ActivitySummaryStatusSection> {
   /// Read by open sessions only: they sort and label by their members' last
-  /// online time (#9333 prototype).
+  /// online time.
   late final SessionPresenceTracker _presence;
 
   bool get _isOpenList => widget.status == ActivitySummaryStatus.notStarted;
@@ -199,7 +199,7 @@ class _ActivitySummaryStatusSectionState
 
   /// The open roles of [summary], each flagged when the learner has already
   /// completed it in another session ([completedRoleIds]), so they can pick
-  /// a session before joining (#9333 prototype).
+  /// a session before joining.
   List<({String name, bool done})> _openRolesOf(
     RoomSummaryResponse summary,
     Set<String> completedRoleIds,
@@ -213,8 +213,10 @@ class _ActivitySummaryStatusSectionState
     ];
   }
 
-  DateTime? _lastActiveOf(RoomSummaryResponse summary) =>
-      _isOpenList ? _presence.lastActiveOf(_joinedMembersOf(summary)) : null;
+  DateTime? _lastActiveOf(RoomSummaryResponse summary, DateTime now) =>
+      _isOpenList
+      ? _presence.lastActiveOf(_joinedMembersOf(summary), now: now)
+      : null;
 
   @override
   Widget build(BuildContext context) {
@@ -223,6 +225,7 @@ class _ActivitySummaryStatusSectionState
       builder: (context, _) {
         final theme = Theme.of(context);
         final entries = widget.roomSummaries.entries.toList();
+        final now = DateTime.now();
         final completedRoles = _isOpenList
             ? Matrix.of(context).client.completedRolesByActivity
             : const <String, Set<String>>{};
@@ -232,8 +235,8 @@ class _ActivitySummaryStatusSectionState
           // still between rebuilds.
           entries.sort((a, b) {
             final byRecent = SessionPresenceTracker.compareRecentFirst(
-              _lastActiveOf(a.value),
-              _lastActiveOf(b.value),
+              _lastActiveOf(a.value, now),
+              _lastActiveOf(b.value, now),
             );
             return byRecent != 0 ? byRecent : a.key.compareTo(b.key);
           });
@@ -261,7 +264,7 @@ class _ActivitySummaryStatusSectionState
                   roomSummary: e.value,
                   pinged: e.key == widget.pingedRoomId,
                   showLastActive: _isOpenList,
-                  lastActive: _lastActiveOf(e.value),
+                  lastActive: _lastActiveOf(e.value, now),
                   openRoles: _openRolesOf(
                     e.value,
                     completedRoles[e.value.activityId] ?? const {},
@@ -344,10 +347,12 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             spacing: 4.0,
                             children: [
-                              Icon(
-                                Icons.person_outline,
-                                size: 14.0,
-                                color: theme.colorScheme.primary,
+                              ExcludeSemantics(
+                                child: Icon(
+                                  Icons.person_outline,
+                                  size: 14.0,
+                                  color: theme.colorScheme.primary,
+                                ),
                               ),
                               Text(
                                 L10n.of(context).openRole(role.name),

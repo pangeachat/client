@@ -320,6 +320,7 @@ user came from:
   from (see Activity plan below).
 - An **X** means closing simply reveals what is beneath: the other panels and
   the map.
+- A **session opened from an activity's join list** opens inside that activity's panel, and its link records that origin, so its close is a back arrow to the join list. Sessions opened any other way keep their usual close.
 - An **expand/collapse chevron** replaces both where a panel has a **floor
   instead of a close**. The only one is the course panel under `?c=`
   ([#8816](https://github.com/pangeachat/client/issues/8816)), and it has a

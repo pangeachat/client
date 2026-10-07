@@ -492,9 +492,9 @@ abstract class WorkspaceNav {
 
   /// Open session [roomId] of [activityId] INSIDE the activity panel — the
   /// token keeps the activity and binds the room — so a session viewed from
-  /// the join list closes with a back arrow to that list rather than an X
-  /// (#9333 prototype). The course context, if any, is kept, and so is an
-  /// open from the full course plan (#9367).
+  /// the join list closes with a back arrow to that list rather than an X.
+  /// The course context, if any, is kept, and so is an open from the full
+  /// course plan (#9367).
   static String openActivitySession(
     Uri current,
     String activityId,

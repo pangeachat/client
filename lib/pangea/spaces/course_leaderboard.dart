@@ -82,7 +82,7 @@ class CourseLeaderboard {
           if (user.powerLevel >= SpaceConstants.powerLevelOfAdmin) {
             admins.add(user);
           }
-          // A teacher stays in the admin line but never places (#9333).
+          // A teacher stays in the admin line but never places.
           if (user.room.isTeaching(user.id)) continue;
           final profile = profileOf(user.id);
           final language = langCode ?? profile?.targetLanguage;

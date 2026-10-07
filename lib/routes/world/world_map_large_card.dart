@@ -194,7 +194,7 @@ class WorldMapLargeCard extends StatelessWidget {
   final bool understaffed;
 
   /// Course progression locks this activity: the card grays out behind a lock
-  /// badge. It still opens the plan, where Start is blocked (#9333 prototype).
+  /// badge. It still opens the plan, where Start is blocked.
   final bool locked;
 
   /// When non-null, the card shows an explicit dismiss (X) that **demotes** the

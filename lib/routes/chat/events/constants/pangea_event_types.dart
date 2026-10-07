@@ -69,7 +69,7 @@ class PangeaEventTypes {
   static const teacherMode = "pangea.teacher_mode";
 
   /// Per-admin "I'm teaching this course" flag; state key is the admin's user
-  /// id (#9333 prototype).
+  /// id.
   static const courseTeacher = "pangea.course_teacher";
   static const courseChatList = "pangea.course_chat_list";
   static const courseSettings = "pangea.course_settings";

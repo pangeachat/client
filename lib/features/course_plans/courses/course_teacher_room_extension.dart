@@ -6,7 +6,7 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 /// "I'm teaching this course": a per-admin flag on the course room, stored
 /// under the admin's own user id so every member can read it. A teacher sees
 /// every Mission unlocked and is left off the leaderboard ranking; an admin
-/// who isn't teaching plays as a student (#9333 prototype).
+/// who isn't teaching plays as a student (#9333).
 extension CourseTeacherRoomExtension on Room {
   static const String _teachingKey = 'teaching';
 

@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
@@ -54,9 +55,10 @@ class ActivityCarousel extends StatefulWidget {
   /// click that does nothing.
   final bool interactive;
 
-  /// The whole row sits in a locked Mission: cards gray out behind a lock and
-  /// open nothing (#9333 prototype).
-  final bool locked;
+  /// Whether course progression locks an activity: its card grays out
+  /// behind a lock and opens nothing — unless it has a live (open or
+  /// ongoing) session, which is never locked.
+  final bool Function(String activityId)? isLocked;
 
   const ActivityCarousel({
     super.key,
@@ -71,7 +73,7 @@ class ActivityCarousel extends StatefulWidget {
     this.cardWidth,
     this.cardHeight,
     this.interactive = true,
-    this.locked = false,
+    this.isLocked,
   });
 
   @override
@@ -195,13 +197,16 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                       complete ||
                       liveState.state != null ||
                       ref.plan.req.numberOfParticipants <= available;
+                  final locked =
+                      (widget.isLocked?.call(ref.activityId) ?? false) &&
+                      !(liveState.state?.isLive ?? false);
                   final card = Stack(
                     // The card's state banner peeks past its top-left
                     // corner, so this wrapping Stack must not clip it.
                     clipBehavior: Clip.hardEdge,
                     children: [
                       Opacity(
-                        opacity: widget.locked
+                        opacity: locked
                             ? 0.35
                             : canStart
                             ? 1.0
@@ -220,7 +225,7 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                           openSlots: liveState.openSlots,
                         ),
                       ),
-                      if (widget.locked)
+                      if (locked)
                         SizedBox(
                           width: _cardWidth,
                           height: _cardHeight,
@@ -229,6 +234,9 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                               Icons.lock,
                               size: 40.0,
                               color: theme.colorScheme.onSurfaceVariant,
+                              semanticLabel: L10n.of(
+                                context,
+                              ).lockedMissionRequirement,
                             ),
                           ),
                         )
@@ -261,7 +269,7 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                   );
                   // The course preview's cards open nothing (#7826), so they are
                   // neither tap targets nor Tab stops.
-                  if (!widget.interactive || widget.locked) return card;
+                  if (!widget.interactive || locked) return card;
                   // One node carrying the card's text, a button role, focus and
                   // tap, with the gold keyboard ring along the card's own edge.
                   return Semantics(

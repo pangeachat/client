@@ -225,7 +225,7 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     // The join list is where a joinable activity lands, so it has no Back:
     // the panel's own close returns. It keeps a quiet way to start your own
-    // (unless locked) and the Completed list (#9333 prototype).
+    // (unless locked) and the Completed list.
     if (controller.subPage == NotStartedSubPage.join) {
       // The minimized phone sheet hides the list itself, so it offers one
       // row: open the list full, or start your own.
@@ -290,7 +290,8 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
         // Wait on the participant count AND the open-session summaries, so the
         // join/start choice never flashes "Start" before the sessions land.
         if (snapshot.connectionState == ConnectionState.waiting ||
-            controller.summariesLoading) {
+            controller.summariesLoading ||
+            !controller.lockResolved) {
           return const LinearProgressIndicator();
         }
 
@@ -437,7 +438,6 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
         ),
       );
     } else if (controller.isLocked) {
-      // Locked: only an open session can still be joined.
       chips.add(
         controller.openSessionCount > 0
             ? _ActivityCtaChip(
@@ -461,7 +461,7 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
               ),
       );
     } else if (controller.offersBot) {
-      // Two equal choices, both stretched (#9333 prototype).
+      // Two equal choices, both stretched.
       leadingChips = 2;
       chips.add(
         _ActivityCtaChip(
@@ -634,9 +634,7 @@ class _ConfirmedRoleSessionCTAButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
-    // Bringing people in leads; the bot is the quieter fallback at the bottom
-    // (#9333 prototype). Practice sits beside the status line as something to
-    // do meanwhile, not another way to play.
+    // Bringing people in leads; the bot is the quieter fallback at the bottom.
     return Column(
       mainAxisSize: .min,
       spacing: 16.0,
@@ -668,7 +666,7 @@ class _ConfirmedRoleSessionCTAButtons extends StatelessWidget {
 
 /// "Play with others" and "Play with Pangea Bot" as two equal, tall tiles —
 /// the wide start page's main choice on a two-seat activity; the phone sheet
-/// uses two chips instead (#9333 prototype).
+/// uses two chips instead.
 class _PlayChoiceTiles extends StatelessWidget {
   final NotStartedSessionController controller;
 
@@ -727,7 +725,7 @@ class _PlayChoiceTiles extends StatelessWidget {
 }
 
 /// The waiting room's status line: how long this session has waited, and how
-/// many coursemates are online right now (#9333 prototype).
+/// many coursemates are online right now.
 class _WaitingStatusLine extends StatelessWidget {
   final ConfirmedRoleSessionController controller;
 
@@ -802,27 +800,6 @@ class _WaitingStatusLine extends StatelessWidget {
               ],
             );
           },
-        ),
-        ActionChip(
-          avatar: Icon(
-            Icons.menu_book_outlined,
-            size: 16.0,
-            color: theme.pangea.onGoldFixed,
-          ),
-          label: Text(
-            controller.practicedWhileWaiting
-                ? l10n.practiceAgain
-                : l10n.practiceWhileWaiting,
-          ),
-          // The fixed gold pair (the Admin badge's): bright gold with
-          // near-black ink, the same in both themes and well over AA.
-          labelStyle: theme.textTheme.labelMedium?.copyWith(
-            color: theme.pangea.onGoldFixed,
-          ),
-          backgroundColor: theme.pangea.goldFixedDim,
-          side: BorderSide.none,
-          visualDensity: VisualDensity.compact,
-          onPressed: controller.practiceWhileWaiting,
         ),
       ],
     );

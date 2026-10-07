@@ -391,6 +391,7 @@ void main() {
     int maxPerDiversityKey = 2,
     bool isNewLearner = false,
     Set<String> dismissedIds = const {},
+    Set<String> lockedIds = const {},
   }) => rankPins(
     inViewPins: pins,
     userL2: userL2,
@@ -405,6 +406,7 @@ void main() {
     maxPerDiversityKey: maxPerDiversityKey,
     isNewLearner: isNewLearner,
     dismissedIds: dismissedIds,
+    lockedIds: lockedIds,
   );
 
   group('rankPins — multi-person deprioritize for a new learner (#7435)', () {
@@ -651,6 +653,43 @@ void main() {
         expect(result.ordered, ['xed']);
       },
     );
+  });
+
+  group('rankPins — locked pins sink below unlocked ones (#9333)', () {
+    test('a locked pin ranks below every unlocked pin, however strong', () {
+      final pins = [
+        _card('lockedLive', refs: ['k1']),
+        _card('plain', refs: ['k2']),
+      ];
+      final result = rank(
+        pins,
+        {
+          'lockedLive': const PinSignals(
+            state: ActivityPinState.joinable,
+            pinged: true,
+          ),
+          'plain': const PinSignals(),
+        },
+        largeBudget: 1,
+        midBudget: 10,
+        lockedIds: {'lockedLive'},
+      );
+      expect(result.ordered, ['plain', 'lockedLive']);
+      expect(result.largeIds, ['plain']);
+    });
+
+    test('a locked pin still draws when nothing unlocked competes', () {
+      final result = rank(
+        [
+          _card('locked', refs: ['k1']),
+        ],
+        {'locked': const PinSignals()},
+        largeBudget: 1,
+        midBudget: 10,
+        lockedIds: {'locked'},
+      );
+      expect(result.ordered, ['locked']);
+    });
   });
 
   group('rankPins — total cap N and the trail reservation', () {

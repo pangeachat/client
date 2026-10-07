@@ -82,7 +82,7 @@ class _PinRenderer {
   /// ongoing / inProgress ids, and is empty on the world map.
   final Set<String> nonStartableIds;
 
-  /// Ids of pins the learner's course progression locks (#9333 prototype).
+  /// Ids of pins the learner's course progression locks.
   final Set<String> lockedIds;
 
   const _PinRenderer({
@@ -489,7 +489,7 @@ class _WorldMapViewState extends State<WorldMapView>
 
     final visible = widget.controller.visiblePins;
     // Locks layer on beside the signals, not inside them: a locked pin keeps
-    // its state colouring rules, then draws gray and ranks last (#9333).
+    // its state colouring rules, then draws gray and ranks last.
     final signals = widget.controller.signals;
     final lockedIds = {
       for (final c in visible)

@@ -10,8 +10,8 @@ import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 /// The displayed colour-state of a world-map activity pin. Declared
 /// lowest-precedence first so `state.index` is the precedence ladder
 /// (available < inProgress < joinable < ongoingPending < ongoingActive): when
-/// more than one applies the higher one wins the colour. There is no locked
-/// state — progression only ranks, never gates (#7186). See
+/// more than one applies the higher one wins the colour. A lock is not a
+/// state: it layers over any non-live state (gray, ranked last). See
 /// world-map.instructions.md ("Pin state").
 enum ActivityPinState {
   /// Playable, nothing live and no stars yet — the default. Light brand.
@@ -324,7 +324,7 @@ const double kMultiPersonFirstMapPenalty = 2.0;
 const double kDismissedPenalty = 0.5;
 
 /// Sinks a locked pin below every unlocked one, so it only draws when the view
-/// has room to spare (#9333 prototype).
+/// has room to spare.
 const double kLockedPinPenalty = 100.0;
 
 /// Rating-count threshold below which an activity counts as NEW (#7993): it
@@ -428,7 +428,8 @@ class _Scored {
 /// cap so one objective can't monopolise the heavy tiers, and a trail reservation
 /// ([trailBudget]) that guarantees up to that many of the `N` slots to the
 /// highest-ranked in-view *progressed* activities ([progressedIds]) so a
-/// learner's trail is never crowded out. Every pin competes — no state/lock gate.
+/// learner's trail is never crowded out. Every pin competes; a locked one only
+/// ranks last ([lockedIds]).
 /// The caller filters to the active viewport and re-runs on pan/zoom, so the
 /// budgets are per-view. The large/mid/small split (and which large cards
 /// actually fit on screen) is decided downstream by [placeLargeCards].

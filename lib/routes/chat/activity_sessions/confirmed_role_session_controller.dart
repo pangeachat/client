@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -10,9 +9,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/bot_activty_role_room_extension.dart';
-import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
-import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -22,7 +19,6 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start
 import 'package:fluffychat/routes/chat/activity_sessions/bot_join_error_dialog.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/session_presence_tracker.dart';
-import 'package:fluffychat/routes/chat/activity_sessions/waiting_room_join_watcher.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -65,15 +61,9 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   /// loaded, or when the session has no source course.
   final ValueNotifier<List<String>?> coursemateIds = ValueNotifier(null);
 
-  /// The learner went to practice from here, so the button now reads
-  /// "Practice again".
-  bool practicedWhileWaiting = false;
-
   @override
   void initState() {
     super.initState();
-    // Back in the waiting room: no need to be told someone joined.
-    WaitingRoomJoinWatcher.stop();
     presence = SessionPresenceTracker(widget.room.client);
     _clockTimer = Timer.periodic(
       const Duration(seconds: 1),
@@ -122,7 +112,9 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
             member.id,
       ];
       if (!mounted) return;
-      presence.watch(ids);
+      // Cached only: sync already keeps coursemates' presence current, and a
+      // big course shouldn't fire one request per member.
+      presence.watch(ids, cachedOnly: true);
       coursemateIds.value = ids;
     } catch (e, s) {
       ErrorHandler.logError(
@@ -134,25 +126,12 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
     }
   }
 
-  /// Practice vocab while waiting. Practice opens beside the session on wide
-  /// screens; wherever it opens, the learner is told when someone joins.
-  void practiceWhileWaiting() {
-    setState(() => practicedWhileWaiting = true);
-    WaitingRoomJoinWatcher.watch(widget.room);
-    context.go(
-      WorkspaceNav.openPractice(
-        GoRouterState.of(context).uri,
-        ConstructTypeEnum.vocab,
-      ),
-    );
-  }
-
   /// The course whose roster the ping reaches and the active count reads:
   /// the one this session was launched from, never a course it was merely
   /// fanned out into ([Room.sourceCourse]). The page's borrowed course context
   /// can be any space parent, so it can't drive a write against the course
   /// (#8097). The waiting room names it, so a learner browsing another course
-  /// can see which one this is (#9333 prototype).
+  /// can see which one this is.
   Room? get course => widget.room.sourceCourse;
 
   bool get showPingCourse => course != null;

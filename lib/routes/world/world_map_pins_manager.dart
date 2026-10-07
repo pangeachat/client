@@ -275,7 +275,7 @@ class WorldMapPinsManager {
   int? activityStarsEarned(String activityId) => _userStars[activityId];
 
   /// A locked pin can't be started yet. A live session is never locked, so
-  /// open sessions stay joinable (#9333 prototype).
+  /// open sessions stay joinable.
   /// With [courseRoomId] (a course-scoped map), only that course's locks count.
   bool isLocked(QuestActivityCard card, {String? courseRoomId}) =>
       !displayStateOf(card).isLive &&
