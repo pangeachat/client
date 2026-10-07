@@ -191,6 +191,51 @@ void main() {
       });
     });
 
+    test('replay sees what another app copy stored after it loaded', () async {
+      SharedPreferences.setMockInitialValues({});
+      final thisTab = await PendingReportStore.open();
+      SharedPreferences.resetStatic();
+      final otherTab = await PendingReportStore.open();
+      await otherTab.remember(userId, submission('from-other-tab'));
+
+      final replayed = <String>[];
+      await replayPendingReports(
+        store: thisTab,
+        userId: userId,
+        attempt: (report) async {
+          replayed.add(report.reportId);
+          return CaptureResult.failed;
+        },
+      );
+
+      expect(replayed, ['from-other-tab']);
+    });
+
+    test('a failed forget does not stop the other reports', () async {
+      SharedPreferences.setMockInitialValues({});
+      final store = _ForgetFails(await SharedPreferences.getInstance());
+      await store.remember(userId, submission('first'));
+      await store.remember(userId, submission('second'));
+
+      final replayed = <String>[];
+      final events = <Object?>[];
+      await harness
+          .capture(() async {
+            await replayPendingReports(
+              store: store,
+              userId: userId,
+              attempt: (report) async {
+                replayed.add(report.reportId);
+                return CaptureResult.recorded;
+              },
+            );
+          })
+          .then((event) => events.add(event.throwable));
+
+      expect(replayed.toSet(), {'first', 'second'});
+      expect(events, isNotEmpty);
+    });
+
     test('an unreadable stored report is reported without its text', () async {
       SharedPreferences.setMockInitialValues({
         'flutter.${PendingReportStore.keyPrefix}|$userId|broken':
@@ -521,4 +566,13 @@ void main() {
       expect(find.text(l10n.reportSent), findsOneWidget);
     });
   });
+}
+
+/// A store whose removals always fail, as a full or locked disk would.
+class _ForgetFails extends PendingReportStore {
+  _ForgetFails(super.prefs);
+
+  @override
+  Future<void> forget(String userId, String reportId) async =>
+      throw StateError('disk full');
 }

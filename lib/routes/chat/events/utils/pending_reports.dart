@@ -60,6 +60,14 @@ class PendingReportStore {
     return reports;
   }
 
+  /// [pending], after re-reading the platform store: another copy of the
+  /// app (another web tab) may have stored reports since this one loaded its
+  /// preference cache.
+  Future<List<ReportSubmission>> pendingFromDisk(String userId) async {
+    await _prefs.reload();
+    return pending(userId);
+  }
+
   /// Stores [report], replacing any copy with the same report id.
   Future<void> remember(String userId, ReportSubmission report) async {
     final ok = await _prefs.setString(
@@ -77,16 +85,28 @@ class PendingReportStore {
 
 /// Sends every report [userId] left unconfirmed, each with its original
 /// report id, and forgets the ones the module confirms. One that fails again
-/// stays for the next start; its failure is already in Sentry.
+/// stays for the next start; its failure is already in Sentry. A failure to
+/// forget one report is reported and does not stop the others.
 Future<void> replayPendingReports({
   required PendingReportStore store,
   required String userId,
   required Future<CaptureResult> Function(ReportSubmission report) attempt,
 }) async {
-  for (final report in store.pending(userId)) {
-    final result = await attempt(report);
-    if (result == CaptureResult.recorded) {
+  for (final report in await store.pendingFromDisk(userId)) {
+    if (await attempt(report) != CaptureResult.recorded) continue;
+    try {
       await store.forget(userId, report.reportId);
+    } catch (e, s) {
+      // Replayed again next start, which is harmless: the module stores a
+      // report id once.
+      await ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          'where': 'PendingReportStore.forget',
+          'report_id': report.reportId,
+        },
+      );
     }
   }
 }
