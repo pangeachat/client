@@ -10315,7 +10315,6 @@
     "activityLoadFailed": "აქტივობის დატვირთვა ვერ მოხერხდა. შეამოწმეთ თქვენი კავშირი და სცადეთ კიდევ ერთხელ.",
     "levelUpChip": "დონის {level}!",
     "missingCourseOutline": "ეს კურსი აღარ არის ხელმისაწვდომი",
-    "missingCourseOutlineCta": "ეს კურსი აღარ არის ხელმისაწვდომი. აირჩიეთ ახალი კურსის გეგმა.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10340,10 +10339,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10877,6 +10872,9 @@
     "callTranscriptSubscribeForTranscription": "გამოიწერეთ ტრანსკრიფციისთვის",
     "unlockCallTranscript": "ზარის ტრანსკრიფციის განბლოკვა",
     "activitySummaryUpdateFailed": "ამ შეჯამების განახლება ვერ მოხერხდა.",
+    "courseNotFound": "კურსი ვერ მოიძებნა",
+    "askTeacherForNewCourse": "სთხოვეთ თქვენს მასწავლებელს, აირჩიოს ახალი კურსი.",
+    "pickNewCoursePlan": "აირჩიეთ კურსის ახალი გეგმა.",
     "ssoNetworkBlockedTitle": "შესვლის საიტი მიუწვდომელია",
     "ssoNetworkBlockedDesc": "ეს ქსელი ხელს გვიშლის {provider}-თან დაკავშირებაში თქვენი შესასვლელად. სკოლისა და ოფისის Wi-Fi ხშირად ბლოკავს მას. შეგიძლიათ დარეგისტრირდეთ ელფოსტით, ან გადახვიდეთ სხვა ქსელზე და სცადოთ ხელახლა.",
     "ssoTryAnyway": "მაინც სცადე",

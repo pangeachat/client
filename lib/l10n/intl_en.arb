@@ -4332,6 +4332,7 @@
     "joinOpenSession": "Join open session",
     "noOpenSessions": "No open sessions right now",
     "activityNotFound": "Activity not found",
+    "courseNotFound": "Course not found",
     "starsEarnedOfTotal": "{earned} of {total} stars earned",
     "@starsEarnedOfTotal": {
         "placeholders": {
@@ -5308,7 +5309,8 @@
     "abDisplayName": "Abkhazian",
     "elDisplayName": "Greek",
     "missingCourseOutline": "This course is no longer available",
-    "missingCourseOutlineCta": "This course is no longer available. Pick a new course plan.",
+    "askTeacherForNewCourse": "Ask your teacher to choose a new course.",
+    "pickNewCoursePlan": "Pick a new course plan.",
     "welcome": "Welcome",
     "courseRequest": "Course request",
     "onboarding": "Onboarding",

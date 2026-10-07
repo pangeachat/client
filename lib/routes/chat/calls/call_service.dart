@@ -9,7 +9,9 @@ import 'package:fluffychat/routes/chat/calls/call_audio_download.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_merge_coordinator.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_merged_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_pending_store.dart';
 import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
+import 'package:fluffychat/routes/chat/calls/call_half_resume.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeouts.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
@@ -44,6 +46,19 @@ class CallService {
   /// without a `.env` loaded -- never touches `dotenv`, and a test can exercise
   /// the replay directly. Off by default, so the replay is inert.
   final bool _recordingTranscriptEnabled;
+
+  /// Finishes the call halves a killed or parked finish left on disk. Built
+  /// lazily on the first replay (which only runs with the feature on); a test
+  /// injects its own.
+  CallHalfResumer? _halfResumer;
+
+  /// How the outbox replay and the resume read the room. Injected only in
+  /// tests; the real one asks the homeserver's relations endpoint.
+  final RelationsFetcher? _relationsFetch;
+
+  /// The account this service last saw signed in, so a sign-out can purge the
+  /// recordings it left waiting even after the client has forgotten who it was.
+  String? _lastUserId;
 
   /// The startup replay runs once, on the first sync after launch. A foreground
   /// replay (see `MatrixState.didChangeAppLifecycleState`) is not latched -- a
@@ -209,12 +224,16 @@ class CallService {
     CallTimeouts? timeouts,
     CallTranscriptOutbox? transcriptOutbox,
     bool recordingTranscriptEnabled = false,
+    CallHalfResumer? halfResumer,
+    RelationsFetcher? relationsFetch,
   }) : delegate = delegate ?? PangeaVoipDelegate(),
        timeouts = timeouts ?? pangeaCallTimeouts(),
        _tokens = tokenRepo ?? CallTokenRepo(),
        _discovery = focusDiscovery ?? RtcFocusDiscovery(),
        _transcriptOutbox = transcriptOutbox,
        _recordingTranscriptEnabled = recordingTranscriptEnabled,
+       _halfResumer = halfResumer,
+       _relationsFetch = relationsFetch,
        _joinWithin = joinWithin ?? const Duration(seconds: 30),
        _leaveWithin = leaveWithin ?? const Duration(seconds: 3) {
     // Only the (cheap, timer-free) sync subscriptions are wired here; the box +
@@ -410,6 +429,8 @@ class CallService {
   /// then), and a still-loading coordinator buffers the event via
   /// [_driveMergeCoordinator] rather than dropping it.
   void handleSync(SyncUpdate update) {
+    final userId = client.userID;
+    if (userId != null) _lastUserId = userId;
     // The first sync after launch is the reliable "client is up" signal, and
     // the moment to replay a transcript half whose publish the app was killed
     // before finishing. Latched to once (foreground handles later drops); a
@@ -463,6 +484,9 @@ class CallService {
       // nothing until a replay actually runs (which only happens when the
       // feature is on). A test injects its own.
       final outbox = _transcriptOutbox ?? CallTranscriptOutbox();
+      final owner = client.userID;
+      if (owner != null) _lastUserId = owner;
+      final fetch = _relationsFetch ?? relationsFetcherFor(client);
       await outbox.flush(
         (roomId, txnId, content) async => client
             .getRoomById(roomId)
@@ -473,10 +497,55 @@ class CallService {
             ),
         // Only this account's own halves are replayed -- the store is shared by
         // every account on the device.
-        owner: client.userID,
+        owner: owner,
+        // Read the room before every resend: a half that landed after its
+        // process gave up on it is dropped, not sent again, and a room that
+        // cannot be read keeps the record and sends nothing.
+        inRoom: (roomId, content) async {
+          final callKey = content['call_key'];
+          if (owner == null || callKey is! String) return null;
+          return ownCallHalfInRoom(
+            fetch: fetch,
+            roomId: roomId,
+            callKey: callKey,
+            relType: CallTranscriptContent.relType,
+            senderId: owner,
+            deviceId: content['device_id'] as String?,
+          );
+        },
       );
+      if (_disposed) return;
+      // Beside the transcript replay: the recordings a killed or parked finish
+      // left on disk. Never credits -- crediting belongs to the hangup.
+      final resumer = _halfResumer ??= CallHalfResumer(
+        store: pendingCallAudioStoreForPlatform(),
+        fetch: fetch,
+        upload: (bytes, {required filename, required contentType}) => client
+            .uploadContent(bytes, filename: filename, contentType: contentType),
+        send: (roomId, type, content, txnId) async => client
+            .getRoomById(roomId)
+            ?.sendEvent(content, type: type, txid: txnId),
+        outbox: outbox,
+        onAudioPosted: onOwnCallAudioPosted,
+      );
+      await resumer.resume(owner: owner);
     } finally {
       _flushingTranscripts = false;
+    }
+  }
+
+  /// Deletes every call recording this account left waiting on this device.
+  /// Run when the account signs out: a recording is the learner's, and the
+  /// next person to sign in here must not upload it under their name or find
+  /// it on disk.
+  Future<void> purgePendingCallAudio() async {
+    final owner = client.userID ?? _lastUserId;
+    if (owner == null) return;
+    try {
+      await (_halfResumer?.store ?? pendingCallAudioStoreForPlatform())
+          .purgeOwner(owner);
+    } catch (e, s) {
+      Logs().w('Could not purge the pending call recordings', e, s);
     }
   }
 
@@ -1590,6 +1659,95 @@ class CallService {
     return sawTheirs ? PeerPresence.gone : PeerPresence.unknown;
   }
 
+  /// Whether the call [ring] was sent from is still standing, for deciding
+  /// whether it is glare.
+  ///
+  /// Narrower than [callerPresence], which asks whether the device that rang
+  /// holds ANY membership. Glare asks about one membership: the one the ring
+  /// names. Only that membership standing says the ring is live, and only
+  /// what that device wrote AFTER the ring can say it is over -- a
+  /// retraction, or a fresh membership because they are now answering a call
+  /// of ours. Anything it wrote before the ring predates the membership the
+  /// ring was sent for, so it says nothing about that ring: a retraction left
+  /// from an earlier call read as "gone" and had genuine simultaneous calling
+  /// written twice, and a membership left from one read as "live".
+  /// Everything else -- including state this device simply has not synced --
+  /// is [PeerPresence.unknown] (pangeachat/.github#410).
+  ///
+  /// Ordered by the server's stamps on both sides, one clock.
+  PeerPresence ringCallPresence(Room room, IncomingCallNotification ring) {
+    // A ring that names no membership has nothing narrower to ask about; the
+    // device's own standing is the answer.
+    if (ring.membershipEventId == null) {
+      return callerPresence(
+        room,
+        ring.event.senderId,
+        deviceId: ring.senderDeviceId,
+      );
+    }
+    final memberStates = room.states[EventTypes.GroupCallMember];
+    if (memberStates == null || memberStates.isEmpty) {
+      return PeerPresence.unknown;
+    }
+    var superseded = false;
+    for (final state in memberStates.values) {
+      switch (ringEvidenceIn(state, ring)) {
+        case PeerPresence.live:
+          return PeerPresence.live;
+        case PeerPresence.gone:
+          superseded = true;
+        case PeerPresence.unknown:
+          break;
+      }
+    }
+    return superseded ? PeerPresence.gone : PeerPresence.unknown;
+  }
+
+  /// What ONE member state event says about the call [ring] was sent from,
+  /// by the rules of [ringCallPresence].
+  ///
+  /// Its own question because evidence that arrives AFTER a ring has to be
+  /// judged one event at a time, in the order it arrived. Room state keeps
+  /// only the newest event per key, so a sync that carries their membership
+  /// and then their retraction leaves only the retraction to re-read -- and a
+  /// genuine simultaneous call read back from that collapsed state looked
+  /// like a call that had already ended.
+  PeerPresence ringEvidenceIn(
+    StrippedStateEvent state,
+    IncomingCallNotification ring,
+  ) {
+    final callerId = ring.event.senderId;
+    final deviceId = ring.senderDeviceId;
+    final named = ring.membershipEventId;
+    if (state.type != EventTypes.GroupCallMember) return PeerPresence.unknown;
+    if (state.senderId != callerId) return PeerPresence.unknown;
+    final memberships = state.content['memberships'];
+    if (memberships is! List) return PeerPresence.unknown;
+    if (named != null) {
+      // Undated state cannot be put in order against the ring.
+      if (state is! Event) return PeerPresence.unknown;
+      if (state.eventId == named) {
+        return memberships.isNotEmpty
+            ? PeerPresence.live
+            : PeerPresence.unknown;
+      }
+    }
+    // Attributed to a device the way [callerPresence] attributes it.
+    final speaksForEveryDevice =
+        memberships.isEmpty && state.stateKey == callerId;
+    if (!speaksForEveryDevice &&
+        deviceId != null &&
+        !_belongsToDevice(state, memberships, deviceId)) {
+      return PeerPresence.unknown;
+    }
+    if (named == null) {
+      return memberships.isNotEmpty ? PeerPresence.live : PeerPresence.gone;
+    }
+    return (state as Event).originServerTs.isAfter(ring.orderedAt)
+        ? PeerPresence.gone
+        : PeerPresence.unknown;
+  }
+
   /// Whether a member state event is the work of one particular device.
   ///
   /// The membership's own `device_id` first; the state key only as a fallback,
@@ -1944,6 +2102,21 @@ class CallService {
         update.state.type == EventTypes.GroupCallMember &&
         update.state.senderId == client.userID,
   );
+
+  /// Every member state event [callerId] writes in [room], as it is applied
+  /// and in order -- the payload, not just the fact of a change. Room state
+  /// keeps only the newest event per key, so anything that must judge each
+  /// write (a membership that was live for a moment before its retraction in
+  /// the same sync) has to read it from here rather than from `room.states`.
+  Stream<StrippedStateEvent> callerStateUpdates(Room room, String callerId) =>
+      client.onRoomState.stream
+          .where(
+            (update) =>
+                update.roomId == room.id &&
+                update.state.type == EventTypes.GroupCallMember &&
+                update.state.senderId == callerId,
+          )
+          .map((update) => update.state);
 
   /// Fires whenever [callerId]'s call membership in [room] is rewritten.
   ///

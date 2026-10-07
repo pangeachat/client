@@ -11,6 +11,12 @@ enum PartOfSpeechEnum {
   phrasalv,
   compn,
 
+  /// A set phrase the activity generator emits as one vocab entry
+  /// ("hace sol", "cómo te llamas"). Not a Universal Dependencies tag;
+  /// a content word so the entry gets the new-word underline and can be
+  /// collected like a noun or verb (issue #9386).
+  phrase,
+
   //Function tokens
   sconj,
   num,
@@ -36,6 +42,7 @@ enum PartOfSpeechEnum {
     PartOfSpeechEnum.idiom,
     PartOfSpeechEnum.phrasalv,
     PartOfSpeechEnum.compn,
+    PartOfSpeechEnum.phrase,
   };
 
   bool get isContentWord => _contentPartsOfSpeech.contains(this);

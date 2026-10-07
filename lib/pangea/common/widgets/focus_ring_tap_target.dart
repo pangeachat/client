@@ -75,6 +75,11 @@ class FocusRingTapTarget extends StatefulWidget {
   /// second, nameless focusable node (#8873).
   final String? label;
 
+  /// For a target that opens and closes something in place, whether it is
+  /// open now, announced as the button's expanded state. Needs [label]: only a
+  /// named target carries its own semantics node.
+  final bool? expanded;
+
   /// Optional external focus node for the InkWell — for callers that need to
   /// hand the node elsewhere too (the filter pill gives its node to
   /// [MenuAnchor.childFocusNode] so a closing menu returns focus here).
@@ -102,6 +107,7 @@ class FocusRingTapTarget extends StatefulWidget {
     required this.shape,
     required this.child,
     this.label,
+    this.expanded,
     this.focusNode,
     this.onHover,
     this.hoverColor,
@@ -111,7 +117,8 @@ class FocusRingTapTarget extends StatefulWidget {
   }) : assert(
          !twoToneRing || ringStrokeAlign != BorderSide.strokeAlignCenter,
          'a two-tone ring sits on one side of the edge',
-       );
+       ),
+       assert(expanded == null || label != null, 'expanded needs a label');
 
   @override
   State<FocusRingTapTarget> createState() => _FocusRingTapTargetState();
@@ -167,6 +174,7 @@ class _FocusRingTapTargetState extends State<FocusRingTapTarget> {
       container: true,
       button: true,
       label: label,
+      expanded: widget.expanded,
       child: target,
     );
   }

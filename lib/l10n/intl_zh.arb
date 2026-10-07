@@ -9415,7 +9415,6 @@
     "activityLoadFailed": "无法加载活动。请检查您的连接并重试。",
     "levelUpChip": "等级 {level}！",
     "missingCourseOutline": "此课程不再可用",
-    "missingCourseOutlineCta": "此课程不再可用。请选择一个新的课程计划。",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9440,10 +9439,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9977,6 +9972,9 @@
     "callTranscriptSubscribeForTranscription": "订阅转录服务",
     "unlockCallTranscript": "解锁通话记录",
     "activitySummaryUpdateFailed": "此摘要未能更新。",
+    "courseNotFound": "未找到课程",
+    "askTeacherForNewCourse": "请老师选择新课程。",
+    "pickNewCoursePlan": "选择新的课程计划。",
     "ssoNetworkBlockedTitle": "无法访问登录网站",
     "ssoNetworkBlockedDesc": "此网络不允许我们访问 {provider} 来登录。学校和办公室的 Wi-Fi 通常会阻止它。您可以改为使用电子邮件注册，或切换到其他网络再试一次。",
     "ssoTryAnyway": "仍然尝试",

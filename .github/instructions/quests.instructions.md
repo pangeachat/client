@@ -59,6 +59,8 @@ Every displayed threshold is the **effective threshold**: the configured stars-t
 
 A course **preview** (not joined) shows no star display — there is no learner progress to show. This builds toward the world_v2 tabbed course card (Figma "Everything outside of Chat"); until that card ships, the display lives on the existing course objectives panel.
 
+The course page shows no activity count beside its star display ([client#9390](https://github.com/pangeachat/client/issues/9390)). The star total is the course goal, reached by choosing among the activities, and a count beside it read as a second requirement: a pilot class tried to work out how 96 activities become 100 stars. The course tiles elsewhere — the browse lists, the invite page, onboarding — keep the count, where it says how much content a course holds and no star total sits beside it.
+
 ## Two star quantities, and how a reader tells them apart
 
 Stars are displayed in two different senses, and both appear on the course page.

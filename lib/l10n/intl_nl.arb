@@ -9415,7 +9415,6 @@
     "activityLoadFailed": "Kon de activiteit niet laden. Controleer je verbinding en probeer het opnieuw.",
     "levelUpChip": "Niveau {level}!",
     "missingCourseOutline": "Deze cursus is niet langer beschikbaar",
-    "missingCourseOutlineCta": "Deze cursus is niet langer beschikbaar. Kies een nieuw cursusplan.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9440,10 +9439,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9977,6 +9972,9 @@
     "callTranscriptSubscribeForTranscription": "Abonneren voor transcriptie",
     "unlockCallTranscript": "Ontgrendel gespreksafschrift",
     "activitySummaryUpdateFailed": "Deze samenvatting kon niet worden bijgewerkt.",
+    "courseNotFound": "Cursus niet gevonden",
+    "askTeacherForNewCourse": "Vraag je docent om een nieuwe cursus te kiezen.",
+    "pickNewCoursePlan": "Kies een nieuw cursusplan.",
     "ssoNetworkBlockedTitle": "Aanmeldingssite onbereikbaar",
     "ssoNetworkBlockedDesc": "Dit netwerk laat ons {provider} niet bereiken om je aan te melden. School- en kantoor-wifi blokkeren dit vaak. Je kunt je in plaats daarvan aanmelden met e-mail, of overschakelen naar een ander netwerk en het opnieuw proberen.",
     "ssoTryAnyway": "Toch proberen",

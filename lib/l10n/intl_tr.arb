@@ -9716,7 +9716,6 @@
     "activityLoadFailed": "Etkinlik yüklenemedi. Bağlantınızı kontrol edin ve tekrar deneyin.",
     "levelUpChip": "Seviye {level}!",
     "missingCourseOutline": "Bu kurs artık mevcut değil",
-    "missingCourseOutlineCta": "Bu kurs artık mevcut değil. Yeni bir kurs planı seçin.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9741,10 +9740,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10278,6 +10273,9 @@
     "callTranscriptSubscribeForTranscription": "Metne çevirme için abone ol",
     "unlockCallTranscript": "Çağrı dökümünü aç",
     "activitySummaryUpdateFailed": "Bu özet güncellenemedi.",
+    "courseNotFound": "Kurs bulunamadı",
+    "askTeacherForNewCourse": "Öğretmeninizden yeni bir kurs seçmesini isteyin.",
+    "pickNewCoursePlan": "Yeni bir kurs planı seçin.",
     "ssoNetworkBlockedTitle": "Giriş sitesine ulaşılamıyor",
     "ssoNetworkBlockedDesc": "Bu ağ, giriş yapmanız için {provider} adresine ulaşmamızı engelliyor. Okul ve ofis Wi-Fi'ları genellikle bunu engeller. Bunun yerine e-posta ile kaydolabilir veya başka bir ağa geçip tekrar deneyebilirsiniz.",
     "ssoTryAnyway": "Yine de dene",
