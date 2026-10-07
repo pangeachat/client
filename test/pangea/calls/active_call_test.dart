@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter/services.dart' show PlatformException;
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:livekit_client/livekit_client.dart' show AudioTrack;
 import 'package:matrix/matrix.dart' as matrix show Room;
@@ -766,6 +768,9 @@ class FakeForeground extends CallForegroundControl {
   final Trace trace;
   bool startReturns;
 
+  /// Thrown by [start] when set, after the attempt is traced.
+  Object? startThrows;
+
   /// Held open so a test can hang up WHILE the platform is still answering.
   Completer<void>? holdStart;
   FakeForeground(this.trace, {this.startReturns = true});
@@ -793,6 +798,11 @@ class FakeForeground extends CallForegroundControl {
     lastChannelName = channelName;
     final hold = holdStart;
     if (hold != null) await hold.future;
+    // How Android 12+ refuses a start from the background: not a quiet zero
+    // but an exception out of startForegroundService itself, which reaches
+    // Dart as a PlatformException.
+    final throws = startThrows;
+    if (throws != null) throw throws;
     if (!startReturns) return 0;
     return lastGeneration = lastGeneration + 1;
   }
@@ -2636,6 +2646,124 @@ void main() {
         reason: 'and nothing was started for teardown to take back',
       );
     });
+
+    // #410: the first call's one legal window. The grant is answered in a
+    // system dialog, and a learner who leaves the app from it -- or in the
+    // moments after it -- has the retry refused from the background. Coming
+    // back to the app is the next moment a start is legal again, and the call
+    // is still unprotected; it has to ask then, not never.
+    test('returning to the app pays a debt the grant could not', () async {
+      final (call, calls, fgs, _) = await withForeground(startReturns: false);
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+      expect(startsAsked(), 2, reason: 'the entry attempt plus the grant');
+
+      // Back on screen, now with the platform willing.
+      fgs.startReturns = true;
+      call.appResumed();
+      await pumpEventQueue();
+      expect(startsAsked(), 3, reason: 'the return to the app asked again');
+
+      final claimed = fgs.lastGeneration;
+      expect(claimed, isNot(0));
+      await call.hangUp();
+      expect(
+        trace.steps,
+        contains('fgs.stop(gen: $claimed)'),
+        reason: 'the service the return started is the call\'s to stop',
+      );
+    });
+
+    test('a start refused by a throw is still owed', () async {
+      // Android 12+ refuses a background start by THROWING out of
+      // startForegroundService, not by answering zero. The grant's retry had
+      // already spent the debt before asking, so a throw used to leave the call
+      // owing nothing -- unprotected for the rest of the call, however often
+      // the learner came back to the app.
+      final (call, calls, fgs, media) = await withForeground(
+        startReturns: false,
+      );
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      final connecting = Completer<void>();
+      media.beforeConnect = connecting.future;
+
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      expect(startsAsked(), 1, reason: 'the entry attempt, refused');
+
+      // The learner left during the dialog; the grant's retry throws.
+      fgs.startThrows = PlatformException(
+        code: 'error',
+        message: 'ForegroundServiceStartNotAllowedException',
+      );
+      connecting.complete();
+      await starting;
+      await pumpEventQueue();
+      expect(startsAsked(), 2, reason: 'the grant still asked');
+
+      fgs.startThrows = null;
+      fgs.startReturns = true;
+      call.appResumed();
+      await pumpEventQueue();
+      expect(
+        startsAsked(),
+        3,
+        reason: 'a thrown refusal is a refusal, and the debt stands',
+      );
+      await call.hangUp();
+      expect(trace.steps, contains('fgs.stop(gen: ${fgs.lastGeneration})'));
+    });
+
+    test('returning to the app asks nothing of a protected call', () async {
+      final (call, calls, _, _) = await withForeground();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+      expect(startsAsked(), 1);
+
+      call.appResumed();
+      call.appResumed();
+      await pumpEventQueue();
+      expect(startsAsked(), 1, reason: 'nothing was owed');
+      await call.hangUp();
+    });
+
+    test('returning to the app after hanging up asks nothing', () async {
+      final (call, calls, _, _) = await withForeground(startReturns: false);
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+      final before = startsAsked();
+      await call.hangUp();
+
+      call.appResumed();
+      await pumpEventQueue();
+      expect(
+        startsAsked(),
+        before,
+        reason: 'a service for a call that is over has nobody to stop it',
+      );
+    });
+
+    test(
+      'returning to the app before the call asked anything is quiet',
+      () async {
+        // A call the account will refuse never touched the service and owes it
+        // nothing; a resume must not invent a first attempt for it.
+        final (call, calls, _, _) = await withForeground();
+        calls.busy = true;
+        calls.joinError = const AlreadyInACall();
+        calls.devicesInCall = [calls.client.deviceID!];
+        await call.start(roomStub(calls.client), video: false);
+        call.appResumed();
+        await pumpEventQueue();
+        expect(trace.steps.where((s) => s.startsWith('fgs.start')), isEmpty);
+        call.dispose();
+        await pumpEventQueue();
+      },
+    );
 
     test('a start the account will refuse never touches the service', () async {
       // The service is the LIVE call's; a second start is about to be
