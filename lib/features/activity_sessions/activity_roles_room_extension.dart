@@ -98,6 +98,8 @@ void guardSeatClaim({
 }
 
 extension ActivityRolesRoomExtension on Room {
+  static const _adminReviewRoomIdsField = 'room_ids';
+
   ActivityRolesModel? get activityRoles {
     final content = getState(PangeaEventTypes.activityRole)?.content;
     if (content == null) return null;
@@ -176,6 +178,17 @@ extension ActivityRolesRoomExtension on Room {
   bool get hasCompletedRole => ownRoleState?.isFinished ?? false;
 
   bool get hasArchivedActivity => ownRoleState?.isArchived ?? false;
+
+  /// The admin dashboard joined the user here to review the session, and they
+  /// have not taken a role in it (#9364).
+  bool get isAdminReviewOnly {
+    final reviewRoomIds = client
+        .accountData[PangeaEventTypes.adminReviewRooms]
+        ?.content[_adminReviewRoomIdsField];
+    return reviewRoomIds is List &&
+        reviewRoomIds.contains(id) &&
+        !hasPickedRole;
+  }
 
   bool get isActiveInActivity => hasPickedRole && !hasCompletedRole;
 

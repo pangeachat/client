@@ -21,6 +21,16 @@ On the write side, starting a session shares it into **every joined course the a
 
 Starting a session opens it once the new room has reached the client with its initial state, including the launcher's role, which is usually one sync after the server creates it. Sharing into courses and the bot invite finish in the background, and a room panel whose room hasn't synced yet shows a loading state for up to 10 seconds before the room-unavailable panel.
 
+## Sessions a teacher only reviewed stay out of their chats
+
+When a teacher opens a student's session from the admin dashboard, the dashboard joins the teacher to that session room so they can read it. The teacher takes no part in that conversation, so the room stays out of every chat list and unread badge, the same way an archived activity does ([#9364](https://github.com/pangeachat/client/issues/9364)).
+
+- **The dashboard keeps the list.** It records each room it joined for review in the teacher's `pangea.admin_review` account data, as a `room_ids` list. The record lives on the teacher's account rather than in the room, because a profile change rewrites the teacher's membership in every room and would erase a mark kept there.
+- **Taking a role ends the review.** A listed room shows again once the teacher takes a role in the session, because the teacher is then a participant.
+- **A direct link still opens it.** The room is hidden from the lists, but a link to it still opens it, so the dashboard's Open chat link keeps working.
+- **Leaving a course leaves these rooms too.** Leaving a course keeps only the teacher's analytics rooms and archived activities; a review room is left with the course.
+- **Muting these rooms, and later leaving them, is the dashboard's job, not the client's.**
+
 ## The start page mirrors the room
 
 The activity's start page doesn't store its own state; it reads it from the room — whether a room exists yet, whether the learner is in it, whether they've taken a role, whether every role is filled. From those facts it moves through a short sequence (not started → picking a role → in with a role → session full) and shows the right thing at each step: the waiting room (ping the course, play with the bot, or invite a friend — pinging is limited to once a minute so it can't be spammed), the role picker, or the live activity.
