@@ -339,8 +339,7 @@ void main() {
         expect(calls, [
           'remember:${report.reportId}',
           'capture',
-          'remember:fresh-report-id',
-          'forget:${report.reportId}',
+          'markRejected:${report.reportId}',
           'offerRetry',
           'remember:fresh-report-id',
           'capture',
@@ -352,7 +351,7 @@ void main() {
     );
 
     test(
-      'after a conflict, declining keeps only the fresh submission',
+      'after a conflict, declining keeps the copy, moved to the new id',
       () async {
         captureResults = [CaptureResult.conflict];
         retryAnswers = [false];
@@ -363,27 +362,28 @@ void main() {
         expect(calls, [
           'remember:${report.reportId}',
           'capture',
-          'remember:fresh-report-id',
-          'forget:${report.reportId}',
+          'markRejected:${report.reportId}',
           'offerRetry',
         ]);
       },
     );
 
-    test('after a conflict, the old copy stays if the new one cannot be '
-        'stored', () async {
-      captureResults = [CaptureResult.conflict];
-      retryAnswers = [false];
-      failingWrites = {'fresh-report-id'};
+    test('after a conflict, a copy that could not be moved goes once the '
+        'report is recorded under the new id', () async {
+      captureResults = [CaptureResult.conflict, CaptureResult.recorded];
+      retryAnswers = [true];
+      failingWrites = {'mark:${report.reportId}'};
 
       await flow().run(report, offensive: false);
 
-      expect(calls, isNot(contains('forget:${report.reportId}')));
       expect(
         calls,
-        contains('markRejected:${report.reportId}'),
-        reason: 'the copy left behind must never be sent as the refused id',
+        containsAllInOrder([
+          'markRejected:${report.reportId}',
+          'forget:${report.reportId}',
+        ]),
       );
+      expect(calls, contains('forget:fresh-report-id'));
     });
 
     test(

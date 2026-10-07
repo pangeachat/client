@@ -34,33 +34,36 @@ class PendingReportStore {
   static String _key(String userId, String reportId) =>
       '${_userPrefix(userId)}$reportId';
 
-  /// Marks a stored copy whose id the module refused with a 409. Such a copy
-  /// is listed, and sent, only under its [successorReportId] — never under
-  /// the refused id again.
-  static const _rejectedField = 'rejected_by_module';
+  /// How many times the module refused this copy's id with a 409. A copy
+  /// refused n times is listed, sent and forgotten only under the n-th
+  /// [successorReportId] of the id it was first stored under — never under a
+  /// refused id again. Counted in place, so moving a report to a new id is a
+  /// single write to its one key, with no second copy and nothing to delete.
+  static const _generationsField = 'successor_generations';
 
   /// [userId]'s stored reports. A stored value that cannot be read is
   /// reported — by its key, never its contents, which hold the reason — and
   /// skipped; it is left in place rather than deleted.
   List<ReportSubmission> pending(String userId) => [
-    for (final (_, report) in _entries(userId)) report,
+    for (final (_, report, _) in _entries(userId)) report,
   ];
 
-  /// Each stored copy with the key it is stored under, already moved to its
-  /// successor id when it is marked rejected.
-  List<(String, ReportSubmission)> _entries(String userId) {
+  /// Each stored copy: its key, the report under the id it is sent as now,
+  /// and its stored JSON.
+  List<(String, ReportSubmission, Map<String, dynamic>)> _entries(
+    String userId,
+  ) {
     final prefix = _userPrefix(userId);
-    final entries = <(String, ReportSubmission)>[];
+    final entries = <(String, ReportSubmission, Map<String, dynamic>)>[];
     for (final key in _prefs.getKeys().where((k) => k.startsWith(prefix))) {
       try {
         final json = jsonDecode(_prefs.getString(key)!) as Map<String, dynamic>;
-        final report = ReportSubmission.fromJson(json);
-        entries.add((
-          key,
-          json[_rejectedField] == true
-              ? report.withReportId(successorReportId(report.reportId))
-              : report,
-        ));
+        var report = ReportSubmission.fromJson(json);
+        final generations = json[_generationsField] as int? ?? 0;
+        for (var i = 0; i < generations; i++) {
+          report = report.withReportId(successorReportId(report.reportId));
+        }
+        entries.add((key, report, json));
       } catch (e) {
         // Not the caught error: a FormatException quotes the stored text.
         unawaited(
@@ -82,8 +85,10 @@ class PendingReportStore {
     return pending(userId);
   }
 
-  /// Stores [report], replacing any copy with the same report id.
+  /// Stores [report]. A copy already listed under its id — stored under it,
+  /// or moved to it by [markRejected] — is left as it is.
   Future<void> remember(String userId, ReportSubmission report) async {
+    if (_entries(userId).any((e) => e.$2.reportId == report.reportId)) return;
     final ok = await _prefs.setString(
       _key(userId, report.reportId),
       jsonEncode(report.toJson()),
@@ -91,24 +96,21 @@ class PendingReportStore {
     if (!ok) throw StateError('the pending report write was refused');
   }
 
-  /// Rewrites the stored copy under [reportId] in place as refused, so it is
-  /// only ever sent again under its successor id. Needs no more room than
-  /// the copy already takes, so it can succeed where storing a second copy
-  /// under the new id cannot.
+  /// Moves the copy listed under [reportId], which the module refused with a
+  /// 409, to its [successorReportId], in place: one write to its own key,
+  /// needing no more room than it already takes.
   Future<void> markRejected(String userId, String reportId) async {
-    final key = _key(userId, reportId);
-    final raw = _prefs.getString(key);
-    if (raw == null) throw StateError('no stored copy to mark');
-    final json = jsonDecode(raw) as Map<String, dynamic>;
-    json[_rejectedField] = true;
+    final entry = _entries(userId).where((e) => e.$2.reportId == reportId);
+    if (entry.isEmpty) throw StateError('no stored copy to mark');
+    final (key, _, json) = entry.first;
+    json[_generationsField] = (json[_generationsField] as int? ?? 0) + 1;
     final ok = await _prefs.setString(key, jsonEncode(json));
     if (!ok) throw StateError('the pending report write was refused');
   }
 
-  /// Drops the stored copy of [reportId], whether it is stored under that id
-  /// or is a refused copy listed under it as its successor.
+  /// Drops every copy listed under [reportId].
   Future<void> forget(String userId, String reportId) async {
-    for (final (key, report) in _entries(userId)) {
+    for (final (key, report, _) in _entries(userId)) {
       if (report.reportId != reportId) continue;
       final ok = await _prefs.remove(key);
       if (!ok) throw StateError('the pending report removal was refused');
@@ -121,14 +123,13 @@ class PendingReportStore {
 /// stays for the next start; its failure is already in Sentry.
 ///
 /// A [CaptureResult.conflict] means the id is already the module's for
-/// another report, so the report is moved to the id [newReportId] derives —
-/// the new copy stored before the old one is dropped — and sent once more
-/// under it now. A store failure is reported and never stops the others.
+/// another report: the stored copy is moved, in place, to the id's
+/// [successorReportId] and sent once more under it now. A store failure is
+/// reported and never stops the others.
 Future<void> replayPendingReports({
   required PendingReportStore store,
   required String userId,
   required Future<CaptureResult> Function(ReportSubmission report) attempt,
-  required String Function(String rejectedId) newReportId,
 }) async {
   Future<bool> guarded(Future<void> Function() write, String what) async {
     try {
@@ -153,24 +154,20 @@ Future<void> replayPendingReports({
     final result = await attempt(report);
     if (result == CaptureResult.failed) continue;
     if (result == CaptureResult.conflict) {
-      final fresh = report.withReportId(newReportId(report.reportId));
-      final stored = await guarded(
-        () => store.remember(userId, fresh),
-        'remember',
+      // Sent under the new id now even if the move could not be stored; the
+      // copy then stays under the refused id until the store works again. A
+      // report already moved once this run is sent again only on the next
+      // start, so a run cannot loop.
+      await guarded(
+        () => store.markRejected(userId, report.reportId),
+        'markRejected',
       );
-      if (stored) {
-        await guarded(() => store.forget(userId, report.reportId), 'forget');
-      } else {
-        // No room for a second copy: mark the one there is, in place, so it
-        // is listed under the new id from now on and never sent as the old.
-        await guarded(
-          () => store.markRejected(userId, report.reportId),
-          'markRejected',
-        );
+      if (!rotated) {
+        queue.add((
+          report.withReportId(successorReportId(report.reportId)),
+          true,
+        ));
       }
-      // Sent under the new id now either way. A report already moved once
-      // this run is sent again only on the next start, so a run cannot loop.
-      if (!rotated) queue.add((fresh, true));
       continue;
     }
     // Recorded. A failed forget means a resend next start, which is harmless:
@@ -202,7 +199,6 @@ class PendingReportReplay {
         attempt: (report) async => _disposed
             ? CaptureResult.failed
             : attemptReportCapture(client, report),
-        newReportId: successorReportId,
       );
     } catch (e, s) {
       // The reports stay stored and are tried again on the next start.

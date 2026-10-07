@@ -104,8 +104,8 @@ class ReportFlow<T> {
   /// its id turns out to belong to another report.
   final Future<void> Function(ReportSubmission report) forget;
 
-  /// Marks the stored copy of a report as refused with a 409, in place, so it
-  /// is only ever sent again under its new id. True once marked.
+  /// Moves the stored copy of a report refused with a 409 to its new id, in
+  /// place, so it is never sent under the refused id again. True once moved.
   final Future<bool> Function(ReportSubmission report) markRejected;
 
   /// The id a report moves to after [CaptureResult.conflict] on the given id
@@ -211,17 +211,11 @@ class ReportFlow<T> {
         return current;
       }
       if (result == CaptureResult.conflict) {
-        final fresh = current.withReportId(newReportId(current.reportId));
-        // The fresh copy is stored before the old one goes, so the report
-        // is on the device at every moment. If there is no room for it, the
-        // old copy is marked in place, so it is only ever sent under the new
-        // id; if even that fails, it stays until the new id is recorded.
-        if (await remember(fresh)) {
-          await forget(current);
-        } else if (!await markRejected(current)) {
-          rejected.add(current);
-        }
-        current = fresh;
+        // The stored copy moves to the new id in place, one write, so it is
+        // never sent as the refused id again. If even that write fails, the
+        // old copy stays until the report is recorded under the new id.
+        if (!await markRejected(current)) rejected.add(current);
+        current = current.withReportId(newReportId(current.reportId));
       }
       if (!await offerRetry()) return null;
     }

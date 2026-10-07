@@ -80,7 +80,6 @@ void main() {
         SharedPreferences.resetStatic();
         final afterRestart = await PendingReportStore.open();
         await replayPendingReports(
-          newReportId: (_) => 'rotated-id',
           store: afterRestart,
           userId: userId,
           attempt: serverAnswering(200),
@@ -91,7 +90,6 @@ void main() {
 
         // Confirmed, so the next start sends nothing.
         await replayPendingReports(
-          newReportId: (_) => 'rotated-id',
           store: await PendingReportStore.open(),
           userId: userId,
           attempt: serverAnswering(200),
@@ -105,7 +103,6 @@ void main() {
       await store.remember(userId, stored);
 
       await replayPendingReports(
-        newReportId: (_) => 'rotated-id',
         store: store,
         userId: userId,
         attempt: serverAnswering(503),
@@ -134,13 +131,15 @@ void main() {
       });
 
       await replayPendingReports(
-        newReportId: (_) => 'rotated-id',
         store: store,
         userId: userId,
         attempt: (report) => attemptReportCapture(api, report),
       );
 
-      expect(sentBodies.map((b) => b['report_id']), ['id-409', 'rotated-id']);
+      expect(sentBodies.map((b) => b['report_id']), [
+        'id-409',
+        successorReportId('id-409'),
+      ]);
       expect(sentBodies.last['reason'], sentBodies.first['reason']);
       expect(store.pending(userId), isEmpty);
     });
@@ -152,13 +151,14 @@ void main() {
         final results = [CaptureResult.conflict, CaptureResult.failed];
 
         await replayPendingReports(
-          newReportId: (_) => 'rotated-id',
           store: store,
           userId: userId,
           attempt: (_) async => results.removeAt(0),
         );
 
-        expect(store.pending(userId).map((r) => r.reportId), ['rotated-id']);
+        expect(store.pending(userId).map((r) => r.reportId), [
+          successorReportId('id-409'),
+        ]);
       },
     );
 
@@ -188,7 +188,6 @@ void main() {
       final recordedIds = <String>{};
 
       await replayPendingReports(
-        newReportId: successorReportId,
         store: store,
         userId: userId,
         attempt: (report) async {
@@ -209,7 +208,6 @@ void main() {
         final sent = <String>[];
 
         await replayPendingReports(
-          newReportId: (id) => '$id+',
           store: store,
           userId: userId,
           attempt: (report) async {
@@ -218,8 +216,16 @@ void main() {
           },
         );
 
-        expect(sent, ['first', 'first+']);
-        expect(store.pending(userId).map((r) => r.reportId), ['first++']);
+        final once = successorReportId('first');
+        expect(sent, ['first', once]);
+        expect(store.pending(userId).map((r) => r.reportId), [
+          successorReportId(once),
+        ]);
+        expect(
+          store.pending(userId),
+          hasLength(1),
+          reason: 'moved in place: one copy, never a second key',
+        );
       },
     );
 
@@ -236,7 +242,6 @@ void main() {
 
       // The new id fails too: the device keeps only the marked old copy.
       await replayPendingReports(
-        newReportId: successorReportId,
         store: failing,
         userId: userId,
         attempt: (report) async {
@@ -253,7 +258,6 @@ void main() {
       // left.
       sent.clear();
       await replayPendingReports(
-        newReportId: successorReportId,
         store: failing,
         userId: userId,
         attempt: (report) async {
@@ -263,6 +267,43 @@ void main() {
       );
       expect(sent, [moved]);
       expect(failing.pending(userId), isEmpty);
+    });
+
+    test(
+      'a copy whose move cannot be stored is still sent under the new id',
+      () async {
+        final failing = _MarkFails(await SharedPreferences.getInstance());
+        await failing.remember(userId, submission('old-id'));
+        final sent = <String>[];
+
+        await replayPendingReports(
+          store: failing,
+          userId: userId,
+          attempt: (report) async {
+            sent.add(report.reportId);
+            return report.reportId == 'old-id'
+                ? CaptureResult.conflict
+                : CaptureResult.recorded;
+          },
+        );
+
+        expect(sent, ['old-id', successorReportId('old-id')]);
+      },
+    );
+
+    test('storing a moved report again keeps the one copy', () async {
+      final old = submission('old-id');
+      await store.remember(userId, old);
+      await store.markRejected(userId, old.reportId);
+
+      await store.remember(
+        userId,
+        old.withReportId(successorReportId(old.reportId)),
+      );
+
+      expect(store.pending(userId).map((r) => r.reportId), [
+        successorReportId(old.reportId),
+      ]);
     });
 
     test('a 409 is a conflict, not a failure and not a success', () async {
@@ -279,7 +320,6 @@ void main() {
         await store.remember(userId, submission('id-404'));
 
         await replayPendingReports(
-          newReportId: (_) => 'rotated-id',
           store: store,
           userId: userId,
           attempt: serverAnswering(404),
@@ -295,7 +335,6 @@ void main() {
         await store.remember('@someone-else:example.invalid', submission('x'));
 
         await replayPendingReports(
-          newReportId: (_) => 'rotated-id',
           store: store,
           userId: userId,
           attempt: serverAnswering(200),
@@ -363,7 +402,6 @@ void main() {
 
       final replayed = <String>[];
       await replayPendingReports(
-        newReportId: (_) => 'rotated-id',
         store: thisTab,
         userId: userId,
         attempt: (report) async {
@@ -386,7 +424,6 @@ void main() {
       await harness
           .capture(() async {
             await replayPendingReports(
-              newReportId: (_) => 'rotated-id',
               store: store,
               userId: userId,
               attempt: (report) async {
@@ -909,4 +946,13 @@ class _RememberFails extends PendingReportStore {
     if (report.reportId == failFor) throw StateError('disk full');
     await super.remember(userId, report);
   }
+}
+
+/// A store that cannot move a refused copy, as a full or locked disk might.
+class _MarkFails extends PendingReportStore {
+  _MarkFails(super.prefs);
+
+  @override
+  Future<void> markRejected(String userId, String reportId) async =>
+      throw StateError('disk full');
 }
