@@ -9,6 +9,7 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
+import 'package:fluffychat/routes/chat/calls/call_key_clock.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_ownership.dart';
@@ -165,6 +166,22 @@ class _UnjoinableCalls extends _FakeCalls {
   @override
   Future<CallToken> join(matrix.Room room) async =>
       throw StateError('the SFU refused this join');
+}
+
+/// A service whose answer to "is this membership current" the test states.
+class _JoinerCalls extends _FakeCalls {
+  _JoinerCalls(super.client);
+
+  /// Current memberships, as `userId|eventId`: the account matters, because
+  /// a sibling's record must be checked against THIS account's memberships.
+  Set<String> current = {};
+
+  @override
+  bool membershipEventIsCurrent(
+    matrix.Room room,
+    String userId,
+    String eventId,
+  ) => current.contains('$userId|$eventId');
 }
 
 class _FakeRoster extends CallRoster {
@@ -2579,6 +2596,189 @@ void main() {
         contains('dispose'),
         reason: 'the session disposes its tone player, leaking no AudioPlayer',
       );
+    });
+  });
+
+  group('a device joining a call under way (#9173)', () {
+    const friendId = '@friend:fakeServer.notExisting';
+    const friend = '$friendId:FRIENDDEV';
+    const callerMembership = r'$caller-membership';
+
+    Future<
+      ({
+        CallSession session,
+        List<Map<String, Object?>> recorded,
+        _FakeMedia media,
+      })
+    >
+    join({
+      CallInProgress? record,
+      Set<String> current = const {},
+      List<matrix.Event> Function(matrix.Room room)? timeline,
+      List<matrix.MatrixEvent> clocks = const [],
+      Map<String, matrix.Event> Function(matrix.Room room)? memberships,
+    }) async {
+      final client = await _bareClient();
+      final room = matrix.Room(id: '!r:server', client: client);
+      if (record != null) {
+        room.roomAccountData[CallInProgress.type] = matrix.BasicEvent(
+          type: CallInProgress.type,
+          content: record.toJson(),
+        );
+      }
+      final calls = _JoinerCalls(client)
+        ..current = current
+        ..adoptCallIdForTest('!r:server');
+      final media = _FakeMedia(
+        now: () => DateTime.fromMillisecondsSinceEpoch(1000000500),
+      );
+      // This account's phone and the other person are both already in the
+      // call, so this device is a JOINER: no ring, no placing.
+      media.fakeRoster = _FakeRoster(room: media.room, myUserId: client.userID!)
+        ..identities = {'${client.userID}:SIBLINGDEV', friend};
+      media.fakeRoster!.recompute();
+      media.anchorClocksTo((secondsMs: 1000000000, ms: 0));
+      final recorded = <Map<String, Object?>>[];
+      final session = CallSession.start(
+        room: room,
+        video: false,
+        callService: calls,
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      final memberMap = memberships?.call(room) ?? const {};
+      session.timelineEventsOverride = () async => timeline?.call(room) ?? [];
+      session.keyClockOverride = CallKeyClock(
+        writeCallInProgress: (content) async => recorded.add(content),
+        sendClock: (content, txn) async {},
+        fetchClockEvents: (key) async => clocks,
+        fetchEvent: (id) async => memberMap[id],
+        clockArrivals: const Stream.empty(),
+        onEpoch: session.call.adoptCallEpoch,
+        dmMembers: () => {client.userID!, friendId},
+        callId: () => '!r:server',
+      );
+      await pumpEventQueue();
+      return (session: session, recorded: recorded, media: media);
+    }
+
+    test('adopts the key its other device recorded, and records it again '
+        'for the next one', () async {
+      final t = await join(
+        record: const CallInProgress(
+          callKey: callerMembership,
+          callerId: friendId,
+          writerDeviceId: 'SIBLINGDEV',
+          writerMembershipEventId: r'$sibling-membership',
+        ),
+        current: {'@test:fakeServer.notExisting|\$sibling-membership'},
+      );
+      expect(t.session.placedCall, isFalse, reason: 'a joiner');
+      expect(t.recorded, isNotEmpty);
+      expect(t.recorded.last['call_key'], callerMembership);
+      expect(t.recorded.last['caller_id'], friendId);
+      expect(t.recorded.last['writer_device_id'], 'GHTYAJCE');
+      expect(t.recorded.last['writer_membership_event_id'], r'$membership');
+      t.session.dispose();
+      await pumpEventQueue();
+    });
+
+    test('a record whose writer is not in the call falls back to the ring '
+        'still in force', () async {
+      final t = await join(
+        record: const CallInProgress(
+          callKey: r'$stale-key',
+          callerId: friendId,
+          writerDeviceId: 'GONEDEV',
+          writerMembershipEventId: r'$gone-membership',
+        ),
+        current: {
+          '@test:fakeServer.notExisting|\$gone-membership',
+          '$friendId|$callerMembership',
+        },
+        timeline: (room) => [
+          matrix.Event(
+            type: PangeaEventTypes.callNotification,
+            content: {
+              'application': {'type': 'm.call', 'notification_type': 'ring'},
+              'm.relates_to': {
+                'rel_type': 'm.reference',
+                'event_id': callerMembership,
+              },
+            },
+            eventId: r'$ring',
+            senderId: friendId,
+            originServerTs: DateTime.now(),
+            room: room,
+          ),
+        ],
+      );
+      expect(t.recorded.last['call_key'], callerMembership);
+      expect(t.recorded.last['caller_id'], friendId);
+      t.session.dispose();
+      await pumpEventQueue();
+    });
+
+    test('with nothing to adopt the joiner has no key, as before', () async {
+      final t = await join();
+      expect(t.recorded, isEmpty);
+      t.session.dispose();
+      await pumpEventQueue();
+    });
+
+    test('the on-screen clock snaps to the shared epoch through this '
+        "device's own anchor", () async {
+      final t = await join(
+        record: const CallInProgress(
+          callKey: callerMembership,
+          callerId: friendId,
+          writerDeviceId: 'SIBLINGDEV',
+          writerMembershipEventId: r'$sibling-membership',
+        ),
+        current: {'@test:fakeServer.notExisting|\$sibling-membership'},
+        clocks: [
+          matrix.MatrixEvent(
+            type: CallClockContent.type,
+            content: const CallClockContent(
+              callKey: callerMembership,
+              epochSfuMs: 999000000,
+              writerDeviceId: 'FRIENDDEV',
+              writerAnchorId: callerMembership,
+            ).toContent(),
+            eventId: r'$clock',
+            senderId: friendId,
+            originServerTs: DateTime.now(),
+          ),
+        ],
+        memberships: (room) => {
+          callerMembership: matrix.Event(
+            type: matrix.EventTypes.GroupCallMember,
+            content: {
+              'memberships': [
+                {'call_id': '!r:server', 'device_id': 'FRIENDDEV'},
+              ],
+            },
+            eventId: callerMembership,
+            senderId: friendId,
+            originServerTs: DateTime.now(),
+            room: room,
+          ),
+        },
+      );
+      await pumpEventQueue();
+      // epoch 999000000 on the SFU clock; this device runs 500ms ahead of it.
+      expect(
+        t.session.callStartedAt,
+        DateTime.fromMillisecondsSinceEpoch(999000500),
+      );
+      t.session.dispose();
+      await pumpEventQueue();
     });
   });
 }

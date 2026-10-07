@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart' hide Room;
 
 import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
+import 'package:fluffychat/routes/chat/calls/call_key_clock.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_ownership.dart';
@@ -1411,9 +1412,75 @@ class ActiveCall extends ChangeNotifier {
   /// The rejoin path is the exception and uses the server timestamp anyway,
   /// because there the alternative is restarting at zero, which is worse than
   /// any skew.
+  ///
+  /// Since client#9173 the first-sighting stamp is only the last resort: the
+  /// start is formed from the SFU's own join stamps through this device's
+  /// [ClockAnchor] where it can be ([_localCallStart]), and then snapped to the
+  /// call's shared `pangea.call_clock` once that is read ([adoptCallEpoch]).
+  /// Both convert ONE SFU instant through each device's own measured offset,
+  /// so the elapsed times agree without comparing two device clocks.
   DateTime? get callStartedAt => _callStartedAt;
 
   DateTime? _callStartedAt;
+
+  /// When the call began on the SFU's clock, from the join stamps this device
+  /// can see: the later of the two accounts' EARLIEST joins, i.e. the moment
+  /// both people were first in the call (client#9173). Null until both
+  /// accounts have a stamp. What the call clock's writer writes, and the local
+  /// value every device shows until the shared one is read.
+  int? get callEpochFromSfuJoins {
+    final roster = _roster;
+    final me = calls.client.userID;
+    if (roster == null || me == null) return null;
+    final own = <int>[?media.clockAnchor?.sfuMs];
+    final peer = <int>[];
+    for (final p in roster.participants) {
+      final ms = CallClockContent.sfuJoinMs(
+        media.sfuJoinStampsFor(p.identity),
+        p.joinedAt,
+      );
+      if (ms == null) continue;
+      (p.userId == me ? own : peer).add(ms);
+    }
+    return CallClockContent.epochFromJoins(own, peer);
+  }
+
+  /// The start this device shows before any shared clock has been read: the
+  /// SFU epoch converted through this device's own anchor when it can be
+  /// formed, else this device's first sighting of the other person. A rejoin
+  /// sets its own start from the breadcrumb right after, so it skips this.
+  DateTime _localCallStart() {
+    final epoch = _rejoining ? null : callEpochFromSfuJoins;
+    final anchor = media.clockAnchor;
+    if (epoch != null && anchor != null) {
+      return DateTime.fromMillisecondsSinceEpoch(epoch + anchor.offsetMs);
+    }
+    if (!_rejoining) {
+      Logs().i(
+        'No SFU join stamps for both sides; the call clock counts from '
+        'this device first seeing the other person',
+      );
+    }
+    return DateTime.now();
+  }
+
+  /// Snaps the on-screen clock to the call's shared epoch (`pangea.call_clock`)
+  /// so every device -- peer, sibling, rejoined -- reads the same elapsed time.
+  void adoptCallEpoch(int epochSfuMs) {
+    if (_disposed) return;
+    final anchor = media.clockAnchor;
+    if (anchor == null) {
+      Logs().w(
+        'A shared call clock arrived but this device has no clock anchor; '
+        'keeping its own start',
+      );
+      return;
+    }
+    _callStartedAt = DateTime.fromMillisecondsSinceEpoch(
+      epochSfuMs + anchor.offsetMs,
+    );
+    notifyListeners();
+  }
 
   /// Who the other person is, learned at the same moment we learn that
   /// somebody IS there.
@@ -1438,7 +1505,7 @@ class ActiveCall extends ChangeNotifier {
 
   void _notePeerPresent() {
     _learnPeerIdentity();
-    _callStartedAt ??= DateTime.now();
+    _callStartedAt ??= _localCallStart();
     final firstArrival = _talkStartedAt == null;
     _talkStartedAt ??= DateTime.now();
     _segmentOpenedAt ??= DateTime.now();

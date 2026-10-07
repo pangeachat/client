@@ -1726,6 +1726,11 @@ class CallService {
 
   String? _callIdForTest;
 
+  /// The call id this device's live call is under, or null when none is up.
+  /// Read by the call clock reader to check that a writer's membership was
+  /// for this call.
+  String? get currentCallId => _current?.groupCallId ?? _callIdForTest;
+
   /// Whether a ring in this room could be a 1:1 call for us.
   ///
   /// `isDirectChat` reads `m.direct` account data, which at cold start -- the
