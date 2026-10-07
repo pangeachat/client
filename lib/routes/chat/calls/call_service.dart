@@ -1590,6 +1590,95 @@ class CallService {
     return sawTheirs ? PeerPresence.gone : PeerPresence.unknown;
   }
 
+  /// Whether the call [ring] was sent from is still standing, for deciding
+  /// whether it is glare.
+  ///
+  /// Narrower than [callerPresence], which asks whether the device that rang
+  /// holds ANY membership. Glare asks about one membership: the one the ring
+  /// names. Only that membership standing says the ring is live, and only
+  /// what that device wrote AFTER the ring can say it is over -- a
+  /// retraction, or a fresh membership because they are now answering a call
+  /// of ours. Anything it wrote before the ring predates the membership the
+  /// ring was sent for, so it says nothing about that ring: a retraction left
+  /// from an earlier call read as "gone" and had genuine simultaneous calling
+  /// written twice, and a membership left from one read as "live".
+  /// Everything else -- including state this device simply has not synced --
+  /// is [PeerPresence.unknown] (pangeachat/.github#410).
+  ///
+  /// Ordered by the server's stamps on both sides, one clock.
+  PeerPresence ringCallPresence(Room room, IncomingCallNotification ring) {
+    // A ring that names no membership has nothing narrower to ask about; the
+    // device's own standing is the answer.
+    if (ring.membershipEventId == null) {
+      return callerPresence(
+        room,
+        ring.event.senderId,
+        deviceId: ring.senderDeviceId,
+      );
+    }
+    final memberStates = room.states[EventTypes.GroupCallMember];
+    if (memberStates == null || memberStates.isEmpty) {
+      return PeerPresence.unknown;
+    }
+    var superseded = false;
+    for (final state in memberStates.values) {
+      switch (ringEvidenceIn(state, ring)) {
+        case PeerPresence.live:
+          return PeerPresence.live;
+        case PeerPresence.gone:
+          superseded = true;
+        case PeerPresence.unknown:
+          break;
+      }
+    }
+    return superseded ? PeerPresence.gone : PeerPresence.unknown;
+  }
+
+  /// What ONE member state event says about the call [ring] was sent from,
+  /// by the rules of [ringCallPresence].
+  ///
+  /// Its own question because evidence that arrives AFTER a ring has to be
+  /// judged one event at a time, in the order it arrived. Room state keeps
+  /// only the newest event per key, so a sync that carries their membership
+  /// and then their retraction leaves only the retraction to re-read -- and a
+  /// genuine simultaneous call read back from that collapsed state looked
+  /// like a call that had already ended.
+  PeerPresence ringEvidenceIn(
+    StrippedStateEvent state,
+    IncomingCallNotification ring,
+  ) {
+    final callerId = ring.event.senderId;
+    final deviceId = ring.senderDeviceId;
+    final named = ring.membershipEventId;
+    if (state.type != EventTypes.GroupCallMember) return PeerPresence.unknown;
+    if (state.senderId != callerId) return PeerPresence.unknown;
+    final memberships = state.content['memberships'];
+    if (memberships is! List) return PeerPresence.unknown;
+    if (named != null) {
+      // Undated state cannot be put in order against the ring.
+      if (state is! Event) return PeerPresence.unknown;
+      if (state.eventId == named) {
+        return memberships.isNotEmpty
+            ? PeerPresence.live
+            : PeerPresence.unknown;
+      }
+    }
+    // Attributed to a device the way [callerPresence] attributes it.
+    final speaksForEveryDevice =
+        memberships.isEmpty && state.stateKey == callerId;
+    if (!speaksForEveryDevice &&
+        deviceId != null &&
+        !_belongsToDevice(state, memberships, deviceId)) {
+      return PeerPresence.unknown;
+    }
+    if (named == null) {
+      return memberships.isNotEmpty ? PeerPresence.live : PeerPresence.gone;
+    }
+    return (state as Event).originServerTs.isAfter(ring.orderedAt)
+        ? PeerPresence.gone
+        : PeerPresence.unknown;
+  }
+
   /// Whether a member state event is the work of one particular device.
   ///
   /// The membership's own `device_id` first; the state key only as a fallback,
@@ -1944,6 +2033,21 @@ class CallService {
         update.state.type == EventTypes.GroupCallMember &&
         update.state.senderId == client.userID,
   );
+
+  /// Every member state event [callerId] writes in [room], as it is applied
+  /// and in order -- the payload, not just the fact of a change. Room state
+  /// keeps only the newest event per key, so anything that must judge each
+  /// write (a membership that was live for a moment before its retraction in
+  /// the same sync) has to read it from here rather than from `room.states`.
+  Stream<StrippedStateEvent> callerStateUpdates(Room room, String callerId) =>
+      client.onRoomState.stream
+          .where(
+            (update) =>
+                update.roomId == room.id &&
+                update.state.type == EventTypes.GroupCallMember &&
+                update.state.senderId == callerId,
+          )
+          .map((update) => update.state);
 
   /// Fires whenever [callerId]'s call membership in [room] is rewritten.
   ///

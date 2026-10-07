@@ -10,6 +10,7 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
+import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_ownership.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
@@ -128,6 +129,12 @@ class _FakeCalls extends CallService {
     String callerId, {
     String? deviceId,
   }) => PeerPresence.live;
+
+  @override
+  PeerPresence ringCallPresence(
+    matrix.Room room,
+    IncomingCallNotification ring,
+  ) => PeerPresence.live;
 
   @override
   void abandonJoin(int attempt) {}
