@@ -362,6 +362,41 @@ void recordNonOffensiveReport(ReportSubmission report) {
   );
 }
 
+/// [roomId]'s joined members and their power levels, as the homeserver has
+/// them now.
+@visibleForTesting
+Future<CourseRoster> courseRosterFromServer(
+  MatrixApi api,
+  String roomId,
+) async {
+  final members = await api.getMembersByRoom(
+    roomId,
+    membership: Membership.join,
+  );
+  final powerLevels = await api.getRoomStateWithKey(
+    roomId,
+    EventTypes.RoomPowerLevels,
+    '',
+  );
+  final users = powerLevels['users'];
+  final usersDefault = powerLevels['users_default'];
+  int levelOf(String userId) {
+    final level = users is Map ? users[userId] : null;
+    if (level is int) return level;
+    return usersDefault is int ? usersDefault : 0;
+  }
+
+  return CourseRoster(
+    courseId: roomId,
+    joinedPowerLevels: {
+      for (final e in members ?? const <MatrixEvent>[])
+        if (e.content['membership'] == Membership.join.name &&
+            e.stateKey != null)
+          e.stateKey!: levelOf(e.stateKey!),
+    },
+  );
+}
+
 /// The non-bot admins of the courses a report about [subjectId] belongs to
 /// ([reportCourseIds]), excluding the reporter, each listed once with the
 /// first such course.
@@ -380,17 +415,12 @@ Future<List<SpaceTeacher>> getReportTeachers(
       )
       .toList();
 
+  // Read from the homeserver, not the local cache: an admin removed or
+  // demoted moments ago must not be offered the pointer before /sync
+  // catches up.
   final rosters = <String, CourseRoster>{};
-  final admins = <String, List<User>>{};
   for (final course in courses) {
-    final members = await course.requestParticipants([Membership.join]);
-    rosters[course.id] = CourseRoster(
-      courseId: course.id,
-      joinedPowerLevels: {for (final m in members) m.id: m.powerLevel},
-    );
-    admins[course.id] = members
-        .where((m) => m.powerLevel >= 100 && m.id != BotName.byEnvironment)
-        .toList();
+    rosters[course.id] = await courseRosterFromServer(client, course.id);
   }
 
   final courseIds = reportCourseIds(
@@ -402,10 +432,13 @@ Future<List<SpaceTeacher>> getReportTeachers(
   final teachers = <SpaceTeacher>[];
   for (final courseId in courseIds) {
     final course = courses.firstWhere((room) => room.id == courseId);
-    for (final admin in admins[courseId]!) {
-      if (admin.id == reporterId) continue;
-      if (teachers.any((t) => t.teacher.id == admin.id)) continue;
-      teachers.add(SpaceTeacher(admin, course));
+    final admins = rosters[courseId]!.joinedPowerLevels.entries
+        .where((m) => m.value >= 100 && m.key != BotName.byEnvironment)
+        .map((m) => m.key);
+    for (final adminId in admins) {
+      if (adminId == reporterId) continue;
+      if (teachers.any((t) => t.teacher.id == adminId)) continue;
+      teachers.add(SpaceTeacher(User(adminId, room: course), course));
     }
   }
   return teachers;

@@ -389,6 +389,56 @@ void main() {
     });
   });
 
+  group('courseRosterFromServer', () {
+    test('reads membership and power levels from the homeserver', () async {
+      final asked = <String>[];
+      final api = apiWith((request) async {
+        asked.add(request.url.path);
+        if (request.url.path.endsWith('/members')) {
+          expect(request.url.queryParameters['membership'], 'join');
+          return http.Response(
+            jsonEncode({
+              'chunk': [
+                for (final user in ['@teacher:x', '@student:x', '@demoted:x'])
+                  {
+                    'type': 'm.room.member',
+                    'event_id': '\$$user',
+                    'room_id': '!course:x',
+                    'sender': user,
+                    'state_key': user,
+                    'origin_server_ts': 1,
+                    'content': {'membership': 'join'},
+                  },
+              ],
+            }),
+            200,
+            request: request,
+          );
+        }
+        return http.Response(
+          jsonEncode({
+            'users': {'@teacher:x': 100},
+            'users_default': 0,
+          }),
+          200,
+          request: request,
+        );
+      });
+
+      final roster = await courseRosterFromServer(api, '!course:x');
+
+      expect(roster.joinedPowerLevels, {
+        '@teacher:x': 100,
+        '@student:x': 0,
+        '@demoted:x': 0,
+      });
+      expect(asked, [
+        '/_matrix/client/v3/rooms/!course%3Ax/members',
+        '/_matrix/client/v3/rooms/!course%3Ax/state/m.room.power_levels/',
+      ]);
+    });
+  });
+
   group('reportDmRoomId', () {
     const reporter = '@reporter:x';
     const admin = '@admin:x';
