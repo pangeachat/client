@@ -428,7 +428,24 @@ Future<Map<String, ProvenanceState>> resolveTranscriptProvenance({
   // set, not the validated subset. A source that is listed but has since been
   // redacted must resolve to "audio unavailable" (it IS in the manifest), not
   // to "not in the manifest".
-  final manifestIds = selection.manifest?.content.sourceEventIds.toSet();
+  //
+  // With no trusted manifest, a participant's merge whose every listed source
+  // is either a validated recording or GONE (redacted, not found) still
+  // answers claims: it is untrusted only because audio was removed, so a claim
+  // naming the removed audio is "audio unavailable" -- terminal, as before
+  // client#9173 -- rather than waiting forever. It is never shown or used to
+  // retire the call.
+  final manifestIds =
+      (selection.manifest ??
+              await _manifestMissingOnlyGoneAudio(
+                mergedRecordings: mergedRecordings,
+                participants: participants,
+                callKey: callKey,
+                resolve: resolve,
+              ))
+          ?.content
+          .sourceEventIds
+          .toSet();
 
   final result = <String, ProvenanceState>{};
   for (final candidate in peers) {
@@ -442,6 +459,43 @@ Future<Map<String, ProvenanceState>> resolveTranscriptProvenance({
     );
   }
   return result;
+}
+
+/// The first participant's merge of this call whose listed sources are all
+/// validated recordings or gone, with at least one of each; null when none
+/// is.
+/// Pending sources disqualify (the caller is already uncertain), as does any
+/// source that resolved to something that is not this call's recording.
+Future<CallAudioMergedRecording?> _manifestMissingOnlyGoneAudio({
+  required List<CallAudioMergedRecording> mergedRecordings,
+  required Set<String> participants,
+  required String callKey,
+  required AudioResolver resolve,
+}) async {
+  for (final merged in mergedRecordings) {
+    if (!participants.contains(merged.senderId) ||
+        merged.content.callKey != callKey) {
+      continue;
+    }
+    var gone = 0;
+    var validated = 0;
+    var usable = true;
+    for (final id in merged.content.sourceEventIds.toSet()) {
+      final resolution = await resolve(id);
+      if (resolution.kind == AudioResolutionKind.gone) {
+        gone++;
+      } else if (resolution.isValidatedUnitFor(participants, callKey)) {
+        validated++;
+      } else {
+        usable = false;
+        break;
+      }
+    }
+    // At least one real recording: a flood of ids that resolve to nothing is
+    // not a merge whose audio was removed.
+    if (usable && gone > 0 && validated > 0) return merged;
+  }
+  return null;
 }
 
 Future<ProvenanceState> _resolvePeerClaim({

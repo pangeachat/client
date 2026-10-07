@@ -1242,7 +1242,7 @@ void main() {
       await _pump();
 
       expect(h.sendCalls, isEmpty, reason: 'retired: no post');
-      expect(mergedFetches, greaterThan(1), reason: 'it decided again');
+      expect(mergedFetches, 2, reason: 'it decided again, once');
       expect(
         await index.read('$_room|$_callKey'),
         isNull,

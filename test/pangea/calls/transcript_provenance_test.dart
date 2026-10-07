@@ -323,42 +323,45 @@ void main() {
       },
     );
 
-    // client#9173: a merge is trusted only when EVERY source it lists is a
-    // participant's recording of this call, so one listing a source that is
-    // gone is never the manifest -- the claim waits rather than resolving
-    // against a merge that cannot be the whole call.
-    test('a manifest listing a redacted source is not trusted: the claim stays '
-        'PENDING, never the writer', () async {
-      final fetcher = _Fetcher(
-        serve: {
-          '\$audioReal': FetchedAudioEvent(senderId: alice, content: _audio()),
-          '\$audioGone': FetchedAudioEvent(senderId: alice, redacted: true),
-          ..._bobServed,
-        },
-      );
-      final states = await _resolve(
-        candidates: [
-          _peer(
-            writer: bob,
-            spokenBy: alice,
-            eventId: '\$t1',
-            sourceAudioEventId: '\$audioGone',
-          ),
-        ],
-        mergedRecordings: [
-          _manifest(
-            eventId: '\$m1',
-            sender: bob,
-            sourceEventIds: ['\$audioReal', '\$audioGone', _audioB],
-          ),
-        ],
-        fetcher: fetcher,
-      );
-      expect(states['\$t1'], ProvenanceState.pendingTransient);
-    });
+    // client#9173: a merge listing a source that is gone is not TRUSTED (it is
+    // never shown, never retires the call), but it still answers claims: the
+    // claim naming the removed audio is "audio unavailable", not a wait.
+    test(
+      'a redacted source is UNAVAILABLE, not pending and not the writer',
+      () async {
+        final fetcher = _Fetcher(
+          serve: {
+            '\$audioReal': FetchedAudioEvent(
+              senderId: alice,
+              content: _audio(),
+            ),
+            '\$audioGone': FetchedAudioEvent(senderId: alice, redacted: true),
+            ..._bobServed,
+          },
+        );
+        final states = await _resolve(
+          candidates: [
+            _peer(
+              writer: bob,
+              spokenBy: alice,
+              eventId: '\$t1',
+              sourceAudioEventId: '\$audioGone',
+            ),
+          ],
+          mergedRecordings: [
+            _manifest(
+              eventId: '\$m1',
+              sender: bob,
+              sourceEventIds: ['\$audioReal', '\$audioGone', _audioB],
+            ),
+          ],
+          fetcher: fetcher,
+        );
+        expect(states['\$t1'], ProvenanceState.unavailableTerminal);
+      },
+    );
 
-    test('a manifest listing a source that is not found is not trusted: the '
-        'claim stays PENDING', () async {
+    test('a not-found source (in the manifest) is UNAVAILABLE', () async {
       final fetcher = _Fetcher(
         serve: {
           '\$audioReal': FetchedAudioEvent(senderId: alice, content: _audio()),
@@ -384,7 +387,7 @@ void main() {
         ],
         fetcher: fetcher,
       );
-      expect(states['\$t1'], ProvenanceState.pendingTransient);
+      expect(states['\$t1'], ProvenanceState.unavailableTerminal);
     });
 
     test('a transient fetch failure is PENDING (retryable)', () async {
@@ -695,6 +698,48 @@ void main() {
           );
         },
       );
+
+      test('a merge written before `complete` existed is still the manifest '
+          'of a plain two-half call', () async {
+        final fetcher = _Fetcher(
+          serve: {
+            '\$audioA': FetchedAudioEvent(
+              senderId: alice,
+              content: _audio(deviceId: 'devA'),
+            ),
+            ..._bobServed,
+          },
+        );
+        final legacy = _manifest(
+          eventId: '\$mLegacy',
+          sender: bob,
+          sourceEventIds: ['\$audioA', _audioB],
+        );
+        expect(legacy.content.complete, isTrue, reason: 'premise');
+        final states = await _resolve(
+          candidates: [
+            _peer(
+              writer: bob,
+              spokenBy: alice,
+              eventId: '\$t1',
+              sourceAudioEventId: '\$audioA',
+              device: 'devA',
+            ),
+          ],
+          mergedRecordings: [
+            CallAudioMergedRecording(
+              eventId: legacy.eventId,
+              senderId: legacy.senderId,
+              originServerTs: legacy.originServerTs,
+              content: CallAudioMergedContent.fromJson(
+                legacy.content.toJson()..remove('complete'),
+              )!,
+            ),
+          ],
+          fetcher: fetcher,
+        );
+        expect(states['\$t1'], ProvenanceState.valid);
+      });
 
       test(
         'a manifest of PART of the call is not the manifest (client#9173)',

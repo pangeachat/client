@@ -448,6 +448,8 @@ void main() {
     // the default halves start there, and a merge is only trusted when it
     // starts where the earliest half does (client#9173).
     int? mergedStartSfuMs = _callStart,
+    // Null is a merge written before the field existed.
+    bool? complete = true,
   }) => MatrixEvent(
     type: CallAudioMergedContent.relType,
     eventId: eventId,
@@ -464,7 +466,7 @@ void main() {
       channels: 1,
       sourceEventIds: sourceEventIds,
       mergedStartSfuMs: mergedStartSfuMs,
-      complete: true,
+      complete: complete,
     ).toJson(),
   );
 
@@ -2623,6 +2625,23 @@ void main() {
       // gone is what proves the anchor moved. Revert the re-anchor and 0:06 is
       // absent and 0:14 is back.
       expect(find.text('0:14'), findsNothing);
+    });
+
+    testWidgets('a merge written before `complete` existed is still shown for '
+        'a plain two-half call', (tester) async {
+      final testRoom = room();
+      await pumpWithRecordings(
+        tester,
+        testRoom,
+        serving([
+          half(_me, texts: const ['hola']),
+          half(_peer, texts: const ['que tal']),
+          audioEvent(_me),
+          audioEvent(_peer),
+          mergedEvent(_me, complete: null),
+        ]),
+      );
+      expect(mergedPlayer(), findsOneWidget);
     });
 
     testWidgets('with no merged recording the origin stays the first word', (
