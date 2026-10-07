@@ -71,12 +71,23 @@ class RightPanelSettingsSubpage extends StatelessWidget {
         return SettingsSubscription(closeButton: closeButton);
       case 'subscription/history':
         return SubscriptionHistory(closeButton: closeButton);
-      case 'subscription/discount':
-        // A deep link must not reach code entry where the button is hidden.
-        return allowsInAppDiscountCode(
-              isWeb: kIsWeb,
-              platform: defaultTargetPlatform,
-            )
+      case SettingsTokenParam.discountPage:
+        final fieldAllowed = allowsInAppDiscountCode(
+          isWeb: kIsWeb,
+          platform: defaultTargetPlatform,
+        );
+        // A gift link's code is applied on every platform with no field
+        // shown; without one, a deep link must not reach code entry where
+        // the button is hidden (subscriptions.instructions.md § Gift link).
+        final linkCode = param?.promoCode;
+        if (linkCode != null) {
+          return DiscountCodePage(
+            closeButton: closeButton,
+            linkCode: linkCode,
+            allowManualEntry: fieldAllowed,
+          );
+        }
+        return fieldAllowed
             ? DiscountCodePage(closeButton: closeButton)
             : SettingsSubscription(closeButton: closeButton);
       case 'subscription/selected':

@@ -41,6 +41,7 @@ void main() {
   const uuid = 'a1aed3f6-1ef7-4ed0-bc46-4a393aaf880b';
   const activity = '/?left=activity:$uuid';
   final joinLink = PRoutes.joinWithCode('vj3pc8b');
+  final giftLink = PRoutes.giftLink('TESOL26-alice2026');
 
   Future<void> writeRaw(String value, {Duration age = Duration.zero}) async {
     final storage = GetStorage('class_storage');
@@ -128,7 +129,7 @@ void main() {
 
     test('every link kind rides the same entry, whole workspace context '
         'included', () async {
-      for (final location in [courseRoom, activity, joinLink]) {
+      for (final location in [courseRoom, activity, joinLink, giftLink]) {
         await SpaceCodeRepo.setDestination(location);
         expect(await PAuthGaurd.consumeCachedDestination(world), location);
       }

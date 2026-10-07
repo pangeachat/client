@@ -52,4 +52,22 @@ void main() {
       expect(viewModel.canValidate, isTrue);
     });
   });
+
+  group('DiscountCodeViewModel link code (subscriptions § Gift link)', () {
+    test('a gift link\'s code is filled in and validated at once', () {
+      late DiscountCodeViewModel viewModel;
+      // The validation call has no backend here; what is under test is that
+      // the code is taken up and the request starts without a tap.
+      runZonedGuarded(
+        () => viewModel = DiscountCodeViewModel(
+          userID: '@u:test',
+          initialCode: 'TESOL26-alice2026',
+        ),
+        (_, _) {},
+      );
+      expect(viewModel.controller.text, 'TESOL26-alice2026');
+      expect(viewModel.loader.value, isNot(isA<AsyncIdle>()));
+      viewModel.dispose();
+    });
+  });
 }
