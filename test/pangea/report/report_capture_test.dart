@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
@@ -101,6 +102,18 @@ void main() {
       }
       expect(error, isA<PangeaHttpException>());
       expect(error.toString(), isNot(contains('REASON-SENTINEL')));
+    });
+
+    test('a request that never answers fails instead of hanging', () async {
+      final api = MatrixApi(
+        homeserver: Uri.parse('https://hs.example.invalid'),
+        accessToken: 'reporter-token',
+        httpClient: MockClient((_) => Completer<http.Response>().future),
+      );
+      await expectLater(
+        api.captureReport(report, timeout: const Duration(milliseconds: 50)),
+        throwsA(isA<TimeoutException>()),
+      );
     });
 
     test('a 200 without an incident_id is not taken as recorded', () async {

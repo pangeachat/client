@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart';
@@ -42,7 +43,18 @@ extension ReportEventApiExtension on Api {
   /// non-200: 404 for an unknown event, 403 when the event is not in that room
   /// or not visible to the reporter. Safe to call again with the same
   /// [ReportSubmission] — the module is idempotent on `report_id`.
-  Future<String> captureReport(ReportSubmission report) async {
+  ///
+  /// Throws [TimeoutException] when no answer arrives within [timeout]. The
+  /// SDK client bounds only a stalled response body, not the wait for its
+  /// headers, and the reporter is held on a progress dialog meanwhile; a
+  /// request that lands after the timeout is harmless, because the retry
+  /// carries the same `report_id`.
+  Future<String> captureReport(
+    ReportSubmission report, {
+    Duration timeout = const Duration(seconds: 30),
+  }) => _captureReport(report).timeout(timeout);
+
+  Future<String> _captureReport(ReportSubmission report) async {
     final requestUri = Uri(path: '_synapse/client/pangea/v1/report');
     final request = Request('POST', baseUri!.resolveUri(requestUri));
     request.headers['content-type'] = 'application/json';

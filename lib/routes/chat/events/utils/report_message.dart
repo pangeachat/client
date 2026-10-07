@@ -30,6 +30,16 @@ void reportEvent(
   ChatController controller,
   BuildContext context,
 ) async {
+  // Resolved now, while the chat is open: the timeline that holds the edits
+  // is cleared when the chat closes, which can happen while the dialogs
+  // below wait for the reporter.
+  final timeline = controller.timeline;
+  final reportedEventId = timeline == null
+      // No timeline means no edits are loaded either, so what the reporter
+      // sees is the event itself.
+      ? event.eventId
+      : displayedRevisionId(event, timeline);
+
   final score = await showModalActionPopup<int>(
     context: context,
     title: L10n.of(context).reportMessage,
@@ -70,16 +80,11 @@ void reportEvent(
   // the workspace shell, so it outlasts the chat screen too.
   final messenger = context.mounted ? ScaffoldMessenger.maybeOf(context) : null;
 
-  final timeline = controller.timeline;
   final report = ReportSubmission(
     // Generated once here and reused by every retry below.
     reportId: const Uuid().v4(),
     roomId: event.room.id,
-    eventId: timeline == null
-        // No timeline means no edits are loaded either, so what the reporter
-        // sees is the event itself.
-        ? event.eventId
-        : displayedRevisionId(event, timeline),
+    eventId: reportedEventId,
     reason: reason,
   );
 
