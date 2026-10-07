@@ -14,4 +14,12 @@ class CheckoutRequest extends BaseRequest {
   Map<String, dynamic> toJson() {
     return {'planId': planId, if (promoCode != null) 'promoCode': promoCode};
   }
+
+  /// The code stays out of error telemetry (#9281); whether one was sent is
+  /// still useful when a checkout fails.
+  @override
+  Map<String, dynamic> toReportData() => {
+    'planId': planId,
+    'hasPromoCode': promoCode != null,
+  };
 }

@@ -220,14 +220,14 @@ abstract class BaseRepo<
             key: onceKey,
             e: e,
             s: s,
-            data: request.toJson(),
+            data: request.toReportData(),
             level: errorLevel(e),
           );
         } else {
           ErrorHandler.logError(
             e: e,
             s: s,
-            data: request.toJson(),
+            data: request.toReportData(),
             level: errorLevel(e),
           );
         }

@@ -52,4 +52,33 @@ void main() {
       expect(viewModel.canValidate, isTrue);
     });
   });
+
+  group('DiscountCodeViewModel link code (subscriptions § Gift link)', () {
+    test('a gift link\'s code is filled in and validated at once', () async {
+      late DiscountCodeViewModel viewModel;
+      // Drives the real repo singleton, as the other repo tests do. With no
+      // signed-in MatrixState its `createRequests` throws before any request
+      // is built, so the validation fails deterministically and off the
+      // network; that specific failure is asserted below, so a hang or a
+      // pre-validation failure cannot pass. The zone guard contains only the
+      // constructor's unrelated plan-list load (see setUp above).
+      runZonedGuarded(
+        () => viewModel = DiscountCodeViewModel(
+          userID: '@u:test',
+          initialCode: 'TESOL26-alice2026',
+        ),
+        (_, _) {},
+      );
+      expect(viewModel.controller.text, 'TESOL26-alice2026');
+      // Started synchronously, before any tap: never idle.
+      expect(viewModel.loader.value, isA<AsyncLoading>());
+
+      await pumpEventQueue();
+      final settled = viewModel.loader.value;
+      expect(settled, isA<AsyncError>());
+      final error = (settled as AsyncError).error;
+      expect(error.toString(), contains('pangeaController'));
+      viewModel.dispose();
+    });
+  });
 }
