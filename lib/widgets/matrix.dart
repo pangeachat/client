@@ -40,6 +40,7 @@ import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_session.dart' as call_ui;
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
+import 'package:fluffychat/routes/chat/events/utils/pending_reports.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/uia_request_manager.dart';
@@ -125,6 +126,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   final Map<String, AnalyticsDataService> _analyticsServices = {};
   final Map<String, ActivityAutoSaveService> _activityAutoSaveServices = {};
   final Map<String, ActivityRolesStateRepair> _activityRolesStateRepairs = {};
+  final Map<String, PendingReportReplay> _pendingReportReplays = {};
   final Map<String, CallService> _callServices = {};
 
   /// Accounts whose services are being torn down, mapped to the in-flight
@@ -994,6 +996,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     }
     _activityRolesStateRepairs[name] ??= ActivityRolesStateRepair(client: c)
       ..start();
+    // Reports the app was killed before the module confirmed, resent with
+    // their original report ids.
+    _pendingReportReplays[name] ??= PendingReportReplay(client: c)..start();
     // Pangea#
   }
 
@@ -1066,6 +1071,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       try {
         _activityAutoSaveServices[clientName]?.dispose();
         _activityRolesStateRepairs[clientName]?.dispose();
+        _pendingReportReplays[clientName]?.dispose();
         // The CALL first, and not just the service. Disposing the service
         // retracts this account's MatrixRTC membership, which is bookkeeping;
         // the LiveKit connection, the microphone, the recorder and Android's
@@ -1086,6 +1092,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       } finally {
         _activityAutoSaveServices.remove(clientName);
         _activityRolesStateRepairs.remove(clientName);
+        _pendingReportReplays.remove(clientName);
         // #Pangea
         // Only if it is still the service this teardown disposed. Disposal
         // awaits network work, and a new account can claim the same name in

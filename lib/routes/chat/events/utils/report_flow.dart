@@ -78,7 +78,9 @@ enum ReportOutcome {
   captured,
 
   /// The module never confirmed it and the reporter chose not to retry. The
-  /// failure was already reported to Sentry by [ReportFlow.capture].
+  /// failure was already reported to Sentry by [ReportFlow.capture]; unless
+  /// the module refused it outright, it stays stored and is replayed on the
+  /// next start.
   notCaptured,
 }
 
@@ -89,9 +91,17 @@ enum ReportOutcome {
 /// report depends on a teacher lookup succeeding. Only after the module has
 /// confirmed it are course admins pointed to the Safety page.
 class ReportFlow<T> {
-  /// Sends the report to the module; true once it is recorded. Reports its
-  /// own failures, so a false here is never silent.
-  final Future<bool> Function(ReportSubmission report) capture;
+  /// One attempt at sending the report to the module. Reports its own
+  /// failures, so a result other than recorded is never silent.
+  final Future<CaptureResult> Function(ReportSubmission report) capture;
+
+  /// Stores the report on the device before its first attempt, so it is
+  /// replayed with the same report id if the app dies before the module
+  /// confirms it.
+  final Future<void> Function(ReportSubmission report) remember;
+
+  /// Drops the stored copy once the module has settled the report.
+  final Future<void> Function(ReportSubmission report) forget;
 
   /// Asks the reporter whether to try again after [capture] failed.
   final Future<bool> Function() offerRetry;
@@ -125,6 +135,8 @@ class ReportFlow<T> {
 
   const ReportFlow({
     required this.capture,
+    required this.remember,
+    required this.forget,
     required this.offerRetry,
     required this.confirmCaptured,
     required this.lookupCourseAdmins,
@@ -162,9 +174,16 @@ class ReportFlow<T> {
 
   /// Sends [report] until the module records it or the reporter gives up.
   /// Every attempt carries the same [ReportSubmission.reportId].
+  ///
+  /// The stored copy outlives a reporter who gives up after a failure: it is
+  /// forgotten only once the module has recorded the report, or refused it
+  /// in a way no retry can change.
   Future<bool> captureWithRetry(ReportSubmission report) async {
+    await remember(report);
     while (true) {
-      if (await capture(report)) return true;
+      final result = await capture(report);
+      if (result != CaptureResult.failed) await forget(report);
+      if (result == CaptureResult.recorded) return true;
       if (!await offerRetry()) return false;
     }
   }

@@ -9,6 +9,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/chat/events/utils/pending_reports.dart';
 import 'package:fluffychat/routes/chat/events/utils/report_api_extension.dart';
 import 'package:fluffychat/routes/chat/events/utils/report_flow.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
@@ -19,26 +20,98 @@ import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+/// The DM a report pointer goes to: one holding exactly the reporter and
+/// [teacher], filed under [space].
 Future<Room> getReportsDM(User teacher, Room space) async {
-  final String roomId = await teacher.startDirectChat(enableEncryption: false);
+  final client = space.client;
+  final roomId = await reportDmRoomId(
+    existingRoomId: client.getDirectChatFromUserId(teacher.id),
+    reporterId: client.userID!,
+    adminId: teacher.id,
+    membersOf: (roomId) async {
+      final room = client.getRoomById(roomId);
+      if (room == null || room.membership != Membership.join) return null;
+      final members = await room.requestParticipants([
+        Membership.join,
+        Membership.invite,
+      ]);
+      return members.map((m) => m.id).toSet();
+    },
+    createFresh: () => client.startDirectChat(
+      teacher.id,
+      enableEncryption: false,
+      skipExistingChat: true,
+    ),
+  );
   space.setSpaceChild(roomId, suggested: false);
-  return space.client.getRoomById(roomId)!;
+  return client.getRoomById(roomId)!;
+}
+
+/// The room to send a report pointer to [adminId] in.
+///
+/// The account's existing direct chat with the admin is reused only when its
+/// joined and invited members are exactly the reporter and that admin. A
+/// direct chat can gain members — anyone in it can invite another teacher —
+/// and the pointer must reach only the admins of the report's courses, so
+/// anything else gets a fresh DM. [membersOf] returns null for a room the
+/// reporter is not joined to.
+Future<String> reportDmRoomId({
+  required String? existingRoomId,
+  required String reporterId,
+  required String adminId,
+  required Future<Set<String>?> Function(String roomId) membersOf,
+  required Future<String> Function() createFresh,
+}) async {
+  if (existingRoomId != null) {
+    final members = await membersOf(existingRoomId);
+    if (members != null &&
+        members.length == 2 &&
+        members.contains(reporterId) &&
+        members.contains(adminId)) {
+      return existingRoomId;
+    }
+  }
+  return createFresh();
 }
 
 void reportEvent(
   Event event,
   ChatController controller,
   BuildContext context,
-) async {
+) => submitReport(
+  event: event,
+  timeline: controller.timeline,
+  context: context,
+  client: Matrix.of(context).client,
+  // From the reason onward the report must outlive the chat screen: leaving
+  // the chat while it is being sent would otherwise take the retry prompt
+  // with it. The root navigator stays mounted for as long as the app runs.
+  flowContext: () =>
+      FluffyChatApp.router.routerDelegate.navigatorKey.currentContext,
+);
+
+/// "Report message", from the reporter's first tap to the teacher pointer.
+/// The production wiring of [ReportFlow]; [reportEvent] only supplies the
+/// chat's timeline, client and root navigator.
+@visibleForTesting
+Future<ReportOutcome?> submitReport({
+  required Event event,
+  required Timeline? timeline,
+  required BuildContext context,
+  required Client client,
+  required BuildContext? Function() flowContext,
+  PendingReportStore? store,
+}) async {
   // Resolved now, while the chat is open: the timeline that holds the edits
   // is cleared when the chat closes, which can happen while the dialogs
   // below wait for the reporter.
-  final timeline = controller.timeline;
   final reportedEventId = timeline == null
       // No timeline means no edits are loaded either, so what the reporter
       // sees is the event itself.
       ? event.eventId
       : displayedRevisionId(event, timeline);
+  final reporterId = client.userID;
+  if (reporterId == null) return null;
 
   final score = await showModalActionPopup<int>(
     context: context,
@@ -50,7 +123,7 @@ void reportEvent(
       AdaptiveModalAction(value: 2, label: L10n.of(context).other),
     ],
   );
-  if (score == null || !context.mounted) return;
+  if (score == null || !context.mounted) return null;
 
   final reason = await showTextInputDialog(
     context: context,
@@ -67,41 +140,47 @@ void reportEvent(
     },
   );
 
-  if (reason == null) return;
+  if (reason == null) return null;
 
-  // From here the report must outlive the chat screen: leaving the chat while
-  // it is being sent would otherwise take the retry prompt with it. The root
-  // navigator stays mounted for as long as the app runs.
-  final flowContext =
-      FluffyChatApp.router.routerDelegate.navigatorKey.currentContext ??
-      context;
+  final uiContext = flowContext() ?? context;
   // The workspace's own messenger owns the chat Scaffolds; the root one, which
-  // [flowContext] would resolve, has none to show a snackbar on. It lives in
-  // the workspace shell, so it outlasts the chat screen too.
+  // the root navigator would resolve, has none to show a snackbar on. It lives
+  // in the workspace shell, so it outlasts the chat screen too.
   final messenger = context.mounted ? ScaffoldMessenger.maybeOf(context) : null;
 
   final report = ReportSubmission(
-    // Generated once here and reused by every retry below.
+    // Generated once here and reused by every retry, and by the replay on a
+    // later start if the module never confirms it.
     reportId: const Uuid().v4(),
     roomId: event.room.id,
     eventId: reportedEventId,
     reason: reason,
   );
 
-  final client = Matrix.of(flowContext).client;
-  final l10n = L10n.of(flowContext);
-  await ReportFlow<SpaceTeacher>(
-    capture: (report) => _captureReport(flowContext, client, report),
-    offerRetry: () => _offerReportRetry(flowContext, report),
+  final l10n = L10n.of(uiContext);
+  final pending = store ?? await PendingReportStore.open();
+  return ReportFlow<SpaceTeacher>(
+    capture: (report) => _captureReport(uiContext, client, report),
+    remember: (report) => _storeSafely(
+      () => pending.remember(reporterId, report),
+      report,
+      'remember',
+    ),
+    forget: (report) => _storeSafely(
+      () => pending.forget(reporterId, report.reportId),
+      report,
+      'forget',
+    ),
+    offerRetry: () => _offerReportRetry(uiContext, report),
     confirmCaptured: () {
       if (messenger == null || !messenger.mounted) return;
       messenger.showSnackBarAnnounced(SnackBar(content: Text(l10n.reportSent)));
     },
-    lookupCourseAdmins: () => _lookupCourseAdmins(flowContext, client, event),
+    lookupCourseAdmins: () => _lookupCourseAdmins(uiContext, client, event),
     selectRecipients: (admins) async {
-      if (!flowContext.mounted) return null;
+      if (!uiContext.mounted) return null;
       final selected = await showDialog<List<SpaceTeacher>>(
-        context: flowContext,
+        context: uiContext,
         useRootNavigator: false,
         builder: (BuildContext context) => TeacherSelectDialog(
           teachers: admins.map((admin) => admin.admin).toList(),
@@ -112,9 +191,9 @@ void reportEvent(
           .toList();
     },
     sendPointer: (recipient, content) async {
-      if (!flowContext.mounted) return;
+      if (!uiContext.mounted) return;
       await showFutureLoadingDialog(
-        context: flowContext,
+        context: uiContext,
         future: () async {
           final dm = await getReportsDM(
             recipient.admin.teacher,
@@ -129,35 +208,37 @@ void reportEvent(
   ).run(report, offensive: score == 1);
 }
 
-/// Sends [report] to the module behind a progress dialog; true once recorded.
-///
-/// A failure is reported to Sentry here, exactly once per attempt, with ids
-/// only — never the reason, which is the reporter's own words.
-Future<bool> _captureReport(
+/// Runs a pending-report store write. A failed write is reported and does
+/// not stop the report: it is still sent now, only without the copy that
+/// would let a later start replay it.
+Future<void> _storeSafely(
+  Future<void> Function() write,
+  ReportSubmission report,
+  String operation,
+) async {
+  try {
+    await write();
+  } catch (e, s) {
+    await ErrorHandler.logError(
+      e: e,
+      s: s,
+      data: {
+        'where': 'PendingReportStore.$operation',
+        'report_id': report.reportId,
+      },
+    );
+  }
+}
+
+/// One attempt at recording [report], behind a progress dialog.
+Future<CaptureResult> _captureReport(
   BuildContext context,
   Client client,
   ReportSubmission report,
-) async {
-  Future<bool> attempt() async {
-    try {
-      await client.captureReport(report);
-      return true;
-    } catch (e, s) {
-      await ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'report_id': report.reportId,
-          'room_id': report.roomId,
-          'event_id': report.eventId,
-        },
-      );
-      return false;
-    }
-  }
-
-  if (!context.mounted) return attempt();
-  return showReportProgress(context, attempt());
+) {
+  final attempt = attemptReportCapture(client, report);
+  if (!context.mounted) return attempt;
+  return showReportProgress(context, attempt);
 }
 
 /// Shows a progress dialog over [pending] and returns its result.
@@ -168,10 +249,7 @@ Future<bool> _captureReport(
 /// a failure while the request is still in flight, open the retry prompt, and
 /// then have the late completion pop that prompt instead.
 @visibleForTesting
-Future<bool> showReportProgress(
-  BuildContext context,
-  Future<bool> pending,
-) async {
+Future<T> showReportProgress<T>(BuildContext context, Future<T> pending) async {
   final navigator = Navigator.of(context, rootNavigator: true);
   final label = L10n.of(context).loadingPleaseWait;
   final route = DialogRoute<void>(

@@ -5,6 +5,7 @@ import 'package:http/http.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
 
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 /// One user report, as the Synapse module records it.
 ///
@@ -26,6 +27,14 @@ class ReportSubmission {
     required this.eventId,
     required this.reason,
   });
+
+  factory ReportSubmission.fromJson(Map<String, dynamic> json) =>
+      ReportSubmission(
+        reportId: json['report_id'] as String,
+        roomId: json['room_id'] as String,
+        eventId: json['event_id'] as String,
+        reason: json['reason'] as String,
+      );
 
   Map<String, String> toJson() => {
     'report_id': reportId,
@@ -60,26 +69,125 @@ extension ReportEventApiExtension on Api {
     request.headers['content-type'] = 'application/json';
     request.headers['authorization'] = 'Bearer ${bearerToken!}';
     request.bodyBytes = utf8.encode(jsonEncode(report.toJson()));
-    final response = await Response.fromStream(await httpClient.send(request));
+
+    // Every failure below leaves as a typed error that carries no response
+    // text: whatever the server sent back can echo the reason, and these
+    // errors are logged and reported to Sentry.
+    final Response response;
+    try {
+      response = await Response.fromStream(await httpClient.send(request));
+    } on ClientException {
+      // Kept a ClientException so the error handler still treats it as "no
+      // response" (warning, once per session), but with a message of our own.
+      throw ClientException('report request got no response', request.url);
+    } catch (e) {
+      throw ReportCaptureException('transport failed (${e.runtimeType})');
+    }
+
     if (response.statusCode != 200) {
       // This call bypasses `Requests` (Synapse endpoint, Matrix SDK client and
       // token), so it raises the typed failure itself rather than throwing the
       // response — see repos-and-error-handling.instructions.md. The typed
-      // failure never carries the body, which here could echo the reason.
-      throw PangeaHttpException.fromResponse(response);
+      // failure never carries the body, only its errcode — and not the
+      // body's `detail`, which the shared parser would prefer and which a
+      // server can fill with anything, the reason included.
+      throw PangeaHttpException(
+        statusCode: response.statusCode,
+        method: request.method,
+        path: PangeaHttpException.normalizePath(request.url),
+        detail: _errcodeOf(response.body),
+        retryAfter: PangeaHttpException.retryAfterFromResponse(response),
+      );
     }
 
-    final decoded = jsonDecode(response.body);
+    final Object? decoded;
+    try {
+      decoded = jsonDecode(response.body);
+    } catch (_) {
+      // Not rethrown: a FormatException quotes the source it failed on.
+      throw const ReportCaptureException('200 with an unreadable body');
+    }
     final incidentId = decoded is Map ? decoded['incident_id'] : null;
     if (incidentId is! String) {
       // A 200 without the contract's incident id means we cannot tell whether
       // the module recorded this report. Treated as a failure so the reporter
       // is offered a retry, which is safe: the same report_id is never stored
       // twice.
-      throw FormatException(
-        'report endpoint answered 200 without an incident_id',
-      );
+      throw const ReportCaptureException('200 without an incident_id');
     }
     return incidentId;
+  }
+}
+
+/// The body's Matrix `errcode`, only when it has an errcode's shape
+/// (`M_FORBIDDEN`, `ORG.PANGEA.X`): an identifier, never free text.
+String? _errcodeOf(String body) {
+  try {
+    final decoded = jsonDecode(body);
+    final errcode = decoded is Map ? decoded['errcode'] : null;
+    return errcode is String && _errcodeShape.hasMatch(errcode)
+        ? errcode
+        : null;
+  } catch (_) {
+    // silent-ok: an unreadable error body just has no errcode; the status is
+    // still reported.
+    return null;
+  }
+}
+
+final _errcodeShape = RegExp(r'^[A-Z][A-Z0-9_.]{0,63}$');
+
+/// A report request that failed in a way no HTTP status describes. Carries a
+/// fixed description only — never anything the server sent back.
+class ReportCaptureException implements Exception {
+  final String description;
+
+  const ReportCaptureException(this.description);
+
+  @override
+  String toString() => 'ReportCaptureException: $description';
+}
+
+/// How one attempt to record a report ended.
+enum CaptureResult {
+  /// The module answered 200 with an incident id.
+  recorded,
+
+  /// The module refused it in a way a retry cannot change: the event is
+  /// unknown, not in that room, not visible to the reporter, or the request
+  /// is malformed.
+  rejected,
+
+  /// Anything else — offline, a timeout, a server error, an unreadable
+  /// answer. Worth trying again with the same report id.
+  failed,
+}
+
+/// Statuses that a retry with the same body can never turn into a 200.
+const _rejectedStatuses = {400, 403, 404, 422};
+
+/// One attempt at recording [report]. Reports a failure to Sentry once, with
+/// ids only — never the reason, which is the reporter's own words, and never
+/// the response, which can echo it.
+Future<CaptureResult> attemptReportCapture(
+  Api api,
+  ReportSubmission report,
+) async {
+  try {
+    await api.captureReport(report);
+    return CaptureResult.recorded;
+  } catch (e, s) {
+    await ErrorHandler.logError(
+      e: e,
+      s: s,
+      data: {
+        'report_id': report.reportId,
+        'room_id': report.roomId,
+        'event_id': report.eventId,
+      },
+    );
+    return e is PangeaHttpException && _rejectedStatuses.contains(e.statusCode)
+        ? CaptureResult.rejected
+        : CaptureResult.failed;
   }
 }

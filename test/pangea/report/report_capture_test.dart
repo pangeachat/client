@@ -119,7 +119,7 @@ void main() {
     test('a 200 without an incident_id is not taken as recorded', () async {
       await expectLater(
         apiAnswering(200, {}).captureReport(report),
-        throwsA(isA<FormatException>()),
+        throwsA(isA<ReportCaptureException>()),
       );
     });
   });
@@ -127,7 +127,7 @@ void main() {
   group('ReportFlow', () {
     late List<String> calls;
     late List<ReportSubmission> captured;
-    late List<bool> captureResults;
+    late List<CaptureResult> captureResults;
     late List<bool> retryAnswers;
     late List<ReportRecipient<String>> admins;
     late List<Map<String, Object>> sentContents;
@@ -150,8 +150,12 @@ void main() {
       capture: (submission) async {
         calls.add('capture');
         captured.add(submission);
-        return captureResults.isEmpty ? true : captureResults.removeAt(0);
+        return captureResults.isEmpty
+            ? CaptureResult.recorded
+            : captureResults.removeAt(0);
       },
+      remember: (submission) async => calls.add('remember'),
+      forget: (submission) async => calls.add('forget'),
       offerRetry: () async {
         calls.add('offerRetry');
         return retryAnswers.removeAt(0);
@@ -180,7 +184,9 @@ void main() {
 
       expect(outcome, ReportOutcome.captured);
       expect(calls, [
+        'remember',
         'capture',
+        'forget',
         'confirm',
         'lookup',
         'select',
@@ -195,7 +201,7 @@ void main() {
 
       expect(outcome, ReportOutcome.captured);
       expect(captured, [report]);
-      expect(calls, ['capture', 'confirm', 'lookup']);
+      expect(calls, ['remember', 'capture', 'forget', 'confirm', 'lookup']);
     });
 
     test(
@@ -205,12 +211,16 @@ void main() {
 
         expect(outcome, ReportOutcome.captured);
         expect(captured, [report]);
-        expect(calls, ['capture', 'confirm', 'sentry']);
+        expect(calls, ['remember', 'capture', 'forget', 'confirm', 'sentry']);
       },
     );
 
     test('every retry resends the same report id', () async {
-      captureResults = [false, false, true];
+      captureResults = [
+        CaptureResult.failed,
+        CaptureResult.failed,
+        CaptureResult.recorded,
+      ];
       retryAnswers = [true, true];
 
       final outcome = await flow().run(report, offensive: false);
@@ -226,11 +236,13 @@ void main() {
         jsonEncode(report.toJson()),
       });
       expect(calls, [
+        'remember',
         'capture',
         'offerRetry',
         'capture',
         'offerRetry',
         'capture',
+        'forget',
         'confirm',
         'sentry',
       ]);
@@ -239,16 +251,30 @@ void main() {
     test(
       'a declined retry stops: nothing confirmed, nobody notified',
       () async {
-        captureResults = [false];
+        captureResults = [CaptureResult.failed];
         retryAnswers = [false];
         admins = [const ReportRecipient('@teacher:x', 'Spanish 101')];
 
         final outcome = await flow().run(report, offensive: true);
 
         expect(outcome, ReportOutcome.notCaptured);
-        expect(calls, ['capture', 'offerRetry']);
+        expect(
+          calls,
+          ['remember', 'capture', 'offerRetry'],
+          reason: 'the stored copy must stay for the replay on the next start',
+        );
       },
     );
+
+    test('a refused report is forgotten: no retry could change it', () async {
+      captureResults = [CaptureResult.rejected];
+      retryAnswers = [false];
+
+      final outcome = await flow().run(report, offensive: false);
+
+      expect(outcome, ReportOutcome.notCaptured);
+      expect(calls, ['remember', 'capture', 'forget', 'offerRetry']);
+    });
 
     test(
       'the teacher DM is a bare pointer: no text, reason or reported user',
