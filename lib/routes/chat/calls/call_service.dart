@@ -9,7 +9,9 @@ import 'package:fluffychat/routes/chat/calls/call_audio_download.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_merge_coordinator.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_merged_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_pending_store.dart';
 import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
+import 'package:fluffychat/routes/chat/calls/call_half_resume.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeouts.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
@@ -44,6 +46,19 @@ class CallService {
   /// without a `.env` loaded -- never touches `dotenv`, and a test can exercise
   /// the replay directly. Off by default, so the replay is inert.
   final bool _recordingTranscriptEnabled;
+
+  /// Finishes the call halves a killed or parked finish left on disk. Built
+  /// lazily on the first replay (which only runs with the feature on); a test
+  /// injects its own.
+  CallHalfResumer? _halfResumer;
+
+  /// How the outbox replay and the resume read the room. Injected only in
+  /// tests; the real one asks the homeserver's relations endpoint.
+  final RelationsFetcher? _relationsFetch;
+
+  /// The account this service last saw signed in, so a sign-out can purge the
+  /// recordings it left waiting even after the client has forgotten who it was.
+  String? _lastUserId;
 
   /// The startup replay runs once, on the first sync after launch. A foreground
   /// replay (see `MatrixState.didChangeAppLifecycleState`) is not latched -- a
@@ -209,12 +224,16 @@ class CallService {
     CallTimeouts? timeouts,
     CallTranscriptOutbox? transcriptOutbox,
     bool recordingTranscriptEnabled = false,
+    CallHalfResumer? halfResumer,
+    RelationsFetcher? relationsFetch,
   }) : delegate = delegate ?? PangeaVoipDelegate(),
        timeouts = timeouts ?? pangeaCallTimeouts(),
        _tokens = tokenRepo ?? CallTokenRepo(),
        _discovery = focusDiscovery ?? RtcFocusDiscovery(),
        _transcriptOutbox = transcriptOutbox,
        _recordingTranscriptEnabled = recordingTranscriptEnabled,
+       _halfResumer = halfResumer,
+       _relationsFetch = relationsFetch,
        _joinWithin = joinWithin ?? const Duration(seconds: 30),
        _leaveWithin = leaveWithin ?? const Duration(seconds: 3) {
     // Only the (cheap, timer-free) sync subscriptions are wired here; the box +
@@ -410,6 +429,8 @@ class CallService {
   /// then), and a still-loading coordinator buffers the event via
   /// [_driveMergeCoordinator] rather than dropping it.
   void handleSync(SyncUpdate update) {
+    final userId = client.userID;
+    if (userId != null) _lastUserId = userId;
     // The first sync after launch is the reliable "client is up" signal, and
     // the moment to replay a transcript half whose publish the app was killed
     // before finishing. Latched to once (foreground handles later drops); a
@@ -463,6 +484,9 @@ class CallService {
       // nothing until a replay actually runs (which only happens when the
       // feature is on). A test injects its own.
       final outbox = _transcriptOutbox ?? CallTranscriptOutbox();
+      final owner = client.userID;
+      if (owner != null) _lastUserId = owner;
+      final fetch = _relationsFetch ?? relationsFetcherFor(client);
       await outbox.flush(
         (roomId, txnId, content) async => client
             .getRoomById(roomId)
@@ -473,10 +497,55 @@ class CallService {
             ),
         // Only this account's own halves are replayed -- the store is shared by
         // every account on the device.
-        owner: client.userID,
+        owner: owner,
+        // Read the room before every resend: a half that landed after its
+        // process gave up on it is dropped, not sent again, and a room that
+        // cannot be read keeps the record and sends nothing.
+        inRoom: (roomId, content) async {
+          final callKey = content['call_key'];
+          if (owner == null || callKey is! String) return null;
+          return ownCallHalfInRoom(
+            fetch: fetch,
+            roomId: roomId,
+            callKey: callKey,
+            relType: CallTranscriptContent.relType,
+            senderId: owner,
+            deviceId: content['device_id'] as String?,
+          );
+        },
       );
+      if (_disposed) return;
+      // Beside the transcript replay: the recordings a killed or parked finish
+      // left on disk. Never credits -- crediting belongs to the hangup.
+      final resumer = _halfResumer ??= CallHalfResumer(
+        store: pendingCallAudioStoreForPlatform(),
+        fetch: fetch,
+        upload: (bytes, {required filename, required contentType}) => client
+            .uploadContent(bytes, filename: filename, contentType: contentType),
+        send: (roomId, type, content, txnId) async => client
+            .getRoomById(roomId)
+            ?.sendEvent(content, type: type, txid: txnId),
+        outbox: outbox,
+        onAudioPosted: onOwnCallAudioPosted,
+      );
+      await resumer.resume(owner: owner);
     } finally {
       _flushingTranscripts = false;
+    }
+  }
+
+  /// Deletes every call recording this account left waiting on this device.
+  /// Run when the account signs out: a recording is the learner's, and the
+  /// next person to sign in here must not upload it under their name or find
+  /// it on disk.
+  Future<void> purgePendingCallAudio() async {
+    final owner = client.userID ?? _lastUserId;
+    if (owner == null) return;
+    try {
+      await (_halfResumer?.store ?? pendingCallAudioStoreForPlatform())
+          .purgeOwner(owner);
+    } catch (e, s) {
+      Logs().w('Could not purge the pending call recordings', e, s);
     }
   }
 
