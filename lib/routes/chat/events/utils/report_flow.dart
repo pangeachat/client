@@ -104,8 +104,9 @@ class ReportFlow<T> {
   /// its id turns out to belong to another report.
   final Future<void> Function(ReportSubmission report) forget;
 
-  /// A new report id, for a fresh submission after a [CaptureResult.conflict].
-  final String Function() newReportId;
+  /// The id a report moves to after [CaptureResult.conflict] on the given id
+  /// (production: [successorReportId]).
+  final String Function(String rejectedId) newReportId;
 
   /// Asks the reporter whether to try again after [capture] failed.
   final Future<bool> Function() offerRetry;
@@ -185,7 +186,7 @@ class ReportFlow<T> {
   /// exception: a [CaptureResult.conflict] means that id is already the
   /// module's for another report, so it can never be recorded under it. The
   /// old id is forgotten — never replayed — and the report continues as a
-  /// fresh submission under a new id from [newReportId].
+  /// fresh submission under the id [newReportId] derives from it.
   ///
   /// The report is stored before every attempt and forgotten only once the
   /// module has recorded it, so a report the reporter gives up on — or that
@@ -200,7 +201,7 @@ class ReportFlow<T> {
         return current;
       }
       if (result == CaptureResult.conflict) {
-        final fresh = current.withReportId(newReportId());
+        final fresh = current.withReportId(newReportId(current.reportId));
         // The fresh copy is stored before the old one goes, so the report
         // is on the device at every moment. If it cannot be stored, the old
         // copy stays: a replay meets the same 409 and rotates it there.

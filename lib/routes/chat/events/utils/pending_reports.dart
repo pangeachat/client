@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:uuid/uuid.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/events/utils/report_api_extension.dart';
@@ -89,14 +88,14 @@ class PendingReportStore {
 /// stays for the next start; its failure is already in Sentry.
 ///
 /// A [CaptureResult.conflict] means the id is already the module's for
-/// another report, so the report is moved to a new id from [newReportId] —
+/// another report, so the report is moved to the id [newReportId] derives —
 /// the new copy stored before the old one is dropped — and sent once more
 /// under it now. A store failure is reported and never stops the others.
 Future<void> replayPendingReports({
   required PendingReportStore store,
   required String userId,
   required Future<CaptureResult> Function(ReportSubmission report) attempt,
-  required String Function() newReportId,
+  required String Function(String rejectedId) newReportId,
 }) async {
   Future<bool> guarded(Future<void> Function() write, String what) async {
     try {
@@ -123,7 +122,7 @@ Future<void> replayPendingReports({
       // A report already moved once this run waits for the next start
       // rather than rotating again.
       if (rotated) continue;
-      final fresh = report.withReportId(newReportId());
+      final fresh = report.withReportId(newReportId(report.reportId));
       if (!await guarded(() => store.remember(userId, fresh), 'remember')) {
         continue;
       }
@@ -158,7 +157,7 @@ class PendingReportReplay {
         attempt: (report) async => _disposed
             ? CaptureResult.failed
             : attemptReportCapture(client, report),
-        newReportId: () => const Uuid().v4(),
+        newReportId: successorReportId,
       );
     } catch (e, s) {
       // The reports stay stored and are tried again on the next start.

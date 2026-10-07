@@ -80,7 +80,7 @@ void main() {
         SharedPreferences.resetStatic();
         final afterRestart = await PendingReportStore.open();
         await replayPendingReports(
-          newReportId: () => 'rotated-id',
+          newReportId: (_) => 'rotated-id',
           store: afterRestart,
           userId: userId,
           attempt: serverAnswering(200),
@@ -91,7 +91,7 @@ void main() {
 
         // Confirmed, so the next start sends nothing.
         await replayPendingReports(
-          newReportId: () => 'rotated-id',
+          newReportId: (_) => 'rotated-id',
           store: await PendingReportStore.open(),
           userId: userId,
           attempt: serverAnswering(200),
@@ -105,7 +105,7 @@ void main() {
       await store.remember(userId, stored);
 
       await replayPendingReports(
-        newReportId: () => 'rotated-id',
+        newReportId: (_) => 'rotated-id',
         store: store,
         userId: userId,
         attempt: serverAnswering(503),
@@ -134,7 +134,7 @@ void main() {
       });
 
       await replayPendingReports(
-        newReportId: () => 'rotated-id',
+        newReportId: (_) => 'rotated-id',
         store: store,
         userId: userId,
         attempt: (report) => attemptReportCapture(api, report),
@@ -152,7 +152,7 @@ void main() {
         final results = [CaptureResult.conflict, CaptureResult.failed];
 
         await replayPendingReports(
-          newReportId: () => 'rotated-id',
+          newReportId: (_) => 'rotated-id',
           store: store,
           userId: userId,
           attempt: (_) async => results.removeAt(0),
@@ -161,6 +161,46 @@ void main() {
         expect(store.pending(userId).map((r) => r.reportId), ['rotated-id']);
       },
     );
+
+    test('the id after a conflict is the same for every sender', () {
+      const rejected = '3f1c6a52-1f0e-4d43-9a43-7c0c6f6fbb0e';
+      final successor = successorReportId(rejected);
+      expect(successorReportId(rejected), successor);
+      expect(successor, isNot(rejected));
+      expect(successorReportId('another-id'), isNot(successor));
+      expect(
+        successor,
+        matches(
+          RegExp(
+            r'^[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$',
+          ),
+        ),
+      );
+    });
+
+    test('a crash between storing the new id and dropping the old one '
+        'still records the report once', () async {
+      final old = submission('8a1d0e38-6c43-4d6c-9e57-1c2c0a6a5b11');
+      final moved = old.withReportId(successorReportId(old.reportId));
+      // Both copies left behind by the crash.
+      await store.remember(userId, old);
+      await store.remember(userId, moved);
+      final recordedIds = <String>{};
+
+      await replayPendingReports(
+        newReportId: successorReportId,
+        store: store,
+        userId: userId,
+        attempt: (report) async {
+          if (report.reportId == old.reportId) return CaptureResult.conflict;
+          recordedIds.add(report.reportId);
+          return CaptureResult.recorded;
+        },
+      );
+
+      expect(recordedIds, {moved.reportId});
+      expect(store.pending(userId), isEmpty);
+    });
 
     test('a 409 is a conflict, not a failure and not a success', () async {
       expect(
@@ -176,7 +216,7 @@ void main() {
         await store.remember(userId, submission('id-404'));
 
         await replayPendingReports(
-          newReportId: () => 'rotated-id',
+          newReportId: (_) => 'rotated-id',
           store: store,
           userId: userId,
           attempt: serverAnswering(404),
@@ -192,7 +232,7 @@ void main() {
         await store.remember('@someone-else:example.invalid', submission('x'));
 
         await replayPendingReports(
-          newReportId: () => 'rotated-id',
+          newReportId: (_) => 'rotated-id',
           store: store,
           userId: userId,
           attempt: serverAnswering(200),
@@ -260,7 +300,7 @@ void main() {
 
       final replayed = <String>[];
       await replayPendingReports(
-        newReportId: () => 'rotated-id',
+        newReportId: (_) => 'rotated-id',
         store: thisTab,
         userId: userId,
         attempt: (report) async {
@@ -283,7 +323,7 @@ void main() {
       await harness
           .capture(() async {
             await replayPendingReports(
-              newReportId: () => 'rotated-id',
+              newReportId: (_) => 'rotated-id',
               store: store,
               userId: userId,
               attempt: (report) async {

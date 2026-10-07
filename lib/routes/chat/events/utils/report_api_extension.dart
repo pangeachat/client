@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
+import 'package:uuid/uuid.dart';
 
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -173,6 +174,17 @@ class ReportCaptureException implements Exception {
   @override
   String toString() => 'ReportCaptureException: $description';
 }
+
+/// The report id a report moves to after its id met a 409.
+///
+/// Derived from the rejected id (a name-based UUID), not random: every copy
+/// of the app — a second tab, a replay racing the foreground send, a replay
+/// of a copy a crash left behind — moves the same report to the same id, so
+/// the module, idempotent on that id, still records it once.
+String successorReportId(String rejectedId) => const Uuid().v5(
+  Namespace.url.value,
+  'https://pangea.chat/report-successor/$rejectedId',
+);
 
 /// How one attempt to record a report ended.
 enum CaptureResult {

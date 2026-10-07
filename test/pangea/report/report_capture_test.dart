@@ -188,7 +188,7 @@ void main() {
         return !failingWrites.contains(submission.reportId);
       },
       forget: (submission) async => calls.add('forget:${submission.reportId}'),
-      newReportId: () => 'fresh-report-id',
+      newReportId: (_) => 'fresh-report-id',
       offerRetry: () async {
         calls.add('offerRetry');
         return retryAnswers.removeAt(0);
