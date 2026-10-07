@@ -368,6 +368,76 @@ void main() {
       ]);
     });
 
+    test('a 409 counts even when its body breaks off', () async {
+      final api = MatrixApi(
+        homeserver: Uri.parse('https://hs.example.invalid'),
+        accessToken: 'reporter-token',
+        httpClient: _StatusOnlyClient(409),
+      );
+      expect(
+        await attemptReportCapture(api, submission('id-409')),
+        CaptureResult.conflict,
+      );
+    });
+
+    test('replay skips a report a foreground send settled meanwhile', () async {
+      await store.remember(userId, submission('a'));
+      await store.remember(userId, submission('b'));
+      final sent = <String>[];
+
+      await replayPendingReports(
+        store: store,
+        userId: userId,
+        attempt: (report) async {
+          sent.add(report.reportId);
+          // Meanwhile the foreground records the other one.
+          final other = report.reportId == 'a' ? 'b' : 'a';
+          await store.forget(userId, other);
+          return CaptureResult.failed;
+        },
+      );
+
+      expect(sent, hasLength(1));
+    });
+
+    test('when neither the move nor the new id can be stored, the copy '
+        'stays rather than the report being lost', () async {
+      final failing = _MarkAndRememberFail(
+        await SharedPreferences.getInstance(),
+      );
+      await store.remember(userId, submission('old-id'));
+      final sent = <String>[];
+
+      await replayPendingReports(
+        store: failing,
+        userId: userId,
+        attempt: (report) async {
+          sent.add(report.reportId);
+          return report.reportId == 'old-id'
+              ? CaptureResult.conflict
+              : CaptureResult.failed;
+        },
+      );
+
+      expect(sent, ['old-id', successorReportId('old-id')]);
+      expect(failing.pending(userId).map((r) => r.reportId), ['old-id']);
+    });
+
+    test('a write the platform refused is written again, even though the '
+        'platform reports it back', () async {
+      final platform = _FlakyPlatformStore(keepRefusedValues: true);
+      SharedPreferencesStorePlatform.instance = platform;
+      SharedPreferences.resetStatic();
+      final flaky = await PendingReportStore.open();
+      final report = submission('id');
+
+      platform.refuseNextWrite = true;
+      await expectLater(flaky.remember(userId, report), throwsStateError);
+      await flaky.remember(userId, report);
+
+      expect(platform.writeAttempts, 2);
+    });
+
     test('a 409 is a conflict, not a failure and not a success', () async {
       expect(
         await serverAnswering(409)(submission('id-409')),
@@ -1007,18 +1077,52 @@ class _MarkFails extends PendingReportStore {
 }
 
 /// A platform store that refuses one write when told to, as a full disk
-/// would, after the preference cache has already taken the value.
+/// would, after the preference cache has already taken the value. With
+/// [keepRefusedValues] it also keeps the refused value in memory, as
+/// Android's preferences do when the commit to disk fails.
 class _FlakyPlatformStore extends InMemorySharedPreferencesStore {
-  _FlakyPlatformStore() : super.empty();
+  _FlakyPlatformStore({this.keepRefusedValues = false}) : super.empty();
 
+  final bool keepRefusedValues;
   bool refuseNextWrite = false;
+  int writeAttempts = 0;
 
   @override
   Future<bool> setValue(String valueType, String key, Object value) async {
+    writeAttempts++;
     if (refuseNextWrite) {
       refuseNextWrite = false;
+      if (keepRefusedValues) await super.setValue(valueType, key, value);
       return false;
     }
     return super.setValue(valueType, key, value);
   }
+}
+
+/// A store that can neither move a refused copy nor store a new one.
+class _MarkAndRememberFail extends PendingReportStore {
+  _MarkAndRememberFail(super.prefs);
+
+  @override
+  Future<void> markRejected(String userId, String reportId) async =>
+      throw StateError('disk full');
+
+  @override
+  Future<void> remember(String userId, ReportSubmission report) async =>
+      throw StateError('disk full');
+}
+
+/// An HTTP client that answers [status] and then fails the body.
+class _StatusOnlyClient extends http.BaseClient {
+  final int status;
+
+  _StatusOnlyClient(this.status);
+
+  @override
+  Future<http.StreamedResponse> send(http.BaseRequest request) async =>
+      http.StreamedResponse(
+        Stream<List<int>>.error(http.ClientException('body broke off')),
+        status,
+        request: request,
+      );
 }

@@ -104,19 +104,25 @@ class PendingReportStore {
     }
   }
 
-  /// Stores [report] unless it is already stored: under its own key — a
-  /// report id always names the same report, and rewriting that key could
-  /// undo a move [markRejected] made to it — or as a copy [markRejected]
-  /// moved to this id. The cache is trustworthy here because [_write]
-  /// re-reads the platform store after any refused write.
+  /// Stores [report], except when its own key holds a copy [markRejected]
+  /// moved on — rewriting it would undo the move — or another key holds a
+  /// copy moved to this id. Otherwise it always writes, even over an
+  /// identical copy: a platform that refused a write can still report the
+  /// value back from memory, so "already there" is not proof it is on disk.
   Future<void> remember(String userId, ReportSubmission report) async {
     final key = _key(userId, report.reportId);
-    if (_prefs.containsKey(key) ||
-        _entries(userId).any((e) => e.$2.reportId == report.reportId)) {
-      return;
-    }
+    final blocked = _entries(userId).any(
+      (e) =>
+          (e.$1 == key && e.$2.reportId != report.reportId) ||
+          (e.$1 != key && e.$2.reportId == report.reportId),
+    );
+    if (blocked) return;
     await _write(() => _prefs.setString(key, jsonEncode(report.toJson())));
   }
+
+  /// Whether a copy is stored to be sent as [reportId] now.
+  bool isListed(String userId, String reportId) =>
+      _entries(userId).any((e) => e.$2.reportId == reportId);
 
   /// Moves the copy listed under [reportId], which the module refused with a
   /// 409, to its [successorReportId], in place: one write to its own key,
@@ -171,6 +177,12 @@ Future<void> replayPendingReports({
   ];
   while (queue.isNotEmpty) {
     final (report, rotated) = queue.removeAt(0);
+    // Checked at sending, not from the snapshot above: while replay waited on
+    // an earlier report, a foreground send may have recorded this one or
+    // moved it off a refused id.
+    // A report moved this run is sent under its new id even if that could
+    // not be stored.
+    if (!rotated && !store.isListed(userId, report.reportId)) continue;
     final result = await attempt(report);
     if (result == CaptureResult.failed) continue;
     final fresh = report.withReportId(successorReportId(report.reportId));
@@ -179,10 +191,12 @@ Future<void> replayPendingReports({
         () => store.markRejected(userId, report.reportId),
         'markRejected',
       );
-      if (!moved) {
-        // The new id is stored on its own, and the copy under the refused id
-        // is dropped regardless: a refused id must never be replayed.
-        await guarded(() => store.remember(userId, fresh), 'remember');
+      // If the move cannot be written, the new id is stored on its own and
+      // the copy under the refused id dropped — unless the new id cannot be
+      // stored either: losing the report is worse than resending a refused
+      // id, which only meets the same 409 and moves to the same successor.
+      if (!moved &&
+          await guarded(() => store.remember(userId, fresh), 'remember')) {
         await guarded(() => store.forget(userId, report.reportId), 'forget');
       }
       // Sent under the new id now. A report already moved once this run is

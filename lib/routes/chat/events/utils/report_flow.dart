@@ -198,22 +198,38 @@ class ReportFlow<T> {
   /// the app is killed in the middle of — is resent on the next start.
   Future<ReportSubmission?> captureWithRetry(ReportSubmission report) async {
     var current = report;
+    // Copies under refused ids that stayed only because the new id could not
+    // be stored yet; each goes as soon as it can.
+    final unmoved = <ReportSubmission>[];
+    Future<void> dropUnmoved() async {
+      for (final copy in unmoved) {
+        await forget(copy);
+      }
+      unmoved.clear();
+    }
+
     while (true) {
-      await remember(current);
+      if (await remember(current)) await dropUnmoved();
       final result = await capture(current);
       if (result == CaptureResult.recorded) {
         await forget(current);
+        await dropUnmoved();
         return current;
       }
       if (result == CaptureResult.conflict) {
         final fresh = current.withReportId(newReportId(current.reportId));
         // The stored copy moves to the new id in place, one write, so it is
         // never sent as the refused id again. If that write fails, the new
-        // id is stored on its own and the copy under the refused id is
-        // dropped regardless: a refused id must never be replayed.
+        // id is stored on its own and the copy under the refused id dropped.
+        // Only while the new id cannot be stored either does the old copy
+        // stay: losing the report is worse than resending a refused id,
+        // which only meets the same 409 and moves to the same successor.
         if (!await markRejected(current)) {
-          await remember(fresh);
-          await forget(current);
+          if (await remember(fresh)) {
+            await forget(current);
+          } else {
+            unmoved.add(current);
+          }
         }
         current = fresh;
       }

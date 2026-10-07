@@ -84,7 +84,26 @@ extension ReportEventApiExtension on Api {
     // errors are logged and reported to Sentry.
     final Response response;
     try {
-      response = await Response.fromStream(await httpClient.send(request));
+      final streamed = await httpClient.send(request);
+      if (streamed.statusCode == 409) {
+        // Decided by the status alone, before the body: a 409 must not turn
+        // into a generic failure — and leave the refused id to be resent —
+        // because its body then broke off or stalled.
+        unawaited(
+          streamed.stream.drain<void>().catchError((_) {
+            // silent-ok: the 409 is already decided; the body carries
+            // nothing this path reads.
+          }),
+        );
+        throw PangeaHttpException(
+          statusCode: 409,
+          method: request.method,
+          path: PangeaHttpException.normalizePath(request.url),
+        );
+      }
+      response = await Response.fromStream(streamed);
+    } on PangeaHttpException {
+      rethrow;
     } on ClientException {
       // Kept a ClientException so the error handler still treats it as "no
       // response" (warning, once per session), but with a message of our own.

@@ -422,6 +422,17 @@ void main() {
       },
     );
 
+    test('after a conflict, the old copy stays when neither the move nor '
+        'the new id can be stored', () async {
+      captureResults = [CaptureResult.conflict];
+      retryAnswers = [false];
+      failingWrites = {'mark:${report.reportId}', 'fresh-report-id'};
+
+      await flow().run(report, offensive: false);
+
+      expect(calls, isNot(contains('forget:${report.reportId}')));
+    });
+
     test('a stored copy is kept until the module confirms it', () async {
       captureResults = [CaptureResult.failed, CaptureResult.failed];
       retryAnswers = [true, false];
