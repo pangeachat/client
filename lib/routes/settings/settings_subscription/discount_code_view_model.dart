@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/subscription/repo_v2/products_request.dart';
@@ -14,8 +16,17 @@ typedef ValidationLoader = ValueNotifier<AsyncState<ValidatePromoCodeResponse>>;
 
 class DiscountCodeViewModel {
   final String _userID;
-  DiscountCodeViewModel({required String userID}) : _userID = userID {
+
+  /// [initialCode] is the code a gift link carried in: it is validated at
+  /// once, so the page opens on the plans with the discount applied and the
+  /// field is never the first thing shown.
+  DiscountCodeViewModel({required String userID, String? initialCode})
+    : _userID = userID {
     _productsProvider.load(ProductsRequest(userID: _userID));
+    if (initialCode != null) {
+      _controller.text = initialCode;
+      unawaited(validatePromoCode());
+    }
   }
 
   final TextEditingController _controller = TextEditingController();

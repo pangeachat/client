@@ -225,6 +225,20 @@ class SettingsPagePanelToken extends PanelToken<SettingsTokenParam> {
   const SettingsPagePanelToken(SettingsTokenParam param)
     : super(PanelTypesEnum.settingspage, param);
 
+  /// The page and its plan id are navigational; a gift link's promo code
+  /// names one person's gift, so it stays out of the name like any identity
+  /// field (google-analytics.instructions.md).
+  @override
+  String get screenName {
+    final param = this.param;
+    if (param == null) return type.name;
+    final named = SettingsTokenParam(
+      subpage: param.subpage,
+      planId: param.planId,
+    ).build();
+    return '${type.name}:$named';
+  }
+
   @override
   SettingsPagePanelToken? get popped {
     final param = this.param;

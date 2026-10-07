@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
@@ -161,6 +162,48 @@ void main() {
         PanelTypesEnum.course,
         PanelTypesEnum.coursepage,
       ]);
+    });
+  });
+
+  group('SettingsTokenParam fields', () {
+    test('the discount page carries a gift link\'s promo code', () {
+      final param = SettingsTokenParam.parse('subscription/discount.ABC-12_3');
+      expect(param.subpage, SettingsTokenParam.discountPage);
+      expect(param.promoCode, 'ABC-12_3');
+      expect(param.build(), 'subscription/discount.ABC-12_3');
+    });
+
+    test('a bare discount page carries no code', () {
+      final param = SettingsTokenParam.parse('subscription/discount');
+      expect(param.promoCode, isNull);
+      expect(param.build(), 'subscription/discount');
+    });
+
+    test('a code survives the field encoding and the URL round trip', () {
+      const param = SettingsTokenParam(
+        subpage: SettingsTokenParam.discountPage,
+        promoCode: 'a.b c',
+      );
+      expect(SettingsTokenParam.parse(param.build()).promoCode, 'a.b c');
+      final tokens = right(PRoutes.giftLink('a.b c'));
+      expect(tokens, hasLength(1));
+      expect((tokens.single.param as SettingsTokenParam).promoCode, 'a.b c');
+    });
+
+    test('the selected page still carries its plan id', () {
+      final param = SettingsTokenParam.parse('subscription/selected.plan_1');
+      expect(param.planId, 'plan_1');
+      expect(param.promoCode, isNull);
+      expect(param.build(), 'subscription/selected.plan_1');
+    });
+
+    test('popping the discount page drops the code with it', () {
+      final token = SettingsPagePanelToken(
+        SettingsTokenParam.parse('subscription/discount.ABC'),
+      );
+      final popped = token.popped?.param;
+      expect(popped?.subpage, 'subscription');
+      expect(popped?.promoCode, isNull);
     });
   });
 }

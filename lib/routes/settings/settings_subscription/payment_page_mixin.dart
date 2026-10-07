@@ -41,11 +41,8 @@ mixin PaymentPageMixin<T extends StatefulWidget> on State<T> {
     try {
       GoogleAnalytics.beginPurchaseSubscription(planId, promoCode, context);
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"plan_id": planId, "promo_code": promoCode},
-      );
+      // The code itself stays out of error telemetry (#9281).
+      ErrorHandler.logError(e: e, s: s, data: {"plan_id": planId});
     }
   }
 
