@@ -65,6 +65,10 @@ void reportEvent(
   final flowContext =
       FluffyChatApp.router.routerDelegate.navigatorKey.currentContext ??
       context;
+  // The workspace's own messenger owns the chat Scaffolds; the root one, which
+  // [flowContext] would resolve, has none to show a snackbar on. It lives in
+  // the workspace shell, so it outlasts the chat screen too.
+  final messenger = context.mounted ? ScaffoldMessenger.maybeOf(context) : null;
 
   final timeline = controller.timeline;
   final report = ReportSubmission(
@@ -85,10 +89,8 @@ void reportEvent(
     capture: (report) => _captureReport(flowContext, client, report),
     offerRetry: () => _offerReportRetry(flowContext, report),
     confirmCaptured: () {
-      if (!flowContext.mounted) return;
-      ScaffoldMessenger.of(
-        flowContext,
-      ).showSnackBarAnnounced(SnackBar(content: Text(l10n.reportSent)));
+      if (messenger == null || !messenger.mounted) return;
+      messenger.showSnackBarAnnounced(SnackBar(content: Text(l10n.reportSent)));
     },
     lookupCourseAdmins: () => _lookupCourseAdmins(flowContext, client, event),
     selectRecipients: (admins) async {
@@ -122,7 +124,7 @@ void reportEvent(
   ).run(report, offensive: score == 1);
 }
 
-/// Sends [report] to the module behind a loading dialog; true once recorded.
+/// Sends [report] to the module behind a progress dialog; true once recorded.
 ///
 /// A failure is reported to Sentry here, exactly once per attempt, with ids
 /// only — never the reason, which is the reporter's own words.
@@ -131,10 +133,10 @@ Future<bool> _captureReport(
   Client client,
   ReportSubmission report,
 ) async {
-  Future<Object?> attempt() async {
+  Future<bool> attempt() async {
     try {
       await client.captureReport(report);
-      return null;
+      return true;
     } catch (e, s) {
       await ErrorHandler.logError(
         e: e,
@@ -145,16 +147,50 @@ Future<bool> _captureReport(
           'event_id': report.eventId,
         },
       );
-      return e;
+      return false;
     }
   }
 
-  if (!context.mounted) return await attempt() == null;
-  final result = await showFutureLoadingDialog<Object?>(
+  if (!context.mounted) return attempt();
+  return showReportProgress(context, attempt());
+}
+
+/// Shows a progress dialog over [pending] and returns its result.
+///
+/// The outcome is [pending]'s own, never the dialog's: the dialog cannot be
+/// dismissed (no barrier tap, no Back), and it removes exactly its own route
+/// when [pending] settles. A dismissible loading dialog would let Back read as
+/// a failure while the request is still in flight, open the retry prompt, and
+/// then have the late completion pop that prompt instead.
+@visibleForTesting
+Future<bool> showReportProgress(
+  BuildContext context,
+  Future<bool> pending,
+) async {
+  final navigator = Navigator.of(context, rootNavigator: true);
+  final label = L10n.of(context).loadingPleaseWait;
+  final route = DialogRoute<void>(
     context: context,
-    future: attempt,
+    barrierDismissible: false,
+    builder: (_) => PopScope(
+      canPop: false,
+      child: AlertDialog.adaptive(
+        content: Row(
+          children: [
+            const CircularProgressIndicator.adaptive(),
+            const SizedBox(width: 20),
+            Expanded(child: Text(label)),
+          ],
+        ),
+      ),
+    ),
   );
-  return !result.isError && result.result == null;
+  navigator.push(route);
+  try {
+    return await pending;
+  } finally {
+    if (route.isActive) navigator.removeRoute(route);
+  }
 }
 
 /// Tells the reporter the report was not sent and asks whether to retry.
