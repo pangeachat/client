@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart' show AppLifecycleState;
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:livekit_client/livekit_client.dart' as lk;
@@ -462,6 +463,37 @@ class _LabelSpyForeground extends CallForegroundControl {
 
   @override
   Future<void> setCamera(bool on, {required int generation}) async {}
+}
+
+/// A service the platform refuses until [accept] says otherwise, counting
+/// every attempt the call makes.
+class _RefusingForeground extends CallForegroundControl {
+  bool accept = false;
+  int starts = 0;
+  int _generation = 0;
+
+  @override
+  Future<int> start({
+    required String peer,
+    required bool video,
+    required String muteLabel,
+    required String channelName,
+  }) async {
+    starts++;
+    return accept ? ++_generation : 0;
+  }
+
+  @override
+  Future<void> stop({required int generation}) async {}
+
+  @override
+  Future<void> setCamera(bool on, {required int generation}) async {}
+
+  @override
+  int onAction(void Function(String action) handle) => 0;
+
+  @override
+  void clearActionHandler(int epoch) {}
 }
 
 class _NullSink implements CallAudioSink {
@@ -1325,6 +1357,41 @@ void main() {
     expect(seen, isNotEmpty, reason: 'the service was never started');
     expect(seen.single.mute, 'Mute-hi');
     expect(seen.single.channel, 'Channel-hi');
+  });
+
+  // #410: the first call's service is refused while the microphone dialog is
+  // up, and the app coming back to the foreground -- the dialog closing, or
+  // the learner returning after leaving from it -- is when Android will let
+  // it start. The call can only answer that moment if something tells it.
+  test('coming back to the app asks again for a refused service', () async {
+    final client = await _bareClient();
+    final fgs = _RefusingForeground();
+    final session = CallSession.start(
+      room: _RecordingRoom(id: '!r:server', client: client),
+      video: false,
+      callService: _FakeCalls(client),
+      transcribe: (request) async =>
+          SpeechToTextResponseModel(results: const []),
+      userL1: 'en',
+      userL2: 'es',
+      analytics: (eventId, uses, language) async {},
+      onReleased: (_) {},
+      mediaOverride: _FakeMedia(),
+      captureOverride: CallCaptureService(sink: _NullSink()),
+      foregroundOverride: fgs,
+    );
+    await pumpEventQueue();
+    expect(fgs.starts, 1, reason: 'the entry attempt, refused');
+
+    final binding = TestWidgetsFlutterBinding.instance;
+    binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
+    fgs.accept = true;
+    binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+    await pumpEventQueue();
+    expect(fgs.starts, 2, reason: 'the return to the app was never heard');
+
+    session.dispose();
+    await pumpEventQueue();
   });
 
   group('the ended-call summary', () {

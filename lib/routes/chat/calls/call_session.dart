@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io' show Platform;
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart' show AppLifecycleListener;
 
 import 'package:matrix/matrix.dart' show Logs;
 import 'package:permission_handler/permission_handler.dart';
@@ -120,6 +121,11 @@ class CallSession extends ChangeNotifier {
 
   Timer? _tick;
 
+  /// Tells the call each time the app comes back to the foreground, which is
+  /// when Android will let an unprotected call start its service. Only on a
+  /// call that has a service to start; null everywhere else.
+  AppLifecycleListener? _lifecycle;
+
   /// Fires when the session is over and should be released by its holder.
   final void Function(CallSession) _onReleased;
 
@@ -154,6 +160,13 @@ class CallSession extends ChangeNotifier {
     // The notification's buttons act on THIS session, through the same
     // controls the screen uses -- one mute path, one hangup path.
     _foregroundActions();
+    // A refused service start is owed again at the next moment it is legal,
+    // and coming back to the app is that moment -- including the instant the
+    // microphone dialog closes on a first call (#410). Wired before the call
+    // starts, so no return to the app is missed.
+    if (call.hasForegroundService) {
+      _lifecycle = AppLifecycleListener(onResume: call.appResumed);
+    }
     // Android 13+ shows no notification without this. Asked at call start --
     // the moment its value is self-evident -- and a refusal costs only the
     // visible chip: the foreground service, which is the actual survival
@@ -1460,6 +1473,8 @@ class CallSession extends ChangeNotifier {
     final tones = _tonesInstance;
     if (tones != null) unawaited(tones.dispose());
     call.clearForegroundActions();
+    _lifecycle?.dispose();
+    _lifecycle = null;
     _tick?.cancel();
     // A summary still holding its 3s when the holder discards the session --
     // logout, a redial stepping over -- must not fire into a disposed one.
