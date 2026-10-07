@@ -10,6 +10,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_pending_store.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_recorder.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_upload_state_store.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
@@ -287,6 +288,14 @@ class CallSession extends ChangeNotifier {
       transcribe: recordingTranscript ? transcribe : null,
       userL1: recordingTranscript ? userL1 : null,
       userL2: recordingTranscript ? userL2 : null,
+      // On the recording-based path the finished WAV is kept on disk (in
+      // memory on the web) until its half is sent, so an app kill or a parked
+      // upload resumes on the next launch or foreground instead of losing it.
+      // Off, the recording stays in memory exactly as before.
+      pendingStore: recordingTranscript
+          ? pendingCallAudioStoreForPlatform()
+          : null,
+      roomId: room.id,
     );
 
     // Built here rather than inline below, because the half published at the
@@ -367,6 +376,77 @@ class CallSession extends ChangeNotifier {
           )
         : null;
 
+    // This device's transcript half, written through [send]. One function for
+    // the real publish and for freezing the live half into the durable
+    // recording record, so the two can never build different events.
+    Future<bool> writeHalf(
+      TranscriptSender send, {
+
+      required String callKey,
+      required List<TranscriptSegment> segments,
+      required int chunksCaptured,
+      required int chunksTranscribed,
+      required int chunksLost,
+      required int chunksRefusedUnsubscribed,
+      required int chunksSuppressed,
+      required bool captureRefused,
+      required bool drainComplete,
+      String? langCode,
+    }) => writeCallTranscript(
+      send: send,
+      callKey: callKey,
+      // Both taken from the latches above, never read off the client
+      // here: this closure runs once per RETRY, and the transaction
+      // id built from these two is what makes a retry a retry.
+      senderId: writerUserId,
+      // The ACCOUNT above, and the DEVICE here, because they answer
+      // two different questions and one of them used to answer both.
+      // Two of a learner's devices in one call write two halves of
+      // what that person said; keyed by the account alone those two
+      // halves are indistinguishable, and the reader keeps one and
+      // presents it as the whole of it.
+      deviceId: writerDeviceId,
+      segments: segments,
+      chunksCaptured: chunksCaptured,
+      chunksTranscribed: chunksTranscribed,
+      chunksLost: chunksLost,
+      chunksRefusedUnsubscribed: chunksRefusedUnsubscribed,
+      chunksSuppressed: chunksSuppressed,
+      captureRefused: captureRefused,
+      drainComplete: drainComplete,
+      // Read here rather than threaded through the record's
+      // publisher, the same seam that already closes over the
+      // clock anchor below. Both are frozen long before this can
+      // run -- the recorder ends its last run, which is the only
+      // thing that discards a chunk or counts a dropped one, and
+      // only then closes the sink the record waits on -- so the
+      // record's rule that a resend must carry the same bytes
+      // holds for them as it does for the counts it reads once.
+      chunksDiscarded: transcripts.chunksDiscarded,
+      captureDroppedMs: capture.captureDroppedMs,
+      // Read from the same seam and frozen by the same ordering: a
+      // run's extent is recorded where the run ends, and the last run
+      // has ended before the sink this record waits on is closed. The
+      // count above says a stretch was handed over; these say WHICH,
+      // which is what lets a reader ask whether the sibling that was
+      // supposed to hold it actually did.
+      keptSpans: capture.keptSpans,
+      discardedSpans: capture.discardedSpans,
+      // The room inflates what it is handed, and the server's limit
+      // applies to the inflated event.
+      encrypted: room.encrypted,
+      langCode: langCode,
+      // Read from the LATCH here, not measured here. It was taken
+      // when this device joined the SFU, minutes before this runs,
+      // and reading the two clocks now would measure the call's own
+      // length instead of the disagreement between them.
+      //
+      // Closed over rather than threaded through CallRecord: the
+      // record is deliberately free of anything to do with media,
+      // and this is the same seam that already knows the room.
+      clockAnchor: media.clockAnchor,
+    );
+
     final record =
         recordOverride ??
         CallRecord(
@@ -390,20 +470,9 @@ class CallSession extends ChangeNotifier {
                 required bool captureRefused,
                 required bool drainComplete,
                 String? langCode,
-              }) => writeCallTranscript(
-                send: transcriptSend,
+              }) => writeHalf(
+                transcriptSend,
                 callKey: callKey,
-                // Both taken from the latches above, never read off the client
-                // here: this closure runs once per RETRY, and the transaction
-                // id built from these two is what makes a retry a retry.
-                senderId: writerUserId,
-                // The ACCOUNT above, and the DEVICE here, because they answer
-                // two different questions and one of them used to answer both.
-                // Two of a learner's devices in one call write two halves of
-                // what that person said; keyed by the account alone those two
-                // halves are indistinguishable, and the reader keeps one and
-                // presents it as the whole of it.
-                deviceId: writerDeviceId,
                 segments: segments,
                 chunksCaptured: chunksCaptured,
                 chunksTranscribed: chunksTranscribed,
@@ -412,37 +481,7 @@ class CallSession extends ChangeNotifier {
                 chunksSuppressed: chunksSuppressed,
                 captureRefused: captureRefused,
                 drainComplete: drainComplete,
-                // Read here rather than threaded through the record's
-                // publisher, the same seam that already closes over the
-                // clock anchor below. Both are frozen long before this can
-                // run -- the recorder ends its last run, which is the only
-                // thing that discards a chunk or counts a dropped one, and
-                // only then closes the sink the record waits on -- so the
-                // record's rule that a resend must carry the same bytes
-                // holds for them as it does for the counts it reads once.
-                chunksDiscarded: transcripts.chunksDiscarded,
-                captureDroppedMs: capture.captureDroppedMs,
-                // Read from the same seam and frozen by the same ordering: a
-                // run's extent is recorded where the run ends, and the last run
-                // has ended before the sink this record waits on is closed. The
-                // count above says a stretch was handed over; these say WHICH,
-                // which is what lets a reader ask whether the sibling that was
-                // supposed to hold it actually did.
-                keptSpans: capture.keptSpans,
-                discardedSpans: capture.discardedSpans,
-                // The room inflates what it is handed, and the server's limit
-                // applies to the inflated event.
-                encrypted: room.encrypted,
                 langCode: langCode,
-                // Read from the LATCH here, not measured here. It was taken
-                // when this device joined the SFU, minutes before this runs,
-                // and reading the two clocks now would measure the call's own
-                // length instead of the disagreement between them.
-                //
-                // Closed over rather than threaded through CallRecord: the
-                // record is deliberately free of anything to do with media,
-                // and this is the same seam that already knows the room.
-                clockAnchor: media.clockAnchor,
               ),
           // Finalises and, if this device is still the one carrying the
           // recording, uploads and sends this device's call-audio half. See
@@ -472,7 +511,70 @@ class CallSession extends ChangeNotifier {
           // path is unchanged. `audioRecorder.recordingSegments` is filled by
           // `audioRecorder.finish`, which `publishCallAudio` above runs.
           recordingSegments: recordingTranscript
-              ? () => audioRecorder.recordingSegments
+              ? () => audioRecorder.recordingSegmentsReady
+              : null,
+          // The credit-first finish (#9302): the recording is finalised and
+          // made durable locally before the credit, with the live transcript
+          // half frozen beside it for a resume after a kill. Both halves are
+          // claimed for the finish's duration so a resume or outbox replay in
+          // this process leaves them alone. All wired only on the
+          // recording-based path, which is the one that publishes late.
+          prepareCallAudio: recordingTranscript
+              ? ({
+                  required String? callKey,
+                  Map<String, dynamic>? liveTranscriptContent,
+                  String? transcriptTxnId,
+                }) => audioRecorder.prepare(
+                  wasCarrier: capture.wasCarryingBeforeLastStop,
+                  callKey: callKey,
+                  liveTranscriptContent: liveTranscriptContent,
+                  transcriptTxnId: transcriptTxnId,
+                )
+              : null,
+          buildLiveTranscript: recordingTranscript
+              ? ({
+                  required String callKey,
+                  required List<TranscriptSegment> segments,
+                  required int chunksCaptured,
+                  required int chunksTranscribed,
+                  required int chunksLost,
+                  required int chunksRefusedUnsubscribed,
+                  required int chunksSuppressed,
+                  required bool captureRefused,
+                  required bool drainComplete,
+                  String? langCode,
+                }) async {
+                  ({Map<String, dynamic> content, String txnId})? built;
+                  await writeHalf(
+                    (content, txnId) async =>
+                        built = (content: content, txnId: txnId),
+                    callKey: callKey,
+                    segments: segments,
+                    chunksCaptured: chunksCaptured,
+                    chunksTranscribed: chunksTranscribed,
+                    chunksLost: chunksLost,
+                    chunksRefusedUnsubscribed: chunksRefusedUnsubscribed,
+                    chunksSuppressed: chunksSuppressed,
+                    captureRefused: captureRefused,
+                    drainComplete: drainComplete,
+                    langCode: langCode,
+                  );
+                  return built;
+                }
+              : null,
+          audioTxnIdFor: recordingTranscript
+              ? (callKey) => CallAudioContent.txnId(
+                  callKey,
+                  audioSenderId,
+                  audioDeviceId,
+                )
+              : null,
+          transcriptTxnIdFor: recordingTranscript
+              ? (callKey) => CallTranscriptContent.txnId(
+                  callKey,
+                  writerUserId,
+                  writerDeviceId,
+                )
               : null,
           // Runs the peer backfill once this device's own half is posted. Null
           // when the feature is unwired, which keeps the record's flow unchanged.

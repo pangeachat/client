@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:fluffychat/routes/chat/calls/call_half_in_flight.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_outbox.dart';
 
 void main() {
@@ -391,6 +392,113 @@ void main() {
         reason: 'a crafted mismatched entry must not delete B\'s genuine half',
       );
     });
+  });
+
+  group('read the room before every resend (#9302)', () {
+    setUp(CallHalfInFlight.resetForTest);
+
+    Future<InMemoryPendingCallTranscriptStore> seeded() async {
+      final store = InMemoryPendingCallTranscriptStore();
+      await CallTranscriptOutbox(
+        store: store,
+      ).remember('!r:server', 'txn-1', '@a:server', {'call_key': r'$k'});
+      return store;
+    }
+
+    test('a half already in the room is dropped without a resend', () async {
+      final store = await seeded();
+      final sends = <String>[];
+      await CallTranscriptOutbox(store: store).flush(
+        (roomId, txnId, content) async {
+          sends.add(txnId);
+          return r'$evt';
+        },
+        owner: '@a:server',
+        inRoom: (roomId, content) async => true,
+      );
+      expect(sends, isEmpty);
+      expect(await store.readAll(), isEmpty);
+    });
+
+    test('a half not in the room is resent under its original id', () async {
+      final store = await seeded();
+      final sends = <String>[];
+      await CallTranscriptOutbox(store: store).flush(
+        (roomId, txnId, content) async {
+          sends.add(txnId);
+          return r'$evt';
+        },
+        owner: '@a:server',
+        inRoom: (roomId, content) async => false,
+      );
+      expect(sends, ['txn-1']);
+      expect(await store.readAll(), isEmpty);
+    });
+
+    test(
+      'a room that cannot be read sends nothing and keeps the half',
+      () async {
+        final store = await seeded();
+        final sends = <String>[];
+        await CallTranscriptOutbox(store: store).flush(
+          (roomId, txnId, content) async {
+            sends.add(txnId);
+            return r'$evt';
+          },
+          owner: '@a:server',
+          inRoom: (roomId, content) async => null,
+        );
+        expect(sends, isEmpty);
+        expect(await store.readAll(), hasLength(1));
+      },
+    );
+
+    test('a half the live finish is publishing is skipped', () async {
+      final store = await seeded();
+      final live = CallHalfInFlight.claim('txn-1');
+      final sends = <String>[];
+      await CallTranscriptOutbox(store: store).flush(
+        (roomId, txnId, content) async {
+          sends.add(txnId);
+          return r'$evt';
+        },
+        owner: '@a:server',
+        inRoom: (roomId, content) async => false,
+      );
+      expect(sends, isEmpty);
+      expect(await store.readAll(), hasLength(1));
+      CallHalfInFlight.release(live);
+    });
+
+    test('a record remembers when it was held back', () async {
+      final store = await seeded();
+      expect((await store.readAll()).single['remembered_at'], isA<int>());
+    });
+
+    test(
+      'a send that confirms after its attempt was parked leaves the record',
+      () async {
+        final store = InMemoryPendingCallTranscriptStore();
+        final outbox = CallTranscriptOutbox(store: store);
+        final confirm = Completer<String?>();
+        final send = outbox.guard(
+          '!r:server',
+          '@a:server',
+          (content, txnId) => confirm.future,
+        );
+        final attempt = AttemptToken();
+        final sending = attempt.run(() => send({'a': 1}, 'txn-1'));
+        await pumpEventQueue();
+        attempt.live = false; // the attempt's deadline won
+        confirm.complete(r'$late');
+        await sending;
+        expect(
+          await store.readAll(),
+          hasLength(1),
+          reason: 'only a live attempt may drop the record',
+        );
+      },
+    );
   });
 }
 

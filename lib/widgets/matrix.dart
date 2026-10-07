@@ -903,6 +903,16 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // with nothing on screen to say why. The clear belongs to reaching the
         // END of the unwind, not to reaching it successfully.
         // Pangea#
+        // #Pangea
+        // Before the services are torn down: the call recordings this account
+        // left waiting to upload are the learner's, and must not survive their
+        // sign-out on a shared device.
+        try {
+          await _callServices[c.clientName]?.purgePendingCallAudio();
+        } catch (e, s) {
+          Logs().w('Could not purge pending call recordings on logout', e, s);
+        }
+        // Pangea#
         try {
           await _cancelSubs(c.clientName);
         } finally {
