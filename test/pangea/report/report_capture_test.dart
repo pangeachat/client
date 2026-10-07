@@ -189,6 +189,10 @@ void main() {
       },
       forget: (submission) async => calls.add('forget:${submission.reportId}'),
       newReportId: (_) => 'fresh-report-id',
+      markRejected: (submission) async {
+        calls.add('markRejected:${submission.reportId}');
+        return !failingWrites.contains('mark:${submission.reportId}');
+      },
       offerRetry: () async {
         calls.add('offerRetry');
         return retryAnswers.removeAt(0);
@@ -375,6 +379,11 @@ void main() {
       await flow().run(report, offensive: false);
 
       expect(calls, isNot(contains('forget:${report.reportId}')));
+      expect(
+        calls,
+        contains('markRejected:${report.reportId}'),
+        reason: 'the copy left behind must never be sent as the refused id',
+      );
     });
 
     test(
@@ -395,6 +404,7 @@ void main() {
           },
           forget: (s) async => forgotten.add(s.reportId),
           newReportId: (_) => 'fresh-report-id',
+          markRejected: (s) async => false,
           offerRetry: () async => retryAnswers.removeAt(0),
           confirmCaptured: () {},
           lookupCourseAdmins: () async => [],

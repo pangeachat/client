@@ -188,6 +188,11 @@ Future<ReportOutcome?> submitReport({
       'forget',
     ),
     newReportId: successorReportId,
+    markRejected: (report) => _storeSafely(
+      () async => (await pending()).markRejected(reporterId, report.reportId),
+      report,
+      'markRejected',
+    ),
     offerRetry: () => _offerReportRetry(uiContext, report),
     confirmCaptured: () {
       if (messenger == null || !messenger.mounted) return;

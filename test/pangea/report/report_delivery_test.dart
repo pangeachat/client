@@ -224,27 +224,44 @@ void main() {
     );
 
     test('a conflict is sent under the new id even when it cannot be stored, '
-        'and the old copy goes once that is recorded', () async {
+        'the old copy is never sent as the refused id again, and it goes '
+        'once the new id is recorded', () async {
+      final moved = successorReportId('old-id');
       final failing = _RememberFails(
         await SharedPreferences.getInstance(),
-        failFor: 'rotated-id',
+        failFor: moved,
       );
       await failing.remember(userId, submission('old-id'));
       final sent = <String>[];
 
+      // The new id fails too: the device keeps only the marked old copy.
       await replayPendingReports(
-        newReportId: (_) => 'rotated-id',
+        newReportId: successorReportId,
         store: failing,
         userId: userId,
         attempt: (report) async {
           sent.add(report.reportId);
           return report.reportId == 'old-id'
               ? CaptureResult.conflict
-              : CaptureResult.recorded;
+              : CaptureResult.failed;
         },
       );
+      expect(sent, ['old-id', moved]);
+      expect(failing.pending(userId).map((r) => r.reportId), [moved]);
 
-      expect(sent, ['old-id', 'rotated-id']);
+      // Next start: only the new id is sent, and once recorded nothing is
+      // left.
+      sent.clear();
+      await replayPendingReports(
+        newReportId: successorReportId,
+        store: failing,
+        userId: userId,
+        attempt: (report) async {
+          sent.add(report.reportId);
+          return CaptureResult.recorded;
+        },
+      );
+      expect(sent, [moved]);
       expect(failing.pending(userId), isEmpty);
     });
 
