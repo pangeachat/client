@@ -104,19 +104,24 @@ class PendingReportStore {
     }
   }
 
-  /// Stores [report], except when its own key holds a copy [markRejected]
-  /// moved on — rewriting it would undo the move — or another key holds a
-  /// copy moved to this id. Otherwise it always writes, even over an
-  /// identical copy: a platform that refused a write can still report the
-  /// value back from memory, so "already there" is not proof it is on disk.
+  /// Stores [report]. When its own key holds a copy [markRejected] moved on,
+  /// or another key holds a copy moved to this id, that copy is written
+  /// again as it is instead — rewriting the report would undo the move. It
+  /// always writes, even over an identical value: a platform that refused a
+  /// write can still report the value back from memory (Android does), so
+  /// "already there" is not proof it is on disk.
   Future<void> remember(String userId, ReportSubmission report) async {
     final key = _key(userId, report.reportId);
-    final blocked = _entries(userId).any(
-      (e) =>
-          (e.$1 == key && e.$2.reportId != report.reportId) ||
-          (e.$1 != key && e.$2.reportId == report.reportId),
-    );
-    if (blocked) return;
+    for (final (entryKey, listed, json) in _entries(userId)) {
+      final movedOffThisKey =
+          entryKey == key && listed.reportId != report.reportId;
+      final movedOntoThisId =
+          entryKey != key && listed.reportId == report.reportId;
+      if (movedOffThisKey || movedOntoThisId) {
+        await _write(() => _prefs.setString(entryKey, jsonEncode(json)));
+        return;
+      }
+    }
     await _write(() => _prefs.setString(key, jsonEncode(report.toJson())));
   }
 
@@ -186,6 +191,9 @@ Future<void> replayPendingReports({
     // A report moved this run is sent under its new id even if that could
     // not be stored.
     if (!rotated && !store.isListed(userId, report.reportId)) continue;
+    // Written again before every attempt, as the foreground does: a value
+    // read back may be one the platform holds only in memory.
+    await guarded(() => store.remember(userId, report), 'remember');
     final result = await attempt(report);
     if (result == CaptureResult.failed) continue;
     final fresh = report.withReportId(successorReportId(report.reportId));

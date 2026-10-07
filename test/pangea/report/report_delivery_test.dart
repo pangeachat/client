@@ -441,6 +441,44 @@ void main() {
       expect(failing.pending(userId), isEmpty);
     });
 
+    test('replay writes each report again before sending it', () async {
+      final platform = _FlakyPlatformStore();
+      SharedPreferencesStorePlatform.instance = platform;
+      SharedPreferences.resetStatic();
+      final flaky = await PendingReportStore.open();
+      await flaky.remember(userId, submission('id'));
+      final before = platform.writeAttempts;
+
+      await replayPendingReports(
+        store: flaky,
+        userId: userId,
+        attempt: (_) async => CaptureResult.failed,
+      );
+
+      expect(platform.writeAttempts, before + 1);
+    });
+
+    test('storing a moved report writes its moved copy again', () async {
+      final platform = _FlakyPlatformStore();
+      SharedPreferencesStorePlatform.instance = platform;
+      SharedPreferences.resetStatic();
+      final flaky = await PendingReportStore.open();
+      final old = submission('old-id');
+      await flaky.remember(userId, old);
+      await flaky.markRejected(userId, old.reportId);
+      final before = platform.writeAttempts;
+
+      await flaky.remember(
+        userId,
+        old.withReportId(successorReportId(old.reportId)),
+      );
+
+      expect(platform.writeAttempts, before + 1);
+      expect(flaky.pending(userId).map((r) => r.reportId), [
+        successorReportId(old.reportId),
+      ]);
+    });
+
     test('a write the platform refused is written again, even though the '
         'platform reports it back', () async {
       final platform = _FlakyPlatformStore(keepRefusedValues: true);
