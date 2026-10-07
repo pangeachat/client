@@ -18,7 +18,7 @@ import 'package:fluffychat/features/activity_sessions/activity_summary_repo.dart
 import 'package:fluffychat/features/activity_sessions/activity_summary_request_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
-import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/activity_sessions/activity_vocab_matcher.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -341,19 +341,14 @@ class ActivityChatController {
 
         for (final event in timeline.events) {
           if (event.type != EventTypes.Message) continue;
-          final uses = PangeaMessageEvent(
+          final tokens = PangeaMessageEvent(
             event: event,
             timeline: timeline,
             ownMessage: event.senderId == userID,
-          ).constructUses;
-          if (uses == null) continue;
-          for (final use in uses) {
-            if (use.identifier.type == ConstructTypeEnum.vocab) {
-              final lemma = use.identifier.lemma.toLowerCase();
-              if (vocabLemmas.contains(lemma)) used.add(lemma);
-            }
-          }
-          // Every target word already seen — no need to scan further back.
+          ).sentTokens;
+          if (tokens == null) continue;
+          used.addAll(ActivityVocabMatcher(tokens, vocabLemmas).matchedEntries);
+          // Every target entry already seen — no need to scan further back.
           if (used.length == vocabLemmas.length) break;
         }
 
