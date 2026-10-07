@@ -250,7 +250,7 @@ class QuestRepo {
     };
   }
 
-  /// Test seam for [_displayL1]: the outline cache must be keyed by the
+  /// Test seam for [displayL1]: the outline cache must be keyed by the
   /// resolved display language, and tests have no [MatrixState] to flip.
   @visibleForTesting
   static String? debugDisplayL1;
@@ -260,7 +260,13 @@ class QuestRepo {
   /// card text follows the toggle (#8577). `'en'` covers a not-yet-initialized
   /// controller — the read itself still fails safely through its try/catch —
   /// and a user with no languages set, matching `ActivityPlanRepo`.
-  static String get _displayL1 =>
+  ///
+  /// Public because [outline]'s cache key is not the only thing that has to
+  /// agree with it: `QuestObjectivesLoader` compares the language its current
+  /// outline was read in against this value to decide whether a profile change
+  /// invalidated it (#9151). A second definition of "the display language" is
+  /// exactly how that comparison would drift from the key it guards.
+  static String get displayL1 =>
       debugDisplayL1 ??
       (MatrixState.isPangeaControllerInitialized
           ? MatrixState.pangeaController.userController.displayLanguageCode ??
@@ -306,7 +312,7 @@ class QuestRepo {
           // read-only server-side, never an LLM call (#8577). `version_id` is
           // computed over canonical content, so it is identical across `l1`
           // values and session pinning is unaffected.
-          'l1': _displayL1,
+          'l1': displayL1,
         },
       );
       final response = await Requests(
@@ -638,7 +644,7 @@ class QuestRepo {
     String? courseRoomId,
     bool forceRefresh = false,
   }) async {
-    final cacheKey = '$questId|${courseRoomId ?? ''}|$_displayL1';
+    final cacheKey = '$questId|${courseRoomId ?? ''}|$displayL1';
     if (!forceRefresh) {
       final cached = _outlineCache[cacheKey];
       if (cached != null) return Future.value(cached);

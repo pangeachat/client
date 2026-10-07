@@ -5,7 +5,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/spaces/course_role_groups.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 
 extension SpacesClientExtension on Client {
@@ -35,54 +34,41 @@ extension SpacesClientExtension on Client {
     ),
   );
 
-  /// In the nav rail and courses tab, prioritize invited courses,
-  /// then sort alphebetically by title
-  List<Room> sortedCourses(L10n l10n) =>
-      rooms
-          .where(
-            (r) =>
-                r.isSpace &&
-                (r.membership == Membership.join ||
-                    r.membership == Membership.invite),
-          )
-          .toList()
-        ..sort((a, b) {
-          if (a.membership == Membership.join &&
-              b.membership == Membership.invite) {
-            return 1;
-          }
-          if (b.membership == Membership.join &&
-              a.membership == Membership.invite) {
-            return -1;
-          }
-          return a
-              .getLocalizedDisplayname(MatrixLocals(l10n))
-              .toLowerCase()
-              .compareTo(
-                b.getLocalizedDisplayname(MatrixLocals(l10n)).toLowerCase(),
-              );
-        });
-
-  /// [sortedCourses] split by the learner's role in each course — the model
-  /// the Courses hub, the nav rail and the mobile sheet's height estimate all
-  /// read (#8425). Partitioning the sorted list keeps each group alphabetical.
-  CourseRoleGroups coursesByRole(L10n l10n) {
-    final invited = <Room>[];
-    final teaching = <Room>[];
-    final learning = <Room>[];
-    for (final course in sortedCourses(l10n)) {
-      if (course.membership == Membership.invite) {
-        invited.add(course);
-      } else if (course.isRoomAdmin) {
-        teaching.add(course);
-      } else {
-        learning.add(course);
+  /// The Courses hub's and the nav rail's one order: invited courses first,
+  /// then joined courses by recent activity ([ChildrenAndParentsRoomExtension.spaceActivityTime]).
+  /// Invites carry no activity, so they — and activity ties — sort by title.
+  List<Room> sortedCourses(L10n l10n) {
+    final courses = rooms
+        .where(
+          (r) =>
+              r.isSpace &&
+              (r.membership == Membership.join ||
+                  r.membership == Membership.invite),
+        )
+        .toList();
+    // Resolved once per course rather than per comparison: activity walks the
+    // client's rooms, and the rail re-sorts on every sync.
+    final activityTimes = {
+      for (final course in courses)
+        if (course.membership == Membership.join)
+          course.id: course.spaceActivityTime,
+    };
+    final titles = {
+      for (final course in courses)
+        course.id: course
+            .getLocalizedDisplayname(MatrixLocals(l10n))
+            .toLowerCase(),
+    };
+    return courses..sort((a, b) {
+      final aInvited = a.membership == Membership.invite;
+      if (aInvited != (b.membership == Membership.invite)) {
+        return aInvited ? -1 : 1;
       }
-    }
-    return CourseRoleGroups(
-      invited: invited,
-      teaching: teaching,
-      learning: learning,
-    );
+      if (!aInvited) {
+        final byActivity = activityTimes[b.id]!.compareTo(activityTimes[a.id]!);
+        if (byActivity != 0) return byActivity;
+      }
+      return titles[a.id]!.compareTo(titles[b.id]!);
+    });
   }
 }

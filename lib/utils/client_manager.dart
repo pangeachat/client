@@ -135,7 +135,7 @@ abstract class ClientManager {
     final shareKeysWith = AppSettings.shareKeysWith.value;
     final enableSoftLogout = AppSettings.enableSoftLogout.value;
 
-    return Client(
+    final client = Client(
       clientName,
       httpClient: CustomHttpClient.createHTTPClient(),
       verificationMethods: {
@@ -213,5 +213,11 @@ abstract class ClientManager {
       },
       // Pangea#
     );
+    // Covers init, a fresh login and every token refresh, each of which ends
+    // in loggedIn. See [InitWithRestoreExtension.storeSessionBackup].
+    client.onLoginStateChanged.stream
+        .where((state) => state == LoginState.loggedIn)
+        .listen((_) => client.storeSessionBackup());
+    return client;
   }
 }

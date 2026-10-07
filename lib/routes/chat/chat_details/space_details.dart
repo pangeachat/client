@@ -9,6 +9,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
@@ -229,7 +230,7 @@ class SpaceDetailsController extends State<SpaceDetails> {
       // Fall through: the filter degrades to the non-knock default.
     }
     if (!mounted) return;
-    context.go(
+    _goToCoursePage(
       WorkspaceNav.openCoursePage(
         GoRouterState.of(context).uri,
         RoomSubpageEnum.invite,
@@ -238,11 +239,23 @@ class SpaceDetailsController extends State<SpaceDetails> {
     );
   }
 
+  /// Go to a management page, which claims focus as it mounts
+  /// (routing.instructions.md, "Every panel is a named group to assistive
+  /// tech"). Under width pressure the card folds beneath the page and takes
+  /// the pressed control with it, so the focus history is dropped first. A
+  /// page that is already open mounts nothing, so focus is left where it is.
+  void _goToCoursePage(String location) {
+    if (location != GoRouterState.of(context).uri.toString()) {
+      PanelEntryIntent.instance.armForSwap();
+    }
+    context.go(location);
+  }
+
   /// Open a course-management page (edit / access / permissions / change-course)
   /// as the card's DETAIL — a `coursepage` panel beside the card that coexists
   /// when width allows and folds to a push when not, keeping the `?m=` filter
   /// and the rest of the workspace. See `routing.instructions.md`.
-  void openCoursePage(RoomSubpageEnum page) => context.go(
+  void openCoursePage(RoomSubpageEnum page) => _goToCoursePage(
     WorkspaceNav.openCoursePage(GoRouterState.of(context).uri, page),
   );
 
@@ -453,7 +466,13 @@ class SpaceDetailsController extends State<SpaceDetails> {
                   maxWidth: 900,
                   showBorder: false,
                   withScrolling: false,
-                  child: SpaceDetailsContent(this, room),
+                  // Its own traversal group: Tab order follows on-screen
+                  // position, and a scrolled page slides its first rows up
+                  // under the header, where they would sort ahead of the
+                  // header's controls (#9154).
+                  child: FocusTraversalGroup(
+                    child: SpaceDetailsContent(this, room),
+                  ),
                 ),
               ),
             ),

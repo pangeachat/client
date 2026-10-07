@@ -96,6 +96,12 @@ Same tier and env plumbing as the other endpoint suites (`endpoint_test_env.dart
   - **full**: nightly 6am UTC + manual — all browser specs
   - Failures on post-deploy runs comment on the triggering PR
 
+## Asserting a path reported NOTHING to Sentry
+
+`ErrorHandler.logError` calls `Sentry.captureException` without awaiting it, so the test harness's `beforeSend` runs several turns after the code that reported. `expect(sentry.events, isEmpty)` therefore passes in two different situations — nothing was reported, and something was reported but has not arrived yet. The second is a false green, the direction that hides a regression: client#8742 merged with CI green while carrying the bug those assertions existed to catch, and the disagreement then read as a macOS-only platform quirk that cost two sessions to rule out.
+
+Use `SentryCaptureHarness.expectNoReport(work)` instead of a bare `isEmpty`. It runs the work, reports a sentinel of its own, and waits for the sentinel to reach `beforeSend`: anything the work enqueued was enqueued first, so once the sentinel arrives, anything real has arrived too. That is an ordering argument rather than a delay, so there is no duration to tune and nothing to go flaky on a slower host. The ordering holds only because the harness strips Sentry's enricher event processor: on Linux it shells out to `/proc/meminfo` before `beforeSend`, so two captures racing two processes can finish in either order — a reorder that would never appear on a macOS laptop and would flake only on CI, where a green run is not read. A test asserts the installed processors against an **allowlist** of ones known to be synchronous, rather than filtering for the enricher by name — a name filter would agree with the removal code by construction and could never catch a rename or a newly added async processor. An unrecognised processor fails that test, and the fix is to confirm it does no I/O and add it, or strip it in the harness. Positive assertions do not need it — `capture()` already waits on a completer, and `hasLength(1)` cannot false-green the same way.
+
 ## Mock mode — bypassing paid choreo/CMS calls
 
 When Playwright is run, all choreo requests are intercepted, and `mock: true` is injected. This tells the choreographer to run the full handler path but swap every paid third-party call for a canned response. No individual request class needs to be modified.

@@ -54,7 +54,9 @@ class PointsGainedAnimation extends StatefulWidget {
 
 class PointsGainedAnimationState extends State<PointsGainedAnimation>
     with SingleTickerProviderStateMixin {
-  Color get gainColor => Theme.of(context).pangea.goldGraphic;
+  /// The progress bar's gold, not the 3:1 mark gold: the burst is decoration
+  /// that repeats what the bar shows (#9112).
+  Color get gainColor => Theme.of(context).pangea.goldFixedDim;
   Color get loseColor => Theme.of(context).pangea.errorGraphic;
 
   AnimationController? _controller;
@@ -159,29 +161,32 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
       ),
     );
 
-    return Material(
-      type: MaterialType.transparency,
-      child: FadeTransition(
-        opacity: _fadeAnimation!,
-        child: IgnorePointer(
-          ignoring: _controller!.isAnimating,
-          child: Stack(
-            children: List.generate(_points.abs(), (index) {
-              return AnimatedBuilder(
-                animation: _controller!,
-                builder: (context, child) {
-                  final progress = _progressAnimation!.value;
-                  final trajectory = _trajectories[index];
-                  return Transform.translate(
-                    offset: Offset(
-                      trajectory.dx * progress,
-                      trajectory.dy * progress + gravity * pow(progress, 2),
-                    ),
-                    child: plusWidget,
-                  );
-                },
-              );
-            }),
+    // Decoration: a screen reader would otherwise read every "+" glyph.
+    return ExcludeSemantics(
+      child: Material(
+        type: MaterialType.transparency,
+        child: FadeTransition(
+          opacity: _fadeAnimation!,
+          child: IgnorePointer(
+            ignoring: _controller!.isAnimating,
+            child: Stack(
+              children: List.generate(_points.abs(), (index) {
+                return AnimatedBuilder(
+                  animation: _controller!,
+                  builder: (context, child) {
+                    final progress = _progressAnimation!.value;
+                    final trajectory = _trajectories[index];
+                    return Transform.translate(
+                      offset: Offset(
+                        trajectory.dx * progress,
+                        trajectory.dy * progress + gravity * pow(progress, 2),
+                      ),
+                      child: plusWidget,
+                    );
+                  },
+                );
+              }),
+            ),
           ),
         ),
       ),

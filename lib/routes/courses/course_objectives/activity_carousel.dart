@@ -4,6 +4,8 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section_scroll_arrow.dart';
@@ -154,100 +156,119 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
               _updateArrowVisibility();
               return true;
             },
-            child: ListView.separated(
-              controller: _scrollController,
-              scrollDirection: Axis.horizontal,
-              itemCount: widget.activities.length,
-              separatorBuilder: (_, _) => SizedBox(width: widget.spacing),
-              padding: EdgeInsets.symmetric(vertical: widget.spacing / 2.0),
-              itemBuilder: (context, i) {
-                final ref = widget.activities[i];
-                final complete =
-                    (widget.hasCompletedActivity?.call(ref.activityId) ??
-                    false);
-                final starsEarned = widget.userStarsByActivity(ref.activityId);
-                final liveState = widget.liveStateByActivity(ref.activityId);
-                // A completed activity drops its state colouring for
-                // the check overlay, so the card and its ping bell
-                // both read it from here.
-                final pinState = complete ? null : liveState.state;
-                // Dim activities that can't be started yet: the course lacks
-                // enough members for their roles (tapping opens the start page's
-                // Invite CTA). A live (ongoing/joinable) session already filled
-                // its seats so it never dims
-                final available = widget.availableParticipants;
-                final canStart =
-                    available == null ||
-                    complete ||
-                    liveState.state != null ||
-                    ref.plan.req.numberOfParticipants <= available;
-                return MouseRegion(
-                  cursor: widget.interactive
-                      ? SystemMouseCursors.click
-                      : MouseCursor.defer,
-                  child: GestureDetector(
-                    // In a preview (no room), open the activity as a standalone
-                    // world object (`/<activityId>`). In a joined course, open it
-                    // as the focused detail over the map: DROP the `left=course`
-                    // card (so it isn't left blank beside the activity) but KEEP
-                    // the `?m=course:` filter. That surviving course scope is what
-                    // marks this plan as the card's child: its close is a back-arrow
-                    // that reopens the card (a pin-opened plan drops the scope and so
-                    // closes with an X). The map stays course-scoped and zooms to
-                    // this activity (`mapFocusFor` → `ActivityFocus`). See
-                    // routing.instructions.md.
-                    onTap: () => widget.onTap(ref),
-                    child: Stack(
-                      // The card's state banner peeks past its top-left
-                      // corner, so this wrapping Stack must not clip it.
-                      clipBehavior: Clip.hardEdge,
-                      children: [
-                        Opacity(
-                          opacity: canStart ? 1.0 : 0.5,
-                          child: ActivitySuggestionCard(
-                            activity: ref.plan,
-                            width: _cardWidth,
-                            height: _cardHeight,
-                            fontSize: _isColumnMode ? 16.0 : 12.0,
-                            fontSizeSmall: _isColumnMode ? 12.0 : 8.0,
-                            iconSize: _isColumnMode ? 12.0 : 8.0,
-                            starsEarned: starsEarned,
-                            pinState: pinState,
-                            openSessions: liveState.openSessions,
-                            participants: liveState.participants,
-                            openSlots: liveState.openSlots,
+            // One Tab stop for the row, with the arrow keys moving between its
+            // cards and scrolling them into view
+            // (accessibility.instructions.md, "One Tab stop per list").
+            child: RovingFocusGroup(
+              ids: [for (final a in widget.activities) a.activityId],
+              child: ListView.separated(
+                controller: _scrollController,
+                scrollDirection: Axis.horizontal,
+                itemCount: widget.activities.length,
+                separatorBuilder: (_, _) => SizedBox(width: widget.spacing),
+                padding: EdgeInsets.symmetric(vertical: widget.spacing / 2.0),
+                itemBuilder: (context, i) {
+                  final ref = widget.activities[i];
+                  final complete =
+                      (widget.hasCompletedActivity?.call(ref.activityId) ??
+                      false);
+                  final starsEarned = widget.userStarsByActivity(
+                    ref.activityId,
+                  );
+                  final liveState = widget.liveStateByActivity(ref.activityId);
+                  // A completed activity drops its state colouring for
+                  // the check overlay, so the card and its ping bell
+                  // both read it from here.
+                  final pinState = complete ? null : liveState.state;
+                  // Dim activities that can't be started yet: the course lacks
+                  // enough members for their roles (tapping opens the start page's
+                  // Invite CTA). A live (ongoing/joinable) session already filled
+                  // its seats so it never dims
+                  final available = widget.availableParticipants;
+                  final canStart =
+                      available == null ||
+                      complete ||
+                      liveState.state != null ||
+                      ref.plan.req.numberOfParticipants <= available;
+                  final card = Stack(
+                    // The card's state banner peeks past its top-left
+                    // corner, so this wrapping Stack must not clip it.
+                    clipBehavior: Clip.hardEdge,
+                    children: [
+                      Opacity(
+                        opacity: canStart ? 1.0 : 0.5,
+                        child: ActivitySuggestionCard(
+                          activity: ref.plan,
+                          width: _cardWidth,
+                          height: _cardHeight,
+                          fontSize: _isColumnMode ? 16.0 : 12.0,
+                          fontSizeSmall: _isColumnMode ? 12.0 : 8.0,
+                          iconSize: _isColumnMode ? 12.0 : 8.0,
+                          starsEarned: starsEarned,
+                          pinState: pinState,
+                          openSessions: liveState.openSessions,
+                          participants: liveState.participants,
+                          openSlots: liveState.openSlots,
+                        ),
+                      ),
+                      if (complete)
+                        Container(
+                          width: _cardWidth,
+                          height: _cardHeight,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.0),
+                            color: theme.colorScheme.surface.withAlpha(180),
+                          ),
+                          child: Center(
+                            child: SvgPicture.asset(
+                              'assets/pangea/check.svg',
+                              width: 48.0,
+                              height: 48.0,
+                            ),
                           ),
                         ),
-                        if (complete)
-                          Container(
-                            width: _cardWidth,
-                            height: _cardHeight,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.0),
-                              color: theme.colorScheme.surface.withAlpha(180),
-                            ),
-                            child: Center(
-                              child: SvgPicture.asset(
-                                'assets/pangea/check.svg',
-                                width: 48.0,
-                                height: 48.0,
-                              ),
-                            ),
-                          ),
-                        // The course-ping bell, top-left so it shares
-                        // the banner's row without covering it (#8319),
-                        // in the card's own state hue (#8481).
-                        if (ref.activityId == widget.pingedActivityId)
-                          Positioned(
-                            top: 8.0,
-                            left: 6.0,
-                            child: CoursePingBadge(pinState: pinState),
-                          ),
-                      ],
+                      // The course-ping bell, top-left so it shares
+                      // the banner's row without covering it (#8319),
+                      // in the card's own state hue (#8481).
+                      if (ref.activityId == widget.pingedActivityId)
+                        Positioned(
+                          top: 8.0,
+                          left: 6.0,
+                          child: CoursePingBadge(pinState: pinState),
+                        ),
+                    ],
+                  );
+                  // The course preview's cards open nothing (#7826), so they are
+                  // neither tap targets nor Tab stops.
+                  if (!widget.interactive) return card;
+                  // One node carrying the card's text, a button role, focus and
+                  // tap, with the gold keyboard ring along the card's own edge.
+                  return Semantics(
+                    button: true,
+                    child: FocusRingTapTarget(
+                      // In a preview (no room), open the activity as a standalone
+                      // world object (`/<activityId>`). In a joined course, open it
+                      // as the focused detail over the map: DROP the `left=course`
+                      // card (so it isn't left blank beside the activity) but KEEP
+                      // the `?m=course:` filter. That surviving course scope is what
+                      // marks this plan as the card's child: its close is a back-arrow
+                      // that reopens the card (a pin-opened plan drops the scope and so
+                      // closes with an X). The map stays course-scoped and zooms to
+                      // this activity (`mapFocusFor` → `ActivityFocus`). See
+                      // routing.instructions.md.
+                      onTap: () => widget.onTap(ref),
+                      focusNode: RovingFocusGroup.nodeOf(
+                        context,
+                        ref.activityId,
+                      ),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                      ),
+                      child: card,
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
           // No BlockSemantics here (#8011): blocking is tree-order, not

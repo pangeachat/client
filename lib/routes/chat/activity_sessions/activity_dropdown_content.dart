@@ -160,11 +160,9 @@ class ActivityDropdownContent extends StatelessWidget {
           InkWell(
             onTap: onToggle,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                12.0,
-                GoalHeaderConstants.topPadding,
-                12.0,
-                GoalHeaderConstants.topPadding,
+              padding: EdgeInsets.symmetric(
+                horizontal: 12.0,
+                vertical: GoalHeaderConstants.topPadding(context),
               ),
               child: topRow,
             ),

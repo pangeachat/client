@@ -155,11 +155,12 @@ void main() {
   ) async {
     await pumpPage(tester);
     await tester.runAsync(() async {
-      await openDialog(tester);
-      await seatBot(tester);
+      await sentry.expectNoReport(() async {
+        await openDialog(tester);
+        await seatBot(tester);
+      });
     });
     expect(tester.takeException(), isNull);
-    expect(sentry.events, isEmpty);
     expect(find.byType(PlayWithBotLoadingDialog), findsNothing);
     expect(find.text('play with bot'), findsOneWidget);
   });
@@ -169,18 +170,19 @@ void main() {
     (tester) async {
       await pumpPage(tester);
       await tester.runAsync(() async {
-        await openDialog(tester);
+        await sentry.expectNoReport(() async {
+          await openDialog(tester);
 
-        // The learner taps outside the dialog while the seat is pending.
-        await tester.tapAt(const Offset(5, 5));
-        await tester.pump();
-        await tester.pump(const Duration(milliseconds: 300));
-        expect(find.byType(PlayWithBotLoadingDialog), findsNothing);
+          // The learner taps outside the dialog while the seat is pending.
+          await tester.tapAt(const Offset(5, 5));
+          await tester.pump();
+          await tester.pump(const Duration(milliseconds: 300));
+          expect(find.byType(PlayWithBotLoadingDialog), findsNothing);
 
-        await seatBot(tester);
+          await seatBot(tester);
+        });
       });
       expect(tester.takeException(), isNull);
-      expect(sentry.events, isEmpty);
       // The page under the dialog is still there — nothing popped in its place.
       expect(find.text('play with bot'), findsOneWidget);
     },

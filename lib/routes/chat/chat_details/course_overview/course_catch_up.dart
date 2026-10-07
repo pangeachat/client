@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
@@ -105,30 +106,33 @@ class CourseCatchUp extends StatelessWidget {
             final unreadChats = _unreadChats;
             final ping = _pingFor(cachedPing);
 
-            final rows = <Widget>[
+            // Each row is one control, so one roving id per row.
+            final rowsById = <String, Widget>{
               if (ping != null)
-                _CatchUpPingRow(
+                'ping': _CatchUpPingRow(
                   room: room,
                   ping: ping,
+                  rovingId: 'ping',
                   onTap: () => _openPingedActivity(context, ping),
                 ),
-              ...analyticsRequests.entries.map(
-                (request) => _CatchUpAnalyticsRow(
+              for (final request in analyticsRequests.entries)
+                'analytics:${request.key.id}': _CatchUpAnalyticsRow(
                   user: request.key,
+                  rovingId: 'analytics:${request.key.id}',
                   onTap: () => SpaceAnalyticsRequestedDialog.show(
                     context,
                     room,
                     analyticsRequests,
                   ),
                 ),
-              ),
-              ...unreadChats.map(
-                (chat) => _CatchUpMessagesRow(
+              for (final chat in unreadChats)
+                'chat:${chat.id}': _CatchUpMessagesRow(
                   chat: chat,
+                  rovingId: 'chat:${chat.id}',
                   onTap: () => _openChat(context, chat),
                 ),
-              ),
-            ];
+            };
+            final rows = rowsById.values.toList();
 
             return CourseAttentionCard(
               icon: Badge.count(
@@ -142,6 +146,9 @@ class CourseCatchUp extends StatelessWidget {
               actionLabel: l10n.markAllRead,
               onAction: () => _markAllRead(context, unreadChats),
               rows: rows,
+              rowRovingIds: [
+                for (final id in rowsById.keys) [id],
+              ],
             );
           },
         ),
@@ -165,11 +172,13 @@ class CourseCatchUp extends StatelessWidget {
 class _CatchUpPingRow extends StatelessWidget {
   final Room room;
   final CoursePingBadgeData ping;
+  final String rovingId;
   final VoidCallback onTap;
 
   const _CatchUpPingRow({
     required this.room,
     required this.ping,
+    required this.rovingId,
     required this.onTap,
   });
 
@@ -189,6 +198,7 @@ class _CatchUpPingRow extends StatelessWidget {
             ?.title;
         return InkWell(
           onTap: onTap,
+          focusNode: RovingFocusGroup.nodeOf(context, rovingId),
           borderRadius: BorderRadius.circular(8.0),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 5.0),
@@ -251,9 +261,14 @@ class _CatchUpPingRow extends StatelessWidget {
 /// grant/deny review dialog.
 class _CatchUpAnalyticsRow extends StatelessWidget {
   final User user;
+  final String rovingId;
   final VoidCallback onTap;
 
-  const _CatchUpAnalyticsRow({required this.user, required this.onTap});
+  const _CatchUpAnalyticsRow({
+    required this.user,
+    required this.rovingId,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -261,6 +276,7 @@ class _CatchUpAnalyticsRow extends StatelessWidget {
     final displayname = user.localizedDisplayname(l10n);
     return InkWell(
       onTap: onTap,
+      focusNode: RovingFocusGroup.nodeOf(context, rovingId),
       borderRadius: BorderRadius.circular(8.0),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5.0),
@@ -301,9 +317,14 @@ class _CatchUpAnalyticsRow extends StatelessWidget {
 /// opening the chat.
 class _CatchUpMessagesRow extends StatelessWidget {
   final Room chat;
+  final String rovingId;
   final VoidCallback onTap;
 
-  const _CatchUpMessagesRow({required this.chat, required this.onTap});
+  const _CatchUpMessagesRow({
+    required this.chat,
+    required this.rovingId,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -311,6 +332,7 @@ class _CatchUpMessagesRow extends StatelessWidget {
     final displayname = chat.getLocalizedDisplayname(MatrixLocals(l10n));
     return InkWell(
       onTap: onTap,
+      focusNode: RovingFocusGroup.nodeOf(context, rovingId),
       borderRadius: BorderRadius.circular(8.0),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5.0),

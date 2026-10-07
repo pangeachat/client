@@ -401,6 +401,7 @@ class ChatListController extends State<ChatList>
       );
     } catch (e, s) {
       Logs().w('Searching has crashed', e, s);
+      if (!mounted) return;
       // #Pangea
       ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(e.toLocalizedString(context))),
@@ -408,7 +409,7 @@ class ChatListController extends State<ChatList>
       );
       // Pangea#
     }
-    if (!isSearchMode) return;
+    if (!mounted || !isSearchMode) return;
     setState(() {
       isSearching = false;
       this.roomSearchResult = roomSearchResult;
@@ -751,6 +752,9 @@ class ChatListController extends State<ChatList>
 
   @override
   void dispose() {
+    // A search debounced just before the list closes would otherwise run
+    // against a disposed State (CLIENT-CFA).
+    _coolDown?.cancel();
     _intentDataStreamSubscription?.cancel();
     _intentFileStreamSubscription?.cancel();
     //#Pangea
@@ -1292,6 +1296,13 @@ enum ChatContextAction {
   // addToSpace,
   delete,
   endActivity,
+  // Offered only by the chat header's More menu: the first two replaced the
+  // icon buttons that used to open them, the last two are what an activity
+  // session's menu has always carried.
+  search,
+  details,
+  invite,
+  download,
   // Pangea#
   block,
 }

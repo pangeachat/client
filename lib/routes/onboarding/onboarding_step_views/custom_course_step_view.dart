@@ -118,6 +118,20 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
                       ),
                     ),
                   ),
+                  // The textbook is the first thing we ask, since it is
+                  // usually all we need to build the course. Submits as
+                  // `goals`, the same field the website form uses.
+                  Semantics(
+                    container: true,
+                    child: TextField(
+                      controller: _goalsController,
+                      decoration: InputDecoration(
+                        hintText: L10n.of(context).customCourseTextbookHint,
+                      ),
+                      minLines: 6,
+                      maxLines: 6,
+                    ),
+                  ),
                   Semantics(
                     container: true,
                     child: TextField(
@@ -136,17 +150,6 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
                         hintText: L10n.of(context).institution,
                       ),
                       inputFormatters: [LengthLimitingTextInputFormatter(254)],
-                    ),
-                  ),
-                  Semantics(
-                    container: true,
-                    child: TextField(
-                      controller: _goalsController,
-                      decoration: InputDecoration(
-                        hintText: L10n.of(context).courseGoals,
-                      ),
-                      minLines: 10,
-                      maxLines: 10,
                     ),
                   ),
                 ],

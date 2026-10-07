@@ -2,16 +2,15 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
-import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_catch_up.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
@@ -20,7 +19,6 @@ import 'package:fluffychat/routes/chat/chat_details/course_overview/course_knock
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_participants_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_button.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_header.dart';
-import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_shortcut.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
@@ -106,13 +104,20 @@ class _CourseOverviewState extends State<CourseOverview> {
     );
   }
 
-  void _openSubpage(SpaceSettingsTabs section) => context.go(
-    WorkspaceNav.openCourseTab(
-      GoRouterState.of(context).uri,
-      tab: section,
-      expanded: true,
-    ),
-  );
+  void _openSubpage(SpaceSettingsTabs section) {
+    // The subpage is a different course token, so the panel is rebuilt and
+    // takes the pressed "See all" with it; the subpage that mounts lands focus
+    // on its own group (routing.instructions.md, "Every panel is a named group
+    // to assistive tech").
+    PanelEntryIntent.instance.armForSwap();
+    context.go(
+      WorkspaceNav.openCourseTab(
+        GoRouterState.of(context).uri,
+        tab: section,
+        expanded: true,
+      ),
+    );
+  }
 
   /// Scroll the page from a mouse wheel anywhere over the panel — the gaps
   /// between rows are hit-transparent and this panel floats over the world
@@ -272,48 +277,15 @@ class _CourseOverviewState extends State<CourseOverview> {
               ),
             ),
             const Divider(),
-            Column(
+            // The preview owns this section, its header and trailing divider
+            // included: whether it shows at all, and whether it offers "See
+            // all", turns on counts only the preview has (#9183).
+            CourseChatsPreview(
               key: _sectionKeys[SpaceSettingsTabs.chat],
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Padding(
-                  padding: SpaceDetailsContent.sectionPadding,
-                  child: CourseSectionHeader(
-                    title: SpaceSettingsTabs.chat.title(context),
-                    icon: Icons.forum_outlined,
-                    actions: [
-                      // Creating a course chat is buried in the More
-                      // section's settings list; teachers asked for it
-                      // where the chats are (#8744). Same permission gate
-                      // as that row — the shortcut can't do what the
-                      // setting wouldn't.
-                      if (room.isRoomAdmin &&
-                          room.canChangeStateEvent(EventTypes.SpaceChild))
-                        CourseSectionShortcut(
-                          icon: Symbols.chat_add_on,
-                          tooltip: l10n.createGroupChat,
-                          onPressed: widget.controller.addGroupChat,
-                        ),
-                      CourseSectionButton(
-                        section: SpaceSettingsTabs.chat.title(context),
-                        onPressed: () => _openSubpage(SpaceSettingsTabs.chat),
-                      ),
-                    ],
-                  ),
-                ),
-                // The chat rows carry their own 8px wrapper (ChatListItem /
-                // DefaultChatCreationTile), so the section pads them by the
-                // difference — their content then sits at the same inset as
-                // every other section.
-                Padding(
-                  padding:
-                      SpaceDetailsContent.sectionPadding -
-                      const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: CourseChatsPreview(room: room),
-                ),
-              ],
+              room: room,
+              onShowAll: () => _openSubpage(SpaceSettingsTabs.chat),
+              onCreateChat: widget.controller.addGroupChat,
             ),
-            const Divider(),
             Padding(
               padding: SpaceDetailsContent.sectionPadding,
               child: Column(

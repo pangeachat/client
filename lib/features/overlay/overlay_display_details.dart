@@ -22,6 +22,26 @@ sealed class OverlayDisplayDetails {
   /// areas and must stay click-through.
   final bool blockPointerThrough;
 
+  /// Makes the overlay modal to the keyboard, the way [blockSemantics] makes
+  /// it modal to a screen reader: Tab cycles through the overlay's own
+  /// controls, Escape dismisses it, and closing hands focus back to whatever
+  /// held it when the overlay opened (#9191). Off by default: most overlays
+  /// are cards or decorations beside page content the learner still uses.
+  final bool keyboardModal;
+
+  /// Controls that stay reachable while this overlay is up, rendered above
+  /// the backdrop at their own place on the page: followers onto page widgets,
+  /// sized to them. A tap there reaches them instead of dismissing; a tap
+  /// anywhere else still lands on the backdrop. Null for the default, where
+  /// nothing but the overlay's own content sits above the backdrop.
+  ///
+  /// Why not a hole in the backdrop: with the semantics tree on, the web
+  /// engine turns a click on the backdrop's Dismiss node into a semantics tap
+  /// on that node and drops the pointer events, so a Flutter-side hit-test
+  /// hole never sees the click (#9122). Only a node painted above Dismiss
+  /// wins, and that means a node inside this overlay.
+  final Widget? aboveBackdrop;
+
   final bool canPop;
 
   final VoidCallback? onDismiss;
@@ -38,8 +58,10 @@ sealed class OverlayDisplayDetails {
     this.ignorePointer = false,
     this.blockSemantics = false,
     this.blockPointerThrough = false,
+    this.keyboardModal = false,
     this.canPop = true,
     this.onDismiss,
+    this.aboveBackdrop,
   });
 }
 
@@ -70,6 +92,7 @@ class TransformOverlayDisplayDetails extends OverlayDisplayDetails {
     super.blockPointerThrough = false,
     super.canPop = true,
     super.onDismiss,
+    super.aboveBackdrop,
   });
 
   TransformOverlayDisplayDetails copyWith({
@@ -94,6 +117,7 @@ class TransformOverlayDisplayDetails extends OverlayDisplayDetails {
     blockPointerThrough: blockPointerThrough,
     canPop: canPop,
     onDismiss: onDismiss,
+    aboveBackdrop: aboveBackdrop,
   );
 }
 
@@ -110,8 +134,10 @@ class CenteredOverlayDisplayDetails extends OverlayDisplayDetails {
     super.ignorePointer = false,
     super.blockSemantics = false,
     super.blockPointerThrough = false,
+    super.keyboardModal = false,
     super.canPop = true,
     super.onDismiss,
+    super.aboveBackdrop,
   });
 }
 
@@ -129,6 +155,7 @@ class TopOverlayDisplayDetails extends OverlayDisplayDetails {
     super.blockPointerThrough = false,
     super.canPop = true,
     super.onDismiss,
+    super.aboveBackdrop,
   });
 }
 
@@ -162,5 +189,6 @@ class PositionedOverlayDisplayDetails extends TransformOverlayDisplayDetails {
     super.blockPointerThrough = false,
     super.canPop = true,
     super.onDismiss,
+    super.aboveBackdrop,
   });
 }

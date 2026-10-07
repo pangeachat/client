@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_switcher_sheet.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -81,18 +82,24 @@ class _ContextLanguageSwitchTargetState
         ? l10n.switchLanguageChipLabel(language.getDisplayName(l10n))
         : language.getDisplayName(l10n);
 
-    // The chip is excluded inside the InkWell rather than the whole subtree
-    // from outside, so the switchable chip is one node with name, role, focus
-    // and tap (#8873).
-    return Semantics(
-      button: canSwitch,
+    if (!canSwitch) {
+      return Semantics(
+        label: label,
+        child: ExcludeSemantics(child: chip),
+      );
+    }
+    // The ring target builds the one node with name, role, focus and tap
+    // (#8873), and wears the gold keyboard focus ring just outside the chip's
+    // edge — an InkWell's focus wash is invisible on a chip this light
+    // (accessibility.instructions.md, "Focus rings").
+    return FocusRingTapTarget(
+      onTap: () => _openSwitcher(language),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+      ),
+      ringStrokeAlign: BorderSide.strokeAlignOutside,
       label: label,
-      child: canSwitch
-          ? InkWell(
-              onTap: () => _openSwitcher(language),
-              child: ExcludeSemantics(child: chip),
-            )
-          : ExcludeSemantics(child: chip),
+      child: chip,
     );
   }
 }

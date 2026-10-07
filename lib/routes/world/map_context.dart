@@ -19,19 +19,24 @@ class WorldMapContext extends MapContext {
   int get hashCode => 0;
 }
 
-/// Scoped to one course plan — only that course's content shows.
+/// Scoped to one course plan — only that course's content shows. [spaceId] is
+/// the joined course space the scope came from, when there is one: two joined
+/// courses can share a plan, and the sessions a course-scoped map may show are
+/// the ones THAT space lists (#9026), so the plan id alone cannot name it.
 class CourseMapContext extends MapContext {
   final String coursePlanId;
-  const CourseMapContext(this.coursePlanId);
+  final String? spaceId;
+  const CourseMapContext(this.coursePlanId, {this.spaceId});
 
   @override
   bool operator ==(Object other) =>
       other.runtimeType == runtimeType &&
       other is CourseMapContext &&
-      other.coursePlanId == coursePlanId;
+      other.coursePlanId == coursePlanId &&
+      other.spaceId == spaceId;
 
   @override
-  int get hashCode => Object.hash(runtimeType, coursePlanId);
+  int get hashCode => Object.hash(runtimeType, coursePlanId, spaceId);
 }
 
 /// Scoped to a course plan the learner is PREVIEWING from the add-course flow

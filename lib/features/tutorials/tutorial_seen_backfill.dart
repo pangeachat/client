@@ -33,7 +33,6 @@ class TutorialSeenBackfill {
     TutorialEnum.welcome,
     TutorialEnum.worldMap,
     TutorialEnum.appTour,
-    TutorialEnum.activityGoals,
     TutorialEnum.activityRoles,
   ];
 

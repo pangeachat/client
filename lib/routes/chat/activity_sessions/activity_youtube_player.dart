@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/embed_click_to_engage.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_video_keyboard_control.dart';
 
 /// Inline YouTube embed for an activity media block. YouTube blocks are always
 /// embedded against their URL, never re-hosted (YouTube ToS), and this is the
@@ -22,12 +24,21 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 /// native we clear YouTube's remembered caption language before each video so
 /// the activity's language wins; see [_forgetStickyCaptionLanguage] (#8828).
 ///
+/// The embed only takes the mouse once the learner clicks it, so the page
+/// around it keeps scrolling while they are just passing over ([
+/// EmbedClickToEngage], #9063). That first click spends itself on play/pause,
+/// the same thing a click on a YouTube player does.
+///
 /// The embed stays inline: fullscreen is fully disabled (no fullscreen button,
 /// no auto-fullscreen on landscape rotation, no fullscreen-on-vertical-drag).
 /// Activity video is an in-place plan-page stimulus, and the package's
 /// fullscreen has no in-app exit affordance the way we mount it, so on a
 /// landscape tablet it would otherwise take over the screen with no way out and
 /// trap the learner (#7500).
+///
+/// From the keyboard the player is one Tab stop that plays, mutes and switches
+/// captions itself ([ActivityVideoKeyboardControl], #9128): Tab cannot enter
+/// the frame, so YouTube's own controls are out of a keyboard's reach.
 class ActivityYoutubePlayer extends StatefulWidget {
   final String url;
   final bool muted;
@@ -38,11 +49,15 @@ class ActivityYoutubePlayer extends StatefulWidget {
   /// rather than us naming a language the activity isn't in.
   final String? captionLanguage;
 
+  /// See [ActivityVideoKeyboardControl.autofocus].
+  final bool autofocus;
+
   const ActivityYoutubePlayer({
     required this.url,
     this.muted = false,
     this.aspectRatio = 16 / 9,
     this.captionLanguage,
+    this.autofocus = false,
     super.key,
   });
 
@@ -65,6 +80,12 @@ class ActivityYoutubePlayer extends StatefulWidget {
 
 class _ActivityYoutubePlayerState extends State<ActivityYoutubePlayer> {
   late final YoutubePlayerController _controller;
+
+  /// The embed shows captions unless the viewer turned them off, whatever
+  /// `cc_load_policy` says (#8828), so the first press of C turns them off.
+  // ponytail: the frame's caption state cannot be read from here, so a learner
+  // who also clicks YouTube's own CC button makes the next C press a no-op.
+  bool _captionsOn = true;
 
   @override
   void initState() {
@@ -124,15 +145,44 @@ class _ActivityYoutubePlayerState extends State<ActivityYoutubePlayer> {
     super.dispose();
   }
 
+  void _togglePlayback() {
+    if (_controller.value.playerState == PlayerState.playing) {
+      _controller.pauseVideo();
+    } else {
+      _controller.playVideo();
+    }
+  }
+
+  Future<void> _toggleMute() async =>
+      await _controller.isMuted ? _controller.unMute() : _controller.mute();
+
+  /// Through the captions module, the one caption switch that takes a single
+  /// argument: the package's web bridge drops calls with more. Turning them
+  /// back on this way keeps the preferred caption language (measured, #9128).
+  void _toggleCaptions() {
+    _captionsOn = !_captionsOn;
+    final call = _captionsOn ? 'loadModule' : 'unloadModule';
+    _controller.webViewController.runJavaScript('player.$call("captions");');
+  }
+
   @override
   Widget build(BuildContext context) {
-    return YoutubePlayer(
-      controller: _controller,
-      aspectRatio: widget.aspectRatio,
-      // Inline only (#7500): don't auto-fullscreen on landscape rotation, and
-      // don't let a vertical drag push into fullscreen.
-      autoFullScreen: false,
-      enableFullScreenOnVerticalDrag: false,
+    return ActivityVideoKeyboardControl(
+      autofocus: widget.autofocus,
+      onTogglePlayback: _togglePlayback,
+      onToggleMute: _toggleMute,
+      onToggleCaptions: _toggleCaptions,
+      child: EmbedClickToEngage(
+        onEngage: _togglePlayback,
+        child: YoutubePlayer(
+          controller: _controller,
+          aspectRatio: widget.aspectRatio,
+          // Inline only (#7500): don't auto-fullscreen on landscape rotation,
+          // and don't let a vertical drag push into fullscreen.
+          autoFullScreen: false,
+          enableFullScreenOnVerticalDrag: false,
+        ),
+      ),
     );
   }
 }

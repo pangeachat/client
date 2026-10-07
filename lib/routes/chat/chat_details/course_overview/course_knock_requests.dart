@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
@@ -68,6 +69,7 @@ class CourseKnockRequests extends StatelessWidget {
         rows: knockingUsers
             .map((user) => _KnockRequestRow(user: user, room: room))
             .toList(),
+        rowRovingIds: knockingUsers.map(_KnockRequestRow.rovingIds).toList(),
       ),
     );
   }
@@ -85,6 +87,14 @@ class _KnockRequestRow extends StatelessWidget {
 
   const _KnockRequestRow({required this.user, required this.room});
 
+  /// The row's two controls in reading order: the avatar's member menu, then
+  /// Approve. The roving group is linear, so every arrow key steps through
+  /// them and on into the next row.
+  static List<String> rovingIds(User user) => [
+    '${user.id}:menu',
+    '${user.id}:approve',
+  ];
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -99,6 +109,10 @@ class _KnockRequestRow extends StatelessWidget {
               label: displayname,
               child: Builder(
                 builder: (avatarContext) => InkWell(
+                  focusNode: RovingFocusGroup.nodeOf(
+                    avatarContext,
+                    rovingIds(user).first,
+                  ),
                   customBorder: const CircleBorder(),
                   onTap: () => showMemberActionsPopupMenu(
                     context: avatarContext,
@@ -137,6 +151,7 @@ class _KnockRequestRow extends StatelessWidget {
             ),
           ),
           FilledButton.tonal(
+            focusNode: RovingFocusGroup.nodeOf(context, rovingIds(user).last),
             onPressed: () => ApproveMemberAction(user: user).execute(context),
             style: FilledButton.styleFrom(visualDensity: VisualDensity.compact),
             child: Text(l10n.approve, style: theme.textTheme.bodyMedium),

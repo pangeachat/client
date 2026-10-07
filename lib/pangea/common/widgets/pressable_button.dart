@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:fluffychat/pangea/common/utils/play_click_sound.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 
 class PressableButton extends StatefulWidget {
   final BorderRadius borderRadius;
@@ -21,6 +22,11 @@ class PressableButton extends StatefulWidget {
   final double colorFactor;
   final bool visible;
 
+  /// Whether the button is itself a Tab stop. Off for a button that sits
+  /// inside a control which already is one: a second stop there would do the
+  /// same thing as the first.
+  final bool focusable;
+
   const PressableButton({
     required this.borderRadius,
     required this.builder,
@@ -32,6 +38,7 @@ class PressableButton extends StatefulWidget {
     this.playSound = false,
     this.colorFactor = 0.3,
     this.visible = true,
+    this.focusable = true,
     super.key,
   });
 
@@ -50,6 +57,8 @@ class PressableButtonState extends State<PressableButton>
   // seperate the widget's depressed state from the internal
   // state to enable animations when this changes
   bool _depressed = false;
+
+  bool _showFocusRing = false;
 
   @override
   void initState() {
@@ -130,6 +139,12 @@ class PressableButtonState extends State<PressableButton>
     if (mounted) _controller.reverse();
   }
 
+  /// Enter or Space runs the same press-and-release a tap does.
+  void _onKeyboardActivate() {
+    _onTapDown(null);
+    _onTapUp(null);
+  }
+
   @override
   void dispose() {
     _controller.dispose();
@@ -153,52 +168,79 @@ class PressableButtonState extends State<PressableButton>
       cursor: widget.onPressed != null
           ? SystemMouseCursors.click
           : SystemMouseCursors.basic,
-      child: GestureDetector(
-        onTapDown: _onTapDown,
-        onTapUp: _onTapUp,
-        onTapCancel: _onTapCancel,
-        child: AnimatedBuilder(
-          animation: _tweenAnimation,
-          builder: (context, child) {
-            return Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Flexible(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SizedBox(
-                        height: _depressed
-                            ? widget.buttonHeight
-                            : _tweenAnimation.value,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: shadowColor,
-                          borderRadius: widget.borderRadius,
+      // A bare GestureDetector is no Tab stop, which left the message
+      // toolbar's round buttons out of reach of the keyboard (#9191).
+      child: FocusableActionDetector(
+        enabled: widget.focusable && widget.onPressed != null,
+        actions: {
+          ActivateIntent: CallbackAction<ActivateIntent>(
+            onInvoke: (_) => _onKeyboardActivate(),
+          ),
+          // Enter on web.
+          ButtonActivateIntent: CallbackAction<ButtonActivateIntent>(
+            onInvoke: (_) => _onKeyboardActivate(),
+          ),
+        },
+        onShowFocusHighlight: (show) => setState(() => _showFocusRing = show),
+        child: GestureDetector(
+          onTapDown: _onTapDown,
+          onTapUp: _onTapUp,
+          onTapCancel: _onTapCancel,
+          child: AnimatedBuilder(
+            animation: _tweenAnimation,
+            builder: (context, child) {
+              return Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flexible(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(
+                          height: _depressed
+                              ? widget.buttonHeight
+                              : _tweenAnimation.value,
                         ),
-                        padding: EdgeInsets.only(
-                          bottom: !_depressed
-                              ? widget.buttonHeight - _tweenAnimation.value
-                              : 0,
-                        ),
-                        child: Container(
-                          decoration: BoxDecoration(
+                        // Two-tone and outside the edge: the button's fill is
+                        // the caller's and so is what it sits on, and over
+                        // the toolbar's scrim the gold ring measured 1.3:1
+                        // against the scrim and 2.6:1 against the fill.
+                        FocusRing(
+                          shape: RoundedRectangleBorder(
                             borderRadius: widget.borderRadius,
                           ),
-                          child: widget.builder(
-                            context,
-                            _depressed || _tweenAnimation.value > 0,
-                            shadowColor,
+                          show: _showFocusRing,
+                          strokeAlign: BorderSide.strokeAlignOutside,
+                          twoTone: true,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: shadowColor,
+                              borderRadius: widget.borderRadius,
+                            ),
+                            padding: EdgeInsets.only(
+                              bottom: !_depressed
+                                  ? widget.buttonHeight - _tweenAnimation.value
+                                  : 0,
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: widget.borderRadius,
+                              ),
+                              child: widget.builder(
+                                context,
+                                _depressed || _tweenAnimation.value > 0,
+                                shadowColor,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            );
-          },
+                ],
+              );
+            },
+          ),
         ),
       ),
     );

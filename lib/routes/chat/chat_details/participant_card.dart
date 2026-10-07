@@ -2,24 +2,26 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
+import 'package:fluffychat/pangea/common/widgets/role_badge.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
+import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/users/course_member_stats.dart';
 import 'package:fluffychat/widgets/users/level_display_name.dart';
 import 'package:fluffychat/widgets/users/member_actions_popup_menu_button.dart';
 
 /// One participant's member card: avatar (with the top-3 leaderboard ring),
-/// name, the member's stars and level in the course's language, and the
-/// permission/membership badge. A space with no course language recorded —
-/// anything created before it was written to room state — falls back to the
-/// learner chip ([LevelDisplayName]), which shows their own language pair. Tapping the avatar opens the
-/// member actions menu. Shared by the full participant list
+/// the permission/membership badge across the avatar's top edge, name, and the
+/// member's stars and level in the course's language. A space with no course
+/// language recorded — anything created before it was written to room state —
+/// falls back to the learner chip ([LevelDisplayName]), which shows their own
+/// language pair. Tapping the avatar opens the member actions menu. Shared by the full participant list
 /// (RoomParticipantsSection) and the course page's Participants preview.
 class ParticipantCard extends StatelessWidget {
   static const double width = 100.0;
@@ -31,10 +33,17 @@ class ParticipantCard extends StatelessWidget {
   /// [leaderboardGradientFor].
   final LinearGradient? gradient;
 
+  /// This card's id in the enclosing [RovingFocusGroup]: a member list is one
+  /// Tab stop, with the arrow keys moving between its cards
+  /// (accessibility.instructions.md, "One Tab stop per list"). Null for a card
+  /// outside a group.
+  final String? rovingId;
+
   const ParticipantCard({
     required this.user,
     required this.room,
     this.gradient,
+    this.rovingId,
     super.key,
   });
 
@@ -87,22 +96,21 @@ class ParticipantCard extends StatelessWidget {
 
     final courseLanguage = room.coursePlan?.l2;
 
-    final permissionBatch = user.powerLevel >= 100
-        ? L10n.of(context).admin
-        : user.powerLevel >= 50
-        ? L10n.of(context).moderator
-        : '';
-
-    final membershipBatch = switch (user.membership) {
-      Membership.ban => null,
-      Membership.invite => L10n.of(context).invited,
-      Membership.join => null,
-      Membership.knock => L10n.of(context).knocking,
-      Membership.leave => null,
+    final badgeType = switch (user.membership) {
+      Membership.invite => RoleBadgeType.invited,
+      Membership.knock => RoleBadgeType.knocking,
+      _ when user.powerLevel >= SpaceConstants.powerLevelOfAdmin =>
+        RoleBadgeType.admin,
+      _ when user.powerLevel >= 50 => RoleBadgeType.moderator,
+      _ => null,
     };
 
+    final rovingId = this.rovingId;
+    // One node for the card: its name, badge and stats, with the avatar's
+    // focus and tap merged in, announced as a button.
     return Semantics(
       container: true,
+      button: true,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12.0),
         child: SizedBox(
@@ -114,6 +122,7 @@ class ParticipantCard extends StatelessWidget {
               children: [
                 Stack(
                   alignment: Alignment.center,
+                  clipBehavior: Clip.none,
                   children: [
                     if (gradient != null)
                       ExcludeSemantics(
@@ -131,32 +140,50 @@ class ParticipantCard extends StatelessWidget {
                       const SizedBox(height: width, width: width),
                     Builder(
                       builder: (context) {
-                        return MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: GestureDetector(
-                            onTap: () => showMemberActionsPopupMenu(
-                              context: context,
-                              user: user,
-                              room: room,
-                            ),
-                            child: Center(
-                              child: ExcludeSemantics(
-                                child: Avatar(
-                                  mxContent: user.avatarUrl,
-                                  name: user.localizedDisplayname(
-                                    L10n.of(context),
-                                  ),
-                                  size: width - 6.0,
-                                  presenceUserId: user.id,
-                                  presenceOffset: const Offset(0, 0),
-                                  presenceSize: 18.0,
-                                ),
-                              ),
+                        // Focusable and Enter/Space-activatable, where a bare
+                        // GestureDetector took a mouse only (#9154). The ring
+                        // hugs the avatar. Over a leaderboard ring it is
+                        // two-tone, because gold cannot show against gold.
+                        return FocusRingTapTarget(
+                          onTap: () => showMemberActionsPopupMenu(
+                            context: context,
+                            user: user,
+                            room: room,
+                          ),
+                          focusNode: rovingId == null
+                              ? null
+                              : RovingFocusGroup.nodeOf(context, rovingId),
+                          shape: const CircleBorder(),
+                          twoToneRing: gradient != null,
+                          child: ExcludeSemantics(
+                            child: Avatar(
+                              mxContent: user.avatarUrl,
+                              name: user.localizedDisplayname(L10n.of(context)),
+                              size: width - 6.0,
+                              presenceUserId: user.id,
+                              presenceOffset: const Offset(0, 0),
+                              presenceSize: 18.0,
                             ),
                           ),
                         );
                       },
                     ),
+                    // Straddles the avatar's top edge (#9109), rising into the
+                    // card's top padding instead of reserving a row below the
+                    // stats that most cards leave empty. Taps fall through to
+                    // the avatar beneath.
+                    if (badgeType != null)
+                      Positioned(
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        child: FractionalTranslation(
+                          translation: const Offset(0, -0.5),
+                          child: Center(
+                            child: IgnorePointer(child: RoleBadge(badgeType)),
+                          ),
+                        ),
+                      ),
                   ],
                 ),
                 Text(
@@ -181,53 +208,6 @@ class ParticipantCard extends StatelessWidget {
                           textStyle: theme.textTheme.labelSmall,
                           showFlags: false,
                         ),
-                ),
-                Container(
-                  height: 24.0,
-                  alignment: Alignment.center,
-                  child: membershipBatch != null
-                      ? Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            color: theme.colorScheme.secondaryContainer,
-                            borderRadius: BorderRadius.circular(
-                              AppConfig.borderRadius,
-                            ),
-                          ),
-                          child: Text(
-                            membershipBatch,
-                            style: theme.textTheme.labelSmall?.copyWith(
-                              color: theme.colorScheme.onSecondaryContainer,
-                            ),
-                          ),
-                        )
-                      : permissionBatch.isNotEmpty
-                      ? Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            color: user.powerLevel >= 100
-                                ? theme.pangea.goldFixedDim
-                                : theme.pangea.goldContainer,
-                            borderRadius: BorderRadius.circular(
-                              AppConfig.borderRadius,
-                            ),
-                          ),
-                          child: Text(
-                            permissionBatch,
-                            style: theme.textTheme.labelSmall?.copyWith(
-                              color: user.powerLevel >= 100
-                                  ? theme.pangea.onGoldFixed
-                                  : theme.pangea.onGoldContainer,
-                            ),
-                          ),
-                        )
-                      : null,
                 ),
               ],
             ),

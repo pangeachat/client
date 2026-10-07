@@ -40,14 +40,12 @@ import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
 import 'package:fluffychat/pangea/extensions/leave_room_extension.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/archived_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/confirmed_role_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
-import 'package:fluffychat/routes/chat/chat_details/delete_room_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -106,12 +104,19 @@ class ActivitySessionStartPage extends StatefulWidget {
   final String? parentId;
   final bool launch;
 
+  /// Whether the join list offers only the sessions [parentId] lists (#9026).
+  /// True when the page was opened from that course; false for a bare map pin,
+  /// whose [parentId] is only a resolved guess to attribute a new session to,
+  /// while its green came from every joined course.
+  final bool scopeSessionsToCourse;
+
   const ActivitySessionStartPage({
     super.key,
     required this.activityId,
     required this.parentId,
     this.roomId,
     this.launch = false,
+    this.scopeSessionsToCourse = false,
   });
 
   @override
@@ -163,6 +168,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     _initSummariesFromCache();
     _load();
 
+    DiscoveredSessionsCache.instance.addListener(_onDiscoveredSessionsChanged);
     PanelFocusController.instance.addListener(_onPanelFocusChanged);
     _syncTutorialRegistration();
     _subscribeTutorialRoomState();
@@ -185,16 +191,37 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   /// shows a spinner until [_loadSummary] lands. Either way [_loadSummary] still
   /// fetches: the cache can hold a session whose members have since left, which
   /// nothing in B's sync will ever correct (#8150), so a seeded render is a
-  /// stale-while-revalidate, not a fetch skip.
+  /// stale-while-revalidate, not a fetch skip. Opened from a course, only the
+  /// sessions that course lists are offered ([_sessionScope], #9026).
   void _initSummariesFromCache() {
     final cached = DiscoveredSessionsCache.instance.forActivity(
       widget.activityId,
+      course: _sessionScope,
     );
     _roomSummariesModel = ActivitySessionSummariesModel(
       cached ?? {},
       activityId: widget.activityId,
     );
     _summariesLoading = cached == null;
+  }
+
+  /// Keep the join list live while the page stays open, from the same cache
+  /// the course page renders its Open state from (#9134). Discovery re-reads
+  /// the course spaces on sync, and a session filling announces itself into
+  /// them (#8735), so a session that fills while the learner waits stops being
+  /// offered. Laid over the page's own read rather than replacing it:
+  /// discovery leaves out sessions the learner has joined and the page's
+  /// per-room extras.
+  void _onDiscoveredSessionsChanged() {
+    final cached = DiscoveredSessionsCache.instance.forActivity(
+      widget.activityId,
+      course: _sessionScope,
+    );
+    if (!mounted || cached == null) return;
+    setState(
+      () => _roomSummariesModel = _roomSummariesModel.withPreviews(cached),
+    );
+    _maybeStartStartPageTutorials();
   }
 
   @override
@@ -220,6 +247,9 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   void dispose() {
     scrollController.dispose();
     pickedRoleNotifier.dispose();
+    DiscoveredSessionsCache.instance.removeListener(
+      _onDiscoveredSessionsChanged,
+    );
     PanelFocusController.instance.removeListener(_onPanelFocusChanged);
     _tutorialRoomStateSubscription?.cancel();
     _unregisterTutorialLaunchers();
@@ -237,6 +267,11 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   Room? get courseParent => widget.parentId != null
       ? Matrix.of(context).client.getRoomById(widget.parentId!)
       : null;
+
+  /// The course whose listing filters the sessions this page offers, or null
+  /// for every joined course's — so a pin the map showed joinable always finds
+  /// its session here, never a green pin that dead-ends at Start (#9026).
+  Room? get _sessionScope => widget.scopeSessionsToCourse ? courseParent : null;
 
   Map<String, ActivityRoleModel> get assignedRoles {
     final roomId = widget.roomId;
@@ -301,7 +336,9 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
     // This activity's session rooms across ALL the learner's joined courses —
     // not just a course in scope, since a bare map pin carries no course
-    // context. Discovered server-side by the space-scoped
+    // context, and the read also refreshes the shared cache the map and the
+    // course page render from; what THIS page offers is scoped below (#9026).
+    // Discovered server-side by the space-scoped
     // activity_session_previews module: one batched read of the joined course
     // spaces returns previews for only this activity's session rooms, complete
     // regardless of how many rooms a course holds (#7982). See
@@ -350,23 +387,36 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
             'loadRoomSummaries: activity start page',
           );
       if (!mounted) return;
-      setState(() {
-        _roomSummariesModel = ActivitySessionSummariesModel({
-          ...results[0],
-          ...results[1],
-        }, activityId: widget.activityId);
-        _summariesLoading = false;
-      });
       // Write the fresh space-scoped previews back so views rendering off the
       // cache (the course card's Open state) correct themselves now instead of
       // on the map's next discovery pass (#8150). Only results[0]: the per-room
       // extras (deep-linked / invited rooms) are outside what discovery caches.
+      // Written first, so the join list below is that same read scoped to the
+      // course in context (#9026).
       if (courseSpaceIds.isNotEmpty) {
         DiscoveredSessionsCache.instance.updateActivity(
           widget.activityId,
           results[0],
         );
       }
+      // Opened from a course, the join list offers only the sessions that
+      // course lists ([_sessionScope]); a bare pin or link offers every joined
+      // course's. The extras — the linked room, invited rooms — are never
+      // scoped out.
+      final courseSessions = courseSpaceIds.isEmpty
+          ? const <String, RoomSummaryResponse>{}
+          : DiscoveredSessionsCache.instance.forActivity(
+                  widget.activityId,
+                  course: _sessionScope,
+                ) ??
+                const <String, RoomSummaryResponse>{};
+      setState(() {
+        _roomSummariesModel = ActivitySessionSummariesModel({
+          ...courseSessions,
+          ...results[1],
+        }, activityId: widget.activityId);
+        _summariesLoading = false;
+      });
       // The summaries decide what the join list shows — their arrival is a
       // tutorial re-ask.
       _maybeStartStartPageTutorials();
@@ -519,28 +569,16 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
         !room.isActivityStarted;
   }
 
-  /// Only the room's admin (its creator, under the default power levels) can
-  /// delete it for everyone; a plain member can only leave — mirroring chat's
-  /// own leave/delete gating.
-  bool get canDeleteSession => activityRoom?.isRoomAdmin == true;
-
-  /// Leave the current session room and close its panel. Shared by the
-  /// waiting-room menu and the archived fallback's lone exit — a session that
-  /// can never continue would otherwise sit in the chat list forever (#8064).
-  /// An archived session is often one the homeserver has already forgotten, so
-  /// it leaves via [LeaveRoomExtension.leaveIgnoringUnknownRoom].
+  /// Leave the current session room and close its panel: the archived
+  /// fallback's lone exit — a session that can never continue would otherwise
+  /// sit in the chat list forever (#8064). An archived session is often one the
+  /// homeserver has already forgotten, so it leaves via
+  /// [LeaveRoomExtension.leaveIgnoringUnknownRoom]. The waiting room's "…" menu
+  /// leaves through the shared chat menu instead.
   Future<void> leaveSession() => _exitSessionRoom(
     action: (room) => room.leaveIgnoringUnknownRoom(),
     message: L10n.of(context).leaveRoomDescription,
     okLabel: L10n.of(context).leave,
-  );
-
-  /// Delete the session room for everyone — admin-only ([canDeleteSession]),
-  /// the same purge chat's delete uses — then close its panel.
-  Future<void> deleteSession() => _exitSessionRoom(
-    action: (room) => room.delete(),
-    message: L10n.of(context).deleteChatDesc,
-    okLabel: L10n.of(context).delete,
   );
 
   /// Confirm, run [action] on the session room, wait for the resulting leave to

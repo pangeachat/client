@@ -2,9 +2,6 @@
 /// lights are findable from each other. A widget opts in by registering the id
 /// with the overlay registry; never inline the string at either end.
 class TutorialTargetIds {
-  /// The floating goal-header card in an activity chat.
-  static const String activityGoalHeader = 'tutorial_activity_goal_header';
-
   /// The course-wide progress bar on the course page's intro block. Claimed
   /// there only — the bar also renders in the pushed full-plan subpage, which
   /// can be mounted at the same time ([TutorialTarget]).

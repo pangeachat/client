@@ -322,7 +322,9 @@ Every workspace panel announces as one named semantic group — "Settings page",
 
 A screen reader browses the workspace in reading order, not paint order: the nav rail first, then the open left panels, the open right panels, the user cluster / analytics bar, and the map — the backdrop everything overlays — last (#8755). Keyboard Tab walks the same sequence, ending with the map's search/context slot, its zoom controls, and the map's own single stop (#8810): the primary navigation and the panel a learner just opened never sit behind the backdrop they are drawn over. One rank per region ([`WorkspaceOrder`](../../lib/widgets/layouts/workspace_shell.dart)) feeds both orders, because they are separate mechanisms that otherwise drift — a sort key reorders only the semantics tree, and Tab follows Flutter's own traversal policy. The sort key goes on each region's *labeled* semantic container (a key on an unlabeled wrapper forms a generic node VoiceOver reorders); the focus order goes on the region's slot in the shell's ordered focus-traversal group. VoiceOver additionally sorts overlapping siblings by their horizontal centers regardless of keys, so the full-bleed map cannot key its way out of mid-sweep: the map group's container is anchored to a thin right-edge strip whose children — pins, attribution, zoom controls — overflow to their true positions, with pointer hits passed through beyond the strip's bounds. Only the search/context slot sits outside the group, keyed between the cluster and the map.
 
-When a user-cluster button opens a panel, focus moves from that button to the panel itself — its named group, so a screen reader announces the page it just entered — one discrete claim after the panel mounts, so the panel a learner just opened is where their next keypress lands. The group is not a Tab stop: the next Tab reaches the panel's first control, today its header's close or back button. A panel opened any other way — a URL, the rail, a map pin — leaves focus where it was. This is the shape of the onboarding step group (accessibility.instructions.md, "Focus after an in-place content swap"). The claim is armed by the cluster's open methods ([`UserClusterViewModel`](../../lib/routes/world/user_cluster_view_model.dart), through a one-shot [`PanelEntryIntent`](../../lib/features/navigation/panel_entry_intent.dart) that expires within a second so a press that opened nothing cannot move focus later) and taken by the group the right column's dispatcher authors ([`PanelEntryFocus`](../../lib/routes/world/right_panel/panel_entry_focus.dart)) when the panel mounts.
+When a user-cluster button or a rail course opens a panel, focus moves from that control to the panel itself — its named group, so a screen reader announces the page it just entered — one discrete claim after the panel mounts, so the panel a learner just opened is where their next keypress lands. The group is not a Tab stop: the next Tab reaches the panel's first control, today its header's close or back button. A panel opened any other way — a URL, the rail's section icons, a map pin — leaves focus where it was. This is the shape of the onboarding step group (accessibility.instructions.md, "Focus after an in-place content swap"). The claim is armed by the cluster's open methods ([`UserClusterViewModel`](../../lib/routes/world/user_cluster_view_model.dart)), the rail's course items ([`SpacesNavigationRail`](../../lib/widgets/navigation_rail.dart)), the course page's "See all" links ([`CourseOverview`](../../lib/routes/chat/chat_details/course_overview/course_overview.dart)) and management-page openers ([`SpaceDetailsController`](../../lib/routes/chat/chat_details/space_details.dart)), and the left panels' close and back control ([`LeftPanelCloseButton`](../../lib/routes/world/left_panel/left_panel_close_button.dart)), through a one-shot [`PanelEntryIntent`](../../lib/features/navigation/panel_entry_intent.dart) that expires within a second so a press that opened nothing cannot move focus later, and taken by the group either column's dispatcher authors ([`PanelEntryFocus`](../../lib/routes/world/right_panel/panel_entry_focus.dart)) when the panel mounts.
+
+Moving within a panel family claims the same way, because each of these moves destroys the panel the pressed control sits in, and the control with it: a course section's "See all", the back arrow out of it, a management page opened from the course card, such as invite or edit, an activity opened from a course's activity row and the back arrow that returns from it to the card, and the close or back control of a detail whose parent is open, such as that same page closing back to the card. The parent is either folded beneath the detail, where it mounts fresh and claims like any opened panel, or on screen beside it, where nothing mounts, so the claim names the parent and the panel already on screen takes it. These controls first drop the focus history, as the onboarding step swap does, so focus is never handed back to an older control such as the rail while the claim is pending. Chat panels are not part of this: a chat's sub-page pops, and a chat closed beside its list, leave focus to the framework.
 
 ### Closing a panel: X or back arrow
 
@@ -634,18 +636,11 @@ browse public) ride the panel header as compact right-justified icons, so the
 joined-course list keeps the vertical space; when the learner is in no courses
 yet they drop to full-width buttons in the body as the empty state.
 
-**The Courses hub groups by role — only when the learner holds both.** A
-learner who both administers courses and takes courses sees the list split
-into **Teaching** (courses where they hold admin power, ≥ 100 — the same signal
-as the knock badge; there is no separate teacher role) and **Learning** (every
-other joined course), each alphabetical, with pending invites in their own
-**Invited** group ahead of both (an invite's role is unknown until join, so it
-is never sorted as teaching). Section headers carry the count and collapse on
-tap; collapsed state is device-local view state, never in the URL, and resets
-with the app. **A learner who holds only one role sees no headers at all** —
-the flat invited-first alphabetical list — so the split appears only where it
-helps (#8425). Applies on web and narrow alike; content-fit counts the header
-rows. The mobile course shortcut is a single avatar and does not carry role.
+**Courses are ordered by recent activity.** A course's activity is the newest event in the course space itself or in any of its chats and activity sessions the learner has joined. This is the same timestamp the chat list sorts by. The course space's own timeline holds little beyond setup, so the space alone is not enough. The most recently active course comes first, and the order updates live as activity arrives: sending a message in one of a course's chats moves that course above every other joined course. Pending invites have no activity yet, so they lead the list, ordered by name. Courses with tied activity are also ordered by name (#9004).
+
+**The Courses hub filters by role — only when the learner holds both.** A learner who both administers courses and takes courses sees a row of filter pills under the header: **All**, **Teaching** (courses where they hold admin power, ≥ 100 — the same signal as the knock badge; there is no separate teacher role) and **Learning** (every other joined course). The pills look and behave like the chat list's pills: one is selected at a time, and the hub opens on All. Pending invites show under All only, because an invite's role is unknown until join. A learner who holds only one role sees no pills. A filter never regroups the list: the courses it selects show in the one activity order above (#9207, replacing #8425's section headers). The tile of every course the learner administers carries an **Admin** label in its bottom-right corner, the same label a course page's participant cards wear.
+
+**The Courses hub has a search bar once the learner has joined more than four courses.** It sits under the header, above the pills. The query matches each course's title, its description, and its CEFR level as the tile shows it in the app language (for example "Novice Mid (A1)"), ignoring capitalization and diacritics. Title matches come first, then description matches, then level matches, each group in activity order. Search and the role filter combine. Applies on web and narrow alike; content-fit counts the search and pill rows.
 
 **The chats sheet header carries its actions**: an expanding **search
 toggle** (an icon; tapping it reveals the filter field, autofocused — the
@@ -833,7 +828,7 @@ behaves the same on mobile and desktop.
 | A course management page (invite, edit, access, permissions, change-course) | the course card's More menu | left | opens as a `coursepage` detail **beside the card**, folding onto it only under width pressure — the same fit test as a settings page. Never replaces the card |
 | Chat list | the rail | left | open panel (master) |
 | Live chat / session | a chat-list row, an activity launch, **a course room row** | left | open panel (detail); one live view at a time. A course room rides over the course context (`?c=` stays), so closing it reveals the course |
-| Chat members / settings (a regular chat) | the chat header | the chat panel | push (members/search live *within* the chat, not beside it) |
+| Chat members / settings (a regular chat) | the chat header's More menu | the chat panel | push (members/search live *within* the chat, not beside it) |
 | Analytics (vocab / grammar / sessions) | a top-right cluster tracker (the **Stars** tracker opens the sessions panel) | right | open panel (master) |
 | Level | the **level medal** on the powerups pill | right | open panel (an analytics tab) |
 | A construct detail | tapping a vocab/grammar item | right | open panel (detail) beside its summary; **one detail at a time, across both columns** — a vocab detail, a grammar detail, and a completed-activity `session` review share ONE slot (a live `room` chat is independent and stays open); folds under pressure |
@@ -842,8 +837,12 @@ behaves the same on mobile and desktop.
 | A settings page (learning, style, security, …) | a settings-menu row | right | open panel (detail) beside the menu, folding only under width pressure — same fit test as a course management page |
 | Learning settings (shortcut) | the cluster's **language flag** | right | opens the learning-settings page directly — the flag doubles as a shortcut to it |
 | A settings leaf (password, blocked users, emotes, …) | within its settings page | the settings panel | push |
-| Courses (your courses + add a course) | the **Courses** rail icon | left | open panel (master) — joined-course tiles plus the add-course options (start-my-own / browse / enter-code); tiles sit under Invited / Teaching / Learning headers when the learner holds both roles ([grouping rule](#single-column-bottom-nav)) |
+| Courses (your courses + add a course) | the **Courses** rail icon | left | open panel (master) — joined-course tiles plus the add-course options (start-my-own / browse / enter-code); Teaching / Learning filter pills when the learner holds both roles, and a search bar past four joined courses ([rules](#single-column-bottom-nav)) |
 | Activity plan | a course's activity list, a map pin (tap) | map content | a left-column `activity:<id>` panel over the map (the nav widget's cavity at half height on narrow, pin visible above), camera on its pin. It claims the single **live view** (a `liveView` sibling of `room`/`session`), so opening it drops any open chat and starting the session drops the plan; it sizes by the registry like a `room` (#7385). When the learner already holds an unfinished session, the bound session room rides in the token param so the plan offers resume instead of a fresh instance (#7257). Its close follows the [affordance rule](#closing-a-panel-x-or-back-arrow): with `?c=` set (opened from the course's activity list, or from a pin on the course-scoped map) a back arrow returns to the course card; with no context (a world-map pin, a standalone shared link) an X reveals the map. **Start** launches the session, which runs as a chat room (one live view) |
+
+### A chat's header actions
+
+Every chat header carries one **More** menu. It offers search and chat details, which used to be icons of their own, and every action the chat-list row's long-press menu offers: go to course, notifications, mark read or unread, pin, leave, delete. Long-press is a gesture many learners never discover, so no action may be reachable only that way. Both menus are built from one list ([`chatContextMenuItems`](../../lib/routes/chat/chat_details/chat_context_menu_action.dart)), so an action added to either shows up in both. The header drops only "open this chat", which is already on screen. A regular chat also carries the call buttons; an activity session carries Invite and Download in its menu instead ([activities.instructions.md](activities.instructions.md)). A session that has not started shows its start page in place of the chat, and that page's menu follows the same rule ([activity-start-page.instructions.md](activity-start-page.instructions.md)).
 
 ### One live session at a time
 
@@ -911,15 +910,7 @@ versa; a live chat on the left is independent and stays open.
 
 ### The navigation rail
 
-Pinned to the top-left of the map on web. Top to bottom: **World** (home),
-**Chats**, **Courses**, then one avatar per joined course in the Courses hub's
-order — invited, then teaching, then learning — with a hairline between the
-groups whenever the hub shows its section headers (the [grouping
-rule](#single-column-bottom-nav)), so the rail mirrors the list. Selecting a section
-from it *replaces* the open left-column panels (see
-[Panels are independent](#panels-are-independent)). On a narrow screen the rail
-is replaced by the
-[single-column bottom nav](#single-column-bottom-nav) widget.
+Pinned to the top-left of the map on web. Top to bottom: **World** (home), **Chats**, **Courses**, then one avatar per course in the Courses hub's order — pending invites, then joined courses by recent activity — so the rail mirrors the list. The hub's pills and search narrow only the hub; the rail always shows every course. Selecting a section from it *replaces* the open left-column panels (see [Panels are independent](#panels-are-independent)). On a narrow screen the rail is replaced by the [single-column bottom nav](#single-column-bottom-nav) widget.
 
 **The selection highlight shows what you are looking at** — on the web rail and
 the mobile widget's rail alike. Open left panels win: the highlight is the

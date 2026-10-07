@@ -4261,6 +4261,7 @@
     },
     "activityComplete": "This activity has been completed. The activity summary should be available below.",
     "joinOpenSession": "Join open session",
+    "noOpenSessions": "No open sessions right now",
     "activityNotFound": "Activity not found",
     "starsEarnedOfTotal": "{earned} of {total} stars earned",
     "@starsEarnedOfTotal": {
@@ -4981,7 +4982,7 @@
     "customCourseStepTitle": "Fill this form to get a custom course",
     "courseCodeStepErrorMessage": "Please check your code and try again",
     "institution": "Institution",
-    "courseGoals": "Course Goals",
+    "customCourseTextbookHint": "Tell us what textbook you use, or describe your curriculum",
     "missingLanguageException": "Please choose valid base and target languages",
     "selectChats": "Select Chats",
     "plainTextFile": "Text",
@@ -5288,7 +5289,7 @@
     },
     "passwordFormLabel": "Change password form",
     "searchCountriesHint": "Search countries",
-    "searchVocabHint": "Search vocab",
+    "searchVocabByWordOrMeaningHint": "Search by word or meaning",
     "searchUsersHint": "Search users",
     "searchMessagesHint": "Search messages",
     "searchChatsHint": "Search chats",
@@ -5464,17 +5465,12 @@
     },
     "courseSectionTeaching": "Teaching",
     "courseSectionLearning": "Learning",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 course} other{{count} courses}}",
-    "@courseSectionLabel": {
-        "placeholders": {
-            "title": {
-                "type": "String"
-            },
-            "count": {
-                "type": "int"
-            }
-        }
-    },
+    "courseListFiltersLabel": "Course filters",
+    "allCoursesFilterTooltip": "Show all courses",
+    "teachingCoursesFilterTooltip": "Show only courses you teach",
+    "learningCoursesFilterTooltip": "Show only courses you're learning in",
+    "searchCoursesHint": "Search courses",
+    "noCoursesMatchSearch": "No courses match your search.",
     "courseNameHint": "Course name",
     "typeCourseCodeToConfirm": "To confirm, type the course code {code} below.",
     "@typeCourseCodeToConfirm": {
@@ -5545,7 +5541,6 @@
         }
     },
     "tutorialWorldMapPickActivity": "This is a conversation activity you can play with me or a partner. Click on it to start playing!",
-    "tutorialActivityGoals": "Here are the goals for the role you're playing, send messages that complete them and earn stars!",
     "tutorialCoursePlanIntro": "Welcome to your course, {courseName}! It will take you through a learning journey with your course mates.",
     "@tutorialCoursePlanIntro": {
         "placeholders": {
@@ -5573,10 +5568,46 @@
     "tutorialSequenceTitleWorldOrientation": "Exploring the world",
     "tutorialSequenceTitleCourseOrientation": "Exploring your course",
     "tutorialSequenceTitleAppTour": "App tour",
-    "tutorialSequenceTitleActivityGoals": "Goals & stars",
     "tutorialSequenceTitleChat": "Language tools",
     "tutorialSequenceTitleOpenSessions": "Open sessions",
     "tutorialSequenceTitleActivityRoles": "Choosing a role",
     "tutorialOpenSessions": "These are activities other people are playing. Join one to chat, but be aware they might not respond right away.",
-    "tutorialActivityRoles": "These are the roles you can play in this activity. Pick the one that interests you!"
+    "tutorialActivityRoles": "These are the roles you can play in this activity. Pick the one that interests you!",
+    "analyticsSubscriptionWarningTitle": "Your progress isn't being tracked",
+    "analyticsSubscriptionWarningBody": "Without a subscription, your messages don't earn XP or add new words and grammar.",
+    "xpAmount": "{count} XP",
+    "@xpAmount": {
+        "description": "The XP a learner earned in one activity session, on its row in the Stars list.",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "vocabItemsUsed": "{count, plural, =1{1 vocab item used} other{{count} vocab items used}}",
+    "@vocabItemsUsed": {
+        "description": "Spoken label for the vocabulary count on a saved activity's row in the Stars list.",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "grammarItemsUsed": "{count, plural, =1{1 grammar item used} other{{count} grammar items used}}",
+    "@grammarItemsUsed": {
+        "description": "Spoken label for the grammar count on a saved activity's row in the Stars list.",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "playVideo": "Play video",
+    "@playVideo": {
+        "description": "Accessible name of the thumbnail button that starts an activity's video in place."
+    },
+    "videoPlayer": "Video player",
+    "@videoPlayer": {
+        "description": "Accessible name of a playing activity video, which is one keyboard stop."
+    }
 }

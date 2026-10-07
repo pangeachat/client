@@ -35,6 +35,7 @@ import 'package:unifiedpush/unifiedpush.dart';
 import 'package:unifiedpush_ui/unifiedpush_ui.dart';
 
 import 'package:fluffychat/features/languages/language_constants.dart';
+import 'package:fluffychat/features/notifications/background_push_notification.dart';
 import 'package:fluffychat/features/notifications/notification_tap_utils.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/main.dart';
@@ -146,6 +147,28 @@ class BackgroundPush {
         ),
         onDidReceiveBackgroundNotificationResponse: notificationTapBackground,
       );
+
+      // A tap that launched the app arrives only here, never through
+      // onDidReceiveNotificationResponse. It is read at startup, beside
+      // getInitialMessage above, because on Android every closed-app
+      // notification is a local one the app drew itself (#9110), so
+      // getInitialMessage finds nothing. It used to be read in setupPush,
+      // which only the chat list calls, so a cold start on the map never
+      // opened the tapped room (#9251).
+      _flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails().then((
+        details,
+      ) async {
+        final response = details?.notificationResponse;
+        if (details?.didNotificationLaunchApp != true || response == null) {
+          return;
+        }
+        await notificationTap(
+          response,
+          client: client,
+          router: FluffyChatApp.router,
+          l10n: l10n,
+        );
+      });
 
       // #Pangea
       // Handle notifications when app is in foreground
@@ -303,7 +326,7 @@ class BackgroundPush {
         })) ??
         [];
     var setNewPusher = false;
-    // Just the plain app id, we add the .data_message suffix later
+    // Just the plain app id, we add the Android suffix later
     var appId = AppConfig.pushNotificationsAppId;
     // we need the deviceAppId to remove potential legacy UP pusher
     var deviceAppId = '$appId.${client.deviceID}';
@@ -312,7 +335,13 @@ class BackgroundPush {
       deviceAppId = deviceAppId.substring(0, 64);
     }
     if (!useDeviceSpecificAppId && PlatformInfos.isAndroid) {
-      appId += '.data_message';
+      // Sygnal sends this app ID data-only pushes, which BackgroundPushNotification
+      // turns into a notification with the avatar. Released builds register
+      // '.data_message', which still gets visible notifications: flipping that
+      // one would leave every build that hasn't updated with no notification at
+      // all while closed. Re-registering under this ID drops the old pusher,
+      // since it shares the pushkey.
+      appId += '.data_only';
     }
     final thisAppId = useDeviceSpecificAppId ? deviceAppId : appId;
     if (gatewayUrl != null && token != null) {
@@ -397,8 +426,6 @@ class BackgroundPush {
       ? 'ios'
       : null;
 
-  static bool _wentToRoomOnStartup = false;
-
   Future<void> setupPush() async {
     Logs().d("SetupPush");
     if (client.onLoginStateChanged.value != LoginState.loggedIn ||
@@ -417,27 +444,6 @@ class BackgroundPush {
     } else {
       await setupFirebase();
     }
-
-    // ignore: unawaited_futures
-    _flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails().then((
-      details,
-    ) {
-      if (details == null ||
-          !details.didNotificationLaunchApp ||
-          _wentToRoomOnStartup) {
-        return;
-      }
-      _wentToRoomOnStartup = true;
-      final response = details.notificationResponse;
-      if (response != null) {
-        notificationTap(
-          response,
-          client: client,
-          router: FluffyChatApp.router,
-          l10n: l10n,
-        );
-      }
-    });
   }
 
   /// Whether a failed push setup is worth telling the user about.
@@ -608,8 +614,18 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // Required for background isolate
   WidgetsFlutterBinding.ensureInitialized();
   final instance = BackgroundPush._instance;
-  if (instance == null) return;
-  await instance._onOpenNotification(message);
+  if (instance != null) {
+    // The main isolate is alive and already showing this through onMessage.
+    await instance._onOpenNotification(message);
+    return;
+  }
+  // onBackgroundMessage is registered on every platform, and every iOS push
+  // carries content-available, so this also runs on a backgrounded iPhone.
+  // iOS already shows the notification itself and decorates it in the
+  // notification service extension; building a second one here would
+  // duplicate it.
+  if (!PlatformInfos.isAndroid) return;
+  await BackgroundPushNotification.show(message.data);
 }
 
 // Pangea#

@@ -10,6 +10,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
@@ -480,9 +481,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   ///    ([Room.largeCardParticipantIds] + remaining seats) so the card can draw
   ///    the same participant row the map's pending pin does.
   ///  * Otherwise, open sessions others started that the learner can join —
-  ///    counted from the map's shared [DiscoveredSessionsCache] (best-effort; the
-  ///    persistent map behind this panel keeps it fresh), the same source the
-  ///    activity start page seeds its join list from.
+  ///    counted from the map's shared [DiscoveredSessionsCache], scoped to the
+  ///    sessions this course lists (#9026) (best-effort; the persistent map
+  ///    behind this panel keeps it fresh), the same source the activity start
+  ///    page seeds its join list from.
   /// A preview (no joined [room]) has no live sessions, so cards stay plain.
   ({
     ActivityPinState? state,
@@ -515,7 +517,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
       );
     }
 
-    final cached = DiscoveredSessionsCache.instance.forActivity(activityId);
+    final cached = DiscoveredSessionsCache.instance.forActivity(
+      activityId,
+      course: room,
+    );
     final open = cached == null
         ? 0
         : ActivitySessionSummariesModel(
@@ -550,6 +555,11 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   void _openActivity(QuestActivity ref) {
     if (widget.readOnly) return;
     final room = widget.room;
+    // The activity takes the card's slot, and the pressed card goes with it,
+    // so the activity panel that mounts claims focus
+    // (routing.instructions.md, "Every panel is a named group to assistive
+    // tech").
+    PanelEntryIntent.instance.armForSwap();
     if (room == null) {
       // Token-native open; the course context (if any) is kept, so the plan
       // closes back to it. See routing.instructions.md.

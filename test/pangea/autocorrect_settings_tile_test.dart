@@ -24,9 +24,10 @@ class _FakeMatrixState extends MatrixState {
   Client get client => _client;
 }
 
-/// #8112 — on web the autocorrect toggle is disabled with a "Mobile only"
-/// subtitle instead of opening a warning dialog. Tapping the disabled tile
-/// shows a snackbar warning, which stops appearing after a few attempts.
+/// #8112 — on desktop web the autocorrect toggle is disabled with a "Mobile
+/// only" subtitle instead of opening a warning dialog. Tapping the disabled
+/// tile shows a snackbar warning, which stops appearing after a few attempts.
+/// #9178 — a phone or tablet browser gets the working toggle.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -88,44 +89,101 @@ void main() {
     await tester.pump(const Duration(seconds: 1));
   }
 
-  group('on web', () {
+  /// testWidgets checks the platform override is restored before tearDowns
+  /// run, so it has to be reset inside the body.
+  Future<void> onPlatform(
+    TargetPlatform platform,
+    Future<void> Function() body,
+  ) async {
+    debugDefaultTargetPlatformOverride = platform;
+    try {
+      await body();
+    } finally {
+      debugDefaultTargetPlatformOverride = null;
+    }
+  }
+
+  group('on desktop web', () {
     testWidgets('switch is disabled with a "Mobile only" subtitle', (
       tester,
     ) async {
-      await pumpTile(tester, makeViewModel(), isWeb: true);
+      await onPlatform(TargetPlatform.macOS, () async {
+        await pumpTile(tester, makeViewModel(), isWeb: true);
 
-      final tile = tester.widget<SwitchListTile>(find.byType(SwitchListTile));
-      expect(tile.onChanged, isNull);
-      expect(find.text(mobileOnlyLabel), findsOneWidget);
+        final tile = tester.widget<SwitchListTile>(find.byType(SwitchListTile));
+        expect(tile.onChanged, isNull);
+        expect(find.text(mobileOnlyLabel), findsOneWidget);
+      });
     });
 
     testWidgets('reads as off even when the profile setting is on', (
       tester,
     ) async {
-      await pumpTile(tester, makeViewModel(autocorrectOn: true), isWeb: true);
+      await onPlatform(TargetPlatform.windows, () async {
+        await pumpTile(tester, makeViewModel(autocorrectOn: true), isWeb: true);
 
-      final tile = tester.widget<SwitchListTile>(find.byType(SwitchListTile));
-      expect(tile.value, isFalse);
+        final tile = tester.widget<SwitchListTile>(find.byType(SwitchListTile));
+        expect(tile.value, isFalse);
+      });
     });
 
     testWidgets('tapping shows a snackbar warning, backing off after 3 taps', (
       tester,
     ) async {
-      final viewModel = makeViewModel();
-      await pumpTile(tester, viewModel, isWeb: true);
+      await onPlatform(TargetPlatform.macOS, () async {
+        final viewModel = makeViewModel();
+        await pumpTile(tester, viewModel, isWeb: true);
 
-      for (var i = 0; i < 3; i++) {
+        for (var i = 0; i < 3; i++) {
+          await tapTile(tester);
+          expect(find.text(snackBarWarning), findsOneWidget);
+          await dismissSnackBar(tester);
+          expect(find.text(snackBarWarning), findsNothing);
+        }
+
         await tapTile(tester);
-        expect(find.text(snackBarWarning), findsOneWidget);
-        await dismissSnackBar(tester);
         expect(find.text(snackBarWarning), findsNothing);
-      }
 
-      await tapTile(tester);
-      expect(find.text(snackBarWarning), findsNothing);
+        // The tap never toggles the setting.
+        expect(
+          viewModel.getToolSetting(ToolSetting.enableAutocorrect),
+          isFalse,
+        );
+      });
+    });
+  });
 
-      // The tap never toggles the setting.
-      expect(viewModel.getToolSetting(ToolSetting.enableAutocorrect), isFalse);
+  // #9178 — a phone or tablet browser drives the same device keyboard.
+  group('in a mobile browser', () {
+    testWidgets('switch is enabled and shows the setting', (tester) async {
+      await onPlatform(TargetPlatform.android, () async {
+        await pumpTile(tester, makeViewModel(autocorrectOn: true), isWeb: true);
+
+        final tile = tester.widget<SwitchListTile>(find.byType(SwitchListTile));
+        expect(tile.onChanged, isNotNull);
+        expect(tile.value, isTrue);
+        expect(find.text(mobileOnlyLabel), findsNothing);
+      });
+    });
+
+    testWidgets('enabling shows the dialog without a settings action', (
+      tester,
+    ) async {
+      await onPlatform(TargetPlatform.iOS, () async {
+        final viewModel = makeViewModel();
+        await pumpTile(tester, viewModel, isWeb: true);
+
+        await tester.tap(find.byType(SwitchListTile));
+        await tester.pumpAndSettle();
+
+        expect(find.byType(IOSEnableAutocorrectDialog), findsOneWidget);
+        expect(find.text('Settings'), findsNothing);
+
+        await tester.tap(find.text('Close'));
+        await tester.pumpAndSettle();
+
+        expect(viewModel.getToolSetting(ToolSetting.enableAutocorrect), isTrue);
+      });
     });
   });
 
@@ -195,20 +253,6 @@ void main() {
   // an unchosen (null) stored value. The view model must not collapse that
   // into an explicit choice when some other toggle changes.
   group('platform default', () {
-    /// testWidgets checks the platform override is restored before tearDowns
-    /// run, so it has to be reset inside the body.
-    Future<void> onPlatform(
-      TargetPlatform platform,
-      Future<void> Function() body,
-    ) async {
-      debugDefaultTargetPlatformOverride = platform;
-      try {
-        await body();
-      } finally {
-        debugDefaultTargetPlatformOverride = null;
-      }
-    }
-
     testWidgets('never-chosen reads on for Android and off for iOS', (_) async {
       await onPlatform(TargetPlatform.android, () async {
         expect(

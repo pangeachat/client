@@ -10,6 +10,7 @@ import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
+import 'package:fluffychat/routes/analytics/analytics_subscription_warning.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/users/level_ribbon.dart';
 
@@ -46,6 +47,10 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
           builder: (context, _) {
             return Column(
               children: [
+                AnalyticsSubscriptionWarning(
+                  subscription:
+                      MatrixState.pangeaController.subscriptionController,
+                ),
                 FutureBuilder(
                   future: language != null
                       ? analyticsService.derivedData(language)

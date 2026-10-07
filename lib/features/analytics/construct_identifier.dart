@@ -197,10 +197,42 @@ class ConstructIdentifier {
     feedback: feedback,
   );
 
+  /// The request the word card sends for this word in [lemmaLang]. Unlike
+  /// [lemmaInfoRequest] it keeps the full language codes, so a regional code
+  /// caches the same meaning under a second key.
+  LemmaInfoRequest wordCardLemmaInfoRequest(
+    String lemmaLang,
+    Map<String, dynamic> messageInfo,
+  ) => LemmaInfoRequest(
+    partOfSpeech: category,
+    lemmaLang: lemmaLang,
+    userL1:
+        MatrixState.pangeaController.userController.userL1?.langCode ??
+        LanguageKeys.defaultLanguage,
+    lemma: lemma,
+    messageInfo: messageInfo,
+  );
+
   /// [lemmmaLang] if not set, assumed to be userL2
   Future<Result<LemmaInfoResponse>> getLemmaInfo(
     Map<String, dynamic> messageInfo,
   ) => LemmaInfoRepo.instance.get(lemmaInfoRequest(messageInfo));
+
+  /// The meanings this learner already has for this word on this device, read
+  /// without fetching: the one saved from meaning practice, and the cached
+  /// dictionary meaning under either key it is stored by.
+  Set<String> get knownMeanings {
+    final l2Code = MatrixState.pangeaController.userController.userL2Code;
+    final cachedRequests = [
+      if (l2Code != null) wordCardLemmaInfoRequest(l2Code, const {}),
+      lemmaInfoRequest(const {}),
+    ];
+    return {
+      ?_userLemmaInfo.meaning,
+      for (final request in cachedRequests)
+        ?LemmaInfoRepo.instance.getCached(request)?.meaning,
+    };
+  }
 
   String? get userSetEmoji => _userLemmaInfo.emojis?.firstOrNull;
 

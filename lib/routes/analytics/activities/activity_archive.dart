@@ -5,10 +5,12 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_init_error_indicator.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
@@ -157,9 +159,31 @@ class AnalyticsActivityItem extends StatelessWidget {
         : room.getLocalizedDisplayname(MatrixLocals(L10n.of(context)));
     final goals = room.ownRole?.allGoals;
 
-    final cefrLevel = room.activitySummaryByL1?.summary?.participants
-        .firstWhereOrNull((p) => p.participantId == room.client.userID)
+    final userId = room.client.userID;
+    final summaryModel = room.activitySummaryByL1;
+    final summary = summaryModel?.summary;
+    final cefrLevel = summary?.participants
+        .firstWhereOrNull((p) => p.participantId == userId)
         ?.cefrLevel;
+
+    // The level and the stats come and go together: a session with no
+    // generated summary keeps its title and stars and shows neither, rather
+    // than a half-filled row (activities.instructions.md, "The Stars list").
+    final analytics = summaryModel?.analytics;
+    final stats = summary == null || analytics == null || userId == null
+        ? null
+        : _ActivitySessionStats(
+            xp: analytics.xpForUser(userId),
+            vocab: analytics.uniqueConstructCountForUser(
+              userId,
+              ConstructTypeEnum.vocab,
+            ),
+            grammar: analytics.uniqueConstructCountForUser(
+              userId,
+              ConstructTypeEnum.morph,
+            ),
+            onSelectedFill: selected,
+          );
 
     final theme = Theme.of(context);
     return Semantics(
@@ -188,19 +212,29 @@ class AnalyticsActivityItem extends StatelessWidget {
                 ),
               ),
             ),
+            isThreeLine: stats != null,
             title: Text(title, maxLines: 1, overflow: TextOverflow.ellipsis),
-            subtitle: goals != null
-                ? ActivityStarRow(
-                    total: goals.length,
-                    earned:
-                        room
-                            .orchestratorAwardedGoals
-                            .awards[room.ownRoleState?.id]
-                            ?.length ??
-                        0,
-                    iconSize: 22.0,
-                  )
-                : null,
+            subtitle: goals == null && stats == null
+                ? null
+                : Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 2.0,
+                    children: [
+                      if (goals != null)
+                        ActivityStarRow(
+                          total: goals.length,
+                          earned:
+                              room
+                                  .orchestratorAwardedGoals
+                                  .awards[room.ownRoleState?.id]
+                                  ?.length ??
+                              0,
+                          iconSize: 22.0,
+                        ),
+                      ?stats,
+                    ],
+                  ),
             trailing: cefrLevel != null
                 ? Semantics(
                     label: L10n.of(context).difficultyLabel(cefrLevel),
@@ -226,6 +260,96 @@ class AnalyticsActivityItem extends StatelessWidget {
               );
             },
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The learner's own numbers from a saved session: the XP they earned, and how
+/// many distinct vocabulary and grammar items they used. All three come from
+/// the summary saved with the session, so the row can never disagree with the
+/// end-of-activity card (activities.instructions.md, "The Stars list").
+class _ActivitySessionStats extends StatelessWidget {
+  final int xp;
+  final int vocab;
+  final int grammar;
+
+  /// Whether the row is drawn on the selected fill. The gold XP text falls
+  /// below the 4.5:1 contrast floor there, so it takes the surface ink instead.
+  final bool onSelectedFill;
+
+  const _ActivitySessionStats({
+    required this.xp,
+    required this.vocab,
+    required this.grammar,
+    required this.onSelectedFill,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final l10n = L10n.of(context);
+    return Wrap(
+      spacing: 10.0,
+      runSpacing: 2.0,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      children: [
+        Text(
+          l10n.xpAmount(xp),
+          style: theme.textTheme.labelMedium?.copyWith(
+            fontWeight: FontWeight.w600,
+            color: onSelectedFill
+                ? theme.colorScheme.onSurface
+                : theme.pangea.gold,
+          ),
+        ),
+        _ActivitySessionStat(
+          icon: ProgressIndicatorEnum.wordsUsed.icon,
+          count: vocab,
+          label: l10n.vocabItemsUsed(vocab),
+        ),
+        _ActivitySessionStat(
+          icon: ProgressIndicatorEnum.morphsUsed.icon,
+          count: grammar,
+          label: l10n.grammarItemsUsed(grammar),
+        ),
+      ],
+    );
+  }
+}
+
+/// One count on the stats line: the analytics bar's icon for that kind of
+/// item, the number, and the spoken [label] the number alone can't carry.
+class _ActivitySessionStat extends StatelessWidget {
+  final IconData icon;
+  final int count;
+  final String label;
+
+  const _ActivitySessionStat({
+    required this.icon,
+    required this.count,
+    required this.label,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Semantics(
+      label: label,
+      child: ExcludeSemantics(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 3.0,
+          children: [
+            Icon(icon, size: 15.0, color: theme.colorScheme.onSurfaceVariant),
+            Text(
+              "$count",
+              style: theme.textTheme.labelMedium?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+          ],
         ),
       ),
     );

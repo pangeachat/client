@@ -23,11 +23,16 @@ class UserResultTile extends StatelessWidget {
 
   final Widget? trailing;
 
+  /// The row's focus node, for a host that makes its list one Tab stop
+  /// (RovingFocusGroup). Only meaningful with [onTap].
+  final FocusNode? focusNode;
+
   const UserResultTile({
     super.key,
     required this.profile,
     this.onTap,
     this.trailing,
+    this.focusNode,
   });
 
   @override
@@ -39,6 +44,7 @@ class UserResultTile extends StatelessWidget {
       container: true,
       child: ListTile(
         onTap: onTap,
+        focusNode: focusNode,
         leading: Semantics(
           label: l10n.profile,
           container: true,

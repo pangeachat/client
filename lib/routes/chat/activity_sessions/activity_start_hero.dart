@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_goals_dropdown.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_play_badge.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_list.dart';
@@ -23,6 +24,10 @@ import 'package:fluffychat/widgets/url_image_widget.dart';
 /// tapping it mounts the player inline. While the clip plays, the role cards,
 /// gradient, and goals overlay fade out so the player is unobstructed; a close
 /// control returns to the poster and restores the overlays.
+///
+/// Both swaps remove the control that was just pressed. When it was pressed
+/// from the keyboard the focus it held moves with the swap — poster to player,
+/// close to poster — so the next key lands on what replaced it (#9128).
 ///
 /// That inline path is web/desktop only. On native mobile the plan is a
 /// scrolling bottom sheet, which a webview can't live inside (#7672/#7673), so
@@ -65,6 +70,12 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
   /// controls (see the class doc). Restored the moment playback is closed.
   bool _overlaysMounted = true;
 
+  final FocusNode _posterFocus = FocusNode(debugLabel: 'activity hero poster');
+
+  /// Whether the mounting player should claim focus: true when the poster was
+  /// pressed while it held keyboard focus.
+  bool _playerAutofocus = false;
+
   static const _fadeDuration = Duration(milliseconds: 250);
   static const _bgHeight = 375.0;
 
@@ -88,15 +99,32 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
       return;
     }
     setState(() {
+      _playerAutofocus = _posterFocus.hasFocus;
       _playing = true;
       _overlaysMounted = true; // kept for the fade-out, dropped by _onFadedOut
     });
   }
 
-  void _stop() => setState(() {
-    _playing = false;
-    _overlaysMounted = true; // bring the overlays back
-  });
+  void _stop() {
+    final focus = FocusManager.instance.primaryFocus?.context;
+    final focusLeavesWithPlayer =
+        focus?.findAncestorStateOfType<_ActivityStartHeroState>() == this;
+    setState(() {
+      _playing = false;
+      _overlaysMounted = true; // bring the overlays back
+    });
+    if (focusLeavesWithPlayer) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _posterFocus.requestFocus();
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _posterFocus.dispose();
+    super.dispose();
+  }
 
   /// Once the overlays have faded to nothing, unmount them. [IgnorePointer]
   /// keeps them out of Flutter's hit-test, but on web an opacity-0 Flutter layer
@@ -217,8 +245,13 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
           ? ActivityYoutubePlayer(
               url: hero.url ?? '',
               captionLanguage: _activity.req.targetLanguage,
+              autofocus: _playerAutofocus,
             )
-          : ActivityVideoPlayer(url: hero.resolvedUrl ?? '', autoPlay: true);
+          : ActivityVideoPlayer(
+              url: hero.resolvedUrl ?? '',
+              autoPlay: true,
+              autofocus: _playerAutofocus,
+            );
       return ColoredBox(
         color: Colors.black,
         child: Column(
@@ -270,8 +303,13 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
 
     // Tap the poster (or the badge) to play in place. The badge sits above the
     // role cards (they start 250px down), so it stays reachable.
-    return GestureDetector(
+    return FocusRingTapTarget(
       onTap: _play,
+      focusNode: _posterFocus,
+      label: L10n.of(context).playVideo,
+      shape: const RoundedRectangleBorder(),
+      // The ring crosses the poster image, where no single colour holds 3:1.
+      twoToneRing: true,
       child: Stack(
         alignment: Alignment.center,
         children: [poster, const ActivityMediaPlayBadge(size: 56.0)],

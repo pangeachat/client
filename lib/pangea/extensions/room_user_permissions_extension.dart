@@ -21,6 +21,10 @@ extension UserPermissionsRoomExtension on Room {
   bool canRedactEventFrom(String senderId) =>
       senderId == client.userID || (!isDirectChat && canRedact);
 
+  /// Whether the room's power levels let the user react. A read-only room such
+  /// as announcements rejects a learner's reaction (#9167).
+  bool get canSendReactions => canSendEvent(EventTypes.Reaction);
+
   /// The users currently knocking on this room, from the locally loaded member
   /// list. Empty for non-admins: only an admin can accept/deny a knock, so
   /// knock indicators are admin-only by design (#8139). Callers that need the

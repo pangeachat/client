@@ -6,13 +6,13 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/events/tokens/collectable_tokens_mixin.dart';
 import 'package:fluffychat/routes/chat/events/tokens/token_rendering_util.dart';
 import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
 import 'package:fluffychat/routes/chat/events/tokens/underline_text_widget.dart';
 import 'package:fluffychat/routes/chat/toolbar/word_card/word_zoom_widget.dart';
-import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// The welcome tutorial's L2 greeting, rendered as a **vocabulary word** rather
@@ -46,6 +46,7 @@ class _TutorialWordBubbleState extends State<TutorialWordBubble>
 
   bool _isNew = false;
   bool _cardOpen = false;
+  bool _hovered = false;
   StreamSubscription? _analyticsSubscription;
 
   @override
@@ -175,36 +176,34 @@ class _TutorialWordBubbleState extends State<TutorialWordBubble>
 
     return CompositedTransformTarget(
       link: target.link,
-      child: HoverBuilder(
-        builder: (context, hovered) => MouseRegion(
-          cursor: SystemMouseCursors.click,
-          child: GestureDetector(
-            // Wins the gesture arena over the overlay's advance-on-tap, so
-            // reading the word does not skip past the step.
-            onTap: _onTap,
-            child: Container(
-              key: target.key,
-              // Roomier than a word inside a sentence needs: at display size
-              // the pill has to sit around the word, not cling to it.
-              padding: const EdgeInsets.symmetric(
-                horizontal: 12.0,
-                vertical: 2.0,
-              ),
-              decoration: BoxDecoration(
-                color: theme.colorScheme.primary.withAlpha(_cardOpen ? 40 : 20),
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              child: UnderlineText(
-                text: widget.greeting.word,
-                style: widget.style ?? DefaultTextStyle.of(context).style,
-                underlineColor: TokenRenderingUtil.underlineColor(
-                  context,
-                  theme.colorScheme.primary.withAlpha(200),
-                  isNew: _isNew,
-                  selected: _cardOpen,
-                  hovered: hovered,
-                ),
-              ),
+      // A named, focusable button — the greeting is the learner's first
+      // touchable word, so it has to be one for a screen reader and a
+      // keyboard too. The InkWell wins the gesture arena over the card's
+      // tap-anywhere, so reading the word does not skip past the step.
+      child: FocusRingTapTarget(
+        onTap: _onTap,
+        shape: const StadiumBorder(),
+        label: widget.greeting.word,
+        hoverColor: Colors.transparent,
+        onHover: (hovered) => setState(() => _hovered = hovered),
+        child: Container(
+          key: target.key,
+          // Roomier than a word inside a sentence needs: at display size
+          // the pill has to sit around the word, not cling to it.
+          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 2.0),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.primary.withAlpha(_cardOpen ? 40 : 20),
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          child: UnderlineText(
+            text: widget.greeting.word,
+            style: widget.style ?? DefaultTextStyle.of(context).style,
+            underlineColor: TokenRenderingUtil.underlineColor(
+              context,
+              theme.colorScheme.primary.withAlpha(200),
+              isNew: _isNew,
+              selected: _cardOpen,
+              hovered: _hovered,
             ),
           ),
         ),

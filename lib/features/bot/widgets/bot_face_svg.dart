@@ -60,17 +60,23 @@ class BotFaceState extends State<BotFace> {
   static const _stateMachineName = 'BotIconStateMachine';
   static const _viewModelName = 'BotIconViewModel';
 
-  /// The artboard plays a one-second Enter animation on load, and any trigger
-  /// fired during it is swallowed rather than queued. Measured against the
-  /// asset: a trigger is lost at 60 frames and lands from 65 (~1.08s). So the
-  /// opening expression is fired twice, once immediately in case the machine
-  /// is already past Enter, and once after this delay.
+  /// The artboard plays a one-second Enter animation on load (the bot drops
+  /// in), and any trigger fired during it is swallowed rather than queued.
+  /// Measured against the asset: a trigger is lost at 60 frames and lands from
+  /// 65 (~1.08s). A face that opens idle keeps Enter as its entrance and
+  /// re-fires its expression after this delay; any other opening expression
+  /// skips Enter, see [skipEnter].
   static const _enterSettle = Duration(milliseconds: 1250);
+  static const _frameSeconds = 1 / 60;
 
   File? _file;
   RiveWidgetController? _controller;
   ViewModelInstance? _viewModel;
   Timer? _settleTimer;
+
+  /// True while the asset decodes. Both callers of [_load] are followed by a
+  /// build, so it is set without a setState.
+  bool _loading = false;
 
   @override
   void initState() {
@@ -121,6 +127,15 @@ class BotFaceState extends State<BotFace> {
   }
 
   Future<void> _load() async {
+    _loading = true;
+    try {
+      await _loadAsset();
+    } finally {
+      if (mounted) setState(() => _loading = false);
+    }
+  }
+
+  Future<void> _loadAsset() async {
     await RiveNative.init();
     final file = await File.asset(_assetPath, riveFactory: Factory.flutter);
     if (file == null) {
@@ -170,11 +185,33 @@ class BotFaceState extends State<BotFace> {
     });
 
     _applyColour();
-    _playExpression();
     _settleTimer?.cancel();
-    _settleTimer = Timer(_enterSettle, () {
-      if (mounted) _playExpression();
-    });
+    if (widget.expression == BotExpression.idle) {
+      // Enter ends in idle on its own. The re-fire is for an expression that
+      // changes while Enter is still swallowing triggers.
+      _settleTimer = Timer(_enterSettle, () {
+        if (mounted) _playExpression();
+      });
+      return;
+    }
+    // Otherwise the bot drops in wearing its resting face and only changes a
+    // second later, which reads as a glitch on a dialog that opens addled.
+    skipEnter(controller.stateMachine);
+    _playExpression();
+    // Addled swaps on the next frame, so taking that frame now makes it the
+    // first one painted. The other emotes ease in from the resting pose.
+    controller.advance(_frameSeconds);
+  }
+
+  /// Runs [machine] through Enter, so the next trigger lands. Stepped a frame
+  /// at a time because one large advance leaves the machine mid-Enter with
+  /// the bot undrawn.
+  @visibleForTesting
+  static void skipEnter(StateMachine machine) {
+    final frames = _enterSettle.inMicroseconds / 1e6 / _frameSeconds;
+    for (var i = 0; i < frames; i++) {
+      machine.advanceAndApply(_frameSeconds);
+    }
   }
 
   void _applyColour() {
@@ -199,6 +236,10 @@ class BotFaceState extends State<BotFace> {
       height: widget.width,
       child: controller != null
           ? RiveWidget(controller: controller, fit: Fit.cover)
+          // The fallback image is the resting face. A bot about to open on an
+          // emote waits out the decode empty rather than flash the wrong face.
+          : _loading && widget.expression != BotExpression.idle
+          ? null
           : CachedNetworkImage(
               imageUrl: '${AppConfig.assetsBaseURL}/bot_face_neutral.png',
               placeholder: (context, url) =>

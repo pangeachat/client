@@ -8,6 +8,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
 import 'package:fluffychat/routes/chat_list/activity_template_chat_list_item.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_item.dart';
@@ -49,190 +50,209 @@ class CourseChatsView extends StatelessWidget {
           child: Semantics(
             label: L10n.of(context).chats,
             container: true,
-            child: ListView.builder(
-              padding: EdgeInsets.only(bottom: keyboardInset + 8.0),
-              shrinkWrap: true,
-              itemCount:
-                  joinedChats.length +
-                  joinedSessions.length +
-                  discoveredGroupChats.length +
-                  discoveredSessions.length +
-                  7,
-              itemBuilder: (context, i) {
-                // Chats-tab title slot. The progress header moved to
-                // Analytics; the standalone chat-bubble icon was redundant
-                // with the Chats tab itself — both removed (world_v2).
-                // Knock + analytics-request attention rows moved to the course
-                // page's Catch up section (#8357).
-                if (i == 0) {
-                  return const SizedBox();
-                }
-                i--;
+            // Every chat, session and open seat is one Tab stop, in the order
+            // the list draws them, with the arrow keys inside; Tab lands on the
+            // open chat (accessibility.instructions.md, "One Tab stop per
+            // list"). The creation tiles, the what-now tile and load-more are
+            // fixed in number and stay stops of their own.
+            child: RovingFocusGroup(
+              ids: [
+                for (final chat in joinedChats) chat.id,
+                for (final chunk in discoveredGroupChats) chunk.roomId,
+                for (final session in joinedSessions) session.id,
+                for (final entry in discoveredSessions)
+                  for (final session in entry.value) session.chunk.roomId,
+              ],
+              selectedId: controller.widget.activeChat,
+              child: ListView.builder(
+                padding: EdgeInsets.only(bottom: keyboardInset + 8.0),
+                shrinkWrap: true,
+                itemCount:
+                    joinedChats.length +
+                    joinedSessions.length +
+                    discoveredGroupChats.length +
+                    discoveredSessions.length +
+                    7,
+                itemBuilder: (context, i) {
+                  // Chats-tab title slot. The progress header moved to
+                  // Analytics; the standalone chat-bubble icon was redundant
+                  // with the Chats tab itself — both removed (world_v2).
+                  // Knock + analytics-request attention rows moved to the course
+                  // page's Catch up section (#8357).
+                  if (i == 0) {
+                    return const SizedBox();
+                  }
+                  i--;
 
-                if (i == 0) {
-                  return DefaultChatCreationTile(
-                    space: room,
-                    type: CourseDefaultChatsEnum.introductions,
-                    discoveredChildren: controller.discoveredChildren,
-                  );
-                }
-                i--;
+                  if (i == 0) {
+                    return DefaultChatCreationTile(
+                      space: room,
+                      type: CourseDefaultChatsEnum.introductions,
+                      discoveredChildren: controller.discoveredChildren,
+                    );
+                  }
+                  i--;
 
-                if (i == 0) {
-                  return DefaultChatCreationTile(
-                    space: room,
-                    type: CourseDefaultChatsEnum.announcements,
-                    discoveredChildren: controller.discoveredChildren,
-                  );
-                }
-                i--;
+                  if (i == 0) {
+                    return DefaultChatCreationTile(
+                      space: room,
+                      type: CourseDefaultChatsEnum.announcements,
+                      discoveredChildren: controller.discoveredChildren,
+                    );
+                  }
+                  i--;
 
-                // joined group chats
-                if (i < joinedChats.length) {
-                  final joinedRoom = joinedChats[i];
-                  return ChatListItem(
-                    joinedRoom,
-                    onTap: () => controller.onChatTap(joinedRoom),
-                    onLongPress: (c) => chatContextMenuAction(
+                  // joined group chats
+                  if (i < joinedChats.length) {
+                    final joinedRoom = joinedChats[i];
+                    return ChatListItem(
                       joinedRoom,
-                      c,
-                      context,
-                      () => controller.onChatTap(joinedRoom),
-                    ),
-                    activeChat: controller.widget.activeChat == joinedRoom.id,
-                  );
-                }
-                i -= joinedChats.length;
+                      rovingId: joinedRoom.id,
+                      onTap: () => controller.onChatTap(joinedRoom),
+                      onLongPress: (c) => chatContextMenuAction(
+                        joinedRoom,
+                        c,
+                        context,
+                        () => controller.onChatTap(joinedRoom),
+                      ),
+                      activeChat: controller.widget.activeChat == joinedRoom.id,
+                    );
+                  }
+                  i -= joinedChats.length;
 
-                // unjoined group chats
-                if (i < discoveredGroupChats.length) {
-                  return UnjoinedChatListItem(
-                    chunk: discoveredGroupChats[i],
-                    onTap: () =>
-                        controller.joinChildRoom(discoveredGroupChats[i]),
-                  );
-                }
-                i -= discoveredGroupChats.length;
+                  // unjoined group chats
+                  if (i < discoveredGroupChats.length) {
+                    return UnjoinedChatListItem(
+                      rovingId: discoveredGroupChats[i].roomId,
+                      chunk: discoveredGroupChats[i],
+                      onTap: () =>
+                          controller.joinChildRoom(discoveredGroupChats[i]),
+                    );
+                  }
+                  i -= discoveredGroupChats.length;
 
-                if (i == 0) {
-                  return joinedSessions.isEmpty && discoveredSessions.isEmpty
-                      ? ListTile(
-                          leading: const Icon(Icons.map_outlined),
-                          title: Text(L10n.of(context).whatNow),
-                          subtitle: Text(L10n.of(context).chooseNextActivity),
-                          trailing: const Icon(Icons.arrow_forward),
-                          // No section param — it would scroll the course
-                          // page on open (#8357); the plan leads the page.
-                          onTap: () => context.go(
-                            WorkspaceNav.openCourse(
-                              GoRouterState.of(context).uri,
-                              room.id,
-                            ),
-                          ),
-                        )
-                      : const SizedBox();
-                }
-                i--;
-
-                if (i == 0) {
-                  return joinedSessions.isEmpty
-                      ? const SizedBox()
-                      : Padding(
-                          padding: const EdgeInsets.only(
-                            top: 20.0,
-                            bottom: 4.0,
-                          ),
-                          // Mark as a heading so screen-reader users can jump
-                          // between sections via the rotor. See issue #7185.
-                          child: Semantics(
-                            header: true,
-                            child: Text(
-                              L10n.of(context).myActivities,
-                              style: const TextStyle(fontSize: 12.0),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        );
-                }
-                i--;
-
-                // joined activity sessions
-                if (i < joinedSessions.length) {
-                  final joinedRoom = joinedSessions[i];
-                  return ChatListItem(
-                    joinedRoom,
-                    onTap: () => controller.onChatTap(joinedRoom),
-                    onLongPress: (c) => chatContextMenuAction(
-                      joinedRoom,
-                      c,
-                      context,
-                      () => controller.onChatTap(joinedRoom),
-                    ),
-                    activeChat: controller.widget.activeChat == joinedRoom.id,
-                    borderRadius: BorderRadius.circular(
-                      AppConfig.borderRadius / 2,
-                    ),
-                  );
-                }
-                i -= joinedSessions.length;
-
-                if (i == 0) {
-                  return discoveredSessions.isEmpty
-                      ? const SizedBox()
-                      : Padding(
-                          padding: const EdgeInsets.only(
-                            top: 20.0,
-                            bottom: 4.0,
-                          ),
-                          // Mark as a heading so screen-reader users can jump
-                          // between sections via the rotor. See issue #7185.
-                          child: Semantics(
-                            header: true,
-                            child: Text(
-                              L10n.of(context).openToJoin,
-                              style: const TextStyle(fontSize: 12.0),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        );
-                }
-                i--;
-
-                // unjoined activity sessions
-                if (i < discoveredSessions.length) {
-                  final activity = discoveredSessions[i].key;
-                  final sessions = discoveredSessions[i].value;
-                  return ActivityTemplateChatListItem(
-                    space: room,
-                    sessions: sessions,
-                    joinActivity: (e) => controller.joinActivity(activity, e),
-                  );
-                }
-                i -= discoveredSessions.length;
-
-                if (controller.noMoreRooms) {
-                  return const SizedBox();
-                }
-
-                return Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12.0,
-                    vertical: 2.0,
-                  ),
-                  child: TextButton(
-                    onPressed: controller.isLoading
-                        ? null
-                        : controller.loadHierarchy,
-                    child: controller.isLoading
-                        ? LinearProgressIndicator(
-                            borderRadius: BorderRadius.circular(
-                              AppConfig.borderRadius,
+                  if (i == 0) {
+                    return joinedSessions.isEmpty && discoveredSessions.isEmpty
+                        ? ListTile(
+                            leading: const Icon(Icons.map_outlined),
+                            title: Text(L10n.of(context).whatNow),
+                            subtitle: Text(L10n.of(context).chooseNextActivity),
+                            trailing: const Icon(Icons.arrow_forward),
+                            // No section param — it would scroll the course
+                            // page on open (#8357); the plan leads the page.
+                            onTap: () => context.go(
+                              WorkspaceNav.openCourse(
+                                GoRouterState.of(context).uri,
+                                room.id,
+                              ),
                             ),
                           )
-                        : Text(L10n.of(context).loadMore),
-                  ),
-                );
-              },
+                        : const SizedBox();
+                  }
+                  i--;
+
+                  if (i == 0) {
+                    return joinedSessions.isEmpty
+                        ? const SizedBox()
+                        : Padding(
+                            padding: const EdgeInsets.only(
+                              top: 20.0,
+                              bottom: 4.0,
+                            ),
+                            // Mark as a heading so screen-reader users can jump
+                            // between sections via the rotor. See issue #7185.
+                            child: Semantics(
+                              header: true,
+                              child: Text(
+                                L10n.of(context).myActivities,
+                                style: const TextStyle(fontSize: 12.0),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          );
+                  }
+                  i--;
+
+                  // joined activity sessions
+                  if (i < joinedSessions.length) {
+                    final joinedRoom = joinedSessions[i];
+                    return ChatListItem(
+                      joinedRoom,
+                      rovingId: joinedRoom.id,
+                      onTap: () => controller.onChatTap(joinedRoom),
+                      onLongPress: (c) => chatContextMenuAction(
+                        joinedRoom,
+                        c,
+                        context,
+                        () => controller.onChatTap(joinedRoom),
+                      ),
+                      activeChat: controller.widget.activeChat == joinedRoom.id,
+                      borderRadius: BorderRadius.circular(
+                        AppConfig.borderRadius / 2,
+                      ),
+                    );
+                  }
+                  i -= joinedSessions.length;
+
+                  if (i == 0) {
+                    return discoveredSessions.isEmpty
+                        ? const SizedBox()
+                        : Padding(
+                            padding: const EdgeInsets.only(
+                              top: 20.0,
+                              bottom: 4.0,
+                            ),
+                            // Mark as a heading so screen-reader users can jump
+                            // between sections via the rotor. See issue #7185.
+                            child: Semantics(
+                              header: true,
+                              child: Text(
+                                L10n.of(context).openToJoin,
+                                style: const TextStyle(fontSize: 12.0),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          );
+                  }
+                  i--;
+
+                  // unjoined activity sessions
+                  if (i < discoveredSessions.length) {
+                    final activity = discoveredSessions[i].key;
+                    final sessions = discoveredSessions[i].value;
+                    return ActivityTemplateChatListItem(
+                      roving: true,
+                      space: room,
+                      sessions: sessions,
+                      joinActivity: (e) => controller.joinActivity(activity, e),
+                    );
+                  }
+                  i -= discoveredSessions.length;
+
+                  if (controller.noMoreRooms) {
+                    return const SizedBox();
+                  }
+
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0,
+                      vertical: 2.0,
+                    ),
+                    child: TextButton(
+                      onPressed: controller.isLoading
+                          ? null
+                          : controller.loadHierarchy,
+                      child: controller.isLoading
+                          ? LinearProgressIndicator(
+                              borderRadius: BorderRadius.circular(
+                                AppConfig.borderRadius,
+                              ),
+                            )
+                          : Text(L10n.of(context).loadMore),
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         );

@@ -93,7 +93,7 @@ The course plan panel lists the course's activities as cards, in rows. Each card
 **Card states** — so a learner can scan a course listing and tell what each activity is doing right now ([Figma mockup](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13765-270419&t=pnytLg8wuPthDfDt-11)):
 
 1. **Normal (not started)** — 🔘 light gray card: image, name, star row, activity type + role count.
-2. **Joinable/Open** — 🟢 green card with an overlay tag "Open (N)" on the top right in white text, where N is the number of open sessions to choose from. The tag states the meaning in text (screen-reader friendly rather than color-only); the green matches the joinable map pin (V6).
+2. **Joinable/Open** — 🟢 green card with an overlay tag "Open (N)" on the top right in white text, where N is the number of open sessions to choose from — the sessions this course lists, not every joined course's ([world-map.instructions.md](world-map.instructions.md), Discovering joinable sessions). The tag states the meaning in text (screen-reader friendly rather than color-only); the green matches the joinable map pin (V6).
 3. **Ongoing** — 🟣 purple card with an "Ongoing" overlay tag on the top right in white text; same text-not-color-only rationale; the purple matches the ongoing map pin (V6).
 4. **Needs more participants to start** — 🔘 light gray card at 30% opacity: still clickable but de-emphasized. Tapping it explains why ("Uh oh, you need to invite N people…").
 

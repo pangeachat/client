@@ -1,6 +1,6 @@
 ---
 applyTo: "lib/routes/chat/activity_sessions/**,lib/routes/world/**,lib/widgets/layouts/mobile_nav_widget.dart,lib/widgets/layouts/workspace_shell.dart"
-description: "The activity start page's layout and interaction: the mobile grow-before-scroll sheet, the header + info row, the CTA row, and how the page owns its container over the nav rail and analytics bar."
+description: "The activity start page's layout and interaction: the mobile grow-before-scroll sheet, the header + info row, the CTA row, the suggested-vocab word cards, and how the page owns its container over the nav rail and analytics bar."
 ---
 
 # Activity Start Page
@@ -26,6 +26,8 @@ The top of the page is two rows, present at every size (they, with the CTA, are 
 
 Below the info row the middle content (media carousel, description, suggested vocab, role cards) is unchanged, as are the later steps of the flow (the role picker and the waiting-room actions — invite / ping / play with the bot).
 
+**Suggested vocab.** Tapping a word opens its word card over the page. While a card is open, tapping another word switches to that word's card in one tap, tapping the open word closes it, and a tap anywhere else only closes the card. Only the vocab words stay reachable behind an open card, so a dismissing tap can never land on the X, a role card or a CTA. The same [`ActivityVocabWidget`](../../lib/routes/chat/activity_sessions/activity_vocab_widget.dart) renders the vocab in the in-chat activity summary, which behaves the same way.
+
 ## The CTA row
 
 **On mobile** the footer is a single horizontally scrolling row, Google-Maps style. Exactly one **primary** (filled) CTA leads, followed by the other available actions, with **share** and **flag** always appended last. The primary is chosen by:
@@ -44,7 +46,7 @@ When a session still needs more participants, the blocking notice keeps **Invite
 
 **Share** and **flag** do not sit in the web CTA list. **Share** is an app-bar action to the left of focus. **Flag** sits in the top-right of the text-content (description) section under the hero — so it rides the main step, not the join/completed sub-pages, where there is no description to anchor it. On mobile both stay as chips appended to the bottom CTA row.
 
-While a confirmed session waits to fill (chat not started), a **"…"** menu takes the app-bar share slot on web — and is net-new on mobile, which has no app-bar share — offering **Leave**, plus **Delete** for the room's admin (the same exit chat gives). It displaces share here so inviting people isn't confused with sharing the link.
+While a confirmed session waits to fill (chat not started), a **"…"** menu takes the app-bar share slot on web — and is net-new on mobile, which has no app-bar share. It offers exactly what the session's chat-list row offers, built from the same list ([routing.instructions.md](routing.instructions.md) → A chat's header actions): go to course, notifications, **Leave**, and **Delete** for the room's admin. It carries none of the chat header's extras: invite is already a button in the waiting room, and there is no chat yet to search. It displaces share here so inviting people isn't confused with sharing the link.
 
 
 ## Owning the container: nav rail and analytics bar

@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_settings_model.dart';
 import 'package:fluffychat/routes/chat_list/course_default_chats_enum.dart';
+import 'package:fluffychat/routes/chat_list/course_hierarchy_extension.dart';
 
 extension DefaultChatsRoomExtension on Room {
   CourseChatsSettingsModel get courseChatsSettings {
@@ -57,26 +58,10 @@ extension DefaultChatsRoomExtension on Room {
         .toSet();
     if (missing.isEmpty) return;
 
-    String? from;
-    // A busy course has more children than fit on one page (every activity
-    // session is one), and the default chats are not guaranteed to be on the
-    // first, so page until they are found — under the same failsafe cap on
-    // calls to the server the course chat list uses.
-    for (int page = 0; page < 5 && missing.isNotEmpty; page++) {
-      final GetSpaceHierarchyResponse response;
-      try {
-        response = await client.getSpaceHierarchy(
-          id,
-          maxDepth: 1,
-          from: from,
-          limit: 100,
-        );
-      } catch (e, s) {
-        ErrorHandler.logError(e: e, s: s, data: {'spaceId': id});
-        return;
-      }
-
-      for (final chunk in response.rooms) {
+    // The default chats are not guaranteed to be on the hierarchy's first
+    // page, so read on until both are found.
+    try {
+      await for (final chunk in hierarchyChildren()) {
         final alias = chunk.canonicalAlias;
         if (alias == null) continue;
 
@@ -95,10 +80,10 @@ extension DefaultChatsRoomExtension on Room {
             data: {'alias': alias, 'spaceId': id},
           );
         }
+        if (missing.isEmpty) return;
       }
-
-      from = response.nextBatch;
-      if (from == null) return;
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'spaceId': id});
     }
   }
 

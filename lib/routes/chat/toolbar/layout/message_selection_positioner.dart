@@ -10,6 +10,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
@@ -87,7 +88,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     reactionNotifier.value = _reactionsWidth;
     _reactionListener = ReactionListener(
       event: widget.event,
-      onUpdate: (update) {
+      onUpdate: () {
         if (mounted) {
           final newWidth = _reactionsWidth;
           if (newWidth != reactionNotifier.value) {
@@ -525,7 +526,10 @@ class MessageReactionPicker extends StatelessWidget {
                   ),
                   onPressed: sentReactions.contains(emoji)
                       ? null
-                      : () => event?.room.sendReaction(event.eventId, emoji),
+                      : () => event?.room.sendReactionOrDiscard(
+                          event.eventId,
+                          emoji,
+                        ),
                 ),
               ),
               // IconButton(

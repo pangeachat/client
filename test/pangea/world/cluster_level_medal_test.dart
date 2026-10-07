@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
 import 'package:fluffychat/widgets/users/level_ribbon.dart';
 
@@ -90,9 +91,12 @@ void main() {
       for (final selected in [false, true]) {
         await pumpMedal(tester, selected: selected);
 
+        final inkWell = tester.widget<InkWell>(find.byType(InkWell));
+        expect(inkWell.hoverColor, Colors.transparent);
         expect(
-          tester.widget<InkWell>(find.byType(InkWell)).hoverColor,
-          Colors.transparent,
+          inkWell.customBorder,
+          isA<PathBorder>(),
+          reason: 'press ink follows the shield, not a circle',
         );
         expect(
           find.descendant(
@@ -101,7 +105,14 @@ void main() {
               (w) =>
                   (w is Ink && w.decoration != null) ||
                   (w is Container && w.decoration != null) ||
-                  (w is DecoratedBox),
+                  // The focus ring's shield-shaped layers are the only boxes,
+                  // and they paint nothing until keyboard focus (#9114).
+                  (w is DecoratedBox && w.decoration is! ShapeDecoration) ||
+                  (w is DecoratedBox &&
+                      switch ((w.decoration as ShapeDecoration).shape) {
+                        PathBorder(side: BorderSide.none) => false,
+                        _ => true,
+                      }),
             ),
           ),
           findsNothing,

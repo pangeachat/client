@@ -42,6 +42,24 @@ Future<List<int>> _pixels(ui.Image image) async {
   return data!.buffer.asUint8List().toList();
 }
 
+/// Colour channels that differ between two renders by more than rasteriser
+/// noise. The Linux CI runner is not bit-exact between two renders of the same
+/// frames (one channel off by one), so exact equality cannot tell a changed
+/// face from an unchanged one.
+int _changedChannels(List<int> a, List<int> b) {
+  const noise = 8;
+  var changed = 0;
+  for (var i = 0; i < a.length; i++) {
+    if ((a[i] - b[i]).abs() > noise) changed++;
+  }
+  return changed;
+}
+
+/// Floor for "the face visibly changed", of the 57,600 channels in a render.
+/// Measured: the subtlest real change (surprised, 10 frames in) moves 2,561,
+/// and an unchanged face moves none.
+const _visibleChange = 500;
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -132,10 +150,54 @@ void main() {
     final purple = await renderAt(const Color(0xFF8560E0));
     final teal = await renderAt(const Color(0xFF0F9E8E));
     expect(
-      purple,
-      isNot(equals(teal)),
+      _changedChannels(purple, teal),
+      greaterThan(_visibleChange),
       reason: 'binding botColor must change what is drawn',
     );
+  });
+
+  test('an opening expression lands straight after skipEnter', () async {
+    // Addled swaps on the next frame; the other emotes ease in from the
+    // resting pose, the slowest (nonGold) showing by frame 5.
+    const landingFrames = 10;
+
+    Future<List<int>> renderOpening(BotExpression? expression) async {
+      final artboard = file.artboard('BotIconArtboard')!;
+      final machine = artboard.stateMachine(_stateMachineName)!;
+      final viewModel = file
+          .viewModelByName(_viewModelName)!
+          .createDefaultInstance()!;
+      machine.bindViewModelInstance(viewModel);
+      BotFaceState.skipEnter(machine);
+      if (expression != null) {
+        viewModel.trigger(expression.trigger)!.trigger();
+      }
+      for (var i = 0; i < landingFrames; i++) {
+        machine.advanceAndApply(1 / 60);
+      }
+      final pixels = await _pixels(await _render(artboard));
+      machine.dispose();
+      return pixels;
+    }
+
+    // A dialog that opens addled must not show the bot dropping in with its
+    // resting face first. If skipEnter stops short of the end of Enter, the
+    // trigger is swallowed and the bot is still resting here.
+    final resting = await renderOpening(null);
+    expect(
+      _changedChannels(await renderOpening(null), resting),
+      0,
+      reason: 'renders must repeat, or the comparisons below prove nothing',
+    );
+    for (final expression in BotExpression.values.where(
+      (e) => e != BotExpression.idle,
+    )) {
+      expect(
+        _changedChannels(await renderOpening(expression), resting),
+        greaterThan(_visibleChange),
+        reason: '${expression.trigger} was swallowed after skipEnter',
+      );
+    }
   });
 
   test(
@@ -167,8 +229,8 @@ void main() {
         (e) => e != BotExpression.idle,
       )) {
         expect(
-          await renderExpression(expression),
-          isNot(equals(untriggered)),
+          _changedChannels(await renderExpression(expression), untriggered),
+          greaterThan(_visibleChange),
           reason: '${expression.trigger} must visibly change the artboard',
         );
       }
@@ -204,8 +266,8 @@ void main() {
       final released = await _pixels(await _render(artboard));
 
       expect(
-        released,
-        isNot(equals(holding)),
+        _changedChannels(released, holding),
+        greaterThan(_visibleChange),
         reason: 'firing idle must move the artboard off the held emote',
       );
       machine.dispose();

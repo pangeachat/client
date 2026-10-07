@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui' as ui show SemanticsHitTestBehavior;
 
 import 'package:flutter/material.dart';
 
@@ -94,6 +95,9 @@ class ActivityVocabWidget extends StatelessWidget {
   }
 }
 
+/// The overlay key and transform-target id of one chip's card.
+String _vocabKeyFor(String targetId, Vocab v) => "$targetId-${v.lemma}";
+
 class _VocabChips extends StatefulWidget {
   final List<Vocab> vocab;
   final String targetId;
@@ -155,7 +159,10 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
     super.dispose();
   }
 
-  String _vocabKey(Vocab v) => "${widget.targetId}-${v.lemma}";
+  String _vocabKey(Vocab v) => _vocabKeyFor(widget.targetId, v);
+
+  bool _isNew(Vocab v) =>
+      _newTokens.any((t) => t.content.toLowerCase() == v.lemma.toLowerCase());
 
   void _computeNewTokens() {
     final newTokens = TokensUtil.instance.getNewTokens(
@@ -169,13 +176,13 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
   }
 
   void _selectVocab(Vocab vocab, {bool isNew = false}) {
-    // Activating the chip whose card is already open closes it. A pointer gets
-    // that for free — the second tap never reaches the chip, it lands on the
-    // card's backdrop and dismisses it — but a screen reader activates the chip
-    // straight through the semantics tree, and re-opening a key that is already
-    // open is a no-op, so the card had no way to close (#8620). Asking the
-    // overlay rather than [_selectedVocab] keeps a card that failed to open
-    // (no render box) re-openable instead of stuck selected.
+    // Activating the chip whose card is already open closes it. A screen
+    // reader activates the chip straight through the semantics tree, and
+    // re-opening a key that is already open is a no-op, so the card had no way
+    // to close (#8620). A pointer arrives the same way now, through the chip's
+    // tap target above the open card's backdrop (#9122). Asking the overlay
+    // rather than [_selectedVocab] keeps a card that failed to open (no render
+    // box) re-openable instead of stuck selected.
     if (MatrixState.pAnyState.isOverlayOpen(overlayKey: _vocabKey(vocab))) {
       // Clears [_selectedVocab] too, via the card's onClose.
       MatrixState.pAnyState.closeOverlay(_vocabKey(vocab));
@@ -222,11 +229,12 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
 
   void _showWordCard(Vocab vocab) {
     final target = _vocabKey(vocab);
-    // A pointer can't reach a chip while a card is open — the tap lands on
-    // the card's backdrop and dismisses it — but a screen reader activates
-    // chips straight through the semantics tree, stacking one card + backdrop
-    // per chip until every one has been dismissed (#8279). Close this
-    // widget's other card first so only one is ever open.
+    // Opening a chip's card while another is open moves the card rather than
+    // stacking one: a screen reader activates chips straight through the
+    // semantics tree, and a pointer reaches them through the tap targets
+    // above the open card's backdrop, so without this every chip stacked one
+    // card + backdrop until each was dismissed (#8279). Close this widget's
+    // other card first so only one is ever open.
     for (final other in widget.vocab) {
       if (other != vocab) {
         MatrixState.pAnyState.closeOverlay(_vocabKey(other));
@@ -263,6 +271,15 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
           // Same scaled height the card itself uses — a fixed 250 here would
           // clip the card back to its unscaled size at large device text.
           maxHeight: AppConfig.scaledToolbarMaxHeight(context),
+          // The card can overlap a second run of chips, whose tap targets sit
+          // right under it: absorb taps on the card's own body so they never
+          // fall through to a chip (#9122).
+          blockPointerThrough: true,
+          aboveBackdrop: _VocabTapTargets(
+            targetId: widget.targetId,
+            vocab: widget.vocab,
+            onSelect: (v) => _selectVocab(v, isNew: _isNew(v)),
+          ),
         ),
       );
     });
@@ -270,15 +287,12 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
 
   @override
   Widget build(BuildContext context) {
-    final newTokens = _newTokens;
     return Wrap(
       spacing: 4.0,
       runSpacing: 4.0,
       children: [
         ...widget.vocab.map((v) {
-          final isNew = newTokens.any(
-            (t) => t.content.toLowerCase() == v.lemma.toLowerCase(),
-          );
+          final isNew = _isNew(v);
 
           return _VocabChip(
             v: v,
@@ -290,6 +304,64 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
           );
         }),
       ],
+    );
+  }
+}
+
+/// One invisible tap target per chip, laid over the chip while a card from
+/// its row is open. The page chips stay the visible row and the only one a
+/// screen reader hears; these exist so a pointer can reach a chip through the
+/// open card's backdrop and switch cards in one tap (#9122) — see
+/// [OverlayDisplayDetails.aboveBackdrop] for why a hole in the backdrop can't.
+class _VocabTapTargets extends StatelessWidget {
+  final String targetId;
+  final List<Vocab> vocab;
+  final ValueChanged<Vocab> onSelect;
+
+  const _VocabTapTargets({
+    required this.targetId,
+    required this.vocab,
+    required this.onSelect,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    // Expanded so the stack's own bounds never reject a hit at a chip's
+    // position; each follower then hit-tests at its chip, not at the origin.
+    return SizedBox.expand(
+      child: Stack(
+        children: [
+          for (final v in vocab)
+            if (MatrixState.pAnyState.getRenderBox(_vocabKeyFor(targetId, v))
+                case final RenderBox chip)
+              CompositedTransformFollower(
+                link: MatrixState.pAnyState
+                    .layerLinkAndKey(_vocabKeyFor(targetId, v))
+                    .link,
+                showWhenUnlinked: false,
+                // On web with the semantics tree on this is what takes the
+                // click: a DOM element of its own above the backdrop's Dismiss
+                // node, with no tap action, so the engine forwards the pointer
+                // events to the framework and they land on the detector.
+                // It says nothing to a screen reader; the page chip beneath
+                // is the announced one.
+                child: Semantics(
+                  container: true,
+                  hitTestBehavior: ui.SemanticsHitTestBehavior.opaque,
+                  excludeSemantics: true,
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      excludeFromSemantics: true,
+                      onTap: () => onSelect(v),
+                      child: SizedBox.fromSize(size: chip.size),
+                    ),
+                  ),
+                ),
+              ),
+        ],
+      ),
     );
   }
 }

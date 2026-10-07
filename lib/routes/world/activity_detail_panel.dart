@@ -179,6 +179,10 @@ class _LeftPanelActivityDetailsSubpageState
         parentId: _parentId,
         roomId: widget.param.roomId,
         launch: widget.param.launch,
+        // Only a course the URL names scopes the join list; a resolved parent
+        // is a guess for attributing a new session, not the map's scope
+        // (#9026).
+        scopeSessionsToCourse: widget.parentSpaceId != null,
       );
     }
 

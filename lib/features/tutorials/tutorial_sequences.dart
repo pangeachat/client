@@ -29,11 +29,6 @@ class TutorialSequences {
   /// it is one tutorial that walks the whole app.
   static TutorialSequence get appTourSequence => [TutorialEnum.appTour];
 
-  /// The goal header, once the activity chat is actually running.
-  static TutorialSequence get activityGoalsSequence => [
-    TutorialEnum.activityGoals,
-  ];
-
   static TutorialSequence get chatTutorialSequence => [
     TutorialEnum.readingAssistance,
     TutorialEnum.selectModeButtons,
@@ -60,7 +55,6 @@ enum TutorialSequenceKind {
   worldOrientation,
   courseOrientation,
   appTour,
-  activityGoals,
   chat,
   openSessions,
   activityRoles;
@@ -71,8 +65,6 @@ enum TutorialSequenceKind {
     TutorialSequenceKind.courseOrientation =>
       l10n.tutorialSequenceTitleCourseOrientation,
     TutorialSequenceKind.appTour => l10n.tutorialSequenceTitleAppTour,
-    TutorialSequenceKind.activityGoals =>
-      l10n.tutorialSequenceTitleActivityGoals,
     TutorialSequenceKind.chat => l10n.tutorialSequenceTitleChat,
     TutorialSequenceKind.openSessions => l10n.tutorialSequenceTitleOpenSessions,
     TutorialSequenceKind.activityRoles =>
@@ -85,8 +77,6 @@ enum TutorialSequenceKind {
     TutorialSequenceKind.courseOrientation =>
       TutorialSequences.courseOrientationSequence,
     TutorialSequenceKind.appTour => TutorialSequences.appTourSequence,
-    TutorialSequenceKind.activityGoals =>
-      TutorialSequences.activityGoalsSequence,
     TutorialSequenceKind.chat => TutorialSequences.chatTutorialSequence,
     TutorialSequenceKind.openSessions => TutorialSequences.openSessionsSequence,
     TutorialSequenceKind.activityRoles =>
