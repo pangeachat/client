@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-22 12:37:01.213513",
+    "@@last_modified": "2026-10-05 12:30:42.285233",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "ສະແດງສະເພາະຫຼັກສູດທີ່ທ່ານກຳລັງຮຽນ",
     "searchCoursesHint": "ຊອກຫາຫຼັກສູດ",
     "noCoursesMatchSearch": "ບໍ່ມີຫຼັກສູດກົງກັບການຊອກຫາຂອງທ່ານ.",
-    "searchVocabByWordOrMeaningHint": "ຊອກຫາຕາມຄຳສັບ ຫຼື ຄວາມໝາຍ"
+    "searchVocabByWordOrMeaningHint": "ຊອກຫາຕາມຄຳສັບ ຫຼື ຄວາມໝາຍ",
+    "ssoNetworkBlockedTitle": "ບໍ່ສາມາດເຂົ້າເຖິງເວັບໄຊທ໌ເຂົ້າສູ່ລະບົບໄດ້",
+    "ssoNetworkBlockedDesc": "ເຄືອຂ່າຍນີ້ບໍ່ອະນຸຍາດໃຫ້ພວກເຮົາເຂົ້າເຖິງ {provider} ເພື່ອເຂົ້າສູ່ລະບົບໃຫ້ທ່ານ. Wi-Fi ຂອງໂຮງຮຽນ ແລະ ຫ້ອງການມັກຈະບລັອກມັນ. ທ່ານສາມາດລົງທະບຽນດ້ວຍອີເມວແທນ, ຫຼືປ່ຽນໄປໃຊ້ເຄືອຂ່າຍອື່ນແລ້ວລອງໃໝ່ອີກຄັ້ງ.",
+    "ssoTryAnyway": "ລອງອີກຄັ້ງ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-22 12:36:59.309594",
+    "@@last_modified": "2026-10-05 12:30:38.233820",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10383,5 +10383,8 @@
     "learningCoursesFilterTooltip": "Prikaži samo tečajeve koje učiš",
     "searchCoursesHint": "Pretraži tečajeve",
     "noCoursesMatchSearch": "Nema tečajeva koji odgovaraju vašoj pretrazi.",
-    "searchVocabByWordOrMeaningHint": "Pretražite po riječi ili značenju"
+    "searchVocabByWordOrMeaningHint": "Pretražite po riječi ili značenju",
+    "ssoNetworkBlockedTitle": "Stranica za prijavu nedostupna",
+    "ssoNetworkBlockedDesc": "Ova mreža nam ne dopušta pristup {provider} za vašu prijavu. Školske i uredske Wi-Fi mreže često to blokiraju. Umjesto toga možete se prijaviti e-poštom ili se prebaciti na drugu mrežu i pokušati ponovno.",
+    "ssoTryAnyway": "Pokušaj svejedno"
 }

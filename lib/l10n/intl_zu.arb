@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-22 12:37:08.129461",
+    "@@last_modified": "2026-10-05 12:30:51.948396",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "Bonisa kuphela izifundo ofunda kuzo",
     "searchCoursesHint": "Sesha izifundo",
     "noCoursesMatchSearch": "Azikho izifundo ezifana nosesho lwakho.",
-    "searchVocabByWordOrMeaningHint": "Sesha ngegama noma incazelo"
+    "searchVocabByWordOrMeaningHint": "Sesha ngegama noma incazelo",
+    "ssoNetworkBlockedTitle": "Indawo yokungena ayitholakali",
+    "ssoNetworkBlockedDesc": "Le nethiwekhi ayisivumeli ukuthi sifinyelele ku-{provider} ukuze sikungenise. I-Wi-Fi yesikole neyehhovisi ivame ukuyivimba. Ungabhalisa nge-imeyili esikhundleni salokho, noma ushintshele kwenye inethiwekhi bese uzama futhi.",
+    "ssoTryAnyway": "Zama noma kunjalo"
 }

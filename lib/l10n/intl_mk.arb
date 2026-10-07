@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-22 12:37:02.126510",
+    "@@last_modified": "2026-10-05 12:30:42.833325",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "Прикажи ги само курсевите што ги учиш",
     "searchCoursesHint": "Пребарај курсеви",
     "noCoursesMatchSearch": "Нема курсеви што одговараат на вашето пребарување.",
-    "searchVocabByWordOrMeaningHint": "Пребарај по збор или значење"
+    "searchVocabByWordOrMeaningHint": "Пребарај по збор или значење",
+    "ssoNetworkBlockedTitle": "Веб-страницата за најавување е недостапна",
+    "ssoNetworkBlockedDesc": "Оваа мрежа не ни дозволува да стигнеме до {provider} за да ве најавиме. Училишниот и канцеларискиот Wi-Fi често го блокираат. Може да се регистрирате со е-пошта наместо тоа, или да се префрлите на друга мрежа и да се обидете повторно.",
+    "ssoTryAnyway": "Сепак, обидете се"
 }

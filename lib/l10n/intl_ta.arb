@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:37:06.690059",
+    "@@last_modified": "2026-10-05 12:30:49.233550",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10039,5 +10039,8 @@
     "learningCoursesFilterTooltip": "நீங்கள் கற்கும் பாடநெறிகளை மட்டும் காட்டு",
     "searchCoursesHint": "பாடநெறிகளைத் தேடு",
     "noCoursesMatchSearch": "உங்கள் தேடலுடன் எந்தப் பாடநெறிகளும் பொருந்தவில்லை.",
-    "searchVocabByWordOrMeaningHint": "வார்த்தை அல்லது பொருள் மூலம் தேடவும்"
+    "searchVocabByWordOrMeaningHint": "வார்த்தை அல்லது பொருள் மூலம் தேடவும்",
+    "ssoNetworkBlockedTitle": "உள்நுழைவு தளம் அணுக முடியாதது",
+    "ssoNetworkBlockedDesc": "உங்களை உள்நுழைய வைக்க {provider} ஐ அணுக இந்த நெட்வொர்க் எங்களை அனுமதிக்கவில்லை. பள்ளி மற்றும் அலுவலக வைஃபை பெரும்பாலும் இதைத் தடுக்கிறது. அதற்கு பதிலாக நீங்கள் மின்னஞ்சல் மூலம் பதிவு செய்யலாம் அல்லது வேறு நெட்வொர்க்கிற்கு மாறி மீண்டும் முயற்சி செய்யலாம்.",
+    "ssoTryAnyway": "எப்படியும் முயற்சி செய்"
 }

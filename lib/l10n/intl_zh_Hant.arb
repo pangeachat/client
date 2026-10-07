@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:37:08.230497",
+    "@@last_modified": "2026-10-05 12:30:51.243956",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10053,5 +10053,8 @@
     "learningCoursesFilterTooltip": "僅顯示您正在學習的課程",
     "searchCoursesHint": "搜尋課程",
     "noCoursesMatchSearch": "沒有課程符合您的搜尋。",
-    "searchVocabByWordOrMeaningHint": "按單字或意思搜尋"
+    "searchVocabByWordOrMeaningHint": "按單字或意思搜尋",
+    "ssoNetworkBlockedTitle": "無法連線到登入網站",
+    "ssoNetworkBlockedDesc": "此網路不允許我們連線到 {provider} 以登入。學校和辦公室的 Wi-Fi 通常會阻擋此連線。您可以改用電子郵件註冊，或切換到其他網路再試一次。",
+    "ssoTryAnyway": "仍然嘗試"
 }

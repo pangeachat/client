@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-22 12:37:00.330623",
+    "@@last_modified": "2026-10-05 12:30:41.980255",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "Сіз оқып жатқан курстарды ғана көрсету",
     "searchCoursesHint": "Курстарды іздеу",
     "noCoursesMatchSearch": "Іздеуіңізге сәйкес келетін курстар жоқ.",
-    "searchVocabByWordOrMeaningHint": "Сөз немесе мағынасы бойынша іздеу"
+    "searchVocabByWordOrMeaningHint": "Сөз немесе мағынасы бойынша іздеу",
+    "ssoNetworkBlockedTitle": "Кіру сайты қолжетімсіз",
+    "ssoNetworkBlockedDesc": "Бұл желі сізге кіру үшін {provider} қызметіне жетуімізге мүмкіндік бермейді. Мектеп және кеңсе Wi-Fi желілері оны жиі бұғаттайды. Оның орнына электрондық пошта арқылы тіркелуге немесе басқа желіге ауысып, қайта әрекет етуге болады.",
+    "ssoTryAnyway": "Бәрібір әрекет ету"
 }

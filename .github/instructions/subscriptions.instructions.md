@@ -27,7 +27,7 @@ The other half of that rule is that no text sits directly on the image. Anything
 
 ## Purchase flow
 
-Selecting a plan requests a checkout URL from the choreographer and opens it in the system browser ([`PaymentPageMixin`](../../lib/routes/settings/settings_subscription/payment_page_mixin.dart)). A `beganPayment` flag survives the round-trip, so returning to the app is recognized as a completed purchase and the entitlement refresh runs. The discount-code field validates the code server-side before checkout, so an error surfaces in the app and the code reaches Stripe pre-applied; the field appears only where the paywall may appear.
+Selecting a plan requests a checkout URL from the choreographer and opens it in the system browser ([`PaymentPageMixin`](../../lib/routes/settings/settings_subscription/payment_page_mixin.dart)). A `beganPayment` flag survives the round-trip, so returning to the app is recognized as a completed purchase and the entitlement refresh runs. The discount-code field validates the code server-side before checkout, so an error surfaces in the app and the code reaches Stripe pre-applied; the field appears only where the paywall may appear, and never on iOS, where App Review rejects in-app code entry (Apple 3.1.1) and the learner enters the code on the Stripe page instead.
 
 ## Refreshing subscription info
 

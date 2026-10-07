@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-22 12:36:57.381949",
+    "@@last_modified": "2026-10-05 12:30:33.967019",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "আপুনি শিকি থকা পাঠ্যক্ৰমসমূহহে দেখুৱাওক",
     "searchCoursesHint": "পাঠ্যক্ৰমসমূহ বিচাৰক",
     "noCoursesMatchSearch": "আপোনাৰ সন্ধানৰ সৈতে কোনো পাঠ্যক্ৰম মিল খোৱা নাই।",
-    "searchVocabByWordOrMeaningHint": "শব্দ বা অৰ্থৰে সন্ধান কৰক"
+    "searchVocabByWordOrMeaningHint": "শব্দ বা অৰ্থৰে সন্ধান কৰক",
+    "ssoNetworkBlockedTitle": "ছাইন-ইন ছাইটত উপনীত হ'ব পৰা নাই",
+    "ssoNetworkBlockedDesc": "এই নেটৱৰ্কে আপোনাক ছাইন ইন কৰিবলৈ {provider} লৈ যাবলৈ নিদিয়াহে। বিদ্যালয় আৰু কাৰ্যালয়ৰ Wi-Fi-এ ইয়াক প্ৰায়ে ব্লক কৰে। আপুনি ইয়াৰ পৰিৱৰ্তে ইমেইলৰ সৈতে ছাইন আপ কৰিব পাৰে, অথবা আন এটা নেটৱৰ্কলৈ সলনি কৰি পুনৰ চেষ্টা কৰিব পাৰে।",
+    "ssoTryAnyway": "যিকোনো প্ৰকাৰে চেষ্টা কৰক"
 }

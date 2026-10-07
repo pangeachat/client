@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-22 12:36:58.113913",
+    "@@last_modified": "2026-10-05 12:30:34.941602",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "Ipakita lang ang mga kurso nga imong gitun-an",
     "searchCoursesHint": "Pangita og mga kurso",
     "noCoursesMatchSearch": "Walay kurso nga mohaum sa imong gipangita.",
-    "searchVocabByWordOrMeaningHint": "Pangitaa pinaagi sa pulong o kahulogan"
+    "searchVocabByWordOrMeaningHint": "Pangitaa pinaagi sa pulong o kahulogan",
+    "ssoNetworkBlockedTitle": "Dili maabot ang site sa pag-sign-in",
+    "ssoNetworkBlockedDesc": "Kini nga network wala nagtugot kanamo nga maabot ang {provider} aron ma-sign in ka. Ang Wi-Fi sa eskwelahan ug opisina kasagaran nagbabag niini. Mahimo kang mag-sign up gamit ang email, o mobalhin sa laing network ug mosulay pag-usab.",
+    "ssoTryAnyway": "Sulayi gihapon"
 }

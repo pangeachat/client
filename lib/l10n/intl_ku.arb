@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-22 12:37:05.172386",
+    "@@last_modified": "2026-10-05 12:30:42.109504",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "تەنها ئەو خولانە نیشان بدە کە تێیدا فێردەبیت",
     "searchCoursesHint": "گەڕان بەدوای خولەکاندا",
     "noCoursesMatchSearch": "هیچ خولێک لەگەڵ گەڕانەکەتدا ناگونجێت.",
-    "searchVocabByWordOrMeaningHint": "بە وشە یان واتاکەی بگەڕێ"
+    "searchVocabByWordOrMeaningHint": "بە وشە یان واتاکەی بگەڕێ",
+    "ssoNetworkBlockedTitle": "ماڵپەڕی چوونەژوورەوە بەردەست نییە",
+    "ssoNetworkBlockedDesc": "ئەم تۆڕە ڕێگەمان نادات بگەینە {provider} بۆ ئەوەی بچیتە ژوورەوە. وایفای قوتابخانە و ئۆفیس زۆرجار ڕێگری لێدەکەن. دەتوانیت لەبری ئەوە بە ئیمەیڵ ناونووسی بکەیت، یان بگۆڕیت بۆ تۆڕێکی تر و دووبارە هەوڵبدەیتەوە.",
+    "ssoTryAnyway": "هەر هەوڵبدە"
 }

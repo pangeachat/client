@@ -1802,7 +1802,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-22 12:37:05.062876",
+    "@@last_modified": "2026-10-05 12:30:47.262556",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10892,5 +10892,8 @@
     "learningCoursesFilterTooltip": "Prikaži samo tečaje, ki se jih učiš",
     "searchCoursesHint": "Iskanje tečajev",
     "noCoursesMatchSearch": "Noben tečaj ne ustreza iskanju.",
-    "searchVocabByWordOrMeaningHint": "Išči po besedi ali pomenu"
+    "searchVocabByWordOrMeaningHint": "Išči po besedi ali pomenu",
+    "ssoNetworkBlockedTitle": "Mesto za prijavo ni dosegljivo",
+    "ssoNetworkBlockedDesc": "To omrežje nam ne dovoljuje, da dosežemo {provider} za vašo prijavo. Šolski in pisarniški Wi-Fi to pogosto blokirata. Namesto tega se lahko prijavite z e-pošto ali preklopite na drugo omrežje in poskusite znova.",
+    "ssoTryAnyway": "Vseeno poskusi"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-22 12:37:03.244681",
+    "@@last_modified": "2026-10-05 12:30:45.132996",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "Vis kun kurs du lærer i",
     "searchCoursesHint": "Søk i kurs",
     "noCoursesMatchSearch": "Ingen kurs samsvarer med søket ditt.",
-    "searchVocabByWordOrMeaningHint": "Søk etter ord eller betydning"
+    "searchVocabByWordOrMeaningHint": "Søk etter ord eller betydning",
+    "ssoNetworkBlockedTitle": "Påloggingsside utilgjengelig",
+    "ssoNetworkBlockedDesc": "Dette nettverket hindrer oss i å nå {provider} for å logge deg på. Skole- og kontor-Wi-Fi blokkerer ofte dette. Du kan registrere deg med e-post i stedet, eller bytte til et annet nettverk og prøve igjen.",
+    "ssoTryAnyway": "Prøv likevel"
 }

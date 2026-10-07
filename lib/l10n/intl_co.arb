@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-22 12:36:57.902573",
+    "@@last_modified": "2026-10-05 12:30:35.297477",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "Mostra solu i corsi ch'è tù amparate",
     "searchCoursesHint": "Cerca corsi",
     "noCoursesMatchSearch": "Nisun corsu ùn currisponde à a vostra ricerca.",
-    "searchVocabByWordOrMeaningHint": "Cerca per parolla o significatu"
+    "searchVocabByWordOrMeaningHint": "Cerca per parolla o significatu",
+    "ssoNetworkBlockedTitle": "Situ di cunnessione inaccessibile",
+    "ssoNetworkBlockedDesc": "Sta rete ùn ci permette micca di ghjunghje à {provider} per cunnettavvi. U Wi-Fi di a scola è di l'uffiziu u bluccanu spessu. Pudete iscrivevi cù l'email invece, o passà à un'altra rete è riprovà.",
+    "ssoTryAnyway": "Pruvate quantunque"
 }

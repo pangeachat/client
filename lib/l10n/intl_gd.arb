@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-22 12:36:59.502392",
+    "@@last_modified": "2026-10-05 12:30:36.958389",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "Seall dìreach cùrsaichean a tha thu ag ionnsachadh annta",
     "searchCoursesHint": "Lorg cùrsaichean",
     "noCoursesMatchSearch": "Chan eil cùrsaichean a rèir an rannsachaidh agad.",
-    "searchVocabByWordOrMeaningHint": "Rannsaich a rèir facail no brìgh"
+    "searchVocabByWordOrMeaningHint": "Rannsaich a rèir facail no brìgh",
+    "ssoNetworkBlockedTitle": "Làrach-lìn logadh a-steach do-ruigsinneach",
+    "ssoNetworkBlockedDesc": "Chan eil an lìonra seo a' leigeil leinn {provider} a ruighinn gus do logadh a-steach. Bidh Wi-Fi sgoile is oifise gu tric ga bhacadh. Faodaidh tu clàradh le post-d na àite, no atharrachadh gu lìonra eile agus feuchainn a-rithist.",
+    "ssoTryAnyway": "Feuch co-dhiù"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:37:05.709127",
+    "@@last_modified": "2026-10-05 12:30:48.300024",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10896,5 +10896,8 @@
     "learningCoursesFilterTooltip": "Prikaži samo kurseve koje učiš",
     "searchCoursesHint": "Pretraži kurseve",
     "noCoursesMatchSearch": "Nijedan kurs ne odgovara tvojoj pretrazi.",
-    "searchVocabByWordOrMeaningHint": "Pretražite po reči ili značenju"
+    "searchVocabByWordOrMeaningHint": "Pretražite po reči ili značenju",
+    "ssoNetworkBlockedTitle": "Sajt za prijavu je nedostupan",
+    "ssoNetworkBlockedDesc": "Ova mreža nam ne dozvoljava da dođemo do {provider} da bismo vas prijavili. Školski i kancelarijski Wi-Fi često blokiraju pristup. Umesto toga, možete se prijaviti putem e-pošte ili preći na drugu mrežu i pokušati ponovo.",
+    "ssoTryAnyway": "Pokušajte svejedno"
 }

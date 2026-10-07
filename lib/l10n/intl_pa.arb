@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-22 12:37:04.035824",
+    "@@last_modified": "2026-10-05 12:30:47.078491",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "ਸਿਰਫ਼ ਉਹ ਕੋਰਸ ਦਿਖਾਓ ਜਿਨ੍ਹਾਂ ਵਿੱਚ ਤੁਸੀਂ ਸਿੱਖ ਰਹੇ ਹੋ",
     "searchCoursesHint": "ਕੋਰਸ ਖੋਜੋ",
     "noCoursesMatchSearch": "ਤੁਹਾਡੀ ਖੋਜ ਨਾਲ ਕੋਈ ਕੋਰਸ ਮੇਲ ਨਹੀਂ ਖਾਂਦਾ।",
-    "searchVocabByWordOrMeaningHint": "ਸ਼ਬਦ ਜਾਂ ਅਰਥ ਦੁਆਰਾ ਖੋਜੋ"
+    "searchVocabByWordOrMeaningHint": "ਸ਼ਬਦ ਜਾਂ ਅਰਥ ਦੁਆਰਾ ਖੋਜੋ",
+    "ssoNetworkBlockedTitle": "ਸਾਈਨ-ਇਨ ਸਾਈਟ ਪਹੁੰਚ ਤੋਂ ਬਾਹਰ",
+    "ssoNetworkBlockedDesc": "ਇਹ ਨੈੱਟਵਰਕ ਤੁਹਾਨੂੰ ਸਾਈਨ ਇਨ ਕਰਨ ਲਈ {provider} ਤੱਕ ਪਹੁੰਚਣ ਨਹੀਂ ਦੇ ਰਿਹਾ। ਸਕੂਲ ਅਤੇ ਦਫ਼ਤਰ ਦਾ Wi-Fi ਅਕਸਰ ਇਸਨੂੰ ਬਲੌਕ ਕਰ ਦਿੰਦਾ ਹੈ। ਤੁਸੀਂ ਇਸਦੀ ਬਜਾਏ ਈਮੇਲ ਨਾਲ ਸਾਈਨ ਅੱਪ ਕਰ ਸਕਦੇ ਹੋ, ਜਾਂ ਕਿਸੇ ਹੋਰ ਨੈੱਟਵਰਕ 'ਤੇ ਸਵਿੱਚ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰ ਸਕਦੇ ਹੋ।",
+    "ssoTryAnyway": "ਫਿਰ ਵੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
 }

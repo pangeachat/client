@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-09-22 12:37:00.939380",
+    "@@last_modified": "2026-10-05 12:30:40.999381",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "បង្ហាញតែវគ្គសិក្សាដែលអ្នកកំពុងរៀន",
     "searchCoursesHint": "ស្វែងរកវគ្គសិក្សា",
     "noCoursesMatchSearch": "គ្មានវគ្គសិក្សាណាមួយត្រូវនឹងការស្វែងរករបស់អ្នកទេ។",
-    "searchVocabByWordOrMeaningHint": "ស្វែងរកតាមពាក្យ ឬអត្ថន័យ"
+    "searchVocabByWordOrMeaningHint": "ស្វែងរកតាមពាក្យ ឬអត្ថន័យ",
+    "ssoNetworkBlockedTitle": "គេហទំព័រចូលប្រើមិនបាន",
+    "ssoNetworkBlockedDesc": "បណ្ដាញនេះមិនអនុញ្ញាតឱ្យយើងចូលប្រើ {provider} ដើម្បីចុះឈ្មោះអ្នកទេ។ Wi-Fi របស់សាលារៀន និងការិយាល័យតែងតែទប់ស្កាត់វា។ អ្នកអាចចុះឈ្មោះដោយប្រើអ៊ីមែលជំនួសវិញ ឬប្ដូរទៅបណ្ដាញផ្សេងទៀត ហើយព្យាយាមម្ដងទៀត។",
+    "ssoTryAnyway": "ព្យាយាមម្ដងទៀត"
 }

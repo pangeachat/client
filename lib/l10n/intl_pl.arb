@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-22 12:37:03.867975",
+    "@@last_modified": "2026-10-05 12:30:45.288625",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10032,5 +10032,8 @@
     "learningCoursesFilterTooltip": "Pokaż tylko kursy, w których się uczysz",
     "searchCoursesHint": "Szukaj kursów",
     "noCoursesMatchSearch": "Brak kursów pasujących do wyszukiwania.",
-    "searchVocabByWordOrMeaningHint": "Szukaj według słowa lub znaczenia"
+    "searchVocabByWordOrMeaningHint": "Szukaj według słowa lub znaczenia",
+    "ssoNetworkBlockedTitle": "Witryna logowania niedostępna",
+    "ssoNetworkBlockedDesc": "Ta sieć uniemożliwia nam połączenie z {provider} w celu zalogowania. Często blokują to sieci Wi-Fi w szkołach i biurach. Zamiast tego możesz zarejestrować się za pomocą adresu e-mail lub przełączyć się na inną sieć i spróbować ponownie.",
+    "ssoTryAnyway": "Mimo to spróbuj"
 }

@@ -2967,7 +2967,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-22 12:37:01.463203",
+    "@@last_modified": "2026-10-05 12:30:42.164915",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10728,5 +10728,8 @@
     "learningCoursesFilterTooltip": "Rodyti tik kursus, kuriuos mokotės",
     "searchCoursesHint": "Ieškoti kursų",
     "noCoursesMatchSearch": "Nėra kursų, atitinkančių jūsų paiešką.",
-    "searchVocabByWordOrMeaningHint": "Ieškoti pagal žodį ar reikšmę"
+    "searchVocabByWordOrMeaningHint": "Ieškoti pagal žodį ar reikšmę",
+    "ssoNetworkBlockedTitle": "Prisijungimo svetainė nepasiekiama",
+    "ssoNetworkBlockedDesc": "Šis tinklas neleidžia mums pasiekti {provider}, kad galėtumėte prisijungti. Mokyklos ir biuro „Wi-Fi“ dažnai blokuoja prieigą. Galite prisiregistruoti el. paštu arba prisijungti prie kito tinklo ir bandyti dar kartą.",
+    "ssoTryAnyway": "Vis tiek bandyti"
 }

@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-22 12:37:04.341875",
+    "@@last_modified": "2026-10-05 12:30:45.973358",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10864,5 +10864,8 @@
     "learningCoursesFilterTooltip": "Mostrar apenas os cursos em que está a aprender",
     "searchCoursesHint": "Procurar cursos",
     "noCoursesMatchSearch": "Nenhum curso corresponde à sua pesquisa.",
-    "searchVocabByWordOrMeaningHint": "Pesquisar por palavra ou significado"
+    "searchVocabByWordOrMeaningHint": "Pesquisar por palavra ou significado",
+    "ssoNetworkBlockedTitle": "Site de início de sessão inacessível",
+    "ssoNetworkBlockedDesc": "Esta rede não nos permite aceder a {provider} para iniciar a sua sessão. As redes Wi-Fi de escolas e escritórios bloqueiam-no frequentemente. Pode registar-se com e-mail ou mudar para outra rede e tentar novamente.",
+    "ssoTryAnyway": "Tentar na mesma"
 }

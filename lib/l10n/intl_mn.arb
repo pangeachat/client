@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-22 12:37:01.848313",
+    "@@last_modified": "2026-10-05 12:30:43.933967",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "Таны сурч буй хичээлүүдийг л харуулах",
     "searchCoursesHint": "Хичээл хайх",
     "noCoursesMatchSearch": "Таны хайлтад тохирох хичээл байхгүй байна.",
-    "searchVocabByWordOrMeaningHint": "Үг эсвэл утгаар хайх"
+    "searchVocabByWordOrMeaningHint": "Үг эсвэл утгаар хайх",
+    "ssoNetworkBlockedTitle": "Нэвтрэх сайт боломжгүй байна",
+    "ssoNetworkBlockedDesc": "Энэ сүлжээ таныг нэвтрүүлэхийн тулд {provider} руу нэвтрэхийг зөвшөөрөхгүй байна. Сургууль болон оффисын Wi-Fi үүнийг ихэвчлэн хаадаг. Та оронд нь имэйлээр бүртгүүлэх эсвэл өөр сүлжээнд шилжиж дахин оролдож болно.",
+    "ssoTryAnyway": "Ямартай ч оролдох"
 }

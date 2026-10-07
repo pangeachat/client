@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-22 12:36:58.575879",
+    "@@last_modified": "2026-10-05 12:31:59.927563",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10302,5 +10302,8 @@
     "learningCoursesFilterTooltip": "Afficher uniquement les cours que vous apprenez",
     "searchCoursesHint": "Rechercher des cours",
     "noCoursesMatchSearch": "Aucun cours ne correspond à votre recherche.",
-    "searchVocabByWordOrMeaningHint": "Rechercher par mot ou signification"
+    "searchVocabByWordOrMeaningHint": "Rechercher par mot ou signification",
+    "ssoNetworkBlockedTitle": "Site de connexion inaccessible",
+    "ssoNetworkBlockedDesc": "Ce réseau ne nous permet pas d'atteindre {provider} pour vous connecter. Les réseaux Wi-Fi scolaires et professionnels le bloquent souvent. Vous pouvez vous inscrire par e-mail à la place, ou passer à un autre réseau et réessayer.",
+    "ssoTryAnyway": "Essayer quand même"
 }

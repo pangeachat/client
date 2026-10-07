@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-22 12:37:09.612070",
+    "@@last_modified": "2026-10-05 12:30:51.694487",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "سىز ئۆگىنىۋاتقان كۇرسلارنىلا كۆرسەت",
     "searchCoursesHint": "كۇرس ئىزدە",
     "noCoursesMatchSearch": "ئىزدەش نەتىجىڭىزگە ماس كېلىدىغان كۇرس يوق.",
-    "searchVocabByWordOrMeaningHint": "سۆز ياكى مەنىسى بويىچە ئىزدەش"
+    "searchVocabByWordOrMeaningHint": "سۆز ياكى مەنىسى بويىچە ئىزدەش",
+    "ssoNetworkBlockedTitle": "كىرىش تور بېكىتىگە يېتىپ بولغىلى بولمىدى",
+    "ssoNetworkBlockedDesc": "بۇ تور سىزنى كىرگۈزۈش ئۈچۈن بىزنىڭ {provider} غا يېتىشىمىزگە يول قويمىدى. مەكتەپ ۋە ئىشخانا Wi-Fi دائىم ئۇنى چەكلەيدۇ. ئەكسىچە ئېلخەت ئارقىلىق تىزىملاتسىڭىز ياكى باشقا تورغا ئالماشتۇرۇپ قايتا سىناپ باقسىڭىز بولىدۇ.",
+    "ssoTryAnyway": "قانداقلا بولمىسۇن سىناپ بېقىڭ"
 }

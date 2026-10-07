@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-22 12:37:05.683743",
+    "@@last_modified": "2026-10-05 12:30:48.764482",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "Tus kaliya koorsooyinka aad baraneyso",
     "searchCoursesHint": "Raadi koorsooyin",
     "noCoursesMatchSearch": "Ma jiraan koorsooyin u dhigma raadintaada.",
-    "searchVocabByWordOrMeaningHint": "Ku raadi eray ama macne"
+    "searchVocabByWordOrMeaningHint": "Ku raadi eray ama macne",
+    "ssoNetworkBlockedTitle": "Goobta soo-galitaanka lama gaari karo",
+    "ssoNetworkBlockedDesc": "Shabakaddani nama ogolaaneyso inaan gaarno {provider} si aan kuugu soo galino. Wi-Fi-ga dugsiga iyo xafiiska ayaa inta badan xira. Waxaad ku diiwaan gelin kartaa email ahaan, ama waxaad u wareegi kartaa shabakad kale oo aad mar kale isku dayi kartaa.",
+    "ssoTryAnyway": "Sikastaba isku day"
 }

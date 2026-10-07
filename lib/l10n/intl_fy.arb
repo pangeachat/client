@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-22 12:36:58.738626",
+    "@@last_modified": "2026-10-05 12:30:36.551232",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "Lit allinnich kursussen sjen dêr't jo yn leare",
     "searchCoursesHint": "Sykje kursussen",
     "noCoursesMatchSearch": "Gjin kursussen komme oerien mei jo sykopdracht.",
-    "searchVocabByWordOrMeaningHint": "Sykje op wurd of betsjutting"
+    "searchVocabByWordOrMeaningHint": "Sykje op wurd of betsjutting",
+    "ssoNetworkBlockedTitle": "Oanmeldside net berikber",
+    "ssoNetworkBlockedDesc": "Dit netwurk lit ús {provider} net berikke om jo oan te melden. Wi-Fi op skoalle en kantoar blokkearret dit faak. Jo kinne ynstee oanmelde mei e-mail, of oerskeakelje nei in oar netwurk en it opnij besykje.",
+    "ssoTryAnyway": "Dochs besykje"
 }

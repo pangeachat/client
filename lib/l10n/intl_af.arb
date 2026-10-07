@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-22 12:36:57.401135",
+    "@@last_modified": "2026-10-05 12:30:33.496360",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "Wys slegs kursusse waarin jy leer",
     "searchCoursesHint": "Soek kursusse",
     "noCoursesMatchSearch": "Geen kursusse stem ooreen met jou soektog nie.",
-    "searchVocabByWordOrMeaningHint": "Soek volgens woord of betekenis"
+    "searchVocabByWordOrMeaningHint": "Soek volgens woord of betekenis",
+    "ssoNetworkBlockedTitle": "Aanmeldingswerf onbereikbaar",
+    "ssoNetworkBlockedDesc": "Hierdie netwerk laat ons nie toe om {provider} te bereik om jou aan te meld nie. Skool- en kantoor-Wi-Fi blokkeer dit dikwels. Jy kan eerder met e-pos aanmeld, of na 'n ander netwerk oorskakel en weer probeer.",
+    "ssoTryAnyway": "Probeer in elk geval"
 }

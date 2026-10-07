@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-22 12:37:03.740199",
+    "@@last_modified": "2026-10-05 12:30:41.473150",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "Sho kɔses we yu de lan nɔmɔ",
     "searchCoursesHint": "Luk fɔ kɔses",
     "noCoursesMatchSearch": "No kɔs nɔ match yu saych.",
-    "searchVocabByWordOrMeaningHint": "Luk fɔ wɔd ɔ mining"
+    "searchVocabByWordOrMeaningHint": "Luk fɔ wɔd ɔ mining",
+    "ssoNetworkBlockedTitle": "Sayn-in sayt nɔ de rich",
+    "ssoNetworkBlockedDesc": "Dis netwɔk nɔ de mek wi rich {provider} fɔ sayn yu in. Skul ɛn ɔfis Wi-Fi kin blɔk am. Yu go ebul sayn-ɔp wit imel instɛd, ɔ chenj to ɔda netwɔk ɛn tray igen.",
+    "ssoTryAnyway": "Tray ɛnitin"
 }

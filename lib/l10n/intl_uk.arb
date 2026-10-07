@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-22 12:37:07.289725",
+    "@@last_modified": "2026-10-05 12:30:49.865281",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9947,5 +9947,8 @@
     "learningCoursesFilterTooltip": "Показати лише курси, які ви вивчаєте",
     "searchCoursesHint": "Пошук курсів",
     "noCoursesMatchSearch": "Немає курсів, що відповідають вашому запиту.",
-    "searchVocabByWordOrMeaningHint": "Пошук за словом або значенням"
+    "searchVocabByWordOrMeaningHint": "Пошук за словом або значенням",
+    "ssoNetworkBlockedTitle": "Сайт входу недоступний",
+    "ssoNetworkBlockedDesc": "Ця мережа не дозволяє нам зв’язатися з {provider} для входу. Шкільний та офісний Wi-Fi часто блокують його. Ви можете зареєструватися за допомогою електронної пошти або переключитися на іншу мережу та спробувати ще раз.",
+    "ssoTryAnyway": "Все одно спробувати"
 }

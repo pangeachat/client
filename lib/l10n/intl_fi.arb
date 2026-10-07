@@ -3536,7 +3536,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-22 12:36:58.564144",
+    "@@last_modified": "2026-10-05 12:30:36.123793",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9984,5 +9984,8 @@
     "learningCoursesFilterTooltip": "Näytä vain kurssit, joilla opiskelet",
     "searchCoursesHint": "Hae kursseja",
     "noCoursesMatchSearch": "Hakua vastaavia kursseja ei löytynyt.",
-    "searchVocabByWordOrMeaningHint": "Hae sanalla tai merkityksellä"
+    "searchVocabByWordOrMeaningHint": "Hae sanalla tai merkityksellä",
+    "ssoNetworkBlockedTitle": "Kirjautumissivusto ei tavoitettavissa",
+    "ssoNetworkBlockedDesc": "Tämä verkko estää meitä tavoittamasta palvelua {provider} kirjautuaksesi sisään. Koulun ja toimiston Wi-Fi-verkot estävät sen usein. Voit kirjautua sisään sähköpostilla tai vaihtaa toiseen verkkoon ja yrittää uudelleen.",
+    "ssoTryAnyway": "Yritä silti"
 }

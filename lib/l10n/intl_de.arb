@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-22 12:36:58.140537",
+    "@@last_modified": "2026-10-05 12:30:35.133107",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9934,5 +9934,8 @@
     "learningCoursesFilterTooltip": "Nur Kurse anzeigen, in denen Sie lernen",
     "searchCoursesHint": "Kurse suchen",
     "noCoursesMatchSearch": "Keine Kurse entsprechen Ihrer Suche.",
-    "searchVocabByWordOrMeaningHint": "Nach Wort oder Bedeutung suchen"
+    "searchVocabByWordOrMeaningHint": "Nach Wort oder Bedeutung suchen",
+    "ssoNetworkBlockedTitle": "Anmeldeseite nicht erreichbar",
+    "ssoNetworkBlockedDesc": "Dieses Netzwerk lässt uns nicht zu {provider} durch, um dich anzumelden. Schul- und Büro-WLAN blockieren dies oft. Du kannst dich stattdessen mit E-Mail anmelden oder zu einem anderen Netzwerk wechseln und es erneut versuchen.",
+    "ssoTryAnyway": "Trotzdem versuchen"
 }

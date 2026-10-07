@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:37:05.578683",
+    "@@last_modified": "2026-10-05 12:30:46.587727",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10679,5 +10679,8 @@
     "learningCoursesFilterTooltip": "Afișează doar cursurile la care înveți",
     "searchCoursesHint": "Căutare cursuri",
     "noCoursesMatchSearch": "Niciun curs nu corespunde căutării tale.",
-    "searchVocabByWordOrMeaningHint": "Căutați după cuvânt sau sens"
+    "searchVocabByWordOrMeaningHint": "Căutați după cuvânt sau sens",
+    "ssoNetworkBlockedTitle": "Site-ul de conectare este inaccesibil",
+    "ssoNetworkBlockedDesc": "Această rețea nu ne permite să ajungem la {provider} pentru a te conecta. Rețelele Wi-Fi de la școală și de la birou blochează adesea acest lucru. Te poți înscrie cu e-mail în schimb sau poți trece la o altă rețea și poți încerca din nou.",
+    "ssoTryAnyway": "Încearcă oricum"
 }

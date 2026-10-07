@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:37:00.062695",
+    "@@last_modified": "2026-10-05 12:30:39.531349",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10020,5 +10020,8 @@
     "learningCoursesFilterTooltip": "Mostra solo i corsi che stai imparando",
     "searchCoursesHint": "Cerca corsi",
     "noCoursesMatchSearch": "Nessun corso corrisponde alla tua ricerca.",
-    "searchVocabByWordOrMeaningHint": "Cerca per parola o significato"
+    "searchVocabByWordOrMeaningHint": "Cerca per parola o significato",
+    "ssoNetworkBlockedTitle": "Sito di accesso irraggiungibile",
+    "ssoNetworkBlockedDesc": "Questa rete non ci permette di raggiungere {provider} per effettuare l'accesso. Le reti Wi-Fi di scuole e uffici spesso lo bloccano. Puoi registrarti con l'email, oppure passare a un'altra rete e riprovare.",
+    "ssoTryAnyway": "Riprova comunque"
 }

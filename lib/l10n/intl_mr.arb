@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-22 12:37:02.710385",
+    "@@last_modified": "2026-10-05 12:30:43.486852",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "तुम्ही शिकत असलेले अभ्यासक्रमच दाखवा",
     "searchCoursesHint": "अभ्यासक्रम शोधा",
     "noCoursesMatchSearch": "तुमच्या शोधण्याशी जुळणारे कोणतेही अभ्यासक्रम नाहीत.",
-    "searchVocabByWordOrMeaningHint": "शब्द किंवा अर्थानुसार शोधा"
+    "searchVocabByWordOrMeaningHint": "शब्द किंवा अर्थानुसार शोधा",
+    "ssoNetworkBlockedTitle": "साइन-इन साइटवर पोहोचता येत नाही",
+    "ssoNetworkBlockedDesc": "हे नेटवर्क तुम्हाला साइन इन करण्यासाठी {provider} पर्यंत पोहोचू देत नाहीये. शाळा आणि ऑफिसमधील वाय-फाय अनेकदा ते ब्लॉक करतात. त्याऐवजी तुम्ही ईमेलने साइन अप करू शकता किंवा दुसऱ्या नेटवर्कवर स्विच करून पुन्हा प्रयत्न करू शकता.",
+    "ssoTryAnyway": "तरीही प्रयत्न करा"
 }

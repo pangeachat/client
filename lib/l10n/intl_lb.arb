@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-22 12:37:01.181865",
+    "@@last_modified": "2026-10-05 12:30:42.034731",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "Nëmmen d'Coursen uweisen, an deenen Dir léiert",
     "searchCoursesHint": "Coursen sichen",
     "noCoursesMatchSearch": "Keng Coursen entspriechen Ärer Sich.",
-    "searchVocabByWordOrMeaningHint": "No Wuert oder Bedeitung sichen"
+    "searchVocabByWordOrMeaningHint": "No Wuert oder Bedeitung sichen",
+    "ssoNetworkBlockedTitle": "Umeldungssäit net erreechbar",
+    "ssoNetworkBlockedDesc": "Dëst Netzwierk erlaabt eis net, {provider} z'erreechen fir Iech unzemellen. Schoul- an Büro-Wi-Fi blockéieren dacks esou eppes. Dir kënnt Iech amplaz mat E-Mail umellen, oder op en anert Netzwierk wiesselen an et nach eng Kéier probéieren.",
+    "ssoTryAnyway": "Trotzdeem probéieren"
 }

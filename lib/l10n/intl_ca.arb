@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:36:57.955025",
+    "@@last_modified": "2026-10-05 12:30:34.768284",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10074,5 +10074,8 @@
     "learningCoursesFilterTooltip": "Mostra només els cursos en què estàs aprenent",
     "searchCoursesHint": "Cerca cursos",
     "noCoursesMatchSearch": "No hi ha cursos que coincideixin amb la cerca.",
-    "searchVocabByWordOrMeaningHint": "Cerca per paraula o significat"
+    "searchVocabByWordOrMeaningHint": "Cerca per paraula o significat",
+    "ssoNetworkBlockedTitle": "Lloc d'inici de sessió inaccessible",
+    "ssoNetworkBlockedDesc": "Aquesta xarxa no ens permet connectar amb {provider} per iniciar la sessió. Sovint, les xarxes Wi-Fi d'escoles i oficines bloquegen l'accés. Pots registrar-te amb el correu electrònic o canviar a una altra xarxa i tornar-ho a provar.",
+    "ssoTryAnyway": "Prova igualment"
 }

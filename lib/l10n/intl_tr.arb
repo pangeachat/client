@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-22 12:37:06.848695",
+    "@@last_modified": "2026-10-05 12:30:49.585292",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10248,5 +10248,8 @@
     "learningCoursesFilterTooltip": "Sadece öğrendiğiniz kursları göster",
     "searchCoursesHint": "Kurs ara",
     "noCoursesMatchSearch": "Aramanızla eşleşen kurs bulunamadı.",
-    "searchVocabByWordOrMeaningHint": "Kelimeye veya anlamına göre ara"
+    "searchVocabByWordOrMeaningHint": "Kelimeye veya anlamına göre ara",
+    "ssoNetworkBlockedTitle": "Giriş sitesine ulaşılamıyor",
+    "ssoNetworkBlockedDesc": "Bu ağ, giriş yapmanız için {provider} adresine ulaşmamızı engelliyor. Okul ve ofis Wi-Fi'ları genellikle bunu engeller. Bunun yerine e-posta ile kaydolabilir veya başka bir ağa geçip tekrar deneyebilirsiniz.",
+    "ssoTryAnyway": "Yine de dene"
 }

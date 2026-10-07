@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-22 12:37:07.313100",
+    "@@last_modified": "2026-10-05 12:30:50.172888",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "صرف وہ کورسز دکھائیں جن میں آپ سیکھ رہے ہیں",
     "searchCoursesHint": "کورسز تلاش کریں",
     "noCoursesMatchSearch": "آپ کی تلاش سے کوئی کورس مماثل نہیں ہے۔",
-    "searchVocabByWordOrMeaningHint": "لفظ یا معنی کے لحاظ سے تلاش کریں"
+    "searchVocabByWordOrMeaningHint": "لفظ یا معنی کے لحاظ سے تلاش کریں",
+    "ssoNetworkBlockedTitle": "سائن ان سائٹ تک رسائی نہیں ہو سکتی",
+    "ssoNetworkBlockedDesc": "یہ نیٹ ورک ہمیں آپ کو سائن ان کرنے کے لیے {provider} تک رسائی کی اجازت نہیں دے رہا ہے۔ اسکول اور دفتر کا وائی فائی اکثر اسے بلاک کر دیتا ہے۔ آپ اس کے بجائے ای میل کے ساتھ سائن اپ کر سکتے ہیں، یا کسی دوسرے نیٹ ورک پر سوئچ کر کے دوبارہ کوشش کر سکتے ہیں۔",
+    "ssoTryAnyway": "پھر بھی کوشش کریں"
 }

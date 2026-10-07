@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-22 12:36:59.787473",
+    "@@last_modified": "2026-10-05 12:30:39.542422",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "Ցուցադրել միայն այն դասընթացները, որոնք դուք եք սովորում",
     "searchCoursesHint": "Որոնել դասընթացներ",
     "noCoursesMatchSearch": "Ձեր որոնմանը համապատասխան դասընթացներ չկան։",
-    "searchVocabByWordOrMeaningHint": "Որոնել ըստ բառի կամ իմաստի"
+    "searchVocabByWordOrMeaningHint": "Որոնել ըստ բառի կամ իմաստի",
+    "ssoNetworkBlockedTitle": "Մուտքի կայքն անհասանելի է",
+    "ssoNetworkBlockedDesc": "Այս ցանցը թույլ չի տալիս մեզ հասնել {provider}՝ ձեզ մուտք գործելու համար։ Դպրոցական և գրասենյակային Wi-Fi-ը հաճախ արգելափակում է այն։ Դուք կարող եք փոխարենը գրանցվել էլփոստով կամ անցնել այլ ցանցի և նորից փորձել։",
+    "ssoTryAnyway": "Միևնույն է՝ փորձել"
 }

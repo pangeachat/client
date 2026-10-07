@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-22 12:36:58.586247",
+    "@@last_modified": "2026-10-05 12:30:36.041255",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10035,5 +10035,8 @@
     "learningCoursesFilterTooltip": "فقط دوره‌هایی که در حال یادگیری هستید را نمایش دهید",
     "searchCoursesHint": "جستجوی دوره‌ها",
     "noCoursesMatchSearch": "هیچ دوره‌ای با جستجوی شما مطابقت ندارد.",
-    "searchVocabByWordOrMeaningHint": "جستجو بر اساس کلمه یا معنی"
+    "searchVocabByWordOrMeaningHint": "جستجو بر اساس کلمه یا معنی",
+    "ssoNetworkBlockedTitle": "سایت ورود به سیستم در دسترس نیست",
+    "ssoNetworkBlockedDesc": "این شبکه به ما اجازه نمی‌دهد برای ورود شما به {provider} دسترسی پیدا کنیم. وای‌فای مدرسه و اداره اغلب آن را مسدود می‌کنند. می‌توانید به جای آن با ایمیل ثبت‌نام کنید، یا به شبکه دیگری متصل شوید و دوباره امتحان کنید.",
+    "ssoTryAnyway": "به هر حال امتحان کن"
 }

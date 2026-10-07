@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-22 12:37:00.757894",
+    "@@last_modified": "2026-10-05 12:30:40.838513",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "ನೀವು ಕಲಿಯುತ್ತಿರುವ ಕೋರ್ಸ್‌ಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ",
     "searchCoursesHint": "ಕೋರ್ಸ್‌ಗಳನ್ನು ಹುಡುಕಿ",
     "noCoursesMatchSearch": "ನಿಮ್ಮ ಹುಡುಕಾಟಕ್ಕೆ ಯಾವುದೇ ಕೋರ್ಸ್‌ಗಳು ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ.",
-    "searchVocabByWordOrMeaningHint": "ಪದ ಅಥವಾ ಅರ್ಥದ ಮೂಲಕ ಹುಡುಕಿ"
+    "searchVocabByWordOrMeaningHint": "ಪದ ಅಥವಾ ಅರ್ಥದ ಮೂಲಕ ಹುಡುಕಿ",
+    "ssoNetworkBlockedTitle": "ಸೈನ್-ಇನ್ ಸೈಟ್ ತಲುಪಲಾಗುತ್ತಿಲ್ಲ",
+    "ssoNetworkBlockedDesc": "ನಿಮ್ಮನ್ನು ಸೈನ್ ಇನ್ ಮಾಡಲು {provider} ಅನ್ನು ತಲುಪಲು ಈ ನೆಟ್‌ವರ್ಕ್ ನಮಗೆ ಅನುಮತಿಸುತ್ತಿಲ್ಲ. ಶಾಲೆ ಮತ್ತು ಕಚೇರಿ ವೈ-ಫೈ ಸಾಮಾನ್ಯವಾಗಿ ಇದನ್ನು ನಿರ್ಬಂಧಿಸುತ್ತದೆ. ನೀವು ಬದಲಿಗೆ ಇಮೇಲ್ ಮೂಲಕ ಸೈನ್ ಅಪ್ ಮಾಡಬಹುದು, ಅಥವಾ ಇನ್ನೊಂದು ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಬದಲಾಯಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಬಹುದು.",
+    "ssoTryAnyway": "ಹೇಗಾದರೂ ಪ್ರಯತ್ನಿಸಿ"
 }

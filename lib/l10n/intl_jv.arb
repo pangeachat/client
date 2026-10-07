@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-22 12:37:00.351889",
+    "@@last_modified": "2026-10-05 12:30:40.123445",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "Tampilake mung kursus sing lagi sampeyan sinau",
     "searchCoursesHint": "Telusuri kursus",
     "noCoursesMatchSearch": "Ora ana kursus sing cocog karo telusuran sampeyan.",
-    "searchVocabByWordOrMeaningHint": "Goleki miturut tembung utawa tegese"
+    "searchVocabByWordOrMeaningHint": "Goleki miturut tembung utawa tegese",
+    "ssoNetworkBlockedTitle": "Situs mlebu ora bisa diakses",
+    "ssoNetworkBlockedDesc": "Jaringan iki ora ngidini kita ngakses {provider} kanggo mlebu. Wi-Fi sekolah lan kantor asring mblokir. Sampeyan bisa ndhaptar nganggo email, utawa ngganti jaringan liyane banjur coba maneh.",
+    "ssoTryAnyway": "Coba wae"
 }

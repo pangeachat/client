@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-22 12:37:05.880565",
+    "@@last_modified": "2026-10-05 12:30:48.350885",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "Shfaq vetëm kurset ku po mësoni",
     "searchCoursesHint": "Kërko kurse",
     "noCoursesMatchSearch": "Asnjë kurs nuk përputhet me kërkimin tuaj.",
-    "searchVocabByWordOrMeaningHint": "Kërko sipas fjalës ose kuptimit"
+    "searchVocabByWordOrMeaningHint": "Kërko sipas fjalës ose kuptimit",
+    "ssoNetworkBlockedTitle": "Sajti i hyrjes i paarritshëm",
+    "ssoNetworkBlockedDesc": "Ky rrjet nuk na lejon të arrijmë te {provider} për t'u kyçur. Wi-Fi i shkollës dhe zyrës shpesh e bllokojnë atë. Mund të regjistroheni me email, ose të kaloni në një rrjet tjetër dhe të provoni përsëri.",
+    "ssoTryAnyway": "Provo gjithsesi"
 }

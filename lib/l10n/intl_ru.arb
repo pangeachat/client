@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-22 12:37:04.643687",
+    "@@last_modified": "2026-10-05 12:30:46.698357",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10919,5 +10919,8 @@
     "learningCoursesFilterTooltip": "Показать только курсы, которые вы изучаете",
     "searchCoursesHint": "Поиск курсов",
     "noCoursesMatchSearch": "По вашему запросу курсы не найдены.",
-    "searchVocabByWordOrMeaningHint": "Поиск по слову или значению"
+    "searchVocabByWordOrMeaningHint": "Поиск по слову или значению",
+    "ssoNetworkBlockedTitle": "Сайт входа недоступен",
+    "ssoNetworkBlockedDesc": "Эта сеть не позволяет нам связаться с {provider} для входа. Школьный и офисный Wi-Fi часто блокируют его. Вы можете зарегистрироваться по электронной почте или переключиться на другую сеть и попробовать снова.",
+    "ssoTryAnyway": "Всё равно попробовать"
 }

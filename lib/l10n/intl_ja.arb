@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-22 12:37:02.069756",
+    "@@last_modified": "2026-10-05 12:30:39.830277",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10716,5 +10716,8 @@
     "learningCoursesFilterTooltip": "学習中のコースのみを表示",
     "searchCoursesHint": "コースを検索",
     "noCoursesMatchSearch": "検索条件に一致するコースはありません。",
-    "searchVocabByWordOrMeaningHint": "単語または意味で検索"
+    "searchVocabByWordOrMeaningHint": "単語または意味で検索",
+    "ssoNetworkBlockedTitle": "サインインサイトに接続できません",
+    "ssoNetworkBlockedDesc": "このネットワークでは、サインインのために{provider}に接続できません。学校や職場のWi-Fiではよくブロックされます。代わりにメールで登録するか、別のネットワークに切り替えて再試行してください。",
+    "ssoTryAnyway": "とにかく試す"
 }

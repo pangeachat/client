@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-22 12:37:05.617144",
+    "@@last_modified": "2026-10-05 12:30:47.151449",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2351,5 +2351,8 @@
     "learningCoursesFilterTooltip": "ඔබ ඉගෙන ගන්නා පාඨමාලා පමණක් පෙන්වන්න",
     "searchCoursesHint": "පාඨමාලා සොයන්න",
     "noCoursesMatchSearch": "ඔබේ සෙවුමට ගැලපෙන පාඨමාලා නොමැත.",
-    "searchVocabByWordOrMeaningHint": "වචනයෙන් හෝ අර්ථයෙන් සොයන්න"
+    "searchVocabByWordOrMeaningHint": "වචනයෙන් හෝ අර්ථයෙන් සොයන්න",
+    "ssoNetworkBlockedTitle": "පිවිසුම් අඩවියට ළඟා විය නොහැක",
+    "ssoNetworkBlockedDesc": "ඔබව පුරනය කිරීමට {provider} වෙත ළඟා වීමට මෙම ජාලය අපට ඉඩ නොදේ. පාසල් සහ කාර්යාල Wi-Fi බොහෝ විට එය අවහිර කරයි. ඔබට ඒ වෙනුවට විද්‍යුත් තැපෑලෙන් ලියාපදිංචි විය හැක, නැතහොත් වෙනත් ජාලයකට මාරු වී නැවත උත්සාහ කරන්න.",
+    "ssoTryAnyway": "කෙසේ හෝ උත්සාහ කරන්න"
 }
