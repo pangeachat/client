@@ -527,13 +527,11 @@ class CallSession extends ChangeNotifier {
           // `wasCarrier`, not `carriedOn`, precisely so this line cannot be
           // misread as the ownership arbiter's unrelated `carriedOn`: the value
           // is `capture.wasCarryingBeforeLastStop`, the recorder's carrier fact.
-          publishCallAudio: ({required String? callKey}) {
-            audioRecorder.halfLinks = halfLinks.value;
-            return audioRecorder.finish(
-              wasCarrier: capture.wasCarryingBeforeLastStop,
-              callKey: callKey,
-            );
-          },
+          publishCallAudio: ({required String? callKey}) =>
+              audioRecorder.finish(
+                wasCarrier: capture.wasCarryingBeforeLastStop,
+                callKey: callKey,
+              ),
           // Gated on the same flag as the recorder's transcription above: when
           // ON, CallRecord prefers this device's whole-recording segments over
           // the live-chunk ones and publishes the audio half FIRST so they are
@@ -1392,6 +1390,11 @@ class CallSession extends ChangeNotifier {
 
             final identity = _callIdentity;
             _halfLinks.value ??= await _resolveHalfLinks(identity.key);
+            // Handed to the recorder BEFORE the record finishes: finishing
+            // first makes the recording durable (an app kill resumes it from
+            // that copy), so links assigned any later would be missing from
+            // the half a resume sends.
+            _audioRecorder?.halfLinks = _halfLinks.value;
             // Awaited rather than returned so the merge kick below runs after
             // this device's own half is finished + posted. `_record.finish`
             // returns `Future<void>`, so this preserves the callback's prior

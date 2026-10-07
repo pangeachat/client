@@ -213,6 +213,29 @@ class _FakeRoster extends CallRoster {
   bool get roomConnected => connected;
 }
 
+/// Notes what the audio recorder held at the moment the record began to
+/// finish -- the record makes the recording durable first thing.
+class _LinkSpyRecord extends _SpyRecord {
+  ({String? continuedFrom, String? handedOverTo})? Function()? linksNow;
+  final linksAtFinish = <({String? continuedFrom, String? handedOverTo})?>[];
+
+  @override
+  Future<void> finish({
+    required Duration duration,
+    required bool video,
+    bool captureRefused = false,
+    bool answered = true,
+    bool declined = false,
+    bool writeTimelineEvent = true,
+    bool mattered = true,
+    String? anchorEventId,
+    String? callerId,
+    String? callKey,
+  }) async {
+    linksAtFinish.add(linksNow?.call());
+  }
+}
+
 /// Records what the session asked the timeline for. Nothing in the suite
 /// checked that a finished call writes its card at all -- the record's own
 /// tests cover HOW a card is written, not WHETHER the session writes one --
@@ -2248,6 +2271,51 @@ void main() {
       // Credit is written by the same finish as the half; with no words
       // transcribed here there are no uses to credit, so the half is what
       // shows the finish ran.
+      session.dispose();
+      await pumpEventQueue();
+    });
+
+    test('the recorder holds the links BEFORE the record finishes, so the '
+        'durable copy it makes first carries them', () async {
+      final client = await _bareClient();
+      final room = _RecordingRoom(id: '!r:server', client: client);
+      final media = _FakeMedia();
+      final record = _LinkSpyRecord();
+      final session = CallSession.start(
+        room: room,
+        video: false,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        notificationEventId: r'$ring',
+        callerMembershipEventId: r'$caller-membership',
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+        recordOverride: record,
+      );
+      record.linksNow = () => session.audioHalfLinksForTest;
+      media.anchorClocksTo((secondsMs: myJoin, ms: 0));
+      await pumpEventQueue();
+      final roster = media.fakeRoster!;
+      roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV'};
+      roster.recompute();
+      await pumpEventQueue();
+      final sib = '${client.userID}:SIBLINGDEV';
+      roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV', sib};
+      roster.attributes = {
+        sib: {CallRoster.chosenAttribute: 'yes'},
+      };
+      roster.recompute();
+      await pumpEventQueue();
+      await pumpEventQueue();
+
+      expect(record.linksAtFinish, [
+        (continuedFrom: null, handedOverTo: 'SIBLINGDEV'),
+      ]);
       session.dispose();
       await pumpEventQueue();
     });
