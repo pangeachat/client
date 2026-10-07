@@ -1,6 +1,6 @@
 ---
 applyTo: "lib/features/activity_sessions/**,lib/features/quests/**,lib/routes/analytics/activities/**,lib/routes/chat/activity_sessions/**,lib/routes/chat/chat_details/**"
-description: "Client design for activities: thin cards, the start page's room-driven state, navigation, and the media carousel (video next)."
+description: "Client design for activities: thin cards, the start page's room-driven state, navigation, the media carousel (video next), and how target vocab is matched in messages."
 ---
 
 # Activity System
@@ -28,6 +28,14 @@ The activity's start page doesn't store its own state; it reads it from the room
 When a session counts as ended, and how the bot makes its summary, are the org doc's call ([activity-summary.instructions.md](../../../.github/.github/instructions/activity-summary.instructions.md)). The client shows the summary from the room state the bot writes. A viewer whose first language differs from the summary's sees it translated. The loading placeholder stays up while the translation is fetched, and if the translation fails, the viewer sees the summary in its original language. The client writes the room's analytics when no client has yet, and it sends a learner's retry or feedback as a request the bot serves. It also keeps a short-lived local cache of the room's analytics, so the page doesn't re-fetch on every visit.
 
 The page's **layout and gestures** — the mobile grow-before-scroll sheet, the header and info row, the CTA row, and how it owns its container over the nav rail and analytics bar — are their own concern: [activity-start-page.instructions.md](activity-start-page.instructions.md).
+
+## Target vocab in the conversation
+
+An activity's suggested vocab is a list of entries in the target language. An entry is usually one word, but the generator also emits set phrases ("hace sol", "cómo te llamas"), and a curriculum's vocab list keeps its phrases whole, so a phrase is one entry everywhere the client shows vocab: the chips on the start page and in the summary, the gold highlight in messages, and the used state.
+
+One rule, [`ActivityVocabMatcher`](../../lib/features/activity_sessions/activity_vocab_matcher.dart), decides where an entry appears in a message. A single-word entry matches a token by lemma, so "llueve" counts for "llover". A phrase matches a run of consecutive tokens where each word equals the token's text or its lemma, case-insensitively, so "hace sol" matches "Hace sol" and "ir de compras" matches "voy de compras"; punctuation between the words breaks the run. Every token in a matched run gets the gold highlight, in typed messages and spoken transcripts alike, and the same matches turn the chips gold as used, so the highlight and the chips can never disagree. The match runs once per message as it renders, so it costs nothing a learner can notice.
+
+Analytics stays word-grained: a phrase in a message writes only its single-word constructs, as before, so the used state comes from the room's messages, not from the learner's analytics. A phrase entry is tagged `phrase` where a word carries its part of speech; the client treats that tag as a content word, so the chip gets the new-word underline and a tap collects the phrase as its own construct, the same as tapping a noun.
 
 ## The goal header
 
