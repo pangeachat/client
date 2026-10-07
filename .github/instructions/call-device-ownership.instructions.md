@@ -258,6 +258,10 @@ The chosen device's own recording carries a gap where it was muted. That is alre
 | A participating sibling is misread as non-participating, because its first `pangea_chosen` write is slower than a presence tick | This device shows the older-version prompt and offers no claim. The sibling, whose READS are unaffected, still resolves normally once the learner acts. | A message naming the wrong cause, and the loss of the one-tap resolution. Never a duplicate, which is why the blur is read in this direction. |
 | A device sees an echo of a sibling that already left | It mutes and, if the echo persists past a presence tick, prompts. | Up to two seconds of dropout for an echo shorter than a tick; a spurious prompt for one longer. The prompt withdraws itself when the sibling goes, and the give-up timer with it, because every rule here is re-read rather than remembered. |
 
+## How a device that joins learns which call it is in
+
+A device that neither rang nor was rung has no ring to learn the call's key from. Every device in a call records the key in its account's private data for the room, and records it again after a rejoin. A joining device trusts that record only while the device that wrote it is in the call beside it and its membership is still current. A rejoining device trusts its own record written with the membership it returns to. Otherwise it takes the latest ring whose call is still being held. With neither, it has no key, as before.
+
 ## What this changes elsewhere
 
 1. **The parent doc's "one device per account records, elected among that account's own devices."** Refined: one device per account is unmuted in the call, and that device records. The election is not retired — it still runs, with one candidate — and removing it is not this change's job.

@@ -135,9 +135,7 @@ armed, and the other side hangs up on a live call seconds later. The call's
 identity and the membership currently carrying it are two different things, and
 only the first survives a rejoin.
 
-The clock a rejoined session shows continues the call rather than restarting. The
-two sides read their own local starts, so they agree to within however differently
-the SFU delivered one roster change, not exactly.
+The clock both people watch is the call's, not each device's. When both people are first in the call, one device writes that moment once, on the SFU's clock: the device whose own membership is the call's key, or failing that a device on the other account after half a minute. Every device converts that one moment through its own measured offset from the SFU, so a peer, a second device and a rejoined device all read the same elapsed time without comparing two device clocks. Until it is read, a device forms the same moment from the join stamps it can see, and only when it cannot does it count from first seeing the other person.
 
 ## What the conversation records
 
