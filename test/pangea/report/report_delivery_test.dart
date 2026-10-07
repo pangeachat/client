@@ -423,6 +423,24 @@ void main() {
       expect(failing.pending(userId).map((r) => r.reportId), ['old-id']);
     });
 
+    test('a copy that could be neither moved nor replaced goes once its new '
+        'id is recorded', () async {
+      final failing = _MarkAndRememberFail(
+        await SharedPreferences.getInstance(),
+      );
+      await store.remember(userId, submission('old-id'));
+
+      await replayPendingReports(
+        store: failing,
+        userId: userId,
+        attempt: (report) async => report.reportId == 'old-id'
+            ? CaptureResult.conflict
+            : CaptureResult.recorded,
+      );
+
+      expect(failing.pending(userId), isEmpty);
+    });
+
     test('a write the platform refused is written again, even though the '
         'platform reports it back', () async {
       final platform = _FlakyPlatformStore(keepRefusedValues: true);

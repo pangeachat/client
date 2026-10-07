@@ -171,12 +171,15 @@ Future<void> replayPendingReports({
     }
   }
 
-  // Each entry: the report, and whether it was already moved this run.
-  final queue = [
-    for (final report in await store.pendingFromDisk(userId)) (report, false),
+  // Each entry: the report, whether it was already moved this run, and the
+  // refused id of a copy that could be neither moved nor replaced, which
+  // goes once the report is recorded.
+  final queue = <(ReportSubmission, bool, String?)>[
+    for (final report in await store.pendingFromDisk(userId))
+      (report, false, null),
   ];
   while (queue.isNotEmpty) {
-    final (report, rotated) = queue.removeAt(0);
+    final (report, rotated, unmoved) = queue.removeAt(0);
     // Checked at sending, not from the snapshot above: while replay waited on
     // an earlier report, a foreground send may have recorded this one or
     // moved it off a refused id.
@@ -195,18 +198,24 @@ Future<void> replayPendingReports({
       // the copy under the refused id dropped — unless the new id cannot be
       // stored either: losing the report is worse than resending a refused
       // id, which only meets the same 409 and moves to the same successor.
-      if (!moved &&
-          await guarded(() => store.remember(userId, fresh), 'remember')) {
-        await guarded(() => store.forget(userId, report.reportId), 'forget');
+      var stillUnmoved = unmoved;
+      if (!moved) {
+        if (await guarded(() => store.remember(userId, fresh), 'remember')) {
+          await guarded(() => store.forget(userId, report.reportId), 'forget');
+        } else {
+          stillUnmoved = report.reportId;
+        }
       }
       // Sent under the new id now. A report already moved once this run is
       // sent again only on the next start, so a run cannot loop.
-      if (!rotated) queue.add((fresh, true));
+      if (!rotated) queue.add((fresh, true, stillUnmoved));
       continue;
     }
     // Recorded. A failed forget means a resend next start, which is harmless:
     // the module stores a report id once.
-    await guarded(() => store.forget(userId, report.reportId), 'forget');
+    for (final id in [report.reportId, ?unmoved]) {
+      await guarded(() => store.forget(userId, id), 'forget');
+    }
   }
 }
 
