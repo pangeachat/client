@@ -181,8 +181,10 @@ void main() {
             ? CaptureResult.recorded
             : captureResults.removeAt(0);
       },
-      remember: (submission) async => calls.add('remember'),
-      forget: (submission) async => calls.add('forget'),
+      remember: (submission) async =>
+          calls.add('remember:${submission.reportId}'),
+      forget: (submission) async => calls.add('forget:${submission.reportId}'),
+      newReportId: () => 'fresh-report-id',
       offerRetry: () async {
         calls.add('offerRetry');
         return retryAnswers.removeAt(0);
@@ -201,7 +203,8 @@ void main() {
         sentContents.add(content);
       },
       pointerBody: l10n.reportPointerMessage,
-      recordNonOffensive: (_) => calls.add('sentry'),
+      recordNonOffensive: (recorded) =>
+          calls.add('sentry:${recorded.reportId}'),
     );
 
     test('an offensive report is captured before any teacher lookup', () async {
@@ -211,9 +214,9 @@ void main() {
 
       expect(outcome, ReportOutcome.captured);
       expect(calls, [
-        'remember',
+        'remember:${report.reportId}',
         'capture',
-        'forget',
+        'forget:${report.reportId}',
         'confirm',
         'lookup',
         'select',
@@ -228,7 +231,13 @@ void main() {
 
       expect(outcome, ReportOutcome.captured);
       expect(captured, [report]);
-      expect(calls, ['remember', 'capture', 'forget', 'confirm', 'lookup']);
+      expect(calls, [
+        'remember:${report.reportId}',
+        'capture',
+        'forget:${report.reportId}',
+        'confirm',
+        'lookup',
+      ]);
     });
 
     test(
@@ -238,7 +247,13 @@ void main() {
 
         expect(outcome, ReportOutcome.captured);
         expect(captured, [report]);
-        expect(calls, ['remember', 'capture', 'forget', 'confirm', 'sentry']);
+        expect(calls, [
+          'remember:${report.reportId}',
+          'capture',
+          'forget:${report.reportId}',
+          'confirm',
+          'sentry:${report.reportId}',
+        ]);
       },
     );
 
@@ -263,17 +278,17 @@ void main() {
         jsonEncode(report.toJson()),
       });
       expect(calls, [
-        'remember',
+        'remember:${report.reportId}',
         'capture',
         'offerRetry',
-        'remember',
+        'remember:${report.reportId}',
         'capture',
         'offerRetry',
-        'remember',
+        'remember:${report.reportId}',
         'capture',
-        'forget',
+        'forget:${report.reportId}',
         'confirm',
-        'sentry',
+        'sentry:${report.reportId}',
       ]);
     });
 
@@ -289,9 +304,61 @@ void main() {
         expect(outcome, ReportOutcome.notCaptured);
         expect(
           calls,
-          ['remember', 'capture', 'offerRetry'],
+          ['remember:${report.reportId}', 'capture', 'offerRetry'],
           reason: 'the stored copy must stay for the replay on the next start',
         );
+      },
+    );
+
+    test(
+      'a conflicting id is dropped and the report goes on under a new one',
+      () async {
+        captureResults = [CaptureResult.conflict, CaptureResult.recorded];
+        retryAnswers = [true];
+
+        final outcome = await flow().run(report, offensive: false);
+
+        expect(outcome, ReportOutcome.captured);
+        expect(captured.map((s) => s.reportId), [
+          report.reportId,
+          'fresh-report-id',
+        ]);
+        expect(captured.last.toJson()..remove('report_id'), {
+          'room_id': report.roomId,
+          'event_id': report.eventId,
+          'reason': report.reason,
+        });
+        expect(calls, [
+          'remember:${report.reportId}',
+          'capture',
+          'forget:${report.reportId}',
+          'remember:fresh-report-id',
+          'offerRetry',
+          'remember:fresh-report-id',
+          'capture',
+          'forget:fresh-report-id',
+          'confirm',
+          'sentry:fresh-report-id',
+        ]);
+      },
+    );
+
+    test(
+      'after a conflict, declining keeps only the fresh submission',
+      () async {
+        captureResults = [CaptureResult.conflict];
+        retryAnswers = [false];
+
+        final outcome = await flow().run(report, offensive: false);
+
+        expect(outcome, ReportOutcome.notCaptured);
+        expect(calls, [
+          'remember:${report.reportId}',
+          'capture',
+          'forget:${report.reportId}',
+          'remember:fresh-report-id',
+          'offerRetry',
+        ]);
       },
     );
 
@@ -302,8 +369,11 @@ void main() {
       final outcome = await flow().run(report, offensive: false);
 
       expect(outcome, ReportOutcome.notCaptured);
-      expect(calls, isNot(contains('forget')));
-      expect(calls.where((c) => c == 'remember'), hasLength(2));
+      expect(calls, isNot(contains('forget:${report.reportId}')));
+      expect(
+        calls.where((c) => c == 'remember:${report.reportId}'),
+        hasLength(2),
+      );
     });
 
     test(

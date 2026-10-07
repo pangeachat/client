@@ -84,7 +84,8 @@ class PendingReportStore {
 }
 
 /// Sends every report [userId] left unconfirmed, each with its original
-/// report id, and forgets the ones the module confirms. One that fails again
+/// report id, and forgets the ones the module confirms or reports as a
+/// conflicting id. One that fails again
 /// stays for the next start; its failure is already in Sentry. A failure to
 /// forget one report is reported and does not stop the others.
 Future<void> replayPendingReports({
@@ -93,7 +94,11 @@ Future<void> replayPendingReports({
   required Future<CaptureResult> Function(ReportSubmission report) attempt,
 }) async {
   for (final report in await store.pendingFromDisk(userId)) {
-    if (await attempt(report) != CaptureResult.recorded) continue;
+    // A conflict means this id belongs to another report: it can never be
+    // recorded under it, so it is dropped rather than replayed forever. There
+    // is no reporter here to restart it under a new id.
+    final result = await attempt(report);
+    if (result == CaptureResult.failed) continue;
     try {
       await store.forget(userId, report.reportId);
     } catch (e, s) {

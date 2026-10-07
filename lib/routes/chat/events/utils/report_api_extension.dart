@@ -36,6 +36,14 @@ class ReportSubmission {
         reason: json['reason'] as String,
       );
 
+  /// The same report as a fresh submission under [reportId].
+  ReportSubmission withReportId(String reportId) => ReportSubmission(
+    reportId: reportId,
+    roomId: roomId,
+    eventId: eventId,
+    reason: reason,
+  );
+
   Map<String, String> toJson() => {
     'report_id': reportId,
     'room_id': roomId,
@@ -171,9 +179,15 @@ enum CaptureResult {
   /// The module answered 200 with this report's incident id.
   recorded,
 
+  /// A 409: this report id is already the module's for a different reporter
+  /// or event. It can never be recorded under this id, so the stored copy is
+  /// dropped and the report starts again under a new id. A genuine retry
+  /// never sees this: it sends the same id, event and reporter.
+  conflict,
+
   /// Anything else. Even a refusal is kept and resent: a 404 is also what a
-  /// homeserver without the module yet answers, so no failure is taken as
-  /// final.
+  /// homeserver without the module yet answers, so no other failure is taken
+  /// as final.
   failed,
 }
 
@@ -197,6 +211,8 @@ Future<CaptureResult> attemptReportCapture(
         'event_id': report.eventId,
       },
     );
-    return CaptureResult.failed;
+    return PangeaHttpException.statusCodeOf(e) == 409
+        ? CaptureResult.conflict
+        : CaptureResult.failed;
   }
 }

@@ -111,6 +111,31 @@ void main() {
       expect(store.pending(userId).map((r) => r.reportId), ['id-503']);
     });
 
+    test('a conflicting id is dropped and never replayed again', () async {
+      await store.remember(userId, submission('id-409'));
+
+      await replayPendingReports(
+        store: store,
+        userId: userId,
+        attempt: serverAnswering(409),
+      );
+      expect(store.pending(userId), isEmpty);
+
+      await replayPendingReports(
+        store: store,
+        userId: userId,
+        attempt: serverAnswering(200),
+      );
+      expect(sentBodies, hasLength(1));
+    });
+
+    test('a 409 is a conflict, not a failure and not a success', () async {
+      expect(
+        await serverAnswering(409)(submission('id-409')),
+        CaptureResult.conflict,
+      );
+    });
+
     test(
       'a refused report is kept too: only a confirmation forgets it',
       () async {

@@ -99,8 +99,12 @@ class ReportFlow<T> {
   /// Idempotent per report id.
   final Future<void> Function(ReportSubmission report) remember;
 
-  /// Drops the stored copy once the module has recorded the report.
+  /// Drops the stored copy once the module has recorded the report, or once
+  /// its id turns out to belong to another report.
   final Future<void> Function(ReportSubmission report) forget;
+
+  /// A new report id, for a fresh submission after a [CaptureResult.conflict].
+  final String Function() newReportId;
 
   /// Asks the reporter whether to try again after [capture] failed.
   final Future<bool> Function() offerRetry;
@@ -136,6 +140,7 @@ class ReportFlow<T> {
     required this.capture,
     required this.remember,
     required this.forget,
+    required this.newReportId,
     required this.offerRetry,
     required this.confirmCaptured,
     required this.lookupCourseAdmins,
@@ -149,11 +154,12 @@ class ReportFlow<T> {
     ReportSubmission report, {
     required bool offensive,
   }) async {
-    if (!await captureWithRetry(report)) return ReportOutcome.notCaptured;
+    final recorded = await captureWithRetry(report);
+    if (recorded == null) return ReportOutcome.notCaptured;
     confirmCaptured();
 
     if (!offensive) {
-      recordNonOffensive(report);
+      recordNonOffensive(recorded);
       return ReportOutcome.captured;
     }
 
@@ -171,20 +177,35 @@ class ReportFlow<T> {
     return ReportOutcome.captured;
   }
 
-  /// Sends [report] until the module records it or the reporter gives up.
-  /// Every attempt carries the same [ReportSubmission.reportId].
+  /// Sends [report] until the module records it or the reporter gives up,
+  /// and returns the submission the module recorded, or null.
+  ///
+  /// Every retry carries the same [ReportSubmission.reportId], with one
+  /// exception: a [CaptureResult.conflict] means that id is already the
+  /// module's for another report, so it can never be recorded under it. The
+  /// old id is forgotten — never replayed — and the report continues as a
+  /// fresh submission under a new id from [newReportId].
   ///
   /// The report is stored before every attempt and forgotten only once the
   /// module has recorded it, so a report the reporter gives up on — or that
   /// the app is killed in the middle of — is resent on the next start.
-  Future<bool> captureWithRetry(ReportSubmission report) async {
+  Future<ReportSubmission?> captureWithRetry(ReportSubmission report) async {
+    var current = report;
     while (true) {
-      await remember(report);
-      if (await capture(report) == CaptureResult.recorded) {
-        await forget(report);
-        return true;
+      await remember(current);
+      final result = await capture(current);
+      if (result == CaptureResult.recorded) {
+        await forget(current);
+        return current;
       }
-      if (!await offerRetry()) return false;
+      if (result == CaptureResult.conflict) {
+        await forget(current);
+        current = current.withReportId(newReportId());
+        // Stored now, so the fresh submission survives the reporter
+        // declining the retry below.
+        await remember(current);
+      }
+      if (!await offerRetry()) return null;
     }
   }
 }

@@ -187,6 +187,7 @@ Future<ReportOutcome?> submitReport({
       report,
       'forget',
     ),
+    newReportId: () => const Uuid().v4(),
     offerRetry: () => _offerReportRetry(uiContext, report),
     confirmCaptured: () {
       if (messenger == null || !messenger.mounted) return;
