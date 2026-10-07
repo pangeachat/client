@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-05 13:57:51.670262",
+    "@@last_modified": "2026-10-06 16:17:30.803063",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10065,5 +10065,8 @@
     "ssoTryAnyway": "Mimo to spróbuj",
     "publicCoursesFilterTooltip": "Pokaż tylko kursy, do których każdy może dołączyć",
     "restrictedCoursesFilterTooltip": "Pokaż tylko kursy, do których musisz poprosić o dołączenie",
-    "viewImageLabel": "Wyświetl obraz"
+    "viewImageLabel": "Wyświetl obraz",
+    "activityLaunchFindingCourses": "Wyszukiwanie kursów…",
+    "activityLaunchCreatingRoom": "Tworzenie aktywności…",
+    "activityLaunchOpeningRoom": "Otwieranie aktywności…"
 }

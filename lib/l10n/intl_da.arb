@@ -1334,7 +1334,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-05 13:57:45.998023",
+    "@@last_modified": "2026-10-06 16:17:24.558624",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10900,5 +10900,8 @@
     "ssoTryAnyway": "Prøv alligevel",
     "publicCoursesFilterTooltip": "Vis kun kurser, alle kan deltage i",
     "restrictedCoursesFilterTooltip": "Vis kun kurser, du skal anmode om at deltage i",
-    "viewImageLabel": "Se billede"
+    "viewImageLabel": "Se billede",
+    "activityLaunchFindingCourses": "Finder dine kurser…",
+    "activityLaunchCreatingRoom": "Opretter din aktivitet…",
+    "activityLaunchOpeningRoom": "Åbner din aktivitet…"
 }

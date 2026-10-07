@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-05 13:57:54.898277",
+    "@@last_modified": "2026-10-06 16:17:34.080521",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "פּרוּווט סײַ ווי",
     "publicCoursesFilterTooltip": "ווייַזן בלויז קורסן וואָס יעדער איינער קען זיך אייַנשליסן",
     "restrictedCoursesFilterTooltip": "ווייַזן בלויז קורסן וואָס איר מוזט בעטן זיך אייַנצושליסן",
-    "viewImageLabel": "זען בילד"
+    "viewImageLabel": "זען בילד",
+    "activityLaunchFindingCourses": "געפֿינען דיין קורסן…",
+    "activityLaunchCreatingRoom": "שאַפֿן דיין אַקטיוויטעט…",
+    "activityLaunchOpeningRoom": "עפֿענען דיין אַקטיוויטעט…"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-05 13:57:49.651102",
+    "@@last_modified": "2026-10-06 16:17:29.175959",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "Trotzdeem probéieren",
     "publicCoursesFilterTooltip": "Nëmme Coursë weisen, bei deene jidderee matmaache kann",
     "restrictedCoursesFilterTooltip": "Nëmme Coursë weisen, bei deene s du muss froen, fir matzemaachen",
-    "viewImageLabel": "Bild ukucken"
+    "viewImageLabel": "Bild ukucken",
+    "activityLaunchFindingCourses": "Sichen Är Coursen…",
+    "activityLaunchCreatingRoom": "Erstelle Är Aktivitéit…",
+    "activityLaunchOpeningRoom": "Maachen Är Aktivitéit op…"
 }

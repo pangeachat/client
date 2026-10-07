@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-05 13:57:47.466858",
+    "@@last_modified": "2026-10-06 16:17:26.523738",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "Gwada ko yaya",
     "publicCoursesFilterTooltip": "Nuna darussa kawai da kowa zai iya shiga",
     "restrictedCoursesFilterTooltip": "Nuna darussa kawai da dole ne ka nemi izinin shiga",
-    "viewImageLabel": "Duba hoto"
+    "viewImageLabel": "Duba hoto",
+    "activityLaunchFindingCourses": "Neman darussanka…",
+    "activityLaunchCreatingRoom": "Ƙirƙirar ayyukanka…",
+    "activityLaunchOpeningRoom": "Buɗe ayyukanka…"
 }

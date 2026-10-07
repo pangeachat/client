@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:54.461613",
+    "@@last_modified": "2026-10-06 16:17:32.743625",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10498,5 +10498,8 @@
     "ssoTryAnyway": "Försök ändå",
     "publicCoursesFilterTooltip": "Visa endast kurser som alla kan gå med i",
     "restrictedCoursesFilterTooltip": "Visa endast kurser du måste be om att få gå med i",
-    "viewImageLabel": "Visa bild"
+    "viewImageLabel": "Visa bild",
+    "activityLaunchFindingCourses": "Hittar dina kurser…",
+    "activityLaunchCreatingRoom": "Skapar din aktivitet…",
+    "activityLaunchOpeningRoom": "Öppnar din aktivitet…"
 }

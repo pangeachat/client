@@ -4258,6 +4258,9 @@
     "letsGo": "Let's go",
     "chooseRole": "Choose a role!",
     "chooseRoleToParticipate": "Choose a role to participate!",
+    "activityLaunchFindingCourses": "Finding your courses…",
+    "activityLaunchCreatingRoom": "Creating your activity…",
+    "activityLaunchOpeningRoom": "Opening your activity…",
     "waitingToFillRole": "Waiting to fill {num} roles...",
     "@waitingToFillRole": {
         "type": "int",

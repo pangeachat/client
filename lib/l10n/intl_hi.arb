@@ -3093,7 +3093,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-10-05 13:57:47.729205",
+    "@@last_modified": "2026-10-06 16:17:26.933578",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10612,5 +10612,8 @@
     "ssoTryAnyway": "फिर भी कोशिश करें",
     "publicCoursesFilterTooltip": "केवल वे कोर्स दिखाएं जिनमें कोई भी शामिल हो सकता है",
     "restrictedCoursesFilterTooltip": "केवल वे कोर्स दिखाएं जिनमें शामिल होने के लिए आपको पूछना होगा",
-    "viewImageLabel": "छवि देखें"
+    "viewImageLabel": "छवि देखें",
+    "activityLaunchFindingCourses": "आपके पाठ्यक्रम ढूँढे जा रहे हैं…",
+    "activityLaunchCreatingRoom": "आपकी गतिविधि बनाई जा रही है…",
+    "activityLaunchOpeningRoom": "आपकी गतिविधि खोली जा रही है…"
 }

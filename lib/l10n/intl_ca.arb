@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:45.751920",
+    "@@last_modified": "2026-10-06 16:17:24.439589",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10107,5 +10107,8 @@
     "ssoTryAnyway": "Prova igualment",
     "publicCoursesFilterTooltip": "Mostra només els cursos als quals qualsevol es pot unir",
     "restrictedCoursesFilterTooltip": "Mostra només els cursos als quals has de demanar unió",
-    "viewImageLabel": "Veure imatge"
+    "viewImageLabel": "Veure imatge",
+    "activityLaunchFindingCourses": "Trobant els teus cursos…",
+    "activityLaunchCreatingRoom": "Creant la teva activitat…",
+    "activityLaunchOpeningRoom": "Obrint la teva activitat…"
 }

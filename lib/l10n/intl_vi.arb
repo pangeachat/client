@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:54.628801",
+    "@@last_modified": "2026-10-06 16:17:33.758872",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7272,5 +7272,8 @@
     "ssoTryAnyway": "Vẫn thử",
     "publicCoursesFilterTooltip": "Chỉ hiển thị các khóa học mà bất kỳ ai cũng có thể tham gia",
     "restrictedCoursesFilterTooltip": "Chỉ hiển thị các khóa học bạn phải yêu cầu để tham gia",
-    "viewImageLabel": "Xem hình ảnh"
+    "viewImageLabel": "Xem hình ảnh",
+    "activityLaunchFindingCourses": "Đang tìm khóa học của bạn…",
+    "activityLaunchCreatingRoom": "Đang tạo hoạt động của bạn…",
+    "activityLaunchOpeningRoom": "Đang mở hoạt động của bạn…"
 }

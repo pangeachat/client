@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-05 13:57:49.551360",
+    "@@last_modified": "2026-10-06 16:17:28.542683",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "Tray ɛnitin",
     "publicCoursesFilterTooltip": "Sho onli kɔsis we ɛnibɔdi kɛn jɔyn",
     "restrictedCoursesFilterTooltip": "Sho onli kɔsis we yu fɔ aks fɔ jɔyn",
-    "viewImageLabel": "Luk pikcho"
+    "viewImageLabel": "Luk pikcho",
+    "activityLaunchFindingCourses": "De find yu kɔsis…",
+    "activityLaunchCreatingRoom": "De mek yu aktiviti…",
+    "activityLaunchOpeningRoom": "De ɔpen yu aktiviti…"
 }

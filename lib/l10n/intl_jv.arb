@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-05 13:57:48.896944",
+    "@@last_modified": "2026-10-06 16:17:27.980030",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "Coba wae",
     "publicCoursesFilterTooltip": "Tampilake mung kursus sing sapa wae bisa melu",
     "restrictedCoursesFilterTooltip": "Tampilake mung kursus sing kudu njaluk ijin kanggo melu",
-    "viewImageLabel": "Deleng gambar"
+    "viewImageLabel": "Deleng gambar",
+    "activityLaunchFindingCourses": "Nggoleki kursusmu…",
+    "activityLaunchCreatingRoom": "Nggawe aktivitasmu…",
+    "activityLaunchOpeningRoom": "Mbukak aktivitasmu…"
 }

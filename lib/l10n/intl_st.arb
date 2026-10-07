@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-05 13:57:53.534835",
+    "@@last_modified": "2026-10-06 16:17:32.342892",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "Leka leha ho le joalo",
     "publicCoursesFilterTooltip": "Bontsha lithuto tseo mang kapa mang a ka kenelang ho tsona feela",
     "restrictedCoursesFilterTooltip": "Bontsha lithuto tseo o tlamehang ho kopa ho kenela ho tsona feela",
-    "viewImageLabel": "Bona setshwantsho"
+    "viewImageLabel": "Bona setshwantsho",
+    "activityLaunchFindingCourses": "Ke batla dithuto tsa hao…",
+    "activityLaunchCreatingRoom": "Ke theha mosebetsi wa hao…",
+    "activityLaunchOpeningRoom": "Ke bula mosebetsi wa hao…"
 }

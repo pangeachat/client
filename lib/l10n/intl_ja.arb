@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-05 13:57:48.603201",
+    "@@last_modified": "2026-10-06 16:17:27.945597",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10749,5 +10749,8 @@
     "ssoTryAnyway": "とにかく試す",
     "publicCoursesFilterTooltip": "誰でも参加できるコースのみを表示",
     "restrictedCoursesFilterTooltip": "参加申請が必要なコースのみを表示",
-    "viewImageLabel": "画像を表示"
+    "viewImageLabel": "画像を表示",
+    "activityLaunchFindingCourses": "コースを検索中…",
+    "activityLaunchCreatingRoom": "アクティビティを作成中…",
+    "activityLaunchOpeningRoom": "アクティビティを開いています…"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-05 13:57:46.556552",
+    "@@last_modified": "2026-10-06 16:17:25.081154",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9977,5 +9977,8 @@
     "ssoTryAnyway": "Proovi ikkagi",
     "publicCoursesFilterTooltip": "Näita ainult kursuseid, millega igaüks saab liituda",
     "restrictedCoursesFilterTooltip": "Näita ainult kursuseid, millega liitumiseks pead luba küsima",
-    "viewImageLabel": "Vaata pilti"
+    "viewImageLabel": "Vaata pilti",
+    "activityLaunchFindingCourses": "Kursuste otsimine…",
+    "activityLaunchCreatingRoom": "Tegevuse loomine…",
+    "activityLaunchOpeningRoom": "Tegevuse avamine…"
 }

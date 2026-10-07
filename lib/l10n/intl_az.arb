@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-05 13:57:45.205239",
+    "@@last_modified": "2026-10-06 16:17:27.620157",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "Yenə də cəhd edin",
     "publicCoursesFilterTooltip": "Yalnız hər kəsin qoşula biləcəyi kursları göstər",
     "restrictedCoursesFilterTooltip": "Yalnız qoşulmaq üçün soruşmalı olduğunuz kursları göstər",
-    "viewImageLabel": "Şəklə bax"
+    "viewImageLabel": "Şəklə bax",
+    "activityLaunchFindingCourses": "Kurslarınız axtarılır…",
+    "activityLaunchCreatingRoom": "Fəaliyyətiniz yaradılır…",
+    "activityLaunchOpeningRoom": "Fəaliyyətiniz açılır…"
 }

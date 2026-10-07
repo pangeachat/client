@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-05 13:57:45.289784",
+    "@@last_modified": "2026-10-06 16:17:23.739913",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "ለማንኛውም ይሞክሩ",
     "publicCoursesFilterTooltip": "ማንም ሰው መቀላቀል የሚችለውን ኮርሶች ብቻ አሳይ",
     "restrictedCoursesFilterTooltip": "ለመቀላቀል መጠየቅ ያለብዎትን ኮርሶች ብቻ አሳይ",
-    "viewImageLabel": "ምስል ይመልከቱ"
+    "viewImageLabel": "ምስል ይመልከቱ",
+    "activityLaunchFindingCourses": "ኮርሶችዎን በመፈለግ ላይ…",
+    "activityLaunchCreatingRoom": "እንቅስቃሴዎን በመፍጠር ላይ…",
+    "activityLaunchOpeningRoom": "እንቅስቃሴዎን በመክፈት ላይ…"
 }

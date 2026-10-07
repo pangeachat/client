@@ -1937,7 +1937,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-05 13:57:49.186934",
+    "@@last_modified": "2026-10-06 16:17:28.587451",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10880,5 +10880,8 @@
     "ssoTryAnyway": "მაინც სცადე",
     "publicCoursesFilterTooltip": "აჩვენე მხოლოდ კურსები, რომლებზეც ნებისმიერს შეუძლია გაწევრიანება",
     "restrictedCoursesFilterTooltip": "აჩვენე მხოლოდ კურსები, რომლებზეც გაწევრიანების მოთხოვნაა საჭირო",
-    "viewImageLabel": "სურათის ნახვა"
+    "viewImageLabel": "სურათის ნახვა",
+    "activityLaunchFindingCourses": "თქვენი კურსების მოძიება…",
+    "activityLaunchCreatingRoom": "თქვენი აქტივობის შექმნა…",
+    "activityLaunchOpeningRoom": "თქვენი აქტივობის გახსნა…"
 }

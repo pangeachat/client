@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-05 13:57:54.967720",
+    "@@last_modified": "2026-10-06 16:17:34.096375",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "Gbìyànjú lọ́nàkọnà",
     "publicCoursesFilterTooltip": "Fi àwọn ìdánilẹ́kọ̀ọ́ tí ẹnikẹ́ni lè darapọ̀ mọ́ hàn nìkan",
     "restrictedCoursesFilterTooltip": "Fi àwọn ìdánilẹ́kọ̀ọ́ tí o gbọ́dọ̀ béèrè láti darapọ̀ mọ́ hàn nìkan",
-    "viewImageLabel": "Wo aworan"
+    "viewImageLabel": "Wo aworan",
+    "activityLaunchFindingCourses": "Wiwa awọn iṣẹ ikẹkọ rẹ…",
+    "activityLaunchCreatingRoom": "Ṣiṣẹda iṣẹ rẹ…",
+    "activityLaunchOpeningRoom": "Ṣiṣi iṣẹ rẹ…"
 }

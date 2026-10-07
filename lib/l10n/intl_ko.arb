@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:49.102067",
+    "@@last_modified": "2026-10-06 16:17:28.435230",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10173,5 +10173,8 @@
     "ssoTryAnyway": "그래도 시도",
     "publicCoursesFilterTooltip": "누구나 참여할 수 있는 코스만 표시",
     "restrictedCoursesFilterTooltip": "참여를 요청해야 하는 코스만 표시",
-    "viewImageLabel": "이미지 보기"
+    "viewImageLabel": "이미지 보기",
+    "activityLaunchFindingCourses": "코스 찾는 중…",
+    "activityLaunchCreatingRoom": "활동 만드는 중…",
+    "activityLaunchOpeningRoom": "활동 여는 중…"
 }

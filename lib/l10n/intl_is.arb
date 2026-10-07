@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-05 13:57:48.611909",
+    "@@last_modified": "2026-10-06 16:17:28.623042",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2396,5 +2396,8 @@
     "ssoTryAnyway": "Reyna samt",
     "publicCoursesFilterTooltip": "Sýna aðeins námskeið sem allir geta tekið þátt í",
     "restrictedCoursesFilterTooltip": "Sýna aðeins námskeið sem þú þarft að biðja um að fá að taka þátt í",
-    "viewImageLabel": "Skoða mynd"
+    "viewImageLabel": "Skoða mynd",
+    "activityLaunchFindingCourses": "Finn námskeiðin þín…",
+    "activityLaunchCreatingRoom": "Bý til virknina þína…",
+    "activityLaunchOpeningRoom": "Opna virknina þína…"
 }

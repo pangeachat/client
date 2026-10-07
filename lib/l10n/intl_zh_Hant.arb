@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:55.267876",
+    "@@last_modified": "2026-10-06 16:17:33.886768",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10086,5 +10086,8 @@
     "ssoTryAnyway": "仍然嘗試",
     "publicCoursesFilterTooltip": "只顯示任何人都可以加入的課程",
     "restrictedCoursesFilterTooltip": "只顯示您必須申請才能加入的課程",
-    "viewImageLabel": "檢視圖片"
+    "viewImageLabel": "檢視圖片",
+    "activityLaunchFindingCourses": "正在尋找您的課程…",
+    "activityLaunchCreatingRoom": "正在建立您的活動…",
+    "activityLaunchOpeningRoom": "正在開啟您的活動…"
 }

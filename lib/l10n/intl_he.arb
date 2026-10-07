@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:47.643939",
+    "@@last_modified": "2026-10-06 16:17:26.692890",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10894,5 +10894,8 @@
     "ssoTryAnyway": "נסה בכל זאת",
     "publicCoursesFilterTooltip": "הצג רק קורסים שכל אחד יכול להצטרף אליהם",
     "restrictedCoursesFilterTooltip": "הצג רק קורסים שאתה צריך לבקש להצטרף אליהם",
-    "viewImageLabel": "הצג תמונה"
+    "viewImageLabel": "הצג תמונה",
+    "activityLaunchFindingCourses": "מוצאים את הקורסים שלך…",
+    "activityLaunchCreatingRoom": "יוצרים את הפעילות שלך…",
+    "activityLaunchOpeningRoom": "פותחים את הפעילות שלך…"
 }

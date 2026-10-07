@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-05 13:57:45.099339",
+    "@@last_modified": "2026-10-06 16:17:23.885331",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10286,5 +10286,8 @@
     "ssoTryAnyway": "المحاولة على أي حال",
     "publicCoursesFilterTooltip": "إظهار الدورات التدريبية التي يمكن لأي شخص الانضمام إليها فقط",
     "restrictedCoursesFilterTooltip": "إظهار الدورات التدريبية التي يجب عليك طلب الانضمام إليها فقط",
-    "viewImageLabel": "عرض الصورة"
+    "viewImageLabel": "عرض الصورة",
+    "activityLaunchFindingCourses": "جارٍ العثور على دوراتك التدريبية…",
+    "activityLaunchCreatingRoom": "جارٍ إنشاء نشاطك…",
+    "activityLaunchOpeningRoom": "جارٍ فتح نشاطك…"
 }
