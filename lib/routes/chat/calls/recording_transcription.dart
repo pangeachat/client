@@ -59,6 +59,11 @@ Future<List<TranscriptSegment>> transcribeRecordingPcm(
   required String l1,
   required String l2,
   int maxSttPieceBytes = kMaxSttPieceBytes,
+
+  /// Checked before each piece is sent. True means the caller's time for the
+  /// recording-based half is spent: the result is an empty list -- never a
+  /// partial half -- and the live half stands.
+  bool Function()? overBudget,
 }) async {
   try {
     // Downsample only the STT copy, and only for mono (every recording here is
@@ -103,6 +108,10 @@ Future<List<TranscriptSegment>> transcribeRecordingPcm(
     // The common case -- a call short enough for one request -- takes the
     // single-response path unchanged, including its no-word-timings fallback.
     if (pieceCount <= 1) {
+      if (overBudget?.call() ?? false) {
+        Logs().i('Recording-based call transcription skipped: over budget');
+        return const [];
+      }
       return buildRecordingSegments(
         await transcribePiece(sttPcm),
         startedAtMs,
@@ -126,6 +135,13 @@ Future<List<TranscriptSegment>> transcribeRecordingPcm(
           : sttPcm.length;
       final pieceStartMs = (offset * msPerByte).round();
       final pieceDurationMs = ((end - offset) * msPerByte).round();
+      if (overBudget?.call() ?? false) {
+        Logs().i(
+          'Recording-based call transcription stopped over budget; the live '
+          'transcript stands',
+        );
+        return const [];
+      }
       final response = await transcribePiece(
         Uint8List.sublistView(sttPcm, offset, end),
       );

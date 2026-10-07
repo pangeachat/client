@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:matrix/matrix.dart' show Logs;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:fluffychat/routes/chat/calls/call_half_in_flight.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_writer.dart';
 
 /// Sends one already-built transcript half to the homeserver and returns the
@@ -26,6 +27,13 @@ typedef PendingTranscriptSend =
 /// `sendEvent`, returning the event id or null on a send that did not land.
 typedef RawTranscriptSend =
     Future<String?> Function(Map<String, dynamic> content, String txnId);
+
+/// Reads the room for the half a pending record would send: true when this
+/// device's half for that call is already there, false when the read finished
+/// without finding it, null when the room could not be read (keep the record,
+/// send nothing).
+typedef PendingTranscriptInRoom =
+    Future<bool?> Function(String roomId, Map<String, dynamic> content);
 
 /// Where a transcript half waits between the hangup-time publish and the
 /// homeserver confirming it, so a publish the app never got to finish -- it
@@ -207,6 +215,9 @@ class CallTranscriptOutbox {
     'txn_id': txnId,
     'owner': owner,
     'content': content,
+    // When the half was first held back. Diagnostic only: every replay reads
+    // the room before resending, so no age threshold decides anything.
+    'remembered_at': DateTime.now().millisecondsSinceEpoch,
   });
 
   /// Drops the pending half once the homeserver has confirmed it.
@@ -220,14 +231,20 @@ class CallTranscriptOutbox {
   /// the record is there for a later launch if every retry is dropped too. A
   /// send that returns null (the server did not confirm) leaves the record as
   /// well. Only a confirmed event id drops it.
+  ///
+  /// And only when the attempt it belongs to is still LIVE ([AttemptToken]):
+  /// a send that confirms after its attempt was parked leaves the record, and
+  /// the next replay finds the half in the room and drops it then. Nothing
+  /// that completes after its owner gave up on it writes anything.
   TranscriptSender guard(
     String roomId,
     String? owner,
     RawTranscriptSend rawSend,
   ) => (content, txnId) async {
+    final attempt = AttemptToken.current;
     await remember(roomId, txnId, owner, content);
     final eventId = await rawSend(content, txnId);
-    if (eventId != null) await forget(txnId);
+    if (eventId != null && (attempt?.live ?? true)) await forget(txnId);
   };
 
   /// Replays every half [owner] still has waiting, dropping each the moment its
@@ -252,16 +269,29 @@ class CallTranscriptOutbox {
   /// foreground triggers can arrive together). Mirrors
   /// `CallAudioRecorder.finish`'s own single-flight latch; `CallService` guards
   /// its triggers too, so this is the module honouring the contract itself.
-  Future<void> flush(PendingTranscriptSend send, {required String? owner}) {
+  ///
+  /// [inRoom], when given, is read BEFORE every resend: found means the half
+  /// already landed (the record is dropped, nothing sent), not found means it
+  /// is sent under its original transaction id, and a failed read keeps the
+  /// record and sends nothing. Each record is claimed in [CallHalfInFlight]
+  /// while it is worked on, so a live finish or resume holding the same half
+  /// is skipped rather than raced, and every await is bounded.
+  Future<void> flush(
+    PendingTranscriptSend send, {
+    required String? owner,
+    PendingTranscriptInRoom? inRoom,
+  }) {
     return _inFlight ??= _flush(
       send,
       owner: owner,
+      inRoom: inRoom,
     ).whenComplete(() => _inFlight = null);
   }
 
   Future<void> _flush(
     PendingTranscriptSend send, {
     required String? owner,
+    PendingTranscriptInRoom? inRoom,
   }) async {
     final pending = await store.readAll();
     for (final record in pending) {
@@ -283,18 +313,45 @@ class CallTranscriptOutbox {
       // So a null caller owner skips every record, and a record with a null or
       // mismatched owner is skipped by a real caller.
       if (owner == null || record['owner'] != owner) continue;
+      // Someone in this process is already working on this half (the live
+      // finish, or a resume): skipped this pass, retried on the next trigger.
+      final claim = CallHalfInFlight.claim(txnId);
+      if (claim == null) continue;
       try {
-        final eventId = await send(
-          roomId,
-          txnId,
-          Map<String, dynamic>.from(content),
+        final payload = Map<String, dynamic>.from(content);
+        if (inRoom != null) {
+          final found = await raceBounded(
+            inRoom(roomId, payload),
+            deadline: kCallHalfNetworkDeadline,
+            step: 'read the room',
+          );
+          if (found == null) {
+            Logs().i(
+              'Kept a pending call transcript: the room could not be read',
+            );
+            continue;
+          }
+          if (found) {
+            await boundedLocal(store.remove(txnId), 'drop landed half');
+            continue;
+          }
+        }
+        final eventId = await raceBounded(
+          send(roomId, txnId, payload),
+          deadline: kCallHalfNetworkDeadline,
+          step: 'replay send',
         );
-        if (eventId != null) await store.remove(txnId);
+        if (eventId != null) {
+          await boundedLocal(store.remove(txnId), 'drop replayed half');
+        }
       } catch (e, s) {
         // Kept for the next flush -- a transient failure (offline, a room not
-        // yet loaded) resolves on a later launch, and the deterministic txn id
-        // means the eventual resend cannot become a duplicate.
+        // yet loaded, a deadline) resolves on a later trigger, and the next
+        // replay reads the room first, so a send that landed late is dropped
+        // rather than repeated.
         Logs().w('Replaying a pending call transcript failed', e, s);
+      } finally {
+        CallHalfInFlight.release(claim);
       }
     }
   }

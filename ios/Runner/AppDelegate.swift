@@ -16,6 +16,7 @@ import Flutter
       UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
     }
     registerSessionChannel()
+    registerBackupExclusionChannel()
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 
@@ -35,6 +36,34 @@ import Flutter
         result(Self.writeSession(json))
       case "clear":
         result(Self.writeSession(nil))
+      default:
+        result(FlutterMethodNotImplemented)
+      }
+    }
+  }
+
+  /// Flags a directory as excluded from iCloud/device backup. Used for call
+  /// recordings waiting to upload: they are transient, can be large, and are
+  /// not the learner's to have restored onto another device.
+  private func registerBackupExclusionChannel() {
+    guard let messenger = registrar(forPlugin: "PangeaBackupExclusion")?.messenger() else { return }
+    let channel = FlutterMethodChannel(name: "chat.pangea/backup_exclusion", binaryMessenger: messenger)
+    channel.setMethodCallHandler { call, result in
+      switch call.method {
+      case "exclude":
+        guard let path = call.arguments as? String else {
+          result(false)
+          return
+        }
+        var url = URL(fileURLWithPath: path, isDirectory: true)
+        var values = URLResourceValues()
+        values.isExcludedFromBackup = true
+        do {
+          try url.setResourceValues(values)
+          result(true)
+        } catch {
+          result(false)
+        }
       default:
         result(FlutterMethodNotImplemented)
       }
