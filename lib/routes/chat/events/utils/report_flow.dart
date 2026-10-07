@@ -193,19 +193,28 @@ class ReportFlow<T> {
   /// the app is killed in the middle of — is resent on the next start.
   Future<ReportSubmission?> captureWithRetry(ReportSubmission report) async {
     var current = report;
+    // Ids the module answered 409 to whose stored copy may still be on the
+    // device; all of them go once the report is recorded.
+    final rejected = <ReportSubmission>[];
     while (true) {
       await remember(current);
       final result = await capture(current);
       if (result == CaptureResult.recorded) {
-        await forget(current);
+        for (final stale in [...rejected, current]) {
+          await forget(stale);
+        }
         return current;
       }
       if (result == CaptureResult.conflict) {
         final fresh = current.withReportId(newReportId(current.reportId));
         // The fresh copy is stored before the old one goes, so the report
         // is on the device at every moment. If it cannot be stored, the old
-        // copy stays: a replay meets the same 409 and rotates it there.
-        if (await remember(fresh)) await forget(current);
+        // copy stays until the report is recorded under the new id.
+        if (await remember(fresh)) {
+          await forget(current);
+        } else {
+          rejected.add(current);
+        }
         current = fresh;
       }
       if (!await offerRetry()) return null;

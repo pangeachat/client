@@ -202,6 +202,27 @@ void main() {
       expect(store.pending(userId), isEmpty);
     });
 
+    test(
+      'a second conflict moves the report on again, sent next start',
+      () async {
+        await store.remember(userId, submission('first'));
+        final sent = <String>[];
+
+        await replayPendingReports(
+          newReportId: (id) => '$id+',
+          store: store,
+          userId: userId,
+          attempt: (report) async {
+            sent.add(report.reportId);
+            return CaptureResult.conflict;
+          },
+        );
+
+        expect(sent, ['first', 'first+']);
+        expect(store.pending(userId).map((r) => r.reportId), ['first++']);
+      },
+    );
+
     test('a 409 is a conflict, not a failure and not a success', () async {
       expect(
         await serverAnswering(409)(submission('id-409')),

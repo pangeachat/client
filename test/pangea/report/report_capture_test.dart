@@ -377,6 +377,41 @@ void main() {
       expect(calls, isNot(contains('forget:${report.reportId}')));
     });
 
+    test(
+      'an old id kept by a failed write goes once the new id is recorded',
+      () async {
+        captureResults = [CaptureResult.conflict, CaptureResult.recorded];
+        retryAnswers = [true];
+        var failNext = true;
+        final forgotten = <String>[];
+        final flow = ReportFlow<String>(
+          capture: (s) async => captureResults.removeAt(0),
+          remember: (s) async {
+            if (s.reportId == 'fresh-report-id' && failNext) {
+              failNext = false;
+              return false;
+            }
+            return true;
+          },
+          forget: (s) async => forgotten.add(s.reportId),
+          newReportId: (_) => 'fresh-report-id',
+          offerRetry: () async => retryAnswers.removeAt(0),
+          confirmCaptured: () {},
+          lookupCourseAdmins: () async => [],
+          selectRecipients: (found) async => found,
+          sendPointer: (_, _) async {},
+          pointerBody: (course) => course,
+          recordNonOffensive: (_) {},
+        );
+
+        expect(
+          await flow.run(report, offensive: false),
+          ReportOutcome.captured,
+        );
+        expect(forgotten.toSet(), {report.reportId, 'fresh-report-id'});
+      },
+    );
+
     test('a stored copy is kept until the module confirms it', () async {
       captureResults = [CaptureResult.failed, CaptureResult.failed];
       retryAnswers = [true, false];

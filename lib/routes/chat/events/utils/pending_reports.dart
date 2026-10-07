@@ -119,14 +119,13 @@ Future<void> replayPendingReports({
     final result = await attempt(report);
     if (result == CaptureResult.failed) continue;
     if (result == CaptureResult.conflict) {
-      // A report already moved once this run waits for the next start
-      // rather than rotating again.
-      if (rotated) continue;
       final fresh = report.withReportId(newReportId(report.reportId));
       if (!await guarded(() => store.remember(userId, fresh), 'remember')) {
         continue;
       }
-      queue.add((fresh, true));
+      // A report already moved once this run is moved again but sent only
+      // on the next start, so a run cannot loop.
+      if (!rotated) queue.add((fresh, true));
     }
     // Replayed again next start if this fails, which is harmless: the module
     // stores a report id once.
