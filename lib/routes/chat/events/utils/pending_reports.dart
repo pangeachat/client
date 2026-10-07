@@ -111,25 +111,38 @@ Future<void> replayPendingReports({
     }
   }
 
+  // Each entry: the report, whether it was already moved this run, and the
+  // rejected ids whose copies must go once it is recorded.
   final queue = [
-    for (final report in await store.pendingFromDisk(userId)) (report, false),
+    for (final report in await store.pendingFromDisk(userId))
+      (report, false, const <String>[]),
   ];
   while (queue.isNotEmpty) {
-    final (report, rotated) = queue.removeAt(0);
+    final (report, rotated, stale) = queue.removeAt(0);
     final result = await attempt(report);
     if (result == CaptureResult.failed) continue;
     if (result == CaptureResult.conflict) {
       final fresh = report.withReportId(newReportId(report.reportId));
-      if (!await guarded(() => store.remember(userId, fresh), 'remember')) {
-        continue;
+      final stored = await guarded(
+        () => store.remember(userId, fresh),
+        'remember',
+      );
+      // Sent under the new id even when it could not be stored; then the old
+      // copy stays until the new id is recorded. A report already moved once
+      // this run is sent again only on the next start, so a run cannot loop.
+      if (!rotated) {
+        queue.add((fresh, true, stored ? stale : [...stale, report.reportId]));
       }
-      // A report already moved once this run is moved again but sent only
-      // on the next start, so a run cannot loop.
-      if (!rotated) queue.add((fresh, true));
+      if (stored) {
+        await guarded(() => store.forget(userId, report.reportId), 'forget');
+      }
+      continue;
     }
-    // Replayed again next start if this fails, which is harmless: the module
-    // stores a report id once.
-    await guarded(() => store.forget(userId, report.reportId), 'forget');
+    // Recorded. A failed forget means a resend next start, which is harmless:
+    // the module stores a report id once.
+    for (final id in [report.reportId, ...stale]) {
+      await guarded(() => store.forget(userId, id), 'forget');
+    }
   }
 }
 

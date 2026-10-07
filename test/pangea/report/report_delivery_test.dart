@@ -223,6 +223,31 @@ void main() {
       },
     );
 
+    test('a conflict is sent under the new id even when it cannot be stored, '
+        'and the old copy goes once that is recorded', () async {
+      final failing = _RememberFails(
+        await SharedPreferences.getInstance(),
+        failFor: 'rotated-id',
+      );
+      await failing.remember(userId, submission('old-id'));
+      final sent = <String>[];
+
+      await replayPendingReports(
+        newReportId: (_) => 'rotated-id',
+        store: failing,
+        userId: userId,
+        attempt: (report) async {
+          sent.add(report.reportId);
+          return report.reportId == 'old-id'
+              ? CaptureResult.conflict
+              : CaptureResult.recorded;
+        },
+      );
+
+      expect(sent, ['old-id', 'rotated-id']);
+      expect(failing.pending(userId), isEmpty);
+    });
+
     test('a 409 is a conflict, not a failure and not a success', () async {
       expect(
         await serverAnswering(409)(submission('id-409')),
@@ -562,6 +587,59 @@ void main() {
     });
   });
 
+  group('isCurrentCourseAdmin', () {
+    MatrixApi rosterServer() => apiWith((request) async {
+      if (request.url.path.endsWith('/members')) {
+        return http.Response(
+          jsonEncode({
+            'chunk': [
+              for (final user in ['@teacher:x', '@demoted:x'])
+                {
+                  'type': 'm.room.member',
+                  'event_id': '\$$user',
+                  'room_id': '!course:x',
+                  'sender': user,
+                  'state_key': user,
+                  'origin_server_ts': 1,
+                  'content': {'membership': 'join'},
+                },
+            ],
+          }),
+          200,
+          request: request,
+        );
+      }
+      return http.Response(
+        jsonEncode({
+          'users': {'@teacher:x': 100, '@left:x': 100},
+        }),
+        200,
+        request: request,
+      );
+    });
+
+    test('an admin still joined at power level 100', () async {
+      expect(
+        await isCurrentCourseAdmin(rosterServer(), '!course:x', '@teacher:x'),
+        isTrue,
+      );
+    });
+
+    test('a demoted admin', () async {
+      expect(
+        await isCurrentCourseAdmin(rosterServer(), '!course:x', '@demoted:x'),
+        isFalse,
+      );
+    });
+
+    test('an admin who has left the course', () async {
+      expect(
+        await isCurrentCourseAdmin(rosterServer(), '!course:x', '@left:x'),
+        isFalse,
+      );
+    });
+  });
+
   group('reportDmRoomId', () {
     const reporter = '@reporter:x';
     const admin = '@admin:x';
@@ -801,4 +879,17 @@ class _ForgetFails extends PendingReportStore {
   @override
   Future<void> forget(String userId, String reportId) async =>
       throw StateError('disk full');
+}
+
+/// A store that cannot write one report id, as a full disk might.
+class _RememberFails extends PendingReportStore {
+  final String failFor;
+
+  _RememberFails(super.prefs, {required this.failFor});
+
+  @override
+  Future<void> remember(String userId, ReportSubmission report) async {
+    if (report.reportId == failFor) throw StateError('disk full');
+    await super.remember(userId, report);
+  }
 }

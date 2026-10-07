@@ -212,6 +212,15 @@ Future<ReportOutcome?> submitReport({
       await showFutureLoadingDialog(
         context: uiContext,
         future: () async {
+          // Checked again at sending: the reporter may have held the picker
+          // open while the admin was removed or demoted.
+          if (!await isCurrentCourseAdmin(
+            client,
+            recipient.admin.space.id,
+            recipient.admin.teacher.id,
+          )) {
+            return;
+          }
           final dm = await getReportsDM(
             recipient.admin.teacher,
             recipient.admin.space,
@@ -398,6 +407,18 @@ Future<CourseRoster> courseRosterFromServer(
           e.stateKey!: levelOf(e.stateKey!),
     },
   );
+}
+
+/// Whether [userId] is, on the homeserver right now, joined to [courseId]
+/// at course-admin power level.
+@visibleForTesting
+Future<bool> isCurrentCourseAdmin(
+  MatrixApi api,
+  String courseId,
+  String userId,
+) async {
+  final roster = await courseRosterFromServer(api, courseId);
+  return (roster.joinedPowerLevels[userId] ?? -1) >= 100;
 }
 
 /// The non-bot admins of the courses a report about [subjectId] belongs to
