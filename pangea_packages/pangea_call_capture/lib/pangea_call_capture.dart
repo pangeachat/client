@@ -301,6 +301,20 @@ class IncomingCallRinger {
   Future<void> stop(String ringId) =>
       _ring.invokeMethod<void>('stop', {'ringId': ringId});
 
+  /// Whether to ask the learner, once, to allow full-screen calls: a ring has
+  /// come in that could only show as a heads-up notification, and they have
+  /// not been asked before.
+  Future<bool> fullScreenWanted() async =>
+      await _ring.invokeMethod<bool>('full_screen_wanted') ?? false;
+
+  /// Records that the learner was asked, whatever they chose.
+  Future<void> fullScreenAsked() =>
+      _ring.invokeMethod<void>('full_screen_asked');
+
+  /// Opens the system page where the learner allows full-screen calls.
+  Future<void> openFullScreenSettings() =>
+      _ring.invokeMethod<void>('full_screen_settings');
+
   /// Hands each ring the learner answered from the notification to [handle],
   /// as the payload it was rung with, including any answered before this was
   /// called -- the app is usually being opened BY the answer.

@@ -539,6 +539,35 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     router.go(WorkspaceNav.openRoomById(uri, room.id));
   }
 
+  /// Asks once, on Android 14 and later, to allow full-screen calls -- at the
+  /// first moment the app is open after a ring could only show as a heads-up
+  /// notification. Never over a call: the call is what the learner is there
+  /// for, and the question can wait for the next time they open the app.
+  Future<void> _askForFullScreenCallsOnce() async {
+    if (!PlatformInfos.isAndroid || activeCall.value != null) return;
+    const ringer = IncomingCallRinger();
+    try {
+      if (!await ringer.fullScreenWanted()) return;
+      final dialogContext =
+          FluffyChatApp.router.routerDelegate.navigatorKey.currentContext;
+      if (!mounted || dialogContext == null) return;
+      // Recorded before the question, so a second resume cannot ask it twice.
+      await ringer.fullScreenAsked();
+      if (!dialogContext.mounted) return;
+      final l10n = L10n.of(dialogContext);
+      final result = await showOkCancelAlertDialog(
+        context: dialogContext,
+        title: l10n.callFullScreenTitle,
+        message: l10n.callFullScreenMessage,
+        okLabel: l10n.allow,
+        cancelLabel: l10n.cancel,
+      );
+      if (result == OkCancelResult.ok) await ringer.openFullScreenSettings();
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+    }
+  }
+
   /// Answers a ring the learner answered on the notification that rang while
   /// the app was closed, handed over as the payload it was rung with.
   Future<void> _answerFromNotification(String payload) async {
@@ -1253,6 +1282,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       const IncomingCallRinger().onAnswered(
         (payload) => unawaited(_answerFromNotification(payload)),
       );
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) unawaited(_askForFullScreenCallsOnce());
+      });
     }
 
     if (PlatformInfos.isMobile) {
@@ -1305,6 +1337,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     }
 
     if (state == AppLifecycleState.resumed) {
+      unawaited(_askForFullScreenCallsOnce());
       pangeaController.subscriptionController.refreshOnAppResume(client.userID);
       // A call transcript half whose publish was dropped when the app
       // backgrounded at hangup is replayed now that it is back. Each service

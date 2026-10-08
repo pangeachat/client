@@ -474,6 +474,11 @@ class BackgroundPushNotification {
       if (ring == null) return l10n.callIncoming;
       return ring.isVideo ? l10n.callIncomingVideo : l10n.callIncomingVoice;
     }
+    // Only a missed call's card pushes. Its own text is the caller's, in the
+    // caller's words; this says it from the learner's side, in theirs.
+    if (data['type'] == PangeaEventTypes.call) {
+      return l10n.callHistoryMissedCall;
+    }
     if (data['type'] == EventTypes.RoomMember &&
         data['content_membership'] == 'invite') {
       if (data['content_reason'] == 'invite_on_knock') {
@@ -596,6 +601,9 @@ class BackgroundPushNotification {
           // importance here would stop every later notification from popping up.
           importance: Importance.high,
           priority: Priority.max,
+          // A missed call replaces a ring that has just stopped; chiming for
+          // it as well would be a second alert for the same call.
+          silent: data['type'] == PangeaEventTypes.call,
           styleInformation:
               existing ??
               MessagingStyleInformation(

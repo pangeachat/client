@@ -319,6 +319,17 @@ void main() {
     });
   });
 
+  // Only a missed call's card pushes, and its own text is the caller's.
+  test('a missed call says so from the learner side', () {
+    expect(
+      BackgroundPushNotification.bodyFor({
+        'type': PangeaEventTypes.call,
+        'content_body': 'Missed call',
+      }, l10n),
+      l10n.callHistoryMissedCall,
+    );
+  });
+
   group('reading a ring back', () {
     Future<IncomingRing?> read(http.Response response) async {
       final requests = <http.BaseRequest>[];
@@ -663,4 +674,13 @@ class _FakeRinger implements IncomingCallRinger {
 
   @override
   void onAnswered(void Function(String payload) handle) {}
+
+  @override
+  Future<bool> fullScreenWanted() async => false;
+
+  @override
+  Future<void> fullScreenAsked() async {}
+
+  @override
+  Future<void> openFullScreenSettings() async {}
 }

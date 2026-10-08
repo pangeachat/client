@@ -10,10 +10,12 @@ import android.content.Intent
 import android.content.pm.ServiceInfo
 import android.media.AudioAttributes
 import android.media.RingtoneManager
+import android.net.Uri
 import android.os.Build
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
+import android.provider.Settings
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.Person
@@ -56,6 +58,52 @@ class IncomingRingService : Service() {
 
     const val CHANNEL_ID = "pangea_incoming_call"
     const val NOTIFICATION_ID = 0x9A12
+
+    private const val PREFS = "pangea_incoming_ring"
+    private const val FULL_SCREEN_MISSED = "full_screen_missed"
+    private const val FULL_SCREEN_ASKED = "full_screen_asked"
+
+    /**
+     * Whether this app may ring full screen. Android 14 grants it only to apps
+     * Google Play accepts as calling apps, or that the learner allows in
+     * settings; without it the ring is a heads-up notification instead.
+     */
+    private fun canRingFullScreen(context: Context): Boolean =
+      Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE ||
+        context.getSystemService(NotificationManager::class.java)
+          .canUseFullScreenIntent()
+
+    /**
+     * Whether to ask the learner, once, to allow full-screen calls: a ring
+     * has already come in that could not go full screen, and they have not
+     * been asked yet. Asked at the next moment the app is open, which is the
+     * first moment it can.
+     */
+    fun fullScreenWanted(context: Context): Boolean {
+      if (canRingFullScreen(context)) return false
+      val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+      return prefs.getBoolean(FULL_SCREEN_MISSED, false) &&
+        !prefs.getBoolean(FULL_SCREEN_ASKED, false)
+    }
+
+    /** Never asks again, whatever the learner chose. */
+    fun fullScreenAsked(context: Context) {
+      context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        .edit()
+        .putBoolean(FULL_SCREEN_ASKED, true)
+        .apply()
+    }
+
+    /** The system page where the learner allows full-screen calls. */
+    fun openFullScreenSettings(context: Context) {
+      if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) return
+      context.startActivity(
+        Intent(
+          Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT,
+          Uri.parse("package:${context.packageName}"),
+        ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
+      )
+    }
 
     /** What became of a ring, as Dart reads it back. */
     const val RINGING = "ringing"
@@ -137,6 +185,12 @@ class IncomingRingService : Service() {
       payload: String,
     ): Boolean {
       if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return false
+      if (!canRingFullScreen(context)) {
+        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+          .edit()
+          .putBoolean(FULL_SCREEN_MISSED, true)
+          .apply()
+      }
       record(ringId, RINGING)
       return try {
         context.startForegroundService(
