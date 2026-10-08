@@ -76,7 +76,11 @@ class PangeaEventTypes {
   static const botNotificationOpened = "p.room.notice.opened";
 
   static const knockedRooms = 'org.pangea.knocked_rooms';
-  static const notificationSettings = 'org.pangea.notification_settings';
+
+  /// Retired: read only to carry an old email opt-out into
+  /// [communicationPreferences].
+  static const legacyNotificationSettings = 'org.pangea.notification_settings';
+  static const communicationPreferences = 'pangea.communication_preferences';
 
   /// Account data the admin dashboard writes: the session rooms it joined this
   /// user to so they could review them.

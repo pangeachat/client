@@ -1,156 +1,109 @@
-import 'dart:async';
-
 import 'package:matrix/matrix.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/features/languages/language_constants.dart';
-import 'package:fluffychat/features/notifications/notifications_settings_model.dart';
+import 'package:fluffychat/features/notifications/communication_preferences.dart';
+import 'package:fluffychat/features/notifications/email_pusher_changes.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 class EmailNotificationsStatus {
   final bool enabled;
   final bool canEnable;
-  final Map<String, bool> emailStatuses;
 
   const EmailNotificationsStatus({
     required this.enabled,
     required this.canEnable,
-    required this.emailStatuses,
   });
 }
 
 extension NotificationsExtension on Client {
-  NotificationsSettingsModel get notificationSettings {
-    final data = accountData[PangeaEventTypes.notificationSettings];
-    if (data != null) {
-      return NotificationsSettingsModel.fromJson(data.content);
-    }
-    return const NotificationsSettingsModel();
-  }
-
-  Future<void> setNotificationsSettings(
-    NotificationsSettingsModel model,
-  ) async {
-    final prevModel = notificationSettings;
-    if (model == prevModel) return;
-
-    await setAccountData(
-      userID!,
-      PangeaEventTypes.notificationSettings,
-      model.toJson(),
-    );
-
-    final updatedModel = notificationSettings;
-    if (model == updatedModel) {
-      try {
-        await onSync.stream
-            .firstWhere((sync) => sync.accountData != null)
-            .timeoutNamed(
-              const Duration(seconds: 10),
-              'account data sync: notification settings',
-            );
-      } catch (e, s) {
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: {
-            'client_user_id': userID,
-            'expected_model': model.toJson(),
-            'updated_model': updatedModel.toJson(),
-          },
-          level: e is TimeoutException
-              ? SentryLevel.warning
-              : SentryLevel.error,
-        );
-      }
-    }
-  }
+  static const _legacyEmailSettingKey = 'enable_email_notifs';
 
   Future<EmailNotificationsStatus> get emailNotificationsStatus async {
-    List<Pusher> pushers = [];
-    Set<String> emails = {};
-
     try {
-      pushers = (await getPushers()) ?? [];
-      final thirdPartyIds = (await getAccount3PIDs()) ?? [];
-      emails = thirdPartyIds
+      final addresses = await _emailAddresses();
+      final preferences = await _fetchCommunicationPreferences();
+      return EmailNotificationsStatus(
+        enabled: addresses.isNotEmpty && !preferences.refusesMissedMessageEmail,
+        canEnable: addresses.isNotEmpty,
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'client_user_id': userID});
+      rethrow;
+    }
+  }
+
+  Future<void> setMissedMessageEmailsEnabled(bool enabled) async {
+    await _recordMissedMessageEmailChoice(enabled);
+    await _applyEmailPushers(enabled);
+  }
+
+  /// Makes the email pushers follow the stored choice, which the emailed
+  /// unsubscribe link and other devices change without this client.
+  Future<void> syncEmailPushers() async {
+    final preferences = await _fetchCommunicationPreferences();
+    await _applyEmailPushers(!preferences.refusesMissedMessageEmail);
+  }
+
+  /// Carries an opt-out made before the shared store existed into it, then
+  /// clears the old event so the carry happens once.
+  Future<void> migrateLegacyEmailSetting() async {
+    final legacy =
+        accountData[PangeaEventTypes.legacyNotificationSettings]?.content;
+    if (legacy == null || legacy.isEmpty) return;
+    if (legacy[_legacyEmailSettingKey] == false) {
+      await _recordMissedMessageEmailChoice(false);
+    }
+    await setAccountData(
+      userID!,
+      PangeaEventTypes.legacyNotificationSettings,
+      {},
+    );
+  }
+
+  Future<void> _recordMissedMessageEmailChoice(bool enabled) async {
+    final current = await _fetchCommunicationPreferences();
+    if (current.refusesMissedMessageEmail != enabled) return;
+    await setAccountData(
+      userID!,
+      PangeaEventTypes.communicationPreferences,
+      current.withMissedMessageEmailRefused(!enabled, DateTime.now()).toJson(),
+    );
+  }
+
+  Future<void> _applyEmailPushers(bool emailsEnabled) async {
+    final changes = EmailPusherChanges.toMatch(
+      emailsEnabled: emailsEnabled,
+      addresses: await _emailAddresses(),
+      pushers: await getPushers() ?? [],
+    );
+    for (final address in changes.addressesToAdd) {
+      await postPusher(EmailPusherChanges.pusherFor(address));
+    }
+    for (final pusher in changes.pushersToRemove) {
+      await deletePusher(pusher);
+    }
+  }
+
+  Future<Set<String>> _emailAddresses() async =>
+      ((await getAccount3PIDs()) ?? [])
           .where((p) => p.medium == ThirdPartyIdentifierMedium.email)
           .map((p) => p.address)
           .toSet();
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'pushers': pushers.map((p) => p.toJson()).toList(),
-          'emails': emails,
-        },
+
+  /// Read from the server, not the synced copy, so a write merges onto the
+  /// latest refusals.
+  Future<CommunicationPreferences> _fetchCommunicationPreferences() async {
+    try {
+      return CommunicationPreferences.fromJson(
+        await getAccountData(
+          userID!,
+          PangeaEventTypes.communicationPreferences,
+        ),
       );
+    } on MatrixException catch (e) {
+      // silent-ok: no refusal has been recorded yet; other failures rethrow.
+      if (e.error != MatrixError.M_NOT_FOUND) rethrow;
+      return const CommunicationPreferences();
     }
-
-    if (emails.isEmpty) {
-      return EmailNotificationsStatus(
-        enabled: false,
-        canEnable: false,
-        emailStatuses: {},
-      );
-    }
-
-    final Map<String, bool> emailStatuses = {};
-    for (final email in emails) {
-      emailStatuses[email] = pushers.any(
-        (p) => p.kind == 'email' && p.pushkey == email && p.appId == 'm.email',
-      );
-    }
-
-    return EmailNotificationsStatus(
-      enabled: emailStatuses.values.every((e) => e),
-      canEnable: true,
-      emailStatuses: emailStatuses,
-    );
-  }
-
-  Future<void> setEnableEmailNotifs(bool enable) async {
-    final pushers = (await getPushers()) ?? [];
-    final thirdPartyIds = (await getAccount3PIDs()) ?? [];
-    final emails = thirdPartyIds
-        .where((p) => p.medium == ThirdPartyIdentifierMedium.email)
-        .map((p) => p.address)
-        .toSet();
-
-    if (enable) {
-      for (final email in emails) {
-        if (!pushers.any(
-          (pusher) =>
-              pusher.kind == 'email' &&
-              pusher.pushkey == email &&
-              pusher.appId == 'm.email',
-        )) {
-          final pusher = Pusher(
-            kind: 'email',
-            pushkey: email,
-            appId: 'm.email',
-            appDisplayName: 'Email Notifications',
-            deviceDisplayName: email,
-            lang: LanguageKeys.defaultLanguage,
-            data: PusherData(),
-          );
-          await postPusher(pusher);
-        }
-      }
-    } else {
-      for (final pusher in pushers.where(
-        (pusher) => pusher.kind == 'email' && pusher.appId == 'm.email',
-      )) {
-        await deletePusher(
-          PusherId(appId: pusher.appId, pushkey: pusher.pushkey),
-        );
-      }
-    }
-
-    final updated = notificationSettings.copyWith(enableEmailNotifs: enable);
-    await setNotificationsSettings(updated);
   }
 }
