@@ -178,6 +178,8 @@ jobs:
           cache: true
       - uses: ./.github/actions/free_up_space
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
+        with:
+          cache: false
       - name: Add Firebase Messaging
         env:
           GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
@@ -195,6 +197,8 @@ jobs:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
+        with:
+          cache: false
       - run: rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
       - run: flutter pub get
       # See the note in main_deploy.yaml — same cache, same key scheme.
@@ -253,6 +257,8 @@ jobs:
         run: sudo xcode-select --switch /Applications/Xcode_26.3.app
       - run: brew install sqlcipher
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
+        with:
+          cache: false
       - name: Add Firebase Messaging
         env:
           GOOGLE_SERVICES_PLIST: ${{ secrets.GOOGLE_SERVICES_PLIST }}
