@@ -24,6 +24,11 @@ class PApiUrls {
   /// CMS REST API endpoint for languages (public, no auth required)
   static String cmsLanguages = "${Environment.cmsApi}/cms/api/languages";
 
+  /// CMS form submissions (public create). The app sends a network help
+  /// request here; see filtered-network.instructions.md.
+  static String cmsFormSubmissions =
+      "${Environment.cmsApi}/cms/api/form-submissions";
+
   ///   ---------------------- Analytics dual-write ----------------------------
   /// Teacher-BFF (admin-dash-api) student-authenticated ingest for the
   /// best-effort analytics dual-write. Lives on [Environment.teacherBffApi],

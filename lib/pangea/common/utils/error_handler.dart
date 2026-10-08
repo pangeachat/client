@@ -217,12 +217,13 @@ class ErrorHandler {
     StackTrace? s,
     required Map<String, dynamic> data,
     SentryLevel? level,
+    Map<String, String>? tags,
   }) async {
     // Checked before the key is spent, so suppressing control flow does not
     // consume the one report a genuine failure on this key is owed.
     if (!shouldReport(e)) return false;
     if (!_reportedOnceKeys.add(key)) return false;
-    await logError(e: e, s: s, data: data, level: level);
+    await logError(e: e, s: s, data: data, level: level, tags: tags);
     return true;
   }
 
@@ -247,6 +248,8 @@ class ErrorHandler {
   /// [e] is required for the same reason: a report with no error attached
   /// carried no information the moment `m` stopped backing it.
   ///
+  /// [tags] are searchable in Sentry, unlike [data], which rides a breadcrumb.
+  ///
   /// A [PangeaHttpException] additionally reaches Sentry with an explicit
   /// grouping key ([PangeaHttpException.fingerprintOf]) so it lands in an issue
   /// per status + endpoint. Sentry groups by stack trace otherwise, and these
@@ -257,6 +260,7 @@ class ErrorHandler {
     StackTrace? s,
     required Map<String, dynamic> data,
     SentryLevel? level,
+    Map<String, String>? tags,
   }) async {
     if (!shouldReport(e)) return;
 
@@ -289,6 +293,7 @@ class ErrorHandler {
                 : PangeaHttpException.severityOf(e));
         final fingerprint = collapsed ?? PangeaHttpException.fingerprintOf(e);
         if (fingerprint != null) scope.fingerprint = fingerprint;
+        tags?.forEach(scope.setTag);
       },
     );
   }

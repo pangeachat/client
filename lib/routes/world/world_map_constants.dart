@@ -6,6 +6,9 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 class WorldMapConstants {
+  /// The tile provider's host — see world-map-tiles.instructions.md.
+  static const String tileHost = 'tile.openstreetmap.org';
+
   /// The camera zoom ceiling — the single source for FlutterMap's MapOptions,
   /// the +/- step clamp in [zoomBy], and the on-map control disabled states
   /// (#7171). The FLOOR is viewport-derived: see [minZoomFor].
