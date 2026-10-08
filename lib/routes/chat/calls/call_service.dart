@@ -1634,13 +1634,24 @@ class CallService {
   /// seen. Anywhere a decision turns on the caller NOT being there, use this:
   /// room state lags a join by seconds, and "their state has not arrived yet"
   /// is not "they are not calling".
-  PeerPresence callerPresence(Room room, String callerId, {String? deviceId}) {
-    final memberStates = room.states[EventTypes.GroupCallMember];
-    if (memberStates == null || memberStates.isEmpty) {
-      return PeerPresence.unknown;
-    }
+  PeerPresence callerPresence(Room room, String callerId, {String? deviceId}) =>
+      presenceIn(
+        room.states[EventTypes.GroupCallMember]?.values ?? const [],
+        callerId,
+        deviceId: deviceId,
+      );
+
+  /// [callerPresence], read from member state however it was fetched. The
+  /// closed-app ring watcher has no room to read, only the server's answer,
+  /// and it has to reach the same verdict the banner does.
+  static PeerPresence presenceIn(
+    Iterable<StrippedStateEvent> memberStates,
+    String callerId, {
+    String? deviceId,
+  }) {
     var sawTheirs = false;
-    for (final state in memberStates.values) {
+    for (final state in memberStates) {
+      if (state.type != EventTypes.GroupCallMember) continue;
       if (state.senderId != callerId) continue;
       final memberships = state.content['memberships'];
       if (memberships is! List) continue;
@@ -1761,7 +1772,7 @@ class CallService {
   /// The membership's own `device_id` first; the state key only as a fallback,
   /// because the key has three shapes across MSC3757 and the per-device
   /// variants and matching it is guesswork where the field is not.
-  bool _belongsToDevice(
+  static bool _belongsToDevice(
     StrippedStateEvent state,
     List<Object?> memberships,
     String deviceId,
@@ -2081,11 +2092,27 @@ class CallService {
     final me = client.userID;
     final myDevice = client.deviceID;
     if (me == null || myDevice == null) return false;
-    final states = room.states[EventTypes.GroupCallMember];
-    if (states == null) return false;
-    final now = DateTime.now().millisecondsSinceEpoch;
-    for (final state in states.values) {
-      if (state is! Event) continue;
+    return answeredElsewhereIn(
+      room.states[EventTypes.GroupCallMember]?.values ?? const [],
+      me: me,
+      myDevice: myDevice,
+      ringSentAt: ringSentAt,
+      now: DateTime.now(),
+    );
+  }
+
+  /// [answeredOnAnotherDevice], read from member state however it was
+  /// fetched, for the closed-app ring watcher.
+  static bool answeredElsewhereIn(
+    Iterable<StrippedStateEvent> memberStates, {
+    required String me,
+    required String myDevice,
+    required DateTime ringSentAt,
+    required DateTime now,
+  }) {
+    for (final state in memberStates) {
+      if (state is! MatrixEvent) continue;
+      if (state.type != EventTypes.GroupCallMember) continue;
       if (state.senderId != me) continue;
       // WRITTEN AFTER THE RING. The call id cannot answer this question: it
       // is the ROOM id by design -- one direct message holds one live call --
@@ -2101,7 +2128,9 @@ class CallService {
         if (m is! Map) continue;
         if (m['device_id'] == myDevice) continue;
         final expires = m['expires_ts'];
-        if (expires is! int || expires > now) return true;
+        if (expires is! int || expires > now.millisecondsSinceEpoch) {
+          return true;
+        }
       }
     }
     return false;
@@ -2214,7 +2243,7 @@ class CallService {
           if (event.originServerTs.isBefore(cutoff)) break;
           if (event.type == PangeaEventTypes.callDecline &&
               event.senderId == client.userID) {
-            final target = _declineRefersTo(event);
+            final target = declineTargetOf(event);
             if (target != null) declined.add(target);
             continue;
           }
@@ -2360,9 +2389,10 @@ class CallService {
   }
 
   /// The notification a decline points back at, or null if it points at nothing.
-  String? declineTarget(Event event) => _declineRefersTo(event);
+  String? declineTarget(Event event) => declineTargetOf(event);
 
-  String? _declineRefersTo(Event event) {
+  /// [declineTarget] for a bare event, for the closed-app ring watcher.
+  static String? declineTargetOf(MatrixEvent event) {
     final relation = event.content['m.relates_to'];
     if (relation is! Map || relation['rel_type'] != 'm.reference') return null;
     final id = relation['event_id'];
