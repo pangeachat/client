@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-05 13:57:49.651102",
+    "@@last_modified": "2026-10-07 09:01:37.791319",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -1042,9 +1042,6 @@
     "why": "Firwat?",
     "definition": "Definitioun",
     "reportToTeacher": "Wien wëlls du dëse Message mellen?",
-    "reportMessageTitle": "{reportingUserId} huet e Message vum {reportedUserId} am Chat {roomName} gemellt",
-    "reportMessageBody": "Message: {reportedMessage}\nGrond: {reason}",
-    "noTeachersFound": "Keng Enseignante fonnt fir ze mellen",
     "trialExpiration": "Deng gratis Testperiod leeft den {expiration} of",
     "freeTrialDesc": "Nei Benotzer kréien eng Woch gratis Testperiod vu Pangea Chat",
     "activateTrial": "Gratis 7-Deeg Testperiod",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Trotzdeem probéieren",
     "publicCoursesFilterTooltip": "Nëmme Coursë weisen, bei deene jidderee matmaache kann",
     "restrictedCoursesFilterTooltip": "Nëmme Coursë weisen, bei deene s du muss froen, fir matzemaachen",
-    "viewImageLabel": "Bild ukucken"
+    "viewImageLabel": "Bild ukucken",
+    "reportSent": "Rapport geschéckt",
+    "reportNotSent": "Äre Rapport konnt net geschéckt ginn. Kuckt Är Verbindung a probéiert et nach eng Kéier.",
+    "reportPointerMessage": "Eng Noriicht gouf am Cours {courseName} gemellt — kuckt Sécherheet"
 }

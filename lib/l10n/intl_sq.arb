@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-05 13:57:52.813609",
+    "@@last_modified": "2026-10-07 09:01:43.932323",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1042,9 +1042,6 @@
     "why": "Pse?",
     "definition": "Përkufizimi",
     "reportToTeacher": "Kujt dëshironi t'ia raportoni këtë mesazh?",
-    "reportMessageTitle": "{reportingUserId} ka raportuar një mesazh nga {reportedUserId} në bisedën {roomName}",
-    "reportMessageBody": "Mesazhi: {reportedMessage}\nArsyeja: {reason}",
-    "noTeachersFound": "Nuk u gjetën mësues për t'u raportuar",
     "trialExpiration": "Prova juaj falas skadon më {expiration}",
     "freeTrialDesc": "Përdoruesit e rinj marrin një provë falas njëjavore të Pangea Chat",
     "activateTrial": "Provë falas 7-ditore",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Provo gjithsesi",
     "publicCoursesFilterTooltip": "Shfaq vetëm kurset ku mund të bashkohet kushdo",
     "restrictedCoursesFilterTooltip": "Shfaq vetëm kurset ku duhet të kërkosh për t'u bashkuar",
-    "viewImageLabel": "Shiko imazhin"
+    "viewImageLabel": "Shiko imazhin",
+    "reportSent": "Raporti u dërgua",
+    "reportNotSent": "Raporti juaj nuk mund të dërgohej. Kontrolloni lidhjen tuaj dhe provoni përsëri.",
+    "reportPointerMessage": "Një mesazh u raportua në {courseName} — shihni Sigurinë"
 }

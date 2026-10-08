@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-05 13:57:50.979768",
+    "@@last_modified": "2026-10-07 09:01:40.604704",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -1042,9 +1042,6 @@
     "why": "Hvorfor?",
     "definition": "Definisjon",
     "reportToTeacher": "Hvem vil du rapportere denne meldingen til?",
-    "reportMessageTitle": "{reportingUserId} har rapportert en melding fra {reportedUserId} i chatten {roomName}",
-    "reportMessageBody": "Melding: {reportedMessage}\nÅrsak: {reason}",
-    "noTeachersFound": "Ingen lærere funnet å rapportere til",
     "trialExpiration": "Din gratis prøveperiode utløper {expiration}",
     "freeTrialDesc": "Nye brukere får en ukes gratis prøveperiode av Pangea Chat",
     "activateTrial": "Gratis 7-dagers prøveperiode",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Prøv likevel",
     "publicCoursesFilterTooltip": "Vis kun kurs alle kan delta i",
     "restrictedCoursesFilterTooltip": "Vis kun kurs du må spørre om å få delta i",
-    "viewImageLabel": "Vis bilde"
+    "viewImageLabel": "Vis bilde",
+    "reportSent": "Rapport sendt",
+    "reportNotSent": "Rapporten din kunne ikke sendes. Sjekk tilkoblingen din og prøv igjen.",
+    "reportPointerMessage": "En melding ble rapportert i {courseName} – se Sikkerhet"
 }

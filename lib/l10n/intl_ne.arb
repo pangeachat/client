@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-05 13:57:51.078303",
+    "@@last_modified": "2026-10-07 09:01:41.166506",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -1042,9 +1042,6 @@
     "why": "किन?",
     "definition": "परिभाषा",
     "reportToTeacher": "तपाईं यो सन्देश कसलाई रिपोर्ट गर्न चाहनुहुन्छ?",
-    "reportMessageTitle": "{roomName} च्याटमा {reportedUserId} बाट आएको सन्देश {reportingUserId} ले रिपोर्ट गर्नुभएको छ",
-    "reportMessageBody": "सन्देश: {reportedMessage}\nकारण: {reason}",
-    "noTeachersFound": "रिपोर्ट गर्नका लागि कुनै शिक्षक भेटिएनन्",
     "trialExpiration": "तपाईंको निःशुल्क परीक्षण {expiration} मा समाप्त हुन्छ",
     "freeTrialDesc": "नयाँ प्रयोगकर्ताहरूले पाङ्गिया च्याटको एक हप्ताको निःशुल्क परीक्षण पाउँछन्",
     "activateTrial": "निःशुल्क ७-दिने परीक्षण",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "जे भए पनि प्रयास गर्नुहोस्",
     "publicCoursesFilterTooltip": "जो कोही पनि सामेल हुन सक्ने पाठ्यक्रमहरू मात्र देखाउनुहोस्",
     "restrictedCoursesFilterTooltip": "तपाईंले सामेल हुन अनुरोध गर्नुपर्ने पाठ्यक्रमहरू मात्र देखाउनुहोस्",
-    "viewImageLabel": "तस्बिर हेर्नुहोस्"
+    "viewImageLabel": "तस्बिर हेर्नुहोस्",
+    "reportSent": "रिपोर्ट पठाइयो",
+    "reportNotSent": "तपाईंको रिपोर्ट पठाउन सकिएन। आफ्नो इन्टरनेट जडान जाँच गर्नुहोस् र फेरि प्रयास गर्नुहोस्।",
+    "reportPointerMessage": "{courseName} मा एउटा सन्देश रिपोर्ट गरिएको छ — सुरक्षा हेर्नुहोस्"
 }

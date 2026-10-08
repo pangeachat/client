@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-05 13:57:49.484777",
+    "@@last_modified": "2026-10-07 09:01:38.003578",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -1042,9 +1042,6 @@
     "why": "Эмне үчүн?",
     "definition": "Аныктама",
     "reportToTeacher": "Бул билдирүүнү кимге билдиргиңиз келет?",
-    "reportMessageTitle": "{reportingUserId} {roomName} чатындагы {reportedUserId} билдирүүсүн билдирди",
-    "reportMessageBody": "Билдирүү: {reportedMessage}\nСебеби: {reason}",
-    "noTeachersFound": "Билдирүү үчүн мугалимдер табылган жок",
     "trialExpiration": "Сиздин акысыз сыноо мөөнөтүңүз {expiration} күнү бүтөт",
     "freeTrialDesc": "Жаңы колдонуучулар Pangea Chat тиркемесинин бир жумалык акысыз сыноо мөөнөтүн алышат",
     "activateTrial": "7 күндүк акысыз сыноо",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Баары бир аракет кылуу",
     "publicCoursesFilterTooltip": "Баары кошула ала турган курстарды гана көрсөтүү",
     "restrictedCoursesFilterTooltip": "Кошулуу үчүн сураныш керек болгон курстарды гана көрсөтүү",
-    "viewImageLabel": "Сүрөттү көрүү"
+    "viewImageLabel": "Сүрөттү көрүү",
+    "reportSent": "Кабар жөнөтүлдү",
+    "reportNotSent": "Кабарыңыз жөнөтүлгөн жок. Байланышыңызды текшерип, кайра аракет кылыңыз.",
+    "reportPointerMessage": "{courseName} курсунда билдирүү жөнөтүлдү — Коопсуздукту караңыз"
 }

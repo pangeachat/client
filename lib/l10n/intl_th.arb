@@ -2757,9 +2757,6 @@
     "why": "ทำไม?",
     "definition": "คำจำกัดความ",
     "reportToTeacher": "คุณต้องการรายงานข้อความนี้ให้ใคร?",
-    "reportMessageTitle": "{reportingUserId} ได้รายงานข้อความจาก {reportedUserId} ในแชท {roomName}",
-    "reportMessageBody": "ข้อความ: {reportedMessage}\nเหตุผล: {reason}",
-    "noTeachersFound": "ไม่พบครูที่จะรายงาน",
     "trialExpiration": "การทดลองใช้งานฟรีของคุณจะหมดอายุใน {expiration}",
     "freeTrialDesc": "ผู้ใช้ใหม่จะได้รับการทดลองใช้งานฟรีหนึ่งสัปดาห์ของ Pangea Chat",
     "activateTrial": "ทดลองใช้งานฟรี 7 วัน",
@@ -3093,7 +3090,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-05 13:57:53.552278",
+    "@@last_modified": "2026-10-07 09:01:45.410335",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -5403,35 +5400,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10612,5 +10580,8 @@
     "ssoTryAnyway": "ลองอีกครั้ง",
     "publicCoursesFilterTooltip": "แสดงเฉพาะคอร์สที่ทุกคนเข้าร่วมได้",
     "restrictedCoursesFilterTooltip": "แสดงเฉพาะคอร์สที่คุณต้องขอเข้าร่วม",
-    "viewImageLabel": "ดูรูปภาพ"
+    "viewImageLabel": "ดูรูปภาพ",
+    "reportSent": "ส่งรายงานแล้ว",
+    "reportNotSent": "ไม่สามารถส่งรายงานของคุณได้ โปรดตรวจสอบการเชื่อมต่อและลองอีกครั้ง",
+    "reportPointerMessage": "มีข้อความถูกรายงานใน {courseName} — ดูที่ความปลอดภัย"
 }

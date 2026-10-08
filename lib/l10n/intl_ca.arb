@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:45.751920",
+    "@@last_modified": "2026-10-07 09:01:31.984471",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -3105,9 +3105,6 @@
     "why": "Per què?",
     "definition": "Definició",
     "reportToTeacher": "A qui vols informar d'aquest missatge?",
-    "reportMessageTitle": "{reportingUserId} ha reportat un missatge de {reportedUserId} a la conversa {roomName}",
-    "reportMessageBody": "Missatge: {reportedMessage}\nMotiu: {reason}",
-    "noTeachersFound": "No s'han trobat mestres per informar-hi",
     "trialExpiration": "La teva prova gratuïta expira el {expiration}",
     "freeTrialDesc": "Els nous usuaris reben una prova gratuïta d'una setmana de Pangea Chat",
     "activateTrial": "Prova gratuïta de 7 dies",
@@ -4898,35 +4895,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10107,5 +10075,8 @@
     "ssoTryAnyway": "Prova igualment",
     "publicCoursesFilterTooltip": "Mostra només els cursos als quals qualsevol es pot unir",
     "restrictedCoursesFilterTooltip": "Mostra només els cursos als quals has de demanar unió",
-    "viewImageLabel": "Veure imatge"
+    "viewImageLabel": "Veure imatge",
+    "reportSent": "Informe enviat",
+    "reportNotSent": "No s'ha pogut enviar l'informe. Comprova la connexió i torna-ho a provar.",
+    "reportPointerMessage": "S'ha informat d'un missatge a {courseName}; consulta Seguretat"
 }

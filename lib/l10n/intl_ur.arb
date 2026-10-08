@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-05 13:57:54.553215",
+    "@@last_modified": "2026-10-07 09:01:46.472080",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -1042,9 +1042,6 @@
     "why": "کیوں؟",
     "definition": "تعریف",
     "reportToTeacher": "آپ اس پیغام کی اطلاع کس کو دینا چاہتے ہیں؟",
-    "reportMessageTitle": "{reportingUserId} نے {roomName} چیٹ میں {reportedUserId} کی طرف سے ایک پیغام کی اطلاع دی ہے",
-    "reportMessageBody": "پیغام: {reportedMessage}\nوجہ: {reason}",
-    "noTeachersFound": "اطلاع دینے کے لیے کوئی استاد نہیں ملا",
     "trialExpiration": "آپ کا مفت ٹرائل {expiration} کو ختم ہو رہا ہے",
     "freeTrialDesc": "نئے صارفین کو پینجیا چیٹ کا ایک ہفتہ کا مفت ٹرائل ملتا ہے",
     "activateTrial": "7 دن کا مفت ٹرائل",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "پھر بھی کوشش کریں",
     "publicCoursesFilterTooltip": "صرف وہ کورسز دکھائیں جن میں کوئی بھی شامل ہو سکتا ہے",
     "restrictedCoursesFilterTooltip": "صرف وہ کورسز دکھائیں جن میں شامل ہونے کے لیے آپ کو درخواست کرنی ہوگی",
-    "viewImageLabel": "تصویر دیکھیں"
+    "viewImageLabel": "تصویر دیکھیں",
+    "reportSent": "رپورٹ بھیج دی گئی",
+    "reportNotSent": "آپ کی رپورٹ بھیجی نہیں جا سکی۔ اپنا کنکشن چیک کریں اور دوبارہ کوشش کریں۔",
+    "reportPointerMessage": "{courseName} میں ایک پیغام کی اطلاع دی گئی ہے — سیفٹی دیکھیں"
 }

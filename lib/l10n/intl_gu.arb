@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-05 13:57:47.634215",
+    "@@last_modified": "2026-10-07 09:01:31.989011",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -1042,9 +1042,6 @@
     "why": "શા માટે?",
     "definition": "વ્યાખ્યા",
     "reportToTeacher": "તમે આ સંદેશની જાણ કોને કરવા માંગો છો?",
-    "reportMessageTitle": "{reportingUserId} એ ચેટ {roomName} માં {reportedUserId} ના સંદેશની જાણ કરી છે",
-    "reportMessageBody": "સંદેશ: {reportedMessage}\nકારણ: {reason}",
-    "noTeachersFound": "જાણ કરવા માટે કોઈ શિક્ષકો મળ્યા નથી",
     "trialExpiration": "તમારો મફત ટ્રાયલ {expiration} ના રોજ સમાપ્ત થાય છે",
     "freeTrialDesc": "નવા વપરાશકર્તાઓને Pangea Chat નો એક અઠવાડિયાનો મફત ટ્રાયલ મળે છે",
     "activateTrial": "7-દિવસનો મફત ટ્રાયલ",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "તો પણ પ્રયાસ કરો",
     "publicCoursesFilterTooltip": "ફક્ત એવા અભ્યાસક્રમો બતાવો જેમાં કોઈપણ જોડાઈ શકે",
     "restrictedCoursesFilterTooltip": "ફક્ત એવા અભ્યાસક્રમો બતાવો જેમાં જોડાવા માટે તમારે પૂછવું પડશે",
-    "viewImageLabel": "છબી જુઓ"
+    "viewImageLabel": "છબી જુઓ",
+    "reportSent": "રિપોર્ટ મોકલી દેવાયો છે",
+    "reportNotSent": "તમારો રિપોર્ટ મોકલી શકાયો નથી. તમારું કનેક્શન તપાસો અને ફરી પ્રયાસ કરો.",
+    "reportPointerMessage": "{courseName}માં એક મેસેજની જાણ કરવામાં આવી હતી — સુરક્ષા જુઓ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-05 13:57:46.120717",
+    "@@last_modified": "2026-10-07 09:01:29.540665",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -3243,9 +3243,6 @@
     "why": "Warum?",
     "definition": "Definition",
     "reportToTeacher": "Wen möchten Sie diese Nachricht melden?",
-    "reportMessageTitle": "{reportingUserId} hat eine Nachricht von {reportedUserId} im Chat {roomName} gemeldet",
-    "reportMessageBody": "Nachricht: {reportedMessage}\nGrund: {reason}",
-    "noTeachersFound": "Keine Lehrer zum Melden gefunden",
     "trialExpiration": "Ihre kostenlose Testphase läuft am {expiration} ab",
     "freeTrialDesc": "Neue Nutzer erhalten eine einwöchige kostenlose Testphase von Pangea Chat",
     "activateTrial": "Kostenlose 7-Tage-Testversion",
@@ -4972,35 +4969,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -9967,5 +9935,8 @@
     "ssoTryAnyway": "Trotzdem versuchen",
     "publicCoursesFilterTooltip": "Nur Kurse anzeigen, denen jeder beitreten kann",
     "restrictedCoursesFilterTooltip": "Nur Kurse anzeigen, für die du eine Beitrittsanfrage stellen musst",
-    "viewImageLabel": "Bild ansehen"
+    "viewImageLabel": "Bild ansehen",
+    "reportSent": "Bericht gesendet",
+    "reportNotSent": "Ihr Bericht konnte nicht gesendet werden. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+    "reportPointerMessage": "Eine Nachricht wurde in {courseName} gemeldet – siehe Sicherheit"
 }

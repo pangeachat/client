@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-05 13:57:48.896944",
+    "@@last_modified": "2026-10-07 09:01:34.867078",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -1042,9 +1042,6 @@
     "why": "Napa?",
     "definition": "Dhèfinisi",
     "reportToTeacher": "Sapa sing arep koklaporake pesen iki?",
-    "reportMessageTitle": "{reportingUserId} wis nglaporake pesen saka {reportedUserId} ing obrolan {roomName}",
-    "reportMessageBody": "Pesen: {reportedMessage}\nAlasan: {reason}",
-    "noTeachersFound": "Ora ana guru sing ditemokake kanggo dilaporake",
     "trialExpiration": "Uji coba gratis sampeyan kadaluwarsa ing {expiration}",
     "freeTrialDesc": "Pangguna anyar nampa uji coba gratis saminggu Pangea Chat",
     "activateTrial": "Uji Coba Gratis 7 Dina",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Coba wae",
     "publicCoursesFilterTooltip": "Tampilake mung kursus sing sapa wae bisa melu",
     "restrictedCoursesFilterTooltip": "Tampilake mung kursus sing kudu njaluk ijin kanggo melu",
-    "viewImageLabel": "Deleng gambar"
+    "viewImageLabel": "Deleng gambar",
+    "reportSent": "Laporan dikirim",
+    "reportNotSent": "Laporanmu ora bisa dikirim. Priksa sambunganmu lan coba maneh.",
+    "reportPointerMessage": "Ana pesen sing dilaporake ing {courseName} — deleng Keamanan"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:53.537451",
+    "@@last_modified": "2026-10-07 09:01:45.291808",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -3131,9 +3131,6 @@
     "why": "ஏன்?",
     "definition": "வரையறை",
     "reportToTeacher": "இந்த செய்தியை யாருக்கு அறிக்கை செய்ய விரும்புகிறீர்கள்?",
-    "reportMessageTitle": "{reportingUserId} என்பவர் {reportedUserId} இன் செய்தியை {roomName} இல் அறிக்கை செய்துள்ளார்",
-    "reportMessageBody": "செய்தி: {reportedMessage}\nகாரணம்: {reason}",
-    "noTeachersFound": "அறிக்கை செய்ய ஆசிரியர்கள் இல்லை",
     "trialExpiration": "உங்கள் இலவச சோதனை {expiration} அன்று முடிவடைகிறது",
     "freeTrialDesc": "புதிய பயனர்கள் பங்கேயா சந்தையில் ஒரு வார இலவச சோதனை பெறுகிறார்கள்",
     "activateTrial": "இலவச 7-நாள் சோதனை",
@@ -4873,35 +4870,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10072,5 +10040,8 @@
     "ssoTryAnyway": "எப்படியும் முயற்சி செய்",
     "publicCoursesFilterTooltip": "யாரும் சேரக்கூடிய படிப்புகளை மட்டும் காட்டு",
     "restrictedCoursesFilterTooltip": "நீங்கள் சேர அனுமதி கேட்க வேண்டிய படிப்புகளை மட்டும் காட்டு",
-    "viewImageLabel": "படத்தைப் பார்"
+    "viewImageLabel": "படத்தைப் பார்",
+    "reportSent": "புகார் அனுப்பப்பட்டது",
+    "reportNotSent": "உங்கள் புகாரை அனுப்ப முடியவில்லை. உங்கள் இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.",
+    "reportPointerMessage": "{courseName} இல் ஒரு செய்தி புகாரளிக்கப்பட்டது — பாதுகாப்பைப் பார்க்கவும்"
 }

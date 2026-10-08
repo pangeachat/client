@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:49.102067",
+    "@@last_modified": "2026-10-07 09:01:36.873629",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -3075,9 +3075,6 @@
     "why": "왜?",
     "definition": "정의",
     "reportToTeacher": "이 메시지를 누구에게 신고하시겠습니까?",
-    "reportMessageTitle": "{reportingUserId}님이 채팅 {roomName}에서 {reportedUserId}의 메시지를 신고했습니다",
-    "reportMessageBody": "메시지: {reportedMessage}\n이유: {reason}",
-    "noTeachersFound": "신고할 선생님을 찾을 수 없습니다",
     "trialExpiration": "무료 체험이 {expiration}에 만료됩니다",
     "freeTrialDesc": "신규 사용자는 일주일간 무료 체험을 받습니다",
     "activateTrial": "무료 7일 체험 시작",
@@ -4964,35 +4961,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10173,5 +10141,8 @@
     "ssoTryAnyway": "그래도 시도",
     "publicCoursesFilterTooltip": "누구나 참여할 수 있는 코스만 표시",
     "restrictedCoursesFilterTooltip": "참여를 요청해야 하는 코스만 표시",
-    "viewImageLabel": "이미지 보기"
+    "viewImageLabel": "이미지 보기",
+    "reportSent": "신고가 전송되었습니다",
+    "reportNotSent": "신고를 보낼 수 없습니다. 연결 상태를 확인하고 다시 시도해 주세요.",
+    "reportPointerMessage": "{courseName}에서 메시지가 신고되었습니다. 안전을 참조하세요."
 }

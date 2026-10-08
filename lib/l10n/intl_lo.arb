@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-05 13:57:50.052940",
+    "@@last_modified": "2026-10-07 09:01:37.948011",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -1042,9 +1042,6 @@
     "why": "ເປັນຫຍັງ?",
     "definition": "ຄໍານິຍາມ",
     "reportToTeacher": "ທ່ານຕ້ອງການລາຍງານຂໍ້ຄວາມນີ້ໃຫ້ໃຜ?",
-    "reportMessageTitle": "{reportingUserId} ໄດ້ລາຍງານຂໍ້ຄວາມຈາກ {reportedUserId} ໃນການສົນທະນາ {roomName}",
-    "reportMessageBody": "ຂໍ້ຄວາມ: {reportedMessage}\nເຫດຜົນ: {reason}",
-    "noTeachersFound": "ບໍ່ພົບຄູສອນທີ່ຈະລາຍງານ",
     "trialExpiration": "ການທົດລອງໃຊ້ຟຣີຂອງທ່ານຈະໝົດອາຍຸໃນວັນທີ {expiration}",
     "freeTrialDesc": "ຜູ້ໃຊ້ໃໝ່ຈະໄດ້ຮັບການທົດລອງໃຊ້ Pangea Chat ຟຣີໜຶ່ງອາທິດ",
     "activateTrial": "ທົດລອງໃຊ້ຟຣີ 7 ວັນ",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "ລອງອີກຄັ້ງ",
     "publicCoursesFilterTooltip": "ສະແດງສະເພາະຫຼັກສູດທີ່ໃຜໆກໍເຂົ້າຮ່ວມໄດ້",
     "restrictedCoursesFilterTooltip": "ສະແດງສະເພາະຫຼັກສູດທີ່ທ່ານຕ້ອງຂໍເຂົ້າຮ່ວມ",
-    "viewImageLabel": "ເບິ່ງຮູບພາບ"
+    "viewImageLabel": "ເບິ່ງຮູບພາບ",
+    "reportSent": "ລາຍງານຖືກສົ່ງແລ້ວ",
+    "reportNotSent": "ບໍ່ສາມາດສົ່ງລາຍງານຂອງທ່ານໄດ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ ແລະລອງໃໝ່ອີກຄັ້ງ.",
+    "reportPointerMessage": "ມີຂໍ້ຄວາມຖືກລາຍງານໃນ {courseName} — ເບິ່ງຄວາມປອດໄພ"
 }

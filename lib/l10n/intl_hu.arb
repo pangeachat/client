@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-05 13:57:48.265018",
+    "@@last_modified": "2026-10-07 09:01:33.546310",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -3125,9 +3125,6 @@
     "why": "Miért?",
     "definition": "Definíció",
     "reportToTeacher": "Kinek szeretnéd jelenteni az üzenetet?",
-    "reportMessageTitle": "{reportingUserId} jelentett egy üzenetet a(z) {reportedUserId} felhasználótól a(z) {roomName} csoportban",
-    "reportMessageBody": "Üzenet: {reportedMessage}\nOk: {reason}",
-    "noTeachersFound": "Nincs tanár, akinek jelenthetnél",
     "trialExpiration": "Az ingyenes próbálkozásod lejár {expiration}",
     "freeTrialDesc": "Új felhasználók egy hetes ingyenes próbát kapnak a Pangea Chat alkalmazáshoz",
     "activateTrial": "Ingyenes 7 napos próba",
@@ -4874,35 +4871,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10083,5 +10051,8 @@
     "ssoTryAnyway": "Mégis megpróbálom",
     "publicCoursesFilterTooltip": "Csak olyan kurzusok megjelenítése, amelyekhez bárki csatlakozhat",
     "restrictedCoursesFilterTooltip": "Csak olyan kurzusok megjelenítése, amelyekhez engedélyt kell kérni",
-    "viewImageLabel": "Kép megtekintése"
+    "viewImageLabel": "Kép megtekintése",
+    "reportSent": "Jelentés elküldve",
+    "reportNotSent": "A jelentés nem küldhető el. Ellenőrizze az internetkapcsolatát, és próbálja újra.",
+    "reportPointerMessage": "Üzenet jelentve a {courseName} kurzusban – lásd a Biztonság menüpontot"
 }

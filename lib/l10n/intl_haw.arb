@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-05 13:57:47.490668",
+    "@@last_modified": "2026-10-07 09:01:32.345781",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -1042,9 +1042,6 @@
     "why": "No ke aha?",
     "definition": "Wehewehe ‘ana",
     "reportToTeacher": "Makemake ‘oe e hō‘ike i kēia memo iā wai?",
-    "reportMessageTitle": "Ua hō‘ike ‘o {reportingUserId} i kekahi memo mai iā {reportedUserId} ma ke kama‘ilio {roomName}",
-    "reportMessageBody": "Memo: {reportedMessage}\nKumu: {reason}",
-    "noTeachersFound": "‘A‘ohe kumu i loa‘a e hō‘ike aku ai",
     "trialExpiration": "E pau ana kāu ho‘ā‘o manuahi ma ka lā {expiration}",
     "freeTrialDesc": "Loa‘a i nā mea ho‘ohana hou he ho‘okahi pule ho‘ā‘o manuahi o Pangea Chat",
     "activateTrial": "Ho‘ā‘o Manuahi no 7 Lā",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "E hoʻāʻo nō",
     "publicCoursesFilterTooltip": "Hōʻike wale i nā papa e hiki ai i kekahi ke komo",
     "restrictedCoursesFilterTooltip": "Hōʻike wale i nā papa e pono ai ʻoe e noi e komo",
-    "viewImageLabel": "Nānā kiʻi"
+    "viewImageLabel": "Nānā kiʻi",
+    "reportSent": "Ua hoʻouna ʻia ka hōʻike",
+    "reportNotSent": "ʻAʻole hiki ke hoʻouna ʻia kāu hōʻike. E nānā i kāu pili pūnaewele a e hoʻāʻo hou.",
+    "reportPointerMessage": "Ua hōʻike ʻia kekahi leka ma {courseName} — e nānā i ka Palekana"
 }

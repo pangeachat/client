@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-05 13:57:53.534835",
+    "@@last_modified": "2026-10-07 09:01:44.695082",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -1042,9 +1042,6 @@
     "why": "Hobaneng?",
     "definition": "Tlhaloso",
     "reportToTeacher": "U batla ho tlaleha molaetsa ona ho mang?",
-    "reportMessageTitle": "{reportingUserId} o tlalehile molaetsa o tsoang ho {reportedUserId} moqoqong oa {roomName}",
-    "reportMessageBody": "Molaetsa: {reportedMessage}\nLebaka: {reason}",
-    "noTeachersFound": "Ha ho matichere a fumanoeng ho tlaleha ho bona",
     "trialExpiration": "Teko ea hau ea mahala e fela ka {expiration}",
     "freeTrialDesc": "Basebelisi ba bacha ba fumana teko ea mahala ea beke e le 'ngoe ea Pangea Chat",
     "activateTrial": "Teko ea Mahala ea Matsatsi a 7",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Leka leha ho le joalo",
     "publicCoursesFilterTooltip": "Bontsha lithuto tseo mang kapa mang a ka kenelang ho tsona feela",
     "restrictedCoursesFilterTooltip": "Bontsha lithuto tseo o tlamehang ho kopa ho kenela ho tsona feela",
-    "viewImageLabel": "Bona setshwantsho"
+    "viewImageLabel": "Bona setshwantsho",
+    "reportSent": "Tlaleho e rometsoe",
+    "reportNotSent": "Tlaleho ea hau e ne e ke ke ea romeloa. Lekola khokahano ea hau 'me u leke hape.",
+    "reportPointerMessage": "Molaetsa o tlalehiloe ho {courseName} — bona Polokeho"
 }

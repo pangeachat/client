@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-05 13:57:50.309561",
+    "@@last_modified": "2026-10-07 09:01:38.625827",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -1042,9 +1042,6 @@
     "why": "എന്തുകൊണ്ട്?",
     "definition": "നിർവചനം",
     "reportToTeacher": "ഈ സന്ദേശം ആരെയാണ് അറിയിക്കേണ്ടത്?",
-    "reportMessageTitle": "{roomName} എന്ന ചാറ്റിൽ {reportedUserId} അയച്ച സന്ദേശം {reportingUserId} റിപ്പോർട്ട് ചെയ്തിരിക്കുന്നു",
-    "reportMessageBody": "സന്ദേശം: {reportedMessage}\nകാരണം: {reason}",
-    "noTeachersFound": "റിപ്പോർട്ട് ചെയ്യാൻ അധ്യാപകരെ കണ്ടെത്തിയില്ല",
     "trialExpiration": "നിങ്ങളുടെ സൗജന്യ ട്രയൽ {expiration} ന് അവസാനിക്കുന്നു",
     "freeTrialDesc": "പുതിയ ഉപയോക്താക്കൾക്ക് പാഞ്ചിയ ചാറ്റിന്റെ ഒരാഴ്ചത്തെ സൗജന്യ ട്രയൽ ലഭിക്കും",
     "activateTrial": "7 ദിവസത്തെ സൗജന്യ ട്രയൽ",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "എന്തായാലും ശ്രമിക്കുക",
     "publicCoursesFilterTooltip": "ആർക്കും ചേരാൻ കഴിയുന്ന കോഴ്സുകൾ മാത്രം കാണിക്കുക",
     "restrictedCoursesFilterTooltip": "ചേരാൻ അനുവാദം ചോദിക്കേണ്ട കോഴ്സുകൾ മാത്രം കാണിക്കുക",
-    "viewImageLabel": "ചിത്രം കാണുക"
+    "viewImageLabel": "ചിത്രം കാണുക",
+    "reportSent": "റിപ്പോർട്ട് അയച്ചു",
+    "reportNotSent": "നിങ്ങളുടെ റിപ്പോർട്ട് അയക്കാൻ കഴിഞ്ഞില്ല. നിങ്ങളുടെ കണക്ഷൻ പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക.",
+    "reportPointerMessage": "{courseName} എന്നതിൽ ഒരു സന്ദേശം റിപ്പോർട്ട് ചെയ്തിട്ടുണ്ട് — സുരക്ഷ കാണുക"
 }

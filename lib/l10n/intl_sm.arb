@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-05 13:57:52.989551",
+    "@@last_modified": "2026-10-07 09:01:44.141203",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1042,9 +1042,6 @@
     "why": "Aisea?",
     "definition": "Faʻamatalaga",
     "reportToTeacher": "O ai e te manaʻo e lipoti atu i ai lenei feʻau?",
-    "reportMessageTitle": "Ua lipotia e {reportingUserId} se feʻau mai ia {reportedUserId} i le talanoaga {roomName}",
-    "reportMessageBody": "Feʻau: {reportedMessage}\nMafuaʻaga: {reason}",
-    "noTeachersFound": "Leai ni faiaoga na maua e lipoti atu i ai",
     "trialExpiration": "E muta lau faʻataʻitaʻiga fua i le aso {expiration}",
     "freeTrialDesc": "E maua e tagata faʻaaoga fou se vaiaso e tasi le faʻataʻitaʻiga fua o le Pangea Chat",
     "activateTrial": "Faʻataʻitaʻiga Fua mo le 7 Aso",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Taumafai lava",
     "publicCoursesFilterTooltip": "Fa'aali na'o a'oa'oga e mafai e so'o se tasi ona auai",
     "restrictedCoursesFilterTooltip": "Fa'aali na'o a'oa'oga e tatau ona e talosaga e auai",
-    "viewImageLabel": "Vaʻai le ata"
+    "viewImageLabel": "Vaʻai le ata",
+    "reportSent": "Lipoti ua auina atu",
+    "reportNotSent": "E leʻi mafai ona auina atu lau lipoti. Siaki lau fesoʻotaʻiga ma toe taumafai.",
+    "reportPointerMessage": "Na lipotia se feʻau i le {courseName} — vaʻai i le Saogalemu"
 }

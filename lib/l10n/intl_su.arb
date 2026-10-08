@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-05 13:57:53.640600",
+    "@@last_modified": "2026-10-07 09:01:44.310259",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1042,9 +1042,6 @@
     "why": "Kunaon?",
     "definition": "Hartos",
     "reportToTeacher": "Saha nu badé dilaporkeun ieu pesen?",
-    "reportMessageTitle": "{reportingUserId} ngalaporkeun pesen ti {reportedUserId} di obrolan {roomName}",
-    "reportMessageBody": "Pesen: {reportedMessage}\nAlesan: {reason}",
-    "noTeachersFound": "Teu aya guru nu kapendak kanggo dilaporkeun",
     "trialExpiration": "Uji coba gratis anjeun béak dina {expiration}",
     "freeTrialDesc": "Pangguna énggal nampi uji coba gratis saminggu Pangea Chat",
     "activateTrial": "Uji Coba Gratis 7 Dinten",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Cobi waé",
     "publicCoursesFilterTooltip": "Tampilkeun kursus-kursus anu saha waé tiasa ngiringan",
     "restrictedCoursesFilterTooltip": "Tampilkeun kursus-kursus anu anjeun kedah nyuhunkeun pikeun ngiringan",
-    "viewImageLabel": "Témbongkeun gambar"
+    "viewImageLabel": "Témbongkeun gambar",
+    "reportSent": "Laporan dikirim",
+    "reportNotSent": "Laporan anjeun teu tiasa dikirim. Pariksa sambungan anjeun teras cobian deui.",
+    "reportPointerMessage": "Aya béja dilaporkeun di {courseName} — tingali Kasalametan"
 }

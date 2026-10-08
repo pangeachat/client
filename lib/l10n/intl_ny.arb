@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-05 13:57:51.438243",
+    "@@last_modified": "2026-10-07 09:01:41.072427",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -1042,9 +1042,6 @@
     "why": "Chifukwa chiyani?",
     "definition": "Tanthauzo",
     "reportToTeacher": "Mukufuna kudziwitsa mphunzitsi uthenga uwu ndani?",
-    "reportMessageTitle": "{reportingUserId} wanena za uthenga wochokera kwa {reportedUserId} mu macheza {roomName}",
-    "reportMessageBody": "Uthenga: {reportedMessage}\nChifukwa: {reason}",
-    "noTeachersFound": "Palibe aphunzitsi omwe apezedwa oti mudziwitse",
     "trialExpiration": "Nthawi yanu yaulere ikutha pa {expiration}",
     "freeTrialDesc": "Ogwiritsa ntchito atsopano amalandira sabata imodzi yaulere ya Pangea Chat",
     "activateTrial": "Yesani kwaulere masiku 7",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Yesani komabe",
     "publicCoursesFilterTooltip": "Onetsani maphunziro okhawo amene aliyense angalowe",
     "restrictedCoursesFilterTooltip": "Onetsani maphunziro okhawo amene muyenera kupempha kuti mulowe",
-    "viewImageLabel": "Onani chithunzi"
+    "viewImageLabel": "Onani chithunzi",
+    "reportSent": "Lipoti latumizidwa",
+    "reportNotSent": "Lipoti lanu silinatumizidwe. Onani intaneti yanu ndikuyesanso.",
+    "reportPointerMessage": "Uthenga unanenedwa mu {courseName} — onani Chitetezo"
 }

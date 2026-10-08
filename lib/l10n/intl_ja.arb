@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-05 13:57:48.603201",
+    "@@last_modified": "2026-10-07 09:01:36.845160",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -2613,9 +2613,6 @@
     "why": "なぜ？",
     "definition": "定義",
     "reportToTeacher": "このメッセージを誰に報告しますか？",
-    "reportMessageTitle": "{reportingUserId}がチャット{roomName}で{reportedUserId}のメッセージを報告しました",
-    "reportMessageBody": "メッセージ: {reportedMessage}\n理由: {reason}",
-    "noTeachersFound": "報告する教師が見つかりません",
     "trialExpiration": "無料トライアルは {expiration} に終了します",
     "freeTrialDesc": "新規ユーザーはPangea Chatの1週間無料トライアルを受けられます",
     "activateTrial": "無料の7日間トライアルを開始",
@@ -5540,35 +5537,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10749,5 +10717,8 @@
     "ssoTryAnyway": "とにかく試す",
     "publicCoursesFilterTooltip": "誰でも参加できるコースのみを表示",
     "restrictedCoursesFilterTooltip": "参加申請が必要なコースのみを表示",
-    "viewImageLabel": "画像を表示"
+    "viewImageLabel": "画像を表示",
+    "reportSent": "レポートを送信しました",
+    "reportNotSent": "レポートを送信できませんでした。接続を確認して、もう一度お試しください。",
+    "reportPointerMessage": "{courseName}でメッセージが報告されました — 安全設定を確認してください"
 }

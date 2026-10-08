@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:54.461613",
+    "@@last_modified": "2026-10-07 09:01:44.481318",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -2856,9 +2856,6 @@
     "why": "Varför?",
     "definition": "Definition",
     "reportToTeacher": "Vem vill du rapportera detta meddelande till?",
-    "reportMessageTitle": "{reportingUserId} har rapporterat ett meddelande från {reportedUserId} i chatten {roomName}",
-    "reportMessageBody": "Meddelande: {reportedMessage}\nOrsak: {reason}",
-    "noTeachersFound": "Inga lärare hittades att rapportera till",
     "trialExpiration": "Din gratis provperiod löper ut den {expiration}",
     "freeTrialDesc": "Nya användare får en veckas gratis provperiod av Pangea Chat",
     "activateTrial": "Gratis 7-dagars provperiod",
@@ -5289,35 +5286,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10498,5 +10466,8 @@
     "ssoTryAnyway": "Försök ändå",
     "publicCoursesFilterTooltip": "Visa endast kurser som alla kan gå med i",
     "restrictedCoursesFilterTooltip": "Visa endast kurser du måste be om att få gå med i",
-    "viewImageLabel": "Visa bild"
+    "viewImageLabel": "Visa bild",
+    "reportSent": "Rapport skickad",
+    "reportNotSent": "Din rapport kunde inte skickas. Kontrollera din anslutning och försök igen.",
+    "reportPointerMessage": "Ett meddelande rapporterades i {courseName} – se Säkerhet"
 }

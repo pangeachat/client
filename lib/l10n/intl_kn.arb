@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-05 13:57:49.340157",
+    "@@last_modified": "2026-10-07 09:01:37.783609",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -1042,9 +1042,6 @@
     "why": "ಏಕೆ?",
     "definition": "ವ್ಯಾಖ್ಯಾನ",
     "reportToTeacher": "ಈ ಸಂದೇಶವನ್ನು ಯಾರಿಗೆ ವರದಿ ಮಾಡಲು ಬಯಸುತ್ತೀರಿ?",
-    "reportMessageTitle": "{reportingUserId} ಚಾಟ್ {roomName} ನಲ್ಲಿ {reportedUserId} ನಿಂದ ಸಂದೇಶವನ್ನು ವರದಿ ಮಾಡಿದ್ದಾರೆ",
-    "reportMessageBody": "ಸಂದೇಶ: {reportedMessage}\nಕಾರಣ: {reason}",
-    "noTeachersFound": "ವರದಿ ಮಾಡಲು ಯಾವುದೇ ಶಿಕ್ಷಕರು ಕಂಡುಬಂದಿಲ್ಲ",
     "trialExpiration": "ನಿಮ್ಮ ಉಚಿತ ಪ್ರಯೋಗವು {expiration} ರಂದು ಮುಕ್ತಾಯಗೊಳ್ಳುತ್ತದೆ",
     "freeTrialDesc": "ಹೊಸ ಬಳಕೆದಾರರು ಪ್ಯಾಂಗಿಯಾ ಚಾಟ್‌ನ ಒಂದು ವಾರದ ಉಚಿತ ಪ್ರಯೋಗವನ್ನು ಪಡೆಯುತ್ತಾರೆ",
     "activateTrial": "ಉಚಿತ 7-ದಿನಗಳ ಪ್ರಯೋಗ",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "ಹೇಗಾದರೂ ಪ್ರಯತ್ನಿಸಿ",
     "publicCoursesFilterTooltip": "ಯಾರಾದರೂ ಸೇರಬಹುದಾದ ಕೋರ್ಸ್‌ಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ",
     "restrictedCoursesFilterTooltip": "ನೀವು ಸೇರಲು ಕೇಳಬೇಕಾದ ಕೋರ್ಸ್‌ಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ",
-    "viewImageLabel": "ಚಿತ್ರವನ್ನು ವೀಕ್ಷಿಸಿ"
+    "viewImageLabel": "ಚಿತ್ರವನ್ನು ವೀಕ್ಷಿಸಿ",
+    "reportSent": "ವರದಿ ಕಳುಹಿಸಲಾಗಿದೆ",
+    "reportNotSent": "ನಿಮ್ಮ ವರದಿಯನ್ನು ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    "reportPointerMessage": "{courseName} ನಲ್ಲಿ ಸಂದೇಶವನ್ನು ವರದಿ ಮಾಡಲಾಗಿದೆ — ಸುರಕ್ಷತೆಯನ್ನು ನೋಡಿ"
 }

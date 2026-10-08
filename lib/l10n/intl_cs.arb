@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-05 13:57:46.712062",
+    "@@last_modified": "2026-10-07 09:01:30.269948",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -2827,9 +2827,6 @@
     "why": "Proč?",
     "definition": "Definice",
     "reportToTeacher": "Komu chcete nahlásit tuto zprávu?",
-    "reportMessageTitle": "{reportingUserId} nahlásil zprávu od {reportedUserId} v chatu {roomName}",
-    "reportMessageBody": "Zpráva: {reportedMessage}\nDůvod: {reason}",
-    "noTeachersFound": "Nebyli nalezeni žádní učitelé k nahlášení",
     "trialExpiration": "Váš bezplatný zkušební čas vyprší dne {expiration}",
     "freeTrialDesc": "Noví uživatelé získávají týdenní bezplatnou zkušební verzi Pangea Chat",
     "activateTrial": "Aktivovat bezplatnou 7denní zkušební verzi",
@@ -5279,35 +5276,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10474,5 +10442,8 @@
     "ssoTryAnyway": "Přesto zkusit",
     "publicCoursesFilterTooltip": "Zobrazit pouze kurzy, ke kterým se může připojit kdokoli",
     "restrictedCoursesFilterTooltip": "Zobrazit pouze kurzy, o které musíte požádat o připojení",
-    "viewImageLabel": "Zobrazit obrázek"
+    "viewImageLabel": "Zobrazit obrázek",
+    "reportSent": "Hlášení odesláno",
+    "reportNotSent": "Vaše hlášení se nepodařilo odeslat. Zkontrolujte připojení a zkuste to znovu.",
+    "reportPointerMessage": "Zpráva byla nahlášena v {courseName} – viz Bezpečnost"
 }

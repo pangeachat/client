@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-05 13:57:52.662235",
+    "@@last_modified": "2026-10-07 09:01:43.326619",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -1042,9 +1042,6 @@
     "why": "ڇو؟",
     "definition": "تعريف",
     "reportToTeacher": "توهان هن پيغام جي رپورٽ ڪنهن کي ڪرڻ چاهيو ٿا؟",
-    "reportMessageTitle": "{reportingUserId} {reportedUserId} کان {roomName} چيٽ ۾ هڪ پيغام رپورٽ ڪيو آهي",
-    "reportMessageBody": "پيغام: {reportedMessage}\nسبب: {reason}",
-    "noTeachersFound": "رپورٽ ڪرڻ لاءِ ڪو به استاد نه مليو",
     "trialExpiration": "توهان جي مفت آزمائش {expiration} تي ختم ٿيندي",
     "freeTrialDesc": "نئين استعمال ڪندڙن کي پينجيا چيٽ جي هڪ هفتي جي مفت آزمائش ملندي",
     "activateTrial": "مفت 7 ڏينهن جي آزمائش",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "بهرحال ڪوشش ڪريو",
     "publicCoursesFilterTooltip": "صرف اهي ڪورس ڏيکاريو جيڪي ڪو به شامل ٿي سگهي ٿو",
     "restrictedCoursesFilterTooltip": "صرف اهي ڪورس ڏيکاريو جن ۾ شامل ٿيڻ لاءِ توهان کي پڇڻو پوندو",
-    "viewImageLabel": "تصوير ڏسو"
+    "viewImageLabel": "تصوير ڏسو",
+    "reportSent": "رپورٽ موڪلي وئي",
+    "reportNotSent": "توهان جي رپورٽ موڪلي نه سگهجي. پنهنجو ڪنيڪشن چيڪ ڪريو ۽ ٻيهر ڪوشش ڪريو.",
+    "reportPointerMessage": "{courseName} ۾ هڪ پيغام جي رپورٽ ڪئي وئي آهي — حفاظت ڏسو"
 }

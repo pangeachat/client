@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-05 13:57:53.734955",
+    "@@last_modified": "2026-10-07 09:01:45.850561",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -1042,9 +1042,6 @@
     "why": "Чаро?",
     "definition": "Таъриф",
     "reportToTeacher": "Шумо мехоҳед ин паёмро ба кӣ хабар диҳед?",
-    "reportMessageTitle": "{reportingUserId} паёмеро аз {reportedUserId} дар чати {roomName} хабар дод",
-    "reportMessageBody": "Паём: {reportedMessage}\nСабаб: {reason}",
-    "noTeachersFound": "Муаллиме барои хабар додан ёфт нашуд",
     "trialExpiration": "Мӯҳлати озмоишии ройгони шумо дар {expiration} ба охир мерасад",
     "freeTrialDesc": "Истифодабарандагони нав як ҳафта озмоиши ройгони Pangea Chat мегиранд",
     "activateTrial": "Озмоиши ройгони 7-рӯза",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Ба ҳар ҳол кӯшиш кунед",
     "publicCoursesFilterTooltip": "Танҳо курсҳоеро нишон диҳед, ки ҳар кас метавонад ҳамроҳ шавад",
     "restrictedCoursesFilterTooltip": "Танҳо курсҳоеро нишон диҳед, ки шумо бояд барои ҳамроҳ шудан дархост кунед",
-    "viewImageLabel": "Тасвирро бинед"
+    "viewImageLabel": "Тасвирро бинед",
+    "reportSent": "Ҳисобот фиристода шуд",
+    "reportNotSent": "Ҳисоботи шумо фиристода нашуд. Пайвасти худро тафтиш кунед ва дубора кӯшиш кунед.",
+    "reportPointerMessage": "Дар {courseName} паёме гузориш дода шуд — ба Амният нигаред"
 }

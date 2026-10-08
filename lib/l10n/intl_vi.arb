@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:54.628801",
+    "@@last_modified": "2026-10-07 09:01:46.227358",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -1818,32 +1818,6 @@
     "why": "Tại sao?",
     "definition": "Định nghĩa",
     "reportToTeacher": "Bạn muốn báo cáo tin nhắn này cho giáo viên nào?",
-    "reportMessageTitle": "{reportingUserId} đã báo cáo tin nhắn của {reportedUserId} trong phòng {roomName}",
-    "@reportMessageTitle": {
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "reportMessageBody": "Tin nhắn: {reportedMessage}\nLý do: {reason}",
-    "@reportMessageBody": {
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "noTeachersFound": "Không tìm thấy giáo viên nào để báo cáo",
     "yourGlobalUserIdIs": "ID người dùng toàn cục của bạn là: ",
     "knocking": "Đang yêu cầu tham gia",
     "trialExpiration": "Bản dùng thử của bạn sẽ hết hạn vào {expiration}",
@@ -7272,5 +7246,8 @@
     "ssoTryAnyway": "Vẫn thử",
     "publicCoursesFilterTooltip": "Chỉ hiển thị các khóa học mà bất kỳ ai cũng có thể tham gia",
     "restrictedCoursesFilterTooltip": "Chỉ hiển thị các khóa học bạn phải yêu cầu để tham gia",
-    "viewImageLabel": "Xem hình ảnh"
+    "viewImageLabel": "Xem hình ảnh",
+    "reportSent": "Đã gửi báo cáo",
+    "reportNotSent": "Không thể gửi báo cáo của bạn. Vui lòng kiểm tra kết nối và thử lại.",
+    "reportPointerMessage": "Một tin nhắn đã được báo cáo trong {courseName} — xem mục An toàn"
 }

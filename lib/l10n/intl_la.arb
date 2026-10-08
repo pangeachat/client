@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-05 13:57:49.605458",
+    "@@last_modified": "2026-10-07 09:01:37.233325",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1042,9 +1042,6 @@
     "why": "Quare?",
     "definition": "Definitio",
     "reportToTeacher": "Cui magistro hunc nuntium referre vis?",
-    "reportMessageTitle": "{reportingUserId} nuntium a {reportedUserId} in colloquio {roomName} rettulit",
-    "reportMessageBody": "Nuntius: {reportedMessage}\nCausa: {reason}",
-    "noTeachersFound": "Nulli magistri inventi sunt quibus referas",
     "trialExpiration": "Probatio tua gratuita expirat die {expiration}",
     "freeTrialDesc": "Novi utentes probationem gratuitam unius hebdomadis Pangea Chat accipiunt",
     "activateTrial": "Probatio Gratuita VII Dierum",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Nihilominus conare",
     "publicCoursesFilterTooltip": "Ostende tantum cursus quibus quisque iungere potest",
     "restrictedCoursesFilterTooltip": "Ostende tantum cursus quibus petendum est ut iungas",
-    "viewImageLabel": "Imaginem inspice"
+    "viewImageLabel": "Imaginem inspice",
+    "reportSent": "Relatum missum",
+    "reportNotSent": "Tua relatio mitti non potuit. Coniunctionem tuam inspice et iterum conare.",
+    "reportPointerMessage": "Nuntius in {courseName} relatus est — vide Securitatem"
 }

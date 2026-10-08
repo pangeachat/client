@@ -916,9 +916,6 @@
     "why": "為什麼？",
     "definition": "定義",
     "reportToTeacher": "你想向誰舉報此訊息？",
-    "reportMessageTitle": "{reportingUserId} 在聊天室 {roomName} 舉報了來自 {reportedUserId} 的訊息",
-    "reportMessageBody": "訊息：{reportedMessage}\n原因：{reason}",
-    "noTeachersFound": "找不到可舉報的老師",
     "trialExpiration": "您的免費試用於 {expiration} 到期",
     "freeTrialDesc": "新用戶可獲得一周的 Pangea 聊天免費試用",
     "activateTrial": "免費7天試用",
@@ -1263,7 +1260,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-05 13:57:54.547419",
+    "@@last_modified": "2026-10-07 09:01:47.199949",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -5359,35 +5356,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10937,5 +10905,8 @@
     "ssoTryAnyway": "仍然嘗試",
     "publicCoursesFilterTooltip": "淨係顯示所有人都可以參加嘅課程",
     "restrictedCoursesFilterTooltip": "淨係顯示你需要申請先可以參加嘅課程",
-    "viewImageLabel": "睇圖"
+    "viewImageLabel": "睇圖",
+    "reportSent": "舉報已送出",
+    "reportNotSent": "無法送出你的舉報。請檢查你的連線，然後再試一次。",
+    "reportPointerMessage": "{courseName} 有訊息被舉報咗 — 請睇安全中心"
 }

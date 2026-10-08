@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:48.316835",
+    "@@last_modified": "2026-10-07 09:01:33.990815",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -3140,9 +3140,6 @@
     "why": "Mengapa?",
     "definition": "Definisi",
     "reportToTeacher": "Siapa yang ingin Anda laporkan pesan ini?",
-    "reportMessageTitle": "{reportingUserId} telah melaporkan pesan dari {reportedUserId} di obrolan {roomName}",
-    "reportMessageBody": "Pesan: {reportedMessage}\nAlasan: {reason}",
-    "noTeachersFound": "Tidak ada guru yang ditemukan untuk dilaporkan",
     "trialExpiration": "Masa percobaan gratis Anda berakhir pada {expiration}",
     "freeTrialDesc": "Pengguna baru menerima masa percobaan gratis satu minggu untuk Pangea Chat",
     "activateTrial": "Percobaan Gratis 7 Hari",
@@ -4874,35 +4871,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10053,5 +10021,8 @@
     "ssoTryAnyway": "Coba lagi",
     "publicCoursesFilterTooltip": "Tampilkan hanya kursus yang dapat diikuti siapa saja",
     "restrictedCoursesFilterTooltip": "Tampilkan hanya kursus yang harus Anda minta untuk bergabung",
-    "viewImageLabel": "Lihat gambar"
+    "viewImageLabel": "Lihat gambar",
+    "reportSent": "Laporan terkirim",
+    "reportNotSent": "Laporan Anda tidak dapat dikirim. Periksa koneksi Anda dan coba lagi.",
+    "reportPointerMessage": "Sebuah pesan dilaporkan di {courseName} — lihat Keamanan"
 }

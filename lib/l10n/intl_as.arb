@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-05 13:57:45.508915",
+    "@@last_modified": "2026-10-07 09:01:29.063103",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -1042,9 +1042,6 @@
     "why": "কিয়?",
     "definition": "সংজ্ঞা",
     "reportToTeacher": "আপুনি এই বাৰ্তাটো কাৰ ওচৰত ৰিপ'ৰ্ট কৰিব বিচাৰে?",
-    "reportMessageTitle": "{reportingUserId}-এ {roomName} চেটত {reportedUserId}-ৰ পৰা অহা এটা বাৰ্তা ৰিপ'ৰ্ট কৰিছে",
-    "reportMessageBody": "বাৰ্তা: {reportedMessage}\nকাৰণ: {reason}",
-    "noTeachersFound": "ৰিপ'ৰ্ট কৰিবলৈ কোনো শিক্ষক পোৱা নগ'ল",
     "trialExpiration": "আপোনাৰ বিনামূলীয়া ট্ৰায়েল {expiration} তাৰিখে শেষ হ'ব",
     "freeTrialDesc": "নতুন ব্যৱহাৰকাৰীসকলে Pangea Chat-ৰ এসপ্তাহৰ বিনামূলীয়া ট্ৰায়েল লাভ কৰে",
     "activateTrial": "৭-দিনৰ বিনামূলীয়া ট্ৰায়েল",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "যিকোনো প্ৰকাৰে চেষ্টা কৰক",
     "publicCoursesFilterTooltip": "কেৱল যিকোনোৱে যোগদান কৰিব পৰা পাঠ্যক্ৰমসমূহ দেখুৱাওক",
     "restrictedCoursesFilterTooltip": "কেৱল সেই পাঠ্যক্ৰমসমূহ দেখুৱাওক য'ত যোগদান কৰিবলৈ আপুনি অনুৰোধ কৰিব লাগিব",
-    "viewImageLabel": "ছবি চাওক"
+    "viewImageLabel": "ছবি চাওক",
+    "reportSent": "প্ৰতিবেদন পঠিওৱা হ'ল",
+    "reportNotSent": "আপোনাৰ প্ৰতিবেদন পঠিয়াব পৰা নগ'ল। আপোনাৰ সংযোগ পৰীক্ষা কৰক আৰু পুনৰ চেষ্টা কৰক।",
+    "reportPointerMessage": "{courseName}ত এটা বাৰ্তাৰ বিষয়ে জনোৱা হৈছিল — সুৰক্ষা চাওক"
 }

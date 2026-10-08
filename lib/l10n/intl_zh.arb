@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-05 13:57:54.788119",
+    "@@last_modified": "2026-10-07 09:01:47.493091",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -3222,9 +3222,6 @@
     "why": "为什么？",
     "definition": "定义",
     "reportToTeacher": "你想向谁举报这条消息？",
-    "reportMessageTitle": "{reportingUserId} 在房间 {roomName} 中举报了来自 {reportedUserId} 的消息",
-    "reportMessageBody": "消息：{reportedMessage}\n原因：{reason}",
-    "noTeachersFound": "未找到可举报的老师",
     "trialExpiration": "您的免费试用将在 {expiration} 到期",
     "freeTrialDesc": "新用户可获得为期一周的Pangea聊天免费试用",
     "activateTrial": "免费7天试用",
@@ -4951,35 +4948,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -9980,5 +9948,8 @@
     "ssoTryAnyway": "仍然尝试",
     "publicCoursesFilterTooltip": "仅显示任何人都可以加入的课程",
     "restrictedCoursesFilterTooltip": "仅显示您必须申请才能加入的课程",
-    "viewImageLabel": "查看图片"
+    "viewImageLabel": "查看图片",
+    "reportSent": "举报已发送",
+    "reportNotSent": "无法发送您的举报。请检查您的网络连接，然后重试。",
+    "reportPointerMessage": "在 {courseName} 中举报了一条消息 — 请查看“安全”"
 }

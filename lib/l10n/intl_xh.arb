@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-05 13:57:54.685386",
+    "@@last_modified": "2026-10-07 09:01:46.670525",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -1042,9 +1042,6 @@
     "why": "Kutheni?",
     "definition": "Inkcazelo",
     "reportToTeacher": "Ngubani ofuna ukumxelela ngalo myalezo?",
-    "reportMessageTitle": "U-{reportingUserId} uxele umyalezo ovela ku-{reportedUserId} kwincoko {roomName}",
-    "reportMessageBody": "Umyalezo: {reportedMessage}\nIsizathu: {reason}",
-    "noTeachersFound": "Akukho titshala ofunyenweyo wokuxela kuye",
     "trialExpiration": "Ixesha lakho lesilingo liphelelwa ngo-{expiration}",
     "freeTrialDesc": "Abasebenzisi abatsha bafumana isilingo sasimahla seveki enye sePangea Chat",
     "activateTrial": "Isilingo Sasimahla Seentsuku Ezi-7",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Zama nangona kunjalo",
     "publicCoursesFilterTooltip": "Bonisa kuphela izifundo nabani na anokuzijoyina",
     "restrictedCoursesFilterTooltip": "Bonisa kuphela izifundo ekufuneka ucele ukuzijoyina",
-    "viewImageLabel": "Jonga umfanekiso"
+    "viewImageLabel": "Jonga umfanekiso",
+    "reportSent": "Ingxelo ithunyelwe",
+    "reportNotSent": "Ingxelo yakho ayikwazanga ukuthunyelwa. Khangela uqhagamshelwano lwakho uze uzame kwakhona.",
+    "reportPointerMessage": "Umyalezo uxeliwe ku-{courseName} — jonga uKhuseleko"
 }

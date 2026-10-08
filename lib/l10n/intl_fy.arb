@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-05 13:57:47.054399",
+    "@@last_modified": "2026-10-07 09:01:31.414715",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1042,9 +1042,6 @@
     "why": "Wêrom?",
     "definition": "Definysje",
     "reportToTeacher": "Oan wa wolle jo dit berjocht melde?",
-    "reportMessageTitle": "{reportingUserId} hat in berjocht fan {reportedUserId} meld yn de chat {roomName}",
-    "reportMessageBody": "Berjocht: {reportedMessage}\nReden: {reason}",
-    "noTeachersFound": "Gjin dosinten fûn om oan te melden",
     "trialExpiration": "Jo fergese proefperioade ferrint op {expiration}",
     "freeTrialDesc": "Nije brûkers krije in fergese proefperioade fan ien wike foar Pangea Chat",
     "activateTrial": "Fergese proefperioade fan 7 dagen",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Dochs besykje",
     "publicCoursesFilterTooltip": "Lit allinnich kursussen sjen dêr't elkenien oan meidwaan kin",
     "restrictedCoursesFilterTooltip": "Lit allinnich kursussen sjen dêr't jo om tagong freegje moatte",
-    "viewImageLabel": "Ofbylding besjen"
+    "viewImageLabel": "Ofbylding besjen",
+    "reportSent": "Melding ferstjoerd",
+    "reportNotSent": "Jo melding koe net ferstjoerd wurde. Kontrolearje jo ferbining en besykje it opnij.",
+    "reportPointerMessage": "Der is in berjocht melde yn {courseName} — sjoch Feiligens"
 }

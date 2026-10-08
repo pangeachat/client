@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-05 13:57:47.307572",
+    "@@last_modified": "2026-10-07 09:01:32.599931",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -3222,9 +3222,6 @@
     "why": "Por que?",
     "definition": "Definición",
     "reportToTeacher": "A quen queres informar esta mensaxe?",
-    "reportMessageTitle": "{reportingUserId} informou dunha mensaxe de {reportedUserId} no chat {roomName}",
-    "reportMessageBody": "Mensaxe: {reportedMessage}\nRazón: {reason}",
-    "noTeachersFound": "Non se atoparon profesores para informar",
     "trialExpiration": "A túa proba gratuíta expira o {expiration}",
     "freeTrialDesc": "Os novos usuarios reciben unha proba gratuíta dunha semana de Pangea Chat",
     "activateTrial": "Proba gratuíta de 7 días",
@@ -4951,35 +4948,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -9980,5 +9948,8 @@
     "ssoTryAnyway": "Tentar de todos os xeitos",
     "publicCoursesFilterTooltip": "Mostrar só os cursos aos que calquera se pode unir",
     "restrictedCoursesFilterTooltip": "Mostrar só os cursos aos que debes solicitar unirte",
-    "viewImageLabel": "Ver imaxe"
+    "viewImageLabel": "Ver imaxe",
+    "reportSent": "Informe enviado",
+    "reportNotSent": "Non se puido enviar o teu informe. Comproba a túa conexión e téntao de novo.",
+    "reportPointerMessage": "Informouse dunha mensaxe en {courseName} — consulta Seguridade"
 }

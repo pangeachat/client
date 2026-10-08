@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-05 13:57:47.734577",
+    "@@last_modified": "2026-10-07 09:01:33.537860",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -2929,9 +2929,6 @@
     "why": "Zašto?",
     "definition": "Definicija",
     "reportToTeacher": "Kome želite prijaviti ovu poruku?",
-    "reportMessageTitle": "{reportingUserId} je prijavio poruku od {reportedUserId} u chatu {roomName}",
-    "reportMessageBody": "Poruka: {reportedMessage}\nRazlog: {reason}",
-    "noTeachersFound": "Nema nastavnika za prijavu",
     "trialExpiration": "Vaš besplatni probni rok istječe {expiration}",
     "freeTrialDesc": "Novi korisnici dobivaju tjedan dana besplatnog probnog razdoblja Pangea Chata",
     "activateTrial": "Aktiviraj besplatno 7-dnevno probno razdoblje",
@@ -5207,35 +5204,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10416,5 +10384,8 @@
     "ssoTryAnyway": "Pokušaj svejedno",
     "publicCoursesFilterTooltip": "Prikaži samo tečajeve kojima se svatko može pridružiti",
     "restrictedCoursesFilterTooltip": "Prikaži samo tečajeve za koje je potrebno zatražiti pridruživanje",
-    "viewImageLabel": "Prikaži sliku"
+    "viewImageLabel": "Prikaži sliku",
+    "reportSent": "Izvješće poslano",
+    "reportNotSent": "Vaše izvješće nije moglo biti poslano. Provjerite vezu i pokušajte ponovno.",
+    "reportPointerMessage": "Poruka je prijavljena u {courseName} — pogledajte Sigurnost"
 }

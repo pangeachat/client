@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-05 13:57:45.921891",
+    "@@last_modified": "2026-10-07 09:01:29.665644",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -1042,9 +1042,6 @@
     "why": "Ngano?",
     "definition": "Kahulugan",
     "reportToTeacher": "Kinsa ang gusto nimo nga reportan bahin niini nga mensahe?",
-    "reportMessageTitle": "Si {reportingUserId} nag-report og mensahe gikan ni {reportedUserId} sa chat nga {roomName}",
-    "reportMessageBody": "Mensahe: {reportedMessage}\nRason: {reason}",
-    "noTeachersFound": "Walay nakit-an nga mga magtutudlo nga ka-reportan",
     "trialExpiration": "Ang imong libre nga pagsulay matapos sa {expiration}",
     "freeTrialDesc": "Ang mga bag-ong tiggamit makadawat og usa ka semana nga libreng pagsulay sa Pangea Chat",
     "activateTrial": "Libre nga 7-Adlaw nga Pagsulay",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Sulayi gihapon",
     "publicCoursesFilterTooltip": "Ipakita lang ang mga kurso nga bisan kinsa makasalmot",
     "restrictedCoursesFilterTooltip": "Ipakita lang ang mga kurso nga kinahanglan kang mangayo og pagtugot aron makasalmot",
-    "viewImageLabel": "Tan-awa ang hulagway"
+    "viewImageLabel": "Tan-awa ang hulagway",
+    "reportSent": "Napadala ang report",
+    "reportNotSent": "Dili mapadala ang imong report. Susiha ang imong koneksyon ug sulayi pag-usab.",
+    "reportPointerMessage": "Usa ka mensahe ang gi-report sa {courseName} — tan-awa ang Safety"
 }

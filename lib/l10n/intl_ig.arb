@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-05 13:57:48.595691",
+    "@@last_modified": "2026-10-07 09:01:36.274728",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -1042,9 +1042,6 @@
     "why": "Gịnị kpatara?",
     "definition": "Nkọwa",
     "reportToTeacher": "Ònye ka ị chọrọ ịkọọrọ ozi a?",
-    "reportMessageTitle": "{reportingUserId} akọọla ozi sitere na {reportedUserId} na nkata {roomName}",
-    "reportMessageBody": "Ozi: {reportedMessage}\nIhe kpatara ya: {reason}",
-    "noTeachersFound": "Achọtaghị ndị nkuzi ọ bụla ị ga-akọọrọ",
     "trialExpiration": "Oge nnwale gị ga-agwụ na {expiration}",
     "freeTrialDesc": "Ndị ọrụ ọhụrụ na-enweta otu izu nnwale n'efu nke Pangea Chat",
     "activateTrial": "Nnwale ụbọchị 7 n'efu",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Nwaa agbanyeghị",
     "publicCoursesFilterTooltip": "Gosi naanị ọmụmụ ihe onye ọ bụla nwere ike isonye",
     "restrictedCoursesFilterTooltip": "Gosi naanị ọmụmụ ihe ị ga-arịọ ka isonye",
-    "viewImageLabel": "Lee onyonyo"
+    "viewImageLabel": "Lee onyonyo",
+    "reportSent": "Ezigara akụkọ",
+    "reportNotSent": "Enweghị ike iziga akụkọ gị. Lelee njikọ gị wee nwaa ọzọ.",
+    "reportPointerMessage": "Ekwuru okwu n'ime {courseName} — lee Nchekwa"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:51.705685",
+    "@@last_modified": "2026-10-07 09:01:42.466720",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -2687,9 +2687,6 @@
     "why": "De ce?",
     "definition": "Definiție",
     "reportToTeacher": "Cui vrei să raportezi acest mesaj?",
-    "reportMessageTitle": "{reportingUserId} a raportat un mesaj de la {reportedUserId} în chat-ul {roomName}",
-    "reportMessageBody": "Mesaj: {reportedMessage}\nMotiv: {reason}",
-    "noTeachersFound": "Nu au fost găsiți profesori pentru raportare",
     "trialExpiration": "Perioada de probă gratuită expiră la {expiration}",
     "freeTrialDesc": "Utilizatorii noi primesc o perioadă de probă gratuită de o săptămână pentru Pangea Chat",
     "activateTrial": "Perioadă de probă gratuită de 7 zile",
@@ -5503,35 +5500,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10712,5 +10680,8 @@
     "ssoTryAnyway": "Încearcă oricum",
     "publicCoursesFilterTooltip": "Afișează doar cursurile la care oricine se poate alătura",
     "restrictedCoursesFilterTooltip": "Afișează doar cursurile la care trebuie să ceri să te alături",
-    "viewImageLabel": "Vizualizați imaginea"
+    "viewImageLabel": "Vizualizați imaginea",
+    "reportSent": "Raport trimis",
+    "reportNotSent": "Raportul tău nu a putut fi trimis. Verifică-ți conexiunea și încearcă din nou.",
+    "reportPointerMessage": "Un mesaj a fost raportat în {courseName} — vezi Siguranță"
 }

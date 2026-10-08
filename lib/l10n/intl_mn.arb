@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-05 13:57:50.423536",
+    "@@last_modified": "2026-10-07 09:01:39.767876",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -1042,9 +1042,6 @@
     "why": "Яагаад?",
     "definition": "Тодорхойлолт",
     "reportToTeacher": "Та энэ мессежийг хэнд мэдээлэх вэ?",
-    "reportMessageTitle": "{reportingUserId} нь {roomName} чат дахь {reportedUserId}-ийн мессежийг мэдээллээ",
-    "reportMessageBody": "Мессеж: {reportedMessage}\nШалтгаан: {reason}",
-    "noTeachersFound": "Мэдээлэх багш олдсонгүй",
     "trialExpiration": "Таны үнэгүй туршилт {expiration} өдөр дуусна",
     "freeTrialDesc": "Шинэ хэрэглэгчид Pangea Chat-ийн нэг долоо хоногийн үнэгүй туршилтыг авах боломжтой",
     "activateTrial": "7 хоногийн үнэгүй туршилт",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Ямартай ч оролдох",
     "publicCoursesFilterTooltip": "Хэн ч нэгдэж болох сургалтуудыг л харуул",
     "restrictedCoursesFilterTooltip": "Таны хүсэлтээр нэгдэх ёстой сургалтуудыг л харуул",
-    "viewImageLabel": "Зураг харах"
+    "viewImageLabel": "Зураг харах",
+    "reportSent": "Мэдэгдэл илгээгдлээ",
+    "reportNotSent": "Таны мэдэгдлийг илгээх боломжгүй байна. Холболтоо шалгаад дахин оролдоно уу.",
+    "reportPointerMessage": "{courseName} хичээл дээрх мессежийг мэдэгдсэн байна — Аюулгүй байдлыг үзнэ үү"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-05 13:57:47.465161",
+    "@@last_modified": "2026-10-07 09:01:32.482321",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -1042,9 +1042,6 @@
     "why": "Carson?",
     "definition": "Mìneachadh",
     "reportToTeacher": "Cò leis a tha thu airson an teachdaireachd seo aithris?",
-    "reportMessageTitle": "Tha {reportingUserId} air teachdaireachd bho {reportedUserId} aithris anns a’ chòmhradh {roomName}",
-    "reportMessageBody": "Teachdaireachd: {reportedMessage}\nAdhbhar: {reason}",
-    "noTeachersFound": "Cha deach tidsearan a lorg airson aithris",
     "trialExpiration": "Thig an deuchainn an-asgaidh agad gu crìch air {expiration}",
     "freeTrialDesc": "Gheibh luchd-cleachdaidh ùr deuchainn an-asgaidh seachdain de Pangea Chat",
     "activateTrial": "Deuchainn 7-Latha an-asgaidh",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Feuch co-dhiù",
     "publicCoursesFilterTooltip": "Seall dìreach cùrsaichean ris an urrainn do dhuine sam bith a dhol",
     "restrictedCoursesFilterTooltip": "Seall dìreach cùrsaichean a dh'fheumas tu iarraidh a dhol annta",
-    "viewImageLabel": "Seall an dealbh"
+    "viewImageLabel": "Seall an dealbh",
+    "reportSent": "Aithisg air a cur",
+    "reportNotSent": "Cha b' urrainn dhuinn an aithisg agad a chur. Thoir sùil air a' cheangal agad is feuch ris a-rithist.",
+    "reportPointerMessage": "Chaidh teachdaireachd aithris ann an {courseName} — faic Sàbhailteachd"
 }

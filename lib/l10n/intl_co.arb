@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-05 13:57:45.942324",
+    "@@last_modified": "2026-10-07 09:01:29.842848",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -1042,9 +1042,6 @@
     "why": "Perchè?",
     "definition": "Definizione",
     "reportToTeacher": "À quale vulete signalà stu messagiu?",
-    "reportMessageTitle": "{reportingUserId} hà signalatu un messagiu di {reportedUserId} in a discussione {roomName}",
-    "reportMessageBody": "Messagiu: {reportedMessage}\nRagiò: {reason}",
-    "noTeachersFound": "Nisun insignante trovu da signalà",
     "trialExpiration": "A vostra prova gratuita scade u {expiration}",
     "freeTrialDesc": "I novi utilizatori ricevenu una settimana di prova gratuita di Pangea Chat",
     "activateTrial": "Prova Gratuita di 7 Ghjorni",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Pruvate quantunque",
     "publicCoursesFilterTooltip": "Mostra solu i corsi à i quali ognunu pò participà",
     "restrictedCoursesFilterTooltip": "Mostra solu i corsi à i quali duvete dumandà di participà",
-    "viewImageLabel": "Vede l'imagine"
+    "viewImageLabel": "Vede l'imagine",
+    "reportSent": "Segnalazione inviata",
+    "reportNotSent": "A vostra segnalazione ùn hà pussutu esse inviata. Verificate a vostra cunnessione è riprovate.",
+    "reportPointerMessage": "Un messagiu hè statu segnalatu in {courseName} — vede Sicurezza"
 }

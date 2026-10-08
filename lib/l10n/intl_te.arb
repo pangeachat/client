@@ -988,9 +988,6 @@
     "why": "ఎందుకు?",
     "definition": "వ్యాఖ్యానం",
     "reportToTeacher": "ఈ సందేశాన్ని ఎవరికీ నివేదించాలనుకుంటున్నారు?",
-    "reportMessageTitle": "{reportingUserId} చాట్ {roomName}లో {reportedUserId} నుండి సందేశాన్ని నివేదించారు",
-    "reportMessageBody": "సందేశం: {reportedMessage}\nకారణం: {reason}",
-    "noTeachersFound": "నివేదించడానికి టీచర్లు కనుగొనబడలేదు",
     "trialExpiration": "మీ ఉచిత ట్రయల్ {expiration} నాటికి ముగుస్తుంది",
     "freeTrialDesc": "కొత్త వినియోగదారులు పాంజియా చాట్ యొక్క ఒక వారపు ఉచిత ట్రయల్ పొందుతారు",
     "activateTrial": "ఉచిత 7-రోజుల ట్రయల్",
@@ -1324,7 +1321,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-05 13:57:53.700813",
+    "@@last_modified": "2026-10-07 09:01:46.222872",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -5721,35 +5718,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10930,5 +10898,8 @@
     "ssoTryAnyway": "ఏమైనా ప్రయత్నించండి",
     "publicCoursesFilterTooltip": "ఎవరైనా చేరగల కోర్సులను మాత్రమే చూపించు",
     "restrictedCoursesFilterTooltip": "మీరు చేరమని అడగాల్సిన కోర్సులను మాత్రమే చూపించు",
-    "viewImageLabel": "చిత్రాన్ని వీక్షించండి"
+    "viewImageLabel": "చిత్రాన్ని వీక్షించండి",
+    "reportSent": "నివేదిక పంపబడింది",
+    "reportNotSent": "మీ నివేదికను పంపలేకపోయాము. మీ కనెక్షన్‌ని తనిఖీ చేసి, మళ్లీ ప్రయత్నించండి.",
+    "reportPointerMessage": "{courseName}లో ఒక సందేశం నివేదించబడింది — భద్రతను చూడండి"
 }

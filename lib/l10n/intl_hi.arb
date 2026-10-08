@@ -2757,9 +2757,6 @@
     "why": "क्यों?",
     "definition": "परिभाषा",
     "reportToTeacher": "आप इस संदेश की रिपोर्ट किससे करना चाहते हैं?",
-    "reportMessageTitle": "{reportingUserId} ने {reportedUserId} से एक संदेश रिपोर्ट किया है, जो {roomName} में है",
-    "reportMessageBody": "संदेश: {reportedMessage}\nकारण: {reason}",
-    "noTeachersFound": "रिपोर्ट करने के लिए कोई शिक्षक नहीं मिले",
     "trialExpiration": "आपका मुफ्त ट्रायल {expiration} को समाप्त हो जाएगा",
     "freeTrialDesc": "नए उपयोगकर्ताओं को पैंजिया चैट का एक सप्ताह का मुफ्त ट्रायल मिलता है",
     "activateTrial": "मुफ्त 7-दिन का ट्रायल",
@@ -3093,7 +3090,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-10-05 13:57:47.729205",
+    "@@last_modified": "2026-10-07 09:01:33.147656",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -5403,35 +5400,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10612,5 +10580,8 @@
     "ssoTryAnyway": "फिर भी कोशिश करें",
     "publicCoursesFilterTooltip": "केवल वे कोर्स दिखाएं जिनमें कोई भी शामिल हो सकता है",
     "restrictedCoursesFilterTooltip": "केवल वे कोर्स दिखाएं जिनमें शामिल होने के लिए आपको पूछना होगा",
-    "viewImageLabel": "छवि देखें"
+    "viewImageLabel": "छवि देखें",
+    "reportSent": "रिपोर्ट भेज दी गई",
+    "reportNotSent": "आपकी रिपोर्ट भेजी नहीं जा सकी। अपना कनेक्शन जाँचें और फिर से कोशिश करें।",
+    "reportPointerMessage": "{courseName} में एक मैसेज रिपोर्ट किया गया था — सुरक्षा देखें"
 }

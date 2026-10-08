@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-05 13:57:50.263794",
+    "@@last_modified": "2026-10-07 09:01:38.907507",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -1042,9 +1042,6 @@
     "why": "Зошто?",
     "definition": "Дефиниција",
     "reportToTeacher": "На кого сакате да ја пријавите оваа порака?",
-    "reportMessageTitle": "{reportingUserId} пријави порака од {reportedUserId} во разговорот {roomName}",
-    "reportMessageBody": "Порака: {reportedMessage}\nПричина: {reason}",
-    "noTeachersFound": "Не се пронајдени наставници за пријавување",
     "trialExpiration": "Вашиот бесплатен пробен период истекува на {expiration}",
     "freeTrialDesc": "Новите корисници добиваат еднонеделен бесплатен пробен период на Pangea Chat",
     "activateTrial": "Бесплатен 7-дневен пробен период",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Сепак, обидете се",
     "publicCoursesFilterTooltip": "Прикажи само курсеви на кои секој може да се приклучи",
     "restrictedCoursesFilterTooltip": "Прикажи само курсеви за кои мора да побараш да се приклучиш",
-    "viewImageLabel": "Погледни слика"
+    "viewImageLabel": "Погледни слика",
+    "reportSent": "Извештајот е испратен",
+    "reportNotSent": "Вашиот извештај не можеше да биде испратен. Проверете ја вашата врска и обидете се повторно.",
+    "reportPointerMessage": "Пораката е пријавена во {courseName} — видете Безбедност"
 }

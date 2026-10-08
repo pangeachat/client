@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-05 13:57:45.099339",
+    "@@last_modified": "2026-10-07 09:01:28.312668",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -3029,9 +3029,6 @@
     "why": "لماذا؟",
     "definition": "تعريف",
     "reportToTeacher": "من تريد الإبلاغ عن هذه الرسالة إليه؟",
-    "reportMessageTitle": "قام {reportingUserId} بالإبلاغ عن رسالة من {reportedUserId} في الدردشة {roomName}",
-    "reportMessageBody": "الرسالة: {reportedMessage}\nالسبب: {reason}",
-    "noTeachersFound": "لم يتم العثور على معلمين للإبلاغ إليهم",
     "trialExpiration": "تنتهي فترة التجربة المجانية الخاصة بك في {expiration}",
     "freeTrialDesc": "يستفيد المستخدمون الجدد من تجربة مجانية لمدة أسبوع على Pangea Chat",
     "activateTrial": "تجربة مجانية لمدة 7 أيام",
@@ -5081,35 +5078,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10286,5 +10254,8 @@
     "ssoTryAnyway": "المحاولة على أي حال",
     "publicCoursesFilterTooltip": "إظهار الدورات التدريبية التي يمكن لأي شخص الانضمام إليها فقط",
     "restrictedCoursesFilterTooltip": "إظهار الدورات التدريبية التي يجب عليك طلب الانضمام إليها فقط",
-    "viewImageLabel": "عرض الصورة"
+    "viewImageLabel": "عرض الصورة",
+    "reportSent": "تم إرسال البلاغ",
+    "reportNotSent": "تعذر إرسال بلاغك. تحقق من اتصالك وحاول مرة أخرى.",
+    "reportPointerMessage": "تم الإبلاغ عن رسالة في {courseName} — راجع الأمان"
 }

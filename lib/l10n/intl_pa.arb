@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-05 13:57:51.749180",
+    "@@last_modified": "2026-10-07 09:01:41.587571",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -1042,9 +1042,6 @@
     "why": "ਕਿਉਂ?",
     "definition": "ਪਰਿਭਾਸ਼ਾ",
     "reportToTeacher": "ਤੁਸੀਂ ਇਸ ਸੁਨੇਹੇ ਦੀ ਰਿਪੋਰਟ ਕਿਸ ਨੂੰ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?",
-    "reportMessageTitle": "{reportingUserId} ਨੇ ਚੈਟ {roomName} ਵਿੱਚ {reportedUserId} ਦੇ ਇੱਕ ਸੁਨੇਹੇ ਦੀ ਰਿਪੋਰਟ ਕੀਤੀ ਹੈ",
-    "reportMessageBody": "ਸੁਨੇਹਾ: {reportedMessage}\nਕਾਰਨ: {reason}",
-    "noTeachersFound": "ਰਿਪੋਰਟ ਕਰਨ ਲਈ ਕੋਈ ਅਧਿਆਪਕ ਨਹੀਂ ਮਿਲਿਆ",
     "trialExpiration": "ਤੁਹਾਡਾ ਮੁਫ਼ਤ ਟ੍ਰਾਇਲ {expiration} ਨੂੰ ਖਤਮ ਹੋ ਰਿਹਾ ਹੈ",
     "freeTrialDesc": "ਨਵੇਂ ਵਰਤੋਂਕਾਰਾਂ ਨੂੰ ਪੈਂਜੀਆ ਚੈਟ ਦਾ ਇੱਕ ਹਫ਼ਤੇ ਦਾ ਮੁਫ਼ਤ ਟ੍ਰਾਇਲ ਮਿਲਦਾ ਹੈ",
     "activateTrial": "7-ਦਿਨਾਂ ਦਾ ਮੁਫ਼ਤ ਟ੍ਰਾਇਲ",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "ਫਿਰ ਵੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ",
     "publicCoursesFilterTooltip": "ਸਿਰਫ਼ ਉਹ ਕੋਰਸ ਦਿਖਾਓ ਜਿਨ੍ਹਾਂ ਵਿੱਚ ਕੋਈ ਵੀ ਸ਼ਾਮਲ ਹੋ ਸਕਦਾ ਹੈ",
     "restrictedCoursesFilterTooltip": "ਸਿਰਫ਼ ਉਹ ਕੋਰਸ ਦਿਖਾਓ ਜਿਨ੍ਹਾਂ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਣ ਲਈ ਤੁਹਾਨੂੰ ਪੁੱਛਣਾ ਪਵੇਗਾ",
-    "viewImageLabel": "ਤਸਵੀਰ ਦੇਖੋ"
+    "viewImageLabel": "ਤਸਵੀਰ ਦੇਖੋ",
+    "reportSent": "ਰਿਪੋਰਟ ਭੇਜੀ ਗਈ",
+    "reportNotSent": "ਤੁਹਾਡੀ ਰਿਪੋਰਟ ਭੇਜੀ ਨਹੀਂ ਜਾ ਸਕੀ। ਆਪਣਾ ਕਨੈਕਸ਼ਨ ਜਾਂਚੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
+    "reportPointerMessage": "{courseName} ਵਿੱਚ ਇੱਕ ਸੁਨੇਹਾ ਰਿਪੋਰਟ ਕੀਤਾ ਗਿਆ ਸੀ — ਸੁਰੱਖਿਆ ਦੇਖੋ"
 }

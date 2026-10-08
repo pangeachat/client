@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-05 13:57:50.859586",
+    "@@last_modified": "2026-10-07 09:01:41.356559",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -1042,9 +1042,6 @@
     "why": "Għaliex?",
     "definition": "Definizzjoni",
     "reportToTeacher": "Lil min tixtieq tirrapporta dan il-messaġġ?",
-    "reportMessageTitle": "{reportingUserId} irrapporta messaġġ minn {reportedUserId} fiċ-chat {roomName}",
-    "reportMessageBody": "Messaġġ: {reportedMessage}\nRaġuni: {reason}",
-    "noTeachersFound": "Ma nstabu l-ebda għalliema biex tirrapporta lilhom",
     "trialExpiration": "Il-prova b'xejn tiegħek tiskadi fi {expiration}",
     "freeTrialDesc": "Utenti ġodda jirċievu prova b'xejn ta' ġimgħa ta' Pangea Chat",
     "activateTrial": "Prova Ħielsa ta' 7 Ijiem",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Erġa' pprova xorta",
     "publicCoursesFilterTooltip": "Uri biss korsijiet li kulħadd jista' jingħaqad magħhom",
     "restrictedCoursesFilterTooltip": "Uri biss korsijiet li trid titlob biex tingħaqad magħhom",
-    "viewImageLabel": "Ara l-istampa"
+    "viewImageLabel": "Ara l-istampa",
+    "reportSent": "Rapport mibgħut",
+    "reportNotSent": "Ir-rapport tiegħek ma setax jintbagħat. Iċċekkja l-konnessjoni tiegħek u erġa' pprova.",
+    "reportPointerMessage": "Messaġġ ġie rrapportat f'{courseName}' — ara s-Sigurtà"
 }

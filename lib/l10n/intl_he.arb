@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:47.643939",
+    "@@last_modified": "2026-10-07 09:01:32.165987",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -2022,9 +2022,6 @@
     "why": "למה?",
     "definition": "הגדרה",
     "reportToTeacher": "למי תרצה לדווח על ההודעה הזו?",
-    "reportMessageTitle": "{reportingUserId} דיווחה על הודעה מ-{reportedUserId} בשיחה {roomName}",
-    "reportMessageBody": "הודעה: {reportedMessage}\nסיבה: {reason}",
-    "noTeachersFound": "לא נמצאו מורים לדווח אליהם",
     "trialExpiration": "המבחן החינמי שלך יפוג ב-{expiration}",
     "freeTrialDesc": "משתמשים חדשים מקבלים ניסיון חינם של שבוע ב-Pangea Chat",
     "activateTrial": "ניסיון חינם ל-7 ימים",
@@ -5685,35 +5682,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10894,5 +10862,8 @@
     "ssoTryAnyway": "נסה בכל זאת",
     "publicCoursesFilterTooltip": "הצג רק קורסים שכל אחד יכול להצטרף אליהם",
     "restrictedCoursesFilterTooltip": "הצג רק קורסים שאתה צריך לבקש להצטרף אליהם",
-    "viewImageLabel": "הצג תמונה"
+    "viewImageLabel": "הצג תמונה",
+    "reportSent": "הדיווח נשלח",
+    "reportNotSent": "הדיווח שלך לא נשלח. בדוק את החיבור שלך ונסה שוב.",
+    "reportPointerMessage": "הודעה דווחה ב{courseName} — ראה בטיחות"
 }

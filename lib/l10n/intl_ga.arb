@@ -3227,9 +3227,6 @@
     "why": "Cén fáth?",
     "definition": "Sainmhíniú",
     "reportToTeacher": "Cé acu mhaith leat tuairisciú a dhéanamh ar an teachtaireacht seo?",
-    "reportMessageTitle": "Tá {reportingUserId} tuairisciú ar theachtaireacht ó {reportedUserId} sa chomhrá {roomName}",
-    "reportMessageBody": "Teachtaireacht: {reportedMessage}\nCúis: {reason}",
-    "noTeachersFound": "Níl múinteoirí le fáil le tuairisciú orthu",
     "trialExpiration": "Críochnaíonn do thriail saor in aisce ar {expiration}",
     "freeTrialDesc": "Faigheann úsáideoirí nua triail saor in aisce ar feadh seachtain de Pangea Chat",
     "activateTrial": "Triail Saor in Aisce 7 Lá",
@@ -3563,7 +3560,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-05 13:57:47.468284",
+    "@@last_modified": "2026-10-07 09:01:32.365908",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -4958,35 +4955,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -9991,5 +9959,8 @@
     "ssoTryAnyway": "Bain triail as ar aon nós",
     "publicCoursesFilterTooltip": "Taispeáin cúrsaí ar féidir le duine ar bith a bheith páirteach iontu amháin",
     "restrictedCoursesFilterTooltip": "Taispeáin cúrsaí nach mór duit iarraidh a bheith páirteach iontu amháin",
-    "viewImageLabel": "Amharc ar an íomhá"
+    "viewImageLabel": "Amharc ar an íomhá",
+    "reportSent": "Tugadh tuairisc",
+    "reportNotSent": "Níorbh fhéidir do thuairisc a sheoladh. Seiceáil do nasc agus bain triail eile as.",
+    "reportPointerMessage": "Tugadh tuairisc ar theachtaireacht i {courseName} — féach Sábháilteacht"
 }

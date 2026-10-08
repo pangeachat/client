@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-05 13:57:52.189535",
+    "@@last_modified": "2026-10-07 09:01:43.637623",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -5654,35 +5654,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@trialExpiration": {
         "type": "String",
         "placeholders": {
@@ -8884,9 +8855,6 @@
     },
     "exampleSentence": "Пример предложения",
     "reportToTeacher": "Кому вы хотите пожаловаться на это сообщение?",
-    "reportMessageTitle": "{reportingUserId} пожаловался на сообщение от {reportedUserId} в чате {roomName}",
-    "reportMessageBody": "Сообщение: {reportedMessage}\nПричина: {reason}",
-    "noTeachersFound": "Не найдено учителей для отправки жалобы",
     "trialExpiration": "Ваша бесплатная пробная версия заканчивается {expiration}",
     "freeTrialDesc": "Новые пользователи получают недельный бесплатный пробный период Pangea Chat",
     "constructUseCollected": "Собрано в чате",
@@ -10952,5 +10920,8 @@
     "ssoTryAnyway": "Всё равно попробовать",
     "publicCoursesFilterTooltip": "Показывать только курсы, к которым может присоединиться любой желающий",
     "restrictedCoursesFilterTooltip": "Показывать только курсы, к которым нужно запросить доступ",
-    "viewImageLabel": "Посмотреть изображение"
+    "viewImageLabel": "Посмотреть изображение",
+    "reportSent": "Жалоба отправлена",
+    "reportNotSent": "Не удалось отправить жалобу. Проверьте подключение и повторите попытку.",
+    "reportPointerMessage": "Сообщение было отправлено в {courseName} — см. раздел «Безопасность»"
 }

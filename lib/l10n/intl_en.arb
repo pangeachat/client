@@ -3453,32 +3453,16 @@
     "why": "Why?",
     "definition": "Definition",
     "reportToTeacher": "Who do you want to report this message to?",
-    "reportMessageTitle": "{reportingUserId} has reported a message from {reportedUserId} in the chat {roomName}",
-    "@reportMessageTitle": {
+    "reportSent": "Report sent",
+    "reportNotSent": "Your report could not be sent. Check your connection and try again.",
+    "reportPointerMessage": "A message was reported in {courseName} — see Safety",
+    "@reportPointerMessage": {
         "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
+            "courseName": {
                 "type": "String"
             }
         }
     },
-    "reportMessageBody": "Message: {reportedMessage}\nReason: {reason}",
-    "@reportMessageBody": {
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "noTeachersFound": "No teachers found to report to",
     "trialExpiration": "Your free trial expires on {expiration}",
     "@trialExpiration": {
         "placeholders": {

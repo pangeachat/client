@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-05 13:57:45.205239",
+    "@@last_modified": "2026-10-07 09:01:28.452835",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1042,9 +1042,6 @@
     "why": "Niyə?",
     "definition": "Tərif",
     "reportToTeacher": "Bu mesajı hansı müəllimə bildirmək istəyirsiniz?",
-    "reportMessageTitle": "{reportingUserId} {reportedUserId} tərəfindən {roomName} söhbətində yazılan mesajı bildirdi",
-    "reportMessageBody": "Mesaj: {reportedMessage}\nSəbəb: {reason}",
-    "noTeachersFound": "Bildirmək üçün müəllim tapılmadı",
     "trialExpiration": "Pulsuz sınaq müddətiniz {expiration} tarixində bitir",
     "freeTrialDesc": "Yeni istifadəçilər Pangea Chat üçün bir həftəlik pulsuz sınaq əldə edirlər",
     "activateTrial": "Pulsuz 7 Günlük Sınaq",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Yenə də cəhd edin",
     "publicCoursesFilterTooltip": "Yalnız hər kəsin qoşula biləcəyi kursları göstər",
     "restrictedCoursesFilterTooltip": "Yalnız qoşulmaq üçün soruşmalı olduğunuz kursları göstər",
-    "viewImageLabel": "Şəklə bax"
+    "viewImageLabel": "Şəklə bax",
+    "reportSent": "Hesabat göndərildi",
+    "reportNotSent": "Hesabatınız göndərilə bilmədi. İnternet bağlantınızı yoxlayın və yenidən cəhd edin.",
+    "reportPointerMessage": "{courseName} kursunda bir mesaj bildirildi — Təhlükəsizliyə baxın"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-10-05 13:57:50.595451",
+    "@@last_modified": "2026-10-07 09:01:39.450111",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -1042,9 +1042,6 @@
     "why": "का?",
     "definition": "व्याख्या",
     "reportToTeacher": "तुम्हाला हा संदेश कोणाला कळवायचा आहे?",
-    "reportMessageTitle": "{reportingUserId} ने {roomName} चॅटमध्ये {reportedUserId} कडून आलेल्या संदेशाची तक्रार केली आहे",
-    "reportMessageBody": "संदेश: {reportedMessage}\nकारण: {reason}",
-    "noTeachersFound": "अहवाल देण्यासाठी शिक्षक सापडले नाहीत",
     "trialExpiration": "तुमची विनामूल्य चाचणी {expiration} रोजी संपेल",
     "freeTrialDesc": "नवीन वापरकर्त्यांना पांगिया चॅटची एक आठवड्याची विनामूल्य चाचणी मिळते",
     "activateTrial": "7-दिवसांची विनामूल्य चाचणी",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "तरीही प्रयत्न करा",
     "publicCoursesFilterTooltip": "फक्त असे अभ्यासक्रम दाखवा ज्यात कोणीही सामील होऊ शकते",
     "restrictedCoursesFilterTooltip": "फक्त असे अभ्यासक्रम दाखवा ज्यात सामील होण्यासाठी तुम्हाला विनंती करावी लागेल",
-    "viewImageLabel": "चित्र पहा"
+    "viewImageLabel": "चित्र पहा",
+    "reportSent": "अहवाल पाठवला",
+    "reportNotSent": "तुमचा अहवाल पाठवला जाऊ शकला नाही. तुमचे कनेक्शन तपासा आणि पुन्हा प्रयत्न करा.",
+    "reportPointerMessage": "{courseName} मध्ये एका संदेशाची तक्रार करण्यात आली आहे — सुरक्षितता पहा"
 }

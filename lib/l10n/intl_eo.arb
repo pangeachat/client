@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:46.858090",
+    "@@last_modified": "2026-10-07 09:01:45.891702",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -2469,9 +2469,6 @@
     "why": "Kial?",
     "definition": "Difino",
     "reportToTeacher": "Al kiu vi volas raporti ĉi tiun mesaĝon?",
-    "reportMessageTitle": "{reportingUserId} raportis mesaĝon de {reportedUserId} en la babilejo {roomName}",
-    "reportMessageBody": "Mesaĝo: {reportedMessage}\nKialo: {reason}",
-    "noTeachersFound": "Neniu instruisto trovita por raporti",
     "trialExpiration": "Via senpaga provtempo finiĝos je {expiration}",
     "freeTrialDesc": "Novaj uzantoj ricevas semajnan senpagan provon de Pangea Chat",
     "activateTrial": "Aktivigu Senpagan 7-tagan Provon",
@@ -5716,35 +5713,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10925,5 +10893,8 @@
     "ssoTryAnyway": "Provu ĉiukaze",
     "publicCoursesFilterTooltip": "Montri nur kursojn al kiuj iu ajn povas aliĝi",
     "restrictedCoursesFilterTooltip": "Montri nur kursojn al kiuj vi devas peti aliĝon",
-    "viewImageLabel": "Vidi bildon"
+    "viewImageLabel": "Vidi bildon",
+    "reportSent": "Raporto sendita",
+    "reportNotSent": "Via raporto ne povis esti sendita. Kontrolu vian konekton kaj reprovu.",
+    "reportPointerMessage": "Mesaĝo estis raportita en {courseName} — vidu Sekurecon"
 }

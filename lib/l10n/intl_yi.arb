@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-05 13:57:54.898277",
+    "@@last_modified": "2026-10-07 09:01:46.955934",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -1042,9 +1042,6 @@
     "why": "פֿאַרװאָס?",
     "definition": "דעפֿיניציע",
     "reportToTeacher": "צו װעמען װילסטו מעלדן די דאָזיקע מעלדונג?",
-    "reportMessageTitle": "{reportingUserId} האָט געמעלדן אַ מעלדונג פֿון {reportedUserId} אין דעם שמועס {roomName}",
-    "reportMessageBody": "מעלדונג: {reportedMessage}\nאורזאַך: {reason}",
-    "noTeachersFound": "קײן לערערס ניט געפֿונען צו מעלדן",
     "trialExpiration": "דײַן פֿרײַער פּראָבע ענדיקט זיך דעם {expiration}",
     "freeTrialDesc": "נײַע באַניצערס באַקומען אַ אײן װאָך פֿרײַע פּראָבע פֿון Pangea Chat",
     "activateTrial": "פֿרײַע 7-טאָגיקע פּראָבע",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "פּרוּווט סײַ ווי",
     "publicCoursesFilterTooltip": "ווייַזן בלויז קורסן וואָס יעדער איינער קען זיך אייַנשליסן",
     "restrictedCoursesFilterTooltip": "ווייַזן בלויז קורסן וואָס איר מוזט בעטן זיך אייַנצושליסן",
-    "viewImageLabel": "זען בילד"
+    "viewImageLabel": "זען בילד",
+    "reportSent": "באריכט געשיקט",
+    "reportNotSent": "אײַער באַריכט קען נישט געשיקט ווערן. קוקט אײַער פֿאַרבינדונג און פּרוּווט ווידער.",
+    "reportPointerMessage": "אַ מעלדונג איז געמאלדן געוואָרן אין {courseName} — זעט זיכערקייט"
 }

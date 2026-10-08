@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-05 13:57:47.972093",
+    "@@last_modified": "2026-10-07 09:01:33.662012",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -1042,9 +1042,6 @@
     "why": "Poukisa?",
     "definition": "Definisyon",
     "reportToTeacher": "Ak ki moun ou vle rapòte mesaj sa a?",
-    "reportMessageTitle": "{reportingUserId} rapòte yon mesaj ki soti nan {reportedUserId} nan chat {roomName}",
-    "reportMessageBody": "Mesaj: {reportedMessage}\nRezon: {reason}",
-    "noTeachersFound": "Pa gen pwofesè yo jwenn pou rapòte",
     "trialExpiration": "Esè gratis ou a ekspire sou {expiration}",
     "freeTrialDesc": "Nouvo itilizatè yo resevwa yon semèn esè gratis Pangea Chat",
     "activateTrial": "Esè gratis 7 jou",
@@ -2396,5 +2393,8 @@
     "ssoTryAnyway": "Eseye kanmenm",
     "publicCoursesFilterTooltip": "Montre sèlman kou tout moun ka antre",
     "restrictedCoursesFilterTooltip": "Montre sèlman kou ou dwe mande pou antre",
-    "viewImageLabel": "Gade imaj"
+    "viewImageLabel": "Gade imaj",
+    "reportSent": "Rapò a voye",
+    "reportNotSent": "Rapò ou a pa t' kapab voye. Tcheke koneksyon ou epi eseye ankò.",
+    "reportPointerMessage": "Yon mesaj te rapòte nan {courseName} — gade Sekirite"
 }

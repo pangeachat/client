@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:51.894386",
+    "@@last_modified": "2026-10-07 09:01:42.086343",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -3078,9 +3078,6 @@
     "why": "Por quê?",
     "definition": "Definição",
     "reportToTeacher": "Para quem você quer reportar esta mensagem?",
-    "reportMessageTitle": "{reportingUserId} reportou uma mensagem de {reportedUserId} no chat {roomName}",
-    "reportMessageBody": "Mensagem: {reportedMessage}\nRazão: {reason}",
-    "noTeachersFound": "Nenhum professor encontrado para relatar",
     "trialExpiration": "Seu período de teste gratuito expira em {expiration}",
     "freeTrialDesc": "Novos usuários recebem uma semana de teste gratuito do Pangea Chat",
     "activateTrial": "Teste Gratuito de 7 Dias",
@@ -5715,35 +5712,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10924,5 +10892,8 @@
     "ssoTryAnyway": "Tentar mesmo assim",
     "publicCoursesFilterTooltip": "Mostrar apenas cursos que qualquer pessoa pode participar",
     "restrictedCoursesFilterTooltip": "Mostrar apenas cursos para os quais você deve pedir para participar",
-    "viewImageLabel": "Ver imagem"
+    "viewImageLabel": "Ver imagem",
+    "reportSent": "Denúncia enviada",
+    "reportNotSent": "Não foi possível enviar sua denúncia. Verifique sua conexão e tente novamente.",
+    "reportPointerMessage": "Uma mensagem foi denunciada em {courseName} — veja Segurança"
 }
