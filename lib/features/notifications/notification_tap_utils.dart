@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/features/bot/bot_target_event_name_enum.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
@@ -16,6 +17,8 @@ import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_constants.dart';
+import 'package:fluffychat/routes/chat_list/chat_invite_dialog.dart';
+import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 
 class NotificationTapUtil {
   static const _sessionIdKey =
@@ -164,6 +167,48 @@ class NotificationTapUtil {
     }
   }
 
+  /// Answers an invite in the prompt the app uses for that kind of room, never
+  /// by opening the room: the chat view joins an invited room as it builds,
+  /// which would accept the invite without asking.
+  static Future<void> _answerInvite(GoRouter router, Room room) async {
+    final context = router.routerDelegate.navigatorKey.currentContext;
+    if (context == null) {
+      ErrorHandler.logError(
+        e: Exception('No navigator to prompt for a tapped invite'),
+        data: {'roomId': room.id},
+      );
+      return;
+    }
+
+    if (room.isSpace) {
+      // The course prompt opens the course itself once accepted; a response
+      // here means the invite was accepted without asking.
+      final joinResp = await SpaceTapUtil.onInviteTap(context, room);
+      if (joinResp == null || !context.mounted) return;
+      final joinedRoomId = await JoinRoomAnalyticsConsentHandler(
+        joinResp,
+        room,
+      ).handle(context);
+      if (joinedRoomId == null) return;
+      router.go(
+        WorkspaceNav.openCourse(
+          router.routeInformationProvider.value.uri,
+          joinedRoomId,
+        ),
+      );
+      return;
+    }
+
+    if (await ChatInviteDialog.show(context, room)) {
+      router.go(
+        WorkspaceNav.openRoomById(
+          router.routeInformationProvider.value.uri,
+          room.id,
+        ),
+      );
+    }
+  }
+
   static Future<void> handleNotificationTap({
     required Client client,
     required String roomId,
@@ -256,7 +301,7 @@ class NotificationTapUtil {
     }
 
     if (room.membership == Membership.invite) {
-      router.go(PRoutes.world);
+      await _answerInvite(router, room);
     } else if (room.isSpace == true) {
       router.go(WorkspaceNav.openCourse(uri, roomId));
     } else {

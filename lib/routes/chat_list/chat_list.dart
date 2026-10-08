@@ -31,14 +31,13 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
 import 'package:fluffychat/routes/chat_list/app_version_util.dart';
+import 'package:fluffychat/routes/chat_list/chat_invite_dialog.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_view.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
-import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/show_scaffold_dialog.dart';
 import 'package:fluffychat/utils/show_update_snackbar.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/invite_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
@@ -160,78 +159,7 @@ class ChatListController extends State<ChatList>
 
   void onChatTap(Room room) async {
     if (room.membership == Membership.invite) {
-      // #Pangea
-      final inviteEvent = room.getState(
-        EventTypes.RoomMember,
-        room.client.userID!,
-      );
-      final matrixLocals = MatrixLocals(L10n.of(context));
-      final action = await showInviteDialog<InviteAction>(
-        context,
-        title: room.getLocalizedDisplayname(matrixLocals),
-        message: inviteEvent == null
-            ? L10n.of(context).inviteForMe
-            : inviteEvent.content.tryGet<String>('reason') ??
-                  L10n.of(context).youInvitedBy(
-                    room
-                        .unsafeGetUserFromMemoryOrFallback(inviteEvent.senderId)
-                        .calcDisplayname(i18n: matrixLocals),
-                  ),
-        actions: [
-          InviteDialogAction(
-            label: L10n.of(context).accept,
-            value: InviteAction.accept,
-          ),
-          InviteDialogAction(
-            label: L10n.of(context).decline,
-            value: InviteAction.decline,
-            destructive: true,
-          ),
-          InviteDialogAction(
-            label: L10n.of(context).block,
-            value: InviteAction.block,
-            destructive: true,
-          ),
-        ],
-      );
-      switch (action) {
-        case null:
-          return;
-        case InviteAction.accept:
-          break;
-        case InviteAction.decline:
-          await showFutureLoadingDialog(
-            context: context,
-            future: () => room.leave(),
-          );
-          return;
-        case InviteAction.block:
-          final userId = inviteEvent?.senderId;
-          context.go(
-            WorkspaceNav.openSettings(
-              GoRouterState.of(context).uri,
-              page: userId == null
-                  ? 'security/ignorelist'
-                  : 'security/ignorelist/$userId',
-            ),
-          );
-          return;
-      }
-      if (!mounted) return;
-      // Pangea#
-      final joinResult = await showFutureLoadingDialog(
-        context: context,
-        future: () async {
-          final waitForRoom = room.client.waitForRoomInSync(
-            room.id,
-            join: true,
-          );
-          await room.join();
-          await waitForRoom;
-        },
-        exceptionContext: ExceptionContext.joinRoom,
-      );
-      if (joinResult.error != null) return;
+      if (!await ChatInviteDialog.show(context, room) || !mounted) return;
     }
 
     if (room.membership == Membership.ban) {
@@ -1306,8 +1234,3 @@ enum ChatContextAction {
   // Pangea#
   block,
 }
-
-// #Pangea
-enum InviteAction { accept, decline, block }
-
-// Pangea#
