@@ -30,6 +30,15 @@ class ImageByUrl extends StatelessWidget {
     this.isThumbnail = true,
   });
 
+  /// CMS-hosted images need the learner's token; other hosts get no headers.
+  static Map<String, String> requestHeaders(Uri imageUrl) =>
+      imageUrl.toString().contains(Environment.cmsApi)
+      ? {
+          'Authorization':
+              'Bearer ${MatrixState.pangeaController.userController.accessToken}',
+        }
+      : {};
+
   @override
   Widget build(BuildContext context) {
     final imageUrl = this.imageUrl;
@@ -37,11 +46,7 @@ class ImageByUrl extends StatelessWidget {
       return replacement ?? const SizedBox();
     }
 
-    final Map<String, String> headers = {};
-    if (imageUrl.toString().contains(Environment.cmsApi)) {
-      headers['Authorization'] =
-          'Bearer ${MatrixState.pangeaController.userController.accessToken}';
-    }
+    final headers = requestHeaders(imageUrl);
 
     return SizedBox(
       width: width,

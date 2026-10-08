@@ -5731,5 +5731,9 @@
     "courseCodeSavedExplanation": "Sign up or log in and we'll add you to your course.",
     "@courseCodeSavedExplanation": {
         "description": "Line under the saved-course-code card on the sign-up and login pages."
+    },
+    "useActivityImageAsChatBackground": "Use activity image as chat background",
+    "@useActivityImageAsChatBackground": {
+        "description": "Style-settings switch that shows a faint copy of the activity's image behind an activity chat once the learner scrolls past the image at the top."
     }
 }
