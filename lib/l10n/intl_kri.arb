@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-07 09:01:39.507401",
+    "@@last_modified": "2026-10-08 16:58:14.397141",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Luk pikcho",
     "reportSent": "Dɛn dɔn sɛn di ripot",
     "reportNotSent": "Yu ripot nɔ go dɔn sɛn. Chɛk yu kɔnɛkshɔn ɛn tray igen.",
-    "reportPointerMessage": "Dɛn ripot wan mɛsej insay {courseName} — si Sefti"
+    "reportPointerMessage": "Dɛn ripot wan mɛsej insay {courseName} — si Sefti",
+    "filteredNetworkBlockedTitle": "Dis netwok de blok Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Dis netwok de blok pat pan Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Wetin a go du?",
+    "filteredNetworkPhoneAdvice": "Tɔn ɔf Wi-Fi ɛn yuz mɔbayl data insay.",
+    "filteredNetworkComputerAdvice": "Kɔnɛkt to yu fɔn in hɔtspɔt insay dis Wi-Fi.",
+    "filteredNetworkItHeading": "Fɔ ticha dɛn ɛn IT pipul dɛn",
+    "filteredNetworkItBody": "Aks yu IT tim fɔ alaw dɛn domen dɛn ya:",
+    "filteredNetworkAskForHelp": "Aks Pangea fɔ ɛlp",
+    "filteredNetworkHelpExplanation": "Wi go sɛn yu imel fɔ ɛlp Pangea Chat wok pan dis netwok.",
+    "filteredNetworkHelpWaiting": "Yu rikwest go bi sɛn as suun as yu kɔnɛkt.",
+    "filteredNetworkHelpSent": "Sɛn. Wi go kɔntakt yu bay imel.",
+    "filteredNetworkHelpRefused": "Wi nɔ ebul sɛn yu rikwest. Duya sɛn imel to support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Dis netwok de blok vidio dɛn.",
+    "filteredNetworkImagesBlocked": "Dis netwok de blok piktya dɛn.",
+    "filteredNetworkMapBlocked": "Dis netwok de blok di map."
 }

@@ -1321,7 +1321,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-07 09:01:46.222872",
+    "@@last_modified": "2026-10-08 16:58:27.610711",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10901,5 +10901,20 @@
     "viewImageLabel": "చిత్రాన్ని వీక్షించండి",
     "reportSent": "నివేదిక పంపబడింది",
     "reportNotSent": "మీ నివేదికను పంపలేకపోయాము. మీ కనెక్షన్‌ని తనిఖీ చేసి, మళ్లీ ప్రయత్నించండి.",
-    "reportPointerMessage": "{courseName}లో ఒక సందేశం నివేదించబడింది — భద్రతను చూడండి"
+    "reportPointerMessage": "{courseName}లో ఒక సందేశం నివేదించబడింది — భద్రతను చూడండి",
+    "filteredNetworkBlockedTitle": "ఈ నెట్‌వర్క్ పాంగియా చాట్‌ను బ్లాక్ చేస్తోంది",
+    "filteredNetworkPartlyBlockedTitle": "ఈ నెట్‌వర్క్ పాంగియా చాట్‌లో కొంత భాగాన్ని బ్లాక్ చేస్తోంది",
+    "filteredNetworkWhatCanIDo": "నేను ఏమి చేయగలను?",
+    "filteredNetworkPhoneAdvice": "Wi-Fiని ఆఫ్ చేసి, మొబైల్ డేటాను ఉపయోగించండి.",
+    "filteredNetworkComputerAdvice": "ఈ Wi-Fiకి బదులుగా మీ ఫోన్ హాట్‌స్పాట్‌కు కనెక్ట్ చేయండి.",
+    "filteredNetworkItHeading": "ఉపాధ్యాయులు మరియు IT సిబ్బంది కోసం",
+    "filteredNetworkItBody": "ఈ డొమైన్‌లను అనుమతించమని మీ IT బృందాన్ని అడగండి:",
+    "filteredNetworkAskForHelp": "సహాయం కోసం పాంగియాను అడగండి",
+    "filteredNetworkHelpExplanation": "ఈ నెట్‌వర్క్‌లో పాంగియా చాట్ పని చేయడానికి మేము మీకు ఇమెయిల్ చేస్తాము.",
+    "filteredNetworkHelpWaiting": "మీరు కనెక్ట్ అయిన వెంటనే మీ అభ్యర్థన పంపబడుతుంది.",
+    "filteredNetworkHelpSent": "పంపబడింది. మేము ఇమెయిల్ ద్వారా సంప్రదిస్తాము.",
+    "filteredNetworkHelpRefused": "మేము మీ అభ్యర్థనను పంపలేకపోయాము. దయచేసి support@pangea.chatకు ఇమెయిల్ చేయండి.",
+    "filteredNetworkVideoBlocked": "ఈ నెట్‌వర్క్ వీడియోలను బ్లాక్ చేస్తుంది.",
+    "filteredNetworkImagesBlocked": "ఈ నెట్‌వర్క్ చిత్రాలను బ్లాక్ చేస్తుంది.",
+    "filteredNetworkMapBlocked": "ఈ నెట్‌వర్క్ మ్యాప్‌ను బ్లాక్ చేస్తుంది."
 }

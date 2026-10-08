@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-07 09:01:37.791319",
+    "@@last_modified": "2026-10-08 16:58:16.036214",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Bild ukucken",
     "reportSent": "Rapport geschéckt",
     "reportNotSent": "Äre Rapport konnt net geschéckt ginn. Kuckt Är Verbindung a probéiert et nach eng Kéier.",
-    "reportPointerMessage": "Eng Noriicht gouf am Cours {courseName} gemellt — kuckt Sécherheet"
+    "reportPointerMessage": "Eng Noriicht gouf am Cours {courseName} gemellt — kuckt Sécherheet",
+    "filteredNetworkBlockedTitle": "Dëst Netzwierk blockéiert de Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Dëst Netzwierk blockéiert en Deel vum Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Wat kann ech maachen?",
+    "filteredNetworkPhoneAdvice": "Schalt Wi-Fi aus a benotz mobil Daten.",
+    "filteredNetworkComputerAdvice": "Verbannt Iech mam Hotspot vun Ärem Telefon amplaz vun dësem Wi-Fi.",
+    "filteredNetworkItHeading": "Fir Enseignanten an IT-Personal",
+    "filteredNetworkItBody": "Frot Äert IT-Team dës Domainen z'erlaben:",
+    "filteredNetworkAskForHelp": "Frot Pangea ëm Hëllef",
+    "filteredNetworkHelpExplanation": "Mir schécken Iech eng E-Mail fir Iech ze hëllefen de Pangea Chat op dësem Netzwierk zum Laafen ze kréien.",
+    "filteredNetworkHelpWaiting": "Är Ufro gëtt geschéckt soubal Dir verbonne sidd.",
+    "filteredNetworkHelpSent": "Geschéckt. Mir kontaktéieren Iech per E-Mail.",
+    "filteredNetworkHelpRefused": "Mir konnten Är Ufro net schécken. Schéckt w.e.g. eng E-Mail un support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Dëst Netzwierk blockéiert Videoen.",
+    "filteredNetworkImagesBlocked": "Dëst Netzwierk blockéiert Biller.",
+    "filteredNetworkMapBlocked": "Dëst Netzwierk blockéiert d'Kaart."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-07 09:01:40.604704",
+    "@@last_modified": "2026-10-08 16:58:19.756065",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Vis bilde",
     "reportSent": "Rapport sendt",
     "reportNotSent": "Rapporten din kunne ikke sendes. Sjekk tilkoblingen din og prøv igjen.",
-    "reportPointerMessage": "En melding ble rapportert i {courseName} – se Sikkerhet"
+    "reportPointerMessage": "En melding ble rapportert i {courseName} – se Sikkerhet",
+    "filteredNetworkBlockedTitle": "Dette nettverket blokkerer Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Dette nettverket blokkerer deler av Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Hva kan jeg gjøre?",
+    "filteredNetworkPhoneAdvice": "Slå av Wi-Fi og bruk mobildata i stedet.",
+    "filteredNetworkComputerAdvice": "Koble til telefonens hotspot i stedet for dette Wi-Fi-nettverket.",
+    "filteredNetworkItHeading": "For lærere og IT-ansatte",
+    "filteredNetworkItBody": "Be IT-teamet ditt om å tillate disse domenene:",
+    "filteredNetworkAskForHelp": "Spør Pangea om hjelp",
+    "filteredNetworkHelpExplanation": "Vi sender deg en e-post for å hjelpe deg med å få Pangea Chat til å fungere på dette nettverket.",
+    "filteredNetworkHelpWaiting": "Forespørselen din blir sendt så snart du er tilkoblet.",
+    "filteredNetworkHelpSent": "Sendt. Vi tar kontakt via e-post.",
+    "filteredNetworkHelpRefused": "Vi kunne ikke sende forespørselen din. Send en e-post til support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Dette nettverket blokkerer videoer.",
+    "filteredNetworkImagesBlocked": "Dette nettverket blokkerer bilder.",
+    "filteredNetworkMapBlocked": "Dette nettverket blokkerer kartet."
 }

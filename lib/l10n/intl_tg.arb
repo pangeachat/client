@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-07 09:01:45.850561",
+    "@@last_modified": "2026-10-08 16:58:28.493086",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Тасвирро бинед",
     "reportSent": "Ҳисобот фиристода шуд",
     "reportNotSent": "Ҳисоботи шумо фиристода нашуд. Пайвасти худро тафтиш кунед ва дубора кӯшиш кунед.",
-    "reportPointerMessage": "Дар {courseName} паёме гузориш дода шуд — ба Амният нигаред"
+    "reportPointerMessage": "Дар {courseName} паёме гузориш дода шуд — ба Амният нигаред",
+    "filteredNetworkBlockedTitle": "Ин шабака Pangea Chat-ро масдуд мекунад",
+    "filteredNetworkPartlyBlockedTitle": "Ин шабака қисман Pangea Chat-ро масдуд мекунад",
+    "filteredNetworkWhatCanIDo": "Ман чӣ кор карда метавонам?",
+    "filteredNetworkPhoneAdvice": "Wi-Fi-ро хомӯш кунед ва ба ҷои он аз маълумоти мобилӣ истифода баред.",
+    "filteredNetworkComputerAdvice": "Ба ҷои ин Wi-Fi ба нуқтаи дастрасии телефони худ пайваст шавед.",
+    "filteredNetworkItHeading": "Барои омӯзгорон ва кормандони IT",
+    "filteredNetworkItBody": "Аз гурӯҳи IT-и худ хоҳиш кунед, ки ин доменҳоро иҷозат диҳад:",
+    "filteredNetworkAskForHelp": "Аз Pangea кӯмак пурсед",
+    "filteredNetworkHelpExplanation": "Мо ба шумо почтаи электронӣ мефиристем, то Pangea Chat дар ин шабака кор кунад.",
+    "filteredNetworkHelpWaiting": "Дархости шумо баробари пайваст шуданатон фиристода мешавад.",
+    "filteredNetworkHelpSent": "Фиристода шуд. Мо тавассути почтаи электронӣ бо шумо тамос хоҳем гирифт.",
+    "filteredNetworkHelpRefused": "Мо дархости шуморо фиристода натавонистем. Лутфан ба support@pangea.chat почтаи электронӣ фиристед.",
+    "filteredNetworkVideoBlocked": "Ин шабака видеоҳоро масдуд мекунад.",
+    "filteredNetworkImagesBlocked": "Ин шабака тасвирҳоро масдуд мекунад.",
+    "filteredNetworkMapBlocked": "Ин шабака харитаро масдуд мекунад."
 }

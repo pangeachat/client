@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-07 09:01:33.166637",
+    "@@last_modified": "2026-10-08 16:58:07.110031",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10306,5 +10306,20 @@
     "viewImageLabel": "Voir l'image",
     "reportSent": "Signalement envoyé",
     "reportNotSent": "Votre signalement n'a pas pu être envoyé. Vérifiez votre connexion et réessayez.",
-    "reportPointerMessage": "Un message a été signalé dans {courseName} — voir Sécurité"
+    "reportPointerMessage": "Un message a été signalé dans {courseName} — voir Sécurité",
+    "filteredNetworkBlockedTitle": "Ce réseau bloque Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Ce réseau bloque une partie de Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Que puis-je faire ?",
+    "filteredNetworkPhoneAdvice": "Désactivez le Wi-Fi et utilisez les données mobiles à la place.",
+    "filteredNetworkComputerAdvice": "Connectez-vous au point d'accès de votre téléphone au lieu de ce Wi-Fi.",
+    "filteredNetworkItHeading": "Pour les enseignants et le personnel informatique",
+    "filteredNetworkItBody": "Demandez à votre équipe informatique d'autoriser ces domaines :",
+    "filteredNetworkAskForHelp": "Demander de l'aide à Pangea",
+    "filteredNetworkHelpExplanation": "Nous vous enverrons un e-mail pour vous aider à faire fonctionner Pangea Chat sur ce réseau.",
+    "filteredNetworkHelpWaiting": "Votre demande sera envoyée dès que vous serez connecté.",
+    "filteredNetworkHelpSent": "Envoyé. Nous vous contacterons par e-mail.",
+    "filteredNetworkHelpRefused": "Nous n'avons pas pu envoyer votre demande. Veuillez envoyer un e-mail à support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Ce réseau bloque les vidéos.",
+    "filteredNetworkImagesBlocked": "Ce réseau bloque les images.",
+    "filteredNetworkMapBlocked": "Ce réseau bloque la carte."
 }

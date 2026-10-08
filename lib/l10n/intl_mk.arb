@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-07 09:01:38.907507",
+    "@@last_modified": "2026-10-08 16:58:17.227617",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Погледни слика",
     "reportSent": "Извештајот е испратен",
     "reportNotSent": "Вашиот извештај не можеше да биде испратен. Проверете ја вашата врска и обидете се повторно.",
-    "reportPointerMessage": "Пораката е пријавена во {courseName} — видете Безбедност"
+    "reportPointerMessage": "Пораката е пријавена во {courseName} — видете Безбедност",
+    "filteredNetworkBlockedTitle": "Оваа мрежа го блокира Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Оваа мрежа блокира дел од Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Што можам да направам?",
+    "filteredNetworkPhoneAdvice": "Исклучете го Wi-Fi и користете мобилни податоци.",
+    "filteredNetworkComputerAdvice": "Поврзете се на пристапната точка на вашиот телефон наместо на овој Wi-Fi.",
+    "filteredNetworkItHeading": "За наставници и ИТ персонал",
+    "filteredNetworkItBody": "Побарајте од вашиот ИТ тим да ги дозволи овие домени:",
+    "filteredNetworkAskForHelp": "Побарајте помош од Pangea",
+    "filteredNetworkHelpExplanation": "Ќе ви испратиме е-пошта за да ви помогнеме да го активирате Pangea Chat на оваа мрежа.",
+    "filteredNetworkHelpWaiting": "Вашето барање ќе биде испратено веднаш штом ќе се поврзете.",
+    "filteredNetworkHelpSent": "Испратено. Ќе ве контактираме преку е-пошта.",
+    "filteredNetworkHelpRefused": "Не можевме да го испратиме вашето барање. Ве молиме испратете е-пошта на support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Оваа мрежа блокира видеа.",
+    "filteredNetworkImagesBlocked": "Оваа мрежа блокира слики.",
+    "filteredNetworkMapBlocked": "Оваа мрежа ја блокира мапата."
 }

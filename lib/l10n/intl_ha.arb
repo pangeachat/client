@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-07 09:01:32.441746",
+    "@@last_modified": "2026-10-08 16:58:08.334869",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Duba hoto",
     "reportSent": "An aika rahoto",
     "reportNotSent": "Ba a iya aika rahotonka ba. Duba haɗinka kuma sake gwadawa.",
-    "reportPointerMessage": "An ba da rahoton saƙo a {courseName} — duba Tsaro"
+    "reportPointerMessage": "An ba da rahoton saƙo a {courseName} — duba Tsaro",
+    "filteredNetworkBlockedTitle": "Wannan hanyar sadarwa tana toshe Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Wannan hanyar sadarwa tana toshe wani ɓangare na Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Me zan iya yi?",
+    "filteredNetworkPhoneAdvice": "Kashe Wi-Fi kuma yi amfani da bayanan wayar hannu a maimakon haka.",
+    "filteredNetworkComputerAdvice": "Haɗa zuwa hotspot na wayarka maimakon wannan Wi-Fi.",
+    "filteredNetworkItHeading": "Ga malamai da ma'aikatan IT",
+    "filteredNetworkItBody": "Tambayi ƙungiyar IT ɗinku su ba da izinin waɗannan yankuna:",
+    "filteredNetworkAskForHelp": "Nemi taimako daga Pangea",
+    "filteredNetworkHelpExplanation": "Za mu aiko maka da imel don taimakawa Pangea Chat ya yi aiki a kan wannan hanyar sadarwa.",
+    "filteredNetworkHelpWaiting": "Za a aika buƙatarka da zaran an haɗa ka.",
+    "filteredNetworkHelpSent": "An aika. Za mu tuntube ka ta imel.",
+    "filteredNetworkHelpRefused": "Ba mu iya aika buƙatarka ba. Da fatan za a aiko da imel zuwa support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Wannan hanyar sadarwa tana toshe bidiyo.",
+    "filteredNetworkImagesBlocked": "Wannan hanyar sadarwa tana toshe hotuna.",
+    "filteredNetworkMapBlocked": "Wannan hanyar sadarwa tana toshe taswirar."
 }

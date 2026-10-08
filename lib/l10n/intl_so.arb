@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-07 09:01:44.250946",
+    "@@last_modified": "2026-10-08 16:58:27.321474",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Daawo sawirka",
     "reportSent": "Warbixinta waa la diray",
     "reportNotSent": "Warbixintaada lama diri karin. Hubi isku xirkaaga oo mar kale isku day.",
-    "reportPointerMessage": "Fariin ayaa lagu soo sheegay {courseName} — fiiri Badbaadada"
+    "reportPointerMessage": "Fariin ayaa lagu soo sheegay {courseName} — fiiri Badbaadada",
+    "filteredNetworkBlockedTitle": "Shabakaddani waxay xannibaysaa Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Shabakaddani waxay xannibaysaa qayb ka mid ah Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Maxaan samayn karaa?",
+    "filteredNetworkPhoneAdvice": "Demi Wi-Fi-ga oo isticmaal xogta moobilka.",
+    "filteredNetworkComputerAdvice": "Ku xidhnow hotspot-ka taleefankaaga halkii aad ka isticmaali lahayd Wi-Fi-gan.",
+    "filteredNetworkItHeading": "Macallimiinta iyo shaqaalaha IT-ga",
+    "filteredNetworkItBody": "Ka codso kooxdaada IT-ga inay oggolaadaan domain-yadan:",
+    "filteredNetworkAskForHelp": "Ka codso Pangea caawimo",
+    "filteredNetworkHelpExplanation": "Waxaan kuu soo diri doonaa iimayl si aan kaaga caawinno sidii Pangea Chat uga shaqayn lahayd shabakaddan.",
+    "filteredNetworkHelpWaiting": "Codsigaga waa la soo diri doonaa isla marka aad isku xirto.",
+    "filteredNetworkHelpSent": "La diray. Waxaan kula soo xiriiri doonaa iimayl.",
+    "filteredNetworkHelpRefused": "Ma aanan diri karin codsigaga. Fadlan iimayl u soo dir support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Shabakaddani waxay xannibtaa fiidyowyada.",
+    "filteredNetworkImagesBlocked": "Shabakaddani waxay xannibtaa sawirrada.",
+    "filteredNetworkMapBlocked": "Shabakaddani waxay xannibtaa khariidadda."
 }

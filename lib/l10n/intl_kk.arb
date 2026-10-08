@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-07 09:01:35.912767",
+    "@@last_modified": "2026-10-08 16:58:13.530141",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Суретті көру",
     "reportSent": "Хабар жіберілді",
     "reportNotSent": "Хабарыңыз жіберілмеді. Байланысты тексеріп, қайталап көріңіз.",
-    "reportPointerMessage": "{courseName} курсында хабарлама жіберілді — Қауіпсіздікті қараңыз"
+    "reportPointerMessage": "{courseName} курсында хабарлама жіберілді — Қауіпсіздікті қараңыз",
+    "filteredNetworkBlockedTitle": "Бұл желі Pangea Chat-ты бұғаттап тастады",
+    "filteredNetworkPartlyBlockedTitle": "Бұл желі Pangea Chat-тың бір бөлігін бұғаттап тастады",
+    "filteredNetworkWhatCanIDo": "Мен не істей аламын?",
+    "filteredNetworkPhoneAdvice": "Wi-Fi-ды өшіріп, оның орнына ұялы деректерді пайдаланыңыз.",
+    "filteredNetworkComputerAdvice": "Бұл Wi-Fi орнына телефонның хотспотына қосылыңыз.",
+    "filteredNetworkItHeading": "Мұғалімдер мен IT қызметкерлері үшін",
+    "filteredNetworkItBody": "IT тобыңыздан мына домендерге рұқсат беруін сұраңыз:",
+    "filteredNetworkAskForHelp": "Pangea-дан көмек сұраңыз",
+    "filteredNetworkHelpExplanation": "Pangea Chat-ты осы желіде жұмыс істетуге көмектесу үшін сізге электрондық пошта арқылы хабарласамыз.",
+    "filteredNetworkHelpWaiting": "Сіз қосылғаннан кейін сұранысыңыз жіберіледі.",
+    "filteredNetworkHelpSent": "Жіберілді. Сізбен электрондық пошта арқылы хабарласамыз.",
+    "filteredNetworkHelpRefused": "Сұранысыңызды жібере алмадық. support@pangea.chat мекенжайына электрондық пошта жіберіңіз.",
+    "filteredNetworkVideoBlocked": "Бұл желі бейнелерді бұғаттайды.",
+    "filteredNetworkImagesBlocked": "Бұл желі кескіндерді бұғаттайды.",
+    "filteredNetworkMapBlocked": "Бұл желі картаны бұғаттайды."
 }

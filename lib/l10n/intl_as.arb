@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-07 09:01:29.063103",
+    "@@last_modified": "2026-10-08 16:58:02.951472",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "ছবি চাওক",
     "reportSent": "প্ৰতিবেদন পঠিওৱা হ'ল",
     "reportNotSent": "আপোনাৰ প্ৰতিবেদন পঠিয়াব পৰা নগ'ল। আপোনাৰ সংযোগ পৰীক্ষা কৰক আৰু পুনৰ চেষ্টা কৰক।",
-    "reportPointerMessage": "{courseName}ত এটা বাৰ্তাৰ বিষয়ে জনোৱা হৈছিল — সুৰক্ষা চাওক"
+    "reportPointerMessage": "{courseName}ত এটা বাৰ্তাৰ বিষয়ে জনোৱা হৈছিল — সুৰক্ষা চাওক",
+    "filteredNetworkBlockedTitle": "এই নেটৱৰ্কে পেংগিয়া চেট ব্লক কৰিছে",
+    "filteredNetworkPartlyBlockedTitle": "এই নেটৱৰ্কে পেংগিয়া চেটৰ কিছু অংশ ব্লক কৰিছে",
+    "filteredNetworkWhatCanIDo": "মই কি কৰিব পাৰোঁ?",
+    "filteredNetworkPhoneAdvice": "Wi-Fi বন্ধ কৰি ম'বাইল ডেটা ব্যৱহাৰ কৰক।",
+    "filteredNetworkComputerAdvice": "এই Wi-Fi ৰ সলনি আপোনাৰ ফোনৰ হটস্পটত সংযোগ কৰক।",
+    "filteredNetworkItHeading": "শিক্ষক আৰু আইটি কৰ্মচাৰীসকলৰ বাবে",
+    "filteredNetworkItBody": "আপোনাৰ আইটি দলক এই ডমেইনসমূহৰ অনুমতি দিবলৈ কওক:",
+    "filteredNetworkAskForHelp": "পেংগিয়াক সহায়ৰ বাবে সুধক",
+    "filteredNetworkHelpExplanation": "এই নেটৱৰ্কত পেংগিয়া চেট কাম কৰাত সহায় কৰিবলৈ আমি আপোনাক ইমেইল কৰিম।",
+    "filteredNetworkHelpWaiting": "আপুনি সংযোগ হোৱাৰ লগে লগে আপোনাৰ অনুৰোধ প্ৰেৰণ কৰা হ'ব।",
+    "filteredNetworkHelpSent": "প্ৰেৰণ কৰা হ'ল। আমি ইমেইলৰ জৰিয়তে আপোনাৰ সৈতে যোগাযোগ কৰিম।",
+    "filteredNetworkHelpRefused": "আমি আপোনাৰ অনুৰোধ প্ৰেৰণ কৰিব নোৱাৰিলোঁ। অনুগ্ৰহ কৰি support@pangea.chat লৈ ইমেইল কৰক।",
+    "filteredNetworkVideoBlocked": "এই নেটৱৰ্কে ভিডিঅ' ব্লক কৰে।",
+    "filteredNetworkImagesBlocked": "এই নেটৱৰ্কে ছবি ব্লক কৰে।",
+    "filteredNetworkMapBlocked": "এই নেটৱৰ্কে মেপ ব্লক কৰে।"
 }

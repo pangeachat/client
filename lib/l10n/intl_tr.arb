@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-07 09:01:45.302631",
+    "@@last_modified": "2026-10-08 16:58:28.708710",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10252,5 +10252,20 @@
     "viewImageLabel": "Resmi görüntüle",
     "reportSent": "Rapor gönderildi",
     "reportNotSent": "Raporunuz gönderilemedi. Bağlantınızı kontrol edip tekrar deneyin.",
-    "reportPointerMessage": "{courseName} içinde bir mesaj bildirildi — Güvenlik bölümüne bakın"
+    "reportPointerMessage": "{courseName} içinde bir mesaj bildirildi — Güvenlik bölümüne bakın",
+    "filteredNetworkBlockedTitle": "Bu ağ Pangea Chat'i engelliyor",
+    "filteredNetworkPartlyBlockedTitle": "Bu ağ Pangea Chat'in bir kısmını engelliyor",
+    "filteredNetworkWhatCanIDo": "Ne yapabilirim?",
+    "filteredNetworkPhoneAdvice": "Wi-Fi'ı kapatın ve mobil veri kullanın.",
+    "filteredNetworkComputerAdvice": "Bu Wi-Fi yerine telefonunuzun internet paylaşımına bağlanın.",
+    "filteredNetworkItHeading": "Öğretmenler ve BT personeli için",
+    "filteredNetworkItBody": "BT ekibinizden şu alan adlarına izin vermesini isteyin:",
+    "filteredNetworkAskForHelp": "Pangea'dan yardım isteyin",
+    "filteredNetworkHelpExplanation": "Pangea Chat'i bu ağda çalıştırmanıza yardımcı olmak için size e-posta göndereceğiz.",
+    "filteredNetworkHelpWaiting": "İsteğiniz bağlandığınız anda gönderilecektir.",
+    "filteredNetworkHelpSent": "Gönderildi. E-posta yoluyla sizinle iletişime geçeceğiz.",
+    "filteredNetworkHelpRefused": "İsteğiniz gönderilemedi. Lütfen support@pangea.chat adresine e-posta gönderin.",
+    "filteredNetworkVideoBlocked": "Bu ağ videoları engelliyor.",
+    "filteredNetworkImagesBlocked": "Bu ağ görselleri engelliyor.",
+    "filteredNetworkMapBlocked": "Bu ağ haritayı engelliyor."
 }

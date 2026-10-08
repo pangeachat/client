@@ -3090,7 +3090,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-07 09:01:34.767821",
+    "@@last_modified": "2026-10-08 16:58:19.034146",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10583,5 +10583,20 @@
     "viewImageLabel": "Féach ar an íomhá",
     "reportSent": "Tuarascáil seolta",
     "reportNotSent": "Níorbh fhéidir do thuarascáil a sheoladh. Seiceáil do nasc agus bain triail eile as.",
-    "reportPointerMessage": "Tuairiscíodh teachtaireacht i {courseName} — féach Sábháilteacht"
+    "reportPointerMessage": "Tuairiscíodh teachtaireacht i {courseName} — féach Sábháilteacht",
+    "filteredNetworkBlockedTitle": "Tá an líonra seo ag blocáil Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Tá an líonra seo ag blocáil cuid de Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Cad is féidir liom a dhéanamh?",
+    "filteredNetworkPhoneAdvice": "Múch an Wi-Fi agus bain úsáid as sonraí soghluaiste ina ionad.",
+    "filteredNetworkComputerAdvice": "Ceangail le hotspot do ghutháin in ionad an Wi-Fi seo.",
+    "filteredNetworkItHeading": "Do mhúinteoirí agus d'fhoireann TF",
+    "filteredNetworkItBody": "Iarr ar d'fhoireann TF na fearainn seo a cheadú:",
+    "filteredNetworkAskForHelp": "Iarr cabhair ar Pangea",
+    "filteredNetworkHelpExplanation": "Seolfaimid ríomhphost chugat chun cabhrú le Pangea Chat a chur ag obair ar an líonra seo.",
+    "filteredNetworkHelpWaiting": "Seolfar d'iarratas a luaithe a bheidh tú ceangailte.",
+    "filteredNetworkHelpSent": "Seolta. Beimid i dteagmháil leat trí ríomhphost.",
+    "filteredNetworkHelpRefused": "Níorbh fhéidir linn d'iarratas a sheoladh. Seol ríomhphost chuig support@pangea.chat le do thoil.",
+    "filteredNetworkVideoBlocked": "Blocálann an líonra seo físeáin.",
+    "filteredNetworkImagesBlocked": "Blocálann an líonra seo íomhánna.",
+    "filteredNetworkMapBlocked": "Blocálann an líonra seo an léarscáil."
 }

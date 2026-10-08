@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-07 09:01:32.599931",
+    "@@last_modified": "2026-10-08 16:58:07.025637",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9951,5 +9951,20 @@
     "viewImageLabel": "Ver imaxe",
     "reportSent": "Informe enviado",
     "reportNotSent": "Non se puido enviar o teu informe. Comproba a túa conexión e téntao de novo.",
-    "reportPointerMessage": "Informouse dunha mensaxe en {courseName} — consulta Seguridade"
+    "reportPointerMessage": "Informouse dunha mensaxe en {courseName} — consulta Seguridade",
+    "filteredNetworkBlockedTitle": "Esta rede está a bloquear Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Esta rede está a bloquear parte de Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Que podo facer?",
+    "filteredNetworkPhoneAdvice": "Desactiva o Wi-Fi e usa os datos móbiles no seu lugar.",
+    "filteredNetworkComputerAdvice": "Conéctate ao punto de acceso do teu teléfono en lugar desta rede Wi-Fi.",
+    "filteredNetworkItHeading": "Para profesores e persoal de TI",
+    "filteredNetworkItBody": "Pídelle ao teu equipo de TI que permita estes dominios:",
+    "filteredNetworkAskForHelp": "Pide axuda a Pangea",
+    "filteredNetworkHelpExplanation": "Enviarémosche un correo electrónico para axudarche a que Pangea Chat funcione nesta rede.",
+    "filteredNetworkHelpWaiting": "A túa solicitude enviarase en canto te conectes.",
+    "filteredNetworkHelpSent": "Enviado. Poñerémonos en contacto por correo electrónico.",
+    "filteredNetworkHelpRefused": "Non puidemos enviar a túa solicitude. Envía un correo electrónico a support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Esta rede bloquea os vídeos.",
+    "filteredNetworkImagesBlocked": "Esta rede bloquea as imaxes.",
+    "filteredNetworkMapBlocked": "Esta rede bloquea o mapa."
 }

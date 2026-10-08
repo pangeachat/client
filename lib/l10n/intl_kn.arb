@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-07 09:01:37.783609",
+    "@@last_modified": "2026-10-08 16:58:14.465141",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "ಚಿತ್ರವನ್ನು ವೀಕ್ಷಿಸಿ",
     "reportSent": "ವರದಿ ಕಳುಹಿಸಲಾಗಿದೆ",
     "reportNotSent": "ನಿಮ್ಮ ವರದಿಯನ್ನು ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
-    "reportPointerMessage": "{courseName} ನಲ್ಲಿ ಸಂದೇಶವನ್ನು ವರದಿ ಮಾಡಲಾಗಿದೆ — ಸುರಕ್ಷತೆಯನ್ನು ನೋಡಿ"
+    "reportPointerMessage": "{courseName} ನಲ್ಲಿ ಸಂದೇಶವನ್ನು ವರದಿ ಮಾಡಲಾಗಿದೆ — ಸುರಕ್ಷತೆಯನ್ನು ನೋಡಿ",
+    "filteredNetworkBlockedTitle": "ಈ ನೆಟ್‌ವರ್ಕ್ ಪ್ಯಾಂಗಿಯಾ ಚಾಟ್ ಅನ್ನು ನಿರ್ಬಂಧಿಸುತ್ತಿದೆ",
+    "filteredNetworkPartlyBlockedTitle": "ಈ ನೆಟ್‌ವರ್ಕ್ ಪ್ಯಾಂಗಿಯಾ ಚಾಟ್‌ನ ಭಾಗವನ್ನು ನಿರ್ಬಂಧಿಸುತ್ತಿದೆ",
+    "filteredNetworkWhatCanIDo": "ನಾನು ಏನು ಮಾಡಬಹುದು?",
+    "filteredNetworkPhoneAdvice": "ವೈ-ಫೈ ಆಫ್ ಮಾಡಿ ಮತ್ತು ಮೊಬೈಲ್ ಡೇಟಾ ಬಳಸಿ.",
+    "filteredNetworkComputerAdvice": "ಈ ವೈ-ಫೈ ಬದಲಿಗೆ ನಿಮ್ಮ ಫೋನ್‌ನ ಹಾಟ್‌ಸ್ಪಾಟ್‌ಗೆ ಸಂಪರ್ಕಪಡಿಸಿ.",
+    "filteredNetworkItHeading": "ಶಿಕ್ಷಕರು ಮತ್ತು ಐಟಿ ಸಿಬ್ಬಂದಿಗಾಗಿ",
+    "filteredNetworkItBody": "ಈ ಡೊಮೇನ್‌ಗಳನ್ನು ಅನುಮತಿಸಲು ನಿಮ್ಮ ಐಟಿ ತಂಡವನ್ನು ಕೇಳಿ:",
+    "filteredNetworkAskForHelp": "ಸಹಾಯಕ್ಕಾಗಿ ಪ್ಯಾಂಗಿಯಾವನ್ನು ಕೇಳಿ",
+    "filteredNetworkHelpExplanation": "ಈ ನೆಟ್‌ವರ್ಕ್‌ನಲ್ಲಿ ಪ್ಯಾಂಗಿಯಾ ಚಾಟ್ ಕಾರ್ಯನಿರ್ವಹಿಸಲು ಸಹಾಯ ಮಾಡಲು ನಾವು ನಿಮಗೆ ಇಮೇಲ್ ಮಾಡುತ್ತೇವೆ.",
+    "filteredNetworkHelpWaiting": "ನೀವು ಸಂಪರ್ಕಗೊಂಡ ತಕ್ಷಣ ನಿಮ್ಮ ವಿನಂತಿಯನ್ನು ಕಳುಹಿಸಲಾಗುತ್ತದೆ.",
+    "filteredNetworkHelpSent": "ಕಳುಹಿಸಲಾಗಿದೆ. ನಾವು ಇಮೇಲ್ ಮೂಲಕ ಸಂಪರ್ಕದಲ್ಲಿರುತ್ತೇವೆ.",
+    "filteredNetworkHelpRefused": "ನಿಮ್ಮ ವಿನಂತಿಯನ್ನು ಕಳುಹಿಸಲು ನಮಗೆ ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು support@pangea.chat ಗೆ ಇಮೇಲ್ ಮಾಡಿ.",
+    "filteredNetworkVideoBlocked": "ಈ ನೆಟ್‌ವರ್ಕ್ ವೀಡಿಯೊಗಳನ್ನು ನಿರ್ಬಂಧಿಸುತ್ತದೆ.",
+    "filteredNetworkImagesBlocked": "ಈ ನೆಟ್‌ವರ್ಕ್ ಚಿತ್ರಗಳನ್ನು ನಿರ್ಬಂಧಿಸುತ್ತದೆ.",
+    "filteredNetworkMapBlocked": "ಈ ನೆಟ್‌ವರ್ಕ್ ನಕ್ಷೆಯನ್ನು ನಿರ್ಬಂಧಿಸುತ್ತದೆ."
 }

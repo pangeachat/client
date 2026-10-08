@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-07 09:01:37.233325",
+    "@@last_modified": "2026-10-08 16:58:15.139206",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Imaginem inspice",
     "reportSent": "Relatum missum",
     "reportNotSent": "Tua relatio mitti non potuit. Coniunctionem tuam inspice et iterum conare.",
-    "reportPointerMessage": "Nuntius in {courseName} relatus est — vide Securitatem"
+    "reportPointerMessage": "Nuntius in {courseName} relatus est — vide Securitatem",
+    "filteredNetworkBlockedTitle": "Haec rete Pangea Chat impedit",
+    "filteredNetworkPartlyBlockedTitle": "Haec rete partem Pangea Chat impedit",
+    "filteredNetworkWhatCanIDo": "Quid facere possum?",
+    "filteredNetworkPhoneAdvice": "Averte Wi-Fi et utere data mobili pro eo.",
+    "filteredNetworkComputerAdvice": "Coniunge ad hotspot telephoni tui pro hoc Wi-Fi.",
+    "filteredNetworkItHeading": "Pro magistris et operariis IT",
+    "filteredNetworkItBody": "Roga turmam IT tuam ut haec dominia permittat:",
+    "filteredNetworkAskForHelp": "Roga Pangea auxilium",
+    "filteredNetworkHelpExplanation": "Ad te mittemus electronicam ut Pangea Chat in hoc rete operetur.",
+    "filteredNetworkHelpWaiting": "Petitio tua mittetur simul ac coniunctus eris.",
+    "filteredNetworkHelpSent": "Missum. Per electronicam tecum communicabimus.",
+    "filteredNetworkHelpRefused": "Petitionem tuam mittere non potuimus. Quaeso mitte electronicam ad support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Haec rete videos impedit.",
+    "filteredNetworkImagesBlocked": "Haec rete imagines impedit.",
+    "filteredNetworkMapBlocked": "Haec rete tabulam impedit."
 }

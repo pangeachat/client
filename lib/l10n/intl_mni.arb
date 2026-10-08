@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-07 09:01:39.916530",
+    "@@last_modified": "2026-10-08 16:58:23.523074",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "ꯏꯃꯦꯖ ꯎꯕ",
     "reportSent": "রিপোর্ট থাজিনখ্রে",
     "reportNotSent": "নখোয়গী রিপোর্ট থাজিনবা ঙমদ্রে। নখোয়গী কনেক্সন চেক তৌদুনা অমুক হন্না ট্রাই তৌবীয়ু।",
-    "reportPointerMessage": "{courseName} দা মেসেজ অমা রিপোর্ট তৌখ্রে — সেফটিদা য়েংবীয়ু"
+    "reportPointerMessage": "{courseName} দা মেসেজ অমা রিপোর্ট তৌখ্রে — সেফটিদা য়েংবীয়ু",
+    "filteredNetworkBlockedTitle": "ꯁꯤꯡꯁꯤ ꯅꯦꯠꯋꯔꯛ ꯑꯁꯤꯅ ꯄꯦꯟꯒꯤꯌꯥ ꯆꯦꯠ ꯕ꯭ꯂꯣꯛ ꯇꯧꯔꯤ",
+    "filteredNetworkPartlyBlockedTitle": "ꯁꯤꯡꯁꯤ ꯅꯦꯠꯋꯔꯛ ꯑꯁꯤꯅ ꯄꯦꯟꯒꯤꯌꯥ ꯆꯦꯠ ꯑꯁꯤꯒꯤ ꯁꯔꯨꯛ ꯑꯃ ꯕ꯭ꯂꯣꯛ ꯇꯧꯔꯤ",
+    "filteredNetworkWhatCanIDo": "ꯑꯩꯅ ꯀꯔꯤ ꯇꯧꯕ ꯌꯥꯒꯦ?",
+    "filteredNetworkPhoneAdvice": "ꯋꯥꯏ-ꯐꯥꯏ ꯃꯤꯠꯊꯤꯟꯕꯤꯌꯨ ꯑꯃꯁꯨꯡ ꯃꯣꯕꯥꯏꯜ ꯗꯦꯇꯥ ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ",
+    "filteredNetworkComputerAdvice": "ꯁꯤꯡꯁꯤ ꯋꯥꯏ-ꯐꯥꯏ ꯑꯁꯤꯒꯤ ꯃꯍꯨꯠꯇ ꯅꯍꯥꯛꯀꯤ ꯐꯣꯟꯒꯤ ꯍꯣꯠꯁ꯭ꯄꯣꯠꯀꯥ ꯀꯅꯦꯛꯠ ꯇꯧꯕꯤꯌꯨ",
+    "filteredNetworkItHeading": "ꯇꯤꯆꯔꯁꯤꯡ ꯑꯃꯁꯨꯡ ꯑꯥꯏ.ꯇꯤ. ꯁ꯭ꯇꯥꯐꯁꯤꯡꯒꯤꯗꯃꯛ",
+    "filteredNetworkItBody": "ꯅꯍꯥꯛꯀꯤ ꯑꯥꯏ.ꯇꯤ. ꯇꯤꯃꯗ ꯁꯤꯡꯁꯤ ꯗꯣꯃꯦꯟꯁꯤꯡ ꯑꯁꯤ ꯑꯦꯂꯥꯎ ꯇꯧꯅꯕ ꯍꯥꯌꯕꯤꯌꯨ:",
+    "filteredNetworkAskForHelp": "ꯄꯦꯟꯒꯤꯌꯥꯗ ꯃꯇꯦꯡ ꯄꯥꯡꯅꯕ ꯍꯥꯌꯕꯤꯌꯨ",
+    "filteredNetworkHelpExplanation": "ꯁꯤꯡꯁꯤ ꯅꯦꯠꯋꯔꯛ ꯑꯁꯤꯗ ꯄꯦꯟꯒꯤꯌꯥ ꯆꯦꯠ ꯊꯕꯛ ꯇꯧꯍꯟꯅꯕ ꯑꯩꯈꯣꯌꯅ ꯅꯍꯥꯛꯀꯤ ꯏꯃꯦꯜ ꯇꯧꯔꯒꯅꯤ",
+    "filteredNetworkHelpWaiting": "ꯅꯍꯥꯛ ꯀꯅꯦꯛꯠ ꯇꯧꯔꯕ ꯃꯇꯨꯡꯗ ꯅꯍꯥꯛꯀꯤ ꯔꯤꯀ꯭ꯋꯦꯁ꯭ꯠ ꯑꯁꯤ ꯊꯥꯗꯣꯛꯀꯅꯤ",
+    "filteredNetworkHelpSent": "ꯊꯥꯗꯣꯛꯈ꯭ꯔꯦ. ꯑꯩꯈꯣꯌꯅ ꯏꯃꯦꯜ ꯇꯧꯔꯒ ꯀꯣꯟꯇꯦꯛꯠ ꯇꯧꯔꯒꯅꯤ.",
+    "filteredNetworkHelpRefused": "ꯑꯩꯈꯣꯌꯅ ꯅꯍꯥꯛꯀꯤ ꯔꯤꯀ꯭ꯋꯦꯁ꯭ꯠ ꯑꯁꯤ ꯊꯥꯗꯣꯛꯄ ꯉꯃꯈꯤꯗꯦ. ꯗꯌꯥꯜ ꯇꯧꯕꯤꯌꯨ support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "ꯁꯤꯡꯁꯤ ꯅꯦꯠꯋꯔꯛ ꯑꯁꯤꯅ ꯕꯤꯗꯤꯑꯣꯁꯤꯡ ꯕ꯭ꯂꯣꯛ ꯇꯧꯔꯤ.",
+    "filteredNetworkImagesBlocked": "ꯁꯤꯡꯁꯤ ꯅꯦꯠꯋꯔꯛ ꯑꯁꯤꯅ ꯏꯃꯦꯖꯁꯤꯡ ꯕ꯭ꯂꯣꯛ ꯇꯧꯔꯤ.",
+    "filteredNetworkMapBlocked": "ꯁꯤꯡꯁꯤ ꯅꯦꯠꯋꯔꯛ ꯑꯁꯤꯅ ꯃꯦꯞ ꯕ꯭ꯂꯣꯛ ꯇꯧꯔꯤ."
 }

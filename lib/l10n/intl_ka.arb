@@ -1934,7 +1934,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-07 09:01:35.153899",
+    "@@last_modified": "2026-10-08 16:58:12.862867",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10851,5 +10851,20 @@
     "viewImageLabel": "სურათის ნახვა",
     "reportSent": "მოხსენება გაგზავნილია",
     "reportNotSent": "თქვენი მოხსენების გაგზავნა ვერ მოხერხდა. შეამოწმეთ კავშირი და სცადეთ ხელახლა.",
-    "reportPointerMessage": "შეტყობინება მოხსენებულია {courseName}-ში — იხილეთ უსაფრთხოება"
+    "reportPointerMessage": "შეტყობინება მოხსენებულია {courseName}-ში — იხილეთ უსაფრთხოება",
+    "filteredNetworkBlockedTitle": "ეს ქსელი ბლოკავს Pangea Chat-ს",
+    "filteredNetworkPartlyBlockedTitle": "ეს ქსელი ბლოკავს Pangea Chat-ის ნაწილს",
+    "filteredNetworkWhatCanIDo": "რა შემიძლია გავაკეთო?",
+    "filteredNetworkPhoneAdvice": "გამორთეთ Wi-Fi და ამის ნაცვლად გამოიყენეთ მობილური ინტერნეტი.",
+    "filteredNetworkComputerAdvice": "ამ Wi-Fi-ის ნაცვლად დაუკავშირდით თქვენი ტელეფონის ცხელ წერტილს.",
+    "filteredNetworkItHeading": "მასწავლებლებისა და IT პერსონალისთვის",
+    "filteredNetworkItBody": "სთხოვეთ თქვენს IT გუნდს, დაუშვას ეს დომენები:",
+    "filteredNetworkAskForHelp": "სთხოვეთ Pangea-ს დახმარება",
+    "filteredNetworkHelpExplanation": "ჩვენ გამოგიგზავნით ელფოსტას, რათა დაგეხმაროთ Pangea Chat-ის ამ ქსელში მუშაობაში.",
+    "filteredNetworkHelpWaiting": "თქვენი მოთხოვნა გაიგზავნება, როგორც კი დაუკავშირდებით.",
+    "filteredNetworkHelpSent": "გაგზავნილია. ჩვენ დაგიკავშირდებით ელფოსტით.",
+    "filteredNetworkHelpRefused": "თქვენი მოთხოვნის გაგზავნა ვერ მოხერხდა. გთხოვთ, გამოაგზავნოთ ელფოსტა support@pangea.chat-ზე.",
+    "filteredNetworkVideoBlocked": "ეს ქსელი ბლოკავს ვიდეოებს.",
+    "filteredNetworkImagesBlocked": "ეს ქსელი ბლოკავს სურათებს.",
+    "filteredNetworkMapBlocked": "ეს ქსელი ბლოკავს რუკას."
 }

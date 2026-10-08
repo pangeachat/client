@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-07 09:01:28.434722",
+    "@@last_modified": "2026-10-08 16:58:14.601296",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Sien prent",
     "reportSent": "Verslag gestuur",
     "reportNotSent": "Jou verslag kon nie gestuur word nie. Kontroleer jou verbinding en probeer weer.",
-    "reportPointerMessage": "’n Boodskap is in {courseName} gerapporteer — sien Veiligheid"
+    "reportPointerMessage": "’n Boodskap is in {courseName} gerapporteer — sien Veiligheid",
+    "filteredNetworkBlockedTitle": "Hierdie netwerk blokkeer Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Hierdie netwerk blokkeer 'n deel van Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Wat kan ek doen?",
+    "filteredNetworkPhoneAdvice": "Skakel Wi-Fi af en gebruik eerder mobiele data.",
+    "filteredNetworkComputerAdvice": "Koppel aan jou foon se hotspot in plaas van hierdie Wi-Fi.",
+    "filteredNetworkItHeading": "Vir onderwysers en IT-personeel",
+    "filteredNetworkItBody": "Vra jou IT-span om hierdie domeine toe te laat:",
+    "filteredNetworkAskForHelp": "Vra Pangea vir hulp",
+    "filteredNetworkHelpExplanation": "Ons sal jou e-pos om Pangea Chat op hierdie netwerk te laat werk.",
+    "filteredNetworkHelpWaiting": "Jou versoek sal gestuur word sodra jy gekoppel is.",
+    "filteredNetworkHelpSent": "Gestuur. Ons sal per e-pos kontak maak.",
+    "filteredNetworkHelpRefused": "Ons kon nie jou versoek stuur nie. Stuur asseblief 'n e-pos na support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Hierdie netwerk blokkeer video's.",
+    "filteredNetworkImagesBlocked": "Hierdie netwerk blokkeer beelde.",
+    "filteredNetworkMapBlocked": "Hierdie netwerk blokkeer die kaart."
 }

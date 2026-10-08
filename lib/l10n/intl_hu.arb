@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-07 09:01:33.546310",
+    "@@last_modified": "2026-10-08 16:58:10.099013",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10054,5 +10054,20 @@
     "viewImageLabel": "Kép megtekintése",
     "reportSent": "Jelentés elküldve",
     "reportNotSent": "A jelentés nem küldhető el. Ellenőrizze az internetkapcsolatát, és próbálja újra.",
-    "reportPointerMessage": "Üzenet jelentve a {courseName} kurzusban – lásd a Biztonság menüpontot"
+    "reportPointerMessage": "Üzenet jelentve a {courseName} kurzusban – lásd a Biztonság menüpontot",
+    "filteredNetworkBlockedTitle": "Ez a hálózat blokkolja a Pangea Chatet",
+    "filteredNetworkPartlyBlockedTitle": "Ez a hálózat részben blokkolja a Pangea Chatet",
+    "filteredNetworkWhatCanIDo": "Mit tehetek?",
+    "filteredNetworkPhoneAdvice": "Kapcsolja ki a Wi-Fi-t, és használjon mobiladatot helyette.",
+    "filteredNetworkComputerAdvice": "Csatlakozzon a telefonja hotspotjához a Wi-Fi helyett.",
+    "filteredNetworkItHeading": "Tanároknak és informatikai személyzetnek",
+    "filteredNetworkItBody": "Kérje meg az informatikai csapatot, hogy engedélyezze ezeket a domaineket:",
+    "filteredNetworkAskForHelp": "Kérjen segítséget a Pangeától",
+    "filteredNetworkHelpExplanation": "E-mailben felvesszük Önnel a kapcsolatot, hogy segítsünk a Pangea Chat működésében ezen a hálózaton.",
+    "filteredNetworkHelpWaiting": "Kérését elküldjük, amint csatlakozik.",
+    "filteredNetworkHelpSent": "Elküldve. E-mailben felvesszük Önnel a kapcsolatot.",
+    "filteredNetworkHelpRefused": "Nem tudtuk elküldeni kérését. Kérjük, írjon e-mailt a support@pangea.chat címre.",
+    "filteredNetworkVideoBlocked": "Ez a hálózat blokkolja a videókat.",
+    "filteredNetworkImagesBlocked": "Ez a hálózat blokkolja a képeket.",
+    "filteredNetworkMapBlocked": "Ez a hálózat blokkolja a térképet."
 }

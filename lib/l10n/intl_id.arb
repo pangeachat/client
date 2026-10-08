@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:33.990815",
+    "@@last_modified": "2026-10-08 16:58:10.141015",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10024,5 +10024,20 @@
     "viewImageLabel": "Lihat gambar",
     "reportSent": "Laporan terkirim",
     "reportNotSent": "Laporan Anda tidak dapat dikirim. Periksa koneksi Anda dan coba lagi.",
-    "reportPointerMessage": "Sebuah pesan dilaporkan di {courseName} — lihat Keamanan"
+    "reportPointerMessage": "Sebuah pesan dilaporkan di {courseName} — lihat Keamanan",
+    "filteredNetworkBlockedTitle": "Jaringan ini memblokir Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Jaringan ini memblokir sebagian Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Apa yang bisa saya lakukan?",
+    "filteredNetworkPhoneAdvice": "Matikan Wi-Fi dan gunakan data seluler saja.",
+    "filteredNetworkComputerAdvice": "Sambungkan ke hotspot ponsel Anda alih-alih Wi-Fi ini.",
+    "filteredNetworkItHeading": "Untuk guru dan staf IT",
+    "filteredNetworkItBody": "Minta tim IT Anda untuk mengizinkan domain ini:",
+    "filteredNetworkAskForHelp": "Minta bantuan Pangea",
+    "filteredNetworkHelpExplanation": "Kami akan mengirim email kepada Anda untuk membantu Pangea Chat berfungsi di jaringan ini.",
+    "filteredNetworkHelpWaiting": "Permintaan Anda akan dikirim segera setelah Anda terhubung.",
+    "filteredNetworkHelpSent": "Terkirim. Kami akan menghubungi Anda melalui email.",
+    "filteredNetworkHelpRefused": "Kami tidak dapat mengirim permintaan Anda. Silakan kirim email ke support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Jaringan ini memblokir video.",
+    "filteredNetworkImagesBlocked": "Jaringan ini memblokir gambar.",
+    "filteredNetworkMapBlocked": "Jaringan ini memblokir peta."
 }

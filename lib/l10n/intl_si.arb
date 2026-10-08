@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-07 09:01:43.090952",
+    "@@last_modified": "2026-10-08 16:58:24.778361",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "රූපය බලන්න",
     "reportSent": "වාර්තාව යවන ලදි",
     "reportNotSent": "ඔබගේ වාර්තාව යැවිය නොහැකි විය. ඔබගේ සම්බන්ධතාවය පරීක්ෂා කර නැවත උත්සාහ කරන්න.",
-    "reportPointerMessage": "{courseName} හි පණිවිඩයක් වාර්තා කරන ලදි — ආරක්ෂාව බලන්න"
+    "reportPointerMessage": "{courseName} හි පණිවිඩයක් වාර්තා කරන ලදි — ආරක්ෂාව බලන්න",
+    "filteredNetworkBlockedTitle": "මෙම ජාලය Pangea Chat අවහිර කරයි",
+    "filteredNetworkPartlyBlockedTitle": "මෙම ජාලය Pangea Chat හි කොටසක් අවහිර කරයි",
+    "filteredNetworkWhatCanIDo": "මට කුමක් කළ හැකිද?",
+    "filteredNetworkPhoneAdvice": "Wi-Fi අක්‍රිය කර ඒ වෙනුවට ජංගම දත්ත භාවිතා කරන්න.",
+    "filteredNetworkComputerAdvice": "මෙම Wi-Fi වෙනුවට ඔබගේ දුරකථනයේ හොට්ස්පොට් එකට සම්බන්ධ වන්න.",
+    "filteredNetworkItHeading": "ගුරුවරුන් සහ තොරතුරු තාක්ෂණ කාර්ය මණ්ඩලය සඳහා",
+    "filteredNetworkItBody": "මෙම වසම් වලට ඉඩ දෙන ලෙස ඔබේ තොරතුරු තාක්ෂණ කණ්ඩායමෙන් ඉල්ලා සිටින්න:",
+    "filteredNetworkAskForHelp": "උදව් සඳහා Pangea අමතන්න",
+    "filteredNetworkHelpExplanation": "මෙම ජාලයේ Pangea Chat ක්‍රියාත්මක කිරීමට උදව් කිරීමට අපි ඔබට විද්‍යුත් තැපෑලක් එවන්නෙමු.",
+    "filteredNetworkHelpWaiting": "ඔබ සම්බන්ධ වූ වහාම ඔබගේ ඉල්ලීම යවනු ලැබේ.",
+    "filteredNetworkHelpSent": "යවන ලදි. අපි විද්‍යුත් තැපෑලෙන් සම්බන්ධ වන්නෙමු.",
+    "filteredNetworkHelpRefused": "අපට ඔබගේ ඉල්ලීම යැවීමට නොහැකි විය. කරුණාකර support@pangea.chat වෙත විද්‍යුත් තැපෑලක් එවන්න.",
+    "filteredNetworkVideoBlocked": "මෙම ජාලය වීඩියෝ අවහිර කරයි.",
+    "filteredNetworkImagesBlocked": "මෙම ජාලය පින්තූර අවහිර කරයි.",
+    "filteredNetworkMapBlocked": "මෙම ජාලය සිතියම අවහිර කරයි."
 }

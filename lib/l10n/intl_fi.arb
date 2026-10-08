@@ -3533,7 +3533,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-07 09:01:30.803955",
+    "@@last_modified": "2026-10-08 16:58:05.640177",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9988,5 +9988,20 @@
     "viewImageLabel": "Näytä kuva",
     "reportSent": "Ilmoitus lähetetty",
     "reportNotSent": "Ilmoitustasi ei voitu lähettää. Tarkista yhteytesi ja yritä uudelleen.",
-    "reportPointerMessage": "Viestistä ilmoitettiin kurssilla {courseName} – katso Turvallisuus"
+    "reportPointerMessage": "Viestistä ilmoitettiin kurssilla {courseName} – katso Turvallisuus",
+    "filteredNetworkBlockedTitle": "Tämä verkko estää Pangea Chatin",
+    "filteredNetworkPartlyBlockedTitle": "Tämä verkko estää osan Pangea Chatista",
+    "filteredNetworkWhatCanIDo": "Mitä voin tehdä?",
+    "filteredNetworkPhoneAdvice": "Sammuta Wi-Fi ja käytä sen sijaan mobiilidataa.",
+    "filteredNetworkComputerAdvice": "Yhdistä puhelimesi tukiasemaan tämän Wi-Fin sijaan.",
+    "filteredNetworkItHeading": "Opettajille ja IT-henkilöstölle",
+    "filteredNetworkItBody": "Pyydä IT-tiimiäsi sallimaan nämä verkkotunnukset:",
+    "filteredNetworkAskForHelp": "Pyydä Pangealta apua",
+    "filteredNetworkHelpExplanation": "Lähetämme sinulle sähköpostia auttaaksemme Pangea Chatin toimimaan tässä verkossa.",
+    "filteredNetworkHelpWaiting": "Pyynnösi lähetetään heti, kun olet yhteydessä.",
+    "filteredNetworkHelpSent": "Lähetetty. Otamme sinuun yhteyttä sähköpostitse.",
+    "filteredNetworkHelpRefused": "Emme voineet lähettää pyyntöäsi. Lähetä sähköpostia osoitteeseen support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Tämä verkko estää videot.",
+    "filteredNetworkImagesBlocked": "Tämä verkko estää kuvat.",
+    "filteredNetworkMapBlocked": "Tämä verkko estää kartan."
 }

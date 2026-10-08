@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-07 09:01:32.482321",
+    "@@last_modified": "2026-10-08 16:58:08.165807",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Seall an dealbh",
     "reportSent": "Aithisg air a cur",
     "reportNotSent": "Cha b' urrainn dhuinn an aithisg agad a chur. Thoir sùil air a' cheangal agad is feuch ris a-rithist.",
-    "reportPointerMessage": "Chaidh teachdaireachd aithris ann an {courseName} — faic Sàbhailteachd"
+    "reportPointerMessage": "Chaidh teachdaireachd aithris ann an {courseName} — faic Sàbhailteachd",
+    "filteredNetworkBlockedTitle": "Tha an lìonra seo a' bacadh Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Tha an lìonra seo a' bacadh pàirt de Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Dè as urrainn dhomh a dhèanamh?",
+    "filteredNetworkPhoneAdvice": "Cuir dheth Wi-Fi agus cleachd dàta fòn-làimhe na àite.",
+    "filteredNetworkComputerAdvice": "Ceangail ri hotspot an fhòn agad an àite an Wi-Fi seo.",
+    "filteredNetworkItHeading": "Do thidsearan agus luchd-obrach IT",
+    "filteredNetworkItBody": "Iarr air an sgioba IT agad na raointean sin a cheadachadh:",
+    "filteredNetworkAskForHelp": "Iarr cuideachadh air Pangea",
+    "filteredNetworkHelpExplanation": "Cuiridh sinn post-d thugad gus Pangea Chat fhaighinn ag obair air an lìonra seo.",
+    "filteredNetworkHelpWaiting": "Thèid an t-iarrtas agad a chur cho luath 's a bhios tu ceangailte.",
+    "filteredNetworkHelpSent": "Air a chur. Bidh sinn ann an conaltradh le post-d.",
+    "filteredNetworkHelpRefused": "Cha b' urrainn dhuinn an t-iarrtas agad a chur. Cuir post-d gu support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Tha an lìonra seo a' bacadh bhideothan.",
+    "filteredNetworkImagesBlocked": "Tha an lìonra seo a' bacadh ìomhaighean.",
+    "filteredNetworkMapBlocked": "Tha an lìonra seo a' bacadh a' mhapa."
 }

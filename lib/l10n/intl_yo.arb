@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-07 09:01:48.102784",
+    "@@last_modified": "2026-10-08 16:58:31.304004",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Wo aworan",
     "reportSent": "Ìròyìn ti fi ránṣẹ́",
     "reportNotSent": "Kò ṣeé fi ìròyìn rẹ ránṣẹ́. Ṣàyẹ̀wò àsopọ̀ rẹ, kí o sì tún gbìyànjú.",
-    "reportPointerMessage": "A ti fi ìròyìn ránṣẹ́ nípa ìfọ̀rọ̀wéránṣẹ́ kan nínú {courseName} — wo Ààbò"
+    "reportPointerMessage": "A ti fi ìròyìn ránṣẹ́ nípa ìfọ̀rọ̀wéránṣẹ́ kan nínú {courseName} — wo Ààbò",
+    "filteredNetworkBlockedTitle": "Nẹtiwọọki yii n dina Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Nẹtiwọọki yii n dina apakan Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Kini mo le ṣe?",
+    "filteredNetworkPhoneAdvice": "Pa Wi-Fi rẹ ki o lo data alagbeka dipo.",
+    "filteredNetworkComputerAdvice": "Sopọ si ibi-ipin data foonu rẹ dipo Wi-Fi yii.",
+    "filteredNetworkItHeading": "Fun awọn olukọ ati oṣiṣẹ IT",
+    "filteredNetworkItBody": "Beere lọwọ ẹgbẹ IT rẹ lati gba awọn agbegbe wọnyi laaye:",
+    "filteredNetworkAskForHelp": "Beere Pangea fun iranlọwọ",
+    "filteredNetworkHelpExplanation": "A yoo fi imeeli ranṣẹ si ọ lati ṣe iranlọwọ lati jẹ ki Pangea Chat ṣiṣẹ lori nẹtiwọọki yii.",
+    "filteredNetworkHelpWaiting": "A yoo fi ibeere rẹ ranṣẹ ni kete ti o ba ti sopọ.",
+    "filteredNetworkHelpSent": "Ti firanṣẹ. A yoo kan si ọ nipasẹ imeeli.",
+    "filteredNetworkHelpRefused": "A ko le fi ibeere rẹ ranṣẹ. Jọwọ fi imeeli ranṣẹ si support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Nẹtiwọọki yii n dina awọn fidio.",
+    "filteredNetworkImagesBlocked": "Nẹtiwọọki yii n dina awọn aworan.",
+    "filteredNetworkMapBlocked": "Nẹtiwọọki yii n dina maapu naa."
 }

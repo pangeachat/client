@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-07 09:01:44.695082",
+    "@@last_modified": "2026-10-08 16:58:26.458126",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Bona setshwantsho",
     "reportSent": "Tlaleho e rometsoe",
     "reportNotSent": "Tlaleho ea hau e ne e ke ke ea romeloa. Lekola khokahano ea hau 'me u leke hape.",
-    "reportPointerMessage": "Molaetsa o tlalehiloe ho {courseName} — bona Polokeho"
+    "reportPointerMessage": "Molaetsa o tlalehiloe ho {courseName} — bona Polokeho",
+    "filteredNetworkBlockedTitle": "Marangrang ana a thibela Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Marangrang ana a thibela karolo ea Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Nka etsa eng?",
+    "filteredNetworkPhoneAdvice": "Tima Wi-Fi 'me u sebelise data ea mohala ho e-na le hoo.",
+    "filteredNetworkComputerAdvice": "Hokela ho hotspot ea mohala oa hau ho e-na le Wi-Fi ena.",
+    "filteredNetworkItHeading": "Bakeng sa matichere le basebetsi ba IT",
+    "filteredNetworkItBody": "Kopa sehlopha sa hau sa IT ho lumella li-domain tsena:",
+    "filteredNetworkAskForHelp": "Kopa Pangea thuso",
+    "filteredNetworkHelpExplanation": "Re tla u romella lengolo-tsoibila ho u thusa ho etsa hore Pangea Chat e sebetse marangrang ana.",
+    "filteredNetworkHelpWaiting": "Kopo ea hau e tla romelloa hang ha u hoketsoe.",
+    "filteredNetworkHelpSent": "E rometsoe. Re tla ikopanya le uena ka lengolo-tsoibila.",
+    "filteredNetworkHelpRefused": "Re ne re sa khone ho romella kopo ea hau. Ka kopo romella lengolo-tsoibila ho support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Marangrang ana a thibela livideo.",
+    "filteredNetworkImagesBlocked": "Marangrang ana a thibela litšoantšo.",
+    "filteredNetworkMapBlocked": "Marangrang ana a thibela 'mapa."
 }

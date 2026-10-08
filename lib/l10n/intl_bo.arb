@@ -2916,7 +2916,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-10-07 09:01:29.065129",
+    "@@last_modified": "2026-10-08 16:58:02.274035",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9562,5 +9562,20 @@
     "viewImageLabel": "པར་ལ་ལྟ་བ།",
     "reportSent": "སྙན་ཞུ་བསྐུར་ཚར།",
     "reportNotSent": "ཁྱེད་ཀྱི་སྙན་ཞུ་བསྐུར་མ་ཐུབ། དྲ་རྒྱ་ཞིབ་བཤེར་བྱས་ནས་བསྐྱར་དུ་ཚོད་ལྟ་བྱེད་རོགས།",
-    "reportPointerMessage": "{courseName}ནང་དུ་འཕྲིན་ཡིག་ཅིག་སྙན་ཞུ་བྱས་འདུག བདེ་འཇགས་ལ་གཟིགས།"
+    "reportPointerMessage": "{courseName}ནང་དུ་འཕྲིན་ཡིག་ཅིག་སྙན་ཞུ་བྱས་འདུག བདེ་འཇགས་ལ་གཟིགས།",
+    "filteredNetworkBlockedTitle": "དྲ་རྒྱ་འདིས་Pangea Chatབཀག་འགོག་བྱེད་བཞིན་ཡོད།",
+    "filteredNetworkPartlyBlockedTitle": "དྲ་རྒྱ་འདིས་Pangea Chatགྱི་ཆ་ཤས་བཀག་འགོག་བྱེད་བཞིན་ཡོད།",
+    "filteredNetworkWhatCanIDo": "ངས་ཅི་བྱེད་ཐུབ།",
+    "filteredNetworkPhoneAdvice": "Wi-Fiབཀར་ནས་བརྒྱུད་འཕྲིན་གྱི་དྲ་རྒྱ་བེད་སྤྱོད་གནང་རོགས།",
+    "filteredNetworkComputerAdvice": "Wi-Fiའདིའི་ཚབ་ཏུ་ཁྱེད་ཀྱི་ཁ་པར་གྱི་Hotspotདང་སྦྲེལ་མཐུད་གནང་རོགས།",
+    "filteredNetworkItHeading": "དགེ་རྒན་དང་ITལས་མི་ཚོའི་ཆེད།",
+    "filteredNetworkItBody": "ཁྱེད་ཀྱི་ITཚོགས་ཆུང་ལ་Domainའདི་དག་བཀག་འགོག་མི་བྱེད་པར་བཅུག་རོགས་ཞུ་དགོས།",
+    "filteredNetworkAskForHelp": "Pangeaལ་རོགས་རམ་ཞུ་དགོས།",
+    "filteredNetworkHelpExplanation": "Pangea Chatདྲ་རྒྱ་འདིའི་ཐོག་བེད་སྤྱོད་ཐུབ་པ་བྱེད་ཆེད་ང་ཚོས་ཁྱེད་ལ་གློག་འཕྲིན་བསྐུར་ཆོག",
+    "filteredNetworkHelpWaiting": "ཁྱེད་ཀྱི་རེ་བ་སྦྲེལ་མཐུད་བྱས་མ་ཐག་བསྐུར་ངེས།",
+    "filteredNetworkHelpSent": "བསྐུར་ཚར། ང་ཚོས་གློག་འཕྲིན་བརྒྱུད་ནས་འབྲེལ་བ་བྱེད་ངེས།",
+    "filteredNetworkHelpRefused": "ང་ཚོས་ཁྱེད་ཀྱི་རེ་བ་བསྐུར་མ་ཐུབ། གློག་འཕྲིན་support@pangea.chatལ་བསྐུར་རོགས།",
+    "filteredNetworkVideoBlocked": "དྲ་རྒྱ་འདིས་བརྙན་རིས་བཀག་འགོག་བྱེད་བཞིན་ཡོད།",
+    "filteredNetworkImagesBlocked": "དྲ་རྒྱ་འདིས་པར་རིས་བཀག་འགོག་བྱེད་བཞིན་ཡོད།",
+    "filteredNetworkMapBlocked": "དྲ་རྒྱ་འདིས་ས་ཁྲ་བཀག་འགོག་བྱེད་བཞིན་ཡོད།"
 }

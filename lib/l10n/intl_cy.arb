@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-07 09:01:29.660934",
+    "@@last_modified": "2026-10-08 16:58:04.338742",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Gweld delwedd",
     "reportSent": "Adroddiad wedi'i anfon",
     "reportNotSent": "Ni ellid anfon eich adroddiad. Gwiriwch eich cysylltiad a rhowch gynnig arall arni.",
-    "reportPointerMessage": "Adroddwyd am neges yn {courseName} — gweler Diogelwch"
+    "reportPointerMessage": "Adroddwyd am neges yn {courseName} — gweler Diogelwch",
+    "filteredNetworkBlockedTitle": "Mae'r rhwydwaith hwn yn blocio Sgwrs Pangea",
+    "filteredNetworkPartlyBlockedTitle": "Mae'r rhwydwaith hwn yn blocio rhan o Sgwrs Pangea",
+    "filteredNetworkWhatCanIDo": "Beth alla i ei wneud?",
+    "filteredNetworkPhoneAdvice": "Diffoddwch Wi-Fi a defnyddiwch ddata symudol yn lle hynny.",
+    "filteredNetworkComputerAdvice": "Cysylltwch â man cychwyn eich ffôn yn lle'r Wi-Fi hwn.",
+    "filteredNetworkItHeading": "Ar gyfer athrawon a staff TG",
+    "filteredNetworkItBody": "Gofynnwch i'ch tîm TG ganiatáu'r parthau hyn:",
+    "filteredNetworkAskForHelp": "Gofynnwch i Pangea am gymorth",
+    "filteredNetworkHelpExplanation": "Byddwn yn anfon e-bost atoch i helpu i gael Sgwrs Pangea i weithio ar y rhwydwaith hwn.",
+    "filteredNetworkHelpWaiting": "Anfonir eich cais cyn gynted ag y byddwch wedi cysylltu.",
+    "filteredNetworkHelpSent": "Anfonwyd. Byddwn mewn cysylltiad drwy e-bost.",
+    "filteredNetworkHelpRefused": "Ni allem anfon eich cais. Anfonwch e-bost at support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Mae'r rhwydwaith hwn yn blocio fideos.",
+    "filteredNetworkImagesBlocked": "Mae'r rhwydwaith hwn yn blocio delweddau.",
+    "filteredNetworkMapBlocked": "Mae'r rhwydwaith hwn yn blocio'r map."
 }

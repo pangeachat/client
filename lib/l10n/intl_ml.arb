@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-07 09:01:38.625827",
+    "@@last_modified": "2026-10-08 16:58:17.754934",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "ചിത്രം കാണുക",
     "reportSent": "റിപ്പോർട്ട് അയച്ചു",
     "reportNotSent": "നിങ്ങളുടെ റിപ്പോർട്ട് അയക്കാൻ കഴിഞ്ഞില്ല. നിങ്ങളുടെ കണക്ഷൻ പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക.",
-    "reportPointerMessage": "{courseName} എന്നതിൽ ഒരു സന്ദേശം റിപ്പോർട്ട് ചെയ്തിട്ടുണ്ട് — സുരക്ഷ കാണുക"
+    "reportPointerMessage": "{courseName} എന്നതിൽ ഒരു സന്ദേശം റിപ്പോർട്ട് ചെയ്തിട്ടുണ്ട് — സുരക്ഷ കാണുക",
+    "filteredNetworkBlockedTitle": "ഈ നെറ്റ്‌വർക്ക് പാഞ്ജിയ ചാറ്റ് തടയുന്നു",
+    "filteredNetworkPartlyBlockedTitle": "ഈ നെറ്റ്‌വർക്ക് പാഞ്ജിയ ചാറ്റിന്റെ ഒരു ഭാഗം തടയുന്നു",
+    "filteredNetworkWhatCanIDo": "എനിക്ക് എന്തുചെയ്യാൻ കഴിയും?",
+    "filteredNetworkPhoneAdvice": "വൈഫൈ ഓഫ് ചെയ്ത് മൊബൈൽ ഡാറ്റ ഉപയോഗിക്കുക.",
+    "filteredNetworkComputerAdvice": "ഈ വൈഫൈക്ക് പകരം നിങ്ങളുടെ ഫോണിന്റെ ഹോട്ട്‌സ്‌പോട്ടിലേക്ക് കണക്ട് ചെയ്യുക.",
+    "filteredNetworkItHeading": "അധ്യാപകർക്കും ഐടി സ്റ്റാഫിനും",
+    "filteredNetworkItBody": "ഈ ഡൊമെയ്‌നുകൾ അനുവദിക്കാൻ നിങ്ങളുടെ ഐടി ടീമിനോട് ആവശ്യപ്പെടുക:",
+    "filteredNetworkAskForHelp": "സഹായത്തിനായി പാഞ്ജിയയോട് ചോദിക്കുക",
+    "filteredNetworkHelpExplanation": "ഈ നെറ്റ്‌വർക്കിൽ പാഞ്ജിയ ചാറ്റ് പ്രവർത്തിപ്പിക്കാൻ സഹായിക്കുന്നതിനായി ഞങ്ങൾ നിങ്ങൾക്ക് ഇമെയിൽ അയയ്ക്കും.",
+    "filteredNetworkHelpWaiting": "നിങ്ങൾ കണക്ട് ചെയ്താലുടൻ നിങ്ങളുടെ അഭ്യർത്ഥന അയയ്ക്കും.",
+    "filteredNetworkHelpSent": "അയച്ചു. ഞങ്ങൾ ഇമെയിൽ വഴി ബന്ധപ്പെടും.",
+    "filteredNetworkHelpRefused": "നിങ്ങളുടെ അഭ്യർത്ഥന അയയ്ക്കാൻ ഞങ്ങൾക്ക് കഴിഞ്ഞില്ല. ദയവായി support@pangea.chat എന്ന വിലാസത്തിൽ ഇമെയിൽ ചെയ്യുക.",
+    "filteredNetworkVideoBlocked": "ഈ നെറ്റ്‌വർക്ക് വീഡിയോകൾ തടയുന്നു.",
+    "filteredNetworkImagesBlocked": "ഈ നെറ്റ്‌വർക്ക് ചിത്രങ്ങൾ തടയുന്നു.",
+    "filteredNetworkMapBlocked": "ഈ നെറ്റ്‌വർക്ക് മാപ്പ് തടയുന്നു."
 }

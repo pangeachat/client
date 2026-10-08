@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-07 09:01:43.932323",
+    "@@last_modified": "2026-10-08 16:58:25.330558",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Shiko imazhin",
     "reportSent": "Raporti u dërgua",
     "reportNotSent": "Raporti juaj nuk mund të dërgohej. Kontrolloni lidhjen tuaj dhe provoni përsëri.",
-    "reportPointerMessage": "Një mesazh u raportua në {courseName} — shihni Sigurinë"
+    "reportPointerMessage": "Një mesazh u raportua në {courseName} — shihni Sigurinë",
+    "filteredNetworkBlockedTitle": "Ky rrjet po bllokon Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Ky rrjet po bllokon një pjesë të Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Çfarë mund të bëj?",
+    "filteredNetworkPhoneAdvice": "Fikni Wi-Fi-në dhe përdorni të dhënat celulare.",
+    "filteredNetworkComputerAdvice": "Lidhu me hotspot-in e telefonit tënd në vend të kësaj Wi-Fi-je.",
+    "filteredNetworkItHeading": "Për mësuesit dhe stafin e IT-së",
+    "filteredNetworkItBody": "Kërkojini ekipit tuaj të IT-së të lejojë këto domene:",
+    "filteredNetworkAskForHelp": "Kërko ndihmë nga Pangea",
+    "filteredNetworkHelpExplanation": "Do t'ju dërgojmë një email për t'ju ndihmuar të bëni Pangea Chat të funksionojë në këtë rrjet.",
+    "filteredNetworkHelpWaiting": "Kërkesa juaj do të dërgohet sapo të lidheni.",
+    "filteredNetworkHelpSent": "U dërgua. Do të kontaktojmë me email.",
+    "filteredNetworkHelpRefused": "Nuk mundëm ta dërgonim kërkesën tuaj. Ju lutemi dërgoni email në support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Ky rrjet bllokon videot.",
+    "filteredNetworkImagesBlocked": "Ky rrjet bllokon imazhet.",
+    "filteredNetworkMapBlocked": "Ky rrjet bllokon hartën."
 }

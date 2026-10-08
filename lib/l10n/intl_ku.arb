@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-07 09:01:45.902654",
+    "@@last_modified": "2026-10-08 16:58:15.652437",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "وێنەکە ببینە",
     "reportSent": "ڕاپۆرت نێردرا",
     "reportNotSent": "ڕاپۆرتەکەت نەنێردرا. پەیوەندییەکەت بپشکنە و دووبارە هەوڵ بدەوە.",
-    "reportPointerMessage": "پەیامێک لە {courseName} ڕاپۆرت کرا — سەیری سەلامەتی بکە"
+    "reportPointerMessage": "پەیامێک لە {courseName} ڕاپۆرت کرا — سەیری سەلامەتی بکە",
+    "filteredNetworkBlockedTitle": "ئەم تۆڕە چاتی پانگێا بلۆک دەکات",
+    "filteredNetworkPartlyBlockedTitle": "ئەم تۆڕە بەشێک لە چاتی پانگێا بلۆک دەکات",
+    "filteredNetworkWhatCanIDo": "چی بکەم؟",
+    "filteredNetworkPhoneAdvice": "وای فای بکوژێنەرەوە و داتای مۆبایل بەکاربهێنە.",
+    "filteredNetworkComputerAdvice": "لەجیاتی ئەم وای فایە، پەیوەست بە هۆتسپۆتی مۆبایلەکەتەوە.",
+    "filteredNetworkItHeading": "بۆ مامۆستایان و کارمەندانی ئای تی",
+    "filteredNetworkItBody": "داوا لە تیمی ئای تی بکە ڕێگە بەم دۆمەینانە بدەن:",
+    "filteredNetworkAskForHelp": "داوای یارمەتی لە پانگێا بکە",
+    "filteredNetworkHelpExplanation": "ئێمە ئیمەیڵت بۆ دەنێرین بۆ یارمەتیدان لە کارپێکردنی چاتی پانگێا لەسەر ئەم تۆڕە.",
+    "filteredNetworkHelpWaiting": "داواکارییەکەت دەنێردرێت هەر کە پەیوەست بوویت.",
+    "filteredNetworkHelpSent": "نێردرا. بە ئیمەیڵ لەگەڵت دەبین.",
+    "filteredNetworkHelpRefused": "نەمانتوانی داواکارییەکەت بنێرین. تکایە ئیمەیڵ بنێرە بۆ support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "ئەم تۆڕە ڤیدیۆکان بلۆک دەکات.",
+    "filteredNetworkImagesBlocked": "ئەم تۆڕە وێنەکان بلۆک دەکات.",
+    "filteredNetworkMapBlocked": "ئەم تۆڕە نەخشەکە بلۆک دەکات."
 }

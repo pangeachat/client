@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:28.541176",
+    "@@last_modified": "2026-10-08 16:58:00.882369",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10579,5 +10579,20 @@
     "viewImageLabel": "ছবি দেখুন",
     "reportSent": "রিপোর্ট পাঠানো হয়েছে",
     "reportNotSent": "আপনার রিপোর্ট পাঠানো যায়নি। আপনার সংযোগ পরীক্ষা করুন এবং আবার চেষ্টা করুন।",
-    "reportPointerMessage": "{courseName}-এ একটি মেসেজ রিপোর্ট করা হয়েছে — সেফটি দেখুন"
+    "reportPointerMessage": "{courseName}-এ একটি মেসেজ রিপোর্ট করা হয়েছে — সেফটি দেখুন",
+    "filteredNetworkBlockedTitle": "এই নেটওয়ার্কটি প্যানগিয়া চ্যাট ব্লক করছে",
+    "filteredNetworkPartlyBlockedTitle": "এই নেটওয়ার্কটি প্যানগিয়া চ্যাটের কিছু অংশ ব্লক করছে",
+    "filteredNetworkWhatCanIDo": "আমি কী করতে পারি?",
+    "filteredNetworkPhoneAdvice": "ওয়াই-ফাই বন্ধ করুন এবং এর পরিবর্তে মোবাইল ডেটা ব্যবহার করুন।",
+    "filteredNetworkComputerAdvice": "এই ওয়াই-ফাই এর পরিবর্তে আপনার ফোনের হটস্পটের সাথে সংযোগ করুন।",
+    "filteredNetworkItHeading": "শিক্ষক এবং আইটি কর্মীদের জন্য",
+    "filteredNetworkItBody": "আপনার আইটি টিমকে এই ডোমেনগুলি অনুমতি দিতে বলুন:",
+    "filteredNetworkAskForHelp": "প্যানগিয়ার কাছে সাহায্য চান",
+    "filteredNetworkHelpExplanation": "এই নেটওয়ার্কে প্যানগিয়া চ্যাট চালু করতে আমরা আপনাকে ইমেল করব।",
+    "filteredNetworkHelpWaiting": "আপনি সংযুক্ত হওয়ার সাথে সাথে আপনার অনুরোধ পাঠানো হবে।",
+    "filteredNetworkHelpSent": "পাঠানো হয়েছে। আমরা ইমেলের মাধ্যমে আপনার সাথে যোগাযোগ করব।",
+    "filteredNetworkHelpRefused": "আমরা আপনার অনুরোধ পাঠাতে পারিনি। অনুগ্রহ করে support@pangea.chat-এ ইমেল করুন।",
+    "filteredNetworkVideoBlocked": "এই নেটওয়ার্ক ভিডিও ব্লক করে।",
+    "filteredNetworkImagesBlocked": "এই নেটওয়ার্ক ছবি ব্লক করে।",
+    "filteredNetworkMapBlocked": "এই নেটওয়ার্ক ম্যাপ ব্লক করে।"
 }

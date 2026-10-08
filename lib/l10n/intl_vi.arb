@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:46.227358",
+    "@@last_modified": "2026-10-08 16:58:28.877727",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7249,5 +7249,20 @@
     "viewImageLabel": "Xem hình ảnh",
     "reportSent": "Đã gửi báo cáo",
     "reportNotSent": "Không thể gửi báo cáo của bạn. Vui lòng kiểm tra kết nối và thử lại.",
-    "reportPointerMessage": "Một tin nhắn đã được báo cáo trong {courseName} — xem mục An toàn"
+    "reportPointerMessage": "Một tin nhắn đã được báo cáo trong {courseName} — xem mục An toàn",
+    "filteredNetworkBlockedTitle": "Mạng này đang chặn Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Mạng này đang chặn một phần Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Tôi có thể làm gì?",
+    "filteredNetworkPhoneAdvice": "Tắt Wi-Fi và dùng dữ liệu di động.",
+    "filteredNetworkComputerAdvice": "Kết nối với điểm phát sóng của điện thoại thay vì Wi-Fi này.",
+    "filteredNetworkItHeading": "Dành cho giáo viên và nhân viên IT",
+    "filteredNetworkItBody": "Yêu cầu đội ngũ IT của bạn cho phép các miền sau:",
+    "filteredNetworkAskForHelp": "Yêu cầu Pangea trợ giúp",
+    "filteredNetworkHelpExplanation": "Chúng tôi sẽ gửi email cho bạn để giúp Pangea Chat hoạt động trên mạng này.",
+    "filteredNetworkHelpWaiting": "Yêu cầu của bạn sẽ được gửi ngay khi bạn kết nối.",
+    "filteredNetworkHelpSent": "Đã gửi. Chúng tôi sẽ liên hệ với bạn qua email.",
+    "filteredNetworkHelpRefused": "Chúng tôi không thể gửi yêu cầu của bạn. Vui lòng gửi email tới support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Mạng này chặn video.",
+    "filteredNetworkImagesBlocked": "Mạng này chặn hình ảnh.",
+    "filteredNetworkMapBlocked": "Mạng này chặn bản đồ."
 }

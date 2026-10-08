@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-07 09:01:42.998012",
+    "@@last_modified": "2026-10-08 16:58:24.530122",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10896,5 +10896,20 @@
     "viewImageLabel": "Zobraziť obrázok",
     "reportSent": "Nahlásenie odoslané",
     "reportNotSent": "Vaše nahlásenie sa nepodarilo odoslať. Skontrolujte pripojenie a skúste to znova.",
-    "reportPointerMessage": "V kurze {courseName} bola nahlásená správa – pozrite si Bezpečnosť"
+    "reportPointerMessage": "V kurze {courseName} bola nahlásená správa – pozrite si Bezpečnosť",
+    "filteredNetworkBlockedTitle": "Táto sieť blokuje Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Táto sieť blokuje časť Pangea Chatu",
+    "filteredNetworkWhatCanIDo": "Čo môžem urobiť?",
+    "filteredNetworkPhoneAdvice": "Vypnite Wi-Fi a namiesto toho použite mobilné dáta.",
+    "filteredNetworkComputerAdvice": "Namiesto tejto Wi-Fi sa pripojte k hotspotu svojho telefónu.",
+    "filteredNetworkItHeading": "Pre učiteľov a IT personál",
+    "filteredNetworkItBody": "Požiadajte svoj IT tím, aby povolil tieto domény:",
+    "filteredNetworkAskForHelp": "Požiadajte Pangeu o pomoc",
+    "filteredNetworkHelpExplanation": "Pošleme vám e-mail, aby sme vám pomohli spustiť Pangea Chat v tejto sieti.",
+    "filteredNetworkHelpWaiting": "Vaša požiadavka bude odoslaná hneď, ako sa pripojíte.",
+    "filteredNetworkHelpSent": "Odoslané. Budeme vás kontaktovať e-mailom.",
+    "filteredNetworkHelpRefused": "Vašu požiadavku sa nám nepodarilo odoslať. Pošlite e-mail na adresu support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Táto sieť blokuje videá.",
+    "filteredNetworkImagesBlocked": "Táto sieť blokuje obrázky.",
+    "filteredNetworkMapBlocked": "Táto sieť blokuje mapu."
 }

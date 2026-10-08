@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-07 09:01:46.670525",
+    "@@last_modified": "2026-10-08 16:58:30.549833",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Jonga umfanekiso",
     "reportSent": "Ingxelo ithunyelwe",
     "reportNotSent": "Ingxelo yakho ayikwazanga ukuthunyelwa. Khangela uqhagamshelwano lwakho uze uzame kwakhona.",
-    "reportPointerMessage": "Umyalezo uxeliwe ku-{courseName} — jonga uKhuseleko"
+    "reportPointerMessage": "Umyalezo uxeliwe ku-{courseName} — jonga uKhuseleko",
+    "filteredNetworkBlockedTitle": "Le nethiwekhi iyayivala i-Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Le nethiwekhi iyayivala inxalenye ye-Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Ndingenza ntoni?",
+    "filteredNetworkPhoneAdvice": "Cima i-Wi-Fi usebenzise idatha yeselula endaweni yoko.",
+    "filteredNetworkComputerAdvice": "Qhagamshela kwi-hotspot yefowuni yakho endaweni yale Wi-Fi.",
+    "filteredNetworkItHeading": "Kootitshala nabasebenzi be-IT",
+    "filteredNetworkItBody": "Cela iqela lakho le-IT ukuba livumele ezi ndawo:",
+    "filteredNetworkAskForHelp": "Cela uncedo kwi-Pangea",
+    "filteredNetworkHelpExplanation": "Siza kukuthumelela i-imeyile ukuze sikuncede ufumane i-Pangea Chat isebenza kule nethiwekhi.",
+    "filteredNetworkHelpWaiting": "Isicelo sakho siza kuthunyelwa nje ukuba uqhagamshelwe.",
+    "filteredNetworkHelpSent": "Kuthunyelwe. Siza kuqhagamshelana nge-imeyile.",
+    "filteredNetworkHelpRefused": "Asikwazanga ukuthumela isicelo sakho. Nceda uthumele i-imeyile ku-support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Le nethiwekhi iyayivala iividiyo.",
+    "filteredNetworkImagesBlocked": "Le nethiwekhi iyayivala imifanekiso.",
+    "filteredNetworkMapBlocked": "Le nethiwekhi iyawuvala umzobo."
 }

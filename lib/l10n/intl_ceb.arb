@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-07 09:01:29.665644",
+    "@@last_modified": "2026-10-08 16:58:03.293836",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Tan-awa ang hulagway",
     "reportSent": "Napadala ang report",
     "reportNotSent": "Dili mapadala ang imong report. Susiha ang imong koneksyon ug sulayi pag-usab.",
-    "reportPointerMessage": "Usa ka mensahe ang gi-report sa {courseName} — tan-awa ang Safety"
+    "reportPointerMessage": "Usa ka mensahe ang gi-report sa {courseName} — tan-awa ang Safety",
+    "filteredNetworkBlockedTitle": "Kini nga network nagbabag sa Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Kini nga network nagbabag sa bahin sa Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Unsa ang akong mahimo?",
+    "filteredNetworkPhoneAdvice": "Ipalong ang Wi-Fi ug gamita hinuon ang mobile data.",
+    "filteredNetworkComputerAdvice": "Ikonektar sa hotspot sa imong telepono imbes niining Wi-Fi.",
+    "filteredNetworkItHeading": "Para sa mga magtutudlo ug IT staff",
+    "filteredNetworkItBody": "Hangyoa ang imong IT team nga tugutan kini nga mga domain:",
+    "filteredNetworkAskForHelp": "Pangayo og tabang sa Pangea",
+    "filteredNetworkHelpExplanation": "Mag-email kami kanimo aron matabangan nga molihok ang Pangea Chat niini nga network.",
+    "filteredNetworkHelpWaiting": "Ang imong hangyo ipadala sa diha nga konektado ka na.",
+    "filteredNetworkHelpSent": "Napadala. Makig-kontak kami pinaagi sa email.",
+    "filteredNetworkHelpRefused": "Dili namo mapadala ang imong hangyo. Palihug pag-email sa support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Kini nga network nagbabag sa mga video.",
+    "filteredNetworkImagesBlocked": "Kini nga network nagbabag sa mga hulagway.",
+    "filteredNetworkMapBlocked": "Kini nga network nagbabag sa mapa."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:47.154069",
+    "@@last_modified": "2026-10-08 16:58:30.700037",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10057,5 +10057,20 @@
     "viewImageLabel": "檢視圖片",
     "reportSent": "檢舉已送出",
     "reportNotSent": "您的檢舉無法送出。請檢查您的連線並再試一次。",
-    "reportPointerMessage": "在「{courseName}」中有一則訊息被檢舉了 — 請查看「安全」"
+    "reportPointerMessage": "在「{courseName}」中有一則訊息被檢舉了 — 請查看「安全」",
+    "filteredNetworkBlockedTitle": "此網路正在封鎖 Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "此網路正在部分封鎖 Pangea Chat",
+    "filteredNetworkWhatCanIDo": "我該怎麼辦？",
+    "filteredNetworkPhoneAdvice": "關閉 Wi-Fi，改用行動數據。",
+    "filteredNetworkComputerAdvice": "連接到您手機的熱點，而不是此 Wi-Fi。",
+    "filteredNetworkItHeading": "致老師和 IT 人員",
+    "filteredNetworkItBody": "請您的 IT 團隊允許以下網域：",
+    "filteredNetworkAskForHelp": "向 Pangea 尋求協助",
+    "filteredNetworkHelpExplanation": "我們將透過電子郵件與您聯繫，協助您在此網路使用 Pangea Chat。",
+    "filteredNetworkHelpWaiting": "您的請求將在您連線後立即發送。",
+    "filteredNetworkHelpSent": "已發送。我們將透過電子郵件與您聯繫。",
+    "filteredNetworkHelpRefused": "我們無法發送您的請求。請發送電子郵件至 support@pangea.chat。",
+    "filteredNetworkVideoBlocked": "此網路封鎖影片。",
+    "filteredNetworkImagesBlocked": "此網路封鎖圖片。",
+    "filteredNetworkMapBlocked": "此網路封鎖地圖。"
 }

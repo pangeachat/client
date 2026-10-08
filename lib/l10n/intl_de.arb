@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-07 09:01:29.540665",
+    "@@last_modified": "2026-10-08 16:58:03.325575",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9938,5 +9938,20 @@
     "viewImageLabel": "Bild ansehen",
     "reportSent": "Bericht gesendet",
     "reportNotSent": "Ihr Bericht konnte nicht gesendet werden. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
-    "reportPointerMessage": "Eine Nachricht wurde in {courseName} gemeldet – siehe Sicherheit"
+    "reportPointerMessage": "Eine Nachricht wurde in {courseName} gemeldet – siehe Sicherheit",
+    "filteredNetworkBlockedTitle": "Dieses Netzwerk blockiert Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Dieses Netzwerk blockiert einen Teil von Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Was kann ich tun?",
+    "filteredNetworkPhoneAdvice": "Schalten Sie WLAN aus und nutzen Sie stattdessen mobile Daten.",
+    "filteredNetworkComputerAdvice": "Verbinden Sie sich mit dem Hotspot Ihres Telefons anstelle dieses WLANs.",
+    "filteredNetworkItHeading": "Für Lehrkräfte und IT-Mitarbeiter",
+    "filteredNetworkItBody": "Bitten Sie Ihr IT-Team, diese Domains zuzulassen:",
+    "filteredNetworkAskForHelp": "Pangea um Hilfe bitten",
+    "filteredNetworkHelpExplanation": "Wir werden Ihnen eine E-Mail senden, um Pangea Chat in diesem Netzwerk zum Laufen zu bringen.",
+    "filteredNetworkHelpWaiting": "Ihre Anfrage wird gesendet, sobald Sie verbunden sind.",
+    "filteredNetworkHelpSent": "Gesendet. Wir melden uns per E-Mail bei Ihnen.",
+    "filteredNetworkHelpRefused": "Ihre Anfrage konnte nicht gesendet werden. Bitte senden Sie eine E-Mail an support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Dieses Netzwerk blockiert Videos.",
+    "filteredNetworkImagesBlocked": "Dieses Netzwerk blockiert Bilder.",
+    "filteredNetworkMapBlocked": "Dieses Netzwerk blockiert die Karte."
 }

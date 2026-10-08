@@ -1331,7 +1331,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-07 09:01:29.748402",
+    "@@last_modified": "2026-10-08 16:58:03.776287",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10871,5 +10871,20 @@
     "viewImageLabel": "Se billede",
     "reportSent": "Rapport sendt",
     "reportNotSent": "Din rapport kunne ikke sendes. Tjek din forbindelse, og prøv igen.",
-    "reportPointerMessage": "En besked blev rapporteret i {courseName} – se Sikkerhed"
+    "reportPointerMessage": "En besked blev rapporteret i {courseName} – se Sikkerhed",
+    "filteredNetworkBlockedTitle": "Dette netværk blokerer Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Dette netværk blokerer dele af Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Hvad kan jeg gøre?",
+    "filteredNetworkPhoneAdvice": "Slå Wi-Fi fra, og brug mobildata i stedet.",
+    "filteredNetworkComputerAdvice": "Opret forbindelse til din telefons hotspot i stedet for dette Wi-Fi.",
+    "filteredNetworkItHeading": "Til lærere og IT-personale",
+    "filteredNetworkItBody": "Bed dit IT-team om at tillade disse domæner:",
+    "filteredNetworkAskForHelp": "Spørg Pangea om hjælp",
+    "filteredNetworkHelpExplanation": "Vi sender dig en e-mail for at hjælpe med at få Pangea Chat til at fungere på dette netværk.",
+    "filteredNetworkHelpWaiting": "Din anmodning sendes, så snart du er forbundet.",
+    "filteredNetworkHelpSent": "Sendt. Vi kontakter dig via e-mail.",
+    "filteredNetworkHelpRefused": "Vi kunne ikke sende din anmodning. Send venligst en e-mail til support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Dette netværk blokerer videoer.",
+    "filteredNetworkImagesBlocked": "Dette netværk blokerer billeder.",
+    "filteredNetworkMapBlocked": "Dette netværk blokerer kortet."
 }

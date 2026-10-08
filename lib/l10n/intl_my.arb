@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-07 09:01:42.697539",
+    "@@last_modified": "2026-10-08 16:58:20.342398",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "ပုံကြည့်ရန်",
     "reportSent": "အစီရင်ခံစာ ပေးပို့ပြီးပါပြီ",
     "reportNotSent": "သင်၏အစီရင်ခံစာကို ပေးပို့နိုင်ခြင်းမရှိပါ။ သင်၏အင်တာနက်ချိတ်ဆက်မှုကို စစ်ဆေးပြီး ထပ်မံကြိုးစားပါ။",
-    "reportPointerMessage": "{courseName} တွင် မက်ဆေ့ချ်တစ်ခုကို အစီရင်ခံထားသည် — ဘေးကင်းရေးကို ကြည့်ပါ"
+    "reportPointerMessage": "{courseName} တွင် မက်ဆေ့ချ်တစ်ခုကို အစီရင်ခံထားသည် — ဘေးကင်းရေးကို ကြည့်ပါ",
+    "filteredNetworkBlockedTitle": "ဤကွန်ရက်က Pangea Chat ကို ပိတ်ဆို့ထားသည်",
+    "filteredNetworkPartlyBlockedTitle": "ဤကွန်ရက်က Pangea Chat ၏ အချို့အပိုင်းကို ပိတ်ဆို့ထားသည်",
+    "filteredNetworkWhatCanIDo": "ဘာလုပ်ရမလဲ",
+    "filteredNetworkPhoneAdvice": "Wi-Fi ပိတ်ပြီး မိုဘိုင်းဒေတာကို အစားသုံးပါ။",
+    "filteredNetworkComputerAdvice": "ဤ Wi-Fi အစား သင့်ဖုန်း၏ ဟော့စပေါ့သို့ ချိတ်ဆက်ပါ။",
+    "filteredNetworkItHeading": "ဆရာများနှင့် IT ဝန်ထမ်းများအတွက်",
+    "filteredNetworkItBody": "ဤဒိုမိန်းများကို ခွင့်ပြုရန် သင့် IT အဖွဲ့ကို တောင်းဆိုပါ-",
+    "filteredNetworkAskForHelp": "အကူအညီအတွက် Pangea ကို မေးပါ",
+    "filteredNetworkHelpExplanation": "ဤကွန်ရက်တွင် Pangea Chat အလုပ်လုပ်နိုင်ရန် သင့်ထံသို့ အီးမေးလ်ပို့ပေးပါမည်။",
+    "filteredNetworkHelpWaiting": "သင်ချိတ်ဆက်ပြီးသည်နှင့် သင့်တောင်းဆိုချက်ကို ပေးပို့ပါမည်။",
+    "filteredNetworkHelpSent": "ပို့ပြီးပါပြီ။ အီးမေးလ်ဖြင့် ဆက်သွယ်ပါမည်။",
+    "filteredNetworkHelpRefused": "သင့်တောင်းဆိုချက်ကို ပေးပို့၍မရပါ။ support@pangea.chat သို့ အီးမေးလ်ပို့ပါ။",
+    "filteredNetworkVideoBlocked": "ဤကွန်ရက်က ဗီဒီယိုများကို ပိတ်ဆို့ထားသည်။",
+    "filteredNetworkImagesBlocked": "ဤကွန်ရက်က ပုံများကို ပိတ်ဆို့ထားသည်။",
+    "filteredNetworkMapBlocked": "ဤကွန်ရက်က မြေပုံကို ပိတ်ဆို့ထားသည်။"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-07 09:01:28.240676",
+    "@@last_modified": "2026-10-08 16:58:01.572374",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Преглед на изображението",
     "reportSent": "Докладът е изпратен",
     "reportNotSent": "Докладът ви не можа да бъде изпратен. Проверете връзката си и опитайте отново.",
-    "reportPointerMessage": "Съобщение беше докладвано в {courseName} — вижте Безопасност"
+    "reportPointerMessage": "Съобщение беше докладвано в {courseName} — вижте Безопасност",
+    "filteredNetworkBlockedTitle": "Тази мрежа блокира Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Тази мрежа блокира част от Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Какво мога да направя?",
+    "filteredNetworkPhoneAdvice": "Изключете Wi-Fi и вместо това използвайте мобилни данни.",
+    "filteredNetworkComputerAdvice": "Свържете се с хотспота на телефона си вместо с този Wi-Fi.",
+    "filteredNetworkItHeading": "За учители и ИТ персонал",
+    "filteredNetworkItBody": "Помолете вашия ИТ екип да разреши тези домейни:",
+    "filteredNetworkAskForHelp": "Помолете Pangea за помощ",
+    "filteredNetworkHelpExplanation": "Ще ви изпратим имейл, за да ви помогнем да подкарате Pangea Chat в тази мрежа.",
+    "filteredNetworkHelpWaiting": "Заявката ви ще бъде изпратена веднага щом се свържете.",
+    "filteredNetworkHelpSent": "Изпратено. Ще се свържем с вас по имейл.",
+    "filteredNetworkHelpRefused": "Не можахме да изпратим заявката ви. Моля, изпратете имейл на support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Тази мрежа блокира видеоклипове.",
+    "filteredNetworkImagesBlocked": "Тази мрежа блокира изображения.",
+    "filteredNetworkMapBlocked": "Тази мрежа блокира картата."
 }

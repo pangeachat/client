@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-07 09:01:30.681737",
+    "@@last_modified": "2026-10-08 16:58:05.737447",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9951,5 +9951,20 @@
     "viewImageLabel": "Ikusi irudia",
     "reportSent": "Txostena bidali da",
     "reportNotSent": "Ezin izan da zure txostena bidali. Egiaztatu konexioa eta saiatu berriro.",
-    "reportPointerMessage": "Mezu bat salatu da {courseName} ikastaroan — ikusi Segurtasuna"
+    "reportPointerMessage": "Mezu bat salatu da {courseName} ikastaroan — ikusi Segurtasuna",
+    "filteredNetworkBlockedTitle": "Sare honek Pangea Chat blokeatzen du",
+    "filteredNetworkPartlyBlockedTitle": "Sare honek Pangea Chaten zati bat blokeatzen du",
+    "filteredNetworkWhatCanIDo": "Zer egin dezaket?",
+    "filteredNetworkPhoneAdvice": "Desaktibatu Wi-Fi eta erabili datu mugikorrak horren ordez.",
+    "filteredNetworkComputerAdvice": "Konektatu zure telefonoaren hotspotera Wi-Fi honen ordez.",
+    "filteredNetworkItHeading": "Irakasle eta informatika-langileentzat",
+    "filteredNetworkItBody": "Eskatu zure informatika-taldeari domeinu hauek baimentzeko:",
+    "filteredNetworkAskForHelp": "Eskatu laguntza Pangea-ri",
+    "filteredNetworkHelpExplanation": "Mezu elektroniko bat bidaliko dizugu Pangea Chat sare honetan funtzionatzen laguntzeko.",
+    "filteredNetworkHelpWaiting": "Zure eskaera konektatu bezain laster bidaliko da.",
+    "filteredNetworkHelpSent": "Bidalita. Posta elektronikoz jarriko gara harremanetan.",
+    "filteredNetworkHelpRefused": "Ezin izan dugu zure eskaera bidali. Mesedez, bidali mezu elektroniko bat support@pangea.chat helbidera.",
+    "filteredNetworkVideoBlocked": "Sare honek bideoak blokeatzen ditu.",
+    "filteredNetworkImagesBlocked": "Sare honek irudiak blokeatzen ditu.",
+    "filteredNetworkMapBlocked": "Sare honek mapa blokeatzen du."
 }

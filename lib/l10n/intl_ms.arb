@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-07 09:01:39.160252",
+    "@@last_modified": "2026-10-08 16:58:17.889429",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Lihat imej",
     "reportSent": "Laporan dihantar",
     "reportNotSent": "Laporan anda tidak dapat dihantar. Semak sambungan anda dan cuba lagi.",
-    "reportPointerMessage": "Mesej telah dilaporkan dalam {courseName} — lihat Keselamatan"
+    "reportPointerMessage": "Mesej telah dilaporkan dalam {courseName} — lihat Keselamatan",
+    "filteredNetworkBlockedTitle": "Rangkaian ini menyekat Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Rangkaian ini menyekat sebahagian daripada Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Apa yang boleh saya lakukan?",
+    "filteredNetworkPhoneAdvice": "Matikan Wi-Fi dan gunakan data mudah alih sebaliknya.",
+    "filteredNetworkComputerAdvice": "Sambung ke hotspot telefon anda dan bukannya Wi-Fi ini.",
+    "filteredNetworkItHeading": "Untuk guru dan kakitangan IT",
+    "filteredNetworkItBody": "Minta pasukan IT anda untuk membenarkan domain ini:",
+    "filteredNetworkAskForHelp": "Minta bantuan Pangea",
+    "filteredNetworkHelpExplanation": "Kami akan menghantar e-mel kepada anda untuk membantu Pangea Chat berfungsi pada rangkaian ini.",
+    "filteredNetworkHelpWaiting": "Permintaan anda akan dihantar sebaik sahaja anda disambungkan.",
+    "filteredNetworkHelpSent": "Dihantar. Kami akan menghubungi anda melalui e-mel.",
+    "filteredNetworkHelpRefused": "Kami tidak dapat menghantar permintaan anda. Sila e-mel support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Rangkaian ini menyekat video.",
+    "filteredNetworkImagesBlocked": "Rangkaian ini menyekat imej.",
+    "filteredNetworkMapBlocked": "Rangkaian ini menyekat peta."
 }

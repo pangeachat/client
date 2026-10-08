@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-07 09:01:42.176613",
+    "@@last_modified": "2026-10-08 16:58:22.950144",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "انځور وګورئ",
     "reportSent": "راپور ولېږل شو",
     "reportNotSent": "ستاسو راپور نشو لېږل کېدای. خپله اړیکه وګورئ او بیا هڅه وکړئ.",
-    "reportPointerMessage": "په {courseName} کې یو پیغام راپور شوی — خوندیتوب وګورئ"
+    "reportPointerMessage": "په {courseName} کې یو پیغام راپور شوی — خوندیتوب وګورئ",
+    "filteredNetworkBlockedTitle": "دا شبکه پنګیا چیټ بندوي",
+    "filteredNetworkPartlyBlockedTitle": "دا شبکه د پنګیا چیټ یوه برخه بندوي",
+    "filteredNetworkWhatCanIDo": "زه څه کولی شم؟",
+    "filteredNetworkPhoneAdvice": "وائی فای بند کړئ او پرځای یې د ګرځنده ډیټا وکاروئ.",
+    "filteredNetworkComputerAdvice": "د دې وائی فای پرځای د خپل تلیفون هاټ سپاټ سره وصل شئ.",
+    "filteredNetworkItHeading": "د ښوونکو او IT کارمندانو لپاره",
+    "filteredNetworkItBody": "خپلې IT ټیم څخه وغواړئ چې دې ډومینونو ته اجازه ورکړي:",
+    "filteredNetworkAskForHelp": "د مرستې لپاره پنګیا څخه پوښتنه وکړئ",
+    "filteredNetworkHelpExplanation": "موږ به تاسو ته بریښنالیک واستوو ترڅو پدې شبکه کې د پنګیا چیټ کار کولو کې مرسته وکړو.",
+    "filteredNetworkHelpWaiting": "ستاسو غوښتنه به ژر تر ژره واستول شي کله چې تاسو وصل شئ.",
+    "filteredNetworkHelpSent": "واستول شو. موږ به د بریښنالیک له لارې په تماس کې شو.",
+    "filteredNetworkHelpRefused": "موږ ستاسو غوښتنه نشو لیږلی. مهرباني وکړئ support@pangea.chat ته بریښنالیک واستوئ.",
+    "filteredNetworkVideoBlocked": "دا شبکه ویډیوګانې بندوي.",
+    "filteredNetworkImagesBlocked": "دا شبکه عکسونه بندوي.",
+    "filteredNetworkMapBlocked": "دا شبکه نقشه بندوي."
 }

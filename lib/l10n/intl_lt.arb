@@ -2964,7 +2964,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-07 09:01:37.916537",
+    "@@last_modified": "2026-10-08 16:58:16.146792",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10732,5 +10732,20 @@
     "viewImageLabel": "Peržiūrėti nuotrauką",
     "reportSent": "Pranešimas išsiųstas",
     "reportNotSent": "Nepavyko išsiųsti jūsų pranešimo. Patikrinkite ryšį ir bandykite dar kartą.",
-    "reportPointerMessage": "Pranešta apie žinutę {courseName} – žr. Sauga"
+    "reportPointerMessage": "Pranešta apie žinutę {courseName} – žr. Sauga",
+    "filteredNetworkBlockedTitle": "Šis tinklas blokuoja „Pangea Chat“",
+    "filteredNetworkPartlyBlockedTitle": "Šis tinklas blokuoja dalį „Pangea Chat“",
+    "filteredNetworkWhatCanIDo": "Ką galiu daryti?",
+    "filteredNetworkPhoneAdvice": "Išjunkite „Wi-Fi“ ir naudokite mobiliojo ryšio duomenis.",
+    "filteredNetworkComputerAdvice": "Vietoj šio „Wi-Fi“ prisijunkite prie savo telefono viešosios interneto prieigos taško.",
+    "filteredNetworkItHeading": "Mokytojams ir IT personalui",
+    "filteredNetworkItBody": "Paprašykite savo IT komandos leisti šiuos domenus:",
+    "filteredNetworkAskForHelp": "Paprašykite „Pangea“ pagalbos",
+    "filteredNetworkHelpExplanation": "Atsiųsime jums el. laišką, kad padėtume „Pangea Chat“ veikti šiame tinkle.",
+    "filteredNetworkHelpWaiting": "Jūsų užklausa bus išsiųsta, kai tik prisijungsite.",
+    "filteredNetworkHelpSent": "Išsiųsta. Susisieksime el. paštu.",
+    "filteredNetworkHelpRefused": "Nepavyko išsiųsti jūsų užklausos. Prašome rašyti el. paštu support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Šis tinklas blokuoja vaizdo įrašus.",
+    "filteredNetworkImagesBlocked": "Šis tinklas blokuoja paveikslėlius.",
+    "filteredNetworkMapBlocked": "Šis tinklas blokuoja žemėlapį."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-07 09:01:33.662012",
+    "@@last_modified": "2026-10-08 16:58:09.417733",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Gade imaj",
     "reportSent": "Rapò a voye",
     "reportNotSent": "Rapò ou a pa t' kapab voye. Tcheke koneksyon ou epi eseye ankò.",
-    "reportPointerMessage": "Yon mesaj te rapòte nan {courseName} — gade Sekirite"
+    "reportPointerMessage": "Yon mesaj te rapòte nan {courseName} — gade Sekirite",
+    "filteredNetworkBlockedTitle": "Rezo sa a bloke Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Rezo sa a bloke yon pati nan Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Kisa mwen ka fè?",
+    "filteredNetworkPhoneAdvice": "Etenn Wi-Fi a epi itilize done mobil pito.",
+    "filteredNetworkComputerAdvice": "Konekte ak hotspot telefòn ou pito pase Wi-Fi sa a.",
+    "filteredNetworkItHeading": "Pou pwofesè ak anplwaye IT",
+    "filteredNetworkItBody": "Mande ekip IT ou a pou pèmèt domèn sa yo:",
+    "filteredNetworkAskForHelp": "Mande Pangea èd",
+    "filteredNetworkHelpExplanation": "N ap voye yon imèl ba ou pou ede w fè Pangea Chat mache sou rezo sa a.",
+    "filteredNetworkHelpWaiting": "Demann ou an ap voye le pli vit ke ou konekte.",
+    "filteredNetworkHelpSent": "Voye. N ap kontakte w pa imèl.",
+    "filteredNetworkHelpRefused": "Nou pa t ka voye demann ou an. Tanpri voye yon imèl bay support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Rezo sa a bloke videyo.",
+    "filteredNetworkImagesBlocked": "Rezo sa a bloke imaj.",
+    "filteredNetworkMapBlocked": "Rezo sa a bloke kat la."
 }

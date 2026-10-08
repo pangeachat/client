@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-10-07 09:01:41.487434",
+    "@@last_modified": "2026-10-08 16:58:23.239825",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "ଛବି ଦେଖନ୍ତୁ",
     "reportSent": "ରିପୋର୍ଟ ପଠାଯାଇଛି",
     "reportNotSent": "ଆପଣଙ୍କ ରିପୋର୍ଟ ପଠାଯାଇପାରିଲା ନାହିଁ। ଆପଣଙ୍କ ଇଣ୍ଟରନେଟ୍ ଯୋଗାଯୋଗ ଯାଞ୍ଚ କରନ୍ତୁ ଏବଂ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।",
-    "reportPointerMessage": "{courseName} ରେ ଏକ ବାର୍ତ୍ତା ରିପୋର୍ଟ କରାଯାଇଛି — ସୁରକ୍ଷା ଦେଖନ୍ତୁ"
+    "reportPointerMessage": "{courseName} ରେ ଏକ ବାର୍ତ୍ତା ରିପୋର୍ଟ କରାଯାଇଛି — ସୁରକ୍ଷା ଦେଖନ୍ତୁ",
+    "filteredNetworkBlockedTitle": "ଏହି ନେଟୱର୍କ Pangea Chat କୁ ବ୍ଲକ୍ କରୁଛି",
+    "filteredNetworkPartlyBlockedTitle": "ଏହି ନେଟୱର୍କ Pangea Chat ର କିଛି ଅଂଶକୁ ବ୍ଲକ୍ କରୁଛି",
+    "filteredNetworkWhatCanIDo": "ମୁଁ କ’ଣ କରିପାରିବି?",
+    "filteredNetworkPhoneAdvice": "ୱାଇ-ଫାଇ ବନ୍ଦ କରନ୍ତୁ ଏବଂ ମୋବାଇଲ୍ ଡାଟା ବ୍ୟବହାର କରନ୍ତୁ।",
+    "filteredNetworkComputerAdvice": "ଏହି ୱାଇ-ଫାଇ ବଦଳରେ ଆପଣଙ୍କ ଫୋନର ହଟସ୍ପଟ୍ ସହିତ ସଂଯୋଗ କରନ୍ତୁ।",
+    "filteredNetworkItHeading": "ଶିକ୍ଷକ ଏବଂ IT କର୍ମଚାରୀଙ୍କ ପାଇଁ",
+    "filteredNetworkItBody": "ଆପଣଙ୍କ IT ଟିମ୍‌କୁ ଏହି ଡୋମେନ୍‌ଗୁଡ଼ିକୁ ଅନୁମତି ଦେବାକୁ କୁହନ୍ତୁ:",
+    "filteredNetworkAskForHelp": "ସାହାଯ୍ୟ ପାଇଁ Pangea କୁ ପଚାରନ୍ତୁ",
+    "filteredNetworkHelpExplanation": "ଏହି ନେଟୱର୍କରେ Pangea Chat କୁ କାର୍ଯ୍ୟକ୍ଷମ କରିବାରେ ସାହାଯ୍ୟ କରିବା ପାଇଁ ଆମେ ଆପଣଙ୍କୁ ଇମେଲ୍ କରିବୁ।",
+    "filteredNetworkHelpWaiting": "ଆପଣ ସଂଯୋଗ ହେବା ମାତ୍ରେ ଆପଣଙ୍କ ଅନୁରୋଧ ପଠାଯିବ।",
+    "filteredNetworkHelpSent": "ପଠାଯାଇଛି। ଆମେ ଇମେଲ୍ ମାଧ୍ୟମରେ ଆପଣଙ୍କ ସହିତ ଯୋଗାଯୋଗ କରିବୁ।",
+    "filteredNetworkHelpRefused": "ଆମେ ଆପଣଙ୍କ ଅନୁରୋଧ ପଠାଇ ପାରିଲୁ ନାହିଁ। ଦୟାକରି support@pangea.chat କୁ ଇମେଲ୍ କରନ୍ତୁ।",
+    "filteredNetworkVideoBlocked": "ଏହି ନେଟୱର୍କ ଭିଡିଓଗୁଡ଼ିକୁ ବ୍ଲକ୍ କରେ।",
+    "filteredNetworkImagesBlocked": "ଏହି ନେଟୱର୍କ ଛବିଗୁଡ଼ିକୁ ବ୍ଲକ୍ କରେ।",
+    "filteredNetworkMapBlocked": "ଏହି ନେଟୱର୍କ ମାନଚିତ୍ରକୁ ବ୍ଲକ୍ କରେ।"
 }

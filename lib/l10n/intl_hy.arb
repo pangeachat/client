@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-07 09:01:36.589322",
+    "@@last_modified": "2026-10-08 16:58:11.336614",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Դիտել նկարը",
     "reportSent": "Հաղորդումն ուղարկված է",
     "reportNotSent": "Ձեր հաղորդումը չհաջողվեց ուղարկել։ Ստուգեք ինտերնետ կապը և նորից փորձեք։",
-    "reportPointerMessage": "{courseName} դասընթացում հաղորդագրություն է ուղարկվել. տե՛ս «Անվտանգություն» բաժինը"
+    "reportPointerMessage": "{courseName} դասընթացում հաղորդագրություն է ուղարկվել. տե՛ս «Անվտանգություն» բաժինը",
+    "filteredNetworkBlockedTitle": "Այս ցանցն արգելափակում է Pangea Chat-ը",
+    "filteredNetworkPartlyBlockedTitle": "Այս ցանցը մասամբ արգելափակում է Pangea Chat-ը",
+    "filteredNetworkWhatCanIDo": "Ի՞նչ կարող եմ անել",
+    "filteredNetworkPhoneAdvice": "Անջատեք Wi-Fi-ը և փոխարենը օգտագործեք բջջային տվյալներ։",
+    "filteredNetworkComputerAdvice": "Միացեք ձեր հեռախոսի թեժ կետին՝ այս Wi-Fi-ի փոխարեն։",
+    "filteredNetworkItHeading": "Ուսուցիչների և ՏՏ անձնակազմի համար",
+    "filteredNetworkItBody": "Խնդրեք ձեր ՏՏ թիմին թույլատրել հետևյալ տիրույթները՝",
+    "filteredNetworkAskForHelp": "Օգնություն խնդրեք Pangea-ից",
+    "filteredNetworkHelpExplanation": "Մենք ձեզ էլեկտրոնային նամակ կուղարկենք՝ օգնելու Pangea Chat-ը գործարկել այս ցանցում։",
+    "filteredNetworkHelpWaiting": "Ձեր հարցումը կուղարկվի հենց որ միանաք։",
+    "filteredNetworkHelpSent": "Ուղարկված է։ Մենք ձեզ հետ կկապվենք էլեկտրոնային փոստով։",
+    "filteredNetworkHelpRefused": "Մենք չկարողացանք ուղարկել ձեր հարցումը։ Խնդրում ենք էլեկտրոնային նամակ ուղարկել support@pangea.chat հասցեին։",
+    "filteredNetworkVideoBlocked": "Այս ցանցն արգելափակում է տեսանյութերը։",
+    "filteredNetworkImagesBlocked": "Այս ցանցն արգելափակում է պատկերները։",
+    "filteredNetworkMapBlocked": "Այս ցանցն արգելափակում է քարտեզը։"
 }

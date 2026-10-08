@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:30.686113",
+    "@@last_modified": "2026-10-08 16:58:05.376240",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10039,5 +10039,20 @@
     "viewImageLabel": "مشاهده تصویر",
     "reportSent": "گزارش ارسال شد",
     "reportNotSent": "گزارش شما ارسال نشد. اتصال خود را بررسی کرده و دوباره امتحان کنید.",
-    "reportPointerMessage": "پیامی در {courseName} گزارش شد — به بخش ایمنی مراجعه کنید"
+    "reportPointerMessage": "پیامی در {courseName} گزارش شد — به بخش ایمنی مراجعه کنید",
+    "filteredNetworkBlockedTitle": "این شبکه Pangea Chat را مسدود کرده است",
+    "filteredNetworkPartlyBlockedTitle": "این شبکه بخشی از Pangea Chat را مسدود کرده است",
+    "filteredNetworkWhatCanIDo": "چه کاری می‌توانم انجام دهم؟",
+    "filteredNetworkPhoneAdvice": "وای‌فای را خاموش کنید و به جای آن از داده تلفن همراه استفاده کنید.",
+    "filteredNetworkComputerAdvice": "به جای این وای‌فای، به هات‌اسپات تلفن خود متصل شوید.",
+    "filteredNetworkItHeading": "برای معلمان و کارکنان فناوری اطلاعات",
+    "filteredNetworkItBody": "از تیم فناوری اطلاعات خود بخواهید این دامنه‌ها را مجاز کند:",
+    "filteredNetworkAskForHelp": "از Pangea کمک بخواهید",
+    "filteredNetworkHelpExplanation": "ما به شما ایمیل می‌زنیم تا به شما کمک کنیم Pangea Chat در این شبکه کار کند.",
+    "filteredNetworkHelpWaiting": "درخواست شما به محض اتصال ارسال خواهد شد.",
+    "filteredNetworkHelpSent": "ارسال شد. از طریق ایمیل با شما در تماس خواهیم بود.",
+    "filteredNetworkHelpRefused": "نتوانستیم درخواست شما را ارسال کنیم. لطفاً به support@pangea.chat ایمیل بزنید.",
+    "filteredNetworkVideoBlocked": "این شبکه ویدیوها را مسدود می‌کند.",
+    "filteredNetworkImagesBlocked": "این شبکه تصاویر را مسدود می‌کند.",
+    "filteredNetworkMapBlocked": "این شبکه نقشه را مسدود می‌کند."
 }

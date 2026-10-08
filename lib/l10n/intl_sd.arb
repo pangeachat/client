@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-07 09:01:43.326619",
+    "@@last_modified": "2026-10-08 16:58:24.903731",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "تصوير ڏسو",
     "reportSent": "رپورٽ موڪلي وئي",
     "reportNotSent": "توهان جي رپورٽ موڪلي نه سگهجي. پنهنجو ڪنيڪشن چيڪ ڪريو ۽ ٻيهر ڪوشش ڪريو.",
-    "reportPointerMessage": "{courseName} ۾ هڪ پيغام جي رپورٽ ڪئي وئي آهي — حفاظت ڏسو"
+    "reportPointerMessage": "{courseName} ۾ هڪ پيغام جي رپورٽ ڪئي وئي آهي — حفاظت ڏسو",
+    "filteredNetworkBlockedTitle": "هي نيٽورڪ پينگيا چيٽ کي بلاڪ ڪري رهيو آهي",
+    "filteredNetworkPartlyBlockedTitle": "هي نيٽورڪ پينگيا چيٽ جي ڪجهه حصي کي بلاڪ ڪري رهيو آهي",
+    "filteredNetworkWhatCanIDo": "مان ڇا ڪري سگهان ٿو؟",
+    "filteredNetworkPhoneAdvice": "وائي فائي بند ڪريو ۽ ان جي بدران موبائل ڊيٽا استعمال ڪريو.",
+    "filteredNetworkComputerAdvice": "هن وائي فائي جي بدران پنهنجي فون جي هاٽ اسپاٽ سان ڳنڍيو.",
+    "filteredNetworkItHeading": "استادن ۽ آئي ٽي عملي لاءِ",
+    "filteredNetworkItBody": "پنهنجي آئي ٽي ٽيم کان پڇو ته اهي ڊومينز جي اجازت ڏين:",
+    "filteredNetworkAskForHelp": "مدد لاءِ پينگيا کان پڇو",
+    "filteredNetworkHelpExplanation": "اسان توهان کي اي ميل ڪنداسين ته جيئن هن نيٽورڪ تي پينگيا چيٽ کي هلائڻ ۾ مدد ملي سگهي.",
+    "filteredNetworkHelpWaiting": "توهان جي درخواست موڪلي ويندي جيئن ئي توهان ڳنڍجي ويندا.",
+    "filteredNetworkHelpSent": "موڪلي وئي. اسان توهان سان اي ميل ذريعي رابطو ڪنداسين.",
+    "filteredNetworkHelpRefused": "اسان توهان جي درخواست موڪلي نه سگهياسين. مهرباني ڪري support@pangea.chat تي اي ميل ڪريو.",
+    "filteredNetworkVideoBlocked": "هي نيٽورڪ وڊيوز کي بلاڪ ڪري ٿو.",
+    "filteredNetworkImagesBlocked": "هي نيٽورڪ تصويرن کي بلاڪ ڪري ٿو.",
+    "filteredNetworkMapBlocked": "هي نيٽورڪ نقشي کي بلاڪ ڪري ٿو."
 }

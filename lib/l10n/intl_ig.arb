@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-07 09:01:36.274728",
+    "@@last_modified": "2026-10-08 16:58:11.935804",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Lee onyonyo",
     "reportSent": "Ezigara akụkọ",
     "reportNotSent": "Enweghị ike iziga akụkọ gị. Lelee njikọ gị wee nwaa ọzọ.",
-    "reportPointerMessage": "Ekwuru okwu n'ime {courseName} — lee Nchekwa"
+    "reportPointerMessage": "Ekwuru okwu n'ime {courseName} — lee Nchekwa",
+    "filteredNetworkBlockedTitle": "Netwọkụ a na-egbochi Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Netwọkụ a na-egbochi akụkụ nke Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Gịnị ka m ga-eme?",
+    "filteredNetworkPhoneAdvice": "Gbanyụọ Wi-Fi ma jiri data ekwentị kama.",
+    "filteredNetworkComputerAdvice": "Jikọọ na hotspot ekwentị gị kama Wi-Fi a.",
+    "filteredNetworkItHeading": "Maka ndị nkuzi na ndị ọrụ IT",
+    "filteredNetworkItBody": "Gwa ndị otu IT gị ka ha kwe ka ngalaba ndị a:",
+    "filteredNetworkAskForHelp": "Jụọ Pangea maka enyemaka",
+    "filteredNetworkHelpExplanation": "Anyị ga-ezitere gị ozi-e iji nyere aka mee ka Pangea Chat rụọ ọrụ na netwọkụ a.",
+    "filteredNetworkHelpWaiting": "A ga-eziga arịrịọ gị ozugbo ị jikọọ.",
+    "filteredNetworkHelpSent": "Ezigara. Anyị ga-akpọtụrụ gị site na ozi-e.",
+    "filteredNetworkHelpRefused": "Anyị enweghị ike iziga arịrịọ gị. Biko ziga ozi-e na support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Netwọkụ a na-egbochi vidiyo.",
+    "filteredNetworkImagesBlocked": "Netwọkụ a na-egbochi onyonyo.",
+    "filteredNetworkMapBlocked": "Netwọkụ a na-egbochi maapụ."
 }

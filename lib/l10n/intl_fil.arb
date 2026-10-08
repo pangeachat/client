@@ -2077,7 +2077,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-07 09:01:30.905224",
+    "@@last_modified": "2026-10-08 16:58:05.786472",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10811,5 +10811,20 @@
     "viewImageLabel": "Tingnan ang larawan",
     "reportSent": "Naipadala ang ulat",
     "reportNotSent": "Hindi maipadala ang iyong ulat. Tingnan ang iyong koneksyon at subukang muli.",
-    "reportPointerMessage": "May naiulat na mensahe sa {courseName} — tingnan ang Kaligtasan"
+    "reportPointerMessage": "May naiulat na mensahe sa {courseName} — tingnan ang Kaligtasan",
+    "filteredNetworkBlockedTitle": "Hinarangan ng network na ito ang Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Hinarangan ng network na ito ang bahagi ng Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Ano ang puwede kong gawin?",
+    "filteredNetworkPhoneAdvice": "I-off ang Wi-Fi at gamitin na lang ang mobile data.",
+    "filteredNetworkComputerAdvice": "Kumonekta sa hotspot ng iyong telepono sa halip na sa Wi-Fi na ito.",
+    "filteredNetworkItHeading": "Para sa mga guro at IT staff",
+    "filteredNetworkItBody": "Hilingin sa iyong IT team na payagan ang mga domain na ito:",
+    "filteredNetworkAskForHelp": "Humiling ng tulong sa Pangea",
+    "filteredNetworkHelpExplanation": "Mag-e-email kami sa iyo para matulungan kang gumana ang Pangea Chat sa network na ito.",
+    "filteredNetworkHelpWaiting": "Ipadadala ang iyong kahilingan sa sandaling makakonekta ka.",
+    "filteredNetworkHelpSent": "Naipadala. Makikipag-ugnayan kami sa pamamagitan ng email.",
+    "filteredNetworkHelpRefused": "Hindi namin maipadala ang iyong kahilingan. Mangyaring mag-email sa support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Hinarangan ng network na ito ang mga video.",
+    "filteredNetworkImagesBlocked": "Hinarangan ng network na ito ang mga larawan.",
+    "filteredNetworkMapBlocked": "Hinarangan ng network na ito ang mapa."
 }

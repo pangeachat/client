@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-07 09:01:44.310259",
+    "@@last_modified": "2026-10-08 16:58:26.410133",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2396,5 +2396,20 @@
     "viewImageLabel": "Témbongkeun gambar",
     "reportSent": "Laporan dikirim",
     "reportNotSent": "Laporan anjeun teu tiasa dikirim. Pariksa sambungan anjeun teras cobian deui.",
-    "reportPointerMessage": "Aya béja dilaporkeun di {courseName} — tingali Kasalametan"
+    "reportPointerMessage": "Aya béja dilaporkeun di {courseName} — tingali Kasalametan",
+    "filteredNetworkBlockedTitle": "Jaringan ieu meungpeuk Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Jaringan ieu meungpeuk sabagian Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Naon nu tiasa abdi laksanakeun?",
+    "filteredNetworkPhoneAdvice": "Pareuman Wi-Fi teras anggo data sélulér.",
+    "filteredNetworkComputerAdvice": "Sambungkeun kana hotspot telepon anjeun tibatan Wi-Fi ieu.",
+    "filteredNetworkItHeading": "Pikeun guru sareng staf IT",
+    "filteredNetworkItBody": "Tanya tim IT anjeun pikeun ngidinan domain ieu:",
+    "filteredNetworkAskForHelp": "Tanya Pangea pikeun pitulung",
+    "filteredNetworkHelpExplanation": "Kami bakal ngirim email ka anjeun pikeun ngabantosan Pangea Chat jalan dina jaringan ieu.",
+    "filteredNetworkHelpWaiting": "Paménta anjeun bakal dikirim pas anjeun nyambung.",
+    "filteredNetworkHelpSent": "Dikirim. Kami bakal ngahubungi anjeun ngalangkungan email.",
+    "filteredNetworkHelpRefused": "Kami henteu tiasa ngirim paménta anjeun. Punten kirim email ka support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Jaringan ieu meungpeuk pidéo.",
+    "filteredNetworkImagesBlocked": "Jaringan ieu meungpeuk gambar.",
+    "filteredNetworkMapBlocked": "Jaringan ieu meungpeuk peta."
 }

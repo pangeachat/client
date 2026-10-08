@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
+import 'package:fluffychat/features/network_filter/filtered_network_controller.dart';
+import 'package:fluffychat/features/network_filter/network_host_category.dart';
+import 'package:fluffychat/features/network_filter/widgets/filtered_network_note.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/embed_click_to_engage.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_video_keyboard_control.dart';
@@ -121,6 +124,13 @@ class _ActivityYoutubePlayerState extends State<ActivityYoutubePlayer> {
     );
     final id = YoutubePlayerController.convertUrlToId(widget.url);
     if (id != null) _loadVideo(id);
+    // The embed's failures happen inside its frame, where the app can't see
+    // them, so opening a video is itself the moment to check for a filter.
+    unawaited(
+      FilteredNetworkController.instance.checkIfStale(
+        NetworkHostCategory.video,
+      ),
+    );
 
     // Native only: every native player opens from the learner's tap and should
     // start at once. On web a browser that blocks sound autoplay leaves it
@@ -215,15 +225,18 @@ class _ActivityYoutubePlayerState extends State<ActivityYoutubePlayer> {
       onTogglePlayback: _togglePlayback,
       onToggleMute: _toggleMute,
       onToggleCaptions: _toggleCaptions,
-      child: EmbedClickToEngage(
-        onEngage: _togglePlayback,
-        child: YoutubePlayer(
-          controller: _controller,
-          aspectRatio: widget.aspectRatio,
-          // Inline only (#7500): don't auto-fullscreen on landscape rotation,
-          // and don't let a vertical drag push into fullscreen.
-          autoFullScreen: false,
-          enableFullScreenOnVerticalDrag: false,
+      child: FilteredNetworkNote(
+        category: NetworkHostCategory.video,
+        child: EmbedClickToEngage(
+          onEngage: _togglePlayback,
+          child: YoutubePlayer(
+            controller: _controller,
+            aspectRatio: widget.aspectRatio,
+            // Inline only (#7500): don't auto-fullscreen on landscape rotation,
+            // and don't let a vertical drag push into fullscreen.
+            autoFullScreen: false,
+            enableFullScreenOnVerticalDrag: false,
+          ),
         ),
       ),
     );

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-07 09:01:43.637623",
+    "@@last_modified": "2026-10-08 16:58:22.699484",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10923,5 +10923,20 @@
     "viewImageLabel": "Посмотреть изображение",
     "reportSent": "Жалоба отправлена",
     "reportNotSent": "Не удалось отправить жалобу. Проверьте подключение и повторите попытку.",
-    "reportPointerMessage": "Сообщение было отправлено в {courseName} — см. раздел «Безопасность»"
+    "reportPointerMessage": "Сообщение было отправлено в {courseName} — см. раздел «Безопасность»",
+    "filteredNetworkBlockedTitle": "Эта сеть блокирует Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Эта сеть частично блокирует Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Что я могу сделать?",
+    "filteredNetworkPhoneAdvice": "Отключите Wi-Fi и используйте мобильные данные.",
+    "filteredNetworkComputerAdvice": "Подключитесь к точке доступа телефона вместо этой сети Wi-Fi.",
+    "filteredNetworkItHeading": "Для учителей и ИТ-персонала",
+    "filteredNetworkItBody": "Попросите вашу ИТ-команду разрешить следующие домены:",
+    "filteredNetworkAskForHelp": "Обратиться за помощью к Pangea",
+    "filteredNetworkHelpExplanation": "Мы свяжемся с вами по электронной почте, чтобы помочь запустить Pangea Chat в этой сети.",
+    "filteredNetworkHelpWaiting": "Ваш запрос будет отправлен, как только вы подключитесь.",
+    "filteredNetworkHelpSent": "Отправлено. Мы свяжемся с вами по электронной почте.",
+    "filteredNetworkHelpRefused": "Не удалось отправить ваш запрос. Пожалуйста, напишите на support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Эта сеть блокирует видео.",
+    "filteredNetworkImagesBlocked": "Эта сеть блокирует изображения.",
+    "filteredNetworkMapBlocked": "Эта сеть блокирует карту."
 }
