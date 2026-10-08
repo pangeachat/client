@@ -228,7 +228,7 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
 
   Future<void> setEmailNotificationsEnabled(bool enable) async {
     try {
-      await Matrix.of(context).client.setEnableEmailNotifs(enable);
+      await Matrix.of(context).client.setMissedMessageEmailsEnabled(enable);
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {'enable': enable});
 
