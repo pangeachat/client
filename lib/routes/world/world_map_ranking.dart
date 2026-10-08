@@ -10,8 +10,8 @@ import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 /// The displayed colour-state of a world-map activity pin. Declared
 /// lowest-precedence first so `state.index` is the precedence ladder
 /// (available < inProgress < joinable < ongoingPending < ongoingActive): when
-/// more than one applies the higher one wins the colour. There is no locked
-/// state — progression only ranks, never gates (#7186). See
+/// more than one applies the higher one wins the colour. A lock is not a
+/// state: it layers over any non-live state (gray, ranked last). See
 /// world-map.instructions.md ("Pin state").
 enum ActivityPinState {
   /// Playable, nothing live and no stars yet — the default. Light brand.
@@ -323,6 +323,10 @@ const double kMultiPersonFirstMapPenalty = 2.0;
 /// ([placeLargeCards]'s `dismissedIds`), like the live-session heavy-tier gate.
 const double kDismissedPenalty = 0.5;
 
+/// Sinks a locked pin below every unlocked one, so it only draws when the view
+/// has room to spare.
+const double kLockedPinPenalty = 100.0;
+
 /// Rating-count threshold below which an activity counts as NEW (#7993): it
 /// takes the TOP of the ratings range (+[kRatingWeight]) and renders a NEW
 /// badge — new content gets the benefit of the doubt, not a cold-start
@@ -424,7 +428,8 @@ class _Scored {
 /// cap so one objective can't monopolise the heavy tiers, and a trail reservation
 /// ([trailBudget]) that guarantees up to that many of the `N` slots to the
 /// highest-ranked in-view *progressed* activities ([progressedIds]) so a
-/// learner's trail is never crowded out. Every pin competes — no state/lock gate.
+/// learner's trail is never crowded out. Every pin competes; a locked one only
+/// ranks last ([lockedIds]).
 /// The caller filters to the active viewport and re-runs on pan/zoom, so the
 /// budgets are per-view. The large/mid/small split (and which large cards
 /// actually fit on screen) is decided downstream by [placeLargeCards].
@@ -442,6 +447,7 @@ RankingResult rankPins({
   int maxPerDiversityKey = 2,
   bool isNewLearner = false,
   Set<String> dismissedIds = const {},
+  Set<String> lockedIds = const {},
 }) {
   PinSignals sig(String id) => signals[id] ?? const PinSignals();
 
@@ -456,14 +462,15 @@ RankingResult rankPins({
         return _Scored(
           p,
           pinScore(
-            band: band,
-            s: sig(p.activityId),
-            roleCount: p.roleCount,
-            isNewLearner: isNewLearner,
-            isDismissed: dismissedIds.contains(p.activityId),
-            ratingAverage: p.ratingAverage,
-            ratingCount: p.ratingCount,
-          ),
+                band: band,
+                s: sig(p.activityId),
+                roleCount: p.roleCount,
+                isNewLearner: isNewLearner,
+                isDismissed: dismissedIds.contains(p.activityId),
+                ratingAverage: p.ratingAverage,
+                ratingCount: p.ratingCount,
+              ) -
+              (lockedIds.contains(p.activityId) ? kLockedPinPenalty : 0),
         );
       }).toList()..sort((a, b) {
         // activityId tiebreaker: List.sort is unstable, so without it equal-score
@@ -492,7 +499,9 @@ RankingResult rankPins({
     ranked: ranked,
     n: largeBudget + midBudget + smallBudget,
     trailBudget: trailBudget,
-    progressedIds: progressedIds,
+    // A locked activity keeps its earned stars but never takes a reserved
+    // trail slot from an unlocked pin.
+    progressedIds: progressedIds.difference(lockedIds),
   );
 
   // No tier eligibility gate lives here any more: `mid` fills purely by score,

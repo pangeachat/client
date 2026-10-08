@@ -231,5 +231,20 @@ void main() {
         isEmpty,
       );
     });
+
+    test('a locked activity is dropped unless a session is open to join', () {
+      final ranked = rankSuggestedActivities(
+        groups: [
+          objGroup('m1', ['open', 'locked', 'lockedOpen']),
+        ],
+        missionGradient: flatBand,
+        signalsFor: (id) => id == 'lockedOpen'
+            ? const PinSignals(state: ActivityPinState.joinable)
+            : const PinSignals(),
+        isLocked: (id) => id.startsWith('locked'),
+      );
+
+      expect(idsOf(ranked), ['lockedOpen', 'open']);
+    });
   });
 }

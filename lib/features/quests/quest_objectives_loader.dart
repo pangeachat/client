@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:async/async.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/quests/mission_lock.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
@@ -171,6 +172,14 @@ class QuestObjectivesLoader {
   /// "zero" — the caller renders no star display rather than a false 0.
   MissionProgress? missionProgress(String missionId) =>
       _scopedQuest?.rollup[missionId];
+
+  /// This course's lock on [missionId], or null when it's unlocked or the
+  /// progress hasn't resolved (fail open).
+  MissionLock? missionLock(String missionId) =>
+      _scopedQuest?.lockFor(missionId);
+
+  bool isActivityLocked(String activityId) =>
+      _scopedQuest?.isActivityLocked(activityId) ?? false;
 
   List<QuestObjectiveGroup> get filteredObjectiveGroups =>
       switch (_questLoader.value) {

@@ -14,6 +14,7 @@ import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
+import 'package:fluffychat/features/activity_sessions/activity_session_preview_repo.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/features/navigation/panel_focus.dart';
@@ -23,6 +24,7 @@ import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/activity_session_previews_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
@@ -259,6 +261,34 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     _tutorials.releaseSequence(TutorialSequences.openSessionsSequence);
     _tutorials.releaseSequence(TutorialSequences.activityRolesSequence);
     super.dispose();
+  }
+
+  /// Back out of a session viewed from the join list: leave it if no role
+  /// was picked (joining only to look shouldn't keep you a member), then
+  /// return to the activity, which lands on its join list again.
+  void backToJoinList() {
+    final room = activityRoom;
+    if (room != null &&
+        room.membership == Membership.join &&
+        !room.hasPickedRole) {
+      unawaited(_leaveViewedSession(room));
+    }
+    context.go(
+      WorkspaceNav.closeActivitySession(
+        GoRouterState.of(context).uri,
+        widget.activityId,
+      ),
+    );
+  }
+
+  Future<void> _leaveViewedSession(Room room) async {
+    try {
+      await room.leaveIgnoringUnknownRoom();
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'roomId': room.id});
+    } finally {
+      await ActivitySessionPreviewRepo.remove(room.id);
+    }
   }
 
   Room? get activityRoom => widget.roomId != null

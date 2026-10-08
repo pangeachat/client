@@ -110,4 +110,50 @@ void main() {
       expect(cache.outlines, isEmpty);
     });
   });
+
+  group('JoinedObjectiveCache.resolution — locks exemption', () {
+    CourseLoOutline twoMissions(String key) => CourseLoOutline(
+      courseId: key,
+      orderedLoIds: const ['m1', 'm2'],
+      activityIdsByLo: const {
+        'm1': {'a1'},
+        'm2': {'a2'},
+      },
+    );
+
+    test('re-reads locksExemptOf at every resolution, no rebuild', () async {
+      var teaching = false;
+      final cache = JoinedObjectiveCache();
+      await cache.rebuild(
+        ['c1'],
+        outlineOf: (key) async => twoMissions(key),
+        locksExemptOf: (_) => teaching,
+      );
+      expect(cache.resolution({}).isActivityLocked('a2'), isTrue);
+
+      teaching = true;
+      expect(cache.resolution({}).isActivityLocked('a2'), isFalse);
+
+      teaching = false;
+      expect(cache.resolution({}).isActivityLocked('a2'), isTrue);
+    });
+
+    test('the predicate is asked per course', () async {
+      final cache = JoinedObjectiveCache();
+      await cache.rebuild(
+        ['taught', 'learnt'],
+        outlineOf: (key) async => twoMissions(key),
+        locksExemptOf: (key) => key == 'taught',
+      );
+      final r = cache.resolution({});
+      expect(r.isActivityLocked('a2', courseId: 'taught'), isFalse);
+      expect(r.isActivityLocked('a2', courseId: 'learnt'), isTrue);
+    });
+
+    test('without a predicate nothing is exempt', () async {
+      final cache = JoinedObjectiveCache();
+      await cache.rebuild(['c1'], outlineOf: (key) async => twoMissions(key));
+      expect(cache.resolution({}).isActivityLocked('a2'), isTrue);
+    });
+  });
 }

@@ -315,4 +315,176 @@ void main() {
       expect(ProgressionResolution.empty.missionGradient(['m1']), 0);
     });
   });
+
+  group('mission locks', () {
+    final threeMissions = {
+      'm1': {'a1'},
+      'm2': {'a2'},
+      'm3': {'a3'},
+    };
+
+    QuestProgress quest(
+      Map<String, int> stars, {
+      List<String> seq = const ['m1', 'm2', 'm3'],
+      Map<String, Set<String>>? acts,
+      bool locksExempt = false,
+    }) => resolveProgression(
+      outlines: [
+        outline(seq, acts ?? threeMissions).withLocksExempt(locksExempt),
+      ],
+      starsByActivity: stars,
+    ).forCourse('c1')!;
+
+    test('the first scored Mission is never locked', () {
+      expect(quest({}).lockFor('m1'), isNull);
+    });
+
+    test('a Mission locks until the earlier Missions reach threshold', () {
+      final q = quest({'a1': 4});
+      final lock = q.lockFor('m2')!;
+      expect(lock.earned, 4);
+      expect(lock.required, 10);
+      expect(quest({'a1': 10}).lockFor('m2'), isNull);
+    });
+
+    test('the unlock sum is cumulative over every earlier Mission', () {
+      final q = quest({'a1': 10, 'a2': 6});
+      expect(q.lockFor('m2'), isNull);
+      final lock = q.lockFor('m3')!;
+      expect(lock.earned, 16);
+      expect(lock.required, 20);
+      expect(quest({'a1': 10, 'a2': 10}).lockFor('m3'), isNull);
+    });
+
+    test('surplus stars in one Mission do not carry to the next', () {
+      final q = quest({'a1': 20});
+      expect(q.lockFor('m2'), isNull);
+      final lock = q.lockFor('m3')!;
+      expect(lock.earned, 10);
+      expect(lock.required, 20);
+    });
+
+    test('unscored Missions are skipped in the sums', () {
+      final q = quest(
+        {'a1': 10},
+        seq: ['m1', 'empty', 'm3'],
+        acts: {
+          'm1': {'a1'},
+          'm3': {'a3'},
+        },
+      );
+      expect(q.lockFor('m3'), isNull);
+      expect(q.lockFor('empty'), isNull);
+    });
+
+    test('a Mission not in the quest is not locked', () {
+      expect(quest({}).lockFor('elsewhere'), isNull);
+    });
+
+    test('a locks-exempt (teaching) learner has nothing locked', () {
+      final q = quest({}, locksExempt: true);
+      expect(q.lockFor('m2'), isNull);
+      expect(q.lockFor('m3'), isNull);
+      expect(q.isActivityLocked('a3'), isFalse);
+    });
+
+    test('withLocksExempt keeps the outline and flips only the flag', () {
+      final base = outline(
+        ['m1'],
+        {
+          'm1': {'a1'},
+        },
+        threshold: 4,
+      );
+      expect(base.withLocksExempt(false), same(base));
+      final exempt = base.withLocksExempt(true);
+      expect(exempt.locksExempt, isTrue);
+      expect(exempt.courseId, base.courseId);
+      expect(exempt.orderedLoIds, base.orderedLoIds);
+      expect(exempt.activityIdsByLo, base.activityIdsByLo);
+      expect(exempt.starsToUnlock, 4);
+      expect(exempt.withLocksExempt(false).locksExempt, isFalse);
+    });
+
+    group('QuestProgress.isActivityLocked', () {
+      test('null when the activity is not in the quest', () {
+        expect(quest({}).isActivityLocked('stranger'), isNull);
+      });
+
+      test('locked only when every Mission it sits under is locked', () {
+        final shared = {
+          'm1': {'a1'},
+          'm2': {'a2', 'both'},
+          'm3': {'a3', 'both'},
+        };
+        final early = quest({}, acts: shared);
+        expect(early.isActivityLocked('a1'), isFalse);
+        expect(early.isActivityLocked('a2'), isTrue);
+        expect(early.isActivityLocked('both'), isTrue);
+
+        // m2 open, m3 still locked: 'both' is playable via m2.
+        final mid = quest({'a1': 10}, acts: shared);
+        expect(mid.isActivityLocked('a3'), isTrue);
+        expect(mid.isActivityLocked('both'), isFalse);
+      });
+    });
+
+    group('ProgressionResolution.coursesLocking', () {
+      ProgressionResolution twoCourses(Map<String, int> stars) =>
+          resolveProgression(
+            outlines: [
+              outline(
+                ['m1', 'm2'],
+                {
+                  'm1': {'a1'},
+                  'm2': {'shared'},
+                },
+                courseId: 'c1',
+              ),
+              outline(
+                ['n1', 'n2'],
+                {
+                  'n1': {'b1'},
+                  'n2': {'shared'},
+                },
+                courseId: 'c2',
+              ),
+            ],
+            starsByActivity: stars,
+          );
+
+      test('locked only when every listing course locks it', () {
+        final r = twoCourses({});
+        expect(r.coursesLocking('shared'), unorderedEquals(['c1', 'c2']));
+        expect(r.isActivityLocked('shared'), isTrue);
+      });
+
+      test('one course unlocking it is enough without a course id', () {
+        final r = twoCourses({'a1': 10});
+        expect(r.coursesLocking('shared'), isEmpty);
+        expect(r.isActivityLocked('shared'), isFalse);
+      });
+
+      test('with a course id only that course decides', () {
+        final r = twoCourses({'a1': 10});
+        expect(r.coursesLocking('shared', courseId: 'c1'), isEmpty);
+        expect(r.coursesLocking('shared', courseId: 'c2'), ['c2']);
+        expect(r.isActivityLocked('shared', courseId: 'c2'), isTrue);
+      });
+
+      test('a course id the learner has not joined locks nothing', () {
+        expect(
+          twoCourses({}).coursesLocking('shared', courseId: 'nope'),
+          isEmpty,
+        );
+      });
+
+      test('an activity in no course is unlocked', () {
+        final r = twoCourses({});
+        expect(r.coursesLocking('stranger'), isEmpty);
+        expect(r.isActivityLocked('stranger'), isFalse);
+        expect(ProgressionResolution.empty.isActivityLocked('a1'), isFalse);
+      });
+    });
+  });
 }

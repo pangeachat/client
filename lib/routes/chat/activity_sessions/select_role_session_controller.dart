@@ -5,6 +5,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/play_with_bot_intent.dart';
+import 'package:fluffychat/features/quests/activity_lock_client_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -13,6 +15,7 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start_view.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/bot_join_error_dialog.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/launch_activity_session.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -199,17 +202,49 @@ class SelectRoleSessionController extends State<SelectRoleSession>
     } else if (widget.roomId != null) {
       await showFutureLoadingDialog(context: context, future: _joinActivity);
     } else {
+      final client = Matrix.of(context).client;
+      var locked = false;
       final resp = await showFutureLoadingDialog(
         context: context,
-        future: () => Matrix.of(context).client.launchActivitySession(
-          activity,
-          activity.roles[selectedRoleId],
-          primarySpace: widget.course,
-        ),
+        future: () async {
+          // A `?launch` link must not start a session the course has locked.
+          locked = await client.isActivityLocked(
+            activity.activityId,
+            courseId: widget.course?.id,
+          );
+          if (locked) return null;
+          return client.launchActivitySession(
+            activity,
+            activity.roles[selectedRoleId],
+            primarySpace: widget.course,
+          );
+        },
       );
+      if (resp.isError || resp.result == null) {
+        // No session was made: drop any bot choice so it can't carry into a
+        // later launch, and let Confirm work again.
+        PlayWithBotIntent.consume(activity.activityId);
+        _confirmed = false;
+        if (locked && mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(L10n.of(context).lockedMissionRequirement)),
+          );
+          return;
+        }
+      }
 
-      if (!resp.isError) {
+      if (!resp.isError && resp.result != null) {
         roomId = resp.result;
+        final room = client.getRoomById(roomId!);
+        if (PlayWithBotIntent.consume(activity.activityId) &&
+            room != null &&
+            mounted) {
+          await showDialog(
+            context: context,
+            builder: (_) => PlayWithBotLoadingDialog(room: room),
+          );
+        }
+        if (!mounted) return;
         NavigationUtil.goToSpaceRoute(roomId, [], context);
       }
     }

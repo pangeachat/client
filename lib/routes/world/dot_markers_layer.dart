@@ -4,6 +4,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/routes/world/locked_pin_style.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_state_dot.dart';
@@ -14,6 +15,7 @@ class DotMarkersLayer {
   final ActivityPinState Function(String) stateOf;
   final ActivityStarLevel Function(String) starLevelOf;
   final bool Function(String) nonStartableOf;
+  final bool Function(String)? lockedOf;
   final bool Function(String) pingedOf;
   final Room? Function(String)? activeActivityInstance;
   final Size Function(ActivityPinState, PinTier) markerBox;
@@ -37,6 +39,7 @@ class DotMarkersLayer {
     required this.stateOf,
     required this.starLevelOf,
     required this.nonStartableOf,
+    this.lockedOf,
     required this.pingedOf,
     required this.activeActivityInstance,
     required this.markerBox,
@@ -109,18 +112,21 @@ class DotMarkersLayer {
           child: Opacity(
             key: ValueKey(card.activityId),
             opacity: nonStartableOf(card.activityId) ? 0.5 : 1.0,
-            child: WorldMapDot(
-              card: card,
-              state: state,
-              tier: tier,
-              onTap: () => onTap(card),
-              pinged: pingedOf(card.activityId),
-              starLevel: starLevelOf(card.activityId),
-              unreadRoom: _unreadRoomFor(card.activityId, state),
-              participantsFilled: counts.filled,
-              participantsTotal: counts.total,
-              isFocused: card.activityId == focusedId,
-              animateIn: animateInOf(card.activityId),
+            child: LockedPinStyle(
+              locked: lockedOf?.call(card.activityId) ?? false,
+              child: WorldMapDot(
+                card: card,
+                state: state,
+                tier: tier,
+                onTap: () => onTap(card),
+                pinged: pingedOf(card.activityId),
+                starLevel: starLevelOf(card.activityId),
+                unreadRoom: _unreadRoomFor(card.activityId, state),
+                participantsFilled: counts.filled,
+                participantsTotal: counts.total,
+                isFocused: card.activityId == focusedId,
+                animateIn: animateInOf(card.activityId),
+              ),
             ),
           ),
         );

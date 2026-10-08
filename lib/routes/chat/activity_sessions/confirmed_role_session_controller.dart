@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
@@ -10,12 +11,14 @@ import 'package:fluffychat/features/activity_sessions/activity_room_extension.da
 import 'package:fluffychat/features/activity_sessions/bot_activty_role_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start_view.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/bot_join_error_dialog.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/session_presence_tracker.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -45,6 +48,30 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   Timer? _pingCooldown;
   final _goalsHandler = GoalsSubscriptionHandler();
 
+  /// Ticks every second, driving the waiting timer.
+  /// Only the widgets that read it rebuild.
+  final ValueNotifier<DateTime> clock = ValueNotifier(DateTime.now());
+  Timer? _clockTimer;
+
+  /// Live presence of the course's members, kept current by the SDK's
+  /// presence stream — no polling.
+  late final SessionPresenceTracker presence;
+
+  /// The course's joined members other than you and the bot; null until
+  /// loaded, or when the session has no source course.
+  final ValueNotifier<List<String>?> coursemateIds = ValueNotifier(null);
+
+  @override
+  void initState() {
+    super.initState();
+    presence = SessionPresenceTracker(widget.room.client);
+    _clockTimer = Timer.periodic(
+      const Duration(seconds: 1),
+      (_) => clock.value = DateTime.now(),
+    );
+    _loadCoursemates();
+  }
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -54,17 +81,60 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   @override
   void dispose() {
     _pingCooldown?.cancel();
+    _clockTimer?.cancel();
+    clock.dispose();
+    presence.dispose();
+    coursemateIds.dispose();
     _goalsHandler.cancel();
     super.dispose();
   }
 
-  /// The course whose roster the ping reaches: the one this session was launched
-  /// from, never a course it was merely fanned out into ([Room.sourceCourse]).
-  /// The page's borrowed course context can be any space parent, so it can't
-  /// drive a write against the course (#8097).
-  Room? get _course => widget.room.sourceCourse;
+  /// When the session was created — what the waiting timer counts from, so
+  /// it survives leaving and coming back.
+  DateTime? get waitingSince {
+    final create = widget.room.getState(EventTypes.RoomCreate);
+    return create is Event ? create.originServerTs : null;
+  }
 
-  bool get showPingCourse => _course != null;
+  /// Coursemates online right now — the avatar presence dot's rule.
+  int get onlineCoursemateCount =>
+      presence.onlineCount(coursemateIds.value ?? const []);
+
+  Future<void> _loadCoursemates() async {
+    final course = this.course;
+    if (course == null) return;
+    final client = widget.room.client;
+    try {
+      final members = await course.requestParticipants([Membership.join]);
+      final ids = [
+        for (final member in members)
+          if (member.id != client.userID && member.id != BotName.byEnvironment)
+            member.id,
+      ];
+      if (!mounted) return;
+      // Cached only: sync already keeps coursemates' presence current, and a
+      // big course shouldn't fire one request per member.
+      presence.watch(ids, cachedOnly: true);
+      coursemateIds.value = ids;
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'roomId': widget.room.id},
+        level: SentryLevel.warning,
+      );
+    }
+  }
+
+  /// The course whose roster the ping reaches and the active count reads:
+  /// the one this session was launched from, never a course it was merely
+  /// fanned out into ([Room.sourceCourse]). The page's borrowed course context
+  /// can be any space parent, so it can't drive a write against the course
+  /// (#8097). The waiting room names it, so a learner browsing another course
+  /// can see which one this is.
+  Room? get course => widget.room.sourceCourse;
+
+  bool get showPingCourse => course != null;
 
   bool get showInviteOptions => widget.room.isRoomAdmin;
 
@@ -132,7 +202,7 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   Set<String> completedGoalIdsForRole(String id) => {};
 
   Future<bool> get canPingParticipants async {
-    final course = _course;
+    final course = this.course;
     if (course == null) return false;
     if (_pingCooldown != null && _pingCooldown!.isActive) return false;
 
@@ -165,7 +235,7 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
       showFutureLoadingDialog(context: context, future: _pingCourse);
 
   Future<void> _pingCourse() async {
-    final course = _course;
+    final course = this.course;
     if (course == null) {
       throw Exception("Activity was not launched from a course");
     }

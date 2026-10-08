@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/course_settings_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/course_plans/courses/course_teacher_room_extension.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
@@ -305,6 +306,18 @@ List<ButtonDetails> _courseSettingsButtons(
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ),
+    ),
+    ButtonDetails(
+      title: l10n.teachingThisCourseTitle,
+      description: l10n.teachingThisCourseDesc,
+      icon: const Icon(Icons.school_outlined, size: 30.0),
+      onPressed: () => showFutureLoadingDialog(
+        context: context,
+        future: () => room.toggleOwnTeaching(),
+      ),
+      enabled: room.isRoomAdmin,
+      isToggle: true,
+      value: room.isOwnTeaching,
     ),
     ButtonDetails(
       title: l10n.requireAnalyticsAccessTitle,

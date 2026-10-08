@@ -1,11 +1,12 @@
-// The shared client-side next-Mission resolver. Nothing is locked, so the
-// question is not "is this allowed?" but "where should the learner go next?" —
-// resolved ONCE from data the client already holds and shared by every surface
-// that preferences by progression (the world map's Priority matrix, the
-// activity start page). Pure logic — no Matrix or network — so it stays
-// unit-testable. Design: quests.instructions.md, world-map.instructions.md.
+// The shared client-side next-Mission resolver: where the learner should go
+// next, and which Missions are still locked — resolved ONCE from data the
+// client already holds and shared by every surface that ranks or locks by
+// progression (the world map's Priority matrix, the course plan, the activity
+// start page). Pure logic — no Matrix or network — so it stays unit-testable.
+// Design: quests.instructions.md, world-map.instructions.md.
 
 import 'package:fluffychat/features/quests/lo_progression.dart';
+import 'package:fluffychat/features/quests/mission_lock.dart';
 
 /// How far along a quest the next-Mission gradient reaches before decaying to
 /// zero. The anchor Mission scores 1.0; each Mission further along loses
@@ -92,6 +93,12 @@ class QuestProgress {
   /// full sequence, so gradient distances are unaffected.
   final Map<String, MissionProgress> rollup;
 
+  /// The Missions each of this quest's activities sits under.
+  final Map<String, Set<String>> missionsByActivity;
+
+  /// True when the learner is teaching this course — nothing locks for them.
+  final bool locksExempt;
+
   const QuestProgress({
     required this.courseId,
     required this.questId,
@@ -99,7 +106,37 @@ class QuestProgress {
     required this.anchorMissionId,
     required this.indexByMission,
     required this.rollup,
+    this.missionsByActivity = const {},
+    this.locksExempt = false,
   });
+
+  /// Null when [missionId] is unlocked. Otherwise the cumulative stars the
+  /// learner has toward unlocking it: every earlier scored Mission's capped
+  /// stars over the sum of their thresholds.
+  MissionLock? lockFor(String missionId) {
+    if (locksExempt) return null;
+    final idx = indexByMission[missionId];
+    if (idx == null) return null;
+    var earned = 0;
+    var required = 0;
+    for (final earlier in orderedMissionIds.take(idx)) {
+      final progress = rollup[earlier];
+      if (progress == null) continue;
+      earned += progress.cappedStars;
+      required += progress.threshold;
+    }
+    return earned < required
+        ? MissionLock(earned: earned, required: required)
+        : null;
+  }
+
+  /// Null when [activityId] isn't in this quest. Otherwise whether every
+  /// Mission it sits under here is locked.
+  bool? isActivityLocked(String activityId) {
+    final missions = missionsByActivity[activityId];
+    if (missions == null || missions.isEmpty) return null;
+    return missions.every((m) => lockFor(m) != null);
+  }
 
   /// This quest's own next-Mission contribution for an activity carrying
   /// [refs]: 1.0 at the anchor Mission, decaying linearly to 0 over
@@ -180,6 +217,28 @@ class ProgressionResolution {
   /// rather than a denominator invented from default thresholds.
   QuestStarSummary? questStars(String? courseId) =>
       forCourse(courseId)?.starSummary;
+
+  /// The courses whose locks keep [activityId] from being started — empty
+  /// when it is unlocked. With [courseId], only that course decides. Without
+  /// it, every in-scope course that lists the activity must lock it; an
+  /// activity outside the learner's courses is never locked.
+  List<String> coursesLocking(String activityId, {String? courseId}) {
+    if (courseId != null) {
+      final locked = forCourse(courseId)?.isActivityLocked(activityId) ?? false;
+      return locked ? [courseId] : const [];
+    }
+    final locking = <String>[];
+    for (final quest in quests) {
+      final locked = quest.isActivityLocked(activityId);
+      if (locked == null) continue;
+      if (!locked) return const [];
+      locking.add(quest.courseId);
+    }
+    return locking;
+  }
+
+  bool isActivityLocked(String activityId, {String? courseId}) =>
+      coursesLocking(activityId, courseId: courseId).isNotEmpty;
 
   /// The next-Mission gradient (0..[kBandCeiling]) for an activity carrying
   /// [objectiveRefs]: 1.0 at a quest's anchor Mission, decaying linearly to 0
@@ -281,11 +340,25 @@ ProgressionResolution resolveProgression({
         anchorMissionId: _anchorFor(seq, rollup),
         indexByMission: {for (var i = 0; i < seq.length; i++) seq[i]: i},
         rollup: rollup,
+        missionsByActivity: _missionsByActivity(outline.activityIdsByLo),
+        locksExempt: outline.locksExempt,
       ),
     );
   }
 
   return ProgressionResolution(quests: quests);
+}
+
+Map<String, Set<String>> _missionsByActivity(
+  Map<String, Set<String>> activityIdsByLo,
+) {
+  final result = <String, Set<String>>{};
+  for (final entry in activityIdsByLo.entries) {
+    for (final activityId in entry.value) {
+      (result[activityId] ??= {}).add(entry.key);
+    }
+  }
+  return result;
 }
 
 /// The anchor (next) Mission for one quest's ordered [seq]: the first Mission

@@ -326,8 +326,8 @@ extension WorldMapClientExtension on Client {
   /// sessions give unlocked, and any visible session with a free role the user
   /// isn't bound to gives joinable. Open sessions by strangers are not in
   /// `client.rooms`, so map-wide open-session discovery needs a backend endpoint
-  /// (see world-map.instructions.md). Nothing is ever locked — progression only
-  /// ranks, never gates (#7186, quests.instructions.md).
+  /// (see world-map.instructions.md). Locks are layered on separately, from
+  /// the progression resolver (quests.instructions.md).
   ///
   /// [extraFacts] are sessions the client can see only by discovery, not from
   /// its own rooms — a coursemate's open session in a joined course, previewed

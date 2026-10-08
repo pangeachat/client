@@ -1,6 +1,7 @@
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/course_plans/courses/course_teacher_room_extension.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
@@ -84,6 +85,10 @@ class JoinedObjectiveCache {
   List<CourseLoOutline> _outlines = const [];
   Set<String> _ids = const {};
 
+  /// Read at every [resolution], not frozen at rebuild, so a teacher toggling
+  /// "I'm teaching this course" re-locks or unlocks on the next resolve.
+  bool Function(String courseId)? _locksExemptOf;
+
   /// The ordered per-course outlines that feed the progression resolver. Empty
   /// until the first [rebuild] completes.
   List<CourseLoOutline> get outlines => _outlines;
@@ -103,7 +108,13 @@ class JoinedObjectiveCache {
     Map<String, int> starsByActivity, {
     Iterable<CourseLoOutline> extraOutlines = const [],
   }) => resolveProgression(
-    outlines: [..._outlines, ...extraOutlines],
+    outlines: [
+      for (final o in _outlines)
+        _locksExemptOf == null
+            ? o
+            : o.withLocksExempt(_locksExemptOf!(o.courseId)),
+      ...extraOutlines,
+    ],
     starsByActivity: starsByActivity,
   );
 
@@ -122,9 +133,11 @@ class JoinedObjectiveCache {
     List<String> courseKeys, {
     Future<CourseLoOutline> Function(String key)? outlineOf,
     int Function(String key)? starsToUnlockOf,
+    bool Function(String key)? locksExemptOf,
     void Function(String key, Object error, StackTrace stack)? onError,
   }) async {
     final resolve = outlineOf ?? _outlineFromQuest;
+    _locksExemptOf = locksExemptOf;
     final next = <CourseLoOutline>[];
     await Future.wait(
       courseKeys.map((key) async {
@@ -199,6 +212,8 @@ class JoinedObjectiveCache {
       starsToUnlockOf: (roomId) =>
           modes[roomId]?.starsToUnlockObjective ??
           kDefaultStarsToUnlockObjective,
+      locksExemptOf: (roomId) =>
+          client.getRoomById(roomId)?.isOwnTeaching ?? false,
       onError: onError == null
           ? null
           : (roomId, e, s) => onError(roomId, questIdByRoom[roomId]!, e, s),

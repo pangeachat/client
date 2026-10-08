@@ -288,4 +288,64 @@ void main() {
       expect(updated.openSessions, {'!left-out:x'});
     });
   });
+
+  group('RoomSummaryResponse.openRoleIds — the seats a joiner can take', () {
+    test("the plan's roles minus those held by joined members", () {
+      final summary = RoomSummaryResponse(
+        membershipSummary: {ana: 'join'},
+        activityId: 'act-1',
+        activityPlan: plan(3),
+        activityRoles: ActivityRolesModel({
+          'role_1': ActivityRoleModel(id: 'role_1', userId: ana),
+        }),
+      );
+
+      expect(summary.openRoleIds, ['role_0', 'role_2']);
+    });
+
+    test('a role held by someone who left counts as open', () {
+      final summary = RoomSummaryResponse(
+        membershipSummary: {ana: 'join', bot: 'leave'},
+        activityId: 'act-1',
+        activityPlan: plan(2),
+        activityRoles: fullRoles(),
+      );
+
+      expect(summary.openRoleIds, ['role_1']);
+    });
+
+    test('a full session has no open roles', () {
+      final summary = RoomSummaryResponse(
+        membershipSummary: {ana: 'join', bot: 'join'},
+        activityId: 'act-1',
+        activityPlan: plan(2),
+        activityRoles: fullRoles(),
+      );
+
+      expect(summary.openRoleIds, isEmpty);
+    });
+
+    test('a thin ref reads its roles from the hydrated plan', () {
+      RoomSummaryResponse.referencePlanResolver = (id) =>
+          id == 'act-1' ? plan(2) : null;
+      final summary = RoomSummaryResponse(
+        membershipSummary: {ana: 'join'},
+        activityId: 'act-1',
+        activityRoles: ActivityRolesModel({
+          'role_0': ActivityRoleModel(id: 'role_0', userId: ana),
+        }),
+      );
+
+      expect(summary.openRoleIds, ['role_1']);
+    });
+
+    test('empty while the plan has not resolved', () {
+      final summary = RoomSummaryResponse(
+        membershipSummary: {ana: 'join'},
+        activityId: 'act-1',
+      );
+
+      expect(summary.openRoleIds, isEmpty);
+    });
+  });
 }
