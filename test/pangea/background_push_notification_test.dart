@@ -5,9 +5,12 @@ import 'dart:ui';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/notifications/background_push_notification.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/calls/call_notification.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/utils/init_with_restore.dart';
 import 'package:fluffychat/utils/push_helper.dart';
 
@@ -46,6 +49,28 @@ MockClient _server({
 
 http.Response _roomAvatar(String url) =>
     http.Response(jsonEncode({'url': url}), 200);
+
+/// A ring from the teacher, as the homeserver returns it.
+Map<String, Object?> _ringEvent({
+  required DateTime sentAt,
+  String intent = 'audio',
+}) => {
+  'type': PangeaEventTypes.callNotification,
+  'event_id': r'$ring',
+  'room_id': _roomId,
+  'sender': _sender,
+  'origin_server_ts': sentAt.millisecondsSinceEpoch,
+  'content': {
+    'application': {
+      'type': 'm.call',
+      'notification_type': 'ring',
+      'sender_ts': sentAt.millisecondsSinceEpoch,
+      'lifetime': 30000,
+      'm.call.intent': intent,
+    },
+    'm.relates_to': {'rel_type': 'm.reference', 'event_id': r'$membership'},
+  },
+};
 
 Iterable<String> _paths(List<http.BaseRequest> requests) =>
     requests.map((r) => r.url.path);
@@ -267,6 +292,83 @@ void main() {
         BackgroundPushNotification.bodyFor({'type': 'm.room.message'}, l10n),
         l10n.openAppToReadMessages,
       );
+    });
+
+    test('a ring says what kind of call it is', () {
+      const push = {'type': PangeaEventTypes.callNotification};
+      IncomingRing ring(String intent) => IncomingRing(
+        event: MatrixEvent.fromJson(
+          _ringEvent(sentAt: DateTime.now(), intent: intent),
+        ),
+        myUserId: _session.userId,
+        alreadyJoined: false,
+      );
+      expect(
+        BackgroundPushNotification.bodyFor(push, l10n, ring('audio')),
+        l10n.callIncomingVoice,
+      );
+      expect(
+        BackgroundPushNotification.bodyFor(push, l10n, ring('video')),
+        l10n.callIncomingVideo,
+      );
+      // Unread, it is still a call, never "open the app to read messages".
+      expect(BackgroundPushNotification.bodyFor(push, l10n), l10n.callIncoming);
+    });
+  });
+
+  group('reading a ring back', () {
+    Future<IncomingRing?> read(http.Response response) async {
+      final requests = <http.BaseRequest>[];
+      final ring = await BackgroundPushNotification.ringForTesting(
+        MockClient((request) async {
+          requests.add(request);
+          return response;
+        }),
+        _session,
+        roomId: _roomId,
+        eventId: r'$ring',
+      );
+      expect(requests.single.url.pathSegments.skip(3), [
+        'rooms',
+        _roomId,
+        'event',
+        r'$ring',
+      ]);
+      expect(
+        requests.single.headers['Authorization'],
+        'Bearer syt_secret_token',
+      );
+      return ring;
+    }
+
+    test('a live ring rings', () async {
+      final ring = await read(
+        http.Response(jsonEncode(_ringEvent(sentAt: DateTime.now())), 200),
+      );
+      expect(ring?.shouldRing(DateTime.now()), isTrue);
+    });
+
+    test('a ring that has ended does not', () async {
+      final ring = await read(
+        http.Response(
+          jsonEncode(
+            _ringEvent(
+              sentAt: DateTime.now().subtract(const Duration(minutes: 2)),
+            ),
+          ),
+          200,
+        ),
+      );
+      expect(ring?.shouldRing(DateTime.now()), isFalse);
+    });
+
+    // Unreadable is not "over": the caller decides to show the notification.
+    test('a ring the server will not return is unknown', () async {
+      expect(await read(http.Response('{}', 404)), isNull);
+    });
+
+    test('a ring the server returns garbled is unknown', () async {
+      expect(await read(http.Response('not json', 200)), isNull);
     });
   });
 
