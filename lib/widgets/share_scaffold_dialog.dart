@@ -62,15 +62,19 @@ class _ShareScaffoldDialogState extends State<ShareScaffoldDialog> {
         'Started forward action before room was selected. This should never happen.',
       );
     }
-    while (context.canPop()) {
-      context.pop();
+    // This dialog is a pageless route on the root navigator, so
+    // `GoRouterState.of` throws here (CLIENT-EZ7). Read the URI from the
+    // router, captured before the pops close this dialog.
+    final router = GoRouter.of(context);
+    while (router.canPop()) {
+      router.pop();
     }
     // world_v2: open the target as the single live `room` token over the map.
     // The shared items ride the navigation `extra` (they cannot be expressed in
     // the URL); the shell forwards them to the room. See `routing.instructions.md`.
-    context.go(
+    router.go(
       WorkspaceNav.openExclusiveLeftRoom(
-        GoRouterState.of(context).uri,
+        router.routeInformationProvider.value.uri,
         RoomPanelToken(RoomTokenParam(id: shortRoomId(roomId))),
       ),
       extra: widget.items,
