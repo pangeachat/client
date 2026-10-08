@@ -141,5 +141,37 @@ extension PangeaPushRulesExtension on Client {
         ),
       ],
     );
+
+    // A ring that ends unanswered leaves a card in the room, and this makes
+    // that card push -- silently, with no sound tweak -- so a phone that rang
+    // while the app was closed says "Missed call" once the ring has stopped.
+    // Only a missed call: the card of an answered or declined call says
+    // nothing the learner does not already know. Set every time, for the same
+    // reason as the ring's rule above.
+    await setPushRule(
+      PushRuleKind.override,
+      PangeaEventTypes.missedCallRule,
+      [
+        PushRuleAction.notify,
+        {'set_tweak': 'highlight', 'value': false},
+      ],
+      conditions: [
+        PushCondition(
+          kind: 'event_match',
+          key: 'type',
+          pattern: PangeaEventTypes.call,
+        ),
+        PushCondition(
+          kind: 'event_property_is',
+          key: 'content.answered',
+          value: false,
+        ),
+        PushCondition(
+          kind: 'event_property_is',
+          key: 'content.declined',
+          value: false,
+        ),
+      ],
+    );
   }
 }

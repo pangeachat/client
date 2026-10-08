@@ -1,10 +1,15 @@
 package chat.pangea.call_capture
 
+import android.app.Activity
+import android.app.Application
 import android.content.Context
 import android.content.Intent
+import android.os.Build
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.WindowManager
 import java.util.concurrent.ConcurrentLinkedQueue
 import com.cloudwebrtc.webrtc.FlutterWebRTCPlugin
 import com.cloudwebrtc.webrtc.audio.AudioProcessingAdapter
@@ -264,6 +269,17 @@ class PangeaCallCapturePlugin :
         IncomingRingService.stop(context, call.argument<String>("ringId") ?: "")
         result.success(null)
       }
+      "full_screen_wanted" -> result.success(
+        IncomingRingService.fullScreenWanted(context),
+      )
+      "full_screen_asked" -> {
+        IncomingRingService.fullScreenAsked(context)
+        result.success(null)
+      }
+      "full_screen_settings" -> {
+        IncomingRingService.openFullScreenSettings(context)
+        result.success(null)
+      }
       "claim_answers" -> {
         // Only the engine with the app in it can answer a call, so it claims
         // the bridge, the way the ongoing call claims its notification's.
@@ -282,7 +298,7 @@ class PangeaCallCapturePlugin :
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
     activityBinding = binding
     binding.addOnNewIntentListener(this)
-    handleRingIntent(binding.activity.intent)
+    handleRingIntent(binding.activity, binding.activity.intent)
   }
 
   override fun onDetachedFromActivityForConfigChanges() = onDetachedFromActivity()
@@ -296,7 +312,7 @@ class PangeaCallCapturePlugin :
   }
 
   override fun onNewIntent(intent: Intent): Boolean {
-    handleRingIntent(intent)
+    activityBinding?.activity?.let { handleRingIntent(it, intent) }
     return false
   }
 
@@ -305,15 +321,59 @@ class PangeaCallCapturePlugin :
    * the extras are consumed, so the same intent read again after a
    * configuration change does not answer twice.
    */
-  private fun handleRingIntent(intent: Intent?) {
+  private fun handleRingIntent(activity: Activity, intent: Intent?) {
     intent ?: return
     val answered = intent.getStringExtra(IncomingRingService.EXTRA_ANSWERED)
+    val shown = intent.getStringExtra(IncomingRingService.EXTRA_SHOWN)
     if (answered != null) {
       val ringId = intent.getStringExtra(IncomingRingService.EXTRA_RING_ID)
       intent.removeExtra(IncomingRingService.EXTRA_ANSWERED)
       appContext?.let { IncomingRingService.answered(it, ringId, answered) }
     }
     intent.removeExtra(IncomingRingService.EXTRA_SHOWN)
+    if (answered != null || shown != null) showOverLockScreen(activity)
+  }
+
+  /**
+   * Lets the app open over the lock screen for the ring that opened it, and
+   * only until it leaves the screen. While it shows over the lock screen the
+   * whole app is usable without unlocking, so that must not outlast the call
+   * it was for: the next time the app comes back, the lock screen is in front
+   * of it again.
+   */
+  private fun showOverLockScreen(activity: Activity) {
+    setShowWhenLocked(activity, true)
+    val app = activity.application
+    app.registerActivityLifecycleCallbacks(
+      object : Application.ActivityLifecycleCallbacks {
+        override fun onActivityStopped(stopped: Activity) {
+          if (stopped !== activity) return
+          setShowWhenLocked(activity, false)
+          app.unregisterActivityLifecycleCallbacks(this)
+        }
+
+        override fun onActivityDestroyed(destroyed: Activity) {
+          if (destroyed === activity) app.unregisterActivityLifecycleCallbacks(this)
+        }
+
+        override fun onActivityCreated(a: Activity, state: Bundle?) {}
+        override fun onActivityStarted(a: Activity) {}
+        override fun onActivityResumed(a: Activity) {}
+        override fun onActivityPaused(a: Activity) {}
+        override fun onActivitySaveInstanceState(a: Activity, state: Bundle) {}
+      },
+    )
+  }
+
+  /// The screen itself is already turned on by the activity's manifest entry.
+  private fun setShowWhenLocked(activity: Activity, on: Boolean) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+      activity.setShowWhenLocked(on)
+    } else {
+      @Suppress("DEPRECATION")
+      val flag = WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+      if (on) activity.window.addFlags(flag) else activity.window.clearFlags(flag)
+    }
   }
 
   override fun onListen(arguments: Any?, sink: EventChannel.EventSink?) {

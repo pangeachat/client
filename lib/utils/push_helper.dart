@@ -248,8 +248,14 @@ Future<void> _tryPushHelper(
     Logs().i('Push for ring ${event.eventId} that no longer rings here');
     return;
   }
+  final isMissedCall = event.type == PangeaEventTypes.call;
   final body = hasKnocked
       ? l10n.knockAccepted
+      : isMissedCall
+      // Only a missed call's card pushes; see setPangeaPushRules.
+      ? (event.content['video'] == true
+            ? l10n.callHistoryMissedVideoCall
+            : l10n.callHistoryMissedCall)
       : isRing
       ? (IncomingRing.videoFromContent(event.content)
             ? l10n.callIncomingVideo
@@ -394,6 +400,9 @@ Future<void> _tryPushHelper(
     ),
     importance: Importance.high,
     priority: Priority.max,
+    // A missed call replaces a ring that has just stopped; chiming for it as
+    // well would be a second alert for the same call.
+    silent: isMissedCall,
     groupKey: event.room.spaceParents.firstOrNull?.roomId ?? 'rooms',
     actions: event.type == EventTypes.RoomMember || !useNotificationActions
         ? null
