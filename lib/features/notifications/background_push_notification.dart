@@ -6,11 +6,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:http/http.dart' as http;
 import 'package:matrix/matrix.dart';
+import 'package:pangea_call_capture/pangea_call_capture.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
+import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/init_with_restore.dart';
@@ -76,6 +78,18 @@ class BackgroundPushNotification {
               session != null &&
               eventId != null) {
             ring = await _ring(httpClient, session, roomId, eventId);
+            if (ring != null &&
+                await _ringAndWatch(
+                  httpClient,
+                  session,
+                  ring,
+                  roomId,
+                  _payload(data, roomId, resolved.clientName),
+                  caller: _string(data['sender_display_name']),
+                  channelName: l10n.callIncoming,
+                )) {
+              return;
+            }
           }
         } catch (e, s) {
           Logs().w('[Push] Avatar lookup failed; showing without one', e, s);
@@ -84,15 +98,9 @@ class BackgroundPushNotification {
         }
       }
 
-      // The question the banner asks, so a ring that has ended shows nothing
-      // here either. A ring that could not be read still shows: missing a call
-      // someone is still waiting on costs more than a notice for one that has
-      // just ended.
-      if (ring != null && !ring.shouldRing(DateTime.now())) {
-        Logs().i('[Push] Ring $eventId no longer rings here; not showing it');
-        return;
-      }
-
+      // Reached by a ring only when it could not be read, or the phone would
+      // not ring for it. It still shows: missing a call someone is waiting on
+      // costs more than a notice for one that has just ended.
       await _post(
         data,
         roomId,
@@ -232,6 +240,111 @@ class BackgroundPushNotification {
     required String roomId,
     required String eventId,
   }) => _ring(httpClient, session, roomId, eventId);
+
+  /// How often a ringing phone checks whether the call still wants it.
+  static const _watchEvery = Duration(seconds: 2);
+
+  /// Rings for [ring] and watches it as the banner would, returning once the
+  /// phone has stopped.
+  ///
+  /// True when nothing more should be shown: the phone rang, or the call no
+  /// longer wants it. False when the platform would not ring, and an ordinary
+  /// notification has to say it instead.
+  static Future<bool> _ringAndWatch(
+    http.Client httpClient,
+    SessionBackup session,
+    IncomingRing ring,
+    String roomId,
+    String payload, {
+    required String? caller,
+    required String channelName,
+    IncomingCallRinger ringer = const IncomingCallRinger(),
+    Duration every = _watchEvery,
+  }) async {
+    final ringId = ring.event.eventId;
+    if (!ring.shouldRing(DateTime.now())) {
+      Logs().i('[Push] Ring $ringId no longer rings here; not showing it');
+      return true;
+    }
+    final watch = _RingWatch(httpClient, session, ring, roomId);
+    // Asked before ringing as well as during. A ring read back after the
+    // caller gave up, or after another device answered, is a call that is
+    // already over -- the rule the app applies to a ring it missed.
+    if (await watch.over()) return true;
+    try {
+      final rang = await ringer.ring(
+        ringId: ringId,
+        caller: caller ?? ring.event.senderId,
+        video: ring.isVideo,
+        expiresAt: ring.expiresAt,
+        channelName: channelName,
+        payload: payload,
+      );
+      if (!rang) {
+        Logs().w('[Push] The platform would not ring for $ringId');
+        return false;
+      }
+    } catch (e, s) {
+      Logs().w('[Push] Could not ring for $ringId', e, s);
+      return false;
+    }
+    try {
+      await watch.until(ringer, every);
+    } catch (e, s) {
+      // The ring stops either way: a phone that can no longer tell whether
+      // the call wants it must not go on ringing for one taken elsewhere.
+      Logs().e('[Push] Stopped watching ring $ringId', e, s);
+      await ringer.stop(ringId);
+    }
+    return true;
+  }
+
+  @visibleForTesting
+  static Future<bool> ringAndWatchForTesting(
+    http.Client httpClient,
+    SessionBackup session,
+    IncomingRing ring, {
+    required String roomId,
+    required IncomingCallRinger ringer,
+    required Duration every,
+  }) => _ringAndWatch(
+    httpClient,
+    session,
+    ring,
+    roomId,
+    'payload',
+    caller: 'Teacher',
+    channelName: 'Incoming call',
+    ringer: ringer,
+    every: every,
+  );
+
+  static Future<http.Response?> _put(
+    http.Client httpClient,
+    SessionBackup session,
+    String path,
+    Map<String, Object?> body,
+  ) async {
+    var homeserver = session.homeserver;
+    while (homeserver.endsWith('/')) {
+      homeserver = homeserver.substring(0, homeserver.length - 1);
+    }
+    try {
+      return await httpClient
+          .put(
+            Uri.parse('$homeserver$path'),
+            headers: {
+              'Authorization': 'Bearer ${session.accessToken}',
+              'Content-Type': 'application/json',
+            },
+            body: jsonEncode(body),
+          )
+          .timeout(_timeout);
+    } catch (e) {
+      Logs().w('[Push] Background request failed', e);
+      return null;
+    }
+  }
 
   @visibleForTesting
   static Future<Uint8List?> avatarForTesting(
@@ -472,6 +585,160 @@ class BackgroundPushNotification {
       return decoded is Map<String, Object?> ? decoded : const {};
     } catch (_) {
       return const {};
+    }
+  }
+}
+
+/// Whether a ring still wants this phone, read from the server while it rings.
+///
+/// The questions are the banner's -- has the caller given up, has another of
+/// this learner's devices answered or declined -- asked through the same
+/// rules in [CallService], over state fetched by hand: the closed app has no
+/// Matrix client to keep it. A read that fails says nothing, and the phone
+/// goes on ringing; the ring's own lifetime bounds that.
+class _RingWatch {
+  final http.Client httpClient;
+  final SessionBackup session;
+  final IncomingRing ring;
+  final String roomId;
+
+  _RingWatch(this.httpClient, this.session, this.ring, this.roomId);
+
+  /// Whether the caller has been seen in the call. A caller who was there and
+  /// is no longer has given up.
+  bool _callerSeen = false;
+
+  String get _ringId => ring.event.eventId;
+
+  String get _room => Uri.encodeComponent(roomId);
+
+  /// Whether the call no longer wants this phone.
+  Future<bool> over() async {
+    final states = await _memberStates();
+    if (states != null) {
+      if (CallService.answeredElsewhereIn(
+        states,
+        me: session.userId,
+        // This phone has not joined, so any membership of ours written after
+        // the ring is another device's.
+        myDevice: session.deviceId ?? '',
+        ringSentAt: ring.orderedAt,
+        now: DateTime.now(),
+      )) {
+        Logs().i('[Push] Ring $_ringId was answered on another device');
+        return true;
+      }
+      final presence = CallService.presenceIn(
+        states,
+        ring.event.senderId,
+        deviceId: ring.senderDeviceId,
+      );
+      if (presence == PeerPresence.live) {
+        _callerSeen = true;
+      } else if (presence == PeerPresence.gone || _callerSeen) {
+        // The server's state is complete, unlike a client's still syncing, so
+        // a retraction read here is the caller leaving, not state yet to come.
+        Logs().i('[Push] The caller of $_ringId has given up');
+        return true;
+      }
+    }
+    if (await _declinedElsewhere()) {
+      Logs().i('[Push] Ring $_ringId was declined on another device');
+      return true;
+    }
+    return false;
+  }
+
+  /// Watches until the ring ends, then makes sure the phone has stopped.
+  Future<void> until(IncomingCallRinger ringer, Duration every) async {
+    while (DateTime.now().isBefore(ring.expiresAt)) {
+      await Future<void>.delayed(every);
+      switch (await ringer.outcome(_ringId)) {
+        case RingOutcome.declined:
+          await _decline();
+          return;
+        case RingOutcome.ringing:
+          if (await over()) {
+            await ringer.stop(_ringId);
+            return;
+          }
+        case RingOutcome.answered:
+        case RingOutcome.ended:
+        case RingOutcome.failed:
+        case null:
+          // Answered: the app has the call now. Otherwise the ring is over.
+          return;
+      }
+    }
+    await ringer.stop(_ringId);
+  }
+
+  Future<List<MatrixEvent>?> _memberStates() async {
+    final response = await BackgroundPushNotification._get(
+      httpClient,
+      session,
+      '/_matrix/client/v3/rooms/$_room/state',
+    );
+    if (response == null || response.statusCode != 200) {
+      Logs().w('[Push] Could not read call state: ${response?.statusCode}');
+      return null;
+    }
+    try {
+      return [
+        for (final json in jsonDecode(response.body) as List)
+          if (json is Map<String, Object?> &&
+              json['type'] == EventTypes.GroupCallMember)
+            MatrixEvent.fromJson(json),
+      ];
+    } catch (e, s) {
+      Logs().w('[Push] Could not parse call state', e, s);
+      return null;
+    }
+  }
+
+  Future<bool> _declinedElsewhere() async {
+    final filter = jsonEncode({
+      'types': [PangeaEventTypes.callDecline],
+      'senders': [session.userId],
+    });
+    final response = await BackgroundPushNotification._get(
+      httpClient,
+      session,
+      '/_matrix/client/v3/rooms/$_room/messages'
+      '?dir=b&limit=20&filter=${Uri.encodeComponent(filter)}',
+    );
+    if (response == null || response.statusCode != 200) {
+      Logs().w('[Push] Could not read declines: ${response?.statusCode}');
+      return false;
+    }
+    try {
+      final chunk = (jsonDecode(response.body) as Map)['chunk'] as List;
+      return chunk.any(
+        (json) =>
+            json is Map<String, Object?> &&
+            json['sender'] == session.userId &&
+            CallService.declineTargetOf(MatrixEvent.fromJson(json)) == _ringId,
+      );
+    } catch (e, s) {
+      Logs().w('[Push] Could not parse declines', e, s);
+      return false;
+    }
+  }
+
+  /// Tells the caller the learner declined from the notification, so their
+  /// phone stops ringing too.
+  Future<void> _decline() async {
+    final txnId = 'ring-decline-${DateTime.now().microsecondsSinceEpoch}';
+    final response = await BackgroundPushNotification._put(
+      httpClient,
+      session,
+      '/_matrix/client/v3/rooms/$_room/send'
+      '/${Uri.encodeComponent(PangeaEventTypes.callDecline)}/$txnId',
+      CallService.declineContent(_ringId),
+    );
+    if (response == null || response.statusCode != 200) {
+      // The caller rings out instead, and their history reads unanswered.
+      Logs().w('[Push] Could not send the decline: ${response?.statusCode}');
     }
   }
 }

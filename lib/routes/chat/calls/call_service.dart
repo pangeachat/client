@@ -1536,21 +1536,31 @@ class CallService {
   static const declineReasonField = 'reason';
   static const declineBusy = 'busy';
 
+  /// What a decline says, for every sender of one: the app, and the
+  /// closed-app ring watcher, which has no room to send it through.
+  static Map<String, Object?> declineContent(
+    String notificationEventId, {
+    String? reason,
+  }) => {
+    'msgtype': PangeaEventTypes.callDecline,
+    'body': '',
+    declineReasonField: ?reason,
+    'm.relates_to': {
+      'rel_type': 'm.reference',
+      'event_id': notificationEventId,
+    },
+  };
+
   Future<void> decline(
     Room room, {
     required String notificationEventId,
     String? reason,
   }) async {
     try {
-      await room.sendEvent({
-        'msgtype': PangeaEventTypes.callDecline,
-        'body': '',
-        declineReasonField: ?reason,
-        'm.relates_to': {
-          'rel_type': 'm.reference',
-          'event_id': notificationEventId,
-        },
-      }, type: PangeaEventTypes.callDecline);
+      await room.sendEvent(
+        declineContent(notificationEventId, reason: reason),
+        type: PangeaEventTypes.callDecline,
+      );
     } catch (e, s) {
       Logs().w('Could not tell the caller the call was declined', e, s);
     }
