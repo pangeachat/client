@@ -5,12 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/dm_invite/dm_invite_controller.dart';
-import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
-import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
-import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/user_id_url.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../controllers/pangea_controller.dart';
@@ -41,7 +37,7 @@ class PAuthGaurd {
 
   /// The logged-in-only guard on the world root `/`. Logged out, it is the
   /// caching half of the login-bounce ferry ([_loginBounce]); logged in, the
-  /// consumption half ([consumeCachedJoinCode]).
+  /// consumption half ([consumeCachedDestination]).
   static FutureOr<String?> roomsRedirect(
     BuildContext context,
     GoRouterState state,
@@ -62,20 +58,20 @@ class PAuthGaurd {
     // and their URL doesn’t include ‘course,’ redirect
     final bool hasSetL2 = await pController!.userController.isUserL2Set;
     if (!hasSetL2) return '/registration';
-    return consumeCachedJoinCode(state.uri);
+    return consumeCachedDestination(state.uri);
   }
 
   /// The DM invite link's redirect (`/invite_user/:userID`, #8436) — the one
   /// inbound contract that resolves through its own route, and that route
-  /// never renders: the invited user is cached in the login-bounce ferry
+  /// never renders: the invited user is cached in its own ferry entry
   /// (SpaceCodeRepo.dmInviteUserId) on EVERY landing, logged in or out, and
   /// the user is sent on through [roomsRedirect] — the login bounce, the
-  /// registration hop, or a pending higher-precedence join/activity — landing
-  /// otherwise on the world map with the chat list open. The DM itself is
-  /// opened from inside the shell (DmInviteFerryConsumer), which the signal
-  /// wakes when the shell is already up (an in-session tap); a shell that
-  /// mounts later — after login or onboarding — reads the ferry on mount. So a
-  /// slow first sync is spent looking at the app, never at a blank landing.
+  /// registration hop, or a pending destination — landing otherwise on the
+  /// world map with the chat list open. The DM itself is opened from inside
+  /// the shell (DmInviteFerryConsumer), which the signal wakes when the shell
+  /// is already up (an in-session tap); a shell that mounts later — after
+  /// login or onboarding — reads the entry on mount. So a slow first sync is
+  /// spent looking at the app, never at a blank landing.
   static Future<String> dmInviteRedirect(
     BuildContext context,
     GoRouterState state,
@@ -89,73 +85,60 @@ class PAuthGaurd {
   }
 
   /// The consumption half of the login-bounce ferry ([_loginBounce] is the
-  /// caching half): a logged-in landing with a fresh cached join code enters
-  /// the join flow that code was cached for. This guard is where consumption
-  /// lives because it is the one place every login transport passes through —
-  /// an in-session password login navigates back here, while a web SSO login
-  /// returns via a full page reload and a restored session boots straight to
-  /// `/`, so a login-state listener cannot be relied on for them (the bug this
-  /// fixes). Not that it never fires for a restored session — measurement says
-  /// it does, on roughly one cold start in ten, whenever the restore finishes
-  /// after the app has mounted. It simply cannot be depended on, which is why
-  /// consumption lives here, and why that listener no longer navigates away
-  /// from a location the user chose ([loggedInLanding]).
+  /// caching half): a logged-in landing is sent on to the destination the
+  /// visitor was bounced from, and the entry is cleared in the same step
+  /// (routing.instructions.md § A signed-out visitor's destination).
   ///
-  /// The guard never clears the cache — only the join page's
-  /// auto-submit does, at the moment it actually fires
-  /// (CourseCodePage._autoSubmit). Anything earlier proved lossy: boot-time
-  /// navigations (post-login listeners go() to the world route) preempted
-  /// first the redirect, then the landed page before its post-frame submit —
-  /// each time stranding a cleared cache with no join. Left uncleared, every
-  /// logged-in landing simply retries until a submit fires; a visitor who
-  /// never gets there is covered by the TTL. New users (L2 unset) never
-  /// reach here — their onboarding joins with the cached code and clears it
-  /// at completion.
-  static Future<String?> consumeCachedJoinCode(Uri current) async {
-    final joinCode = SpaceCodeRepo.spaceCode;
-    if (joinCode != null) {
-      // Already on the coded URL: stay put and let its page submit.
-      if (joinCodeFor(current) == joinCode) return null;
-      return PRoutes.joinWithCode(joinCode);
-    }
-
-    // The same ferry carries a shared activity link (`/<uuid>`, #7821): a
-    // pending join outranks it, mirroring the caching side. Consumption is
-    // anchored where the activity panel actually opens
-    // (LeftPanelActivityDetailsSubpage).
-    // The ferry's third payload, a DM invite (`/invite_user/<id>`, #8436),
-    // needs no redirect from here: its consumer lives in the shell itself
-    // (DmInviteFerryConsumer) and defers behind the two above, so it opens on
-    // whatever workspace location the user lands on once nothing outranks it.
-    final activityId = SpaceCodeRepo.activityId;
-    if (activityId == null) return null;
-    if (activityInfoFor(current)?.activityId == activityId) return null;
-    return '${PRoutes.world}?left=${ActivityPanelToken(ActivityTokenParam(activityId: activityId)).encode()}';
+  /// Consumption lives in this guard because it is the one place every login
+  /// transport passes through — an in-session password or SSO login
+  /// navigates here, a restored session boots straight to `/`, and a new
+  /// account's onboarding ends here — so a login-state listener cannot be
+  /// relied on (the bug #7819 fixed).
+  ///
+  /// Clearing on redirect is safe now that no boot-time navigation competes
+  /// with the landing: the login listener leaves a non-entry location alone
+  /// ([loggedInLanding]), and its unconditional jump to the world map is what
+  /// made the join code's earlier retry-until-consumed contract necessary.
+  /// It is also required: the shell may rewrite the landing URL (a width
+  /// fold), and an entry kept until "arrival" would redirect back forever. A
+  /// landing already on the destination — a logged-in user opening the very
+  /// link a stale entry holds — just clears it. The DM invite link keeps its
+  /// own entry, consumed from inside the shell (DmInviteFerryConsumer).
+  static Future<String?> consumeCachedDestination(Uri current) async {
+    final destination = SpaceCodeRepo.destination;
+    if (destination == null) return null;
+    await SpaceCodeRepo.clearDestination();
+    return destination == current.toString() ? null : destination;
   }
 
-  /// Bounce a logged-out user to /home. The bounce drops the destination URL,
-  /// so an inbound join link's code (the `addcourse:private/<code>` token —
-  /// LegacyRedirects, #7524) is cached across it first: a new user's
-  /// onboarding joins with it and clears it at completion, and an existing
-  /// user's next logged-in landing re-enters the join flow
-  /// ([consumeCachedJoinCode]). The cache is time-stamped and expires
-  /// (SpaceCodeRepo.cacheTTL) so a visitor who never logs in can't leave a
-  /// code that surprise-joins a much later login. The activity link rides the
-  /// same ferry (below); the DM invite link too, cached by its own route's
-  /// redirect ([dmInviteRedirect]) before it delegates here.
+  /// Bounce a logged-out user to /home. The bounce drops the URL, so the
+  /// workspace location the visitor opened is cached across it first
+  /// ([bounceDestinationFor]) and re-entered on the next logged-in landing
+  /// ([consumeCachedDestination]); a brand-new user's onboarding reads a join
+  /// code out of it and clears it at completion. The cache is time-stamped
+  /// and expires (SpaceCodeRepo.cacheTTL) so a visitor who never logs in
+  /// can't leave a destination that carries a much later login somewhere it
+  /// never asked to go. The DM invite link is cached by its own route's
+  /// redirect ([dmInviteRedirect]) before it delegates here, and is not a
+  /// destination.
   static Future<String> _loginBounce(GoRouterState state) async {
-    final joinCode = joinCodeFor(state.uri);
-    if (joinCode != null) {
-      await SpaceCodeController.cacheRoomCodeToJoin(joinCode);
-    }
-    // A shared activity link (`/<uuid>`, folded to its `activity` token by
-    // LegacyRedirects) rides the same ferry: cached here, re-entered by
-    // [consumeCachedJoinCode] on the post-login landing (#7821).
-    final activityId = activityInfoFor(state.uri)?.activityId;
-    if (activityId != null) {
-      await SpaceCodeRepo.setActivityId(activityId);
+    final destination = bounceDestinationFor(state.uri);
+    if (destination != null) {
+      await SpaceCodeRepo.setDestination(destination);
     }
     return '/home';
+  }
+
+  /// The location the bounce keeps for [uri], or null when there is nothing
+  /// to keep: only a workspace location — the world root with a query — is a
+  /// destination (SpaceCodeRepo.isValidDestination). The bare root is the
+  /// default landing, and caching it would let a plain app open, or the
+  /// native SSO callback's `/`, overwrite a real destination; the DM invite
+  /// route keeps its own entry. Pure — unit-tested
+  /// (login_bounce_destination_test.dart).
+  static String? bounceDestinationFor(Uri uri) {
+    final location = uri.toString();
+    return SpaceCodeRepo.isValidDestination(location) ? location : null;
   }
 
   /// Where a client that has just announced [LoginState.loggedIn] belongs, or
