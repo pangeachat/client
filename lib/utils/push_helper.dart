@@ -233,10 +233,25 @@ Future<void> _tryPushHelper(
   // the notification that rings reads "sent a org.matrix.msc4075.rtc.notification
   // event".
   final isRing = event.type == PangeaEventTypes.callNotification;
+  // The same question the banner asks. A push can land after the ring it
+  // carries has ended -- a slow delivery, a phone waking from deep sleep --
+  // and a notification for a call nobody is waiting on any more reads as a
+  // call the learner can still take.
+  if (isRing &&
+      !IncomingCallNotification(
+        event: event,
+        myUserId: client.userID ?? '',
+        // A push knows nothing about a call this process is in. The banner
+        // does, and turns a busy ring down itself.
+        alreadyJoined: false,
+      ).shouldRing(DateTime.now())) {
+    Logs().i('Push for ring ${event.eventId} that no longer rings here');
+    return;
+  }
   final body = hasKnocked
       ? l10n.knockAccepted
       : isRing
-      ? (IncomingCallNotification.videoFromContent(event.content)
+      ? (IncomingRing.videoFromContent(event.content)
             ? l10n.callIncomingVideo
             : l10n.callIncomingVoice)
       : event.type == EventTypes.Encrypted

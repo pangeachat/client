@@ -10,6 +10,8 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/calls/call_notification.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/init_with_restore.dart';
 import 'package:fluffychat/utils/notification_background_handler.dart';
@@ -52,10 +54,14 @@ class BackgroundPushNotification {
 
       // With a single account there is nothing to resolve, so even a failed
       // lookup below leaves a notification that opens the right account.
+      final single = accounts.length == 1 ? accounts.single : null;
       var resolved = _ResolvedPush(
-        clientName: accounts.length == 1 ? accounts.single.clientName : null,
+        clientName: single?.clientName,
         avatar: null,
+        session: single?.session,
       );
+      final eventId = _string(data['event_id']);
+      IncomingRing? ring;
       if (accounts.isNotEmpty) {
         final httpClient = http.Client();
         try {
@@ -65,6 +71,12 @@ class BackgroundPushNotification {
             roomId,
             _string(data['sender']),
           );
+          final session = resolved.session;
+          if (data['type'] == PangeaEventTypes.callNotification &&
+              session != null &&
+              eventId != null) {
+            ring = await _ring(httpClient, session, roomId, eventId);
+          }
         } catch (e, s) {
           Logs().w('[Push] Avatar lookup failed; showing without one', e, s);
         } finally {
@@ -72,7 +84,23 @@ class BackgroundPushNotification {
         }
       }
 
-      await _post(data, roomId, resolved.clientName, resolved.avatar, l10n);
+      // The question the banner asks, so a ring that has ended shows nothing
+      // here either. A ring that could not be read still shows: missing a call
+      // someone is still waiting on costs more than a notice for one that has
+      // just ended.
+      if (ring != null && !ring.shouldRing(DateTime.now())) {
+        Logs().i('[Push] Ring $eventId no longer rings here; not showing it');
+        return;
+      }
+
+      await _post(
+        data,
+        roomId,
+        resolved.clientName,
+        resolved.avatar,
+        l10n,
+        ring,
+      );
     } catch (e, s) {
       Logs().e(
         '[Push] Background notification failed; showing a generic one',
@@ -154,13 +182,56 @@ class BackgroundPushNotification {
       }
     }
 
+    final single = accounts.length == 1 ? accounts.single : null;
     return _ResolvedPush(
-      clientName:
-          member?.clientName ??
-          (accounts.length == 1 ? accounts.single.clientName : null),
+      clientName: member?.clientName ?? single?.clientName,
       avatar: url == null ? null : await _download(httpClient, session, url),
+      session: member?.session ?? single?.session,
     );
   }
+
+  /// The ring a push announces, read from the homeserver, or null when it
+  /// could not be read.
+  ///
+  /// The payload cannot answer whether it still rings: Sygnal copies only the
+  /// top-level text fields of an event's content into it, and a ring's
+  /// lifetime and the call it names are nested.
+  static Future<IncomingRing?> _ring(
+    http.Client httpClient,
+    SessionBackup session,
+    String roomId,
+    String eventId,
+  ) async {
+    final response = await _get(
+      httpClient,
+      session,
+      '/_matrix/client/v3/rooms/${Uri.encodeComponent(roomId)}'
+      '/event/${Uri.encodeComponent(eventId)}',
+    );
+    if (response == null || response.statusCode != 200) {
+      Logs().w('[Push] Could not read ring $eventId: ${response?.statusCode}');
+      return null;
+    }
+    try {
+      return IncomingRing(
+        event: MatrixEvent.fromJson(_json(response.body)),
+        myUserId: session.userId,
+        // A closed app is in no call.
+        alreadyJoined: false,
+      );
+    } catch (e, s) {
+      Logs().w('[Push] Could not parse ring $eventId', e, s);
+      return null;
+    }
+  }
+
+  @visibleForTesting
+  static Future<IncomingRing?> ringForTesting(
+    http.Client httpClient,
+    SessionBackup session, {
+    required String roomId,
+    required String eventId,
+  }) => _ring(httpClient, session, roomId, eventId);
 
   @visibleForTesting
   static Future<Uint8List?> avatarForTesting(
@@ -244,8 +315,18 @@ class BackgroundPushNotification {
   ///
   /// A member event has no body, so an invite gets the words Sygnal used to
   /// write for it, which are also what pushHelper shows when the app is open.
+  /// A ring has none either, and says what kind of call it is when [ring]
+  /// could be read.
   @visibleForTesting
-  static String bodyFor(Map<String, dynamic> data, L10n l10n) {
+  static String bodyFor(
+    Map<String, dynamic> data,
+    L10n l10n, [
+    IncomingRing? ring,
+  ]) {
+    if (data['type'] == PangeaEventTypes.callNotification) {
+      if (ring == null) return l10n.callIncoming;
+      return ring.isVideo ? l10n.callIncomingVideo : l10n.callIncomingVoice;
+    }
     if (data['type'] == EventTypes.RoomMember &&
         data['content_membership'] == 'invite') {
       if (data['content_reason'] == 'invite_on_knock') {
@@ -320,6 +401,7 @@ class BackgroundPushNotification {
     String? clientName,
     Uint8List? avatar,
     L10n l10n,
+    IncomingRing? ring,
   ) async {
     final plugin = await _plugin();
 
@@ -328,7 +410,7 @@ class BackgroundPushNotification {
         _string(data['sender_display_name']) ??
         _string(data['sender']) ??
         l10n.newMessageInPangeaChat;
-    final body = bodyFor(data, l10n);
+    final body = bodyFor(data, l10n, ring);
     final icon = avatar == null ? null : ByteArrayAndroidIcon(avatar);
     final id = roomId.hashCode;
 
@@ -405,5 +487,12 @@ class _ResolvedPush {
   final String? clientName;
   final Uint8List? avatar;
 
-  const _ResolvedPush({required this.clientName, required this.avatar});
+  /// The account that can read the room, used to read a ring back.
+  final SessionBackup? session;
+
+  const _ResolvedPush({
+    required this.clientName,
+    required this.avatar,
+    required this.session,
+  });
 }
