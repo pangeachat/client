@@ -125,7 +125,13 @@ first:
 
 The offer to return is a promise that there is something to return to, so it is
 watched: once the room's state says nobody else is holding the call, it withdraws
-itself and takes the breadcrumb with it. Refusing the offer ENDS the call — it
+itself and takes the breadcrumb with it. When this device's own membership has
+already aged out of state there is no call to scope that check by, so any unexpired
+membership from another participant in the room counts as somebody still holding
+the call. A leftover from an earlier call can therefore keep a dead offer up until
+it expires. That is accepted: a dead offer costs a rejoin into an empty room, which
+leaves quietly, while the opposite error withdraws the offer for a call the other
+person is still waiting in. Refusing the offer ENDS the call — it
 retracts the standing membership, so the other person stops waiting rather than
 watching a grace window run out for someone who already decided.
 
