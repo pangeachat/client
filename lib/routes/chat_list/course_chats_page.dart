@@ -4,29 +4,24 @@ import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/routes/chat_list/chat_list.dart';
+import 'package:fluffychat/routes/chat_list/chat_invite_dialog.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_view.dart';
 import 'package:fluffychat/routes/chat_list/course_hierarchy_extension.dart';
 import 'package:fluffychat/routes/chat_list/extended_space_rooms_chunk.dart';
 import 'package:fluffychat/routes/chat_list/hierarchy_sync_update_extension.dart';
 import 'package:fluffychat/routes/chat_list/unjoined_chat_list_item.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
-import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/invite_dialog.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CourseChats extends StatefulWidget {
@@ -349,94 +344,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
 
   Future<void> onChatTap(Room room) async {
     if (room.membership == Membership.invite) {
-      if (room.hasKnocked) {
-        if (!mounted) return;
-        await showFutureLoadingDialog(
-          context: context,
-          future: () async {
-            final waitForRoom = room.client.waitForRoomInSync(
-              room.id,
-              join: true,
-            );
-            await room.joinKnockedRoom();
-            await waitForRoom;
-          },
-          exceptionContext: ExceptionContext.joinRoom,
-        );
-      } else {
-        final inviteEvent = room.getState(
-          EventTypes.RoomMember,
-          room.client.userID!,
-        );
-        final matrixLocals = MatrixLocals(L10n.of(context));
-        final action = await showInviteDialog<InviteAction>(
-          context,
-          title: room.getLocalizedDisplayname(matrixLocals),
-          message: inviteEvent == null
-              ? L10n.of(context).inviteForMe
-              : inviteEvent.content.tryGet<String>('reason') ??
-                    L10n.of(context).youInvitedBy(
-                      room
-                          .unsafeGetUserFromMemoryOrFallback(
-                            inviteEvent.senderId,
-                          )
-                          .calcDisplayname(i18n: matrixLocals),
-                    ),
-          actions: [
-            InviteDialogAction(
-              label: L10n.of(context).accept,
-              value: InviteAction.accept,
-            ),
-            InviteDialogAction(
-              label: L10n.of(context).decline,
-              value: InviteAction.decline,
-              destructive: true,
-            ),
-            InviteDialogAction(
-              label: L10n.of(context).block,
-              value: InviteAction.block,
-              destructive: true,
-            ),
-          ],
-        );
-        switch (action) {
-          case null:
-            return;
-          case InviteAction.accept:
-            break;
-          case InviteAction.decline:
-            await showFutureLoadingDialog(
-              context: context,
-              future: () => room.leave(),
-            );
-            return;
-          case InviteAction.block:
-            final userId = inviteEvent?.senderId;
-            context.go(
-              WorkspaceNav.openSettings(
-                GoRouterState.of(context).uri,
-                page: userId == null
-                    ? 'security/ignorelist'
-                    : 'security/ignorelist/$userId',
-              ),
-            );
-            return;
-        }
-        if (!mounted) return;
-        final joinResult = await showFutureLoadingDialog(
-          context: context,
-          future: () async {
-            final waitForRoom = room.client.waitForRoomInSync(
-              room.id,
-              join: true,
-            );
-            await room.join();
-            await waitForRoom;
-          },
-          exceptionContext: ExceptionContext.joinRoom,
-        );
-        if (joinResult.error != null) return;
-      }
+      if (!await ChatInviteDialog.show(context, room) || !mounted) return;
     }
 
     if (room.membership == Membership.ban) {
