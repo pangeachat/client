@@ -16,9 +16,6 @@ import 'package:fluffychat/routes/chat_list/friend_dm_prompt.dart';
 import 'package:fluffychat/routes/chat_list/pangea_chat_list_header.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/public_room_dialog.dart';
-import 'package:fluffychat/widgets/avatar.dart';
-import '../../config/themes.dart';
 import '../../widgets/matrix.dart';
 
 class ChatListViewBody extends StatelessWidget {
@@ -374,80 +371,4 @@ class ChatListViewBody extends StatelessWidget {
       },
     );
   }
-}
-
-class PublicRoomsHorizontalList extends StatelessWidget {
-  const PublicRoomsHorizontalList({super.key, required this.publicRooms});
-
-  final List<PublishedRoomsChunk>? publicRooms;
-
-  @override
-  Widget build(BuildContext context) {
-    final publicRooms = this.publicRooms;
-    return AnimatedContainer(
-      clipBehavior: Clip.hardEdge,
-      decoration: const BoxDecoration(),
-      height: publicRooms == null || publicRooms.isEmpty ? 0 : 106,
-      duration: FluffyThemes.animationDuration,
-      curve: FluffyThemes.animationCurve,
-      child: publicRooms == null
-          ? null
-          : ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: publicRooms.length,
-              itemBuilder: (context, i) => _SearchItem(
-                title:
-                    publicRooms[i].name ??
-                    publicRooms[i].canonicalAlias?.localpart ??
-                    L10n.of(context).group,
-                avatar: publicRooms[i].avatarUrl,
-                onPressed: () => showAdaptiveDialog(
-                  context: context,
-                  builder: (c) => PublicRoomDialog(
-                    roomAlias:
-                        publicRooms[i].canonicalAlias ?? publicRooms[i].roomId,
-                    chunk: publicRooms[i],
-                  ),
-                ),
-              ),
-            ),
-    );
-  }
-}
-
-class _SearchItem extends StatelessWidget {
-  final String title;
-  final Uri? avatar;
-  final void Function() onPressed;
-
-  const _SearchItem({
-    required this.title,
-    this.avatar,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) => InkWell(
-    onTap: onPressed,
-    child: SizedBox(
-      width: 84,
-      child: Column(
-        mainAxisSize: .min,
-        children: [
-          const SizedBox(height: 8),
-          Avatar(mxContent: avatar, name: title),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              title,
-              maxLines: 2,
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(fontSize: 12),
-            ),
-          ),
-        ],
-      ),
-    ),
-  );
 }
