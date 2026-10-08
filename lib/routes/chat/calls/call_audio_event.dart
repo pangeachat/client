@@ -44,6 +44,12 @@ class CallAudioContent {
   /// keys alike.
   final String? deviceId;
 
+  /// The same-sender device this recording CONTINUED FROM and the one it was
+  /// HANDED OVER TO when the learner moved the call (client#9173). See
+  /// [CallTranscriptContent.continuedFrom]; validated the same way.
+  final String? continuedFrom;
+  final String? handedOverTo;
+
   /// Where the uploaded audio lives -- an `mxc://` URI on this homeserver's
   /// media repository, from a plain (unencrypted) upload. Never a decryption
   /// key or an IV: this app's rooms are not end-to-end encrypted, so nothing
@@ -100,6 +106,8 @@ class CallAudioContent {
   const CallAudioContent({
     required this.callKey,
     this.deviceId,
+    this.continuedFrom,
+    this.handedOverTo,
     required this.url,
     required this.mimetype,
     required this.size,
@@ -144,6 +152,8 @@ class CallAudioContent {
   Map<String, dynamic> toJson() => {
     'call_key': callKey,
     'device_id': ?CallTranscriptContent.usableDeviceId(deviceId),
+    'continued_from': ?CallTranscriptContent.usableDeviceId(continuedFrom),
+    'handed_over_to': ?CallTranscriptContent.usableDeviceId(handedOverTo),
     'url': url,
     'mimetype': mimetype,
     'size': size,
@@ -200,6 +210,12 @@ class CallAudioContent {
       // it decides only how halves are grouped, and refusing the audio to
       // save a grouping would cost the recording to save nothing.
       deviceId: CallTranscriptContent.usableDeviceId(content['device_id']),
+      continuedFrom: CallTranscriptContent.usableDeviceId(
+        content['continued_from'],
+      ),
+      handedOverTo: CallTranscriptContent.usableDeviceId(
+        content['handed_over_to'],
+      ),
       url: url,
       mimetype: mimetype,
       size: size,

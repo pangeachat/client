@@ -84,6 +84,12 @@ Future<bool> writeCallTranscript({
   required bool drainComplete,
   String? langCode,
 
+  /// The same-sender devices this half's stretch continued from / was handed
+  /// over to, when the learner moved the call (client#9173). Fixed for the
+  /// whole publish, like every other part of the half's identity.
+  String? continuedFrom,
+  String? handedOverTo,
+
   /// Whose speech this half is, WHEN THE WRITER IS NOT THE SPEAKER, and the
   /// `pangea.call_audio` it was transcribed from. Both null on an AUTHENTIC half
   /// (this device's own live capture), which is every existing call site and the
@@ -143,6 +149,8 @@ Future<bool> writeCallTranscript({
         ),
         langCode: langCode,
         deviceId: deviceId,
+        continuedFrom: continuedFrom,
+        handedOverTo: handedOverTo,
         // Absent on an authentic own half (both null) and carried only by the
         // whole-call transcriber's peer half. The content's own guards refuse a
         // malformed value, so a peer claim that cannot be a participant, or an

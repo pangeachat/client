@@ -9,7 +9,9 @@ import 'package:matrix/matrix.dart' as matrix;
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
+import 'package:fluffychat/routes/chat/calls/call_key_clock.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_ownership.dart';
@@ -168,6 +170,22 @@ class _UnjoinableCalls extends _FakeCalls {
       throw StateError('the SFU refused this join');
 }
 
+/// A service whose answer to "is this membership current" the test states.
+class _JoinerCalls extends _FakeCalls {
+  _JoinerCalls(super.client);
+
+  /// Current memberships, as `userId|eventId`: the account matters, because
+  /// a sibling's record must be checked against THIS account's memberships.
+  Set<String> current = {};
+
+  @override
+  bool membershipEventIsCurrent(
+    matrix.Room room,
+    String userId,
+    String eventId,
+  ) => current.contains('$userId|$eventId');
+}
+
 class _FakeRoster extends CallRoster {
   _FakeRoster({required super.room, required super.myUserId});
 
@@ -193,6 +211,29 @@ class _FakeRoster extends CallRoster {
 
   @override
   bool get roomConnected => connected;
+}
+
+/// Notes what the audio recorder held at the moment the record began to
+/// finish -- the record makes the recording durable first thing.
+class _LinkSpyRecord extends _SpyRecord {
+  ({String? continuedFrom, String? handedOverTo})? Function()? linksNow;
+  final linksAtFinish = <({String? continuedFrom, String? handedOverTo})?>[];
+
+  @override
+  Future<void> finish({
+    required Duration duration,
+    required bool video,
+    bool captureRefused = false,
+    bool answered = true,
+    bool declined = false,
+    bool writeTimelineEvent = true,
+    bool mattered = true,
+    String? anchorEventId,
+    String? callerId,
+    String? callKey,
+  }) async {
+    linksAtFinish.add(linksNow?.call());
+  }
 }
 
 /// Records what the session asked the timeline for. Nothing in the suite
@@ -2170,6 +2211,302 @@ void main() {
       },
     );
   });
+  group('a call the learner moved between their devices (#9173)', () {
+    // This device's SFU join, ten minutes before every sibling's whole-second
+    // join the fake roster reports (2026-08-29 12:00 UTC): far past the ring.
+    final myJoin = DateTime.utc(2026, 8, 29, 11, 50).millisecondsSinceEpoch;
+
+    test('the device it moved on from publishes its stretch, linked to the '
+        'device it went to, and writes no card', () async {
+      final client = await _bareClient();
+      final room = _RecordingRoom(id: '!r:server', client: client);
+      final media = _FakeMedia();
+      final session = CallSession.start(
+        room: room,
+        video: false,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        notificationEventId: r'$ring',
+        callerMembershipEventId: r'$caller-membership',
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      media.anchorClocksTo((secondsMs: myJoin, ms: 0));
+      await pumpEventQueue();
+      final roster = media.fakeRoster!;
+      // A conversation first...
+      roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV'};
+      roster.recompute();
+      await pumpEventQueue();
+      // ...then the learner picks up their other device and chooses it.
+      final sib = '${client.userID}:SIBLINGDEV';
+      roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV', sib};
+      roster.attributes = {
+        sib: {CallRoster.chosenAttribute: 'yes'},
+      };
+      roster.recompute();
+      await pumpEventQueue();
+      await pumpEventQueue();
+
+      expect(session.call.outcome, CallOutcome.movedToOtherDevice);
+      expect(session.call.isPredecessor, isTrue);
+      final halves = [
+        for (var i = 0; i < room.sent.length; i++)
+          if (room.sentTypes[i] == CallTranscriptContent.relType) room.sent[i],
+      ];
+      expect(halves, hasLength(1), reason: 'its stretch is nobody else\'s');
+      expect(halves.single['handed_over_to'], 'SIBLINGDEV');
+      expect(halves.single.containsKey('continued_from'), isFalse);
+      expect(
+        session.audioHalfLinksForTest,
+        (continuedFrom: null, handedOverTo: 'SIBLINGDEV'),
+        reason: 'the audio half carries the same links',
+      );
+      expect(room.cards, isEmpty, reason: 'the call is not over');
+      // Credit is written by the same finish as the half; with no words
+      // transcribed here there are no uses to credit, so the half is what
+      // shows the finish ran.
+      session.dispose();
+      await pumpEventQueue();
+    });
+
+    test('the recorder holds the links BEFORE the record finishes, so the '
+        'durable copy it makes first carries them', () async {
+      final client = await _bareClient();
+      final room = _RecordingRoom(id: '!r:server', client: client);
+      final media = _FakeMedia();
+      final record = _LinkSpyRecord();
+      final session = CallSession.start(
+        room: room,
+        video: false,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        notificationEventId: r'$ring',
+        callerMembershipEventId: r'$caller-membership',
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+        recordOverride: record,
+      );
+      record.linksNow = () => session.audioHalfLinksForTest;
+      media.anchorClocksTo((secondsMs: myJoin, ms: 0));
+      await pumpEventQueue();
+      final roster = media.fakeRoster!;
+      roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV'};
+      roster.recompute();
+      await pumpEventQueue();
+      final sib = '${client.userID}:SIBLINGDEV';
+      roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV', sib};
+      roster.attributes = {
+        sib: {CallRoster.chosenAttribute: 'yes'},
+      };
+      roster.recompute();
+      await pumpEventQueue();
+      await pumpEventQueue();
+
+      expect(record.linksAtFinish, [
+        (continuedFrom: null, handedOverTo: 'SIBLINGDEV'),
+      ]);
+      session.dispose();
+      await pumpEventQueue();
+    });
+
+    test('the device that PLACED the call writes no card for it when it '
+        'moves on: the call is not over', () async {
+      final client = await _bareClient();
+      final room = _RecordingRoom(id: '!r:server', client: client);
+      final media = _FakeMedia();
+      final session = CallSession.start(
+        room: room,
+        video: false,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+        tonesOverride: RingPlayer(sound: _FakeSound()),
+      );
+      media.anchorClocksTo((secondsMs: myJoin, ms: 0));
+      await pumpEventQueue();
+      expect(session.placedCall, isTrue);
+      final roster = media.fakeRoster!;
+      roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV'};
+      roster.recompute();
+      await pumpEventQueue();
+      final sib = '${client.userID}:SIBLINGDEV';
+      roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV', sib};
+      roster.attributes = {
+        sib: {CallRoster.chosenAttribute: 'yes'},
+      };
+      roster.recompute();
+      await pumpEventQueue();
+      await pumpEventQueue();
+
+      expect(session.call.outcome, CallOutcome.movedToOtherDevice);
+      expect(session.call.isPredecessor, isTrue);
+      expect([
+        for (var i = 0; i < room.sent.length; i++)
+          if (room.sentTypes[i] == CallTranscriptContent.relType) room.sent[i],
+      ], hasLength(1));
+      expect(room.cards, isEmpty, reason: 'the call carries on elsewhere');
+      session.dispose();
+      await pumpEventQueue();
+    });
+
+    for (final where in [
+      CallAudioContent.relType,
+      CallTranscriptContent.relType,
+    ]) {
+      test('the device it moved on to links its half to the one it continued, '
+          'once that half is in the room ($where)', () async {
+        final client = await _bareClient();
+        final room = _RecordingRoom(id: '!r:server', client: client);
+        final media = _FakeMedia();
+        final session = CallSession.start(
+          room: room,
+          video: false,
+          callService: _FakeCalls(client),
+          transcribe: (request) async =>
+              SpeechToTextResponseModel(results: const []),
+          userL1: 'en',
+          userL2: 'es',
+          analytics: (eventId, uses, language) async {},
+          onReleased: (_) {},
+          notificationEventId: r'$ring',
+          callerMembershipEventId: r'$caller-membership',
+          mediaOverride: media,
+          captureOverride: CallCaptureService(sink: _NullSink()),
+        );
+        final asked = <String>[];
+        session.relatedEventsOverride = (key, relType) async {
+          asked.add(relType);
+          // Only the relation under test holds the sibling's half.
+          if (relType != where) return const [];
+          return [
+            // Another account's half handed to us is not ours to continue.
+            matrix.MatrixEvent(
+              type: relType,
+              content: {'device_id': 'FRIENDDEV', 'handed_over_to': 'GHTYAJCE'},
+              eventId: r'$theirs',
+              senderId: '@friend:fakeServer.notExisting',
+              originServerTs: DateTime.now(),
+            ),
+            matrix.MatrixEvent(
+              type: relType,
+              content: {
+                'device_id': 'SIBLINGDEV',
+                'handed_over_to': 'GHTYAJCE',
+              },
+              eventId: r'$sibling-half',
+              senderId: client.userID!,
+              originServerTs: DateTime.now(),
+            ),
+          ];
+        };
+        await pumpEventQueue();
+        final roster = media.fakeRoster!;
+        final sib = '${client.userID}:SIBLINGDEV';
+        roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV', sib};
+        roster.attributes = {
+          sib: {CallRoster.chosenAttribute: 'no'},
+        };
+        roster.recompute();
+        await pumpEventQueue();
+        // The sibling leaves: this device is the one the call carries on.
+        roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV'};
+        roster.recompute();
+        await pumpEventQueue();
+        expect(session.call.carriedOn, isTrue);
+
+        session.endCall();
+        await pumpEventQueue();
+        await pumpEventQueue();
+        final halves = [
+          for (var i = 0; i < room.sent.length; i++)
+            if (room.sentTypes[i] == CallTranscriptContent.relType)
+              room.sent[i],
+        ];
+        expect(halves, hasLength(1));
+        expect(halves.single['continued_from'], 'SIBLINGDEV');
+        expect(halves.single.containsKey('handed_over_to'), isFalse);
+        expect(
+          session.audioHalfLinksForTest,
+          (continuedFrom: 'SIBLINGDEV', handedOverTo: null),
+          reason: 'the audio half carries the same links',
+        );
+        expect(asked, isNotEmpty);
+        session.dispose();
+        await pumpEventQueue();
+      });
+    }
+
+    test(
+      'a device that never shared the call with a sibling does not look',
+      () async {
+        final (session, _, _) = await build();
+        var looked = false;
+        session.relatedEventsOverride = (key, relType) async {
+          looked = true;
+          return const [];
+        };
+        session.endCall();
+        await pumpEventQueue();
+        await pumpEventQueue();
+        expect(looked, isFalse);
+      },
+    );
+
+    test('which own half it continued from is read strictly', () {
+      matrix.MatrixEvent half(String sender, Map<String, Object?> content) =>
+          matrix.MatrixEvent(
+            type: CallTranscriptContent.relType,
+            content: content,
+            eventId: r'$e',
+            senderId: sender,
+            originServerTs: DateTime.now(),
+          );
+      String? from(List<matrix.MatrixEvent> events) =>
+          CallSession.handedOverFrom(events, me: '@me:s', myDeviceId: 'MINE');
+      expect(
+        from([
+          half('@me:s', {'device_id': 'PHONE', 'handed_over_to': 'MINE'}),
+        ]),
+        'PHONE',
+      );
+      expect(
+        from([
+          half('@me:s', {'device_id': 'PHONE', 'handed_over_to': 'OTHER'}),
+        ]),
+        isNull,
+      );
+      expect(
+        from([
+          half('@you:s', {'device_id': 'PHONE', 'handed_over_to': 'MINE'}),
+        ]),
+        isNull,
+      );
+      expect(
+        from([
+          half('@me:s', {'device_id': 'MINE', 'handed_over_to': 'MINE'}),
+        ]),
+        isNull,
+      );
+    });
+  });
+
   group(
     'two devices, one call -- a leave that did not carry on writes nothing',
     () {
@@ -2646,6 +2983,189 @@ void main() {
         contains('dispose'),
         reason: 'the session disposes its tone player, leaking no AudioPlayer',
       );
+    });
+  });
+
+  group('a device joining a call under way (#9173)', () {
+    const friendId = '@friend:fakeServer.notExisting';
+    const friend = '$friendId:FRIENDDEV';
+    const callerMembership = r'$caller-membership';
+
+    Future<
+      ({
+        CallSession session,
+        List<Map<String, Object?>> recorded,
+        _FakeMedia media,
+      })
+    >
+    join({
+      CallInProgress? record,
+      Set<String> current = const {},
+      List<matrix.Event> Function(matrix.Room room)? timeline,
+      List<matrix.MatrixEvent> clocks = const [],
+      Map<String, matrix.Event> Function(matrix.Room room)? memberships,
+    }) async {
+      final client = await _bareClient();
+      final room = matrix.Room(id: '!r:server', client: client);
+      if (record != null) {
+        room.roomAccountData[CallInProgress.type] = matrix.BasicEvent(
+          type: CallInProgress.type,
+          content: record.toJson(),
+        );
+      }
+      final calls = _JoinerCalls(client)
+        ..current = current
+        ..adoptCallIdForTest('!r:server');
+      final media = _FakeMedia(
+        now: () => DateTime.fromMillisecondsSinceEpoch(1000000500),
+      );
+      // This account's phone and the other person are both already in the
+      // call, so this device is a JOINER: no ring, no placing.
+      media.fakeRoster = _FakeRoster(room: media.room, myUserId: client.userID!)
+        ..identities = {'${client.userID}:SIBLINGDEV', friend};
+      media.fakeRoster!.recompute();
+      media.anchorClocksTo((secondsMs: 1000000000, ms: 0));
+      final recorded = <Map<String, Object?>>[];
+      final session = CallSession.start(
+        room: room,
+        video: false,
+        callService: calls,
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      final memberMap = memberships?.call(room) ?? const {};
+      session.timelineEventsOverride = () async => timeline?.call(room) ?? [];
+      session.keyClockOverride = CallKeyClock(
+        writeCallInProgress: (content) async => recorded.add(content),
+        sendClock: (content, txn) async {},
+        fetchClockEvents: (key) async => clocks,
+        fetchEvent: (id) async => memberMap[id],
+        clockArrivals: const Stream.empty(),
+        onEpoch: session.call.adoptCallEpoch,
+        dmMembers: () => {client.userID!, friendId},
+        callId: () => '!r:server',
+      );
+      await pumpEventQueue();
+      return (session: session, recorded: recorded, media: media);
+    }
+
+    test('adopts the key its other device recorded, and records it again '
+        'for the next one', () async {
+      final t = await join(
+        record: const CallInProgress(
+          callKey: callerMembership,
+          callerId: friendId,
+          writerDeviceId: 'SIBLINGDEV',
+          writerMembershipEventId: r'$sibling-membership',
+        ),
+        current: {'@test:fakeServer.notExisting|\$sibling-membership'},
+      );
+      expect(t.session.placedCall, isFalse, reason: 'a joiner');
+      expect(t.recorded, isNotEmpty);
+      expect(t.recorded.last['call_key'], callerMembership);
+      expect(t.recorded.last['caller_id'], friendId);
+      expect(t.recorded.last['writer_device_id'], 'GHTYAJCE');
+      expect(t.recorded.last['writer_membership_event_id'], r'$membership');
+      t.session.dispose();
+      await pumpEventQueue();
+    });
+
+    test('a record whose writer is not in the call falls back to the ring '
+        'still in force', () async {
+      final t = await join(
+        record: const CallInProgress(
+          callKey: r'$stale-key',
+          callerId: friendId,
+          writerDeviceId: 'GONEDEV',
+          writerMembershipEventId: r'$gone-membership',
+        ),
+        current: {
+          '@test:fakeServer.notExisting|\$gone-membership',
+          '$friendId|$callerMembership',
+        },
+        timeline: (room) => [
+          matrix.Event(
+            type: PangeaEventTypes.callNotification,
+            content: {
+              'application': {'type': 'm.call', 'notification_type': 'ring'},
+              'm.relates_to': {
+                'rel_type': 'm.reference',
+                'event_id': callerMembership,
+              },
+            },
+            eventId: r'$ring',
+            senderId: friendId,
+            originServerTs: DateTime.now(),
+            room: room,
+          ),
+        ],
+      );
+      expect(t.recorded.last['call_key'], callerMembership);
+      expect(t.recorded.last['caller_id'], friendId);
+      t.session.dispose();
+      await pumpEventQueue();
+    });
+
+    test('with nothing to adopt the joiner has no key, as before', () async {
+      final t = await join();
+      expect(t.recorded, isEmpty);
+      t.session.dispose();
+      await pumpEventQueue();
+    });
+
+    test('the on-screen clock snaps to the shared epoch through this '
+        "device's own anchor", () async {
+      final t = await join(
+        record: const CallInProgress(
+          callKey: callerMembership,
+          callerId: friendId,
+          writerDeviceId: 'SIBLINGDEV',
+          writerMembershipEventId: r'$sibling-membership',
+        ),
+        current: {'@test:fakeServer.notExisting|\$sibling-membership'},
+        clocks: [
+          matrix.MatrixEvent(
+            type: CallClockContent.type,
+            content: const CallClockContent(
+              callKey: callerMembership,
+              epochSfuMs: 999000000,
+              writerDeviceId: 'FRIENDDEV',
+              writerAnchorId: callerMembership,
+            ).toContent(),
+            eventId: r'$clock',
+            senderId: friendId,
+            originServerTs: DateTime.now(),
+          ),
+        ],
+        memberships: (room) => {
+          callerMembership: matrix.Event(
+            type: matrix.EventTypes.GroupCallMember,
+            content: {
+              'memberships': [
+                {'call_id': '!r:server', 'device_id': 'FRIENDDEV'},
+              ],
+            },
+            eventId: callerMembership,
+            senderId: friendId,
+            originServerTs: DateTime.now(),
+            room: room,
+          ),
+        },
+      );
+      await pumpEventQueue();
+      // epoch 999000000 on the SFU clock; this device runs 500ms ahead of it.
+      expect(
+        t.session.callStartedAt,
+        DateTime.fromMillisecondsSinceEpoch(999000500),
+      );
+      t.session.dispose();
+      await pumpEventQueue();
     });
   });
 }

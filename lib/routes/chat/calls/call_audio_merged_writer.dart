@@ -39,6 +39,7 @@ Future<String?> writeCallAudioMergedEvent({
   required List<String> sourceEventIds,
   String codec = kCallAudioCodec,
   int? mergedStartSfuMs,
+  bool? complete,
 }) async {
   if (callKey == null || callKey.isEmpty) {
     Logs().w(
@@ -69,6 +70,7 @@ Future<String?> writeCallAudioMergedEvent({
     codec: codec,
     mergedStartSfuMs: mergedStartSfuMs,
     sourceEventIds: sourceEventIds,
+    complete: complete,
   );
 
   return send(

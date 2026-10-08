@@ -4,7 +4,7 @@ import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart' show AppLifecycleListener;
 
-import 'package:matrix/matrix.dart' show Logs;
+import 'package:matrix/matrix.dart' show Logs, MatrixEvent;
 import 'package:permission_handler/permission_handler.dart';
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -14,6 +14,7 @@ import 'package:fluffychat/routes/chat/calls/call_audio_pending_store.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_recorder.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_upload_state_store.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
+import 'package:fluffychat/routes/chat/calls/call_key_clock.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
@@ -22,6 +23,7 @@ import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_outbox.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/calls/ring_player.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_writer.dart';
 import 'package:fluffychat/routes/chat/calls/whole_call_transcriber.dart';
@@ -38,6 +40,13 @@ import 'package:pangea_call_capture/pangea_call_capture.dart'
 /// reconnecting tone while the caller's own link to the SFU recovers. The
 /// call-cut cue is a one-shot, not a loop, so it is not one of these.
 enum _RingCue { ringback, reconnecting }
+
+/// Where this device's halves sit in a call the learner moved between their
+/// devices (client#9173): filled once before the record finishes, read by the
+/// transcript and audio writers.
+class _HalfLinks {
+  ({String? continuedFrom, String? handedOverTo})? value;
+}
 
 /// One call, owned ABOVE the widget tree.
 ///
@@ -94,6 +103,14 @@ class CallSession extends ChangeNotifier {
 
   final String? _myUserId;
   final String? _peerUserId;
+  final _HalfLinks _halfLinks;
+  final CallAudioRecorder? _audioRecorder;
+
+  /// The links the audio half was handed when it was published, so a test can
+  /// see that the audio half carries the same links as the transcript half.
+  @visibleForTesting
+  ({String? continuedFrom, String? handedOverTo})? get audioHalfLinksForTest =>
+      _audioRecorder?.halfLinks;
 
   bool _muted = false;
   bool _camera = false;
@@ -146,7 +163,11 @@ class CallSession extends ChangeNotifier {
     this.platformLabels,
     this.tonesOverride,
     bool fullscreen = false,
+    _HalfLinks? halfLinks,
+    CallAudioRecorder? audioRecorder,
   }) : _record = record,
+       _audioRecorder = audioRecorder,
+       _halfLinks = halfLinks ?? _HalfLinks(),
        _myUserId = myUserId,
        _peerUserId = peerUserId,
        _fullscreen = fullscreen,
@@ -376,6 +397,11 @@ class CallSession extends ChangeNotifier {
           )
         : null;
 
+    // Where this device's halves sit in a call the learner moved between their
+    // devices (client#9173). Filled once by the session before the record
+    // finishes, and read by both writers below.
+    final halfLinks = _HalfLinks();
+
     // This device's transcript half, written through [send]. One function for
     // the real publish and for freezing the live half into the durable
     // recording record, so the two can never build different events.
@@ -445,6 +471,8 @@ class CallSession extends ChangeNotifier {
       // record is deliberately free of anything to do with media,
       // and this is the same seam that already knows the room.
       clockAnchor: media.clockAnchor,
+      continuedFrom: halfLinks.value?.continuedFrom,
+      handedOverTo: halfLinks.value?.handedOverTo,
     );
 
     final record =
@@ -608,6 +636,8 @@ class CallSession extends ChangeNotifier {
       platformLabels: platformLabels,
       fullscreen: fullscreen,
       tonesOverride: tonesOverride,
+      halfLinks: halfLinks,
+      audioRecorder: audioRecorder,
     );
   }
 
@@ -1037,7 +1067,18 @@ class CallSession extends ChangeNotifier {
       // no transcript half, no analytics, no summary (doc:236). Keyed on the
       // FACT (carriedOn), not on which outcome fired, so an ordinary `ended`
       // reached while held is caught alongside `movedToOtherDevice`.
-      if (!call.carriedOn) {
+      //
+      // A PREDECESSOR is the exception (client#9173): the learner moved the
+      // call on from it, so the stretch it captured is nobody else's. It
+      // publishes that stretch -- half, audio, credit -- and, when the call
+      // continues on the other device, writes no card: the call is not over.
+      final predecessor = !call.carriedOn && call.isPredecessor;
+      if (predecessor && outcome == CallOutcome.movedToOtherDevice) {
+        Logs().i('This device handed the call on; publishing its stretch');
+        _finishRecording();
+      }
+      if (!call.carriedOn &&
+          !(predecessor && outcome != CallOutcome.movedToOtherDevice)) {
         _finish();
         // A MOVED leave still says WHY (the panel reads the outcome), so it
         // earns a brief moment on screen; a give-up goes at once.
@@ -1075,6 +1116,7 @@ class CallSession extends ChangeNotifier {
       }
       return;
     }
+    _driveKeyClock();
     if (call.stage == CallStage.connected) _reachedCall = true;
     if (call.hadPeer && _tick == null && !_over) {
       _tick = Timer.periodic(const Duration(seconds: 1), (_) {
@@ -1340,13 +1382,19 @@ class CallSession extends ChangeNotifier {
             // at the WRITE itself, not at any one caller, so every path here
             // is covered by the same check rather than by remembering to
             // guard each one.
-            if (!call.carriedOn) return;
+            if (!call.carriedOn && !call.isPredecessor) return;
             // The card is normally already in the timeline by now (written the
             // moment the call ended); this call credits the transcripts against
             // it, and writes the card itself only if that earlier attempt had
             // failed outright.
 
             final identity = _callIdentity;
+            _halfLinks.value ??= await _resolveHalfLinks(identity.key);
+            // Handed to the recorder BEFORE the record finishes: finishing
+            // first makes the recording durable (an app kill resumes it from
+            // that copy), so links assigned any later would be missing from
+            // the half a resume sends.
+            _audioRecorder?.halfLinks = _halfLinks.value;
             // Awaited rather than returned so the merge kick below runs after
             // this device's own half is finished + posted. `_record.finish`
             // returns `Future<void>`, so this preserves the callback's prior
@@ -1375,7 +1423,11 @@ class CallSession extends ChangeNotifier {
               captureRefused: microphoneRefused,
               answered: call.hadPeer,
               declined: call.wasDeclined,
-              writeTimelineEvent: _writesTheCall,
+              // A call that continues on another device is not over, so the
+              // device it moved on from writes no card for it.
+              writeTimelineEvent:
+                  _writesTheCall &&
+                  call.outcome != CallOutcome.movedToOtherDevice,
               callerId: identity.caller,
               callKey: identity.key,
               anchorEventId: notificationEventId ?? call.callAnchorId,
@@ -1412,15 +1464,271 @@ class CallSession extends ChangeNotifier {
   /// learned it from the winner's simultaneous ring. The caller field names
   /// the same tie-break winner; `placedCall ? me : peer` would, on glare,
   /// name the LOSER on the loser's card.
-  ({String? key, String? caller}) get _callIdentity => resolveCallIdentity(
-    placed: call.placedCall,
-    peerAlsoPlaced: call.peerAlsoPlaced,
-    myUserId: _myUserId,
-    peerUserId: _peerUserId ?? call.peerRingSenderId,
-    ownMembershipId: call.callAnchorId,
-    peerRingMembershipId: call.peerRingMembershipId,
-    callerMembershipEventId: callerMembershipEventId,
-  );
+  ///
+  /// A device that neither rang nor was rung -- one joining a call already
+  /// under way, a sibling taking it over, a rejoin -- has no ring to resolve
+  /// from, so it falls back to the key it adopted (see [_resolveJoinerKey]).
+  ({String? key, String? caller}) get _callIdentity {
+    final resolved = resolveCallIdentity(
+      placed: call.placedCall,
+      peerAlsoPlaced: call.peerAlsoPlaced,
+      myUserId: _myUserId,
+      peerUserId: _peerUserId ?? call.peerRingSenderId,
+      ownMembershipId: call.callAnchorId,
+      peerRingMembershipId: call.peerRingMembershipId,
+      callerMembershipEventId: callerMembershipEventId,
+    );
+    final joined = _joinerKey;
+    if (resolved.key != null || joined == null) return resolved;
+    return (key: joined.key, caller: joined.caller ?? resolved.caller);
+  }
+
+  // ------------------------------------------ the call key and clock (#9173)
+
+  /// Replaces the coordinator's homeserver seams in a test. Set right after
+  /// the session is built, before anything reaches the call.
+  @visibleForTesting
+  CallKeyClock? keyClockOverride;
+
+  late final CallKeyClock _keyClock = keyClockOverride ?? _buildKeyClock();
+  bool _keyClockStarted = false;
+
+  /// The key this device ADOPTED as a joiner. Latched on first success: every
+  /// half it writes is keyed by it, and a resend must carry the same identity.
+  ({String key, String? caller})? _joinerKey;
+  bool _joinerRingTried = false;
+
+  bool get _isKeylessJoiner =>
+      !call.placedCall &&
+      !call.peerAlsoPlaced &&
+      callerMembershipEventId == null &&
+      notificationEventId == null;
+
+  /// Records the key for this account's other devices, writes the call clock
+  /// when this device is its writer, and reads it. Re-run on every change of
+  /// the call; each step is latched inside, so a repeat costs nothing.
+  void _driveKeyClock() {
+    if (_over || _disposing) return;
+    if (_joinerKey == null && _isKeylessJoiner && call.hadPeer) {
+      _resolveJoinerKey();
+    }
+    final identity = _callIdentity;
+    final key = CallRecord.usableKey(identity.key);
+    final membership = call.membershipEventId;
+    final me = _myUserId;
+    final device = room.client.deviceID;
+    if (key == null || membership == null || me == null || device == null) {
+      return;
+    }
+    _keyClockStarted = true;
+    _keyClock.keyResolved(
+      callKey: key,
+      callerId: identity.caller,
+      writerDeviceId: device,
+      writerMembershipEventId: membership,
+    );
+    if (!call.hadPeer) return;
+    _keyClock.peerArrived(
+      callKey: key,
+      isPrimaryWriter: CallClockContent.isPrimaryWriter(
+        callKey: key,
+        ownAnchorId: call.callAnchorId,
+        rejoined: call.rejoinedCall,
+      ),
+      isFallbackWriter: () => CallClockContent.isFallbackWriter(
+        rejoined: call.rejoinedCall,
+        callerId: _callIdentity.caller,
+        myUserId: me,
+        myDeviceId: device,
+        siblingDeviceIds: call.siblingDeviceIds,
+        ownMembershipCurrent: call.calls.membershipEventIsCurrent(
+          room,
+          me,
+          membership,
+        ),
+      ),
+      epochSfuMs: () => call.callEpochFromSfuJoins,
+      writerSenderId: me,
+      writerDeviceId: device,
+      writerAnchorId: () => call.membershipEventId,
+    );
+  }
+
+  /// A joiner's key: this account's `pangea.call_in_progress` when it can be
+  /// trusted, else the current ring, else none -- exactly as before.
+  void _resolveJoinerKey() {
+    final me = _myUserId;
+    final data = CallInProgress.fromJson(
+      room.roomAccountData[CallInProgress.type]?.content,
+    );
+    if (data != null &&
+        me != null &&
+        CallInProgress.accepts(
+          data: data,
+          siblingDeviceIdsInSfu: call.siblingDeviceIds,
+          isCurrentOwnMembership: (id) =>
+              call.calls.membershipEventIsCurrent(room, me, id),
+          myDeviceId: room.client.deviceID,
+          rejoinAnchor: call.rejoinedCall ? call.callAnchorId : null,
+        )) {
+      _joinerKey = (key: data.callKey, caller: data.callerId);
+      Logs().i('Adopted the call key this account recorded for the call');
+      return;
+    }
+    if (_joinerRingTried) return;
+    _joinerRingTried = true;
+    unawaited(_joinerKeyFromRing());
+  }
+
+  Future<void> _joinerKeyFromRing() async {
+    try {
+      final events = await _timelineEvents();
+      if (_joinerKey != null || _over || _disposing) return;
+      final found = keyFromCurrentRing(
+        events,
+        (sender, id) => call.calls.membershipEventIsCurrent(room, sender, id),
+      );
+      if (found == null) {
+        Logs().i('Joined a call under way with no key: nothing names it');
+        return;
+      }
+      _joinerKey = (key: found.key, caller: found.caller);
+      Logs().i('Adopted the call key from the ring still in force');
+      _driveKeyClock();
+    } catch (e, s) {
+      Logs().w('Could not look for the ring of a call under way', e, s);
+    }
+  }
+
+  /// Every event relating to [key] under [relType], within the reader's
+  /// usual page and event ceilings. Throws when it could not look.
+  Future<List<MatrixEvent>> _fetchRelated(
+    RelationsFetcher relations,
+    String key,
+    String relType,
+  ) async {
+    final events = <MatrixEvent>[];
+    String? from;
+    for (var page = 0; page < kMaxRelationPages; page++) {
+      final batch = await relations(
+        roomId: room.id,
+        eventId: key,
+        relType: relType,
+        from: from,
+      );
+      events.addAll(batch.chunk);
+      from = batch.nextBatch;
+      if (from == null || events.length >= kMaxRelationEvents) break;
+    }
+    return events;
+  }
+
+  /// Seam for the half-link lookup in tests.
+  @visibleForTesting
+  Future<List<MatrixEvent>> Function(String key, String relType)?
+  relatedEventsOverride;
+
+  /// How long the finish waits to learn which device it continued from.
+  static const _linkLookupWithin = Duration(seconds: 5);
+
+  /// Where this device's halves sit in a call the learner moved (client#9173).
+  ///
+  /// HANDED OVER TO: set only on a predecessor that left because the call
+  /// moved on -- the sibling it moved to. A device that ended (nobody chose)
+  /// handed nothing over.
+  ///
+  /// CONTINUED FROM: set only when this account already has a half for this
+  /// call that says it was handed over to THIS device. Read from the room
+  /// rather than inferred, so a link is only ever written to a half that
+  /// exists: a race the other device rightly discarded leaves nothing to
+  /// point at, and a reader is never sent waiting for a half that will not
+  /// come.
+  Future<({String? continuedFrom, String? handedOverTo})> _resolveHalfLinks(
+    String? key,
+  ) async {
+    final handedOverTo = !call.carriedOn ? call.continuingOnDeviceId : null;
+    final me = _myUserId;
+    final device = room.client.deviceID;
+    String? continuedFrom;
+    if (key != null && me != null && device != null && call.sawSibling) {
+      try {
+        final fetch =
+            relatedEventsOverride ??
+            (String k, String rel) =>
+                _fetchRelated(relationsFetcherFor(room.client), k, rel);
+        final found = await Future.wait([
+          fetch(key, CallAudioContent.relType),
+          fetch(key, CallTranscriptContent.relType),
+        ]).timeout(_linkLookupWithin);
+        continuedFrom = handedOverFrom(
+          found.expand((events) => events),
+          me: me,
+          myDeviceId: device,
+        );
+      } catch (e, s) {
+        Logs().w('Could not look for the half this device continued', e, s);
+      }
+    }
+    return (continuedFrom: continuedFrom, handedOverTo: handedOverTo);
+  }
+
+  /// The device whose half says it handed this call over to [myDeviceId]:
+  /// one of [me]'s own halves, from a different device of the account.
+  @visibleForTesting
+  static String? handedOverFrom(
+    Iterable<MatrixEvent> events, {
+    required String me,
+    required String myDeviceId,
+  }) {
+    for (final event in events) {
+      if (event.senderId != me) continue;
+      final content = event.content;
+      final to = CallTranscriptContent.usableDeviceId(
+        content['handed_over_to'],
+      );
+      final from = CallTranscriptContent.usableDeviceId(content['device_id']);
+      if (to == myDeviceId && from != null && from != myDeviceId) return from;
+    }
+    return null;
+  }
+
+  CallKeyClock _buildKeyClock() {
+    final client = room.client;
+    final relations = relationsFetcherFor(client);
+    return CallKeyClock(
+      writeCallInProgress: (content) => client.setAccountDataPerRoom(
+        client.userID!,
+        room.id,
+        CallInProgress.type,
+        content,
+      ),
+      sendClock: (content, txnId) async {
+        // Same bytes, same transaction id, both attempts: a lost response
+        // whose event landed comes back as that event, not a second one.
+        for (var attempt = 0; attempt < 2; attempt++) {
+          final id = await room.sendEvent(
+            content,
+            type: CallClockContent.type,
+            txid: txnId,
+          );
+          if (id != null) return;
+        }
+        throw StateError('the call clock was not sent');
+      },
+      fetchClockEvents: (key) =>
+          _fetchRelated(relations, key, CallClockContent.type),
+      fetchEvent: room.getEventById,
+      clockArrivals: client.onTimelineEvent.stream.where(
+        (e) => e.room.id == room.id && e.type == CallClockContent.type,
+      ),
+      onEpoch: call.adoptCallEpoch,
+      dmMembers: () => {
+        if (_myUserId != null) _myUserId,
+        if (_peerUserId != null) _peerUserId,
+      },
+      callId: () => call.calls.currentCallId,
+    );
+  }
 
   /// The rule itself, pure so the glare arms can be pinned directly.
   @visibleForTesting
@@ -1507,6 +1815,7 @@ class CallSession extends ChangeNotifier {
   void _finish() {
     if (_over) return;
     _over = true;
+    if (_keyClockStarted) _keyClock.dispose();
     _endedAt = DateTime.now();
     _tick?.cancel();
     _tick = null;
@@ -1582,6 +1891,7 @@ class CallSession extends ChangeNotifier {
     // logout, a redial stepping over -- must not fire into a disposed one.
     _summaryHold?.cancel();
     _summaryHold = null;
+    if (_keyClockStarted) _keyClock.dispose();
     _finishRecording();
     // ActiveCall.dispose hangs up (idempotent), so a session discarded by its
     // holder — logout, app teardown — can never leave a call running headless.

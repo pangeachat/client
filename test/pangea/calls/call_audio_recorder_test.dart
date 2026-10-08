@@ -527,6 +527,24 @@ void main() {
       },
     );
 
+    test('a half in a call the learner moved carries its links', () async {
+      // client#9173: set by the session before finish, written into the
+      // audio half exactly as the transcript half carries them.
+      final r = recorder(
+        maxBytes: 60 * 1024 * 1024,
+        maxDuration: const Duration(minutes: 30),
+      );
+      r.halfLinks = (continuedFrom: 'PHONE', handedOverTo: 'TABLET');
+      r.onRunStarted(0, 16000, 1);
+      r.onFrame(_tone(160));
+      r.onRunEnded();
+      await r.finish(wasCarrier: true, callKey: _callKey);
+
+      final content = CallAudioContent.fromJson(sent.single)!;
+      expect(content.continuedFrom, 'PHONE');
+      expect(content.handedOverTo, 'TABLET');
+    });
+
     test('a ceiling-cut half is written with truncated: true', () async {
       // Same fixture as above: the cap genuinely forces a drop (two
       // one-second frames against a one-second cap), which is the ONE

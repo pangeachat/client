@@ -14,6 +14,7 @@ import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
+import 'package:fluffychat/routes/chat/calls/call_ownership.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
@@ -861,6 +862,23 @@ class ForgetfulClient extends Client {
   String? get deviceID => forgotDevice ? null : super.deviceID;
 }
 
+/// The arbiter's rule-5 verdict for a device that claimed and outlasted its
+/// bounded wait: unheld, carrying on, claim standing -- whatever the roster
+/// shows. See `buildElection`.
+class ResumedAsChosenOwnership extends CallOwnership {
+  @override
+  OwnershipDecision update({
+    required Set<String> presentSiblingIds,
+    required Set<String> silentSiblingIds,
+    required bool siblingClaimObserved,
+    required DateTime now,
+  }) => const OwnershipDecision(
+    resume: true,
+    announceChosen: true,
+    carriedOn: true,
+  );
+}
+
 void main() {
   setUpAll(sqfliteFfiInit);
 
@@ -893,6 +911,7 @@ void main() {
 
   Future<(ActiveCall, FakeCalls, FakeMedia, FakeCapture)> build({
     bool hasTrack = true,
+    CallOwnership? ownership,
   }) async {
     final calls = FakeCalls(await bareClient(), trace);
     final media = FakeMedia(trace, hasTrack: hasTrack);
@@ -905,12 +924,29 @@ void main() {
     media.fakeRoster = roster;
     calls.roster = roster;
     return (
-      ActiveCall(calls: calls, media: media, capture: capture),
+      ActiveCall(
+        calls: calls,
+        media: media,
+        capture: capture,
+        ownership: ownership,
+      ),
       calls,
       media,
       capture,
     );
   }
+
+  /// A device that is NOT held while its siblings are in the call: the state
+  /// the real arbiter reaches when this device claimed and its bounded wait
+  /// ran out with a sibling still listed (rule 5; pinned in
+  /// call_ownership_test "a claimed device unmutes at the bounded wait
+  /// regardless"). Since client#9173 a HELD device is frozen out of the
+  /// election, so this is the state in which the recorder election among
+  /// siblings -- who records, who hands over, whose tail is discarded -- still
+  /// decides anything, and the tests of that election run in it.
+  Future<(ActiveCall, FakeCalls, FakeMedia, FakeCapture)> buildElection({
+    bool hasTrack = true,
+  }) => build(hasTrack: hasTrack, ownership: ResumedAsChosenOwnership());
 
   matrix.Room roomStub(Client c) => matrix.Room(id: '!r:server', client: c);
 
@@ -1382,7 +1418,7 @@ void main() {
       // before the await would then latch this device's half for a stretch
       // the sibling now publishes -- the account credited twice for one
       // stretch, the duplicate the design forbids. The LIVE reason must win.
-      final (call, calls, _, capture) = await build();
+      final (call, calls, _, capture) = await buildElection();
       calls.remotePresent = true;
       // A sibling this device OUT-RANKS (a higher device id) is present from
       // the start, so this device records AND `hasSiblings` is true. The
@@ -3100,7 +3136,7 @@ void main() {
     });
 
     test('this one stops when a device sorting lower arrives', () async {
-      final (call, calls, _, _) = await build();
+      final (call, calls, _, _) = await buildElection();
       // A call has to have somebody on it to be recorded: nothing is
       // captured while it is still ringing.
       calls.remotePresent = true;
@@ -3140,7 +3176,7 @@ void main() {
     /// on to deliver the same stretch. Duplicate analytics is the one outcome
     /// the election exists to prevent.
     test('a device with no id stands aside rather than winning', () async {
-      final (call, calls, _, _) = await build();
+      final (call, calls, _, _) = await buildElection();
       final myDeviceId = calls.client.deviceID!;
       calls.remotePresent = true;
       calls.devicesInCall = [myDeviceId];
@@ -3195,7 +3231,7 @@ void main() {
       // A device can be displaced and reinstated faster than a flush completes.
       // Starting the new recording while the old stop is still unwinding would
       // let that stop cancel the new tap and close its sink underneath it.
-      final (call, calls, _, capture) = await build();
+      final (call, calls, _, capture) = await buildElection();
       // A call has to have somebody on it to be recorded: nothing is
       // captured while it is still ringing.
       calls.remotePresent = true;
@@ -3262,7 +3298,7 @@ void main() {
     test('a start that threw is retried by the next election', () async {
       // Recording state must follow what actually happened, not what was
       // intended, or a failed tap is remembered as open and never reattempted.
-      final (call, calls, _, capture) = await build();
+      final (call, calls, _, capture) = await buildElection();
       // A call has to have somebody on it to be recorded: nothing is
       // captured while it is still ringing.
       calls.remotePresent = true;
@@ -3316,7 +3352,7 @@ void main() {
     /// and anything that does is capability.
     Future<(ActiveCall, FakeCalls, FakeCapture)>
     recordingBesideAHigherSibling() async {
-      final (call, calls, _, capture) = await build();
+      final (call, calls, _, capture) = await buildElection();
       calls.remotePresent = true;
       calls.devicesInCall = [calls.client.deviceID!, 'zzzzzzzzzz'];
       await call.start(roomStub(calls.client), video: false);
@@ -3329,7 +3365,7 @@ void main() {
       // A trackless device used to leave the election before ranking, so it
       // published nothing and every sibling went on deferring to it on device
       // id -- and NOBODY recorded the call.
-      final (call, calls, _, _) = await build(hasTrack: false);
+      final (call, calls, _, _) = await buildElection(hasTrack: false);
       calls.remotePresent = true;
       calls.devicesInCall = [calls.client.deviceID!, 'zzzzzzzzzz'];
 
@@ -3442,7 +3478,9 @@ void main() {
       // An unmute republishes the audio track, so a device that connected
       // before its microphone was up has one only later. Read once at connect,
       // it stayed trackless -- and silent -- for the whole call.
-      final (call, calls, media, capture) = await build(hasTrack: false);
+      final (call, calls, media, capture) = await buildElection(
+        hasTrack: false,
+      );
       calls.remotePresent = true;
       calls.devicesInCall = [calls.client.deviceID!];
       await call.start(roomStub(calls.client), video: false);
@@ -3484,7 +3522,7 @@ void main() {
       // back. An earlier join stamp does not fill that in: it says the sibling
       // was in the ROOM first, and a device can sit in a call for a long time
       // before its first frame arrives.
-      final (call, calls, _, capture) = await build();
+      final (call, calls, _, capture) = await buildElection();
       calls.roster!.myJoin = (true, joinedAt);
       calls.roster!.joins = {
         '${calls.client.userID}:AAAAAAAAAA': (true, aSecondEarlier),
@@ -3510,7 +3548,7 @@ void main() {
       // fifteen seconds its own watchdog takes to fire. Reading that as "it
       // recorded" throws away the only copy of what the learner said, on
       // exactly the failure the watchdog exists to detect.
-      final (call, calls, _, capture) = await build();
+      final (call, calls, _, capture) = await buildElection();
       calls.roster!.myJoin = (true, joinedAt);
       calls.roster!.joins = {
         '${calls.client.userID}:AAAAAAAAAA': (true, aSecondEarlier),
@@ -3539,7 +3577,7 @@ void main() {
       Map<String, String> saying, {
       void Function(FakeCalls calls)? afterFirstFrame,
     }) async {
-      final (call, calls, _, capture) = await build();
+      final (call, calls, _, capture) = await buildElection();
       if (afterFirstFrame != null) {
         capture.afterFirstFrame = () => afterFirstFrame(calls);
       }
@@ -3691,7 +3729,7 @@ void main() {
       // and the earlier one, discarding on that equality, destroys nine hundred
       // milliseconds the other was never in the room for. The successor IS
       // recording here, which is the point: the join stamps are what refuse.
-      final (call, calls, _, capture) = await build();
+      final (call, calls, _, capture) = await buildElection();
       calls.roster!.myJoin = (true, joinedAt);
       calls.roster!.joins = {
         '${calls.client.userID}:AAAAAAAAAA': (true, joinedAt),
@@ -3725,7 +3763,7 @@ void main() {
       required int mineMs,
       bool siblingSentFineField = true,
     }) async {
-      final (call, calls, media, capture) = await build();
+      final (call, calls, media, capture) = await buildElection();
       const myIdentity = '@somebody:elsewhere:PHONE:2';
       final siblingIdentity = '${calls.client.userID}:zzzzzzzzzz';
       final secondsMs = joinedAt.millisecondsSinceEpoch;
@@ -3802,7 +3840,7 @@ void main() {
       // chain, so its stop can reach the flush while this election's reconcile
       // is still queued. A request made inside the reconcile would arrive after
       // the audio had already gone -- whatever its value would have been.
-      final (call, calls, _, capture) = await build();
+      final (call, calls, _, capture) = await buildElection();
       calls.roster!.myJoin = (true, joinedAt);
       calls.roster!.joins = {
         '${calls.client.userID}:AAAAAAAAAA': (true, aSecondEarlier),
@@ -3836,7 +3874,7 @@ void main() {
       // It was not in the call while we were recording, so nobody else holds
       // those words and discarding them destroys the only copy. It IS recording
       // now, which is the point: the join times are what refuse.
-      final (call, calls, _, capture) = await build();
+      final (call, calls, _, capture) = await buildElection();
       calls.roster!.myJoin = (true, joinedAt);
       calls.roster!.joins = {
         '${calls.client.userID}:AAAAAAAAAA': (
@@ -3861,7 +3899,7 @@ void main() {
       // another device recorded this stretch. Without the election gate a
       // higher-sorting sibling that merely joined earlier would silently drop
       // audio nobody else has.
-      final (call, calls, _, capture) = await build();
+      final (call, calls, _, capture) = await buildElection();
       calls.roster!.myJoin = (true, joinedAt);
       calls.roster!.joins = {
         '${calls.client.userID}:zzzzzzzzzz': (
@@ -3891,7 +3929,7 @@ void main() {
       // device that says it CANNOT record is certainly not one naming a run --
       // and whichever of two such devices the id hands the call to is recording
       // nothing. Dropping this tail destroys the only copy.
-      final (call, calls, _, capture) = await build();
+      final (call, calls, _, capture) = await buildElection();
       calls.roster!.myJoin = (true, joinedAt);
       calls.roster!.joins = {
         '${calls.client.userID}:AAAAAAAAAA': (true, aSecondEarlier),
@@ -3922,7 +3960,7 @@ void main() {
       // This device loses its tap and a sibling that has been idle all call
       // takes over. Whatever its join time says, it was not recording while the
       // learner was speaking here, and it has never said it was.
-      final (call, calls, _, capture) = await build();
+      final (call, calls, _, capture) = await buildElection();
       calls.roster!.myJoin = (true, joinedAt);
       calls.roster!.joins = {
         '${calls.client.userID}:zzzzzzzzzz': (
@@ -3988,7 +4026,7 @@ void main() {
       // Silence means nothing to a reader, so a device that is not recording
       // has to SAY it. Without this a sibling cannot tell an idle device from
       // one it has not heard from, and the two want opposite answers.
-      final (call, calls, _, _) = await build(hasTrack: false);
+      final (call, calls, _, _) = await buildElection(hasTrack: false);
       calls.roster!.myJoin = (true, joinedAt);
       calls.remotePresent = true;
       calls.devicesInCall = [calls.client.deviceID!];
@@ -4001,7 +4039,7 @@ void main() {
     });
 
     test('a recording device names its run', () async {
-      final (call, calls, _, _) = await build();
+      final (call, calls, _, _) = await buildElection();
       calls.roster!.myJoin = (true, joinedAt);
       calls.remotePresent = true;
       calls.devicesInCall = [calls.client.deviceID!];
@@ -4023,7 +4061,7 @@ void main() {
       // pass, so the capability write and the retraction are decided together.
       // Composed one at a time, the retraction goes out behind a whole signal
       // round trip -- and lands after the audio it describes has stopped.
-      final (call, calls, _, capture) = await build();
+      final (call, calls, _, capture) = await buildElection();
       calls.roster!.myJoin = (true, joinedAt);
       calls.roster!.joins = {
         '${calls.client.userID}:zzzzzzzzzz': (
@@ -4060,7 +4098,7 @@ void main() {
       // stop the audio before the "no" ever reaches the wire. In that window a
       // sibling reads a run this device no longer holds and destroys its own
       // tail for it.
-      final (call, calls, _, capture) = await build();
+      final (call, calls, _, capture) = await buildElection();
       calls.roster!.myJoin = (true, joinedAt);
       calls.roster!.joins = {
         '${calls.client.userID}:zzzzzzzzzz': (
@@ -4128,7 +4166,7 @@ void main() {
         // Run CONTINUITY across the sibling's presence is deliberately gone (the
         // hold muted this device meanwhile); the preserved invariant is that the
         // parked reconcile obeyed the reversal and left the survivor RECORDING.
-        final (call, calls, _, capture) = await build();
+        final (call, calls, _, capture) = await buildElection();
         calls.roster!.myJoin = (true, joinedAt);
         calls.remotePresent = true;
         // Alone: recording, and not held.
@@ -4180,7 +4218,7 @@ void main() {
       // holding the microphone open for a signal round trip would keep
       // recording audio after this device was told to stop -- which is the very
       // thing the stop was ordered for.
-      final (call, calls, _, capture) = await build();
+      final (call, calls, _, capture) = await buildElection();
       calls.roster!.myJoin = (true, joinedAt);
       calls.remotePresent = true;
       calls.devicesInCall = [calls.client.deviceID!];
@@ -4203,7 +4241,7 @@ void main() {
       // A mute is a gap in what this device holds. A sibling still reading the
       // run through it would drop its own tail believing this device had the
       // words spoken during the mute.
-      final (call, calls, _, _) = await build();
+      final (call, calls, _, _) = await buildElection();
       calls.roster!.myJoin = (true, joinedAt);
       calls.remotePresent = true;
       calls.devicesInCall = [calls.client.deviceID!];
@@ -4219,7 +4257,7 @@ void main() {
   });
 
   test('notifies listeners as the stage changes', () async {
-    final (call, calls, _, _) = await build();
+    final (call, calls, _, _) = await buildElection();
     var notifications = 0;
     call.addListener(() => notifications++);
     await call.start(roomStub(calls.client), video: false);
@@ -4416,7 +4454,7 @@ void main() {
       // The final step is the one a missing guard actually shows up in: every
       // earlier step is masked by the NEXT step's check, so only here can an
       // unguarded await let a torn-down call report itself connected.
-      final (call, calls, _, capture) = await build();
+      final (call, calls, _, capture) = await buildElection();
       final ringGate = Completer<void>();
       final stopGate = Completer<void>();
       calls.holdRing = ringGate;
@@ -5248,6 +5286,133 @@ void main() {
       // The survivor is still live -- end it so its presence timer is cancelled.
       await call.hangUp();
       await pumpEventQueue();
+    });
+
+    // client#9173: a HELD device is frozen out of the recorder election.
+    test('a held device keeps the recording it had when a sibling that sorts '
+        'lower arrives', () async {
+      final (call, calls, _, _) = await build();
+      calls.roster!.myJoin = (true, fakeJoinTime);
+      calls.remotePresent = true;
+      calls.devicesInCall = [calls.client.deviceID!];
+      await call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      expect(call.isRecording, isTrue);
+      trace.steps.clear();
+
+      calls.roster!.attributes = {
+        '${calls.client.userID}:AAAAAAAAAA': {CallRoster.chosenAttribute: 'no'},
+      };
+      await calls.participantsBecome(['AAAAAAAAAA', calls.client.deviceID!]);
+
+      expect(call.mediaHeld, isTrue);
+      expect(
+        call.isRecording,
+        isTrue,
+        reason: 'the stretch before the hold stays where it was captured',
+      );
+      expect(trace.steps, isNot(contains('capture.stop')));
+      await call.hangUp();
+      await pumpEventQueue();
+    });
+
+    test(
+      'a device joining beside a sibling is held from its first reading, '
+      'never records while held, and records once it is the one left',
+      () async {
+        final (call, calls, _, _) = await build();
+        calls.roster!.myJoin = (true, fakeJoinTime);
+        // The sibling sorts AFTER this device, so the election alone would have
+        // started recording here at once.
+        calls.roster!.attributes = {
+          '${calls.client.userID}:zzzzzzzzzz': {
+            CallRoster.chosenAttribute: 'no',
+          },
+        };
+        calls.remotePresent = true;
+        calls.devicesInCall = [calls.client.deviceID!, 'zzzzzzzzzz'];
+        await call.start(roomStub(calls.client), video: false);
+        await pumpEventQueue();
+
+        expect(call.mediaHeld, isTrue);
+        expect(call.isRecording, isFalse);
+        expect(trace.steps, isNot(contains('capture.start')));
+
+        await calls.participantsBecome([calls.client.deviceID!]);
+        expect(call.mediaHeld, isFalse);
+        expect(call.isRecording, isTrue, reason: 'it records on resume');
+        await call.hangUp();
+        await pumpEventQueue();
+      },
+    );
+
+    group('a predecessor', () {
+      const t0 = 1756468800000;
+
+      /// An answered call with the other person on it, then -- [siblingAfter]
+      /// past this device's own SFU join -- a sibling that claims the call.
+      Future<ActiveCall> movedAfter(
+        Duration siblingAfter, {
+        bool siblingAtStart = false,
+      }) async {
+        final (call, calls, media, _) = await build();
+        media.anchorClocksTo((secondsMs: t0, ms: 0));
+        calls.roster!.myJoin = (true, DateTime.fromMillisecondsSinceEpoch(t0));
+        final sibling = '${calls.client.userID}:SIB';
+        calls.roster!.joins = {
+          sibling: (
+            true,
+            DateTime.fromMillisecondsSinceEpoch(t0).add(siblingAfter),
+          ),
+        };
+        calls.roster!.attributes = {
+          sibling: {CallRoster.chosenAttribute: 'no'},
+        };
+        calls.remotePresent = true;
+        calls.devicesInCall = [
+          calls.client.deviceID!,
+          if (siblingAtStart) 'SIB',
+        ];
+        await call.start(roomStub(calls.client), video: false, answering: true);
+        await pumpEventQueue();
+        calls.devicesInCall = [calls.client.deviceID!, 'SIB'];
+        await pumpEventQueue();
+        calls.roster!.attributes = {
+          sibling: {CallRoster.chosenAttribute: 'yes'},
+        };
+        calls.roster!.recompute();
+        await pumpEventQueue();
+        await pumpEventQueue();
+        expect(call.outcome, CallOutcome.movedToOtherDevice);
+        return call;
+      }
+
+      test(
+        'is a device the call moved on from after the ring window',
+        () async {
+          final call = await movedAfter(const Duration(minutes: 3));
+          expect(call.carriedOn, isFalse);
+          expect(call.isPredecessor, isTrue);
+          expect(call.continuingOnDeviceId, 'SIB');
+        },
+      );
+
+      test('is NOT a device whose sibling joined inside the ring window: that '
+          'is an answer race', () async {
+        final call = await movedAfter(const Duration(seconds: 40));
+        expect(call.isPredecessor, isFalse);
+      });
+
+      test(
+        'is NOT a device that never talked before it saw the sibling',
+        () async {
+          final call = await movedAfter(
+            const Duration(minutes: 3),
+            siblingAtStart: true,
+          );
+          expect(call.isPredecessor, isFalse);
+        },
+      );
     });
   });
 }

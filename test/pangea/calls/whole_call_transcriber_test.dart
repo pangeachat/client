@@ -74,6 +74,10 @@ CallAudioMergedRecording _manifest({
     channels: 1,
     codec: 'pcm16',
     sourceEventIds: sourceEventIds,
+    // A trusted merge of the whole call (client#9173): starting where its
+    // placeable sources start and saying it mixed all of them.
+    mergedStartSfuMs: 1000,
+    complete: true,
   ),
 );
 
@@ -164,6 +168,7 @@ class _Harness {
 
   bool enabled = true;
   String selfUserId = _self;
+  String? selfDeviceId;
   Set<String> participants = const {_self, _peer};
 
   ManifestDiscoverer? discover;
@@ -176,6 +181,7 @@ class _Harness {
 
   WholeCallTranscriber build() => WholeCallTranscriber(
     selfUserId: selfUserId,
+    selfDeviceId: selfDeviceId,
     participants: participants,
     isEnabled: () => enabled,
     discover:
@@ -805,28 +811,36 @@ void main() {
   group('discoverWholeCallManifest', () {
     // A validated resolution carries senderId + content + originServerTs, so a
     // recording is built from it directly -- no second fetch.
-    AudioResolution validated(String device, [int ts = 1000]) =>
-        AudioResolution.resolved(
-          _peer,
-          _content(deviceId: device),
-          DateTime.fromMillisecondsSinceEpoch(ts),
-        );
+    AudioResolution validated(
+      String device, {
+      String sender = _peer,
+      int ts = 1000,
+    }) => AudioResolution.resolved(
+      sender,
+      _content(
+        deviceId: device,
+        clockAnchor: const ClockAnchor(sfuMs: 1000, deviceMs: 1000),
+        offset: 0,
+      ),
+      DateTime.fromMillisecondsSinceEpoch(ts),
+    );
 
     test(
       'selects the reader-order winner on a coverage tie, not list order',
       () async {
-        // Two equal-coverage manifests; the earlier-ts one wins the shared total
-        // order, so the recording returned is ITS source, not the first in list.
+        // Two equal-coverage manifests, each a whole call; the earlier-ts one
+        // wins the shared total order, so the recordings returned are ITS
+        // sources, not the first in list.
         final manifest = await discoverWholeCallManifest(
           mergedRecordings: [
             _manifest(
               eventId: '\$mLate',
-              sourceEventIds: ['\$srcLate'],
+              sourceEventIds: ['\$srcLate', '\$srcLateSelf'],
               ts: 2000,
             ),
             _manifest(
               eventId: '\$mEarly',
-              sourceEventIds: ['\$srcEarly'],
+              sourceEventIds: ['\$srcEarly', '\$srcEarlySelf'],
               ts: 1000,
             ),
           ],
@@ -834,11 +848,16 @@ void main() {
           callKey: _callKey,
           resolve: _fakeResolver({
             '\$srcLate': validated('devLate'),
+            '\$srcLateSelf': validated('devLateSelf', sender: _self),
             '\$srcEarly': validated('devEarly'),
+            '\$srcEarlySelf': validated('devEarlySelf', sender: _self),
           }),
         );
         expect(manifest.resolved, isTrue);
-        expect(manifest.recordings.single.eventId, '\$srcEarly');
+        expect(manifest.recordings.map((r) => r.eventId).toSet(), {
+          '\$srcEarly',
+          '\$srcEarlySelf',
+        });
       },
     );
 
@@ -857,7 +876,7 @@ void main() {
           participants: const {_self, _peer},
           callKey: _callKey,
           resolve: _fakeResolver({
-            '\$srcA': validated('devA'),
+            '\$srcA': validated('devA', sender: _self),
             '\$srcB': validated('devB'),
           }),
         );
@@ -892,5 +911,55 @@ void main() {
         expect(manifest.recordings, isEmpty);
       },
     );
+  });
+
+  group('a call the learner moved between devices (client#9173)', () {
+    test("the account's OTHER device's recording is recovered; this device's "
+        'own is not', () async {
+      final h = _Harness()
+        ..selfDeviceId = 'MYDEV'
+        ..discover = (_) async => WholeCallManifest(
+          resolved: true,
+          recordings: [
+            _rec(
+              eventId: r'$own',
+              senderId: _self,
+              content: _content(deviceId: 'MYDEV'),
+            ),
+            _rec(
+              eventId: r'$moved_from',
+              senderId: _self,
+              content: _content(deviceId: 'OLDDEV'),
+            ),
+            _rec(),
+          ],
+        );
+      await h.build().transcribeAtCallEnd(_callKey);
+
+      expect(h.posts.map((p) => (p.spokenBy, p.sourceAudioEventId)).toSet(), {
+        (_self, r'$moved_from'),
+        (_peer, _peerAudioId),
+      });
+    });
+
+    test("a speaker's half from one device does not stand in for their "
+        "recording from another", () async {
+      final h = _Harness()
+        ..readTranscript = ((_) async => _transcript(peerAuthentic: true))
+        ..discover = (_) async => WholeCallManifest(
+          resolved: true,
+          recordings: [
+            _rec(),
+            _rec(
+              eventId: r'$peer_second',
+              content: _content(deviceId: 'PEER2'),
+            ),
+          ],
+        );
+      await h.build().transcribeAtCallEnd(_callKey);
+
+      expect(h.posts.map((p) => p.sourceAudioEventId), [r'$peer_second']);
+      expect(h.posts.single.deviceId, 'PEER2');
+    });
   });
 }

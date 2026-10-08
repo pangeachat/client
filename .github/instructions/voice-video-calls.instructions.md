@@ -141,9 +141,7 @@ armed, and the other side hangs up on a live call seconds later. The call's
 identity and the membership currently carrying it are two different things, and
 only the first survives a rejoin.
 
-The clock a rejoined session shows continues the call rather than restarting. The
-two sides read their own local starts, so they agree to within however differently
-the SFU delivered one roster change, not exactly.
+The clock both people watch is the call's, not each device's. When both people are first in the call, one device writes that moment once, on the SFU's clock: the device whose own membership is the call's key, or failing that a device on the other account after half a minute. Every device converts that one moment through its own measured offset from the SFU, so a peer, a second device and a rejoined device all read the same elapsed time without comparing two device clocks. Until it is read, a device forms the same moment from the join stamps it can see, and only when it cannot does it count from first seeing the other person.
 
 ## What the conversation records
 
@@ -227,6 +225,8 @@ metadata. A half's event therefore stays small enough to ride the timeline while
 the audio is fetched on demand rather than pushed through every sync, and the
 recording inherits the retention already disclosed for voice messages. The merged
 full-call recording is one more such upload, referenced the same way.
+
+A call the learner moved between their devices leaves one speaker a recording on each device, each naming the device it came from and the one it went to. The full-call recording is made only from the whole call: both people, every device each used, linked in order. One of the devices the call ended on mixes it, and it cuts each moved-from recording where the next device began. A full-call recording that covers less than the whole call, cannot vouch for every recording it names, or does not say it is complete is never shown, never stops another device from making the true one, and never anchors a transcript. Two recordings from one person that are not linked mean two devices both carried on; that call keeps its separate recordings and gets no full-call recording.
 
 The recording-based pass is on by default. `CALL_RECORDING_TRANSCRIPT=false` is
 its kill switch: with it set, each half is the live one transcribed during the

@@ -65,6 +65,8 @@ MatrixEvent _half(
   String codec = kCallAudioCodec,
   int channels = 1,
   DateTime? ts,
+  String? from,
+  String? to,
 }) => MatrixEvent(
   type: CallAudioContent.relType,
   eventId: eventId,
@@ -73,6 +75,8 @@ MatrixEvent _half(
   content: CallAudioContent(
     callKey: callKey,
     deviceId: device,
+    continuedFrom: from,
+    handedOverTo: to,
     url: 'mxc://example.com/audio_$device',
     mimetype: 'audio/wav',
     size: 4096,
@@ -119,7 +123,10 @@ class _Backend {
         );
   }
 
-  void addMergedEvent(String callKey) {
+  void addMergedEvent(
+    String callKey, {
+    List<String> sources = const [_aliceEvent, _bobEvent],
+  }) {
     final content = CallAudioMergedContent(
       callKey: callKey,
       url: 'mxc://example.com/merged',
@@ -129,7 +136,11 @@ class _Backend {
       sampleRate: 48000,
       channels: 1,
       codec: kCallAudioCodec,
-      sourceEventIds: const [_aliceEvent, _bobEvent],
+      sourceEventIds: sources,
+      // A trusted merge of the plain call the default halves make: starting
+      // where they start, and saying it mixed all of it (client#9173).
+      mergedStartSfuMs: 1000,
+      complete: true,
     ).toJson();
     addMergedContent(callKey, content);
   }
@@ -252,6 +263,7 @@ class _Harness {
       mix: _mix,
       index: index,
       isDmRoom: isDmRoom ?? (_) => true,
+      participants: (_) => const {_alice, _bob},
       myUserId: () => myUserId,
       myDeviceId: () => myDeviceId,
       clock: scheduler.now,
@@ -313,7 +325,9 @@ class _Harness {
     if (err != null) throw err;
     return CallAudioMergeResult(
       wav: Uint8List.fromList(List<int>.filled(16, 7)),
-      durationMs: 1000,
+      // As long as the default halves' span, as a real mix of them is: a
+      // shorter one could not be a merge of the whole call.
+      durationMs: 30000,
       sampleRate: 48000,
       channels: 1,
       sourceCoverage: request.sources.map((s) => s.senderId).toList()..sort(),
@@ -573,8 +587,9 @@ void main() {
     });
   });
 
-  group('a call with more than two halves', () {
-    test('retires terminal, no post', () async {
+  group('who is part of the call (client#9173)', () {
+    test('a half from someone outside the chat is not part of it: the two '
+        "participants' halves are merged", () async {
       final scheduler = freshClock();
       final backend = _Backend()
         ..setHalves(_callKey, [
@@ -593,12 +608,112 @@ void main() {
       h.coordinator.onCallFinished(_room, _callKey, _alice, _deviceA);
       await _pump();
 
-      expect(h.sendCalls, isEmpty);
-      expect(
-        await h.entry(_callKey),
-        isNull,
-        reason: 'terminal: removed from index',
+      expect(h.sendCalls, hasLength(1));
+      expect(h.sendCalls.single.content['source_event_ids'], [
+        _aliceEvent,
+        _bobEvent,
+      ]);
+    });
+
+    test(
+      'two unchained halves from one speaker retire terminal, no post',
+      () async {
+        final scheduler = freshClock();
+        final backend = _Backend()
+          ..setHalves(_callKey, [
+            _half(_alice, _deviceA, eventId: _aliceEvent),
+            _half(_alice, 'A2', eventId: '\$alice_half_2:example.com'),
+            _half(_bob, _deviceB, eventId: _bobEvent),
+          ]);
+        final h = _Harness(
+          backend: backend,
+          scheduler: scheduler,
+          index: await _newIndex(scheduler),
+          myUserId: _alice,
+          myDeviceId: _deviceA,
+        );
+
+        h.coordinator.onCallFinished(_room, _callKey, _alice, _deviceA);
+        await _pump();
+
+        expect(h.sendCalls, isEmpty);
+        expect(
+          await h.entry(_callKey),
+          isNull,
+          reason: 'terminal: removed from index',
+        );
+      },
+    );
+  });
+
+  group('a call the learner moved between devices (client#9173)', () {
+    List<MatrixEvent> moved() => [
+      _half(_alice, _deviceA, eventId: _aliceEvent, to: 'A2'),
+      _half(
+        _alice,
+        'A2',
+        eventId: '\$alice_half_2:example.com',
+        from: _deviceA,
+        fileStartSfuMs: 5000,
+      ),
+      _half(_bob, _deviceB, eventId: _bobEvent),
+    ];
+
+    test('the device it moved TO mixes every half, cutting the one it moved '
+        'from where it took over, and says the merge is complete', () async {
+      final scheduler = freshClock();
+      final backend = _Backend()..setHalves(_callKey, moved());
+      final h = _Harness(
+        backend: backend,
+        scheduler: scheduler,
+        index: await _newIndex(scheduler),
+        myUserId: _alice,
+        myDeviceId: 'A2',
       );
+
+      h.coordinator.onCallFinished(_room, _callKey, _alice, 'A2');
+      await _pump();
+
+      final sources = h.mixCalls.single.sources;
+      expect(sources, hasLength(3));
+      expect(
+        sources.map((s) => s.trimEndSfuMs),
+        containsAll(<int?>[5000, null, null]),
+      );
+      final cut = sources.singleWhere((s) => s.trimEndSfuMs != null);
+      expect(
+        (cut.senderId, cut.fileStartSfuMs),
+        (_alice, 1000),
+        reason: 'the moved-from half -- alice on A1 -- is the one cut',
+      );
+      final sent = h.sendCalls.single.content;
+      expect(sent['complete'], isTrue);
+      expect(sent['merged_start_sfu_ms'], 1000);
+      expect(sent['source_event_ids'], [
+        r'$alice_half:example.com',
+        r'$alice_half_2:example.com',
+        r'$bob_half:example.com',
+      ], reason: 'every half of the call, once each');
+    });
+
+    test('the device it moved FROM never mixes', () async {
+      final scheduler = freshClock();
+      final backend = _Backend()..setHalves(_callKey, moved());
+      final h = _Harness(
+        backend: backend,
+        scheduler: scheduler,
+        index: await _newIndex(scheduler),
+        myUserId: _alice,
+        myDeviceId: _deviceA,
+      );
+
+      h.coordinator.onCallFinished(_room, _callKey, _alice, _deviceA);
+      await _pump();
+      await scheduler.elapse(_baseBackoff * 4);
+      await _pump();
+
+      expect(h.mixCalls, isEmpty);
+      expect(h.sendCalls, isEmpty);
     });
   });
 
@@ -717,7 +832,7 @@ void main() {
   });
 
   group('a merged event mid-backoff', () {
-    test('cancels the wait and aborts the attempt', () async {
+    test('a TRUSTED merge cancels the wait and retires the call', () async {
       final scheduler = freshClock();
       final backend = _Backend()
         ..setHalves(_callKey, [
@@ -734,7 +849,9 @@ void main() {
 
       h.coordinator.onCallFinished(_room, _callKey, _bob, _deviceB);
       await _pump();
-      // Parked on the rank-1 backoff.
+      // Parked on the rank-1 backoff; another device's merge of the whole
+      // call lands.
+      backend.addMergedEvent(_callKey);
       h.coordinator.onSyncedMergedEvent(_room, _callKey);
       await _pump();
       await scheduler.elapse(_baseBackoff * 2);
@@ -748,6 +865,33 @@ void main() {
         isNull,
         reason: 'retired by the merged event',
       );
+    });
+
+    test('a merge that covers less than the whole call retires nothing: the '
+        'call is still merged', () async {
+      final scheduler = freshClock();
+      final backend = _Backend()
+        ..setHalves(_callKey, [
+          _half(_alice, _deviceA, eventId: _aliceEvent),
+          _half(_bob, _deviceB, eventId: _bobEvent),
+        ]);
+      final h = _Harness(
+        backend: backend,
+        scheduler: scheduler,
+        index: await _newIndex(scheduler),
+        myUserId: _bob,
+        myDeviceId: _deviceB,
+      );
+
+      h.coordinator.onCallFinished(_room, _callKey, _bob, _deviceB);
+      await _pump();
+      backend.addMergedEvent(_callKey, sources: const [_aliceEvent]);
+      h.coordinator.onSyncedMergedEvent(_room, _callKey);
+      await _pump();
+      await scheduler.elapse(_baseBackoff * 2);
+      await _pump();
+
+      expect(h.sendCalls, hasLength(1), reason: 'the partial merge is not it');
     });
   });
 
@@ -763,10 +907,10 @@ void main() {
           _half(_bob, _deviceB, eventId: _bobEvent),
         ])
         ..setHalves('\$call2', [
-          _half(_alice, _deviceA, eventId: '\$a2'),
-          _half(_bob, _deviceB, eventId: '\$b2'),
+          _half(_alice, _deviceA, eventId: '\$a2', callKey: '\$call2'),
+          _half(_bob, _deviceB, eventId: '\$b2', callKey: '\$call2'),
         ])
-        ..addMergedEvent('\$call2');
+        ..addMergedEvent('\$call2', sources: const ['\$a2', '\$b2']);
       backend.beforeFetch = (relType, callKey) async {
         started.add(callKey);
         if (callKey == _callKey && relType == CallAudioMergedContent.relType) {
@@ -1057,7 +1201,8 @@ void main() {
       },
     );
 
-    test('an aborted attempt does not run a coalesced re-pass', () async {
+    test('a merge arriving mid-pass makes the attempt decide again, and a '
+        'trusted one retires it with no post', () async {
       final scheduler = freshClock();
       final gate = Completer<void>();
       var mergedFetches = 0;
@@ -1085,31 +1230,23 @@ void main() {
       await _pump();
       expect(mergedFetches, 1, reason: 'pass 1 parked on its first fetch');
 
-      // A merged-event ABORT (which removes the index entry) and a dirty-setting
-      // coalescing trigger both land during the parked pass. The abort must win:
-      // the runner must run NO coalesced re-pass. onReconnected is the
-      // dirty-setter here rather than onSyncedCallAudio precisely because it sets
-      // `dirty` WITHOUT itself recreating the index -- so the index-entry check
-      // below isolates the runner's `_superseded`-aware dirty-loop guard: without
-      // it, the coalesce would re-enter `_onePass`, whose top-of-pass
-      // `_keepPending` would RECREATE the just-removed entry with a fresh
-      // firstSeenAt (the per-pass `_superseded` check alone would not stop that,
-      // because it runs AFTER `_keepPending`).
+      // Another device's merge of the whole call lands while the pass is
+      // parked. It does not cut the attempt short blindly (a merge may cover
+      // less than the call, client#9173): the attempt decides again, finds
+      // the merge trusted, and retires the call.
+      backend.addMergedEvent(_callKey);
       h.coordinator.onSyncedMergedEvent(_room, _callKey);
-      h.coordinator.onReconnected();
       await _pump();
 
       gate.complete();
       await _pump();
 
-      expect(h.sendCalls, isEmpty, reason: 'aborted: no post from a re-pass');
-      expect(mergedFetches, 1, reason: 'no second fetch after the abort');
+      expect(h.sendCalls, isEmpty, reason: 'retired: no post');
+      expect(mergedFetches, 2, reason: 'it decided again, once');
       expect(
         await index.read('$_room|$_callKey'),
         isNull,
-        reason:
-            'the merged-event removal stays removed -- the aborted attempt runs '
-            'no re-pass whose _keepPending would recreate the entry',
+        reason: 'retired by the trusted merge',
       );
     });
   });
