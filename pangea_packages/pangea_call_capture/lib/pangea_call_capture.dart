@@ -110,7 +110,8 @@ class PangeaCallCapture {
                 // Read tolerantly, unlike the two above: those are the frame
                 // itself and a frame we cannot interpret is not a frame, while
                 // this is an additional statement a platform may not make.
-                droppedMs: map['droppedMs'] is int ? map['droppedMs'] as int : 0,
+                droppedMs:
+                    map['droppedMs'] is int ? map['droppedMs'] as int : 0,
               ),
             );
           },
@@ -242,5 +243,78 @@ class CallForegroundControl {
   void clearActionHandler(int epoch) {
     if (epoch != _actionEpoch) return;
     _control.setMethodCallHandler(null);
+  }
+}
+
+/// What became of a ring the platform rang.
+enum RingOutcome { ringing, answered, declined, ended, failed }
+
+/// Rings for an incoming call while the app is closed. Android only.
+///
+/// The push handler rings and then watches, reading [outcome] beside the
+/// server until the call no longer wants this phone. The app, once open,
+/// claims the rings the learner answered from the notification and stops a
+/// ring its own prompt has taken over.
+///
+/// Its own channel: the Dart side of the call's channel has one handler slot,
+/// and the ongoing call owns it.
+class IncomingCallRinger {
+  static const MethodChannel _ring = MethodChannel('pangea.chat/call_ring');
+
+  const IncomingCallRinger();
+
+  /// Starts ringing. False when the platform refused, which the caller
+  /// degrades to an ordinary notification rather than to nothing.
+  ///
+  /// [payload] travels back unchanged when the learner answers, so the app
+  /// can find the call. [channelName] is the name the system shows for the
+  /// ringing channel, which this package cannot translate itself.
+  Future<bool> ring({
+    required String ringId,
+    required String caller,
+    required bool video,
+    required DateTime expiresAt,
+    required String channelName,
+    required String payload,
+  }) async =>
+      await _ring.invokeMethod<bool>('ring', {
+        'ringId': ringId,
+        'caller': caller,
+        'video': video,
+        'expiresAt': expiresAt.millisecondsSinceEpoch,
+        'channel': channelName,
+        'payload': payload,
+      }) ??
+      false;
+
+  /// What became of [ringId], or null when this process never rang it.
+  Future<RingOutcome?> outcome(String ringId) async {
+    final name = await _ring.invokeMethod<String>('outcome', {
+      'ringId': ringId,
+    });
+    for (final outcome in RingOutcome.values) {
+      if (outcome.name == name) return outcome;
+    }
+    return null;
+  }
+
+  Future<void> stop(String ringId) =>
+      _ring.invokeMethod<void>('stop', {'ringId': ringId});
+
+  /// Hands each ring the learner answered from the notification to [handle],
+  /// as the payload it was rung with, including any answered before this was
+  /// called -- the app is usually being opened BY the answer.
+  void onAnswered(void Function(String payload) handle) {
+    _ring.setMethodCallHandler((call) async {
+      if (call.method == 'answered' && call.arguments is String) {
+        handle(call.arguments as String);
+      }
+      return null;
+    });
+    unawaited(
+      _ring.invokeMethod<void>('claim_answers').catchError((Object e) {
+        debugPrint('Could not claim answered rings: $e');
+      }),
+    );
   }
 }
