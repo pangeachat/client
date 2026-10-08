@@ -12,14 +12,12 @@ import 'package:fluffychat/widgets/pangea_search_bar.dart';
 /// [onClose] so the field's close control also collapses the row).
 class PangeaChatListSearchField extends StatefulWidget {
   final ChatListController controller;
-  final bool globalSearch;
   final bool autofocus;
   final VoidCallback? onClose;
 
   const PangeaChatListSearchField({
     super.key,
     required this.controller,
-    this.globalSearch = true,
     this.autofocus = false,
     this.onClose,
   });
@@ -57,8 +55,7 @@ class _PangeaChatListSearchFieldState extends State<PangeaChatListSearchField> {
         duration: FluffyThemes.animationDuration,
         child: PangeaSearchBar(
           controller: controller.searchController,
-          onChanged: (text) =>
-              controller.onSearchEnter(text, globalSearch: widget.globalSearch),
+          onChanged: controller.onSearchEnter,
           labelText: L10n.of(context).searchChatsHint,
           focusNode: controller.searchFocusNode,
           autofocus: widget.autofocus,
@@ -84,14 +81,12 @@ class _PangeaChatListSearchFieldState extends State<PangeaChatListSearchField> {
 class PangeaChatListHeader extends StatelessWidget
     implements PreferredSizeWidget {
   final ChatListController controller;
-  final bool globalSearch;
   final bool showSearch;
 
   const PangeaChatListHeader({
     super.key,
     required this.controller,
     required this.showSearch,
-    this.globalSearch = true,
   });
 
   @override
@@ -99,10 +94,7 @@ class PangeaChatListHeader extends StatelessWidget
     return SliverList(
       delegate: SliverChildListDelegate([
         showSearch
-            ? PangeaChatListSearchField(
-                controller: controller,
-                globalSearch: globalSearch,
-              )
+            ? PangeaChatListSearchField(controller: controller)
             : const SizedBox.shrink(),
       ]),
     );
