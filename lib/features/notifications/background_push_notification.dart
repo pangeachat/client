@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:ui';
 
@@ -67,20 +68,22 @@ class BackgroundPushNotification {
       if (accounts.isNotEmpty) {
         final httpClient = http.Client();
         try {
+          final isRing = data['type'] == PangeaEventTypes.callNotification;
           resolved = await _resolve(
             httpClient,
             accounts,
             roomId,
             _string(data['sender']),
+            // A ring has to start within the few seconds Android allows a
+            // push to start one, and the ringing notification draws no
+            // avatar, so it does not wait on one.
+            withAvatar: !isRing,
           );
           final session = resolved.session;
-          if (data['type'] == PangeaEventTypes.callNotification &&
-              session != null &&
-              eventId != null) {
+          if (isRing && session != null && eventId != null) {
             ring = await _ring(httpClient, session, roomId, eventId);
             if (ring != null &&
                 await _ringAndWatch(
-                  httpClient,
                   session,
                   ring,
                   roomId,
@@ -158,8 +161,9 @@ class BackgroundPushNotification {
     http.Client httpClient,
     List<_PushAccount> accounts,
     String roomId,
-    String? sender,
-  ) async {
+    String? sender, {
+    bool withAvatar = true,
+  }) async {
     _PushAccount? member;
     String? url;
     for (final account in accounts) {
@@ -179,7 +183,7 @@ class BackgroundPushNotification {
     }
 
     final session = (member ?? accounts.first).session;
-    if (url == null && sender != null) {
+    if (withAvatar && url == null && sender != null) {
       final response = await _get(
         httpClient,
         session,
@@ -193,7 +197,9 @@ class BackgroundPushNotification {
     final single = accounts.length == 1 ? accounts.single : null;
     return _ResolvedPush(
       clientName: member?.clientName ?? single?.clientName,
-      avatar: url == null ? null : await _download(httpClient, session, url),
+      avatar: !withAvatar || url == null
+          ? null
+          : await _download(httpClient, session, url),
       session: member?.session ?? single?.session,
     );
   }
@@ -244,33 +250,47 @@ class BackgroundPushNotification {
   /// How often a ringing phone checks whether the call still wants it.
   static const _watchEvery = Duration(seconds: 2);
 
-  /// Rings for [ring] and watches it as the banner would, returning once the
-  /// phone has stopped.
+  /// Rings for [ring] and watches it as the banner would.
   ///
-  /// True when nothing more should be shown: the phone rang, or the call no
-  /// longer wants it. False when the platform would not ring, and an ordinary
-  /// notification has to say it instead.
+  /// True when nothing more should be shown: the phone is ringing, or the
+  /// call no longer wants it. False when the platform would not ring, and an
+  /// ordinary notification has to say it instead.
+  ///
+  /// Returns once ringing has started. The watch goes on until the phone has
+  /// stopped, handed to [watching], and is not awaited by default: the push
+  /// handler runs one message at a time, so a ring watched to its end would
+  /// hold every other notification behind it for as long as it rang.
   static Future<bool> _ringAndWatch(
-    http.Client httpClient,
     SessionBackup session,
     IncomingRing ring,
     String roomId,
     String payload, {
     required String? caller,
     required String channelName,
+    http.Client? httpClient,
     IncomingCallRinger ringer = const IncomingCallRinger(),
     Duration every = _watchEvery,
+    void Function(Future<void> watched) watching = unawaited,
   }) async {
     final ringId = ring.event.eventId;
     if (!ring.shouldRing(DateTime.now())) {
       Logs().i('[Push] Ring $ringId no longer rings here; not showing it');
       return true;
     }
-    final watch = _RingWatch(httpClient, session, ring, roomId);
+    // The watch outlives the push that started it, so it has its own client.
+    final client = httpClient ?? http.Client();
+    void release() {
+      if (httpClient == null) client.close();
+    }
+
+    final watch = _RingWatch(client, session, ring, roomId);
     // Asked before ringing as well as during. A ring read back after the
     // caller gave up, or after another device answered, is a call that is
     // already over -- the rule the app applies to a ring it missed.
-    if (await watch.over()) return true;
+    if (await watch.over()) {
+      release();
+      return true;
+    }
     try {
       final rang = await ringer.ring(
         ringId: ringId,
@@ -282,20 +302,28 @@ class BackgroundPushNotification {
       );
       if (!rang) {
         Logs().w('[Push] The platform would not ring for $ringId');
+        release();
         return false;
       }
     } catch (e, s) {
       Logs().w('[Push] Could not ring for $ringId', e, s);
+      release();
       return false;
     }
-    try {
-      await watch.until(ringer, every);
-    } catch (e, s) {
-      // The ring stops either way: a phone that can no longer tell whether
-      // the call wants it must not go on ringing for one taken elsewhere.
-      Logs().e('[Push] Stopped watching ring $ringId', e, s);
-      await ringer.stop(ringId);
-    }
+    watching(() async {
+      try {
+        await watch.until(ringer, every);
+      } catch (e, s) {
+        // The ring stops either way: a phone that can no longer tell whether
+        // the call wants it must not go on ringing for one taken elsewhere.
+        Logs().e('[Push] Stopped watching ring $ringId', e, s);
+        await ringer.stop(ringId).catchError((Object e, StackTrace s) {
+          Logs().e('[Push] Could not stop ring $ringId', e, s);
+        });
+      } finally {
+        release();
+      }
+    }());
     return true;
   }
 
@@ -307,17 +335,23 @@ class BackgroundPushNotification {
     required String roomId,
     required IncomingCallRinger ringer,
     required Duration every,
-  }) => _ringAndWatch(
-    httpClient,
-    session,
-    ring,
-    roomId,
-    'payload',
-    caller: 'Teacher',
-    channelName: 'Incoming call',
-    ringer: ringer,
-    every: every,
-  );
+  }) async {
+    Future<void>? watched;
+    final handled = await _ringAndWatch(
+      session,
+      ring,
+      roomId,
+      'payload',
+      caller: 'Teacher',
+      channelName: 'Incoming call',
+      httpClient: httpClient,
+      ringer: ringer,
+      every: every,
+      watching: (watch) => watched = watch,
+    );
+    await watched;
+    return handled;
+  }
 
   static Future<http.Response?> _put(
     http.Client httpClient,
