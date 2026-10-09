@@ -39,7 +39,11 @@ enum NetworkHostCategory {
   /// The domains IT staff must allow for this category to work.
   List<String> get allowlistDomains => switch (this) {
     chatServer => [_withScheme(Environment.synapseURL).host],
-    pangeaApi => [_withScheme(Environment.choreoApi).host],
+    // The CMS host may be its own (CMS_API); the set folds it when it isn't.
+    pangeaApi => {
+      _withScheme(Environment.choreoApi).host,
+      _withScheme(Environment.cmsApi).host,
+    }.toList(),
     images => [AppConfig.contentCdnHost],
     video => [
       'youtube-nocookie.com',

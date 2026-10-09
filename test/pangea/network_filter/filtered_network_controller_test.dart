@@ -23,6 +23,7 @@ import '../sentry_capture_harness.dart';
 void main() {
   const chatHost = 'matrix.example.test';
   const apiHost = 'api.example.test';
+  const cmsHost = 'cms.example.test';
   final neutralHosts = NetworkProbe.neutralUrls.map((url) => url.host).toSet();
 
   final controller = FilteredNetworkController.instance;
@@ -48,6 +49,7 @@ void main() {
       mergeWith: {
         'SYNAPSE_URL': 'https://$chatHost',
         'CHOREO_API': 'https://$apiHost',
+        'CMS_API': 'https://$cmsHost',
       },
     );
   });
@@ -219,6 +221,42 @@ void main() {
     },
   );
 
+  test(
+    'a TLS failure, which package:http does not wrap, also starts a check',
+    () async {
+      final url = Uri.https(apiHost, '/choreo/tokenize');
+      answers[apiHost] = NetworkProbeResult.refused;
+
+      await expectLater(
+        controller.observe(
+          url,
+          Future<void>.error(
+            const HandshakeException('CERTIFICATE_VERIFY_FAILED'),
+          ),
+        ),
+        throwsA(isA<HandshakeException>()),
+      );
+      await settle();
+
+      expect(controller.blocked.value, {NetworkHostCategory.pangeaApi});
+    },
+  );
+
+  test('any other error passes through without a check', () async {
+    final url = Uri.https(apiHost, '/choreo/tokenize');
+
+    await expectLater(
+      controller.observe(
+        url,
+        Future<void>.error(const FormatException('bad json')),
+      ),
+      throwsA(isA<FormatException>()),
+    );
+    await settle();
+
+    expect(probedHosts, isEmpty);
+  });
+
   group('the report', () {
     late SentryCaptureHarness harness;
 
@@ -251,6 +289,7 @@ void main() {
 
   test('the IT list names every host the app needs', () {
     final domains = NetworkHostCategory.allAllowlistDomains;
+    expect(domains, contains(cmsHost));
     for (final category in NetworkHostCategory.values) {
       expect(
         domains,

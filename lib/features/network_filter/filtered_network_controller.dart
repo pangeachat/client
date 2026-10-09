@@ -13,6 +13,9 @@ import 'package:fluffychat/features/network_filter/network_type.dart';
 import 'package:fluffychat/features/network_filter/network_verdict.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
+import 'package:fluffychat/features/network_filter/tls_failure/tls_failure_stub.dart'
+    if (dart.library.io) 'package:fluffychat/features/network_filter/tls_failure/tls_failure_io.dart';
+
 /// Which host categories the current network blocks, and the checks that
 /// decide it. See filtered-network.instructions.md.
 ///
@@ -83,12 +86,14 @@ class FilteredNetworkController {
   }
 
   /// Runs [request] to [url], noting whether it reached a server. A
-  /// [http.ClientException] is a request that got no response at all.
+  /// [http.ClientException] or a TLS failure is a request that got no
+  /// response from our server at all.
   Future<T> observe<T>(Uri url, Future<T> request) async {
     final T response;
     try {
       response = await request;
-    } on http.ClientException {
+    } catch (e) {
+      if (e is! http.ClientException && !isTlsFailure(e)) rethrow;
       _note(() => onRequestFailed(url));
       rethrow;
     }
@@ -157,17 +162,29 @@ class FilteredNetworkController {
     if (blocked.value.contains(category)) return;
     _firstBlockedAt[category] ??= DateTime.now();
     blocked.value = {...blocked.value, category};
-    _networkChanges ??= onNetworkChanged().listen((_) => _recheckBlocked());
+    updateNetworkWatch();
     unawaited(_report(category, needed));
   }
 
   void _clear(NetworkHostCategory category) {
     if (!blocked.value.contains(category)) return;
     blocked.value = {...blocked.value}..remove(category);
-    if (blocked.value.isNotEmpty) return;
+    updateNetworkWatch();
+  }
+
+  /// Listens for a network change while anything waits on a better network:
+  /// a blocked category, or a help request that could not be sent.
+  void updateNetworkWatch() {
+    if (blocked.value.isNotEmpty || NetworkHelpRepo.isWaiting) {
+      _networkChanges ??= onNetworkChanged().listen((_) => _recheckBlocked());
+      return;
+    }
     unawaited(_networkChanges?.cancel());
     _networkChanges = null;
   }
+
+  @visibleForTesting
+  bool get isWatchingNetwork => _networkChanges != null;
 
   /// A new network may let through what the last one blocked, and may be the
   /// good connection a waiting help request needs.
