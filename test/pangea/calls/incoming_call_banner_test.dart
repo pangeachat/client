@@ -651,6 +651,20 @@ void main() {
       expect(screen.ended, ['CALL-1:remoteEnded']);
     });
 
+    // A closed app woken by the push has not synced: it still holds the
+    // caller's last call, ended. That must not read as this call being over.
+    testWidgets('stays up over the caller\'s last call, still unsynced', (
+      tester,
+    ) async {
+      final room = heldChat();
+      callerMembership(room, present: false);
+      final screen = _FakeCallScreen();
+      await pumpBanner(tester, callScreen: screen);
+
+      await showOnCallScreen(tester, screen);
+      expect(screen.ended, isEmpty);
+    });
+
     testWidgets('a ring already over is taken off at once', (tester) async {
       heldChat(age: const Duration(minutes: 2));
       final screen = _FakeCallScreen();
