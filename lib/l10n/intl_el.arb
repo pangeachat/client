@@ -10832,7 +10832,6 @@
     "missionNofM": "Αποστολή {index} από {count}",
     "xpTowardObjective": "{xp} από {threshold} XP για αυτόν τον στόχο",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} από {total} στόχους ολοκληρώθηκαν",
     "sparklesEarnedOfTotal": "{earned} από {total} λάμψεις κερδήθηκαν",
     "sparklesEarnedInLanguage": "Λάμψεις που κερδήθηκαν στα {language}",
     "courseComplete": "Το μάθημα ολοκληρώθηκε!",

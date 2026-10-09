@@ -2402,7 +2402,6 @@
     "missionNofM": "ພາລະກິດທີ {index} ຈາກ {count}",
     "xpTowardObjective": "{xp} ຈາກ {threshold} XP ສໍາລັບເປົ້າໝາຍນີ້",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} ຈາກ {total} ເປົ້າໝາຍທີ່ສຳເລັດ",
     "sparklesEarnedOfTotal": "{earned} ຈາກ {total} ດາວທີ່ໄດ້ຮັບ",
     "sparklesEarnedInLanguage": "ດາວທີ່ໄດ້ຮັບໃນ {language}",
     "courseComplete": "ຮຽນຈົບຫຼັກສູດແລ້ວ!",

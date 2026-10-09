@@ -2402,7 +2402,6 @@
     "missionNofM": "Ireo iraka {index} amin'ny {count}",
     "xpTowardObjective": "{xp} amin'ny {threshold} XP mankany amin'ity tanjona ity",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} amin'ny tanjona {total} vita",
     "sparklesEarnedOfTotal": "{earned} amin'ny {total} sparkles azo",
     "sparklesEarnedInLanguage": "Sparkles azo tamin'ny teny {language}",
     "courseComplete": "Vita ny taranja!",

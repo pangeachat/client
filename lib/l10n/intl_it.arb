@@ -10030,7 +10030,6 @@
     "missionNofM": "Missione {index} di {count}",
     "xpTowardObjective": "{xp} di {threshold} XP per questo obiettivo",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} di {total} obiettivi completati",
     "sparklesEarnedOfTotal": "{earned} di {total} scintille guadagnate",
     "sparklesEarnedInLanguage": "Scintille guadagnate in {language}",
     "courseComplete": "Corso completato!",

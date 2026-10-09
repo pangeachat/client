@@ -2402,7 +2402,6 @@
     "missionNofM": "Mihana {index} o {count}",
     "xpTowardObjective": "{xp} o te {threshold} XP ki tēnei whāinga",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} o te {total} ngā whāinga kua oti",
     "sparklesEarnedOfTotal": "{earned} o te {total} ngā wheriko kua riro",
     "sparklesEarnedInLanguage": "Ngā wheriko i riro i te reo {language}",
     "courseComplete": "Kua oti te akoranga!",

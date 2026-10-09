@@ -10929,7 +10929,6 @@
     "missionNofM": "Миссия {index} из {count}",
     "xpTowardObjective": "{xp} из {threshold} XP до цели",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} из {total} целей выполнено",
     "sparklesEarnedOfTotal": "{earned} из {total} искр заработано",
     "sparklesEarnedInLanguage": "Искры, заработанные на {language}",
     "courseComplete": "Курс завершен!",

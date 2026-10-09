@@ -57,10 +57,9 @@ Every surface that preferences by progression reads the *same* shared resolver, 
 
 The course page tells the learner how far along they are, read from the same shared resolver the map uses — one answer, never re-derived per surface — **scoped to the course being viewed** (above). A course it can't resolve (a preview, or before the resolution lands) shows a muted empty bar rather than another course's numbers.
 
-- **The current Mission's meter** — the course page's Learning Objective section and the collapsed mobile peek: the anchor Mission's XP over its threshold, as a bar with the exact count on hover or tap ("120 of 300 XP toward this objective"). When the course is complete the bar reads full.
+- **The Mission meter** — the course page's Learning Objective section meters the Mission on show (the circle the learner picked, else the anchor); the collapsed mobile peek meters the anchor. XP over the threshold, as a bar with the exact count on hover or tap ("120 of 300 XP toward this objective"). When the course is complete the peek's bar reads full.
 - **Per Mission, on the full plan** — each Mission header shows its XP over its threshold, with no mark while in progress and the gold star once complete. Surplus shows raw (340 / 300 XP); only the bar clamps.
-- **The Mission circles** — one numbered circle per Mission in plan order, under the course page's language and level chips and under the full plan's pinned bar: a check for a complete Mission, a ring around the current one, a plain number for the rest; each carries its statement as a tooltip. On the course page a tap opens the full plan. A row too long for the panel wraps.
-- **The full plan's pinned bar** — course-wide: Missions complete over Missions in the plan ("2 of 8 objectives completed"). A Mission with no activities is not in either number ([client#7114](https://github.com/pangeachat/client/issues/7114), [client#7663](https://github.com/pangeachat/client/issues/7663)).
+- **The Mission circles** — one numbered circle per Mission in plan order, under the course page's language and level chips and at the top of the full plan: a check for a complete Mission, a tint on the current one, a bold ring around the one on show, a plain number for the rest; each carries its statement as a tooltip. On the course page a tap shows that Mission in the Learning Objective section — the circles are a switcher, and the plan stays behind "See all". The full plan has no bar of its own: the circles already say how many Missions are complete, and a second star bar there read as a second quantity. A Mission with no activities is not a circle ([client#7114](https://github.com/pangeachat/client/issues/7114)). A row too long for the panel wraps.
 
 A course **preview** (not joined) shows no progress — there is no learner progress to show. The course page shows no activity count beside its progress ([client#9390](https://github.com/pangeachat/client/issues/9390)): a count beside a goal read as a second requirement.
 
@@ -81,7 +80,7 @@ Missions are **not** attributed. They are generic and reused across courses and 
 
 ## The Learning Objective section on the course page
 
-The course page opens on the learner's **current Mission** ([client#9437](https://github.com/pangeachat/client/issues/9437)), headed **Learning Objective** with the star glyph: its place in the plan ("Mission 3 of 8"), its can-do statement, its meter, then one row of cards — a **Practice** tile first ([client#9438](https://github.com/pangeachat/client/issues/9438)), then the Mission's activities. The Mission-by-Mission plan — every Mission with its statement, its XP and its activities — sits one tap away behind the section header's "See all", and is where a learner reads the course's shape.
+The course page opens on the learner's **current Mission** ([client#9437](https://github.com/pangeachat/client/issues/9437)), headed **Learning Objective** with the star glyph: its place in the plan ("Mission 3 of 8"), its can-do statement, its meter, then one row of cards. A tap on a Mission circle shows that Mission here instead — statement, meter and row — and the ring moves to it; the current Mission keeps its tint. The row is — a **Practice** tile first ([client#9438](https://github.com/pangeachat/client/issues/9438)), then the Mission's activities. The Mission-by-Mission plan — every Mission with its statement, its XP and its activities — sits one tap away behind the section header's "See all", and is where a learner reads the course's shape.
 
 The row is the Mission's whole content, ranked by the **same [Priority matrix](world-map.instructions.md#priority-matrix) the world map ranks pins by**: an open session a coursemate can be joined in leads, a recruiting ping raises one further. One shared score means the course page and the map cannot drift apart as its weights are tuned. Three things differ from the map, each following from where the row sits:
 
@@ -91,7 +90,7 @@ The row is the Mission's whole content, ranked by the **same [Priority matrix](w
 
 Equal scores break on a stable key, so a rebuild never reshuffles the row under a reader. Before the course's progress resolves, the section shows the plan's first Mission, so a cold open still shows a place to start.
 
-**When every Mission is complete** there is no current Mission to show; the section shows a **course complete** card instead — the count of objectives done and a Practice button for the learner's usual session — and the meter reads full. The full plan behind "See all" still lists every Mission, each with its check.
+**When every Mission is complete** there is no current Mission to show; unless a circle is tapped, the section shows a **course complete** card instead — the count of objectives done and a Practice button for the learner's usual session — and the meter reads full. The full plan behind "See all" still lists every Mission, each with its check.
 
 **The Practice tile** opens vocabulary practice scoped to the Mission ([practice-exercises.instructions.md](practice-exercises.instructions.md), "Objective practice"); the XP earned there reaches the Mission through its vocabulary, above.
 

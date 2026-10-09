@@ -2402,7 +2402,6 @@
     "missionNofM": "{count} نىڭ {index}-ۋەزىپىسى",
     "xpTowardObjective": "بۇ نىشانغا يېتىش ئۈچۈن {threshold} XP نىڭ {xp} ى",
     "xpOfThreshold": "{threshold} XP نىڭ {xp} ى",
-    "objectivesCompletedOfTotal": "{total} نىشاننىڭ {completed} ى تاماملىنىدۇ",
     "sparklesEarnedOfTotal": "{total} چاقناشنىڭ {earned} ىغا ئېرىشتىڭىز",
     "sparklesEarnedInLanguage": "{language} دا ئېرىشكەن چاقناشلار",
     "courseComplete": "دەرس تامام!",

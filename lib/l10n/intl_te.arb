@@ -10907,7 +10907,6 @@
     "missionNofM": "మిషన్ {index} / {count}",
     "xpTowardObjective": "ఈ లక్ష్యం వైపు {threshold} XPలో {xp}",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{total} లక్ష్యాలలో {completed} పూర్తయ్యాయి",
     "sparklesEarnedOfTotal": "{total} స్పార్కిల్స్‌లో {earned} సంపాదించారు",
     "sparklesEarnedInLanguage": "{language}లో సంపాదించిన స్పార్కిల్స్",
     "courseComplete": "కోర్సు పూర్తయింది!",

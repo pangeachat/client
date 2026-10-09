@@ -2402,7 +2402,6 @@
     "missionNofM": "Iṣẹ́ {index} nínú {count}",
     "xpTowardObjective": "{xp} nínú {threshold} XP sí èrò yìí",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} nínú {total} àwọn èrò tí ó parí",
     "sparklesEarnedOfTotal": "{earned} nínú {total} àwọn ìmọ́lẹ̀ tí ó gbà",
     "sparklesEarnedInLanguage": "Àwọn ìmọ́lẹ̀ tí ó gbà ní èdè {language}",
     "courseComplete": "Ẹkọ parí!",

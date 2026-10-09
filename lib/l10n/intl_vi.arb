@@ -7255,7 +7255,6 @@
     "missionNofM": "Nhiệm vụ {index} trên {count}",
     "xpTowardObjective": "{xp} trên {threshold} XP cho mục tiêu này",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "Hoàn thành {completed} trên {total} mục tiêu",
     "sparklesEarnedOfTotal": "Kiếm được {earned} trên {total} lấp lánh",
     "sparklesEarnedInLanguage": "Lấp lánh kiếm được trong {language}",
     "courseComplete": "Hoàn thành khóa học!",

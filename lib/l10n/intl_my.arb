@@ -2402,7 +2402,6 @@
     "missionNofM": "မစ်ရှင် {index} / {count}",
     "xpTowardObjective": "ဤရည်ရွယ်ချက်အတွက် XP {threshold} မှ {xp}",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "ရည်ရွယ်ချက် {total} ခုမှ {completed} ခု ပြီးစီးခဲ့သည်",
     "sparklesEarnedOfTotal": "စုစုပေါင်း {total} မှ {earned} Sparkle ရရှိခဲ့သည်",
     "sparklesEarnedInLanguage": "{language} တွင် ရရှိခဲ့သော Sparkle များ",
     "courseComplete": "သင်တန်း ပြီးဆုံးပါပြီ။",

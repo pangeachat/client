@@ -2402,7 +2402,6 @@
     "missionNofM": "Missio {index} de {count}",
     "xpTowardObjective": "{xp} de {threshold} XP ad hoc propositum",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} de {total} propositis perfectis",
     "sparklesEarnedOfTotal": "{earned} de {total} micis lucis meritis",
     "sparklesEarnedInLanguage": "Micae lucis meritae in {language}",
     "courseComplete": "Cursus perfectus!",

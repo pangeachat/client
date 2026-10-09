@@ -5755,13 +5755,6 @@
             "threshold": {}
         }
     },
-    "objectivesCompletedOfTotal": "{completed} of {total} objectives completed",
-    "@objectivesCompletedOfTotal": {
-        "placeholders": {
-            "completed": {},
-            "total": {}
-        }
-    },
     "sparklesEarnedOfTotal": "{earned} of {total} sparkles earned",
     "@sparklesEarnedOfTotal": {
         "placeholders": {

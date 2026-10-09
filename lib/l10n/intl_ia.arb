@@ -10893,7 +10893,6 @@
     "missionNofM": "Mission {index} de {count}",
     "xpTowardObjective": "{xp} de {threshold} XP verso iste objectivo",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} de {total} objectivos complite",
     "sparklesEarnedOfTotal": "{earned} de {total} scintillas ganiate",
     "sparklesEarnedInLanguage": "Scintillas ganiate in {language}",
     "courseComplete": "Curso complete!",

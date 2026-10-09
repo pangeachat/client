@@ -2402,7 +2402,6 @@
     "missionNofM": "Misi {index} saka {count}",
     "xpTowardObjective": "{xp} saka {threshold} XP kanggo ancas iki",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} saka {total} ancas rampung",
     "sparklesEarnedOfTotal": "{earned} saka {total} sparkles entuk",
     "sparklesEarnedInLanguage": "Sparkles sing entuk ing {language}",
     "courseComplete": "Kursus rampung!",

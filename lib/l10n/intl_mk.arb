@@ -2402,7 +2402,6 @@
     "missionNofM": "Мисија {index} од {count}",
     "xpTowardObjective": "{xp} од {threshold} XP до оваа цел",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} од {total} завршени цели",
     "sparklesEarnedOfTotal": "{earned} од {total} освоени светки",
     "sparklesEarnedInLanguage": "Освоени светки на {language}",
     "courseComplete": "Курсот е завршен!",

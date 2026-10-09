@@ -2402,7 +2402,6 @@
     "missionNofM": "මෙහෙයුම {index} / {count}",
     "xpTowardObjective": "මෙම අරමුණ සඳහා {threshold} XP වලින් {xp} ක්",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{total} අරමුණු වලින් {completed} ක් සම්පූර්ණ කර ඇත",
     "sparklesEarnedOfTotal": "{total} දීප්ති වලින් {earned} ක් උපයා ඇත",
     "sparklesEarnedInLanguage": "{language} භාෂාවෙන් උපයාගත් දීප්ති",
     "courseComplete": "පාඨමාලාව සම්පූර්ණයි!",

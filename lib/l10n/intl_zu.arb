@@ -2402,7 +2402,6 @@
     "missionNofM": "Umsebenzi {index} woku {count}",
     "xpTowardObjective": "{xp} woku {threshold} XP kule nhloso",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} kwezingu {total} izinhloso seziqedile",
     "sparklesEarnedOfTotal": "{earned} kwezingu {total} izinhlansi ezitholiwe",
     "sparklesEarnedInLanguage": "Izinhlansi ezitholiwe ngesi {language}",
     "courseComplete": "Isifundo siqedile!",

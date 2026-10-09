@@ -9957,7 +9957,6 @@
     "missionNofM": "Misija {index} no {count}",
     "xpTowardObjective": "{xp} no {threshold} XP līdz šim mērķim",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} no {total} mērķiem pabeigti",
     "sparklesEarnedOfTotal": "{earned} no {total} iegūtajām dzirkstelēm",
     "sparklesEarnedInLanguage": "Dzirksteles, kas iegūtas valodā {language}",
     "courseComplete": "Kurss pabeigts!",

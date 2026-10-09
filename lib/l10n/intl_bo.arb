@@ -9568,7 +9568,6 @@
     "missionNofM": "ལས་འགན་ {index} བསྡོམས་ {count}",
     "xpTowardObjective": "དམིགས་ཡུལ་འདིའི་ཆེད་དུ་ {threshold} ནང་ནས་ {xp} ཉམས་མྱོང་།",
     "xpOfThreshold": "{threshold} ནང་ནས་ {xp} ཉམས་མྱོང་།",
-    "objectivesCompletedOfTotal": "དམིགས་ཡུལ་ {total} ནང་ནས་ {completed} ལེགས་འགྲུབ་བྱུང་།",
     "sparklesEarnedOfTotal": "འོད་འཚེར་ {total} ནང་ནས་ {earned} ཐོབ།",
     "sparklesEarnedInLanguage": "{language} ནང་དུ་འོད་འཚེར་ཐོབ།",
     "courseComplete": "སློབ་ཚན་ལེགས་འགྲུབ་བྱུང་།",

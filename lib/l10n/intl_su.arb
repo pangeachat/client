@@ -2402,7 +2402,6 @@
     "missionNofM": "Misi {index} ti {count}",
     "xpTowardObjective": "{xp} ti {threshold} XP pikeun tujuan ieu",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} ti {total} tujuan réngsé",
     "sparklesEarnedOfTotal": "{earned} ti {total} sparkles dimeunangkeun",
     "sparklesEarnedInLanguage": "Sparkles dimeunangkeun dina basa {language}",
     "courseComplete": "Kursus réngsé!",

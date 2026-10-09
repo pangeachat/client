@@ -2402,7 +2402,6 @@
     "missionNofM": "បេសកកម្មទី {index} នៃ {count}",
     "xpTowardObjective": "{xp} នៃ {threshold} XP ឆ្ពោះទៅរកគោលបំណងនេះ",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "បានបញ្ចប់ {completed} នៃ {total} គោលបំណង",
     "sparklesEarnedOfTotal": "បានទទួល {earned} នៃ {total} ពន្លឺផ្កាយ",
     "sparklesEarnedInLanguage": "ពន្លឺផ្កាយដែលទទួលបានក្នុងភាសា {language}",
     "courseComplete": "វគ្គសិក្សាបានបញ្ចប់!",

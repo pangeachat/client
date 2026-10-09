@@ -2402,7 +2402,6 @@
     "missionNofM": "Basa re {index} pa {count}",
     "xpTowardObjective": "{xp} pa {threshold} XP yechinangwa ichi",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} pazvinangwa {total} zvapera",
     "sparklesEarnedOfTotal": "{earned} pama sparkles {total} awanikwa",
     "sparklesEarnedInLanguage": "Sparkles awanikwa mu {language}",
     "courseComplete": "Kosi yapera!",

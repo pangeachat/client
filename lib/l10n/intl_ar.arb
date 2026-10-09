@@ -10263,7 +10263,6 @@
     "missionNofM": "المهمة {index} من {count}",
     "xpTowardObjective": "{xp} من {threshold} نقطة خبرة نحو هذا الهدف",
     "xpOfThreshold": "{xp} / {threshold} نقطة خبرة",
-    "objectivesCompletedOfTotal": "{completed} من أصل {total} هدف مكتمل",
     "sparklesEarnedOfTotal": "{earned} من أصل {total} بريق مكتسب",
     "sparklesEarnedInLanguage": "البريق المكتسب في {language}",
     "courseComplete": "اكتملت الدورة!",

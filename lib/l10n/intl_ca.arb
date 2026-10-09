@@ -10084,7 +10084,6 @@
     "missionNofM": "Missió {index} de {count}",
     "xpTowardObjective": "{xp} de {threshold} XP per a aquest objectiu",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} de {total} objectius completats",
     "sparklesEarnedOfTotal": "{earned} de {total} brillants guanyats",
     "sparklesEarnedInLanguage": "Brillants guanyats en {language}",
     "courseComplete": "Curs completat!",

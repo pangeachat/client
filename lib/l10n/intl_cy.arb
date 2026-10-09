@@ -2402,7 +2402,6 @@
     "missionNofM": "Cenhadaeth {index} o {count}",
     "xpTowardObjective": "{xp} o {threshold} XP tuag at yr amcan hwn",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} o {total} amcanion wedi'u cwblhau",
     "sparklesEarnedOfTotal": "{earned} o {total} sbarclau wedi'u hennill",
     "sparklesEarnedInLanguage": "Sbarclau wedi'u hennill yn {language}",
     "courseComplete": "Cwrs wedi'i gwblhau!",

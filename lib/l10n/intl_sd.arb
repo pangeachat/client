@@ -2402,7 +2402,6 @@
     "missionNofM": "مشن {index} مان {count}",
     "xpTowardObjective": "هن مقصد لاءِ {threshold} XP مان {xp}",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{total} مقصدن مان {completed} مڪمل ٿيا",
     "sparklesEarnedOfTotal": "{total} چمڪن مان {earned} حاصل ڪيون ويون",
     "sparklesEarnedInLanguage": "{language} ۾ حاصل ڪيل چمڪون",
     "courseComplete": "ڪورس مڪمل!",

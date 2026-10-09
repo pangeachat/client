@@ -2402,7 +2402,6 @@
     "missionNofM": "Mishɔn {index} pan {count}",
     "xpTowardObjective": "{xp} pan {threshold} XP fɔ dis wetín yu want fɔ lan",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} pan {total} wetín yu want fɔ lan dɛn dɔn",
     "sparklesEarnedOfTotal": "{earned} pan {total} shain dɛn dɔn gɛt",
     "sparklesEarnedInLanguage": "Shain dɛn we dɔn gɛt insay {language}",
     "courseComplete": "Di kos dɔn!",

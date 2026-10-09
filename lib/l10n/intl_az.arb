@@ -2402,7 +2402,6 @@
     "missionNofM": "{count} missiyadan {index}. missiya",
     "xpTowardObjective": "Bu məqsədə doğru {threshold} XP-dən {xp} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{total} məqsəddən {completed} tamamlandı",
     "sparklesEarnedOfTotal": "{total} parıltıdan {earned} qazanıldı",
     "sparklesEarnedInLanguage": "{language} dilində qazanılan parıltılar",
     "courseComplete": "Kurs tamamlandı!",

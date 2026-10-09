@@ -10060,7 +10060,6 @@
     "missionNofM": "{index}/{count} küldetés",
     "xpTowardObjective": "{xp}/{threshold} XP a cél felé",
     "xpOfThreshold": "{xp}/{threshold} XP",
-    "objectivesCompletedOfTotal": "{total} célból {completed} teljesítve",
     "sparklesEarnedOfTotal": "{total} csillámból {earned} összegyűjtve",
     "sparklesEarnedInLanguage": "Csillámok gyűjtve {language} nyelven",
     "courseComplete": "A kurzus kész!",

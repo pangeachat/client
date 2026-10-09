@@ -2402,7 +2402,6 @@
     "missionNofM": "Misi {index} daripada {count}",
     "xpTowardObjective": "{xp} daripada {threshold} XP ke arah objektif ini",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} daripada {total} objektif selesai",
     "sparklesEarnedOfTotal": "{earned} daripada {total} kilauan diperoleh",
     "sparklesEarnedInLanguage": "Kilauan diperoleh dalam {language}",
     "courseComplete": "Kursus selesai!",

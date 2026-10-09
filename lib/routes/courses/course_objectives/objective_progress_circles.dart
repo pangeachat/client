@@ -14,19 +14,25 @@ class ObjectiveCircleData {
   final String statement;
   final ObjectiveCircleState state;
 
+  /// The Mission on show in the course page's section — a bold ring, apart
+  /// from the state's fill, since a learner can pick a complete or a later
+  /// Mission to look at.
+  final bool selected;
+
   const ObjectiveCircleData({
     required this.index,
     required this.statement,
     required this.state,
+    this.selected = false,
   });
 }
 
 /// The course's Missions as a row of numbered circles, in plan order: a
-/// check for a complete Mission, a ring around the current one, a plain
-/// number for the rest (quests.instructions.md, "Progress display on the
-/// course page"). One glance says how far through the course the learner is
-/// and where they are now. Wraps when a quest has more Missions than a row
-/// holds.
+/// check for a complete Mission, a tint on the current one, a bold ring
+/// around the one on show, a plain number for the rest
+/// (quests.instructions.md, "Progress display on the course page"). One
+/// glance says how far through the course the learner is and where they are
+/// now. Wraps when a quest has more Missions than a row holds.
 class ObjectiveProgressCircles extends StatelessWidget {
   final List<ObjectiveCircleData> items;
 
@@ -79,7 +85,7 @@ class _ObjectiveCircle extends StatelessWidget {
       ),
       ObjectiveCircleState.current => (
         theme.colorScheme.primaryContainer,
-        theme.colorScheme.primary,
+        theme.colorScheme.outlineVariant,
         theme.colorScheme.onPrimaryContainer,
         l10n.objectiveCircleUpNext(item.index),
       ),
@@ -97,8 +103,8 @@ class _ObjectiveCircle extends StatelessWidget {
         shape: BoxShape.circle,
         color: fill,
         border: Border.all(
-          color: ring,
-          width: item.state == ObjectiveCircleState.current ? 2.0 : 1.5,
+          color: item.selected ? theme.colorScheme.primary : ring,
+          width: item.selected ? 2.5 : 1.5,
         ),
       ),
       alignment: Alignment.center,
@@ -116,6 +122,7 @@ class _ObjectiveCircle extends StatelessWidget {
     // so neither the colour nor the number is the only carrier.
     return Semantics(
       label: '$label: ${item.statement}',
+      selected: item.selected,
       button: onTap != null,
       child: ExcludeSemantics(
         child: Tooltip(
@@ -141,9 +148,13 @@ class CourseObjectiveCircles extends StatelessWidget {
   final QuestObjectivesLoader objectivesProvider;
   final void Function(int index)? onTap;
 
+  /// The Mission the course page shows, to ring; null rings the current one.
+  final String? selectedMissionId;
+
   const CourseObjectiveCircles({
     required this.objectivesProvider,
     this.onTap,
+    this.selectedMissionId,
     super.key,
   });
 
@@ -156,6 +167,9 @@ class CourseObjectiveCircles extends StatelessWidget {
     builder: (context, _) {
       final groups = objectivesProvider.filteredObjectiveGroups;
       final currentId = objectivesProvider.currentObjectiveGroup?.objective.id;
+      final shownId =
+          objectivesProvider.objectiveGroup(selectedMissionId)?.objective.id ??
+          currentId;
       return ObjectiveProgressCircles(
         onTap: onTap,
         items: [
@@ -163,6 +177,7 @@ class CourseObjectiveCircles extends StatelessWidget {
             ObjectiveCircleData(
               index: i + 1,
               statement: groups[i].objective.objective,
+              selected: groups[i].objective.id == shownId,
               state:
                   objectivesProvider
                           .missionProgress(groups[i].objective.id)

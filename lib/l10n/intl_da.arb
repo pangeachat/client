@@ -10877,7 +10877,6 @@
     "missionNofM": "Mission {index} af {count}",
     "xpTowardObjective": "{xp} af {threshold} XP mod dette mål",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} af {total} mål fuldført",
     "sparklesEarnedOfTotal": "{earned} af {total} gnister optjent",
     "sparklesEarnedInLanguage": "Gnister optjent i {language}",
     "courseComplete": "Kursus fuldført!",

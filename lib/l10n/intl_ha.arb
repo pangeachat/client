@@ -2402,7 +2402,6 @@
     "missionNofM": "Aiki na {index} cikin {count}",
     "xpTowardObjective": "{xp} na {threshold} XP zuwa wannan manufa",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} cikin {total} manufofi an kammala",
     "sparklesEarnedOfTotal": "{earned} cikin {total} kyalkyali an samu",
     "sparklesEarnedInLanguage": "Kyalkyali da aka samu a {language}",
     "courseComplete": "An kammala darasi!",

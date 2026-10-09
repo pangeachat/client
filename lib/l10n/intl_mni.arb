@@ -2402,7 +2402,6 @@
     "missionNofM": "মিশন {index} / {count}",
     "xpTowardObjective": "অসিগুম্বা পান্দম অসি ফংনবা {threshold} XP দগী {xp} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{total} পান্দমশিংদগী {completed} লোইশিনখ্রে",
     "sparklesEarnedOfTotal": "{total} স্পার্কলশিংদগী {earned} ফংলে",
     "sparklesEarnedInLanguage": "{language} দা ফংলবা স্পার্কলশিং",
     "courseComplete": "কোর্স লোইশিনখ্রে!",

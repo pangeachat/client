@@ -2402,7 +2402,6 @@
     "missionNofM": "د {count} څخه {index} ماموریت",
     "xpTowardObjective": "د دې موخې لپاره {threshold} XP څخه {xp} XP",
     "xpOfThreshold": "{threshold} XP / {xp}",
-    "objectivesCompletedOfTotal": "د {total} موخو څخه {completed} بشپړې شوې",
     "sparklesEarnedOfTotal": "د {total} چمکونو څخه {earned} ترلاسه شوي",
     "sparklesEarnedInLanguage": "په {language} کې ترلاسه شوي چمکونه",
     "courseComplete": "کورس بشپړ شو!",

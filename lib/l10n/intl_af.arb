@@ -2402,7 +2402,6 @@
     "missionNofM": "Missie {index} van {count}",
     "xpTowardObjective": "{xp} van {threshold} XP vir hierdie teiken",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} van {total} teikens voltooi",
     "sparklesEarnedOfTotal": "{earned} van {total} vonkels verdien",
     "sparklesEarnedInLanguage": "Vonkels verdien in {language}",
     "courseComplete": "Kursus voltooi!",

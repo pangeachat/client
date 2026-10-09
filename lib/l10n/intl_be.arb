@@ -9971,7 +9971,6 @@
     "missionNofM": "Місія {index} з {count}",
     "xpTowardObjective": "{xp} з {threshold} XP да гэтай мэты",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} з {total} мэтаў выканана",
     "sparklesEarnedOfTotal": "{earned} з {total} бліскавак зароблена",
     "sparklesEarnedInLanguage": "Бліскаўкі, заробленыя ў {language}",
     "courseComplete": "Курс завершаны!",

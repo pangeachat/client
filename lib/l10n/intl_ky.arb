@@ -2402,7 +2402,6 @@
     "missionNofM": "{count} ичинен {index}-миссия",
     "xpTowardObjective": "Бул максатка жетүү үчүн {threshold} XP ичинен {xp} XP",
     "xpOfThreshold": "{threshold} XP ичинен {xp} XP",
-    "objectivesCompletedOfTotal": "{total} максаттын ичинен {completed} аткарылды",
     "sparklesEarnedOfTotal": "{total} жылтырактын ичинен {earned} табылды",
     "sparklesEarnedInLanguage": "{language} тилинде табылган жылтырактар",
     "courseComplete": "Курс аяктады!",

@@ -2402,7 +2402,6 @@
     "missionNofM": "Առաքելություն {index}-ը {count}-ից",
     "xpTowardObjective": "{xp}-ը {threshold} XP-ից այս նպատակի համար",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed}-ը {total} նպատակներից ավարտված է",
     "sparklesEarnedOfTotal": "{earned}-ը {total} փայլերից վաստակված է",
     "sparklesEarnedInLanguage": "Փայլեր վաստակված {language}-ում",
     "courseComplete": "Դասընթացն ավարտված է։",

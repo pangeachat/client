@@ -2402,7 +2402,6 @@
     "missionNofM": "{count} पैकी मिशन {index}",
     "xpTowardObjective": "या उद्दिष्टासाठी {threshold} XP पैकी {xp} XP",
     "xpOfThreshold": "{threshold} XP पैकी {xp} XP",
-    "objectivesCompletedOfTotal": "{total} उद्दिष्टांपैकी {completed} पूर्ण झाली",
     "sparklesEarnedOfTotal": "{total} स्पार्कल्सपैकी {earned} स्पार्कल्स मिळवले",
     "sparklesEarnedInLanguage": "{language} मध्ये मिळवलेले स्पार्कल्स",
     "courseComplete": "कोर्स पूर्ण झाला!",

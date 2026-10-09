@@ -2402,7 +2402,6 @@
     "missionNofM": "ተልዕኮ {index} ከ {count}",
     "xpTowardObjective": "ለዚህ ዓላማ {xp} ከ {threshold} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} ከ {total} ዓላማዎች ተጠናቀዋል",
     "sparklesEarnedOfTotal": "{earned} ከ {total} ብልጭታዎች ተገኝተዋል",
     "sparklesEarnedInLanguage": "በ {language} የተገኙ ብልጭታዎች",
     "courseComplete": "ኮርስ ተጠናቋል!",

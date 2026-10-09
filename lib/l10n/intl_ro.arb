@@ -10689,7 +10689,6 @@
     "missionNofM": "Misiunea {index} din {count}",
     "xpTowardObjective": "{xp} din {threshold} XP pentru acest obiectiv",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} din {total} obiective finalizate",
     "sparklesEarnedOfTotal": "{earned} din {total} scântei câștigate",
     "sparklesEarnedInLanguage": "Scântei câștigate în {language}",
     "courseComplete": "Curs finalizat!",

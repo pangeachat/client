@@ -9994,7 +9994,6 @@
     "missionNofM": "Tehtävä {index} / {count}",
     "xpTowardObjective": "{xp} / {threshold} XP tästä tavoitteesta",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} / {total} tavoitetta suoritettu",
     "sparklesEarnedOfTotal": "{earned} / {total} kipinää ansaittu",
     "sparklesEarnedInLanguage": "Kipinöitä ansaittu kielellä {language}",
     "courseComplete": "Kurssi suoritettu!",

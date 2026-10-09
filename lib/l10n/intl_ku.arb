@@ -2402,7 +2402,6 @@
     "missionNofM": "ئەرکی {index} لە {count}",
     "xpTowardObjective": "{xp} لە {threshold} XP بەرەو ئەم ئامانجە",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} لە {total} ئامانج تەواو کراوە",
     "sparklesEarnedOfTotal": "{earned} لە {total} بریقە بەدەست هێنراوە",
     "sparklesEarnedInLanguage": "بریقە بەدەست هێنراوە لە {language}",
     "courseComplete": "خوولەکە تەواو بوو!",

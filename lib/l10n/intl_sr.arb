@@ -10906,7 +10906,6 @@
     "missionNofM": "Misija {index} od {count}",
     "xpTowardObjective": "{xp} od {threshold} XP-a za ovaj cilj",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} od {total} ciljeva završeno",
     "sparklesEarnedOfTotal": "{earned} od {total} iskrica zarađeno",
     "sparklesEarnedInLanguage": "Iskrice zarađene na {language} jeziku",
     "courseComplete": "Kurs završen!",

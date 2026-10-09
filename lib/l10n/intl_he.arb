@@ -10871,7 +10871,6 @@
     "missionNofM": "משימה {index} מתוך {count}",
     "xpTowardObjective": "{xp} מתוך {threshold} נקודות ניסיון למטרה זו",
     "xpOfThreshold": "{xp} / {threshold} נקודות ניסיון",
-    "objectivesCompletedOfTotal": "{completed} מתוך {total} מטרות הושלמו",
     "sparklesEarnedOfTotal": "{earned} מתוך {total} ניצוצות נצברו",
     "sparklesEarnedInLanguage": "ניצוצות שנצברו ב{language}",
     "courseComplete": "הקורס הושלם!",

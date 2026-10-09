@@ -2402,7 +2402,6 @@
     "missionNofM": "Missjoni {index} minn {count}",
     "xpTowardObjective": "{xp} minn {threshold} XP lejn dan l-għan",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} minn {total} għanijiet kompluti",
     "sparklesEarnedOfTotal": "{earned} minn {total} sparkles miksuba",
     "sparklesEarnedInLanguage": "Sparkles miksuba bil-{language}",
     "courseComplete": "Kors komplut!",

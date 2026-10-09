@@ -9957,7 +9957,6 @@
     "missionNofM": "任务 {index} / {count}",
     "xpTowardObjective": "此目标已获得 {xp} / {threshold} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "已完成 {completed} / {total} 个目标",
     "sparklesEarnedOfTotal": "已获得 {earned} / {total} 个闪光",
     "sparklesEarnedInLanguage": "在 {language} 中获得的闪光",
     "courseComplete": "课程完成！",

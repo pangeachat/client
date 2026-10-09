@@ -10857,7 +10857,6 @@
     "missionNofM": "მისია {index} / {count}",
     "xpTowardObjective": "{xp} / {threshold} XP ამ მიზნისკენ",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} / {total} მიზანი შესრულებულია",
     "sparklesEarnedOfTotal": "{earned} / {total} ნაპერწკალი მოპოვებულია",
     "sparklesEarnedInLanguage": "ნაპერწკლები მოპოვებულია {language}-ში",
     "courseComplete": "კურსი დასრულებულია!",

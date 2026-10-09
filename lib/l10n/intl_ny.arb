@@ -2402,7 +2402,6 @@
     "missionNofM": "Ntchito {index} mwa {count}",
     "xpTowardObjective": "{xp} mwa {threshold} XP pa cholinga ichi",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} mwa {total} zolinga zakwaniritsidwa",
     "sparklesEarnedOfTotal": "{earned} mwa {total} tinyezimiro tapezedwa",
     "sparklesEarnedInLanguage": "Tinyezimiro tapezedwa mu {language}",
     "courseComplete": "Maphunziro atha!",

@@ -10049,7 +10049,6 @@
     "missionNofM": "{count} இல் {index} பணி",
     "xpTowardObjective": "இந்த நோக்கத்திற்கான {threshold} XP இல் {xp}",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{total} நோக்கங்களில் {completed} நிறைவடைந்தது",
     "sparklesEarnedOfTotal": "{total} பிரகாசங்களில் {earned} பெறப்பட்டது",
     "sparklesEarnedInLanguage": "{language} மொழியில் பெறப்பட்ட பிரகாசங்கள்",
     "courseComplete": "பாடநெறி முடிந்தது!",

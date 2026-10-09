@@ -2402,7 +2402,6 @@
     "missionNofM": "Misiona {index} o le {count}",
     "xpTowardObjective": "{xp} o le {threshold} XP agai i lenei manulauti",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} o le {total} manulauti ua mae'a",
     "sparklesEarnedOfTotal": "{earned} o le {total} susulu ua maua",
     "sparklesEarnedInLanguage": "Susulu na maua i le {language}",
     "courseComplete": "Ua mae'a le kosi!",

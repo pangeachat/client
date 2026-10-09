@@ -2402,7 +2402,6 @@
     "missionNofM": "{count} টাৰ ভিতৰত {index} নং অভিযান",
     "xpTowardObjective": "এই উদ্দেশ্যৰ বাবে {threshold} XP ৰ ভিতৰত {xp} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{total} টা উদ্দেশ্যৰ ভিতৰত {completed} টা সম্পূৰ্ণ হৈছে",
     "sparklesEarnedOfTotal": "{total} টা স্পাৰ্কলৰ ভিতৰত {earned} টা অৰ্জন কৰা হৈছে",
     "sparklesEarnedInLanguage": "{language} ত অৰ্জন কৰা স্পাৰ্কল",
     "courseComplete": "পাঠ্যক্ৰম সম্পূৰ্ণ!",

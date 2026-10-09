@@ -2402,7 +2402,6 @@
     "missionNofM": "Hawsha {index} ee {count}",
     "xpTowardObjective": "{xp} oo ah {threshold} XP oo ku aaddan ujeeddadan",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} oo ah {total} ujeedooyin la dhammaystiray",
     "sparklesEarnedOfTotal": "{earned} oo ah {total} dhalaal la kasbaday",
     "sparklesEarnedInLanguage": "Dhalaalka lagu kasbaday {language}",
     "courseComplete": "Koorsada waa la dhammaystiray!",

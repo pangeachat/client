@@ -10475,7 +10475,6 @@
     "missionNofM": "Uppdrag {index} av {count}",
     "xpTowardObjective": "{xp} av {threshold} XP för detta mål",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} av {total} mål slutförda",
     "sparklesEarnedOfTotal": "{earned} av {total} gnistor intjänade",
     "sparklesEarnedInLanguage": "Gnistor intjänade i {language}",
     "courseComplete": "Kursen är klar!",

@@ -2402,7 +2402,6 @@
     "missionNofM": "Misiona {index} o {count}",
     "xpTowardObjective": "{xp} o {threshold} XP no kēia pahuhopu",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} o {total} mau pahuhopu i hoʻopau ʻia",
     "sparklesEarnedOfTotal": "{earned} o {total} mau ʻālohilohi i loaʻa",
     "sparklesEarnedInLanguage": "Nā ʻālohilohi i loaʻa ma ka ʻōlelo {language}",
     "courseComplete": "Ua pau ke papa!",

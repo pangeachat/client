@@ -2402,7 +2402,6 @@
     "missionNofM": "Misioni {index} nga {count}",
     "xpTowardObjective": "{xp} nga {threshold} XP drejt këtij objektivi",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} nga {total} objektiva të përfunduara",
     "sparklesEarnedOfTotal": "{earned} nga {total} shkëlqime të fituara",
     "sparklesEarnedInLanguage": "Shkëlqime të fituara në {language}",
     "courseComplete": "Kursi u përfundua!",

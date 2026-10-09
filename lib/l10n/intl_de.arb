@@ -9944,7 +9944,6 @@
     "missionNofM": "Mission {index} von {count}",
     "xpTowardObjective": "{xp} von {threshold} XP für dieses Ziel",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} von {total} Zielen abgeschlossen",
     "sparklesEarnedOfTotal": "{earned} von {total} Funkeln verdient",
     "sparklesEarnedInLanguage": "In {language} verdiente Funkeln",
     "courseComplete": "Kurs abgeschlossen!",

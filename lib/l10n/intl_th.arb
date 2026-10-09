@@ -10589,7 +10589,6 @@
     "missionNofM": "ภารกิจที่ {index} จาก {count}",
     "xpTowardObjective": "{xp} จาก {threshold} XP สู่เป้าหมายนี้",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "ทำเป้าหมายสำเร็จแล้ว {completed} จาก {total}",
     "sparklesEarnedOfTotal": "ได้รับประกายดาวแล้ว {earned} จาก {total}",
     "sparklesEarnedInLanguage": "ประกายดาวที่ได้รับในภาษา {language}",
     "courseComplete": "เรียนจบคอร์สแล้ว!",

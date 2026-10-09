@@ -210,15 +210,17 @@ class QuestObjectivesLoader {
   /// The current Mission's XP meter, or null before it resolves.
   MissionProgress? get currentObjectiveProgress => _scopedQuest?.anchorProgress;
 
-  /// The current Mission's 1-based position among the rendered Missions, for
-  /// "Mission N of M"; null when there is no current Mission.
-  int? get currentObjectiveIndex {
-    final group = currentObjectiveGroup;
-    if (group == null) return null;
-    return filteredObjectiveGroups.indexOf(group) + 1;
-  }
-
   int get objectiveCount => filteredObjectiveGroups.length;
+
+  /// The rendered group for [missionId], or null when it is null or the plan
+  /// no longer lists it — the course page then falls back to the current one.
+  QuestObjectiveGroup? objectiveGroup(String? missionId) {
+    if (missionId == null) return null;
+    for (final group in filteredObjectiveGroups) {
+      if (group.objective.id == missionId) return group;
+    }
+    return null;
+  }
 
   /// The next-Mission gradient (0..[kBandCeiling]) for an activity satisfying
   /// [missionRefs], scoped to THIS course — the relevance band the course

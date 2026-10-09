@@ -79,6 +79,10 @@ class CourseObjectivesList extends StatefulWidget {
   /// "See all" subpage. See quests.instructions.md.
   final bool suggestedOnly;
 
+  /// With [suggestedOnly], the Mission whose row to draw — the one the
+  /// learner picked from the circles; null draws the current Mission's.
+  final String? missionId;
+
   /// Mission headers collapse/expand their carousels (the full course plan
   /// subpage, #8357). Off in previews and the Activities row.
   final bool collapsibleMissions;
@@ -96,6 +100,7 @@ class CourseObjectivesList extends StatefulWidget {
     this.hasCompletedActivity,
     this.shrinkWrap = false,
     this.suggestedOnly = false,
+    this.missionId,
     this.collapsibleMissions = false,
     this.readOnly = false,
     super.key,
@@ -662,6 +667,9 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     // the section header and its "See all" sit outside this
                     // widget.
                     final current =
+                        widget.objectivesProvider.objectiveGroup(
+                          widget.missionId,
+                        ) ??
                         widget.objectivesProvider.currentObjectiveGroup;
                     if (current == null) return const SizedBox.shrink();
                     final missionId = current.objective.id;

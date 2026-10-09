@@ -10726,7 +10726,6 @@
     "missionNofM": "{count}件中{index}件目のミッション",
     "xpTowardObjective": "この目標まであと{threshold}XP中{xp}XP",
     "xpOfThreshold": "{threshold}XP中{xp}XP",
-    "objectivesCompletedOfTotal": "{total}件中{completed}件の目標を達成",
     "sparklesEarnedOfTotal": "{total}個中{earned}個のスパークルを獲得",
     "sparklesEarnedInLanguage": "{language}で獲得したスパークル",
     "courseComplete": "コース完了！",

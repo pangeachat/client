@@ -2402,7 +2402,6 @@
     "missionNofM": "Thomo ya {index} ho {count}",
     "xpTowardObjective": "{xp} ho {threshold} XP ho fihlella sepheo sena",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} ho {total} dipehelo di phethilwe",
     "sparklesEarnedOfTotal": "{earned} ho {total} disebediswa tse fumanweng",
     "sparklesEarnedInLanguage": "Disebediswa tse fumanweng ka {language}",
     "courseComplete": "Thupelo e phethilwe!",

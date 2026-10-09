@@ -10817,7 +10817,6 @@
     "missionNofM": "Misyon {index} ng {count}",
     "xpTowardObjective": "{xp} sa {threshold} XP para sa layuning ito",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} sa {total} layunin ang nakumpleto",
     "sparklesEarnedOfTotal": "{earned} sa {total} sparkles ang nakuha",
     "sparklesEarnedInLanguage": "Mga sparkles na nakuha sa {language}",
     "courseComplete": "Kumpleto na ang kurso!",

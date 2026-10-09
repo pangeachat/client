@@ -2402,7 +2402,6 @@
     "missionNofM": "Dhamira {index} kati ya {count}",
     "xpTowardObjective": "{xp} kati ya {threshold} XP kuelekea lengo hili",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "Malengo {completed} kati ya {total} yametimizwa",
     "sparklesEarnedOfTotal": "Mwangaza {earned} kati ya {total} umepatikana",
     "sparklesEarnedInLanguage": "Mwangaza uliopatikana katika {language}",
     "courseComplete": "Kozi imekamilika!",

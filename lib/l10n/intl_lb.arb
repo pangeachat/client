@@ -2402,7 +2402,6 @@
     "missionNofM": "Missioun {index} vun {count}",
     "xpTowardObjective": "{xp} vun {threshold} XP fir dëst Zil",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} vun {total} Ziler ofgeschloss",
     "sparklesEarnedOfTotal": "{earned} vun {total} Sparkles verdéngt",
     "sparklesEarnedInLanguage": "Sparkles verdéngt an {language}",
     "courseComplete": "Cours ofgeschloss!",

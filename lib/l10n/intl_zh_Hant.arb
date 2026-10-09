@@ -10063,7 +10063,6 @@
     "missionNofM": "任務 {index} / {count}",
     "xpTowardObjective": "此目標的 {xp} / {threshold} 經驗值",
     "xpOfThreshold": "{xp} / {threshold} 經驗值",
-    "objectivesCompletedOfTotal": "已完成 {completed} / {total} 個目標",
     "sparklesEarnedOfTotal": "已獲得 {earned} / {total} 個閃光",
     "sparklesEarnedInLanguage": "在 {language} 中獲得的閃光",
     "courseComplete": "課程完成！",

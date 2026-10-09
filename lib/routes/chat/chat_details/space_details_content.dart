@@ -378,15 +378,8 @@ class _CourseSectionSubpage extends StatelessWidget {
         SpaceSettingsTabs.course => Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Pinned above the plan so course totals stay visible while
-            // scrolling the Missions: here the bar is course-wide, Missions
-            // complete over Missions in the plan (#9420); the course page's
-            // and the peek's bars are the current Mission's meter.
-            CourseProgressBar(
-              objectivesProvider: controller.objectivesProvider,
-              scope: CourseProgressScope.course,
-            ),
-            const SizedBox(height: 8.0),
+            // Pinned above the plan: the Mission circles say how many
+            // Missions are complete, so the plan carries no bar (#9420).
             CourseObjectiveCircles(
               objectivesProvider: controller.objectivesProvider,
             ),

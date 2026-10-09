@@ -10585,7 +10585,6 @@
     "missionNofM": "{count}টির মধ্যে {index} নম্বর মিশন",
     "xpTowardObjective": "এই উদ্দেশ্যের জন্য {threshold} XP-এর মধ্যে {xp} XP",
     "xpOfThreshold": "{threshold} XP-এর মধ্যে {xp} XP",
-    "objectivesCompletedOfTotal": "{total}টি উদ্দেশ্যের মধ্যে {completed}টি সম্পন্ন হয়েছে",
     "sparklesEarnedOfTotal": "{total}টি স্পার্কলের মধ্যে {earned}টি অর্জিত হয়েছে",
     "sparklesEarnedInLanguage": "{language}-এ অর্জিত স্পার্কল",
     "courseComplete": "কোর্স সম্পূর্ণ!",

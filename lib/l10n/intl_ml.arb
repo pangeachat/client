@@ -2402,7 +2402,6 @@
     "missionNofM": "{count} എണ്ണത്തിൽ {index} ദൗത്യം",
     "xpTowardObjective": "ഈ ലക്ഷ്യത്തിലേക്കുള്ള {threshold} XP-യിൽ {xp}",
     "xpOfThreshold": "{threshold} XP-യിൽ {xp}",
-    "objectivesCompletedOfTotal": "{total} ലക്ഷ്യങ്ങളിൽ {completed} എണ്ണം പൂർത്തിയാക്കി",
     "sparklesEarnedOfTotal": "{total} തിളക്കങ്ങളിൽ {earned} എണ്ണം നേടി",
     "sparklesEarnedInLanguage": "{language} ഭാഷയിൽ നേടിയ തിളക്കങ്ങൾ",
     "courseComplete": "കോഴ്സ് പൂർത്തിയായി!",

@@ -10451,7 +10451,6 @@
     "missionNofM": "Mise {index} z {count}",
     "xpTowardObjective": "{xp} z {threshold} XP k tomuto cíli",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} z {total} cílů splněno",
     "sparklesEarnedOfTotal": "{earned} z {total} získaných jiskřiček",
     "sparklesEarnedInLanguage": "Jiskřičky získané v jazyce {language}",
     "courseComplete": "Kurz dokončen!",

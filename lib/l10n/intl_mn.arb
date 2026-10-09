@@ -2402,7 +2402,6 @@
     "missionNofM": "{count}-ийн {index} даалгавар",
     "xpTowardObjective": "Энэ зорилгод хүрэхэд шаардлагатай {threshold} XP-ээс {xp} XP цуглуулсан",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "Нийт {total} зорилгын {completed} нь биелсэн",
     "sparklesEarnedOfTotal": "Нийт {total} гялалзалтаас {earned} нь цуглуулсан",
     "sparklesEarnedInLanguage": "{language} хэлээр цуглуулсан гялалзалт",
     "courseComplete": "Хичээл дууслаа!",

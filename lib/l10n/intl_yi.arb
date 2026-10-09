@@ -2402,7 +2402,6 @@
     "missionNofM": "מיסיע {index} פֿון {count}",
     "xpTowardObjective": "{xp} פֿון {threshold} XP צו דעם ציל",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} פֿון {total} צילן פֿאַרענדיקט",
     "sparklesEarnedOfTotal": "{earned} פֿון {total} שײַנקלען פֿאַרדינט",
     "sparklesEarnedInLanguage": "שײַנקלען פֿאַרדינט אין {language}",
     "courseComplete": "קורס פֿאַרענדיקט!",

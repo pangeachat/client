@@ -2402,7 +2402,6 @@
     "missionNofM": "Misean {index} de {count}",
     "xpTowardObjective": "{xp} de {threshold} XP a dh'ionnsaigh an amais seo",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} de {total} amasan air an coileanadh",
     "sparklesEarnedOfTotal": "{earned} de {total} boillsgein air an cosnadh",
     "sparklesEarnedInLanguage": "Boillsgein air an cosnadh ann an {language}",
     "courseComplete": "Cùrsa deiseil!",

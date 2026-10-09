@@ -7,36 +7,29 @@ import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
-/// What a [CourseProgressBar] measures (#9420).
-enum CourseProgressScope {
-  /// The current Mission's XP meter: the course page's Learning Objective
-  /// section and the collapsed peek, where the learner asks "how close am I
-  /// to the next star?" (#9437).
-  currentObjective,
-
-  /// Missions complete over Missions in the plan: the full plan subpage's
-  /// pinned bar, where the whole course is in view.
-  course,
-}
-
-/// The course progress bar: a fraction and a bar. On the course page it is
-/// the current Mission's meter, under the Mission's statement; it stands alone
-/// in the collapsed mobile peek — where the sections aren't even mounted — so
-/// a learner always sees progress without scrolling; on the full plan it is
-/// course-wide ([CourseProgressScope]). Reads the shared progression the
-/// [QuestObjectivesLoader] resolves and keeps current; renders a muted empty
-/// bar until it lands so the layout (and the peek) stays stable.
+/// A Mission's XP meter: the course page's Learning Objective section and
+/// the collapsed mobile peek, where the learner asks "how close am I to the
+/// next star?" (#9437). The peek shows it alone — the sections aren't even
+/// mounted there — so a learner always sees progress without scrolling.
+/// Reads the shared progression the [QuestObjectivesLoader] resolves and
+/// keeps current; renders a muted empty bar until it lands so the layout
+/// (and the peek) stays stable. The full plan has no bar: its Mission
+/// circles already say how many Missions are complete.
 class CourseProgressBar extends StatelessWidget {
   final QuestObjectivesLoader objectivesProvider;
-  final CourseProgressScope scope;
+
+  /// The Mission to meter; null meters the course's current Mission (the
+  /// resolver's anchor), which is what the peek shows. The course page passes
+  /// the Mission the learner picked from the circles.
+  final String? missionId;
 
   /// Registers this bar as a tutorial spotlight target. Only the course page's
-  /// instance passes one; the bar renders in three places ([TutorialTarget]).
+  /// instance passes one; the bar renders in two places ([TutorialTarget]).
   final String? tutorialTargetId;
 
   const CourseProgressBar({
     required this.objectivesProvider,
-    this.scope = CourseProgressScope.currentObjective,
+    this.missionId,
     this.tutorialTargetId,
     super.key,
   });
@@ -48,32 +41,21 @@ class CourseProgressBar extends StatelessWidget {
       valueListenable: objectivesProvider.progression,
       builder: (context, progression, _) {
         final l10n = L10n.of(context);
-        switch (scope) {
-          case CourseProgressScope.currentObjective:
-            // A complete course has no current Mission (#8997); its meter
-            // reads full rather than empty.
-            if (objectivesProvider.isCourseComplete) {
-              return ProgressBarRow(fraction: 1.0, label: l10n.courseComplete);
-            }
-            final progress = objectivesProvider.currentObjectiveProgress;
-            return ProgressBarRow(
-              fraction: progress?.fraction,
-              label: progress == null
-                  ? null
-                  : l10n.xpTowardObjective(progress.xp, progress.threshold),
-            );
-          case CourseProgressScope.course:
-            final summary = objectivesProvider.questStars;
-            return ProgressBarRow(
-              fraction: summary?.fraction,
-              label: summary == null
-                  ? null
-                  : l10n.objectivesCompletedOfTotal(
-                      summary.earned,
-                      summary.total,
-                    ),
-            );
+        final missionId = this.missionId;
+        // A complete course has no current Mission (#8997); its meter reads
+        // full rather than empty.
+        if (missionId == null && objectivesProvider.isCourseComplete) {
+          return ProgressBarRow(fraction: 1.0, label: l10n.courseComplete);
         }
+        final progress = missionId == null
+            ? objectivesProvider.currentObjectiveProgress
+            : objectivesProvider.missionProgress(missionId);
+        return ProgressBarRow(
+          fraction: progress?.fraction,
+          label: progress == null
+              ? null
+              : l10n.xpTowardObjective(progress.xp, progress.threshold),
+        );
       },
     ),
   );

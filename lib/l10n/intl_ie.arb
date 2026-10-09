@@ -10589,7 +10589,6 @@
     "missionNofM": "Misean {index} de {count}",
     "xpTowardObjective": "{xp} de {threshold} XP i dtreo an chuspóra seo",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} de {total} cuspóirí críochnaithe",
     "sparklesEarnedOfTotal": "{earned} de {total} spréacha tuillte",
     "sparklesEarnedInLanguage": "Spréacha tuillte i {language}",
     "courseComplete": "Cúrsa críochnaithe!",

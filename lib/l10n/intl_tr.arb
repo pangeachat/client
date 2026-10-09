@@ -10258,7 +10258,6 @@
     "missionNofM": "{count} görevden {index}. görev",
     "xpTowardObjective": "Bu hedefe yönelik {threshold} XP'den {xp} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{total} hedeften {completed} tanesi tamamlandı",
     "sparklesEarnedOfTotal": "{total} ışıltıdan {earned} tanesi kazanıldı",
     "sparklesEarnedInLanguage": "{language} dilinde kazanılan ışıltılar",
     "courseComplete": "Kurs tamamlandı!",

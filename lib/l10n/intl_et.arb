@@ -9954,7 +9954,6 @@
     "missionNofM": "Missioon {index} / {count}",
     "xpTowardObjective": "{xp} / {threshold} XP selle eesmärgi suunas",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} / {total} eesmärki täidetud",
     "sparklesEarnedOfTotal": "{earned} / {total} sädemeid teenitud",
     "sparklesEarnedInLanguage": "Sädemeid teenitud keeles {language}",
     "courseComplete": "Kursus läbitud!",

@@ -2402,7 +2402,6 @@
     "missionNofM": "Миссияи {index} аз {count}",
     "xpTowardObjective": "{xp} аз {threshold} XP ба ин ҳадаф",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} аз {total} ҳадафҳо иҷро шуд",
     "sparklesEarnedOfTotal": "{earned} аз {total} дурахшон ба даст оварда шуд",
     "sparklesEarnedInLanguage": "Дурахшон дар {language} ба даст оварда шуд",
     "courseComplete": "Курс ба итмом расид!",

@@ -10150,7 +10150,6 @@
     "missionNofM": "{count}개 중 {index}번째 미션",
     "xpTowardObjective": "이 목표 달성까지 {threshold} XP 중 {xp} XP",
     "xpOfThreshold": "{threshold} XP 중 {xp} XP",
-    "objectivesCompletedOfTotal": "{total}개 목표 중 {completed}개 완료",
     "sparklesEarnedOfTotal": "{total}개 스파클 중 {earned}개 획득",
     "sparklesEarnedInLanguage": "{language}에서 획득한 스파클",
     "courseComplete": "코스 완료!",

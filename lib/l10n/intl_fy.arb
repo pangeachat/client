@@ -2402,7 +2402,6 @@
     "missionNofM": "Missy {index} fan {count}",
     "xpTowardObjective": "{xp} fan {threshold} XP foar dit doel",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} fan {total} doelen foltôge",
     "sparklesEarnedOfTotal": "{earned} fan {total} sparkles fertsjinne",
     "sparklesEarnedInLanguage": "Sparkles fertsjinne yn {language}",
     "courseComplete": "Kursus foltôge!",

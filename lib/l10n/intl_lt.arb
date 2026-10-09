@@ -10738,7 +10738,6 @@
     "missionNofM": "Misija {index} iš {count}",
     "xpTowardObjective": "{xp} iš {threshold} XP link šio tikslo",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "Įvykdyta {completed} iš {total} tikslų",
     "sparklesEarnedOfTotal": "Uždirbta {earned} iš {total} žvaigždučių",
     "sparklesEarnedInLanguage": "Uždirbtos žvaigždutės {language} kalba",
     "courseComplete": "Kursas baigtas!",

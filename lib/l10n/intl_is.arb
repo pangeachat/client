@@ -2402,7 +2402,6 @@
     "missionNofM": "Verkefni {index} af {count}",
     "xpTowardObjective": "{xp} af {threshold} XP í átt að þessu markmiði",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} af {total} markmiðum lokið",
     "sparklesEarnedOfTotal": "{earned} af {total} glitrum fengnar",
     "sparklesEarnedInLanguage": "Glitrur fengnar í {language}",
     "courseComplete": "Námskeiði lokið!",

@@ -24,7 +24,9 @@ class CourseCompleteCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: theme.colorScheme.primaryContainer,
+        // The completion green of the circles, not the primary purple: the
+        // Practice button is primary and vanished against it.
+        color: theme.pangea.successContainer,
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: Column(
@@ -39,7 +41,7 @@ class CourseCompleteCard extends StatelessWidget {
                 child: Text(
                   l10n.courseComplete,
                   style: theme.textTheme.titleMedium?.copyWith(
-                    color: theme.colorScheme.onPrimaryContainer,
+                    color: theme.pangea.onSuccessContainer,
                   ),
                 ),
               ),
@@ -48,7 +50,7 @@ class CourseCompleteCard extends StatelessWidget {
           Text(
             l10n.courseCompleteDesc(objectiveCount),
             style: theme.textTheme.bodySmall?.copyWith(
-              color: theme.colorScheme.onPrimaryContainer,
+              color: theme.pangea.onSuccessContainer,
             ),
           ),
           Align(

@@ -2402,7 +2402,6 @@
     "missionNofM": "{count} миссияның {index}-і",
     "xpTowardObjective": "Осы мақсатқа қарай {threshold} XP-дан {xp} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{total} мақсаттың {completed}-і аяқталды",
     "sparklesEarnedOfTotal": "{total} жарқыраудың {earned}-і табылды",
     "sparklesEarnedInLanguage": "{language} тілінде табылған жарқыраулар",
     "courseComplete": "Курс аяқталды!",

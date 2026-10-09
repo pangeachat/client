@@ -10902,7 +10902,6 @@
     "missionNofM": "Misia {index} z {count}",
     "xpTowardObjective": "{xp} z {threshold} XP k tomuto cieľu",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} z {total} splnených cieľov",
     "sparklesEarnedOfTotal": "{earned} z {total} získaných iskier",
     "sparklesEarnedInLanguage": "Iskry získané v jazyku {language}",
     "courseComplete": "Kurz dokončený!",

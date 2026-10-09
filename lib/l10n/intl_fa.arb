@@ -10045,7 +10045,6 @@
     "missionNofM": "مأموریت {index} از {count}",
     "xpTowardObjective": "{xp} از {threshold} امتیاز تجربه برای این هدف",
     "xpOfThreshold": "{xp} / {threshold} امتیاز تجربه",
-    "objectivesCompletedOfTotal": "{completed} از {total} هدف تکمیل شد",
     "sparklesEarnedOfTotal": "{earned} از {total} ستاره کسب شد",
     "sparklesEarnedInLanguage": "ستاره‌های کسب شده در {language}",
     "courseComplete": "دوره کامل شد!",

@@ -10042,7 +10042,6 @@
     "missionNofM": "Misja {index} z {count}",
     "xpTowardObjective": "{xp} z {threshold} PD do tego celu",
     "xpOfThreshold": "{xp} / {threshold} PD",
-    "objectivesCompletedOfTotal": "{completed} z {total} celów ukończonych",
     "sparklesEarnedOfTotal": "{earned} z {total} iskierek zdobytych",
     "sparklesEarnedInLanguage": "Iskierki zdobyte w języku {language}",
     "courseComplete": "Kurs ukończony!",

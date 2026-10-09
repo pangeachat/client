@@ -2402,7 +2402,6 @@
     "missionNofM": "Misyon {index} sou {count}",
     "xpTowardObjective": "{xp} sou {threshold} XP pou objektif sa a",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} sou {total} objektif reyalize",
     "sparklesEarnedOfTotal": "{earned} sou {total} etensèl touche",
     "sparklesEarnedInLanguage": "Etensèl touche nan {language}",
     "courseComplete": "Kou a fini!",

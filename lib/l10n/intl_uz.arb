@@ -9961,7 +9961,6 @@
     "missionNofM": "{count} ta topshiriqdan {index} tasi",
     "xpTowardObjective": "Ushbu maqsadga erishish uchun {threshold} XP dan {xp} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{total} ta maqsaddan {completed} tasi bajarildi",
     "sparklesEarnedOfTotal": "{total} ta yaltiroqdan {earned} tasi topildi",
     "sparklesEarnedInLanguage": "{language} tilida topilgan yaltiroqlar",
     "courseComplete": "Kurs tugallandi!",

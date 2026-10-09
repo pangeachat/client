@@ -2402,7 +2402,6 @@
     "missionNofM": "Mishọn {index} n'ime {count}",
     "xpTowardObjective": "{xp} n'ime {threshold} XP maka ebumnuche a",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} n'ime {total} ebumnuche emechara",
     "sparklesEarnedOfTotal": "{earned} n'ime {total} sparkles enwetara",
     "sparklesEarnedInLanguage": "Sparkles enwetara na {language}",
     "courseComplete": "Usoro ọmụmụ agwụla!",

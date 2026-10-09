@@ -2402,7 +2402,6 @@
     "missionNofM": "Lub Hom Phiaj {index} ntawm {count}",
     "xpTowardObjective": "{xp} ntawm {threshold} XP rau lub hom phiaj no",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} ntawm {total} lub hom phiaj ua tiav",
     "sparklesEarnedOfTotal": "{earned} ntawm {total} lub hnub qub tau txais",
     "sparklesEarnedInLanguage": "Lub hnub qub tau txais hauv {language}",
     "courseComplete": "Kawm tiav!",

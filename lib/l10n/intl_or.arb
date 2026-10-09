@@ -2402,7 +2402,6 @@
     "missionNofM": "ମିଶନ୍ {index} ର {count}",
     "xpTowardObjective": "ଏହି ଲକ୍ଷ୍ୟ ପାଇଁ {threshold} XP ରୁ {xp} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{total} ଲକ୍ଷ୍ୟରୁ {completed} ସମ୍ପୂର୍ଣ୍ଣ ହୋଇଛି",
     "sparklesEarnedOfTotal": "{total} ସ୍ପାର୍କଲ୍ସରୁ {earned} ଅର୍ଜିତ ହୋଇଛି",
     "sparklesEarnedInLanguage": "{language} ରେ ଅର୍ଜିତ ସ୍ପାର୍କଲ୍ସ",
     "courseComplete": "କୋର୍ସ ସମ୍ପୂର୍ଣ୍ଣ ହୋଇଛି!",

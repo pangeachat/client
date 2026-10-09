@@ -64,6 +64,18 @@ class CourseOverview extends StatefulWidget {
 }
 
 class _CourseOverviewState extends State<CourseOverview> {
+  /// The Mission the Learning Objective section shows, picked from the
+  /// circles; null shows the resolver's current Mission. Ava and Tig read the
+  /// circles as a switcher — individually highlighted numbers that should
+  /// show that Mission, not open the whole plan.
+  String? _selectedMissionId;
+
+  void _selectMission(int index) {
+    final groups = widget.controller.objectivesProvider.filteredObjectiveGroups;
+    if (index < 1 || index > groups.length) return;
+    setState(() => _selectedMissionId = groups[index - 1].objective.id);
+  }
+
   final ScrollController _scrollController = ScrollController();
 
   final Map<SpaceSettingsTabs, GlobalKey> _sectionKeys = {
@@ -187,12 +199,13 @@ class _CourseOverviewState extends State<CourseOverview> {
                       ),
                     ),
                   // The plan at a glance: one circle per Mission, under the
-                  // chips (#9420). A tap opens the full plan.
+                  // chips (#9420). A tap shows that Mission below.
                   Padding(
                     padding: const EdgeInsets.only(bottom: 12.0),
                     child: CourseObjectiveCircles(
                       objectivesProvider: widget.controller.objectivesProvider,
-                      onTap: (_) => _openSubpage(SpaceSettingsTabs.course),
+                      onTap: _selectMission,
+                      selectedMissionId: _selectedMissionId,
                     ),
                   ),
                   // Pending join requests lead: they are a decision waiting on
@@ -228,8 +241,13 @@ class _CourseOverviewState extends State<CourseOverview> {
                         AsyncLoading() => true,
                         AsyncError() || AsyncIdle() => false,
                       };
-                      final group = provider.currentObjectiveGroup;
-                      final complete = provider.isCourseComplete;
+                      // The Mission on show: the one picked from the circles
+                      // (while the plan still has it), else the current one.
+                      final group =
+                          provider.objectiveGroup(_selectedMissionId) ??
+                          provider.currentObjectiveGroup;
+                      final complete =
+                          group == null && provider.isCourseComplete;
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
@@ -260,7 +278,11 @@ class _CourseOverviewState extends State<CourseOverview> {
                             if (group != null)
                               CurrentObjectiveStatement(
                                 group: group,
-                                index: provider.currentObjectiveIndex,
+                                index:
+                                    provider.filteredObjectiveGroups.indexOf(
+                                      group,
+                                    ) +
+                                    1,
                                 count: provider.objectiveCount,
                               ),
                             // The Mission's meter, under its statement; the
@@ -271,6 +293,7 @@ class _CourseOverviewState extends State<CourseOverview> {
                               ),
                               child: CourseProgressBar(
                                 objectivesProvider: provider,
+                                missionId: group?.objective.id,
                                 // The course tutorial runs on this page, so
                                 // this is the instance it points at.
                                 tutorialTargetId:
@@ -283,6 +306,7 @@ class _CourseOverviewState extends State<CourseOverview> {
                               room: room,
                               shrinkWrap: true,
                               suggestedOnly: true,
+                              missionId: group?.objective.id,
                               hasCompletedActivity: (activityId) => widget
                                   .controller
                                   .roomSummariesModel

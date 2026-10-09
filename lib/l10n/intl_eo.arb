@@ -10902,7 +10902,6 @@
     "missionNofM": "Misio {index} el {count}",
     "xpTowardObjective": "{xp} el {threshold} XP por ĉi tiu celo",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "objectivesCompletedOfTotal": "{completed} el {total} celoj plenumitaj",
     "sparklesEarnedOfTotal": "{earned} el {total} briloj gajnitaj",
     "sparklesEarnedInLanguage": "Briloj gajnitaj en {language}",
     "courseComplete": "Kurso finita!",
