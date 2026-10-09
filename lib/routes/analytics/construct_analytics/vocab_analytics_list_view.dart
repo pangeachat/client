@@ -306,6 +306,10 @@ class VocabAnalyticsListView extends StatelessWidget {
                           ) {
                             final vocabItem = sortedFilteredVocab[index];
                             return VocabAnalyticsListTile(
+                              langCode: MatrixState
+                                  .pangeaController
+                                  .userController
+                                  .userL2Code,
                               onTap: controller.selectMode
                                   ? () => controller.toggleSelectedConstruct(
                                       vocabItem.id,

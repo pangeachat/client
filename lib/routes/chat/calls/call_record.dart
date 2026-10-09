@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/chat/calls/call_half_in_flight.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -51,11 +53,68 @@ typedef TranscriptPublisher =
       required int chunksCaptured,
       required int chunksTranscribed,
       required int chunksLost,
+      required int chunksRefusedUnsubscribed,
       required int chunksSuppressed,
       required bool captureRefused,
       required bool drainComplete,
       String? langCode,
     });
+
+/// Publishes this device's call-audio half, if it recorded one. See
+/// `call_audio_recorder.dart`'s `CallAudioRecorder.finish`, which is what a
+/// real caller wires this to.
+///
+/// Unlike [TranscriptPublisher], this carries no recording of its own to
+/// hand over -- [callKey] is the only fact [CallRecord] itself has that the
+/// recorder could not already have latched. Whether anything is actually
+/// uploaded or sent is entirely the wired closure's decision: [CallRecord]
+/// calls this UNCONDITIONALLY, on the same terms it calls
+/// [publishTranscript], and trusts the closure to gate on the carrier fact
+/// (`CallAudioRecorder.finish`'s `wasCarrier`) itself. See [_publishCallAudio]
+/// for why the gate cannot live here instead.
+typedef CallAudioPublisher = Future<void> Function({required String? callKey});
+
+/// Finalises this device's recording LOCALLY -- no network -- before the
+/// learner is credited: builds the WAV, starts the recording-based
+/// transcription and the durable on-disk copy. See
+/// `CallAudioRecorder.prepare`. [liveTranscriptContent] and [transcriptTxnId]
+/// are the live transcript half, frozen into that durable copy so a resume
+/// after a kill can still publish a half when none was built.
+typedef CallAudioPreparer =
+    Future<void> Function({
+      required String? callKey,
+      Map<String, dynamic>? liveTranscriptContent,
+      String? transcriptTxnId,
+    });
+
+/// Builds -- without sending -- the live transcript half [TranscriptPublisher]
+/// would send for these arguments, returning its content and transaction id,
+/// or null when no half would be written.
+typedef TranscriptContentBuilder =
+    Future<({Map<String, dynamic> content, String txnId})?> Function({
+      required String callKey,
+      required List<TranscriptSegment> segments,
+      required int chunksCaptured,
+      required int chunksTranscribed,
+      required int chunksLost,
+      required int chunksRefusedUnsubscribed,
+      required int chunksSuppressed,
+      required bool captureRefused,
+      required bool drainComplete,
+      String? langCode,
+    });
+
+/// Supplies this device's whole-recording transcript segments when the
+/// recording-based transcript feature is wired up. See
+/// `CallAudioRecorder.recordingSegmentsReady`, which a real caller wires this
+/// to; the wiring is gated on `Environment.callRecordingTranscript`, so a null
+/// source here IS the feature being off. Waited on for at most
+/// `CallRecord.recordingTranscriptDeadline`, read once, and preferred over the
+/// live-chunk segments only when it returns a NON-EMPTY list in time -- empty,
+/// late or failed means this device has no usable recording-based half, and
+/// its live one stands.
+typedef RecordingTranscriptSource =
+    FutureOr<List<TranscriptSegment>> Function();
 
 class CallRecord {
   final CallEventSender sendEvent;
@@ -66,6 +125,54 @@ class CallRecord {
   /// unchanged, and so a deployment can leave transcripts unpublished without
   /// touching this class.
   final TranscriptPublisher? publishTranscript;
+
+  /// Publishes this device's call-audio half, if the feature is wired up.
+  /// Optional for the same reason [publishTranscript] is: every existing
+  /// construction of a record keeps working unchanged, and a deployment can
+  /// leave the recording unpublished without touching this class.
+  final CallAudioPublisher? publishCallAudio;
+
+  /// Supplies this device's recording-based transcript segments when that
+  /// feature is wired up; null when it is off. See [RecordingTranscriptSource].
+  /// Optional for the same reason [publishTranscript] is: every existing
+  /// construction of a record keeps working unchanged, and with it null the
+  /// class behaves exactly as it did before the feature existed.
+  final RecordingTranscriptSource? recordingSegments;
+
+  /// Runs the whole-call transcriber (#8792) for this call once this device's
+  /// OWN half has been published -- the "post own half first" step. Optional and
+  /// null on the default path: every existing construction keeps working
+  /// unchanged, and the feature reverts by leaving it unwired. Invoked
+  /// fire-and-forget with the call anchor, because the transcriber runs its own
+  /// grace and bounded retries in the background and must never delay crediting
+  /// or teardown. It gates itself on the flag and the invoker's live
+  /// subscription, so this is called unconditionally when wired.
+  final Future<void> Function(String callKey)? backfillPeerTranscripts;
+
+  /// See [CallAudioPreparer]. Null keeps the record's flow as it was.
+  final CallAudioPreparer? prepareCallAudio;
+
+  /// See [TranscriptContentBuilder]. Null stores no live half for a resume.
+  final TranscriptContentBuilder? buildLiveTranscript;
+
+  /// The deterministic transaction ids of this device's two halves for a call
+  /// key. When set, each half is claimed in [CallHalfInFlight] for as long as
+  /// this finish works on it, so a resume or an outbox replay in the same
+  /// process skips it instead of racing it.
+  final String Function(String callKey)? audioTxnIdFor;
+  final String Function(String callKey)? transcriptTxnIdFor;
+
+  /// D_rec: how long the transcript half waits for the recording-based
+  /// segments before the live half stands.
+  final Duration recordingTranscriptDeadline;
+
+  /// D_credit: how long publishing waits for the credit. Past it the credit
+  /// keeps running and is never canceled; publishing simply stops waiting.
+  final Duration creditDeadline;
+
+  /// The bound on one transcript publish attempt on the recording-based path.
+  /// A deadline parks the half: the outbox holds it for the next trigger.
+  final Duration transcriptAttemptDeadline;
   final CallAnalyticsSink analytics;
   final CallTranscriptSink transcripts;
   final String roomId;
@@ -101,6 +208,16 @@ class CallRecord {
     required this.transcripts,
     required this.roomId,
     this.publishTranscript,
+    this.publishCallAudio,
+    this.recordingSegments,
+    this.backfillPeerTranscripts,
+    this.prepareCallAudio,
+    this.buildLiveTranscript,
+    this.audioTxnIdFor,
+    this.transcriptTxnIdFor,
+    this.recordingTranscriptDeadline = const Duration(seconds: 120),
+    this.creditDeadline = const Duration(seconds: 15),
+    this.transcriptAttemptDeadline = kCallHalfNetworkDeadline,
   });
 
   /// Writes the call and records what was said.
@@ -252,18 +369,164 @@ class CallRecord {
     // Nothing at all, then: not the half below, not the credit, not the card
     // the retry path would otherwise write.
     if (!mattered) return;
-    // Ahead of every guard below, because none of them are about the
-    // transcript. Publishing lives outside the credit's control flow entirely:
-    // it needs only the anchor, and it is a separate promise to the learner.
-    //
-    // Both couplings were real. Inside _finish it sat after the card's event id
-    // was resolved, so a card that failed to write ALSO cost the transcript --
-    // though publishing never needed the card. And behind the _credited check
-    // it was unreachable whenever an earlier finish had credited without a
-    // call key, which is exactly the sequence the ordinary lifecycle produces.
-    await _publishTranscript(callKey, captureRefused);
 
-    if (_credited) return;
+    // CREDIT FIRST (#9302). The credit used to wait behind both publishes --
+    // an upload of minutes of audio and a whole-recording speech-to-text pass
+    // -- and a learner who closed the app in that window lost the call's
+    // analytics. Now the order is:
+    //
+    // 1. claim this device's two halves, so a resume or an outbox replay in
+    //    this process leaves them to us;
+    // 2. finalise the recording LOCALLY (WAV, durable copy, transcription
+    //    started) -- no network, so a kill from here on still leaves the
+    //    recording on disk;
+    // 3. credit, waiting at most [creditDeadline] (never canceled past it);
+    // 4. publish the audio and transcript halves; then the peer backfill.
+    //
+    // Publishing still lives outside the credit's control flow: it needs only
+    // the anchor, it is a separate promise to the learner, and a card that
+    // failed to write must not cost the transcript.
+    final audioHalf = _claimHalf(audioTxnIdFor, callKey);
+    final transcriptHalf = _claimHalf(transcriptTxnIdFor, callKey);
+    try {
+      if (audioHalf.proceed) await _prepareAudio(callKey, captureRefused);
+
+      if (!_credited) {
+        final credit = _credit(
+          duration: duration,
+          video: video,
+          answered: answered,
+          declined: declined,
+          writeTimelineEvent: writeTimelineEvent,
+          anchorEventId: anchorEventId,
+          callerId: callerId,
+          callKey: callKey,
+        );
+        try {
+          await credit.timeout(creditDeadline);
+        } on TimeoutException {
+          Logs().w(
+            'The call credit is still running after '
+            '${creditDeadline.inSeconds}s; publishing the halves meanwhile',
+          );
+        }
+      }
+
+      // Each half releases its own claim the moment it settles, so a half that
+      // parks does not hold the other's.
+      Future<void> audio() async {
+        try {
+          if (audioHalf.proceed) await _publishCallAudio(callKey);
+        } finally {
+          CallHalfInFlight.release(audioHalf.token);
+        }
+      }
+
+      Future<void> transcript() async {
+        try {
+          if (transcriptHalf.proceed) {
+            await _publishTranscript(callKey, captureRefused);
+          }
+        } finally {
+          CallHalfInFlight.release(transcriptHalf.token);
+        }
+        // The own half is now posted -- "post own half first". Kick off the
+        // whole-call transcriber for the peer's half. Fire-and-forget: it waits
+        // its own grace and retries on its own schedule. It gates itself on the
+        // flag and live subscription, and reverts by being unwired.
+        final backfill = backfillPeerTranscripts;
+        if (backfill != null && callKey != null) {
+          unawaited(
+            backfill(callKey).catchError((Object e, StackTrace s) {
+              Logs().w('Whole-call peer transcription failed', e, s);
+            }),
+          );
+        }
+      }
+
+      // With the recording-based transcript wired the two run side by side:
+      // the transcript waits (bounded) only for the recording's SEGMENTS,
+      // never for the upload, and the audio half's upload is bounded on its
+      // own. With it off the original transcript-first order stands.
+      if (recordingSegments != null) {
+        await Future.wait([audio(), transcript()]);
+      } else {
+        await transcript();
+        await audio();
+      }
+    } finally {
+      CallHalfInFlight.release(audioHalf.token);
+      CallHalfInFlight.release(transcriptHalf.token);
+    }
+  }
+
+  /// Claims this device's half for [callKey] when [txnIdFor] is wired.
+  /// `proceed` is false only when someone else in this process holds it.
+  ({bool proceed, ClaimToken? token}) _claimHalf(
+    String Function(String callKey)? txnIdFor,
+    String? callKey,
+  ) {
+    final key = usableKey(callKey);
+    if (txnIdFor == null || key == null) return (proceed: true, token: null);
+    final token = CallHalfInFlight.claim(txnIdFor(key));
+    if (token == null) {
+      Logs().i('A call half is already being worked on; leaving it to them');
+      return (proceed: false, token: null);
+    }
+    return (proceed: true, token: token);
+  }
+
+  /// Step 2 of [finish]: the recording is finalised and made durable before
+  /// anything touches the network. Never throws.
+  Future<void> _prepareAudio(String? callKey, bool captureRefused) async {
+    final prepare = prepareCallAudio;
+    if (prepare == null) return;
+    ({Map<String, dynamic> content, String txnId})? live;
+    final build = buildLiveTranscript;
+    final key = usableKey(callKey);
+    if (build != null && key != null && publishTranscript != null) {
+      try {
+        live = await boundedLocal(
+          build(
+            callKey: key,
+            segments: transcripts.segments,
+            chunksCaptured: transcripts.chunksCaptured,
+            chunksTranscribed: transcripts.chunksTranscribed,
+            chunksLost: transcripts.chunksLost,
+            chunksRefusedUnsubscribed: transcripts.chunksRefusedUnsubscribed,
+            chunksSuppressed: transcripts.chunksSuppressed,
+            captureRefused: captureRefused,
+            drainComplete: transcripts.drainComplete,
+            langCode: transcripts.langCode,
+          ),
+          'freeze the live transcript half',
+        );
+      } catch (e, s) {
+        Logs().w('Could not freeze the live transcript half', e, s);
+      }
+    }
+    try {
+      await prepare(
+        callKey: callKey,
+        liveTranscriptContent: live?.content,
+        transcriptTxnId: live?.txnId,
+      );
+    } catch (e, s) {
+      Logs().w('Finalising the call recording failed', e, s);
+    }
+  }
+
+  /// The credit, joined by concurrent callers. See [finish].
+  Future<void> _credit({
+    required Duration duration,
+    required bool video,
+    required bool answered,
+    required bool declined,
+    required bool writeTimelineEvent,
+    required String? anchorEventId,
+    required String? callerId,
+    required String? callKey,
+  }) {
     // Concurrent callers join the in-flight attempt rather than being dropped.
     // Dropping one made a failed write unretryable in practice: the two callers
     // are the same hangup, and the discarded one was the only other chance.
@@ -467,19 +730,51 @@ class CallRecord {
     // retry must resend the same half rather than whatever the sink reports
     // later -- the deterministic transaction id only collapses a resend if the
     // resend is actually the same event.
-    final segments = transcripts.segments;
+    //
+    // The recording-based segments when this device produced them, else the
+    // live 45-second chunks. An empty source -- feature off, no recording, or a
+    // failed transcription -- means this device has no recording-based half and
+    // its live one stands, which is the per-half fault tolerance the design
+    // rests on. Only the SEGMENTS switch source; the capture accounting below
+    // still reports the live chunk path's health, unchanged.
+    // Marked before the first await so concurrent callers cannot both publish.
+    _published = true;
+
+    // Waited for, BOUNDED by [recordingTranscriptDeadline], and read once. Past
+    // the deadline -- or with no segments, or a failure -- the live half
+    // stands; the reason is logged so a fallback is never silent.
+    var recorded = const <TranscriptSegment>[];
+    final source = recordingSegments;
+    if (source != null) {
+      String reason;
+      try {
+        recorded = await Future.value(
+          source(),
+        ).timeout(recordingTranscriptDeadline);
+        reason = recorded.isNotEmpty
+            ? 'recording'
+            : 'live (the recording produced no segments)';
+      } on TimeoutException {
+        reason =
+            'live (the recording was not transcribed within '
+            '${recordingTranscriptDeadline.inSeconds}s)';
+      } catch (e, s) {
+        reason = 'live (the recording transcription failed)';
+        Logs().w('Reading the recording-based segments failed', e, s);
+      }
+      Logs().i('Call transcript half source: $reason');
+    }
+    final segments = recorded.isNotEmpty ? recorded : transcripts.segments;
     final chunksCaptured = transcripts.chunksCaptured;
     final chunksTranscribed = transcripts.chunksTranscribed;
     final chunksLost = transcripts.chunksLost;
+    final chunksRefusedUnsubscribed = transcripts.chunksRefusedUnsubscribed;
     final chunksSuppressed = transcripts.chunksSuppressed;
     // Meaningful only once the sink has closed, which the capture service does
     // before this runs. Read earlier it would be the optimistic default and a
     // half could claim a completeness nothing had checked.
     final drainComplete = transcripts.drainComplete;
     final langCode = transcripts.langCode;
-
-    // Marked before the first await so concurrent callers cannot both publish.
-    _published = true;
 
     // Kept so the report at the bottom can carry the CAUSE. Each attempt logs
     // its own failure, but only the last one is worth an event -- and an event
@@ -490,17 +785,40 @@ class CallRecord {
 
     for (var attempt = 0; attempt < 3; attempt++) {
       if (attempt > 0) await Future.delayed(Duration(seconds: attempt));
+      Future<void> send() => publish(
+        callKey: callKey,
+        segments: segments,
+        chunksCaptured: chunksCaptured,
+        chunksTranscribed: chunksTranscribed,
+        chunksLost: chunksLost,
+        chunksRefusedUnsubscribed: chunksRefusedUnsubscribed,
+        chunksSuppressed: chunksSuppressed,
+        captureRefused: captureRefused,
+        drainComplete: drainComplete,
+        langCode: langCode,
+      );
+      final attemptToken = AttemptToken();
       try {
-        await publish(
-          callKey: callKey,
-          segments: segments,
-          chunksCaptured: chunksCaptured,
-          chunksTranscribed: chunksTranscribed,
-          chunksLost: chunksLost,
-          chunksSuppressed: chunksSuppressed,
-          captureRefused: captureRefused,
-          drainComplete: drainComplete,
-          langCode: langCode,
+        if (source == null) {
+          await send();
+        } else {
+          // Bounded on the recording-based path, where the outbox holds the
+          // built half: a deadline parks it there for the next trigger, and the
+          // dead attempt token stops a late confirmation from dropping it.
+          await attemptToken.run(
+            () => raceBounded(
+              send(),
+              deadline: transcriptAttemptDeadline,
+              step: 'publish the transcript half',
+              attempt: attemptToken,
+            ),
+          );
+        }
+        return;
+      } on CallHalfParked catch (e) {
+        Logs().w(
+          'Publishing the call transcript parked at "${e.step}"; the outbox '
+          'replays it on the next launch or foreground',
         );
         return;
       } catch (e, s) {
@@ -510,6 +828,8 @@ class CallRecord {
         lastError = e;
         lastStack = s;
         Logs().w('Publishing the call transcript failed', e, s);
+      } finally {
+        attemptToken.live = false;
       }
     }
 
@@ -560,6 +880,7 @@ class CallRecord {
         'chunksCaptured': chunksCaptured,
         'chunksTranscribed': chunksTranscribed,
         'chunksLost': chunksLost,
+        'chunksRefusedUnsubscribed': chunksRefusedUnsubscribed,
         'chunksSuppressed': chunksSuppressed,
         'captureRefused': captureRefused,
         'drainComplete': drainComplete,
@@ -573,6 +894,35 @@ class CallRecord {
       'call_record.transcript_not_published';
 
   bool _published = false;
+
+  /// Calls [publishCallAudio], swallowing any failure.
+  ///
+  /// Unconditional, on the same terms [_publishTranscript] is called
+  /// unconditionally above it: this runs on EVERY device's `finish()`,
+  /// including one that never carried the recording at all, and including
+  /// one for a call that never connected. `finish()` is reached this way
+  /// from `CallSession`'s teardown regardless -- see
+  /// `CallCaptureService.wasCarryingBeforeLastStop`'s own docs for why that
+  /// is unavoidable rather than a bug this class could fix by checking
+  /// something first.
+  ///
+  /// The gate belongs in the wired closure, never here, because ONLY the
+  /// closure -- `CallAudioRecorder.finish` -- can answer "was this device
+  /// carrying" at the one moment that answer is trustworthy, and can go on
+  /// re-checking it through an upload still in flight. A gate written here
+  /// instead would have to trust a snapshot taken earlier and handed in,
+  /// which is exactly the gap the recording feature's own design docs warn
+  /// against inheriting from this method's identical-looking transcript
+  /// sibling.
+  Future<void> _publishCallAudio(String? callKey) async {
+    final publish = publishCallAudio;
+    if (publish == null) return;
+    try {
+      await publish(callKey: callKey);
+    } catch (e, s) {
+      Logs().w('Publishing the call audio half failed', e, s);
+    }
+  }
 
   /// How long a call in the timeline lasted, read from its content.
   ///

@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
+import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/features/user/public_profile_model.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/features/user/user_model.dart';
@@ -19,18 +21,65 @@ class FakePangeaController implements PangeaController {
   @override
   final UserController userController;
 
-  FakePangeaController({String? userL1Code = 'en', String? accessToken})
-    : userController = _FakeUserController(userL1Code, accessToken);
+  @override
+  final SubscriptionController subscriptionController;
+
+  /// [analyticsProfiles] serves a public analytics profile per user id — the
+  /// course leaderboard ranks on these; anyone absent gets an empty profile.
+  /// [subscribed] answers `subscriptionController.showSubscriptionGatedContent`
+  /// -- true by default, matching what the REAL controller answers before its
+  /// own state resolves (`SubscriptionLoading`), so a test that never mentions
+  /// subscriptions keeps seeing gated content exactly as it did before this
+  /// field existed (#8792).
+  FakePangeaController({
+    String? userL1Code = 'en',
+    String? accessToken,
+    Map<String, AnalyticsProfileModel> analyticsProfiles = const {},
+    bool subscribed = true,
+  }) : userController = _FakeUserController(
+         userL1Code,
+         accessToken,
+         analyticsProfiles,
+       ),
+       subscriptionController = _FakeSubscriptionController(subscribed);
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) => null;
+}
+
+/// A [SubscriptionController] whose gate is a plain fixed answer rather than
+/// the real controller's RevenueCat-backed state machine.
+///
+/// #8792's paywall needs a viewer that is subscribed or is not, without
+/// driving the real controller's private `_state`/`_inTrialWindow` machinery
+/// -- the latter reaches back into `MatrixState.pangeaController
+/// .userController.inTrialWindow()`, which is one more seam a test of an
+/// unrelated feature should not have to wire. A test that wants a viewer to
+/// DOWNGRADE mid-test installs a SECOND `FakePangeaController` over
+/// `MatrixState.pangeaController` rather than mutating this one in place --
+/// see the paywall's own "checked at read time" root principle, which is what
+/// makes swapping the whole controller equivalent to flipping this field
+/// would have been.
+class _FakeSubscriptionController implements SubscriptionController {
+  _FakeSubscriptionController(this.showSubscriptionGatedContent);
+
+  @override
+  final bool showSubscriptionGatedContent;
 
   @override
   dynamic noSuchMethod(Invocation invocation) => null;
 }
 
 class _FakeUserController implements UserController {
-  _FakeUserController(this._userL1Code, this._accessToken);
+  _FakeUserController(
+    this._userL1Code,
+    this._accessToken,
+    this._analyticsProfiles,
+  );
 
   final String? _userL1Code;
   final String? _accessToken;
+  final Map<String, AnalyticsProfileModel> _analyticsProfiles;
 
   @override
   String? get userL1Code => _userL1Code;
@@ -61,6 +110,13 @@ class _FakeUserController implements UserController {
   /// `Null is not a subtype of Future<PublicProfileModel?>`.
   @override
   Future<PublicProfileModel?> getPublicProfile(String userId) async => null;
+
+  /// The real controller answers an empty profile for a user with none, and
+  /// the member loader stores the result, so this must never be null.
+  @override
+  Future<AnalyticsProfileModel> getPublicAnalyticsProfile(
+    String userId,
+  ) async => _analyticsProfiles[userId] ?? AnalyticsProfileModel();
 
   /// Languages unset — the fresh-profile default. The chat-list preview reads
   /// this (`_LastEventPreview._showPangeaContent`), where the [noSuchMethod]

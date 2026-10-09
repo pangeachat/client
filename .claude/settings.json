@@ -5,11 +5,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$HOME/PangeaChat/.github/scripts/sync-copilot-to-claude.py\""
+            "command": "S=\"$HOME/PangeaChat/.github/scripts/sync-copilot-to-claude.py\"; [ -f \"$S\" ] || exit 0; exec python3 \"$S\""
           },
           {
             "type": "command",
-            "command": "python3 \"$HOME/PangeaChat/.github/scripts/workspace-doctor.py\""
+            "command": "S=\"$HOME/PangeaChat/.github/scripts/workspace-doctor.py\"; [ -f \"$S\" ] || exit 0; exec python3 \"$S\""
           }
         ]
       }
@@ -20,15 +20,15 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$HOME/PangeaChat/.github/scripts/intent-gate.py\""
+            "command": "S=\"$HOME/PangeaChat/.github/scripts/intent-gate.py\"; [ -f \"$S\" ] || { printf '%s' '{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"additionalContext\": \"HARNESS GUARD DOWN: the hook script $HOME/PangeaChat/.github/scripts/intent-gate.py is registered but missing, so this command ran UNCHECKED. Nothing you did caused it \\u2014 the script lives in a repo checkout, and a branch switch or an interrupted sync can move it out from under an absolute path. Restore it (`git -C ~/PangeaChat/.github checkout origin/main -- <path>`) and report it with the report-process-breach skill. Do not edit settings to route around a guard.\"}}'; exit 0; }; exec python3 \"$S\""
           },
           {
             "type": "command",
-            "command": "python3 \"$HOME/PangeaChat/.github/scripts/branch-guard.py\""
+            "command": "S=\"$HOME/PangeaChat/.github/scripts/branch-guard.py\"; [ -f \"$S\" ] || { printf '%s' '{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"additionalContext\": \"HARNESS GUARD DOWN: the hook script $HOME/PangeaChat/.github/scripts/branch-guard.py is registered but missing, so this command ran UNCHECKED. Nothing you did caused it \\u2014 the script lives in a repo checkout, and a branch switch or an interrupted sync can move it out from under an absolute path. Restore it (`git -C ~/PangeaChat/.github checkout origin/main -- <path>`) and report it with the report-process-breach skill. Do not edit settings to route around a guard.\"}}'; exit 0; }; exec python3 \"$S\""
           },
           {
             "type": "command",
-            "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-edit-path.sh\""
+            "command": "S=\"$HOME/PangeaChat/.github/scripts/pretooluse-edit-path.sh\"; [ -f \"$S\" ] || { printf '%s' '{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"additionalContext\": \"HARNESS GUARD DOWN: the hook script $HOME/PangeaChat/.github/scripts/pretooluse-edit-path.sh is registered but missing, so this command ran UNCHECKED. Nothing you did caused it \\u2014 the script lives in a repo checkout, and a branch switch or an interrupted sync can move it out from under an absolute path. Restore it (`git -C ~/PangeaChat/.github checkout origin/main -- <path>`) and report it with the report-process-breach skill. Do not edit settings to route around a guard.\"}}'; exit 0; }; exec bash \"$S\""
           }
         ]
       },
@@ -37,43 +37,43 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-prod-gate.sh\""
+            "command": "S=\"$HOME/PangeaChat/.github/scripts/pretooluse-prod-gate.sh\"; [ -f \"$S\" ] || { printf '%s' '{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"additionalContext\": \"HARNESS GUARD DOWN: the hook script $HOME/PangeaChat/.github/scripts/pretooluse-prod-gate.sh is registered but missing, so this command ran UNCHECKED. Nothing you did caused it \\u2014 the script lives in a repo checkout, and a branch switch or an interrupted sync can move it out from under an absolute path. Restore it (`git -C ~/PangeaChat/.github checkout origin/main -- <path>`) and report it with the report-process-breach skill. Do not edit settings to route around a guard.\"}}'; exit 0; }; exec bash \"$S\""
           },
           {
             "type": "command",
-            "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-commit-gate.sh\""
+            "command": "S=\"$HOME/PangeaChat/.github/scripts/pretooluse-commit-gate.sh\"; [ -f \"$S\" ] || { printf '%s' '{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"additionalContext\": \"HARNESS GUARD DOWN: the hook script $HOME/PangeaChat/.github/scripts/pretooluse-commit-gate.sh is registered but missing, so this command ran UNCHECKED. Nothing you did caused it \\u2014 the script lives in a repo checkout, and a branch switch or an interrupted sync can move it out from under an absolute path. Restore it (`git -C ~/PangeaChat/.github checkout origin/main -- <path>`) and report it with the report-process-breach skill. Do not edit settings to route around a guard.\"}}'; exit 0; }; exec bash \"$S\""
           },
           {
             "type": "command",
-            "command": "python3 \"$HOME/PangeaChat/.github/scripts/pretooluse-push-gate.py\""
+            "command": "S=\"$HOME/PangeaChat/.github/scripts/pretooluse-push-gate.py\"; [ -f \"$S\" ] || { printf '%s' '{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"additionalContext\": \"HARNESS GUARD DOWN: the hook script $HOME/PangeaChat/.github/scripts/pretooluse-push-gate.py is registered but missing, so this command ran UNCHECKED. Nothing you did caused it \\u2014 the script lives in a repo checkout, and a branch switch or an interrupted sync can move it out from under an absolute path. Restore it (`git -C ~/PangeaChat/.github checkout origin/main -- <path>`) and report it with the report-process-breach skill. Do not edit settings to route around a guard.\"}}'; exit 0; }; exec python3 \"$S\""
           },
           {
             "type": "command",
-            "command": "python3 \"$HOME/PangeaChat/.github/scripts/pretooluse-branch-gate.py\""
+            "command": "S=\"$HOME/PangeaChat/.github/scripts/pretooluse-branch-gate.py\"; [ -f \"$S\" ] || { printf '%s' '{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"additionalContext\": \"HARNESS GUARD DOWN: the hook script $HOME/PangeaChat/.github/scripts/pretooluse-branch-gate.py is registered but missing, so this command ran UNCHECKED. Nothing you did caused it \\u2014 the script lives in a repo checkout, and a branch switch or an interrupted sync can move it out from under an absolute path. Restore it (`git -C ~/PangeaChat/.github checkout origin/main -- <path>`) and report it with the report-process-breach skill. Do not edit settings to route around a guard.\"}}'; exit 0; }; exec python3 \"$S\""
           },
           {
             "type": "command",
-            "command": "python3 \"$HOME/PangeaChat/.github/scripts/pretooluse-signin-gate.py\""
+            "command": "S=\"$HOME/PangeaChat/.github/scripts/pretooluse-signin-gate.py\"; [ -f \"$S\" ] || { printf '%s' '{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"additionalContext\": \"HARNESS GUARD DOWN: the hook script $HOME/PangeaChat/.github/scripts/pretooluse-signin-gate.py is registered but missing, so this command ran UNCHECKED. Nothing you did caused it \\u2014 the script lives in a repo checkout, and a branch switch or an interrupted sync can move it out from under an absolute path. Restore it (`git -C ~/PangeaChat/.github checkout origin/main -- <path>`) and report it with the report-process-breach skill. Do not edit settings to route around a guard.\"}}'; exit 0; }; exec python3 \"$S\""
           },
           {
             "type": "command",
-            "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-issue-gate.sh\""
+            "command": "S=\"$HOME/PangeaChat/.github/scripts/pretooluse-issue-gate.sh\"; [ -f \"$S\" ] || { printf '%s' '{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"additionalContext\": \"HARNESS GUARD DOWN: the hook script $HOME/PangeaChat/.github/scripts/pretooluse-issue-gate.sh is registered but missing, so this command ran UNCHECKED. Nothing you did caused it \\u2014 the script lives in a repo checkout, and a branch switch or an interrupted sync can move it out from under an absolute path. Restore it (`git -C ~/PangeaChat/.github checkout origin/main -- <path>`) and report it with the report-process-breach skill. Do not edit settings to route around a guard.\"}}'; exit 0; }; exec bash \"$S\""
           },
           {
             "type": "command",
-            "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-merge-gate.sh\""
+            "command": "S=\"$HOME/PangeaChat/.github/scripts/pretooluse-merge-gate.sh\"; [ -f \"$S\" ] || { printf '%s' '{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"additionalContext\": \"HARNESS GUARD DOWN: the hook script $HOME/PangeaChat/.github/scripts/pretooluse-merge-gate.sh is registered but missing, so this command ran UNCHECKED. Nothing you did caused it \\u2014 the script lives in a repo checkout, and a branch switch or an interrupted sync can move it out from under an absolute path. Restore it (`git -C ~/PangeaChat/.github checkout origin/main -- <path>`) and report it with the report-process-breach skill. Do not edit settings to route around a guard.\"}}'; exit 0; }; exec bash \"$S\""
           },
           {
             "type": "command",
-            "command": "python3 \"$HOME/PangeaChat/.github/scripts/intent-gate.py\""
+            "command": "S=\"$HOME/PangeaChat/.github/scripts/intent-gate.py\"; [ -f \"$S\" ] || { printf '%s' '{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"additionalContext\": \"HARNESS GUARD DOWN: the hook script $HOME/PangeaChat/.github/scripts/intent-gate.py is registered but missing, so this command ran UNCHECKED. Nothing you did caused it \\u2014 the script lives in a repo checkout, and a branch switch or an interrupted sync can move it out from under an absolute path. Restore it (`git -C ~/PangeaChat/.github checkout origin/main -- <path>`) and report it with the report-process-breach skill. Do not edit settings to route around a guard.\"}}'; exit 0; }; exec python3 \"$S\""
           },
           {
             "type": "command",
-            "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-reminders.sh\""
+            "command": "S=\"$HOME/PangeaChat/.github/scripts/pretooluse-reminders.sh\"; [ -f \"$S\" ] || { printf '%s' '{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"additionalContext\": \"HARNESS GUARD DOWN: the hook script $HOME/PangeaChat/.github/scripts/pretooluse-reminders.sh is registered but missing, so this command ran UNCHECKED. Nothing you did caused it \\u2014 the script lives in a repo checkout, and a branch switch or an interrupted sync can move it out from under an absolute path. Restore it (`git -C ~/PangeaChat/.github checkout origin/main -- <path>`) and report it with the report-process-breach skill. Do not edit settings to route around a guard.\"}}'; exit 0; }; exec bash \"$S\""
           },
           {
             "type": "command",
-            "command": "bash \"$HOME/PangeaChat/.github/scripts/pretooluse-edit-path.sh\""
+            "command": "S=\"$HOME/PangeaChat/.github/scripts/pretooluse-edit-path.sh\"; [ -f \"$S\" ] || { printf '%s' '{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"additionalContext\": \"HARNESS GUARD DOWN: the hook script $HOME/PangeaChat/.github/scripts/pretooluse-edit-path.sh is registered but missing, so this command ran UNCHECKED. Nothing you did caused it \\u2014 the script lives in a repo checkout, and a branch switch or an interrupted sync can move it out from under an absolute path. Restore it (`git -C ~/PangeaChat/.github checkout origin/main -- <path>`) and report it with the report-process-breach skill. Do not edit settings to route around a guard.\"}}'; exit 0; }; exec bash \"$S\""
           }
         ]
       },
@@ -105,7 +105,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$HOME/PangeaChat/.github/scripts/stop-ops-direct-check.py\""
+            "command": "S=\"$HOME/PangeaChat/.github/scripts/stop-ops-direct-check.py\"; [ -f \"$S\" ] || exit 0; exec python3 \"$S\""
           }
         ]
       }
@@ -116,7 +116,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$HOME/PangeaChat/.github/scripts/sync-copilot-on-edit.sh\""
+            "command": "S=\"$HOME/PangeaChat/.github/scripts/sync-copilot-on-edit.sh\"; [ -f \"$S\" ] || exit 0; exec bash \"$S\""
           }
         ]
       },

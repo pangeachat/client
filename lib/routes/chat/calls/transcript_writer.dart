@@ -59,6 +59,7 @@ Future<bool> writeCallTranscript({
   required int chunksCaptured,
   required int chunksTranscribed,
   required int chunksLost,
+  required int chunksRefusedUnsubscribed,
   required int chunksSuppressed,
   required int chunksDiscarded,
 
@@ -83,10 +84,28 @@ Future<bool> writeCallTranscript({
   required bool drainComplete,
   String? langCode,
 
+  /// Whose speech this half is, WHEN THE WRITER IS NOT THE SPEAKER, and the
+  /// `pangea.call_audio` it was transcribed from. Both null on an AUTHENTIC half
+  /// (this device's own live capture), which is every existing call site and the
+  /// default here — so the own-half writer is unchanged. Set together only by
+  /// the whole-call transcriber (#8792), which transcribes the OTHER
+  /// participant's saved recording: [spokenBy] names that peer and
+  /// [sourceAudioEventId] the peer's own recording, the provenance anchor the
+  /// reader honours the claim against. Passed straight to
+  /// [CallTranscriptContent], whose `usableSpokenBy`/`usableEventId` guard the
+  /// wire — a malformed value is simply omitted, reading back as the legacy
+  /// "the writer is the speaker".
+  String? spokenBy,
+  String? sourceAudioEventId,
+
   /// Where this device's clock sat relative to the SFU's, or null when the two
   /// could not be read together. Null is a first-class answer and is simply
   /// omitted from the event: a half that cannot say how its clock compared is
   /// exactly the half a reader must not correct.
+  ///
+  /// On a PEER half this is the SPEAKER's own anchor (carried from their
+  /// recording), so the peer's turns land on the peer's clock exactly as if they
+  /// had written the half themselves.
   ClockAnchor? clockAnchor,
   bool encrypted = false,
   int maxBytes = kMaxHalfBytes,
@@ -110,6 +129,7 @@ Future<bool> writeCallTranscript({
           chunksCaptured: chunksCaptured,
           chunksTranscribed: chunksTranscribed,
           chunksLost: chunksLost,
+          chunksRefusedUnsubscribed: chunksRefusedUnsubscribed,
           chunksSuppressed: chunksSuppressed,
           chunksDiscarded: chunksDiscarded,
           captureDroppedMs: captureDroppedMs,
@@ -123,6 +143,12 @@ Future<bool> writeCallTranscript({
         ),
         langCode: langCode,
         deviceId: deviceId,
+        // Absent on an authentic own half (both null) and carried only by the
+        // whole-call transcriber's peer half. The content's own guards refuse a
+        // malformed value, so a peer claim that cannot be a participant, or an
+        // anchor that is not an event id, never reaches the wire.
+        spokenBy: spokenBy,
+        sourceAudioEventId: sourceAudioEventId,
         // Inside the closure with everything else, so the packer measures them.
         // A coverage statement is small beside a call's speech, and it is also
         // the one part of a half that cannot be dropped to fit: the packer
@@ -175,7 +201,20 @@ Future<bool> writeCallTranscript({
 
   await send(
     content.toJson(),
-    CallTranscriptContent.txnId(callKey, senderId, deviceId),
+    // A PEER half -- one whose `spoken_by` is set AND survives the wire guard --
+    // is discriminated by its language, so re-transcribing the same unit in a
+    // different language is a distinct event rather than a dedup'd resend of the
+    // wrong-language one. Gated on the SAME `usableSpokenBy` the content uses, so
+    // a malformed claim that reads back as authentic also keeps the authentic
+    // (undiscriminated) id. An authentic half passes null and is unchanged.
+    CallTranscriptContent.txnId(
+      callKey,
+      senderId,
+      deviceId,
+      discriminator: CallTranscriptContent.usableSpokenBy(spokenBy) != null
+          ? langCode
+          : null,
+    ),
   );
   return true;
 }

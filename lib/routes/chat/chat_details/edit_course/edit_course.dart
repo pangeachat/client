@@ -11,6 +11,7 @@ import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/course_image_builder.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
@@ -250,21 +251,25 @@ class EditCourseController extends State<EditCourse> {
                                                     context,
                                                   ).courseImage,
                                                 )
-                                              : ImageByUrl(
-                                                  imageUrl: _room?.avatar,
-                                                  width: 200.0,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                        0.0,
-                                                      ),
-                                                  replacement: Avatar(
-                                                    name: _room?.name,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                          0.0,
+                                              : CourseImageBuilder.room(
+                                                  room: _room!,
+                                                  builder: (context, image) =>
+                                                      ImageByUrl(
+                                                        imageUrl: image,
+                                                        width: 200.0,
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                              0.0,
+                                                            ),
+                                                        replacement: Avatar(
+                                                          name: _room?.name,
+                                                          borderRadius:
+                                                              BorderRadius.circular(
+                                                                0.0,
+                                                              ),
+                                                          size: 200.0,
                                                         ),
-                                                    size: 200.0,
-                                                  ),
+                                                      ),
                                                 ),
                                         ),
                                         Positioned(

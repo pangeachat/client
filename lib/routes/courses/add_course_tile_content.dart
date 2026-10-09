@@ -3,6 +3,8 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/extensions/unread_rooms_client_extension.dart';
 import 'package:fluffychat/pangea/spaces/course_role_filter.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
@@ -36,7 +38,7 @@ abstract class AddCourseTileContent {
 
   Future<Event?>? get unreadCoursePingEvent => null;
 
-  Set<String?>? get courseChildrenIds => null;
+  List<Room>? get unreadRooms => null;
 
   String? get expandedContent => null;
 }
@@ -44,7 +46,12 @@ abstract class AddCourseTileContent {
 class RoomAddCourseTileContent extends AddCourseTileContent {
   @override
   final Room space;
-  RoomAddCourseTileContent(this.space);
+
+  /// The client-wide [UnreadRoomsClientExtension.unreadRooms], read once for
+  /// the whole list.
+  final List<Room> clientUnreadRooms;
+
+  RoomAddCourseTileContent(this.space, this.clientUnreadRooms);
 
   @override
   String title(_) => space.getLocalizedDisplayname();
@@ -65,8 +72,7 @@ class RoomAddCourseTileContent extends AddCourseTileContent {
   Future<Event?>? get unreadCoursePingEvent => space.unreadCoursePingEvent;
 
   @override
-  Set<String?> get courseChildrenIds =>
-      space.spaceChildren.map((c) => c.roomId).toSet();
+  List<Room> get unreadRooms => space.spaceChildrenAmong(clientUnreadRooms);
 
   @override
   String? get courseId => space.coursePlan?.uuid;

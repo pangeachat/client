@@ -71,12 +71,27 @@ void main() {
   /// which records only the ones that landed.
   late List<List<String>> publishAttempts;
 
+  /// Every call [publishCallAudio] received, by the call key it was handed.
+  /// [CallRecord] calls this UNCONDITIONALLY -- see `_publishCallAudio` -- so
+  /// this is what proves that, unlike [published], which only ever records a
+  /// half that actually landed.
+  late List<String?> audioPublishCalls;
+
+  /// The two half-publishes in the order they were invoked ('audio' /
+  /// 'transcript'). What proves the audio half publishes FIRST when the
+  /// recording-based transcript is wired -- so `recordingSegments` is filled
+  /// before the transcript half reads it -- and keeps the original
+  /// transcript-first order when it is off.
+  late List<String> callOrder;
+
   setUp(() {
     written = [];
     txids = [];
     recorded = [];
     published = [];
     publishAttempts = [];
+    audioPublishCalls = [];
+    callOrder = [];
   });
 
   Future<CallTranscriptSink> sinkWith(
@@ -102,9 +117,20 @@ void main() {
     bool withPublisher = false,
     Object? publishError,
     int publishFailures = 0,
+    bool withAudioPublisher = false,
+    Object? audioPublishError,
+
+    /// Non-null wires the recording-based transcript source (the feature ON):
+    /// CallRecord prefers these segments when the list is non-empty and reorders
+    /// the two publishes. Null (the default) is the feature OFF -- the live
+    /// transcript half, published first, exactly as before.
+    List<TranscriptSegment>? recordingSegments,
   }) => CallRecord(
     roomId: '!r:server',
     transcripts: transcripts,
+    recordingSegments: recordingSegments == null
+        ? null
+        : () => recordingSegments,
     sendEvent: (content, txid) async {
       txids.add(txid);
       if (writeError != null) throw writeError;
@@ -123,11 +149,13 @@ void main() {
             required int chunksCaptured,
             required int chunksTranscribed,
             required int chunksLost,
+            required int chunksRefusedUnsubscribed,
             required int chunksSuppressed,
             required bool captureRefused,
             required bool drainComplete,
             String? langCode,
           }) async {
+            callOrder.add('transcript');
             publishAttempts.add(segments.map((s) => s.text).toList());
             if (publishError != null) throw publishError;
             if (publishAttempts.length <= publishFailures) {
@@ -141,6 +169,13 @@ void main() {
               lost: chunksLost,
               drained: drainComplete,
             ));
+          },
+    publishCallAudio: !withAudioPublisher
+        ? null
+        : ({required String? callKey}) async {
+            callOrder.add('audio');
+            audioPublishCalls.add(callKey);
+            if (audioPublishError != null) throw audioPublishError;
           },
   );
 
@@ -282,6 +317,7 @@ void main() {
               required int chunksCaptured,
               required int chunksTranscribed,
               required int chunksLost,
+              required int chunksRefusedUnsubscribed,
               required int chunksSuppressed,
               required bool captureRefused,
               required bool drainComplete,
@@ -584,6 +620,169 @@ void main() {
 
     expect(recorded.single.uses, single * 3);
   });
+
+  group('publishing the call-audio half', () {
+    test(
+      'is called with the call key, beside the transcript publish',
+      () async {
+        final r = record(
+          await sinkWith(() => spokenWord('hola')),
+          withAudioPublisher: true,
+        );
+        await r.finish(
+          duration: const Duration(seconds: 30),
+          video: false,
+          callKey: '\$anchor',
+        );
+        expect(audioPublishCalls, ['\$anchor']);
+      },
+    );
+
+    test(
+      'is called UNCONDITIONALLY, even on a device that never recorded',
+      () async {
+        // `CallRecord.finish` is reached from `CallSession`'s teardown on
+        // EVERY device, whether or not it ever carried the recording -- the
+        // gate on that has to live inside the wired publisher, which is
+        // exactly what `CallAudioRecorder.finish`'s own `wasCarrier` check is
+        // for. This only proves the OUTER call happens; the ownership gate
+        // itself is pinned in call_audio_recorder_test.dart.
+        final r = record(
+          await sinkWith(() => spokenWord('hola')),
+          withAudioPublisher: true,
+        );
+        await r.finish(
+          duration: const Duration(seconds: 30),
+          video: false,
+          callKey: '\$anchor',
+          answered: false,
+        );
+        expect(audioPublishCalls, ['\$anchor']);
+      },
+    );
+
+    test('is not called when the call never mattered', () async {
+      final r = record(
+        await sinkWith(() => spokenWord('hola')),
+        withAudioPublisher: true,
+      );
+      await r.finish(
+        duration: const Duration(seconds: 30),
+        video: false,
+        callKey: '\$anchor',
+        mattered: false,
+      );
+      expect(audioPublishCalls, isEmpty);
+    });
+
+    test('a failure does not disturb the analytics credit', () async {
+      final r = record(
+        await sinkWith(() => spokenWord('hola')),
+        withAudioPublisher: true,
+        audioPublishError: StateError('upload refused'),
+      );
+      await expectLater(
+        r.finish(
+          duration: const Duration(seconds: 30),
+          video: false,
+          callKey: '\$anchor',
+        ),
+        completes,
+      );
+      expect(recorded, hasLength(1), reason: 'the credit still lands');
+    });
+
+    test('is a no-op when nothing is wired up', () async {
+      final r = record(await sinkWith(() => spokenWord('hola')));
+      await expectLater(
+        r.finish(
+          duration: const Duration(seconds: 30),
+          video: false,
+          callKey: '\$anchor',
+        ),
+        completes,
+      );
+    });
+  });
+
+  group('the recording-based transcript half', () {
+    // The whole-recording segments this device would produce; deliberately
+    // distinct text from the live sink's 'hola' so a test can tell which
+    // source was published.
+    List<TranscriptSegment> fromRecording() => [
+      TranscriptSegment('spoken from the whole recording', atMs: 1000),
+    ];
+
+    test(
+      'prefers the recording-based segments over the live-chunk ones',
+      () async {
+        final r = record(
+          await sinkWith(() => spokenWord('hola')),
+          withPublisher: true,
+          withAudioPublisher: true,
+          recordingSegments: fromRecording(),
+        );
+        await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+
+        expect(publishAttempts, hasLength(1));
+        expect(publishAttempts.single, ['spoken from the whole recording']);
+      },
+    );
+
+    test(
+      'falls back to the live-chunk segments when the recording produced none',
+      () async {
+        final sink = await sinkWith(() => spokenWord('hola'));
+        // The live half this device would otherwise publish, read straight from
+        // the sink so the assertion tracks whatever the live path yields.
+        final live = sink.segments.map((s) => s.text).toList();
+        expect(live, isNotEmpty);
+
+        final r = record(
+          sink,
+          withPublisher: true,
+          withAudioPublisher: true,
+          // Feature ON but this device has no usable recording-based half.
+          recordingSegments: const <TranscriptSegment>[],
+        );
+        await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+
+        expect(publishAttempts, hasLength(1));
+        expect(publishAttempts.single, live);
+      },
+    );
+
+    test(
+      'publishes the audio half BEFORE the transcript when it is wired',
+      () async {
+        final r = record(
+          await sinkWith(() => spokenWord('hola')),
+          withPublisher: true,
+          withAudioPublisher: true,
+          recordingSegments: fromRecording(),
+        );
+        await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+
+        expect(callOrder, ['audio', 'transcript']);
+      },
+    );
+
+    test(
+      'keeps the original transcript-first order when the feature is off',
+      () async {
+        final r = record(
+          await sinkWith(() => spokenWord('hola')),
+          withPublisher: true,
+          withAudioPublisher: true,
+          // recordingSegments left null -- feature OFF.
+        );
+        await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+
+        expect(callOrder, ['transcript', 'audio']);
+      },
+    );
+  });
+
   group('which side writes the call', () {
     test(
       'the answering side credits its speech without posting a call',
@@ -994,6 +1193,7 @@ void main() {
               required int chunksCaptured,
               required int chunksTranscribed,
               required int chunksLost,
+              required int chunksRefusedUnsubscribed,
               required int chunksSuppressed,
               required bool captureRefused,
               required bool drainComplete,

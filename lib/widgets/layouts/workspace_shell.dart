@@ -26,6 +26,7 @@ import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
 import 'package:fluffychat/pangea/extensions/friend_dm_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/extensions/unread_rooms_client_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/course_role_filter.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
@@ -318,6 +319,14 @@ class WorkspaceShell extends StatelessWidget {
       // keyed nodes.
       container: true,
       explicitChildNodes: true,
+      // A Scaffold registers with the NEAREST ScaffoldMessenger, so this one
+      // owns every Scaffold in the workspace and the MaterialApp's own
+      // messenger ends up with none. Anything pushed on the root navigator — a
+      // `showDialog`, an overlay — therefore resolves `ScaffoldMessenger.of` to
+      // that empty root messenger, and a snackbar sent to it asserts ("no
+      // descendant Scaffolds to present to") rather than showing. Such a
+      // surface captures its messenger from the context that OPENED it, below
+      // this point (see `showGoalReportDialog`).
       child: ScaffoldMessenger(
         child: FocusTraversalGroup(
           // Tab order on the workspace: the [WorkspaceOrder] rank on each
@@ -960,6 +969,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                     builder: (context, knockingUsers) {
                       final avatar = CourseAvatar(
                         avatar: shortcutCourse.avatar,
+                        courseId: shortcutCourse.coursePlan?.uuid,
                         displayname: shortcutCourse.getLocalizedDisplayname(
                           MatrixLocals(l10n),
                         ),
@@ -1015,7 +1025,9 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                   .where((s) => s.hasRoomUpdate)
                   .rateLimit(const Duration(seconds: 1)),
               builder: (context, _) => UnreadRoomsBadge(
-                filter: (room) => room.firstSpaceParent == null,
+                rooms: client.unreadRooms
+                    .where((room) => room.firstSpaceParent == null)
+                    .toList(),
                 // Sits at the icon's corner with the web rail's proportions: the
                 // rail badge covers ~30% of its 41px icon, so over this 24px icon
                 // the badge must ride further up-and-out — at (4,4) it covered

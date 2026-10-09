@@ -438,6 +438,110 @@ void main() {
         CallTranscriptContent.txnId(_callKey, _alice, 'PHONE'),
       );
     });
+
+    test('an AUTHENTIC half id is byte-identical to the pre-#8792 form', () {
+      // The authentic id must not change: passing no discriminator (or an empty
+      // one) yields exactly the legacy string.
+      expect(
+        CallTranscriptContent.txnId('c', '@w:h', 'D'),
+        'pangea.call_transcript:c:@w:h:D',
+      );
+      expect(
+        CallTranscriptContent.txnId('c', '@w:h', 'D', discriminator: ''),
+        'pangea.call_transcript:c:@w:h:D',
+      );
+    });
+
+    test(
+      'a PEER half never collides with an authentic half (reviewer input)',
+      () {
+        // usableDeviceId accepts colons, so authentic device "D:en" and peer
+        // (device "D", language "en") would collapse under the old
+        // append-after-device scheme.
+        // Mutation proof: reverting the peer id to the pre-fix form
+        // 'pangea.call_transcript:$callKey:$senderId:$device:$discriminator' (no
+        // namespace, no length prefix) makes these equal -> RED.
+        expect(
+          CallTranscriptContent.txnId('c', '@w:h', 'D:en'),
+          isNot(
+            CallTranscriptContent.txnId('c', '@w:h', 'D', discriminator: 'en'),
+          ),
+        );
+      },
+    );
+
+    test('the peer namespace keeps a peer id disjoint from a reconstructed '
+        'authentic id', () {
+      // With every interior field length-framed, a peer body is still a plain
+      // string an authentic device id could spell out verbatim: an authentic
+      // (callKey "1", sender "k", device "1:s:1:d:x") reproduces the peer body
+      // for (callKey "k", sender "s", device "d", language "x") exactly. ONLY
+      // the distinct `.spoken` namespace keeps the two apart.
+      // Mutation proof: dropping the `.spoken` namespace makes these equal -> RED.
+      expect(
+        CallTranscriptContent.txnId('1', 'k', '1:s:1:d:x'),
+        isNot(CallTranscriptContent.txnId('k', 's', 'd', discriminator: 'x')),
+      );
+    });
+
+    test(
+      'a device id with the separator stays injective (length-delimited)',
+      () {
+        // (device "A:B", language "en") and (device "A", language "B:en") share
+        // one colon-joined body; the device length prefix disambiguates them.
+        // Mutation proof: removing the device `${device.length}:` prefix makes
+        // both "...:@w:h:A:B:en" -> equal -> RED.
+        expect(
+          CallTranscriptContent.txnId('c', '@w:h', 'A:B', discriminator: 'en'),
+          isNot(
+            CallTranscriptContent.txnId(
+              'c',
+              '@w:h',
+              'A',
+              discriminator: 'B:en',
+            ),
+          ),
+        );
+      },
+    );
+
+    test('the callKey/senderId boundary is injective', () {
+      // callKey and senderId are variable-length too, so framing only the device
+      // still lets the boundary between them slide: (callKey "a:b", sender "c")
+      // and (callKey "a", sender "b:c") share the body "a:b:c". Framing all three
+      // interior fields keeps them distinct.
+      // Mutation proof: framing only the device (reverting the callKey/senderId
+      // length prefixes) makes both
+      // "pangea.call_transcript.spoken:a:b:c:1:D:en" -> equal -> RED.
+      expect(
+        CallTranscriptContent.txnId('a:b', 'c', 'D', discriminator: 'en'),
+        isNot(
+          CallTranscriptContent.txnId('a', 'b:c', 'D', discriminator: 'en'),
+        ),
+      );
+    });
+
+    test('a PEER half in a DIFFERENT language gets a different id', () {
+      // A picker re-transcribe of the same unit in another language must be a
+      // distinct event, not a dedup'd resend of the wrong-language one.
+      // Mutation proof: dropping the language from the peer id makes these
+      // equal -> RED.
+      expect(
+        CallTranscriptContent.txnId('c', '@w:h', 'D', discriminator: 'en'),
+        isNot(
+          CallTranscriptContent.txnId('c', '@w:h', 'D', discriminator: 'es'),
+        ),
+      );
+    });
+
+    test('a PEER half in the SAME language keeps one id (idempotent)', () {
+      // An identical-language network retry is still a resend and must collapse,
+      // exactly as an authentic half's retry does.
+      expect(
+        CallTranscriptContent.txnId('c', '@w:h', 'D', discriminator: 'en'),
+        CallTranscriptContent.txnId('c', '@w:h', 'D', discriminator: 'en'),
+      );
+    });
   });
 
   group('device_id on the wire', () {
@@ -1001,6 +1105,120 @@ void main() {
         CaptureSpan.of(fromMs: 1000, toMs: 2000),
         const CaptureSpan(fromMs: 1000, toMs: 2000),
       );
+    });
+  });
+
+  group('spokenBy and the source audio anchor on the wire', () {
+    const bob = '@bob:example.com';
+
+    test('a peer-produced half round-trips both fields', () {
+      final parsed = CallTranscriptContent.fromJson(
+        CallTranscriptContent(
+          callKey: _callKey,
+          segments: [TranscriptSegment('hola')],
+          accounting: const HalfAccounting(
+            chunksCaptured: 1,
+            chunksTranscribed: 1,
+          ),
+          spokenBy: _alice,
+          sourceAudioEventId: '\$audio:example.com',
+        ).toJson(),
+      );
+      expect(parsed, isNotNull);
+      expect(parsed!.spokenBy, _alice);
+      expect(parsed.sourceAudioEventId, '\$audio:example.com');
+    });
+
+    test('an authentic half writes NEITHER key', () {
+      // Absence, not an empty value, is what distinguishes a legacy/authentic
+      // half from a peer-produced one. Writing an empty value would be a third,
+      // meaningless state on the wire.
+      final json = _content().toJson();
+      expect(json.containsKey('spoken_by'), isFalse);
+      expect(json.containsKey('source_audio_event_id'), isFalse);
+    });
+
+    test('a spokenBy that is not a well-formed user id reads as ABSENT', () {
+      // A value that cannot be a Matrix user can never be a call participant,
+      // so it can never be honoured -- it reads as the legacy "the writer is
+      // the speaker", never as a rejected half.
+      for (final bad in ['alice', '@', '@:example.com', '@alice', '']) {
+        final parsed = CallTranscriptContent.fromJson({
+          'call_key': _callKey,
+          'segments': [
+            {'text': 'hola'},
+          ],
+          'spoken_by': bad,
+          'source_audio_event_id': '\$audio:example.com',
+        });
+        expect(parsed?.spokenBy, isNull, reason: 'refused: "$bad"');
+      }
+    });
+
+    test('a spokenBy this reader would refuse is never written', () {
+      // The one guard governs BOTH directions: a value refused on read is never
+      // emitted on write either.
+      final json = CallTranscriptContent(
+        callKey: _callKey,
+        segments: [TranscriptSegment('hola')],
+        accounting: const HalfAccounting(
+          chunksCaptured: 1,
+          chunksTranscribed: 1,
+        ),
+        spokenBy: 'not-a-user-id',
+        sourceAudioEventId: '\$audio:example.com',
+      ).toJson();
+      expect(json.containsKey('spoken_by'), isFalse);
+    });
+
+    test('an over-length spokenBy or source id reads as ABSENT', () {
+      final longUser = '@${'a' * CallTranscriptContent.maxUserIdChars}:x.com';
+      final longId = '\$${'e' * CallTranscriptContent.maxEventIdChars}';
+      final parsed = CallTranscriptContent.fromJson({
+        'call_key': _callKey,
+        'segments': [
+          {'text': 'hola'},
+        ],
+        'spoken_by': longUser,
+        'source_audio_event_id': longId,
+      });
+      expect(parsed?.spokenBy, isNull);
+      expect(parsed?.sourceAudioEventId, isNull);
+    });
+
+    test('an empty source audio id reads as ABSENT', () {
+      final parsed = CallTranscriptContent.fromJson({
+        'call_key': _callKey,
+        'segments': [
+          {'text': 'hola'},
+        ],
+        'spoken_by': bob,
+        'source_audio_event_id': '',
+      });
+      expect(parsed?.sourceAudioEventId, isNull);
+    });
+
+    test('the new fields do not disturb the existing ones', () {
+      // A peer half still round-trips everything a legacy reader depended on.
+      final parsed = CallTranscriptContent.fromJson(
+        CallTranscriptContent(
+          callKey: _callKey,
+          segments: [TranscriptSegment('hola'), TranscriptSegment('que tal')],
+          accounting: const HalfAccounting(
+            chunksCaptured: 2,
+            chunksTranscribed: 2,
+          ),
+          langCode: 'es',
+          deviceId: 'devA',
+          spokenBy: _alice,
+          sourceAudioEventId: '\$audio:example.com',
+        ).toJson(),
+      );
+      expect(parsed!.segments.map((s) => s.text), ['hola', 'que tal']);
+      expect(parsed.langCode, 'es');
+      expect(parsed.deviceId, 'devA');
+      expect(parsed.spokenBy, _alice);
+      expect(parsed.sourceAudioEventId, '\$audio:example.com');
     });
   });
 }

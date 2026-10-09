@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
 
 class AnalyticsPracticeExerciseExampleMessage extends StatelessWidget {
   final Future<List<InlineSpan>?> future;
+  final String langCode;
 
-  const AnalyticsPracticeExerciseExampleMessage(this.future, {super.key});
+  const AnalyticsPracticeExerciseExampleMessage(
+    this.future, {
+    required this.langCode,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +32,16 @@ class AnalyticsPracticeExerciseExampleMessage extends StatelessWidget {
             color: Theme.of(context).colorScheme.primary,
             borderRadius: BorderRadius.circular(16),
           ),
-          child: RichText(
-            textScaler: MediaQuery.textScalerOf(context),
-            text: TextSpan(
-              style: textStyle?.copyWith(
-                color: Theme.of(context).colorScheme.onPrimary,
+          child: LanguageSemantics(
+            langCode: langCode,
+            child: RichText(
+              textScaler: MediaQuery.textScalerOf(context),
+              text: TextSpan(
+                style: textStyle?.copyWith(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+                children: snapshot.data!,
               ),
-              children: snapshot.data!,
             ),
           ),
         );

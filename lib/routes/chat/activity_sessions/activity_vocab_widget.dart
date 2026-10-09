@@ -16,6 +16,7 @@ import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_details_row.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
@@ -294,13 +295,17 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
         ...widget.vocab.map((v) {
           final isNew = _isNew(v);
 
-          return _VocabChip(
-            v: v,
-            isUsed: widget.usedVocab?.contains(v.lemma.toLowerCase()) ?? false,
-            isNew: isNew,
-            isSelected: _selectedVocab == v,
-            onTap: () => _selectVocab(v, isNew: isNew),
-            target: _vocabKey(v),
+          return LanguageSemantics(
+            langCode: widget.langCode,
+            child: _VocabChip(
+              v: v,
+              isUsed:
+                  widget.usedVocab?.contains(v.lemma.toLowerCase()) ?? false,
+              isNew: isNew,
+              isSelected: _selectedVocab == v,
+              onTap: () => _selectVocab(v, isNew: isNew),
+              target: _vocabKey(v),
+            ),
           );
         }),
       ],

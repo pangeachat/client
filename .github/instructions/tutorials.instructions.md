@@ -79,6 +79,8 @@ A step that needs UI state prepared — a panel open, a toolbar shown, a message
 
 **A step that opens a panel navigates through the workspace URL**, exactly as the learner would, then checks that it opened. The URL is the single source of truth for which panels are open ([routing](routing.instructions.md)); a step must never reach past it into panel state.
 
+**A target inside a scroll view is brought into view before its step measures it.** Nothing can scroll once the tutorial is up — a tap step absorbs every pointer, and an armed step's spotlight passes taps but not scrolls — so a list that starts below the fold would stay there for the whole run, lit straight through the controls beneath it ([#9029](https://github.com/pangeachat/client/issues/9029)). The launcher scrolls the target fully on screen first, its top edge winning when it is taller than the viewport, and the spotlight is cut to the slice the viewport shows, so a long list lights what the learner can see and nothing under it.
+
 **A step whose target is not on screen is skipped, not stalled.** Two cases, one rule. The wide nav rail and the narrow bottom nav are different widget trees for the same destinations, so a step names the destination and whichever tree is mounted answers it. And a step can be skipped by the learner's path rather than their screen size — joining an already-open session goes straight to the chat, so the waiting-screen step of the activity tutorial has no target and the tutorial simply starts at its next step.
 
 ## Who is offered a tutorial

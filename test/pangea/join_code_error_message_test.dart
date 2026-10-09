@@ -21,7 +21,7 @@ void main() {
 
   group('SpaceCodeController.isCodeNotFound', () {
     test(
-      'is true for the 404 CODE_NOT_FOUND, a legacy 400, and the client-side empty result',
+      'is true for the 404 CODE_NOT_FOUND, a malformed code\'s 400, and the client-side empty result',
       () {
         expect(
           SpaceCodeController.isCodeNotFound(
@@ -45,6 +45,44 @@ void main() {
         );
         expect(SpaceCodeController.isCodeNotFound(http(429)), isFalse);
         expect(SpaceCodeController.isCodeNotFound(Exception('join')), isFalse);
+      },
+    );
+  });
+
+  group('SpaceCodeController.isRejectedInput', () {
+    test(
+      'is true for a code matching nothing and for text that is not a code',
+      () {
+        expect(
+          SpaceCodeController.isRejectedInput(
+            http(404, detail: 'ORG.PANGEA.CODE_NOT_FOUND'),
+          ),
+          isTrue,
+        );
+        // A learner typing a course name ("Semana 6", CLIENT-EWS).
+        expect(
+          SpaceCodeController.isRejectedInput(
+            http(400, detail: 'M_INVALID_PARAM'),
+          ),
+          isTrue,
+        );
+        expect(
+          SpaceCodeController.isRejectedInput(NotFoundException()),
+          isTrue,
+        );
+      },
+    );
+
+    test(
+      'is false for a 400 without the errcode — a request we built wrong',
+      () {
+        expect(SpaceCodeController.isRejectedInput(http(400)), isFalse);
+        expect(
+          SpaceCodeController.isRejectedInput(
+            http(500, detail: 'ORG.PANGEA.INVITE_FAILED'),
+          ),
+          isFalse,
+        );
       },
     );
   });

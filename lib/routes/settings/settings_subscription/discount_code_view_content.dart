@@ -43,19 +43,24 @@ class DiscountCodeViewContent extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border(left: BorderSide(color: theme.disabledColor)),
             ),
-            child: ElevatedButton(
-              onPressed: viewModel.validatePromoCode,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: theme.colorScheme.primary,
-                foregroundColor: theme.colorScheme.onPrimary,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(32.0),
-                    bottomRight: Radius.circular(32.0),
+            child: ValueListenableBuilder(
+              valueListenable: viewModel.controller,
+              builder: (context, _, _) => ElevatedButton(
+                onPressed: viewModel.canValidate
+                    ? viewModel.validatePromoCode
+                    : null,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: theme.colorScheme.primary,
+                  foregroundColor: theme.colorScheme.onPrimary,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(32.0),
+                      bottomRight: Radius.circular(32.0),
+                    ),
                   ),
                 ),
+                child: Text(L10n.of(context).apply),
               ),
-              child: Text(L10n.of(context).apply),
             ),
           ),
         ],

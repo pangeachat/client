@@ -32,6 +32,7 @@ import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/tutorials/tutorial_seen_backfill.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -858,6 +859,10 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     String targetKey, {
     required TutorialStepArming arming,
   }) async {
+    if (!mounted) return;
+    // Both targets sit under the media hero in the page's scroll view, so on
+    // a short viewport they start below the fold (#9029).
+    await TutorialTarget.ensureVisible(targetKey);
     if (!mounted) return;
     _tutorials.launchTutorial(
       context: context,

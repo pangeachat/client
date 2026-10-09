@@ -10,6 +10,7 @@ import 'package:matrix/matrix.dart' hide Result;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -598,7 +599,9 @@ class PangeaMessageEvent {
       }
     }
 
-    return translations.firstWhereOrNull((t) => t.langCode == langCode);
+    return translations.firstWhereOrNull(
+      (t) => PLanguageStore.sameWrittenLanguage(t.langCode, langCode),
+    );
   }
 
   Future<PangeaAudioFile> requestTextToSpeech(
@@ -779,6 +782,8 @@ class PangeaMessageEvent {
     return stt;
   }
 
+  /// Translates the transcript into [langCode], the reader's full L1 code.
+  /// [l1Code] and [l2Code] are only the transcription's language hints.
   Future<String> requestSttTranslation({
     required String langCode,
     required String l1Code,
@@ -792,9 +797,9 @@ class PangeaMessageEvent {
     final res = await FullTextTranslationRepo.instance.get(
       FullTextTranslationRequestModel(
         text: stt.transcript.text,
-        tgtLang: l1Code,
+        tgtLang: langCode,
         userL2: l2Code,
-        userL1: l1Code,
+        userL1: langCode,
       ),
     );
 
@@ -804,7 +809,7 @@ class PangeaMessageEvent {
 
     final translation = SttTranslationModel(
       translation: res.result!.bestTranslation,
-      langCode: l1Code,
+      langCode: langCode,
     );
 
     _sendSttTranslationEvent(sttTranslation: translation);
@@ -851,17 +856,24 @@ class PangeaMessageEvent {
     if (feedback == null) {
       final includedIT =
           originalSent?.choreo?.endedWithIT(originalSent!.text) == true;
+      // A same-base rep in another script (zh for a zh-TW reader) is not L1.
       RepresentationEvent? rep;
       if (!includedIT) {
         // if the message didn't go through translation, get any l1 rep
-        rep = _representationByLanguage(_l1Code!);
+        rep = _representationByLanguage(
+          _l1Code!,
+          filter: (rep) =>
+              PLanguageStore.sameWrittenLanguage(rep.langCode, _l1Code!),
+        );
       } else {
         // if the message went through translation, get the non-original
         // l1 rep since originalWritten could contain some l2 words
         // (https://github.com/pangeachat/client/issues/3591)
         rep = _representationByLanguage(
           _l1Code!,
-          filter: (rep) => !rep.content.originalWritten,
+          filter: (rep) =>
+              !rep.content.originalWritten &&
+              PLanguageStore.sameWrittenLanguage(rep.langCode, _l1Code!),
         );
       }
       if (rep != null) {

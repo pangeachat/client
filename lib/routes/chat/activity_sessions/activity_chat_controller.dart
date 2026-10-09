@@ -21,6 +21,7 @@ import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityChatController {
@@ -119,11 +120,13 @@ class ActivityChatController {
   }
 
   /// All summary fetches route through here so the local failure flag tracks
-  /// the outcome — see [summaryFetchFailed].
-  Future<void> fetchSummaries({String? feedback}) async {
+  /// the outcome — see [summaryFetchFailed]. Returns whether the fetch
+  /// succeeded.
+  Future<bool> fetchSummaries({String? feedback}) async {
     if (!_disposed) summaryFetchFailed.value = false;
     final ok = await room.fetchSummariesByL1(feedback: feedback);
     if (!_disposed) summaryFetchFailed.value = !ok && !hasSummary;
+    return ok;
   }
 
   void _setAnalyticsSubscription() {
@@ -318,11 +321,65 @@ class ActivityChatController {
         onSubmit: (feedback) => Navigator.of(context).pop(feedback),
       ),
     );
-    if (resp == null || resp.isEmpty) {
+    if (resp == null || resp.isEmpty || !context.mounted) {
       return;
     }
 
-    await fetchSummaries(feedback: resp);
+    await regenerateSummaryWithFeedback(context, resp);
+  }
+
+  /// Regenerates the summary with [feedback], telling the learner it is under
+  /// way and then whether it went through.
+  @visibleForTesting
+  Future<void> regenerateSummaryWithFeedback(
+    BuildContext context,
+    String feedback,
+  ) async {
+    // The summary card swaps to its loading placeholder while the summary
+    // regenerates, unmounting [context], so capture what the result needs now.
+    final messenger = ScaffoldMessenger.of(context);
+    final l10n = L10n.of(context);
+    final spinnerColor = Theme.of(context).colorScheme.onInverseSurface;
+
+    // Regeneration takes a while, so say it has started. Clearing the current
+    // snackbar first keeps this one at the front of the queue, which closing
+    // it through its controller requires.
+    messenger.hideCurrentSnackBar();
+    final processing = messenger.showSnackBarAnnounced(
+      SnackBar(
+        content: Row(
+          spacing: 12.0,
+          children: [
+            SizedBox.square(
+              dimension: 16.0,
+              child: CircularProgressIndicator(
+                strokeWidth: 2.0,
+                color: spinnerColor,
+              ),
+            ),
+            Expanded(child: Text(l10n.summaryFeedbackProcessing)),
+          ],
+        ),
+        persist: true,
+        showCloseIcon: true,
+      ),
+      announcement: l10n.summaryFeedbackProcessing,
+    );
+    var processingShown = true;
+    unawaited(processing.closed.then((_) => processingShown = false));
+
+    final ok = await fetchSummaries(feedback: feedback);
+    if (!messenger.mounted) return;
+    if (processingShown) processing.close();
+    messenger.showSnackBarAnnounced(
+      SnackBar(
+        content: Text(
+          ok ? l10n.summaryFeedbackReceived : l10n.summaryFeedbackFailed,
+        ),
+        showCloseIcon: true,
+      ),
+      assertive: !ok,
+    );
   }
 
   Future<void> _onLeaveActivitySession() async {

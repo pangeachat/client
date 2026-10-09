@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/choice_cards/audio_choice_card.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/choice_cards/game_choice_card.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/choice_cards/grammar_choice_card.dart';
@@ -55,6 +56,7 @@ class AnalyticsPracticeExerciseChoiceCard extends StatelessWidget {
           targetId: targetId,
           displayText: choiceText,
           emoji: choiceEmoji,
+          langCode: analyticsPracticeExercise.langCode,
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
@@ -62,20 +64,24 @@ class AnalyticsPracticeExerciseChoiceCard extends StatelessWidget {
           isSelected: isSelected,
         );
 
+      // The choice is a word in the exercise's language, so the whole card is.
       case PracticeExerciseTypeEnum.lemmaAudio:
-        return AudioChoiceCard(
-          key: ValueKey(
-            '${constructId.string}_${exerciseType.name}_audio_$choiceId',
+        return LanguageSemantics(
+          langCode: analyticsPracticeExercise.langCode,
+          child: AudioChoiceCard(
+            key: ValueKey(
+              '${constructId.string}_${exerciseType.name}_audio_$choiceId',
+            ),
+            choiceId: choiceId,
+            targetId: targetId,
+            displayText: choiceText,
+            textLanguage: MatrixState.pangeaController.userController.userL2!,
+            onPressed: onPressed,
+            isCorrect: isCorrect,
+            isEnabled: enabled,
+            isSelected: isSelected,
+            showHint: showHint,
           ),
-          choiceId: choiceId,
-          targetId: targetId,
-          displayText: choiceText,
-          textLanguage: MatrixState.pangeaController.userController.userL2!,
-          onPressed: onPressed,
-          isCorrect: isCorrect,
-          isEnabled: enabled,
-          isSelected: isSelected,
-          showHint: showHint,
         );
 
       case PracticeExerciseTypeEnum.grammarCategory:
@@ -98,20 +104,24 @@ class AnalyticsPracticeExerciseChoiceCard extends StatelessWidget {
       case PracticeExerciseTypeEnum.grammarError:
         final exercise =
             analyticsPracticeExercise as GrammarErrorPracticeExerciseModel;
-        return GameChoiceCard(
-          key: ValueKey(
-            '${exercise.errorLength}_${exercise.errorOffset}_${exercise.eventID}_${exerciseType.name}_grammar_error_$choiceId',
-          ),
-          shouldFlip: false,
-          targetId: targetId,
-          onPressed: onPressed,
-          isCorrect: isCorrect,
-          height: cardHeight,
-          isEnabled: enabled,
-          isSelected: isSelected,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.0),
-            child: Text(choiceText),
+        // A correction in the exercise's language.
+        return LanguageSemantics(
+          langCode: exercise.langCode,
+          child: GameChoiceCard(
+            key: ValueKey(
+              '${exercise.errorLength}_${exercise.errorOffset}_${exercise.eventID}_${exerciseType.name}_grammar_error_$choiceId',
+            ),
+            shouldFlip: false,
+            targetId: targetId,
+            onPressed: onPressed,
+            isCorrect: isCorrect,
+            height: cardHeight,
+            isEnabled: enabled,
+            isSelected: isSelected,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              child: Text(choiceText),
+            ),
           ),
         );
 

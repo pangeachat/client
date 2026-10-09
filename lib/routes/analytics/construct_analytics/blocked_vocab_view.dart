@@ -182,6 +182,10 @@ class _BlockedVocabViewState extends State<BlockedVocabView>
                                 final item = blocked[index];
                                 return VocabAnalyticsListTile(
                                   constructId: item.id,
+                                  langCode: MatrixState
+                                      .pangeaController
+                                      .userController
+                                      .userL2Code,
                                   level: item.lemmaCategory,
                                   textColor: item.lemmaCategory.color(context),
                                   selected: _selected.contains(item.id),

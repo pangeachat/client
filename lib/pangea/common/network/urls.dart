@@ -133,6 +133,14 @@ class PApiUrls {
   static String orchestratorFeedback =
       "${PApiUrls._choreoRoute}/orchestrate/feedback";
 
+  /// `POST /choreo/orchestrate/goal_report` — a report that a goal star was
+  /// wrongly given or wrongly withheld. Records the complaint as a row of its
+  /// own and changes nothing else: no regeneration, and the reported turn is
+  /// not written to. Staging only; see
+  /// conversation-orchestrator.instructions.md.
+  static String orchestratorGoalReport =
+      "${PApiUrls._choreoRoute}/orchestrate/goal_report";
+
   static String tokenFeedback = "${PApiUrls._choreoRoute}/token/feedback";
   static String tokenFeedbackV2 = "${PApiUrls._choreoRoute}/token/feedback_v2";
 

@@ -28,6 +28,15 @@ class ActivityDropdownContent extends StatelessWidget {
   final VoidCallback? finishActivityForMe;
   final VoidCallback? continueActivity;
 
+  /// Staging only: reports the goal's star as wrongly given (when it is
+  /// [isGoalCompleted]) or wrongly withheld. Null everywhere else, which
+  /// leaves the stars inert — the list is a learner's progress, and only the
+  /// team's builds make it a reporting surface.
+  ///
+  /// The collapsed header deliberately has no equivalent: its whole top row is
+  /// the toggle that opens this list, and the stars sit in the middle of it.
+  final void Function(ActivityRoleGoal goal)? onReportStar;
+
   const ActivityDropdownContent({
     super.key,
     required this.goals,
@@ -43,6 +52,7 @@ class ActivityDropdownContent extends StatelessWidget {
     this.finishActivityForAll,
     this.finishActivityForMe,
     this.continueActivity,
+    this.onReportStar,
   });
 
   @override
@@ -69,6 +79,7 @@ class ActivityDropdownContent extends StatelessWidget {
             complete: isGoalCompleted(goals.first),
             isActive: goals.first.id == activeGoalId,
             isTop: true,
+            onReportStar: onReportStar,
           );
 
     final restGoals = goals.length > 1
@@ -186,6 +197,7 @@ class ActivityDropdownContent extends StatelessWidget {
                         complete: isGoalCompleted(g),
                         isActive: g.id == activeGoalId,
                         isTop: false,
+                        onReportStar: onReportStar,
                       ),
                     ],
                   ],
@@ -221,23 +233,44 @@ class _GoalRow extends StatelessWidget {
   /// Only the top row leaves room for the chevron; the rest run to the edge.
   final bool isTop;
 
+  /// Staging only — see [ActivityDropdownContent.onReportStar].
+  final void Function(ActivityRoleGoal goal)? onReportStar;
+
   const _GoalRow({
     required this.goal,
     required this.complete,
     required this.isActive,
     required this.isTop,
+    this.onReportStar,
   });
 
   @override
   Widget build(BuildContext context) {
+    final onReportStar = this.onReportStar;
+    final Widget star = GoalStatusWidget(
+      goal: goal,
+      complete: complete,
+      isActive: isActive,
+      showLabel: false,
+    );
+
     return Row(
       children: [
-        GoalStatusWidget(
-          goal: goal,
-          complete: complete,
-          isActive: isActive,
-          showLabel: false,
-        ),
+        if (onReportStar == null)
+          star
+        else
+          // The star is the tap target, not the whole row: on the top row the
+          // row itself collapses the list, and a report is a deliberate act
+          // that should not share a target with closing the menu.
+          Semantics(
+            button: true,
+            label: L10n.of(context).goalReportTitle,
+            child: InkWell(
+              customBorder: const CircleBorder(),
+              onTap: () => onReportStar(goal),
+              child: star,
+            ),
+          ),
         const SizedBox(width: 12.0),
         Expanded(
           child: Text(

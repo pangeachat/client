@@ -4,7 +4,7 @@ applyTo: "lib/pangea/course_creation/**,lib/pangea/join_codes/**,lib/pangea/spac
 
 # Invite by Email — Client
 
-Cross-repo design: [conference-course-invite.instructions.md](../../../.github/.github/instructions/conference-course-invite.instructions.md)
+Cross-repo design: [conference-course-invite.instructions.md](../../../.github/.github/instructions/teacher-funnel.instructions.md)
 
 > **Deferred to post-TESOL.** The TESOL flow is CMS-triggered. This doc covers the in-app teacher invite UI.
 

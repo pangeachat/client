@@ -22,9 +22,16 @@ class DottedBorderPainter extends CustomPainter {
       ..strokeWidth = strokeWidth
       ..style = PaintingStyle.stroke;
 
+    // A stroke is centred on its path, so drawing on the full rect puts half
+    // the dash outside the blank and leaves it sitting proud of the fill it
+    // is meant to outline. Inset by half the stroke, and tighten the radius
+    // by the same amount so the corners still follow the fill.
+    final inset = strokeWidth / 2;
     final path = Path()
       ..addRRect(
-        borderRadius.toRRect(Rect.fromLTWH(0, 0, size.width, size.height)),
+        (borderRadius - BorderRadius.circular(inset)).toRRect(
+          Rect.fromLTWH(0, 0, size.width, size.height).deflate(inset),
+        ),
       );
 
     final dashPath = Path();

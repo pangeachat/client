@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
 
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/spaces/space_constants.dart';
 
 enum RoleBadgeType {
   invited,
   knocking,
   admin,
   moderator;
+
+  /// The badge a member wears, if any: their membership when they are not yet
+  /// joined, otherwise their power level.
+  static RoleBadgeType? forMember(User user) => switch (user.membership) {
+    Membership.invite => RoleBadgeType.invited,
+    Membership.knock => RoleBadgeType.knocking,
+    _ when user.powerLevel >= SpaceConstants.powerLevelOfAdmin =>
+      RoleBadgeType.admin,
+    _ when user.powerLevel >= SpaceConstants.powerLevelOfModerator =>
+      RoleBadgeType.moderator,
+    _ => null,
+  };
 
   String label(L10n l10n) => switch (this) {
     RoleBadgeType.invited => l10n.invited,

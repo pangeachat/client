@@ -12,7 +12,7 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 /// above the row of activities that satisfy it. The row itself is the shared
 /// [ActivityCarousel]; this widget owns only the Mission header and the order
 /// the Mission's activities are drawn in (smallest party first).
-class ObjectiveSection extends StatefulWidget {
+class ObjectiveSection extends StatelessWidget {
   final QuestObjectiveGroup group;
   final void Function(QuestActivity) onTap;
   final int Function(String) userStarsByActivity;
@@ -46,10 +46,15 @@ class ObjectiveSection extends StatefulWidget {
   /// its card gets the bell badge (#8319). Null everywhere else.
   final String? pingedActivityId;
 
-  /// Tapping the Mission header collapses/expands its activity carousel
-  /// (expanded by default). On for the full course plan (#8357); off for
-  /// plan previews.
-  final bool collapsible;
+  /// Whether the activity carousel is folded away, leaving just the header.
+  final bool collapsed;
+
+  /// Tapping the Mission header calls this to flip [collapsed]; null makes
+  /// the header inert. Set for the full course plan (#8357), null for plan
+  /// previews. The parent holds the state because the plan is a lazy list: a
+  /// section scrolled off screen is disposed, and a flag it owned would come
+  /// back expanded (#9248).
+  final VoidCallback? onToggleCollapsed;
 
   /// Accent the header as the learner's "Up next" Mission — the shared
   /// resolver's anchor (#8357).
@@ -68,7 +73,8 @@ class ObjectiveSection extends StatefulWidget {
     required this.availableParticipants,
     required this.progress,
     this.pingedActivityId,
-    this.collapsible = false,
+    this.collapsed = false,
+    this.onToggleCollapsed,
     this.isUpNext = false,
     this.spacing = 16.0,
     this.cardWidth,
@@ -76,16 +82,7 @@ class ObjectiveSection extends StatefulWidget {
     this.interactive = true,
   });
 
-  @override
-  ObjectiveSectionState createState() => ObjectiveSectionState();
-}
-
-class ObjectiveSectionState extends State<ObjectiveSection> {
-  /// Missions render expanded; a [ObjectiveSection.collapsible] header tap
-  /// folds the carousel to just the header row (#8357).
-  bool _collapsed = false;
-
-  bool get _isColumnMode => FluffyThemes.isColumnMode(context);
+  bool get _collapsible => onToggleCollapsed != null;
 
   @override
   Widget build(BuildContext context) {
@@ -96,27 +93,26 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
     // check and mutes its text; the rest stay plain. The first two are mutually
     // exclusive: the anchor is unsatisfied by definition, and a course whose
     // every Mission is satisfied has no anchor at all (#8997).
-    final satisfied = widget.progress?.satisfied ?? false;
-    final headerColor = widget.isUpNext
+    final satisfied = progress?.satisfied ?? false;
+    final headerColor = isUpNext
         ? theme.colorScheme.primary
         : satisfied
         ? theme.colorScheme.onSurfaceVariant
         : null;
 
     final statement = Text(
-      widget.group.objective.objective,
+      group.objective.objective,
       style: theme.textTheme.bodyMedium?.copyWith(
         color: headerColor,
-        fontWeight: widget.isUpNext ? FontWeight.w500 : null,
+        fontWeight: isUpNext ? FontWeight.w500 : null,
       ),
     );
-    final starFraction = widget.progress == null
+    final starFraction = progress == null
         ? null
         : Semantics(
-            label: L10n.of(context).starsEarnedOfTotal(
-              widget.progress!.stars,
-              widget.progress!.threshold,
-            ),
+            label: L10n.of(
+              context,
+            ).starsEarnedOfTotal(progress!.stars, progress!.threshold),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -132,7 +128,7 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                   child: Text(
                     // Raw stars over the satisfaction threshold — surplus
                     // shows (12/7); only the quest header caps.
-                    '${widget.progress!.stars}/${widget.progress!.threshold}',
+                    '${progress!.stars}/${progress!.threshold}',
                     style: theme.textTheme.bodyMedium?.copyWith(
                       color: headerColor,
                     ),
@@ -142,7 +138,7 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
             ),
           );
     // The emphasis in words, so it is never colour alone.
-    final upNextLabel = widget.isUpNext
+    final upNextLabel = isUpNext
         ? Container(
             padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
             decoration: BoxDecoration(
@@ -158,15 +154,15 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
             ),
           )
         : null;
-    final collapseChevron = widget.collapsible
+    final collapseChevron = _collapsible
         ? AnimatedRotation(
-            turns: _collapsed ? -0.25 : 0,
+            turns: collapsed ? -0.25 : 0,
             duration: FluffyThemes.animationDuration,
             child: const Icon(Icons.expand_more, size: 20.0),
           )
         : null;
 
-    final activities = widget.group.activities;
+    final activities = group.activities;
     activities.sort(
       (a, b) => a.plan.req.numberOfParticipants.compareTo(
         b.plan.req.numberOfParticipants,
@@ -191,19 +187,17 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
             // Without an explicit button container the toggle flattens into
             // the section's group semantics and is unreachable on web, where
             // clicks route through the semantics DOM.
-            button: widget.collapsible,
-            container: widget.collapsible,
-            expanded: widget.collapsible ? !_collapsed : null,
+            button: _collapsible,
+            container: _collapsible,
+            expanded: _collapsible ? !collapsed : null,
             child: InkWell(
-              onTap: widget.collapsible
-                  ? () => setState(() => _collapsed = !_collapsed)
-                  : null,
+              onTap: onToggleCollapsed,
               borderRadius: BorderRadius.circular(8.0),
               // The star fraction leads and the collapse chevron trails. In
               // column mode the row has room for the statement between them;
               // on narrow screens the statement drops to its own full-width
               // row so a wrapped statement never shares lines with the icons.
-              child: _isColumnMode
+              child: FluffyThemes.isColumnMode(context)
                   ? Row(
                       children: [
                         if (starFraction != null) ...[
@@ -249,21 +243,21 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
           ),
           // No per-Mission progress bar — only the overall course has a bar (in
           // the header). A Mission shows just its star count above (#7597).
-          if (!_collapsed) const SizedBox(height: 12.0),
+          if (!collapsed) const SizedBox(height: 12.0),
           // The activities that satisfy this objective.
-          if (!_collapsed)
+          if (!collapsed)
             ActivityCarousel(
               activities: activities,
-              onTap: widget.onTap,
-              userStarsByActivity: widget.userStarsByActivity,
-              hasCompletedActivity: widget.hasCompletedActivity,
-              liveStateByActivity: widget.liveStateByActivity,
-              availableParticipants: widget.availableParticipants,
-              pingedActivityId: widget.pingedActivityId,
-              spacing: widget.spacing,
-              cardWidth: widget.cardWidth,
-              cardHeight: widget.cardHeight,
-              interactive: widget.interactive,
+              onTap: onTap,
+              userStarsByActivity: userStarsByActivity,
+              hasCompletedActivity: hasCompletedActivity,
+              liveStateByActivity: liveStateByActivity,
+              availableParticipants: availableParticipants,
+              pingedActivityId: pingedActivityId,
+              spacing: spacing,
+              cardWidth: cardWidth,
+              cardHeight: cardHeight,
+              interactive: interactive,
             ),
         ],
       ),

@@ -114,7 +114,7 @@ void main() {
       },
     });
 
-    expect(await courseSpace().hasJoinableGroupChat(), isTrue);
+    expect(await courseSpace().joinableGroupChats(limit: 1), hasLength(1));
   });
 
   test('sessions, analytics, unsuggested and joined rooms are not', () async {
@@ -142,7 +142,7 @@ void main() {
 
     final space = courseSpace(unsuggested: const [unsuggested]);
 
-    expect(await space.hasJoinableGroupChat(), isFalse);
+    expect(await space.joinableGroupChats(limit: 1), isEmpty);
   });
 
   test('a chat left behind is joinable again', () async {
@@ -155,7 +155,7 @@ void main() {
       },
     });
 
-    expect(await courseSpace().hasJoinableGroupChat(), isTrue);
+    expect(await courseSpace().joinableGroupChats(limit: 1), hasLength(1));
   });
 
   test('pages on to find one, and stops once it has', () async {
@@ -177,7 +177,10 @@ void main() {
       thirdPage: {'rooms': <Object?>[]},
     });
 
-    expect(await courseSpace().hasJoinableGroupChat(), isTrue);
+    expect(
+      (await courseSpace().joinableGroupChats(limit: 1)).map((c) => c.roomId),
+      [teacherChat],
+    );
     expect(hierarchyRequests, [firstPage, secondPage]);
   });
 
@@ -188,7 +191,7 @@ void main() {
     };
 
     await expectLater(
-      courseSpace().hasJoinableGroupChat(),
+      courseSpace().joinableGroupChats(limit: 1),
       throwsA(isA<MatrixException>()),
     );
   });

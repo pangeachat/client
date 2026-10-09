@@ -10,6 +10,7 @@ import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_state_machine.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/features/tutorials/tutorial_tooltip_container_widget.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -136,7 +137,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     for (final key in data.targetKeys) {
       final box = _currentRenderBox(key);
       if (box == null) continue;
-      rects.add(box.localToGlobal(Offset.zero) & box.size);
+      rects.add(TutorialTarget.visibleRect(box));
     }
     final hostRects = data.spotlightRects?.call();
     if (hostRects != null) rects.addAll(hostRects);

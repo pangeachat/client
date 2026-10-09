@@ -2,19 +2,30 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
 
-/// The client's two inbound URL contracts. The client is the only producer of
-/// its URLs (routing.instructions.md): retired shapes from earlier releases
-/// are deleted, not redirected. What remains are the single-segment links that
-/// live outside the app — the shareable standalone activity link `/<uuid>` and
-/// the course join link `/<code>` (a bare seven-character join code) — each
-/// folded into its canonical token before anything renders. Wired as the
-/// router's single top-level redirect; pure and synchronous. [handle] also
-/// display-shortens home-server room ids on every location.
+/// Folds externally produced activity, course-join, and Synapse email links
+/// into workspace tokens before rendering. Retired internal routes are not
+/// supported. [handle] also shortens home-server room ids in every location.
 abstract class LegacyRedirects {
   static String? resolve(Uri uri) {
+    // Path-strategy web routing retains the fragment on the root location.
+    // Native app_links has already unwrapped it in incomingUriToPath.
+    if (uri.path == '/' && uri.fragment.startsWith('/room/')) {
+      return resolve(Uri.parse(uri.fragment));
+    }
     final segments = uri.pathSegments;
+    if ((segments.length == 2 || segments.length == 3) &&
+        segments.first == 'room' &&
+        segments[1].startsWith('!') &&
+        segments[1].contains(':')) {
+      return WorkspaceNav.openRoomById(
+        Uri.parse(PRoutes.world),
+        segments[1],
+        event: segments.length == 3 ? segments[2] : null,
+      );
+    }
     if (segments.length != 1) return null;
     final segment = segments.first;
     if (PRoutes.isWorldObjectId(segment)) return _resolveActivityLink(uri);

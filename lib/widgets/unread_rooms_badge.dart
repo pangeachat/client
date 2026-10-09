@@ -6,17 +6,18 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'matrix.dart';
+import 'package:fluffychat/pangea/extensions/unread_rooms_client_extension.dart';
 
 class UnreadRoomsBadge extends StatelessWidget {
-  final bool Function(Room) filter;
+  /// The rooms this badge counts, narrowed by the caller from
+  /// [UnreadRoomsClientExtension.unreadRooms].
+  final List<Room> rooms;
   final b.BadgePosition? badgePosition;
   final Widget? child;
 
   const UnreadRoomsBadge({
     super.key,
-    required this.filter,
+    required this.rooms,
     this.badgePosition,
     this.child,
   });
@@ -27,14 +28,10 @@ class UnreadRoomsBadge extends StatelessWidget {
 
     // #Pangea
     // final unreadCount = Matrix.of(context).client.rooms
-    final counted = Matrix.of(context).client.rooms
-        .where((r) => !r.isHiddenRoom && !r.isSpace)
-        // Pangea#
-        .where(filter)
-        .where((r) => (r.isUnread || r.membership == Membership.invite))
-        // #Pangea
-        .toList();
-    final unreadCount = counted.length;
+    //     .where(filter)
+    //     .where((r) => (r.isUnread || r.membership == Membership.invite))
+    //     .length;
+    final unreadCount = rooms.length;
 
     // At least one of the counted rooms is an invitation waiting on the
     // learner, so the badge wears the invited gold instead of the ordinary
@@ -47,7 +44,7 @@ class UnreadRoomsBadge extends StatelessWidget {
     // `Membership.invite` but is the learner's own request coming back
     // answered. Same test the chat list row's chip uses, so a gold badge
     // always has a gold row behind it.
-    final hasInvite = counted.any((r) => r.isPendingInvite);
+    final hasInvite = rooms.any((r) => r.isPendingInvite);
     // Pangea#
     final unreadText = unreadCount < 100
         ? unreadCount.toString()
