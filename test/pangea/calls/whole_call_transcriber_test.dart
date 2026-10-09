@@ -97,9 +97,24 @@ AudioResolver _fakeResolver(
 CallTranscript _transcript({
   bool peerAuthentic = false,
   bool peerValidBackfill = false,
+  HalfAccounting? peerEmptyOwnHalf,
 }) {
   final candidates = <TranscriptCandidate>[];
   final provenance = <String, ProvenanceState>{};
+  // The peer's OWN half, written empty with [peerEmptyOwnHalf] as its
+  // accounting -- the shape an unsubscribed peer's device leaves (#8792).
+  if (peerEmptyOwnHalf != null) {
+    candidates.add(
+      TranscriptCandidate(
+        senderId: _peer,
+        eventId: '\$t_peer_empty',
+        deviceId: _peerDevice,
+        originServerTs: 1500,
+        segments: const [],
+        accounting: peerEmptyOwnHalf,
+      ),
+    );
+  }
   if (peerAuthentic) {
     candidates.add(
       TranscriptCandidate(
@@ -319,6 +334,79 @@ void main() {
         // Mutation proof: dropping the `_skip` guard re-transcribes and re-posts.
         final h = _Harness()
           ..readTranscript = (_) async => _transcript(peerValidBackfill: true);
+        await h.build().transcribeAtCallEnd(_callKey);
+        expect(h.transcribeCalls, 0);
+        expect(h.posts, isEmpty);
+      },
+    );
+  });
+
+  group('a peer with no subscription (#8792)', () {
+    // What an unsubscribed peer's device writes: every chunk it captured was
+    // refused by the transcriber for want of a subscription.
+    const refusedAll = HalfAccounting(
+      declared: true,
+      chunksCaptured: 3,
+      chunksLost: 3,
+      chunksRefusedUnsubscribed: 3,
+    );
+
+    test(
+      'an empty own-half refused for no subscription is still backfilled',
+      () async {
+        // The QA scenario: the peer's own half exists but is empty only because
+        // they were not subscribed, so their recording must be transcribed.
+        // Mutation proof: counting every non-absent half as produced in `_skip`
+        // skips the peer and posts nothing.
+        final h = _Harness()
+          ..readTranscript = (_) async =>
+              _transcript(peerEmptyOwnHalf: refusedAll);
+        await h.build().transcribeAtCallEnd(_callKey);
+        expect(h.transcribeCalls, 1);
+        expect(h.posts, hasLength(1));
+        expect(h.posts.single.spokenBy, _peer);
+        expect(h.posts.single.deviceId, _peerDevice);
+      },
+    );
+
+    test('on demand, the same half is produced rather than refused', () async {
+      final h = _Harness()
+        ..readTranscript = (_) async =>
+            _transcript(peerEmptyOwnHalf: refusedAll);
+      final result = await h.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      expect(result, OnDemandTranscriptionResult.produced);
+      expect(h.posts, hasLength(1));
+    });
+
+    test('once backfilled, the peer is not transcribed again', () async {
+      // The backfilled half must win over the empty own-half in assembly, so
+      // the skip sees words. Mutation proof: letting the authentic empty half
+      // keep the unit re-transcribes the peer on every pass.
+      final h = _Harness()
+        ..readTranscript = (_) async =>
+            _transcript(peerEmptyOwnHalf: refusedAll, peerValidBackfill: true);
+      await h.build().transcribeAtCallEnd(_callKey);
+      expect(h.transcribeCalls, 0);
+      expect(h.posts, isEmpty);
+    });
+
+    test(
+      'an empty own-half that LOST audio another way is still skipped',
+      () async {
+        // Only the no-subscription reason is reclassified. A half that also lost
+        // a chunk for some other reason keeps its old behaviour.
+        final h = _Harness()
+          ..readTranscript = (_) async => _transcript(
+            peerEmptyOwnHalf: const HalfAccounting(
+              declared: true,
+              chunksCaptured: 3,
+              chunksLost: 3,
+              chunksRefusedUnsubscribed: 2,
+            ),
+          );
         await h.build().transcribeAtCallEnd(_callKey);
         expect(h.transcribeCalls, 0);
         expect(h.posts, isEmpty);
