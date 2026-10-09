@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-09 10:28:21.098381",
+    "@@last_modified": "2026-10-09 11:30:25.685545",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Вежбајте ја оваа цел",
     "otherActivities": "Други активности",
     "xpToCompleteObjectiveTitle": "XP по мисија",
-    "xpToCompleteObjectiveDesc": "Поставете го XP потребно за да ја завршите секоја мисија"
+    "xpToCompleteObjectiveDesc": "Поставете го XP потребно за да ја завршите секоја мисија",
+    "objectiveCircleComplete": "Мисија {index}: завршена",
+    "objectiveCircleUpNext": "Мисија {index}: следна"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-09 10:27:59.564488",
+    "@@last_modified": "2026-10-09 11:30:10.050702",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Vježbajte ovaj cilj",
     "otherActivities": "Ostale aktivnosti",
     "xpToCompleteObjectiveTitle": "XP po misiji",
-    "xpToCompleteObjectiveDesc": "Postavite XP potreban za završetak svake misije"
+    "xpToCompleteObjectiveDesc": "Postavite XP potreban za završetak svake misije",
+    "objectiveCircleComplete": "Misija {index}: završena",
+    "objectiveCircleUpNext": "Misija {index}: sljedeća"
 }

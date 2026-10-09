@@ -2556,7 +2556,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-09 10:28:26.911438",
+    "@@last_modified": "2026-10-09 11:30:32.037835",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10882,5 +10882,7 @@
     "practiceObjective": "Praticar este objetivo",
     "otherActivities": "Outras atividades",
     "xpToCompleteObjectiveTitle": "XP por Missão",
-    "xpToCompleteObjectiveDesc": "Define o XP necessário para completar cada missão"
+    "xpToCompleteObjectiveDesc": "Define o XP necessário para completar cada missão",
+    "objectiveCircleComplete": "Missão {index}: concluída",
+    "objectiveCircleUpNext": "Missão {index}: a seguir"
 }

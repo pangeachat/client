@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-09 10:28:23.916645",
+    "@@last_modified": "2026-10-09 11:30:29.873274",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Øv på dette målet",
     "otherActivities": "Andre aktiviteter",
     "xpToCompleteObjectiveTitle": "XP per oppdrag",
-    "xpToCompleteObjectiveDesc": "Angi XP som trengs for å fullføre hvert oppdrag"
+    "xpToCompleteObjectiveDesc": "Angi XP som trengs for å fullføre hvert oppdrag",
+    "objectiveCircleComplete": "Oppdrag {index}: fullført",
+    "objectiveCircleUpNext": "Oppdrag {index}: neste"
 }

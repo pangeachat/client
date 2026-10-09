@@ -116,14 +116,17 @@ class ObjectiveSection extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(
-                  satisfied ? Icons.check_circle : Icons.star,
-                  size: 18.0,
-                  color: satisfied
-                      ? Theme.of(context).pangea.success
-                      : Theme.of(context).pangea.goldGraphic,
-                ),
-                const SizedBox(width: 4.0),
+                // The star is the one the Mission earned, so it shows only
+                // once complete: beside an XP count still in progress it read
+                // as "257 of 300 stars" (#9420).
+                if (satisfied) ...[
+                  Icon(
+                    Icons.star,
+                    size: 18.0,
+                    color: Theme.of(context).pangea.goldGraphic,
+                  ),
+                  const SizedBox(width: 4.0),
+                ],
                 ExcludeSemantics(
                   child: Text(
                     // Raw XP over the completion threshold — surplus shows

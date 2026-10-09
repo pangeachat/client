@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-09 10:28:38.689207",
+    "@@last_modified": "2026-10-09 11:30:40.205453",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9965,5 +9965,7 @@
     "practiceObjective": "练习此目标",
     "otherActivities": "其他活动",
     "xpToCompleteObjectiveTitle": "每个任务的 XP",
-    "xpToCompleteObjectiveDesc": "设置完成每个任务所需的 XP"
+    "xpToCompleteObjectiveDesc": "设置完成每个任务所需的 XP",
+    "objectiveCircleComplete": "任务 {index}：已完成",
+    "objectiveCircleUpNext": "任务 {index}：即将开始"
 }

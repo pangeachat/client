@@ -2964,7 +2964,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-09 10:28:18.002171",
+    "@@last_modified": "2026-10-09 11:30:26.582742",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10746,5 +10746,7 @@
     "practiceObjective": "Praktikuoti šį tikslą",
     "otherActivities": "Kita veikla",
     "xpToCompleteObjectiveTitle": "XP už misiją",
-    "xpToCompleteObjectiveDesc": "Nustatykite XP, reikalingą kiekvienai misijai užbaigti"
+    "xpToCompleteObjectiveDesc": "Nustatykite XP, reikalingą kiekvienai misijai užbaigti",
+    "objectiveCircleComplete": "Misija {index}: atlikta",
+    "objectiveCircleUpNext": "Misija {index}: toliau"
 }

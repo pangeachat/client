@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:28:27.003475",
+    "@@last_modified": "2026-10-09 11:30:33.079808",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10909,5 +10909,7 @@
     "practiceObjective": "Pratique este objetivo",
     "otherActivities": "Outras atividades",
     "xpToCompleteObjectiveTitle": "XP por Missão",
-    "xpToCompleteObjectiveDesc": "Defina o XP necessário para completar cada missão"
+    "xpToCompleteObjectiveDesc": "Defina o XP necessário para completar cada missão",
+    "objectiveCircleComplete": "Missão {index}: completa",
+    "objectiveCircleUpNext": "Missão {index}: a seguir"
 }

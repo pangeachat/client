@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-09 10:28:10.155296",
+    "@@last_modified": "2026-10-09 11:30:18.142483",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Pratike objektif sa a",
     "otherActivities": "Lòt aktivite",
     "xpToCompleteObjectiveTitle": "XP pa Misyon",
-    "xpToCompleteObjectiveDesc": "Mete XP ki nesesè pou konplete chak misyon"
+    "xpToCompleteObjectiveDesc": "Mete XP ki nesesè pou konplete chak misyon",
+    "objectiveCircleComplete": "Misyon {index}: konplete",
+    "objectiveCircleUpNext": "Misyon {index}: kap vini"
 }

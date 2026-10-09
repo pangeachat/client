@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:28:17.060626",
+    "@@last_modified": "2026-10-09 11:30:21.845914",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10158,5 +10158,7 @@
     "practiceObjective": "이 목표 연습하기",
     "otherActivities": "다른 활동",
     "xpToCompleteObjectiveTitle": "미션당 XP",
-    "xpToCompleteObjectiveDesc": "각 미션을 완료하는 데 필요한 XP를 설정하세요."
+    "xpToCompleteObjectiveDesc": "각 미션을 완료하는 데 필요한 XP를 설정하세요.",
+    "objectiveCircleComplete": "미션 {index}: 완료",
+    "objectiveCircleUpNext": "미션 {index}: 다음"
 }

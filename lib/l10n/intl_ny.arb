@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-09 10:28:25.147902",
+    "@@last_modified": "2026-10-09 11:30:31.295016",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Yesetsani cholinga ichi",
     "otherActivities": "Ntchito zina",
     "xpToCompleteObjectiveTitle": "XP pa Ntchito Iliyonse",
-    "xpToCompleteObjectiveDesc": "Khazikitsani XP yofunikira kumaliza ntchito iliyonse"
+    "xpToCompleteObjectiveDesc": "Khazikitsani XP yofunikira kumaliza ntchito iliyonse",
+    "objectiveCircleComplete": "Ntchito {index}: yamalizidwa",
+    "objectiveCircleUpNext": "Ntchito {index}: yotsatira"
 }

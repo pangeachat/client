@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-09 10:28:13.211468",
+    "@@last_modified": "2026-10-09 11:30:19.931610",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Æfðu þetta markmið",
     "otherActivities": "Aðrar athafnir",
     "xpToCompleteObjectiveTitle": "XP á verkefni",
-    "xpToCompleteObjectiveDesc": "Stilltu XP sem þarf til að ljúka hverju verkefni"
+    "xpToCompleteObjectiveDesc": "Stilltu XP sem þarf til að ljúka hverju verkefni",
+    "objectiveCircleComplete": "Verkefni {index}: lokið",
+    "objectiveCircleUpNext": "Verkefni {index}: næst"
 }

@@ -3090,7 +3090,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-09 10:28:12.876011",
+    "@@last_modified": "2026-10-09 11:30:18.471586",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10597,5 +10597,7 @@
     "practiceObjective": "Cleachtaigh an cuspóir seo",
     "otherActivities": "Gníomhaíochtaí eile",
     "xpToCompleteObjectiveTitle": "XP in aghaidh an Mhisean",
-    "xpToCompleteObjectiveDesc": "Socraigh an XP atá ag teastáil chun gach misean a chríochnú"
+    "xpToCompleteObjectiveDesc": "Socraigh an XP atá ag teastáil chun gach misean a chríochnú",
+    "objectiveCircleComplete": "Misean {index}: críochnaithe",
+    "objectiveCircleUpNext": "Misean {index}: an chéad cheann eile"
 }

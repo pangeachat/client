@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-09 10:28:05.160937",
+    "@@last_modified": "2026-10-09 11:30:12.636500",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10320,5 +10320,7 @@
     "practiceObjective": "Pratiquer cet objectif",
     "otherActivities": "Autres activités",
     "xpToCompleteObjectiveTitle": "XP par mission",
-    "xpToCompleteObjectiveDesc": "Définir l'XP nécessaire pour terminer chaque mission"
+    "xpToCompleteObjectiveDesc": "Définir l'XP nécessaire pour terminer chaque mission",
+    "objectiveCircleComplete": "Mission {index} : terminée",
+    "objectiveCircleUpNext": "Mission {index} : à suivre"
 }

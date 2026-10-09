@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:28:03.694566",
+    "@@last_modified": "2026-10-09 11:30:13.484211",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10053,5 +10053,7 @@
     "practiceObjective": "این هدف را تمرین کنید",
     "otherActivities": "فعالیت‌های دیگر",
     "xpToCompleteObjectiveTitle": "امتیاز تجربه در هر مأموریت",
-    "xpToCompleteObjectiveDesc": "امتیاز تجربه مورد نیاز برای تکمیل هر مأموریت را تنظیم کنید"
+    "xpToCompleteObjectiveDesc": "امتیاز تجربه مورد نیاز برای تکمیل هر مأموریت را تنظیم کنید",
+    "objectiveCircleComplete": "مأموریت {index}: تکمیل شد",
+    "objectiveCircleUpNext": "مأموریت {index}: بعدی"
 }

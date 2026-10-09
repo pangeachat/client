@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-09 10:28:20.357854",
+    "@@last_modified": "2026-10-09 11:30:33.785154",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Энэ зорилгыг дадлага хийх",
     "otherActivities": "Бусад үйл ажиллагаа",
     "xpToCompleteObjectiveTitle": "Даалгавар тутамд авах XP",
-    "xpToCompleteObjectiveDesc": "Даалгавар бүрийг дуусгахад шаардагдах XP-г тохируулна уу"
+    "xpToCompleteObjectiveDesc": "Даалгавар бүрийг дуусгахад шаардагдах XP-г тохируулна уу",
+    "objectiveCircleComplete": "Даалгавар {index}: дууссан",
+    "objectiveCircleUpNext": "Даалгавар {index}: дараагийнх"
 }

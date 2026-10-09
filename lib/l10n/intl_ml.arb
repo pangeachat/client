@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-09 10:28:20.367251",
+    "@@last_modified": "2026-10-09 11:30:25.122479",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "ഈ ലക്ഷ്യം പരിശീലിക്കുക",
     "otherActivities": "മറ്റ് പ്രവർത്തനങ്ങൾ",
     "xpToCompleteObjectiveTitle": "ഓരോ ദൗത്യത്തിനും XP",
-    "xpToCompleteObjectiveDesc": "ഓരോ ദൗത്യവും പൂർത്തിയാക്കാൻ ആവശ്യമായ XP സജ്ജീകരിക്കുക"
+    "xpToCompleteObjectiveDesc": "ഓരോ ദൗത്യവും പൂർത്തിയാക്കാൻ ആവശ്യമായ XP സജ്ജീകരിക്കുക",
+    "objectiveCircleComplete": "ദൗത്യം {index}: പൂർത്തിയായി",
+    "objectiveCircleUpNext": "ദൗത്യം {index}: അടുത്തത്"
 }

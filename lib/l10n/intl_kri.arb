@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-09 10:28:15.810956",
+    "@@last_modified": "2026-10-09 11:30:24.586898",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Praktis dis wetín yu want fɔ lan",
     "otherActivities": "Ɔda tin dɛn we yu go du",
     "xpToCompleteObjectiveTitle": "XP fɔ ɛni Mishɔn",
-    "xpToCompleteObjectiveDesc": "Sɛt di XP we nid fɔ finish ɛni mishɔn"
+    "xpToCompleteObjectiveDesc": "Sɛt di XP we nid fɔ finish ɛni mishɔn",
+    "objectiveCircleComplete": "Mishɔn {index}: dɔn",
+    "objectiveCircleUpNext": "Mishɔn {index}: de kam"
 }

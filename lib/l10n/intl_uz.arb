@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-09 10:28:37.580788",
+    "@@last_modified": "2026-10-09 11:30:37.287153",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9969,5 +9969,7 @@
     "practiceObjective": "Ushbu maqsadni mashq qiling",
     "otherActivities": "Boshqa faoliyatlar",
     "xpToCompleteObjectiveTitle": "Har bir topshiriq uchun XP",
-    "xpToCompleteObjectiveDesc": "Har bir topshiriqni bajarish uchun kerak bo'ladigan XP ni belgilang"
+    "xpToCompleteObjectiveDesc": "Har bir topshiriqni bajarish uchun kerak bo'ladigan XP ni belgilang",
+    "objectiveCircleComplete": "Missiya {index}: yakunlandi",
+    "objectiveCircleUpNext": "Missiya {index}: keyingisi"
 }

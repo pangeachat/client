@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-10-09 10:28:25.551004",
+    "@@last_modified": "2026-10-09 11:30:29.153514",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "या उद्दिष्टाचा सराव करा",
     "otherActivities": "इतर उपक्रम",
     "xpToCompleteObjectiveTitle": "प्रत्येक मिशनसाठी XP",
-    "xpToCompleteObjectiveDesc": "प्रत्येक मिशन पूर्ण करण्यासाठी आवश्यक XP सेट करा"
+    "xpToCompleteObjectiveDesc": "प्रत्येक मिशन पूर्ण करण्यासाठी आवश्यक XP सेट करा",
+    "objectiveCircleComplete": "मिशन {index}: पूर्ण झाले",
+    "objectiveCircleUpNext": "मिशन {index}: पुढे आहे"
 }

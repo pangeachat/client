@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:28:10.411928",
+    "@@last_modified": "2026-10-09 11:30:18.307199",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10038,5 +10038,7 @@
     "practiceObjective": "Latih tujuan ini",
     "otherActivities": "Aktivitas lain",
     "xpToCompleteObjectiveTitle": "XP per Misi",
-    "xpToCompleteObjectiveDesc": "Atur XP yang dibutuhkan untuk menyelesaikan setiap misi"
+    "xpToCompleteObjectiveDesc": "Atur XP yang dibutuhkan untuk menyelesaikan setiap misi",
+    "objectiveCircleComplete": "Misi {index}: selesai",
+    "objectiveCircleUpNext": "Misi {index}: selanjutnya"
 }

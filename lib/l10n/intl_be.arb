@@ -3545,7 +3545,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-09 10:28:00.537508",
+    "@@last_modified": "2026-10-09 11:30:09.988806",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9979,5 +9979,7 @@
     "practiceObjective": "Практыкаваць гэтую мэту",
     "otherActivities": "Іншыя заняткі",
     "xpToCompleteObjectiveTitle": "XP за місію",
-    "xpToCompleteObjectiveDesc": "Усталюйце XP, неабходныя для выканання кожнай місіі"
+    "xpToCompleteObjectiveDesc": "Усталюйце XP, неабходныя для выканання кожнай місіі",
+    "objectiveCircleComplete": "Місія {index}: выканана",
+    "objectiveCircleUpNext": "Місія {index}: наступная"
 }

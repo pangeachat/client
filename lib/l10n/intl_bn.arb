@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:27:58.648588",
+    "@@last_modified": "2026-10-09 11:30:09.922045",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10593,5 +10593,7 @@
     "practiceObjective": "এই উদ্দেশ্যটি অনুশীলন করুন",
     "otherActivities": "অন্যান্য কার্যকলাপ",
     "xpToCompleteObjectiveTitle": "প্রতি মিশনে XP",
-    "xpToCompleteObjectiveDesc": "প্রতিটি মিশন সম্পূর্ণ করতে প্রয়োজনীয় XP সেট করুন"
+    "xpToCompleteObjectiveDesc": "প্রতিটি মিশন সম্পূর্ণ করতে প্রয়োজনীয় XP সেট করুন",
+    "objectiveCircleComplete": "মিশন {index}: সম্পূর্ণ",
+    "objectiveCircleUpNext": "মিশন {index}: এরপর"
 }

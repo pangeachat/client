@@ -3397,7 +3397,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-09 10:28:02.120947",
+    "@@last_modified": "2026-10-09 11:30:11.041429",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10840,5 +10840,7 @@
     "practiceObjective": "Εξάσκησε αυτόν τον στόχο",
     "otherActivities": "Άλλες δραστηριότητες",
     "xpToCompleteObjectiveTitle": "XP ανά Αποστολή",
-    "xpToCompleteObjectiveDesc": "Όρισε τα XP που απαιτούνται για την ολοκλήρωση κάθε αποστολής"
+    "xpToCompleteObjectiveDesc": "Όρισε τα XP που απαιτούνται για την ολοκλήρωση κάθε αποστολής",
+    "objectiveCircleComplete": "Αποστολή {index}: ολοκληρώθηκε",
+    "objectiveCircleUpNext": "Αποστολή {index}: επόμενη"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-09 10:28:26.290113",
+    "@@last_modified": "2026-10-09 11:30:31.477272",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "دې موخې تمرین کړئ",
     "otherActivities": "نور فعالیتونه",
     "xpToCompleteObjectiveTitle": "په هر ماموریت کې XP",
-    "xpToCompleteObjectiveDesc": "د هر ماموریت بشپړولو لپاره اړین XP وټاکئ"
+    "xpToCompleteObjectiveDesc": "د هر ماموریت بشپړولو لپاره اړین XP وټاکئ",
+    "objectiveCircleComplete": "ماموریت {index}: بشپړ شو",
+    "objectiveCircleUpNext": "ماموریت {index}: بل"
 }

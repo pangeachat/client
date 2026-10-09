@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-09 10:27:57.341389",
+    "@@last_modified": "2026-10-09 11:30:09.905985",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Oefen hierdie teiken",
     "otherActivities": "Ander aktiwiteite",
     "xpToCompleteObjectiveTitle": "XP per Missie",
-    "xpToCompleteObjectiveDesc": "Stel die XP wat nodig is om elke missie te voltooi"
+    "xpToCompleteObjectiveDesc": "Stel die XP wat nodig is om elke missie te voltooi",
+    "objectiveCircleComplete": "Missie {index}: voltooi",
+    "objectiveCircleUpNext": "Missie {index}: volgende"
 }

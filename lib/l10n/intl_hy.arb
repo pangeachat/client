@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-09 10:28:11.540519",
+    "@@last_modified": "2026-10-09 11:30:24.601278",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Մարզվել այս նպատակով",
     "otherActivities": "Այլ գործողություններ",
     "xpToCompleteObjectiveTitle": "XP մեկ առաքելության համար",
-    "xpToCompleteObjectiveDesc": "Սահմանեք յուրաքանչյուր առաքելությունն ավարտելու համար անհրաժեշտ XP-ն"
+    "xpToCompleteObjectiveDesc": "Սահմանեք յուրաքանչյուր առաքելությունն ավարտելու համար անհրաժեշտ XP-ն",
+    "objectiveCircleComplete": "Առաքելություն {index}․ ավարտված է",
+    "objectiveCircleUpNext": "Առաքելություն {index}․ հաջորդը"
 }

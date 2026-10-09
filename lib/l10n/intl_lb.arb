@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-09 10:28:18.956528",
+    "@@last_modified": "2026-10-09 11:30:32.470574",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Dëst Zil üben",
     "otherActivities": "Aner Aktivitéiten",
     "xpToCompleteObjectiveTitle": "XP pro Missioun",
-    "xpToCompleteObjectiveDesc": "Setzt d'XP, déi néideg sinn, fir all Missioun ofzeschléissen"
+    "xpToCompleteObjectiveDesc": "Setzt d'XP, déi néideg sinn, fir all Missioun ofzeschléissen",
+    "objectiveCircleComplete": "Missioun {index}: ofgeschloss",
+    "objectiveCircleUpNext": "Missioun {index}: als nächst"
 }

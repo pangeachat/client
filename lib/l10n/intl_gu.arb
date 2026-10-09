@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-09 10:28:06.248081",
+    "@@last_modified": "2026-10-09 11:30:13.444975",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "આ ઉદ્દેશ્યનો અભ્યાસ કરો",
     "otherActivities": "અન્ય પ્રવૃત્તિઓ",
     "xpToCompleteObjectiveTitle": "પ્રતિ મિશન XP",
-    "xpToCompleteObjectiveDesc": "દરેક મિશન પૂર્ણ કરવા માટે જરૂરી XP સેટ કરો"
+    "xpToCompleteObjectiveDesc": "દરેક મિશન પૂર્ણ કરવા માટે જરૂરી XP સેટ કરો",
+    "objectiveCircleComplete": "મિશન {index}: પૂર્ણ",
+    "objectiveCircleUpNext": "મિશન {index}: આગળ"
 }

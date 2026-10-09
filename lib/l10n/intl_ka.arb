@@ -1934,7 +1934,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-09 10:28:14.240619",
+    "@@last_modified": "2026-10-09 11:30:23.182045",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10865,5 +10865,7 @@
     "practiceObjective": "ივარჯიშეთ ამ მიზანზე",
     "otherActivities": "სხვა აქტივობები",
     "xpToCompleteObjectiveTitle": "XP თითო მისიაზე",
-    "xpToCompleteObjectiveDesc": "დააყენეთ XP, რომელიც საჭიროა თითოეული მისიის დასასრულებლად"
+    "xpToCompleteObjectiveDesc": "დააყენეთ XP, რომელიც საჭიროა თითოეული მისიის დასასრულებლად",
+    "objectiveCircleComplete": "მისია {index}: დასრულებულია",
+    "objectiveCircleUpNext": "მისია {index}: შემდეგი"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-09 10:28:12.180994",
+    "@@last_modified": "2026-10-09 11:30:19.640579",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10734,5 +10734,7 @@
     "practiceObjective": "この目標を練習する",
     "otherActivities": "その他のアクティビティ",
     "xpToCompleteObjectiveTitle": "ミッションごとのXP",
-    "xpToCompleteObjectiveDesc": "各ミッションを完了するのに必要なXPを設定します"
+    "xpToCompleteObjectiveDesc": "各ミッションを完了するのに必要なXPを設定します",
+    "objectiveCircleComplete": "ミッション{index}: 完了",
+    "objectiveCircleUpNext": "ミッション{index}: 次のミッション"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-09 10:28:30.720265",
+    "@@last_modified": "2026-10-09 11:30:34.369156",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Praktiko këtë objektiv",
     "otherActivities": "Aktivitete të tjera",
     "xpToCompleteObjectiveTitle": "XP për Mision",
-    "xpToCompleteObjectiveDesc": "Vendos XP-në e nevojshme për të përfunduar çdo mision"
+    "xpToCompleteObjectiveDesc": "Vendos XP-në e nevojshme për të përfunduar çdo mision",
+    "objectiveCircleComplete": "Misioni {index}: i përfunduar",
+    "objectiveCircleUpNext": "Misioni {index}: radhës"
 }

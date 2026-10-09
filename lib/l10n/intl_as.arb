@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-09 10:27:59.064697",
+    "@@last_modified": "2026-10-09 11:30:09.903877",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "এই উদ্দেশ্যৰ অনুশীলন কৰক",
     "otherActivities": "অন্যান্য কাৰ্যকলাপ",
     "xpToCompleteObjectiveTitle": "প্ৰতিটো অভিযানৰ বাবে XP",
-    "xpToCompleteObjectiveDesc": "প্ৰতিটো অভিযান সম্পূৰ্ণ কৰিবলৈ প্ৰয়োজনীয় XP নিৰ্ধাৰণ কৰক"
+    "xpToCompleteObjectiveDesc": "প্ৰতিটো অভিযান সম্পূৰ্ণ কৰিবলৈ প্ৰয়োজনীয় XP নিৰ্ধাৰণ কৰক",
+    "objectiveCircleComplete": "মিছন {index}: সম্পূৰ্ণ",
+    "objectiveCircleUpNext": "মিছন {index}: পৰৱৰ্তী"
 }

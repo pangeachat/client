@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-09 10:28:24.260980",
+    "@@last_modified": "2026-10-09 11:30:29.840049",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "यो उद्देश्य अभ्यास गर्नुहोस्",
     "otherActivities": "अन्य गतिविधिहरू",
     "xpToCompleteObjectiveTitle": "प्रति मिशन XP",
-    "xpToCompleteObjectiveDesc": "प्रत्येक मिशन पूरा गर्न आवश्यक XP सेट गर्नुहोस्"
+    "xpToCompleteObjectiveDesc": "प्रत्येक मिशन पूरा गर्न आवश्यक XP सेट गर्नुहोस्",
+    "objectiveCircleComplete": "मिसन {index}: पूरा भयो",
+    "objectiveCircleUpNext": "मिसन {index}: अब आउँदैछ"
 }

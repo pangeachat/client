@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-09 10:28:32.240238",
+    "@@last_modified": "2026-10-09 11:30:34.302762",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Ku celceli ujeeddadan",
     "otherActivities": "Hawlaha kale",
     "xpToCompleteObjectiveTitle": "XP Hawl kasta",
-    "xpToCompleteObjectiveDesc": "Deji XP-da loo baahan yahay si loo dhammaystiro hawl kasta"
+    "xpToCompleteObjectiveDesc": "Deji XP-da loo baahan yahay si loo dhammaystiro hawl kasta",
+    "objectiveCircleComplete": "Hawlgalka {index}: waa la dhameeyay",
+    "objectiveCircleUpNext": "Hawlgalka {index}: kan xiga"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:28:23.651852",
+    "@@last_modified": "2026-10-09 11:30:31.439114",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9965,5 +9965,7 @@
     "practiceObjective": "Oefen dit doel",
     "otherActivities": "Andere activiteiten",
     "xpToCompleteObjectiveTitle": "XP per missie",
-    "xpToCompleteObjectiveDesc": "Stel de benodigde XP in om elke missie te voltooien"
+    "xpToCompleteObjectiveDesc": "Stel de benodigde XP in om elke missie te voltooien",
+    "objectiveCircleComplete": "Missie {index}: voltooid",
+    "objectiveCircleUpNext": "Missie {index}: hierna"
 }

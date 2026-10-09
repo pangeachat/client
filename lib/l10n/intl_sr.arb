@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:28:30.455601",
+    "@@last_modified": "2026-10-09 11:30:38.906780",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10914,5 +10914,7 @@
     "practiceObjective": "Vežbajte ovaj cilj",
     "otherActivities": "Ostale aktivnosti",
     "xpToCompleteObjectiveTitle": "XP po misiji",
-    "xpToCompleteObjectiveDesc": "Podesite XP potreban za završetak svake misije"
+    "xpToCompleteObjectiveDesc": "Podesite XP potreban za završetak svake misije",
+    "objectiveCircleComplete": "Misija {index}: završena",
+    "objectiveCircleUpNext": "Misija {index}: sledeća"
 }

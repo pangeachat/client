@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:28:11.644106",
+    "@@last_modified": "2026-10-09 11:30:14.405475",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10879,5 +10879,7 @@
     "practiceObjective": "תרגל מטרה זו",
     "otherActivities": "פעילויות אחרות",
     "xpToCompleteObjectiveTitle": "נקודות ניסיון למשימה",
-    "xpToCompleteObjectiveDesc": "קבע את נקודות הניסיון הדרושות להשלמת כל משימה"
+    "xpToCompleteObjectiveDesc": "קבע את נקודות הניסיון הדרושות להשלמת כל משימה",
+    "objectiveCircleComplete": "משימה {index}: הושלמה",
+    "objectiveCircleUpNext": "משימה {index}: הבאה בתור"
 }

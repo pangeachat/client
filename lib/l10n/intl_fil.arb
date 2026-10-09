@@ -2077,7 +2077,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-09 10:28:04.056784",
+    "@@last_modified": "2026-10-09 11:30:13.499462",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10825,5 +10825,7 @@
     "practiceObjective": "Sanayin ang layuning ito",
     "otherActivities": "Iba pang aktibidad",
     "xpToCompleteObjectiveTitle": "XP bawat Misyon",
-    "xpToCompleteObjectiveDesc": "Itakda ang XP na kailangan para makumpleto ang bawat misyon"
+    "xpToCompleteObjectiveDesc": "Itakda ang XP na kailangan para makumpleto ang bawat misyon",
+    "objectiveCircleComplete": "Misyon {index}: kumpleto",
+    "objectiveCircleUpNext": "Misyon {index}: susunod"
 }

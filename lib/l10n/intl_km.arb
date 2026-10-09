@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-10-09 10:28:14.541304",
+    "@@last_modified": "2026-10-09 11:30:29.097944",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "អនុវត្តគោលបំណងនេះ",
     "otherActivities": "សកម្មភាពផ្សេងទៀត",
     "xpToCompleteObjectiveTitle": "XP ក្នុងមួយបេសកកម្ម",
-    "xpToCompleteObjectiveDesc": "កំណត់ XP ដែលត្រូវការដើម្បីបញ្ចប់បេសកកម្មនីមួយៗ"
+    "xpToCompleteObjectiveDesc": "កំណត់ XP ដែលត្រូវការដើម្បីបញ្ចប់បេសកកម្មនីមួយៗ",
+    "objectiveCircleComplete": "បេសកកម្មទី {index}៖ បានបញ្ចប់",
+    "objectiveCircleUpNext": "បេសកកម្មទី {index}៖ បន្ទាប់"
 }

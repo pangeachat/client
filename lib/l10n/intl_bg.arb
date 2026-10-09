@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-09 10:27:59.813512",
+    "@@last_modified": "2026-10-09 11:30:10.146036",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Практикувайте тази цел",
     "otherActivities": "Други дейности",
     "xpToCompleteObjectiveTitle": "XP на мисия",
-    "xpToCompleteObjectiveDesc": "Задайте необходимия XP за завършване на всяка мисия"
+    "xpToCompleteObjectiveDesc": "Задайте необходимия XP за завършване на всяка мисия",
+    "objectiveCircleComplete": "Мисия {index}: завършена",
+    "objectiveCircleUpNext": "Мисия {index}: предстои"
 }

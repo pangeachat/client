@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-09 10:28:04.742454",
+    "@@last_modified": "2026-10-09 11:30:12.555521",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Oefenje dit doel",
     "otherActivities": "Oare aktiviteiten",
     "xpToCompleteObjectiveTitle": "XP per missy",
-    "xpToCompleteObjectiveDesc": "Stel de XP yn dy't nedich is om elke missy te foltôgjen"
+    "xpToCompleteObjectiveDesc": "Stel de XP yn dy't nedich is om elke missy te foltôgjen",
+    "objectiveCircleComplete": "Missy {index}: foltôge",
+    "objectiveCircleUpNext": "Missy {index}: folgjende"
 }

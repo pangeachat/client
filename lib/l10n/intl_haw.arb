@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-09 10:28:07.751775",
+    "@@last_modified": "2026-10-09 11:30:21.701783",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "E hoʻomaʻamaʻa i kēia pahuhopu",
     "otherActivities": "Nā hana ʻē aʻe",
     "xpToCompleteObjectiveTitle": "XP no ka Misiona",
-    "xpToCompleteObjectiveDesc": "E hoʻonoho i ka XP e pono ai e hoʻopau i kēlā me kēia misiona"
+    "xpToCompleteObjectiveDesc": "E hoʻonoho i ka XP e pono ai e hoʻopau i kēlā me kēia misiona",
+    "objectiveCircleComplete": "Misiona {index}: pau",
+    "objectiveCircleUpNext": "Misiona {index}: aʻe"
 }

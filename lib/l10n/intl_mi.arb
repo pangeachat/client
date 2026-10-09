@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-09 10:28:19.642681",
+    "@@last_modified": "2026-10-09 11:30:25.711204",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Whakaharatau i tēnei whāinga",
     "otherActivities": "Ētahi atu mahi",
     "xpToCompleteObjectiveTitle": "XP mō ia Mihana",
-    "xpToCompleteObjectiveDesc": "Tautuhia te XP e hiahiatia ana kia oti ia mihana"
+    "xpToCompleteObjectiveDesc": "Tautuhia te XP e hiahiatia ana kia oti ia mihana",
+    "objectiveCircleComplete": "Mihana {index}: oti",
+    "objectiveCircleUpNext": "Mihana {index}: kei muri mai"
 }

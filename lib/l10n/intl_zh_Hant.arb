@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:28:38.683638",
+    "@@last_modified": "2026-10-09 11:30:42.618382",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10071,5 +10071,7 @@
     "practiceObjective": "練習此目標",
     "otherActivities": "其他活動",
     "xpToCompleteObjectiveTitle": "每個任務的經驗值",
-    "xpToCompleteObjectiveDesc": "設定完成每個任務所需的經驗值"
+    "xpToCompleteObjectiveDesc": "設定完成每個任務所需的經驗值",
+    "objectiveCircleComplete": "任務 {index}：已完成",
+    "objectiveCircleUpNext": "任務 {index}：即將進行"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-09 10:28:07.843003",
+    "@@last_modified": "2026-10-09 11:30:21.816288",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Cleachd an amas seo",
     "otherActivities": "Gnìomhan eile",
     "xpToCompleteObjectiveTitle": "XP gach Misean",
-    "xpToCompleteObjectiveDesc": "Suidhich an XP a tha a dhìth gus gach misean a choileanadh"
+    "xpToCompleteObjectiveDesc": "Suidhich an XP a tha a dhìth gus gach misean a choileanadh",
+    "objectiveCircleComplete": "Misean {index}: deiseil",
+    "objectiveCircleUpNext": "Misean {index}: an ath fhear"
 }

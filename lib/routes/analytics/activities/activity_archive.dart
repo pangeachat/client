@@ -292,12 +292,18 @@ class _MissionRow extends StatelessWidget {
           Row(
             spacing: 8.0,
             children: [
-              Icon(
-                satisfied ? Icons.check_circle : Icons.star,
-                size: 20.0,
-                color: satisfied
-                    ? theme.pangea.success
-                    : theme.pangea.goldGraphic,
+              // The star the Mission earned, once it has — nothing before,
+              // so an XP count in progress is never read as a star count.
+              // The slot stays so statements align down the list.
+              SizedBox(
+                width: 20.0,
+                child: satisfied
+                    ? Icon(
+                        Icons.star,
+                        size: 20.0,
+                        color: theme.pangea.goldGraphic,
+                      )
+                    : null,
               ),
               Expanded(
                 child: Text(

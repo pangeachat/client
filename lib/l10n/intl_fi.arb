@@ -3533,7 +3533,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-09 10:28:07.555584",
+    "@@last_modified": "2026-10-09 11:30:13.746586",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10002,5 +10002,7 @@
     "practiceObjective": "Harjoittele tätä tavoitetta",
     "otherActivities": "Muut aktiviteetit",
     "xpToCompleteObjectiveTitle": "XP per tehtävä",
-    "xpToCompleteObjectiveDesc": "Aseta XP-määrä, joka tarvitaan kunkin tehtävän suorittamiseen"
+    "xpToCompleteObjectiveDesc": "Aseta XP-määrä, joka tarvitaan kunkin tehtävän suorittamiseen",
+    "objectiveCircleComplete": "Tehtävä {index}: valmis",
+    "objectiveCircleUpNext": "Tehtävä {index}: seuraavana"
 }

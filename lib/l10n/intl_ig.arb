@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-09 10:28:12.399971",
+    "@@last_modified": "2026-10-09 11:30:19.515207",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Mee ebumnuche a",
     "otherActivities": "Ihe omume ndị ọzọ",
     "xpToCompleteObjectiveTitle": "XP kwa Mishọn",
-    "xpToCompleteObjectiveDesc": "Tọọ XP achọrọ iji mechaa mishọn ọ bụla"
+    "xpToCompleteObjectiveDesc": "Tọọ XP achọrọ iji mechaa mishọn ọ bụla",
+    "objectiveCircleComplete": "Mgbasa {index}: emechara",
+    "objectiveCircleUpNext": "Mgbasa {index}: na-abịa"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-09 10:28:09.917735",
+    "@@last_modified": "2026-10-09 11:30:14.976982",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10401,5 +10401,7 @@
     "practiceObjective": "Vježbajte ovaj cilj",
     "otherActivities": "Ostale aktivnosti",
     "xpToCompleteObjectiveTitle": "XP po misiji",
-    "xpToCompleteObjectiveDesc": "Postavite XP potreban za dovršetak svake misije"
+    "xpToCompleteObjectiveDesc": "Postavite XP potreban za dovršetak svake misije",
+    "objectiveCircleComplete": "Misija {index}: dovršeno",
+    "objectiveCircleUpNext": "Misija {index}: sljedeća"
 }

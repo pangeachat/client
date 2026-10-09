@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:28:30.502493",
+    "@@last_modified": "2026-10-09 11:30:36.366780",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10483,5 +10483,7 @@
     "practiceObjective": "Öva på detta mål",
     "otherActivities": "Andra aktiviteter",
     "xpToCompleteObjectiveTitle": "XP per uppdrag",
-    "xpToCompleteObjectiveDesc": "Ange den XP som behövs för att slutföra varje uppdrag"
+    "xpToCompleteObjectiveDesc": "Ange den XP som behövs för att slutföra varje uppdrag",
+    "objectiveCircleComplete": "Uppdrag {index}: slutfört",
+    "objectiveCircleUpNext": "Uppdrag {index}: nästa"
 }

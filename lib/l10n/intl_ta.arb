@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:28:35.691439",
+    "@@last_modified": "2026-10-09 11:30:40.219722",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10057,5 +10057,7 @@
     "practiceObjective": "இந்த நோக்கத்தைப் பயிற்சி செய்யுங்கள்",
     "otherActivities": "பிற செயல்பாடுகள்",
     "xpToCompleteObjectiveTitle": "ஒரு பணிக்கு XP",
-    "xpToCompleteObjectiveDesc": "ஒவ்வொரு பணியையும் முடிக்கத் தேவையான XP ஐ அமைக்கவும்"
+    "xpToCompleteObjectiveDesc": "ஒவ்வொரு பணியையும் முடிக்கத் தேவையான XP ஐ அமைக்கவும்",
+    "objectiveCircleComplete": "பணி {index}: முடிந்தது",
+    "objectiveCircleUpNext": "பணி {index}: அடுத்து"
 }

@@ -3090,7 +3090,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-09 10:28:33.076789",
+    "@@last_modified": "2026-10-09 11:30:35.107267",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10597,5 +10597,7 @@
     "practiceObjective": "ฝึกฝนเป้าหมายนี้",
     "otherActivities": "กิจกรรมอื่นๆ",
     "xpToCompleteObjectiveTitle": "XP ต่อภารกิจ",
-    "xpToCompleteObjectiveDesc": "กำหนด XP ที่จำเป็นในการทำแต่ละภารกิจให้สำเร็จ"
+    "xpToCompleteObjectiveDesc": "กำหนด XP ที่จำเป็นในการทำแต่ละภารกิจให้สำเร็จ",
+    "objectiveCircleComplete": "ภารกิจที่ {index}: สำเร็จ",
+    "objectiveCircleUpNext": "ภารกิจที่ {index}: ถัดไป"
 }

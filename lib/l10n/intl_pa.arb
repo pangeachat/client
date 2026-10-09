@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-09 10:28:26.053332",
+    "@@last_modified": "2026-10-09 11:30:31.281062",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "ਇਸ ਉਦੇਸ਼ ਦਾ ਅਭਿਆਸ ਕਰੋ",
     "otherActivities": "ਹੋਰ ਗਤੀਵਿਧੀਆਂ",
     "xpToCompleteObjectiveTitle": "ਪ੍ਰਤੀ ਮਿਸ਼ਨ XP",
-    "xpToCompleteObjectiveDesc": "ਹਰੇਕ ਮਿਸ਼ਨ ਨੂੰ ਪੂਰਾ ਕਰਨ ਲਈ ਲੋੜੀਂਦਾ XP ਸੈੱਟ ਕਰੋ"
+    "xpToCompleteObjectiveDesc": "ਹਰੇਕ ਮਿਸ਼ਨ ਨੂੰ ਪੂਰਾ ਕਰਨ ਲਈ ਲੋੜੀਂਦਾ XP ਸੈੱਟ ਕਰੋ",
+    "objectiveCircleComplete": "ਮਿਸ਼ਨ {index}: ਪੂਰਾ ਹੋਇਆ",
+    "objectiveCircleUpNext": "ਮਿਸ਼ਨ {index}: ਅੱਗੇ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-09 10:28:29.864515",
+    "@@last_modified": "2026-10-09 11:30:45.903927",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Dzidzira chinangwa ichi",
     "otherActivities": "Zvimwe zviitiko",
     "xpToCompleteObjectiveTitle": "XP pabasa rega rega",
-    "xpToCompleteObjectiveDesc": "Isa XP inodiwa kuti upedze basa rega rega"
+    "xpToCompleteObjectiveDesc": "Isa XP inodiwa kuti upedze basa rega rega",
+    "objectiveCircleComplete": "Basa {index}: rapera",
+    "objectiveCircleUpNext": "Basa {index}: rinotevera"
 }

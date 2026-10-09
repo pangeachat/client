@@ -16,7 +16,7 @@ import 'package:fluffychat/routes/settings/settings_learning/language_level_type
 
 /// The three Mission-header states of the full course plan (#8874): the
 /// Up-next Mission wears an "Up next" label and the primary accent, a
-/// satisfied Mission trades its star for a check and mutes its text, and every
+/// complete Mission shows the gold star it earned and mutes its text, and every
 /// other Mission stays plain. Pinned because the state used to be a single
 /// colour swap nobody could see.
 void main() {
@@ -122,7 +122,8 @@ void main() {
 
       expect(find.text(upNextLabel), findsOneWidget);
       expect(colorOf(tester, objectiveText), scheme(tester).primary);
-      expect(headerIcon(tester, '0 / 300 XP', Icons.star), findsOneWidget);
+      // No mark while in progress: the star is earned, never promised.
+      expect(headerIcon(tester, '0 / 300 XP', Icons.star), findsNothing);
     });
 
     testWidgets('the label survives the narrow (phone) header layout', (
@@ -138,8 +139,9 @@ void main() {
       expect(find.text(upNextLabel), findsOneWidget);
     });
 
-    testWidgets('a satisfied Mission trades its star for a check and mutes '
-        'its text', (tester) async {
+    testWidgets('a complete Mission earns its gold star and mutes its text', (
+      tester,
+    ) async {
       await pumpAt(
         tester,
         1200,
@@ -147,18 +149,16 @@ void main() {
         progress: const MissionProgress(xp: 300, threshold: 300),
       );
 
+      expect(headerIcon(tester, '300 / 300 XP', Icons.star), findsOneWidget);
       expect(
         headerIcon(tester, '300 / 300 XP', Icons.check_circle),
-        findsOneWidget,
+        findsNothing,
       );
-      expect(headerIcon(tester, '300 / 300 XP', Icons.star), findsNothing);
       expect(
         tester
-            .widget<Icon>(
-              headerIcon(tester, '300 / 300 XP', Icons.check_circle),
-            )
+            .widget<Icon>(headerIcon(tester, '300 / 300 XP', Icons.star))
             .color,
-        Theme.of(tester.element(find.text(objectiveText))).pangea.success,
+        Theme.of(tester.element(find.text(objectiveText))).pangea.goldGraphic,
       );
       expect(colorOf(tester, objectiveText), scheme(tester).onSurfaceVariant);
       expect(colorOf(tester, '300 / 300 XP'), scheme(tester).onSurfaceVariant);
@@ -174,21 +174,13 @@ void main() {
       );
 
       expect(find.text(upNextLabel), findsNothing);
-      expect(headerIcon(tester, '100 / 300 XP', Icons.star), findsOneWidget);
+      expect(headerIcon(tester, '100 / 300 XP', Icons.star), findsNothing);
       // Plain bodyMedium — no accent, no muting.
       expect(
         colorOf(tester, objectiveText),
         Theme.of(
           tester.element(find.text(objectiveText)),
         ).textTheme.bodyMedium?.color,
-      );
-      // The star's fill is what carries the XP count, so it wears the readable
-      // gold, not the decorative one (#8983).
-      expect(
-        tester
-            .widget<Icon>(headerIcon(tester, '100 / 300 XP', Icons.star))
-            .color,
-        Theme.of(tester.element(find.text(objectiveText))).pangea.goldGraphic,
       );
     });
   });

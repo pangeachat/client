@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-09 10:28:16.192117",
+    "@@last_modified": "2026-10-09 11:30:23.325581",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "ڕاهێنان لەسەر ئەم ئامانجە بکە",
     "otherActivities": "چالاکییەکانی تر",
     "xpToCompleteObjectiveTitle": "XP بۆ هەر ئەرکێک",
-    "xpToCompleteObjectiveDesc": "XP پێویست دیاری بکە بۆ تەواوکردنی هەر ئەرکێک"
+    "xpToCompleteObjectiveDesc": "XP پێویست دیاری بکە بۆ تەواوکردنی هەر ئەرکێک",
+    "objectiveCircleComplete": "ئەرکی {index}: تەواو بوو",
+    "objectiveCircleUpNext": "ئەرکی {index}: داهاتوو"
 }

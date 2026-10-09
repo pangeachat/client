@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-09 10:28:16.318054",
+    "@@last_modified": "2026-10-09 11:30:20.586544",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Осы мақсатты жаттықтыру",
     "otherActivities": "Басқа әрекеттер",
     "xpToCompleteObjectiveTitle": "Миссияға шаққандағы XP",
-    "xpToCompleteObjectiveDesc": "Әр миссияны аяқтау үшін қажетті XP-ны орнатыңыз"
+    "xpToCompleteObjectiveDesc": "Әр миссияны аяқтау үшін қажетті XP-ны орнатыңыз",
+    "objectiveCircleComplete": "Миссия {index}: аяқталды",
+    "objectiveCircleUpNext": "Миссия {index}: келесі"
 }

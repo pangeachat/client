@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-09 10:28:21.993562",
+    "@@last_modified": "2026-10-09 11:30:33.937522",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "অসিগুম্বা পান্দম অসি প্রেকটিস তৌ",
     "otherActivities": "অতৈ থবকশিং",
     "xpToCompleteObjectiveTitle": "মিশন অমদা XP",
-    "xpToCompleteObjectiveDesc": "মিশন খুদিংমক লোইশিন্ননবা মথৌ তাবা XP থমবীয়ু"
+    "xpToCompleteObjectiveDesc": "মিশন খুদিংমক লোইশিন্ননবা মথৌ তাবা XP থমবীয়ু",
+    "objectiveCircleComplete": "মিশন {index}: লোইশিনখ্রে",
+    "objectiveCircleUpNext": "মিশন {index}: হৌজিক লাক্কদৌরি"
 }

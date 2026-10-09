@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-09 10:28:10.054205",
+    "@@last_modified": "2026-10-09 11:30:17.041892",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Xyaum lub hom phiaj no",
     "otherActivities": "Lwm yam haujlwm",
     "xpToCompleteObjectiveTitle": "XP rau ib lub hom phiaj",
-    "xpToCompleteObjectiveDesc": "Teem tus XP uas xav tau kom ua tiav txhua lub hom phiaj"
+    "xpToCompleteObjectiveDesc": "Teem tus XP uas xav tau kom ua tiav txhua lub hom phiaj",
+    "objectiveCircleComplete": "Lub Hom Phiaj {index}: tiav",
+    "objectiveCircleUpNext": "Lub Hom Phiaj {index}: tom ntej"
 }

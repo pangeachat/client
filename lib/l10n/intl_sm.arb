@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-09 10:28:30.394839",
+    "@@last_modified": "2026-10-09 11:30:34.661266",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Fa'ata'ita'i lenei manulauti",
     "otherActivities": "Isi gaioiga",
     "xpToCompleteObjectiveTitle": "XP i Misiona ta'itasi",
-    "xpToCompleteObjectiveDesc": "Seti le XP e mana'omia e fa'amae'a ai misiona ta'itasi"
+    "xpToCompleteObjectiveDesc": "Seti le XP e mana'omia e fa'amae'a ai misiona ta'itasi",
+    "objectiveCircleComplete": "Misiona {index}: ua maeʻa",
+    "objectiveCircleUpNext": "Misiona {index}: o le isi"
 }

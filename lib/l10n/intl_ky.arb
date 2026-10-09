@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-09 10:28:15.514240",
+    "@@last_modified": "2026-10-09 11:30:29.499386",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Бул максатты машыгуу",
     "otherActivities": "Башка иш-чаралар",
     "xpToCompleteObjectiveTitle": "Ар бир миссия үчүн XP",
-    "xpToCompleteObjectiveDesc": "Ар бир миссияны аяктоо үчүн керектүү XPди коюңуз"
+    "xpToCompleteObjectiveDesc": "Ар бир миссияны аяктоо үчүн керектүү XPди коюңуз",
+    "objectiveCircleComplete": "Миссия {index}: аяктады",
+    "objectiveCircleUpNext": "Миссия {index}: кийинки"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-09 10:28:24.273617",
+    "@@last_modified": "2026-10-09 11:30:27.532980",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Latih objektif ini",
     "otherActivities": "Aktiviti lain",
     "xpToCompleteObjectiveTitle": "XP setiap Misi",
-    "xpToCompleteObjectiveDesc": "Tetapkan XP yang diperlukan untuk menyelesaikan setiap misi"
+    "xpToCompleteObjectiveDesc": "Tetapkan XP yang diperlukan untuk menyelesaikan setiap misi",
+    "objectiveCircleComplete": "Misi {index}: selesai",
+    "objectiveCircleUpNext": "Misi {index}: seterusnya"
 }

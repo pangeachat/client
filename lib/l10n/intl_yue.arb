@@ -1260,7 +1260,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-09 10:28:39.109643",
+    "@@last_modified": "2026-10-09 11:30:42.085207",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10922,5 +10922,7 @@
     "practiceObjective": "練習此目標",
     "otherActivities": "其他活動",
     "xpToCompleteObjectiveTitle": "每個任務嘅經驗值",
-    "xpToCompleteObjectiveDesc": "設定完成每個任務所需嘅經驗值"
+    "xpToCompleteObjectiveDesc": "設定完成每個任務所需嘅經驗值",
+    "objectiveCircleComplete": "任務 {index}：已完成",
+    "objectiveCircleUpNext": "任務 {index}：下一個"
 }

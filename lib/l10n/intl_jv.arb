@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-09 10:28:16.213676",
+    "@@last_modified": "2026-10-09 11:30:23.597634",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Latihan ancas iki",
     "otherActivities": "Kegiatan liyane",
     "xpToCompleteObjectiveTitle": "XP saben Misi",
-    "xpToCompleteObjectiveDesc": "Setel XP sing dibutuhake kanggo ngrampungake saben misi"
+    "xpToCompleteObjectiveDesc": "Setel XP sing dibutuhake kanggo ngrampungake saben misi",
+    "objectiveCircleComplete": "Misi {index}: rampung",
+    "objectiveCircleUpNext": "Misi {index}: sabanjure"
 }

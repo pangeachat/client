@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:28:37.993936",
+    "@@last_modified": "2026-10-09 11:30:48.450546",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7263,5 +7263,7 @@
     "practiceObjective": "Luyện tập mục tiêu này",
     "otherActivities": "Các hoạt động khác",
     "xpToCompleteObjectiveTitle": "XP mỗi Nhiệm vụ",
-    "xpToCompleteObjectiveDesc": "Đặt số XP cần thiết để hoàn thành mỗi nhiệm vụ"
+    "xpToCompleteObjectiveDesc": "Đặt số XP cần thiết để hoàn thành mỗi nhiệm vụ",
+    "objectiveCircleComplete": "Nhiệm vụ {index}: hoàn thành",
+    "objectiveCircleUpNext": "Nhiệm vụ {index}: tiếp theo"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-09 10:28:38.306964",
+    "@@last_modified": "2026-10-09 11:30:41.578037",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Ṣe ìdánilẹ́kọ̀ọ́ èrò yìí",
     "otherActivities": "Àwọn iṣẹ́ mìíràn",
     "xpToCompleteObjectiveTitle": "XP fún Iṣẹ́ kọ̀ọ̀kan",
-    "xpToCompleteObjectiveDesc": "Ṣeto XP tí ó yẹ láti parí iṣẹ́ kọ̀ọ̀kan"
+    "xpToCompleteObjectiveDesc": "Ṣeto XP tí ó yẹ láti parí iṣẹ́ kọ̀ọ̀kan",
+    "objectiveCircleComplete": "Iṣẹ́ {index}: pari",
+    "objectiveCircleUpNext": "Iṣẹ́ {index}: tó nbọ̀"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-09 10:28:37.276442",
+    "@@last_modified": "2026-10-09 11:30:35.685668",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10266,5 +10266,7 @@
     "practiceObjective": "Bu hedefi pratik et",
     "otherActivities": "Diğer aktiviteler",
     "xpToCompleteObjectiveTitle": "Görev Başına XP",
-    "xpToCompleteObjectiveDesc": "Her görevi tamamlamak için gereken XP'yi ayarla"
+    "xpToCompleteObjectiveDesc": "Her görevi tamamlamak için gereken XP'yi ayarla",
+    "objectiveCircleComplete": "Görev {index}: tamamlandı",
+    "objectiveCircleUpNext": "Görev {index}: sırada"
 }

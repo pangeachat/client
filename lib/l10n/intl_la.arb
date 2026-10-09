@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-09 10:28:16.712724",
+    "@@last_modified": "2026-10-09 11:30:31.561597",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Hoc propositum exerce",
     "otherActivities": "Aliae actiones",
     "xpToCompleteObjectiveTitle": "XP per Missionem",
-    "xpToCompleteObjectiveDesc": "Constitue XP necessaria ad quamque missionem perficiendam"
+    "xpToCompleteObjectiveDesc": "Constitue XP necessaria ad quamque missionem perficiendam",
+    "objectiveCircleComplete": "Missio {index}: perfecta",
+    "objectiveCircleUpNext": "Missio {index}: proxima"
 }

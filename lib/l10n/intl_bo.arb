@@ -2916,7 +2916,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-10-09 10:29:18.779052",
+    "@@last_modified": "2026-10-09 11:30:10.134688",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9576,5 +9576,7 @@
     "practiceObjective": "དམིགས་ཡུལ་འདིར་སྦྱོང་བརྡར་བྱེད་པ།",
     "otherActivities": "བྱེད་སྒོ་གཞན་དག",
     "xpToCompleteObjectiveTitle": "ལས་འགན་རེར་ཉམས་མྱོང་།",
-    "xpToCompleteObjectiveDesc": "ལས་འགན་རེ་རེ་ལེགས་འགྲུབ་བྱེད་པར་མཁོ་བའི་ཉམས་མྱོང་གི་གྲངས་ཚད་གཏན་འབེབས་བྱེད་པ།"
+    "xpToCompleteObjectiveDesc": "ལས་འགན་རེ་རེ་ལེགས་འགྲུབ་བྱེད་པར་མཁོ་བའི་ཉམས་མྱོང་གི་གྲངས་ཚད་གཏན་འབེབས་བྱེད་པ།",
+    "objectiveCircleComplete": "དམིགས་ཡུལ་ {index} ལེགས་འགྲུབ།",
+    "objectiveCircleUpNext": "དམིགས་ཡུལ་ {index} རྗེས་མ།"
 }

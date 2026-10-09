@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-09 10:28:20.161116",
+    "@@last_modified": "2026-10-09 11:30:27.279049",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Manaova fanazaran-tena amin'ity tanjona ity",
     "otherActivities": "Hetsika hafa",
     "xpToCompleteObjectiveTitle": "XP isaky ny iraka",
-    "xpToCompleteObjectiveDesc": "Amboary ny XP ilaina hamitana ny iraka tsirairay"
+    "xpToCompleteObjectiveDesc": "Amboary ny XP ilaina hamitana ny iraka tsirairay",
+    "objectiveCircleComplete": "Ilay tanjona {index}: vita",
+    "objectiveCircleUpNext": "Ilay tanjona {index}: manaraka"
 }

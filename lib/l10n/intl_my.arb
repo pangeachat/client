@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-09 10:28:23.179766",
+    "@@last_modified": "2026-10-09 11:30:33.418216",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "ဤရည်ရွယ်ချက်ကို လေ့ကျင့်ပါ",
     "otherActivities": "အခြားလုပ်ဆောင်ချက်များ",
     "xpToCompleteObjectiveTitle": "မစ်ရှင်တစ်ခုလျှင် XP",
-    "xpToCompleteObjectiveDesc": "မစ်ရှင်တစ်ခုစီ ပြီးမြောက်ရန် လိုအပ်သော XP ကို သတ်မှတ်ပါ"
+    "xpToCompleteObjectiveDesc": "မစ်ရှင်တစ်ခုစီ ပြီးမြောက်ရန် လိုအပ်သော XP ကို သတ်မှတ်ပါ",
+    "objectiveCircleComplete": "မစ်ရှင် {index}- ပြီးမြောက်သည်",
+    "objectiveCircleUpNext": "မစ်ရှင် {index}- နောက်တစ်ခု"
 }

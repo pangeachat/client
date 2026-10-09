@@ -1321,7 +1321,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-09 10:28:36.187271",
+    "@@last_modified": "2026-10-09 11:30:37.575639",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10915,5 +10915,7 @@
     "practiceObjective": "ఈ లక్ష్యాన్ని సాధన చేయండి",
     "otherActivities": "ఇతర కార్యకలాపాలు",
     "xpToCompleteObjectiveTitle": "ప్రతి మిషన్‌కు XP",
-    "xpToCompleteObjectiveDesc": "ప్రతి మిషన్‌ను పూర్తి చేయడానికి అవసరమైన XPని సెట్ చేయండి"
+    "xpToCompleteObjectiveDesc": "ప్రతి మిషన్‌ను పూర్తి చేయడానికి అవసరమైన XPని సెట్ చేయండి",
+    "objectiveCircleComplete": "మిషన్ {index}: పూర్తయింది",
+    "objectiveCircleUpNext": "మిషన్ {index}: తర్వాత"
 }

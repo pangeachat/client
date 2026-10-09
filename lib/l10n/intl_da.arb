@@ -1331,7 +1331,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-09 10:28:04.748734",
+    "@@last_modified": "2026-10-09 11:30:11.768870",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10885,5 +10885,7 @@
     "practiceObjective": "Øv dette mål",
     "otherActivities": "Andre aktiviteter",
     "xpToCompleteObjectiveTitle": "XP pr. mission",
-    "xpToCompleteObjectiveDesc": "Indstil den XP, der er nødvendig for at fuldføre hver mission"
+    "xpToCompleteObjectiveDesc": "Indstil den XP, der er nødvendig for at fuldføre hver mission",
+    "objectiveCircleComplete": "Mission {index}: gennemført",
+    "objectiveCircleUpNext": "Mission {index}: næste"
 }

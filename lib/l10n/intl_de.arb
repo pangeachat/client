@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-09 10:28:00.793785",
+    "@@last_modified": "2026-10-09 11:30:11.028713",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9952,5 +9952,7 @@
     "practiceObjective": "Dieses Ziel üben",
     "otherActivities": "Andere Aktivitäten",
     "xpToCompleteObjectiveTitle": "XP pro Mission",
-    "xpToCompleteObjectiveDesc": "Lege die benötigten XP fest, um jede Mission abzuschließen"
+    "xpToCompleteObjectiveDesc": "Lege die benötigten XP fest, um jede Mission abzuschließen",
+    "objectiveCircleComplete": "Mission {index}: abgeschlossen",
+    "objectiveCircleUpNext": "Mission {index}: als Nächstes"
 }

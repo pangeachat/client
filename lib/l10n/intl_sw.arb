@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-09 10:28:33.608895",
+    "@@last_modified": "2026-10-09 11:30:37.002956",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Fanya mazoezi ya lengo hili",
     "otherActivities": "Shughuli zingine",
     "xpToCompleteObjectiveTitle": "XP kwa kila Dhamira",
-    "xpToCompleteObjectiveDesc": "Weka XP inayohitajika kukamilisha kila dhamira"
+    "xpToCompleteObjectiveDesc": "Weka XP inayohitajika kukamilisha kila dhamira",
+    "objectiveCircleComplete": "Dhamira {index}: imekamilika",
+    "objectiveCircleUpNext": "Dhamira {index}: inayofuata"
 }

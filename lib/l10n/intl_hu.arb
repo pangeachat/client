@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-09 10:28:10.024779",
+    "@@last_modified": "2026-10-09 11:30:15.786647",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10068,5 +10068,7 @@
     "practiceObjective": "Gyakorold ezt a célt",
     "otherActivities": "Egyéb tevékenységek",
     "xpToCompleteObjectiveTitle": "XP küldetésenként",
-    "xpToCompleteObjectiveDesc": "Állítsd be a küldetések teljesítéséhez szükséges XP-t"
+    "xpToCompleteObjectiveDesc": "Állítsd be a küldetések teljesítéséhez szükséges XP-t",
+    "objectiveCircleComplete": "Küldetés {index}: kész",
+    "objectiveCircleUpNext": "Küldetés {index}: következik"
 }

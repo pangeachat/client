@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-09 10:28:36.155324",
+    "@@last_modified": "2026-10-09 11:30:34.318964",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Latihan tujuan ieu",
     "otherActivities": "Kagiatan sanés",
     "xpToCompleteObjectiveTitle": "XP per Misi",
-    "xpToCompleteObjectiveDesc": "Atur XP anu diperyogikeun pikeun ngaréngsékeun unggal misi"
+    "xpToCompleteObjectiveDesc": "Atur XP anu diperyogikeun pikeun ngaréngsékeun unggal misi",
+    "objectiveCircleComplete": "Misi {index}: réngsé",
+    "objectiveCircleUpNext": "Misi {index}: salajengna"
 }

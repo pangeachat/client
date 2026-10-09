@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:28:02.272515",
+    "@@last_modified": "2026-10-09 11:30:19.554729",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10910,5 +10910,7 @@
     "practiceObjective": "Praktiku ĉi tiun celon",
     "otherActivities": "Aliaj agadoj",
     "xpToCompleteObjectiveTitle": "XP por Misio",
-    "xpToCompleteObjectiveDesc": "Agordu la XP necesan por plenumi ĉiun mision"
+    "xpToCompleteObjectiveDesc": "Agordu la XP necesan por plenumi ĉiun mision",
+    "objectiveCircleComplete": "Misio {index}: finita",
+    "objectiveCircleUpNext": "Misio {index}: sekva"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-09 10:28:28.686150",
+    "@@last_modified": "2026-10-09 11:30:33.292284",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "මෙම අරමුණ පුහුණු වන්න",
     "otherActivities": "වෙනත් ක්‍රියාකාරකම්",
     "xpToCompleteObjectiveTitle": "මෙහෙයුමකට XP",
-    "xpToCompleteObjectiveDesc": "සෑම මෙහෙයුමක්ම සම්පූර්ණ කිරීමට අවශ්‍ය XP සකසන්න"
+    "xpToCompleteObjectiveDesc": "සෑම මෙහෙයුමක්ම සම්පූර්ණ කිරීමට අවශ්‍ය XP සකසන්න",
+    "objectiveCircleComplete": "මෙහෙයුම {index}: සම්පූර්ණයි",
+    "objectiveCircleUpNext": "මෙහෙයුම {index}: ඊළඟට"
 }

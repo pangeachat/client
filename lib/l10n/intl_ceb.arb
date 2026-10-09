@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-09 10:28:09.625026",
+    "@@last_modified": "2026-10-09 11:30:11.631940",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Ipraktis kini nga tumong",
     "otherActivities": "Uban pang mga kalihokan",
     "xpToCompleteObjectiveTitle": "XP kada Misyon",
-    "xpToCompleteObjectiveDesc": "Ibutang ang XP nga gikinahanglan aron makompleto ang matag misyon"
+    "xpToCompleteObjectiveDesc": "Ibutang ang XP nga gikinahanglan aron makompleto ang matag misyon",
+    "objectiveCircleComplete": "Misyon {index}: kompleto",
+    "objectiveCircleUpNext": "Misyon {index}: sunod"
 }

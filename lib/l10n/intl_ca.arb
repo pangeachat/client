@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:27:59.365797",
+    "@@last_modified": "2026-10-09 11:30:11.945600",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10092,5 +10092,7 @@
     "practiceObjective": "Practica aquest objectiu",
     "otherActivities": "Altres activitats",
     "xpToCompleteObjectiveTitle": "XP per missió",
-    "xpToCompleteObjectiveDesc": "Defineix els XP necessaris per completar cada missió"
+    "xpToCompleteObjectiveDesc": "Defineix els XP necessaris per completar cada missió",
+    "objectiveCircleComplete": "Missió {index}: completada",
+    "objectiveCircleUpNext": "Missió {index}: següent"
 }

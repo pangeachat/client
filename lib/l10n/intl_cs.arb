@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-09 10:28:00.588441",
+    "@@last_modified": "2026-10-09 11:30:10.583669",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10459,5 +10459,7 @@
     "practiceObjective": "Procvičit tento cíl",
     "otherActivities": "Další aktivity",
     "xpToCompleteObjectiveTitle": "XP za misi",
-    "xpToCompleteObjectiveDesc": "Nastavte XP potřebné k dokončení každé mise"
+    "xpToCompleteObjectiveDesc": "Nastavte XP potřebné k dokončení každé mise",
+    "objectiveCircleComplete": "Mise {index}: dokončena",
+    "objectiveCircleUpNext": "Mise {index}: další v pořadí"
 }

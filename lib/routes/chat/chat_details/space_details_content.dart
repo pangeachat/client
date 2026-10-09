@@ -23,6 +23,7 @@ import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
+import 'package:fluffychat/routes/courses/course_objectives/objective_progress_circles.dart';
 import 'package:fluffychat/routes/world/left_panel/course_card_reveal.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_close_button.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
@@ -384,6 +385,10 @@ class _CourseSectionSubpage extends StatelessWidget {
             CourseProgressBar(
               objectivesProvider: controller.objectivesProvider,
               scope: CourseProgressScope.course,
+            ),
+            const SizedBox(height: 8.0),
+            CourseObjectiveCircles(
+              objectivesProvider: controller.objectivesProvider,
             ),
             const SizedBox(height: 8.0),
             Expanded(

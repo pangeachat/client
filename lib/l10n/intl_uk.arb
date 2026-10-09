@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-09 10:28:34.307100",
+    "@@last_modified": "2026-10-09 11:30:38.365342",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9965,5 +9965,7 @@
     "practiceObjective": "Практикувати цю ціль",
     "otherActivities": "Інші активності",
     "xpToCompleteObjectiveTitle": "XP за місію",
-    "xpToCompleteObjectiveDesc": "Встановіть XP, необхідні для завершення кожної місії"
+    "xpToCompleteObjectiveDesc": "Встановіть XP, необхідні для завершення кожної місії",
+    "objectiveCircleComplete": "Місія {index}: виконано",
+    "objectiveCircleUpNext": "Місія {index}: наступна"
 }

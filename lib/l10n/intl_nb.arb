@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:28:22.440794",
+    "@@last_modified": "2026-10-09 11:30:29.014839",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10022,5 +10022,7 @@
     "practiceObjective": "Øv på dette målet",
     "otherActivities": "Andre aktiviteter",
     "xpToCompleteObjectiveTitle": "XP per oppdrag",
-    "xpToCompleteObjectiveDesc": "Angi XP som trengs for å fullføre hvert oppdrag"
+    "xpToCompleteObjectiveDesc": "Angi XP som trengs for å fullføre hvert oppdrag",
+    "objectiveCircleComplete": "Oppdrag {index}: fullført",
+    "objectiveCircleUpNext": "Oppdrag {index}: neste"
 }

@@ -27,6 +27,7 @@ import 'package:fluffychat/routes/courses/course_objectives/course_complete_card
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
 import 'package:fluffychat/routes/courses/course_objectives/current_objective_statement.dart';
+import 'package:fluffychat/routes/courses/course_objectives/objective_progress_circles.dart';
 import 'package:fluffychat/widgets/expandable_text.dart';
 
 /// The single scrollable course page (#8357, replacing the tab row): Course
@@ -185,6 +186,15 @@ class _CourseOverviewState extends State<CourseOverview> {
                         iconSize: 12.0,
                       ),
                     ),
+                  // The plan at a glance: one circle per Mission, under the
+                  // chips (#9420). A tap opens the full plan.
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 12.0),
+                    child: CourseObjectiveCircles(
+                      objectivesProvider: widget.controller.objectivesProvider,
+                      onTap: (_) => _openSubpage(SpaceSettingsTabs.course),
+                    ),
+                  ),
                   // Pending join requests lead: they are a decision waiting on
                   // the admin, above anything they can merely catch up on.
                   CourseKnockRequests(room: room),

@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-09 10:28:27.348071",
+    "@@last_modified": "2026-10-09 11:30:24.276015",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "ຝຶກຝົນເປົ້າໝາຍນີ້",
     "otherActivities": "ກິດຈະກຳອື່ນໆ",
     "xpToCompleteObjectiveTitle": "XP ຕໍ່ພາລະກິດ",
-    "xpToCompleteObjectiveDesc": "ກຳນົດ XP ທີ່ຕ້ອງການເພື່ອສຳເລັດແຕ່ລະພາລະກິດ"
+    "xpToCompleteObjectiveDesc": "ກຳນົດ XP ທີ່ຕ້ອງການເພື່ອສຳເລັດແຕ່ລະພາລະກິດ",
+    "objectiveCircleComplete": "ພາລະກິດ {index}: ສຳເລັດ",
+    "objectiveCircleUpNext": "ພາລະກິດ {index}: ຕໍ່ໄປ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-09 10:27:59.047826",
+    "@@last_modified": "2026-10-09 11:30:09.917447",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Bu məqsədi təcrübə edin",
     "otherActivities": "Digər fəaliyyətlər",
     "xpToCompleteObjectiveTitle": "Hər Missiya üçün XP",
-    "xpToCompleteObjectiveDesc": "Hər missiyanı tamamlamaq üçün lazım olan XP-ni təyin edin"
+    "xpToCompleteObjectiveDesc": "Hər missiyanı tamamlamaq üçün lazım olan XP-ni təyin edin",
+    "objectiveCircleComplete": "Missiya {index}: tamamlandı",
+    "objectiveCircleUpNext": "Missiya {index}: növbəti"
 }

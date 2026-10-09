@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-09 10:28:31.594131",
+    "@@last_modified": "2026-10-09 11:30:34.525107",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Itlwaetse sepheo sena",
     "otherActivities": "Diketso tse ding",
     "xpToCompleteObjectiveTitle": "XP ka Thomo",
-    "xpToCompleteObjectiveDesc": "Beha XP e hlokahalang ho phethela thomo ka nngwe"
+    "xpToCompleteObjectiveDesc": "Beha XP e hlokahalang ho phethela thomo ka nngwe",
+    "objectiveCircleComplete": "Thomo {index}: e phethiloe",
+    "objectiveCircleUpNext": "Thomo {index}: e latelang"
 }

@@ -1799,7 +1799,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-09 10:28:30.512020",
+    "@@last_modified": "2026-10-09 11:30:33.446566",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10910,5 +10910,7 @@
     "practiceObjective": "Vadite ta cilj",
     "otherActivities": "Druge dejavnosti",
     "xpToCompleteObjectiveTitle": "XP na misijo",
-    "xpToCompleteObjectiveDesc": "Nastavite XP, potrebne za dokončanje vsake misije"
+    "xpToCompleteObjectiveDesc": "Nastavite XP, potrebne za dokončanje vsake misije",
+    "objectiveCircleComplete": "Naloga {index}: dokončana",
+    "objectiveCircleUpNext": "Naloga {index}: naslednja"
 }

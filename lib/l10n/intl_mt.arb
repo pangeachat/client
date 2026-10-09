@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-09 10:28:21.879602",
+    "@@last_modified": "2026-10-09 11:30:28.304041",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Ipprattika dan l-għan",
     "otherActivities": "Attivitajiet oħra",
     "xpToCompleteObjectiveTitle": "XP għal kull Missjoni",
-    "xpToCompleteObjectiveDesc": "Issettja l-XP meħtieġa biex titlesta kull missjoni"
+    "xpToCompleteObjectiveDesc": "Issettja l-XP meħtieġa biex titlesta kull missjoni",
+    "objectiveCircleComplete": "Missjoni {index}: kompluta",
+    "objectiveCircleUpNext": "Missjoni {index}: li jmiss"
 }

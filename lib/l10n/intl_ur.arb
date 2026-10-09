@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-09 10:28:36.642802",
+    "@@last_modified": "2026-10-09 11:30:37.805240",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "اس مقصد کی مشق کریں",
     "otherActivities": "دیگر سرگرمیاں",
     "xpToCompleteObjectiveTitle": "فی مشن XP",
-    "xpToCompleteObjectiveDesc": "ہر مشن کو مکمل کرنے کے لیے درکار XP سیٹ کریں"
+    "xpToCompleteObjectiveDesc": "ہر مشن کو مکمل کرنے کے لیے درکار XP سیٹ کریں",
+    "objectiveCircleComplete": "مشن {index}: مکمل",
+    "objectiveCircleUpNext": "مشن {index}: اگلا"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-09 10:28:39.989673",
+    "@@last_modified": "2026-10-09 11:30:39.526324",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Zijwayeze le nhloso",
     "otherActivities": "Eminye imisebenzi",
     "xpToCompleteObjectiveTitle": "I-XP Ngomsebenzi Ngamunye",
-    "xpToCompleteObjectiveDesc": "Setha i-XP edingekayo ukuze uqedele umsebenzi ngamunye"
+    "xpToCompleteObjectiveDesc": "Setha i-XP edingekayo ukuze uqedele umsebenzi ngamunye",
+    "objectiveCircleComplete": "Umsebenzi {index}: uqedile",
+    "objectiveCircleUpNext": "Umsebenzi {index}: olandelayo"
 }

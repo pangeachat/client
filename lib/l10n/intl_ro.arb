@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:28:28.457272",
+    "@@last_modified": "2026-10-09 11:30:32.474412",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10697,5 +10697,7 @@
     "practiceObjective": "Exersează acest obiectiv",
     "otherActivities": "Alte activități",
     "xpToCompleteObjectiveTitle": "XP per misiune",
-    "xpToCompleteObjectiveDesc": "Setează XP-ul necesar pentru a finaliza fiecare misiune"
+    "xpToCompleteObjectiveDesc": "Setează XP-ul necesar pentru a finaliza fiecare misiune",
+    "objectiveCircleComplete": "Misiunea {index}: finalizată",
+    "objectiveCircleUpNext": "Misiunea {index}: urmează"
 }

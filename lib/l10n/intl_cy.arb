@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-09 10:28:01.408068",
+    "@@last_modified": "2026-10-09 11:30:10.599982",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2410,5 +2410,7 @@
     "practiceObjective": "Ymarfer yr amcan hwn",
     "otherActivities": "Gweithgareddau eraill",
     "xpToCompleteObjectiveTitle": "XP fesul Cenhadaeth",
-    "xpToCompleteObjectiveDesc": "Gosodwch yr XP sydd ei angen i gwblhau pob cenhadaeth"
+    "xpToCompleteObjectiveDesc": "Gosodwch yr XP sydd ei angen i gwblhau pob cenhadaeth",
+    "objectiveCircleComplete": "Cenhadaeth {index}: wedi'i chwblhau",
+    "objectiveCircleUpNext": "Cenhadaeth {index}: nesaf"
 }
