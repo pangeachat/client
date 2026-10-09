@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 15:42:49.064997",
+    "@@last_modified": "2026-10-05 12:30:48.300024",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10910,5 +10910,8 @@
     "goalReportErrorRetry": "Pretraga poteza nije završena. Pokušaj ponovo.",
     "summaryFeedbackReceived": "Hvala! Primili smo vaše povratne informacije.",
     "summaryFeedbackFailed": "Nismo mogli da pošaljemo vaše povratne informacije. Pokušajte ponovo.",
-    "summaryFeedbackProcessing": "Šaljemo vaše povratne informacije i ažuriramo rezime…"
+    "summaryFeedbackProcessing": "Šaljemo vaše povratne informacije i ažuriramo rezime…",
+    "ssoNetworkBlockedTitle": "Sajt za prijavu je nedostupan",
+    "ssoNetworkBlockedDesc": "Ova mreža nam ne dozvoljava da dođemo do {provider} da bismo vas prijavili. Školski i kancelarijski Wi-Fi često blokiraju pristup. Umesto toga, možete se prijaviti putem e-pošte ili preći na drugu mrežu i pokušati ponovo.",
+    "ssoTryAnyway": "Pokušajte svejedno"
 }

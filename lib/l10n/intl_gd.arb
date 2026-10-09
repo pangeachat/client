@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-23 15:42:44.921766",
+    "@@last_modified": "2026-10-05 12:30:36.958389",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2369,5 +2369,8 @@
     "goalReportErrorRetry": "Cha do chrìochnaich an rannsachadh airson an tionndaidh. Feuch ris a-rithist.",
     "summaryFeedbackReceived": "Tapadh leat! Fhuair sinn d' fhios air ais.",
     "summaryFeedbackFailed": "Cha b' urrainn dhuinn d' fhios air ais a chur. Feuch ris a-rithist.",
-    "summaryFeedbackProcessing": "A’ cur do fhios air ais agus ag ùrachadh an ath-ghoirid…"
+    "summaryFeedbackProcessing": "A’ cur do fhios air ais agus ag ùrachadh an ath-ghoirid…",
+    "ssoNetworkBlockedTitle": "Làrach-lìn logadh a-steach do-ruigsinneach",
+    "ssoNetworkBlockedDesc": "Chan eil an lìonra seo a' leigeil leinn {provider} a ruighinn gus do logadh a-steach. Bidh Wi-Fi sgoile is oifise gu tric ga bhacadh. Faodaidh tu clàradh le post-d na àite, no atharrachadh gu lìonra eile agus feuchainn a-rithist.",
+    "ssoTryAnyway": "Feuch co-dhiù"
 }

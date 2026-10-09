@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-23 15:42:42.936500",
+    "@@last_modified": "2026-10-05 12:30:33.413513",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10267,5 +10267,8 @@
     "goalReportErrorRetry": "لم يكتمل البحث عن الدورة. حاول مرة أخرى.",
     "summaryFeedbackReceived": "شكرًا! لقد تلقينا ملاحظاتك.",
     "summaryFeedbackFailed": "تعذر إرسال ملاحظاتك. يرجى المحاولة مرة أخرى.",
-    "summaryFeedbackProcessing": "جارٍ إرسال ملاحظاتك وتحديث الملخص…"
+    "summaryFeedbackProcessing": "جارٍ إرسال ملاحظاتك وتحديث الملخص…",
+    "ssoNetworkBlockedTitle": "موقع تسجيل الدخول غير متاح",
+    "ssoNetworkBlockedDesc": "لا تسمح لنا هذه الشبكة بالوصول إلى {provider} لتسجيل دخولك. غالبًا ما تحظر شبكات Wi-Fi المدرسية والمكتبية ذلك. يمكنك التسجيل باستخدام البريد الإلكتروني بدلاً من ذلك، أو التبديل إلى شبكة أخرى والمحاولة مرة أخرى.",
+    "ssoTryAnyway": "المحاولة على أي حال"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-23 15:42:44.564514",
+    "@@last_modified": "2026-10-05 12:30:36.923543",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9961,5 +9961,8 @@
     "goalReportErrorRetry": "A busca da quenda non rematou. Téntao de novo.",
     "summaryFeedbackReceived": "Grazas! Recibimos os teus comentarios.",
     "summaryFeedbackFailed": "Non se puideron enviar os teus comentarios. Téntao de novo.",
-    "summaryFeedbackProcessing": "Enviando os teus comentarios e actualizando o resumo…"
+    "summaryFeedbackProcessing": "Enviando os teus comentarios e actualizando o resumo…",
+    "ssoNetworkBlockedTitle": "Sitio de inicio de sesión inaccesible",
+    "ssoNetworkBlockedDesc": "Esta rede non nos permite acceder a {provider} para iniciar a túa sesión. As redes Wi-Fi de escolas e oficinas adoitan bloquealo. Podes rexistrarte con correo electrónico ou cambiar a outra rede e tentalo de novo.",
+    "ssoTryAnyway": "Tentar de todos os xeitos"
 }

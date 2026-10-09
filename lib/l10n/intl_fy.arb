@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-23 15:42:44.310605",
+    "@@last_modified": "2026-10-05 12:30:36.551232",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2369,5 +2369,8 @@
     "goalReportErrorRetry": "It sykjen nei de beurt is net foltôge. Besykje it opnij.",
     "summaryFeedbackReceived": "Tankewol! Wy hawwe jo feedback ûntfongen.",
     "summaryFeedbackFailed": "Koe jo feedback net ferstjoere. Besykje it opnij.",
-    "summaryFeedbackProcessing": "Jo feedback ferstjoere en de gearfetting bywurkje…"
+    "summaryFeedbackProcessing": "Jo feedback ferstjoere en de gearfetting bywurkje…",
+    "ssoNetworkBlockedTitle": "Oanmeldside net berikber",
+    "ssoNetworkBlockedDesc": "Dit netwurk lit ús {provider} net berikke om jo oan te melden. Wi-Fi op skoalle en kantoar blokkearret dit faak. Jo kinne ynstee oanmelde mei e-mail, of oerskeakelje nei in oar netwurk en it opnij besykje.",
+    "ssoTryAnyway": "Dochs besykje"
 }

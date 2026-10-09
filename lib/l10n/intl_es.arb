@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-23 15:42:44.013834",
+    "@@last_modified": "2026-10-05 12:30:35.725951",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8180,5 +8180,8 @@
     "goalReportErrorRetry": "La búsqueda del turno no finalizó. Inténtalo de nuevo.",
     "summaryFeedbackReceived": "¡Gracias! Recibimos tus comentarios.",
     "summaryFeedbackFailed": "No se pudieron enviar tus comentarios. Inténtalo de nuevo.",
-    "summaryFeedbackProcessing": "Enviando tus comentarios y actualizando el resumen…"
+    "summaryFeedbackProcessing": "Enviando tus comentarios y actualizando el resumen…",
+    "ssoNetworkBlockedTitle": "Sitio de inicio de sesión inalcanzable",
+    "ssoNetworkBlockedDesc": "Esta red no nos permite acceder a {provider} para iniciar sesión. Las redes Wi-Fi de escuelas y oficinas a menudo lo bloquean. Puedes registrarte con tu correo electrónico o cambiar a otra red e intentarlo de nuevo.",
+    "ssoTryAnyway": "Intentar de todos modos"
 }

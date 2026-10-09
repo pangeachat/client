@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-23 15:42:47.991881",
+    "@@last_modified": "2026-10-05 12:30:45.517056",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2369,5 +2369,8 @@
     "goalReportErrorRetry": "Kufufuza kwa nthawiyo sikunamalizidwe. Yesaninso.",
     "summaryFeedbackReceived": "Zikomo! Talandira ndemanga yanu.",
     "summaryFeedbackFailed": "Zalephera kutumiza ndemanga yanu. Chonde yesaninso.",
-    "summaryFeedbackProcessing": "Kutumiza ndemanga yanu ndikusintha chidule…"
+    "summaryFeedbackProcessing": "Kutumiza ndemanga yanu ndikusintha chidule…",
+    "ssoNetworkBlockedTitle": "Malo olowera safikika",
+    "ssoNetworkBlockedDesc": "Intaneti iyi ikutiletsa kufika ku {provider} kuti tikulowetseni. Ma Wi-Fi a kusukulu ndi ku ofesi nthawi zambiri amalepheretsa. Mutha kulembetsa ndi imelo m'malo mwake, kapena kusinthira ku intaneti ina ndikuyesanso.",
+    "ssoTryAnyway": "Yesani komabe"
 }

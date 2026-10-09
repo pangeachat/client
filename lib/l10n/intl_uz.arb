@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-23 15:42:49.873139",
+    "@@last_modified": "2026-10-05 12:30:50.249514",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9965,5 +9965,8 @@
     "goalReportErrorRetry": "Navbatni qidirish tugallanmadi. Qayta urinib ko'ring.",
     "summaryFeedbackReceived": "Rahmat! Fikringiz qabul qilindi.",
     "summaryFeedbackFailed": "Fikringizni yuborib bo‘lmadi. Iltimos, qayta urinib ko‘ring.",
-    "summaryFeedbackProcessing": "Fikringizni yuborish va xulosani yangilash…"
+    "summaryFeedbackProcessing": "Fikringizni yuborish va xulosani yangilash…",
+    "ssoNetworkBlockedTitle": "Kirish sayti mavjud emas",
+    "ssoNetworkBlockedDesc": "Bu tarmoq sizni tizimga kiritish uchun {provider} ga ulanishimizga ruxsat bermayapti. Maktab va ofis Wi-Fi ko'pincha uni bloklaydi. Buning o'rniga elektron pochta orqali ro'yxatdan o'tishingiz yoki boshqa tarmoqqa o'tib, qayta urinishingiz mumkin.",
+    "ssoTryAnyway": "Baribir urinib ko'ring"
 }

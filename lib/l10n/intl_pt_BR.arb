@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 15:42:48.170120",
+    "@@last_modified": "2026-10-05 12:30:45.545635",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9961,5 +9961,8 @@
     "goalReportErrorRetry": "A busca pela vez não terminou. Tente novamente.",
     "summaryFeedbackReceived": "Obrigado! Recebemos seu feedback.",
     "summaryFeedbackFailed": "Não foi possível enviar seu feedback. Por favor, tente novamente.",
-    "summaryFeedbackProcessing": "Enviando seu feedback e atualizando o resumo…"
+    "summaryFeedbackProcessing": "Enviando seu feedback e atualizando o resumo…",
+    "ssoNetworkBlockedTitle": "Site de login indisponível",
+    "ssoNetworkBlockedDesc": "Esta rede não nos permite acessar {provider} para fazer seu login. Wi-Fis de escolas e escritórios geralmente bloqueiam isso. Você pode se inscrever com e-mail ou mudar para outra rede e tentar novamente.",
+    "ssoTryAnyway": "Tentar mesmo assim"
 }

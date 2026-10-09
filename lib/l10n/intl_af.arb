@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-23 15:42:42.881760",
+    "@@last_modified": "2026-10-05 12:30:33.496360",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2369,5 +2369,8 @@
     "goalReportErrorRetry": "Die soektog na die beurt het nie voltooi nie. Probeer weer.",
     "summaryFeedbackReceived": "Dankie! Ons het jou terugvoer ontvang.",
     "summaryFeedbackFailed": "Kon nie jou terugvoer stuur nie. Probeer asseblief weer.",
-    "summaryFeedbackProcessing": "Stuur jou terugvoer en werk die opsomming by …"
+    "summaryFeedbackProcessing": "Stuur jou terugvoer en werk die opsomming by …",
+    "ssoNetworkBlockedTitle": "Aanmeldingswerf onbereikbaar",
+    "ssoNetworkBlockedDesc": "Hierdie netwerk laat ons nie toe om {provider} te bereik om jou aan te meld nie. Skool- en kantoor-Wi-Fi blokkeer dit dikwels. Jy kan eerder met e-pos aanmeld, of na 'n ander netwerk oorskakel en weer probeer.",
+    "ssoTryAnyway": "Probeer in elk geval"
 }

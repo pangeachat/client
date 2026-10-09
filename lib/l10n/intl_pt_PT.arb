@@ -2559,7 +2559,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-23 15:42:48.046012",
+    "@@last_modified": "2026-10-05 12:30:45.973358",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10878,5 +10878,8 @@
     "goalReportErrorRetry": "A pesquisa pela vez não terminou. Tente novamente.",
     "summaryFeedbackReceived": "Obrigado! Recebemos o seu feedback.",
     "summaryFeedbackFailed": "Não foi possível enviar o seu feedback. Por favor, tente novamente.",
-    "summaryFeedbackProcessing": "A enviar o seu feedback e a atualizar o resumo…"
+    "summaryFeedbackProcessing": "A enviar o seu feedback e a atualizar o resumo…",
+    "ssoNetworkBlockedTitle": "Site de início de sessão inacessível",
+    "ssoNetworkBlockedDesc": "Esta rede não nos permite aceder a {provider} para iniciar a sua sessão. As redes Wi-Fi de escolas e escritórios bloqueiam-no frequentemente. Pode registar-se com e-mail ou mudar para outra rede e tentar novamente.",
+    "ssoTryAnyway": "Tentar na mesma"
 }

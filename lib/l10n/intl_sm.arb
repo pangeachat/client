@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-23 15:42:48.891656",
+    "@@last_modified": "2026-10-05 12:30:48.285147",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2369,5 +2369,8 @@
     "goalReportErrorRetry": "E leʻi maeʻa le suʻesuʻega mo le taʻamilosaga. Toe taumafai.",
     "summaryFeedbackReceived": "Fa'afetai! Ua matou mauaina lau fa'amatalaga.",
     "summaryFeedbackFailed": "E le'i mafai ona lafo lau fa'amatalaga. Fa'amolemole toe taumafai.",
-    "summaryFeedbackProcessing": "Lafoina au manatu faaalia ma faafouina le aotelega…"
+    "summaryFeedbackProcessing": "Lafoina au manatu faaalia ma faafouina le aotelega…",
+    "ssoNetworkBlockedTitle": "E le mafai ona maua le nofoaga e saini ai",
+    "ssoNetworkBlockedDesc": "E le mafai e lenei fesoʻotaʻiga ona matou maua {provider} e saini ai oe. E masani ona poloka e le Wi-Fi a le aʻoga ma le ofisa. E mafai ona e lesitala i le imeli, pe sui i se isi fesoʻotaʻiga ma toe taumafai.",
+    "ssoTryAnyway": "Taumafai lava"
 }

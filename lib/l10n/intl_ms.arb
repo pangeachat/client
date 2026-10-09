@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-23 15:42:47.233878",
+    "@@last_modified": "2026-10-05 12:30:43.261917",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2369,5 +2369,8 @@
     "goalReportErrorRetry": "Pencarian giliran tidak selesai. Cuba lagi.",
     "summaryFeedbackReceived": "Terima kasih! Kami telah menerima maklum balas anda.",
     "summaryFeedbackFailed": "Tidak dapat menghantar maklum balas anda. Sila cuba lagi.",
-    "summaryFeedbackProcessing": "Menghantar maklum balas anda dan mengemas kini ringkasan…"
+    "summaryFeedbackProcessing": "Menghantar maklum balas anda dan mengemas kini ringkasan…",
+    "ssoNetworkBlockedTitle": "Laman web log masuk tidak dapat dicapai",
+    "ssoNetworkBlockedDesc": "Rangkaian ini tidak membenarkan kami mencapai {provider} untuk log masuk anda. Wi-Fi sekolah dan pejabat sering menyekatnya. Anda boleh mendaftar dengan e-mel sebagai ganti, atau beralih ke rangkaian lain dan cuba lagi.",
+    "ssoTryAnyway": "Cuba juga"
 }

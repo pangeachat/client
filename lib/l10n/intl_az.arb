@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-23 15:42:43.349129",
+    "@@last_modified": "2026-10-05 12:30:33.890365",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2369,5 +2369,8 @@
     "goalReportErrorRetry": "Növbənin axtarışı başa çatmadı. Yenidən cəhd edin.",
     "summaryFeedbackReceived": "Təşəkkürlər! Rəyinizi aldıq.",
     "summaryFeedbackFailed": "Rəyinizi göndərmək mümkün olmadı. Zəhmət olmasa, yenidən cəhd edin.",
-    "summaryFeedbackProcessing": "Rəyinizi göndəririk və xülasəni yeniləyirik…"
+    "summaryFeedbackProcessing": "Rəyinizi göndəririk və xülasəni yeniləyirik…",
+    "ssoNetworkBlockedTitle": "Giriş saytı əlçatan deyil",
+    "ssoNetworkBlockedDesc": "Bu şəbəkə sizin daxil olmağınız üçün {provider} ilə əlaqə saxlamağımıza icazə vermir. Məktəb və ofis Wi-Fi-ları bunu tez-tez bloklayır. Bunun əvəzinə e-poçtla qeydiyyatdan keçə bilərsiniz və ya başqa şəbəkəyə keçib yenidən cəhd edə bilərsiniz.",
+    "ssoTryAnyway": "Yenə də cəhd edin"
 }

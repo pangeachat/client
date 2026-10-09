@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-23 15:42:49.200067",
+    "@@last_modified": "2026-10-05 12:30:48.764482",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2369,5 +2369,8 @@
     "goalReportErrorRetry": "Raadinta wareegga ma dhammaan. Isku day mar kale.",
     "summaryFeedbackReceived": "Waad ku mahadsan tahay! Waxaan helnay jawaab celintaada.",
     "summaryFeedbackFailed": "Lama soo diri karin jawaab celintaada. Fadlan mar kale isku day.",
-    "summaryFeedbackProcessing": "Waxaan diraynaa jawaab celintaada oo waxaan cusboonaysiinaynaa soo koobidda…"
+    "summaryFeedbackProcessing": "Waxaan diraynaa jawaab celintaada oo waxaan cusboonaysiinaynaa soo koobidda…",
+    "ssoNetworkBlockedTitle": "Goobta soo-galitaanka lama gaari karo",
+    "ssoNetworkBlockedDesc": "Shabakaddani nama ogolaaneyso inaan gaarno {provider} si aan kuugu soo galino. Wi-Fi-ga dugsiga iyo xafiiska ayaa inta badan xira. Waxaad ku diiwaan gelin kartaa email ahaan, ama waxaad u wareegi kartaa shabakad kale oo aad mar kale isku dayi kartaa.",
+    "ssoTryAnyway": "Sikastaba isku day"
 }

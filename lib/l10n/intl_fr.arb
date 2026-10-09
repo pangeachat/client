@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-23 15:42:44.097828",
+    "@@last_modified": "2026-10-05 12:31:59.927563",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10316,5 +10316,8 @@
     "goalReportErrorRetry": "La recherche du tour n'est pas terminée. Réessayez.",
     "summaryFeedbackReceived": "Merci ! Nous avons bien reçu vos commentaires.",
     "summaryFeedbackFailed": "Impossible d'envoyer vos commentaires. Veuillez réessayer.",
-    "summaryFeedbackProcessing": "Envoi de vos commentaires et mise à jour du résumé…"
+    "summaryFeedbackProcessing": "Envoi de vos commentaires et mise à jour du résumé…",
+    "ssoNetworkBlockedTitle": "Site de connexion inaccessible",
+    "ssoNetworkBlockedDesc": "Ce réseau ne nous permet pas d'atteindre {provider} pour vous connecter. Les réseaux Wi-Fi scolaires et professionnels le bloquent souvent. Vous pouvez vous inscrire par e-mail à la place, ou passer à un autre réseau et réessayer.",
+    "ssoTryAnyway": "Essayer quand même"
 }

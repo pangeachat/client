@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 15:42:45.267885",
+    "@@last_modified": "2026-10-05 12:30:38.664012",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10034,5 +10034,8 @@
     "goalReportErrorRetry": "Pencarian giliran belum selesai. Coba lagi.",
     "summaryFeedbackReceived": "Terima kasih! Kami telah menerima masukan Anda.",
     "summaryFeedbackFailed": "Tidak dapat mengirim masukan Anda. Silakan coba lagi.",
-    "summaryFeedbackProcessing": "Mengirim masukan Anda dan memperbarui ringkasan…"
+    "summaryFeedbackProcessing": "Mengirim masukan Anda dan memperbarui ringkasan…",
+    "ssoNetworkBlockedTitle": "Situs masuk tidak dapat dijangkau",
+    "ssoNetworkBlockedDesc": "Jaringan ini tidak mengizinkan kami menjangkau {provider} untuk masuk. Wi-Fi sekolah dan kantor sering memblokirnya. Anda dapat mendaftar dengan email, atau beralih ke jaringan lain dan coba lagi.",
+    "ssoTryAnyway": "Coba lagi"
 }

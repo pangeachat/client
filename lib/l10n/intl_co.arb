@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-23 15:42:43.553649",
+    "@@last_modified": "2026-10-05 12:30:35.297477",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2369,5 +2369,8 @@
     "goalReportErrorRetry": "A ricerca di a volta ùn hè micca finita. Pruvate di novu.",
     "summaryFeedbackReceived": "Grazie! Avemu ricevutu u vostru cummentariu.",
     "summaryFeedbackFailed": "Ùn pudemu micca mandà u vostru cummentariu. Per piacè, riprovate.",
-    "summaryFeedbackProcessing": "Mandendu u vostru cummentu è aghjurnendu u riassuntu…"
+    "summaryFeedbackProcessing": "Mandendu u vostru cummentu è aghjurnendu u riassuntu…",
+    "ssoNetworkBlockedTitle": "Situ di cunnessione inaccessibile",
+    "ssoNetworkBlockedDesc": "Sta rete ùn ci permette micca di ghjunghje à {provider} per cunnettavvi. U Wi-Fi di a scola è di l'uffiziu u bluccanu spessu. Pudete iscrivevi cù l'email invece, o passà à un'altra rete è riprovà.",
+    "ssoTryAnyway": "Pruvate quantunque"
 }

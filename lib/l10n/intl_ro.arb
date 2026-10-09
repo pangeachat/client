@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 15:42:48.248750",
+    "@@last_modified": "2026-10-05 12:30:46.587727",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10693,5 +10693,8 @@
     "goalReportErrorRetry": "Căutarea replicii nu s-a finalizat. Încearcă din nou.",
     "summaryFeedbackReceived": "Mulțumim! Am primit feedback-ul tău.",
     "summaryFeedbackFailed": "Nu s-a putut trimite feedback-ul tău. Te rugăm să încerci din nou.",
-    "summaryFeedbackProcessing": "Se trimite feedbackul și se actualizează rezumatul…"
+    "summaryFeedbackProcessing": "Se trimite feedbackul și se actualizează rezumatul…",
+    "ssoNetworkBlockedTitle": "Site-ul de conectare este inaccesibil",
+    "ssoNetworkBlockedDesc": "Această rețea nu ne permite să ajungem la {provider} pentru a te conecta. Rețelele Wi-Fi de la școală și de la birou blochează adesea acest lucru. Te poți înscrie cu e-mail în schimb sau poți trece la o altă rețea și poți încerca din nou.",
+    "ssoTryAnyway": "Încearcă oricum"
 }

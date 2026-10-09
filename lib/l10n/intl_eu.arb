@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-23 15:42:44.814758",
+    "@@last_modified": "2026-10-05 12:30:36.910252",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9961,5 +9961,8 @@
     "goalReportErrorRetry": "Txanda bilaketa ez da amaitu. Saiatu berriro.",
     "summaryFeedbackReceived": "Eskerrik asko! Zure iritzia jaso dugu.",
     "summaryFeedbackFailed": "Ezin izan da zure iritzia bidali. Saiatu berriro, mesedez.",
-    "summaryFeedbackProcessing": "Zure iritzia bidaltzen eta laburpena eguneratzen…"
+    "summaryFeedbackProcessing": "Zure iritzia bidaltzen eta laburpena eguneratzen…",
+    "ssoNetworkBlockedTitle": "Saioa hasteko gunea eskuraezina",
+    "ssoNetworkBlockedDesc": "Sare honek ez digu uzten {provider} atzitzen saioa hasteko. Eskolako eta bulegoko Wi-Fi sareek askotan blokeatzen dute. Horren ordez, posta elektronikoarekin erregistra zaitezke, edo beste sare batera aldatu eta berriro saiatu.",
+    "ssoTryAnyway": "Dena den, saiatu"
 }

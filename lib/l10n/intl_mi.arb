@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-23 15:42:46.984555",
+    "@@last_modified": "2026-10-05 12:30:43.831954",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2369,5 +2369,8 @@
     "goalReportErrorRetry": "Kāore i oti te rapu mō te huringa. Whakamātauria anō.",
     "summaryFeedbackReceived": "Ngā mihi! Kua tae mai ō urupare.",
     "summaryFeedbackFailed": "Kāore i taea te tuku i ō urupare. Whakamātauria anō.",
-    "summaryFeedbackProcessing": "E tuku ana i ō urupare me te whakahou i te whakarāpopototanga…"
+    "summaryFeedbackProcessing": "E tuku ana i ō urupare me te whakahou i te whakarāpopototanga…",
+    "ssoNetworkBlockedTitle": "Kāore e taea te toro atu ki te pae takiuru",
+    "ssoNetworkBlockedDesc": "Kāore tēnei whatunga e tuku ana kia toro atu mātou ki a {provider} hei takiuru i a koe. He maha ngā wā ka aukatihia e te Wi-Fi o te kura, o te tari rānei. Ka taea e koe te rēhita mā te īmēra, te huri rānei ki tētahi atu whatunga ka ngana anō.",
+    "ssoTryAnyway": "Ngana tonu"
 }

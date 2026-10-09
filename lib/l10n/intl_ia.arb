@@ -1362,7 +1362,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-23 15:42:45.387103",
+    "@@last_modified": "2026-10-05 12:30:38.917868",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10897,5 +10897,8 @@
     "goalReportErrorRetry": "Le cerca pro le turno non ha finite. Essaya de nove.",
     "summaryFeedbackReceived": "Gratias! Nos ha recipite tu feedback.",
     "summaryFeedbackFailed": "Non poteva inviar tu feedback. Per favor reprova.",
-    "summaryFeedbackProcessing": "Inviante vostre commentos e actualisante le summario…"
+    "summaryFeedbackProcessing": "Inviante vostre commentos e actualisante le summario…",
+    "ssoNetworkBlockedTitle": "Sito de authentification inaccessibile",
+    "ssoNetworkBlockedDesc": "Iste rete non nos permitte attinger {provider} pro authentificar vos. Le Wi-Fi de scholas e officios sovente lo bloca. Vos pote registrar vos con e-mail in loco, o cambiar a un altere rete e reprovar.",
+    "ssoTryAnyway": "Provar de tote modos"
 }
