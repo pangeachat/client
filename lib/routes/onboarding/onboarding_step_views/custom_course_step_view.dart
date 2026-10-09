@@ -11,6 +11,7 @@ import 'package:fluffychat/routes/onboarding/onboarding_steps/custom_course_onbo
 class CustomCourseStepView extends StatefulWidget {
   final CustomCourseOnboardingStep step;
   final bool loading;
+  final Object? error;
   final bool hasNextStep;
   final VoidCallback forward;
   final VoidCallback skip;
@@ -19,6 +20,7 @@ class CustomCourseStepView extends StatefulWidget {
     super.key,
     required this.step,
     required this.loading,
+    required this.error,
     required this.hasNextStep,
     required this.forward,
     required this.skip,
@@ -169,6 +171,7 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
               builder: (context, enabled, _) => OnboardingForwardButton(
                 onPressed: enabled ? widget.forward : null,
                 loading: widget.loading,
+                error: widget.error,
                 label: widget.hasNextStep
                     ? _step.nextStepText(L10n.of(context))
                     : _step.lastStepText(L10n.of(context)),
