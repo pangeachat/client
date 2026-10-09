@@ -313,13 +313,21 @@ class AssetRingSound implements RingSound {
         // so a cue longer than any fixed guess is never cut off. Bounded, so a
         // completion event that never arrives cannot wedge the cue for ever;
         // that bound is surfaced, not swallowed.
-        await beeper.complete.timeout(
-          _oneShotMaxWait,
-          onTimeout: () => Logs().i(
-            'Call cue completion not signalled within '
-            '${_oneShotMaxWait.inSeconds}s; tearing it down',
-          ),
-        );
+        //
+        // `then<void>` is NOT a no-op: audioplayers' completion is a
+        // Future<AudioEvent> behind its Future<void> type, and `timeout` checks
+        // its fallback against the RUNTIME type, so a void fallback threw at
+        // once and cut every cue off as it started. Re-typing it to a real
+        // Future<void> first makes the fallback fit.
+        await beeper.complete
+            .then<void>((_) {})
+            .timeout(
+              _oneShotMaxWait,
+              onTimeout: () => Logs().i(
+                'Call cue completion not signalled within '
+                '${_oneShotMaxWait.inSeconds}s; tearing it down',
+              ),
+            );
       }
     } catch (e) {
       // A cue is a courtesy; the words on screen are the message.
