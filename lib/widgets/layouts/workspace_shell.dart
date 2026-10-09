@@ -21,6 +21,7 @@ import 'package:fluffychat/features/navigation/token_params/activity_token.dart'
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/student_invitations/pending_claims_consumer.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
@@ -378,6 +379,11 @@ class WorkspaceShell extends StatelessWidget {
                 /// blank page, is what a slow first sync shows). Zero-size; it
                 /// is a shell resident so it exists exactly when logged in.
                 DmInviteFerryConsumer(uri: state.uri),
+
+                /// Headless: after sign-in, returns a ferried Canvas ticket,
+                /// confirms a ferried seat invitation, and offers invitations
+                /// waiting for this account (SPEC §4 Student).
+                PendingClaimsConsumer(uri: state.uri),
 
                 /// Under a narrow full-screen surface (a live room / session,
                 /// the DM picker) the only map left showing is the safe-area

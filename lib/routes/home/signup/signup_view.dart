@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
+import 'package:fluffychat/features/student_invitations/invitation_notice.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/home/class_code_notice.dart';
 import 'package:fluffychat/routes/home/login/tos_indicator.dart';
@@ -26,6 +27,7 @@ class SignupPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final joinCode = SpaceCodeRepo.pendingJoinCode;
+    final invitation = SpaceCodeRepo.pendingInvitation;
     return Semantics(
       label: L10n.of(context).pageLabel(L10n.of(context).signUp),
       child: Form(
@@ -53,7 +55,19 @@ class SignupPageView extends StatelessWidget {
                 spacing: 16.0,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  if (joinCode != null) ClassCodeNotice(code: joinCode),
+                  if (invitation != null)
+                    Flexible(
+                      child: SingleChildScrollView(
+                        child: InvitationNotice(
+                          pending: invitation,
+                          fallback: joinCode == null
+                              ? const SizedBox.shrink()
+                              : ClassCodeNotice(code: joinCode),
+                        ),
+                      ),
+                    )
+                  else if (joinCode != null)
+                    ClassCodeNotice(code: joinCode),
                   Text(
                     L10n.of(context).signupOption,
                     textAlign: TextAlign.center,

@@ -5731,5 +5731,122 @@
     "courseCodeSavedExplanation": "Sign up or log in and we'll add you to your course.",
     "@courseCodeSavedExplanation": {
         "description": "Line under the saved-course-code card on the sign-up and login pages."
+    },
+    "seatInviteTitle": "Join {course}",
+    "@seatInviteTitle": {
+        "description": "Heading of the seat invitation card on the sign-up and login pages and of the confirmation, naming the course the student was invited to.",
+        "placeholders": {
+            "course": {
+                "type": "String"
+            }
+        }
+    },
+    "seatInviteYourCourse": "your course",
+    "@seatInviteYourCourse": {
+        "description": "Stands in for the course name in seat invitation messages when the name is unknown."
+    },
+    "seatInviteEmailHint": "Use {email} so your class and seat find you.",
+    "@seatInviteEmailHint": {
+        "description": "Line on the seat invitation card. The placeholder is a masked email address such as a***@school.edu, never the full address.",
+        "placeholders": {
+            "email": {
+                "type": "String"
+            }
+        }
+    },
+    "seatInviteManagedCheckbox": "Your teacher will manage this account.",
+    "@seatInviteManagedCheckbox": {
+        "description": "Label of the mandatory checkbox a student ticks to accept a teacher-managed account for a course."
+    },
+    "seatInviteDisclosureFailed": "We couldn't load the details. Check your connection and try again.",
+    "@seatInviteDisclosureFailed": {
+        "description": "Shown in place of the managed-account details when they fail to load."
+    },
+    "seatInvitePromptTitle": "{course} invited you",
+    "@seatInvitePromptTitle": {
+        "description": "Title of the in-app prompt for a course invitation waiting for the student's email address.",
+        "placeholders": {
+            "course": {
+                "type": "String"
+            }
+        }
+    },
+    "seatInviteNotNow": "Not now",
+    "@seatInviteNotNow": {
+        "description": "Button that closes the course invitation prompt without confirming it."
+    },
+    "seatInviteClaimed": "You're in {course}. Your teacher now manages this account.",
+    "@seatInviteClaimed": {
+        "description": "Shown after a student confirms an invitation and it is claimed.",
+        "placeholders": {
+            "course": {
+                "type": "String"
+            }
+        }
+    },
+    "seatInvitePendingApproval": "Thanks. Your teacher will approve this account, because it uses a different email than the invitation.",
+    "@seatInvitePendingApproval": {
+        "description": "Shown after a student confirms an invitation with an account whose email does not match it."
+    },
+    "seatInviteDenied": "Your teacher didn't approve this account for the course.",
+    "@seatInviteDenied": {
+        "description": "Shown when a student confirms an invitation their teacher has declined for this account."
+    },
+    "seatInviteNotLive": "This invitation is no longer available.",
+    "@seatInviteNotLive": {
+        "description": "Shown when a course invitation was withdrawn or already used."
+    },
+    "seatInviteAlreadyClaimed": "You already joined {course} with another invitation.",
+    "@seatInviteAlreadyClaimed": {
+        "description": "Shown when the account already holds an invitation in that course.",
+        "placeholders": {
+            "course": {
+                "type": "String"
+            }
+        }
+    },
+    "seatInviteFailed": "We couldn't confirm the invitation. Please try again later.",
+    "@seatInviteFailed": {
+        "description": "Shown when confirming a course invitation fails unexpectedly."
+    },
+    "canvasLinkTitle": "Open your Canvas course in Pangea Chat",
+    "@canvasLinkTitle": {
+        "description": "Title of the page a student reaches from a Canvas course."
+    },
+    "canvasLinkExplanation": "Next, sign up or log in to Pangea Chat. You can always sign in the same way without Canvas.",
+    "@canvasLinkExplanation": {
+        "description": "Line on the page a student reaches from a Canvas course, before they sign in."
+    },
+    "canvasConnectTitle": "Connect your Canvas course",
+    "@canvasConnectTitle": {
+        "description": "Title of the page a teacher reaches from a Canvas course to connect it to Pangea Chat."
+    },
+    "canvasConnectExplanation": "Log in to Pangea Chat, then pick the Pangea course to connect.",
+    "@canvasConnectExplanation": {
+        "description": "Line on the page a teacher reaches from a Canvas course."
+    },
+    "canvasLinked": "Your Canvas course is connected.",
+    "@canvasLinked": {
+        "description": "Shown after a student's Canvas account is linked and their course invitation claimed."
+    },
+    "canvasTicketExpired": "This Canvas link has expired. Open Pangea Chat from your Canvas course again.",
+    "@canvasTicketExpired": {
+        "description": "Shown when the one-time link from Canvas is expired or already used."
+    },
+    "canvasTicketWrongAccount": "This Canvas link belongs to a different Pangea account. Log out, then open Pangea Chat from Canvas again.",
+    "@canvasTicketWrongAccount": {
+        "description": "Shown when the one-time Canvas link was issued for another account."
+    },
+    "canvasAlreadyLinked": "This Canvas account is already linked to a different Pangea account.",
+    "@canvasAlreadyLinked": {
+        "description": "Shown when the Canvas account is linked to another Pangea account."
+    },
+    "canvasLinkFailed": "We couldn't connect your Canvas course. Open Pangea Chat from Canvas again.",
+    "@canvasLinkFailed": {
+        "description": "Shown when linking a Canvas course fails unexpectedly."
+    },
+    "canvasSignInExpired": "This sign-in link has expired. Open Pangea Chat from your Canvas course again, or log in.",
+    "@canvasSignInExpired": {
+        "description": "Shown on the Canvas sign-in page when there is no sign-in to finish."
     }
 }

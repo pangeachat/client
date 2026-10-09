@@ -8,6 +8,8 @@ import 'package:fluffychat/features/dm_invite/dm_invite_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/user_id_url.dart';
+import 'package:fluffychat/features/navigation/workspace_query.dart';
+import 'package:fluffychat/features/student_invitations/pending_claims.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../controllers/pangea_controller.dart';
 
@@ -42,6 +44,8 @@ class PAuthGaurd {
     BuildContext context,
     GoRouterState state,
   ) async {
+    final withoutInvitation = await stashInvitation(state.uri);
+    if (withoutInvitation != null) return withoutInvitation;
     if (pController == null) {
       if (Matrix.of(context).client.isLogged()) return null;
       return _loginBounce(state);
@@ -59,6 +63,28 @@ class PAuthGaurd {
     final bool hasSetL2 = await pController!.userController.isUserL2Set;
     if (!hasSetL2) return '/registration';
     return consumeCachedDestination(state.uri);
+  }
+
+  /// A seat invitation link's id (`inv=`, kept by the `/<code>` fold) moves
+  /// into its own ferry entry (SpaceCodeRepo.pendingInvitation) on EVERY
+  /// landing, logged in or out, and leaves the URL: the coded join page
+  /// history-replaces its URL and then navigates to the course, which would
+  /// drop it, and the bounce must not carry it in the destination twice.
+  /// Returns the location without `inv` (the redirect re-runs on it), or null
+  /// when [uri] has none. A re-landing on the same invitation keeps a tick
+  /// already given; a different one replaces it. A malformed id is dropped.
+  /// The shell confirms it after sign-in (PendingClaimsConsumer).
+  static Future<String?> stashInvitation(Uri uri) async {
+    final parts = WorkspaceQuery.parts(uri.query);
+    if (WorkspaceQuery.valueOf(uri.query, PRoutes.invitationParam) == null) {
+      return null;
+    }
+    final id = PRoutes.invitationIdIn(uri);
+    if (id != null && SpaceCodeRepo.pendingInvitation?.invitationId != id) {
+      await SpaceCodeRepo.setPendingInvitation(PendingInvitation(id));
+    }
+    WorkspaceQuery.removeKeys(parts, {PRoutes.invitationParam});
+    return WorkspaceQuery.location(uri.path, parts);
   }
 
   /// The DM invite link's redirect (`/invite_user/:userID`, #8436) — the one
@@ -177,10 +203,10 @@ class PAuthGaurd {
   }
 
   /// Whether [uri] is a route that exists only to get an account STARTED: the
-  /// `/home` family (sign in, sign up, and the email variant of each), plus the
-  /// onboarding and registration hops.
+  /// `/home` family (sign in, sign up, and the email variant of each), the
+  /// onboarding and registration hops, and the Canvas login-token sign-in.
   ///
-  /// None of the three is somewhere an account that has finished starting can
+  /// None of these is somewhere an account that has finished starting can
   /// stay, and none is a place a person deep-links to, so moving off them costs
   /// nothing. The `/home` screens cannot navigate away from themselves once a
   /// login succeeds — that is the whole reason the listener exists. Onboarding
@@ -198,6 +224,8 @@ class PAuthGaurd {
     '/home',
     '/onboarding',
     '/registration',
+    // The Canvas login-token sign-in (C5): nothing to stay on once signed in.
+    PRoutes.ltiToken,
   ];
 
   /// Redirect for onboarding routes

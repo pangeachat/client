@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/student_invitations/lti_entry.dart';
+import 'package:fluffychat/features/student_invitations/lti_link_page.dart';
+import 'package:fluffychat/features/student_invitations/lti_token_page.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/routes/home/login/login.dart';
 import 'package:fluffychat/routes/home/login_or_signup_view.dart';
@@ -120,6 +123,22 @@ abstract class AppRoutes {
     GoRoute(
       path: '${PRoutes.dmInvite}/:userID',
       redirect: PAuthGaurd.dmInviteRedirect,
+    ),
+    // The Canvas (LTI) hand-offs a launch redirects to (C5.2). Each redirect
+    // takes its single-use secret out of the address bar before the page
+    // renders: the link ticket into its ferry entry, the login token into
+    // memory for one sign-in. Reachable logged out on purpose.
+    GoRoute(
+      path: PRoutes.ltiLink,
+      redirect: (context, state) => LtiEntry.linkRedirect(state.uri),
+      pageBuilder: (context, state) =>
+          defaultPageBuilder(context, state, const LtiLinkPage()),
+    ),
+    GoRoute(
+      path: PRoutes.ltiToken,
+      redirect: (context, state) => LtiEntry.tokenRedirect(state.uri),
+      pageBuilder: (context, state) =>
+          defaultPageBuilder(context, state, const LtiTokenPage()),
     ),
     // Pangea#
     ShellRoute(

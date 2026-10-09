@@ -2,16 +2,18 @@ import 'package:get_storage/get_storage.dart';
 
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/student_invitations/pending_claims.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 
 /// The join-code box, which doubles as the **login-bounce ferry**: the
 /// workspace location a logged-out visitor opened is cached here when they
 /// are bounced to login, and re-entered by the `/` auth guard on the next
 /// logged-in landing (PAuthGaurd; routing.instructions.md § A signed-out
-/// visitor's destination). Two TTL-stamped entries ride it — the
-/// [destination] itself, and the DM invite link's pending user id
-/// ([dmInviteUserId]), which has its own consumer because it must act when
-/// tapped logged in too.
+/// visitor's destination). TTL-stamped entries ride it — the
+/// [destination] itself, the DM invite link's pending user id
+/// ([dmInviteUserId]), a seat invitation's id ([pendingInvitation]) and a
+/// Canvas launch ticket ([pendingLtiTicket]). The last three have their own
+/// consumer in the shell because they must act when tapped logged in too.
 class SpaceCodeRepo {
   static final GetStorage _spaceStorage = GetStorage('class_storage');
 
@@ -147,6 +149,55 @@ class SpaceCodeRepo {
     PLocalKey.cachedDmInviteUserId,
     PLocalKey.cachedDmInviteUserIdAt,
   );
+
+  /// The seat invitation a class link carried (`?inv=<id>`), cached by the
+  /// `/` guard on every landing (PAuthGaurd.stashInvitation) and consumed
+  /// once after sign-in by the shell (PendingClaimsConsumer). Same box, same
+  /// TTL as [destination].
+  static PendingInvitation? get pendingInvitation {
+    final raw = _readFresh(
+      PLocalKey.cachedInvitation,
+      PLocalKey.cachedInvitationAt,
+    );
+    if (raw == null) return null;
+    final pending = PendingInvitation.decode(raw);
+    if (pending == null) clearPendingInvitation();
+    return pending;
+  }
+
+  static Future<void> setPendingInvitation(PendingInvitation pending) =>
+      _writeStamped(
+        PLocalKey.cachedInvitation,
+        PLocalKey.cachedInvitationAt,
+        pending.encode(),
+      );
+
+  static Future<void> clearPendingInvitation() =>
+      _clearStamped(PLocalKey.cachedInvitation, PLocalKey.cachedInvitationAt);
+
+  /// The Canvas launch ticket from `/lti/link` (C5), cached by that route's
+  /// redirect and returned once after sign-in. The module expires a ticket
+  /// after 10 minutes, so the TTL here only bounds how long a dead one lingers.
+  static PendingLtiTicket? get pendingLtiTicket {
+    final raw = _readFresh(
+      PLocalKey.cachedLtiTicket,
+      PLocalKey.cachedLtiTicketAt,
+    );
+    if (raw == null) return null;
+    final pending = PendingLtiTicket.decode(raw);
+    if (pending == null) clearPendingLtiTicket();
+    return pending;
+  }
+
+  static Future<void> setPendingLtiTicket(PendingLtiTicket pending) =>
+      _writeStamped(
+        PLocalKey.cachedLtiTicket,
+        PLocalKey.cachedLtiTicketAt,
+        pending.encode(),
+      );
+
+  static Future<void> clearPendingLtiTicket() =>
+      _clearStamped(PLocalKey.cachedLtiTicket, PLocalKey.cachedLtiTicketAt);
 
   static String? get recentCode =>
       _spaceStorage.read(PLocalKey.justInputtedCode);
