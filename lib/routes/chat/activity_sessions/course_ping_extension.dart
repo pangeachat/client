@@ -40,10 +40,16 @@ extension CoursePingRoomExtension on Room {
   });
 }
 
-extension on Event {
+extension CoursePingEventExtension on Event {
+  String? get coursePingSessionRoomId =>
+      content.tryGet<String>(CoursePingConstants.coursePingRoomId);
+
+  String? get coursePingActivityId =>
+      content.tryGet<String>(CoursePingConstants.coursePingActivityId);
+
   bool get isCoursePing =>
       type == EventTypes.Message &&
       messageType == MessageTypes.Text &&
-      content[CoursePingConstants.coursePingRoomId] is String &&
-      content[CoursePingConstants.coursePingActivityId] is String;
+      coursePingSessionRoomId != null &&
+      coursePingActivityId != null;
 }

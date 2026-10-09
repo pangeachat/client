@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/space_room_token_extension.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -98,6 +99,29 @@ class _LeftPanelRoomSubpageState extends State<LeftPanelRoomSubpage> {
     _roomArrivalTimeout = null;
   }
 
+  /// The space token this panel last replaced, so a rebuild never replaces it
+  /// twice.
+  String? _replacedSpaceToken;
+
+  void _replaceSpaceToken(Room space, String? eventId) {
+    final token = '${space.id}/$eventId';
+    if (_replacedSpaceToken == token) return;
+    _replacedSpaceToken = token;
+    final router = GoRouter.of(context);
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final current = router.routeInformationProvider.value.uri;
+      final location = await space.spaceTokenReplacement(
+        current,
+        eventId: eventId,
+      );
+      // The learner may have navigated while the event loaded.
+      if (!mounted || router.routeInformationProvider.value.uri != current) {
+        return;
+      }
+      router.replace(location);
+    });
+  }
+
   @override
   void dispose() {
     _cancelRoomWait();
@@ -118,26 +142,28 @@ class _LeftPanelRoomSubpageState extends State<LeftPanelRoomSubpage> {
     final room = client.getRoomById(roomId);
     final sub = param?.subpage ?? '';
 
+    final loadingPage = Scaffold(
+      appBar: AppBar(leading: closeButton),
+      body: Center(
+        child: CircularProgressIndicator.adaptive(
+          semanticsLabel: L10n.of(context).loadingPleaseWait,
+        ),
+      ),
+    );
+
     if (room == null) {
       if (_awaitedRoomId != roomId) _awaitRoom(client, roomId);
-      if (_awaitingRoom) {
-        return Scaffold(
-          appBar: AppBar(leading: closeButton),
-          body: Center(
-            child: CircularProgressIndicator.adaptive(
-              semanticsLabel: L10n.of(context).loadingPleaseWait,
-            ),
-          ),
-        );
-      }
+      return _awaitingRoom ? loadingPage : emptyPage;
     }
 
-    // A space has no timeline, so it must never render as a chat — drop to a
-    // graceful empty state instead of spinning up a ChatController on it.
+    // A space has no timeline, so it must never render as a chat. A token names
+    // one when a link points into a course — a course ping's email — so the
+    // token is replaced with the course or the ping's activity.
     // A LEFT room deliberately does NOT drop here: getRoomById also returns
     // archived rooms, and those stay viewable as read-only chats (#8148).
-    if (room == null || room.isSpace) {
-      return emptyPage;
+    if (room.isSpace) {
+      _replaceSpaceToken(room, param?.eventId);
+      return loadingPage;
     }
 
     // An analytics room is an internal construct store, never a chat surface
