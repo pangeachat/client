@@ -10,8 +10,8 @@ import 'package:fluffychat/features/navigation/workspace_query.dart';
 /// supported. [handle] also shortens home-server room ids in every location.
 abstract class LegacyRedirects {
   static String? resolve(Uri uri) {
-    // Path-strategy web routing retains the fragment on the root location.
-    // Native app_links has already unwrapped it in incomingUriToPath.
+    // The web URL strategy drops the fragment at boot, so the email templates
+    // send the path form; native app_links unwraps it in incomingUriToPath.
     if (uri.path == '/' && uri.fragment.startsWith('/room/')) {
       return resolve(Uri.parse(uri.fragment));
     }
