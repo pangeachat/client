@@ -23,6 +23,7 @@ import 'package:fluffychat/routes/chat/calls/call_recordings_load.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_provenance.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_view.dart';
@@ -2277,6 +2278,9 @@ void main() {
       // picker's language list with plain fake seams.
       WholeCallTranscriber? transcriber,
       List<LanguageModel>? pickerLanguages,
+      // Injected only by the tests that read a peer-produced half, which
+      // resolve its source recording without a homeserver.
+      AudioEventFetcher? audioFetcher,
     }) async {
       await tester.pumpWidget(
         _TestMatrix(
@@ -2308,6 +2312,7 @@ void main() {
               room: testRoom,
               callKey: _callKey,
               fetcher: fetcher,
+              audioFetcher: audioFetcher,
               recordingsLoadController: loadController,
               audioPlayerFactory: audioPlayerFactory,
               mergedFileLoader: mergedFileLoader,
@@ -5867,6 +5872,89 @@ void main() {
         transcribed: 0,
         lost: 2,
         refusedUnsubscribed: 2,
+      );
+
+      testWidgets(
+        "a half the subscriber produced replaces the peer's refused half",
+        (tester) async {
+          // The shape captured on the local stack (#8792): the unsubscribed
+          // peer's own half is empty with its one chunk refused, and the
+          // subscribed reader's device wrote a half FOR the peer from the
+          // peer's recording. The screen must read that produced half, not
+          // the refused one. Mutation proof: dropping `resolveProvenance` from
+          // the screen's read holds the produced half pending, and the screen
+          // falls back to the note and the Transcribe button -> RED.
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          const device = 'SXIFNASKUJ';
+          final peerAudio = audioEvent(_peer, deviceId: device);
+          final mine = audioEvent(_me, deviceId: 'HHPTNTFSGJ');
+          final produced = half(
+            _me,
+            texts: const ['the gardens open at a quarter past'],
+            deviceId: device,
+          );
+          final producedForPeer = MatrixEvent(
+            type: produced.type,
+            eventId: r'$produced-for-peer',
+            senderId: _me,
+            originServerTs: produced.originServerTs,
+            content: {
+              ...produced.content,
+              'spoken_by': _peer,
+              'source_audio_event_id': peerAudio.eventId,
+            },
+          );
+          final served = {
+            for (final audio in [peerAudio, mine])
+              audio.eventId: FetchedAudioEvent(
+                senderId: audio.senderId,
+                content: CallAudioContent.fromJson(audio.content),
+                originServerTs: audio.originServerTs,
+              ),
+          };
+          for (final placed in [true, false]) {
+            await pumpWithRecordings(
+              tester,
+              room(),
+              servingByType([
+                half(
+                  _me,
+                  texts: const ['hola'],
+                  atMs: placed ? [_callStart] : null,
+                ),
+                half(
+                  _peer,
+                  texts: const [],
+                  captured: 1,
+                  transcribed: 0,
+                  lost: 1,
+                  refusedUnsubscribed: 1,
+                  deviceId: device,
+                ),
+                producedForPeer,
+                peerAudio,
+                mine,
+                mergedEvent(
+                  _peer,
+                  sourceEventIds: [mine.eventId, peerAudio.eventId],
+                ),
+              ]),
+              audioFetcher: ({required roomId, required eventId}) async =>
+                  served[eventId],
+            );
+
+            expect(
+              find.textContaining('gardens', findRichText: true),
+              findsWidgets,
+              reason: "the peer's words, from the produced half",
+            );
+            expect(
+              find.textContaining('did not have a subscription'),
+              findsNothing,
+            );
+            expect(find.text('Transcribe'), findsNothing);
+          }
+        },
       );
 
       testWidgets(

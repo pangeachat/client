@@ -345,21 +345,13 @@ class WholeCallTranscriber {
           callKey: callKey,
           expectedSenders: participants.toList(),
           selfId: self,
-          resolveProvenance: (candidates) async {
-            final merged = await fetchCallAudioMerged(
-              fetch: relations,
-              roomId: room.id,
-              callKey: callKey,
-            );
-            return resolveTranscriptProvenance(
-              candidates: candidates,
-              mergedRecordings: merged,
-              participants: participants,
-              callKey: callKey,
-              roomId: room.id,
-              fetch: audioFetch,
-            );
-          },
+          resolveProvenance: transcriptProvenanceResolver(
+            fetch: relations,
+            audioFetch: audioFetch,
+            roomId: room.id,
+            callKey: callKey,
+            participants: participants,
+          ),
         );
 
     Future<List<TranscriptSegment>> transcribeBytes(

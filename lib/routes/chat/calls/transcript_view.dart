@@ -22,6 +22,7 @@ import 'package:fluffychat/routes/chat/calls/call_playback_controller.dart';
 import 'package:fluffychat/routes/chat/calls/call_recordings_load.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_provenance.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_tokens.dart';
@@ -162,6 +163,11 @@ class CallTranscriptView extends StatefulWidget {
   /// Injected only by tests, which have no homeserver to read from.
   final RelationsFetcher? fetcher;
 
+  /// Injected only by tests: resolves a peer-produced half's source recording
+  /// by id. Production reads it off [room].
+  @visibleForTesting
+  final AudioEventFetcher? audioFetcher;
+
   /// Injected only by tests, so a widget test can drive the "Full call" slot's
   /// [CallRecordingsLoadState] deterministically (its own grace clock and
   /// timer) rather than waiting out a real ~30s window. Production always
@@ -211,6 +217,7 @@ class CallTranscriptView extends StatefulWidget {
     required this.room,
     required this.callKey,
     this.fetcher,
+    this.audioFetcher,
     this.recordingsLoadController,
     this.audioPlayerFactory,
     this.mergedFileLoader,
@@ -565,6 +572,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       expectedSenders: participants.ids,
       participantsKnown: participants.known,
       encrypted: widget.room.encrypted,
+      resolveProvenance: _provenanceResolver(fetch, participants.ids),
     );
     _transcript = transcript;
     // Feeds the transcript's OWN live-refresh baseline the instant this
@@ -968,6 +976,20 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     }
   }
 
+  /// Judges the peer-produced halves this screen reads, by the same rule and
+  /// against the same manifest as the whole-call transcriber that wrote them.
+  /// Without it every such half stays pending and the reader keeps seeing the
+  /// speaker's own empty half (#8792).
+  Future<Map<String, ProvenanceState>> Function(List<TranscriptCandidate>)
+  _provenanceResolver(RelationsFetcher fetch, List<String> participants) =>
+      transcriptProvenanceResolver(
+        fetch: fetch,
+        audioFetch: widget.audioFetcher ?? audioEventFetcherFor(widget.room),
+        roomId: widget.room.id,
+        callKey: widget.callKey,
+        participants: participants.toSet(),
+      );
+
   /// Re-reads the transcript for [_refreshTranscript]'s live-refresh pass. A
   /// failure is turned into `null` -- "nothing new to show this pass" --
   /// rather than left to propagate, the same shape as
@@ -994,6 +1016,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         expectedSenders: participants.ids,
         participantsKnown: participants.known,
         encrypted: widget.room.encrypted,
+        resolveProvenance: _provenanceResolver(fetch, participants.ids),
       );
     } catch (e, s) {
       Logs().w(

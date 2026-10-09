@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:livekit_client/livekit_client.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_recorder.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_tap.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
@@ -1496,6 +1497,21 @@ class CallCaptureService {
       if (_deliveriesCancelled) break;
       try {
         await sink.deliver(chunk, within: deliveryTimeout);
+        return;
+      } on UnsubscribedException catch (e, s) {
+        // A refusal for no subscription is the transcriber's ANSWER, not a
+        // transient failure: no retry inside this call can change it. Retrying
+        // it ran the whole budget, and the end of the call waits on these
+        // deliveries -- so an unsubscribed device published its recording and
+        // its half about two minutes late, after a subscribed peer's backfill
+        // had stopped looking for them (#8792). The sink has already counted
+        // the chunk as refused for no subscription.
+        Logs().w(
+          'Call audio chunk ${chunk.index} was refused for no subscription; '
+          'not retried',
+          e,
+          s,
+        );
         return;
       } catch (e, s) {
         Logs().w(
