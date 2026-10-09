@@ -9,6 +9,7 @@ import 'package:pangea_call_capture/pangea_call_capture.dart';
 
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_quick_replies.dart';
@@ -243,7 +244,17 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
     if (!mounted) return;
     final service = ring == null ? null : _serviceFor(ring.event.room);
     if (account == null || ring == null || service == null) {
-      matrix.Logs().w('The call screen rang for a call this app cannot find');
+      // The phone rang for a call nobody here can answer. Reported, because
+      // from the outside it looks like a ring that stopped by itself.
+      ErrorHandler.logError(
+        e: StateError('The call screen rang for a call this app cannot find'),
+        s: StackTrace.current,
+        data: {
+          'accountFound': account != null,
+          'ringRead': ring != null,
+          'accountTagged': screenRing.account.isNotEmpty,
+        },
+      );
       _endCallScreen(screenRing.uuid, CallScreenEndReason.failed);
       return;
     }
@@ -256,19 +267,18 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
         matrix.Logs().w('Could not mark the call screen as video', e, s);
       }),
     );
-    // The checks the live ring stream and the missed-ring scan make before a
-    // ring reaches [_offer]: still live, a call, a direct chat, and a caller
-    // not known to have gone. A call already live elsewhere is [_offer]'s, so
-    // the caller is told the line is busy.
+    // The checks the live ring stream makes before a ring reaches [_offer]:
+    // still live, a call, a direct chat. A call already live elsewhere is
+    // [_offer]'s, so the caller is told the line is busy.
+    //
+    // NOT whether the caller has gone. The push woke a closed app, whose copy
+    // of the room has not synced yet: it still holds the caller's LAST call,
+    // ended, and read now that says "gone" about a call that is ringing. The
+    // prompt's own watcher only counts a caller gone once it has seen them
+    // there, which is the reading that survives stale state.
     final rings =
         ring.shouldRing(DateTime.now()) &&
-        CallService.couldRingHere(ring.event.room) &&
-        service.callerPresence(
-              ring.event.room,
-              ring.event.senderId,
-              deviceId: ring.senderDeviceId,
-            ) !=
-            PeerPresence.gone;
+        CallService.couldRingHere(ring.event.room);
     if (rings) {
       final showing = _ringing;
       if (showing != null && showing.event.eventId == ring.event.eventId) {
