@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Kāore i taea e mātou te tuku i tō tono. Tēnā īmēra support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Kei te aukati tēnei whatunga i ngā ataata.",
     "filteredNetworkImagesBlocked": "Kei te aukati tēnei whatunga i ngā whakaahua.",
-    "filteredNetworkMapBlocked": "Kei te aukati tēnei whatunga i te mahere."
+    "filteredNetworkMapBlocked": "Kei te aukati tēnei whatunga i te mahere.",
+    "callFullScreenTitle": "Tukua ngā waea kia tangi mata-katoa",
+    "callFullScreenMessage": "I tae mai he waea i te wā e kati ana a Pangea Chat, engari he paku noa te pānui i whakaatuhia e tō waea. Tukua ngā waea mata-katoa kia tangi ai te waea e whai ake nei ki tō mata katoa, ahakoa kua rākaitia tō waea."
 }

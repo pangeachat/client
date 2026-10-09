@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Petitionem tuam mittere non potuimus. Quaeso mitte electronicam ad support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Haec rete videos impedit.",
     "filteredNetworkImagesBlocked": "Haec rete imagines impedit.",
-    "filteredNetworkMapBlocked": "Haec rete tabulam impedit."
+    "filteredNetworkMapBlocked": "Haec rete tabulam impedit.",
+    "callFullScreenTitle": "Sinite vocem totam tegere",
+    "callFullScreenMessage": "Vocatio advenit dum Pangea Chat clausum erat, sed telephonum tuum tantum parvam notificationem ostendere potuit. Sinite vocationes totum tegere ut proxima vocatio in toto scrinio tuo sonet, etiam cum telephonum tuum clausum est."
 }

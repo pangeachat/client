@@ -10481,5 +10481,7 @@
     "filteredNetworkHelpRefused": "Vi kunde inte skicka din förfrågan. Vänligen mejla support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Detta nätverk blockerar videor.",
     "filteredNetworkImagesBlocked": "Detta nätverk blockerar bilder.",
-    "filteredNetworkMapBlocked": "Detta nätverk blockerar kartan."
+    "filteredNetworkMapBlocked": "Detta nätverk blockerar kartan.",
+    "callFullScreenTitle": "Låt samtal ringa i helskärm",
+    "callFullScreenMessage": "Ett samtal kom in när Pangea Chat var stängt, men din telefon kunde bara visa en liten notis för det. Tillåt helskärmssamtal så att nästa samtal ringer på hela skärmen, även när din telefon är låst."
 }

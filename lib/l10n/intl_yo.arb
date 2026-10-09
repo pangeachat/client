@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "A ko le fi ibeere rẹ ranṣẹ. Jọwọ fi imeeli ranṣẹ si support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Nẹtiwọọki yii n dina awọn fidio.",
     "filteredNetworkImagesBlocked": "Nẹtiwọọki yii n dina awọn aworan.",
-    "filteredNetworkMapBlocked": "Nẹtiwọọki yii n dina maapu naa."
+    "filteredNetworkMapBlocked": "Nẹtiwọọki yii n dina maapu naa.",
+    "callFullScreenTitle": "Jẹ ki àwọn ìpè dún ní ojú-ìwé kíkún",
+    "callFullScreenMessage": "Ìpè kan wọlé nígbà tí Pangea Chat wà ní títìpa, ṣùgbọ́n fóònù rẹ lè fi ìfilọ́lẹ̀ kékeré kan hàn fún un. Fún àwọn ìpè ní ààyè ojú-ìwé kíkún kí èyí tó tẹ̀lé lè dún lórí gbogbo ojú-ìwé rẹ, àní nígbà tí fóònù rẹ bá wà ní títìpa."
 }

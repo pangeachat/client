@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Nismo mogli poslati vaš zahtjev. Pošaljite e-poštu na support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Ova mreža blokira videozapise.",
     "filteredNetworkImagesBlocked": "Ova mreža blokira slike.",
-    "filteredNetworkMapBlocked": "Ova mreža blokira mapu."
+    "filteredNetworkMapBlocked": "Ova mreža blokira mapu.",
+    "callFullScreenTitle": "Neka pozivi zvone preko cijelog ekrana",
+    "callFullScreenMessage": "Poziv je stigao dok je Pangea Chat bio zatvoren, ali vaš telefon je mogao prikazati samo malu obavijest o tome. Omogućite pozive preko cijelog ekrana kako bi sljedeći poziv zvonio preko cijelog ekrana, čak i kada je vaš telefon zaključan."
 }

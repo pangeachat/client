@@ -9963,5 +9963,7 @@
     "filteredNetworkHelpRefused": "Non puidemos enviar a túa solicitude. Envía un correo electrónico a support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Esta rede bloquea os vídeos.",
     "filteredNetworkImagesBlocked": "Esta rede bloquea as imaxes.",
-    "filteredNetworkMapBlocked": "Esta rede bloquea o mapa."
+    "filteredNetworkMapBlocked": "Esta rede bloquea o mapa.",
+    "callFullScreenTitle": "Permitir chamadas a pantalla completa",
+    "callFullScreenMessage": "Recibiuse unha chamada mentres Pangea Chat estaba pechado, pero o teu teléfono só puido mostrar unha pequena notificación. Permite as chamadas a pantalla completa para que a seguinte soe en toda a pantalla, mesmo cando o teléfono estea bloqueado."
 }

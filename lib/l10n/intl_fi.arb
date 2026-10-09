@@ -10000,5 +10000,7 @@
     "filteredNetworkHelpRefused": "Emme voineet lähettää pyyntöäsi. Lähetä sähköpostia osoitteeseen support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Tämä verkko estää videot.",
     "filteredNetworkImagesBlocked": "Tämä verkko estää kuvat.",
-    "filteredNetworkMapBlocked": "Tämä verkko estää kartan."
+    "filteredNetworkMapBlocked": "Tämä verkko estää kartan.",
+    "callFullScreenTitle": "Anna puheluiden soida koko näytöllä",
+    "callFullScreenMessage": "Puhelu saapui Pangea Chatin ollessa suljettuna, mutta puhelimesi pystyi näyttämään siitä vain pienen ilmoituksen. Salli koko näytön puhelut, jotta seuraava puhelu soi koko näytölläsi, vaikka puhelimesi olisi lukittuna."
 }

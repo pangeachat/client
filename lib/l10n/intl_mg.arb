@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Tsy afaka nandefa ny fangatahanao izahay. Alefaso mailaka azafady ny support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Manakana ny horonan-tsary ity tambajotra ity.",
     "filteredNetworkImagesBlocked": "Manakana ny sary ity tambajotra ity.",
-    "filteredNetworkMapBlocked": "Manakana ny sarintany ity tambajotra ity."
+    "filteredNetworkMapBlocked": "Manakana ny sarintany ity tambajotra ity.",
+    "callFullScreenTitle": "Avelao hiantso efijery feno",
+    "callFullScreenMessage": "Nisy antso tonga raha nakatona ny Pangea Chat, saingy ny findainao dia tsy afaka naneho afa-tsy fampandrenesana kely momba izany. Avelao ny antso efijery feno mba hiantsoana ny efijery manontolo amin'ny manaraka, na dia voahidy aza ny findainao."
 }

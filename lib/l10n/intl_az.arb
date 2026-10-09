@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Sorğunuzu göndərə bilmədik. Zəhmət olmasa support@pangea.chat ünvanına e-poçt göndərin.",
     "filteredNetworkVideoBlocked": "Bu şəbəkə videoları bloklayır.",
     "filteredNetworkImagesBlocked": "Bu şəbəkə şəkilləri bloklayır.",
-    "filteredNetworkMapBlocked": "Bu şəbəkə xəritəni bloklayır."
+    "filteredNetworkMapBlocked": "Bu şəbəkə xəritəni bloklayır.",
+    "callFullScreenTitle": "Zənglərin tam ekranda çalmasına icazə verin",
+    "callFullScreenMessage": "Pangea Chat bağlı olarkən zəng gəldi, lakin telefonunuz yalnız kiçik bir bildiriş göstərə bildi. Tam ekran zənglərinə icazə verin ki, növbəti zəng telefonunuz kilidli olsa belə, bütün ekranınızda çalsın."
 }

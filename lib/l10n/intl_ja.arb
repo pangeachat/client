@@ -10732,5 +10732,7 @@
     "filteredNetworkHelpRefused": "リクエストを送信できませんでした。support@pangea.chatまでメールでお問い合わせください。",
     "filteredNetworkVideoBlocked": "このネットワークは動画をブロックしています。",
     "filteredNetworkImagesBlocked": "このネットワークは画像をブロックしています。",
-    "filteredNetworkMapBlocked": "このネットワークは地図をブロックしています。"
+    "filteredNetworkMapBlocked": "このネットワークは地図をブロックしています。",
+    "callFullScreenTitle": "着信を全画面で表示",
+    "callFullScreenMessage": "Pangea Chatを閉じていたときに着信がありましたが、スマートフォンには小さな通知しか表示されませんでした。全画面表示の着信を許可すると、次回からはスマートフォンがロックされている場合でも、画面全体に着信が表示されます。"
 }

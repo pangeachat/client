@@ -10051,5 +10051,7 @@
     "filteredNetworkHelpRefused": "نتوانستیم درخواست شما را ارسال کنیم. لطفاً به support@pangea.chat ایمیل بزنید.",
     "filteredNetworkVideoBlocked": "این شبکه ویدیوها را مسدود می‌کند.",
     "filteredNetworkImagesBlocked": "این شبکه تصاویر را مسدود می‌کند.",
-    "filteredNetworkMapBlocked": "این شبکه نقشه را مسدود می‌کند."
+    "filteredNetworkMapBlocked": "این شبکه نقشه را مسدود می‌کند.",
+    "callFullScreenTitle": "اجازه دهید تماس‌ها تمام صفحه زنگ بخورند",
+    "callFullScreenMessage": "هنگامی که Pangea Chat بسته بود، تماسی دریافت شد، اما تلفن شما فقط می‌توانست یک اعلان کوچک برای آن نمایش دهد. تماس‌های تمام صفحه را فعال کنید تا تماس بعدی در کل صفحه شما زنگ بخورد، حتی زمانی که تلفن شما قفل است."
 }

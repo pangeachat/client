@@ -9963,5 +9963,7 @@
     "filteredNetworkHelpRefused": "Mēs nevarējām nosūtīt jūsu pieprasījumu. Lūdzu, rakstiet uz support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Šis tīkls bloķē video.",
     "filteredNetworkImagesBlocked": "Šis tīkls bloķē attēlus.",
-    "filteredNetworkMapBlocked": "Šis tīkls bloķē karti."
+    "filteredNetworkMapBlocked": "Šis tīkls bloķē karti.",
+    "callFullScreenTitle": "Ļaut zvaniem zvanīt pilnekrāna režīmā",
+    "callFullScreenMessage": "Ienāca zvans, kamēr Pangea Chat bija aizvērts, taču jūsu tālrunis varēja parādīt tikai nelielu paziņojumu par to. Atļaujiet pilnekrāna zvanus, lai nākamais zvans zvanītu uz visu ekrānu, pat ja tālrunis ir bloķēts."
 }

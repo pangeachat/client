@@ -10090,5 +10090,7 @@
     "filteredNetworkHelpRefused": "No hem pogut enviar la teva sol·licitud. Si us plau, envia un correu electrònic a support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Aquesta xarxa bloqueja els vídeos.",
     "filteredNetworkImagesBlocked": "Aquesta xarxa bloqueja les imatges.",
-    "filteredNetworkMapBlocked": "Aquesta xarxa bloqueja el mapa."
+    "filteredNetworkMapBlocked": "Aquesta xarxa bloqueja el mapa.",
+    "callFullScreenTitle": "Deixa que les trucades sonin a pantalla completa",
+    "callFullScreenMessage": "Va entrar una trucada mentre Pangea Chat estava tancat, però el teu telèfon només podia mostrar una petita notificació. Permet les trucades a pantalla completa perquè la següent soni a tota la pantalla, fins i tot quan el telèfon estigui bloquejat."
 }

@@ -10269,5 +10269,7 @@
     "filteredNetworkHelpRefused": "لم نتمكن من إرسال طلبك. يرجى إرسال بريد إلكتروني إلى support@pangea.chat.",
     "filteredNetworkVideoBlocked": "هذه الشبكة تحظر مقاطع الفيديو.",
     "filteredNetworkImagesBlocked": "هذه الشبكة تحظر الصور.",
-    "filteredNetworkMapBlocked": "هذه الشبكة تحظر الخريطة."
+    "filteredNetworkMapBlocked": "هذه الشبكة تحظر الخريطة.",
+    "callFullScreenTitle": "السماح للمكالمات بالرنين بملء الشاشة",
+    "callFullScreenMessage": "وردت مكالمة بينما كان Pangea Chat مغلقًا، ولكن هاتفك لم يتمكن سوى من عرض إشعار صغير لها. اسمح بالمكالمات بملء الشاشة لكي ترن المكالمة التالية على شاشتك بالكامل، حتى عندما يكون هاتفك مقفلاً."
 }

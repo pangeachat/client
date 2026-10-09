@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Hatina kukwanisa kutumira chikumbiro chako. Ndapota tumira email ku support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Iyi network inovharira mavhidhiyo.",
     "filteredNetworkImagesBlocked": "Iyi network inovharira mifananidzo.",
-    "filteredNetworkMapBlocked": "Iyi network inovharira mepu."
+    "filteredNetworkMapBlocked": "Iyi network inovharira mepu.",
+    "callFullScreenTitle": "Rega mafoni aririre skrini yese",
+    "callFullScreenMessage": "Pakauya runhare Pangea Chat yakavharwa, asi foni yako yakangokwanisa kuratidza chiziviso chidiki chete. Bvumira mafoni ekuzadza skrini kuitira kuti rinotevera riririre skrini yako yese, kunyangwe foni yako yakakiyiwa."
 }

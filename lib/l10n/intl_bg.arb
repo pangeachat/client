@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Не можахме да изпратим заявката ви. Моля, изпратете имейл на support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Тази мрежа блокира видеоклипове.",
     "filteredNetworkImagesBlocked": "Тази мрежа блокира изображения.",
-    "filteredNetworkMapBlocked": "Тази мрежа блокира картата."
+    "filteredNetworkMapBlocked": "Тази мрежа блокира картата.",
+    "callFullScreenTitle": "Нека повикванията звънят на цял екран",
+    "callFullScreenMessage": "Получено е повикване, докато Pangea Chat е бил затворен, но телефонът ви е могъл да покаже само малко известие за него. Разрешете повиквания на цял екран, така че следващото да звъни на целия ви екран, дори когато телефонът ви е заключен."
 }

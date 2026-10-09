@@ -9960,5 +9960,7 @@
     "filteredNetworkHelpRefused": "Me ei saanud teie taotlust saata. Palun saatke e-kiri aadressile support@pangea.chat.",
     "filteredNetworkVideoBlocked": "See võrk blokeerib videod.",
     "filteredNetworkImagesBlocked": "See võrk blokeerib pildid.",
-    "filteredNetworkMapBlocked": "See võrk blokeerib kaardi."
+    "filteredNetworkMapBlocked": "See võrk blokeerib kaardi.",
+    "callFullScreenTitle": "Luba kõnedele täisekraan",
+    "callFullScreenMessage": "Kõne tuli sisse, kui Pangea Chat oli suletud, kuid teie telefon sai selle kohta näidata ainult väikest teavitust. Lubage täisekraankõned, et järgmine kõne heliseks kogu ekraanil, isegi kui teie telefon on lukus."
 }

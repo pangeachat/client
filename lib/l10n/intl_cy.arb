@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Ni allem anfon eich cais. Anfonwch e-bost at support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Mae'r rhwydwaith hwn yn blocio fideos.",
     "filteredNetworkImagesBlocked": "Mae'r rhwydwaith hwn yn blocio delweddau.",
-    "filteredNetworkMapBlocked": "Mae'r rhwydwaith hwn yn blocio'r map."
+    "filteredNetworkMapBlocked": "Mae'r rhwydwaith hwn yn blocio'r map.",
+    "callFullScreenTitle": "Gadewch i alwadau ganu sgrin lawn",
+    "callFullScreenMessage": "Daeth galwad i mewn tra roedd Pangea Chat ar gau, ond dim ond hysbysiad bach y gallai eich ffôn ei ddangos ar ei gyfer. Caniatáu galwadau sgrin lawn fel bod yr un nesaf yn canu ar eich sgrin gyfan, hyd yn oed pan fydd eich ffôn wedi'i gloi."
 }

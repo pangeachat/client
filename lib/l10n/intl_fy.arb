@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Wy koene jo fersyk net ferstjoere. Stjoer asjebleaft in e-mail nei support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Dit netwurk blokkearret fideo's.",
     "filteredNetworkImagesBlocked": "Dit netwurk blokkearret ôfbyldings.",
-    "filteredNetworkMapBlocked": "Dit netwurk blokkearret de kaart."
+    "filteredNetworkMapBlocked": "Dit netwurk blokkearret de kaart.",
+    "callFullScreenTitle": "Lit petearen folslein skerm belje",
+    "callFullScreenMessage": "In petear kaam binnen wylst Pangea Chat sletten wie, mar jo tillefoan koe der mar in lytse notifikaasje foar sjen. Tastean petearen op folslein skerm, sadat de folgjende op jo hiele skerm bellet, sels as jo tillefoan beskoattele is."
 }

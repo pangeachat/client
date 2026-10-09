@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Hatukuweza kutuma ombi lako. Tafadhali tuma barua pepe kwa support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Mtandao huu unazuia video.",
     "filteredNetworkImagesBlocked": "Mtandao huu unazuia picha.",
-    "filteredNetworkMapBlocked": "Mtandao huu unazuia ramani."
+    "filteredNetworkMapBlocked": "Mtandao huu unazuia ramani.",
+    "callFullScreenTitle": "Ruhusu simu zijae skrini nzima",
+    "callFullScreenMessage": "Simu iliingia wakati Pangea Chat ilikuwa imefungwa, lakini simu yako iliweza tu kuonyesha arifa ndogo. Ruhusu simu zijae skrini nzima ili simu inayofuata iweze kuonekana kwenye skrini yako yote, hata wakati simu yako imefungwa."
 }

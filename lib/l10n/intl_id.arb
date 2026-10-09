@@ -10036,5 +10036,7 @@
     "filteredNetworkHelpRefused": "Kami tidak dapat mengirim permintaan Anda. Silakan kirim email ke support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Jaringan ini memblokir video.",
     "filteredNetworkImagesBlocked": "Jaringan ini memblokir gambar.",
-    "filteredNetworkMapBlocked": "Jaringan ini memblokir peta."
+    "filteredNetworkMapBlocked": "Jaringan ini memblokir peta.",
+    "callFullScreenTitle": "Biarkan panggilan berdering layar penuh",
+    "callFullScreenMessage": "Panggilan masuk saat Pangea Chat ditutup, tetapi ponsel Anda hanya dapat menampilkan notifikasi kecil untuk itu. Izinkan panggilan layar penuh agar panggilan berikutnya berdering di seluruh layar Anda, bahkan saat ponsel Anda terkunci."
 }

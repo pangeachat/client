@@ -9963,5 +9963,7 @@
     "filteredNetworkHelpRefused": "We konden je verzoek niet verzenden. Stuur een e-mail naar support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Dit netwerk blokkeert video's.",
     "filteredNetworkImagesBlocked": "Dit netwerk blokkeert afbeeldingen.",
-    "filteredNetworkMapBlocked": "Dit netwerk blokkeert de kaart."
+    "filteredNetworkMapBlocked": "Dit netwerk blokkeert de kaart.",
+    "callFullScreenTitle": "Laat oproepen schermvullend rinkelen",
+    "callFullScreenMessage": "Er kwam een oproep binnen terwijl Pangea Chat gesloten was, maar je telefoon kon er alleen een kleine melding voor weergeven. Sta schermvullende oproepen toe, zodat de volgende oproep op je hele scherm rinkelt, zelfs als je telefoon vergrendeld is."
 }

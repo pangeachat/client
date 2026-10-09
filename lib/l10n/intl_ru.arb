@@ -10935,5 +10935,7 @@
     "filteredNetworkHelpRefused": "Не удалось отправить ваш запрос. Пожалуйста, напишите на support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Эта сеть блокирует видео.",
     "filteredNetworkImagesBlocked": "Эта сеть блокирует изображения.",
-    "filteredNetworkMapBlocked": "Эта сеть блокирует карту."
+    "filteredNetworkMapBlocked": "Эта сеть блокирует карту.",
+    "callFullScreenTitle": "Разрешить звонкам отображаться на весь экран",
+    "callFullScreenMessage": "Вам звонили, пока Pangea Chat был закрыт, но на телефоне отобразилось только небольшое уведомление. Разрешите звонки на весь экран, чтобы следующий звонок отображался на всём экране, даже когда телефон заблокирован."
 }

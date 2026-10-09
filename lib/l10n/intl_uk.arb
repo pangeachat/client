@@ -9963,5 +9963,7 @@
     "filteredNetworkHelpRefused": "Не вдалося надіслати ваш запит. Будь ласка, напишіть на support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Ця мережа блокує відео.",
     "filteredNetworkImagesBlocked": "Ця мережа блокує зображення.",
-    "filteredNetworkMapBlocked": "Ця мережа блокує карту."
+    "filteredNetworkMapBlocked": "Ця мережа блокує карту.",
+    "callFullScreenTitle": "Дозволити дзвінкам дзвонити на весь екран",
+    "callFullScreenMessage": "Надійшов дзвінок, коли Pangea Chat було закрито, але ваш телефон міг показати лише невелике сповіщення про нього. Дозвольте дзвінки на весь екран, щоб наступний дзвінок відображався на всьому екрані, навіть коли ваш телефон заблоковано."
 }

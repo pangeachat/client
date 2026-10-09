@@ -10908,5 +10908,7 @@
     "filteredNetworkHelpRefused": "Ni ne povis sendi vian peton. Bonvolu retpoŝti al support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Ĉi tiu reto blokas filmetojn.",
     "filteredNetworkImagesBlocked": "Ĉi tiu reto blokas bildojn.",
-    "filteredNetworkMapBlocked": "Ĉi tiu reto blokas la mapon."
+    "filteredNetworkMapBlocked": "Ĉi tiu reto blokas la mapon.",
+    "callFullScreenTitle": "Permesu alvokojn sonori tutekrane",
+    "callFullScreenMessage": "Alvoko venis dum Pangea Chat estis fermita, sed via telefono povis montri nur malgrandan sciigon por ĝi. Permesu tutekranajn alvokojn tiel ke la sekva sonoros sur via tuta ekrano, eĉ kiam via telefono estas ŝlosita."
 }

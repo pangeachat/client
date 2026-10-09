@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "ꯑꯩꯈꯣꯌꯅ ꯅꯍꯥꯛꯀꯤ ꯔꯤꯀ꯭ꯋꯦꯁ꯭ꯠ ꯑꯁꯤ ꯊꯥꯗꯣꯛꯄ ꯉꯃꯈꯤꯗꯦ. ꯗꯌꯥꯜ ꯇꯧꯕꯤꯌꯨ support@pangea.chat.",
     "filteredNetworkVideoBlocked": "ꯁꯤꯡꯁꯤ ꯅꯦꯠꯋꯔꯛ ꯑꯁꯤꯅ ꯕꯤꯗꯤꯑꯣꯁꯤꯡ ꯕ꯭ꯂꯣꯛ ꯇꯧꯔꯤ.",
     "filteredNetworkImagesBlocked": "ꯁꯤꯡꯁꯤ ꯅꯦꯠꯋꯔꯛ ꯑꯁꯤꯅ ꯏꯃꯦꯖꯁꯤꯡ ꯕ꯭ꯂꯣꯛ ꯇꯧꯔꯤ.",
-    "filteredNetworkMapBlocked": "ꯁꯤꯡꯁꯤ ꯅꯦꯠꯋꯔꯛ ꯑꯁꯤꯅ ꯃꯦꯞ ꯕ꯭ꯂꯣꯛ ꯇꯧꯔꯤ."
+    "filteredNetworkMapBlocked": "ꯁꯤꯡꯁꯤ ꯅꯦꯠꯋꯔꯛ ꯑꯁꯤꯅ ꯃꯦꯞ ꯕ꯭ꯂꯣꯛ ꯇꯧꯔꯤ.",
+    "callFullScreenTitle": "কলশিং অইংবা স্ক্রীনদা রিং তৌহনবীয়ু",
+    "callFullScreenMessage": "Pangea Chat থিংদুন লৈরিঙৈদা কল অমগা লাকখি, অদুবু নখোঙগী ফোননা অইংবা নোটিফিকেসন অমা খক্তা উৎপা ঙমখি। অইংবা স্ক্রীন কলশিং অয়াবীয়ু মদুনা অহানবা কল অদু নখোঙগী স্ক্রীন পুম্নমক্তা রিং তৌরগনি, নখোঙগী ফোন লক তৌরবসু।"
 }

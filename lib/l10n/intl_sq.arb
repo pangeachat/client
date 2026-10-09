@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Nuk mundëm ta dërgonim kërkesën tuaj. Ju lutemi dërgoni email në support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Ky rrjet bllokon videot.",
     "filteredNetworkImagesBlocked": "Ky rrjet bllokon imazhet.",
-    "filteredNetworkMapBlocked": "Ky rrjet bllokon hartën."
+    "filteredNetworkMapBlocked": "Ky rrjet bllokon hartën.",
+    "callFullScreenTitle": "Lëreni thirrjet të bien në ekran të plotë",
+    "callFullScreenMessage": "Një thirrje hyri ndërsa Pangea Chat ishte e mbyllur, por telefoni juaj mund të shfaqte vetëm një njoftim të vogël për të. Lejoni thirrjet në ekran të plotë në mënyrë që tjetra të bjerë në të gjithë ekranin tuaj, edhe kur telefoni juaj është i kyçur."
 }

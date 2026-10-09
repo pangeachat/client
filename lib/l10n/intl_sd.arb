@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "اسان توهان جي درخواست موڪلي نه سگهياسين. مهرباني ڪري support@pangea.chat تي اي ميل ڪريو.",
     "filteredNetworkVideoBlocked": "هي نيٽورڪ وڊيوز کي بلاڪ ڪري ٿو.",
     "filteredNetworkImagesBlocked": "هي نيٽورڪ تصويرن کي بلاڪ ڪري ٿو.",
-    "filteredNetworkMapBlocked": "هي نيٽورڪ نقشي کي بلاڪ ڪري ٿو."
+    "filteredNetworkMapBlocked": "هي نيٽورڪ نقشي کي بلاڪ ڪري ٿو.",
+    "callFullScreenTitle": "ڪالن کي پوري اسڪرين تي وڄڻ ڏيو",
+    "callFullScreenMessage": "جڏهن پينجيا چيٽ بند هو ته هڪ ڪال آئي، پر توهان جو فون ان لاءِ صرف هڪ ننڍڙي نوٽيفڪيشن ڏيکاري سگهيو. پوري اسڪرين تي ڪالن جي اجازت ڏيو ته جيئن ايندڙ ڪال توهان جي پوري اسڪرين تي وڄي، جيتوڻيڪ توهان جو فون لاڪ هجي."
 }

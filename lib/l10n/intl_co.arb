@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Ùn pudemu micca mandà a vostra dumanda. Per piacè mandate un email à support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Sta reta bluccheghja i video.",
     "filteredNetworkImagesBlocked": "Sta reta bluccheghja l'imaghjini.",
-    "filteredNetworkMapBlocked": "Sta reta bluccheghja a carta."
+    "filteredNetworkMapBlocked": "Sta reta bluccheghja a carta.",
+    "callFullScreenTitle": "Lascia sunà e chjame à schermu pienu",
+    "callFullScreenMessage": "Una chjama hè ghjunta mentre Pangea Chat era chjusu, ma u vostru telefunu pudia solu mustrà una piccula notificazione per quessa. Permettite e chjame à schermu pienu cusì a prossima sunerà nantu à u vostru schermu sanu, ancu quandu u vostru telefunu hè bluccatu."
 }

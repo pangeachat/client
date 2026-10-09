@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "आम्ही तुमची विनंती पाठवू शकलो नाही. कृपया support@pangea.chat वर ईमेल करा.",
     "filteredNetworkVideoBlocked": "हे नेटवर्क व्हिडिओ ब्लॉक करते.",
     "filteredNetworkImagesBlocked": "हे नेटवर्क प्रतिमा ब्लॉक करते.",
-    "filteredNetworkMapBlocked": "हे नेटवर्क नकाशा ब्लॉक करते."
+    "filteredNetworkMapBlocked": "हे नेटवर्क नकाशा ब्लॉक करते.",
+    "callFullScreenTitle": "कॉल पूर्ण स्क्रीनवर वाजू द्या",
+    "callFullScreenMessage": "जेव्हा पँजिया चॅट बंद होते, तेव्हा एक कॉल आला, परंतु तुमचा फोन त्यासाठी फक्त एक लहान सूचना दाखवू शकला. पूर्ण-स्क्रीन कॉलला परवानगी द्या जेणेकरून पुढील कॉल तुमच्या संपूर्ण स्क्रीनवर वाजेल, जरी तुमचा फोन लॉक केलेला असला तरीही."
 }

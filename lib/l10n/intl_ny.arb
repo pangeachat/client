@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Sitinalephere kutumiza pempho lanu. Chonde tumizani imelo ku support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Netiweki iyi imalepheretsa mavidiyo.",
     "filteredNetworkImagesBlocked": "Netiweki iyi imalepheretsa zithunzi.",
-    "filteredNetworkMapBlocked": "Netiweki iyi imalepheretsa mapu."
+    "filteredNetworkMapBlocked": "Netiweki iyi imalepheretsa mapu.",
+    "callFullScreenTitle": "Maimbidwe azilira pa skrini yonse",
+    "callFullScreenMessage": "Kuyimba kunabwera pamene Pangea Chat inatsekedwa, koma foni yanu inangowonetsa chidziwitso chaching'ono. Lolani maimbidwe azioneka pa skrini yonse kuti kuyimba kotsatira kuzilire pa skrini yanu yonse, ngakhale foni yanu itatsekedwa."
 }

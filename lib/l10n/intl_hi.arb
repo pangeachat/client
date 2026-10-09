@@ -10595,5 +10595,7 @@
     "filteredNetworkHelpRefused": "हम आपका अनुरोध नहीं भेज सके। कृपया support@pangea.chat पर ईमेल करें।",
     "filteredNetworkVideoBlocked": "यह नेटवर्क वीडियो को ब्लॉक करता है।",
     "filteredNetworkImagesBlocked": "यह नेटवर्क छवियों को ब्लॉक करता है।",
-    "filteredNetworkMapBlocked": "यह नेटवर्क मानचित्र को ब्लॉक करता है।"
+    "filteredNetworkMapBlocked": "यह नेटवर्क मानचित्र को ब्लॉक करता है।",
+    "callFullScreenTitle": "कॉल को पूरी स्क्रीन पर बजने दें",
+    "callFullScreenMessage": "जब पैंगिया चैट बंद था तब एक कॉल आया, लेकिन आपका फ़ोन उसके लिए केवल एक छोटी सूचना दिखा सका। पूरी स्क्रीन पर कॉल की अनुमति दें ताकि अगली कॉल आपकी पूरी स्क्रीन पर बजे, तब भी जब आपका फ़ोन लॉक हो।"
 }

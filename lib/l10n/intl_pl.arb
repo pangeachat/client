@@ -10048,5 +10048,7 @@
     "filteredNetworkHelpRefused": "Nie udało się wysłać Twojego żądania. Napisz na support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Ta sieć blokuje filmy.",
     "filteredNetworkImagesBlocked": "Ta sieć blokuje obrazy.",
-    "filteredNetworkMapBlocked": "Ta sieć blokuje mapę."
+    "filteredNetworkMapBlocked": "Ta sieć blokuje mapę.",
+    "callFullScreenTitle": "Pozwól, by połączenia dzwoniły na pełnym ekranie",
+    "callFullScreenMessage": "Połączenie nadeszło, gdy Pangea Chat był zamknięty, ale Twój telefon mógł wyświetlić tylko małe powiadomienie. Zezwól na połączenia pełnoekranowe, aby następne połączenie dzwoniło na całym ekranie, nawet gdy telefon jest zablokowany."
 }
