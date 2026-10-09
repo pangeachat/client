@@ -26,6 +26,7 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_new_badger/flutter_new_badger.dart';
@@ -42,6 +43,7 @@ import 'package:fluffychat/main.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/routes/chat/calls/ios_call_screen.dart';
 import 'package:fluffychat/utils/notification_background_handler.dart';
 import 'package:fluffychat/utils/push_helper.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
@@ -248,7 +250,104 @@ class BackgroundPush {
     instance.matrix = matrix;
     // ignore: prefer_initializing_formals
     instance.onFcmError = onFcmError;
+    instance._hearVoipToken();
     return instance;
+  }
+
+  /// The iOS VoIP pusher's app ID. A build run from Xcode gets its push token
+  /// from Apple's sandbox, which only the `.dev` app ID sends to.
+  static String get _voipAppId =>
+      '${AppConfig.pushNotificationsAppId}.voip${kReleaseMode ? '' : '.dev'}';
+
+  bool _hearingVoipToken = false;
+
+  /// The VoIP token this phone last registered, so a replaced one can be
+  /// taken back. Only this phone's: the account's other iPhones have VoIP
+  /// pushers of their own under the same app ID.
+  String? _voipPushkey;
+
+  void _hearVoipToken() {
+    if (_hearingVoipToken || !PlatformInfos.isIOS) return;
+    _hearingVoipToken = true;
+    IosCallScreen.instance.voipToken.addListener(
+      () => unawaited(_onVoipToken()),
+    );
+    if (IosCallScreen.instance.voipToken.value != null) {
+      unawaited(_onVoipToken());
+    }
+  }
+
+  /// A VoIP token arrived or changed: register it, and move the ordinary
+  /// pusher to the app ID that skips rings, since the call screen rings now.
+  /// [setupPush] does both.
+  Future<void> _onVoipToken() => setupPush();
+
+  /// Registers this account's VoIP pusher, which wakes the app to ring on the
+  /// iOS call screen (client#9411). Sygnal sends its app ID call rings and
+  /// nothing else.
+  ///
+  /// Tagged with the account, which Sygnal copies into each push: every
+  /// account on the phone shares the one VoIP token, so the push is the only
+  /// thing that can say which account a call is for.
+  Future<void> setupVoipPusher() async {
+    if (!PlatformInfos.isIOS || !client.isLogged()) return;
+    final token = IosCallScreen.instance.voipToken.value;
+    final gatewayUrl = Environment.pushGatewayUrl;
+    final pushers =
+        await (client.getPushers().catchError((e) {
+          Logs().w('[Push] Unable to request pushers', e);
+          return <Pusher>[];
+        })) ??
+        [];
+    final replaced = _voipPushkey;
+    if (replaced != null && replaced != token) {
+      final old = pushers.firstWhereOrNull(
+        (p) => p.appId == _voipAppId && p.pushkey == replaced,
+      );
+      if (old != null) {
+        try {
+          await client.deletePusher(old);
+        } catch (e) {
+          Logs().w('[Push] Failed to remove the replaced VoIP pusher', e);
+        }
+      }
+    }
+    _voipPushkey = token;
+    if (token == null) return;
+    final tag = {'pangea_account': client.clientName};
+    final current = pushers.firstWhereOrNull(
+      (p) => p.appId == _voipAppId && p.pushkey == token,
+    );
+    final defaultPayload =
+        current?.data.additionalProperties['default_payload'];
+    if (current != null &&
+        current.data.url.toString() == gatewayUrl &&
+        defaultPayload is Map &&
+        mapEquals(Map<String, Object?>.from(defaultPayload), tag)) {
+      return;
+    }
+    try {
+      await client.postPusher(
+        Pusher(
+          pushkey: token,
+          appId: _voipAppId,
+          appDisplayName: PlatformInfos.clientName,
+          deviceDisplayName: client.deviceName!,
+          lang: LanguageKeys.defaultLanguage,
+          // No format: Sygnal needs each push's event type to send this app
+          // ID rings alone, and `event_id_only` leaves the type out.
+          data: PusherData(
+            url: Uri.parse(gatewayUrl),
+            additionalProperties: {'default_payload': tag},
+          ),
+          kind: 'http',
+        ),
+        append: false,
+      );
+    } catch (e, s) {
+      Logs().e('[Push] Unable to set the VoIP pusher', e, s);
+      ErrorHandler.logError(e: e, s: s, data: {});
+    }
   }
 
   Future<void> cancelNotification(String roomId) async {
@@ -342,6 +441,15 @@ class BackgroundPush {
       // all while closed. Re-registering under this ID drops the old pusher,
       // since it shares the pushkey.
       appId += '.data_only';
+    }
+    if (!useDeviceSpecificAppId &&
+        PlatformInfos.isIOS &&
+        IosCallScreen.instance.voipToken.value != null) {
+      // Rings reach this phone as VoIP pushes, on the call screen, so its
+      // ordinary pusher moves to the app ID Sygnal sends no rings to: each
+      // ring would otherwise also arrive as a banner. Re-registering under
+      // this ID drops the old pusher, since it shares the pushkey.
+      appId += '.ios';
     }
     final thisAppId = useDeviceSpecificAppId ? deviceAppId : appId;
     if (gatewayUrl != null && token != null) {
@@ -438,6 +546,9 @@ class BackgroundPush {
     if (upAction) {
       return;
     }
+    // Here as well as when the token arrives: it usually arrives at launch,
+    // before anyone has signed in, and this is what runs once they have.
+    if (PlatformInfos.isIOS) await setupVoipPusher();
     if (!PlatformInfos.isIOS &&
         (await UnifiedPush.getDistributors()).isNotEmpty) {
       await setupUp();

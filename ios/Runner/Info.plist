@@ -98,12 +98,14 @@
 		     the session in playAndRecord/videoChat on connect, but without this
 		     iOS suspends the process on background and the call dies. Camera
 		     capture still stops -- iOS does not allow it in the background --
-		     so a backgrounded video call continues as audio. "voip" belongs
-		     with CallKit and PushKit, which are separate work. -->
+		     so a backgrounded video call continues as audio. "voip" lets a
+		     VoIP push wake the app to ring on the call screen (CallKit,
+		     client#9411). -->
 		<string>audio</string>
 		<string>fetch</string>
 		<string>processing</string>
 		<string>remote-notification</string>
+		<string>voip</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
