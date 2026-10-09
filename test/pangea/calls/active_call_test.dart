@@ -88,12 +88,7 @@ class FakeCalls extends CallService {
       callerPresenceOverride ??
       (callerHoldsMembership ? PeerPresence.live : PeerPresence.gone);
 
-  final _callerStateChanges = StreamController<void>.broadcast();
   final _callerStateUpdates = StreamController<StrippedStateEvent>.broadcast();
-
-  @override
-  Stream<void> callerPresenceChanges(matrix.Room room, String callerId) =>
-      _callerStateChanges.stream;
 
   @override
   Stream<StrippedStateEvent> callerStateUpdates(
@@ -102,8 +97,7 @@ class FakeCalls extends CallService {
   ) => _callerStateUpdates.stream;
 
   /// Whether anything is still waiting on the caller's membership to arrive.
-  bool get watchingCallerState =>
-      _callerStateChanges.hasListener || _callerStateUpdates.hasListener;
+  bool get watchingCallerState => _callerStateUpdates.hasListener;
 
   /// A member state event from the peer's ringing device.
   Event peerMember(String eventId, {required bool holding, DateTime? at}) =>
@@ -135,7 +129,6 @@ class FakeCalls extends CallService {
     for (final event in events) {
       callerPresenceOverride = collapsed;
       _callerStateUpdates.add(event);
-      _callerStateChanges.add(null);
     }
     await pumpEventQueue();
   }
