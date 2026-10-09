@@ -1321,7 +1321,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-09 10:04:41.114228",
+    "@@last_modified": "2026-10-09 11:30:37.575639",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10902,5 +10902,20 @@
     "reportSent": "నివేదిక పంపబడింది",
     "reportNotSent": "మీ నివేదికను పంపలేకపోయాము. మీ కనెక్షన్‌ని తనిఖీ చేసి, మళ్లీ ప్రయత్నించండి.",
     "reportPointerMessage": "{courseName}లో ఒక సందేశం నివేదించబడింది — భద్రతను చూడండి",
+    "learningObjective": "అభ్యాస లక్ష్యం",
+    "learningObjectives": "అభ్యాస లక్ష్యాలు",
+    "missionNofM": "మిషన్ {index} / {count}",
+    "xpTowardObjective": "ఈ లక్ష్యం వైపు {threshold} XPలో {xp}",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{total} స్పార్కిల్స్‌లో {earned} సంపాదించారు",
+    "sparklesEarnedInLanguage": "{language}లో సంపాదించిన స్పార్కిల్స్",
+    "courseComplete": "కోర్సు పూర్తయింది!",
+    "courseCompleteDesc": "మీరు ఈ కోర్సులోని {count} లక్ష్యాలన్నింటినీ పూర్తి చేసారు. మీరు నేర్చుకున్న వాటిని గుర్తుంచుకోవడానికి సాధన చేస్తూ ఉండండి.",
+    "practiceObjective": "ఈ లక్ష్యాన్ని సాధన చేయండి",
+    "otherActivities": "ఇతర కార్యకలాపాలు",
+    "xpToCompleteObjectiveTitle": "ప్రతి మిషన్‌కు XP",
+    "xpToCompleteObjectiveDesc": "ప్రతి మిషన్‌ను పూర్తి చేయడానికి అవసరమైన XPని సెట్ చేయండి",
+    "objectiveCircleComplete": "మిషన్ {index}: పూర్తయింది",
+    "objectiveCircleUpNext": "మిషన్ {index}: తర్వాత",
     "useActivityImageAsChatBackground": "యాక్టివిటీ చిత్రాన్ని చాట్ బ్యాక్‌గ్రౌండ్‌గా ఉపయోగించండి"
 }

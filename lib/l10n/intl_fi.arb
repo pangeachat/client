@@ -3533,7 +3533,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-09 10:04:33.389248",
+    "@@last_modified": "2026-10-09 11:30:13.746586",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9989,5 +9989,20 @@
     "reportSent": "Ilmoitus lähetetty",
     "reportNotSent": "Ilmoitustasi ei voitu lähettää. Tarkista yhteytesi ja yritä uudelleen.",
     "reportPointerMessage": "Viestistä ilmoitettiin kurssilla {courseName} – katso Turvallisuus",
+    "learningObjective": "Oppimistavoite",
+    "learningObjectives": "Oppimistavoitteet",
+    "missionNofM": "Tehtävä {index} / {count}",
+    "xpTowardObjective": "{xp} / {threshold} XP tästä tavoitteesta",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} / {total} kipinää ansaittu",
+    "sparklesEarnedInLanguage": "Kipinöitä ansaittu kielellä {language}",
+    "courseComplete": "Kurssi suoritettu!",
+    "courseCompleteDesc": "Olet suorittanut kaikki {count} tavoitetta tällä kurssilla. Jatka harjoittelua pitääksesi oppimasi mielessä.",
+    "practiceObjective": "Harjoittele tätä tavoitetta",
+    "otherActivities": "Muut aktiviteetit",
+    "xpToCompleteObjectiveTitle": "XP per tehtävä",
+    "xpToCompleteObjectiveDesc": "Aseta XP-määrä, joka tarvitaan kunkin tehtävän suorittamiseen",
+    "objectiveCircleComplete": "Tehtävä {index}: valmis",
+    "objectiveCircleUpNext": "Tehtävä {index}: seuraavana",
     "useActivityImageAsChatBackground": "Käytä aktiviteetin kuvaa chatin taustana"
 }

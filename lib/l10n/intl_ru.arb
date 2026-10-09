@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-09 10:04:39.411699",
+    "@@last_modified": "2026-10-09 11:30:36.155195",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10924,5 +10924,20 @@
     "reportSent": "Жалоба отправлена",
     "reportNotSent": "Не удалось отправить жалобу. Проверьте подключение и повторите попытку.",
     "reportPointerMessage": "Сообщение было отправлено в {courseName} — см. раздел «Безопасность»",
+    "learningObjective": "Цель обучения",
+    "learningObjectives": "Цели обучения",
+    "missionNofM": "Миссия {index} из {count}",
+    "xpTowardObjective": "{xp} из {threshold} XP до цели",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} из {total} искр заработано",
+    "sparklesEarnedInLanguage": "Искры, заработанные на {language}",
+    "courseComplete": "Курс завершен!",
+    "courseCompleteDesc": "Вы выполнили все {count} цели этого курса. Продолжайте практиковаться, чтобы закрепить изученное.",
+    "practiceObjective": "Практиковать эту цель",
+    "otherActivities": "Другие занятия",
+    "xpToCompleteObjectiveTitle": "XP за миссию",
+    "xpToCompleteObjectiveDesc": "Установите количество XP, необходимое для завершения каждой миссии",
+    "objectiveCircleComplete": "Миссия {index}: выполнена",
+    "objectiveCircleUpNext": "Миссия {index}: следующая",
     "useActivityImageAsChatBackground": "Использовать изображение активности в качестве фона чата"
 }

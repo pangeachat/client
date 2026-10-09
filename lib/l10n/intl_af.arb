@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-09 10:04:31.896740",
+    "@@last_modified": "2026-10-09 11:30:09.905985",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2397,5 +2397,20 @@
     "reportSent": "Verslag gestuur",
     "reportNotSent": "Jou verslag kon nie gestuur word nie. Kontroleer jou verbinding en probeer weer.",
     "reportPointerMessage": "’n Boodskap is in {courseName} gerapporteer — sien Veiligheid",
+    "learningObjective": "Leerteiken",
+    "learningObjectives": "Leerteikens",
+    "missionNofM": "Missie {index} van {count}",
+    "xpTowardObjective": "{xp} van {threshold} XP vir hierdie teiken",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} van {total} vonkels verdien",
+    "sparklesEarnedInLanguage": "Vonkels verdien in {language}",
+    "courseComplete": "Kursus voltooi!",
+    "courseCompleteDesc": "Jy het al {count} teikens in hierdie kursus voltooi. Hou aan oefen om te behou wat jy geleer het.",
+    "practiceObjective": "Oefen hierdie teiken",
+    "otherActivities": "Ander aktiwiteite",
+    "xpToCompleteObjectiveTitle": "XP per Missie",
+    "xpToCompleteObjectiveDesc": "Stel die XP wat nodig is om elke missie te voltooi",
+    "objectiveCircleComplete": "Missie {index}: voltooi",
+    "objectiveCircleUpNext": "Missie {index}: volgende",
     "useActivityImageAsChatBackground": "Gebruik aktiwiteitbeeld as kletsagtergrond"
 }

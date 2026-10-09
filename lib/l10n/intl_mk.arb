@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-09 10:04:37.393944",
+    "@@last_modified": "2026-10-09 11:30:25.685545",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2397,5 +2397,20 @@
     "reportSent": "Извештајот е испратен",
     "reportNotSent": "Вашиот извештај не можеше да биде испратен. Проверете ја вашата врска и обидете се повторно.",
     "reportPointerMessage": "Пораката е пријавена во {courseName} — видете Безбедност",
+    "learningObjective": "Цел на учење",
+    "learningObjectives": "Цели на учење",
+    "missionNofM": "Мисија {index} од {count}",
+    "xpTowardObjective": "{xp} од {threshold} XP до оваа цел",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} од {total} освоени светки",
+    "sparklesEarnedInLanguage": "Освоени светки на {language}",
+    "courseComplete": "Курсот е завршен!",
+    "courseCompleteDesc": "Ги завршивте сите {count} цели на овој курс. Продолжете да вежбате за да го задржите она што сте го научиле.",
+    "practiceObjective": "Вежбајте ја оваа цел",
+    "otherActivities": "Други активности",
+    "xpToCompleteObjectiveTitle": "XP по мисија",
+    "xpToCompleteObjectiveDesc": "Поставете го XP потребно за да ја завршите секоја мисија",
+    "objectiveCircleComplete": "Мисија {index}: завршена",
+    "objectiveCircleUpNext": "Мисија {index}: следна",
     "useActivityImageAsChatBackground": "Користи слика од активноста како позадина за разговор"
 }

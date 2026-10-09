@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/sparkle_icon.dart';
 
 class GoalStatusWidget extends StatelessWidget {
   final ActivityRoleGoal goal;
@@ -29,10 +30,12 @@ class GoalStatusWidget extends StatelessWidget {
     final theme = Theme.of(context);
     final gold = Theme.of(context).pangea.goldGraphic;
 
-    Widget icon = Icon(
-      complete ? Icons.star : Icons.star_border,
-      color: complete ? gold : null,
+    // A goal is a sparkle, never a star (#9439): the star is the Learning
+    // Objective this goal feeds (quests.instructions.md).
+    Widget icon = SparkleIcon(
       size: 28.0,
+      color: complete ? gold : theme.colorScheme.onSurfaceVariant,
+      filled: complete,
     );
 
     // Every star sits in the same padded box so active and inactive stars line

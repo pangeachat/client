@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:35.175820",
+    "@@last_modified": "2026-10-09 11:30:19.601111",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10025,5 +10025,20 @@
     "reportSent": "Segnalazione inviata",
     "reportNotSent": "Impossibile inviare la segnalazione. Controlla la tua connessione e riprova.",
     "reportPointerMessage": "È stato segnalato un messaggio in {courseName} — vedi Sicurezza",
+    "learningObjective": "Obiettivo di apprendimento",
+    "learningObjectives": "Obiettivi di apprendimento",
+    "missionNofM": "Missione {index} di {count}",
+    "xpTowardObjective": "{xp} di {threshold} XP per questo obiettivo",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} di {total} scintille guadagnate",
+    "sparklesEarnedInLanguage": "Scintille guadagnate in {language}",
+    "courseComplete": "Corso completato!",
+    "courseCompleteDesc": "Hai completato tutti i {count} obiettivi di questo corso. Continua a fare pratica per non dimenticare ciò che hai imparato.",
+    "practiceObjective": "Fai pratica con questo obiettivo",
+    "otherActivities": "Altre attività",
+    "xpToCompleteObjectiveTitle": "XP per missione",
+    "xpToCompleteObjectiveDesc": "Imposta gli XP necessari per completare ogni missione",
+    "objectiveCircleComplete": "Missione {index}: completata",
+    "objectiveCircleUpNext": "Missione {index}: in arrivo",
     "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat"
 }

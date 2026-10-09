@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-09 10:04:35.876075",
+    "@@last_modified": "2026-10-09 11:30:19.640579",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10721,5 +10721,20 @@
     "reportSent": "レポートを送信しました",
     "reportNotSent": "レポートを送信できませんでした。接続を確認して、もう一度お試しください。",
     "reportPointerMessage": "{courseName}でメッセージが報告されました — 安全設定を確認してください",
+    "learningObjective": "学習目標",
+    "learningObjectives": "学習目標",
+    "missionNofM": "{count}件中{index}件目のミッション",
+    "xpTowardObjective": "この目標まであと{threshold}XP中{xp}XP",
+    "xpOfThreshold": "{threshold}XP中{xp}XP",
+    "sparklesEarnedOfTotal": "{total}個中{earned}個のスパークルを獲得",
+    "sparklesEarnedInLanguage": "{language}で獲得したスパークル",
+    "courseComplete": "コース完了！",
+    "courseCompleteDesc": "このコースの目標{count}個すべてを達成しました。学習したことを忘れないように、練習を続けてください。",
+    "practiceObjective": "この目標を練習する",
+    "otherActivities": "その他のアクティビティ",
+    "xpToCompleteObjectiveTitle": "ミッションごとのXP",
+    "xpToCompleteObjectiveDesc": "各ミッションを完了するのに必要なXPを設定します",
+    "objectiveCircleComplete": "ミッション{index}: 完了",
+    "objectiveCircleUpNext": "ミッション{index}: 次のミッション",
     "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用"
 }

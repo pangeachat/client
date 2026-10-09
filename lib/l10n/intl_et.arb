@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-09 10:04:33.211067",
+    "@@last_modified": "2026-10-09 11:30:11.487452",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9949,5 +9949,20 @@
     "reportSent": "Aruanne saadetud",
     "reportNotSent": "Teie aruannet ei saanud saata. Kontrollige oma ühendust ja proovige uuesti.",
     "reportPointerMessage": "Sõnumist teatati kursusel {courseName} – vaadake jaotist „Ohutus“",
+    "learningObjective": "Õpieesmärk",
+    "learningObjectives": "Õpieesmärgid",
+    "missionNofM": "Missioon {index} / {count}",
+    "xpTowardObjective": "{xp} / {threshold} XP selle eesmärgi suunas",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} / {total} sädemeid teenitud",
+    "sparklesEarnedInLanguage": "Sädemeid teenitud keeles {language}",
+    "courseComplete": "Kursus läbitud!",
+    "courseCompleteDesc": "Olete läbinud kõik {count} selle kursuse eesmärgid. Jätkake harjutamist, et õpitut meeles pidada.",
+    "practiceObjective": "Harjuta seda eesmärki",
+    "otherActivities": "Muud tegevused",
+    "xpToCompleteObjectiveTitle": "XP missiooni kohta",
+    "xpToCompleteObjectiveDesc": "Määra XP, mis on vajalik iga missiooni läbimiseks",
+    "objectiveCircleComplete": "Missioon {index}: täidetud",
+    "objectiveCircleUpNext": "Missioon {index}: järgmine",
     "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana"
 }

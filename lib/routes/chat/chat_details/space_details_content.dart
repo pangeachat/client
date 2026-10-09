@@ -23,6 +23,7 @@ import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
+import 'package:fluffychat/routes/courses/course_objectives/objective_progress_circles.dart';
 import 'package:fluffychat/routes/world/left_panel/course_card_reveal.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_close_button.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
@@ -293,15 +294,15 @@ List<ButtonDetails> _courseSettingsButtons(
       enabled: room.isRoomAdmin,
     ),
     ButtonDetails(
-      title: l10n.starsToUnlockObjectiveTitle,
-      description: l10n.starsToUnlockObjectiveDesc,
+      title: l10n.xpToCompleteObjectiveTitle,
+      description: l10n.xpToCompleteObjectiveDesc,
       icon: const Icon(Icons.star_outline, size: 30.0),
-      onPressed: controller.setStarsToUnlockObjective,
+      onPressed: controller.setXpToCompleteObjective,
       enabled: room.isRoomAdmin,
       trailing: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Text(
-          "${room.teacherMode.starsToUnlockObjective ?? kDefaultStarsToUnlockObjective}",
+          "${room.teacherMode.xpToCompleteObjective ?? kDefaultXpToCompleteObjective}",
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ),
@@ -377,9 +378,9 @@ class _CourseSectionSubpage extends StatelessWidget {
         SpaceSettingsTabs.course => Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Pinned above the plan so course totals stay visible while
-            // scrolling the Missions.
-            CourseProgressBar(
+            // Pinned above the plan: the Mission circles say how many
+            // Missions are complete, so the plan carries no bar (#9420).
+            CourseObjectiveCircles(
               objectivesProvider: controller.objectivesProvider,
             ),
             const SizedBox(height: 8.0),

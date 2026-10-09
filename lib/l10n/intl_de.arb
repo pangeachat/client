@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-09 10:04:33.383751",
+    "@@last_modified": "2026-10-09 11:30:11.028713",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9939,5 +9939,20 @@
     "reportSent": "Bericht gesendet",
     "reportNotSent": "Ihr Bericht konnte nicht gesendet werden. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
     "reportPointerMessage": "Eine Nachricht wurde in {courseName} gemeldet – siehe Sicherheit",
+    "learningObjective": "Lernziel",
+    "learningObjectives": "Lernziele",
+    "missionNofM": "Mission {index} von {count}",
+    "xpTowardObjective": "{xp} von {threshold} XP für dieses Ziel",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} von {total} Funkeln verdient",
+    "sparklesEarnedInLanguage": "In {language} verdiente Funkeln",
+    "courseComplete": "Kurs abgeschlossen!",
+    "courseCompleteDesc": "Du hast alle {count} Ziele in diesem Kurs abgeschlossen. Übe weiter, um das Gelernte zu behalten.",
+    "practiceObjective": "Dieses Ziel üben",
+    "otherActivities": "Andere Aktivitäten",
+    "xpToCompleteObjectiveTitle": "XP pro Mission",
+    "xpToCompleteObjectiveDesc": "Lege die benötigten XP fest, um jede Mission abzuschließen",
+    "objectiveCircleComplete": "Mission {index}: abgeschlossen",
+    "objectiveCircleUpNext": "Mission {index}: als Nächstes",
     "useActivityImageAsChatBackground": "Aktivitätsbild als Chat-Hintergrund verwenden"
 }

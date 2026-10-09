@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-09 10:04:35.565598",
+    "@@last_modified": "2026-10-09 11:30:19.515207",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2397,5 +2397,20 @@
     "reportSent": "Ezigara akụkọ",
     "reportNotSent": "Enweghị ike iziga akụkọ gị. Lelee njikọ gị wee nwaa ọzọ.",
     "reportPointerMessage": "Ekwuru okwu n'ime {courseName} — lee Nchekwa",
+    "learningObjective": "Ebumnuche mmụta",
+    "learningObjectives": "Ebumnuche mmụta",
+    "missionNofM": "Mishọn {index} n'ime {count}",
+    "xpTowardObjective": "{xp} n'ime {threshold} XP maka ebumnuche a",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} n'ime {total} sparkles enwetara",
+    "sparklesEarnedInLanguage": "Sparkles enwetara na {language}",
+    "courseComplete": "Usoro ọmụmụ agwụla!",
+    "courseCompleteDesc": "Ịmechala ebumnuche {count} niile dị na usoro ọmụmụ a. Na-emekwu ihe iji jide ihe ị mụtara.",
+    "practiceObjective": "Mee ebumnuche a",
+    "otherActivities": "Ihe omume ndị ọzọ",
+    "xpToCompleteObjectiveTitle": "XP kwa Mishọn",
+    "xpToCompleteObjectiveDesc": "Tọọ XP achọrọ iji mechaa mishọn ọ bụla",
+    "objectiveCircleComplete": "Mgbasa {index}: emechara",
+    "objectiveCircleUpNext": "Mgbasa {index}: na-abịa",
     "useActivityImageAsChatBackground": "Jiri onyonyo ọrụ dị ka ndabere nkata"
 }

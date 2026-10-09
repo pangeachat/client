@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/widgets/sparkle_icon.dart';
 
+/// An activity's goal row: one sparkle per goal, filled as the learner earns
+/// it. Sparkles, not stars, since #9439 — a star is a completed Learning
+/// Objective, and an activity's goals are the smaller marks that feed it
+/// (quests.instructions.md, "Stars and sparkles"). The class keeps its name
+/// so its many hosts need no change.
 class ActivityStarRow extends StatelessWidget {
   final int total;
   final int earned;
@@ -51,12 +57,12 @@ class ActivityStarRow extends StatelessWidget {
             "$filled/$total",
             style: TextStyle(fontSize: iconSize, color: unearnedColor),
           ),
-          Icon(Icons.star, size: iconSize, color: goldColor),
+          SparkleIcon(size: iconSize, color: goldColor),
         ],
       );
     }
     return Semantics(
-      label: L10n.of(context).starsEarnedOfTotal(filled, total),
+      label: L10n.of(context).sparklesEarnedOfTotal(filled, total),
       // Scale down rather than wrap. Every host gives this row a box that can't
       // grow — the role card's fixed 125, the suggestion card, the map card's
       // SizedBox(height: 16) — so a second run paints outside the card (#8595).
@@ -76,10 +82,10 @@ class ActivityStarRow extends StatelessWidget {
           spacing: 2.0,
           children: List.generate(
             total,
-            (i) => Icon(
-              i < filled ? Icons.star : Icons.star_border,
+            (i) => SparkleIcon(
               size: iconSize,
               color: i < filled ? goldColor : unearnedColor,
+              filled: i < filled,
             ),
           ),
         ),

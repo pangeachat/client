@@ -54,6 +54,17 @@ class ActivityCarousel extends StatefulWidget {
   /// click that does nothing.
   final bool interactive;
 
+  /// A tile drawn before the first activity, at the cards' size and as the
+  /// row's first Tab stop — the current Mission's Practice tile (#9438). Given
+  /// the card size and its roving focus node.
+  final Widget Function(
+    BuildContext context,
+    double width,
+    double height,
+    FocusNode focusNode,
+  )?
+  leadingBuilder;
+
   const ActivityCarousel({
     super.key,
     required this.activities,
@@ -67,7 +78,10 @@ class ActivityCarousel extends StatefulWidget {
     this.cardWidth,
     this.cardHeight,
     this.interactive = true,
+    this.leadingBuilder,
   });
+
+  static const String _leadingId = 'activity-carousel-leading';
 
   @override
   State<ActivityCarousel> createState() => _ActivityCarouselState();
@@ -160,14 +174,32 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
             // cards and scrolling them into view
             // (accessibility.instructions.md, "One Tab stop per list").
             child: RovingFocusGroup(
-              ids: [for (final a in widget.activities) a.activityId],
+              ids: [
+                if (widget.leadingBuilder != null) ActivityCarousel._leadingId,
+                for (final a in widget.activities) a.activityId,
+              ],
               child: ListView.separated(
                 controller: _scrollController,
                 scrollDirection: Axis.horizontal,
-                itemCount: widget.activities.length,
+                itemCount:
+                    widget.activities.length +
+                    (widget.leadingBuilder == null ? 0 : 1),
                 separatorBuilder: (_, _) => SizedBox(width: widget.spacing),
                 padding: EdgeInsets.symmetric(vertical: widget.spacing / 2.0),
-                itemBuilder: (context, i) {
+                itemBuilder: (context, index) {
+                  final leadingBuilder = widget.leadingBuilder;
+                  if (leadingBuilder != null && index == 0) {
+                    return leadingBuilder(
+                      context,
+                      _cardWidth,
+                      _cardHeight,
+                      RovingFocusGroup.nodeOf(
+                        context,
+                        ActivityCarousel._leadingId,
+                      ),
+                    );
+                  }
+                  final i = leadingBuilder == null ? index : index - 1;
                   final ref = widget.activities[i];
                   final complete =
                       (widget.hasCompletedActivity?.call(ref.activityId) ??

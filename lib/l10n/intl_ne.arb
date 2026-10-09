@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-09 10:04:38.196794",
+    "@@last_modified": "2026-10-09 11:30:29.840049",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2397,5 +2397,20 @@
     "reportSent": "रिपोर्ट पठाइयो",
     "reportNotSent": "तपाईंको रिपोर्ट पठाउन सकिएन। आफ्नो इन्टरनेट जडान जाँच गर्नुहोस् र फेरि प्रयास गर्नुहोस्।",
     "reportPointerMessage": "{courseName} मा एउटा सन्देश रिपोर्ट गरिएको छ — सुरक्षा हेर्नुहोस्",
+    "learningObjective": "सिक्ने उद्देश्य",
+    "learningObjectives": "सिक्ने उद्देश्यहरू",
+    "missionNofM": "मिशन {index} / {count}",
+    "xpTowardObjective": "यस उद्देश्यका लागि {threshold} XP मध्ये {xp} XP",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{total} स्पार्कलहरू मध्ये {earned} प्राप्त भयो",
+    "sparklesEarnedInLanguage": "{language} मा प्राप्त स्पार्कलहरू",
+    "courseComplete": "पाठ्यक्रम पूरा भयो!",
+    "courseCompleteDesc": "तपाईंले यस पाठ्यक्रममा सबै {count} उद्देश्यहरू पूरा गर्नुभएको छ। तपाईंले सिकेका कुराहरूलाई कायम राख्न अभ्यास गरिरहनुहोस्।",
+    "practiceObjective": "यो उद्देश्य अभ्यास गर्नुहोस्",
+    "otherActivities": "अन्य गतिविधिहरू",
+    "xpToCompleteObjectiveTitle": "प्रति मिशन XP",
+    "xpToCompleteObjectiveDesc": "प्रत्येक मिशन पूरा गर्न आवश्यक XP सेट गर्नुहोस्",
+    "objectiveCircleComplete": "मिसन {index}: पूरा भयो",
+    "objectiveCircleUpNext": "मिसन {index}: अब आउँदैछ",
     "useActivityImageAsChatBackground": "च्याट पृष्ठभूमिको रूपमा गतिविधि छवि प्रयोग गर्नुहोस्"
 }

@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -15,7 +14,6 @@ import 'package:fluffychat/features/navigation/token_params/room_subpage_token.d
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
-import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -259,56 +257,23 @@ class SpaceDetailsController extends State<SpaceDetails> {
     WorkspaceNav.openCoursePage(GoRouterState.of(context).uri, page),
   );
 
-  Future<void> setStarsToUnlockObjective() async {
-    // The cap is the lowest-content Mission's earnable stars — the sum
-    // of one player's earnable stars (goals per role) across its
-    // activities. A value above it could never be satisfied there; the
-    // resolver also clamps at resolve time as content changes
-    // (quests.instructions.md; #7663).
-    int maxStars = 0;
-    if (room.coursePlan != null) {
-      final resp = await showFutureLoadingDialog(
-        context: context,
-        future: () async {
-          final outline = await QuestRepo.outline(
-            room.coursePlan!.uuid,
-            // Course-admin read from inside the space: include the
-            // owner's private activities so the star cap counts them.
-            courseRoomId: room.id,
-          );
-          return outline.result?.groups
-              .map(
-                (g) => g.activities.fold(
-                  0,
-                  (sum, a) => sum + a.plan.earnableStars,
-                ),
-              )
-              .min;
-        },
-        showError: (e) => false,
-      );
-
-      if (resp.result != null) {
-        maxStars = resp.result!;
-      }
-    }
+  /// The teacher's "XP per Mission" override (#9420). No content ceiling any
+  /// more: XP is unbounded, so any positive value is reachable from any
+  /// Mission with an activity (quests.instructions.md, "What fills a
+  /// Mission").
+  Future<void> setXpToCompleteObjective() async {
     final current =
-        room.teacherMode.starsToUnlockObjective ??
-        kDefaultStarsToUnlockObjective;
-    if (!mounted) return;
+        room.teacherMode.xpToCompleteObjective ?? kDefaultXpToCompleteObjective;
     final resp = await showTextInputDialog(
       context: context,
-      title: L10n.of(context).starsToUnlockObjectiveTitle,
+      title: L10n.of(context).xpToCompleteObjectiveTitle,
       keyboardType: TextInputType.number,
-      maxLength: 2,
+      maxLength: 5,
       maxLines: 1,
       validator: (input) {
         final value = int.tryParse(input);
         if (value == null || value < 1) {
           return L10n.of(context).enterNumber;
-        }
-        if (maxStars > 0 && value > maxStars) {
-          return L10n.of(context).maxStarsPerMissionWarning(maxStars);
         }
         return null;
       },
@@ -319,7 +284,7 @@ class SpaceDetailsController extends State<SpaceDetails> {
     await showFutureLoadingDialog(
       context: context,
       future: () => room.setTeacherMode(
-        room.teacherMode.copyWith(starsToUnlockObjective: int.parse(resp)),
+        room.teacherMode.copyWith(xpToCompleteObjective: int.parse(resp)),
       ),
     );
   }

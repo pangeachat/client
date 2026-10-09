@@ -3,21 +3,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 
 /// Star display math (quests.instructions.md, "Star display on the course
-/// panel"): per-Mission display shows raw stars over the threshold (surplus
-/// shows, e.g. 12/7), while the quest header sums each Mission's stars CAPPED
-/// at its threshold — one over-practiced Mission can't inflate quest progress
-/// — over the summed thresholds.
+/// panel"): a star is a completed Mission, so the quest header counts
+/// completed Missions over the Missions that can be completed. Per-Mission
+/// display shows raw XP over the threshold (surplus shows, e.g. 340/300); a
+/// Mission over-practised past its threshold is still one star (#9420).
 void main() {
-  group('MissionProgress.cappedStars', () {
-    test('below threshold passes through', () {
-      expect(const MissionProgress(stars: 4, threshold: 7).cappedStars, 4);
-    });
-
-    test('overflow caps at the threshold', () {
-      expect(const MissionProgress(stars: 12, threshold: 7).cappedStars, 7);
-    });
-  });
-
   group('ProgressionResolution.questStars', () {
     // Rollups hang off the quest they were resolved for, so the summary reads
     // one course's own numbers rather than a cross-course blend (#7771).
@@ -35,40 +25,37 @@ void main() {
           ],
         );
 
-    test('sums capped stars over summed thresholds (mockup: 4+1 → ⭐5)', () {
+    test('counts completed Missions over scored Missions', () {
       final resolution = resolutionWith({
-        'getting-around': const MissionProgress(stars: 4, threshold: 7),
-        'introductions': const MissionProgress(stars: 1, threshold: 7),
+        'getting-around': const MissionProgress(xp: 300, threshold: 300),
+        'introductions': const MissionProgress(xp: 100, threshold: 300),
       });
       final summary = resolution.questStars('c1')!;
-      expect(summary.earned, 5);
-      expect(summary.total, 14);
-      expect(summary.fraction, closeTo(5 / 14, 1e-9));
+      expect(summary.earned, 1);
+      expect(summary.total, 2);
+      expect(summary.fraction, closeTo(1 / 2, 1e-9));
     });
 
-    test('an over-practiced Mission contributes at most its threshold', () {
+    test('an over-practised Mission is one star, not more', () {
       final resolution = resolutionWith({
-        'a': const MissionProgress(stars: 12, threshold: 7),
-        'b': const MissionProgress(stars: 0, threshold: 7),
+        'a': const MissionProgress(xp: 900, threshold: 300),
+        'b': const MissionProgress(xp: 0, threshold: 300),
       });
       final summary = resolution.questStars('c1')!;
-      expect(summary.earned, 7);
-      expect(summary.total, 14);
+      expect(summary.earned, 1);
+      expect(summary.total, 2);
     });
 
     test('a Mission outside the rollup adds nothing to the denominator', () {
       // #7663: the rollup holds only Missions with activities. An activity-less
-      // Mission is hidden from the panel and offers no stars, so it must not
-      // contribute a threshold — the summary counts what the rollup holds and
-      // nothing else. The old shape took a Mission list and defaulted unknown
-      // ids to the standard threshold, which is how one 4-star activity
-      // displayed as 44.
+      // Mission is hidden from the panel and cannot be completed, so it must
+      // not count — the summary counts what the rollup holds and nothing else.
       final resolution = resolutionWith({
-        'known': const MissionProgress(stars: 3, threshold: 7),
+        'known': const MissionProgress(xp: 120, threshold: 300),
       });
       final summary = resolution.questStars('c1')!;
-      expect(summary.earned, 3);
-      expect(summary.total, 7);
+      expect(summary.earned, 0);
+      expect(summary.total, 1);
     });
 
     test('empty quest yields zero with a safe fraction', () {

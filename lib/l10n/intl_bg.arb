@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-09 10:04:31.568534",
+    "@@last_modified": "2026-10-09 11:30:10.146036",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2397,5 +2397,20 @@
     "reportSent": "Докладът е изпратен",
     "reportNotSent": "Докладът ви не можа да бъде изпратен. Проверете връзката си и опитайте отново.",
     "reportPointerMessage": "Съобщение беше докладвано в {courseName} — вижте Безопасност",
+    "learningObjective": "Учебна цел",
+    "learningObjectives": "Учебни цели",
+    "missionNofM": "Мисия {index} от {count}",
+    "xpTowardObjective": "{xp} от {threshold} XP за тази цел",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} от {total} спечелени искри",
+    "sparklesEarnedInLanguage": "Спечелени искри на {language}",
+    "courseComplete": "Курсът е завършен!",
+    "courseCompleteDesc": "Завършихте всички {count} цели в този курс. Продължавайте да практикувате, за да запазите наученото.",
+    "practiceObjective": "Практикувайте тази цел",
+    "otherActivities": "Други дейности",
+    "xpToCompleteObjectiveTitle": "XP на мисия",
+    "xpToCompleteObjectiveDesc": "Задайте необходимия XP за завършване на всяка мисия",
+    "objectiveCircleComplete": "Мисия {index}: завършена",
+    "objectiveCircleUpNext": "Мисия {index}: предстои",
     "useActivityImageAsChatBackground": "Използвай изображението на активността като фон на чата"
 }

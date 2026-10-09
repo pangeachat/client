@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-09 10:04:32.139431",
+    "@@last_modified": "2026-10-09 11:30:09.903877",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2397,5 +2397,20 @@
     "reportSent": "প্ৰতিবেদন পঠিওৱা হ'ল",
     "reportNotSent": "আপোনাৰ প্ৰতিবেদন পঠিয়াব পৰা নগ'ল। আপোনাৰ সংযোগ পৰীক্ষা কৰক আৰু পুনৰ চেষ্টা কৰক।",
     "reportPointerMessage": "{courseName}ত এটা বাৰ্তাৰ বিষয়ে জনোৱা হৈছিল — সুৰক্ষা চাওক",
+    "learningObjective": "শিক্ষণ উদ্দেশ্য",
+    "learningObjectives": "শিক্ষণ উদ্দেশ্যসমূহ",
+    "missionNofM": "{count} টাৰ ভিতৰত {index} নং অভিযান",
+    "xpTowardObjective": "এই উদ্দেশ্যৰ বাবে {threshold} XP ৰ ভিতৰত {xp} XP",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{total} টা স্পাৰ্কলৰ ভিতৰত {earned} টা অৰ্জন কৰা হৈছে",
+    "sparklesEarnedInLanguage": "{language} ত অৰ্জন কৰা স্পাৰ্কল",
+    "courseComplete": "পাঠ্যক্ৰম সম্পূৰ্ণ!",
+    "courseCompleteDesc": "আপুনি এই পাঠ্যক্ৰমৰ সকলো {count} টা উদ্দেশ্য সম্পূৰ্ণ কৰিছে। আপুনি যি শিকিছে সেয়া ধৰি ৰাখিবলৈ অনুশীলন কৰি থাকক।",
+    "practiceObjective": "এই উদ্দেশ্যৰ অনুশীলন কৰক",
+    "otherActivities": "অন্যান্য কাৰ্যকলাপ",
+    "xpToCompleteObjectiveTitle": "প্ৰতিটো অভিযানৰ বাবে XP",
+    "xpToCompleteObjectiveDesc": "প্ৰতিটো অভিযান সম্পূৰ্ণ কৰিবলৈ প্ৰয়োজনীয় XP নিৰ্ধাৰণ কৰক",
+    "objectiveCircleComplete": "মিছন {index}: সম্পূৰ্ণ",
+    "objectiveCircleUpNext": "মিছন {index}: পৰৱৰ্তী",
     "useActivityImageAsChatBackground": "কাৰ্য্যকলাপৰ ছবিখনক চেটৰ পৃষ্ঠভূমি হিচাপে ব্যৱহাৰ কৰক"
 }

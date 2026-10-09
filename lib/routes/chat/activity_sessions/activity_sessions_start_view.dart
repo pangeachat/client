@@ -39,6 +39,7 @@ import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/sparkle_icon.dart';
 
 // The close-only-this-room-token location moved to the navigation layer
 // (`roomTokenCloseLocation`) once leaving a chat needed the same semantic
@@ -558,11 +559,7 @@ class _ArchivedSessionFallbackBody extends StatelessWidget {
                   spacing: 4.0,
                   children: [
                     if (stars > 0) ...[
-                      Icon(
-                        Icons.star,
-                        size: 18.0,
-                        color: theme.pangea.goldGraphic,
-                      ),
+                      SparkleIcon(size: 18.0, color: theme.pangea.goldGraphic),
                       Text('$stars'),
                     ],
                     if (role.isFinished)

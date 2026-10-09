@@ -2077,7 +2077,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-09 10:04:33.599916",
+    "@@last_modified": "2026-10-09 11:30:13.499462",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10812,5 +10812,20 @@
     "reportSent": "Naipadala ang ulat",
     "reportNotSent": "Hindi maipadala ang iyong ulat. Tingnan ang iyong koneksyon at subukang muli.",
     "reportPointerMessage": "May naiulat na mensahe sa {courseName} — tingnan ang Kaligtasan",
+    "learningObjective": "Layunin sa Pag-aaral",
+    "learningObjectives": "Mga Layunin sa Pag-aaral",
+    "missionNofM": "Misyon {index} ng {count}",
+    "xpTowardObjective": "{xp} sa {threshold} XP para sa layuning ito",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} sa {total} sparkles ang nakuha",
+    "sparklesEarnedInLanguage": "Mga sparkles na nakuha sa {language}",
+    "courseComplete": "Kumpleto na ang kurso!",
+    "courseCompleteDesc": "Nakumpleto mo na ang lahat ng {count} layunin sa kursong ito. Magpatuloy sa pag-eensayo para mapanatili ang iyong natutunan.",
+    "practiceObjective": "Sanayin ang layuning ito",
+    "otherActivities": "Iba pang aktibidad",
+    "xpToCompleteObjectiveTitle": "XP bawat Misyon",
+    "xpToCompleteObjectiveDesc": "Itakda ang XP na kailangan para makumpleto ang bawat misyon",
+    "objectiveCircleComplete": "Misyon {index}: kumpleto",
+    "objectiveCircleUpNext": "Misyon {index}: susunod",
     "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat"
 }

@@ -23,7 +23,7 @@ QuestActivityCard _card(
 );
 
 /// A one-quest progression whose anchor (next) Mission is [anchor], built so the
-/// band ranks an activity carrying [anchor] at gradient 1.0 (no stars earned).
+/// band ranks an activity carrying [anchor] at gradient 1.0 (no XP earned).
 ProgressionResolution _progressionWithAnchor(String anchor) =>
     resolveProgression(
       outlines: [
@@ -35,7 +35,7 @@ ProgressionResolution _progressionWithAnchor(String anchor) =>
           },
         ),
       ],
-      starsByActivity: const {},
+      xpByActivity: const {},
     );
 
 void main() {
@@ -95,7 +95,7 @@ void main() {
             },
           ),
         ],
-        starsByActivity: const {},
+        xpByActivity: const {},
       );
       final inQuest = band(_card('f', refs: ['q1', 'q2']), progression: p);
       final floor = band(_card('g', refs: ['other']), progression: p);
@@ -528,7 +528,7 @@ void main() {
             },
           ),
         ],
-        starsByActivity: const {},
+        xpByActivity: const {},
       );
       final pins = [
         _card('topAvailable', refs: ['q1', 'q2']),

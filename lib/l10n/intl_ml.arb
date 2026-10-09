@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-09 10:04:37.102393",
+    "@@last_modified": "2026-10-09 11:30:25.122479",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2397,5 +2397,20 @@
     "reportSent": "റിപ്പോർട്ട് അയച്ചു",
     "reportNotSent": "നിങ്ങളുടെ റിപ്പോർട്ട് അയക്കാൻ കഴിഞ്ഞില്ല. നിങ്ങളുടെ കണക്ഷൻ പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക.",
     "reportPointerMessage": "{courseName} എന്നതിൽ ഒരു സന്ദേശം റിപ്പോർട്ട് ചെയ്തിട്ടുണ്ട് — സുരക്ഷ കാണുക",
+    "learningObjective": "പഠന ലക്ഷ്യം",
+    "learningObjectives": "പഠന ലക്ഷ്യങ്ങൾ",
+    "missionNofM": "{count} എണ്ണത്തിൽ {index} ദൗത്യം",
+    "xpTowardObjective": "ഈ ലക്ഷ്യത്തിലേക്കുള്ള {threshold} XP-യിൽ {xp}",
+    "xpOfThreshold": "{threshold} XP-യിൽ {xp}",
+    "sparklesEarnedOfTotal": "{total} തിളക്കങ്ങളിൽ {earned} എണ്ണം നേടി",
+    "sparklesEarnedInLanguage": "{language} ഭാഷയിൽ നേടിയ തിളക്കങ്ങൾ",
+    "courseComplete": "കോഴ്സ് പൂർത്തിയായി!",
+    "courseCompleteDesc": "ഈ കോഴ്സിലെ {count} ലക്ഷ്യങ്ങളും നിങ്ങൾ പൂർത്തിയാക്കി. പഠിച്ചത് നിലനിർത്താൻ പരിശീലനം തുടരുക.",
+    "practiceObjective": "ഈ ലക്ഷ്യം പരിശീലിക്കുക",
+    "otherActivities": "മറ്റ് പ്രവർത്തനങ്ങൾ",
+    "xpToCompleteObjectiveTitle": "ഓരോ ദൗത്യത്തിനും XP",
+    "xpToCompleteObjectiveDesc": "ഓരോ ദൗത്യവും പൂർത്തിയാക്കാൻ ആവശ്യമായ XP സജ്ജീകരിക്കുക",
+    "objectiveCircleComplete": "ദൗത്യം {index}: പൂർത്തിയായി",
+    "objectiveCircleUpNext": "ദൗത്യം {index}: അടുത്തത്",
     "useActivityImageAsChatBackground": "പ്രവർത്തന ചിത്രം ചാറ്റ് പശ്ചാത്തലമായി ഉപയോഗിക്കുക"
 }

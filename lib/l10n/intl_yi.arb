@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-09 10:04:42.573848",
+    "@@last_modified": "2026-10-09 11:30:40.815969",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2397,5 +2397,20 @@
     "reportSent": "באריכט געשיקט",
     "reportNotSent": "אײַער באַריכט קען נישט געשיקט ווערן. קוקט אײַער פֿאַרבינדונג און פּרוּווט ווידער.",
     "reportPointerMessage": "אַ מעלדונג איז געמאלדן געוואָרן אין {courseName} — זעט זיכערקייט",
+    "learningObjective": "לערנען ציל",
+    "learningObjectives": "לערנען צילן",
+    "missionNofM": "מיסיע {index} פֿון {count}",
+    "xpTowardObjective": "{xp} פֿון {threshold} XP צו דעם ציל",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} פֿון {total} שײַנקלען פֿאַרדינט",
+    "sparklesEarnedInLanguage": "שײַנקלען פֿאַרדינט אין {language}",
+    "courseComplete": "קורס פֿאַרענדיקט!",
+    "courseCompleteDesc": "איר האָט פֿאַרענדיקט אַלע {count} צילן אין דעם קורס. האַלט ווײַטער איבנדיק כּדי צו האַלטן וואָס איר האָט געלערנט.",
+    "practiceObjective": "איבן דעם ציל",
+    "otherActivities": "אַנדערע אַקטיוויטעטן",
+    "xpToCompleteObjectiveTitle": "XP פּער מיסיע",
+    "xpToCompleteObjectiveDesc": "שטעלן די XP וואָס מע דאַרף כּדי צו פֿאַרענדיקן יעדער מיסיע",
+    "objectiveCircleComplete": "מיסיע {index}: פֿאַרענדיקט",
+    "objectiveCircleUpNext": "מיסיע {index}: קומענדיקע",
     "useActivityImageAsChatBackground": "ניצן טעטיקייט בילד ווי שמועס הינטערגרונט"
 }

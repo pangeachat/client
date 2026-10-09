@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-09 10:04:40.690951",
+    "@@last_modified": "2026-10-09 11:30:34.525107",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2397,5 +2397,20 @@
     "reportSent": "Tlaleho e rometsoe",
     "reportNotSent": "Tlaleho ea hau e ne e ke ke ea romeloa. Lekola khokahano ea hau 'me u leke hape.",
     "reportPointerMessage": "Molaetsa o tlalehiloe ho {courseName} — bona Polokeho",
+    "learningObjective": "Sepheo sa ho Ithuta",
+    "learningObjectives": "Dipehelo tsa ho Ithuta",
+    "missionNofM": "Thomo ya {index} ho {count}",
+    "xpTowardObjective": "{xp} ho {threshold} XP ho fihlella sepheo sena",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} ho {total} disebediswa tse fumanweng",
+    "sparklesEarnedInLanguage": "Disebediswa tse fumanweng ka {language}",
+    "courseComplete": "Thupelo e phethilwe!",
+    "courseCompleteDesc": "O qetile dipehelo tsohle tse {count} thupelong ena. Tswela pele ho itlwaetsa ho boloka seo o se ithutileng.",
+    "practiceObjective": "Itlwaetse sepheo sena",
+    "otherActivities": "Diketso tse ding",
+    "xpToCompleteObjectiveTitle": "XP ka Thomo",
+    "xpToCompleteObjectiveDesc": "Beha XP e hlokahalang ho phethela thomo ka nngwe",
+    "objectiveCircleComplete": "Thomo {index}: e phethiloe",
+    "objectiveCircleUpNext": "Thomo {index}: e latelang",
     "useActivityImageAsChatBackground": "Sebelisa setšoantšo sa mosebetsi e le bokamorao ba moqoqo"
 }

@@ -192,7 +192,7 @@ void main() {
           orderedMissionIds: ['lo-1'],
           anchorMissionId: 'lo-1',
           indexByMission: {'lo-1': 0},
-          rollup: {'lo-1': MissionProgress(stars: 2, threshold: 3)},
+          rollup: {'lo-1': MissionProgress(xp: 200, threshold: 300)},
         ),
       ],
     );
@@ -206,8 +206,8 @@ void main() {
     }
 
     expect(
-      tester.widget<ProgressBarRow>(track).summary?.earned,
-      2,
+      tester.widget<ProgressBarRow>(track).fraction,
+      closeTo(200 / 300, 1e-9),
       reason: 'the incoming bar must not draw the empty track',
     );
   });

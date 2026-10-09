@@ -12,15 +12,16 @@ import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
-import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -96,6 +97,9 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
               .showSubscriptionGatedContent,
         );
     ActivityPlanRepo.instance.addListener(_onPlanHydrate);
+    // A star is a completed Mission (#9436), read from the shared progression
+    // the map and the course panel resolve; recount when it changes.
+    QuestObjectivesLoader.sharedProgression.addListener(_onProgression);
     // The cluster outlives the profile page that changes the avatar, so it
     // relies on the change being announced: by the page's own write
     // (OwnProfileClientExtension) and by the member events sync raises (#8330).
@@ -109,6 +113,11 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
 
   void _onPlanHydrate() => _planHydrationStream.add(null);
 
+  final StreamController<void> _progressionStream =
+      StreamController.broadcast();
+
+  void _onProgression() => _progressionStream.add(null);
+
   bool _profileLoaded = false;
   bool _disposed = false;
 
@@ -116,9 +125,11 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
   void dispose() {
     _disposed = true;
     ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
+    QuestObjectivesLoader.sharedProgression.removeListener(_onProgression);
     _ownProfileUpdates.cancel();
     _profileRefreshQuietTimer?.cancel();
     _planHydrationStream.close();
+    _progressionStream.close();
     _avatarUrl.dispose();
     _displayName.dispose();
   }
@@ -152,10 +163,10 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
           e.state.type == PangeaEventTypes.orchestratorAwardedGoals ||
           e.state.type == PangeaEventTypes.activityRole,
     ),
-    // totalStarsEarned matches sessions by their plan's target language, and
-    // reading it kicks off hydration for thin v3 refs — recount when a plan
-    // lands, or a fresh session shows 0 until the next role-state event.
+    // Course language is read off the course room's plan state; a plan
+    // landing may change which courses count.
     _planHydrationStream.stream,
+    _progressionStream.stream,
   ]);
 
   @override
@@ -165,10 +176,22 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
   LanguageModel? get userL2 =>
       MatrixState.pangeaController.userController.userL2;
 
+  /// Stars are completed Missions (#9436), counted once per Mission across
+  /// the joined courses in the learner's target language. A course with no
+  /// language recorded counts, the same fallback the leaderboard uses.
   @override
   int get starsEarned {
     final userL2 = this.userL2;
-    return userL2 != null ? client.totalStarsEarned(userL2) : 0;
+    if (userL2 == null) return 0;
+    return QuestObjectivesLoader.sharedProgression.value
+        .completedMissionIds(
+          inScope: (courseId) {
+            final courseL2 = client.getRoomById(courseId)?.coursePlan?.l2;
+            return courseL2 == null ||
+                courseL2.split('-').first == userL2.langCodeShort;
+          },
+        )
+        .length;
   }
 
   @override

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-09 10:04:34.740695",
+    "@@last_modified": "2026-10-09 11:30:14.976982",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10388,5 +10388,20 @@
     "reportSent": "Izvješće poslano",
     "reportNotSent": "Vaše izvješće nije moglo biti poslano. Provjerite vezu i pokušajte ponovno.",
     "reportPointerMessage": "Poruka je prijavljena u {courseName} — pogledajte Sigurnost",
+    "learningObjective": "Cilj učenja",
+    "learningObjectives": "Ciljevi učenja",
+    "missionNofM": "Misija {index} od {count}",
+    "xpTowardObjective": "{xp} od {threshold} XP-a za ovaj cilj",
+    "xpOfThreshold": "{xp} / {threshold} XP-a",
+    "sparklesEarnedOfTotal": "{earned} od {total} iskrica zarađeno",
+    "sparklesEarnedInLanguage": "Iskrice zarađene u {language}",
+    "courseComplete": "Tečaj završen!",
+    "courseCompleteDesc": "Dovršili ste svih {count} ciljeva u ovom tečaju. Nastavite vježbati kako biste zadržali naučeno.",
+    "practiceObjective": "Vježbajte ovaj cilj",
+    "otherActivities": "Ostale aktivnosti",
+    "xpToCompleteObjectiveTitle": "XP po misiji",
+    "xpToCompleteObjectiveDesc": "Postavite XP potreban za dovršetak svake misije",
+    "objectiveCircleComplete": "Misija {index}: dovršeno",
+    "objectiveCircleUpNext": "Misija {index}: sljedeća",
     "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata"
 }

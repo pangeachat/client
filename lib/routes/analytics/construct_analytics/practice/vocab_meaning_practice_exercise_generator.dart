@@ -12,6 +12,7 @@ class VocabMeaningPracticeExerciseGenerator {
         await LemmaPracticeExerciseGenerator.lemmaPracticeExerciseDistractors(
           token,
           language: req.userL2.split('-').first,
+          extraCandidates: req.target.distractorCandidates,
         );
 
     if (!choices.contains(token.vocabConstructID)) {

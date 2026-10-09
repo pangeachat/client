@@ -4,6 +4,7 @@ import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/sparkle_icon.dart';
 
 class GoalStarAnimation extends StatefulWidget {
   final String overlayKey;
@@ -175,7 +176,7 @@ class GoalStarAnimationState extends State<GoalStarAnimation>
                 ),
               );
             },
-            child: Icon(Icons.star, size: 40.0, color: iconColor),
+            child: SparkleIcon(size: 40.0, color: iconColor),
           ),
         ],
       ),

@@ -811,7 +811,7 @@ behaves the same on mobile and desktop.
 | Chat list | the rail | left | open panel (master) |
 | Live chat / session | a chat-list row, an activity launch, **a course room row** | left | open panel (detail); one live view at a time. A course room rides over the course context (`?c=` stays), so closing it reveals the course |
 | Chat members / settings (a regular chat) | the chat header's More menu | the chat panel | push (members/search live *within* the chat, not beside it) |
-| Analytics (vocab / grammar / sessions) | a top-right cluster tracker (the **Stars** tracker opens the sessions panel) | right | open panel (master) |
+| Analytics (vocab / grammar / sessions) | a top-right cluster tracker (the **Stars** tracker opens the Learning Objectives panel) | right | open panel (master) |
 | Level | the **level medal** on the powerups pill | right | open panel (an analytics tab) |
 | A construct detail | tapping a vocab/grammar item | right | open panel (detail) beside its summary; **one detail at a time, across both columns** — a vocab detail, a grammar detail, and a completed-activity `session` review share ONE slot (a live `room` chat is independent and stays open); folds under pressure |
 | Practice session | the **Practice** button on the vocab/grammar analytics panel; the live-session badge on that section's cluster tracker (resume) | right | a panel over a persistent background session — see [Practice](#practice-is-a-persistent-background-session) below |
@@ -904,39 +904,9 @@ context alone never out-highlights an open section.
 
 ### The cluster is the right column's entry point
 
-A persistent cluster pinned to the top-right of the map opens the right column.
-On a narrow screen the cluster becomes the
-[single-column analytics nav bar](#single-column-analytics-nav-bar) — same elements,
-same tokens, horizontal at the top.
-It has its own gold **"powerups" visual** (per Figma), top to bottom: the user's
-**avatar** wrapped in an XP ring (an opaque track that fills gold clockwise
-toward the next level, resetting on level-up — deep gray in light, deep gold in
-dark, stroked wider than the gold arc so the arc rides inside it and stays
-readable over map tiles: `AppConfig.xpTrackByTheme`, #8763); a gold **powerups
-pill** of three
-trackers — total **Stars** earned, **Grammar**, **Vocabulary** — with the
-**level medal** overhanging its base; and the active L2 **flag** below. The
-Stars count is the learner's stars summed across activities, best per activity
-(a replay doesn't multiply it), so it agrees with the per-pin fill on the map.
+A persistent cluster pinned to the top-right of the map opens the right column. On a narrow screen the cluster becomes the [single-column analytics nav bar](#single-column-analytics-nav-bar) — same elements, same tokens, horizontal at the top. It has its own gold **"powerups" visual** (per Figma), top to bottom: the user's **avatar** wrapped in an XP ring (an opaque track that fills gold clockwise toward the next level, resetting on level-up — deep gray in light, deep gold in dark, stroked wider than the gold arc so the arc rides inside it and stays readable over map tiles: `AppConfig.xpTrackByTheme`, #8763); a gold **powerups pill** of three trackers — total **Stars** earned, **Grammar**, **Vocabulary** — with the **level medal** overhanging its base; and the active L2 **flag** below. A star is a completed Mission, so the Stars count is the number of Missions the learner has completed across their joined courses in the active language ([quests.instructions.md](quests.instructions.md), "Stars and sparkles").
 
-Each element is a labeled control (tooltip + semantic button label, since the
-map is a canvas and gets no implicit labels): a **tracker** opens that metric as
-a right-column panel — except while that section has a live practice session,
-when it wears the practice badge and **resumes the session instead** (see
-[Practice](#practice-is-a-persistent-background-session)); the **avatar** opens
-the profile + settings master; the
-**level medal** opens the Level analytics tab; the **flag** is a shortcut to the
-learning-settings page. The flag shows the language's flag image, or its
-uppercased **language code** when the language has no single regional flag (bare
-`es` is ambiguous across regions; `es-ES` resolves to one). The cluster stays
-pinned above the panels, because it is the anchor the right column justifies
-against. Its live vocab/grammar counts and level/XP come from the analytics
-streams — see
-[analytics-system.instructions.md](analytics-system.instructions.md) for how a
-UI surface reads them without missing the load-time update. The **Stars** count
-comes instead from the learner's awarded-goal room state (the same source as the
-[quest LO gate](quests.instructions.md)), so the cluster also rebuilds on that
-room-state stream as goals are awarded.
+Each element is a labeled control (tooltip + semantic button label, since the map is a canvas and gets no implicit labels): a **tracker** opens that metric as a right-column panel — except while that section has a live practice session, when it wears the practice badge and **resumes the session instead** (see [Practice](#practice-is-a-persistent-background-session)); the **avatar** opens the profile + settings master; the **level medal** opens the Level analytics tab; the **flag** is a shortcut to the learning-settings page. The flag shows the language's flag image, or its uppercased **language code** when the language has no single regional flag (bare `es` is ambiguous across regions; `es-ES` resolves to one). The cluster stays pinned above the panels, because it is the anchor the right column justifies against. Its live vocab/grammar counts and level/XP come from the analytics streams — see [analytics-system.instructions.md](analytics-system.instructions.md) for how a UI surface reads them without missing the load-time update. The **Stars** count comes instead from the shared progression the map and the course panel resolve ([quests.instructions.md](quests.instructions.md)), so the cluster also rebuilds as that resolution changes.
 
 ## Cross-cutting
 

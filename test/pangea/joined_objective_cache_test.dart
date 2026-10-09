@@ -41,23 +41,20 @@ void main() {
       expect(cache.outlines.single.orderedLoIds, ['lo-1', 'lo-2', 'lo-3']);
     });
 
-    test('applies the per-course stars-to-unlock override', () async {
+    test('applies the per-course XP-to-complete override', () async {
       final cache = JoinedObjectiveCache();
       await cache.rebuild(
         ['c1'],
         outlineOf: (u) async => _outline(['lo-a']),
-        starsToUnlockOf: (u) => 5,
+        xpToCompleteOf: (u) => 500,
       );
-      expect(cache.outlines.single.starsToUnlock, 5);
+      expect(cache.outlines.single.xpToComplete, 500);
     });
 
     test('defaults the threshold when no override is given', () async {
       final cache = JoinedObjectiveCache();
       await cache.rebuild(['c1'], outlineOf: (u) async => _outline(['lo-a']));
-      expect(
-        cache.outlines.single.starsToUnlock,
-        kDefaultStarsToUnlockObjective,
-      );
+      expect(cache.outlines.single.xpToComplete, kDefaultXpToCompleteObjective);
     });
 
     test(

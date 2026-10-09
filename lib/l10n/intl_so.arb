@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-09 10:04:40.393727",
+    "@@last_modified": "2026-10-09 11:30:34.302762",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2397,5 +2397,20 @@
     "reportSent": "Warbixinta waa la diray",
     "reportNotSent": "Warbixintaada lama diri karin. Hubi isku xirkaaga oo mar kale isku day.",
     "reportPointerMessage": "Fariin ayaa lagu soo sheegay {courseName} — fiiri Badbaadada",
+    "learningObjective": "Ujeedada Waxbarashada",
+    "learningObjectives": "Ujeedooyinka Waxbarashada",
+    "missionNofM": "Hawsha {index} ee {count}",
+    "xpTowardObjective": "{xp} oo ah {threshold} XP oo ku aaddan ujeeddadan",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} oo ah {total} dhalaal la kasbaday",
+    "sparklesEarnedInLanguage": "Dhalaalka lagu kasbaday {language}",
+    "courseComplete": "Koorsada waa la dhammaystiray!",
+    "courseCompleteDesc": "Waxaad dhammaystirtay dhammaan {count} ujeedooyin ee koorsadan. Sii wad ku celcelinta si aad u xafiddo waxaad baratay.",
+    "practiceObjective": "Ku celceli ujeeddadan",
+    "otherActivities": "Hawlaha kale",
+    "xpToCompleteObjectiveTitle": "XP Hawl kasta",
+    "xpToCompleteObjectiveDesc": "Deji XP-da loo baahan yahay si loo dhammaystiro hawl kasta",
+    "objectiveCircleComplete": "Hawlgalka {index}: waa la dhameeyay",
+    "objectiveCircleUpNext": "Hawlgalka {index}: kan xiga",
     "useActivityImageAsChatBackground": "Isticmaal sawirka hawsha asagoo ah asalka sheekaysiga"
 }

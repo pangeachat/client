@@ -14,15 +14,22 @@ For **conversation activities**, see [activities.instructions.md](activities.ins
 |---|---|---|
 | **Practice exercise** | Multiple-choice quiz reinforcing vocab/grammar from real messages (solo) | `practice_activities/` (legacy name), `analytics_practice/`, `toolbar/message_practice/` |
 
-## Three Entry Points
+## Four Entry Points
 
 | Entry Point | What It Is | Where It Lives | Activity Types Used |
 |---|---|---|---|
 | **Vocab Practice** | Standalone session of ~10 vocab exercises drawn from the user's weakest words | Analytics page → "Practice Vocab" button → [`AnalyticsPracticePage`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_page.dart) (`type: vocab`) | `lemmaMeaning`, `lemmaAudio` |
 | **Grammar Practice** | Standalone session of ~10 grammar exercises drawn from recent errors + weak morphology | Analytics page → "Practice Grammar" button → [`AnalyticsPracticePage`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_page.dart) (`type: morph`) | `grammarError`, `grammarCategory` |
+| **Objective Practice** | A vocab session scoped to one Mission's target vocabulary (see [Objective practice](#objective-practice)) | The course page's Practice tile and the Learning Objectives page's per-Mission Practice buttons → the same page with `practice:vocab/<missionId>` in the URL | `lemmaMeaning`, `lemmaAudio` |
 | **Message Practice** | Per-message practice accessed from the toolbar; exercises target words in that specific message | Toolbar → 💪 button → [`PracticeController`](../../lib/routes/chat/toolbar/message_practice/practice_controller.dart) | `wordMeaning`, `wordFocusListening`, `emoji`, `morphId` |
 
-All three entry points produce the same [`ConstructUseModel`](../../lib/pangea/analytics_misc/constructs_model.dart) records, so practice from any source contributes equally to the user's vocabulary garden and XP.
+All four entry points produce the same [`ConstructUseModel`](../../lib/pangea/analytics_misc/constructs_model.dart) records, so practice from any source contributes equally to the user's vocabulary garden and XP.
+
+### Objective practice
+
+A Mission's Practice control ([client#9438](https://github.com/pangeachat/client/issues/9438)) starts a vocab session drawn only from the Mission's **target vocabulary** — every suggested-vocab entry across the activities that satisfy it in the learner's joined courses ([`MissionVocab`](../../lib/features/quests/mission_vocab.dart)). Selection takes the learner's own constructs for those words first, through the usual audio and meaning generators, then adds a **meaning exercise built straight from the plan's lemma and part of speech** for each word the learner has never used, so a Mission's words can be practised before they have come up in a conversation. Set phrases are skipped there, since the meaning generator's distractors are per lemma. A Mission with no joined course behind it (a stale link, a course since left) falls back to the learner's usual session.
+
+The scope rides the URL token so it survives a panel swap and can be linked to, and it is part of the session's identity: a tap for the same Mission resumes the live session, a tap for another Mission or an unscoped Practice button replaces it after the usual confirmation. The panel names the Mission under its title. Where the XP earned reaches the Mission is the resolver's rule — [quests.instructions.md](quests.instructions.md), "What fills a Mission".
 
 ---
 

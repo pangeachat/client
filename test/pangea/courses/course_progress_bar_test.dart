@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
-import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
 import '../contrast_ratio.dart';
@@ -42,9 +41,7 @@ void main() {
       tester,
     ) async {
       await tester.pumpWidget(
-        wrap(
-          const ProgressBarRow(summary: QuestStarSummary(earned: 3, total: 40)),
-        ),
+        wrap(const ProgressBarRow(fraction: 3 / 40, label: '30 / 400 XP')),
       );
       // The async L10n delegate load gates MaterialApp's first real frame.
       await tester.pumpAndSettle();
@@ -53,7 +50,7 @@ void main() {
       expect(fillSize.height, greaterThan(0));
       expect(fillSize.width, greaterThan(0));
 
-      // The fill spans the summary's fraction of the track. 3/40 of the 400px
+      // The fill spans the given fraction of the track. 3/40 of the 400px
       // track is 30px — comfortably above the minimum-width floor below, so the
       // fraction is what's asserted here.
       final trackWidth = tester.getSize(find.byType(ProgressBarRow)).width;
@@ -66,21 +63,19 @@ void main() {
       // 1/100 of the 400px track is 4px — a gold sliver too thin to read as a
       // rounded pill. It is floored to the bar height (20px) instead.
       await tester.pumpWidget(
-        wrap(
-          const ProgressBarRow(
-            summary: QuestStarSummary(earned: 1, total: 100),
-          ),
-        ),
+        wrap(const ProgressBarRow(fraction: 1 / 100, label: '3 / 300 XP')),
       );
       await tester.pumpAndSettle();
       expect(tester.getSize(fillFinder().first).width, 20.0);
     });
 
-    testWidgets('null summary renders no fill at all', (tester) async {
+    testWidgets('a null fraction renders no fill at all', (tester) async {
       // Zero progress draws the bare gray track: the fill is omitted entirely
       // rather than rendered at zero width (both are invisible; this is the
       // cheaper tree).
-      await tester.pumpWidget(wrap(const ProgressBarRow(summary: null)));
+      await tester.pumpWidget(
+        wrap(const ProgressBarRow(fraction: null, label: null)),
+      );
       await tester.pumpAndSettle();
       expect(fillFinder(), findsNothing);
     });
@@ -95,9 +90,7 @@ void main() {
         (tester) async {
           await tester.pumpWidget(
             wrap(
-              const ProgressBarRow(
-                summary: QuestStarSummary(earned: 20, total: 40),
-              ),
+              const ProgressBarRow(fraction: 0.5, label: '150 / 300 XP'),
               brightness: brightness,
             ),
           );
@@ -130,11 +123,7 @@ void main() {
 
     testWidgets('full progress fills the whole track', (tester) async {
       await tester.pumpWidget(
-        wrap(
-          const ProgressBarRow(
-            summary: QuestStarSummary(earned: 40, total: 40),
-          ),
-        ),
+        wrap(const ProgressBarRow(fraction: 1.0, label: '300 / 300 XP')),
       );
       await tester.pumpAndSettle();
       final fillSize = tester.getSize(fillFinder().first);

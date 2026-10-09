@@ -2556,7 +2556,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-09 10:04:39.201733",
+    "@@last_modified": "2026-10-09 11:30:32.037835",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10869,5 +10869,20 @@
     "reportSent": "Denúncia enviada",
     "reportNotSent": "Não foi possível enviar a sua denúncia. Verifique a sua ligação e tente novamente.",
     "reportPointerMessage": "Uma mensagem foi denunciada em {courseName} — ver Segurança",
+    "learningObjective": "Objetivo de Aprendizagem",
+    "learningObjectives": "Objetivos de Aprendizagem",
+    "missionNofM": "Missão {index} de {count}",
+    "xpTowardObjective": "{xp} de {threshold} XP para este objetivo",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} de {total} brilhos ganhos",
+    "sparklesEarnedInLanguage": "Brilhos ganhos em {language}",
+    "courseComplete": "Curso concluído!",
+    "courseCompleteDesc": "Concluíste todos os {count} objetivos deste curso. Continua a praticar para manteres o que aprendeste.",
+    "practiceObjective": "Praticar este objetivo",
+    "otherActivities": "Outras atividades",
+    "xpToCompleteObjectiveTitle": "XP por Missão",
+    "xpToCompleteObjectiveDesc": "Define o XP necessário para completar cada missão",
+    "objectiveCircleComplete": "Missão {index}: concluída",
+    "objectiveCircleUpNext": "Missão {index}: a seguir",
     "useActivityImageAsChatBackground": "Usar imagem da atividade como fundo do chat"
 }

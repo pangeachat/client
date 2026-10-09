@@ -11,8 +11,8 @@ The course page's people section is a **Leaderboard** ([client#9212](https://git
 
 - **Every joined member is ranked, admins included.** The bot is never ranked — it earns nothing — and does not appear on the leaderboard at all.
 - **Invited and knocking users are not ranked.** They appear only on the full page, at the bottom, wearing their Invited or Knocking badge and no stats.
-- **Order**: stars in the course's language, most first; level breaks a tie; then display name A to Z, then Matrix id. Equal members therefore keep one fixed order across loads instead of swapping places, and no rank is shown as a tie.
-- The stars and level are the member's public-profile totals for the course's language — [quests.instructions.md](quests.instructions.md) ("Two star quantities") owns what those numbers mean. A course with no language recorded ranks each member on their own target language, the same fallback the old cards used.
+- **Order**: sparkles in the course's language, most first; level breaks a tie; then display name A to Z, then Matrix id. Equal members therefore keep one fixed order across loads instead of swapping places, and no rank is shown as a tie.
+- The sparkles and level are the member's public-profile totals for the course's language — the activity goals they have banked, drawn as a sparkle so the count is never read as completed Missions; [quests.instructions.md](quests.instructions.md) ("Stars and sparkles") owns what those numbers mean. A course with no language recorded ranks each member on their own target language, the same fallback the old cards used.
 - **Rows appear only once every member's profile has loaded.** Ranking on numbers that have not arrived would show an order and then reshuffle it under the reader; a spinner is honest, a wrong order is not.
 
 [`CourseLeaderboard`](../../lib/pangea/spaces/course_leaderboard.dart) is the one ranking, shared by the preview and the full page so the two can never disagree.

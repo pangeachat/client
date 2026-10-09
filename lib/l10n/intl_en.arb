@@ -4466,7 +4466,7 @@
     "addCourseEnterCode": "Enter code for private course",
     "addCourseBrowsePublic": "Browse public courses",
     "vocabLevelsDesc": "This is where vocab words will go once you’ve leveled them up!",
-    "activityAnalyticsTooltipBody": "These are your saved activities for review and practice.",
+    "activityAnalyticsTooltipBody": "Each objective fills with XP from its activities and practice. A full objective earns a star.",
     "numSavedActivities": "Number of saved activities",
     "saveActivityTitle": "Save activity",
     "saveActivityDesc": "Good job! Save this activity for later review and practice",
@@ -5208,7 +5208,7 @@
         }
     },
     "closeHint": "Close hint",
-    "starListLabel": "Saved activities and stars",
+    "starListLabel": "Learning objectives and saved activities",
     "customizePollLabel": "Customize poll",
     "navOptionsLabel": "Navigation options",
     "joinedCourseListLabel": "Joined course list",
@@ -5646,8 +5646,8 @@
             }
         }
     },
-    "tutorialCoursePlanProgress": "As you do activities and gain stars, you'll make progress here.",
-    "tutorialCoursePlanPickActivity": "These are the activities to try next in your course. Tap one to open and start it!",
+    "tutorialCoursePlanProgress": "Doing activities and practicing fills this objective. Fill it up to earn a star!",
+    "tutorialCoursePlanPickActivity": "These are this objective's activities. Tap one to open and start it!",
     "tutorialCoursePlanNoActivities": "Tap any activity in your plan to open and start it!",
     "tutorialAppTourOffer": "Great job finishing your first activity! Would you like me to show you around the app?",
     "tutorialAppTourAccept": "Give me a tour",
@@ -5731,6 +5731,65 @@
     "courseCodeSavedExplanation": "Sign up or log in and we'll add you to your course.",
     "@courseCodeSavedExplanation": {
         "description": "Line under the saved-course-code card on the sign-up and login pages."
+    },
+    "learningObjective": "Learning Objective",
+    "learningObjectives": "Learning Objectives",
+    "missionNofM": "Mission {index} of {count}",
+    "@missionNofM": {
+        "placeholders": {
+            "index": {},
+            "count": {}
+        }
+    },
+    "xpTowardObjective": "{xp} of {threshold} XP toward this objective",
+    "@xpTowardObjective": {
+        "placeholders": {
+            "xp": {},
+            "threshold": {}
+        }
+    },
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "@xpOfThreshold": {
+        "placeholders": {
+            "xp": {},
+            "threshold": {}
+        }
+    },
+    "sparklesEarnedOfTotal": "{earned} of {total} sparkles earned",
+    "@sparklesEarnedOfTotal": {
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "sparklesEarnedInLanguage": "Sparkles earned in {language}",
+    "@sparklesEarnedInLanguage": {
+        "placeholders": {
+            "language": {}
+        }
+    },
+    "courseComplete": "Course complete!",
+    "courseCompleteDesc": "You've completed all {count} objectives in this course. Keep practicing to hold on to what you've learned.",
+    "@courseCompleteDesc": {
+        "placeholders": {
+            "count": {}
+        }
+    },
+    "practiceObjective": "Practice this objective",
+    "otherActivities": "Other activities",
+    "xpToCompleteObjectiveTitle": "XP per Mission",
+    "xpToCompleteObjectiveDesc": "Set the XP needed to complete each mission",
+    "objectiveCircleComplete": "Mission {index}: complete",
+    "@objectiveCircleComplete": {
+        "placeholders": {
+            "index": {}
+        }
+    },
+    "objectiveCircleUpNext": "Mission {index}: up next",
+    "@objectiveCircleUpNext": {
+        "placeholders": {
+            "index": {}
+        }
     },
     "useActivityImageAsChatBackground": "Use activity image as chat background",
     "@useActivityImageAsChatBackground": {

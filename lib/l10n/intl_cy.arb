@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-09 10:04:32.811303",
+    "@@last_modified": "2026-10-09 11:30:10.599982",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2397,5 +2397,20 @@
     "reportSent": "Adroddiad wedi'i anfon",
     "reportNotSent": "Ni ellid anfon eich adroddiad. Gwiriwch eich cysylltiad a rhowch gynnig arall arni.",
     "reportPointerMessage": "Adroddwyd am neges yn {courseName} — gweler Diogelwch",
+    "learningObjective": "Amcan Dysgu",
+    "learningObjectives": "Amcanion Dysgu",
+    "missionNofM": "Cenhadaeth {index} o {count}",
+    "xpTowardObjective": "{xp} o {threshold} XP tuag at yr amcan hwn",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} o {total} sbarclau wedi'u hennill",
+    "sparklesEarnedInLanguage": "Sbarclau wedi'u hennill yn {language}",
+    "courseComplete": "Cwrs wedi'i gwblhau!",
+    "courseCompleteDesc": "Rydych chi wedi cwblhau pob un o'r {count} amcan yn y cwrs hwn. Daliwch ati i ymarfer i gadw'r hyn rydych chi wedi'i ddysgu.",
+    "practiceObjective": "Ymarfer yr amcan hwn",
+    "otherActivities": "Gweithgareddau eraill",
+    "xpToCompleteObjectiveTitle": "XP fesul Cenhadaeth",
+    "xpToCompleteObjectiveDesc": "Gosodwch yr XP sydd ei angen i gwblhau pob cenhadaeth",
+    "objectiveCircleComplete": "Cenhadaeth {index}: wedi'i chwblhau",
+    "objectiveCircleUpNext": "Cenhadaeth {index}: nesaf",
     "useActivityImageAsChatBackground": "Defnyddio delwedd gweithgaredd fel cefndir sgwrsio"
 }

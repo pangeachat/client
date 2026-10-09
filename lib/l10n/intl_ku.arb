@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-09 10:04:37.116615",
+    "@@last_modified": "2026-10-09 11:30:23.325581",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2397,5 +2397,20 @@
     "reportSent": "ڕاپۆرت نێردرا",
     "reportNotSent": "ڕاپۆرتەکەت نەنێردرا. پەیوەندییەکەت بپشکنە و دووبارە هەوڵ بدەوە.",
     "reportPointerMessage": "پەیامێک لە {courseName} ڕاپۆرت کرا — سەیری سەلامەتی بکە",
+    "learningObjective": "ئامانجی فێربوون",
+    "learningObjectives": "ئامانجەکانی فێربوون",
+    "missionNofM": "ئەرکی {index} لە {count}",
+    "xpTowardObjective": "{xp} لە {threshold} XP بەرەو ئەم ئامانجە",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} لە {total} بریقە بەدەست هێنراوە",
+    "sparklesEarnedInLanguage": "بریقە بەدەست هێنراوە لە {language}",
+    "courseComplete": "خوولەکە تەواو بوو!",
+    "courseCompleteDesc": "تۆ هەموو {count} ئامانجەکەت لەم خوولەدا تەواو کرد. بەردەوام بە لە ڕاهێنان بۆ ئەوەی ئەوەی فێربوویت لەبیر نەکەیت.",
+    "practiceObjective": "ڕاهێنان لەسەر ئەم ئامانجە بکە",
+    "otherActivities": "چالاکییەکانی تر",
+    "xpToCompleteObjectiveTitle": "XP بۆ هەر ئەرکێک",
+    "xpToCompleteObjectiveDesc": "XP پێویست دیاری بکە بۆ تەواوکردنی هەر ئەرکێک",
+    "objectiveCircleComplete": "ئەرکی {index}: تەواو بوو",
+    "objectiveCircleUpNext": "ئەرکی {index}: داهاتوو",
     "useActivityImageAsChatBackground": "وێنەی چالاکی وەک پاشبنەمای چات بەکاربهێنە"
 }

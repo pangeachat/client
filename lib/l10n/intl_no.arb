@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-09 10:04:38.537422",
+    "@@last_modified": "2026-10-09 11:30:29.873274",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2397,5 +2397,20 @@
     "reportSent": "Rapport sendt",
     "reportNotSent": "Rapporten din kunne ikke sendes. Sjekk tilkoblingen din og prøv igjen.",
     "reportPointerMessage": "En melding ble rapportert i {courseName} – se Sikkerhet",
+    "learningObjective": "Læringsmål",
+    "learningObjectives": "Læringsmål",
+    "missionNofM": "Oppdrag {index} av {count}",
+    "xpTowardObjective": "{xp} av {threshold} XP mot dette målet",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} av {total} gnister opptjent",
+    "sparklesEarnedInLanguage": "Gnister opptjent i {language}",
+    "courseComplete": "Kurset er fullført!",
+    "courseCompleteDesc": "Du har fullført alle {count} mål i dette kurset. Fortsett å øve for å huske det du har lært.",
+    "practiceObjective": "Øv på dette målet",
+    "otherActivities": "Andre aktiviteter",
+    "xpToCompleteObjectiveTitle": "XP per oppdrag",
+    "xpToCompleteObjectiveDesc": "Angi XP som trengs for å fullføre hvert oppdrag",
+    "objectiveCircleComplete": "Oppdrag {index}: fullført",
+    "objectiveCircleUpNext": "Oppdrag {index}: neste",
     "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn"
 }

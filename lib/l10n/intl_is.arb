@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-09 10:04:35.365383",
+    "@@last_modified": "2026-10-09 11:30:19.931610",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2397,5 +2397,20 @@
     "reportSent": "Tilkynning send",
     "reportNotSent": "Ekki tókst að senda tilkynninguna þína. Athugaðu nettenginguna þína og reyndu aftur.",
     "reportPointerMessage": "Skilaboð voru tilkynnt í {courseName} — sjá Öryggi",
+    "learningObjective": "Námmarkmið",
+    "learningObjectives": "Námmarkmið",
+    "missionNofM": "Verkefni {index} af {count}",
+    "xpTowardObjective": "{xp} af {threshold} XP í átt að þessu markmiði",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} af {total} glitrum fengnar",
+    "sparklesEarnedInLanguage": "Glitrur fengnar í {language}",
+    "courseComplete": "Námskeiði lokið!",
+    "courseCompleteDesc": "Þú hefur lokið öllum {count} markmiðum á þessu námskeiði. Haltu áfram að æfa þig til að halda því sem þú hefur lært.",
+    "practiceObjective": "Æfðu þetta markmið",
+    "otherActivities": "Aðrar athafnir",
+    "xpToCompleteObjectiveTitle": "XP á verkefni",
+    "xpToCompleteObjectiveDesc": "Stilltu XP sem þarf til að ljúka hverju verkefni",
+    "objectiveCircleComplete": "Verkefni {index}: lokið",
+    "objectiveCircleUpNext": "Verkefni {index}: næst",
     "useActivityImageAsChatBackground": "Nota virknimynd sem bakgrunn spjalls"
 }

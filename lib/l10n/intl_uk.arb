@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-09 10:04:41.385431",
+    "@@last_modified": "2026-10-09 11:30:38.365342",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9952,5 +9952,20 @@
     "reportSent": "Звіт надіслано",
     "reportNotSent": "Ваш звіт не вдалося надіслати. Перевірте з’єднання та спробуйте ще раз.",
     "reportPointerMessage": "Повідомлення було надіслано в {courseName} — дивіться Безпека",
+    "learningObjective": "Ціль навчання",
+    "learningObjectives": "Цілі навчання",
+    "missionNofM": "Місія {index} із {count}",
+    "xpTowardObjective": "{xp} із {threshold} XP до цієї цілі",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} із {total} блискіток зароблено",
+    "sparklesEarnedInLanguage": "Блискіток зароблено в {language}",
+    "courseComplete": "Курс завершено!",
+    "courseCompleteDesc": "Ви виконали всі {count} цілі в цьому курсі. Продовжуйте практикуватися, щоб зберегти те, що ви вивчили.",
+    "practiceObjective": "Практикувати цю ціль",
+    "otherActivities": "Інші активності",
+    "xpToCompleteObjectiveTitle": "XP за місію",
+    "xpToCompleteObjectiveDesc": "Встановіть XP, необхідні для завершення кожної місії",
+    "objectiveCircleComplete": "Місія {index}: виконано",
+    "objectiveCircleUpNext": "Місія {index}: наступна",
     "useActivityImageAsChatBackground": "Використовувати зображення активності як фон чату"
 }

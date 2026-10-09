@@ -1359,7 +1359,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-09 10:04:35.008948",
+    "@@last_modified": "2026-10-09 11:30:23.363485",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10888,5 +10888,20 @@
     "reportSent": "Reporto inviate",
     "reportNotSent": "Tu reporto non poteva esser inviate. Verifica tu connexion e reprova.",
     "reportPointerMessage": "Un message esseva reportate in {courseName} — vide Securitate",
+    "learningObjective": "Objectivo de Apprendimento",
+    "learningObjectives": "Objectivos de Apprendimento",
+    "missionNofM": "Mission {index} de {count}",
+    "xpTowardObjective": "{xp} de {threshold} XP verso iste objectivo",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} de {total} scintillas ganiate",
+    "sparklesEarnedInLanguage": "Scintillas ganiate in {language}",
+    "courseComplete": "Curso complete!",
+    "courseCompleteDesc": "Tu ha complite tote le {count} objectivos in iste curso. Continua a practicar pro retener lo que tu ha apprendite.",
+    "practiceObjective": "Practicar iste objectivo",
+    "otherActivities": "Altere activitates",
+    "xpToCompleteObjectiveTitle": "XP per Mission",
+    "xpToCompleteObjectiveDesc": "Define le XP necessari pro completar cata mission",
+    "objectiveCircleComplete": "Mission {index}: complete",
+    "objectiveCircleUpNext": "Mission {index}: sequente",
     "useActivityImageAsChatBackground": "Usar imagine de activitate como fundo de chat"
 }

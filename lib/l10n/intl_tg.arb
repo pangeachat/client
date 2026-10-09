@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-09 10:04:41.310918",
+    "@@last_modified": "2026-10-09 11:30:35.460763",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2397,5 +2397,20 @@
     "reportSent": "Ҳисобот фиристода шуд",
     "reportNotSent": "Ҳисоботи шумо фиристода нашуд. Пайвасти худро тафтиш кунед ва дубора кӯшиш кунед.",
     "reportPointerMessage": "Дар {courseName} паёме гузориш дода шуд — ба Амният нигаред",
+    "learningObjective": "Ҳадафи омӯзиш",
+    "learningObjectives": "Ҳадафҳои омӯзиш",
+    "missionNofM": "Миссияи {index} аз {count}",
+    "xpTowardObjective": "{xp} аз {threshold} XP ба ин ҳадаф",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} аз {total} дурахшон ба даст оварда шуд",
+    "sparklesEarnedInLanguage": "Дурахшон дар {language} ба даст оварда шуд",
+    "courseComplete": "Курс ба итмом расид!",
+    "courseCompleteDesc": "Шумо ҳамаи {count} ҳадафҳоро дар ин курс ба итмом расондед. Барои нигоҳ доштани он чизе, ки омӯхтаед, машқ карданро давом диҳед.",
+    "practiceObjective": "Ин ҳадафро машқ кунед",
+    "otherActivities": "Дигар фаъолиятҳо",
+    "xpToCompleteObjectiveTitle": "XP барои ҳар як миссия",
+    "xpToCompleteObjectiveDesc": "XP-и лозимаро барои иҷрои ҳар як миссия муқаррар кунед",
+    "objectiveCircleComplete": "Миссияи {index}: иҷро шуд",
+    "objectiveCircleUpNext": "Миссияи {index}: навбатӣ",
     "useActivityImageAsChatBackground": "Тасвири фаъолиятро ҳамчун заминаи чат истифода баред"
 }

@@ -2,11 +2,15 @@ class TeacherModeModel {
   final bool enabled;
   final int? activitiesToUnlockTopic;
 
-  /// Teacher override for the stars a learner must earn in an objective before
-  /// the next one unlocks (v3 progression gate; see client quests.instructions.md).
-  /// Null falls back to the default threshold. Supersedes the v1
-  /// [activitiesToUnlockTopic] count, which gated on completed activities.
+  /// The v3 star threshold that [xpToCompleteObjective] superseded (#9420).
+  /// Still parsed so an older client's write survives a round trip, but
+  /// nothing reads it: a stored "10 stars" must not be mistaken for "10 XP".
   final int? starsToUnlockObjective;
+
+  /// Teacher override for the XP a learner must earn toward a Mission for it
+  /// to count as complete (client quests.instructions.md, "What fills a
+  /// Mission"). Null falls back to the default threshold.
+  final int? xpToCompleteObjective;
 
   /// Per-course activity pinning: Mission (LO) id → the activity content ids
   /// (`activity_id`, environment-stable — never CMS row ids) that satisfy the
@@ -20,6 +24,7 @@ class TeacherModeModel {
     required this.enabled,
     this.activitiesToUnlockTopic,
     this.starsToUnlockObjective,
+    this.xpToCompleteObjective,
     this.pinnedActivitiesByObjective,
   });
 
@@ -27,6 +32,7 @@ class TeacherModeModel {
     bool? enabled,
     int? activitiesToUnlockTopic,
     int? starsToUnlockObjective,
+    int? xpToCompleteObjective,
     Map<String, List<String>>? pinnedActivitiesByObjective,
   }) {
     return TeacherModeModel(
@@ -35,6 +41,8 @@ class TeacherModeModel {
           activitiesToUnlockTopic ?? this.activitiesToUnlockTopic,
       starsToUnlockObjective:
           starsToUnlockObjective ?? this.starsToUnlockObjective,
+      xpToCompleteObjective:
+          xpToCompleteObjective ?? this.xpToCompleteObjective,
       pinnedActivitiesByObjective:
           pinnedActivitiesByObjective ?? this.pinnedActivitiesByObjective,
     );
@@ -44,6 +52,8 @@ class TeacherModeModel {
     'enabled': enabled,
     'activities_to_unlock_topic': activitiesToUnlockTopic,
     'stars_to_unlock_objective': starsToUnlockObjective,
+    if (xpToCompleteObjective != null)
+      'xp_to_complete_objective': xpToCompleteObjective,
     if (pinnedActivitiesByObjective != null)
       'pinned_activities_by_objective': pinnedActivitiesByObjective,
   };
@@ -54,6 +64,9 @@ class TeacherModeModel {
       enabled: json['enabled'] ?? false,
       activitiesToUnlockTopic: json['activities_to_unlock_topic'],
       starsToUnlockObjective: json['stars_to_unlock_objective'],
+      xpToCompleteObjective: json['xp_to_complete_objective'] is int
+          ? json['xp_to_complete_objective']
+          : null,
       pinnedActivitiesByObjective: rawPins is Map
           ? {
               for (final entry in rawPins.entries)

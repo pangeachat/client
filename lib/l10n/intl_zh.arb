@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-09 10:04:42.225124",
+    "@@last_modified": "2026-10-09 11:30:40.205453",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9952,5 +9952,20 @@
     "reportSent": "举报已发送",
     "reportNotSent": "无法发送您的举报。请检查您的网络连接，然后重试。",
     "reportPointerMessage": "在 {courseName} 中举报了一条消息 — 请查看“安全”",
+    "learningObjective": "学习目标",
+    "learningObjectives": "学习目标",
+    "missionNofM": "任务 {index} / {count}",
+    "xpTowardObjective": "此目标已获得 {xp} / {threshold} XP",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "已获得 {earned} / {total} 个闪光",
+    "sparklesEarnedInLanguage": "在 {language} 中获得的闪光",
+    "courseComplete": "课程完成！",
+    "courseCompleteDesc": "您已完成本课程中的所有 {count} 个目标。继续练习以巩固所学知识。",
+    "practiceObjective": "练习此目标",
+    "otherActivities": "其他活动",
+    "xpToCompleteObjectiveTitle": "每个任务的 XP",
+    "xpToCompleteObjectiveDesc": "设置完成每个任务所需的 XP",
+    "objectiveCircleComplete": "任务 {index}：已完成",
+    "objectiveCircleUpNext": "任务 {index}：即将开始",
     "useActivityImageAsChatBackground": "使用活动图片作为聊天背景"
 }

@@ -1,5 +1,9 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
+
+import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/features/user/public_profile_model.dart';
@@ -7,6 +11,7 @@ import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/features/user/user_model.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 /// The smallest controller that satisfies
 /// `MatrixState.isPangeaControllerInitialized` and serves a viewer L1.
@@ -42,6 +47,48 @@ class FakePangeaController implements PangeaController {
          analyticsProfiles,
        ),
        subscriptionController = _FakeSubscriptionController(subscribed);
+
+  /// The one slice of [MatrixState] a widget test reaches through this
+  /// controller: `MissionXpCache.ensureWired` subscribes to
+  /// `matrixState.analyticsDataService.updateDispatcher.constructUpdateStream`
+  /// from every `QuestObjectivesLoader` constructor (#9420), so any widget
+  /// that mounts a loader — the course context bar, the course card — threw
+  /// `Null is not a subtype of MatrixState` from [noSuchMethod] before it
+  /// could build. Nothing emits on the stream unless a test does.
+  @override
+  final MatrixState matrixState = _FakeMatrixState();
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) => null;
+}
+
+class _FakeMatrixState implements MatrixState {
+  @override
+  final AnalyticsDataService analyticsDataService = _FakeAnalyticsDataService();
+
+  // `State` is `Diagnosticable`, whose `toString` takes a level; an
+  // implementer has to match that signature or the analyzer rejects it.
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) =>
+      '_FakeMatrixState';
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) => null;
+}
+
+class _FakeAnalyticsDataService implements AnalyticsDataService {
+  @override
+  final AnalyticsUpdateDispatcher updateDispatcher =
+      _FakeAnalyticsUpdateDispatcher();
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) => null;
+}
+
+class _FakeAnalyticsUpdateDispatcher implements AnalyticsUpdateDispatcher {
+  @override
+  final StreamController<AnalyticsStreamUpdate> constructUpdateStream =
+      StreamController<AnalyticsStreamUpdate>.broadcast();
 
   @override
   dynamic noSuchMethod(Invocation invocation) => null;

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-09 10:04:40.062044",
+    "@@last_modified": "2026-10-09 11:30:32.924477",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10897,5 +10897,20 @@
     "reportSent": "Nahlásenie odoslané",
     "reportNotSent": "Vaše nahlásenie sa nepodarilo odoslať. Skontrolujte pripojenie a skúste to znova.",
     "reportPointerMessage": "V kurze {courseName} bola nahlásená správa – pozrite si Bezpečnosť",
+    "learningObjective": "Vzdelávací cieľ",
+    "learningObjectives": "Vzdelávacie ciele",
+    "missionNofM": "Misia {index} z {count}",
+    "xpTowardObjective": "{xp} z {threshold} XP k tomuto cieľu",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} z {total} získaných iskier",
+    "sparklesEarnedInLanguage": "Iskry získané v jazyku {language}",
+    "courseComplete": "Kurz dokončený!",
+    "courseCompleteDesc": "Dokončili ste všetkých {count} cieľov v tomto kurze. Pokračujte v precvičovaní, aby ste si udržali to, čo ste sa naučili.",
+    "practiceObjective": "Precvičte si tento cieľ",
+    "otherActivities": "Ďalšie aktivity",
+    "xpToCompleteObjectiveTitle": "XP za misiu",
+    "xpToCompleteObjectiveDesc": "Nastavte XP potrebné na dokončenie každej misie",
+    "objectiveCircleComplete": "Misia {index}: dokončená",
+    "objectiveCircleUpNext": "Misia {index}: ďalšia v poradí",
     "useActivityImageAsChatBackground": "Použiť obrázok aktivity ako pozadie chatu"
 }

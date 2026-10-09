@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-09 10:04:36.443122",
+    "@@last_modified": "2026-10-09 11:30:31.561597",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2397,5 +2397,20 @@
     "reportSent": "Relatum missum",
     "reportNotSent": "Tua relatio mitti non potuit. Coniunctionem tuam inspice et iterum conare.",
     "reportPointerMessage": "Nuntius in {courseName} relatus est — vide Securitatem",
+    "learningObjective": "Propositum discendi",
+    "learningObjectives": "Proposita discendi",
+    "missionNofM": "Missio {index} de {count}",
+    "xpTowardObjective": "{xp} de {threshold} XP ad hoc propositum",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} de {total} micis lucis meritis",
+    "sparklesEarnedInLanguage": "Micae lucis meritae in {language}",
+    "courseComplete": "Cursus perfectus!",
+    "courseCompleteDesc": "Omnia {count} proposita in hoc cursu perfecisti. Perge exercere ut retineas quae didicisti.",
+    "practiceObjective": "Hoc propositum exerce",
+    "otherActivities": "Aliae actiones",
+    "xpToCompleteObjectiveTitle": "XP per Missionem",
+    "xpToCompleteObjectiveDesc": "Constitue XP necessaria ad quamque missionem perficiendam",
+    "objectiveCircleComplete": "Missio {index}: perfecta",
+    "objectiveCircleUpNext": "Missio {index}: proxima",
     "useActivityImageAsChatBackground": "Imaginem actionis uti pro curriculo sermonis"
 }

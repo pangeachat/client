@@ -164,8 +164,8 @@ One step, no target: the bot introduces itself and greets the learner in their *
 Mirrors `worldMap` — an introduction to the surface, then "go start one", with the course's own progress model in between:
 
 1. **A welcome naming the course**, lighting the **whole course panel** — header, progress and plan sections together — so the step is plainly about *this* course: a learning journey the learner takes with their course mates. A full-height target leaves no room beside it, so the card sits at the bottom **of the panel**, centred on it.
-2. **The course progress bar.** Doing activities and earning **stars** is what moves them along the course. A star is one orchestrator-awarded activity goal and a Mission is a learning objective — [quests](quests.instructions.md) owns both.
-3. **The course page's Activities row** — the ranked, Mission-less shortlist of the plan's activities ([quests](quests.instructions.md)). Armed — the learner picks an activity themselves, from a set their course author chose; the map's equivalent points at one activity and opens it on a tap.
+2. **The course progress bar** — the current Mission's meter. Doing activities and practising fills it, and a full meter is a **star**: one completed Mission, a learning objective — [quests](quests.instructions.md) owns both.
+3. **The course page's Learning Objective row** — the Practice tile and the current Mission's activities ([quests](quests.instructions.md)). Armed — the learner picks an activity themselves, from a set their course author chose; the map's equivalent points at one activity and opens it on a tap.
 
 **The row, not its individual cards.** A card would need a target id each, and the row re-ranks continuously, so no card is a stable claimant. The row is one widget on the course page, so pointing at it has a single claimant — and it says the more useful thing anyway: *these* are the activities to try next.
 

@@ -1934,7 +1934,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-09 10:04:35.881048",
+    "@@last_modified": "2026-10-09 11:30:23.182045",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10852,5 +10852,20 @@
     "reportSent": "მოხსენება გაგზავნილია",
     "reportNotSent": "თქვენი მოხსენების გაგზავნა ვერ მოხერხდა. შეამოწმეთ კავშირი და სცადეთ ხელახლა.",
     "reportPointerMessage": "შეტყობინება მოხსენებულია {courseName}-ში — იხილეთ უსაფრთხოება",
+    "learningObjective": "სწავლის მიზანი",
+    "learningObjectives": "სწავლის მიზნები",
+    "missionNofM": "მისია {index} / {count}",
+    "xpTowardObjective": "{xp} / {threshold} XP ამ მიზნისკენ",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} / {total} ნაპერწკალი მოპოვებულია",
+    "sparklesEarnedInLanguage": "ნაპერწკლები მოპოვებულია {language}-ში",
+    "courseComplete": "კურსი დასრულებულია!",
+    "courseCompleteDesc": "თქვენ დაასრულეთ ყველა {count} მიზანი ამ კურსში. განაგრძეთ ვარჯიში, რათა შეინარჩუნოთ ნასწავლი.",
+    "practiceObjective": "ივარჯიშეთ ამ მიზანზე",
+    "otherActivities": "სხვა აქტივობები",
+    "xpToCompleteObjectiveTitle": "XP თითო მისიაზე",
+    "xpToCompleteObjectiveDesc": "დააყენეთ XP, რომელიც საჭიროა თითოეული მისიის დასასრულებლად",
+    "objectiveCircleComplete": "მისია {index}: დასრულებულია",
+    "objectiveCircleUpNext": "მისია {index}: შემდეგი",
     "useActivityImageAsChatBackground": "აქტივობის სურათის გამოყენება ჩეთის ფონად"
 }

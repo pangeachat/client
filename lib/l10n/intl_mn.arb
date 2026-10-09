@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-09 10:04:37.343019",
+    "@@last_modified": "2026-10-09 11:30:33.785154",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2397,5 +2397,20 @@
     "reportSent": "Мэдэгдэл илгээгдлээ",
     "reportNotSent": "Таны мэдэгдлийг илгээх боломжгүй байна. Холболтоо шалгаад дахин оролдоно уу.",
     "reportPointerMessage": "{courseName} хичээл дээрх мессежийг мэдэгдсэн байна — Аюулгүй байдлыг үзнэ үү",
+    "learningObjective": "Сурах зорилго",
+    "learningObjectives": "Сурах зорилгууд",
+    "missionNofM": "{count}-ийн {index} даалгавар",
+    "xpTowardObjective": "Энэ зорилгод хүрэхэд шаардлагатай {threshold} XP-ээс {xp} XP цуглуулсан",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "Нийт {total} гялалзалтаас {earned} нь цуглуулсан",
+    "sparklesEarnedInLanguage": "{language} хэлээр цуглуулсан гялалзалт",
+    "courseComplete": "Хичээл дууслаа!",
+    "courseCompleteDesc": "Та энэ хичээлийн нийт {count} зорилгыг биелүүллээ. Судалгаагаа үргэлжлүүлэн хийж, сурсан зүйлээ бататгаарай.",
+    "practiceObjective": "Энэ зорилгыг дадлага хийх",
+    "otherActivities": "Бусад үйл ажиллагаа",
+    "xpToCompleteObjectiveTitle": "Даалгавар тутамд авах XP",
+    "xpToCompleteObjectiveDesc": "Даалгавар бүрийг дуусгахад шаардагдах XP-г тохируулна уу",
+    "objectiveCircleComplete": "Даалгавар {index}: дууссан",
+    "objectiveCircleUpNext": "Даалгавар {index}: дараагийнх",
     "useActivityImageAsChatBackground": "Үйл ажиллагааны зургийг чатын дэвсгэр болгон ашиглах"
 }

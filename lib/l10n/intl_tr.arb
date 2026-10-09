@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-09 10:04:41.651288",
+    "@@last_modified": "2026-10-09 11:30:35.685668",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10253,5 +10253,20 @@
     "reportSent": "Rapor gönderildi",
     "reportNotSent": "Raporunuz gönderilemedi. Bağlantınızı kontrol edip tekrar deneyin.",
     "reportPointerMessage": "{courseName} içinde bir mesaj bildirildi — Güvenlik bölümüne bakın",
+    "learningObjective": "Öğrenim Hedefi",
+    "learningObjectives": "Öğrenim Hedefleri",
+    "missionNofM": "{count} görevden {index}. görev",
+    "xpTowardObjective": "Bu hedefe yönelik {threshold} XP'den {xp} XP",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{total} ışıltıdan {earned} tanesi kazanıldı",
+    "sparklesEarnedInLanguage": "{language} dilinde kazanılan ışıltılar",
+    "courseComplete": "Kurs tamamlandı!",
+    "courseCompleteDesc": "Bu kurstaki {count} hedefin tümünü tamamladın. Öğrendiklerini pekiştirmek için pratik yapmaya devam et.",
+    "practiceObjective": "Bu hedefi pratik et",
+    "otherActivities": "Diğer aktiviteler",
+    "xpToCompleteObjectiveTitle": "Görev Başına XP",
+    "xpToCompleteObjectiveDesc": "Her görevi tamamlamak için gereken XP'yi ayarla",
+    "objectiveCircleComplete": "Görev {index}: tamamlandı",
+    "objectiveCircleUpNext": "Görev {index}: sırada",
     "useActivityImageAsChatBackground": "Etkinlik görselini sohbet arka planı olarak kullan"
 }

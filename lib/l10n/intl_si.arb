@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-09 10:04:39.667389",
+    "@@last_modified": "2026-10-09 11:30:33.292284",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2397,5 +2397,20 @@
     "reportSent": "වාර්තාව යවන ලදි",
     "reportNotSent": "ඔබගේ වාර්තාව යැවිය නොහැකි විය. ඔබගේ සම්බන්ධතාවය පරීක්ෂා කර නැවත උත්සාහ කරන්න.",
     "reportPointerMessage": "{courseName} හි පණිවිඩයක් වාර්තා කරන ලදි — ආරක්ෂාව බලන්න",
+    "learningObjective": "ඉගෙනීමේ අරමුණ",
+    "learningObjectives": "ඉගෙනීමේ අරමුණු",
+    "missionNofM": "මෙහෙයුම {index} / {count}",
+    "xpTowardObjective": "මෙම අරමුණ සඳහා {threshold} XP වලින් {xp} ක්",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{total} දීප්ති වලින් {earned} ක් උපයා ඇත",
+    "sparklesEarnedInLanguage": "{language} භාෂාවෙන් උපයාගත් දීප්ති",
+    "courseComplete": "පාඨමාලාව සම්පූර්ණයි!",
+    "courseCompleteDesc": "ඔබ මෙම පාඨමාලාවේ අරමුණු {count}ම සම්පූර්ණ කර ඇත. ඔබ ඉගෙන ගත් දේ මතක තබා ගැනීමට දිගටම පුහුණු වන්න.",
+    "practiceObjective": "මෙම අරමුණ පුහුණු වන්න",
+    "otherActivities": "වෙනත් ක්‍රියාකාරකම්",
+    "xpToCompleteObjectiveTitle": "මෙහෙයුමකට XP",
+    "xpToCompleteObjectiveDesc": "සෑම මෙහෙයුමක්ම සම්පූර්ණ කිරීමට අවශ්‍ය XP සකසන්න",
+    "objectiveCircleComplete": "මෙහෙයුම {index}: සම්පූර්ණයි",
+    "objectiveCircleUpNext": "මෙහෙයුම {index}: ඊළඟට",
     "useActivityImageAsChatBackground": "ක්‍රියාකාරකම් රූපය චැට් පසුබිම ලෙස භාවිතා කරන්න"
 }

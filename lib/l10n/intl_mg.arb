@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-09 10:04:37.312922",
+    "@@last_modified": "2026-10-09 11:30:27.279049",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2397,5 +2397,20 @@
     "reportSent": "Tatitra nalefa",
     "reportNotSent": "Tsy afaka nalefa ny tatitrao. Hamarino ny fifandraisanao ary andramo indray.",
     "reportPointerMessage": "Nisy hafatra notaterina tao amin'ny {courseName} — jereo ny Fiarovana",
+    "learningObjective": "Tanjona fianarana",
+    "learningObjectives": "Tanjona fianarana",
+    "missionNofM": "Ireo iraka {index} amin'ny {count}",
+    "xpTowardObjective": "{xp} amin'ny {threshold} XP mankany amin'ity tanjona ity",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} amin'ny {total} sparkles azo",
+    "sparklesEarnedInLanguage": "Sparkles azo tamin'ny teny {language}",
+    "courseComplete": "Vita ny taranja!",
+    "courseCompleteDesc": "Vitanao avokoa ny tanjona {count} rehetra amin'ity taranja ity. Tohizo ny fanazaran-tena mba hitazonana izay nianaranao.",
+    "practiceObjective": "Manaova fanazaran-tena amin'ity tanjona ity",
+    "otherActivities": "Hetsika hafa",
+    "xpToCompleteObjectiveTitle": "XP isaky ny iraka",
+    "xpToCompleteObjectiveDesc": "Amboary ny XP ilaina hamitana ny iraka tsirairay",
+    "objectiveCircleComplete": "Ilay tanjona {index}: vita",
+    "objectiveCircleUpNext": "Ilay tanjona {index}: manaraka",
     "useActivityImageAsChatBackground": "Ampiasaina ny sarin'ny asa ho toy ny fiavian'ny chat"
 }

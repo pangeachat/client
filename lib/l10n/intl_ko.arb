@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:36.044020",
+    "@@last_modified": "2026-10-09 11:30:21.845914",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10145,5 +10145,20 @@
     "reportSent": "신고가 전송되었습니다",
     "reportNotSent": "신고를 보낼 수 없습니다. 연결 상태를 확인하고 다시 시도해 주세요.",
     "reportPointerMessage": "{courseName}에서 메시지가 신고되었습니다. 안전을 참조하세요.",
+    "learningObjective": "학습 목표",
+    "learningObjectives": "학습 목표",
+    "missionNofM": "{count}개 중 {index}번째 미션",
+    "xpTowardObjective": "이 목표 달성까지 {threshold} XP 중 {xp} XP",
+    "xpOfThreshold": "{threshold} XP 중 {xp} XP",
+    "sparklesEarnedOfTotal": "{total}개 스파클 중 {earned}개 획득",
+    "sparklesEarnedInLanguage": "{language}에서 획득한 스파클",
+    "courseComplete": "코스 완료!",
+    "courseCompleteDesc": "이 코스의 {count}개 목표를 모두 완료했습니다. 배운 내용을 잊지 않도록 계속 연습하세요.",
+    "practiceObjective": "이 목표 연습하기",
+    "otherActivities": "다른 활동",
+    "xpToCompleteObjectiveTitle": "미션당 XP",
+    "xpToCompleteObjectiveDesc": "각 미션을 완료하는 데 필요한 XP를 설정하세요.",
+    "objectiveCircleComplete": "미션 {index}: 완료",
+    "objectiveCircleUpNext": "미션 {index}: 다음",
     "useActivityImageAsChatBackground": "활동 이미지를 채팅 배경으로 사용"
 }

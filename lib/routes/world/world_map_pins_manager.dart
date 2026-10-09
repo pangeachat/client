@@ -11,7 +11,9 @@ import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
@@ -124,6 +126,11 @@ class WorldMapPinsManager {
 
   Map<String, PinSignals> _signals = {};
   Map<String, int> _userStars = {};
+
+  /// Session XP per activity with the sparkle bonus applied — what resolves
+  /// Mission completion (#9420). [_userStars] stays for the pins' sparkle
+  /// display.
+  Map<String, int> _xpByActivity = {};
 
   // Star-tier inputs, precomputed once per sync (each a single rooms pass) so
   // resolving a pin's display state / star level is an O(roles) lookup rather
@@ -548,9 +555,13 @@ class WorldMapPinsManager {
       extraFacts: _discoveredSessionFacts(client, course),
     );
     final userStars = client.userStarsByActivity;
+    // Mission meters fill with XP (#9420); the shared cache keeps the
+    // learner's XP-by-room current and the next sync picks up a change.
+    MissionXpCache.instance.ensureWired();
 
     _signals = signals;
     _userStars = userStars;
+    _xpByActivity = client.userXpByActivity(MissionXpCache.instance.xpByRoom);
     _ownRoleAwards = client.ownRoleAwardsByActivity;
     _completedRoles = client.completedRolesByActivity;
     _allRoles = client.roleIdsByActivity;
@@ -563,11 +574,16 @@ class WorldMapPinsManager {
   /// course join/leave, and a course re-scope — never per frame.
   void resolveProgression() {
     _progression = _objectiveCache.resolution(
-      _userStars,
+      _xpByActivity,
+      xpByLemma: MissionXpCache.instance.practiceXpByLemma,
       extraOutlines: _scopedCourseOutline == null
           ? const []
           : [_scopedCourseOutline!],
     );
+    // One shared answer (quests.instructions.md): the course panel and the
+    // analytics bar read what the map resolved, and the map resolves first in
+    // a session, so the star count is live before any course page opens.
+    QuestObjectivesLoader.publishProgression(_progression);
   }
 
   /// Rebuild the joined-course outlines (a few quest reads), reading each

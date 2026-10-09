@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-09 10:04:33.817822",
+    "@@last_modified": "2026-10-09 11:30:17.456660",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9952,5 +9952,20 @@
     "reportSent": "Informe enviado",
     "reportNotSent": "Non se puido enviar o teu informe. Comproba a túa conexión e téntao de novo.",
     "reportPointerMessage": "Informouse dunha mensaxe en {courseName} — consulta Seguridade",
+    "learningObjective": "Obxectivo de aprendizaxe",
+    "learningObjectives": "Obxectivos de aprendizaxe",
+    "missionNofM": "Misión {index} de {count}",
+    "xpTowardObjective": "{xp} de {threshold} XP para este obxectivo",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} de {total} brillos gañados",
+    "sparklesEarnedInLanguage": "Brillos gañados en {language}",
+    "courseComplete": "Curso completado!",
+    "courseCompleteDesc": "Completaches os {count} obxectivos deste curso. Continúa practicando para manter o que aprendiches.",
+    "practiceObjective": "Practicar este obxectivo",
+    "otherActivities": "Outras actividades",
+    "xpToCompleteObjectiveTitle": "XP por misión",
+    "xpToCompleteObjectiveDesc": "Define os XP necesarios para completar cada misión",
+    "objectiveCircleComplete": "Misión {index}: completada",
+    "objectiveCircleUpNext": "Misión {index}: seguinte",
     "useActivityImageAsChatBackground": "Usar a imaxe da actividade como fondo do chat"
 }

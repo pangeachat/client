@@ -240,21 +240,29 @@ abstract class WorkspaceNav {
   /// cluster's analytics replaces the whole right column. Practice is a normal
   /// bounded panel, not a route or a fullscreen surface. See
   /// `routing.instructions.md`.
-  static String openPractice(Uri current, ConstructTypeEnum type) =>
-      _mutateBoth(
-        current,
-        (left) => left.where((t) => t.type != PanelTypesEnum.session).toList(),
-        (right) {
-          final next = right.where((t) => !t.type.isAnalyticsPanel).toList();
-          next.insert(
-            0,
-            AnalyticsPracticePanelToken(
-              AnalyticsPracticeTokenParam(constructType: type),
-            ),
-          );
-          return next;
-        },
+  /// [missionId] scopes the session to a Mission's target vocabulary (#9438);
+  /// the scope rides the token so it survives a panel swap and can be linked.
+  static String openPractice(
+    Uri current,
+    ConstructTypeEnum type, {
+    String? missionId,
+  }) => _mutateBoth(
+    current,
+    (left) => left.where((t) => t.type != PanelTypesEnum.session).toList(),
+    (right) {
+      final next = right.where((t) => !t.type.isAnalyticsPanel).toList();
+      next.insert(
+        0,
+        AnalyticsPracticePanelToken(
+          AnalyticsPracticeTokenParam(
+            constructType: type,
+            missionId: missionId,
+          ),
+        ),
       );
+      return next;
+    },
+  );
 
   /// Switch the workspace to course [spaceId]: set the `?c=<id>` scope
   /// filter AND a `course` left panel (at [tab] in its param if given),

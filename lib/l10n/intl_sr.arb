@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:40.376492",
+    "@@last_modified": "2026-10-09 11:30:38.906780",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10901,5 +10901,20 @@
     "reportSent": "Izveštaj poslat",
     "reportNotSent": "Vaš izveštaj nije mogao biti poslat. Proverite vezu i pokušajte ponovo.",
     "reportPointerMessage": "Poruka je prijavljena u {courseName} — pogledajte Bezbednost",
+    "learningObjective": "Cilj učenja",
+    "learningObjectives": "Ciljevi učenja",
+    "missionNofM": "Misija {index} od {count}",
+    "xpTowardObjective": "{xp} od {threshold} XP-a za ovaj cilj",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} od {total} iskrica zarađeno",
+    "sparklesEarnedInLanguage": "Iskrice zarađene na {language} jeziku",
+    "courseComplete": "Kurs završen!",
+    "courseCompleteDesc": "Završili ste svih {count} ciljeva u ovom kursu. Nastavite da vežbate kako biste zadržali ono što ste naučili.",
+    "practiceObjective": "Vežbajte ovaj cilj",
+    "otherActivities": "Ostale aktivnosti",
+    "xpToCompleteObjectiveTitle": "XP po misiji",
+    "xpToCompleteObjectiveDesc": "Podesite XP potreban za završetak svake misije",
+    "objectiveCircleComplete": "Misija {index}: završena",
+    "objectiveCircleUpNext": "Misija {index}: sledeća",
     "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu ćaskanja"
 }

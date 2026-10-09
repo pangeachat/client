@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:39.663114",
+    "@@last_modified": "2026-10-09 11:30:31.439114",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9952,5 +9952,20 @@
     "reportSent": "Rapport verzonden",
     "reportNotSent": "Je rapport kon niet worden verzonden. Controleer je verbinding en probeer het opnieuw.",
     "reportPointerMessage": "Er is een bericht gerapporteerd in {courseName} — zie Veiligheid",
+    "learningObjective": "Leerdoel",
+    "learningObjectives": "Leerdoelen",
+    "missionNofM": "Missie {index} van {count}",
+    "xpTowardObjective": "{xp} van {threshold} XP voor dit doel",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} van {total} sparkles verdiend",
+    "sparklesEarnedInLanguage": "Sparkles verdiend in {language}",
+    "courseComplete": "Cursus voltooid!",
+    "courseCompleteDesc": "Je hebt alle {count} doelen in deze cursus voltooid. Blijf oefenen om te onthouden wat je hebt geleerd.",
+    "practiceObjective": "Oefen dit doel",
+    "otherActivities": "Andere activiteiten",
+    "xpToCompleteObjectiveTitle": "XP per missie",
+    "xpToCompleteObjectiveDesc": "Stel de benodigde XP in om elke missie te voltooien",
+    "objectiveCircleComplete": "Missie {index}: voltooid",
+    "objectiveCircleUpNext": "Missie {index}: hierna",
     "useActivityImageAsChatBackground": "Gebruik activiteitsafbeelding als chatachtergrond"
 }

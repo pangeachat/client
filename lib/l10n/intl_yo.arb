@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-09 10:04:42.223970",
+    "@@last_modified": "2026-10-09 11:30:41.578037",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2397,5 +2397,20 @@
     "reportSent": "Ìròyìn ti fi ránṣẹ́",
     "reportNotSent": "Kò ṣeé fi ìròyìn rẹ ránṣẹ́. Ṣàyẹ̀wò àsopọ̀ rẹ, kí o sì tún gbìyànjú.",
     "reportPointerMessage": "A ti fi ìròyìn ránṣẹ́ nípa ìfọ̀rọ̀wéránṣẹ́ kan nínú {courseName} — wo Ààbò",
+    "learningObjective": "Èrò Ẹkọ",
+    "learningObjectives": "Àwọn Èrò Ẹkọ",
+    "missionNofM": "Iṣẹ́ {index} nínú {count}",
+    "xpTowardObjective": "{xp} nínú {threshold} XP sí èrò yìí",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} nínú {total} àwọn ìmọ́lẹ̀ tí ó gbà",
+    "sparklesEarnedInLanguage": "Àwọn ìmọ́lẹ̀ tí ó gbà ní èdè {language}",
+    "courseComplete": "Ẹkọ parí!",
+    "courseCompleteDesc": "O ti parí gbogbo àwọn èrò {count} nínú ẹ̀kọ́ yìí. Máa bá a lọ láti máa ṣe ìdánilẹ́kọ̀ọ́ láti di ohun tí o ti kọ́ mú.",
+    "practiceObjective": "Ṣe ìdánilẹ́kọ̀ọ́ èrò yìí",
+    "otherActivities": "Àwọn iṣẹ́ mìíràn",
+    "xpToCompleteObjectiveTitle": "XP fún Iṣẹ́ kọ̀ọ̀kan",
+    "xpToCompleteObjectiveDesc": "Ṣeto XP tí ó yẹ láti parí iṣẹ́ kọ̀ọ̀kan",
+    "objectiveCircleComplete": "Iṣẹ́ {index}: pari",
+    "objectiveCircleUpNext": "Iṣẹ́ {index}: tó nbọ̀",
     "useActivityImageAsChatBackground": "Lo aworan iṣẹ bi abẹlẹ iwiregbe"
 }

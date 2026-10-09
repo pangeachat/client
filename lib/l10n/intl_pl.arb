@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-09 10:04:38.972151",
+    "@@last_modified": "2026-10-09 11:30:30.401378",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10037,5 +10037,20 @@
     "reportSent": "Zgłoszenie wysłane",
     "reportNotSent": "Twoje zgłoszenie nie mogło zostać wysłane. Sprawdź połączenie i spróbuj ponownie.",
     "reportPointerMessage": "Wiadomość została zgłoszona w {courseName} — zobacz Bezpieczeństwo",
+    "learningObjective": "Cel nauki",
+    "learningObjectives": "Cele nauki",
+    "missionNofM": "Misja {index} z {count}",
+    "xpTowardObjective": "{xp} z {threshold} PD do tego celu",
+    "xpOfThreshold": "{xp} / {threshold} PD",
+    "sparklesEarnedOfTotal": "{earned} z {total} iskierek zdobytych",
+    "sparklesEarnedInLanguage": "Iskierki zdobyte w języku {language}",
+    "courseComplete": "Kurs ukończony!",
+    "courseCompleteDesc": "Ukończyłeś wszystkie {count} cele w tym kursie. Kontynuuj ćwiczenia, aby utrwalić to, czego się nauczyłeś.",
+    "practiceObjective": "Ćwicz ten cel",
+    "otherActivities": "Inne aktywności",
+    "xpToCompleteObjectiveTitle": "PD za misję",
+    "xpToCompleteObjectiveDesc": "Ustaw liczbę PD potrzebnych do ukończenia każdej misji",
+    "objectiveCircleComplete": "Misja {index}: ukończona",
+    "objectiveCircleUpNext": "Misja {index}: następna",
     "useActivityImageAsChatBackground": "Użyj obrazu aktywności jako tła czatu"
 }

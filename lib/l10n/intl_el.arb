@@ -3397,7 +3397,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-09 10:04:33.374782",
+    "@@last_modified": "2026-10-09 11:30:11.041429",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10827,5 +10827,20 @@
     "reportSent": "Η αναφορά στάλθηκε",
     "reportNotSent": "Η αναφορά σας δεν μπόρεσε να σταλεί. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
     "reportPointerMessage": "Αναφέρθηκε ένα μήνυμα στο {courseName} — δείτε την ενότητα Ασφάλεια",
+    "learningObjective": "Μαθησιακός Στόχος",
+    "learningObjectives": "Μαθησιακοί Στόχοι",
+    "missionNofM": "Αποστολή {index} από {count}",
+    "xpTowardObjective": "{xp} από {threshold} XP για αυτόν τον στόχο",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} από {total} λάμψεις κερδήθηκαν",
+    "sparklesEarnedInLanguage": "Λάμψεις που κερδήθηκαν στα {language}",
+    "courseComplete": "Το μάθημα ολοκληρώθηκε!",
+    "courseCompleteDesc": "Έχεις ολοκληρώσει και τους {count} στόχους σε αυτό το μάθημα. Συνέχισε να εξασκείσαι για να διατηρήσεις όσα έμαθες.",
+    "practiceObjective": "Εξάσκησε αυτόν τον στόχο",
+    "otherActivities": "Άλλες δραστηριότητες",
+    "xpToCompleteObjectiveTitle": "XP ανά Αποστολή",
+    "xpToCompleteObjectiveDesc": "Όρισε τα XP που απαιτούνται για την ολοκλήρωση κάθε αποστολής",
+    "objectiveCircleComplete": "Αποστολή {index}: ολοκληρώθηκε",
+    "objectiveCircleUpNext": "Αποστολή {index}: επόμενη",
     "useActivityImageAsChatBackground": "Χρήση εικόνας δραστηριότητας ως φόντο συνομιλίας"
 }

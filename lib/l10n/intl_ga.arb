@@ -3560,7 +3560,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-09 10:04:33.830407",
+    "@@last_modified": "2026-10-09 11:30:13.155596",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9963,5 +9963,20 @@
     "reportSent": "Tugadh tuairisc",
     "reportNotSent": "Níorbh fhéidir do thuairisc a sheoladh. Seiceáil do nasc agus bain triail eile as.",
     "reportPointerMessage": "Tugadh tuairisc ar theachtaireacht i {courseName} — féach Sábháilteacht",
+    "learningObjective": "Cuspóir Foghlama",
+    "learningObjectives": "Cuspóirí Foghlama",
+    "missionNofM": "Misean {index} de {count}",
+    "xpTowardObjective": "{xp} de {threshold} XP i dtreo an chuspóra seo",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} de {total} spréacha tuillte",
+    "sparklesEarnedInLanguage": "Spréacha tuillte i {language}",
+    "courseComplete": "Cúrsa críochnaithe!",
+    "courseCompleteDesc": "Tá gach ceann de na {count} cuspóir sa chúrsa seo críochnaithe agat. Lean ort ag cleachtadh chun an méid atá foghlamtha agat a choinneáil.",
+    "practiceObjective": "Cleachtaigh an cuspóir seo",
+    "otherActivities": "Gníomhaíochtaí eile",
+    "xpToCompleteObjectiveTitle": "XP in aghaidh an Mhisean",
+    "xpToCompleteObjectiveDesc": "Socraigh an XP atá ag teastáil chun gach misean a chríochnú",
+    "objectiveCircleComplete": "Misean {index}: críochnaithe",
+    "objectiveCircleUpNext": "Misean {index}: an chéad cheann eile",
     "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá"
 }

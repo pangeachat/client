@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-09 10:04:36.707453",
+    "@@last_modified": "2026-10-09 11:30:24.276015",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2397,5 +2397,20 @@
     "reportSent": "ລາຍງານຖືກສົ່ງແລ້ວ",
     "reportNotSent": "ບໍ່ສາມາດສົ່ງລາຍງານຂອງທ່ານໄດ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ ແລະລອງໃໝ່ອີກຄັ້ງ.",
     "reportPointerMessage": "ມີຂໍ້ຄວາມຖືກລາຍງານໃນ {courseName} — ເບິ່ງຄວາມປອດໄພ",
+    "learningObjective": "ເປົ້າໝາຍການຮຽນຮູ້",
+    "learningObjectives": "ເປົ້າໝາຍການຮຽນຮູ້",
+    "missionNofM": "ພາລະກິດທີ {index} ຈາກ {count}",
+    "xpTowardObjective": "{xp} ຈາກ {threshold} XP ສໍາລັບເປົ້າໝາຍນີ້",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} ຈາກ {total} ດາວທີ່ໄດ້ຮັບ",
+    "sparklesEarnedInLanguage": "ດາວທີ່ໄດ້ຮັບໃນ {language}",
+    "courseComplete": "ຮຽນຈົບຫຼັກສູດແລ້ວ!",
+    "courseCompleteDesc": "ທ່ານໄດ້ສຳເລັດທັງໝົດ {count} ເປົ້າໝາຍໃນຫຼັກສູດນີ້ແລ້ວ. ສືບຕໍ່ຝຶກຝົນເພື່ອຮັກສາສິ່ງທີ່ທ່ານໄດ້ຮຽນຮູ້.",
+    "practiceObjective": "ຝຶກຝົນເປົ້າໝາຍນີ້",
+    "otherActivities": "ກິດຈະກຳອື່ນໆ",
+    "xpToCompleteObjectiveTitle": "XP ຕໍ່ພາລະກິດ",
+    "xpToCompleteObjectiveDesc": "ກຳນົດ XP ທີ່ຕ້ອງການເພື່ອສຳເລັດແຕ່ລະພາລະກິດ",
+    "objectiveCircleComplete": "ພາລະກິດ {index}: ສຳເລັດ",
+    "objectiveCircleUpNext": "ພາລະກິດ {index}: ຕໍ່ໄປ",
     "useActivityImageAsChatBackground": "ໃຊ້ຮູບພາບກິດຈະກຳເປັນພື້ນຫຼັງການສົນທະນາ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-09 10:04:36.698429",
+    "@@last_modified": "2026-10-09 11:30:29.499386",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2397,5 +2397,20 @@
     "reportSent": "Кабар жөнөтүлдү",
     "reportNotSent": "Кабарыңыз жөнөтүлгөн жок. Байланышыңызды текшерип, кайра аракет кылыңыз.",
     "reportPointerMessage": "{courseName} курсунда билдирүү жөнөтүлдү — Коопсуздукту караңыз",
+    "learningObjective": "Окуу максаты",
+    "learningObjectives": "Окуу максаттары",
+    "missionNofM": "{count} ичинен {index}-миссия",
+    "xpTowardObjective": "Бул максатка жетүү үчүн {threshold} XP ичинен {xp} XP",
+    "xpOfThreshold": "{threshold} XP ичинен {xp} XP",
+    "sparklesEarnedOfTotal": "{total} жылтырактын ичинен {earned} табылды",
+    "sparklesEarnedInLanguage": "{language} тилинде табылган жылтырактар",
+    "courseComplete": "Курс аяктады!",
+    "courseCompleteDesc": "Бул курстагы бардык {count} максатты аяктадыңыз. Үйрөнгөнүңүздү унутпаш үчүн машыгууну улантыңыз.",
+    "practiceObjective": "Бул максатты машыгуу",
+    "otherActivities": "Башка иш-чаралар",
+    "xpToCompleteObjectiveTitle": "Ар бир миссия үчүн XP",
+    "xpToCompleteObjectiveDesc": "Ар бир миссияны аяктоо үчүн керектүү XPди коюңуз",
+    "objectiveCircleComplete": "Миссия {index}: аяктады",
+    "objectiveCircleUpNext": "Миссия {index}: кийинки",
     "useActivityImageAsChatBackground": "Чаттын фону катары ишмердүүлүк сүрөтүн колдонуу"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-09 10:04:38.945286",
+    "@@last_modified": "2026-10-09 11:30:31.477272",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2397,5 +2397,20 @@
     "reportSent": "راپور ولېږل شو",
     "reportNotSent": "ستاسو راپور نشو لېږل کېدای. خپله اړیکه وګورئ او بیا هڅه وکړئ.",
     "reportPointerMessage": "په {courseName} کې یو پیغام راپور شوی — خوندیتوب وګورئ",
+    "learningObjective": "د زده کړې موخه",
+    "learningObjectives": "د زده کړې موخې",
+    "missionNofM": "د {count} څخه {index} ماموریت",
+    "xpTowardObjective": "د دې موخې لپاره {threshold} XP څخه {xp} XP",
+    "xpOfThreshold": "{threshold} XP / {xp}",
+    "sparklesEarnedOfTotal": "د {total} چمکونو څخه {earned} ترلاسه شوي",
+    "sparklesEarnedInLanguage": "په {language} کې ترلاسه شوي چمکونه",
+    "courseComplete": "کورس بشپړ شو!",
+    "courseCompleteDesc": "تاسو په دې کورس کې ټولې {count} موخې بشپړې کړې. د هغه څه ساتلو لپاره تمرین ته دوام ورکړئ چې تاسو زده کړي دي.",
+    "practiceObjective": "دې موخې تمرین کړئ",
+    "otherActivities": "نور فعالیتونه",
+    "xpToCompleteObjectiveTitle": "په هر ماموریت کې XP",
+    "xpToCompleteObjectiveDesc": "د هر ماموریت بشپړولو لپاره اړین XP وټاکئ",
+    "objectiveCircleComplete": "ماموریت {index}: بشپړ شو",
+    "objectiveCircleUpNext": "ماموریت {index}: بل",
     "useActivityImageAsChatBackground": "د فعالیت انځور د چیټ شالید په توګه وکاروئ"
 }

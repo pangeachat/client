@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-09 10:04:59.020986",
+    "@@last_modified": "2026-10-09 11:30:13.444975",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2397,5 +2397,20 @@
     "reportSent": "રિપોર્ટ મોકલી દેવાયો છે",
     "reportNotSent": "તમારો રિપોર્ટ મોકલી શકાયો નથી. તમારું કનેક્શન તપાસો અને ફરી પ્રયાસ કરો.",
     "reportPointerMessage": "{courseName}માં એક મેસેજની જાણ કરવામાં આવી હતી — સુરક્ષા જુઓ",
+    "learningObjective": "શીખવાનો ઉદ્દેશ્ય",
+    "learningObjectives": "શીખવાના ઉદ્દેશ્યો",
+    "missionNofM": "મિશન {index} માંથી {count}",
+    "xpTowardObjective": "આ ઉદ્દેશ્ય માટે {threshold} XP માંથી {xp}",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{total} સ્પાર્કલ્સમાંથી {earned} કમાયા",
+    "sparklesEarnedInLanguage": "{language} માં કમાયેલા સ્પાર્કલ્સ",
+    "courseComplete": "કોર્સ પૂર્ણ!",
+    "courseCompleteDesc": "તમે આ કોર્સમાં બધા {count} ઉદ્દેશ્યો પૂર્ણ કર્યા છે. તમે જે શીખ્યા છો તેને જાળવી રાખવા માટે પ્રેક્ટિસ કરતા રહો.",
+    "practiceObjective": "આ ઉદ્દેશ્યનો અભ્યાસ કરો",
+    "otherActivities": "અન્ય પ્રવૃત્તિઓ",
+    "xpToCompleteObjectiveTitle": "પ્રતિ મિશન XP",
+    "xpToCompleteObjectiveDesc": "દરેક મિશન પૂર્ણ કરવા માટે જરૂરી XP સેટ કરો",
+    "objectiveCircleComplete": "મિશન {index}: પૂર્ણ",
+    "objectiveCircleUpNext": "મિશન {index}: આગળ",
     "useActivityImageAsChatBackground": "ચેટ બેકગ્રાઉન્ડ તરીકે પ્રવૃત્તિની છબીનો ઉપયોગ કરો"
 }

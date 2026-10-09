@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-09 10:04:36.692320",
+    "@@last_modified": "2026-10-09 11:30:32.470574",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2397,5 +2397,20 @@
     "reportSent": "Rapport geschéckt",
     "reportNotSent": "Äre Rapport konnt net geschéckt ginn. Kuckt Är Verbindung a probéiert et nach eng Kéier.",
     "reportPointerMessage": "Eng Noriicht gouf am Cours {courseName} gemellt — kuckt Sécherheet",
+    "learningObjective": "Léierzil",
+    "learningObjectives": "Léierziler",
+    "missionNofM": "Missioun {index} vun {count}",
+    "xpTowardObjective": "{xp} vun {threshold} XP fir dëst Zil",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} vun {total} Sparkles verdéngt",
+    "sparklesEarnedInLanguage": "Sparkles verdéngt an {language}",
+    "courseComplete": "Cours ofgeschloss!",
+    "courseCompleteDesc": "Du hues all {count} Ziler an dësem Cours ofgeschloss. Maach weider mat üben, fir dat ze behalen, wat s du geléiert hues.",
+    "practiceObjective": "Dëst Zil üben",
+    "otherActivities": "Aner Aktivitéiten",
+    "xpToCompleteObjectiveTitle": "XP pro Missioun",
+    "xpToCompleteObjectiveDesc": "Setzt d'XP, déi néideg sinn, fir all Missioun ofzeschléissen",
+    "objectiveCircleComplete": "Missioun {index}: ofgeschloss",
+    "objectiveCircleUpNext": "Missioun {index}: als nächst",
     "useActivityImageAsChatBackground": "Aktivitéitsbild als Chat-Hannergrond benotzen"
 }

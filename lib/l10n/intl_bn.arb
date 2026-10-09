@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:31.779565",
+    "@@last_modified": "2026-10-09 11:30:09.922045",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10580,5 +10580,20 @@
     "reportSent": "রিপোর্ট পাঠানো হয়েছে",
     "reportNotSent": "আপনার রিপোর্ট পাঠানো যায়নি। আপনার সংযোগ পরীক্ষা করুন এবং আবার চেষ্টা করুন।",
     "reportPointerMessage": "{courseName}-এ একটি মেসেজ রিপোর্ট করা হয়েছে — সেফটি দেখুন",
+    "learningObjective": "শেখার উদ্দেশ্য",
+    "learningObjectives": "শেখার উদ্দেশ্যগুলি",
+    "missionNofM": "{count}টির মধ্যে {index} নম্বর মিশন",
+    "xpTowardObjective": "এই উদ্দেশ্যের জন্য {threshold} XP-এর মধ্যে {xp} XP",
+    "xpOfThreshold": "{threshold} XP-এর মধ্যে {xp} XP",
+    "sparklesEarnedOfTotal": "{total}টি স্পার্কলের মধ্যে {earned}টি অর্জিত হয়েছে",
+    "sparklesEarnedInLanguage": "{language}-এ অর্জিত স্পার্কল",
+    "courseComplete": "কোর্স সম্পূর্ণ!",
+    "courseCompleteDesc": "আপনি এই কোর্সের সব {count}টি উদ্দেশ্য সম্পন্ন করেছেন। যা শিখেছেন, তা ধরে রাখতে অনুশীলন চালিয়ে যান।",
+    "practiceObjective": "এই উদ্দেশ্যটি অনুশীলন করুন",
+    "otherActivities": "অন্যান্য কার্যকলাপ",
+    "xpToCompleteObjectiveTitle": "প্রতি মিশনে XP",
+    "xpToCompleteObjectiveDesc": "প্রতিটি মিশন সম্পূর্ণ করতে প্রয়োজনীয় XP সেট করুন",
+    "objectiveCircleComplete": "মিশন {index}: সম্পূর্ণ",
+    "objectiveCircleUpNext": "মিশন {index}: এরপর",
     "useActivityImageAsChatBackground": "চ্যাট ব্যাকগ্রাউন্ড হিসেবে অ্যাক্টিভিটি ইমেজ ব্যবহার করুন"
 }

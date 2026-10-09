@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-09 10:05:18.679406",
+    "@@last_modified": "2026-10-09 11:30:12.636500",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10307,5 +10307,20 @@
     "reportSent": "Signalement envoyé",
     "reportNotSent": "Votre signalement n'a pas pu être envoyé. Vérifiez votre connexion et réessayez.",
     "reportPointerMessage": "Un message a été signalé dans {courseName} — voir Sécurité",
+    "learningObjective": "Objectif d'apprentissage",
+    "learningObjectives": "Objectifs d'apprentissage",
+    "missionNofM": "Mission {index} sur {count}",
+    "xpTowardObjective": "{xp} sur {threshold} XP pour cet objectif",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} étincelles gagnées sur {total}",
+    "sparklesEarnedInLanguage": "Étincelles gagnées en {language}",
+    "courseComplete": "Cours terminé !",
+    "courseCompleteDesc": "Vous avez terminé les {count} objectifs de ce cours. Continuez à pratiquer pour ne pas oublier ce que vous avez appris.",
+    "practiceObjective": "Pratiquer cet objectif",
+    "otherActivities": "Autres activités",
+    "xpToCompleteObjectiveTitle": "XP par mission",
+    "xpToCompleteObjectiveDesc": "Définir l'XP nécessaire pour terminer chaque mission",
+    "objectiveCircleComplete": "Mission {index} : terminée",
+    "objectiveCircleUpNext": "Mission {index} : à suivre",
     "useActivityImageAsChatBackground": "Utiliser l'image de l'activité comme arrière-plan de discussion"
 }

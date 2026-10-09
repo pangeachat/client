@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-09 10:04:38.115800",
+    "@@last_modified": "2026-10-09 11:30:28.304041",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2397,5 +2397,20 @@
     "reportSent": "Rapport mibgħut",
     "reportNotSent": "Ir-rapport tiegħek ma setax jintbagħat. Iċċekkja l-konnessjoni tiegħek u erġa' pprova.",
     "reportPointerMessage": "Messaġġ ġie rrapportat f'{courseName}' — ara s-Sigurtà",
+    "learningObjective": "Għan tat-Tagħlim",
+    "learningObjectives": "Għanijiet tat-Tagħlim",
+    "missionNofM": "Missjoni {index} minn {count}",
+    "xpTowardObjective": "{xp} minn {threshold} XP lejn dan l-għan",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} minn {total} sparkles miksuba",
+    "sparklesEarnedInLanguage": "Sparkles miksuba bil-{language}",
+    "courseComplete": "Kors komplut!",
+    "courseCompleteDesc": "Lestejt l-{count} għanijiet kollha f'dan il-kors. Kompli pprattika biex iżżomm dak li tgħallimt.",
+    "practiceObjective": "Ipprattika dan l-għan",
+    "otherActivities": "Attivitajiet oħra",
+    "xpToCompleteObjectiveTitle": "XP għal kull Missjoni",
+    "xpToCompleteObjectiveDesc": "Issettja l-XP meħtieġa biex titlesta kull missjoni",
+    "objectiveCircleComplete": "Missjoni {index}: kompluta",
+    "objectiveCircleUpNext": "Missjoni {index}: li jmiss",
     "useActivityImageAsChatBackground": "Uża l-immaġni tal-attività bħala sfond taċ-chat"
 }

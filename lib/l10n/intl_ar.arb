@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-09 10:04:32.176617",
+    "@@last_modified": "2026-10-09 11:30:12.412204",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10258,5 +10258,20 @@
     "reportSent": "تم إرسال البلاغ",
     "reportNotSent": "تعذر إرسال بلاغك. تحقق من اتصالك وحاول مرة أخرى.",
     "reportPointerMessage": "تم الإبلاغ عن رسالة في {courseName} — راجع الأمان",
+    "learningObjective": "هدف التعلم",
+    "learningObjectives": "أهداف التعلم",
+    "missionNofM": "المهمة {index} من {count}",
+    "xpTowardObjective": "{xp} من {threshold} نقطة خبرة نحو هذا الهدف",
+    "xpOfThreshold": "{xp} / {threshold} نقطة خبرة",
+    "sparklesEarnedOfTotal": "{earned} من أصل {total} بريق مكتسب",
+    "sparklesEarnedInLanguage": "البريق المكتسب في {language}",
+    "courseComplete": "اكتملت الدورة!",
+    "courseCompleteDesc": "لقد أكملت جميع الأهداف الـ {count} في هذه الدورة. استمر في التدريب للحفاظ على ما تعلمته.",
+    "practiceObjective": "تدرب على هذا الهدف",
+    "otherActivities": "أنشطة أخرى",
+    "xpToCompleteObjectiveTitle": "نقاط الخبرة لكل مهمة",
+    "xpToCompleteObjectiveDesc": "حدد نقاط الخبرة اللازمة لإكمال كل مهمة",
+    "objectiveCircleComplete": "المهمة {index}: اكتملت",
+    "objectiveCircleUpNext": "المهمة {index}: التالية",
     "useActivityImageAsChatBackground": "استخدام صورة النشاط كخلفية للدردشة"
 }

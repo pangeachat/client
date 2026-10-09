@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-09 10:04:36.060917",
+    "@@last_modified": "2026-10-09 11:30:24.586898",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2397,5 +2397,20 @@
     "reportSent": "Dɛn dɔn sɛn di ripot",
     "reportNotSent": "Yu ripot nɔ go dɔn sɛn. Chɛk yu kɔnɛkshɔn ɛn tray igen.",
     "reportPointerMessage": "Dɛn ripot wan mɛsej insay {courseName} — si Sefti",
+    "learningObjective": "Wetín yu want fɔ lan",
+    "learningObjectives": "Wetín yu want fɔ lan dɛn",
+    "missionNofM": "Mishɔn {index} pan {count}",
+    "xpTowardObjective": "{xp} pan {threshold} XP fɔ dis wetín yu want fɔ lan",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} pan {total} shain dɛn dɔn gɛt",
+    "sparklesEarnedInLanguage": "Shain dɛn we dɔn gɛt insay {language}",
+    "courseComplete": "Di kos dɔn!",
+    "courseCompleteDesc": "Yu dɔn finish ɔl di {count} wetín yu want fɔ lan dɛn insay dis kos. Kɔntinyu fɔ praktis fɔ ɛp yu fɔ mɛmba wetín yu dɔn lan.",
+    "practiceObjective": "Praktis dis wetín yu want fɔ lan",
+    "otherActivities": "Ɔda tin dɛn we yu go du",
+    "xpToCompleteObjectiveTitle": "XP fɔ ɛni Mishɔn",
+    "xpToCompleteObjectiveDesc": "Sɛt di XP we nid fɔ finish ɛni mishɔn",
+    "objectiveCircleComplete": "Mishɔn {index}: dɔn",
+    "objectiveCircleUpNext": "Mishɔn {index}: de kam",
     "useActivityImageAsChatBackground": "Yuz aktiviti pikcho as chat bakgron"
 }

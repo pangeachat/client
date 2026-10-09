@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:40.736559",
+    "@@last_modified": "2026-10-09 11:30:36.366780",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10470,5 +10470,20 @@
     "reportSent": "Rapport skickad",
     "reportNotSent": "Din rapport kunde inte skickas. Kontrollera din anslutning och försök igen.",
     "reportPointerMessage": "Ett meddelande rapporterades i {courseName} – se Säkerhet",
+    "learningObjective": "Lärandemål",
+    "learningObjectives": "Lärandemål",
+    "missionNofM": "Uppdrag {index} av {count}",
+    "xpTowardObjective": "{xp} av {threshold} XP för detta mål",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{earned} av {total} gnistor intjänade",
+    "sparklesEarnedInLanguage": "Gnistor intjänade i {language}",
+    "courseComplete": "Kursen är klar!",
+    "courseCompleteDesc": "Du har slutfört alla {count} mål i den här kursen. Fortsätt öva för att behålla det du har lärt dig.",
+    "practiceObjective": "Öva på detta mål",
+    "otherActivities": "Andra aktiviteter",
+    "xpToCompleteObjectiveTitle": "XP per uppdrag",
+    "xpToCompleteObjectiveDesc": "Ange den XP som behövs för att slutföra varje uppdrag",
+    "objectiveCircleComplete": "Uppdrag {index}: slutfört",
+    "objectiveCircleUpNext": "Uppdrag {index}: nästa",
     "useActivityImageAsChatBackground": "Använd aktivitetsbild som chattbakgrund"
 }

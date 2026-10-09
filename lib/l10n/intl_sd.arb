@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-09 10:04:39.883961",
+    "@@last_modified": "2026-10-09 11:30:40.683319",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2397,5 +2397,20 @@
     "reportSent": "رپورٽ موڪلي وئي",
     "reportNotSent": "توهان جي رپورٽ موڪلي نه سگهجي. پنهنجو ڪنيڪشن چيڪ ڪريو ۽ ٻيهر ڪوشش ڪريو.",
     "reportPointerMessage": "{courseName} ۾ هڪ پيغام جي رپورٽ ڪئي وئي آهي — حفاظت ڏسو",
+    "learningObjective": "سکڻ جو مقصد",
+    "learningObjectives": "سکڻ جا مقصد",
+    "missionNofM": "مشن {index} مان {count}",
+    "xpTowardObjective": "هن مقصد لاءِ {threshold} XP مان {xp}",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "sparklesEarnedOfTotal": "{total} چمڪن مان {earned} حاصل ڪيون ويون",
+    "sparklesEarnedInLanguage": "{language} ۾ حاصل ڪيل چمڪون",
+    "courseComplete": "ڪورس مڪمل!",
+    "courseCompleteDesc": "توهان هن ڪورس ۾ سڀ {count} مقصد مڪمل ڪري ورتا آهن. جيڪو ڪجهه توهان سکيو آهي ان کي برقرار رکڻ لاءِ مشق ڪندا رهو.",
+    "practiceObjective": "هن مقصد جي مشق ڪريو",
+    "otherActivities": "ٻيون سرگرميون",
+    "xpToCompleteObjectiveTitle": "في مشن XP",
+    "xpToCompleteObjectiveDesc": "هر مشن کي مڪمل ڪرڻ لاءِ گهربل XP مقرر ڪريو",
+    "objectiveCircleComplete": "مشن {index}: مڪمل",
+    "objectiveCircleUpNext": "مشن {index}: اڳيان",
     "useActivityImageAsChatBackground": "سرگرمي جي تصوير کي چيٽ جي پس منظر طور استعمال ڪريو"
 }

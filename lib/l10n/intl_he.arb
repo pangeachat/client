@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:34.302965",
+    "@@last_modified": "2026-10-09 11:30:14.405475",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10866,5 +10866,20 @@
     "reportSent": "הדיווח נשלח",
     "reportNotSent": "הדיווח שלך לא נשלח. בדוק את החיבור שלך ונסה שוב.",
     "reportPointerMessage": "הודעה דווחה ב{courseName} — ראה בטיחות",
+    "learningObjective": "מטרת למידה",
+    "learningObjectives": "מטרות למידה",
+    "missionNofM": "משימה {index} מתוך {count}",
+    "xpTowardObjective": "{xp} מתוך {threshold} נקודות ניסיון למטרה זו",
+    "xpOfThreshold": "{xp} / {threshold} נקודות ניסיון",
+    "sparklesEarnedOfTotal": "{earned} מתוך {total} ניצוצות נצברו",
+    "sparklesEarnedInLanguage": "ניצוצות שנצברו ב{language}",
+    "courseComplete": "הקורס הושלם!",
+    "courseCompleteDesc": "השלמת את כל {count} המטרות בקורס זה. המשך לתרגל כדי לשמר את מה שלמדת.",
+    "practiceObjective": "תרגל מטרה זו",
+    "otherActivities": "פעילויות אחרות",
+    "xpToCompleteObjectiveTitle": "נקודות ניסיון למשימה",
+    "xpToCompleteObjectiveDesc": "קבע את נקודות הניסיון הדרושות להשלמת כל משימה",
+    "objectiveCircleComplete": "משימה {index}: הושלמה",
+    "objectiveCircleUpNext": "משימה {index}: הבאה בתור",
     "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט"
 }
