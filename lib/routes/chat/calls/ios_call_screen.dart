@@ -63,6 +63,11 @@ class CallScreenEnd {
 class IosCallScreen {
   IosCallScreen._();
 
+  /// For tests, which stand in for the call screen with a subclass and feed
+  /// it events through [receive].
+  @visibleForTesting
+  IosCallScreen.forTesting();
+
   static final instance = IosCallScreen._();
 
   static const _channel = MethodChannel('chat.pangea/call_screen');
@@ -98,6 +103,10 @@ class IosCallScreen {
     _channel.setMethodCallHandler(_onCall);
     voipToken.value = await _channel.invokeMethod<String>('listen');
   }
+
+  /// An event from the call screen, as the platform delivers it.
+  @visibleForTesting
+  Future<void> receive(MethodCall call) => _onCall(call);
 
   Future<void> _onCall(MethodCall call) async {
     final args = call.arguments is Map

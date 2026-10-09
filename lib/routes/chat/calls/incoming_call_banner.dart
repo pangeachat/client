@@ -41,9 +41,14 @@ class IncomingCallBanner extends StatefulWidget {
   /// Tests hand in a player with a fake sound; the app builds the real one.
   final RingPlayer? ringPlayerOverride;
 
+  /// Tests hand in a stand-in for the iOS call screen, which is then heard on
+  /// any platform; the app uses the real one, on iOS only.
+  final IosCallScreen? callScreenOverride;
+
   const IncomingCallBanner({
     required this.child,
     this.ringPlayerOverride,
+    this.callScreenOverride,
     super.key,
   });
 
@@ -187,12 +192,12 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
     _endCallScreen(uuid, CallScreenEndReason.remoteEnded);
   }
 
+  IosCallScreen get _callScreen =>
+      widget.callScreenOverride ?? IosCallScreen.instance;
+
   void _endCallScreen(String uuid, CallScreenEndReason reason) {
     unawaited(
-      IosCallScreen.instance.end(uuid, reason).catchError((
-        Object e,
-        StackTrace s,
-      ) {
+      _callScreen.end(uuid, reason).catchError((Object e, StackTrace s) {
         matrix.Logs().w('Could not end the call on the call screen', e, s);
       }),
     );
@@ -207,9 +212,10 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
   bool _hearingCallScreen = false;
 
   void _listenToCallScreen() {
-    if (_hearingCallScreen || !PlatformInfos.isIOS) return;
+    if (_hearingCallScreen) return;
+    if (widget.callScreenOverride == null && !PlatformInfos.isIOS) return;
     _hearingCallScreen = true;
-    final screen = IosCallScreen.instance;
+    final screen = _callScreen;
     _callScreenSubs
       ..add(screen.rings.listen((ring) => unawaited(_onCallScreenRing(ring))))
       ..add(screen.answers.listen(_onCallScreenAnswer))
@@ -243,11 +249,12 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
     }
     _onCallScreen[screenRing.eventId] = screenRing.uuid;
     unawaited(
-      IosCallScreen.instance.setVideo(screenRing.uuid, ring.isVideo).catchError(
-        (Object e, StackTrace s) {
-          matrix.Logs().w('Could not mark the call screen as video', e, s);
-        },
-      ),
+      _callScreen.setVideo(screenRing.uuid, ring.isVideo).catchError((
+        Object e,
+        StackTrace s,
+      ) {
+        matrix.Logs().w('Could not mark the call screen as video', e, s);
+      }),
     );
     // The checks the live ring stream and the missed-ring scan make before a
     // ring reaches [_offer]: still live, a call, a direct chat, and a caller
