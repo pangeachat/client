@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-09 10:04:34.808638",
+    "@@last_modified": "2026-10-09 14:33:13.506112",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10055,5 +10055,7 @@
     "reportSent": "Jelentés elküldve",
     "reportNotSent": "A jelentés nem küldhető el. Ellenőrizze az internetkapcsolatát, és próbálja újra.",
     "reportPointerMessage": "Üzenet jelentve a {courseName} kurzusban – lásd a Biztonság menüpontot",
-    "useActivityImageAsChatBackground": "Tevékenység képének használata chat háttérként"
+    "useActivityImageAsChatBackground": "Tevékenység képének használata chat háttérként",
+    "callFullScreenTitle": "Hívások teljes képernyőn",
+    "callFullScreenMessage": "Hívás érkezett, miközben a Pangea Chat zárva volt, de a telefon csak egy kis értesítést tudott megjeleníteni róla. Engedélyezze a teljes képernyős hívásokat, hogy a következő hívás a teljes képernyőn jelenjen meg, még akkor is, ha a telefon zárolva van."
 }

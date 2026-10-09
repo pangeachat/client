@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-09 10:04:32.726878",
+    "@@last_modified": "2026-10-09 14:33:07.204301",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Napadala ang report",
     "reportNotSent": "Dili mapadala ang imong report. Susiha ang imong koneksyon ug sulayi pag-usab.",
     "reportPointerMessage": "Usa ka mensahe ang gi-report sa {courseName} — tan-awa ang Safety",
-    "useActivityImageAsChatBackground": "Gamita ang hulagway sa kalihokan isip background sa chat"
+    "useActivityImageAsChatBackground": "Gamita ang hulagway sa kalihokan isip background sa chat",
+    "callFullScreenTitle": "Patingoga ang mga tawag sa tibuok screen",
+    "callFullScreenMessage": "Naay tawag nga niabot samtang sirado ang Pangea Chat, pero gamay ra nga notipikasyon ang gipakita sa imong telepono. Tugoti ang full-screen nga mga tawag aron ang sunod nga tawag motungha sa tibuok nimong screen, bisan kung naka-lock ang imong telepono."
 }

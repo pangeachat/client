@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:41.797785",
+    "@@last_modified": "2026-10-09 14:33:32.046237",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7250,5 +7250,7 @@
     "reportSent": "Đã gửi báo cáo",
     "reportNotSent": "Không thể gửi báo cáo của bạn. Vui lòng kiểm tra kết nối và thử lại.",
     "reportPointerMessage": "Một tin nhắn đã được báo cáo trong {courseName} — xem mục An toàn",
-    "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện"
+    "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện",
+    "callFullScreenTitle": "Cho phép cuộc gọi đổ chuông toàn màn hình",
+    "callFullScreenMessage": "Một cuộc gọi đến khi Pangea Chat đã đóng, nhưng điện thoại của bạn chỉ có thể hiển thị một thông báo nhỏ. Cho phép cuộc gọi toàn màn hình để cuộc gọi tiếp theo đổ chuông trên toàn bộ màn hình của bạn, ngay cả khi điện thoại của bạn bị khóa."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-09 10:04:35.365383",
+    "@@last_modified": "2026-10-09 14:33:18.233994",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Tilkynning send",
     "reportNotSent": "Ekki tókst að senda tilkynninguna þína. Athugaðu nettenginguna þína og reyndu aftur.",
     "reportPointerMessage": "Skilaboð voru tilkynnt í {courseName} — sjá Öryggi",
-    "useActivityImageAsChatBackground": "Nota virknimynd sem bakgrunn spjalls"
+    "useActivityImageAsChatBackground": "Nota virknimynd sem bakgrunn spjalls",
+    "callFullScreenTitle": "Láta símtöl hringja á öllum skjánum",
+    "callFullScreenMessage": "Símtal barst á meðan Pangea Chat var lokað, en síminn þinn gat aðeins sýnt litla tilkynningu um það. Leyfðu símtöl á öllum skjánum svo næsta símtal hringi á öllum skjánum þínum, jafnvel þegar síminn þinn er læstur."
 }

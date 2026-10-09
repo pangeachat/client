@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-09 10:04:42.430919",
+    "@@last_modified": "2026-10-09 14:33:34.302519",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Umbiko uthunyelwe",
     "reportNotSent": "Umbiko wakho awukwazanga ukuthunyelwa. Hlola uxhumano lwakho bese uzama futhi.",
     "reportPointerMessage": "Umlayezo ubikwe ku-{courseName} — bona ukuphepha",
-    "useActivityImageAsChatBackground": "Sebenzisa isithombe somsebenzi njengesizinda sengxoxo"
+    "useActivityImageAsChatBackground": "Sebenzisa isithombe somsebenzi njengesizinda sengxoxo",
+    "callFullScreenTitle": "Vumela izingcingo zikhale isikrini esigcwele",
+    "callFullScreenMessage": "Ucingo lungenile ngenkathi i-Pangea Chat ivaliwe, kodwa ifoni yakho ibingabonisa kuphela isaziso esincane salo. Vumela izingcingo zesikrini esigcwele ukuze olulandelayo lukhale esikrinini sakho sonke, noma ngabe ifoni yakho ikhiyiwe."
 }

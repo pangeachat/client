@@ -1359,7 +1359,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-09 10:04:35.008948",
+    "@@last_modified": "2026-10-09 14:33:20.464154",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10888,5 +10888,7 @@
     "reportSent": "Reporto inviate",
     "reportNotSent": "Tu reporto non poteva esser inviate. Verifica tu connexion e reprova.",
     "reportPointerMessage": "Un message esseva reportate in {courseName} — vide Securitate",
-    "useActivityImageAsChatBackground": "Usar imagine de activitate como fundo de chat"
+    "useActivityImageAsChatBackground": "Usar imagine de activitate como fundo de chat",
+    "callFullScreenTitle": "Permitter le appellos sonar a schermo plen",
+    "callFullScreenMessage": "Un appello arrivava dum Pangea Chat esseva claudite, ma tu telephono poteva solmente monstrar un parve notification pro illo. Permitte appellos a schermo plen a fin que le proxime sona super tu integre schermo, mesmo quando tu telephono es blocate."
 }

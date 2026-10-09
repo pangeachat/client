@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-09 10:04:40.057243",
+    "@@last_modified": "2026-10-09 14:33:29.043654",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Lipoti ua auina atu",
     "reportNotSent": "E leʻi mafai ona auina atu lau lipoti. Siaki lau fesoʻotaʻiga ma toe taumafai.",
     "reportPointerMessage": "Na lipotia se feʻau i le {courseName} — vaʻai i le Saogalemu",
-    "useActivityImageAsChatBackground": "Fa'aaoga le ata o le gaioiga e fai ma tala i tua o le talanoaga"
+    "useActivityImageAsChatBackground": "Fa'aaoga le ata o le gaioiga e fai ma tala i tua o le talanoaga",
+    "callFullScreenTitle": "Tuʻu atu valaʻau e tatagi i le lau atoa",
+    "callFullScreenMessage": "Na maua se valaʻau aʻo tapunia le Pangea Chat, ae naʻo se faʻasilasilaga laʻititi na mafai ona faʻaalia e lau telefoni. Faʻataga valaʻau i le lau atoa ina ia tatagi le isi valaʻau i lau lau atoa, e tusa lava pe loka lau telefoni."
 }

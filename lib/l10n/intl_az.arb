@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-09 10:04:32.018546",
+    "@@last_modified": "2026-10-09 14:33:05.874823",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Hesabat göndərildi",
     "reportNotSent": "Hesabatınız göndərilə bilmədi. İnternet bağlantınızı yoxlayın və yenidən cəhd edin.",
     "reportPointerMessage": "{courseName} kursunda bir mesaj bildirildi — Təhlükəsizliyə baxın",
-    "useActivityImageAsChatBackground": "Fəaliyyət şəklini çat fonu kimi istifadə et"
+    "useActivityImageAsChatBackground": "Fəaliyyət şəklini çat fonu kimi istifadə et",
+    "callFullScreenTitle": "Zənglərin tam ekranda çalmasına icazə verin",
+    "callFullScreenMessage": "Pangea Chat bağlı olarkən zəng gəldi, lakin telefonunuz yalnız kiçik bir bildiriş göstərə bildi. Tam ekran zənglərinə icazə verin ki, növbəti zəng telefonunuz kilidli olsa belə, bütün ekranınızda çalsın."
 }

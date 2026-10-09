@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-09 10:04:32.413546",
+    "@@last_modified": "2026-10-09 14:33:08.056299",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2397,5 +2397,7 @@
     "reportSent": "ሪፖርት ተልኳል",
     "reportNotSent": "ሪፖርትዎ ሊላክ አልቻለም። ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ።",
     "reportPointerMessage": "በ{courseName} ውስጥ መልዕክት ሪፖርት ተደርጓል — ደህንነትን ይመልከቱ",
-    "useActivityImageAsChatBackground": "የእንቅስቃሴ ምስልን እንደ ቻት ዳራ ተጠቀም"
+    "useActivityImageAsChatBackground": "የእንቅስቃሴ ምስልን እንደ ቻት ዳራ ተጠቀም",
+    "callFullScreenTitle": "ጥሪዎች ሙሉ ማያ ገጽ ላይ እንዲጠሩ ፍቀድ",
+    "callFullScreenMessage": "Pangea Chat ዝግ እያለ ጥሪ ገብቶ ነበር፣ ነገር ግን ስልክዎ ትንሽ ማሳወቂያ ብቻ ማሳየት ችሏል። ቀጣዩ ጥሪ ሙሉ ማያ ገጽዎ ላይ እንዲጠራ ሙሉ ማያ ገጽ ጥሪዎችን ይፍቀዱ፣ ስልክዎ ተቆልፎ ቢሆንም እንኳ።"
 }

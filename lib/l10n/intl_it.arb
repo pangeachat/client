@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:35.175820",
+    "@@last_modified": "2026-10-09 14:33:15.320458",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10025,5 +10025,7 @@
     "reportSent": "Segnalazione inviata",
     "reportNotSent": "Impossibile inviare la segnalazione. Controlla la tua connessione e riprova.",
     "reportPointerMessage": "È stato segnalato un messaggio in {courseName} — vedi Sicurezza",
-    "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat"
+    "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
+    "callFullScreenTitle": "Consenti chiamate a schermo intero",
+    "callFullScreenMessage": "È arrivata una chiamata mentre Pangea Chat era chiusa, ma il tuo telefono poteva mostrare solo una piccola notifica. Consenti le chiamate a schermo intero in modo che la prossima squilli su tutto lo schermo, anche quando il telefono è bloccato."
 }

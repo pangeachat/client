@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-09 10:04:33.419602",
+    "@@last_modified": "2026-10-09 14:33:08.186110",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8177,5 +8177,7 @@
     "reportSent": "Reporte enviado",
     "reportNotSent": "No se pudo enviar tu reporte. Revisa tu conexión y vuelve a intentarlo.",
     "reportPointerMessage": "Se reportó un mensaje en {courseName} — ver Seguridad",
-    "useActivityImageAsChatBackground": "Usar imagen de actividad como fondo de chat"
+    "useActivityImageAsChatBackground": "Usar imagen de actividad como fondo de chat",
+    "callFullScreenTitle": "Permitir llamadas en pantalla completa",
+    "callFullScreenMessage": "Recibiste una llamada mientras Pangea Chat estaba cerrado, pero tu teléfono solo pudo mostrar una pequeña notificación. Permite las llamadas en pantalla completa para que la próxima suene en toda tu pantalla, incluso cuando tu teléfono esté bloqueado."
 }

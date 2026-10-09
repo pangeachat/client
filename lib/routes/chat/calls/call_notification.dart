@@ -77,15 +77,21 @@ class CallNotification {
   };
 }
 
-/// A received call notification, and whether it should ring here.
-class IncomingCallNotification {
-  final Event event;
+/// A received call notification, read from the bare event, and whether it
+/// should ring here.
+///
+/// Reads a [MatrixEvent] rather than a room's [Event] so the closed-app push
+/// handler, which has no Matrix client, asks exactly the question the banner
+/// asks. A second copy of these rules is how a locked phone and an open app
+/// would come to disagree about the same ring.
+class IncomingRing {
+  final MatrixEvent event;
   final String myUserId;
 
   /// Whether this account is already in the call the notification refers to.
   final bool alreadyJoined;
 
-  const IncomingCallNotification({
+  const IncomingRing({
     required this.event,
     required this.myUserId,
     required this.alreadyJoined,
@@ -200,4 +206,17 @@ class IncomingCallNotification {
       isRing &&
       membershipEventId != null &&
       !hasExpiredBy(now);
+}
+
+/// A received call notification in a room this client holds.
+class IncomingCallNotification extends IncomingRing {
+  const IncomingCallNotification({
+    required Event super.event,
+    required super.myUserId,
+    required super.alreadyJoined,
+  });
+
+  /// The constructor takes only a room event, so this cast cannot fail.
+  @override
+  Event get event => super.event as Event;
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-09 10:04:32.811303",
+    "@@last_modified": "2026-10-09 14:33:08.145290",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Adroddiad wedi'i anfon",
     "reportNotSent": "Ni ellid anfon eich adroddiad. Gwiriwch eich cysylltiad a rhowch gynnig arall arni.",
     "reportPointerMessage": "Adroddwyd am neges yn {courseName} — gweler Diogelwch",
-    "useActivityImageAsChatBackground": "Defnyddio delwedd gweithgaredd fel cefndir sgwrsio"
+    "useActivityImageAsChatBackground": "Defnyddio delwedd gweithgaredd fel cefndir sgwrsio",
+    "callFullScreenTitle": "Gadewch i alwadau ganu sgrin lawn",
+    "callFullScreenMessage": "Daeth galwad i mewn tra roedd Pangea Chat ar gau, ond dim ond hysbysiad bach y gallai eich ffôn ei ddangos ar ei gyfer. Caniatáu galwadau sgrin lawn fel bod yr un nesaf yn canu ar eich sgrin gyfan, hyd yn oed pan fydd eich ffôn wedi'i gloi."
 }

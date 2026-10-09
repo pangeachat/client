@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-09 10:04:40.689813",
+    "@@last_modified": "2026-10-09 14:33:29.557748",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Raporti u dërgua",
     "reportNotSent": "Raporti juaj nuk mund të dërgohej. Kontrolloni lidhjen tuaj dhe provoni përsëri.",
     "reportPointerMessage": "Një mesazh u raportua në {courseName} — shihni Sigurinë",
-    "useActivityImageAsChatBackground": "Përdor imazhin e aktivitetit si sfond bisede"
+    "useActivityImageAsChatBackground": "Përdor imazhin e aktivitetit si sfond bisede",
+    "callFullScreenTitle": "Lëreni thirrjet të bien në ekran të plotë",
+    "callFullScreenMessage": "Një thirrje hyri ndërsa Pangea Chat ishte e mbyllur, por telefoni juaj mund të shfaqte vetëm një njoftim të vogël për të. Lejoni thirrjet në ekran të plotë në mënyrë që tjetra të bjerë në të gjithë ekranin tuaj, edhe kur telefoni juaj është i kyçur."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-09 10:04:41.741823",
+    "@@last_modified": "2026-10-09 14:33:33.740715",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Ingxelo ithunyelwe",
     "reportNotSent": "Ingxelo yakho ayikwazanga ukuthunyelwa. Khangela uqhagamshelwano lwakho uze uzame kwakhona.",
     "reportPointerMessage": "Umyalezo uxeliwe ku-{courseName} — jonga uKhuseleko",
-    "useActivityImageAsChatBackground": "Sebenzisa umfanekiso womsebenzi njengemvelaphi yencoko"
+    "useActivityImageAsChatBackground": "Sebenzisa umfanekiso womsebenzi njengemvelaphi yencoko",
+    "callFullScreenTitle": "Vumela iifowuni zikhale kwisikrini esipheleleyo",
+    "callFullScreenMessage": "Kwangena umnxeba ngelixa i-Pangea Chat ivaliwe, kodwa ifowuni yakho ibikwazi ukubonisa kuphela isaziso esincinci ngayo. Vumela iifowuni zesikrini esipheleleyo ukuze olulandelayo lukhale kwisikrini sakho sonke, naxa ifowuni yakho itshixiwe."
 }

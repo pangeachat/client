@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-09 10:04:32.176617",
+    "@@last_modified": "2026-10-09 14:33:06.310361",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10258,5 +10258,7 @@
     "reportSent": "تم إرسال البلاغ",
     "reportNotSent": "تعذر إرسال بلاغك. تحقق من اتصالك وحاول مرة أخرى.",
     "reportPointerMessage": "تم الإبلاغ عن رسالة في {courseName} — راجع الأمان",
-    "useActivityImageAsChatBackground": "استخدام صورة النشاط كخلفية للدردشة"
+    "useActivityImageAsChatBackground": "استخدام صورة النشاط كخلفية للدردشة",
+    "callFullScreenTitle": "السماح للمكالمات بالرنين بملء الشاشة",
+    "callFullScreenMessage": "وردت مكالمة بينما كان Pangea Chat مغلقًا، ولكن هاتفك لم يتمكن سوى من عرض إشعار صغير لها. اسمح بالمكالمات بملء الشاشة لكي ترن المكالمة التالية على شاشتك بالكامل، حتى عندما يكون هاتفك مقفلاً."
 }

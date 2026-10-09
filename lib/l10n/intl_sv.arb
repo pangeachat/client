@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:40.736559",
+    "@@last_modified": "2026-10-09 14:33:29.992571",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10470,5 +10470,7 @@
     "reportSent": "Rapport skickad",
     "reportNotSent": "Din rapport kunde inte skickas. Kontrollera din anslutning och försök igen.",
     "reportPointerMessage": "Ett meddelande rapporterades i {courseName} – se Säkerhet",
-    "useActivityImageAsChatBackground": "Använd aktivitetsbild som chattbakgrund"
+    "useActivityImageAsChatBackground": "Använd aktivitetsbild som chattbakgrund",
+    "callFullScreenTitle": "Låt samtal ringa i helskärm",
+    "callFullScreenMessage": "Ett samtal kom in när Pangea Chat var stängt, men din telefon kunde bara visa en liten notis för det. Tillåt helskärmssamtal så att nästa samtal ringer på hela skärmen, även när din telefon är låst."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-09 10:04:41.651288",
+    "@@last_modified": "2026-10-09 14:33:31.191663",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10253,5 +10253,7 @@
     "reportSent": "Rapor gönderildi",
     "reportNotSent": "Raporunuz gönderilemedi. Bağlantınızı kontrol edip tekrar deneyin.",
     "reportPointerMessage": "{courseName} içinde bir mesaj bildirildi — Güvenlik bölümüne bakın",
-    "useActivityImageAsChatBackground": "Etkinlik görselini sohbet arka planı olarak kullan"
+    "useActivityImageAsChatBackground": "Etkinlik görselini sohbet arka planı olarak kullan",
+    "callFullScreenTitle": "Çağrıların tam ekranda çalmasına izin ver",
+    "callFullScreenMessage": "Pangea Chat kapalıyken bir çağrı geldi, ancak telefonunuz bunun için yalnızca küçük bir bildirim gösterebildi. Tam ekran çağrılara izin verin, böylece bir sonraki çağrı telefonunuz kilitli olsa bile tüm ekranınızda çalar."
 }

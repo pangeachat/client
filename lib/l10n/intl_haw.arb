@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-09 10:04:34.308134",
+    "@@last_modified": "2026-10-09 14:33:10.933639",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Ua hoʻouna ʻia ka hōʻike",
     "reportNotSent": "ʻAʻole hiki ke hoʻouna ʻia kāu hōʻike. E nānā i kāu pili pūnaewele a e hoʻāʻo hou.",
     "reportPointerMessage": "Ua hōʻike ʻia kekahi leka ma {courseName} — e nānā i ka Palekana",
-    "useActivityImageAsChatBackground": "E hoʻohana i ke kiʻi hana ma ke ʻano he kāʻei kua kamaʻilio"
+    "useActivityImageAsChatBackground": "E hoʻohana i ke kiʻi hana ma ke ʻano he kāʻei kua kamaʻilio",
+    "callFullScreenTitle": "E kani nā kelepona ma ka pale piha",
+    "callFullScreenMessage": "Ua loaʻa mai kahi kelepona i ka wā i paʻa ai ʻo Pangea Chat, akā hiki i kāu kelepona ke hōʻike i kahi leka hoʻomaopopo liʻiliʻi wale nō. E ʻae i nā kelepona pale piha i kani ka mea aʻe ma kāu pale holoʻokoʻa, ʻoiai inā paʻa kāu kelepona."
 }

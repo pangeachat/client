@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-09 10:05:18.679406",
+    "@@last_modified": "2026-10-09 14:33:09.448455",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10307,5 +10307,7 @@
     "reportSent": "Signalement envoyé",
     "reportNotSent": "Votre signalement n'a pas pu être envoyé. Vérifiez votre connexion et réessayez.",
     "reportPointerMessage": "Un message a été signalé dans {courseName} — voir Sécurité",
-    "useActivityImageAsChatBackground": "Utiliser l'image de l'activité comme arrière-plan de discussion"
+    "useActivityImageAsChatBackground": "Utiliser l'image de l'activité comme arrière-plan de discussion",
+    "callFullScreenTitle": "Autoriser les appels en plein écran",
+    "callFullScreenMessage": "Un appel est arrivé alors que Pangea Chat était fermé, mais votre téléphone n'a pu afficher qu'une petite notification. Autorisez les appels en plein écran pour que le prochain sonne sur tout votre écran, même lorsque votre téléphone est verrouillé."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-09 10:04:36.443122",
+    "@@last_modified": "2026-10-09 14:33:19.109716",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Relatum missum",
     "reportNotSent": "Tua relatio mitti non potuit. Coniunctionem tuam inspice et iterum conare.",
     "reportPointerMessage": "Nuntius in {courseName} relatus est — vide Securitatem",
-    "useActivityImageAsChatBackground": "Imaginem actionis uti pro curriculo sermonis"
+    "useActivityImageAsChatBackground": "Imaginem actionis uti pro curriculo sermonis",
+    "callFullScreenTitle": "Sinite vocem totam tegere",
+    "callFullScreenMessage": "Vocatio advenit dum Pangea Chat clausum erat, sed telephonum tuum tantum parvam notificationem ostendere potuit. Sinite vocationes totum tegere ut proxima vocatio in toto scrinio tuo sonet, etiam cum telephonum tuum clausum est."
 }

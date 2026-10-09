@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-09 10:04:36.692320",
+    "@@last_modified": "2026-10-09 14:33:20.032121",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Rapport geschéckt",
     "reportNotSent": "Äre Rapport konnt net geschéckt ginn. Kuckt Är Verbindung a probéiert et nach eng Kéier.",
     "reportPointerMessage": "Eng Noriicht gouf am Cours {courseName} gemellt — kuckt Sécherheet",
-    "useActivityImageAsChatBackground": "Aktivitéitsbild als Chat-Hannergrond benotzen"
+    "useActivityImageAsChatBackground": "Aktivitéitsbild als Chat-Hannergrond benotzen",
+    "callFullScreenTitle": "Uruff am Vollbildschierm uweisen",
+    "callFullScreenMessage": "En Uruff ass erakomm, wärend Pangea Chat zou war, awer Ären Telefon konnt nëmmen eng kleng Notifikatioun dofir uweisen. Erlaabt Vollbildschierm-Uriff, sou datt de nächsten Uruff op Ärem ganze Bildschierm ugewise gëtt, och wann Ären Telefon gespaart ass."
 }

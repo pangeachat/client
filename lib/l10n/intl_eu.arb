@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-09 10:04:33.238304",
+    "@@last_modified": "2026-10-09 14:33:09.178143",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9952,5 +9952,7 @@
     "reportSent": "Txostena bidali da",
     "reportNotSent": "Ezin izan da zure txostena bidali. Egiaztatu konexioa eta saiatu berriro.",
     "reportPointerMessage": "Mezu bat salatu da {courseName} ikastaroan — ikusi Segurtasuna",
-    "useActivityImageAsChatBackground": "Erabili jardueraren irudia txataren atzeko plano gisa"
+    "useActivityImageAsChatBackground": "Erabili jardueraren irudia txataren atzeko plano gisa",
+    "callFullScreenTitle": "Deiak pantaila osoan erakutsi",
+    "callFullScreenMessage": "Dei bat jaso duzu Pangea Chat itxita zegoen bitartean, baina telefonoak jakinarazpen txiki bat baino ezin izan du erakutsi. Baimendu pantaila osoko deiak, hurrengoa pantaila osoan ager dadin, telefonoa blokeatuta egon arren."
 }

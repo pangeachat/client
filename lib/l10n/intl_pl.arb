@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-09 10:04:38.972151",
+    "@@last_modified": "2026-10-09 14:33:27.616651",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10037,5 +10037,7 @@
     "reportSent": "Zgłoszenie wysłane",
     "reportNotSent": "Twoje zgłoszenie nie mogło zostać wysłane. Sprawdź połączenie i spróbuj ponownie.",
     "reportPointerMessage": "Wiadomość została zgłoszona w {courseName} — zobacz Bezpieczeństwo",
-    "useActivityImageAsChatBackground": "Użyj obrazu aktywności jako tła czatu"
+    "useActivityImageAsChatBackground": "Użyj obrazu aktywności jako tła czatu",
+    "callFullScreenTitle": "Pozwól, by połączenia dzwoniły na pełnym ekranie",
+    "callFullScreenMessage": "Połączenie nadeszło, gdy Pangea Chat był zamknięty, ale Twój telefon mógł wyświetlić tylko małe powiadomienie. Zezwól na połączenia pełnoekranowe, aby następne połączenie dzwoniło na całym ekranie, nawet gdy telefon jest zablokowany."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-09 10:04:33.817822",
+    "@@last_modified": "2026-10-09 14:33:09.346377",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9952,5 +9952,7 @@
     "reportSent": "Informe enviado",
     "reportNotSent": "Non se puido enviar o teu informe. Comproba a túa conexión e téntao de novo.",
     "reportPointerMessage": "Informouse dunha mensaxe en {courseName} — consulta Seguridade",
-    "useActivityImageAsChatBackground": "Usar a imaxe da actividade como fondo do chat"
+    "useActivityImageAsChatBackground": "Usar a imaxe da actividade como fondo do chat",
+    "callFullScreenTitle": "Permitir chamadas a pantalla completa",
+    "callFullScreenMessage": "Recibiuse unha chamada mentres Pangea Chat estaba pechado, pero o teu teléfono só puido mostrar unha pequena notificación. Permite as chamadas a pantalla completa para que a seguinte soe en toda a pantalla, mesmo cando o teléfono estea bloqueado."
 }

@@ -5,6 +5,9 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Rings full screen for an incoming call. Android 14+ grants it only to
+         apps Google Play accepts as calling apps, or that the user allows. -->
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
 
     <application>
         <!-- The union of types the service may ever hold; each promotion
@@ -13,5 +16,12 @@
             android:name=".CallForegroundService"
             android:exported="false"
             android:foregroundServiceType="microphone|camera" />
+
+        <!-- Rings while the app is closed. A short service: the ring's own
+             lifetime is at most ninety seconds. -->
+        <service
+            android:name=".IncomingRingService"
+            android:exported="false"
+            android:foregroundServiceType="shortService" />
     </application>
 </manifest>

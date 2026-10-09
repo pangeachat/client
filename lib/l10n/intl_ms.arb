@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-09 10:04:37.817926",
+    "@@last_modified": "2026-10-09 14:33:24.069426",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Laporan dihantar",
     "reportNotSent": "Laporan anda tidak dapat dihantar. Semak sambungan anda dan cuba lagi.",
     "reportPointerMessage": "Mesej telah dilaporkan dalam {courseName} — lihat Keselamatan",
-    "useActivityImageAsChatBackground": "Gunakan imej aktiviti sebagai latar belakang sembang"
+    "useActivityImageAsChatBackground": "Gunakan imej aktiviti sebagai latar belakang sembang",
+    "callFullScreenTitle": "Benarkan panggilan berdering skrin penuh",
+    "callFullScreenMessage": "Panggilan masuk semasa Pangea Chat ditutup, tetapi telefon anda hanya boleh menunjukkan pemberitahuan kecil untuknya. Benarkan panggilan skrin penuh supaya panggilan seterusnya berdering pada keseluruhan skrin anda, walaupun telefon anda dikunci."
 }

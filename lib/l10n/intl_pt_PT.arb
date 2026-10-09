@@ -2556,7 +2556,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-09 10:04:39.201733",
+    "@@last_modified": "2026-10-09 14:33:28.693207",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10869,5 +10869,7 @@
     "reportSent": "Denúncia enviada",
     "reportNotSent": "Não foi possível enviar a sua denúncia. Verifique a sua ligação e tente novamente.",
     "reportPointerMessage": "Uma mensagem foi denunciada em {courseName} — ver Segurança",
-    "useActivityImageAsChatBackground": "Usar imagem da atividade como fundo do chat"
+    "useActivityImageAsChatBackground": "Usar imagem da atividade como fundo do chat",
+    "callFullScreenTitle": "Permitir que as chamadas toquem em ecrã completo",
+    "callFullScreenMessage": "Recebeu uma chamada enquanto o Pangea Chat estava fechado, mas o seu telemóvel só conseguiu mostrar uma pequena notificação. Permita chamadas em ecrã completo para que a próxima toque em todo o seu ecrã, mesmo quando o telemóvel estiver bloqueado."
 }
