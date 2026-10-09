@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-07 09:01:30.681737",
+    "@@last_modified": "2026-10-09 10:28:03.981559",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9951,5 +9951,19 @@
     "viewImageLabel": "Ikusi irudia",
     "reportSent": "Txostena bidali da",
     "reportNotSent": "Ezin izan da zure txostena bidali. Egiaztatu konexioa eta saiatu berriro.",
-    "reportPointerMessage": "Mezu bat salatu da {courseName} ikastaroan — ikusi Segurtasuna"
+    "reportPointerMessage": "Mezu bat salatu da {courseName} ikastaroan — ikusi Segurtasuna",
+    "learningObjective": "Ikaskuntza-helburua",
+    "learningObjectives": "Ikaskuntza-helburuak",
+    "missionNofM": "{count} misiotik {index}. misioa",
+    "xpTowardObjective": "{threshold}eko helburu honetarako {xp} puntu",
+    "xpOfThreshold": "{xp} / {threshold} puntu",
+    "objectivesCompletedOfTotal": "{total} helburutik {completed} osatuta",
+    "sparklesEarnedOfTotal": "{total} distiratik {earned} irabazi dituzu",
+    "sparklesEarnedInLanguage": "{language} hizkuntzan irabazitako distirak",
+    "courseComplete": "Ikastaroa osatuta!",
+    "courseCompleteDesc": "Ikastaro honetako {count} helburu guztiak osatu dituzu. Jarraitu praktikatzen ikasitakoari eusteko.",
+    "practiceObjective": "Helburu hau praktikatu",
+    "otherActivities": "Beste jarduera batzuk",
+    "xpToCompleteObjectiveTitle": "Misio bakoitzeko XP",
+    "xpToCompleteObjectiveDesc": "Ezarri misio bakoitza osatzeko behar den XP kopurua"
 }

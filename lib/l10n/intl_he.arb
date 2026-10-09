@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:32.165987",
+    "@@last_modified": "2026-10-09 10:28:11.644106",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10865,5 +10865,19 @@
     "viewImageLabel": "הצג תמונה",
     "reportSent": "הדיווח נשלח",
     "reportNotSent": "הדיווח שלך לא נשלח. בדוק את החיבור שלך ונסה שוב.",
-    "reportPointerMessage": "הודעה דווחה ב{courseName} — ראה בטיחות"
+    "reportPointerMessage": "הודעה דווחה ב{courseName} — ראה בטיחות",
+    "learningObjective": "מטרת למידה",
+    "learningObjectives": "מטרות למידה",
+    "missionNofM": "משימה {index} מתוך {count}",
+    "xpTowardObjective": "{xp} מתוך {threshold} נקודות ניסיון למטרה זו",
+    "xpOfThreshold": "{xp} / {threshold} נקודות ניסיון",
+    "objectivesCompletedOfTotal": "{completed} מתוך {total} מטרות הושלמו",
+    "sparklesEarnedOfTotal": "{earned} מתוך {total} ניצוצות נצברו",
+    "sparklesEarnedInLanguage": "ניצוצות שנצברו ב{language}",
+    "courseComplete": "הקורס הושלם!",
+    "courseCompleteDesc": "השלמת את כל {count} המטרות בקורס זה. המשך לתרגל כדי לשמר את מה שלמדת.",
+    "practiceObjective": "תרגל מטרה זו",
+    "otherActivities": "פעילויות אחרות",
+    "xpToCompleteObjectiveTitle": "נקודות ניסיון למשימה",
+    "xpToCompleteObjectiveDesc": "קבע את נקודות הניסיון הדרושות להשלמת כל משימה"
 }

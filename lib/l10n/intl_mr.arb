@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-10-07 09:01:39.450111",
+    "@@last_modified": "2026-10-09 10:28:25.551004",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "चित्र पहा",
     "reportSent": "अहवाल पाठवला",
     "reportNotSent": "तुमचा अहवाल पाठवला जाऊ शकला नाही. तुमचे कनेक्शन तपासा आणि पुन्हा प्रयत्न करा.",
-    "reportPointerMessage": "{courseName} मध्ये एका संदेशाची तक्रार करण्यात आली आहे — सुरक्षितता पहा"
+    "reportPointerMessage": "{courseName} मध्ये एका संदेशाची तक्रार करण्यात आली आहे — सुरक्षितता पहा",
+    "learningObjective": "शिकण्याचे उद्दिष्ट",
+    "learningObjectives": "शिकण्याची उद्दिष्ट्ये",
+    "missionNofM": "{count} पैकी मिशन {index}",
+    "xpTowardObjective": "या उद्दिष्टासाठी {threshold} XP पैकी {xp} XP",
+    "xpOfThreshold": "{threshold} XP पैकी {xp} XP",
+    "objectivesCompletedOfTotal": "{total} उद्दिष्टांपैकी {completed} पूर्ण झाली",
+    "sparklesEarnedOfTotal": "{total} स्पार्कल्सपैकी {earned} स्पार्कल्स मिळवले",
+    "sparklesEarnedInLanguage": "{language} मध्ये मिळवलेले स्पार्कल्स",
+    "courseComplete": "कोर्स पूर्ण झाला!",
+    "courseCompleteDesc": "तुम्ही या कोर्समधील सर्व {count} उद्दिष्ट्ये पूर्ण केली आहेत. तुम्ही जे शिकलात ते लक्षात ठेवण्यासाठी सराव करत रहा.",
+    "practiceObjective": "या उद्दिष्टाचा सराव करा",
+    "otherActivities": "इतर उपक्रम",
+    "xpToCompleteObjectiveTitle": "प्रत्येक मिशनसाठी XP",
+    "xpToCompleteObjectiveDesc": "प्रत्येक मिशन पूर्ण करण्यासाठी आवश्यक XP सेट करा"
 }

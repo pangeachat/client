@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-07 09:01:44.695082",
+    "@@last_modified": "2026-10-09 10:28:31.594131",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Bona setshwantsho",
     "reportSent": "Tlaleho e rometsoe",
     "reportNotSent": "Tlaleho ea hau e ne e ke ke ea romeloa. Lekola khokahano ea hau 'me u leke hape.",
-    "reportPointerMessage": "Molaetsa o tlalehiloe ho {courseName} — bona Polokeho"
+    "reportPointerMessage": "Molaetsa o tlalehiloe ho {courseName} — bona Polokeho",
+    "learningObjective": "Sepheo sa ho Ithuta",
+    "learningObjectives": "Dipehelo tsa ho Ithuta",
+    "missionNofM": "Thomo ya {index} ho {count}",
+    "xpTowardObjective": "{xp} ho {threshold} XP ho fihlella sepheo sena",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} ho {total} dipehelo di phethilwe",
+    "sparklesEarnedOfTotal": "{earned} ho {total} disebediswa tse fumanweng",
+    "sparklesEarnedInLanguage": "Disebediswa tse fumanweng ka {language}",
+    "courseComplete": "Thupelo e phethilwe!",
+    "courseCompleteDesc": "O qetile dipehelo tsohle tse {count} thupelong ena. Tswela pele ho itlwaetsa ho boloka seo o se ithutileng.",
+    "practiceObjective": "Itlwaetse sepheo sena",
+    "otherActivities": "Diketso tse ding",
+    "xpToCompleteObjectiveTitle": "XP ka Thomo",
+    "xpToCompleteObjectiveDesc": "Beha XP e hlokahalang ho phethela thomo ka nngwe"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:31.984471",
+    "@@last_modified": "2026-10-09 10:27:59.365797",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10078,5 +10078,19 @@
     "viewImageLabel": "Veure imatge",
     "reportSent": "Informe enviat",
     "reportNotSent": "No s'ha pogut enviar l'informe. Comprova la connexió i torna-ho a provar.",
-    "reportPointerMessage": "S'ha informat d'un missatge a {courseName}; consulta Seguretat"
+    "reportPointerMessage": "S'ha informat d'un missatge a {courseName}; consulta Seguretat",
+    "learningObjective": "Objectiu d'aprenentatge",
+    "learningObjectives": "Objectius d'aprenentatge",
+    "missionNofM": "Missió {index} de {count}",
+    "xpTowardObjective": "{xp} de {threshold} XP per a aquest objectiu",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} de {total} objectius completats",
+    "sparklesEarnedOfTotal": "{earned} de {total} brillants guanyats",
+    "sparklesEarnedInLanguage": "Brillants guanyats en {language}",
+    "courseComplete": "Curs completat!",
+    "courseCompleteDesc": "Has completat els {count} objectius d'aquest curs. Continua practicant per retenir el que has après.",
+    "practiceObjective": "Practica aquest objectiu",
+    "otherActivities": "Altres activitats",
+    "xpToCompleteObjectiveTitle": "XP per missió",
+    "xpToCompleteObjectiveDesc": "Defineix els XP necessaris per completar cada missió"
 }

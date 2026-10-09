@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:45.891702",
+    "@@last_modified": "2026-10-09 10:28:02.272515",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10896,5 +10896,19 @@
     "viewImageLabel": "Vidi bildon",
     "reportSent": "Raporto sendita",
     "reportNotSent": "Via raporto ne povis esti sendita. Kontrolu vian konekton kaj reprovu.",
-    "reportPointerMessage": "Mesaĝo estis raportita en {courseName} — vidu Sekurecon"
+    "reportPointerMessage": "Mesaĝo estis raportita en {courseName} — vidu Sekurecon",
+    "learningObjective": "Lernocelo",
+    "learningObjectives": "Lernoceloj",
+    "missionNofM": "Misio {index} el {count}",
+    "xpTowardObjective": "{xp} el {threshold} XP por ĉi tiu celo",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} el {total} celoj plenumitaj",
+    "sparklesEarnedOfTotal": "{earned} el {total} briloj gajnitaj",
+    "sparklesEarnedInLanguage": "Briloj gajnitaj en {language}",
+    "courseComplete": "Kurso finita!",
+    "courseCompleteDesc": "Vi plenumis ĉiujn {count} celojn en ĉi tiu kurso. Daŭre praktiku por konservi tion, kion vi lernis.",
+    "practiceObjective": "Praktiku ĉi tiun celon",
+    "otherActivities": "Aliaj agadoj",
+    "xpToCompleteObjectiveTitle": "XP por Misio",
+    "xpToCompleteObjectiveDesc": "Agordu la XP necesan por plenumi ĉiun mision"
 }

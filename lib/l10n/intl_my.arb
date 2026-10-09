@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-07 09:01:42.697539",
+    "@@last_modified": "2026-10-09 10:28:23.179766",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "ပုံကြည့်ရန်",
     "reportSent": "အစီရင်ခံစာ ပေးပို့ပြီးပါပြီ",
     "reportNotSent": "သင်၏အစီရင်ခံစာကို ပေးပို့နိုင်ခြင်းမရှိပါ။ သင်၏အင်တာနက်ချိတ်ဆက်မှုကို စစ်ဆေးပြီး ထပ်မံကြိုးစားပါ။",
-    "reportPointerMessage": "{courseName} တွင် မက်ဆေ့ချ်တစ်ခုကို အစီရင်ခံထားသည် — ဘေးကင်းရေးကို ကြည့်ပါ"
+    "reportPointerMessage": "{courseName} တွင် မက်ဆေ့ချ်တစ်ခုကို အစီရင်ခံထားသည် — ဘေးကင်းရေးကို ကြည့်ပါ",
+    "learningObjective": "သင်ယူမှု ရည်ရွယ်ချက်",
+    "learningObjectives": "သင်ယူမှု ရည်ရွယ်ချက်များ",
+    "missionNofM": "မစ်ရှင် {index} / {count}",
+    "xpTowardObjective": "ဤရည်ရွယ်ချက်အတွက် XP {threshold} မှ {xp}",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "ရည်ရွယ်ချက် {total} ခုမှ {completed} ခု ပြီးစီးခဲ့သည်",
+    "sparklesEarnedOfTotal": "စုစုပေါင်း {total} မှ {earned} Sparkle ရရှိခဲ့သည်",
+    "sparklesEarnedInLanguage": "{language} တွင် ရရှိခဲ့သော Sparkle များ",
+    "courseComplete": "သင်တန်း ပြီးဆုံးပါပြီ။",
+    "courseCompleteDesc": "ဤသင်တန်းရှိ ရည်ရွယ်ချက် {count} ခုလုံးကို သင်ပြီးစီးခဲ့ပါပြီ။ သင်ယူခဲ့သည်များကို ဆက်လက်ထိန်းသိမ်းထားရန် လေ့ကျင့်ခန်းများ ဆက်လုပ်ပါ။",
+    "practiceObjective": "ဤရည်ရွယ်ချက်ကို လေ့ကျင့်ပါ",
+    "otherActivities": "အခြားလုပ်ဆောင်ချက်များ",
+    "xpToCompleteObjectiveTitle": "မစ်ရှင်တစ်ခုလျှင် XP",
+    "xpToCompleteObjectiveDesc": "မစ်ရှင်တစ်ခုစီ ပြီးမြောက်ရန် လိုအပ်သော XP ကို သတ်မှတ်ပါ"
 }

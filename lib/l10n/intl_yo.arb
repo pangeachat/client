@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-07 09:01:48.102784",
+    "@@last_modified": "2026-10-09 10:28:38.306964",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Wo aworan",
     "reportSent": "Ìròyìn ti fi ránṣẹ́",
     "reportNotSent": "Kò ṣeé fi ìròyìn rẹ ránṣẹ́. Ṣàyẹ̀wò àsopọ̀ rẹ, kí o sì tún gbìyànjú.",
-    "reportPointerMessage": "A ti fi ìròyìn ránṣẹ́ nípa ìfọ̀rọ̀wéránṣẹ́ kan nínú {courseName} — wo Ààbò"
+    "reportPointerMessage": "A ti fi ìròyìn ránṣẹ́ nípa ìfọ̀rọ̀wéránṣẹ́ kan nínú {courseName} — wo Ààbò",
+    "learningObjective": "Èrò Ẹkọ",
+    "learningObjectives": "Àwọn Èrò Ẹkọ",
+    "missionNofM": "Iṣẹ́ {index} nínú {count}",
+    "xpTowardObjective": "{xp} nínú {threshold} XP sí èrò yìí",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} nínú {total} àwọn èrò tí ó parí",
+    "sparklesEarnedOfTotal": "{earned} nínú {total} àwọn ìmọ́lẹ̀ tí ó gbà",
+    "sparklesEarnedInLanguage": "Àwọn ìmọ́lẹ̀ tí ó gbà ní èdè {language}",
+    "courseComplete": "Ẹkọ parí!",
+    "courseCompleteDesc": "O ti parí gbogbo àwọn èrò {count} nínú ẹ̀kọ́ yìí. Máa bá a lọ láti máa ṣe ìdánilẹ́kọ̀ọ́ láti di ohun tí o ti kọ́ mú.",
+    "practiceObjective": "Ṣe ìdánilẹ́kọ̀ọ́ èrò yìí",
+    "otherActivities": "Àwọn iṣẹ́ mìíràn",
+    "xpToCompleteObjectiveTitle": "XP fún Iṣẹ́ kọ̀ọ̀kan",
+    "xpToCompleteObjectiveDesc": "Ṣeto XP tí ó yẹ láti parí iṣẹ́ kọ̀ọ̀kan"
 }

@@ -293,15 +293,15 @@ List<ButtonDetails> _courseSettingsButtons(
       enabled: room.isRoomAdmin,
     ),
     ButtonDetails(
-      title: l10n.starsToUnlockObjectiveTitle,
-      description: l10n.starsToUnlockObjectiveDesc,
+      title: l10n.xpToCompleteObjectiveTitle,
+      description: l10n.xpToCompleteObjectiveDesc,
       icon: const Icon(Icons.star_outline, size: 30.0),
-      onPressed: controller.setStarsToUnlockObjective,
+      onPressed: controller.setXpToCompleteObjective,
       enabled: room.isRoomAdmin,
       trailing: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Text(
-          "${room.teacherMode.starsToUnlockObjective ?? kDefaultStarsToUnlockObjective}",
+          "${room.teacherMode.xpToCompleteObjective ?? kDefaultXpToCompleteObjective}",
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ),
@@ -378,9 +378,12 @@ class _CourseSectionSubpage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Pinned above the plan so course totals stay visible while
-            // scrolling the Missions.
+            // scrolling the Missions: here the bar is course-wide, Missions
+            // complete over Missions in the plan (#9420); the course page's
+            // and the peek's bars are the current Mission's meter.
             CourseProgressBar(
               objectivesProvider: controller.objectivesProvider,
+              scope: CourseProgressScope.course,
             ),
             const SizedBox(height: 8.0),
             Expanded(

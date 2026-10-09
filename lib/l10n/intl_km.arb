@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-10-07 09:01:35.483504",
+    "@@last_modified": "2026-10-09 10:28:14.541304",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "មើលរូបភាព",
     "reportSent": "បានផ្ញើរបាយការណ៍",
     "reportNotSent": "របាយការណ៍របស់អ្នកមិនអាចផ្ញើបានទេ។ សូមពិនិត្យមើលការតភ្ជាប់របស់អ្នក ហើយព្យាយាមម្ដងទៀត។",
-    "reportPointerMessage": "សារមួយត្រូវបានរាយការណ៍នៅក្នុង {courseName} — សូមមើលសុវត្ថិភាព"
+    "reportPointerMessage": "សារមួយត្រូវបានរាយការណ៍នៅក្នុង {courseName} — សូមមើលសុវត្ថិភាព",
+    "learningObjective": "គោលបំណងនៃការរៀន",
+    "learningObjectives": "គោលបំណងនៃការរៀន",
+    "missionNofM": "បេសកកម្មទី {index} នៃ {count}",
+    "xpTowardObjective": "{xp} នៃ {threshold} XP ឆ្ពោះទៅរកគោលបំណងនេះ",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "បានបញ្ចប់ {completed} នៃ {total} គោលបំណង",
+    "sparklesEarnedOfTotal": "បានទទួល {earned} នៃ {total} ពន្លឺផ្កាយ",
+    "sparklesEarnedInLanguage": "ពន្លឺផ្កាយដែលទទួលបានក្នុងភាសា {language}",
+    "courseComplete": "វគ្គសិក្សាបានបញ្ចប់!",
+    "courseCompleteDesc": "អ្នកបានបញ្ចប់គោលបំណងទាំង {count} នៅក្នុងវគ្គសិក្សានេះហើយ។ បន្តអនុវត្តដើម្បីរក្សាអ្វីដែលអ្នកបានរៀន។",
+    "practiceObjective": "អនុវត្តគោលបំណងនេះ",
+    "otherActivities": "សកម្មភាពផ្សេងទៀត",
+    "xpToCompleteObjectiveTitle": "XP ក្នុងមួយបេសកកម្ម",
+    "xpToCompleteObjectiveDesc": "កំណត់ XP ដែលត្រូវការដើម្បីបញ្ចប់បេសកកម្មនីមួយៗ"
 }

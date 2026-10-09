@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-07 09:01:43.326619",
+    "@@last_modified": "2026-10-09 10:28:28.689988",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "تصوير ڏسو",
     "reportSent": "رپورٽ موڪلي وئي",
     "reportNotSent": "توهان جي رپورٽ موڪلي نه سگهجي. پنهنجو ڪنيڪشن چيڪ ڪريو ۽ ٻيهر ڪوشش ڪريو.",
-    "reportPointerMessage": "{courseName} ۾ هڪ پيغام جي رپورٽ ڪئي وئي آهي — حفاظت ڏسو"
+    "reportPointerMessage": "{courseName} ۾ هڪ پيغام جي رپورٽ ڪئي وئي آهي — حفاظت ڏسو",
+    "learningObjective": "سکڻ جو مقصد",
+    "learningObjectives": "سکڻ جا مقصد",
+    "missionNofM": "مشن {index} مان {count}",
+    "xpTowardObjective": "هن مقصد لاءِ {threshold} XP مان {xp}",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{total} مقصدن مان {completed} مڪمل ٿيا",
+    "sparklesEarnedOfTotal": "{total} چمڪن مان {earned} حاصل ڪيون ويون",
+    "sparklesEarnedInLanguage": "{language} ۾ حاصل ڪيل چمڪون",
+    "courseComplete": "ڪورس مڪمل!",
+    "courseCompleteDesc": "توهان هن ڪورس ۾ سڀ {count} مقصد مڪمل ڪري ورتا آهن. جيڪو ڪجهه توهان سکيو آهي ان کي برقرار رکڻ لاءِ مشق ڪندا رهو.",
+    "practiceObjective": "هن مقصد جي مشق ڪريو",
+    "otherActivities": "ٻيون سرگرميون",
+    "xpToCompleteObjectiveTitle": "في مشن XP",
+    "xpToCompleteObjectiveDesc": "هر مشن کي مڪمل ڪرڻ لاءِ گهربل XP مقرر ڪريو"
 }

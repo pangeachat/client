@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-07 09:01:41.587571",
+    "@@last_modified": "2026-10-09 10:28:26.053332",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "ਤਸਵੀਰ ਦੇਖੋ",
     "reportSent": "ਰਿਪੋਰਟ ਭੇਜੀ ਗਈ",
     "reportNotSent": "ਤੁਹਾਡੀ ਰਿਪੋਰਟ ਭੇਜੀ ਨਹੀਂ ਜਾ ਸਕੀ। ਆਪਣਾ ਕਨੈਕਸ਼ਨ ਜਾਂਚੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
-    "reportPointerMessage": "{courseName} ਵਿੱਚ ਇੱਕ ਸੁਨੇਹਾ ਰਿਪੋਰਟ ਕੀਤਾ ਗਿਆ ਸੀ — ਸੁਰੱਖਿਆ ਦੇਖੋ"
+    "reportPointerMessage": "{courseName} ਵਿੱਚ ਇੱਕ ਸੁਨੇਹਾ ਰਿਪੋਰਟ ਕੀਤਾ ਗਿਆ ਸੀ — ਸੁਰੱਖਿਆ ਦੇਖੋ",
+    "learningObjective": "ਸਿੱਖਣ ਦਾ ਉਦੇਸ਼",
+    "learningObjectives": "ਸਿੱਖਣ ਦੇ ਉਦੇਸ਼",
+    "missionNofM": "ਮਿਸ਼ਨ {index} ਵਿੱਚੋਂ {count}",
+    "xpTowardObjective": "ਇਸ ਉਦੇਸ਼ ਲਈ {threshold} XP ਵਿੱਚੋਂ {xp}",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{total} ਉਦੇਸ਼ਾਂ ਵਿੱਚੋਂ {completed} ਪੂਰੇ ਕੀਤੇ ਗਏ",
+    "sparklesEarnedOfTotal": "{total} ਚਮਕਾਂ ਵਿੱਚੋਂ {earned} ਕਮਾਈਆਂ",
+    "sparklesEarnedInLanguage": "{language} ਵਿੱਚ ਕਮਾਈਆਂ ਚਮਕਾਂ",
+    "courseComplete": "ਕੋਰਸ ਪੂਰਾ ਹੋ ਗਿਆ!",
+    "courseCompleteDesc": "ਤੁਸੀਂ ਇਸ ਕੋਰਸ ਵਿੱਚ ਸਾਰੇ {count} ਉਦੇਸ਼ ਪੂਰੇ ਕਰ ਲਏ ਹਨ। ਜੋ ਤੁਸੀਂ ਸਿੱਖਿਆ ਹੈ, ਉਸਨੂੰ ਬਰਕਰਾਰ ਰੱਖਣ ਲਈ ਅਭਿਆਸ ਕਰਦੇ ਰਹੋ।",
+    "practiceObjective": "ਇਸ ਉਦੇਸ਼ ਦਾ ਅਭਿਆਸ ਕਰੋ",
+    "otherActivities": "ਹੋਰ ਗਤੀਵਿਧੀਆਂ",
+    "xpToCompleteObjectiveTitle": "ਪ੍ਰਤੀ ਮਿਸ਼ਨ XP",
+    "xpToCompleteObjectiveDesc": "ਹਰੇਕ ਮਿਸ਼ਨ ਨੂੰ ਪੂਰਾ ਕਰਨ ਲਈ ਲੋੜੀਂਦਾ XP ਸੈੱਟ ਕਰੋ"
 }

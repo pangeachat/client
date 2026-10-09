@@ -3090,7 +3090,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-07 09:01:45.410335",
+    "@@last_modified": "2026-10-09 10:28:33.076789",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10583,5 +10583,19 @@
     "viewImageLabel": "ดูรูปภาพ",
     "reportSent": "ส่งรายงานแล้ว",
     "reportNotSent": "ไม่สามารถส่งรายงานของคุณได้ โปรดตรวจสอบการเชื่อมต่อและลองอีกครั้ง",
-    "reportPointerMessage": "มีข้อความถูกรายงานใน {courseName} — ดูที่ความปลอดภัย"
+    "reportPointerMessage": "มีข้อความถูกรายงานใน {courseName} — ดูที่ความปลอดภัย",
+    "learningObjective": "เป้าหมายการเรียนรู้",
+    "learningObjectives": "เป้าหมายการเรียนรู้",
+    "missionNofM": "ภารกิจที่ {index} จาก {count}",
+    "xpTowardObjective": "{xp} จาก {threshold} XP สู่เป้าหมายนี้",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "ทำเป้าหมายสำเร็จแล้ว {completed} จาก {total}",
+    "sparklesEarnedOfTotal": "ได้รับประกายดาวแล้ว {earned} จาก {total}",
+    "sparklesEarnedInLanguage": "ประกายดาวที่ได้รับในภาษา {language}",
+    "courseComplete": "เรียนจบคอร์สแล้ว!",
+    "courseCompleteDesc": "คุณทำเป้าหมายครบทั้ง {count} ข้อในคอร์สนี้แล้ว ฝึกฝนต่อไปเพื่อรักษาความรู้ที่ได้มา",
+    "practiceObjective": "ฝึกฝนเป้าหมายนี้",
+    "otherActivities": "กิจกรรมอื่นๆ",
+    "xpToCompleteObjectiveTitle": "XP ต่อภารกิจ",
+    "xpToCompleteObjectiveDesc": "กำหนด XP ที่จำเป็นในการทำแต่ละภารกิจให้สำเร็จ"
 }

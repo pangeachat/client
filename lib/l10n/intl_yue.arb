@@ -1260,7 +1260,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-07 09:01:47.199949",
+    "@@last_modified": "2026-10-09 10:28:39.109643",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10908,5 +10908,19 @@
     "viewImageLabel": "睇圖",
     "reportSent": "舉報已送出",
     "reportNotSent": "無法送出你的舉報。請檢查你的連線，然後再試一次。",
-    "reportPointerMessage": "{courseName} 有訊息被舉報咗 — 請睇安全中心"
+    "reportPointerMessage": "{courseName} 有訊息被舉報咗 — 請睇安全中心",
+    "learningObjective": "學習目標",
+    "learningObjectives": "學習目標",
+    "missionNofM": "任務 {index} / {count}",
+    "xpTowardObjective": "此目標已獲 {xp} / {threshold} 經驗值",
+    "xpOfThreshold": "{xp} / {threshold} 經驗值",
+    "objectivesCompletedOfTotal": "已完成 {completed} / {total} 個目標",
+    "sparklesEarnedOfTotal": "已獲得 {earned} / {total} 個閃光",
+    "sparklesEarnedInLanguage": "喺 {language} 獲得嘅閃光",
+    "courseComplete": "課程完成！",
+    "courseCompleteDesc": "你已完成此課程所有 {count} 個目標。繼續練習以鞏固所學。",
+    "practiceObjective": "練習此目標",
+    "otherActivities": "其他活動",
+    "xpToCompleteObjectiveTitle": "每個任務嘅經驗值",
+    "xpToCompleteObjectiveDesc": "設定完成每個任務所需嘅經驗值"
 }

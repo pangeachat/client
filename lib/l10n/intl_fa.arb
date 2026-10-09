@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:30.686113",
+    "@@last_modified": "2026-10-09 10:28:03.694566",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10039,5 +10039,19 @@
     "viewImageLabel": "مشاهده تصویر",
     "reportSent": "گزارش ارسال شد",
     "reportNotSent": "گزارش شما ارسال نشد. اتصال خود را بررسی کرده و دوباره امتحان کنید.",
-    "reportPointerMessage": "پیامی در {courseName} گزارش شد — به بخش ایمنی مراجعه کنید"
+    "reportPointerMessage": "پیامی در {courseName} گزارش شد — به بخش ایمنی مراجعه کنید",
+    "learningObjective": "هدف یادگیری",
+    "learningObjectives": "اهداف یادگیری",
+    "missionNofM": "مأموریت {index} از {count}",
+    "xpTowardObjective": "{xp} از {threshold} امتیاز تجربه برای این هدف",
+    "xpOfThreshold": "{xp} / {threshold} امتیاز تجربه",
+    "objectivesCompletedOfTotal": "{completed} از {total} هدف تکمیل شد",
+    "sparklesEarnedOfTotal": "{earned} از {total} ستاره کسب شد",
+    "sparklesEarnedInLanguage": "ستاره‌های کسب شده در {language}",
+    "courseComplete": "دوره کامل شد!",
+    "courseCompleteDesc": "شما تمام {count} هدف این دوره را تکمیل کرده‌اید. برای حفظ آموخته‌هایتان به تمرین ادامه دهید.",
+    "practiceObjective": "این هدف را تمرین کنید",
+    "otherActivities": "فعالیت‌های دیگر",
+    "xpToCompleteObjectiveTitle": "امتیاز تجربه در هر مأموریت",
+    "xpToCompleteObjectiveDesc": "امتیاز تجربه مورد نیاز برای تکمیل هر مأموریت را تنظیم کنید"
 }

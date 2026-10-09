@@ -8,14 +8,14 @@ void main() {
     List<String> seq,
     Map<String, Set<String>> acts, {
     String courseId = 'c1',
-    int threshold = kDefaultStarsToUnlockObjective,
-    Map<String, int> earnable = const {},
+    int xpToComplete = kDefaultXpToCompleteObjective,
+    Map<String, Set<String>> vocab = const {},
   }) => CourseLoOutline(
     courseId: courseId,
     orderedLoIds: seq,
     activityIdsByLo: acts,
-    starsToUnlock: threshold,
-    earnableByActivity: earnable,
+    vocabLemmasByLo: vocab,
+    xpToComplete: xpToComplete,
   );
 
   /// Rollups are per course (#7771); these single-course cases read 'c1'.
@@ -25,7 +25,7 @@ void main() {
   ]) => r.forCourse(courseId)!.rollup;
 
   group('resolveProgression — rollup', () {
-    test("sums a Mission's stars across its activities", () {
+    test("sums a Mission's XP across its activities", () {
       final r = resolveProgression(
         outlines: [
           outline(
@@ -35,10 +35,10 @@ void main() {
             },
           ),
         ],
-        starsByActivity: {'a': 3, 'b': 4},
+        xpByActivity: {'a': 120, 'b': 150},
       );
-      expect(rollupOf(r)['m1']!.stars, 7);
-      expect(rollupOf(r)['m1']!.threshold, 10);
+      expect(rollupOf(r)['m1']!.xp, 270);
+      expect(rollupOf(r)['m1']!.threshold, 300);
       expect(rollupOf(r)['m1']!.satisfied, isFalse);
     });
 
@@ -53,10 +53,10 @@ void main() {
             },
           ),
         ],
-        starsByActivity: {'a': 5},
+        xpByActivity: {'a': 50},
       );
-      expect(rollupOf(r)['m1']!.stars, 5);
-      expect(rollupOf(r)['m2']!.stars, 5);
+      expect(rollupOf(r)['m1']!.xp, 50);
+      expect(rollupOf(r)['m2']!.xp, 50);
     });
 
     test('an activity shared by two quests is never double-counted', () {
@@ -77,51 +77,36 @@ void main() {
             courseId: 'c2',
           ),
         ],
-        starsByActivity: {'a': 6},
+        xpByActivity: {'a': 60},
       );
-      // Each course counts the shared activity once, in its own rollup — 6,
-      // never 12. Per-course resolution gets this without a union (#7771).
-      expect(rollupOf(r, 'c1')['m1']!.stars, 6);
-      expect(rollupOf(r, 'c2')['m1']!.stars, 6);
+      // Each course counts the shared activity once, in its own rollup — 60,
+      // never 120. Per-course resolution gets this without a union (#7771).
+      expect(rollupOf(r, 'c1')['m1']!.xp, 60);
+      expect(rollupOf(r, 'c2')['m1']!.xp, 60);
+    });
+
+    test('the threshold is the outline\'s, with surplus XP shown raw', () {
+      final r = resolveProgression(
+        outlines: [
+          outline(
+            ['m1'],
+            {
+              'm1': {'a'},
+            },
+            xpToComplete: 200,
+          ),
+        ],
+        xpByActivity: {'a': 340},
+      );
+      expect(rollupOf(r)['m1']!.threshold, 200);
+      expect(rollupOf(r)['m1']!.xp, 340);
+      expect(rollupOf(r)['m1']!.satisfied, isTrue);
+      expect(rollupOf(r)['m1']!.fraction, 1.0);
     });
   });
 
-  group('resolveProgression — effective threshold clamp', () {
-    test('threshold clamps to the sum of earnable stars across activities', () {
-      final r = resolveProgression(
-        outlines: [
-          outline(
-            ['m1'],
-            {
-              'm1': {'a', 'b'},
-            },
-            earnable: {'a': 3, 'b': 4},
-          ),
-        ],
-        starsByActivity: {},
-      );
-      // configured 10, content offers 3 + 4 = 7
-      expect(rollupOf(r)['m1']!.threshold, 7);
-    });
-
-    test('a configured threshold below the ceiling is kept as-is', () {
-      final r = resolveProgression(
-        outlines: [
-          outline(
-            ['m1'],
-            {
-              'm1': {'a', 'b'},
-            },
-            threshold: 5,
-            earnable: {'a': 3, 'b': 4},
-          ),
-        ],
-        starsByActivity: {},
-      );
-      expect(rollupOf(r)['m1']!.threshold, 5);
-    });
-
-    test('a zero ceiling (no goal data) leaves the configured threshold', () {
+  group('resolveProgression — practice XP via the Mission\'s vocabulary', () {
+    test('practice XP on a target lemma credits the Mission', () {
       final r = resolveProgression(
         outlines: [
           outline(
@@ -129,62 +114,35 @@ void main() {
             {
               'm1': {'a'},
             },
+            vocab: {
+              'm1': {'hola', 'adiós'},
+            },
           ),
         ],
-        starsByActivity: {},
+        xpByActivity: {'a': 100},
+        xpByLemma: {'hola': 40, 'adiós': 20},
       );
-      // no earnable data — do NOT clamp to 0 (a Mission must not read
-      // satisfied-at-zero off degraded/legacy plans)
-      expect(rollupOf(r)['m1']!.threshold, kDefaultStarsToUnlockObjective);
+      expect(rollupOf(r)['m1']!.xp, 160);
+    });
+
+    test('a lemma outside the Mission\'s vocabulary is not credited', () {
+      final r = resolveProgression(
+        outlines: [
+          outline(
+            ['m1'],
+            {
+              'm1': {'a'},
+            },
+            vocab: {
+              'm1': {'hola'},
+            },
+          ),
+        ],
+        xpByActivity: const {},
+        xpByLemma: {'gracias': 500},
+      );
+      expect(rollupOf(r)['m1']!.xp, 0);
       expect(rollupOf(r)['m1']!.satisfied, isFalse);
-    });
-
-    test('a Mission satisfiable only via the clamp reads satisfied', () {
-      final r = resolveProgression(
-        outlines: [
-          outline(
-            ['m1', 'm2'],
-            {
-              'm1': {'a'},
-              'm2': {'b'},
-            },
-            earnable: {'a': 4, 'b': 4},
-          ),
-        ],
-        starsByActivity: {'a': 4}, // full marks on m1's only activity
-      );
-      expect(rollupOf(r)['m1']!.satisfied, isTrue);
-      // and the anchor advances past it
-      expect(r.quests.single.anchorMissionId, 'm2');
-    });
-
-    test('each course clamps against its own earnable data', () {
-      // Outlines carry the same plan, so earnable values should agree; if they
-      // ever disagree, each course clamps against what its OWN outline says
-      // rather than inheriting the other's ceiling (#7771).
-      final r = resolveProgression(
-        outlines: [
-          outline(
-            ['m1'],
-            {
-              'm1': {'a'},
-            },
-            courseId: 'c1',
-            earnable: {'a': 4},
-          ),
-          outline(
-            ['m1'],
-            {
-              'm1': {'a'},
-            },
-            courseId: 'c2',
-            earnable: {'a': 3},
-          ),
-        ],
-        starsByActivity: {},
-      );
-      expect(rollupOf(r, 'c1')['m1']!.threshold, 4);
-      expect(rollupOf(r, 'c2')['m1']!.threshold, 3);
     });
   });
 
@@ -201,14 +159,17 @@ void main() {
             },
           ),
         ],
-        starsByActivity: {'a': 10}, // m1 satisfied -> m2 is next
+        xpByActivity: {'a': 300}, // m1 satisfied -> m2 is next
       );
       expect(r.quests.single.anchorMissionId, 'm2');
+      expect(r.quests.single.anchorProgress?.xp, 0);
+      expect(r.quests.single.anchorProgress?.threshold, 300);
     });
 
     test('a fully satisfied quest has no anchor — nothing is Up next', () {
       // #8997: the anchor used to fall back to the weakest Mission, so a
-      // learner who had earned every star still saw "Up next" on work done.
+      // learner who had completed every Mission still saw "Up next" on work
+      // done.
       final r = resolveProgression(
         outlines: [
           outline(
@@ -220,17 +181,55 @@ void main() {
             },
           ),
         ],
-        starsByActivity: {'a': 15, 'b': 10, 'c': 10}, // all >= 10
+        xpByActivity: {'a': 450, 'b': 300, 'c': 300}, // all >= 300
       );
       expect(r.quests.single.anchorMissionId, isNull);
+      expect(r.quests.single.anchorProgress, isNull);
     });
 
     test('an empty sequence yields no quest entry', () {
       final r = resolveProgression(
         outlines: [outline([], {})],
-        starsByActivity: {},
+        xpByActivity: {},
       );
       expect(r.quests, isEmpty);
+    });
+  });
+
+  group('completedMissionIds', () {
+    final r = resolveProgression(
+      outlines: [
+        outline(
+          ['m1', 'm2'],
+          {
+            'm1': {'a'},
+            'm2': {'b'},
+          },
+          courseId: 'c1',
+        ),
+        outline(
+          ['m1', 'm3'],
+          {
+            'm1': {'a'},
+            'm3': {'c'},
+          },
+          courseId: 'c2',
+        ),
+      ],
+      xpByActivity: {'a': 300, 'c': 300},
+    );
+
+    test('a Mission satisfied in two courses is one star, not two', () {
+      expect(r.completedMissionIds(), {'m1', 'm3'});
+    });
+
+    test('inScope narrows to the passing courses', () {
+      expect(r.completedMissionIds(inScope: (c) => c == 'c1'), {'m1'});
+      expect(r.completedMissionIds(inScope: (_) => false), isEmpty);
+    });
+
+    test('the empty resolution has none', () {
+      expect(ProgressionResolution.empty.completedMissionIds(), isEmpty);
     });
   });
 
@@ -248,7 +247,7 @@ void main() {
           },
         ),
       ],
-      starsByActivity: {}, // nothing satisfied -> anchor = m1
+      xpByActivity: {}, // nothing satisfied -> anchor = m1
     );
 
     test('peaks at the anchor and decays linearly to zero', () {
@@ -270,7 +269,7 @@ void main() {
             },
           ),
         ],
-        starsByActivity: {'a1': 10}, // m1 satisfied -> anchor = m2
+        xpByActivity: {'a1': 300}, // m1 satisfied -> anchor = m2
       );
       expect(r2.missionGradient(['m1']), 0); // satisfied
       expect(r2.missionGradient(['m2']), closeTo(1.0, 1e-9)); // anchor
@@ -301,7 +300,7 @@ void main() {
             courseId: 'c3',
           ),
         ],
-        starsByActivity: {},
+        xpByActivity: {},
       );
       // one activity carrying all three anchors: 1+1+1 = 3, saturated to 2
       expect(multi.missionGradient(['q1m1', 'q2m1', 'q3m1']), kBandCeiling);

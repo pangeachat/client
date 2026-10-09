@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-07 09:01:39.580464",
+    "@@last_modified": "2026-10-09 10:28:19.642681",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Tirohia te atahanga",
     "reportSent": "Kua tukuna te pūrongo",
     "reportNotSent": "Kāore i taea te tuku i tō pūrongo. Tirohia tō hononga ka ngana anō.",
-    "reportPointerMessage": "I pūrongotia tētahi karere i roto i a {courseName} — tirohia te Haumaru"
+    "reportPointerMessage": "I pūrongotia tētahi karere i roto i a {courseName} — tirohia te Haumaru",
+    "learningObjective": "Whāinga Akoranga",
+    "learningObjectives": "Ngā Whāinga Akoranga",
+    "missionNofM": "Mihana {index} o {count}",
+    "xpTowardObjective": "{xp} o te {threshold} XP ki tēnei whāinga",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} o te {total} ngā whāinga kua oti",
+    "sparklesEarnedOfTotal": "{earned} o te {total} ngā wheriko kua riro",
+    "sparklesEarnedInLanguage": "Ngā wheriko i riro i te reo {language}",
+    "courseComplete": "Kua oti te akoranga!",
+    "courseCompleteDesc": "Kua oti i a koe ngā whāinga {count} katoa o tēnei akoranga. Me whakaharatau tonu kia mau ai ngā mea i akohia e koe.",
+    "practiceObjective": "Whakaharatau i tēnei whāinga",
+    "otherActivities": "Ētahi atu mahi",
+    "xpToCompleteObjectiveTitle": "XP mō ia Mihana",
+    "xpToCompleteObjectiveDesc": "Tautuhia te XP e hiahiatia ana kia oti ia mihana"
 }

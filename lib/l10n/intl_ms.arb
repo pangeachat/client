@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-07 09:01:39.160252",
+    "@@last_modified": "2026-10-09 10:28:24.273617",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Lihat imej",
     "reportSent": "Laporan dihantar",
     "reportNotSent": "Laporan anda tidak dapat dihantar. Semak sambungan anda dan cuba lagi.",
-    "reportPointerMessage": "Mesej telah dilaporkan dalam {courseName} — lihat Keselamatan"
+    "reportPointerMessage": "Mesej telah dilaporkan dalam {courseName} — lihat Keselamatan",
+    "learningObjective": "Objektif Pembelajaran",
+    "learningObjectives": "Objektif Pembelajaran",
+    "missionNofM": "Misi {index} daripada {count}",
+    "xpTowardObjective": "{xp} daripada {threshold} XP ke arah objektif ini",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} daripada {total} objektif selesai",
+    "sparklesEarnedOfTotal": "{earned} daripada {total} kilauan diperoleh",
+    "sparklesEarnedInLanguage": "Kilauan diperoleh dalam {language}",
+    "courseComplete": "Kursus selesai!",
+    "courseCompleteDesc": "Anda telah menyelesaikan semua {count} objektif dalam kursus ini. Terus berlatih untuk mengekalkan apa yang telah anda pelajari.",
+    "practiceObjective": "Latih objektif ini",
+    "otherActivities": "Aktiviti lain",
+    "xpToCompleteObjectiveTitle": "XP setiap Misi",
+    "xpToCompleteObjectiveDesc": "Tetapkan XP yang diperlukan untuk menyelesaikan setiap misi"
 }

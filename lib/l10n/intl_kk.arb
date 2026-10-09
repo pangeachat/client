@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-07 09:01:35.912767",
+    "@@last_modified": "2026-10-09 10:28:16.318054",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Суретті көру",
     "reportSent": "Хабар жіберілді",
     "reportNotSent": "Хабарыңыз жіберілмеді. Байланысты тексеріп, қайталап көріңіз.",
-    "reportPointerMessage": "{courseName} курсында хабарлама жіберілді — Қауіпсіздікті қараңыз"
+    "reportPointerMessage": "{courseName} курсында хабарлама жіберілді — Қауіпсіздікті қараңыз",
+    "learningObjective": "Оқу мақсаты",
+    "learningObjectives": "Оқу мақсаттары",
+    "missionNofM": "{count} миссияның {index}-і",
+    "xpTowardObjective": "Осы мақсатқа қарай {threshold} XP-дан {xp} XP",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{total} мақсаттың {completed}-і аяқталды",
+    "sparklesEarnedOfTotal": "{total} жарқыраудың {earned}-і табылды",
+    "sparklesEarnedInLanguage": "{language} тілінде табылған жарқыраулар",
+    "courseComplete": "Курс аяқталды!",
+    "courseCompleteDesc": "Сіз осы курстағы барлық {count} мақсатты аяқтадыңыз. Үйренгеніңізді есте сақтау үшін жаттығуды жалғастырыңыз.",
+    "practiceObjective": "Осы мақсатты жаттықтыру",
+    "otherActivities": "Басқа әрекеттер",
+    "xpToCompleteObjectiveTitle": "Миссияға шаққандағы XP",
+    "xpToCompleteObjectiveDesc": "Әр миссияны аяқтау үшін қажетті XP-ны орнатыңыз"
 }

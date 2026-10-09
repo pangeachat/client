@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-07 09:01:45.302631",
+    "@@last_modified": "2026-10-09 10:28:37.276442",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10252,5 +10252,19 @@
     "viewImageLabel": "Resmi görüntüle",
     "reportSent": "Rapor gönderildi",
     "reportNotSent": "Raporunuz gönderilemedi. Bağlantınızı kontrol edip tekrar deneyin.",
-    "reportPointerMessage": "{courseName} içinde bir mesaj bildirildi — Güvenlik bölümüne bakın"
+    "reportPointerMessage": "{courseName} içinde bir mesaj bildirildi — Güvenlik bölümüne bakın",
+    "learningObjective": "Öğrenim Hedefi",
+    "learningObjectives": "Öğrenim Hedefleri",
+    "missionNofM": "{count} görevden {index}. görev",
+    "xpTowardObjective": "Bu hedefe yönelik {threshold} XP'den {xp} XP",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{total} hedeften {completed} tanesi tamamlandı",
+    "sparklesEarnedOfTotal": "{total} ışıltıdan {earned} tanesi kazanıldı",
+    "sparklesEarnedInLanguage": "{language} dilinde kazanılan ışıltılar",
+    "courseComplete": "Kurs tamamlandı!",
+    "courseCompleteDesc": "Bu kurstaki {count} hedefin tümünü tamamladın. Öğrendiklerini pekiştirmek için pratik yapmaya devam et.",
+    "practiceObjective": "Bu hedefi pratik et",
+    "otherActivities": "Diğer aktiviteler",
+    "xpToCompleteObjectiveTitle": "Görev Başına XP",
+    "xpToCompleteObjectiveDesc": "Her görevi tamamlamak için gereken XP'yi ayarla"
 }

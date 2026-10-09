@@ -61,7 +61,9 @@ enum ProgressIndicatorEnum {
       case ProgressIndicatorEnum.activities:
         return L10n.of(context).activities;
       case ProgressIndicatorEnum.stars:
-        return L10n.of(context).stars;
+        // A star is a completed Learning Objective (#9436), so the tracker
+        // names what it counts.
+        return L10n.of(context).learningObjectives;
     }
   }
 

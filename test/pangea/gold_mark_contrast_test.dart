@@ -6,6 +6,7 @@ import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_status_widget.dart';
 import 'package:fluffychat/routes/world/world_map_star_dot.dart';
+import 'package:fluffychat/widgets/sparkle_icon.dart';
 import 'contrast_ratio.dart';
 
 /// The sibling gold marks #8760 left out of scope (#8983). Each one's fill is
@@ -32,7 +33,7 @@ void main() {
     final scheme = theme.colorScheme;
     final name = brightness.name;
 
-    testWidgets('earned goal star clears 3:1 in $name', (tester) async {
+    testWidgets('earned goal sparkle clears 3:1 in $name', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
           theme: theme,
@@ -48,9 +49,11 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      final gold = tester.widget<Icon>(find.byIcon(Icons.star)).color!;
+      // A goal is a sparkle, never a star (#9439): the goal header's mark is
+      // a [SparkleIcon], whose colour is the fill.
+      final gold = tester.widget<SparkleIcon>(find.byType(SparkleIcon)).color;
 
-      // The star's real backdrops. It rides the goal header card, which is
+      // The sparkle's real backdrops. It rides the goal header card, which is
       // `surface` until the role is complete and a gold tint after; the active
       // goal's star sits on a translucent onSurface circle over either.
       final goldTint = Color.alphaBlend(

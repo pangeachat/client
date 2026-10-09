@@ -48,11 +48,17 @@ class SuggestedActivity {
 /// open sessions from the discovery cache, which carries no per-session start
 /// time, and a continuously-decaying term would reorder the row under a learner
 /// who is only reading it.
+///
+/// The course page's current-Mission row (#9437) passes [keepCompleted]: a
+/// finished activity stays in the row, demoted below everything unfinished,
+/// since the row is the Mission's whole content and a learner may replay one
+/// to raise its XP. [cap] null means the whole row.
 List<SuggestedActivity> rankSuggestedActivities({
   required List<QuestObjectiveGroup> groups,
   required double Function(Set<String> missionRefs) missionGradient,
   required PinSignals Function(String activityId) signalsFor,
-  int cap = kSuggestedActivitiesCap,
+  int? cap = kSuggestedActivitiesCap,
+  bool keepCompleted = false,
 }) {
   final byActivity = <String, SuggestedActivity>{};
   for (final group in groups) {
@@ -69,18 +75,21 @@ List<SuggestedActivity> rankSuggestedActivities({
   for (final suggestion in byActivity.values) {
     final signals = signalsFor(suggestion.activityId);
     if (signals.state.isOngoing) continue;
-    if (signals.isCompleted && signals.state != ActivityPinState.joinable) {
-      continue;
-    }
+    final finished =
+        signals.isCompleted && signals.state != ActivityPinState.joinable;
+    if (finished && !keepCompleted) continue;
     final plan = suggestion.activity.plan;
     scored.add((
       suggestion,
       pinScore(
-        band: missionGradient(suggestion.missionIds),
-        s: signals,
-        ratingAverage: plan.ratingAverage,
-        ratingCount: plan.ratingCount,
-      ),
+            band: missionGradient(suggestion.missionIds),
+            s: signals,
+            ratingAverage: plan.ratingAverage,
+            ratingCount: plan.ratingCount,
+          ) -
+          // Below every unfinished activity, whatever their scores: the
+          // matrix's terms are bounded well under this.
+          (finished ? _completedDemotion : 0),
     ));
   }
 
@@ -92,5 +101,8 @@ List<SuggestedActivity> rankSuggestedActivities({
     return byScore != 0 ? byScore : a.$1.activityId.compareTo(b.$1.activityId);
   });
 
-  return [for (final (suggestion, _) in scored.take(cap)) suggestion];
+  final kept = cap == null ? scored : scored.take(cap);
+  return [for (final (suggestion, _) in kept) suggestion];
 }
+
+const double _completedDemotion = 1000.0;

@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-07 09:01:29.665644",
+    "@@last_modified": "2026-10-09 10:28:09.625026",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Tan-awa ang hulagway",
     "reportSent": "Napadala ang report",
     "reportNotSent": "Dili mapadala ang imong report. Susiha ang imong koneksyon ug sulayi pag-usab.",
-    "reportPointerMessage": "Usa ka mensahe ang gi-report sa {courseName} — tan-awa ang Safety"
+    "reportPointerMessage": "Usa ka mensahe ang gi-report sa {courseName} — tan-awa ang Safety",
+    "learningObjective": "Tumong sa Pagkat-on",
+    "learningObjectives": "Mga Tumong sa Pagkat-on",
+    "missionNofM": "Misyon {index} sa {count}",
+    "xpTowardObjective": "{xp} sa {threshold} XP padulong niini nga tumong",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} sa {total} ka tumong nahuman",
+    "sparklesEarnedOfTotal": "{earned} sa {total} ka sparkles nakuha",
+    "sparklesEarnedInLanguage": "Mga sparkles nga nakuha sa {language}",
+    "courseComplete": "Kumpleto na ang kurso!",
+    "courseCompleteDesc": "Nahuman na nimo ang tanang {count} ka tumong niini nga kurso. Padayon sa pagpraktis aron dili makalimtan ang imong nakat-unan.",
+    "practiceObjective": "Ipraktis kini nga tumong",
+    "otherActivities": "Uban pang mga kalihokan",
+    "xpToCompleteObjectiveTitle": "XP kada Misyon",
+    "xpToCompleteObjectiveDesc": "Ibutang ang XP nga gikinahanglan aron makompleto ang matag misyon"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:47.154069",
+    "@@last_modified": "2026-10-09 10:28:38.683638",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10057,5 +10057,19 @@
     "viewImageLabel": "檢視圖片",
     "reportSent": "檢舉已送出",
     "reportNotSent": "您的檢舉無法送出。請檢查您的連線並再試一次。",
-    "reportPointerMessage": "在「{courseName}」中有一則訊息被檢舉了 — 請查看「安全」"
+    "reportPointerMessage": "在「{courseName}」中有一則訊息被檢舉了 — 請查看「安全」",
+    "learningObjective": "學習目標",
+    "learningObjectives": "學習目標",
+    "missionNofM": "任務 {index} / {count}",
+    "xpTowardObjective": "此目標的 {xp} / {threshold} 經驗值",
+    "xpOfThreshold": "{xp} / {threshold} 經驗值",
+    "objectivesCompletedOfTotal": "已完成 {completed} / {total} 個目標",
+    "sparklesEarnedOfTotal": "已獲得 {earned} / {total} 個閃光",
+    "sparklesEarnedInLanguage": "在 {language} 中獲得的閃光",
+    "courseComplete": "課程完成！",
+    "courseCompleteDesc": "您已完成本課程的所有 {count} 個目標。請繼續練習以鞏固所學。",
+    "practiceObjective": "練習此目標",
+    "otherActivities": "其他活動",
+    "xpToCompleteObjectiveTitle": "每個任務的經驗值",
+    "xpToCompleteObjectiveDesc": "設定完成每個任務所需的經驗值"
 }

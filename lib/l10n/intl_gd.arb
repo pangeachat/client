@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-07 09:01:32.482321",
+    "@@last_modified": "2026-10-09 10:28:07.843003",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Seall an dealbh",
     "reportSent": "Aithisg air a cur",
     "reportNotSent": "Cha b' urrainn dhuinn an aithisg agad a chur. Thoir sùil air a' cheangal agad is feuch ris a-rithist.",
-    "reportPointerMessage": "Chaidh teachdaireachd aithris ann an {courseName} — faic Sàbhailteachd"
+    "reportPointerMessage": "Chaidh teachdaireachd aithris ann an {courseName} — faic Sàbhailteachd",
+    "learningObjective": "Amas Ionnsachaidh",
+    "learningObjectives": "Amasan Ionnsachaidh",
+    "missionNofM": "Misean {index} de {count}",
+    "xpTowardObjective": "{xp} de {threshold} XP a dh'ionnsaigh an amais seo",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} de {total} amasan air an coileanadh",
+    "sparklesEarnedOfTotal": "{earned} de {total} boillsgein air an cosnadh",
+    "sparklesEarnedInLanguage": "Boillsgein air an cosnadh ann an {language}",
+    "courseComplete": "Cùrsa deiseil!",
+    "courseCompleteDesc": "Tha thu air na {count} amasan sa chùrsa seo a choileanadh. Cùm ort ag cleachdadh gus na dh'ionnsaich thu a chumail.",
+    "practiceObjective": "Cleachd an amas seo",
+    "otherActivities": "Gnìomhan eile",
+    "xpToCompleteObjectiveTitle": "XP gach Misean",
+    "xpToCompleteObjectiveDesc": "Suidhich an XP a tha a dhìth gus gach misean a choileanadh"
 }

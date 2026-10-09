@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-07 09:01:30.269948",
+    "@@last_modified": "2026-10-09 10:28:00.588441",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10445,5 +10445,19 @@
     "viewImageLabel": "Zobrazit obrázek",
     "reportSent": "Hlášení odesláno",
     "reportNotSent": "Vaše hlášení se nepodařilo odeslat. Zkontrolujte připojení a zkuste to znovu.",
-    "reportPointerMessage": "Zpráva byla nahlášena v {courseName} – viz Bezpečnost"
+    "reportPointerMessage": "Zpráva byla nahlášena v {courseName} – viz Bezpečnost",
+    "learningObjective": "Cíl učení",
+    "learningObjectives": "Cíle učení",
+    "missionNofM": "Mise {index} z {count}",
+    "xpTowardObjective": "{xp} z {threshold} XP k tomuto cíli",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} z {total} cílů splněno",
+    "sparklesEarnedOfTotal": "{earned} z {total} získaných jiskřiček",
+    "sparklesEarnedInLanguage": "Jiskřičky získané v jazyce {language}",
+    "courseComplete": "Kurz dokončen!",
+    "courseCompleteDesc": "Dokončili jste všech {count} cílů v tomto kurzu. Pokračujte v procvičování, abyste si udrželi to, co jste se naučili.",
+    "practiceObjective": "Procvičit tento cíl",
+    "otherActivities": "Další aktivity",
+    "xpToCompleteObjectiveTitle": "XP za misi",
+    "xpToCompleteObjectiveDesc": "Nastavte XP potřebné k dokončení každé mise"
 }

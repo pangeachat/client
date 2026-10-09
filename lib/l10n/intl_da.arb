@@ -1331,7 +1331,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-07 09:01:29.748402",
+    "@@last_modified": "2026-10-09 10:28:04.748734",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10871,5 +10871,19 @@
     "viewImageLabel": "Se billede",
     "reportSent": "Rapport sendt",
     "reportNotSent": "Din rapport kunne ikke sendes. Tjek din forbindelse, og prøv igen.",
-    "reportPointerMessage": "En besked blev rapporteret i {courseName} – se Sikkerhed"
+    "reportPointerMessage": "En besked blev rapporteret i {courseName} – se Sikkerhed",
+    "learningObjective": "Læringsmål",
+    "learningObjectives": "Læringsmål",
+    "missionNofM": "Mission {index} af {count}",
+    "xpTowardObjective": "{xp} af {threshold} XP mod dette mål",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} af {total} mål fuldført",
+    "sparklesEarnedOfTotal": "{earned} af {total} gnister optjent",
+    "sparklesEarnedInLanguage": "Gnister optjent i {language}",
+    "courseComplete": "Kursus fuldført!",
+    "courseCompleteDesc": "Du har fuldført alle {count} mål i dette kursus. Bliv ved med at øve dig for at bevare det, du har lært.",
+    "practiceObjective": "Øv dette mål",
+    "otherActivities": "Andre aktiviteter",
+    "xpToCompleteObjectiveTitle": "XP pr. mission",
+    "xpToCompleteObjectiveDesc": "Indstil den XP, der er nødvendig for at fuldføre hver mission"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-07 09:01:41.414538",
+    "@@last_modified": "2026-10-09 10:28:26.460841",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10036,5 +10036,19 @@
     "viewImageLabel": "Wyświetl obraz",
     "reportSent": "Zgłoszenie wysłane",
     "reportNotSent": "Twoje zgłoszenie nie mogło zostać wysłane. Sprawdź połączenie i spróbuj ponownie.",
-    "reportPointerMessage": "Wiadomość została zgłoszona w {courseName} — zobacz Bezpieczeństwo"
+    "reportPointerMessage": "Wiadomość została zgłoszona w {courseName} — zobacz Bezpieczeństwo",
+    "learningObjective": "Cel nauki",
+    "learningObjectives": "Cele nauki",
+    "missionNofM": "Misja {index} z {count}",
+    "xpTowardObjective": "{xp} z {threshold} PD do tego celu",
+    "xpOfThreshold": "{xp} / {threshold} PD",
+    "objectivesCompletedOfTotal": "{completed} z {total} celów ukończonych",
+    "sparklesEarnedOfTotal": "{earned} z {total} iskierek zdobytych",
+    "sparklesEarnedInLanguage": "Iskierki zdobyte w języku {language}",
+    "courseComplete": "Kurs ukończony!",
+    "courseCompleteDesc": "Ukończyłeś wszystkie {count} cele w tym kursie. Kontynuuj ćwiczenia, aby utrwalić to, czego się nauczyłeś.",
+    "practiceObjective": "Ćwicz ten cel",
+    "otherActivities": "Inne aktywności",
+    "xpToCompleteObjectiveTitle": "PD za misję",
+    "xpToCompleteObjectiveDesc": "Ustaw liczbę PD potrzebnych do ukończenia każdej misji"
 }

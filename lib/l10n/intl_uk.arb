@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-07 09:01:45.617258",
+    "@@last_modified": "2026-10-09 10:28:34.307100",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9951,5 +9951,19 @@
     "viewImageLabel": "Переглянути зображення",
     "reportSent": "Звіт надіслано",
     "reportNotSent": "Ваш звіт не вдалося надіслати. Перевірте з’єднання та спробуйте ще раз.",
-    "reportPointerMessage": "Повідомлення було надіслано в {courseName} — дивіться Безпека"
+    "reportPointerMessage": "Повідомлення було надіслано в {courseName} — дивіться Безпека",
+    "learningObjective": "Ціль навчання",
+    "learningObjectives": "Цілі навчання",
+    "missionNofM": "Місія {index} із {count}",
+    "xpTowardObjective": "{xp} із {threshold} XP до цієї цілі",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} із {total} цілей виконано",
+    "sparklesEarnedOfTotal": "{earned} із {total} блискіток зароблено",
+    "sparklesEarnedInLanguage": "Блискіток зароблено в {language}",
+    "courseComplete": "Курс завершено!",
+    "courseCompleteDesc": "Ви виконали всі {count} цілі в цьому курсі. Продовжуйте практикуватися, щоб зберегти те, що ви вивчили.",
+    "practiceObjective": "Практикувати цю ціль",
+    "otherActivities": "Інші активності",
+    "xpToCompleteObjectiveTitle": "XP за місію",
+    "xpToCompleteObjectiveDesc": "Встановіть XP, необхідні для завершення кожної місії"
 }

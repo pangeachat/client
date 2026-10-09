@@ -4,19 +4,31 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
-import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
-/// The overall course progress bar for the course page: the quest's
-/// earned-over-threshold stars and a bar. It rides the page's intro block
-/// (under the Catch up card, #8357) and stands alone in the collapsed mobile
-/// peek — where the sections aren't even mounted — so a learner always sees
-/// course progress without scrolling. Reads the shared progression the
+/// What a [CourseProgressBar] measures (#9420).
+enum CourseProgressScope {
+  /// The current Mission's XP meter: the course page's Learning Objective
+  /// section and the collapsed peek, where the learner asks "how close am I
+  /// to the next star?" (#9437).
+  currentObjective,
+
+  /// Missions complete over Missions in the plan: the full plan subpage's
+  /// pinned bar, where the whole course is in view.
+  course,
+}
+
+/// The course progress bar: a fraction and a bar. On the course page it is
+/// the current Mission's meter, under the Mission's statement; it stands alone
+/// in the collapsed mobile peek — where the sections aren't even mounted — so
+/// a learner always sees progress without scrolling; on the full plan it is
+/// course-wide ([CourseProgressScope]). Reads the shared progression the
 /// [QuestObjectivesLoader] resolves and keeps current; renders a muted empty
 /// bar until it lands so the layout (and the peek) stays stable.
 class CourseProgressBar extends StatelessWidget {
   final QuestObjectivesLoader objectivesProvider;
+  final CourseProgressScope scope;
 
   /// Registers this bar as a tutorial spotlight target. Only the course page's
   /// instance passes one; the bar renders in three places ([TutorialTarget]).
@@ -24,6 +36,7 @@ class CourseProgressBar extends StatelessWidget {
 
   const CourseProgressBar({
     required this.objectivesProvider,
+    this.scope = CourseProgressScope.currentObjective,
     this.tutorialTargetId,
     super.key,
   });
@@ -33,37 +46,65 @@ class CourseProgressBar extends StatelessWidget {
     targetId: tutorialTargetId,
     child: ValueListenableBuilder(
       valueListenable: objectivesProvider.progression,
-      builder: (context, progression, _) =>
-          ProgressBarRow(summary: objectivesProvider.questStars),
+      builder: (context, progression, _) {
+        final l10n = L10n.of(context);
+        switch (scope) {
+          case CourseProgressScope.currentObjective:
+            // A complete course has no current Mission (#8997); its meter
+            // reads full rather than empty.
+            if (objectivesProvider.isCourseComplete) {
+              return ProgressBarRow(fraction: 1.0, label: l10n.courseComplete);
+            }
+            final progress = objectivesProvider.currentObjectiveProgress;
+            return ProgressBarRow(
+              fraction: progress?.fraction,
+              label: progress == null
+                  ? null
+                  : l10n.xpTowardObjective(progress.xp, progress.threshold),
+            );
+          case CourseProgressScope.course:
+            final summary = objectivesProvider.questStars;
+            return ProgressBarRow(
+              fraction: summary?.fraction,
+              label: summary == null
+                  ? null
+                  : l10n.objectivesCompletedOfTotal(
+                      summary.earned,
+                      summary.total,
+                    ),
+            );
+        }
+      },
     ),
   );
 }
 
-/// The overall course progress bar: a rounded bright-gold fill over a neutral
-/// surface track with a star sitting INSIDE the bar at the goal (right) end —
-/// no number. Learners
-/// read progress from the fill and tap/hover the bar for the exact
-/// earned/threshold (#7597, the Figma course-plan frame). A null [summary]
-/// renders the muted empty state (pre-resolve), keeping the header height
-/// stable.
+/// The progress bar itself: a rounded bright-gold fill over a neutral surface
+/// track with a star sitting INSIDE the bar at the goal (right) end — no
+/// number. Learners read progress from the fill and tap/hover the bar for the
+/// exact count in [label] (#7597, the Figma course-plan frame). A null
+/// [fraction] renders the muted empty state (pre-resolve), keeping the header
+/// height stable.
 class ProgressBarRow extends StatelessWidget {
-  final QuestStarSummary? summary;
+  final double? fraction;
+  final String? label;
 
   /// The track's height. Published so the course context bar can state its
   /// own height from its parts ([CourseContextBar.height]).
   static const double height = 20.0;
   static const double _barHeight = height;
 
-  const ProgressBarRow({required this.summary, super.key});
+  const ProgressBarRow({
+    required this.fraction,
+    required this.label,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final summary = this.summary;
-    final fraction = (summary?.fraction ?? 0.0).clamp(0.0, 1.0);
-    final label = summary == null
-        ? null
-        : L10n.of(context).starsEarnedOfTotal(summary.earned, summary.total);
+    final fraction = (this.fraction ?? 0.0).clamp(0.0, 1.0);
+    final label = this.label;
 
     final bar = SizedBox(
       height: _barHeight,
@@ -110,6 +151,7 @@ class ProgressBarRow extends StatelessWidget {
           // The goal star, inside the bar at the right end, in the mark gold so
           // it clears 3:1 on the track; at full progress it sits on the fill as
           // the silhouette the surface-coloured outline star behind it draws.
+          // A star, not a sparkle: the full bar is a completed Mission.
           Positioned(
             right: 5.0,
             child: SizedBox(

@@ -100,11 +100,12 @@ void main() {
   Color? colorOf(WidgetTester tester, String text) =>
       tester.widget<Text>(find.text(text)).style?.color;
 
-  /// The star-or-check glyph in the header, found beside the fraction so the
-  /// activity card's own star row can't satisfy the lookup.
-  Finder headerIcon(WidgetTester tester, String fraction, IconData icon) =>
+  /// The star-or-check glyph in the header, found beside the XP count
+  /// (`xpOfThreshold`, "{xp} / {threshold} XP") so the activity card's own
+  /// star row can't satisfy the lookup.
+  Finder headerIcon(WidgetTester tester, String xpCount, IconData icon) =>
       find.descendant(
-        of: find.ancestor(of: find.text(fraction), matching: find.byType(Row)),
+        of: find.ancestor(of: find.text(xpCount), matching: find.byType(Row)),
         matching: find.byIcon(icon),
       );
 
@@ -116,12 +117,12 @@ void main() {
         tester,
         1200,
         isUpNext: true,
-        progress: const MissionProgress(stars: 0, threshold: 4),
+        progress: const MissionProgress(xp: 0, threshold: 300),
       );
 
       expect(find.text(upNextLabel), findsOneWidget);
       expect(colorOf(tester, objectiveText), scheme(tester).primary);
-      expect(headerIcon(tester, '0/4', Icons.star), findsOneWidget);
+      expect(headerIcon(tester, '0 / 300 XP', Icons.star), findsOneWidget);
     });
 
     testWidgets('the label survives the narrow (phone) header layout', (
@@ -131,7 +132,7 @@ void main() {
         tester,
         400,
         isUpNext: true,
-        progress: const MissionProgress(stars: 0, threshold: 4),
+        progress: const MissionProgress(xp: 0, threshold: 300),
       );
 
       expect(find.text(upNextLabel), findsOneWidget);
@@ -143,19 +144,24 @@ void main() {
         tester,
         1200,
         isUpNext: false,
-        progress: const MissionProgress(stars: 4, threshold: 4),
+        progress: const MissionProgress(xp: 300, threshold: 300),
       );
 
-      expect(headerIcon(tester, '4/4', Icons.check_circle), findsOneWidget);
-      expect(headerIcon(tester, '4/4', Icons.star), findsNothing);
+      expect(
+        headerIcon(tester, '300 / 300 XP', Icons.check_circle),
+        findsOneWidget,
+      );
+      expect(headerIcon(tester, '300 / 300 XP', Icons.star), findsNothing);
       expect(
         tester
-            .widget<Icon>(headerIcon(tester, '4/4', Icons.check_circle))
+            .widget<Icon>(
+              headerIcon(tester, '300 / 300 XP', Icons.check_circle),
+            )
             .color,
         Theme.of(tester.element(find.text(objectiveText))).pangea.success,
       );
       expect(colorOf(tester, objectiveText), scheme(tester).onSurfaceVariant);
-      expect(colorOf(tester, '4/4'), scheme(tester).onSurfaceVariant);
+      expect(colorOf(tester, '300 / 300 XP'), scheme(tester).onSurfaceVariant);
       expect(find.text(upNextLabel), findsNothing);
     });
 
@@ -164,11 +170,11 @@ void main() {
         tester,
         1200,
         isUpNext: false,
-        progress: const MissionProgress(stars: 1, threshold: 4),
+        progress: const MissionProgress(xp: 100, threshold: 300),
       );
 
       expect(find.text(upNextLabel), findsNothing);
-      expect(headerIcon(tester, '1/4', Icons.star), findsOneWidget);
+      expect(headerIcon(tester, '100 / 300 XP', Icons.star), findsOneWidget);
       // Plain bodyMedium — no accent, no muting.
       expect(
         colorOf(tester, objectiveText),
@@ -176,10 +182,12 @@ void main() {
           tester.element(find.text(objectiveText)),
         ).textTheme.bodyMedium?.color,
       );
-      // The star's fill is what carries the fraction, so it wears the readable
+      // The star's fill is what carries the XP count, so it wears the readable
       // gold, not the decorative one (#8983).
       expect(
-        tester.widget<Icon>(headerIcon(tester, '1/4', Icons.star)).color,
+        tester
+            .widget<Icon>(headerIcon(tester, '100 / 300 XP', Icons.star))
+            .color,
         Theme.of(tester.element(find.text(objectiveText))).pangea.goldGraphic,
       );
     });

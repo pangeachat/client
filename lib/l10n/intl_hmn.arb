@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-07 09:01:33.922509",
+    "@@last_modified": "2026-10-09 10:28:10.054205",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Saib duab",
     "reportSent": "Daim ntawv qhia raug xa lawm",
     "reportNotSent": "Koj daim ntawv qhia xa tsis tau. Saib koj qhov txuas thiab sim dua.",
-    "reportPointerMessage": "Ib tsab ntawv raug qhia hauv {courseName} — saib Kev Nyab Xeeb"
+    "reportPointerMessage": "Ib tsab ntawv raug qhia hauv {courseName} — saib Kev Nyab Xeeb",
+    "learningObjective": "Lub Hom Phiaj Kawm",
+    "learningObjectives": "Cov Hom Phiaj Kawm",
+    "missionNofM": "Lub Hom Phiaj {index} ntawm {count}",
+    "xpTowardObjective": "{xp} ntawm {threshold} XP rau lub hom phiaj no",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} ntawm {total} lub hom phiaj ua tiav",
+    "sparklesEarnedOfTotal": "{earned} ntawm {total} lub hnub qub tau txais",
+    "sparklesEarnedInLanguage": "Lub hnub qub tau txais hauv {language}",
+    "courseComplete": "Kawm tiav!",
+    "courseCompleteDesc": "Koj tau ua tiav tag nrho {count} lub hom phiaj hauv chav kawm no. Txuas ntxiv xyaum kom nco ntsoov qhov koj tau kawm.",
+    "practiceObjective": "Xyaum lub hom phiaj no",
+    "otherActivities": "Lwm yam haujlwm",
+    "xpToCompleteObjectiveTitle": "XP rau ib lub hom phiaj",
+    "xpToCompleteObjectiveDesc": "Teem tus XP uas xav tau kom ua tiav txhua lub hom phiaj"
 }

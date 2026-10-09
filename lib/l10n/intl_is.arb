@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-07 09:01:35.051473",
+    "@@last_modified": "2026-10-09 10:28:13.211468",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Skoða mynd",
     "reportSent": "Tilkynning send",
     "reportNotSent": "Ekki tókst að senda tilkynninguna þína. Athugaðu nettenginguna þína og reyndu aftur.",
-    "reportPointerMessage": "Skilaboð voru tilkynnt í {courseName} — sjá Öryggi"
+    "reportPointerMessage": "Skilaboð voru tilkynnt í {courseName} — sjá Öryggi",
+    "learningObjective": "Námmarkmið",
+    "learningObjectives": "Námmarkmið",
+    "missionNofM": "Verkefni {index} af {count}",
+    "xpTowardObjective": "{xp} af {threshold} XP í átt að þessu markmiði",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} af {total} markmiðum lokið",
+    "sparklesEarnedOfTotal": "{earned} af {total} glitrum fengnar",
+    "sparklesEarnedInLanguage": "Glitrur fengnar í {language}",
+    "courseComplete": "Námskeiði lokið!",
+    "courseCompleteDesc": "Þú hefur lokið öllum {count} markmiðum á þessu námskeiði. Haltu áfram að æfa þig til að halda því sem þú hefur lært.",
+    "practiceObjective": "Æfðu þetta markmið",
+    "otherActivities": "Aðrar athafnir",
+    "xpToCompleteObjectiveTitle": "XP á verkefni",
+    "xpToCompleteObjectiveDesc": "Stilltu XP sem þarf til að ljúka hverju verkefni"
 }

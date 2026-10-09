@@ -3545,7 +3545,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-07 09:01:28.504630",
+    "@@last_modified": "2026-10-09 10:28:00.537508",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9965,5 +9965,19 @@
     "viewImageLabel": "Паглядзець выяву",
     "reportSent": "Справаздача адпраўлена",
     "reportNotSent": "Ваша справаздача не можа быць адпраўлена. Праверце злучэнне і паспрабуйце зноў.",
-    "reportPointerMessage": "Паведамленне было паведамлена ў {courseName} — глядзіце Бяспека"
+    "reportPointerMessage": "Паведамленне было паведамлена ў {courseName} — глядзіце Бяспека",
+    "learningObjective": "Мэта навучання",
+    "learningObjectives": "Мэты навучання",
+    "missionNofM": "Місія {index} з {count}",
+    "xpTowardObjective": "{xp} з {threshold} XP да гэтай мэты",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} з {total} мэтаў выканана",
+    "sparklesEarnedOfTotal": "{earned} з {total} бліскавак зароблена",
+    "sparklesEarnedInLanguage": "Бліскаўкі, заробленыя ў {language}",
+    "courseComplete": "Курс завершаны!",
+    "courseCompleteDesc": "Вы выканалі ўсе {count} мэты ў гэтым курсе. Працягвайце практыкавацца, каб захаваць тое, што вы вывучылі.",
+    "practiceObjective": "Практыкаваць гэтую мэту",
+    "otherActivities": "Іншыя заняткі",
+    "xpToCompleteObjectiveTitle": "XP за місію",
+    "xpToCompleteObjectiveDesc": "Усталюйце XP, неабходныя для выканання кожнай місіі"
 }

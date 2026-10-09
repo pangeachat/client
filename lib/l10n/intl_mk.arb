@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-07 09:01:38.907507",
+    "@@last_modified": "2026-10-09 10:28:21.098381",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Погледни слика",
     "reportSent": "Извештајот е испратен",
     "reportNotSent": "Вашиот извештај не можеше да биде испратен. Проверете ја вашата врска и обидете се повторно.",
-    "reportPointerMessage": "Пораката е пријавена во {courseName} — видете Безбедност"
+    "reportPointerMessage": "Пораката е пријавена во {courseName} — видете Безбедност",
+    "learningObjective": "Цел на учење",
+    "learningObjectives": "Цели на учење",
+    "missionNofM": "Мисија {index} од {count}",
+    "xpTowardObjective": "{xp} од {threshold} XP до оваа цел",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} од {total} завршени цели",
+    "sparklesEarnedOfTotal": "{earned} од {total} освоени светки",
+    "sparklesEarnedInLanguage": "Освоени светки на {language}",
+    "courseComplete": "Курсот е завршен!",
+    "courseCompleteDesc": "Ги завршивте сите {count} цели на овој курс. Продолжете да вежбате за да го задржите она што сте го научиле.",
+    "practiceObjective": "Вежбајте ја оваа цел",
+    "otherActivities": "Други активности",
+    "xpToCompleteObjectiveTitle": "XP по мисија",
+    "xpToCompleteObjectiveDesc": "Поставете го XP потребно за да ја завршите секоја мисија"
 }

@@ -6,27 +6,25 @@ import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 /// Missions are a shared catalog reused across quests, so two joined courses
 /// routinely carry the SAME Mission with DIFFERENT activities. The rollup is
 /// resolved per course outline for exactly that reason: a global union would
-/// clamp one course's threshold against another course's content and credit
-/// its stars. See quests.instructions.md ("Star display on the course panel").
+/// credit one course's XP to another course's content. See
+/// quests.instructions.md ("Star display on the course panel").
 void main() {
   CourseLoOutline outline(
     String courseId,
     List<String> seq,
     Map<String, Set<String>> acts, {
     String? questId,
-    int threshold = kDefaultStarsToUnlockObjective,
-    Map<String, int> earnable = const {},
+    int xpToComplete = kDefaultXpToCompleteObjective,
   }) => CourseLoOutline(
     courseId: courseId,
     questId: questId,
     orderedLoIds: seq,
     activityIdsByLo: acts,
-    starsToUnlock: threshold,
-    earnableByActivity: earnable,
+    xpToComplete: xpToComplete,
   );
 
-  /// Course A pins Mission m1 to a single 4-star activity; course B carries the
-  /// same Mission with its own, different 4-star activity.
+  /// Course A pins Mission m1 to a single activity; course B carries the same
+  /// Mission with its own, different activity.
   List<CourseLoOutline> sharedMissionCourses() => [
     outline(
       'A',
@@ -34,7 +32,6 @@ void main() {
       {
         'm1': {'a1'},
       },
-      earnable: {'a1': 4},
     ),
     outline(
       'B',
@@ -42,29 +39,44 @@ void main() {
       {
         'm1': {'b1'},
       },
-      earnable: {'b1': 4},
     ),
   ];
 
   group('per-course scoping', () {
-    test("a course's threshold clamps to its OWN activities", () {
+    test("a course's threshold is its OWN override, not another's", () {
       final r = resolveProgression(
-        outlines: sharedMissionCourses(),
-        starsByActivity: const {},
+        outlines: [
+          outline(
+            'A',
+            ['m1'],
+            {
+              'm1': {'a1'},
+            },
+            xpToComplete: 200,
+          ),
+          outline(
+            'B',
+            ['m1'],
+            {
+              'm1': {'b1'},
+            },
+          ),
+        ],
+        xpByActivity: const {},
       );
 
-      expect(r.forCourse('A')!.rollup['m1']!.threshold, 4);
-      expect(r.forCourse('B')!.rollup['m1']!.threshold, 4);
+      expect(r.forCourse('A')!.rollup['m1']!.threshold, 200);
+      expect(r.forCourse('B')!.rollup['m1']!.threshold, 300);
     });
 
-    test("a course does not credit another course's stars", () {
+    test("a course does not credit another course's XP", () {
       final r = resolveProgression(
         outlines: sharedMissionCourses(),
-        starsByActivity: const {'b1': 3},
+        xpByActivity: const {'b1': 120},
       );
 
-      expect(r.forCourse('A')!.rollup['m1']!.stars, 0);
-      expect(r.forCourse('B')!.rollup['m1']!.stars, 3);
+      expect(r.forCourse('A')!.rollup['m1']!.xp, 0);
+      expect(r.forCourse('B')!.rollup['m1']!.xp, 120);
     });
 
     test('an activity listed by BOTH courses still counts in each', () {
@@ -78,7 +90,6 @@ void main() {
             {
               'm1': {'shared'},
             },
-            earnable: {'shared': 4},
           ),
           outline(
             'B',
@@ -86,14 +97,13 @@ void main() {
             {
               'm1': {'shared'},
             },
-            earnable: {'shared': 4},
           ),
         ],
-        starsByActivity: const {'shared': 2},
+        xpByActivity: const {'shared': 80},
       );
 
-      expect(r.forCourse('A')!.rollup['m1']!.stars, 2);
-      expect(r.forCourse('B')!.rollup['m1']!.stars, 2);
+      expect(r.forCourse('A')!.rollup['m1']!.xp, 80);
+      expect(r.forCourse('B')!.rollup['m1']!.xp, 80);
     });
 
     test(
@@ -108,7 +118,6 @@ void main() {
                 'm1': {'a1'},
                 'm2': {'a2'},
               },
-              earnable: {'a1': 4, 'a2': 4},
             ),
             outline(
               'B',
@@ -116,11 +125,10 @@ void main() {
               {
                 'm1': {'b1'},
               },
-              earnable: {'b1': 4},
             ),
           ],
           // Fully satisfies course B's m1; course A's m1 is untouched.
-          starsByActivity: const {'b1': 4},
+          xpByActivity: const {'b1': 300},
         );
 
         expect(r.forCourse('A')!.anchorMissionId, 'm1');
@@ -131,7 +139,7 @@ void main() {
     test('an unknown course resolves to no quest', () {
       final r = resolveProgression(
         outlines: sharedMissionCourses(),
-        starsByActivity: const {},
+        xpByActivity: const {},
       );
 
       expect(r.forCourse('never-joined'), isNull);
@@ -139,19 +147,19 @@ void main() {
   });
 
   group('questStars is scoped to its course', () {
-    test("sums only the asking course's Missions", () {
+    test("counts only the asking course's Missions", () {
       final r = resolveProgression(
         outlines: sharedMissionCourses(),
-        starsByActivity: const {'b1': 4},
+        xpByActivity: const {'b1': 300},
       );
 
       final a = r.questStars('A')!;
       expect(a.earned, 0);
-      expect(a.total, 4, reason: "clamped to course A's own content");
+      expect(a.total, 1);
 
       final b = r.questStars('B')!;
-      expect(b.earned, 4);
-      expect(b.total, 4);
+      expect(b.earned, 1);
+      expect(b.total, 1);
     });
 
     test('an unresolved course is null, not an invented denominator', () {
@@ -161,9 +169,8 @@ void main() {
 
   group('activity-less Missions (#7663)', () {
     /// TigToggle's report: a quest whose sequence carries five Missions but
-    /// where only one has an activity (worth 4 stars). The panel renders that
-    /// one Mission; the header used to sum all five and add the default
-    /// threshold for each hidden one — displaying 44.
+    /// where only one has an activity. The panel renders that one Mission; the
+    /// header used to count all five.
     ProgressionResolution oneRealMissionOfFive() => resolveProgression(
       outlines: [
         outline(
@@ -172,15 +179,14 @@ void main() {
           {
             'm1': {'a1'},
           },
-          earnable: {'a1': 4},
         ),
       ],
-      starsByActivity: const {},
+      xpByActivity: const {},
     );
 
-    test('do not inflate the quest denominator (was 44, must be 4)', () {
+    test('do not inflate the quest denominator (one Mission of one)', () {
       final summary = oneRealMissionOfFive().questStars('A')!;
-      expect(summary.total, 4);
+      expect(summary.total, 1);
       expect(summary.earned, 0);
     });
 
@@ -202,10 +208,9 @@ void main() {
             {
               'm1': {'a1'},
             },
-            earnable: {'a1': 4},
           ),
         ],
-        starsByActivity: const {'a1': 4},
+        xpByActivity: const {'a1': 300},
       );
       expect(satisfied.forCourse('A')!.anchorMissionId, isNull);
     });
@@ -215,30 +220,10 @@ void main() {
         outlines: [
           outline('A', ['m1', 'm2'], const {}),
         ],
-        starsByActivity: const {},
+        xpByActivity: const {},
       );
       expect(none.forCourse('A')!.anchorMissionId, isNull);
       expect(none.questStars('A')!.total, 0);
-    });
-
-    test('a Mission WITH activities but no goal data keeps its threshold', () {
-      // Distinct from the activity-less case: degraded/legacy plans report 0
-      // earnable, and must NOT read satisfied-at-zero.
-      final degraded = resolveProgression(
-        outlines: [
-          outline(
-            'A',
-            ['m1'],
-            {
-              'm1': {'a1'},
-            },
-          ),
-        ],
-        starsByActivity: const {},
-      );
-      final m1 = degraded.forCourse('A')!.rollup['m1']!;
-      expect(m1.threshold, kDefaultStarsToUnlockObjective);
-      expect(m1.satisfied, isFalse);
     });
   });
 
@@ -261,7 +246,7 @@ void main() {
             },
           ),
         ],
-        starsByActivity: const {},
+        xpByActivity: const {},
       );
 
       expect(r.missionGradient(['m1', 'm2']), 2.0);
@@ -276,10 +261,9 @@ void main() {
             {
               'm1': {'a1'},
             },
-            earnable: {'a1': 4},
           ),
         ],
-        starsByActivity: const {'a1': 4},
+        xpByActivity: const {'a1': 300},
       );
 
       expect(r.missionGradient(['m1']), 0.0);
@@ -288,9 +272,9 @@ void main() {
 
   group('two course rooms from one quest (#8087)', () {
     /// One quest ('q1') launched into two course rooms: room A pins Mission m1
-    /// to its own 4-star activity, room B carries the same Mission with a
-    /// different (side-quest) activity. Courses are keyed by room id; the
-    /// shared quest uuid is the second key the band dedupes by.
+    /// to its own activity, room B carries the same Mission with a different
+    /// (side-quest) activity. Courses are keyed by room id; the shared quest
+    /// uuid is the second key the band dedupes by.
     List<CourseLoOutline> twoRoomsOneQuest() => [
       outline(
         '!roomA:x',
@@ -299,7 +283,6 @@ void main() {
           'm1': {'a1'},
         },
         questId: 'q1',
-        earnable: {'a1': 4},
       ),
       outline(
         '!roomB:x',
@@ -308,37 +291,36 @@ void main() {
           'm1': {'b1'},
         },
         questId: 'q1',
-        earnable: {'b1': 4},
       ),
     ];
 
     test('each room resolves its own rollup — no last-room-wins collapse', () {
       final r = resolveProgression(
         outlines: twoRoomsOneQuest(),
-        starsByActivity: const {'a1': 3},
+        xpByActivity: const {'a1': 150},
       );
 
-      expect(r.forCourse('!roomA:x')!.rollup['m1']!.stars, 3);
-      expect(r.forCourse('!roomB:x')!.rollup['m1']!.stars, 0);
+      expect(r.forCourse('!roomA:x')!.rollup['m1']!.xp, 150);
+      expect(r.forCourse('!roomB:x')!.rollup['m1']!.xp, 0);
     });
 
-    test("stars earned in one room's activity never credit the other", () {
-      // The reported repro: earn stars in course B, course A displayed them.
+    test("XP earned in one room's activity never credits the other", () {
+      // The reported repro: earn in course B, course A displayed it.
       final r = resolveProgression(
         outlines: twoRoomsOneQuest(),
-        starsByActivity: const {'b1': 2},
+        xpByActivity: const {'b1': 300},
       );
 
-      final a = r.questStars('!roomA:x')!;
-      expect(a.earned, 0);
-      final b = r.questStars('!roomB:x')!;
-      expect(b.earned, 2);
+      expect(r.forCourse('!roomA:x')!.rollup['m1']!.xp, 0);
+      expect(r.questStars('!roomA:x')!.earned, 0);
+      expect(r.forCourse('!roomB:x')!.rollup['m1']!.xp, 300);
+      expect(r.questStars('!roomB:x')!.earned, 1);
     });
 
     test('the band counts the shared quest once, not once per room', () {
       final r = resolveProgression(
         outlines: twoRoomsOneQuest(),
-        starsByActivity: const {},
+        xpByActivity: const {},
       );
 
       expect(r.missionGradient(['m1']), 1.0);
@@ -350,7 +332,7 @@ void main() {
       // first-wins): the activity genuinely is the learner's next step in B.
       final r = resolveProgression(
         outlines: twoRoomsOneQuest(),
-        starsByActivity: const {'a1': 4},
+        xpByActivity: const {'a1': 300},
       );
 
       expect(r.missionGradient(['m1']), 1.0);
@@ -376,7 +358,7 @@ void main() {
             questId: 'q2',
           ),
         ],
-        starsByActivity: const {},
+        xpByActivity: const {},
       );
 
       expect(r.missionGradient(['m1', 'm2']), 2.0);

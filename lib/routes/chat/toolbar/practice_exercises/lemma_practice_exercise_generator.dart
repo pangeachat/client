@@ -34,10 +34,14 @@ class LemmaPracticeExerciseGenerator {
     );
   }
 
+  /// [extraCandidates] join the learner's own vocabulary as wrong-answer
+  /// candidates (a Mission's other words, #9438); duplicates by lemma are
+  /// dropped so the same word is never offered twice.
   static Future<Set<ConstructIdentifier>> lemmaPracticeExerciseDistractors(
     PangeaToken token, {
     required String language,
     int? maxChoices = 4,
+    Iterable<ConstructIdentifier> extraCandidates = const [],
   }) async {
     // Only identifiers are needed here; the ids-only read skips deserializing
     // every vocab use per exercise (#8433).
@@ -45,6 +49,10 @@ class LemmaPracticeExerciseGenerator {
         (await MatrixState.pangeaController.matrixState.analyticsDataService
                 .getAggregatedConstructIds(ConstructTypeEnum.vocab, language))
             .toList();
+    final knownLemmas = {for (final id in constructIds) id.lemma};
+    for (final candidate in extraCandidates) {
+      if (knownLemmas.add(candidate.lemma)) constructIds.add(candidate);
+    }
     // Offload computation to an isolate
     final Map<ConstructIdentifier, int> distances = await compute(
       _computeDistancesInIsolate,

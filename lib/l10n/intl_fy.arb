@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-07 09:01:31.414715",
+    "@@last_modified": "2026-10-09 10:28:04.742454",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Ofbylding besjen",
     "reportSent": "Melding ferstjoerd",
     "reportNotSent": "Jo melding koe net ferstjoerd wurde. Kontrolearje jo ferbining en besykje it opnij.",
-    "reportPointerMessage": "Der is in berjocht melde yn {courseName} — sjoch Feiligens"
+    "reportPointerMessage": "Der is in berjocht melde yn {courseName} — sjoch Feiligens",
+    "learningObjective": "Learndoel",
+    "learningObjectives": "Learndoelen",
+    "missionNofM": "Missy {index} fan {count}",
+    "xpTowardObjective": "{xp} fan {threshold} XP foar dit doel",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} fan {total} doelen foltôge",
+    "sparklesEarnedOfTotal": "{earned} fan {total} sparkles fertsjinne",
+    "sparklesEarnedInLanguage": "Sparkles fertsjinne yn {language}",
+    "courseComplete": "Kursus foltôge!",
+    "courseCompleteDesc": "Jo hawwe alle {count} doelen yn dizze kursus foltôge. Bliuw oefenjen om te behâlden wat jo leard hawwe.",
+    "practiceObjective": "Oefenje dit doel",
+    "otherActivities": "Oare aktiviteiten",
+    "xpToCompleteObjectiveTitle": "XP per missy",
+    "xpToCompleteObjectiveDesc": "Stel de XP yn dy't nedich is om elke missy te foltôgjen"
 }

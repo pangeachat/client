@@ -19,29 +19,28 @@ const int kBandFalloffMissions = 3;
 /// `joinable` score term (world-map.instructions.md Priority matrix).
 const double kBandCeiling = 2.0;
 
-/// One Mission's star rollup: the stars the learner has earned toward it
-/// (summed across its activities) against the threshold that satisfies it.
+/// One Mission's XP rollup: the XP the learner has earned toward it — in
+/// sessions of its activities and in practice of its vocabulary — against the
+/// threshold that completes it (#9420).
 class MissionProgress {
-  final int stars;
+  final int xp;
   final int threshold;
 
-  const MissionProgress({required this.stars, required this.threshold});
+  const MissionProgress({required this.xp, required this.threshold});
 
-  /// A star is one orchestrator-awarded activity goal; a Mission is satisfied
-  /// once its star total reaches the (teacher-overridable) threshold.
-  bool get satisfied => stars >= threshold;
+  /// A Mission is complete — one star — once its XP reaches the
+  /// (teacher-overridable) threshold. See quests.instructions.md.
+  bool get satisfied => xp >= threshold;
 
-  /// Stars capped at the threshold — the Mission's contribution to a quest's
-  /// star total, so an over-practiced Mission can't inflate quest progress.
-  /// The per-Mission display shows the raw [stars] (surplus effort shows,
-  /// e.g. 12/7); only the quest-level sum caps. See quests.instructions.md.
-  int get cappedStars => stars > threshold ? threshold : stars;
+  /// How full the Mission's meter is. Surplus XP shows raw in the count (e.g.
+  /// 340/300); only the bar clamps.
+  double get fraction => threshold <= 0 ? 0 : (xp / threshold).clamp(0.0, 1.0);
 }
 
-/// A quest's star display summary: [earned] sums each Mission's stars capped
-/// at its threshold; [total] sums the thresholds — so earned/total is the
-/// quest header's progress fraction. See quests.instructions.md ("Star display
-/// on the course panel").
+/// A quest's star summary: [earned] is the number of its Missions the learner
+/// has completed (a star is a completed Mission), [total] the number of
+/// Missions that can be — so earned/total is the full plan's progress
+/// fraction. See quests.instructions.md ("Star display on the course panel").
 class QuestStarSummary {
   final int earned;
   final int total;
@@ -68,9 +67,9 @@ class QuestProgress {
 
   final List<String> orderedMissionIds;
 
-  /// The anchor (next) Mission: the first Mission in order whose star total is
-  /// below the threshold. Null when there is no next step — every scored
-  /// Mission satisfied, or none scored at all.
+  /// The anchor (next) Mission: the first Mission in order whose XP is below
+  /// the threshold. Null when there is no next step — every scored Mission
+  /// complete, or none scored at all.
   final String? anchorMissionId;
 
   final Map<String, int> indexByMission;
@@ -126,24 +125,22 @@ class QuestProgress {
     return contribution;
   }
 
-  /// This quest's star summary: each scored Mission's stars capped at its
-  /// threshold, over the summed thresholds.
+  /// This quest's star summary: completed Missions over scored Missions.
   ///
   /// Computed here, from [rollup], on purpose — callers do NOT pass a Mission
   /// list. When they did, the course panel filtered to Missions with activities
-  /// while the header summed every LO in the quest, so hidden activity-less
-  /// Missions each added the default threshold to the denominator: one 4-star
-  /// activity displayed as 44 (#7663). One owner for "which Missions count"
-  /// means a caller can no longer disagree with the panel.
-  QuestStarSummary get starSummary {
-    var earned = 0;
-    var total = 0;
-    for (final progress in rollup.values) {
-      earned += progress.cappedStars;
-      total += progress.threshold;
-    }
-    return QuestStarSummary(earned: earned, total: total);
-  }
+  /// while the header counted every LO in the quest, so hidden activity-less
+  /// Missions inflated the denominator (#7663). One owner for "which Missions
+  /// count" means a caller can no longer disagree with the panel.
+  QuestStarSummary get starSummary => QuestStarSummary(
+    earned: rollup.values.where((p) => p.satisfied).length,
+    total: rollup.length,
+  );
+
+  /// The Mission a learner should work on now: the anchor's rollup, or null
+  /// when there is no anchor (unresolved, or every Mission complete).
+  MissionProgress? get anchorProgress =>
+      anchorMissionId == null ? null : rollup[anchorMissionId!];
 }
 
 /// The shared resolution: one [QuestProgress] per in-scope quest, each with its
@@ -180,6 +177,19 @@ class ProgressionResolution {
   /// rather than a denominator invented from default thresholds.
   QuestStarSummary? questStars(String? courseId) =>
       forCourse(courseId)?.starSummary;
+
+  /// The learner's stars: every Mission complete in any in-scope quest, by
+  /// Mission id — a Mission two courses share is one star, not two, since the
+  /// star is the learner's competency and not a course's bookkeeping. The
+  /// analytics bar's count (#9436). [inScope] narrows to the quests whose
+  /// course passes it (the bar counts one language at a time).
+  Set<String> completedMissionIds({bool Function(String courseId)? inScope}) =>
+      {
+        for (final quest in quests)
+          if (inScope == null || inScope(quest.courseId))
+            for (final entry in quest.rollup.entries)
+              if (entry.value.satisfied) entry.key,
+      };
 
   /// The next-Mission gradient (0..[kBandCeiling]) for an activity carrying
   /// [objectiveRefs]: 1.0 at a quest's anchor Mission, decaying linearly to 0
@@ -218,20 +228,23 @@ class ProgressionResolution {
 }
 
 /// Resolve progression from each in-scope quest's [outlines] and the learner's
-/// star total per activity ([starsByActivity]). Pure. In-scope quests are the
+/// XP per activity ([xpByActivity], sessions of it with the sparkle bonus
+/// applied — `Client.userXpByActivity`) plus their standalone-practice XP per
+/// lemma ([xpByLemma], `MissionXpCache`). Pure. In-scope quests are the
 /// learner's joined courses by default, or whatever the world map's quest filter
 /// selects — the caller decides which outlines to pass; this only resolves them.
 ProgressionResolution resolveProgression({
   required Iterable<CourseLoOutline> outlines,
-  required Map<String, int> starsByActivity,
+  required Map<String, int> xpByActivity,
+  Map<String, int> xpByLemma = const {},
 }) {
-  // Resolved per outline, NOT unioned across them. A Mission's star total is
+  // Resolved per outline, NOT unioned across them. A Mission's XP total is
   // only meaningful against the activity set it was summed over, and Missions
   // are a shared catalog: two joined courses commonly carry the same Mission
-  // with different activities, so a global rollup would clamp one course's
-  // threshold against the other's content and credit its stars (#7771). An
-  // activity two courses genuinely share still counts in both — each outline
-  // lists it, so nothing needs merging.
+  // with different activities, so a global rollup would credit one course's
+  // XP to the other's content and undo its activity pins (#7771). An activity
+  // two courses genuinely share still counts in both — each outline lists it,
+  // so nothing needs merging.
   final quests = <QuestProgress>[];
 
   for (final outline in outlines) {
@@ -241,32 +254,28 @@ ProgressionResolution resolveProgression({
     final rollup = <String, MissionProgress>{};
     for (final missionId in seq) {
       final activities = outline.activityIdsByLo[missionId] ?? const <String>{};
-      // A Mission the outline gives NO activities offers no stars, and the
-      // panel doesn't render it (#7114). Leave it out of the rollup entirely
-      // rather than scoring it: counting it would add a full threshold to a
-      // denominator no content backs, which is how one 4-star activity came to
-      // display as 44 (#7663). Distinct from the zero-CEILING case below, where
-      // the Mission has activities whose plans carry no goal data.
+      // A Mission the outline gives NO activities offers no XP, and the panel
+      // doesn't render it (#7114). Leave it out of the rollup entirely rather
+      // than scoring it: counting it would add a Mission to the denominator
+      // that no content backs (#7663).
       if (activities.isEmpty) continue;
 
-      var stars = 0;
-      var earnableCeiling = 0;
+      // Session XP (sparkle bonus already applied) across the Mission's
+      // activities, plus practice XP on its vocabulary. No ceiling clamp any
+      // more: XP is unbounded, so every Mission with an activity is
+      // completable from its content (quests.instructions.md, "What fills a
+      // Mission").
+      var xp = 0;
       for (final activityId in activities) {
-        stars += starsByActivity[activityId] ?? 0;
-        earnableCeiling += outline.earnableByActivity[activityId] ?? 0;
+        xp += xpByActivity[activityId] ?? 0;
       }
-      final configured = outline.starsToUnlock;
-      // Effective threshold: the configured stars-to-unlock clamped to the sum
-      // of earnable stars across the Mission's activities, so a Mission is
-      // always satisfiable from its content and displays never advertise stars
-      // the learner cannot earn (org quests doc invariant; #7663). A ceiling of
-      // 0 means no goal data reached the outline (degraded/legacy plans) —
-      // leave the configured threshold rather than marking it satisfied at 0.
+      for (final lemma
+          in outline.vocabLemmasByLo[missionId] ?? const <String>{}) {
+        xp += xpByLemma[lemma] ?? 0;
+      }
       rollup[missionId] = MissionProgress(
-        stars: stars,
-        threshold: earnableCeiling > 0 && earnableCeiling < configured
-            ? earnableCeiling
-            : configured,
+        xp: xp,
+        threshold: outline.xpToComplete,
       );
     }
 
@@ -289,8 +298,8 @@ ProgressionResolution resolveProgression({
 }
 
 /// The anchor (next) Mission for one quest's ordered [seq]: the first Mission
-/// whose rollup is below threshold. Null once every scored Mission is
-/// satisfied — a finished quest has no next step, and naming one anyway
+/// whose XP is below its threshold. Null once every scored Mission is
+/// complete — a finished quest has no next step, and naming one anyway
 /// pointed the learner back at work already done (#8997).
 ///
 /// Missions absent from [rollup] are unscored — the outline gives them no

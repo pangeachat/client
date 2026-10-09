@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-07 09:01:36.589322",
+    "@@last_modified": "2026-10-09 10:28:11.540519",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Դիտել նկարը",
     "reportSent": "Հաղորդումն ուղարկված է",
     "reportNotSent": "Ձեր հաղորդումը չհաջողվեց ուղարկել։ Ստուգեք ինտերնետ կապը և նորից փորձեք։",
-    "reportPointerMessage": "{courseName} դասընթացում հաղորդագրություն է ուղարկվել. տե՛ս «Անվտանգություն» բաժինը"
+    "reportPointerMessage": "{courseName} դասընթացում հաղորդագրություն է ուղարկվել. տե՛ս «Անվտանգություն» բաժինը",
+    "learningObjective": "Ուսումնական նպատակ",
+    "learningObjectives": "Ուսումնական նպատակներ",
+    "missionNofM": "Առաքելություն {index}-ը {count}-ից",
+    "xpTowardObjective": "{xp}-ը {threshold} XP-ից այս նպատակի համար",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed}-ը {total} նպատակներից ավարտված է",
+    "sparklesEarnedOfTotal": "{earned}-ը {total} փայլերից վաստակված է",
+    "sparklesEarnedInLanguage": "Փայլեր վաստակված {language}-ում",
+    "courseComplete": "Դասընթացն ավարտված է։",
+    "courseCompleteDesc": "Դուք ավարտել եք այս դասընթացի բոլոր {count} նպատակները։ Շարունակեք մարզվել՝ սովորածը պահպանելու համար։",
+    "practiceObjective": "Մարզվել այս նպատակով",
+    "otherActivities": "Այլ գործողություններ",
+    "xpToCompleteObjectiveTitle": "XP մեկ առաքելության համար",
+    "xpToCompleteObjectiveDesc": "Սահմանեք յուրաքանչյուր առաքելությունն ավարտելու համար անհրաժեշտ XP-ն"
 }

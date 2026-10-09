@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-07 09:01:43.932323",
+    "@@last_modified": "2026-10-09 10:28:30.720265",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Shiko imazhin",
     "reportSent": "Raporti u dërgua",
     "reportNotSent": "Raporti juaj nuk mund të dërgohej. Kontrolloni lidhjen tuaj dhe provoni përsëri.",
-    "reportPointerMessage": "Një mesazh u raportua në {courseName} — shihni Sigurinë"
+    "reportPointerMessage": "Një mesazh u raportua në {courseName} — shihni Sigurinë",
+    "learningObjective": "Objektivi i të nxënit",
+    "learningObjectives": "Objektivat e të nxënit",
+    "missionNofM": "Misioni {index} nga {count}",
+    "xpTowardObjective": "{xp} nga {threshold} XP drejt këtij objektivi",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} nga {total} objektiva të përfunduara",
+    "sparklesEarnedOfTotal": "{earned} nga {total} shkëlqime të fituara",
+    "sparklesEarnedInLanguage": "Shkëlqime të fituara në {language}",
+    "courseComplete": "Kursi u përfundua!",
+    "courseCompleteDesc": "Ke përfunduar të gjitha {count} objektivat në këtë kurs. Vazhdo të praktikosh për të mbajtur mend atë që ke mësuar.",
+    "practiceObjective": "Praktiko këtë objektiv",
+    "otherActivities": "Aktivitete të tjera",
+    "xpToCompleteObjectiveTitle": "XP për Mision",
+    "xpToCompleteObjectiveDesc": "Vendos XP-në e nevojshme për të përfunduar çdo mision"
 }

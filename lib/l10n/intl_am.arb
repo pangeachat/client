@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-07 09:01:28.627623",
+    "@@last_modified": "2026-10-09 10:27:58.720927",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "ምስል ይመልከቱ",
     "reportSent": "ሪፖርት ተልኳል",
     "reportNotSent": "ሪፖርትዎ ሊላክ አልቻለም። ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ።",
-    "reportPointerMessage": "በ{courseName} ውስጥ መልዕክት ሪፖርት ተደርጓል — ደህንነትን ይመልከቱ"
+    "reportPointerMessage": "በ{courseName} ውስጥ መልዕክት ሪፖርት ተደርጓል — ደህንነትን ይመልከቱ",
+    "learningObjective": "የትምህርት ዓላማ",
+    "learningObjectives": "የትምህርት ዓላማዎች",
+    "missionNofM": "ተልዕኮ {index} ከ {count}",
+    "xpTowardObjective": "ለዚህ ዓላማ {xp} ከ {threshold} XP",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} ከ {total} ዓላማዎች ተጠናቀዋል",
+    "sparklesEarnedOfTotal": "{earned} ከ {total} ብልጭታዎች ተገኝተዋል",
+    "sparklesEarnedInLanguage": "በ {language} የተገኙ ብልጭታዎች",
+    "courseComplete": "ኮርስ ተጠናቋል!",
+    "courseCompleteDesc": "በዚህ ኮርስ ውስጥ ያሉትን {count} ዓላማዎች በሙሉ አጠናቀዋል። የተማሩትን ለመያዝ ልምምድዎን ይቀጥሉ።",
+    "practiceObjective": "ይህን ዓላማ ይለማመዱ",
+    "otherActivities": "ሌሎች እንቅስቃሴዎች",
+    "xpToCompleteObjectiveTitle": "XP በእያንዳንዱ ተልዕኮ",
+    "xpToCompleteObjectiveDesc": "እያንዳንዱን ተልዕኮ ለማጠናቀቅ የሚያስፈልገውን XP ያዘጋጁ"
 }

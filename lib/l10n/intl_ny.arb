@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-07 09:01:41.072427",
+    "@@last_modified": "2026-10-09 10:28:25.147902",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Onani chithunzi",
     "reportSent": "Lipoti latumizidwa",
     "reportNotSent": "Lipoti lanu silinatumizidwe. Onani intaneti yanu ndikuyesanso.",
-    "reportPointerMessage": "Uthenga unanenedwa mu {courseName} — onani Chitetezo"
+    "reportPointerMessage": "Uthenga unanenedwa mu {courseName} — onani Chitetezo",
+    "learningObjective": "Cholinga Chophunzira",
+    "learningObjectives": "Zolinga Zophunzira",
+    "missionNofM": "Ntchito {index} mwa {count}",
+    "xpTowardObjective": "{xp} mwa {threshold} XP pa cholinga ichi",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} mwa {total} zolinga zakwaniritsidwa",
+    "sparklesEarnedOfTotal": "{earned} mwa {total} tinyezimiro tapezedwa",
+    "sparklesEarnedInLanguage": "Tinyezimiro tapezedwa mu {language}",
+    "courseComplete": "Maphunziro atha!",
+    "courseCompleteDesc": "Mwakwaniritsa zolinga zonse {count} mu maphunzirowa. Pitirizani kuchita kuti musunge zomwe mwaphunzira.",
+    "practiceObjective": "Yesetsani cholinga ichi",
+    "otherActivities": "Ntchito zina",
+    "xpToCompleteObjectiveTitle": "XP pa Ntchito Iliyonse",
+    "xpToCompleteObjectiveDesc": "Khazikitsani XP yofunikira kumaliza ntchito iliyonse"
 }

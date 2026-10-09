@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/quests/mission_vocab.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
@@ -9,16 +10,25 @@ import 'package:fluffychat/routes/analytics/construct_analytics/practice/grammar
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/grammar_match_target_generator.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_audio_target_generator.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_meaning_target_generator.dart';
+import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_type_enum.dart';
+import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_target.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class InsufficientDataException implements Exception {}
 
 class AnalyticsPracticeSessionRepo {
+  /// Select a session's targets. With [missionId], a vocab session is scoped
+  /// to that Mission's target vocabulary (#9438): the learner's own
+  /// constructs for those words first, then a meaning exercise built straight
+  /// from the plan for each word they have never used, so a Mission's words
+  /// can be practised before they have come up in a conversation. Grammar
+  /// practice has no vocabulary to scope by and ignores the Mission.
   static Future<AnalyticsPracticeSessionModel> get(
     ConstructTypeEnum type,
     LanguageModel userL1,
-    LanguageModel userL2,
-  ) async {
+    LanguageModel userL2, {
+    String? missionId,
+  }) async {
     if (!MatrixState
         .pangeaController
         .subscriptionController
@@ -30,9 +40,26 @@ class AnalyticsPracticeSessionRepo {
     final analytics =
         MatrixState.pangeaController.matrixState.analyticsDataService;
 
-    final vocabConstructs = await analytics
+    var vocabConstructs = await analytics
         .getAggregatedConstructs(ConstructTypeEnum.vocab, userL2.langCodeShort)
         .then((map) => map.values.toList());
+
+    MissionVocab? scope;
+    if (missionId != null && type == ConstructTypeEnum.vocab) {
+      scope = await MissionVocab.resolve(
+        MatrixState.pangeaController.matrixState.client,
+        missionId,
+      );
+      // silent-ok: a Mission no joined course carries (a stale link, a course
+      // since left) falls back to the learner's usual session rather than an
+      // empty panel; nothing is lost but the scope.
+      if (scope != null) {
+        final lemmas = scope.lemmas;
+        vocabConstructs = vocabConstructs
+            .where((c) => lemmas.contains(c.lemma.toLowerCase()))
+            .toList();
+      }
+    }
 
     if (type == ConstructTypeEnum.vocab) {
       final totalNeeded = AnalyticsPracticeConstants.targetsToGenerate;
@@ -53,6 +80,43 @@ class AnalyticsPracticeSessionRepo {
       final meaningTargetsToAdd = vocabTargets.take(vocabCount);
       targets.addAll(audioTargetsToAdd);
       targets.addAll(meaningTargetsToAdd);
+
+      if (scope != null) {
+        // The Mission's words the learner has never used — no construct, so
+        // no example message — as meaning exercises from the plan's own
+        // lemma and part of speech. Phrases are skipped: the meaning
+        // generator's distractors are per lemma, not per set phrase.
+        final covered = {
+          for (final target in targets)
+            target.target.tokens.first.lemma.text.toLowerCase(),
+        };
+        final words = [
+          for (final word in scope.vocab)
+            if (word.pos != 'phrase') word,
+        ];
+        for (final word in words) {
+          if (targets.length >= totalNeeded) break;
+          final lemma = word.lemma.toLowerCase();
+          if (covered.contains(lemma)) continue;
+          covered.add(lemma);
+          targets.add(
+            AnalyticsPracticeTarget(
+              target: PracticeTarget(
+                tokens: [word.asToken()],
+                exerciseType: PracticeExerciseTypeEnum.lemmaMeaning,
+                // The Mission's other words as wrong answers, so a learner
+                // with little vocabulary of their own still gets a real
+                // multiple choice.
+                distractorCandidates: [
+                  for (final other in words)
+                    if (other.lemma.toLowerCase() != lemma)
+                      other.asToken().vocabConstructID,
+                ],
+              ),
+            ),
+          );
+        }
+      }
     } else {
       final errorTargets = await GrammarErrorTargetGenerator.get(
         vocabConstructs,
@@ -87,6 +151,8 @@ class AnalyticsPracticeSessionRepo {
       // of practice. The clock is stamped when the first exercise paints.
       type: type,
       practiceTargets: targets,
+      missionId: scope?.objective.id,
+      missionLabel: scope?.objective.objective,
     );
     return session;
   }

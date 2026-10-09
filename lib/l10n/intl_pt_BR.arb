@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:41.866311",
+    "@@last_modified": "2026-10-09 10:28:25.991364",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9951,5 +9951,19 @@
     "viewImageLabel": "Ver imagem",
     "reportSent": "Denúncia enviada",
     "reportNotSent": "Sua denúncia não pôde ser enviada. Verifique sua conexão e tente novamente.",
-    "reportPointerMessage": "Uma mensagem foi denunciada em {courseName} — veja Segurança"
+    "reportPointerMessage": "Uma mensagem foi denunciada em {courseName} — veja Segurança",
+    "learningObjective": "Objetivo de Aprendizagem",
+    "learningObjectives": "Objetivos de Aprendizagem",
+    "missionNofM": "Missão {index} de {count}",
+    "xpTowardObjective": "{xp} de {threshold} XP para este objetivo",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} de {total} objetivos concluídos",
+    "sparklesEarnedOfTotal": "{earned} de {total} brilhos ganhos",
+    "sparklesEarnedInLanguage": "Brilhos ganhos em {language}",
+    "courseComplete": "Curso completo!",
+    "courseCompleteDesc": "Você concluiu todos os {count} objetivos neste curso. Continue praticando para não esquecer o que aprendeu.",
+    "practiceObjective": "Pratique este objetivo",
+    "otherActivities": "Outras atividades",
+    "xpToCompleteObjectiveTitle": "XP por Missão",
+    "xpToCompleteObjectiveDesc": "Defina o XP necessário para completar cada missão"
 }

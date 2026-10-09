@@ -1799,7 +1799,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-07 09:01:43.297672",
+    "@@last_modified": "2026-10-09 10:28:30.512020",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10896,5 +10896,19 @@
     "viewImageLabel": "Ogled slike",
     "reportSent": "Poročilo poslano",
     "reportNotSent": "Vašega poročila ni bilo mogoče poslati. Preverite povezavo in poskusite znova.",
-    "reportPointerMessage": "Sporočilo je bilo prijavljeno v {courseName} – glejte Varnost"
+    "reportPointerMessage": "Sporočilo je bilo prijavljeno v {courseName} – glejte Varnost",
+    "learningObjective": "Učni cilj",
+    "learningObjectives": "Učni cilji",
+    "missionNofM": "Misija {index} od {count}",
+    "xpTowardObjective": "{xp} od {threshold} XP za ta cilj",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} od {total} ciljev dokončanih",
+    "sparklesEarnedOfTotal": "{earned} od {total} bleščic zasluženih",
+    "sparklesEarnedInLanguage": "Bleščice zaslužene v {language}",
+    "courseComplete": "Tečaj dokončan!",
+    "courseCompleteDesc": "Dokončali ste vseh {count} ciljev v tem tečaju. Nadaljujte z vadbo, da ohranite naučeno.",
+    "practiceObjective": "Vadite ta cilj",
+    "otherActivities": "Druge dejavnosti",
+    "xpToCompleteObjectiveTitle": "XP na misijo",
+    "xpToCompleteObjectiveDesc": "Nastavite XP, potrebne za dokončanje vsake misije"
 }

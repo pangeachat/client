@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-07 09:01:44.141203",
+    "@@last_modified": "2026-10-09 10:28:30.394839",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Vaʻai le ata",
     "reportSent": "Lipoti ua auina atu",
     "reportNotSent": "E leʻi mafai ona auina atu lau lipoti. Siaki lau fesoʻotaʻiga ma toe taumafai.",
-    "reportPointerMessage": "Na lipotia se feʻau i le {courseName} — vaʻai i le Saogalemu"
+    "reportPointerMessage": "Na lipotia se feʻau i le {courseName} — vaʻai i le Saogalemu",
+    "learningObjective": "Manulauti A'oa'oga",
+    "learningObjectives": "Manulauti A'oa'oga",
+    "missionNofM": "Misiona {index} o le {count}",
+    "xpTowardObjective": "{xp} o le {threshold} XP agai i lenei manulauti",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} o le {total} manulauti ua mae'a",
+    "sparklesEarnedOfTotal": "{earned} o le {total} susulu ua maua",
+    "sparklesEarnedInLanguage": "Susulu na maua i le {language}",
+    "courseComplete": "Ua mae'a le kosi!",
+    "courseCompleteDesc": "Ua e mae'a uma manulauti e {count} i lenei kosi. Ia fa'aauau pea le fa'ata'ita'iga ina ia le galo mea ua a'oa'oina.",
+    "practiceObjective": "Fa'ata'ita'i lenei manulauti",
+    "otherActivities": "Isi gaioiga",
+    "xpToCompleteObjectiveTitle": "XP i Misiona ta'itasi",
+    "xpToCompleteObjectiveDesc": "Seti le XP e mana'omia e fa'amae'a ai misiona ta'itasi"
 }

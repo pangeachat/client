@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-07 09:01:47.387494",
+    "@@last_modified": "2026-10-09 10:28:39.989673",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Buka isithombe",
     "reportSent": "Umbiko uthunyelwe",
     "reportNotSent": "Umbiko wakho awukwazanga ukuthunyelwa. Hlola uxhumano lwakho bese uzama futhi.",
-    "reportPointerMessage": "Umlayezo ubikwe ku-{courseName} — bona ukuphepha"
+    "reportPointerMessage": "Umlayezo ubikwe ku-{courseName} — bona ukuphepha",
+    "learningObjective": "Inhloso Yokufunda",
+    "learningObjectives": "Izinhloso Zokufunda",
+    "missionNofM": "Umsebenzi {index} woku {count}",
+    "xpTowardObjective": "{xp} woku {threshold} XP kule nhloso",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} kwezingu {total} izinhloso seziqedile",
+    "sparklesEarnedOfTotal": "{earned} kwezingu {total} izinhlansi ezitholiwe",
+    "sparklesEarnedInLanguage": "Izinhlansi ezitholiwe ngesi {language}",
+    "courseComplete": "Isifundo siqedile!",
+    "courseCompleteDesc": "Usuqedile zonke izinhloso ezingu {count} kulesi sifundo. Qhubeka nokuzijwayeza ukuze ugcine lokho okufundile.",
+    "practiceObjective": "Zijwayeze le nhloso",
+    "otherActivities": "Eminye imisebenzi",
+    "xpToCompleteObjectiveTitle": "I-XP Ngomsebenzi Ngamunye",
+    "xpToCompleteObjectiveDesc": "Setha i-XP edingekayo ukuze uqedele umsebenzi ngamunye"
 }

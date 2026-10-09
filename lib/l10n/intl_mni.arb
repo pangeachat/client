@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-07 09:01:39.916530",
+    "@@last_modified": "2026-10-09 10:28:21.993562",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "ꯏꯃꯦꯖ ꯎꯕ",
     "reportSent": "রিপোর্ট থাজিনখ্রে",
     "reportNotSent": "নখোয়গী রিপোর্ট থাজিনবা ঙমদ্রে। নখোয়গী কনেক্সন চেক তৌদুনা অমুক হন্না ট্রাই তৌবীয়ু।",
-    "reportPointerMessage": "{courseName} দা মেসেজ অমা রিপোর্ট তৌখ্রে — সেফটিদা য়েংবীয়ু"
+    "reportPointerMessage": "{courseName} দা মেসেজ অমা রিপোর্ট তৌখ্রে — সেফটিদা য়েংবীয়ু",
+    "learningObjective": "তম্বগী পান্দম",
+    "learningObjectives": "তম্বগী পান্দমশিং",
+    "missionNofM": "মিশন {index} / {count}",
+    "xpTowardObjective": "অসিগুম্বা পান্দম অসি ফংনবা {threshold} XP দগী {xp} XP",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{total} পান্দমশিংদগী {completed} লোইশিনখ্রে",
+    "sparklesEarnedOfTotal": "{total} স্পার্কলশিংদগী {earned} ফংলে",
+    "sparklesEarnedInLanguage": "{language} দা ফংলবা স্পার্কলশিং",
+    "courseComplete": "কোর্স লোইশিনখ্রে!",
+    "courseCompleteDesc": "নখোইনা কোর্স অসিগী পান্দম {count} পুম্নমক লোইশিনখ্রে। নখোইনা তম্লবশিং অদু থম্ননবা চত্থদুনা লও।",
+    "practiceObjective": "অসিগুম্বা পান্দম অসি প্রেকটিস তৌ",
+    "otherActivities": "অতৈ থবকশিং",
+    "xpToCompleteObjectiveTitle": "মিশন অমদা XP",
+    "xpToCompleteObjectiveDesc": "মিশন খুদিংমক লোইশিন্ননবা মথৌ তাবা XP থমবীয়ু"
 }

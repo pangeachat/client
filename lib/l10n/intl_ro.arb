@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:42.466720",
+    "@@last_modified": "2026-10-09 10:28:28.457272",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10683,5 +10683,19 @@
     "viewImageLabel": "Vizualizați imaginea",
     "reportSent": "Raport trimis",
     "reportNotSent": "Raportul tău nu a putut fi trimis. Verifică-ți conexiunea și încearcă din nou.",
-    "reportPointerMessage": "Un mesaj a fost raportat în {courseName} — vezi Siguranță"
+    "reportPointerMessage": "Un mesaj a fost raportat în {courseName} — vezi Siguranță",
+    "learningObjective": "Obiectiv de învățare",
+    "learningObjectives": "Obiective de învățare",
+    "missionNofM": "Misiunea {index} din {count}",
+    "xpTowardObjective": "{xp} din {threshold} XP pentru acest obiectiv",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} din {total} obiective finalizate",
+    "sparklesEarnedOfTotal": "{earned} din {total} scântei câștigate",
+    "sparklesEarnedInLanguage": "Scântei câștigate în {language}",
+    "courseComplete": "Curs finalizat!",
+    "courseCompleteDesc": "Ai finalizat toate cele {count} obiective din acest curs. Continuă să exersezi pentru a-ți menține cunoștințele.",
+    "practiceObjective": "Exersează acest obiectiv",
+    "otherActivities": "Alte activități",
+    "xpToCompleteObjectiveTitle": "XP per misiune",
+    "xpToCompleteObjectiveDesc": "Setează XP-ul necesar pentru a finaliza fiecare misiune"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-07 09:01:37.783609",
+    "@@last_modified": "2026-10-09 10:28:14.578735",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "ಚಿತ್ರವನ್ನು ವೀಕ್ಷಿಸಿ",
     "reportSent": "ವರದಿ ಕಳುಹಿಸಲಾಗಿದೆ",
     "reportNotSent": "ನಿಮ್ಮ ವರದಿಯನ್ನು ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
-    "reportPointerMessage": "{courseName} ನಲ್ಲಿ ಸಂದೇಶವನ್ನು ವರದಿ ಮಾಡಲಾಗಿದೆ — ಸುರಕ್ಷತೆಯನ್ನು ನೋಡಿ"
+    "reportPointerMessage": "{courseName} ನಲ್ಲಿ ಸಂದೇಶವನ್ನು ವರದಿ ಮಾಡಲಾಗಿದೆ — ಸುರಕ್ಷತೆಯನ್ನು ನೋಡಿ",
+    "learningObjective": "ಕಲಿಕೆಯ ಉದ್ದೇಶ",
+    "learningObjectives": "ಕಲಿಕೆಯ ಉದ್ದೇಶಗಳು",
+    "missionNofM": "{count} ರಲ್ಲಿ ಮಿಷನ್ {index}",
+    "xpTowardObjective": "ಈ ಉದ್ದೇಶದ ಕಡೆಗೆ {threshold} XP ಯಲ್ಲಿ {xp}",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{total} ಉದ್ದೇಶಗಳಲ್ಲಿ {completed} ಪೂರ್ಣಗೊಂಡಿದೆ",
+    "sparklesEarnedOfTotal": "{total} ಸ್ಪಾರ್ಕಲ್‌ಗಳಲ್ಲಿ {earned} ಗಳಿಸಲಾಗಿದೆ",
+    "sparklesEarnedInLanguage": "{language} ನಲ್ಲಿ ಗಳಿಸಿದ ಸ್ಪಾರ್ಕಲ್‌ಗಳು",
+    "courseComplete": "ಕೋರ್ಸ್ ಪೂರ್ಣಗೊಂಡಿದೆ!",
+    "courseCompleteDesc": "ಈ ಕೋರ್ಸ್‌ನಲ್ಲಿರುವ ಎಲ್ಲಾ {count} ಉದ್ದೇಶಗಳನ್ನು ನೀವು ಪೂರ್ಣಗೊಳಿಸಿದ್ದೀರಿ. ನೀವು ಕಲಿತದ್ದನ್ನು ಉಳಿಸಿಕೊಳ್ಳಲು ಅಭ್ಯಾಸ ಮಾಡುತ್ತಿರಿ.",
+    "practiceObjective": "ಈ ಉದ್ದೇಶವನ್ನು ಅಭ್ಯಾಸ ಮಾಡಿ",
+    "otherActivities": "ಇತರ ಚಟುವಟಿಕೆಗಳು",
+    "xpToCompleteObjectiveTitle": "ಪ್ರತಿ ಮಿಷನ್‌ಗೆ XP",
+    "xpToCompleteObjectiveDesc": "ಪ್ರತಿ ಮಿಷನ್ ಪೂರ್ಣಗೊಳಿಸಲು ಅಗತ್ಯವಿರುವ XP ಅನ್ನು ಹೊಂದಿಸಿ"
 }

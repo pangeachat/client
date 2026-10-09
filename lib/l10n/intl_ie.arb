@@ -3090,7 +3090,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-07 09:01:34.767821",
+    "@@last_modified": "2026-10-09 10:28:12.876011",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10583,5 +10583,19 @@
     "viewImageLabel": "Féach ar an íomhá",
     "reportSent": "Tuarascáil seolta",
     "reportNotSent": "Níorbh fhéidir do thuarascáil a sheoladh. Seiceáil do nasc agus bain triail eile as.",
-    "reportPointerMessage": "Tuairiscíodh teachtaireacht i {courseName} — féach Sábháilteacht"
+    "reportPointerMessage": "Tuairiscíodh teachtaireacht i {courseName} — féach Sábháilteacht",
+    "learningObjective": "Cuspóir Foghlama",
+    "learningObjectives": "Cuspóirí Foghlama",
+    "missionNofM": "Misean {index} de {count}",
+    "xpTowardObjective": "{xp} de {threshold} XP i dtreo an chuspóra seo",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} de {total} cuspóirí críochnaithe",
+    "sparklesEarnedOfTotal": "{earned} de {total} spréacha tuillte",
+    "sparklesEarnedInLanguage": "Spréacha tuillte i {language}",
+    "courseComplete": "Cúrsa críochnaithe!",
+    "courseCompleteDesc": "Tá na {count} cuspóirí go léir sa chúrsa seo críochnaithe agat. Lean ort ag cleachtadh chun an méid atá foghlamtha agat a choinneáil.",
+    "practiceObjective": "Cleachtaigh an cuspóir seo",
+    "otherActivities": "Gníomhaíochtaí eile",
+    "xpToCompleteObjectiveTitle": "XP in aghaidh an Mhisean",
+    "xpToCompleteObjectiveDesc": "Socraigh an XP atá ag teastáil chun gach misean a chríochnú"
 }

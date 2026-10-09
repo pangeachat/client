@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-07 09:01:30.977182",
+    "@@last_modified": "2026-10-09 10:28:01.912302",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9948,5 +9948,19 @@
     "viewImageLabel": "Vaata pilti",
     "reportSent": "Aruanne saadetud",
     "reportNotSent": "Teie aruannet ei saanud saata. Kontrollige oma ühendust ja proovige uuesti.",
-    "reportPointerMessage": "Sõnumist teatati kursusel {courseName} – vaadake jaotist „Ohutus“"
+    "reportPointerMessage": "Sõnumist teatati kursusel {courseName} – vaadake jaotist „Ohutus“",
+    "learningObjective": "Õpieesmärk",
+    "learningObjectives": "Õpieesmärgid",
+    "missionNofM": "Missioon {index} / {count}",
+    "xpTowardObjective": "{xp} / {threshold} XP selle eesmärgi suunas",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} / {total} eesmärki täidetud",
+    "sparklesEarnedOfTotal": "{earned} / {total} sädemeid teenitud",
+    "sparklesEarnedInLanguage": "Sädemeid teenitud keeles {language}",
+    "courseComplete": "Kursus läbitud!",
+    "courseCompleteDesc": "Olete läbinud kõik {count} selle kursuse eesmärgid. Jätkake harjutamist, et õpitut meeles pidada.",
+    "practiceObjective": "Harjuta seda eesmärki",
+    "otherActivities": "Muud tegevused",
+    "xpToCompleteObjectiveTitle": "XP missiooni kohta",
+    "xpToCompleteObjectiveDesc": "Määra XP, mis on vajalik iga missiooni läbimiseks"
 }

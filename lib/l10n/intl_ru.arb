@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-07 09:01:43.637623",
+    "@@last_modified": "2026-10-09 10:28:28.104022",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10923,5 +10923,19 @@
     "viewImageLabel": "Посмотреть изображение",
     "reportSent": "Жалоба отправлена",
     "reportNotSent": "Не удалось отправить жалобу. Проверьте подключение и повторите попытку.",
-    "reportPointerMessage": "Сообщение было отправлено в {courseName} — см. раздел «Безопасность»"
+    "reportPointerMessage": "Сообщение было отправлено в {courseName} — см. раздел «Безопасность»",
+    "learningObjective": "Цель обучения",
+    "learningObjectives": "Цели обучения",
+    "missionNofM": "Миссия {index} из {count}",
+    "xpTowardObjective": "{xp} из {threshold} XP до цели",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} из {total} целей выполнено",
+    "sparklesEarnedOfTotal": "{earned} из {total} искр заработано",
+    "sparklesEarnedInLanguage": "Искры, заработанные на {language}",
+    "courseComplete": "Курс завершен!",
+    "courseCompleteDesc": "Вы выполнили все {count} цели этого курса. Продолжайте практиковаться, чтобы закрепить изученное.",
+    "practiceObjective": "Практиковать эту цель",
+    "otherActivities": "Другие занятия",
+    "xpToCompleteObjectiveTitle": "XP за миссию",
+    "xpToCompleteObjectiveDesc": "Установите количество XP, необходимое для завершения каждой миссии"
 }

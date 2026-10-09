@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-07 09:01:38.457665",
+    "@@last_modified": "2026-10-09 10:28:20.161116",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Jereo ny sary",
     "reportSent": "Tatitra nalefa",
     "reportNotSent": "Tsy afaka nalefa ny tatitrao. Hamarino ny fifandraisanao ary andramo indray.",
-    "reportPointerMessage": "Nisy hafatra notaterina tao amin'ny {courseName} — jereo ny Fiarovana"
+    "reportPointerMessage": "Nisy hafatra notaterina tao amin'ny {courseName} — jereo ny Fiarovana",
+    "learningObjective": "Tanjona fianarana",
+    "learningObjectives": "Tanjona fianarana",
+    "missionNofM": "Ireo iraka {index} amin'ny {count}",
+    "xpTowardObjective": "{xp} amin'ny {threshold} XP mankany amin'ity tanjona ity",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} amin'ny tanjona {total} vita",
+    "sparklesEarnedOfTotal": "{earned} amin'ny {total} sparkles azo",
+    "sparklesEarnedInLanguage": "Sparkles azo tamin'ny teny {language}",
+    "courseComplete": "Vita ny taranja!",
+    "courseCompleteDesc": "Vitanao avokoa ny tanjona {count} rehetra amin'ity taranja ity. Tohizo ny fanazaran-tena mba hitazonana izay nianaranao.",
+    "practiceObjective": "Manaova fanazaran-tena amin'ity tanjona ity",
+    "otherActivities": "Hetsika hafa",
+    "xpToCompleteObjectiveTitle": "XP isaky ny iraka",
+    "xpToCompleteObjectiveDesc": "Amboary ny XP ilaina hamitana ny iraka tsirairay"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:33.990815",
+    "@@last_modified": "2026-10-09 10:28:10.411928",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10024,5 +10024,19 @@
     "viewImageLabel": "Lihat gambar",
     "reportSent": "Laporan terkirim",
     "reportNotSent": "Laporan Anda tidak dapat dikirim. Periksa koneksi Anda dan coba lagi.",
-    "reportPointerMessage": "Sebuah pesan dilaporkan di {courseName} — lihat Keamanan"
+    "reportPointerMessage": "Sebuah pesan dilaporkan di {courseName} — lihat Keamanan",
+    "learningObjective": "Tujuan Pembelajaran",
+    "learningObjectives": "Tujuan Pembelajaran",
+    "missionNofM": "Misi {index} dari {count}",
+    "xpTowardObjective": "{xp} dari {threshold} XP untuk tujuan ini",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} dari {total} tujuan selesai",
+    "sparklesEarnedOfTotal": "{earned} dari {total} kilau didapatkan",
+    "sparklesEarnedInLanguage": "Kilau yang didapatkan dalam bahasa {language}",
+    "courseComplete": "Kursus selesai!",
+    "courseCompleteDesc": "Anda telah menyelesaikan semua {count} tujuan dalam kursus ini. Teruslah berlatih untuk mempertahankan apa yang telah Anda pelajari.",
+    "practiceObjective": "Latih tujuan ini",
+    "otherActivities": "Aktivitas lain",
+    "xpToCompleteObjectiveTitle": "XP per Misi",
+    "xpToCompleteObjectiveDesc": "Atur XP yang dibutuhkan untuk menyelesaikan setiap misi"
 }

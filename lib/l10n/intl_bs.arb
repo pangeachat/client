@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-07 09:01:28.339814",
+    "@@last_modified": "2026-10-09 10:27:59.564488",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Prikaži sliku",
     "reportSent": "Izvještaj poslan",
     "reportNotSent": "Vaš izvještaj nije mogao biti poslan. Provjerite vezu i pokušajte ponovo.",
-    "reportPointerMessage": "Poruka je prijavljena u {courseName} — pogledajte Sigurnost"
+    "reportPointerMessage": "Poruka je prijavljena u {courseName} — pogledajte Sigurnost",
+    "learningObjective": "Cilj učenja",
+    "learningObjectives": "Ciljevi učenja",
+    "missionNofM": "Misija {index} od {count}",
+    "xpTowardObjective": "{xp} od {threshold} XP-a za ovaj cilj",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} od {total} ciljeva završeno",
+    "sparklesEarnedOfTotal": "{earned} od {total} iskrica zarađeno",
+    "sparklesEarnedInLanguage": "Iskrice zarađene na {language}",
+    "courseComplete": "Kurs završen!",
+    "courseCompleteDesc": "Završili ste svih {count} ciljeva u ovom kursu. Nastavite vježbati kako biste zadržali ono što ste naučili.",
+    "practiceObjective": "Vježbajte ovaj cilj",
+    "otherActivities": "Ostale aktivnosti",
+    "xpToCompleteObjectiveTitle": "XP po misiji",
+    "xpToCompleteObjectiveDesc": "Postavite XP potreban za završetak svake misije"
 }

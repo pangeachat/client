@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:46.227358",
+    "@@last_modified": "2026-10-09 10:28:37.993936",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7249,5 +7249,19 @@
     "viewImageLabel": "Xem hình ảnh",
     "reportSent": "Đã gửi báo cáo",
     "reportNotSent": "Không thể gửi báo cáo của bạn. Vui lòng kiểm tra kết nối và thử lại.",
-    "reportPointerMessage": "Một tin nhắn đã được báo cáo trong {courseName} — xem mục An toàn"
+    "reportPointerMessage": "Một tin nhắn đã được báo cáo trong {courseName} — xem mục An toàn",
+    "learningObjective": "Mục tiêu học tập",
+    "learningObjectives": "Các mục tiêu học tập",
+    "missionNofM": "Nhiệm vụ {index} trên {count}",
+    "xpTowardObjective": "{xp} trên {threshold} XP cho mục tiêu này",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "Hoàn thành {completed} trên {total} mục tiêu",
+    "sparklesEarnedOfTotal": "Kiếm được {earned} trên {total} lấp lánh",
+    "sparklesEarnedInLanguage": "Lấp lánh kiếm được trong {language}",
+    "courseComplete": "Hoàn thành khóa học!",
+    "courseCompleteDesc": "Bạn đã hoàn thành tất cả {count} mục tiêu trong khóa học này. Hãy tiếp tục luyện tập để giữ vững những gì bạn đã học.",
+    "practiceObjective": "Luyện tập mục tiêu này",
+    "otherActivities": "Các hoạt động khác",
+    "xpToCompleteObjectiveTitle": "XP mỗi Nhiệm vụ",
+    "xpToCompleteObjectiveDesc": "Đặt số XP cần thiết để hoàn thành mỗi nhiệm vụ"
 }

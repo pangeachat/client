@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-07 09:01:34.867078",
+    "@@last_modified": "2026-10-09 10:28:16.213676",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Deleng gambar",
     "reportSent": "Laporan dikirim",
     "reportNotSent": "Laporanmu ora bisa dikirim. Priksa sambunganmu lan coba maneh.",
-    "reportPointerMessage": "Ana pesen sing dilaporake ing {courseName} — deleng Keamanan"
+    "reportPointerMessage": "Ana pesen sing dilaporake ing {courseName} — deleng Keamanan",
+    "learningObjective": "Ancas Sinau",
+    "learningObjectives": "Ancas-Ancas Sinau",
+    "missionNofM": "Misi {index} saka {count}",
+    "xpTowardObjective": "{xp} saka {threshold} XP kanggo ancas iki",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} saka {total} ancas rampung",
+    "sparklesEarnedOfTotal": "{earned} saka {total} sparkles entuk",
+    "sparklesEarnedInLanguage": "Sparkles sing entuk ing {language}",
+    "courseComplete": "Kursus rampung!",
+    "courseCompleteDesc": "Sampeyan wis ngrampungake kabeh {count} ancas ing kursus iki. Terus latihan supaya ora lali sing wis disinaoni.",
+    "practiceObjective": "Latihan ancas iki",
+    "otherActivities": "Kegiatan liyane",
+    "xpToCompleteObjectiveTitle": "XP saben Misi",
+    "xpToCompleteObjectiveDesc": "Setel XP sing dibutuhake kanggo ngrampungake saben misi"
 }

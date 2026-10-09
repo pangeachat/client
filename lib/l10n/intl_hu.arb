@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-07 09:01:33.546310",
+    "@@last_modified": "2026-10-09 10:28:10.024779",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10054,5 +10054,19 @@
     "viewImageLabel": "Kép megtekintése",
     "reportSent": "Jelentés elküldve",
     "reportNotSent": "A jelentés nem küldhető el. Ellenőrizze az internetkapcsolatát, és próbálja újra.",
-    "reportPointerMessage": "Üzenet jelentve a {courseName} kurzusban – lásd a Biztonság menüpontot"
+    "reportPointerMessage": "Üzenet jelentve a {courseName} kurzusban – lásd a Biztonság menüpontot",
+    "learningObjective": "Tanulási cél",
+    "learningObjectives": "Tanulási célok",
+    "missionNofM": "{index}/{count} küldetés",
+    "xpTowardObjective": "{xp}/{threshold} XP a cél felé",
+    "xpOfThreshold": "{xp}/{threshold} XP",
+    "objectivesCompletedOfTotal": "{total} célból {completed} teljesítve",
+    "sparklesEarnedOfTotal": "{total} csillámból {earned} összegyűjtve",
+    "sparklesEarnedInLanguage": "Csillámok gyűjtve {language} nyelven",
+    "courseComplete": "A kurzus kész!",
+    "courseCompleteDesc": "Teljesítetted mind a(z) {count} célt ebben a kurzusban. Gyakorolj tovább, hogy megőrizd a tanultakat.",
+    "practiceObjective": "Gyakorold ezt a célt",
+    "otherActivities": "Egyéb tevékenységek",
+    "xpToCompleteObjectiveTitle": "XP küldetésenként",
+    "xpToCompleteObjectiveDesc": "Állítsd be a küldetések teljesítéséhez szükséges XP-t"
 }

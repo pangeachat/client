@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-07 09:01:29.842848",
+    "@@last_modified": "2026-10-09 10:28:01.939770",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Vede l'imagine",
     "reportSent": "Segnalazione inviata",
     "reportNotSent": "A vostra segnalazione ùn hà pussutu esse inviata. Verificate a vostra cunnessione è riprovate.",
-    "reportPointerMessage": "Un messagiu hè statu segnalatu in {courseName} — vede Sicurezza"
+    "reportPointerMessage": "Un messagiu hè statu segnalatu in {courseName} — vede Sicurezza",
+    "learningObjective": "Ughjettivu d'amparera",
+    "learningObjectives": "Ughjettivi d'amparera",
+    "missionNofM": "Missione {index} di {count}",
+    "xpTowardObjective": "{xp} di {threshold} XP versu st'ughjettivu",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} di {total} ughjettivi compii",
+    "sparklesEarnedOfTotal": "{earned} di {total} scintille guadagnate",
+    "sparklesEarnedInLanguage": "Scintille guadagnate in {language}",
+    "courseComplete": "Corsu cumplettu!",
+    "courseCompleteDesc": "Avete cumplettatu tutti i {count} ughjettivi di stu corsu. Cuntinuate à praticà per mantene ciò chì avete amparatu.",
+    "practiceObjective": "Praticà st'ughjettivu",
+    "otherActivities": "Altre attività",
+    "xpToCompleteObjectiveTitle": "XP per Missione",
+    "xpToCompleteObjectiveDesc": "Definisce l'XP necessarii per cumplettà ogni missione"
 }

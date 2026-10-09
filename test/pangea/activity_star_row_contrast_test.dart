@@ -4,10 +4,12 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
+import 'package:fluffychat/widgets/sparkle_icon.dart';
 import 'contrast_ratio.dart';
 
 /// The star row is a graphic the user has to read: the count of filled vs
-/// unfilled stars *is* the content (#8760).
+/// unfilled sparkles *is* the content (#8760). Sparkles, not stars, since
+/// #9439 — the row keeps its name, its marks are [SparkleIcon]s.
 void main() {
   for (final brightness in [Brightness.light, Brightness.dark]) {
     testWidgets('star row clears $minGraphicRatio:1 in ${brightness.name}', (
@@ -34,15 +36,15 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      final icons = tester
-          .widgetList<Icon>(find.byType(Icon))
+      final sparkles = tester
+          .widgetList<SparkleIcon>(find.byType(SparkleIcon))
           .toList(growable: false);
-      expect(icons.length, 4);
+      expect(sparkles.length, 4);
 
-      final earned = icons.first.color!;
-      final unearned = icons.last.color!;
-      expect(icons.first.icon, Icons.star);
-      expect(icons.last.icon, Icons.star_border);
+      final earned = sparkles.first.color;
+      final unearned = sparkles.last.color;
+      expect(sparkles.first.filled, isTrue);
+      expect(sparkles.last.filled, isFalse);
 
       // The row sits on bare surfaces and inside cards; the card is the
       // tighter of the two in both themes, so both are asserted.
@@ -53,23 +55,23 @@ void main() {
         expect(
           contrastRatio(earned, background),
           greaterThanOrEqualTo(minGraphicRatio),
-          reason: 'earned star on $background in ${brightness.name}',
+          reason: 'earned sparkle on $background in ${brightness.name}',
         );
         expect(
           contrastRatio(unearned, background),
           greaterThanOrEqualTo(minGraphicRatio),
-          reason: 'unearned star on $background in ${brightness.name}',
+          reason: 'unearned sparkle on $background in ${brightness.name}',
         );
       }
     });
   }
 
-  // On a saturated state fill (an ongoing activity card) the stars take the
-  // fill's ink: the earned star solid, the unearned an outline, both in the
+  // On a saturated state fill (an ongoing activity card) the sparkles take the
+  // fill's ink: the earned one solid, the unearned an outline, both in the
   // ink — the gold mark is tuned for surfaces and reads muddy on a vivid fill.
   for (final brightness in [Brightness.light, Brightness.dark]) {
     testWidgets(
-      'on a state fill both stars take the fill\'s ink in ${brightness.name}',
+      'on a state fill both sparkles take the fill\'s ink in ${brightness.name}',
       (tester) async {
         final scheme = ColorScheme.fromSeed(
           brightness: brightness,
@@ -102,18 +104,18 @@ void main() {
         );
         await tester.pumpAndSettle();
 
-        final icons = tester
-            .widgetList<Icon>(find.byType(Icon))
+        final sparkles = tester
+            .widgetList<SparkleIcon>(find.byType(SparkleIcon))
             .toList(growable: false);
-        expect(icons.first.icon, Icons.star);
-        expect(icons.last.icon, Icons.star_border);
-        for (final icon in icons) {
-          expect(icon.color, scheme.onPrimaryContainer);
+        expect(sparkles.first.filled, isTrue);
+        expect(sparkles.last.filled, isFalse);
+        for (final sparkle in sparkles) {
+          expect(sparkle.color, scheme.onPrimaryContainer);
           expect(
-            contrastRatio(icon.color!, scheme.primaryContainer),
+            contrastRatio(sparkle.color, scheme.primaryContainer),
             greaterThanOrEqualTo(minGraphicRatio),
             reason:
-                'star in the fill\'s ink on primaryContainer, '
+                'sparkle in the fill\'s ink on primaryContainer, '
                 '${brightness.name}',
           );
         }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-07 09:01:43.970879",
+    "@@last_modified": "2026-10-09 10:28:29.864515",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Tarisa mufananidzo",
     "reportSent": "Chirevo chatumirwa",
     "reportNotSent": "Chirevo chako hachina kutumirwa. Tarisa internet yako woedza zvakare.",
-    "reportPointerMessage": "Meseji yakashumwa mu{courseName} — ona Kuchengeteka"
+    "reportPointerMessage": "Meseji yakashumwa mu{courseName} — ona Kuchengeteka",
+    "learningObjective": "Chinangwa Chokudzidza",
+    "learningObjectives": "Zvinangwa Zvokudzidza",
+    "missionNofM": "Basa re {index} pa {count}",
+    "xpTowardObjective": "{xp} pa {threshold} XP yechinangwa ichi",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} pazvinangwa {total} zvapera",
+    "sparklesEarnedOfTotal": "{earned} pama sparkles {total} awanikwa",
+    "sparklesEarnedInLanguage": "Sparkles awanikwa mu {language}",
+    "courseComplete": "Kosi yapera!",
+    "courseCompleteDesc": "Wapedza zvinangwa zvese {count} mukosi ino. Ramba uchiita kuitira kuti usakanganwe zvawadzidza.",
+    "practiceObjective": "Dzidzira chinangwa ichi",
+    "otherActivities": "Zvimwe zviitiko",
+    "xpToCompleteObjectiveTitle": "XP pabasa rega rega",
+    "xpToCompleteObjectiveDesc": "Isa XP inodiwa kuti upedze basa rega rega"
 }

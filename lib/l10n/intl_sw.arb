@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-07 09:01:45.604594",
+    "@@last_modified": "2026-10-09 10:28:33.608895",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Tazama picha",
     "reportSent": "Ripoti imetumwa",
     "reportNotSent": "Ripoti yako haikuweza kutumwa. Angalia muunganisho wako na ujaribu tena.",
-    "reportPointerMessage": "Ujumbe uliripotiwa katika {courseName} — angalia Usalama"
+    "reportPointerMessage": "Ujumbe uliripotiwa katika {courseName} — angalia Usalama",
+    "learningObjective": "Lengo la Kujifunza",
+    "learningObjectives": "Malengo ya Kujifunza",
+    "missionNofM": "Dhamira {index} kati ya {count}",
+    "xpTowardObjective": "{xp} kati ya {threshold} XP kuelekea lengo hili",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "Malengo {completed} kati ya {total} yametimizwa",
+    "sparklesEarnedOfTotal": "Mwangaza {earned} kati ya {total} umepatikana",
+    "sparklesEarnedInLanguage": "Mwangaza uliopatikana katika {language}",
+    "courseComplete": "Kozi imekamilika!",
+    "courseCompleteDesc": "Umekamilisha malengo yote {count} katika kozi hii. Endelea kufanya mazoezi ili usisahau ulichojifunza.",
+    "practiceObjective": "Fanya mazoezi ya lengo hili",
+    "otherActivities": "Shughuli zingine",
+    "xpToCompleteObjectiveTitle": "XP kwa kila Dhamira",
+    "xpToCompleteObjectiveDesc": "Weka XP inayohitajika kukamilisha kila dhamira"
 }

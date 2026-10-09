@@ -2964,7 +2964,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-07 09:01:37.916537",
+    "@@last_modified": "2026-10-09 10:28:18.002171",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10732,5 +10732,19 @@
     "viewImageLabel": "Peržiūrėti nuotrauką",
     "reportSent": "Pranešimas išsiųstas",
     "reportNotSent": "Nepavyko išsiųsti jūsų pranešimo. Patikrinkite ryšį ir bandykite dar kartą.",
-    "reportPointerMessage": "Pranešta apie žinutę {courseName} – žr. Sauga"
+    "reportPointerMessage": "Pranešta apie žinutę {courseName} – žr. Sauga",
+    "learningObjective": "Mokymosi tikslas",
+    "learningObjectives": "Mokymosi tikslai",
+    "missionNofM": "Misija {index} iš {count}",
+    "xpTowardObjective": "{xp} iš {threshold} XP link šio tikslo",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "Įvykdyta {completed} iš {total} tikslų",
+    "sparklesEarnedOfTotal": "Uždirbta {earned} iš {total} žvaigždučių",
+    "sparklesEarnedInLanguage": "Uždirbtos žvaigždutės {language} kalba",
+    "courseComplete": "Kursas baigtas!",
+    "courseCompleteDesc": "Įvykdėte visus {count} šio kurso tikslus. Toliau praktikuokitės, kad išlaikytumėte tai, ką išmokote.",
+    "practiceObjective": "Praktikuoti šį tikslą",
+    "otherActivities": "Kita veikla",
+    "xpToCompleteObjectiveTitle": "XP už misiją",
+    "xpToCompleteObjectiveDesc": "Nustatykite XP, reikalingą kiekvienai misijai užbaigti"
 }

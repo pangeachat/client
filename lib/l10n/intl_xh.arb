@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-07 09:01:46.670525",
+    "@@last_modified": "2026-10-09 10:28:38.818769",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Jonga umfanekiso",
     "reportSent": "Ingxelo ithunyelwe",
     "reportNotSent": "Ingxelo yakho ayikwazanga ukuthunyelwa. Khangela uqhagamshelwano lwakho uze uzame kwakhona.",
-    "reportPointerMessage": "Umyalezo uxeliwe ku-{courseName} — jonga uKhuseleko"
+    "reportPointerMessage": "Umyalezo uxeliwe ku-{courseName} — jonga uKhuseleko",
+    "learningObjective": "Injongo yokuFunda",
+    "learningObjectives": "Iinjongo zokuFunda",
+    "missionNofM": "Umsebenzi {index} kwi {count}",
+    "xpTowardObjective": "I-XP eyi-{xp} kwi-{threshold} ye-XP ngakule njongo",
+    "xpOfThreshold": "I-XP eyi-{xp} / {threshold}",
+    "objectivesCompletedOfTotal": "Iinjongo eziyi-{completed} kweziyi-{total} zigqityiwe",
+    "sparklesEarnedOfTotal": "Iintlantsi eziyi-{earned} kweziyi-{total} zifunyenwe",
+    "sparklesEarnedInLanguage": "Iintlantsi ezifunyenwe ngesi-{language}",
+    "courseComplete": "Ikhosi igqityiwe!",
+    "courseCompleteDesc": "Ugqibe zonke iinjongo eziyi-{count} kule khosi. Qhubeka uziqhelanisa ukuze ungakulibali okufundileyo.",
+    "practiceObjective": "Ziqhelanise nale njongo",
+    "otherActivities": "Eminye imisebenzi",
+    "xpToCompleteObjectiveTitle": "I-XP ngokuSebenza ngakunye",
+    "xpToCompleteObjectiveDesc": "Seta i-XP efunekayo ukugqiba umsebenzi ngamnye"
 }

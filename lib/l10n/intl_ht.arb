@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-07 09:01:33.662012",
+    "@@last_modified": "2026-10-09 10:28:10.155296",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Gade imaj",
     "reportSent": "Rapò a voye",
     "reportNotSent": "Rapò ou a pa t' kapab voye. Tcheke koneksyon ou epi eseye ankò.",
-    "reportPointerMessage": "Yon mesaj te rapòte nan {courseName} — gade Sekirite"
+    "reportPointerMessage": "Yon mesaj te rapòte nan {courseName} — gade Sekirite",
+    "learningObjective": "Objektif Aprantisaj",
+    "learningObjectives": "Objektif Aprantisaj",
+    "missionNofM": "Misyon {index} sou {count}",
+    "xpTowardObjective": "{xp} sou {threshold} XP pou objektif sa a",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} sou {total} objektif reyalize",
+    "sparklesEarnedOfTotal": "{earned} sou {total} etensèl touche",
+    "sparklesEarnedInLanguage": "Etensèl touche nan {language}",
+    "courseComplete": "Kou a fini!",
+    "courseCompleteDesc": "Ou fin reyalize tout {count} objektif nan kou sa a. Kontinye pratike pou kenbe sa w aprann.",
+    "practiceObjective": "Pratike objektif sa a",
+    "otherActivities": "Lòt aktivite",
+    "xpToCompleteObjectiveTitle": "XP pa Misyon",
+    "xpToCompleteObjectiveDesc": "Mete XP ki nesesè pou konplete chak misyon"
 }

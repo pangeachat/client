@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-07 09:01:28.452835",
+    "@@last_modified": "2026-10-09 10:27:59.047826",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Şəklə bax",
     "reportSent": "Hesabat göndərildi",
     "reportNotSent": "Hesabatınız göndərilə bilmədi. İnternet bağlantınızı yoxlayın və yenidən cəhd edin.",
-    "reportPointerMessage": "{courseName} kursunda bir mesaj bildirildi — Təhlükəsizliyə baxın"
+    "reportPointerMessage": "{courseName} kursunda bir mesaj bildirildi — Təhlükəsizliyə baxın",
+    "learningObjective": "Öyrənmə Məqsədi",
+    "learningObjectives": "Öyrənmə Məqsədləri",
+    "missionNofM": "{count} missiyadan {index}. missiya",
+    "xpTowardObjective": "Bu məqsədə doğru {threshold} XP-dən {xp} XP",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{total} məqsəddən {completed} tamamlandı",
+    "sparklesEarnedOfTotal": "{total} parıltıdan {earned} qazanıldı",
+    "sparklesEarnedInLanguage": "{language} dilində qazanılan parıltılar",
+    "courseComplete": "Kurs tamamlandı!",
+    "courseCompleteDesc": "Bu kursdakı bütün {count} məqsədi tamamladınız. Öyrəndiklərinizi yadda saxlamaq üçün məşq etməyə davam edin.",
+    "practiceObjective": "Bu məqsədi təcrübə edin",
+    "otherActivities": "Digər fəaliyyətlər",
+    "xpToCompleteObjectiveTitle": "Hər Missiya üçün XP",
+    "xpToCompleteObjectiveDesc": "Hər missiyanı tamamlamaq üçün lazım olan XP-ni təyin edin"
 }

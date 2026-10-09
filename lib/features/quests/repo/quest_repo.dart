@@ -147,11 +147,11 @@ class QuestOutline {
 
   /// Project this outline into the pure [CourseLoOutline] the progression gate
   /// consumes: the quest's ordered objective ids, and per objective the set of
-  /// activity ids that satisfy it. [starsToUnlock] carries the course's teacher
+  /// activity ids that satisfy it. [xpToComplete] carries the course's teacher
   /// override (defaults to the standard threshold). The single home for this
   /// mapping — the joined-course cache and the activity-session lock both use it.
   CourseLoOutline toCourseLoOutline({
-    int starsToUnlock = kDefaultStarsToUnlockObjective,
+    int xpToComplete = kDefaultXpToCompleteObjective,
   }) => CourseLoOutline(
     // The quest id serves as the scoping key here — right for scoped/preview
     // outlines that have no room. The joined-course cache re-keys courseId to
@@ -165,11 +165,15 @@ class QuestOutline {
       for (final group in groups)
         group.objective.id: group.activities.map((a) => a.activityId).toSet(),
     },
-    starsToUnlock: starsToUnlock,
-    earnableByActivity: {
+    // Each Mission's target vocabulary — the route practice XP takes to reach
+    // it (quests.instructions.md, "What fills a Mission").
+    vocabLemmasByLo: {
       for (final group in groups)
-        for (final a in group.activities) a.activityId: a.plan.earnableStars,
+        group.objective.id: {
+          for (final a in group.activities) ...a.plan.vocabLemmas,
+        },
     },
+    xpToComplete: xpToComplete,
   );
 }
 

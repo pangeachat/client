@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:44.481318",
+    "@@last_modified": "2026-10-09 10:28:30.502493",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10469,5 +10469,19 @@
     "viewImageLabel": "Visa bild",
     "reportSent": "Rapport skickad",
     "reportNotSent": "Din rapport kunde inte skickas. Kontrollera din anslutning och försök igen.",
-    "reportPointerMessage": "Ett meddelande rapporterades i {courseName} – se Säkerhet"
+    "reportPointerMessage": "Ett meddelande rapporterades i {courseName} – se Säkerhet",
+    "learningObjective": "Lärandemål",
+    "learningObjectives": "Lärandemål",
+    "missionNofM": "Uppdrag {index} av {count}",
+    "xpTowardObjective": "{xp} av {threshold} XP för detta mål",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} av {total} mål slutförda",
+    "sparklesEarnedOfTotal": "{earned} av {total} gnistor intjänade",
+    "sparklesEarnedInLanguage": "Gnistor intjänade i {language}",
+    "courseComplete": "Kursen är klar!",
+    "courseCompleteDesc": "Du har slutfört alla {count} mål i den här kursen. Fortsätt öva för att behålla det du har lärt dig.",
+    "practiceObjective": "Öva på detta mål",
+    "otherActivities": "Andra aktiviteter",
+    "xpToCompleteObjectiveTitle": "XP per uppdrag",
+    "xpToCompleteObjectiveDesc": "Ange den XP som behövs för att slutföra varje uppdrag"
 }

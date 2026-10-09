@@ -74,7 +74,7 @@ class PracticeSessionController {
     session?.submitAnswer(uses);
   }
 
-  Future<void> startSession(ConstructTypeEnum type) async {
+  Future<void> startSession(ConstructTypeEnum type, {String? missionId}) async {
     try {
       isLoadingSession = true;
       sessionError = null;
@@ -83,7 +83,12 @@ class PracticeSessionController {
       final l1 = MatrixState.pangeaController.userController.userL1;
       final l2 = MatrixState.pangeaController.userController.userL2;
       if (l1 == null || l2 == null) throw Exception('Languages not set');
-      session = await AnalyticsPracticeSessionRepo.get(type, l1, l2);
+      session = await AnalyticsPracticeSessionRepo.get(
+        type,
+        l1,
+        l2,
+        missionId: missionId,
+      );
     } catch (e, s) {
       if (e is! UnsubscribedException && e is! InsufficientDataException) {
         ErrorHandler.logError(e: e, s: s, data: {});

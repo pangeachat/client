@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-07 09:01:32.345781",
+    "@@last_modified": "2026-10-09 10:28:07.751775",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Nānā kiʻi",
     "reportSent": "Ua hoʻouna ʻia ka hōʻike",
     "reportNotSent": "ʻAʻole hiki ke hoʻouna ʻia kāu hōʻike. E nānā i kāu pili pūnaewele a e hoʻāʻo hou.",
-    "reportPointerMessage": "Ua hōʻike ʻia kekahi leka ma {courseName} — e nānā i ka Palekana"
+    "reportPointerMessage": "Ua hōʻike ʻia kekahi leka ma {courseName} — e nānā i ka Palekana",
+    "learningObjective": "Pahuhopu Aʻo",
+    "learningObjectives": "Nā Pahuhopu Aʻo",
+    "missionNofM": "Misiona {index} o {count}",
+    "xpTowardObjective": "{xp} o {threshold} XP no kēia pahuhopu",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} o {total} mau pahuhopu i hoʻopau ʻia",
+    "sparklesEarnedOfTotal": "{earned} o {total} mau ʻālohilohi i loaʻa",
+    "sparklesEarnedInLanguage": "Nā ʻālohilohi i loaʻa ma ka ʻōlelo {language}",
+    "courseComplete": "Ua pau ke papa!",
+    "courseCompleteDesc": "Ua hoʻopau ʻoe i nā pahuhopu {count} a pau o kēia papa. E hoʻomau i ka hoʻomaʻamaʻa e paʻa ai ka mea āu i aʻo ai.",
+    "practiceObjective": "E hoʻomaʻamaʻa i kēia pahuhopu",
+    "otherActivities": "Nā hana ʻē aʻe",
+    "xpToCompleteObjectiveTitle": "XP no ka Misiona",
+    "xpToCompleteObjectiveDesc": "E hoʻonoho i ka XP e pono ai e hoʻopau i kēlā me kēia misiona"
 }

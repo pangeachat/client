@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-07 09:01:39.767876",
+    "@@last_modified": "2026-10-09 10:28:20.357854",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Зураг харах",
     "reportSent": "Мэдэгдэл илгээгдлээ",
     "reportNotSent": "Таны мэдэгдлийг илгээх боломжгүй байна. Холболтоо шалгаад дахин оролдоно уу.",
-    "reportPointerMessage": "{courseName} хичээл дээрх мессежийг мэдэгдсэн байна — Аюулгүй байдлыг үзнэ үү"
+    "reportPointerMessage": "{courseName} хичээл дээрх мессежийг мэдэгдсэн байна — Аюулгүй байдлыг үзнэ үү",
+    "learningObjective": "Сурах зорилго",
+    "learningObjectives": "Сурах зорилгууд",
+    "missionNofM": "{count}-ийн {index} даалгавар",
+    "xpTowardObjective": "Энэ зорилгод хүрэхэд шаардлагатай {threshold} XP-ээс {xp} XP цуглуулсан",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "Нийт {total} зорилгын {completed} нь биелсэн",
+    "sparklesEarnedOfTotal": "Нийт {total} гялалзалтаас {earned} нь цуглуулсан",
+    "sparklesEarnedInLanguage": "{language} хэлээр цуглуулсан гялалзалт",
+    "courseComplete": "Хичээл дууслаа!",
+    "courseCompleteDesc": "Та энэ хичээлийн нийт {count} зорилгыг биелүүллээ. Судалгаагаа үргэлжлүүлэн хийж, сурсан зүйлээ бататгаарай.",
+    "practiceObjective": "Энэ зорилгыг дадлага хийх",
+    "otherActivities": "Бусад үйл ажиллагаа",
+    "xpToCompleteObjectiveTitle": "Даалгавар тутамд авах XP",
+    "xpToCompleteObjectiveDesc": "Даалгавар бүрийг дуусгахад шаардагдах XP-г тохируулна уу"
 }

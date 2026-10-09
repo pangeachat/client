@@ -23,8 +23,10 @@ import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
+import 'package:fluffychat/routes/courses/course_objectives/course_complete_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
+import 'package:fluffychat/routes/courses/course_objectives/current_objective_statement.dart';
 import 'package:fluffychat/widgets/expandable_text.dart';
 
 /// The single scrollable course page (#8357, replacing the tab row): Course
@@ -187,18 +189,6 @@ class _CourseOverviewState extends State<CourseOverview> {
                   // the admin, above anything they can merely catch up on.
                   CourseKnockRequests(room: room),
                   CourseCatchUp(room: room),
-                  // The course-wide progress bar rides the intro block, under
-                  // the attention cards; the Course plan section below starts
-                  // straight at its header, with no divider between them.
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0),
-                    child: CourseProgressBar(
-                      objectivesProvider: widget.controller.objectivesProvider,
-                      // The course tutorial runs on this page, so this is the
-                      // instance it points at.
-                      tutorialTargetId: TutorialTargetIds.courseProgressBar,
-                    ),
-                  ),
                 ],
               ),
             ),
@@ -228,50 +218,71 @@ class _CourseOverviewState extends State<CourseOverview> {
                         AsyncLoading() => true,
                         AsyncError() || AsyncIdle() => false,
                       };
+                      final group = provider.currentObjectiveGroup;
+                      final complete = provider.isCourseComplete;
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          // The header names the section, not the shortlist
-                          // it happens to show — "Suggested" is implicit in a
-                          // ranked row and only added words (#8744). The
-                          // plan the row is drawn from keeps its own name on
-                          // the subpage this section links to.
+                          // The section is the learner's CURRENT Mission
+                          // (#9437): its can-do statement, its XP meter, then
+                          // practice and the activities that satisfy it. The
+                          // Mission-by-Mission plan is one tap away behind
+                          // "See all". The star is the Mission's mark — a
+                          // completed Mission is a star (#9436).
                           CourseSectionHeader(
-                            title: l10n.activities,
-                            // Already this app's glyph for a course's
-                            // syllabus (the More section's "Change course
-                            // plan"), which is where these activities come
-                            // from.
-                            icon: Icons.assignment_outlined,
+                            title: l10n.learningObjective,
+                            icon: Icons.star,
                             actions: [
                               if (hasPlan)
                                 CourseSectionButton(
-                                  section: l10n.activities,
+                                  section: l10n.learningObjectives,
                                   onPressed: () =>
                                       _openSubpage(SpaceSettingsTabs.course),
                                 ),
                             ],
                           ),
                           const SizedBox(height: 8.0),
-                          // The shortlist draws from every Mission and ranks a
-                          // pinged activity near the front, so it carries the
-                          // ping badge on the card itself — the header's link
-                          // needs none (it did while this was one Mission's
-                          // row, #8454).
-                          CourseObjectivesList(
-                            room: room,
-                            shrinkWrap: true,
-                            suggestedOnly: true,
-                            hasCompletedActivity: (activityId) => widget
-                                .controller
-                                .roomSummariesModel
-                                .hasCompletedActivity(
-                                  room.client.userID,
-                                  activityId,
-                                ),
-                            objectivesProvider:
-                                widget.controller.objectivesProvider,
-                          ),
+                          if (complete)
+                            CourseCompleteCard(
+                              objectiveCount: provider.objectiveCount,
+                            )
+                          else ...[
+                            if (group != null)
+                              CurrentObjectiveStatement(
+                                group: group,
+                                index: provider.currentObjectiveIndex,
+                                count: provider.objectiveCount,
+                              ),
+                            // The Mission's meter, under its statement; the
+                            // collapsed peek shows this same bar on its own.
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 8.0,
+                              ),
+                              child: CourseProgressBar(
+                                objectivesProvider: provider,
+                                // The course tutorial runs on this page, so
+                                // this is the instance it points at.
+                                tutorialTargetId:
+                                    TutorialTargetIds.courseProgressBar,
+                              ),
+                            ),
+                            // The Practice tile and the Mission's activities,
+                            // with a pinged activity's badge on its card.
+                            CourseObjectivesList(
+                              room: room,
+                              shrinkWrap: true,
+                              suggestedOnly: true,
+                              hasCompletedActivity: (activityId) => widget
+                                  .controller
+                                  .roomSummariesModel
+                                  .hasCompletedActivity(
+                                    room.client.userID,
+                                    activityId,
+                                  ),
+                              objectivesProvider: provider,
+                            ),
+                          ],
                         ],
                       );
                     },

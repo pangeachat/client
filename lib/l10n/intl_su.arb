@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-07 09:01:44.310259",
+    "@@last_modified": "2026-10-09 10:28:36.155324",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Témbongkeun gambar",
     "reportSent": "Laporan dikirim",
     "reportNotSent": "Laporan anjeun teu tiasa dikirim. Pariksa sambungan anjeun teras cobian deui.",
-    "reportPointerMessage": "Aya béja dilaporkeun di {courseName} — tingali Kasalametan"
+    "reportPointerMessage": "Aya béja dilaporkeun di {courseName} — tingali Kasalametan",
+    "learningObjective": "Tujuan Diajar",
+    "learningObjectives": "Tujuan-tujuan Diajar",
+    "missionNofM": "Misi {index} ti {count}",
+    "xpTowardObjective": "{xp} ti {threshold} XP pikeun tujuan ieu",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} ti {total} tujuan réngsé",
+    "sparklesEarnedOfTotal": "{earned} ti {total} sparkles dimeunangkeun",
+    "sparklesEarnedInLanguage": "Sparkles dimeunangkeun dina basa {language}",
+    "courseComplete": "Kursus réngsé!",
+    "courseCompleteDesc": "Anjeun parantos ngaréngsékeun sadaya {count} tujuan dina kursus ieu. Terus latihan pikeun ngajaga naon anu parantos diajarkeun.",
+    "practiceObjective": "Latihan tujuan ieu",
+    "otherActivities": "Kagiatan sanés",
+    "xpToCompleteObjectiveTitle": "XP per Misi",
+    "xpToCompleteObjectiveDesc": "Atur XP anu diperyogikeun pikeun ngaréngsékeun unggal misi"
 }

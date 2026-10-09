@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-07 09:01:45.850561",
+    "@@last_modified": "2026-10-09 10:28:32.721891",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Тасвирро бинед",
     "reportSent": "Ҳисобот фиристода шуд",
     "reportNotSent": "Ҳисоботи шумо фиристода нашуд. Пайвасти худро тафтиш кунед ва дубора кӯшиш кунед.",
-    "reportPointerMessage": "Дар {courseName} паёме гузориш дода шуд — ба Амният нигаред"
+    "reportPointerMessage": "Дар {courseName} паёме гузориш дода шуд — ба Амният нигаред",
+    "learningObjective": "Ҳадафи омӯзиш",
+    "learningObjectives": "Ҳадафҳои омӯзиш",
+    "missionNofM": "Миссияи {index} аз {count}",
+    "xpTowardObjective": "{xp} аз {threshold} XP ба ин ҳадаф",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "objectivesCompletedOfTotal": "{completed} аз {total} ҳадафҳо иҷро шуд",
+    "sparklesEarnedOfTotal": "{earned} аз {total} дурахшон ба даст оварда шуд",
+    "sparklesEarnedInLanguage": "Дурахшон дар {language} ба даст оварда шуд",
+    "courseComplete": "Курс ба итмом расид!",
+    "courseCompleteDesc": "Шумо ҳамаи {count} ҳадафҳоро дар ин курс ба итмом расондед. Барои нигоҳ доштани он чизе, ки омӯхтаед, машқ карданро давом диҳед.",
+    "practiceObjective": "Ин ҳадафро машқ кунед",
+    "otherActivities": "Дигар фаъолиятҳо",
+    "xpToCompleteObjectiveTitle": "XP барои ҳар як миссия",
+    "xpToCompleteObjectiveDesc": "XP-и лозимаро барои иҷрои ҳар як миссия муқаррар кунед"
 }

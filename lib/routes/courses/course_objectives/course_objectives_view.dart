@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/course_plan_return.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
@@ -32,8 +33,10 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/start_practice.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
+import 'package:fluffychat/routes/courses/course_objectives/objective_practice_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
 import 'package:fluffychat/routes/courses/course_objectives/suggested_activities.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -615,7 +618,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
     return Semantics(
       label: widget.suggestedOnly
-          ? L10n.of(context).activities
+          ? L10n.of(context).learningObjective
           : L10n.of(context).coursePlan,
       container: true,
       child: ValueListenableBuilder(
@@ -647,20 +650,29 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                 valueListenable: widget.objectivesProvider.progression,
                 builder: (context, progression, _) {
                   if (widget.suggestedOnly) {
-                    // The course page's ranked shortlist: no Mission header,
-                    // ordered by the same Priority matrix the map ranks pins
-                    // by, with sessions the learner already holds a role in
-                    // (#8741) and activities they have finished (#8901)
-                    // dropped. Empty only when every activity in the plan is
-                    // one of those — nothing left to suggest; the section
-                    // header and its "See all" sit outside this widget.
+                    // The course page's current-Mission row (#9437): the
+                    // Practice tile, then every activity of the Mission the
+                    // resolver points at, ordered by the same Priority matrix
+                    // the map ranks pins by. Sessions the learner already
+                    // holds a role in are dropped (#8741 — resumed from
+                    // Chats); finished activities stay, last, since the row
+                    // is the Mission's whole content and a replay still earns
+                    // XP. Empty only while the course is complete or has no
+                    // Mission; the page renders its own card for that, and
+                    // the section header and its "See all" sit outside this
+                    // widget.
+                    final current =
+                        widget.objectivesProvider.currentObjectiveGroup;
+                    if (current == null) return const SizedBox.shrink();
+                    final missionId = current.objective.id;
                     final suggested = rankSuggestedActivities(
-                      groups: groups,
+                      groups: [current],
                       missionGradient:
                           widget.objectivesProvider.missionGradient,
                       signalsFor: _signalsFor,
+                      cap: null,
+                      keepCompleted: true,
                     );
-                    if (suggested.isEmpty) return const SizedBox.shrink();
                     // The course tutorial's "pick an activity" step lights
                     // this row. Only the course page's row hosts the tutorial,
                     // so only it claims the target id ([_hostsTutorial]).
@@ -673,6 +685,21 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                           for (final suggestion in suggested)
                             suggestion.activity,
                         ],
+                        // Practice first (#9438): a preview has nothing to
+                        // practise toward, so it draws no tile.
+                        leadingBuilder: widget.readOnly
+                            ? null
+                            : (context, width, height, focusNode) =>
+                                  ObjectivePracticeCard(
+                                    width: width,
+                                    height: height,
+                                    focusNode: focusNode,
+                                    onTap: () => startPractice(
+                                      context,
+                                      ConstructTypeEnum.vocab,
+                                      missionId: missionId,
+                                    ),
+                                  ),
                         onTap: _openActivity,
                         userStarsByActivity: _userStarsByActivity,
                         hasCompletedActivity: widget.hasCompletedActivity,

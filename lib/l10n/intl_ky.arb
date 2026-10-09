@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-07 09:01:38.003578",
+    "@@last_modified": "2026-10-09 10:28:15.514240",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2396,5 +2396,19 @@
     "viewImageLabel": "Сүрөттү көрүү",
     "reportSent": "Кабар жөнөтүлдү",
     "reportNotSent": "Кабарыңыз жөнөтүлгөн жок. Байланышыңызды текшерип, кайра аракет кылыңыз.",
-    "reportPointerMessage": "{courseName} курсунда билдирүү жөнөтүлдү — Коопсуздукту караңыз"
+    "reportPointerMessage": "{courseName} курсунда билдирүү жөнөтүлдү — Коопсуздукту караңыз",
+    "learningObjective": "Окуу максаты",
+    "learningObjectives": "Окуу максаттары",
+    "missionNofM": "{count} ичинен {index}-миссия",
+    "xpTowardObjective": "Бул максатка жетүү үчүн {threshold} XP ичинен {xp} XP",
+    "xpOfThreshold": "{threshold} XP ичинен {xp} XP",
+    "objectivesCompletedOfTotal": "{total} максаттын ичинен {completed} аткарылды",
+    "sparklesEarnedOfTotal": "{total} жылтырактын ичинен {earned} табылды",
+    "sparklesEarnedInLanguage": "{language} тилинде табылган жылтырактар",
+    "courseComplete": "Курс аяктады!",
+    "courseCompleteDesc": "Бул курстагы бардык {count} максатты аяктадыңыз. Үйрөнгөнүңүздү унутпаш үчүн машыгууну улантыңыз.",
+    "practiceObjective": "Бул максатты машыгуу",
+    "otherActivities": "Башка иш-чаралар",
+    "xpToCompleteObjectiveTitle": "Ар бир миссия үчүн XP",
+    "xpToCompleteObjectiveDesc": "Ар бир миссияны аяктоо үчүн керектүү XPди коюңуз"
 }
