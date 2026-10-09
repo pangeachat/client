@@ -10866,5 +10866,20 @@
     "reportSent": "הדיווח נשלח",
     "reportNotSent": "הדיווח שלך לא נשלח. בדוק את החיבור שלך ונסה שוב.",
     "reportPointerMessage": "הודעה דווחה ב{courseName} — ראה בטיחות",
-    "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט"
+    "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט",
+    "filteredNetworkBlockedTitle": "רשת זו חוסמת את Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "רשת זו חוסמת חלק מ-Pangea Chat",
+    "filteredNetworkWhatCanIDo": "מה אפשר לעשות?",
+    "filteredNetworkPhoneAdvice": "כבה/כבי את ה-Wi-Fi והשתמש/השתמשי במקום זאת בנתונים ניידים.",
+    "filteredNetworkComputerAdvice": "התחבר/התחברי לנקודה חמה של הטלפון שלך במקום ל-Wi-Fi הזה.",
+    "filteredNetworkItHeading": "למורים ולצוותי IT",
+    "filteredNetworkItBody": "בקש/בקשי מצוות ה-IT שלך לאפשר את הדומיינים הבאים:",
+    "filteredNetworkAskForHelp": "בקש/בקשי עזרה מ-Pangea",
+    "filteredNetworkHelpExplanation": "נשלח לך אימייל כדי לעזור לך להפעיל את Pangea Chat ברשת זו.",
+    "filteredNetworkHelpWaiting": "בקשתך תישלח ברגע שתתחבר/תתחברי.",
+    "filteredNetworkHelpSent": "נשלח. ניצור קשר באימייל.",
+    "filteredNetworkHelpRefused": "לא הצלחנו לשלוח את בקשתך. אנא שלח/שלחי אימייל ל-support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "רשת זו חוסמת סרטונים.",
+    "filteredNetworkImagesBlocked": "רשת זו חוסמת תמונות.",
+    "filteredNetworkMapBlocked": "רשת זו חוסמת את המפה."
 }

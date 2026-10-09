@@ -2397,5 +2397,20 @@
     "reportSent": "Hesabat göndərildi",
     "reportNotSent": "Hesabatınız göndərilə bilmədi. İnternet bağlantınızı yoxlayın və yenidən cəhd edin.",
     "reportPointerMessage": "{courseName} kursunda bir mesaj bildirildi — Təhlükəsizliyə baxın",
-    "useActivityImageAsChatBackground": "Fəaliyyət şəklini çat fonu kimi istifadə et"
+    "useActivityImageAsChatBackground": "Fəaliyyət şəklini çat fonu kimi istifadə et",
+    "filteredNetworkBlockedTitle": "Bu şəbəkə Pangea Chat-ı bloklayır",
+    "filteredNetworkPartlyBlockedTitle": "Bu şəbəkə Pangea Chat-ın bir hissəsini bloklayır",
+    "filteredNetworkWhatCanIDo": "Nə edə bilərəm?",
+    "filteredNetworkPhoneAdvice": "Wi-Fi-ı söndürün və əvəzinə mobil verilənlərdən istifadə edin.",
+    "filteredNetworkComputerAdvice": "Bu Wi-Fi əvəzinə telefonunuzun hotspot-una qoşulun.",
+    "filteredNetworkItHeading": "Müəllimlər və İT işçiləri üçün",
+    "filteredNetworkItBody": "İT komandanızdan bu domenlərə icazə verməsini xahiş edin:",
+    "filteredNetworkAskForHelp": "Pangea-dan kömək istəyin",
+    "filteredNetworkHelpExplanation": "Bu şəbəkədə Pangea Chat-ın işləməsinə kömək etmək üçün sizə e-poçt göndərəcəyik.",
+    "filteredNetworkHelpWaiting": "Qoşulan kimi sorğunuz göndəriləcək.",
+    "filteredNetworkHelpSent": "Göndərildi. E-poçt vasitəsilə əlaqə saxlayacağıq.",
+    "filteredNetworkHelpRefused": "Sorğunuzu göndərə bilmədik. Zəhmət olmasa support@pangea.chat ünvanına e-poçt göndərin.",
+    "filteredNetworkVideoBlocked": "Bu şəbəkə videoları bloklayır.",
+    "filteredNetworkImagesBlocked": "Bu şəbəkə şəkilləri bloklayır.",
+    "filteredNetworkMapBlocked": "Bu şəbəkə xəritəni bloklayır."
 }

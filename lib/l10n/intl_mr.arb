@@ -2397,5 +2397,20 @@
     "reportSent": "अहवाल पाठवला",
     "reportNotSent": "तुमचा अहवाल पाठवला जाऊ शकला नाही. तुमचे कनेक्शन तपासा आणि पुन्हा प्रयत्न करा.",
     "reportPointerMessage": "{courseName} मध्ये एका संदेशाची तक्रार करण्यात आली आहे — सुरक्षितता पहा",
-    "useActivityImageAsChatBackground": "चॅटची पार्श्वभूमी म्हणून अ‍ॅक्टिव्हिटी इमेज वापरा"
+    "useActivityImageAsChatBackground": "चॅटची पार्श्वभूमी म्हणून अ‍ॅक्टिव्हिटी इमेज वापरा",
+    "filteredNetworkBlockedTitle": "हे नेटवर्क पांगिया चॅटला ब्लॉक करत आहे",
+    "filteredNetworkPartlyBlockedTitle": "हे नेटवर्क पांगिया चॅटचा काही भाग ब्लॉक करत आहे",
+    "filteredNetworkWhatCanIDo": "मी काय करू शकतो?",
+    "filteredNetworkPhoneAdvice": "वाय-फाय बंद करा आणि त्याऐवजी मोबाइल डेटा वापरा.",
+    "filteredNetworkComputerAdvice": "या वाय-फायऐवजी तुमच्या फोनच्या हॉटस्पॉटला कनेक्ट करा.",
+    "filteredNetworkItHeading": "शिक्षक आणि आयटी कर्मचाऱ्यांसाठी",
+    "filteredNetworkItBody": "तुमच्या आयटी टीमला या डोमेनना परवानगी देण्यास सांगा:",
+    "filteredNetworkAskForHelp": "मदतीसाठी पांगियाला विचारा",
+    "filteredNetworkHelpExplanation": "या नेटवर्कवर पांगिया चॅट सुरू करण्यासाठी आम्ही तुम्हाला ईमेल करू.",
+    "filteredNetworkHelpWaiting": "तुम्ही कनेक्ट होताच तुमची विनंती पाठवली जाईल.",
+    "filteredNetworkHelpSent": "पाठवले. आम्ही ईमेलद्वारे संपर्क साधू.",
+    "filteredNetworkHelpRefused": "आम्ही तुमची विनंती पाठवू शकलो नाही. कृपया support@pangea.chat वर ईमेल करा.",
+    "filteredNetworkVideoBlocked": "हे नेटवर्क व्हिडिओ ब्लॉक करते.",
+    "filteredNetworkImagesBlocked": "हे नेटवर्क प्रतिमा ब्लॉक करते.",
+    "filteredNetworkMapBlocked": "हे नेटवर्क नकाशा ब्लॉक करते."
 }

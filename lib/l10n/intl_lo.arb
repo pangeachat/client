@@ -2397,5 +2397,20 @@
     "reportSent": "ລາຍງານຖືກສົ່ງແລ້ວ",
     "reportNotSent": "ບໍ່ສາມາດສົ່ງລາຍງານຂອງທ່ານໄດ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ ແລະລອງໃໝ່ອີກຄັ້ງ.",
     "reportPointerMessage": "ມີຂໍ້ຄວາມຖືກລາຍງານໃນ {courseName} — ເບິ່ງຄວາມປອດໄພ",
-    "useActivityImageAsChatBackground": "ໃຊ້ຮູບພາບກິດຈະກຳເປັນພື້ນຫຼັງການສົນທະນາ"
+    "useActivityImageAsChatBackground": "ໃຊ້ຮູບພາບກິດຈະກຳເປັນພື້ນຫຼັງການສົນທະນາ",
+    "filteredNetworkBlockedTitle": "ເຄືອຂ່າຍນີ້ກຳລັງບລັອກ Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "ເຄືອຂ່າຍນີ້ກຳລັງບລັອກບາງສ່ວນຂອງ Pangea Chat",
+    "filteredNetworkWhatCanIDo": "ຂ້ອຍສາມາດເຮັດຫຍັງໄດ້ແດ່?",
+    "filteredNetworkPhoneAdvice": "ປິດ Wi-Fi ແລະໃຊ້ຂໍ້ມູນມືຖືແທນ.",
+    "filteredNetworkComputerAdvice": "ເຊື່ອມຕໍ່ກັບຮັອດສະປອດຂອງໂທລະສັບຂອງທ່ານແທນ Wi-Fi ນີ້.",
+    "filteredNetworkItHeading": "ສຳລັບຄູສອນ ແລະ ພະນັກງານໄອທີ",
+    "filteredNetworkItBody": "ຂໍໃຫ້ທີມງານໄອທີຂອງທ່ານອະນຸຍາດໂດເມນເຫຼົ່ານີ້:",
+    "filteredNetworkAskForHelp": "ຂໍຄວາມຊ່ວຍເຫຼືອຈາກ Pangea",
+    "filteredNetworkHelpExplanation": "ພວກເຮົາຈະສົ່ງອີເມວຫາທ່ານເພື່ອຊ່ວຍໃຫ້ Pangea Chat ໃຊ້ງານໄດ້ໃນເຄືອຂ່າຍນີ້.",
+    "filteredNetworkHelpWaiting": "ຄຳຮ້ອງຂໍຂອງທ່ານຈະຖືກສົ່ງທັນທີທີ່ທ່ານເຊື່ອມຕໍ່ແລ້ວ.",
+    "filteredNetworkHelpSent": "ສົ່ງແລ້ວ. ພວກເຮົາຈະຕິດຕໍ່ຫາທ່ານທາງອີເມວ.",
+    "filteredNetworkHelpRefused": "ພວກເຮົາບໍ່ສາມາດສົ່ງຄຳຮ້ອງຂໍຂອງທ່ານໄດ້. ກະລຸນາສົ່ງອີເມວຫາ support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "ເຄືອຂ່າຍນີ້ບລັອກວິດີໂອ.",
+    "filteredNetworkImagesBlocked": "ເຄືອຂ່າຍນີ້ບລັອກຮູບພາບ.",
+    "filteredNetworkMapBlocked": "ເຄືອຂ່າຍນີ້ບລັອກແຜນທີ່."
 }

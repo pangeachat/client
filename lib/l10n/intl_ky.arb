@@ -2397,5 +2397,20 @@
     "reportSent": "Кабар жөнөтүлдү",
     "reportNotSent": "Кабарыңыз жөнөтүлгөн жок. Байланышыңызды текшерип, кайра аракет кылыңыз.",
     "reportPointerMessage": "{courseName} курсунда билдирүү жөнөтүлдү — Коопсуздукту караңыз",
-    "useActivityImageAsChatBackground": "Чаттын фону катары ишмердүүлүк сүрөтүн колдонуу"
+    "useActivityImageAsChatBackground": "Чаттын фону катары ишмердүүлүк сүрөтүн колдонуу",
+    "filteredNetworkBlockedTitle": "Бул тармак Pangea Chat'ты бөгөттөп жатат",
+    "filteredNetworkPartlyBlockedTitle": "Бул тармак Pangea Chat'тын бир бөлүгүн бөгөттөп жатат",
+    "filteredNetworkWhatCanIDo": "Эмне кылсам болот?",
+    "filteredNetworkPhoneAdvice": "Wi-Fi'ды өчүрүп, анын ордуна мобилдик дайындарды колдонуңуз.",
+    "filteredNetworkComputerAdvice": "Бул Wi-Fi'дын ордуна телефонуңуздун хотспотуна туташыңыз.",
+    "filteredNetworkItHeading": "Мугалимдер жана IT кызматкерлери үчүн",
+    "filteredNetworkItBody": "IT командаңыздан бул домендерге уруксат берүүнү сураныңыз:",
+    "filteredNetworkAskForHelp": "Pangea'дан жардам сураңыз",
+    "filteredNetworkHelpExplanation": "Бул тармакта Pangea Chat'ты иштетүүгө жардам берүү үчүн сизге электрондук кат жөнөтөбүз.",
+    "filteredNetworkHelpWaiting": "Туташканыңыздан кийин суроо-талабыңыз жөнөтүлөт.",
+    "filteredNetworkHelpSent": "Жөнөтүлдү. Сиз менен электрондук почта аркылуу байланышабыз.",
+    "filteredNetworkHelpRefused": "Суроо-талабыңызды жөнөтө алган жокпуз. Сураныч, support@pangea.chat дарегине электрондук кат жөнөтүңүз.",
+    "filteredNetworkVideoBlocked": "Бул тармак видеолорду бөгөттөйт.",
+    "filteredNetworkImagesBlocked": "Бул тармак сүрөттөрдү бөгөттөйт.",
+    "filteredNetworkMapBlocked": "Бул тармак картаны бөгөттөйт."
 }

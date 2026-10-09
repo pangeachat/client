@@ -2397,5 +2397,20 @@
     "reportSent": "Мэдэгдэл илгээгдлээ",
     "reportNotSent": "Таны мэдэгдлийг илгээх боломжгүй байна. Холболтоо шалгаад дахин оролдоно уу.",
     "reportPointerMessage": "{courseName} хичээл дээрх мессежийг мэдэгдсэн байна — Аюулгүй байдлыг үзнэ үү",
-    "useActivityImageAsChatBackground": "Үйл ажиллагааны зургийг чатын дэвсгэр болгон ашиглах"
+    "useActivityImageAsChatBackground": "Үйл ажиллагааны зургийг чатын дэвсгэр болгон ашиглах",
+    "filteredNetworkBlockedTitle": "Энэ сүлжээ Pangea Chat-ыг хааж байна",
+    "filteredNetworkPartlyBlockedTitle": "Энэ сүлжээ Pangea Chat-ын зарим хэсгийг хааж байна",
+    "filteredNetworkWhatCanIDo": "Би юу хийж чадах вэ?",
+    "filteredNetworkPhoneAdvice": "Wi-Fi-г унтраагаад оронд нь мобайл дата ашиглана уу.",
+    "filteredNetworkComputerAdvice": "Энэ Wi-Fi-гийн оронд утсаныхаа хотспотод холбогдоно уу.",
+    "filteredNetworkItHeading": "Багш, IT ажилтнуудад зориулав",
+    "filteredNetworkItBody": "IT багтаа дараах домэйнуудыг зөвшөөрөхийг хүсээрэй:",
+    "filteredNetworkAskForHelp": "Pangea-гаас тусламж хүсэх",
+    "filteredNetworkHelpExplanation": "Бид танд энэ сүлжээнд Pangea Chat-ыг ажиллуулахад туслахын тулд имэйл илгээнэ.",
+    "filteredNetworkHelpWaiting": "Таны хүсэлт холбогдмогц илгээгдэнэ.",
+    "filteredNetworkHelpSent": "Илгээгдсэн. Бид тантай имэйлээр холбогдоно.",
+    "filteredNetworkHelpRefused": "Бид таны хүсэлтийг илгээж чадсангүй. support@pangea.chat хаягаар имэйл илгээнэ үү.",
+    "filteredNetworkVideoBlocked": "Энэ сүлжээ видеог хааж байна.",
+    "filteredNetworkImagesBlocked": "Энэ сүлжээ зургийг хааж байна.",
+    "filteredNetworkMapBlocked": "Энэ сүлжээ газрын зургийг хааж байна."
 }

@@ -2397,5 +2397,20 @@
     "reportSent": "Segnalazione inviata",
     "reportNotSent": "A vostra segnalazione ùn hà pussutu esse inviata. Verificate a vostra cunnessione è riprovate.",
     "reportPointerMessage": "Un messagiu hè statu segnalatu in {courseName} — vede Sicurezza",
-    "useActivityImageAsChatBackground": "Aduprà l'imagine di l'attività cum'è fondu di chat"
+    "useActivityImageAsChatBackground": "Aduprà l'imagine di l'attività cum'è fondu di chat",
+    "filteredNetworkBlockedTitle": "Sta reta bluccheghja Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Sta reta bluccheghja una parte di Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Chì possu fà?",
+    "filteredNetworkPhoneAdvice": "Spinghje u Wi-Fi è aduprà e dati mobili invece.",
+    "filteredNetworkComputerAdvice": "Cunnette vi à u hotspot di u vostru telefunu invece di stu Wi-Fi.",
+    "filteredNetworkItHeading": "Per i prufessori è u persunale IT",
+    "filteredNetworkItBody": "Dumandate à a vostra squadra IT di permette sti duminii:",
+    "filteredNetworkAskForHelp": "Dumandate aiutu à Pangea",
+    "filteredNetworkHelpExplanation": "Vi manderemu un email per aiutà à fà funziunà Pangea Chat nant'à sta reta.",
+    "filteredNetworkHelpWaiting": "A vostra dumanda serà mandata appena cunnessu.",
+    "filteredNetworkHelpSent": "Mandatu. Vi cuntatteremu per email.",
+    "filteredNetworkHelpRefused": "Ùn pudemu micca mandà a vostra dumanda. Per piacè mandate un email à support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Sta reta bluccheghja i video.",
+    "filteredNetworkImagesBlocked": "Sta reta bluccheghja l'imaghjini.",
+    "filteredNetworkMapBlocked": "Sta reta bluccheghja a carta."
 }

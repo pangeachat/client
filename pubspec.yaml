@@ -21,6 +21,7 @@ dependencies:
   collection: ^1.18.0
   cross_file: ^0.3.5
   confetti: ^0.8.0
+  connectivity_plus: ^7.3.1
   cupertino_icons: any
   # #Pangea
   # desktop_drop: ^0.7.0

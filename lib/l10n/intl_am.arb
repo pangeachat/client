@@ -2397,5 +2397,20 @@
     "reportSent": "ሪፖርት ተልኳል",
     "reportNotSent": "ሪፖርትዎ ሊላክ አልቻለም። ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ።",
     "reportPointerMessage": "በ{courseName} ውስጥ መልዕክት ሪፖርት ተደርጓል — ደህንነትን ይመልከቱ",
-    "useActivityImageAsChatBackground": "የእንቅስቃሴ ምስልን እንደ ቻት ዳራ ተጠቀም"
+    "useActivityImageAsChatBackground": "የእንቅስቃሴ ምስልን እንደ ቻት ዳራ ተጠቀም",
+    "filteredNetworkBlockedTitle": "ይህ አውታረ መረብ ፓንጄያ ቻትን እየከለከለ ነው",
+    "filteredNetworkPartlyBlockedTitle": "ይህ አውታረ መረብ የፓንጄያ ቻት ክፍሎችን እየከለከለ ነው",
+    "filteredNetworkWhatCanIDo": "ምን ማድረግ እችላለሁ?",
+    "filteredNetworkPhoneAdvice": "ዋይ ፋይን ያጥፉና በምትኩ የሞባይል ዳታ ይጠቀሙ።",
+    "filteredNetworkComputerAdvice": "ከዚህ ዋይ ፋይ ይልቅ ከስልክዎ ሆትስፖት ጋር ይገናኙ።",
+    "filteredNetworkItHeading": "ለመምህራን እና ለአይቲ ሰራተኞች",
+    "filteredNetworkItBody": "የአይቲ ቡድንዎ እነዚህን ጎራዎች እንዲፈቅድ ይጠይቁ፦",
+    "filteredNetworkAskForHelp": "ፓንጄያን ለእርዳታ ይጠይቁ",
+    "filteredNetworkHelpExplanation": "ፓንጄያ ቻት በዚህ አውታረ መረብ ላይ እንዲሰራ ለመርዳት ኢሜይል እንልክልዎታለን።",
+    "filteredNetworkHelpWaiting": "ጥያቄዎ እንደተገናኙ ወዲያውኑ ይላካል።",
+    "filteredNetworkHelpSent": "ተልኳል። በኢሜይል እናገኝዎታለን።",
+    "filteredNetworkHelpRefused": "ጥያቄዎን መላክ አልቻልንም። እባክዎ support@pangea.chat ኢሜይል ያድርጉ።",
+    "filteredNetworkVideoBlocked": "ይህ አውታረ መረብ ቪዲዮዎችን ይከለክላል።",
+    "filteredNetworkImagesBlocked": "ይህ አውታረ መረብ ምስሎችን ይከለክላል።",
+    "filteredNetworkMapBlocked": "ይህ አውታረ መረብ ካርታውን ይከለክላል።"
 }

@@ -9952,5 +9952,20 @@
     "reportSent": "举报已发送",
     "reportNotSent": "无法发送您的举报。请检查您的网络连接，然后重试。",
     "reportPointerMessage": "在 {courseName} 中举报了一条消息 — 请查看“安全”",
-    "useActivityImageAsChatBackground": "使用活动图片作为聊天背景"
+    "useActivityImageAsChatBackground": "使用活动图片作为聊天背景",
+    "filteredNetworkBlockedTitle": "此网络正在阻止 Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "此网络正在部分阻止 Pangea Chat",
+    "filteredNetworkWhatCanIDo": "我能做什么？",
+    "filteredNetworkPhoneAdvice": "关闭 Wi-Fi，改用移动数据。",
+    "filteredNetworkComputerAdvice": "连接到手机热点，而不是此 Wi-Fi。",
+    "filteredNetworkItHeading": "致教师和 IT 人员",
+    "filteredNetworkItBody": "请您的 IT 团队允许以下域：",
+    "filteredNetworkAskForHelp": "向 Pangea 寻求帮助",
+    "filteredNetworkHelpExplanation": "我们会通过电子邮件联系您，帮助您在此网络上使用 Pangea Chat。",
+    "filteredNetworkHelpWaiting": "连接后，您的请求将立即发送。",
+    "filteredNetworkHelpSent": "已发送。我们将通过电子邮件与您联系。",
+    "filteredNetworkHelpRefused": "我们无法发送您的请求。请发送电子邮件至 support@pangea.chat。",
+    "filteredNetworkVideoBlocked": "此网络阻止视频。",
+    "filteredNetworkImagesBlocked": "此网络阻止图片。",
+    "filteredNetworkMapBlocked": "此网络阻止地图。"
 }

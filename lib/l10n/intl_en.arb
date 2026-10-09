@@ -5735,5 +5735,65 @@
     "useActivityImageAsChatBackground": "Use activity image as chat background",
     "@useActivityImageAsChatBackground": {
         "description": "Style-settings switch that shows a faint copy of the activity's image behind an activity chat once the learner scrolls past the image at the top."
+    },
+    "filteredNetworkBlockedTitle": "This network is blocking Pangea Chat",
+    "@filteredNetworkBlockedTitle": {
+        "description": "Banner and guidance title when the network blocks the chat server or the Pangea API."
+    },
+    "filteredNetworkPartlyBlockedTitle": "This network is blocking part of Pangea Chat",
+    "@filteredNetworkPartlyBlockedTitle": {
+        "description": "Guidance title when the network blocks only videos, images or the map."
+    },
+    "filteredNetworkWhatCanIDo": "What can I do?",
+    "@filteredNetworkWhatCanIDo": {
+        "description": "Button on the blocked-network banner and notes that opens the guidance."
+    },
+    "filteredNetworkPhoneAdvice": "Turn off Wi-Fi and use mobile data instead.",
+    "@filteredNetworkPhoneAdvice": {
+        "description": "Advice on a phone when the Wi-Fi network blocks Pangea Chat."
+    },
+    "filteredNetworkComputerAdvice": "Connect to your phone's hotspot instead of this Wi-Fi.",
+    "@filteredNetworkComputerAdvice": {
+        "description": "Advice on a laptop or desktop when the Wi-Fi network blocks Pangea Chat."
+    },
+    "filteredNetworkItHeading": "For teachers and IT staff",
+    "@filteredNetworkItHeading": {
+        "description": "Heading above the list of domains IT staff must allow."
+    },
+    "filteredNetworkItBody": "Ask your IT team to allow these domains:",
+    "@filteredNetworkItBody": {
+        "description": "Line above the list of domains IT staff must allow."
+    },
+    "filteredNetworkAskForHelp": "Ask Pangea for help",
+    "@filteredNetworkAskForHelp": {
+        "description": "Button that sends the Pangea team a request for help with a blocking network."
+    },
+    "filteredNetworkHelpExplanation": "We'll email you to help get Pangea Chat working on this network.",
+    "@filteredNetworkHelpExplanation": {
+        "description": "Line above the email field in the blocked-network guidance."
+    },
+    "filteredNetworkHelpWaiting": "Your request will be sent as soon as you're connected.",
+    "@filteredNetworkHelpWaiting": {
+        "description": "Shown after asking for help while Pangea's servers are still unreachable."
+    },
+    "filteredNetworkHelpSent": "Sent. We'll be in touch by email.",
+    "@filteredNetworkHelpSent": {
+        "description": "Shown after a help request about a blocking network was sent."
+    },
+    "filteredNetworkHelpRefused": "We couldn't send your request. Please email support@pangea.chat.",
+    "@filteredNetworkHelpRefused": {
+        "description": "Shown when the help request about a blocking network was rejected."
+    },
+    "filteredNetworkVideoBlocked": "This network blocks videos.",
+    "@filteredNetworkVideoBlocked": {
+        "description": "Note shown in place of an activity video the network blocks."
+    },
+    "filteredNetworkImagesBlocked": "This network blocks images.",
+    "@filteredNetworkImagesBlocked": {
+        "description": "Note shown in place of an activity image the network blocks."
+    },
+    "filteredNetworkMapBlocked": "This network blocks the map.",
+    "@filteredNetworkMapBlocked": {
+        "description": "Note shown over the world map when the network blocks the map."
     }
 }

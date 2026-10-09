@@ -2397,5 +2397,20 @@
     "reportSent": "Umbiko uthunyelwe",
     "reportNotSent": "Umbiko wakho awukwazanga ukuthunyelwa. Hlola uxhumano lwakho bese uzama futhi.",
     "reportPointerMessage": "Umlayezo ubikwe ku-{courseName} — bona ukuphepha",
-    "useActivityImageAsChatBackground": "Sebenzisa isithombe somsebenzi njengesizinda sengxoxo"
+    "useActivityImageAsChatBackground": "Sebenzisa isithombe somsebenzi njengesizinda sengxoxo",
+    "filteredNetworkBlockedTitle": "Le nethiwekhi ivimba i-Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Le nethiwekhi ivimba ingxenye ye-Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Ngenzenjani?",
+    "filteredNetworkPhoneAdvice": "Vala i-Wi-Fi bese usebenzisa idatha yeselula esikhundleni salokho.",
+    "filteredNetworkComputerAdvice": "Xhuma endaweni eshisayo yefoni yakho esikhundleni sale Wi-Fi.",
+    "filteredNetworkItHeading": "Othisha nabasebenzi be-IT",
+    "filteredNetworkItBody": "Cela ithimba lakho le-IT ukuthi livumele lezi zizinda:",
+    "filteredNetworkAskForHelp": "Cela usizo ku-Pangea",
+    "filteredNetworkHelpExplanation": "Sizokuthumelela i-imeyili ukuze sikusize wenze i-Pangea Chat isebenze kule nethiwekhi.",
+    "filteredNetworkHelpWaiting": "Isicelo sakho sizothunyelwa ngokushesha nje lapho usuxhunyiwe.",
+    "filteredNetworkHelpSent": "Kuthunyelwe. Sizoxhumana nawe nge-imeyili.",
+    "filteredNetworkHelpRefused": "Asikwazanga ukuthumela isicelo sakho. Sicela uthumele i-imeyili ku-support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Le nethiwekhi ivimba amavidiyo.",
+    "filteredNetworkImagesBlocked": "Le nethiwekhi ivimba izithombe.",
+    "filteredNetworkMapBlocked": "Le nethiwekhi ivimba imephu."
 }

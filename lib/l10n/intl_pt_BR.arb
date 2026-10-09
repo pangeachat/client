@@ -9952,5 +9952,20 @@
     "reportSent": "Denúncia enviada",
     "reportNotSent": "Sua denúncia não pôde ser enviada. Verifique sua conexão e tente novamente.",
     "reportPointerMessage": "Uma mensagem foi denunciada em {courseName} — veja Segurança",
-    "useActivityImageAsChatBackground": "Usar imagem da atividade como plano de fundo do chat"
+    "useActivityImageAsChatBackground": "Usar imagem da atividade como plano de fundo do chat",
+    "filteredNetworkBlockedTitle": "Esta rede está bloqueando o Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Esta rede está bloqueando parte do Pangea Chat",
+    "filteredNetworkWhatCanIDo": "O que posso fazer?",
+    "filteredNetworkPhoneAdvice": "Desligue o Wi-Fi e use os dados móveis.",
+    "filteredNetworkComputerAdvice": "Conecte-se ao ponto de acesso do seu celular em vez deste Wi-Fi.",
+    "filteredNetworkItHeading": "Para professores e equipe de TI",
+    "filteredNetworkItBody": "Peça à sua equipe de TI para permitir estes domínios:",
+    "filteredNetworkAskForHelp": "Peça ajuda ao Pangea",
+    "filteredNetworkHelpExplanation": "Enviaremos um e-mail para ajudar a fazer o Pangea Chat funcionar nesta rede.",
+    "filteredNetworkHelpWaiting": "Sua solicitação será enviada assim que você estiver conectado.",
+    "filteredNetworkHelpSent": "Enviado. Entraremos em contato por e-mail.",
+    "filteredNetworkHelpRefused": "Não foi possível enviar sua solicitação. Envie um e-mail para support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Esta rede bloqueia vídeos.",
+    "filteredNetworkImagesBlocked": "Esta rede bloqueia imagens.",
+    "filteredNetworkMapBlocked": "Esta rede bloqueia o mapa."
 }

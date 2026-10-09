@@ -9949,5 +9949,20 @@
     "reportSent": "Aruanne saadetud",
     "reportNotSent": "Teie aruannet ei saanud saata. Kontrollige oma ühendust ja proovige uuesti.",
     "reportPointerMessage": "Sõnumist teatati kursusel {courseName} – vaadake jaotist „Ohutus“",
-    "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana"
+    "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
+    "filteredNetworkBlockedTitle": "See võrk blokeerib Pangea Chati",
+    "filteredNetworkPartlyBlockedTitle": "See võrk blokeerib osa Pangea Chatist",
+    "filteredNetworkWhatCanIDo": "Mida ma teha saan?",
+    "filteredNetworkPhoneAdvice": "Lülita Wi-Fi välja ja kasuta mobiilset andmesidet.",
+    "filteredNetworkComputerAdvice": "Ühenda selle Wi-Fi asemel oma telefoni levialaga.",
+    "filteredNetworkItHeading": "Õpetajatele ja IT-personalile",
+    "filteredNetworkItBody": "Paluge oma IT-meeskonnal lubada järgmised domeenid:",
+    "filteredNetworkAskForHelp": "Küsi Pangealt abi",
+    "filteredNetworkHelpExplanation": "Saadame teile e-kirja, et aidata Pangea Chat selle võrguga tööle saada.",
+    "filteredNetworkHelpWaiting": "Teie taotlus saadetakse kohe, kui olete ühendatud.",
+    "filteredNetworkHelpSent": "Saadetud. Võtame teiega e-posti teel ühendust.",
+    "filteredNetworkHelpRefused": "Me ei saanud teie taotlust saata. Palun saatke e-kiri aadressile support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "See võrk blokeerib videod.",
+    "filteredNetworkImagesBlocked": "See võrk blokeerib pildid.",
+    "filteredNetworkMapBlocked": "See võrk blokeerib kaardi."
 }

@@ -9956,5 +9956,20 @@
     "reportSent": "Xabar yuborildi",
     "reportNotSent": "Xabaringiz yuborilmadi. Internet aloqangizni tekshiring va qayta urinib koʻring.",
     "reportPointerMessage": "{courseName} dagi xabar haqida xabar berildi — Xavfsizlik boʻlimiga qarang",
-    "useActivityImageAsChatBackground": "Faoliyat rasmini chat fon rasmi sifatida ishlatish"
+    "useActivityImageAsChatBackground": "Faoliyat rasmini chat fon rasmi sifatida ishlatish",
+    "filteredNetworkBlockedTitle": "Bu tarmoq Pangea Chat'ni bloklamoqda",
+    "filteredNetworkPartlyBlockedTitle": "Bu tarmoq Pangea Chat'ning bir qismini bloklamoqda",
+    "filteredNetworkWhatCanIDo": "Nima qilishim mumkin?",
+    "filteredNetworkPhoneAdvice": "Wi-Fi'ni oʻchiring va buning oʻrniga mobil maʼlumotlardan foydalaning.",
+    "filteredNetworkComputerAdvice": "Bu Wi-Fi oʻrniga telefoningizning hotspotiga ulaning.",
+    "filteredNetworkItHeading": "Oʻqituvchilar va IT xodimlari uchun",
+    "filteredNetworkItBody": "IT jamoangizdan ushbu domenlarga ruxsat berishni soʻrang:",
+    "filteredNetworkAskForHelp": "Yordam uchun Pangea'ga murojaat qiling",
+    "filteredNetworkHelpExplanation": "Pangea Chat'ni ushbu tarmoqda ishlashiga yordam berish uchun sizga elektron pochta orqali xabar yuboramiz.",
+    "filteredNetworkHelpWaiting": "Ulanishingiz bilanoq soʻrovingiz yuboriladi.",
+    "filteredNetworkHelpSent": "Yuborildi. Siz bilan elektron pochta orqali bogʻlanamiz.",
+    "filteredNetworkHelpRefused": "Soʻrovingizni yubora olmadik. Iltimos, support@pangea.chat manziliga elektron pochta yuboring.",
+    "filteredNetworkVideoBlocked": "Bu tarmoq videolarni bloklaydi.",
+    "filteredNetworkImagesBlocked": "Bu tarmoq rasmlarni bloklaydi.",
+    "filteredNetworkMapBlocked": "Bu tarmoq xaritani bloklaydi."
 }

@@ -10584,5 +10584,20 @@
     "reportSent": "ส่งรายงานแล้ว",
     "reportNotSent": "ไม่สามารถส่งรายงานของคุณได้ โปรดตรวจสอบการเชื่อมต่อและลองอีกครั้ง",
     "reportPointerMessage": "มีข้อความถูกรายงานใน {courseName} — ดูที่ความปลอดภัย",
-    "useActivityImageAsChatBackground": "ใช้รูปภาพกิจกรรมเป็นพื้นหลังแชท"
+    "useActivityImageAsChatBackground": "ใช้รูปภาพกิจกรรมเป็นพื้นหลังแชท",
+    "filteredNetworkBlockedTitle": "เครือข่ายนี้บล็อก Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "เครือข่ายนี้บล็อก Pangea Chat บางส่วน",
+    "filteredNetworkWhatCanIDo": "ฉันจะทำอย่างไรได้บ้าง",
+    "filteredNetworkPhoneAdvice": "ปิด Wi-Fi แล้วใช้ข้อมูลมือถือแทน",
+    "filteredNetworkComputerAdvice": "เชื่อมต่อกับฮอตสปอตของโทรศัพท์แทน Wi-Fi นี้",
+    "filteredNetworkItHeading": "สำหรับครูและเจ้าหน้าที่ IT",
+    "filteredNetworkItBody": "ขอให้ทีม IT ของคุณอนุญาตโดเมนเหล่านี้:",
+    "filteredNetworkAskForHelp": "ขอความช่วยเหลือจาก Pangea",
+    "filteredNetworkHelpExplanation": "เราจะส่งอีเมลถึงคุณเพื่อช่วยให้ Pangea Chat ใช้งานได้บนเครือข่ายนี้",
+    "filteredNetworkHelpWaiting": "คำขอของคุณจะถูกส่งทันทีที่คุณเชื่อมต่อ",
+    "filteredNetworkHelpSent": "ส่งแล้ว เราจะติดต่อกลับทางอีเมล",
+    "filteredNetworkHelpRefused": "เราไม่สามารถส่งคำขอของคุณได้ โปรดส่งอีเมลไปที่ support@pangea.chat",
+    "filteredNetworkVideoBlocked": "เครือข่ายนี้บล็อกวิดีโอ",
+    "filteredNetworkImagesBlocked": "เครือข่ายนี้บล็อกรูปภาพ",
+    "filteredNetworkMapBlocked": "เครือข่ายนี้บล็อกแผนที่"
 }

@@ -10684,5 +10684,20 @@
     "reportSent": "Raport trimis",
     "reportNotSent": "Raportul tău nu a putut fi trimis. Verifică-ți conexiunea și încearcă din nou.",
     "reportPointerMessage": "Un mesaj a fost raportat în {courseName} — vezi Siguranță",
-    "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal de chat"
+    "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal de chat",
+    "filteredNetworkBlockedTitle": "Această rețea blochează Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Această rețea blochează o parte din Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Ce pot face?",
+    "filteredNetworkPhoneAdvice": "Dezactivează Wi-Fi și folosește datele mobile.",
+    "filteredNetworkComputerAdvice": "Conectează-te la hotspot-ul telefonului în loc de acest Wi-Fi.",
+    "filteredNetworkItHeading": "Pentru profesori și personalul IT",
+    "filteredNetworkItBody": "Roagă echipa IT să permită aceste domenii:",
+    "filteredNetworkAskForHelp": "Cere ajutor de la Pangea",
+    "filteredNetworkHelpExplanation": "Îți vom trimite un e-mail pentru a te ajuta să faci Pangea Chat să funcționeze pe această rețea.",
+    "filteredNetworkHelpWaiting": "Solicitarea ta va fi trimisă imediat ce te vei conecta.",
+    "filteredNetworkHelpSent": "Trimis. Te vom contacta prin e-mail.",
+    "filteredNetworkHelpRefused": "Nu am putut trimite solicitarea ta. Te rugăm să trimiți un e-mail la support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Această rețea blochează videoclipurile.",
+    "filteredNetworkImagesBlocked": "Această rețea blochează imaginile.",
+    "filteredNetworkMapBlocked": "Această rețea blochează harta."
 }

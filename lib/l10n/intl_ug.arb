@@ -2397,5 +2397,20 @@
     "reportSent": "دوكلات يوللاندى",
     "reportNotSent": "دوكلاتىڭىز يوللانمىدى. ئۇلىنىشىڭىزنى تەكشۈرۈپ قايتا سىناڭ.",
     "reportPointerMessage": "{courseName} دە بىر ئۇچۇر دوكلات قىلىندى — بىخەتەرلىكنى كۆرۈڭ",
-    "useActivityImageAsChatBackground": "پائالىيەت رەسىمىنى پاراڭ ئارقا كۆرۈنۈشى قىلىپ ئىشلەت"
+    "useActivityImageAsChatBackground": "پائالىيەت رەسىمىنى پاراڭ ئارقا كۆرۈنۈشى قىلىپ ئىشلەت",
+    "filteredNetworkBlockedTitle": "بۇ تور Pangea پاراڭنى چەكلەۋاتىدۇ",
+    "filteredNetworkPartlyBlockedTitle": "بۇ تور Pangea پاراڭنىڭ بىر قىسمىنى چەكلەۋاتىدۇ",
+    "filteredNetworkWhatCanIDo": "مەن نېمە قىلالايمەن؟",
+    "filteredNetworkPhoneAdvice": "Wi-Fi نى ئېتىپ، يانفون سانلىق مەلۇماتىنى ئىشلىتىڭ.",
+    "filteredNetworkComputerAdvice": "بۇ Wi-Fi نىڭ ئورنىغا يانفونىڭىزنىڭ Hotspot غا ئۇلىنىڭ.",
+    "filteredNetworkItHeading": "ئوقۇتقۇچىلار ۋە IT خادىملىرى ئۈچۈن",
+    "filteredNetworkItBody": "IT گۇرۇپپىڭىزدىن بۇ تور ناملىرىغا رۇخسەت قىلىشنى تەلەپ قىلىڭ:",
+    "filteredNetworkAskForHelp": "Pangea دىن ياردەم سوراڭ",
+    "filteredNetworkHelpExplanation": "بۇ توردا Pangea پاراڭنى ئىشقا كىرىشتۈرۈشكە ياردەم بېرىش ئۈچۈن سىزگە ئېلخەت ئەۋەتىمىز.",
+    "filteredNetworkHelpWaiting": "ئۇلانغاندىن كېيىن تەلەپلىرىڭىز دەرھال ئەۋەتىلىدۇ.",
+    "filteredNetworkHelpSent": "ئەۋەتىلدى. بىز سىز بىلەن ئېلخەت ئارقىلىق ئالاقىلىشىمىز.",
+    "filteredNetworkHelpRefused": "تەلەپلىرىڭىزنى ئەۋەتەلمىدۇق. support@pangea.chat ئادرېسىغا ئېلخەت ئەۋەتىڭ.",
+    "filteredNetworkVideoBlocked": "بۇ تور سىنلارنى چەكلەيدۇ.",
+    "filteredNetworkImagesBlocked": "بۇ تور رەسىملەرنى چەكلەيدۇ.",
+    "filteredNetworkMapBlocked": "بۇ تور خەرىتىنى چەكلەيدۇ."
 }

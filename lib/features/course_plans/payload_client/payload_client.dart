@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'package:fluffychat/features/course_plans/payload_client/paginated_response.dart';
+import 'package:fluffychat/features/network_filter/filtered_network_controller.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 
@@ -48,10 +49,12 @@ class PayloadClient {
     final request = client == null
         ? http.get(url, headers: _headers)
         : client.get(url, headers: _headers);
-    final response = await request.timeoutNamed(
-      readTimeout,
-      'GET ${PangeaHttpException.normalizePath(url)}',
-    );
+    final response = await FilteredNetworkController.instance
+        .observe(url, request)
+        .timeoutNamed(
+          readTimeout,
+          'GET ${PangeaHttpException.normalizePath(url)}',
+        );
     return response;
   }
 

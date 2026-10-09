@@ -10897,5 +10897,20 @@
     "reportSent": "Poročilo poslano",
     "reportNotSent": "Vašega poročila ni bilo mogoče poslati. Preverite povezavo in poskusite znova.",
     "reportPointerMessage": "Sporočilo je bilo prijavljeno v {courseName} – glejte Varnost",
-    "useActivityImageAsChatBackground": "Uporabi sliko dejavnosti kot ozadje klepeta"
+    "useActivityImageAsChatBackground": "Uporabi sliko dejavnosti kot ozadje klepeta",
+    "filteredNetworkBlockedTitle": "To omrežje blokira Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "To omrežje delno blokira Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Kaj lahko storim?",
+    "filteredNetworkPhoneAdvice": "Izklopite Wi-Fi in namesto tega uporabite mobilne podatke.",
+    "filteredNetworkComputerAdvice": "Namesto tega Wi-Fi-ja se povežite z dostopno točko vašega telefona.",
+    "filteredNetworkItHeading": "Za učitelje in IT osebje",
+    "filteredNetworkItBody": "Prosite svojo IT ekipo, naj dovoli te domene:",
+    "filteredNetworkAskForHelp": "Prosite Pangeo za pomoč",
+    "filteredNetworkHelpExplanation": "Poslali vam bomo e-pošto, da vam pomagamo zagnati Pangea Chat v tem omrežju.",
+    "filteredNetworkHelpWaiting": "Vaša zahteva bo poslana takoj, ko boste povezani.",
+    "filteredNetworkHelpSent": "Poslano. Kontaktirali vas bomo po e-pošti.",
+    "filteredNetworkHelpRefused": "Vaše zahteve nismo mogli poslati. Prosimo, pošljite e-pošto na support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "To omrežje blokira videoposnetke.",
+    "filteredNetworkImagesBlocked": "To omrežje blokira slike.",
+    "filteredNetworkMapBlocked": "To omrežje blokira zemljevid."
 }

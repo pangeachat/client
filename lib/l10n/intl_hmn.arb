@@ -2397,5 +2397,20 @@
     "reportSent": "Daim ntawv qhia raug xa lawm",
     "reportNotSent": "Koj daim ntawv qhia xa tsis tau. Saib koj qhov txuas thiab sim dua.",
     "reportPointerMessage": "Ib tsab ntawv raug qhia hauv {courseName} — saib Kev Nyab Xeeb",
-    "useActivityImageAsChatBackground": "Siv daim duab ua si los ua keeb kwm yav dhau los ntawm kev sib tham"
+    "useActivityImageAsChatBackground": "Siv daim duab ua si los ua keeb kwm yav dhau los ntawm kev sib tham",
+    "filteredNetworkBlockedTitle": "Lub network no tab tom thaiv Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Lub network no tab tom thaiv ib feem ntawm Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Kuv yuav ua li cas?",
+    "filteredNetworkPhoneAdvice": "Tua Wi-Fi thiab siv mobile data es tsis txhob siv Wi-Fi.",
+    "filteredNetworkComputerAdvice": "Txuas rau koj lub xov tooj hotspot es tsis txhob siv Wi-Fi no.",
+    "filteredNetworkItHeading": "Rau cov kws qhia ntawv thiab cov neeg ua haujlwm IT",
+    "filteredNetworkItBody": "Nug koj pab neeg IT kom tso cai rau cov domains no:",
+    "filteredNetworkAskForHelp": "Nug Pangea kom pab",
+    "filteredNetworkHelpExplanation": "Peb yuav xa email rau koj kom pab Pangea Chat ua haujlwm ntawm lub network no.",
+    "filteredNetworkHelpWaiting": "Koj qhov kev thov yuav raug xa sai li sai tau thaum koj txuas nrog.",
+    "filteredNetworkHelpSent": "Xa lawm. Peb yuav tiv tauj koj los ntawm email.",
+    "filteredNetworkHelpRefused": "Peb tsis tuaj yeem xa koj qhov kev thov. Thov xa email rau support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Lub network no thaiv cov yeeb yaj kiab.",
+    "filteredNetworkImagesBlocked": "Lub network no thaiv cov duab.",
+    "filteredNetworkMapBlocked": "Lub network no thaiv daim ntawv qhia."
 }

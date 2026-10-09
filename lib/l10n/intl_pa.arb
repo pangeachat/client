@@ -2397,5 +2397,20 @@
     "reportSent": "ਰਿਪੋਰਟ ਭੇਜੀ ਗਈ",
     "reportNotSent": "ਤੁਹਾਡੀ ਰਿਪੋਰਟ ਭੇਜੀ ਨਹੀਂ ਜਾ ਸਕੀ। ਆਪਣਾ ਕਨੈਕਸ਼ਨ ਜਾਂਚੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
     "reportPointerMessage": "{courseName} ਵਿੱਚ ਇੱਕ ਸੁਨੇਹਾ ਰਿਪੋਰਟ ਕੀਤਾ ਗਿਆ ਸੀ — ਸੁਰੱਖਿਆ ਦੇਖੋ",
-    "useActivityImageAsChatBackground": "ਚੈਟ ਬੈਕਗ੍ਰਾਊਂਡ ਵਜੋਂ ਗਤੀਵਿਧੀ ਚਿੱਤਰ ਦੀ ਵਰਤੋਂ ਕਰੋ"
+    "useActivityImageAsChatBackground": "ਚੈਟ ਬੈਕਗ੍ਰਾਊਂਡ ਵਜੋਂ ਗਤੀਵਿਧੀ ਚਿੱਤਰ ਦੀ ਵਰਤੋਂ ਕਰੋ",
+    "filteredNetworkBlockedTitle": "ਇਹ ਨੈੱਟਵਰਕ ਪੈਂਗੇਆ ਚੈਟ ਨੂੰ ਬਲੌਕ ਕਰ ਰਿਹਾ ਹੈ",
+    "filteredNetworkPartlyBlockedTitle": "ਇਹ ਨੈੱਟਵਰਕ ਪੈਂਗੇਆ ਚੈਟ ਦੇ ਕੁਝ ਹਿੱਸੇ ਨੂੰ ਬਲੌਕ ਕਰ ਰਿਹਾ ਹੈ",
+    "filteredNetworkWhatCanIDo": "ਮੈਂ ਕੀ ਕਰ ਸਕਦਾ/ਸਕਦੀ ਹਾਂ?",
+    "filteredNetworkPhoneAdvice": "Wi-Fi ਬੰਦ ਕਰੋ ਅਤੇ ਇਸਦੀ ਬਜਾਏ ਮੋਬਾਈਲ ਡਾਟਾ ਦੀ ਵਰਤੋਂ ਕਰੋ।",
+    "filteredNetworkComputerAdvice": "ਇਸ Wi-Fi ਦੀ ਬਜਾਏ ਆਪਣੇ ਫ਼ੋਨ ਦੇ ਹੌਟਸਪੌਟ ਨਾਲ ਕਨੈਕਟ ਕਰੋ।",
+    "filteredNetworkItHeading": "ਅਧਿਆਪਕਾਂ ਅਤੇ IT ਸਟਾਫ਼ ਲਈ",
+    "filteredNetworkItBody": "ਆਪਣੀ IT ਟੀਮ ਨੂੰ ਇਹਨਾਂ ਡੋਮੇਨਾਂ ਦੀ ਇਜਾਜ਼ਤ ਦੇਣ ਲਈ ਕਹੋ:",
+    "filteredNetworkAskForHelp": "ਮਦਦ ਲਈ ਪੈਂਗੇਆ ਨੂੰ ਪੁੱਛੋ",
+    "filteredNetworkHelpExplanation": "ਅਸੀਂ ਤੁਹਾਨੂੰ ਇਸ ਨੈੱਟਵਰਕ 'ਤੇ ਪੈਂਗੇਆ ਚੈਟ ਨੂੰ ਕੰਮ ਕਰਨ ਵਿੱਚ ਮਦਦ ਕਰਨ ਲਈ ਈਮੇਲ ਕਰਾਂਗੇ।",
+    "filteredNetworkHelpWaiting": "ਤੁਹਾਡੀ ਬੇਨਤੀ ਕਨੈਕਟ ਹੁੰਦੇ ਹੀ ਭੇਜ ਦਿੱਤੀ ਜਾਵੇਗੀ।",
+    "filteredNetworkHelpSent": "ਭੇਜਿਆ ਗਿਆ। ਅਸੀਂ ਈਮੇਲ ਰਾਹੀਂ ਸੰਪਰਕ ਕਰਾਂਗੇ।",
+    "filteredNetworkHelpRefused": "ਅਸੀਂ ਤੁਹਾਡੀ ਬੇਨਤੀ ਨਹੀਂ ਭੇਜ ਸਕੇ। ਕਿਰਪਾ ਕਰਕੇ support@pangea.chat 'ਤੇ ਈਮੇਲ ਕਰੋ।",
+    "filteredNetworkVideoBlocked": "ਇਹ ਨੈੱਟਵਰਕ ਵੀਡੀਓਜ਼ ਨੂੰ ਬਲੌਕ ਕਰਦਾ ਹੈ।",
+    "filteredNetworkImagesBlocked": "ਇਹ ਨੈੱਟਵਰਕ ਤਸਵੀਰਾਂ ਨੂੰ ਬਲੌਕ ਕਰਦਾ ਹੈ।",
+    "filteredNetworkMapBlocked": "ਇਹ ਨੈੱਟਵਰਕ ਨਕਸ਼ੇ ਨੂੰ ਬਲੌਕ ਕਰਦਾ ਹੈ।"
 }

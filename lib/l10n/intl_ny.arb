@@ -2397,5 +2397,20 @@
     "reportSent": "Lipoti latumizidwa",
     "reportNotSent": "Lipoti lanu silinatumizidwe. Onani intaneti yanu ndikuyesanso.",
     "reportPointerMessage": "Uthenga unanenedwa mu {courseName} — onani Chitetezo",
-    "useActivityImageAsChatBackground": "Gwiritsani ntchito chithunzi cha zochitika ngati maziko a macheza"
+    "useActivityImageAsChatBackground": "Gwiritsani ntchito chithunzi cha zochitika ngati maziko a macheza",
+    "filteredNetworkBlockedTitle": "Netiweki iyi ikuletsa Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Netiweki iyi ikuletsa mbali ina ya Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Kodi ndingachite chiyani?",
+    "filteredNetworkPhoneAdvice": "Zimitsani Wi-Fi ndipo gwiritsani ntchito deta ya pa foni m'malo mwake.",
+    "filteredNetworkComputerAdvice": "Lumikizani ku hotspot ya foni yanu m'malo mwa Wi-Fi iyi.",
+    "filteredNetworkItHeading": "Kwa aphunzitsi ndi ogwira ntchito za IT",
+    "filteredNetworkItBody": "Funsani gulu lanu la IT kuti lilole ma domain awa:",
+    "filteredNetworkAskForHelp": "Funsani Pangea thandizo",
+    "filteredNetworkHelpExplanation": "Tikutumizirani imelo kuti tikuthandizeni kuti Pangea Chat igwire ntchito pa netiweki iyi.",
+    "filteredNetworkHelpWaiting": "Pempho lanu lidzatumizidwa mukangolumikizidwa.",
+    "filteredNetworkHelpSent": "Zatumizidwa. Tidzakulumikizani kudzera pa imelo.",
+    "filteredNetworkHelpRefused": "Sitinalephere kutumiza pempho lanu. Chonde tumizani imelo ku support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Netiweki iyi imalepheretsa mavidiyo.",
+    "filteredNetworkImagesBlocked": "Netiweki iyi imalepheretsa zithunzi.",
+    "filteredNetworkMapBlocked": "Netiweki iyi imalepheretsa mapu."
 }

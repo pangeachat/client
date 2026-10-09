@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -5,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
+import 'package:fluffychat/features/network_filter/filtered_network_controller.dart';
+import 'package:fluffychat/features/network_filter/network_host_category.dart';
+import 'package:fluffychat/features/network_filter/widgets/filtered_network_note.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_play_badge.dart';
@@ -78,6 +82,15 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
     _playingIndex = PlatformInfos.isMobile ? null : widget.autoplayIndex;
     _page = widget.autoplayIndex ?? 0;
     _mutedAutostart = !PlatformInfos.isMobile && widget.autoplayIndex != null;
+    // An activity with a video opening is when to check for a filter: the
+    // embed's own failures happen inside its frame, out of the app's sight.
+    if (widget.media.any((block) => block.isYoutube)) {
+      unawaited(
+        FilteredNetworkController.instance.checkIfStale(
+          NetworkHostCategory.video,
+        ),
+      );
+    }
   }
 
   List<ActivityMediaBlock> get _visible =>
@@ -185,7 +198,7 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
 
     // thumbnail + play badge — tap to play (with sound)
     final thumb = block.displayUrl(size);
-    return FocusRingTapTarget(
+    final thumbnail = FocusRingTapTarget(
       label: L10n.of(context).playVideo,
       shape: const RoundedRectangleBorder(),
       // The ring crosses the thumbnail, where no single colour holds 3:1.
@@ -227,6 +240,12 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
         ],
       ),
     );
+    return block.isYoutube
+        ? FilteredNetworkNote(
+            category: NetworkHostCategory.video,
+            child: thumbnail,
+          )
+        : thumbnail;
   }
 
   Widget _dots(int count) => Row(
@@ -270,19 +289,24 @@ class _ExpandableActivityImage extends StatelessWidget {
       replacement: SizedBox(height: size),
     );
     final fullUrl = this.fullUrl;
-    if (fullUrl == null) return image;
-
-    return FocusRingTapTarget(
-      label: L10n.of(context).viewImageLabel,
-      shape: const RoundedRectangleBorder(),
-      // The ring crosses the image, where no single colour holds 3:1.
-      twoToneRing: true,
-      onTap: () => showDialog(
-        context: context,
-        builder: (_) =>
-            MxcImageViewer(fullUrl, semanticsLabel: L10n.of(context).image),
-      ),
-      child: image,
+    return FilteredNetworkNote(
+      category: NetworkHostCategory.images,
+      child: fullUrl == null
+          ? image
+          : FocusRingTapTarget(
+              label: L10n.of(context).viewImageLabel,
+              shape: const RoundedRectangleBorder(),
+              // The ring crosses the image, where no single colour holds 3:1.
+              twoToneRing: true,
+              onTap: () => showDialog(
+                context: context,
+                builder: (_) => MxcImageViewer(
+                  fullUrl,
+                  semanticsLabel: L10n.of(context).image,
+                ),
+              ),
+              child: image,
+            ),
     );
   }
 }

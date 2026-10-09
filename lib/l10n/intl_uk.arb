@@ -9952,5 +9952,20 @@
     "reportSent": "Звіт надіслано",
     "reportNotSent": "Ваш звіт не вдалося надіслати. Перевірте з’єднання та спробуйте ще раз.",
     "reportPointerMessage": "Повідомлення було надіслано в {courseName} — дивіться Безпека",
-    "useActivityImageAsChatBackground": "Використовувати зображення активності як фон чату"
+    "useActivityImageAsChatBackground": "Використовувати зображення активності як фон чату",
+    "filteredNetworkBlockedTitle": "Ця мережа блокує Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Ця мережа частково блокує Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Що я можу зробити?",
+    "filteredNetworkPhoneAdvice": "Вимкніть Wi-Fi і використовуйте мобільний інтернет.",
+    "filteredNetworkComputerAdvice": "Підключіться до точки доступу свого телефону замість цього Wi-Fi.",
+    "filteredNetworkItHeading": "Для вчителів та ІТ-персоналу",
+    "filteredNetworkItBody": "Попросіть свою ІТ-команду дозволити ці домени:",
+    "filteredNetworkAskForHelp": "Звернутися по допомогу до Pangea",
+    "filteredNetworkHelpExplanation": "Ми надішлемо вам електронний лист, щоб допомогти налаштувати Pangea Chat у цій мережі.",
+    "filteredNetworkHelpWaiting": "Ваш запит буде надіслано, щойно ви підключитеся.",
+    "filteredNetworkHelpSent": "Надіслано. Ми зв'яжемося з вами електронною поштою.",
+    "filteredNetworkHelpRefused": "Не вдалося надіслати ваш запит. Будь ласка, напишіть на support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Ця мережа блокує відео.",
+    "filteredNetworkImagesBlocked": "Ця мережа блокує зображення.",
+    "filteredNetworkMapBlocked": "Ця мережа блокує карту."
 }

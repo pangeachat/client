@@ -9952,5 +9952,20 @@
     "reportSent": "Ziņojums nosūtīts",
     "reportNotSent": "Jūsu ziņojumu nevarēja nosūtīt. Pārbaudiet savienojumu un mēģiniet vēlreiz.",
     "reportPointerMessage": "Ziņojums tika ziņots kursā {courseName} — skatiet Drošība",
-    "useActivityImageAsChatBackground": "Izmantot aktivitātes attēlu kā tērzēšanas fonu"
+    "useActivityImageAsChatBackground": "Izmantot aktivitātes attēlu kā tērzēšanas fonu",
+    "filteredNetworkBlockedTitle": "Šis tīkls bloķē Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Šis tīkls daļēji bloķē Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Ko es varu darīt?",
+    "filteredNetworkPhoneAdvice": "Izslēdziet Wi-Fi un izmantojiet mobilos datus.",
+    "filteredNetworkComputerAdvice": "Pievienojieties tālruņa tīklājam, nevis šim Wi-Fi.",
+    "filteredNetworkItHeading": "Skolotājiem un IT personālam",
+    "filteredNetworkItBody": "Palūdziet savai IT komandai atļaut šos domēnus:",
+    "filteredNetworkAskForHelp": "Lūgt Pangea palīdzību",
+    "filteredNetworkHelpExplanation": "Mēs jums nosūtīsim e-pastu, lai palīdzētu Pangea Chat darboties šajā tīklā.",
+    "filteredNetworkHelpWaiting": "Jūsu pieprasījums tiks nosūtīts, tiklīdz būsiet izveidojis savienojumu.",
+    "filteredNetworkHelpSent": "Nosūtīts. Mēs sazināsimies ar jums pa e-pastu.",
+    "filteredNetworkHelpRefused": "Mēs nevarējām nosūtīt jūsu pieprasījumu. Lūdzu, rakstiet uz support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Šis tīkls bloķē video.",
+    "filteredNetworkImagesBlocked": "Šis tīkls bloķē attēlus.",
+    "filteredNetworkMapBlocked": "Šis tīkls bloķē karti."
 }

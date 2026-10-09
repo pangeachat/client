@@ -10044,5 +10044,20 @@
     "reportSent": "புகார் அனுப்பப்பட்டது",
     "reportNotSent": "உங்கள் புகாரை அனுப்ப முடியவில்லை. உங்கள் இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.",
     "reportPointerMessage": "{courseName} இல் ஒரு செய்தி புகாரளிக்கப்பட்டது — பாதுகாப்பைப் பார்க்கவும்",
-    "useActivityImageAsChatBackground": "செயல்பாட்டுப் படத்தை அரட்டைப் பின்னணியாகப் பயன்படுத்து"
+    "useActivityImageAsChatBackground": "செயல்பாட்டுப் படத்தை அரட்டைப் பின்னணியாகப் பயன்படுத்து",
+    "filteredNetworkBlockedTitle": "இந்த நெட்வொர்க் பான்ஜியா அரட்டையைத் தடுக்கிறது",
+    "filteredNetworkPartlyBlockedTitle": "இந்த நெட்வொர்க் பான்ஜியா அரட்டையின் ஒரு பகுதியைத் தடுக்கிறது",
+    "filteredNetworkWhatCanIDo": "நான் என்ன செய்ய முடியும்?",
+    "filteredNetworkPhoneAdvice": "Wi-Fi ஐ அணைத்துவிட்டு, அதற்குப் பதிலாக மொபைல் டேட்டாவைப் பயன்படுத்தவும்.",
+    "filteredNetworkComputerAdvice": "இந்த Wi-Fi க்குப் பதிலாக உங்கள் ஃபோனின் ஹாட்ஸ்பாட்டுடன் இணைக்கவும்.",
+    "filteredNetworkItHeading": "ஆசிரியர்கள் மற்றும் IT ஊழியர்களுக்காக",
+    "filteredNetworkItBody": "இந்த டொமைன்களை அனுமதிக்க உங்கள் IT குழுவிடம் கேளுங்கள்:",
+    "filteredNetworkAskForHelp": "பான்ஜியாவிடம் உதவி கேளுங்கள்",
+    "filteredNetworkHelpExplanation": "இந்த நெட்வொர்க்கில் பான்ஜியா அரட்டை வேலை செய்ய உங்களுக்கு உதவ நாங்கள் உங்களுக்கு மின்னஞ்சல் அனுப்புவோம்.",
+    "filteredNetworkHelpWaiting": "நீங்கள் இணைந்தவுடன் உங்கள் கோரிக்கை அனுப்பப்படும்.",
+    "filteredNetworkHelpSent": "அனுப்பப்பட்டது. நாங்கள் மின்னஞ்சல் மூலம் தொடர்பில் இருப்போம்.",
+    "filteredNetworkHelpRefused": "உங்கள் கோரிக்கையை எங்களால் அனுப்ப முடியவில்லை. support@pangea.chat க்கு மின்னஞ்சல் செய்யவும்.",
+    "filteredNetworkVideoBlocked": "இந்த நெட்வொர்க் வீடியோக்களைத் தடுக்கிறது.",
+    "filteredNetworkImagesBlocked": "இந்த நெட்வொர்க் படங்களைத் தடுக்கிறது.",
+    "filteredNetworkMapBlocked": "இந்த நெட்வொர்க் வரைபடத்தைத் தடுக்கிறது."
 }

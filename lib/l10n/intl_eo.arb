@@ -10897,5 +10897,20 @@
     "reportSent": "Raporto sendita",
     "reportNotSent": "Via raporto ne povis esti sendita. Kontrolu vian konekton kaj reprovu.",
     "reportPointerMessage": "Mesaĝo estis raportita en {courseName} — vidu Sekurecon",
-    "useActivityImageAsChatBackground": "Uzi agadan bildon kiel babilejan fonon"
+    "useActivityImageAsChatBackground": "Uzi agadan bildon kiel babilejan fonon",
+    "filteredNetworkBlockedTitle": "Ĉi tiu reto blokas Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Ĉi tiu reto parte blokas Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Kion mi povas fari?",
+    "filteredNetworkPhoneAdvice": "Malŝaltu Wi-Fi kaj uzu poŝtelefonajn datumojn anstataŭe.",
+    "filteredNetworkComputerAdvice": "Konektiĝu al la retpunkto de via telefono anstataŭ ĉi tiu Wi-Fi.",
+    "filteredNetworkItHeading": "Por instruistoj kaj IT-personaro",
+    "filteredNetworkItBody": "Petu vian IT-teamon permesi ĉi tiujn domajnojn:",
+    "filteredNetworkAskForHelp": "Petu helpon de Pangea",
+    "filteredNetworkHelpExplanation": "Ni retpoŝtos al vi por helpi funkciigi Pangea Chat en ĉi tiu reto.",
+    "filteredNetworkHelpWaiting": "Via peto estos sendita tuj kiam vi estos konektita.",
+    "filteredNetworkHelpSent": "Sendite. Ni kontaktos vin per retpoŝto.",
+    "filteredNetworkHelpRefused": "Ni ne povis sendi vian peton. Bonvolu retpoŝti al support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Ĉi tiu reto blokas filmetojn.",
+    "filteredNetworkImagesBlocked": "Ĉi tiu reto blokas bildojn.",
+    "filteredNetworkMapBlocked": "Ĉi tiu reto blokas la mapon."
 }

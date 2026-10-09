@@ -2397,5 +2397,20 @@
     "reportSent": "Ripoti imetumwa",
     "reportNotSent": "Ripoti yako haikuweza kutumwa. Angalia muunganisho wako na ujaribu tena.",
     "reportPointerMessage": "Ujumbe uliripotiwa katika {courseName} — angalia Usalama",
-    "useActivityImageAsChatBackground": "Tumia picha ya shughuli kama mandharinyuma ya gumzo"
+    "useActivityImageAsChatBackground": "Tumia picha ya shughuli kama mandharinyuma ya gumzo",
+    "filteredNetworkBlockedTitle": "Mtandao huu unazuia Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Mtandao huu unazuia sehemu ya Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Ninaweza kufanya nini?",
+    "filteredNetworkPhoneAdvice": "Zima Wi-Fi na utumie data ya simu badala yake.",
+    "filteredNetworkComputerAdvice": "Unganisha kwenye hotspot ya simu yako badala ya Wi-Fi hii.",
+    "filteredNetworkItHeading": "Kwa walimu na wafanyakazi wa IT",
+    "filteredNetworkItBody": "Waombe timu yako ya IT kuruhusu domain hizi:",
+    "filteredNetworkAskForHelp": "Omba Pangea msaada",
+    "filteredNetworkHelpExplanation": "Tutakutumia barua pepe kukusaidia kufanya Pangea Chat ifanye kazi kwenye mtandao huu.",
+    "filteredNetworkHelpWaiting": "Ombi lako litatumwa mara tu utakapounganishwa.",
+    "filteredNetworkHelpSent": "Imetumwa. Tutawasiliana nawe kupitia barua pepe.",
+    "filteredNetworkHelpRefused": "Hatukuweza kutuma ombi lako. Tafadhali tuma barua pepe kwa support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Mtandao huu unazuia video.",
+    "filteredNetworkImagesBlocked": "Mtandao huu unazuia picha.",
+    "filteredNetworkMapBlocked": "Mtandao huu unazuia ramani."
 }

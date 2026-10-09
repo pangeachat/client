@@ -10827,5 +10827,20 @@
     "reportSent": "Η αναφορά στάλθηκε",
     "reportNotSent": "Η αναφορά σας δεν μπόρεσε να σταλεί. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
     "reportPointerMessage": "Αναφέρθηκε ένα μήνυμα στο {courseName} — δείτε την ενότητα Ασφάλεια",
-    "useActivityImageAsChatBackground": "Χρήση εικόνας δραστηριότητας ως φόντο συνομιλίας"
+    "useActivityImageAsChatBackground": "Χρήση εικόνας δραστηριότητας ως φόντο συνομιλίας",
+    "filteredNetworkBlockedTitle": "Αυτό το δίκτυο μπλοκάρει το Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Αυτό το δίκτυο μπλοκάρει μέρος του Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Τι μπορώ να κάνω;",
+    "filteredNetworkPhoneAdvice": "Απενεργοποιήστε το Wi-Fi και χρησιμοποιήστε δεδομένα κινητής τηλεφωνίας.",
+    "filteredNetworkComputerAdvice": "Συνδεθείτε στο hotspot του τηλεφώνου σας αντί για αυτό το Wi-Fi.",
+    "filteredNetworkItHeading": "Για εκπαιδευτικούς και προσωπικό IT",
+    "filteredNetworkItBody": "Ζητήστε από την ομάδα IT σας να επιτρέψει αυτούς τους τομείς:",
+    "filteredNetworkAskForHelp": "Ζητήστε βοήθεια από το Pangea",
+    "filteredNetworkHelpExplanation": "Θα σας στείλουμε email για να σας βοηθήσουμε να λειτουργήσει το Pangea Chat σε αυτό το δίκτυο.",
+    "filteredNetworkHelpWaiting": "Το αίτημά σας θα σταλεί μόλις συνδεθείτε.",
+    "filteredNetworkHelpSent": "Στάλθηκε. Θα επικοινωνήσουμε μαζί σας μέσω email.",
+    "filteredNetworkHelpRefused": "Δεν ήταν δυνατή η αποστολή του αιτήματός σας. Παρακαλούμε στείλτε email στο support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Αυτό το δίκτυο μπλοκάρει τα βίντεο.",
+    "filteredNetworkImagesBlocked": "Αυτό το δίκτυο μπλοκάρει τις εικόνες.",
+    "filteredNetworkMapBlocked": "Αυτό το δίκτυο μπλοκάρει τον χάρτη."
 }

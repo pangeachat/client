@@ -2397,5 +2397,20 @@
     "reportSent": "Tatitra nalefa",
     "reportNotSent": "Tsy afaka nalefa ny tatitrao. Hamarino ny fifandraisanao ary andramo indray.",
     "reportPointerMessage": "Nisy hafatra notaterina tao amin'ny {courseName} — jereo ny Fiarovana",
-    "useActivityImageAsChatBackground": "Ampiasaina ny sarin'ny asa ho toy ny fiavian'ny chat"
+    "useActivityImageAsChatBackground": "Ampiasaina ny sarin'ny asa ho toy ny fiavian'ny chat",
+    "filteredNetworkBlockedTitle": "Manakana ny Pangea Chat ity tambajotra ity",
+    "filteredNetworkPartlyBlockedTitle": "Manakana ampahany amin'ny Pangea Chat ity tambajotra ity",
+    "filteredNetworkWhatCanIDo": "Inona no azoko atao?",
+    "filteredNetworkPhoneAdvice": "Vonoy ny Wi-Fi ary ampiasao kosa ny angon-drakitra finday.",
+    "filteredNetworkComputerAdvice": "Mifandraisa amin'ny hotspot-n'ny findainao fa tsy ity Wi-Fi ity.",
+    "filteredNetworkItHeading": "Ho an'ny mpampianatra sy ny mpiasan'ny IT",
+    "filteredNetworkItBody": "Angataho ny ekipanao IT mba hamela ireto sehatra ireto:",
+    "filteredNetworkAskForHelp": "Mangataha fanampiana amin'ny Pangea",
+    "filteredNetworkHelpExplanation": "Handefa mailaka anao izahay hanampy anao hampandeha ny Pangea Chat amin'ity tambajotra ity.",
+    "filteredNetworkHelpWaiting": "Halefa ny fangatahanao raha vao mifandray ianao.",
+    "filteredNetworkHelpSent": "Nalefa. Hifandray aminao amin'ny alalan'ny mailaka izahay.",
+    "filteredNetworkHelpRefused": "Tsy afaka nandefa ny fangatahanao izahay. Alefaso mailaka azafady ny support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Manakana ny horonan-tsary ity tambajotra ity.",
+    "filteredNetworkImagesBlocked": "Manakana ny sary ity tambajotra ity.",
+    "filteredNetworkMapBlocked": "Manakana ny sarintany ity tambajotra ity."
 }

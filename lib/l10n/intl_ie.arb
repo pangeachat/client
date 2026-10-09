@@ -10584,5 +10584,20 @@
     "reportSent": "Tuarascáil seolta",
     "reportNotSent": "Níorbh fhéidir do thuarascáil a sheoladh. Seiceáil do nasc agus bain triail eile as.",
     "reportPointerMessage": "Tuairiscíodh teachtaireacht i {courseName} — féach Sábháilteacht",
-    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá"
+    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
+    "filteredNetworkBlockedTitle": "Tá an líonra seo ag blocáil Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Tá an líonra seo ag blocáil cuid de Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Cad is féidir liom a dhéanamh?",
+    "filteredNetworkPhoneAdvice": "Múch an Wi-Fi agus bain úsáid as sonraí soghluaiste ina ionad.",
+    "filteredNetworkComputerAdvice": "Ceangail le hotspot do ghutháin in ionad an Wi-Fi seo.",
+    "filteredNetworkItHeading": "Do mhúinteoirí agus d'fhoireann TF",
+    "filteredNetworkItBody": "Iarr ar d'fhoireann TF na fearainn seo a cheadú:",
+    "filteredNetworkAskForHelp": "Iarr cabhair ar Pangea",
+    "filteredNetworkHelpExplanation": "Seolfaimid ríomhphost chugat chun cabhrú le Pangea Chat a chur ag obair ar an líonra seo.",
+    "filteredNetworkHelpWaiting": "Seolfar d'iarratas a luaithe a bheidh tú ceangailte.",
+    "filteredNetworkHelpSent": "Seolta. Beimid i dteagmháil leat trí ríomhphost.",
+    "filteredNetworkHelpRefused": "Níorbh fhéidir linn d'iarratas a sheoladh. Seol ríomhphost chuig support@pangea.chat le do thoil.",
+    "filteredNetworkVideoBlocked": "Blocálann an líonra seo físeáin.",
+    "filteredNetworkImagesBlocked": "Blocálann an líonra seo íomhánna.",
+    "filteredNetworkMapBlocked": "Blocálann an líonra seo an léarscáil."
 }

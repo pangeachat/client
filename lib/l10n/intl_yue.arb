@@ -10909,5 +10909,20 @@
     "reportSent": "舉報已送出",
     "reportNotSent": "無法送出你的舉報。請檢查你的連線，然後再試一次。",
     "reportPointerMessage": "{courseName} 有訊息被舉報咗 — 請睇安全中心",
-    "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景"
+    "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
+    "filteredNetworkBlockedTitle": "此網絡正在封鎖 Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "此網絡正在封鎖 Pangea Chat 的部分功能",
+    "filteredNetworkWhatCanIDo": "我可以點做？",
+    "filteredNetworkPhoneAdvice": "關閉 Wi-Fi，改用流動數據。",
+    "filteredNetworkComputerAdvice": "連接你手機嘅熱點，而唔係呢個 Wi-Fi。",
+    "filteredNetworkItHeading": "致老師同 IT 員工",
+    "filteredNetworkItBody": "請你嘅 IT 團隊允許以下網域：",
+    "filteredNetworkAskForHelp": "向 Pangea 尋求協助",
+    "filteredNetworkHelpExplanation": "我哋會電郵你，協助你喺呢個網絡上使用 Pangea Chat。",
+    "filteredNetworkHelpWaiting": "你嘅請求將會喺你連接後立即發送。",
+    "filteredNetworkHelpSent": "已發送。我哋會透過電郵聯絡你。",
+    "filteredNetworkHelpRefused": "我哋無法發送你嘅請求。請電郵至 support@pangea.chat。",
+    "filteredNetworkVideoBlocked": "此網絡封鎖影片。",
+    "filteredNetworkImagesBlocked": "此網絡封鎖圖片。",
+    "filteredNetworkMapBlocked": "此網絡封鎖地圖。"
 }

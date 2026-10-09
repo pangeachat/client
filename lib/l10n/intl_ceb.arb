@@ -2397,5 +2397,20 @@
     "reportSent": "Napadala ang report",
     "reportNotSent": "Dili mapadala ang imong report. Susiha ang imong koneksyon ug sulayi pag-usab.",
     "reportPointerMessage": "Usa ka mensahe ang gi-report sa {courseName} — tan-awa ang Safety",
-    "useActivityImageAsChatBackground": "Gamita ang hulagway sa kalihokan isip background sa chat"
+    "useActivityImageAsChatBackground": "Gamita ang hulagway sa kalihokan isip background sa chat",
+    "filteredNetworkBlockedTitle": "Kini nga network nagbabag sa Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Kini nga network nagbabag sa bahin sa Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Unsa ang akong mahimo?",
+    "filteredNetworkPhoneAdvice": "Ipalong ang Wi-Fi ug gamita hinuon ang mobile data.",
+    "filteredNetworkComputerAdvice": "Ikonektar sa hotspot sa imong telepono imbes niining Wi-Fi.",
+    "filteredNetworkItHeading": "Para sa mga magtutudlo ug IT staff",
+    "filteredNetworkItBody": "Hangyoa ang imong IT team nga tugutan kini nga mga domain:",
+    "filteredNetworkAskForHelp": "Pangayo og tabang sa Pangea",
+    "filteredNetworkHelpExplanation": "Mag-email kami kanimo aron matabangan nga molihok ang Pangea Chat niini nga network.",
+    "filteredNetworkHelpWaiting": "Ang imong hangyo ipadala sa diha nga konektado ka na.",
+    "filteredNetworkHelpSent": "Napadala. Makig-kontak kami pinaagi sa email.",
+    "filteredNetworkHelpRefused": "Dili namo mapadala ang imong hangyo. Palihug pag-email sa support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Kini nga network nagbabag sa mga video.",
+    "filteredNetworkImagesBlocked": "Kini nga network nagbabag sa mga hulagway.",
+    "filteredNetworkMapBlocked": "Kini nga network nagbabag sa mapa."
 }

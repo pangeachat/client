@@ -2397,5 +2397,20 @@
     "reportSent": "បានផ្ញើរបាយការណ៍",
     "reportNotSent": "របាយការណ៍របស់អ្នកមិនអាចផ្ញើបានទេ។ សូមពិនិត្យមើលការតភ្ជាប់របស់អ្នក ហើយព្យាយាមម្ដងទៀត។",
     "reportPointerMessage": "សារមួយត្រូវបានរាយការណ៍នៅក្នុង {courseName} — សូមមើលសុវត្ថិភាព",
-    "useActivityImageAsChatBackground": "ប្រើរូបភាពសកម្មភាពជាផ្ទៃខាងក្រោយជជែក"
+    "useActivityImageAsChatBackground": "ប្រើរូបភាពសកម្មភាពជាផ្ទៃខាងក្រោយជជែក",
+    "filteredNetworkBlockedTitle": "បណ្ដាញនេះកំពុងទប់ស្កាត់ Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "បណ្ដាញនេះកំពុងទប់ស្កាត់ផ្នែកខ្លះនៃ Pangea Chat",
+    "filteredNetworkWhatCanIDo": "តើខ្ញុំអាចធ្វើអ្វីបាន?",
+    "filteredNetworkPhoneAdvice": "បិទ Wi-Fi ហើយប្រើទិន្នន័យទូរសព្ទជំនួសវិញ។",
+    "filteredNetworkComputerAdvice": "ភ្ជាប់ទៅហតស្ប៉តទូរសព្ទរបស់អ្នកជំនួស Wi-Fi នេះ។",
+    "filteredNetworkItHeading": "សម្រាប់គ្រូបង្រៀន និងបុគ្គលិកផ្នែកព័ត៌មានវិទ្យា",
+    "filteredNetworkItBody": "ស្នើសុំក្រុមព័ត៌មានវិទ្យារបស់អ្នកអនុញ្ញាតដែនទាំងនេះ៖",
+    "filteredNetworkAskForHelp": "ស្នើសុំជំនួយពី Pangea",
+    "filteredNetworkHelpExplanation": "យើងនឹងផ្ញើអ៊ីមែលទៅអ្នកដើម្បីជួយឱ្យ Pangea Chat ដំណើរការលើបណ្ដាញនេះ។",
+    "filteredNetworkHelpWaiting": "សំណើរបស់អ្នកនឹងត្រូវបានផ្ញើភ្លាមៗនៅពេលអ្នកភ្ជាប់។",
+    "filteredNetworkHelpSent": "បានផ្ញើ។ យើងនឹងទាក់ទងអ្នកតាមរយៈអ៊ីមែល។",
+    "filteredNetworkHelpRefused": "យើងមិនអាចផ្ញើសំណើរបស់អ្នកបានទេ។ សូមផ្ញើអ៊ីមែលទៅ support@pangea.chat។",
+    "filteredNetworkVideoBlocked": "បណ្ដាញនេះទប់ស្កាត់វីដេអូ។",
+    "filteredNetworkImagesBlocked": "បណ្ដាញនេះទប់ស្កាត់រូបភាព។",
+    "filteredNetworkMapBlocked": "បណ្ដាញនេះទប់ស្កាត់ផែនទី។"
 }

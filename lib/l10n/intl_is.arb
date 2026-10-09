@@ -2397,5 +2397,20 @@
     "reportSent": "Tilkynning send",
     "reportNotSent": "Ekki tókst að senda tilkynninguna þína. Athugaðu nettenginguna þína og reyndu aftur.",
     "reportPointerMessage": "Skilaboð voru tilkynnt í {courseName} — sjá Öryggi",
-    "useActivityImageAsChatBackground": "Nota virknimynd sem bakgrunn spjalls"
+    "useActivityImageAsChatBackground": "Nota virknimynd sem bakgrunn spjalls",
+    "filteredNetworkBlockedTitle": "Þetta net er að loka fyrir Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Þetta net er að loka fyrir hluta af Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Hvað get ég gert?",
+    "filteredNetworkPhoneAdvice": "Slökktu á Wi-Fi og notaðu farsímagögn í staðinn.",
+    "filteredNetworkComputerAdvice": "Tengstu við netkerfi símans þíns í staðinn fyrir þetta Wi-Fi.",
+    "filteredNetworkItHeading": "Fyrir kennara og upplýsingatæknifólk",
+    "filteredNetworkItBody": "Biddu upplýsingatækniteymið þitt um að leyfa þessi lén:",
+    "filteredNetworkAskForHelp": "Biðja Pangea um hjálp",
+    "filteredNetworkHelpExplanation": "Við sendum þér tölvupóst til að hjálpa þér að fá Pangea Chat til að virka á þessu neti.",
+    "filteredNetworkHelpWaiting": "Beiðnin þín verður send um leið og þú ert tengdur.",
+    "filteredNetworkHelpSent": "Sent. Við höfum samband með tölvupósti.",
+    "filteredNetworkHelpRefused": "Við gátum ekki sent beiðnina þína. Vinsamlegast sendu tölvupóst á support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Þetta net lokar fyrir myndbönd.",
+    "filteredNetworkImagesBlocked": "Þetta net lokar fyrir myndir.",
+    "filteredNetworkMapBlocked": "Þetta net lokar fyrir kortið."
 }

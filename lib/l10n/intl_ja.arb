@@ -10721,5 +10721,20 @@
     "reportSent": "レポートを送信しました",
     "reportNotSent": "レポートを送信できませんでした。接続を確認して、もう一度お試しください。",
     "reportPointerMessage": "{courseName}でメッセージが報告されました — 安全設定を確認してください",
-    "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用"
+    "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用",
+    "filteredNetworkBlockedTitle": "このネットワークはPangea Chatをブロックしています",
+    "filteredNetworkPartlyBlockedTitle": "このネットワークはPangea Chatの一部をブロックしています",
+    "filteredNetworkWhatCanIDo": "どうすればいいですか？",
+    "filteredNetworkPhoneAdvice": "Wi-Fiをオフにして、代わりにモバイルデータを使用してください。",
+    "filteredNetworkComputerAdvice": "このWi-Fiの代わりに、スマートフォンのホットスポットに接続してください。",
+    "filteredNetworkItHeading": "教師とITスタッフの方へ",
+    "filteredNetworkItBody": "ITチームに以下のドメインを許可するよう依頼してください。",
+    "filteredNetworkAskForHelp": "Pangeaに助けを求める",
+    "filteredNetworkHelpExplanation": "このネットワークでPangea Chatが機能するように、メールでご連絡いたします。",
+    "filteredNetworkHelpWaiting": "接続され次第、リクエストが送信されます。",
+    "filteredNetworkHelpSent": "送信されました。メールでご連絡いたします。",
+    "filteredNetworkHelpRefused": "リクエストを送信できませんでした。support@pangea.chatまでメールでお問い合わせください。",
+    "filteredNetworkVideoBlocked": "このネットワークは動画をブロックしています。",
+    "filteredNetworkImagesBlocked": "このネットワークは画像をブロックしています。",
+    "filteredNetworkMapBlocked": "このネットワークは地図をブロックしています。"
 }

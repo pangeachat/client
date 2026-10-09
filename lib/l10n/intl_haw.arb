@@ -2397,5 +2397,20 @@
     "reportSent": "Ua hoʻouna ʻia ka hōʻike",
     "reportNotSent": "ʻAʻole hiki ke hoʻouna ʻia kāu hōʻike. E nānā i kāu pili pūnaewele a e hoʻāʻo hou.",
     "reportPointerMessage": "Ua hōʻike ʻia kekahi leka ma {courseName} — e nānā i ka Palekana",
-    "useActivityImageAsChatBackground": "E hoʻohana i ke kiʻi hana ma ke ʻano he kāʻei kua kamaʻilio"
+    "useActivityImageAsChatBackground": "E hoʻohana i ke kiʻi hana ma ke ʻano he kāʻei kua kamaʻilio",
+    "filteredNetworkBlockedTitle": "Ke ālai nei kēia pūnaewele iā Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Ke ālai hapa nei kēia pūnaewele iā Pangea Chat",
+    "filteredNetworkWhatCanIDo": "He aha kaʻu e hana ai?",
+    "filteredNetworkPhoneAdvice": "E hoʻopau i ka Wi-Fi a e hoʻohana i ka ʻikepili kelepona ma kahi.",
+    "filteredNetworkComputerAdvice": "E hoʻohui i ka piko pele o kāu kelepona ma kahi o kēia Wi-Fi.",
+    "filteredNetworkItHeading": "No nā kumu a me nā limahana IT",
+    "filteredNetworkItBody": "E noi i kāu hui IT e ʻae i kēia mau kikowaena:",
+    "filteredNetworkAskForHelp": "E noi iā Pangea no ke kōkua",
+    "filteredNetworkHelpExplanation": "E leka uila mākou iā ʻoe e kōkua i ka hoʻohana ʻana iā Pangea Chat ma kēia pūnaewele.",
+    "filteredNetworkHelpWaiting": "E hoʻouna ʻia kāu noi ke hoʻohui ʻia ʻoe.",
+    "filteredNetworkHelpSent": "Ua hoʻouna ʻia. E launa pū mākou ma ka leka uila.",
+    "filteredNetworkHelpRefused": "ʻAʻole hiki iā mākou ke hoʻouna i kāu noi. E leka uila iā support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Ke ālai nei kēia pūnaewele i nā wikiō.",
+    "filteredNetworkImagesBlocked": "Ke ālai nei kēia pūnaewele i nā kiʻi.",
+    "filteredNetworkMapBlocked": "Ke ālai nei kēia pūnaewele i ka palapala ʻāina."
 }

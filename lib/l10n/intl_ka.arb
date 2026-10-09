@@ -10852,5 +10852,20 @@
     "reportSent": "მოხსენება გაგზავნილია",
     "reportNotSent": "თქვენი მოხსენების გაგზავნა ვერ მოხერხდა. შეამოწმეთ კავშირი და სცადეთ ხელახლა.",
     "reportPointerMessage": "შეტყობინება მოხსენებულია {courseName}-ში — იხილეთ უსაფრთხოება",
-    "useActivityImageAsChatBackground": "აქტივობის სურათის გამოყენება ჩეთის ფონად"
+    "useActivityImageAsChatBackground": "აქტივობის სურათის გამოყენება ჩეთის ფონად",
+    "filteredNetworkBlockedTitle": "ეს ქსელი ბლოკავს Pangea Chat-ს",
+    "filteredNetworkPartlyBlockedTitle": "ეს ქსელი ბლოკავს Pangea Chat-ის ნაწილს",
+    "filteredNetworkWhatCanIDo": "რა შემიძლია გავაკეთო?",
+    "filteredNetworkPhoneAdvice": "გამორთეთ Wi-Fi და ამის ნაცვლად გამოიყენეთ მობილური ინტერნეტი.",
+    "filteredNetworkComputerAdvice": "ამ Wi-Fi-ის ნაცვლად დაუკავშირდით თქვენი ტელეფონის ცხელ წერტილს.",
+    "filteredNetworkItHeading": "მასწავლებლებისა და IT პერსონალისთვის",
+    "filteredNetworkItBody": "სთხოვეთ თქვენს IT გუნდს, დაუშვას ეს დომენები:",
+    "filteredNetworkAskForHelp": "სთხოვეთ Pangea-ს დახმარება",
+    "filteredNetworkHelpExplanation": "ჩვენ გამოგიგზავნით ელფოსტას, რათა დაგეხმაროთ Pangea Chat-ის ამ ქსელში მუშაობაში.",
+    "filteredNetworkHelpWaiting": "თქვენი მოთხოვნა გაიგზავნება, როგორც კი დაუკავშირდებით.",
+    "filteredNetworkHelpSent": "გაგზავნილია. ჩვენ დაგიკავშირდებით ელფოსტით.",
+    "filteredNetworkHelpRefused": "თქვენი მოთხოვნის გაგზავნა ვერ მოხერხდა. გთხოვთ, გამოაგზავნოთ ელფოსტა support@pangea.chat-ზე.",
+    "filteredNetworkVideoBlocked": "ეს ქსელი ბლოკავს ვიდეოებს.",
+    "filteredNetworkImagesBlocked": "ეს ქსელი ბლოკავს სურათებს.",
+    "filteredNetworkMapBlocked": "ეს ქსელი ბლოკავს რუკას."
 }

@@ -9952,5 +9952,20 @@
     "reportSent": "Rapport verzonden",
     "reportNotSent": "Je rapport kon niet worden verzonden. Controleer je verbinding en probeer het opnieuw.",
     "reportPointerMessage": "Er is een bericht gerapporteerd in {courseName} — zie Veiligheid",
-    "useActivityImageAsChatBackground": "Gebruik activiteitsafbeelding als chatachtergrond"
+    "useActivityImageAsChatBackground": "Gebruik activiteitsafbeelding als chatachtergrond",
+    "filteredNetworkBlockedTitle": "Dit netwerk blokkeert Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Dit netwerk blokkeert een deel van Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Wat kan ik doen?",
+    "filteredNetworkPhoneAdvice": "Schakel wifi uit en gebruik mobiele data.",
+    "filteredNetworkComputerAdvice": "Maak verbinding met de hotspot van je telefoon in plaats van deze wifi.",
+    "filteredNetworkItHeading": "Voor docenten en IT-personeel",
+    "filteredNetworkItBody": "Vraag je IT-team om deze domeinen toe te staan:",
+    "filteredNetworkAskForHelp": "Vraag Pangea om hulp",
+    "filteredNetworkHelpExplanation": "We sturen je een e-mail om Pangea Chat op dit netwerk werkend te krijgen.",
+    "filteredNetworkHelpWaiting": "Je verzoek wordt verzonden zodra je verbonden bent.",
+    "filteredNetworkHelpSent": "Verzonden. We nemen contact met je op via e-mail.",
+    "filteredNetworkHelpRefused": "We konden je verzoek niet verzenden. Stuur een e-mail naar support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Dit netwerk blokkeert video's.",
+    "filteredNetworkImagesBlocked": "Dit netwerk blokkeert afbeeldingen.",
+    "filteredNetworkMapBlocked": "Dit netwerk blokkeert de kaart."
 }

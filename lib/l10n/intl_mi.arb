@@ -2397,5 +2397,20 @@
     "reportSent": "Kua tukuna te pūrongo",
     "reportNotSent": "Kāore i taea te tuku i tō pūrongo. Tirohia tō hononga ka ngana anō.",
     "reportPointerMessage": "I pūrongotia tētahi karere i roto i a {courseName} — tirohia te Haumaru",
-    "useActivityImageAsChatBackground": "Whakamahia te atahanga mahi hei papamuri kōrerorero"
+    "useActivityImageAsChatBackground": "Whakamahia te atahanga mahi hei papamuri kōrerorero",
+    "filteredNetworkBlockedTitle": "Kei te aukati tēnei whatunga i a Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Kei te aukati tēnei whatunga i tētahi wāhanga o Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Me aha ahau?",
+    "filteredNetworkPhoneAdvice": "Whakawetohia te Wi-Fi ka whakamahi i ngā raraunga pūkoro hei utu.",
+    "filteredNetworkComputerAdvice": "Hono atu ki te wāhiwera o tō waea hei utu mō tēnei Wi-Fi.",
+    "filteredNetworkItHeading": "Mō ngā kaiako me ngā kaimahi IT",
+    "filteredNetworkItBody": "Tonoa tō rōpū IT kia whakaaetia ēnei rohe:",
+    "filteredNetworkAskForHelp": "Tonoa a Pangea mō te āwhina",
+    "filteredNetworkHelpExplanation": "Ka īmēra mātou ki a koe ki te āwhina i a Pangea Chat kia mahi i runga i tēnei whatunga.",
+    "filteredNetworkHelpWaiting": "Ka tukuna tō tono ina hono koe.",
+    "filteredNetworkHelpSent": "Kua tukuna. Ka whakapā atu mātou ki a koe mā te īmēra.",
+    "filteredNetworkHelpRefused": "Kāore i taea e mātou te tuku i tō tono. Tēnā īmēra support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Kei te aukati tēnei whatunga i ngā ataata.",
+    "filteredNetworkImagesBlocked": "Kei te aukati tēnei whatunga i ngā whakaahua.",
+    "filteredNetworkMapBlocked": "Kei te aukati tēnei whatunga i te mahere."
 }

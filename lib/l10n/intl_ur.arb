@@ -2397,5 +2397,20 @@
     "reportSent": "رپورٹ بھیج دی گئی",
     "reportNotSent": "آپ کی رپورٹ بھیجی نہیں جا سکی۔ اپنا کنکشن چیک کریں اور دوبارہ کوشش کریں۔",
     "reportPointerMessage": "{courseName} میں ایک پیغام کی اطلاع دی گئی ہے — سیفٹی دیکھیں",
-    "useActivityImageAsChatBackground": "چیٹ کے پس منظر کے طور پر سرگرمی کی تصویر استعمال کریں"
+    "useActivityImageAsChatBackground": "چیٹ کے پس منظر کے طور پر سرگرمی کی تصویر استعمال کریں",
+    "filteredNetworkBlockedTitle": "یہ نیٹ ورک Pangea Chat کو بلاک کر رہا ہے",
+    "filteredNetworkPartlyBlockedTitle": "یہ نیٹ ورک Pangea Chat کے کچھ حصے کو بلاک کر رہا ہے",
+    "filteredNetworkWhatCanIDo": "میں کیا کر سکتا ہوں؟",
+    "filteredNetworkPhoneAdvice": "وائی فائی بند کریں اور اس کے بجائے موبائل ڈیٹا استعمال کریں۔",
+    "filteredNetworkComputerAdvice": "اس وائی فائی کے بجائے اپنے فون کے ہاٹ اسپاٹ سے جڑیں۔",
+    "filteredNetworkItHeading": "اساتذہ اور آئی ٹی عملے کے لیے",
+    "filteredNetworkItBody": "اپنی آئی ٹی ٹیم سے ان ڈومینز کی اجازت دینے کو کہیں:",
+    "filteredNetworkAskForHelp": "Pangea سے مدد طلب کریں",
+    "filteredNetworkHelpExplanation": "ہم آپ کو ای میل کریں گے تاکہ Pangea Chat کو اس نیٹ ورک پر چلانے میں مدد مل سکے۔",
+    "filteredNetworkHelpWaiting": "آپ کی درخواست جیسے ہی آپ منسلک ہوں گے بھیج دی جائے گی۔",
+    "filteredNetworkHelpSent": "بھیج دیا گیا۔ ہم ای میل کے ذریعے آپ سے رابطہ کریں گے۔",
+    "filteredNetworkHelpRefused": "ہم آپ کی درخواست نہیں بھیج سکے ہیں۔ براہ کرم support@pangea.chat پر ای میل کریں۔",
+    "filteredNetworkVideoBlocked": "یہ نیٹ ورک ویڈیوز کو بلاک کرتا ہے۔",
+    "filteredNetworkImagesBlocked": "یہ نیٹ ورک تصاویر کو بلاک کرتا ہے۔",
+    "filteredNetworkMapBlocked": "یہ نیٹ ورک نقشے کو بلاک کرتا ہے۔"
 }

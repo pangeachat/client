@@ -10258,5 +10258,20 @@
     "reportSent": "تم إرسال البلاغ",
     "reportNotSent": "تعذر إرسال بلاغك. تحقق من اتصالك وحاول مرة أخرى.",
     "reportPointerMessage": "تم الإبلاغ عن رسالة في {courseName} — راجع الأمان",
-    "useActivityImageAsChatBackground": "استخدام صورة النشاط كخلفية للدردشة"
+    "useActivityImageAsChatBackground": "استخدام صورة النشاط كخلفية للدردشة",
+    "filteredNetworkBlockedTitle": "هذه الشبكة تحظر دردشة Pangea",
+    "filteredNetworkPartlyBlockedTitle": "هذه الشبكة تحظر جزءًا من دردشة Pangea",
+    "filteredNetworkWhatCanIDo": "ماذا يمكنني أن أفعل؟",
+    "filteredNetworkPhoneAdvice": "أوقف تشغيل Wi-Fi واستخدم بيانات الجوال بدلاً من ذلك.",
+    "filteredNetworkComputerAdvice": "اتصل بنقطة اتصال هاتفك بدلاً من شبكة Wi-Fi هذه.",
+    "filteredNetworkItHeading": "للمعلمين وموظفي تكنولوجيا المعلومات",
+    "filteredNetworkItBody": "اطلب من فريق تكنولوجيا المعلومات لديك السماح بهذه النطاقات:",
+    "filteredNetworkAskForHelp": "اطلب المساعدة من Pangea",
+    "filteredNetworkHelpExplanation": "سنتواصل معك عبر البريد الإلكتروني للمساعدة في تشغيل دردشة Pangea على هذه الشبكة.",
+    "filteredNetworkHelpWaiting": "سيتم إرسال طلبك بمجرد اتصالك.",
+    "filteredNetworkHelpSent": "تم الإرسال. سنتواصل معك عبر البريد الإلكتروني.",
+    "filteredNetworkHelpRefused": "لم نتمكن من إرسال طلبك. يرجى إرسال بريد إلكتروني إلى support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "هذه الشبكة تحظر مقاطع الفيديو.",
+    "filteredNetworkImagesBlocked": "هذه الشبكة تحظر الصور.",
+    "filteredNetworkMapBlocked": "هذه الشبكة تحظر الخريطة."
 }

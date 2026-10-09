@@ -2397,5 +2397,20 @@
     "reportSent": "Lipoti ua auina atu",
     "reportNotSent": "E leʻi mafai ona auina atu lau lipoti. Siaki lau fesoʻotaʻiga ma toe taumafai.",
     "reportPointerMessage": "Na lipotia se feʻau i le {courseName} — vaʻai i le Saogalemu",
-    "useActivityImageAsChatBackground": "Fa'aaoga le ata o le gaioiga e fai ma tala i tua o le talanoaga"
+    "useActivityImageAsChatBackground": "Fa'aaoga le ata o le gaioiga e fai ma tala i tua o le talanoaga",
+    "filteredNetworkBlockedTitle": "O lenei fesoʻotaʻiga o loʻo poloka le Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "O lenei fesoʻotaʻiga o loʻo poloka se vaega o le Pangea Chat",
+    "filteredNetworkWhatCanIDo": "O le a se mea e mafai ona ou faia?",
+    "filteredNetworkPhoneAdvice": "Tape le Wi-Fi ma faʻaaoga faʻamaumauga feaveaʻi nai lo.",
+    "filteredNetworkComputerAdvice": "Fesoʻotaʻi i le hotspot o lau telefoni nai lo lenei Wi-Fi.",
+    "filteredNetworkItHeading": "Mo faiaʻoga ma le aufaigaluega IT",
+    "filteredNetworkItBody": "Fesili i lau 'au IT e faʻataga nei vaega:",
+    "filteredNetworkAskForHelp": "Fesili ia Pangea mo se fesoasoani",
+    "filteredNetworkHelpExplanation": "Matou te imeli atu ia te oe e fesoasoani e faʻagaioia le Pangea Chat i luga o lenei fesoʻotaʻiga.",
+    "filteredNetworkHelpWaiting": "O lau talosaga o le a auina atu i le taimi lava e te fesoʻotaʻi ai.",
+    "filteredNetworkHelpSent": "Auina atu. Matou te faʻafesoʻotaʻi atu ia te oe i imeli.",
+    "filteredNetworkHelpRefused": "E le mafai ona matou auina atu lau talosaga. Faʻamolemole imeli support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "O lenei fesoʻotaʻiga e poloka vitio.",
+    "filteredNetworkImagesBlocked": "O lenei fesoʻotaʻiga e poloka ata.",
+    "filteredNetworkMapBlocked": "O lenei fesoʻotaʻiga e poloka le faʻafanua."
 }

@@ -2397,5 +2397,20 @@
     "reportSent": "באריכט געשיקט",
     "reportNotSent": "אײַער באַריכט קען נישט געשיקט ווערן. קוקט אײַער פֿאַרבינדונג און פּרוּווט ווידער.",
     "reportPointerMessage": "אַ מעלדונג איז געמאלדן געוואָרן אין {courseName} — זעט זיכערקייט",
-    "useActivityImageAsChatBackground": "ניצן טעטיקייט בילד ווי שמועס הינטערגרונט"
+    "useActivityImageAsChatBackground": "ניצן טעטיקייט בילד ווי שמועס הינטערגרונט",
+    "filteredNetworkBlockedTitle": "די נעץ בלאקירט פּאַנגעאַ טשאַט",
+    "filteredNetworkPartlyBlockedTitle": "די נעץ בלאקירט א טייל פון פּאַנגעאַ טשאַט",
+    "filteredNetworkWhatCanIDo": "וואָס קען איך טאָן?",
+    "filteredNetworkPhoneAdvice": "פארלעש Wi-Fi און נוץ סעליאַלער דאַטן אַנשטאָט.",
+    "filteredNetworkComputerAdvice": "פארבינד זיך צו דיין טעלעפאָן'ס האָטספּאָט אַנשטאָט פון דעם Wi-Fi.",
+    "filteredNetworkItHeading": "פאַר לערערס און IT שטאב",
+    "filteredNetworkItBody": "בעט אייער IT מאַנשאַפֿט צו דערלויבן די דאָמיינען:",
+    "filteredNetworkAskForHelp": "בעט פּאַנגעאַ פאַר הילף",
+    "filteredNetworkHelpExplanation": "מיר וועלן אייך שיקן אַן אימעיל צו העלפן באַקומען פּאַנגעאַ טשאַט ארבעטן אויף דער נעץ.",
+    "filteredNetworkHelpWaiting": "אייער בקשה וועט געשיקט ווערן ווי נאָר איר זענט פארבונדן.",
+    "filteredNetworkHelpSent": "געשיקט. מיר וועלן זיך קאָנטאַקטירן מיט אייך דורך אימעיל.",
+    "filteredNetworkHelpRefused": "מיר האָבן נישט געקענט שיקן אייער בקשה. ביטע שיקט אַן אימעיל צו support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "די נעץ בלאקירט ווידעאָס.",
+    "filteredNetworkImagesBlocked": "די נעץ בלאקירט בילדער.",
+    "filteredNetworkMapBlocked": "די נעץ בלאקירט די מאַפּע."
 }

@@ -10888,5 +10888,20 @@
     "reportSent": "Reporto inviate",
     "reportNotSent": "Tu reporto non poteva esser inviate. Verifica tu connexion e reprova.",
     "reportPointerMessage": "Un message esseva reportate in {courseName} — vide Securitate",
-    "useActivityImageAsChatBackground": "Usar imagine de activitate como fundo de chat"
+    "useActivityImageAsChatBackground": "Usar imagine de activitate como fundo de chat",
+    "filteredNetworkBlockedTitle": "Iste rete bloca Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Iste rete bloca un parte de Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Que pote io facer?",
+    "filteredNetworkPhoneAdvice": "Disactiva le Wi-Fi e usa datos mobile in su loco.",
+    "filteredNetworkComputerAdvice": "Connecte te al hotspot de tu telephono in loco de iste Wi-Fi.",
+    "filteredNetworkItHeading": "Pro professores e personal de IT",
+    "filteredNetworkItBody": "Peti a tu equipa de IT de permitter iste dominios:",
+    "filteredNetworkAskForHelp": "Peti adjuta a Pangea",
+    "filteredNetworkHelpExplanation": "Nos te inviara un e-mail pro adjutar te a facer funcionar Pangea Chat in iste rete.",
+    "filteredNetworkHelpWaiting": "Tu requesta essera inviate assim tosto que tu es connectite.",
+    "filteredNetworkHelpSent": "Inviate. Nos te contactara per e-mail.",
+    "filteredNetworkHelpRefused": "Nos non poteva inviar tu requesta. Per favor, invia un e-mail a support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Iste rete bloca videos.",
+    "filteredNetworkImagesBlocked": "Iste rete bloca imagines.",
+    "filteredNetworkMapBlocked": "Iste rete bloca le mappa."
 }

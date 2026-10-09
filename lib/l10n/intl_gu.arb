@@ -2397,5 +2397,20 @@
     "reportSent": "રિપોર્ટ મોકલી દેવાયો છે",
     "reportNotSent": "તમારો રિપોર્ટ મોકલી શકાયો નથી. તમારું કનેક્શન તપાસો અને ફરી પ્રયાસ કરો.",
     "reportPointerMessage": "{courseName}માં એક મેસેજની જાણ કરવામાં આવી હતી — સુરક્ષા જુઓ",
-    "useActivityImageAsChatBackground": "ચેટ બેકગ્રાઉન્ડ તરીકે પ્રવૃત્તિની છબીનો ઉપયોગ કરો"
+    "useActivityImageAsChatBackground": "ચેટ બેકગ્રાઉન્ડ તરીકે પ્રવૃત્તિની છબીનો ઉપયોગ કરો",
+    "filteredNetworkBlockedTitle": "આ નેટવર્ક પાંગેઆ ચેટને બ્લોક કરી રહ્યું છે",
+    "filteredNetworkPartlyBlockedTitle": "આ નેટવર્ક પાંગેઆ ચેટના ભાગને બ્લોક કરી રહ્યું છે",
+    "filteredNetworkWhatCanIDo": "હું શું કરી શકું?",
+    "filteredNetworkPhoneAdvice": "Wi-Fi બંધ કરો અને તેના બદલે મોબાઇલ ડેટાનો ઉપયોગ કરો.",
+    "filteredNetworkComputerAdvice": "આ Wi-Fi ને બદલે તમારા ફોનના હોટસ્પોટથી કનેક્ટ કરો.",
+    "filteredNetworkItHeading": "શિક્ષકો અને IT સ્ટાફ માટે",
+    "filteredNetworkItBody": "તમારી IT ટીમને આ ડોમેન્સને મંજૂરી આપવા કહો:",
+    "filteredNetworkAskForHelp": "મદદ માટે પાંગેઆને પૂછો",
+    "filteredNetworkHelpExplanation": "આ નેટવર્ક પર પાંગેઆ ચેટને કાર્યરત કરવામાં મદદ કરવા માટે અમે તમને ઇમેઇલ કરીશું.",
+    "filteredNetworkHelpWaiting": "તમે કનેક્ટ થશો કે તરત જ તમારી વિનંતી મોકલવામાં આવશે.",
+    "filteredNetworkHelpSent": "મોકલી દીધું. અમે ઇમેઇલ દ્વારા સંપર્કમાં રહીશું.",
+    "filteredNetworkHelpRefused": "અમે તમારી વિનંતી મોકલી શક્યા નથી. કૃપા કરીને support@pangea.chat પર ઇમેઇલ કરો.",
+    "filteredNetworkVideoBlocked": "આ નેટવર્ક વીડિયોને બ્લોક કરે છે.",
+    "filteredNetworkImagesBlocked": "આ નેટવર્ક છબીઓને બ્લોક કરે છે.",
+    "filteredNetworkMapBlocked": "આ નેટવર્ક નકશાને બ્લોક કરે છે."
 }

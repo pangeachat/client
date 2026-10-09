@@ -2397,5 +2397,20 @@
     "reportSent": "Chirevo chatumirwa",
     "reportNotSent": "Chirevo chako hachina kutumirwa. Tarisa internet yako woedza zvakare.",
     "reportPointerMessage": "Meseji yakashumwa mu{courseName} — ona Kuchengeteka",
-    "useActivityImageAsChatBackground": "Shandisa mufananidzo wechiitiko sehwaro hwechat"
+    "useActivityImageAsChatBackground": "Shandisa mufananidzo wechiitiko sehwaro hwechat",
+    "filteredNetworkBlockedTitle": "Iyi network iri kuvharira Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Iyi network iri kuvharira chikamu chePangea Chat",
+    "filteredNetworkWhatCanIDo": "Ndingaita sei?",
+    "filteredNetworkPhoneAdvice": "Dzima Wi-Fi shandisa mobile data panzvimbo.",
+    "filteredNetworkComputerAdvice": "Batanidza kune hotspot yefoni yako panzvimbo peWi-Fi iyi.",
+    "filteredNetworkItHeading": "Kune vadzidzisi nevashandi veIT",
+    "filteredNetworkItBody": "Kumbira timu yako yeIT kuti ibvumire madomain aya:",
+    "filteredNetworkAskForHelp": "Kumbira Pangea rubatsiro",
+    "filteredNetworkHelpExplanation": "Tichakutumira email kuti tikubatsire kuita kuti Pangea Chat ishande pane network iyi.",
+    "filteredNetworkHelpWaiting": "Chikumbiro chako chichatumirwa kana wangobatana.",
+    "filteredNetworkHelpSent": "Chatumirwa. Tichataurirana newe neemail.",
+    "filteredNetworkHelpRefused": "Hatina kukwanisa kutumira chikumbiro chako. Ndapota tumira email ku support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Iyi network inovharira mavhidhiyo.",
+    "filteredNetworkImagesBlocked": "Iyi network inovharira mifananidzo.",
+    "filteredNetworkMapBlocked": "Iyi network inovharira mepu."
 }
