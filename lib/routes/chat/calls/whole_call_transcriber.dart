@@ -598,13 +598,18 @@ class WholeCallTranscriber {
 
   /// Whether [speaker] already has a half in the assembled transcript. A half
   /// that resolved to words or an empty-but-present authentic half both count;
-  /// only a truly absent speaker (no half, or one held out as pending/invalid)
-  /// is produced. This is the union of the two skip predicates -- an authentic
+  /// a truly absent speaker (no half, or one held out as pending/invalid) is
+  /// produced, and so is a half emptied only because its writer had no
+  /// subscription (#8792) -- that half says nobody paid to transcribe it, not
+  /// what was said. This is the union of the two skip predicates -- an authentic
   /// half and a VALID peer half both attribute to [speaker] here, and a 1:1 DM
   /// has one recording per unit, so the speaker key IS the unit key.
   bool _skip(CallTranscript transcript, String speaker) =>
       transcript.halves.any(
-        (half) => half.senderId == speaker && half.state != HalfState.absent,
+        (half) =>
+            half.senderId == speaker &&
+            half.state != HalfState.absent &&
+            !half.emptiedOnlyByNoSubscription,
       );
 
   /// Both participants of the 1:1 DM are known. A half is signed by [selfUserId]
