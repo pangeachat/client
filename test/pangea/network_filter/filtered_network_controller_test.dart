@@ -285,6 +285,47 @@ void main() {
         );
       },
     );
+
+    test(
+      'carries the user\'s courses, so one class gathers in one place',
+      () async {
+        answers[apiHost] = NetworkProbeResult.refused;
+        controller.joinedCourseIds = () =>
+            ['!b:pangea.chat', '!a:pangea.chat']..sort();
+
+        final event = await harness.capture(
+          () => controller.check(NetworkHostCategory.pangeaApi),
+        );
+
+        expect(
+          event.tags,
+          containsPair('course_ids', '!a:pangea.chat,!b:pangea.chat'),
+        );
+      },
+    );
+
+    test('leaves the course tag off when the user has no course', () async {
+      answers[apiHost] = NetworkProbeResult.refused;
+      controller.joinedCourseIds = () => const [];
+
+      final event = await harness.capture(
+        () => controller.check(NetworkHostCategory.pangeaApi),
+      );
+
+      expect(event.tags, isNot(contains('course_ids')));
+    });
+  });
+
+  test('a course tag drops whole IDs past Sentry\'s 200-character limit', () {
+    final ids = [
+      for (var i = 0; i < 10; i++) '!course$i${'x' * 20}:pangea.chat',
+    ];
+
+    final tag = FilteredNetworkController.courseIdsTag(ids);
+
+    expect(tag.length, lessThanOrEqualTo(200));
+    expect(ids, containsAll(tag.split(',')));
+    expect(tag.split(','), ids.take(tag.split(',').length));
   });
 
   test('the IT list names every host the app needs', () {

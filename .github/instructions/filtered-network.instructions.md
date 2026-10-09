@@ -54,7 +54,7 @@ When only a feature host is blocked, that feature shows a short note ([`Filtered
 
 ## Sentry
 
-Each filtered verdict reports one Sentry error per host category per session, tagged with the category, the platform and the network type (Wi-Fi, mobile data, wired or unknown). It adds no personal data to what every client event already carries, which is the account ID and, on the web, the IP address. It does not record the network's name. On the phone apps, an event that cannot be sent waits on the device and goes out on the next good connection. The web app has no such store, so an event it cannot send is lost; the help request below is the user's way to reach us from there.
+Each filtered verdict reports one Sentry error per host category per session, tagged with the category, the platform, the network type (Wi-Fi, mobile data, wired or unknown) and the IDs of the courses the user has joined, so the reports from one class gather under its course, and the course leads to its teacher. It adds no personal data to what every client event already carries, which is the account ID and, on the web, the IP address. It does not record the network's name. On the phone apps, an event that cannot be sent waits on the device and goes out on the next good connection. The web app has no such store, so an event it cannot send is lost; the help request below is the user's way to reach us from there.
 
 The once-per-session "no response" warning in [repos-and-error-handling](repos-and-error-handling.instructions.md) stays; the filtered verdict is the event that says why.
 
