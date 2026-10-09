@@ -90,7 +90,8 @@ class _PangeaSsoButtonState extends State<PangeaSsoButton> {
     final verdict = await FilteredNetworkController.instance.check(
       provider.networkHostCategory,
     );
-    return verdict == NetworkVerdict.reachable;
+    // Only a filter earns the dialog: offline, the sign-in fails on its own.
+    return verdict != NetworkVerdict.filtered;
   }
 
   Future<void> _runSSOLogin(BuildContext context) async {

@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
@@ -53,6 +54,8 @@ void main() {
   setUp(() {
     SharedPreferences.setMockInitialValues({});
     NetworkHelpRepo.resetForTest();
+    FilteredNetworkController.instance.onNetworkChanged = () =>
+        const Stream<List<ConnectivityResult>>.empty();
     posts = [];
   });
 
@@ -121,6 +124,10 @@ void main() {
         () => NetworkHelpRepo.submit(request),
       );
       expect(NetworkHelpRepo.status.value, NetworkHelpStatus.waiting);
+      // Nothing is blocked, but the waiting request alone keeps the app
+      // listening for a better network.
+      expect(FilteredNetworkController.instance.blocked.value, isEmpty);
+      expect(FilteredNetworkController.instance.isWatchingNetwork, isTrue);
 
       // A new session reads the waiting request back from the device.
       NetworkHelpRepo.resetForTest();
@@ -130,6 +137,7 @@ void main() {
       await withCms(created, NetworkHelpRepo.flush);
       expect(NetworkHelpRepo.status.value, NetworkHelpStatus.sent);
       expect(posts, hasLength(2));
+      expect(FilteredNetworkController.instance.isWatchingNetwork, isFalse);
     },
   );
 

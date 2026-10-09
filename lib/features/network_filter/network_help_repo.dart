@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' show ClientException;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:fluffychat/features/network_filter/filtered_network_controller.dart';
 import 'package:fluffychat/features/network_filter/network_help_request.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
@@ -61,6 +62,7 @@ abstract final class NetworkHelpRepo {
     if (status.value == NetworkHelpStatus.refused) return;
     final prefs = await SharedPreferences.getInstance();
     _waiting = prefs.containsKey(_waitingKey);
+    FilteredNetworkController.instance.updateNetworkWatch();
     status.value = _waiting
         ? NetworkHelpStatus.waiting
         : prefs.getString(_lastSentDayKey) == _today
@@ -76,6 +78,7 @@ abstract final class NetworkHelpRepo {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_waitingKey, jsonEncode(request.toJson()));
     _waiting = true;
+    FilteredNetworkController.instance.updateNetworkWatch();
     status.value = NetworkHelpStatus.waiting;
     await flush();
   }
@@ -102,6 +105,7 @@ abstract final class NetworkHelpRepo {
       );
       await prefs.remove(_waitingKey);
       _waiting = false;
+      FilteredNetworkController.instance.updateNetworkWatch();
       await prefs.setString(_lastSentDayKey, _today);
       status.value = NetworkHelpStatus.sent;
     } on ClientException {
