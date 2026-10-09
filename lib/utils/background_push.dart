@@ -279,10 +279,8 @@ class BackgroundPush {
 
   /// A VoIP token arrived or changed: register it, and move the ordinary
   /// pusher to the app ID that skips rings, since the call screen rings now.
-  Future<void> _onVoipToken() async {
-    await setupVoipPusher();
-    await setupPush();
-  }
+  /// [setupPush] does both.
+  Future<void> _onVoipToken() => setupPush();
 
   /// Registers this account's VoIP pusher, which wakes the app to ring on the
   /// iOS call screen (client#9411). Sygnal sends its app ID call rings and
@@ -548,6 +546,9 @@ class BackgroundPush {
     if (upAction) {
       return;
     }
+    // Here as well as when the token arrives: it usually arrives at launch,
+    // before anyone has signed in, and this is what runs once they have.
+    if (PlatformInfos.isIOS) await setupVoipPusher();
     if (!PlatformInfos.isIOS &&
         (await UnifiedPush.getDistributors()).isNotEmpty) {
       await setupUp();
