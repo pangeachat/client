@@ -10024,5 +10024,6 @@
     "xpToCompleteObjectiveTitle": "XP per oppdrag",
     "xpToCompleteObjectiveDesc": "Angi XP som trengs for å fullføre hvert oppdrag",
     "objectiveCircleComplete": "Oppdrag {index}: fullført",
-    "objectiveCircleUpNext": "Oppdrag {index}: neste"
+    "objectiveCircleUpNext": "Oppdrag {index}: neste",
+    "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn"
 }

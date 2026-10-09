@@ -9971,5 +9971,6 @@
     "xpToCompleteObjectiveTitle": "Har bir topshiriq uchun XP",
     "xpToCompleteObjectiveDesc": "Har bir topshiriqni bajarish uchun kerak bo'ladigan XP ni belgilang",
     "objectiveCircleComplete": "Missiya {index}: yakunlandi",
-    "objectiveCircleUpNext": "Missiya {index}: keyingisi"
+    "objectiveCircleUpNext": "Missiya {index}: keyingisi",
+    "useActivityImageAsChatBackground": "Faoliyat rasmini chat fon rasmi sifatida ishlatish"
 }

@@ -10273,5 +10273,6 @@
     "xpToCompleteObjectiveTitle": "نقاط الخبرة لكل مهمة",
     "xpToCompleteObjectiveDesc": "حدد نقاط الخبرة اللازمة لإكمال كل مهمة",
     "objectiveCircleComplete": "المهمة {index}: اكتملت",
-    "objectiveCircleUpNext": "المهمة {index}: التالية"
+    "objectiveCircleUpNext": "المهمة {index}: التالية",
+    "useActivityImageAsChatBackground": "استخدام صورة النشاط كخلفية للدردشة"
 }

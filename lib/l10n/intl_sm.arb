@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP i Misiona ta'itasi",
     "xpToCompleteObjectiveDesc": "Seti le XP e mana'omia e fa'amae'a ai misiona ta'itasi",
     "objectiveCircleComplete": "Misiona {index}: ua maeʻa",
-    "objectiveCircleUpNext": "Misiona {index}: o le isi"
+    "objectiveCircleUpNext": "Misiona {index}: o le isi",
+    "useActivityImageAsChatBackground": "Fa'aaoga le ata o le gaioiga e fai ma tala i tua o le talanoaga"
 }

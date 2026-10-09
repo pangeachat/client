@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP по мисија",
     "xpToCompleteObjectiveDesc": "Поставете го XP потребно за да ја завршите секоја мисија",
     "objectiveCircleComplete": "Мисија {index}: завршена",
-    "objectiveCircleUpNext": "Мисија {index}: следна"
+    "objectiveCircleUpNext": "Мисија {index}: следна",
+    "useActivityImageAsChatBackground": "Користи слика од активноста како позадина за разговор"
 }

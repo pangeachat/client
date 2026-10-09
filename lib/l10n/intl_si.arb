@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "මෙහෙයුමකට XP",
     "xpToCompleteObjectiveDesc": "සෑම මෙහෙයුමක්ම සම්පූර්ණ කිරීමට අවශ්‍ය XP සකසන්න",
     "objectiveCircleComplete": "මෙහෙයුම {index}: සම්පූර්ණයි",
-    "objectiveCircleUpNext": "මෙහෙයුම {index}: ඊළඟට"
+    "objectiveCircleUpNext": "මෙහෙයුම {index}: ඊළඟට",
+    "useActivityImageAsChatBackground": "ක්‍රියාකාරකම් රූපය චැට් පසුබිම ලෙස භාවිතා කරන්න"
 }

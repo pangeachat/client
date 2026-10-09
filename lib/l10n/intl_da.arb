@@ -10887,5 +10887,6 @@
     "xpToCompleteObjectiveTitle": "XP pr. mission",
     "xpToCompleteObjectiveDesc": "Indstil den XP, der er nødvendig for at fuldføre hver mission",
     "objectiveCircleComplete": "Mission {index}: gennemført",
-    "objectiveCircleUpNext": "Mission {index}: næste"
+    "objectiveCircleUpNext": "Mission {index}: næste",
+    "useActivityImageAsChatBackground": "Brug aktivitetsbillede som chatbaggrund"
 }

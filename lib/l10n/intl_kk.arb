@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "Миссияға шаққандағы XP",
     "xpToCompleteObjectiveDesc": "Әр миссияны аяқтау үшін қажетті XP-ны орнатыңыз",
     "objectiveCircleComplete": "Миссия {index}: аяқталды",
-    "objectiveCircleUpNext": "Миссия {index}: келесі"
+    "objectiveCircleUpNext": "Миссия {index}: келесі",
+    "useActivityImageAsChatBackground": "Әрекет кескінін чат фоны ретінде пайдалану"
 }

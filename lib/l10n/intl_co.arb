@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP per Missione",
     "xpToCompleteObjectiveDesc": "Definisce l'XP necessarii per cumplettà ogni missione",
     "objectiveCircleComplete": "Missione {index}: compia",
-    "objectiveCircleUpNext": "Missione {index}: dopu"
+    "objectiveCircleUpNext": "Missione {index}: dopu",
+    "useActivityImageAsChatBackground": "Aduprà l'imagine di l'attività cum'è fondu di chat"
 }

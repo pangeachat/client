@@ -11,8 +11,8 @@ void main() {
     'empty "no longer participating" state renders the panel close control (#7746)',
     (tester) async {
       // A null param drops LeftPanelRoomSubpage to its empty state before it
-      // ever touches Matrix.of — the same state reached when the room is left,
-      // is a space, or is unknown. Before #7746 that state was bare centered
+      // ever touches Matrix.of — the same state reached when the room is left
+      // or unknown. Before #7746 that state was bare centered
       // text with no way to dismiss the panel.
       const closeKey = Key('the-close-button');
 

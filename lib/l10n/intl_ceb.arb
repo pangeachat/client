@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP kada Misyon",
     "xpToCompleteObjectiveDesc": "Ibutang ang XP nga gikinahanglan aron makompleto ang matag misyon",
     "objectiveCircleComplete": "Misyon {index}: kompleto",
-    "objectiveCircleUpNext": "Misyon {index}: sunod"
+    "objectiveCircleUpNext": "Misyon {index}: sunod",
+    "useActivityImageAsChatBackground": "Gamita ang hulagway sa kalihokan isip background sa chat"
 }

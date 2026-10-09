@@ -10040,5 +10040,6 @@
     "xpToCompleteObjectiveTitle": "XP per missione",
     "xpToCompleteObjectiveDesc": "Imposta gli XP necessari per completare ogni missione",
     "objectiveCircleComplete": "Missione {index}: completata",
-    "objectiveCircleUpNext": "Missione {index}: in arrivo"
+    "objectiveCircleUpNext": "Missione {index}: in arrivo",
+    "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat"
 }

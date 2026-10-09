@@ -9967,5 +9967,6 @@
     "xpToCompleteObjectiveTitle": "每个任务的 XP",
     "xpToCompleteObjectiveDesc": "设置完成每个任务所需的 XP",
     "objectiveCircleComplete": "任务 {index}：已完成",
-    "objectiveCircleUpNext": "任务 {index}：即将开始"
+    "objectiveCircleUpNext": "任务 {index}：即将开始",
+    "useActivityImageAsChatBackground": "使用活动图片作为聊天背景"
 }

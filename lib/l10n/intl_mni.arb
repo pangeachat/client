@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "মিশন অমদা XP",
     "xpToCompleteObjectiveDesc": "মিশন খুদিংমক লোইশিন্ননবা মথৌ তাবা XP থমবীয়ু",
     "objectiveCircleComplete": "মিশন {index}: লোইশিনখ্রে",
-    "objectiveCircleUpNext": "মিশন {index}: হৌজিক লাক্কদৌরি"
+    "objectiveCircleUpNext": "মিশন {index}: হৌজিক লাক্কদৌরি",
+    "useActivityImageAsChatBackground": "চ্যাট ব্যাকগ্রাউন্ড ওইনা এক্টিভিটি ইমেজ শিজিনব"
 }

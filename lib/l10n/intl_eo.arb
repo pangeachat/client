@@ -10912,5 +10912,6 @@
     "xpToCompleteObjectiveTitle": "XP por Misio",
     "xpToCompleteObjectiveDesc": "Agordu la XP necesan por plenumi ĉiun mision",
     "objectiveCircleComplete": "Misio {index}: finita",
-    "objectiveCircleUpNext": "Misio {index}: sekva"
+    "objectiveCircleUpNext": "Misio {index}: sekva",
+    "useActivityImageAsChatBackground": "Uzi agadan bildon kiel babilejan fonon"
 }

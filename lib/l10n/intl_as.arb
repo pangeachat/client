@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "প্ৰতিটো অভিযানৰ বাবে XP",
     "xpToCompleteObjectiveDesc": "প্ৰতিটো অভিযান সম্পূৰ্ণ কৰিবলৈ প্ৰয়োজনীয় XP নিৰ্ধাৰণ কৰক",
     "objectiveCircleComplete": "মিছন {index}: সম্পূৰ্ণ",
-    "objectiveCircleUpNext": "মিছন {index}: পৰৱৰ্তী"
+    "objectiveCircleUpNext": "মিছন {index}: পৰৱৰ্তী",
+    "useActivityImageAsChatBackground": "কাৰ্য্যকলাপৰ ছবিখনক চেটৰ পৃষ্ঠভূমি হিচাপে ব্যৱহাৰ কৰক"
 }

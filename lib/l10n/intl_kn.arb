@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "ಪ್ರತಿ ಮಿಷನ್‌ಗೆ XP",
     "xpToCompleteObjectiveDesc": "ಪ್ರತಿ ಮಿಷನ್ ಪೂರ್ಣಗೊಳಿಸಲು ಅಗತ್ಯವಿರುವ XP ಅನ್ನು ಹೊಂದಿಸಿ",
     "objectiveCircleComplete": "ಮಿಷನ್ {index}: ಪೂರ್ಣಗೊಂಡಿದೆ",
-    "objectiveCircleUpNext": "ಮಿಷನ್ {index}: ಮುಂದೆ"
+    "objectiveCircleUpNext": "ಮಿಷನ್ {index}: ಮುಂದೆ",
+    "useActivityImageAsChatBackground": "ಚಾಟ್ ಹಿನ್ನೆಲೆಯಾಗಿ ಚಟುವಟಿಕೆಯ ಚಿತ್ರವನ್ನು ಬಳಸಿ"
 }

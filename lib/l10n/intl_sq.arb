@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP për Mision",
     "xpToCompleteObjectiveDesc": "Vendos XP-në e nevojshme për të përfunduar çdo mision",
     "objectiveCircleComplete": "Misioni {index}: i përfunduar",
-    "objectiveCircleUpNext": "Misioni {index}: radhës"
+    "objectiveCircleUpNext": "Misioni {index}: radhës",
+    "useActivityImageAsChatBackground": "Përdor imazhin e aktivitetit si sfond bisede"
 }

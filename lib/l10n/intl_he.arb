@@ -10881,5 +10881,6 @@
     "xpToCompleteObjectiveTitle": "נקודות ניסיון למשימה",
     "xpToCompleteObjectiveDesc": "קבע את נקודות הניסיון הדרושות להשלמת כל משימה",
     "objectiveCircleComplete": "משימה {index}: הושלמה",
-    "objectiveCircleUpNext": "משימה {index}: הבאה בתור"
+    "objectiveCircleUpNext": "משימה {index}: הבאה בתור",
+    "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט"
 }

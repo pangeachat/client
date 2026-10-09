@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP po misiji",
     "xpToCompleteObjectiveDesc": "Postavite XP potreban za završetak svake misije",
     "objectiveCircleComplete": "Misija {index}: završena",
-    "objectiveCircleUpNext": "Misija {index}: sljedeća"
+    "objectiveCircleUpNext": "Misija {index}: sljedeća",
+    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata"
 }

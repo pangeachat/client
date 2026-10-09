@@ -10867,5 +10867,6 @@
     "xpToCompleteObjectiveTitle": "XP თითო მისიაზე",
     "xpToCompleteObjectiveDesc": "დააყენეთ XP, რომელიც საჭიროა თითოეული მისიის დასასრულებლად",
     "objectiveCircleComplete": "მისია {index}: დასრულებულია",
-    "objectiveCircleUpNext": "მისია {index}: შემდეგი"
+    "objectiveCircleUpNext": "მისია {index}: შემდეგი",
+    "useActivityImageAsChatBackground": "აქტივობის სურათის გამოყენება ჩეთის ფონად"
 }

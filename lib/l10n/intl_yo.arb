@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP fún Iṣẹ́ kọ̀ọ̀kan",
     "xpToCompleteObjectiveDesc": "Ṣeto XP tí ó yẹ láti parí iṣẹ́ kọ̀ọ̀kan",
     "objectiveCircleComplete": "Iṣẹ́ {index}: pari",
-    "objectiveCircleUpNext": "Iṣẹ́ {index}: tó nbọ̀"
+    "objectiveCircleUpNext": "Iṣẹ́ {index}: tó nbọ̀",
+    "useActivityImageAsChatBackground": "Lo aworan iṣẹ bi abẹlẹ iwiregbe"
 }

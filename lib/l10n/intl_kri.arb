@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP fɔ ɛni Mishɔn",
     "xpToCompleteObjectiveDesc": "Sɛt di XP we nid fɔ finish ɛni mishɔn",
     "objectiveCircleComplete": "Mishɔn {index}: dɔn",
-    "objectiveCircleUpNext": "Mishɔn {index}: de kam"
+    "objectiveCircleUpNext": "Mishɔn {index}: de kam",
+    "useActivityImageAsChatBackground": "Yuz aktiviti pikcho as chat bakgron"
 }

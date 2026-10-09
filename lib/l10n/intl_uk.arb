@@ -9967,5 +9967,6 @@
     "xpToCompleteObjectiveTitle": "XP за місію",
     "xpToCompleteObjectiveDesc": "Встановіть XP, необхідні для завершення кожної місії",
     "objectiveCircleComplete": "Місія {index}: виконано",
-    "objectiveCircleUpNext": "Місія {index}: наступна"
+    "objectiveCircleUpNext": "Місія {index}: наступна",
+    "useActivityImageAsChatBackground": "Використовувати зображення активності як фон чату"
 }

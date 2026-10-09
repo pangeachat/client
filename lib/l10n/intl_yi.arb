@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP פּער מיסיע",
     "xpToCompleteObjectiveDesc": "שטעלן די XP וואָס מע דאַרף כּדי צו פֿאַרענדיקן יעדער מיסיע",
     "objectiveCircleComplete": "מיסיע {index}: פֿאַרענדיקט",
-    "objectiveCircleUpNext": "מיסיע {index}: קומענדיקע"
+    "objectiveCircleUpNext": "מיסיע {index}: קומענדיקע",
+    "useActivityImageAsChatBackground": "ניצן טעטיקייט בילד ווי שמועס הינטערגרונט"
 }

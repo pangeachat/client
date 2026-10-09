@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP á verkefni",
     "xpToCompleteObjectiveDesc": "Stilltu XP sem þarf til að ljúka hverju verkefni",
     "objectiveCircleComplete": "Verkefni {index}: lokið",
-    "objectiveCircleUpNext": "Verkefni {index}: næst"
+    "objectiveCircleUpNext": "Verkefni {index}: næst",
+    "useActivityImageAsChatBackground": "Nota virknimynd sem bakgrunn spjalls"
 }

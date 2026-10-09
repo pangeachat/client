@@ -10699,5 +10699,6 @@
     "xpToCompleteObjectiveTitle": "XP per misiune",
     "xpToCompleteObjectiveDesc": "Setează XP-ul necesar pentru a finaliza fiecare misiune",
     "objectiveCircleComplete": "Misiunea {index}: finalizată",
-    "objectiveCircleUpNext": "Misiunea {index}: urmează"
+    "objectiveCircleUpNext": "Misiunea {index}: urmează",
+    "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal de chat"
 }

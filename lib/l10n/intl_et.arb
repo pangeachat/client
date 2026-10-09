@@ -9964,5 +9964,6 @@
     "xpToCompleteObjectiveTitle": "XP missiooni kohta",
     "xpToCompleteObjectiveDesc": "Määra XP, mis on vajalik iga missiooni läbimiseks",
     "objectiveCircleComplete": "Missioon {index}: täidetud",
-    "objectiveCircleUpNext": "Missioon {index}: järgmine"
+    "objectiveCircleUpNext": "Missioon {index}: järgmine",
+    "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana"
 }

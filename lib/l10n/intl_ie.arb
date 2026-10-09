@@ -10599,5 +10599,6 @@
     "xpToCompleteObjectiveTitle": "XP in aghaidh an Mhisean",
     "xpToCompleteObjectiveDesc": "Socraigh an XP atá ag teastáil chun gach misean a chríochnú",
     "objectiveCircleComplete": "Misean {index}: críochnaithe",
-    "objectiveCircleUpNext": "Misean {index}: an chéad cheann eile"
+    "objectiveCircleUpNext": "Misean {index}: an chéad cheann eile",
+    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá"
 }

@@ -10912,5 +10912,6 @@
     "xpToCompleteObjectiveTitle": "XP za misiu",
     "xpToCompleteObjectiveDesc": "Nastavte XP potrebné na dokončenie každej misie",
     "objectiveCircleComplete": "Misia {index}: dokončená",
-    "objectiveCircleUpNext": "Misia {index}: ďalšia v poradí"
+    "objectiveCircleUpNext": "Misia {index}: ďalšia v poradí",
+    "useActivityImageAsChatBackground": "Použiť obrázok aktivity ako pozadie chatu"
 }

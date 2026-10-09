@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP pabasa rega rega",
     "xpToCompleteObjectiveDesc": "Isa XP inodiwa kuti upedze basa rega rega",
     "objectiveCircleComplete": "Basa {index}: rapera",
-    "objectiveCircleUpNext": "Basa {index}: rinotevera"
+    "objectiveCircleUpNext": "Basa {index}: rinotevera",
+    "useActivityImageAsChatBackground": "Shandisa mufananidzo wechiitiko sehwaro hwechat"
 }

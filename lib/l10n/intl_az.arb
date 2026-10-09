@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "Hər Missiya üçün XP",
     "xpToCompleteObjectiveDesc": "Hər missiyanı tamamlamaq üçün lazım olan XP-ni təyin edin",
     "objectiveCircleComplete": "Missiya {index}: tamamlandı",
-    "objectiveCircleUpNext": "Missiya {index}: növbəti"
+    "objectiveCircleUpNext": "Missiya {index}: növbəti",
+    "useActivityImageAsChatBackground": "Fəaliyyət şəklini çat fonu kimi istifadə et"
 }

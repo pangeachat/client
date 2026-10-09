@@ -9981,5 +9981,6 @@
     "xpToCompleteObjectiveTitle": "XP за місію",
     "xpToCompleteObjectiveDesc": "Усталюйце XP, неабходныя для выканання кожнай місіі",
     "objectiveCircleComplete": "Місія {index}: выканана",
-    "objectiveCircleUpNext": "Місія {index}: наступная"
+    "objectiveCircleUpNext": "Місія {index}: наступная",
+    "useActivityImageAsChatBackground": "Выкарыстоўваць выяву актыўнасці як фон чата"
 }

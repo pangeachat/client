@@ -10055,5 +10055,6 @@
     "xpToCompleteObjectiveTitle": "امتیاز تجربه در هر مأموریت",
     "xpToCompleteObjectiveDesc": "امتیاز تجربه مورد نیاز برای تکمیل هر مأموریت را تنظیم کنید",
     "objectiveCircleComplete": "مأموریت {index}: تکمیل شد",
-    "objectiveCircleUpNext": "مأموریت {index}: بعدی"
+    "objectiveCircleUpNext": "مأموریت {index}: بعدی",
+    "useActivityImageAsChatBackground": "استفاده از تصویر فعالیت به عنوان پس‌زمینه چت"
 }

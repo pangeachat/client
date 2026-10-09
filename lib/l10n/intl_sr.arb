@@ -10916,5 +10916,6 @@
     "xpToCompleteObjectiveTitle": "XP po misiji",
     "xpToCompleteObjectiveDesc": "Podesite XP potreban za završetak svake misije",
     "objectiveCircleComplete": "Misija {index}: završena",
-    "objectiveCircleUpNext": "Misija {index}: sledeća"
+    "objectiveCircleUpNext": "Misija {index}: sledeća",
+    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu ćaskanja"
 }

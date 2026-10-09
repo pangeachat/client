@@ -7265,5 +7265,6 @@
     "xpToCompleteObjectiveTitle": "XP mỗi Nhiệm vụ",
     "xpToCompleteObjectiveDesc": "Đặt số XP cần thiết để hoàn thành mỗi nhiệm vụ",
     "objectiveCircleComplete": "Nhiệm vụ {index}: hoàn thành",
-    "objectiveCircleUpNext": "Nhiệm vụ {index}: tiếp theo"
+    "objectiveCircleUpNext": "Nhiệm vụ {index}: tiếp theo",
+    "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện"
 }

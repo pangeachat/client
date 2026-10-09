@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP ក្នុងមួយបេសកកម្ម",
     "xpToCompleteObjectiveDesc": "កំណត់ XP ដែលត្រូវការដើម្បីបញ្ចប់បេសកកម្មនីមួយៗ",
     "objectiveCircleComplete": "បេសកកម្មទី {index}៖ បានបញ្ចប់",
-    "objectiveCircleUpNext": "បេសកកម្មទី {index}៖ បន្ទាប់"
+    "objectiveCircleUpNext": "បេសកកម្មទី {index}៖ បន្ទាប់",
+    "useActivityImageAsChatBackground": "ប្រើរូបភាពសកម្មភាពជាផ្ទៃខាងក្រោយជជែក"
 }

@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP għal kull Missjoni",
     "xpToCompleteObjectiveDesc": "Issettja l-XP meħtieġa biex titlesta kull missjoni",
     "objectiveCircleComplete": "Missjoni {index}: kompluta",
-    "objectiveCircleUpNext": "Missjoni {index}: li jmiss"
+    "objectiveCircleUpNext": "Missjoni {index}: li jmiss",
+    "useActivityImageAsChatBackground": "Uża l-immaġni tal-attività bħala sfond taċ-chat"
 }

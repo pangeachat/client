@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP per missy",
     "xpToCompleteObjectiveDesc": "Stel de XP yn dy't nedich is om elke missy te foltôgjen",
     "objectiveCircleComplete": "Missy {index}: foltôge",
-    "objectiveCircleUpNext": "Missy {index}: folgjende"
+    "objectiveCircleUpNext": "Missy {index}: folgjende",
+    "useActivityImageAsChatBackground": "Brûk aktiviteitsôfbylding as petear eftergrûn"
 }

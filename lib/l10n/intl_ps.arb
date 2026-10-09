@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "په هر ماموریت کې XP",
     "xpToCompleteObjectiveDesc": "د هر ماموریت بشپړولو لپاره اړین XP وټاکئ",
     "objectiveCircleComplete": "ماموریت {index}: بشپړ شو",
-    "objectiveCircleUpNext": "ماموریت {index}: بل"
+    "objectiveCircleUpNext": "ماموریت {index}: بل",
+    "useActivityImageAsChatBackground": "د فعالیت انځور د چیټ شالید په توګه وکاروئ"
 }

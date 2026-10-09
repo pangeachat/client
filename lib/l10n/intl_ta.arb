@@ -10059,5 +10059,6 @@
     "xpToCompleteObjectiveTitle": "ஒரு பணிக்கு XP",
     "xpToCompleteObjectiveDesc": "ஒவ்வொரு பணியையும் முடிக்கத் தேவையான XP ஐ அமைக்கவும்",
     "objectiveCircleComplete": "பணி {index}: முடிந்தது",
-    "objectiveCircleUpNext": "பணி {index}: அடுத்து"
+    "objectiveCircleUpNext": "பணி {index}: அடுத்து",
+    "useActivityImageAsChatBackground": "செயல்பாட்டுப் படத்தை அரட்டைப் பின்னணியாகப் பயன்படுத்து"
 }

@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP pa Ntchito Iliyonse",
     "xpToCompleteObjectiveDesc": "Khazikitsani XP yofunikira kumaliza ntchito iliyonse",
     "objectiveCircleComplete": "Ntchito {index}: yamalizidwa",
-    "objectiveCircleUpNext": "Ntchito {index}: yotsatira"
+    "objectiveCircleUpNext": "Ntchito {index}: yotsatira",
+    "useActivityImageAsChatBackground": "Gwiritsani ntchito chithunzi cha zochitika ngati maziko a macheza"
 }

@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "မစ်ရှင်တစ်ခုလျှင် XP",
     "xpToCompleteObjectiveDesc": "မစ်ရှင်တစ်ခုစီ ပြီးမြောက်ရန် လိုအပ်သော XP ကို သတ်မှတ်ပါ",
     "objectiveCircleComplete": "မစ်ရှင် {index}- ပြီးမြောက်သည်",
-    "objectiveCircleUpNext": "မစ်ရှင် {index}- နောက်တစ်ခု"
+    "objectiveCircleUpNext": "မစ်ရှင် {index}- နောက်တစ်ခု",
+    "useActivityImageAsChatBackground": "လုပ်ဆောင်ချက်ပုံကို ချတ်နောက်ခံအဖြစ် အသုံးပြုရန်"
 }

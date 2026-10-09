@@ -10748,5 +10748,6 @@
     "xpToCompleteObjectiveTitle": "XP už misiją",
     "xpToCompleteObjectiveDesc": "Nustatykite XP, reikalingą kiekvienai misijai užbaigti",
     "objectiveCircleComplete": "Misija {index}: atlikta",
-    "objectiveCircleUpNext": "Misija {index}: toliau"
+    "objectiveCircleUpNext": "Misija {index}: toliau",
+    "useActivityImageAsChatBackground": "Naudoti veiklos paveikslėlį kaip pokalbio foną"
 }

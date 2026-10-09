@@ -10736,5 +10736,6 @@
     "xpToCompleteObjectiveTitle": "ミッションごとのXP",
     "xpToCompleteObjectiveDesc": "各ミッションを完了するのに必要なXPを設定します",
     "objectiveCircleComplete": "ミッション{index}: 完了",
-    "objectiveCircleUpNext": "ミッション{index}: 次のミッション"
+    "objectiveCircleUpNext": "ミッション{index}: 次のミッション",
+    "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用"
 }

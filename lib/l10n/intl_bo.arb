@@ -9578,5 +9578,6 @@
     "xpToCompleteObjectiveTitle": "ལས་འགན་རེར་ཉམས་མྱོང་།",
     "xpToCompleteObjectiveDesc": "ལས་འགན་རེ་རེ་ལེགས་འགྲུབ་བྱེད་པར་མཁོ་བའི་ཉམས་མྱོང་གི་གྲངས་ཚད་གཏན་འབེབས་བྱེད་པ།",
     "objectiveCircleComplete": "དམིགས་ཡུལ་ {index} ལེགས་འགྲུབ།",
-    "objectiveCircleUpNext": "དམིགས་ཡུལ་ {index} རྗེས་མ།"
+    "objectiveCircleUpNext": "དམིགས་ཡུལ་ {index} རྗེས་མ།",
+    "useActivityImageAsChatBackground": "བྱ་བའི་པར་དེ་ཁ་བརྡའི་རྒྱབ་ལྗོངས་སུ་བེད་སྤྱོད་པ།"
 }

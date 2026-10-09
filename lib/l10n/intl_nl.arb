@@ -9967,5 +9967,6 @@
     "xpToCompleteObjectiveTitle": "XP per missie",
     "xpToCompleteObjectiveDesc": "Stel de benodigde XP in om elke missie te voltooien",
     "objectiveCircleComplete": "Missie {index}: voltooid",
-    "objectiveCircleUpNext": "Missie {index}: hierna"
+    "objectiveCircleUpNext": "Missie {index}: hierna",
+    "useActivityImageAsChatBackground": "Gebruik activiteitsafbeelding als chatachtergrond"
 }

@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP kwa Mishọn",
     "xpToCompleteObjectiveDesc": "Tọọ XP achọrọ iji mechaa mishọn ọ bụla",
     "objectiveCircleComplete": "Mgbasa {index}: emechara",
-    "objectiveCircleUpNext": "Mgbasa {index}: na-abịa"
+    "objectiveCircleUpNext": "Mgbasa {index}: na-abịa",
+    "useActivityImageAsChatBackground": "Jiri onyonyo ọrụ dị ka ndabere nkata"
 }

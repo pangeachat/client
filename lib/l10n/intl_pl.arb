@@ -10052,5 +10052,6 @@
     "xpToCompleteObjectiveTitle": "PD za misję",
     "xpToCompleteObjectiveDesc": "Ustaw liczbę PD potrzebnych do ukończenia każdej misji",
     "objectiveCircleComplete": "Misja {index}: ukończona",
-    "objectiveCircleUpNext": "Misja {index}: następna"
+    "objectiveCircleUpNext": "Misja {index}: następna",
+    "useActivityImageAsChatBackground": "Użyj obrazu aktywności jako tła czatu"
 }

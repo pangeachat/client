@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP per Misi",
     "xpToCompleteObjectiveDesc": "Atur XP anu diperyogikeun pikeun ngaréngsékeun unggal misi",
     "objectiveCircleComplete": "Misi {index}: réngsé",
-    "objectiveCircleUpNext": "Misi {index}: salajengna"
+    "objectiveCircleUpNext": "Misi {index}: salajengna",
+    "useActivityImageAsChatBackground": "Anggo gambar kagiatan salaku latar obrolan"
 }

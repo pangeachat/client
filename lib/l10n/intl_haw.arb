@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP no ka Misiona",
     "xpToCompleteObjectiveDesc": "E hoʻonoho i ka XP e pono ai e hoʻopau i kēlā me kēia misiona",
     "objectiveCircleComplete": "Misiona {index}: pau",
-    "objectiveCircleUpNext": "Misiona {index}: aʻe"
+    "objectiveCircleUpNext": "Misiona {index}: aʻe",
+    "useActivityImageAsChatBackground": "E hoʻohana i ke kiʻi hana ma ke ʻano he kāʻei kua kamaʻilio"
 }

@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP Hawl kasta",
     "xpToCompleteObjectiveDesc": "Deji XP-da loo baahan yahay si loo dhammaystiro hawl kasta",
     "objectiveCircleComplete": "Hawlgalka {index}: waa la dhameeyay",
-    "objectiveCircleUpNext": "Hawlgalka {index}: kan xiga"
+    "objectiveCircleUpNext": "Hawlgalka {index}: kan xiga",
+    "useActivityImageAsChatBackground": "Isticmaal sawirka hawsha asagoo ah asalka sheekaysiga"
 }

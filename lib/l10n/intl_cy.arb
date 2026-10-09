@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP fesul Cenhadaeth",
     "xpToCompleteObjectiveDesc": "Gosodwch yr XP sydd ei angen i gwblhau pob cenhadaeth",
     "objectiveCircleComplete": "Cenhadaeth {index}: wedi'i chwblhau",
-    "objectiveCircleUpNext": "Cenhadaeth {index}: nesaf"
+    "objectiveCircleUpNext": "Cenhadaeth {index}: nesaf",
+    "useActivityImageAsChatBackground": "Defnyddio delwedd gweithgaredd fel cefndir sgwrsio"
 }

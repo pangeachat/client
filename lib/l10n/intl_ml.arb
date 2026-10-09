@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "ഓരോ ദൗത്യത്തിനും XP",
     "xpToCompleteObjectiveDesc": "ഓരോ ദൗത്യവും പൂർത്തിയാക്കാൻ ആവശ്യമായ XP സജ്ജീകരിക്കുക",
     "objectiveCircleComplete": "ദൗത്യം {index}: പൂർത്തിയായി",
-    "objectiveCircleUpNext": "ദൗത്യം {index}: അടുത്തത്"
+    "objectiveCircleUpNext": "ദൗത്യം {index}: അടുത്തത്",
+    "useActivityImageAsChatBackground": "പ്രവർത്തന ചിത്രം ചാറ്റ് പശ്ചാത്തലമായി ഉപയോഗിക്കുക"
 }

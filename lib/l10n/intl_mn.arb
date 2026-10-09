@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "Даалгавар тутамд авах XP",
     "xpToCompleteObjectiveDesc": "Даалгавар бүрийг дуусгахад шаардагдах XP-г тохируулна уу",
     "objectiveCircleComplete": "Даалгавар {index}: дууссан",
-    "objectiveCircleUpNext": "Даалгавар {index}: дараагийнх"
+    "objectiveCircleUpNext": "Даалгавар {index}: дараагийнх",
+    "useActivityImageAsChatBackground": "Үйл ажиллагааны зургийг чатын дэвсгэр болгон ашиглах"
 }

@@ -5797,5 +5797,9 @@
         "placeholders": {
             "index": {}
         }
+    },
+    "useActivityImageAsChatBackground": "Use activity image as chat background",
+    "@useActivityImageAsChatBackground": {
+        "description": "Style-settings switch that shows a faint copy of the activity's image behind an activity chat once the learner scrolls past the image at the top."
     }
 }

@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP بۆ هەر ئەرکێک",
     "xpToCompleteObjectiveDesc": "XP پێویست دیاری بکە بۆ تەواوکردنی هەر ئەرکێک",
     "objectiveCircleComplete": "ئەرکی {index}: تەواو بوو",
-    "objectiveCircleUpNext": "ئەرکی {index}: داهاتوو"
+    "objectiveCircleUpNext": "ئەرکی {index}: داهاتوو",
+    "useActivityImageAsChatBackground": "وێنەی چالاکی وەک پاشبنەمای چات بەکاربهێنە"
 }

@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "ھەر بىر ۋەزىپە ئۈچۈن XP",
     "xpToCompleteObjectiveDesc": "ھەر بىر ۋەزىپىنى تاماملاش ئۈچۈن كېرەكلىك XP نى بەلگىلەڭ",
     "objectiveCircleComplete": "ۋەزىپە {index}: تامام",
-    "objectiveCircleUpNext": "ۋەزىپە {index}: كېيىنكى"
+    "objectiveCircleUpNext": "ۋەزىپە {index}: كېيىنكى",
+    "useActivityImageAsChatBackground": "پائالىيەت رەسىمىنى پاراڭ ئارقا كۆرۈنۈشى قىلىپ ئىشلەت"
 }

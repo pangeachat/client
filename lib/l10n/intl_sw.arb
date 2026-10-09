@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP kwa kila Dhamira",
     "xpToCompleteObjectiveDesc": "Weka XP inayohitajika kukamilisha kila dhamira",
     "objectiveCircleComplete": "Dhamira {index}: imekamilika",
-    "objectiveCircleUpNext": "Dhamira {index}: inayofuata"
+    "objectiveCircleUpNext": "Dhamira {index}: inayofuata",
+    "useActivityImageAsChatBackground": "Tumia picha ya shughuli kama mandharinyuma ya gumzo"
 }

@@ -10912,5 +10912,6 @@
     "xpToCompleteObjectiveTitle": "XP na misijo",
     "xpToCompleteObjectiveDesc": "Nastavite XP, potrebne za dokončanje vsake misije",
     "objectiveCircleComplete": "Naloga {index}: dokončana",
-    "objectiveCircleUpNext": "Naloga {index}: naslednja"
+    "objectiveCircleUpNext": "Naloga {index}: naslednja",
+    "useActivityImageAsChatBackground": "Uporabi sliko dejavnosti kot ozadje klepeta"
 }

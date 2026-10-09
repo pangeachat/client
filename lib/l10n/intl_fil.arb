@@ -10827,5 +10827,6 @@
     "xpToCompleteObjectiveTitle": "XP bawat Misyon",
     "xpToCompleteObjectiveDesc": "Itakda ang XP na kailangan para makumpleto ang bawat misyon",
     "objectiveCircleComplete": "Misyon {index}: kumpleto",
-    "objectiveCircleUpNext": "Misyon {index}: susunod"
+    "objectiveCircleUpNext": "Misyon {index}: susunod",
+    "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat"
 }

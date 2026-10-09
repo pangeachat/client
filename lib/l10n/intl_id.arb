@@ -10040,5 +10040,6 @@
     "xpToCompleteObjectiveTitle": "XP per Misi",
     "xpToCompleteObjectiveDesc": "Atur XP yang dibutuhkan untuk menyelesaikan setiap misi",
     "objectiveCircleComplete": "Misi {index}: selesai",
-    "objectiveCircleUpNext": "Misi {index}: selanjutnya"
+    "objectiveCircleUpNext": "Misi {index}: selanjutnya",
+    "useActivityImageAsChatBackground": "Gunakan gambar aktivitas sebagai latar belakang obrolan"
 }

@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "I-XP Ngomsebenzi Ngamunye",
     "xpToCompleteObjectiveDesc": "Setha i-XP edingekayo ukuze uqedele umsebenzi ngamunye",
     "objectiveCircleComplete": "Umsebenzi {index}: uqedile",
-    "objectiveCircleUpNext": "Umsebenzi {index}: olandelayo"
+    "objectiveCircleUpNext": "Umsebenzi {index}: olandelayo",
+    "useActivityImageAsChatBackground": "Sebenzisa isithombe somsebenzi njengesizinda sengxoxo"
 }

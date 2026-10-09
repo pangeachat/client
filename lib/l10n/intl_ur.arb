@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "فی مشن XP",
     "xpToCompleteObjectiveDesc": "ہر مشن کو مکمل کرنے کے لیے درکار XP سیٹ کریں",
     "objectiveCircleComplete": "مشن {index}: مکمل",
-    "objectiveCircleUpNext": "مشن {index}: اگلا"
+    "objectiveCircleUpNext": "مشن {index}: اگلا",
+    "useActivityImageAsChatBackground": "چیٹ کے پس منظر کے طور پر سرگرمی کی تصویر استعمال کریں"
 }

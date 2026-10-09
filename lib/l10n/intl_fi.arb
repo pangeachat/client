@@ -10004,5 +10004,6 @@
     "xpToCompleteObjectiveTitle": "XP per tehtävä",
     "xpToCompleteObjectiveDesc": "Aseta XP-määrä, joka tarvitaan kunkin tehtävän suorittamiseen",
     "objectiveCircleComplete": "Tehtävä {index}: valmis",
-    "objectiveCircleUpNext": "Tehtävä {index}: seuraavana"
+    "objectiveCircleUpNext": "Tehtävä {index}: seuraavana",
+    "useActivityImageAsChatBackground": "Käytä aktiviteetin kuvaa chatin taustana"
 }

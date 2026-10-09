@@ -10160,5 +10160,6 @@
     "xpToCompleteObjectiveTitle": "미션당 XP",
     "xpToCompleteObjectiveDesc": "각 미션을 완료하는 데 필요한 XP를 설정하세요.",
     "objectiveCircleComplete": "미션 {index}: 완료",
-    "objectiveCircleUpNext": "미션 {index}: 다음"
+    "objectiveCircleUpNext": "미션 {index}: 다음",
+    "useActivityImageAsChatBackground": "활동 이미지를 채팅 배경으로 사용"
 }

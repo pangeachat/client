@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP pro Missioun",
     "xpToCompleteObjectiveDesc": "Setzt d'XP, déi néideg sinn, fir all Missioun ofzeschléissen",
     "objectiveCircleComplete": "Missioun {index}: ofgeschloss",
-    "objectiveCircleUpNext": "Missioun {index}: als nächst"
+    "objectiveCircleUpNext": "Missioun {index}: als nächst",
+    "useActivityImageAsChatBackground": "Aktivitéitsbild als Chat-Hannergrond benotzen"
 }

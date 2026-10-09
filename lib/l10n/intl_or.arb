@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "ପ୍ରତି ମିଶନ୍ ପାଇଁ XP",
     "xpToCompleteObjectiveDesc": "ପ୍ରତି ମିଶନ୍ ସମ୍ପୂର୍ଣ୍ଣ କରିବା ପାଇଁ ଆବଶ୍ୟକ XP ସେଟ୍ କରନ୍ତୁ",
     "objectiveCircleComplete": "ମିଶନ୍ {index}: ସମ୍ପୂର୍ଣ୍ଣ",
-    "objectiveCircleUpNext": "ମିଶନ୍ {index}: ପରବର୍ତ୍ତୀ"
+    "objectiveCircleUpNext": "ମିଶନ୍ {index}: ପରବର୍ତ୍ତୀ",
+    "useActivityImageAsChatBackground": "ଚାଟ୍ ପୃଷ୍ଠଭୂମି ଭାବରେ କାର୍ଯ୍ୟକଳାପର ଛବି ବ୍ୟବହାର କରନ୍ତୁ"
 }

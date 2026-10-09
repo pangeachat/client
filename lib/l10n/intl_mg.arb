@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP isaky ny iraka",
     "xpToCompleteObjectiveDesc": "Amboary ny XP ilaina hamitana ny iraka tsirairay",
     "objectiveCircleComplete": "Ilay tanjona {index}: vita",
-    "objectiveCircleUpNext": "Ilay tanjona {index}: manaraka"
+    "objectiveCircleUpNext": "Ilay tanjona {index}: manaraka",
+    "useActivityImageAsChatBackground": "Ampiasaina ny sarin'ny asa ho toy ny fiavian'ny chat"
 }

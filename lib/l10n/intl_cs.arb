@@ -10461,5 +10461,6 @@
     "xpToCompleteObjectiveTitle": "XP za misi",
     "xpToCompleteObjectiveDesc": "Nastavte XP potřebné k dokončení každé mise",
     "objectiveCircleComplete": "Mise {index}: dokončena",
-    "objectiveCircleUpNext": "Mise {index}: další v pořadí"
+    "objectiveCircleUpNext": "Mise {index}: další v pořadí",
+    "useActivityImageAsChatBackground": "Použít obrázek aktivity jako pozadí chatu"
 }

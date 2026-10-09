@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP gach Misean",
     "xpToCompleteObjectiveDesc": "Suidhich an XP a tha a dhìth gus gach misean a choileanadh",
     "objectiveCircleComplete": "Misean {index}: deiseil",
-    "objectiveCircleUpNext": "Misean {index}: an ath fhear"
+    "objectiveCircleUpNext": "Misean {index}: an ath fhear",
+    "useActivityImageAsChatBackground": "Cleachd dealbh gnìomhachd mar chùl-raon cabadaich"
 }

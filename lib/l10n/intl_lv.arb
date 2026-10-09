@@ -9967,5 +9967,6 @@
     "xpToCompleteObjectiveTitle": "XP par misiju",
     "xpToCompleteObjectiveDesc": "Iestatiet XP, kas nepieciešams katras misijas pabeigšanai",
     "objectiveCircleComplete": "Misija {index}: pabeigta",
-    "objectiveCircleUpNext": "Misija {index}: nākamā"
+    "objectiveCircleUpNext": "Misija {index}: nākamā",
+    "useActivityImageAsChatBackground": "Izmantot aktivitātes attēlu kā tērzēšanas fonu"
 }

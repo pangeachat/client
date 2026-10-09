@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP per Missie",
     "xpToCompleteObjectiveDesc": "Stel die XP wat nodig is om elke missie te voltooi",
     "objectiveCircleComplete": "Missie {index}: voltooi",
-    "objectiveCircleUpNext": "Missie {index}: volgende"
+    "objectiveCircleUpNext": "Missie {index}: volgende",
+    "useActivityImageAsChatBackground": "Gebruik aktiwiteitbeeld as kletsagtergrond"
 }

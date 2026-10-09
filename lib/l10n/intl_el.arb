@@ -10842,5 +10842,6 @@
     "xpToCompleteObjectiveTitle": "XP ανά Αποστολή",
     "xpToCompleteObjectiveDesc": "Όρισε τα XP που απαιτούνται για την ολοκλήρωση κάθε αποστολής",
     "objectiveCircleComplete": "Αποστολή {index}: ολοκληρώθηκε",
-    "objectiveCircleUpNext": "Αποστολή {index}: επόμενη"
+    "objectiveCircleUpNext": "Αποστολή {index}: επόμενη",
+    "useActivityImageAsChatBackground": "Χρήση εικόνας δραστηριότητας ως φόντο συνομιλίας"
 }

@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "ਪ੍ਰਤੀ ਮਿਸ਼ਨ XP",
     "xpToCompleteObjectiveDesc": "ਹਰੇਕ ਮਿਸ਼ਨ ਨੂੰ ਪੂਰਾ ਕਰਨ ਲਈ ਲੋੜੀਂਦਾ XP ਸੈੱਟ ਕਰੋ",
     "objectiveCircleComplete": "ਮਿਸ਼ਨ {index}: ਪੂਰਾ ਹੋਇਆ",
-    "objectiveCircleUpNext": "ਮਿਸ਼ਨ {index}: ਅੱਗੇ"
+    "objectiveCircleUpNext": "ਮਿਸ਼ਨ {index}: ਅੱਗੇ",
+    "useActivityImageAsChatBackground": "ਚੈਟ ਬੈਕਗ੍ਰਾਊਂਡ ਵਜੋਂ ਗਤੀਵਿਧੀ ਚਿੱਤਰ ਦੀ ਵਰਤੋਂ ਕਰੋ"
 }

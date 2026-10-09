@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP mō ia Mihana",
     "xpToCompleteObjectiveDesc": "Tautuhia te XP e hiahiatia ana kia oti ia mihana",
     "objectiveCircleComplete": "Mihana {index}: oti",
-    "objectiveCircleUpNext": "Mihana {index}: kei muri mai"
+    "objectiveCircleUpNext": "Mihana {index}: kei muri mai",
+    "useActivityImageAsChatBackground": "Whakamahia te atahanga mahi hei papamuri kōrerorero"
 }

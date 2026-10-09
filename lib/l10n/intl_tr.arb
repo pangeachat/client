@@ -10268,5 +10268,6 @@
     "xpToCompleteObjectiveTitle": "Görev Başına XP",
     "xpToCompleteObjectiveDesc": "Her görevi tamamlamak için gereken XP'yi ayarla",
     "objectiveCircleComplete": "Görev {index}: tamamlandı",
-    "objectiveCircleUpNext": "Görev {index}: sırada"
+    "objectiveCircleUpNext": "Görev {index}: sırada",
+    "useActivityImageAsChatBackground": "Etkinlik görselini sohbet arka planı olarak kullan"
 }

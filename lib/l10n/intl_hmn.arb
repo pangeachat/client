@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP rau ib lub hom phiaj",
     "xpToCompleteObjectiveDesc": "Teem tus XP uas xav tau kom ua tiav txhua lub hom phiaj",
     "objectiveCircleComplete": "Lub Hom Phiaj {index}: tiav",
-    "objectiveCircleUpNext": "Lub Hom Phiaj {index}: tom ntej"
+    "objectiveCircleUpNext": "Lub Hom Phiaj {index}: tom ntej",
+    "useActivityImageAsChatBackground": "Siv daim duab ua si los ua keeb kwm yav dhau los ntawm kev sib tham"
 }

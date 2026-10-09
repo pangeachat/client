@@ -10070,5 +10070,6 @@
     "xpToCompleteObjectiveTitle": "XP küldetésenként",
     "xpToCompleteObjectiveDesc": "Állítsd be a küldetések teljesítéséhez szükséges XP-t",
     "objectiveCircleComplete": "Küldetés {index}: kész",
-    "objectiveCircleUpNext": "Küldetés {index}: következik"
+    "objectiveCircleUpNext": "Küldetés {index}: következik",
+    "useActivityImageAsChatBackground": "Tevékenység képének használata chat háttérként"
 }

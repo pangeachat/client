@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP per Missionem",
     "xpToCompleteObjectiveDesc": "Constitue XP necessaria ad quamque missionem perficiendam",
     "objectiveCircleComplete": "Missio {index}: perfecta",
-    "objectiveCircleUpNext": "Missio {index}: proxima"
+    "objectiveCircleUpNext": "Missio {index}: proxima",
+    "useActivityImageAsChatBackground": "Imaginem actionis uti pro curriculo sermonis"
 }

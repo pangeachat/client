@@ -10322,5 +10322,6 @@
     "xpToCompleteObjectiveTitle": "XP par mission",
     "xpToCompleteObjectiveDesc": "Définir l'XP nécessaire pour terminer chaque mission",
     "objectiveCircleComplete": "Mission {index} : terminée",
-    "objectiveCircleUpNext": "Mission {index} : à suivre"
+    "objectiveCircleUpNext": "Mission {index} : à suivre",
+    "useActivityImageAsChatBackground": "Utiliser l'image de l'activité comme arrière-plan de discussion"
 }

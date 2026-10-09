@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP барои ҳар як миссия",
     "xpToCompleteObjectiveDesc": "XP-и лозимаро барои иҷрои ҳар як миссия муқаррар кунед",
     "objectiveCircleComplete": "Миссияи {index}: иҷро шуд",
-    "objectiveCircleUpNext": "Миссияи {index}: навбатӣ"
+    "objectiveCircleUpNext": "Миссияи {index}: навбатӣ",
+    "useActivityImageAsChatBackground": "Тасвири фаъолиятро ҳамчун заминаи чат истифода баред"
 }

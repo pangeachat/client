@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP a kowane Aiki",
     "xpToCompleteObjectiveDesc": "Saita XP da ake buƙata don kammala kowane aiki",
     "objectiveCircleComplete": "Manufa {index}: an kammala",
-    "objectiveCircleUpNext": "Manufa {index}: na gaba"
+    "objectiveCircleUpNext": "Manufa {index}: na gaba",
+    "useActivityImageAsChatBackground": "Yi amfani da hoton aiki a matsayin bangon taɗi"
 }

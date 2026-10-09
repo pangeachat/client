@@ -2412,5 +2412,6 @@
     "xpToCompleteObjectiveTitle": "XP pa Misyon",
     "xpToCompleteObjectiveDesc": "Mete XP ki nesesè pou konplete chak misyon",
     "objectiveCircleComplete": "Misyon {index}: konplete",
-    "objectiveCircleUpNext": "Misyon {index}: kap vini"
+    "objectiveCircleUpNext": "Misyon {index}: kap vini",
+    "useActivityImageAsChatBackground": "Itilize imaj aktivite a kòm background chat la"
 }
