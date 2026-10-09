@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-07 09:01:35.912767",
+    "@@last_modified": "2026-10-09 10:04:35.874694",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Суретті көру",
     "reportSent": "Хабар жіберілді",
     "reportNotSent": "Хабарыңыз жіберілмеді. Байланысты тексеріп, қайталап көріңіз.",
-    "reportPointerMessage": "{courseName} курсында хабарлама жіберілді — Қауіпсіздікті қараңыз"
+    "reportPointerMessage": "{courseName} курсында хабарлама жіберілді — Қауіпсіздікті қараңыз",
+    "useActivityImageAsChatBackground": "Әрекет кескінін чат фоны ретінде пайдалану"
 }

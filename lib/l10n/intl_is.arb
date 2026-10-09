@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-07 09:01:35.051473",
+    "@@last_modified": "2026-10-09 10:04:35.365383",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Skoða mynd",
     "reportSent": "Tilkynning send",
     "reportNotSent": "Ekki tókst að senda tilkynninguna þína. Athugaðu nettenginguna þína og reyndu aftur.",
-    "reportPointerMessage": "Skilaboð voru tilkynnt í {courseName} — sjá Öryggi"
+    "reportPointerMessage": "Skilaboð voru tilkynnt í {courseName} — sjá Öryggi",
+    "useActivityImageAsChatBackground": "Nota virknimynd sem bakgrunn spjalls"
 }

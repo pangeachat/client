@@ -1321,7 +1321,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-07 09:01:46.222872",
+    "@@last_modified": "2026-10-09 10:04:41.114228",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10901,5 +10901,6 @@
     "viewImageLabel": "చిత్రాన్ని వీక్షించండి",
     "reportSent": "నివేదిక పంపబడింది",
     "reportNotSent": "మీ నివేదికను పంపలేకపోయాము. మీ కనెక్షన్‌ని తనిఖీ చేసి, మళ్లీ ప్రయత్నించండి.",
-    "reportPointerMessage": "{courseName}లో ఒక సందేశం నివేదించబడింది — భద్రతను చూడండి"
+    "reportPointerMessage": "{courseName}లో ఒక సందేశం నివేదించబడింది — భద్రతను చూడండి",
+    "useActivityImageAsChatBackground": "యాక్టివిటీ చిత్రాన్ని చాట్ బ్యాక్‌గ్రౌండ్‌గా ఉపయోగించండి"
 }

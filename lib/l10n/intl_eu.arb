@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-07 09:01:30.681737",
+    "@@last_modified": "2026-10-09 10:04:33.238304",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9951,5 +9951,6 @@
     "viewImageLabel": "Ikusi irudia",
     "reportSent": "Txostena bidali da",
     "reportNotSent": "Ezin izan da zure txostena bidali. Egiaztatu konexioa eta saiatu berriro.",
-    "reportPointerMessage": "Mezu bat salatu da {courseName} ikastaroan — ikusi Segurtasuna"
+    "reportPointerMessage": "Mezu bat salatu da {courseName} ikastaroan — ikusi Segurtasuna",
+    "useActivityImageAsChatBackground": "Erabili jardueraren irudia txataren atzeko plano gisa"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-07 09:01:38.457665",
+    "@@last_modified": "2026-10-09 10:04:37.312922",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Jereo ny sary",
     "reportSent": "Tatitra nalefa",
     "reportNotSent": "Tsy afaka nalefa ny tatitrao. Hamarino ny fifandraisanao ary andramo indray.",
-    "reportPointerMessage": "Nisy hafatra notaterina tao amin'ny {courseName} — jereo ny Fiarovana"
+    "reportPointerMessage": "Nisy hafatra notaterina tao amin'ny {courseName} — jereo ny Fiarovana",
+    "useActivityImageAsChatBackground": "Ampiasaina ny sarin'ny asa ho toy ny fiavian'ny chat"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-07 09:01:38.625827",
+    "@@last_modified": "2026-10-09 10:04:37.102393",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "ചിത്രം കാണുക",
     "reportSent": "റിപ്പോർട്ട് അയച്ചു",
     "reportNotSent": "നിങ്ങളുടെ റിപ്പോർട്ട് അയക്കാൻ കഴിഞ്ഞില്ല. നിങ്ങളുടെ കണക്ഷൻ പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക.",
-    "reportPointerMessage": "{courseName} എന്നതിൽ ഒരു സന്ദേശം റിപ്പോർട്ട് ചെയ്തിട്ടുണ്ട് — സുരക്ഷ കാണുക"
+    "reportPointerMessage": "{courseName} എന്നതിൽ ഒരു സന്ദേശം റിപ്പോർട്ട് ചെയ്തിട്ടുണ്ട് — സുരക്ഷ കാണുക",
+    "useActivityImageAsChatBackground": "പ്രവർത്തന ചിത്രം ചാറ്റ് പശ്ചാത്തലമായി ഉപയോഗിക്കുക"
 }

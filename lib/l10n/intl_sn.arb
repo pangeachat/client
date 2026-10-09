@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-07 09:01:43.970879",
+    "@@last_modified": "2026-10-09 10:04:39.919950",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Tarisa mufananidzo",
     "reportSent": "Chirevo chatumirwa",
     "reportNotSent": "Chirevo chako hachina kutumirwa. Tarisa internet yako woedza zvakare.",
-    "reportPointerMessage": "Meseji yakashumwa mu{courseName} — ona Kuchengeteka"
+    "reportPointerMessage": "Meseji yakashumwa mu{courseName} — ona Kuchengeteka",
+    "useActivityImageAsChatBackground": "Shandisa mufananidzo wechiitiko sehwaro hwechat"
 }

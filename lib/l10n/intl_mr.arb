@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-10-07 09:01:39.450111",
+    "@@last_modified": "2026-10-09 10:04:37.748500",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "चित्र पहा",
     "reportSent": "अहवाल पाठवला",
     "reportNotSent": "तुमचा अहवाल पाठवला जाऊ शकला नाही. तुमचे कनेक्शन तपासा आणि पुन्हा प्रयत्न करा.",
-    "reportPointerMessage": "{courseName} मध्ये एका संदेशाची तक्रार करण्यात आली आहे — सुरक्षितता पहा"
+    "reportPointerMessage": "{courseName} मध्ये एका संदेशाची तक्रार करण्यात आली आहे — सुरक्षितता पहा",
+    "useActivityImageAsChatBackground": "चॅटची पार्श्वभूमी म्हणून अ‍ॅक्टिव्हिटी इमेज वापरा"
 }

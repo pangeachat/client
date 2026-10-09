@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-07 09:01:28.434722",
+    "@@last_modified": "2026-10-09 10:04:31.896740",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Sien prent",
     "reportSent": "Verslag gestuur",
     "reportNotSent": "Jou verslag kon nie gestuur word nie. Kontroleer jou verbinding en probeer weer.",
-    "reportPointerMessage": "’n Boodskap is in {courseName} gerapporteer — sien Veiligheid"
+    "reportPointerMessage": "’n Boodskap is in {courseName} gerapporteer — sien Veiligheid",
+    "useActivityImageAsChatBackground": "Gebruik aktiwiteitbeeld as kletsagtergrond"
 }

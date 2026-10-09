@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:45.891702",
+    "@@last_modified": "2026-10-09 10:04:32.912441",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10896,5 +10896,6 @@
     "viewImageLabel": "Vidi bildon",
     "reportSent": "Raporto sendita",
     "reportNotSent": "Via raporto ne povis esti sendita. Kontrolu vian konekton kaj reprovu.",
-    "reportPointerMessage": "Mesaĝo estis raportita en {courseName} — vidu Sekurecon"
+    "reportPointerMessage": "Mesaĝo estis raportita en {courseName} — vidu Sekurecon",
+    "useActivityImageAsChatBackground": "Uzi agadan bildon kiel babilejan fonon"
 }

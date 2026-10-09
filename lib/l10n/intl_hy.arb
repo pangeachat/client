@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-07 09:01:36.589322",
+    "@@last_modified": "2026-10-09 10:04:35.203457",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Դիտել նկարը",
     "reportSent": "Հաղորդումն ուղարկված է",
     "reportNotSent": "Ձեր հաղորդումը չհաջողվեց ուղարկել։ Ստուգեք ինտերնետ կապը և նորից փորձեք։",
-    "reportPointerMessage": "{courseName} դասընթացում հաղորդագրություն է ուղարկվել. տե՛ս «Անվտանգություն» բաժինը"
+    "reportPointerMessage": "{courseName} դասընթացում հաղորդագրություն է ուղարկվել. տե՛ս «Անվտանգություն» բաժինը",
+    "useActivityImageAsChatBackground": "Օգտագործել ակտիվության պատկերը որպես չաթի ֆոն"
 }

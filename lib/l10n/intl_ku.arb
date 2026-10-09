@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-07 09:01:45.902654",
+    "@@last_modified": "2026-10-09 10:04:37.116615",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "وێنەکە ببینە",
     "reportSent": "ڕاپۆرت نێردرا",
     "reportNotSent": "ڕاپۆرتەکەت نەنێردرا. پەیوەندییەکەت بپشکنە و دووبارە هەوڵ بدەوە.",
-    "reportPointerMessage": "پەیامێک لە {courseName} ڕاپۆرت کرا — سەیری سەلامەتی بکە"
+    "reportPointerMessage": "پەیامێک لە {courseName} ڕاپۆرت کرا — سەیری سەلامەتی بکە",
+    "useActivityImageAsChatBackground": "وێنەی چالاکی وەک پاشبنەمای چات بەکاربهێنە"
 }

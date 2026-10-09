@@ -1260,7 +1260,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-07 09:01:47.199949",
+    "@@last_modified": "2026-10-09 10:04:42.317072",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10908,5 +10908,6 @@
     "viewImageLabel": "睇圖",
     "reportSent": "舉報已送出",
     "reportNotSent": "無法送出你的舉報。請檢查你的連線，然後再試一次。",
-    "reportPointerMessage": "{courseName} 有訊息被舉報咗 — 請睇安全中心"
+    "reportPointerMessage": "{courseName} 有訊息被舉報咗 — 請睇安全中心",
+    "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景"
 }

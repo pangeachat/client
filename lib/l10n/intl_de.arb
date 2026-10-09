@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-07 09:01:29.540665",
+    "@@last_modified": "2026-10-09 10:04:33.383751",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9938,5 +9938,6 @@
     "viewImageLabel": "Bild ansehen",
     "reportSent": "Bericht gesendet",
     "reportNotSent": "Ihr Bericht konnte nicht gesendet werden. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
-    "reportPointerMessage": "Eine Nachricht wurde in {courseName} gemeldet – siehe Sicherheit"
+    "reportPointerMessage": "Eine Nachricht wurde in {courseName} gemeldet – siehe Sicherheit",
+    "useActivityImageAsChatBackground": "Aktivitätsbild als Chat-Hintergrund verwenden"
 }

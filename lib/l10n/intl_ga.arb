@@ -3560,7 +3560,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-07 09:01:32.365908",
+    "@@last_modified": "2026-10-09 10:04:33.830407",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9962,5 +9962,6 @@
     "viewImageLabel": "Amharc ar an íomhá",
     "reportSent": "Tugadh tuairisc",
     "reportNotSent": "Níorbh fhéidir do thuairisc a sheoladh. Seiceáil do nasc agus bain triail eile as.",
-    "reportPointerMessage": "Tugadh tuairisc ar theachtaireacht i {courseName} — féach Sábháilteacht"
+    "reportPointerMessage": "Tugadh tuairisc ar theachtaireacht i {courseName} — féach Sábháilteacht",
+    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-07 09:01:33.546310",
+    "@@last_modified": "2026-10-09 10:04:34.808638",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10054,5 +10054,6 @@
     "viewImageLabel": "Kép megtekintése",
     "reportSent": "Jelentés elküldve",
     "reportNotSent": "A jelentés nem küldhető el. Ellenőrizze az internetkapcsolatát, és próbálja újra.",
-    "reportPointerMessage": "Üzenet jelentve a {courseName} kurzusban – lásd a Biztonság menüpontot"
+    "reportPointerMessage": "Üzenet jelentve a {courseName} kurzusban – lásd a Biztonság menüpontot",
+    "useActivityImageAsChatBackground": "Tevékenység képének használata chat háttérként"
 }

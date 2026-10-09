@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:44.481318",
+    "@@last_modified": "2026-10-09 10:04:40.736559",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10469,5 +10469,6 @@
     "viewImageLabel": "Visa bild",
     "reportSent": "Rapport skickad",
     "reportNotSent": "Din rapport kunde inte skickas. Kontrollera din anslutning och försök igen.",
-    "reportPointerMessage": "Ett meddelande rapporterades i {courseName} – se Säkerhet"
+    "reportPointerMessage": "Ett meddelande rapporterades i {courseName} – se Säkerhet",
+    "useActivityImageAsChatBackground": "Använd aktivitetsbild som chattbakgrund"
 }

@@ -2556,7 +2556,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-07 09:01:42.644908",
+    "@@last_modified": "2026-10-09 10:04:39.201733",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10868,5 +10868,6 @@
     "viewImageLabel": "Ver imagem",
     "reportSent": "Denúncia enviada",
     "reportNotSent": "Não foi possível enviar a sua denúncia. Verifique a sua ligação e tente novamente.",
-    "reportPointerMessage": "Uma mensagem foi denunciada em {courseName} — ver Segurança"
+    "reportPointerMessage": "Uma mensagem foi denunciada em {courseName} — ver Segurança",
+    "useActivityImageAsChatBackground": "Usar imagem da atividade como fundo do chat"
 }

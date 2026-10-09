@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-07 09:01:43.090952",
+    "@@last_modified": "2026-10-09 10:04:39.667389",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "රූපය බලන්න",
     "reportSent": "වාර්තාව යවන ලදි",
     "reportNotSent": "ඔබගේ වාර්තාව යැවිය නොහැකි විය. ඔබගේ සම්බන්ධතාවය පරීක්ෂා කර නැවත උත්සාහ කරන්න.",
-    "reportPointerMessage": "{courseName} හි පණිවිඩයක් වාර්තා කරන ලදි — ආරක්ෂාව බලන්න"
+    "reportPointerMessage": "{courseName} හි පණිවිඩයක් වාර්තා කරන ලදි — ආරක්ෂාව බලන්න",
+    "useActivityImageAsChatBackground": "ක්‍රියාකාරකම් රූපය චැට් පසුබිම ලෙස භාවිතා කරන්න"
 }

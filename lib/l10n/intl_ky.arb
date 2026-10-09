@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-07 09:01:38.003578",
+    "@@last_modified": "2026-10-09 10:04:36.698429",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Сүрөттү көрүү",
     "reportSent": "Кабар жөнөтүлдү",
     "reportNotSent": "Кабарыңыз жөнөтүлгөн жок. Байланышыңызды текшерип, кайра аракет кылыңыз.",
-    "reportPointerMessage": "{courseName} курсунда билдирүү жөнөтүлдү — Коопсуздукту караңыз"
+    "reportPointerMessage": "{courseName} курсунда билдирүү жөнөтүлдү — Коопсуздукту караңыз",
+    "useActivityImageAsChatBackground": "Чаттын фону катары ишмердүүлүк сүрөтүн колдонуу"
 }

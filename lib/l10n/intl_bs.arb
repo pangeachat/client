@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-07 09:01:28.339814",
+    "@@last_modified": "2026-10-09 10:04:31.893113",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Prikaži sliku",
     "reportSent": "Izvještaj poslan",
     "reportNotSent": "Vaš izvještaj nije mogao biti poslan. Provjerite vezu i pokušajte ponovo.",
-    "reportPointerMessage": "Poruka je prijavljena u {courseName} — pogledajte Sigurnost"
+    "reportPointerMessage": "Poruka je prijavljena u {courseName} — pogledajte Sigurnost",
+    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata"
 }

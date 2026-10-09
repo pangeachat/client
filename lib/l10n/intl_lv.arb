@@ -3532,7 +3532,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-10-07 09:01:38.489320",
+    "@@last_modified": "2026-10-09 10:04:36.624772",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9951,5 +9951,6 @@
     "viewImageLabel": "Skatīt attēlu",
     "reportSent": "Ziņojums nosūtīts",
     "reportNotSent": "Jūsu ziņojumu nevarēja nosūtīt. Pārbaudiet savienojumu un mēģiniet vēlreiz.",
-    "reportPointerMessage": "Ziņojums tika ziņots kursā {courseName} — skatiet Drošība"
+    "reportPointerMessage": "Ziņojums tika ziņots kursā {courseName} — skatiet Drošība",
+    "useActivityImageAsChatBackground": "Izmantot aktivitātes attēlu kā tērzēšanas fonu"
 }

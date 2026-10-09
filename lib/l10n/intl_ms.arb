@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-07 09:01:39.160252",
+    "@@last_modified": "2026-10-09 10:04:37.817926",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Lihat imej",
     "reportSent": "Laporan dihantar",
     "reportNotSent": "Laporan anda tidak dapat dihantar. Semak sambungan anda dan cuba lagi.",
-    "reportPointerMessage": "Mesej telah dilaporkan dalam {courseName} — lihat Keselamatan"
+    "reportPointerMessage": "Mesej telah dilaporkan dalam {courseName} — lihat Keselamatan",
+    "useActivityImageAsChatBackground": "Gunakan imej aktiviti sebagai latar belakang sembang"
 }

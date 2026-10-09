@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-07 09:01:41.356559",
+    "@@last_modified": "2026-10-09 10:04:38.115800",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Ara l-istampa",
     "reportSent": "Rapport mibgħut",
     "reportNotSent": "Ir-rapport tiegħek ma setax jintbagħat. Iċċekkja l-konnessjoni tiegħek u erġa' pprova.",
-    "reportPointerMessage": "Messaġġ ġie rrapportat f'{courseName}' — ara s-Sigurtà"
+    "reportPointerMessage": "Messaġġ ġie rrapportat f'{courseName}' — ara s-Sigurtà",
+    "useActivityImageAsChatBackground": "Uża l-immaġni tal-attività bħala sfond taċ-chat"
 }

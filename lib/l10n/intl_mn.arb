@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-07 09:01:39.767876",
+    "@@last_modified": "2026-10-09 10:04:37.343019",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Зураг харах",
     "reportSent": "Мэдэгдэл илгээгдлээ",
     "reportNotSent": "Таны мэдэгдлийг илгээх боломжгүй байна. Холболтоо шалгаад дахин оролдоно уу.",
-    "reportPointerMessage": "{courseName} хичээл дээрх мессежийг мэдэгдсэн байна — Аюулгүй байдлыг үзнэ үү"
+    "reportPointerMessage": "{courseName} хичээл дээрх мессежийг мэдэгдсэн байна — Аюулгүй байдлыг үзнэ үү",
+    "useActivityImageAsChatBackground": "Үйл ажиллагааны зургийг чатын дэвсгэр болгон ашиглах"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-07 09:01:45.617258",
+    "@@last_modified": "2026-10-09 10:04:41.385431",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9951,5 +9951,6 @@
     "viewImageLabel": "Переглянути зображення",
     "reportSent": "Звіт надіслано",
     "reportNotSent": "Ваш звіт не вдалося надіслати. Перевірте з’єднання та спробуйте ще раз.",
-    "reportPointerMessage": "Повідомлення було надіслано в {courseName} — дивіться Безпека"
+    "reportPointerMessage": "Повідомлення було надіслано в {courseName} — дивіться Безпека",
+    "useActivityImageAsChatBackground": "Використовувати зображення активності як фон чату"
 }

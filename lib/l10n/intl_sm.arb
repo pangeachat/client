@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-07 09:01:44.141203",
+    "@@last_modified": "2026-10-09 10:04:40.057243",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Vaʻai le ata",
     "reportSent": "Lipoti ua auina atu",
     "reportNotSent": "E leʻi mafai ona auina atu lau lipoti. Siaki lau fesoʻotaʻiga ma toe taumafai.",
-    "reportPointerMessage": "Na lipotia se feʻau i le {courseName} — vaʻai i le Saogalemu"
+    "reportPointerMessage": "Na lipotia se feʻau i le {courseName} — vaʻai i le Saogalemu",
+    "useActivityImageAsChatBackground": "Fa'aaoga le ata o le gaioiga e fai ma tala i tua o le talanoaga"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:46.227358",
+    "@@last_modified": "2026-10-09 10:04:41.797785",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7249,5 +7249,6 @@
     "viewImageLabel": "Xem hình ảnh",
     "reportSent": "Đã gửi báo cáo",
     "reportNotSent": "Không thể gửi báo cáo của bạn. Vui lòng kiểm tra kết nối và thử lại.",
-    "reportPointerMessage": "Một tin nhắn đã được báo cáo trong {courseName} — xem mục An toàn"
+    "reportPointerMessage": "Một tin nhắn đã được báo cáo trong {courseName} — xem mục An toàn",
+    "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-07 09:01:42.998012",
+    "@@last_modified": "2026-10-09 10:04:40.062044",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10896,5 +10896,6 @@
     "viewImageLabel": "Zobraziť obrázok",
     "reportSent": "Nahlásenie odoslané",
     "reportNotSent": "Vaše nahlásenie sa nepodarilo odoslať. Skontrolujte pripojenie a skúste to znova.",
-    "reportPointerMessage": "V kurze {courseName} bola nahlásená správa – pozrite si Bezpečnosť"
+    "reportPointerMessage": "V kurze {courseName} bola nahlásená správa – pozrite si Bezpečnosť",
+    "useActivityImageAsChatBackground": "Použiť obrázok aktivity ako pozadie chatu"
 }

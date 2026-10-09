@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-07 09:01:37.948011",
+    "@@last_modified": "2026-10-09 10:04:36.707453",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "ເບິ່ງຮູບພາບ",
     "reportSent": "ລາຍງານຖືກສົ່ງແລ້ວ",
     "reportNotSent": "ບໍ່ສາມາດສົ່ງລາຍງານຂອງທ່ານໄດ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ ແລະລອງໃໝ່ອີກຄັ້ງ.",
-    "reportPointerMessage": "ມີຂໍ້ຄວາມຖືກລາຍງານໃນ {courseName} — ເບິ່ງຄວາມປອດໄພ"
+    "reportPointerMessage": "ມີຂໍ້ຄວາມຖືກລາຍງານໃນ {courseName} — ເບິ່ງຄວາມປອດໄພ",
+    "useActivityImageAsChatBackground": "ໃຊ້ຮູບພາບກິດຈະກຳເປັນພື້ນຫຼັງການສົນທະນາ"
 }
