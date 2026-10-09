@@ -12,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
+import 'package:fluffychat/routes/chat/calls/call_session.dart' as call_ui;
 import 'package:fluffychat/routes/chat/calls/incoming_call_banner.dart';
 import 'package:fluffychat/routes/chat/calls/ios_call_screen.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -29,6 +30,36 @@ class _TestMatrixState extends MatrixState {
   @override
   // ignore: must_call_super
   void initState() {}
+
+  /// Answering starts a stand-in for the call, which tests can fail.
+  @override
+  void answerRing(IncomingCallNotification ring) =>
+      activeCall.value = _AnsweredCall(ring.event);
+}
+
+/// The call an answer starts, reduced to what the ring prompt reads of it.
+class _AnsweredCall extends ChangeNotifier implements call_ui.CallSession {
+  _AnsweredCall(this._ring);
+
+  final Event _ring;
+  bool _failed = false;
+
+  void fail() {
+    _failed = true;
+    notifyListeners();
+  }
+
+  @override
+  bool get isFailed => _failed;
+
+  @override
+  String? get notificationEventId => _ring.eventId;
+
+  @override
+  Room get room => _ring.room;
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }
 
 /// Stands in for the iOS call screen: rings are fed in through [receive], and
@@ -672,6 +703,37 @@ void main() {
 
       await showOnCallScreen(tester, screen);
       expect(screen.ended, ['CALL-1:unanswered']);
+    });
+
+    // On a locked phone the app's failure screen is out of sight, so a call
+    // screen left up would show a call nobody is in -- while the caller rings
+    // on to a missed call.
+    testWidgets('a call answered there that fails takes it off', (
+      tester,
+    ) async {
+      final room = heldChat();
+      callerMembership(room, present: true);
+      final screen = _FakeCallScreen();
+      await pumpBanner(tester, callScreen: screen);
+      await showOnCallScreen(tester, screen);
+
+      await tester.runAsync(
+        () => screen.receive(
+          MethodCall('answer', {
+            'uuid': 'CALL-1',
+            'roomId': roomId,
+            'eventId': '\$ring',
+            'account': client.clientName,
+          }),
+        ),
+      );
+      await tester.pump();
+      expect(screen.ended, isEmpty, reason: 'the call is coming up');
+
+      final state = tester.state<MatrixState>(find.byType(_TestMatrix));
+      (state.activeCall.value! as _AnsweredCall).fail();
+      await tester.pump();
+      expect(screen.ended, ['CALL-1:failed']);
     });
 
     testWidgets('declining there tells the caller', (tester) async {

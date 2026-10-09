@@ -177,6 +177,26 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
   /// became ends, and the call screen with it.
   String? _answeredOnCallScreen;
 
+  /// The call a call-screen answer became, watched for failing: a failed call
+  /// stays up in the app until it is dismissed, but on a locked phone nobody
+  /// sees it, and the call screen would go on showing a call that is not
+  /// happening.
+  call_ui.CallSession? _callScreenCall;
+
+  void _watchCallScreenCall(call_ui.CallSession? call) {
+    _callScreenCall?.removeListener(_onCallScreenCallChanged);
+    _callScreenCall = call;
+    call?.addListener(_onCallScreenCallChanged);
+  }
+
+  void _onCallScreenCallChanged() {
+    final answered = _answeredOnCallScreen;
+    if (_callScreenCall?.isFailed != true || answered == null) return;
+    _answeredOnCallScreen = null;
+    _watchCallScreenCall(null);
+    _endCallScreen(answered, CallScreenEndReason.failed);
+  }
+
   /// What the learner chose on the call screen for a ring this prompt was
   /// still reading -- the call screen goes up from the push alone, so a quick
   /// tap can beat the read. True is answer, false is decline.
@@ -353,13 +373,19 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
       // was live elsewhere and the caller was told the line is busy.
       _answeredOnCallScreen = null;
       _endCallScreen(screenRing.uuid, CallScreenEndReason.failed);
+      return;
     }
+    _watchCallScreenCall(live);
+    _onCallScreenCallChanged();
   }
 
   void _onCallScreenEnd(CallScreenEnd end) {
     if (end.answered) {
       // Hanging up the call the answer became.
-      if (_answeredOnCallScreen == end.ring.uuid) _answeredOnCallScreen = null;
+      if (_answeredOnCallScreen == end.ring.uuid) {
+        _answeredOnCallScreen = null;
+        _watchCallScreenCall(null);
+      }
       if (!mounted) return;
       final live = Matrix.of(context).activeCall.value;
       if (live != null && live.notificationEventId == end.ring.eventId) {
@@ -631,6 +657,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
       // screen.
       final answered = _answeredOnCallScreen;
       _answeredOnCallScreen = null;
+      _watchCallScreenCall(null);
       if (answered != null) {
         _endCallScreen(answered, CallScreenEndReason.remoteEnded);
       }
@@ -1185,6 +1212,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
     _callerGone?.cancel();
     _stillRinging?.cancel();
     _activeCall?.removeListener(_onActiveCallChanged);
+    _callScreenCall?.removeListener(_onCallScreenCallChanged);
     _offerWatch?.cancel();
     _siblingAnswered?.cancel();
     // Release the ring player's native AudioPlayer (dispose stops it first),
