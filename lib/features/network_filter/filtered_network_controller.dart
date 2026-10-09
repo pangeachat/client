@@ -6,12 +6,14 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:http/http.dart' as http;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/network_filter/network_help_repo.dart';
 import 'package:fluffychat/features/network_filter/network_host_category.dart';
 import 'package:fluffychat/features/network_filter/network_probe.dart';
 import 'package:fluffychat/features/network_filter/network_type.dart';
 import 'package:fluffychat/features/network_filter/network_verdict.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 import 'package:fluffychat/features/network_filter/tls_failure/tls_failure_stub.dart'
     if (dart.library.io) 'package:fluffychat/features/network_filter/tls_failure/tls_failure_io.dart';
@@ -51,6 +53,12 @@ class FilteredNetworkController {
 
   @visibleForTesting
   Future<NetworkType> Function() currentNetworkType = NetworkType.current;
+
+  @visibleForTesting
+  List<String> Function() joinedCourseIds = _joinedCourseIds;
+
+  /// The longest value Sentry keeps in a tag.
+  static const int _maxTagLength = 200;
 
   /// The platform as a Sentry tag and in a help request.
   static String get platformName => kIsWeb ? 'web' : defaultTargetPlatform.name;
@@ -200,17 +208,58 @@ class FilteredNetworkController {
     NetworkProbeResult needed,
   ) async {
     final networkType = await currentNetworkType();
+    final courseIds = joinedCourseIds();
     await ErrorHandler.logErrorOnce(
       key: 'filtered-network-${category.name}',
       e: _FilteredNetworkException(category),
       level: SentryLevel.error,
-      data: {'category': category.name, 'probeResult': needed.name},
+      data: {
+        'category': category.name,
+        'probeResult': needed.name,
+        'courseIds': courseIds,
+      },
       tags: {
         'blocked_host_category': category.name,
         'app_platform': platformName,
         'network_type': networkType.name,
+        if (courseIds.isNotEmpty) 'course_ids': courseIdsTag(courseIds),
       },
     );
+  }
+
+  /// The user's joined course spaces, sorted so one class's reports carry
+  /// the same tag. Read locally, so a blocked network costs nothing here.
+  static List<String> _joinedCourseIds() {
+    try {
+      return [
+        for (final course
+            in MatrixState
+                .pangeaController
+                .matrixState
+                .client
+                .joinedCourseSpaces)
+          course.id,
+      ]..sort();
+    } catch (_) {
+      // silent-ok: no Matrix client yet; the report is still worth sending
+      // without its courses, and the help request carries the account.
+      return const [];
+    }
+  }
+
+  /// [courseIds] as one tag value: comma-separated, dropping whole IDs past
+  /// Sentry's tag length. The full list rides in the report's data.
+  @visibleForTesting
+  static String courseIdsTag(List<String> courseIds) {
+    final kept = <String>[];
+    var length = 0;
+    for (final id in courseIds) {
+      final added = (kept.isEmpty ? 0 : 1) + id.length;
+      if (length + added > _maxTagLength) break;
+      kept.add(id);
+      length += added;
+    }
+    return kept.join(',');
   }
 
   @visibleForTesting
@@ -224,6 +273,7 @@ class FilteredNetworkController {
     probe = NetworkProbe.probe;
     onNetworkChanged = () => Connectivity().onConnectivityChanged;
     currentNetworkType = NetworkType.current;
+    joinedCourseIds = _joinedCourseIds;
   }
 }
 
