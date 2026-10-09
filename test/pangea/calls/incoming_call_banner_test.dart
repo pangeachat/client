@@ -13,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/incoming_call_banner.dart';
+import 'package:fluffychat/routes/chat/calls/ios_call_screen.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../fake_pangea_controller.dart';
@@ -28,6 +29,25 @@ class _TestMatrixState extends MatrixState {
   @override
   // ignore: must_call_super
   void initState() {}
+}
+
+/// Stands in for the iOS call screen: rings are fed in through [receive], and
+/// what the app asks of the call screen is recorded.
+class _FakeCallScreen extends IosCallScreen {
+  _FakeCallScreen() : super.forTesting();
+
+  /// `uuid:reason` for each call the app took off the call screen.
+  final ended = <String>[];
+
+  @override
+  Future<void> listen() async {}
+
+  @override
+  Future<void> end(String uuid, CallScreenEndReason reason) async =>
+      ended.add('$uuid:${reason.name}');
+
+  @override
+  Future<void> setVideo(String uuid, bool video) async {}
 }
 
 class _TestMatrix extends Matrix {
@@ -150,7 +170,10 @@ void main() {
 
   /// Pumped twice: the banner subscribes in a post-frame callback, so nothing
   /// sent before that frame has run would reach it.
-  Future<void> pumpBanner(WidgetTester tester) async {
+  Future<void> pumpBanner(
+    WidgetTester tester, {
+    IosCallScreen? callScreen,
+  }) async {
     await tester.pumpWidget(
       _TestMatrix(
         clients: [client],
@@ -159,8 +182,11 @@ void main() {
           locale: const Locale('en'),
           localizationsDelegates: L10n.localizationsDelegates,
           supportedLocales: L10n.supportedLocales,
-          home: const Scaffold(
-            body: IncomingCallBanner(child: SizedBox.shrink()),
+          home: Scaffold(
+            body: IncomingCallBanner(
+              callScreenOverride: callScreen,
+              child: const SizedBox.shrink(),
+            ),
           ),
         ),
       ),
@@ -547,6 +573,122 @@ void main() {
 
       expect(tester.takeException(), isNull);
       expect(find.byKey(const ValueKey(r'$ring')), findsOneWidget);
+    });
+  });
+
+  // On iOS the call screen is the ring, open app or not, and the prompt
+  // stands aside for it -- while still deciding and watching the ring exactly
+  // as it does any other (voice-video-calls.instructions.md, "Ringing when the
+  // app is closed").
+  group('a ring on the iOS call screen', () {
+    /// A direct chat the account holds, whose ring the server returns when the
+    /// call screen's push names it.
+    Room heldChat({Duration age = Duration.zero}) {
+      final room = directChat();
+      client.rooms.add(room);
+      final json = ring(room, age: age).toJson();
+      final api = FakeMatrixApi.currentApi!.api['GET']!;
+      for (final path in [
+        '/client/v3/rooms/$roomId/event/\$ring',
+        '/client/v3/rooms/${Uri.encodeComponent(roomId)}/event/'
+            '${Uri.encodeComponent('\$ring')}',
+      ]) {
+        api[path] = (_) => json;
+      }
+      return room;
+    }
+
+    /// The ring is read through the account: its database, which takes real
+    /// time, and the fake server, which answers on a fake-clock timer.
+    Future<void> settleRead(WidgetTester tester) async {
+      for (var i = 0; i < 20; i++) {
+        await tester.runAsync(
+          () => Future<void>.delayed(const Duration(milliseconds: 10)),
+        );
+        await tester.pump(const Duration(milliseconds: 10));
+      }
+    }
+
+    Future<void> showOnCallScreen(
+      WidgetTester tester,
+      _FakeCallScreen screen,
+    ) async {
+      await tester.runAsync(
+        () => screen.receive(
+          MethodCall('incoming', {
+            'uuid': 'CALL-1',
+            'roomId': roomId,
+            'eventId': '\$ring',
+            'account': client.clientName,
+          }),
+        ),
+      );
+      await settleRead(tester);
+    }
+
+    testWidgets('shows no card of its own', (tester) async {
+      final room = heldChat();
+      callerMembership(room, present: true);
+      final screen = _FakeCallScreen();
+      await pumpBanner(tester, callScreen: screen);
+
+      await showOnCallScreen(tester, screen);
+      expect(find.byKey(const ValueKey(r'$ring')), findsNothing);
+      expect(screen.ended, isEmpty, reason: 'the ring is live, so it stays');
+    });
+
+    testWidgets('leaves the call screen when the caller gives up', (
+      tester,
+    ) async {
+      final room = heldChat();
+      callerMembership(room, present: true);
+      final screen = _FakeCallScreen();
+      await pumpBanner(tester, callScreen: screen);
+      await showOnCallScreen(tester, screen);
+
+      callerMembership(room, present: false, id: r'$mem2');
+      await tester.pumpAndSettle();
+      expect(screen.ended, ['CALL-1:remoteEnded']);
+    });
+
+    testWidgets('a ring already over is taken off at once', (tester) async {
+      heldChat(age: const Duration(minutes: 2));
+      final screen = _FakeCallScreen();
+      await pumpBanner(tester, callScreen: screen);
+
+      await showOnCallScreen(tester, screen);
+      expect(screen.ended, ['CALL-1:unanswered']);
+    });
+
+    testWidgets('declining there tells the caller', (tester) async {
+      final room = heldChat();
+      callerMembership(room, present: true);
+      final screen = _FakeCallScreen();
+      await pumpBanner(tester, callScreen: screen);
+      await showOnCallScreen(tester, screen);
+
+      await tester.runAsync(
+        () => screen.receive(
+          const MethodCall('end', {
+            'uuid': 'CALL-1',
+            'roomId': roomId,
+            'eventId': '\$ring',
+            'answered': false,
+          }),
+        ),
+      );
+      await settleRead(tester);
+      expect(
+        FakeMatrixApi.calledEndpoints.keys.any(
+          (k) => k.contains('/send/${PangeaEventTypes.callDecline}/'),
+        ),
+        isTrue,
+      );
+      expect(
+        screen.ended,
+        isEmpty,
+        reason: 'the learner already took it off the call screen',
+      );
     });
   });
 }
