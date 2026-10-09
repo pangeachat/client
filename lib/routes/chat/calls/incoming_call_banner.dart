@@ -117,7 +117,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
   /// at once.
   Future<void> _replays = Future.value();
 
-  StreamSubscription<void>? _callerGone;
+  StreamSubscription<matrix.StrippedStateEvent>? _callerGone;
   CallService? _service;
   Timer? _stillRinging;
   IncomingCallNotification? _ringing;
@@ -1171,6 +1171,10 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
   /// arrives, and treating "not there yet" as "gone" would silence real calls —
   /// the failure that matters most here. Never seeing it present simply leaves
   /// the lifetime timer in charge, which is the behaviour this had before.
+  ///
+  /// And only a hang-up written AFTER the ring counts. An app the push woke
+  /// catches up on the caller's earlier calls, and the end of their last one,
+  /// arriving now, is not this one ending.
   void _watchCaller(IncomingCallNotification ring) {
     _callerGone?.cancel();
     final service = _serviceFor(ring.event.room);
@@ -1183,7 +1187,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
       callerId,
       deviceId: callerDevice,
     );
-    _callerGone = service.callerPresenceChanges(room, callerId).listen((_) {
+    _callerGone = service.callerStateUpdates(room, callerId).listen((state) {
       if (!mounted || _ringing?.event.eventId != ring.event.eventId) return;
       final present = service.callerStillInCall(
         room,
@@ -1192,6 +1196,10 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
       );
       if (present) {
         wasPresent = true;
+        return;
+      }
+      if (state is matrix.Event &&
+          state.originServerTs.isBefore(ring.event.originServerTs)) {
         return;
       }
       if (wasPresent) _dismiss();

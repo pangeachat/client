@@ -2170,17 +2170,6 @@ class CallService {
           )
           .map((update) => update.state);
 
-  /// Fires whenever [callerId]'s call membership in [room] is rewritten.
-  ///
-  /// The signal a ringing device watches to notice the caller has given up.
-  Stream<void> callerPresenceChanges(Room room, String callerId) =>
-      client.onRoomState.stream.where(
-        (update) =>
-            update.roomId == room.id &&
-            update.state.type == EventTypes.GroupCallMember &&
-            update.state.senderId == callerId,
-      );
-
   /// Rings that arrived while this device was not listening.
   ///
   /// [incomingRings] is a LIVE stream. A ring that landed before the page was

@@ -179,6 +179,7 @@ void main() {
     Room room, {
     required bool present,
     String id = r'$mem',
+    DateTime? at,
   }) {
     room.setState(
       Event(
@@ -192,7 +193,7 @@ void main() {
         },
         senderId: caller,
         eventId: id,
-        originServerTs: DateTime.now(),
+        originServerTs: at ?? DateTime.now(),
         room: room,
         stateKey: caller,
       ),
@@ -693,6 +694,27 @@ void main() {
       await pumpBanner(tester, callScreen: screen);
 
       await showOnCallScreen(tester, screen);
+      expect(screen.ended, isEmpty);
+    });
+
+    // The push woke an app last synced during the caller's previous call. The
+    // end of that call arrives as it catches up, after the ring.
+    testWidgets('stays up as the caller\'s last call ends late', (
+      tester,
+    ) async {
+      final room = heldChat();
+      callerMembership(room, present: true);
+      final screen = _FakeCallScreen();
+      await pumpBanner(tester, callScreen: screen);
+      await showOnCallScreen(tester, screen);
+
+      callerMembership(
+        room,
+        present: false,
+        id: r'$mem2',
+        at: DateTime.now().subtract(const Duration(seconds: 30)),
+      );
+      await tester.pumpAndSettle();
       expect(screen.ended, isEmpty);
     });
 
