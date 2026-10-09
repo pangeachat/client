@@ -49,9 +49,8 @@ Future<void> _main() async {
   // post-frame app_links replay that RACES the logged-out login bounce
   // (joining-courses.instructions.md). CloudFront serves the SPA shell for
   // every path (the SPA index fallback), so a direct path load always boots.
-  // The fragment is kept too: Synapse's email links are `/#/room/<id>/<event>`,
-  // and without it the router boots on a bare `/`. No-op off web.
-  setUrlStrategy(PathUrlStrategy(BrowserPlatformLocation(), true));
+  // No-op off web.
+  usePathUrlStrategy();
 
   // #Pangea
   try {
