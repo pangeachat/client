@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-07 09:01:40.604704",
+    "@@last_modified": "2026-10-09 10:04:38.537422",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Vis bilde",
     "reportSent": "Rapport sendt",
     "reportNotSent": "Rapporten din kunne ikke sendes. Sjekk tilkoblingen din og prøv igjen.",
-    "reportPointerMessage": "En melding ble rapportert i {courseName} – se Sikkerhet"
+    "reportPointerMessage": "En melding ble rapportert i {courseName} – se Sikkerhet",
+    "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-07 09:01:37.791319",
+    "@@last_modified": "2026-10-09 10:04:36.692320",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Bild ukucken",
     "reportSent": "Rapport geschéckt",
     "reportNotSent": "Äre Rapport konnt net geschéckt ginn. Kuckt Är Verbindung a probéiert et nach eng Kéier.",
-    "reportPointerMessage": "Eng Noriicht gouf am Cours {courseName} gemellt — kuckt Sécherheet"
+    "reportPointerMessage": "Eng Noriicht gouf am Cours {courseName} gemellt — kuckt Sécherheet",
+    "useActivityImageAsChatBackground": "Aktivitéitsbild als Chat-Hannergrond benotzen"
 }

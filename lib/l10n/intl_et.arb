@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-07 09:01:30.977182",
+    "@@last_modified": "2026-10-09 10:04:33.211067",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9948,5 +9948,6 @@
     "viewImageLabel": "Vaata pilti",
     "reportSent": "Aruanne saadetud",
     "reportNotSent": "Teie aruannet ei saanud saata. Kontrollige oma ühendust ja proovige uuesti.",
-    "reportPointerMessage": "Sõnumist teatati kursusel {courseName} – vaadake jaotist „Ohutus“"
+    "reportPointerMessage": "Sõnumist teatati kursusel {courseName} – vaadake jaotist „Ohutus“",
+    "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana"
 }

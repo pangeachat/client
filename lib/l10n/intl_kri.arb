@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-07 09:01:39.507401",
+    "@@last_modified": "2026-10-09 10:04:36.060917",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Luk pikcho",
     "reportSent": "Dɛn dɔn sɛn di ripot",
     "reportNotSent": "Yu ripot nɔ go dɔn sɛn. Chɛk yu kɔnɛkshɔn ɛn tray igen.",
-    "reportPointerMessage": "Dɛn ripot wan mɛsej insay {courseName} — si Sefti"
+    "reportPointerMessage": "Dɛn ripot wan mɛsej insay {courseName} — si Sefti",
+    "useActivityImageAsChatBackground": "Yuz aktiviti pikcho as chat bakgron"
 }

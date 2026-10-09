@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:28.541176",
+    "@@last_modified": "2026-10-09 10:04:31.779565",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10579,5 +10579,6 @@
     "viewImageLabel": "ছবি দেখুন",
     "reportSent": "রিপোর্ট পাঠানো হয়েছে",
     "reportNotSent": "আপনার রিপোর্ট পাঠানো যায়নি। আপনার সংযোগ পরীক্ষা করুন এবং আবার চেষ্টা করুন।",
-    "reportPointerMessage": "{courseName}-এ একটি মেসেজ রিপোর্ট করা হয়েছে — সেফটি দেখুন"
+    "reportPointerMessage": "{courseName}-এ একটি মেসেজ রিপোর্ট করা হয়েছে — সেফটি দেখুন",
+    "useActivityImageAsChatBackground": "চ্যাট ব্যাকগ্রাউন্ড হিসেবে অ্যাক্টিভিটি ইমেজ ব্যবহার করুন"
 }

@@ -1799,7 +1799,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-07 09:01:43.297672",
+    "@@last_modified": "2026-10-09 10:04:39.850739",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10896,5 +10896,6 @@
     "viewImageLabel": "Ogled slike",
     "reportSent": "Poročilo poslano",
     "reportNotSent": "Vašega poročila ni bilo mogoče poslati. Preverite povezavo in poskusite znova.",
-    "reportPointerMessage": "Sporočilo je bilo prijavljeno v {courseName} – glejte Varnost"
+    "reportPointerMessage": "Sporočilo je bilo prijavljeno v {courseName} – glejte Varnost",
+    "useActivityImageAsChatBackground": "Uporabi sliko dejavnosti kot ozadje klepeta"
 }

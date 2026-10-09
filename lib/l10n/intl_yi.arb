@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-07 09:01:46.955934",
+    "@@last_modified": "2026-10-09 10:04:42.573848",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "זען בילד",
     "reportSent": "באריכט געשיקט",
     "reportNotSent": "אײַער באַריכט קען נישט געשיקט ווערן. קוקט אײַער פֿאַרבינדונג און פּרוּווט ווידער.",
-    "reportPointerMessage": "אַ מעלדונג איז געמאלדן געוואָרן אין {courseName} — זעט זיכערקייט"
+    "reportPointerMessage": "אַ מעלדונג איז געמאלדן געוואָרן אין {courseName} — זעט זיכערקייט",
+    "useActivityImageAsChatBackground": "ניצן טעטיקייט בילד ווי שמועס הינטערגרונט"
 }

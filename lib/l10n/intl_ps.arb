@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-07 09:01:42.176613",
+    "@@last_modified": "2026-10-09 10:04:38.945286",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "انځور وګورئ",
     "reportSent": "راپور ولېږل شو",
     "reportNotSent": "ستاسو راپور نشو لېږل کېدای. خپله اړیکه وګورئ او بیا هڅه وکړئ.",
-    "reportPointerMessage": "په {courseName} کې یو پیغام راپور شوی — خوندیتوب وګورئ"
+    "reportPointerMessage": "په {courseName} کې یو پیغام راپور شوی — خوندیتوب وګورئ",
+    "useActivityImageAsChatBackground": "د فعالیت انځور د چیټ شالید په توګه وکاروئ"
 }

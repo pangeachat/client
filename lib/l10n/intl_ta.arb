@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:45.291808",
+    "@@last_modified": "2026-10-09 10:04:40.820156",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10043,5 +10043,6 @@
     "viewImageLabel": "படத்தைப் பார்",
     "reportSent": "புகார் அனுப்பப்பட்டது",
     "reportNotSent": "உங்கள் புகாரை அனுப்ப முடியவில்லை. உங்கள் இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.",
-    "reportPointerMessage": "{courseName} இல் ஒரு செய்தி புகாரளிக்கப்பட்டது — பாதுகாப்பைப் பார்க்கவும்"
+    "reportPointerMessage": "{courseName} இல் ஒரு செய்தி புகாரளிக்கப்பட்டது — பாதுகாப்பைப் பார்க்கவும்",
+    "useActivityImageAsChatBackground": "செயல்பாட்டுப் படத்தை அரட்டைப் பின்னணியாகப் பயன்படுத்து"
 }

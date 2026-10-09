@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-07 09:01:41.414538",
+    "@@last_modified": "2026-10-09 10:04:38.972151",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10036,5 +10036,6 @@
     "viewImageLabel": "Wyświetl obraz",
     "reportSent": "Zgłoszenie wysłane",
     "reportNotSent": "Twoje zgłoszenie nie mogło zostać wysłane. Sprawdź połączenie i spróbuj ponownie.",
-    "reportPointerMessage": "Wiadomość została zgłoszona w {courseName} — zobacz Bezpieczeństwo"
+    "reportPointerMessage": "Wiadomość została zgłoszona w {courseName} — zobacz Bezpieczeństwo",
+    "useActivityImageAsChatBackground": "Użyj obrazu aktywności jako tła czatu"
 }

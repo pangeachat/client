@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-07 09:01:31.414715",
+    "@@last_modified": "2026-10-09 10:04:33.570329",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Ofbylding besjen",
     "reportSent": "Melding ferstjoerd",
     "reportNotSent": "Jo melding koe net ferstjoerd wurde. Kontrolearje jo ferbining en besykje it opnij.",
-    "reportPointerMessage": "Der is in berjocht melde yn {courseName} — sjoch Feiligens"
+    "reportPointerMessage": "Der is in berjocht melde yn {courseName} — sjoch Feiligens",
+    "useActivityImageAsChatBackground": "Brûk aktiviteitsôfbylding as petear eftergrûn"
 }

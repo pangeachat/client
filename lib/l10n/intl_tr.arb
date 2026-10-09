@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-07 09:01:45.302631",
+    "@@last_modified": "2026-10-09 10:04:41.651288",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10252,5 +10252,6 @@
     "viewImageLabel": "Resmi görüntüle",
     "reportSent": "Rapor gönderildi",
     "reportNotSent": "Raporunuz gönderilemedi. Bağlantınızı kontrol edip tekrar deneyin.",
-    "reportPointerMessage": "{courseName} içinde bir mesaj bildirildi — Güvenlik bölümüne bakın"
+    "reportPointerMessage": "{courseName} içinde bir mesaj bildirildi — Güvenlik bölümüne bakın",
+    "useActivityImageAsChatBackground": "Etkinlik görselini sohbet arka planı olarak kullan"
 }

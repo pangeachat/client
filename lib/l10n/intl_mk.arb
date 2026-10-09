@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-07 09:01:38.907507",
+    "@@last_modified": "2026-10-09 10:04:37.393944",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Погледни слика",
     "reportSent": "Извештајот е испратен",
     "reportNotSent": "Вашиот извештај не можеше да биде испратен. Проверете ја вашата врска и обидете се повторно.",
-    "reportPointerMessage": "Пораката е пријавена во {courseName} — видете Безбедност"
+    "reportPointerMessage": "Пораката е пријавена во {courseName} — видете Безбедност",
+    "useActivityImageAsChatBackground": "Користи слика од активноста како позадина за разговор"
 }

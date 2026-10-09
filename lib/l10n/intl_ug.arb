@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-07 09:01:46.235966",
+    "@@last_modified": "2026-10-09 10:04:41.611014",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "رەسىمنى كۆرۈش",
     "reportSent": "دوكلات يوللاندى",
     "reportNotSent": "دوكلاتىڭىز يوللانمىدى. ئۇلىنىشىڭىزنى تەكشۈرۈپ قايتا سىناڭ.",
-    "reportPointerMessage": "{courseName} دە بىر ئۇچۇر دوكلات قىلىندى — بىخەتەرلىكنى كۆرۈڭ"
+    "reportPointerMessage": "{courseName} دە بىر ئۇچۇر دوكلات قىلىندى — بىخەتەرلىكنى كۆرۈڭ",
+    "useActivityImageAsChatBackground": "پائالىيەت رەسىمىنى پاراڭ ئارقا كۆرۈنۈشى قىلىپ ئىشلەت"
 }

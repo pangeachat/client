@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:32.165987",
+    "@@last_modified": "2026-10-09 10:04:34.302965",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10865,5 +10865,6 @@
     "viewImageLabel": "הצג תמונה",
     "reportSent": "הדיווח נשלח",
     "reportNotSent": "הדיווח שלך לא נשלח. בדוק את החיבור שלך ונסה שוב.",
-    "reportPointerMessage": "הודעה דווחה ב{courseName} — ראה בטיחות"
+    "reportPointerMessage": "הודעה דווחה ב{courseName} — ראה בטיחות",
+    "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט"
 }

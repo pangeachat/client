@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:30.686113",
+    "@@last_modified": "2026-10-09 10:04:33.402782",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10039,5 +10039,6 @@
     "viewImageLabel": "مشاهده تصویر",
     "reportSent": "گزارش ارسال شد",
     "reportNotSent": "گزارش شما ارسال نشد. اتصال خود را بررسی کرده و دوباره امتحان کنید.",
-    "reportPointerMessage": "پیامی در {courseName} گزارش شد — به بخش ایمنی مراجعه کنید"
+    "reportPointerMessage": "پیامی در {courseName} گزارش شد — به بخش ایمنی مراجعه کنید",
+    "useActivityImageAsChatBackground": "استفاده از تصویر فعالیت به عنوان پس‌زمینه چت"
 }

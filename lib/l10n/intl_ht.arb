@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-07 09:01:33.662012",
+    "@@last_modified": "2026-10-09 10:04:34.644390",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Gade imaj",
     "reportSent": "Rapò a voye",
     "reportNotSent": "Rapò ou a pa t' kapab voye. Tcheke koneksyon ou epi eseye ankò.",
-    "reportPointerMessage": "Yon mesaj te rapòte nan {courseName} — gade Sekirite"
+    "reportPointerMessage": "Yon mesaj te rapòte nan {courseName} — gade Sekirite",
+    "useActivityImageAsChatBackground": "Itilize imaj aktivite a kòm background chat la"
 }

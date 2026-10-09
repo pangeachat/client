@@ -13,6 +13,8 @@ import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_goals_dropdown.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_carousel.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_media_visibility.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_media_visibility_target.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_list.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
@@ -53,6 +55,10 @@ class ActivitySummary extends StatelessWidget {
 
   final bool inChat;
 
+  /// Tracks the carousel's place in the chat timeline for the opt-in activity
+  /// chat background. Null outside the chat.
+  final ActivityMediaVisibility? mediaVisibility;
+
   const ActivitySummary({
     super.key,
     required this.activity,
@@ -76,6 +82,7 @@ class ActivitySummary extends StatelessWidget {
     this.room,
     this.course,
     this.inChat = false,
+    this.mediaVisibility,
   });
 
   @override
@@ -88,6 +95,14 @@ class ActivitySummary extends StatelessWidget {
     final autoplayIndex = inChat
         ? null
         : activityFor(GoRouterState.of(context))?.autoplay;
+    final carousel = ActivityMediaCarousel(
+      media: activity.media,
+      fallbackImageUrl: activity.imageURL,
+      borderRadius: BorderRadius.circular(20),
+      autoplayIndex: autoplayIndex,
+      captionLanguage: activity.req.targetLanguage,
+    );
+    final mediaVisibility = this.mediaVisibility;
     return Center(
       child: Container(
         padding: const EdgeInsets.all(12.0),
@@ -103,13 +118,12 @@ class ActivitySummary extends StatelessWidget {
                 completedGoalIds: completedGoalIds,
                 startCollapsed: goalsStartCollapsed,
               ),
-            ActivityMediaCarousel(
-              media: activity.media,
-              fallbackImageUrl: activity.imageURL,
-              borderRadius: BorderRadius.circular(20),
-              autoplayIndex: autoplayIndex,
-              captionLanguage: activity.req.targetLanguage,
-            ),
+            mediaVisibility == null
+                ? carousel
+                : ActivityMediaVisibilityTarget(
+                    visibility: mediaVisibility,
+                    child: carousel,
+                  ),
             if (showRoleCards)
               Opacity(
                 opacity: roleCardOpacity,

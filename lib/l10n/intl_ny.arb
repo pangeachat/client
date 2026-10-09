@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-07 09:01:41.072427",
+    "@@last_modified": "2026-10-09 10:04:38.591017",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Onani chithunzi",
     "reportSent": "Lipoti latumizidwa",
     "reportNotSent": "Lipoti lanu silinatumizidwe. Onani intaneti yanu ndikuyesanso.",
-    "reportPointerMessage": "Uthenga unanenedwa mu {courseName} — onani Chitetezo"
+    "reportPointerMessage": "Uthenga unanenedwa mu {courseName} — onani Chitetezo",
+    "useActivityImageAsChatBackground": "Gwiritsani ntchito chithunzi cha zochitika ngati maziko a macheza"
 }

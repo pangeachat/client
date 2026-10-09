@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:36.873629",
+    "@@last_modified": "2026-10-09 10:04:36.044020",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10144,5 +10144,6 @@
     "viewImageLabel": "이미지 보기",
     "reportSent": "신고가 전송되었습니다",
     "reportNotSent": "신고를 보낼 수 없습니다. 연결 상태를 확인하고 다시 시도해 주세요.",
-    "reportPointerMessage": "{courseName}에서 메시지가 신고되었습니다. 안전을 참조하세요."
+    "reportPointerMessage": "{courseName}에서 메시지가 신고되었습니다. 안전을 참조하세요.",
+    "useActivityImageAsChatBackground": "활동 이미지를 채팅 배경으로 사용"
 }

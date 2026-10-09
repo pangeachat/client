@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-07 09:01:29.660934",
+    "@@last_modified": "2026-10-09 10:04:32.811303",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Gweld delwedd",
     "reportSent": "Adroddiad wedi'i anfon",
     "reportNotSent": "Ni ellid anfon eich adroddiad. Gwiriwch eich cysylltiad a rhowch gynnig arall arni.",
-    "reportPointerMessage": "Adroddwyd am neges yn {courseName} — gweler Diogelwch"
+    "reportPointerMessage": "Adroddwyd am neges yn {courseName} — gweler Diogelwch",
+    "useActivityImageAsChatBackground": "Defnyddio delwedd gweithgaredd fel cefndir sgwrsio"
 }

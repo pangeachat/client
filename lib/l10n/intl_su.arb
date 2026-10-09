@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-07 09:01:44.310259",
+    "@@last_modified": "2026-10-09 10:04:40.709973",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Témbongkeun gambar",
     "reportSent": "Laporan dikirim",
     "reportNotSent": "Laporan anjeun teu tiasa dikirim. Pariksa sambungan anjeun teras cobian deui.",
-    "reportPointerMessage": "Aya béja dilaporkeun di {courseName} — tingali Kasalametan"
+    "reportPointerMessage": "Aya béja dilaporkeun di {courseName} — tingali Kasalametan",
+    "useActivityImageAsChatBackground": "Anggo gambar kagiatan salaku latar obrolan"
 }

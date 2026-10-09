@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-07 09:01:30.690395",
+    "@@last_modified": "2026-10-09 10:04:33.419602",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8176,5 +8176,6 @@
     "viewImageLabel": "Ver imagen",
     "reportSent": "Reporte enviado",
     "reportNotSent": "No se pudo enviar tu reporte. Revisa tu conexión y vuelve a intentarlo.",
-    "reportPointerMessage": "Se reportó un mensaje en {courseName} — ver Seguridad"
+    "reportPointerMessage": "Se reportó un mensaje en {courseName} — ver Seguridad",
+    "useActivityImageAsChatBackground": "Usar imagen de actividad como fondo de chat"
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:dynamic_color/dynamic_color.dart';
 
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/style_example_message.dart';
@@ -11,6 +12,7 @@ import 'package:fluffychat/utils/account_config.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
+import 'package:fluffychat/widgets/settings_switch_list_tile.dart';
 import 'color_theme_picker.dart';
 import 'settings_style.dart';
 
@@ -295,6 +297,10 @@ class SettingsStyleView extends StatelessWidget {
                         onChangeEnd: controller.saveWallpaperBlur,
                       ),
                     ],
+                    SettingsSwitchListTile.adaptive(
+                      title: L10n.of(context).useActivityImageAsChatBackground,
+                      setting: AppSettings.activityImageAsChatBackground,
+                    ),
                   ],
                 );
               },

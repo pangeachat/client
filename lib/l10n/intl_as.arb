@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-07 09:01:29.063103",
+    "@@last_modified": "2026-10-09 10:04:32.139431",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "ছবি চাওক",
     "reportSent": "প্ৰতিবেদন পঠিওৱা হ'ল",
     "reportNotSent": "আপোনাৰ প্ৰতিবেদন পঠিয়াব পৰা নগ'ল। আপোনাৰ সংযোগ পৰীক্ষা কৰক আৰু পুনৰ চেষ্টা কৰক।",
-    "reportPointerMessage": "{courseName}ত এটা বাৰ্তাৰ বিষয়ে জনোৱা হৈছিল — সুৰক্ষা চাওক"
+    "reportPointerMessage": "{courseName}ত এটা বাৰ্তাৰ বিষয়ে জনোৱা হৈছিল — সুৰক্ষা চাওক",
+    "useActivityImageAsChatBackground": "কাৰ্য্যকলাপৰ ছবিখনক চেটৰ পৃষ্ঠভূমি হিচাপে ব্যৱহাৰ কৰক"
 }

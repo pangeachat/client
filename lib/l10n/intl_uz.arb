@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-07 09:01:46.445804",
+    "@@last_modified": "2026-10-09 10:04:41.636408",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9955,5 +9955,6 @@
     "viewImageLabel": "Rasmni koʻrish",
     "reportSent": "Xabar yuborildi",
     "reportNotSent": "Xabaringiz yuborilmadi. Internet aloqangizni tekshiring va qayta urinib koʻring.",
-    "reportPointerMessage": "{courseName} dagi xabar haqida xabar berildi — Xavfsizlik boʻlimiga qarang"
+    "reportPointerMessage": "{courseName} dagi xabar haqida xabar berildi — Xavfsizlik boʻlimiga qarang",
+    "useActivityImageAsChatBackground": "Faoliyat rasmini chat fon rasmi sifatida ishlatish"
 }

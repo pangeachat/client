@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:31.984471",
+    "@@last_modified": "2026-10-09 10:04:32.652816",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10078,5 +10078,6 @@
     "viewImageLabel": "Veure imatge",
     "reportSent": "Informe enviat",
     "reportNotSent": "No s'ha pogut enviar l'informe. Comprova la connexió i torna-ho a provar.",
-    "reportPointerMessage": "S'ha informat d'un missatge a {courseName}; consulta Seguretat"
+    "reportPointerMessage": "S'ha informat d'un missatge a {courseName}; consulta Seguretat",
+    "useActivityImageAsChatBackground": "Utilitza la imatge de l'activitat com a fons del xat"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-07 09:01:46.670525",
+    "@@last_modified": "2026-10-09 10:04:41.741823",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Jonga umfanekiso",
     "reportSent": "Ingxelo ithunyelwe",
     "reportNotSent": "Ingxelo yakho ayikwazanga ukuthunyelwa. Khangela uqhagamshelwano lwakho uze uzame kwakhona.",
-    "reportPointerMessage": "Umyalezo uxeliwe ku-{courseName} — jonga uKhuseleko"
+    "reportPointerMessage": "Umyalezo uxeliwe ku-{courseName} — jonga uKhuseleko",
+    "useActivityImageAsChatBackground": "Sebenzisa umfanekiso womsebenzi njengemvelaphi yencoko"
 }

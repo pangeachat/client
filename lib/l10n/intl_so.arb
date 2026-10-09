@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-07 09:01:44.250946",
+    "@@last_modified": "2026-10-09 10:04:40.393727",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Daawo sawirka",
     "reportSent": "Warbixinta waa la diray",
     "reportNotSent": "Warbixintaada lama diri karin. Hubi isku xirkaaga oo mar kale isku day.",
-    "reportPointerMessage": "Fariin ayaa lagu soo sheegay {courseName} — fiiri Badbaadada"
+    "reportPointerMessage": "Fariin ayaa lagu soo sheegay {courseName} — fiiri Badbaadada",
+    "useActivityImageAsChatBackground": "Isticmaal sawirka hawsha asagoo ah asalka sheekaysiga"
 }

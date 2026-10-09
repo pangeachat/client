@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-07 09:01:33.537860",
+    "@@last_modified": "2026-10-09 10:04:34.740695",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10387,5 +10387,6 @@
     "viewImageLabel": "Prikaži sliku",
     "reportSent": "Izvješće poslano",
     "reportNotSent": "Vaše izvješće nije moglo biti poslano. Provjerite vezu i pokušajte ponovno.",
-    "reportPointerMessage": "Poruka je prijavljena u {courseName} — pogledajte Sigurnost"
+    "reportPointerMessage": "Poruka je prijavljena u {courseName} — pogledajte Sigurnost",
+    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata"
 }

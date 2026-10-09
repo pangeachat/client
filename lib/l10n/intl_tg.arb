@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-07 09:01:45.850561",
+    "@@last_modified": "2026-10-09 10:04:41.310918",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Тасвирро бинед",
     "reportSent": "Ҳисобот фиристода шуд",
     "reportNotSent": "Ҳисоботи шумо фиристода нашуд. Пайвасти худро тафтиш кунед ва дубора кӯшиш кунед.",
-    "reportPointerMessage": "Дар {courseName} паёме гузориш дода шуд — ба Амният нигаред"
+    "reportPointerMessage": "Дар {courseName} паёме гузориш дода шуд — ба Амният нигаред",
+    "useActivityImageAsChatBackground": "Тасвири фаъолиятро ҳамчун заминаи чат истифода баред"
 }

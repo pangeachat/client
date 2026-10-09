@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-07 09:01:36.274728",
+    "@@last_modified": "2026-10-09 10:04:35.565598",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2396,5 +2396,6 @@
     "viewImageLabel": "Lee onyonyo",
     "reportSent": "Ezigara akụkọ",
     "reportNotSent": "Enweghị ike iziga akụkọ gị. Lelee njikọ gị wee nwaa ọzọ.",
-    "reportPointerMessage": "Ekwuru okwu n'ime {courseName} — lee Nchekwa"
+    "reportPointerMessage": "Ekwuru okwu n'ime {courseName} — lee Nchekwa",
+    "useActivityImageAsChatBackground": "Jiri onyonyo ọrụ dị ka ndabere nkata"
 }

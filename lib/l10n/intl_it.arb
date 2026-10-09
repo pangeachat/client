@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-07 09:01:34.398208",
+    "@@last_modified": "2026-10-09 10:04:35.175820",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10024,5 +10024,6 @@
     "viewImageLabel": "Visualizza immagine",
     "reportSent": "Segnalazione inviata",
     "reportNotSent": "Impossibile inviare la segnalazione. Controlla la tua connessione e riprova.",
-    "reportPointerMessage": "È stato segnalato un messaggio in {courseName} — vedi Sicurezza"
+    "reportPointerMessage": "È stato segnalato un messaggio in {courseName} — vedi Sicurezza",
+    "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat"
 }
