@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-08 16:58:05.376240",
+    "@@last_modified": "2026-10-09 10:04:33.402782",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10040,6 +10040,7 @@
     "reportSent": "گزارش ارسال شد",
     "reportNotSent": "گزارش شما ارسال نشد. اتصال خود را بررسی کرده و دوباره امتحان کنید.",
     "reportPointerMessage": "پیامی در {courseName} گزارش شد — به بخش ایمنی مراجعه کنید",
+    "useActivityImageAsChatBackground": "استفاده از تصویر فعالیت به عنوان پس‌زمینه چت",
     "filteredNetworkBlockedTitle": "این شبکه Pangea Chat را مسدود کرده است",
     "filteredNetworkPartlyBlockedTitle": "این شبکه بخشی از Pangea Chat را مسدود کرده است",
     "filteredNetworkWhatCanIDo": "چه کاری می‌توانم انجام دهم؟",

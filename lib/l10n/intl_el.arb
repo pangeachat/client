@@ -3397,7 +3397,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-08 16:58:04.532375",
+    "@@last_modified": "2026-10-09 10:04:33.374782",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10827,6 +10827,7 @@
     "reportSent": "Η αναφορά στάλθηκε",
     "reportNotSent": "Η αναφορά σας δεν μπόρεσε να σταλεί. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
     "reportPointerMessage": "Αναφέρθηκε ένα μήνυμα στο {courseName} — δείτε την ενότητα Ασφάλεια",
+    "useActivityImageAsChatBackground": "Χρήση εικόνας δραστηριότητας ως φόντο συνομιλίας",
     "filteredNetworkBlockedTitle": "Αυτό το δίκτυο μπλοκάρει το Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Αυτό το δίκτυο μπλοκάρει μέρος του Pangea Chat",
     "filteredNetworkWhatCanIDo": "Τι μπορώ να κάνω;",

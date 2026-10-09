@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-08 16:58:21.178382",
+    "@@last_modified": "2026-10-09 10:04:38.591017",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Lipoti latumizidwa",
     "reportNotSent": "Lipoti lanu silinatumizidwe. Onani intaneti yanu ndikuyesanso.",
     "reportPointerMessage": "Uthenga unanenedwa mu {courseName} — onani Chitetezo",
+    "useActivityImageAsChatBackground": "Gwiritsani ntchito chithunzi cha zochitika ngati maziko a macheza",
     "filteredNetworkBlockedTitle": "Netiweki iyi ikuletsa Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Netiweki iyi ikuletsa mbali ina ya Pangea Chat",
     "filteredNetworkWhatCanIDo": "Kodi ndingachite chiyani?",

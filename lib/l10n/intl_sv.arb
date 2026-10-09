@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-08 16:58:26.207087",
+    "@@last_modified": "2026-10-09 10:04:40.736559",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10470,6 +10470,7 @@
     "reportSent": "Rapport skickad",
     "reportNotSent": "Din rapport kunde inte skickas. Kontrollera din anslutning och försök igen.",
     "reportPointerMessage": "Ett meddelande rapporterades i {courseName} – se Säkerhet",
+    "useActivityImageAsChatBackground": "Använd aktivitetsbild som chattbakgrund",
     "filteredNetworkBlockedTitle": "Detta nätverk blockerar Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Detta nätverk blockerar delar av Pangea Chat",
     "filteredNetworkWhatCanIDo": "Vad kan jag göra?",

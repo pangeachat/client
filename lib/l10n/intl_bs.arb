@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-08 16:58:01.193983",
+    "@@last_modified": "2026-10-09 10:04:31.893113",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Izvještaj poslan",
     "reportNotSent": "Vaš izvještaj nije mogao biti poslan. Provjerite vezu i pokušajte ponovo.",
     "reportPointerMessage": "Poruka je prijavljena u {courseName} — pogledajte Sigurnost",
+    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata",
     "filteredNetworkBlockedTitle": "Ova mreža blokira Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Ova mreža djelimično blokira Pangea Chat",
     "filteredNetworkWhatCanIDo": "Šta mogu učiniti?",

@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-08 16:58:28.493086",
+    "@@last_modified": "2026-10-09 10:04:41.310918",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Ҳисобот фиристода шуд",
     "reportNotSent": "Ҳисоботи шумо фиристода нашуд. Пайвасти худро тафтиш кунед ва дубора кӯшиш кунед.",
     "reportPointerMessage": "Дар {courseName} паёме гузориш дода шуд — ба Амният нигаред",
+    "useActivityImageAsChatBackground": "Тасвири фаъолиятро ҳамчун заминаи чат истифода баред",
     "filteredNetworkBlockedTitle": "Ин шабака Pangea Chat-ро масдуд мекунад",
     "filteredNetworkPartlyBlockedTitle": "Ин шабака қисман Pangea Chat-ро масдуд мекунад",
     "filteredNetworkWhatCanIDo": "Ман чӣ кор карда метавонам?",

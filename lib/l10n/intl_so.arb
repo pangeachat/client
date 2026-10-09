@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-08 16:58:27.321474",
+    "@@last_modified": "2026-10-09 10:04:40.393727",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Warbixinta waa la diray",
     "reportNotSent": "Warbixintaada lama diri karin. Hubi isku xirkaaga oo mar kale isku day.",
     "reportPointerMessage": "Fariin ayaa lagu soo sheegay {courseName} — fiiri Badbaadada",
+    "useActivityImageAsChatBackground": "Isticmaal sawirka hawsha asagoo ah asalka sheekaysiga",
     "filteredNetworkBlockedTitle": "Shabakaddani waxay xannibaysaa Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Shabakaddani waxay xannibaysaa qayb ka mid ah Pangea Chat",
     "filteredNetworkWhatCanIDo": "Maxaan samayn karaa?",

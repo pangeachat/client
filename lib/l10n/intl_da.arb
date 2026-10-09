@@ -1331,7 +1331,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-08 16:58:03.776287",
+    "@@last_modified": "2026-10-09 10:04:32.529616",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10872,6 +10872,7 @@
     "reportSent": "Rapport sendt",
     "reportNotSent": "Din rapport kunne ikke sendes. Tjek din forbindelse, og prøv igen.",
     "reportPointerMessage": "En besked blev rapporteret i {courseName} – se Sikkerhed",
+    "useActivityImageAsChatBackground": "Brug aktivitetsbillede som chatbaggrund",
     "filteredNetworkBlockedTitle": "Dette netværk blokerer Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Dette netværk blokerer dele af Pangea Chat",
     "filteredNetworkWhatCanIDo": "Hvad kan jeg gøre?",

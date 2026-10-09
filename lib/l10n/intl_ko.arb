@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-08 16:58:13.463908",
+    "@@last_modified": "2026-10-09 10:04:36.044020",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10145,6 +10145,7 @@
     "reportSent": "신고가 전송되었습니다",
     "reportNotSent": "신고를 보낼 수 없습니다. 연결 상태를 확인하고 다시 시도해 주세요.",
     "reportPointerMessage": "{courseName}에서 메시지가 신고되었습니다. 안전을 참조하세요.",
+    "useActivityImageAsChatBackground": "활동 이미지를 채팅 배경으로 사용",
     "filteredNetworkBlockedTitle": "이 네트워크는 Pangea Chat을 차단하고 있습니다",
     "filteredNetworkPartlyBlockedTitle": "이 네트워크는 Pangea Chat의 일부를 차단하고 있습니다",
     "filteredNetworkWhatCanIDo": "어떻게 해야 하나요?",

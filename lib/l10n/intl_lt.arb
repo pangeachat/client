@@ -2964,7 +2964,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-08 16:58:16.146792",
+    "@@last_modified": "2026-10-09 10:04:36.864990",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10733,6 +10733,7 @@
     "reportSent": "Pranešimas išsiųstas",
     "reportNotSent": "Nepavyko išsiųsti jūsų pranešimo. Patikrinkite ryšį ir bandykite dar kartą.",
     "reportPointerMessage": "Pranešta apie žinutę {courseName} – žr. Sauga",
+    "useActivityImageAsChatBackground": "Naudoti veiklos paveikslėlį kaip pokalbio foną",
     "filteredNetworkBlockedTitle": "Šis tinklas blokuoja „Pangea Chat“",
     "filteredNetworkPartlyBlockedTitle": "Šis tinklas blokuoja dalį „Pangea Chat“",
     "filteredNetworkWhatCanIDo": "Ką galiu daryti?",

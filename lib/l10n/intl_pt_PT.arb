@@ -2556,7 +2556,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-08 16:58:22.337375",
+    "@@last_modified": "2026-10-09 10:04:39.201733",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10869,6 +10869,7 @@
     "reportSent": "Denúncia enviada",
     "reportNotSent": "Não foi possível enviar a sua denúncia. Verifique a sua ligação e tente novamente.",
     "reportPointerMessage": "Uma mensagem foi denunciada em {courseName} — ver Segurança",
+    "useActivityImageAsChatBackground": "Usar imagem da atividade como fundo do chat",
     "filteredNetworkBlockedTitle": "Esta rede está a bloquear o Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Esta rede está a bloquear parte do Pangea Chat",
     "filteredNetworkWhatCanIDo": "O que posso fazer?",

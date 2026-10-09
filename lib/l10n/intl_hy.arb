@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-08 16:58:11.336614",
+    "@@last_modified": "2026-10-09 10:04:35.203457",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2397,6 +2397,7 @@
     "reportSent": "Հաղորդումն ուղարկված է",
     "reportNotSent": "Ձեր հաղորդումը չհաջողվեց ուղարկել։ Ստուգեք ինտերնետ կապը և նորից փորձեք։",
     "reportPointerMessage": "{courseName} դասընթացում հաղորդագրություն է ուղարկվել. տե՛ս «Անվտանգություն» բաժինը",
+    "useActivityImageAsChatBackground": "Օգտագործել ակտիվության պատկերը որպես չաթի ֆոն",
     "filteredNetworkBlockedTitle": "Այս ցանցն արգելափակում է Pangea Chat-ը",
     "filteredNetworkPartlyBlockedTitle": "Այս ցանցը մասամբ արգելափակում է Pangea Chat-ը",
     "filteredNetworkWhatCanIDo": "Ի՞նչ կարող եմ անել",

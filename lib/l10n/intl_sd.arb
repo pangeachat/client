@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-08 16:58:24.903731",
+    "@@last_modified": "2026-10-09 10:04:39.883961",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2397,6 +2397,7 @@
     "reportSent": "رپورٽ موڪلي وئي",
     "reportNotSent": "توهان جي رپورٽ موڪلي نه سگهجي. پنهنجو ڪنيڪشن چيڪ ڪريو ۽ ٻيهر ڪوشش ڪريو.",
     "reportPointerMessage": "{courseName} ۾ هڪ پيغام جي رپورٽ ڪئي وئي آهي — حفاظت ڏسو",
+    "useActivityImageAsChatBackground": "سرگرمي جي تصوير کي چيٽ جي پس منظر طور استعمال ڪريو",
     "filteredNetworkBlockedTitle": "هي نيٽورڪ پينگيا چيٽ کي بلاڪ ڪري رهيو آهي",
     "filteredNetworkPartlyBlockedTitle": "هي نيٽورڪ پينگيا چيٽ جي ڪجهه حصي کي بلاڪ ڪري رهيو آهي",
     "filteredNetworkWhatCanIDo": "مان ڇا ڪري سگهان ٿو؟",

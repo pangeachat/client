@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-08 16:58:25.441251",
+    "@@last_modified": "2026-10-09 10:04:40.376492",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10901,6 +10901,7 @@
     "reportSent": "Izveštaj poslat",
     "reportNotSent": "Vaš izveštaj nije mogao biti poslat. Proverite vezu i pokušajte ponovo.",
     "reportPointerMessage": "Poruka je prijavljena u {courseName} — pogledajte Bezbednost",
+    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu ćaskanja",
     "filteredNetworkBlockedTitle": "Ova mreža blokira Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Ova mreža delimično blokira Pangea Chat",
     "filteredNetworkWhatCanIDo": "Šta mogu da uradim?",

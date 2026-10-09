@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-08 16:58:07.110031",
+    "@@last_modified": "2026-10-09 10:05:18.679406",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10307,6 +10307,7 @@
     "reportSent": "Signalement envoyé",
     "reportNotSent": "Votre signalement n'a pas pu être envoyé. Vérifiez votre connexion et réessayez.",
     "reportPointerMessage": "Un message a été signalé dans {courseName} — voir Sécurité",
+    "useActivityImageAsChatBackground": "Utiliser l'image de l'activité comme arrière-plan de discussion",
     "filteredNetworkBlockedTitle": "Ce réseau bloque Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Ce réseau bloque une partie de Pangea Chat",
     "filteredNetworkWhatCanIDo": "Que puis-je faire ?",

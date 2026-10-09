@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-08 16:58:16.125224",
+    "@@last_modified": "2026-10-09 10:04:36.707453",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2397,6 +2397,7 @@
     "reportSent": "ລາຍງານຖືກສົ່ງແລ້ວ",
     "reportNotSent": "ບໍ່ສາມາດສົ່ງລາຍງານຂອງທ່ານໄດ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ ແລະລອງໃໝ່ອີກຄັ້ງ.",
     "reportPointerMessage": "ມີຂໍ້ຄວາມຖືກລາຍງານໃນ {courseName} — ເບິ່ງຄວາມປອດໄພ",
+    "useActivityImageAsChatBackground": "ໃຊ້ຮູບພາບກິດຈະກຳເປັນພື້ນຫຼັງການສົນທະນາ",
     "filteredNetworkBlockedTitle": "ເຄືອຂ່າຍນີ້ກຳລັງບລັອກ Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "ເຄືອຂ່າຍນີ້ກຳລັງບລັອກບາງສ່ວນຂອງ Pangea Chat",
     "filteredNetworkWhatCanIDo": "ຂ້ອຍສາມາດເຮັດຫຍັງໄດ້ແດ່?",

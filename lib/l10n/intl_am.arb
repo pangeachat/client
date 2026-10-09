@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-08 16:58:01.451315",
+    "@@last_modified": "2026-10-09 10:04:32.413546",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2397,6 +2397,7 @@
     "reportSent": "ሪፖርት ተልኳል",
     "reportNotSent": "ሪፖርትዎ ሊላክ አልቻለም። ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ።",
     "reportPointerMessage": "በ{courseName} ውስጥ መልዕክት ሪፖርት ተደርጓል — ደህንነትን ይመልከቱ",
+    "useActivityImageAsChatBackground": "የእንቅስቃሴ ምስልን እንደ ቻት ዳራ ተጠቀም",
     "filteredNetworkBlockedTitle": "ይህ አውታረ መረብ ፓንጄያ ቻትን እየከለከለ ነው",
     "filteredNetworkPartlyBlockedTitle": "ይህ አውታረ መረብ የፓንጄያ ቻት ክፍሎችን እየከለከለ ነው",
     "filteredNetworkWhatCanIDo": "ምን ማድረግ እችላለሁ?",

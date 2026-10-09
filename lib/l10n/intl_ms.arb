@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-08 16:58:17.889429",
+    "@@last_modified": "2026-10-09 10:04:37.817926",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Laporan dihantar",
     "reportNotSent": "Laporan anda tidak dapat dihantar. Semak sambungan anda dan cuba lagi.",
     "reportPointerMessage": "Mesej telah dilaporkan dalam {courseName} — lihat Keselamatan",
+    "useActivityImageAsChatBackground": "Gunakan imej aktiviti sebagai latar belakang sembang",
     "filteredNetworkBlockedTitle": "Rangkaian ini menyekat Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Rangkaian ini menyekat sebahagian daripada Pangea Chat",
     "filteredNetworkWhatCanIDo": "Apa yang boleh saya lakukan?",

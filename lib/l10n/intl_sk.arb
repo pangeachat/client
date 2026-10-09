@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-08 16:58:24.530122",
+    "@@last_modified": "2026-10-09 10:04:40.062044",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10897,6 +10897,7 @@
     "reportSent": "Nahlásenie odoslané",
     "reportNotSent": "Vaše nahlásenie sa nepodarilo odoslať. Skontrolujte pripojenie a skúste to znova.",
     "reportPointerMessage": "V kurze {courseName} bola nahlásená správa – pozrite si Bezpečnosť",
+    "useActivityImageAsChatBackground": "Použiť obrázok aktivity ako pozadie chatu",
     "filteredNetworkBlockedTitle": "Táto sieť blokuje Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Táto sieť blokuje časť Pangea Chatu",
     "filteredNetworkWhatCanIDo": "Čo môžem urobiť?",

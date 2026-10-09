@@ -50,6 +50,10 @@ enum AppSettings<T> {
   showPresences<bool>('chat.fluffy.show_presences', true),
   displayNavigationRail<bool>('chat.fluffy.display_navigation_rail', false),
   experimentalVoip<bool>('chat.fluffy.experimental_voip', false),
+  activityImageAsChatBackground<bool>(
+    'pangea.activity_image_as_chat_background',
+    false,
+  ),
   shareKeysWith<String>('chat.fluffy.share_keys_with_2', 'all'),
   noEncryptionWarningShown<bool>(
     'chat.fluffy.no_encryption_warning_shown',
@@ -80,6 +84,11 @@ enum AppSettings<T> {
 
   static SharedPreferences get store => _store!;
   static SharedPreferences? _store;
+
+  /// Notifies after any setting is written through `setItem`, so a screen that
+  /// is already open can follow a change made in settings.
+  static Listenable get changes => _changes;
+  static final _AppSettingsChanges _changes = _AppSettingsChanges();
 
   static Future<SharedPreferences> init({bool loadWebConfigFile = true}) async {
     if (AppSettings._store != null) return AppSettings.store;
@@ -144,7 +153,10 @@ extension AppSettingsBoolExtension on AppSettings<bool> {
     return value.asValue?.value ?? defaultValue;
   }
 
-  Future<void> setItem(bool value) => AppSettings.store.setBool(key, value);
+  Future<void> setItem(bool value) async {
+    await AppSettings.store.setBool(key, value);
+    AppSettings._changes.notify();
+  }
 }
 
 extension AppSettingsStringExtension on AppSettings<String> {
@@ -161,7 +173,10 @@ extension AppSettingsStringExtension on AppSettings<String> {
     return value.asValue?.value ?? defaultValue;
   }
 
-  Future<void> setItem(String value) => AppSettings.store.setString(key, value);
+  Future<void> setItem(String value) async {
+    await AppSettings.store.setString(key, value);
+    AppSettings._changes.notify();
+  }
 }
 
 extension AppSettingsIntExtension on AppSettings<int> {
@@ -178,7 +193,10 @@ extension AppSettingsIntExtension on AppSettings<int> {
     return value.asValue?.value ?? defaultValue;
   }
 
-  Future<void> setItem(int value) => AppSettings.store.setInt(key, value);
+  Future<void> setItem(int value) async {
+    await AppSettings.store.setInt(key, value);
+    AppSettings._changes.notify();
+  }
 }
 
 extension AppSettingsDoubleExtension on AppSettings<double> {
@@ -195,5 +213,12 @@ extension AppSettingsDoubleExtension on AppSettings<double> {
     return value.asValue?.value ?? defaultValue;
   }
 
-  Future<void> setItem(double value) => AppSettings.store.setDouble(key, value);
+  Future<void> setItem(double value) async {
+    await AppSettings.store.setDouble(key, value);
+    AppSettings._changes.notify();
+  }
+}
+
+class _AppSettingsChanges extends ChangeNotifier {
+  void notify() => notifyListeners();
 }

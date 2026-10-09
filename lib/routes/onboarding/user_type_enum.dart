@@ -1,5 +1,8 @@
 import 'package:fluffychat/l10n/l10n.dart';
 
+/// The value names are what [UserSettings.selfIdentifiedRole] stores in
+/// account data, and outreach outside the app reads them there, so renaming
+/// a value breaks those readers.
 enum UserType {
   student,
   teacher;

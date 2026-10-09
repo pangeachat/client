@@ -22,6 +22,15 @@ class UserTypeOnboardingStep extends OnboardingStep with CourseJoinStep {
       throw StateError("Must set user type to move to next step");
     }
 
+    // Stored before the course join, so a failed write stops the step before
+    // anything else happens: the navigation controller reports it, the view
+    // shows it, and the same button retries.
+    await state.accountUpdater.updateProfile(
+      (profile) => profile.copyWith(
+        userSettings: profile.userSettings.copyWith(selfIdentifiedRole: type),
+      ),
+    );
+
     final courseCode = state.courseProvider.getCachedJoinCode();
     if (courseCode != null) {
       try {

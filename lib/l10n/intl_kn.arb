@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-08 16:58:14.465141",
+    "@@last_modified": "2026-10-09 10:04:36.252317",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2397,6 +2397,7 @@
     "reportSent": "ವರದಿ ಕಳುಹಿಸಲಾಗಿದೆ",
     "reportNotSent": "ನಿಮ್ಮ ವರದಿಯನ್ನು ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
     "reportPointerMessage": "{courseName} ನಲ್ಲಿ ಸಂದೇಶವನ್ನು ವರದಿ ಮಾಡಲಾಗಿದೆ — ಸುರಕ್ಷತೆಯನ್ನು ನೋಡಿ",
+    "useActivityImageAsChatBackground": "ಚಾಟ್ ಹಿನ್ನೆಲೆಯಾಗಿ ಚಟುವಟಿಕೆಯ ಚಿತ್ರವನ್ನು ಬಳಸಿ",
     "filteredNetworkBlockedTitle": "ಈ ನೆಟ್‌ವರ್ಕ್ ಪ್ಯಾಂಗಿಯಾ ಚಾಟ್ ಅನ್ನು ನಿರ್ಬಂಧಿಸುತ್ತಿದೆ",
     "filteredNetworkPartlyBlockedTitle": "ಈ ನೆಟ್‌ವರ್ಕ್ ಪ್ಯಾಂಗಿಯಾ ಚಾಟ್‌ನ ಭಾಗವನ್ನು ನಿರ್ಬಂಧಿಸುತ್ತಿದೆ",
     "filteredNetworkWhatCanIDo": "ನಾನು ಏನು ಮಾಡಬಹುದು?",

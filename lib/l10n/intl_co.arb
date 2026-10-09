@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-08 16:58:03.425521",
+    "@@last_modified": "2026-10-09 10:04:32.538136",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Segnalazione inviata",
     "reportNotSent": "A vostra segnalazione ùn hà pussutu esse inviata. Verificate a vostra cunnessione è riprovate.",
     "reportPointerMessage": "Un messagiu hè statu segnalatu in {courseName} — vede Sicurezza",
+    "useActivityImageAsChatBackground": "Aduprà l'imagine di l'attività cum'è fondu di chat",
     "filteredNetworkBlockedTitle": "Sta reta bluccheghja Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Sta reta bluccheghja una parte di Pangea Chat",
     "filteredNetworkWhatCanIDo": "Chì possu fà?",

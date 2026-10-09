@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-08 16:58:29.833024",
+    "@@last_modified": "2026-10-09 10:04:41.611014",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2397,6 +2397,7 @@
     "reportSent": "دوكلات يوللاندى",
     "reportNotSent": "دوكلاتىڭىز يوللانمىدى. ئۇلىنىشىڭىزنى تەكشۈرۈپ قايتا سىناڭ.",
     "reportPointerMessage": "{courseName} دە بىر ئۇچۇر دوكلات قىلىندى — بىخەتەرلىكنى كۆرۈڭ",
+    "useActivityImageAsChatBackground": "پائالىيەت رەسىمىنى پاراڭ ئارقا كۆرۈنۈشى قىلىپ ئىشلەت",
     "filteredNetworkBlockedTitle": "بۇ تور Pangea پاراڭنى چەكلەۋاتىدۇ",
     "filteredNetworkPartlyBlockedTitle": "بۇ تور Pangea پاراڭنىڭ بىر قىسمىنى چەكلەۋاتىدۇ",
     "filteredNetworkWhatCanIDo": "مەن نېمە قىلالايمەن؟",

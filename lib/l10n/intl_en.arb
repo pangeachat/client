@@ -5732,6 +5732,10 @@
     "@courseCodeSavedExplanation": {
         "description": "Line under the saved-course-code card on the sign-up and login pages."
     },
+    "useActivityImageAsChatBackground": "Use activity image as chat background",
+    "@useActivityImageAsChatBackground": {
+        "description": "Style-settings switch that shows a faint copy of the activity's image behind an activity chat once the learner scrolls past the image at the top."
+    },
     "filteredNetworkBlockedTitle": "This network is blocking Pangea Chat",
     "@filteredNetworkBlockedTitle": {
         "description": "Banner and guidance title when the network blocks the chat server or the Pangea API."

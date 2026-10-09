@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-08 16:58:07.950149",
+    "@@last_modified": "2026-10-09 10:04:59.020986",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2397,6 +2397,7 @@
     "reportSent": "રિપોર્ટ મોકલી દેવાયો છે",
     "reportNotSent": "તમારો રિપોર્ટ મોકલી શકાયો નથી. તમારું કનેક્શન તપાસો અને ફરી પ્રયાસ કરો.",
     "reportPointerMessage": "{courseName}માં એક મેસેજની જાણ કરવામાં આવી હતી — સુરક્ષા જુઓ",
+    "useActivityImageAsChatBackground": "ચેટ બેકગ્રાઉન્ડ તરીકે પ્રવૃત્તિની છબીનો ઉપયોગ કરો",
     "filteredNetworkBlockedTitle": "આ નેટવર્ક પાંગેઆ ચેટને બ્લોક કરી રહ્યું છે",
     "filteredNetworkPartlyBlockedTitle": "આ નેટવર્ક પાંગેઆ ચેટના ભાગને બ્લોક કરી રહ્યું છે",
     "filteredNetworkWhatCanIDo": "હું શું કરી શકું?",

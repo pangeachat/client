@@ -1359,7 +1359,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-08 16:58:10.346270",
+    "@@last_modified": "2026-10-09 10:04:35.008948",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10888,6 +10888,7 @@
     "reportSent": "Reporto inviate",
     "reportNotSent": "Tu reporto non poteva esser inviate. Verifica tu connexion e reprova.",
     "reportPointerMessage": "Un message esseva reportate in {courseName} — vide Securitate",
+    "useActivityImageAsChatBackground": "Usar imagine de activitate como fundo de chat",
     "filteredNetworkBlockedTitle": "Iste rete bloca Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Iste rete bloca un parte de Pangea Chat",
     "filteredNetworkWhatCanIDo": "Que pote io facer?",

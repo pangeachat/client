@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-08 16:58:03.130735",
+    "@@last_modified": "2026-10-09 10:04:32.750717",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10446,6 +10446,7 @@
     "reportSent": "Hlášení odesláno",
     "reportNotSent": "Vaše hlášení se nepodařilo odeslat. Zkontrolujte připojení a zkuste to znovu.",
     "reportPointerMessage": "Zpráva byla nahlášena v {courseName} – viz Bezpečnost",
+    "useActivityImageAsChatBackground": "Použít obrázek aktivity jako pozadí chatu",
     "filteredNetworkBlockedTitle": "Tato síť blokuje Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Tato síť blokuje část Pangea Chatu",
     "filteredNetworkWhatCanIDo": "Co mohu dělat?",

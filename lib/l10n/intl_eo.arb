@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-08 16:58:05.014978",
+    "@@last_modified": "2026-10-09 10:04:32.912441",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10897,6 +10897,7 @@
     "reportSent": "Raporto sendita",
     "reportNotSent": "Via raporto ne povis esti sendita. Kontrolu vian konekton kaj reprovu.",
     "reportPointerMessage": "Mesaĝo estis raportita en {courseName} — vidu Sekurecon",
+    "useActivityImageAsChatBackground": "Uzi agadan bildon kiel babilejan fonon",
     "filteredNetworkBlockedTitle": "Ĉi tiu reto blokas Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Ĉi tiu reto parte blokas Pangea Chat",
     "filteredNetworkWhatCanIDo": "Kion mi povas fari?",

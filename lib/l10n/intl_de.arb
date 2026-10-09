@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-08 16:58:03.325575",
+    "@@last_modified": "2026-10-09 10:04:33.383751",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9939,6 +9939,7 @@
     "reportSent": "Bericht gesendet",
     "reportNotSent": "Ihr Bericht konnte nicht gesendet werden. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
     "reportPointerMessage": "Eine Nachricht wurde in {courseName} gemeldet – siehe Sicherheit",
+    "useActivityImageAsChatBackground": "Aktivitätsbild als Chat-Hintergrund verwenden",
     "filteredNetworkBlockedTitle": "Dieses Netzwerk blockiert Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Dieses Netzwerk blockiert einen Teil von Pangea Chat",
     "filteredNetworkWhatCanIDo": "Was kann ich tun?",

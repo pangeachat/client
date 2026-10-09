@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-08 16:58:07.025637",
+    "@@last_modified": "2026-10-09 10:04:33.817822",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9952,6 +9952,7 @@
     "reportSent": "Informe enviado",
     "reportNotSent": "Non se puido enviar o teu informe. Comproba a túa conexión e téntao de novo.",
     "reportPointerMessage": "Informouse dunha mensaxe en {courseName} — consulta Seguridade",
+    "useActivityImageAsChatBackground": "Usar a imaxe da actividade como fondo do chat",
     "filteredNetworkBlockedTitle": "Esta rede está a bloquear Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Esta rede está a bloquear parte de Pangea Chat",
     "filteredNetworkWhatCanIDo": "Que podo facer?",

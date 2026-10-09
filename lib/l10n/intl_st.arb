@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-08 16:58:26.458126",
+    "@@last_modified": "2026-10-09 10:04:40.690951",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Tlaleho e rometsoe",
     "reportNotSent": "Tlaleho ea hau e ne e ke ke ea romeloa. Lekola khokahano ea hau 'me u leke hape.",
     "reportPointerMessage": "Molaetsa o tlalehiloe ho {courseName} — bona Polokeho",
+    "useActivityImageAsChatBackground": "Sebelisa setšoantšo sa mosebetsi e le bokamorao ba moqoqo",
     "filteredNetworkBlockedTitle": "Marangrang ana a thibela Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Marangrang ana a thibela karolo ea Pangea Chat",
     "filteredNetworkWhatCanIDo": "Nka etsa eng?",

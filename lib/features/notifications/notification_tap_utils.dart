@@ -139,29 +139,14 @@ class NotificationTapUtil {
     required String activityId,
   }) {
     try {
-      final session = client.getRoomById(sessionRoomId);
-      // Pings sent before #8138 carry the course space id instead of the
-      // session room id, so a space here falls through to the activity page.
-      if (session != null &&
-          !session.isSpace &&
-          session.membership == Membership.join) {
-        router.go(
-          WorkspaceNav.openRoomById(
-            router.routeInformationProvider.value.uri,
-            sessionRoomId,
-          ),
-        );
-        return;
-      }
-
       router.go(
-        WorkspaceNav.openCourseActivity(
-          roomId,
-          activityId,
-          roomId: sessionRoomId,
+        client.coursePingLocation(
+          router.routeInformationProvider.value.uri,
+          courseRoomId: roomId,
+          sessionRoomId: sessionRoomId,
+          activityId: activityId,
         ),
       );
-      return;
     } catch (err, s) {
       ErrorHandler.logError(e: err, s: s, data: {'roomId': sessionRoomId});
     }
@@ -307,5 +292,30 @@ class NotificationTapUtil {
     } else {
       router.go(WorkspaceNav.openRoomById(uri, roomId));
     }
+  }
+}
+
+extension CoursePingClientExtension on Client {
+  /// Where a course ping opens: the session itself once this user has joined
+  /// it, otherwise the activity in its course with the session bound.
+  String coursePingLocation(
+    Uri current, {
+    required String courseRoomId,
+    required String sessionRoomId,
+    required String activityId,
+  }) {
+    final session = getRoomById(sessionRoomId);
+    // Pings sent before #8138 carry the course space id instead of the
+    // session room id, so a space here falls through to the activity page.
+    if (session != null &&
+        !session.isSpace &&
+        session.membership == Membership.join) {
+      return WorkspaceNav.openRoomById(current, sessionRoomId);
+    }
+    return WorkspaceNav.openCourseActivity(
+      courseRoomId,
+      activityId,
+      roomId: sessionRoomId,
+    );
   }
 }

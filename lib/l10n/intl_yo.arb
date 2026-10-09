@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-08 16:58:31.304004",
+    "@@last_modified": "2026-10-09 10:04:42.223970",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Ìròyìn ti fi ránṣẹ́",
     "reportNotSent": "Kò ṣeé fi ìròyìn rẹ ránṣẹ́. Ṣàyẹ̀wò àsopọ̀ rẹ, kí o sì tún gbìyànjú.",
     "reportPointerMessage": "A ti fi ìròyìn ránṣẹ́ nípa ìfọ̀rọ̀wéránṣẹ́ kan nínú {courseName} — wo Ààbò",
+    "useActivityImageAsChatBackground": "Lo aworan iṣẹ bi abẹlẹ iwiregbe",
     "filteredNetworkBlockedTitle": "Nẹtiwọọki yii n dina Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Nẹtiwọọki yii n dina apakan Pangea Chat",
     "filteredNetworkWhatCanIDo": "Kini mo le ṣe?",

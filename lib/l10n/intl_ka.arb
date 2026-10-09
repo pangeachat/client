@@ -1934,7 +1934,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-08 16:58:12.862867",
+    "@@last_modified": "2026-10-09 10:04:35.881048",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10852,6 +10852,7 @@
     "reportSent": "მოხსენება გაგზავნილია",
     "reportNotSent": "თქვენი მოხსენების გაგზავნა ვერ მოხერხდა. შეამოწმეთ კავშირი და სცადეთ ხელახლა.",
     "reportPointerMessage": "შეტყობინება მოხსენებულია {courseName}-ში — იხილეთ უსაფრთხოება",
+    "useActivityImageAsChatBackground": "აქტივობის სურათის გამოყენება ჩეთის ფონად",
     "filteredNetworkBlockedTitle": "ეს ქსელი ბლოკავს Pangea Chat-ს",
     "filteredNetworkPartlyBlockedTitle": "ეს ქსელი ბლოკავს Pangea Chat-ის ნაწილს",
     "filteredNetworkWhatCanIDo": "რა შემიძლია გავაკეთო?",

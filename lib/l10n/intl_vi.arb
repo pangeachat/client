@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-08 16:58:28.877727",
+    "@@last_modified": "2026-10-09 10:04:41.797785",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7250,6 +7250,7 @@
     "reportSent": "Đã gửi báo cáo",
     "reportNotSent": "Không thể gửi báo cáo của bạn. Vui lòng kiểm tra kết nối và thử lại.",
     "reportPointerMessage": "Một tin nhắn đã được báo cáo trong {courseName} — xem mục An toàn",
+    "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện",
     "filteredNetworkBlockedTitle": "Mạng này đang chặn Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Mạng này đang chặn một phần Pangea Chat",
     "filteredNetworkWhatCanIDo": "Tôi có thể làm gì?",

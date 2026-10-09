@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-08 16:58:26.550308",
+    "@@last_modified": "2026-10-09 10:04:40.751611",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Ripoti imetumwa",
     "reportNotSent": "Ripoti yako haikuweza kutumwa. Angalia muunganisho wako na ujaribu tena.",
     "reportPointerMessage": "Ujumbe uliripotiwa katika {courseName} — angalia Usalama",
+    "useActivityImageAsChatBackground": "Tumia picha ya shughuli kama mandharinyuma ya gumzo",
     "filteredNetworkBlockedTitle": "Mtandao huu unazuia Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Mtandao huu unazuia sehemu ya Pangea Chat",
     "filteredNetworkWhatCanIDo": "Ninaweza kufanya nini?",

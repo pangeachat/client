@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-08 16:58:21.565800",
+    "@@last_modified": "2026-10-09 10:04:38.948744",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10896,6 +10896,7 @@
     "reportSent": "Denúncia enviada",
     "reportNotSent": "Não foi possível enviar sua denúncia. Verifique sua conexão e tente novamente.",
     "reportPointerMessage": "Uma mensagem foi denunciada em {courseName} — veja Segurança",
+    "useActivityImageAsChatBackground": "Usar imagem da atividade como plano de fundo do chat",
     "filteredNetworkBlockedTitle": "Esta rede está bloqueando o Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Esta rede está bloqueando parte do Pangea Chat",
     "filteredNetworkWhatCanIDo": "O que posso fazer?",

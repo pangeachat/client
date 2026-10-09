@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
+import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/routes/onboarding/account_updater.dart';
 import 'package:fluffychat/routes/onboarding/avatar_provider.dart';
 import 'package:fluffychat/routes/onboarding/course_provider.dart';
@@ -49,7 +50,11 @@ void main() {
 
   tearDownAll(() => client.dispose());
 
-  Future<void> pumpStep(WidgetTester tester, UserType type) async {
+  Future<void> pumpStep(
+    WidgetTester tester,
+    UserType type, {
+    Object? error,
+  }) async {
     final state = OnboardingStateController(
       accountUpdater: MockAccountUpdater(),
       courseProvider: MockCourseProvider(),
@@ -70,6 +75,7 @@ void main() {
               maxRemainingSteps: 1,
             ),
             loading: false,
+            error: error,
             hasNextStep: false,
             forward: () {},
           ),
@@ -78,6 +84,16 @@ void main() {
     );
     await tester.pumpAndSettle();
   }
+
+  // #9445 — a failed profile save shows above the button, so the person knows
+  // to press it again.
+  testWidgets('a failed save is shown above the button', (tester) async {
+    await pumpStep(tester, UserType.student);
+    expect(find.byType(ErrorIndicator), findsNothing);
+
+    await pumpStep(tester, UserType.student, error: Exception('save failed'));
+    expect(find.byType(ErrorIndicator), findsOneWidget);
+  });
 
   testWidgets('student sees the reassurance under the title', (tester) async {
     await pumpStep(tester, UserType.student);

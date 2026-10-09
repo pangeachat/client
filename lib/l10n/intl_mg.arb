@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-08 16:58:17.183909",
+    "@@last_modified": "2026-10-09 10:04:37.312922",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Tatitra nalefa",
     "reportNotSent": "Tsy afaka nalefa ny tatitrao. Hamarino ny fifandraisanao ary andramo indray.",
     "reportPointerMessage": "Nisy hafatra notaterina tao amin'ny {courseName} — jereo ny Fiarovana",
+    "useActivityImageAsChatBackground": "Ampiasaina ny sarin'ny asa ho toy ny fiavian'ny chat",
     "filteredNetworkBlockedTitle": "Manakana ny Pangea Chat ity tambajotra ity",
     "filteredNetworkPartlyBlockedTitle": "Manakana ampahany amin'ny Pangea Chat ity tambajotra ity",
     "filteredNetworkWhatCanIDo": "Inona no azoko atao?",

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-08 16:58:00.882369",
+    "@@last_modified": "2026-10-09 10:04:31.779565",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10580,6 +10580,7 @@
     "reportSent": "রিপোর্ট পাঠানো হয়েছে",
     "reportNotSent": "আপনার রিপোর্ট পাঠানো যায়নি। আপনার সংযোগ পরীক্ষা করুন এবং আবার চেষ্টা করুন।",
     "reportPointerMessage": "{courseName}-এ একটি মেসেজ রিপোর্ট করা হয়েছে — সেফটি দেখুন",
+    "useActivityImageAsChatBackground": "চ্যাট ব্যাকগ্রাউন্ড হিসেবে অ্যাক্টিভিটি ইমেজ ব্যবহার করুন",
     "filteredNetworkBlockedTitle": "এই নেটওয়ার্কটি প্যানগিয়া চ্যাট ব্লক করছে",
     "filteredNetworkPartlyBlockedTitle": "এই নেটওয়ার্কটি প্যানগিয়া চ্যাটের কিছু অংশ ব্লক করছে",
     "filteredNetworkWhatCanIDo": "আমি কী করতে পারি?",

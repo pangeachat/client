@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-08 16:58:25.330558",
+    "@@last_modified": "2026-10-09 10:04:40.689813",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Raporti u dërgua",
     "reportNotSent": "Raporti juaj nuk mund të dërgohej. Kontrolloni lidhjen tuaj dhe provoni përsëri.",
     "reportPointerMessage": "Një mesazh u raportua në {courseName} — shihni Sigurinë",
+    "useActivityImageAsChatBackground": "Përdor imazhin e aktivitetit si sfond bisede",
     "filteredNetworkBlockedTitle": "Ky rrjet po bllokon Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Ky rrjet po bllokon një pjesë të Pangea Chat",
     "filteredNetworkWhatCanIDo": "Çfarë mund të bëj?",

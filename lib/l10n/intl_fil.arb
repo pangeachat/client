@@ -2077,7 +2077,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-08 16:58:05.786472",
+    "@@last_modified": "2026-10-09 10:04:33.599916",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10812,6 +10812,7 @@
     "reportSent": "Naipadala ang ulat",
     "reportNotSent": "Hindi maipadala ang iyong ulat. Tingnan ang iyong koneksyon at subukang muli.",
     "reportPointerMessage": "May naiulat na mensahe sa {courseName} — tingnan ang Kaligtasan",
+    "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat",
     "filteredNetworkBlockedTitle": "Hinarangan ng network na ito ang Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Hinarangan ng network na ito ang bahagi ng Pangea Chat",
     "filteredNetworkWhatCanIDo": "Ano ang puwede kong gawin?",

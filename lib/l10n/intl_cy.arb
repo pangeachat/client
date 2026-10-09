@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-08 16:58:04.338742",
+    "@@last_modified": "2026-10-09 10:04:32.811303",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Adroddiad wedi'i anfon",
     "reportNotSent": "Ni ellid anfon eich adroddiad. Gwiriwch eich cysylltiad a rhowch gynnig arall arni.",
     "reportPointerMessage": "Adroddwyd am neges yn {courseName} — gweler Diogelwch",
+    "useActivityImageAsChatBackground": "Defnyddio delwedd gweithgaredd fel cefndir sgwrsio",
     "filteredNetworkBlockedTitle": "Mae'r rhwydwaith hwn yn blocio Sgwrs Pangea",
     "filteredNetworkPartlyBlockedTitle": "Mae'r rhwydwaith hwn yn blocio rhan o Sgwrs Pangea",
     "filteredNetworkWhatCanIDo": "Beth alla i ei wneud?",

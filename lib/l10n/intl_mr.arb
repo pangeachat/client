@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-10-08 16:58:18.272984",
+    "@@last_modified": "2026-10-09 10:04:37.748500",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2397,6 +2397,7 @@
     "reportSent": "अहवाल पाठवला",
     "reportNotSent": "तुमचा अहवाल पाठवला जाऊ शकला नाही. तुमचे कनेक्शन तपासा आणि पुन्हा प्रयत्न करा.",
     "reportPointerMessage": "{courseName} मध्ये एका संदेशाची तक्रार करण्यात आली आहे — सुरक्षितता पहा",
+    "useActivityImageAsChatBackground": "चॅटची पार्श्वभूमी म्हणून अ‍ॅक्टिव्हिटी इमेज वापरा",
     "filteredNetworkBlockedTitle": "हे नेटवर्क पांगिया चॅटला ब्लॉक करत आहे",
     "filteredNetworkPartlyBlockedTitle": "हे नेटवर्क पांगिया चॅटचा काही भाग ब्लॉक करत आहे",
     "filteredNetworkWhatCanIDo": "मी काय करू शकतो?",

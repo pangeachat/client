@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-08 16:58:30.518425",
+    "@@last_modified": "2026-10-09 10:04:42.225124",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9952,6 +9952,7 @@
     "reportSent": "举报已发送",
     "reportNotSent": "无法发送您的举报。请检查您的网络连接，然后重试。",
     "reportPointerMessage": "在 {courseName} 中举报了一条消息 — 请查看“安全”",
+    "useActivityImageAsChatBackground": "使用活动图片作为聊天背景",
     "filteredNetworkBlockedTitle": "此网络正在阻止 Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "此网络正在部分阻止 Pangea Chat",
     "filteredNetworkWhatCanIDo": "我能做什么？",

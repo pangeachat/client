@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-08 16:58:32.672708",
+    "@@last_modified": "2026-10-09 10:04:42.573848",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2397,6 +2397,7 @@
     "reportSent": "באריכט געשיקט",
     "reportNotSent": "אײַער באַריכט קען נישט געשיקט ווערן. קוקט אײַער פֿאַרבינדונג און פּרוּווט ווידער.",
     "reportPointerMessage": "אַ מעלדונג איז געמאלדן געוואָרן אין {courseName} — זעט זיכערקייט",
+    "useActivityImageAsChatBackground": "ניצן טעטיקייט בילד ווי שמועס הינטערגרונט",
     "filteredNetworkBlockedTitle": "די נעץ בלאקירט פּאַנגעאַ טשאַט",
     "filteredNetworkPartlyBlockedTitle": "די נעץ בלאקירט א טייל פון פּאַנגעאַ טשאַט",
     "filteredNetworkWhatCanIDo": "וואָס קען איך טאָן?",

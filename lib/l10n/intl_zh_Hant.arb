@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-08 16:58:30.700037",
+    "@@last_modified": "2026-10-09 10:04:42.244615",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10058,6 +10058,7 @@
     "reportSent": "檢舉已送出",
     "reportNotSent": "您的檢舉無法送出。請檢查您的連線並再試一次。",
     "reportPointerMessage": "在「{courseName}」中有一則訊息被檢舉了 — 請查看「安全」",
+    "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
     "filteredNetworkBlockedTitle": "此網路正在封鎖 Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "此網路正在部分封鎖 Pangea Chat",
     "filteredNetworkWhatCanIDo": "我該怎麼辦？",

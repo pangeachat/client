@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-08 16:58:07.915209",
+    "@@last_modified": "2026-10-09 10:04:34.302965",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10866,6 +10866,7 @@
     "reportSent": "הדיווח נשלח",
     "reportNotSent": "הדיווח שלך לא נשלח. בדוק את החיבור שלך ונסה שוב.",
     "reportPointerMessage": "הודעה דווחה ב{courseName} — ראה בטיחות",
+    "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט",
     "filteredNetworkBlockedTitle": "רשת זו חוסמת את Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "רשת זו חוסמת חלק מ-Pangea Chat",
     "filteredNetworkWhatCanIDo": "מה אפשר לעשות?",

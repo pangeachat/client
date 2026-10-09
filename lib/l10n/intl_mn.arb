@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-08 16:58:19.063204",
+    "@@last_modified": "2026-10-09 10:04:37.343019",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Мэдэгдэл илгээгдлээ",
     "reportNotSent": "Таны мэдэгдлийг илгээх боломжгүй байна. Холболтоо шалгаад дахин оролдоно уу.",
     "reportPointerMessage": "{courseName} хичээл дээрх мессежийг мэдэгдсэн байна — Аюулгүй байдлыг үзнэ үү",
+    "useActivityImageAsChatBackground": "Үйл ажиллагааны зургийг чатын дэвсгэр болгон ашиглах",
     "filteredNetworkBlockedTitle": "Энэ сүлжээ Pangea Chat-ыг хааж байна",
     "filteredNetworkPartlyBlockedTitle": "Энэ сүлжээ Pangea Chat-ын зарим хэсгийг хааж байна",
     "filteredNetworkWhatCanIDo": "Би юу хийж чадах вэ?",

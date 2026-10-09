@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-08 16:58:08.165807",
+    "@@last_modified": "2026-10-09 10:04:33.967310",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Aithisg air a cur",
     "reportNotSent": "Cha b' urrainn dhuinn an aithisg agad a chur. Thoir sùil air a' cheangal agad is feuch ris a-rithist.",
     "reportPointerMessage": "Chaidh teachdaireachd aithris ann an {courseName} — faic Sàbhailteachd",
+    "useActivityImageAsChatBackground": "Cleachd dealbh gnìomhachd mar chùl-raon cabadaich",
     "filteredNetworkBlockedTitle": "Tha an lìonra seo a' bacadh Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Tha an lìonra seo a' bacadh pàirt de Pangea Chat",
     "filteredNetworkWhatCanIDo": "Dè as urrainn dhomh a dhèanamh?",

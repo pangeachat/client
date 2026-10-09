@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-08 16:58:22.699484",
+    "@@last_modified": "2026-10-09 10:04:39.411699",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10924,6 +10924,7 @@
     "reportSent": "Жалоба отправлена",
     "reportNotSent": "Не удалось отправить жалобу. Проверьте подключение и повторите попытку.",
     "reportPointerMessage": "Сообщение было отправлено в {courseName} — см. раздел «Безопасность»",
+    "useActivityImageAsChatBackground": "Использовать изображение активности в качестве фона чата",
     "filteredNetworkBlockedTitle": "Эта сеть блокирует Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Эта сеть частично блокирует Pangea Chat",
     "filteredNetworkWhatCanIDo": "Что я могу сделать?",

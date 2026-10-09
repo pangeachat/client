@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-08 16:58:12.184668",
+    "@@last_modified": "2026-10-09 10:04:35.978726",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Laporan dikirim",
     "reportNotSent": "Laporanmu ora bisa dikirim. Priksa sambunganmu lan coba maneh.",
     "reportPointerMessage": "Ana pesen sing dilaporake ing {courseName} — deleng Keamanan",
+    "useActivityImageAsChatBackground": "Gunakake gambar aktivitas minangka latar mburi obrolan",
     "filteredNetworkBlockedTitle": "Jaringan iki mblokir Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Jaringan iki mblokir sebagian Pangea Chat",
     "filteredNetworkWhatCanIDo": "Apa sing bisa tak lakoni?",

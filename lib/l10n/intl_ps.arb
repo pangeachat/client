@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-08 16:58:22.950144",
+    "@@last_modified": "2026-10-09 10:04:38.945286",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2397,6 +2397,7 @@
     "reportSent": "راپور ولېږل شو",
     "reportNotSent": "ستاسو راپور نشو لېږل کېدای. خپله اړیکه وګورئ او بیا هڅه وکړئ.",
     "reportPointerMessage": "په {courseName} کې یو پیغام راپور شوی — خوندیتوب وګورئ",
+    "useActivityImageAsChatBackground": "د فعالیت انځور د چیټ شالید په توګه وکاروئ",
     "filteredNetworkBlockedTitle": "دا شبکه پنګیا چیټ بندوي",
     "filteredNetworkPartlyBlockedTitle": "دا شبکه د پنګیا چیټ یوه برخه بندوي",
     "filteredNetworkWhatCanIDo": "زه څه کولی شم؟",

@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-08 16:58:20.342398",
+    "@@last_modified": "2026-10-09 10:04:37.878891",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2397,6 +2397,7 @@
     "reportSent": "အစီရင်ခံစာ ပေးပို့ပြီးပါပြီ",
     "reportNotSent": "သင်၏အစီရင်ခံစာကို ပေးပို့နိုင်ခြင်းမရှိပါ။ သင်၏အင်တာနက်ချိတ်ဆက်မှုကို စစ်ဆေးပြီး ထပ်မံကြိုးစားပါ။",
     "reportPointerMessage": "{courseName} တွင် မက်ဆေ့ချ်တစ်ခုကို အစီရင်ခံထားသည် — ဘေးကင်းရေးကို ကြည့်ပါ",
+    "useActivityImageAsChatBackground": "လုပ်ဆောင်ချက်ပုံကို ချတ်နောက်ခံအဖြစ် အသုံးပြုရန်",
     "filteredNetworkBlockedTitle": "ဤကွန်ရက်က Pangea Chat ကို ပိတ်ဆို့ထားသည်",
     "filteredNetworkPartlyBlockedTitle": "ဤကွန်ရက်က Pangea Chat ၏ အချို့အပိုင်းကို ပိတ်ဆို့ထားသည်",
     "filteredNetworkWhatCanIDo": "ဘာလုပ်ရမလဲ",

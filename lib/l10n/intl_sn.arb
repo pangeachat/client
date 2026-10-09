@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-08 16:58:25.396550",
+    "@@last_modified": "2026-10-09 10:04:39.919950",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Chirevo chatumirwa",
     "reportNotSent": "Chirevo chako hachina kutumirwa. Tarisa internet yako woedza zvakare.",
     "reportPointerMessage": "Meseji yakashumwa mu{courseName} — ona Kuchengeteka",
+    "useActivityImageAsChatBackground": "Shandisa mufananidzo wechiitiko sehwaro hwechat",
     "filteredNetworkBlockedTitle": "Iyi network iri kuvharira Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Iyi network iri kuvharira chikamu chePangea Chat",
     "filteredNetworkWhatCanIDo": "Ndingaita sei?",

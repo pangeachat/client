@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-08 16:58:08.201452",
+    "@@last_modified": "2026-10-09 10:04:34.308134",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Ua hoʻouna ʻia ka hōʻike",
     "reportNotSent": "ʻAʻole hiki ke hoʻouna ʻia kāu hōʻike. E nānā i kāu pili pūnaewele a e hoʻāʻo hou.",
     "reportPointerMessage": "Ua hōʻike ʻia kekahi leka ma {courseName} — e nānā i ka Palekana",
+    "useActivityImageAsChatBackground": "E hoʻohana i ke kiʻi hana ma ke ʻano he kāʻei kua kamaʻilio",
     "filteredNetworkBlockedTitle": "Ke ālai nei kēia pūnaewele iā Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Ke ālai hapa nei kēia pūnaewele iā Pangea Chat",
     "filteredNetworkWhatCanIDo": "He aha kaʻu e hana ai?",

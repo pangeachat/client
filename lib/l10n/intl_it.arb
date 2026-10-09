@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-08 16:58:10.965684",
+    "@@last_modified": "2026-10-09 10:04:35.175820",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10025,6 +10025,7 @@
     "reportSent": "Segnalazione inviata",
     "reportNotSent": "Impossibile inviare la segnalazione. Controlla la tua connessione e riprova.",
     "reportPointerMessage": "È stato segnalato un messaggio in {courseName} — vedi Sicurezza",
+    "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
     "filteredNetworkBlockedTitle": "Questa rete sta bloccando Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Questa rete sta bloccando parte di Pangea Chat",
     "filteredNetworkWhatCanIDo": "Cosa posso fare?",

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-08 16:58:22.574045",
+    "@@last_modified": "2026-10-09 10:04:39.270057",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10684,6 +10684,7 @@
     "reportSent": "Raport trimis",
     "reportNotSent": "Raportul tău nu a putut fi trimis. Verifică-ți conexiunea și încearcă din nou.",
     "reportPointerMessage": "Un mesaj a fost raportat în {courseName} — vezi Siguranță",
+    "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal de chat",
     "filteredNetworkBlockedTitle": "Această rețea blochează Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Această rețea blochează o parte din Pangea Chat",
     "filteredNetworkWhatCanIDo": "Ce pot face?",

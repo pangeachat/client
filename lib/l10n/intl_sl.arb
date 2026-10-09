@@ -1799,7 +1799,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-08 16:58:24.128490",
+    "@@last_modified": "2026-10-09 10:04:39.850739",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10897,6 +10897,7 @@
     "reportSent": "Poročilo poslano",
     "reportNotSent": "Vašega poročila ni bilo mogoče poslati. Preverite povezavo in poskusite znova.",
     "reportPointerMessage": "Sporočilo je bilo prijavljeno v {courseName} – glejte Varnost",
+    "useActivityImageAsChatBackground": "Uporabi sliko dejavnosti kot ozadje klepeta",
     "filteredNetworkBlockedTitle": "To omrežje blokira Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "To omrežje delno blokira Pangea Chat",
     "filteredNetworkWhatCanIDo": "Kaj lahko storim?",

@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-08 16:58:12.359950",
+    "@@last_modified": "2026-10-09 10:04:35.365383",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Tilkynning send",
     "reportNotSent": "Ekki tókst að senda tilkynninguna þína. Athugaðu nettenginguna þína og reyndu aftur.",
     "reportPointerMessage": "Skilaboð voru tilkynnt í {courseName} — sjá Öryggi",
+    "useActivityImageAsChatBackground": "Nota virknimynd sem bakgrunn spjalls",
     "filteredNetworkBlockedTitle": "Þetta net er að loka fyrir Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Þetta net er að loka fyrir hluta af Pangea Chat",
     "filteredNetworkWhatCanIDo": "Hvað get ég gert?",

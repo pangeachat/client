@@ -46,6 +46,7 @@ class OnboardingStepView extends StatelessWidget {
       return ProfileSetupStepView(
         step: step,
         loading: loading,
+        error: error,
         hasNextStep: hasNextStep,
         forward: forward,
       );
@@ -55,6 +56,7 @@ class OnboardingStepView extends StatelessWidget {
       return UserTypeStepView(
         step: step,
         loading: loading,
+        error: error,
         hasNextStep: hasNextStep,
         forward: forward,
       );
@@ -94,6 +96,7 @@ class OnboardingStepView extends StatelessWidget {
       return PickCefrLevelStepView(
         step: step,
         loading: loading,
+        error: error,
         hasNextStep: hasNextStep,
         forward: forward,
       );
@@ -103,6 +106,7 @@ class OnboardingStepView extends StatelessWidget {
       return CustomCourseStepView(
         step: step,
         loading: loading,
+        error: error,
         hasNextStep: hasNextStep,
         forward: forward,
         skip: skip,

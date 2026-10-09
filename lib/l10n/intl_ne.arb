@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-08 16:58:20.205935",
+    "@@last_modified": "2026-10-09 10:04:38.196794",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2397,6 +2397,7 @@
     "reportSent": "रिपोर्ट पठाइयो",
     "reportNotSent": "तपाईंको रिपोर्ट पठाउन सकिएन। आफ्नो इन्टरनेट जडान जाँच गर्नुहोस् र फेरि प्रयास गर्नुहोस्।",
     "reportPointerMessage": "{courseName} मा एउटा सन्देश रिपोर्ट गरिएको छ — सुरक्षा हेर्नुहोस्",
+    "useActivityImageAsChatBackground": "च्याट पृष्ठभूमिको रूपमा गतिविधि छवि प्रयोग गर्नुहोस्",
     "filteredNetworkBlockedTitle": "यो नेटवर्कले पाङ्गिया च्याट ब्लक गर्दैछ",
     "filteredNetworkPartlyBlockedTitle": "यो नेटवर्कले पाङ्गिया च्याटको केही भाग ब्लक गर्दैछ",
     "filteredNetworkWhatCanIDo": "मैले के गर्न सक्छु?",

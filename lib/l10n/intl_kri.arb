@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-08 16:58:14.397141",
+    "@@last_modified": "2026-10-09 10:04:36.060917",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Dɛn dɔn sɛn di ripot",
     "reportNotSent": "Yu ripot nɔ go dɔn sɛn. Chɛk yu kɔnɛkshɔn ɛn tray igen.",
     "reportPointerMessage": "Dɛn ripot wan mɛsej insay {courseName} — si Sefti",
+    "useActivityImageAsChatBackground": "Yuz aktiviti pikcho as chat bakgron",
     "filteredNetworkBlockedTitle": "Dis netwok de blok Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Dis netwok de blok pat pan Pangea Chat",
     "filteredNetworkWhatCanIDo": "Wetin a go du?",

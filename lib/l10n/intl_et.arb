@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-08 16:58:05.251482",
+    "@@last_modified": "2026-10-09 10:04:33.211067",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9949,6 +9949,7 @@
     "reportSent": "Aruanne saadetud",
     "reportNotSent": "Teie aruannet ei saanud saata. Kontrollige oma ühendust ja proovige uuesti.",
     "reportPointerMessage": "Sõnumist teatati kursusel {courseName} – vaadake jaotist „Ohutus“",
+    "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
     "filteredNetworkBlockedTitle": "See võrk blokeerib Pangea Chati",
     "filteredNetworkPartlyBlockedTitle": "See võrk blokeerib osa Pangea Chatist",
     "filteredNetworkWhatCanIDo": "Mida ma teha saan?",

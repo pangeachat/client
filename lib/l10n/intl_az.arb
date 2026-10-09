@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-08 16:58:01.081045",
+    "@@last_modified": "2026-10-09 10:04:32.018546",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Hesabat göndərildi",
     "reportNotSent": "Hesabatınız göndərilə bilmədi. İnternet bağlantınızı yoxlayın və yenidən cəhd edin.",
     "reportPointerMessage": "{courseName} kursunda bir mesaj bildirildi — Təhlükəsizliyə baxın",
+    "useActivityImageAsChatBackground": "Fəaliyyət şəklini çat fonu kimi istifadə et",
     "filteredNetworkBlockedTitle": "Bu şəbəkə Pangea Chat-ı bloklayır",
     "filteredNetworkPartlyBlockedTitle": "Bu şəbəkə Pangea Chat-ın bir hissəsini bloklayır",
     "filteredNetworkWhatCanIDo": "Nə edə bilərəm?",

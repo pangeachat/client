@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-08 16:58:15.139206",
+    "@@last_modified": "2026-10-09 10:04:36.443122",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Relatum missum",
     "reportNotSent": "Tua relatio mitti non potuit. Coniunctionem tuam inspice et iterum conare.",
     "reportPointerMessage": "Nuntius in {courseName} relatus est — vide Securitatem",
+    "useActivityImageAsChatBackground": "Imaginem actionis uti pro curriculo sermonis",
     "filteredNetworkBlockedTitle": "Haec rete Pangea Chat impedit",
     "filteredNetworkPartlyBlockedTitle": "Haec rete partem Pangea Chat impedit",
     "filteredNetworkWhatCanIDo": "Quid facere possum?",

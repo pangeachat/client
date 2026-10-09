@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-08 16:58:21.845432",
+    "@@last_modified": "2026-10-09 10:04:38.538592",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2397,6 +2397,7 @@
     "reportSent": "ਰਿਪੋਰਟ ਭੇਜੀ ਗਈ",
     "reportNotSent": "ਤੁਹਾਡੀ ਰਿਪੋਰਟ ਭੇਜੀ ਨਹੀਂ ਜਾ ਸਕੀ। ਆਪਣਾ ਕਨੈਕਸ਼ਨ ਜਾਂਚੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
     "reportPointerMessage": "{courseName} ਵਿੱਚ ਇੱਕ ਸੁਨੇਹਾ ਰਿਪੋਰਟ ਕੀਤਾ ਗਿਆ ਸੀ — ਸੁਰੱਖਿਆ ਦੇਖੋ",
+    "useActivityImageAsChatBackground": "ਚੈਟ ਬੈਕਗ੍ਰਾਊਂਡ ਵਜੋਂ ਗਤੀਵਿਧੀ ਚਿੱਤਰ ਦੀ ਵਰਤੋਂ ਕਰੋ",
     "filteredNetworkBlockedTitle": "ਇਹ ਨੈੱਟਵਰਕ ਪੈਂਗੇਆ ਚੈਟ ਨੂੰ ਬਲੌਕ ਕਰ ਰਿਹਾ ਹੈ",
     "filteredNetworkPartlyBlockedTitle": "ਇਹ ਨੈੱਟਵਰਕ ਪੈਂਗੇਆ ਚੈਟ ਦੇ ਕੁਝ ਹਿੱਸੇ ਨੂੰ ਬਲੌਕ ਕਰ ਰਿਹਾ ਹੈ",
     "filteredNetworkWhatCanIDo": "ਮੈਂ ਕੀ ਕਰ ਸਕਦਾ/ਸਕਦੀ ਹਾਂ?",

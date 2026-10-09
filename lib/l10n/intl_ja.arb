@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-08 16:58:11.304206",
+    "@@last_modified": "2026-10-09 10:04:35.876075",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10721,6 +10721,7 @@
     "reportSent": "レポートを送信しました",
     "reportNotSent": "レポートを送信できませんでした。接続を確認して、もう一度お試しください。",
     "reportPointerMessage": "{courseName}でメッセージが報告されました — 安全設定を確認してください",
+    "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用",
     "filteredNetworkBlockedTitle": "このネットワークはPangea Chatをブロックしています",
     "filteredNetworkPartlyBlockedTitle": "このネットワークはPangea Chatの一部をブロックしています",
     "filteredNetworkWhatCanIDo": "どうすればいいですか？",

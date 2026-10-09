@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-08 16:58:13.530141",
+    "@@last_modified": "2026-10-09 10:04:35.874694",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Хабар жіберілді",
     "reportNotSent": "Хабарыңыз жіберілмеді. Байланысты тексеріп, қайталап көріңіз.",
     "reportPointerMessage": "{courseName} курсында хабарлама жіберілді — Қауіпсіздікті қараңыз",
+    "useActivityImageAsChatBackground": "Әрекет кескінін чат фоны ретінде пайдалану",
     "filteredNetworkBlockedTitle": "Бұл желі Pangea Chat-ты бұғаттап тастады",
     "filteredNetworkPartlyBlockedTitle": "Бұл желі Pangea Chat-тың бір бөлігін бұғаттап тастады",
     "filteredNetworkWhatCanIDo": "Мен не істей аламын?",

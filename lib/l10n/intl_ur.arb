@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-08 16:58:28.762887",
+    "@@last_modified": "2026-10-09 10:04:41.347516",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2397,6 +2397,7 @@
     "reportSent": "رپورٹ بھیج دی گئی",
     "reportNotSent": "آپ کی رپورٹ بھیجی نہیں جا سکی۔ اپنا کنکشن چیک کریں اور دوبارہ کوشش کریں۔",
     "reportPointerMessage": "{courseName} میں ایک پیغام کی اطلاع دی گئی ہے — سیفٹی دیکھیں",
+    "useActivityImageAsChatBackground": "چیٹ کے پس منظر کے طور پر سرگرمی کی تصویر استعمال کریں",
     "filteredNetworkBlockedTitle": "یہ نیٹ ورک Pangea Chat کو بلاک کر رہا ہے",
     "filteredNetworkPartlyBlockedTitle": "یہ نیٹ ورک Pangea Chat کے کچھ حصے کو بلاک کر رہا ہے",
     "filteredNetworkWhatCanIDo": "میں کیا کر سکتا ہوں؟",

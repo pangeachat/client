@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-10-08 16:58:14.144208",
+    "@@last_modified": "2026-10-09 10:04:35.919739",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2397,6 +2397,7 @@
     "reportSent": "បានផ្ញើរបាយការណ៍",
     "reportNotSent": "របាយការណ៍របស់អ្នកមិនអាចផ្ញើបានទេ។ សូមពិនិត្យមើលការតភ្ជាប់របស់អ្នក ហើយព្យាយាមម្ដងទៀត។",
     "reportPointerMessage": "សារមួយត្រូវបានរាយការណ៍នៅក្នុង {courseName} — សូមមើលសុវត្ថិភាព",
+    "useActivityImageAsChatBackground": "ប្រើរូបភាពសកម្មភាពជាផ្ទៃខាងក្រោយជជែក",
     "filteredNetworkBlockedTitle": "បណ្ដាញនេះកំពុងទប់ស្កាត់ Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "បណ្ដាញនេះកំពុងទប់ស្កាត់ផ្នែកខ្លះនៃ Pangea Chat",
     "filteredNetworkWhatCanIDo": "តើខ្ញុំអាចធ្វើអ្វីបាន?",

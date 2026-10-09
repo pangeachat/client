@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-08 16:58:00.802883",
+    "@@last_modified": "2026-10-09 10:04:32.176617",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10258,6 +10258,7 @@
     "reportSent": "تم إرسال البلاغ",
     "reportNotSent": "تعذر إرسال بلاغك. تحقق من اتصالك وحاول مرة أخرى.",
     "reportPointerMessage": "تم الإبلاغ عن رسالة في {courseName} — راجع الأمان",
+    "useActivityImageAsChatBackground": "استخدام صورة النشاط كخلفية للدردشة",
     "filteredNetworkBlockedTitle": "هذه الشبكة تحظر دردشة Pangea",
     "filteredNetworkPartlyBlockedTitle": "هذه الشبكة تحظر جزءًا من دردشة Pangea",
     "filteredNetworkWhatCanIDo": "ماذا يمكنني أن أفعل؟",

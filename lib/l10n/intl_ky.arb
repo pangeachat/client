@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-08 16:58:16.246433",
+    "@@last_modified": "2026-10-09 10:04:36.698429",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Кабар жөнөтүлдү",
     "reportNotSent": "Кабарыңыз жөнөтүлгөн жок. Байланышыңызды текшерип, кайра аракет кылыңыз.",
     "reportPointerMessage": "{courseName} курсунда билдирүү жөнөтүлдү — Коопсуздукту караңыз",
+    "useActivityImageAsChatBackground": "Чаттын фону катары ишмердүүлүк сүрөтүн колдонуу",
     "filteredNetworkBlockedTitle": "Бул тармак Pangea Chat'ты бөгөттөп жатат",
     "filteredNetworkPartlyBlockedTitle": "Бул тармак Pangea Chat'тын бир бөлүгүн бөгөттөп жатат",
     "filteredNetworkWhatCanIDo": "Эмне кылсам болот?",

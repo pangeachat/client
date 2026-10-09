@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-08 16:58:30.549833",
+    "@@last_modified": "2026-10-09 10:04:41.741823",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Ingxelo ithunyelwe",
     "reportNotSent": "Ingxelo yakho ayikwazanga ukuthunyelwa. Khangela uqhagamshelwano lwakho uze uzame kwakhona.",
     "reportPointerMessage": "Umyalezo uxeliwe ku-{courseName} — jonga uKhuseleko",
+    "useActivityImageAsChatBackground": "Sebenzisa umfanekiso womsebenzi njengemvelaphi yencoko",
     "filteredNetworkBlockedTitle": "Le nethiwekhi iyayivala i-Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Le nethiwekhi iyayivala inxalenye ye-Pangea Chat",
     "filteredNetworkWhatCanIDo": "Ndingenza ntoni?",

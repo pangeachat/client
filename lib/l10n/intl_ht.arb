@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-08 16:58:09.417733",
+    "@@last_modified": "2026-10-09 10:04:34.644390",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Rapò a voye",
     "reportNotSent": "Rapò ou a pa t' kapab voye. Tcheke koneksyon ou epi eseye ankò.",
     "reportPointerMessage": "Yon mesaj te rapòte nan {courseName} — gade Sekirite",
+    "useActivityImageAsChatBackground": "Itilize imaj aktivite a kòm background chat la",
     "filteredNetworkBlockedTitle": "Rezo sa a bloke Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Rezo sa a bloke yon pati nan Pangea Chat",
     "filteredNetworkWhatCanIDo": "Kisa mwen ka fè?",

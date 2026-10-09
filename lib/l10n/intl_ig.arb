@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-08 16:58:11.935804",
+    "@@last_modified": "2026-10-09 10:04:35.565598",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Ezigara akụkọ",
     "reportNotSent": "Enweghị ike iziga akụkọ gị. Lelee njikọ gị wee nwaa ọzọ.",
     "reportPointerMessage": "Ekwuru okwu n'ime {courseName} — lee Nchekwa",
+    "useActivityImageAsChatBackground": "Jiri onyonyo ọrụ dị ka ndabere nkata",
     "filteredNetworkBlockedTitle": "Netwọkụ a na-egbochi Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Netwọkụ a na-egbochi akụkụ nke Pangea Chat",
     "filteredNetworkWhatCanIDo": "Gịnị ka m ga-eme?",

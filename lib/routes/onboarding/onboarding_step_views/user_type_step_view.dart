@@ -13,6 +13,7 @@ import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 class UserTypeStepView extends StatefulWidget {
   final UserTypeOnboardingStep step;
   final bool loading;
+  final Object? error;
   final bool hasNextStep;
   final VoidCallback forward;
 
@@ -20,6 +21,7 @@ class UserTypeStepView extends StatefulWidget {
     super.key,
     required this.step,
     required this.loading,
+    required this.error,
     required this.hasNextStep,
     required this.forward,
   });
@@ -174,6 +176,7 @@ class UserTypeStepViewState extends State<UserTypeStepView> {
           builder: (context, _, _) => OnboardingForwardButton(
             onPressed: _step.enableGoForward ? widget.forward : null,
             loading: widget.loading,
+            error: widget.error,
             label: widget.hasNextStep
                 ? _step.nextStepText(L10n.of(context))
                 : _step.lastStepText(L10n.of(context)),

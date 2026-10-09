@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-08 16:58:09.472690",
+    "@@last_modified": "2026-10-09 10:04:35.197628",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2397,6 +2397,7 @@
     "reportSent": "Daim ntawv qhia raug xa lawm",
     "reportNotSent": "Koj daim ntawv qhia xa tsis tau. Saib koj qhov txuas thiab sim dua.",
     "reportPointerMessage": "Ib tsab ntawv raug qhia hauv {courseName} — saib Kev Nyab Xeeb",
+    "useActivityImageAsChatBackground": "Siv daim duab ua si los ua keeb kwm yav dhau los ntawm kev sib tham",
     "filteredNetworkBlockedTitle": "Lub network no tab tom thaiv Pangea Chat",
     "filteredNetworkPartlyBlockedTitle": "Lub network no tab tom thaiv ib feem ntawm Pangea Chat",
     "filteredNetworkWhatCanIDo": "Kuv yuav ua li cas?",
