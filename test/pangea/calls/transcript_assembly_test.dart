@@ -4187,5 +4187,175 @@ void main() {
         expect(_halfFor(withEmpty, bob).segments.map((s) => s.text), ['bob']);
       },
     );
+
+    // An unsubscribed speaker's OWN half: every chunk refused for want of a
+    // subscription, so it carries no words (#8792).
+    TranscriptCandidate refusedOwn({
+      required String speaker,
+      required String eventId,
+      int lost = 2,
+      int refused = 2,
+    }) => TranscriptCandidate(
+      senderId: speaker,
+      eventId: eventId,
+      deviceId: 'devA',
+      originServerTs: 500,
+      segments: const [],
+      accounting: HalfAccounting(
+        chunksCaptured: 2,
+        chunksLost: lost,
+        chunksRefusedUnsubscribed: refused,
+        declared: true,
+      ),
+    );
+
+    test(
+      'a peer transcription beats an own half emptied only by no subscription',
+      () {
+        // The QA scenario: alice was unsubscribed, bob backfilled her audio.
+        // Mutation proof: letting AUTHENTIC win unconditionally shows the
+        // notSubscribed note instead of her words.
+        for (final order in [false, true]) {
+          final candidates = [
+            refusedOwn(speaker: alice, eventId: '\$a1'),
+            peer(
+              writer: bob,
+              spokenBy: alice,
+              eventId: '\$p1',
+              texts: ['hola'],
+            ),
+          ];
+          final transcript = assembleTranscript(
+            candidates: order ? candidates.reversed.toList() : candidates,
+            expectedSenders: [alice, bob],
+            provenance: const {'\$p1': ProvenanceState.valid},
+          );
+          final half = _halfFor(transcript, alice);
+          expect(half.segments.map((s) => s.text), ['hola']);
+          expect(half.issue, HalfIssue.none);
+          expect(half.state, HalfState.present);
+        }
+      },
+    );
+
+    test('without a backfill, that own half still reads notSubscribed', () {
+      final transcript = assembleTranscript(
+        candidates: [refusedOwn(speaker: alice, eventId: '\$a1')],
+        expectedSenders: [alice, bob],
+      );
+      final half = _halfFor(transcript, alice);
+      expect(half.issue, HalfIssue.notSubscribed);
+      expect(half.emptiedOnlyByNoSubscription, isTrue);
+    });
+
+    test('an own half that lost audio another way still beats a peer copy', () {
+      // Only the no-subscription reason is reclassified; any other loss keeps
+      // the speaker's own record (and its note) on screen.
+      final transcript = assembleTranscript(
+        candidates: [
+          peer(writer: bob, spokenBy: alice, eventId: '\$p1', texts: ['hola']),
+          refusedOwn(speaker: alice, eventId: '\$a1', refused: 1),
+        ],
+        expectedSenders: [alice, bob],
+        provenance: const {'\$p1': ProvenanceState.valid},
+      );
+      final half = _halfFor(transcript, alice);
+      expect(half.segments, isEmpty);
+      expect(half.issue, HalfIssue.audioLost);
+      expect(half.emptiedOnlyByNoSubscription, isFalse);
+    });
+
+    test('a refused own half with ANY other admitted gap keeps the unit', () {
+      // "Only because of no subscription" means nothing else went missing.
+      // Mutation proof: dropping any one of these terms from
+      // `noSubscriptionExplainsEmptiness` lets the peer copy win here.
+      const base = HalfAccounting(
+        chunksCaptured: 2,
+        chunksLost: 2,
+        chunksRefusedUnsubscribed: 2,
+        declared: true,
+      );
+      final variants = <String, HalfAccounting>{
+        'captureDroppedMs': const HalfAccounting(
+          chunksCaptured: 2,
+          chunksLost: 2,
+          chunksRefusedUnsubscribed: 2,
+          captureDroppedMs: 300,
+          declared: true,
+        ),
+        'chunksDiscarded': const HalfAccounting(
+          chunksCaptured: 3,
+          chunksLost: 2,
+          chunksRefusedUnsubscribed: 2,
+          chunksDiscarded: 1,
+          declared: true,
+        ),
+        'truncated': const HalfAccounting(
+          chunksCaptured: 2,
+          chunksLost: 2,
+          chunksRefusedUnsubscribed: 2,
+          truncated: true,
+          declared: true,
+        ),
+        'segmentsOmitted': const HalfAccounting(
+          chunksCaptured: 2,
+          chunksLost: 2,
+          chunksRefusedUnsubscribed: 2,
+          segmentsOmitted: 1,
+          declared: true,
+        ),
+        'drainComplete': const HalfAccounting(
+          chunksCaptured: 2,
+          chunksLost: 2,
+          chunksRefusedUnsubscribed: 2,
+          drainComplete: false,
+          declared: true,
+        ),
+      };
+      expect(noSubscriptionExplainsEmptiness(const [], base), isTrue);
+      for (final entry in variants.entries) {
+        expect(
+          noSubscriptionExplainsEmptiness(const [], entry.value),
+          isFalse,
+          reason: entry.key,
+        );
+        final transcript = assembleTranscript(
+          candidates: [
+            peer(
+              writer: bob,
+              spokenBy: alice,
+              eventId: '\$p1',
+              texts: ['hola'],
+            ),
+            TranscriptCandidate(
+              senderId: alice,
+              eventId: '\$a1',
+              deviceId: 'devA',
+              originServerTs: 500,
+              segments: const [],
+              accounting: entry.value,
+            ),
+          ],
+          expectedSenders: [alice, bob],
+          provenance: const {'\$p1': ProvenanceState.valid},
+        );
+        final half = _halfFor(transcript, alice);
+        expect(half.segments, isEmpty, reason: entry.key);
+        expect(half.emptiedOnlyByNoSubscription, isFalse, reason: entry.key);
+      }
+    });
+
+    test('a pending peer claim never displaces the refused own half', () {
+      // A claim not yet resolved is not words, so the honest note stays.
+      final transcript = assembleTranscript(
+        candidates: [
+          refusedOwn(speaker: alice, eventId: '\$a1'),
+          peer(writer: bob, spokenBy: alice, eventId: '\$p1', texts: ['hola']),
+        ],
+        expectedSenders: [alice, bob],
+        provenance: const {'\$p1': ProvenanceState.pendingTransient},
+      );
+      expect(_halfFor(transcript, alice).issue, HalfIssue.notSubscribed);
+    });
   });
 }
