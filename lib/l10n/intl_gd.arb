@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-09 10:04:33.967310",
+    "@@last_modified": "2026-10-09 14:33:10.526800",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Aithisg air a cur",
     "reportNotSent": "Cha b' urrainn dhuinn an aithisg agad a chur. Thoir sùil air a' cheangal agad is feuch ris a-rithist.",
     "reportPointerMessage": "Chaidh teachdaireachd aithris ann an {courseName} — faic Sàbhailteachd",
-    "useActivityImageAsChatBackground": "Cleachd dealbh gnìomhachd mar chùl-raon cabadaich"
+    "useActivityImageAsChatBackground": "Cleachd dealbh gnìomhachd mar chùl-raon cabadaich",
+    "callFullScreenTitle": "Leig le gairmean seinn làn-sgrìn",
+    "callFullScreenMessage": "Thàinig gairm a-steach fhad 's a bha Pangea Chat dùinte, ach cha b' urrainn don fhòn agad ach fios beag a shealltainn air a shon. Leig le gairmean làn-sgrìn gus am bi an ath fhear a' seinn air do sgrìn gu lèir, eadhon nuair a tha am fòn agad glaiste."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:34.302965",
+    "@@last_modified": "2026-10-09 14:33:13.532750",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10866,5 +10866,7 @@
     "reportSent": "הדיווח נשלח",
     "reportNotSent": "הדיווח שלך לא נשלח. בדוק את החיבור שלך ונסה שוב.",
     "reportPointerMessage": "הודעה דווחה ב{courseName} — ראה בטיחות",
-    "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט"
+    "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט",
+    "callFullScreenTitle": "אפשר לשיחות לצלצל במסך מלא",
+    "callFullScreenMessage": "התקבלה שיחה כש־Pangea Chat הייתה סגורה, אבל הטלפון שלך הציג רק התראה קטנה עבורה. אפשר שיחות במסך מלא כדי שהשיחה הבאה תצלצל על כל המסך, גם כשהטלפון שלך נעול."
 }

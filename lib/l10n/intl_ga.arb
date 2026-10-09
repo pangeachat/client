@@ -3560,7 +3560,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-09 10:04:33.830407",
+    "@@last_modified": "2026-10-09 14:33:15.915531",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9963,5 +9963,7 @@
     "reportSent": "Tugadh tuairisc",
     "reportNotSent": "Níorbh fhéidir do thuairisc a sheoladh. Seiceáil do nasc agus bain triail eile as.",
     "reportPointerMessage": "Tugadh tuairisc ar theachtaireacht i {courseName} — féach Sábháilteacht",
-    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá"
+    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
+    "callFullScreenTitle": "Lig do ghlaonna glaoch lánscáileáin",
+    "callFullScreenMessage": "Tháinig glao isteach nuair a bhí Pangea Chat dúnta, ach ní fhéadfadh do ghuthán ach fógra beag a thaispeáint dó. Ceadaigh glaonna lánscáileáin ionas go nglaonn an chéad cheann eile ar do scáileán iomlán, fiú nuair a bhíonn do ghuthán faoi ghlas."
 }

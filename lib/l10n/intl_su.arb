@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-09 10:04:40.709973",
+    "@@last_modified": "2026-10-09 14:33:29.974979",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Laporan dikirim",
     "reportNotSent": "Laporan anjeun teu tiasa dikirim. Pariksa sambungan anjeun teras cobian deui.",
     "reportPointerMessage": "Aya béja dilaporkeun di {courseName} — tingali Kasalametan",
-    "useActivityImageAsChatBackground": "Anggo gambar kagiatan salaku latar obrolan"
+    "useActivityImageAsChatBackground": "Anggo gambar kagiatan salaku latar obrolan",
+    "callFullScreenTitle": "Jieun telepon disada sapinuh layar",
+    "callFullScreenMessage": "Telepon asup nalika Pangea Chat ditutup, tapi telepon anjeun ngan ukur tiasa nembongkeun béwara leutik. Idinan telepon sapinuh layar supados telepon salajengna disada dina sakabéh layar anjeun, sanajan telepon anjeun dikonci."
 }

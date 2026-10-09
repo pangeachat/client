@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-09 10:04:36.060917",
+    "@@last_modified": "2026-10-09 14:33:22.798447",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Dɛn dɔn sɛn di ripot",
     "reportNotSent": "Yu ripot nɔ go dɔn sɛn. Chɛk yu kɔnɛkshɔn ɛn tray igen.",
     "reportPointerMessage": "Dɛn ripot wan mɛsej insay {courseName} — si Sefti",
-    "useActivityImageAsChatBackground": "Yuz aktiviti pikcho as chat bakgron"
+    "useActivityImageAsChatBackground": "Yuz aktiviti pikcho as chat bakgron",
+    "callFullScreenTitle": "Mek kɔl dɛn ring ful skrin",
+    "callFullScreenMessage": "Wan kɔl bin kɔm insay wɛn Pangea Chat bin klos, bɔt yu fon bin jɔs ebul fɔ sho smɔl notifikeshɔn fɔ am. Alaw ful-skrin kɔl dɛn so dat di nɛks wan go ring ɔn yu ful skrin, ivin wɛn yu fon dɔn lɔk."
 }

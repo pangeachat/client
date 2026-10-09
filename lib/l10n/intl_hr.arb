@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-09 10:04:34.740695",
+    "@@last_modified": "2026-10-09 14:33:12.247171",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10388,5 +10388,7 @@
     "reportSent": "Izvješće poslano",
     "reportNotSent": "Vaše izvješće nije moglo biti poslano. Provjerite vezu i pokušajte ponovno.",
     "reportPointerMessage": "Poruka je prijavljena u {courseName} — pogledajte Sigurnost",
-    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata"
+    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata",
+    "callFullScreenTitle": "Neka pozivi zvone preko cijelog zaslona",
+    "callFullScreenMessage": "Poziv je stigao dok je Pangea Chat bio zatvoren, ali vaš telefon je mogao prikazati samo malu obavijest o njemu. Dopustite pozive preko cijelog zaslona kako bi sljedeći zvonio preko cijelog zaslona, čak i kada je vaš telefon zaključan."
 }

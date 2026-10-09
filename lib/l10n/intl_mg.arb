@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-09 10:04:37.312922",
+    "@@last_modified": "2026-10-09 14:33:27.691389",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Tatitra nalefa",
     "reportNotSent": "Tsy afaka nalefa ny tatitrao. Hamarino ny fifandraisanao ary andramo indray.",
     "reportPointerMessage": "Nisy hafatra notaterina tao amin'ny {courseName} — jereo ny Fiarovana",
-    "useActivityImageAsChatBackground": "Ampiasaina ny sarin'ny asa ho toy ny fiavian'ny chat"
+    "useActivityImageAsChatBackground": "Ampiasaina ny sarin'ny asa ho toy ny fiavian'ny chat",
+    "callFullScreenTitle": "Avelao hiantso efijery feno",
+    "callFullScreenMessage": "Nisy antso tonga raha nakatona ny Pangea Chat, saingy ny findainao dia tsy afaka naneho afa-tsy fampandrenesana kely momba izany. Avelao ny antso efijery feno mba hiantsoana ny efijery manontolo amin'ny manaraka, na dia voahidy aza ny findainao."
 }

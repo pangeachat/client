@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:32.912441",
+    "@@last_modified": "2026-10-09 14:33:07.821699",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10897,5 +10897,7 @@
     "reportSent": "Raporto sendita",
     "reportNotSent": "Via raporto ne povis esti sendita. Kontrolu vian konekton kaj reprovu.",
     "reportPointerMessage": "Mesaĝo estis raportita en {courseName} — vidu Sekurecon",
-    "useActivityImageAsChatBackground": "Uzi agadan bildon kiel babilejan fonon"
+    "useActivityImageAsChatBackground": "Uzi agadan bildon kiel babilejan fonon",
+    "callFullScreenTitle": "Permesu alvokojn sonori tutekrane",
+    "callFullScreenMessage": "Alvoko venis dum Pangea Chat estis fermita, sed via telefono povis montri nur malgrandan sciigon por ĝi. Permesu tutekranajn alvokojn tiel ke la sekva sonoros sur via tuta ekrano, eĉ kiam via telefono estas ŝlosita."
 }

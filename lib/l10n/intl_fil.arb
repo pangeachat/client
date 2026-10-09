@@ -2077,7 +2077,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-09 10:04:33.599916",
+    "@@last_modified": "2026-10-09 14:33:08.898104",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10812,5 +10812,7 @@
     "reportSent": "Naipadala ang ulat",
     "reportNotSent": "Hindi maipadala ang iyong ulat. Tingnan ang iyong koneksyon at subukang muli.",
     "reportPointerMessage": "May naiulat na mensahe sa {courseName} — tingnan ang Kaligtasan",
-    "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat"
+    "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat",
+    "callFullScreenTitle": "Hayaang mag-ring nang full screen ang mga tawag",
+    "callFullScreenMessage": "May pumasok na tawag habang sarado ang Pangea Chat, pero maliit na notification lang ang naipakita ng iyong telepono para dito. Payagan ang full-screen na tawag para sa susunod na ring sa iyong buong screen, kahit naka-lock ang iyong telepono."
 }

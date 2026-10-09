@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-09 10:04:32.538136",
+    "@@last_modified": "2026-10-09 14:33:06.934784",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Segnalazione inviata",
     "reportNotSent": "A vostra segnalazione ùn hà pussutu esse inviata. Verificate a vostra cunnessione è riprovate.",
     "reportPointerMessage": "Un messagiu hè statu segnalatu in {courseName} — vede Sicurezza",
-    "useActivityImageAsChatBackground": "Aduprà l'imagine di l'attività cum'è fondu di chat"
+    "useActivityImageAsChatBackground": "Aduprà l'imagine di l'attività cum'è fondu di chat",
+    "callFullScreenTitle": "Lascia sunà e chjame à schermu pienu",
+    "callFullScreenMessage": "Una chjama hè ghjunta mentre Pangea Chat era chjusu, ma u vostru telefunu pudia solu mustrà una piccula notificazione per quessa. Permettite e chjame à schermu pienu cusì a prossima sunerà nantu à u vostru schermu sanu, ancu quandu u vostru telefunu hè bluccatu."
 }

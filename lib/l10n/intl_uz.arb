@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-09 10:04:41.636408",
+    "@@last_modified": "2026-10-09 14:33:32.078678",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9956,5 +9956,7 @@
     "reportSent": "Xabar yuborildi",
     "reportNotSent": "Xabaringiz yuborilmadi. Internet aloqangizni tekshiring va qayta urinib koʻring.",
     "reportPointerMessage": "{courseName} dagi xabar haqida xabar berildi — Xavfsizlik boʻlimiga qarang",
-    "useActivityImageAsChatBackground": "Faoliyat rasmini chat fon rasmi sifatida ishlatish"
+    "useActivityImageAsChatBackground": "Faoliyat rasmini chat fon rasmi sifatida ishlatish",
+    "callFullScreenTitle": "Qo‘ng‘iroqlar to‘liq ekranda jiringlasin",
+    "callFullScreenMessage": "Pangea Chat yopiq bo‘lganida qo‘ng‘iroq keldi, ammo telefoningiz faqat kichik bildirishnoma ko‘rsata oldi. To‘liq ekranli qo‘ng‘iroqlarga ruxsat bering, shunda keyingi qo‘ng‘iroq telefoningiz qulflangan bo‘lsa ham butun ekranda jiringlaydi."
 }

@@ -1799,7 +1799,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-09 10:04:39.850739",
+    "@@last_modified": "2026-10-09 14:33:31.285157",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10897,5 +10897,7 @@
     "reportSent": "Poročilo poslano",
     "reportNotSent": "Vašega poročila ni bilo mogoče poslati. Preverite povezavo in poskusite znova.",
     "reportPointerMessage": "Sporočilo je bilo prijavljeno v {courseName} – glejte Varnost",
-    "useActivityImageAsChatBackground": "Uporabi sliko dejavnosti kot ozadje klepeta"
+    "useActivityImageAsChatBackground": "Uporabi sliko dejavnosti kot ozadje klepeta",
+    "callFullScreenTitle": "Dovoli, da klici zvonijo na celotnem zaslonu",
+    "callFullScreenMessage": "Klic je prispel, medtem ko je bil Pangea Chat zaprt, vendar je vaš telefon zanj lahko prikazal le majhno obvestilo. Dovoli klice na celotnem zaslonu, da bo naslednji klic zvonil na celotnem zaslonu, tudi ko je telefon zaklenjen."
 }

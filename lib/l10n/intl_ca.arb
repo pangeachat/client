@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:32.652816",
+    "@@last_modified": "2026-10-09 14:33:06.512203",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10079,5 +10079,7 @@
     "reportSent": "Informe enviat",
     "reportNotSent": "No s'ha pogut enviar l'informe. Comprova la connexió i torna-ho a provar.",
     "reportPointerMessage": "S'ha informat d'un missatge a {courseName}; consulta Seguretat",
-    "useActivityImageAsChatBackground": "Utilitza la imatge de l'activitat com a fons del xat"
+    "useActivityImageAsChatBackground": "Utilitza la imatge de l'activitat com a fons del xat",
+    "callFullScreenTitle": "Deixa que les trucades sonin a pantalla completa",
+    "callFullScreenMessage": "Va entrar una trucada mentre Pangea Chat estava tancat, però el teu telèfon només podia mostrar una petita notificació. Permet les trucades a pantalla completa perquè la següent soni a tota la pantalla, fins i tot quan el telèfon estigui bloquejat."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-09 10:04:34.644390",
+    "@@last_modified": "2026-10-09 14:33:12.521518",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Rapò a voye",
     "reportNotSent": "Rapò ou a pa t' kapab voye. Tcheke koneksyon ou epi eseye ankò.",
     "reportPointerMessage": "Yon mesaj te rapòte nan {courseName} — gade Sekirite",
-    "useActivityImageAsChatBackground": "Itilize imaj aktivite a kòm background chat la"
+    "useActivityImageAsChatBackground": "Itilize imaj aktivite a kòm background chat la",
+    "callFullScreenTitle": "Kite apèl yo sonnen sou tout ekran an",
+    "callFullScreenMessage": "Yon apèl te antre pandan Pangea Chat te fèmen, men telefòn ou te kapab montre sèlman yon ti notifikasyon pou li. Pèmèt apèl sou tout ekran an pou pwochen an sonnen sou tout ekran ou, menm lè telefòn ou bloke."
 }

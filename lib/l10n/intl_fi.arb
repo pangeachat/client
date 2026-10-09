@@ -3533,7 +3533,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-09 10:04:33.389248",
+    "@@last_modified": "2026-10-09 14:33:14.313318",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9989,5 +9989,7 @@
     "reportSent": "Ilmoitus lähetetty",
     "reportNotSent": "Ilmoitustasi ei voitu lähettää. Tarkista yhteytesi ja yritä uudelleen.",
     "reportPointerMessage": "Viestistä ilmoitettiin kurssilla {courseName} – katso Turvallisuus",
-    "useActivityImageAsChatBackground": "Käytä aktiviteetin kuvaa chatin taustana"
+    "useActivityImageAsChatBackground": "Käytä aktiviteetin kuvaa chatin taustana",
+    "callFullScreenTitle": "Anna puheluiden soida koko näytöllä",
+    "callFullScreenMessage": "Puhelu saapui Pangea Chatin ollessa suljettuna, mutta puhelimesi pystyi näyttämään siitä vain pienen ilmoituksen. Salli koko näytön puhelut, jotta seuraava puhelu soi koko näytölläsi, vaikka puhelimesi olisi lukittuna."
 }

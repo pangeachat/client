@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:35.044990",
+    "@@last_modified": "2026-10-09 14:33:14.565067",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10025,5 +10025,7 @@
     "reportSent": "Laporan terkirim",
     "reportNotSent": "Laporan Anda tidak dapat dikirim. Periksa koneksi Anda dan coba lagi.",
     "reportPointerMessage": "Sebuah pesan dilaporkan di {courseName} — lihat Keamanan",
-    "useActivityImageAsChatBackground": "Gunakan gambar aktivitas sebagai latar belakang obrolan"
+    "useActivityImageAsChatBackground": "Gunakan gambar aktivitas sebagai latar belakang obrolan",
+    "callFullScreenTitle": "Biarkan panggilan berdering layar penuh",
+    "callFullScreenMessage": "Panggilan masuk saat Pangea Chat ditutup, tetapi ponsel Anda hanya dapat menampilkan notifikasi kecil untuk itu. Izinkan panggilan layar penuh agar panggilan berikutnya berdering di seluruh layar Anda, bahkan saat ponsel Anda terkunci."
 }

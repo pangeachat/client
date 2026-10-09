@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-09 10:04:33.211067",
+    "@@last_modified": "2026-10-09 14:33:08.536455",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9949,5 +9949,7 @@
     "reportSent": "Aruanne saadetud",
     "reportNotSent": "Teie aruannet ei saanud saata. Kontrollige oma ühendust ja proovige uuesti.",
     "reportPointerMessage": "Sõnumist teatati kursusel {courseName} – vaadake jaotist „Ohutus“",
-    "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana"
+    "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
+    "callFullScreenTitle": "Luba kõnedele täisekraan",
+    "callFullScreenMessage": "Kõne tuli sisse, kui Pangea Chat oli suletud, kuid teie telefon sai selle kohta näidata ainult väikest teavitust. Lubage täisekraankõned, et järgmine kõne heliseks kogu ekraanil, isegi kui teie telefon on lukus."
 }

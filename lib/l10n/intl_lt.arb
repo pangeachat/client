@@ -2964,7 +2964,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-09 10:04:36.864990",
+    "@@last_modified": "2026-10-09 14:33:23.131266",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10733,5 +10733,7 @@
     "reportSent": "Pranešimas išsiųstas",
     "reportNotSent": "Nepavyko išsiųsti jūsų pranešimo. Patikrinkite ryšį ir bandykite dar kartą.",
     "reportPointerMessage": "Pranešta apie žinutę {courseName} – žr. Sauga",
-    "useActivityImageAsChatBackground": "Naudoti veiklos paveikslėlį kaip pokalbio foną"
+    "useActivityImageAsChatBackground": "Naudoti veiklos paveikslėlį kaip pokalbio foną",
+    "callFullScreenTitle": "Leisti skambučiams skambėti per visą ekraną",
+    "callFullScreenMessage": "Skambutis atėjo, kai „Pangea Chat“ buvo uždaryta, tačiau jūsų telefonas galėjo rodyti tik nedidelį pranešimą apie jį. Leiskite skambučiams skambėti per visą ekraną, kad kitas skambutis skambėtų per visą ekraną, net kai jūsų telefonas yra užrakintas."
 }

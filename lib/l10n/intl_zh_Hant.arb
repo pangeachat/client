@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:42.244615",
+    "@@last_modified": "2026-10-09 14:33:35.596903",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10058,5 +10058,7 @@
     "reportSent": "檢舉已送出",
     "reportNotSent": "您的檢舉無法送出。請檢查您的連線並再試一次。",
     "reportPointerMessage": "在「{courseName}」中有一則訊息被檢舉了 — 請查看「安全」",
-    "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景"
+    "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
+    "callFullScreenTitle": "讓來電全螢幕顯示",
+    "callFullScreenMessage": "Pangea Chat 關閉時有來電，但您的手機只能顯示小型通知。允許全螢幕來電，這樣下次來電時，即使手機鎖定，也會在整個螢幕上響鈴。"
 }

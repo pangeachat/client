@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-09 10:04:35.876075",
+    "@@last_modified": "2026-10-09 14:33:21.055533",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10721,5 +10721,7 @@
     "reportSent": "レポートを送信しました",
     "reportNotSent": "レポートを送信できませんでした。接続を確認して、もう一度お試しください。",
     "reportPointerMessage": "{courseName}でメッセージが報告されました — 安全設定を確認してください",
-    "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用"
+    "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用",
+    "callFullScreenTitle": "着信を全画面で表示",
+    "callFullScreenMessage": "Pangea Chatを閉じていたときに着信がありましたが、スマートフォンには小さな通知しか表示されませんでした。全画面表示の着信を許可すると、次回からはスマートフォンがロックされている場合でも、画面全体に着信が表示されます。"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-09 10:04:39.919950",
+    "@@last_modified": "2026-10-09 14:33:29.967746",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Chirevo chatumirwa",
     "reportNotSent": "Chirevo chako hachina kutumirwa. Tarisa internet yako woedza zvakare.",
     "reportPointerMessage": "Meseji yakashumwa mu{courseName} — ona Kuchengeteka",
-    "useActivityImageAsChatBackground": "Shandisa mufananidzo wechiitiko sehwaro hwechat"
+    "useActivityImageAsChatBackground": "Shandisa mufananidzo wechiitiko sehwaro hwechat",
+    "callFullScreenTitle": "Rega mafoni aririre skrini yese",
+    "callFullScreenMessage": "Pakauya runhare Pangea Chat yakavharwa, asi foni yako yakangokwanisa kuratidza chiziviso chidiki chete. Bvumira mafoni ekuzadza skrini kuitira kuti rinotevera riririre skrini yako yese, kunyangwe foni yako yakakiyiwa."
 }

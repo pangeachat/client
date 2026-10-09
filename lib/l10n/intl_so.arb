@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-09 10:04:40.393727",
+    "@@last_modified": "2026-10-09 14:33:30.037492",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Warbixinta waa la diray",
     "reportNotSent": "Warbixintaada lama diri karin. Hubi isku xirkaaga oo mar kale isku day.",
     "reportPointerMessage": "Fariin ayaa lagu soo sheegay {courseName} — fiiri Badbaadada",
-    "useActivityImageAsChatBackground": "Isticmaal sawirka hawsha asagoo ah asalka sheekaysiga"
+    "useActivityImageAsChatBackground": "Isticmaal sawirka hawsha asagoo ah asalka sheekaysiga",
+    "callFullScreenTitle": "U ogolow wicitaanada inay buuxiyaan shaashada",
+    "callFullScreenMessage": "Wicitaan ayaa soo galay iyadoo Pangea Chat xiran tahay, laakiin taleefankaagu wuxuu kaliya tusi karaa ogeysiis yar. U ogolow wicitaanada shaashada buuxda si kan xiga uu u soo dhaco shaashadaada oo dhan, xitaa marka taleefankaagu xiran yahay."
 }

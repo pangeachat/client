@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-09 10:04:38.591017",
+    "@@last_modified": "2026-10-09 14:33:26.072908",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Lipoti latumizidwa",
     "reportNotSent": "Lipoti lanu silinatumizidwe. Onani intaneti yanu ndikuyesanso.",
     "reportPointerMessage": "Uthenga unanenedwa mu {courseName} — onani Chitetezo",
-    "useActivityImageAsChatBackground": "Gwiritsani ntchito chithunzi cha zochitika ngati maziko a macheza"
+    "useActivityImageAsChatBackground": "Gwiritsani ntchito chithunzi cha zochitika ngati maziko a macheza",
+    "callFullScreenTitle": "Maimbidwe azilira pa skrini yonse",
+    "callFullScreenMessage": "Kuyimba kunabwera pamene Pangea Chat inatsekedwa, koma foni yanu inangowonetsa chidziwitso chaching'ono. Lolani maimbidwe azioneka pa skrini yonse kuti kuyimba kotsatira kuzilire pa skrini yanu yonse, ngakhale foni yanu itatsekedwa."
 }

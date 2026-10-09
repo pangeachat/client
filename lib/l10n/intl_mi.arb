@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-09 10:04:37.121440",
+    "@@last_modified": "2026-10-09 14:33:21.920004",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Kua tukuna te pūrongo",
     "reportNotSent": "Kāore i taea te tuku i tō pūrongo. Tirohia tō hononga ka ngana anō.",
     "reportPointerMessage": "I pūrongotia tētahi karere i roto i a {courseName} — tirohia te Haumaru",
-    "useActivityImageAsChatBackground": "Whakamahia te atahanga mahi hei papamuri kōrerorero"
+    "useActivityImageAsChatBackground": "Whakamahia te atahanga mahi hei papamuri kōrerorero",
+    "callFullScreenTitle": "Tukua ngā waea kia tangi mata-katoa",
+    "callFullScreenMessage": "I tae mai he waea i te wā e kati ana a Pangea Chat, engari he paku noa te pānui i whakaatuhia e tō waea. Tukua ngā waea mata-katoa kia tangi ai te waea e whai ake nei ki tō mata katoa, ahakoa kua rākaitia tō waea."
 }

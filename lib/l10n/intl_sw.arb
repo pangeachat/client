@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-09 10:04:40.751611",
+    "@@last_modified": "2026-10-09 14:33:29.979275",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Ripoti imetumwa",
     "reportNotSent": "Ripoti yako haikuweza kutumwa. Angalia muunganisho wako na ujaribu tena.",
     "reportPointerMessage": "Ujumbe uliripotiwa katika {courseName} — angalia Usalama",
-    "useActivityImageAsChatBackground": "Tumia picha ya shughuli kama mandharinyuma ya gumzo"
+    "useActivityImageAsChatBackground": "Tumia picha ya shughuli kama mandharinyuma ya gumzo",
+    "callFullScreenTitle": "Ruhusu simu zijae skrini nzima",
+    "callFullScreenMessage": "Simu iliingia wakati Pangea Chat ilikuwa imefungwa, lakini simu yako iliweza tu kuonyesha arifa ndogo. Ruhusu simu zijae skrini nzima ili simu inayofuata iweze kuonekana kwenye skrini yako yote, hata wakati simu yako imefungwa."
 }

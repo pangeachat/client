@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-09 10:04:34.235679",
+    "@@last_modified": "2026-10-09 14:33:14.683764",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2397,5 +2397,7 @@
     "reportSent": "An aika rahoto",
     "reportNotSent": "Ba a iya aika rahotonka ba. Duba haɗinka kuma sake gwadawa.",
     "reportPointerMessage": "An ba da rahoton saƙo a {courseName} — duba Tsaro",
-    "useActivityImageAsChatBackground": "Yi amfani da hoton aiki a matsayin bangon taɗi"
+    "useActivityImageAsChatBackground": "Yi amfani da hoton aiki a matsayin bangon taɗi",
+    "callFullScreenTitle": "Bari kiran ya yi ringi cikakken allo",
+    "callFullScreenMessage": "An shigo da kira yayin da Pangea Chat ke rufe, amma wayarka ta iya nuna ƙaramin sanarwa kawai. Bada izinin kiran cikakken allo don na gaba ya yi ringi a kan dukkan allonka, ko da wayarka a kulle take."
 }

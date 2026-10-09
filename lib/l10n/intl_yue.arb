@@ -1260,7 +1260,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-09 10:04:42.317072",
+    "@@last_modified": "2026-10-09 14:33:33.680113",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10909,5 +10909,7 @@
     "reportSent": "舉報已送出",
     "reportNotSent": "無法送出你的舉報。請檢查你的連線，然後再試一次。",
     "reportPointerMessage": "{courseName} 有訊息被舉報咗 — 請睇安全中心",
-    "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景"
+    "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
+    "callFullScreenTitle": "讓來電全螢幕響鈴",
+    "callFullScreenMessage": "Pangea Chat 關閉時有來電，但你嘅手機只顯示咗細小嘅通知。允許全螢幕來電，咁下次來電就會喺你嘅整個螢幕響鈴，即使手機鎖定咗都得。"
 }

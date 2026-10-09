@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-09 10:04:38.537422",
+    "@@last_modified": "2026-10-09 14:33:25.048833",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Rapport sendt",
     "reportNotSent": "Rapporten din kunne ikke sendes. Sjekk tilkoblingen din og prøv igjen.",
     "reportPointerMessage": "En melding ble rapportert i {courseName} – se Sikkerhet",
-    "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn"
+    "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
+    "callFullScreenTitle": "La anrop ringe i fullskjerm",
+    "callFullScreenMessage": "Et anrop kom inn mens Pangea Chat var lukket, men telefonen din kunne bare vise et lite varsel for det. Tillat fullskjermsanrop slik at det neste ringer på hele skjermen din, selv når telefonen din er låst."
 }

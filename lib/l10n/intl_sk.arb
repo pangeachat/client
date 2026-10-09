@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-09 10:04:40.062044",
+    "@@last_modified": "2026-10-09 14:33:32.514429",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10897,5 +10897,7 @@
     "reportSent": "Nahlásenie odoslané",
     "reportNotSent": "Vaše nahlásenie sa nepodarilo odoslať. Skontrolujte pripojenie a skúste to znova.",
     "reportPointerMessage": "V kurze {courseName} bola nahlásená správa – pozrite si Bezpečnosť",
-    "useActivityImageAsChatBackground": "Použiť obrázok aktivity ako pozadie chatu"
+    "useActivityImageAsChatBackground": "Použiť obrázok aktivity ako pozadie chatu",
+    "callFullScreenTitle": "Nechajte hovory zvoniť na celú obrazovku",
+    "callFullScreenMessage": "Prišiel hovor, keď bol Pangea Chat zatvorený, ale váš telefón naň dokázal zobraziť iba malé upozornenie. Povoľte hovory na celú obrazovku, aby ďalší hovor zvonil na celej obrazovke, aj keď je váš telefón uzamknutý."
 }

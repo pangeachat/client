@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-09 10:04:42.223970",
+    "@@last_modified": "2026-10-09 14:33:34.526070",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Ìròyìn ti fi ránṣẹ́",
     "reportNotSent": "Kò ṣeé fi ìròyìn rẹ ránṣẹ́. Ṣàyẹ̀wò àsopọ̀ rẹ, kí o sì tún gbìyànjú.",
     "reportPointerMessage": "A ti fi ìròyìn ránṣẹ́ nípa ìfọ̀rọ̀wéránṣẹ́ kan nínú {courseName} — wo Ààbò",
-    "useActivityImageAsChatBackground": "Lo aworan iṣẹ bi abẹlẹ iwiregbe"
+    "useActivityImageAsChatBackground": "Lo aworan iṣẹ bi abẹlẹ iwiregbe",
+    "callFullScreenTitle": "Jẹ ki àwọn ìpè dún ní ojú-ìwé kíkún",
+    "callFullScreenMessage": "Ìpè kan wọlé nígbà tí Pangea Chat wà ní títìpa, ṣùgbọ́n fóònù rẹ lè fi ìfilọ́lẹ̀ kékeré kan hàn fún un. Fún àwọn ìpè ní ààyè ojú-ìwé kíkún kí èyí tó tẹ̀lé lè dún lórí gbogbo ojú-ìwé rẹ, àní nígbà tí fóònù rẹ bá wà ní títìpa."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-09 10:04:31.896740",
+    "@@last_modified": "2026-10-09 14:33:05.684975",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Verslag gestuur",
     "reportNotSent": "Jou verslag kon nie gestuur word nie. Kontroleer jou verbinding en probeer weer.",
     "reportPointerMessage": "’n Boodskap is in {courseName} gerapporteer — sien Veiligheid",
-    "useActivityImageAsChatBackground": "Gebruik aktiwiteitbeeld as kletsagtergrond"
+    "useActivityImageAsChatBackground": "Gebruik aktiwiteitbeeld as kletsagtergrond",
+    "callFullScreenTitle": "Laat oproepe volskerm lui",
+    "callFullScreenMessage": "’n Oproep het ingekom terwyl Pangea Chat gesluit was, maar jou foon kon net ’n klein kennisgewing daarvoor wys. Laat volskerm-oproepe toe sodat die volgende een op jou hele skerm lui, selfs wanneer jou foon gesluit is."
 }

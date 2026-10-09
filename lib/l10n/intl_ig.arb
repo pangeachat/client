@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-09 10:04:35.565598",
+    "@@last_modified": "2026-10-09 14:33:22.647973",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2397,5 +2397,7 @@
     "reportSent": "Ezigara akụkọ",
     "reportNotSent": "Enweghị ike iziga akụkọ gị. Lelee njikọ gị wee nwaa ọzọ.",
     "reportPointerMessage": "Ekwuru okwu n'ime {courseName} — lee Nchekwa",
-    "useActivityImageAsChatBackground": "Jiri onyonyo ọrụ dị ka ndabere nkata"
+    "useActivityImageAsChatBackground": "Jiri onyonyo ọrụ dị ka ndabere nkata",
+    "callFullScreenTitle": "Kwe ka oku kpọọ ihuenyo zuru oke",
+    "callFullScreenMessage": "Otu oku batara mgbe Pangea Chat mechiri, mana ekwentị gị nwere ike igosi naanị obere ọkwa maka ya. Kwe ka oku ihuenyo zuru oke ka nke ọzọ kpọọ na ihuenyo gị niile, ọbụlagodi mgbe ekwentị gị kpọchiri."
 }
