@@ -12,9 +12,14 @@ class StudentInvitationApi {
   final http.Client httpClient;
   final Uri homeserver;
 
+  /// Each call's bound. The app's Matrix HTTP client waits up to 30 minutes
+  /// (long sync polls), far too long for a sign-in step to hang on.
+  final Duration requestTimeout;
+
   const StudentInvitationApi({
     required this.httpClient,
     required this.homeserver,
+    this.requestTimeout = const Duration(seconds: 30),
   });
 
   static const String _prefix = '_synapse/client/pangea/v1';
@@ -143,10 +148,13 @@ class StudentInvitationApi {
     }
     final http.Response response;
     try {
-      response = await http.Response.fromStream(await httpClient.send(request));
+      response = await httpClient
+          .send(request)
+          .then(http.Response.fromStream)
+          .timeout(requestTimeout);
     } on Exception {
-      // A transport failure's message names the URL, which can carry an
-      // invitation id: report the failure, not the message.
+      // A transport failure or timeout: its message names the URL, which can
+      // carry an invitation id, so report the failure, not the message.
       throw const StudentInvitationApiException(0, 'M_CONNECTION_FAILED');
     }
     Object? decoded;

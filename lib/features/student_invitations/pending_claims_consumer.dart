@@ -64,26 +64,42 @@ PendingClaimsFlow pendingClaimsFlowFor(BuildContext context, Client client) {
 /// (SubscriptionController's initialize): return what the student already
 /// ticked, so the claim lands before choreo could auto-claim a trial. No
 /// screens exist yet; anything needing one waits for [PendingClaimsConsumer],
-/// which also shows the outcome. Bounded so a slow module never holds the
-/// app's start; nothing is ever sent without the tick.
-Future<void> confirmTickedClaimsBeforeStatus(Client client) async {
-  final homeserver = client.homeserver;
-  final token = client.accessToken;
-  if (!client.isLogged() || homeserver == null || token == null) return;
+/// which also shows the outcome. Nothing is sent without the tick.
+///
+/// The status read waits for each call's answer or failure, never a cut-off:
+/// a call is bounded only by the API's own request timeout, so registration
+/// cannot hang on a silent module. If the module gives no answer at all, the
+/// failure is reported and status proceeds; the claim may or may not have
+/// landed (the entry is not resent, keeping it at most once).
+Future<void> confirmTickedClaimsBeforeStatus({
+  required StudentInvitationApi api,
+  required String accessToken,
+}) async {
   try {
     await PendingClaimsFlow(
-      api: StudentInvitationApi(
-        httpClient: client.httpClient,
-        homeserver: homeserver,
-      ),
-      accessToken: token,
+      api: api,
+      accessToken: accessToken,
       notify: PendingClaimsConsumer._deferred.add,
       openUrl: (_) async {},
       onError: _logError,
-    ).consumeTicked().timeout(const Duration(seconds: 10));
+    ).consumeTicked();
   } catch (e, s) {
     _logError(e, s);
   }
+}
+
+/// [confirmTickedClaimsBeforeStatus] for the signed-in [client].
+Future<void> confirmTickedClaimsBeforeStatusFor(Client client) async {
+  final homeserver = client.homeserver;
+  final token = client.accessToken;
+  if (!client.isLogged() || homeserver == null || token == null) return;
+  await confirmTickedClaimsBeforeStatus(
+    api: StudentInvitationApi(
+      httpClient: client.httpClient,
+      homeserver: homeserver,
+    ),
+    accessToken: token,
+  );
 }
 
 void _logError(Object e, StackTrace s) => ErrorHandler.logError(

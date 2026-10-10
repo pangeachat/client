@@ -29,7 +29,7 @@ class SubscriptionController {
   SubscriptionController({Future<void> Function()? beforeStatus})
     : _beforeStatus =
           beforeStatus ??
-          (() => confirmTickedClaimsBeforeStatus(
+          (() => confirmTickedClaimsBeforeStatusFor(
             MatrixState.pangeaController.matrixState.client,
           ));
 

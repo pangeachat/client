@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -11,7 +12,7 @@ import 'package:http/testing.dart';
 
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/student_invitations/pending_claims.dart';
-import 'package:fluffychat/features/student_invitations/pending_claims_flow.dart';
+import 'package:fluffychat/features/student_invitations/pending_claims_consumer.dart';
 import 'package:fluffychat/features/student_invitations/student_invitation_api.dart';
 import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -47,6 +48,7 @@ void main() {
 
   late List<String> order;
   late MockClient http_;
+  late Future<http.Response> Function(http.Request) respond;
 
   setUp(() async {
     order = [];
@@ -55,7 +57,7 @@ void main() {
     final fake = FakePangeaController(accessToken: 'syt_student');
     fake.userController.initCompleter.complete();
     MatrixState.pangeaController = fake;
-    http_ = MockClient((request) async {
+    respond = (request) async {
       final path = request.url.path;
       if (path.endsWith('/student_invitations/hint')) {
         order.add('hint');
@@ -92,20 +94,31 @@ void main() {
         return http.Response('{}', 200);
       }
       return http.Response('{}', 404);
-    });
+    };
+    http_ = MockClient(respond);
   });
 
-  SubscriptionController controller() => SubscriptionController(
-    beforeStatus: () => PendingClaimsFlow(
+  // The production hook body; only the Matrix client it reads the api and
+  // token from is replaced.
+  SubscriptionController controller({
+    http.Client? module,
+    Duration requestTimeout = const Duration(seconds: 30),
+  }) => SubscriptionController(
+    beforeStatus: () => confirmTickedClaimsBeforeStatus(
       api: StudentInvitationApi(
-        httpClient: http_,
+        httpClient: module ?? http_,
         homeserver: Uri.parse('https://matrix.example.org'),
+        requestTimeout: requestTimeout,
       ),
       accessToken: 'syt_student',
-      notify: (_) {},
-      openUrl: (_) async {},
-    ).consumeTicked(),
+    ),
   );
+
+  /// Both happened, [first] before [then].
+  void expectBefore(String first, String then, {required String reason}) {
+    expect(order, containsAll([first, then]), reason: reason);
+    expect(order.indexOf(first), lessThan(order.indexOf(then)), reason: reason);
+  }
 
   Future<void> initialize(SubscriptionController c) =>
       http.runWithClient(() => c.initialize(userId), () => http_);
@@ -120,12 +133,7 @@ void main() {
     await initialize(c);
     await http.runWithClient(() => c.reinitialize(userId), () => http_);
 
-    expect(order, contains('confirm'));
-    expect(
-      order.indexOf('confirm'),
-      lessThan(order.indexOf('status')),
-      reason: 'the claim must exist first',
-    );
+    expectBefore('confirm', 'status', reason: 'the claim must exist first');
     expect(order.where((o) => o == 'confirm'), hasLength(1));
     expect(order, contains('status'));
     expect(SpaceCodeRepo.pendingInvitation, isNull);
@@ -139,8 +147,7 @@ void main() {
 
     await initialize(controller());
 
-    expect(order.first, 'lti_link');
-    expect(order, contains('status'));
+    expectBefore('lti_link', 'status', reason: 'the claim must exist first');
   });
 
   test(
@@ -177,19 +184,9 @@ void main() {
             409,
           );
         }
-        return http_.send(request).then(http.Response.fromStream);
+        return respond(request);
       });
-      final c = SubscriptionController(
-        beforeStatus: () => PendingClaimsFlow(
-          api: StudentInvitationApi(
-            httpClient: outdated,
-            homeserver: Uri.parse('https://matrix.example.org'),
-          ),
-          accessToken: 'syt_student',
-          notify: (_) {},
-          openUrl: (_) async {},
-        ).consumeTicked(),
-      );
+      final c = controller(module: outdated);
 
       await initialize(c);
 
@@ -199,4 +196,54 @@ void main() {
       expect(back?.ackedDisclosureVersion, isNull);
     },
   );
+
+  test(
+    'a slow module is waited for: status never overtakes the confirm',
+    () async {
+      await SpaceCodeRepo.setPendingInvitation(
+        const PendingInvitation(inv, ackedDisclosureVersion: 2),
+      );
+      final slow = MockClient((request) async {
+        if (request.url.path.endsWith('/student_invitations/confirm')) {
+          await Future<void>.delayed(const Duration(seconds: 11));
+        }
+        return respond(request);
+      });
+
+      await initialize(controller(module: slow));
+
+      expectBefore(
+        'confirm',
+        'status',
+        reason: 'no cut-off may let status run while the confirm is in flight',
+      );
+    },
+    timeout: const Timeout(Duration(seconds: 40)),
+  );
+
+  test('a module that never answers is bounded by the request timeout, and '
+      'the invitation is not resent', () async {
+    await SpaceCodeRepo.setPendingInvitation(
+      const PendingInvitation(inv, ackedDisclosureVersion: 2),
+    );
+    var confirms = 0;
+    final silent = MockClient((request) async {
+      if (request.url.path.endsWith('/student_invitations/confirm')) {
+        confirms++;
+        return Completer<http.Response>().future;
+      }
+      return respond(request);
+    });
+    final c = controller(
+      module: silent,
+      requestTimeout: const Duration(milliseconds: 200),
+    );
+
+    await initialize(c);
+    await http.runWithClient(() => c.reinitialize(userId), () => http_);
+
+    expect(confirms, 1);
+    expect(order, contains('status'));
+    expect(SpaceCodeRepo.pendingInvitation, isNull);
+  });
 }
