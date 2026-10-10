@@ -114,18 +114,13 @@ class PendingClaimsFlow {
     if (pending == null) return;
     await SpaceCodeRepo.clearPendingInvitation();
 
+    // The hint only names the course for a screen. Without one (the choreo
+    // preflight) it stays off the path, so the confirm is the one module call
+    // choreo waits on; an unknown invitation answers the confirm with 404.
     InvitationHint? hint;
-    try {
-      hint = await api.hint(pending.invitationId);
-    } on StudentInvitationApiException catch (e, s) {
-      if (e.statusCode == 404) {
-        notify(const ClaimNotice(ClaimNoticeKind.notLive));
-        return;
-      }
-      // The hint only names the course; the confirm below decides.
-      onError?.call(e, s);
-    } catch (e, s) {
-      onError?.call(e, s);
+    if (askConsent != null) {
+      hint = await _hint(pending.invitationId);
+      if (hint == null) return;
     }
     await _confirm(
       pending.invitationId,
@@ -136,6 +131,24 @@ class PendingClaimsFlow {
       pending.ackedDisclosureVersion,
       () => SpaceCodeRepo.setPendingInvitation(pending.withAck(null)),
     );
+  }
+
+  /// The hint for a screen, or null after reporting an invitation the module
+  /// no longer knows. Any other failure yields an empty hint: the confirm
+  /// decides.
+  Future<InvitationHint?> _hint(String invitationId) async {
+    try {
+      return await api.hint(invitationId);
+    } on StudentInvitationApiException catch (e, s) {
+      if (e.statusCode == 404) {
+        notify(const ClaimNotice(ClaimNoticeKind.notLive));
+        return null;
+      }
+      onError?.call(e, s);
+    } catch (e, s) {
+      onError?.call(e, s);
+    }
+    return const InvitationHint();
   }
 
   /// Invitations to one of this account's verified addresses (S2), each

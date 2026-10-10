@@ -17,6 +17,7 @@ import 'package:fluffychat/features/student_invitations/pending_claims.dart';
 import 'package:fluffychat/features/student_invitations/pending_claims_consumer.dart';
 import 'package:fluffychat/features/student_invitations/student_invitation_api.dart';
 import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
+import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/network/choreo_gate.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
@@ -192,6 +193,12 @@ void main() {
     () async {
       await SpaceCodeRepo.setPendingInvitation(const PendingInvitation(inv));
       await SpaceCodeRepo.setPendingLtiTicket(const PendingLtiTicket(ticket));
+      // Written long ago: choreo calls must not keep an unticked entry alive.
+      final storage = GetStorage('class_storage');
+      final stamp = DateTime.now()
+          .subtract(const Duration(minutes: 50))
+          .millisecondsSinceEpoch;
+      await storage.write(PLocalKey.cachedInvitationAt, stamp);
 
       await initialize(await controller());
 
@@ -204,6 +211,11 @@ void main() {
       );
       expect(SpaceCodeRepo.pendingInvitation?.invitationId, inv);
       expect(SpaceCodeRepo.pendingLtiTicket?.ticket, ticket);
+      expect(
+        storage.read(PLocalKey.cachedInvitationAt),
+        stamp,
+        reason: 'the entry is not rewritten, so it still expires on time',
+      );
     },
   );
 
@@ -281,6 +293,7 @@ void main() {
 
     expect(confirms, 1);
     expect(order, contains('status'));
+    expect(order, isNot(contains('hint')), reason: 'one bounded call only');
     expect(SpaceCodeRepo.pendingInvitation, isNull);
   });
 
@@ -323,6 +336,11 @@ void main() {
     }, () => http_);
 
     expectBefore('confirm', 'grammar_constructs', reason: 'claim first');
+    expect(
+      order,
+      isNot(contains('hint')),
+      reason: 'the confirm is the only module call choreo waits on',
+    );
     expectBefore('confirm', 'version', reason: 'claim first');
     expectBefore('confirm', 'status', reason: 'claim first');
     expect(order.where((o) => o == 'confirm'), hasLength(1));
