@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/journey_checklist/journey_moments.dart';
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_content.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_model.dart';
@@ -31,6 +32,12 @@ class DiscountCodePageState extends State<DiscountCodePage>
     userID: Matrix.of(context).client.userID!,
     initialCode: widget.linkCode,
   );
+
+  @override
+  void initState() {
+    super.initState();
+    JourneyMoments.subscriptionPageViewed(Matrix.of(context).client);
+  }
 
   @override
   void dispose() {

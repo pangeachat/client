@@ -289,6 +289,13 @@ class GoogleAnalytics {
     );
   }
 
+  /// A practice session completed. [practiceType] is `vocab` or `grammar`
+  /// (the token grammar's names, never `morph`). Sent only through
+  /// `recordJourneyStep`, which writes the journey checklist with it.
+  static void completePractice(String practiceType) {
+    logEvent('complete_practice', parameters: {'practice_type': practiceType});
+  }
+
   static void failUpdateNotificationBadge() {
     logEvent('fail_update_notification_badge');
   }
