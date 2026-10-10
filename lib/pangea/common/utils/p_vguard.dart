@@ -8,7 +8,6 @@ import 'package:fluffychat/features/dm_invite/dm_invite_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/user_id_url.dart';
-import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/features/student_invitations/pending_claims.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../controllers/pangea_controller.dart';
@@ -75,16 +74,13 @@ class PAuthGaurd {
   /// already given; a different one replaces it. A malformed id is dropped.
   /// The shell confirms it after sign-in (PendingClaimsConsumer).
   static Future<String?> stashInvitation(Uri uri) async {
-    final parts = WorkspaceQuery.parts(uri.query);
-    if (WorkspaceQuery.valueOf(uri.query, PRoutes.invitationParam) == null) {
-      return null;
-    }
+    final location = PRoutes.locationWithoutInvitation(uri);
+    if (location == null) return null;
     final id = PRoutes.invitationIdIn(uri);
     if (id != null && SpaceCodeRepo.pendingInvitation?.invitationId != id) {
       await SpaceCodeRepo.setPendingInvitation(PendingInvitation(id));
     }
-    WorkspaceQuery.removeKeys(parts, {PRoutes.invitationParam});
-    return WorkspaceQuery.location(uri.path, parts);
+    return location;
   }
 
   /// The DM invite link's redirect (`/invite_user/:userID`, #8436) — the one

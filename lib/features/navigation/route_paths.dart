@@ -2,6 +2,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
+import 'package:fluffychat/features/navigation/workspace_query.dart';
 
 /// Canonical route paths for Pangea-owned surfaces (world_v2).
 ///
@@ -112,6 +113,17 @@ abstract class PRoutes {
   static String? invitationIdIn(Uri uri) {
     final value = uri.queryParameters[invitationParam];
     return value != null && isInvitationId(value) ? value : null;
+  }
+
+  /// [uri]'s location with its `inv=` key removed (every other key kept as
+  /// written), or null when [uri] carries no `inv=` key at all.
+  static String? locationWithoutInvitation(Uri uri) {
+    if (WorkspaceQuery.valueOf(uri.query, invitationParam) == null) {
+      return null;
+    }
+    final parts = WorkspaceQuery.parts(uri.query);
+    WorkspaceQuery.removeKeys(parts, {invitationParam});
+    return WorkspaceQuery.location(uri.path, parts);
   }
 
   /// The Canvas (LTI) learner/instructor hand-off page: the module redirects a

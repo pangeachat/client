@@ -52,7 +52,11 @@ class ClaimNotice {
 class PendingClaimsFlow {
   final StudentInvitationApi api;
   final String accessToken;
-  final ConsentPrompt askConsent;
+
+  /// Null where no screen can be shown (before the shell, see
+  /// [consumeTicked]): a confirmation that needs a (new) tick is then put back
+  /// in the ferry unticked, for the shell to ask.
+  final ConsentPrompt? askConsent;
   final void Function(ClaimNotice notice) notify;
   final Future<void> Function(Uri url) openUrl;
 
@@ -63,11 +67,40 @@ class PendingClaimsFlow {
   const PendingClaimsFlow({
     required this.api,
     required this.accessToken,
-    required this.askConsent,
+    this.askConsent,
     required this.notify,
     required this.openUrl,
     this.onError,
   });
+
+  /// Right after sign-in or registration, before anything reads the
+  /// subscription status: return what the student already ticked, so the
+  /// claim exists before choreo's status read could auto-claim a trial
+  /// (SPEC: a student with a waiting seat never burns their trial). Only
+  /// ticked entries go; anything else waits for the shell's screens.
+  Future<void> consumeTicked() async {
+    final ticket = SpaceCodeRepo.pendingLtiTicket;
+    if (ticket != null &&
+        !ticket.instructor &&
+        ticket.ackedDisclosureVersion != null) {
+      await consumeLtiTicket();
+    }
+    if (SpaceCodeRepo.pendingInvitation?.ackedDisclosureVersion != null) {
+      await consumeInvitation();
+    }
+  }
+
+  /// The tick for [request]: the screen's answer, or, with no screen, null
+  /// after [reFerry] put the entry back unticked.
+  Future<int?> _ask(
+    ConsentRequest request,
+    Future<void> Function() reFerry,
+  ) async {
+    final prompt = askConsent;
+    if (prompt != null) return prompt(request);
+    await reFerry();
+    return null;
+  }
 
   /// The invitation a class link carried (`?inv=`), if one is waiting.
   Future<void> consumeInvitation() async {
@@ -95,6 +128,7 @@ class PendingClaimsFlow {
         maskedEmailHint: hint?.maskedEmailHint,
       ),
       pending.ackedDisclosureVersion,
+      () => SpaceCodeRepo.setPendingInvitation(pending.withAck(null)),
     );
   }
 
@@ -110,10 +144,12 @@ class PendingClaimsFlow {
     }
     for (final row in rows) {
       if (!dismissed.add(row.invitationId)) continue;
+      final prompt = askConsent;
+      if (prompt == null) return;
       final request = ConsentRequest(courseName: row.courseName);
-      final version = await askConsent(request);
+      final version = await prompt(request);
       if (version == null) continue;
-      await _confirm(row.invitationId, request, version);
+      await _confirm(row.invitationId, request, version, () async {});
     }
   }
 
@@ -141,7 +177,10 @@ class PendingClaimsFlow {
     }
 
     final request = ConsentRequest(courseName: pending.courseName);
-    var version = pending.ackedDisclosureVersion ?? await askConsent(request);
+    Future<void> reFerry() =>
+        SpaceCodeRepo.setPendingLtiTicket(pending.withAck(null));
+    var version =
+        pending.ackedDisclosureVersion ?? await _ask(request, reFerry);
     for (var attempt = 0; version != null; attempt++) {
       try {
         await api.ltiLink(
@@ -155,7 +194,7 @@ class PendingClaimsFlow {
         // An outdated disclosure leaves the ticket unconsumed: show the
         // current text once more and send the new tick.
         if (e.isDisclosureOutdated && attempt == 0) {
-          version = await askConsent(request);
+          version = await _ask(request, reFerry);
           continue;
         }
         _reportLinkFailure(e, s);
@@ -171,8 +210,9 @@ class PendingClaimsFlow {
     String invitationId,
     ConsentRequest request,
     int? ackedVersion,
+    Future<void> Function() reFerry,
   ) async {
-    var version = ackedVersion ?? await askConsent(request);
+    var version = ackedVersion ?? await _ask(request, reFerry);
     for (var attempt = 0; version != null; attempt++) {
       try {
         final outcome = await api.confirm(
@@ -190,7 +230,7 @@ class PendingClaimsFlow {
         return;
       } on StudentInvitationApiException catch (e, s) {
         if (e.isDisclosureOutdated && attempt == 0) {
-          version = await askConsent(request);
+          version = await _ask(request, reFerry);
           continue;
         }
         if (e.statusCode == 404) {

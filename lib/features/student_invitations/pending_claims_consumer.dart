@@ -56,16 +56,45 @@ PendingClaimsFlow pendingClaimsFlowFor(BuildContext context, Client client) {
       );
     },
     // Ids, tickets and bodies stay out: the error carries status + errcode.
-    onError: (e, s) => ErrorHandler.logError(
-      e: e,
-      s: s,
-      data: const {'feature': 'student_invitations'},
-    ),
+    onError: _logError,
   );
 }
 
+/// Before the first subscription status read after sign-in or registration
+/// (SubscriptionController's initialize): return what the student already
+/// ticked, so the claim lands before choreo could auto-claim a trial. No
+/// screens exist yet; anything needing one waits for [PendingClaimsConsumer],
+/// which also shows the outcome. Bounded so a slow module never holds the
+/// app's start; nothing is ever sent without the tick.
+Future<void> confirmTickedClaimsBeforeStatus(Client client) async {
+  final homeserver = client.homeserver;
+  final token = client.accessToken;
+  if (!client.isLogged() || homeserver == null || token == null) return;
+  try {
+    await PendingClaimsFlow(
+      api: StudentInvitationApi(
+        httpClient: client.httpClient,
+        homeserver: homeserver,
+      ),
+      accessToken: token,
+      notify: PendingClaimsConsumer._deferred.add,
+      openUrl: (_) async {},
+      onError: _logError,
+    ).consumeTicked().timeout(const Duration(seconds: 10));
+  } catch (e, s) {
+    _logError(e, s);
+  }
+}
+
+void _logError(Object e, StackTrace s) => ErrorHandler.logError(
+  e: e,
+  s: s,
+  data: const {'feature': 'student_invitations'},
+);
+
 /// Headless shell resident (like DmInviteFerryConsumer) for the student side
-/// after sign-in: returns a ferried Canvas ticket, confirms a ferried seat
+/// after sign-in: shows what [confirmTickedClaimsBeforeStatus] did, returns a
+/// ferried Canvas ticket, confirms a ferried seat
 /// invitation, then offers invitations waiting for the account's verified
 /// addresses (once per account per app session). Mounted by the workspace
 /// shell, so it runs exactly when signed in with the map up. Waits while a
@@ -74,6 +103,9 @@ PendingClaimsFlow pendingClaimsFlowFor(BuildContext context, Client client) {
 class PendingClaimsConsumer extends StatefulWidget {
   final Uri uri;
   const PendingClaimsConsumer({super.key, required this.uri});
+
+  /// Outcomes of [confirmTickedClaimsBeforeStatus], shown once the shell is up.
+  static final List<ClaimNotice> _deferred = [];
 
   @override
   State<PendingClaimsConsumer> createState() => _PendingClaimsConsumerState();
@@ -115,6 +147,9 @@ class _PendingClaimsConsumerState extends State<PendingClaimsConsumer> {
     _running = true;
     try {
       final flow = pendingClaimsFlowFor(context, client);
+      final deferred = [...PendingClaimsConsumer._deferred];
+      PendingClaimsConsumer._deferred.clear();
+      deferred.forEach(flow.notify);
       await flow.consumeLtiTicket();
       await flow.consumeInvitation();
       if (_promptedFor.add(userId)) await flow.promptPending(_dismissed);
