@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-09 10:04:34.308134",
+    "@@last_modified": "2026-10-10 10:41:05.184438",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Ua pio ke kōkua kākau no ka papa kahi o kēia kamaʻilio.",
     "error405Desc": "E ʻoluʻolu, e hoʻonoho i kou mau ʻōlelo ma Papa Kuhikuhi Nui > Nā Hoʻonohonoho Aʻo.",
     "termsAndConditions": "Nā Kūlana a me nā ʻAelike",
-    "andCertifyIAmAtLeast13YearsOfAge": " a hōʻoia he 16 oʻu makahiki a ʻoi.",
     "error502504Desc": "Hiki ke lohi a loaʻa ʻole paha nā mea hana unuhi a me ke kākau ʻoiai e hoʻāʻo ana nā Pangea bot e hopu mai.",
     "error404Desc": "ʻAʻole maopopo i ka Pangea Bot pehea e unuhi ai i kēlā...",
     "errorPleaseRefresh": "Ke nānā nei mākou! E ʻoluʻolu, e hoʻouka hou a hoʻāʻo hou.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Ua hoʻouna ʻia ka hōʻike",
     "reportNotSent": "ʻAʻole hiki ke hoʻouna ʻia kāu hōʻike. E nānā i kāu pili pūnaewele a e hoʻāʻo hou.",
     "reportPointerMessage": "Ua hōʻike ʻia kekahi leka ma {courseName} — e nānā i ka Palekana",
-    "useActivityImageAsChatBackground": "E hoʻohana i ke kiʻi hana ma ke ʻano he kāʻei kua kamaʻilio"
+    "useActivityImageAsChatBackground": "E hoʻohana i ke kiʻi hana ma ke ʻano he kāʻei kua kamaʻilio",
+    "andCertifyIMeetTheMinimumAge": " a ke hōʻoiaʻiʻo nei au he 13 oʻu makahiki a ʻoi paha, a i ʻole ka makahiki liʻiliʻi e koi ʻia ana ma koʻu ʻāina inā ʻoi aku ia."
 }

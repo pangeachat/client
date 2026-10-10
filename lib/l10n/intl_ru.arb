@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-09 10:04:39.411699",
+    "@@last_modified": "2026-10-10 10:41:10.494630",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -3486,7 +3486,6 @@
     "errorDisableIGCClassDesc": "Помощь с грамматикой отключена для курса, в котором находится этот чат.",
     "error405Desc": "Пожалуйста, установите ваши языки в Главное меню > Настройки обучения.",
     "termsAndConditions": "Условиями использования",
-    "andCertifyIAmAtLeast13YearsOfAge": " и подтверждаю, что мне не менее 16 лет.",
     "error502504Desc": "Инструменты перевода и грамматики могут работать медленно или быть недоступны, пока боты Pangea обрабатывают запросы.",
     "error404Desc": "Бот Pangea не уверен, как это перевести...",
     "errorPleaseRefresh": "Мы этим занимаемся! Пожалуйста, обновите страницу и попробуйте снова.",
@@ -4377,10 +4376,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10924,5 +10919,6 @@
     "reportSent": "Жалоба отправлена",
     "reportNotSent": "Не удалось отправить жалобу. Проверьте подключение и повторите попытку.",
     "reportPointerMessage": "Сообщение было отправлено в {courseName} — см. раздел «Безопасность»",
-    "useActivityImageAsChatBackground": "Использовать изображение активности в качестве фона чата"
+    "useActivityImageAsChatBackground": "Использовать изображение активности в качестве фона чата",
+    "andCertifyIMeetTheMinimumAge": " и подтверждаю, что мне не менее 13 лет или минимальный возраст, требуемый в моей стране, если он выше."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-09 10:04:32.413546",
+    "@@last_modified": "2026-10-10 10:41:00.909441",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "ይህ ውይይት ላለበት ኮርስ የሰዋሰው ድጋፍ ጠፍቷል።",
     "error405Desc": "እባክዎ ቋንቋዎችዎን በዋናው ምናሌ > የመማሪያ ቅንብሮች ውስጥ ያስተካክሉ።",
     "termsAndConditions": "ደንቦች እና ሁኔታዎች",
-    "andCertifyIAmAtLeast13YearsOfAge": " እና ቢያንስ 16 ዓመት እንደሞላኝ አረጋግጣለሁ።",
     "error502504Desc": "የፓንጂያ ቦቶች ስራ ላይ እያሉ የትርጉም እና የሰዋሰው መሳሪያዎች ሊዘገዩ ወይም ላይገኙ ይችላሉ።",
     "error404Desc": "የፓንጂያ ቦት ያንን እንዴት እንደሚተረጉም እርግጠኛ አይደለም...",
     "errorPleaseRefresh": "እየመረመርነው ነው! እባክዎ እንደገና ይጫኑ እና ይሞክሩ።",
@@ -2397,5 +2396,6 @@
     "reportSent": "ሪፖርት ተልኳል",
     "reportNotSent": "ሪፖርትዎ ሊላክ አልቻለም። ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ።",
     "reportPointerMessage": "በ{courseName} ውስጥ መልዕክት ሪፖርት ተደርጓል — ደህንነትን ይመልከቱ",
-    "useActivityImageAsChatBackground": "የእንቅስቃሴ ምስልን እንደ ቻት ዳራ ተጠቀም"
+    "useActivityImageAsChatBackground": "የእንቅስቃሴ ምስልን እንደ ቻት ዳራ ተጠቀም",
+    "andCertifyIMeetTheMinimumAge": " እና ቢያንስ 13 ዓመት ወይም በአገሬ የሚፈለገውን ዝቅተኛ ዕድሜ (ከፍ ያለ ከሆነ) እንዳሟላ አረጋግጣለሁ።"
 }

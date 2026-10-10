@@ -1158,7 +1158,6 @@
     "errorDisableIGCClassDesc": "Pomoč pri slovnici je izklopljena za tečaj, v katerem je ta klepet.",
     "error405Desc": "Prosimo, nastavite svoje jezike v Glavnem meniju > Nastavitve učenja.",
     "termsAndConditions": "Pogoji in določila",
-    "andCertifyIAmAtLeast13YearsOfAge": "in potrjujem, da sem starejši od 16 let.",
     "error502504Desc": "Orodja za prevajanje in slovnico so lahko počasna ali nedosegljiva, medtem ko se bot Pangea posodablja.",
     "error404Desc": "Bot Pangea ni prepričan, kako naj to prevede...",
     "errorPleaseRefresh": "Preučujemo to! Prosimo, osvežite stran in poskusite znova.",
@@ -1799,7 +1798,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-09 10:04:39.850739",
+    "@@last_modified": "2026-10-10 10:41:10.464472",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -4463,10 +4462,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10897,5 +10892,6 @@
     "reportSent": "Poročilo poslano",
     "reportNotSent": "Vašega poročila ni bilo mogoče poslati. Preverite povezavo in poskusite znova.",
     "reportPointerMessage": "Sporočilo je bilo prijavljeno v {courseName} – glejte Varnost",
-    "useActivityImageAsChatBackground": "Uporabi sliko dejavnosti kot ozadje klepeta"
+    "useActivityImageAsChatBackground": "Uporabi sliko dejavnosti kot ozadje klepeta",
+    "andCertifyIMeetTheMinimumAge": " in potrjujem, da sem star vsaj 13 let ali minimalno starost, ki je zahtevana v moji državi, če je ta višja."
 }

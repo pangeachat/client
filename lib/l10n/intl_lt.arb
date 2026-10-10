@@ -2323,7 +2323,6 @@
     "errorDisableIGCClassDesc": "Gramatikos pagalba išjungta kursui, kuriame yra šis pokalbis.",
     "error405Desc": "Prašome nustatyti savo kalbas pagrindiniame meniu > Mokymosi nustatymai.",
     "termsAndConditions": " Paslaugų teikimo sąlygomis",
-    "andCertifyIAmAtLeast13YearsOfAge": " ir patvirtinu, kad man yra bent 16 metų.",
     "error502504Desc": "Vertimo ir gramatikos įrankiai gali būti lėti arba neprieinami, kol Pangea robotai pasivys.",
     "error404Desc": "Pangea robotas nėra tikras, kaip tai išversti...",
     "errorPleaseRefresh": "Mes tai tikriname! Prašome įkelti dar kartą ir bandyti iš naujo.",
@@ -2964,7 +2963,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-09 10:04:36.864990",
+    "@@last_modified": "2026-10-10 10:41:07.110898",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -4299,10 +4298,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10733,5 +10728,6 @@
     "reportSent": "Pranešimas išsiųstas",
     "reportNotSent": "Nepavyko išsiųsti jūsų pranešimo. Patikrinkite ryšį ir bandykite dar kartą.",
     "reportPointerMessage": "Pranešta apie žinutę {courseName} – žr. Sauga",
-    "useActivityImageAsChatBackground": "Naudoti veiklos paveikslėlį kaip pokalbio foną"
+    "useActivityImageAsChatBackground": "Naudoti veiklos paveikslėlį kaip pokalbio foną",
+    "andCertifyIMeetTheMinimumAge": " ir patvirtinu, kad man yra bent 13 metų arba mano šalyje reikalaujamas minimalus amžius, jei jis yra didesnis."
 }

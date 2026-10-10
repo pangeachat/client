@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:32.912441",
+    "@@last_modified": "2026-10-10 10:41:01.781927",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -2161,7 +2161,6 @@
     "errorDisableIGCClassDesc": "Gramatika helpo estas malŝaltita por la kurso en kiu ĉi tiu babilejo estas.",
     "error405Desc": "Bonvolu agordi viajn lingvojn en Ĉefa menuo > Lernagordoj.",
     "termsAndConditions": "Kondicxoj kaj Kondicxoj",
-    "andCertifyIAmAtLeast13YearsOfAge": " kaj atestigas ke mi estas almenaŭ 16 jarojn aĝa.",
     "error502504Desc": "Tradukiloj kaj gramatikaj iloj eble estos malrapidaj aŭ nehaveblaj dum la Pangea-botoj okupiĝas.",
     "error404Desc": "Pangea-boto ne certas kiel traduki tion...",
     "errorPleaseRefresh": "Ni esploras ĝin! Bonvolu reŝarĝi kaj provi denove.",
@@ -4463,10 +4462,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10897,5 +10892,6 @@
     "reportSent": "Raporto sendita",
     "reportNotSent": "Via raporto ne povis esti sendita. Kontrolu vian konekton kaj reprovu.",
     "reportPointerMessage": "Mesaĝo estis raportita en {courseName} — vidu Sekurecon",
-    "useActivityImageAsChatBackground": "Uzi agadan bildon kiel babilejan fonon"
+    "useActivityImageAsChatBackground": "Uzi agadan bildon kiel babilejan fonon",
+    "andCertifyIMeetTheMinimumAge": " kaj mi certigas, ke mi aĝas almenaŭ 13 jarojn, aŭ la minimuman aĝon postulatan en mia lando se tio estas pli alta."
 }

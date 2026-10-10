@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-09 10:04:32.726878",
+    "@@last_modified": "2026-10-10 10:41:01.891782",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Ang tabang sa gramatika gipalong para sa kurso diin nahisakop kining chat.",
     "error405Desc": "Palihug i-set ang imong mga lengguwahe sa Main Menu > Learning Settings.",
     "termsAndConditions": "Mga Termino ug Kondisyon",
-    "andCertifyIAmAtLeast13YearsOfAge": " ug nagpamatuod nga ako labing menos 16 anyos ang edad.",
     "error502504Desc": "Ang mga gamit sa pag-translate ug gramatika mahimong hinay o dili magamit samtang ang mga Pangea bot naga-apas.",
     "error404Desc": "Ang Pangea Bot dili sigurado unsaon pag-translate niana...",
     "errorPleaseRefresh": "Among gisusi kini! Palihug i-reload ug sulayi pag-usab.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Napadala ang report",
     "reportNotSent": "Dili mapadala ang imong report. Susiha ang imong koneksyon ug sulayi pag-usab.",
     "reportPointerMessage": "Usa ka mensahe ang gi-report sa {courseName} — tan-awa ang Safety",
-    "useActivityImageAsChatBackground": "Gamita ang hulagway sa kalihokan isip background sa chat"
+    "useActivityImageAsChatBackground": "Gamita ang hulagway sa kalihokan isip background sa chat",
+    "andCertifyIMeetTheMinimumAge": " ug nagpamatuod nga ako labing menos 13 ka tuig ang edad, o ang minimum nga edad nga gikinahanglan sa akong nasud kung mas taas kini."
 }

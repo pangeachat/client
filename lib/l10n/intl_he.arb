@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:34.302965",
+    "@@last_modified": "2026-10-10 10:41:04.300616",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -1714,7 +1714,6 @@
     "errorDisableIGCClassDesc": "עזרה בדקדוק מושבתת עבור הקורס שבו נמצא הצ'אט הזה.",
     "error405Desc": "אנא הגדר את שפותיך בתפריט הראשי > הגדרות למידה.",
     "termsAndConditions": "תנאים והגבלות",
-    "andCertifyIAmAtLeast13YearsOfAge": "ומאשר שאני בן לפחות 16 שנים.",
     "error502504Desc": "כלי תרגום ודקדוק עלולים להיות איטיים או לא זמינים בזמן שהבוטים של פנגיאה מעדכנים.",
     "error404Desc": "בוט פנגיאה לא בטוח איך לתרגם את זה...",
     "errorPleaseRefresh": "אנחנו בודקים את זה! אנא טען מחדש ונסה שוב.",
@@ -4432,10 +4431,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10866,5 +10861,6 @@
     "reportSent": "הדיווח נשלח",
     "reportNotSent": "הדיווח שלך לא נשלח. בדוק את החיבור שלך ונסה שוב.",
     "reportPointerMessage": "הודעה דווחה ב{courseName} — ראה בטיחות",
-    "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט"
+    "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט",
+    "andCertifyIMeetTheMinimumAge": "ומאשר/ת שאני בן/בת 13 לפחות, או בגיל המינימלי הנדרש במדינתי אם הוא גבוה יותר."
 }

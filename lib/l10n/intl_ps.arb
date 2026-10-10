@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-09 10:04:38.945286",
+    "@@last_modified": "2026-10-10 10:41:10.001610",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "د ګرامر مرسته د هغه کورس لپاره بنده ده چې دا خبرې اترې پکې دي.",
     "error405Desc": "مهرباني وکړئ خپلې ژبې په اصلي مینو > د زده کړې تنظیماتو کې تنظیم کړئ.",
     "termsAndConditions": "شرایط او مقررات",
-    "andCertifyIAmAtLeast13YearsOfAge": " او تصدیق کوم چې زه لږ تر لږه ۱۶ کلن یم.",
     "error502504Desc": "د ژباړې او ګرامر اوزار ممکن ورو وي یا شتون ونلري پداسې حال کې چې د پانګیا بوټونه تازه کیږي.",
     "error404Desc": "پانګیا بوټ ډاډه نه دی چې دا څنګه وژباړي...",
     "errorPleaseRefresh": "موږ یې څیړو! مهرباني وکړئ بیا پورته کړئ او بیا هڅه وکړئ.",
@@ -2397,5 +2396,6 @@
     "reportSent": "راپور ولېږل شو",
     "reportNotSent": "ستاسو راپور نشو لېږل کېدای. خپله اړیکه وګورئ او بیا هڅه وکړئ.",
     "reportPointerMessage": "په {courseName} کې یو پیغام راپور شوی — خوندیتوب وګورئ",
-    "useActivityImageAsChatBackground": "د فعالیت انځور د چیټ شالید په توګه وکاروئ"
+    "useActivityImageAsChatBackground": "د فعالیت انځور د چیټ شالید په توګه وکاروئ",
+    "andCertifyIMeetTheMinimumAge": " او تصدیق کوم چې زه لږ تر لږه ۱۳ کلن یم، یا زما په هیواد کې اړین لږ تر لږه عمر که هغه لوړ وي."
 }

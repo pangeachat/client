@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-09 10:04:35.565598",
+    "@@last_modified": "2026-10-10 10:41:06.221630",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Enyemaka ụtọasụsụ agbanyụrụ maka ọmụmụ ihe mkparịta ụka a dị na ya.",
     "error405Desc": "Biko tọọ asụsụ gị na Nchịkọta Isi > Ntọala Ịmụ Ihe.",
     "termsAndConditions": "Usoro na Ọnọdụ",
-    "andCertifyIAmAtLeast13YearsOfAge": " ma kwado na m dị opekata mpe afọ 16.",
     "error502504Desc": "Ngwa ntụgharị asụsụ na ụtọasụsụ nwere ike ịdị nwayọ ma ọ bụ adịghị n'oge Pangea bots na-ejide.",
     "error404Desc": "Pangea Bot ejighị n'aka otu esi atụgharị nke ahụ...",
     "errorPleaseRefresh": "Anyị na-eleba anya na ya! Biko bugharịa ma nwaa ọzọ.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Ezigara akụkọ",
     "reportNotSent": "Enweghị ike iziga akụkọ gị. Lelee njikọ gị wee nwaa ọzọ.",
     "reportPointerMessage": "Ekwuru okwu n'ime {courseName} — lee Nchekwa",
-    "useActivityImageAsChatBackground": "Jiri onyonyo ọrụ dị ka ndabere nkata"
+    "useActivityImageAsChatBackground": "Jiri onyonyo ọrụ dị ka ndabere nkata",
+    "andCertifyIMeetTheMinimumAge": " ma kwado na m dị opekata mpe afọ 13, ma ọ bụ afọ kacha nta achọrọ na obodo m ma ọ bụrụ na ọ dị elu."
 }

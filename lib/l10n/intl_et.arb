@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-09 10:04:33.211067",
+    "@@last_modified": "2026-10-10 10:41:03.480474",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -2925,7 +2925,6 @@
     "errorDisableIGCClassDesc": "Grammatikaabi on välja lülitatud selle vestluse ruumi jaoks.",
     "error405Desc": "Palun seadistage oma keeled peamenüüs > Õpeseadistused.",
     "termsAndConditions": "Tingimuste ja nõuetega",
-    "andCertifyIAmAtLeast13YearsOfAge": " ning kinnitan, et olen vähemalt 16 aastat vana.",
     "error502504Desc": "Tõlke- ja grammatikatööriistad võivad olla aeglased või kättesaamatud, kuni Pangea botid jõuavad järele.",
     "error404Desc": "Pangea bot ei ole kindel, kuidas seda tõlkida...",
     "errorPleaseRefresh": "Uurime seda välja! Palun laadin uuesti ja proovi uuesti.",
@@ -3615,10 +3614,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -9949,5 +9944,6 @@
     "reportSent": "Aruanne saadetud",
     "reportNotSent": "Teie aruannet ei saanud saata. Kontrollige oma ühendust ja proovige uuesti.",
     "reportPointerMessage": "Sõnumist teatati kursusel {courseName} – vaadake jaotist „Ohutus“",
-    "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana"
+    "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
+    "andCertifyIMeetTheMinimumAge": " ja kinnitan, et olen vähemalt 13-aastane või minu riigis nõutavast vanusest vanem, kui see on kõrgem."
 }

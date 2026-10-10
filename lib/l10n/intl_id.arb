@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:35.044990",
+    "@@last_modified": "2026-10-10 10:41:05.598623",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -2832,7 +2832,6 @@
     "errorDisableIGCClassDesc": "Bantuan tata bahasa dimatikan untuk kursus tempat obrolan ini berada.",
     "error405Desc": "Silakan atur bahasa Anda di Menu Utama > Pengaturan Pembelajaran.",
     "termsAndConditions": "Syarat dan Ketentuan",
-    "andCertifyIAmAtLeast13YearsOfAge": " dan menyatakan saya berusia minimal 16 tahun.",
     "error502504Desc": "Alat terjemahan dan tata bahasa mungkin lambat atau tidak tersedia sementara bot Pangea mengejar ketertinggalan.",
     "error404Desc": "Bot Pangea tidak yakin bagaimana menerjemahkan itu...",
     "errorPleaseRefresh": "Kami sedang menelusurinya! Silakan muat ulang dan coba lagi.",
@@ -3621,10 +3620,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10025,5 +10020,6 @@
     "reportSent": "Laporan terkirim",
     "reportNotSent": "Laporan Anda tidak dapat dikirim. Periksa koneksi Anda dan coba lagi.",
     "reportPointerMessage": "Sebuah pesan dilaporkan di {courseName} — lihat Keamanan",
-    "useActivityImageAsChatBackground": "Gunakan gambar aktivitas sebagai latar belakang obrolan"
+    "useActivityImageAsChatBackground": "Gunakan gambar aktivitas sebagai latar belakang obrolan",
+    "andCertifyIMeetTheMinimumAge": " dan menyatakan bahwa saya berusia minimal 13 tahun, atau usia minimum yang disyaratkan di negara saya jika lebih tinggi."
 }

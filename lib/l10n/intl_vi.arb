@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:41.797785",
+    "@@last_modified": "2026-10-10 10:41:13.017887",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -1495,7 +1495,6 @@
     "errorDisableIGCUserDesc": "Nhấn vào đây để cập nhật cài đặt hỗ trợ ngữ pháp",
     "error405Desc": "Vui lòng thiết lập ngôn ngữ của bạn trong Menu chính > Cài đặt Học tập.",
     "termsAndConditions": "Điều khoản và Điều kiện",
-    "andCertifyIAmAtLeast13YearsOfAge": " và xác nhận tôi ít nhất 16 tuổi.",
     "error502504Desc": "Công cụ dịch và ngữ pháp có thể chạy chậm hoặc ngừng hoạt động trong khi bot Pangea đang xử lý.",
     "error404Desc": "Pangea Bot chưa biết cách dịch điều này...",
     "errorPleaseRefresh": "Chúng tôi sẽ kiểm tra! Vui lòng tải lại và thử lại.",
@@ -7250,5 +7249,6 @@
     "reportSent": "Đã gửi báo cáo",
     "reportNotSent": "Không thể gửi báo cáo của bạn. Vui lòng kiểm tra kết nối và thử lại.",
     "reportPointerMessage": "Một tin nhắn đã được báo cáo trong {courseName} — xem mục An toàn",
-    "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện"
+    "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện",
+    "andCertifyIMeetTheMinimumAge": " và xác nhận tôi ít nhất 13 tuổi, hoặc độ tuổi tối thiểu được yêu cầu ở quốc gia của tôi nếu cao hơn."
 }

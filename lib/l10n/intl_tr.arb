@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-09 10:04:41.651288",
+    "@@last_modified": "2026-10-10 10:41:12.487269",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -2732,7 +2732,6 @@
     "errorDisableIGCClassDesc": "Bu sohbetin bulunduğu kursta dilbilgisi yardımı devre dışı bırakılmıştır.",
     "error405Desc": "Lütfen Ana Menü > Öğrenme Ayarları'ndan dillerinizi ayarlayın.",
     "termsAndConditions": "Şartlar ve Koşullar",
-    "andCertifyIAmAtLeast13YearsOfAge": " ve en az 16 yaşında olduğumu onaylıyorum.",
     "error502504Desc": "Çeviri ve dilbilgisi araçları, Pangea botları güncellenirken yavaş veya kullanılamayabilir.",
     "error404Desc": "Pangea Bot bunun nasıl çevrileceğinden emin değil...",
     "errorPleaseRefresh": "Bunu inceliyoruz! Lütfen sayfayı yeniden yükleyin ve tekrar deneyin.",
@@ -3819,10 +3818,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10253,5 +10248,6 @@
     "reportSent": "Rapor gönderildi",
     "reportNotSent": "Raporunuz gönderilemedi. Bağlantınızı kontrol edip tekrar deneyin.",
     "reportPointerMessage": "{courseName} içinde bir mesaj bildirildi — Güvenlik bölümüne bakın",
-    "useActivityImageAsChatBackground": "Etkinlik görselini sohbet arka planı olarak kullan"
+    "useActivityImageAsChatBackground": "Etkinlik görselini sohbet arka planı olarak kullan",
+    "andCertifyIMeetTheMinimumAge": " ve en az 13 yaşında olduğumu veya ülkemde daha yüksekse gereken minimum yaşta olduğumu onaylıyorum."
 }

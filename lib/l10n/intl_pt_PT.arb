@@ -1904,7 +1904,6 @@
     "errorDisableIGCClassDesc": "Assistência de gramática está desativada para o curso em que esta conversa está.",
     "error405Desc": "Por favor, configure os seus idiomas no Menu Principal > Configurações de Aprendizagem.",
     "termsAndConditions": "Termos e Condições",
-    "andCertifyIAmAtLeast13YearsOfAge": " e certifico que tenho pelo menos 16 anos de idade.",
     "error502504Desc": "Ferramentas de tradução e gramática podem estar lentas ou indisponíveis enquanto os bots Pangea se atualizam.",
     "error404Desc": "O Bot Pangea não tem certeza de como traduzir isso...",
     "errorPleaseRefresh": "Estamos a resolver o problema! Por favor, recarregue e tente novamente.",
@@ -2556,7 +2555,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-09 10:04:39.201733",
+    "@@last_modified": "2026-10-10 10:41:11.897930",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -4446,10 +4445,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10869,5 +10864,6 @@
     "reportSent": "Denúncia enviada",
     "reportNotSent": "Não foi possível enviar a sua denúncia. Verifique a sua ligação e tente novamente.",
     "reportPointerMessage": "Uma mensagem foi denunciada em {courseName} — ver Segurança",
-    "useActivityImageAsChatBackground": "Usar imagem da atividade como fundo do chat"
+    "useActivityImageAsChatBackground": "Usar imagem da atividade como fundo do chat",
+    "andCertifyIMeetTheMinimumAge": " e certifico que tenho pelo menos 13 anos de idade, ou a idade mínima exigida no meu país, se for superior."
 }

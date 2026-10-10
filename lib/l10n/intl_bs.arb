@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-09 10:04:31.893113",
+    "@@last_modified": "2026-10-10 10:41:00.886735",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Pomoć pri gramatici je isključena za kurs u kojem se nalazi ovaj razgovor.",
     "error405Desc": "Molimo postavite svoje jezike u Glavnom meniju > Postavke učenja.",
     "termsAndConditions": "Uslovi i odredbe",
-    "andCertifyIAmAtLeast13YearsOfAge": " i potvrđujem da imam najmanje 16 godina.",
     "error502504Desc": "Alati za prevođenje i gramatiku mogu biti spori ili nedostupni dok Pangea botovi ne sustignu.",
     "error404Desc": "Pangea Bot nije siguran kako to prevesti...",
     "errorPleaseRefresh": "Radimo na tome! Molimo osvježite i pokušajte ponovo.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Izvještaj poslan",
     "reportNotSent": "Vaš izvještaj nije mogao biti poslan. Provjerite vezu i pokušajte ponovo.",
     "reportPointerMessage": "Poruka je prijavljena u {courseName} — pogledajte Sigurnost",
-    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata"
+    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata",
+    "andCertifyIMeetTheMinimumAge": " i potvrđujem da imam najmanje 13 godina, ili minimalnu dob propisanu u mojoj zemlji ako je ona viša."
 }

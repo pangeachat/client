@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-09 10:05:18.679406",
+    "@@last_modified": "2026-10-10 10:41:03.447997",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -2717,7 +2717,6 @@
     "errorDisableIGCClassDesc": "L'assistance à la grammaire est désactivée pour le cours dans lequel cette discussion a lieu.",
     "error405Desc": "Veuillez définir vos langues dans le menu principal > Paramètres d'apprentissage.",
     "termsAndConditions": "Termes et Conditions",
-    "andCertifyIAmAtLeast13YearsOfAge": " et je certifie que j'ai au moins 16 ans.",
     "error502504Desc": "Les outils de traduction et de grammaire peuvent être lents ou indisponibles pendant que les bots Pangea rattrapent leur retard.",
     "error404Desc": "Le bot Pangea n'est pas sûr de comment traduire cela...",
     "errorPleaseRefresh": "Nous étudions le problème ! Veuillez recharger et réessayer.",
@@ -3888,10 +3887,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10307,5 +10302,6 @@
     "reportSent": "Signalement envoyé",
     "reportNotSent": "Votre signalement n'a pas pu être envoyé. Vérifiez votre connexion et réessayez.",
     "reportPointerMessage": "Un message a été signalé dans {courseName} — voir Sécurité",
-    "useActivityImageAsChatBackground": "Utiliser l'image de l'activité comme arrière-plan de discussion"
+    "useActivityImageAsChatBackground": "Utiliser l'image de l'activité comme arrière-plan de discussion",
+    "andCertifyIMeetTheMinimumAge": " et certifie que j'ai au moins 13 ans, ou l'âge minimum requis dans mon pays si celui-ci est plus élevé."
 }

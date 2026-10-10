@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-09 10:04:36.060917",
+    "@@last_modified": "2026-10-10 10:41:07.712959",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Di ɛlp fɔ grama nɔ de fɔ di kos we dis chat de insay.",
     "error405Desc": "Duya set yu langwej dɛn insay Men Menyus > Lanin Setin dɛn.",
     "termsAndConditions": "Tɛm ɛn Kɔndishɔn dɛn",
-    "andCertifyIAmAtLeast13YearsOfAge": " ɛn a dɔn sɔtifai se a dɔn rich 16 ia.",
     "error502504Desc": "Di tul dɛn fɔ tɔk anɔda langwej ɛn grama go slɔ ɔ nɔ go de wɛl wɛl wɛn di Pangea bɔt dɛn de kɔch ɔp.",
     "error404Desc": "Pangea Bɔt nɔ sabi aw fɔ tɔk dat...",
     "errorPleaseRefresh": "Wi de luk am! Duya rilod ɛn tray bak.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Dɛn dɔn sɛn di ripot",
     "reportNotSent": "Yu ripot nɔ go dɔn sɛn. Chɛk yu kɔnɛkshɔn ɛn tray igen.",
     "reportPointerMessage": "Dɛn ripot wan mɛsej insay {courseName} — si Sefti",
-    "useActivityImageAsChatBackground": "Yuz aktiviti pikcho as chat bakgron"
+    "useActivityImageAsChatBackground": "Yuz aktiviti pikcho as chat bakgron",
+    "andCertifyIMeetTheMinimumAge": " ɛn a dɔn sɔtɛfay se a rich di minimɔm ej we bi 13 ia, ɔ di minimɔm ej we dɛn nid insay mi kɔntri if dat hay pas ighaigher."
 }

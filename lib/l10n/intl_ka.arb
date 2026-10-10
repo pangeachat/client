@@ -1293,7 +1293,6 @@
     "errorDisableIGCClassDesc": "გრამატიკის დახმარება გამორთულია ამ კურსისთვის, სადაც ეს ჩატი მდებარეობს.",
     "error405Desc": "გთხოვთ, დააყენოთ თქვენი ენები მთავარი მენიუდან > სწავლების პარამეტრებიდან.",
     "termsAndConditions": "წესებს და პირობებს",
-    "andCertifyIAmAtLeast13YearsOfAge": "და ვადასტურებ, რომ მე მინიმუმ 16 წლის ვარ.",
     "error502504Desc": "თარგმნის და გრამატიკის ხელსაწყოები შეიძლება იყოს ნელი ან მიუწვდომელი, სანამ პანგეა ბოტები არ დაეწევიან.",
     "error404Desc": "Pangea Bot-ი ვერ გარჩევს, როგორ უნდა თარგმნოს ეს...",
     "errorPleaseRefresh": "ჩვენ ამას ვისწრაფვით! გთხოვთ, განაახლოთ გვერდი და სცადოთ თავიდან.",
@@ -1934,7 +1933,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-09 10:04:35.881048",
+    "@@last_modified": "2026-10-10 10:41:06.202466",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -4418,10 +4417,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10852,5 +10847,6 @@
     "reportSent": "მოხსენება გაგზავნილია",
     "reportNotSent": "თქვენი მოხსენების გაგზავნა ვერ მოხერხდა. შეამოწმეთ კავშირი და სცადეთ ხელახლა.",
     "reportPointerMessage": "შეტყობინება მოხსენებულია {courseName}-ში — იხილეთ უსაფრთხოება",
-    "useActivityImageAsChatBackground": "აქტივობის სურათის გამოყენება ჩეთის ფონად"
+    "useActivityImageAsChatBackground": "აქტივობის სურათის გამოყენება ჩეთის ფონად",
+    "andCertifyIMeetTheMinimumAge": " და ვადასტურებ, რომ ვარ მინიმუმ 13 წლის, ან ჩემს ქვეყანაში მოთხოვნილი მინიმალური ასაკის, თუ ის უფრო მაღალია."
 }

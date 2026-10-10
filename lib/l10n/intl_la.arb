@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-09 10:04:36.443122",
+    "@@last_modified": "2026-10-10 10:41:07.007713",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Adiumentum grammaticum huic cursui, cui hoc colloquium est, deactivatum est.",
     "error405Desc": "Quaeso, linguas tuas in Tabula Principali > Statibus Discendi constitue.",
     "termsAndConditions": "Leges et Conditiones",
-    "andCertifyIAmAtLeast13YearsOfAge": " et testor me saltem XVI annos natum esse.",
     "error502504Desc": "Instrumenta interpretandi et grammatica tarda aut non praesto esse possunt dum robota Pangeae recuperant.",
     "error404Desc": "Robotum Pangeae nescit quomodo id interpretetur...",
     "errorPleaseRefresh": "Rem investigamus! Quaeso, denuo onera et conare.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Relatum missum",
     "reportNotSent": "Tua relatio mitti non potuit. Coniunctionem tuam inspice et iterum conare.",
     "reportPointerMessage": "Nuntius in {courseName} relatus est — vide Securitatem",
-    "useActivityImageAsChatBackground": "Imaginem actionis uti pro curriculo sermonis"
+    "useActivityImageAsChatBackground": "Imaginem actionis uti pro curriculo sermonis",
+    "andCertifyIMeetTheMinimumAge": " et confirmo me saltem tredecim annos natum esse, vel minimam aetatem in patria mea requisitam si maior sit."
 }

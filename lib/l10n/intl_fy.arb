@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-09 10:04:33.570329",
+    "@@last_modified": "2026-10-10 10:41:06.298599",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Grammatikahelp is útskeakele foar de kursus dêr't dit petear by heart.",
     "error405Desc": "Stel asjebleaft jo talen yn by Haadmenu > Learynstellingen.",
     "termsAndConditions": "Algemiene Betingsten",
-    "andCertifyIAmAtLeast13YearsOfAge": " en ferklearje dat ik op syn minst 16 jier âld bin.",
     "error502504Desc": "Oerset- en grammatika-ark kinne traach of net beskikber wêze wylst de Pangea-bots bywurkje.",
     "error404Desc": "Pangea Bot wit net wis hoe't dat oerset wurde moat...",
     "errorPleaseRefresh": "Wy sjogge dernei! Laad de side op 'e nij en besykje it nochris.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Melding ferstjoerd",
     "reportNotSent": "Jo melding koe net ferstjoerd wurde. Kontrolearje jo ferbining en besykje it opnij.",
     "reportPointerMessage": "Der is in berjocht melde yn {courseName} — sjoch Feiligens",
-    "useActivityImageAsChatBackground": "Brûk aktiviteitsôfbylding as petear eftergrûn"
+    "useActivityImageAsChatBackground": "Brûk aktiviteitsôfbylding as petear eftergrûn",
+    "andCertifyIMeetTheMinimumAge": " en ferklearje dat ik op syn minst 13 jier âld bin, of de minimumleeftyd dy't yn myn lân fereaske is as dy heger is."
 }

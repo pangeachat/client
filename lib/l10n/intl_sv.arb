@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:40.736559",
+    "@@last_modified": "2026-10-10 10:41:11.772506",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -2548,7 +2548,6 @@
     "errorDisableIGCClassDesc": "Grammatikhjälp är avstängd för kursen som denna chatt tillhör.",
     "error405Desc": "Vänligen ställ in dina språk i Huvudmeny > Inlärningsinställningar.",
     "termsAndConditions": "Villkor",
-    "andCertifyIAmAtLeast13YearsOfAge": " och intygar att jag är minst 16 år gammal.",
     "error502504Desc": "Översättnings- och grammatverktyg kan vara långsamma eller otillgängliga medan Pangea-botar hänger med.",
     "error404Desc": "Pangea-boten är inte säker på hur den ska översätta det...",
     "errorPleaseRefresh": "Vi undersöker det! Vänligen ladda om och prova igen.",
@@ -4036,10 +4035,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10470,5 +10465,6 @@
     "reportSent": "Rapport skickad",
     "reportNotSent": "Din rapport kunde inte skickas. Kontrollera din anslutning och försök igen.",
     "reportPointerMessage": "Ett meddelande rapporterades i {courseName} – se Säkerhet",
-    "useActivityImageAsChatBackground": "Använd aktivitetsbild som chattbakgrund"
+    "useActivityImageAsChatBackground": "Använd aktivitetsbild som chattbakgrund",
+    "andCertifyIMeetTheMinimumAge": " och intygar att jag är minst 13 år gammal, eller den minimiålder som krävs i mitt land om den är högre."
 }

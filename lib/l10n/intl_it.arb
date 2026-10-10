@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:35.175820",
+    "@@last_modified": "2026-10-10 10:41:05.547088",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -2832,7 +2832,6 @@
     "errorDisableIGCClassDesc": "L'assistenza alla grammatica è disattivata per il corso in cui si trova questa chat.",
     "error405Desc": "Imposta le tue lingue nel Menu Principale > Impostazioni di Apprendimento.",
     "termsAndConditions": "Termini e Condizioni",
-    "andCertifyIAmAtLeast13YearsOfAge": " e certifico di avere almeno 16 anni.",
     "error502504Desc": "Gli strumenti di traduzione e grammatica potrebbero essere lenti o non disponibili mentre i bot Pangea si aggiornano.",
     "error404Desc": "Il bot Pangea non è sicuro di come tradurre questo...",
     "errorPleaseRefresh": "Stiamo verificando! Ricarica e riprova.",
@@ -3621,10 +3620,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10025,5 +10020,6 @@
     "reportSent": "Segnalazione inviata",
     "reportNotSent": "Impossibile inviare la segnalazione. Controlla la tua connessione e riprova.",
     "reportPointerMessage": "È stato segnalato un messaggio in {courseName} — vedi Sicurezza",
-    "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat"
+    "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
+    "andCertifyIMeetTheMinimumAge": " e dichiaro di avere almeno 13 anni, o l'età minima richiesta nel mio paese se superiore."
 }

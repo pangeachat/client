@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-09 10:04:37.312922",
+    "@@last_modified": "2026-10-10 10:41:07.718237",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Tsy mandeha ny fanampiana fitsipi-pitenenana ho an'ny taranja misy ity resaka ity.",
     "error405Desc": "Azafady apetraho ny fiteninao ao amin'ny Main Menu > Learning Settings.",
     "termsAndConditions": "Fepetra sy Fepetra",
-    "andCertifyIAmAtLeast13YearsOfAge": " ary manamarina fa feno 16 taona farafahakeliny aho.",
     "error502504Desc": "Mety ho miadana na tsy misy ny fitaovana fandikana sy fitsipi-pitenenana raha mbola miandry ny bots Pangea.",
     "error404Desc": "Tsy fantatry ny Pangea Bot ny fomba handikana izany...",
     "errorPleaseRefresh": "Mandinika izany izahay! Azafady avereno ary andramo indray.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Tatitra nalefa",
     "reportNotSent": "Tsy afaka nalefa ny tatitrao. Hamarino ny fifandraisanao ary andramo indray.",
     "reportPointerMessage": "Nisy hafatra notaterina tao amin'ny {courseName} — jereo ny Fiarovana",
-    "useActivityImageAsChatBackground": "Ampiasaina ny sarin'ny asa ho toy ny fiavian'ny chat"
+    "useActivityImageAsChatBackground": "Ampiasaina ny sarin'ny asa ho toy ny fiavian'ny chat",
+    "andCertifyIMeetTheMinimumAge": " ary manamarina fa feno 13 taona farafahakeliny aho, na ny taona farany ambany takiana ao amin'ny fireneko raha avo kokoa izany."
 }

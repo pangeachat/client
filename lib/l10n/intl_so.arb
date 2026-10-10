@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-09 10:04:40.393727",
+    "@@last_modified": "2026-10-10 10:41:11.126767",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Caawinta naxwaha waa laga damiyay koorsada uu sheekadani ku jiro.",
     "error405Desc": "Fadlan luuqadahaaga ku deji Liiska Guud > Dejinta Barashada.",
     "termsAndConditions": "Shuruudaha iyo Xaaladaha",
-    "andCertifyIAmAtLeast13YearsOfAge": " oo aan caddeeyo inaan jiro ugu yaraan 16 sano.",
     "error502504Desc": "Qalabka turjumaadda iyo naxwaha ayaa laga yaabaa inay gaabiyaan ama aan la heli karin inta ay Pangea bots-ku soo qabanayaan.",
     "error404Desc": "Pangea Bot ma hubo sida loo turjumo taas...",
     "errorPleaseRefresh": "Waan eegaynaa! Fadlan dib u rar oo isku day mar kale.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Warbixinta waa la diray",
     "reportNotSent": "Warbixintaada lama diri karin. Hubi isku xirkaaga oo mar kale isku day.",
     "reportPointerMessage": "Fariin ayaa lagu soo sheegay {courseName} — fiiri Badbaadada",
-    "useActivityImageAsChatBackground": "Isticmaal sawirka hawsha asagoo ah asalka sheekaysiga"
+    "useActivityImageAsChatBackground": "Isticmaal sawirka hawsha asagoo ah asalka sheekaysiga",
+    "andCertifyIMeetTheMinimumAge": " iyo waxaan caddaynayaa in aan ugu yaraan 13 sano jir ahay, ama da'da ugu yar ee looga baahan yahay dalkayga haddii ay ka sarreyso."
 }

@@ -2919,7 +2919,6 @@
     "errorDisableIGCClassDesc": "Tá cabhair gramadála dícheangailte don chúrsa ina bhfuil an comhrá seo.",
     "error405Desc": "Le do thoil, socraigh do chuid teangacha sa Bhealach Príomh > Socruithe Foghlama.",
     "termsAndConditions": "Tearmaí agus Coinníollacha",
-    "andCertifyIAmAtLeast13YearsOfAge": " agus deimhním go bhfuil mé ar a laghad 16 bliain d'aois.",
     "error502504Desc": "D'fhéadfadh go mbeadh na huirlisí aistriúcháin agus gramadach mall nó neamh-inmhianaithe agus na bots Pangea ag teacht chun cinn.",
     "error404Desc": "Níl a fhios ag Bot Pangea conas é a aistriú...",
     "errorPleaseRefresh": "Táimid ag déileáil leis! Le do thoil, luchtú arís agus bain triail eile as.",
@@ -3560,7 +3559,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-09 10:04:33.830407",
+    "@@last_modified": "2026-10-10 10:41:03.661769",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -3705,10 +3704,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -9963,5 +9958,6 @@
     "reportSent": "Tugadh tuairisc",
     "reportNotSent": "Níorbh fhéidir do thuairisc a sheoladh. Seiceáil do nasc agus bain triail eile as.",
     "reportPointerMessage": "Tugadh tuairisc ar theachtaireacht i {courseName} — féach Sábháilteacht",
-    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá"
+    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
+    "andCertifyIMeetTheMinimumAge": " agus deimhním go bhfuil mé 13 bliana d’aois ar a laghad, nó an aois íosta a theastaíonn i mo thír má tá sin níos airde."
 }

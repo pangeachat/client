@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-09 10:04:37.121440",
+    "@@last_modified": "2026-10-10 10:41:08.168479",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Kua whakawetohia te āwhina wetereo mō te akoranga kei roto tēnei kōrerorero.",
     "error405Desc": "Tēnā koa tautuhia ō reo ki te Tahua Matua > Ngā Tautuhinga Ako.",
     "termsAndConditions": "Ngā Tikanga me ngā Here",
-    "andCertifyIAmAtLeast13YearsOfAge": " me te whakamana kua 16 tau neke atu ahau.",
     "error502504Desc": "He pōturi pea ngā taputapu whakamaori me te wetereo, kāore rānei i te wātea i te wā e whai ana ngā boti Pangea.",
     "error404Desc": "Kāore te Pangea Bot i te tino mōhio me pēhea te whakamaori i tērā...",
     "errorPleaseRefresh": "Kei te tirotirohia e mātou! Tēnā koa utaina anō ka ngana anō.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Kua tukuna te pūrongo",
     "reportNotSent": "Kāore i taea te tuku i tō pūrongo. Tirohia tō hononga ka ngana anō.",
     "reportPointerMessage": "I pūrongotia tētahi karere i roto i a {courseName} — tirohia te Haumaru",
-    "useActivityImageAsChatBackground": "Whakamahia te atahanga mahi hei papamuri kōrerorero"
+    "useActivityImageAsChatBackground": "Whakamahia te atahanga mahi hei papamuri kōrerorero",
+    "andCertifyIMeetTheMinimumAge": " ā, ka whakapūmau au kua eke au ki te 13 tau te pakeke, ki te pakeke iti rawa rānei e hiahiatia ana i tōku whenua mēnā he teitei ake tēnā."
 }

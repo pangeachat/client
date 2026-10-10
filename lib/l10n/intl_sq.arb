@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-09 10:04:40.689813",
+    "@@last_modified": "2026-10-10 10:41:11.429249",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Ndihma për gramatikë është çaktivizuar për kursin në të cilin është kjo bisedë.",
     "error405Desc": "Ju lutemi vendosni gjuhët tuaja në Menynë Kryesore > Cilësimet e Mësimit.",
     "termsAndConditions": "Termat dhe Kushtet",
-    "andCertifyIAmAtLeast13YearsOfAge": " dhe vërtetoj se jam të paktën 16 vjeç.",
     "error502504Desc": "Mjetet e përkthimit dhe gramatikës mund të jenë të ngadalta ose të padisponueshme ndërsa robotët Pangea po përditësohen.",
     "error404Desc": "Boti Pangea nuk është i sigurt si ta përkthejë këtë...",
     "errorPleaseRefresh": "Po e shqyrtojmë! Ju lutemi rifreskoni dhe provoni përsëri.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Raporti u dërgua",
     "reportNotSent": "Raporti juaj nuk mund të dërgohej. Kontrolloni lidhjen tuaj dhe provoni përsëri.",
     "reportPointerMessage": "Një mesazh u raportua në {courseName} — shihni Sigurinë",
-    "useActivityImageAsChatBackground": "Përdor imazhin e aktivitetit si sfond bisede"
+    "useActivityImageAsChatBackground": "Përdor imazhin e aktivitetit si sfond bisede",
+    "andCertifyIMeetTheMinimumAge": " dhe vërtetoj se jam të paktën 13 vjeç, ose mosha minimale e kërkuar në vendin tim nëse ajo është më e lartë."
 }

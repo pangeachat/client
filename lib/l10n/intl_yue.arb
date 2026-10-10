@@ -608,7 +608,6 @@
     "errorDisableIGCClassDesc": "此課程的文法協助已關閉。",
     "error405Desc": "請在主選單 > 學習設定中設定您的語言。",
     "termsAndConditions": "條款及細則",
-    "andCertifyIAmAtLeast13YearsOfAge": "並證明我已年滿16歲。",
     "error502504Desc": "在 Pangea 機器人追趕時，翻譯和文法工具可能會較慢或暫時無法使用。",
     "error404Desc": "Pangea Bot 唔肯定點樣翻譯嗰個...",
     "errorPleaseRefresh": "我哋正喺研究緊！請重新載入再試一次。",
@@ -1260,7 +1259,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-09 10:04:42.317072",
+    "@@last_modified": "2026-10-10 10:41:13.474208",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -4106,10 +4105,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10909,5 +10904,6 @@
     "reportSent": "舉報已送出",
     "reportNotSent": "無法送出你的舉報。請檢查你的連線，然後再試一次。",
     "reportPointerMessage": "{courseName} 有訊息被舉報咗 — 請睇安全中心",
-    "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景"
+    "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
+    "andCertifyIMeetTheMinimumAge": "並證明我已年滿 13 歲，如果我所在國家/地區有更高的最低年齡要求，則我已達到該要求。"
 }

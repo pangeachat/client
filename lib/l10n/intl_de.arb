@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-09 10:04:33.383751",
+    "@@last_modified": "2026-10-10 10:41:01.774589",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -2935,7 +2935,6 @@
     "errorDisableIGCClassDesc": "Die Grammatikhilfe ist für den Kurs, in dem sich dieser Chat befindet, deaktiviert.",
     "error405Desc": "Bitte stellen Sie Ihre Sprachen im Hauptmenü > Lerneinstellungen ein.",
     "termsAndConditions": "Allgemeinen Geschäftsbedingungen",
-    "andCertifyIAmAtLeast13YearsOfAge": " zu und bestätigen, dass ich mindestens 16 Jahre alt bin.",
     "error502504Desc": "Übersetzungs- und Grammatiktools könnten langsam sein oder nicht verfügbar sein, während die Pangea-Bots aufholen.",
     "error404Desc": "Der Pangea-Bot ist sich nicht sicher, wie das zu übersetzen ist...",
     "errorPleaseRefresh": "Wir kümmern uns darum! Bitte laden Sie die Seite neu und versuchen Sie es erneut.",
@@ -3719,10 +3718,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -9939,5 +9934,6 @@
     "reportSent": "Bericht gesendet",
     "reportNotSent": "Ihr Bericht konnte nicht gesendet werden. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
     "reportPointerMessage": "Eine Nachricht wurde in {courseName} gemeldet – siehe Sicherheit",
-    "useActivityImageAsChatBackground": "Aktivitätsbild als Chat-Hintergrund verwenden"
+    "useActivityImageAsChatBackground": "Aktivitätsbild als Chat-Hintergrund verwenden",
+    "andCertifyIMeetTheMinimumAge": " zu und bestätige, dass ich mindestens 13 Jahre alt bin oder das in meinem Land erforderliche Mindestalter erreicht habe, falls dieses höher ist."
 }

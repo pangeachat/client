@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:42.244615",
+    "@@last_modified": "2026-10-10 10:41:13.509265",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -2804,7 +2804,6 @@
     "errorDisableIGCClassDesc": "此課程已關閉互動語法協助。",
     "error405Desc": "請在主選單 > 學習設定中設定您的語言。",
     "termsAndConditions": "條款與條件",
-    "andCertifyIAmAtLeast13YearsOfAge": " 並證明我已年滿16歲。",
     "error502504Desc": "在 Pangea 機器人追趕時，翻譯和語法工具可能會變慢或無法使用。",
     "error404Desc": "Pangea 機器人不確定如何翻譯那個...",
     "errorPleaseRefresh": "我們正在處理！請重新載入並再試一次。",
@@ -3635,10 +3634,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10058,5 +10053,6 @@
     "reportSent": "檢舉已送出",
     "reportNotSent": "您的檢舉無法送出。請檢查您的連線並再試一次。",
     "reportPointerMessage": "在「{courseName}」中有一則訊息被檢舉了 — 請查看「安全」",
-    "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景"
+    "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
+    "andCertifyIMeetTheMinimumAge": " 並證明我已年滿 13 歲，或達到我的國家/地區規定的最低年齡（如果該年齡較高）。"
 }

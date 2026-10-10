@@ -2892,7 +2892,6 @@
     "errorDisableIGCClassDesc": "Kielenhuollon apu on pois päältä tämän keskustelun kurssille.",
     "error405Desc": "Aseta kielesi Päävalikosta > Oppimisasetukset.",
     "termsAndConditions": "käyttöehdot",
-    "andCertifyIAmAtLeast13YearsOfAge": " ja vahvistan, että olen vähintään 16-vuotias.",
     "error502504Desc": "Käännös- ja kielioppityökalut saattavat olla hitaita tai poissa käytöstä, kun Pangea-botit saavat kiinni.",
     "error404Desc": "Pangea-botti ei ole varma, miten tämä tulisi kääntää...",
     "errorPleaseRefresh": "Tarkistamme asiaa! Lataa sivu uudelleen ja yritä uudelleen.",
@@ -3533,7 +3532,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-09 10:04:33.389248",
+    "@@last_modified": "2026-10-10 10:41:03.786162",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -3686,10 +3685,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -9989,5 +9984,6 @@
     "reportSent": "Ilmoitus lähetetty",
     "reportNotSent": "Ilmoitustasi ei voitu lähettää. Tarkista yhteytesi ja yritä uudelleen.",
     "reportPointerMessage": "Viestistä ilmoitettiin kurssilla {courseName} – katso Turvallisuus",
-    "useActivityImageAsChatBackground": "Käytä aktiviteetin kuvaa chatin taustana"
+    "useActivityImageAsChatBackground": "Käytä aktiviteetin kuvaa chatin taustana",
+    "andCertifyIMeetTheMinimumAge": " ja vakuutan olevani vähintään 13-vuotias tai maassani vaaditun korkeamman vähimmäisiän mukainen."
 }

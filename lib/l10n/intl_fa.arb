@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:33.402782",
+    "@@last_modified": "2026-10-10 10:41:03.584965",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -2822,7 +2822,6 @@
     "errorDisableIGCClassDesc": "کمک گرامر برای دوره‌ای که این چت در آن است غیرفعال شده است.",
     "error405Desc": "لطفاً زبان‌های خود را در منوی اصلی > تنظیمات یادگیری تنظیم کنید.",
     "termsAndConditions": "شرایط و ضوابط",
-    "andCertifyIAmAtLeast13YearsOfAge": " و گواهی می‌دهم که حداقل ۱۳ سال سن دارم.",
     "error502504Desc": "ابزارهای ترجمه و گرامر ممکن است کند یا در دسترس نباشند در حالی که ربات‌های پنگئا جبران می‌کنند.",
     "error404Desc": "ربات پنگئا مطمئن نیست چگونه آن را ترجمه کند...",
     "errorPleaseRefresh": "در حال بررسی مشکل هستیم! لطفاً صفحه را مجدداً بارگذاری کنید و دوباره تلاش کنید.",
@@ -3611,10 +3610,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10040,5 +10035,6 @@
     "reportSent": "گزارش ارسال شد",
     "reportNotSent": "گزارش شما ارسال نشد. اتصال خود را بررسی کرده و دوباره امتحان کنید.",
     "reportPointerMessage": "پیامی در {courseName} گزارش شد — به بخش ایمنی مراجعه کنید",
-    "useActivityImageAsChatBackground": "استفاده از تصویر فعالیت به عنوان پس‌زمینه چت"
+    "useActivityImageAsChatBackground": "استفاده از تصویر فعالیت به عنوان پس‌زمینه چت",
+    "andCertifyIMeetTheMinimumAge": " و تأیید می‌کنم که حداقل ۱۳ سال سن دارم، یا اگر در کشورم سن قانونی بالاتری لازم است، آن سن را دارم."
 }

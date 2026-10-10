@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-09 10:04:32.750717",
+    "@@last_modified": "2026-10-10 10:41:01.616294",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -2519,7 +2519,6 @@
     "errorDisableIGCClassDesc": "Pomoc s gramatikou je vypnuta pro kurz, ve kterém je tento chat.",
     "error405Desc": "Prosím, nastavte své jazyky v Hlavním menu > Nastavení učení.",
     "termsAndConditions": "Obchodními podmínkami",
-    "andCertifyIAmAtLeast13YearsOfAge": "a potvrzuji, že mám alespoň 16 let.",
     "error502504Desc": "Nástroje pro překlad a gramatiku mohou být pomalé nebo nedostupné, zatímco se boty Pangea dožene.",
     "error404Desc": "Bot Pangea si není jistý, jak to přeložit...",
     "errorPleaseRefresh": "Řešíme to! Prosím, načtěte stránku znovu a zkuste to znovu.",
@@ -4026,10 +4025,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10446,5 +10441,6 @@
     "reportSent": "Hlášení odesláno",
     "reportNotSent": "Vaše hlášení se nepodařilo odeslat. Zkontrolujte připojení a zkuste to znovu.",
     "reportPointerMessage": "Zpráva byla nahlášena v {courseName} – viz Bezpečnost",
-    "useActivityImageAsChatBackground": "Použít obrázek aktivity jako pozadí chatu"
+    "useActivityImageAsChatBackground": "Použít obrázek aktivity jako pozadí chatu",
+    "andCertifyIMeetTheMinimumAge": " a potvrzuji, že je mi alespoň 13 let, nebo minimální věk požadovaný v mé zemi, pokud je vyšší."
 }

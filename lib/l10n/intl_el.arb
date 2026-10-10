@@ -2756,7 +2756,6 @@
     "errorDisableIGCClassDesc": "Η βοήθεια γραμματικής είναι απενεργοποιημένη για το μάθημα στο οποίο βρίσκεται αυτή η συνομιλία.",
     "error405Desc": "Ορίστε τις γλώσσες σας στο Μενού > Ρυθμίσεις Μάθησης.",
     "termsAndConditions": "Όρους και Προϋποθέσεις",
-    "andCertifyIAmAtLeast13YearsOfAge": " και πιστοποιώ ότι είμαι τουλάχιστον 16 ετών.",
     "error502504Desc": "Τα εργαλεία μετάφρασης και γραμματικής ενδέχεται να είναι αργά ή μη διαθέσιμα ενώ οι bots της Pangea ενημερώνονται.",
     "error404Desc": "Ο Pangea Bot δεν είναι σίγουρος πώς να μεταφράσει αυτό...",
     "errorPleaseRefresh": "Το ερευνούμε! Παρακαλούμε ανανεώστε και δοκιμάστε ξανά.",
@@ -3397,7 +3396,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-09 10:04:33.374782",
+    "@@last_modified": "2026-10-10 10:41:02.255673",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -4393,10 +4392,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10827,5 +10822,6 @@
     "reportSent": "Η αναφορά στάλθηκε",
     "reportNotSent": "Η αναφορά σας δεν μπόρεσε να σταλεί. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
     "reportPointerMessage": "Αναφέρθηκε ένα μήνυμα στο {courseName} — δείτε την ενότητα Ασφάλεια",
-    "useActivityImageAsChatBackground": "Χρήση εικόνας δραστηριότητας ως φόντο συνομιλίας"
+    "useActivityImageAsChatBackground": "Χρήση εικόνας δραστηριότητας ως φόντο συνομιλίας",
+    "andCertifyIMeetTheMinimumAge": " και βεβαιώνω ότι είμαι τουλάχιστον 13 ετών ή της ελάχιστης απαιτούμενης ηλικίας στη χώρα μου, εάν αυτή είναι μεγαλύτερη."
 }
