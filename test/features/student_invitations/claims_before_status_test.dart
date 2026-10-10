@@ -246,4 +246,23 @@ void main() {
     expect(order, contains('status'));
     expect(SpaceCodeRepo.pendingInvitation, isNull);
   });
+
+  test('sign-in\'s initialize + reinitialize overlap: the second waits on '
+      'the first\'s confirm, which is sent once', () async {
+    await SpaceCodeRepo.setPendingInvitation(
+      const PendingInvitation(inv, ackedDisclosureVersion: 2),
+    );
+    final c = controller();
+
+    // As PangeaController._onLogin: initialize is not awaited before
+    // reinitialize starts.
+    await http.runWithClient(() async {
+      final first = c.initialize(userId);
+      final second = c.reinitialize(userId);
+      await Future.wait([first, second]);
+    }, () => http_);
+
+    expectBefore('confirm', 'status', reason: 'no status read may overtake');
+    expect(order.where((o) => o == 'confirm'), hasLength(1));
+  });
 }

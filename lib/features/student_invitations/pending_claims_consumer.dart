@@ -71,10 +71,24 @@ PendingClaimsFlow pendingClaimsFlowFor(BuildContext context, Client client) {
 /// cannot hang on a silent module. If the module gives no answer at all, the
 /// failure is reported and status proceeds; the claim may or may not have
 /// landed (the entry is not resent, keeping it at most once).
+///
+/// Single-flight: sign-in starts the subscription controller's initialize and
+/// then a reinitialize, and the second must wait on the first's confirm, not
+/// find the ferry already taken and read status while it is in flight.
 Future<void> confirmTickedClaimsBeforeStatus({
   required StudentInvitationApi api,
   required String accessToken,
-}) async {
+}) => _claimsBeforeStatus ??= _confirmTicked(
+  api,
+  accessToken,
+).whenComplete(() => _claimsBeforeStatus = null);
+
+Future<void>? _claimsBeforeStatus;
+
+Future<void> _confirmTicked(
+  StudentInvitationApi api,
+  String accessToken,
+) async {
   try {
     await PendingClaimsFlow(
       api: api,
