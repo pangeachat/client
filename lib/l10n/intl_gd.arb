@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-09 10:04:33.967310",
+    "@@last_modified": "2026-10-10 10:41:03.537952",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Tha cuideachadh gràmair dheth airson a' chùrsa anns a bheil an còmhradh seo.",
     "error405Desc": "Feuch an suidhich thu do chànanan ann am Prìomh Chlàr > Roghainnean Ionnsachaidh.",
     "termsAndConditions": "Teirmean is Cùmhnantan",
-    "andCertifyIAmAtLeast13YearsOfAge": " agus dearbhaichidh mi gu bheil mi co-dhiù 16 bliadhna a dh'aois.",
     "error502504Desc": "Dh'fhaodadh innealan eadar-theangachaidh is gràmair a bhith slaodach no neo-ruigsinneach fhad 's a tha na botaichean Pangea a' glacadh suas.",
     "error404Desc": "Chan eil Pangea Bot cinnteach ciamar a dh'eadar-theangaicheas e sin...",
     "errorPleaseRefresh": "Tha sinn a' coimhead a-steach air! Feuch an ath-luchdaich thu agus feuch a-rithist.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Aithisg air a cur",
     "reportNotSent": "Cha b' urrainn dhuinn an aithisg agad a chur. Thoir sùil air a' cheangal agad is feuch ris a-rithist.",
     "reportPointerMessage": "Chaidh teachdaireachd aithris ann an {courseName} — faic Sàbhailteachd",
-    "useActivityImageAsChatBackground": "Cleachd dealbh gnìomhachd mar chùl-raon cabadaich"
+    "useActivityImageAsChatBackground": "Cleachd dealbh gnìomhachd mar chùl-raon cabadaich",
+    "andCertifyIMeetTheMinimumAge": " agus dearbhaichidh mi gu bheil mi co-dhiù 13 bliadhna a dh'aois, no an aois as ìsle a tha a dhìth nam dhùthaich ma tha sin nas àirde."
 }

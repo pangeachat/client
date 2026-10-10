@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:39.663114",
+    "@@last_modified": "2026-10-10 10:41:08.796701",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -2913,7 +2913,6 @@
     "errorDisableIGCClassDesc": "Grammatica hulp is uitgeschakeld voor de cursus waarin deze chat zich bevindt.",
     "error405Desc": "Stel uw talen in in Hoofdmenu > Leerinstellingen.",
     "termsAndConditions": "Algemene voorwaarden",
-    "andCertifyIAmAtLeast13YearsOfAge": " en verklaar dat ik minstens 16 jaar oud ben.",
     "error502504Desc": "Vertaal- en grammaticagereedschappen kunnen traag zijn of niet beschikbaar terwijl de Pangea-bots bijwerken.",
     "error404Desc": "Pangea Bot weet niet zeker hoe dit te vertalen...",
     "errorPleaseRefresh": "We zijn het aan het onderzoeken! Verversen en probeer het opnieuw.",
@@ -3698,10 +3697,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -9952,5 +9947,6 @@
     "reportSent": "Rapport verzonden",
     "reportNotSent": "Je rapport kon niet worden verzonden. Controleer je verbinding en probeer het opnieuw.",
     "reportPointerMessage": "Er is een bericht gerapporteerd in {courseName} — zie Veiligheid",
-    "useActivityImageAsChatBackground": "Gebruik activiteitsafbeelding als chatachtergrond"
+    "useActivityImageAsChatBackground": "Gebruik activiteitsafbeelding als chatachtergrond",
+    "andCertifyIMeetTheMinimumAge": " en bevestig dat ik ten minste 13 jaar oud ben, of de minimumleeftijd die in mijn land is vereist als die hoger is."
 }

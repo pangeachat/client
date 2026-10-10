@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-09 10:04:32.811303",
+    "@@last_modified": "2026-10-10 10:41:02.008941",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Mae cymorth gramadeg wedi'i ddiffodd ar gyfer y cwrs y mae'r sgwrs hon ynddo.",
     "error405Desc": "Gosodwch eich ieithoedd yn y Brif Ddewislen > Gosodiadau Dysgu.",
     "termsAndConditions": "Telerau ac Amodau",
-    "andCertifyIAmAtLeast13YearsOfAge": " ac yn ardystio fy mod o leiaf 16 oed.",
     "error502504Desc": "Gall offer cyfieithu a gramadeg fod yn araf neu ddim ar gael tra bod botiau Pangea yn dal i fyny.",
     "error404Desc": "Nid yw Bot Pangea yn siŵr sut i gyfieithu hynny...",
     "errorPleaseRefresh": "Rydym yn edrych i mewn iddo! Ail-lwythwch a rhowch gynnig arall arni.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Adroddiad wedi'i anfon",
     "reportNotSent": "Ni ellid anfon eich adroddiad. Gwiriwch eich cysylltiad a rhowch gynnig arall arni.",
     "reportPointerMessage": "Adroddwyd am neges yn {courseName} — gweler Diogelwch",
-    "useActivityImageAsChatBackground": "Defnyddio delwedd gweithgaredd fel cefndir sgwrsio"
+    "useActivityImageAsChatBackground": "Defnyddio delwedd gweithgaredd fel cefndir sgwrsio",
+    "andCertifyIMeetTheMinimumAge": " a chadarnhau fy mod o leiaf 13 oed, neu'r oedran lleiaf sy'n ofynnol yn fy ngwlad os yw hynny'n uwch."
 }

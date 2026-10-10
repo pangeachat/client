@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-09 10:04:39.919950",
+    "@@last_modified": "2026-10-10 10:41:11.051644",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Rubatsiro rwegirama rwakadzimwa kosi iyi yechat.",
     "error405Desc": "Ndapota isa mitauro yako muMain Menu > Learning Settings.",
     "termsAndConditions": "Mitemo Nemamiriro",
-    "andCertifyIAmAtLeast13YearsOfAge": " uye ndinosimbisa kuti ndine makore gumi nematanhatu ekuzvarwa kana kupfuura.",
     "error502504Desc": "Zvishandiso zvekuturikira negirama zvinogona kunonoka kana kusashanda apo mabhoti ePangea achiri kugadzirisa.",
     "error404Desc": "Pangea Bot haisi chokwadi kuti ingaturikira sei izvozvo...",
     "errorPleaseRefresh": "Tiri kuzviongorora! Ndapota rova peji zvakare woedza zvakare.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Chirevo chatumirwa",
     "reportNotSent": "Chirevo chako hachina kutumirwa. Tarisa internet yako woedza zvakare.",
     "reportPointerMessage": "Meseji yakashumwa mu{courseName} — ona Kuchengeteka",
-    "useActivityImageAsChatBackground": "Shandisa mufananidzo wechiitiko sehwaro hwechat"
+    "useActivityImageAsChatBackground": "Shandisa mufananidzo wechiitiko sehwaro hwechat",
+    "andCertifyIMeetTheMinimumAge": " uye ndinopupura kuti ndasvitsa makore gumi nematatu, kana kuti makore anodiwa munyika yangu kana akakwirira."
 }

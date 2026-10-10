@@ -2904,7 +2904,6 @@
     "errorDisableIGCClassDesc": "Дапамога з граматыкай выключана для курса, у якім знаходзіцца гэты чат.",
     "error405Desc": "Калі ласка, усталюйце свае мовы ў галоўным меню > Налады навучання.",
     "termsAndConditions": "Умовамі і палажэннямі",
-    "andCertifyIAmAtLeast13YearsOfAge": " і пацвярджаю, што мне не менш за 16 гадоў.",
     "error502504Desc": "Інструменты перакладу і граматыкі могуць працаваць павольна або быць недаступнымі, пакуль боты Pangea не навядуць парадак.",
     "error404Desc": "Бот Pangea не ўпэўнены, як гэта перакласці...",
     "errorPleaseRefresh": "Мы разглядаем гэта! Калі ласка, перазагрузіце і паспрабуйце зноў.",
@@ -3545,7 +3544,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-09 10:04:32.135083",
+    "@@last_modified": "2026-10-10 10:41:01.032845",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -3698,10 +3697,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -9966,5 +9961,6 @@
     "reportSent": "Справаздача адпраўлена",
     "reportNotSent": "Ваша справаздача не можа быць адпраўлена. Праверце злучэнне і паспрабуйце зноў.",
     "reportPointerMessage": "Паведамленне было паведамлена ў {courseName} — глядзіце Бяспека",
-    "useActivityImageAsChatBackground": "Выкарыстоўваць выяву актыўнасці як фон чата"
+    "useActivityImageAsChatBackground": "Выкарыстоўваць выяву актыўнасці як фон чата",
+    "andCertifyIMeetTheMinimumAge": " і пацвярджаю, што мне не менш за 13 гадоў або мінімальны ўзрост, неабходны ў маёй краіне, калі ён вышэйшы."
 }

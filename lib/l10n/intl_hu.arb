@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-09 10:04:34.808638",
+    "@@last_modified": "2026-10-10 10:41:04.789054",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -2817,7 +2817,6 @@
     "errorDisableIGCClassDesc": "A nyelvtani segítség kikapcsolva van az adott kurzushoz tartozó csevegésben.",
     "error405Desc": "Kérjük, állítsa be nyelveit a Főmenü > Tanulási Beállítások menüpontban.",
     "termsAndConditions": "Felhasználási feltételeket",
-    "andCertifyIAmAtLeast13YearsOfAge": " és igazolom, hogy legalább 16 éves vagyok.",
     "error502504Desc": "A fordítási és nyelvtani eszközök lehetnek lassúak vagy nem elérhetők, amíg a Pangea botok utolérik magukat.",
     "error404Desc": "A Pangea Bot nem biztos benne, hogyan fordítsa ezt...",
     "errorPleaseRefresh": "Ellenőrizzük a problémát! Kérjük, frissítse az oldalt és próbálja újra.",
@@ -3621,10 +3620,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10055,5 +10050,6 @@
     "reportSent": "Jelentés elküldve",
     "reportNotSent": "A jelentés nem küldhető el. Ellenőrizze az internetkapcsolatát, és próbálja újra.",
     "reportPointerMessage": "Üzenet jelentve a {courseName} kurzusban – lásd a Biztonság menüpontot",
-    "useActivityImageAsChatBackground": "Tevékenység képének használata chat háttérként"
+    "useActivityImageAsChatBackground": "Tevékenység képének használata chat háttérként",
+    "andCertifyIMeetTheMinimumAge": " és igazolom, hogy betöltöttem a 13. életévemet, vagy az országomban előírt magasabb minimális életkort."
 }

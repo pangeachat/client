@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-09 10:04:41.636408",
+    "@@last_modified": "2026-10-10 10:41:12.873471",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -2918,7 +2918,6 @@
     "errorDisableIGCClassDesc": "Ushbu suhbat bo'lib o'tadigan kurs uchun grammatik yordam o'chirilgan.",
     "error405Desc": "Iltimos, Asosiy menyu > O'rganish sozlamalarida tillaringizni belgilang.",
     "termsAndConditions": "Shartlar va shartlar",
-    "andCertifyIAmAtLeast13YearsOfAge": " va kamida 16 yoshda ekanligimni tasdiqlayman.",
     "error502504Desc": "Tarjimalar va grammatik vositalar sekin yoki mavjud bo'lmasligi mumkin, Pangea botlari yangilanishni kutmoqda.",
     "error404Desc": "Pangea Bot bu qanday tarjima qilishni bilmayapti...",
     "errorPleaseRefresh": "Biz bu muammoni hal qilmoqdamiz! Iltimos, sahifani yangilang va qayta urinib ko'ring.",
@@ -4071,10 +4070,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -9956,5 +9951,6 @@
     "reportSent": "Xabar yuborildi",
     "reportNotSent": "Xabaringiz yuborilmadi. Internet aloqangizni tekshiring va qayta urinib koʻring.",
     "reportPointerMessage": "{courseName} dagi xabar haqida xabar berildi — Xavfsizlik boʻlimiga qarang",
-    "useActivityImageAsChatBackground": "Faoliyat rasmini chat fon rasmi sifatida ishlatish"
+    "useActivityImageAsChatBackground": "Faoliyat rasmini chat fon rasmi sifatida ishlatish",
+    "andCertifyIMeetTheMinimumAge": " va men kamida 13 yoshda ekanligimni yoki agar yuqori bo'lsa, mamlakatimda talab qilinadigan minimal yoshga to'g'ri kelishimni tasdiqlayman."
 }

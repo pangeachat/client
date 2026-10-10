@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-09 10:04:35.876075",
+    "@@last_modified": "2026-10-10 10:41:05.948474",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -2305,7 +2305,6 @@
     "errorDisableIGCClassDesc": "このチャットが属するコースの文法支援がオフになっています。",
     "error405Desc": "メインメニュー > 学習設定で言語を設定してください。",
     "termsAndConditions": "利用規約",
-    "andCertifyIAmAtLeast13YearsOfAge": " および私は少なくとも16歳であることを証明します。",
     "error502504Desc": "Pangeaボットが追いつくまで、翻訳や文法ツールは遅くなるか利用できない場合があります。",
     "error404Desc": "Pangea Botはそれをどう翻訳すればいいかわかりません...",
     "errorPleaseRefresh": "調査中です！ページをリロードしてもう一度お試しください。",
@@ -4287,10 +4286,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10721,5 +10716,6 @@
     "reportSent": "レポートを送信しました",
     "reportNotSent": "レポートを送信できませんでした。接続を確認して、もう一度お試しください。",
     "reportPointerMessage": "{courseName}でメッセージが報告されました — 安全設定を確認してください",
-    "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用"
+    "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用",
+    "andCertifyIMeetTheMinimumAge": " また、私は13歳以上であること、または私の国で定められている場合はそれ以上の最低年齢であることを証明します。"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-09 10:04:35.197628",
+    "@@last_modified": "2026-10-10 10:41:04.726533",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Kev pab grammar raug kaw rau chav kawm uas qhov kev sib tham no nyob hauv.",
     "error405Desc": "Thov teem koj cov lus hauv Main Menu > Learning Settings.",
     "termsAndConditions": "Cov Lus Cog Tseg",
-    "andCertifyIAmAtLeast13YearsOfAge": " thiab lees paub tias kuv muaj hnub nyoog tsawg kawg 16 xyoos.",
     "error502504Desc": "Cov cuab yeej txhais lus thiab grammar yuav qeeb lossis tsis muaj thaum Pangea bots tab tom ua haujlwm.",
     "error404Desc": "Pangea Bot tsis paub yuav txhais li cas...",
     "errorPleaseRefresh": "Peb tab tom tshawb nrhiav! Thov rov qab thauj dua thiab sim dua.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Daim ntawv qhia raug xa lawm",
     "reportNotSent": "Koj daim ntawv qhia xa tsis tau. Saib koj qhov txuas thiab sim dua.",
     "reportPointerMessage": "Ib tsab ntawv raug qhia hauv {courseName} — saib Kev Nyab Xeeb",
-    "useActivityImageAsChatBackground": "Siv daim duab ua si los ua keeb kwm yav dhau los ntawm kev sib tham"
+    "useActivityImageAsChatBackground": "Siv daim duab ua si los ua keeb kwm yav dhau los ntawm kev sib tham",
+    "andCertifyIMeetTheMinimumAge": " thiab lees paub tias kuv muaj hnub nyoog tsawg kawg 13 xyoos, lossis muaj hnub nyoog tsawg kawg raws li kuv lub tebchaws xav tau yog tias siab dua."
 }

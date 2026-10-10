@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:32.652816",
+    "@@last_modified": "2026-10-10 10:41:01.634795",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -2797,7 +2797,6 @@
     "errorDisableIGCClassDesc": "L'assistència de gramàtica està desactivada per al curs en què es troba aquest xat.",
     "error405Desc": "Si us plau, configureu els vostres idiomes al Menú Principal > Configuració d'Aprenentatge.",
     "termsAndConditions": "Termes i Condicions",
-    "andCertifyIAmAtLeast13YearsOfAge": " i certifico que tinc almenys 16 anys.",
     "error502504Desc": "Les eines de traducció i gramàtica poden ser lentes o no estar disponibles mentre els bots de Pangea s'actualitzen.",
     "error404Desc": "El Pangea Bot no està segur de com traduir això...",
     "errorPleaseRefresh": "Ho estem investigant! Si us plau, actualitza i torna a provar.",
@@ -3645,10 +3644,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10079,5 +10074,6 @@
     "reportSent": "Informe enviat",
     "reportNotSent": "No s'ha pogut enviar l'informe. Comprova la connexió i torna-ho a provar.",
     "reportPointerMessage": "S'ha informat d'un missatge a {courseName}; consulta Seguretat",
-    "useActivityImageAsChatBackground": "Utilitza la imatge de l'activitat com a fons del xat"
+    "useActivityImageAsChatBackground": "Utilitza la imatge de l'activitat com a fons del xat",
+    "andCertifyIMeetTheMinimumAge": " i certifico que tinc almenys 13 anys, o l'edat mínima requerida al meu país si és superior."
 }

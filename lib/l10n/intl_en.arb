@@ -3116,7 +3116,7 @@
     "errorDisableIGCClassDesc": "Grammar assistance is turned off for the course that this chat is in.",
     "error405Desc": "Please set your languages in Main Menu > Learning Settings.",
     "termsAndConditions": "Terms and Conditions",
-    "andCertifyIAmAtLeast13YearsOfAge": " and certify I am at least 16 years of age.",
+    "andCertifyIMeetTheMinimumAge": " and certify I am at least 13 years of age, or the minimum age required in my country if that is higher.",
     "error502504Desc": "Translation and grammar tools may be slow or unavailable while the Pangea bots catch up.",
     "error404Desc": "Pangea Bot isn't sure how to translate that...",
     "errorPleaseRefresh": "We're looking into it! Please reload and try again.",

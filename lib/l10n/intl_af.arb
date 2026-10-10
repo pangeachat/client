@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-09 10:04:31.896740",
+    "@@last_modified": "2026-10-10 10:41:00.721254",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Grammatikahulp is afgeskakel vir die kursus waarin hierdie klets is.",
     "error405Desc": "Stel asseblief jou tale in Hoofkieslys > Leerinstellings.",
     "termsAndConditions": "Bepalings en Voorwaardes",
-    "andCertifyIAmAtLeast13YearsOfAge": " en sertifiseer ek is minstens 16 jaar oud.",
     "error502504Desc": "Vertaal- en grammatikagereedskap mag dalk stadig of onbeskikbaar wees terwyl die Pangea-botte opvang.",
     "error404Desc": "Pangea Bot is nie seker hoe om dit te vertaal nie...",
     "errorPleaseRefresh": "Ons ondersoek dit! Herlaai asseblief en probeer weer.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Verslag gestuur",
     "reportNotSent": "Jou verslag kon nie gestuur word nie. Kontroleer jou verbinding en probeer weer.",
     "reportPointerMessage": "’n Boodskap is in {courseName} gerapporteer — sien Veiligheid",
-    "useActivityImageAsChatBackground": "Gebruik aktiwiteitbeeld as kletsagtergrond"
+    "useActivityImageAsChatBackground": "Gebruik aktiwiteitbeeld as kletsagtergrond",
+    "andCertifyIMeetTheMinimumAge": " en sertifiseer dat ek ten minste 13 jaar oud is, of die minimum ouderdom wat in my land vereis word as dit hoër is."
 }

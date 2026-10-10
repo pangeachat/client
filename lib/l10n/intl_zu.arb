@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-09 10:04:42.430919",
+    "@@last_modified": "2026-10-10 10:41:13.942878",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Usizo lolimi luvaliwe esifundweni le ngxoxo ekuso.",
     "error405Desc": "Sicela usethe izilimi zakho kuMenyu Eyinhloko > Izilungiselelo Zokufunda.",
     "termsAndConditions": "Imigomo Nemibandela",
-    "andCertifyIAmAtLeast13YearsOfAge": " futhi ngiqinisekisa ukuthi ngineminyaka engu-16 ubudala noma ngaphezulu.",
     "error502504Desc": "Amathuluzi okuhumusha nawolimi angase ahambe kancane noma angatholakali ngenkathi amarobhothi e-Pangea elungisa.",
     "error404Desc": "I-Pangea Bot ayiqiniseki ukuthi ingakuhumusha kanjani lokho...",
     "errorPleaseRefresh": "Siyakubheka! Sicela ulayishe kabusha bese uzama futhi.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Umbiko uthunyelwe",
     "reportNotSent": "Umbiko wakho awukwazanga ukuthunyelwa. Hlola uxhumano lwakho bese uzama futhi.",
     "reportPointerMessage": "Umlayezo ubikwe ku-{courseName} — bona ukuphepha",
-    "useActivityImageAsChatBackground": "Sebenzisa isithombe somsebenzi njengesizinda sengxoxo"
+    "useActivityImageAsChatBackground": "Sebenzisa isithombe somsebenzi njengesizinda sengxoxo",
+    "andCertifyIMeetTheMinimumAge": " futhi ngiqinisekisa ukuthi ngineminyaka engu-13 ubudala noma ngaphezulu, noma ubuncane beminyaka edingekayo ezweni lami uma lokho kuphakeme."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:39.270057",
+    "@@last_modified": "2026-10-10 10:41:10.228250",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -2379,7 +2379,6 @@
     "errorDisableIGCClassDesc": "Asistența de gramatică este dezactivată pentru cursul în care se află această conversație.",
     "error405Desc": "Vă rugăm să setați limbile în Meniu Principal > Setări de Învățare.",
     "termsAndConditions": "Termenii și Condițiile",
-    "andCertifyIAmAtLeast13YearsOfAge": " și certific că am cel puțin 16 ani.",
     "error502504Desc": "Instrumentele de traducere și gramatică pot fi lente sau indisponibile în timp ce roboții Pangea se actualizează.",
     "error404Desc": "Botul Pangea nu este sigur cum să traducă asta...",
     "errorPleaseRefresh": "Ne uităm la problemă! Vă rugăm să reîncărcați și să încercați din nou.",
@@ -4250,10 +4249,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10684,5 +10679,6 @@
     "reportSent": "Raport trimis",
     "reportNotSent": "Raportul tău nu a putut fi trimis. Verifică-ți conexiunea și încearcă din nou.",
     "reportPointerMessage": "Un mesaj a fost raportat în {courseName} — vezi Siguranță",
-    "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal de chat"
+    "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal de chat",
+    "andCertifyIMeetTheMinimumAge": " și certific că am cel puțin 13 ani, sau vârsta minimă cerută în țara mea dacă aceasta este mai mare."
 }

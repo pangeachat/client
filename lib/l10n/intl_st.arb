@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-09 10:04:40.690951",
+    "@@last_modified": "2026-10-10 10:41:11.712444",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Thuso ea sebōpeho-puo e tingoe bakeng sa thupelo eo moqoqo ona o leng ho eona.",
     "error405Desc": "Ka kopo, beha lipuo tsa hau ho Main Menu > Litlhophiso tsa ho Ithuta.",
     "termsAndConditions": "Melao le Lipehelo",
-    "andCertifyIAmAtLeast13YearsOfAge": " le ho paka hore ke na le bonyane lilemo tse 16.",
     "error502504Desc": "Lisebelisoa tsa phetolelo le sebōpeho-puo li ka lieha kapa tsa se fumanehe ha li-bot tsa Pangea li ntse li leka ho tšoarella.",
     "error404Desc": "Pangea Bot ha e na bonnete ba hore na e ka fetolela seo joang...",
     "errorPleaseRefresh": "Re ntse re e sheba! Ka kopo, kenya hape 'me u leke hape.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Tlaleho e rometsoe",
     "reportNotSent": "Tlaleho ea hau e ne e ke ke ea romeloa. Lekola khokahano ea hau 'me u leke hape.",
     "reportPointerMessage": "Molaetsa o tlalehiloe ho {courseName} — bona Polokeho",
-    "useActivityImageAsChatBackground": "Sebelisa setšoantšo sa mosebetsi e le bokamorao ba moqoqo"
+    "useActivityImageAsChatBackground": "Sebelisa setšoantšo sa mosebetsi e le bokamorao ba moqoqo",
+    "andCertifyIMeetTheMinimumAge": " mme ke netefatsa hore ke na le bonyane lilemo tse 13, kapa lilemo tse fokolang tse hlokahalang naheng ea heso haeba li le holimo."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-09 10:04:41.741823",
+    "@@last_modified": "2026-10-10 10:41:13.176418",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Uncedo logrammar luvaliwe kwikhosi ekuyo le ncoko.",
     "error405Desc": "Nceda usete iilwimi zakho kwiMenyu Ephambili > Useto Lokufunda.",
     "termsAndConditions": "Imigaqo nemiqathango",
-    "andCertifyIAmAtLeast13YearsOfAge": " kwaye ndiqinisekisa ukuba ndineminyaka eli-16 ubuncinane.",
     "error502504Desc": "Izixhobo zokuguqulela nezogrammar zinokucotha okanye zingafumaneki ngelixa iirobhothi zePangea zibambelela.",
     "error404Desc": "I-Pangea Bot ayiqinisekanga ukuba ingakuguqulela njani oko...",
     "errorPleaseRefresh": "Siyayijonga! Nceda ulayishe kwakhona kwaye uzame kwakhona.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Ingxelo ithunyelwe",
     "reportNotSent": "Ingxelo yakho ayikwazanga ukuthunyelwa. Khangela uqhagamshelwano lwakho uze uzame kwakhona.",
     "reportPointerMessage": "Umyalezo uxeliwe ku-{courseName} — jonga uKhuseleko",
-    "useActivityImageAsChatBackground": "Sebenzisa umfanekiso womsebenzi njengemvelaphi yencoko"
+    "useActivityImageAsChatBackground": "Sebenzisa umfanekiso womsebenzi njengemvelaphi yencoko",
+    "andCertifyIMeetTheMinimumAge": " kwaye ndiqinisekisa ukuba ndineminyaka eli-13 ubuncinci, okanye ubuncinci beminyaka efunekayo kwilizwe lam ukuba iphezulu."
 }

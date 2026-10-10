@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-09 10:04:33.419602",
+    "@@last_modified": "2026-10-10 10:41:02.213064",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -2909,7 +2909,6 @@
     "learningSettings": "Ajustes de aprendizaje",
     "updateNow": "Comenzar actualización en segundo plano.",
     "termsAndConditions": "Términos y condiciones",
-    "andCertifyIAmAtLeast13YearsOfAge": " y certifico que tengo al menos 16 años.",
     "error502504Desc": "Las herramientas de assistencia gramatical y de traducción pueden ser lentas o no estar disponibles mientras los bots de Pangea se ponen al día.",
     "error404Desc": "Pangea Bot no está seguro de cómo traducir eso.",
     "itToggleDescription": "Esta herramienta de aprendizaje identificará palabras en su idioma base y lo ayudará a traducirlas a su idioma a aprender. Aunque es raro, la AI puede cometer errores de traducción de vez en cuando.",
@@ -8177,5 +8176,6 @@
     "reportSent": "Reporte enviado",
     "reportNotSent": "No se pudo enviar tu reporte. Revisa tu conexión y vuelve a intentarlo.",
     "reportPointerMessage": "Se reportó un mensaje en {courseName} — ver Seguridad",
-    "useActivityImageAsChatBackground": "Usar imagen de actividad como fondo de chat"
+    "useActivityImageAsChatBackground": "Usar imagen de actividad como fondo de chat",
+    "andCertifyIMeetTheMinimumAge": " y certifico que tengo al menos 13 años de edad, o la edad mínima requerida en mi país si esta es mayor."
 }

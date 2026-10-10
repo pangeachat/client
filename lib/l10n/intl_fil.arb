@@ -1425,7 +1425,6 @@
     "errorDisableIGCClassDesc": "Naka-off ang tulong sa gramatika para sa kurso kung saan naroroon ang chat na ito.",
     "error405Desc": "Mangyaring itakda ang iyong mga wika sa Main Menu > Learning Settings.",
     "termsAndConditions": "Mga Tuntunin at Kondisyon",
-    "andCertifyIAmAtLeast13YearsOfAge": " at certipikadong ako ay hindi bababa sa 16 na taong gulang.",
     "error502504Desc": "Maaaring maging mabagal o hindi magagamit ang mga translation at grammar tools habang nakakaabante ang mga Pangea bots.",
     "error404Desc": "Hindi sigurado ang Pangea Bot kung paano isasalin iyon...",
     "errorPleaseRefresh": "Tinitingnan namin ito! Mangyaring i-reload at subukan muli.",
@@ -2077,7 +2076,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-09 10:04:33.599916",
+    "@@last_modified": "2026-10-10 10:41:03.367344",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -4389,10 +4388,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10812,5 +10807,6 @@
     "reportSent": "Naipadala ang ulat",
     "reportNotSent": "Hindi maipadala ang iyong ulat. Tingnan ang iyong koneksyon at subukang muli.",
     "reportPointerMessage": "May naiulat na mensahe sa {courseName} — tingnan ang Kaligtasan",
-    "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat"
+    "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat",
+    "andCertifyIMeetTheMinimumAge": " at pinapatunayan kong ako ay hindi bababa sa 13 taong gulang, o ang minimum na edad na kinakailangan sa aking bansa kung ito ay mas mataas."
 }

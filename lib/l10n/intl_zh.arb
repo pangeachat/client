@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-09 10:04:42.225124",
+    "@@last_modified": "2026-10-10 10:41:13.650435",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -2914,7 +2914,6 @@
     "errorDisableIGCClassDesc": "此课程中的语法协助已关闭。",
     "error405Desc": "请在主菜单 > 学习设置中设置您的语言。",
     "termsAndConditions": "条款和条件",
-    "andCertifyIAmAtLeast13YearsOfAge": "并证明我已满16岁。",
     "error502504Desc": "在Pangea机器人赶上进度时，翻译和语法工具可能会变慢或不可用。",
     "error404Desc": "Pangea机器人不确定如何翻译这个...",
     "errorPleaseRefresh": "我们正在处理！请重新加载并重试。",
@@ -3698,10 +3697,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -9952,5 +9947,6 @@
     "reportSent": "举报已发送",
     "reportNotSent": "无法发送您的举报。请检查您的网络连接，然后重试。",
     "reportPointerMessage": "在 {courseName} 中举报了一条消息 — 请查看“安全”",
-    "useActivityImageAsChatBackground": "使用活动图片作为聊天背景"
+    "useActivityImageAsChatBackground": "使用活动图片作为聊天背景",
+    "andCertifyIMeetTheMinimumAge": "并证明我已年满13周岁，如果我的国家/地区要求更高的最低年龄，则以该年龄为准。"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-09 10:04:32.018546",
+    "@@last_modified": "2026-10-10 10:41:00.913343",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Bu söhbətin aid olduğu kurs üçün qrammatika yardımı deaktiv edilib.",
     "error405Desc": "Zəhmət olmasa, dillərinizi Əsas Menyu > Öyrənmə Parametrləri bölməsində qurun.",
     "termsAndConditions": "Şərtlər və Qaydalar",
-    "andCertifyIAmAtLeast13YearsOfAge": " və ən azı 16 yaşım olduğunu təsdiq edirəm.",
     "error502504Desc": "Pangea botları sinxronlaşana qədər tərcümə və qrammatika alətləri yavaş və ya əlçatmaz ola bilər.",
     "error404Desc": "Pangea Botu bunu necə tərcümə edəcəyindən əmin deyil...",
     "errorPleaseRefresh": "Bunu araşdırırıq! Zəhmət olmasa, yenidən yükləyin və bir daha cəhd edin.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Hesabat göndərildi",
     "reportNotSent": "Hesabatınız göndərilə bilmədi. İnternet bağlantınızı yoxlayın və yenidən cəhd edin.",
     "reportPointerMessage": "{courseName} kursunda bir mesaj bildirildi — Təhlükəsizliyə baxın",
-    "useActivityImageAsChatBackground": "Fəaliyyət şəklini çat fonu kimi istifadə et"
+    "useActivityImageAsChatBackground": "Fəaliyyət şəklini çat fonu kimi istifadə et",
+    "andCertifyIMeetTheMinimumAge": " və təsdiq edirəm ki, ən azı 13 yaşım var və ya ölkəmdə tələb olunan minimum yaş həddinə (əgər daha yüksəkdirsə) uyğun gəlirəm."
 }

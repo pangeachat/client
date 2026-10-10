@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-09 10:04:33.238304",
+    "@@last_modified": "2026-10-10 10:41:03.433326",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -2914,7 +2914,6 @@
     "errorDisableIGCClassDesc": "Gramatika laguntza desgaituta dago ikastaro honetan dagoen chat-entzat.",
     "error405Desc": "Mesedez, ezarri zure hizkuntzak Nagusien Menuko > Ikaskuntza Ezarpenetan.",
     "termsAndConditions": " Baldintzak eta Baldintzak",
-    "andCertifyIAmAtLeast13YearsOfAge": " eta ziurtatzen dut gutxienez 16 urte ditudala.",
     "error502504Desc": "Itzulpen eta gramatika tresnak motel edo erabilgarri ez egon daitezke Pangea botak eguneratzen direnean.",
     "error404Desc": "Pangea Botak ez du ziur nola itzuli hori...",
     "errorPleaseRefresh": "Begiratzen ari gara! Mesedez, kargatu berriro eta saiatu berriro.",
@@ -3698,10 +3697,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -9952,5 +9947,6 @@
     "reportSent": "Txostena bidali da",
     "reportNotSent": "Ezin izan da zure txostena bidali. Egiaztatu konexioa eta saiatu berriro.",
     "reportPointerMessage": "Mezu bat salatu da {courseName} ikastaroan — ikusi Segurtasuna",
-    "useActivityImageAsChatBackground": "Erabili jardueraren irudia txataren atzeko plano gisa"
+    "useActivityImageAsChatBackground": "Erabili jardueraren irudia txataren atzeko plano gisa",
+    "andCertifyIMeetTheMinimumAge": " eta ziurtatzen dut gutxienez 13 urte ditudala, edo nire herrialdean eskatzen den gutxieneko adina, hori handiagoa bada."
 }

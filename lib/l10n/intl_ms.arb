@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-09 10:04:37.817926",
+    "@@last_modified": "2026-10-10 10:41:08.841455",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Bantuan tatabahasa dimatikan untuk kursus yang sedang berlangsung dalam sembang ini.",
     "error405Desc": "Sila tetapkan bahasa anda dalam Menu Utama > Tetapan Pembelajaran.",
     "termsAndConditions": "Terma dan Syarat",
-    "andCertifyIAmAtLeast13YearsOfAge": " dan mengesahkan saya berumur sekurang-kurangnya 16 tahun.",
     "error502504Desc": "Alat terjemahan dan tatabahasa mungkin perlahan atau tidak tersedia sementara bot Pangea sedang mengemas kini.",
     "error404Desc": "Bot Pangea tidak pasti bagaimana untuk menterjemahkannya...",
     "errorPleaseRefresh": "Kami sedang menyiasatnya! Sila muat semula dan cuba lagi.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Laporan dihantar",
     "reportNotSent": "Laporan anda tidak dapat dihantar. Semak sambungan anda dan cuba lagi.",
     "reportPointerMessage": "Mesej telah dilaporkan dalam {courseName} — lihat Keselamatan",
-    "useActivityImageAsChatBackground": "Gunakan imej aktiviti sebagai latar belakang sembang"
+    "useActivityImageAsChatBackground": "Gunakan imej aktiviti sebagai latar belakang sembang",
+    "andCertifyIMeetTheMinimumAge": " dan mengesahkan saya berumur sekurang-kurangnya 13 tahun, atau umur minimum yang diperlukan di negara saya jika lebih tinggi."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-09 10:04:32.176617",
+    "@@last_modified": "2026-10-10 10:41:00.614301",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -2721,7 +2721,6 @@
     "errorDisableIGCClassDesc": "تم إيقاف مساعدة القواعد للفصل الذي يوجد فيه هذا الدردشة.",
     "error405Desc": "يرجى تعيين لغاتك في القائمة الرئيسية > إعدادات التعلم.",
     "termsAndConditions": "الشروط والأحكام",
-    "andCertifyIAmAtLeast13YearsOfAge": " وأشهد أن عمري لا يقل عن 16 عامًا.",
     "error502504Desc": "قد تكون أدوات الترجمة والقواعد بطيئة أو غير متاحة أثناء متابعة بوتات بانجيا.",
     "error404Desc": "بوت بانجيا غير متأكد من كيفية ترجمة ذلك...",
     "errorPleaseRefresh": "نحن نبحث في الأمر! يرجى إعادة التحميل والمحاولة مرة أخرى.",
@@ -3828,10 +3827,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10258,5 +10253,6 @@
     "reportSent": "تم إرسال البلاغ",
     "reportNotSent": "تعذر إرسال بلاغك. تحقق من اتصالك وحاول مرة أخرى.",
     "reportPointerMessage": "تم الإبلاغ عن رسالة في {courseName} — راجع الأمان",
-    "useActivityImageAsChatBackground": "استخدام صورة النشاط كخلفية للدردشة"
+    "useActivityImageAsChatBackground": "استخدام صورة النشاط كخلفية للدردشة",
+    "andCertifyIMeetTheMinimumAge": " وأقر بأن عمري لا يقل عن 13 عامًا، أو عن الحد الأدنى للسن المطلوب في بلدي إذا كان أعلى من ذلك."
 }

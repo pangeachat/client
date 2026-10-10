@@ -2449,7 +2449,6 @@
     "errorDisableIGCClassDesc": "การช่วยเหลือด้านไวยากรณ์ถูกปิดใช้งานสำหรับหลักสูตรที่แชทนี้อยู่",
     "error405Desc": "กรุณาตั้งค่าภาษาของคุณในเมนหลัก > การตั้งค่าการเรียนรู้",
     "termsAndConditions": "ข้อกำหนดและเงื่อนไข",
-    "andCertifyIAmAtLeast13YearsOfAge": " และรับรองว่าฉันมีอายุอย่างน้อย 16 ปี",
     "error502504Desc": "เครื่องมือแปลและไวยากรณ์อาจช้าหรือไม่สามารถใช้งานได้ในขณะนี้ ขณะที่บอทพังเผา Pangea กำลังตามทัน",
     "error404Desc": "Pangea Bot ไม่แน่ใจว่าจะจะแปลอย่างไร...",
     "errorPleaseRefresh": "เรากำลังตรวจสอบอยู่! กรุณารีเฟรชหน้าและลองใหม่อีกครั้ง",
@@ -3090,7 +3089,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-09 10:04:41.103102",
+    "@@last_modified": "2026-10-10 10:41:12.192616",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -4150,10 +4149,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10584,5 +10579,6 @@
     "reportSent": "ส่งรายงานแล้ว",
     "reportNotSent": "ไม่สามารถส่งรายงานของคุณได้ โปรดตรวจสอบการเชื่อมต่อและลองอีกครั้ง",
     "reportPointerMessage": "มีข้อความถูกรายงานใน {courseName} — ดูที่ความปลอดภัย",
-    "useActivityImageAsChatBackground": "ใช้รูปภาพกิจกรรมเป็นพื้นหลังแชท"
+    "useActivityImageAsChatBackground": "ใช้รูปภาพกิจกรรมเป็นพื้นหลังแชท",
+    "andCertifyIMeetTheMinimumAge": " และรับรองว่าฉันมีอายุอย่างน้อย 13 ปี หรืออายุขั้นต่ำที่กำหนดในประเทศของฉัน หากอายุขั้นต่ำนั้นสูงกว่า"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-09 10:04:35.978726",
+    "@@last_modified": "2026-10-10 10:41:06.088543",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Bantuan tata basa dipateni kanggo kursus sing ana ing obrolan iki.",
     "error405Desc": "Mangga atur basamu ing Menu Utama > Setelan Sinau.",
     "termsAndConditions": "Syarat lan Ketentuan",
-    "andCertifyIAmAtLeast13YearsOfAge": " lan nyatakake aku paling ora umur 16 taun.",
     "error502504Desc": "Piranti terjemahan lan tata basa bisa uga alon utawa ora kasedhiya nalika bot Pangea nyusul.",
     "error404Desc": "Bot Pangea ora yakin carane nerjemahake kuwi...",
     "errorPleaseRefresh": "Kita lagi mriksa! Mangga muat ulang lan coba maneh.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Laporan dikirim",
     "reportNotSent": "Laporanmu ora bisa dikirim. Priksa sambunganmu lan coba maneh.",
     "reportPointerMessage": "Ana pesen sing dilaporake ing {courseName} — deleng Keamanan",
-    "useActivityImageAsChatBackground": "Gunakake gambar aktivitas minangka latar mburi obrolan"
+    "useActivityImageAsChatBackground": "Gunakake gambar aktivitas minangka latar mburi obrolan",
+    "andCertifyIMeetTheMinimumAge": " lan nyatakake yen aku wis umur paling ora 13 taun, utawa umur minimal sing dibutuhake ing negaraku yen luwih dhuwur."
 }

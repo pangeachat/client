@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-09 10:04:41.385431",
+    "@@last_modified": "2026-10-10 10:41:12.602728",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -2914,7 +2914,6 @@
     "errorDisableIGCClassDesc": "Допомога з граматикою вимкнена для курсу, у якому ведеться цей чат.",
     "error405Desc": "Будь ласка, налаштуйте свої мови у Головному меню > Налаштування навчання.",
     "termsAndConditions": "Умовами та положеннями",
-    "andCertifyIAmAtLeast13YearsOfAge": " і підтверджую, що мені щонайменше 16 років.",
     "error502504Desc": "Інструменти перекладу та граматики можуть працювати повільно або бути недоступними, поки боти Pangea наздоганяють.",
     "error404Desc": "Бот Pangea не впевнений, як це перекласти...",
     "errorPleaseRefresh": "Ми цим займаємося! Будь ласка, перезавантажте сторінку та спробуйте ще раз.",
@@ -3698,10 +3697,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -9952,5 +9947,6 @@
     "reportSent": "Звіт надіслано",
     "reportNotSent": "Ваш звіт не вдалося надіслати. Перевірте з’єднання та спробуйте ще раз.",
     "reportPointerMessage": "Повідомлення було надіслано в {courseName} — дивіться Безпека",
-    "useActivityImageAsChatBackground": "Використовувати зображення активності як фон чату"
+    "useActivityImageAsChatBackground": "Використовувати зображення активності як фон чату",
+    "andCertifyIMeetTheMinimumAge": " і підтверджую, що мені виповнилося 13 років, або мінімальний вік, встановлений у моїй країні, якщо він вищий."
 }

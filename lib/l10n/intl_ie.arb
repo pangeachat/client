@@ -2449,7 +2449,6 @@
     "errorDisableIGCClassDesc": "Le adjuta de grammatica es disactivate pro le curso in le qual iste chat es.",
     "error405Desc": "Per favor, configura tu linguas in le Menu Principal > Configuration de Aprendissage.",
     "termsAndConditions": "Termes e Condiciones",
-    "andCertifyIAmAtLeast13YearsOfAge": " e certifies que ha minimum 16 annos de etate.",
     "error502504Desc": "Instrumentes de translation e grammatica pote esser lente o unavailable durante que le bots Pangea se actualisa.",
     "error404Desc": "Le Bot Pangea non es secur de como traducer isto...",
     "errorPleaseRefresh": "Nos es in le processus de investigar! Per favor, re-iniciar e tentar ancora.",
@@ -3090,7 +3089,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-09 10:04:35.226747",
+    "@@last_modified": "2026-10-10 10:41:05.527548",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -4150,10 +4149,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10584,5 +10579,6 @@
     "reportSent": "Tuarascáil seolta",
     "reportNotSent": "Níorbh fhéidir do thuarascáil a sheoladh. Seiceáil do nasc agus bain triail eile as.",
     "reportPointerMessage": "Tuairiscíodh teachtaireacht i {courseName} — féach Sábháilteacht",
-    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá"
+    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
+    "andCertifyIMeetTheMinimumAge": " e certifies que ha minimum 13 annos de etate, o li etate minimal requisit in mi land si it es plu alt."
 }

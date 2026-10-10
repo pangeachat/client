@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-09 10:04:35.365383",
+    "@@last_modified": "2026-10-10 10:41:05.619347",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Málfræðiaðstoð er óvirk fyrir námskeiðið sem þetta spjall er í.",
     "error405Desc": "Vinsamlegast stilltu tungumálin þín í Aðalvalmynd > Námsstillingar.",
     "termsAndConditions": "Skilmálar",
-    "andCertifyIAmAtLeast13YearsOfAge": " og staðfesti að ég sé að minnsta kosti 16 ára.",
     "error502504Desc": "Þýðingar- og málfræðiverkfæri geta verið hæg eða ófáanleg á meðan Pangea-vélmennin ná sér á strik.",
     "error404Desc": "Pangea-vélmennið er ekki viss hvernig á að þýða þetta...",
     "errorPleaseRefresh": "Við erum að skoða þetta! Vinsamlegast endurhlaðið og reynið aftur.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Tilkynning send",
     "reportNotSent": "Ekki tókst að senda tilkynninguna þína. Athugaðu nettenginguna þína og reyndu aftur.",
     "reportPointerMessage": "Skilaboð voru tilkynnt í {courseName} — sjá Öryggi",
-    "useActivityImageAsChatBackground": "Nota virknimynd sem bakgrunn spjalls"
+    "useActivityImageAsChatBackground": "Nota virknimynd sem bakgrunn spjalls",
+    "andCertifyIMeetTheMinimumAge": " og staðfesti að ég sé að minnsta kosti 13 ára, eða eldri ef það er lágmarksaldur í mínu landi."
 }

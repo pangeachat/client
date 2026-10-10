@@ -690,7 +690,6 @@
     "errorDisableIGCClassDesc": "Grammatikassistance er deaktiveret for kurset, som denne chat er i.",
     "error405Desc": "Indstil dine sprog i Hovedmenu > Læringsindstillinger.",
     "termsAndConditions": "Vilkår og betingelser",
-    "andCertifyIAmAtLeast13YearsOfAge": " og bekræfter, at jeg er mindst 16 år gammel.",
     "error502504Desc": "Oversættelses- og grammatikværktøjer kan være langsomme eller utilgængelige, mens Pangea-botterne indhenter.",
     "error404Desc": "Pangea-botten er ikke sikker på, hvordan det skal oversætte det...",
     "errorPleaseRefresh": "Vi undersøger det! Opdater venligst siden og prøv igen.",
@@ -1331,7 +1330,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-09 10:04:32.529616",
+    "@@last_modified": "2026-10-10 10:41:01.787028",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -4438,10 +4437,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10872,5 +10867,6 @@
     "reportSent": "Rapport sendt",
     "reportNotSent": "Din rapport kunne ikke sendes. Tjek din forbindelse, og prøv igen.",
     "reportPointerMessage": "En besked blev rapporteret i {courseName} – se Sikkerhed",
-    "useActivityImageAsChatBackground": "Brug aktivitetsbillede som chatbaggrund"
+    "useActivityImageAsChatBackground": "Brug aktivitetsbillede som chatbaggrund",
+    "andCertifyIMeetTheMinimumAge": " og bekræfter, at jeg er mindst 13 år gammel, eller den minimumsalder, der kræves i mit land, hvis den er højere."
 }

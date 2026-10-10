@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-09 10:04:38.115800",
+    "@@last_modified": "2026-10-10 10:41:08.753180",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "L-għajnuna għall-grammatika hija mitfija għall-kors li jinsab fih dan iċ-chat.",
     "error405Desc": "Jekk jogħġbok issettja l-lingwi tiegħek fil-Menu Prinċipali > Settings tat-Tagħlim.",
     "termsAndConditions": "Termini u Kundizzjonijiet",
-    "andCertifyIAmAtLeast13YearsOfAge": " u niċċertifika li għandi mill-inqas 16-il sena.",
     "error502504Desc": "L-għodod tat-traduzzjoni u l-grammatika jistgħu jkunu bil-mod jew mhux disponibbli waqt li l-bots ta' Pangea jlaħħqu.",
     "error404Desc": "Il-Bot ta' Pangea mhuwiex ċert kif jittraduċi dan...",
     "errorPleaseRefresh": "Qed ninvestigaw! Jekk jogħġbok erġa' tagħbija u erġa' pprova.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Rapport mibgħut",
     "reportNotSent": "Ir-rapport tiegħek ma setax jintbagħat. Iċċekkja l-konnessjoni tiegħek u erġa' pprova.",
     "reportPointerMessage": "Messaġġ ġie rrapportat f'{courseName}' — ara s-Sigurtà",
-    "useActivityImageAsChatBackground": "Uża l-immaġni tal-attività bħala sfond taċ-chat"
+    "useActivityImageAsChatBackground": "Uża l-immaġni tal-attività bħala sfond taċ-chat",
+    "andCertifyIMeetTheMinimumAge": " u niċċertifika li għandi mill-inqas 13-il sena, jew l-età minima meħtieġa f'pajjiżi jekk din tkun ogħla."
 }

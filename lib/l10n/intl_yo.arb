@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-09 10:04:42.223970",
+    "@@last_modified": "2026-10-10 10:41:13.726675",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Iranlọwọ girama ti wa ni pipa fun iṣẹ ikẹkọ ti iwiregbe yii wa ninu.",
     "error405Desc": "Jọwọ ṣeto awọn ede rẹ ni Akojọ aṣayan akọkọ> Awọn Eto Ikẹkọ.",
     "termsAndConditions": "Awọn ofin ati ipo",
-    "andCertifyIAmAtLeast13YearsOfAge": " ati jẹri pe mo ti jẹ ọmọ ọdun 16 o kere ju.",
     "error502504Desc": "Awọn irinṣẹ itumọ ati girama le lọra tabi ko si lakoko ti awọn bot Pangea n baamu.",
     "error404Desc": "Bot Pangea ko da bi o ṣe le tumọ iyẹn...",
     "errorPleaseRefresh": "A n wo o! Jọwọ tun gbejade ki o tun gbiyanju.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Ìròyìn ti fi ránṣẹ́",
     "reportNotSent": "Kò ṣeé fi ìròyìn rẹ ránṣẹ́. Ṣàyẹ̀wò àsopọ̀ rẹ, kí o sì tún gbìyànjú.",
     "reportPointerMessage": "A ti fi ìròyìn ránṣẹ́ nípa ìfọ̀rọ̀wéránṣẹ́ kan nínú {courseName} — wo Ààbò",
-    "useActivityImageAsChatBackground": "Lo aworan iṣẹ bi abẹlẹ iwiregbe"
+    "useActivityImageAsChatBackground": "Lo aworan iṣẹ bi abẹlẹ iwiregbe",
+    "andCertifyIMeetTheMinimumAge": " ati jẹ́rìí pé mo ti pé ọmọ ọdún mẹ́tàlá (13) tàbí jù bẹ́ẹ̀ lọ, tàbí pé mo ti pé ọjọ́ orí tí ó kéré jùlọ tí ó wúlò ní orílẹ̀-èdè mi bí ó bá ga ju bẹ́ẹ̀ lọ."
 }

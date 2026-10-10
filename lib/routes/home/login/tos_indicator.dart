@@ -30,7 +30,7 @@ class TOSIndicator extends StatelessWidget {
                   launchUrlString(AppConfig.termsOfServiceUrl);
                 },
             ),
-            TextSpan(text: L10n.of(context).andCertifyIAmAtLeast13YearsOfAge),
+            TextSpan(text: L10n.of(context).andCertifyIMeetTheMinimumAge),
           ],
           style: TextStyle(
             fontSize: 12,

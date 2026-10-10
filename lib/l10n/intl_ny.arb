@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-09 10:04:38.591017",
+    "@@last_modified": "2026-10-10 10:41:09.404200",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Thandizo la galamala lazimitsidwa pa kosi yomwe macheza awa ali.",
     "error405Desc": "Chonde ikani zilankhulo zanu mu Main Menu > Learning Settings.",
     "termsAndConditions": "Migwirizano ndi Zikhalidwe",
-    "andCertifyIAmAtLeast13YearsOfAge": " ndipo ndikutsimikizira kuti ndili ndi zaka zosachepera 16.",
     "error502504Desc": "Zida zomasulira ndi galamala zitha kukhala zochedwa kapena zosapezeka pomwe ma bot a Pangea akukonza.",
     "error404Desc": "Pangea Bot sakudziwa kumasulira izi...",
     "errorPleaseRefresh": "Tikuyang'ana! Chonde yambitsaninso ndikuyesanso.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Lipoti latumizidwa",
     "reportNotSent": "Lipoti lanu silinatumizidwe. Onani intaneti yanu ndikuyesanso.",
     "reportPointerMessage": "Uthenga unanenedwa mu {courseName} — onani Chitetezo",
-    "useActivityImageAsChatBackground": "Gwiritsani ntchito chithunzi cha zochitika ngati maziko a macheza"
+    "useActivityImageAsChatBackground": "Gwiritsani ntchito chithunzi cha zochitika ngati maziko a macheza",
+    "andCertifyIMeetTheMinimumAge": " ndipo ndikutsimikizira kuti ndili ndi zaka zosachepera 13, kapena zaka zochepa zofunikira m'dziko langa ngati izo zili zapamwamba."
 }

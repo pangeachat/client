@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-09 10:04:36.692320",
+    "@@last_modified": "2026-10-10 10:41:07.254518",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "D'Grammatikassistenz ass fir de Cours, an deem dëse Chat ass, ausgeschalt.",
     "error405Desc": "Stell w.e.g. deng Sproochen am Haaptmenü > Léierastellungen an.",
     "termsAndConditions": "Konditiounen",
-    "andCertifyIAmAtLeast13YearsOfAge": " an ech bestätegen, datt ech op d'mannst 16 Joer al sinn.",
     "error502504Desc": "Iwwersetzungs- a Grammatiktools kënne lues sinn oder net disponibel, während d'Pangea Bots sech aktualiséieren.",
     "error404Desc": "De Pangea Bot ass sech net sécher, wéi en dat iwwersetze soll...",
     "errorPleaseRefresh": "Mir kucken eis dat un! Lued w.e.g. nei a probéier et nach eng Kéier.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Rapport geschéckt",
     "reportNotSent": "Äre Rapport konnt net geschéckt ginn. Kuckt Är Verbindung a probéiert et nach eng Kéier.",
     "reportPointerMessage": "Eng Noriicht gouf am Cours {courseName} gemellt — kuckt Sécherheet",
-    "useActivityImageAsChatBackground": "Aktivitéitsbild als Chat-Hannergrond benotzen"
+    "useActivityImageAsChatBackground": "Aktivitéitsbild als Chat-Hannergrond benotzen",
+    "andCertifyIMeetTheMinimumAge": " an ech bestätegen, datt ech op d'mannst 13 Joer al sinn, oder den Mindestalter, deen a mengem Land erfuerderlech ass, wann deen méi héich ass."
 }

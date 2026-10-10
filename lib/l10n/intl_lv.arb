@@ -2904,7 +2904,6 @@
     "errorDisableIGCClassDesc": "Gramatikas palīdzība ir izslēgta kursam, kurā atrodas šī tērzēšana.",
     "error405Desc": "Lūdzu, iestatiet savas valodas galvenajā izvēlnē > Mācību iestatījumi.",
     "termsAndConditions": "Noteikumiem un nosacījumiem",
-    "andCertifyIAmAtLeast13YearsOfAge": " un apliecinu, ka man ir vismaz 16 gadu.",
     "error502504Desc": "Tulkotāja un gramatikas rīki var būt lēni vai nepieejami, kamēr Pangea roboti seko līdzi.",
     "error404Desc": "Pangea bots nav pārliecināts, kā to tulkot...",
     "errorPleaseRefresh": "Mēs to izpētām! Lūdzu, ielādējiet lapu vēlreiz un mēģiniet vēlreiz.",
@@ -3532,7 +3531,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-10-09 10:04:36.624772",
+    "@@last_modified": "2026-10-10 10:41:07.615385",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -3698,10 +3697,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -9952,5 +9947,6 @@
     "reportSent": "Ziņojums nosūtīts",
     "reportNotSent": "Jūsu ziņojumu nevarēja nosūtīt. Pārbaudiet savienojumu un mēģiniet vēlreiz.",
     "reportPointerMessage": "Ziņojums tika ziņots kursā {courseName} — skatiet Drošība",
-    "useActivityImageAsChatBackground": "Izmantot aktivitātes attēlu kā tērzēšanas fonu"
+    "useActivityImageAsChatBackground": "Izmantot aktivitātes attēlu kā tērzēšanas fonu",
+    "andCertifyIMeetTheMinimumAge": " un apliecinu, ka esmu vismaz 13 gadus vecs vai sasniedzis minimālo vecumu, kas noteikts manā valstī, ja tas ir augstāks."
 }

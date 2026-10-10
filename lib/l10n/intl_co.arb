@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-09 10:04:32.538136",
+    "@@last_modified": "2026-10-10 10:41:01.895405",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "L'assistenza à a grammatica hè disattivata per u corsu duv'ellu si trova sta cunversazione.",
     "error405Desc": "Per piacè, definisci e to lingue in Menu Principale > Parametri d'Amparera.",
     "termsAndConditions": "Termini è Cundizioni",
-    "andCertifyIAmAtLeast13YearsOfAge": " è certificheghju d'avè almenu 16 anni.",
     "error502504Desc": "L'arnesi di traduzzione è di grammatica ponu esse lenti o indispunibili mentre i bots Pangea si mettenu à paru.",
     "error404Desc": "U Bot Pangea ùn sà micca cumu traduce què...",
     "errorPleaseRefresh": "Ci pensemu noi! Per piacè, ricarica è prova torna.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Segnalazione inviata",
     "reportNotSent": "A vostra segnalazione ùn hà pussutu esse inviata. Verificate a vostra cunnessione è riprovate.",
     "reportPointerMessage": "Un messagiu hè statu segnalatu in {courseName} — vede Sicurezza",
-    "useActivityImageAsChatBackground": "Aduprà l'imagine di l'attività cum'è fondu di chat"
+    "useActivityImageAsChatBackground": "Aduprà l'imagine di l'attività cum'è fondu di chat",
+    "andCertifyIMeetTheMinimumAge": " è certificu d'avè almenu 13 anni, o l'età minima richiesta in u mo paese s'ella hè più alta."
 }

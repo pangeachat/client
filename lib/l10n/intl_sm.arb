@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-09 10:04:40.057243",
+    "@@last_modified": "2026-10-10 10:41:17.000666",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Ua tape le fesoasoani kalama mo le vasega o loʻo i ai lenei talatalanoaga.",
     "error405Desc": "Faʻamolemole faʻatulaga au gagana i le Main Menu > Learning Settings.",
     "termsAndConditions": "Tuutuuga ma Aiaiga",
-    "andCertifyIAmAtLeast13YearsOfAge": " ma faʻamaonia ua ou 16 tausaga le matua pe sili atu.",
     "error502504Desc": "Atonu e telegese pe le maua meafaigaluega faʻaliliuga ma kalama aʻo faʻatali bots Pangea.",
     "error404Desc": "E le o mautinoa e Pangea Bot pe faʻapefea ona faʻaliliu lena mea...",
     "errorPleaseRefresh": "O loʻo matou suʻesuʻeina! Faʻamolemole toe uta ma toe taumafai.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Lipoti ua auina atu",
     "reportNotSent": "E leʻi mafai ona auina atu lau lipoti. Siaki lau fesoʻotaʻiga ma toe taumafai.",
     "reportPointerMessage": "Na lipotia se feʻau i le {courseName} — vaʻai i le Saogalemu",
-    "useActivityImageAsChatBackground": "Fa'aaoga le ata o le gaioiga e fai ma tala i tua o le talanoaga"
+    "useActivityImageAsChatBackground": "Fa'aaoga le ata o le gaioiga e fai ma tala i tua o le talanoaga",
+    "andCertifyIMeetTheMinimumAge": " ma fa'amaonia ua ou matua i le 13 tausaga, po'o le tausaga aupito maualalo e mana'omia i lo'u atunu'u pe afai e maualuga atu."
 }

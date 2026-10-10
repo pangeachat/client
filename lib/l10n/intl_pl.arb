@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-09 10:04:38.972151",
+    "@@last_modified": "2026-10-10 10:41:09.736006",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -2825,7 +2825,6 @@
     "errorDisableIGCClassDesc": "Pomoc gramatyczna jest wyłączona dla kursu, w którym znajduje się ten czat.",
     "error405Desc": "Ustaw swoje języki w menu głównym > Ustawienia nauki.",
     "termsAndConditions": "Warunki i zasady",
-    "andCertifyIAmAtLeast13YearsOfAge": " oraz potwierdzam, że mam co najmniej 16 lat.",
     "error502504Desc": "Narzędzia do tłumaczeń i sprawdzania gramatyki mogą działać wolno lub być niedostępne, podczas gdy boty Pangea nadążają za ruchem.",
     "error404Desc": "Bot Pangea nie jest pewien, jak to przetłumaczyć...",
     "errorPleaseRefresh": "Pracujemy nad tym! Odśwież stronę i spróbuj ponownie.",
@@ -3613,10 +3612,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10037,5 +10032,6 @@
     "reportSent": "Zgłoszenie wysłane",
     "reportNotSent": "Twoje zgłoszenie nie mogło zostać wysłane. Sprawdź połączenie i spróbuj ponownie.",
     "reportPointerMessage": "Wiadomość została zgłoszona w {courseName} — zobacz Bezpieczeństwo",
-    "useActivityImageAsChatBackground": "Użyj obrazu aktywności jako tła czatu"
+    "useActivityImageAsChatBackground": "Użyj obrazu aktywności jako tła czatu",
+    "andCertifyIMeetTheMinimumAge": " i oświadczam, że mam co najmniej 13 lat lub osiągnąłem minimalny wiek wymagany w moim kraju, jeśli jest on wyższy."
 }

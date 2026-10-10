@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 10:04:36.044020",
+    "@@last_modified": "2026-10-10 10:41:06.804052",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -2767,7 +2767,6 @@
     "errorDisableIGCClassDesc": "이 채팅이 속한 강좌에 대한 문법 지원이 꺼져 있습니다.",
     "error405Desc": "메인 메뉴 > 학습 설정에서 언어를 설정하세요.",
     "termsAndConditions": "이용 약관",
-    "andCertifyIAmAtLeast13YearsOfAge": " 및 만 16세 이상임을 인증합니다.",
     "error502504Desc": "파니아 봇이 따라잡는 동안 번역 및 문법 도구가 느리거나 사용할 수 없을 수 있습니다.",
     "error404Desc": "파니아 봇이 어떻게 번역해야 할지 확실하지 않아요...",
     "errorPleaseRefresh": "문제를 해결 중입니다! 새로고침 후 다시 시도하세요.",
@@ -3711,10 +3710,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10145,5 +10140,6 @@
     "reportSent": "신고가 전송되었습니다",
     "reportNotSent": "신고를 보낼 수 없습니다. 연결 상태를 확인하고 다시 시도해 주세요.",
     "reportPointerMessage": "{courseName}에서 메시지가 신고되었습니다. 안전을 참조하세요.",
-    "useActivityImageAsChatBackground": "활동 이미지를 채팅 배경으로 사용"
+    "useActivityImageAsChatBackground": "활동 이미지를 채팅 배경으로 사용",
+    "andCertifyIMeetTheMinimumAge": " 및 저는 13세 이상이거나, 해당 국가에서 요구하는 최소 연령(더 높은 경우) 이상임을 증명합니다."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-09 10:04:40.709973",
+    "@@last_modified": "2026-10-10 10:41:12.571686",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Bantosan tata basa dipareuman pikeun kursus anu aya dina obrolan ieu.",
     "error405Desc": "Punten atur basa anjeun dina Menu Utama > Setélan Diajar.",
     "termsAndConditions": "Sarat jeung Katangtuan",
-    "andCertifyIAmAtLeast13YearsOfAge": " sareng ngabuktikeun yén abdi sahenteuna 16 taun.",
     "error502504Desc": "Parabot tarjamahan sareng tata basa tiasa laun atanapi teu sayogi nalika bot Pangea ngudag.",
     "error404Desc": "Bot Pangea henteu yakin kumaha narjamahkeun éta...",
     "errorPleaseRefresh": "Kami nuju nalungtik! Punten muatkeun deui sareng cobian deui.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Laporan dikirim",
     "reportNotSent": "Laporan anjeun teu tiasa dikirim. Pariksa sambungan anjeun teras cobian deui.",
     "reportPointerMessage": "Aya béja dilaporkeun di {courseName} — tingali Kasalametan",
-    "useActivityImageAsChatBackground": "Anggo gambar kagiatan salaku latar obrolan"
+    "useActivityImageAsChatBackground": "Anggo gambar kagiatan salaku latar obrolan",
+    "andCertifyIMeetTheMinimumAge": " sareng mastikeun yén abdi parantos umur 13 taun, atanapi umur minimum anu diperyogikeun di nagara abdi upami langkung luhur."
 }

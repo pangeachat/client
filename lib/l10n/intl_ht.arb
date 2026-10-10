@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-09 10:04:34.644390",
+    "@@last_modified": "2026-10-10 10:41:07.220919",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -734,7 +734,6 @@
     "errorDisableIGCClassDesc": "Asistans gramè enfim pou kou chat sa a ye a.",
     "error405Desc": "Tanpri mete lang ou yo nan Meni Prensipal > Paramèt Aprantisaj.",
     "termsAndConditions": "Kondisyon Jeneral yo",
-    "andCertifyIAmAtLeast13YearsOfAge": " epi sètifye mwen gen omwen 16 an.",
     "error502504Desc": "Zouti tradiksyon ak gramè yo ka ralanti oswa pa disponib pandan bots Pangea yo ap ratrape.",
     "error404Desc": "Bot Pangea pa fin sèten kijan pou tradui sa...",
     "errorPleaseRefresh": "N ap gade sa! Tanpri rechaje epi eseye ankò.",
@@ -2397,5 +2396,6 @@
     "reportSent": "Rapò a voye",
     "reportNotSent": "Rapò ou a pa t' kapab voye. Tcheke koneksyon ou epi eseye ankò.",
     "reportPointerMessage": "Yon mesaj te rapòte nan {courseName} — gade Sekirite",
-    "useActivityImageAsChatBackground": "Itilize imaj aktivite a kòm background chat la"
+    "useActivityImageAsChatBackground": "Itilize imaj aktivite a kòm background chat la",
+    "andCertifyIMeetTheMinimumAge": " epi mwen sètifye mwen gen omwen 13 an, oswa laj minimòm obligatwa nan peyi m si sa pi wo."
 }
