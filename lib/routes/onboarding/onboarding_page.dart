@@ -53,6 +53,13 @@ class OnboardingController extends State<Onboarding> {
         client: client,
         inTrialWindow: MatrixState.pangeaController.userController
             .inTrialWindow(),
+        hasSeat: () =>
+            MatrixState
+                .pangeaController
+                .subscriptionController
+                .subscriptionStatus
+                ?.hasActiveSeat ??
+            false,
       ),
       userType: client.selfIdentifiedRole,
     );
