@@ -128,7 +128,7 @@ reporting:
   first-party journey checklist and emits a GA event goes through a single
   client helper that writes both together, so state and mirror can never
   drift — the analytics twin of the routing rule that only `WorkspaceNav`
-  writes URLs.
+  writes URLs. That helper is [`JourneyMoments`](../../lib/features/journey_checklist/journey_moments.dart); which steps exist and what the record holds are the [journey-checklist contract](../../../engagement/.github/instructions/analytics.instructions.md).
 
 ## User properties
 
