@@ -73,22 +73,28 @@ class PendingClaimsFlow {
     this.onError,
   });
 
-  /// Right after sign-in or registration, before anything reads the
-  /// subscription status: return what the student already ticked, so the
-  /// claim exists before choreo's status read could auto-claim a trial
+  /// Right after sign-in or registration, before the session's first choreo
+  /// call: return what the student already ticked, so the claim exists
+  /// before choreo's HTTP gate could auto-claim a trial
   /// (SPEC: a student with a waiting seat never burns their trial). Only
   /// ticked entries go; anything else waits for the shell's screens.
   Future<void> consumeTicked() async {
-    final ticket = SpaceCodeRepo.pendingLtiTicket;
-    if (ticket != null &&
-        !ticket.instructor &&
-        ticket.ackedDisclosureVersion != null) {
-      await consumeLtiTicket();
-    }
-    if (SpaceCodeRepo.pendingInvitation?.ackedDisclosureVersion != null) {
-      await consumeInvitation();
-    }
+    if (_hasTickedTicket) await consumeLtiTicket();
+    if (_hasTickedInvitation) await consumeInvitation();
   }
+
+  /// Whether [consumeTicked] has anything to send.
+  static bool get hasTickedEntry => _hasTickedTicket || _hasTickedInvitation;
+
+  static bool get _hasTickedTicket {
+    final ticket = SpaceCodeRepo.pendingLtiTicket;
+    return ticket != null &&
+        !ticket.instructor &&
+        ticket.ackedDisclosureVersion != null;
+  }
+
+  static bool get _hasTickedInvitation =>
+      SpaceCodeRepo.pendingInvitation?.ackedDisclosureVersion != null;
 
   /// The tick for [request]: the screen's answer, or, with no screen, null
   /// after [reFerry] put the entry back unticked.

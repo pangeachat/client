@@ -10,6 +10,7 @@ import 'package:path/path.dart' as path_lib;
 import 'package:path_provider/path_provider.dart';
 import 'package:universal_html/html.dart' as html;
 
+import 'package:fluffychat/pangea/common/network/choreo_gate.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/streaming_stt_gate.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/stt_audio_capture.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/stt_partial_model.dart';
@@ -259,6 +260,9 @@ class StreamingSttSession {
     // Cancellation-safety: if teardown() ran WHILE `hasPermission()` was
     // pending, abort BEFORE connecting — otherwise we would open a socket on an
     // already-closed repo that its prior close() will never reap (leak).
+    if (_teardownDone) return false;
+    // The relay is always choreo, a gated call like any other (ChoreoGate).
+    await ChoreoGate.awaitPreflight();
     if (_teardownDone) return false;
 
     repo.connect();

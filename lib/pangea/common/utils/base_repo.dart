@@ -8,6 +8,7 @@ import 'package:http/http.dart' hide BaseRequest, BaseResponse;
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/pangea/common/network/choreo_gate.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/base_request.dart';
@@ -192,6 +193,9 @@ abstract class BaseRepo<
 
   Future<Result<TResponse>> _fetch(TRequest request) async {
     try {
+      // A seat claim in flight at sign-in is waited for before this fetch's
+      // deadline starts (ChoreoGate).
+      await ChoreoGate.awaitPreflight();
       final Requests req = createRequests();
 
       // No ≥400 check here: [fetch] goes through [Requests], which already

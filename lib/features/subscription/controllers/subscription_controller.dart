@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-import 'package:fluffychat/features/student_invitations/pending_claims_consumer.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_paywall_status_enum.dart';
 import 'package:fluffychat/features/subscription/models/subscription_state.dart';
 import 'package:fluffychat/features/subscription/repo_v2/free_trial_repo.dart';
@@ -20,19 +19,6 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SubscriptionController {
-  /// Runs before every status read this controller makes on (re)initialize:
-  /// it returns a seat invitation or Canvas ticket the student ticked before
-  /// signing in, so its claim exists before choreo's status read could
-  /// auto-claim a trial (confirmTickedClaimsBeforeStatus).
-  final Future<void> Function() _beforeStatus;
-
-  SubscriptionController({Future<void> Function()? beforeStatus})
-    : _beforeStatus =
-          beforeStatus ??
-          (() => confirmTickedClaimsBeforeStatusFor(
-            MatrixState.pangeaController.matrixState.client,
-          ));
-
   final ValueNotifier<SubscriptionState> _state = ValueNotifier(
     SubscriptionLoading(),
   );
@@ -124,7 +110,6 @@ class SubscriptionController {
   Future<void> _initialize(String userID) async {
     try {
       await MatrixState.pangeaController.userController.initCompleter.future;
-      await _beforeStatus();
       await _resolvePurchasePresentation();
       await _updateCurrentSubscription(userID);
 

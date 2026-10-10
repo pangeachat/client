@@ -9,20 +9,26 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
+import 'package:matrix/matrix.dart' as matrix;
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/student_invitations/pending_claims.dart';
 import 'package:fluffychat/features/student_invitations/pending_claims_consumer.dart';
 import 'package:fluffychat/features/student_invitations/student_invitation_api.dart';
 import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
+import 'package:fluffychat/pangea/common/network/choreo_gate.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
+import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../pangea/fake_pangea_controller.dart';
 
-/// SPEC: a student with a waiting seat never burns their trial. choreo
-/// auto-claims a trial on the first subscription status read, so a seat
-/// invitation (or Canvas ticket) the student ticked before signing in must
-/// be confirmed BEFORE that read: the subscription controller's initialize,
-/// which runs right after sign-in or registration and before onboarding.
+/// SPEC: a student with a waiting seat never burns their trial. choreo's HTTP
+/// gate auto-claims a trial on ANY gated call (the status read, and
+/// grammar_constructs at sign-in, among others), so a seat invitation (or
+/// Canvas ticket) the student ticked before signing in must be confirmed
+/// before the session's first choreo call: every choreo request waits on it
+/// (ChoreoGate, in the shared request layer).
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -31,6 +37,7 @@ void main() {
   const userId = '@student:example.org';
 
   setUpAll(() async {
+    sqfliteFfiInit();
     final tempDir = await Directory.systemTemp.createTemp('before_status');
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
         .setMockMethodCallHandler(
@@ -85,6 +92,14 @@ void main() {
           200,
         );
       }
+      if (path.endsWith('/choreo/version')) {
+        order.add('version');
+        return http.Response('{}', 200);
+      }
+      if (path.endsWith('/grammar_constructs')) {
+        order.add('grammar_constructs');
+        return http.Response('{}', 200);
+      }
       if (path.endsWith('/subscription/status')) {
         order.add('status');
         return http.Response('{}', 200);
@@ -98,21 +113,43 @@ void main() {
     http_ = MockClient(respond);
   });
 
-  // The production hook body; only the Matrix client it reads the api and
-  // token from is replaced.
-  SubscriptionController controller({
+  /// Installs the production choreo preflight body (only the Matrix client it
+  /// reads the api and token from is replaced) and returns the real
+  /// subscription controller, whose status read is one choreo call of many.
+  ///
+  /// By default it is the exact production preflight
+  /// (confirmTickedClaimsBeforeChoreo) over a signed-in Matrix client whose
+  /// HTTP goes to the fake module; [module]/[requestTimeout] swap in a
+  /// different module behind the same single-flight confirm.
+  Future<SubscriptionController> controller({
     http.Client? module,
-    Duration requestTimeout = const Duration(seconds: 30),
-  }) => SubscriptionController(
-    beforeStatus: () => confirmTickedClaimsBeforeStatus(
-      api: StudentInvitationApi(
-        httpClient: module ?? http_,
-        homeserver: Uri.parse('https://matrix.example.org'),
-        requestTimeout: requestTimeout,
-      ),
-      accessToken: 'syt_student',
-    ),
-  );
+    Duration? requestTimeout,
+  }) async {
+    if (module == null && requestTimeout == null) {
+      final client = matrix.Client(
+        'claims-before-choreo',
+        httpClient: http_,
+        database: await matrix.MatrixSdkDatabase.init(
+          'claims-before-choreo',
+          database: await databaseFactoryFfi.openDatabase(':memory:'),
+          sqfliteFactory: databaseFactoryFfi,
+        ),
+      );
+      client.homeserver = Uri.parse('https://matrix.example.org');
+      client.accessToken = 'syt_student';
+      ChoreoGate.preflight = () => confirmTickedClaimsBeforeChoreo(client);
+    } else {
+      ChoreoGate.preflight = () => confirmTickedClaimsBeforeStatus(
+        api: StudentInvitationApi(
+          httpClient: module ?? http_,
+          homeserver: Uri.parse('https://matrix.example.org'),
+          requestTimeout: requestTimeout ?? const Duration(seconds: 30),
+        ),
+        accessToken: 'syt_student',
+      );
+    }
+    return SubscriptionController();
+  }
 
   /// Both happened, [first] before [then].
   void expectBefore(String first, String then, {required String reason}) {
@@ -128,7 +165,7 @@ void main() {
     await SpaceCodeRepo.setPendingInvitation(
       const PendingInvitation(inv, ackedDisclosureVersion: 2),
     );
-    final c = controller();
+    final c = await controller();
 
     await initialize(c);
     await http.runWithClient(() => c.reinitialize(userId), () => http_);
@@ -145,7 +182,7 @@ void main() {
       const PendingLtiTicket(ticket, ackedDisclosureVersion: 2),
     );
 
-    await initialize(controller());
+    await initialize(await controller());
 
     expectBefore('lti_link', 'status', reason: 'the claim must exist first');
   });
@@ -156,7 +193,7 @@ void main() {
       await SpaceCodeRepo.setPendingInvitation(const PendingInvitation(inv));
       await SpaceCodeRepo.setPendingLtiTicket(const PendingLtiTicket(ticket));
 
-      await initialize(controller());
+      await initialize(await controller());
 
       expect(order, isNot(contains('confirm')));
       expect(order, isNot(contains('lti_link')));
@@ -186,7 +223,7 @@ void main() {
         }
         return respond(request);
       });
-      final c = controller(module: outdated);
+      final c = await controller(module: outdated);
 
       await initialize(c);
 
@@ -210,7 +247,7 @@ void main() {
         return respond(request);
       });
 
-      await initialize(controller(module: slow));
+      await initialize(await controller(module: slow));
 
       expectBefore(
         'confirm',
@@ -234,7 +271,7 @@ void main() {
       }
       return respond(request);
     });
-    final c = controller(
+    final c = await controller(
       module: silent,
       requestTimeout: const Duration(milliseconds: 200),
     );
@@ -252,7 +289,7 @@ void main() {
     await SpaceCodeRepo.setPendingInvitation(
       const PendingInvitation(inv, ackedDisclosureVersion: 2),
     );
-    final c = controller();
+    final c = await controller();
 
     // As PangeaController._onLogin: initialize is not awaited before
     // reinitialize starts.
@@ -264,5 +301,48 @@ void main() {
 
     expectBefore('confirm', 'status', reason: 'no status read may overtake');
     expect(order.where((o) => o == 'confirm'), hasLength(1));
+  });
+
+  test('an arbitrary gated choreo call at sign-in (grammar_constructs) waits '
+      'until the confirm resolves', () async {
+    await SpaceCodeRepo.setPendingInvitation(
+      const PendingInvitation(inv, ackedDisclosureVersion: 2),
+    );
+    final c = await controller();
+
+    // As sign-in: the status read and other choreo calls start together.
+    await http.runWithClient(() async {
+      await Future.wait([
+        c.initialize(userId),
+        Requests(
+          accessToken: 'syt_student',
+        ).post(url: PApiUrls.grammarConstructs, body: {}),
+        // A direct GET, outside any repo.
+        Requests(accessToken: 'syt_student').get(url: PApiUrls.appVersion),
+      ]);
+    }, () => http_);
+
+    expectBefore('confirm', 'grammar_constructs', reason: 'claim first');
+    expectBefore('confirm', 'version', reason: 'claim first');
+    expectBefore('confirm', 'status', reason: 'claim first');
+    expect(order.where((o) => o == 'confirm'), hasLength(1));
+  });
+
+  test('a call to a non-choreo host does not wait', () async {
+    await SpaceCodeRepo.setPendingInvitation(
+      const PendingInvitation(inv, ackedDisclosureVersion: 2),
+    );
+    await controller();
+    var waited = false;
+    final run = ChoreoGate.preflight!;
+    ChoreoGate.preflight = () {
+      waited = true;
+      return run();
+    };
+
+    await ChoreoGate.beforeRequest(Uri.parse('https://cms.example.org/api'));
+    expect(waited, isFalse);
+    await ChoreoGate.beforeRequest(Uri.parse(PApiUrls.speechToTextStream));
+    expect(waited, isTrue, reason: 'the streaming socket is choreo too');
   });
 }

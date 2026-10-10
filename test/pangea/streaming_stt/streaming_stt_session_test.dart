@@ -7,6 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:stream_channel/stream_channel.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
+import 'package:fluffychat/pangea/common/network/choreo_gate.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/streaming_stt_session.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/stt_audio_capture.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/stt_partial_model.dart';
@@ -340,6 +341,32 @@ void main() {
   );
 
   group('start / permission ladder (D10)', () {
+    test('the socket is a gated choreo call: it waits for a seat claim in '
+        'flight (ChoreoGate) before connecting', () async {
+      final claim = Completer<void>();
+      ChoreoGate.preflight = () => claim.future;
+      addTearDown(() => ChoreoGate.preflight = null);
+      var connects = 0;
+      channel = _FakeWebSocketChannel();
+      final repo = SttStreamRepo(
+        wsUrl: 'wss://api.example/choreo/speech_to_text/stream',
+        accessToken: 'TOKEN',
+        connector: (uri, {protocols}) {
+          connects++;
+          return channel;
+        },
+      );
+      final session = buildSession(_FakeCapture(), repo);
+
+      final started = session.start();
+      await pumpEventQueue();
+      expect(connects, 0, reason: 'no socket while the claim is in flight');
+
+      claim.complete();
+      expect(await started, isTrue);
+      expect(connects, 1);
+    });
+
     test(
       'permission denied -> start returns false (caller falls to batch)',
       () async {

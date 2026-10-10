@@ -60,30 +60,30 @@ PendingClaimsFlow pendingClaimsFlowFor(BuildContext context, Client client) {
   );
 }
 
-/// Before the first subscription status read after sign-in or registration
-/// (SubscriptionController's initialize): return what the student already
-/// ticked, so the claim lands before choreo could auto-claim a trial. No
+/// The choreo preflight (ChoreoGate.preflight): before the session's first
+/// choreo call, return what the student already ticked, so the claim lands
+/// before choreo's HTTP gate could auto-claim a trial on that call. No
 /// screens exist yet; anything needing one waits for [PendingClaimsConsumer],
 /// which also shows the outcome. Nothing is sent without the tick.
 ///
-/// The status read waits for each call's answer or failure, never a cut-off:
-/// a call is bounded only by the API's own request timeout, so registration
-/// cannot hang on a silent module. If the module gives no answer at all, the
-/// failure is reported and status proceeds; the claim may or may not have
-/// landed (the entry is not resent, keeping it at most once).
+/// Choreo calls wait for each claim call's answer or failure, never a
+/// cut-off: a claim call is bounded only by the API's own request timeout
+/// (30 s), so sign-in cannot hang on a silent module. If the module gives no
+/// answer at all, the failure is reported and the calls proceed; the claim
+/// may or may not have landed (the entry is not resent, keeping it at most
+/// once).
 ///
-/// Single-flight: sign-in starts the subscription controller's initialize and
-/// then a reinitialize, and the second must wait on the first's confirm, not
-/// find the ferry already taken and read status while it is in flight.
+/// Single-flight: every choreo call made meanwhile awaits the same confirm;
+/// none finds the ferry already taken and goes ahead while it is in flight.
 Future<void> confirmTickedClaimsBeforeStatus({
   required StudentInvitationApi api,
   required String accessToken,
-}) => _claimsBeforeStatus ??= _confirmTicked(
+}) => _claimsBeforeChoreo ??= _confirmTicked(
   api,
   accessToken,
-).whenComplete(() => _claimsBeforeStatus = null);
+).whenComplete(() => _claimsBeforeChoreo = null);
 
-Future<void>? _claimsBeforeStatus;
+Future<void>? _claimsBeforeChoreo;
 
 Future<void> _confirmTicked(
   StudentInvitationApi api,
@@ -102,12 +102,19 @@ Future<void> _confirmTicked(
   }
 }
 
-/// [confirmTickedClaimsBeforeStatus] for the signed-in [client].
-Future<void> confirmTickedClaimsBeforeStatusFor(Client client) async {
+/// The preflight for the signed-in [client]. Joins a confirm in flight
+/// first; otherwise resolves at once when nothing ticked is waiting or no
+/// one is signed in, so ordinary choreo calls pay nothing.
+Future<void> confirmTickedClaimsBeforeChoreo(Client client) {
+  final inFlight = _claimsBeforeChoreo;
+  if (inFlight != null) return inFlight;
+  if (!PendingClaimsFlow.hasTickedEntry) return Future.value();
   final homeserver = client.homeserver;
   final token = client.accessToken;
-  if (!client.isLogged() || homeserver == null || token == null) return;
-  await confirmTickedClaimsBeforeStatus(
+  if (!client.isLogged() || homeserver == null || token == null) {
+    return Future.value();
+  }
+  return confirmTickedClaimsBeforeStatus(
     api: StudentInvitationApi(
       httpClient: client.httpClient,
       homeserver: homeserver,

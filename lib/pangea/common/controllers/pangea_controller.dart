@@ -14,9 +14,11 @@ import 'package:fluffychat/features/keyboards/keyboard_prompt_local_store.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/notifications/notifications_client_extension.dart';
+import 'package:fluffychat/features/student_invitations/pending_claims_consumer.dart';
 import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/features/user/pangea_push_rules_extension.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
+import 'package:fluffychat/pangea/common/network/choreo_gate.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -46,6 +48,10 @@ class PangeaController {
     userController = UserController();
     subscriptionController = SubscriptionController();
     PAuthGaurd.pController = this;
+    // Every choreo request waits for a seat claim the student ticked before
+    // signing in (ChoreoGate), so no gated call can grant a trial first.
+    ChoreoGate.preflight = () =>
+        confirmTickedClaimsBeforeChoreo(matrixState.client);
     _registerSubscriptions();
   }
 
