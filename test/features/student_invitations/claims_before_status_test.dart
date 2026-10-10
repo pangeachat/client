@@ -17,7 +17,6 @@ import 'package:fluffychat/features/student_invitations/pending_claims.dart';
 import 'package:fluffychat/features/student_invitations/pending_claims_consumer.dart';
 import 'package:fluffychat/features/student_invitations/student_invitation_api.dart';
 import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
-import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/network/choreo_gate.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
@@ -26,10 +25,10 @@ import '../../pangea/fake_pangea_controller.dart';
 
 /// SPEC: a student with a waiting seat never burns their trial. choreo's HTTP
 /// gate auto-claims a trial on ANY gated call (the status read, and
-/// grammar_constructs at sign-in, among others), so a seat invitation (or
-/// Canvas ticket) the student ticked before signing in must be confirmed
-/// before the session's first choreo call: every choreo request waits on it
-/// (ChoreoGate, in the shared request layer).
+/// grammar_constructs at sign-in, among others), so a stored seat invitation
+/// (or Canvas learner ticket) must be opened before the session's first
+/// choreo call: every choreo request waits on it (ChoreoGate, in the shared
+/// request layer). No tick is involved (amendment 2026-10-10).
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -71,11 +70,11 @@ void main() {
         order.add('hint');
         return http.Response(jsonEncode({'course_name': 'Spanish 101'}), 200);
       }
-      if (path.endsWith('/student_invitations/confirm')) {
-        // Slower than the status read would be: only an awaited confirm
+      if (path.endsWith('/open')) {
+        // Slower than the status read would be: only an awaited open
         // can still come first.
         await Future<void>.delayed(const Duration(milliseconds: 50));
-        order.add('confirm');
+        order.add('open');
         return http.Response(
           jsonEncode({
             'result': 'claimed',
@@ -119,7 +118,7 @@ void main() {
   /// subscription controller, whose status read is one choreo call of many.
   ///
   /// By default it is the exact production preflight
-  /// (confirmTickedClaimsBeforeChoreo) over a signed-in Matrix client whose
+  /// (openPendingClaimsBeforeChoreo) over a signed-in Matrix client whose
   /// HTTP goes to the fake module; [module]/[requestTimeout] swap in a
   /// different module behind the same single-flight confirm.
   Future<SubscriptionController> controller({
@@ -138,9 +137,9 @@ void main() {
       );
       client.homeserver = Uri.parse('https://matrix.example.org');
       client.accessToken = 'syt_student';
-      ChoreoGate.preflight = () => confirmTickedClaimsBeforeChoreo(client);
+      ChoreoGate.preflight = () => openPendingClaimsBeforeChoreo(client);
     } else {
-      ChoreoGate.preflight = () => confirmTickedClaimsBeforeStatus(
+      ChoreoGate.preflight = () => openPendingClaims(
         api: StudentInvitationApi(
           httpClient: module ?? http_,
           homeserver: Uri.parse('https://matrix.example.org'),
@@ -161,27 +160,25 @@ void main() {
   Future<void> initialize(SubscriptionController c) =>
       http.runWithClient(() => c.initialize(userId), () => http_);
 
-  test('a ticked invitation is confirmed before the first status read, '
-      'once', () async {
-    await SpaceCodeRepo.setPendingInvitation(
-      const PendingInvitation(inv, ackedDisclosureVersion: 2),
-    );
-    final c = await controller();
+  test(
+    'a stored invitation is opened before the first status read, once',
+    () async {
+      await SpaceCodeRepo.setPendingInvitation(const PendingInvitation(inv));
+      final c = await controller();
 
-    await initialize(c);
-    await http.runWithClient(() => c.reinitialize(userId), () => http_);
+      await initialize(c);
+      await http.runWithClient(() => c.reinitialize(userId), () => http_);
 
-    expectBefore('confirm', 'status', reason: 'the claim must exist first');
-    expect(order.where((o) => o == 'confirm'), hasLength(1));
-    expect(order, contains('status'));
-    expect(SpaceCodeRepo.pendingInvitation, isNull);
-  });
+      expectBefore('open', 'status', reason: 'the claim must exist first');
+      expect(order.where((o) => o == 'open'), hasLength(1));
+      expect(order, contains('status'));
+      expect(SpaceCodeRepo.pendingInvitation, isNull);
+    },
+  );
 
-  test('a ticked Canvas learner ticket is returned before the first status '
+  test('a stored Canvas learner ticket is returned before the first status '
       'read', () async {
-    await SpaceCodeRepo.setPendingLtiTicket(
-      const PendingLtiTicket(ticket, ackedDisclosureVersion: 2),
-    );
+    await SpaceCodeRepo.setPendingLtiTicket(const PendingLtiTicket(ticket));
 
     await initialize(await controller());
 
@@ -189,71 +186,31 @@ void main() {
   });
 
   test(
-    'nothing unticked is sent early: it waits for the shell to ask',
+    'an instructor ticket is left for the shell: it opens admin-dash',
     () async {
-      await SpaceCodeRepo.setPendingInvitation(const PendingInvitation(inv));
-      await SpaceCodeRepo.setPendingLtiTicket(const PendingLtiTicket(ticket));
-      // Written long ago: choreo calls must not keep an unticked entry alive.
-      final storage = GetStorage('class_storage');
-      final stamp = DateTime.now()
-          .subtract(const Duration(minutes: 50))
-          .millisecondsSinceEpoch;
-      await storage.write(PLocalKey.cachedInvitationAt, stamp);
+      await SpaceCodeRepo.setPendingLtiTicket(
+        const PendingLtiTicket(ticket, instructor: true),
+      );
 
       await initialize(await controller());
 
-      expect(order, isNot(contains('confirm')));
       expect(order, isNot(contains('lti_link')));
-      expect(
-        order,
-        isNot(contains('hint')),
-        reason: 'an unticked entry is not touched before the shell',
-      );
-      expect(SpaceCodeRepo.pendingInvitation?.invitationId, inv);
-      expect(SpaceCodeRepo.pendingLtiTicket?.ticket, ticket);
-      expect(
-        storage.read(PLocalKey.cachedInvitationAt),
-        stamp,
-        reason: 'the entry is not rewritten, so it still expires on time',
-      );
+      expect(SpaceCodeRepo.pendingLtiTicket?.instructor, isTrue);
     },
   );
 
-  test(
-    'an outdated tick is put back unticked for the shell, never lost',
-    () async {
-      await SpaceCodeRepo.setPendingInvitation(
-        const PendingInvitation(inv, ackedDisclosureVersion: 1),
-      );
-      final outdated = MockClient((request) async {
-        if (request.url.path.endsWith('/student_invitations/confirm')) {
-          order.add('confirm');
-          return http.Response(
-            jsonEncode({'errcode': 'ORG.PANGEA.DISCLOSURE_OUTDATED'}),
-            409,
-          );
-        }
-        return respond(request);
-      });
-      final c = await controller(module: outdated);
+  test('nothing stored: choreo calls do not wait on the module', () async {
+    await initialize(await controller());
 
-      await initialize(c);
-
-      expect(order.where((o) => o == 'confirm'), hasLength(1));
-      final back = SpaceCodeRepo.pendingInvitation;
-      expect(back?.invitationId, inv);
-      expect(back?.ackedDisclosureVersion, isNull);
-    },
-  );
+    expect(order, ['status']);
+  });
 
   test(
-    'a slow module is waited for: status never overtakes the confirm',
+    'a slow module is waited for: status never overtakes the open',
     () async {
-      await SpaceCodeRepo.setPendingInvitation(
-        const PendingInvitation(inv, ackedDisclosureVersion: 2),
-      );
+      await SpaceCodeRepo.setPendingInvitation(const PendingInvitation(inv));
       final slow = MockClient((request) async {
-        if (request.url.path.endsWith('/student_invitations/confirm')) {
+        if (request.url.path.endsWith('/open')) {
           await Future<void>.delayed(const Duration(seconds: 11));
         }
         return respond(request);
@@ -262,9 +219,9 @@ void main() {
       await initialize(await controller(module: slow));
 
       expectBefore(
-        'confirm',
+        'open',
         'status',
-        reason: 'no cut-off may let status run while the confirm is in flight',
+        reason: 'no cut-off may let status run while the open is in flight',
       );
     },
     timeout: const Timeout(Duration(seconds: 40)),
@@ -272,13 +229,11 @@ void main() {
 
   test('a module that never answers is bounded by the request timeout, and '
       'the invitation is not resent', () async {
-    await SpaceCodeRepo.setPendingInvitation(
-      const PendingInvitation(inv, ackedDisclosureVersion: 2),
-    );
-    var confirms = 0;
+    await SpaceCodeRepo.setPendingInvitation(const PendingInvitation(inv));
+    var opens = 0;
     final silent = MockClient((request) async {
-      if (request.url.path.endsWith('/student_invitations/confirm')) {
-        confirms++;
+      if (request.url.path.endsWith('/open')) {
+        opens++;
         return Completer<http.Response>().future;
       }
       return respond(request);
@@ -291,17 +246,15 @@ void main() {
     await initialize(c);
     await http.runWithClient(() => c.reinitialize(userId), () => http_);
 
-    expect(confirms, 1);
+    expect(opens, 1);
     expect(order, contains('status'));
     expect(order, isNot(contains('hint')), reason: 'one bounded call only');
     expect(SpaceCodeRepo.pendingInvitation, isNull);
   });
 
   test('sign-in\'s initialize + reinitialize overlap: the second waits on '
-      'the first\'s confirm, which is sent once', () async {
-    await SpaceCodeRepo.setPendingInvitation(
-      const PendingInvitation(inv, ackedDisclosureVersion: 2),
-    );
+      'the first\'s open, which is sent once', () async {
+    await SpaceCodeRepo.setPendingInvitation(const PendingInvitation(inv));
     final c = await controller();
 
     // As PangeaController._onLogin: initialize is not awaited before
@@ -312,15 +265,13 @@ void main() {
       await Future.wait([first, second]);
     }, () => http_);
 
-    expectBefore('confirm', 'status', reason: 'no status read may overtake');
-    expect(order.where((o) => o == 'confirm'), hasLength(1));
+    expectBefore('open', 'status', reason: 'no status read may overtake');
+    expect(order.where((o) => o == 'open'), hasLength(1));
   });
 
   test('an arbitrary gated choreo call at sign-in (grammar_constructs) waits '
-      'until the confirm resolves', () async {
-    await SpaceCodeRepo.setPendingInvitation(
-      const PendingInvitation(inv, ackedDisclosureVersion: 2),
-    );
+      'until the open resolves', () async {
+    await SpaceCodeRepo.setPendingInvitation(const PendingInvitation(inv));
     final c = await controller();
 
     // As sign-in: the status read and other choreo calls start together.
@@ -335,21 +286,19 @@ void main() {
       ]);
     }, () => http_);
 
-    expectBefore('confirm', 'grammar_constructs', reason: 'claim first');
+    expectBefore('open', 'grammar_constructs', reason: 'claim first');
     expect(
       order,
       isNot(contains('hint')),
-      reason: 'the confirm is the only module call choreo waits on',
+      reason: 'the open is the only module call choreo waits on',
     );
-    expectBefore('confirm', 'version', reason: 'claim first');
-    expectBefore('confirm', 'status', reason: 'claim first');
-    expect(order.where((o) => o == 'confirm'), hasLength(1));
+    expectBefore('open', 'version', reason: 'claim first');
+    expectBefore('open', 'status', reason: 'claim first');
+    expect(order.where((o) => o == 'open'), hasLength(1));
   });
 
   test('a call to a non-choreo host does not wait', () async {
-    await SpaceCodeRepo.setPendingInvitation(
-      const PendingInvitation(inv, ackedDisclosureVersion: 2),
-    );
+    await SpaceCodeRepo.setPendingInvitation(const PendingInvitation(inv));
     await controller();
     var waited = false;
     final run = ChoreoGate.preflight!;

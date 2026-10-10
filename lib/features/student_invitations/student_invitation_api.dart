@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-/// The Synapse module routes the student side calls (C2 S1/S2/H1/H2, C5 L1).
+/// The Synapse module routes the student side calls (C2 open and H1, C5 L1).
 ///
-/// Bodies stay out of every error and log: a confirm or link body carries an
+/// Bodies stay out of every error and log: an open or link body carries an
 /// invitation id or a single-use Canvas ticket, and the hint carries a masked
 /// email. A failure surfaces as [StudentInvitationApiException] with the
 /// status and the module's errcode only.
@@ -37,86 +37,44 @@ class StudentInvitationApi {
     );
   }
 
-  /// H2 — the managed-account disclosure shown under every checkbox.
-  Future<ManagedDisclosure> disclosure() async {
-    final json = await _send('GET', 'managed_disclosure');
-    final version = json['version'];
-    final text = json['text'];
-    if (version is! int || text is! String || text.isEmpty) {
-      throw const StudentInvitationApiException(200, 'M_BAD_JSON');
-    }
-    return ManagedDisclosure(version: version, text: text);
-  }
-
-  /// S1 — confirm an invitation with the disclosure version the student saw.
-  Future<ConfirmOutcome> confirm({
+  /// Open an invitation as the signed-in student (`POST …/{id}/open`, body
+  /// `{}`; idempotent server-side). It claims at once when the account has
+  /// the invited address verified; otherwise it records a request for the
+  /// teacher to grant.
+  Future<({OpenOutcome outcome, String? roomId})> open({
     required String accessToken,
     required String invitationId,
-    required int disclosureVersion,
   }) async {
     final json = await _send(
       'POST',
-      'student_invitations/confirm',
+      'student_invitations/${Uri.encodeComponent(invitationId)}/open',
       accessToken: accessToken,
-      body: {
-        'invitation_id': invitationId,
-        'disclosure_version': disclosureVersion,
-      },
+      body: const {},
     );
-    return switch (json['result']) {
-      'claimed' => ConfirmOutcome.claimed,
-      'pending_approval' => ConfirmOutcome.pendingApproval,
-      'denied' => ConfirmOutcome.denied,
+    final outcome = switch (json['result']) {
+      'claimed' => OpenOutcome.claimed,
+      'pending' || 'pending_approval' => OpenOutcome.pending,
+      'denied' => OpenOutcome.denied,
       _ => throw const StudentInvitationApiException(200, 'M_BAD_JSON'),
     };
+    final roomId = json['room_id'];
+    return (outcome: outcome, roomId: roomId is String ? roomId : null);
   }
 
-  /// S2 — live invitations to one of the caller's verified addresses that
-  /// the caller has not confirmed.
-  Future<List<PendingInvitationSummary>> minePending({
-    required String accessToken,
-  }) async {
-    final json = await _send(
-      'GET',
-      'student_invitations/mine/pending',
-      accessToken: accessToken,
-    );
-    final rows = json['invitations'];
-    if (rows is! List) {
-      throw const StudentInvitationApiException(200, 'M_BAD_JSON');
-    }
-    return [
-      for (final row in rows)
-        if (row is Map && row['invitation_id'] is String)
-          PendingInvitationSummary(
-            invitationId: row['invitation_id'] as String,
-            courseName: _nonEmpty(row['course_name']),
-          ),
-    ];
-  }
-
-  /// L1 — return a Canvas link ticket. A learner ticket carries the
-  /// confirmation ([disclosureVersion]); an instructor ticket carries nothing
-  /// else. [accessToken] is the account's own token after sign-in; null only
-  /// for the attempt the link page makes signed out, which a ticket bound to
-  /// an already-linked account answers with a login token (an unbound ticket
-  /// answers 401 and is not consumed).
+  /// L1 — return a Canvas link ticket (body: just the ticket). [accessToken]
+  /// is the account's own token after sign-in; null only for the attempt the
+  /// link page makes signed out, which a ticket bound to an already-linked
+  /// account answers with a login token (an unbound ticket answers 401 and
+  /// is not consumed).
   Future<LtiLinkOutcome> ltiLink({
     required String? accessToken,
     required String ticket,
-    int? disclosureVersion,
   }) async {
     final json = await _send(
       'POST',
       'lti/link',
       accessToken: accessToken,
-      body: {
-        'ticket': ticket,
-        if (disclosureVersion != null) ...{
-          'confirmed': true,
-          'disclosure_version': disclosureVersion,
-        },
-      },
+      body: {'ticket': ticket},
     );
     final connect = json['connect_url'];
     final login = json['login_token'];
@@ -187,15 +145,11 @@ class StudentInvitationApiException implements Exception {
 
   const StudentInvitationApiException(this.statusCode, this.errcode);
 
-  static const String disclosureOutdated = 'ORG.PANGEA.DISCLOSURE_OUTDATED';
   static const String alreadyClaimedInCourse =
       'ORG.PANGEA.ALREADY_CLAIMED_IN_COURSE';
   static const String ticketInvalid = 'ORG.PANGEA.TICKET_INVALID';
   static const String ticketWrongAccount = 'ORG.PANGEA.TICKET_WRONG_ACCOUNT';
   static const String ltiAlreadyLinked = 'ORG.PANGEA.LTI_ALREADY_LINKED';
-
-  bool get isDisclosureOutdated =>
-      statusCode == 409 && errcode == disclosureOutdated;
 
   @override
   String toString() =>
@@ -209,25 +163,7 @@ class InvitationHint {
   const InvitationHint({this.courseName, this.maskedEmailHint});
 }
 
-class ManagedDisclosure {
-  final int version;
-
-  /// The CONTROLS-SPEC §8 text with the literal `{course}` placeholder.
-  final String text;
-
-  const ManagedDisclosure({required this.version, required this.text});
-
-  String textFor(String courseName) => text.replaceAll('{course}', courseName);
-}
-
-enum ConfirmOutcome { claimed, pendingApproval, denied }
-
-class PendingInvitationSummary {
-  final String invitationId;
-  final String? courseName;
-
-  const PendingInvitationSummary({required this.invitationId, this.courseName});
-}
+enum OpenOutcome { claimed, pending, denied }
 
 class LtiLinkOutcome {
   /// Set for an instructor ticket: admin-dash's `canvas-connect` page.

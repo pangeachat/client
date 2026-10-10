@@ -90,7 +90,6 @@ void main() {
       // The sign-up/sign-in screens read both after the bounce.
       expect(SpaceCodeRepo.pendingJoinCode, code);
       expect(SpaceCodeRepo.pendingInvitation?.invitationId, inv);
-      expect(SpaceCodeRepo.pendingInvitation?.ackedDisclosureVersion, isNull);
     });
 
     testWidgets('the `/` guard stashes before anything else, logged in or '
@@ -129,21 +128,13 @@ void main() {
       expect(SpaceCodeRepo.pendingInvitation, isNull);
     });
 
-    test('landing again on the same invitation keeps the ticked checkbox; '
-        'a different invitation replaces it', () async {
-      await SpaceCodeRepo.setPendingInvitation(
-        const PendingInvitation(inv, ackedDisclosureVersion: 2),
-      );
-      final again = Uri.parse(PRoutes.joinWithCode(code, invitationId: inv));
-      await PAuthGaurd.stashInvitation(again);
-      expect(SpaceCodeRepo.pendingInvitation?.ackedDisclosureVersion, 2);
-
+    test('a different invitation replaces the stored one', () async {
+      await SpaceCodeRepo.setPendingInvitation(const PendingInvitation(inv));
       const other = 'b3RoZXJJbnZpdGF0aW9u';
       await PAuthGaurd.stashInvitation(
         Uri.parse(PRoutes.joinWithCode(code, invitationId: other)),
       );
       expect(SpaceCodeRepo.pendingInvitation?.invitationId, other);
-      expect(SpaceCodeRepo.pendingInvitation?.ackedDisclosureVersion, isNull);
     });
 
     test('a stale invitation entry reads as absent', () async {

@@ -70,14 +70,14 @@ class PAuthGaurd {
   /// history-replaces its URL and then navigates to the course, which would
   /// drop it, and the bounce must not carry it in the destination twice.
   /// Returns the location without `inv` (the redirect re-runs on it), or null
-  /// when [uri] has none. A re-landing on the same invitation keeps a tick
-  /// already given; a different one replaces it. A malformed id is dropped.
-  /// The shell confirms it after sign-in (PendingClaimsConsumer).
+  /// when [uri] has none. A different invitation replaces a stored one; a
+  /// malformed id is dropped. It is opened once after sign-in, before any
+  /// choreo call (ChoreoGate, PendingClaimsConsumer).
   static Future<String?> stashInvitation(Uri uri) async {
     final location = PRoutes.locationWithoutInvitation(uri);
     if (location == null) return null;
     final id = PRoutes.invitationIdIn(uri);
-    if (id != null && SpaceCodeRepo.pendingInvitation?.invitationId != id) {
+    if (id != null) {
       await SpaceCodeRepo.setPendingInvitation(PendingInvitation(id));
     }
     return location;

@@ -7,7 +7,6 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/student_invitations/lti_entry.dart';
-import 'package:fluffychat/features/student_invitations/managed_consent.dart';
 import 'package:fluffychat/features/student_invitations/pending_claims.dart';
 import 'package:fluffychat/features/student_invitations/pending_claims_consumer.dart';
 import 'package:fluffychat/features/student_invitations/pending_claims_flow.dart';
@@ -19,16 +18,16 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// `/lti/link` — where a Canvas launch lands (C5.2), the ticket already
 /// ferried and out of the address bar (LtiEntry.linkRedirect).
 ///
-/// Learner: the Canvas link step (SPEC §4 Student 5). Continue needs the
-/// ticked checkbox. Signed in, the ticket goes back with that account's
-/// token. Signed out, it is tried once without a token: a ticket bound to an
-/// already-linked account answers with a login token and signs them in;
-/// any other ticket answers 401, unconsumed, and the student goes to the
-/// normal sign-up/sign-in with the ticket and the tick ferried; the shell
-/// returns it after sign-in (PendingClaimsConsumer).
+/// Learner: the Canvas link step (SPEC §4 Student 5; no checkbox, amendment
+/// 2026-10-10). Signed in, the ticket goes back with that account's token.
+/// Signed out, Continue tries it once without a token: a ticket bound to an
+/// already-linked account answers with a login token and signs them in; any
+/// other ticket answers 401, unconsumed, and the student goes to the normal
+/// sign-up/sign-in with the ticket ferried; it goes back after sign-in
+/// (the choreo preflight or PendingClaimsConsumer).
 ///
-/// Instructor: no confirmation; sign in, then the ticket goes back and
-/// admin-dash's connect page opens.
+/// Instructor: sign in, then the ticket goes back and admin-dash's connect
+/// page opens.
 class LtiLinkPage extends StatefulWidget {
   final StudentInvitationApi? api;
 
@@ -40,8 +39,7 @@ class LtiLinkPage extends StatefulWidget {
   State<LtiLinkPage> createState() => _LtiLinkPageState();
 }
 
-class _LtiLinkPageState extends State<LtiLinkPage>
-    with ManagedDisclosureLoader {
+class _LtiLinkPageState extends State<LtiLinkPage> {
   late final StudentInvitationApi _api =
       widget.api ??
       StudentInvitationApi(
@@ -50,12 +48,8 @@ class _LtiLinkPageState extends State<LtiLinkPage>
       );
 
   final PendingLtiTicket? _pending = SpaceCodeRepo.pendingLtiTicket;
-  bool _checked = false;
   bool _busy = false;
   ClaimNotice? _notice;
-
-  @override
-  StudentInvitationApi get disclosureApi => _api;
 
   bool get _canContinue {
     final pending = _pending;
@@ -63,7 +57,7 @@ class _LtiLinkPageState extends State<LtiLinkPage>
     // A refused ticket is spent; only an unexpected failure may be retried.
     final notice = _notice;
     if (notice != null && notice.kind != ClaimNoticeKind.failed) return false;
-    return pending.instructor || (_checked && disclosure != null);
+    return true;
   }
 
   Future<void> _continue() async {
@@ -85,11 +79,9 @@ class _LtiLinkPageState extends State<LtiLinkPage>
         return;
       }
 
-      final version = disclosure!.version;
-      final acked = pending.withAck(version);
       if (signedIn) {
-        await SpaceCodeRepo.setPendingLtiTicket(acked);
-        if (!mounted) return;
+        // The ticket is still ferried (or a choreo call's preflight already
+        // returned it): this account links and claims.
         await pendingClaimsFlowFor(context, client).consumeLtiTicket();
         if (mounted) context.go(PRoutes.world);
         return;
@@ -98,23 +90,13 @@ class _LtiLinkPageState extends State<LtiLinkPage>
       await SpaceCodeRepo.clearPendingLtiTicket();
       final LtiLinkOutcome outcome;
       try {
-        outcome = await _api.ltiLink(
-          accessToken: null,
-          ticket: pending.ticket,
-          disclosureVersion: version,
-        );
+        outcome = await _api.ltiLink(accessToken: null, ticket: pending.ticket);
       } on StudentInvitationApiException catch (e) {
         if (e.statusCode == 401) {
-          // Not linked yet: sign up or sign in first, then the shell returns
-          // the (unconsumed) ticket with this tick.
-          await SpaceCodeRepo.setPendingLtiTicket(acked);
-          if (mounted) context.go('/home');
-          return;
-        }
-        if (e.isDisclosureOutdated) {
+          // Not linked yet: sign up or sign in first, then the (unconsumed)
+          // ticket goes back after sign-in.
           await SpaceCodeRepo.setPendingLtiTicket(pending);
-          setState(() => _checked = false);
-          await loadDisclosure();
+          if (mounted) context.go('/home');
           return;
         }
         rethrow;
@@ -126,19 +108,8 @@ class _LtiLinkPageState extends State<LtiLinkPage>
       LtiEntry.holdLoginToken(token);
       if (mounted) context.go(PRoutes.ltiToken);
     } on StudentInvitationApiException catch (e, s) {
-      _show(switch (e) {
-        StudentInvitationApiException(statusCode: 410) =>
-          ClaimNoticeKind.ticketExpired,
-        StudentInvitationApiException(
-          errcode: StudentInvitationApiException.ticketWrongAccount,
-        ) =>
-          ClaimNoticeKind.ticketWrongAccount,
-        StudentInvitationApiException(
-          errcode: StudentInvitationApiException.ltiAlreadyLinked,
-        ) =>
-          ClaimNoticeKind.canvasAlreadyLinked,
-        _ => _failed(e, s),
-      });
+      final kind = PendingClaimsFlow.linkFailureKind(e);
+      _show(kind == ClaimNoticeKind.failed ? _failed(e, s) : kind);
     } catch (e, s) {
       _show(_failed(e, s));
     } finally {
@@ -188,14 +159,6 @@ class _LtiLinkPageState extends State<LtiLinkPage>
             style: theme.textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.bold,
             ),
-          ),
-          ManagedConsentPanel(
-            courseName: pending.courseName,
-            disclosure: disclosure,
-            loadFailed: disclosureFailed,
-            onRetry: loadDisclosure,
-            checked: _checked,
-            onChanged: (v) => setState(() => _checked = v),
           ),
           Text(l10n.canvasLinkExplanation, style: theme.textTheme.bodySmall),
         ],
