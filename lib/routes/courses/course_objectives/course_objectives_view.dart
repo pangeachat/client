@@ -36,6 +36,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart'
 import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
 import 'package:fluffychat/routes/courses/course_objectives/suggested_activities.dart';
+import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -555,13 +556,16 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   /// the same live state the cards render. `recency` stays 0: open sessions
   /// reach this surface through the discovery cache, which carries no
   /// per-session start time. See [rankSuggestedActivities].
-  PinSignals _signalsFor(String activityId) => PinSignals(
-    state: _liveStateFor(activityId).state ?? ActivityPinState.available,
-    completionFraction: (widget.hasCompletedActivity?.call(activityId) ?? false)
-        ? 1.0
-        : 0.0,
-    pinged: activityId == _pingedActivityId,
-  );
+  ///
+  /// `completed` is a full star row ([fullStarRows]), the map's own term, not
+  /// the saved-session check [hasCompletedActivity] marks cards with: a learner
+  /// who finished with goals left still sees the activity suggested.
+  PinSignals _signalsFor(String activityId, Set<String> fullStarRows) =>
+      PinSignals(
+        state: _liveStateFor(activityId).state ?? ActivityPinState.available,
+        completionFraction: fullStarRows.contains(activityId) ? 1.0 : 0.0,
+        pinged: activityId == _pingedActivityId,
+      );
 
   int _userStarsByActivity(String activityId) =>
       widget.room?.client.userStarsByActivity[activityId] ?? 0;
@@ -654,11 +658,15 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     // dropped. Empty only when every activity in the plan is
                     // one of those — nothing left to suggest; the section
                     // header and its "See all" sit outside this widget.
+                    // Read once per ranking pass: it walks every room.
+                    final fullStarRows =
+                        widget.room?.client.fullStarRowActivityIds ??
+                        const <String>{};
                     final suggested = rankSuggestedActivities(
                       groups: groups,
                       missionGradient:
                           widget.objectivesProvider.missionGradient,
-                      signalsFor: _signalsFor,
+                      signalsFor: (id) => _signalsFor(id, fullStarRows),
                     );
                     if (suggested.isEmpty) return const SizedBox.shrink();
                     // The course tutorial's "pick an activity" step lights
