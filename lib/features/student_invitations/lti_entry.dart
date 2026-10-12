@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
@@ -11,13 +13,20 @@ abstract class LtiFragment {
 }
 
 /// The browser's own fragment. The router never sees it (path URL strategy
-/// without `includeHash`), so it is read from `window.location`. Off web
-/// there is none.
+/// without `includeHash`), and the engine's browser history rewrites the URL
+/// without it at startup, so a launch's fragment is captured in `main()`
+/// first ([LtiEntry.captureLaunchFragment]); an in-app arrival reads
+/// `window.location`. Off web there is none.
 class BrowserLtiFragment implements LtiFragment {
   const BrowserLtiFragment();
 
   @override
   String? take() {
+    final captured = LtiEntry._launchFragment;
+    if (captured != null) {
+      LtiEntry._launchFragment = null;
+      return captured;
+    }
     final location = html.window.location;
     final hash = location.hash;
     if (hash.length <= 1) return null;
@@ -38,6 +47,23 @@ class BrowserLtiFragment implements LtiFragment {
 abstract class LtiEntry {
   /// Where the fragment is read from; tests swap it.
   static LtiFragment fragment = const BrowserLtiFragment();
+
+  static String? _launchFragment;
+
+  /// First thing in `main()` on web: on an `/lti/` landing, keep the URL
+  /// fragment in memory and remove it from the address bar, before the
+  /// engine's browser history drops it. Other routes' fragments (an SSO
+  /// callback's, say) are left alone.
+  static void captureLaunchFragment() {
+    if (!kIsWeb) return;
+    final location = html.window.location;
+    final path = location.pathname ?? '';
+    if (path != PRoutes.ltiLink && path != PRoutes.ltiToken) return;
+    final hash = location.hash;
+    if (hash.length <= 1) return;
+    _launchFragment = hash.substring(1);
+    html.window.history.replaceState(null, '', '$path${location.search}');
+  }
 
   static Map<String, String> _takeFragment() {
     final raw = fragment.take();
