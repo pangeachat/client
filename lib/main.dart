@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:isolate';
 import 'dart:ui';
 
@@ -17,6 +18,7 @@ import 'package:fluffychat/features/activity_sessions/activity_rating_store.dart
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/workspace_screen_tracker.dart';
+import 'package:fluffychat/features/network_filter/network_help_repo.dart';
 import 'package:fluffychat/pangea/common/config/env_loader.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -102,6 +104,7 @@ Future<void> _main() async {
   }
 
   final store = await AppSettings.init();
+  unawaited(NetworkHelpRepo.initialize());
   Logs().i('Welcome to ${AppSettings.applicationName.value} <3');
 
   // #Pangea

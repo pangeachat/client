@@ -10466,5 +10466,20 @@
     "reportNotSent": "Din rapport kunde inte skickas. Kontrollera din anslutning och försök igen.",
     "reportPointerMessage": "Ett meddelande rapporterades i {courseName} – se Säkerhet",
     "useActivityImageAsChatBackground": "Använd aktivitetsbild som chattbakgrund",
-    "andCertifyIMeetTheMinimumAge": " och intygar att jag är minst 13 år gammal, eller den minimiålder som krävs i mitt land om den är högre."
+    "andCertifyIMeetTheMinimumAge": " och intygar att jag är minst 13 år gammal, eller den minimiålder som krävs i mitt land om den är högre.",
+    "filteredNetworkBlockedTitle": "Detta nätverk blockerar Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Detta nätverk blockerar delar av Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Vad kan jag göra?",
+    "filteredNetworkPhoneAdvice": "Stäng av Wi-Fi och använd mobildata istället.",
+    "filteredNetworkComputerAdvice": "Anslut till telefonens hotspot istället för detta Wi-Fi.",
+    "filteredNetworkItHeading": "För lärare och IT-personal",
+    "filteredNetworkItBody": "Be ditt IT-team att tillåta dessa domäner:",
+    "filteredNetworkAskForHelp": "Be Pangea om hjälp",
+    "filteredNetworkHelpExplanation": "Vi skickar ett e-postmeddelande till dig för att hjälpa dig att få Pangea Chat att fungera på detta nätverk.",
+    "filteredNetworkHelpWaiting": "Din förfrågan skickas så snart du är ansluten.",
+    "filteredNetworkHelpSent": "Skickat. Vi hör av oss via e-post.",
+    "filteredNetworkHelpRefused": "Vi kunde inte skicka din förfrågan. Vänligen mejla support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Detta nätverk blockerar videor.",
+    "filteredNetworkImagesBlocked": "Detta nätverk blockerar bilder.",
+    "filteredNetworkMapBlocked": "Detta nätverk blockerar kartan."
 }
