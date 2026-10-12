@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-10 10:41:03.304017",
+    "@@last_modified": "2026-10-12 13:11:53.686990",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9965,5 +9965,9 @@
     "filteredNetworkImagesBlocked": "Esta rede bloquea as imaxes.",
     "filteredNetworkMapBlocked": "Esta rede bloquea o mapa.",
     "callFullScreenTitle": "Permitir chamadas a pantalla completa",
-    "callFullScreenMessage": "Recibiuse unha chamada mentres Pangea Chat estaba pechado, pero o teu teléfono só puido mostrar unha pequena notificación. Permite as chamadas a pantalla completa para que a seguinte soe en toda a pantalla, mesmo cando o teléfono estea bloqueado."
+    "callFullScreenMessage": "Recibiuse unha chamada mentres Pangea Chat estaba pechado, pero o teu teléfono só puido mostrar unha pequena notificación. Permite as chamadas a pantalla completa para que a seguinte soe en toda a pantalla, mesmo cando o teléfono estea bloqueado.",
+    "callMicrophoneTitle": "Usa o teu micrófono para as chamadas",
+    "callMicrophoneMessage": "Pangea Chat necesita o teu micrófono para as chamadas, incluídas as que respondas desde a pantalla de bloqueo.",
+    "callMicrophoneOffTitle": "A túa chamada non se conectou",
+    "callMicrophoneOffMessage": "Pangea Chat non pode usar o teu micrófono. Toca para activalo en Configuración."
 }

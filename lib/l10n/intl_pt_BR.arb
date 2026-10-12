@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:09.887285",
+    "@@last_modified": "2026-10-12 13:12:02.194229",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9965,5 +9965,9 @@
     "filteredNetworkImagesBlocked": "Esta rede bloqueia imagens.",
     "filteredNetworkMapBlocked": "Esta rede bloqueia o mapa.",
     "callFullScreenTitle": "Permitir chamadas em tela cheia",
-    "callFullScreenMessage": "Uma chamada chegou enquanto o Pangea Chat estava fechado, mas seu telefone só conseguiu mostrar uma pequena notificação. Permita chamadas em tela cheia para que a próxima toque em toda a sua tela, mesmo quando seu telefone estiver bloqueado."
+    "callFullScreenMessage": "Uma chamada chegou enquanto o Pangea Chat estava fechado, mas seu telefone só conseguiu mostrar uma pequena notificação. Permita chamadas em tela cheia para que a próxima toque em toda a sua tela, mesmo quando seu telefone estiver bloqueado.",
+    "callMicrophoneTitle": "Use seu microfone para chamadas",
+    "callMicrophoneMessage": "O Pangea Chat precisa do seu microfone para chamadas, incluindo as chamadas que você atende da tela de bloqueio.",
+    "callMicrophoneOffTitle": "Sua chamada não conectou",
+    "callMicrophoneOffMessage": "O Pangea Chat não pode usar seu microfone. Toque para ativá-lo nas Configurações."
 }

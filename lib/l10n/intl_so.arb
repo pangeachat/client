@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-10 10:41:11.126767",
+    "@@last_modified": "2026-10-12 13:12:03.982170",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "Shabakaddani waxay xannibtaa sawirrada.",
     "filteredNetworkMapBlocked": "Shabakaddani waxay xannibtaa khariidadda.",
     "callFullScreenTitle": "U ogolow wicitaanada inay buuxiyaan shaashada",
-    "callFullScreenMessage": "Wicitaan ayaa soo galay iyadoo Pangea Chat xiran tahay, laakiin taleefankaagu wuxuu kaliya tusi karaa ogeysiis yar. U ogolow wicitaanada shaashada buuxda si kan xiga uu u soo dhaco shaashadaada oo dhan, xitaa marka taleefankaagu xiran yahay."
+    "callFullScreenMessage": "Wicitaan ayaa soo galay iyadoo Pangea Chat xiran tahay, laakiin taleefankaagu wuxuu kaliya tusi karaa ogeysiis yar. U ogolow wicitaanada shaashada buuxda si kan xiga uu u soo dhaco shaashadaada oo dhan, xitaa marka taleefankaagu xiran yahay.",
+    "callMicrophoneTitle": "U adeegso makarafoonkaaga wicitaanada",
+    "callMicrophoneMessage": "Pangea Chat waxay u baahan tahay makarafoonkaaga wicitaanada, oo ay ku jiraan wicitaanada aad ka jawaabto shaashadda qufulka.",
+    "callMicrophoneOffTitle": "Wicitaankaagu ma xirmin",
+    "callMicrophoneOffMessage": "Pangea Chat ma isticmaali karto makarafoonkaaga. Taabo si aad uga shiddo Settings."
 }

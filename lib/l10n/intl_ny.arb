@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-10 10:41:09.404200",
+    "@@last_modified": "2026-10-12 13:12:03.930010",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "Netiweki iyi imalepheretsa zithunzi.",
     "filteredNetworkMapBlocked": "Netiweki iyi imalepheretsa mapu.",
     "callFullScreenTitle": "Maimbidwe azilira pa skrini yonse",
-    "callFullScreenMessage": "Kuyimba kunabwera pamene Pangea Chat inatsekedwa, koma foni yanu inangowonetsa chidziwitso chaching'ono. Lolani maimbidwe azioneka pa skrini yonse kuti kuyimba kotsatira kuzilire pa skrini yanu yonse, ngakhale foni yanu itatsekedwa."
+    "callFullScreenMessage": "Kuyimba kunabwera pamene Pangea Chat inatsekedwa, koma foni yanu inangowonetsa chidziwitso chaching'ono. Lolani maimbidwe azioneka pa skrini yonse kuti kuyimba kotsatira kuzilire pa skrini yanu yonse, ngakhale foni yanu itatsekedwa.",
+    "callMicrophoneTitle": "Gwiritsani ntchito maikolofoni yanu pama foni",
+    "callMicrophoneMessage": "Pangea Chat ikufuna maikolofoni yanu pama foni, kuphatikizapo ma foni omwe mumayankha kuchokera pa chophimba chotsekedwa.",
+    "callMicrophoneOffTitle": "Foni yanu sinayankhe",
+    "callMicrophoneOffMessage": "Pangea Chat singagwiritse ntchito maikolofoni yanu. Dinani kuti muyatse mu Zokonda."
 }

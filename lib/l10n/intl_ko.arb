@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:06.804052",
+    "@@last_modified": "2026-10-12 13:11:57.079656",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10158,5 +10158,9 @@
     "filteredNetworkImagesBlocked": "이 네트워크는 이미지를 차단합니다.",
     "filteredNetworkMapBlocked": "이 네트워크는 지도를 차단합니다.",
     "callFullScreenTitle": "전체 화면으로 전화 수신",
-    "callFullScreenMessage": "Pangea Chat이 닫혀 있는 동안 전화가 걸려왔지만, 휴대폰에 작은 알림만 표시되었습니다. 다음 전화부터는 휴대폰이 잠겨 있을 때도 전체 화면으로 벨이 울리도록 전체 화면 통화를 허용하세요."
+    "callFullScreenMessage": "Pangea Chat이 닫혀 있는 동안 전화가 걸려왔지만, 휴대폰에 작은 알림만 표시되었습니다. 다음 전화부터는 휴대폰이 잠겨 있을 때도 전체 화면으로 벨이 울리도록 전체 화면 통화를 허용하세요.",
+    "callMicrophoneTitle": "통화에 마이크 사용",
+    "callMicrophoneMessage": "Pangea Chat은 잠금 화면에서 응답하는 통화를 포함하여 통화에 마이크가 필요합니다.",
+    "callMicrophoneOffTitle": "통화가 연결되지 않았습니다",
+    "callMicrophoneOffMessage": "Pangea Chat이 마이크를 사용할 수 없습니다. 설정을 탭하여 켜세요."
 }

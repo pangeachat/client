@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-10 10:41:08.753180",
+    "@@last_modified": "2026-10-12 13:12:01.370248",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "Din in-network timblokka l-istampi.",
     "filteredNetworkMapBlocked": "Din in-network timblokka l-mappa.",
     "callFullScreenTitle": "Ħalli s-sejħiet idoqqu skrin sħiħ",
-    "callFullScreenMessage": "Waslet sejħa waqt li Pangea Chat kienet magħluqa, iżda t-telefon tiegħek seta' juri biss notifika żgħira għaliha. Ħalli sejħiet full-screen sabiex dik li jmiss iddoqq fuq l-iskrin kollu tiegħek, anke meta t-telefon tiegħek ikun illokkjat."
+    "callFullScreenMessage": "Waslet sejħa waqt li Pangea Chat kienet magħluqa, iżda t-telefon tiegħek seta' juri biss notifika żgħira għaliha. Ħalli sejħiet full-screen sabiex dik li jmiss iddoqq fuq l-iskrin kollu tiegħek, anke meta t-telefon tiegħek ikun illokkjat.",
+    "callMicrophoneTitle": "Uża l-mikrofonu tiegħek għal sejħiet",
+    "callMicrophoneMessage": "Pangea Chat jeħtieġ il-mikrofonu tiegħek għal sejħiet, inklużi sejħiet li twieġeb mill-iskrin tal-illokkjar.",
+    "callMicrophoneOffTitle": "Is-sejħa tiegħek ma konnessjonatx",
+    "callMicrophoneOffMessage": "Pangea Chat ma jistax juża l-mikrofonu tiegħek. Tektek biex tixgħel fis-Settings."
 }

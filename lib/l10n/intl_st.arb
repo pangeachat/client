@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-10 10:41:11.712444",
+    "@@last_modified": "2026-10-12 13:12:04.179038",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "Marangrang ana a thibela litšoantšo.",
     "filteredNetworkMapBlocked": "Marangrang ana a thibela 'mapa.",
     "callFullScreenTitle": "Etsa hore mehala e lle skrineng kaofela",
-    "callFullScreenMessage": "Mohala o kene ha Pangea Chat e koetsoe, empa fono ea hau e ne e ka bontša tsebiso e nyane feela bakeng sa ona. Lumella mehala ea skrine e felletseng e le hore e latelang e lle skrineng sa hau kaofela, le ha fono ea hau e notletsoe."
+    "callFullScreenMessage": "Mohala o kene ha Pangea Chat e koetsoe, empa fono ea hau e ne e ka bontša tsebiso e nyane feela bakeng sa ona. Lumella mehala ea skrine e felletseng e le hore e latelang e lle skrineng sa hau kaofela, le ha fono ea hau e notletsoe.",
+    "callMicrophoneTitle": "Sebelisa maekrofounu ea hau bakeng sa mehala",
+    "callMicrophoneMessage": "Pangea Chat e hloka maekrofounu ea hau bakeng sa mehala, ho kenyeletsoa le mehala eo u e arabang ho tsoa skrineng sa senotlolo.",
+    "callMicrophoneOffTitle": "Mohala oa hau ha oa hokela",
+    "callMicrophoneOffMessage": "Pangea Chat e ke ke ea sebelisa maekrofounu ea hau. Tlanya ho e bulela ho Litlhophiso."
 }

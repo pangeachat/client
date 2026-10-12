@@ -3559,7 +3559,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-10 10:41:03.661769",
+    "@@last_modified": "2026-10-12 13:11:52.279105",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9976,5 +9976,9 @@
     "filteredNetworkImagesBlocked": "Blocálann an líonra seo íomhánna.",
     "filteredNetworkMapBlocked": "Blocálann an líonra seo an léarscáil.",
     "callFullScreenTitle": "Lig do ghlaonna glaoch lánscáileáin",
-    "callFullScreenMessage": "Tháinig glao isteach nuair a bhí Pangea Chat dúnta, ach ní fhéadfadh do ghuthán ach fógra beag a thaispeáint dó. Ceadaigh glaonna lánscáileáin ionas go nglaonn an chéad cheann eile ar do scáileán iomlán, fiú nuair a bhíonn do ghuthán faoi ghlas."
+    "callFullScreenMessage": "Tháinig glao isteach nuair a bhí Pangea Chat dúnta, ach ní fhéadfadh do ghuthán ach fógra beag a thaispeáint dó. Ceadaigh glaonna lánscáileáin ionas go nglaonn an chéad cheann eile ar do scáileán iomlán, fiú nuair a bhíonn do ghuthán faoi ghlas.",
+    "callMicrophoneTitle": "Úsáid do mhicreafón le haghaidh glaonna",
+    "callMicrophoneMessage": "Teastaíonn do mhicreafón ó Pangea Chat le haghaidh glaonna, lena n-áirítear glaonna a bhfreagraíonn tú dóibh ón scáileán glasála.",
+    "callMicrophoneOffTitle": "Níor nascadh do ghlao",
+    "callMicrophoneOffMessage": "Ní féidir le Pangea Chat do mhicreafón a úsáid. Tapáil chun é a chur ar siúl sna Socruithe."
 }

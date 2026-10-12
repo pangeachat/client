@@ -7,9 +7,11 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_vodozemac/flutter_vodozemac.dart' as vod;
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import 'package:fluffychat/features/notifications/notification_tap_utils.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/calls/ios_call_screen.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/push_helper.dart';
 import '../config/app_config.dart';
@@ -150,6 +152,12 @@ Future<void> notificationTap(
   );
   switch (notificationResponse.notificationResponseType) {
     case NotificationResponseType.selectedNotification:
+      if (payload.additionalData.containsKey(
+        IosCallScreen.microphoneSettingsTap,
+      )) {
+        await openAppSettings();
+        return;
+      }
       final roomId = payload.roomId;
       if (roomId == null) return;
 

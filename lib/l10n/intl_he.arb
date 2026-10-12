@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:04.300616",
+    "@@last_modified": "2026-10-12 13:11:54.216711",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10879,5 +10879,9 @@
     "filteredNetworkImagesBlocked": "רשת זו חוסמת תמונות.",
     "filteredNetworkMapBlocked": "רשת זו חוסמת את המפה.",
     "callFullScreenTitle": "אפשר לשיחות לצלצל במסך מלא",
-    "callFullScreenMessage": "התקבלה שיחה כש־Pangea Chat הייתה סגורה, אבל הטלפון שלך הציג רק התראה קטנה עבורה. אפשר שיחות במסך מלא כדי שהשיחה הבאה תצלצל על כל המסך, גם כשהטלפון שלך נעול."
+    "callFullScreenMessage": "התקבלה שיחה כש־Pangea Chat הייתה סגורה, אבל הטלפון שלך הציג רק התראה קטנה עבורה. אפשר שיחות במסך מלא כדי שהשיחה הבאה תצלצל על כל המסך, גם כשהטלפון שלך נעול.",
+    "callMicrophoneTitle": "השתמש/י במיקרופון שלך לשיחות",
+    "callMicrophoneMessage": "Pangea Chat זקוק למיקרופון שלך לשיחות, כולל שיחות שאת/ה עונה להן ממסך הנעילה.",
+    "callMicrophoneOffTitle": "השיחה שלך לא התחברה",
+    "callMicrophoneOffMessage": "Pangea Chat לא יכול להשתמש במיקרופון שלך. הקש/י כדי להפעיל אותו בהגדרות."
 }

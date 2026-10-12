@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-10 10:41:07.220919",
+    "@@last_modified": "2026-10-12 13:11:54.850124",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "Rezo sa a bloke imaj.",
     "filteredNetworkMapBlocked": "Rezo sa a bloke kat la.",
     "callFullScreenTitle": "Kite apèl yo sonnen sou tout ekran an",
-    "callFullScreenMessage": "Yon apèl te antre pandan Pangea Chat te fèmen, men telefòn ou te kapab montre sèlman yon ti notifikasyon pou li. Pèmèt apèl sou tout ekran an pou pwochen an sonnen sou tout ekran ou, menm lè telefòn ou bloke."
+    "callFullScreenMessage": "Yon apèl te antre pandan Pangea Chat te fèmen, men telefòn ou te kapab montre sèlman yon ti notifikasyon pou li. Pèmèt apèl sou tout ekran an pou pwochen an sonnen sou tout ekran ou, menm lè telefòn ou bloke.",
+    "callMicrophoneTitle": "Sèvi ak mikwofòn ou pou apèl yo",
+    "callMicrophoneMessage": "Pangea Chat bezwen mikwofòn ou pou apèl yo, enkli apèl ou reponn depi ekran bloke a.",
+    "callMicrophoneOffTitle": "Apèl ou a pa konekte",
+    "callMicrophoneOffMessage": "Pangea Chat pa ka sèvi ak mikwofòn ou. Tape pou limen li nan Anviwònman."
 }

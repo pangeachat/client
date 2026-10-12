@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:01.634795",
+    "@@last_modified": "2026-10-12 13:11:49.913846",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10092,5 +10092,9 @@
     "filteredNetworkImagesBlocked": "Aquesta xarxa bloqueja les imatges.",
     "filteredNetworkMapBlocked": "Aquesta xarxa bloqueja el mapa.",
     "callFullScreenTitle": "Deixa que les trucades sonin a pantalla completa",
-    "callFullScreenMessage": "Va entrar una trucada mentre Pangea Chat estava tancat, però el teu telèfon només podia mostrar una petita notificació. Permet les trucades a pantalla completa perquè la següent soni a tota la pantalla, fins i tot quan el telèfon estigui bloquejat."
+    "callFullScreenMessage": "Va entrar una trucada mentre Pangea Chat estava tancat, però el teu telèfon només podia mostrar una petita notificació. Permet les trucades a pantalla completa perquè la següent soni a tota la pantalla, fins i tot quan el telèfon estigui bloquejat.",
+    "callMicrophoneTitle": "Utilitza el micròfon per a les trucades",
+    "callMicrophoneMessage": "Pangea Chat necessita el teu micròfon per a les trucades, incloses les trucades que responguis des de la pantalla de bloqueig.",
+    "callMicrophoneOffTitle": "La teva trucada no s'ha pogut connectar",
+    "callMicrophoneOffMessage": "Pangea Chat no pot utilitzar el teu micròfon. Toca per activar-lo a Configuració."
 }

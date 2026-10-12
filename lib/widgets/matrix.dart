@@ -11,6 +11,7 @@ import 'package:just_audio/just_audio.dart';
 import 'package:matrix/encryption.dart';
 import 'package:matrix/matrix.dart';
 import 'package:pangea_call_capture/pangea_call_capture.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -42,6 +43,7 @@ import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_session.dart' as call_ui;
+import 'package:fluffychat/routes/chat/calls/ios_call_screen.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/routes/chat/events/utils/pending_reports.dart';
 import 'package:fluffychat/utils/client_manager.dart';
@@ -565,6 +567,54 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       if (result == OkCancelResult.ok) await ringer.openFullScreenSettings();
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {});
+    }
+  }
+
+  bool _askingForMicrophone = false;
+
+  /// Asks once, on iOS, for the microphone before a call can ring to this
+  /// phone: the first call is often answered from the lock screen, the wrong
+  /// moment to ask, and a microphone that will not open is no call. Only with
+  /// the app in front, never over a call, and only if iOS has never asked.
+  /// Called once the VoIP pusher is in place, and again on each return to the
+  /// app in case it was not in front then.
+  Future<void> askForMicrophoneOnce() async {
+    if (!PlatformInfos.isIOS || _askingForMicrophone) return;
+    if (AppSettings.callMicrophoneAsked.value || activeCall.value != null) {
+      return;
+    }
+    // Calls can ring here: PushKit has given this phone a VoIP token, and an
+    // account is signed in to register it.
+    if (IosCallScreen.instance.voipToken.value == null ||
+        !widget.clients.any((c) => c.isLogged()) ||
+        WidgetsBinding.instance.lifecycleState != AppLifecycleState.resumed) {
+      return;
+    }
+    _askingForMicrophone = true;
+    try {
+      // On iOS "denied" is the status before iOS has ever asked. Once the
+      // learner has answered, it is granted or permanently denied.
+      if (!(await Permission.microphone.status).isDenied) return;
+      final dialogContext =
+          FluffyChatApp.router.routerDelegate.navigatorKey.currentContext;
+      if (!mounted || dialogContext == null || !dialogContext.mounted) return;
+      // Recorded before the question, so it is asked once even if the learner
+      // puts it off.
+      await AppSettings.callMicrophoneAsked.setItem(true);
+      if (!dialogContext.mounted) return;
+      final l10n = L10n.of(dialogContext);
+      final result = await showOkCancelAlertDialog(
+        context: dialogContext,
+        title: l10n.callMicrophoneTitle,
+        message: l10n.callMicrophoneMessage,
+        okLabel: l10n.continueText,
+        cancelLabel: l10n.cancel,
+      );
+      if (result == OkCancelResult.ok) await Permission.microphone.request();
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+    } finally {
+      _askingForMicrophone = false;
     }
   }
 
@@ -1114,6 +1164,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         //   state == LoginState.loggedIn ? '/backup' : '/home',
         // );
         if (state == LoginState.loggedIn) {
+          // Push, and the VoIP pusher that lets a call ring this phone, is
+          // set up as soon as the account is signed in. The chat list also
+          // sets it up, but a sign-in lands on the map, so a phone could
+          // otherwise not ring until the learner opened their chats.
+          if (identical(backgroundPush?.client, c)) {
+            unawaited(backgroundPush?.setupPush());
+          }
           final isL2Set = await pangeaController.userController.isUserL2Set;
           // Not unconditionally the world map. This state also means "the
           // session finished restoring", which on a cold start lands AFTER the
@@ -1338,6 +1395,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
     if (state == AppLifecycleState.resumed) {
       unawaited(_askForFullScreenCallsOnce());
+      unawaited(askForMicrophoneOnce());
       pangeaController.subscriptionController.refreshOnAppResume(client.userID);
       // A call transcript half whose publish was dropped when the app
       // backgrounded at hangup is replayed now that it is back. Each service

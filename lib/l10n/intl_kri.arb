@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-10 10:41:07.712959",
+    "@@last_modified": "2026-10-12 13:11:57.720780",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "Dis netwok de blok piktya dɛn.",
     "filteredNetworkMapBlocked": "Dis netwok de blok di map.",
     "callFullScreenTitle": "Mek kɔl dɛn ring ful skrin",
-    "callFullScreenMessage": "Wan kɔl bin kɔm insay wɛn Pangea Chat bin klos, bɔt yu fon bin jɔs ebul fɔ sho smɔl notifikeshɔn fɔ am. Alaw ful-skrin kɔl dɛn so dat di nɛks wan go ring ɔn yu ful skrin, ivin wɛn yu fon dɔn lɔk."
+    "callFullScreenMessage": "Wan kɔl bin kɔm insay wɛn Pangea Chat bin klos, bɔt yu fon bin jɔs ebul fɔ sho smɔl notifikeshɔn fɔ am. Alaw ful-skrin kɔl dɛn so dat di nɛks wan go ring ɔn yu ful skrin, ivin wɛn yu fon dɔn lɔk.",
+    "callMicrophoneTitle": "Yuz yu maykrofon fɔ kɔl dɛn",
+    "callMicrophoneMessage": "Pangea Chat nid yu maykrofon fɔ kɔl dɛn, inklud kɔl dɛn we yu ansar frɔm di lɔk skrin.",
+    "callMicrophoneOffTitle": "Yu kɔl nɔ kɔnɛkt",
+    "callMicrophoneOffMessage": "Pangea Chat nɔ go ebul yuz yu maykrofon. Tap fɔ tɔn am ɔn insay Sɛtinz."
 }

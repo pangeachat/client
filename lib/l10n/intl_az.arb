@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-10 10:41:00.913343",
+    "@@last_modified": "2026-10-12 13:11:49.861688",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "Bu şəbəkə şəkilləri bloklayır.",
     "filteredNetworkMapBlocked": "Bu şəbəkə xəritəni bloklayır.",
     "callFullScreenTitle": "Zənglərin tam ekranda çalmasına icazə verin",
-    "callFullScreenMessage": "Pangea Chat bağlı olarkən zəng gəldi, lakin telefonunuz yalnız kiçik bir bildiriş göstərə bildi. Tam ekran zənglərinə icazə verin ki, növbəti zəng telefonunuz kilidli olsa belə, bütün ekranınızda çalsın."
+    "callFullScreenMessage": "Pangea Chat bağlı olarkən zəng gəldi, lakin telefonunuz yalnız kiçik bir bildiriş göstərə bildi. Tam ekran zənglərinə icazə verin ki, növbəti zəng telefonunuz kilidli olsa belə, bütün ekranınızda çalsın.",
+    "callMicrophoneTitle": "Zənglər üçün mikrofonunuzdan istifadə edin",
+    "callMicrophoneMessage": "Pangea Chat zənglər üçün mikrofonunuza ehtiyac duyur, o cümlədən kilid ekranından cavab verdiyiniz zənglər.",
+    "callMicrophoneOffTitle": "Zənginiz qoşulmadı",
+    "callMicrophoneOffMessage": "Pangea Chat mikrofonunuzdan istifadə edə bilmir. Parametrlərdə onu yandırmaq üçün toxunun."
 }

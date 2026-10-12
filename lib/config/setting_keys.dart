@@ -54,6 +54,7 @@ enum AppSettings<T> {
     'pangea.activity_image_as_chat_background',
     false,
   ),
+  callMicrophoneAsked<bool>('pangea.call_microphone_asked', false),
   shareKeysWith<String>('chat.fluffy.share_keys_with_2', 'all'),
   noEncryptionWarningShown<bool>(
     'chat.fluffy.no_encryption_warning_shown',

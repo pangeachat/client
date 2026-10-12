@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:11.453846",
+    "@@last_modified": "2026-10-12 13:12:03.596654",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10914,5 +10914,9 @@
     "filteredNetworkImagesBlocked": "Ova mreža blokira slike.",
     "filteredNetworkMapBlocked": "Ova mreža blokira mapu.",
     "callFullScreenTitle": "Neka pozivi zvone preko celog ekrana",
-    "callFullScreenMessage": "Poziv je stigao dok je Pangea Chat bio zatvoren, ali vaš telefon je mogao da prikaže samo malo obaveštenje o tome. Dozvolite pozive preko celog ekrana kako bi sledeći poziv zvonio preko celog ekrana, čak i kada je vaš telefon zaključan."
+    "callFullScreenMessage": "Poziv je stigao dok je Pangea Chat bio zatvoren, ali vaš telefon je mogao da prikaže samo malo obaveštenje o tome. Dozvolite pozive preko celog ekrana kako bi sledeći poziv zvonio preko celog ekrana, čak i kada je vaš telefon zaključan.",
+    "callMicrophoneTitle": "Koristite mikrofon za pozive",
+    "callMicrophoneMessage": "Pangea Chat-u je potreban vaš mikrofon za pozive, uključujući pozive na koje odgovarate sa zaključanog ekrana.",
+    "callMicrophoneOffTitle": "Vaš poziv nije povezan",
+    "callMicrophoneOffMessage": "Pangea Chat ne može da koristi vaš mikrofon. Dodirnite da biste ga uključili u Podešavanjima."
 }

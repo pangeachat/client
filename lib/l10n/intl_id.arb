@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:05.598623",
+    "@@last_modified": "2026-10-12 13:11:55.350615",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10038,5 +10038,9 @@
     "filteredNetworkImagesBlocked": "Jaringan ini memblokir gambar.",
     "filteredNetworkMapBlocked": "Jaringan ini memblokir peta.",
     "callFullScreenTitle": "Biarkan panggilan berdering layar penuh",
-    "callFullScreenMessage": "Panggilan masuk saat Pangea Chat ditutup, tetapi ponsel Anda hanya dapat menampilkan notifikasi kecil untuk itu. Izinkan panggilan layar penuh agar panggilan berikutnya berdering di seluruh layar Anda, bahkan saat ponsel Anda terkunci."
+    "callFullScreenMessage": "Panggilan masuk saat Pangea Chat ditutup, tetapi ponsel Anda hanya dapat menampilkan notifikasi kecil untuk itu. Izinkan panggilan layar penuh agar panggilan berikutnya berdering di seluruh layar Anda, bahkan saat ponsel Anda terkunci.",
+    "callMicrophoneTitle": "Gunakan mikrofon Anda untuk panggilan",
+    "callMicrophoneMessage": "Pangea Chat memerlukan mikrofon Anda untuk panggilan, termasuk panggilan yang Anda jawab dari layar kunci.",
+    "callMicrophoneOffTitle": "Panggilan Anda tidak tersambung",
+    "callMicrophoneOffMessage": "Pangea Chat tidak dapat menggunakan mikrofon Anda. Ketuk untuk mengaktifkannya di Pengaturan."
 }

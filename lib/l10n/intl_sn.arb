@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-10 10:41:11.051644",
+    "@@last_modified": "2026-10-12 13:12:03.653849",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "Iyi network inovharira mifananidzo.",
     "filteredNetworkMapBlocked": "Iyi network inovharira mepu.",
     "callFullScreenTitle": "Rega mafoni aririre skrini yese",
-    "callFullScreenMessage": "Pakauya runhare Pangea Chat yakavharwa, asi foni yako yakangokwanisa kuratidza chiziviso chidiki chete. Bvumira mafoni ekuzadza skrini kuitira kuti rinotevera riririre skrini yako yese, kunyangwe foni yako yakakiyiwa."
+    "callFullScreenMessage": "Pakauya runhare Pangea Chat yakavharwa, asi foni yako yakangokwanisa kuratidza chiziviso chidiki chete. Bvumira mafoni ekuzadza skrini kuitira kuti rinotevera riririre skrini yako yese, kunyangwe foni yako yakakiyiwa.",
+    "callMicrophoneTitle": "Shandisa maikorofoni yako pakufona",
+    "callMicrophoneMessage": "Pangea Chat inoda maikorofoni yako pakufona, kusanganisira mafoni aunopindura kubva pa lock screen.",
+    "callMicrophoneOffTitle": "Foni yako haina kubatana",
+    "callMicrophoneOffMessage": "Pangea Chat haigone kushandisa maikorofoni yako. Dzvanya kuti uibatidze muZvirongwa."
 }

@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-10 10:41:12.873471",
+    "@@last_modified": "2026-10-12 13:12:06.073363",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9969,5 +9969,9 @@
     "filteredNetworkImagesBlocked": "Bu tarmoq rasmlarni bloklaydi.",
     "filteredNetworkMapBlocked": "Bu tarmoq xaritani bloklaydi.",
     "callFullScreenTitle": "Qo‘ng‘iroqlar to‘liq ekranda jiringlasin",
-    "callFullScreenMessage": "Pangea Chat yopiq bo‘lganida qo‘ng‘iroq keldi, ammo telefoningiz faqat kichik bildirishnoma ko‘rsata oldi. To‘liq ekranli qo‘ng‘iroqlarga ruxsat bering, shunda keyingi qo‘ng‘iroq telefoningiz qulflangan bo‘lsa ham butun ekranda jiringlaydi."
+    "callFullScreenMessage": "Pangea Chat yopiq bo‘lganida qo‘ng‘iroq keldi, ammo telefoningiz faqat kichik bildirishnoma ko‘rsata oldi. To‘liq ekranli qo‘ng‘iroqlarga ruxsat bering, shunda keyingi qo‘ng‘iroq telefoningiz qulflangan bo‘lsa ham butun ekranda jiringlaydi.",
+    "callMicrophoneTitle": "Qoʻngʻiroqlar uchun mikrofoningizdan foydalaning",
+    "callMicrophoneMessage": "Pangea Chat qoʻngʻiroqlar, shu jumladan qulflangan ekrandan javob beradigan qoʻngʻiroqlar uchun mikrofoningizga muhtoj.",
+    "callMicrophoneOffTitle": "Qoʻngʻirogʻingiz ulanmadi",
+    "callMicrophoneOffMessage": "Pangea Chat mikrofoningizdan foydalana olmaydi. Sozlamalarda yoqish uchun bosing."
 }
