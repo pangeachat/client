@@ -228,7 +228,6 @@ jobs:
           RUNTIME_FILES=(
             "index.html"
             ".env"
-            "main.dart.js"
             "flutter.js"
             "flutter_bootstrap.js"
             "flutter_service_worker.js"
@@ -249,6 +248,23 @@ jobs:
               "s3://$WEBAPP_S3_BUCKET/$f" \
               --cache-control "no-cache, must-revalidate"
           done
+
+          # =========================
+          # 5. MAIN BUNDLE, PRE-COMPRESSED
+          # CloudFront compresses on the fly only up to 10 MB, and main.dart.js
+          # is the one build file past that line, so the 97% of the cold-load
+          # payload that matters most shipped as raw bytes (#9200). Brotli only:
+          # every browser Flutter web supports decodes it over HTTPS, and an S3
+          # origin cannot negotiate a gzip fallback without a CloudFront
+          # Function. --content-type is required: the distribution's response
+          # headers policy sets nosniff, and the CLI would otherwise guess the
+          # type from the .br suffix and the browser would refuse to run it.
+          # =========================
+          brotli -q 11 -f -o "$RUNNER_TEMP/main.dart.js.br" ./build/web/main.dart.js
+          aws s3 cp "$RUNNER_TEMP/main.dart.js.br" "s3://$WEBAPP_S3_BUCKET/main.dart.js" \
+            --content-encoding br \
+            --content-type text/javascript \
+            --cache-control "no-cache, must-revalidate"
       - name: Invalidate CloudFront cache
         run: |
           INVALIDATION_ID=$(aws cloudfront create-invalidation \
@@ -283,12 +299,21 @@ jobs:
           for f in flutter.js main.dart.js "canvaskit/$CK_REV/canvaskit.js"; do
             # First non-whitespace byte: canvaskit.js opens with a newline,
             # which a bare `head -c 1` + command substitution would eat.
-            head=$(curl -sf "$BASE/$f" | tr -d '[:space:]' | head -c 1)
+            # --compressed: main.dart.js is stored brotli-encoded (deploy step
+            # 5), so curl must decode it, or raw bytes would pass this check
+            # for any bundle, decodable or not.
+            head=$(curl -sf --compressed "$BASE/$f" | tr -d '[:space:]' | head -c 1)
             [ "$head" != "<" ] && [ -n "$head" ] \
               || { echo "::error::$f served HTML or empty — partial deploy?"; exit 1; }
           done
 
-          # 3. A deep path serves the SPA shell (the fallback is alive).
+          # 3. The bundle is served compressed. CloudFront never compresses it
+          #    (over 10 MB), so this is the one place a regression to raw bytes
+          #    shows up (#9200).
+          curl -sfI "$BASE/main.dart.js" | grep -qi '^content-encoding: br' \
+            || { echo "::error::main.dart.js is not served brotli-encoded — deploy step 5 regressed?"; exit 1; }
+
+          # 4. A deep path serves the SPA shell (the fallback is alive).
           curl -sf "$BASE/zz9smoke" | grep -qi "<html\|<base\|flutter" \
             || { echo "::error::deep path did not serve the SPA shell — fallback broken?"; exit 1; }
 

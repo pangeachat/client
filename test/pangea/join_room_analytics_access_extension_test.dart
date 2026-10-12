@@ -39,7 +39,7 @@ void main() {
     await client.dispose();
   });
 
-  Room courseRoom() {
+  Room courseRoom({bool requireAnalyticsAccess = true}) {
     final room = Room(
       id: courseRoomId,
       client: client,
@@ -59,8 +59,8 @@ void main() {
     room.setState(
       Event(
         type: PangeaEventTypes.courseSettings,
-        content: const CourseSettingsModel(
-          requireAnalyticsAccess: true,
+        content: CourseSettingsModel(
+          requireAnalyticsAccess: requireAnalyticsAccess,
         ).toJson(),
         senderId: userId,
         eventId: '\$courseSettings',
@@ -163,6 +163,24 @@ void main() {
 
         expect(grants, isEmpty);
         expect(createRoomCalls(), isEmpty);
+      },
+    );
+
+    test(
+      'does not grant on a course that does not require analytics access',
+      () async {
+        // CLIENT-EFF (#9270): every course join runs this, and on an optional
+        // course the server refuses the grant with a 403. Access there is
+        // asked for by an instructor and allowed by the student instead.
+        profileWithAnalyticsRoom(analyticsRoomId);
+        client.rooms = [
+          courseRoom(requireAnalyticsAccess: false),
+          analyticsRoom(analyticsRoomId),
+        ];
+
+        await client.grantInstructorsAnalyticsAccess(courseRoomId);
+
+        expect(grants, isEmpty);
       },
     );
   });

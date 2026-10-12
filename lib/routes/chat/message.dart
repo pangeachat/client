@@ -328,23 +328,30 @@ class Message extends StatelessWidget {
 
     final enterThread = this.enterThread;
 
-    // One accessible name per message — sender and text in one breath. The
-    // visible sender name heads only the first message of a run, and never
-    // own or DM messages, so a screen reader otherwise hears bare text (#8784).
+    // Every message announces its sender before its text. The visible sender
+    // name heads only the first message of a run, and never own or DM
+    // messages, so a screen reader otherwise hears bare text (#8784).
     final senderName = ownMessage
         ? L10n.of(context).you
         : controller.room.senderDisplayName(
             event.senderFromMemoryOrFallback,
             L10n.of(context),
           );
-    final messageBody = displayEvent.calcLocalizedBodyFallback(
-      MatrixLocals(L10n.of(context)),
-      hideReply: true,
-      hideEdit: true,
-      plaintextBody: true,
-      removeMarkdown: true,
-    );
-    final messageLabel = '$senderName: $messageBody';
+    // A text message's body is read by its own node, marked with the
+    // message's language (MessageContent). In this name it would be read in
+    // the UI voice, and a second time (#9266). Other types keep their
+    // description here, which is the only place it is read.
+    final bodyHasOwnNode =
+        displayEvent.type == EventTypes.Message &&
+        !displayEvent.redacted &&
+        const {
+          MessageTypes.Text,
+          MessageTypes.Notice,
+          MessageTypes.Emote,
+        }.contains(displayEvent.messageType);
+    final messageLabel = bodyHasOwnNode
+        ? senderName
+        : '$senderName: ${displayEvent.calcLocalizedBodyFallback(MatrixLocals(L10n.of(context)), hideReply: true, hideEdit: true, plaintextBody: true, removeMarkdown: true)}';
 
     return Center(
       child: Swipeable(

@@ -30,6 +30,17 @@ bool activityAutoSaveGate({
   required bool hasArchivedActivity,
 }) => isActivityFinished && hasCompletedRole && !hasArchivedActivity;
 
+/// Whether this run's archive write for a session is still on its way back
+/// through sync: the room still holds the very role event the archive was
+/// built from. The gate reads that event as unarchived, but writing again would
+/// only race the first write into the shared role event. A co-player's
+/// overwrite (the repair case, #8258) replaces that event, so it still repairs.
+@visibleForTesting
+bool archiveEchoPending({
+  required String? archivedFromEventId,
+  required String? heldEventId,
+}) => archivedFromEventId != null && archivedFromEventId == heldEventId;
+
 /// Whether the account this service belongs to may publish its star total now.
 ///
 /// Only while it is the ACTIVE account. The services are per-account and all
@@ -79,6 +90,10 @@ class ActivityAutoSaveService {
   /// to archive again — replaying the REMEMBERED instant, so the repaired room
   /// state still matches the dosage outcome already emitted against it.
   final Map<String, DateTime> _archivedAt = {};
+
+  /// The role event each of this run's archive writes was built from — see
+  /// [archiveEchoPending].
+  final Map<String, String> _archivedFromEventId = {};
 
   /// Session rooms whose dosage outcome has already been emitted this run (the
   /// intra-run outcome guard; a restart can't double-emit because the synced
@@ -190,6 +205,15 @@ class ActivityAutoSaveService {
     );
     if (lang == null) return;
 
+    final heldRolesEvent = room.getState(PangeaEventTypes.activityRole);
+    final heldEventId = heldRolesEvent is Event ? heldRolesEvent.eventId : null;
+    if (archiveEchoPending(
+      archivedFromEventId: _archivedFromEventId[room.id],
+      heldEventId: heldEventId,
+    )) {
+      return;
+    }
+
     if (!_saving.add(room.id)) return;
     // A repair pass re-persists an archive a co-player's write dropped; the
     // session completed once, so it must not be COUNTED again.
@@ -210,7 +234,10 @@ class ActivityAutoSaveService {
       // — so a throw from the emit below can never lose it. On archive failure
       // this line isn't reached and it retries on the next role-state event or
       // sweep.
-      if (archivedAt != null) _archivedAt[room.id] = archivedAt;
+      if (archivedAt != null) {
+        _archivedAt[room.id] = archivedAt;
+        if (heldEventId != null) _archivedFromEventId[room.id] = heldEventId;
+      }
 
       // Best-effort dosage session outcome at the archive moment (stars bank
       // here). Fire-and-forget + fully guarded; never blocks or fails the save.

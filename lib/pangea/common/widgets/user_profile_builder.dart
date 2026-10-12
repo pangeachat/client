@@ -166,15 +166,16 @@ class _UserProfileBuilderState extends State<UserProfileBuilder> {
   ///
   /// Once per user id per session: this widget remounts constantly — the reason
   /// [_lastResolved] exists at all — so an id that never resolves would
-  /// otherwise report on every rebuild. Warning, not error: one unresolved
-  /// profile degrades a name, it does not break the surface.
+  /// otherwise report on every rebuild. Info, per the severity table in
+  /// repos-and-error-handling.instructions.md: the cause is data (an ID with no
+  /// account here, or a blank profile), with nothing in the client to fix.
   void _reportIfEmpty(String userId, Profile profile) {
     if (profile.displayName != null || profile.avatarUrl != null) return;
     ErrorHandler.logErrorOnce(
       key: 'user-profile-empty:$userId',
       e: 'Matrix profile resolved empty — no display name and no avatar',
       data: {'userId': userId},
-      level: SentryLevel.warning,
+      level: SentryLevel.info,
     );
   }
 

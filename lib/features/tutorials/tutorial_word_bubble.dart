@@ -7,6 +7,7 @@ import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
+import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/events/tokens/collectable_tokens_mixin.dart';
 import 'package:fluffychat/routes/chat/events/tokens/token_rendering_util.dart';
@@ -180,30 +181,36 @@ class _TutorialWordBubbleState extends State<TutorialWordBubble>
       // touchable word, so it has to be one for a screen reader and a
       // keyboard too. The InkWell wins the gesture arena over the card's
       // tap-anywhere, so reading the word does not skip past the step.
-      child: FocusRingTapTarget(
-        onTap: _onTap,
-        shape: const StadiumBorder(),
-        label: widget.greeting.word,
-        hoverColor: Colors.transparent,
-        onHover: (hovered) => setState(() => _hovered = hovered),
-        child: Container(
-          key: target.key,
-          // Roomier than a word inside a sentence needs: at display size
-          // the pill has to sit around the word, not cling to it.
-          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 2.0),
-          decoration: BoxDecoration(
-            color: theme.colorScheme.primary.withAlpha(_cardOpen ? 40 : 20),
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          child: UnderlineText(
-            text: widget.greeting.word,
-            style: widget.style ?? DefaultTextStyle.of(context).style,
-            underlineColor: TokenRenderingUtil.underlineColor(
-              context,
-              theme.colorScheme.primary.withAlpha(200),
-              isNew: _isNew,
-              selected: _cardOpen,
-              hovered: _hovered,
+      child: LanguageSemantics(
+        langCode: widget.greeting.langCode,
+        child: FocusRingTapTarget(
+          onTap: _onTap,
+          shape: const StadiumBorder(),
+          label: widget.greeting.word,
+          hoverColor: Colors.transparent,
+          onHover: (hovered) => setState(() => _hovered = hovered),
+          child: Container(
+            key: target.key,
+            // Roomier than a word inside a sentence needs: at display size
+            // the pill has to sit around the word, not cling to it.
+            padding: const EdgeInsets.symmetric(
+              horizontal: 12.0,
+              vertical: 2.0,
+            ),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.primary.withAlpha(_cardOpen ? 40 : 20),
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            child: UnderlineText(
+              text: widget.greeting.word,
+              style: widget.style ?? DefaultTextStyle.of(context).style,
+              underlineColor: TokenRenderingUtil.underlineColor(
+                context,
+                theme.colorScheme.primary.withAlpha(200),
+                isNew: _isNew,
+                selected: _cardOpen,
+                hovered: _hovered,
+              ),
             ),
           ),
         ),

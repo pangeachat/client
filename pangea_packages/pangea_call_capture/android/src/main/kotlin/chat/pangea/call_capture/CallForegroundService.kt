@@ -453,6 +453,11 @@ class CallForegroundService : Service() {
       )
       .setContentIntent(open)
       .setOngoing(true)
+      // This notification is re-posted, not replaced, whenever the camera
+      // turns on or off and whenever a new call adopts the service. On a
+      // high-importance channel each re-post would pop a heads-up again
+      // (#8885); the first post alerts, updates only change what it says.
+      .setOnlyAlertOnce(true)
       .setCategory(NotificationCompat.CATEGORY_CALL)
       .setForegroundServiceBehavior(NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE)
       .build()

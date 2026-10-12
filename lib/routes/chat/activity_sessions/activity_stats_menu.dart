@@ -14,6 +14,7 @@ import 'package:fluffychat/features/activity_sessions/bot_activty_role_room_exte
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/widgets/embed_pointer_shield.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_content.dart';
@@ -21,6 +22,8 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_heade
 import 'package:fluffychat/routes/chat/activity_sessions/activity_goal_header_card.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_header_label.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_progress_mixin.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_report_dialog.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_report_repo.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
@@ -73,6 +76,25 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
     if (!resp.isError) {
       setShowDropdown(false);
     }
+  }
+
+  /// The report prompt behind a goal star (staging only, for the team).
+  ///
+  /// Null on any other build, and null when the learner holds no role: the
+  /// report names the role whose star it is, and a role-less admin has none to
+  /// name — nor any stars, since the list is their own goals.
+  void Function(ActivityRoleGoal)? _onReportStar(BuildContext context) {
+    final roleId = room.ownRoleState?.id;
+    if (!Environment.isStagingEnvironment || roleId == null) return null;
+    return (goal) => showGoalReportDialog(
+      context: context,
+      room: room,
+      roleId: roleId,
+      goal: goal,
+      direction: _isGoalCompleted(goal)
+          ? GoalReportDirection.overAward
+          : GoalReportDirection.underAward,
+    );
   }
 
   Future<void> _finishActivityForAll(BuildContext context) async {
@@ -180,6 +202,7 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
                           _finishActivityForAll(context),
                       finishActivityForMe: () => _finishActivityForMe(context),
                       continueActivity: room.continueActivity,
+                      onReportStar: _onReportStar(context),
                     ),
                   ),
                 ],

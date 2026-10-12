@@ -73,76 +73,110 @@ class _CourseMemberStatsState extends State<CourseMemberStats> {
           );
         }
 
+        // The failed-lookup case resolves to a null profile, which shows as
+        // nothing rather than as a zero the member may not have.
         final analytics = snapshot.data?.analytics;
-        final stars = analytics?.starsByLanguage(widget.langCode);
-        final level = analytics?.levelByLanguage(widget.langCode);
-
-        // A member with nothing to show in this language — including the
-        // failed-lookup case, which resolves to a null profile.
-        if ((stars == null || stars == 0) && level == null) {
-          return const SizedBox.shrink();
-        }
-
-        // The count is a bare number in a ~100px card, so what it MEANS is
-        // carried by the tooltip and the accessible name rather than a label
-        // there is no room for. See quests.instructions.md.
-        final language =
-            PLanguageStore.byLangCode(widget.langCode)?.displayName ??
-            widget.langCode.toUpperCase();
-
-        // Scaled down rather than ellipsized: at large OS text sizes a count
-        // clipped to "…" tells the reader nothing, and this row sits in a
-        // fixed-height box it cannot grow.
-        return FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            // Wider than the 2.0 inside each icon-and-count pair, so the two
-            // pairs read as two values and not as one run of four things
-            // (#8918). The card has room: the widest real row, two digits on
-            // both counts, still comes in well under its 100px.
-            spacing: 6.0,
-            children: [
-              if (stars != null && stars > 0)
-                Tooltip(
-                  message: L10n.of(context).starsEarnedInLanguage(language),
-                  child: Semantics(
-                    // The count sits outside the translated phrase: a star
-                    // total is a bare number in every language, and keeping it
-                    // out avoids a plural form the phrase does not need.
-                    label:
-                        "${L10n.of(context).starsEarnedInLanguage(language)}: "
-                        "$stars",
-                    child: ExcludeSemantics(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        spacing: 2.0,
-                        children: [
-                          Icon(
-                            Icons.star,
-                            size: widget.iconSize,
-                            color: Theme.of(context).pangea.goldGraphic,
-                          ),
-                          Text('$stars', style: widget.textStyle),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              if (level != null)
-                LevelRibbon(
-                  level: level,
-                  // Sized to read as the same mark as the star beside it, not
-                  // to the same nominal number — see [heightForIconSize].
-                  height: LevelRibbon.heightForIconSize(widget.iconSize),
-                  // The star total's shape, one pair beside the other.
-                  numberPlacement: LevelNumberPlacement.trailing,
-                  numberStyle: widget.textStyle,
-                ),
-            ],
-          ),
+        return MemberStatsRow(
+          stars: analytics?.starsByLanguage(widget.langCode),
+          level: analytics?.levelByLanguage(widget.langCode),
+          langCode: widget.langCode,
+          textStyle: widget.textStyle,
+          iconSize: widget.iconSize,
         );
       },
+    );
+  }
+}
+
+/// The two numbers as a row: a star and its count, then the level shield and
+/// its number, each carrying its meaning in a tooltip and its accessible name.
+/// Draws nothing for a member with neither number, unless [showZeroStars]
+/// asks for the zero — a leaderboard row with no count would read as broken,
+/// where a card just has nothing to say.
+class MemberStatsRow extends StatelessWidget {
+  final int? stars;
+  final int? level;
+
+  /// The language the numbers are in, as a language code.
+  final String langCode;
+  final TextStyle? textStyle;
+  final double iconSize;
+  final bool showZeroStars;
+
+  const MemberStatsRow({
+    required this.stars,
+    required this.level,
+    required this.langCode,
+    this.textStyle,
+    this.iconSize = 16.0,
+    this.showZeroStars = false,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final stars = this.stars ?? 0;
+    final showStars = stars > 0 || showZeroStars;
+    if (!showStars && level == null) return const SizedBox.shrink();
+
+    // The count is a bare number, so what it MEANS is carried by the tooltip
+    // and the accessible name rather than a label there is no room for. See
+    // quests.instructions.md.
+    final language =
+        PLanguageStore.byLangCode(langCode)?.displayName ??
+        langCode.toUpperCase();
+
+    // Scaled down rather than ellipsized: at large OS text sizes a count
+    // clipped to "…" tells the reader nothing, and this row sits in a
+    // fixed-height box it cannot grow.
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        // Wider than the 2.0 inside each icon-and-count pair, so the two
+        // pairs read as two values and not as one run of four things
+        // (#8918). The card has room: the widest real row, two digits on
+        // both counts, still comes in well under its 100px.
+        spacing: 6.0,
+        children: [
+          if (showStars)
+            Tooltip(
+              message: L10n.of(context).starsEarnedInLanguage(language),
+              child: Semantics(
+                // The count sits outside the translated phrase: a star
+                // total is a bare number in every language, and keeping it
+                // out avoids a plural form the phrase does not need.
+                label:
+                    "${L10n.of(context).starsEarnedInLanguage(language)}: "
+                    "$stars",
+                child: ExcludeSemantics(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    spacing: 2.0,
+                    children: [
+                      Icon(
+                        Icons.star,
+                        size: iconSize,
+                        color: Theme.of(context).pangea.goldGraphic,
+                      ),
+                      Text('$stars', style: textStyle),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          if (level != null)
+            LevelRibbon(
+              level: level,
+              // Sized to read as the same mark as the star beside it, not
+              // to the same nominal number — see [heightForIconSize].
+              height: LevelRibbon.heightForIconSize(iconSize),
+              // The star total's shape, one pair beside the other.
+              numberPlacement: LevelNumberPlacement.trailing,
+              numberStyle: textStyle,
+            ),
+        ],
+      ),
     );
   }
 }

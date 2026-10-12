@@ -8,6 +8,7 @@ import 'package:fluffychat/features/analytics_data/widgets/analytics_future_buil
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_and_tags.dart';
@@ -15,6 +16,7 @@ import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_practice/dotted_border_painter.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -148,8 +150,8 @@ class MorphFeatureBox extends StatelessWidget {
                 Flexible(
                   child: Wrap(
                     alignment: WrapAlignment.center,
-                    spacing: 16.0,
-                    runSpacing: 16.0,
+                    spacing: 12.0,
+                    runSpacing: 12.0,
                     children: [
                       for (var i = 0; i < tags.length; i++)
                         MorphTagChip(
@@ -181,19 +183,39 @@ class MorphTagChip extends StatelessWidget {
   final MorphFeaturesEnum feature;
   final GrammarTag tag;
   final ConstructUses? constructAnalytics;
-  final VoidCallback? onTap;
+  final VoidCallback onTap;
 
   /// This chip's id in the enclosing [RovingFocusGroup]: the grammar page's
   /// chips are one Tab stop, with the arrow keys moving between them across
   /// the feature rows (#8935). Null for a chip outside a group.
   final String? rovingId;
 
+  /// Tighter than [AppConfig.borderRadius], which on a chip this short is a
+  /// full pill (#9149).
+  static const double cornerRadius = 12.0;
+  static const double minHeight = 40.0;
+  static const double iconBadgeSize = 28.0;
+
+  /// The stage colour as a wash, the same low alpha the vocab filter's
+  /// selected ring uses, and the stronger alpha of the edge around it.
+  static const int washAlpha = 50;
+  static const int borderAlpha = 140;
+
+  /// A locked chip's label and lock: the muted ink pulled a fifth of the way
+  /// to the surface, so a locked chip sits behind the unlocked ones and
+  /// still clears 4.5:1 in both themes.
+  static Color lockedInk(ThemeData theme) => Color.lerp(
+    theme.colorScheme.onSurfaceVariant,
+    theme.colorScheme.surface,
+    0.2,
+  )!;
+
   const MorphTagChip({
     super.key,
     required this.feature,
     required this.tag,
     required this.constructAnalytics,
-    this.onTap,
+    required this.onTap,
     this.rovingId,
   });
 
@@ -209,74 +231,81 @@ class MorphTagChip extends StatelessWidget {
         constructAnalytics != null && constructAnalytics!.numTotalUses > 0 ||
         Matrix.of(context).client.userID == Environment.supportUserId;
 
-    return Material(
-      type: MaterialType.transparency,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-        focusNode: focusNode,
-        onTap: onTap,
-        child: Opacity(
-          opacity: unlocked ? 1.0 : 0.3,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(32.0),
-              gradient: unlocked
-                  ? LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      // The stage colour as a wash, the same low alpha the
-                      // vocab filter's selected ring uses.
-                      colors: <Color>[
-                        (constructAnalytics?.lemmaCategory ??
-                                ConstructLevelEnum.seeds)
-                            .color(context)
-                            .withAlpha(50),
-                        Colors.transparent,
-                      ],
-                    )
-                  : null,
-              color: unlocked ? null : theme.disabledColor,
-            ),
-            padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              spacing: 8.0,
-              children: [
-                unlocked
-                    ? Container(
-                        width: 28.0,
-                        height: 28.0,
-                        decoration: BoxDecoration(
-                          color: theme.colorScheme.surface.withAlpha(180),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        padding: const EdgeInsets.all(4),
-                        child: MorphIcon(
-                          feature: feature,
-                          tag: tag.value,
-                          size: Size(16.0, 16.0),
-                        ),
-                      )
-                    : SizedBox(
-                        height: 28.0,
-                        width: 28.0,
-                        child: Icon(Icons.lock, color: Colors.white),
-                      ),
+    final stageColor =
+        (constructAnalytics?.lemmaCategory ?? ConstructLevelEnum.seeds).color(
+          context,
+        );
+    final ink = unlocked ? theme.colorScheme.onSurface : lockedInk(theme);
+    final radius = BorderRadius.circular(cornerRadius);
+    final shape = RoundedRectangleBorder(borderRadius: radius);
 
-                Flexible(
-                  child: Text(
-                    tag.title,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: theme.brightness == Brightness.dark
-                          ? Colors.white
-                          : Colors.black,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+    // The fill and edge belong to the Material, so the InkWell's hover and
+    // press ink paints over them instead of under an opaque child.
+    return Material(
+      color: unlocked ? stageColor.withAlpha(washAlpha) : Colors.transparent,
+      shape: unlocked
+          ? shape.copyWith(
+              side: BorderSide(color: stageColor.withAlpha(borderAlpha)),
+            )
+          : shape,
+      child: FocusRingTapTarget(
+        onTap: onTap,
+        focusNode: focusNode,
+        shape: shape,
+        // The seeds wash is gold too, so the gold ring goes around the chip.
+        ringStrokeAlign: BorderSide.strokeAlignOutside,
+        child: CustomPaint(
+          // Locked is an empty slot: no fill, a dashed edge.
+          painter: unlocked
+              ? null
+              : DottedBorderPainter(
+                  color: theme.colorScheme.outline,
+                  strokeWidth: 1.0,
+                  borderRadius: radius,
                 ),
-              ],
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(minHeight: minHeight),
+            child: Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(
+                6.0,
+                6.0,
+                12.0,
+                6.0,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                spacing: 8.0,
+                children: [
+                  unlocked
+                      ? Container(
+                          width: iconBadgeSize,
+                          height: iconBadgeSize,
+                          decoration: BoxDecoration(
+                            color: theme.colorScheme.surface,
+                            shape: BoxShape.circle,
+                          ),
+                          padding: const EdgeInsets.all(6.0),
+                          child: MorphIcon(
+                            feature: feature,
+                            tag: tag.value,
+                            size: const Size(16.0, 16.0),
+                          ),
+                        )
+                      : SizedBox.square(
+                          dimension: iconBadgeSize,
+                          child: Icon(Icons.lock, color: ink, size: 20.0),
+                        ),
+
+                  Flexible(
+                    child: Text(
+                      tag.title,
+                      style: TextStyle(fontWeight: FontWeight.bold, color: ink),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

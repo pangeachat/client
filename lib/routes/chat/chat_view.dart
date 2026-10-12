@@ -14,6 +14,7 @@ import 'package:fluffychat/features/activity_sessions/activity_room_extension.da
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/extensions/unread_rooms_client_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_finished_status_message.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_card.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
@@ -202,7 +203,9 @@ class ChatView extends StatelessWidget {
                           child: SizedBox(
                             height: kToolbarHeight,
                             child: UnreadRoomsBadge(
-                              filter: (r) => r.id != controller.roomId,
+                              rooms: Matrix.of(context).client.unreadRooms
+                                  .where((r) => r.id != controller.roomId)
+                                  .toList(),
                               badgePosition: BadgePosition.topEnd(
                                 end: 8,
                                 top: 9,

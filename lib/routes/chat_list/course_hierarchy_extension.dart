@@ -47,8 +47,11 @@ extension CourseHierarchyExtension on Room {
         (spaceChildSuggestionStatus[child.roomId] ?? true);
   }
 
-  /// Whether this course has a group chat the user can join but has not.
-  Future<bool> hasJoinableGroupChat() => hierarchyChildren().any(
-    (child) => isJoinableChild(child) && !child.isActivitySession,
-  );
+  /// Up to [limit] of this course's group chats the user can join but has
+  /// not, in hierarchy order. Paging stops once [limit] are found.
+  Future<List<SpaceRoomsChunk$2>> joinableGroupChats({required int limit}) =>
+      hierarchyChildren()
+          .where((child) => isJoinableChild(child) && !child.isActivitySession)
+          .take(limit)
+          .toList();
 }

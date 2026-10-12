@@ -435,8 +435,7 @@ class InputBar extends StatelessWidget {
     if (controller!.text.isEmpty) return;
 
     final baseOffset = controller!.selection.baseOffset;
-    final adjustedOffset = _adjustOffsetForNormalization(baseOffset);
-    final match = choreographer.igcController.getMatchByOffset(adjustedOffset);
+    final match = choreographer.igcController.getMatchAtFieldOffset(baseOffset);
     if (match == null) return;
     showMatch(match);
 
@@ -453,19 +452,6 @@ class InputBar extends StatelessWidget {
     return false;
   }
 
-  int _adjustOffsetForNormalization(int baseOffset) {
-    int adjustedOffset = baseOffset;
-    final corrections =
-        choreographer.igcController.closedNormalizationCorrections;
-
-    for (final correction in corrections) {
-      final match = correction.updatedMatch.match;
-      if (match.offset < adjustedOffset && match.length > 0) {
-        adjustedOffset += (match.length - 1);
-      }
-    }
-    return adjustedOffset;
-  }
   // Pangea#
 
   @override

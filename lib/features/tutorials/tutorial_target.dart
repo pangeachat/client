@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Registers [child] as a tutorial spotlight target, so a step can point at it
@@ -32,6 +34,57 @@ class TutorialTarget extends StatefulWidget {
     this.onMounted,
     super.key,
   });
+
+  /// Brings the target claiming [targetId] fully into view in whatever
+  /// scrollable hosts it, before a step measures it. Nothing can scroll once
+  /// the tutorial is up — a tap step absorbs every pointer, and an armed
+  /// step's spotlight passes taps but not scrolls — so a target that starts
+  /// below the fold stays there for the whole run (#9029). End first, then
+  /// start: a target taller than the viewport ends with its top edge showing,
+  /// which is the slice the card anchors to. Each pass is a no-op for a target
+  /// already fully visible, and the whole thing is a no-op for one that is not
+  /// mounted or not inside a scrollable.
+  static Future<void> ensureVisible(String targetId) async {
+    for (final policy in const [
+      ScrollPositionAlignmentPolicy.keepVisibleAtEnd,
+      ScrollPositionAlignmentPolicy.keepVisibleAtStart,
+    ]) {
+      final targetContext = MatrixState.pAnyState
+          .layerLinkAndKey(targetId)
+          .key
+          .currentContext;
+      if (targetContext == null || !targetContext.mounted) return;
+      await Scrollable.ensureVisible(
+        targetContext,
+        alignmentPolicy: policy,
+        duration: FluffyThemes.animationDuration,
+      );
+    }
+  }
+
+  /// The target's box on screen, cut down to the slice its nearest scroll
+  /// viewport shows. Measured whole, a list running below the fold punched
+  /// its hole through the controls under the viewport and off the sheet
+  /// (#9029). A target with no viewport above it measures whole. A slice that
+  /// is entirely scrolled away collapses to a point on the viewport's edge
+  /// rather than disappearing: scrolled out of view is not gone, and a missing
+  /// rect reads to the overlay as "every target vanished".
+  static Rect visibleRect(RenderBox box) {
+    final rect = box.localToGlobal(Offset.zero) & box.size;
+    // Typed as the root class so the `is` check promotes: every Flutter
+    // viewport is a RenderBox, but the mixin itself is not one.
+    final RenderObject? viewport = RenderAbstractViewport.maybeOf(box);
+    if (viewport is! RenderBox) return rect;
+    final viewportRect = viewport.localToGlobal(Offset.zero) & viewport.size;
+    final clipped = rect.intersect(viewportRect);
+    if (!clipped.isEmpty) return clipped;
+    return Rect.fromLTWH(
+      clipped.left.clamp(viewportRect.left, viewportRect.right).toDouble(),
+      clipped.top.clamp(viewportRect.top, viewportRect.bottom).toDouble(),
+      0.0,
+      0.0,
+    );
+  }
 
   @override
   State<TutorialTarget> createState() => _TutorialTargetState();

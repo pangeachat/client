@@ -393,7 +393,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
     if (_autoLaunchNextExercise(exercise)) {
       await Future.delayed(
-        const Duration(milliseconds: 1000),
+        AnalyticsPracticeConstants.correctAnswerHold,
         startNextExercise,
       );
     }

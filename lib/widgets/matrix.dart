@@ -18,6 +18,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_auto_save_service.dart';
+import 'package:fluffychat/features/activity_sessions/activity_roles_state_repair.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
@@ -122,6 +123,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   final Map<String, AnalyticsDataService> _analyticsServices = {};
   final Map<String, ActivityAutoSaveService> _activityAutoSaveServices = {};
+  final Map<String, ActivityRolesStateRepair> _activityRolesStateRepairs = {};
   final Map<String, CallService> _callServices = {};
 
   /// Accounts whose services are being torn down, mapped to the in-flight
@@ -970,6 +972,8 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       );
       _activityAutoSaveServices[name]!.start();
     }
+    _activityRolesStateRepairs[name] ??= ActivityRolesStateRepair(client: c)
+      ..start();
     // Pangea#
   }
 
@@ -1041,6 +1045,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       // Pangea#
       try {
         _activityAutoSaveServices[clientName]?.dispose();
+        _activityRolesStateRepairs[clientName]?.dispose();
         // The CALL first, and not just the service. Disposing the service
         // retracts this account's MatrixRTC membership, which is bookkeeping;
         // the LiveKit connection, the microphone, the recorder and Android's
@@ -1060,6 +1065,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         await disposingAnalytics?.dispose();
       } finally {
         _activityAutoSaveServices.remove(clientName);
+        _activityRolesStateRepairs.remove(clientName);
         // #Pangea
         // Only if it is still the service this teardown disposed. Disposal
         // awaits network work, and a new account can claim the same name in
@@ -1197,15 +1203,8 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     if (uri.fragment.isNotEmpty) {
       return uri.fragment.startsWith('/') ? uri.fragment : '/${uri.fragment}';
     }
-    final query = uri.queryParameters;
-    final queryString = query.entries
-        .map((e) => '${e.key}=${e.value}')
-        .join('&');
-    var path = '/${uri.pathSegments.join('/')}';
-    if (queryString.isNotEmpty) {
-      path = '$path?$queryString';
-    }
-    return path;
+    final path = uri.path.isEmpty ? '/' : uri.path;
+    return uri.hasQuery ? '$path?${uri.query}' : path;
   }
 
   /// Whether an `app_links` emission should be navigated to.

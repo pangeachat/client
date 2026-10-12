@@ -22,7 +22,7 @@ enum InstructionsEnum {
   emptyChatWarning,
   activityStatsMenu,
   chatParticipantTooltip,
-  courseParticipantTooltip,
+  courseLeaderboardTooltip,
   noSavedActivitiesYet,
   setLemmaEmoji,
   disableLanguageTools,
@@ -62,7 +62,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.morphAnalyticsList:
       case InstructionsEnum.activityStatsMenu:
       case InstructionsEnum.chatParticipantTooltip:
-      case InstructionsEnum.courseParticipantTooltip:
+      case InstructionsEnum.courseLeaderboardTooltip:
       case InstructionsEnum.activityAnalyticsList:
       case InstructionsEnum.levelAnalytics:
       case InstructionsEnum.noSavedActivitiesYet:
@@ -125,8 +125,8 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return l10n.activityStatsButtonInstruction;
       case InstructionsEnum.chatParticipantTooltip:
         return l10n.chatParticipantTooltip;
-      case InstructionsEnum.courseParticipantTooltip:
-        return l10n.courseParticipantTooltip;
+      case InstructionsEnum.courseLeaderboardTooltip:
+        return l10n.courseLeaderboardTooltip;
       case InstructionsEnum.levelAnalytics:
         return l10n.levelInfoTooltip;
       case InstructionsEnum.noSavedActivitiesYet:

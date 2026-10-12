@@ -2,7 +2,6 @@
 library;
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:http/http.dart' show StreamedResponse;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
@@ -10,6 +9,7 @@ import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/knock_with_code_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/join_codes/request_room_code_extension.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/leave_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -154,19 +154,37 @@ void main() {
       expect(again.roomIds, isNot(contains(roomId)));
     });
 
-    test('an unknown code is a raw 400, not a silent empty 200', () async {
+    test('an unknown code is a typed 404, not a silent empty 200', () async {
       Object? thrown;
       try {
-        await clientB.knockWithCode('contract-no-such-code');
+        // Well-formed (7 alphanumerics, a digit) so it reaches the lookup; a
+        // malformed code is rejected earlier with a 400.
+        await clientB.knockWithCode('zz9zz9z');
       } catch (e) {
         thrown = e;
       }
       expect(
         thrown,
-        isA<StreamedResponse>().having((r) => r.statusCode, 'status', 400),
+        isA<PangeaHttpException>()
+            .having((e) => e.statusCode, 'status', 404)
+            .having((e) => e.detail, 'errcode', 'ORG.PANGEA.CODE_NOT_FOUND'),
         reason:
-            'the join flow treats a non-200 as "code not found"; pin the '
-            'shape so a change breaks loudly',
+            'the join flow reads the status off the typed failure as "code '
+            'not found" (#8693); pin the shape so a change breaks loudly',
+      );
+    });
+
+    test('text that is not a code is a 400 M_INVALID_PARAM', () async {
+      await expectLater(
+        clientB.knockWithCode('contract-no-such-code'),
+        throwsA(
+          isA<PangeaHttpException>()
+              .having((e) => e.statusCode, 'status', 400)
+              .having((e) => e.detail, 'errcode', 'M_INVALID_PARAM'),
+        ),
+        reason:
+            'the errcode is what lets the join flow report a learner typing '
+            'a course name at info rather than as a client bug (#9292)',
       );
     });
 
@@ -364,8 +382,8 @@ void main() {
   });
 
   group('space hierarchy', () {
-    test('space-child attach mechanics (single-parent detach is a known '
-        'gap)', () async {
+    test('space-child attach mechanics (addToSpace detaches the old '
+        'parent)', () async {
       final (space1, _) = await makeCourse(suffix: 'parent1');
       final (space2, _) = await makeCourse(suffix: 'parent2');
       final chatId = await clientA.createPangeaGroupChat(
@@ -401,17 +419,14 @@ void main() {
 
       var s1 = await ContractHarness.serverState(clientA, space1);
       var s2 = await ContractHarness.serverState(clientA, space2);
-      // KNOWN GAP, pinned deliberately: addToSpace's detach loop reads
-      // `pangeaSpaceParents` on the DESTINATION space, not on the child, so
-      // the old parent keeps a LIVE child link. When the bug is fixed this
-      // via list becomes empty — flip the matcher to isEmpty/isNull then
-      // (follow-up task from client#8565).
+      // Single-parent: moving the chat into space2 must leave space1's
+      // child link detached (client#8570).
       expect(
         via(s1),
-        isNotEmpty,
+        anyOf(isNull, isEmpty),
         reason:
-            'documents the latent single-parent bug — if this fails, the '
-            'detach was fixed: flip this assertion',
+            'addToSpace must detach the chat from its previous parent — a '
+            'live via here means the chat is listed in both spaces',
       );
       expect(via(s2), isNotEmpty);
 

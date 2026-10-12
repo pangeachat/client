@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:csv/csv.dart';
-import 'package:excel/excel.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
@@ -12,6 +11,7 @@ import 'package:fluffychat/features/analytics_data/analytics_settings_extension.
 import 'package:fluffychat/features/download/download_dialog.dart';
 import 'package:fluffychat/features/download/download_file_util.dart';
 import 'package:fluffychat/features/download/download_type_enum.dart';
+import 'package:fluffychat/features/download/xlsx.dart' deferred as xlsx;
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -131,7 +131,7 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
     List<SpaceAnalyticsSummaryModel> summaries,
   ) async {
     final content = _downloadType == DownloadType.xlsx
-        ? _getExcelFileContent(summaries)
+        ? await _getExcelFileContent(summaries)
         : _getCSVFileContent(summaries);
 
     final fileName =
@@ -174,49 +174,32 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
     return summary;
   }
 
-  List<CellValue> _formatExcelRow(SpaceAnalyticsSummaryModel summary) {
-    final List<CellValue> row = [];
+  List<Object> _formatExcelRow(SpaceAnalyticsSummaryModel summary) {
+    final List<Object> row = [];
     for (int i = 0; i < SpaceAnalyticsSummaryEnum.values.length; i++) {
       final key = SpaceAnalyticsSummaryEnum.values[i];
       final value = summary.getValue(key, context);
-      if (value is int) {
-        row.add(IntCellValue(value));
-      } else if (value is String) {
-        row.add(TextCellValue(value));
+      if (value is int || value is String) {
+        row.add(value);
       } else if (value is List<String>) {
-        row.add(TextCellValue(value.join(", ")));
+        row.add(value.join(", "));
       }
     }
     return row;
   }
 
-  List<int> _getExcelFileContent(List<SpaceAnalyticsSummaryModel> summaries) {
-    final excel = Excel.createExcel();
-    final sheet = excel['Sheet1'];
-
-    for (final key in SpaceAnalyticsSummaryEnum.values) {
-      sheet
-          .cell(CellIndex.indexByColumnRow(rowIndex: 0, columnIndex: key.index))
-          .value = TextCellValue(
-        key.header(L10n.of(context)),
-      );
-    }
-
-    final rows = summaries.map((summary) => _formatExcelRow(summary)).toList();
-
-    for (int i = 0; i < rows.length; i++) {
-      final row = rows[i];
-      for (int j = 0; j < row.length; j++) {
-        final cell = row[j];
-        sheet
-                .cell(
-                  CellIndex.indexByColumnRow(rowIndex: i + 2, columnIndex: j),
-                )
-                .value =
-            cell;
-      }
-    }
-    return excel.encode() ?? [];
+  Future<List<int>> _getExcelFileContent(
+    List<SpaceAnalyticsSummaryModel> summaries,
+  ) async {
+    final rows = [
+      [
+        for (final key in SpaceAnalyticsSummaryEnum.values)
+          key.header(L10n.of(context)),
+      ],
+      ...summaries.map(_formatExcelRow),
+    ];
+    await xlsx.loadLibrary();
+    return xlsx.encodeXlsx({'Sheet1': rows});
   }
 
   String _getCSVFileContent(List<SpaceAnalyticsSummaryModel> summaries) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
-import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_video_close_button.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_video_player.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_youtube_player.dart';
 
@@ -43,9 +43,7 @@ class ActivityVideoScreen extends StatelessWidget {
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
         elevation: 0,
-        leading: IconButton(
-          tooltip: L10n.of(context).close,
-          icon: const Icon(Icons.close),
+        leading: ActivityVideoCloseButton(
           onPressed: () => Navigator.of(context).maybePop(),
         ),
       ),

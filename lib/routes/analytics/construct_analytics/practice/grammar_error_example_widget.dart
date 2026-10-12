@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
 
 class GrammarErrorExampleWidget extends StatelessWidget {
@@ -96,30 +97,33 @@ class GrammarErrorExampleWidget extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          RichText(
-            textScaler: MediaQuery.textScalerOf(context),
-            text: TextSpan(
-              style: textStyle?.copyWith(
-                color: Theme.of(context).colorScheme.onPrimary,
-              ),
-              children: [
-                if (trimmedBefore) const TextSpan(text: '…'),
-                if (before.isNotEmpty) TextSpan(text: before),
-                WidgetSpan(
-                  child: Container(
-                    height: 4.0,
-                    width: (errorLength * 8).toDouble(),
-                    padding: const EdgeInsets.only(bottom: 2.0),
-                    decoration: BoxDecoration(
-                      color: Theme.of(
-                        context,
-                      ).colorScheme.onPrimary.withAlpha(200),
+          LanguageSemantics(
+            langCode: analyticsPracticeExercise.langCode,
+            child: RichText(
+              textScaler: MediaQuery.textScalerOf(context),
+              text: TextSpan(
+                style: textStyle?.copyWith(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+                children: [
+                  if (trimmedBefore) const TextSpan(text: '…'),
+                  if (before.isNotEmpty) TextSpan(text: before),
+                  WidgetSpan(
+                    child: Container(
+                      height: 4.0,
+                      width: (errorLength * 8).toDouble(),
+                      padding: const EdgeInsets.only(bottom: 2.0),
+                      decoration: BoxDecoration(
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.onPrimary.withAlpha(200),
+                      ),
                     ),
                   ),
-                ),
-                if (after.isNotEmpty) TextSpan(text: after),
-                if (trimmedAfter) const TextSpan(text: '…'),
-              ],
+                  if (after.isNotEmpty) TextSpan(text: after),
+                  if (trimmedAfter) const TextSpan(text: '…'),
+                ],
+              ),
             ),
           ),
           AnimatedSize(

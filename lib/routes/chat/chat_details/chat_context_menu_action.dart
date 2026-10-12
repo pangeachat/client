@@ -10,6 +10,7 @@ import 'package:fluffychat/features/activity_sessions/activity_room_extension.da
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/course_image_builder.dart';
 import 'package:fluffychat/pangea/extensions/leave_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_room_extension.dart';
@@ -210,11 +211,14 @@ List<PopupMenuEntry<ChatContextAction>> chatContextMenuItems(
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Avatar(
-              mxContent: space!.avatar,
-              size: Avatar.defaultSize / 2,
-              name: space.getLocalizedDisplayname(),
-              userId: space.directChatMatrixID,
+            CourseImageBuilder.room(
+              room: space!,
+              builder: (context, image) => Avatar(
+                mxContent: image,
+                size: Avatar.defaultSize / 2,
+                name: space.getLocalizedDisplayname(),
+                userId: space.directChatMatrixID,
+              ),
             ),
             const SizedBox(width: 12),
             Expanded(

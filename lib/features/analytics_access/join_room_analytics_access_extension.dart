@@ -166,6 +166,11 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
         return;
       }
 
+      // The join-time grant is the course toggle's route. On a course with
+      // the toggle off, access is asked for by an instructor and allowed by
+      // the student instead, and the server refuses this grant (#9270).
+      if (!room.requireAnalyticsAccess) return;
+
       final courseId = room.coursePlan?.uuid;
       if (courseId == null) {
         Logs().w("Room without courseID in _grantAnalyticsAccess");

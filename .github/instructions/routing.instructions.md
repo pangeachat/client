@@ -98,26 +98,7 @@ The rules that keep the grammar legible:
   id in `?c=`; an activity's id (and, when resuming, its bound session room) ride
   in the activity token's own param.
 
-**Compatibility.** The parser normalizes a registry master/detail pair to
-master-first whatever order a link carries (the
-[panel registry](../../lib/features/navigation/panel_registry.dart) knows which
-type is whose master) and keeps the given order for pairs the registry does not
-relate. That is the whole compatibility story: **the client is the only
-producer of its URLs, so retired shapes and spellings are simply deleted, not
-redirected** — old bookmarks and stale tabs from earlier releases are not
-maintained (a deliberate call at current scale, #7467). Three inbound URL
-contracts arrive from outside the client. Two are bare single-segment links —
-the shareable standalone activity link (`/<uuid>`) and the course join link
-(`/<code>`, a seven-character join code) — which
-[`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) folds
-into their `activity` / `addcourse:private/<code>` tokens before render. The
-third, the DM invite link (`/invite_user/<id>`), resolves through its own route
-rather than a fold — a redirect-only route that lands on the world map with
-the chat list open, from where the shell opens the DM and lands the user in it
-(#8436) — see
-[Ids in URLs](#ids-in-urls). All are just app URLs the
-SPA serves directly; the older `/join_with_link` and `/join` join-link
-spellings are retired.
+**Compatibility.** The parser normalizes a registry master/detail pair to master-first whatever order a link carries (the [panel registry](../../lib/features/navigation/panel_registry.dart) knows which type is whose master) and keeps the given order for pairs the registry does not relate. That is the whole compatibility story: **the client is the only producer of its URLs, so retired shapes and spellings are simply deleted, not redirected** — old bookmarks and stale tabs from earlier releases are not maintained (a deliberate call at current scale, #7467). Four inbound URL contracts arrive from outside the client. Two are bare single-segment links — the shareable standalone activity link (`/<uuid>`) and the course join link (`/<code>`, a seven-character join code) — which [`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) folds into their `activity` / `addcourse:private/<code>` tokens before render. The third, the DM invite link (`/invite_user/<id>`), resolves through its own route rather than a fold — a redirect-only route that lands on the world map with the chat list open, from where the shell opens the DM and lands the user in it (#8436) — see [Ids in URLs](#ids-in-urls). The fourth is Synapse's notification/invite email link (`/room/<roomId>/<eventId>`, also `/#/room/…`), folded by `LegacyRedirects` into a room token with its jump-to-message event. Root fragments are handled at the router on web and unwrapped by `incomingUriToPath` on native. Unmatched routes recover through the world route so its auth guard and shell still run. These are app URLs the SPA serves directly; the older `/join_with_link` and `/join` join-link spellings are retired.
 
 ## Ids in URLs
 
@@ -638,7 +619,7 @@ yet they drop to full-width buttons in the body as the empty state.
 
 **Courses are ordered by recent activity.** A course's activity is the newest event in the course space itself or in any of its chats and activity sessions the learner has joined. This is the same timestamp the chat list sorts by. The course space's own timeline holds little beyond setup, so the space alone is not enough. The most recently active course comes first, and the order updates live as activity arrives: sending a message in one of a course's chats moves that course above every other joined course. Pending invites have no activity yet, so they lead the list, ordered by name. Courses with tied activity are also ordered by name (#9004).
 
-**The Courses hub filters by role — only when the learner holds both.** A learner who both administers courses and takes courses sees a row of filter pills under the header: **All**, **Teaching** (courses where they hold admin power, ≥ 100 — the same signal as the knock badge; there is no separate teacher role) and **Learning** (every other joined course). The pills look and behave like the chat list's pills: one is selected at a time, and the hub opens on All. Pending invites show under All only, because an invite's role is unknown until join. A learner who holds only one role sees no pills. A filter never regroups the list: the courses it selects show in the one activity order above (#9207, replacing #8425's section headers). The tile of every course the learner administers carries an **Admin** label in its bottom-right corner, the same label a course page's participant cards wear.
+**The Courses hub filters by role — only when the learner holds both.** A learner who both administers courses and takes courses sees a row of filter pills under the header: **All**, **Teaching** (courses where they hold admin power, ≥ 100 — the same signal as the knock badge; there is no separate teacher role) and **Learning** (every other joined course). The pills look and behave like the chat list's pills: one is selected at a time, and the hub opens on All. Pending invites show under All only, because an invite's role is unknown until join. A learner who holds only one role sees no pills. A filter never regroups the list: the courses it selects show in the one activity order above (#9207, replacing #8425's section headers). The tile of every course the learner administers carries an **Admin** label in its bottom-right corner, the same label the course page's Leaderboard puts on an admin.
 
 **The Courses hub has a search bar once the learner has joined more than four courses.** It sits under the header, above the pills. The query matches each course's title, its description, and its CEFR level as the tile shows it in the app language (for example "Novice Mid (A1)"), ignoring capitalization and diacritics. Title matches come first, then description matches, then level matches, each group in activity order. Search and the role filter combine. Applies on web and narrow alike; content-fit counts the search and pill rows.
 

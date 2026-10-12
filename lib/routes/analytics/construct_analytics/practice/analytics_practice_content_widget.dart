@@ -42,7 +42,10 @@ class AnalyticsPracticeExerciseContent extends StatelessWidget {
         ),
       ),
       MorphCategoryPracticeExerciseModel() => Center(
-        child: AnalyticsPracticeExerciseExampleMessage(exampleMessage),
+        child: AnalyticsPracticeExerciseExampleMessage(
+          exampleMessage,
+          langCode: exercise.langCode,
+        ),
       ),
       VocabAudioPracticeExerciseModel() => SizedBox(
         height: 60.0,
@@ -72,7 +75,10 @@ class AnalyticsPracticeExerciseContent extends StatelessWidget {
               context,
             ).factorAt(AppConfig.messageFontSize),
         child: Center(
-          child: AnalyticsPracticeExerciseExampleMessage(exampleMessage),
+          child: AnalyticsPracticeExerciseExampleMessage(
+            exampleMessage,
+            langCode: exercise.langCode,
+          ),
         ),
       ),
     };

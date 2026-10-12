@@ -32,7 +32,7 @@ class _StubCourseTileContent extends AddCourseTileContent {
   Future<Event?>? get unreadCoursePingEvent => Future.value(null);
 
   @override
-  Set<String?> get courseChildrenIds => const {};
+  List<Room> get unreadRooms => const [];
 }
 
 void main() {

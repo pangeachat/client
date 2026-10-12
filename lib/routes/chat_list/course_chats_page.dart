@@ -8,7 +8,6 @@ import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
@@ -21,6 +20,7 @@ import 'package:fluffychat/routes/chat_list/course_chats_view.dart';
 import 'package:fluffychat/routes/chat_list/course_hierarchy_extension.dart';
 import 'package:fluffychat/routes/chat_list/extended_space_rooms_chunk.dart';
 import 'package:fluffychat/routes/chat_list/hierarchy_sync_update_extension.dart';
+import 'package:fluffychat/routes/chat_list/unjoined_chat_list_item.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
@@ -28,7 +28,6 @@ import 'package:fluffychat/widgets/adaptive_dialogs/invite_dialog.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/widgets/public_room_bottom_sheet.dart';
 
 class CourseChats extends StatefulWidget {
   final Client client;
@@ -467,20 +466,8 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
 
   Future<void> joinChildRoom(SpaceRoomsChunk$2 item) async {
     final space = this.space;
-    final joinResp = await PublicRoomBottomSheet.show(
-      context: context,
-      chunk: item,
-      via: space?.spaceChildren
-          .firstWhereOrNull((child) => child.roomId == item.roomId)
-          ?.via,
-    );
-    if (joinResp == null) return;
-
-    final room = widget.client.getRoomById(joinResp.roomId);
-    if (room == null) return;
-
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
-    final joinedRoomId = await handler.handle(context);
+    if (space == null) return;
+    final joinedRoomId = await UnjoinedChatListItem.join(context, space, item);
     if (mounted && joinedRoomId != null) {
       setState(() {
         _discoveredChildren?.remove(item);

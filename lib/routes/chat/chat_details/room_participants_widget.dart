@@ -12,9 +12,9 @@ import 'package:fluffychat/routes/chat/chat_details/participant_card.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 
-/// The full participant list: every member as a [ParticipantCard] in a
-/// centered wrap, with a trailing invite tile. The course page's Participants
-/// section renders a single-line preview instead — CourseParticipantsPreview.
+/// A chat's full participant list: every member as a [ParticipantCard] in a
+/// centered wrap, with a trailing invite tile. A course ranks its members
+/// instead — CourseLeaderboardPage.
 class RoomParticipantsSection extends StatelessWidget {
   final Room room;
 
@@ -106,7 +106,7 @@ class _InviteTile extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             ),
             padding: const EdgeInsets.symmetric(vertical: 12.0),
-            width: ParticipantCard.width,
+            width: ParticipantCard.defaultWidth,
             child: Semantics(
               container: true,
               child: Column(
