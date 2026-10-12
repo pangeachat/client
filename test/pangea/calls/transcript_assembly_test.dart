@@ -4358,4 +4358,56 @@ void main() {
       expect(_halfFor(transcript, alice).issue, HalfIssue.notSubscribed);
     });
   });
+
+  group('the half an unsubscribed device really writes (#8792)', () {
+    // Captured on the local stack from a real web call: the callee had no
+    // subscription, its one chunk was refused, and this is the content it sent
+    // (ids and timestamps shortened). The reader must treat it as a half
+    // nobody has transcribed yet, or the subscribed reader is never offered it.
+    const wire = {
+      'call_key': r'$call',
+      'capture_dropped_ms': 0,
+      'capture_refused': false,
+      'chunks_captured': 1,
+      'chunks_discarded': 0,
+      'chunks_lost': 1,
+      'chunks_refused_unsubscribed': 1,
+      'chunks_suppressed': 0,
+      'chunks_transcribed': 0,
+      'device_id': 'SXIFNASKUJ',
+      'device_joined_at_ms': 1791571810013,
+      'drain_complete': true,
+      'kept_spans': [
+        [1791571810170, 1791571848194],
+      ],
+      'positions_marked': true,
+      'segments': <Object>[],
+      'segments_omitted': 0,
+      'sfu_joined_at_ms': 1791571809994,
+      'truncated': false,
+    };
+
+    test('reads as emptied only by the missing subscription', () {
+      final accounting = HalfAccounting.fromJson(wire);
+      expect(accounting.declared, isTrue);
+      expect(noSubscriptionExplainsEmptiness(const [], accounting), isTrue);
+
+      final transcript = assembleTranscript(
+        candidates: [
+          TranscriptCandidate(
+            senderId: alice,
+            eventId: r'$own',
+            deviceId: 'SXIFNASKUJ',
+            originServerTs: 500,
+            segments: const [],
+            accounting: accounting,
+          ),
+        ],
+        expectedSenders: [alice, bob],
+      );
+      final half = _halfFor(transcript, alice);
+      expect(half.issue, HalfIssue.notSubscribed);
+      expect(half.emptiedOnlyByNoSubscription, isTrue);
+    });
+  });
 }

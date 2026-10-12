@@ -23,6 +23,7 @@ import 'package:fluffychat/routes/chat/calls/call_audio_closure.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_repo.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
 
 /// One `pangea.call_audio` event fetched by id, normalized to what provenance
 /// needs to rule on it.
@@ -365,6 +366,35 @@ selectCallAudioManifest({
     uncertain: uncertain,
   );
 }
+
+/// The provenance resolver EVERY reader of call [callKey]'s transcript hands
+/// `fetchCallTranscript` -- the transcript screen and the whole-call
+/// transcriber alike -- so both judge a peer-produced half against the same
+/// manifest by the same rule.
+///
+/// A reader without it can never honour a `spokenBy` claim: assembly holds the
+/// claim pending, so a half a subscriber produced for the other speaker never
+/// reached the screen, which kept showing that speaker's empty half (#8792).
+Future<Map<String, ProvenanceState>> Function(List<TranscriptCandidate>)
+transcriptProvenanceResolver({
+  required RelationsFetcher fetch,
+  required AudioEventFetcher audioFetch,
+  required String roomId,
+  required String callKey,
+  required Set<String> participants,
+}) =>
+    (candidates) async => resolveTranscriptProvenance(
+      candidates: candidates,
+      mergedRecordings: await fetchCallAudioMerged(
+        fetch: fetch,
+        roomId: roomId,
+        callKey: callKey,
+      ),
+      participants: participants,
+      callKey: callKey,
+      roomId: roomId,
+      fetch: audioFetch,
+    );
 
 /// Resolves the provenance of every peer-produced half among [candidates].
 ///
