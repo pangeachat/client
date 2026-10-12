@@ -22,6 +22,7 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 import 'package:fluffychat/widgets/matrix.dart';
 import '../fake_pangea_controller.dart';
 import '../get_test_client.dart';
+import 'settle_leaderboard.dart';
 
 /// Skips `initMatrix()` — the member-actions menu on each row only wants
 /// `Matrix.of(context)`.
@@ -202,9 +203,7 @@ void main() {
         ),
       ),
     );
-    // L10n's delegate resolves from a deferred library, so nothing is in the
-    // tree until localizations finish loading — and the profiles load after.
-    await tester.pumpAndSettle();
+    await settle(tester, find.byType(CourseLeaderboardPreview));
   }
 
   /// The member cards start presence and avatar work that outlives the tree.
@@ -217,6 +216,11 @@ void main() {
       () => Future.delayed(const Duration(milliseconds: 300)),
     );
     await tester.pump(const Duration(seconds: 10));
+    // The timers that pump fired answer presence reads, whose writes need
+    // real time to reach the database before `tearDown` closes it.
+    await tester.runAsync(
+      () => Future.delayed(const Duration(milliseconds: 300)),
+    );
   }
 
   /// The invite control is icon-only, so it is found by its tooltip — which
