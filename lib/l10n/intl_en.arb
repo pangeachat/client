@@ -3733,6 +3733,22 @@
     "callDecline": "Decline",
     "callFullScreenTitle": "Let calls ring full screen",
     "callFullScreenMessage": "A call came in while Pangea Chat was closed, but your phone could only show a small notification for it. Allow full-screen calls so the next one rings on your whole screen, even when your phone is locked.",
+    "callMicrophoneTitle": "Use your microphone for calls",
+    "@callMicrophoneTitle": {
+        "description": "iPhone only. Title of the one-time explanation shown before iOS asks for the microphone, so calls answered later from the lock screen can connect."
+    },
+    "callMicrophoneMessage": "Pangea Chat needs your microphone for calls, including calls you answer from the lock screen.",
+    "@callMicrophoneMessage": {
+        "description": "iPhone only. Body of the one-time explanation shown before iOS's own microphone prompt."
+    },
+    "callMicrophoneOffTitle": "Your call didn't connect",
+    "@callMicrophoneOffTitle": {
+        "description": "iPhone only. Title of the notification shown when the learner answered a call but the microphone is turned off for Pangea Chat in iOS Settings."
+    },
+    "callMicrophoneOffMessage": "Pangea Chat can't use your microphone. Tap to turn it on in Settings.",
+    "@callMicrophoneOffMessage": {
+        "description": "iPhone only. Body of that notification. Tapping it opens Pangea Chat's page in iOS Settings, where the microphone can be turned on."
+    },
     "callDeclinedByPeer": "Call declined",
     "callRinging": "Ringing...",
     "callMinimize": "Minimize call",

@@ -8,9 +8,13 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:livekit_client/livekit_client.dart';
+import 'package:permission_handler/permission_handler.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/utils/push_helper.dart';
 
 /// A ring the iOS call screen is showing, as the push described it.
 class CallScreenRing {
@@ -78,6 +82,10 @@ class IosCallScreen {
   static final instance = IosCallScreen._();
 
   static const _channel = MethodChannel('chat.pangea/call_screen');
+
+  /// Marks the notification [tellMicrophoneOff] shows: tapping it opens
+  /// Pangea Chat's page in Settings rather than a chat.
+  static const microphoneSettingsTap = 'pangea_microphone_settings';
 
   final _rings = StreamController<CallScreenRing>.broadcast();
   final _answers = StreamController<CallScreenRing>.broadcast();
@@ -156,6 +164,32 @@ class IosCallScreen {
       AudioManager.instance.setAudioSessionManagementMode(
         AudioSessionManagementMode.externalCallSystem,
       );
+
+  /// Whether iOS lets the app use the microphone.
+  Future<bool> microphoneAllowed() async =>
+      (await Permission.microphone.status).isGranted;
+
+  /// Tells the learner that a call they answered on the call screen did not
+  /// connect because the microphone is off. iOS does not let the app ask
+  /// again once it has been turned off, so the notification takes them to
+  /// where they can turn it on.
+  Future<void> tellMicrophoneOff(
+    L10n l10n, {
+    required String account,
+    required String roomId,
+    required String eventId,
+  }) => FlutterLocalNotificationsPlugin().show(
+    eventId.hashCode,
+    l10n.callMicrophoneOffTitle,
+    l10n.callMicrophoneOffMessage,
+    const NotificationDetails(iOS: DarwinNotificationDetails()),
+    payload: FluffyChatPushPayload(
+      account,
+      roomId,
+      eventId,
+      additionalData: {microphoneSettingsTap: 'true'},
+    ).toString(),
+  );
 
   /// Gives the audio session back to the app, for calls made inside it, once
   /// the call answered on the call screen has released its media.

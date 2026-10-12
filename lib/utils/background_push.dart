@@ -324,6 +324,7 @@ class BackgroundPush {
         current.data.url.toString() == gatewayUrl &&
         defaultPayload is Map &&
         mapEquals(Map<String, Object?>.from(defaultPayload), tag)) {
+      unawaited(matrix?.askForMicrophoneOnce());
       return;
     }
     try {
@@ -344,6 +345,8 @@ class BackgroundPush {
         ),
         append: false,
       );
+      // Calls can ring to this phone from here on.
+      unawaited(matrix?.askForMicrophoneOnce());
     } catch (e, s) {
       Logs().e('[Push] Unable to set the VoIP pusher', e, s);
       ErrorHandler.logError(e: e, s: s, data: {});

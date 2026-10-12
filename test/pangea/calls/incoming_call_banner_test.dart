@@ -99,6 +99,20 @@ class _FakeCallScreen extends IosCallScreen {
 
   @override
   Future<void> returnAudioSession() async => audio.add('return');
+
+  bool microphone = true;
+  final toldMicrophoneOff = <String>[];
+
+  @override
+  Future<bool> microphoneAllowed() async => microphone;
+
+  @override
+  Future<void> tellMicrophoneOff(
+    L10n l10n, {
+    required String account,
+    required String roomId,
+    required String eventId,
+  }) async => toldMicrophoneOff.add(eventId);
 }
 
 class _TestMatrix extends Matrix {
@@ -776,6 +790,38 @@ void main() {
       (state.activeCall.value! as _AnsweredCall).fail();
       await tester.pump();
       expect(screen.ended, ['CALL-1:failed']);
+      expect(
+        screen.toldMicrophoneOff,
+        isEmpty,
+        reason: 'the microphone was allowed, so it is not why',
+      );
+    });
+
+    testWidgets('a call answered there with the microphone off says so', (
+      tester,
+    ) async {
+      final room = heldChat();
+      callerMembership(room, present: true);
+      final screen = _FakeCallScreen()..microphone = false;
+      await pumpBanner(tester, callScreen: screen);
+      await showOnCallScreen(tester, screen);
+      await tester.runAsync(
+        () => screen.receive(
+          MethodCall('answer', {
+            'uuid': 'CALL-1',
+            'roomId': roomId,
+            'eventId': '\$ring',
+            'account': client.clientName,
+          }),
+        ),
+      );
+      await tester.pump();
+
+      final state = tester.state<MatrixState>(find.byType(_TestMatrix));
+      (state.activeCall.value! as _AnsweredCall).fail();
+      await tester.pump();
+      expect(screen.ended, ['CALL-1:failed']);
+      expect(screen.toldMicrophoneOff, [r'$ring']);
     });
 
     // iOS turns the session off the moment the learner hangs up. LiveKit

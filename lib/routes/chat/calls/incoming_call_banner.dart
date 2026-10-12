@@ -191,10 +191,32 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
 
   void _onCallScreenCallChanged() {
     final answered = _answeredOnCallScreen;
-    if (_callScreenCall?.isFailed != true || answered == null) return;
+    final call = _callScreenCall;
+    if (call == null || !call.isFailed || answered == null) return;
     _answeredOnCallScreen = null;
     _watchCallScreenCall(null);
     _endCallScreen(answered, CallScreenEndReason.failed);
+    unawaited(_tellIfMicrophoneOff(call));
+  }
+
+  /// A call that failed because the microphone is off: iOS will not let the
+  /// app ask again, so the learner is told where to turn it on.
+  Future<void> _tellIfMicrophoneOff(call_ui.CallSession call) async {
+    if (!mounted) return;
+    final l10n = L10n.of(context);
+    final eventId = call.notificationEventId;
+    if (eventId == null) return;
+    try {
+      if (await _callScreen.microphoneAllowed()) return;
+      await _callScreen.tellMicrophoneOff(
+        l10n,
+        account: call.room.client.clientName,
+        roomId: call.room.id,
+        eventId: eventId,
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+    }
   }
 
   /// What the learner chose on the call screen for a ring this prompt was
