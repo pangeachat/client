@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-10 10:41:00.909441",
+    "@@last_modified": "2026-10-12 13:11:49.122851",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "ይህ አውታረ መረብ ምስሎችን ይከለክላል።",
     "filteredNetworkMapBlocked": "ይህ አውታረ መረብ ካርታውን ይከለክላል።",
     "callFullScreenTitle": "ጥሪዎች ሙሉ ማያ ገጽ ላይ እንዲጠሩ ፍቀድ",
-    "callFullScreenMessage": "Pangea Chat ዝግ እያለ ጥሪ ገብቶ ነበር፣ ነገር ግን ስልክዎ ትንሽ ማሳወቂያ ብቻ ማሳየት ችሏል። ቀጣዩ ጥሪ ሙሉ ማያ ገጽዎ ላይ እንዲጠራ ሙሉ ማያ ገጽ ጥሪዎችን ይፍቀዱ፣ ስልክዎ ተቆልፎ ቢሆንም እንኳ።"
+    "callFullScreenMessage": "Pangea Chat ዝግ እያለ ጥሪ ገብቶ ነበር፣ ነገር ግን ስልክዎ ትንሽ ማሳወቂያ ብቻ ማሳየት ችሏል። ቀጣዩ ጥሪ ሙሉ ማያ ገጽዎ ላይ እንዲጠራ ሙሉ ማያ ገጽ ጥሪዎችን ይፍቀዱ፣ ስልክዎ ተቆልፎ ቢሆንም እንኳ።",
+    "callMicrophoneTitle": "ለጥሪዎች ማይክሮፎንዎን ይጠቀሙ",
+    "callMicrophoneMessage": "ፓንጋያ ቻት ለጥሪዎች ማይክሮፎንዎን ይፈልጋል፣ ከመቆለፊያ ማያ ገጽ የሚመልሷቸውን ጥሪዎች ጨምሮ።",
+    "callMicrophoneOffTitle": "ጥሪዎ አልተገናኘም",
+    "callMicrophoneOffMessage": "ፓንጋያ ቻት ማይክሮፎንዎን መጠቀም አይችልም። በቅንብሮች ውስጥ ለማብራት ይንኩ።"
 }

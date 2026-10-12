@@ -3089,7 +3089,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-10 10:41:05.527548",
+    "@@last_modified": "2026-10-12 13:11:56.251571",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10597,5 +10597,9 @@
     "filteredNetworkImagesBlocked": "Blocálann an líonra seo íomhánna.",
     "filteredNetworkMapBlocked": "Blocálann an líonra seo an léarscáil.",
     "callFullScreenTitle": "Lass Anrufe im Vollbildmodus klingeln",
-    "callFullScreenMessage": "Ein Anruf kam an, während Pangea Chat geschlossen war, aber dein Telefon konnte nur eine kleine Benachrichtigung dafür anzeigen. Erlaube Vollbildanrufe, damit der nächste Anruf auf deinem gesamten Bildschirm klingelt, auch wenn dein Telefon gesperrt ist."
+    "callFullScreenMessage": "Ein Anruf kam an, während Pangea Chat geschlossen war, aber dein Telefon konnte nur eine kleine Benachrichtigung dafür anzeigen. Erlaube Vollbildanrufe, damit der nächste Anruf auf deinem gesamten Bildschirm klingelt, auch wenn dein Telefon gesperrt ist.",
+    "callMicrophoneTitle": "Bain úsáid as do mhicreafón le haghaidh glaonna",
+    "callMicrophoneMessage": "Tá micreafón ag teastáil ó Pangea Chat le haghaidh glaonna, lena n-áirítear glaonna a fhreagraíonn tú ón scáileán glasála.",
+    "callMicrophoneOffTitle": "Níor nasc do ghlao",
+    "callMicrophoneOffMessage": "Ní féidir le Pangea Chat do mhicreafón a úsáid. Tapáil chun é a chur ar siúl i Socruithe."
 }

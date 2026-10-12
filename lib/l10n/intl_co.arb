@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-10 10:41:01.895405",
+    "@@last_modified": "2026-10-12 13:11:50.125969",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "Sta reta bluccheghja l'imaghjini.",
     "filteredNetworkMapBlocked": "Sta reta bluccheghja a carta.",
     "callFullScreenTitle": "Lascia sunà e chjame à schermu pienu",
-    "callFullScreenMessage": "Una chjama hè ghjunta mentre Pangea Chat era chjusu, ma u vostru telefunu pudia solu mustrà una piccula notificazione per quessa. Permettite e chjame à schermu pienu cusì a prossima sunerà nantu à u vostru schermu sanu, ancu quandu u vostru telefunu hè bluccatu."
+    "callFullScreenMessage": "Una chjama hè ghjunta mentre Pangea Chat era chjusu, ma u vostru telefunu pudia solu mustrà una piccula notificazione per quessa. Permettite e chjame à schermu pienu cusì a prossima sunerà nantu à u vostru schermu sanu, ancu quandu u vostru telefunu hè bluccatu.",
+    "callMicrophoneTitle": "Aduprate u vostru microfonu per e chjame",
+    "callMicrophoneMessage": "Pangea Chat hà bisognu di u vostru microfonu per e chjame, cumprese e chjame chì rispondi da u screnu di bloccu.",
+    "callMicrophoneOffTitle": "A vostra chjama ùn s'hè cunnessa",
+    "callMicrophoneOffMessage": "Pangea Chat ùn pò micca aduprà u vostru microfonu. Toccate per accende lu in i Paràmetri."
 }

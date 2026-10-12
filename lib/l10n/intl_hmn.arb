@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-10 10:41:04.726533",
+    "@@last_modified": "2026-10-12 13:11:54.846408",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "Lub network no thaiv cov duab.",
     "filteredNetworkMapBlocked": "Lub network no thaiv daim ntawv qhia.",
     "callFullScreenTitle": "Cia hu xov tooj nrov thoob plaws qhov screen",
-    "callFullScreenMessage": "Muaj ib tug hu xov tooj tuaj thaum Pangea Chat raug kaw, tiam sis koj lub xov tooj tsuas qhia tau ib qho kev ceeb toom me me xwb. Tso cai hu xov tooj thoob plaws qhov screen kom lwm zaus nws nrov thoob plaws koj lub screen, txawm tias koj lub xov tooj raug kaw los xij."
+    "callFullScreenMessage": "Muaj ib tug hu xov tooj tuaj thaum Pangea Chat raug kaw, tiam sis koj lub xov tooj tsuas qhia tau ib qho kev ceeb toom me me xwb. Tso cai hu xov tooj thoob plaws qhov screen kom lwm zaus nws nrov thoob plaws koj lub screen, txawm tias koj lub xov tooj raug kaw los xij.",
+    "callMicrophoneTitle": "Siv koj lub microphone rau kev hu",
+    "callMicrophoneMessage": "Pangea Chat xav tau koj lub microphone rau kev hu, suav nrog kev hu uas koj teb los ntawm lub vijtsam kaw.",
+    "callMicrophoneOffTitle": "Koj qhov kev hu tsis txuas",
+    "callMicrophoneOffMessage": "Pangea Chat tsis tuaj yeem siv koj lub microphone. Coj mus rhaub kom qhib nws hauv Chaw."
 }

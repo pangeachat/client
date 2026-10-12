@@ -2076,7 +2076,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-10 10:41:03.367344",
+    "@@last_modified": "2026-10-12 13:11:53.641298",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10825,5 +10825,9 @@
     "filteredNetworkImagesBlocked": "Hinarangan ng network na ito ang mga larawan.",
     "filteredNetworkMapBlocked": "Hinarangan ng network na ito ang mapa.",
     "callFullScreenTitle": "Hayaang mag-ring nang full screen ang mga tawag",
-    "callFullScreenMessage": "May pumasok na tawag habang sarado ang Pangea Chat, pero maliit na notification lang ang naipakita ng iyong telepono para dito. Payagan ang full-screen na tawag para sa susunod na ring sa iyong buong screen, kahit naka-lock ang iyong telepono."
+    "callFullScreenMessage": "May pumasok na tawag habang sarado ang Pangea Chat, pero maliit na notification lang ang naipakita ng iyong telepono para dito. Payagan ang full-screen na tawag para sa susunod na ring sa iyong buong screen, kahit naka-lock ang iyong telepono.",
+    "callMicrophoneTitle": "Gamitin ang iyong mikropono para sa mga tawag",
+    "callMicrophoneMessage": "Kailangan ng Pangea Chat ang iyong mikropono para sa mga tawag, kasama ang mga tawag na sinasagot mo mula sa lock screen.",
+    "callMicrophoneOffTitle": "Hindi nakakonekta ang iyong tawag",
+    "callMicrophoneOffMessage": "Hindi magagamit ng Pangea Chat ang iyong mikropono. I-tap para i-on ito sa Settings."
 }

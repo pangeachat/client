@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-10 10:41:10.781885",
+    "@@last_modified": "2026-10-12 13:12:03.046260",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10910,5 +10910,9 @@
     "filteredNetworkImagesBlocked": "Táto sieť blokuje obrázky.",
     "filteredNetworkMapBlocked": "Táto sieť blokuje mapu.",
     "callFullScreenTitle": "Nechajte hovory zvoniť na celú obrazovku",
-    "callFullScreenMessage": "Prišiel hovor, keď bol Pangea Chat zatvorený, ale váš telefón naň dokázal zobraziť iba malé upozornenie. Povoľte hovory na celú obrazovku, aby ďalší hovor zvonil na celej obrazovke, aj keď je váš telefón uzamknutý."
+    "callFullScreenMessage": "Prišiel hovor, keď bol Pangea Chat zatvorený, ale váš telefón naň dokázal zobraziť iba malé upozornenie. Povoľte hovory na celú obrazovku, aby ďalší hovor zvonil na celej obrazovke, aj keď je váš telefón uzamknutý.",
+    "callMicrophoneTitle": "Používať mikrofón pre hovory",
+    "callMicrophoneMessage": "Pangea Chat potrebuje váš mikrofón pre hovory, vrátane hovorov, ktoré prijmete z uzamknutej obrazovky.",
+    "callMicrophoneOffTitle": "Váš hovor sa nepodarilo spojiť",
+    "callMicrophoneOffMessage": "Pangea Chat nemôže používať váš mikrofón. Klepnutím ho zapnete v Nastaveniach."
 }

@@ -2555,7 +2555,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-10 10:41:11.897930",
+    "@@last_modified": "2026-10-12 13:12:02.378495",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10882,5 +10882,9 @@
     "filteredNetworkImagesBlocked": "Esta rede bloqueia imagens.",
     "filteredNetworkMapBlocked": "Esta rede bloqueia o mapa.",
     "callFullScreenTitle": "Permitir que as chamadas toquem em ecrã completo",
-    "callFullScreenMessage": "Recebeu uma chamada enquanto o Pangea Chat estava fechado, mas o seu telemóvel só conseguiu mostrar uma pequena notificação. Permita chamadas em ecrã completo para que a próxima toque em todo o seu ecrã, mesmo quando o telemóvel estiver bloqueado."
+    "callFullScreenMessage": "Recebeu uma chamada enquanto o Pangea Chat estava fechado, mas o seu telemóvel só conseguiu mostrar uma pequena notificação. Permita chamadas em ecrã completo para que a próxima toque em todo o seu ecrã, mesmo quando o telemóvel estiver bloqueado.",
+    "callMicrophoneTitle": "Use o seu microfone para chamadas",
+    "callMicrophoneMessage": "O Pangea Chat precisa do seu microfone para chamadas, incluindo chamadas que atende a partir do ecrã de bloqueio.",
+    "callMicrophoneOffTitle": "A sua chamada não foi conectada",
+    "callMicrophoneOffMessage": "O Pangea Chat não consegue usar o seu microfone. Toque para ativá-lo nas Definições."
 }

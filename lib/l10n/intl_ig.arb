@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-10 10:41:06.221630",
+    "@@last_modified": "2026-10-12 13:11:56.561561",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "Netwọkụ a na-egbochi onyonyo.",
     "filteredNetworkMapBlocked": "Netwọkụ a na-egbochi maapụ.",
     "callFullScreenTitle": "Kwe ka oku kpọọ ihuenyo zuru oke",
-    "callFullScreenMessage": "Otu oku batara mgbe Pangea Chat mechiri, mana ekwentị gị nwere ike igosi naanị obere ọkwa maka ya. Kwe ka oku ihuenyo zuru oke ka nke ọzọ kpọọ na ihuenyo gị niile, ọbụlagodi mgbe ekwentị gị kpọchiri."
+    "callFullScreenMessage": "Otu oku batara mgbe Pangea Chat mechiri, mana ekwentị gị nwere ike igosi naanị obere ọkwa maka ya. Kwe ka oku ihuenyo zuru oke ka nke ọzọ kpọọ na ihuenyo gị niile, ọbụlagodi mgbe ekwentị gị kpọchiri.",
+    "callMicrophoneTitle": "Jiri igwe okwu gị maka oku",
+    "callMicrophoneMessage": "Pangea Chat chọrọ igwe okwu gị maka oku, gụnyere oku ị zara site na ihuenyo mkpọchi.",
+    "callMicrophoneOffTitle": "Oku gị ejikọtaghị",
+    "callMicrophoneOffMessage": "Pangea Chat enweghị ike iji igwe okwu gị. Pịa ka ịgbanwuo ya na Ntọala."
 }

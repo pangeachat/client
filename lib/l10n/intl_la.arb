@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-10 10:41:07.007713",
+    "@@last_modified": "2026-10-12 13:11:58.173320",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "Haec rete imagines impedit.",
     "filteredNetworkMapBlocked": "Haec rete tabulam impedit.",
     "callFullScreenTitle": "Sinite vocem totam tegere",
-    "callFullScreenMessage": "Vocatio advenit dum Pangea Chat clausum erat, sed telephonum tuum tantum parvam notificationem ostendere potuit. Sinite vocationes totum tegere ut proxima vocatio in toto scrinio tuo sonet, etiam cum telephonum tuum clausum est."
+    "callFullScreenMessage": "Vocatio advenit dum Pangea Chat clausum erat, sed telephonum tuum tantum parvam notificationem ostendere potuit. Sinite vocationes totum tegere ut proxima vocatio in toto scrinio tuo sonet, etiam cum telephonum tuum clausum est.",
+    "callMicrophoneTitle": "Utere microphono tuo ad vocandum",
+    "callMicrophoneMessage": "Pangea Chat microphono tuo indiget ad vocandum, etiam ad vocandum quod ex velo clauso respondes.",
+    "callMicrophoneOffTitle": "Vocatio tua non coniuncta est",
+    "callMicrophoneOffMessage": "Pangea Chat microphono tuo uti non potest. Tange ut id in Optionibus vertere possis."
 }

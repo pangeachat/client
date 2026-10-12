@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-10 10:41:08.168479",
+    "@@last_modified": "2026-10-12 13:11:59.255650",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "Kei te aukati tēnei whatunga i ngā whakaahua.",
     "filteredNetworkMapBlocked": "Kei te aukati tēnei whatunga i te mahere.",
     "callFullScreenTitle": "Tukua ngā waea kia tangi mata-katoa",
-    "callFullScreenMessage": "I tae mai he waea i te wā e kati ana a Pangea Chat, engari he paku noa te pānui i whakaatuhia e tō waea. Tukua ngā waea mata-katoa kia tangi ai te waea e whai ake nei ki tō mata katoa, ahakoa kua rākaitia tō waea."
+    "callFullScreenMessage": "I tae mai he waea i te wā e kati ana a Pangea Chat, engari he paku noa te pānui i whakaatuhia e tō waea. Tukua ngā waea mata-katoa kia tangi ai te waea e whai ake nei ki tō mata katoa, ahakoa kua rākaitia tō waea.",
+    "callMicrophoneTitle": "Whakamahia tō hopuoro mō ngā waea",
+    "callMicrophoneMessage": "Me whai hopuoro a Pangea Chat mō ngā waea, tae atu ki ngā waea ka whakautua e koe mai i te mata maukati.",
+    "callMicrophoneOffTitle": "Kāore i hono tō waea",
+    "callMicrophoneOffMessage": "Kāore e taea e Pangea Chat te whakamahi i tō hopuoro. Pāwhiritia kia whakakāhia i ngā Tautuhinga."
 }

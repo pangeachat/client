@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-10 10:41:03.537952",
+    "@@last_modified": "2026-10-12 13:11:52.892847",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "Tha an lìonra seo a' bacadh ìomhaighean.",
     "filteredNetworkMapBlocked": "Tha an lìonra seo a' bacadh a' mhapa.",
     "callFullScreenTitle": "Leig le gairmean seinn làn-sgrìn",
-    "callFullScreenMessage": "Thàinig gairm a-steach fhad 's a bha Pangea Chat dùinte, ach cha b' urrainn don fhòn agad ach fios beag a shealltainn air a shon. Leig le gairmean làn-sgrìn gus am bi an ath fhear a' seinn air do sgrìn gu lèir, eadhon nuair a tha am fòn agad glaiste."
+    "callFullScreenMessage": "Thàinig gairm a-steach fhad 's a bha Pangea Chat dùinte, ach cha b' urrainn don fhòn agad ach fios beag a shealltainn air a shon. Leig le gairmean làn-sgrìn gus am bi an ath fhear a' seinn air do sgrìn gu lèir, eadhon nuair a tha am fòn agad glaiste.",
+    "callMicrophoneTitle": "Cleachd am micreofon agad airson gairmean",
+    "callMicrophoneMessage": "Tha feum aig Pangea Chat air a’ mhicreofon agad airson gairmean, a’ gabhail a-steach gairmean a fhreagras tu bhon sgrìn-ghlasaidh.",
+    "callMicrophoneOffTitle": "Cha do cheangail a’ ghairm agad",
+    "callMicrophoneOffMessage": "Chan urrainn do Pangea Chat am micreofon agad a chleachdadh. Tap air gus a thionndadh air ann an Roghainnean."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-10 10:41:07.718237",
+    "@@last_modified": "2026-10-12 13:11:58.697938",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "Manakana ny sary ity tambajotra ity.",
     "filteredNetworkMapBlocked": "Manakana ny sarintany ity tambajotra ity.",
     "callFullScreenTitle": "Avelao hiantso efijery feno",
-    "callFullScreenMessage": "Nisy antso tonga raha nakatona ny Pangea Chat, saingy ny findainao dia tsy afaka naneho afa-tsy fampandrenesana kely momba izany. Avelao ny antso efijery feno mba hiantsoana ny efijery manontolo amin'ny manaraka, na dia voahidy aza ny findainao."
+    "callFullScreenMessage": "Nisy antso tonga raha nakatona ny Pangea Chat, saingy ny findainao dia tsy afaka naneho afa-tsy fampandrenesana kely momba izany. Avelao ny antso efijery feno mba hiantsoana ny efijery manontolo amin'ny manaraka, na dia voahidy aza ny findainao.",
+    "callMicrophoneTitle": "Ampiasao ny mikrôfôninao amin'ny antso",
+    "callMicrophoneMessage": "Mila ny mikrôfôninao ny Pangea Chat ho an'ny antso, anisan'izany ny antso valianao avy amin'ny efijery mihidy.",
+    "callMicrophoneOffTitle": "Tsy nifandray ny antsonao",
+    "callMicrophoneOffMessage": "Tsy afaka mampiasa ny mikrôfôninao ny Pangea Chat. Tsindrio raha te hampandeha azy ao amin'ny Fikirana."
 }

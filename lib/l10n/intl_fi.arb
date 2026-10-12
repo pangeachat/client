@@ -3532,7 +3532,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-10 10:41:03.786162",
+    "@@last_modified": "2026-10-12 13:11:53.084417",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10002,5 +10002,9 @@
     "filteredNetworkImagesBlocked": "Tämä verkko estää kuvat.",
     "filteredNetworkMapBlocked": "Tämä verkko estää kartan.",
     "callFullScreenTitle": "Anna puheluiden soida koko näytöllä",
-    "callFullScreenMessage": "Puhelu saapui Pangea Chatin ollessa suljettuna, mutta puhelimesi pystyi näyttämään siitä vain pienen ilmoituksen. Salli koko näytön puhelut, jotta seuraava puhelu soi koko näytölläsi, vaikka puhelimesi olisi lukittuna."
+    "callFullScreenMessage": "Puhelu saapui Pangea Chatin ollessa suljettuna, mutta puhelimesi pystyi näyttämään siitä vain pienen ilmoituksen. Salli koko näytön puhelut, jotta seuraava puhelu soi koko näytölläsi, vaikka puhelimesi olisi lukittuna.",
+    "callMicrophoneTitle": "Käytä mikrofonia puheluihin",
+    "callMicrophoneMessage": "Pangea Chat tarvitsee mikrofonisi puheluihin, myös lukitusnäytöltä vastaamiisi puheluihin.",
+    "callMicrophoneOffTitle": "Puhelu ei yhdistynyt",
+    "callMicrophoneOffMessage": "Pangea Chat ei voi käyttää mikrofonia. Napauta ottaaksesi sen käyttöön asetuksista."
 }

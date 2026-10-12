@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-10 10:41:13.650435",
+    "@@last_modified": "2026-10-12 13:12:07.733381",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9965,5 +9965,9 @@
     "filteredNetworkImagesBlocked": "此网络阻止图片。",
     "filteredNetworkMapBlocked": "此网络阻止地图。",
     "callFullScreenTitle": "让通话全屏响铃",
-    "callFullScreenMessage": "Pangea Chat 关闭时有来电，但您的手机只能显示一个小通知。允许全屏通话，这样即使手机锁屏，下次来电也会在您的整个屏幕上响铃。"
+    "callFullScreenMessage": "Pangea Chat 关闭时有来电，但您的手机只能显示一个小通知。允许全屏通话，这样即使手机锁屏，下次来电也会在您的整个屏幕上响铃。",
+    "callMicrophoneTitle": "使用麦克风进行通话",
+    "callMicrophoneMessage": "Pangea Chat 需要使用您的麦克风进行通话，包括您从锁定屏幕接听的电话。",
+    "callMicrophoneOffTitle": "您的通话未接通",
+    "callMicrophoneOffMessage": "Pangea Chat 无法使用您的麦克风。轻点以在“设置”中将其打开。"
 }

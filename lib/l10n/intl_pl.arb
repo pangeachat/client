@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-10 10:41:09.736006",
+    "@@last_modified": "2026-10-12 13:12:01.140077",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10050,5 +10050,9 @@
     "filteredNetworkImagesBlocked": "Ta sieć blokuje obrazy.",
     "filteredNetworkMapBlocked": "Ta sieć blokuje mapę.",
     "callFullScreenTitle": "Pozwól, by połączenia dzwoniły na pełnym ekranie",
-    "callFullScreenMessage": "Połączenie nadeszło, gdy Pangea Chat był zamknięty, ale Twój telefon mógł wyświetlić tylko małe powiadomienie. Zezwól na połączenia pełnoekranowe, aby następne połączenie dzwoniło na całym ekranie, nawet gdy telefon jest zablokowany."
+    "callFullScreenMessage": "Połączenie nadeszło, gdy Pangea Chat był zamknięty, ale Twój telefon mógł wyświetlić tylko małe powiadomienie. Zezwól na połączenia pełnoekranowe, aby następne połączenie dzwoniło na całym ekranie, nawet gdy telefon jest zablokowany.",
+    "callMicrophoneTitle": "Użyj mikrofonu do połączeń",
+    "callMicrophoneMessage": "Pangea Chat potrzebuje Twojego mikrofonu do połączeń, w tym połączeń odbieranych z ekranu blokady.",
+    "callMicrophoneOffTitle": "Twoje połączenie nie zostało nawiązane",
+    "callMicrophoneOffMessage": "Pangea Chat nie może używać Twojego mikrofonu. Stuknij, aby włączyć go w Ustawieniach."
 }

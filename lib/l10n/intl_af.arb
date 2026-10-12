@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-10 10:41:00.721254",
+    "@@last_modified": "2026-10-12 13:11:48.375472",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "Hierdie netwerk blokkeer beelde.",
     "filteredNetworkMapBlocked": "Hierdie netwerk blokkeer die kaart.",
     "callFullScreenTitle": "Laat oproepe volskerm lui",
-    "callFullScreenMessage": "’n Oproep het ingekom terwyl Pangea Chat gesluit was, maar jou foon kon net ’n klein kennisgewing daarvoor wys. Laat volskerm-oproepe toe sodat die volgende een op jou hele skerm lui, selfs wanneer jou foon gesluit is."
+    "callFullScreenMessage": "’n Oproep het ingekom terwyl Pangea Chat gesluit was, maar jou foon kon net ’n klein kennisgewing daarvoor wys. Laat volskerm-oproepe toe sodat die volgende een op jou hele skerm lui, selfs wanneer jou foon gesluit is.",
+    "callMicrophoneTitle": "Gebruik jou mikrofoon vir oproepe",
+    "callMicrophoneMessage": "Pangea Chat benodig jou mikrofoon vir oproepe, insluitend oproepe wat jy vanaf die sluitskerm beantwoord.",
+    "callMicrophoneOffTitle": "Jou oproep het nie gekoppel nie",
+    "callMicrophoneOffMessage": "Pangea Chat kan nie jou mikrofoon gebruik nie. Tik om dit in Instellings aan te skakel."
 }

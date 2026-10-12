@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-10 10:41:12.571686",
+    "@@last_modified": "2026-10-12 13:12:04.479294",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "Jaringan ieu meungpeuk gambar.",
     "filteredNetworkMapBlocked": "Jaringan ieu meungpeuk peta.",
     "callFullScreenTitle": "Jieun telepon disada sapinuh layar",
-    "callFullScreenMessage": "Telepon asup nalika Pangea Chat ditutup, tapi telepon anjeun ngan ukur tiasa nembongkeun béwara leutik. Idinan telepon sapinuh layar supados telepon salajengna disada dina sakabéh layar anjeun, sanajan telepon anjeun dikonci."
+    "callFullScreenMessage": "Telepon asup nalika Pangea Chat ditutup, tapi telepon anjeun ngan ukur tiasa nembongkeun béwara leutik. Idinan telepon sapinuh layar supados telepon salajengna disada dina sakabéh layar anjeun, sanajan telepon anjeun dikonci.",
+    "callMicrophoneTitle": "Anggo mikropon anjeun pikeun nelepon",
+    "callMicrophoneMessage": "Pangea Chat peryogi mikropon anjeun pikeun nelepon, kalebet telepon anu anjeun jawab tina layar konci.",
+    "callMicrophoneOffTitle": "Telepon anjeun teu nyambung",
+    "callMicrophoneOffMessage": "Pangea Chat teu tiasa nganggo mikropon anjeun. Ketok pikeun ngahurungkeunana dina Setélan."
 }

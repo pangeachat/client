@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-10 10:41:13.942878",
+    "@@last_modified": "2026-10-12 13:12:09.000599",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "Le nethiwekhi ivimba izithombe.",
     "filteredNetworkMapBlocked": "Le nethiwekhi ivimba imephu.",
     "callFullScreenTitle": "Vumela izingcingo zikhale isikrini esigcwele",
-    "callFullScreenMessage": "Ucingo lungenile ngenkathi i-Pangea Chat ivaliwe, kodwa ifoni yakho ibingabonisa kuphela isaziso esincane salo. Vumela izingcingo zesikrini esigcwele ukuze olulandelayo lukhale esikrinini sakho sonke, noma ngabe ifoni yakho ikhiyiwe."
+    "callFullScreenMessage": "Ucingo lungenile ngenkathi i-Pangea Chat ivaliwe, kodwa ifoni yakho ibingabonisa kuphela isaziso esincane salo. Vumela izingcingo zesikrini esigcwele ukuze olulandelayo lukhale esikrinini sakho sonke, noma ngabe ifoni yakho ikhiyiwe.",
+    "callMicrophoneTitle": "Sebenzisa imakrofoni yakho ukuze ushaye izingcingo",
+    "callMicrophoneMessage": "I-Pangea Chat idinga imakrofoni yakho ukuze ushaye izingcingo, okuhlanganisa nezingcingo oziphendulayo esikrinini esikhiyiwe.",
+    "callMicrophoneOffTitle": "Ucingo lwakho aluxhumekanga",
+    "callMicrophoneOffMessage": "I-Pangea Chat ayikwazi ukusebenzisa imakrofoni yakho. Thepha ukuze uyivule kokuthi Izilungiselelo."
 }

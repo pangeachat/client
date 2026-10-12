@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:01.781927",
+    "@@last_modified": "2026-10-12 13:11:50.763345",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10910,5 +10910,9 @@
     "filteredNetworkImagesBlocked": "Ĉi tiu reto blokas bildojn.",
     "filteredNetworkMapBlocked": "Ĉi tiu reto blokas la mapon.",
     "callFullScreenTitle": "Permesu alvokojn sonori tutekrane",
-    "callFullScreenMessage": "Alvoko venis dum Pangea Chat estis fermita, sed via telefono povis montri nur malgrandan sciigon por ĝi. Permesu tutekranajn alvokojn tiel ke la sekva sonoros sur via tuta ekrano, eĉ kiam via telefono estas ŝlosita."
+    "callFullScreenMessage": "Alvoko venis dum Pangea Chat estis fermita, sed via telefono povis montri nur malgrandan sciigon por ĝi. Permesu tutekranajn alvokojn tiel ke la sekva sonoros sur via tuta ekrano, eĉ kiam via telefono estas ŝlosita.",
+    "callMicrophoneTitle": "Uzu vian mikrofonon por vokoj",
+    "callMicrophoneMessage": "Pangea Chat bezonas vian mikrofonon por vokoj, inkluzive de vokoj, kiujn vi respondas de la ŝlosila ekrano.",
+    "callMicrophoneOffTitle": "Via voko ne konektiĝis",
+    "callMicrophoneOffMessage": "Pangea Chat ne povas uzi vian mikrofonon. Frapu por ŝalti ĝin en Agordoj."
 }

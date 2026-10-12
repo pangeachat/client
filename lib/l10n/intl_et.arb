@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-10 10:41:03.480474",
+    "@@last_modified": "2026-10-12 13:11:51.192169",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9962,5 +9962,9 @@
     "filteredNetworkImagesBlocked": "See võrk blokeerib pildid.",
     "filteredNetworkMapBlocked": "See võrk blokeerib kaardi.",
     "callFullScreenTitle": "Luba kõnedele täisekraan",
-    "callFullScreenMessage": "Kõne tuli sisse, kui Pangea Chat oli suletud, kuid teie telefon sai selle kohta näidata ainult väikest teavitust. Lubage täisekraankõned, et järgmine kõne heliseks kogu ekraanil, isegi kui teie telefon on lukus."
+    "callFullScreenMessage": "Kõne tuli sisse, kui Pangea Chat oli suletud, kuid teie telefon sai selle kohta näidata ainult väikest teavitust. Lubage täisekraankõned, et järgmine kõne heliseks kogu ekraanil, isegi kui teie telefon on lukus.",
+    "callMicrophoneTitle": "Kasuta kõnede jaoks mikrofoni",
+    "callMicrophoneMessage": "Pangea Chat vajab kõnede jaoks teie mikrofoni, sealhulgas kõnede jaoks, millele vastate lukustuskuvalt.",
+    "callMicrophoneOffTitle": "Teie kõne ei ühendunud",
+    "callMicrophoneOffMessage": "Pangea Chat ei saa teie mikrofoni kasutada. Puudutage, et see seadetes sisse lülitada."
 }

@@ -1330,7 +1330,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-10 10:41:01.787028",
+    "@@last_modified": "2026-10-12 13:11:50.366258",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10885,5 +10885,9 @@
     "filteredNetworkImagesBlocked": "Dette netværk blokerer billeder.",
     "filteredNetworkMapBlocked": "Dette netværk blokerer kortet.",
     "callFullScreenTitle": "Lad opkald ringe på fuld skærm",
-    "callFullScreenMessage": "Der kom et opkald, mens Pangea Chat var lukket, men din telefon kunne kun vise en lille notifikation for det. Tillad fuldskærmsopkald, så det næste ringer på hele din skærm, selv når din telefon er låst."
+    "callFullScreenMessage": "Der kom et opkald, mens Pangea Chat var lukket, men din telefon kunne kun vise en lille notifikation for det. Tillad fuldskærmsopkald, så det næste ringer på hele din skærm, selv når din telefon er låst.",
+    "callMicrophoneTitle": "Brug din mikrofon til opkald",
+    "callMicrophoneMessage": "Pangea Chat skal bruge din mikrofon til opkald, herunder opkald, du besvarer fra låseskærmen.",
+    "callMicrophoneOffTitle": "Dit opkald blev ikke forbundet",
+    "callMicrophoneOffMessage": "Pangea Chat kan ikke bruge din mikrofon. Tryk for at slå den til i Indstillinger."
 }

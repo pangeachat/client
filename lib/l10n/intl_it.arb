@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:05.547088",
+    "@@last_modified": "2026-10-12 13:11:55.918835",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10038,5 +10038,9 @@
     "filteredNetworkImagesBlocked": "Questa rete blocca le immagini.",
     "filteredNetworkMapBlocked": "Questa rete blocca la mappa.",
     "callFullScreenTitle": "Consenti chiamate a schermo intero",
-    "callFullScreenMessage": "È arrivata una chiamata mentre Pangea Chat era chiusa, ma il tuo telefono poteva mostrare solo una piccola notifica. Consenti le chiamate a schermo intero in modo che la prossima squilli su tutto lo schermo, anche quando il telefono è bloccato."
+    "callFullScreenMessage": "È arrivata una chiamata mentre Pangea Chat era chiusa, ma il tuo telefono poteva mostrare solo una piccola notifica. Consenti le chiamate a schermo intero in modo che la prossima squilli su tutto lo schermo, anche quando il telefono è bloccato.",
+    "callMicrophoneTitle": "Usa il microfono per le chiamate",
+    "callMicrophoneMessage": "Pangea Chat ha bisogno del tuo microfono per le chiamate, incluse quelle a cui rispondi dalla schermata di blocco.",
+    "callMicrophoneOffTitle": "La tua chiamata non si è collegata",
+    "callMicrophoneOffMessage": "Pangea Chat non può usare il tuo microfono. Tocca per attivarlo nelle Impostazioni."
 }

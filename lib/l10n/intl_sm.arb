@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-10 10:41:17.000666",
+    "@@last_modified": "2026-10-12 13:12:03.783477",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2414,5 +2414,9 @@
     "filteredNetworkImagesBlocked": "O lenei fesoʻotaʻiga e poloka ata.",
     "filteredNetworkMapBlocked": "O lenei fesoʻotaʻiga e poloka le faʻafanua.",
     "callFullScreenTitle": "Tuʻu atu valaʻau e tatagi i le lau atoa",
-    "callFullScreenMessage": "Na maua se valaʻau aʻo tapunia le Pangea Chat, ae naʻo se faʻasilasilaga laʻititi na mafai ona faʻaalia e lau telefoni. Faʻataga valaʻau i le lau atoa ina ia tatagi le isi valaʻau i lau lau atoa, e tusa lava pe loka lau telefoni."
+    "callFullScreenMessage": "Na maua se valaʻau aʻo tapunia le Pangea Chat, ae naʻo se faʻasilasilaga laʻititi na mafai ona faʻaalia e lau telefoni. Faʻataga valaʻau i le lau atoa ina ia tatagi le isi valaʻau i lau lau atoa, e tusa lava pe loka lau telefoni.",
+    "callMicrophoneTitle": "Fa'aaoga lau masini faaleo mo vala'au",
+    "callMicrophoneMessage": "E mana'omia e le Pangea Chat lau masini faaleo mo vala'au, e aofia ai vala'au e te taliina mai le lau loka.",
+    "callMicrophoneOffTitle": "E le'i feso'ota'i lau vala'au",
+    "callMicrophoneOffMessage": "E le mafai e le Pangea Chat ona fa'aaoga lau masini faaleo. Pa'i e ki i totonu o Fa'atonuga."
 }

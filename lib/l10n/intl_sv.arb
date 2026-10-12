@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:11.772506",
+    "@@last_modified": "2026-10-12 13:12:04.406204",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10483,5 +10483,9 @@
     "filteredNetworkImagesBlocked": "Detta nätverk blockerar bilder.",
     "filteredNetworkMapBlocked": "Detta nätverk blockerar kartan.",
     "callFullScreenTitle": "Låt samtal ringa i helskärm",
-    "callFullScreenMessage": "Ett samtal kom in när Pangea Chat var stängt, men din telefon kunde bara visa en liten notis för det. Tillåt helskärmssamtal så att nästa samtal ringer på hela skärmen, även när din telefon är låst."
+    "callFullScreenMessage": "Ett samtal kom in när Pangea Chat var stängt, men din telefon kunde bara visa en liten notis för det. Tillåt helskärmssamtal så att nästa samtal ringer på hela skärmen, även när din telefon är låst.",
+    "callMicrophoneTitle": "Använd din mikrofon för samtal",
+    "callMicrophoneMessage": "Pangea Chat behöver din mikrofon för samtal, inklusive samtal du svarar på från låsskärmen.",
+    "callMicrophoneOffTitle": "Ditt samtal kopplades inte upp",
+    "callMicrophoneOffMessage": "Pangea Chat kan inte använda din mikrofon. Tryck för att aktivera den i Inställningar."
 }
