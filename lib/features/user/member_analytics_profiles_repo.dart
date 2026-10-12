@@ -47,8 +47,10 @@ extension MemberAnalyticsProfilesRepo on Client {
       final profiles = (json as Map<String, dynamic>)['profiles'] as Map;
       return Result.value({
         for (final entry in profiles.entries)
-          entry.key as String: AnalyticsProfileModel.fromJson(
-            Map<String, dynamic>.from(entry.value as Map),
+          entry.key as String: _parseMemberProfile(
+            entry.key as String,
+            entry.value,
+            roomId,
           ),
       });
     } catch (e, s) {
@@ -59,6 +61,28 @@ extension MemberAnalyticsProfilesRepo on Client {
         level: PangeaHttpException.severityOf(e),
       );
       return Result.error(e, s);
+    }
+  }
+
+  /// One member's profile. A member can store any JSON in their own profile
+  /// field, so a value the parser rejects costs only that member, as on the
+  /// one-request-per-member path: reported, and read as no profile.
+  AnalyticsProfileModel _parseMemberProfile(
+    String userId,
+    Object? value,
+    String roomId,
+  ) {
+    try {
+      return AnalyticsProfileModel.fromJson(
+        Map<String, dynamic>.from(value as Map),
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'roomId': roomId, 'userId': userId},
+      );
+      return AnalyticsProfileModel();
     }
   }
 }

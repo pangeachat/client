@@ -95,6 +95,28 @@ void main() {
       expect(profiles[_carol]!.isEmpty, isTrue);
     });
 
+    test('a profile that will not parse costs only that member', () async {
+      // The profile API stores any JSON value; the app's parser needs an
+      // object.
+      stub.profiles = {
+        _bob: {'pangea.analytics_profile': null},
+        _carol: _field(7),
+      };
+      late Future<Map<String, AnalyticsProfileModel>?> profiles;
+
+      final event = await harness.capture(() {
+        profiles = client
+            .getMemberAnalyticsProfiles(_roomId)
+            .then((r) => r.asValue?.value);
+      });
+
+      final read = (await profiles)!;
+      expect(read[_bob]!.isEmpty, isTrue);
+      expect(read[_carol]!.starsByLanguage('es'), 7);
+      // One report, naming the member whose profile failed.
+      expect(event.breadcrumbs?.last.data?['userId'], _bob);
+    });
+
     test('a server without the module answers empty and reports '
         'nothing', () async {
       stub.status = 404;
