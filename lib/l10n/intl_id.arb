@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:05.598623",
+    "@@last_modified": "2026-10-12 13:36:43.117018",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10021,5 +10021,6 @@
     "reportNotSent": "Laporan Anda tidak dapat dikirim. Periksa koneksi Anda dan coba lagi.",
     "reportPointerMessage": "Sebuah pesan dilaporkan di {courseName} — lihat Keamanan",
     "useActivityImageAsChatBackground": "Gunakan gambar aktivitas sebagai latar belakang obrolan",
-    "andCertifyIMeetTheMinimumAge": " dan menyatakan bahwa saya berusia minimal 13 tahun, atau usia minimum yang disyaratkan di negara saya jika lebih tinggi."
+    "andCertifyIMeetTheMinimumAge": " dan menyatakan bahwa saya berusia minimal 13 tahun, atau usia minimum yang disyaratkan di negara saya jika lebih tinggi.",
+    "customCourseStepDesc": "Kursus adalah serangkaian aktivitas percakapan yang mengikuti buku teks Anda, untuk dikerjakan siswa Anda bersama sebagai pekerjaan rumah."
 }

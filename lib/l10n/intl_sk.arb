@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-10 10:41:10.781885",
+    "@@last_modified": "2026-10-12 13:36:47.862814",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10893,5 +10893,6 @@
     "reportNotSent": "Vaše nahlásenie sa nepodarilo odoslať. Skontrolujte pripojenie a skúste to znova.",
     "reportPointerMessage": "V kurze {courseName} bola nahlásená správa – pozrite si Bezpečnosť",
     "useActivityImageAsChatBackground": "Použiť obrázok aktivity ako pozadie chatu",
-    "andCertifyIMeetTheMinimumAge": " a potvrdzujem, že mám aspoň 13 rokov, alebo minimálny vek požadovaný v mojej krajine, ak je vyšší."
+    "andCertifyIMeetTheMinimumAge": " a potvrdzujem, že mám aspoň 13 rokov, alebo minimálny vek požadovaný v mojej krajine, ak je vyšší.",
+    "customCourseStepDesc": "Kurz je súbor konverzačných aktivít, ktoré nasledujú vašu učebnicu, aby ich vaši študenti robili spoločne ako domácu úlohu."
 }

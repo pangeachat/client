@@ -2963,7 +2963,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-10 10:41:07.110898",
+    "@@last_modified": "2026-10-12 13:36:43.592306",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10729,5 +10729,6 @@
     "reportNotSent": "Nepavyko išsiųsti jūsų pranešimo. Patikrinkite ryšį ir bandykite dar kartą.",
     "reportPointerMessage": "Pranešta apie žinutę {courseName} – žr. Sauga",
     "useActivityImageAsChatBackground": "Naudoti veiklos paveikslėlį kaip pokalbio foną",
-    "andCertifyIMeetTheMinimumAge": " ir patvirtinu, kad man yra bent 13 metų arba mano šalyje reikalaujamas minimalus amžius, jei jis yra didesnis."
+    "andCertifyIMeetTheMinimumAge": " ir patvirtinu, kad man yra bent 13 metų arba mano šalyje reikalaujamas minimalus amžius, jei jis yra didesnis.",
+    "customCourseStepDesc": "Kursas – tai pokalbių užduočių rinkinys, atitinkantis jūsų vadovėlį, skirtas jūsų studentams atlikti kartu kaip namų darbus."
 }

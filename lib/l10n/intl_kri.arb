@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-10 10:41:07.712959",
+    "@@last_modified": "2026-10-12 13:36:43.609566",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "Yu ripot nɔ go dɔn sɛn. Chɛk yu kɔnɛkshɔn ɛn tray igen.",
     "reportPointerMessage": "Dɛn ripot wan mɛsej insay {courseName} — si Sefti",
     "useActivityImageAsChatBackground": "Yuz aktiviti pikcho as chat bakgron",
-    "andCertifyIMeetTheMinimumAge": " ɛn a dɔn sɔtɛfay se a rich di minimɔm ej we bi 13 ia, ɔ di minimɔm ej we dɛn nid insay mi kɔntri if dat hay pas ighaigher."
+    "andCertifyIMeetTheMinimumAge": " ɛn a dɔn sɔtɛfay se a rich di minimɔm ej we bi 13 ia, ɔ di minimɔm ej we dɛn nid insay mi kɔntri if dat hay pas ighaigher.",
+    "customCourseStepDesc": "Wan kos na wan set fɔ kɔnvɛseshɔn aktivitis we de fala yu tɛksbuk, fɔ mek yu studɛnt dɛn du togɛda as homwɔk."
 }

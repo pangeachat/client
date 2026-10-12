@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-10 10:41:01.774589",
+    "@@last_modified": "2026-10-12 13:36:37.946342",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9935,5 +9935,6 @@
     "reportNotSent": "Ihr Bericht konnte nicht gesendet werden. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
     "reportPointerMessage": "Eine Nachricht wurde in {courseName} gemeldet – siehe Sicherheit",
     "useActivityImageAsChatBackground": "Aktivitätsbild als Chat-Hintergrund verwenden",
-    "andCertifyIMeetTheMinimumAge": " zu und bestätige, dass ich mindestens 13 Jahre alt bin oder das in meinem Land erforderliche Mindestalter erreicht habe, falls dieses höher ist."
+    "andCertifyIMeetTheMinimumAge": " zu und bestätige, dass ich mindestens 13 Jahre alt bin oder das in meinem Land erforderliche Mindestalter erreicht habe, falls dieses höher ist.",
+    "customCourseStepDesc": "Ein Kurs ist eine Reihe von Konversationsaktivitäten, die Ihrem Lehrbuch folgen und die Ihre Schüler als Hausaufgaben gemeinsam bearbeiten können."
 }

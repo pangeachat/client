@@ -5073,6 +5073,7 @@
     "pickCefrLevelStudentStepTitle": "What level are you?",
     "pickCefrLevelStepSubtitle": "You can change this later",
     "customCourseStepTitle": "Fill this form to get a custom course",
+    "customCourseStepDesc": "A course is a set of conversation activities that follow your textbook, for your students to do together as homework.",
     "courseCodeStepErrorMessage": "Please check your code and try again",
     "institution": "Institution",
     "customCourseTextbookHint": "Tell us what textbook you use, or describe your curriculum",

@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-10 10:41:06.298599",
+    "@@last_modified": "2026-10-12 13:36:38.999862",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "Jo melding koe net ferstjoerd wurde. Kontrolearje jo ferbining en besykje it opnij.",
     "reportPointerMessage": "Der is in berjocht melde yn {courseName} — sjoch Feiligens",
     "useActivityImageAsChatBackground": "Brûk aktiviteitsôfbylding as petear eftergrûn",
-    "andCertifyIMeetTheMinimumAge": " en ferklearje dat ik op syn minst 13 jier âld bin, of de minimumleeftyd dy't yn myn lân fereaske is as dy heger is."
+    "andCertifyIMeetTheMinimumAge": " en ferklearje dat ik op syn minst 13 jier âld bin, of de minimumleeftyd dy't yn myn lân fereaske is as dy heger is.",
+    "customCourseStepDesc": "In kursus is in set petearaktiviteiten dy't jo learboek folgje, foar jo studinten om tegearre as húswurk te dwaan."
 }

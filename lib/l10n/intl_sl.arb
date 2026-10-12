@@ -1798,7 +1798,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-10 10:41:10.464472",
+    "@@last_modified": "2026-10-12 13:36:47.642038",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10893,5 +10893,6 @@
     "reportNotSent": "Vašega poročila ni bilo mogoče poslati. Preverite povezavo in poskusite znova.",
     "reportPointerMessage": "Sporočilo je bilo prijavljeno v {courseName} – glejte Varnost",
     "useActivityImageAsChatBackground": "Uporabi sliko dejavnosti kot ozadje klepeta",
-    "andCertifyIMeetTheMinimumAge": " in potrjujem, da sem star vsaj 13 let ali minimalno starost, ki je zahtevana v moji državi, če je ta višja."
+    "andCertifyIMeetTheMinimumAge": " in potrjujem, da sem star vsaj 13 let ali minimalno starost, ki je zahtevana v moji državi, če je ta višja.",
+    "customCourseStepDesc": "Tečaj je sklop pogovornih dejavnosti, ki sledijo vašemu učbeniku, da jih vaši učenci skupaj opravijo kot domačo nalogo."
 }

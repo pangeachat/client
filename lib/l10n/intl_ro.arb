@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:10.228250",
+    "@@last_modified": "2026-10-12 13:36:46.431066",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10680,5 +10680,6 @@
     "reportNotSent": "Raportul tău nu a putut fi trimis. Verifică-ți conexiunea și încearcă din nou.",
     "reportPointerMessage": "Un mesaj a fost raportat în {courseName} — vezi Siguranță",
     "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal de chat",
-    "andCertifyIMeetTheMinimumAge": " și certific că am cel puțin 13 ani, sau vârsta minimă cerută în țara mea dacă aceasta este mai mare."
+    "andCertifyIMeetTheMinimumAge": " și certific că am cel puțin 13 ani, sau vârsta minimă cerută în țara mea dacă aceasta este mai mare.",
+    "customCourseStepDesc": "Un curs este un set de activități de conversație care urmează manualul tău, pentru ca studenții tăi să le facă împreună ca temă."
 }

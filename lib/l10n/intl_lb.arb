@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-10 10:41:07.254518",
+    "@@last_modified": "2026-10-12 13:36:43.613083",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "Äre Rapport konnt net geschéckt ginn. Kuckt Är Verbindung a probéiert et nach eng Kéier.",
     "reportPointerMessage": "Eng Noriicht gouf am Cours {courseName} gemellt — kuckt Sécherheet",
     "useActivityImageAsChatBackground": "Aktivitéitsbild als Chat-Hannergrond benotzen",
-    "andCertifyIMeetTheMinimumAge": " an ech bestätegen, datt ech op d'mannst 13 Joer al sinn, oder den Mindestalter, deen a mengem Land erfuerderlech ass, wann deen méi héich ass."
+    "andCertifyIMeetTheMinimumAge": " an ech bestätegen, datt ech op d'mannst 13 Joer al sinn, oder den Mindestalter, deen a mengem Land erfuerderlech ass, wann deen méi héich ass.",
+    "customCourseStepDesc": "E Cours ass eng Rei vu Gespréichsaktivitéiten, déi Äert Léierbuch verfollegen, fir Är Schüler als Hausaufgab zesummen ze maachen."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-10 10:41:13.726675",
+    "@@last_modified": "2026-10-12 13:36:50.881043",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "Kò ṣeé fi ìròyìn rẹ ránṣẹ́. Ṣàyẹ̀wò àsopọ̀ rẹ, kí o sì tún gbìyànjú.",
     "reportPointerMessage": "A ti fi ìròyìn ránṣẹ́ nípa ìfọ̀rọ̀wéránṣẹ́ kan nínú {courseName} — wo Ààbò",
     "useActivityImageAsChatBackground": "Lo aworan iṣẹ bi abẹlẹ iwiregbe",
-    "andCertifyIMeetTheMinimumAge": " ati jẹ́rìí pé mo ti pé ọmọ ọdún mẹ́tàlá (13) tàbí jù bẹ́ẹ̀ lọ, tàbí pé mo ti pé ọjọ́ orí tí ó kéré jùlọ tí ó wúlò ní orílẹ̀-èdè mi bí ó bá ga ju bẹ́ẹ̀ lọ."
+    "andCertifyIMeetTheMinimumAge": " ati jẹ́rìí pé mo ti pé ọmọ ọdún mẹ́tàlá (13) tàbí jù bẹ́ẹ̀ lọ, tàbí pé mo ti pé ọjọ́ orí tí ó kéré jùlọ tí ó wúlò ní orílẹ̀-èdè mi bí ó bá ga ju bẹ́ẹ̀ lọ.",
+    "customCourseStepDesc": "Ìwé-ẹ̀kọ́ jẹ́ àwọn iṣẹ́ ìbánisọ̀rọ̀ tí ó tẹ̀lé ìwé-ẹ̀kọ́ rẹ, fún àwọn akẹ́kọ̀ọ́ rẹ láti ṣe pọ̀ gẹ́gẹ́ bí iṣẹ́-ilé."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-10 10:41:09.404200",
+    "@@last_modified": "2026-10-12 13:36:45.577898",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "Lipoti lanu silinatumizidwe. Onani intaneti yanu ndikuyesanso.",
     "reportPointerMessage": "Uthenga unanenedwa mu {courseName} — onani Chitetezo",
     "useActivityImageAsChatBackground": "Gwiritsani ntchito chithunzi cha zochitika ngati maziko a macheza",
-    "andCertifyIMeetTheMinimumAge": " ndipo ndikutsimikizira kuti ndili ndi zaka zosachepera 13, kapena zaka zochepa zofunikira m'dziko langa ngati izo zili zapamwamba."
+    "andCertifyIMeetTheMinimumAge": " ndipo ndikutsimikizira kuti ndili ndi zaka zosachepera 13, kapena zaka zochepa zofunikira m'dziko langa ngati izo zili zapamwamba.",
+    "customCourseStepDesc": "Maphunziro ndi mndandanda wa zokambirana zomwe zimatsatira buku lanu, kuti ophunzira anu azichita limodzi ngati ntchito yakunyumba."
 }

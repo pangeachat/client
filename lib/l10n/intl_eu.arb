@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-10 10:41:03.433326",
+    "@@last_modified": "2026-10-12 13:36:38.981043",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9948,5 +9948,6 @@
     "reportNotSent": "Ezin izan da zure txostena bidali. Egiaztatu konexioa eta saiatu berriro.",
     "reportPointerMessage": "Mezu bat salatu da {courseName} ikastaroan — ikusi Segurtasuna",
     "useActivityImageAsChatBackground": "Erabili jardueraren irudia txataren atzeko plano gisa",
-    "andCertifyIMeetTheMinimumAge": " eta ziurtatzen dut gutxienez 13 urte ditudala, edo nire herrialdean eskatzen den gutxieneko adina, hori handiagoa bada."
+    "andCertifyIMeetTheMinimumAge": " eta ziurtatzen dut gutxienez 13 urte ditudala, edo nire herrialdean eskatzen den gutxieneko adina, hori handiagoa bada.",
+    "customCourseStepDesc": "Ikastaro bat elkarrizketa-jardueren multzo bat da, zure testuliburua jarraitzen duena, zure ikasleek elkarrekin etxeko lan gisa egiteko."
 }

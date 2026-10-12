@@ -3089,7 +3089,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-10 10:41:05.527548",
+    "@@last_modified": "2026-10-12 13:36:42.066869",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10580,5 +10580,6 @@
     "reportNotSent": "Níorbh fhéidir do thuarascáil a sheoladh. Seiceáil do nasc agus bain triail eile as.",
     "reportPointerMessage": "Tuairiscíodh teachtaireacht i {courseName} — féach Sábháilteacht",
     "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
-    "andCertifyIMeetTheMinimumAge": " e certifies que ha minimum 13 annos de etate, o li etate minimal requisit in mi land si it es plu alt."
+    "andCertifyIMeetTheMinimumAge": " e certifies que ha minimum 13 annos de etate, o li etate minimal requisit in mi land si it es plu alt.",
+    "customCourseStepDesc": "Is sraith gníomhaíochtaí comhrá é cúrsa a leanann do théacsleabhar, le déanamh ag do mhic léinn le chéile mar obair bhaile."
 }

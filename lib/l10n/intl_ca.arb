@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:01.634795",
+    "@@last_modified": "2026-10-12 13:36:37.105339",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10075,5 +10075,6 @@
     "reportNotSent": "No s'ha pogut enviar l'informe. Comprova la connexió i torna-ho a provar.",
     "reportPointerMessage": "S'ha informat d'un missatge a {courseName}; consulta Seguretat",
     "useActivityImageAsChatBackground": "Utilitza la imatge de l'activitat com a fons del xat",
-    "andCertifyIMeetTheMinimumAge": " i certifico que tinc almenys 13 anys, o l'edat mínima requerida al meu país si és superior."
+    "andCertifyIMeetTheMinimumAge": " i certifico que tinc almenys 13 anys, o l'edat mínima requerida al meu país si és superior.",
+    "customCourseStepDesc": "Un curs és un conjunt d'activitats de conversa que segueixen el teu llibre de text, perquè els teus estudiants les facin junts com a deures."
 }

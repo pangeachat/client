@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-10 10:41:08.168479",
+    "@@last_modified": "2026-10-12 13:36:47.512122",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "Kāore i taea te tuku i tō pūrongo. Tirohia tō hononga ka ngana anō.",
     "reportPointerMessage": "I pūrongotia tētahi karere i roto i a {courseName} — tirohia te Haumaru",
     "useActivityImageAsChatBackground": "Whakamahia te atahanga mahi hei papamuri kōrerorero",
-    "andCertifyIMeetTheMinimumAge": " ā, ka whakapūmau au kua eke au ki te 13 tau te pakeke, ki te pakeke iti rawa rānei e hiahiatia ana i tōku whenua mēnā he teitei ake tēnā."
+    "andCertifyIMeetTheMinimumAge": " ā, ka whakapūmau au kua eke au ki te 13 tau te pakeke, ki te pakeke iti rawa rānei e hiahiatia ana i tōku whenua mēnā he teitei ake tēnā.",
+    "customCourseStepDesc": "He huinga mahi kōrerorero te akoranga e whai ana i tō pukapuka, mā ō ākonga e mahi ngātahi hei mahi kāinga."
 }

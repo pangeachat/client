@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:01.781927",
+    "@@last_modified": "2026-10-12 13:36:38.612952",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10893,5 +10893,6 @@
     "reportNotSent": "Via raporto ne povis esti sendita. Kontrolu vian konekton kaj reprovu.",
     "reportPointerMessage": "Mesaĝo estis raportita en {courseName} — vidu Sekurecon",
     "useActivityImageAsChatBackground": "Uzi agadan bildon kiel babilejan fonon",
-    "andCertifyIMeetTheMinimumAge": " kaj mi certigas, ke mi aĝas almenaŭ 13 jarojn, aŭ la minimuman aĝon postulatan en mia lando se tio estas pli alta."
+    "andCertifyIMeetTheMinimumAge": " kaj mi certigas, ke mi aĝas almenaŭ 13 jarojn, aŭ la minimuman aĝon postulatan en mia lando se tio estas pli alta.",
+    "customCourseStepDesc": "Kurso estas aro de konversaciaj agadoj, kiuj sekvas vian lernolibron, por ke viaj studentoj faru kune kiel hejmtasko."
 }

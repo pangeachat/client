@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-10 10:41:01.895405",
+    "@@last_modified": "2026-10-12 13:36:37.860580",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "A vostra segnalazione ùn hà pussutu esse inviata. Verificate a vostra cunnessione è riprovate.",
     "reportPointerMessage": "Un messagiu hè statu segnalatu in {courseName} — vede Sicurezza",
     "useActivityImageAsChatBackground": "Aduprà l'imagine di l'attività cum'è fondu di chat",
-    "andCertifyIMeetTheMinimumAge": " è certificu d'avè almenu 13 anni, o l'età minima richiesta in u mo paese s'ella hè più alta."
+    "andCertifyIMeetTheMinimumAge": " è certificu d'avè almenu 13 anni, o l'età minima richiesta in u mo paese s'ella hè più alta.",
+    "customCourseStepDesc": "Un corsu hè un inseme d'attività di cunversazione chì seguitanu u vostru libru di testu, per i vostri studienti à fà inseme cum'è duveri."
 }

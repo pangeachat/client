@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:13.017887",
+    "@@last_modified": "2026-10-12 13:36:49.718260",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7250,5 +7250,6 @@
     "reportNotSent": "Không thể gửi báo cáo của bạn. Vui lòng kiểm tra kết nối và thử lại.",
     "reportPointerMessage": "Một tin nhắn đã được báo cáo trong {courseName} — xem mục An toàn",
     "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện",
-    "andCertifyIMeetTheMinimumAge": " và xác nhận tôi ít nhất 13 tuổi, hoặc độ tuổi tối thiểu được yêu cầu ở quốc gia của tôi nếu cao hơn."
+    "andCertifyIMeetTheMinimumAge": " và xác nhận tôi ít nhất 13 tuổi, hoặc độ tuổi tối thiểu được yêu cầu ở quốc gia của tôi nếu cao hơn.",
+    "customCourseStepDesc": "Một khóa học là một tập hợp các hoạt động hội thoại theo sách giáo khoa của bạn, để học sinh của bạn cùng nhau làm bài tập về nhà."
 }

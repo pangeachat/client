@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-10 10:41:04.789054",
+    "@@last_modified": "2026-10-12 13:36:41.011967",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10051,5 +10051,6 @@
     "reportNotSent": "A jelentés nem küldhető el. Ellenőrizze az internetkapcsolatát, és próbálja újra.",
     "reportPointerMessage": "Üzenet jelentve a {courseName} kurzusban – lásd a Biztonság menüpontot",
     "useActivityImageAsChatBackground": "Tevékenység képének használata chat háttérként",
-    "andCertifyIMeetTheMinimumAge": " és igazolom, hogy betöltöttem a 13. életévemet, vagy az országomban előírt magasabb minimális életkort."
+    "andCertifyIMeetTheMinimumAge": " és igazolom, hogy betöltöttem a 13. életévemet, vagy az országomban előírt magasabb minimális életkort.",
+    "customCourseStepDesc": "A kurzus beszélgetési tevékenységek gyűjteménye, amelyek a tankönyvedet követik, és amelyeket a diákjaid együtt végezhetnek el házi feladatként."
 }

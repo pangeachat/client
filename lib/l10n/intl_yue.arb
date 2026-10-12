@@ -1259,7 +1259,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-10 10:41:13.474208",
+    "@@last_modified": "2026-10-12 13:36:50.841299",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10905,5 +10905,6 @@
     "reportNotSent": "無法送出你的舉報。請檢查你的連線，然後再試一次。",
     "reportPointerMessage": "{courseName} 有訊息被舉報咗 — 請睇安全中心",
     "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
-    "andCertifyIMeetTheMinimumAge": "並證明我已年滿 13 歲，如果我所在國家/地區有更高的最低年齡要求，則我已達到該要求。"
+    "andCertifyIMeetTheMinimumAge": "並證明我已年滿 13 歲，如果我所在國家/地區有更高的最低年齡要求，則我已達到該要求。",
+    "customCourseStepDesc": "課程係一系列對話活動，學生可以跟住你嘅教科書，一齊做功課。"
 }

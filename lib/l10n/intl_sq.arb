@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-10 10:41:11.429249",
+    "@@last_modified": "2026-10-12 13:36:47.726217",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "Raporti juaj nuk mund të dërgohej. Kontrolloni lidhjen tuaj dhe provoni përsëri.",
     "reportPointerMessage": "Një mesazh u raportua në {courseName} — shihni Sigurinë",
     "useActivityImageAsChatBackground": "Përdor imazhin e aktivitetit si sfond bisede",
-    "andCertifyIMeetTheMinimumAge": " dhe vërtetoj se jam të paktën 13 vjeç, ose mosha minimale e kërkuar në vendin tim nëse ajo është më e lartë."
+    "andCertifyIMeetTheMinimumAge": " dhe vërtetoj se jam të paktën 13 vjeç, ose mosha minimale e kërkuar në vendin tim nëse ajo është më e lartë.",
+    "customCourseStepDesc": "Një kurs është një grup aktivitetesh bisede që ndjekin tekstin tuaj shkollor, që studentët tuaj të bëjnë së bashku si detyrë shtëpie."
 }

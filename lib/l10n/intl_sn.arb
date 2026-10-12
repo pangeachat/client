@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-10 10:41:11.051644",
+    "@@last_modified": "2026-10-12 13:36:47.779120",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "Chirevo chako hachina kutumirwa. Tarisa internet yako woedza zvakare.",
     "reportPointerMessage": "Meseji yakashumwa mu{courseName} — ona Kuchengeteka",
     "useActivityImageAsChatBackground": "Shandisa mufananidzo wechiitiko sehwaro hwechat",
-    "andCertifyIMeetTheMinimumAge": " uye ndinopupura kuti ndasvitsa makore gumi nematatu, kana kuti makore anodiwa munyika yangu kana akakwirira."
+    "andCertifyIMeetTheMinimumAge": " uye ndinopupura kuti ndasvitsa makore gumi nematatu, kana kuti makore anodiwa munyika yangu kana akakwirira.",
+    "customCourseStepDesc": "Kosi iseti yezviitiko zvekukurukurirana zvinotevera bhuku rako, kuti vadzidzi vako vaite pamwe chete sehomweki."
 }

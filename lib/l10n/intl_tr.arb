@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-10 10:41:12.487269",
+    "@@last_modified": "2026-10-12 13:36:48.770979",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10249,5 +10249,6 @@
     "reportNotSent": "Raporunuz gönderilemedi. Bağlantınızı kontrol edip tekrar deneyin.",
     "reportPointerMessage": "{courseName} içinde bir mesaj bildirildi — Güvenlik bölümüne bakın",
     "useActivityImageAsChatBackground": "Etkinlik görselini sohbet arka planı olarak kullan",
-    "andCertifyIMeetTheMinimumAge": " ve en az 13 yaşında olduğumu veya ülkemde daha yüksekse gereken minimum yaşta olduğumu onaylıyorum."
+    "andCertifyIMeetTheMinimumAge": " ve en az 13 yaşında olduğumu veya ülkemde daha yüksekse gereken minimum yaşta olduğumu onaylıyorum.",
+    "customCourseStepDesc": "Bir kurs, öğrencilerinizin ödev olarak birlikte yapmaları için ders kitabınızı takip eden bir dizi konuşma etkinliğidir."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-10 10:41:11.939009",
+    "@@last_modified": "2026-10-12 13:36:48.448062",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "Ripoti yako haikuweza kutumwa. Angalia muunganisho wako na ujaribu tena.",
     "reportPointerMessage": "Ujumbe uliripotiwa katika {courseName} — angalia Usalama",
     "useActivityImageAsChatBackground": "Tumia picha ya shughuli kama mandharinyuma ya gumzo",
-    "andCertifyIMeetTheMinimumAge": " na kuthibitisha nina umri wa miaka 13 au zaidi, au umri wa chini unaohitajika katika nchi yangu ikiwa ni mkubwa zaidi."
+    "andCertifyIMeetTheMinimumAge": " na kuthibitisha nina umri wa miaka 13 au zaidi, au umri wa chini unaohitajika katika nchi yangu ikiwa ni mkubwa zaidi.",
+    "customCourseStepDesc": "Kozi ni seti ya shughuli za mazungumzo zinazofuata kitabu chako cha kiada, kwa ajili ya wanafunzi wako kufanya pamoja kama kazi ya nyumbani."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:08.796701",
+    "@@last_modified": "2026-10-12 13:36:45.049064",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9948,5 +9948,6 @@
     "reportNotSent": "Je rapport kon niet worden verzonden. Controleer je verbinding en probeer het opnieuw.",
     "reportPointerMessage": "Er is een bericht gerapporteerd in {courseName} — zie Veiligheid",
     "useActivityImageAsChatBackground": "Gebruik activiteitsafbeelding als chatachtergrond",
-    "andCertifyIMeetTheMinimumAge": " en bevestig dat ik ten minste 13 jaar oud ben, of de minimumleeftijd die in mijn land is vereist als die hoger is."
+    "andCertifyIMeetTheMinimumAge": " en bevestig dat ik ten minste 13 jaar oud ben, of de minimumleeftijd die in mijn land is vereist als die hoger is.",
+    "customCourseStepDesc": "Een cursus is een reeks gespreksactiviteiten die je leerboek volgen, die je studenten samen als huiswerk kunnen doen."
 }

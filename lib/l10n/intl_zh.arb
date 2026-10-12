@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-10 10:41:13.650435",
+    "@@last_modified": "2026-10-12 13:36:50.250524",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9948,5 +9948,6 @@
     "reportNotSent": "无法发送您的举报。请检查您的网络连接，然后重试。",
     "reportPointerMessage": "在 {courseName} 中举报了一条消息 — 请查看“安全”",
     "useActivityImageAsChatBackground": "使用活动图片作为聊天背景",
-    "andCertifyIMeetTheMinimumAge": "并证明我已年满13周岁，如果我的国家/地区要求更高的最低年龄，则以该年龄为准。"
+    "andCertifyIMeetTheMinimumAge": "并证明我已年满13周岁，如果我的国家/地区要求更高的最低年龄，则以该年龄为准。",
+    "customCourseStepDesc": "课程是一系列对话活动，学生可以根据您的教材，一起完成这些活动作为家庭作业。"
 }

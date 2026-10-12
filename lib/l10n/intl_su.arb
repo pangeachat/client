@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-10 10:41:12.571686",
+    "@@last_modified": "2026-10-12 13:36:49.441612",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "Laporan anjeun teu tiasa dikirim. Pariksa sambungan anjeun teras cobian deui.",
     "reportPointerMessage": "Aya béja dilaporkeun di {courseName} — tingali Kasalametan",
     "useActivityImageAsChatBackground": "Anggo gambar kagiatan salaku latar obrolan",
-    "andCertifyIMeetTheMinimumAge": " sareng mastikeun yén abdi parantos umur 13 taun, atanapi umur minimum anu diperyogikeun di nagara abdi upami langkung luhur."
+    "andCertifyIMeetTheMinimumAge": " sareng mastikeun yén abdi parantos umur 13 taun, atanapi umur minimum anu diperyogikeun di nagara abdi upami langkung luhur.",
+    "customCourseStepDesc": "Kursus nyaéta runtuyan kagiatan paguneman anu nuturkeun buku téks anjeun, pikeun siswa anjeun pikeun ngalakukeun babarengan salaku PR."
 }

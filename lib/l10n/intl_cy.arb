@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-10 10:41:02.008941",
+    "@@last_modified": "2026-10-12 13:36:38.014936",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "Ni ellid anfon eich adroddiad. Gwiriwch eich cysylltiad a rhowch gynnig arall arni.",
     "reportPointerMessage": "Adroddwyd am neges yn {courseName} — gweler Diogelwch",
     "useActivityImageAsChatBackground": "Defnyddio delwedd gweithgaredd fel cefndir sgwrsio",
-    "andCertifyIMeetTheMinimumAge": " a chadarnhau fy mod o leiaf 13 oed, neu'r oedran lleiaf sy'n ofynnol yn fy ngwlad os yw hynny'n uwch."
+    "andCertifyIMeetTheMinimumAge": " a chadarnhau fy mod o leiaf 13 oed, neu'r oedran lleiaf sy'n ofynnol yn fy ngwlad os yw hynny'n uwch.",
+    "customCourseStepDesc": "Mae cwrs yn set o weithgareddau sgwrsio sy'n dilyn eich gwerslyfr, i'ch myfyrwyr eu gwneud gyda'i gilydd fel gwaith cartref."
 }

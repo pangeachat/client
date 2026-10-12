@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:13.509265",
+    "@@last_modified": "2026-10-12 13:36:51.391744",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10054,5 +10054,6 @@
     "reportNotSent": "您的檢舉無法送出。請檢查您的連線並再試一次。",
     "reportPointerMessage": "在「{courseName}」中有一則訊息被檢舉了 — 請查看「安全」",
     "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
-    "andCertifyIMeetTheMinimumAge": " 並證明我已年滿 13 歲，或達到我的國家/地區規定的最低年齡（如果該年齡較高）。"
+    "andCertifyIMeetTheMinimumAge": " 並證明我已年滿 13 歲，或達到我的國家/地區規定的最低年齡（如果該年齡較高）。",
+    "customCourseStepDesc": "課程是一系列對話活動，可讓學生按照課本內容，一起完成作業。"
 }

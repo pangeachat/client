@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-10 10:41:03.304017",
+    "@@last_modified": "2026-10-12 13:36:39.707101",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9948,5 +9948,6 @@
     "reportNotSent": "Non se puido enviar o teu informe. Comproba a túa conexión e téntao de novo.",
     "reportPointerMessage": "Informouse dunha mensaxe en {courseName} — consulta Seguridade",
     "useActivityImageAsChatBackground": "Usar a imaxe da actividade como fondo do chat",
-    "andCertifyIMeetTheMinimumAge": " e certifico que teño polo menos 13 anos, ou a idade mínima requirida no meu país se esta é superior."
+    "andCertifyIMeetTheMinimumAge": " e certifico que teño polo menos 13 anos, ou a idade mínima requirida no meu país se esta é superior.",
+    "customCourseStepDesc": "Un curso é un conxunto de actividades de conversa que seguen o teu libro de texto, para que os teus estudantes as fagan xuntos como deberes."
 }

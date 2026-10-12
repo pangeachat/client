@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-10 10:41:11.712444",
+    "@@last_modified": "2026-10-12 13:36:48.912382",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "Tlaleho ea hau e ne e ke ke ea romeloa. Lekola khokahano ea hau 'me u leke hape.",
     "reportPointerMessage": "Molaetsa o tlalehiloe ho {courseName} — bona Polokeho",
     "useActivityImageAsChatBackground": "Sebelisa setšoantšo sa mosebetsi e le bokamorao ba moqoqo",
-    "andCertifyIMeetTheMinimumAge": " mme ke netefatsa hore ke na le bonyane lilemo tse 13, kapa lilemo tse fokolang tse hlokahalang naheng ea heso haeba li le holimo."
+    "andCertifyIMeetTheMinimumAge": " mme ke netefatsa hore ke na le bonyane lilemo tse 13, kapa lilemo tse fokolang tse hlokahalang naheng ea heso haeba li le holimo.",
+    "customCourseStepDesc": "Thupelo ke letoto la mesebetsi ea moqoqo e latelang buka ea hau, bakeng sa baithuti ba hau ho e etsa hammoho e le mosebetsi oa sekolo."
 }

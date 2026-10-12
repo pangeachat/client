@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:06.804052",
+    "@@last_modified": "2026-10-12 13:36:42.706649",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10141,5 +10141,6 @@
     "reportNotSent": "신고를 보낼 수 없습니다. 연결 상태를 확인하고 다시 시도해 주세요.",
     "reportPointerMessage": "{courseName}에서 메시지가 신고되었습니다. 안전을 참조하세요.",
     "useActivityImageAsChatBackground": "활동 이미지를 채팅 배경으로 사용",
-    "andCertifyIMeetTheMinimumAge": " 및 저는 13세 이상이거나, 해당 국가에서 요구하는 최소 연령(더 높은 경우) 이상임을 증명합니다."
+    "andCertifyIMeetTheMinimumAge": " 및 저는 13세 이상이거나, 해당 국가에서 요구하는 최소 연령(더 높은 경우) 이상임을 증명합니다.",
+    "customCourseStepDesc": "코스는 교과서를 따르는 일련의 대화 활동으로, 학생들이 숙제로 함께 할 수 있습니다."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:05.547088",
+    "@@last_modified": "2026-10-12 13:36:41.934751",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10021,5 +10021,6 @@
     "reportNotSent": "Impossibile inviare la segnalazione. Controlla la tua connessione e riprova.",
     "reportPointerMessage": "È stato segnalato un messaggio in {courseName} — vedi Sicurezza",
     "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
-    "andCertifyIMeetTheMinimumAge": " e dichiaro di avere almeno 13 anni, o l'età minima richiesta nel mio paese se superiore."
+    "andCertifyIMeetTheMinimumAge": " e dichiaro di avere almeno 13 anni, o l'età minima richiesta nel mio paese se superiore.",
+    "customCourseStepDesc": "Un corso è un insieme di attività di conversazione che seguono il tuo libro di testo, che i tuoi studenti possono svolgere insieme come compito a casa."
 }

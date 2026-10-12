@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-10 10:41:03.447997",
+    "@@last_modified": "2026-10-12 13:36:39.008518",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10303,5 +10303,6 @@
     "reportNotSent": "Votre signalement n'a pas pu être envoyé. Vérifiez votre connexion et réessayez.",
     "reportPointerMessage": "Un message a été signalé dans {courseName} — voir Sécurité",
     "useActivityImageAsChatBackground": "Utiliser l'image de l'activité comme arrière-plan de discussion",
-    "andCertifyIMeetTheMinimumAge": " et certifie que j'ai au moins 13 ans, ou l'âge minimum requis dans mon pays si celui-ci est plus élevé."
+    "andCertifyIMeetTheMinimumAge": " et certifie que j'ai au moins 13 ans, ou l'âge minimum requis dans mon pays si celui-ci est plus élevé.",
+    "customCourseStepDesc": "Un cours est un ensemble d'activités de conversation qui suivent votre manuel, que vos étudiants peuvent faire ensemble comme devoirs."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:11.772506",
+    "@@last_modified": "2026-10-12 13:36:48.275037",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10466,5 +10466,6 @@
     "reportNotSent": "Din rapport kunde inte skickas. Kontrollera din anslutning och försök igen.",
     "reportPointerMessage": "Ett meddelande rapporterades i {courseName} – se Säkerhet",
     "useActivityImageAsChatBackground": "Använd aktivitetsbild som chattbakgrund",
-    "andCertifyIMeetTheMinimumAge": " och intygar att jag är minst 13 år gammal, eller den minimiålder som krävs i mitt land om den är högre."
+    "andCertifyIMeetTheMinimumAge": " och intygar att jag är minst 13 år gammal, eller den minimiålder som krävs i mitt land om den är högre.",
+    "customCourseStepDesc": "En kurs är en uppsättning konversationsaktiviteter som följer din lärobok, för dina elever att göra tillsammans som läxa."
 }

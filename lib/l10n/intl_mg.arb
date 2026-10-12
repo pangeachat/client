@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-10 10:41:07.718237",
+    "@@last_modified": "2026-10-12 13:36:44.614501",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "Tsy afaka nalefa ny tatitrao. Hamarino ny fifandraisanao ary andramo indray.",
     "reportPointerMessage": "Nisy hafatra notaterina tao amin'ny {courseName} — jereo ny Fiarovana",
     "useActivityImageAsChatBackground": "Ampiasaina ny sarin'ny asa ho toy ny fiavian'ny chat",
-    "andCertifyIMeetTheMinimumAge": " ary manamarina fa feno 13 taona farafahakeliny aho, na ny taona farany ambany takiana ao amin'ny fireneko raha avo kokoa izany."
+    "andCertifyIMeetTheMinimumAge": " ary manamarina fa feno 13 taona farafahakeliny aho, na ny taona farany ambany takiana ao amin'ny fireneko raha avo kokoa izany.",
+    "customCourseStepDesc": "Ny taranja dia andiana asa fifampiresahana manaraka ny boky fianaranao, ho an'ny mpianatrao hatao miaraka ho enti-mody."
 }

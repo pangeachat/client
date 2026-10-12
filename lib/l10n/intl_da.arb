@@ -1330,7 +1330,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-10 10:41:01.787028",
+    "@@last_modified": "2026-10-12 13:36:40.644080",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10868,5 +10868,6 @@
     "reportNotSent": "Din rapport kunne ikke sendes. Tjek din forbindelse, og prøv igen.",
     "reportPointerMessage": "En besked blev rapporteret i {courseName} – se Sikkerhed",
     "useActivityImageAsChatBackground": "Brug aktivitetsbillede som chatbaggrund",
-    "andCertifyIMeetTheMinimumAge": " og bekræfter, at jeg er mindst 13 år gammel, eller den minimumsalder, der kræves i mit land, hvis den er højere."
+    "andCertifyIMeetTheMinimumAge": " og bekræfter, at jeg er mindst 13 år gammel, eller den minimumsalder, der kræves i mit land, hvis den er højere.",
+    "customCourseStepDesc": "Et kursus er et sæt samtaleaktiviteter, der følger din lærebog, som dine elever kan lave sammen som lektier."
 }

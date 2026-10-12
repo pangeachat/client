@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-10 10:41:06.221630",
+    "@@last_modified": "2026-10-12 13:36:41.727006",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "Enweghị ike iziga akụkọ gị. Lelee njikọ gị wee nwaa ọzọ.",
     "reportPointerMessage": "Ekwuru okwu n'ime {courseName} — lee Nchekwa",
     "useActivityImageAsChatBackground": "Jiri onyonyo ọrụ dị ka ndabere nkata",
-    "andCertifyIMeetTheMinimumAge": " ma kwado na m dị opekata mpe afọ 13, ma ọ bụ afọ kacha nta achọrọ na obodo m ma ọ bụrụ na ọ dị elu."
+    "andCertifyIMeetTheMinimumAge": " ma kwado na m dị opekata mpe afọ 13, ma ọ bụ afọ kacha nta achọrọ na obodo m ma ọ bụrụ na ọ dị elu.",
+    "customCourseStepDesc": "Usoro ọmụmụ bụ usoro ihe omume mkparịta ụka na-eso akwụkwọ gị, maka ụmụ akwụkwọ gị ka ha na-eme ọnụ dị ka ihe omume ụlọ."
 }

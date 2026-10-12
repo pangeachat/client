@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-10 10:41:12.873471",
+    "@@last_modified": "2026-10-12 13:36:50.069058",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9952,5 +9952,6 @@
     "reportNotSent": "Xabaringiz yuborilmadi. Internet aloqangizni tekshiring va qayta urinib koʻring.",
     "reportPointerMessage": "{courseName} dagi xabar haqida xabar berildi — Xavfsizlik boʻlimiga qarang",
     "useActivityImageAsChatBackground": "Faoliyat rasmini chat fon rasmi sifatida ishlatish",
-    "andCertifyIMeetTheMinimumAge": " va men kamida 13 yoshda ekanligimni yoki agar yuqori bo'lsa, mamlakatimda talab qilinadigan minimal yoshga to'g'ri kelishimni tasdiqlayman."
+    "andCertifyIMeetTheMinimumAge": " va men kamida 13 yoshda ekanligimni yoki agar yuqori bo'lsa, mamlakatimda talab qilinadigan minimal yoshga to'g'ri kelishimni tasdiqlayman.",
+    "customCourseStepDesc": "Kurs — bu darsligingizga mos keladigan suhbat mashg‘ulotlari to‘plami bo‘lib, talabalaringiz uy vazifasi sifatida birgalikda bajarishlari uchun mo‘ljallangan."
 }

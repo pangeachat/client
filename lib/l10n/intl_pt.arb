@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:09.761340",
+    "@@last_modified": "2026-10-12 13:36:46.154635",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10892,5 +10892,6 @@
     "reportNotSent": "Não foi possível enviar sua denúncia. Verifique sua conexão e tente novamente.",
     "reportPointerMessage": "Uma mensagem foi denunciada em {courseName} — veja Segurança",
     "useActivityImageAsChatBackground": "Usar imagem da atividade como plano de fundo do chat",
-    "andCertifyIMeetTheMinimumAge": " e certifico que tenho pelo menos 13 anos de idade, ou a idade mínima exigida no meu país, se for superior."
+    "andCertifyIMeetTheMinimumAge": " e certifico que tenho pelo menos 13 anos de idade, ou a idade mínima exigida no meu país, se for superior.",
+    "customCourseStepDesc": "Um curso é um conjunto de atividades de conversação que seguem seu livro didático, para seus alunos fazerem juntos como lição de casa."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-10 10:41:05.184438",
+    "@@last_modified": "2026-10-12 13:36:39.916212",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "ʻAʻole hiki ke hoʻouna ʻia kāu hōʻike. E nānā i kāu pili pūnaewele a e hoʻāʻo hou.",
     "reportPointerMessage": "Ua hōʻike ʻia kekahi leka ma {courseName} — e nānā i ka Palekana",
     "useActivityImageAsChatBackground": "E hoʻohana i ke kiʻi hana ma ke ʻano he kāʻei kua kamaʻilio",
-    "andCertifyIMeetTheMinimumAge": " a ke hōʻoiaʻiʻo nei au he 13 oʻu makahiki a ʻoi paha, a i ʻole ka makahiki liʻiliʻi e koi ʻia ana ma koʻu ʻāina inā ʻoi aku ia."
+    "andCertifyIMeetTheMinimumAge": " a ke hōʻoiaʻiʻo nei au he 13 oʻu makahiki a ʻoi paha, a i ʻole ka makahiki liʻiliʻi e koi ʻia ana ma koʻu ʻāina inā ʻoi aku ia.",
+    "customCourseStepDesc": "He papa hana kamaʻilio ka papa e pili ana i kāu puke aʻo, no kāu mau haumāna e hana pū ai ma ke ʻano he haʻawina home."
 }

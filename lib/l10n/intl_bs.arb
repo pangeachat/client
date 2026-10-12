@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-10 10:41:00.886735",
+    "@@last_modified": "2026-10-12 13:36:36.286311",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "Vaš izvještaj nije mogao biti poslan. Provjerite vezu i pokušajte ponovo.",
     "reportPointerMessage": "Poruka je prijavljena u {courseName} — pogledajte Sigurnost",
     "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata",
-    "andCertifyIMeetTheMinimumAge": " i potvrđujem da imam najmanje 13 godina, ili minimalnu dob propisanu u mojoj zemlji ako je ona viša."
+    "andCertifyIMeetTheMinimumAge": " i potvrđujem da imam najmanje 13 godina, ili minimalnu dob propisanu u mojoj zemlji ako je ona viša.",
+    "customCourseStepDesc": "Kurs je skup konverzacijskih aktivnosti koje prate vaš udžbenik, a koje vaši učenici rade zajedno kao domaći zadatak."
 }

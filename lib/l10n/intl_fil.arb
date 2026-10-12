@@ -2076,7 +2076,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-10 10:41:03.367344",
+    "@@last_modified": "2026-10-12 13:36:38.794056",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10808,5 +10808,6 @@
     "reportNotSent": "Hindi maipadala ang iyong ulat. Tingnan ang iyong koneksyon at subukang muli.",
     "reportPointerMessage": "May naiulat na mensahe sa {courseName} — tingnan ang Kaligtasan",
     "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat",
-    "andCertifyIMeetTheMinimumAge": " at pinapatunayan kong ako ay hindi bababa sa 13 taong gulang, o ang minimum na edad na kinakailangan sa aking bansa kung ito ay mas mataas."
+    "andCertifyIMeetTheMinimumAge": " at pinapatunayan kong ako ay hindi bababa sa 13 taong gulang, o ang minimum na edad na kinakailangan sa aking bansa kung ito ay mas mataas.",
+    "customCourseStepDesc": "Ang kurso ay isang hanay ng mga aktibidad sa pag-uusap na sumusunod sa iyong aklat-aralin, para sa iyong mga mag-aaral na gawin nang magkasama bilang takdang-aralin."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-10 10:41:03.480474",
+    "@@last_modified": "2026-10-12 13:36:38.724808",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9945,5 +9945,6 @@
     "reportNotSent": "Teie aruannet ei saanud saata. Kontrollige oma ühendust ja proovige uuesti.",
     "reportPointerMessage": "Sõnumist teatati kursusel {courseName} – vaadake jaotist „Ohutus“",
     "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
-    "andCertifyIMeetTheMinimumAge": " ja kinnitan, et olen vähemalt 13-aastane või minu riigis nõutavast vanusest vanem, kui see on kõrgem."
+    "andCertifyIMeetTheMinimumAge": " ja kinnitan, et olen vähemalt 13-aastane või minu riigis nõutavast vanusest vanem, kui see on kõrgem.",
+    "customCourseStepDesc": "Kursus on vestlustegevuste kogum, mis järgib teie õpikut ja mida teie õpilased saavad kodutööna koos teha."
 }

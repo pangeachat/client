@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-10 10:41:05.948474",
+    "@@last_modified": "2026-10-12 13:36:41.710458",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10717,5 +10717,6 @@
     "reportNotSent": "レポートを送信できませんでした。接続を確認して、もう一度お試しください。",
     "reportPointerMessage": "{courseName}でメッセージが報告されました — 安全設定を確認してください",
     "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用",
-    "andCertifyIMeetTheMinimumAge": " また、私は13歳以上であること、または私の国で定められている場合はそれ以上の最低年齢であることを証明します。"
+    "andCertifyIMeetTheMinimumAge": " また、私は13歳以上であること、または私の国で定められている場合はそれ以上の最低年齢であることを証明します。",
+    "customCourseStepDesc": "コースとは、教科書に沿った会話アクティビティのセットで、生徒が宿題として一緒に取り組むものです。"
 }

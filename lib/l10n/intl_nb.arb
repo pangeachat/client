@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-10 10:41:08.547293",
+    "@@last_modified": "2026-10-12 13:36:45.242738",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10005,5 +10005,6 @@
     "reportNotSent": "Rapporten din kunne ikke sendes. Sjekk tilkoblingen din og prøv igjen.",
     "reportPointerMessage": "En melding ble rapportert i {courseName} – se Sikkerhet",
     "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
-    "andCertifyIMeetTheMinimumAge": " og bekrefter at jeg er minst 13 år gammel, eller den minimumsalderen som kreves i mitt land hvis den er høyere."
+    "andCertifyIMeetTheMinimumAge": " og bekrefter at jeg er minst 13 år gammel, eller den minimumsalderen som kreves i mitt land hvis den er høyere.",
+    "customCourseStepDesc": "Et kurs er et sett med samtaleaktiviteter som følger læreboken din, som elevene dine kan gjøre sammen som lekser."
 }

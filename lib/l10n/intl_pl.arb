@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-10 10:41:09.736006",
+    "@@last_modified": "2026-10-12 13:36:46.085056",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10033,5 +10033,6 @@
     "reportNotSent": "Twoje zgłoszenie nie mogło zostać wysłane. Sprawdź połączenie i spróbuj ponownie.",
     "reportPointerMessage": "Wiadomość została zgłoszona w {courseName} — zobacz Bezpieczeństwo",
     "useActivityImageAsChatBackground": "Użyj obrazu aktywności jako tła czatu",
-    "andCertifyIMeetTheMinimumAge": " i oświadczam, że mam co najmniej 13 lat lub osiągnąłem minimalny wiek wymagany w moim kraju, jeśli jest on wyższy."
+    "andCertifyIMeetTheMinimumAge": " i oświadczam, że mam co najmniej 13 lat lub osiągnąłem minimalny wiek wymagany w moim kraju, jeśli jest on wyższy.",
+    "customCourseStepDesc": "Kurs to zestaw ćwiczeń konwersacyjnych, które są zgodne z Twoim podręcznikiem, do wspólnego odrabiania przez Twoich uczniów jako praca domowa."
 }

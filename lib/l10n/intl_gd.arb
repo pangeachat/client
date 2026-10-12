@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-10 10:41:03.537952",
+    "@@last_modified": "2026-10-12 13:36:40.350298",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "Cha b' urrainn dhuinn an aithisg agad a chur. Thoir sùil air a' cheangal agad is feuch ris a-rithist.",
     "reportPointerMessage": "Chaidh teachdaireachd aithris ann an {courseName} — faic Sàbhailteachd",
     "useActivityImageAsChatBackground": "Cleachd dealbh gnìomhachd mar chùl-raon cabadaich",
-    "andCertifyIMeetTheMinimumAge": " agus dearbhaichidh mi gu bheil mi co-dhiù 13 bliadhna a dh'aois, no an aois as ìsle a tha a dhìth nam dhùthaich ma tha sin nas àirde."
+    "andCertifyIMeetTheMinimumAge": " agus dearbhaichidh mi gu bheil mi co-dhiù 13 bliadhna a dh'aois, no an aois as ìsle a tha a dhìth nam dhùthaich ma tha sin nas àirde.",
+    "customCourseStepDesc": "’S e seata de ghnìomhachdan còmhraidh a th’ ann an cùrsa a leanas an leabhar-teacsa agad, airson gum bi na h-oileanaich agad ga dhèanamh còmhla mar obair-dachaigh."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-10 10:41:11.126767",
+    "@@last_modified": "2026-10-12 13:36:48.494088",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2397,5 +2397,6 @@
     "reportNotSent": "Warbixintaada lama diri karin. Hubi isku xirkaaga oo mar kale isku day.",
     "reportPointerMessage": "Fariin ayaa lagu soo sheegay {courseName} — fiiri Badbaadada",
     "useActivityImageAsChatBackground": "Isticmaal sawirka hawsha asagoo ah asalka sheekaysiga",
-    "andCertifyIMeetTheMinimumAge": " iyo waxaan caddaynayaa in aan ugu yaraan 13 sano jir ahay, ama da'da ugu yar ee looga baahan yahay dalkayga haddii ay ka sarreyso."
+    "andCertifyIMeetTheMinimumAge": " iyo waxaan caddaynayaa in aan ugu yaraan 13 sano jir ahay, ama da'da ugu yar ee looga baahan yahay dalkayga haddii ay ka sarreyso.",
+    "customCourseStepDesc": "Koorsadu waa qaybo waxqabadyo wada-hadal ah oo raacaya buuggaaga, si ardaydaadu ay u wada qabtaan shaqo-guri ahaan."
 }
