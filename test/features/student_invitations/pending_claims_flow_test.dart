@@ -146,17 +146,23 @@ void main() {
       expect(SpaceCodeRepo.pendingLtiTicket, isNull);
     });
 
-    test('a ticket in the query (logged by web hosts) is never ferried, only '
-        'stripped from the address bar', () async {
-      fragment.value = null;
-      expect(
-        await LtiEntry.linkRedirect(
-          Uri.parse('${PRoutes.ltiLink}?ticket=$ticket'),
-        ),
-        PRoutes.ltiLink,
-      );
-      expect(SpaceCodeRepo.pendingLtiTicket, isNull);
-    });
+    test(
+      'a ticket in the query (logged by web hosts) is never ferried, only '
+      'stripped from the address bar, and it drops an older held one',
+      () async {
+        fragment.value = null;
+        await SpaceCodeRepo.setPendingLtiTicket(
+          const PendingLtiTicket('older'),
+        );
+        expect(
+          await LtiEntry.linkRedirect(
+            Uri.parse('${PRoutes.ltiLink}?ticket=$ticket'),
+          ),
+          PRoutes.ltiLink,
+        );
+        expect(SpaceCodeRepo.pendingLtiTicket, isNull);
+      },
+    );
 
     test('an expired ticket is reported and not retried', () async {
       await SpaceCodeRepo.setPendingLtiTicket(const PendingLtiTicket(ticket));
@@ -181,7 +187,7 @@ void main() {
         expect(SpaceCodeRepo.pendingLtiTicket?.instructor, isTrue);
 
         const connect =
-            'https://admin.example.org/canvas-connect?ticket=c0nn3ct';
+            'https://admin.example.org/canvas-connect#ticket=c0nn3ct';
         routes['POST $prefix/lti/link'] = (_) =>
             json(200, {'next': 'connect', 'connect_url': connect});
 
@@ -228,7 +234,9 @@ void main() {
     });
 
     test('a token in the query (logged by web hosts) is never used, only '
-        'stripped from the address bar', () {
+        'stripped from the address bar, and it drops an older held one', () {
+      fragment.value = 'loginToken=older';
+      LtiEntry.tokenRedirect(Uri.parse(PRoutes.ltiToken));
       fragment.value = null;
       expect(
         LtiEntry.tokenRedirect(

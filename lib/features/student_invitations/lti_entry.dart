@@ -55,7 +55,9 @@ abstract class LtiEntry {
   /// (route returned) and never used.
   static Future<String?> linkRedirect(Uri uri) async {
     final params = _takeFragment();
-    if (params.isNotEmpty) {
+    // A landing (fragment or query) is a new launch: only its own fragment
+    // ticket may be ferried, so anything else drops an older held one.
+    if (params.isNotEmpty || uri.query.isNotEmpty) {
       final ticket = params['ticket'];
       if (ticket != null && PRoutes.isLtiTicket(ticket)) {
         final course = params['course']?.trim();
@@ -85,7 +87,7 @@ abstract class LtiEntry {
   /// replay. A query is stripped (route returned) and never used.
   static String? tokenRedirect(Uri uri) {
     final params = _takeFragment();
-    if (params.isNotEmpty) {
+    if (params.isNotEmpty || uri.query.isNotEmpty) {
       final token = params['loginToken'];
       // Only this landing's token may be used: one without a usable token
       // must not revive an older held one.
