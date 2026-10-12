@@ -1164,6 +1164,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         //   state == LoginState.loggedIn ? '/backup' : '/home',
         // );
         if (state == LoginState.loggedIn) {
+          // Push, and the VoIP pusher that lets a call ring this phone, is
+          // set up as soon as the account is signed in. The chat list also
+          // sets it up, but a sign-in lands on the map, so a phone could
+          // otherwise not ring until the learner opened their chats.
+          if (identical(backgroundPush?.client, c)) {
+            unawaited(backgroundPush?.setupPush());
+          }
           final isL2Set = await pangeaController.userController.isUserL2Set;
           // Not unconditionally the world map. This state also means "the
           // session finished restoring", which on a cold start lands AFTER the
