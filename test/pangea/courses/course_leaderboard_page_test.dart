@@ -20,7 +20,7 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 import 'package:fluffychat/widgets/matrix.dart';
 import '../fake_pangea_controller.dart';
 import '../get_test_client.dart';
-import 'settle_leaderboard.dart';
+import '../settle_leaderboard.dart';
 
 class _TestMatrixState extends MatrixState {
   @override
