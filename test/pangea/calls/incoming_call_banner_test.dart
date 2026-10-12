@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/gestures.dart';
@@ -52,6 +53,17 @@ class _AnsweredCall extends ChangeNotifier implements call_ui.CallSession {
   @override
   bool get isFailed => _failed;
 
+  bool ended = false;
+  final _released = Completer<void>();
+
+  void releaseMedia() => _released.complete();
+
+  @override
+  void endCall() => ended = true;
+
+  @override
+  Future<void> get mediaReleased => _released.future;
+
   @override
   String? get notificationEventId => _ring.eventId;
 
@@ -79,6 +91,14 @@ class _FakeCallScreen extends IosCallScreen {
 
   @override
   Future<void> setVideo(String uuid, bool video) async {}
+
+  final audio = <String>[];
+
+  @override
+  Future<void> takeAudioSession() async => audio.add('take');
+
+  @override
+  Future<void> returnAudioSession() async => audio.add('return');
 }
 
 class _TestMatrix extends Matrix {
@@ -756,6 +776,50 @@ void main() {
       (state.activeCall.value! as _AnsweredCall).fail();
       await tester.pump();
       expect(screen.ended, ['CALL-1:failed']);
+    });
+
+    // iOS turns the session off the moment the learner hangs up. LiveKit
+    // touching it then, with the call still running, crashed WebRTC.
+    testWidgets('a call answered there leaves the audio session to it', (
+      tester,
+    ) async {
+      final room = heldChat();
+      callerMembership(room, present: true);
+      final screen = _FakeCallScreen();
+      await pumpBanner(tester, callScreen: screen);
+      await showOnCallScreen(tester, screen);
+      await tester.runAsync(
+        () => screen.receive(
+          MethodCall('answer', {
+            'uuid': 'CALL-1',
+            'roomId': roomId,
+            'eventId': '\$ring',
+            'account': client.clientName,
+          }),
+        ),
+      );
+      await tester.pump();
+      expect(screen.audio, ['take']);
+
+      await tester.runAsync(
+        () => screen.receive(
+          const MethodCall('end', {
+            'uuid': 'CALL-1',
+            'roomId': roomId,
+            'eventId': '\$ring',
+            'answered': true,
+          }),
+        ),
+      );
+      await tester.pump();
+      final state = tester.state<MatrixState>(find.byType(_TestMatrix));
+      final call = state.activeCall.value! as _AnsweredCall;
+      expect(call.ended, isTrue);
+      expect(screen.audio, ['take'], reason: 'the call still has its media');
+
+      call.releaseMedia();
+      await tester.pump();
+      expect(screen.audio, ['take', 'return']);
     });
 
     testWidgets('declining there tells the caller', (tester) async {

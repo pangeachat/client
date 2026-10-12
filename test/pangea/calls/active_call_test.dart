@@ -1021,6 +1021,27 @@ void main() {
       expect(media, isNotNull);
     });
 
+    test('says when it has let go of the media', () async {
+      final (call, calls, media, _) = await build();
+      await call.start(roomStub(calls.client), video: false);
+      var released = false;
+      unawaited(call.mediaReleased.then((_) => released = true));
+      await pumpEventQueue();
+      expect(released, isFalse, reason: 'the call is still up');
+
+      await call.hangUp();
+      await pumpEventQueue();
+      expect(released, isTrue);
+    });
+
+    test('says so even when releasing the media failed', () async {
+      final (call, calls, media, _) = await build();
+      media.disposeError = StateError('dispose failed');
+      await call.start(roomStub(calls.client), video: false);
+      await call.hangUp();
+      await expectLater(call.mediaReleased, completes);
+    });
+
     test('a call nobody answered lasted no time at all', () async {
       final (call, calls, _, _) = await build();
       await call.start(roomStub(calls.client), video: false);

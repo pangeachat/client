@@ -365,19 +365,40 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
     IncomingCallNotification ring,
   ) {
     _answeredOnCallScreen = screenRing.uuid;
+    // Before the call connects, so LiveKit never turns the session on itself.
+    unawaited(
+      _callScreen.takeAudioSession().catchError((Object e, StackTrace s) {
+        ErrorHandler.logError(e: e, s: s, data: {});
+      }),
+    );
     _answer(ring);
     if (!mounted) return;
     final live = Matrix.of(context).activeCall.value;
-    if (live?.notificationEventId != ring.event.eventId) {
+    if (live == null || live.notificationEventId != ring.event.eventId) {
       // The answer could not start a call: the account signed out, or a call
       // was live elsewhere and the caller was told the line is busy.
       _answeredOnCallScreen = null;
       _endCallScreen(screenRing.uuid, CallScreenEndReason.failed);
+      _returnAudioSession();
       return;
     }
     _watchCallScreenCall(live);
     _onCallScreenCallChanged();
+    // However the call ends. Not before its media is released: the app's own
+    // management would then start on a call that is still running.
+    unawaited(
+      live.mediaReleased.then((_) {
+        final watched = _callScreenCall;
+        if (watched == null || identical(watched, live)) _returnAudioSession();
+      }),
+    );
   }
+
+  void _returnAudioSession() => unawaited(
+    _callScreen.returnAudioSession().catchError((Object e, StackTrace s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+    }),
+  );
 
   void _onCallScreenEnd(CallScreenEnd end) {
     if (end.answered) {

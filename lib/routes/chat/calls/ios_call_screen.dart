@@ -1,7 +1,14 @@
+// LiveKit marks its CallKit coordination (the external call system mode and
+// the engine gate) experimental in livekit_client 2.11. It is LiveKit's
+// documented way to keep its audio engine off a session CallKit owns.
+// ignore_for_file: experimental_member_use
+
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+
+import 'package:livekit_client/livekit_client.dart';
 
 import 'package:fluffychat/utils/platform_infos.dart';
 
@@ -140,4 +147,24 @@ class IosCallScreen {
   /// not say whether the call is video.
   Future<void> setVideo(String uuid, bool video) =>
       _channel.invokeMethod<void>('update', {'uuid': uuid, 'video': video});
+
+  /// Leaves the audio session to the call screen, for a call answered there.
+  /// iOS turns it on for the call and off when the call ends, and LiveKit
+  /// must touch it at neither moment: the native side runs the audio engine
+  /// only while iOS has the session on.
+  Future<void> takeAudioSession() =>
+      AudioManager.instance.setAudioSessionManagementMode(
+        AudioSessionManagementMode.externalCallSystem,
+      );
+
+  /// Gives the audio session back to the app, for calls made inside it, once
+  /// the call answered on the call screen has released its media.
+  Future<void> returnAudioSession() async {
+    await AudioManager.instance.setAudioSessionManagementMode(
+      AudioSessionManagementMode.automatic,
+    );
+    await AudioManager.instance.setEngineAvailability(
+      AudioEngineAvailability.defaultAvailability,
+    );
+  }
 }

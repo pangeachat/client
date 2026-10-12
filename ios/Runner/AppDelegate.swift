@@ -3,7 +3,7 @@ import CallKit
 import Flutter
 import PushKit
 import UIKit
-import WebRTC
+import livekit_client
 
 @main
 @objc class AppDelegate: FlutterAppDelegate {
@@ -282,10 +282,12 @@ final class CallScreen: NSObject, PKPushRegistryDelegate, CXProviderDelegate {
       return
     }
     answered.insert(action.callUUID)
-    // CallKit owns the audio session for this call: WebRTC waits for
-    // didActivate below instead of starting the microphone itself, which is
-    // what leaves an answered CallKit call with no audio.
-    RTCAudioSession.sharedInstance().useManualAudio = true
+    // CallKit owns the audio session for this call, so the audio engine runs
+    // only while CallKit has it active: gated off here, before the call
+    // connects, and opened in didActivate below. Without the gate the engine
+    // starts the microphone itself, which leaves the call with no audio, and
+    // keeps running when CallKit takes the session away, which crashes it.
+    LiveKitPlugin.setEngineAvailability(isInputAvailable: false, isOutputAvailable: false)
     send("answer", info)
     action.fulfill()
   }
@@ -311,16 +313,12 @@ final class CallScreen: NSObject, PKPushRegistryDelegate, CXProviderDelegate {
   }
 
   func provider(_ provider: CXProvider, didActivate audioSession: AVAudioSession) {
-    let rtc = RTCAudioSession.sharedInstance()
-    rtc.audioSessionDidActivate(audioSession)
-    rtc.isAudioEnabled = true
+    LiveKitPlugin.setEngineAvailability(isInputAvailable: true, isOutputAvailable: true)
   }
 
   func provider(_ provider: CXProvider, didDeactivate audioSession: AVAudioSession) {
-    let rtc = RTCAudioSession.sharedInstance()
-    rtc.audioSessionDidDeactivate(audioSession)
-    rtc.isAudioEnabled = false
-    // Calls placed from inside the app manage their own audio again.
-    rtc.useManualAudio = false
+    // The app opens the engine again for calls made inside it, once this
+    // call has released its media.
+    LiveKitPlugin.setEngineAvailability(isInputAvailable: false, isOutputAvailable: false)
   }
 }
