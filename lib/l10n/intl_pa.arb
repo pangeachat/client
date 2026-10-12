@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "ਅਸੀਂ ਤੁਹਾਡੀ ਬੇਨਤੀ ਨਹੀਂ ਭੇਜ ਸਕੇ। ਕਿਰਪਾ ਕਰਕੇ support@pangea.chat 'ਤੇ ਈਮੇਲ ਕਰੋ।",
     "filteredNetworkVideoBlocked": "ਇਹ ਨੈੱਟਵਰਕ ਵੀਡੀਓਜ਼ ਨੂੰ ਬਲੌਕ ਕਰਦਾ ਹੈ।",
     "filteredNetworkImagesBlocked": "ਇਹ ਨੈੱਟਵਰਕ ਤਸਵੀਰਾਂ ਨੂੰ ਬਲੌਕ ਕਰਦਾ ਹੈ।",
-    "filteredNetworkMapBlocked": "ਇਹ ਨੈੱਟਵਰਕ ਨਕਸ਼ੇ ਨੂੰ ਬਲੌਕ ਕਰਦਾ ਹੈ।"
+    "filteredNetworkMapBlocked": "ਇਹ ਨੈੱਟਵਰਕ ਨਕਸ਼ੇ ਨੂੰ ਬਲੌਕ ਕਰਦਾ ਹੈ।",
+    "callFullScreenTitle": "ਕਾਲਾਂ ਨੂੰ ਪੂਰੀ ਸਕ੍ਰੀਨ 'ਤੇ ਰਿੰਗ ਕਰਨ ਦਿਓ",
+    "callFullScreenMessage": "ਜਦੋਂ ਪੈਂਗੇਆ ਚੈਟ ਬੰਦ ਸੀ ਤਾਂ ਇੱਕ ਕਾਲ ਆਈ, ਪਰ ਤੁਹਾਡਾ ਫ਼ੋਨ ਇਸ ਲਈ ਸਿਰਫ਼ ਇੱਕ ਛੋਟੀ ਸੂਚਨਾ ਦਿਖਾ ਸਕਦਾ ਸੀ। ਪੂਰੀ-ਸਕ੍ਰੀਨ ਕਾਲਾਂ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ ਤਾਂ ਜੋ ਅਗਲੀ ਕਾਲ ਤੁਹਾਡੀ ਪੂਰੀ ਸਕ੍ਰੀਨ 'ਤੇ ਵੱਜੇ, ਭਾਵੇਂ ਤੁਹਾਡਾ ਫ਼ੋਨ ਲੌਕ ਹੋਵੇ।"
 }

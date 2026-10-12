@@ -1,6 +1,6 @@
 ---
-description: "Client call behaviour — presence authority, what ends a call, rejoining, call history, and where audio is tapped."
-applyTo: "lib/routes/chat/calls/**,pangea_packages/pangea_call_capture/**,lib/widgets/matrix.dart,ios/Runner/Info.plist,pubspec.yaml"
+description: "Client call behaviour — presence authority, what ends a call, rejoining, call history, where audio is tapped, and ringing a closed app."
+applyTo: "lib/routes/chat/calls/**,pangea_packages/pangea_call_capture/**,lib/widgets/matrix.dart,ios/Runner/Info.plist,pubspec.yaml,lib/utils/background_push.dart,lib/utils/push_helper.dart"
 ---
 
 # Voice & Video Calls — Client
@@ -401,6 +401,20 @@ Everything else degrades rather than fails:
   ordered transcript. A recording that was still uploading when the app was killed is
   uploaded on the next launch.
 
+## Ringing when the app is closed
+
+A call has to reach a learner whose app is closed or whose phone is locked. It builds on what already exists: the caller's ring event ([`CallNotification`](../../lib/routes/chat/calls/call_notification.dart)), the push rule that delivers it to the phone as a high-priority ringing push, and the in-app [`IncomingCallBanner`](../../lib/routes/chat/calls/incoming_call_banner.dart). Android needs no new pusher and no change to the push gateway; iOS needs both, below.
+
+**One decision about whether to ring.** The push wakes the app, which fetches the ring event and asks the same question the banner asks, `shouldRing`: is this a live ring for a call, sent by someone else, for a call this account has not already joined? So a closed phone never rings for a call that an open app would have stayed quiet for. Answering goes through one method on [`MatrixState`](../../lib/widgets/matrix.dart), which owns the call, and declining through [`CallService`](../../lib/routes/chat/calls/call_service.dart), so the banner, the Android notification and the iOS call screen answer and decline the same way.
+
+**No device rings forever.** The ring's own lifetime (30 seconds, never more than 90) is the timeout on every surface. A device stops sooner when the call is answered or declined on another of the learner's devices, or when the caller gives up.
+
+- **Android:** an incoming-call notification on its own calls channel. It shows full screen with a looping ringtone, Answer and Decline buttons, and a timeout equal to what is left of the ring. While it rings, a short foreground service keeps the app running for no longer than the ring, so answering or declining on another device stops the phone at once. On a locked phone it opens the app over the lock screen, and the banner takes over. Android 14 and later shows a full-screen ring by default only for apps Google Play accepts as calling apps. For any other app, the learner has to allow full-screen calls in Android settings, so the app asks them once; until they do, the phone shows a heads-up ring.
+- **iOS:** the native call screen, through CallKit, woken by a VoIP push. Apple stops waking an app that does not show a call for every VoIP push, so the server sends one only for a ring: the iOS app registers a second pusher for VoIP pushes, and the push gateway passes it rings and nothing else. The app shows each ring on the call screen at once, and ends straight away any ring that is already over. So that a ring does not also arrive as an ordinary notification, iOS builds that register for VoIP move their ordinary pusher to an app ID the push gateway sends no rings to; older builds keep today's notification. The app also needs the `voip` background mode.
+- **Web:** open tabs already ring. Ringing a closed browser needs web push, which is a later phase.
+
+**Missed call.** When a ring ends unanswered, a silent push for the call's card replaces the ring with "Missed call". That push is also what stops a closed phone ringing when the caller gives up.
+
 ## Platform gates
 
 - **Android** — a foreground service with an ongoing-call notification holds a
@@ -408,12 +422,8 @@ Everything else degrades rather than fails:
   instruction carries the generation of the call it was issued for and the platform
   adjudicates: a stop meant for a call that already ended cannot touch its
   successor. Microphone permission is required for a call to start at all.
-- **iOS** — the audio background mode in `Info.plist` holds it. `voip` belongs with
-  CallKit, which is not built.
+- **iOS** — the audio background mode in `Info.plist` holds it. A call answered from the iOS call screen is also held by CallKit (see [Ringing when the app is closed](#ringing-when-the-app-is-closed)).
 - **Web** — no foreground-service concept; the call ends with the tab.
-
-Neither platform can ring a closed app yet, which is the largest gap in the
-feature.
 
 Call buttons are built behind a MatrixRTC focus lookup, so an environment without
 one renders nothing rather than buttons that fail. This is also what keeps calling

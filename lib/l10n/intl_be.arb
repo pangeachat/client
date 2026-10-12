@@ -9977,5 +9977,7 @@
     "filteredNetworkHelpRefused": "Мы не змаглі адправіць ваш запыт. Калі ласка, напішыце на support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Гэтая сетка блакуе відэа.",
     "filteredNetworkImagesBlocked": "Гэтая сетка блакуе выявы.",
-    "filteredNetworkMapBlocked": "Гэтая сетка блакуе карту."
+    "filteredNetworkMapBlocked": "Гэтая сетка блакуе карту.",
+    "callFullScreenTitle": "Дазволіць званкам званіць на ўвесь экран",
+    "callFullScreenMessage": "Званок паступіў, калі Pangea Chat быў закрыты, але ваш тэлефон мог паказаць толькі невялікае апавяшчэнне пра яго. Дазвольце поўнаэкранныя званкі, каб наступны званок званіў на ўвесь экран, нават калі ваш тэлефон заблакіраваны."
 }

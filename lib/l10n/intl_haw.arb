@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "ʻAʻole hiki iā mākou ke hoʻouna i kāu noi. E leka uila iā support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Ke ālai nei kēia pūnaewele i nā wikiō.",
     "filteredNetworkImagesBlocked": "Ke ālai nei kēia pūnaewele i nā kiʻi.",
-    "filteredNetworkMapBlocked": "Ke ālai nei kēia pūnaewele i ka palapala ʻāina."
+    "filteredNetworkMapBlocked": "Ke ālai nei kēia pūnaewele i ka palapala ʻāina.",
+    "callFullScreenTitle": "E kani nā kelepona ma ka pale piha",
+    "callFullScreenMessage": "Ua loaʻa mai kahi kelepona i ka wā i paʻa ai ʻo Pangea Chat, akā hiki i kāu kelepona ke hōʻike i kahi leka hoʻomaopopo liʻiliʻi wale nō. E ʻae i nā kelepona pale piha i kani ka mea aʻe ma kāu pale holoʻokoʻa, ʻoiai inā paʻa kāu kelepona."
 }

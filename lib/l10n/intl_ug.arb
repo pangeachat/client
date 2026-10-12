@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "تەلەپلىرىڭىزنى ئەۋەتەلمىدۇق. support@pangea.chat ئادرېسىغا ئېلخەت ئەۋەتىڭ.",
     "filteredNetworkVideoBlocked": "بۇ تور سىنلارنى چەكلەيدۇ.",
     "filteredNetworkImagesBlocked": "بۇ تور رەسىملەرنى چەكلەيدۇ.",
-    "filteredNetworkMapBlocked": "بۇ تور خەرىتىنى چەكلەيدۇ."
+    "filteredNetworkMapBlocked": "بۇ تور خەرىتىنى چەكلەيدۇ.",
+    "callFullScreenTitle": "چاقىرىشلارنى تولۇق ئېكراندا چالغۇزۇش",
+    "callFullScreenMessage": "Pangea پاراڭلىشىش تاقالغان ۋاقىتتا تېلېفون كەلدى، ئەمما تېلېفونىڭىز پەقەت كىچىك ئۇقتۇرۇشنىلا كۆرسىتەلەيدۇ. تولۇق ئېكرانلىق چاقىرىشقا رۇخسەت قىلسىڭىز، كېيىنكىسى تېلېفونىڭىز قۇلۇپلانغان ۋاقىتتىمۇ پۈتۈن ئېكرانىڭىزدا چالىدۇ."
 }

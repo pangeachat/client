@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show SchedulerPhase;
 
 import 'package:matrix/matrix.dart' as matrix;
+import 'package:pangea_call_capture/pangea_call_capture.dart';
 
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -11,7 +12,9 @@ import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_quick_replies.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
+import 'package:fluffychat/routes/chat/calls/call_session.dart' as call_ui;
 import 'package:fluffychat/routes/chat/calls/ring_player.dart';
+import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -81,7 +84,8 @@ class _AccountRings {
   }
 }
 
-class _IncomingCallBannerState extends State<IncomingCallBanner> {
+class _IncomingCallBannerState extends State<IncomingCallBanner>
+    with WidgetsBindingObserver {
   /// The one hand that touches the ring sound. Injected in tests.
   late final RingPlayer _ringPlayer = widget.ringPlayerOverride ?? RingPlayer();
 
@@ -137,6 +141,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     _ringing = ring;
     if (ring != null) {
       _ringPlayer.play(ring.event.eventId, asset: 'sounds/phone.ogg');
+      _takeOverRing(ring);
     } else if (previous != null) {
       _ringPlayer.stop(previous.event.eventId);
     }
@@ -180,9 +185,35 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     return seen.containsKey(notificationEventId);
   }
 
+  /// Stops the phone's own ring for [ring] once this prompt is on screen in
+  /// its place: the notification that rang while the app was closed hands
+  /// over to the prompt, and the learner should not hear two rings for one
+  /// call. Only while the app is in front -- in the background the prompt is
+  /// seen by nobody, and the phone's ring is the one that reaches them.
+  void _takeOverRing(IncomingCallNotification? ring) {
+    if (ring == null || !PlatformInfos.isAndroid) return;
+    if (WidgetsBinding.instance.lifecycleState != AppLifecycleState.resumed) {
+      return;
+    }
+    unawaited(
+      const IncomingCallRinger().stop(ring.event.eventId).catchError((
+        Object e,
+        StackTrace s,
+      ) {
+        matrix.Logs().w('Could not stop the phone ringing', e, s);
+      }),
+    );
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) _takeOverRing(_ringing);
+  }
+
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     // Deferred: Matrix.of needs a mounted context, and the call service is
     // per-account and resolved from it.
     WidgetsBinding.instance.addPostFrameCallback((_) => _listen());
@@ -358,8 +389,20 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// has, so a standing rejoin offer is for a call that can no longer be
   /// rejoined first — it goes.
   void _onActiveCallChanged() {
-    if (_activeCall?.value == null || _rejoin == null) return;
-    _clearOffer();
+    final call = _activeCall?.value;
+    if (call == null) return;
+    if (_rejoin != null) _clearOffer();
+    if (call is! call_ui.CallSession) return;
+    // The ring that call is answering. It can be answered somewhere other
+    // than this prompt -- on the notification that rang while the app was
+    // closed -- and a prompt left up would offer to answer a call already
+    // being joined.
+    final ringing = _ringing;
+    if (ringing != null &&
+        call.notificationEventId == ringing.event.eventId &&
+        identical(call.room.client, ringing.event.room.client)) {
+      _dismiss();
+    }
   }
 
   /// Offers a return to the call a reload interrupted.
@@ -885,6 +928,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     for (final account in _accounts.values) {
       unawaited(account.cancel());
     }
@@ -965,67 +1009,15 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     );
   }
 
-  Future<void> _answer(IncomingCallNotification ring) async {
+  void _answer(IncomingCallNotification ring) {
     _dismiss();
     if (!mounted) return;
-    // Deliberately NOT gated on the caller still being visible in Matrix room
-    // state. That read lags a join by seconds, so it was routinely empty at the
-    // moment someone tapped answer — and answering did nothing at all. The SFU
-    // is the rendezvous point: join it, and let presence decide from there
-    // whether anyone is actually on the other end.
-    // The account this ring reached must still be signed in. Between the
-    // prompt going up and this tap it can have logged out, and starting a
-    // call then would run it through whichever account is foregrounded now.
+    // The account this ring reached must still be one this banner serves.
     if (_serviceFor(ring.event.room) == null) {
       matrix.Logs().w('Cannot answer: that account is no longer signed in');
       return;
     }
-    final matrixState = Matrix.of(context);
-    // Whether the call is for the account the learner is currently in.
-    //
-    // A call for ANOTHER account has no chat pane it could be shown in:
-    // `ChatPage` resolves its room through the ACTIVE client, so navigating
-    // there would land on RoomUnavailablePanel with a connected call playing
-    // behind it. It is presented as an app-level overlay instead -- fullscreen
-    // from its first frame, because the alternative overlay is CallMiniTile,
-    // which has neither hangup nor mute.
-    final onActiveAccount = identical(
-      ring.event.room.client,
-      matrixState.client,
-    );
-    try {
-      matrixState.startCall(
-        ring.event.room,
-        video: ring.isVideo,
-        // Anchors this side's speaking analytics: the answering device does
-        // not write the call to the timeline, the caller does.
-        notificationEventId: ring.event.eventId,
-        // The caller's own membership, named by their ring: the call's SHARED
-        // identity, which every card for this call is stamped with.
-        callerMembershipEventId: ring.membershipEventId,
-        fullscreen: !onActiveAccount,
-      );
-    } on AlreadyInACall {
-      // A call is live somewhere else -- another account, or another room on
-      // this one. The answer cannot happen, and the prompt is already down --
-      // so TELL the caller rather than leaving them ringing into nothing
-      // until they time out and write a missed call.
-      matrix.Logs().w('Answering while already on a call elsewhere');
-      _declineBusy(ring);
-      return;
-    }
-    // The call lives in its own chat's pane, so answering also goes there.
-    // Through the app's router directly: this banner is mounted above it.
-    //
-    // ONLY for the active account. Answering a call on another account leaves
-    // the learner exactly where they were, with the call over the top: their
-    // room list, their open chat and a half-typed message are all untouched.
-    // They asked to talk to somebody, not to be moved to another account --
-    // and with no in-app account switcher, moving them would strand them.
-    if (!onActiveAccount) return;
-    final router = FluffyChatApp.router;
-    final uri = router.routeInformationProvider.value.uri;
-    router.go(WorkspaceNav.openRoomById(uri, ring.event.room.id));
+    Matrix.of(context).answerRing(ring);
   }
 
   @override

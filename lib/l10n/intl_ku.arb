@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "نەمانتوانی داواکارییەکەت بنێرین. تکایە ئیمەیڵ بنێرە بۆ support@pangea.chat.",
     "filteredNetworkVideoBlocked": "ئەم تۆڕە ڤیدیۆکان بلۆک دەکات.",
     "filteredNetworkImagesBlocked": "ئەم تۆڕە وێنەکان بلۆک دەکات.",
-    "filteredNetworkMapBlocked": "ئەم تۆڕە نەخشەکە بلۆک دەکات."
+    "filteredNetworkMapBlocked": "ئەم تۆڕە نەخشەکە بلۆک دەکات.",
+    "callFullScreenTitle": "ڕێگە بدە پەیوەندییەکان بە تەواوی شاشە زەنگ لێ بدەن",
+    "callFullScreenMessage": "پەیوەندییەک هات کاتێک Pangea Chat داخرا بوو، بەڵام مۆبایلەکەت تەنها دەیتوانی ئاگادارکردنەوەیەکی بچووک بۆی پیشان بدات. ڕێگە بە پەیوەندییەکانی تەواوی شاشە بدە بۆ ئەوەی داهاتوو لەسەر تەواوی شاشەکەت زەنگ لێ بدات، تەنانەت کاتێک مۆبایلەکەت قفڵ کراوە."
 }

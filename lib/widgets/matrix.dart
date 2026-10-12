@@ -10,6 +10,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:matrix/encryption.dart';
 import 'package:matrix/matrix.dart';
+import 'package:pangea_call_capture/pangea_call_capture.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -25,6 +26,7 @@ import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/notifications/nse_session.dart';
 import 'package:fluffychat/features/overlay/any_state_holder.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
@@ -36,6 +38,7 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
+import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_session.dart' as call_ui;
@@ -43,6 +46,7 @@ import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo
 import 'package:fluffychat/routes/chat/events/utils/pending_reports.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/utils/push_helper.dart';
 import 'package:fluffychat/utils/uia_request_manager.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/screen_size_warning_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -466,6 +470,148 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     );
   }
   // Pangea#
+
+  /// Answers [ring]: joins its call and, on the account the learner is in,
+  /// opens its chat.
+  ///
+  /// The one way a ring is answered, from the in-app banner and from the
+  /// notification that rang while the app was closed, so the two cannot come
+  /// to treat the same call differently.
+  ///
+  /// Deliberately NOT gated on the caller still being visible in Matrix room
+  /// state. That read lags a join by seconds, so it was routinely empty at the
+  /// moment someone tapped answer -- and answering did nothing at all. The SFU
+  /// is the rendezvous point: join it, and let presence decide from there
+  /// whether anyone is actually on the other end.
+  void answerRing(IncomingCallNotification ring) {
+    final room = ring.event.room;
+    // The account this ring reached must still be signed in. Between the
+    // ring and the tap it can have logged out, and starting a call then would
+    // run it through whichever account is foregrounded now.
+    if (!widget.clients.contains(room.client) || isSigningOut(room.client)) {
+      Logs().w('Cannot answer: that account is no longer signed in');
+      return;
+    }
+    // A call for ANOTHER account has no chat pane it could be shown in:
+    // `ChatPage` resolves its room through the ACTIVE client, so navigating
+    // there would land on RoomUnavailablePanel with a connected call playing
+    // behind it. It is presented as an app-level overlay instead -- fullscreen
+    // from its first frame, because the alternative overlay is CallMiniTile,
+    // which has neither hangup nor mute.
+    final onActiveAccount = identical(room.client, client);
+    try {
+      startCall(
+        room,
+        video: ring.isVideo,
+        // Anchors this side's speaking analytics: the answering device does
+        // not write the call to the timeline, the caller does.
+        notificationEventId: ring.event.eventId,
+        // The caller's own membership, named by their ring: the call's SHARED
+        // identity, which every card for this call is stamped with.
+        callerMembershipEventId: ring.membershipEventId,
+        fullscreen: !onActiveAccount,
+      );
+    } on AlreadyInACall {
+      // A call is live somewhere else -- another account, or another room on
+      // this one. The answer cannot happen, so TELL the caller rather than
+      // leaving them ringing into nothing until they time out and write a
+      // missed call.
+      Logs().w('Answering while already on a call elsewhere');
+      unawaited(
+        callServiceForClient(room.client).decline(
+          room,
+          notificationEventId: ring.event.eventId,
+          reason: CallService.declineBusy,
+        ),
+      );
+      return;
+    }
+    // The call lives in its own chat's pane, so answering also goes there.
+    //
+    // ONLY for the active account. Answering a call on another account leaves
+    // the learner exactly where they were, with the call over the top: their
+    // room list, their open chat and a half-typed message are all untouched.
+    // They asked to talk to somebody, not to be moved to another account --
+    // and with no in-app account switcher, moving them would strand them.
+    if (!onActiveAccount) return;
+    final router = FluffyChatApp.router;
+    final uri = router.routeInformationProvider.value.uri;
+    router.go(WorkspaceNav.openRoomById(uri, room.id));
+  }
+
+  /// Asks once, on Android 14 and later, to allow full-screen calls -- at the
+  /// first moment the app is open after a ring could only show as a heads-up
+  /// notification. Never over a call: the call is what the learner is there
+  /// for, and the question can wait for the next time they open the app.
+  Future<void> _askForFullScreenCallsOnce() async {
+    if (!PlatformInfos.isAndroid || activeCall.value != null) return;
+    const ringer = IncomingCallRinger();
+    try {
+      if (!await ringer.fullScreenWanted()) return;
+      final dialogContext =
+          FluffyChatApp.router.routerDelegate.navigatorKey.currentContext;
+      if (!mounted || dialogContext == null) return;
+      // Recorded before the question, so a second resume cannot ask it twice.
+      await ringer.fullScreenAsked();
+      if (!dialogContext.mounted) return;
+      final l10n = L10n.of(dialogContext);
+      final result = await showOkCancelAlertDialog(
+        context: dialogContext,
+        title: l10n.callFullScreenTitle,
+        message: l10n.callFullScreenMessage,
+        okLabel: l10n.allow,
+        cancelLabel: l10n.cancel,
+      );
+      if (result == OkCancelResult.ok) await ringer.openFullScreenSettings();
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+    }
+  }
+
+  /// Answers a ring the learner answered on the notification that rang while
+  /// the app was closed, handed over as the payload it was rung with.
+  Future<void> _answerFromNotification(String payload) async {
+    final push = FluffyChatPushPayload.fromString(payload);
+    final roomId = push.roomId;
+    final eventId = push.eventId;
+    // By EXACT account name, as a notification tap is: answering as another
+    // account that happens to share the room would be answering as somebody
+    // else.
+    final account = widget.clients.firstWhereOrNull(
+      (c) => c.clientName == push.clientName,
+    );
+    if (account == null || roomId == null || eventId == null) {
+      ErrorHandler.logError(
+        e: StateError('An answered ring names no account or call this app has'),
+        s: StackTrace.current,
+        data: {'hasAccount': account != null, 'hasRoom': roomId != null},
+      );
+      return;
+    }
+    try {
+      await account.roomsLoading;
+      final room = account.getRoomById(roomId);
+      final event = await room?.getEventById(eventId);
+      if (room == null || event == null) {
+        ErrorHandler.logError(
+          e: StateError('Could not find the call an answered ring was for'),
+          s: StackTrace.current,
+          data: {'roomFound': room != null},
+        );
+        return;
+      }
+      if (!mounted) return;
+      answerRing(
+        IncomingCallNotification(
+          event: event,
+          myUserId: account.userID ?? '',
+          alreadyJoined: false,
+        ),
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+    }
+  }
 
   bool get isMultiAccount => widget.clients.length > 1;
 
@@ -1129,6 +1275,18 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       _registerSubs(c.clientName);
     }
 
+    // A ring answered on the notification that rang while the app was
+    // closed. Claimed here, at startup, because the answer is usually what
+    // opened the app.
+    if (PlatformInfos.isAndroid) {
+      const IncomingCallRinger().onAnswered(
+        (payload) => unawaited(_answerFromNotification(payload)),
+      );
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) unawaited(_askForFullScreenCallsOnce());
+      });
+    }
+
     if (PlatformInfos.isMobile) {
       backgroundPush = BackgroundPush(
         this,
@@ -1179,6 +1337,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     }
 
     if (state == AppLifecycleState.resumed) {
+      unawaited(_askForFullScreenCallsOnce());
       pangeaController.subscriptionController.refreshOnAppResume(client.userID);
       // A call transcript half whose publish was dropped when the app
       // backgrounded at hangup is replayed now that it is back. Each service

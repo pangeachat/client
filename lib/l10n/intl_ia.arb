@@ -10899,5 +10899,7 @@
     "filteredNetworkHelpRefused": "Nos non poteva inviar tu requesta. Per favor, invia un e-mail a support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Iste rete bloca videos.",
     "filteredNetworkImagesBlocked": "Iste rete bloca imagines.",
-    "filteredNetworkMapBlocked": "Iste rete bloca le mappa."
+    "filteredNetworkMapBlocked": "Iste rete bloca le mappa.",
+    "callFullScreenTitle": "Permitter le appellos sonar a schermo plen",
+    "callFullScreenMessage": "Un appello arrivava dum Pangea Chat esseva claudite, ma tu telephono poteva solmente monstrar un parve notification pro illo. Permitte appellos a schermo plen a fin que le proxime sona super tu integre schermo, mesmo quando tu telephono es blocate."
 }

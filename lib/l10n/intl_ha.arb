@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Ba mu iya aika buƙatarka ba. Da fatan za a aiko da imel zuwa support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Wannan hanyar sadarwa tana toshe bidiyo.",
     "filteredNetworkImagesBlocked": "Wannan hanyar sadarwa tana toshe hotuna.",
-    "filteredNetworkMapBlocked": "Wannan hanyar sadarwa tana toshe taswirar."
+    "filteredNetworkMapBlocked": "Wannan hanyar sadarwa tana toshe taswirar.",
+    "callFullScreenTitle": "Bari kiran ya yi ringi cikakken allo",
+    "callFullScreenMessage": "An shigo da kira yayin da Pangea Chat ke rufe, amma wayarka ta iya nuna ƙaramin sanarwa kawai. Bada izinin kiran cikakken allo don na gaba ya yi ringi a kan dukkan allonka, ko da wayarka a kulle take."
 }

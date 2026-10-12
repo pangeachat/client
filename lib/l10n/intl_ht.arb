@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Nou pa t ka voye demann ou an. Tanpri voye yon imèl bay support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Rezo sa a bloke videyo.",
     "filteredNetworkImagesBlocked": "Rezo sa a bloke imaj.",
-    "filteredNetworkMapBlocked": "Rezo sa a bloke kat la."
+    "filteredNetworkMapBlocked": "Rezo sa a bloke kat la.",
+    "callFullScreenTitle": "Kite apèl yo sonnen sou tout ekran an",
+    "callFullScreenMessage": "Yon apèl te antre pandan Pangea Chat te fèmen, men telefòn ou te kapab montre sèlman yon ti notifikasyon pou li. Pèmèt apèl sou tout ekran an pou pwochen an sonnen sou tout ekran ou, menm lè telefòn ou bloke."
 }

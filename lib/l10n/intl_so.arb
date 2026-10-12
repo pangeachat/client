@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Ma aanan diri karin codsigaga. Fadlan iimayl u soo dir support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Shabakaddani waxay xannibtaa fiidyowyada.",
     "filteredNetworkImagesBlocked": "Shabakaddani waxay xannibtaa sawirrada.",
-    "filteredNetworkMapBlocked": "Shabakaddani waxay xannibtaa khariidadda."
+    "filteredNetworkMapBlocked": "Shabakaddani waxay xannibtaa khariidadda.",
+    "callFullScreenTitle": "U ogolow wicitaanada inay buuxiyaan shaashada",
+    "callFullScreenMessage": "Wicitaan ayaa soo galay iyadoo Pangea Chat xiran tahay, laakiin taleefankaagu wuxuu kaliya tusi karaa ogeysiis yar. U ogolow wicitaanada shaashada buuxda si kan xiga uu u soo dhaco shaashadaada oo dhan, xitaa marka taleefankaagu xiran yahay."
 }

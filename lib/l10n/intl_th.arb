@@ -10595,5 +10595,7 @@
     "filteredNetworkHelpRefused": "เราไม่สามารถส่งคำขอของคุณได้ โปรดส่งอีเมลไปที่ support@pangea.chat",
     "filteredNetworkVideoBlocked": "เครือข่ายนี้บล็อกวิดีโอ",
     "filteredNetworkImagesBlocked": "เครือข่ายนี้บล็อกรูปภาพ",
-    "filteredNetworkMapBlocked": "เครือข่ายนี้บล็อกแผนที่"
+    "filteredNetworkMapBlocked": "เครือข่ายนี้บล็อกแผนที่",
+    "callFullScreenTitle": "ให้สายเรียกเข้าดังเต็มหน้าจอ",
+    "callFullScreenMessage": "มีสายเรียกเข้าในขณะที่ Pangea Chat ปิดอยู่ แต่โทรศัพท์ของคุณแสดงการแจ้งเตือนเล็กๆ เท่านั้น อนุญาตให้สายเรียกเข้าแสดงเต็มหน้าจอ เพื่อให้สายถัดไปดังขึ้นเต็มหน้าจอ แม้ในขณะที่โทรศัพท์ของคุณล็อกอยู่"
 }

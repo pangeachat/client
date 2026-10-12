@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Peb tsis tuaj yeem xa koj qhov kev thov. Thov xa email rau support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Lub network no thaiv cov yeeb yaj kiab.",
     "filteredNetworkImagesBlocked": "Lub network no thaiv cov duab.",
-    "filteredNetworkMapBlocked": "Lub network no thaiv daim ntawv qhia."
+    "filteredNetworkMapBlocked": "Lub network no thaiv daim ntawv qhia.",
+    "callFullScreenTitle": "Cia hu xov tooj nrov thoob plaws qhov screen",
+    "callFullScreenMessage": "Muaj ib tug hu xov tooj tuaj thaum Pangea Chat raug kaw, tiam sis koj lub xov tooj tsuas qhia tau ib qho kev ceeb toom me me xwb. Tso cai hu xov tooj thoob plaws qhov screen kom lwm zaus nws nrov thoob plaws koj lub screen, txawm tias koj lub xov tooj raug kaw los xij."
 }

@@ -54,6 +54,7 @@ class PangeaEventTypes {
   static const report = 'm.report';
   static const textToSpeechRule = "p.rule.text_to_speech";
   static const analyticsInviteRule = "p.rule.analytics_invite";
+  static const missedCallRule = "p.rule.missed_call";
   static const analyticsInviteContent = "p.analytics_request";
 
   /// A practice exercise that is related to a message

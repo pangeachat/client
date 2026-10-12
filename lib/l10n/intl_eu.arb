@@ -9963,5 +9963,7 @@
     "filteredNetworkHelpRefused": "Ezin izan dugu zure eskaera bidali. Mesedez, bidali mezu elektroniko bat support@pangea.chat helbidera.",
     "filteredNetworkVideoBlocked": "Sare honek bideoak blokeatzen ditu.",
     "filteredNetworkImagesBlocked": "Sare honek irudiak blokeatzen ditu.",
-    "filteredNetworkMapBlocked": "Sare honek mapa blokeatzen du."
+    "filteredNetworkMapBlocked": "Sare honek mapa blokeatzen du.",
+    "callFullScreenTitle": "Deiak pantaila osoan erakutsi",
+    "callFullScreenMessage": "Dei bat jaso duzu Pangea Chat itxita zegoen bitartean, baina telefonoak jakinarazpen txiki bat baino ezin izan du erakutsi. Baimendu pantaila osoko deiak, hurrengoa pantaila osoan ager dadin, telefonoa blokeatuta egon arren."
 }

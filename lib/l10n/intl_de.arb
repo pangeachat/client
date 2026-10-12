@@ -9950,5 +9950,7 @@
     "filteredNetworkHelpRefused": "Ihre Anfrage konnte nicht gesendet werden. Bitte senden Sie eine E-Mail an support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Dieses Netzwerk blockiert Videos.",
     "filteredNetworkImagesBlocked": "Dieses Netzwerk blockiert Bilder.",
-    "filteredNetworkMapBlocked": "Dieses Netzwerk blockiert die Karte."
+    "filteredNetworkMapBlocked": "Dieses Netzwerk blockiert die Karte.",
+    "callFullScreenTitle": "Anrufe im Vollbildmodus klingeln lassen",
+    "callFullScreenMessage": "Ein Anruf kam herein, während Pangea Chat geschlossen war, aber Ihr Telefon konnte nur eine kleine Benachrichtigung dafür anzeigen. Erlauben Sie Vollbildanrufe, damit der nächste Anruf auf Ihrem gesamten Bildschirm klingelt, auch wenn Ihr Telefon gesperrt ist."
 }

@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Бид таны хүсэлтийг илгээж чадсангүй. support@pangea.chat хаягаар имэйл илгээнэ үү.",
     "filteredNetworkVideoBlocked": "Энэ сүлжээ видеог хааж байна.",
     "filteredNetworkImagesBlocked": "Энэ сүлжээ зургийг хааж байна.",
-    "filteredNetworkMapBlocked": "Энэ сүлжээ газрын зургийг хааж байна."
+    "filteredNetworkMapBlocked": "Энэ сүлжээ газрын зургийг хааж байна.",
+    "callFullScreenTitle": "Дуудлагыг бүтэн дэлгэцээр харуулах",
+    "callFullScreenMessage": "Pangea Chat хаалттай байхад дуудлага ирсэн боловч таны утас зөвхөн жижиг мэдэгдэл харуулсан. Дараагийн дуудлагыг бүтэн дэлгэцээр харуулахыг зөвшөөрвөл таны утас түгжээтэй байсан ч бүтэн дэлгэцээр дуудна."
 }

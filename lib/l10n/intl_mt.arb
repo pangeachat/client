@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Ma stajniex nibagħtu t-talba tiegħek. Jekk jogħġbok ibgħat email lil support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Din in-network timblokka l-vidjows.",
     "filteredNetworkImagesBlocked": "Din in-network timblokka l-istampi.",
-    "filteredNetworkMapBlocked": "Din in-network timblokka l-mappa."
+    "filteredNetworkMapBlocked": "Din in-network timblokka l-mappa.",
+    "callFullScreenTitle": "Ħalli s-sejħiet idoqqu skrin sħiħ",
+    "callFullScreenMessage": "Waslet sejħa waqt li Pangea Chat kienet magħluqa, iżda t-telefon tiegħek seta' juri biss notifika żgħira għaliha. Ħalli sejħiet full-screen sabiex dik li jmiss iddoqq fuq l-iskrin kollu tiegħek, anke meta t-telefon tiegħek ikun illokkjat."
 }

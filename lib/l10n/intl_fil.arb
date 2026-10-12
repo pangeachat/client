@@ -10823,5 +10823,7 @@
     "filteredNetworkHelpRefused": "Hindi namin maipadala ang iyong kahilingan. Mangyaring mag-email sa support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Hinarangan ng network na ito ang mga video.",
     "filteredNetworkImagesBlocked": "Hinarangan ng network na ito ang mga larawan.",
-    "filteredNetworkMapBlocked": "Hinarangan ng network na ito ang mapa."
+    "filteredNetworkMapBlocked": "Hinarangan ng network na ito ang mapa.",
+    "callFullScreenTitle": "Hayaang mag-ring nang full screen ang mga tawag",
+    "callFullScreenMessage": "May pumasok na tawag habang sarado ang Pangea Chat, pero maliit na notification lang ang naipakita ng iyong telepono para dito. Payagan ang full-screen na tawag para sa susunod na ring sa iyong buong screen, kahit naka-lock ang iyong telepono."
 }

@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Kita ora bisa ngirim panjalukmu. Mangga kirim email menyang support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Jaringan iki mblokir video.",
     "filteredNetworkImagesBlocked": "Jaringan iki mblokir gambar.",
-    "filteredNetworkMapBlocked": "Jaringan iki mblokir peta."
+    "filteredNetworkMapBlocked": "Jaringan iki mblokir peta.",
+    "callFullScreenTitle": "Telpon muni sak layar",
+    "callFullScreenMessage": "Ana telpon mlebu nalika Pangea Chat ditutup, nanging telponmu mung bisa nampilake notifikasi cilik. Idinake telpon sak layar supaya telpon sabanjure muni ing sak layar, sanajan telponmu dikunci."
 }

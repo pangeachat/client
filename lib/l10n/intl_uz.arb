@@ -9967,5 +9967,7 @@
     "filteredNetworkHelpRefused": "Soʻrovingizni yubora olmadik. Iltimos, support@pangea.chat manziliga elektron pochta yuboring.",
     "filteredNetworkVideoBlocked": "Bu tarmoq videolarni bloklaydi.",
     "filteredNetworkImagesBlocked": "Bu tarmoq rasmlarni bloklaydi.",
-    "filteredNetworkMapBlocked": "Bu tarmoq xaritani bloklaydi."
+    "filteredNetworkMapBlocked": "Bu tarmoq xaritani bloklaydi.",
+    "callFullScreenTitle": "Qo‘ng‘iroqlar to‘liq ekranda jiringlasin",
+    "callFullScreenMessage": "Pangea Chat yopiq bo‘lganida qo‘ng‘iroq keldi, ammo telefoningiz faqat kichik bildirishnoma ko‘rsata oldi. To‘liq ekranli qo‘ng‘iroqlarga ruxsat bering, shunda keyingi qo‘ng‘iroq telefoningiz qulflangan bo‘lsa ham butun ekranda jiringlaydi."
 }

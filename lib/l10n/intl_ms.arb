@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Kami tidak dapat menghantar permintaan anda. Sila e-mel support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Rangkaian ini menyekat video.",
     "filteredNetworkImagesBlocked": "Rangkaian ini menyekat imej.",
-    "filteredNetworkMapBlocked": "Rangkaian ini menyekat peta."
+    "filteredNetworkMapBlocked": "Rangkaian ini menyekat peta.",
+    "callFullScreenTitle": "Benarkan panggilan berdering skrin penuh",
+    "callFullScreenMessage": "Panggilan masuk semasa Pangea Chat ditutup, tetapi telefon anda hanya boleh menunjukkan pemberitahuan kecil untuknya. Benarkan panggilan skrin penuh supaya panggilan seterusnya berdering pada keseluruhan skrin anda, walaupun telefon anda dikunci."
 }

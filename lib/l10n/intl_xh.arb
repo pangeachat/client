@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Asikwazanga ukuthumela isicelo sakho. Nceda uthumele i-imeyile ku-support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Le nethiwekhi iyayivala iividiyo.",
     "filteredNetworkImagesBlocked": "Le nethiwekhi iyayivala imifanekiso.",
-    "filteredNetworkMapBlocked": "Le nethiwekhi iyawuvala umzobo."
+    "filteredNetworkMapBlocked": "Le nethiwekhi iyawuvala umzobo.",
+    "callFullScreenTitle": "Vumela iifowuni zikhale kwisikrini esipheleleyo",
+    "callFullScreenMessage": "Kwangena umnxeba ngelixa i-Pangea Chat ivaliwe, kodwa ifowuni yakho ibikwazi ukubonisa kuphela isaziso esincinci ngayo. Vumela iifowuni zesikrini esipheleleyo ukuze olulandelayo lukhale kwisikrini sakho sonke, naxa ifowuni yakho itshixiwe."
 }

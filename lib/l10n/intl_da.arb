@@ -10883,5 +10883,7 @@
     "filteredNetworkHelpRefused": "Vi kunne ikke sende din anmodning. Send venligst en e-mail til support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Dette netværk blokerer videoer.",
     "filteredNetworkImagesBlocked": "Dette netværk blokerer billeder.",
-    "filteredNetworkMapBlocked": "Dette netværk blokerer kortet."
+    "filteredNetworkMapBlocked": "Dette netværk blokerer kortet.",
+    "callFullScreenTitle": "Lad opkald ringe på fuld skærm",
+    "callFullScreenMessage": "Der kom et opkald, mens Pangea Chat var lukket, men din telefon kunne kun vise en lille notifikation for det. Tillad fuldskærmsopkald, så det næste ringer på hele din skærm, selv når din telefon er låst."
 }

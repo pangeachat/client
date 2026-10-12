@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "අපට ඔබගේ ඉල්ලීම යැවීමට නොහැකි විය. කරුණාකර support@pangea.chat වෙත විද්‍යුත් තැපෑලක් එවන්න.",
     "filteredNetworkVideoBlocked": "මෙම ජාලය වීඩියෝ අවහිර කරයි.",
     "filteredNetworkImagesBlocked": "මෙම ජාලය පින්තූර අවහිර කරයි.",
-    "filteredNetworkMapBlocked": "මෙම ජාලය සිතියම අවහිර කරයි."
+    "filteredNetworkMapBlocked": "මෙම ජාලය සිතියම අවහිර කරයි.",
+    "callFullScreenTitle": "ඇමතුම් සම්පූර්ණ තිරයෙන් නාද වීමට සලස්වන්න",
+    "callFullScreenMessage": "Pangea Chat වසා තිබියදී ඇමතුමක් ලැබුණි, නමුත් ඔබගේ දුරකථනයට ඒ සඳහා කුඩා දැනුම්දීමක් පමණක් පෙන්වීමට හැකි විය. සම්පූර්ණ තිර ඇමතුම් සඳහා ඉඩ දෙන්න, එවිට ඊළඟ ඇමතුම ඔබගේ දුරකථනය අගුළු දමා තිබුණත්, ඔබගේ සම්පූර්ණ තිරය පුරා නාද වනු ඇත."
 }

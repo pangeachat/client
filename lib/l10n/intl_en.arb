@@ -3731,6 +3731,8 @@
     "callIncoming": "Incoming call",
     "callAnswer": "Answer",
     "callDecline": "Decline",
+    "callFullScreenTitle": "Let calls ring full screen",
+    "callFullScreenMessage": "A call came in while Pangea Chat was closed, but your phone could only show a small notification for it. Allow full-screen calls so the next one rings on your whole screen, even when your phone is locked.",
     "callDeclinedByPeer": "Call declined",
     "callRinging": "Ringing...",
     "callMinimize": "Minimize call",

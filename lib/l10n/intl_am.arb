@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "ጥያቄዎን መላክ አልቻልንም። እባክዎ support@pangea.chat ኢሜይል ያድርጉ።",
     "filteredNetworkVideoBlocked": "ይህ አውታረ መረብ ቪዲዮዎችን ይከለክላል።",
     "filteredNetworkImagesBlocked": "ይህ አውታረ መረብ ምስሎችን ይከለክላል።",
-    "filteredNetworkMapBlocked": "ይህ አውታረ መረብ ካርታውን ይከለክላል።"
+    "filteredNetworkMapBlocked": "ይህ አውታረ መረብ ካርታውን ይከለክላል።",
+    "callFullScreenTitle": "ጥሪዎች ሙሉ ማያ ገጽ ላይ እንዲጠሩ ፍቀድ",
+    "callFullScreenMessage": "Pangea Chat ዝግ እያለ ጥሪ ገብቶ ነበር፣ ነገር ግን ስልክዎ ትንሽ ማሳወቂያ ብቻ ማሳየት ችሏል። ቀጣዩ ጥሪ ሙሉ ማያ ገጽዎ ላይ እንዲጠራ ሙሉ ማያ ገጽ ጥሪዎችን ይፍቀዱ፣ ስልክዎ ተቆልፎ ቢሆንም እንኳ።"
 }

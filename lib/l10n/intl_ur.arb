@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "ہم آپ کی درخواست نہیں بھیج سکے ہیں۔ براہ کرم support@pangea.chat پر ای میل کریں۔",
     "filteredNetworkVideoBlocked": "یہ نیٹ ورک ویڈیوز کو بلاک کرتا ہے۔",
     "filteredNetworkImagesBlocked": "یہ نیٹ ورک تصاویر کو بلاک کرتا ہے۔",
-    "filteredNetworkMapBlocked": "یہ نیٹ ورک نقشے کو بلاک کرتا ہے۔"
+    "filteredNetworkMapBlocked": "یہ نیٹ ورک نقشے کو بلاک کرتا ہے۔",
+    "callFullScreenTitle": "کالز کو پوری اسکرین پر بجنے دیں",
+    "callFullScreenMessage": "جب پینجیا چیٹ بند تھا تو ایک کال آئی، لیکن آپ کا فون اس کے لیے صرف ایک چھوٹی اطلاع دکھا سکا۔ پوری اسکرین کالز کی اجازت دیں تاکہ اگلی کال آپ کی پوری اسکرین پر بجے، چاہے آپ کا فون لاک ہی کیوں نہ ہو۔"
 }

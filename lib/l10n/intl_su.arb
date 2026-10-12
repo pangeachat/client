@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Kami henteu tiasa ngirim paménta anjeun. Punten kirim email ka support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Jaringan ieu meungpeuk pidéo.",
     "filteredNetworkImagesBlocked": "Jaringan ieu meungpeuk gambar.",
-    "filteredNetworkMapBlocked": "Jaringan ieu meungpeuk peta."
+    "filteredNetworkMapBlocked": "Jaringan ieu meungpeuk peta.",
+    "callFullScreenTitle": "Jieun telepon disada sapinuh layar",
+    "callFullScreenMessage": "Telepon asup nalika Pangea Chat ditutup, tapi telepon anjeun ngan ukur tiasa nembongkeun béwara leutik. Idinan telepon sapinuh layar supados telepon salajengna disada dina sakabéh layar anjeun, sanajan telepon anjeun dikonci."
 }

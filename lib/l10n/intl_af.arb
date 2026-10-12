@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Ons kon nie jou versoek stuur nie. Stuur asseblief 'n e-pos na support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Hierdie netwerk blokkeer video's.",
     "filteredNetworkImagesBlocked": "Hierdie netwerk blokkeer beelde.",
-    "filteredNetworkMapBlocked": "Hierdie netwerk blokkeer die kaart."
+    "filteredNetworkMapBlocked": "Hierdie netwerk blokkeer die kaart.",
+    "callFullScreenTitle": "Laat oproepe volskerm lui",
+    "callFullScreenMessage": "’n Oproep het ingekom terwyl Pangea Chat gesluit was, maar jou foon kon net ’n klein kennisgewing daarvoor wys. Laat volskerm-oproepe toe sodat die volgende een op jou hele skerm lui, selfs wanneer jou foon gesluit is."
 }

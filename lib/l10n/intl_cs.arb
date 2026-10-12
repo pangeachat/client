@@ -10457,5 +10457,7 @@
     "filteredNetworkHelpRefused": "Váš požadavek se nepodařilo odeslat. Napište prosím na support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Tato síť blokuje videa.",
     "filteredNetworkImagesBlocked": "Tato síť blokuje obrázky.",
-    "filteredNetworkMapBlocked": "Tato síť blokuje mapu."
+    "filteredNetworkMapBlocked": "Tato síť blokuje mapu.",
+    "callFullScreenTitle": "Povolit hovory na celou obrazovku",
+    "callFullScreenMessage": "Přišel vám hovor, když byl Pangea Chat zavřený, ale telefon mohl zobrazit jen malé oznámení. Povolte hovory na celou obrazovku, aby vám další hovor zvonil na celé obrazovce, i když je telefon zamčený."
 }

@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Við gátum ekki sent beiðnina þína. Vinsamlegast sendu tölvupóst á support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Þetta net lokar fyrir myndbönd.",
     "filteredNetworkImagesBlocked": "Þetta net lokar fyrir myndir.",
-    "filteredNetworkMapBlocked": "Þetta net lokar fyrir kortið."
+    "filteredNetworkMapBlocked": "Þetta net lokar fyrir kortið.",
+    "callFullScreenTitle": "Láta símtöl hringja á öllum skjánum",
+    "callFullScreenMessage": "Símtal barst á meðan Pangea Chat var lokað, en síminn þinn gat aðeins sýnt litla tilkynningu um það. Leyfðu símtöl á öllum skjánum svo næsta símtal hringi á öllum skjánum þínum, jafnvel þegar síminn þinn er læstur."
 }

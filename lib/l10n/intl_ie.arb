@@ -10595,5 +10595,7 @@
     "filteredNetworkHelpRefused": "Níorbh fhéidir linn d'iarratas a sheoladh. Seol ríomhphost chuig support@pangea.chat le do thoil.",
     "filteredNetworkVideoBlocked": "Blocálann an líonra seo físeáin.",
     "filteredNetworkImagesBlocked": "Blocálann an líonra seo íomhánna.",
-    "filteredNetworkMapBlocked": "Blocálann an líonra seo an léarscáil."
+    "filteredNetworkMapBlocked": "Blocálann an líonra seo an léarscáil.",
+    "callFullScreenTitle": "Lass Anrufe im Vollbildmodus klingeln",
+    "callFullScreenMessage": "Ein Anruf kam an, während Pangea Chat geschlossen war, aber dein Telefon konnte nur eine kleine Benachrichtigung dafür anzeigen. Erlaube Vollbildanrufe, damit der nächste Anruf auf deinem gesamten Bildschirm klingelt, auch wenn dein Telefon gesperrt ist."
 }

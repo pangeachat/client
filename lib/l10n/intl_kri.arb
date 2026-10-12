@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Wi nɔ ebul sɛn yu rikwest. Duya sɛn imel to support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Dis netwok de blok vidio dɛn.",
     "filteredNetworkImagesBlocked": "Dis netwok de blok piktya dɛn.",
-    "filteredNetworkMapBlocked": "Dis netwok de blok di map."
+    "filteredNetworkMapBlocked": "Dis netwok de blok di map.",
+    "callFullScreenTitle": "Mek kɔl dɛn ring ful skrin",
+    "callFullScreenMessage": "Wan kɔl bin kɔm insay wɛn Pangea Chat bin klos, bɔt yu fon bin jɔs ebul fɔ sho smɔl notifikeshɔn fɔ am. Alaw ful-skrin kɔl dɛn so dat di nɛks wan go ring ɔn yu ful skrin, ivin wɛn yu fon dɔn lɔk."
 }

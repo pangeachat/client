@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Re ne re sa khone ho romella kopo ea hau. Ka kopo romella lengolo-tsoibila ho support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Marangrang ana a thibela livideo.",
     "filteredNetworkImagesBlocked": "Marangrang ana a thibela litšoantšo.",
-    "filteredNetworkMapBlocked": "Marangrang ana a thibela 'mapa."
+    "filteredNetworkMapBlocked": "Marangrang ana a thibela 'mapa.",
+    "callFullScreenTitle": "Etsa hore mehala e lle skrineng kaofela",
+    "callFullScreenMessage": "Mohala o kene ha Pangea Chat e koetsoe, empa fono ea hau e ne e ka bontša tsebiso e nyane feela bakeng sa ona. Lumella mehala ea skrine e felletseng e le hore e latelang e lle skrineng sa hau kaofela, le ha fono ea hau e notletsoe."
 }

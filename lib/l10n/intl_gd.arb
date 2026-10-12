@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Cha b' urrainn dhuinn an t-iarrtas agad a chur. Cuir post-d gu support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Tha an lìonra seo a' bacadh bhideothan.",
     "filteredNetworkImagesBlocked": "Tha an lìonra seo a' bacadh ìomhaighean.",
-    "filteredNetworkMapBlocked": "Tha an lìonra seo a' bacadh a' mhapa."
+    "filteredNetworkMapBlocked": "Tha an lìonra seo a' bacadh a' mhapa.",
+    "callFullScreenTitle": "Leig le gairmean seinn làn-sgrìn",
+    "callFullScreenMessage": "Thàinig gairm a-steach fhad 's a bha Pangea Chat dùinte, ach cha b' urrainn don fhòn agad ach fios beag a shealltainn air a shon. Leig le gairmean làn-sgrìn gus am bi an ath fhear a' seinn air do sgrìn gu lèir, eadhon nuair a tha am fòn agad glaiste."
 }

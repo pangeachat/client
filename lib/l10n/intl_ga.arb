@@ -9974,5 +9974,7 @@
     "filteredNetworkHelpRefused": "Níorbh fhéidir linn d'iarratas a sheoladh. Seol ríomhphost chuig support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Blocálann an líonra seo físeáin.",
     "filteredNetworkImagesBlocked": "Blocálann an líonra seo íomhánna.",
-    "filteredNetworkMapBlocked": "Blocálann an líonra seo an léarscáil."
+    "filteredNetworkMapBlocked": "Blocálann an líonra seo an léarscáil.",
+    "callFullScreenTitle": "Lig do ghlaonna glaoch lánscáileáin",
+    "callFullScreenMessage": "Tháinig glao isteach nuair a bhí Pangea Chat dúnta, ach ní fhéadfadh do ghuthán ach fógra beag a thaispeáint dó. Ceadaigh glaonna lánscáileáin ionas go nglaonn an chéad cheann eile ar do scáileán iomlán, fiú nuair a bhíonn do ghuthán faoi ghlas."
 }

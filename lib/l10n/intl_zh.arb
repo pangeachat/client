@@ -9963,5 +9963,7 @@
     "filteredNetworkHelpRefused": "我们无法发送您的请求。请发送电子邮件至 support@pangea.chat。",
     "filteredNetworkVideoBlocked": "此网络阻止视频。",
     "filteredNetworkImagesBlocked": "此网络阻止图片。",
-    "filteredNetworkMapBlocked": "此网络阻止地图。"
+    "filteredNetworkMapBlocked": "此网络阻止地图。",
+    "callFullScreenTitle": "让通话全屏响铃",
+    "callFullScreenMessage": "Pangea Chat 关闭时有来电，但您的手机只能显示一个小通知。允许全屏通话，这样即使手机锁屏，下次来电也会在您的整个屏幕上响铃。"
 }

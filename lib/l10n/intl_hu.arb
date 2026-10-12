@@ -10066,5 +10066,7 @@
     "filteredNetworkHelpRefused": "Nem tudtuk elküldeni kérését. Kérjük, írjon e-mailt a support@pangea.chat címre.",
     "filteredNetworkVideoBlocked": "Ez a hálózat blokkolja a videókat.",
     "filteredNetworkImagesBlocked": "Ez a hálózat blokkolja a képeket.",
-    "filteredNetworkMapBlocked": "Ez a hálózat blokkolja a térképet."
+    "filteredNetworkMapBlocked": "Ez a hálózat blokkolja a térképet.",
+    "callFullScreenTitle": "Hívások teljes képernyőn",
+    "callFullScreenMessage": "Hívás érkezett, miközben a Pangea Chat zárva volt, de a telefon csak egy kis értesítést tudott megjeleníteni róla. Engedélyezze a teljes képernyős hívásokat, hogy a következő hívás a teljes képernyőn jelenjen meg, még akkor is, ha a telefon zárolva van."
 }

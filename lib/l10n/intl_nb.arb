@@ -10020,5 +10020,7 @@
     "filteredNetworkHelpRefused": "Vi kunne ikke sende forespørselen din. Send en e-post til support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Dette nettverket blokkerer videoer.",
     "filteredNetworkImagesBlocked": "Dette nettverket blokkerer bilder.",
-    "filteredNetworkMapBlocked": "Dette nettverket blokkerer kartet."
+    "filteredNetworkMapBlocked": "Dette nettverket blokkerer kartet.",
+    "callFullScreenTitle": "La samtaler ringe i fullskjerm",
+    "callFullScreenMessage": "En samtale kom inn mens Pangea Chat var lukket, men telefonen din kunne bare vise et lite varsel for den. Tillat fullskjermssamtaler slik at den neste ringer på hele skjermen din, selv når telefonen din er låst."
 }

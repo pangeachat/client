@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Сұранысыңызды жібере алмадық. support@pangea.chat мекенжайына электрондық пошта жіберіңіз.",
     "filteredNetworkVideoBlocked": "Бұл желі бейнелерді бұғаттайды.",
     "filteredNetworkImagesBlocked": "Бұл желі кескіндерді бұғаттайды.",
-    "filteredNetworkMapBlocked": "Бұл желі картаны бұғаттайды."
+    "filteredNetworkMapBlocked": "Бұл желі картаны бұғаттайды.",
+    "callFullScreenTitle": "Қоңыраулар толық экранда соғылсын",
+    "callFullScreenMessage": "Pangea Chat жабық кезде қоңырау түсті, бірақ телефоныңыз оған тек шағын хабарландыру көрсете алды. Келесі қоңырау бүкіл экранда соғылуы үшін, тіпті телефоныңыз құлыптаулы болса да, толық экранды қоңырауларға рұқсат беріңіз."
 }

@@ -10908,5 +10908,7 @@
     "filteredNetworkHelpRefused": "Vašu požiadavku sa nám nepodarilo odoslať. Pošlite e-mail na adresu support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Táto sieť blokuje videá.",
     "filteredNetworkImagesBlocked": "Táto sieť blokuje obrázky.",
-    "filteredNetworkMapBlocked": "Táto sieť blokuje mapu."
+    "filteredNetworkMapBlocked": "Táto sieť blokuje mapu.",
+    "callFullScreenTitle": "Nechajte hovory zvoniť na celú obrazovku",
+    "callFullScreenMessage": "Prišiel hovor, keď bol Pangea Chat zatvorený, ale váš telefón naň dokázal zobraziť iba malé upozornenie. Povoľte hovory na celú obrazovku, aby ďalší hovor zvonil na celej obrazovke, aj keď je váš telefón uzamknutý."
 }

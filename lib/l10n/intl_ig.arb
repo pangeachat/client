@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Anyị enweghị ike iziga arịrịọ gị. Biko ziga ozi-e na support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Netwọkụ a na-egbochi vidiyo.",
     "filteredNetworkImagesBlocked": "Netwọkụ a na-egbochi onyonyo.",
-    "filteredNetworkMapBlocked": "Netwọkụ a na-egbochi maapụ."
+    "filteredNetworkMapBlocked": "Netwọkụ a na-egbochi maapụ.",
+    "callFullScreenTitle": "Kwe ka oku kpọọ ihuenyo zuru oke",
+    "callFullScreenMessage": "Otu oku batara mgbe Pangea Chat mechiri, mana ekwentị gị nwere ike igosi naanị obere ọkwa maka ya. Kwe ka oku ihuenyo zuru oke ka nke ọzọ kpọọ na ihuenyo gị niile, ọbụlagodi mgbe ekwentị gị kpọchiri."
 }

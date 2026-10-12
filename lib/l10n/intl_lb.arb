@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Mir konnten Är Ufro net schécken. Schéckt w.e.g. eng E-Mail un support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Dëst Netzwierk blockéiert Videoen.",
     "filteredNetworkImagesBlocked": "Dëst Netzwierk blockéiert Biller.",
-    "filteredNetworkMapBlocked": "Dëst Netzwierk blockéiert d'Kaart."
+    "filteredNetworkMapBlocked": "Dëst Netzwierk blockéiert d'Kaart.",
+    "callFullScreenTitle": "Uruff am Vollbildschierm uweisen",
+    "callFullScreenMessage": "En Uruff ass erakomm, wärend Pangea Chat zou war, awer Ären Telefon konnt nëmmen eng kleng Notifikatioun dofir uweisen. Erlaabt Vollbildschierm-Uriff, sou datt de nächsten Uruff op Ärem ganze Bildschierm ugewise gëtt, och wann Ären Telefon gespaart ass."
 }

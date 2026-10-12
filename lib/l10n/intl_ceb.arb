@@ -2412,5 +2412,7 @@
     "filteredNetworkHelpRefused": "Dili namo mapadala ang imong hangyo. Palihug pag-email sa support@pangea.chat.",
     "filteredNetworkVideoBlocked": "Kini nga network nagbabag sa mga video.",
     "filteredNetworkImagesBlocked": "Kini nga network nagbabag sa mga hulagway.",
-    "filteredNetworkMapBlocked": "Kini nga network nagbabag sa mapa."
+    "filteredNetworkMapBlocked": "Kini nga network nagbabag sa mapa.",
+    "callFullScreenTitle": "Patingoga ang mga tawag sa tibuok screen",
+    "callFullScreenMessage": "Naay tawag nga niabot samtang sirado ang Pangea Chat, pero gamay ra nga notipikasyon ang gipakita sa imong telepono. Tugoti ang full-screen nga mga tawag aron ang sunod nga tawag motungha sa tibuok nimong screen, bisan kung naka-lock ang imong telepono."
 }

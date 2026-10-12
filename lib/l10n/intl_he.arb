@@ -10877,5 +10877,7 @@
     "filteredNetworkHelpRefused": "לא הצלחנו לשלוח את בקשתך. אנא שלח/שלחי אימייל ל-support@pangea.chat.",
     "filteredNetworkVideoBlocked": "רשת זו חוסמת סרטונים.",
     "filteredNetworkImagesBlocked": "רשת זו חוסמת תמונות.",
-    "filteredNetworkMapBlocked": "רשת זו חוסמת את המפה."
+    "filteredNetworkMapBlocked": "רשת זו חוסמת את המפה.",
+    "callFullScreenTitle": "אפשר לשיחות לצלצל במסך מלא",
+    "callFullScreenMessage": "התקבלה שיחה כש־Pangea Chat הייתה סגורה, אבל הטלפון שלך הציג רק התראה קטנה עבורה. אפשר שיחות במסך מלא כדי שהשיחה הבאה תצלצל על כל המסך, גם כשהטלפון שלך נעול."
 }
