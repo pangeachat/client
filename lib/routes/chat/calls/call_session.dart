@@ -696,6 +696,9 @@ class CallSession extends ChangeNotifier {
   /// looks normal; the other person hears nothing.
   bool get microphoneRefused => media.captureRefused;
   bool get isOver => _over;
+
+  /// See [ActiveCall.mediaReleased].
+  Future<void> get mediaReleased => call.mediaReleased;
   bool get hasPresenter => _presenters > 0;
 
   /// The failure to show, when the call could not be established. The session

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:36:51.391744",
+    "@@last_modified": "2026-10-12 13:12:08.972425",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10055,5 +10055,26 @@
     "reportPointerMessage": "在「{courseName}」中有一則訊息被檢舉了 — 請查看「安全」",
     "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
     "andCertifyIMeetTheMinimumAge": " 並證明我已年滿 13 歲，或達到我的國家/地區規定的最低年齡（如果該年齡較高）。",
+    "filteredNetworkBlockedTitle": "此網路正在封鎖 Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "此網路正在部分封鎖 Pangea Chat",
+    "filteredNetworkWhatCanIDo": "我該怎麼辦？",
+    "filteredNetworkPhoneAdvice": "關閉 Wi-Fi，改用行動數據。",
+    "filteredNetworkComputerAdvice": "連接到您手機的熱點，而不是此 Wi-Fi。",
+    "filteredNetworkItHeading": "致老師和 IT 人員",
+    "filteredNetworkItBody": "請您的 IT 團隊允許以下網域：",
+    "filteredNetworkAskForHelp": "向 Pangea 尋求協助",
+    "filteredNetworkHelpExplanation": "我們將透過電子郵件與您聯繫，協助您在此網路使用 Pangea Chat。",
+    "filteredNetworkHelpWaiting": "您的請求將在您連線後立即發送。",
+    "filteredNetworkHelpSent": "已發送。我們將透過電子郵件與您聯繫。",
+    "filteredNetworkHelpRefused": "我們無法發送您的請求。請發送電子郵件至 support@pangea.chat。",
+    "filteredNetworkVideoBlocked": "此網路封鎖影片。",
+    "filteredNetworkImagesBlocked": "此網路封鎖圖片。",
+    "filteredNetworkMapBlocked": "此網路封鎖地圖。",
+    "callFullScreenTitle": "讓來電全螢幕顯示",
+    "callFullScreenMessage": "Pangea Chat 關閉時有來電，但您的手機只能顯示小型通知。允許全螢幕來電，這樣下次來電時，即使手機鎖定，也會在整個螢幕上響鈴。",
+    "callMicrophoneTitle": "將麥克風用於通話",
+    "callMicrophoneMessage": "Pangea Chat 需要您的麥克風才能進行通話，包括您從鎖定畫面接聽的通話。",
+    "callMicrophoneOffTitle": "您的通話未連線",
+    "callMicrophoneOffMessage": "Pangea Chat 無法使用您的麥克風。輕點以在「設定」中開啟。",
     "customCourseStepDesc": "課程是一系列對話活動，可讓學生按照課本內容，一起完成作業。"
 }

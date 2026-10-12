@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:36:47.715377",
+    "@@last_modified": "2026-10-12 13:12:03.596654",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10898,5 +10898,26 @@
     "reportPointerMessage": "Poruka je prijavljena u {courseName} — pogledajte Bezbednost",
     "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu ćaskanja",
     "andCertifyIMeetTheMinimumAge": " i potvrđujem da imam najmanje 13 godina, ili minimalnu starost propisanu u mojoj zemlji ako je ona viša.",
+    "filteredNetworkBlockedTitle": "Ova mreža blokira Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Ova mreža delimično blokira Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Šta mogu da uradim?",
+    "filteredNetworkPhoneAdvice": "Isključite Wi-Fi i koristite mobilne podatke.",
+    "filteredNetworkComputerAdvice": "Povežite se na hotspot telefona umesto na ovaj Wi-Fi.",
+    "filteredNetworkItHeading": "Za nastavnike i IT osoblje",
+    "filteredNetworkItBody": "Zatražite od svog IT tima da dozvoli ove domene:",
+    "filteredNetworkAskForHelp": "Zatražite pomoć od Pangee",
+    "filteredNetworkHelpExplanation": "Poslaćemo vam e-poštu da vam pomognemo da Pangea Chat radi na ovoj mreži.",
+    "filteredNetworkHelpWaiting": "Vaš zahtev će biti poslat čim se povežete.",
+    "filteredNetworkHelpSent": "Poslato. Javićemo vam se putem e-pošte.",
+    "filteredNetworkHelpRefused": "Nismo mogli da pošaljemo vaš zahtev. Pošaljite e-poštu na support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Ova mreža blokira video zapise.",
+    "filteredNetworkImagesBlocked": "Ova mreža blokira slike.",
+    "filteredNetworkMapBlocked": "Ova mreža blokira mapu.",
+    "callFullScreenTitle": "Neka pozivi zvone preko celog ekrana",
+    "callFullScreenMessage": "Poziv je stigao dok je Pangea Chat bio zatvoren, ali vaš telefon je mogao da prikaže samo malo obaveštenje o tome. Dozvolite pozive preko celog ekrana kako bi sledeći poziv zvonio preko celog ekrana, čak i kada je vaš telefon zaključan.",
+    "callMicrophoneTitle": "Koristite mikrofon za pozive",
+    "callMicrophoneMessage": "Pangea Chat-u je potreban vaš mikrofon za pozive, uključujući pozive na koje odgovarate sa zaključanog ekrana.",
+    "callMicrophoneOffTitle": "Vaš poziv nije povezan",
+    "callMicrophoneOffMessage": "Pangea Chat ne može da koristi vaš mikrofon. Dodirnite da biste ga uključili u Podešavanjima.",
     "customCourseStepDesc": "Kurs je skup konverzacijskih aktivnosti koje prate vaš udžbenik, a koje vaši učenici rade zajedno kao domaći zadatak."
 }

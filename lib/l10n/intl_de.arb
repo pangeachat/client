@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-12 13:36:37.946342",
+    "@@last_modified": "2026-10-12 13:11:54.444521",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9936,5 +9936,26 @@
     "reportPointerMessage": "Eine Nachricht wurde in {courseName} gemeldet – siehe Sicherheit",
     "useActivityImageAsChatBackground": "Aktivitätsbild als Chat-Hintergrund verwenden",
     "andCertifyIMeetTheMinimumAge": " zu und bestätige, dass ich mindestens 13 Jahre alt bin oder das in meinem Land erforderliche Mindestalter erreicht habe, falls dieses höher ist.",
+    "filteredNetworkBlockedTitle": "Dieses Netzwerk blockiert Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Dieses Netzwerk blockiert einen Teil von Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Was kann ich tun?",
+    "filteredNetworkPhoneAdvice": "Schalten Sie WLAN aus und nutzen Sie stattdessen mobile Daten.",
+    "filteredNetworkComputerAdvice": "Verbinden Sie sich mit dem Hotspot Ihres Telefons anstelle dieses WLANs.",
+    "filteredNetworkItHeading": "Für Lehrkräfte und IT-Mitarbeiter",
+    "filteredNetworkItBody": "Bitten Sie Ihr IT-Team, diese Domains zuzulassen:",
+    "filteredNetworkAskForHelp": "Pangea um Hilfe bitten",
+    "filteredNetworkHelpExplanation": "Wir werden Ihnen eine E-Mail senden, um Pangea Chat in diesem Netzwerk zum Laufen zu bringen.",
+    "filteredNetworkHelpWaiting": "Ihre Anfrage wird gesendet, sobald Sie verbunden sind.",
+    "filteredNetworkHelpSent": "Gesendet. Wir melden uns per E-Mail bei Ihnen.",
+    "filteredNetworkHelpRefused": "Ihre Anfrage konnte nicht gesendet werden. Bitte senden Sie eine E-Mail an support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Dieses Netzwerk blockiert Videos.",
+    "filteredNetworkImagesBlocked": "Dieses Netzwerk blockiert Bilder.",
+    "filteredNetworkMapBlocked": "Dieses Netzwerk blockiert die Karte.",
+    "callFullScreenTitle": "Anrufe im Vollbildmodus klingeln lassen",
+    "callFullScreenMessage": "Ein Anruf kam herein, während Pangea Chat geschlossen war, aber Ihr Telefon konnte nur eine kleine Benachrichtigung dafür anzeigen. Erlauben Sie Vollbildanrufe, damit der nächste Anruf auf Ihrem gesamten Bildschirm klingelt, auch wenn Ihr Telefon gesperrt ist.",
+    "callMicrophoneTitle": "Mikrofon für Anrufe verwenden",
+    "callMicrophoneMessage": "Pangea Chat benötigt Ihr Mikrofon für Anrufe, einschließlich Anrufe, die Sie vom Sperrbildschirm aus annehmen.",
+    "callMicrophoneOffTitle": "Ihr Anruf konnte nicht verbunden werden",
+    "callMicrophoneOffMessage": "Pangea Chat kann Ihr Mikrofon nicht verwenden. Tippen Sie hier, um es in den Einstellungen zu aktivieren.",
     "customCourseStepDesc": "Ein Kurs ist eine Reihe von Konversationsaktivitäten, die Ihrem Lehrbuch folgen und die Ihre Schüler als Hausaufgaben gemeinsam bearbeiten können."
 }

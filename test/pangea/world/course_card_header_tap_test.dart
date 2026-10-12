@@ -18,6 +18,7 @@ import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/routes/chat/chat_details/course_overview/course_leaderboard_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/world/course_context_bar.dart';
 import 'package:fluffychat/routes/world/left_panel/course_card_reveal.dart';
@@ -27,6 +28,7 @@ import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../fake_pangea_controller.dart';
 import '../get_test_client.dart';
+import '../settle_leaderboard.dart';
 
 /// #8909 — on wide, the open course card's header is a tap target for the
 /// collapse, the mirror of the context bar's whole-surface tap that reopens
@@ -188,7 +190,8 @@ void main() {
         ),
       ),
     );
-    await tester.pumpAndSettle();
+    // The card's Leaderboard section loads its members' profiles first.
+    await settle(tester, find.byType(CourseLeaderboardPreview));
   }
 
   Uri uri() => router.routerDelegate.currentConfiguration.uri;

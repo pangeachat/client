@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:36:49.718260",
+    "@@last_modified": "2026-10-12 13:12:15.413539",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7251,5 +7251,26 @@
     "reportPointerMessage": "Một tin nhắn đã được báo cáo trong {courseName} — xem mục An toàn",
     "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện",
     "andCertifyIMeetTheMinimumAge": " và xác nhận tôi ít nhất 13 tuổi, hoặc độ tuổi tối thiểu được yêu cầu ở quốc gia của tôi nếu cao hơn.",
+    "filteredNetworkBlockedTitle": "Mạng này đang chặn Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Mạng này đang chặn một phần Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Tôi có thể làm gì?",
+    "filteredNetworkPhoneAdvice": "Tắt Wi-Fi và dùng dữ liệu di động.",
+    "filteredNetworkComputerAdvice": "Kết nối với điểm phát sóng của điện thoại thay vì Wi-Fi này.",
+    "filteredNetworkItHeading": "Dành cho giáo viên và nhân viên IT",
+    "filteredNetworkItBody": "Yêu cầu đội ngũ IT của bạn cho phép các miền sau:",
+    "filteredNetworkAskForHelp": "Yêu cầu Pangea trợ giúp",
+    "filteredNetworkHelpExplanation": "Chúng tôi sẽ gửi email cho bạn để giúp Pangea Chat hoạt động trên mạng này.",
+    "filteredNetworkHelpWaiting": "Yêu cầu của bạn sẽ được gửi ngay khi bạn kết nối.",
+    "filteredNetworkHelpSent": "Đã gửi. Chúng tôi sẽ liên hệ với bạn qua email.",
+    "filteredNetworkHelpRefused": "Chúng tôi không thể gửi yêu cầu của bạn. Vui lòng gửi email tới support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Mạng này chặn video.",
+    "filteredNetworkImagesBlocked": "Mạng này chặn hình ảnh.",
+    "filteredNetworkMapBlocked": "Mạng này chặn bản đồ.",
+    "callFullScreenTitle": "Cho phép cuộc gọi đổ chuông toàn màn hình",
+    "callFullScreenMessage": "Một cuộc gọi đến khi Pangea Chat đã đóng, nhưng điện thoại của bạn chỉ có thể hiển thị một thông báo nhỏ. Cho phép cuộc gọi toàn màn hình để cuộc gọi tiếp theo đổ chuông trên toàn bộ màn hình của bạn, ngay cả khi điện thoại của bạn bị khóa.",
+    "callMicrophoneTitle": "Sử dụng micrô của bạn cho cuộc gọi",
+    "callMicrophoneMessage": "Pangea Chat cần micrô của bạn cho các cuộc gọi, bao gồm cả các cuộc gọi bạn trả lời từ màn hình khóa.",
+    "callMicrophoneOffTitle": "Cuộc gọi của bạn không kết nối được",
+    "callMicrophoneOffMessage": "Pangea Chat không thể sử dụng micrô của bạn. Nhấn để bật micrô trong Cài đặt.",
     "customCourseStepDesc": "Một khóa học là một tập hợp các hoạt động hội thoại theo sách giáo khoa của bạn, để học sinh của bạn cùng nhau làm bài tập về nhà."
 }

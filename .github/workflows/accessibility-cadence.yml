@@ -82,7 +82,7 @@ jobs:
             };
             // QA team for the manual pass. Editable; assignment is non-fatal if a
             // handle is wrong or lacks access (the issue still opens).
-            const assignees = { monthly: [], quarterly: ['tigtoggle', 'kelrap'] };
+            const assignees = { monthly: [], quarterly: ['TigToggle', 'KhueDao1'] };
 
             // Ensure the label exists (non-fatal).
             try {

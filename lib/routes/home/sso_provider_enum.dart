@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/network_filter/network_host_category.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/home/store_login_method_repo.dart';
 
@@ -37,5 +38,10 @@ enum SSOProvider {
   LoginMethod get loginMethod => switch (this) {
     SSOProvider.google => LoginMethod.google,
     SSOProvider.apple => LoginMethod.apple,
+  };
+
+  NetworkHostCategory get networkHostCategory => switch (this) {
+    SSOProvider.google => NetworkHostCategory.googleSignIn,
+    SSOProvider.apple => NetworkHostCategory.appleSignIn,
   };
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:36:41.934751",
+    "@@last_modified": "2026-10-12 13:11:55.918835",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10022,5 +10022,26 @@
     "reportPointerMessage": "È stato segnalato un messaggio in {courseName} — vedi Sicurezza",
     "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
     "andCertifyIMeetTheMinimumAge": " e dichiaro di avere almeno 13 anni, o l'età minima richiesta nel mio paese se superiore.",
+    "filteredNetworkBlockedTitle": "Questa rete sta bloccando Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Questa rete sta bloccando parte di Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Cosa posso fare?",
+    "filteredNetworkPhoneAdvice": "Disattiva il Wi-Fi e usa i dati mobili.",
+    "filteredNetworkComputerAdvice": "Connettiti all'hotspot del tuo telefono invece di questo Wi-Fi.",
+    "filteredNetworkItHeading": "Per insegnanti e personale IT",
+    "filteredNetworkItBody": "Chiedi al tuo team IT di consentire questi domini:",
+    "filteredNetworkAskForHelp": "Chiedi aiuto a Pangea",
+    "filteredNetworkHelpExplanation": "Ti invieremo un'e-mail per aiutarti a far funzionare Pangea Chat su questa rete.",
+    "filteredNetworkHelpWaiting": "La tua richiesta verrà inviata non appena sarai connesso.",
+    "filteredNetworkHelpSent": "Inviato. Ti contatteremo via e-mail.",
+    "filteredNetworkHelpRefused": "Non è stato possibile inviare la tua richiesta. Invia un'e-mail a support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Questa rete blocca i video.",
+    "filteredNetworkImagesBlocked": "Questa rete blocca le immagini.",
+    "filteredNetworkMapBlocked": "Questa rete blocca la mappa.",
+    "callFullScreenTitle": "Consenti chiamate a schermo intero",
+    "callFullScreenMessage": "È arrivata una chiamata mentre Pangea Chat era chiusa, ma il tuo telefono poteva mostrare solo una piccola notifica. Consenti le chiamate a schermo intero in modo che la prossima squilli su tutto lo schermo, anche quando il telefono è bloccato.",
+    "callMicrophoneTitle": "Usa il microfono per le chiamate",
+    "callMicrophoneMessage": "Pangea Chat ha bisogno del tuo microfono per le chiamate, incluse quelle a cui rispondi dalla schermata di blocco.",
+    "callMicrophoneOffTitle": "La tua chiamata non si è collegata",
+    "callMicrophoneOffMessage": "Pangea Chat non può usare il tuo microfono. Tocca per attivarlo nelle Impostazioni.",
     "customCourseStepDesc": "Un corso è un insieme di attività di conversazione che seguono il tuo libro di testo, che i tuoi studenti possono svolgere insieme come compito a casa."
 }

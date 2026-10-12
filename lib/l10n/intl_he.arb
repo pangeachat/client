@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:36:40.313746",
+    "@@last_modified": "2026-10-12 13:11:54.216711",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10863,5 +10863,26 @@
     "reportPointerMessage": "הודעה דווחה ב{courseName} — ראה בטיחות",
     "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט",
     "andCertifyIMeetTheMinimumAge": "ומאשר/ת שאני בן/בת 13 לפחות, או בגיל המינימלי הנדרש במדינתי אם הוא גבוה יותר.",
+    "filteredNetworkBlockedTitle": "רשת זו חוסמת את Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "רשת זו חוסמת חלק מ-Pangea Chat",
+    "filteredNetworkWhatCanIDo": "מה אפשר לעשות?",
+    "filteredNetworkPhoneAdvice": "כבה/כבי את ה-Wi-Fi והשתמש/השתמשי במקום זאת בנתונים ניידים.",
+    "filteredNetworkComputerAdvice": "התחבר/התחברי לנקודה חמה של הטלפון שלך במקום ל-Wi-Fi הזה.",
+    "filteredNetworkItHeading": "למורים ולצוותי IT",
+    "filteredNetworkItBody": "בקש/בקשי מצוות ה-IT שלך לאפשר את הדומיינים הבאים:",
+    "filteredNetworkAskForHelp": "בקש/בקשי עזרה מ-Pangea",
+    "filteredNetworkHelpExplanation": "נשלח לך אימייל כדי לעזור לך להפעיל את Pangea Chat ברשת זו.",
+    "filteredNetworkHelpWaiting": "בקשתך תישלח ברגע שתתחבר/תתחברי.",
+    "filteredNetworkHelpSent": "נשלח. ניצור קשר באימייל.",
+    "filteredNetworkHelpRefused": "לא הצלחנו לשלוח את בקשתך. אנא שלח/שלחי אימייל ל-support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "רשת זו חוסמת סרטונים.",
+    "filteredNetworkImagesBlocked": "רשת זו חוסמת תמונות.",
+    "filteredNetworkMapBlocked": "רשת זו חוסמת את המפה.",
+    "callFullScreenTitle": "אפשר לשיחות לצלצל במסך מלא",
+    "callFullScreenMessage": "התקבלה שיחה כש־Pangea Chat הייתה סגורה, אבל הטלפון שלך הציג רק התראה קטנה עבורה. אפשר שיחות במסך מלא כדי שהשיחה הבאה תצלצל על כל המסך, גם כשהטלפון שלך נעול.",
+    "callMicrophoneTitle": "השתמש/י במיקרופון שלך לשיחות",
+    "callMicrophoneMessage": "Pangea Chat זקוק למיקרופון שלך לשיחות, כולל שיחות שאת/ה עונה להן ממסך הנעילה.",
+    "callMicrophoneOffTitle": "השיחה שלך לא התחברה",
+    "callMicrophoneOffMessage": "Pangea Chat לא יכול להשתמש במיקרופון שלך. הקש/י כדי להפעיל אותו בהגדרות.",
     "customCourseStepDesc": "קורס הוא סדרה של פעילויות שיחה שעוקבות אחר ספר הלימוד שלך, כדי שהתלמידים שלך יוכלו לעשות יחד כשיעורי בית."
 }

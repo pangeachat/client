@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:36:46.431066",
+    "@@last_modified": "2026-10-12 13:12:02.363582",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10681,5 +10681,26 @@
     "reportPointerMessage": "Un mesaj a fost raportat în {courseName} — vezi Siguranță",
     "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal de chat",
     "andCertifyIMeetTheMinimumAge": " și certific că am cel puțin 13 ani, sau vârsta minimă cerută în țara mea dacă aceasta este mai mare.",
+    "filteredNetworkBlockedTitle": "Această rețea blochează Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Această rețea blochează o parte din Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Ce pot face?",
+    "filteredNetworkPhoneAdvice": "Dezactivează Wi-Fi și folosește datele mobile.",
+    "filteredNetworkComputerAdvice": "Conectează-te la hotspot-ul telefonului în loc de acest Wi-Fi.",
+    "filteredNetworkItHeading": "Pentru profesori și personalul IT",
+    "filteredNetworkItBody": "Roagă echipa IT să permită aceste domenii:",
+    "filteredNetworkAskForHelp": "Cere ajutor de la Pangea",
+    "filteredNetworkHelpExplanation": "Îți vom trimite un e-mail pentru a te ajuta să faci Pangea Chat să funcționeze pe această rețea.",
+    "filteredNetworkHelpWaiting": "Solicitarea ta va fi trimisă imediat ce te vei conecta.",
+    "filteredNetworkHelpSent": "Trimis. Te vom contacta prin e-mail.",
+    "filteredNetworkHelpRefused": "Nu am putut trimite solicitarea ta. Te rugăm să trimiți un e-mail la support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Această rețea blochează videoclipurile.",
+    "filteredNetworkImagesBlocked": "Această rețea blochează imaginile.",
+    "filteredNetworkMapBlocked": "Această rețea blochează harta.",
+    "callFullScreenTitle": "Permite apelurilor să sune pe tot ecranul",
+    "callFullScreenMessage": "A intrat un apel în timp ce Pangea Chat era închis, dar telefonul tău a putut afișa doar o notificare mică pentru acesta. Permite apeluri pe tot ecranul, astfel încât următorul să sune pe întregul ecran, chiar și atunci când telefonul este blocat.",
+    "callMicrophoneTitle": "Folosește microfonul pentru apeluri",
+    "callMicrophoneMessage": "Pangea Chat are nevoie de microfonul tău pentru apeluri, inclusiv pentru apelurile la care răspunzi din ecranul de blocare.",
+    "callMicrophoneOffTitle": "Apelul tău nu s-a conectat",
+    "callMicrophoneOffMessage": "Pangea Chat nu poate folosi microfonul tău. Atinge pentru a-l activa din Setări.",
     "customCourseStepDesc": "Un curs este un set de activități de conversație care urmează manualul tău, pentru ca studenții tăi să le facă împreună ca temă."
 }

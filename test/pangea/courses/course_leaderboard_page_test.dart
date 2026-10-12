@@ -20,6 +20,7 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 import 'package:fluffychat/widgets/matrix.dart';
 import '../fake_pangea_controller.dart';
 import '../get_test_client.dart';
+import '../settle_leaderboard.dart';
 
 class _TestMatrixState extends MatrixState {
   @override
@@ -179,7 +180,7 @@ void main() {
         ),
       ),
     );
-    await tester.pumpAndSettle();
+    await settle(tester, find.byType(CourseLeaderboardPage));
   }
 
   Future<void> drain(WidgetTester tester) async {
@@ -188,6 +189,11 @@ void main() {
       () => Future.delayed(const Duration(milliseconds: 300)),
     );
     await tester.pump(const Duration(seconds: 10));
+    // The timers that pump fired answer presence reads, whose writes need
+    // real time to reach the database before `tearDown` closes it.
+    await tester.runAsync(
+      () => Future.delayed(const Duration(milliseconds: 300)),
+    );
   }
 
   List<int> tileRanks(WidgetTester tester) => tester

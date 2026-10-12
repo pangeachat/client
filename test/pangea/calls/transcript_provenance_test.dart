@@ -941,6 +941,37 @@ void main() {
           String? from,
         }) async => (chunk: chunk, nextBatch: null);
 
+    test(
+      'an ordinary call with no peer claim never calls the resolver',
+      () async {
+        // The transcript SCREEN now hands every read a resolver that fetches the
+        // audio manifest (#8792). An ordinary call -- authentic halves only --
+        // must not pay that fetch, or fail on it. Mutation proof: dropping the
+        // "any candidate has a spokenBy" guard in `fetchCallTranscript` calls
+        // the resolver here -> RED.
+        var calls = 0;
+        final transcript = await fetchCallTranscript(
+          fetch: onePage([
+            transcriptEvent(alice, texts: const ['hola alice']),
+            transcriptEvent(bob, texts: const ['hola bob']),
+          ]),
+          roomId: _room,
+          callKey: _callKey,
+          expectedSenders: const [alice, bob],
+          resolveProvenance: (_) async {
+            calls++;
+            throw Exception('manifest fetch failed');
+          },
+        );
+
+        expect(calls, 0, reason: 'no peer claim, so no manifest fetch');
+        expect(
+          transcript.halves.map((h) => h.state),
+          everyElement(HalfState.present),
+        );
+      },
+    );
+
     test('a THROWING resolver renders the authentic halves and holds the peer '
         'claim pending, rather than failing the whole read', () async {
       // Mutation proof: removing the try/catch around resolveProvenance lets
