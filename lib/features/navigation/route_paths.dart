@@ -127,11 +127,11 @@ abstract class PRoutes {
   }
 
   /// The Canvas (LTI) learner/instructor hand-off page: the module redirects a
-  /// launch to `/lti/link?ticket=…` (C5). Its redirect ferries the ticket and
+  /// launch to `/lti/link#ticket=…` (C5). Its redirect ferries the ticket and
   /// strips it from the address bar before the page renders.
   static const String ltiLink = '/lti/link';
 
-  /// The Canvas login-token entry: `/lti/token?loginToken=…` signs a linked
+  /// The Canvas login-token entry: `/lti/token#loginToken=…` signs a linked
   /// learner in (C5). The token leaves the address bar at once.
   static const String ltiToken = '/lti/token';
 

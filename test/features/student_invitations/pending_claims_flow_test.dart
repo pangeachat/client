@@ -20,6 +20,20 @@ import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 /// ticket returned at most once, the login token used once, and no email or
 /// Matrix id in any request URL. Opening an invitation is covered by
 /// seat_invitation_open_test.dart.
+/// The browser's URL fragment, as LtiEntry reads and clears it.
+class FakeFragment implements LtiFragment {
+  String? value;
+
+  @override
+  String? take() {
+    final taken = value;
+    value = null;
+    return taken;
+  }
+}
+
+final fragment = FakeFragment();
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -70,6 +84,8 @@ void main() {
       sent.where((r) => r.method == method && r.url.path == '$prefix/$path');
 
   setUp(() async {
+    fragment.value = null;
+    LtiEntry.fragment = fragment;
     sent = [];
     notices = [];
     opened = [];
@@ -87,14 +103,19 @@ void main() {
       'returned once after auth', () {
     test('the launch URL is stripped, the ticket ferried, then returned '
         'once with the account token', () async {
-      final landing = Uri.parse(
-        '${PRoutes.ltiLink}?ticket=$ticket&course=Spanish%20101',
-      );
-      expect(await LtiEntry.linkRedirect(landing), PRoutes.ltiLink);
+      // C5.2: the ticket arrives in the URL fragment, which no web host
+      // logs; the router sees the bare path.
+      fragment.value = 'ticket=$ticket&course=Spanish%20101';
       expect(
         await LtiEntry.linkRedirect(Uri.parse(PRoutes.ltiLink)),
         isNull,
-        reason: 'the stripped page renders',
+        reason: 'the page renders once the fragment is taken',
+      );
+      expect(fragment.value, isNull, reason: 'the fragment is cleared');
+      expect(
+        await LtiEntry.linkRedirect(Uri.parse(PRoutes.ltiLink)),
+        isNull,
+        reason: 'a re-run finds nothing and keeps the ferried ticket',
       );
       final pending = SpaceCodeRepo.pendingLtiTicket!;
       expect(pending.ticket, ticket);
@@ -125,6 +146,18 @@ void main() {
       expect(SpaceCodeRepo.pendingLtiTicket, isNull);
     });
 
+    test('a ticket in the query (logged by web hosts) is never ferried, only '
+        'stripped from the address bar', () async {
+      fragment.value = null;
+      expect(
+        await LtiEntry.linkRedirect(
+          Uri.parse('${PRoutes.ltiLink}?ticket=$ticket'),
+        ),
+        PRoutes.ltiLink,
+      );
+      expect(SpaceCodeRepo.pendingLtiTicket, isNull);
+    });
+
     test('an expired ticket is reported and not retried', () async {
       await SpaceCodeRepo.setPendingLtiTicket(const PendingLtiTicket(ticket));
       routes['POST $prefix/lti/link'] = (_) =>
@@ -143,10 +176,8 @@ void main() {
     test(
       'ferried across sign-in, returned once, admin-dash opened once',
       () async {
-        final landing = Uri.parse(
-          '${PRoutes.ltiLink}?ticket=$ticket&role=instructor',
-        );
-        expect(await LtiEntry.linkRedirect(landing), PRoutes.ltiLink);
+        fragment.value = 'ticket=$ticket&role=instructor';
+        expect(await LtiEntry.linkRedirect(Uri.parse(PRoutes.ltiLink)), isNull);
         expect(SpaceCodeRepo.pendingLtiTicket?.instructor, isTrue);
 
         const connect =
@@ -180,17 +211,29 @@ void main() {
 
   group('lti login token signs in once', () {
     test('the token leaves the URL at once and can be taken only once', () {
-      final landing = Uri.parse('${PRoutes.ltiToken}?loginToken=syl_abc123');
-      expect(LtiEntry.tokenRedirect(landing), PRoutes.ltiToken);
+      fragment.value = 'loginToken=syl_abc123';
+      expect(LtiEntry.tokenRedirect(Uri.parse(PRoutes.ltiToken)), isNull);
+      expect(fragment.value, isNull, reason: 'the fragment is cleared');
       expect(LtiEntry.tokenRedirect(Uri.parse(PRoutes.ltiToken)), isNull);
       expect(LtiEntry.takeLoginToken(), 'syl_abc123');
       expect(LtiEntry.takeLoginToken(), isNull);
     });
 
     test('a landing without a usable token drops an older held one', () {
-      LtiEntry.tokenRedirect(Uri.parse('${PRoutes.ltiToken}?loginToken=old'));
+      fragment.value = 'loginToken=old';
+      LtiEntry.tokenRedirect(Uri.parse(PRoutes.ltiToken));
+      fragment.value = 'x=1';
+      expect(LtiEntry.tokenRedirect(Uri.parse(PRoutes.ltiToken)), isNull);
+      expect(LtiEntry.takeLoginToken(), isNull);
+    });
+
+    test('a token in the query (logged by web hosts) is never used, only '
+        'stripped from the address bar', () {
+      fragment.value = null;
       expect(
-        LtiEntry.tokenRedirect(Uri.parse('${PRoutes.ltiToken}?x=1')),
+        LtiEntry.tokenRedirect(
+          Uri.parse('${PRoutes.ltiToken}?loginToken=syl_query'),
+        ),
         PRoutes.ltiToken,
       );
       expect(LtiEntry.takeLoginToken(), isNull);
