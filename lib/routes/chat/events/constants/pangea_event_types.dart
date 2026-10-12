@@ -91,4 +91,10 @@ class PangeaEventTypes {
   static const firstBotDMMessage = "pangea_first_bot_dm_message";
 
   static const onboardingSettings = "org.pangea.onboarding_settings";
+
+  /// The learner's journey steps and app-ask history, read by the engagement
+  /// system (engagement analytics.instructions.md, Journey-checklist
+  /// state). Its own event so older clients, which rewrite the profile event
+  /// whole, never erase it.
+  static const journeyChecklist = 'pangea.journey_checklist';
 }

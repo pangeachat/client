@@ -124,11 +124,7 @@ reporting:
   registered dimension (the cardinality rule).
 - **Timestamp and web/mobile platform come from GA4 automatically** (event
   timestamp; per-platform streams) — do not duplicate them as params.
-- **One writer per product moment.** A moment that both advances the
-  first-party journey checklist and emits a GA event goes through a single
-  client helper that writes both together, so state and mirror can never
-  drift — the analytics twin of the routing rule that only `WorkspaceNav`
-  writes URLs.
+- **One writer per product moment.** A moment that both advances the first-party journey checklist and emits a GA event goes through a single client helper that writes both together, so state and mirror can never drift — the analytics twin of the routing rule that only `WorkspaceNav` writes URLs. That helper is [`JourneyMoments`](../../lib/features/journey_checklist/journey_moments.dart); which steps exist and what the record holds are the [journey-checklist contract](../../../engagement/.github/instructions/analytics.instructions.md).
 
 ## User properties
 
