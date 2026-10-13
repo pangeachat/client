@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-13 09:39:45.092281",
+    "@@last_modified": "2026-10-13 13:03:44.500107",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "ಪೂರ್ವನಿಯೋಜಿತವಾಗಿ, ಕೋರ್ಸ್‌ಗಳು ಸಾರ್ವಜನಿಕವಾಗಿ ಹುಡುಕಬಹುದಾದವು ಮತ್ತು ಸೇರಲು ನಿರ್ವಾಹಕರ ಅನುಮೋದನೆ ಅಗತ್ಯವಿದೆ. ನೀವು ಈ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ಸಂಪಾದಿಸಬಹುದು.",
     "onboardingLanguagesTitle": "ನೀವು ಯಾವ ಭಾಷೆಯನ್ನು ಕಲಿಯುತ್ತಿದ್ದೀರಿ?",
     "supportSubtitle": "ಪ್ರಶ್ನೆಗಳಿವೆಯೇ? ಸಹಾಯ ಮಾಡಲು ನಾವು ಇಲ್ಲಿದ್ದೇವೆ!",
-    "autoIGCToolName": "ಬರವಣಿಗೆ ಸಹಾಯವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ",
-    "autoIGCToolDescription": "ಕಳುಹಿಸಿದ ಸಂದೇಶಗಳನ್ನು ಗುರಿ ಭಾಷೆಗೆ ಸರಿಪಡಿಸಲು Pangea Chat ಪರಿಕರಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ರನ್ ಮಾಡಿ.",
+    "autoIGCToolName": "ಕಳುಹಿಸುವಾಗ ಸ್ವಯಂ ಪರಿಶೀಲಿಸಿ",
+    "autoIGCToolDescription": "ನೀವು ಕಳುಹಿಸು ಟ್ಯಾಪ್ ಮಾಡಿದಾಗ ನಿಮ್ಮ ಸಂದೇಶದಲ್ಲಿನ ತಪ್ಪುಗಳನ್ನು ಪರಿಶೀಲಿಸಿ. ಇದು ಆಫ್ ಆಗಿರುವಾಗ, ನೀವೇ ಸಂದೇಶವನ್ನು ಪರಿಶೀಲಿಸಲು ಬರವಣಿಗೆ ಸಹಾಯ ಬಟನ್ ಅನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ.",
     "emptyAudioError": "ರೆಕಾರ್ಡಿಂಗ್ ವಿಫಲವಾಗಿದೆ. ದಯವಿಟ್ಟು ನಿಮ್ಮ ಆಡಿಯೋ ಅನುಮತಿಗಳನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
     "spanTypeSpelling": "ಕಾಗುಣಿತ",
     "spanTypePunctuation": "ವಿರಾಮಚಿಹ್ನೆ",
@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "ಹೂವುಗಳು, ಕರಗತವಾದ ಪದಗಳು",
     "filterAndSearch": "ಫಿಲ್ಟರ್ ಮಾಡಿ ಮತ್ತು ಹುಡುಕಿ",
     "participantsOfTotal": "{total} ಆಟಗಾರರಲ್ಲಿ {filled}",
-    "mapAttributionLabel": "ಓಪನ್‌ಸ್ಟ್ರೀಟ್‌ಮ್ಯಾಪ್ ಕೊಡುಗೆದಾರರು, ಹಕ್ಕುಸ್ವಾಮ್ಯ ಮತ್ತು ಪರವಾನಗಿ",
     "seeAll": "ಎಲ್ಲವನ್ನೂ ನೋಡಿ",
     "seeAllSection": "ಎಲ್ಲವನ್ನೂ ನೋಡಿ {section}",
     "showMoreOptionsHint": "ಇನ್ನಷ್ಟು ಆಯ್ಕೆಗಳನ್ನು ತೋರಿಸಿ",
@@ -2432,5 +2431,14 @@
     "callMicrophoneOffMessage": "Pangea Chat ನಿಮ್ಮ ಮೈಕ್ರೊಫೋನ್ ಬಳಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅದನ್ನು ಆನ್ ಮಾಡಲು ಟ್ಯಾಪ್ ಮಾಡಿ.",
     "goalsCompletedOfTotal": "{total} ಗುರಿಗಳಲ್ಲಿ {earned} ಪೂರ್ಣಗೊಂಡಿವೆ",
     "goalsCompletedInLanguage": "{language} ನಲ್ಲಿ ಪೂರ್ಣಗೊಂಡ ಗುರಿಗಳು",
-    "sessionXpTowardObjective": "ಈ ಸೆಷನ್‌ನಲ್ಲಿ {xp} XP; ಉದ್ದೇಶವನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಇನ್ನೂ {remaining} ಬೇಕು"
+    "sessionXpTowardObjective": "ಈ ಸೆಷನ್‌ನಲ್ಲಿ {xp} XP; ಉದ್ದೇಶವನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಇನ್ನೂ {remaining} ಬೇಕು",
+    "mapCreditsLabel": "ನಕ್ಷೆ ಕ್ರೆಡಿಟ್‌ಗಳು: ಸ್ಟೇಡಿಯಾ ಮ್ಯಾಪ್ಸ್, ಓಪನ್‌ಮ್ಯಾಪ್‌ಟೈಲ್ಸ್ ಮತ್ತು ಓಪನ್‌ಸ್ಟ್ರೀಟ್‌ಮ್ಯಾಪ್",
+    "activityLaunchFindingCourses": "ನಿಮ್ಮ ಕೋರ್ಸ್‌ಗಳನ್ನು ಹುಡುಕಲಾಗುತ್ತಿದೆ…",
+    "activityLaunchCreatingRoom": "ನಿಮ್ಮ ಚಟುವಟಿಕೆಯನ್ನು ರಚಿಸಲಾಗುತ್ತಿದೆ…",
+    "activityLaunchOpeningRoom": "ನಿಮ್ಮ ಚಟುವಟಿಕೆಯನ್ನು ತೆರೆಯಲಾಗುತ್ತಿದೆ…",
+    "playWithOthers": "ಇತರರೊಂದಿಗೆ ಆಟವಾಡಿ",
+    "openRole": "ತೆರೆದಿದೆ: {role}",
+    "waitingFor": "{duration} ಕಾಯಲಾಗುತ್ತಿದೆ",
+    "onlineInCourse": "{course} ನಲ್ಲಿ {count} ಆನ್‌ಲೈನ್",
+    "newCourseChat": "ಹೊಸ ಕೋರ್ಸ್ ಚಾಟ್"
 }

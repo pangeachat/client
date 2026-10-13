@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 09:39:58.591815",
+    "@@last_modified": "2026-10-13 13:03:50.775174",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -5046,8 +5046,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Bật trợ giúp viết",
-    "autoIGCToolDescription": "Tự động chạy các công cụ Pangea Chat để sửa các tin nhắn đã gửi sang ngôn ngữ mục tiêu.",
+    "autoIGCToolName": "Tự động kiểm tra khi gửi",
+    "autoIGCToolDescription": "Kiểm tra tin nhắn của bạn để tìm lỗi khi bạn nhấn gửi. Khi tắt tính năng này, hãy nhấn nút hỗ trợ viết để tự kiểm tra tin nhắn.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -7103,7 +7103,6 @@
     "constructLevelFlowers": "Hoa, từ đã thành thạo",
     "filterAndSearch": "Lọc và tìm kiếm",
     "participantsOfTotal": "{filled} trên {total} người chơi",
-    "mapAttributionLabel": "Những người đóng góp OpenStreetMap, bản quyền và giấy phép",
     "seeAll": "Xem tất cả",
     "seeAllSection": "Xem tất cả {section}",
     "showMoreOptionsHint": "hiện thêm tùy chọn",
@@ -7285,5 +7284,14 @@
     "callMicrophoneOffMessage": "Pangea Chat không thể sử dụng micrô của bạn. Nhấn để bật micrô trong Cài đặt.",
     "goalsCompletedOfTotal": "{earned} trên {total} mục tiêu đã hoàn thành",
     "goalsCompletedInLanguage": "Mục tiêu đã hoàn thành bằng tiếng {language}",
-    "sessionXpTowardObjective": "{xp} XP trong phiên này; cần thêm {remaining} để hoàn thành mục tiêu"
+    "sessionXpTowardObjective": "{xp} XP trong phiên này; cần thêm {remaining} để hoàn thành mục tiêu",
+    "mapCreditsLabel": "Bản quyền bản đồ: Stadia Maps, OpenMapTiles và OpenStreetMap",
+    "activityLaunchFindingCourses": "Đang tìm khóa học của bạn…",
+    "activityLaunchCreatingRoom": "Đang tạo hoạt động của bạn…",
+    "activityLaunchOpeningRoom": "Đang mở hoạt động của bạn…",
+    "playWithOthers": "Chơi với người khác",
+    "openRole": "Mở: {role}",
+    "waitingFor": "Đang chờ {duration}",
+    "onlineInCourse": "{count} người trực tuyến trong khóa {course}",
+    "newCourseChat": "Trò chuyện khóa học mới"
 }

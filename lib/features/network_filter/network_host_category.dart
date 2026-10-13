@@ -1,7 +1,7 @@
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
-import 'package:fluffychat/routes/world/world_map_constants.dart';
+import 'package:fluffychat/pangea/common/utils/map_tiles.dart';
 
 /// A host, or group of hosts, the app needs to reach. A network filter blocks
 /// the app one category at a time. See filtered-network.instructions.md,
@@ -23,7 +23,9 @@ enum NetworkHostCategory {
   bool get stopsApp => this == chatServer || this == pangeaApi;
 
   /// A cheap URL on the category's host. Any answer means the host is
-  /// reachable, so the path only has to exist on that host.
+  /// reachable, so the path only has to exist on that host — and answer
+  /// there: a browser follows redirects unseen, and one to plain `http` is
+  /// refused as mixed content, which reads as a block on every network.
   Uri get probeUrl => switch (this) {
     chatServer => _withScheme(
       Environment.synapseURL,
@@ -31,9 +33,15 @@ enum NetworkHostCategory {
     pangeaApi => Uri.parse(PApiUrls.appVersion),
     images => Uri.https(AppConfig.contentCdnHost),
     video => Uri.https(_videoEmbedHost),
-    map => Uri.https(WorldMapConstants.tileHost),
+    // Not the bare host: it redirects to stadiamaps.com, which the native
+    // probe reads as a filter's block page. `/tiles/` answers 404 in place.
+    map => Uri.https(MapTiles.host, '/tiles/'),
     googleSignIn => Uri.https('accounts.google.com', '/generate_204'),
-    appleSignIn => Uri.https('appleid.apple.com', '/favicon.ico'),
+    // Not /favicon.ico: it redirects to http://www.apple.com (#9441).
+    appleSignIn => Uri.https(
+      'appleid.apple.com',
+      '/.well-known/openid-configuration',
+    ),
   };
 
   /// The domains IT staff must allow for this category to work.
@@ -51,7 +59,7 @@ enum NetworkHostCategory {
       'ytimg.com',
       'googlevideo.com',
     ],
-    map => [WorldMapConstants.tileHost],
+    map => [MapTiles.host],
     googleSignIn => ['accounts.google.com'],
     appleSignIn => ['appleid.apple.com'],
   };

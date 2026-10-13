@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-13 09:39:38.674920",
+    "@@last_modified": "2026-10-13 13:03:40.576631",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -8248,8 +8248,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Povolit asistenci při psaní",
-    "autoIGCToolDescription": "Automaticky spouštět nástroje Pangea Chat pro opravu odeslaných zpráv do cílového jazyka.",
+    "autoIGCToolName": "Automatická kontrola při odeslání",
+    "autoIGCToolDescription": "Zkontrolovat zprávu, zda neobsahuje chyby, když klepnete na odeslat. Pokud je tato funkce vypnutá, klepněte na tlačítko asistenta psaní a zkontrolujte zprávu sami.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10291,7 +10291,6 @@
     "constructLevelFlowers": "Květy, zvládnutá slova",
     "filterAndSearch": "Filtrovat a hledat",
     "participantsOfTotal": "{filled} z {total} hráčů",
-    "mapAttributionLabel": "Přispěvatelé OpenStreetMap, autorská práva a licence",
     "seeAll": "Zobrazit vše",
     "seeAllSection": "Zobrazit vše {section}",
     "showMoreOptionsHint": "zobrazit další možnosti",
@@ -10477,5 +10476,14 @@
     "callMicrophoneOffMessage": "Pangea Chat nemůže použít váš mikrofon. Klepnutím jej zapnete v Nastavení.",
     "goalsCompletedOfTotal": "Splněno {earned} z {total} cílů",
     "goalsCompletedInLanguage": "Cílů splněno v jazyce {language}",
-    "sessionXpTowardObjective": "{xp} XP v této relaci; {remaining} zbývá ke splnění cíle"
+    "sessionXpTowardObjective": "{xp} XP v této relaci; {remaining} zbývá ke splnění cíle",
+    "mapCreditsLabel": "Zásluhy mapy: Stadia Maps, OpenMapTiles a OpenStreetMap",
+    "activityLaunchFindingCourses": "Hledáme vaše kurzy…",
+    "activityLaunchCreatingRoom": "Vytváříme vaši aktivitu…",
+    "activityLaunchOpeningRoom": "Otevíráme vaši aktivitu…",
+    "playWithOthers": "Hrát s ostatními",
+    "openRole": "Otevřít: {role}",
+    "waitingFor": "Čekání {duration}",
+    "onlineInCourse": "{count} online v {course}",
+    "newCourseChat": "Nový chat kurzu"
 }

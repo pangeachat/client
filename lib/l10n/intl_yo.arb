@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-13 09:39:59.922122",
+    "@@last_modified": "2026-10-13 13:03:50.961285",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Nipa aiyipada, awọn ẹkọ jẹ wiwa ni gbangba ati nilo ifọwọsi alakoso lati darapọ mọ. O le ṣatunkọ awọn eto wọnyi nigbakugba.",
     "onboardingLanguagesTitle": "Ede wo ni o n kọ?",
     "supportSubtitle": "Awọn ibeere? A wa nibi lati ṣe iranlọwọ!",
-    "autoIGCToolName": "Muu iranlọwọ kikọ ṣiṣẹ",
-    "autoIGCToolDescription": "Ṣiṣe awọn irinṣẹ Pangea Chat laifọwọyi lati ṣe atunṣe awọn ifiranṣẹ ti a firanṣẹ si ede ibi-afẹde.",
+    "autoIGCToolName": "Ṣàyẹ̀wò fúnra rẹ̀ nígbà tó bá fi ránṣẹ́",
+    "autoIGCToolDescription": "Ṣàyẹ̀wò àṣìṣe nínú ọ̀rọ̀ rẹ nígbà tó o bá tẹ fi ránṣẹ́. Nígbà tí èyí bá wà ní àìṣiṣẹ́, tẹ bọtini ìrànlọ́wọ́ ìkọ̀wé láti ṣàyẹ̀wò ọ̀rọ̀ fúnra rẹ.",
     "emptyAudioError": "Igbasilẹ kuna. Jọwọ ṣayẹwo awọn igbanilaaye ohun rẹ ki o tun gbiyanju.",
     "spanTypeSpelling": "Akọtọ",
     "spanTypePunctuation": "Ami ifamisi",
@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Àwọn òdòdó, àwọn ọ̀rọ̀ tí a ti kọ́ dáradára",
     "filterAndSearch": "Ṣe àlàyé àti wá",
     "participantsOfTotal": "Àwọn agbábọ́ọ̀lù {filled} nínú {total}",
-    "mapAttributionLabel": "Àwọn olùkópa OpenStreetMap, àṣẹ àti ìwé-àṣẹ",
     "seeAll": "Wo gbogbo rẹ",
     "seeAllSection": "Wo gbogbo {section}",
     "showMoreOptionsHint": "fi àwọn àṣàyàn mìíràn hàn",
@@ -2432,5 +2431,14 @@
     "callMicrophoneOffMessage": "Pangea Chat kò lè lo gbohungbohun rẹ. Fọwọ́bọ̀ láti tan-án nínú Àwọn Ètò.",
     "goalsCompletedOfTotal": "Awọn ibi-afẹde {earned} ti {total} ti pari",
     "goalsCompletedInLanguage": "Awọn ibi-afẹde ti pari ni {language}",
-    "sessionXpTowardObjective": "{xp} XP ni igba yii; {remaining} diẹ sii pari ibi-afẹde naa"
+    "sessionXpTowardObjective": "{xp} XP ni igba yii; {remaining} diẹ sii pari ibi-afẹde naa",
+    "mapCreditsLabel": "Àwọn kírẹ́dítì àwòrán ilẹ̀: Stadia Maps, OpenMapTiles àti OpenStreetMap",
+    "activityLaunchFindingCourses": "Wiwa awọn iṣẹ ikẹkọ rẹ…",
+    "activityLaunchCreatingRoom": "Ṣiṣẹda iṣẹ rẹ…",
+    "activityLaunchOpeningRoom": "Ṣiṣi iṣẹ rẹ…",
+    "playWithOthers": "Ṣeré pẹlu awọn miiran",
+    "openRole": "Ṣíi: {role}",
+    "waitingFor": "Nduro de {duration}",
+    "onlineInCourse": "{count} lóńláìní nínú {course}",
+    "newCourseChat": "Ìjíròrò ẹ̀kọ́ tuntun"
 }

@@ -1933,7 +1933,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-13 09:39:45.086650",
+    "@@last_modified": "2026-10-13 13:03:44.341739",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8640,8 +8640,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "წერის დახმარების ჩართვა",
-    "autoIGCToolDescription": "ავტომატურად გაწვდეთ Pangea Chat ინსტრუმენტები გაგზავნილი შეტყობინებების მიზნობრივი ენაზე გასასწორებლად.",
+    "autoIGCToolName": "ავტომატური შემოწმება გაგზავნისას",
+    "autoIGCToolDescription": "შეამოწმეთ თქვენი შეტყობინება შეცდომებზე გაგზავნის ღილაკზე დაჭერისას. როდესაც ეს გამორთულია, შეტყობინების შესამოწმებლად დააჭირეთ წერის დამხმარე ღილაკს.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10697,7 +10697,6 @@
     "constructLevelFlowers": "ყვავილები, ათვისებული სიტყვები",
     "filterAndSearch": "გაფილტვრა და ძიება",
     "participantsOfTotal": "{filled} / {total} მოთამაშე",
-    "mapAttributionLabel": "OpenStreetMap-ის კონტრიბუტორები, საავტორო უფლებები და ლიცენზია",
     "seeAll": "ყველას ნახვა",
     "seeAllSection": "ყველა {section}-ის ნახვა",
     "showMoreOptionsHint": "მეტი ვარიანტის ჩვენება",
@@ -10883,5 +10882,14 @@
     "callMicrophoneOffMessage": "Pangea Chat-ს არ შეუძლია თქვენი მიკროფონის გამოყენება. შეეხეთ, რომ ჩართოთ პარამეტრებში.",
     "goalsCompletedOfTotal": "{earned} of {total} მიზანი შესრულებულია",
     "goalsCompletedInLanguage": "{language} ენაზე შესრულებული მიზნები",
-    "sessionXpTowardObjective": "{xp} XP ამ სესიაზე; {remaining} მეტი და მიზანი შესრულდება"
+    "sessionXpTowardObjective": "{xp} XP ამ სესიაზე; {remaining} მეტი და მიზანი შესრულდება",
+    "mapCreditsLabel": "რუკის კრედიტები: Stadia Maps, OpenMapTiles და OpenStreetMap",
+    "activityLaunchFindingCourses": "თქვენი კურსების მოძიება…",
+    "activityLaunchCreatingRoom": "თქვენი აქტივობის შექმნა…",
+    "activityLaunchOpeningRoom": "თქვენი აქტივობის გახსნა…",
+    "playWithOthers": "ითამაშეთ სხვებთან ერთად",
+    "openRole": "ღია: {role}",
+    "waitingFor": "ლოდინი {duration}",
+    "onlineInCourse": "{count} ონლაინ {course}-ში",
+    "newCourseChat": "ახალი კურსის ჩეთი"
 }

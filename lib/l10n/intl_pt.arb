@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 09:39:52.881172",
+    "@@last_modified": "2026-10-13 13:03:47.867202",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -8684,8 +8684,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Ativar assistência de escrita",
-    "autoIGCToolDescription": "Executar automaticamente as ferramentas do Pangea Chat para corrigir mensagens enviadas para o idioma de destino.",
+    "autoIGCToolName": "Verificação automática ao enviar",
+    "autoIGCToolDescription": "Verifique se há erros na sua mensagem ao tocar em enviar. Quando esta opção está desativada, toque no botão de assistência de escrita para verificar uma mensagem você mesmo.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10741,7 +10741,6 @@
     "constructLevelFlowers": "Flores, palavras dominadas",
     "filterAndSearch": "Filtrar e pesquisar",
     "participantsOfTotal": "{filled} de {total} jogadores",
-    "mapAttributionLabel": "Colaboradores do OpenStreetMap, direitos autorais e licença",
     "seeAll": "Ver tudo",
     "seeAllSection": "Ver tudo em {section}",
     "showMoreOptionsHint": "mostrar mais opções",
@@ -10927,5 +10926,14 @@
     "callMicrophoneOffMessage": "O Pangea Chat não pode usar seu microfone. Toque para ativá-lo em Configurações.",
     "goalsCompletedOfTotal": "{earned} de {total} metas concluídas",
     "goalsCompletedInLanguage": "Metas concluídas em {language}",
-    "sessionXpTowardObjective": "{xp} XP nesta sessão; faltam {remaining} para completar o objetivo"
+    "sessionXpTowardObjective": "{xp} XP nesta sessão; faltam {remaining} para completar o objetivo",
+    "mapCreditsLabel": "Créditos do mapa: Stadia Maps, OpenMapTiles e OpenStreetMap",
+    "activityLaunchFindingCourses": "Encontrando seus cursos…",
+    "activityLaunchCreatingRoom": "Criando sua atividade…",
+    "activityLaunchOpeningRoom": "Abrindo sua atividade…",
+    "playWithOthers": "Jogar com outras pessoas",
+    "openRole": "Aberto: {role}",
+    "waitingFor": "Aguardando {duration}",
+    "onlineInCourse": "{count} online em {course}",
+    "newCourseChat": "Novo chat do curso"
 }

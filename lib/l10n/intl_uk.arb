@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-13 09:39:57.609539",
+    "@@last_modified": "2026-10-13 13:03:50.617241",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -7920,8 +7920,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Увімкнути допомогу в написанні",
-    "autoIGCToolDescription": "Автоматично запускати інструменти Pangea Chat для виправлення надісланих повідомлень на цільову мову.",
+    "autoIGCToolName": "Автоматична перевірка при надсиланні",
+    "autoIGCToolDescription": "Перевіряйте повідомлення на наявність помилок, коли надсилаєте його. Якщо цю функцію вимкнено, натисніть кнопку помічника з написання, щоб перевірити повідомлення самостійно.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9797,7 +9797,6 @@
     "constructLevelFlowers": "Квіти, опановані слова",
     "filterAndSearch": "Фільтрувати та шукати",
     "participantsOfTotal": "{filled} з {total} гравців",
-    "mapAttributionLabel": "Учасники OpenStreetMap, авторські права та ліцензія",
     "seeAll": "Переглянути всі",
     "seeAllSection": "Переглянути всі {section}",
     "showMoreOptionsHint": "показати більше опцій",
@@ -9983,5 +9982,14 @@
     "callMicrophoneOffMessage": "Pangea Chat не може використовувати ваш мікрофон. Натисніть, щоб увімкнути його в Налаштуваннях.",
     "goalsCompletedOfTotal": "{earned} з {total} цілей виконано",
     "goalsCompletedInLanguage": "Цілі, виконані в {language}",
-    "sessionXpTowardObjective": "{xp} XP за цю сесію; ще {remaining} — і ціль буде досягнуто"
+    "sessionXpTowardObjective": "{xp} XP за цю сесію; ще {remaining} — і ціль буде досягнуто",
+    "mapCreditsLabel": "Авторство карти: Stadia Maps, OpenMapTiles та OpenStreetMap",
+    "activityLaunchFindingCourses": "Пошук ваших курсів…",
+    "activityLaunchCreatingRoom": "Створення вашої активності…",
+    "activityLaunchOpeningRoom": "Відкриття вашої активності…",
+    "playWithOthers": "Грати з іншими",
+    "openRole": "Відкрито: {role}",
+    "waitingFor": "Очікування {duration}",
+    "onlineInCourse": "{count} онлайн у {course}",
+    "newCourseChat": "Новий чат курсу"
 }

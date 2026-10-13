@@ -3089,7 +3089,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-10-13 09:39:42.182250",
+    "@@last_modified": "2026-10-13 13:03:42.649599",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8372,8 +8372,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "लेखन सहायता सक्षम करें",
-    "autoIGCToolDescription": "लक्षित भाषा में भेजे गए संदेशों को सही करने के लिए स्वचालित रूप से Pangea चैट उपकरण चलाएँ।",
+    "autoIGCToolName": "भेजने पर स्वतः जांच करें",
+    "autoIGCToolDescription": "जब आप भेजें पर टैप करें तो अपने संदेश में गलतियों की जांच करें। जब यह बंद हो, तो किसी संदेश की स्वयं जांच करने के लिए लेखन सहायता बटन पर टैप करें।",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10429,7 +10429,6 @@
     "constructLevelFlowers": "फ्लावर्स, सीखे हुए शब्द",
     "filterAndSearch": "फ़िल्टर करें और खोजें",
     "participantsOfTotal": "{total} खिलाड़ियों में से {filled}",
-    "mapAttributionLabel": "OpenStreetMap योगदानकर्ता, कॉपीराइट और लाइसेंस",
     "seeAll": "सभी देखें",
     "seeAllSection": "सभी {section} देखें",
     "showMoreOptionsHint": "और विकल्प दिखाएँ",
@@ -10615,5 +10614,14 @@
     "callMicrophoneOffMessage": "Pangea Chat आपके माइक्रोफ़ोन का उपयोग नहीं कर सकता है। सेटिंग्स में इसे चालू करने के लिए टैप करें।",
     "goalsCompletedOfTotal": "{total} में से {earned} लक्ष्य पूरे हुए",
     "goalsCompletedInLanguage": "{language} में पूरे हुए लक्ष्य",
-    "sessionXpTowardObjective": "इस सत्र में {xp} XP; उद्देश्य पूरा करने के लिए {remaining} और"
+    "sessionXpTowardObjective": "इस सत्र में {xp} XP; उद्देश्य पूरा करने के लिए {remaining} और",
+    "mapCreditsLabel": "मैप क्रेडिट: स्टेडिया मैप्स, ओपनमैपटाइल्स और ओपनस्ट्रीटमैप",
+    "activityLaunchFindingCourses": "आपके पाठ्यक्रम ढूँढे जा रहे हैं…",
+    "activityLaunchCreatingRoom": "आपकी गतिविधि बनाई जा रही है…",
+    "activityLaunchOpeningRoom": "आपकी गतिविधि खोली जा रही है…",
+    "playWithOthers": "दूसरों के साथ खेलें",
+    "openRole": "खुला: {role}",
+    "waitingFor": "{duration} प्रतीक्षा कर रहा है",
+    "onlineInCourse": "{course} में {count} ऑनलाइन",
+    "newCourseChat": "नई कोर्स चैट"
 }

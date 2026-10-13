@@ -87,6 +87,8 @@ Mobile Firebase messaging setup uses GitHub Actions secrets:
 
 Both values are base64-encoded file contents. Run [`configure-firebase-messaging.sh`](../../scripts/configure-firebase-messaging.sh) to set up the environment.
 
+The Android and iOS build jobs also fetch the Stadia Maps key from AWS Secrets Manager into the bundled `.env` as `STADIA_MAPS_API_KEY`; web builds never get it. See [world-map-tiles.instructions.md](world-map-tiles.instructions.md).
+
 ## Production Hotfix Process
 
 When a bug must be fixed on production before the next full sync from `main`:

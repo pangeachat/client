@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-13 09:39:53.658942",
+    "@@last_modified": "2026-10-13 13:03:47.618313",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "په ډیفالټ، کورسونه په عامه توګه د لټون وړ دي او د شاملیدو لپاره د مدیر تصویب ته اړتیا لري. تاسو کولی شئ دا تنظیمات په هر وخت کې سم کړئ.",
     "onboardingLanguagesTitle": "تاسو کومه ژبه زده کوئ؟",
     "supportSubtitle": "پوښتنې؟ موږ د مرستې لپاره دلته یو!",
-    "autoIGCToolName": "د لیکلو مرسته فعاله کړئ",
-    "autoIGCToolDescription": "په اتوماتيک ډول د پانګیا چټ اوزار چل کړئ ترڅو لیږل شوي پیغامونه هدف ژبې ته سم کړي.",
+    "autoIGCToolName": "په لیږلو کې اتوماتیک کتل",
+    "autoIGCToolDescription": "کله چې تاسو لیږل ټایپ کړئ، خپل پیغام د غلطیو لپاره وګورئ. کله چې دا بند وي، د پیغام د کتلو لپاره د لیکلو مرستې تڼۍ ټایپ کړئ.",
     "emptyAudioError": "ریکارډ ناکام شو. مهرباني وکړئ خپل د غږ اجازه وګورئ او بیا هڅه وکړئ.",
     "spanTypeSpelling": "املا",
     "spanTypePunctuation": "نښې",
@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "ګلان، ماسټر شوې کلمې",
     "filterAndSearch": "فلټر او لټون",
     "participantsOfTotal": "د {total} لوبغاړو څخه {filled}",
-    "mapAttributionLabel": "د OpenStreetMap مرسته کوونکي، د چاپ حق او جواز",
     "seeAll": "ټول وګورئ",
     "seeAllSection": "ټول {section} وګورئ",
     "showMoreOptionsHint": "نور انتخابونه وښایاست",
@@ -2432,5 +2431,14 @@
     "callMicrophoneOffMessage": "پنګیا چټ نشي کولی ستاسو مایکروفون وکاروي. په ترتیباتو کې د فعالولو لپاره ټایپ کړئ.",
     "goalsCompletedOfTotal": "{total} موخو څخه {earned} بشپړې شوې",
     "goalsCompletedInLanguage": "په {language} کې بشپړې شوې موخې",
-    "sessionXpTowardObjective": "پدې ناسته کې {xp} XP؛ {remaining} نور د هدف بشپړولو لپاره"
+    "sessionXpTowardObjective": "پدې ناسته کې {xp} XP؛ {remaining} نور د هدف بشپړولو لپاره",
+    "mapCreditsLabel": "د نقشې کریډیټونه: Stadia Maps, OpenMapTiles او OpenStreetMap",
+    "activityLaunchFindingCourses": "ستاسو کورسونه لټول…",
+    "activityLaunchCreatingRoom": "ستاسو فعالیت جوړول…",
+    "activityLaunchOpeningRoom": "ستاسو فعالیت پرانیستل…",
+    "playWithOthers": "له نورو سره لوبې وکړئ",
+    "openRole": "خلاص: {role}",
+    "waitingFor": "{duration} انتظار",
+    "onlineInCourse": "{count} په {course} کې آنلاین",
+    "newCourseChat": "د نوي کورس خبرې اترې"
 }

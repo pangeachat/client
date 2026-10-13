@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-13 09:39:46.755301",
+    "@@last_modified": "2026-10-13 13:03:44.723288",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Демейки боюнча, курстар жалпыга ачык жана кошулуу үчүн администратордун уруксатын талап кылат. Бул жөндөөлөрдү каалаган убакта өзгөртө аласыз.",
     "onboardingLanguagesTitle": "Кайсы тилди үйрөнүп жатасыз?",
     "supportSubtitle": "Суроолор барбы? Биз жардам берүүгө даярбыз!",
-    "autoIGCToolName": "Жазуу жардамчысын иштетүү",
-    "autoIGCToolDescription": "Жөнөтүлгөн билдирүүлөрдү максаттуу тилге оңдоо үчүн Pangea Chat куралдарын автоматтык түрдө иштетиңиз.",
+    "autoIGCToolName": "Жөнөтүүдө автоматтык текшерүү",
+    "autoIGCToolDescription": "Жөнөтүү баскычын басканда билдирүүңүздү каталарга текшериңиз. Бул өчүрүлгөндө, билдирүүнү өзүңүз текшерүү үчүн жазуу жардам баскычын басыңыз.",
     "emptyAudioError": "Жазуу ишке ашкан жок. Сураныч, аудио уруксаттарыңызды текшерип, кайра аракет кылыңыз.",
     "spanTypeSpelling": "Орфография",
     "spanTypePunctuation": "Тыныш белгилери",
@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Гүлдөр, өздөштүрүлгөн сөздөр",
     "filterAndSearch": "Чыпкалоо жана издөө",
     "participantsOfTotal": "{filled} / {total} оюнчу",
-    "mapAttributionLabel": "OpenStreetMap салымчылары, автордук укук жана лицензия",
     "seeAll": "Баарын көрүү",
     "seeAllSection": "Баарын көрүү {section}",
     "showMoreOptionsHint": "көбүрөөк параметрлерди көрсөтүү",
@@ -2432,5 +2431,14 @@
     "callMicrophoneOffMessage": "Pangea Chat микрофонуңузду колдоно албайт. Жөндөөлөрдөн күйгүзүү үчүн таптаңыз.",
     "goalsCompletedOfTotal": "{total} максаттын {earned} аткарылды",
     "goalsCompletedInLanguage": "{language} тилинде аткарылган максаттар",
-    "sessionXpTowardObjective": "Бул сессияда {xp} XP; дагы {remaining} максатты толуктайт"
+    "sessionXpTowardObjective": "Бул сессияда {xp} XP; дагы {remaining} максатты толуктайт",
+    "mapCreditsLabel": "Картанын авторлору: Stadia Maps, OpenMapTiles жана OpenStreetMap",
+    "activityLaunchFindingCourses": "Курстарыңызды издөө…",
+    "activityLaunchCreatingRoom": "Ишиңизди түзүү…",
+    "activityLaunchOpeningRoom": "Ишиңизди ачуу…",
+    "playWithOthers": "Башкалар менен ойноо",
+    "openRole": "Ачык: {role}",
+    "waitingFor": "{duration} күтүү",
+    "onlineInCourse": "{course} ичинде {count} онлайн",
+    "newCourseChat": "Жаңы курс чаты"
 }

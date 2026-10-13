@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-13 09:39:50.383420",
+    "@@last_modified": "2026-10-13 13:03:45.359556",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "ໂດຍຄ່າເລີ່ມຕົ້ນ, ຫຼັກສູດຕ່າງໆສາມາດຄົ້ນຫາໄດ້ສາທາລະນະ ແລະ ຕ້ອງການການອະນຸມັດຈາກຜູ້ບໍລິຫານເພື່ອເຂົ້າຮ່ວມ. ທ່ານສາມາດແກ້ໄຂການຕັ້ງຄ່າເຫຼົ່ານີ້ໄດ້ທຸກເວລາ.",
     "onboardingLanguagesTitle": "ທ່ານກຳລັງຮຽນພາສາຫຍັງ?",
     "supportSubtitle": "ມີຄຳຖາມບໍ? ພວກເຮົາຍິນດີຊ່ວຍເຫຼືອ!",
-    "autoIGCToolName": "ເປີດໃຊ້ການຊ່ວຍເຫຼືອການຂຽນ",
-    "autoIGCToolDescription": "ເປີດໃຊ້ເຄື່ອງມື Pangea Chat ໂດຍອັດຕະໂນມັດເພື່ອແກ້ໄຂຂໍ້ຄວາມທີ່ສົ່ງໄປຫາພາສາເປົ້າໝາຍ.",
+    "autoIGCToolName": "ກວດອັດຕະໂນມັດເມື່ອສົ່ງ",
+    "autoIGCToolDescription": "ກວດສອບຂໍ້ຄວາມຂອງທ່ານສຳລັບຂໍ້ຜິດພາດເມື່ອທ່ານກົດສົ່ງ. ເມື່ອປິດຢູ່, ໃຫ້ກົດປຸ່ມຊ່ວຍເຫຼືອການຂຽນເພື່ອກວດສອບຂໍ້ຄວາມດ້ວຍຕົວທ່ານເອງ.",
     "emptyAudioError": "ການບັນທຶກລົ້ມເຫຼວ. ກະລຸນາກວດເບິ່ງການອະນຸຍາດສຽງຂອງທ່ານ ແລະ ລອງໃໝ່ອີກຄັ້ງ.",
     "spanTypeSpelling": "ການສະກົດຄຳ",
     "spanTypePunctuation": "ເຄື່ອງໝາຍວັກຕອນ",
@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "ດອກໄມ້, ຄຳສັບທີ່ຮຽນຈົບແລ້ວ",
     "filterAndSearch": "ກັ່ນຕອງ ແລະ ຄົ້ນຫາ",
     "participantsOfTotal": "{filled} ຈາກ {total} ຜູ້ຫຼິ້ນ",
-    "mapAttributionLabel": "ຜູ້ປະກອບສ່ວນ OpenStreetMap, ລິຂະສິດ ແລະ ໃບອະນຸຍາດ",
     "seeAll": "ເບິ່ງທັງໝົດ",
     "seeAllSection": "ເບິ່ງທັງໝົດ {section}",
     "showMoreOptionsHint": "ສະແດງຕົວເລືອກເພີ່ມເຕີມ",
@@ -2432,5 +2431,14 @@
     "callMicrophoneOffMessage": "Pangea Chat ບໍ່ສາມາດໃຊ້ໄມໂຄຣໂຟນຂອງທ່ານໄດ້. ແຕະເພື່ອເປີດໃຊ້ໃນການຕັ້ງຄ່າ.",
     "goalsCompletedOfTotal": "ເປົ້າໝາຍສຳເລັດແລ້ວ {earned} ຈາກ {total}",
     "goalsCompletedInLanguage": "ເປົ້າໝາຍສຳເລັດແລ້ວໃນພາສາ {language}",
-    "sessionXpTowardObjective": "{xp} XP ໃນຮອບນີ້; ອີກ {remaining} ຈະສຳເລັດເປົ້າໝາຍ"
+    "sessionXpTowardObjective": "{xp} XP ໃນຮອບນີ້; ອີກ {remaining} ຈະສຳເລັດເປົ້າໝາຍ",
+    "mapCreditsLabel": "ຂໍ້ມູນແຜນທີ່: Stadia Maps, OpenMapTiles ແລະ OpenStreetMap",
+    "activityLaunchFindingCourses": "ກຳລັງຊອກຫາຫຼັກສູດຂອງທ່ານ…",
+    "activityLaunchCreatingRoom": "ກຳລັງສ້າງກິດຈະກຳຂອງທ່ານ…",
+    "activityLaunchOpeningRoom": "ກຳລັງເປີດກິດຈະກຳຂອງທ່ານ…",
+    "playWithOthers": "ຫຼິ້ນກັບຄົນອື່ນ",
+    "openRole": "ເປີດ: {role}",
+    "waitingFor": "ລໍຖ້າ {duration}",
+    "onlineInCourse": "ມີ {count} ຄົນອອນລາຍໃນ {course}",
+    "newCourseChat": "ສົນທະນາຫຼັກສູດໃໝ່"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-13 09:39:48.913409",
+    "@@last_modified": "2026-10-13 13:03:46.096792",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Стандардно, курсевите се јавно пребарувани и бараат одобрение од администратор за приклучување. Овие поставки можете да ги уредувате во секое време.",
     "onboardingLanguagesTitle": "Кој јазик го учите?",
     "supportSubtitle": "Прашања? Тука сме да помогнеме!",
-    "autoIGCToolName": "Овозможи помош при пишување",
-    "autoIGCToolDescription": "Автоматски извршувајте ги алатките на Pangea Chat за да ги коригирате испратените пораки на целниот јазик.",
+    "autoIGCToolName": "Автоматска проверка при испраќање",
+    "autoIGCToolDescription": "Проверете ја вашата порака за грешки кога ќе допрете испрати. Кога ова е исклучено, допрете го копчето за помош при пишување за сами да ја проверите пораката.",
     "emptyAudioError": "Снимањето не успеа. Ве молиме проверете ги вашите аудио дозволи и обидете се повторно.",
     "spanTypeSpelling": "Правопис",
     "spanTypePunctuation": "Интерпункција",
@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Цвеќиња, совладани зборови",
     "filterAndSearch": "Филтрирај и пребарај",
     "participantsOfTotal": "{filled} од {total} играчи",
-    "mapAttributionLabel": "Соработници на OpenStreetMap, авторски права и лиценца",
     "seeAll": "Видете ги сите",
     "seeAllSection": "Видете ги сите {section}",
     "showMoreOptionsHint": "покажи повеќе опции",
@@ -2432,5 +2431,14 @@
     "callMicrophoneOffMessage": "Pangea Chat не може да го користи вашиот микрофон. Допрете за да го вклучите во Поставки.",
     "goalsCompletedOfTotal": "{earned} од {total} цели завршени",
     "goalsCompletedInLanguage": "Цели завршени на {language}",
-    "sessionXpTowardObjective": "{xp} XP оваа сесија; уште {remaining} за да се заврши целта"
+    "sessionXpTowardObjective": "{xp} XP оваа сесија; уште {remaining} за да се заврши целта",
+    "mapCreditsLabel": "Кредити за мапа: Stadia Maps, OpenMapTiles и OpenStreetMap",
+    "activityLaunchFindingCourses": "Пронаоѓање на вашите курсеви…",
+    "activityLaunchCreatingRoom": "Креирање на вашата активност…",
+    "activityLaunchOpeningRoom": "Отворање на вашата активност…",
+    "playWithOthers": "Играј со други",
+    "openRole": "Отворено: {role}",
+    "waitingFor": "Се чека {duration}",
+    "onlineInCourse": "{count} онлајн во {course}",
+    "newCourseChat": "Нов разговор за курс"
 }

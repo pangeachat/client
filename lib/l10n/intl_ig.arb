@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-13 09:39:45.733238",
+    "@@last_modified": "2026-10-13 13:03:43.790979",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Na ndabara, enwere ike ịchọta usoro ọmụmụ n'ihu ọha ma chọọ nkwado nchịkwa ka ị sonye. Ị nwere ike dezie ntọala ndị a n'oge ọ bụla.",
     "onboardingLanguagesTitle": "Kedu asụsụ ị na-amụ?",
     "supportSubtitle": "Ajụjụ? Anyị nọ ebe a inyere aka!",
-    "autoIGCToolName": "Kwado enyemaka ide ihe",
-    "autoIGCToolDescription": "Na-agba ọsọ ngwaọrụ Pangea Chat na-akpaghị aka iji mezie ozi ezigara na asụsụ ebumnuche.",
+    "autoIGCToolName": "Nlele akpaaka na izipu",
+    "autoIGCToolDescription": "Lelee ozi gị maka mmejọ mgbe ị pịrị izipu. Mgbe agbanyụrụ nke a, pịa bọtịnụ enyemaka ide ihe ka ịlele ozi n'onwe gị.",
     "emptyAudioError": "Ndekọ ahụ adaala. Biko lelee ikike ọdịyo gị wee nwaa ọzọ.",
     "spanTypeSpelling": "Mkpoputa",
     "spanTypePunctuation": "Akara edemede",
@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Okooko osisi, okwu ndị a mụtara nke ọma",
     "filterAndSearch": "Nyochaa ma chọọ",
     "participantsOfTotal": "{filled} n'ime {total} ndị egwuregwu",
-    "mapAttributionLabel": "Ndị nyere aka na OpenStreetMap, nwebisiinka na ikike",
     "seeAll": "Hụ ihe niile",
     "seeAllSection": "Hụ {section} niile",
     "showMoreOptionsHint": "gosi nhọrọ ndị ọzọ",
@@ -2432,5 +2431,14 @@
     "callMicrophoneOffMessage": "Pangea Chat enweghị ike iji igwe okwu gị. Pịa ka ịgbanwuo ya na Ntọala.",
     "goalsCompletedOfTotal": "Ebumnuche {earned} n'ime {total} emezuru",
     "goalsCompletedInLanguage": "Ebumnuche emezuru na {language}",
-    "sessionXpTowardObjective": "{xp} XP na nnọkọ a; {remaining} ọzọ ga-eme ka ebumnuche ahụ zuo ezu"
+    "sessionXpTowardObjective": "{xp} XP na nnọkọ a; {remaining} ọzọ ga-eme ka ebumnuche ahụ zuo ezu",
+    "mapCreditsLabel": "Ebe e si nweta maapụ: Stadia Maps, OpenMapTiles na OpenStreetMap",
+    "activityLaunchFindingCourses": "Na-achọ nkuzi gị…",
+    "activityLaunchCreatingRoom": "Na-emepụta ọrụ gị…",
+    "activityLaunchOpeningRoom": "Na-emepe ọrụ gị…",
+    "playWithOthers": "Soro ndị ọzọ gwuo egwu",
+    "openRole": "Mepee: {role}",
+    "waitingFor": "Na-eche {duration}",
+    "onlineInCourse": "{count} n'ịntanetị na {course}",
+    "newCourseChat": "Nkata ọmụmụ ihe ọhụrụ"
 }

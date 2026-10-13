@@ -45,8 +45,9 @@ class _TestMatrix extends Matrix {
 
 /// Coverage for #9212, the course page's Leaderboard section
 /// (course-leaderboard.instructions.md): the admin line over the podium, the
-/// ranking by stars, "See all" only when the full page holds more, the invite
-/// row under a lone member, the bot's absence, and — carried over from #8744
+/// ranking by stars with admins off it (#9481), "See all" only when the full
+/// page holds more, the invite row under a ranking of one or none, the bot's
+/// absence, and — carried over from #8744
 /// and #9154 — invite in the header whenever this user may invite, and one
 /// Tab stop with the arrow keys moving between cards and rows.
 void main() {
@@ -113,7 +114,8 @@ void main() {
   String memberId(int i) => '@member$i:fakeServer.notExisting';
 
   /// A course space in [language] that the viewer administers, holding
-  /// [members] joined members (the viewer included), plus any [invited] and
+  /// [members] joined members (the viewer, the one admin, included — so
+  /// `members - 1` are ranked), plus any [invited] and
   /// the bot when [withBot]. The joined-member summary matches the member
   /// state so the SDK counts the list complete and no participant fetch runs.
   Room courseRoom({
@@ -233,10 +235,10 @@ void main() {
       .map((row) => row.entry.user.displayName!)
       .toList();
 
-  testWidgets('three members: the admin line, three podium rows, no See all', (
+  testWidgets('three ranked: the admin line, three podium rows, no See all', (
     tester,
   ) async {
-    await pumpPreview(tester, courseRoom(members: 3));
+    await pumpPreview(tester, courseRoom(members: 4));
 
     // The admin line holds the one admin, without stats.
     final adminCards = tester.widgetList<ParticipantCard>(
@@ -244,7 +246,6 @@ void main() {
     );
     expect(adminCards.map((c) => c.user.id), [userId]);
     expect(adminCards.single.showStats, isFalse);
-    // The badge is on the card, and again on the admin's own ranked row.
     expect(
       find.descendant(
         of: find.byType(ParticipantCard),
@@ -252,13 +253,8 @@ void main() {
       ),
       findsOneWidget,
     );
-    expect(
-      find.descendant(
-        of: find.byType(LeaderboardRow),
-        matching: find.text('Admin'),
-      ),
-      findsOneWidget,
-    );
+    // The admin is not ranked (#9481).
+    expect(podiumNames(tester), isNot(contains('Testy')));
 
     expect(find.byType(LeaderboardRow), findsNWidgets(3));
     expect(find.byType(LeaderboardInviteRow), findsNothing);
@@ -272,7 +268,8 @@ void main() {
   testWidgets('rows rank by goals, then level, and show both', (tester) async {
     MatrixState.pangeaController = FakePangeaController(
       analyticsProfiles: {
-        userId: profile(stars: 5, level: 3),
+        // The admin has played the most, and still does not place (#9481).
+        userId: profile(stars: 20, level: 9),
         memberId(1): profile(stars: 8, level: 2),
         memberId(2): profile(stars: 8, level: 7),
         memberId(3): profile(stars: 10, level: 1),
@@ -298,7 +295,7 @@ void main() {
   });
 
   testWidgets('a fourth ranked member adds See all', (tester) async {
-    await pumpPreview(tester, courseRoom(members: 4));
+    await pumpPreview(tester, courseRoom(members: 5));
 
     expect(find.byType(LeaderboardRow), findsNWidgets(3));
     expect(find.text('See all'), findsOneWidget);
@@ -308,7 +305,7 @@ void main() {
   });
 
   testWidgets('a pending member adds See all', (tester) async {
-    await pumpPreview(tester, courseRoom(members: 3, invited: 1));
+    await pumpPreview(tester, courseRoom(members: 4, invited: 1));
 
     // The invitee is on the full page only, so the preview offers it.
     expect(find.text('Invitee 1'), findsNothing);
@@ -317,12 +314,12 @@ void main() {
     await drain(tester);
   });
 
-  testWidgets('a lone member gets an invite row in second place', (
+  testWidgets('one ranked member gets an invite row in second place', (
     tester,
   ) async {
-    await pumpPreview(tester, courseRoom(members: 1));
+    await pumpPreview(tester, courseRoom(members: 2));
 
-    expect(podiumNames(tester), ['Testy']);
+    expect(podiumNames(tester), ['Member 1']);
     final inviteRow = find.byType(LeaderboardInviteRow);
     expect(inviteRow, findsOneWidget);
     expect(
@@ -337,8 +334,34 @@ void main() {
     await drain(tester);
   });
 
+  testWidgets(
+    'an admin alone is not ranked: the admin line, then an invite row',
+    (tester) async {
+      await pumpPreview(tester, courseRoom(members: 1));
+
+      expect(find.byType(LeaderboardRow), findsNothing);
+      final adminCard = find.byType(ParticipantCard);
+      expect(
+        tester.widgetList<ParticipantCard>(adminCard).map((c) => c.user.id),
+        [userId],
+      );
+      final inviteRow = find.byType(LeaderboardInviteRow);
+      expect(inviteRow, findsOneWidget);
+      expect(
+        tester.getTopLeft(inviteRow).dy,
+        greaterThan(tester.getBottomLeft(adminCard).dy),
+      );
+      expect(find.text('See all'), findsNothing);
+
+      await tester.tap(inviteRow);
+      expect(onInviteCalls, 1);
+
+      await drain(tester);
+    },
+  );
+
   testWidgets('the bot is neither an admin nor ranked', (tester) async {
-    await pumpPreview(tester, courseRoom(members: 2, withBot: true));
+    await pumpPreview(tester, courseRoom(members: 3, withBot: true));
 
     expect(podiumNames(tester), isNot(contains('Pangea Bot')));
     expect(find.byType(LeaderboardRow), findsNWidgets(2));
@@ -357,7 +380,7 @@ void main() {
         },
       );
       final handle = tester.ensureSemantics();
-      await pumpPreview(tester, courseRoom(members: 3));
+      await pumpPreview(tester, courseRoom(members: 4));
 
       /// The label of the node assistive tech is on.
       String focusedLabel() => tester.semantics

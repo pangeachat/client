@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-13 09:39:38.798824",
+    "@@last_modified": "2026-10-13 13:03:40.596131",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -7941,8 +7941,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Schreibassistenz aktivieren",
-    "autoIGCToolDescription": "Automatisch Pangea Chat-Tools ausführen, um gesendete Nachrichten in die Zielsprache zu korrigieren.",
+    "autoIGCToolName": "Automatische Prüfung beim Senden",
+    "autoIGCToolDescription": "Überprüfe deine Nachricht auf Fehler, wenn du auf „Senden“ tippst. Wenn dies deaktiviert ist, tippe auf die Schaltfläche für Schreibhilfe, um eine Nachricht selbst zu überprüfen.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9784,7 +9784,6 @@
     "constructLevelFlowers": "Blüten, gemeisterte Wörter",
     "filterAndSearch": "Filtern und suchen",
     "participantsOfTotal": "{filled} von {total} Spielern",
-    "mapAttributionLabel": "OpenStreetMap-Mitwirkende, Copyright und Lizenz",
     "seeAll": "Alle anzeigen",
     "seeAllSection": "Alle {section} anzeigen",
     "showMoreOptionsHint": "Weitere Optionen anzeigen",
@@ -9970,5 +9969,14 @@
     "callMicrophoneOffMessage": "Pangea Chat kann Ihr Mikrofon nicht verwenden. Tippen Sie hier, um es in den Einstellungen zu aktivieren.",
     "goalsCompletedOfTotal": "{earned} von {total} Zielen erreicht",
     "goalsCompletedInLanguage": "Ziele erreicht in {language}",
-    "sessionXpTowardObjective": "{xp} XP in dieser Sitzung; {remaining} mehr schließt das Ziel ab"
+    "sessionXpTowardObjective": "{xp} XP in dieser Sitzung; {remaining} mehr schließt das Ziel ab",
+    "mapCreditsLabel": "Karten-Credits: Stadia Maps, OpenMapTiles und OpenStreetMap",
+    "activityLaunchFindingCourses": "Kurse werden gesucht…",
+    "activityLaunchCreatingRoom": "Aktivität wird erstellt…",
+    "activityLaunchOpeningRoom": "Aktivität wird geöffnet…",
+    "playWithOthers": "Mit anderen spielen",
+    "openRole": "Offen: {role}",
+    "waitingFor": "Warten {duration}",
+    "onlineInCourse": "{count} online in {course}",
+    "newCourseChat": "Neuer Kurs-Chat"
 }

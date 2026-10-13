@@ -99,7 +99,8 @@ void main() {
 
   /// A course the viewer administers with [members] joined (the viewer
   /// included), [invited] invitees and [knocking] knockers; Member i holds
-  /// i stars, so the ranking runs Member 5, 4, 3, 2, 1, Testy.
+  /// i stars, so the ranking runs Member 5, 4, 3, 2, 1 — the viewer, Testy,
+  /// is the admin and is not ranked.
   Room courseRoom({required int members, int invited = 0, int knocking = 0}) {
     MatrixState.pangeaController = FakePangeaController(
       analyticsProfiles: {
@@ -206,7 +207,7 @@ void main() {
   ) async {
     await pumpPage(
       tester,
-      courseRoom(members: 6),
+      courseRoom(members: 7),
       width: CourseLeaderboardPage.twoColumnMinWidth,
     );
 
@@ -251,7 +252,7 @@ void main() {
     (tester) async {
       await pumpPage(
         tester,
-        courseRoom(members: 2, invited: 1, knocking: 1),
+        courseRoom(members: 3, invited: 1, knocking: 1),
         width: 400,
       );
 

@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-13 09:39:46.719651",
+    "@@last_modified": "2026-10-13 13:03:43.833583",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Sjálfgefið eru námskeið opinberlega leitanleg og krefjast samþykkis stjórnanda til að taka þátt. Þú getur breytt þessum stillingum hvenær sem er.",
     "onboardingLanguagesTitle": "Hvaða tungumál ertu að læra?",
     "supportSubtitle": "Spurningar? Við erum hér til að hjálpa!",
-    "autoIGCToolName": "Virkja ritunaraðstoð",
-    "autoIGCToolDescription": "Keyra sjálfkrafa Pangea Chat verkfæri til að leiðrétta send skilaboð á marktungumálið.",
+    "autoIGCToolName": "Sjálfvirk villuleit við sendingu",
+    "autoIGCToolDescription": "Athugaðu skilaboðin þín með tilliti til villna þegar þú ýtir á senda. Þegar þetta er slökkt, ýttu á hnappinn fyrir ritunaraðstoð til að athuga skilaboðin sjálfur.",
     "emptyAudioError": "Upptaka mistókst. Vinsamlegast athugaðu hljóðheimildir þínar og reyndu aftur.",
     "spanTypeSpelling": "Stafsetning",
     "spanTypePunctuation": "Greinarmerki",
@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Blóm, orð sem hefur verið náð tökum á",
     "filterAndSearch": "Sía og leita",
     "participantsOfTotal": "{filled} af {total} spilurum",
-    "mapAttributionLabel": "OpenStreetMap þátttakendur, höfundarréttur og leyfi",
     "seeAll": "Sjá allt",
     "seeAllSection": "Sjá allt {section}",
     "showMoreOptionsHint": "sýna fleiri valkosti",
@@ -2432,5 +2431,14 @@
     "callMicrophoneOffMessage": "Pangea Chat getur ekki notað hljóðnemann þinn. Bankaðu til að kveikja á honum í stillingum.",
     "goalsCompletedOfTotal": "{earned} af {total} markmiðum lokið",
     "goalsCompletedInLanguage": "Markmiðum lokið í {language}",
-    "sessionXpTowardObjective": "{xp} XP í þessari lotu; {remaining} í viðbót klárar markmiðið"
+    "sessionXpTowardObjective": "{xp} XP í þessari lotu; {remaining} í viðbót klárar markmiðið",
+    "mapCreditsLabel": "Kortaupplýsingar: Stadia Maps, OpenMapTiles og OpenStreetMap",
+    "activityLaunchFindingCourses": "Finn námskeiðin þín…",
+    "activityLaunchCreatingRoom": "Bý til virknina þína…",
+    "activityLaunchOpeningRoom": "Opna virknina þína…",
+    "playWithOthers": "Spila með öðrum",
+    "openRole": "Opið: {role}",
+    "waitingFor": "Beðið í {duration}",
+    "onlineInCourse": "{count} á netinu í {course}",
+    "newCourseChat": "Nýtt námskeiðsspjall"
 }

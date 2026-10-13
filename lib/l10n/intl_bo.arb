@@ -2915,7 +2915,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-10-13 09:39:37.911180",
+    "@@last_modified": "2026-10-13 14:56:10.108756",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7083,8 +7083,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Buka bantuan nulis",
-    "autoIGCToolDescription": "Secara otomatis menjalankan alat Pangea Chat untuk memperbaiki pesan yang dikirim ke bahasa target.",
+    "autoIGCToolName": "སྐད་ཆ་བསྐུར་སྐབས་རང་འགུལ་ཞིབ་བཤེར།",
+    "autoIGCToolDescription": "ཁྱེད་ཀྱིས་སྐད་ཆ་བསྐུར་སྐབས་ནོར་འཁྲུལ་ཡོད་མེད་ཞིབ་བཤེར་བྱེད་པ། འདི་མེད་པའི་སྐབས་སུ་ཁྱེད་རང་གིས་སྐད་ཆ་ཞིག་ཞིབ་བཤེར་བྱེད་པར་ཡིག་རོགས་ཀྱི་ බොར་མནོན།",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9408,7 +9408,6 @@
     "constructLevelFlowers": "མེ་ཏོག བྱང་ཆུབ་པའི་ཚིག",
     "filterAndSearch": "ཚགས་འདེམས་དང་འཚོལ་བཤེར།",
     "participantsOfTotal": "རྩེད་མཁན་ {total} ནང་ནས་ {filled}",
-    "mapAttributionLabel": "OpenStreetMap ལ་མཉམ་ཞུགས་བྱེད་མཁན་ཚོ། བདག་དབང་དང་ཆོག་མཆན།",
     "seeAll": "ཚང་མ་གཟིགས།",
     "seeAllSection": "{section} ཚང་མ་གཟིགས།",
     "showMoreOptionsHint": "འདེམས་ངོ་མང་ཙམ་བསྟན་",
@@ -9594,5 +9593,14 @@
     "callMicrophoneOffMessage": "Pangea Chat གྱིས་ཁྱེད་ཀྱི་སྒྲ་སྡུད་འཕྲུལ་ཆས་བེད་སྤྱོད་གནང་ཐུབ་ཀྱི་མེད། སྒྲིག་སྦྱོར་ནང་དུ་སྒྲ་སྡུད་འཕྲུལ་ཆས་འབྱེད་པར་མནོན།",
     "goalsCompletedOfTotal": "དམིགས་ཡུལ་ {total} ནང་ནས་ {earned} ལེགས་འགྲུབ་བྱུང་།",
     "goalsCompletedInLanguage": "{language} ནང་དུ་དམིགས་ཡུལ་ལེགས་འགྲུབ་བྱུང་།",
-    "sessionXpTowardObjective": "ཐེངས་འདིའི་ནང་ {xp} XP ཐོབ། དམིགས་ཡུལ་ལེགས་འགྲུབ་ཆེད་ད་དུང་ {remaining} དགོས།"
+    "sessionXpTowardObjective": "ཐེངས་འདིའི་ནང་ {xp} XP ཐོབ། དམིགས་ཡུལ་ལེགས་འགྲུབ་ཆེད་ད་དུང་ {remaining} དགོས།",
+    "mapCreditsLabel": "ផែនទីཡི་ཡོན་ཏན་: Stadia Maps, OpenMapTiles དང་ OpenStreetMap",
+    "activityLaunchFindingCourses": "ཁྱེད་ཀྱི་སློབ་ཚན་འཚོལ་བཞིན་པ།",
+    "activityLaunchCreatingRoom": "ཁྱེད་ཀྱི་བྱེད་སྒོ་བཟོ་བཞིན་པ།",
+    "activityLaunchOpeningRoom": "ཁྱེད་ཀྱི་བྱེད་སྒོ་འབྱེད་བཞིན་པ།",
+    "playWithOthers": "གཞན་དང་མཉམ་དུ་རྩེད།",
+    "openRole": "ཁ་ཕྱེ།: {role}",
+    "waitingFor": "{duration}སྒུག་བཞིན་པ།",
+    "onlineInCourse": "{course}ནང་མི་གྲངས་{count}དྲ་ཐོག་ཏུ་ཡོད།",
+    "newCourseChat": "སློབ་ཚན་གསར་པའི་ཁ་བརྡ།"
 }

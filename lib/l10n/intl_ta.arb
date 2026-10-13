@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 09:39:56.443552",
+    "@@last_modified": "2026-10-13 13:03:49.817961",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -7842,8 +7842,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "எழுத்து உதவியை செயல்படுத்தவும்",
-    "autoIGCToolDescription": "அனுப்பிய செய்திகளை இலக்கு மொழிக்கு சரிசெய்ய பாஙோ உரையாடல் கருவிகளை தானாகவே இயக்கவும்.",
+    "autoIGCToolName": "அனுப்பும்போது தானாகச் சரிபார்க்கவும்",
+    "autoIGCToolDescription": "நீங்கள் அனுப்பும் செய்தியில் உள்ள பிழைகளை, அனுப்பும் பொத்தானைத் தட்டும்போது சரிபார்க்கவும். இது முடக்கப்பட்டிருந்தால், நீங்களே செய்தியைச் சரிபார்க்க எழுத்து உதவி பொத்தானைத் தட்டவும்.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9889,7 +9889,6 @@
     "constructLevelFlowers": "மலர்கள், தேர்ச்சி பெற்ற சொற்கள்",
     "filterAndSearch": "வடிகட்டி தேடு",
     "participantsOfTotal": "{total} வீரர்களில் {filled} பேர்",
-    "mapAttributionLabel": "OpenStreetMap பங்களிப்பாளர்கள், பதிப்புரிமை மற்றும் உரிமம்",
     "seeAll": "அனைத்தையும் காட்டு",
     "seeAllSection": "அனைத்தையும் காட்டு {section}",
     "showMoreOptionsHint": "மேலும் விருப்பங்களைக் காட்டு",
@@ -10075,5 +10074,14 @@
     "callMicrophoneOffMessage": "Pangea Chat உங்கள் மைக்ரோஃபோனைப் பயன்படுத்த முடியாது. அமைப்புகளில் அதை இயக்க தட்டவும்.",
     "goalsCompletedOfTotal": "{total} இலக்குகளில் {earned} முடிக்கப்பட்டது",
     "goalsCompletedInLanguage": "{language} மொழியில் முடிக்கப்பட்ட இலக்குகள்",
-    "sessionXpTowardObjective": "இந்த அமர்வில் {xp} XP; இன்னும் {remaining} இருந்தால் இலக்கு நிறைவடையும்"
+    "sessionXpTowardObjective": "இந்த அமர்வில் {xp} XP; இன்னும் {remaining} இருந்தால் இலக்கு நிறைவடையும்",
+    "mapCreditsLabel": "வரைபட வரவுகள்: Stadia Maps, OpenMapTiles மற்றும் OpenStreetMap",
+    "activityLaunchFindingCourses": "உங்கள் படிப்புகளைக் கண்டறிகிறது…",
+    "activityLaunchCreatingRoom": "உங்கள் செயல்பாட்டை உருவாக்குகிறது…",
+    "activityLaunchOpeningRoom": "உங்கள் செயல்பாட்டைத் திறக்கிறது…",
+    "playWithOthers": "மற்றவர்களுடன் விளையாடு",
+    "openRole": "திறந்த: {role}",
+    "waitingFor": "காத்திருக்கிறது {duration}",
+    "onlineInCourse": "{course} இல் {count} பேர் ஆன்லைனில் உள்ளனர்",
+    "newCourseChat": "புதிய பாடநெறி அரட்டை"
 }

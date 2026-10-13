@@ -9,7 +9,7 @@ The course page's people section is a **Leaderboard** ([client#9212](https://git
 
 ## Who is ranked, and how
 
-- **Every joined member is ranked, admins included.** The bot is never ranked — it earns nothing — and does not appear on the leaderboard at all.
+- **Joined members are ranked; admins are not.** An instructor or TA who plays the activities would otherwise top the board and rank the students against the teaching team ([client#9481](https://github.com/pangeachat/client/issues/9481)). Admins appear on the admin line instead, also in a course no one else has joined, such as a learner's own. The bot is never ranked — it earns nothing — and does not appear on the leaderboard at all.
 - **Invited and knocking users are not ranked.** They appear only on the full page, at the bottom, wearing their Invited or Knocking badge and no stats.
 - **Order**: goals completed in the course's language, most first; level breaks a tie; then display name A to Z, then Matrix id. Equal members therefore keep one fixed order across loads instead of swapping places, and no rank is shown as a tie.
 - The goal count and level are the member's public-profile totals for the course's language — the activity goals they have banked, drawn as a checkmark so the count is never read as completed Missions; [quests.instructions.md](quests.instructions.md) ("Stars and checkmarks") owns what those numbers mean. A course with no language recorded ranks each member on their own target language, the same fallback the old cards used.
@@ -23,9 +23,9 @@ The section is headed **Leaderboard** with the group icon. Its header actions ar
 
 Below the header:
 
-1. **The admin line** — every admin as a card wearing the Admin badge, with no stats (their stats are on their ranked row), smaller than a chat's member card so the podium stays the section's largest thing. One line, cut to the cards that fit the width, so a teacher is easy to find before the ranking starts.
+1. **The admin line** — every admin as a card wearing the Admin badge, with no stats, smaller than a chat's member card so the podium stays the section's largest thing. One line, cut to the cards that fit the width, so a teacher is easy to find before the ranking starts.
 2. **The podium** — the top three as full-width rows: a medal ring (gold, silver, bronze) around the avatar with the rank on a badge, a crown on first place, the name, then the star count and the level. Each row is tinted in its medal's colour.
-3. **A lone member sees an Invite row in second place** when they may invite: a leaderboard of one says what the next step is. A viewer who cannot invite sees only the one row.
+3. **A ranking of one or none ends in an Invite row** when the viewer may invite, below the one ranked row or straight under the admin line: a leaderboard that short says what the next step is. A viewer who cannot invite sees only what is there.
 
 ## The full page (See all)
 

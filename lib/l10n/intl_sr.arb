@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 09:39:56.195014",
+    "@@last_modified": "2026-10-13 13:03:48.852012",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -8689,8 +8689,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Omogući pomoć pri pisanju",
-    "autoIGCToolDescription": "Automatski pokreni Pangea Chat alate za ispravljanje poslatih poruka na ciljni jezik.",
+    "autoIGCToolName": "Automatska provera pri slanju",
+    "autoIGCToolDescription": "Proverite poruku da li ima grešaka kada dodirnete „Pošalji“. Kada je ovo isključeno, dodirnite dugme za pomoć pri pisanju da biste sami proverili poruku.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10746,7 +10746,6 @@
     "constructLevelFlowers": "Cveće, savladane reči",
     "filterAndSearch": "Filtriraj i pretraži",
     "participantsOfTotal": "{filled} od {total} igrača",
-    "mapAttributionLabel": "OpenStreetMap saradnici, autorska prava i licenca",
     "seeAll": "Pogledaj sve",
     "seeAllSection": "Pogledaj sve {section}",
     "showMoreOptionsHint": "prikaži više opcija",
@@ -10932,5 +10931,14 @@
     "callMicrophoneOffMessage": "Pangea Chat ne može da koristi vaš mikrofon. Dodirnite da biste ga uključili u Podešavanjima.",
     "goalsCompletedOfTotal": "{earned} od {total} ciljeva ispunjeno",
     "goalsCompletedInLanguage": "Ciljevi ispunjeni na {language} jeziku",
-    "sessionXpTowardObjective": "{xp} XP u ovoj sesiji; još {remaining} za ispunjenje cilja"
+    "sessionXpTowardObjective": "{xp} XP u ovoj sesiji; još {remaining} za ispunjenje cilja",
+    "mapCreditsLabel": "Zasluge za mapu: Stadia Maps, OpenMapTiles i OpenStreetMap",
+    "activityLaunchFindingCourses": "Pronalaženje kurseva…",
+    "activityLaunchCreatingRoom": "Kreiranje aktivnosti…",
+    "activityLaunchOpeningRoom": "Otvaranje aktivnosti…",
+    "playWithOthers": "Igrajte se sa drugima",
+    "openRole": "Otvoreno: {role}",
+    "waitingFor": "Čekanje {duration}",
+    "onlineInCourse": "{count} na mreži u {course}",
+    "newCourseChat": "Novo ćaskanje o kursu"
 }

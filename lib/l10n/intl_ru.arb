@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-13 09:39:53.654203",
+    "@@last_modified": "2026-10-13 13:03:47.982552",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -8900,8 +8900,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Автоматически запускать помощь в написании Pangea",
-    "autoIGCToolDescription": "Автоматически запускать помощь в грамматике и переводе Pangea Chat перед отправкой моего сообщения.",
+    "autoIGCToolName": "Автопроверка при отправке",
+    "autoIGCToolDescription": "Проверяйте сообщение на ошибки при нажатии кнопки «Отправить». Если эта функция отключена, нажмите кнопку помощника по написанию, чтобы проверить сообщение самостоятельно.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10769,7 +10769,6 @@
     "constructLevelFlowers": "Цветы, освоенные слова",
     "filterAndSearch": "Фильтр и поиск",
     "participantsOfTotal": "{filled} из {total} игроков",
-    "mapAttributionLabel": "Участники OpenStreetMap, авторские права и лицензия",
     "seeAll": "Посмотреть все",
     "seeAllSection": "Посмотреть все {section}",
     "showMoreOptionsHint": "показать больше опций",
@@ -10955,5 +10954,14 @@
     "callMicrophoneOffMessage": "Pangea Chat не может использовать ваш микрофон. Нажмите, чтобы включить его в настройках.",
     "goalsCompletedOfTotal": "{earned} из {total} целей выполнено",
     "goalsCompletedInLanguage": "Целей выполнено на {language}",
-    "sessionXpTowardObjective": "{xp} XP за эту сессию; еще {remaining} — и цель достигнута"
+    "sessionXpTowardObjective": "{xp} XP за эту сессию; еще {remaining} — и цель достигнута",
+    "mapCreditsLabel": "Авторы карты: Stadia Maps, OpenMapTiles и OpenStreetMap",
+    "activityLaunchFindingCourses": "Поиск ваших курсов…",
+    "activityLaunchCreatingRoom": "Создание вашей активности…",
+    "activityLaunchOpeningRoom": "Открытие вашей активности…",
+    "playWithOthers": "Играть с другими",
+    "openRole": "Открыто: {role}",
+    "waitingFor": "Ожидание {duration}",
+    "onlineInCourse": "{count} онлайн в {course}",
+    "newCourseChat": "Новый чат курса"
 }

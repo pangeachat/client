@@ -3396,7 +3396,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-13 09:39:38.599950",
+    "@@last_modified": "2026-10-13 13:03:40.861219",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -8615,8 +8615,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Ενεργοποίηση βοήθειας γραφής",
-    "autoIGCToolDescription": "Αυτόματα εκτελέστε τα εργαλεία Pangea Chat για να διορθώσετε τα αποσταλμένα μηνύματα στη γλώσσα στόχο.",
+    "autoIGCToolName": "Αυτόματος έλεγχος κατά την αποστολή",
+    "autoIGCToolDescription": "Ελέγξτε το μήνυμά σας για λάθη όταν πατάτε αποστολή. Όταν αυτή η επιλογή είναι απενεργοποιημένη, πατήστε το κουμπί βοήθειας γραφής για να ελέγξετε ένα μήνυμα μόνοι σας.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10672,7 +10672,6 @@
     "constructLevelFlowers": "Λουλούδια, λέξεις που έχετε κατακτήσει",
     "filterAndSearch": "Φιλτράρισμα και αναζήτηση",
     "participantsOfTotal": "{filled} από {total} παίκτες",
-    "mapAttributionLabel": "Συνεισφέροντες στο OpenStreetMap, πνευματικά δικαιώματα και άδεια",
     "seeAll": "Δείτε όλα",
     "seeAllSection": "Δείτε όλα τα {section}",
     "showMoreOptionsHint": "εμφάνιση περισσότερων επιλογών",
@@ -10858,5 +10857,14 @@
     "callMicrophoneOffMessage": "Το Pangea Chat δεν μπορεί να χρησιμοποιήσει το μικρόφωνό σας. Πατήστε για να το ενεργοποιήσετε στις Ρυθμίσεις.",
     "goalsCompletedOfTotal": "{earned} από {total} στόχους ολοκληρώθηκαν",
     "goalsCompletedInLanguage": "Στόχοι που ολοκληρώθηκαν στα {language}",
-    "sessionXpTowardObjective": "{xp} XP σε αυτήν τη συνεδρία. Απομένουν {remaining} για την ολοκλήρωση του στόχου"
+    "sessionXpTowardObjective": "{xp} XP σε αυτήν τη συνεδρία. Απομένουν {remaining} για την ολοκλήρωση του στόχου",
+    "mapCreditsLabel": "Συντελεστές χάρτη: Stadia Maps, OpenMapTiles και OpenStreetMap",
+    "activityLaunchFindingCourses": "Εύρεση των μαθημάτων σας…",
+    "activityLaunchCreatingRoom": "Δημιουργία της δραστηριότητάς σας…",
+    "activityLaunchOpeningRoom": "Άνοιγμα της δραστηριότητάς σας…",
+    "playWithOthers": "Παίξτε με άλλους",
+    "openRole": "Ανοιχτό: {role}",
+    "waitingFor": "Αναμονή {duration}",
+    "onlineInCourse": "{count} συνδεδεμένοι στο {course}",
+    "newCourseChat": "Νέα συνομιλία μαθήματος"
 }

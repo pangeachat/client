@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-13 09:39:57.743966",
+    "@@last_modified": "2026-10-13 13:03:49.973985",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -8041,8 +8041,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Yazma yardımını etkinleştir",
-    "autoIGCToolDescription": "Gönderilen mesajları hedef dile düzeltmek için Pangea Chat araçlarını otomatik olarak çalıştır.",
+    "autoIGCToolName": "Gönderimde otomatik kontrol",
+    "autoIGCToolDescription": "Gönder'e dokunduğunuzda mesajınızı hatalara karşı kontrol edin. Bu kapalıyken, bir mesajı kendiniz kontrol etmek için yazma yardım düğmesine dokunun.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10098,7 +10098,6 @@
     "constructLevelFlowers": "Çiçekler, ustalaşmış kelimeler",
     "filterAndSearch": "Filtrele ve ara",
     "participantsOfTotal": "{total} oyuncudan {filled} tanesi",
-    "mapAttributionLabel": "OpenStreetMap katılımcıları, telif hakkı ve lisans",
     "seeAll": "Tümünü gör",
     "seeAllSection": "Tüm {section} bölümünü gör",
     "showMoreOptionsHint": "daha fazla seçenek göster",
@@ -10284,5 +10283,14 @@
     "callMicrophoneOffMessage": "Pangea Chat mikrofonunuzu kullanamıyor. Ayarlar'dan açmak için dokunun.",
     "goalsCompletedOfTotal": "{total} hedeften {earned} tanesi tamamlandı",
     "goalsCompletedInLanguage": "{language} dilinde tamamlanan hedefler",
-    "sessionXpTowardObjective": "Bu oturumda {xp} XP; hedefin tamamlanmasına {remaining} kaldı"
+    "sessionXpTowardObjective": "Bu oturumda {xp} XP; hedefin tamamlanmasına {remaining} kaldı",
+    "mapCreditsLabel": "Harita bilgileri: Stadia Maps, OpenMapTiles ve OpenStreetMap",
+    "activityLaunchFindingCourses": "Kurslarınız bulunuyor…",
+    "activityLaunchCreatingRoom": "Etkinliğiniz oluşturuluyor…",
+    "activityLaunchOpeningRoom": "Etkinliğiniz açılıyor…",
+    "playWithOthers": "Başkalarıyla oyna",
+    "openRole": "Açık: {role}",
+    "waitingFor": "{duration} bekleniyor",
+    "onlineInCourse": "{count} kişi {course} içinde çevrimiçi",
+    "newCourseChat": "Yeni kurs sohbeti"
 }

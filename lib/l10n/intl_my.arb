@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-13 09:39:52.046035",
+    "@@last_modified": "2026-10-13 13:03:46.666908",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "ပုံမှန်အားဖြင့် သင်တန်းများကို အများပြည်သူ ရှာဖွေနိုင်ပြီး ပါဝင်ရန် စီမံခန့်ခွဲသူ၏ ခွင့်ပြုချက် လိုအပ်ပါသည်။ ဤဆက်တင်များကို အချိန်မရွေး ပြင်ဆင်နိုင်ပါသည်။",
     "onboardingLanguagesTitle": "သင် ဘာဘာသာစကားကို သင်ယူနေပါသလဲ။",
     "supportSubtitle": "မေးစရာများ ရှိပါသလား။ ကျွန်ုပ်တို့ ကူညီရန် အသင့်ရှိပါသည်။",
-    "autoIGCToolName": "စာရေးခြင်း အကူအညီကို ဖွင့်ပါ",
-    "autoIGCToolDescription": "ပေးပို့ထားသော မက်ဆေ့ချ်များကို ပစ်မှတ်ဘာသာစကားသို့ ပြင်ဆင်ရန် Pangea Chat ကိရိယာများကို အလိုအလျောက် လုပ်ဆောင်ပါ။",
+    "autoIGCToolName": "ပို့စ်တင်ချိန် အလိုအလျောက်စစ်ဆေးခြင်း",
+    "autoIGCToolDescription": "သင်ပို့စ်တင်သည့်အခါ သင့်မက်ဆေ့ချ်တွင် အမှားအယွင်းများရှိမရှိ စစ်ဆေးပါ။ ၎င်းကိုပိတ်ထားပါက မက်ဆေ့ချ်တစ်ခုကို သင်ကိုယ်တိုင်စစ်ဆေးရန် စာရေးအကူအညီခလုတ်ကို နှိပ်ပါ။",
     "emptyAudioError": "အသံသွင်းခြင်း မအောင်မြင်ပါ။ သင်၏ အသံခွင့်ပြုချက်များကို စစ်ဆေးပြီး ထပ်မံကြိုးစားပါ။",
     "spanTypeSpelling": "စာလုံးပေါင်း",
     "spanTypePunctuation": "ပုဒ်ဖြတ်ပုဒ်ရပ်",
@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "ပန်းများ၊ ကျွမ်းကျင်သော စကားလုံးများ",
     "filterAndSearch": "စစ်ထုတ်ပြီး ရှာဖွေပါ",
     "participantsOfTotal": "{total} ကစားသမားများထဲမှ {filled}",
-    "mapAttributionLabel": "OpenStreetMap ပံ့ပိုးသူများ၊ မူပိုင်ခွင့်နှင့် လိုင်စင်",
     "seeAll": "အားလုံးကြည့်ရန်",
     "seeAllSection": "{section} အားလုံးကြည့်ရန်",
     "showMoreOptionsHint": "ရွေးချယ်စရာများ ထပ်ပြရန်",
@@ -2432,5 +2431,14 @@
     "callMicrophoneOffMessage": "Pangea Chat သည် သင့်မိုက်ခရိုဖုန်းကို အသုံးပြု၍မရပါ။ ဆက်တင်များတွင် ဖွင့်ရန် နှိပ်ပါ။",
     "goalsCompletedOfTotal": "ပြီးစီးခဲ့သော ပန်းတိုင် {total} ခုအနက် {earned} ခု",
     "goalsCompletedInLanguage": "{language} တွင် ပြီးစီးခဲ့သော ပန်းတိုင်များ",
-    "sessionXpTowardObjective": "ဤအကြိမ်တွင် XP {xp} ရရှိခဲ့ပြီး၊ ရည်မှန်းချက်ပြည့်မီရန် {remaining} ထပ်မံလိုအပ်သည်"
+    "sessionXpTowardObjective": "ဤအကြိမ်တွင် XP {xp} ရရှိခဲ့ပြီး၊ ရည်မှန်းချက်ပြည့်မီရန် {remaining} ထပ်မံလိုအပ်သည်",
+    "mapCreditsLabel": "မြေပုံခရက်ဒစ်များ- Stadia Maps, OpenMapTiles နှင့် OpenStreetMap",
+    "activityLaunchFindingCourses": "သင်ခန်းစာများကို ရှာဖွေနေသည်...",
+    "activityLaunchCreatingRoom": "သင်၏လုပ်ဆောင်ချက်ကို ဖန်တီးနေသည်...",
+    "activityLaunchOpeningRoom": "သင်၏လုပ်ဆောင်ချက်ကို ဖွင့်နေသည်...",
+    "playWithOthers": "အခြားသူများနှင့် ကစားပါ",
+    "openRole": "ဖွင့်သည်- {role}",
+    "waitingFor": "{duration} စောင့်ဆိုင်းနေသည်",
+    "onlineInCourse": "{count} ဦး {course} တွင် အွန်လိုင်းပေါ်ရှိသည်",
+    "newCourseChat": "သင်တန်းအသစ် စကားပြောခန်း"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-13 09:39:54.162456",
+    "@@last_modified": "2026-10-13 13:03:45.146324",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Standardméisseg sinn d'Coursen ëffentlech sichbar a erfuerderen d'Zoustëmmung vum Admin fir matzemaachen. Dir kënnt dës Astellungen zu all Moment änneren.",
     "onboardingLanguagesTitle": "Wat fir eng Sprooch léiert Dir?",
     "supportSubtitle": "Froen? Mir sinn hei fir ze hëllefen!",
-    "autoIGCToolName": "Schreifhëllef aktivéieren",
-    "autoIGCToolDescription": "Automatesch Pangea Chat Tools ausféieren fir geschéckt Messagen un d'Zilsprooch ze korrigéieren.",
+    "autoIGCToolName": "Automatesch Kontroll beim Schécken",
+    "autoIGCToolDescription": "Kontrolléiert Är Noriicht op Feeler wann Dir op Schécken tippt. Wann dës Funktioun ausgeschalt ass, tippt op de Schreifhëllef-Knäppchen fir eng Noriicht selwer ze kontrolléieren.",
     "emptyAudioError": "Opnam ass feelgeschloen. Kontrolléiert w.e.g. Är Audio-Permissiounen a probéiert et nach eng Kéier.",
     "spanTypeSpelling": "Orthographie",
     "spanTypePunctuation": "Punktuéierung",
@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Blummen, beherrschte Wierder",
     "filterAndSearch": "Filteren a sichen",
     "participantsOfTotal": "{filled} vun {total} Spiller",
-    "mapAttributionLabel": "OpenStreetMap Mataarbechter, Copyright a Lizenz",
     "seeAll": "Alles gesinn",
     "seeAllSection": "Alles gesinn {section}",
     "showMoreOptionsHint": "méi Optiounen uweisen",
@@ -2432,5 +2431,14 @@
     "callMicrophoneOffMessage": "Pangea Chat kann Äre Mikro net benotzen. Tippen fir en an den Astellungen unzeschalten.",
     "goalsCompletedOfTotal": "{earned} vun {total} Ziler erreecht",
     "goalsCompletedInLanguage": "Ziler erreecht an der Sprooch {language}",
-    "sessionXpTowardObjective": "{xp} XP an dëser Sessioun; {remaining} méi komplettéiert d'Zil"
+    "sessionXpTowardObjective": "{xp} XP an dëser Sessioun; {remaining} méi komplettéiert d'Zil",
+    "mapCreditsLabel": "Kaart Credits: Stadia Maps, OpenMapTiles an OpenStreetMap",
+    "activityLaunchFindingCourses": "Sichen Är Coursen…",
+    "activityLaunchCreatingRoom": "Erstelle Är Aktivitéit…",
+    "activityLaunchOpeningRoom": "Maachen Är Aktivitéit op…",
+    "playWithOthers": "Mat anere spillen",
+    "openRole": "Oppen: {role}",
+    "waitingFor": "Waarden {duration}",
+    "onlineInCourse": "{count} online am Cours {course}",
+    "newCourseChat": "Neie Cours-Chat"
 }

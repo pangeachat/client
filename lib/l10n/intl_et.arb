@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-13 09:39:41.002848",
+    "@@last_modified": "2026-10-13 13:03:41.211831",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -7931,8 +7931,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Luba kirjutamise abi",
-    "autoIGCToolDescription": "Käivita automaatselt Pangea Chat tööriistad, et parandada saadetud sõnumid sihtkeelde.",
+    "autoIGCToolName": "Automaatne kontroll saatmisel",
+    "autoIGCToolDescription": "Kontrolli oma sõnumit vigade suhtes, kui vajutad saatmisnuppu. Kui see on välja lülitatud, puuduta kirjutamisabi nuppu, et sõnumit ise kontrollida.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9794,7 +9794,6 @@
     "constructLevelFlowers": "Lilled, omandatud sõnad",
     "filterAndSearch": "Filtreeri ja otsi",
     "participantsOfTotal": "{filled}/{total} mängijat",
-    "mapAttributionLabel": "OpenStreetMapi kaastöölised, autoriõigus ja litsents",
     "seeAll": "Vaata kõiki",
     "seeAllSection": "Vaata kõiki {section}",
     "showMoreOptionsHint": "näita rohkem valikuid",
@@ -9980,5 +9979,14 @@
     "callMicrophoneOffMessage": "Pangea Chat ei saa teie mikrofoni kasutada. Puudutage, et see seadetes sisse lülitada.",
     "goalsCompletedOfTotal": "{earned} {total}-st eesmärgist täidetud",
     "goalsCompletedInLanguage": "Keele {language} eesmärgid täidetud",
-    "sessionXpTowardObjective": "{xp} XP sellel sessioonil; {remaining} veel täidab eesmärgi"
+    "sessionXpTowardObjective": "{xp} XP sellel sessioonil; {remaining} veel täidab eesmärgi",
+    "mapCreditsLabel": "Kaardi autorid: Stadia Maps, OpenMapTiles ja OpenStreetMap",
+    "activityLaunchFindingCourses": "Kursuste otsimine…",
+    "activityLaunchCreatingRoom": "Tegevuse loomine…",
+    "activityLaunchOpeningRoom": "Tegevuse avamine…",
+    "playWithOthers": "Mängi teistega",
+    "openRole": "Avatud: {role}",
+    "waitingFor": "Ootab {duration}",
+    "onlineInCourse": "{count} võrgus kursusel {course}",
+    "newCourseChat": "Uus kursusevestlus"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 09:39:53.048981",
+    "@@last_modified": "2026-10-13 13:03:47.942545",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -8472,8 +8472,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Activare asistență la scriere",
-    "autoIGCToolDescription": "Rulați automat instrumentele Pangea Chat pentru a corecta mesajele trimise în limba țintă.",
+    "autoIGCToolName": "Verificare automată la trimitere",
+    "autoIGCToolDescription": "Verifică-ți mesajul pentru greșeli când apeși trimite. Când această opțiune este dezactivată, apasă butonul de asistență la scriere pentru a verifica singur un mesaj.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10529,7 +10529,6 @@
     "constructLevelFlowers": "Flori, cuvinte stăpânite",
     "filterAndSearch": "Filtrează și caută",
     "participantsOfTotal": "{filled} din {total} jucători",
-    "mapAttributionLabel": "Contribuitori OpenStreetMap, drepturi de autor și licență",
     "seeAll": "Vezi tot",
     "seeAllSection": "Vezi tot {section}",
     "showMoreOptionsHint": "afișează mai multe opțiuni",
@@ -10715,5 +10714,14 @@
     "callMicrophoneOffMessage": "Pangea Chat nu poate folosi microfonul tău. Atinge pentru a-l activa din Setări.",
     "goalsCompletedOfTotal": "{earned} din {total} obiective finalizate",
     "goalsCompletedInLanguage": "Obiective finalizate în {language}",
-    "sessionXpTowardObjective": "{xp} XP în această sesiune; încă {remaining} pentru a finaliza obiectivul"
+    "sessionXpTowardObjective": "{xp} XP în această sesiune; încă {remaining} pentru a finaliza obiectivul",
+    "mapCreditsLabel": "Credite hartă: Stadia Maps, OpenMapTiles și OpenStreetMap",
+    "activityLaunchFindingCourses": "Se caută cursurile tale…",
+    "activityLaunchCreatingRoom": "Se creează activitatea ta…",
+    "activityLaunchOpeningRoom": "Se deschide activitatea ta…",
+    "playWithOthers": "Joacă-te cu alții",
+    "openRole": "Deschis: {role}",
+    "waitingFor": "Se așteaptă {duration}",
+    "onlineInCourse": "{count} online în {course}",
+    "newCourseChat": "Chat nou de curs"
 }

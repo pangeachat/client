@@ -2963,7 +2963,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-13 09:39:48.123881",
+    "@@last_modified": "2026-10-13 13:03:45.352847",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8521,8 +8521,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Įgalinti rašymo pagalbą",
-    "autoIGCToolDescription": "Automatiškai paleisti Pangea Chat įrankius, kad ištaisytumėte išsiųstas žinutes į tikslinę kalbą.",
+    "autoIGCToolName": "Automatinis tikrinimas išsiunčiant",
+    "autoIGCToolDescription": "Patikrinkite, ar jūsų žinutėje nėra klaidų, kai paspausite siuntimo mygtuką. Kai ši funkcija išjungta, patys paspauskite rašymo pagalbos mygtuką, kad patikrintumėte žinutę.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10578,7 +10578,6 @@
     "constructLevelFlowers": "Gėlės, įvaldyti žodžiai",
     "filterAndSearch": "Filtruoti ir ieškoti",
     "participantsOfTotal": "{filled} iš {total} žaidėjų",
-    "mapAttributionLabel": "„OpenStreetMap“ bendradarbiai, autorių teisės ir licencija",
     "seeAll": "Žr. visus",
     "seeAllSection": "Žr. visus {section}",
     "showMoreOptionsHint": "rodyti daugiau parinkčių",
@@ -10764,5 +10763,14 @@
     "callMicrophoneOffMessage": "„Pangea Chat“ negali naudoti jūsų mikrofono. Bakstelėkite, kad įjungtumėte jį nustatymuose.",
     "goalsCompletedOfTotal": "Įvykdyta {earned} iš {total} tikslų",
     "goalsCompletedInLanguage": "Įvykdyti tikslai {language} kalba",
-    "sessionXpTowardObjective": "{xp} XP šioje sesijoje; dar {remaining} ir tikslas bus pasiektas"
+    "sessionXpTowardObjective": "{xp} XP šioje sesijoje; dar {remaining} ir tikslas bus pasiektas",
+    "mapCreditsLabel": "Žemėlapio autoriai: Stadia Maps, OpenMapTiles ir OpenStreetMap",
+    "activityLaunchFindingCourses": "Ieškoma jūsų kursų…",
+    "activityLaunchCreatingRoom": "Kuriama jūsų veikla…",
+    "activityLaunchOpeningRoom": "Atidaroma jūsų veikla…",
+    "playWithOthers": "Žaisti su kitais",
+    "openRole": "Atvira: {role}",
+    "waitingFor": "Laukiama {duration}",
+    "onlineInCourse": "{count} prisijungę {course}",
+    "newCourseChat": "Naujas kurso pokalbis"
 }

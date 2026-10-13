@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-13 09:39:42.415059",
+    "@@last_modified": "2026-10-13 13:03:42.889476",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Los ntawm lub neej ntawd, cov chav kawm tuaj yeem tshawb nrhiav tau rau pej xeem thiab yuav tsum tau tus thawj tswj hwm pom zoo kom koom. Koj tuaj yeem hloov kho cov chaw no txhua lub sijhawm.",
     "onboardingLanguagesTitle": "Koj tab tom kawm hom lus dab tsi?",
     "supportSubtitle": "Cov lus nug? Peb nyob ntawm no los pab!",
-    "autoIGCToolName": "Qhib kev pab sau ntawv",
-    "autoIGCToolDescription": "Tsis siv neeg khiav Pangea Chat cov cuab yeej los kho cov lus xa mus rau lub hom phiaj lus.",
+    "autoIGCToolName": "Tshawb xyuas thaum xa",
+    "autoIGCToolDescription": "Tshawb xyuas koj cov lus seb puas muaj qhov yuam kev thaum koj nias xa. Thaum qhov no raug kaw, nias lub pob pab sau ntawv kom tshawb xyuas koj tus kheej cov lus.",
     "emptyAudioError": "Kev kaw tsis tiav. Thov kuaj koj cov kev tso cai suab thiab sim dua.",
     "spanTypeSpelling": "Sau ntawv",
     "spanTypePunctuation": "Cov cim sau ntawv",
@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Paj, cov lus kawm tiav",
     "filterAndSearch": "Lim thiab tshawb",
     "participantsOfTotal": "{filled} ntawm {total} tus neeg ua si",
-    "mapAttributionLabel": "OpenStreetMap cov neeg koom tes, txoj cai luam tawm thiab daim ntawv tso cai",
     "seeAll": "Saib tag nrho",
     "seeAllSection": "Saib tag nrho {section}",
     "showMoreOptionsHint": "qhia ntau txoj kev xaiv ntxiv",
@@ -2432,5 +2431,14 @@
     "callMicrophoneOffMessage": "Pangea Chat tsis tuaj yeem siv koj lub microphone. Coj mus rhaub kom qhib nws hauv Chaw.",
     "goalsCompletedOfTotal": "{earned} ntawm {total} lub hom phiaj ua tiav",
     "goalsCompletedInLanguage": "Lub hom phiaj ua tiav hauv {language}",
-    "sessionXpTowardObjective": "{xp} XP rau lub sijhawm no; {remaining} ntxiv yuav ua tiav lub hom phiaj"
+    "sessionXpTowardObjective": "{xp} XP rau lub sijhawm no; {remaining} ntxiv yuav ua tiav lub hom phiaj",
+    "mapCreditsLabel": "Daim ntawv qhia chaw: Stadia Maps, OpenMapTiles thiab OpenStreetMap",
+    "activityLaunchFindingCourses": "Nrhiav koj cov hoob kawm…",
+    "activityLaunchCreatingRoom": "Tsim koj qhov kev ua si…",
+    "activityLaunchOpeningRoom": "Qhib koj qhov kev ua si…",
+    "playWithOthers": "Ua si nrog lwm tus",
+    "openRole": "Qhib: {role}",
+    "waitingFor": "Tos {duration}",
+    "onlineInCourse": "{count} tus nyob online hauv {course}",
+    "newCourseChat": "Kev sib tham kawm tshiab"
 }

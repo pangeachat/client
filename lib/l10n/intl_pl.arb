@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-13 09:39:53.404444",
+    "@@last_modified": "2026-10-13 13:03:47.028989",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -7834,8 +7834,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Włącz pomoc w pisaniu",
-    "autoIGCToolDescription": "Automatycznie uruchom narzędzia Pangea Chat, aby poprawić wysłane wiadomości na docelowy język.",
+    "autoIGCToolName": "Autokorekta przy wysyłaniu",
+    "autoIGCToolDescription": "Sprawdź wiadomość pod kątem błędów po naciśnięciu przycisku Wyślij. Gdy ta opcja jest wyłączona, naciśnij przycisk pomocy w pisaniu, aby samodzielnie sprawdzić wiadomość.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9882,7 +9882,6 @@
     "constructLevelFlowers": "Kwiaty, opanowane słowa",
     "filterAndSearch": "Filtruj i szukaj",
     "participantsOfTotal": "{filled} z {total} graczy",
-    "mapAttributionLabel": "Współtwórcy OpenStreetMap, prawa autorskie i licencja",
     "seeAll": "Zobacz wszystkie",
     "seeAllSection": "Zobacz wszystkie {section}",
     "showMoreOptionsHint": "pokaż więcej opcji",
@@ -10068,5 +10067,14 @@
     "callMicrophoneOffMessage": "Pangea Chat nie może używać Twojego mikrofonu. Stuknij, aby włączyć go w Ustawieniach.",
     "goalsCompletedOfTotal": "Ukończono {earned} z {total} celów",
     "goalsCompletedInLanguage": "Cele ukończone w języku {language}",
-    "sessionXpTowardObjective": "{xp} PD w tej sesji; jeszcze {remaining} do ukończenia celu"
+    "sessionXpTowardObjective": "{xp} PD w tej sesji; jeszcze {remaining} do ukończenia celu",
+    "mapCreditsLabel": "Źródło map: Stadia Maps, OpenMapTiles i OpenStreetMap",
+    "activityLaunchFindingCourses": "Wyszukiwanie kursów…",
+    "activityLaunchCreatingRoom": "Tworzenie aktywności…",
+    "activityLaunchOpeningRoom": "Otwieranie aktywności…",
+    "playWithOthers": "Graj z innymi",
+    "openRole": "Otwarte: {role}",
+    "waitingFor": "Oczekiwanie {duration}",
+    "onlineInCourse": "{count} online w {course}",
+    "newCourseChat": "Nowy czat kursu"
 }

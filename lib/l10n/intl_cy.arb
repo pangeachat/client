@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-13 09:39:38.394311",
+    "@@last_modified": "2026-10-13 13:03:40.536169",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Yn ddiofyn, mae cyrsiau'n chwiliadwy'n gyhoeddus ac mae angen cymeradwyaeth gweinyddwr i ymuno. Gallwch olygu'r gosodiadau hyn unrhyw bryd.",
     "onboardingLanguagesTitle": "Pa iaith ydych chi'n ei dysgu?",
     "supportSubtitle": "Cwestiynau? Rydyn ni yma i helpu!",
-    "autoIGCToolName": "Galluogi cymorth ysgrifennu",
-    "autoIGCToolDescription": "Rhedeg offer Pangea Chat yn awtomatig i gywiro negeseuon a anfonwyd i'r iaith darged.",
+    "autoIGCToolName": "Gwiriad awtomatig ar anfon",
+    "autoIGCToolDescription": "Gwiriwch eich neges am gamgymeriadau pan fyddwch chi'n tapio anfon. Pan fydd hyn i ffwrdd, tapiwch y botwm cymorth ysgrifennu i wirio neges eich hun.",
     "emptyAudioError": "Methodd y recordiad. Gwiriwch eich caniatadau sain a cheisiwch eto.",
     "spanTypeSpelling": "Sillafu",
     "spanTypePunctuation": "Atalnodi",
@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Blodau, geiriau wedi'u meistroli",
     "filterAndSearch": "Hidlo a chwilio",
     "participantsOfTotal": "{filled} o {total} chwaraewr",
-    "mapAttributionLabel": "Cyfranwyr OpenStreetMap, hawlfraint a thrwydded",
     "seeAll": "Gweld y cyfan",
     "seeAllSection": "Gweld pob {section}",
     "showMoreOptionsHint": "dangos mwy o opsiynau",
@@ -2432,5 +2431,14 @@
     "callMicrophoneOffMessage": "Ni all Pangea Chat ddefnyddio'ch meicroffon. Tapiwch i'w droi ymlaen yn Gosodiadau.",
     "goalsCompletedOfTotal": "{earned} o {total} nodau wedi'u cwblhau",
     "goalsCompletedInLanguage": "Nodau wedi'u cwblhau yn {language}",
-    "sessionXpTowardObjective": "{xp} XP y sesiwn hon; {remaining} arall yn cwblhau'r amcan"
+    "sessionXpTowardObjective": "{xp} XP y sesiwn hon; {remaining} arall yn cwblhau'r amcan",
+    "mapCreditsLabel": "Credydau map: Stadia Maps, OpenMapTiles ac OpenStreetMap",
+    "activityLaunchFindingCourses": "Yn dod o hyd i'ch cyrsiau…",
+    "activityLaunchCreatingRoom": "Yn creu eich gweithgaredd…",
+    "activityLaunchOpeningRoom": "Yn agor eich gweithgaredd…",
+    "playWithOthers": "Chwarae gydag eraill",
+    "openRole": "Agored: {role}",
+    "waitingFor": "Yn aros {duration}",
+    "onlineInCourse": "{count} ar-lein yn {course}",
+    "newCourseChat": "Sgwrs cwrs newydd"
 }

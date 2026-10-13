@@ -151,7 +151,7 @@ void main() {
       await pumpHeader(tester, title: shortTitle, width: 400);
       await openMenu(tester);
 
-      expect(find.text('Enable writing assistance'), findsOneWidget);
+      expect(find.text('Autocheck on send'), findsOneWidget);
       expect(find.text('Report content issue'), findsOneWidget);
       expect(find.text('Learning settings'), findsOneWidget);
     });
@@ -207,7 +207,7 @@ void main() {
       await pumpHeader(tester, title: shortTitle, width: 400);
 
       await openMenu(tester);
-      await tester.tap(find.text('Enable writing assistance'));
+      await tester.tap(find.text('Autocheck on send'));
       await tester.pumpAndSettle();
       expect(autoIGCToggles, 1);
 

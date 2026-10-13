@@ -3089,7 +3089,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-13 09:40:01.866173",
+    "@@last_modified": "2026-10-13 13:03:49.836411",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8372,8 +8372,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "เปิดใช้งานความช่วยเหลือในการเขียน",
-    "autoIGCToolDescription": "เรียกใช้เครื่องมือ Pangea Chat โดยอัตโนมัติเพื่อแก้ไขข้อความที่ส่งไปยังภาษาที่ต้องการ.",
+    "autoIGCToolName": "ตรวจสอบอัตโนมัติเมื่อส่ง",
+    "autoIGCToolDescription": "ตรวจสอบข้อความของคุณเพื่อหาข้อผิดพลาดเมื่อคุณแตะส่ง หากปิดใช้งานอยู่ ให้แตะปุ่มช่วยเหลือการเขียนเพื่อตรวจสอบข้อความด้วยตนเอง",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10429,7 +10429,6 @@
     "constructLevelFlowers": "ดอกไม้, คำศัพท์ที่เชี่ยวชาญแล้ว",
     "filterAndSearch": "กรองและค้นหา",
     "participantsOfTotal": "{filled} จากผู้เล่นทั้งหมด {total} คน",
-    "mapAttributionLabel": "ผู้ร่วมให้ข้อมูล OpenStreetMap, ลิขสิทธิ์และใบอนุญาต",
     "seeAll": "ดูทั้งหมด",
     "seeAllSection": "ดูทั้งหมด {section}",
     "showMoreOptionsHint": "แสดงตัวเลือกเพิ่มเติม",
@@ -10615,5 +10614,14 @@
     "callMicrophoneOffMessage": "Pangea Chat ไม่สามารถใช้ไมโครโฟนของคุณได้ แตะเพื่อเปิดใช้งานในการตั้งค่า",
     "goalsCompletedOfTotal": "ทำเป้าหมายสำเร็จแล้ว {earned} จาก {total} รายการ",
     "goalsCompletedInLanguage": "เป้าหมายที่ทำสำเร็จในภาษา{language}",
-    "sessionXpTowardObjective": "XP ที่ได้รับในเซสชันนี้ {xp}; อีก {remaining} จะทำให้เป้าหมายสำเร็จ"
+    "sessionXpTowardObjective": "XP ที่ได้รับในเซสชันนี้ {xp}; อีก {remaining} จะทำให้เป้าหมายสำเร็จ",
+    "mapCreditsLabel": "เครดิตแผนที่: Stadia Maps, OpenMapTiles และ OpenStreetMap",
+    "activityLaunchFindingCourses": "กำลังค้นหาคอร์สของคุณ…",
+    "activityLaunchCreatingRoom": "กำลังสร้างกิจกรรมของคุณ…",
+    "activityLaunchOpeningRoom": "กำลังเปิดกิจกรรมของคุณ…",
+    "playWithOthers": "เล่นกับคนอื่น",
+    "openRole": "เปิด: {role}",
+    "waitingFor": "กำลังรอ {duration}",
+    "onlineInCourse": "{count} ออนไลน์ใน {course}",
+    "newCourseChat": "แชทคอร์สใหม่"
 }

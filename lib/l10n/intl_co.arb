@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-13 09:39:38.043304",
+    "@@last_modified": "2026-10-13 13:03:40.564966",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Per difettu, i corsi sò cercabili publicamente è necessitanu l'approvazione di l'amministratore per aderisce. Pudete mudificà sti parametri in ogni mumentu.",
     "onboardingLanguagesTitle": "Chì lingua amparate?",
     "supportSubtitle": "Dumande? Simu quì per aiutà!",
-    "autoIGCToolName": "Attivà l'assistenza à a scrittura",
-    "autoIGCToolDescription": "Eseguisce in autumàticu l'arnesi di Pangea Chat per currege i messaghji mandati in a lingua di destinazione.",
+    "autoIGCToolName": "Verificazione automatica à l'inviu",
+    "autoIGCToolDescription": "Verificate u vostru messagiu per l'errori quandu inviate. Quandu sta funziunalità hè disattivata, toccate u buttone d'assistenza à a scrittura per verificà un messagiu voi stessu.",
     "emptyAudioError": "Arregistramentu fiascatu. Verificate e vostre permissione audio è pruvate torna.",
     "spanTypeSpelling": "Ortugrafia",
     "spanTypePunctuation": "Punteghjatura",
@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Fiori, parolle ammaestrate",
     "filterAndSearch": "Filtrà è circà",
     "participantsOfTotal": "{filled} di {total} ghjucadori",
-    "mapAttributionLabel": "Cuntributori OpenStreetMap, copyright è licenza",
     "seeAll": "Vede tuttu",
     "seeAllSection": "Vede tuttu {section}",
     "showMoreOptionsHint": "mostra più opzioni",
@@ -2432,5 +2431,14 @@
     "callMicrophoneOffMessage": "Pangea Chat ùn pò micca aduprà u vostru microfonu. Toccate per accende lu in i Paràmetri.",
     "goalsCompletedOfTotal": "{earned} di {total} scopi compii",
     "goalsCompletedInLanguage": "Scopi compii in {language}",
-    "sessionXpTowardObjective": "{xp} XP sta sessione; {remaining} di più compie l'obiettivu"
+    "sessionXpTowardObjective": "{xp} XP sta sessione; {remaining} di più compie l'obiettivu",
+    "mapCreditsLabel": "Crediti di a carta: Stadia Maps, OpenMapTiles è OpenStreetMap",
+    "activityLaunchFindingCourses": "Truvendu i vostri corsi…",
+    "activityLaunchCreatingRoom": "Creendu a vostra attività…",
+    "activityLaunchOpeningRoom": "Aprende a vostra attività…",
+    "playWithOthers": "Ghjucà cù l'altri",
+    "openRole": "Apertu: {role}",
+    "waitingFor": "Aspittendu {duration}",
+    "onlineInCourse": "{count} in ligna in {course}",
+    "newCourseChat": "Nova cunversazione di corsu"
 }

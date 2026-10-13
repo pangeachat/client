@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 09:39:42.208007",
+    "@@last_modified": "2026-10-13 13:03:42.349889",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -8654,8 +8654,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "אפשר סיוע בכתיבה",
-    "autoIGCToolDescription": "הרץ אוטומטית את כלי Pangea Chat כדי לתקן הודעות שנשלחו לשפה היעד.",
+    "autoIGCToolName": "בדיקה אוטומטית בשליחה",
+    "autoIGCToolDescription": "בדוק את ההודעה שלך לשגיאות כשאתה מקיש על שלח. כשזה כבוי, הקש על כפתור עזרה בכתיבה כדי לבדוק הודעה בעצמך.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10711,7 +10711,6 @@
     "constructLevelFlowers": "פרחים, מילים שנלמדו",
     "filterAndSearch": "סינון וחיפוש",
     "participantsOfTotal": "{filled} מתוך {total} שחקנים",
-    "mapAttributionLabel": "תורמי OpenStreetMap, זכויות יוצרים ורישיון",
     "seeAll": "הצג הכל",
     "seeAllSection": "הצג הכל {section}",
     "showMoreOptionsHint": "הצג אפשרויות נוספות",
@@ -10897,5 +10896,14 @@
     "callMicrophoneOffMessage": "Pangea Chat לא יכול להשתמש במיקרופון שלך. הקש/י כדי להפעיל אותו בהגדרות.",
     "goalsCompletedOfTotal": "{earned} מתוך {total} יעדים הושלמו",
     "goalsCompletedInLanguage": "יעדים שהושלמו ב{language}",
-    "sessionXpTowardObjective": "{xp} נקודות ניסיון בשיעור זה; נותרו {remaining} להשלמת היעד"
+    "sessionXpTowardObjective": "{xp} נקודות ניסיון בשיעור זה; נותרו {remaining} להשלמת היעד",
+    "mapCreditsLabel": "קרדיטים למפה: Stadia Maps, OpenMapTiles ו-OpenStreetMap",
+    "activityLaunchFindingCourses": "מוצאים את הקורסים שלך…",
+    "activityLaunchCreatingRoom": "יוצרים את הפעילות שלך…",
+    "activityLaunchOpeningRoom": "פותחים את הפעילות שלך…",
+    "playWithOthers": "שחק עם אחרים",
+    "openRole": "פתוח: {role}",
+    "waitingFor": "ממתין {duration}",
+    "onlineInCourse": "{count} מחוברים ב{course}",
+    "newCourseChat": "צ'אט קורס חדש"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-13 09:39:52.068224",
+    "@@last_modified": "2026-10-13 13:03:43.923768",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -8509,8 +8509,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "ライティングアシスタントを有効にする",
-    "autoIGCToolDescription": "送信されたメッセージをターゲット言語に修正するために、Pangea Chatツールを自動的に実行します。",
+    "autoIGCToolName": "送信時に自動チェック",
+    "autoIGCToolDescription": "送信をタップしたときにメッセージの間違いをチェックします。オフの場合、ライティングアシスタンスボタンをタップして自分でメッセージをチェックしてください。",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10566,7 +10566,6 @@
     "constructLevelFlowers": "フラワー、習得済みの単語",
     "filterAndSearch": "フィルターと検索",
     "participantsOfTotal": "{total}人中{filled}人",
-    "mapAttributionLabel": "OpenStreetMapの寄与者、著作権とライセンス",
     "seeAll": "すべて見る",
     "seeAllSection": "{section}をすべて見る",
     "showMoreOptionsHint": "その他のオプションを表示",
@@ -10752,5 +10751,14 @@
     "callMicrophoneOffMessage": "Pangea Chatがマイクを使用できません。タップして設定でオンにしてください。",
     "goalsCompletedOfTotal": "{total}の目標のうち{earned}を達成",
     "goalsCompletedInLanguage": "{language}で達成した目標",
-    "sessionXpTowardObjective": "今回のセッションで{xp} XP獲得; 目標達成まであと{remaining}"
+    "sessionXpTowardObjective": "今回のセッションで{xp} XP獲得; 目標達成まであと{remaining}",
+    "mapCreditsLabel": "マップクレジット: Stadia Maps, OpenMapTiles, OpenStreetMap",
+    "activityLaunchFindingCourses": "コースを検索中…",
+    "activityLaunchCreatingRoom": "アクティビティを作成中…",
+    "activityLaunchOpeningRoom": "アクティビティを開いています…",
+    "playWithOthers": "他のユーザーとプレイ",
+    "openRole": "募集: {role}",
+    "waitingFor": "{duration}待機中",
+    "onlineInCourse": "{course}で{count}人がオンライン",
+    "newCourseChat": "新しいコースチャット"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-13 09:39:55.561327",
+    "@@last_modified": "2026-10-13 13:03:48.432179",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -8685,8 +8685,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Povoliť pomoc pri písaní",
-    "autoIGCToolDescription": "Automaticky spustiť nástroje Pangea Chat na opravu odoslaných správ do cieľového jazyka.",
+    "autoIGCToolName": "Automatická kontrola pri odoslaní",
+    "autoIGCToolDescription": "Skontrolujte svoju správu, či neobsahuje chyby, keď klepnete na odoslať. Keď je táto funkcia vypnutá, klepnite na tlačidlo asistenta písania, aby ste si správu skontrolovali sami.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10742,7 +10742,6 @@
     "constructLevelFlowers": "Kvety, zvládnuté slová",
     "filterAndSearch": "Filtrovať a hľadať",
     "participantsOfTotal": "{filled} z {total} hráčov",
-    "mapAttributionLabel": "Prispievatelia OpenStreetMap, autorské práva a licencia",
     "seeAll": "Zobraziť všetko",
     "seeAllSection": "Zobraziť všetko: {section}",
     "showMoreOptionsHint": "zobraziť viac možností",
@@ -10928,5 +10927,14 @@
     "callMicrophoneOffMessage": "Pangea Chat nemôže používať váš mikrofón. Klepnutím ho zapnete v Nastaveniach.",
     "goalsCompletedOfTotal": "{earned} z {total} splnených cieľov",
     "goalsCompletedInLanguage": "Ciele splnené v jazyku {language}",
-    "sessionXpTowardObjective": "{xp} XP v tejto relácii; {remaining} viac dokončí cieľ"
+    "sessionXpTowardObjective": "{xp} XP v tejto relácii; {remaining} viac dokončí cieľ",
+    "mapCreditsLabel": "Autorské práva k mape: Stadia Maps, OpenMapTiles a OpenStreetMap",
+    "activityLaunchFindingCourses": "Hľadáme vaše kurzy…",
+    "activityLaunchCreatingRoom": "Vytvárame vašu aktivitu…",
+    "activityLaunchOpeningRoom": "Otvárame vašu aktivitu…",
+    "playWithOthers": "Hrať s ostatnými",
+    "openRole": "Otvorené: {role}",
+    "waitingFor": "Čaká sa {duration}",
+    "onlineInCourse": "{count} online v kurze {course}",
+    "newCourseChat": "Nový chat kurzu"
 }

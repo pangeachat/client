@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-13 09:39:37.336496",
+    "@@last_modified": "2026-10-13 13:03:40.013344",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Standart olaraq, kurslar ictimai axtarışa açıqdır və qoşulmaq üçün administrator təsdiqi tələb edir. Bu ayarları istənilən vaxt redaktə edə bilərsiniz.",
     "onboardingLanguagesTitle": "Hansı dili öyrənirsiniz?",
     "supportSubtitle": "Suallarınız var? Kömək etmək üçün buradayıq!",
-    "autoIGCToolName": "Yazı yardımını aktivləşdir",
-    "autoIGCToolDescription": "Göndərilən mesajları hədəf dilə düzəltmək üçün Pangea Chat alətlərini avtomatik işə salın.",
+    "autoIGCToolName": "Göndərəndə avtomatik yoxla",
+    "autoIGCToolDescription": "Mesajı göndərərkən səhvlərini yoxla. Bu funksiya söndürüldükdə, mesajı özün yoxlamaq üçün yazı köməkçisi düyməsinə toxun.",
     "emptyAudioError": "Səsyazma uğursuz oldu. Lütfən, audio icazələrinizi yoxlayın və yenidən cəhd edin.",
     "spanTypeSpelling": "Orfoqrafiya",
     "spanTypePunctuation": "Punktuasiya",
@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Güllər, mənimsənilmiş sözlər",
     "filterAndSearch": "Filtrlə və axtar",
     "participantsOfTotal": "{total} oyunçudan {filled} nəfəri",
-    "mapAttributionLabel": "OpenStreetMap iştirakçıları, müəllif hüquqları və lisenziya",
     "seeAll": "Hamısına baxın",
     "seeAllSection": "Bütün {section} baxın",
     "showMoreOptionsHint": "daha çox seçim göstər",
@@ -2432,5 +2431,14 @@
     "callMicrophoneOffMessage": "Pangea Chat mikrofonunuzdan istifadə edə bilmir. Parametrlərdə onu yandırmaq üçün toxunun.",
     "goalsCompletedOfTotal": "{total} hədəfdən {earned} tamamlandı",
     "goalsCompletedInLanguage": "{language} dilində tamamlanmış hədəflər",
-    "sessionXpTowardObjective": "Bu sessiyada {xp} XP; məqsədi tamamlamaq üçün daha {remaining}"
+    "sessionXpTowardObjective": "Bu sessiyada {xp} XP; məqsədi tamamlamaq üçün daha {remaining}",
+    "mapCreditsLabel": "Xəritə kreditləri: Stadia Maps, OpenMapTiles və OpenStreetMap",
+    "activityLaunchFindingCourses": "Kurslarınız axtarılır…",
+    "activityLaunchCreatingRoom": "Fəaliyyətiniz yaradılır…",
+    "activityLaunchOpeningRoom": "Fəaliyyətiniz açılır…",
+    "playWithOthers": "Başqaları ilə oyna",
+    "openRole": "Açıq: {role}",
+    "waitingFor": "{duration} gözləyir",
+    "onlineInCourse": "{count} nəfər {course} kursunda onlayndır",
+    "newCourseChat": "Yeni kurs söhbəti"
 }

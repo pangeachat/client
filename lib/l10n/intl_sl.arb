@@ -1798,7 +1798,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-13 09:39:54.435592",
+    "@@last_modified": "2026-10-13 13:03:48.534232",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8685,8 +8685,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Omogoči pomoč pri pisanju",
-    "autoIGCToolDescription": "Samodejno zaženi orodja Pangea Chat za popravljanje poslanih sporočil v ciljni jezik.",
+    "autoIGCToolName": "Samodejno preverjanje ob pošiljanju",
+    "autoIGCToolDescription": "Preveri sporočilo za napake, ko tapneš Pošlji. Ko je to izklopljeno, tapni gumb za pomoč pri pisanju, da sam preveriš sporočilo.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10742,7 +10742,6 @@
     "constructLevelFlowers": "Rože, obvladane besede",
     "filterAndSearch": "Filtriraj in išči",
     "participantsOfTotal": "{filled} od {total} igralcev",
-    "mapAttributionLabel": "Sodelavci OpenStreetMap, avtorske pravice in licenca",
     "seeAll": "Poglej vse",
     "seeAllSection": "Poglej vse {section}",
     "showMoreOptionsHint": "pokaži več možnosti",
@@ -10928,5 +10927,14 @@
     "callMicrophoneOffMessage": "Pangea Chat ne more uporabljati vašega mikrofona. Tapnite, da ga vklopite v nastavitvah.",
     "goalsCompletedOfTotal": "{earned} od {total} doseženih ciljev",
     "goalsCompletedInLanguage": "Doseženi cilji v {language}",
-    "sessionXpTowardObjective": "{xp} XP v tej seji; {remaining} več dokonča cilj"
+    "sessionXpTowardObjective": "{xp} XP v tej seji; {remaining} več dokonča cilj",
+    "mapCreditsLabel": "Zasluge za zemljevid: Stadia Maps, OpenMapTiles in OpenStreetMap",
+    "activityLaunchFindingCourses": "Iščem vaše tečaje …",
+    "activityLaunchCreatingRoom": "Ustvarjam vašo dejavnost …",
+    "activityLaunchOpeningRoom": "Odpiram vašo dejavnost …",
+    "playWithOthers": "Igraj z drugimi",
+    "openRole": "Odprto: {role}",
+    "waitingFor": "Čakanje {duration}",
+    "onlineInCourse": "{count} na spletu v {course}",
+    "newCourseChat": "Nov klepet tečaja"
 }

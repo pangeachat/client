@@ -119,7 +119,19 @@ class ActivitySessionStartView extends StatelessWidget {
             leading: Padding(
               padding: const EdgeInsets.only(left: 4.0),
               child: Center(
-                child: (embedded && courseScoped)
+                child:
+                    (embedded &&
+                        controller.widget.roomId != null &&
+                        activityInfoFor(uri)?.fromJoinList == true)
+                    // A session viewed from the join list → back to the list.
+                    ? IconButton(
+                        tooltip: MaterialLocalizations.of(
+                          context,
+                        ).backButtonTooltip,
+                        icon: const Icon(Icons.arrow_back),
+                        onPressed: controller.backToJoinList,
+                      )
+                    : (embedded && courseScoped)
                     // Course still scoped → back-arrow reopens the course card.
                     ? IconButton(
                         tooltip: MaterialLocalizations.of(

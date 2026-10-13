@@ -1358,7 +1358,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-13 09:39:45.482789",
+    "@@last_modified": "2026-10-13 13:03:43.376411",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8676,8 +8676,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Abilita l'assistenza alla scrittura",
-    "autoIGCToolDescription": "Esegui automaticamente gli strumenti di Pangea Chat per correggere i messaggi inviati nella lingua target.",
+    "autoIGCToolName": "Autoverification al inviar",
+    "autoIGCToolDescription": "Verifica tu message pro errores quando tu pulsa inviar. Quando isto es disactivate, pulsa le button de assistentia de scriptura pro verificar un message tu mesme.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10733,7 +10733,6 @@
     "constructLevelFlowers": "Flores, parolas maestrate",
     "filterAndSearch": "Filtrar e cercar",
     "participantsOfTotal": "{filled} de {total} jocatores",
-    "mapAttributionLabel": "Contribuentes de OpenStreetMap, derectos de autor e licentia",
     "seeAll": "Vider tote",
     "seeAllSection": "Vider tote {section}",
     "showMoreOptionsHint": "monstrar plus optiones",
@@ -10919,5 +10918,14 @@
     "callMicrophoneOffMessage": "Pangea Chat non pote usar tu microphono. Pulsa pro activar lo in le Preferentias.",
     "goalsCompletedOfTotal": "{earned} de {total} scopos complite",
     "goalsCompletedInLanguage": "Scopos complite in {language}",
-    "sessionXpTowardObjective": "{xp} XP iste session; {remaining} plus completa le objectivo"
+    "sessionXpTowardObjective": "{xp} XP iste session; {remaining} plus completa le objectivo",
+    "mapCreditsLabel": "Creditos del mappa: Stadia Maps, OpenMapTiles e OpenStreetMap",
+    "activityLaunchFindingCourses": "Cercante tu cursos…",
+    "activityLaunchCreatingRoom": "Creante tu activitate…",
+    "activityLaunchOpeningRoom": "Aperiente tu activitate…",
+    "playWithOthers": "Jocar con alteres",
+    "openRole": "Aperte: {role}",
+    "waitingFor": "Attendente {duration}",
+    "onlineInCourse": "{count} in linea in {course}",
+    "newCourseChat": "Nove chat de curso"
 }

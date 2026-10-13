@@ -2076,7 +2076,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-13 09:39:39.874080",
+    "@@last_modified": "2026-10-13 13:03:41.457157",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -8595,8 +8595,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Paganahin ang tulong sa pagsusulat",
-    "autoIGCToolDescription": "Awtomatikong patakbuhin ang mga tool ng Pangea Chat upang ituwid ang mga ipinadalang mensahe sa target na wika.",
+    "autoIGCToolName": "Awtomatikong suriin sa pagpapadala",
+    "autoIGCToolDescription": "Suriin ang iyong mensahe para sa mga pagkakamali kapag nag-tap ka ng send. Kapag naka-off ito, i-tap ang button ng tulong sa pagsusulat upang suriin ang isang mensahe nang mag-isa.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10657,7 +10657,6 @@
     "constructLevelFlowers": "Mga Bulaklak, mga salitang bihasa",
     "filterAndSearch": "I-filter at hanapin",
     "participantsOfTotal": "{filled} sa {total} na manlalaro",
-    "mapAttributionLabel": "Mga contributor ng OpenStreetMap, copyright at lisensya",
     "seeAll": "Tingnan lahat",
     "seeAllSection": "Tingnan lahat ng {section}",
     "showMoreOptionsHint": "ipakita ang higit pang opsyon",
@@ -10843,5 +10842,14 @@
     "callMicrophoneOffMessage": "Hindi magagamit ng Pangea Chat ang iyong mikropono. I-tap para i-on ito sa Settings.",
     "goalsCompletedOfTotal": "{earned} sa {total} layunin ang nakumpleto",
     "goalsCompletedInLanguage": "Mga layunin na nakumpleto sa {language}",
-    "sessionXpTowardObjective": "{xp} XP ngayong session; {remaining} pa para makumpleto ang layunin"
+    "sessionXpTowardObjective": "{xp} XP ngayong session; {remaining} pa para makumpleto ang layunin",
+    "mapCreditsLabel": "Mga credit sa mapa: Stadia Maps, OpenMapTiles at OpenStreetMap",
+    "activityLaunchFindingCourses": "Hinahanap ang iyong mga kurso…",
+    "activityLaunchCreatingRoom": "Ginagawa ang iyong aktibidad…",
+    "activityLaunchOpeningRoom": "Binubuksan ang iyong aktibidad…",
+    "playWithOthers": "Makipaglaro sa iba",
+    "openRole": "Bukas: {role}",
+    "waitingFor": "Naghihintay {duration}",
+    "onlineInCourse": "{count} online sa {course}",
+    "newCourseChat": "Bagong chat sa kurso"
 }

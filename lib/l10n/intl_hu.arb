@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-13 09:39:43.524873",
+    "@@last_modified": "2026-10-13 13:03:43.127513",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -7843,8 +7843,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Írássegítő engedélyezése",
-    "autoIGCToolDescription": "Automatikusan futtassa a Pangea Chat eszközöket a küldött üzenetek célnyelvre történő javításához.",
+    "autoIGCToolName": "Automatikus ellenőrzés küldéskor",
+    "autoIGCToolDescription": "Ellenőrizze üzenetét hibákra, amikor megérinti a küldés gombot. Ha ez ki van kapcsolva, érintse meg az írássegítő gombot az üzenet saját ellenőrzéséhez.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9900,7 +9900,6 @@
     "constructLevelFlowers": "Virágok, elsajátított szavak",
     "filterAndSearch": "Szűrés és keresés",
     "participantsOfTotal": "{filled}/{total} játékos",
-    "mapAttributionLabel": "OpenStreetMap közreműködők, szerzői jogok és licenc",
     "seeAll": "Összes megtekintése",
     "seeAllSection": "Összes {section} megtekintése",
     "showMoreOptionsHint": "további lehetőségek megjelenítése",
@@ -10086,5 +10085,14 @@
     "callMicrophoneOffMessage": "A Pangea Chat nem tudja használni a mikrofonját. Koppintson ide a beállításokban való bekapcsoláshoz.",
     "goalsCompletedOfTotal": "{earned}/{total} cél teljesítve",
     "goalsCompletedInLanguage": "Teljesített célok – {language}",
-    "sessionXpTowardObjective": "{xp} XP ezen a foglalkozáson; még {remaining} a cél teljesítéséhez"
+    "sessionXpTowardObjective": "{xp} XP ezen a foglalkozáson; még {remaining} a cél teljesítéséhez",
+    "mapCreditsLabel": "Térkép forrása: Stadia Maps, OpenMapTiles és OpenStreetMap",
+    "activityLaunchFindingCourses": "Keresem a kurzusaidat…",
+    "activityLaunchCreatingRoom": "Létrehozom a tevékenységedet…",
+    "activityLaunchOpeningRoom": "Megnyitom a tevékenységedet…",
+    "playWithOthers": "Játssz másokkal",
+    "openRole": "Nyitott: {role}",
+    "waitingFor": "Várakozás: {duration}",
+    "onlineInCourse": "{count} online a {course} kurzuson",
+    "newCourseChat": "Új tanfolyami csevegés"
 }

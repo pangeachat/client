@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 09:39:50.249809",
+    "@@last_modified": "2026-10-13 13:03:46.975324",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -7976,8 +7976,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Aktiver skriveassistent",
-    "autoIGCToolDescription": "Kjør Pangea Chat-verktøy automatisk for å korrigere sendte meldinger til målspråket.",
+    "autoIGCToolName": "Autokontroll ved sending",
+    "autoIGCToolDescription": "Sjekk meldingen din for feil når du trykker send. Når dette er av, trykk på skrivehjelpsknappen for å sjekke en melding selv.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9854,7 +9854,6 @@
     "constructLevelFlowers": "Blomster, mestret ord",
     "filterAndSearch": "Filtrer og søk",
     "participantsOfTotal": "{filled} av {total} spillere",
-    "mapAttributionLabel": "OpenStreetMap-bidragsytere, opphavsrett og lisens",
     "seeAll": "Se alle",
     "seeAllSection": "Se alle {section}",
     "showMoreOptionsHint": "vis flere alternativer",
@@ -10040,5 +10039,14 @@
     "callMicrophoneOffMessage": "Pangea Chat kan ikke bruke mikrofonen din. Trykk for å slå den på i Innstillinger.",
     "goalsCompletedOfTotal": "{earned} av {total} mål fullført",
     "goalsCompletedInLanguage": "Mål fullført i {language}",
-    "sessionXpTowardObjective": "{xp} XP denne økten; {remaining} mer fullfører målet"
+    "sessionXpTowardObjective": "{xp} XP denne økten; {remaining} mer fullfører målet",
+    "mapCreditsLabel": "Kartkreditering: Stadia Maps, OpenMapTiles og OpenStreetMap",
+    "activityLaunchFindingCourses": "Finner kursene dine …",
+    "activityLaunchCreatingRoom": "Oppretter aktiviteten din …",
+    "activityLaunchOpeningRoom": "Åpner aktiviteten din …",
+    "playWithOthers": "Spill med andre",
+    "openRole": "Åpen: {role}",
+    "waitingFor": "Venter {duration}",
+    "onlineInCourse": "{count} pålogget i {course}",
+    "newCourseChat": "Ny kursprat"
 }
