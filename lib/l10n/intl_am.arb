@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-09 11:30:09.975024",
+    "@@last_modified": "2026-10-13 09:39:37.443854",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2401,17 +2401,12 @@
     "missionNofM": "ተልዕኮ {index} ከ {count}",
     "xpTowardObjective": "ለዚህ ዓላማ {xp} ከ {threshold} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} ከ {total} ብልጭታዎች ተገኝተዋል",
-    "sparklesEarnedInLanguage": "በ {language} የተገኙ ብልጭታዎች",
     "courseComplete": "ኮርስ ተጠናቋል!",
     "courseCompleteDesc": "በዚህ ኮርስ ውስጥ ያሉትን {count} ዓላማዎች በሙሉ አጠናቀዋል። የተማሩትን ለመያዝ ልምምድዎን ይቀጥሉ።",
     "practiceObjective": "ይህን ዓላማ ይለማመዱ",
     "otherActivities": "ሌሎች እንቅስቃሴዎች",
-    "xpToCompleteObjectiveTitle": "XP በእያንዳንዱ ተልዕኮ",
-    "xpToCompleteObjectiveDesc": "እያንዳንዱን ተልዕኮ ለማጠናቀቅ የሚያስፈልገውን XP ያዘጋጁ",
     "objectiveCircleComplete": "ተልዕኮ {index} ተጠናቋል",
     "objectiveCircleUpNext": "ተልዕኮ {index} ቀጣይ",
-    "useActivityImageAsChatBackground": "የእንቅስቃሴ ምስልን እንደ ቻት ዳራ ተጠቀም",
     "useActivityImageAsChatBackground": "የእንቅስቃሴ ምስልን እንደ ቻት ዳራ ተጠቀም",
     "andCertifyIMeetTheMinimumAge": " እና ቢያንስ 13 ዓመት ወይም በአገሬ የሚፈለገውን ዝቅተኛ ዕድሜ (ከፍ ያለ ከሆነ) እንዳሟላ አረጋግጣለሁ።",
     "filteredNetworkBlockedTitle": "ይህ አውታረ መረብ ፓንጄያ ቻትን እየከለከለ ነው",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "ለጥሪዎች ማይክሮፎንዎን ይጠቀሙ",
     "callMicrophoneMessage": "ፓንጋያ ቻት ለጥሪዎች ማይክሮፎንዎን ይፈልጋል፣ ከመቆለፊያ ማያ ገጽ የሚመልሷቸውን ጥሪዎች ጨምሮ።",
     "callMicrophoneOffTitle": "ጥሪዎ አልተገናኘም",
-    "callMicrophoneOffMessage": "ፓንጋያ ቻት ማይክሮፎንዎን መጠቀም አይችልም። በቅንብሮች ውስጥ ለማብራት ይንኩ።"
+    "callMicrophoneOffMessage": "ፓንጋያ ቻት ማይክሮፎንዎን መጠቀም አይችልም። በቅንብሮች ውስጥ ለማብራት ይንኩ።",
+    "goalsCompletedOfTotal": "ከተጠናቀቁ {total} ግቦች ውስጥ {earned} ግቦች",
+    "goalsCompletedInLanguage": "በ{language} የተጠናቀቁ ግቦች",
+    "sessionXpTowardObjective": "በዚህ ክፍለ ጊዜ {xp} XP; {remaining} ተጨማሪ ግቡን ያጠናቅቃል"
 }

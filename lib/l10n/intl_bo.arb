@@ -2915,7 +2915,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-10-09 11:30:10.134688",
+    "@@last_modified": "2026-10-13 09:39:37.911180",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9563,17 +9563,12 @@
     "missionNofM": "ལས་འགན་ {index} བསྡོམས་ {count}",
     "xpTowardObjective": "དམིགས་ཡུལ་འདིའི་ཆེད་དུ་ {threshold} ནང་ནས་ {xp} ཉམས་མྱོང་།",
     "xpOfThreshold": "{threshold} ནང་ནས་ {xp} ཉམས་མྱོང་།",
-    "sparklesEarnedOfTotal": "འོད་འཚེར་ {total} ནང་ནས་ {earned} ཐོབ།",
-    "sparklesEarnedInLanguage": "{language} ནང་དུ་འོད་འཚེར་ཐོབ།",
     "courseComplete": "སློབ་ཚན་ལེགས་འགྲུབ་བྱུང་།",
     "courseCompleteDesc": "ཁྱེད་ཀྱིས་སློབ་ཚན་འདིའི་ནང་དུ་དམིགས་ཡུལ་ {count} ཚང་མ་ལེགས་འགྲུབ་བྱུང་འདུག སྦྱངས་པ་བྱས་ནས་སྦྱངས་པ་རྣམས་བརྟན་པོར་གནས་པར་བྱེད་དགོས།",
     "practiceObjective": "དམིགས་ཡུལ་འདིར་སྦྱོང་བརྡར་བྱེད་པ།",
     "otherActivities": "བྱེད་སྒོ་གཞན་དག",
-    "xpToCompleteObjectiveTitle": "ལས་འགན་རེར་ཉམས་མྱོང་།",
-    "xpToCompleteObjectiveDesc": "ལས་འགན་རེ་རེ་ལེགས་འགྲུབ་བྱེད་པར་མཁོ་བའི་ཉམས་མྱོང་གི་གྲངས་ཚད་གཏན་འབེབས་བྱེད་པ།",
     "objectiveCircleComplete": "དམིགས་ཡུལ་ {index} ལེགས་འགྲུབ།",
     "objectiveCircleUpNext": "དམིགས་ཡུལ་ {index} རྗེས་མ།",
-    "useActivityImageAsChatBackground": "བྱ་བའི་པར་དེ་ཁ་བརྡའི་རྒྱབ་ལྗོངས་སུ་བེད་སྤྱོད་པ།",
     "useActivityImageAsChatBackground": "བྱ་བའི་པར་དེ་ཁ་བརྡའི་རྒྱབ་ལྗོངས་སུ་བེད་སྤྱོད་པ།",
     "andCertifyIMeetTheMinimumAge": "དང་ང་རང་ལོ་ ༡༣ ལོན་པ་དང་། ཡང་ན་ངའི་རྒྱལ་ཁབ་ཀྱི་བླང་བྱ་ལྟར་ན་དེ་ལས་མཐོ་བ་ཡོད་ཚེ་དེ་ལོན་ཡོད་པའི་ངོས་ལེན་བྱེད་ཀྱི་ཡོད།",
     "filteredNetworkBlockedTitle": "དྲ་རྒྱ་འདིས་Pangea Chatབཀག་འགོག་བྱེད་བཞིན་ཡོད།",
@@ -9596,5 +9591,8 @@
     "callMicrophoneTitle": "ཁ་པར་བརྒྱབ་ཆེད་དུ་ཁྱེད་ཀྱི་སྒྲ་སྡུད་འཕྲུལ་ཆས་བེད་སྤྱོད་གནང་།",
     "callMicrophoneMessage": "Pangea Chat ལ་ཁ་པར་བརྒྱབ་ཆེད་དུ་ཁྱེད་ཀྱི་སྒྲ་སྡུད་འཕྲུལ་ཆས་དགོས། དེའི་ནང་དུ་བཀག་པའི་བརྡ་འཕྲིན་གྱི་ངོས་ནས་ལན་བརྒྱབ་པའི་ཁ་པར་ཡང་ཚུད་ཡོད།",
     "callMicrophoneOffTitle": "ཁྱེད་ཀྱི་ཁ་པར་འབྲེལ་མཐུད་བྱུང་མེད།",
-    "callMicrophoneOffMessage": "Pangea Chat གྱིས་ཁྱེད་ཀྱི་སྒྲ་སྡུད་འཕྲུལ་ཆས་བེད་སྤྱོད་གནང་ཐུབ་ཀྱི་མེད། སྒྲིག་སྦྱོར་ནང་དུ་སྒྲ་སྡུད་འཕྲུལ་ཆས་འབྱེད་པར་མནོན།"
+    "callMicrophoneOffMessage": "Pangea Chat གྱིས་ཁྱེད་ཀྱི་སྒྲ་སྡུད་འཕྲུལ་ཆས་བེད་སྤྱོད་གནང་ཐུབ་ཀྱི་མེད། སྒྲིག་སྦྱོར་ནང་དུ་སྒྲ་སྡུད་འཕྲུལ་ཆས་འབྱེད་པར་མནོན།",
+    "goalsCompletedOfTotal": "དམིགས་ཡུལ་ {total} ནང་ནས་ {earned} ལེགས་འགྲུབ་བྱུང་།",
+    "goalsCompletedInLanguage": "{language} ནང་དུ་དམིགས་ཡུལ་ལེགས་འགྲུབ་བྱུང་།",
+    "sessionXpTowardObjective": "ཐེངས་འདིའི་ནང་ {xp} XP ཐོབ། དམིགས་ཡུལ་ལེགས་འགྲུབ་ཆེད་ད་དུང་ {remaining} དགོས།"
 }

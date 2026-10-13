@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-09 11:30:28.304041",
+    "@@last_modified": "2026-10-13 09:39:52.415748",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Missjoni {index} minn {count}",
     "xpTowardObjective": "{xp} minn {threshold} XP lejn dan l-għan",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} minn {total} sparkles miksuba",
-    "sparklesEarnedInLanguage": "Sparkles miksuba bil-{language}",
     "courseComplete": "Kors komplut!",
     "courseCompleteDesc": "Lestejt l-{count} għanijiet kollha f'dan il-kors. Kompli pprattika biex iżżomm dak li tgħallimt.",
     "practiceObjective": "Ipprattika dan l-għan",
     "otherActivities": "Attivitajiet oħra",
-    "xpToCompleteObjectiveTitle": "XP għal kull Missjoni",
-    "xpToCompleteObjectiveDesc": "Issettja l-XP meħtieġa biex titlesta kull missjoni",
     "objectiveCircleComplete": "Missjoni {index}: kompluta",
     "objectiveCircleUpNext": "Missjoni {index}: li jmiss",
-    "useActivityImageAsChatBackground": "Uża l-immaġni tal-attività bħala sfond taċ-chat",
     "useActivityImageAsChatBackground": "Uża l-immaġni tal-attività bħala sfond taċ-chat",
     "andCertifyIMeetTheMinimumAge": " u niċċertifika li għandi mill-inqas 13-il sena, jew l-età minima meħtieġa f'pajjiżi jekk din tkun ogħla.",
     "filteredNetworkBlockedTitle": "Din in-network qed timblokka Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Uża l-mikrofonu tiegħek għal sejħiet",
     "callMicrophoneMessage": "Pangea Chat jeħtieġ il-mikrofonu tiegħek għal sejħiet, inklużi sejħiet li twieġeb mill-iskrin tal-illokkjar.",
     "callMicrophoneOffTitle": "Is-sejħa tiegħek ma konnessjonatx",
-    "callMicrophoneOffMessage": "Pangea Chat ma jistax juża l-mikrofonu tiegħek. Tektek biex tixgħel fis-Settings."
+    "callMicrophoneOffMessage": "Pangea Chat ma jistax juża l-mikrofonu tiegħek. Tektek biex tixgħel fis-Settings.",
+    "goalsCompletedOfTotal": "{earned} minn {total} miri milħuqa",
+    "goalsCompletedInLanguage": "Miri milħuqa bil-{language}",
+    "sessionXpTowardObjective": "{xp} XP din is-sessjoni; {remaining} oħra jlestu l-objettiv"
 }

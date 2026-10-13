@@ -1320,7 +1320,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-09 11:30:37.575639",
+    "@@last_modified": "2026-10-13 09:39:56.786224",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10902,17 +10902,12 @@
     "missionNofM": "మిషన్ {index} / {count}",
     "xpTowardObjective": "ఈ లక్ష్యం వైపు {threshold} XPలో {xp}",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{total} స్పార్కిల్స్‌లో {earned} సంపాదించారు",
-    "sparklesEarnedInLanguage": "{language}లో సంపాదించిన స్పార్కిల్స్",
     "courseComplete": "కోర్సు పూర్తయింది!",
     "courseCompleteDesc": "మీరు ఈ కోర్సులోని {count} లక్ష్యాలన్నింటినీ పూర్తి చేసారు. మీరు నేర్చుకున్న వాటిని గుర్తుంచుకోవడానికి సాధన చేస్తూ ఉండండి.",
     "practiceObjective": "ఈ లక్ష్యాన్ని సాధన చేయండి",
     "otherActivities": "ఇతర కార్యకలాపాలు",
-    "xpToCompleteObjectiveTitle": "ప్రతి మిషన్‌కు XP",
-    "xpToCompleteObjectiveDesc": "ప్రతి మిషన్‌ను పూర్తి చేయడానికి అవసరమైన XPని సెట్ చేయండి",
     "objectiveCircleComplete": "మిషన్ {index}: పూర్తయింది",
     "objectiveCircleUpNext": "మిషన్ {index}: తర్వాత",
-    "useActivityImageAsChatBackground": "యాక్టివిటీ చిత్రాన్ని చాట్ బ్యాక్‌గ్రౌండ్‌గా ఉపయోగించండి",
     "useActivityImageAsChatBackground": "యాక్టివిటీ చిత్రాన్ని చాట్ బ్యాక్‌గ్రౌండ్‌గా ఉపయోగించండి",
     "andCertifyIMeetTheMinimumAge": "మరియు నాకు కనీసం 13 సంవత్సరాలు లేదా నా దేశంలో అవసరమైన కనీస వయస్సు అంతకంటే ఎక్కువ ఉంటే, ఆ వయస్సు ఉందని నేను ధృవీకరిస్తున్నాను.",
     "filteredNetworkBlockedTitle": "ఈ నెట్‌వర్క్ పాంగియా చాట్‌ను బ్లాక్ చేస్తోంది",
@@ -10935,5 +10930,8 @@
     "callMicrophoneTitle": "కాల్స్ కోసం మీ మైక్రోఫోన్‌ను ఉపయోగించండి",
     "callMicrophoneMessage": "లాక్ స్క్రీన్ నుండి మీరు సమాధానం ఇచ్చే కాల్‌లతో సహా, కాల్స్ కోసం పాంగియా చాట్‌కు మీ మైక్రోఫోన్ అవసరం.",
     "callMicrophoneOffTitle": "మీ కాల్ కనెక్ట్ అవ్వలేదు",
-    "callMicrophoneOffMessage": "పాంగియా చాట్ మీ మైక్రోఫోన్‌ను ఉపయోగించదు. సెట్టింగ్‌లలో దాన్ని ఆన్ చేయడానికి నొక్కండి."
+    "callMicrophoneOffMessage": "పాంగియా చాట్ మీ మైక్రోఫోన్‌ను ఉపయోగించదు. సెట్టింగ్‌లలో దాన్ని ఆన్ చేయడానికి నొక్కండి.",
+    "goalsCompletedOfTotal": "{total} లక్ష్యాలలో {earned} పూర్తయ్యాయి",
+    "goalsCompletedInLanguage": "{language}లో పూర్తయిన లక్ష్యాలు",
+    "sessionXpTowardObjective": "ఈ సెషన్‌లో {xp} XP; లక్ష్యాన్ని పూర్తి చేయడానికి ఇంకా {remaining} అవసరం"
 }

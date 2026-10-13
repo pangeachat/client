@@ -116,17 +116,15 @@ class ObjectiveSection extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                // The star is the one the Mission earned, so it shows only
-                // once complete: beside an XP count still in progress it read
-                // as "257 of 300 stars" (#9420).
-                if (satisfied) ...[
-                  Icon(
-                    Icons.star,
-                    size: 18.0,
-                    color: Theme.of(context).pangea.goldGraphic,
-                  ),
-                  const SizedBox(width: 4.0),
-                ],
+                // The star marks the objective and is there from the moment
+                // it appears; completion fills it (org quests doc, "The star
+                // marks the objective, not a grade").
+                Icon(
+                  satisfied ? Icons.star : Icons.star_border,
+                  size: 18.0,
+                  color: Theme.of(context).pangea.goldGraphic,
+                ),
+                const SizedBox(width: 4.0),
                 ExcludeSemantics(
                   child: Text(
                     // Raw XP over the completion threshold — surplus shows

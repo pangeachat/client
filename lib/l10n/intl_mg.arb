@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-09 11:30:27.279049",
+    "@@last_modified": "2026-10-13 09:39:48.293933",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Ireo iraka {index} amin'ny {count}",
     "xpTowardObjective": "{xp} amin'ny {threshold} XP mankany amin'ity tanjona ity",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} amin'ny {total} sparkles azo",
-    "sparklesEarnedInLanguage": "Sparkles azo tamin'ny teny {language}",
     "courseComplete": "Vita ny taranja!",
     "courseCompleteDesc": "Vitanao avokoa ny tanjona {count} rehetra amin'ity taranja ity. Tohizo ny fanazaran-tena mba hitazonana izay nianaranao.",
     "practiceObjective": "Manaova fanazaran-tena amin'ity tanjona ity",
     "otherActivities": "Hetsika hafa",
-    "xpToCompleteObjectiveTitle": "XP isaky ny iraka",
-    "xpToCompleteObjectiveDesc": "Amboary ny XP ilaina hamitana ny iraka tsirairay",
     "objectiveCircleComplete": "Ilay tanjona {index}: vita",
     "objectiveCircleUpNext": "Ilay tanjona {index}: manaraka",
-    "useActivityImageAsChatBackground": "Ampiasaina ny sarin'ny asa ho toy ny fiavian'ny chat",
     "useActivityImageAsChatBackground": "Ampiasaina ny sarin'ny asa ho toy ny fiavian'ny chat",
     "andCertifyIMeetTheMinimumAge": " ary manamarina fa feno 13 taona farafahakeliny aho, na ny taona farany ambany takiana ao amin'ny fireneko raha avo kokoa izany.",
     "filteredNetworkBlockedTitle": "Manakana ny Pangea Chat ity tambajotra ity",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Ampiasao ny mikrôfôninao amin'ny antso",
     "callMicrophoneMessage": "Mila ny mikrôfôninao ny Pangea Chat ho an'ny antso, anisan'izany ny antso valianao avy amin'ny efijery mihidy.",
     "callMicrophoneOffTitle": "Tsy nifandray ny antsonao",
-    "callMicrophoneOffMessage": "Tsy afaka mampiasa ny mikrôfôninao ny Pangea Chat. Tsindrio raha te hampandeha azy ao amin'ny Fikirana."
+    "callMicrophoneOffMessage": "Tsy afaka mampiasa ny mikrôfôninao ny Pangea Chat. Tsindrio raha te hampandeha azy ao amin'ny Fikirana.",
+    "goalsCompletedOfTotal": "Tanjona {earned} amin'ny {total} vita",
+    "goalsCompletedInLanguage": "Tanjona vita tamin'ny teny {language}",
+    "sessionXpTowardObjective": "{xp} XP tamin'ity fizarana ity; {remaining} sisa dia vita ny tanjona"
 }

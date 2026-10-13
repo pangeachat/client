@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 11:30:14.405475",
+    "@@last_modified": "2026-10-13 09:39:42.208007",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10866,17 +10866,12 @@
     "missionNofM": "משימה {index} מתוך {count}",
     "xpTowardObjective": "{xp} מתוך {threshold} נקודות ניסיון למטרה זו",
     "xpOfThreshold": "{xp} / {threshold} נקודות ניסיון",
-    "sparklesEarnedOfTotal": "{earned} מתוך {total} ניצוצות נצברו",
-    "sparklesEarnedInLanguage": "ניצוצות שנצברו ב{language}",
     "courseComplete": "הקורס הושלם!",
     "courseCompleteDesc": "השלמת את כל {count} המטרות בקורס זה. המשך לתרגל כדי לשמר את מה שלמדת.",
     "practiceObjective": "תרגל מטרה זו",
     "otherActivities": "פעילויות אחרות",
-    "xpToCompleteObjectiveTitle": "נקודות ניסיון למשימה",
-    "xpToCompleteObjectiveDesc": "קבע את נקודות הניסיון הדרושות להשלמת כל משימה",
     "objectiveCircleComplete": "משימה {index}: הושלמה",
     "objectiveCircleUpNext": "משימה {index}: הבאה בתור",
-    "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט",
     "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט",
     "andCertifyIMeetTheMinimumAge": "ומאשר/ת שאני בן/בת 13 לפחות, או בגיל המינימלי הנדרש במדינתי אם הוא גבוה יותר.",
     "filteredNetworkBlockedTitle": "רשת זו חוסמת את Pangea Chat",
@@ -10899,5 +10894,8 @@
     "callMicrophoneTitle": "השתמש/י במיקרופון שלך לשיחות",
     "callMicrophoneMessage": "Pangea Chat זקוק למיקרופון שלך לשיחות, כולל שיחות שאת/ה עונה להן ממסך הנעילה.",
     "callMicrophoneOffTitle": "השיחה שלך לא התחברה",
-    "callMicrophoneOffMessage": "Pangea Chat לא יכול להשתמש במיקרופון שלך. הקש/י כדי להפעיל אותו בהגדרות."
+    "callMicrophoneOffMessage": "Pangea Chat לא יכול להשתמש במיקרופון שלך. הקש/י כדי להפעיל אותו בהגדרות.",
+    "goalsCompletedOfTotal": "{earned} מתוך {total} יעדים הושלמו",
+    "goalsCompletedInLanguage": "יעדים שהושלמו ב{language}",
+    "sessionXpTowardObjective": "{xp} נקודות ניסיון בשיעור זה; נותרו {remaining} להשלמת היעד"
 }

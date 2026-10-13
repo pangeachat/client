@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-09 11:30:19.931610",
+    "@@last_modified": "2026-10-13 09:39:46.719651",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Verkefni {index} af {count}",
     "xpTowardObjective": "{xp} af {threshold} XP í átt að þessu markmiði",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} af {total} glitrum fengnar",
-    "sparklesEarnedInLanguage": "Glitrur fengnar í {language}",
     "courseComplete": "Námskeiði lokið!",
     "courseCompleteDesc": "Þú hefur lokið öllum {count} markmiðum á þessu námskeiði. Haltu áfram að æfa þig til að halda því sem þú hefur lært.",
     "practiceObjective": "Æfðu þetta markmið",
     "otherActivities": "Aðrar athafnir",
-    "xpToCompleteObjectiveTitle": "XP á verkefni",
-    "xpToCompleteObjectiveDesc": "Stilltu XP sem þarf til að ljúka hverju verkefni",
     "objectiveCircleComplete": "Verkefni {index}: lokið",
     "objectiveCircleUpNext": "Verkefni {index}: næst",
-    "useActivityImageAsChatBackground": "Nota virknimynd sem bakgrunn spjalls",
     "useActivityImageAsChatBackground": "Nota virknimynd sem bakgrunn spjalls",
     "andCertifyIMeetTheMinimumAge": " og staðfesti að ég sé að minnsta kosti 13 ára, eða eldri ef það er lágmarksaldur í mínu landi.",
     "filteredNetworkBlockedTitle": "Þetta net er að loka fyrir Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Notaðu hljóðnemann þinn fyrir símtöl",
     "callMicrophoneMessage": "Pangea Chat þarf aðgang að hljóðnemanum þínum fyrir símtöl, þar á meðal símtöl sem þú svarar frá lásskjánum.",
     "callMicrophoneOffTitle": "Símtalið þitt tengdist ekki",
-    "callMicrophoneOffMessage": "Pangea Chat getur ekki notað hljóðnemann þinn. Bankaðu til að kveikja á honum í stillingum."
+    "callMicrophoneOffMessage": "Pangea Chat getur ekki notað hljóðnemann þinn. Bankaðu til að kveikja á honum í stillingum.",
+    "goalsCompletedOfTotal": "{earned} af {total} markmiðum lokið",
+    "goalsCompletedInLanguage": "Markmiðum lokið í {language}",
+    "sessionXpTowardObjective": "{xp} XP í þessari lotu; {remaining} í viðbót klárar markmiðið"
 }

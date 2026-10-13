@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-09 11:30:13.444975",
+    "@@last_modified": "2026-10-13 09:39:41.199747",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "મિશન {index} માંથી {count}",
     "xpTowardObjective": "આ ઉદ્દેશ્ય માટે {threshold} XP માંથી {xp}",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{total} સ્પાર્કલ્સમાંથી {earned} કમાયા",
-    "sparklesEarnedInLanguage": "{language} માં કમાયેલા સ્પાર્કલ્સ",
     "courseComplete": "કોર્સ પૂર્ણ!",
     "courseCompleteDesc": "તમે આ કોર્સમાં બધા {count} ઉદ્દેશ્યો પૂર્ણ કર્યા છે. તમે જે શીખ્યા છો તેને જાળવી રાખવા માટે પ્રેક્ટિસ કરતા રહો.",
     "practiceObjective": "આ ઉદ્દેશ્યનો અભ્યાસ કરો",
     "otherActivities": "અન્ય પ્રવૃત્તિઓ",
-    "xpToCompleteObjectiveTitle": "પ્રતિ મિશન XP",
-    "xpToCompleteObjectiveDesc": "દરેક મિશન પૂર્ણ કરવા માટે જરૂરી XP સેટ કરો",
     "objectiveCircleComplete": "મિશન {index}: પૂર્ણ",
     "objectiveCircleUpNext": "મિશન {index}: આગળ",
-    "useActivityImageAsChatBackground": "ચેટ બેકગ્રાઉન્ડ તરીકે પ્રવૃત્તિની છબીનો ઉપયોગ કરો",
     "useActivityImageAsChatBackground": "ચેટ બેકગ્રાઉન્ડ તરીકે પ્રવૃત્તિની છબીનો ઉપયોગ કરો",
     "andCertifyIMeetTheMinimumAge": " અને પ્રમાણિત કરું છું કે હું ઓછામાં ઓછો 13 વર્ષનો છું, અથવા જો મારા દેશમાં જરૂરી લઘુત્તમ ઉંમર વધારે હોય તો તે ઉંમરનો છું.",
     "filteredNetworkBlockedTitle": "આ નેટવર્ક પાંગેઆ ચેટને બ્લોક કરી રહ્યું છે",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "કૉલ માટે તમારા માઇક્રોફોનનો ઉપયોગ કરો",
     "callMicrophoneMessage": "Pangea Chat ને કૉલ માટે તમારા માઇક્રોફોનની જરૂર છે, જેમાં લૉક સ્ક્રીન પરથી તમે જવાબ આપો છો તે કૉલનો સમાવેશ થાય છે.",
     "callMicrophoneOffTitle": "તમારો કૉલ કનેક્ટ થયો નથી",
-    "callMicrophoneOffMessage": "Pangea Chat તમારા માઇક્રોફોનનો ઉપયોગ કરી શકતું નથી. સેટિંગ્સમાં તેને ચાલુ કરવા માટે ટેપ કરો."
+    "callMicrophoneOffMessage": "Pangea Chat તમારા માઇક્રોફોનનો ઉપયોગ કરી શકતું નથી. સેટિંગ્સમાં તેને ચાલુ કરવા માટે ટેપ કરો.",
+    "goalsCompletedOfTotal": "{total} માંથી {earned} ધ્યેય પૂર્ણ થયા",
+    "goalsCompletedInLanguage": "{language} માં પૂર્ણ થયેલા ધ્યેયો",
+    "sessionXpTowardObjective": "આ સત્રમાં {xp} XP; ઉદ્દેશ્ય પૂર્ણ કરવા માટે {remaining} વધુ"
 }

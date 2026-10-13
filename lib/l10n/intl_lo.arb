@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-09 11:30:24.276015",
+    "@@last_modified": "2026-10-13 09:39:50.383420",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "ພາລະກິດທີ {index} ຈາກ {count}",
     "xpTowardObjective": "{xp} ຈາກ {threshold} XP ສໍາລັບເປົ້າໝາຍນີ້",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} ຈາກ {total} ດາວທີ່ໄດ້ຮັບ",
-    "sparklesEarnedInLanguage": "ດາວທີ່ໄດ້ຮັບໃນ {language}",
     "courseComplete": "ຮຽນຈົບຫຼັກສູດແລ້ວ!",
     "courseCompleteDesc": "ທ່ານໄດ້ສຳເລັດທັງໝົດ {count} ເປົ້າໝາຍໃນຫຼັກສູດນີ້ແລ້ວ. ສືບຕໍ່ຝຶກຝົນເພື່ອຮັກສາສິ່ງທີ່ທ່ານໄດ້ຮຽນຮູ້.",
     "practiceObjective": "ຝຶກຝົນເປົ້າໝາຍນີ້",
     "otherActivities": "ກິດຈະກຳອື່ນໆ",
-    "xpToCompleteObjectiveTitle": "XP ຕໍ່ພາລະກິດ",
-    "xpToCompleteObjectiveDesc": "ກຳນົດ XP ທີ່ຕ້ອງການເພື່ອສຳເລັດແຕ່ລະພາລະກິດ",
     "objectiveCircleComplete": "ພາລະກິດ {index}: ສຳເລັດ",
     "objectiveCircleUpNext": "ພາລະກິດ {index}: ຕໍ່ໄປ",
-    "useActivityImageAsChatBackground": "ໃຊ້ຮູບພາບກິດຈະກຳເປັນພື້ນຫຼັງການສົນທະນາ",
     "useActivityImageAsChatBackground": "ໃຊ້ຮູບພາບກິດຈະກຳເປັນພື້ນຫຼັງການສົນທະນາ",
     "andCertifyIMeetTheMinimumAge": " ແລະ ຢັ້ງຢືນວ່າຂ້ອຍມີອາຍຸຢ່າງໜ້ອຍ 13 ປີ, ຫຼື ອາຍຸຕໍ່າສຸດທີ່ກຳນົດໄວ້ໃນປະເທດຂອງຂ້ອຍ ຖ້າຫາກສູງກວ່ານັ້ນ.",
     "filteredNetworkBlockedTitle": "ເຄືອຂ່າຍນີ້ກຳລັງບລັອກ Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "ໃຊ້ໄມໂຄຣໂຟນຂອງທ່ານສຳລັບການໂທ",
     "callMicrophoneMessage": "Pangea Chat ຕ້ອງການໄມໂຄຣໂຟນຂອງທ່ານສຳລັບການໂທ, ລວມທັງການໂທທີ່ທ່ານຮັບຈາກໜ້າຈໍລັອກ.",
     "callMicrophoneOffTitle": "ການໂທຂອງທ່ານບໍ່ໄດ້ເຊື່ອມຕໍ່",
-    "callMicrophoneOffMessage": "Pangea Chat ບໍ່ສາມາດໃຊ້ໄມໂຄຣໂຟນຂອງທ່ານໄດ້. ແຕະເພື່ອເປີດໃຊ້ໃນການຕັ້ງຄ່າ."
+    "callMicrophoneOffMessage": "Pangea Chat ບໍ່ສາມາດໃຊ້ໄມໂຄຣໂຟນຂອງທ່ານໄດ້. ແຕະເພື່ອເປີດໃຊ້ໃນການຕັ້ງຄ່າ.",
+    "goalsCompletedOfTotal": "ເປົ້າໝາຍສຳເລັດແລ້ວ {earned} ຈາກ {total}",
+    "goalsCompletedInLanguage": "ເປົ້າໝາຍສຳເລັດແລ້ວໃນພາສາ {language}",
+    "sessionXpTowardObjective": "{xp} XP ໃນຮອບນີ້; ອີກ {remaining} ຈະສຳເລັດເປົ້າໝາຍ"
 }

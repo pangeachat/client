@@ -143,8 +143,6 @@ void main() {
           })
           .toCourseLoOutline(xpToComplete: 500);
       expect(projected.activityIdsByLo['lo-1'], {'a1'});
-      // The Mission's vocabulary follows its pinned activities, lower-cased.
-      expect(projected.vocabLemmasByLo['lo-1'], {'hola'});
       expect(projected.xpToComplete, 500);
     });
   });
@@ -163,25 +161,6 @@ void main() {
         xpByActivity: {'a1': 80, 'a2': 500},
       );
       expect(resolution.forCourse('q1')!.rollup['lo-1']!.xp, 80);
-    });
-
-    test("practice XP on an off-pin activity's vocabulary does not count", () {
-      final o = outline({
-        'lo-1': [
-          activity('a1', vocab: ['hola']),
-          activity('a2', vocab: ['adiós']),
-        ],
-      });
-      final resolution = resolveProgression(
-        outlines: [
-          o.restrictedTo({
-            'lo-1': ['a1'],
-          }).toCourseLoOutline(),
-        ],
-        xpByActivity: const {},
-        xpByLemma: {'hola': 40, 'adiós': 500},
-      );
-      expect(resolution.forCourse('q1')!.rollup['lo-1']!.xp, 40);
     });
   });
 }

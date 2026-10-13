@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-09 11:30:12.636500",
+    "@@last_modified": "2026-10-13 09:39:40.157046",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10307,17 +10307,12 @@
     "missionNofM": "Mission {index} sur {count}",
     "xpTowardObjective": "{xp} sur {threshold} XP pour cet objectif",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} étincelles gagnées sur {total}",
-    "sparklesEarnedInLanguage": "Étincelles gagnées en {language}",
     "courseComplete": "Cours terminé !",
     "courseCompleteDesc": "Vous avez terminé les {count} objectifs de ce cours. Continuez à pratiquer pour ne pas oublier ce que vous avez appris.",
     "practiceObjective": "Pratiquer cet objectif",
     "otherActivities": "Autres activités",
-    "xpToCompleteObjectiveTitle": "XP par mission",
-    "xpToCompleteObjectiveDesc": "Définir l'XP nécessaire pour terminer chaque mission",
     "objectiveCircleComplete": "Mission {index} : terminée",
     "objectiveCircleUpNext": "Mission {index} : à suivre",
-    "useActivityImageAsChatBackground": "Utiliser l'image de l'activité comme arrière-plan de discussion",
     "useActivityImageAsChatBackground": "Utiliser l'image de l'activité comme arrière-plan de discussion",
     "andCertifyIMeetTheMinimumAge": " et certifie que j'ai au moins 13 ans, ou l'âge minimum requis dans mon pays si celui-ci est plus élevé.",
     "filteredNetworkBlockedTitle": "Ce réseau bloque Pangea Chat",
@@ -10340,5 +10335,8 @@
     "callMicrophoneTitle": "Utiliser votre microphone pour les appels",
     "callMicrophoneMessage": "Pangea Chat a besoin de votre microphone pour les appels, y compris ceux auxquels vous répondez depuis l'écran verrouillé.",
     "callMicrophoneOffTitle": "Votre appel n'a pas abouti",
-    "callMicrophoneOffMessage": "Pangea Chat ne peut pas utiliser votre microphone. Appuyez pour l'activer dans les réglages."
+    "callMicrophoneOffMessage": "Pangea Chat ne peut pas utiliser votre microphone. Appuyez pour l'activer dans les réglages.",
+    "goalsCompletedOfTotal": "{earned} objectifs atteints sur {total}",
+    "goalsCompletedInLanguage": "Objectifs atteints en {language}",
+    "sessionXpTowardObjective": "{xp} XP cette session ; encore {remaining} pour atteindre l'objectif"
 }

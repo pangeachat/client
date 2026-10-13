@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-09 11:30:11.631940",
+    "@@last_modified": "2026-10-13 09:39:38.450628",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Misyon {index} sa {count}",
     "xpTowardObjective": "{xp} sa {threshold} XP padulong niini nga tumong",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} sa {total} ka sparkles nakuha",
-    "sparklesEarnedInLanguage": "Mga sparkles nga nakuha sa {language}",
     "courseComplete": "Kumpleto na ang kurso!",
     "courseCompleteDesc": "Nahuman na nimo ang tanang {count} ka tumong niini nga kurso. Padayon sa pagpraktis aron dili makalimtan ang imong nakat-unan.",
     "practiceObjective": "Ipraktis kini nga tumong",
     "otherActivities": "Uban pang mga kalihokan",
-    "xpToCompleteObjectiveTitle": "XP kada Misyon",
-    "xpToCompleteObjectiveDesc": "Ibutang ang XP nga gikinahanglan aron makompleto ang matag misyon",
     "objectiveCircleComplete": "Misyon {index}: kompleto",
     "objectiveCircleUpNext": "Misyon {index}: sunod",
-    "useActivityImageAsChatBackground": "Gamita ang hulagway sa kalihokan isip background sa chat",
     "useActivityImageAsChatBackground": "Gamita ang hulagway sa kalihokan isip background sa chat",
     "andCertifyIMeetTheMinimumAge": " ug nagpamatuod nga ako labing menos 13 ka tuig ang edad, o ang minimum nga edad nga gikinahanglan sa akong nasud kung mas taas kini.",
     "filteredNetworkBlockedTitle": "Kini nga network nagbabag sa Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Gamita ang imong mikropono para sa mga tawag",
     "callMicrophoneMessage": "Kinahanglan sa Pangea Chat ang imong mikropono para sa mga tawag, apil na ang mga tawag nga imong tubagon gikan sa lock screen.",
     "callMicrophoneOffTitle": "Wala nakakonekta ang imong tawag",
-    "callMicrophoneOffMessage": "Dili magamit sa Pangea Chat ang imong mikropono. I-tap aron i-on kini sa Settings."
+    "callMicrophoneOffMessage": "Dili magamit sa Pangea Chat ang imong mikropono. I-tap aron i-on kini sa Settings.",
+    "goalsCompletedOfTotal": "{earned} sa {total} ka tumong ang nakompleto",
+    "goalsCompletedInLanguage": "Mga tumong nga nakompleto sa {language}",
+    "sessionXpTowardObjective": "{xp} XP karong sesyon; {remaining} pa ang gikinahanglan aron makompleto ang tumong"
 }

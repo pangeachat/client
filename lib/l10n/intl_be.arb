@@ -3544,7 +3544,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-09 11:30:09.988806",
+    "@@last_modified": "2026-10-13 09:39:37.977962",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9966,17 +9966,12 @@
     "missionNofM": "Місія {index} з {count}",
     "xpTowardObjective": "{xp} з {threshold} XP да гэтай мэты",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} з {total} бліскавак зароблена",
-    "sparklesEarnedInLanguage": "Бліскаўкі, заробленыя ў {language}",
     "courseComplete": "Курс завершаны!",
     "courseCompleteDesc": "Вы выканалі ўсе {count} мэты ў гэтым курсе. Працягвайце практыкавацца, каб захаваць тое, што вы вывучылі.",
     "practiceObjective": "Практыкаваць гэтую мэту",
     "otherActivities": "Іншыя заняткі",
-    "xpToCompleteObjectiveTitle": "XP за місію",
-    "xpToCompleteObjectiveDesc": "Усталюйце XP, неабходныя для выканання кожнай місіі",
     "objectiveCircleComplete": "Місія {index}: выканана",
     "objectiveCircleUpNext": "Місія {index}: наступная",
-    "useActivityImageAsChatBackground": "Выкарыстоўваць выяву актыўнасці як фон чата",
     "useActivityImageAsChatBackground": "Выкарыстоўваць выяву актыўнасці як фон чата",
     "andCertifyIMeetTheMinimumAge": " і пацвярджаю, што мне не менш за 13 гадоў або мінімальны ўзрост, неабходны ў маёй краіне, калі ён вышэйшы.",
     "filteredNetworkBlockedTitle": "Гэтая сетка блакуе Pangea Chat",
@@ -9999,5 +9994,8 @@
     "callMicrophoneTitle": "Выкарыстоўвайце мікрафон для званкоў",
     "callMicrophoneMessage": "Pangea Chat патрэбны ваш мікрафон для званкоў, у тым ліку для званкоў, на якія вы адказваеце з экрана блакіроўкі.",
     "callMicrophoneOffTitle": "Ваш званок не злучыўся",
-    "callMicrophoneOffMessage": "Pangea Chat не можа выкарыстоўваць ваш мікрафон. Націсніце, каб уключыць яго ў наладах."
+    "callMicrophoneOffMessage": "Pangea Chat не можа выкарыстоўваць ваш мікрафон. Націсніце, каб уключыць яго ў наладах.",
+    "goalsCompletedOfTotal": "Выканана {earned} з {total} мэт",
+    "goalsCompletedInLanguage": "Мэты, выкананыя на {language}",
+    "sessionXpTowardObjective": "{xp} XP за гэты сеанс; яшчэ {remaining} — і мэта дасягнута"
 }

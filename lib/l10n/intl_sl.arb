@@ -1798,7 +1798,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-09 11:30:33.446566",
+    "@@last_modified": "2026-10-13 09:39:54.435592",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10897,17 +10897,12 @@
     "missionNofM": "Misija {index} od {count}",
     "xpTowardObjective": "{xp} od {threshold} XP za ta cilj",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} od {total} bleščic zasluženih",
-    "sparklesEarnedInLanguage": "Bleščice zaslužene v {language}",
     "courseComplete": "Tečaj dokončan!",
     "courseCompleteDesc": "Dokončali ste vseh {count} ciljev v tem tečaju. Nadaljujte z vadbo, da ohranite naučeno.",
     "practiceObjective": "Vadite ta cilj",
     "otherActivities": "Druge dejavnosti",
-    "xpToCompleteObjectiveTitle": "XP na misijo",
-    "xpToCompleteObjectiveDesc": "Nastavite XP, potrebne za dokončanje vsake misije",
     "objectiveCircleComplete": "Naloga {index}: dokončana",
     "objectiveCircleUpNext": "Naloga {index}: naslednja",
-    "useActivityImageAsChatBackground": "Uporabi sliko dejavnosti kot ozadje klepeta",
     "useActivityImageAsChatBackground": "Uporabi sliko dejavnosti kot ozadje klepeta",
     "andCertifyIMeetTheMinimumAge": " in potrjujem, da sem star vsaj 13 let ali minimalno starost, ki je zahtevana v moji državi, če je ta višja.",
     "filteredNetworkBlockedTitle": "To omrežje blokira Pangea Chat",
@@ -10930,5 +10925,8 @@
     "callMicrophoneTitle": "Uporabite mikrofon za klice",
     "callMicrophoneMessage": "Pangea Chat potrebuje vaš mikrofon za klice, vključno s klici, na katere odgovorite z zaklenjenega zaslona.",
     "callMicrophoneOffTitle": "Vaš klic se ni povezal",
-    "callMicrophoneOffMessage": "Pangea Chat ne more uporabljati vašega mikrofona. Tapnite, da ga vklopite v nastavitvah."
+    "callMicrophoneOffMessage": "Pangea Chat ne more uporabljati vašega mikrofona. Tapnite, da ga vklopite v nastavitvah.",
+    "goalsCompletedOfTotal": "{earned} od {total} doseženih ciljev",
+    "goalsCompletedInLanguage": "Doseženi cilji v {language}",
+    "sessionXpTowardObjective": "{xp} XP v tej seji; {remaining} več dokonča cilj"
 }

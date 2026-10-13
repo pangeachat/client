@@ -4,7 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
-import 'package:fluffychat/widgets/sparkle_icon.dart';
 
 /// #8595: every host gives the star row a box that can't grow taller, so it
 /// must shrink to stay on one line instead of wrapping a run outside the card.
@@ -76,7 +75,7 @@ void main() {
       // The first sparkle itself, not [ActivityStarRow]'s box: the box IS the
       // whole tightened text column either way, so only where the sparkles
       // land inside it tells the two apart.
-      return tester.getTopLeft(find.byType(SparkleIcon).first).dx;
+      return tester.getTopLeft(find.byType(Icon).first).dx;
     }
 
     final withCefr = await starsLeft(withTrailing: true);

@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-09 11:30:33.292284",
+    "@@last_modified": "2026-10-13 09:39:55.279437",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "මෙහෙයුම {index} / {count}",
     "xpTowardObjective": "මෙම අරමුණ සඳහා {threshold} XP වලින් {xp} ක්",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{total} දීප්ති වලින් {earned} ක් උපයා ඇත",
-    "sparklesEarnedInLanguage": "{language} භාෂාවෙන් උපයාගත් දීප්ති",
     "courseComplete": "පාඨමාලාව සම්පූර්ණයි!",
     "courseCompleteDesc": "ඔබ මෙම පාඨමාලාවේ අරමුණු {count}ම සම්පූර්ණ කර ඇත. ඔබ ඉගෙන ගත් දේ මතක තබා ගැනීමට දිගටම පුහුණු වන්න.",
     "practiceObjective": "මෙම අරමුණ පුහුණු වන්න",
     "otherActivities": "වෙනත් ක්‍රියාකාරකම්",
-    "xpToCompleteObjectiveTitle": "මෙහෙයුමකට XP",
-    "xpToCompleteObjectiveDesc": "සෑම මෙහෙයුමක්ම සම්පූර්ණ කිරීමට අවශ්‍ය XP සකසන්න",
     "objectiveCircleComplete": "මෙහෙයුම {index}: සම්පූර්ණයි",
     "objectiveCircleUpNext": "මෙහෙයුම {index}: ඊළඟට",
-    "useActivityImageAsChatBackground": "ක්‍රියාකාරකම් රූපය චැට් පසුබිම ලෙස භාවිතා කරන්න",
     "useActivityImageAsChatBackground": "ක්‍රියාකාරකම් රූපය චැට් පසුබිම ලෙස භාවිතා කරන්න",
     "andCertifyIMeetTheMinimumAge": " සහ මට අවම වශයෙන් වයස අවුරුදු 13ක් වන බවට හෝ මගේ රටේ අවශ්‍ය අවම වයස ඊට වඩා වැඩි නම් එම වයසට ළඟා වී ඇති බවට සහතික වෙමි.",
     "filteredNetworkBlockedTitle": "මෙම ජාලය Pangea Chat අවහිර කරයි",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "ඇමතුම් සඳහා ඔබේ මයික්‍රෆෝනය භාවිත කරන්න",
     "callMicrophoneMessage": "අගුළු තිරයෙන් පිළිගන්නා ඇමතුම් ඇතුළුව, ඇමතුම් සඳහා Pangea Chat හට ඔබේ මයික්‍රෆෝනය අවශ්‍ය වේ.",
     "callMicrophoneOffTitle": "ඔබේ ඇමතුම සම්බන්ධ නොවීය",
-    "callMicrophoneOffMessage": "Pangea Chat හට ඔබේ මයික්‍රෆෝනය භාවිත කළ නොහැක. සැකසීම් තුළ එය ක්‍රියාත්මක කිරීමට තට්ටු කරන්න."
+    "callMicrophoneOffMessage": "Pangea Chat හට ඔබේ මයික්‍රෆෝනය භාවිත කළ නොහැක. සැකසීම් තුළ එය ක්‍රියාත්මක කිරීමට තට්ටු කරන්න.",
+    "goalsCompletedOfTotal": "{total} ඉලක්ක වලින් {earned} සම්පූර්ණ කරන ලදී",
+    "goalsCompletedInLanguage": "{language} භාෂාවෙන් සම්පූර්ණ කරන ලද ඉලක්ක",
+    "sessionXpTowardObjective": "මෙම සැසියේදී {xp} XP; ඉලක්කය සම්පූර්ණ කිරීමට තවත් {remaining} අවශ්‍යයි"
 }

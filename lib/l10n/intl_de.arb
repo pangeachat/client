@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-09 11:30:11.028713",
+    "@@last_modified": "2026-10-13 09:39:38.798824",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9939,17 +9939,12 @@
     "missionNofM": "Mission {index} von {count}",
     "xpTowardObjective": "{xp} von {threshold} XP für dieses Ziel",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} von {total} Funkeln verdient",
-    "sparklesEarnedInLanguage": "In {language} verdiente Funkeln",
     "courseComplete": "Kurs abgeschlossen!",
     "courseCompleteDesc": "Du hast alle {count} Ziele in diesem Kurs abgeschlossen. Übe weiter, um das Gelernte zu behalten.",
     "practiceObjective": "Dieses Ziel üben",
     "otherActivities": "Andere Aktivitäten",
-    "xpToCompleteObjectiveTitle": "XP pro Mission",
-    "xpToCompleteObjectiveDesc": "Lege die benötigten XP fest, um jede Mission abzuschließen",
     "objectiveCircleComplete": "Mission {index}: abgeschlossen",
     "objectiveCircleUpNext": "Mission {index}: als Nächstes",
-    "useActivityImageAsChatBackground": "Aktivitätsbild als Chat-Hintergrund verwenden",
     "useActivityImageAsChatBackground": "Aktivitätsbild als Chat-Hintergrund verwenden",
     "andCertifyIMeetTheMinimumAge": " zu und bestätige, dass ich mindestens 13 Jahre alt bin oder das in meinem Land erforderliche Mindestalter erreicht habe, falls dieses höher ist.",
     "filteredNetworkBlockedTitle": "Dieses Netzwerk blockiert Pangea Chat",
@@ -9972,5 +9967,8 @@
     "callMicrophoneTitle": "Mikrofon für Anrufe verwenden",
     "callMicrophoneMessage": "Pangea Chat benötigt Ihr Mikrofon für Anrufe, einschließlich Anrufe, die Sie vom Sperrbildschirm aus annehmen.",
     "callMicrophoneOffTitle": "Ihr Anruf konnte nicht verbunden werden",
-    "callMicrophoneOffMessage": "Pangea Chat kann Ihr Mikrofon nicht verwenden. Tippen Sie hier, um es in den Einstellungen zu aktivieren."
+    "callMicrophoneOffMessage": "Pangea Chat kann Ihr Mikrofon nicht verwenden. Tippen Sie hier, um es in den Einstellungen zu aktivieren.",
+    "goalsCompletedOfTotal": "{earned} von {total} Zielen erreicht",
+    "goalsCompletedInLanguage": "Ziele erreicht in {language}",
+    "sessionXpTowardObjective": "{xp} XP in dieser Sitzung; {remaining} mehr schließt das Ziel ab"
 }

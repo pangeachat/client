@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-09 11:30:34.661266",
+    "@@last_modified": "2026-10-13 09:39:55.757241",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Misiona {index} o le {count}",
     "xpTowardObjective": "{xp} o le {threshold} XP agai i lenei manulauti",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} o le {total} susulu ua maua",
-    "sparklesEarnedInLanguage": "Susulu na maua i le {language}",
     "courseComplete": "Ua mae'a le kosi!",
     "courseCompleteDesc": "Ua e mae'a uma manulauti e {count} i lenei kosi. Ia fa'aauau pea le fa'ata'ita'iga ina ia le galo mea ua a'oa'oina.",
     "practiceObjective": "Fa'ata'ita'i lenei manulauti",
     "otherActivities": "Isi gaioiga",
-    "xpToCompleteObjectiveTitle": "XP i Misiona ta'itasi",
-    "xpToCompleteObjectiveDesc": "Seti le XP e mana'omia e fa'amae'a ai misiona ta'itasi",
     "objectiveCircleComplete": "Misiona {index}: ua maeʻa",
     "objectiveCircleUpNext": "Misiona {index}: o le isi",
-    "useActivityImageAsChatBackground": "Fa'aaoga le ata o le gaioiga e fai ma tala i tua o le talanoaga",
     "useActivityImageAsChatBackground": "Fa'aaoga le ata o le gaioiga e fai ma tala i tua o le talanoaga",
     "andCertifyIMeetTheMinimumAge": " ma fa'amaonia ua ou matua i le 13 tausaga, po'o le tausaga aupito maualalo e mana'omia i lo'u atunu'u pe afai e maualuga atu.",
     "filteredNetworkBlockedTitle": "O lenei fesoʻotaʻiga o loʻo poloka le Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Fa'aaoga lau masini faaleo mo vala'au",
     "callMicrophoneMessage": "E mana'omia e le Pangea Chat lau masini faaleo mo vala'au, e aofia ai vala'au e te taliina mai le lau loka.",
     "callMicrophoneOffTitle": "E le'i feso'ota'i lau vala'au",
-    "callMicrophoneOffMessage": "E le mafai e le Pangea Chat ona fa'aaoga lau masini faaleo. Pa'i e ki i totonu o Fa'atonuga."
+    "callMicrophoneOffMessage": "E le mafai e le Pangea Chat ona fa'aaoga lau masini faaleo. Pa'i e ki i totonu o Fa'atonuga.",
+    "goalsCompletedOfTotal": "{earned} o le {total} sini ua maeʻa",
+    "goalsCompletedInLanguage": "Sini ua maeʻa i le {language}",
+    "sessionXpTowardObjective": "{xp} XP i lenei sauniga; {remaining} isi e faʻamaeʻa ai le faʻamoemoe"
 }

@@ -93,22 +93,18 @@ class JoinedObjectiveCache {
   Set<String> get ids => _ids;
 
   /// Resolve the shared [ProgressionResolution] for the world map's relevance
-  /// band from the cached [outlines] and the learner's XP: [xpByActivity]
-  /// (session XP per activity with the sparkle bonus applied,
-  /// `Client.userXpByActivity`) and [xpByLemma] (standalone-practice XP per
-  /// lemma, `MissionXpCache`). [extraOutlines] adds in-scope outlines the
-  /// learner hasn't joined — e.g. a course-scoped map ranks toward the viewed
-  /// course's next Mission even before it's joined. Pure and cheap; the
-  /// controller calls it where the inputs change (course join/leave, an XP
-  /// update), not per frame.
+  /// band from the cached [outlines] and the learner's activity XP per
+  /// activity ([xpByActivity], `Client.userXpByActivity`). [extraOutlines]
+  /// adds in-scope outlines the learner hasn't joined — e.g. a course-scoped
+  /// map ranks toward the viewed course's next Mission even before it's
+  /// joined. Pure and cheap; the controller calls it where the inputs change
+  /// (course join/leave, an XP update), not per frame.
   ProgressionResolution resolution(
     Map<String, int> xpByActivity, {
-    Map<String, int> xpByLemma = const {},
     Iterable<CourseLoOutline> extraOutlines = const [],
   }) => resolveProgression(
     outlines: [..._outlines, ...extraOutlines],
     xpByActivity: xpByActivity,
-    xpByLemma: xpByLemma,
   );
 
   /// Rebuild from the joined courses' quest outlines. [outlineOf] resolves a
@@ -144,7 +140,6 @@ class JoinedObjectiveCache {
               questId: o.questId,
               orderedLoIds: o.orderedLoIds,
               activityIdsByLo: o.activityIdsByLo,
-              vocabLemmasByLo: o.vocabLemmasByLo,
               xpToComplete:
                   xpToCompleteOf?.call(key) ?? kDefaultXpToCompleteObjective,
             ),

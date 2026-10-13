@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 11:30:36.366780",
+    "@@last_modified": "2026-10-13 09:39:56.781704",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10470,17 +10470,12 @@
     "missionNofM": "Uppdrag {index} av {count}",
     "xpTowardObjective": "{xp} av {threshold} XP för detta mål",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} av {total} gnistor intjänade",
-    "sparklesEarnedInLanguage": "Gnistor intjänade i {language}",
     "courseComplete": "Kursen är klar!",
     "courseCompleteDesc": "Du har slutfört alla {count} mål i den här kursen. Fortsätt öva för att behålla det du har lärt dig.",
     "practiceObjective": "Öva på detta mål",
     "otherActivities": "Andra aktiviteter",
-    "xpToCompleteObjectiveTitle": "XP per uppdrag",
-    "xpToCompleteObjectiveDesc": "Ange den XP som behövs för att slutföra varje uppdrag",
     "objectiveCircleComplete": "Uppdrag {index}: slutfört",
     "objectiveCircleUpNext": "Uppdrag {index}: nästa",
-    "useActivityImageAsChatBackground": "Använd aktivitetsbild som chattbakgrund",
     "useActivityImageAsChatBackground": "Använd aktivitetsbild som chattbakgrund",
     "andCertifyIMeetTheMinimumAge": " och intygar att jag är minst 13 år gammal, eller den minimiålder som krävs i mitt land om den är högre.",
     "filteredNetworkBlockedTitle": "Detta nätverk blockerar Pangea Chat",
@@ -10503,5 +10498,8 @@
     "callMicrophoneTitle": "Använd din mikrofon för samtal",
     "callMicrophoneMessage": "Pangea Chat behöver din mikrofon för samtal, inklusive samtal du svarar på från låsskärmen.",
     "callMicrophoneOffTitle": "Ditt samtal kopplades inte upp",
-    "callMicrophoneOffMessage": "Pangea Chat kan inte använda din mikrofon. Tryck för att aktivera den i Inställningar."
+    "callMicrophoneOffMessage": "Pangea Chat kan inte använda din mikrofon. Tryck för att aktivera den i Inställningar.",
+    "goalsCompletedOfTotal": "{earned} av {total} mål slutförda",
+    "goalsCompletedInLanguage": "Mål slutförda på {language}",
+    "sessionXpTowardObjective": "{xp} XP denna session; {remaining} mer slutför målet"
 }

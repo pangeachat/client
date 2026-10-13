@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-09 11:30:32.924477",
+    "@@last_modified": "2026-10-13 09:39:55.561327",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10897,17 +10897,12 @@
     "missionNofM": "Misia {index} z {count}",
     "xpTowardObjective": "{xp} z {threshold} XP k tomuto cieľu",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} z {total} získaných iskier",
-    "sparklesEarnedInLanguage": "Iskry získané v jazyku {language}",
     "courseComplete": "Kurz dokončený!",
     "courseCompleteDesc": "Dokončili ste všetkých {count} cieľov v tomto kurze. Pokračujte v precvičovaní, aby ste si udržali to, čo ste sa naučili.",
     "practiceObjective": "Precvičte si tento cieľ",
     "otherActivities": "Ďalšie aktivity",
-    "xpToCompleteObjectiveTitle": "XP za misiu",
-    "xpToCompleteObjectiveDesc": "Nastavte XP potrebné na dokončenie každej misie",
     "objectiveCircleComplete": "Misia {index}: dokončená",
     "objectiveCircleUpNext": "Misia {index}: ďalšia v poradí",
-    "useActivityImageAsChatBackground": "Použiť obrázok aktivity ako pozadie chatu",
     "useActivityImageAsChatBackground": "Použiť obrázok aktivity ako pozadie chatu",
     "andCertifyIMeetTheMinimumAge": " a potvrdzujem, že mám aspoň 13 rokov, alebo minimálny vek požadovaný v mojej krajine, ak je vyšší.",
     "filteredNetworkBlockedTitle": "Táto sieť blokuje Pangea Chat",
@@ -10930,5 +10925,8 @@
     "callMicrophoneTitle": "Používať mikrofón pre hovory",
     "callMicrophoneMessage": "Pangea Chat potrebuje váš mikrofón pre hovory, vrátane hovorov, ktoré prijmete z uzamknutej obrazovky.",
     "callMicrophoneOffTitle": "Váš hovor sa nepodarilo spojiť",
-    "callMicrophoneOffMessage": "Pangea Chat nemôže používať váš mikrofón. Klepnutím ho zapnete v Nastaveniach."
+    "callMicrophoneOffMessage": "Pangea Chat nemôže používať váš mikrofón. Klepnutím ho zapnete v Nastaveniach.",
+    "goalsCompletedOfTotal": "{earned} z {total} splnených cieľov",
+    "goalsCompletedInLanguage": "Ciele splnené v jazyku {language}",
+    "sessionXpTowardObjective": "{xp} XP v tejto relácii; {remaining} viac dokončí cieľ"
 }

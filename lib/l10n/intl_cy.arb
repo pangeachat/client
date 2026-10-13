@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-09 11:30:10.599982",
+    "@@last_modified": "2026-10-13 09:39:38.394311",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Cenhadaeth {index} o {count}",
     "xpTowardObjective": "{xp} o {threshold} XP tuag at yr amcan hwn",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} o {total} sbarclau wedi'u hennill",
-    "sparklesEarnedInLanguage": "Sbarclau wedi'u hennill yn {language}",
     "courseComplete": "Cwrs wedi'i gwblhau!",
     "courseCompleteDesc": "Rydych chi wedi cwblhau pob un o'r {count} amcan yn y cwrs hwn. Daliwch ati i ymarfer i gadw'r hyn rydych chi wedi'i ddysgu.",
     "practiceObjective": "Ymarfer yr amcan hwn",
     "otherActivities": "Gweithgareddau eraill",
-    "xpToCompleteObjectiveTitle": "XP fesul Cenhadaeth",
-    "xpToCompleteObjectiveDesc": "Gosodwch yr XP sydd ei angen i gwblhau pob cenhadaeth",
     "objectiveCircleComplete": "Cenhadaeth {index}: wedi'i chwblhau",
     "objectiveCircleUpNext": "Cenhadaeth {index}: nesaf",
-    "useActivityImageAsChatBackground": "Defnyddio delwedd gweithgaredd fel cefndir sgwrsio",
     "useActivityImageAsChatBackground": "Defnyddio delwedd gweithgaredd fel cefndir sgwrsio",
     "andCertifyIMeetTheMinimumAge": " a chadarnhau fy mod o leiaf 13 oed, neu'r oedran lleiaf sy'n ofynnol yn fy ngwlad os yw hynny'n uwch.",
     "filteredNetworkBlockedTitle": "Mae'r rhwydwaith hwn yn blocio Sgwrs Pangea",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Defnyddiwch eich meicroffon ar gyfer galwadau",
     "callMicrophoneMessage": "Mae angen eich meicroffon ar Pangea Chat ar gyfer galwadau, gan gynnwys galwadau rydych chi'n eu hateb o'r sgrin glo.",
     "callMicrophoneOffTitle": "Ni chysylltodd eich galwad",
-    "callMicrophoneOffMessage": "Ni all Pangea Chat ddefnyddio'ch meicroffon. Tapiwch i'w droi ymlaen yn Gosodiadau."
+    "callMicrophoneOffMessage": "Ni all Pangea Chat ddefnyddio'ch meicroffon. Tapiwch i'w droi ymlaen yn Gosodiadau.",
+    "goalsCompletedOfTotal": "{earned} o {total} nodau wedi'u cwblhau",
+    "goalsCompletedInLanguage": "Nodau wedi'u cwblhau yn {language}",
+    "sessionXpTowardObjective": "{xp} XP y sesiwn hon; {remaining} arall yn cwblhau'r amcan"
 }

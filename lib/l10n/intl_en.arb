@@ -5773,19 +5773,6 @@
             "threshold": {}
         }
     },
-    "sparklesEarnedOfTotal": "{earned} of {total} sparkles earned",
-    "@sparklesEarnedOfTotal": {
-        "placeholders": {
-            "earned": {},
-            "total": {}
-        }
-    },
-    "sparklesEarnedInLanguage": "Sparkles earned in {language}",
-    "@sparklesEarnedInLanguage": {
-        "placeholders": {
-            "language": {}
-        }
-    },
     "courseComplete": "Course complete!",
     "courseCompleteDesc": "You've completed all {count} objectives in this course. Keep practicing to hold on to what you've learned.",
     "@courseCompleteDesc": {
@@ -5795,8 +5782,26 @@
     },
     "practiceObjective": "Practice this objective",
     "otherActivities": "Other activities",
-    "xpToCompleteObjectiveTitle": "XP per Mission",
-    "xpToCompleteObjectiveDesc": "Set the XP needed to complete each mission",
+    "goalsCompletedOfTotal": "{earned} of {total} goals completed",
+    "@goalsCompletedOfTotal": {
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "goalsCompletedInLanguage": "Goals completed in {language}",
+    "@goalsCompletedInLanguage": {
+        "placeholders": {
+            "language": {}
+        }
+    },
+    "sessionXpTowardObjective": "{xp} XP this session; {remaining} more completes the objective",
+    "@sessionXpTowardObjective": {
+        "placeholders": {
+            "xp": {},
+            "remaining": {}
+        }
+    },
     "objectiveCircleComplete": "Mission {index}: complete",
     "@objectiveCircleComplete": {
         "placeholders": {

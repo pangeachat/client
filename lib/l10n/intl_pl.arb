@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-09 11:30:30.401378",
+    "@@last_modified": "2026-10-13 09:39:53.404444",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10037,17 +10037,12 @@
     "missionNofM": "Misja {index} z {count}",
     "xpTowardObjective": "{xp} z {threshold} PD do tego celu",
     "xpOfThreshold": "{xp} / {threshold} PD",
-    "sparklesEarnedOfTotal": "{earned} z {total} iskierek zdobytych",
-    "sparklesEarnedInLanguage": "Iskierki zdobyte w języku {language}",
     "courseComplete": "Kurs ukończony!",
     "courseCompleteDesc": "Ukończyłeś wszystkie {count} cele w tym kursie. Kontynuuj ćwiczenia, aby utrwalić to, czego się nauczyłeś.",
     "practiceObjective": "Ćwicz ten cel",
     "otherActivities": "Inne aktywności",
-    "xpToCompleteObjectiveTitle": "PD za misję",
-    "xpToCompleteObjectiveDesc": "Ustaw liczbę PD potrzebnych do ukończenia każdej misji",
     "objectiveCircleComplete": "Misja {index}: ukończona",
     "objectiveCircleUpNext": "Misja {index}: następna",
-    "useActivityImageAsChatBackground": "Użyj obrazu aktywności jako tła czatu",
     "useActivityImageAsChatBackground": "Użyj obrazu aktywności jako tła czatu",
     "andCertifyIMeetTheMinimumAge": " i oświadczam, że mam co najmniej 13 lat lub osiągnąłem minimalny wiek wymagany w moim kraju, jeśli jest on wyższy.",
     "filteredNetworkBlockedTitle": "Ta sieć blokuje Pangea Chat",
@@ -10070,5 +10065,8 @@
     "callMicrophoneTitle": "Użyj mikrofonu do połączeń",
     "callMicrophoneMessage": "Pangea Chat potrzebuje Twojego mikrofonu do połączeń, w tym połączeń odbieranych z ekranu blokady.",
     "callMicrophoneOffTitle": "Twoje połączenie nie zostało nawiązane",
-    "callMicrophoneOffMessage": "Pangea Chat nie może używać Twojego mikrofonu. Stuknij, aby włączyć go w Ustawieniach."
+    "callMicrophoneOffMessage": "Pangea Chat nie może używać Twojego mikrofonu. Stuknij, aby włączyć go w Ustawieniach.",
+    "goalsCompletedOfTotal": "Ukończono {earned} z {total} celów",
+    "goalsCompletedInLanguage": "Cele ukończone w języku {language}",
+    "sessionXpTowardObjective": "{xp} PD w tej sesji; jeszcze {remaining} do ukończenia celu"
 }

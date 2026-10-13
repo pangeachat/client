@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-09 11:30:33.937522",
+    "@@last_modified": "2026-10-13 09:39:51.840150",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2401,17 +2401,12 @@
     "missionNofM": "মিশন {index} / {count}",
     "xpTowardObjective": "অসিগুম্বা পান্দম অসি ফংনবা {threshold} XP দগী {xp} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{total} স্পার্কলশিংদগী {earned} ফংলে",
-    "sparklesEarnedInLanguage": "{language} দা ফংলবা স্পার্কলশিং",
     "courseComplete": "কোর্স লোইশিনখ্রে!",
     "courseCompleteDesc": "নখোইনা কোর্স অসিগী পান্দম {count} পুম্নমক লোইশিনখ্রে। নখোইনা তম্লবশিং অদু থম্ননবা চত্থদুনা লও।",
     "practiceObjective": "অসিগুম্বা পান্দম অসি প্রেকটিস তৌ",
     "otherActivities": "অতৈ থবকশিং",
-    "xpToCompleteObjectiveTitle": "মিশন অমদা XP",
-    "xpToCompleteObjectiveDesc": "মিশন খুদিংমক লোইশিন্ননবা মথৌ তাবা XP থমবীয়ু",
     "objectiveCircleComplete": "মিশন {index}: লোইশিনখ্রে",
     "objectiveCircleUpNext": "মিশন {index}: হৌজিক লাক্কদৌরি",
-    "useActivityImageAsChatBackground": "চ্যাট ব্যাকগ্রাউন্ড ওইনা এক্টিভিটি ইমেজ শিজিনব",
     "useActivityImageAsChatBackground": "চ্যাট ব্যাকগ্রাউন্ড ওইনা এক্টিভিটি ইমেজ শিজিনব",
     "andCertifyIMeetTheMinimumAge": " ꯑꯃꯁꯨꯡ ꯑꯩꯅꯥ ꯈꯨꯗꯤꯡꯃꯛ ꯆꯥꯎꯔꯥꯕꯥ ꯆꯍꯤ 13 ꯁꯨꯔꯦ ꯍꯥꯌꯕꯁꯤ ꯏꯁꯤꯟꯗꯨꯅꯥ ꯐꯖꯤꯟꯅꯔꯤ, ꯅꯠꯠꯔꯒꯥ ꯑꯩꯈꯣꯌꯒꯤ ꯂꯩꯕꯥꯛꯇꯥ ꯃꯈꯥ ꯊꯪꯕꯥ ꯆꯍꯤ ꯀꯌꯥ ꯃꯊꯛ ꯊꯪꯕꯥ ꯌꯥꯏ꯫",
     "filteredNetworkBlockedTitle": "ꯁꯤꯡꯁꯤ ꯅꯦꯠꯋꯔꯛ ꯑꯁꯤꯅ ꯄꯦꯟꯒꯤꯌꯥ ꯆꯦꯠ ꯕ꯭ꯂꯣꯛ ꯇꯧꯔꯤ",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "কোলোনগীদমক নখোঙগী মাইক্রোফোন শীজিন্নৌ",
     "callMicrophoneMessage": "Pangea Chat না নখোঙগী মাইক্রোফোন কোলোনগীদমক মথৌ তাই, লোক্ষ স্ক্রীনদগী লৌবা কোলশিং য়াওনা.",
     "callMicrophoneOffTitle": "নখোঙগী কোল কননেক্ত তৌদ্রে",
-    "callMicrophoneOffMessage": "Pangea Chat না নখোঙগী মাইক্রোফোন শীজিন্নবা ঙমদে. সেত্তিংসতা অন তৌনবা তেন তৌ."
+    "callMicrophoneOffMessage": "Pangea Chat না নখোঙগী মাইক্রোফোন শীজিন্নবা ঙমদে. সেত্তিংসতা অন তৌনবা তেন তৌ.",
+    "goalsCompletedOfTotal": "{total} gi manungda {earned} goal thungna loisinle",
+    "goalsCompletedInLanguage": "{language} da loisinba goal sing",
+    "sessionXpTowardObjective": "Seisan asida {xp} XP; {remaining} na objective loisinba ngamgani"
 }

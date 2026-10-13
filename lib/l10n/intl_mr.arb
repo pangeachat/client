@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-10-09 11:30:29.153514",
+    "@@last_modified": "2026-10-13 09:39:49.553854",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "{count} पैकी मिशन {index}",
     "xpTowardObjective": "या उद्दिष्टासाठी {threshold} XP पैकी {xp} XP",
     "xpOfThreshold": "{threshold} XP पैकी {xp} XP",
-    "sparklesEarnedOfTotal": "{total} स्पार्कल्सपैकी {earned} स्पार्कल्स मिळवले",
-    "sparklesEarnedInLanguage": "{language} मध्ये मिळवलेले स्पार्कल्स",
     "courseComplete": "कोर्स पूर्ण झाला!",
     "courseCompleteDesc": "तुम्ही या कोर्समधील सर्व {count} उद्दिष्ट्ये पूर्ण केली आहेत. तुम्ही जे शिकलात ते लक्षात ठेवण्यासाठी सराव करत रहा.",
     "practiceObjective": "या उद्दिष्टाचा सराव करा",
     "otherActivities": "इतर उपक्रम",
-    "xpToCompleteObjectiveTitle": "प्रत्येक मिशनसाठी XP",
-    "xpToCompleteObjectiveDesc": "प्रत्येक मिशन पूर्ण करण्यासाठी आवश्यक XP सेट करा",
     "objectiveCircleComplete": "मिशन {index}: पूर्ण झाले",
     "objectiveCircleUpNext": "मिशन {index}: पुढे आहे",
-    "useActivityImageAsChatBackground": "चॅटची पार्श्वभूमी म्हणून अ‍ॅक्टिव्हिटी इमेज वापरा",
     "useActivityImageAsChatBackground": "चॅटची पार्श्वभूमी म्हणून अ‍ॅक्टिव्हिटी इमेज वापरा",
     "andCertifyIMeetTheMinimumAge": " आणि मी किमान १३ वर्षांचा आहे, किंवा माझ्या देशात आवश्यक असलेले किमान वय (जर ते जास्त असेल तर) पूर्ण करतो याची ग्वाही देतो.",
     "filteredNetworkBlockedTitle": "हे नेटवर्क पांगिया चॅटला ब्लॉक करत आहे",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "कॉलसाठी तुमचा मायक्रोफोन वापरा",
     "callMicrophoneMessage": "पँजिया चॅटला कॉलसाठी तुमचा मायक्रोफोन आवश्यक आहे, ज्यामध्ये लॉक स्क्रीनवरून उत्तर दिलेले कॉल देखील समाविष्ट आहेत.",
     "callMicrophoneOffTitle": "तुमचा कॉल कनेक्ट झाला नाही",
-    "callMicrophoneOffMessage": "पँजिया चॅट तुमचा मायक्रोफोन वापरू शकत नाही. सेटिंग्जमध्ये तो चालू करण्यासाठी टॅप करा."
+    "callMicrophoneOffMessage": "पँजिया चॅट तुमचा मायक्रोफोन वापरू शकत नाही. सेटिंग्जमध्ये तो चालू करण्यासाठी टॅप करा.",
+    "goalsCompletedOfTotal": "{total} पैकी {earned} उद्दिष्टे पूर्ण झाली",
+    "goalsCompletedInLanguage": "{language} मध्ये पूर्ण झालेली उद्दिष्टे",
+    "sessionXpTowardObjective": "या सत्रात {xp} XP; उद्दिष्ट पूर्ण करण्यासाठी आणखी {remaining} XP"
 }

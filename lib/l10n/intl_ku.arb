@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-09 11:30:23.325581",
+    "@@last_modified": "2026-10-13 09:39:47.104787",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "ئەرکی {index} لە {count}",
     "xpTowardObjective": "{xp} لە {threshold} XP بەرەو ئەم ئامانجە",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} لە {total} بریقە بەدەست هێنراوە",
-    "sparklesEarnedInLanguage": "بریقە بەدەست هێنراوە لە {language}",
     "courseComplete": "خوولەکە تەواو بوو!",
     "courseCompleteDesc": "تۆ هەموو {count} ئامانجەکەت لەم خوولەدا تەواو کرد. بەردەوام بە لە ڕاهێنان بۆ ئەوەی ئەوەی فێربوویت لەبیر نەکەیت.",
     "practiceObjective": "ڕاهێنان لەسەر ئەم ئامانجە بکە",
     "otherActivities": "چالاکییەکانی تر",
-    "xpToCompleteObjectiveTitle": "XP بۆ هەر ئەرکێک",
-    "xpToCompleteObjectiveDesc": "XP پێویست دیاری بکە بۆ تەواوکردنی هەر ئەرکێک",
     "objectiveCircleComplete": "ئەرکی {index}: تەواو بوو",
     "objectiveCircleUpNext": "ئەرکی {index}: داهاتوو",
-    "useActivityImageAsChatBackground": "وێنەی چالاکی وەک پاشبنەمای چات بەکاربهێنە",
     "useActivityImageAsChatBackground": "وێنەی چالاکی وەک پاشبنەمای چات بەکاربهێنە",
     "andCertifyIMeetTheMinimumAge": " و پشتڕاستی دەکەمەوە کە تەمەنم لانیکەم 13 ساڵە، یان ئەو تەمەنەی کە لە وڵاتەکەمدا پێویستە ئەگەر لەوە زیاتر بێت.",
     "filteredNetworkBlockedTitle": "ئەم تۆڕە چاتی پانگێا بلۆک دەکات",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "مایکرۆفۆنەکەت بەکاربهێنە بۆ پەیوەندییەکان",
     "callMicrophoneMessage": "Pangea Chat پێویستی بە مایکرۆفۆنەکەت هەیە بۆ پەیوەندییەکان، لەوانەش ئەو پەیوەندییانەی کە لە شاشەی قفڵەوە وەڵامیان دەدەیتەوە.",
     "callMicrophoneOffTitle": "پەیوەندییەکەت نەبەسترا",
-    "callMicrophoneOffMessage": "Pangea Chat ناتوانێت مایکرۆفۆنەکەت بەکاربهێنێت. دەست لێبدە بۆ چالاککردنی لە ڕێکخستنەکان."
+    "callMicrophoneOffMessage": "Pangea Chat ناتوانێت مایکرۆفۆنەکەت بەکاربهێنێت. دەست لێبدە بۆ چالاککردنی لە ڕێکخستنەکان.",
+    "goalsCompletedOfTotal": "{earned} لە {total} ئامانج تەواو کراوە",
+    "goalsCompletedInLanguage": "ئامانجە تەواوکراوەکان لە زمانی {language}",
+    "sessionXpTowardObjective": "{xp} XP لەم دانیشتنەدا؛ {remaining} زیاتر ئامانجەکە تەواو دەکات"
 }

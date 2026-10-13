@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-09 11:30:12.555521",
+    "@@last_modified": "2026-10-13 09:39:46.945809",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Missy {index} fan {count}",
     "xpTowardObjective": "{xp} fan {threshold} XP foar dit doel",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} fan {total} sparkles fertsjinne",
-    "sparklesEarnedInLanguage": "Sparkles fertsjinne yn {language}",
     "courseComplete": "Kursus foltôge!",
     "courseCompleteDesc": "Jo hawwe alle {count} doelen yn dizze kursus foltôge. Bliuw oefenjen om te behâlden wat jo leard hawwe.",
     "practiceObjective": "Oefenje dit doel",
     "otherActivities": "Oare aktiviteiten",
-    "xpToCompleteObjectiveTitle": "XP per missy",
-    "xpToCompleteObjectiveDesc": "Stel de XP yn dy't nedich is om elke missy te foltôgjen",
     "objectiveCircleComplete": "Missy {index}: foltôge",
     "objectiveCircleUpNext": "Missy {index}: folgjende",
-    "useActivityImageAsChatBackground": "Brûk aktiviteitsôfbylding as petear eftergrûn",
     "useActivityImageAsChatBackground": "Brûk aktiviteitsôfbylding as petear eftergrûn",
     "andCertifyIMeetTheMinimumAge": " en ferklearje dat ik op syn minst 13 jier âld bin, of de minimumleeftyd dy't yn myn lân fereaske is as dy heger is.",
     "filteredNetworkBlockedTitle": "Dit netwurk blokkearret Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Brûk dyn mikrofoan foar petearen",
     "callMicrophoneMessage": "Pangea Chat hat dyn mikrofoan nedich foar petearen, ynklusyf petearen dy'tst beäntwurdest fanút it skoattelskerm.",
     "callMicrophoneOffTitle": "Dyn petear is net ferbûn",
-    "callMicrophoneOffMessage": "Pangea Chat kin dyn mikrofoan net brûke. Tik om it ynstellings yn te skeakeljen."
+    "callMicrophoneOffMessage": "Pangea Chat kin dyn mikrofoan net brûke. Tik om it ynstellings yn te skeakeljen.",
+    "goalsCompletedOfTotal": "{earned} fan {total} doelen foltôge",
+    "goalsCompletedInLanguage": "Doelen foltôge yn it {language}",
+    "sessionXpTowardObjective": "{xp} XP dizze sesje; noch {remaining} foltôget de doelstelling"
 }

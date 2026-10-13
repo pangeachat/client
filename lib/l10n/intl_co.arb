@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-09 11:30:18.282570",
+    "@@last_modified": "2026-10-13 09:39:38.043304",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Missione {index} di {count}",
     "xpTowardObjective": "{xp} di {threshold} XP versu st'ughjettivu",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} di {total} scintille guadagnate",
-    "sparklesEarnedInLanguage": "Scintille guadagnate in {language}",
     "courseComplete": "Corsu cumplettu!",
     "courseCompleteDesc": "Avete cumplettatu tutti i {count} ughjettivi di stu corsu. Cuntinuate à praticà per mantene ciò chì avete amparatu.",
     "practiceObjective": "Praticà st'ughjettivu",
     "otherActivities": "Altre attività",
-    "xpToCompleteObjectiveTitle": "XP per Missione",
-    "xpToCompleteObjectiveDesc": "Definisce l'XP necessarii per cumplettà ogni missione",
     "objectiveCircleComplete": "Missione {index}: compia",
     "objectiveCircleUpNext": "Missione {index}: dopu",
-    "useActivityImageAsChatBackground": "Aduprà l'imagine di l'attività cum'è fondu di chat",
     "useActivityImageAsChatBackground": "Aduprà l'imagine di l'attività cum'è fondu di chat",
     "andCertifyIMeetTheMinimumAge": " è certificu d'avè almenu 13 anni, o l'età minima richiesta in u mo paese s'ella hè più alta.",
     "filteredNetworkBlockedTitle": "Sta reta bluccheghja Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Aduprate u vostru microfonu per e chjame",
     "callMicrophoneMessage": "Pangea Chat hà bisognu di u vostru microfonu per e chjame, cumprese e chjame chì rispondi da u screnu di bloccu.",
     "callMicrophoneOffTitle": "A vostra chjama ùn s'hè cunnessa",
-    "callMicrophoneOffMessage": "Pangea Chat ùn pò micca aduprà u vostru microfonu. Toccate per accende lu in i Paràmetri."
+    "callMicrophoneOffMessage": "Pangea Chat ùn pò micca aduprà u vostru microfonu. Toccate per accende lu in i Paràmetri.",
+    "goalsCompletedOfTotal": "{earned} di {total} scopi compii",
+    "goalsCompletedInLanguage": "Scopi compii in {language}",
+    "sessionXpTowardObjective": "{xp} XP sta sessione; {remaining} di più compie l'obiettivu"
 }

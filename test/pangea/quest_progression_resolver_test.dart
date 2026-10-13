@@ -8,13 +8,13 @@ void main() {
     List<String> seq,
     Map<String, Set<String>> acts, {
     String courseId = 'c1',
-    int xpToComplete = kDefaultXpToCompleteObjective,
-    Map<String, Set<String>> vocab = const {},
+    // The scenarios are sized to a 300 XP threshold; the shipped default
+    // (the Standard preset) is not what they test.
+    int xpToComplete = 300,
   }) => CourseLoOutline(
     courseId: courseId,
     orderedLoIds: seq,
     activityIdsByLo: acts,
-    vocabLemmasByLo: vocab,
     xpToComplete: xpToComplete,
   );
 
@@ -105,44 +105,27 @@ void main() {
     });
   });
 
-  group('resolveProgression — practice XP via the Mission\'s vocabulary', () {
-    test('practice XP on a target lemma credits the Mission', () {
+  group('ProgressionResolution.missionForActivity', () {
+    test('the anchor Mission wins when the activity carries it, else the first '
+        'Mission listing it; null outside every quest', () {
       final r = resolveProgression(
         outlines: [
           outline(
-            ['m1'],
+            ['m1', 'm2'],
             {
               'm1': {'a'},
+              'm2': {'a', 'b'},
             },
-            vocab: {
-              'm1': {'hola', 'adiós'},
-            },
+            xpToComplete: 300,
           ),
         ],
-        xpByActivity: {'a': 100},
-        xpByLemma: {'hola': 40, 'adiós': 20},
+        xpByActivity: {'a': 150},
       );
-      expect(rollupOf(r)['m1']!.xp, 160);
-    });
-
-    test('a lemma outside the Mission\'s vocabulary is not credited', () {
-      final r = resolveProgression(
-        outlines: [
-          outline(
-            ['m1'],
-            {
-              'm1': {'a'},
-            },
-            vocab: {
-              'm1': {'hola'},
-            },
-          ),
-        ],
-        xpByActivity: const {},
-        xpByLemma: {'gracias': 500},
-      );
-      expect(rollupOf(r)['m1']!.xp, 0);
-      expect(rollupOf(r)['m1']!.satisfied, isFalse);
+      expect(r.forCourse('c1')!.anchorMissionId, 'm1');
+      expect(r.missionForActivity('a')!.missionId, 'm1');
+      expect(r.missionForActivity('a')!.progress.xp, 150);
+      expect(r.missionForActivity('b')!.missionId, 'm2');
+      expect(r.missionForActivity('zzz'), isNull);
     });
   });
 

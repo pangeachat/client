@@ -3089,7 +3089,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-09 11:30:35.107267",
+    "@@last_modified": "2026-10-13 09:40:01.866173",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10584,17 +10584,12 @@
     "missionNofM": "ภารกิจที่ {index} จาก {count}",
     "xpTowardObjective": "{xp} จาก {threshold} XP สู่เป้าหมายนี้",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "ได้รับประกายดาวแล้ว {earned} จาก {total}",
-    "sparklesEarnedInLanguage": "ประกายดาวที่ได้รับในภาษา {language}",
     "courseComplete": "เรียนจบคอร์สแล้ว!",
     "courseCompleteDesc": "คุณทำเป้าหมายครบทั้ง {count} ข้อในคอร์สนี้แล้ว ฝึกฝนต่อไปเพื่อรักษาความรู้ที่ได้มา",
     "practiceObjective": "ฝึกฝนเป้าหมายนี้",
     "otherActivities": "กิจกรรมอื่นๆ",
-    "xpToCompleteObjectiveTitle": "XP ต่อภารกิจ",
-    "xpToCompleteObjectiveDesc": "กำหนด XP ที่จำเป็นในการทำแต่ละภารกิจให้สำเร็จ",
     "objectiveCircleComplete": "ภารกิจที่ {index}: สำเร็จ",
     "objectiveCircleUpNext": "ภารกิจที่ {index}: ถัดไป",
-    "useActivityImageAsChatBackground": "ใช้รูปภาพกิจกรรมเป็นพื้นหลังแชท",
     "useActivityImageAsChatBackground": "ใช้รูปภาพกิจกรรมเป็นพื้นหลังแชท",
     "andCertifyIMeetTheMinimumAge": " และรับรองว่าฉันมีอายุอย่างน้อย 13 ปี หรืออายุขั้นต่ำที่กำหนดในประเทศของฉัน หากอายุขั้นต่ำนั้นสูงกว่า",
     "filteredNetworkBlockedTitle": "เครือข่ายนี้บล็อก Pangea Chat",
@@ -10617,5 +10612,8 @@
     "callMicrophoneTitle": "ใช้ไมโครโฟนของคุณสำหรับการโทร",
     "callMicrophoneMessage": "Pangea Chat ต้องใช้ไมโครโฟนของคุณสำหรับการโทร รวมถึงการโทรที่คุณรับจากหน้าจอล็อก",
     "callMicrophoneOffTitle": "การโทรของคุณไม่สามารถเชื่อมต่อได้",
-    "callMicrophoneOffMessage": "Pangea Chat ไม่สามารถใช้ไมโครโฟนของคุณได้ แตะเพื่อเปิดใช้งานในการตั้งค่า"
+    "callMicrophoneOffMessage": "Pangea Chat ไม่สามารถใช้ไมโครโฟนของคุณได้ แตะเพื่อเปิดใช้งานในการตั้งค่า",
+    "goalsCompletedOfTotal": "ทำเป้าหมายสำเร็จแล้ว {earned} จาก {total} รายการ",
+    "goalsCompletedInLanguage": "เป้าหมายที่ทำสำเร็จในภาษา{language}",
+    "sessionXpTowardObjective": "XP ที่ได้รับในเซสชันนี้ {xp}; อีก {remaining} จะทำให้เป้าหมายสำเร็จ"
 }

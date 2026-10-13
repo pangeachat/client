@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-09 11:30:32.470574",
+    "@@last_modified": "2026-10-13 09:39:54.162456",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Missioun {index} vun {count}",
     "xpTowardObjective": "{xp} vun {threshold} XP fir dëst Zil",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} vun {total} Sparkles verdéngt",
-    "sparklesEarnedInLanguage": "Sparkles verdéngt an {language}",
     "courseComplete": "Cours ofgeschloss!",
     "courseCompleteDesc": "Du hues all {count} Ziler an dësem Cours ofgeschloss. Maach weider mat üben, fir dat ze behalen, wat s du geléiert hues.",
     "practiceObjective": "Dëst Zil üben",
     "otherActivities": "Aner Aktivitéiten",
-    "xpToCompleteObjectiveTitle": "XP pro Missioun",
-    "xpToCompleteObjectiveDesc": "Setzt d'XP, déi néideg sinn, fir all Missioun ofzeschléissen",
     "objectiveCircleComplete": "Missioun {index}: ofgeschloss",
     "objectiveCircleUpNext": "Missioun {index}: als nächst",
-    "useActivityImageAsChatBackground": "Aktivitéitsbild als Chat-Hannergrond benotzen",
     "useActivityImageAsChatBackground": "Aktivitéitsbild als Chat-Hannergrond benotzen",
     "andCertifyIMeetTheMinimumAge": " an ech bestätegen, datt ech op d'mannst 13 Joer al sinn, oder den Mindestalter, deen a mengem Land erfuerderlech ass, wann deen méi héich ass.",
     "filteredNetworkBlockedTitle": "Dëst Netzwierk blockéiert de Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Benotzt Äre Mikro fir Uriff",
     "callMicrophoneMessage": "Pangea Chat brauch Äre Mikro fir Uriff, och Uriff déi Dir vum Spärbildschierm beäntwert.",
     "callMicrophoneOffTitle": "Ären Uruff gouf net ugeschloss",
-    "callMicrophoneOffMessage": "Pangea Chat kann Äre Mikro net benotzen. Tippen fir en an den Astellungen unzeschalten."
+    "callMicrophoneOffMessage": "Pangea Chat kann Äre Mikro net benotzen. Tippen fir en an den Astellungen unzeschalten.",
+    "goalsCompletedOfTotal": "{earned} vun {total} Ziler erreecht",
+    "goalsCompletedInLanguage": "Ziler erreecht an der Sprooch {language}",
+    "sessionXpTowardObjective": "{xp} XP an dëser Sessioun; {remaining} méi komplettéiert d'Zil"
 }

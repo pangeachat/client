@@ -14,7 +14,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/users/course_member_stats.dart';
 import '../../utils/test_client.dart';
 
-/// What a course page shows about another member (#8438): their banked stars
+/// What a course page shows about another member (#8438): their banked goal checkmarks
 /// and level in THE COURSE'S language, which is not necessarily the language
 /// that member is studying now.
 class _FakeMatrixState extends MatrixState {
@@ -113,24 +113,24 @@ void main() {
     await tester.pumpAndSettle();
   }
 
-  testWidgets('shows the star count for the course language', (tester) async {
+  testWidgets('shows the goal count for the course language', (tester) async {
     await pumpStats(tester, starredId);
     expect(find.text('12'), findsOneWidget);
-    expect(find.byIcon(Icons.star), findsOneWidget);
+    expect(find.byIcon(Icons.check_circle), findsOneWidget);
   });
 
-  testWidgets('a member with a level but no stars shows no star count', (
+  testWidgets('a member with a level but no goals shows no goal count', (
     tester,
   ) async {
     await pumpStats(tester, levelOnlyId);
-    expect(find.byIcon(Icons.star), findsNothing);
+    expect(find.byIcon(Icons.check_circle), findsNothing);
     expect(
       tester.getSize(find.byType(CourseMemberStats)).height,
       greaterThan(0),
     );
   });
 
-  testWidgets("another language's stars are never shown for this course", (
+  testWidgets("another language's goals are never shown for this course", (
     tester,
   ) async {
     await pumpStats(tester, otherLanguageId);
@@ -146,40 +146,42 @@ void main() {
   });
 
   // The shield path fills its box edge to edge; a Material icon insets its
-  // glyph inside its own (`Icons.star` at 16 paints 12.75 of ink). So a shield
-  // that reads as the star's equal is drawn a little SMALLER than the star's
+  // glyph inside its own (`Icons.check_circle` at 16 paints 12.75 of ink). So a shield
+  // that reads as the mark's equal is drawn a little SMALLER than the mark's
   // nominal size — and never larger, which is what the old `iconSize + 2`
   // produced back when the number still had to fit inside it (#8918).
-  testWidgets('the level shield is drawn no larger than the star beside it', (
-    tester,
-  ) async {
-    await pumpStats(tester, starredId);
-    final star = tester.getSize(find.byIcon(Icons.star));
-    final shield = tester.getSize(find.byType(SvgPicture));
-    expect(shield.height, lessThan(star.height));
-    expect(shield.height, greaterThan(star.height * 0.7));
-  });
+  testWidgets(
+    'the level shield is drawn no larger than the checkmark beside it',
+    (tester) async {
+      await pumpStats(tester, starredId);
+      final mark = tester.getSize(find.byIcon(Icons.check_circle));
+      final shield = tester.getSize(find.byType(SvgPicture));
+      expect(shield.height, lessThan(mark.height));
+      expect(shield.height, greaterThan(mark.height * 0.7));
+    },
+  );
 
   // Moving the level number out of the shield widened the row (#8918): the
-  // star pair and the level pair now sit side by side. At normal text size
+  // goal pair and the level pair now sit side by side. At normal text size
   // both must still fit the card outright, with no scale-down — the FittedBox
   // is there for large OS text sizes, not for the default one.
-  testWidgets('the star and level fit the card unscaled at normal text size', (
-    tester,
-  ) async {
-    await pumpStats(tester, bigNumbersId, inCard: true);
-    final row = find
-        .descendant(of: find.byType(FittedBox), matching: find.byType(Row))
-        .first;
-    // getSize is the row's own layout; getRect is what the FittedBox paints.
-    expect(
-      tester.getRect(row).width,
-      closeTo(tester.getSize(row).width, 0.01),
-      reason: 'the row was scaled down to fit the card',
-    );
-    expect(find.text('99'), findsOneWidget);
-    expect(find.text('12'), findsOneWidget);
-  });
+  testWidgets(
+    'the goal count and level fit the card unscaled at normal text size',
+    (tester) async {
+      await pumpStats(tester, bigNumbersId, inCard: true);
+      final row = find
+          .descendant(of: find.byType(FittedBox), matching: find.byType(Row))
+          .first;
+      // getSize is the row's own layout; getRect is what the FittedBox paints.
+      expect(
+        tester.getRect(row).width,
+        closeTo(tester.getSize(row).width, 0.01),
+        reason: 'the row was scaled down to fit the card',
+      );
+      expect(find.text('99'), findsOneWidget);
+      expect(find.text('12'), findsOneWidget);
+    },
+  );
 
   // The card is ~100px wide and 20px high and cannot grow, so at large OS text
   // sizes the row has to scale down rather than overflow. iOS accessibility

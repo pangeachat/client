@@ -5,11 +5,10 @@ import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/user/public_profile_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/widgets/sparkle_icon.dart';
 import 'package:fluffychat/widgets/users/level_ribbon.dart';
 
-/// What a course shows about one of its members: the sparkles (activity goals)
-/// they have banked in the course's language, and their level in it.
+/// What a course shows about one of its members: the activity goals they have
+/// banked in the course's language, and their level in it.
 ///
 /// This is the member's own total across everything they have played in that
 /// language — NOT their progress through this course, which the course panel
@@ -142,23 +141,24 @@ class MemberStatsRow extends StatelessWidget {
         children: [
           if (showStars)
             Tooltip(
-              message: L10n.of(context).sparklesEarnedInLanguage(language),
+              message: L10n.of(context).goalsCompletedInLanguage(language),
               child: Semantics(
-                // The count sits outside the translated phrase: a sparkle
-                // total is a bare number in every language, and keeping it
-                // out avoids a plural form the phrase does not need.
+                // The count sits outside the translated phrase: a goal total
+                // is a bare number in every language, and keeping it out
+                // avoids a plural form the phrase does not need.
                 label:
-                    "${L10n.of(context).sparklesEarnedInLanguage(language)}: "
+                    "${L10n.of(context).goalsCompletedInLanguage(language)}: "
                     "$stars",
                 child: ExcludeSemantics(
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     spacing: 2.0,
                     children: [
-                      // The banked goal total is drawn as a sparkle since
-                      // #9439: the member's activity goals, not completed
-                      // Missions (quests.instructions.md, "Two quantities").
-                      SparkleIcon(
+                      // The banked goal total is drawn as a checkmark (#9420):
+                      // the member's activity goals, not completed Missions
+                      // (quests.instructions.md, "Stars and checkmarks").
+                      Icon(
+                        Icons.check_circle,
                         size: iconSize,
                         color: Theme.of(context).pangea.goldGraphic,
                       ),

@@ -1933,7 +1933,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-09 11:30:23.182045",
+    "@@last_modified": "2026-10-13 09:39:45.086650",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10852,17 +10852,12 @@
     "missionNofM": "მისია {index} / {count}",
     "xpTowardObjective": "{xp} / {threshold} XP ამ მიზნისკენ",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} / {total} ნაპერწკალი მოპოვებულია",
-    "sparklesEarnedInLanguage": "ნაპერწკლები მოპოვებულია {language}-ში",
     "courseComplete": "კურსი დასრულებულია!",
     "courseCompleteDesc": "თქვენ დაასრულეთ ყველა {count} მიზანი ამ კურსში. განაგრძეთ ვარჯიში, რათა შეინარჩუნოთ ნასწავლი.",
     "practiceObjective": "ივარჯიშეთ ამ მიზანზე",
     "otherActivities": "სხვა აქტივობები",
-    "xpToCompleteObjectiveTitle": "XP თითო მისიაზე",
-    "xpToCompleteObjectiveDesc": "დააყენეთ XP, რომელიც საჭიროა თითოეული მისიის დასასრულებლად",
     "objectiveCircleComplete": "მისია {index}: დასრულებულია",
     "objectiveCircleUpNext": "მისია {index}: შემდეგი",
-    "useActivityImageAsChatBackground": "აქტივობის სურათის გამოყენება ჩეთის ფონად",
     "useActivityImageAsChatBackground": "აქტივობის სურათის გამოყენება ჩეთის ფონად",
     "andCertifyIMeetTheMinimumAge": " და ვადასტურებ, რომ ვარ მინიმუმ 13 წლის, ან ჩემს ქვეყანაში მოთხოვნილი მინიმალური ასაკის, თუ ის უფრო მაღალია.",
     "filteredNetworkBlockedTitle": "ეს ქსელი ბლოკავს Pangea Chat-ს",
@@ -10885,5 +10880,8 @@
     "callMicrophoneTitle": "გამოიყენეთ მიკროფონი ზარებისთვის",
     "callMicrophoneMessage": "Pangea Chat-ს სჭირდება თქვენი მიკროფონი ზარებისთვის, მათ შორის ზარებისთვის, რომლებსაც უპასუხებთ დაბლოკილი ეკრანიდან.",
     "callMicrophoneOffTitle": "თქვენი ზარი არ დაკავშირდა",
-    "callMicrophoneOffMessage": "Pangea Chat-ს არ შეუძლია თქვენი მიკროფონის გამოყენება. შეეხეთ, რომ ჩართოთ პარამეტრებში."
+    "callMicrophoneOffMessage": "Pangea Chat-ს არ შეუძლია თქვენი მიკროფონის გამოყენება. შეეხეთ, რომ ჩართოთ პარამეტრებში.",
+    "goalsCompletedOfTotal": "{earned} of {total} მიზანი შესრულებულია",
+    "goalsCompletedInLanguage": "{language} ენაზე შესრულებული მიზნები",
+    "sessionXpTowardObjective": "{xp} XP ამ სესიაზე; {remaining} მეტი და მიზანი შესრულდება"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-09 11:30:39.526324",
+    "@@last_modified": "2026-10-13 09:40:00.587468",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Umsebenzi {index} woku {count}",
     "xpTowardObjective": "{xp} woku {threshold} XP kule nhloso",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} kwezingu {total} izinhlansi ezitholiwe",
-    "sparklesEarnedInLanguage": "Izinhlansi ezitholiwe ngesi {language}",
     "courseComplete": "Isifundo siqedile!",
     "courseCompleteDesc": "Usuqedile zonke izinhloso ezingu {count} kulesi sifundo. Qhubeka nokuzijwayeza ukuze ugcine lokho okufundile.",
     "practiceObjective": "Zijwayeze le nhloso",
     "otherActivities": "Eminye imisebenzi",
-    "xpToCompleteObjectiveTitle": "I-XP Ngomsebenzi Ngamunye",
-    "xpToCompleteObjectiveDesc": "Setha i-XP edingekayo ukuze uqedele umsebenzi ngamunye",
     "objectiveCircleComplete": "Umsebenzi {index}: uqedile",
     "objectiveCircleUpNext": "Umsebenzi {index}: olandelayo",
-    "useActivityImageAsChatBackground": "Sebenzisa isithombe somsebenzi njengesizinda sengxoxo",
     "useActivityImageAsChatBackground": "Sebenzisa isithombe somsebenzi njengesizinda sengxoxo",
     "andCertifyIMeetTheMinimumAge": " futhi ngiqinisekisa ukuthi ngineminyaka engu-13 ubudala noma ngaphezulu, noma ubuncane beminyaka edingekayo ezweni lami uma lokho kuphakeme.",
     "filteredNetworkBlockedTitle": "Le nethiwekhi ivimba i-Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Sebenzisa imakrofoni yakho ukuze ushaye izingcingo",
     "callMicrophoneMessage": "I-Pangea Chat idinga imakrofoni yakho ukuze ushaye izingcingo, okuhlanganisa nezingcingo oziphendulayo esikrinini esikhiyiwe.",
     "callMicrophoneOffTitle": "Ucingo lwakho aluxhumekanga",
-    "callMicrophoneOffMessage": "I-Pangea Chat ayikwazi ukusebenzisa imakrofoni yakho. Thepha ukuze uyivule kokuthi Izilungiselelo."
+    "callMicrophoneOffMessage": "I-Pangea Chat ayikwazi ukusebenzisa imakrofoni yakho. Thepha ukuze uyivule kokuthi Izilungiselelo.",
+    "goalsCompletedOfTotal": "Imigomo engu-{earned} kweyangu-{total} isiqediwe",
+    "goalsCompletedInLanguage": "Imigomo eqedwe ngesi-{language}",
+    "sessionXpTowardObjective": "I-XP engu-{xp} kulesi sifundo; kusele engu-{remaining} ukuze kuqedwe inhloso"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-09 11:30:21.816288",
+    "@@last_modified": "2026-10-13 09:39:40.801778",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Misean {index} de {count}",
     "xpTowardObjective": "{xp} de {threshold} XP a dh'ionnsaigh an amais seo",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} de {total} boillsgein air an cosnadh",
-    "sparklesEarnedInLanguage": "Boillsgein air an cosnadh ann an {language}",
     "courseComplete": "Cùrsa deiseil!",
     "courseCompleteDesc": "Tha thu air na {count} amasan sa chùrsa seo a choileanadh. Cùm ort ag cleachdadh gus na dh'ionnsaich thu a chumail.",
     "practiceObjective": "Cleachd an amas seo",
     "otherActivities": "Gnìomhan eile",
-    "xpToCompleteObjectiveTitle": "XP gach Misean",
-    "xpToCompleteObjectiveDesc": "Suidhich an XP a tha a dhìth gus gach misean a choileanadh",
     "objectiveCircleComplete": "Misean {index}: deiseil",
     "objectiveCircleUpNext": "Misean {index}: an ath fhear",
-    "useActivityImageAsChatBackground": "Cleachd dealbh gnìomhachd mar chùl-raon cabadaich",
     "useActivityImageAsChatBackground": "Cleachd dealbh gnìomhachd mar chùl-raon cabadaich",
     "andCertifyIMeetTheMinimumAge": " agus dearbhaichidh mi gu bheil mi co-dhiù 13 bliadhna a dh'aois, no an aois as ìsle a tha a dhìth nam dhùthaich ma tha sin nas àirde.",
     "filteredNetworkBlockedTitle": "Tha an lìonra seo a' bacadh Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Cleachd am micreofon agad airson gairmean",
     "callMicrophoneMessage": "Tha feum aig Pangea Chat air a’ mhicreofon agad airson gairmean, a’ gabhail a-steach gairmean a fhreagras tu bhon sgrìn-ghlasaidh.",
     "callMicrophoneOffTitle": "Cha do cheangail a’ ghairm agad",
-    "callMicrophoneOffMessage": "Chan urrainn do Pangea Chat am micreofon agad a chleachdadh. Tap air gus a thionndadh air ann an Roghainnean."
+    "callMicrophoneOffMessage": "Chan urrainn do Pangea Chat am micreofon agad a chleachdadh. Tap air gus a thionndadh air ann an Roghainnean.",
+    "goalsCompletedOfTotal": "{earned} de {total} amasan air an coileanadh",
+    "goalsCompletedInLanguage": "Amasan air an coileanadh ann an {language}",
+    "sessionXpTowardObjective": "{xp} XP an-dràsta; {remaining} eile a' coileanadh an amasa"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 11:30:48.450546",
+    "@@last_modified": "2026-10-13 09:39:58.591815",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7254,17 +7254,12 @@
     "missionNofM": "Nhiệm vụ {index} trên {count}",
     "xpTowardObjective": "{xp} trên {threshold} XP cho mục tiêu này",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "Kiếm được {earned} trên {total} lấp lánh",
-    "sparklesEarnedInLanguage": "Lấp lánh kiếm được trong {language}",
     "courseComplete": "Hoàn thành khóa học!",
     "courseCompleteDesc": "Bạn đã hoàn thành tất cả {count} mục tiêu trong khóa học này. Hãy tiếp tục luyện tập để giữ vững những gì bạn đã học.",
     "practiceObjective": "Luyện tập mục tiêu này",
     "otherActivities": "Các hoạt động khác",
-    "xpToCompleteObjectiveTitle": "XP mỗi Nhiệm vụ",
-    "xpToCompleteObjectiveDesc": "Đặt số XP cần thiết để hoàn thành mỗi nhiệm vụ",
     "objectiveCircleComplete": "Nhiệm vụ {index}: hoàn thành",
     "objectiveCircleUpNext": "Nhiệm vụ {index}: tiếp theo",
-    "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện",
     "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện",
     "andCertifyIMeetTheMinimumAge": " và xác nhận tôi ít nhất 13 tuổi, hoặc độ tuổi tối thiểu được yêu cầu ở quốc gia của tôi nếu cao hơn.",
     "filteredNetworkBlockedTitle": "Mạng này đang chặn Pangea Chat",
@@ -7287,5 +7282,8 @@
     "callMicrophoneTitle": "Sử dụng micrô của bạn cho cuộc gọi",
     "callMicrophoneMessage": "Pangea Chat cần micrô của bạn cho các cuộc gọi, bao gồm cả các cuộc gọi bạn trả lời từ màn hình khóa.",
     "callMicrophoneOffTitle": "Cuộc gọi của bạn không kết nối được",
-    "callMicrophoneOffMessage": "Pangea Chat không thể sử dụng micrô của bạn. Nhấn để bật micrô trong Cài đặt."
+    "callMicrophoneOffMessage": "Pangea Chat không thể sử dụng micrô của bạn. Nhấn để bật micrô trong Cài đặt.",
+    "goalsCompletedOfTotal": "{earned} trên {total} mục tiêu đã hoàn thành",
+    "goalsCompletedInLanguage": "Mục tiêu đã hoàn thành bằng tiếng {language}",
+    "sessionXpTowardObjective": "{xp} XP trong phiên này; cần thêm {remaining} để hoàn thành mục tiêu"
 }

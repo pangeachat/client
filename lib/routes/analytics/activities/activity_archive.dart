@@ -180,8 +180,11 @@ class _ActivityArchiveState extends State<ActivityArchive> {
   }
 }
 
-/// The page's list: per course, its Missions in order with their sessions
-/// beneath, then the sessions no joined course's plan accounts for.
+/// The page's list: one item per can-do across the learner's joined courses,
+/// in course order — a Mission two courses share is one item, read from the
+/// first — each collapsed to its statement and XP with the saved sessions that
+/// fed it behind a tap; then the sessions no joined course's plan accounts
+/// for, under "Other activities".
 class _ObjectiveList extends StatelessWidget {
   final List<CourseMissions> courses;
   final ProgressionResolution progression;
@@ -199,17 +202,13 @@ class _ObjectiveList extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
     final placed = <String>{};
+    final seen = <String>{};
     final children = <Widget>[];
     for (final course in courses) {
-      // One course is the common case and needs no heading over its
-      // Missions; two or more are told apart by name.
-      if (courses.length > 1) {
-        children.add(
-          _Heading(course.room.getLocalizedDisplayname(MatrixLocals(l10n))),
-        );
-      }
       final quest = progression.forCourse(course.room.id);
       for (final group in course.groups) {
+        final missionId = group.objective.id;
+        if (!seen.add(missionId)) continue;
         final ids = {for (final a in group.activities) a.activityId};
         // A session is listed once, under the first Mission its activity
         // serves — the add returns false for one already placed.
@@ -218,12 +217,13 @@ class _ObjectiveList extends StatelessWidget {
             if (ids.contains(room.activityId) && placed.add(room.id)) room,
         ];
         children.add(
-          _MissionRow(
+          _MissionTile(
             group: group,
-            progress: quest?.rollup[group.objective.id],
+            progress: quest?.rollup[missionId],
+            sessions: sessions,
+            selectedRoomId: selectedRoomId,
           ),
         );
-        children.addAll(sessions.map(_row));
       }
     }
     final other = [
@@ -231,8 +231,16 @@ class _ObjectiveList extends StatelessWidget {
         if (!placed.contains(room.id)) room,
     ];
     if (other.isNotEmpty) {
-      if (courses.isNotEmpty) children.add(_Heading(l10n.otherActivities));
-      children.addAll(other.map(_row));
+      if (children.isNotEmpty) children.add(_Heading(l10n.otherActivities));
+      children.addAll(
+        other.map(
+          (room) => AnalyticsActivityItem(
+            room: room,
+            rovingId: room.id,
+            selected: room.id == selectedRoomId,
+          ),
+        ),
+      );
     }
     return Semantics(
       label: l10n.starListLabel,
@@ -250,12 +258,6 @@ class _ObjectiveList extends StatelessWidget {
       ),
     );
   }
-
-  Widget _row(Room room) => AnalyticsActivityItem(
-    room: room,
-    rovingId: room.id,
-    selected: room.id == selectedRoomId,
-  );
 }
 
 class _Heading extends StatelessWidget {
@@ -269,56 +271,87 @@ class _Heading extends StatelessWidget {
   );
 }
 
-/// A Mission's line: its star (a check once complete), its can-do statement,
-/// its XP over the threshold when resolved, and Practice scoped to it
-/// (#9438). The sessions that fed it follow as rows.
-class _MissionRow extends StatelessWidget {
+/// One can-do: its star (filled once complete), its statement, its XP over the
+/// threshold when resolved, and Practice scoped to it (#9438). A tap on the
+/// statement shows the saved sessions that fed it; it opens already showing
+/// them when one of them is the open session.
+class _MissionTile extends StatefulWidget {
   final QuestObjectiveGroup group;
   final MissionProgress? progress;
+  final List<Room> sessions;
+  final String? selectedRoomId;
 
-  const _MissionRow({required this.group, required this.progress});
+  const _MissionTile({
+    required this.group,
+    required this.progress,
+    required this.sessions,
+    required this.selectedRoomId,
+  });
+
+  @override
+  State<_MissionTile> createState() => _MissionTileState();
+}
+
+class _MissionTileState extends State<_MissionTile> {
+  late bool _expanded = widget.sessions.any(
+    (room) => room.id == widget.selectedRoomId,
+  );
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = L10n.of(context);
-    final progress = this.progress;
+    final progress = widget.progress;
     final satisfied = progress?.satisfied ?? false;
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(8.0, 12.0, 8.0, 4.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            spacing: 8.0,
-            children: [
-              // The star the Mission earned, once it has — nothing before,
-              // so an XP count in progress is never read as a star count.
-              // The slot stays so statements align down the list.
-              SizedBox(
-                width: 20.0,
-                child: satisfied
-                    ? Icon(
-                        Icons.star,
-                        size: 20.0,
-                        color: theme.pangea.goldGraphic,
-                      )
-                    : null,
-              ),
-              Expanded(
-                child: Text(
-                  group.objective.objective,
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.w500,
-                    color: satisfied
-                        ? theme.colorScheme.onSurfaceVariant
-                        : null,
+    final hasSessions = widget.sessions.isNotEmpty;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Semantics(
+          button: hasSessions,
+          expanded: hasSessions ? _expanded : null,
+          child: InkWell(
+            onTap: hasSessions
+                ? () => setState(() => _expanded = !_expanded)
+                : null,
+            borderRadius: BorderRadius.circular(8.0),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(8.0, 12.0, 8.0, 4.0),
+              child: Row(
+                spacing: 8.0,
+                children: [
+                  // The star marks the objective from the moment it appears;
+                  // completion fills it (org quests doc).
+                  Icon(
+                    satisfied ? Icons.star : Icons.star_border,
+                    size: 20.0,
+                    color: theme.pangea.goldGraphic,
                   ),
-                ),
+                  Expanded(
+                    child: Text(
+                      widget.group.objective.objective,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: satisfied
+                            ? theme.colorScheme.onSurfaceVariant
+                            : null,
+                      ),
+                    ),
+                  ),
+                  if (hasSessions)
+                    Icon(
+                      _expanded ? Icons.expand_less : Icons.expand_more,
+                      size: 20.0,
+                      color: theme.colorScheme.onSurfaceVariant,
+                    ),
+                ],
               ),
-            ],
+            ),
           ),
-          Row(
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 4.0),
+          child: Row(
             children: [
               if (progress != null)
                 Padding(
@@ -349,7 +382,7 @@ class _MissionRow extends StatelessWidget {
                   onPressed: () => startPractice(
                     context,
                     ConstructTypeEnum.vocab,
-                    missionId: group.objective.id,
+                    missionId: widget.group.objective.id,
                   ),
                   icon: const Icon(Symbols.fitness_center, size: 18.0),
                   label: Text(
@@ -360,8 +393,15 @@ class _MissionRow extends StatelessWidget {
               ),
             ],
           ),
-        ],
-      ),
+        ),
+        if (_expanded)
+          for (final room in widget.sessions)
+            AnalyticsActivityItem(
+              room: room,
+              rovingId: room.id,
+              selected: room.id == widget.selectedRoomId,
+            ),
+      ],
     );
   }
 }

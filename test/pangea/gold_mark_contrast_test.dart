@@ -6,7 +6,6 @@ import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_status_widget.dart';
 import 'package:fluffychat/routes/world/world_map_star_dot.dart';
-import 'package:fluffychat/widgets/sparkle_icon.dart';
 import 'contrast_ratio.dart';
 
 /// The sibling gold marks #8760 left out of scope (#8983). Each one's fill is
@@ -49,9 +48,9 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      // A goal is a sparkle, never a star (#9439): the goal header's mark is
-      // a [SparkleIcon], whose colour is the fill.
-      final gold = tester.widget<SparkleIcon>(find.byType(SparkleIcon)).color;
+      // A completed goal is a checkmark, never a star (#9420): the goal
+      // header's mark is an [Icon], whose colour is the fill.
+      final gold = tester.widget<Icon>(find.byType(Icon)).color!;
 
       // The sparkle's real backdrops. It rides the goal header card, which is
       // `surface` until the role is complete and a gold tint after; the active

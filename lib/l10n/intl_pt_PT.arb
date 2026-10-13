@@ -2555,7 +2555,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-09 11:30:32.037835",
+    "@@last_modified": "2026-10-13 09:39:53.983857",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10869,17 +10869,12 @@
     "missionNofM": "Missão {index} de {count}",
     "xpTowardObjective": "{xp} de {threshold} XP para este objetivo",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} de {total} brilhos ganhos",
-    "sparklesEarnedInLanguage": "Brilhos ganhos em {language}",
     "courseComplete": "Curso concluído!",
     "courseCompleteDesc": "Concluíste todos os {count} objetivos deste curso. Continua a praticar para manteres o que aprendeste.",
     "practiceObjective": "Praticar este objetivo",
     "otherActivities": "Outras atividades",
-    "xpToCompleteObjectiveTitle": "XP por Missão",
-    "xpToCompleteObjectiveDesc": "Define o XP necessário para completar cada missão",
     "objectiveCircleComplete": "Missão {index}: concluída",
     "objectiveCircleUpNext": "Missão {index}: a seguir",
-    "useActivityImageAsChatBackground": "Usar imagem da atividade como fundo do chat",
     "useActivityImageAsChatBackground": "Usar imagem da atividade como fundo do chat",
     "andCertifyIMeetTheMinimumAge": " e certifico que tenho pelo menos 13 anos de idade, ou a idade mínima exigida no meu país, se for superior.",
     "filteredNetworkBlockedTitle": "Esta rede está a bloquear o Pangea Chat",
@@ -10902,5 +10897,8 @@
     "callMicrophoneTitle": "Use o seu microfone para chamadas",
     "callMicrophoneMessage": "O Pangea Chat precisa do seu microfone para chamadas, incluindo chamadas que atende a partir do ecrã de bloqueio.",
     "callMicrophoneOffTitle": "A sua chamada não foi conectada",
-    "callMicrophoneOffMessage": "O Pangea Chat não consegue usar o seu microfone. Toque para ativá-lo nas Definições."
+    "callMicrophoneOffMessage": "O Pangea Chat não consegue usar o seu microfone. Toque para ativá-lo nas Definições.",
+    "goalsCompletedOfTotal": "{earned} de {total} objetivos concluídos",
+    "goalsCompletedInLanguage": "Objetivos concluídos em {language}",
+    "sessionXpTowardObjective": "{xp} XP nesta sessão; faltam {remaining} para concluir o objetivo"
 }

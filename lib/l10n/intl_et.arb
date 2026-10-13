@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-09 11:30:11.487452",
+    "@@last_modified": "2026-10-13 09:39:41.002848",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9949,17 +9949,12 @@
     "missionNofM": "Missioon {index} / {count}",
     "xpTowardObjective": "{xp} / {threshold} XP selle eesmärgi suunas",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} / {total} sädemeid teenitud",
-    "sparklesEarnedInLanguage": "Sädemeid teenitud keeles {language}",
     "courseComplete": "Kursus läbitud!",
     "courseCompleteDesc": "Olete läbinud kõik {count} selle kursuse eesmärgid. Jätkake harjutamist, et õpitut meeles pidada.",
     "practiceObjective": "Harjuta seda eesmärki",
     "otherActivities": "Muud tegevused",
-    "xpToCompleteObjectiveTitle": "XP missiooni kohta",
-    "xpToCompleteObjectiveDesc": "Määra XP, mis on vajalik iga missiooni läbimiseks",
     "objectiveCircleComplete": "Missioon {index}: täidetud",
     "objectiveCircleUpNext": "Missioon {index}: järgmine",
-    "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
     "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
     "andCertifyIMeetTheMinimumAge": " ja kinnitan, et olen vähemalt 13-aastane või minu riigis nõutavast vanusest vanem, kui see on kõrgem.",
     "filteredNetworkBlockedTitle": "See võrk blokeerib Pangea Chati",
@@ -9982,5 +9977,8 @@
     "callMicrophoneTitle": "Kasuta kõnede jaoks mikrofoni",
     "callMicrophoneMessage": "Pangea Chat vajab kõnede jaoks teie mikrofoni, sealhulgas kõnede jaoks, millele vastate lukustuskuvalt.",
     "callMicrophoneOffTitle": "Teie kõne ei ühendunud",
-    "callMicrophoneOffMessage": "Pangea Chat ei saa teie mikrofoni kasutada. Puudutage, et see seadetes sisse lülitada."
+    "callMicrophoneOffMessage": "Pangea Chat ei saa teie mikrofoni kasutada. Puudutage, et see seadetes sisse lülitada.",
+    "goalsCompletedOfTotal": "{earned} {total}-st eesmärgist täidetud",
+    "goalsCompletedInLanguage": "Keele {language} eesmärgid täidetud",
+    "sessionXpTowardObjective": "{xp} XP sellel sessioonil; {remaining} veel täidab eesmärgi"
 }

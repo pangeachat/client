@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-09 11:30:20.586544",
+    "@@last_modified": "2026-10-13 09:39:47.555302",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "{count} миссияның {index}-і",
     "xpTowardObjective": "Осы мақсатқа қарай {threshold} XP-дан {xp} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{total} жарқыраудың {earned}-і табылды",
-    "sparklesEarnedInLanguage": "{language} тілінде табылған жарқыраулар",
     "courseComplete": "Курс аяқталды!",
     "courseCompleteDesc": "Сіз осы курстағы барлық {count} мақсатты аяқтадыңыз. Үйренгеніңізді есте сақтау үшін жаттығуды жалғастырыңыз.",
     "practiceObjective": "Осы мақсатты жаттықтыру",
     "otherActivities": "Басқа әрекеттер",
-    "xpToCompleteObjectiveTitle": "Миссияға шаққандағы XP",
-    "xpToCompleteObjectiveDesc": "Әр миссияны аяқтау үшін қажетті XP-ны орнатыңыз",
     "objectiveCircleComplete": "Миссия {index}: аяқталды",
     "objectiveCircleUpNext": "Миссия {index}: келесі",
-    "useActivityImageAsChatBackground": "Әрекет кескінін чат фоны ретінде пайдалану",
     "useActivityImageAsChatBackground": "Әрекет кескінін чат фоны ретінде пайдалану",
     "andCertifyIMeetTheMinimumAge": " және мен 13 жастан асқанымды немесе егер ол жоғары болса, елімде талап етілетін ең төменгі жасқа толғанымды растаймын.",
     "filteredNetworkBlockedTitle": "Бұл желі Pangea Chat-ты бұғаттап тастады",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Қоңыраулар үшін микрофоныңызды пайдаланыңыз",
     "callMicrophoneMessage": "Pangea Chat қоңыраулар үшін микрофоныңызды қажет етеді, соның ішінде құлыптау экранынан жауап беретін қоңыраулар да бар.",
     "callMicrophoneOffTitle": "Қоңырауыңыз қосылмады",
-    "callMicrophoneOffMessage": "Pangea Chat микрофоныңызды пайдалана алмайды. Параметрлерде қосу үшін түртіңіз."
+    "callMicrophoneOffMessage": "Pangea Chat микрофоныңызды пайдалана алмайды. Параметрлерде қосу үшін түртіңіз.",
+    "goalsCompletedOfTotal": "{total} мақсаттың {earned} орындалды",
+    "goalsCompletedInLanguage": "{language} тілінде орындалған мақсаттар",
+    "sessionXpTowardObjective": "Осы сессияда {xp} XP; {remaining} қалды, мақсат орындалды"
 }

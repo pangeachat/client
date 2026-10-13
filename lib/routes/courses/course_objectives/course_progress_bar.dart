@@ -133,7 +133,7 @@ class ProgressBarRow extends StatelessWidget {
           // The goal star, inside the bar at the right end, in the mark gold so
           // it clears 3:1 on the track; at full progress it sits on the fill as
           // the silhouette the surface-coloured outline star behind it draws.
-          // A star, not a sparkle: the full bar is a completed Mission.
+          // A star, not a checkmark: the full bar is a completed Mission.
           Positioned(
             right: 5.0,
             child: SizedBox(

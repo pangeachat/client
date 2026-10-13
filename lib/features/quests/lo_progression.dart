@@ -4,17 +4,17 @@
 // network. Nothing is locked anymore; progression only ranks (#7186). Design:
 // quests.instructions.md.
 
-/// The XP a learner must earn toward a Mission for it to count as complete
-/// (#9420), when the course sets no override. A teacher may override this per
-/// course ("XP per Mission"). A hand-set lever: roughly one or two solid
-/// activity sessions plus some practice, tuned by observation.
-const int kDefaultXpToCompleteObjective = 300;
+/// The XP a learner must earn under a Mission for it to count as complete
+/// (#9420) when the course sets no override: the Standard preset, sized from
+/// measured sessions as two activities with their goals at typical assistance
+/// use. The instructor picks a preset or a custom value in the admin dashboard
+/// (org quests-and-learning-objectives doc, "XP per objective").
+const int kDefaultXpToCompleteObjective = 1600;
 
-/// The share of a session's XP each sparkle (orchestrator-awarded goal) adds
-/// on top of it: a session that earned three sparkles counts for 1.3× its XP
-/// toward the Mission (#9439, the "minor goal multiplier"). Goals guide the
-/// conversation and reward it a little; the XP is what fills the meter.
-const double kSparkleXpBonus = 0.1;
+/// What one awarded activity goal — a checkmark — pays into the session's
+/// activity XP, flat. Goals guide the conversation and reward it; the XP is
+/// what completes the Mission (org activities doc, "Activity XP").
+const int kGoalXp = 100;
 
 /// One course's ordered objective sequence and the activities that satisfy each
 /// objective, plus the XP threshold that completes an objective. Built from a
@@ -40,14 +40,8 @@ class CourseLoOutline {
   final List<String> orderedLoIds;
   final Map<String, Set<String>> activityIdsByLo;
 
-  /// Each Mission's target vocabulary — the lower-cased lemmas of every
-  /// suggested-vocab entry across its activities. Practice XP on one of these
-  /// words counts toward the Mission (quests.instructions.md, "What fills a
-  /// Mission"). Empty when the builder had no plans in hand.
-  final Map<String, Set<String>> vocabLemmasByLo;
-
-  /// The XP that completes a Mission in this course — the teacher's override,
-  /// or [kDefaultXpToCompleteObjective].
+  /// The XP that completes a Mission in this course — the instructor's
+  /// setting, or [kDefaultXpToCompleteObjective].
   final int xpToComplete;
 
   const CourseLoOutline({
@@ -55,7 +49,6 @@ class CourseLoOutline {
     this.questId,
     required this.orderedLoIds,
     required this.activityIdsByLo,
-    this.vocabLemmasByLo = const {},
     this.xpToComplete = kDefaultXpToCompleteObjective,
   });
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 11:30:19.554729",
+    "@@last_modified": "2026-10-13 09:39:39.941477",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10897,17 +10897,12 @@
     "missionNofM": "Misio {index} el {count}",
     "xpTowardObjective": "{xp} el {threshold} XP por ĉi tiu celo",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} el {total} briloj gajnitaj",
-    "sparklesEarnedInLanguage": "Briloj gajnitaj en {language}",
     "courseComplete": "Kurso finita!",
     "courseCompleteDesc": "Vi plenumis ĉiujn {count} celojn en ĉi tiu kurso. Daŭre praktiku por konservi tion, kion vi lernis.",
     "practiceObjective": "Praktiku ĉi tiun celon",
     "otherActivities": "Aliaj agadoj",
-    "xpToCompleteObjectiveTitle": "XP por Misio",
-    "xpToCompleteObjectiveDesc": "Agordu la XP necesan por plenumi ĉiun mision",
     "objectiveCircleComplete": "Misio {index}: finita",
     "objectiveCircleUpNext": "Misio {index}: sekva",
-    "useActivityImageAsChatBackground": "Uzi agadan bildon kiel babilejan fonon",
     "useActivityImageAsChatBackground": "Uzi agadan bildon kiel babilejan fonon",
     "andCertifyIMeetTheMinimumAge": " kaj mi certigas, ke mi aĝas almenaŭ 13 jarojn, aŭ la minimuman aĝon postulatan en mia lando se tio estas pli alta.",
     "filteredNetworkBlockedTitle": "Ĉi tiu reto blokas Pangea Chat",
@@ -10930,5 +10925,8 @@
     "callMicrophoneTitle": "Uzu vian mikrofonon por vokoj",
     "callMicrophoneMessage": "Pangea Chat bezonas vian mikrofonon por vokoj, inkluzive de vokoj, kiujn vi respondas de la ŝlosila ekrano.",
     "callMicrophoneOffTitle": "Via voko ne konektiĝis",
-    "callMicrophoneOffMessage": "Pangea Chat ne povas uzi vian mikrofonon. Frapu por ŝalti ĝin en Agordoj."
+    "callMicrophoneOffMessage": "Pangea Chat ne povas uzi vian mikrofonon. Frapu por ŝalti ĝin en Agordoj.",
+    "goalsCompletedOfTotal": "{earned} el {total} celoj plenumitaj",
+    "goalsCompletedInLanguage": "Celoj plenumitaj en la lingvo {language}",
+    "sessionXpTowardObjective": "{xp} XP ĉi-sesie; {remaining} pli kompletigas la celon"
 }

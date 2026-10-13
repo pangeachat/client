@@ -84,6 +84,11 @@ class QuestProgress {
   /// (#7771). Where two courses genuinely list the SAME activity, each still
   /// counts it — that case needs no union, since both outlines carry it.
   ///
+  /// Which activities each scored Mission counts, from the outline — what a
+  /// live session uses to find the Mission its XP serves
+  /// ([ProgressionResolution.missionForActivity]).
+  final Map<String, Set<String>> activityIdsByMission;
+
   /// Holds only the quest's **scored** Missions — those the outline gives at
   /// least one activity. A Mission with no activities offers no stars and the
   /// panel doesn't render it at all (#7114), so counting it would break the
@@ -98,6 +103,7 @@ class QuestProgress {
     required this.anchorMissionId,
     required this.indexByMission,
     required this.rollup,
+    this.activityIdsByMission = const {},
   });
 
   /// This quest's own next-Mission contribution for an activity carrying
@@ -178,6 +184,30 @@ class ProgressionResolution {
   QuestStarSummary? questStars(String? courseId) =>
       forCourse(courseId)?.starSummary;
 
+  /// The Mission a session of [activityId] serves, with its rollup: a quest's
+  /// anchor Mission when the activity carries it, else the first scored
+  /// Mission listing the activity, searched quest by quest. Null when no
+  /// in-scope quest lists the activity — a session outside every joined
+  /// course has no Mission to fill. The goal header's XP ring reads this.
+  ({MissionProgress progress, String missionId})? missionForActivity(
+    String activityId,
+  ) {
+    for (final quest in quests) {
+      final anchor = quest.anchorMissionId;
+      if (anchor != null &&
+          (quest.activityIdsByMission[anchor]?.contains(activityId) ?? false)) {
+        final progress = quest.rollup[anchor];
+        if (progress != null) return (progress: progress, missionId: anchor);
+      }
+      for (final entry in quest.activityIdsByMission.entries) {
+        if (!entry.value.contains(activityId)) continue;
+        final progress = quest.rollup[entry.key];
+        if (progress != null) return (progress: progress, missionId: entry.key);
+      }
+    }
+    return null;
+  }
+
   /// The learner's stars: every Mission complete in any in-scope quest, by
   /// Mission id — a Mission two courses share is one star, not two, since the
   /// star is the learner's competency and not a course's bookkeeping. The
@@ -228,15 +258,13 @@ class ProgressionResolution {
 }
 
 /// Resolve progression from each in-scope quest's [outlines] and the learner's
-/// XP per activity ([xpByActivity], sessions of it with the sparkle bonus
-/// applied — `Client.userXpByActivity`) plus their standalone-practice XP per
-/// lemma ([xpByLemma], `MissionXpCache`). Pure. In-scope quests are the
+/// activity XP per activity ([xpByActivity] — saved sessions' credited XP plus
+/// goal checkmarks, `Client.userXpByActivity`). Pure. In-scope quests are the
 /// learner's joined courses by default, or whatever the world map's quest filter
 /// selects — the caller decides which outlines to pass; this only resolves them.
 ProgressionResolution resolveProgression({
   required Iterable<CourseLoOutline> outlines,
   required Map<String, int> xpByActivity,
-  Map<String, int> xpByLemma = const {},
 }) {
   // Resolved per outline, NOT unioned across them. A Mission's XP total is
   // only meaningful against the activity set it was summed over, and Missions
@@ -260,18 +288,12 @@ ProgressionResolution resolveProgression({
       // that no content backs (#7663).
       if (activities.isEmpty) continue;
 
-      // Session XP (sparkle bonus already applied) across the Mission's
-      // activities, plus practice XP on its vocabulary. No ceiling clamp any
-      // more: XP is unbounded, so every Mission with an activity is
-      // completable from its content (quests.instructions.md, "What fills a
-      // Mission").
+      // Activity XP summed across the Mission's activities. No ceiling clamp:
+      // XP is unbounded, so every Mission with an activity is completable at
+      // any threshold (quests.instructions.md, "What fills a Mission").
       var xp = 0;
       for (final activityId in activities) {
         xp += xpByActivity[activityId] ?? 0;
-      }
-      for (final lemma
-          in outline.vocabLemmasByLo[missionId] ?? const <String>{}) {
-        xp += xpByLemma[lemma] ?? 0;
       }
       rollup[missionId] = MissionProgress(
         xp: xp,
@@ -290,6 +312,10 @@ ProgressionResolution resolveProgression({
         anchorMissionId: _anchorFor(seq, rollup),
         indexByMission: {for (var i = 0; i < seq.length; i++) seq[i]: i},
         rollup: rollup,
+        activityIdsByMission: {
+          for (final missionId in rollup.keys)
+            missionId: outline.activityIdsByLo[missionId] ?? const {},
+        },
       ),
     );
   }

@@ -6,11 +6,9 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/course_settings_extension.dart';
-import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
-import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -293,20 +291,8 @@ List<ButtonDetails> _courseSettingsButtons(
       onPressed: () => controller.openCoursePage(RoomSubpageEnum.addcourse),
       enabled: room.isRoomAdmin,
     ),
-    ButtonDetails(
-      title: l10n.xpToCompleteObjectiveTitle,
-      description: l10n.xpToCompleteObjectiveDesc,
-      icon: const Icon(Icons.star_outline, size: 30.0),
-      onPressed: controller.setXpToCompleteObjective,
-      enabled: room.isRoomAdmin,
-      trailing: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Text(
-          "${room.teacherMode.xpToCompleteObjective ?? kDefaultXpToCompleteObjective}",
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
-      ),
-    ),
+    // XP per objective is set in the admin dashboard, from presets; the
+    // client only reads the course's setting (org admin-dash doc).
     ButtonDetails(
       title: l10n.requireAnalyticsAccessTitle,
       description: l10n.requireAnalyticsAccessDesc,

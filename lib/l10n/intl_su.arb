@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-09 11:30:34.318964",
+    "@@last_modified": "2026-10-13 09:39:55.570036",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Misi {index} ti {count}",
     "xpTowardObjective": "{xp} ti {threshold} XP pikeun tujuan ieu",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} ti {total} sparkles dimeunangkeun",
-    "sparklesEarnedInLanguage": "Sparkles dimeunangkeun dina basa {language}",
     "courseComplete": "Kursus réngsé!",
     "courseCompleteDesc": "Anjeun parantos ngaréngsékeun sadaya {count} tujuan dina kursus ieu. Terus latihan pikeun ngajaga naon anu parantos diajarkeun.",
     "practiceObjective": "Latihan tujuan ieu",
     "otherActivities": "Kagiatan sanés",
-    "xpToCompleteObjectiveTitle": "XP per Misi",
-    "xpToCompleteObjectiveDesc": "Atur XP anu diperyogikeun pikeun ngaréngsékeun unggal misi",
     "objectiveCircleComplete": "Misi {index}: réngsé",
     "objectiveCircleUpNext": "Misi {index}: salajengna",
-    "useActivityImageAsChatBackground": "Anggo gambar kagiatan salaku latar obrolan",
     "useActivityImageAsChatBackground": "Anggo gambar kagiatan salaku latar obrolan",
     "andCertifyIMeetTheMinimumAge": " sareng mastikeun yén abdi parantos umur 13 taun, atanapi umur minimum anu diperyogikeun di nagara abdi upami langkung luhur.",
     "filteredNetworkBlockedTitle": "Jaringan ieu meungpeuk Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Anggo mikropon anjeun pikeun nelepon",
     "callMicrophoneMessage": "Pangea Chat peryogi mikropon anjeun pikeun nelepon, kalebet telepon anu anjeun jawab tina layar konci.",
     "callMicrophoneOffTitle": "Telepon anjeun teu nyambung",
-    "callMicrophoneOffMessage": "Pangea Chat teu tiasa nganggo mikropon anjeun. Ketok pikeun ngahurungkeunana dina Setélan."
+    "callMicrophoneOffMessage": "Pangea Chat teu tiasa nganggo mikropon anjeun. Ketok pikeun ngahurungkeunana dina Setélan.",
+    "goalsCompletedOfTotal": "{earned} tina {total} tujuan réngsé",
+    "goalsCompletedInLanguage": "Tujuan réngsé dina basa {language}",
+    "sessionXpTowardObjective": "{xp} XP sési ieu; {remaining} deui ngalengkepan tujuan"
 }

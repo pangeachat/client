@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-09 11:30:15.071010",
+    "@@last_modified": "2026-10-13 09:39:39.870507",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8181,17 +8181,12 @@
     "missionNofM": "Misión {index} de {count}",
     "xpTowardObjective": "{xp} de {threshold} XP para este objetivo",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} de {total} destellos ganados",
-    "sparklesEarnedInLanguage": "Destellos ganados en {language}",
     "courseComplete": "¡Curso completado!",
     "courseCompleteDesc": "Has completado los {count} objetivos de este curso. Sigue practicando para no olvidar lo que has aprendido.",
     "practiceObjective": "Practicar este objetivo",
     "otherActivities": "Otras actividades",
-    "xpToCompleteObjectiveTitle": "XP por misión",
-    "xpToCompleteObjectiveDesc": "Establece la XP necesaria para completar cada misión",
     "objectiveCircleComplete": "Misión {index}: completada",
     "objectiveCircleUpNext": "Misión {index}: siguiente",
-    "useActivityImageAsChatBackground": "Usar imagen de actividad como fondo de chat",
     "useActivityImageAsChatBackground": "Usar imagen de actividad como fondo de chat",
     "andCertifyIMeetTheMinimumAge": " y certifico que tengo al menos 13 años de edad, o la edad mínima requerida en mi país si esta es mayor.",
     "filteredNetworkBlockedTitle": "Esta red está bloqueando Pangea Chat",
@@ -8214,5 +8209,8 @@
     "callMicrophoneTitle": "Usa tu micrófono para llamadas",
     "callMicrophoneMessage": "Pangea Chat necesita tu micrófono para las llamadas, incluidas las que respondas desde la pantalla de bloqueo.",
     "callMicrophoneOffTitle": "Tu llamada no se conectó",
-    "callMicrophoneOffMessage": "Pangea Chat no puede usar tu micrófono. Toca para activarlo en Ajustes."
+    "callMicrophoneOffMessage": "Pangea Chat no puede usar tu micrófono. Toca para activarlo en Ajustes.",
+    "goalsCompletedOfTotal": "{earned} de {total} metas completadas",
+    "goalsCompletedInLanguage": "Metas completadas en {language}",
+    "sessionXpTowardObjective": "{xp} XP esta sesión; {remaining} más completan el objetivo"
 }

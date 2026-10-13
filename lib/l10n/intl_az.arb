@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-09 11:30:09.917447",
+    "@@last_modified": "2026-10-13 09:39:37.336496",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "{count} missiyadan {index}. missiya",
     "xpTowardObjective": "Bu məqsədə doğru {threshold} XP-dən {xp} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{total} parıltıdan {earned} qazanıldı",
-    "sparklesEarnedInLanguage": "{language} dilində qazanılan parıltılar",
     "courseComplete": "Kurs tamamlandı!",
     "courseCompleteDesc": "Bu kursdakı bütün {count} məqsədi tamamladınız. Öyrəndiklərinizi yadda saxlamaq üçün məşq etməyə davam edin.",
     "practiceObjective": "Bu məqsədi təcrübə edin",
     "otherActivities": "Digər fəaliyyətlər",
-    "xpToCompleteObjectiveTitle": "Hər Missiya üçün XP",
-    "xpToCompleteObjectiveDesc": "Hər missiyanı tamamlamaq üçün lazım olan XP-ni təyin edin",
     "objectiveCircleComplete": "Missiya {index}: tamamlandı",
     "objectiveCircleUpNext": "Missiya {index}: növbəti",
-    "useActivityImageAsChatBackground": "Fəaliyyət şəklini çat fonu kimi istifadə et",
     "useActivityImageAsChatBackground": "Fəaliyyət şəklini çat fonu kimi istifadə et",
     "andCertifyIMeetTheMinimumAge": " və təsdiq edirəm ki, ən azı 13 yaşım var və ya ölkəmdə tələb olunan minimum yaş həddinə (əgər daha yüksəkdirsə) uyğun gəlirəm.",
     "filteredNetworkBlockedTitle": "Bu şəbəkə Pangea Chat-ı bloklayır",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Zənglər üçün mikrofonunuzdan istifadə edin",
     "callMicrophoneMessage": "Pangea Chat zənglər üçün mikrofonunuza ehtiyac duyur, o cümlədən kilid ekranından cavab verdiyiniz zənglər.",
     "callMicrophoneOffTitle": "Zənginiz qoşulmadı",
-    "callMicrophoneOffMessage": "Pangea Chat mikrofonunuzdan istifadə edə bilmir. Parametrlərdə onu yandırmaq üçün toxunun."
+    "callMicrophoneOffMessage": "Pangea Chat mikrofonunuzdan istifadə edə bilmir. Parametrlərdə onu yandırmaq üçün toxunun.",
+    "goalsCompletedOfTotal": "{total} hədəfdən {earned} tamamlandı",
+    "goalsCompletedInLanguage": "{language} dilində tamamlanmış hədəflər",
+    "sessionXpTowardObjective": "Bu sessiyada {xp} XP; məqsədi tamamlamaq üçün daha {remaining}"
 }

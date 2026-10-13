@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/common/widgets/embed_pointer_shield.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_header_constants.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/goal_header_xp_ring.dart';
 
 /// The floating goal-header card shared by the live session and the start/
 /// summary pages. It crossfades between its [collapsed] face (star summary +
@@ -19,19 +22,81 @@ class ActivityGoalHeaderCard extends StatelessWidget {
   final bool showDropdown;
   final bool isComplete;
 
+  /// The live session, when the card heads one: it wears the XP ring
+  /// ([GoalHeaderXpRing]). Null on the start and summary pages.
+  final Room? xpRingRoom;
+
   const ActivityGoalHeaderCard({
     super.key,
     required this.collapsed,
     required this.expanded,
     required this.showDropdown,
     this.isComplete = false,
+    this.xpRingRoom,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final gold = theme.pangea.goldFixedDim;
-
+    final xpRingRoom = this.xpRingRoom;
+    final card = AnimatedContainer(
+      duration: FluffyThemes.animationDuration,
+      curve: Curves.easeInOut,
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        color: isComplete
+            ? Color.alphaBlend(gold.withAlpha(40), theme.colorScheme.surface)
+            : theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+        border: Border.all(
+          color: isComplete ? theme.pangea.goldGraphic : theme.dividerColor,
+          width: isComplete ? 2.0 : 1.0,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withAlpha(30),
+            blurRadius: 8.0,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Material(
+        type: MaterialType.transparency,
+        child: Stack(
+          children: [
+            // Behind everything: on web the card floats over a chat
+            // timeline that can hold a live video embed, and a click on
+            // a Flutter layer over an embed is taken by the embed, not
+            // by the card (#9063). The shield wins the click back; the
+            // card's own controls, painted above it, then get it.
+            const Positioned.fill(child: EmbedPointerShield()),
+            // Behind the content: swallow taps that land on the card's own
+            // footprint but miss a real control (the padding between the
+            // top row and subtitle, the gaps between goal rows, the border).
+            Positioned.fill(
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {},
+                child: const SizedBox.expand(),
+              ),
+            ),
+            AnimatedCrossFade(
+              duration: FluffyThemes.animationDuration,
+              sizeCurve: Curves.easeInOut,
+              firstCurve: Curves.easeInOut,
+              secondCurve: Curves.easeInOut,
+              alignment: Alignment.topCenter,
+              crossFadeState: showDropdown
+                  ? CrossFadeState.showSecond
+                  : CrossFadeState.showFirst,
+              firstChild: SizedBox(width: double.infinity, child: collapsed),
+              secondChild: SizedBox(width: double.infinity, child: expanded),
+            ),
+          ],
+        ),
+      ),
+    );
     return Align(
       alignment: Alignment.topCenter,
       child: Padding(
@@ -40,74 +105,9 @@ class ActivityGoalHeaderCard extends StatelessWidget {
           constraints: const BoxConstraints(
             maxWidth: FluffyThemes.columnWidth * 1.5,
           ),
-          child: AnimatedContainer(
-            duration: FluffyThemes.animationDuration,
-            curve: Curves.easeInOut,
-            clipBehavior: Clip.antiAlias,
-            decoration: BoxDecoration(
-              color: isComplete
-                  ? Color.alphaBlend(
-                      gold.withAlpha(40),
-                      theme.colorScheme.surface,
-                    )
-                  : theme.colorScheme.surface,
-              borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-              border: Border.all(
-                color: isComplete
-                    ? theme.pangea.goldGraphic
-                    : theme.dividerColor,
-                width: isComplete ? 2.0 : 1.0,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withAlpha(30),
-                  blurRadius: 8.0,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-            ),
-            child: Material(
-              type: MaterialType.transparency,
-              child: Stack(
-                children: [
-                  // Behind everything: on web the card floats over a chat
-                  // timeline that can hold a live video embed, and a click on
-                  // a Flutter layer over an embed is taken by the embed, not
-                  // by the card (#9063). The shield wins the click back; the
-                  // card's own controls, painted above it, then get it.
-                  const Positioned.fill(child: EmbedPointerShield()),
-                  // Behind the content: swallow taps that land on the card's own
-                  // footprint but miss a real control (the padding between the
-                  // top row and subtitle, the gaps between goal rows, the border).
-                  Positioned.fill(
-                    child: GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      onTap: () {},
-                      child: const SizedBox.expand(),
-                    ),
-                  ),
-                  AnimatedCrossFade(
-                    duration: FluffyThemes.animationDuration,
-                    sizeCurve: Curves.easeInOut,
-                    firstCurve: Curves.easeInOut,
-                    secondCurve: Curves.easeInOut,
-                    alignment: Alignment.topCenter,
-                    crossFadeState: showDropdown
-                        ? CrossFadeState.showSecond
-                        : CrossFadeState.showFirst,
-                    firstChild: SizedBox(
-                      width: double.infinity,
-                      child: collapsed,
-                    ),
-                    secondChild: SizedBox(
-                      width: double.infinity,
-                      child: expanded,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          child: xpRingRoom == null
+              ? card
+              : GoalHeaderXpRing(room: xpRingRoom, child: card),
         ),
       ),
     );

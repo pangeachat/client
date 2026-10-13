@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-09 11:30:45.903927",
+    "@@last_modified": "2026-10-13 09:39:54.735653",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Basa re {index} pa {count}",
     "xpTowardObjective": "{xp} pa {threshold} XP yechinangwa ichi",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} pama sparkles {total} awanikwa",
-    "sparklesEarnedInLanguage": "Sparkles awanikwa mu {language}",
     "courseComplete": "Kosi yapera!",
     "courseCompleteDesc": "Wapedza zvinangwa zvese {count} mukosi ino. Ramba uchiita kuitira kuti usakanganwe zvawadzidza.",
     "practiceObjective": "Dzidzira chinangwa ichi",
     "otherActivities": "Zvimwe zviitiko",
-    "xpToCompleteObjectiveTitle": "XP pabasa rega rega",
-    "xpToCompleteObjectiveDesc": "Isa XP inodiwa kuti upedze basa rega rega",
     "objectiveCircleComplete": "Basa {index}: rapera",
     "objectiveCircleUpNext": "Basa {index}: rinotevera",
-    "useActivityImageAsChatBackground": "Shandisa mufananidzo wechiitiko sehwaro hwechat",
     "useActivityImageAsChatBackground": "Shandisa mufananidzo wechiitiko sehwaro hwechat",
     "andCertifyIMeetTheMinimumAge": " uye ndinopupura kuti ndasvitsa makore gumi nematatu, kana kuti makore anodiwa munyika yangu kana akakwirira.",
     "filteredNetworkBlockedTitle": "Iyi network iri kuvharira Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Shandisa maikorofoni yako pakufona",
     "callMicrophoneMessage": "Pangea Chat inoda maikorofoni yako pakufona, kusanganisira mafoni aunopindura kubva pa lock screen.",
     "callMicrophoneOffTitle": "Foni yako haina kubatana",
-    "callMicrophoneOffMessage": "Pangea Chat haigone kushandisa maikorofoni yako. Dzvanya kuti uibatidze muZvirongwa."
+    "callMicrophoneOffMessage": "Pangea Chat haigone kushandisa maikorofoni yako. Dzvanya kuti uibatidze muZvirongwa.",
+    "goalsCompletedOfTotal": "Zvinangwa zvakapedzwa {earned} kubva pa {total}",
+    "goalsCompletedInLanguage": "Zvinangwa zvakapedzwa mu {language}",
+    "sessionXpTowardObjective": "{xp} XP pachikamu chino; {remaining} zvimwe zvinopedzisa chinangwa"
 }

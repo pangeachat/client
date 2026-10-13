@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-09 11:30:37.805240",
+    "@@last_modified": "2026-10-13 09:40:00.506658",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2401,17 +2401,12 @@
     "missionNofM": "مشن {index} از {count}",
     "xpTowardObjective": "اس مقصد کے لیے {threshold} XP میں سے {xp}",
     "xpOfThreshold": "{threshold} XP میں سے {xp}",
-    "sparklesEarnedOfTotal": "{total} چمک میں سے {earned} حاصل کیے گئے",
-    "sparklesEarnedInLanguage": "{language} میں حاصل کردہ چمک",
     "courseComplete": "کورس مکمل!",
     "courseCompleteDesc": "آپ نے اس کورس میں تمام {count} مقاصد مکمل کر لیے ہیں۔ جو کچھ آپ نے سیکھا ہے اسے برقرار رکھنے کے لیے مشق کرتے رہیں۔",
     "practiceObjective": "اس مقصد کی مشق کریں",
     "otherActivities": "دیگر سرگرمیاں",
-    "xpToCompleteObjectiveTitle": "فی مشن XP",
-    "xpToCompleteObjectiveDesc": "ہر مشن کو مکمل کرنے کے لیے درکار XP سیٹ کریں",
     "objectiveCircleComplete": "مشن {index}: مکمل",
     "objectiveCircleUpNext": "مشن {index}: اگلا",
-    "useActivityImageAsChatBackground": "چیٹ کے پس منظر کے طور پر سرگرمی کی تصویر استعمال کریں",
     "useActivityImageAsChatBackground": "چیٹ کے پس منظر کے طور پر سرگرمی کی تصویر استعمال کریں",
     "andCertifyIMeetTheMinimumAge": " اور تصدیق کرتا ہوں کہ میری عمر کم از کم 13 سال ہے، یا اگر میرے ملک میں زیادہ عمر درکار ہے تو وہ پوری کرتا ہوں۔",
     "filteredNetworkBlockedTitle": "یہ نیٹ ورک Pangea Chat کو بلاک کر رہا ہے",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "کالز کے لیے اپنا مائیکروفون استعمال کریں",
     "callMicrophoneMessage": "Pangea Chat کو کالز کے لیے آپ کے مائیکروفون کی ضرورت ہے، بشمول وہ کالز جو آپ لاک اسکرین سے جواب دیتے ہیں۔",
     "callMicrophoneOffTitle": "آپ کی کال منسلک نہیں ہوئی",
-    "callMicrophoneOffMessage": "Pangea Chat آپ کا مائیکروفون استعمال نہیں کر سکتا۔ سیٹنگز میں اسے آن کرنے کے لیے ٹیپ کریں۔"
+    "callMicrophoneOffMessage": "Pangea Chat آپ کا مائیکروفون استعمال نہیں کر سکتا۔ سیٹنگز میں اسے آن کرنے کے لیے ٹیپ کریں۔",
+    "goalsCompletedOfTotal": "{total} میں سے {earned} اہداف مکمل ہوئے",
+    "goalsCompletedInLanguage": "{language} میں مکمل کیے گئے اہداف",
+    "sessionXpTowardObjective": "اس سیشن میں {xp} XP؛ مقصد مکمل کرنے کے لیے مزید {remaining}"
 }

@@ -1259,7 +1259,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-09 11:30:42.085207",
+    "@@last_modified": "2026-10-13 09:39:59.598080",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10909,17 +10909,12 @@
     "missionNofM": "任務 {index} / {count}",
     "xpTowardObjective": "此目標已獲 {xp} / {threshold} 經驗值",
     "xpOfThreshold": "{xp} / {threshold} 經驗值",
-    "sparklesEarnedOfTotal": "已獲得 {earned} / {total} 個閃光",
-    "sparklesEarnedInLanguage": "喺 {language} 獲得嘅閃光",
     "courseComplete": "課程完成！",
     "courseCompleteDesc": "你已完成此課程所有 {count} 個目標。繼續練習以鞏固所學。",
     "practiceObjective": "練習此目標",
     "otherActivities": "其他活動",
-    "xpToCompleteObjectiveTitle": "每個任務嘅經驗值",
-    "xpToCompleteObjectiveDesc": "設定完成每個任務所需嘅經驗值",
     "objectiveCircleComplete": "任務 {index}：已完成",
     "objectiveCircleUpNext": "任務 {index}：下一個",
-    "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
     "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
     "andCertifyIMeetTheMinimumAge": "並證明我已年滿 13 歲，如果我所在國家/地區有更高的最低年齡要求，則我已達到該要求。",
     "filteredNetworkBlockedTitle": "此網絡正在封鎖 Pangea Chat",
@@ -10942,5 +10937,8 @@
     "callMicrophoneTitle": "通話時使用咪高風",
     "callMicrophoneMessage": "Pangea Chat 需要使用你的咪高風進行通話，包括從鎖定畫面接聽的通話。",
     "callMicrophoneOffTitle": "你的通話未能連接",
-    "callMicrophoneOffMessage": "Pangea Chat 無法使用你的咪高風。輕按以在「設定」中開啟。"
+    "callMicrophoneOffMessage": "Pangea Chat 無法使用你的咪高風。輕按以在「設定」中開啟。",
+    "goalsCompletedOfTotal": "已完成 {total} 個目標中的 {earned} 個",
+    "goalsCompletedInLanguage": "已完成 {language} 目標",
+    "sessionXpTowardObjective": "本次對話獲得 {xp} 經驗值；還差 {remaining} 即可完成目標"
 }

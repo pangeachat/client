@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-09 11:30:34.302762",
+    "@@last_modified": "2026-10-13 09:39:56.079699",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Hawsha {index} ee {count}",
     "xpTowardObjective": "{xp} oo ah {threshold} XP oo ku aaddan ujeeddadan",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} oo ah {total} dhalaal la kasbaday",
-    "sparklesEarnedInLanguage": "Dhalaalka lagu kasbaday {language}",
     "courseComplete": "Koorsada waa la dhammaystiray!",
     "courseCompleteDesc": "Waxaad dhammaystirtay dhammaan {count} ujeedooyin ee koorsadan. Sii wad ku celcelinta si aad u xafiddo waxaad baratay.",
     "practiceObjective": "Ku celceli ujeeddadan",
     "otherActivities": "Hawlaha kale",
-    "xpToCompleteObjectiveTitle": "XP Hawl kasta",
-    "xpToCompleteObjectiveDesc": "Deji XP-da loo baahan yahay si loo dhammaystiro hawl kasta",
     "objectiveCircleComplete": "Hawlgalka {index}: waa la dhameeyay",
     "objectiveCircleUpNext": "Hawlgalka {index}: kan xiga",
-    "useActivityImageAsChatBackground": "Isticmaal sawirka hawsha asagoo ah asalka sheekaysiga",
     "useActivityImageAsChatBackground": "Isticmaal sawirka hawsha asagoo ah asalka sheekaysiga",
     "andCertifyIMeetTheMinimumAge": " iyo waxaan caddaynayaa in aan ugu yaraan 13 sano jir ahay, ama da'da ugu yar ee looga baahan yahay dalkayga haddii ay ka sarreyso.",
     "filteredNetworkBlockedTitle": "Shabakaddani waxay xannibaysaa Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "U adeegso makarafoonkaaga wicitaanada",
     "callMicrophoneMessage": "Pangea Chat waxay u baahan tahay makarafoonkaaga wicitaanada, oo ay ku jiraan wicitaanada aad ka jawaabto shaashadda qufulka.",
     "callMicrophoneOffTitle": "Wicitaankaagu ma xirmin",
-    "callMicrophoneOffMessage": "Pangea Chat ma isticmaali karto makarafoonkaaga. Taabo si aad uga shiddo Settings."
+    "callMicrophoneOffMessage": "Pangea Chat ma isticmaali karto makarafoonkaaga. Taabo si aad uga shiddo Settings.",
+    "goalsCompletedOfTotal": "{earned} oo ah {total} hadaf ayaa la dhammaystiray",
+    "goalsCompletedInLanguage": "Hadafyada lagu dhammaystiray {language}",
+    "sessionXpTowardObjective": "{xp} XP kulankan; {remaining} oo dheeraad ah ayaa dhammaystiraya ujeeddada"
 }

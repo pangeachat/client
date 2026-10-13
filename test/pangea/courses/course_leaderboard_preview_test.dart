@@ -269,9 +269,7 @@ void main() {
     await drain(tester);
   });
 
-  testWidgets('rows rank by sparkles, then level, and show both', (
-    tester,
-  ) async {
+  testWidgets('rows rank by goals, then level, and show both', (tester) async {
     MatrixState.pangeaController = FakePangeaController(
       analyticsProfiles: {
         userId: profile(stars: 5, level: 3),
@@ -291,7 +289,7 @@ void main() {
         .firstWhere((n) => n.getSemanticsData().label.contains('Member 3'))
         .getSemanticsData();
     expect(first.label, contains('Rank 1'));
-    expect(first.label, contains('Sparkles earned in'));
+    expect(first.label, contains('Goals completed in'));
     expect(first.label, contains(': 10'));
     expect(first.label, contains('Level 1'));
     handle.dispose();

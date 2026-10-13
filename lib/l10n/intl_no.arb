@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-09 11:30:29.873274",
+    "@@last_modified": "2026-10-13 09:39:51.105582",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Oppdrag {index} av {count}",
     "xpTowardObjective": "{xp} av {threshold} XP mot dette målet",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} av {total} gnister opptjent",
-    "sparklesEarnedInLanguage": "Gnister opptjent i {language}",
     "courseComplete": "Kurset er fullført!",
     "courseCompleteDesc": "Du har fullført alle {count} mål i dette kurset. Fortsett å øve for å huske det du har lært.",
     "practiceObjective": "Øv på dette målet",
     "otherActivities": "Andre aktiviteter",
-    "xpToCompleteObjectiveTitle": "XP per oppdrag",
-    "xpToCompleteObjectiveDesc": "Angi XP som trengs for å fullføre hvert oppdrag",
     "objectiveCircleComplete": "Oppdrag {index}: fullført",
     "objectiveCircleUpNext": "Oppdrag {index}: neste",
-    "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
     "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
     "andCertifyIMeetTheMinimumAge": " og bekrefter at jeg er minst 13 år gammel, eller den minimumsalderen som kreves i mitt land hvis den er høyere.",
     "filteredNetworkBlockedTitle": "Dette nettverket blokkerer Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Bruk mikrofonen din for samtaler",
     "callMicrophoneMessage": "Pangea Chat trenger mikrofonen din for samtaler, inkludert samtaler du svarer på fra låseskjermen.",
     "callMicrophoneOffTitle": "Samtalen din ble ikke koblet til",
-    "callMicrophoneOffMessage": "Pangea Chat kan ikke bruke mikrofonen din. Trykk for å slå den på i Innstillinger."
+    "callMicrophoneOffMessage": "Pangea Chat kan ikke bruke mikrofonen din. Trykk for å slå den på i Innstillinger.",
+    "goalsCompletedOfTotal": "{earned} av {total} mål fullført",
+    "goalsCompletedInLanguage": "Mål fullført i {language}",
+    "sessionXpTowardObjective": "{xp} XP denne økten; {remaining} mer fullfører målet"
 }

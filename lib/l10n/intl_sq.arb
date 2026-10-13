@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-09 11:30:34.369156",
+    "@@last_modified": "2026-10-13 09:39:55.078847",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Misioni {index} nga {count}",
     "xpTowardObjective": "{xp} nga {threshold} XP drejt këtij objektivi",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} nga {total} shkëlqime të fituara",
-    "sparklesEarnedInLanguage": "Shkëlqime të fituara në {language}",
     "courseComplete": "Kursi u përfundua!",
     "courseCompleteDesc": "Ke përfunduar të gjitha {count} objektivat në këtë kurs. Vazhdo të praktikosh për të mbajtur mend atë që ke mësuar.",
     "practiceObjective": "Praktiko këtë objektiv",
     "otherActivities": "Aktivitete të tjera",
-    "xpToCompleteObjectiveTitle": "XP për Mision",
-    "xpToCompleteObjectiveDesc": "Vendos XP-në e nevojshme për të përfunduar çdo mision",
     "objectiveCircleComplete": "Misioni {index}: i përfunduar",
     "objectiveCircleUpNext": "Misioni {index}: radhës",
-    "useActivityImageAsChatBackground": "Përdor imazhin e aktivitetit si sfond bisede",
     "useActivityImageAsChatBackground": "Përdor imazhin e aktivitetit si sfond bisede",
     "andCertifyIMeetTheMinimumAge": " dhe vërtetoj se jam të paktën 13 vjeç, ose mosha minimale e kërkuar në vendin tim nëse ajo është më e lartë.",
     "filteredNetworkBlockedTitle": "Ky rrjet po bllokon Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Përdor mikrofonin për thirrje",
     "callMicrophoneMessage": "Pangea Chat ka nevojë për mikrofonin tuaj për thirrje, duke përfshirë thirrjet që u përgjigjeni nga ekrani i kyçur.",
     "callMicrophoneOffTitle": "Thirrja juaj nuk u lidh",
-    "callMicrophoneOffMessage": "Pangea Chat nuk mund të përdorë mikrofonin tuaj. Prekni për ta ndezur te Cilësimet."
+    "callMicrophoneOffMessage": "Pangea Chat nuk mund të përdorë mikrofonin tuaj. Prekni për ta ndezur te Cilësimet.",
+    "goalsCompletedOfTotal": "{earned} nga {total} objektiva të përfunduara",
+    "goalsCompletedInLanguage": "Objektiva të përfunduara në {language}",
+    "sessionXpTowardObjective": "{xp} XP këtë sesion; {remaining} më shumë plotëson objektivin"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-09 11:30:31.477272",
+    "@@last_modified": "2026-10-13 09:39:53.658942",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "د {count} څخه {index} ماموریت",
     "xpTowardObjective": "د دې موخې لپاره {threshold} XP څخه {xp} XP",
     "xpOfThreshold": "{threshold} XP / {xp}",
-    "sparklesEarnedOfTotal": "د {total} چمکونو څخه {earned} ترلاسه شوي",
-    "sparklesEarnedInLanguage": "په {language} کې ترلاسه شوي چمکونه",
     "courseComplete": "کورس بشپړ شو!",
     "courseCompleteDesc": "تاسو په دې کورس کې ټولې {count} موخې بشپړې کړې. د هغه څه ساتلو لپاره تمرین ته دوام ورکړئ چې تاسو زده کړي دي.",
     "practiceObjective": "دې موخې تمرین کړئ",
     "otherActivities": "نور فعالیتونه",
-    "xpToCompleteObjectiveTitle": "په هر ماموریت کې XP",
-    "xpToCompleteObjectiveDesc": "د هر ماموریت بشپړولو لپاره اړین XP وټاکئ",
     "objectiveCircleComplete": "ماموریت {index}: بشپړ شو",
     "objectiveCircleUpNext": "ماموریت {index}: بل",
-    "useActivityImageAsChatBackground": "د فعالیت انځور د چیټ شالید په توګه وکاروئ",
     "useActivityImageAsChatBackground": "د فعالیت انځور د چیټ شالید په توګه وکاروئ",
     "andCertifyIMeetTheMinimumAge": " او تصدیق کوم چې زه لږ تر لږه ۱۳ کلن یم، یا زما په هیواد کې اړین لږ تر لږه عمر که هغه لوړ وي.",
     "filteredNetworkBlockedTitle": "دا شبکه پنګیا چیټ بندوي",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "د زنګونو لپاره خپل مایکروفون وکاروئ",
     "callMicrophoneMessage": "پنګیا چټ ستاسو مایکروفون د زنګونو لپاره اړتیا لري، پشمول هغه زنګونه چې تاسو یې د لاک سکرین څخه ځوابوئ.",
     "callMicrophoneOffTitle": "ستاسو زنګ وصل نشو",
-    "callMicrophoneOffMessage": "پنګیا چټ نشي کولی ستاسو مایکروفون وکاروي. په ترتیباتو کې د فعالولو لپاره ټایپ کړئ."
+    "callMicrophoneOffMessage": "پنګیا چټ نشي کولی ستاسو مایکروفون وکاروي. په ترتیباتو کې د فعالولو لپاره ټایپ کړئ.",
+    "goalsCompletedOfTotal": "{total} موخو څخه {earned} بشپړې شوې",
+    "goalsCompletedInLanguage": "په {language} کې بشپړې شوې موخې",
+    "sessionXpTowardObjective": "پدې ناسته کې {xp} XP؛ {remaining} نور د هدف بشپړولو لپاره"
 }

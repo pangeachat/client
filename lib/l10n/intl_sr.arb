@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 11:30:38.906780",
+    "@@last_modified": "2026-10-13 09:39:56.195014",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10901,17 +10901,12 @@
     "missionNofM": "Misija {index} od {count}",
     "xpTowardObjective": "{xp} od {threshold} XP-a za ovaj cilj",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} od {total} iskrica zarađeno",
-    "sparklesEarnedInLanguage": "Iskrice zarađene na {language} jeziku",
     "courseComplete": "Kurs završen!",
     "courseCompleteDesc": "Završili ste svih {count} ciljeva u ovom kursu. Nastavite da vežbate kako biste zadržali ono što ste naučili.",
     "practiceObjective": "Vežbajte ovaj cilj",
     "otherActivities": "Ostale aktivnosti",
-    "xpToCompleteObjectiveTitle": "XP po misiji",
-    "xpToCompleteObjectiveDesc": "Podesite XP potreban za završetak svake misije",
     "objectiveCircleComplete": "Misija {index}: završena",
     "objectiveCircleUpNext": "Misija {index}: sledeća",
-    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu ćaskanja",
     "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu ćaskanja",
     "andCertifyIMeetTheMinimumAge": " i potvrđujem da imam najmanje 13 godina, ili minimalnu starost propisanu u mojoj zemlji ako je ona viša.",
     "filteredNetworkBlockedTitle": "Ova mreža blokira Pangea Chat",
@@ -10934,5 +10929,8 @@
     "callMicrophoneTitle": "Koristite mikrofon za pozive",
     "callMicrophoneMessage": "Pangea Chat-u je potreban vaš mikrofon za pozive, uključujući pozive na koje odgovarate sa zaključanog ekrana.",
     "callMicrophoneOffTitle": "Vaš poziv nije povezan",
-    "callMicrophoneOffMessage": "Pangea Chat ne može da koristi vaš mikrofon. Dodirnite da biste ga uključili u Podešavanjima."
+    "callMicrophoneOffMessage": "Pangea Chat ne može da koristi vaš mikrofon. Dodirnite da biste ga uključili u Podešavanjima.",
+    "goalsCompletedOfTotal": "{earned} od {total} ciljeva ispunjeno",
+    "goalsCompletedInLanguage": "Ciljevi ispunjeni na {language} jeziku",
+    "sessionXpTowardObjective": "{xp} XP u ovoj sesiji; još {remaining} za ispunjenje cilja"
 }

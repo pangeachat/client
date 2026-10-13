@@ -10,38 +10,30 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-/// The learner's XP in the current target language, grouped two ways for the
-/// next-Mission resolver (quests.instructions.md, "What fills a Mission"):
-///
-/// - [xpByRoom] — XP of every construct use that names the room it was earned
-///   in, keyed by room id. A session room's XP rolls up to its activity and
-///   from there to the Missions it satisfies.
-/// - [practiceXpByLemma] — XP of every use that names NO room (standalone
-///   practice), keyed by lower-cased lemma. It reaches a Mission through the
-///   Mission's target vocabulary.
-///
-/// The two are a partition of the learner's uses, so no XP is counted twice.
-/// The lemma route is a stopgap (#9420): a practice use carries no record of
-/// the Mission it was launched for, and tagging it would change the stored
-/// construct-use schema, which this draft deliberately leaves alone. Until a
-/// use records its Mission, practising a Mission's words anywhere counts
-/// toward it, and a word two Missions share credits both.
+/// The learner's XP in the current target language, credited per room for
+/// the next-Mission resolver (quests.instructions.md, "What fills a Mission"):
+/// a construct use that names a room credits that room; a room-less use
+/// (practice from the analytics page) credits every room in whose messages
+/// the learner wrote the word, by lemma (org activities doc, "Practice
+/// credit"). A word written in two sessions credits both, so the per-room
+/// sums can exceed the learner's total; each is what that session shows and
+/// what its activity rolls up.
 ///
 /// One process-wide instance, refreshed from the local analytics database on
 /// construct updates and language changes, rate-limited like the sync-tick
-/// resolve. Consumers read the maps synchronously and listen for changes; a
-/// read before the first refresh lands sees empty maps and resolves every
+/// resolve. Consumers read the map synchronously and listen for changes; a
+/// read before the first refresh lands sees an empty map and resolves every
 /// Mission as unstarted, which is the same fail-soft the resolver already
 /// has for a missing outline.
 class MissionXpCache extends ChangeNotifier {
   MissionXpCache._();
   static final MissionXpCache instance = MissionXpCache._();
 
-  Map<String, int> _xpByRoom = const {};
-  Map<String, int> _practiceXpByLemma = const {};
+  Map<String, int> _creditedXpByRoom = const {};
 
-  Map<String, int> get xpByRoom => _xpByRoom;
-  Map<String, int> get practiceXpByLemma => _practiceXpByLemma;
+  /// XP credited to each room: the XP earned there plus the room-less
+  /// practice XP on words the learner wrote there.
+  Map<String, int> get creditedXpByRoom => _creditedXpByRoom;
 
   bool _wired = false;
   StreamSubscription? _sub;
@@ -50,17 +42,17 @@ class MissionXpCache extends ChangeNotifier {
 
   /// Subscribe to the analytics streams and take the first read. Idempotent;
   /// every consumer calls it, and the first one to run wires the cache. A
-  /// no-op before the Pangea controller exists (widget tests).
+  /// no-op before the Pangea controller or the account's analytics service
+  /// exists (widget tests); the next consumer retries.
   void ensureWired() {
     if (_wired || !MatrixState.isPangeaControllerInitialized) return;
     final controller = MatrixState.pangeaController;
+    // Never the trigger for analytics initialisation: the active-client
+    // getter creates the service on a miss and its constructor starts init.
+    final analytics = controller.matrixState.analyticsServiceIfExists;
+    if (analytics == null) return;
     _sub = StreamGroup.merge([
-      controller
-          .matrixState
-          .analyticsDataService
-          .updateDispatcher
-          .constructUpdateStream
-          .stream,
+      analytics.updateDispatcher.constructUpdateStream.stream,
       controller.userController.languageStream.stream,
     ]).rateLimit(const Duration(seconds: 2)).listen((_) => refresh());
     // Marked wired only once the subscription holds, so a throw above leaves
@@ -90,14 +82,16 @@ class MissionXpCache extends ChangeNotifier {
     final controller = MatrixState.pangeaController;
     final language = controller.userController.userL2?.langCodeShort;
     if (language == null) {
-      _publish(const {}, const {});
+      _publish(const {});
       return;
     }
+    final analytics = controller.matrixState.analyticsServiceIfExists;
+    // A read before init completes would start it from here; init's own
+    // first construct update calls [refresh] once it is done.
+    if (analytics == null || !analytics.initCompleter.isCompleted) return;
     final List<OneConstructUse> uses;
     try {
-      uses = await controller.matrixState.analyticsDataService.getUses(
-        language,
-      );
+      uses = await analytics.getUses(language);
     } catch (e, s) {
       // The previous maps stand; a failed read must not blank every Mission
       // meter, but it must be seen (error-handling.instructions.md).
@@ -111,38 +105,57 @@ class MissionXpCache extends ChangeNotifier {
     }
     final byRoom = <String, int>{};
     final byLemma = <String, int>{};
+    final roomsByLemma = <String, Set<String>>{};
     for (final use in uses) {
-      if (use.xp == 0) continue;
       final roomId = use.metadata.roomId;
-      if (roomId != null) {
-        byRoom[roomId] = (byRoom[roomId] ?? 0) + use.xp;
-      } else {
-        final lemma = use.lemma.toLowerCase();
-        byLemma[lemma] = (byLemma[lemma] ?? 0) + use.xp;
+      final lemma = use.lemma.toLowerCase();
+      if (roomId == null) {
+        if (use.xp != 0) byLemma[lemma] = (byLemma[lemma] ?? 0) + use.xp;
+        continue;
+      }
+      if (use.xp != 0) byRoom[roomId] = (byRoom[roomId] ?? 0) + use.xp;
+      // Only words the learner wrote: a word they read or heard in a room
+      // is not theirs to be credited for practising.
+      if (use.useType.sentByUser) {
+        (roomsByLemma[lemma] ??= {}).add(roomId);
       }
     }
-    _publish(byRoom, byLemma);
+    _publish(credit(byRoom, byLemma, roomsByLemma));
   }
 
-  void _publish(Map<String, int> byRoom, Map<String, int> byLemma) {
-    if (mapEquals(byRoom, _xpByRoom) &&
-        mapEquals(byLemma, _practiceXpByLemma)) {
-      return;
+  /// Chat XP per room plus the room-less practice XP on every word the
+  /// learner wrote there (org activities doc, "Practice credit"). Pure.
+  @visibleForTesting
+  static Map<String, int> credit(
+    Map<String, int> xpByRoom,
+    Map<String, int> practiceXpByLemma,
+    Map<String, Set<String>> roomsByLemma,
+  ) {
+    final credited = Map<String, int>.of(xpByRoom);
+    for (final entry in practiceXpByLemma.entries) {
+      for (final roomId in roomsByLemma[entry.key] ?? const <String>{}) {
+        credited[roomId] = (credited[roomId] ?? 0) + entry.value;
+      }
     }
-    _xpByRoom = byRoom;
-    _practiceXpByLemma = byLemma;
+    return credited;
+  }
+
+  void _publish(Map<String, int> credited) {
+    if (mapEquals(credited, _creditedXpByRoom)) return;
+    _creditedXpByRoom = credited;
     // A loader wires this cache from its constructor, which a context bar
     // runs inside a build; notifying there would mark its builders dirty
     // mid-build. The microtask runs once the build has unwound.
     scheduleMicrotask(notifyListeners);
   }
 
-  /// Test seam: set the maps directly, bypassing the analytics read.
+  /// Test seam: set the inputs directly, bypassing the analytics read.
   @visibleForTesting
   void seed({
     Map<String, int> xpByRoom = const {},
     Map<String, int> practiceXpByLemma = const {},
-  }) => _publish(xpByRoom, practiceXpByLemma);
+    Map<String, Set<String>> roomsByLemma = const {},
+  }) => _publish(credit(xpByRoom, practiceXpByLemma, roomsByLemma));
 
   @override
   void dispose() {

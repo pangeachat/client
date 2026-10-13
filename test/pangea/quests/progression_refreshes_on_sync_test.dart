@@ -8,6 +8,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
+import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
 import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
@@ -22,10 +23,10 @@ import '../get_test_client.dart';
 /// #8915 — the course panel's progress was resolved once, when the outline
 /// loaded, and never again, so a change while the panel was open showed the
 /// stale number until the learner left the page and came back. A Mission's
-/// XP (#9420) has two live inputs: the session's construct XP from the shared
-/// [MissionXpCache], and the sparkle bonus read from session-room state — a
-/// goal awarded as room state raises the session's XP by [kSparkleXpBonus],
-/// so the rollup re-resolves on the same rate-limited room-sync tick the world
+/// XP (#9420) has two live inputs: the session's credited XP from the shared
+/// [MissionXpCache], and the goal checkmarks read from session-room state — a
+/// goal awarded as room state adds [kGoalXp] to the saved session's XP, so
+/// the rollup re-resolves on the same rate-limited room-sync tick the world
 /// map and the objectives list recompute on, and on every XP-cache change.
 void main() {
   late Client client;
@@ -155,8 +156,15 @@ void main() {
       stateEvent(
         room,
         type: PangeaEventTypes.activityRole,
+        // Saved: only a saved session's XP counts toward its Mission.
         content: ActivityRolesModel({
-          'r1': ActivityRoleModel(id: 'r1', userId: userId, role: 'Local'),
+          'r1': ActivityRoleModel(
+            id: 'r1',
+            userId: userId,
+            role: 'Local',
+            finishedAt: DateTime.utc(2026, 1, 1, 12),
+            archivedAt: DateTime.utc(2026, 1, 1, 12),
+          ),
         }).toJson(),
       ),
     );
@@ -213,21 +221,24 @@ void main() {
     );
   }
 
-  test('a sparkle awarded while the panel is open updates its Mission XP '
+  test('a goal awarded while the panel is open updates its Mission XP '
       'without a reload', () async {
     stubOutline();
 
     registerCourseSpace();
     final session = registerSession();
-    MissionXpCache.instance.seed(xpByRoom: {sessionId: 250});
+    MissionXpCache.instance.seed(xpByRoom: {sessionId: 1500});
 
     final loader = QuestObjectivesLoader(client: client);
     addTearDown(loader.dispose);
     await loader.loadOutline(questId, courseRoomId: courseRoomId);
 
     // The load-time rollup: the session's XP, no sparkles yet.
-    expect(loader.missionProgress(missionId)?.xp, 250);
-    expect(loader.missionProgress(missionId)?.threshold, 300);
+    expect(loader.missionProgress(missionId)?.xp, 1500);
+    expect(
+      loader.missionProgress(missionId)?.threshold,
+      kDefaultXpToCompleteObjective,
+    );
     expect(loader.missionProgress(missionId)?.satisfied, isFalse);
     expect(loader.questStars?.earned, 0);
 
@@ -240,7 +251,7 @@ void main() {
     // is all the stream needs to deliver it.
     await Future<void>.delayed(Duration.zero);
 
-    expect(loader.missionProgress(missionId)?.xp, 300);
+    expect(loader.missionProgress(missionId)?.xp, 1700);
     expect(loader.missionProgress(missionId)?.satisfied, isTrue);
     expect(loader.questStars?.earned, 1);
   });
@@ -258,11 +269,11 @@ void main() {
       await loader.loadOutline(questId, courseRoomId: courseRoomId);
       expect(loader.missionProgress(missionId)?.xp, 100);
 
-      MissionXpCache.instance.seed(xpByRoom: {sessionId: 320});
+      MissionXpCache.instance.seed(xpByRoom: {sessionId: 1700});
       // The cache notifies on a microtask (publishing mid-build is rejected).
       await Future<void>.delayed(Duration.zero);
 
-      expect(loader.missionProgress(missionId)?.xp, 320);
+      expect(loader.missionProgress(missionId)?.xp, 1700);
       expect(loader.missionProgress(missionId)?.satisfied, isTrue);
     },
   );

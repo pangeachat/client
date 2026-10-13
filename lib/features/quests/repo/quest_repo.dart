@@ -165,14 +165,6 @@ class QuestOutline {
       for (final group in groups)
         group.objective.id: group.activities.map((a) => a.activityId).toSet(),
     },
-    // Each Mission's target vocabulary — the route practice XP takes to reach
-    // it (quests.instructions.md, "What fills a Mission").
-    vocabLemmasByLo: {
-      for (final group in groups)
-        group.objective.id: {
-          for (final a in group.activities) ...a.plan.vocabLemmas,
-        },
-    },
     xpToComplete: xpToComplete,
   );
 }

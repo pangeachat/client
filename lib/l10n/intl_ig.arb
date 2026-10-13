@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-09 11:30:19.515207",
+    "@@last_modified": "2026-10-13 09:39:45.733238",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Mishọn {index} n'ime {count}",
     "xpTowardObjective": "{xp} n'ime {threshold} XP maka ebumnuche a",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} n'ime {total} sparkles enwetara",
-    "sparklesEarnedInLanguage": "Sparkles enwetara na {language}",
     "courseComplete": "Usoro ọmụmụ agwụla!",
     "courseCompleteDesc": "Ịmechala ebumnuche {count} niile dị na usoro ọmụmụ a. Na-emekwu ihe iji jide ihe ị mụtara.",
     "practiceObjective": "Mee ebumnuche a",
     "otherActivities": "Ihe omume ndị ọzọ",
-    "xpToCompleteObjectiveTitle": "XP kwa Mishọn",
-    "xpToCompleteObjectiveDesc": "Tọọ XP achọrọ iji mechaa mishọn ọ bụla",
     "objectiveCircleComplete": "Mgbasa {index}: emechara",
     "objectiveCircleUpNext": "Mgbasa {index}: na-abịa",
-    "useActivityImageAsChatBackground": "Jiri onyonyo ọrụ dị ka ndabere nkata",
     "useActivityImageAsChatBackground": "Jiri onyonyo ọrụ dị ka ndabere nkata",
     "andCertifyIMeetTheMinimumAge": " ma kwado na m dị opekata mpe afọ 13, ma ọ bụ afọ kacha nta achọrọ na obodo m ma ọ bụrụ na ọ dị elu.",
     "filteredNetworkBlockedTitle": "Netwọkụ a na-egbochi Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Jiri igwe okwu gị maka oku",
     "callMicrophoneMessage": "Pangea Chat chọrọ igwe okwu gị maka oku, gụnyere oku ị zara site na ihuenyo mkpọchi.",
     "callMicrophoneOffTitle": "Oku gị ejikọtaghị",
-    "callMicrophoneOffMessage": "Pangea Chat enweghị ike iji igwe okwu gị. Pịa ka ịgbanwuo ya na Ntọala."
+    "callMicrophoneOffMessage": "Pangea Chat enweghị ike iji igwe okwu gị. Pịa ka ịgbanwuo ya na Ntọala.",
+    "goalsCompletedOfTotal": "Ebumnuche {earned} n'ime {total} emezuru",
+    "goalsCompletedInLanguage": "Ebumnuche emezuru na {language}",
+    "sessionXpTowardObjective": "{xp} XP na nnọkọ a; {remaining} ọzọ ga-eme ka ebumnuche ahụ zuo ezu"
 }

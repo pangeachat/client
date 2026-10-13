@@ -656,16 +656,15 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                 builder: (context, progression, _) {
                   if (widget.suggestedOnly) {
                     // The course page's current-Mission row (#9437): the
-                    // Practice tile, then every activity of the Mission the
-                    // resolver points at, ordered by the same Priority matrix
-                    // the map ranks pins by. Sessions the learner already
-                    // holds a role in are dropped (#8741 — resumed from
-                    // Chats); finished activities stay, last, since the row
-                    // is the Mission's whole content and a replay still earns
-                    // XP. Empty only while the course is complete or has no
-                    // Mission; the page renders its own card for that, and
-                    // the section header and its "See all" sit outside this
-                    // widget.
+                    // Practice tile, then the Mission's activities, ordered by
+                    // the same Priority matrix the map ranks pins by. Sessions
+                    // the learner already holds a role in are dropped (#8741 —
+                    // resumed from Chats) and so are finished activities
+                    // (#8901, #9470 — the full plan behind "See all" keeps
+                    // them with their check). Empty only while the course is
+                    // complete or has no Mission; the page renders its own
+                    // card for that, and the section header and its "See all"
+                    // sit outside this widget.
                     final current =
                         widget.objectivesProvider.objectiveGroup(
                           widget.missionId,
@@ -679,7 +678,6 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                           widget.objectivesProvider.missionGradient,
                       signalsFor: _signalsFor,
                       cap: null,
-                      keepCompleted: true,
                     );
                     // The course tutorial's "pick an activity" step lights
                     // this row. Only the course page's row hosts the tutorial,

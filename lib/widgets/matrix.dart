@@ -231,6 +231,12 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   AnalyticsDataService? analyticsServiceFor(String clientName) =>
       _analyticsServices[clientName];
 
+  /// The active account's EXISTING analytics service, or null before it is
+  /// created — never the create-on-miss of [analyticsDataService], whose
+  /// constructor starts the service's init.
+  AnalyticsDataService? get analyticsServiceIfExists =>
+      _analyticsServices[client.clientName];
+
   /// This account's calling service.
   ///
   /// One per account and never rebuilt while the account lives: the SDK's [VoIP]

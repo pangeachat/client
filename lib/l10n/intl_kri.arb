@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-09 11:30:24.586898",
+    "@@last_modified": "2026-10-13 09:39:46.680277",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Mishɔn {index} pan {count}",
     "xpTowardObjective": "{xp} pan {threshold} XP fɔ dis wetín yu want fɔ lan",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} pan {total} shain dɛn dɔn gɛt",
-    "sparklesEarnedInLanguage": "Shain dɛn we dɔn gɛt insay {language}",
     "courseComplete": "Di kos dɔn!",
     "courseCompleteDesc": "Yu dɔn finish ɔl di {count} wetín yu want fɔ lan dɛn insay dis kos. Kɔntinyu fɔ praktis fɔ ɛp yu fɔ mɛmba wetín yu dɔn lan.",
     "practiceObjective": "Praktis dis wetín yu want fɔ lan",
     "otherActivities": "Ɔda tin dɛn we yu go du",
-    "xpToCompleteObjectiveTitle": "XP fɔ ɛni Mishɔn",
-    "xpToCompleteObjectiveDesc": "Sɛt di XP we nid fɔ finish ɛni mishɔn",
     "objectiveCircleComplete": "Mishɔn {index}: dɔn",
     "objectiveCircleUpNext": "Mishɔn {index}: de kam",
-    "useActivityImageAsChatBackground": "Yuz aktiviti pikcho as chat bakgron",
     "useActivityImageAsChatBackground": "Yuz aktiviti pikcho as chat bakgron",
     "andCertifyIMeetTheMinimumAge": " ɛn a dɔn sɔtɛfay se a rich di minimɔm ej we bi 13 ia, ɔ di minimɔm ej we dɛn nid insay mi kɔntri if dat hay pas ighaigher.",
     "filteredNetworkBlockedTitle": "Dis netwok de blok Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Yuz yu maykrofon fɔ kɔl dɛn",
     "callMicrophoneMessage": "Pangea Chat nid yu maykrofon fɔ kɔl dɛn, inklud kɔl dɛn we yu ansar frɔm di lɔk skrin.",
     "callMicrophoneOffTitle": "Yu kɔl nɔ kɔnɛkt",
-    "callMicrophoneOffMessage": "Pangea Chat nɔ go ebul yuz yu maykrofon. Tap fɔ tɔn am ɔn insay Sɛtinz."
+    "callMicrophoneOffMessage": "Pangea Chat nɔ go ebul yuz yu maykrofon. Tap fɔ tɔn am ɔn insay Sɛtinz.",
+    "goalsCompletedOfTotal": "{earned} pan {total} gol dɔn kɔmplit",
+    "goalsCompletedInLanguage": "Gol dɔn kɔmplit insay {language}",
+    "sessionXpTowardObjective": "{xp} XP dis seshɔn; {remaining} mɔ dɔn kɔmplit di ɔbjektiv"
 }

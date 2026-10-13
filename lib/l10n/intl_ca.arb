@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 11:30:11.945600",
+    "@@last_modified": "2026-10-13 09:39:40.075132",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10079,17 +10079,12 @@
     "missionNofM": "Missió {index} de {count}",
     "xpTowardObjective": "{xp} de {threshold} XP per a aquest objectiu",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} de {total} brillants guanyats",
-    "sparklesEarnedInLanguage": "Brillants guanyats en {language}",
     "courseComplete": "Curs completat!",
     "courseCompleteDesc": "Has completat els {count} objectius d'aquest curs. Continua practicant per retenir el que has après.",
     "practiceObjective": "Practica aquest objectiu",
     "otherActivities": "Altres activitats",
-    "xpToCompleteObjectiveTitle": "XP per missió",
-    "xpToCompleteObjectiveDesc": "Defineix els XP necessaris per completar cada missió",
     "objectiveCircleComplete": "Missió {index}: completada",
     "objectiveCircleUpNext": "Missió {index}: següent",
-    "useActivityImageAsChatBackground": "Utilitza la imatge de l'activitat com a fons del xat",
     "useActivityImageAsChatBackground": "Utilitza la imatge de l'activitat com a fons del xat",
     "andCertifyIMeetTheMinimumAge": " i certifico que tinc almenys 13 anys, o l'edat mínima requerida al meu país si és superior.",
     "filteredNetworkBlockedTitle": "Aquesta xarxa està bloquejant Pangea Chat",
@@ -10112,5 +10107,8 @@
     "callMicrophoneTitle": "Utilitza el micròfon per a les trucades",
     "callMicrophoneMessage": "Pangea Chat necessita el teu micròfon per a les trucades, incloses les trucades que responguis des de la pantalla de bloqueig.",
     "callMicrophoneOffTitle": "La teva trucada no s'ha pogut connectar",
-    "callMicrophoneOffMessage": "Pangea Chat no pot utilitzar el teu micròfon. Toca per activar-lo a Configuració."
+    "callMicrophoneOffMessage": "Pangea Chat no pot utilitzar el teu micròfon. Toca per activar-lo a Configuració.",
+    "goalsCompletedOfTotal": "{earned} de {total} objectius completats",
+    "goalsCompletedInLanguage": "Objectius completats en {language}",
+    "sessionXpTowardObjective": "{xp} XP aquesta sessió; {remaining} més completen l'objectiu"
 }

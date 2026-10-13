@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-09 11:30:10.146036",
+    "@@last_modified": "2026-10-13 09:39:36.992325",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Мисия {index} от {count}",
     "xpTowardObjective": "{xp} от {threshold} XP за тази цел",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} от {total} спечелени искри",
-    "sparklesEarnedInLanguage": "Спечелени искри на {language}",
     "courseComplete": "Курсът е завършен!",
     "courseCompleteDesc": "Завършихте всички {count} цели в този курс. Продължавайте да практикувате, за да запазите наученото.",
     "practiceObjective": "Практикувайте тази цел",
     "otherActivities": "Други дейности",
-    "xpToCompleteObjectiveTitle": "XP на мисия",
-    "xpToCompleteObjectiveDesc": "Задайте необходимия XP за завършване на всяка мисия",
     "objectiveCircleComplete": "Мисия {index}: завършена",
     "objectiveCircleUpNext": "Мисия {index}: предстои",
-    "useActivityImageAsChatBackground": "Използвай изображението на активността като фон на чата",
     "useActivityImageAsChatBackground": "Използвай изображението на активността като фон на чата",
     "andCertifyIMeetTheMinimumAge": " и удостоверявам, че съм навършил 13 години или минималната възраст, изисквана в моята страна, ако тя е по-висока.",
     "filteredNetworkBlockedTitle": "Тази мрежа блокира Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Използвайте микрофона си за разговори",
     "callMicrophoneMessage": "Pangea Chat се нуждае от микрофона ви за разговори, включително разговори, на които отговаряте от заключения екран.",
     "callMicrophoneOffTitle": "Връзката за разговора не беше осъществена",
-    "callMicrophoneOffMessage": "Pangea Chat не може да използва микрофона ви. Докоснете, за да го включите в Настройки."
+    "callMicrophoneOffMessage": "Pangea Chat не може да използва микрофона ви. Докоснете, за да го включите в Настройки.",
+    "goalsCompletedOfTotal": "{earned} от {total} завършени цели",
+    "goalsCompletedInLanguage": "Завършени цели на {language}",
+    "sessionXpTowardObjective": "{xp} XP тази сесия; още {remaining} завършват целта"
 }

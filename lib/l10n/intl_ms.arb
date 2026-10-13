@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-09 11:30:27.532980",
+    "@@last_modified": "2026-10-13 09:39:49.653848",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Misi {index} daripada {count}",
     "xpTowardObjective": "{xp} daripada {threshold} XP ke arah objektif ini",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} daripada {total} kilauan diperoleh",
-    "sparklesEarnedInLanguage": "Kilauan diperoleh dalam {language}",
     "courseComplete": "Kursus selesai!",
     "courseCompleteDesc": "Anda telah menyelesaikan semua {count} objektif dalam kursus ini. Terus berlatih untuk mengekalkan apa yang telah anda pelajari.",
     "practiceObjective": "Latih objektif ini",
     "otherActivities": "Aktiviti lain",
-    "xpToCompleteObjectiveTitle": "XP setiap Misi",
-    "xpToCompleteObjectiveDesc": "Tetapkan XP yang diperlukan untuk menyelesaikan setiap misi",
     "objectiveCircleComplete": "Misi {index}: selesai",
     "objectiveCircleUpNext": "Misi {index}: seterusnya",
-    "useActivityImageAsChatBackground": "Gunakan imej aktiviti sebagai latar belakang sembang",
     "useActivityImageAsChatBackground": "Gunakan imej aktiviti sebagai latar belakang sembang",
     "andCertifyIMeetTheMinimumAge": " dan mengesahkan saya berumur sekurang-kurangnya 13 tahun, atau umur minimum yang diperlukan di negara saya jika lebih tinggi.",
     "filteredNetworkBlockedTitle": "Rangkaian ini menyekat Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Gunakan mikrofon anda untuk panggilan",
     "callMicrophoneMessage": "Pangea Chat memerlukan mikrofon anda untuk panggilan, termasuk panggilan yang anda jawab dari skrin kunci.",
     "callMicrophoneOffTitle": "Panggilan anda tidak bersambung",
-    "callMicrophoneOffMessage": "Pangea Chat tidak boleh menggunakan mikrofon anda. Ketik untuk menghidupkannya dalam Tetapan."
+    "callMicrophoneOffMessage": "Pangea Chat tidak boleh menggunakan mikrofon anda. Ketik untuk menghidupkannya dalam Tetapan.",
+    "goalsCompletedOfTotal": "{earned} daripada {total} matlamat selesai",
+    "goalsCompletedInLanguage": "Matlamat selesai dalam {language}",
+    "sessionXpTowardObjective": "{xp} XP sesi ini; {remaining} lagi melengkapkan objektif"
 }

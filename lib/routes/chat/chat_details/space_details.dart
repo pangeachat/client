@@ -12,7 +12,6 @@ import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
-import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
@@ -256,38 +255,6 @@ class SpaceDetailsController extends State<SpaceDetails> {
   void openCoursePage(RoomSubpageEnum page) => _goToCoursePage(
     WorkspaceNav.openCoursePage(GoRouterState.of(context).uri, page),
   );
-
-  /// The teacher's "XP per Mission" override (#9420). No content ceiling any
-  /// more: XP is unbounded, so any positive value is reachable from any
-  /// Mission with an activity (quests.instructions.md, "What fills a
-  /// Mission").
-  Future<void> setXpToCompleteObjective() async {
-    final current =
-        room.teacherMode.xpToCompleteObjective ?? kDefaultXpToCompleteObjective;
-    final resp = await showTextInputDialog(
-      context: context,
-      title: L10n.of(context).xpToCompleteObjectiveTitle,
-      keyboardType: TextInputType.number,
-      maxLength: 5,
-      maxLines: 1,
-      validator: (input) {
-        final value = int.tryParse(input);
-        if (value == null || value < 1) {
-          return L10n.of(context).enterNumber;
-        }
-        return null;
-      },
-      initialText: "$current",
-    );
-
-    if (resp == null || !mounted) return;
-    await showFutureLoadingDialog(
-      context: context,
-      future: () => room.setTeacherMode(
-        room.teacherMode.copyWith(xpToCompleteObjective: int.parse(resp)),
-      ),
-    );
-  }
 
   Future<void> leaveCourse() async {
     final confirmed = await showOkCancelAlertDialog(

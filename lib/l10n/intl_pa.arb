@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-09 11:30:31.281062",
+    "@@last_modified": "2026-10-13 09:39:52.104562",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2401,17 +2401,12 @@
     "missionNofM": "ਮਿਸ਼ਨ {index} ਵਿੱਚੋਂ {count}",
     "xpTowardObjective": "ਇਸ ਉਦੇਸ਼ ਲਈ {threshold} XP ਵਿੱਚੋਂ {xp}",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{total} ਚਮਕਾਂ ਵਿੱਚੋਂ {earned} ਕਮਾਈਆਂ",
-    "sparklesEarnedInLanguage": "{language} ਵਿੱਚ ਕਮਾਈਆਂ ਚਮਕਾਂ",
     "courseComplete": "ਕੋਰਸ ਪੂਰਾ ਹੋ ਗਿਆ!",
     "courseCompleteDesc": "ਤੁਸੀਂ ਇਸ ਕੋਰਸ ਵਿੱਚ ਸਾਰੇ {count} ਉਦੇਸ਼ ਪੂਰੇ ਕਰ ਲਏ ਹਨ। ਜੋ ਤੁਸੀਂ ਸਿੱਖਿਆ ਹੈ, ਉਸਨੂੰ ਬਰਕਰਾਰ ਰੱਖਣ ਲਈ ਅਭਿਆਸ ਕਰਦੇ ਰਹੋ।",
     "practiceObjective": "ਇਸ ਉਦੇਸ਼ ਦਾ ਅਭਿਆਸ ਕਰੋ",
     "otherActivities": "ਹੋਰ ਗਤੀਵਿਧੀਆਂ",
-    "xpToCompleteObjectiveTitle": "ਪ੍ਰਤੀ ਮਿਸ਼ਨ XP",
-    "xpToCompleteObjectiveDesc": "ਹਰੇਕ ਮਿਸ਼ਨ ਨੂੰ ਪੂਰਾ ਕਰਨ ਲਈ ਲੋੜੀਂਦਾ XP ਸੈੱਟ ਕਰੋ",
     "objectiveCircleComplete": "ਮਿਸ਼ਨ {index}: ਪੂਰਾ ਹੋਇਆ",
     "objectiveCircleUpNext": "ਮਿਸ਼ਨ {index}: ਅੱਗੇ",
-    "useActivityImageAsChatBackground": "ਚੈਟ ਬੈਕਗ੍ਰਾਊਂਡ ਵਜੋਂ ਗਤੀਵਿਧੀ ਚਿੱਤਰ ਦੀ ਵਰਤੋਂ ਕਰੋ",
     "useActivityImageAsChatBackground": "ਚੈਟ ਬੈਕਗ੍ਰਾਊਂਡ ਵਜੋਂ ਗਤੀਵਿਧੀ ਚਿੱਤਰ ਦੀ ਵਰਤੋਂ ਕਰੋ",
     "andCertifyIMeetTheMinimumAge": " ਅਤੇ ਪ੍ਰਮਾਣਿਤ ਕਰਦਾ ਹਾਂ ਕਿ ਮੈਂ ਘੱਟੋ-ਘੱਟ 13 ਸਾਲ ਦਾ ਹਾਂ, ਜਾਂ ਜੇਕਰ ਮੇਰੇ ਦੇਸ਼ ਵਿੱਚ ਲੋੜੀਂਦੀ ਘੱਟੋ-ਘੱਟ ਉਮਰ ਇਸ ਤੋਂ ਵੱਧ ਹੈ ਤਾਂ ਉਹ।",
     "filteredNetworkBlockedTitle": "ਇਹ ਨੈੱਟਵਰਕ ਪੈਂਗੇਆ ਚੈਟ ਨੂੰ ਬਲੌਕ ਕਰ ਰਿਹਾ ਹੈ",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "ਕਾਲਾਂ ਲਈ ਆਪਣਾ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਵਰਤੋ",
     "callMicrophoneMessage": "Pangea Chat ਨੂੰ ਕਾਲਾਂ ਲਈ ਤੁਹਾਡੇ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਦੀ ਲੋੜ ਹੈ, ਜਿਸ ਵਿੱਚ ਉਹ ਕਾਲਾਂ ਵੀ ਸ਼ਾਮਲ ਹਨ ਜਿਨ੍ਹਾਂ ਦਾ ਤੁਸੀਂ ਲੌਕ ਸਕ੍ਰੀਨ ਤੋਂ ਜਵਾਬ ਦਿੰਦੇ ਹੋ।",
     "callMicrophoneOffTitle": "ਤੁਹਾਡੀ ਕਾਲ ਕਨੈਕਟ ਨਹੀਂ ਹੋਈ",
-    "callMicrophoneOffMessage": "Pangea Chat ਤੁਹਾਡਾ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਨਹੀਂ ਵਰਤ ਸਕਦਾ। ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਇਸਨੂੰ ਚਾਲੂ ਕਰਨ ਲਈ ਟੈਪ ਕਰੋ।"
+    "callMicrophoneOffMessage": "Pangea Chat ਤੁਹਾਡਾ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਨਹੀਂ ਵਰਤ ਸਕਦਾ। ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਇਸਨੂੰ ਚਾਲੂ ਕਰਨ ਲਈ ਟੈਪ ਕਰੋ।",
+    "goalsCompletedOfTotal": "{total} ਵਿੱਚੋਂ {earned} ਟੀਚੇ ਪੂਰੇ ਹੋਏ",
+    "goalsCompletedInLanguage": "{language} ਵਿੱਚ ਪੂਰੇ ਹੋਏ ਟੀਚੇ",
+    "sessionXpTowardObjective": "ਇਸ ਸੈਸ਼ਨ ਵਿੱਚ {xp} XP; {remaining} ਹੋਰ ਉਦੇਸ਼ ਪੂਰਾ ਕਰਦਾ ਹੈ"
 }

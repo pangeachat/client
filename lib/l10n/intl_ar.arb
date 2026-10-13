@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-09 11:30:12.412204",
+    "@@last_modified": "2026-10-13 09:39:36.947369",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10258,17 +10258,12 @@
     "missionNofM": "المهمة {index} من {count}",
     "xpTowardObjective": "{xp} من {threshold} نقطة خبرة نحو هذا الهدف",
     "xpOfThreshold": "{xp} / {threshold} نقطة خبرة",
-    "sparklesEarnedOfTotal": "{earned} من أصل {total} بريق مكتسب",
-    "sparklesEarnedInLanguage": "البريق المكتسب في {language}",
     "courseComplete": "اكتملت الدورة!",
     "courseCompleteDesc": "لقد أكملت جميع الأهداف الـ {count} في هذه الدورة. استمر في التدريب للحفاظ على ما تعلمته.",
     "practiceObjective": "تدرب على هذا الهدف",
     "otherActivities": "أنشطة أخرى",
-    "xpToCompleteObjectiveTitle": "نقاط الخبرة لكل مهمة",
-    "xpToCompleteObjectiveDesc": "حدد نقاط الخبرة اللازمة لإكمال كل مهمة",
     "objectiveCircleComplete": "المهمة {index}: اكتملت",
     "objectiveCircleUpNext": "المهمة {index}: التالية",
-    "useActivityImageAsChatBackground": "استخدام صورة النشاط كخلفية للدردشة",
     "useActivityImageAsChatBackground": "استخدام صورة النشاط كخلفية للدردشة",
     "andCertifyIMeetTheMinimumAge": " وأقر بأن عمري لا يقل عن 13 عامًا، أو عن الحد الأدنى للسن المطلوب في بلدي إذا كان أعلى من ذلك.",
     "filteredNetworkBlockedTitle": "هذه الشبكة تحظر دردشة Pangea",
@@ -10291,5 +10286,8 @@
     "callMicrophoneTitle": "استخدم الميكروفون للمكالمات",
     "callMicrophoneMessage": "يحتاج Pangea Chat إلى الميكروفون الخاص بك للمكالمات، بما في ذلك المكالمات التي تجيب عليها من شاشة القفل.",
     "callMicrophoneOffTitle": "لم يتم توصيل مكالمتك",
-    "callMicrophoneOffMessage": "لا يمكن لـ Pangea Chat استخدام الميكروفون الخاص بك. انقر لتشغيله في الإعدادات."
+    "callMicrophoneOffMessage": "لا يمكن لـ Pangea Chat استخدام الميكروفون الخاص بك. انقر لتشغيله في الإعدادات.",
+    "goalsCompletedOfTotal": "{earned} من أصل {total} هدف مكتمل",
+    "goalsCompletedInLanguage": "الأهداف المكتملة في {language}",
+    "sessionXpTowardObjective": "{xp} نقطة خبرة في هذه الجلسة؛ {remaining} أخرى لإكمال الهدف"
 }

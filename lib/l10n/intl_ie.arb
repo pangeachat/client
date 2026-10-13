@@ -3089,7 +3089,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-09 11:30:18.471586",
+    "@@last_modified": "2026-10-13 09:39:43.488964",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10584,17 +10584,12 @@
     "missionNofM": "Misean {index} de {count}",
     "xpTowardObjective": "{xp} de {threshold} XP i dtreo an chuspóra seo",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} de {total} spréacha tuillte",
-    "sparklesEarnedInLanguage": "Spréacha tuillte i {language}",
     "courseComplete": "Cúrsa críochnaithe!",
     "courseCompleteDesc": "Tá na {count} cuspóirí go léir sa chúrsa seo críochnaithe agat. Lean ort ag cleachtadh chun an méid atá foghlamtha agat a choinneáil.",
     "practiceObjective": "Cleachtaigh an cuspóir seo",
     "otherActivities": "Gníomhaíochtaí eile",
-    "xpToCompleteObjectiveTitle": "XP in aghaidh an Mhisean",
-    "xpToCompleteObjectiveDesc": "Socraigh an XP atá ag teastáil chun gach misean a chríochnú",
     "objectiveCircleComplete": "Misean {index}: críochnaithe",
     "objectiveCircleUpNext": "Misean {index}: an chéad cheann eile",
-    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
     "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
     "andCertifyIMeetTheMinimumAge": " e certifies que ha minimum 13 annos de etate, o li etate minimal requisit in mi land si it es plu alt.",
     "filteredNetworkBlockedTitle": "Tá an líonra seo ag blocáil Pangea Chat",
@@ -10617,5 +10612,8 @@
     "callMicrophoneTitle": "Bain úsáid as do mhicreafón le haghaidh glaonna",
     "callMicrophoneMessage": "Tá micreafón ag teastáil ó Pangea Chat le haghaidh glaonna, lena n-áirítear glaonna a fhreagraíonn tú ón scáileán glasála.",
     "callMicrophoneOffTitle": "Níor nasc do ghlao",
-    "callMicrophoneOffMessage": "Ní féidir le Pangea Chat do mhicreafón a úsáid. Tapáil chun é a chur ar siúl i Socruithe."
+    "callMicrophoneOffMessage": "Ní féidir le Pangea Chat do mhicreafón a úsáid. Tapáil chun é a chur ar siúl i Socruithe.",
+    "goalsCompletedOfTotal": "{earned} of {total} goals completed",
+    "goalsCompletedInLanguage": "Goals completed in {language}",
+    "sessionXpTowardObjective": "{xp} XP this session; {remaining} more completes the objective"
 }

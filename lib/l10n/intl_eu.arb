@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-09 11:30:12.066695",
+    "@@last_modified": "2026-10-13 09:39:40.509324",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9952,17 +9952,12 @@
     "missionNofM": "{count} misiotik {index}. misioa",
     "xpTowardObjective": "{threshold}eko helburu honetarako {xp} puntu",
     "xpOfThreshold": "{xp} / {threshold} puntu",
-    "sparklesEarnedOfTotal": "{total} distiratik {earned} irabazi dituzu",
-    "sparklesEarnedInLanguage": "{language} hizkuntzan irabazitako distirak",
     "courseComplete": "Ikastaroa osatuta!",
     "courseCompleteDesc": "Ikastaro honetako {count} helburu guztiak osatu dituzu. Jarraitu praktikatzen ikasitakoari eusteko.",
     "practiceObjective": "Helburu hau praktikatu",
     "otherActivities": "Beste jarduera batzuk",
-    "xpToCompleteObjectiveTitle": "Misio bakoitzeko XP",
-    "xpToCompleteObjectiveDesc": "Ezarri misio bakoitza osatzeko behar den XP kopurua",
     "objectiveCircleComplete": "Misioa {index}: osatuta",
     "objectiveCircleUpNext": "Misioa {index}: hurrengoa",
-    "useActivityImageAsChatBackground": "Erabili jardueraren irudia txataren atzeko plano gisa",
     "useActivityImageAsChatBackground": "Erabili jardueraren irudia txataren atzeko plano gisa",
     "andCertifyIMeetTheMinimumAge": " eta ziurtatzen dut gutxienez 13 urte ditudala, edo nire herrialdean eskatzen den gutxieneko adina, hori handiagoa bada.",
     "filteredNetworkBlockedTitle": "Sare honek Pangea Chat blokeatzen du",
@@ -9985,5 +9980,8 @@
     "callMicrophoneTitle": "Erabili mikrofonoa deietarako",
     "callMicrophoneMessage": "Pangea Chat-ek zure mikrofonoa behar du deietarako, blokeo-pantailatik erantzuten dituzun deiak barne.",
     "callMicrophoneOffTitle": "Zure deia ez da konektatu",
-    "callMicrophoneOffMessage": "Pangea Chat-ek ezin du zure mikrofonoa erabili. Sakatu Ezarpenetan aktibatzeko."
+    "callMicrophoneOffMessage": "Pangea Chat-ek ezin du zure mikrofonoa erabili. Sakatu Ezarpenetan aktibatzeko.",
+    "goalsCompletedOfTotal": "{earned} helburu osatuta {total} guztiratik",
+    "goalsCompletedInLanguage": "{language} hizkuntzan osatutako helburuak",
+    "sessionXpTowardObjective": "{xp} XP saio honetan; {remaining} gehiagorekin helburua osatuko duzu"
 }

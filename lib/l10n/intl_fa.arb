@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 11:30:13.484211",
+    "@@last_modified": "2026-10-13 09:39:41.565977",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10040,17 +10040,12 @@
     "missionNofM": "مأموریت {index} از {count}",
     "xpTowardObjective": "{xp} از {threshold} امتیاز تجربه برای این هدف",
     "xpOfThreshold": "{xp} / {threshold} امتیاز تجربه",
-    "sparklesEarnedOfTotal": "{earned} از {total} ستاره کسب شد",
-    "sparklesEarnedInLanguage": "ستاره‌های کسب شده در {language}",
     "courseComplete": "دوره کامل شد!",
     "courseCompleteDesc": "شما تمام {count} هدف این دوره را تکمیل کرده‌اید. برای حفظ آموخته‌هایتان به تمرین ادامه دهید.",
     "practiceObjective": "این هدف را تمرین کنید",
     "otherActivities": "فعالیت‌های دیگر",
-    "xpToCompleteObjectiveTitle": "امتیاز تجربه در هر مأموریت",
-    "xpToCompleteObjectiveDesc": "امتیاز تجربه مورد نیاز برای تکمیل هر مأموریت را تنظیم کنید",
     "objectiveCircleComplete": "مأموریت {index}: تکمیل شد",
     "objectiveCircleUpNext": "مأموریت {index}: بعدی",
-    "useActivityImageAsChatBackground": "استفاده از تصویر فعالیت به عنوان پس‌زمینه چت",
     "useActivityImageAsChatBackground": "استفاده از تصویر فعالیت به عنوان پس‌زمینه چت",
     "andCertifyIMeetTheMinimumAge": " و تأیید می‌کنم که حداقل ۱۳ سال سن دارم، یا اگر در کشورم سن قانونی بالاتری لازم است، آن سن را دارم.",
     "filteredNetworkBlockedTitle": "این شبکه Pangea Chat را مسدود کرده است",
@@ -10073,5 +10068,8 @@
     "callMicrophoneTitle": "از میکروفون خود برای تماس‌ها استفاده کنید",
     "callMicrophoneMessage": "پنگه‌آ چت برای تماس‌ها، از جمله تماس‌هایی که از صفحه قفل پاسخ می‌دهید، به میکروفون شما نیاز دارد.",
     "callMicrophoneOffTitle": "تماس شما وصل نشد",
-    "callMicrophoneOffMessage": "پنگه‌آ چت نمی‌تواند از میکروفون شما استفاده کند. برای روشن کردن آن در تنظیمات ضربه بزنید."
+    "callMicrophoneOffMessage": "پنگه‌آ چت نمی‌تواند از میکروفون شما استفاده کند. برای روشن کردن آن در تنظیمات ضربه بزنید.",
+    "goalsCompletedOfTotal": "{earned} از {total} هدف تکمیل شد",
+    "goalsCompletedInLanguage": "اهداف تکمیل شده در {language}",
+    "sessionXpTowardObjective": "{xp} امتیاز تجربه در این جلسه؛ {remaining} امتیاز دیگر برای تکمیل هدف"
 }

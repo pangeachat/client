@@ -2963,7 +2963,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-09 11:30:26.582742",
+    "@@last_modified": "2026-10-13 09:39:48.123881",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10733,17 +10733,12 @@
     "missionNofM": "Misija {index} iš {count}",
     "xpTowardObjective": "{xp} iš {threshold} XP link šio tikslo",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "Uždirbta {earned} iš {total} žvaigždučių",
-    "sparklesEarnedInLanguage": "Uždirbtos žvaigždutės {language} kalba",
     "courseComplete": "Kursas baigtas!",
     "courseCompleteDesc": "Įvykdėte visus {count} šio kurso tikslus. Toliau praktikuokitės, kad išlaikytumėte tai, ką išmokote.",
     "practiceObjective": "Praktikuoti šį tikslą",
     "otherActivities": "Kita veikla",
-    "xpToCompleteObjectiveTitle": "XP už misiją",
-    "xpToCompleteObjectiveDesc": "Nustatykite XP, reikalingą kiekvienai misijai užbaigti",
     "objectiveCircleComplete": "Misija {index}: atlikta",
     "objectiveCircleUpNext": "Misija {index}: toliau",
-    "useActivityImageAsChatBackground": "Naudoti veiklos paveikslėlį kaip pokalbio foną",
     "useActivityImageAsChatBackground": "Naudoti veiklos paveikslėlį kaip pokalbio foną",
     "andCertifyIMeetTheMinimumAge": " ir patvirtinu, kad man yra bent 13 metų arba mano šalyje reikalaujamas minimalus amžius, jei jis yra didesnis.",
     "filteredNetworkBlockedTitle": "Šis tinklas blokuoja „Pangea Chat“",
@@ -10766,5 +10761,8 @@
     "callMicrophoneTitle": "Naudokite mikrofoną skambučiams",
     "callMicrophoneMessage": "„Pangea Chat“ reikalingas jūsų mikrofonas skambučiams, įskaitant tuos, kuriuos atsiliepiate iš užrakinimo ekrano.",
     "callMicrophoneOffTitle": "Nepavyko prisijungti prie skambučio",
-    "callMicrophoneOffMessage": "„Pangea Chat“ negali naudoti jūsų mikrofono. Bakstelėkite, kad įjungtumėte jį nustatymuose."
+    "callMicrophoneOffMessage": "„Pangea Chat“ negali naudoti jūsų mikrofono. Bakstelėkite, kad įjungtumėte jį nustatymuose.",
+    "goalsCompletedOfTotal": "Įvykdyta {earned} iš {total} tikslų",
+    "goalsCompletedInLanguage": "Įvykdyti tikslai {language} kalba",
+    "sessionXpTowardObjective": "{xp} XP šioje sesijoje; dar {remaining} ir tikslas bus pasiektas"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-09 11:30:15.786647",
+    "@@last_modified": "2026-10-13 09:39:43.524873",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10055,17 +10055,12 @@
     "missionNofM": "{index}/{count} küldetés",
     "xpTowardObjective": "{xp}/{threshold} XP a cél felé",
     "xpOfThreshold": "{xp}/{threshold} XP",
-    "sparklesEarnedOfTotal": "{total} csillámból {earned} összegyűjtve",
-    "sparklesEarnedInLanguage": "Csillámok gyűjtve {language} nyelven",
     "courseComplete": "A kurzus kész!",
     "courseCompleteDesc": "Teljesítetted mind a(z) {count} célt ebben a kurzusban. Gyakorolj tovább, hogy megőrizd a tanultakat.",
     "practiceObjective": "Gyakorold ezt a célt",
     "otherActivities": "Egyéb tevékenységek",
-    "xpToCompleteObjectiveTitle": "XP küldetésenként",
-    "xpToCompleteObjectiveDesc": "Állítsd be a küldetések teljesítéséhez szükséges XP-t",
     "objectiveCircleComplete": "Küldetés {index}: kész",
     "objectiveCircleUpNext": "Küldetés {index}: következik",
-    "useActivityImageAsChatBackground": "Tevékenység képének használata chat háttérként",
     "useActivityImageAsChatBackground": "Tevékenység képének használata chat háttérként",
     "andCertifyIMeetTheMinimumAge": " és igazolom, hogy betöltöttem a 13. életévemet, vagy az országomban előírt magasabb minimális életkort.",
     "filteredNetworkBlockedTitle": "Ez a hálózat blokkolja a Pangea Chatet",
@@ -10088,5 +10083,8 @@
     "callMicrophoneTitle": "Használja a mikrofonját hívásokhoz",
     "callMicrophoneMessage": "A Pangea Chatnek szüksége van a mikrofonjára a hívásokhoz, beleértve a zárolási képernyőről fogadott hívásokat is.",
     "callMicrophoneOffTitle": "A hívás nem jött létre",
-    "callMicrophoneOffMessage": "A Pangea Chat nem tudja használni a mikrofonját. Koppintson ide a beállításokban való bekapcsoláshoz."
+    "callMicrophoneOffMessage": "A Pangea Chat nem tudja használni a mikrofonját. Koppintson ide a beállításokban való bekapcsoláshoz.",
+    "goalsCompletedOfTotal": "{earned}/{total} cél teljesítve",
+    "goalsCompletedInLanguage": "Teljesített célok – {language}",
+    "sessionXpTowardObjective": "{xp} XP ezen a foglalkozáson; még {remaining} a cél teljesítéséhez"
 }

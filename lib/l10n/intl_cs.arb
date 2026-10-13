@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-09 11:30:10.583669",
+    "@@last_modified": "2026-10-13 09:39:38.674920",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10446,17 +10446,12 @@
     "missionNofM": "Mise {index} z {count}",
     "xpTowardObjective": "{xp} z {threshold} XP k tomuto cíli",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} z {total} získaných jiskřiček",
-    "sparklesEarnedInLanguage": "Jiskřičky získané v jazyce {language}",
     "courseComplete": "Kurz dokončen!",
     "courseCompleteDesc": "Dokončili jste všech {count} cílů v tomto kurzu. Pokračujte v procvičování, abyste si udrželi to, co jste se naučili.",
     "practiceObjective": "Procvičit tento cíl",
     "otherActivities": "Další aktivity",
-    "xpToCompleteObjectiveTitle": "XP za misi",
-    "xpToCompleteObjectiveDesc": "Nastavte XP potřebné k dokončení každé mise",
     "objectiveCircleComplete": "Mise {index}: dokončena",
     "objectiveCircleUpNext": "Mise {index}: další v pořadí",
-    "useActivityImageAsChatBackground": "Použít obrázek aktivity jako pozadí chatu",
     "useActivityImageAsChatBackground": "Použít obrázek aktivity jako pozadí chatu",
     "andCertifyIMeetTheMinimumAge": " a potvrzuji, že je mi alespoň 13 let, nebo minimální věk požadovaný v mé zemi, pokud je vyšší.",
     "filteredNetworkBlockedTitle": "Tato síť blokuje Pangea Chat",
@@ -10479,5 +10474,8 @@
     "callMicrophoneTitle": "Použít mikrofon pro hovory",
     "callMicrophoneMessage": "Pangea Chat potřebuje váš mikrofon pro hovory, včetně hovorů, které přijmete z uzamčené obrazovky.",
     "callMicrophoneOffTitle": "Váš hovor se nespojil",
-    "callMicrophoneOffMessage": "Pangea Chat nemůže použít váš mikrofon. Klepnutím jej zapnete v Nastavení."
+    "callMicrophoneOffMessage": "Pangea Chat nemůže použít váš mikrofon. Klepnutím jej zapnete v Nastavení.",
+    "goalsCompletedOfTotal": "Splněno {earned} z {total} cílů",
+    "goalsCompletedInLanguage": "Cílů splněno v jazyce {language}",
+    "sessionXpTowardObjective": "{xp} XP v této relaci; {remaining} zbývá ke splnění cíle"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-09 11:30:36.155195",
+    "@@last_modified": "2026-10-13 09:39:53.654203",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10924,17 +10924,12 @@
     "missionNofM": "Миссия {index} из {count}",
     "xpTowardObjective": "{xp} из {threshold} XP до цели",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} из {total} искр заработано",
-    "sparklesEarnedInLanguage": "Искры, заработанные на {language}",
     "courseComplete": "Курс завершен!",
     "courseCompleteDesc": "Вы выполнили все {count} цели этого курса. Продолжайте практиковаться, чтобы закрепить изученное.",
     "practiceObjective": "Практиковать эту цель",
     "otherActivities": "Другие занятия",
-    "xpToCompleteObjectiveTitle": "XP за миссию",
-    "xpToCompleteObjectiveDesc": "Установите количество XP, необходимое для завершения каждой миссии",
     "objectiveCircleComplete": "Миссия {index}: выполнена",
     "objectiveCircleUpNext": "Миссия {index}: следующая",
-    "useActivityImageAsChatBackground": "Использовать изображение активности в качестве фона чата",
     "useActivityImageAsChatBackground": "Использовать изображение активности в качестве фона чата",
     "andCertifyIMeetTheMinimumAge": " и подтверждаю, что мне не менее 13 лет или минимальный возраст, требуемый в моей стране, если он выше.",
     "filteredNetworkBlockedTitle": "Эта сеть блокирует Pangea Chat",
@@ -10957,5 +10952,8 @@
     "callMicrophoneTitle": "Использовать микрофон для звонков",
     "callMicrophoneMessage": "Pangea Chat требуется доступ к микрофону для звонков, включая звонки, на которые вы отвечаете с экрана блокировки.",
     "callMicrophoneOffTitle": "Не удалось подключиться к звонку",
-    "callMicrophoneOffMessage": "Pangea Chat не может использовать ваш микрофон. Нажмите, чтобы включить его в настройках."
+    "callMicrophoneOffMessage": "Pangea Chat не может использовать ваш микрофон. Нажмите, чтобы включить его в настройках.",
+    "goalsCompletedOfTotal": "{earned} из {total} целей выполнено",
+    "goalsCompletedInLanguage": "Целей выполнено на {language}",
+    "sessionXpTowardObjective": "{xp} XP за эту сессию; еще {remaining} — и цель достигнута"
 }

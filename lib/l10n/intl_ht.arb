@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-09 11:30:18.142483",
+    "@@last_modified": "2026-10-13 09:39:42.771091",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Misyon {index} sou {count}",
     "xpTowardObjective": "{xp} sou {threshold} XP pou objektif sa a",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} sou {total} etensèl touche",
-    "sparklesEarnedInLanguage": "Etensèl touche nan {language}",
     "courseComplete": "Kou a fini!",
     "courseCompleteDesc": "Ou fin reyalize tout {count} objektif nan kou sa a. Kontinye pratike pou kenbe sa w aprann.",
     "practiceObjective": "Pratike objektif sa a",
     "otherActivities": "Lòt aktivite",
-    "xpToCompleteObjectiveTitle": "XP pa Misyon",
-    "xpToCompleteObjectiveDesc": "Mete XP ki nesesè pou konplete chak misyon",
     "objectiveCircleComplete": "Misyon {index}: konplete",
     "objectiveCircleUpNext": "Misyon {index}: kap vini",
-    "useActivityImageAsChatBackground": "Itilize imaj aktivite a kòm background chat la",
     "useActivityImageAsChatBackground": "Itilize imaj aktivite a kòm background chat la",
     "andCertifyIMeetTheMinimumAge": " epi mwen sètifye mwen gen omwen 13 an, oswa laj minimòm obligatwa nan peyi m si sa pi wo.",
     "filteredNetworkBlockedTitle": "Rezo sa a bloke Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Sèvi ak mikwofòn ou pou apèl yo",
     "callMicrophoneMessage": "Pangea Chat bezwen mikwofòn ou pou apèl yo, enkli apèl ou reponn depi ekran bloke a.",
     "callMicrophoneOffTitle": "Apèl ou a pa konekte",
-    "callMicrophoneOffMessage": "Pangea Chat pa ka sèvi ak mikwofòn ou. Tape pou limen li nan Anviwònman."
+    "callMicrophoneOffMessage": "Pangea Chat pa ka sèvi ak mikwofòn ou. Tape pou limen li nan Anviwònman.",
+    "goalsCompletedOfTotal": "{earned} sou {total} objektif yo reyalize",
+    "goalsCompletedInLanguage": "Objektif yo reyalize nan {language}",
+    "sessionXpTowardObjective": "{xp} XP sesyon sa a; {remaining} anplis konplete objektif la"
 }

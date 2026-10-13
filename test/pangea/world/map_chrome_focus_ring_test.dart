@@ -193,7 +193,7 @@ void main() {
         final semantics = tester.ensureSemantics();
         await pumpTrackers(tester);
         final l10n = L10n.of(tester.element(find.byType(Scaffold)));
-        expectOneNodeControl(tester, '${l10n.stars}: 3');
+        expectOneNodeControl(tester, '${l10n.learningObjectives}: 3');
         expectOneNodeControl(tester, '${l10n.grammar}: 3');
         expectOneNodeControl(tester, '${l10n.vocab}: 3');
         semantics.dispose();

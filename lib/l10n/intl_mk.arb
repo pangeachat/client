@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-09 11:30:25.685545",
+    "@@last_modified": "2026-10-13 09:39:48.913409",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Мисија {index} од {count}",
     "xpTowardObjective": "{xp} од {threshold} XP до оваа цел",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} од {total} освоени светки",
-    "sparklesEarnedInLanguage": "Освоени светки на {language}",
     "courseComplete": "Курсот е завршен!",
     "courseCompleteDesc": "Ги завршивте сите {count} цели на овој курс. Продолжете да вежбате за да го задржите она што сте го научиле.",
     "practiceObjective": "Вежбајте ја оваа цел",
     "otherActivities": "Други активности",
-    "xpToCompleteObjectiveTitle": "XP по мисија",
-    "xpToCompleteObjectiveDesc": "Поставете го XP потребно за да ја завршите секоја мисија",
     "objectiveCircleComplete": "Мисија {index}: завршена",
     "objectiveCircleUpNext": "Мисија {index}: следна",
-    "useActivityImageAsChatBackground": "Користи слика од активноста како позадина за разговор",
     "useActivityImageAsChatBackground": "Користи слика од активноста како позадина за разговор",
     "andCertifyIMeetTheMinimumAge": " и потврдувам дека имам најмалку 13 години, или минималната возраст потребна во мојата земја доколку е повисока.",
     "filteredNetworkBlockedTitle": "Оваа мрежа го блокира Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Користете го микрофонот за повици",
     "callMicrophoneMessage": "Pangea Chat има потреба од вашиот микрофон за повици, вклучувајќи ги и повиците на кои одговарате од заклучениот екран.",
     "callMicrophoneOffTitle": "Вашиот повик не се поврза",
-    "callMicrophoneOffMessage": "Pangea Chat не може да го користи вашиот микрофон. Допрете за да го вклучите во Поставки."
+    "callMicrophoneOffMessage": "Pangea Chat не може да го користи вашиот микрофон. Допрете за да го вклучите во Поставки.",
+    "goalsCompletedOfTotal": "{earned} од {total} цели завршени",
+    "goalsCompletedInLanguage": "Цели завршени на {language}",
+    "sessionXpTowardObjective": "{xp} XP оваа сесија; уште {remaining} за да се заврши целта"
 }

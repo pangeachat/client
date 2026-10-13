@@ -258,11 +258,9 @@ class QuestObjectivesLoader {
   /// showing a denominator resolved from another course's cache.
   void _resolveProgression(int loadGen) {
     if (_disposed || _objectiveCache.outlines.isEmpty) return;
-    final xp = MissionXpCache.instance;
     _updateProgression(
       _objectiveCache.resolution(
-        client.userXpByActivity(xp.xpByRoom),
-        xpByLemma: xp.practiceXpByLemma,
+        client.userXpByActivity(MissionXpCache.instance.creditedXpByRoom),
       ),
       loadGen,
     );

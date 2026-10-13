@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-09 11:30:17.041892",
+    "@@last_modified": "2026-10-13 09:39:42.415059",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Lub Hom Phiaj {index} ntawm {count}",
     "xpTowardObjective": "{xp} ntawm {threshold} XP rau lub hom phiaj no",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} ntawm {total} lub hnub qub tau txais",
-    "sparklesEarnedInLanguage": "Lub hnub qub tau txais hauv {language}",
     "courseComplete": "Kawm tiav!",
     "courseCompleteDesc": "Koj tau ua tiav tag nrho {count} lub hom phiaj hauv chav kawm no. Txuas ntxiv xyaum kom nco ntsoov qhov koj tau kawm.",
     "practiceObjective": "Xyaum lub hom phiaj no",
     "otherActivities": "Lwm yam haujlwm",
-    "xpToCompleteObjectiveTitle": "XP rau ib lub hom phiaj",
-    "xpToCompleteObjectiveDesc": "Teem tus XP uas xav tau kom ua tiav txhua lub hom phiaj",
     "objectiveCircleComplete": "Lub Hom Phiaj {index}: tiav",
     "objectiveCircleUpNext": "Lub Hom Phiaj {index}: tom ntej",
-    "useActivityImageAsChatBackground": "Siv daim duab ua si los ua keeb kwm yav dhau los ntawm kev sib tham",
     "useActivityImageAsChatBackground": "Siv daim duab ua si los ua keeb kwm yav dhau los ntawm kev sib tham",
     "andCertifyIMeetTheMinimumAge": " thiab lees paub tias kuv muaj hnub nyoog tsawg kawg 13 xyoos, lossis muaj hnub nyoog tsawg kawg raws li kuv lub tebchaws xav tau yog tias siab dua.",
     "filteredNetworkBlockedTitle": "Lub network no tab tom thaiv Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Siv koj lub microphone rau kev hu",
     "callMicrophoneMessage": "Pangea Chat xav tau koj lub microphone rau kev hu, suav nrog kev hu uas koj teb los ntawm lub vijtsam kaw.",
     "callMicrophoneOffTitle": "Koj qhov kev hu tsis txuas",
-    "callMicrophoneOffMessage": "Pangea Chat tsis tuaj yeem siv koj lub microphone. Coj mus rhaub kom qhib nws hauv Chaw."
+    "callMicrophoneOffMessage": "Pangea Chat tsis tuaj yeem siv koj lub microphone. Coj mus rhaub kom qhib nws hauv Chaw.",
+    "goalsCompletedOfTotal": "{earned} ntawm {total} lub hom phiaj ua tiav",
+    "goalsCompletedInLanguage": "Lub hom phiaj ua tiav hauv {language}",
+    "sessionXpTowardObjective": "{xp} XP rau lub sijhawm no; {remaining} ntxiv yuav ua tiav lub hom phiaj"
 }

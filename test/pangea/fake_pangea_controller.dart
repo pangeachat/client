@@ -50,7 +50,7 @@ class FakePangeaController implements PangeaController {
 
   /// The one slice of [MatrixState] a widget test reaches through this
   /// controller: `MissionXpCache.ensureWired` subscribes to
-  /// `matrixState.analyticsDataService.updateDispatcher.constructUpdateStream`
+  /// `matrixState.analyticsServiceIfExists.updateDispatcher.constructUpdateStream`
   /// from every `QuestObjectivesLoader` constructor (#9420), so any widget
   /// that mounts a loader — the course context bar, the course card — threw
   /// `Null is not a subtype of MatrixState` from [noSuchMethod] before it
@@ -65,6 +65,9 @@ class FakePangeaController implements PangeaController {
 class _FakeMatrixState implements MatrixState {
   @override
   final AnalyticsDataService analyticsDataService = _FakeAnalyticsDataService();
+
+  @override
+  AnalyticsDataService? get analyticsServiceIfExists => analyticsDataService;
 
   // `State` is `Diagnosticable`, whose `toString` takes a level; an
   // implementer has to match that signature or the analyzer rejects it.

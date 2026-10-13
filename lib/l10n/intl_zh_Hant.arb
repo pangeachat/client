@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 11:30:42.618382",
+    "@@last_modified": "2026-10-13 09:40:13.346633",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10058,17 +10058,12 @@
     "missionNofM": "任務 {index} / {count}",
     "xpTowardObjective": "此目標的 {xp} / {threshold} 經驗值",
     "xpOfThreshold": "{xp} / {threshold} 經驗值",
-    "sparklesEarnedOfTotal": "已獲得 {earned} / {total} 個閃光",
-    "sparklesEarnedInLanguage": "在 {language} 中獲得的閃光",
     "courseComplete": "課程完成！",
     "courseCompleteDesc": "您已完成本課程的所有 {count} 個目標。請繼續練習以鞏固所學。",
     "practiceObjective": "練習此目標",
     "otherActivities": "其他活動",
-    "xpToCompleteObjectiveTitle": "每個任務的經驗值",
-    "xpToCompleteObjectiveDesc": "設定完成每個任務所需的經驗值",
     "objectiveCircleComplete": "任務 {index}：已完成",
     "objectiveCircleUpNext": "任務 {index}：即將進行",
-    "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
     "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
     "andCertifyIMeetTheMinimumAge": " 並證明我已年滿 13 歲，或達到我的國家/地區規定的最低年齡（如果該年齡較高）。",
     "filteredNetworkBlockedTitle": "此網路正在封鎖 Pangea Chat",
@@ -10091,5 +10086,8 @@
     "callMicrophoneTitle": "將麥克風用於通話",
     "callMicrophoneMessage": "Pangea Chat 需要您的麥克風才能進行通話，包括您從鎖定畫面接聽的通話。",
     "callMicrophoneOffTitle": "您的通話未連線",
-    "callMicrophoneOffMessage": "Pangea Chat 無法使用您的麥克風。輕點以在「設定」中開啟。"
+    "callMicrophoneOffMessage": "Pangea Chat 無法使用您的麥克風。輕點以在「設定」中開啟。",
+    "goalsCompletedOfTotal": "已完成 {total} 個目標中的 {earned} 個",
+    "goalsCompletedInLanguage": "在{language}中完成的目標",
+    "sessionXpTowardObjective": "本次對話獲得 {xp} XP；還需 {remaining} 即可完成目標"
 }

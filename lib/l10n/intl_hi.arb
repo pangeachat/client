@@ -3089,7 +3089,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-10-09 11:30:16.425163",
+    "@@last_modified": "2026-10-13 09:39:42.182250",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10584,17 +10584,12 @@
     "missionNofM": "मिशन {index} / {count}",
     "xpTowardObjective": "इस उद्देश्य के लिए {threshold} XP में से {xp}",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{total} स्पार्कल में से {earned} अर्जित किए गए",
-    "sparklesEarnedInLanguage": "{language} में अर्जित स्पार्कल",
     "courseComplete": "कोर्स पूरा हुआ!",
     "courseCompleteDesc": "आपने इस कोर्स के सभी {count} उद्देश्य पूरे कर लिए हैं। जो सीखा है उसे बनाए रखने के लिए अभ्यास करते रहें।",
     "practiceObjective": "इस उद्देश्य का अभ्यास करें",
     "otherActivities": "अन्य गतिविधियाँ",
-    "xpToCompleteObjectiveTitle": "प्रति मिशन XP",
-    "xpToCompleteObjectiveDesc": "प्रत्येक मिशन को पूरा करने के लिए आवश्यक XP सेट करें",
     "objectiveCircleComplete": "मिशन {index}: पूरा हुआ",
     "objectiveCircleUpNext": "मिशन {index}: आगे",
-    "useActivityImageAsChatBackground": "गतिविधि छवि को चैट पृष्ठभूमि के रूप में उपयोग करें",
     "useActivityImageAsChatBackground": "गतिविधि छवि को चैट पृष्ठभूमि के रूप में उपयोग करें",
     "andCertifyIMeetTheMinimumAge": " और प्रमाणित करता हूँ कि मैं कम से कम 13 वर्ष का हूँ, या मेरे देश में आवश्यक न्यूनतम आयु का हूँ यदि वह अधिक है।",
     "filteredNetworkBlockedTitle": "यह नेटवर्क पांगिया चैट को ब्लॉक कर रहा है",
@@ -10617,5 +10612,8 @@
     "callMicrophoneTitle": "कॉल के लिए अपने माइक्रोफ़ोन का उपयोग करें",
     "callMicrophoneMessage": "Pangea Chat को कॉल के लिए आपके माइक्रोफ़ोन की आवश्यकता है, जिसमें लॉक स्क्रीन से आपके द्वारा उत्तर दिए गए कॉल भी शामिल हैं।",
     "callMicrophoneOffTitle": "आपकी कॉल कनेक्ट नहीं हुई",
-    "callMicrophoneOffMessage": "Pangea Chat आपके माइक्रोफ़ोन का उपयोग नहीं कर सकता है। सेटिंग्स में इसे चालू करने के लिए टैप करें।"
+    "callMicrophoneOffMessage": "Pangea Chat आपके माइक्रोफ़ोन का उपयोग नहीं कर सकता है। सेटिंग्स में इसे चालू करने के लिए टैप करें।",
+    "goalsCompletedOfTotal": "{total} में से {earned} लक्ष्य पूरे हुए",
+    "goalsCompletedInLanguage": "{language} में पूरे हुए लक्ष्य",
+    "sessionXpTowardObjective": "इस सत्र में {xp} XP; उद्देश्य पूरा करने के लिए {remaining} और"
 }

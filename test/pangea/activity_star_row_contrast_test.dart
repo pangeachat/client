@@ -4,12 +4,11 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
-import 'package:fluffychat/widgets/sparkle_icon.dart';
 import 'contrast_ratio.dart';
 
 /// The star row is a graphic the user has to read: the count of filled vs
 /// unfilled sparkles *is* the content (#8760). Sparkles, not stars, since
-/// #9439 — the row keeps its name, its marks are [SparkleIcon]s.
+/// #9439 — the row keeps its name, its marks are [Icon]s.
 void main() {
   for (final brightness in [Brightness.light, Brightness.dark]) {
     testWidgets('star row clears $minGraphicRatio:1 in ${brightness.name}', (
@@ -37,14 +36,14 @@ void main() {
       await tester.pumpAndSettle();
 
       final sparkles = tester
-          .widgetList<SparkleIcon>(find.byType(SparkleIcon))
+          .widgetList<Icon>(find.byType(Icon))
           .toList(growable: false);
       expect(sparkles.length, 4);
 
-      final earned = sparkles.first.color;
-      final unearned = sparkles.last.color;
-      expect(sparkles.first.filled, isTrue);
-      expect(sparkles.last.filled, isFalse);
+      final earned = sparkles.first.color!;
+      final unearned = sparkles.last.color!;
+      expect(sparkles.first.icon, Icons.check_circle);
+      expect(sparkles.last.icon, Icons.check_circle_outline);
 
       // The row sits on bare surfaces and inside cards; the card is the
       // tighter of the two in both themes, so both are asserted.
@@ -105,14 +104,14 @@ void main() {
         await tester.pumpAndSettle();
 
         final sparkles = tester
-            .widgetList<SparkleIcon>(find.byType(SparkleIcon))
+            .widgetList<Icon>(find.byType(Icon))
             .toList(growable: false);
-        expect(sparkles.first.filled, isTrue);
-        expect(sparkles.last.filled, isFalse);
+        expect(sparkles.first.icon, Icons.check_circle);
+        expect(sparkles.last.icon, Icons.check_circle_outline);
         for (final sparkle in sparkles) {
           expect(sparkle.color, scheme.onPrimaryContainer);
           expect(
-            contrastRatio(sparkle.color, scheme.primaryContainer),
+            contrastRatio(sparkle.color!, scheme.primaryContainer),
             greaterThanOrEqualTo(minGraphicRatio),
             reason:
                 'sparkle in the fill\'s ink on primaryContainer, '

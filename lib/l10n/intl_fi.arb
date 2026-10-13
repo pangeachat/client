@@ -3532,7 +3532,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-09 11:30:13.746586",
+    "@@last_modified": "2026-10-13 09:39:42.364811",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9989,17 +9989,12 @@
     "missionNofM": "Tehtävä {index} / {count}",
     "xpTowardObjective": "{xp} / {threshold} XP tästä tavoitteesta",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} / {total} kipinää ansaittu",
-    "sparklesEarnedInLanguage": "Kipinöitä ansaittu kielellä {language}",
     "courseComplete": "Kurssi suoritettu!",
     "courseCompleteDesc": "Olet suorittanut kaikki {count} tavoitetta tällä kurssilla. Jatka harjoittelua pitääksesi oppimasi mielessä.",
     "practiceObjective": "Harjoittele tätä tavoitetta",
     "otherActivities": "Muut aktiviteetit",
-    "xpToCompleteObjectiveTitle": "XP per tehtävä",
-    "xpToCompleteObjectiveDesc": "Aseta XP-määrä, joka tarvitaan kunkin tehtävän suorittamiseen",
     "objectiveCircleComplete": "Tehtävä {index}: valmis",
     "objectiveCircleUpNext": "Tehtävä {index}: seuraavana",
-    "useActivityImageAsChatBackground": "Käytä aktiviteetin kuvaa chatin taustana",
     "useActivityImageAsChatBackground": "Käytä aktiviteetin kuvaa chatin taustana",
     "andCertifyIMeetTheMinimumAge": " ja vakuutan olevani vähintään 13-vuotias tai maassani vaaditun korkeamman vähimmäisiän mukainen.",
     "filteredNetworkBlockedTitle": "Tämä verkko estää Pangea Chatin",
@@ -10022,5 +10017,8 @@
     "callMicrophoneTitle": "Käytä mikrofonia puheluihin",
     "callMicrophoneMessage": "Pangea Chat tarvitsee mikrofonisi puheluihin, myös lukitusnäytöltä vastaamiisi puheluihin.",
     "callMicrophoneOffTitle": "Puhelu ei yhdistynyt",
-    "callMicrophoneOffMessage": "Pangea Chat ei voi käyttää mikrofonia. Napauta ottaaksesi sen käyttöön asetuksista."
+    "callMicrophoneOffMessage": "Pangea Chat ei voi käyttää mikrofonia. Napauta ottaaksesi sen käyttöön asetuksista.",
+    "goalsCompletedOfTotal": "{earned}/{total} tavoitetta suoritettu",
+    "goalsCompletedInLanguage": "Suoritettuja tavoitteita kielellä {language}",
+    "sessionXpTowardObjective": "{xp} XP tässä sessiossa; {remaining} lisää täyttää tavoitteen"
 }

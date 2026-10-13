@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-09 11:30:35.685668",
+    "@@last_modified": "2026-10-13 09:39:57.743966",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10253,17 +10253,12 @@
     "missionNofM": "{count} görevden {index}. görev",
     "xpTowardObjective": "Bu hedefe yönelik {threshold} XP'den {xp} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{total} ışıltıdan {earned} tanesi kazanıldı",
-    "sparklesEarnedInLanguage": "{language} dilinde kazanılan ışıltılar",
     "courseComplete": "Kurs tamamlandı!",
     "courseCompleteDesc": "Bu kurstaki {count} hedefin tümünü tamamladın. Öğrendiklerini pekiştirmek için pratik yapmaya devam et.",
     "practiceObjective": "Bu hedefi pratik et",
     "otherActivities": "Diğer aktiviteler",
-    "xpToCompleteObjectiveTitle": "Görev Başına XP",
-    "xpToCompleteObjectiveDesc": "Her görevi tamamlamak için gereken XP'yi ayarla",
     "objectiveCircleComplete": "Görev {index}: tamamlandı",
     "objectiveCircleUpNext": "Görev {index}: sırada",
-    "useActivityImageAsChatBackground": "Etkinlik görselini sohbet arka planı olarak kullan",
     "useActivityImageAsChatBackground": "Etkinlik görselini sohbet arka planı olarak kullan",
     "andCertifyIMeetTheMinimumAge": " ve en az 13 yaşında olduğumu veya ülkemde daha yüksekse gereken minimum yaşta olduğumu onaylıyorum.",
     "filteredNetworkBlockedTitle": "Bu ağ Pangea Chat'i engelliyor",
@@ -10286,5 +10281,8 @@
     "callMicrophoneTitle": "Aramalar için mikrofonunuzu kullanın",
     "callMicrophoneMessage": "Pangea Chat'in, kilit ekranından yanıtladığınız aramalar da dahil olmak üzere aramalar için mikrofonunuza erişmesi gerekiyor.",
     "callMicrophoneOffTitle": "Aramanız bağlanmadı",
-    "callMicrophoneOffMessage": "Pangea Chat mikrofonunuzu kullanamıyor. Ayarlar'dan açmak için dokunun."
+    "callMicrophoneOffMessage": "Pangea Chat mikrofonunuzu kullanamıyor. Ayarlar'dan açmak için dokunun.",
+    "goalsCompletedOfTotal": "{total} hedeften {earned} tanesi tamamlandı",
+    "goalsCompletedInLanguage": "{language} dilinde tamamlanan hedefler",
+    "sessionXpTowardObjective": "Bu oturumda {xp} XP; hedefin tamamlanmasına {remaining} kaldı"
 }

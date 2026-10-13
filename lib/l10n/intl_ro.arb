@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 11:30:32.474412",
+    "@@last_modified": "2026-10-13 09:39:53.048981",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10684,17 +10684,12 @@
     "missionNofM": "Misiunea {index} din {count}",
     "xpTowardObjective": "{xp} din {threshold} XP pentru acest obiectiv",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} din {total} scântei câștigate",
-    "sparklesEarnedInLanguage": "Scântei câștigate în {language}",
     "courseComplete": "Curs finalizat!",
     "courseCompleteDesc": "Ai finalizat toate cele {count} obiective din acest curs. Continuă să exersezi pentru a-ți menține cunoștințele.",
     "practiceObjective": "Exersează acest obiectiv",
     "otherActivities": "Alte activități",
-    "xpToCompleteObjectiveTitle": "XP per misiune",
-    "xpToCompleteObjectiveDesc": "Setează XP-ul necesar pentru a finaliza fiecare misiune",
     "objectiveCircleComplete": "Misiunea {index}: finalizată",
     "objectiveCircleUpNext": "Misiunea {index}: urmează",
-    "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal de chat",
     "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal de chat",
     "andCertifyIMeetTheMinimumAge": " și certific că am cel puțin 13 ani, sau vârsta minimă cerută în țara mea dacă aceasta este mai mare.",
     "filteredNetworkBlockedTitle": "Această rețea blochează Pangea Chat",
@@ -10717,5 +10712,8 @@
     "callMicrophoneTitle": "Folosește microfonul pentru apeluri",
     "callMicrophoneMessage": "Pangea Chat are nevoie de microfonul tău pentru apeluri, inclusiv pentru apelurile la care răspunzi din ecranul de blocare.",
     "callMicrophoneOffTitle": "Apelul tău nu s-a conectat",
-    "callMicrophoneOffMessage": "Pangea Chat nu poate folosi microfonul tău. Atinge pentru a-l activa din Setări."
+    "callMicrophoneOffMessage": "Pangea Chat nu poate folosi microfonul tău. Atinge pentru a-l activa din Setări.",
+    "goalsCompletedOfTotal": "{earned} din {total} obiective finalizate",
+    "goalsCompletedInLanguage": "Obiective finalizate în {language}",
+    "sessionXpTowardObjective": "{xp} XP în această sesiune; încă {remaining} pentru a finaliza obiectivul"
 }

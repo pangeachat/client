@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-09 11:30:23.597634",
+    "@@last_modified": "2026-10-13 09:39:44.566543",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Misi {index} saka {count}",
     "xpTowardObjective": "{xp} saka {threshold} XP kanggo ancas iki",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} saka {total} sparkles entuk",
-    "sparklesEarnedInLanguage": "Sparkles sing entuk ing {language}",
     "courseComplete": "Kursus rampung!",
     "courseCompleteDesc": "Sampeyan wis ngrampungake kabeh {count} ancas ing kursus iki. Terus latihan supaya ora lali sing wis disinaoni.",
     "practiceObjective": "Latihan ancas iki",
     "otherActivities": "Kegiatan liyane",
-    "xpToCompleteObjectiveTitle": "XP saben Misi",
-    "xpToCompleteObjectiveDesc": "Setel XP sing dibutuhake kanggo ngrampungake saben misi",
     "objectiveCircleComplete": "Misi {index}: rampung",
     "objectiveCircleUpNext": "Misi {index}: sabanjure",
-    "useActivityImageAsChatBackground": "Gunakake gambar aktivitas minangka latar mburi obrolan",
     "useActivityImageAsChatBackground": "Gunakake gambar aktivitas minangka latar mburi obrolan",
     "andCertifyIMeetTheMinimumAge": " lan nyatakake yen aku wis umur paling ora 13 taun, utawa umur minimal sing dibutuhake ing negaraku yen luwih dhuwur.",
     "filteredNetworkBlockedTitle": "Jaringan iki mblokir Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Gunakake mikroponmu kanggo nelpon",
     "callMicrophoneMessage": "Pangea Chat mbutuhake mikroponmu kanggo nelpon, kalebu telpon sing kokangkat saka layar kunci.",
     "callMicrophoneOffTitle": "Telponmu ora nyambung",
-    "callMicrophoneOffMessage": "Pangea Chat ora bisa nggunakake mikroponmu. Tutul kanggo nguripake ing Setelan."
+    "callMicrophoneOffMessage": "Pangea Chat ora bisa nggunakake mikroponmu. Tutul kanggo nguripake ing Setelan.",
+    "goalsCompletedOfTotal": "{earned} saka {total} target wis rampung",
+    "goalsCompletedInLanguage": "Target sing wis rampung ing basa {language}",
+    "sessionXpTowardObjective": "{xp} XP sesi iki; {remaining} maneh ngrampungake objektif"
 }

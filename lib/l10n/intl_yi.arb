@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-09 11:30:40.815969",
+    "@@last_modified": "2026-10-13 09:39:58.342510",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "מיסיע {index} פֿון {count}",
     "xpTowardObjective": "{xp} פֿון {threshold} XP צו דעם ציל",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} פֿון {total} שײַנקלען פֿאַרדינט",
-    "sparklesEarnedInLanguage": "שײַנקלען פֿאַרדינט אין {language}",
     "courseComplete": "קורס פֿאַרענדיקט!",
     "courseCompleteDesc": "איר האָט פֿאַרענדיקט אַלע {count} צילן אין דעם קורס. האַלט ווײַטער איבנדיק כּדי צו האַלטן וואָס איר האָט געלערנט.",
     "practiceObjective": "איבן דעם ציל",
     "otherActivities": "אַנדערע אַקטיוויטעטן",
-    "xpToCompleteObjectiveTitle": "XP פּער מיסיע",
-    "xpToCompleteObjectiveDesc": "שטעלן די XP וואָס מע דאַרף כּדי צו פֿאַרענדיקן יעדער מיסיע",
     "objectiveCircleComplete": "מיסיע {index}: פֿאַרענדיקט",
     "objectiveCircleUpNext": "מיסיע {index}: קומענדיקע",
-    "useActivityImageAsChatBackground": "ניצן טעטיקייט בילד ווי שמועס הינטערגרונט",
     "useActivityImageAsChatBackground": "ניצן טעטיקייט בילד ווי שמועס הינטערגרונט",
     "andCertifyIMeetTheMinimumAge": " און באַווײַזן אַז איך בין כאָטש 13 יאָר אַלט, אָדער די מינימום עלטער וואָס איז פארלאנגט אין מיין לאַנד אויב דאָס איז העכער.",
     "filteredNetworkBlockedTitle": "די נעץ בלאקירט פּאַנגעאַ טשאַט",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "ניצן דיין מיקראָפאָן פֿאַר קאַללס",
     "callMicrophoneMessage": "פּאַנגעאַ טשאַט דאַרף דיין מיקראָפאָן פֿאַר קאַללס, אַרייַנגערעכנט קאַללס וואָס איר ענטפֿערט פֿון דעם שלאָס עקראַן.",
     "callMicrophoneOffTitle": "דיין רוף האָט זיך נישט פֿאַרבונדן",
-    "callMicrophoneOffMessage": "פּאַנגעאַ טשאַט קען נישט ניצן דיין מיקראָפאָן. דרוקט צו אָנצינדן עס אין סעטטינגס."
+    "callMicrophoneOffMessage": "פּאַנגעאַ טשאַט קען נישט ניצן דיין מיקראָפאָן. דרוקט צו אָנצינדן עס אין סעטטינגס.",
+    "goalsCompletedOfTotal": "{earned} פון {total} צילן פֿאַרענדיקט",
+    "goalsCompletedInLanguage": "צילן פֿאַרענדיקט אין {language}",
+    "sessionXpTowardObjective": "{xp} עקס־פּי די סעסיע; {remaining} מער פֿאַרענדיקט דעם ציל"
 }

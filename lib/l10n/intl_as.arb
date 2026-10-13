@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-09 11:30:09.903877",
+    "@@last_modified": "2026-10-13 09:39:37.334558",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2401,17 +2401,12 @@
     "missionNofM": "{count} টাৰ ভিতৰত {index} নং অভিযান",
     "xpTowardObjective": "এই উদ্দেশ্যৰ বাবে {threshold} XP ৰ ভিতৰত {xp} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{total} টা স্পাৰ্কলৰ ভিতৰত {earned} টা অৰ্জন কৰা হৈছে",
-    "sparklesEarnedInLanguage": "{language} ত অৰ্জন কৰা স্পাৰ্কল",
     "courseComplete": "পাঠ্যক্ৰম সম্পূৰ্ণ!",
     "courseCompleteDesc": "আপুনি এই পাঠ্যক্ৰমৰ সকলো {count} টা উদ্দেশ্য সম্পূৰ্ণ কৰিছে। আপুনি যি শিকিছে সেয়া ধৰি ৰাখিবলৈ অনুশীলন কৰি থাকক।",
     "practiceObjective": "এই উদ্দেশ্যৰ অনুশীলন কৰক",
     "otherActivities": "অন্যান্য কাৰ্যকলাপ",
-    "xpToCompleteObjectiveTitle": "প্ৰতিটো অভিযানৰ বাবে XP",
-    "xpToCompleteObjectiveDesc": "প্ৰতিটো অভিযান সম্পূৰ্ণ কৰিবলৈ প্ৰয়োজনীয় XP নিৰ্ধাৰণ কৰক",
     "objectiveCircleComplete": "মিছন {index}: সম্পূৰ্ণ",
     "objectiveCircleUpNext": "মিছন {index}: পৰৱৰ্তী",
-    "useActivityImageAsChatBackground": "কাৰ্য্যকলাপৰ ছবিখনক চেটৰ পৃষ্ঠভূমি হিচাপে ব্যৱহাৰ কৰক",
     "useActivityImageAsChatBackground": "কাৰ্য্যকলাপৰ ছবিখনক চেটৰ পৃষ্ঠভূমি হিচাপে ব্যৱহাৰ কৰক",
     "andCertifyIMeetTheMinimumAge": " আৰু মই প্ৰমাণিত কৰোঁ যে মোৰ বয়স কমেও ১৩ বছৰ, অথবা মোৰ দেশত প্ৰয়োজনীয় সৰ্বনিম্ন বয়স যদি সেয়া বেছি হয়।",
     "filteredNetworkBlockedTitle": "এই নেটৱৰ্কে পেংগিয়া চেট ব্লক কৰিছে",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "কলৰ বাবে আপোনাৰ মাইক্ৰ'ফোন ব্যৱহাৰ কৰক",
     "callMicrophoneMessage": "লক স্ক্ৰীণৰ পৰা উত্তৰ দিয়া কলসমূহকে ধৰি কলৰ বাবে পেংগিয়া চেটক আপোনাৰ মাইক্ৰ'ফোনৰ প্ৰয়োজন।",
     "callMicrophoneOffTitle": "আপোনাৰ কল সংযোগ হোৱা নাই",
-    "callMicrophoneOffMessage": "পেংগিয়া চেটে আপোনাৰ মাইক্ৰ'ফোন ব্যৱহাৰ কৰিব নোৱাৰে। ছেটিংছত ইয়াক অন কৰিবলৈ টেপ কৰক।"
+    "callMicrophoneOffMessage": "পেংগিয়া চেটে আপোনাৰ মাইক্ৰ'ফোন ব্যৱহাৰ কৰিব নোৱাৰে। ছেটিংছত ইয়াক অন কৰিবলৈ টেপ কৰক।",
+    "goalsCompletedOfTotal": "{total} টা লক্ষ্যৰ ভিতৰত {earned} টা সম্পূৰ্ণ হৈছে",
+    "goalsCompletedInLanguage": "{language} ভাষাত সম্পূৰ্ণ হোৱা লক্ষ্যসমূহ",
+    "sessionXpTowardObjective": "এই ছেছনত {xp} XP; উদ্দেশ্য সম্পূৰ্ণ কৰিবলৈ আৰু {remaining} বাকী আছে"
 }

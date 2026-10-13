@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-09 11:30:31.561597",
+    "@@last_modified": "2026-10-13 09:39:46.930956",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Missio {index} de {count}",
     "xpTowardObjective": "{xp} de {threshold} XP ad hoc propositum",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} de {total} micis lucis meritis",
-    "sparklesEarnedInLanguage": "Micae lucis meritae in {language}",
     "courseComplete": "Cursus perfectus!",
     "courseCompleteDesc": "Omnia {count} proposita in hoc cursu perfecisti. Perge exercere ut retineas quae didicisti.",
     "practiceObjective": "Hoc propositum exerce",
     "otherActivities": "Aliae actiones",
-    "xpToCompleteObjectiveTitle": "XP per Missionem",
-    "xpToCompleteObjectiveDesc": "Constitue XP necessaria ad quamque missionem perficiendam",
     "objectiveCircleComplete": "Missio {index}: perfecta",
     "objectiveCircleUpNext": "Missio {index}: proxima",
-    "useActivityImageAsChatBackground": "Imaginem actionis uti pro curriculo sermonis",
     "useActivityImageAsChatBackground": "Imaginem actionis uti pro curriculo sermonis",
     "andCertifyIMeetTheMinimumAge": " et confirmo me saltem tredecim annos natum esse, vel minimam aetatem in patria mea requisitam si maior sit.",
     "filteredNetworkBlockedTitle": "Haec rete Pangea Chat impedit",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Utere microphono tuo ad vocandum",
     "callMicrophoneMessage": "Pangea Chat microphono tuo indiget ad vocandum, etiam ad vocandum quod ex velo clauso respondes.",
     "callMicrophoneOffTitle": "Vocatio tua non coniuncta est",
-    "callMicrophoneOffMessage": "Pangea Chat microphono tuo uti non potest. Tange ut id in Optionibus vertere possis."
+    "callMicrophoneOffMessage": "Pangea Chat microphono tuo uti non potest. Tange ut id in Optionibus vertere possis.",
+    "goalsCompletedOfTotal": "{earned} ex {total} propositis perfectis",
+    "goalsCompletedInLanguage": "Proposita perfecta in lingua {language}",
+    "sessionXpTowardObjective": "{xp} XP hac sessione; {remaining} plus perficit propositum"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 11:30:21.845914",
+    "@@last_modified": "2026-10-13 09:39:46.675565",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10145,17 +10145,12 @@
     "missionNofM": "{count}개 중 {index}번째 미션",
     "xpTowardObjective": "이 목표 달성까지 {threshold} XP 중 {xp} XP",
     "xpOfThreshold": "{threshold} XP 중 {xp} XP",
-    "sparklesEarnedOfTotal": "{total}개 스파클 중 {earned}개 획득",
-    "sparklesEarnedInLanguage": "{language}에서 획득한 스파클",
     "courseComplete": "코스 완료!",
     "courseCompleteDesc": "이 코스의 {count}개 목표를 모두 완료했습니다. 배운 내용을 잊지 않도록 계속 연습하세요.",
     "practiceObjective": "이 목표 연습하기",
     "otherActivities": "다른 활동",
-    "xpToCompleteObjectiveTitle": "미션당 XP",
-    "xpToCompleteObjectiveDesc": "각 미션을 완료하는 데 필요한 XP를 설정하세요.",
     "objectiveCircleComplete": "미션 {index}: 완료",
     "objectiveCircleUpNext": "미션 {index}: 다음",
-    "useActivityImageAsChatBackground": "활동 이미지를 채팅 배경으로 사용",
     "useActivityImageAsChatBackground": "활동 이미지를 채팅 배경으로 사용",
     "andCertifyIMeetTheMinimumAge": " 및 저는 13세 이상이거나, 해당 국가에서 요구하는 최소 연령(더 높은 경우) 이상임을 증명합니다.",
     "filteredNetworkBlockedTitle": "이 네트워크는 Pangea Chat을 차단하고 있습니다",
@@ -10178,5 +10173,8 @@
     "callMicrophoneTitle": "통화에 마이크 사용",
     "callMicrophoneMessage": "Pangea Chat은 잠금 화면에서 응답하는 통화를 포함하여 통화에 마이크가 필요합니다.",
     "callMicrophoneOffTitle": "통화가 연결되지 않았습니다",
-    "callMicrophoneOffMessage": "Pangea Chat이 마이크를 사용할 수 없습니다. 설정을 탭하여 켜세요."
+    "callMicrophoneOffMessage": "Pangea Chat이 마이크를 사용할 수 없습니다. 설정을 탭하여 켜세요.",
+    "goalsCompletedOfTotal": "{total}개의 목표 중 {earned}개 완료",
+    "goalsCompletedInLanguage": "{language} 학습 목표 달성",
+    "sessionXpTowardObjective": "이번 세션에서 {xp} XP 획득; 목표 달성까지 {remaining} XP 남음"
 }

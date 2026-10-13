@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-09 11:30:34.525107",
+    "@@last_modified": "2026-10-13 09:39:58.998649",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Thomo ya {index} ho {count}",
     "xpTowardObjective": "{xp} ho {threshold} XP ho fihlella sepheo sena",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} ho {total} disebediswa tse fumanweng",
-    "sparklesEarnedInLanguage": "Disebediswa tse fumanweng ka {language}",
     "courseComplete": "Thupelo e phethilwe!",
     "courseCompleteDesc": "O qetile dipehelo tsohle tse {count} thupelong ena. Tswela pele ho itlwaetsa ho boloka seo o se ithutileng.",
     "practiceObjective": "Itlwaetse sepheo sena",
     "otherActivities": "Diketso tse ding",
-    "xpToCompleteObjectiveTitle": "XP ka Thomo",
-    "xpToCompleteObjectiveDesc": "Beha XP e hlokahalang ho phethela thomo ka nngwe",
     "objectiveCircleComplete": "Thomo {index}: e phethiloe",
     "objectiveCircleUpNext": "Thomo {index}: e latelang",
-    "useActivityImageAsChatBackground": "Sebelisa setšoantšo sa mosebetsi e le bokamorao ba moqoqo",
     "useActivityImageAsChatBackground": "Sebelisa setšoantšo sa mosebetsi e le bokamorao ba moqoqo",
     "andCertifyIMeetTheMinimumAge": " mme ke netefatsa hore ke na le bonyane lilemo tse 13, kapa lilemo tse fokolang tse hlokahalang naheng ea heso haeba li le holimo.",
     "filteredNetworkBlockedTitle": "Marangrang ana a thibela Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Sebelisa maekrofounu ea hau bakeng sa mehala",
     "callMicrophoneMessage": "Pangea Chat e hloka maekrofounu ea hau bakeng sa mehala, ho kenyeletsoa le mehala eo u e arabang ho tsoa skrineng sa senotlolo.",
     "callMicrophoneOffTitle": "Mohala oa hau ha oa hokela",
-    "callMicrophoneOffMessage": "Pangea Chat e ke ke ea sebelisa maekrofounu ea hau. Tlanya ho e bulela ho Litlhophiso."
+    "callMicrophoneOffMessage": "Pangea Chat e ke ke ea sebelisa maekrofounu ea hau. Tlanya ho e bulela ho Litlhophiso.",
+    "goalsCompletedOfTotal": "Lipakane tse {earned} ho tse {total} li phethiloe",
+    "goalsCompletedInLanguage": "Lipakane tse phethiloe ka {language}",
+    "sessionXpTowardObjective": "{xp} XP sebokeng sena; {remaining} ho feta ho phethela sepheo"
 }

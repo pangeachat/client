@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-09 11:30:33.785154",
+    "@@last_modified": "2026-10-13 09:39:48.917920",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "{count}-ийн {index} даалгавар",
     "xpTowardObjective": "Энэ зорилгод хүрэхэд шаардлагатай {threshold} XP-ээс {xp} XP цуглуулсан",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "Нийт {total} гялалзалтаас {earned} нь цуглуулсан",
-    "sparklesEarnedInLanguage": "{language} хэлээр цуглуулсан гялалзалт",
     "courseComplete": "Хичээл дууслаа!",
     "courseCompleteDesc": "Та энэ хичээлийн нийт {count} зорилгыг биелүүллээ. Судалгаагаа үргэлжлүүлэн хийж, сурсан зүйлээ бататгаарай.",
     "practiceObjective": "Энэ зорилгыг дадлага хийх",
     "otherActivities": "Бусад үйл ажиллагаа",
-    "xpToCompleteObjectiveTitle": "Даалгавар тутамд авах XP",
-    "xpToCompleteObjectiveDesc": "Даалгавар бүрийг дуусгахад шаардагдах XP-г тохируулна уу",
     "objectiveCircleComplete": "Даалгавар {index}: дууссан",
     "objectiveCircleUpNext": "Даалгавар {index}: дараагийнх",
-    "useActivityImageAsChatBackground": "Үйл ажиллагааны зургийг чатын дэвсгэр болгон ашиглах",
     "useActivityImageAsChatBackground": "Үйл ажиллагааны зургийг чатын дэвсгэр болгон ашиглах",
     "andCertifyIMeetTheMinimumAge": " бөгөөд би 13 ба түүнээс дээш настай, эсвэл миний улсад шаардагдах хамгийн бага насны шаардлагыг хангаж байгааг баталж байна.",
     "filteredNetworkBlockedTitle": "Энэ сүлжээ Pangea Chat-ыг хааж байна",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Дуудлага хийхдээ микрофоноо ашиглана уу",
     "callMicrophoneMessage": "Пангеа Чат дуудлага хийхэд таны микрофон хэрэгтэй, үүнд түгжигдсэн дэлгэцээс хариулах дуудлага багтана.",
     "callMicrophoneOffTitle": "Таны дуудлага холбогдоогүй байна",
-    "callMicrophoneOffMessage": "Пангеа Чат таны микрофоныг ашиглах боломжгүй байна. Тохиргооноос асаахын тулд товшино уу."
+    "callMicrophoneOffMessage": "Пангеа Чат таны микрофоныг ашиглах боломжгүй байна. Тохиргооноос асаахын тулд товшино уу.",
+    "goalsCompletedOfTotal": "{earned} / {total} зорилго биелүүлсэн",
+    "goalsCompletedInLanguage": "{language} хэл дээр биелүүлсэн зорилго",
+    "sessionXpTowardObjective": "Энэ хичээлээр {xp} XP; {remaining} нэмж аваад зорилго биелүүлнэ"
 }

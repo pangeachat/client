@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-09 11:30:25.122479",
+    "@@last_modified": "2026-10-13 09:39:48.167115",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "{count} എണ്ണത്തിൽ {index} ദൗത്യം",
     "xpTowardObjective": "ഈ ലക്ഷ്യത്തിലേക്കുള്ള {threshold} XP-യിൽ {xp}",
     "xpOfThreshold": "{threshold} XP-യിൽ {xp}",
-    "sparklesEarnedOfTotal": "{total} തിളക്കങ്ങളിൽ {earned} എണ്ണം നേടി",
-    "sparklesEarnedInLanguage": "{language} ഭാഷയിൽ നേടിയ തിളക്കങ്ങൾ",
     "courseComplete": "കോഴ്സ് പൂർത്തിയായി!",
     "courseCompleteDesc": "ഈ കോഴ്സിലെ {count} ലക്ഷ്യങ്ങളും നിങ്ങൾ പൂർത്തിയാക്കി. പഠിച്ചത് നിലനിർത്താൻ പരിശീലനം തുടരുക.",
     "practiceObjective": "ഈ ലക്ഷ്യം പരിശീലിക്കുക",
     "otherActivities": "മറ്റ് പ്രവർത്തനങ്ങൾ",
-    "xpToCompleteObjectiveTitle": "ഓരോ ദൗത്യത്തിനും XP",
-    "xpToCompleteObjectiveDesc": "ഓരോ ദൗത്യവും പൂർത്തിയാക്കാൻ ആവശ്യമായ XP സജ്ജീകരിക്കുക",
     "objectiveCircleComplete": "ദൗത്യം {index}: പൂർത്തിയായി",
     "objectiveCircleUpNext": "ദൗത്യം {index}: അടുത്തത്",
-    "useActivityImageAsChatBackground": "പ്രവർത്തന ചിത്രം ചാറ്റ് പശ്ചാത്തലമായി ഉപയോഗിക്കുക",
     "useActivityImageAsChatBackground": "പ്രവർത്തന ചിത്രം ചാറ്റ് പശ്ചാത്തലമായി ഉപയോഗിക്കുക",
     "andCertifyIMeetTheMinimumAge": " കൂടാതെ എനിക്ക് കുറഞ്ഞത് 13 വയസ്സോ അല്ലെങ്കിൽ എൻ്റെ രാജ്യത്ത് ആവശ്യമായ ഏറ്റവും കുറഞ്ഞ പ്രായമോ ഉണ്ടെന്ന് ഞാൻ സാക്ഷ്യപ്പെടുത്തുന്നു.",
     "filteredNetworkBlockedTitle": "ഈ നെറ്റ്‌വർക്ക് പാഞ്ജിയ ചാറ്റ് തടയുന്നു",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "കോളുകൾക്കായി നിങ്ങളുടെ മൈക്രോഫോൺ ഉപയോഗിക്കുക",
     "callMicrophoneMessage": "ലോക്ക് സ്ക്രീനിൽ നിന്ന് നിങ്ങൾ മറുപടി നൽകുന്ന കോളുകൾ ഉൾപ്പെടെയുള്ള കോളുകൾക്കായി Pangea Chat-ന് നിങ്ങളുടെ മൈക്രോഫോൺ ആവശ്യമാണ്.",
     "callMicrophoneOffTitle": "നിങ്ങളുടെ കോൾ കണക്റ്റ് ആയില്ല",
-    "callMicrophoneOffMessage": "Pangea Chat-ന് നിങ്ങളുടെ മൈക്രോഫോൺ ഉപയോഗിക്കാൻ കഴിയില്ല. ക്രമീകരണങ്ങളിൽ ഇത് ഓണാക്കാൻ ടാപ്പ് ചെയ്യുക."
+    "callMicrophoneOffMessage": "Pangea Chat-ന് നിങ്ങളുടെ മൈക്രോഫോൺ ഉപയോഗിക്കാൻ കഴിയില്ല. ക്രമീകരണങ്ങളിൽ ഇത് ഓണാക്കാൻ ടാപ്പ് ചെയ്യുക.",
+    "goalsCompletedOfTotal": "{total} ലക്ഷ്യങ്ങളിൽ {earned} എണ്ണം പൂർത്തിയാക്കി",
+    "goalsCompletedInLanguage": "{language} ഭാഷയിൽ പൂർത്തിയാക്കിയ ലക്ഷ്യങ്ങൾ",
+    "sessionXpTowardObjective": "ഈ സെഷനിൽ {xp} XP; ലക്ഷ്യം പൂർത്തിയാക്കാൻ {remaining} കൂടി മതി"
 }

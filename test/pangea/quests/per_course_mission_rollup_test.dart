@@ -14,7 +14,9 @@ void main() {
     List<String> seq,
     Map<String, Set<String>> acts, {
     String? questId,
-    int xpToComplete = kDefaultXpToCompleteObjective,
+    // The scenarios are sized to a 300 XP threshold; the shipped default
+    // (the Standard preset) is not what they test.
+    int xpToComplete = 300,
   }) => CourseLoOutline(
     courseId: courseId,
     questId: questId,

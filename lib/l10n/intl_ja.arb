@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-09 11:30:19.640579",
+    "@@last_modified": "2026-10-13 09:39:52.068224",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10721,17 +10721,12 @@
     "missionNofM": "{count}件中{index}件目のミッション",
     "xpTowardObjective": "この目標まであと{threshold}XP中{xp}XP",
     "xpOfThreshold": "{threshold}XP中{xp}XP",
-    "sparklesEarnedOfTotal": "{total}個中{earned}個のスパークルを獲得",
-    "sparklesEarnedInLanguage": "{language}で獲得したスパークル",
     "courseComplete": "コース完了！",
     "courseCompleteDesc": "このコースの目標{count}個すべてを達成しました。学習したことを忘れないように、練習を続けてください。",
     "practiceObjective": "この目標を練習する",
     "otherActivities": "その他のアクティビティ",
-    "xpToCompleteObjectiveTitle": "ミッションごとのXP",
-    "xpToCompleteObjectiveDesc": "各ミッションを完了するのに必要なXPを設定します",
     "objectiveCircleComplete": "ミッション{index}: 完了",
     "objectiveCircleUpNext": "ミッション{index}: 次のミッション",
-    "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用",
     "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用",
     "andCertifyIMeetTheMinimumAge": " また、私は13歳以上であること、または私の国で定められている場合はそれ以上の最低年齢であることを証明します。",
     "filteredNetworkBlockedTitle": "このネットワークはPangea Chatをブロックしています",
@@ -10754,5 +10749,8 @@
     "callMicrophoneTitle": "通話でマイクを使用",
     "callMicrophoneMessage": "Pangea Chatが通話でマイクを使用できるようにしてください。ロック画面から応答する通話も含まれます。",
     "callMicrophoneOffTitle": "通話に接続できませんでした",
-    "callMicrophoneOffMessage": "Pangea Chatがマイクを使用できません。タップして設定でオンにしてください。"
+    "callMicrophoneOffMessage": "Pangea Chatがマイクを使用できません。タップして設定でオンにしてください。",
+    "goalsCompletedOfTotal": "{total}の目標のうち{earned}を達成",
+    "goalsCompletedInLanguage": "{language}で達成した目標",
+    "sessionXpTowardObjective": "今回のセッションで{xp} XP獲得; 目標達成まであと{remaining}"
 }

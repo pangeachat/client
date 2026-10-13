@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-09 11:30:21.701783",
+    "@@last_modified": "2026-10-13 09:39:41.732358",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Misiona {index} o {count}",
     "xpTowardObjective": "{xp} o {threshold} XP no kēia pahuhopu",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} o {total} mau ʻālohilohi i loaʻa",
-    "sparklesEarnedInLanguage": "Nā ʻālohilohi i loaʻa ma ka ʻōlelo {language}",
     "courseComplete": "Ua pau ke papa!",
     "courseCompleteDesc": "Ua hoʻopau ʻoe i nā pahuhopu {count} a pau o kēia papa. E hoʻomau i ka hoʻomaʻamaʻa e paʻa ai ka mea āu i aʻo ai.",
     "practiceObjective": "E hoʻomaʻamaʻa i kēia pahuhopu",
     "otherActivities": "Nā hana ʻē aʻe",
-    "xpToCompleteObjectiveTitle": "XP no ka Misiona",
-    "xpToCompleteObjectiveDesc": "E hoʻonoho i ka XP e pono ai e hoʻopau i kēlā me kēia misiona",
     "objectiveCircleComplete": "Misiona {index}: pau",
     "objectiveCircleUpNext": "Misiona {index}: aʻe",
-    "useActivityImageAsChatBackground": "E hoʻohana i ke kiʻi hana ma ke ʻano he kāʻei kua kamaʻilio",
     "useActivityImageAsChatBackground": "E hoʻohana i ke kiʻi hana ma ke ʻano he kāʻei kua kamaʻilio",
     "andCertifyIMeetTheMinimumAge": " a ke hōʻoiaʻiʻo nei au he 13 oʻu makahiki a ʻoi paha, a i ʻole ka makahiki liʻiliʻi e koi ʻia ana ma koʻu ʻāina inā ʻoi aku ia.",
     "filteredNetworkBlockedTitle": "Ke ālai nei kēia pūnaewele iā Pangea Chat",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "E hoʻohana i kāu microphone no nā kelepona",
     "callMicrophoneMessage": "Pono ʻo Pangea Chat i kāu microphone no nā kelepona, me nā kelepona āu e pane ai mai ka pale laka.",
     "callMicrophoneOffTitle": "ʻAʻole i hoʻohui ʻia kāu kelepona",
-    "callMicrophoneOffMessage": "ʻAʻole hiki iā Pangea Chat ke hoʻohana i kāu microphone. E kaomi e hoʻā i loko o nā Koho."
+    "callMicrophoneOffMessage": "ʻAʻole hiki iā Pangea Chat ke hoʻohana i kāu microphone. E kaomi e hoʻā i loko o nā Koho.",
+    "goalsCompletedOfTotal": "{earned} o {total} mau pahuhopu i hoʻopau ʻia",
+    "goalsCompletedInLanguage": "Nā pahuhopu i hoʻopau ʻia ma ka ʻōlelo {language}",
+    "sessionXpTowardObjective": "{xp} XP i kēia kau; {remaining} hou aʻe e hoʻopau i ka pahuhopu"
 }

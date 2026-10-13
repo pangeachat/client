@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-09 11:30:40.205453",
+    "@@last_modified": "2026-10-13 09:40:00.517605",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9952,17 +9952,12 @@
     "missionNofM": "任务 {index} / {count}",
     "xpTowardObjective": "此目标已获得 {xp} / {threshold} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "已获得 {earned} / {total} 个闪光",
-    "sparklesEarnedInLanguage": "在 {language} 中获得的闪光",
     "courseComplete": "课程完成！",
     "courseCompleteDesc": "您已完成本课程中的所有 {count} 个目标。继续练习以巩固所学知识。",
     "practiceObjective": "练习此目标",
     "otherActivities": "其他活动",
-    "xpToCompleteObjectiveTitle": "每个任务的 XP",
-    "xpToCompleteObjectiveDesc": "设置完成每个任务所需的 XP",
     "objectiveCircleComplete": "任务 {index}：已完成",
     "objectiveCircleUpNext": "任务 {index}：即将开始",
-    "useActivityImageAsChatBackground": "使用活动图片作为聊天背景",
     "useActivityImageAsChatBackground": "使用活动图片作为聊天背景",
     "andCertifyIMeetTheMinimumAge": "并证明我已年满13周岁，如果我的国家/地区要求更高的最低年龄，则以该年龄为准。",
     "filteredNetworkBlockedTitle": "此网络正在阻止 Pangea Chat",
@@ -9985,5 +9980,8 @@
     "callMicrophoneTitle": "使用麦克风进行通话",
     "callMicrophoneMessage": "Pangea Chat 需要使用您的麦克风进行通话，包括您从锁定屏幕接听的电话。",
     "callMicrophoneOffTitle": "您的通话未接通",
-    "callMicrophoneOffMessage": "Pangea Chat 无法使用您的麦克风。轻点以在“设置”中将其打开。"
+    "callMicrophoneOffMessage": "Pangea Chat 无法使用您的麦克风。轻点以在“设置”中将其打开。",
+    "goalsCompletedOfTotal": "已完成 {total} 个目标中的 {earned} 个",
+    "goalsCompletedInLanguage": "在 {language} 中完成的目标",
+    "sessionXpTowardObjective": "本次会话获得 {xp} XP；还需 {remaining} 即可完成目标"
 }

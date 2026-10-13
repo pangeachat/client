@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-09 11:30:29.499386",
+    "@@last_modified": "2026-10-13 09:39:46.755301",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2401,17 +2401,12 @@
     "missionNofM": "{count} ичинен {index}-миссия",
     "xpTowardObjective": "Бул максатка жетүү үчүн {threshold} XP ичинен {xp} XP",
     "xpOfThreshold": "{threshold} XP ичинен {xp} XP",
-    "sparklesEarnedOfTotal": "{total} жылтырактын ичинен {earned} табылды",
-    "sparklesEarnedInLanguage": "{language} тилинде табылган жылтырактар",
     "courseComplete": "Курс аяктады!",
     "courseCompleteDesc": "Бул курстагы бардык {count} максатты аяктадыңыз. Үйрөнгөнүңүздү унутпаш үчүн машыгууну улантыңыз.",
     "practiceObjective": "Бул максатты машыгуу",
     "otherActivities": "Башка иш-чаралар",
-    "xpToCompleteObjectiveTitle": "Ар бир миссия үчүн XP",
-    "xpToCompleteObjectiveDesc": "Ар бир миссияны аяктоо үчүн керектүү XPди коюңуз",
     "objectiveCircleComplete": "Миссия {index}: аяктады",
     "objectiveCircleUpNext": "Миссия {index}: кийинки",
-    "useActivityImageAsChatBackground": "Чаттын фону катары ишмердүүлүк сүрөтүн колдонуу",
     "useActivityImageAsChatBackground": "Чаттын фону катары ишмердүүлүк сүрөтүн колдонуу",
     "andCertifyIMeetTheMinimumAge": " жана мен 13 жаштан жогору экенимди же өлкөмдө талап кылынган минималдуу жаштан жогору экенимди тастыктайм.",
     "filteredNetworkBlockedTitle": "Бул тармак Pangea Chat'ты бөгөттөп жатат",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Чакыруулар үчүн микрофонуңузду колдонуңуз",
     "callMicrophoneMessage": "Pangea Chat чакыруулар үчүн микрофонуңузду колдонушу керек, анын ичинде кулпуланган экрандан жооп берген чакыруулар да бар.",
     "callMicrophoneOffTitle": "Чакырууңуз туташкан жок",
-    "callMicrophoneOffMessage": "Pangea Chat микрофонуңузду колдоно албайт. Жөндөөлөрдөн күйгүзүү үчүн таптаңыз."
+    "callMicrophoneOffMessage": "Pangea Chat микрофонуңузду колдоно албайт. Жөндөөлөрдөн күйгүзүү үчүн таптаңыз.",
+    "goalsCompletedOfTotal": "{total} максаттын {earned} аткарылды",
+    "goalsCompletedInLanguage": "{language} тилинде аткарылган максаттар",
+    "sessionXpTowardObjective": "Бул сессияда {xp} XP; дагы {remaining} максатты толуктайт"
 }

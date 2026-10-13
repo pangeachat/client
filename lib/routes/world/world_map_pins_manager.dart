@@ -127,9 +127,9 @@ class WorldMapPinsManager {
   Map<String, PinSignals> _signals = {};
   Map<String, int> _userStars = {};
 
-  /// Session XP per activity with the sparkle bonus applied — what resolves
-  /// Mission completion (#9420). [_userStars] stays for the pins' sparkle
-  /// display.
+  /// Activity XP per activity (saved sessions' credited XP plus goal
+  /// checkmarks) — what resolves Mission completion (#9420). [_userStars]
+  /// stays for the pins' checkmark display.
   Map<String, int> _xpByActivity = {};
 
   // Star-tier inputs, precomputed once per sync (each a single rooms pass) so
@@ -561,7 +561,9 @@ class WorldMapPinsManager {
 
     _signals = signals;
     _userStars = userStars;
-    _xpByActivity = client.userXpByActivity(MissionXpCache.instance.xpByRoom);
+    _xpByActivity = client.userXpByActivity(
+      MissionXpCache.instance.creditedXpByRoom,
+    );
     _ownRoleAwards = client.ownRoleAwardsByActivity;
     _completedRoles = client.completedRolesByActivity;
     _allRoles = client.roleIdsByActivity;
@@ -575,7 +577,6 @@ class WorldMapPinsManager {
   void resolveProgression() {
     _progression = _objectiveCache.resolution(
       _xpByActivity,
-      xpByLemma: MissionXpCache.instance.practiceXpByLemma,
       extraOutlines: _scopedCourseOutline == null
           ? const []
           : [_scopedCourseOutline!],

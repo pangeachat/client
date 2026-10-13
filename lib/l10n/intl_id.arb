@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-09 11:30:18.307199",
+    "@@last_modified": "2026-10-13 09:39:43.700388",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10025,17 +10025,12 @@
     "missionNofM": "Misi {index} dari {count}",
     "xpTowardObjective": "{xp} dari {threshold} XP untuk tujuan ini",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned} dari {total} kilau didapatkan",
-    "sparklesEarnedInLanguage": "Kilau yang didapatkan dalam bahasa {language}",
     "courseComplete": "Kursus selesai!",
     "courseCompleteDesc": "Anda telah menyelesaikan semua {count} tujuan dalam kursus ini. Teruslah berlatih untuk mempertahankan apa yang telah Anda pelajari.",
     "practiceObjective": "Latih tujuan ini",
     "otherActivities": "Aktivitas lain",
-    "xpToCompleteObjectiveTitle": "XP per Misi",
-    "xpToCompleteObjectiveDesc": "Atur XP yang dibutuhkan untuk menyelesaikan setiap misi",
     "objectiveCircleComplete": "Misi {index}: selesai",
     "objectiveCircleUpNext": "Misi {index}: selanjutnya",
-    "useActivityImageAsChatBackground": "Gunakan gambar aktivitas sebagai latar belakang obrolan",
     "useActivityImageAsChatBackground": "Gunakan gambar aktivitas sebagai latar belakang obrolan",
     "andCertifyIMeetTheMinimumAge": " dan menyatakan bahwa saya berusia minimal 13 tahun, atau usia minimum yang disyaratkan di negara saya jika lebih tinggi.",
     "filteredNetworkBlockedTitle": "Jaringan ini memblokir Pangea Chat",
@@ -10058,5 +10053,8 @@
     "callMicrophoneTitle": "Gunakan mikrofon Anda untuk panggilan",
     "callMicrophoneMessage": "Pangea Chat memerlukan mikrofon Anda untuk panggilan, termasuk panggilan yang Anda jawab dari layar kunci.",
     "callMicrophoneOffTitle": "Panggilan Anda tidak tersambung",
-    "callMicrophoneOffMessage": "Pangea Chat tidak dapat menggunakan mikrofon Anda. Ketuk untuk mengaktifkannya di Pengaturan."
+    "callMicrophoneOffMessage": "Pangea Chat tidak dapat menggunakan mikrofon Anda. Ketuk untuk mengaktifkannya di Pengaturan.",
+    "goalsCompletedOfTotal": "{earned} dari {total} tujuan selesai",
+    "goalsCompletedInLanguage": "Tujuan selesai dalam bahasa {language}",
+    "sessionXpTowardObjective": "{xp} XP sesi ini; {remaining} lagi untuk menyelesaikan tujuan"
 }

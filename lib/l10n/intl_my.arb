@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-09 11:30:33.418216",
+    "@@last_modified": "2026-10-13 09:39:52.046035",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2401,17 +2401,12 @@
     "missionNofM": "မစ်ရှင် {index} / {count}",
     "xpTowardObjective": "ဤရည်ရွယ်ချက်အတွက် XP {threshold} မှ {xp}",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "စုစုပေါင်း {total} မှ {earned} Sparkle ရရှိခဲ့သည်",
-    "sparklesEarnedInLanguage": "{language} တွင် ရရှိခဲ့သော Sparkle များ",
     "courseComplete": "သင်တန်း ပြီးဆုံးပါပြီ။",
     "courseCompleteDesc": "ဤသင်တန်းရှိ ရည်ရွယ်ချက် {count} ခုလုံးကို သင်ပြီးစီးခဲ့ပါပြီ။ သင်ယူခဲ့သည်များကို ဆက်လက်ထိန်းသိမ်းထားရန် လေ့ကျင့်ခန်းများ ဆက်လုပ်ပါ။",
     "practiceObjective": "ဤရည်ရွယ်ချက်ကို လေ့ကျင့်ပါ",
     "otherActivities": "အခြားလုပ်ဆောင်ချက်များ",
-    "xpToCompleteObjectiveTitle": "မစ်ရှင်တစ်ခုလျှင် XP",
-    "xpToCompleteObjectiveDesc": "မစ်ရှင်တစ်ခုစီ ပြီးမြောက်ရန် လိုအပ်သော XP ကို သတ်မှတ်ပါ",
     "objectiveCircleComplete": "မစ်ရှင် {index}- ပြီးမြောက်သည်",
     "objectiveCircleUpNext": "မစ်ရှင် {index}- နောက်တစ်ခု",
-    "useActivityImageAsChatBackground": "လုပ်ဆောင်ချက်ပုံကို ချတ်နောက်ခံအဖြစ် အသုံးပြုရန်",
     "useActivityImageAsChatBackground": "လုပ်ဆောင်ချက်ပုံကို ချတ်နောက်ခံအဖြစ် အသုံးပြုရန်",
     "andCertifyIMeetTheMinimumAge": " နှင့် ကျွန်ုပ်သည် အနည်းဆုံး အသက် ၁၃ နှစ်ပြည့်ပြီးဖြစ်ကြောင်း သို့မဟုတ် ကျွန်ုပ်၏နိုင်ငံတွင် သတ်မှတ်ထားသော အနိမ့်ဆုံးအသက်သည် ပိုများပါက ထိုအသက်ပြည့်ပြီးဖြစ်ကြောင်း အတည်ပြုပါသည်။",
     "filteredNetworkBlockedTitle": "ဤကွန်ရက်က Pangea Chat ကို ပိတ်ဆို့ထားသည်",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "ခေါ်ဆိုမှုများအတွက် သင့်မိုက်ခရိုဖုန်းကို အသုံးပြုပါ",
     "callMicrophoneMessage": "Pangea Chat သည် လော့ခ်မျက်နှာပြင်မှ သင်ဖြေကြားသည့် ခေါ်ဆိုမှုများအပါအဝင် ခေါ်ဆိုမှုများအတွက် သင့်မိုက်ခရိုဖုန်း လိုအပ်ပါသည်။",
     "callMicrophoneOffTitle": "သင့်ခေါ်ဆိုမှု မချိတ်ဆက်ပါ",
-    "callMicrophoneOffMessage": "Pangea Chat သည် သင့်မိုက်ခရိုဖုန်းကို အသုံးပြု၍မရပါ။ ဆက်တင်များတွင် ဖွင့်ရန် နှိပ်ပါ။"
+    "callMicrophoneOffMessage": "Pangea Chat သည် သင့်မိုက်ခရိုဖုန်းကို အသုံးပြု၍မရပါ။ ဆက်တင်များတွင် ဖွင့်ရန် နှိပ်ပါ။",
+    "goalsCompletedOfTotal": "ပြီးစီးခဲ့သော ပန်းတိုင် {total} ခုအနက် {earned} ခု",
+    "goalsCompletedInLanguage": "{language} တွင် ပြီးစီးခဲ့သော ပန်းတိုင်များ",
+    "sessionXpTowardObjective": "ဤအကြိမ်တွင် XP {xp} ရရှိခဲ့ပြီး၊ ရည်မှန်းချက်ပြည့်မီရန် {remaining} ထပ်မံလိုအပ်သည်"
 }

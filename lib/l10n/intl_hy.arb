@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-09 11:30:24.601278",
+    "@@last_modified": "2026-10-13 09:39:43.154212",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2401,17 +2401,12 @@
     "missionNofM": "Առաքելություն {index}-ը {count}-ից",
     "xpTowardObjective": "{xp}-ը {threshold} XP-ից այս նպատակի համար",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{earned}-ը {total} փայլերից վաստակված է",
-    "sparklesEarnedInLanguage": "Փայլեր վաստակված {language}-ում",
     "courseComplete": "Դասընթացն ավարտված է։",
     "courseCompleteDesc": "Դուք ավարտել եք այս դասընթացի բոլոր {count} նպատակները։ Շարունակեք մարզվել՝ սովորածը պահպանելու համար։",
     "practiceObjective": "Մարզվել այս նպատակով",
     "otherActivities": "Այլ գործողություններ",
-    "xpToCompleteObjectiveTitle": "XP մեկ առաքելության համար",
-    "xpToCompleteObjectiveDesc": "Սահմանեք յուրաքանչյուր առաքելությունն ավարտելու համար անհրաժեշտ XP-ն",
     "objectiveCircleComplete": "Առաքելություն {index}․ ավարտված է",
     "objectiveCircleUpNext": "Առաքելություն {index}․ հաջորդը",
-    "useActivityImageAsChatBackground": "Օգտագործել ակտիվության պատկերը որպես չաթի ֆոն",
     "useActivityImageAsChatBackground": "Օգտագործել ակտիվության պատկերը որպես չաթի ֆոն",
     "andCertifyIMeetTheMinimumAge": " և հավաստում եմ, որ ես առնվազն 13 տարեկան եմ, կամ իմ երկրում պահանջվող նվազագույն տարիքը, եթե այն ավելի բարձր է:",
     "filteredNetworkBlockedTitle": "Այս ցանցն արգելափակում է Pangea Chat-ը",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "Օգտագործեք խոսափողը զանգերի համար",
     "callMicrophoneMessage": "Pangea Chat-ին անհրաժեշտ է ձեր խոսափողը զանգերի համար, ներառյալ այն զանգերը, որոնց պատասխանում եք կողպված էկրանից։",
     "callMicrophoneOffTitle": "Ձեր զանգը չմիացավ",
-    "callMicrophoneOffMessage": "Pangea Chat-ը չի կարող օգտագործել ձեր խոսափողը։ Սեղմեք՝ այն Կարգավորումներում միացնելու համար։"
+    "callMicrophoneOffMessage": "Pangea Chat-ը չի կարող օգտագործել ձեր խոսափողը։ Սեղմեք՝ այն Կարգավորումներում միացնելու համար։",
+    "goalsCompletedOfTotal": "{earned} / {total} նպատակներն ավարտված են",
+    "goalsCompletedInLanguage": "Ավարտված նպատակներ՝ {language} լեզվով",
+    "sessionXpTowardObjective": "{xp} XP այս նիստում; ևս {remaining}-ը կավարտի նպատակը"
 }

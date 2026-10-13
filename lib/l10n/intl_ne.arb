@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-09 11:30:29.840049",
+    "@@last_modified": "2026-10-13 09:39:52.413566",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2401,17 +2401,12 @@
     "missionNofM": "मिशन {index} / {count}",
     "xpTowardObjective": "यस उद्देश्यका लागि {threshold} XP मध्ये {xp} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
-    "sparklesEarnedOfTotal": "{total} स्पार्कलहरू मध्ये {earned} प्राप्त भयो",
-    "sparklesEarnedInLanguage": "{language} मा प्राप्त स्पार्कलहरू",
     "courseComplete": "पाठ्यक्रम पूरा भयो!",
     "courseCompleteDesc": "तपाईंले यस पाठ्यक्रममा सबै {count} उद्देश्यहरू पूरा गर्नुभएको छ। तपाईंले सिकेका कुराहरूलाई कायम राख्न अभ्यास गरिरहनुहोस्।",
     "practiceObjective": "यो उद्देश्य अभ्यास गर्नुहोस्",
     "otherActivities": "अन्य गतिविधिहरू",
-    "xpToCompleteObjectiveTitle": "प्रति मिशन XP",
-    "xpToCompleteObjectiveDesc": "प्रत्येक मिशन पूरा गर्न आवश्यक XP सेट गर्नुहोस्",
     "objectiveCircleComplete": "मिसन {index}: पूरा भयो",
     "objectiveCircleUpNext": "मिसन {index}: अब आउँदैछ",
-    "useActivityImageAsChatBackground": "च्याट पृष्ठभूमिको रूपमा गतिविधि छवि प्रयोग गर्नुहोस्",
     "useActivityImageAsChatBackground": "च्याट पृष्ठभूमिको रूपमा गतिविधि छवि प्रयोग गर्नुहोस्",
     "andCertifyIMeetTheMinimumAge": " र म कम्तीमा १३ वर्षको वा मेरो देशमा आवश्यक न्यूनतम उमेरको छु भनी प्रमाणित गर्दछु।",
     "filteredNetworkBlockedTitle": "यो नेटवर्कले पाङ्गिया च्याट ब्लक गर्दैछ",
@@ -2434,5 +2429,8 @@
     "callMicrophoneTitle": "कलका लागि आफ्नो माइक्रोफोन प्रयोग गर्नुहोस्",
     "callMicrophoneMessage": "Pangea Chat लाई कलका लागि तपाईंको माइक्रोफोन चाहिन्छ, जसमा तपाईंले लक स्क्रिनबाट उठाउनुहुने कलहरू पनि समावेश छन्।",
     "callMicrophoneOffTitle": "तपाईंको कल जडान भएन",
-    "callMicrophoneOffMessage": "Pangea Chat ले तपाईंको माइक्रोफोन प्रयोग गर्न सक्दैन। सेटिङमा यसलाई अन गर्न ट्याप गर्नुहोस्।"
+    "callMicrophoneOffMessage": "Pangea Chat ले तपाईंको माइक्रोफोन प्रयोग गर्न सक्दैन। सेटिङमा यसलाई अन गर्न ट्याप गर्नुहोस्।",
+    "goalsCompletedOfTotal": "{total} लक्ष्यहरू मध्ये {earned} पूरा भयो",
+    "goalsCompletedInLanguage": "{language} मा पूरा भएका लक्ष्यहरू",
+    "sessionXpTowardObjective": "यस सत्रमा {xp} XP; उद्देश्य पूरा गर्न {remaining} थप"
 }
