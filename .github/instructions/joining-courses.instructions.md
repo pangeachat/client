@@ -154,7 +154,7 @@ Every case where `room.join()` is called without explicit user confirmation:
 
 A shared link (`/<code>` course join, `/<uuid>` activity) must reach the app on mobile. Three legs, in the order a tap resolves:
 
-1. **App installed, normal tap** — iOS Universal Links / Android App Links intercept `app.pangea.chat` at the OS level, before any web page loads. Both platforms claim the whole host (Android intent filters have no path restriction; the iOS AASA declares `paths: ["*"]`), so every link shape is covered. The OS hands the full URL to the running app's incoming-URI listener, which passes the path straight to the router (Route 1 — no per-shape rewrite; the mapping is unit-tested).
+1. **App installed, normal tap** — iOS Universal Links / Android App Links intercept `app.pangea.chat` at the OS level, before any web page loads. Both platforms claim the whole host (Android intent filters have no path restriction; the iOS AASA claims every path), so every link shape is covered. The one path iOS leaves to the browser is the web sign-in callback `/auth.html`: an Apple or Google sign-in that started in the browser has to finish there, and the app has no such page ([signup-and-login](signup-and-login.instructions.md)). The OS hands the full URL to the running app's incoming-URI listener, which passes the path straight to the router (Route 1 — no per-shape rewrite; the mapping is unit-tested).
 2. **App not installed** — the tap opens the mobile browser; the webapp CloudFront serves the SPA for any path, and the web app processes the link exactly as on desktop, including the logged-out login-bounce ferry. There is no deferred deep-linking service (Branch.io, etc.) — a store install cannot carry the link, so the web IS the fallback.
 3. **In-app browsers** (Instagram, Gmail webview, …) — Universal/App Links often don't fire there; the user stays on the web fallback, which works.
 
@@ -163,7 +163,7 @@ There is deliberately NO automatic store or `pangea://` bounce anywhere: modern 
 ### Infrastructure touchpoints
 
 - **Web SPA fallback** — the webapp CloudFront distribution serves `index.html` for any path (a 403/404 → `/index.html` mapping), so a bare `/<code>` (or a `/<uuid>` activity link) loads the app instead of hitting an S3 not-found. This replaces the retired short-code 302; it lives in the `pangeachat/devops` `static-web` module.
-- **AASA & assetlinks.json** — served from `app.pangea.chat/.well-known/`, downloaded during CI/CD. Maps the domain to the app on each platform.
+- **AASA & assetlinks.json** — kept in the repo under `web/.well-known/` and uploaded uncached by every staging and production deploy, so both hosts serve the reviewed copy. Maps the domain to the app on each platform.
 - **Platform config** — [`ios/Runner/Runner.entitlements`](../../ios/Runner/Runner.entitlements), [`android/app/src/main/AndroidManifest.xml`](../../android/app/src/main/AndroidManifest.xml).
 - **Incoming-URI listener** — the listener in [`MatrixState`](../../lib/widgets/matrix.dart) receives inbound URLs via the `app_links` package and routes them into GoRouter.
 - **Custom scheme** — `pangea://` registered on both platforms as a store-install fallback.
