@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:11:50.763345",
+    "@@last_modified": "2026-10-13 13:03:40.881852",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -8685,8 +8685,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Ebligi skriban asistadon",
-    "autoIGCToolDescription": "Aŭtomate funkciigi Pangea Chat-ilojn por korekti senditajn mesaĝojn al la cellingvo.",
+    "autoIGCToolName": "Aŭtomata kontrolo je sendo",
+    "autoIGCToolDescription": "Kontrolu vian mesaĝon pri eraroj kiam vi frapetas sendi. Kiam ĉi tio estas malŝaltita, frapetu la butonon de skribasistado por kontroli mesaĝon mem.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10742,7 +10742,6 @@
     "constructLevelFlowers": "Floroj, regataj vortoj",
     "filterAndSearch": "Filtri kaj serĉi",
     "participantsOfTotal": "{filled} el {total} ludantoj",
-    "mapAttributionLabel": "OpenStreetMap-kontribuantoj, kopirajto kaj permesilo",
     "seeAll": "Vidi ĉion",
     "seeAllSection": "Vidi ĉion en {section}",
     "showMoreOptionsHint": "montri pliajn opciojn",
@@ -10915,5 +10914,14 @@
     "callMicrophoneMessage": "Pangea Chat bezonas vian mikrofonon por vokoj, inkluzive de vokoj, kiujn vi respondas de la ŝlosila ekrano.",
     "callMicrophoneOffTitle": "Via voko ne konektiĝis",
     "callMicrophoneOffMessage": "Pangea Chat ne povas uzi vian mikrofonon. Frapu por ŝalti ĝin en Agordoj.",
+    "mapCreditsLabel": "Mapaj atribuoj: Stadia Maps, OpenMapTiles kaj OpenStreetMap",
+    "activityLaunchFindingCourses": "Trovante viajn kursojn...",
+    "activityLaunchCreatingRoom": "Kreante vian agadon...",
+    "activityLaunchOpeningRoom": "Malfermante vian agadon...",
+    "playWithOthers": "Ludu kun aliaj",
+    "openRole": "Malferma: {role}",
+    "waitingFor": "Atendante {duration}",
+    "onlineInCourse": "{count} enrete en {course}",
+    "newCourseChat": "Nova kursa babilejo",
     "customCourseStepDesc": "Kurso estas aro de konversaciaj agadoj, kiuj sekvas vian lernolibron, por ke viaj studentoj faru kune kiel hejmtasko."
 }

@@ -1330,7 +1330,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-12 13:11:50.366258",
+    "@@last_modified": "2026-10-13 13:03:40.638893",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -8660,8 +8660,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Aktivér skriveassistance",
-    "autoIGCToolDescription": "Kør automatisk Pangea Chat-værktøjer for at rette sendte beskeder til målsproget.",
+    "autoIGCToolName": "Autotjek ved afsendelse",
+    "autoIGCToolDescription": "Tjek din besked for fejl, når du trykker på send. Når dette er slået fra, skal du trykke på skrivehjælpsknappen for selv at tjekke en besked.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10717,7 +10717,6 @@
     "constructLevelFlowers": "Blomster, mestret ord",
     "filterAndSearch": "Filtrer og søg",
     "participantsOfTotal": "{filled} af {total} spillere",
-    "mapAttributionLabel": "OpenStreetMap-bidragydere, ophavsret og licens",
     "seeAll": "Se alle",
     "seeAllSection": "Se alle {section}",
     "showMoreOptionsHint": "vis flere valgmuligheder",
@@ -10890,5 +10889,14 @@
     "callMicrophoneMessage": "Pangea Chat skal bruge din mikrofon til opkald, herunder opkald, du besvarer fra låseskærmen.",
     "callMicrophoneOffTitle": "Dit opkald blev ikke forbundet",
     "callMicrophoneOffMessage": "Pangea Chat kan ikke bruge din mikrofon. Tryk for at slå den til i Indstillinger.",
+    "mapCreditsLabel": "Kortkreditering: Stadia Maps, OpenMapTiles og OpenStreetMap",
+    "activityLaunchFindingCourses": "Finder dine kurser…",
+    "activityLaunchCreatingRoom": "Opretter din aktivitet…",
+    "activityLaunchOpeningRoom": "Åbner din aktivitet…",
+    "playWithOthers": "Spil med andre",
+    "openRole": "Åben: {role}",
+    "waitingFor": "Venter {duration}",
+    "onlineInCourse": "{count} online i {course}",
+    "newCourseChat": "Ny kursuschatsamtale",
     "customCourseStepDesc": "Et kursus er et sæt samtaleaktiviteter, der følger din lærebog, som dine elever kan lave sammen som lektier."
 }

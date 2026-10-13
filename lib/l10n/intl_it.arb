@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:11:55.918835",
+    "@@last_modified": "2026-10-13 13:03:43.792114",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -7843,8 +7843,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Abilita assistenza alla scrittura",
-    "autoIGCToolDescription": "Esegui automaticamente gli strumenti di Pangea Chat per correggere i messaggi inviati nella lingua target.",
+    "autoIGCToolName": "Controllo automatico all'invio",
+    "autoIGCToolDescription": "Controlla il tuo messaggio per errori quando tocchi invia. Quando questa opzione è disattivata, tocca il pulsante di assistenza alla scrittura per controllare un messaggio tu stesso.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9870,7 +9870,6 @@
     "constructLevelFlowers": "Fiori, parole padroneggiate",
     "filterAndSearch": "Filtra e cerca",
     "participantsOfTotal": "{filled} di {total} giocatori",
-    "mapAttributionLabel": "Contributori OpenStreetMap, copyright e licenza",
     "seeAll": "Vedi tutto",
     "seeAllSection": "Vedi tutto {section}",
     "showMoreOptionsHint": "mostra più opzioni",
@@ -10043,5 +10042,14 @@
     "callMicrophoneMessage": "Pangea Chat ha bisogno del tuo microfono per le chiamate, incluse quelle a cui rispondi dalla schermata di blocco.",
     "callMicrophoneOffTitle": "La tua chiamata non si è collegata",
     "callMicrophoneOffMessage": "Pangea Chat non può usare il tuo microfono. Tocca per attivarlo nelle Impostazioni.",
+    "mapCreditsLabel": "Crediti mappa: Stadia Maps, OpenMapTiles e OpenStreetMap",
+    "activityLaunchFindingCourses": "Ricerca dei tuoi corsi…",
+    "activityLaunchCreatingRoom": "Creazione della tua attività…",
+    "activityLaunchOpeningRoom": "Apertura della tua attività…",
+    "playWithOthers": "Gioca con gli altri",
+    "openRole": "Apri: {role}",
+    "waitingFor": "In attesa {duration}",
+    "onlineInCourse": "{count} online in {course}",
+    "newCourseChat": "Nuova chat del corso",
     "customCourseStepDesc": "Un corso è un insieme di attività di conversazione che seguono il tuo libro di testo, che i tuoi studenti possono svolgere insieme come compito a casa."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-12 13:11:53.452259",
+    "@@last_modified": "2026-10-13 13:03:41.642359",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -7920,8 +7920,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Idazteko laguntza aktibatu",
-    "autoIGCToolDescription": "Automatikoki exekutatu Pangea Chat tresnak helburu hizkuntzara bidalitako mezuak zuzentzeko.",
+    "autoIGCToolName": "Automatikoki egiaztatu bidaltzean",
+    "autoIGCToolDescription": "Egiaztatu zure mezuan akatsik dagoen bidali sakatzean. Desaktibatuta dagoenean, sakatu idazketa-laguntzako botoia mezu bat zuk zeuk egiaztatzeko.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9797,7 +9797,6 @@
     "constructLevelFlowers": "Loreak, menderatutako hitzak",
     "filterAndSearch": "Iragazi eta bilatu",
     "participantsOfTotal": "{total} jokalarietatik {filled}",
-    "mapAttributionLabel": "OpenStreetMap-eko kolaboratzaileak, copyright eta lizentzia",
     "seeAll": "Ikusi guztiak",
     "seeAllSection": "Ikusi {section} guztiak",
     "showMoreOptionsHint": "aukera gehiago erakutsi",
@@ -9970,5 +9969,14 @@
     "callMicrophoneMessage": "Pangea Chat-ek zure mikrofonoa behar du deietarako, blokeo-pantailatik erantzuten dituzun deiak barne.",
     "callMicrophoneOffTitle": "Zure deia ez da konektatu",
     "callMicrophoneOffMessage": "Pangea Chat-ek ezin du zure mikrofonoa erabili. Sakatu Ezarpenetan aktibatzeko.",
+    "mapCreditsLabel": "Maparen kredituak: Stadia Maps, OpenMapTiles eta OpenStreetMap",
+    "activityLaunchFindingCourses": "Zure ikastaroak bilatzen…",
+    "activityLaunchCreatingRoom": "Zure jarduera sortzen…",
+    "activityLaunchOpeningRoom": "Zure jarduera irekitzen…",
+    "playWithOthers": "Besteekin jolastu",
+    "openRole": "Ireki: {role}",
+    "waitingFor": "Zain {duration}",
+    "onlineInCourse": "{count} linean {course} ikastaroan",
+    "newCourseChat": "Ikastaro-txat berria",
     "customCourseStepDesc": "Ikastaro bat elkarrizketa-jardueren multzo bat da, zure testuliburua jarraitzen duena, zure ikasleek elkarrekin etxeko lan gisa egiteko."
 }

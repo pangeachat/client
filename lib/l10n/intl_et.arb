@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-12 13:11:51.192169",
+    "@@last_modified": "2026-10-13 13:03:41.211831",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -7931,8 +7931,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Luba kirjutamise abi",
-    "autoIGCToolDescription": "Käivita automaatselt Pangea Chat tööriistad, et parandada saadetud sõnumid sihtkeelde.",
+    "autoIGCToolName": "Automaatne kontroll saatmisel",
+    "autoIGCToolDescription": "Kontrolli oma sõnumit vigade suhtes, kui vajutad saatmisnuppu. Kui see on välja lülitatud, puuduta kirjutamisabi nuppu, et sõnumit ise kontrollida.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9794,7 +9794,6 @@
     "constructLevelFlowers": "Lilled, omandatud sõnad",
     "filterAndSearch": "Filtreeri ja otsi",
     "participantsOfTotal": "{filled}/{total} mängijat",
-    "mapAttributionLabel": "OpenStreetMapi kaastöölised, autoriõigus ja litsents",
     "seeAll": "Vaata kõiki",
     "seeAllSection": "Vaata kõiki {section}",
     "showMoreOptionsHint": "näita rohkem valikuid",
@@ -9967,5 +9966,14 @@
     "callMicrophoneMessage": "Pangea Chat vajab kõnede jaoks teie mikrofoni, sealhulgas kõnede jaoks, millele vastate lukustuskuvalt.",
     "callMicrophoneOffTitle": "Teie kõne ei ühendunud",
     "callMicrophoneOffMessage": "Pangea Chat ei saa teie mikrofoni kasutada. Puudutage, et see seadetes sisse lülitada.",
+    "mapCreditsLabel": "Kaardi autorid: Stadia Maps, OpenMapTiles ja OpenStreetMap",
+    "activityLaunchFindingCourses": "Kursuste otsimine…",
+    "activityLaunchCreatingRoom": "Tegevuse loomine…",
+    "activityLaunchOpeningRoom": "Tegevuse avamine…",
+    "playWithOthers": "Mängi teistega",
+    "openRole": "Avatud: {role}",
+    "waitingFor": "Ootab {duration}",
+    "onlineInCourse": "{count} võrgus kursusel {course}",
+    "newCourseChat": "Uus kursusevestlus",
     "customCourseStepDesc": "Kursus on vestlustegevuste kogum, mis järgib teie õpikut ja mida teie õpilased saavad kodutööna koos teha."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:12:08.972425",
+    "@@last_modified": "2026-10-13 13:03:51.254496",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -7841,8 +7841,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "啟用寫作輔助",
-    "autoIGCToolDescription": "自動運行 Pangea Chat 工具以將發送的消息更正為目標語言。",
+    "autoIGCToolName": "傳送時自動檢查",
+    "autoIGCToolDescription": "傳送訊息時自動檢查錯誤。關閉此功能後，請點擊寫作輔助按鈕自行檢查訊息。",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9903,7 +9903,6 @@
     "constructLevelFlowers": "花朵，已掌握的單字",
     "filterAndSearch": "篩選與搜尋",
     "participantsOfTotal": "{filled} / {total} 位玩家",
-    "mapAttributionLabel": "OpenStreetMap 貢獻者、版權與許可",
     "seeAll": "查看全部",
     "seeAllSection": "查看全部{section}",
     "showMoreOptionsHint": "顯示更多選項",
@@ -10076,5 +10075,14 @@
     "callMicrophoneMessage": "Pangea Chat 需要您的麥克風才能進行通話，包括您從鎖定畫面接聽的通話。",
     "callMicrophoneOffTitle": "您的通話未連線",
     "callMicrophoneOffMessage": "Pangea Chat 無法使用您的麥克風。輕點以在「設定」中開啟。",
+    "mapCreditsLabel": "地圖來源：Stadia Maps、OpenMapTiles 和 OpenStreetMap",
+    "activityLaunchFindingCourses": "正在尋找您的課程…",
+    "activityLaunchCreatingRoom": "正在建立您的活動…",
+    "activityLaunchOpeningRoom": "正在開啟您的活動…",
+    "playWithOthers": "與他人一起玩",
+    "openRole": "開放：{role}",
+    "waitingFor": "等待 {duration}",
+    "onlineInCourse": "{count} 人在 {course} 中上線",
+    "newCourseChat": "新課程聊天",
     "customCourseStepDesc": "課程是一系列對話活動，可讓學生按照課本內容，一起完成作業。"
 }

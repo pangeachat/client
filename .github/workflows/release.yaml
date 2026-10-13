@@ -145,8 +145,11 @@ jobs:
         # defaults include-hidden-files to false, so a .env baked into
         # build/web at build time never survives into the web artifact.
         # Writing it in the deploy job keeps config resolution in the job
-        # that owns the environment.
+        # that owns the environment. The .well-known link files are dropped
+        # from the artifact the same way, so they come from this job's
+        # checkout.
         run: |
+          cp -r web/.well-known build/web/
           echo "$WEB_APP_ENV" > build/web/.env
           # Production streaming-STT client gate (Environment.liveStreamingSttEnabled),
           # enabled the same way staging does in main_deploy.yaml. The choreo backend
@@ -178,6 +181,7 @@ jobs:
             --exclude "flutter_service_worker.js" \
             --exclude "version.json" \
             --exclude "manifest.json" \
+            --exclude ".well-known/*" \
             --exclude "assets/*"
 
           # =========================
@@ -202,7 +206,9 @@ jobs:
 
           # =========================
           # 4. FLUTTER RUNTIME ENTRY FILES + .env (config must propagate every deploy)
-          # Must always stay fresh
+          # Must always stay fresh. The .well-known files are the repo's
+          # copies (web/.well-known), so a deploy is how a change to which
+          # app.pangea.chat paths open the installed app reaches the host.
           # =========================
           RUNTIME_FILES=(
             "index.html"
@@ -215,6 +221,8 @@ jobs:
             "assets/FontManifest.json"
             "assets/AssetManifest.bin"
             "assets/AssetManifest.bin.json"
+            ".well-known/apple-app-site-association"
+            ".well-known/assetlinks.json"
           )
 
           # Every entry is required: a missing runtime file is a partial

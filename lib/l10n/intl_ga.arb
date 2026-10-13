@@ -3559,7 +3559,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-12 13:11:52.279105",
+    "@@last_modified": "2026-10-13 13:03:41.886927",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -7927,8 +7927,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Cuir ar chumas cúnamh scríbhneoireachta",
-    "autoIGCToolDescription": "Rith uathoibríoch uirlisí Pangea Chat chun teachtaireachtaí a sheoladh a cheartú go teanga sprioc.",
+    "autoIGCToolName": "Uathsheiceáil ar sheoladh",
+    "autoIGCToolDescription": "Seiceáil do theachtaireacht le haghaidh botún nuair a thapálann tú seol. Nuair a bhíonn sé seo múchta, tapáil an cnaipe cúnaimh scríbhneoireachta chun teachtaireacht a sheiceáil tú féin.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9808,7 +9808,6 @@
     "constructLevelFlowers": "Bláthanna, focail máistrithe",
     "filterAndSearch": "Scag agus cuardaigh",
     "participantsOfTotal": "{filled} de {total} imreoirí",
-    "mapAttributionLabel": "Ranníocóirí OpenStreetMap, cóipcheart agus ceadúnas",
     "seeAll": "Féach ar fad",
     "seeAllSection": "Féach ar {section} ar fad",
     "showMoreOptionsHint": "taispeáin tuilleadh roghanna",
@@ -9981,5 +9980,14 @@
     "callMicrophoneMessage": "Teastaíonn do mhicreafón ó Pangea Chat le haghaidh glaonna, lena n-áirítear glaonna a bhfreagraíonn tú dóibh ón scáileán glasála.",
     "callMicrophoneOffTitle": "Níor nascadh do ghlao",
     "callMicrophoneOffMessage": "Ní féidir le Pangea Chat do mhicreafón a úsáid. Tapáil chun é a chur ar siúl sna Socruithe.",
+    "mapCreditsLabel": "Creidmheasanna léarscáile: Stadia Maps, OpenMapTiles agus OpenStreetMap",
+    "activityLaunchFindingCourses": "Ag aimsiú do chúrsaí…",
+    "activityLaunchCreatingRoom": "Ag cruthú do ghníomhaíochta…",
+    "activityLaunchOpeningRoom": "Ag oscailt do ghníomhaíochta…",
+    "playWithOthers": "Imir le daoine eile",
+    "openRole": "Oscailte: {role}",
+    "waitingFor": "Ag fanacht {duration}",
+    "onlineInCourse": "{count} ar líne i {course}",
+    "newCourseChat": "Comhrá cúrsa nua",
     "customCourseStepDesc": "Is éard is cúrsa ann ná sraith gníomhaíochtaí comhrá a leanann do théacsleabhar, le go ndéanfaidh do mhic léinn iad le chéile mar obair bhaile."
 }

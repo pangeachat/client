@@ -152,6 +152,7 @@ void main() {
       expect(parsed.launch, isFalse);
       expect(parsed.autoplay, isNull);
       expect(parsed.fromCoursePlan, isFalse);
+      expect(parsed.fromJoinList, isFalse);
     });
 
     test('all fields round-trip', () {
@@ -161,6 +162,7 @@ void main() {
         launch: true,
         autoplay: 2,
         fromCoursePlan: true,
+        fromJoinList: true,
       ).build();
       final parsed = ActivityTokenParam.parse(param);
       expect(parsed.activityId, 'act-1');
@@ -168,7 +170,27 @@ void main() {
       expect(parsed.launch, isTrue);
       expect(parsed.autoplay, 2);
       expect(parsed.fromCoursePlan, isTrue);
+      expect(parsed.fromJoinList, isTrue);
     });
+
+    test(
+      'the join-list flag round-trips on its own and counts in equality',
+      () {
+        const fromList = ActivityTokenParam(
+          activityId: 'act-1',
+          roomId: '!sess',
+          fromJoinList: true,
+        );
+        final parsed = ActivityTokenParam.parse(fromList.build());
+        expect(parsed.fromJoinList, isTrue);
+        expect(parsed.fromCoursePlan, isFalse);
+        expect(parsed, fromList);
+        expect(
+          parsed,
+          isNot(const ActivityTokenParam(activityId: 'act-1', roomId: '!sess')),
+        );
+      },
+    );
 
     test('unknown fields are ignored (newer URL, older client)', () {
       final parsed = ActivityTokenParam.parse('act-1.zfuture.l');
@@ -377,6 +399,73 @@ void main() {
         parseOpenPanels(u(WorkspaceNav.dropActivityOverlay(open))).left,
         isEmpty,
       );
+    });
+  });
+
+  group('WorkspaceNav.openActivitySession / closeActivitySession (#9333)', () {
+    test('opening a session binds the room inside the activity panel, marks '
+        'it from the join list, and keeps the course context', () {
+      final uri = u(
+        WorkspaceNav.openActivitySession(
+          u('/?c=!s&left=activity:act-1'),
+          'act-1',
+          '!sess',
+        ),
+      );
+      expect(activeSpaceIdFor(uri), '!s');
+      expect(parseOpenPanels(uri).left, [
+        const ActivityPanelToken(
+          ActivityTokenParam(
+            activityId: 'act-1',
+            roomId: '!sess',
+            fromJoinList: true,
+          ),
+        ),
+      ]);
+    });
+
+    test('opening a session keeps an open from the full course plan', () {
+      final fromPlan = u(
+        WorkspaceNav.openCourseActivity('!s', 'act-1', fromCoursePlan: true),
+      );
+      final info = activityInfoFor(
+        u(WorkspaceNav.openActivitySession(fromPlan, 'act-1', '!sess')),
+      );
+      expect(info?.roomId, '!sess');
+      expect(info?.fromJoinList, isTrue);
+      expect(info?.fromCoursePlan, isTrue);
+    });
+
+    test('closing a session drops the room and the join-list mark, keeping '
+        'the context and the course-plan origin', () {
+      final fromPlan = u(
+        WorkspaceNav.openCourseActivity('!s', 'act-1', fromCoursePlan: true),
+      );
+      final inSession = u(
+        WorkspaceNav.openActivitySession(fromPlan, 'act-1', '!sess'),
+      );
+      final closed = u(WorkspaceNav.closeActivitySession(inSession, 'act-1'));
+      expect(activeSpaceIdFor(closed), '!s');
+      expect(parseOpenPanels(closed).left, [
+        const ActivityPanelToken(
+          ActivityTokenParam(activityId: 'act-1', fromCoursePlan: true),
+        ),
+      ]);
+    });
+
+    test('with no course context, open and close add none', () {
+      final opened = u(
+        WorkspaceNav.openActivitySession(
+          u('/?left=activity:act-1'),
+          'act-1',
+          '!sess',
+        ),
+      );
+      expect(activeSpaceIdFor(opened), isNull);
+      final closed = u(WorkspaceNav.closeActivitySession(opened, 'act-1'));
+      expect(activeSpaceIdFor(closed), isNull);
+      expect(activityInfoFor(closed)?.roomId, isNull);
+      expect(activityInfoFor(closed)?.fromJoinList, isFalse);
     });
   });
 }

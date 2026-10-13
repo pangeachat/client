@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-12 13:12:07.733381",
+    "@@last_modified": "2026-10-13 13:03:51.167346",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -7920,8 +7920,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "启用写作辅助",
-    "autoIGCToolDescription": "自动运行 Pangea Chat 工具以将发送的消息纠正为目标语言。",
+    "autoIGCToolName": "发送时自动检查",
+    "autoIGCToolDescription": "发送消息时检查错误。关闭此功能后，请点击写作辅助按钮自行检查消息。",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9797,7 +9797,6 @@
     "constructLevelFlowers": "花朵，掌握词",
     "filterAndSearch": "筛选和搜索",
     "participantsOfTotal": "{filled}/{total} 位玩家",
-    "mapAttributionLabel": "OpenStreetMap 贡献者，版权和许可",
     "seeAll": "查看全部",
     "seeAllSection": "查看全部{section}",
     "showMoreOptionsHint": "显示更多选项",
@@ -9970,5 +9969,14 @@
     "callMicrophoneMessage": "Pangea Chat 需要使用您的麦克风进行通话，包括您从锁定屏幕接听的电话。",
     "callMicrophoneOffTitle": "您的通话未接通",
     "callMicrophoneOffMessage": "Pangea Chat 无法使用您的麦克风。轻点以在“设置”中将其打开。",
+    "mapCreditsLabel": "地图来源：Stadia Maps、OpenMapTiles 和 OpenStreetMap",
+    "activityLaunchFindingCourses": "正在查找您的课程…",
+    "activityLaunchCreatingRoom": "正在创建您的活动…",
+    "activityLaunchOpeningRoom": "正在打开您的活动…",
+    "playWithOthers": "与他人一起玩",
+    "openRole": "开放：{role}",
+    "waitingFor": "等待 {duration}",
+    "onlineInCourse": "{count} 人在线，在 {course} 课程中",
+    "newCourseChat": "新课程聊天",
     "customCourseStepDesc": "课程是一系列对话活动，学生可以根据您的教材，一起完成这些活动作为家庭作业。"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-12 13:11:54.707291",
+    "@@last_modified": "2026-10-13 13:03:42.943836",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -8176,8 +8176,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Omogući pomoć pri pisanju",
-    "autoIGCToolDescription": "Automatski pokreni Pangea Chat alate za ispravljanje poslanih poruka na ciljni jezik.",
+    "autoIGCToolName": "Automatska provjera pri slanju",
+    "autoIGCToolDescription": "Provjerite poruku za pogreške kada dodirnete Pošalji. Kada je ovo isključeno, dodirnite gumb za pomoć pri pisanju kako biste sami provjerili poruku.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10233,7 +10233,6 @@
     "constructLevelFlowers": "Cvijeće, usvojene riječi",
     "filterAndSearch": "Filtriraj i pretraži",
     "participantsOfTotal": "{filled} od {total} igrača",
-    "mapAttributionLabel": "Autori, autorska prava i licenca OpenStreetMap-a",
     "seeAll": "Vidi sve",
     "seeAllSection": "Vidi sve {section}",
     "showMoreOptionsHint": "prikaži više opcija",
@@ -10406,5 +10405,14 @@
     "callMicrophoneMessage": "Pangea Chat treba vaš mikrofon za pozive, uključujući pozive na koje odgovarate sa zaključanog zaslona.",
     "callMicrophoneOffTitle": "Vaš poziv nije uspostavljen",
     "callMicrophoneOffMessage": "Pangea Chat ne može koristiti vaš mikrofon. Dodirnite za uključivanje u Postavkama.",
+    "mapCreditsLabel": "Zasluge za kartu: Stadia Maps, OpenMapTiles i OpenStreetMap",
+    "activityLaunchFindingCourses": "Tražim vaše tečajeve…",
+    "activityLaunchCreatingRoom": "Stvaram vašu aktivnost…",
+    "activityLaunchOpeningRoom": "Otvaram vašu aktivnost…",
+    "playWithOthers": "Igrajte se s drugima",
+    "openRole": "Otvoreno: {role}",
+    "waitingFor": "Čekanje {duration}",
+    "onlineInCourse": "{count} na mreži u {course}",
+    "newCourseChat": "Novi razgovor o tečaju",
     "customCourseStepDesc": "Tečaj je skup konverzacijskih aktivnosti koje prate vaš udžbenik, a namijenjene su vašim učenicima za zajedničku izradu domaće zadaće."
 }

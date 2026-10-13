@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:11:48.350314",
+    "@@last_modified": "2026-10-13 13:03:39.526270",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -8368,8 +8368,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "লেখার সহায়তা সক্রিয় করুন",
-    "autoIGCToolDescription": "লক্ষ্য ভাষায় পাঠানো বার্তা সংশোধন করতে স্বয়ংক্রিয়ভাবে প্যাঙ্গিয়া চ্যাট টুলগুলি চালান।",
+    "autoIGCToolName": "পাঠানোর সময় স্বয়ংক্রিয়ভাবে পরীক্ষা করুন",
+    "autoIGCToolDescription": "আপনি যখন পাঠান বোতামে ট্যাপ করবেন তখন আপনার মেসেজে ভুল আছে কিনা তা পরীক্ষা করুন। এটি বন্ধ থাকলে, নিজে মেসেজ পরীক্ষা করতে লেখার সহায়তা বোতামে ট্যাপ করুন।",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10425,7 +10425,6 @@
     "constructLevelFlowers": "ফুল, আয়ত্ত করা শব্দ",
     "filterAndSearch": "ফিল্টার এবং অনুসন্ধান",
     "participantsOfTotal": "{total} জন খেলোয়াড়ের মধ্যে {filled} জন",
-    "mapAttributionLabel": "OpenStreetMap অবদানকারী, কপিরাইট এবং লাইসেন্স",
     "seeAll": "সব দেখুন",
     "seeAllSection": "সব দেখুন {section}",
     "showMoreOptionsHint": "আরও বিকল্প দেখান",
@@ -10598,5 +10597,14 @@
     "callMicrophoneMessage": "Pangea Chat-এর কলের জন্য আপনার মাইক্রোফোন প্রয়োজন, যার মধ্যে লক স্ক্রিন থেকে উত্তর দেওয়া কলও রয়েছে।",
     "callMicrophoneOffTitle": "আপনার কল সংযুক্ত হয়নি",
     "callMicrophoneOffMessage": "Pangea Chat আপনার মাইক্রোফোন ব্যবহার করতে পারছে না। সেটিংসে এটি চালু করতে ট্যাপ করুন।",
+    "mapCreditsLabel": "মানচিত্র ক্রেডিট: Stadia Maps, OpenMapTiles এবং OpenStreetMap",
+    "activityLaunchFindingCourses": "আপনার কোর্সগুলি খোঁজা হচ্ছে…",
+    "activityLaunchCreatingRoom": "আপনার কার্যকলাপ তৈরি করা হচ্ছে…",
+    "activityLaunchOpeningRoom": "আপনার কার্যকলাপ খোলা হচ্ছে…",
+    "playWithOthers": "অন্যদের সাথে খেলুন",
+    "openRole": "খুলুন: {role}",
+    "waitingFor": "{duration} অপেক্ষা করা হচ্ছে",
+    "onlineInCourse": "{course}-এ {count} জন অনলাইন আছেন",
+    "newCourseChat": "নতুন কোর্স চ্যাট",
     "customCourseStepDesc": "একটি কোর্স হল কথোপকথনমূলক কার্যকলাপের একটি সেট যা আপনার পাঠ্যপুস্তক অনুসরণ করে, আপনার শিক্ষার্থীদের জন্য হোমওয়ার্ক হিসাবে একসাথে করার জন্য।"
 }
