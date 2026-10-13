@@ -2372,5 +2372,17 @@
     "summaryFeedbackProcessing": "Испраќање на вашите повратни информации и ажурирање на резимето…",
     "ssoNetworkBlockedTitle": "Веб-страницата за најавување е недостапна",
     "ssoNetworkBlockedDesc": "Оваа мрежа не ни дозволува да стигнеме до {provider} за да ве најавиме. Училишниот и канцеларискиот Wi-Fi често го блокираат. Може да се регистрирате со е-пошта наместо тоа, или да се префрлите на друга мрежа и да се обидете повторно.",
-    "ssoTryAnyway": "Сепак, обидете се"
+    "ssoTryAnyway": "Сепак, обидете се",
+    "callTranscriptNotSubscribed": "{name} немаше претплата за време на овој повик, па затоа кажаното не беше транскрибирано.",
+    "callTranscriptTranscribing": "Сè уште се транскрибира снимката од {name}…",
+    "callTranscriptSeekTo": "Пушти од {time}",
+    "callTranscriptRecordings": "Снимки",
+    "callTranscriptFullCall": "Цел повик",
+    "callTranscriptPreparingRecording": "Се подготвува целосната снимка…",
+    "callTranscriptNoRecording": "Нема снимка од целиот повик.",
+    "callTranscriptTranscribeButton": "Транскрибирај",
+    "callTranscriptAudioUnavailable": "Зачуваната снимка од {name} не можеше да се преземе, па затоа не можеше да се транскрибира.",
+    "callTranscriptChooseLanguage": "На кој јазик се зборуваше?",
+    "callTranscriptSubscribeForTranscription": "Претплатете се за транскрипција",
+    "unlockCallTranscript": "Отклучи транскрипт на повик"
 }

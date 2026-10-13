@@ -2372,5 +2372,17 @@
     "summaryFeedbackProcessing": "Äre Feedback gëtt geschéckt an d'Resümmee gëtt aktualiséiert…",
     "ssoNetworkBlockedTitle": "Umeldungssäit net erreechbar",
     "ssoNetworkBlockedDesc": "Dëst Netzwierk erlaabt eis net, {provider} z'erreechen fir Iech unzemellen. Schoul- an Büro-Wi-Fi blockéieren dacks esou eppes. Dir kënnt Iech amplaz mat E-Mail umellen, oder op en anert Netzwierk wiesselen an et nach eng Kéier probéieren.",
-    "ssoTryAnyway": "Trotzdeem probéieren"
+    "ssoTryAnyway": "Trotzdeem probéieren",
+    "callTranscriptNotSubscribed": "{name} hat während dësem Uruff keen Abonnement, dofir gouf dat Gesotent net transkribéiert.",
+    "callTranscriptTranscribing": "D'Opnam vum {name} gëtt nach transkribéiert …",
+    "callTranscriptSeekTo": "Vun {time} spillen",
+    "callTranscriptRecordings": "Opnamen",
+    "callTranscriptFullCall": "Ganzt Gespréich",
+    "callTranscriptPreparingRecording": "Déi ganz Opnam gëtt virbereet …",
+    "callTranscriptNoRecording": "Keng Opnam vum ganze Gespréich.",
+    "callTranscriptTranscribeButton": "Transkribéieren",
+    "callTranscriptAudioUnavailable": "Déi gespäichert Opnam vum {name} konnt net erofgeluede ginn, dofir konnt se net transkribéiert ginn.",
+    "callTranscriptChooseLanguage": "Wat fir eng Sprooch gouf geschwat?",
+    "callTranscriptSubscribeForTranscription": "Abonnéiert Iech fir d'Transkriptioun",
+    "unlockCallTranscript": "Transkript vun Uruff opmaachen"
 }

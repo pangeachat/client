@@ -2372,5 +2372,17 @@
     "summaryFeedbackProcessing": "Sithumela ingxelo yakho kwaye sihlaziya isishwankathelo…",
     "ssoNetworkBlockedTitle": "Indawo yokungena ayifikeleleki",
     "ssoNetworkBlockedDesc": "Le nethiwekhi ayisivumeli ukuba sifikelele ku-{provider} ukuze sikungenise. IWi-Fi yesikolo neyeofisi isoloko iyivala. Ungabhalisa nge-imeyile endaweni yoko, okanye utshintshele kwenye inethiwekhi uze uzame kwakhona.",
-    "ssoTryAnyway": "Zama nangona kunjalo"
+    "ssoTryAnyway": "Zama nangona kunjalo",
+    "callTranscriptNotSubscribed": "U-{name} ebengekafaki isicelo ngexesha lale fowuni, ngoko ke oko kuthethweyo akubhalwanga.",
+    "callTranscriptTranscribing": "Ndisabhala phantsi okurekhodiweyo okuvela ku-{name}…",
+    "callTranscriptSeekTo": "Dlala ukusuka ku-{time}",
+    "callTranscriptRecordings": "Okurekhodiweyo",
+    "callTranscriptFullCall": "Umfowunelwano opheleleyo",
+    "callTranscriptPreparingRecording": "Kulungiselelwa okurekhodiweyo okupheleleyo…",
+    "callTranscriptNoRecording": "Akukho kurekhodwa komfowunelwano opheleleyo.",
+    "callTranscriptTranscribeButton": "Bhala phantsi",
+    "callTranscriptAudioUnavailable": "Ukuqoshwa okugciniweyo okuvela ku-{name} akukwazanga ukukhutshelwa, ngoko ke akukwazanga ukubhalwa phantsi.",
+    "callTranscriptChooseLanguage": "Loluphi ulwimi oluthethweyo?",
+    "callTranscriptSubscribeForTranscription": "Bhalisa ukuze ufumane ukubhalwa phantsi",
+    "unlockCallTranscript": "Vula umbhalo wefowuni"
 }

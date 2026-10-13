@@ -10881,5 +10881,17 @@
     "summaryFeedbackProcessing": "A enviar o seu feedback e a atualizar o resumo…",
     "ssoNetworkBlockedTitle": "Site de início de sessão inacessível",
     "ssoNetworkBlockedDesc": "Esta rede não nos permite aceder a {provider} para iniciar a sua sessão. As redes Wi-Fi de escolas e escritórios bloqueiam-no frequentemente. Pode registar-se com e-mail ou mudar para outra rede e tentar novamente.",
-    "ssoTryAnyway": "Tentar na mesma"
+    "ssoTryAnyway": "Tentar na mesma",
+    "callTranscriptNotSubscribed": "{name} não tinha uma subscrição durante esta chamada, por isso o que foi dito não foi transcrito.",
+    "callTranscriptTranscribing": "Ainda a transcrever a gravação de {name}…",
+    "callTranscriptSeekTo": "Reproduzir a partir de {time}",
+    "callTranscriptRecordings": "Gravações",
+    "callTranscriptFullCall": "Chamada completa",
+    "callTranscriptPreparingRecording": "A preparar a gravação completa…",
+    "callTranscriptNoRecording": "Nenhuma gravação da chamada completa.",
+    "callTranscriptTranscribeButton": "Transcrever",
+    "callTranscriptAudioUnavailable": "A gravação guardada de {name} não pôde ser descarregada, por isso não foi possível transcrevê-la.",
+    "callTranscriptChooseLanguage": "Que idioma foi falado?",
+    "callTranscriptSubscribeForTranscription": "Subscrever para transcrição",
+    "unlockCallTranscript": "Desbloquear transcrição da chamada"
 }

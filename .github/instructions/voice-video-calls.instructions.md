@@ -201,13 +201,31 @@ for what the detector decides on and which of its numbers are still unvalidated.
 
 ## What the transcript says
 
-A transcript is ASSEMBLED, not recorded. Each device transcribes the audio it
-captured — its own microphone, per the tap above — and writes one event, its
-half; a reader merges the two. Both halves hang off the caller's membership
+A transcript is ASSEMBLED, not recorded, and it is drawn from the same audio the
+call already saved. Each device uploads its own captured half; after the call
+that recording is transcribed in one pass and becomes that speaker's half. A
+device whose recording never uploaded falls back to the audio it transcribed live
+during the call — see [Failure is not all-or-nothing]. Either way a device speaks
+only for its own microphone, per the tap above, writes one event, and a reader
+merges the two. Both halves hang off the caller's membership
 event, which is the one id both sides know from the moment the call starts. The
 call card is not that anchor: only one side writes it, and a call both people
 reloaded out of leaves none, which would strand the other half in exactly the
 case a transcript is most wanted.
+
+The words of a half travel in its event; the audio does not. A recording is a
+Matrix media upload, exactly like a voice message: the bytes live in the
+homeserver's media store — the same S3-backed store voice-message audio already
+uses — and the event carries only an `mxc://` reference and the recording's
+metadata. A half's event therefore stays small enough to ride the timeline while
+the audio is fetched on demand rather than pushed through every sync, and the
+recording inherits the retention already disclosed for voice messages. The merged
+full-call recording is one more such upload, referenced the same way.
+
+The recording-based pass is on by default. `CALL_RECORDING_TRANSCRIPT=false` is
+its kill switch: with it set, each half is the live one transcribed during the
+call (see [Failure is not all-or-nothing]) instead of the recording pass this
+section describes, with the per-turn `m:ss` timing it makes possible.
 
 A half is one event or it is missing, never a series of parts. Parts need a
 sequence that survives process death across a rejoin, and leave no answer for
@@ -235,10 +253,16 @@ Two rules keep that honest:
   entry we could not parse — each is named, and named as ours. "It said I said
   nothing" is unanswerable if all we kept was the state.
 
+**Transcription is paid, and it follows the subscription, not the speaker.** A call's audio is always saved to the room (audio only, never video), so transcription can run against that audio rather than only live. It runs whenever at least one person on the call is subscribed: a subscribed participant's own client transcribes every half — theirs and the others' — from the saved audio, so a paying user reads the whole conversation, not just their side. When no one is subscribed the call is not transcribed then and is never backfilled on its own, though the audio is kept. A subscribed reader who opens a half that was never produced can ask for it, and it is transcribed on demand from the saved audio. A reader without a subscription can open the transcript but sees a locked placeholder with a way to subscribe in place of the words, the same as other paid surfaces; during a call they are offered the subscription rather than left wondering why nothing appears.
+
 Who was on the call is derived locally from the direct chat, and only those two
 get a section. The card names a caller, but anybody can write a card, and a
 section for a name that was never on the call lends a forgery the standing of a
 record.
+
+### Whose half is whose
+
+A call transcript has one half per speaker, and normally each speaker's half is written by that speaker's own device. When one person on the call is subscribed and the other is not, the subscribed person's client also produces the other's half from the recording the call saved — so a paying reader sees the whole conversation, not one side. Such a half names the speaker it belongs to and points at that speaker's own saved recording; a reader trusts the named speaker only when that recording is genuinely theirs, for this call and this device. A name that was never on the call cannot be attached to a half, and wherever the words are in doubt the saved audio is the record that settles it. What a paying reader sees is gated in the app, not sealed cryptographically: the words live in the room like the rest of the call, and the gate is the same one the app uses for its other paid surfaces.
 
 ### What a turn's time promises
 
@@ -250,10 +274,14 @@ A position is known to one of three resolutions, and the screen says which:
 | by `m:ss` | only the chunk of audio bounds it |
 | no time | it never said which of those two this is |
 
-A bounded turn is placed at the LATEST moment it could have been spoken, not at
-its estimate: an estimate can render a turn a whole chunk early and put an
-answer before its question, while the end of the audio it came from cannot place
-any turn earlier than it was said. A position whose writer never characterised
+The recording pass times each turn's first word, so `m:ss` is the ordinary
+resolution; `by m:ss` belongs to the fallback, whose live capture can bound a
+turn only to the chunk of audio it was cut from. A bounded turn is placed at the
+LATEST moment it could have been spoken, not at its estimate: an estimate can put
+an answer before its question, while the end of the audio it came from cannot
+place any turn earlier than it was said. The fallback's chunks are kept short so
+that end stays near when the turn was spoken — a long chunk placed at its end is a
+turn dragged far past its moment. A position whose writer never characterised
 it keeps its place in the order — there is nothing else to order it by — and
 gets no time printed, because printing one puts this app's confidence behind
 another device's silence.
@@ -288,15 +316,19 @@ separated by it.
 
 ### The words are the transcript's; the timings only say when
 
-Segment text comes from the provider's transcript, and its word list supplies
-nothing but the when. Providers return a punctuation-free word list beside a
-punctuated transcript, so text assembled from the words loses the punctuation the
-learner reads and matches the transcript on almost no chunk. Timings are used
-only where they line up with that text word for word, which is what refuses a
-provider that re-cut the boundaries — the one failure that could genuinely put a
-word in a speaker's mouth. On any disagreement the transcript's own text still
-stands and only the precision of the time is lost, so no word a speaker did not
-say can reach the screen.
+Segment text today comes from the provider's punctuation-free WORD LIST, not the
+punctuated transcript: each turn's words are joined from the word list and the
+timings place the turn, while the punctuated `text` is read only when the
+provider returns no word-level timings at all. So the recording-based half loses
+the punctuation the learner reads. Showing the punctuated transcript instead —
+using the timings only to place turn boundaries — is the intended target, tracked
+in pangeachat/client#9303; it needs a word-list-to-transcript alignment step,
+because the two do not reconstruct one-for-one. Either way the words are the
+provider's own, so no word a speaker did not say reaches the screen, and only the
+boundary between two turns can fall a little off. The live fallback, which cannot
+re-transcribe the audio it cut, keeps the stricter rule and bounds the whole
+chunk on any disagreement. Both depend on the provider returning word-level
+timings alongside the transcript.
 
 ### Reading it back
 
@@ -355,8 +387,13 @@ Everything else degrades rather than fails:
 - A camera that will not open is a degraded call, not a failed one.
 - A local participant that never materialises is reported on screen as the other
   person not being able to hear, rather than dropping the call.
-- Losing the recording costs analytics and leaves the conversation untouched, which
-  is the right way round.
+- A half whose recording never uploaded still gets its recording-based transcript,
+  because the device transcribes its own recording on the device; the upload only decides
+  whether that half has playback audio. A half falls back to the audio the device read
+  live during the call only when its recording cannot be transcribed in time. The two
+  halves are decided independently, so one side failing still leaves a whole, correctly
+  ordered transcript. A recording that was still uploading when the app was killed is
+  uploaded on the next launch.
 
 ## Platform gates
 

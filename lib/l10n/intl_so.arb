@@ -2372,5 +2372,17 @@
     "summaryFeedbackProcessing": "Waxaan diraynaa jawaab celintaada oo waxaan cusboonaysiinaynaa soo koobidda…",
     "ssoNetworkBlockedTitle": "Goobta soo-galitaanka lama gaari karo",
     "ssoNetworkBlockedDesc": "Shabakaddani nama ogolaaneyso inaan gaarno {provider} si aan kuugu soo galino. Wi-Fi-ga dugsiga iyo xafiiska ayaa inta badan xira. Waxaad ku diiwaan gelin kartaa email ahaan, ama waxaad u wareegi kartaa shabakad kale oo aad mar kale isku dayi kartaa.",
-    "ssoTryAnyway": "Sikastaba isku day"
+    "ssoTryAnyway": "Sikastaba isku day",
+    "callTranscriptNotSubscribed": "{name} ma lahayn rukumo intii uu socday wicitaankan, sidaa darteed waxa la yidhi lama qorin.",
+    "callTranscriptTranscribing": "Weli waxaan ka qoraynaa duubista {name}…",
+    "callTranscriptSeekTo": "Ka ciyaar {time}",
+    "callTranscriptRecordings": "Duubista",
+    "callTranscriptFullCall": "Wicitaan buuxa",
+    "callTranscriptPreparingRecording": "Waxaan diyaarinaynaa duubista oo dhan…",
+    "callTranscriptNoRecording": "Ma jirto duubis wicitaanka oo dhan.",
+    "callTranscriptTranscribeButton": "Qor",
+    "callTranscriptAudioUnavailable": "Duubista la keydiyay ee {name} lama soo dejisan karin, sidaa darteed lama qori karin.",
+    "callTranscriptChooseLanguage": "Luqaddee lagu hadlay?",
+    "callTranscriptSubscribeForTranscription": "Isdiiwaangeli si aad u hesho qoraalka",
+    "unlockCallTranscript": "Fur qoraalka wicitaanka"
 }

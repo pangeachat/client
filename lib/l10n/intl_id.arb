@@ -10037,5 +10037,17 @@
     "summaryFeedbackProcessing": "Mengirim masukan Anda dan memperbarui ringkasan…",
     "ssoNetworkBlockedTitle": "Situs masuk tidak dapat dijangkau",
     "ssoNetworkBlockedDesc": "Jaringan ini tidak mengizinkan kami menjangkau {provider} untuk masuk. Wi-Fi sekolah dan kantor sering memblokirnya. Anda dapat mendaftar dengan email, atau beralih ke jaringan lain dan coba lagi.",
-    "ssoTryAnyway": "Coba lagi"
+    "ssoTryAnyway": "Coba lagi",
+    "callTranscriptNotSubscribed": "{name} tidak memiliki langganan selama panggilan ini, jadi apa yang dikatakan tidak ditranskripsikan.",
+    "callTranscriptTranscribing": "Masih menyalin rekaman dari {name}...",
+    "callTranscriptSeekTo": "Putar dari {time}",
+    "callTranscriptRecordings": "Rekaman",
+    "callTranscriptFullCall": "Panggilan lengkap",
+    "callTranscriptPreparingRecording": "Mempersiapkan rekaman lengkap...",
+    "callTranscriptNoRecording": "Tidak ada rekaman panggilan lengkap.",
+    "callTranscriptTranscribeButton": "Transkripsikan",
+    "callTranscriptAudioUnavailable": "Rekaman tersimpan dari {name} tidak dapat diunduh, sehingga tidak dapat ditranskripsikan.",
+    "callTranscriptChooseLanguage": "Bahasa apa yang digunakan?",
+    "callTranscriptSubscribeForTranscription": "Berlangganan untuk transkripsi",
+    "unlockCallTranscript": "Buka transkrip panggilan"
 }

@@ -2372,5 +2372,17 @@
     "summaryFeedbackProcessing": "Rəyinizi göndəririk və xülasəni yeniləyirik…",
     "ssoNetworkBlockedTitle": "Giriş saytı əlçatan deyil",
     "ssoNetworkBlockedDesc": "Bu şəbəkə sizin daxil olmağınız üçün {provider} ilə əlaqə saxlamağımıza icazə vermir. Məktəb və ofis Wi-Fi-ları bunu tez-tez bloklayır. Bunun əvəzinə e-poçtla qeydiyyatdan keçə bilərsiniz və ya başqa şəbəkəyə keçib yenidən cəhd edə bilərsiniz.",
-    "ssoTryAnyway": "Yenə də cəhd edin"
+    "ssoTryAnyway": "Yenə də cəhd edin",
+    "callTranscriptNotSubscribed": "{name} bu zəng zamanı abunəçi olmadığı üçün deyilənlər transkripsiya edilmədi.",
+    "callTranscriptTranscribing": "{name} adlı istifadəçidən gələn səsyazma hələ də transkripsiya edilir…",
+    "callTranscriptSeekTo": "{time} vaxtından səsləndir",
+    "callTranscriptRecordings": "Səsyazmalar",
+    "callTranscriptFullCall": "Bütün zəng",
+    "callTranscriptPreparingRecording": "Tam səsyazma hazırlanır…",
+    "callTranscriptNoRecording": "Tam zəngin səsyazması yoxdur.",
+    "callTranscriptTranscribeButton": "Transkripsiya et",
+    "callTranscriptAudioUnavailable": "{name} qeydə alınmış səsi yüklənmədi, buna görə də transkripsiya edilə bilmədi.",
+    "callTranscriptChooseLanguage": "Hansı dildə danışılıb?",
+    "callTranscriptSubscribeForTranscription": "Transkripsiya üçün abunə olun",
+    "unlockCallTranscript": "Zəng transkripsiyasını açın"
 }

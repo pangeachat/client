@@ -2372,5 +2372,17 @@
     "summaryFeedbackProcessing": "Tunatuma maoni yako na kusasisha muhtasari…",
     "ssoNetworkBlockedTitle": "Tovuti ya kuingia haipatikani",
     "ssoNetworkBlockedDesc": "Mtandao huu hauturuhusu kufikia {provider} ili kukuunganisha. Wi-Fi za shule na ofisi mara nyingi huizuia. Unaweza kujiandikisha kwa barua pepe badala yake, au ubadili mtandao mwingine na ujaribu tena.",
-    "ssoTryAnyway": "Jaribu hata hivyo"
+    "ssoTryAnyway": "Jaribu hata hivyo",
+    "callTranscriptNotSubscribed": "{name} hakuwa na usajili wakati wa simu hii, kwa hivyo yaliyosemwa hayakuandikwa.",
+    "callTranscriptTranscribing": "Bado tunanakili rekodi kutoka kwa {name}…",
+    "callTranscriptSeekTo": "Cheza kutoka {time}",
+    "callTranscriptRecordings": "Rekodi",
+    "callTranscriptFullCall": "Simu nzima",
+    "callTranscriptPreparingRecording": "Tunatayarisha rekodi kamili…",
+    "callTranscriptNoRecording": "Hakuna rekodi ya simu nzima.",
+    "callTranscriptTranscribeButton": "Nakili",
+    "callTranscriptAudioUnavailable": "Rekodi iliyohifadhiwa kutoka {name} haikuweza kupakuliwa, kwa hivyo haikuweza kunakiliwa.",
+    "callTranscriptChooseLanguage": "Ni lugha gani ilizungumzwa?",
+    "callTranscriptSubscribeForTranscription": "Jisajili ili upate nakala",
+    "unlockCallTranscript": "Fungua nakala ya simu"
 }

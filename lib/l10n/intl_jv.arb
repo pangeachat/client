@@ -2372,5 +2372,17 @@
     "summaryFeedbackProcessing": "Nirim tanggapan sampeyan lan nganyari ringkesan…",
     "ssoNetworkBlockedTitle": "Situs mlebu ora bisa diakses",
     "ssoNetworkBlockedDesc": "Jaringan iki ora ngidini kita ngakses {provider} kanggo mlebu. Wi-Fi sekolah lan kantor asring mblokir. Sampeyan bisa ndhaptar nganggo email, utawa ngganti jaringan liyane banjur coba maneh.",
-    "ssoTryAnyway": "Coba wae"
+    "ssoTryAnyway": "Coba wae",
+    "callTranscriptNotSubscribed": "{name} ora duwe langganan nalika telpon iki, mula sing diucapake ora ditranskripsi.",
+    "callTranscriptTranscribing": "Isih nyalin rekaman saka {name}…",
+    "callTranscriptSeekTo": "Putar saka {time}",
+    "callTranscriptRecordings": "Rekaman",
+    "callTranscriptFullCall": "Telpon lengkap",
+    "callTranscriptPreparingRecording": "Nyiapake rekaman lengkap…",
+    "callTranscriptNoRecording": "Ora ana rekaman telpon lengkap.",
+    "callTranscriptTranscribeButton": "Transkripsi",
+    "callTranscriptAudioUnavailable": "Rekaman sing disimpen saka {name} ora bisa diundhuh, mula ora bisa ditranskripsi.",
+    "callTranscriptChooseLanguage": "Basa apa sing diucapake?",
+    "callTranscriptSubscribeForTranscription": "Langganan kanggo transkripsi",
+    "unlockCallTranscript": "Bukak kunci transkrip telpon"
 }

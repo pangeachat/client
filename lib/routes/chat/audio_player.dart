@@ -166,6 +166,18 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     _listeningSub?.cancel();
     _listeningSub = null;
     _listeningTracker?.close();
+    // UNCONDITIONAL, like the listening cleanup above and for the same reason:
+    // `_onPlayerChange` is added to `voiceMessageEventId` in `initState`
+    // REGARDLESS of ownership, and `_onAudioStateChanged` may be attached by
+    // `_onButtonTap`/`_onPlayerChange` without this widget owning the player.
+    // Cleaning them up only inside the owns-the-player branch below leaked one
+    // listener (and possibly a stream subscription) on the long-lived shared
+    // notifier for every AudioPlayerWidget that unmounts without owning it --
+    // amplified by the call-transcript screen, which mounts/unmounts several
+    // per-device players.
+    matrix.voiceMessageEventId.removeListener(_onPlayerChange);
+    _onAudioStateChanged?.cancel();
+    _onAudioStateChanged = null;
     // Pangea#
     super.dispose();
     // #Pangea
@@ -240,10 +252,8 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       audioPlayer.pause();
       audioPlayer.dispose();
       matrix.voiceMessageEventId.value = matrix.audioPlayer = null;
-      // #Pangea
-      matrix.voiceMessageEventId.removeListener(_onPlayerChange);
-      _onAudioStateChanged?.cancel();
-      // Pangea#
+      // `_onPlayerChange`/`_onAudioStateChanged` are now torn down
+      // unconditionally above, so nothing more is needed here.
     }
   }
 

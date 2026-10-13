@@ -275,6 +275,23 @@ class Environment {
         (dotenv.env["LIVE_STREAMING_STT_ENABLED"]?.toLowerCase() == 'true');
   }
 
+  /// The recording-based call transcript. ON by default: at hangup each device
+  /// transcribes its OWN uploaded call recording -- the same audio the merged
+  /// playback is built from -- and publishes THOSE segments as its half.
+  /// `CALL_RECORDING_TRANSCRIPT=false` is a kill switch, not a rollout gate: it
+  /// falls back to the live 45-second chunk path byte-for-byte. Per-half fault
+  /// tolerance is preserved: a device whose recording or transcription is
+  /// missing falls back to its live-chunk half unchanged, so a call can carry
+  /// one recording-based half and one live half.
+  static bool get callRecordingTranscript =>
+      // `dotenv.env` throws when no env has been loaded, which a unit test that
+      // reaches this (a call service replaying a pending half) legitimately has
+      // not. No env loaded means no app config at all, so the feature stays off
+      // there -- guarded like `DosageMessageSignals` guards its own read. Any
+      // loaded env is ON unless it explicitly says `false`.
+      dotenv.isInitialized &&
+      dotenv.env["CALL_RECORDING_TRANSCRIPT"]?.toLowerCase() != 'false';
+
   static String get pushGatewayUrl => isStagingEnvironment
       ? 'https://sygnal.staging.pangea.chat/_matrix/push/v1/notify'
       : 'https://sygnal.pangea.chat/_matrix/push/v1/notify';

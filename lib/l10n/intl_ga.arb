@@ -9975,5 +9975,17 @@
     "summaryFeedbackProcessing": "Ag seoladh d’aiseolais agus ag nuashonrú an achoimre…",
     "ssoNetworkBlockedTitle": "Suíomh sínithe isteach do-rochtain",
     "ssoNetworkBlockedDesc": "Níl an líonra seo ag ligean dúinn {provider} a bhaint amach chun tú a shíniú isteach. Is minic a chuireann Wi-Fi scoile agus oifige bac air. Is féidir leat clárú le ríomhphost ina ionad, nó athrú go líonra eile agus triail eile a bhaint as.",
-    "ssoTryAnyway": "Bain triail as ar aon nós"
+    "ssoTryAnyway": "Bain triail as ar aon nós",
+    "callTranscriptNotSubscribed": "Ní raibh síntiús ag {name} le linn an ghlao seo, mar sin níor tras-scríobhadh an méid a dúradh.",
+    "callTranscriptTranscribing": "Fós ag trascríobh an taifeadta ó {name}…",
+    "callTranscriptSeekTo": "Seinn ó {time}",
+    "callTranscriptRecordings": "Taifeadtaí",
+    "callTranscriptFullCall": "Glao iomlán",
+    "callTranscriptPreparingRecording": "Ag ullmhú an taifeadta iomláin…",
+    "callTranscriptNoRecording": "Níl aon taifeadadh den ghlao iomlán.",
+    "callTranscriptTranscribeButton": "Trascríobh",
+    "callTranscriptAudioUnavailable": "Níorbh fhéidir an taifeadadh sábháilte ó {name} a íoslódáil, mar sin níorbh fhéidir é a thrascríobh.",
+    "callTranscriptChooseLanguage": "Cén teanga a labhraíodh?",
+    "callTranscriptSubscribeForTranscription": "Liostáil le haghaidh trascríofa",
+    "unlockCallTranscript": "Díghlasáil tras-scríbhinn an ghlao"
 }

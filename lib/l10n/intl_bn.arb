@@ -10592,5 +10592,17 @@
     "summaryFeedbackProcessing": "আপনার প্রতিক্রিয়া পাঠানো হচ্ছে এবং সারসংক্ষেপ আপডেট করা হচ্ছে…",
     "ssoNetworkBlockedTitle": "সাইন-ইন সাইট অ্যাক্সেসযোগ্য নয়",
     "ssoNetworkBlockedDesc": "এই নেটওয়ার্কটি আপনাকে সাইন ইন করার জন্য {provider}-এর সাথে সংযোগ স্থাপন করতে দিচ্ছে না। স্কুল এবং অফিসের Wi-Fi প্রায়শই এটি ব্লক করে। আপনি এর পরিবর্তে ইমেল দিয়ে সাইন আপ করতে পারেন, অথবা অন্য নেটওয়ার্কে স্যুইচ করে আবার চেষ্টা করতে পারেন।",
-    "ssoTryAnyway": "যাইহোক চেষ্টা করুন"
+    "ssoTryAnyway": "যাইহোক চেষ্টা করুন",
+    "callTranscriptNotSubscribed": "{name} এর এই কলে কোনো সাবস্ক্রিপশন ছিল না, তাই যা বলা হয়েছে তা প্রতিলিপি করা হয়নি।",
+    "callTranscriptTranscribing": "{name} থেকে রেকর্ডিং প্রতিলিপি করা হচ্ছে…",
+    "callTranscriptSeekTo": "{time} থেকে চালান",
+    "callTranscriptRecordings": "রেকর্ডিংগুলি",
+    "callTranscriptFullCall": "সম্পূর্ণ কল",
+    "callTranscriptPreparingRecording": "সম্পূর্ণ রেকর্ডিং প্রস্তুত করা হচ্ছে…",
+    "callTranscriptNoRecording": "সম্পূর্ণ কলের কোনো রেকর্ডিং নেই।",
+    "callTranscriptTranscribeButton": "ট্রান্সক্রাইব করুন",
+    "callTranscriptAudioUnavailable": "{name} থেকে সংরক্ষিত রেকর্ডিং ডাউনলোড করা যায়নি, তাই এটি ট্রান্সক্রাইব করা যায়নি।",
+    "callTranscriptChooseLanguage": "কোন ভাষায় কথা বলা হয়েছিল?",
+    "callTranscriptSubscribeForTranscription": "ট্রান্সক্রিপশনের জন্য সাবস্ক্রাইব করুন",
+    "unlockCallTranscript": "কল ট্রান্সক্রিপ্ট আনলক করুন"
 }

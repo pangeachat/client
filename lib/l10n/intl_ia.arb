@@ -10900,5 +10900,17 @@
     "summaryFeedbackProcessing": "Inviante vostre commentos e actualisante le summario…",
     "ssoNetworkBlockedTitle": "Sito de authentification inaccessibile",
     "ssoNetworkBlockedDesc": "Iste rete non nos permitte attinger {provider} pro authentificar vos. Le Wi-Fi de scholas e officios sovente lo bloca. Vos pote registrar vos con e-mail in loco, o cambiar a un altere rete e reprovar.",
-    "ssoTryAnyway": "Provar de tote modos"
+    "ssoTryAnyway": "Provar de tote modos",
+    "callTranscriptNotSubscribed": "{name} non habeva un subscription durante iste appello, ergo lo que esseva dicite non esseva transcribite.",
+    "callTranscriptTranscribing": "Ancora transcribente le registration de {name}…",
+    "callTranscriptSeekTo": "Reproducer ab {time}",
+    "callTranscriptRecordings": "Registrationes",
+    "callTranscriptFullCall": "Appello complete",
+    "callTranscriptPreparingRecording": "Preparante le registration complete…",
+    "callTranscriptNoRecording": "Nulle registration del appello complete.",
+    "callTranscriptTranscribeButton": "Transcriber",
+    "callTranscriptAudioUnavailable": "Le registration salvate de {name} non poteva esser discargate, ergo illo non poteva esser transcribite.",
+    "callTranscriptChooseLanguage": "Qual lingua esseva parlate?",
+    "callTranscriptSubscribeForTranscription": "Subscriber pro transcription",
+    "unlockCallTranscript": "Disblocar transcripto de appellation"
 }

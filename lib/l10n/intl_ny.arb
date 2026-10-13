@@ -2372,5 +2372,17 @@
     "summaryFeedbackProcessing": "Kutumiza ndemanga yanu ndikusintha chidule…",
     "ssoNetworkBlockedTitle": "Malo olowera safikika",
     "ssoNetworkBlockedDesc": "Intaneti iyi ikutiletsa kufika ku {provider} kuti tikulowetseni. Ma Wi-Fi a kusukulu ndi ku ofesi nthawi zambiri amalepheretsa. Mutha kulembetsa ndi imelo m'malo mwake, kapena kusinthira ku intaneti ina ndikuyesanso.",
-    "ssoTryAnyway": "Yesani komabe"
+    "ssoTryAnyway": "Yesani komabe",
+    "callTranscriptNotSubscribed": "{name} analibe chiphaso panthawi yoyimbira iyi, choncho zomwe zinanenedwa sizinajambulidwe.",
+    "callTranscriptTranscribing": "Tikulemba mawu ochokera kwa {name}…",
+    "callTranscriptSeekTo": "Sewerani kuyambira {time}",
+    "callTranscriptRecordings": "Zojambulidwa",
+    "callTranscriptFullCall": "Kuyimba konse",
+    "callTranscriptPreparingRecording": "Tikukonza zojambulidwa zonse…",
+    "callTranscriptNoRecording": "Palibe chojambulidwa cha kuyimba konse.",
+    "callTranscriptTranscribeButton": "Lembani",
+    "callTranscriptAudioUnavailable": "Kujambula kosungidwa kuchokera kwa {name} sikunathe kutsitsidwa, choncho sikunathe kulembedwa.",
+    "callTranscriptChooseLanguage": "Ndi chilankhulo chiti chomwe chinalankhulidwa?",
+    "callTranscriptSubscribeForTranscription": "Lembetsani kuti mulembedwe",
+    "unlockCallTranscript": "Tsegulani zolembedwa za kuyimba"
 }

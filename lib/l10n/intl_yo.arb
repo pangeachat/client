@@ -2372,5 +2372,17 @@
     "summaryFeedbackProcessing": "Nfi esi rẹ ranṣẹ ati mimu akopọ naa dojuiwọn…",
     "ssoNetworkBlockedTitle": "Aaye ìforúkọsílẹ̀ kò ṣeé dé",
     "ssoNetworkBlockedDesc": "Nẹ́tíwọ̀kì yìí kò jẹ́ kí a dé {provider} láti fi ọ́ wọlé. Wi-Fi ilé-ìwé àti ọ́fíìsì sábà máa ń dí i lọ́nà. O lè forúkọsílẹ̀ pẹ̀lú imeeli dípò, tàbí yípadà sí nẹ́tíwọ̀kì mìíràn kí o sì tún gbìyànjú.",
-    "ssoTryAnyway": "Gbìyànjú lọ́nàkọnà"
+    "ssoTryAnyway": "Gbìyànjú lọ́nàkọnà",
+    "callTranscriptNotSubscribed": "{name} kò ní àbáwọlé nígbà ìpè yìí, nítorí náà ohun tí a sọ kò sí ní àkọsílẹ̀.",
+    "callTranscriptTranscribing": "Ṣì ń kọ ohùn sílẹ̀ láti ọ̀dọ̀ {name}…",
+    "callTranscriptSeekTo": "Bẹ̀rẹ̀ sí í tẹ́tí láti {time}",
+    "callTranscriptRecordings": "Àwọn ohùn tí a kọ sílẹ̀",
+    "callTranscriptFullCall": "Ìpè pátápátá",
+    "callTranscriptPreparingRecording": "Ń múra ohùn pátápátá sílẹ̀…",
+    "callTranscriptNoRecording": "Kò sí ohùn tí a kọ sílẹ̀ fún ìpè pátápátá.",
+    "callTranscriptTranscribeButton": "Ṣe àkọsílẹ̀",
+    "callTranscriptAudioUnavailable": "Ìgbàsílẹ̀ tí a fipamọ́ láti ọ̀dọ̀ {name} kò lè ṣe ìgbàsílẹ̀, nítorí náà kò lè ṣe àkọsílẹ̀.",
+    "callTranscriptChooseLanguage": "Èdè wo ni a sọ?",
+    "callTranscriptSubscribeForTranscription": "Ṣe àbáwọlé fún àkọsílẹ̀",
+    "unlockCallTranscript": "Ṣí àkọsílẹ̀ ìpe sílẹ̀"
 }

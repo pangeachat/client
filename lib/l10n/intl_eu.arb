@@ -9964,5 +9964,17 @@
     "summaryFeedbackProcessing": "Zure iritzia bidaltzen eta laburpena eguneratzen…",
     "ssoNetworkBlockedTitle": "Saioa hasteko gunea eskuraezina",
     "ssoNetworkBlockedDesc": "Sare honek ez digu uzten {provider} atzitzen saioa hasteko. Eskolako eta bulegoko Wi-Fi sareek askotan blokeatzen dute. Horren ordez, posta elektronikoarekin erregistra zaitezke, edo beste sare batera aldatu eta berriro saiatu.",
-    "ssoTryAnyway": "Dena den, saiatu"
+    "ssoTryAnyway": "Dena den, saiatu",
+    "callTranscriptNotSubscribed": "{name} erabiltzaileak ez zuen harpidetzarik dei honetan, beraz, esandakoa ez zen transkribatu.",
+    "callTranscriptTranscribing": "{name} grabazioa transkribatzen ari da oraindik…",
+    "callTranscriptSeekTo": "Erreproduzitu {time}tik aurrera",
+    "callTranscriptRecordings": "Grabazioak",
+    "callTranscriptFullCall": "Dei osoa",
+    "callTranscriptPreparingRecording": "Grabazio osoa prestatzen…",
+    "callTranscriptNoRecording": "Dei osoaren grabaziorik ez.",
+    "callTranscriptTranscribeButton": "Transkribatu",
+    "callTranscriptAudioUnavailable": "{name} grabatutako grabazioa ezin izan da deskargatu, beraz, ezin izan da transkribatu.",
+    "callTranscriptChooseLanguage": "Zein hizkuntzatan hitz egin zen?",
+    "callTranscriptSubscribeForTranscription": "Harpidetu transkripziorako",
+    "unlockCallTranscript": "Desblokeatu deiaren transkripzioa"
 }

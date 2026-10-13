@@ -2372,5 +2372,17 @@
     "summaryFeedbackProcessing": "آپ کے تاثرات بھیجے جا رہے ہیں اور خلاصہ اپ ڈیٹ کیا جا رہا ہے…",
     "ssoNetworkBlockedTitle": "سائن ان سائٹ تک رسائی نہیں ہو سکتی",
     "ssoNetworkBlockedDesc": "یہ نیٹ ورک ہمیں آپ کو سائن ان کرنے کے لیے {provider} تک رسائی کی اجازت نہیں دے رہا ہے۔ اسکول اور دفتر کا وائی فائی اکثر اسے بلاک کر دیتا ہے۔ آپ اس کے بجائے ای میل کے ساتھ سائن اپ کر سکتے ہیں، یا کسی دوسرے نیٹ ورک پر سوئچ کر کے دوبارہ کوشش کر سکتے ہیں۔",
-    "ssoTryAnyway": "پھر بھی کوشش کریں"
+    "ssoTryAnyway": "پھر بھی کوشش کریں",
+    "callTranscriptNotSubscribed": "{name} کے پاس اس کال کے دوران کوئی سبسکرپشن نہیں تھی، لہذا جو کچھ کہا گیا اسے نقل نہیں کیا گیا۔",
+    "callTranscriptTranscribing": "{name} کی ریکارڈنگ ابھی بھی نقل کی جا رہی ہے…",
+    "callTranscriptSeekTo": "{time} سے چلائیں",
+    "callTranscriptRecordings": "ریکارڈنگز",
+    "callTranscriptFullCall": "مکمل کال",
+    "callTranscriptPreparingRecording": "مکمل ریکارڈنگ تیار کی جا رہی ہے…",
+    "callTranscriptNoRecording": "مکمل کال کی کوئی ریکارڈنگ نہیں ہے۔",
+    "callTranscriptTranscribeButton": "ٹرانسکرائب کریں",
+    "callTranscriptAudioUnavailable": "{name} سے محفوظ کردہ ریکارڈنگ ڈاؤن لوڈ نہیں کی جا سکی، اس لیے اسے ٹرانسکرائب نہیں کیا جا سکا۔",
+    "callTranscriptChooseLanguage": "کون سی زبان بولی گئی تھی؟",
+    "callTranscriptSubscribeForTranscription": "ٹرانسکرپشن کے لیے سبسکرائب کریں",
+    "unlockCallTranscript": "کال ٹرانسکرپٹ کو اَن لاک کریں"
 }

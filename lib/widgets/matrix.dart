@@ -31,6 +31,7 @@ import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/dev_login.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
@@ -247,6 +248,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           (c) => c.clientName == clientName,
           orElse: () => client,
         ),
+        recordingTranscriptEnabled: Environment.callRecordingTranscript,
       );
 
   // #Pangea
@@ -271,7 +273,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   CallService callServiceForClient(Client client) {
     final existing = _callServices[client.clientName];
     if (existing != null && identical(existing.client, client)) return existing;
-    return _callServices[client.clientName] = CallService(client);
+    return _callServices[client.clientName] = CallService(
+      client,
+      recordingTranscriptEnabled: Environment.callRecordingTranscript,
+    );
   }
   // Pangea#
 
@@ -414,6 +419,17 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       },
       userL1: languages.l1 ?? LanguageKeys.unknownLanguage,
       userL2: languages.l2 ?? LanguageKeys.unknownLanguage,
+      // The whole-call transcriber's controller seams (#8792), supplied here
+      // because this is where the controllers live. Both are read at run time,
+      // never cached: `isSubscribed` is the invoker's LIVE entitlement, and the
+      // peer languages come from the peer's public analytics profile.
+      isSubscribed: () =>
+          pangeaController.subscriptionController.showSubscriptionGatedContent,
+      peerLanguages: (userId) async {
+        final profile = await pangeaController.userController
+            .getPublicAnalyticsProfile(userId);
+        return (l1: profile.baseLanguage, l2: profile.targetLanguage);
+      },
       // Bound to the account that OWNS this call, captured now. Both of
       // these used to be read through the active-account getters at the
       // moment the recording finished, which is minutes later and after the
@@ -883,6 +899,16 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // with nothing on screen to say why. The clear belongs to reaching the
         // END of the unwind, not to reaching it successfully.
         // Pangea#
+        // #Pangea
+        // Before the services are torn down: the call recordings this account
+        // left waiting to upload are the learner's, and must not survive their
+        // sign-out on a shared device.
+        try {
+          await _callServices[c.clientName]?.purgePendingCallAudio();
+        } catch (e, s) {
+          Logs().w('Could not purge pending call recordings on logout', e, s);
+        }
+        // Pangea#
         try {
           await _cancelSubs(c.clientName);
         } finally {
@@ -1143,6 +1169,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
     if (state == AppLifecycleState.resumed) {
       pangeaController.subscriptionController.refreshOnAppResume(client.userID);
+      // A call transcript half whose publish was dropped when the app
+      // backgrounded at hangup is replayed now that it is back. Each service
+      // self-gates on the feature flag and drops any half that already landed
+      // as a server-side no-op, so this is inert on the default build.
+      for (final service in _callServices.values) {
+        unawaited(service.flushPendingCallTranscripts());
+      }
     }
   }
 

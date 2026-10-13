@@ -10909,5 +10909,17 @@
     "summaryFeedbackProcessing": "Sendante vian retrosciigon kaj ĝisdatigante la resumon…",
     "ssoNetworkBlockedTitle": "Ensaluta retejo neatingebla",
     "ssoNetworkBlockedDesc": "Ĉi tiu reto ne permesas al ni atingi {provider} por ensaluti vin. Lerneja kaj oficeja retkonekto ofte blokas ĝin. Vi povas registriĝi per retpoŝto anstataŭe, aŭ ŝanĝi al alia reto kaj reprovi.",
-    "ssoTryAnyway": "Provu ĉiukaze"
+    "ssoTryAnyway": "Provu ĉiukaze",
+    "callTranscriptNotSubscribed": "{name} ne havis abonon dum ĉi tiu voko, do tio, kio estis dirita, ne estis transskribita.",
+    "callTranscriptTranscribing": "Ankoraŭ transskribante la registraĵon de {name}…",
+    "callTranscriptSeekTo": "Ludi ekde {time}",
+    "callTranscriptRecordings": "Registraĵoj",
+    "callTranscriptFullCall": "Plena voko",
+    "callTranscriptPreparingRecording": "Preparas la plenan registraĵon…",
+    "callTranscriptNoRecording": "Neniu registraĵo de la plena voko.",
+    "callTranscriptTranscribeButton": "Transskribi",
+    "callTranscriptAudioUnavailable": "La konservita registraĵo de {name} ne povis esti elŝutita, do ĝi ne povis esti transskribita.",
+    "callTranscriptChooseLanguage": "Kiun lingvon oni parolis?",
+    "callTranscriptSubscribeForTranscription": "Aboni por transskribo",
+    "unlockCallTranscript": "Malŝlosi alvokan transskribon"
 }

@@ -10913,5 +10913,17 @@
     "summaryFeedbackProcessing": "Šaljemo vaše povratne informacije i ažuriramo rezime…",
     "ssoNetworkBlockedTitle": "Sajt za prijavu je nedostupan",
     "ssoNetworkBlockedDesc": "Ova mreža nam ne dozvoljava da dođemo do {provider} da bismo vas prijavili. Školski i kancelarijski Wi-Fi često blokiraju pristup. Umesto toga, možete se prijaviti putem e-pošte ili preći na drugu mrežu i pokušati ponovo.",
-    "ssoTryAnyway": "Pokušajte svejedno"
+    "ssoTryAnyway": "Pokušajte svejedno",
+    "callTranscriptNotSubscribed": "{name} nije imao pretplatu tokom ovog poziva, tako da izgovoreno nije transkribovano.",
+    "callTranscriptTranscribing": "I dalje transkribujem snimak od {name}…",
+    "callTranscriptSeekTo": "Reprodukuj od {time}",
+    "callTranscriptRecordings": "Snimci",
+    "callTranscriptFullCall": "Ceo poziv",
+    "callTranscriptPreparingRecording": "Pripremam ceo snimak…",
+    "callTranscriptNoRecording": "Nema snimka celog poziva.",
+    "callTranscriptTranscribeButton": "Prepiši",
+    "callTranscriptAudioUnavailable": "Sačuvani snimak od {name} nije mogao da se preuzme, tako da nije mogao da bude prepisan.",
+    "callTranscriptChooseLanguage": "Koji jezik je bio u upotrebi?",
+    "callTranscriptSubscribeForTranscription": "Pretplatite se za transkripciju",
+    "unlockCallTranscript": "Otključaj transkript poziva"
 }

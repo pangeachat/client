@@ -2372,5 +2372,17 @@
     "summaryFeedbackProcessing": "သင်၏အကြံပြုချက်ပေးပို့နေပြီး အနှစ်ချုပ်ကို အပ်ဒိတ်လုပ်နေသည်...",
     "ssoNetworkBlockedTitle": "ဆိုင်းအင်ဝင်ရန် ဆိုက်သို့ ရောက်ရှိနိုင်ခြင်း မရှိပါ",
     "ssoNetworkBlockedDesc": "ဤကွန်ရက်က သင့်ကို ဆိုင်းအင်ဝင်ရန် {provider} သို့ ရောက်ရှိခွင့် မပြုပါ။ ကျောင်းနှင့် ရုံးသုံး Wi-Fi များက မကြာခဏ ပိတ်ဆို့ထားတတ်ပါသည်။ အီးမေးလ်ဖြင့် အကောင့်ဖွင့်နိုင်သည် သို့မဟုတ် အခြားကွန်ရက်သို့ ပြောင်းပြီး ထပ်မံကြိုးစားနိုင်ပါသည်။",
-    "ssoTryAnyway": "မည်သို့ပင်ဖြစ်စေ ကြိုးစားပါ"
+    "ssoTryAnyway": "မည်သို့ပင်ဖြစ်စေ ကြိုးစားပါ",
+    "callTranscriptNotSubscribed": "{name} သည် ဤခေါ်ဆိုမှုအတွင်း စာရင်းသွင်းထားခြင်းမရှိသောကြောင့် ပြောဆိုခဲ့သည်များကို စာသားအဖြစ် ပြောင်းလဲထားခြင်းမရှိပါ။",
+    "callTranscriptTranscribing": "{name} ထံမှ မှတ်တမ်းကို ကူးယူနေဆဲ…",
+    "callTranscriptSeekTo": "{time} မှ စတင်ဖွင့်ပါ",
+    "callTranscriptRecordings": "မှတ်တမ်းများ",
+    "callTranscriptFullCall": "ခေါ်ဆိုမှုအပြည့်အစုံ",
+    "callTranscriptPreparingRecording": "မှတ်တမ်းအပြည့်အစုံကို ပြင်ဆင်နေသည်…",
+    "callTranscriptNoRecording": "ခေါ်ဆိုမှုအပြည့်အစုံ၏ မှတ်တမ်းမရှိပါ",
+    "callTranscriptTranscribeButton": "စာသားအဖြစ်ပြောင်းပါ",
+    "callTranscriptAudioUnavailable": "{name} မှ သိမ်းဆည်းထားသော မှတ်တမ်းကို ဒေါင်းလုဒ်လုပ်၍မရသောကြောင့် စာသားအဖြစ် ပြောင်းလဲ၍မရပါ။",
+    "callTranscriptChooseLanguage": "မည်သည့်ဘာသာစကားဖြင့် ပြောဆိုခဲ့သနည်း။",
+    "callTranscriptSubscribeForTranscription": "စာသားအဖြစ်ပြောင်းလဲခြင်းအတွက် စာရင်းသွင်းပါ",
+    "unlockCallTranscript": "ခေါ်ဆိုမှုမှတ်တမ်းကို လော့ခ်ဖွင့်ပါ"
 }
