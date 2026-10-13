@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/themes.dart';
+
 /// A course-page section title row — sections are divided by [Divider]s (the
 /// settings-page convention), each headed by this: the section's [icon], its
 /// title, and the section's [actions].
@@ -10,8 +12,9 @@ import 'package:flutter/material.dart';
 ///
 /// The action row holds the section's "See all" ([CourseSectionButton]) and,
 /// before it, any shortcut the section offers ([CourseSectionShortcut]:
-/// create a chat, invite a member). The actions sit at the end of the title's
-/// line when they fit and wrap under the title when they don't (#9492).
+/// create a chat, invite a member). On a narrow screen the actions always sit
+/// under the title, so every section matches; on a wide screen they sit at the
+/// end of the title's line and wrap under it when they don't fit (#9492).
 class CourseSectionHeader extends StatelessWidget {
   final String title;
   final IconData? icon;
@@ -21,8 +24,9 @@ class CourseSectionHeader extends StatelessWidget {
   /// match.
   static const double iconSize = 20.0;
 
-  /// Between the icon and title, and between two actions — each a full-size
-  /// control since #8815, not a bare glyph that carried its own margin.
+  /// Between the icon and title, between two actions — each a full-size
+  /// control since #8815, not a bare glyph that carried its own margin — and
+  /// between the title and the actions under it.
   static const double _spacing = 8.0;
 
   const CourseSectionHeader({
@@ -34,36 +38,41 @@ class CourseSectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final titleRow = Row(
+      mainAxisSize: MainAxisSize.min,
+      spacing: _spacing,
+      children: [
+        if (icon != null) Icon(icon, size: iconSize),
+        Flexible(
+          child: Text(
+            title,
+            style: Theme.of(
+              context,
+            ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+          ),
+        ),
+      ],
+    );
+    final actionRow = Wrap(
+      crossAxisAlignment: WrapCrossAlignment.center,
+      spacing: _spacing,
+      children: actions,
+    );
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
-      child: Wrap(
-        alignment: WrapAlignment.spaceBetween,
-        crossAxisAlignment: WrapCrossAlignment.center,
-        spacing: _spacing,
-        children: [
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            spacing: _spacing,
-            children: [
-              if (icon != null) Icon(icon, size: iconSize),
-              Flexible(
-                child: Text(
-                  title,
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          if (actions.isNotEmpty)
-            Wrap(
+      child: FluffyThemes.isColumnMode(context)
+          ? Wrap(
+              alignment: WrapAlignment.spaceBetween,
               crossAxisAlignment: WrapCrossAlignment.center,
               spacing: _spacing,
-              children: actions,
+              runSpacing: _spacing,
+              children: [titleRow, if (actions.isNotEmpty) actionRow],
+            )
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: _spacing,
+              children: [titleRow, if (actions.isNotEmpty) actionRow],
             ),
-        ],
-      ),
     );
   }
 }

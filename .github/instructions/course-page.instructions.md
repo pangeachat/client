@@ -13,7 +13,7 @@ Every section starts with the same header ([`CourseSectionHeader`](../../lib/rou
 
 - **See all** ([`CourseSectionButton`](../../lib/routes/chat/chat_details/course_overview/course_section_button.dart)) opens the section's full subpage inside the card. It shows only when the subpage holds more than the section does. Its visible label is always "See all". Its accessible name adds the section title, so a screen reader can tell the sections' buttons apart.
 - **A shortcut** ([`CourseSectionShortcut`](../../lib/routes/chat/chat_details/course_overview/course_section_shortcut.dart)) is the one action a section offers besides See all, placed before it. By default it is an icon, and its name is in the tooltip and accessible name. A shortcut that people miss as an icon also shows its name as a visible label beside the icon.
-- **Fit.** The title and actions share one line when they fit. When they don't, which usually means a narrow phone with a labeled shortcut and See all, the actions move to a second line under the title. Nothing is cut or shortened to keep everything on one line.
+- **Fit.** On a narrow screen, where the course opens as a bottom sheet, every section puts its actions on their own line under its title, so all sections match. On a wide screen the actions sit at the end of the title's line, and move under the title only when they don't fit.
 
 ## The Chats section
 
