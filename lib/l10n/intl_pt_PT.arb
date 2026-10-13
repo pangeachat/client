@@ -10895,6 +10895,7 @@
     "waitingFor": "A aguardar {duration}",
     "onlineInCourse": "{count} online em {course}",
     "newCourseChat": "Novo chat do curso",
-    "teamCode": "Código da equipa",
-    "reopenAppToFinishSwitching": "Feche a aplicação completamente e abra-a novamente para terminar a mudança."
+    "customCourseStepDesc": "Um curso é um conjunto de atividades de conversação que seguem o seu manual, para os seus alunos fazerem juntos como trabalho de casa.",
+    "reopenAppToFinishSwitching": "Feche a aplicação completamente e abra-a novamente para terminar a mudança.",
+    "teamCode": "Código da equipa"
 }

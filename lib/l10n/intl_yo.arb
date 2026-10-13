@@ -2427,6 +2427,7 @@
     "waitingFor": "Nduro de {duration}",
     "onlineInCourse": "{count} lóńláìní nínú {course}",
     "newCourseChat": "Ìjíròrò ẹ̀kọ́ tuntun",
-    "teamCode": "Koodu Ẹgbẹ",
-    "reopenAppToFinishSwitching": "Pa ohun elo naa patapata ki o si tun ṣi i lati pari iyipada."
+    "customCourseStepDesc": "Ìwé-ẹ̀kọ́ jẹ́ àwọn iṣẹ́ ìbánisọ̀rọ̀ tí ó tẹ̀lé ìwé-ẹ̀kọ́ rẹ, fún àwọn akẹ́kọ̀ọ́ rẹ láti ṣe pọ̀ gẹ́gẹ́ bí iṣẹ́-ilé.",
+    "reopenAppToFinishSwitching": "Pa ohun elo naa patapata ki o si tun ṣi i lati pari iyipada.",
+    "teamCode": "Koodu Ẹgbẹ"
 }

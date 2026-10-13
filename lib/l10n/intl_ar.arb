@@ -10284,6 +10284,7 @@
     "waitingFor": "في انتظار {duration}",
     "onlineInCourse": "{count} متصلون في {course}",
     "newCourseChat": "محادثة دورة جديدة",
-    "teamCode": "رمز الفريق",
-    "reopenAppToFinishSwitching": "أغلق التطبيق تمامًا وافتحه مرة أخرى لإنهاء التبديل."
+    "customCourseStepDesc": "الدورة التدريبية هي مجموعة من أنشطة المحادثة التي تتبع كتابك المدرسي، ليقوم بها طلابك معًا كواجب منزلي.",
+    "reopenAppToFinishSwitching": "أغلق التطبيق تمامًا وافتحه مرة أخرى لإنهاء التبديل.",
+    "teamCode": "رمز الفريق"
 }

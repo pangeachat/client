@@ -2427,6 +2427,7 @@
     "waitingFor": "Nap tann {duration}",
     "onlineInCourse": "{count} an liy nan {course}",
     "newCourseChat": "Nouvo chat kou",
-    "teamCode": "Kòd ekip",
-    "reopenAppToFinishSwitching": "Fèmen aplikasyon an nèt epi ouvri l ankò pou fini chanjman an."
+    "customCourseStepDesc": "Yon kou se yon seri aktivite konvèsasyon ki swiv liv ou a, pou elèv ou yo fè ansanm kòm devwa.",
+    "reopenAppToFinishSwitching": "Fèmen aplikasyon an nèt epi ouvri l ankò pou fini chanjman an.",
+    "teamCode": "Kòd ekip"
 }

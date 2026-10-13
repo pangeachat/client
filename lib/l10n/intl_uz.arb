@@ -9982,6 +9982,7 @@
     "waitingFor": "{duration} kutish",
     "onlineInCourse": "{course}da {count} ta onlayn",
     "newCourseChat": "Yangi kurs chati",
-    "teamCode": "Jamoa kodi",
-    "reopenAppToFinishSwitching": "Oʻzgartirishni yakunlash uchun ilovani toʻliq yoping va qayta oching."
+    "customCourseStepDesc": "Kurs — bu darsligingizga mos keladigan suhbat mashg‘ulotlari to‘plami bo‘lib, talabalaringiz uy vazifasi sifatida birgalikda bajarishlari uchun mo‘ljallangan.",
+    "reopenAppToFinishSwitching": "Oʻzgartirishni yakunlash uchun ilovani toʻliq yoping va qayta oching.",
+    "teamCode": "Jamoa kodi"
 }

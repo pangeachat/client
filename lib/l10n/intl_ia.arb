@@ -10914,6 +10914,7 @@
     "waitingFor": "Attendente {duration}",
     "onlineInCourse": "{count} in linea in {course}",
     "newCourseChat": "Nove chat de curso",
-    "teamCode": "Codice de equipa",
-    "reopenAppToFinishSwitching": "Claude le app completemente e aperi lo de novo pro finir le commutation."
+    "customCourseStepDesc": "Un curso es un insimul de activitates conversational que seque tu manual, pro que tu studentes los face insimul como deberes.",
+    "reopenAppToFinishSwitching": "Claude le app completemente e aperi lo de novo pro finir le commutation.",
+    "teamCode": "Codice de equipa"
 }

@@ -9978,6 +9978,7 @@
     "waitingFor": "Wachten {duration}",
     "onlineInCourse": "{count} online in {course}",
     "newCourseChat": "Nieuwe cursuschat",
-    "teamCode": "Teamcode",
-    "reopenAppToFinishSwitching": "Sluit de app volledig af en open hem opnieuw om het wisselen te voltooien."
+    "customCourseStepDesc": "Een cursus is een reeks gespreksactiviteiten die je leerboek volgen, die je studenten samen als huiswerk kunnen doen.",
+    "reopenAppToFinishSwitching": "Sluit de app volledig af en open hem opnieuw om het wisselen te voltooien.",
+    "teamCode": "Teamcode"
 }

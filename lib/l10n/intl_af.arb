@@ -2427,6 +2427,7 @@
     "waitingFor": "Wag {duration}",
     "onlineInCourse": "{count} aanlyn in {course}",
     "newCourseChat": "Nuwe kursusklets",
-    "teamCode": "Spankode",
-    "reopenAppToFinishSwitching": "Maak die toepassing heeltemal toe en maak dit weer oop om die oorskakeling te voltooi."
+    "customCourseStepDesc": "’n Kursus is ’n stel gespreksaktiwiteite wat jou handboek volg, vir jou studente om saam as huiswerk te doen.",
+    "reopenAppToFinishSwitching": "Maak die toepassing heeltemal toe en maak dit weer oop om die oorskakeling te voltooi.",
+    "teamCode": "Spankode"
 }

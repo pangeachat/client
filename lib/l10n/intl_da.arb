@@ -10898,6 +10898,7 @@
     "waitingFor": "Venter {duration}",
     "onlineInCourse": "{count} online i {course}",
     "newCourseChat": "Ny kursuschatsamtale",
-    "teamCode": "Teamkode",
-    "reopenAppToFinishSwitching": "Luk appen helt, og åbn den igen for at fuldføre skiftet."
+    "customCourseStepDesc": "Et kursus er et sæt samtaleaktiviteter, der følger din lærebog, som dine elever kan lave sammen som lektier.",
+    "reopenAppToFinishSwitching": "Luk appen helt, og åbn den igen for at fuldføre skiftet.",
+    "teamCode": "Teamkode"
 }

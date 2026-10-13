@@ -10051,6 +10051,7 @@
     "waitingFor": "Menunggu {duration}",
     "onlineInCourse": "{count} daring di {course}",
     "newCourseChat": "Obrolan kursus baru",
-    "teamCode": "Kode tim",
-    "reopenAppToFinishSwitching": "Tutup aplikasi sepenuhnya dan buka lagi untuk menyelesaikan peralihan."
+    "customCourseStepDesc": "Kursus adalah serangkaian aktivitas percakapan yang mengikuti buku teks Anda, untuk dikerjakan siswa Anda bersama sebagai pekerjaan rumah.",
+    "reopenAppToFinishSwitching": "Tutup aplikasi sepenuhnya dan buka lagi untuk menyelesaikan peralihan.",
+    "teamCode": "Kode tim"
 }

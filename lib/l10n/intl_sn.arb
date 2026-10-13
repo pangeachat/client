@@ -2427,6 +2427,7 @@
     "waitingFor": "Kwakumirira {duration}",
     "onlineInCourse": "{count} vari online mu {course}",
     "newCourseChat": "Hurukuro itsva yechikoro",
-    "teamCode": "Kodhi yechikwata",
-    "reopenAppToFinishSwitching": "Vhara app zvachose woivhura zvakare kuti upedze kuchinja."
+    "customCourseStepDesc": "Kosi iseti yezviitiko zvekukurukurirana zvinotevera bhuku rako, kuti vadzidzi vako vaite pamwe chete sehomweki.",
+    "reopenAppToFinishSwitching": "Vhara app zvachose woivhura zvakare kuti upedze kuchinja.",
+    "teamCode": "Kodhi yechikwata"
 }

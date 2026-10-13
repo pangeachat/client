@@ -2427,6 +2427,7 @@
     "waitingFor": "Duke pritur {duration}",
     "onlineInCourse": "{count} online në {course}",
     "newCourseChat": "Bisedë e re kursi",
-    "teamCode": "Kodi i ekipit",
-    "reopenAppToFinishSwitching": "Mbylleni plotësisht aplikacionin dhe hapeni sërish për të përfunduar ndërrimin."
+    "customCourseStepDesc": "Një kurs është një grup aktivitetesh bisede që ndjekin tekstin tuaj shkollor, që studentët tuaj të bëjnë së bashku si detyrë shtëpie.",
+    "reopenAppToFinishSwitching": "Mbylleni plotësisht aplikacionin dhe hapeni sërish për të përfunduar ndërrimin.",
+    "teamCode": "Kodi i ekipit"
 }

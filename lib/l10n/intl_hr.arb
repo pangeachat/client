@@ -10414,6 +10414,7 @@
     "waitingFor": "Čekanje {duration}",
     "onlineInCourse": "{count} na mreži u {course}",
     "newCourseChat": "Novi razgovor o tečaju",
-    "teamCode": "Kôd tima",
-    "reopenAppToFinishSwitching": "Potpuno zatvorite aplikaciju i ponovno je otvorite kako biste dovršili prebacivanje."
+    "customCourseStepDesc": "Tečaj je skup konverzacijskih aktivnosti koje prate vaš udžbenik, a namijenjene su vašim učenicima za zajedničku izradu domaće zadaće.",
+    "reopenAppToFinishSwitching": "Potpuno zatvorite aplikaciju i ponovno je otvorite kako biste dovršili prebacivanje.",
+    "teamCode": "Kôd tima"
 }

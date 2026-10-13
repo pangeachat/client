@@ -2427,6 +2427,7 @@
     "waitingFor": "Inasubiri {duration}",
     "onlineInCourse": "{count} wako mtandaoni katika {course}",
     "newCourseChat": "Gumzo jipya la kozi",
-    "teamCode": "Msimbo wa timu",
-    "reopenAppToFinishSwitching": "Funga programu kabisa kisha uifungue tena ili umalize kubadili."
+    "customCourseStepDesc": "Kozi ni seti ya shughuli za mazungumzo zinazofuata kitabu chako cha kiada, kwa ajili ya wanafunzi wako kufanya pamoja kama kazi ya nyumbani.",
+    "reopenAppToFinishSwitching": "Funga programu kabisa kisha uifungue tena ili umalize kubadili.",
+    "teamCode": "Msimbo wa timu"
 }

@@ -2427,6 +2427,7 @@
     "waitingFor": "Kulindwe {duration}",
     "onlineInCourse": "{count} kwi-intanethi kwi-{course}",
     "newCourseChat": "Incoko entsha yekhosi",
-    "teamCode": "Ikhowudi yeqela",
-    "reopenAppToFinishSwitching": "Vala ngokupheleleyo i-app uze uyivule kwakhona ukuze ugqibezele ukutshintsha."
+    "customCourseStepDesc": "Ikhosi yingqokelela yemisebenzi yencoko elandela incwadi yakho, ukuze abafundi bakho bayenze kunye njengomsebenzi wesikolo wasekhaya.",
+    "reopenAppToFinishSwitching": "Vala ngokupheleleyo i-app uze uyivule kwakhona ukuze ugqibezele ukutshintsha.",
+    "teamCode": "Ikhowudi yeqela"
 }

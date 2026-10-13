@@ -2427,6 +2427,7 @@
     "waitingFor": "E tatari ana {duration}",
     "onlineInCourse": "{count} kei te ipurangi i roto i te {course}",
     "newCourseChat": "Kōrerorero akoranga hōu",
-    "teamCode": "Waehere tīma",
-    "reopenAppToFinishSwitching": "Katia katoatia te taupānga ka whakatuwhera anō kia oti ai te huri."
+    "customCourseStepDesc": "He huinga mahi kōrerorero te akoranga e whai ana i tō pukapuka, mā ō ākonga e mahi ngātahi hei mahi kāinga.",
+    "reopenAppToFinishSwitching": "Katia katoatia te taupānga ka whakatuwhera anō kia oti ai te huri.",
+    "teamCode": "Waehere tīma"
 }

@@ -10892,6 +10892,7 @@
     "waitingFor": "ממתין {duration}",
     "onlineInCourse": "{count} מחוברים ב{course}",
     "newCourseChat": "צ'אט קורס חדש",
-    "teamCode": "קוד צוות",
-    "reopenAppToFinishSwitching": "סגור את האפליקציה לחלוטין ופתח אותה שוב כדי לסיים את המעבר."
+    "customCourseStepDesc": "קורס הוא סדרה של פעילויות שיחה שעוקבות אחר ספר הלימוד שלך, כדי שהתלמידים שלך יוכלו לעשות יחד כשיעורי בית.",
+    "reopenAppToFinishSwitching": "סגור את האפליקציה לחלוטין ופתח אותה שוב כדי לסיים את המעבר.",
+    "teamCode": "קוד צוות"
 }

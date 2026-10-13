@@ -10105,6 +10105,7 @@
     "waitingFor": "Esperant {duration}",
     "onlineInCourse": "{count} en línia a {course}",
     "newCourseChat": "Nou xat del curs",
-    "teamCode": "Codi d'equip",
-    "reopenAppToFinishSwitching": "Tanca l'aplicació completament i torna-la a obrir per acabar de canviar."
+    "customCourseStepDesc": "Un curs és un conjunt d'activitats de conversa que segueixen el teu llibre de text, perquè els teus estudiants les facin junts com a deures.",
+    "reopenAppToFinishSwitching": "Tanca l'aplicació completament i torna-la a obrir per acabar de canviar.",
+    "teamCode": "Codi d'equip"
 }

@@ -9978,6 +9978,7 @@
     "waitingFor": "Gaida {duration}",
     "onlineInCourse": "{count} tiešsaistē kursā {course}",
     "newCourseChat": "Jauna kursa tērzēšana",
-    "teamCode": "Komandas kods",
-    "reopenAppToFinishSwitching": "Pilnībā aizveriet lietotni un atveriet to vēlreiz, lai pabeigtu pārslēgšanos."
+    "customCourseStepDesc": "Kurss ir sarunu aktivitāšu kopums, kas seko jūsu mācību grāmatai, lai jūsu studenti to darītu kopā kā mājasdarbu.",
+    "reopenAppToFinishSwitching": "Pilnībā aizveriet lietotni un atveriet to vēlreiz, lai pabeigtu pārslēgšanos.",
+    "teamCode": "Komandas kods"
 }

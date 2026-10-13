@@ -2427,6 +2427,7 @@
     "waitingFor": "Aspittendu {duration}",
     "onlineInCourse": "{count} in ligna in {course}",
     "newCourseChat": "Nova cunversazione di corsu",
-    "teamCode": "Codice di a squadra",
-    "reopenAppToFinishSwitching": "Chiudite l'app cumpletamente è riapritela per finisce u cambiamentu."
+    "customCourseStepDesc": "Un corsu hè un inseme d'attività di cunversazione chì seguitanu u vostru libru di testu, per i vostri studienti à fà inseme cum'è duveri.",
+    "reopenAppToFinishSwitching": "Chiudite l'app cumpletamente è riapritela per finisce u cambiamentu.",
+    "teamCode": "Codice di a squadra"
 }

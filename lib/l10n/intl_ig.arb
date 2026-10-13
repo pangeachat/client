@@ -2427,6 +2427,7 @@
     "waitingFor": "Na-eche {duration}",
     "onlineInCourse": "{count} n'ịntanetị na {course}",
     "newCourseChat": "Nkata ọmụmụ ihe ọhụrụ",
-    "teamCode": "Koodu otu",
-    "reopenAppToFinishSwitching": "Mechie ngwa ahụ kpamkpam wee mepee ya ọzọ ka ịmechaa mgbanwe."
+    "customCourseStepDesc": "Usoro ọmụmụ bụ usoro ihe omume mkparịta ụka na-eso akwụkwọ gị, maka ụmụ akwụkwọ gị ka ha na-eme ọnụ dị ka ihe omume ụlọ.",
+    "reopenAppToFinishSwitching": "Mechie ngwa ahụ kpamkpam wee mepee ya ọzọ ka ịmechaa mgbanwe.",
+    "teamCode": "Koodu otu"
 }

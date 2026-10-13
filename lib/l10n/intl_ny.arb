@@ -2427,6 +2427,7 @@
     "waitingFor": "Kudikira {duration}",
     "onlineInCourse": "{count} pa intaneti mu {course}",
     "newCourseChat": "Macheza atsopano a maphunziro",
-    "teamCode": "Nambala ya gulu",
-    "reopenAppToFinishSwitching": "Tsekani pulogalamuyi kwathunthu ndikuyitsegulanso kuti mumalize kusintha."
+    "customCourseStepDesc": "Maphunziro ndi mndandanda wa zokambirana zomwe zimatsatira buku lanu, kuti ophunzira anu azichita limodzi ngati ntchito yakunyumba.",
+    "reopenAppToFinishSwitching": "Tsekani pulogalamuyi kwathunthu ndikuyitsegulanso kuti mumalize kusintha.",
+    "teamCode": "Nambala ya gulu"
 }

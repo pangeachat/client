@@ -2427,6 +2427,7 @@
     "waitingFor": "Sugaya {duration}",
     "onlineInCourse": "{count} ayaa khadka ku jira {course}",
     "newCourseChat": "Sheeko kooras cusub",
-    "teamCode": "Koodhka kooxda",
-    "reopenAppToFinishSwitching": "Si aad u dhammaystirto beddelka, gebi ahaanba xidh app-ka oo mar kale fur."
+    "customCourseStepDesc": "Koorsadu waa qaybo waxqabadyo wada-hadal ah oo raacaya buuggaaga, si ardaydaadu ay u wada qabtaan shaqo-guri ahaan.",
+    "reopenAppToFinishSwitching": "Si aad u dhammaystirto beddelka, gebi ahaanba xidh app-ka oo mar kale fur.",
+    "teamCode": "Koodhka kooxda"
 }

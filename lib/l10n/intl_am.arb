@@ -2427,6 +2427,7 @@
     "waitingFor": "{duration} በመጠበቅ ላይ",
     "onlineInCourse": "{course} ውስጥ {count} በመስመር ላይ",
     "newCourseChat": "አዲስ የኮርስ ውይይት",
-    "teamCode": "የቡድን ኮድ",
-    "reopenAppToFinishSwitching": "መቀየር ለመጨረስ መተግበሪያውን ሙሉ በሙሉ ዘግተው እንደገና ይክፈቱት።"
+    "customCourseStepDesc": "ኮርስ ማለት ተማሪዎችዎ እንደ የቤት ስራ አብረው እንዲሰሩት የመማሪያ መጽሐፍዎን የሚከተሉ የውይይት እንቅስቃሴዎች ስብስብ ነው።",
+    "reopenAppToFinishSwitching": "መቀየር ለመጨረስ መተግበሪያውን ሙሉ በሙሉ ዘግተው እንደገና ይክፈቱት።",
+    "teamCode": "የቡድን ኮድ"
 }
