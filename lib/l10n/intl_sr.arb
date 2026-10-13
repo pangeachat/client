@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 11:25:06.689711",
+    "@@last_modified": "2026-10-12 13:12:03.596654",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10919,6 +10919,9 @@
     "callMicrophoneOffTitle": "Vaš poziv nije povezan",
     "callMicrophoneOffMessage": "Pangea Chat ne može da koristi vaš mikrofon. Dodirnite da biste ga uključili u Podešavanjima.",
     "mapCreditsLabel": "Zasluge za mapu: Stadia Maps, OpenMapTiles i OpenStreetMap",
+    "activityLaunchFindingCourses": "Pronalaženje kurseva…",
+    "activityLaunchCreatingRoom": "Kreiranje aktivnosti…",
+    "activityLaunchOpeningRoom": "Otvaranje aktivnosti…",
     "teamCode": "Kod tima",
     "reopenAppToFinishSwitching": "Potpuno zatvorite aplikaciju i ponovo je otvorite da biste završili prebacivanje."
 }

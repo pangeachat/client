@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-13 11:24:59.724659",
+    "@@last_modified": "2026-10-12 13:11:57.720780",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Yu kɔl nɔ kɔnɛkt",
     "callMicrophoneOffMessage": "Pangea Chat nɔ go ebul yuz yu maykrofon. Tap fɔ tɔn am ɔn insay Sɛtinz.",
     "mapCreditsLabel": "Map credit dɛn: Stadia Maps, OpenMapTiles ɛn OpenStreetMap",
+    "activityLaunchFindingCourses": "De find yu kɔsis…",
+    "activityLaunchCreatingRoom": "De mek yu aktiviti…",
+    "activityLaunchOpeningRoom": "De ɔpen yu aktiviti…",
     "teamCode": "Tim kɔd",
     "reopenAppToFinishSwitching": "Klos di ap ɔlgeda ɛn opin am bak fɔ fɛnɛsh di chenj."
 }

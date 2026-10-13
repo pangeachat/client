@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 11:25:03.381279",
+    "@@last_modified": "2026-10-12 13:12:01.092756",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9970,6 +9970,9 @@
     "callMicrophoneOffTitle": "Je gesprek is niet verbonden",
     "callMicrophoneOffMessage": "Pangea Chat kan je microfoon niet gebruiken. Tik om deze in te schakelen in Instellingen.",
     "mapCreditsLabel": "Kaartcredits: Stadia Maps, OpenMapTiles en OpenStreetMap",
+    "activityLaunchFindingCourses": "Je cursussen zoeken…",
+    "activityLaunchCreatingRoom": "Je activiteit aanmaken…",
+    "activityLaunchOpeningRoom": "Je activiteit openen…",
     "teamCode": "Teamcode",
     "reopenAppToFinishSwitching": "Sluit de app volledig af en open hem opnieuw om het wisselen te voltooien."
 }

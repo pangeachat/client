@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-13 11:24:52.503927",
+    "@@last_modified": "2026-10-12 13:11:52.646344",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Ni chysylltodd eich galwad",
     "callMicrophoneOffMessage": "Ni all Pangea Chat ddefnyddio'ch meicroffon. Tapiwch i'w droi ymlaen yn Gosodiadau.",
     "mapCreditsLabel": "Credydau map: Stadia Maps, OpenMapTiles ac OpenStreetMap",
+    "activityLaunchFindingCourses": "Yn dod o hyd i'ch cyrsiau…",
+    "activityLaunchCreatingRoom": "Yn creu eich gweithgaredd…",
+    "activityLaunchOpeningRoom": "Yn agor eich gweithgaredd…",
     "teamCode": "Cod tîm",
     "reopenAppToFinishSwitching": "Caewch yr ap yn llwyr ac agorwch ef eto i orffen newid."
 }

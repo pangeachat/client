@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 11:24:59.022298",
+    "@@last_modified": "2026-10-12 13:11:57.079656",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10163,6 +10163,9 @@
     "callMicrophoneOffTitle": "통화가 연결되지 않았습니다",
     "callMicrophoneOffMessage": "Pangea Chat이 마이크를 사용할 수 없습니다. 설정을 탭하여 켜세요.",
     "mapCreditsLabel": "지도 출처: Stadia Maps, OpenMapTiles 및 OpenStreetMap",
+    "activityLaunchFindingCourses": "코스 찾는 중…",
+    "activityLaunchCreatingRoom": "활동 만드는 중…",
+    "activityLaunchOpeningRoom": "활동 여는 중…",
     "teamCode": "팀 코드",
     "reopenAppToFinishSwitching": "전환을 완료하려면 앱을 완전히 닫았다가 다시 여세요."
 }

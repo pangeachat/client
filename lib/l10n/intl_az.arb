@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-13 11:24:51.292717",
+    "@@last_modified": "2026-10-12 13:11:49.861688",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Zənginiz qoşulmadı",
     "callMicrophoneOffMessage": "Pangea Chat mikrofonunuzdan istifadə edə bilmir. Parametrlərdə onu yandırmaq üçün toxunun.",
     "mapCreditsLabel": "Xəritə kreditləri: Stadia Maps, OpenMapTiles və OpenStreetMap",
+    "activityLaunchFindingCourses": "Kurslarınız axtarılır…",
+    "activityLaunchCreatingRoom": "Fəaliyyətiniz yaradılır…",
+    "activityLaunchOpeningRoom": "Fəaliyyətiniz açılır…",
     "teamCode": "Komanda kodu",
     "reopenAppToFinishSwitching": "Keçidi tamamlamaq üçün proqramı tamamilə bağlayın və yenidən açın."
 }

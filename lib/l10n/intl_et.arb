@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-13 11:24:57.022187",
+    "@@last_modified": "2026-10-12 13:11:51.192169",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9967,6 +9967,9 @@
     "callMicrophoneOffTitle": "Teie kõne ei ühendunud",
     "callMicrophoneOffMessage": "Pangea Chat ei saa teie mikrofoni kasutada. Puudutage, et see seadetes sisse lülitada.",
     "mapCreditsLabel": "Kaardi autorid: Stadia Maps, OpenMapTiles ja OpenStreetMap",
+    "activityLaunchFindingCourses": "Kursuste otsimine…",
+    "activityLaunchCreatingRoom": "Tegevuse loomine…",
+    "activityLaunchOpeningRoom": "Tegevuse avamine…",
     "teamCode": "Meeskonna kood",
     "reopenAppToFinishSwitching": "Sulgege rakendus täielikult ja avage see uuesti, et vahetus lõpule viia."
 }

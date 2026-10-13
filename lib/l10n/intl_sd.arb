@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-13 11:25:05.007389",
+    "@@last_modified": "2026-10-12 13:12:15.905619",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "توهان جي ڪال ڳنڍي نه سگهي",
     "callMicrophoneOffMessage": "پينگيا چيٽ توهان جو مائڪروفون استعمال نٿو ڪري سگهي. سيٽنگز ۾ ان کي آن ڪرڻ لاءِ ٽيپ ڪريو.",
     "mapCreditsLabel": "نقشي جا ڪريڊٽ: اسٽيڊيا ميپس، اوپن ميپ ٽائيلز ۽ اوپن اسٽريٽ ميپ",
+    "activityLaunchFindingCourses": "توهان جا ڪورس ڳولي رهيا آهيون…",
+    "activityLaunchCreatingRoom": "توهان جي سرگرمي ٺاهي رهيا آهيون…",
+    "activityLaunchOpeningRoom": "توهان جي سرگرمي کولي رهيا آهيون…",
     "teamCode": "ٽيم ڪوڊ",
     "reopenAppToFinishSwitching": "مڪمل طور تي ايپ بند ڪريو ۽ سوئچنگ ختم ڪرڻ لاءِ ان کي ٻيهر کوليو."
 }

@@ -1330,7 +1330,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-13 11:24:53.128051",
+    "@@last_modified": "2026-10-12 13:11:50.366258",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10890,6 +10890,9 @@
     "callMicrophoneOffTitle": "Dit opkald blev ikke forbundet",
     "callMicrophoneOffMessage": "Pangea Chat kan ikke bruge din mikrofon. Tryk for at slå den til i Indstillinger.",
     "mapCreditsLabel": "Kortkreditering: Stadia Maps, OpenMapTiles og OpenStreetMap",
+    "activityLaunchFindingCourses": "Finder dine kurser…",
+    "activityLaunchCreatingRoom": "Opretter din aktivitet…",
+    "activityLaunchOpeningRoom": "Åbner din aktivitet…",
     "teamCode": "Teamkode",
     "reopenAppToFinishSwitching": "Luk appen helt, og åbn den igen for at fuldføre skiftet."
 }

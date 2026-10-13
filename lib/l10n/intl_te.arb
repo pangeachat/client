@@ -1320,7 +1320,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-13 11:25:07.751978",
+    "@@last_modified": "2026-10-12 13:12:05.231609",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10920,6 +10920,9 @@
     "callMicrophoneOffTitle": "మీ కాల్ కనెక్ట్ అవ్వలేదు",
     "callMicrophoneOffMessage": "పాంగియా చాట్ మీ మైక్రోఫోన్‌ను ఉపయోగించదు. సెట్టింగ్‌లలో దాన్ని ఆన్ చేయడానికి నొక్కండి.",
     "mapCreditsLabel": "మ్యాప్ క్రెడిట్‌లు: స్టాడియా మ్యాప్స్, ఓపెన్‌మ్యాప్‌టైల్స్ మరియు ఓపెన్‌స్ట్రీట్‌మ్యాప్",
+    "activityLaunchFindingCourses": "మీ కోర్సులను కనుగొంటున్నాము…",
+    "activityLaunchCreatingRoom": "మీ కార్యాచరణను సృష్టిస్తున్నాము…",
+    "activityLaunchOpeningRoom": "మీ కార్యాచరణను తెరుస్తున్నాము…",
     "teamCode": "టీమ్ కోడ్",
     "reopenAppToFinishSwitching": "మారడాన్ని పూర్తి చేయడానికి యాప్‌ను పూర్తిగా మూసివేసి, మళ్లీ తెరవండి."
 }

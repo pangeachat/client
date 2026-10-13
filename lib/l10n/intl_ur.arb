@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-13 11:25:07.588520",
+    "@@last_modified": "2026-10-12 13:12:05.835072",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "آپ کی کال منسلک نہیں ہوئی",
     "callMicrophoneOffMessage": "Pangea Chat آپ کا مائیکروفون استعمال نہیں کر سکتا۔ سیٹنگز میں اسے آن کرنے کے لیے ٹیپ کریں۔",
     "mapCreditsLabel": "نقشہ کے کریڈٹس: Stadia Maps، OpenMapTiles اور OpenStreetMap",
+    "activityLaunchFindingCourses": "آپ کے کورسز تلاش کر رہے ہیں…",
+    "activityLaunchCreatingRoom": "آپ کی سرگرمی بنا رہے ہیں…",
+    "activityLaunchOpeningRoom": "آپ کی سرگرمی کھول رہے ہیں…",
     "teamCode": "ٹیم کوڈ",
     "reopenAppToFinishSwitching": "سوئچنگ مکمل کرنے کے لیے ایپ کو مکمل طور پر بند کریں اور دوبارہ کھولیں۔"
 }

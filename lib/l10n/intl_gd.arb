@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-13 11:24:54.875841",
+    "@@last_modified": "2026-10-12 13:11:52.892847",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Cha do cheangail a’ ghairm agad",
     "callMicrophoneOffMessage": "Chan urrainn do Pangea Chat am micreofon agad a chleachdadh. Tap air gus a thionndadh air ann an Roghainnean.",
     "mapCreditsLabel": "Urrasan-mhapa: Stadia Maps, OpenMapTiles agus OpenStreetMap",
+    "activityLaunchFindingCourses": "A' lorg nan cùrsaichean agad…",
+    "activityLaunchCreatingRoom": "A' cruthachadh do ghnìomhachd…",
+    "activityLaunchOpeningRoom": "A' fosgladh do ghnìomhachd…",
     "teamCode": "Còd sgioba",
     "reopenAppToFinishSwitching": "Dùin an aplacaid gu tur agus fosgail a-rithist i gus crìoch a chur air an atharrachadh."
 }

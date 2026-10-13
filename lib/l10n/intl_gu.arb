@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-13 11:24:57.495429",
+    "@@last_modified": "2026-10-12 13:11:53.697295",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "તમારો કૉલ કનેક્ટ થયો નથી",
     "callMicrophoneOffMessage": "Pangea Chat તમારા માઇક્રોફોનનો ઉપયોગ કરી શકતું નથી. સેટિંગ્સમાં તેને ચાલુ કરવા માટે ટેપ કરો.",
     "mapCreditsLabel": "નકશા ક્રેડિટ્સ: Stadia Maps, OpenMapTiles અને OpenStreetMap",
+    "activityLaunchFindingCourses": "તમારા અભ્યાસક્રમો શોધી રહ્યાં છીએ…",
+    "activityLaunchCreatingRoom": "તમારી પ્રવૃત્તિ બનાવી રહ્યાં છીએ…",
+    "activityLaunchOpeningRoom": "તમારી પ્રવૃત્તિ ખોલી રહ્યાં છીએ…",
     "teamCode": "ટીમ કોડ",
     "reopenAppToFinishSwitching": "સ્વિચિંગ પૂર્ણ કરવા માટે એપ્લિકેશનને સંપૂર્ણપણે બંધ કરો અને તેને ફરીથી ખોલો."
 }

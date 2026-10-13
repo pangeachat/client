@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-13 11:24:50.574227",
+    "@@last_modified": "2026-10-12 13:11:48.600052",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10276,6 +10276,9 @@
     "callMicrophoneOffTitle": "لم يتم توصيل مكالمتك",
     "callMicrophoneOffMessage": "لا يمكن لـ Pangea Chat استخدام الميكروفون الخاص بك. انقر لتشغيله في الإعدادات.",
     "mapCreditsLabel": "اعتمادات الخريطة: Stadia Maps، OpenMapTiles وOpenStreetMap",
+    "activityLaunchFindingCourses": "جارٍ العثور على دوراتك التدريبية…",
+    "activityLaunchCreatingRoom": "جارٍ إنشاء نشاطك…",
+    "activityLaunchOpeningRoom": "جارٍ فتح نشاطك…",
     "teamCode": "رمز الفريق",
     "reopenAppToFinishSwitching": "أغلق التطبيق تمامًا وافتحه مرة أخرى لإنهاء التبديل."
 }

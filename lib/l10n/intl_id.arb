@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 11:24:58.459647",
+    "@@last_modified": "2026-10-12 13:11:55.350615",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10043,6 +10043,9 @@
     "callMicrophoneOffTitle": "Panggilan Anda tidak tersambung",
     "callMicrophoneOffMessage": "Pangea Chat tidak dapat menggunakan mikrofon Anda. Ketuk untuk mengaktifkannya di Pengaturan.",
     "mapCreditsLabel": "Kredit peta: Stadia Maps, OpenMapTiles, dan OpenStreetMap",
+    "activityLaunchFindingCourses": "Mencari kursus Anda…",
+    "activityLaunchCreatingRoom": "Membuat aktivitas Anda…",
+    "activityLaunchOpeningRoom": "Membuka aktivitas Anda…",
     "teamCode": "Kode tim",
     "reopenAppToFinishSwitching": "Tutup aplikasi sepenuhnya dan buka lagi untuk menyelesaikan peralihan."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-13 11:25:06.716306",
+    "@@last_modified": "2026-10-12 13:12:03.653849",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Foni yako haina kubatana",
     "callMicrophoneOffMessage": "Pangea Chat haigone kushandisa maikorofoni yako. Dzvanya kuti uibatidze muZvirongwa.",
     "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles neOpenStreetMap",
+    "activityLaunchFindingCourses": "Kutsvaga makosi ako…",
+    "activityLaunchCreatingRoom": "Kugadzira chiitiko chako…",
+    "activityLaunchOpeningRoom": "Kuvhura chiitiko chako…",
     "teamCode": "Kodhi yechikwata",
     "reopenAppToFinishSwitching": "Vhara app zvachose woivhura zvakare kuti upedze kuchinja."
 }

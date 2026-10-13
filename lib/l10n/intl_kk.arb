@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-13 11:24:58.534512",
+    "@@last_modified": "2026-10-12 13:11:56.953638",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Қоңырауыңыз қосылмады",
     "callMicrophoneOffMessage": "Pangea Chat микрофоныңызды пайдалана алмайды. Параметрлерде қосу үшін түртіңіз.",
     "mapCreditsLabel": "Карта несиелері: Stadia Maps, OpenMapTiles және OpenStreetMap",
+    "activityLaunchFindingCourses": "Курстарыңызды табудамыз…",
+    "activityLaunchCreatingRoom": "Әрекетіңізді жасаудамыз…",
+    "activityLaunchOpeningRoom": "Әрекетіңізді ашудамыз…",
     "teamCode": "Топ коды",
     "reopenAppToFinishSwitching": "Ауыстыруды аяқтау үшін қолданбаны толығымен жауып, қайта ашыңыз."
 }

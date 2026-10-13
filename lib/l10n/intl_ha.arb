@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-13 11:24:55.792795",
+    "@@last_modified": "2026-10-12 13:11:54.151869",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Kiran ka bai haɗu ba",
     "callMicrophoneOffMessage": "Pangea Chat ba zai iya amfani da makirufonka ba. Danna don kunna shi a Saituna.",
     "mapCreditsLabel": "Godiya ga taswira: Stadia Maps, OpenMapTiles da OpenStreetMap",
+    "activityLaunchFindingCourses": "Neman darussanka…",
+    "activityLaunchCreatingRoom": "Ƙirƙirar ayyukanka…",
+    "activityLaunchOpeningRoom": "Buɗe ayyukanka…",
     "teamCode": "Lambar ƙungiya",
     "reopenAppToFinishSwitching": "Rufe manhajar gaba ɗaya sannan ka sake buɗewa don kammala canzawa."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-13 11:25:06.779522",
+    "@@last_modified": "2026-10-12 13:12:06.548707",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Simu yako haikuunganishwa",
     "callMicrophoneOffMessage": "Pangea Chat haiwezi kutumia maikrofoni yako. Gusa ili kuiwasha kwenye Mipangilio.",
     "mapCreditsLabel": "Mikopo ya ramani: Ramani za Stadia, OpenMapTiles na OpenStreetMap",
+    "activityLaunchFindingCourses": "Tunatafuta kozi zako…",
+    "activityLaunchCreatingRoom": "Tunatayarisha shughuli yako…",
+    "activityLaunchOpeningRoom": "Tunafungua shughuli yako…",
     "teamCode": "Msimbo wa timu",
     "reopenAppToFinishSwitching": "Funga programu kabisa kisha uifungue tena ili umalize kubadili."
 }

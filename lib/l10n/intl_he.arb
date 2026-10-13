@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 11:24:56.139718",
+    "@@last_modified": "2026-10-12 13:11:54.216711",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10884,6 +10884,9 @@
     "callMicrophoneOffTitle": "השיחה שלך לא התחברה",
     "callMicrophoneOffMessage": "Pangea Chat לא יכול להשתמש במיקרופון שלך. הקש/י כדי להפעיל אותו בהגדרות.",
     "mapCreditsLabel": "קרדיטים למפה: Stadia Maps, OpenMapTiles ו-OpenStreetMap",
+    "activityLaunchFindingCourses": "מוצאים את הקורסים שלך…",
+    "activityLaunchCreatingRoom": "יוצרים את הפעילות שלך…",
+    "activityLaunchOpeningRoom": "פותחים את הפעילות שלך…",
     "teamCode": "קוד צוות",
     "reopenAppToFinishSwitching": "סגור את האפליקציה לחלוטין ופתח אותה שוב כדי לסיים את המעבר."
 }

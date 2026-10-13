@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-10-13 11:25:02.031509",
+    "@@last_modified": "2026-10-12 13:11:57.076631",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "ការហៅទូរសព្ទរបស់អ្នកមិនបានភ្ជាប់ទេ។",
     "callMicrophoneOffMessage": "Pangea Chat មិនអាចប្រើមីក្រូហ្វូនរបស់អ្នកបានទេ។ ចុចដើម្បីបើកវានៅក្នុងការកំណត់។",
     "mapCreditsLabel": "ការផ្ដល់កិត្តិយសផែនទី៖ Stadia Maps, OpenMapTiles និង OpenStreetMap",
+    "activityLaunchFindingCourses": "កំពុងស្វែងរកវគ្គសិក្សារបស់អ្នក…",
+    "activityLaunchCreatingRoom": "កំពុងបង្កើតសកម្មភាពរបស់អ្នក…",
+    "activityLaunchOpeningRoom": "កំពុងបើកសកម្មភាពរបស់អ្នក…",
     "teamCode": "លេខកូដក្រុម",
     "reopenAppToFinishSwitching": "បិទកម្មវិធីទាំងស្រុង ហើយបើកវាម្តងទៀត ដើម្បីបញ្ចប់ការប្តូរ។"
 }

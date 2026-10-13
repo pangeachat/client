@@ -23,7 +23,9 @@ enum NetworkHostCategory {
   bool get stopsApp => this == chatServer || this == pangeaApi;
 
   /// A cheap URL on the category's host. Any answer means the host is
-  /// reachable, so the path only has to exist on that host.
+  /// reachable, so the path only has to exist on that host — and answer
+  /// there: a browser follows redirects unseen, and one to plain `http` is
+  /// refused as mixed content, which reads as a block on every network.
   Uri get probeUrl => switch (this) {
     chatServer => _withScheme(
       Environment.synapseURL,
@@ -35,7 +37,11 @@ enum NetworkHostCategory {
     // probe reads as a filter's block page. `/tiles/` answers 404 in place.
     map => Uri.https(MapTiles.host, '/tiles/'),
     googleSignIn => Uri.https('accounts.google.com', '/generate_204'),
-    appleSignIn => Uri.https('appleid.apple.com', '/favicon.ico'),
+    // Not /favicon.ico: it redirects to http://www.apple.com (#9441).
+    appleSignIn => Uri.https(
+      'appleid.apple.com',
+      '/.well-known/openid-configuration',
+    ),
   };
 
   /// The domains IT staff must allow for this category to work.

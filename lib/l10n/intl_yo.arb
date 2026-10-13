@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-13 11:25:09.825603",
+    "@@last_modified": "2026-10-12 13:12:07.727354",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Ìpe rẹ kò sopọ̀",
     "callMicrophoneOffMessage": "Pangea Chat kò lè lo gbohungbohun rẹ. Fọwọ́bọ̀ láti tan-án nínú Àwọn Ètò.",
     "mapCreditsLabel": "Àwọn kírẹ́dítì àwòrán ilẹ̀: Stadia Maps, OpenMapTiles àti OpenStreetMap",
+    "activityLaunchFindingCourses": "Wiwa awọn iṣẹ ikẹkọ rẹ…",
+    "activityLaunchCreatingRoom": "Ṣiṣẹda iṣẹ rẹ…",
+    "activityLaunchOpeningRoom": "Ṣiṣi iṣẹ rẹ…",
     "teamCode": "Koodu Ẹgbẹ",
     "reopenAppToFinishSwitching": "Pa ohun elo naa patapata ki o si tun ṣi i lati pari iyipada."
 }

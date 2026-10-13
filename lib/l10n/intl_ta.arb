@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 11:25:07.625422",
+    "@@last_modified": "2026-10-12 13:12:06.003776",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10062,6 +10062,9 @@
     "callMicrophoneOffTitle": "உங்கள் அழைப்பு இணைக்கப்படவில்லை",
     "callMicrophoneOffMessage": "Pangea Chat உங்கள் மைக்ரோஃபோனைப் பயன்படுத்த முடியாது. அமைப்புகளில் அதை இயக்க தட்டவும்.",
     "mapCreditsLabel": "வரைபட வரவுகள்: Stadia Maps, OpenMapTiles மற்றும் OpenStreetMap",
+    "activityLaunchFindingCourses": "உங்கள் படிப்புகளைக் கண்டறிகிறது…",
+    "activityLaunchCreatingRoom": "உங்கள் செயல்பாட்டை உருவாக்குகிறது…",
+    "activityLaunchOpeningRoom": "உங்கள் செயல்பாட்டைத் திறக்கிறது…",
     "teamCode": "அணிக் குறியீடு",
     "reopenAppToFinishSwitching": "மாற்றுவதை முடிக்க, பயன்பாட்டை முழுமையாக மூடிவிட்டு மீண்டும் திறக்கவும்."
 }

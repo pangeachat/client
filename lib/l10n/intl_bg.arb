@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-13 11:24:54.216427",
+    "@@last_modified": "2026-10-12 13:11:48.557650",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Връзката за разговора не беше осъществена",
     "callMicrophoneOffMessage": "Pangea Chat не може да използва микрофона ви. Докоснете, за да го включите в Настройки.",
     "mapCreditsLabel": "Карта: Stadia Maps, OpenMapTiles и OpenStreetMap",
+    "activityLaunchFindingCourses": "Търсене на курсове…",
+    "activityLaunchCreatingRoom": "Създаване на дейност…",
+    "activityLaunchOpeningRoom": "Отваряне на дейност…",
     "teamCode": "Код на екипа",
     "reopenAppToFinishSwitching": "Затворете изцяло приложението и го отворете отново, за да завършите превключването."
 }

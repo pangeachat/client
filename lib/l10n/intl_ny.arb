@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-13 11:25:03.946095",
+    "@@last_modified": "2026-10-12 13:12:03.930010",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Foni yanu sinayankhe",
     "callMicrophoneOffMessage": "Pangea Chat singagwiritse ntchito maikolofoni yanu. Dinani kuti muyatse mu Zokonda.",
     "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles ndi OpenStreetMap",
+    "activityLaunchFindingCourses": "Kupeza maphunziro anu…",
+    "activityLaunchCreatingRoom": "Kupanga ntchito yanu…",
+    "activityLaunchOpeningRoom": "Kutsegula ntchito yanu…",
     "teamCode": "Nambala ya gulu",
     "reopenAppToFinishSwitching": "Tsekani pulogalamuyi kwathunthu ndikuyitsegulanso kuti mumalize kusintha."
 }

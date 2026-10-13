@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-13 11:25:03.057464",
+    "@@last_modified": "2026-10-12 13:11:58.528186",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "پەیوەندییەکەت نەبەسترا",
     "callMicrophoneOffMessage": "Pangea Chat ناتوانێت مایکرۆفۆنەکەت بەکاربهێنێت. دەست لێبدە بۆ چالاککردنی لە ڕێکخستنەکان.",
     "mapCreditsLabel": "مافی نەخشەکان: نەخشەکانی ستادیا، OpenMapTiles و OpenStreetMap",
+    "activityLaunchFindingCourses": "دەستنیشانکردنی خولەکانت…",
+    "activityLaunchCreatingRoom": "دروستکردنی چالاکییەکەت…",
+    "activityLaunchOpeningRoom": "کردنەوەی چالاکییەکەت…",
     "teamCode": "کۆدی تیم",
     "reopenAppToFinishSwitching": "بۆ تەواوکردنی گۆڕینەکە، ئەپەکە بەتەواوی دابخە و دووبارە بیکەرەوە."
 }

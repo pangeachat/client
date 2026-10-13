@@ -2555,7 +2555,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-13 11:25:04.549833",
+    "@@last_modified": "2026-10-12 13:12:02.378495",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10887,6 +10887,9 @@
     "callMicrophoneOffTitle": "A sua chamada não foi conectada",
     "callMicrophoneOffMessage": "O Pangea Chat não consegue usar o seu microfone. Toque para ativá-lo nas Definições.",
     "mapCreditsLabel": "Créditos do mapa: Stadia Maps, OpenMapTiles e OpenStreetMap",
+    "activityLaunchFindingCourses": "A encontrar os seus cursos…",
+    "activityLaunchCreatingRoom": "A criar a sua atividade…",
+    "activityLaunchOpeningRoom": "A abrir a sua atividade…",
     "teamCode": "Código da equipa",
     "reopenAppToFinishSwitching": "Feche a aplicação completamente e abra-a novamente para terminar a mudança."
 }

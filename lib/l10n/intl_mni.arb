@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-13 11:25:04.420174",
+    "@@last_modified": "2026-10-12 13:12:00.895932",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "নখোঙগী কোল কননেক্ত তৌদ্রে",
     "callMicrophoneOffMessage": "Pangea Chat না নখোঙগী মাইক্রোফোন শীজিন্নবা ঙমদে. সেত্তিংসতা অন তৌনবা তেন তৌ.",
     "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles অমসুং OpenStreetMap",
+    "activityLaunchFindingCourses": "ನೋಂಗ್ಚುಪ್‌ಸಿಂಗ್‌ಬಾ ಖುರೈರಿಂಗ್‌ಬಾ…",
+    "activityLaunchCreatingRoom": "ನೋಂಗ್ಚುಪ್‌ಸಿಂಗ್‌ಬಾ ಖುರೈರಿಂಗ್‌ಬಾ…",
+    "activityLaunchOpeningRoom": "ನೋಂಗ್ಚುಪ್‌ಸಿಂಗ್‌ಬಾ ಖುರೈರಿಂಗ್‌ಬಾ…",
     "teamCode": "টিম কোড",
     "reopenAppToFinishSwitching": "সুইচিং লোড তৌবা লোইশিনবগীদমক এপ্প অদু মুক্ন থিংশিনবগা লোইননা অমুক হাংগদবনি।"
 }

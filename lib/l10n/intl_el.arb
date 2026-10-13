@@ -3396,7 +3396,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-13 11:24:54.594213",
+    "@@last_modified": "2026-10-12 13:11:50.837532",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10845,6 +10845,9 @@
     "callMicrophoneOffTitle": "Η κλήση σας δεν συνδέθηκε",
     "callMicrophoneOffMessage": "Το Pangea Chat δεν μπορεί να χρησιμοποιήσει το μικρόφωνό σας. Πατήστε για να το ενεργοποιήσετε στις Ρυθμίσεις.",
     "mapCreditsLabel": "Συντελεστές χάρτη: Stadia Maps, OpenMapTiles και OpenStreetMap",
+    "activityLaunchFindingCourses": "Εύρεση των μαθημάτων σας…",
+    "activityLaunchCreatingRoom": "Δημιουργία της δραστηριότητάς σας…",
+    "activityLaunchOpeningRoom": "Άνοιγμα της δραστηριότητάς σας…",
     "teamCode": "Κωδικός ομάδας",
     "reopenAppToFinishSwitching": "Κλείστε εντελώς την εφαρμογή και ανοίξτε την ξανά για να ολοκληρώσετε την αλλαγή."
 }

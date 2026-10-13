@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-13 11:24:58.639198",
+    "@@last_modified": "2026-10-12 13:11:56.867535",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "ನಿಮ್ಮ ಕರೆ ಸಂಪರ್ಕಗೊಂಡಿಲ್ಲ",
     "callMicrophoneOffMessage": "Pangea Chat ನಿಮ್ಮ ಮೈಕ್ರೊಫೋನ್ ಬಳಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅದನ್ನು ಆನ್ ಮಾಡಲು ಟ್ಯಾಪ್ ಮಾಡಿ.",
     "mapCreditsLabel": "ನಕ್ಷೆ ಕ್ರೆಡಿಟ್‌ಗಳು: ಸ್ಟೇಡಿಯಾ ಮ್ಯಾಪ್ಸ್, ಓಪನ್‌ಮ್ಯಾಪ್‌ಟೈಲ್ಸ್ ಮತ್ತು ಓಪನ್‌ಸ್ಟ್ರೀಟ್‌ಮ್ಯಾಪ್",
+    "activityLaunchFindingCourses": "ನಿಮ್ಮ ಕೋರ್ಸ್‌ಗಳನ್ನು ಹುಡುಕಲಾಗುತ್ತಿದೆ…",
+    "activityLaunchCreatingRoom": "ನಿಮ್ಮ ಚಟುವಟಿಕೆಯನ್ನು ರಚಿಸಲಾಗುತ್ತಿದೆ…",
+    "activityLaunchOpeningRoom": "ನಿಮ್ಮ ಚಟುವಟಿಕೆಯನ್ನು ತೆರೆಯಲಾಗುತ್ತಿದೆ…",
     "teamCode": "ತಂಡದ ಕೋಡ್",
     "reopenAppToFinishSwitching": "ಸ್ವಿಚ್ ಮಾಡುವುದನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಮುಚ್ಚಿ ಮತ್ತು ಅದನ್ನು ಮತ್ತೆ ತೆರೆಯಿರಿ."
 }

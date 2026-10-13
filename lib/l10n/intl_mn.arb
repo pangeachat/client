@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-13 11:25:02.504257",
+    "@@last_modified": "2026-10-12 13:11:59.592902",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Таны дуудлага холбогдоогүй байна",
     "callMicrophoneOffMessage": "Пангеа Чат таны микрофоныг ашиглах боломжгүй байна. Тохиргооноос асаахын тулд товшино уу.",
     "mapCreditsLabel": "Газрын зургийн эрх: Stadia Maps, OpenMapTiles болон OpenStreetMap",
+    "activityLaunchFindingCourses": "Таны хичээлүүдийг хайж байна…",
+    "activityLaunchCreatingRoom": "Таны үйлдлийг үүсгэж байна…",
+    "activityLaunchOpeningRoom": "Таны үйлдлийг нээж байна…",
     "teamCode": "Багийн код",
     "reopenAppToFinishSwitching": "Шилжүүлгийг дуусгахын тулд аппыг бүрэн хаагаад дахин нээнэ үү."
 }

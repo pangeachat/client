@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-10-13 11:25:01.914628",
+    "@@last_modified": "2026-10-12 13:11:59.927941",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "तुमचा कॉल कनेक्ट झाला नाही",
     "callMicrophoneOffMessage": "पँजिया चॅट तुमचा मायक्रोफोन वापरू शकत नाही. सेटिंग्जमध्ये तो चालू करण्यासाठी टॅप करा.",
     "mapCreditsLabel": "नकाशा क्रेडिट्स: Stadia Maps, OpenMapTiles आणि OpenStreetMap",
+    "activityLaunchFindingCourses": "तुमचे अभ्यासक्रम शोधत आहे…",
+    "activityLaunchCreatingRoom": "तुमची अ‍ॅक्टिव्हिटी तयार करत आहे…",
+    "activityLaunchOpeningRoom": "तुमची अ‍ॅक्टिव्हिटी उघडत आहे…",
     "teamCode": "टीम कोड",
     "reopenAppToFinishSwitching": "स्विचिंग पूर्ण करण्यासाठी अ‍ॅप पूर्णपणे बंद करा आणि पुन्हा उघडा."
 }

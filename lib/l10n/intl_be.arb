@@ -3544,7 +3544,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-13 11:24:50.767057",
+    "@@last_modified": "2026-10-12 13:11:49.196176",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9984,6 +9984,9 @@
     "callMicrophoneOffTitle": "Ваш званок не злучыўся",
     "callMicrophoneOffMessage": "Pangea Chat не можа выкарыстоўваць ваш мікрафон. Націсніце, каб уключыць яго ў наладах.",
     "mapCreditsLabel": "Аўтарства карты: Stadia Maps, OpenMapTiles і OpenStreetMap",
+    "activityLaunchFindingCourses": "Пошук вашых курсаў…",
+    "activityLaunchCreatingRoom": "Стварэнне вашай актыўнасці…",
+    "activityLaunchOpeningRoom": "Адкрыццё вашай актыўнасці…",
     "teamCode": "Код каманды",
     "reopenAppToFinishSwitching": "Цалкам зачыніце праграму і адкрыйце яе зноў, каб завяршыць пераключэнне."
 }

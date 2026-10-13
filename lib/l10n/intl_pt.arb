@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 11:25:04.253109",
+    "@@last_modified": "2026-10-12 13:12:01.666452",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10914,6 +10914,9 @@
     "callMicrophoneOffTitle": "Sua chamada não conectou",
     "callMicrophoneOffMessage": "O Pangea Chat não pode usar seu microfone. Toque para ativá-lo em Configurações.",
     "mapCreditsLabel": "Créditos do mapa: Stadia Maps, OpenMapTiles e OpenStreetMap",
+    "activityLaunchFindingCourses": "Encontrando seus cursos…",
+    "activityLaunchCreatingRoom": "Criando sua atividade…",
+    "activityLaunchOpeningRoom": "Abrindo sua atividade…",
     "teamCode": "Código da equipe",
     "reopenAppToFinishSwitching": "Feche o aplicativo completamente e abra-o novamente para finalizar a troca."
 }

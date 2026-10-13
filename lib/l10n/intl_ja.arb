@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-13 11:25:00.628720",
+    "@@last_modified": "2026-10-12 13:11:56.309183",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10739,6 +10739,9 @@
     "callMicrophoneOffTitle": "通話に接続できませんでした",
     "callMicrophoneOffMessage": "Pangea Chatがマイクを使用できません。タップして設定でオンにしてください。",
     "mapCreditsLabel": "マップクレジット: Stadia Maps, OpenMapTiles, OpenStreetMap",
+    "activityLaunchFindingCourses": "コースを検索中…",
+    "activityLaunchCreatingRoom": "アクティビティを作成中…",
+    "activityLaunchOpeningRoom": "アクティビティを開いています…",
     "teamCode": "チームコード",
     "reopenAppToFinishSwitching": "切り替えを完了するには、アプリを完全に閉じてからもう一度開いてください。"
 }

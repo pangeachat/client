@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-13 11:25:00.203463",
+    "@@last_modified": "2026-10-12 13:11:59.128221",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "ການໂທຂອງທ່ານບໍ່ໄດ້ເຊື່ອມຕໍ່",
     "callMicrophoneOffMessage": "Pangea Chat ບໍ່ສາມາດໃຊ້ໄມໂຄຣໂຟນຂອງທ່ານໄດ້. ແຕະເພື່ອເປີດໃຊ້ໃນການຕັ້ງຄ່າ.",
     "mapCreditsLabel": "ຂໍ້ມູນແຜນທີ່: Stadia Maps, OpenMapTiles ແລະ OpenStreetMap",
+    "activityLaunchFindingCourses": "ກຳລັງຊອກຫາຫຼັກສູດຂອງທ່ານ…",
+    "activityLaunchCreatingRoom": "ກຳລັງສ້າງກິດຈະກຳຂອງທ່ານ…",
+    "activityLaunchOpeningRoom": "ກຳລັງເປີດກິດຈະກຳຂອງທ່ານ…",
     "teamCode": "ລະຫັດທີມ",
     "reopenAppToFinishSwitching": "ປິດແອັບທັງໝົດແລ້ວເປີດໃໝ່ເພື່ອສຳເລັດການປ່ຽນ."
 }

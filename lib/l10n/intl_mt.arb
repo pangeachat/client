@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-13 11:25:13.314228",
+    "@@last_modified": "2026-10-12 13:12:01.370248",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Is-sejħa tiegħek ma konnessjonatx",
     "callMicrophoneOffMessage": "Pangea Chat ma jistax juża l-mikrofonu tiegħek. Tektek biex tixgħel fis-Settings.",
     "mapCreditsLabel": "Krediti tal-mappa: Stadia Maps, OpenMapTiles u OpenStreetMap",
+    "activityLaunchFindingCourses": "Qed insibu l-korsijiet tiegħek…",
+    "activityLaunchCreatingRoom": "Qed noħolqu l-attività tiegħek…",
+    "activityLaunchOpeningRoom": "Qed niftħu l-attività tiegħek…",
     "teamCode": "Kodiċi tat-tim",
     "reopenAppToFinishSwitching": "Agħlaq l-app kompletament u erġa' iftaħha biex tispiċċa taqleb."
 }

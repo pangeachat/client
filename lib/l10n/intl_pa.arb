@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-13 11:25:05.797989",
+    "@@last_modified": "2026-10-12 13:12:02.261094",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "ਤੁਹਾਡੀ ਕਾਲ ਕਨੈਕਟ ਨਹੀਂ ਹੋਈ",
     "callMicrophoneOffMessage": "Pangea Chat ਤੁਹਾਡਾ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਨਹੀਂ ਵਰਤ ਸਕਦਾ। ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਇਸਨੂੰ ਚਾਲੂ ਕਰਨ ਲਈ ਟੈਪ ਕਰੋ।",
     "mapCreditsLabel": "ਨਕਸ਼ੇ ਦੇ ਕ੍ਰੈਡਿਟ: ਸਟੇਡੀਆ ਮੈਪਸ, ਓਪਨਮੈਪਟਾਈਲਸ ਅਤੇ ਓਪਨਸਟ੍ਰੀਟਮੈਪ",
+    "activityLaunchFindingCourses": "ਤੁਹਾਡੇ ਕੋਰਸ ਲੱਭ ਰਹੇ ਹਾਂ…",
+    "activityLaunchCreatingRoom": "ਤੁਹਾਡੀ ਗਤੀਵਿਧੀ ਬਣਾ ਰਹੇ ਹਾਂ…",
+    "activityLaunchOpeningRoom": "ਤੁਹਾਡੀ ਗਤੀਵਿਧੀ ਖੋਲ੍ਹ ਰਹੇ ਹਾਂ…",
     "teamCode": "ਟੀਮ ਕੋਡ",
     "reopenAppToFinishSwitching": "ਸਵਿੱਚਿੰਗ ਪੂਰੀ ਕਰਨ ਲਈ ਐਪ ਨੂੰ ਪੂਰੀ ਤਰ੍ਹਾਂ ਬੰਦ ਕਰੋ ਅਤੇ ਇਸਨੂੰ ਦੁਬਾਰਾ ਖੋਲ੍ਹੋ।"
 }

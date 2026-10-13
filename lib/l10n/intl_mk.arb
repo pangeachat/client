@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-13 11:25:02.830507",
+    "@@last_modified": "2026-10-12 13:11:59.043921",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Вашиот повик не се поврза",
     "callMicrophoneOffMessage": "Pangea Chat не може да го користи вашиот микрофон. Допрете за да го вклучите во Поставки.",
     "mapCreditsLabel": "Кредити за мапа: Stadia Maps, OpenMapTiles и OpenStreetMap",
+    "activityLaunchFindingCourses": "Пронаоѓање на вашите курсеви…",
+    "activityLaunchCreatingRoom": "Креирање на вашата активност…",
+    "activityLaunchOpeningRoom": "Отворање на вашата активност…",
     "teamCode": "Код на тим",
     "reopenAppToFinishSwitching": "Затворете ја апликацијата целосно и отворете ја повторно за да завршите со префрлувањето."
 }

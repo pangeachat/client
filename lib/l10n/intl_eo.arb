@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 11:24:52.696986",
+    "@@last_modified": "2026-10-12 13:11:50.763345",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10915,6 +10915,9 @@
     "callMicrophoneOffTitle": "Via voko ne konektiĝis",
     "callMicrophoneOffMessage": "Pangea Chat ne povas uzi vian mikrofonon. Frapu por ŝalti ĝin en Agordoj.",
     "mapCreditsLabel": "Mapaj atribuoj: Stadia Maps, OpenMapTiles kaj OpenStreetMap",
+    "activityLaunchFindingCourses": "Trovante viajn kursojn...",
+    "activityLaunchCreatingRoom": "Kreante vian agadon...",
+    "activityLaunchOpeningRoom": "Malfermante vian agadon...",
     "teamCode": "Teama kodo",
     "reopenAppToFinishSwitching": "Fermu la apon tute kaj remalfermu ĝin por fini la ŝanĝon."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-13 11:24:51.150414",
+    "@@last_modified": "2026-10-12 13:11:48.375472",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Jou oproep het nie gekoppel nie",
     "callMicrophoneOffMessage": "Pangea Chat kan nie jou mikrofoon gebruik nie. Tik om dit in Instellings aan te skakel.",
     "mapCreditsLabel": "Kaartkrediete: Stadia Maps, OpenMapTiles en OpenStreetMap",
+    "activityLaunchFindingCourses": "Vind jou kursusse…",
+    "activityLaunchCreatingRoom": "Skep jou aktiwiteit…",
+    "activityLaunchOpeningRoom": "Maak jou aktiwiteit oop…",
     "teamCode": "Spankode",
     "reopenAppToFinishSwitching": "Maak die toepassing heeltemal toe en maak dit weer oop om die oorskakeling te voltooi."
 }

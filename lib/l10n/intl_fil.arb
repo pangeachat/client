@@ -2076,7 +2076,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-13 11:24:54.494403",
+    "@@last_modified": "2026-10-12 13:11:53.641298",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10830,6 +10830,9 @@
     "callMicrophoneOffTitle": "Hindi nakakonekta ang iyong tawag",
     "callMicrophoneOffMessage": "Hindi magagamit ng Pangea Chat ang iyong mikropono. I-tap para i-on ito sa Settings.",
     "mapCreditsLabel": "Mga credit sa mapa: Stadia Maps, OpenMapTiles at OpenStreetMap",
+    "activityLaunchFindingCourses": "Hinahanap ang iyong mga kurso…",
+    "activityLaunchCreatingRoom": "Ginagawa ang iyong aktibidad…",
+    "activityLaunchOpeningRoom": "Binubuksan ang iyong aktibidad…",
     "teamCode": "Code ng team",
     "reopenAppToFinishSwitching": "Ganap na isara ang app at buksan itong muli para matapos ang pagpapalit."
 }

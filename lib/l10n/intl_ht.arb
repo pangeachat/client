@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-13 11:24:56.222081",
+    "@@last_modified": "2026-10-12 13:11:54.850124",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Apèl ou a pa konekte",
     "callMicrophoneOffMessage": "Pangea Chat pa ka sèvi ak mikwofòn ou. Tape pou limen li nan Anviwònman.",
     "mapCreditsLabel": "Kredi kat: Stadia Maps, OpenMapTiles ak OpenStreetMap",
+    "activityLaunchFindingCourses": "Nou ap chèche kou ou yo…",
+    "activityLaunchCreatingRoom": "Nou ap kreye aktivite ou a…",
+    "activityLaunchOpeningRoom": "Nou ap ouvri aktivite ou a…",
     "teamCode": "Kòd ekip",
     "reopenAppToFinishSwitching": "Fèmen aplikasyon an nèt epi ouvri l ankò pou fini chanjman an."
 }

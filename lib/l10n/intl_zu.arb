@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-13 11:25:08.978934",
+    "@@last_modified": "2026-10-12 13:12:09.000599",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Ucingo lwakho aluxhumekanga",
     "callMicrophoneOffMessage": "I-Pangea Chat ayikwazi ukusebenzisa imakrofoni yakho. Thepha ukuze uyivule kokuthi Izilungiselelo.",
     "mapCreditsLabel": "Amakhredithi emephu: Stadia Maps, OpenMapTiles kanye ne-OpenStreetMap",
+    "activityLaunchFindingCourses": "Sithola izifundo zakho…",
+    "activityLaunchCreatingRoom": "Sakha umsebenzi wakho…",
+    "activityLaunchOpeningRoom": "Sivula umsebenzi wakho…",
     "teamCode": "Ikhodi yeqembu",
     "reopenAppToFinishSwitching": "Vala uhlelo lokusebenza ngokuphelele bese ulivula futhi ukuze uqedele ukushintsha."
 }

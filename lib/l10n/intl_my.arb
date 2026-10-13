@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-13 11:25:02.888407",
+    "@@last_modified": "2026-10-12 13:12:01.415119",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "သင့်ခေါ်ဆိုမှု မချိတ်ဆက်ပါ",
     "callMicrophoneOffMessage": "Pangea Chat သည် သင့်မိုက်ခရိုဖုန်းကို အသုံးပြု၍မရပါ။ ဆက်တင်များတွင် ဖွင့်ရန် နှိပ်ပါ။",
     "mapCreditsLabel": "မြေပုံခရက်ဒစ်များ- Stadia Maps, OpenMapTiles နှင့် OpenStreetMap",
+    "activityLaunchFindingCourses": "သင်ခန်းစာများကို ရှာဖွေနေသည်...",
+    "activityLaunchCreatingRoom": "သင်၏လုပ်ဆောင်ချက်ကို ဖန်တီးနေသည်...",
+    "activityLaunchOpeningRoom": "သင်၏လုပ်ဆောင်ချက်ကို ဖွင့်နေသည်...",
     "teamCode": "အဖွဲ့ကုဒ်",
     "reopenAppToFinishSwitching": "ပြောင်းလဲခြင်းပြီးဆုံးရန် အက်ပ်ကို လုံးဝပိတ်ပြီး ပြန်ဖွင့်ပါ။"
 }

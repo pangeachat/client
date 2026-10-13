@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-13 11:24:52.272285",
+    "@@last_modified": "2026-10-12 13:11:50.125969",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "A vostra chjama ùn s'hè cunnessa",
     "callMicrophoneOffMessage": "Pangea Chat ùn pò micca aduprà u vostru microfonu. Toccate per accende lu in i Paràmetri.",
     "mapCreditsLabel": "Crediti di a carta: Stadia Maps, OpenMapTiles è OpenStreetMap",
+    "activityLaunchFindingCourses": "Truvendu i vostri corsi…",
+    "activityLaunchCreatingRoom": "Creendu a vostra attività…",
+    "activityLaunchOpeningRoom": "Aprende a vostra attività…",
     "teamCode": "Codice di a squadra",
     "reopenAppToFinishSwitching": "Chiudite l'app cumpletamente è riapritela per finisce u cambiamentu."
 }

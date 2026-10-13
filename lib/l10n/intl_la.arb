@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-13 11:24:59.786420",
+    "@@last_modified": "2026-10-12 13:11:58.173320",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Vocatio tua non coniuncta est",
     "callMicrophoneOffMessage": "Pangea Chat microphono tuo uti non potest. Tange ut id in Optionibus vertere possis.",
     "mapCreditsLabel": "Tabulae credita: Stadia Maps, OpenMapTiles et OpenStreetMap",
+    "activityLaunchFindingCourses": "Curricula tua quaerimus…",
+    "activityLaunchCreatingRoom": "Actio tua creatur…",
+    "activityLaunchOpeningRoom": "Actio tua aperitur…",
     "teamCode": "Codex turmae",
     "reopenAppToFinishSwitching": "Claude app omnino et iterum aperi ad perficiendum commutationem."
 }

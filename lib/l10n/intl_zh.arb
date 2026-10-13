@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-13 11:25:08.585552",
+    "@@last_modified": "2026-10-12 13:12:07.733381",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9970,6 +9970,9 @@
     "callMicrophoneOffTitle": "您的通话未接通",
     "callMicrophoneOffMessage": "Pangea Chat 无法使用您的麦克风。轻点以在“设置”中将其打开。",
     "mapCreditsLabel": "地图来源：Stadia Maps、OpenMapTiles 和 OpenStreetMap",
+    "activityLaunchFindingCourses": "正在查找您的课程…",
+    "activityLaunchCreatingRoom": "正在创建您的活动…",
+    "activityLaunchOpeningRoom": "正在打开您的活动…",
     "teamCode": "团队代码",
     "reopenAppToFinishSwitching": "请完全关闭应用，然后重新打开以完成切换。"
 }

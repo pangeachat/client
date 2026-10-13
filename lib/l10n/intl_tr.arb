@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-13 11:25:07.503920",
+    "@@last_modified": "2026-10-12 13:12:05.219481",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10271,6 +10271,9 @@
     "callMicrophoneOffTitle": "Aramanız bağlanmadı",
     "callMicrophoneOffMessage": "Pangea Chat mikrofonunuzu kullanamıyor. Ayarlar'dan açmak için dokunun.",
     "mapCreditsLabel": "Harita bilgileri: Stadia Maps, OpenMapTiles ve OpenStreetMap",
+    "activityLaunchFindingCourses": "Kurslarınız bulunuyor…",
+    "activityLaunchCreatingRoom": "Etkinliğiniz oluşturuluyor…",
+    "activityLaunchOpeningRoom": "Etkinliğiniz açılıyor…",
     "teamCode": "Takım kodu",
     "reopenAppToFinishSwitching": "Geçişi tamamlamak için uygulamayı tamamen kapatın ve tekrar açın."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 11:25:06.511902",
+    "@@last_modified": "2026-10-12 13:12:04.406204",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10488,6 +10488,9 @@
     "callMicrophoneOffTitle": "Ditt samtal kopplades inte upp",
     "callMicrophoneOffMessage": "Pangea Chat kan inte använda din mikrofon. Tryck för att aktivera den i Inställningar.",
     "mapCreditsLabel": "Kartkrediter: Stadia Maps, OpenMapTiles och OpenStreetMap",
+    "activityLaunchFindingCourses": "Hittar dina kurser…",
+    "activityLaunchCreatingRoom": "Skapar din aktivitet…",
+    "activityLaunchOpeningRoom": "Öppnar din aktivitet…",
     "teamCode": "Teamkod",
     "reopenAppToFinishSwitching": "Stäng appen helt och öppna den igen för att slutföra bytet."
 }

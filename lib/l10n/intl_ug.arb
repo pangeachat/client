@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-13 11:25:07.604583",
+    "@@last_modified": "2026-10-12 13:12:08.336786",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "چاقىرىشىڭىز ئۇلانمىدى",
     "callMicrophoneOffMessage": "Pangea پاراڭ سۆھبىتى مىكروفونىڭىزنى ئىشلىتەلمەيدۇ. تەڭشەكلەردە ئېچىش ئۈچۈن چېكىڭ.",
     "mapCreditsLabel": "خەرىتە ئىناۋىتى: Stadia Maps, OpenMapTiles ۋە OpenStreetMap",
+    "activityLaunchFindingCourses": "دەرىسلىكىڭىزنى تېپىۋاتىدۇ…",
+    "activityLaunchCreatingRoom": "پائالىيىتىڭىزنى قۇرۇۋاتىدۇ…",
+    "activityLaunchOpeningRoom": "پائالىيىتىڭىزنى ئېچىۋاتىدۇ…",
     "teamCode": "گۇرۇپپا كودى",
     "reopenAppToFinishSwitching": "ئالماشتۇرۇشنى تاماملاش ئۈچۈن ئەپنى تاقاپ قايتا ئېچىڭ."
 }

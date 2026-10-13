@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-13 11:25:04.530995",
+    "@@last_modified": "2026-10-12 13:12:01.779708",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "ستاسو زنګ وصل نشو",
     "callMicrophoneOffMessage": "پنګیا چټ نشي کولی ستاسو مایکروفون وکاروي. په ترتیباتو کې د فعالولو لپاره ټایپ کړئ.",
     "mapCreditsLabel": "د نقشې کریډیټونه: Stadia Maps, OpenMapTiles او OpenStreetMap",
+    "activityLaunchFindingCourses": "ستاسو کورسونه لټول…",
+    "activityLaunchCreatingRoom": "ستاسو فعالیت جوړول…",
+    "activityLaunchOpeningRoom": "ستاسو فعالیت پرانیستل…",
     "teamCode": "د ټیم کوډ",
     "reopenAppToFinishSwitching": "اپلیکیشن په بشپړه توګه بند کړئ او بیا یې خلاص کړئ ترڅو بدلول پای ته ورسیږي."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-13 11:25:06.347600",
+    "@@last_modified": "2026-10-12 13:12:04.179038",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "Mohala oa hau ha oa hokela",
     "callMicrophoneOffMessage": "Pangea Chat e ke ke ea sebelisa maekrofounu ea hau. Tlanya ho e bulela ho Litlhophiso.",
     "mapCreditsLabel": "Liteboho tsa 'mapa: Limmapa tsa Stadia, OpenMapTiles le OpenStreetMap",
+    "activityLaunchFindingCourses": "Ke batla dithuto tsa hao…",
+    "activityLaunchCreatingRoom": "Ke theha mosebetsi wa hao…",
+    "activityLaunchOpeningRoom": "Ke bula mosebetsi wa hao…",
     "teamCode": "Khoutu ea sehlopha",
     "reopenAppToFinishSwitching": "Koala app ka ho feletseng ebe o e bula hape ho qetela ho fetohela."
 }

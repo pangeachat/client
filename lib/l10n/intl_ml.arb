@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-13 11:25:01.780774",
+    "@@last_modified": "2026-10-12 13:11:59.895938",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "നിങ്ങളുടെ കോൾ കണക്റ്റ് ആയില്ല",
     "callMicrophoneOffMessage": "Pangea Chat-ന് നിങ്ങളുടെ മൈക്രോഫോൺ ഉപയോഗിക്കാൻ കഴിയില്ല. ക്രമീകരണങ്ങളിൽ ഇത് ഓണാക്കാൻ ടാപ്പ് ചെയ്യുക.",
     "mapCreditsLabel": "മാപ്പ് ക്രെഡിറ്റുകൾ: സ്റ്റേഡിയ മാപ്‌സ്, ഓപ്പൺമാപ്‌ടൈൽസ്, ഓപ്പൺസ്ട്രീറ്റ്മാപ്പ്",
+    "activityLaunchFindingCourses": "നിങ്ങളുടെ കോഴ്സുകൾ കണ്ടെത്തുന്നു…",
+    "activityLaunchCreatingRoom": "നിങ്ങളുടെ പ്രവർത്തനം സൃഷ്ടിക്കുന്നു…",
+    "activityLaunchOpeningRoom": "നിങ്ങളുടെ പ്രവർത്തനം തുറക്കുന്നു…",
     "teamCode": "ടീം കോഡ്",
     "reopenAppToFinishSwitching": "മാറ്റം പൂർത്തിയാക്കാൻ ആപ്പ് പൂർണ്ണമായി അടച്ച് വീണ്ടും തുറക്കുക."
 }

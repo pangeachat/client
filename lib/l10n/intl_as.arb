@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-13 11:24:52.861252",
+    "@@last_modified": "2026-10-12 13:11:49.499418",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2419,6 +2419,9 @@
     "callMicrophoneOffTitle": "আপোনাৰ কল সংযোগ হোৱা নাই",
     "callMicrophoneOffMessage": "পেংগিয়া চেটে আপোনাৰ মাইক্ৰ'ফোন ব্যৱহাৰ কৰিব নোৱাৰে। ছেটিংছত ইয়াক অন কৰিবলৈ টেপ কৰক।",
     "mapCreditsLabel": "মানচিত্ৰৰ ক্ৰেডিটসমূহ: Stadia Maps, OpenMapTiles আৰু OpenStreetMap",
+    "activityLaunchFindingCourses": "আপোনাৰ পাঠ্যক্ৰমসমূহ বিচাৰি উলিওৱা হৈছে…",
+    "activityLaunchCreatingRoom": "আপোনাৰ কাৰ্য্যকলাপ সৃষ্টি কৰা হৈছে…",
+    "activityLaunchOpeningRoom": "আপোনাৰ কাৰ্য্যকলাপ খোলা হৈছে…",
     "teamCode": "দলৰ ক'ড",
     "reopenAppToFinishSwitching": "সুইচিং শেষ কৰিবলৈ এপটো সম্পূৰ্ণৰূপে বন্ধ কৰি পুনৰ খুলক।"
 }

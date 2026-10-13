@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-13 11:25:03.966689",
+    "@@last_modified": "2026-10-12 13:12:01.140077",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10055,6 +10055,9 @@
     "callMicrophoneOffTitle": "Twoje połączenie nie zostało nawiązane",
     "callMicrophoneOffMessage": "Pangea Chat nie może używać Twojego mikrofonu. Stuknij, aby włączyć go w Ustawieniach.",
     "mapCreditsLabel": "Źródło map: Stadia Maps, OpenMapTiles i OpenStreetMap",
+    "activityLaunchFindingCourses": "Wyszukiwanie kursów…",
+    "activityLaunchCreatingRoom": "Tworzenie aktywności…",
+    "activityLaunchOpeningRoom": "Otwieranie aktywności…",
     "teamCode": "Kod zespołu",
     "reopenAppToFinishSwitching": "Całkowicie zamknij aplikację i otwórz ją ponownie, aby zakończyć przełączanie."
 }
