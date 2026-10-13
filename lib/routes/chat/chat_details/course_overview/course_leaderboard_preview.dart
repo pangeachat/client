@@ -16,8 +16,9 @@ import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 
 /// The course page's Leaderboard section (course-leaderboard.instructions.md):
 /// its header, the admin line cut to the cards that fit, and the podium — the
-/// top three as [LeaderboardRow]s, or a lone member over an invite row. The
-/// full ranking is the section's subpage — CourseLeaderboardPage.
+/// top three as [LeaderboardRow]s, then an invite row when one or no member
+/// is ranked. The full ranking is the section's subpage —
+/// CourseLeaderboardPage.
 ///
 /// This widget owns the whole section because the header's "See all" turns on
 /// what the subpage holds beyond the preview, and only the preview knows how
@@ -105,8 +106,6 @@ class CourseLeaderboardPreview extends StatelessWidget {
                     label: l10n.listLabel(l10n.leaderboard),
                     container: true,
                     // One Tab stop for the section, the arrow keys inside it.
-                    // An admin appears twice — in the line and on the podium —
-                    // so the ids carry which.
                     child: RovingFocusGroup(
                       ids: [
                         for (final user in admins) 'admin:${user.id}',
@@ -138,7 +137,7 @@ class CourseLeaderboardPreview extends StatelessWidget {
                               room: room,
                               rovingId: 'rank:${entry.user.id}',
                             ),
-                          if (board.ranked.length == 1 && room.canInvite)
+                          if (board.ranked.length <= 1 && room.canInvite)
                             LeaderboardInviteRow(onTap: onInvite),
                         ],
                       ),
