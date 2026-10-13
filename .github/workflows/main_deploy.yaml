@@ -8,7 +8,6 @@ on:
 
 env:
   WEB_APP_ENV: ${{ vars.WEB_APP_ENV }}
-  ENV_OVERRIDES: ${{ vars.ENV_OVERRIDES }}
 
 permissions:
   contents: read
@@ -176,8 +175,6 @@ jobs:
           # Client falls back to batch on any relay/provider failure. NOT set on
           # production (release.yaml) until validated on staging.
           echo "LIVE_STREAMING_STT_ENABLED=true" >> build/web/.env
-          touch build/web/assets/envs.json
-          echo "$ENV_OVERRIDES" >> build/web/assets/envs.json
       - name: Set up AWS CLI
         uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4
         with:
