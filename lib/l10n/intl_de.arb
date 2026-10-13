@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-12 13:11:54.444521",
+    "@@last_modified": "2026-10-13 13:02:11.667634",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -7941,8 +7941,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Schreibassistenz aktivieren",
-    "autoIGCToolDescription": "Automatisch Pangea Chat-Tools ausführen, um gesendete Nachrichten in die Zielsprache zu korrigieren.",
+    "autoIGCToolName": "Automatische Prüfung beim Senden",
+    "autoIGCToolDescription": "Überprüfe deine Nachricht auf Fehler, wenn du auf „Senden“ tippst. Wenn dies deaktiviert ist, tippe auf die Schaltfläche für Schreibhilfe, um eine Nachricht selbst zu überprüfen.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

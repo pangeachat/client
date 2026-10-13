@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:11:54.216711",
+    "@@last_modified": "2026-10-13 13:02:14.577743",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -8654,8 +8654,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "אפשר סיוע בכתיבה",
-    "autoIGCToolDescription": "הרץ אוטומטית את כלי Pangea Chat כדי לתקן הודעות שנשלחו לשפה היעד.",
+    "autoIGCToolName": "בדיקה אוטומטית בשליחה",
+    "autoIGCToolDescription": "בדוק את ההודעה שלך לשגיאות כשאתה מקיש על שלח. כשזה כבוי, הקש על כפתור עזרה בכתיבה כדי לבדוק הודעה בעצמך.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

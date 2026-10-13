@@ -3544,7 +3544,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-12 13:11:49.196176",
+    "@@last_modified": "2026-10-13 13:02:10.053307",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -7920,8 +7920,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Уключыць дапамогу ў напісанні",
-    "autoIGCToolDescription": "Аўтаматычна запускаць інструменты Pangea Chat для выпраўлення адпраўленых паведамленняў на мэтавую мову.",
+    "autoIGCToolName": "Аўтаправерка пры адпраўцы",
+    "autoIGCToolDescription": "Праверце паведамленне на наяўнасць памылак пры націску «Адправіць». Калі гэтая функцыя адключана, націсніце кнопку дапамогі ў напісанні, каб праверыць паведамленне самастойна.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

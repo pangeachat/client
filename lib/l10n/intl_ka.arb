@@ -1933,7 +1933,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-12 13:11:56.811532",
+    "@@last_modified": "2026-10-13 13:02:19.306558",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8640,8 +8640,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "წერის დახმარების ჩართვა",
-    "autoIGCToolDescription": "ავტომატურად გაწვდეთ Pangea Chat ინსტრუმენტები გაგზავნილი შეტყობინებების მიზნობრივი ენაზე გასასწორებლად.",
+    "autoIGCToolName": "ავტომატური შემოწმება გაგზავნისას",
+    "autoIGCToolDescription": "შეამოწმეთ თქვენი შეტყობინება შეცდომებზე გაგზავნის ღილაკზე დაჭერისას. როდესაც ეს გამორთულია, შეტყობინების შესამოწმებლად დააჭირეთ წერის დამხმარე ღილაკს.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-12 13:12:07.733381",
+    "@@last_modified": "2026-10-13 13:02:30.097581",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -7920,8 +7920,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "启用写作辅助",
-    "autoIGCToolDescription": "自动运行 Pangea Chat 工具以将发送的消息纠正为目标语言。",
+    "autoIGCToolName": "发送时自动检查",
+    "autoIGCToolDescription": "发送消息时检查错误。关闭此功能后，请点击写作辅助按钮自行检查消息。",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

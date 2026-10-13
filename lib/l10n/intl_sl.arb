@@ -1798,7 +1798,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-12 13:12:03.179496",
+    "@@last_modified": "2026-10-13 13:02:24.504775",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8685,8 +8685,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Omogoči pomoč pri pisanju",
-    "autoIGCToolDescription": "Samodejno zaženi orodja Pangea Chat za popravljanje poslanih sporočil v ciljni jezik.",
+    "autoIGCToolName": "Samodejno preverjanje ob pošiljanju",
+    "autoIGCToolDescription": "Preveri sporočilo za napake, ko tapneš Pošlji. Ko je to izklopljeno, tapni gumb za pomoč pri pisanju, da sam preveriš sporočilo.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

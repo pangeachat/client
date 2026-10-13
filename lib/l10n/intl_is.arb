@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-12 13:11:55.750783",
+    "@@last_modified": "2026-10-13 13:02:17.398423",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Sjálfgefið eru námskeið opinberlega leitanleg og krefjast samþykkis stjórnanda til að taka þátt. Þú getur breytt þessum stillingum hvenær sem er.",
     "onboardingLanguagesTitle": "Hvaða tungumál ertu að læra?",
     "supportSubtitle": "Spurningar? Við erum hér til að hjálpa!",
-    "autoIGCToolName": "Virkja ritunaraðstoð",
-    "autoIGCToolDescription": "Keyra sjálfkrafa Pangea Chat verkfæri til að leiðrétta send skilaboð á marktungumálið.",
+    "autoIGCToolName": "Sjálfvirk villuleit við sendingu",
+    "autoIGCToolDescription": "Athugaðu skilaboðin þín með tilliti til villna þegar þú ýtir á senda. Þegar þetta er slökkt, ýttu á hnappinn fyrir ritunaraðstoð til að athuga skilaboðin sjálfur.",
     "emptyAudioError": "Upptaka mistókst. Vinsamlegast athugaðu hljóðheimildir þínar og reyndu aftur.",
     "spanTypeSpelling": "Stafsetning",
     "spanTypePunctuation": "Greinarmerki",

@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-12 13:12:01.140077",
+    "@@last_modified": "2026-10-13 13:02:23.109024",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -7834,8 +7834,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Włącz pomoc w pisaniu",
-    "autoIGCToolDescription": "Automatycznie uruchom narzędzia Pangea Chat, aby poprawić wysłane wiadomości na docelowy język.",
+    "autoIGCToolName": "Autokorekta przy wysyłaniu",
+    "autoIGCToolDescription": "Sprawdź wiadomość pod kątem błędów po naciśnięciu przycisku Wyślij. Gdy ta opcja jest wyłączona, naciśnij przycisk pomocy w pisaniu, aby samodzielnie sprawdzić wiadomość.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

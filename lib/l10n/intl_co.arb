@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-12 13:11:50.125969",
+    "@@last_modified": "2026-10-13 13:02:11.376851",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Per difettu, i corsi sò cercabili publicamente è necessitanu l'approvazione di l'amministratore per aderisce. Pudete mudificà sti parametri in ogni mumentu.",
     "onboardingLanguagesTitle": "Chì lingua amparate?",
     "supportSubtitle": "Dumande? Simu quì per aiutà!",
-    "autoIGCToolName": "Attivà l'assistenza à a scrittura",
-    "autoIGCToolDescription": "Eseguisce in autumàticu l'arnesi di Pangea Chat per currege i messaghji mandati in a lingua di destinazione.",
+    "autoIGCToolName": "Verificazione automatica à l'inviu",
+    "autoIGCToolDescription": "Verificate u vostru messagiu per l'errori quandu inviate. Quandu sta funziunalità hè disattivata, toccate u buttone d'assistenza à a scrittura per verificà un messagiu voi stessu.",
     "emptyAudioError": "Arregistramentu fiascatu. Verificate e vostre permissione audio è pruvate torna.",
     "spanTypeSpelling": "Ortugrafia",
     "spanTypePunctuation": "Punteghjatura",

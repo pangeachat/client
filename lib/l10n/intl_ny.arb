@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-12 13:12:03.930010",
+    "@@last_modified": "2026-10-13 13:02:26.994956",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Mwachisawawa, maphunziro amapezeka pagulu ndipo amafunikira kuvomerezedwa ndi woyang'anira kuti alowe. Mutha kusintha zokonda izi nthawi iliyonse.",
     "onboardingLanguagesTitle": "Kodi mukupanga chilankhulo chotani?",
     "supportSubtitle": "Mafunso? Tili pano kuti tikuthandizeni!",
-    "autoIGCToolName": "Yambitsani chithandizo cholemba",
-    "autoIGCToolDescription": "Yendetsani zida za Pangea Chat zokha kuti mukonze mauthenga otumizidwa ku chilankhulo chomwe mukufuna.",
+    "autoIGCToolName": "Kuyang'ana zokha mukatumiza",
+    "autoIGCToolDescription": "Yang'anani uthenga wanu ngati uli ndi zolakwika mukadina kutumiza. Ngati izi sizikugwira ntchito, dinani batani lothandizira kulemba kuti muyang'ane uthenga nokha.",
     "emptyAudioError": "Kujambula kwalephera. Chonde onani zilolezo zanu zomvera ndikuyesanso.",
     "spanTypeSpelling": "Kulemba",
     "spanTypePunctuation": "Zizindikiro",

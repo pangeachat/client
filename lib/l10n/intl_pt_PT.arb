@@ -2555,7 +2555,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-12 13:12:02.378495",
+    "@@last_modified": "2026-10-13 13:02:23.638643",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8652,8 +8652,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Ativar assistência de escrita",
-    "autoIGCToolDescription": "Executar automaticamente as ferramentas do Pangea Chat para corrigir mensagens enviadas para o idioma de destino.",
+    "autoIGCToolName": "Verificação automática ao enviar",
+    "autoIGCToolDescription": "Verifique a sua mensagem para erros quando tocar em enviar. Quando esta opção está desativada, toque no botão de assistência de escrita para verificar uma mensagem manualmente.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

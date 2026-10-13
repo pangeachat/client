@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-12 13:12:03.581054",
+    "@@last_modified": "2026-10-13 13:02:25.773161",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Si parazgjedhje, kurset janë të kërkueshme publikisht dhe kërkojnë miratimin e administratorit për t'u bashkuar. Këto cilësime mund t'i ndryshoni në çdo kohë.",
     "onboardingLanguagesTitle": "Çfarë gjuhe po mësoni?",
     "supportSubtitle": "Pyetje? Ne jemi këtu për të ndihmuar!",
-    "autoIGCToolName": "Aktivizo ndihmën për shkrim",
-    "autoIGCToolDescription": "Ekzekutoni automatikisht mjetet e Pangea Chat për të korrigjuar mesazhet e dërguara në gjuhën e synuar.",
+    "autoIGCToolName": "Kontrollim automatik gjatë dërgimit",
+    "autoIGCToolDescription": "Kontrolloni mesazhin tuaj për gabime kur shtypni dërgoni. Kur kjo është e fikur, shtypni butonin e asistencës së shkrimit për të kontrolluar vetë një mesazh.",
     "emptyAudioError": "Regjistrimi dështoi. Ju lutemi kontrolloni lejet tuaja audio dhe provoni përsëri.",
     "spanTypeSpelling": "Drejtshkrim",
     "spanTypePunctuation": "Pikësim",

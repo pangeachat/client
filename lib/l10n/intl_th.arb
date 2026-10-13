@@ -3089,7 +3089,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-12 13:12:05.011744",
+    "@@last_modified": "2026-10-13 13:02:28.931850",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8372,8 +8372,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "เปิดใช้งานความช่วยเหลือในการเขียน",
-    "autoIGCToolDescription": "เรียกใช้เครื่องมือ Pangea Chat โดยอัตโนมัติเพื่อแก้ไขข้อความที่ส่งไปยังภาษาที่ต้องการ.",
+    "autoIGCToolName": "ตรวจสอบอัตโนมัติเมื่อส่ง",
+    "autoIGCToolDescription": "ตรวจสอบข้อความของคุณเพื่อหาข้อผิดพลาดเมื่อคุณแตะส่ง หากปิดใช้งานอยู่ ให้แตะปุ่มช่วยเหลือการเขียนเพื่อตรวจสอบข้อความด้วยตนเอง",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
