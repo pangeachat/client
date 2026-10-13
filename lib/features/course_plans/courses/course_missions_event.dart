@@ -205,9 +205,10 @@ extension QuestOutlineForCourse on QuestOutline {
   ///
   /// With a copy: the copy's Can-Dos in its order (ones the quest no longer
   /// carries drop), each with the copy's activity ids that the library still
-  /// returns, plus the note and due date. The quest's sequence is reordered to
-  /// match, so [QuestOutline.toCourseLoOutline]'s `orderedLoIds` follows the
-  /// copy too. Without a copy: exactly today's pin restriction.
+  /// returns (in the library's order), plus the note and due date. The
+  /// quest's sequence is reordered to match, so
+  /// [QuestOutline.toCourseLoOutline]'s `orderedLoIds` follows the copy too.
+  /// Without a copy: exactly today's pin restriction.
   QuestOutline forRules(CourseListRules rules) {
     final copy = rules.missions;
     if (copy == null) return restrictedTo(rules.pins);
@@ -219,7 +220,11 @@ extension QuestOutlineForCourse on QuestOutline {
     for (final mission in copy.missions) {
       final group = groupsById[mission.loId];
       if (group == null) continue;
-      final byId = {for (final a in group.activities) a.activityId: a};
+      // The copy's activity ids are a set in v1: writers snapshot from
+      // different listings (this app's creation copy, the dashboard's publish,
+      // the backfill), so their order is not a teacher's choice. Keeping the
+      // library order means writing a copy never reorders what a student sees.
+      final listed = mission.activityIds.toSet();
       final pacing = MissionPacing(
         note: mission.note,
         dueAt: mission.dueAt,
@@ -228,7 +233,10 @@ extension QuestOutlineForCourse on QuestOutline {
       nextGroups.add(
         QuestObjectiveGroup(
           objective: group.objective,
-          activities: [for (final id in mission.activityIds) ?byId[id]],
+          activities: [
+            for (final a in group.activities)
+              if (listed.contains(a.activityId)) a,
+          ],
           pacing: pacing.isEmpty ? null : pacing,
         ),
       );

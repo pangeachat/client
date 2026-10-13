@@ -244,6 +244,23 @@ void main() {
       expect(idsOf(shown, 'lo-3'), isEmpty);
     });
 
+    test('a Can-Do\'s activities keep the library order, whatever order '
+        'the copy lists them in', () {
+      // Writers snapshot from different listings (the app's creation copy,
+      // the dashboard's publish and the backfill), so the copy's activity
+      // order is not a teacher choice in v1. Reading it as a set keeps what a
+      // student sees unchanged when a copy is written.
+      final shown = threeMissions().forRules(
+        withCopy({
+          'lo-1': ['a2', 'a1'],
+        }),
+      );
+      expect(shown.groups.single.activities.map((a) => a.activityId).toList(), [
+        'a1',
+        'a2',
+      ]);
+    });
+
     test('ignores the pins when a copy exists', () {
       final shown = threeMissions().forRules(
         CourseListRules(
