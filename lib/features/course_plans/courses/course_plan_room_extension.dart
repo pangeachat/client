@@ -8,6 +8,7 @@ import 'package:fluffychat/features/activity_sessions/activity_room_extension.da
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
+import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -55,13 +56,12 @@ extension CoursePlanRoomExtension on Room {
   /// it: a course space whose plan event carries no `l2` is excluded from every
   /// language-filtered browse, so attaching a quest without it hides the course.
   ///
-  /// [shownOutline] is the quest's outline as the attach page showed it; when
-  /// given and the actor is a course admin, the course's own copy
-  /// (content-studio) is written from it — see [_writeCourseMissionsCopy].
+  /// When the actor is a course admin, the course's own copy (content-studio)
+  /// is written from the list this course shows its members once the plan is
+  /// attached — see [_writeCourseMissionsCopy].
   Future<void> addCourseToSpace(
     String courseId, {
     required String targetLanguage,
-    QuestOutline? shownOutline,
   }) async {
     // Ensure students in course can launch activity rooms
     final powerLevels = Map<String, dynamic>.from(
@@ -99,9 +99,29 @@ extension CoursePlanRoomExtension on Room {
     }
     // After the plan, so no reader pairs the new copy with the old quest.
     await _writeCourseMissionsCopy(
-      shownOutline?.quest.id == courseId ? shownOutline : null,
+      isRoomAdmin ? await courseScopedOutline(courseId, id) : null,
       planChanged: planChanged,
     );
+  }
+
+  /// A new course's own copy, written by its creator right after the space
+  /// exists: snapshotted from the course-scoped list, which only a member of
+  /// the course can read with the quest owner's private activities in it, so
+  /// it cannot ride in the creation request. A failed or slow read leaves the
+  /// course without a copy (logged), reading the shared quest as before.
+  Future<void> writeNewCourseCopy() async {
+    final questId = coursePlan?.uuid;
+    if (questId == null || !isRoomAdmin || courseMissions != null) return;
+    final outline = await courseScopedOutline(questId, id);
+    if (outline == null) {
+      ErrorHandler.logError(
+        e: 'Course created without its own Can-Do copy: outline not loaded',
+        data: {'room_id': id, 'quest_id': questId},
+        level: SentryLevel.warning,
+      );
+      return;
+    }
+    await _writeCourseMissionsCopy(outline, planChanged: true);
   }
 
   /// Write the course's own copy when attaching a plan: admin only (readers

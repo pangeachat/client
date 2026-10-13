@@ -4,12 +4,14 @@ import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -346,19 +348,37 @@ class _OutlineRequest {
   final int copyRevision;
 }
 
-/// [questId]'s shared, unrestricted outline for snapshotting a new course's
-/// own copy, waiting up to [cap]. Goes through [QuestRepo.outline], so it
-/// joins the read the create page already has in flight (or its cached
-/// result) and does not depend on that page staying mounted. Null on a
-/// failed read or the cap — the course is then created without a copy.
-Future<QuestOutline?> outlineForNewCourse(
-  String questId, {
+/// [questId]'s outline as course [courseRoomId] shows it to its members, for
+/// snapshotting the course's own copy, waiting up to [cap]. Read through the
+/// course-scoped listing ([QuestRepo.outline] with [courseRoomId]), which also
+/// returns the quest owner's private activities to a joined member, so the
+/// copy lists exactly the activities the course page shows. Joins a read
+/// already in flight for the same course. Null on a failed read or the cap —
+/// the course then keeps no copy and reads the shared quest, as courses
+/// always did (the Studio's first publish saves one).
+Future<QuestOutline?> courseScopedOutline(
+  String questId,
+  String courseRoomId, {
   Duration cap = const Duration(seconds: 5),
 }) async {
   try {
-    final result = await QuestRepo.outline(questId).timeout(cap);
+    final result = await QuestRepo.outline(
+      questId,
+      courseRoomId: courseRoomId,
+    ).timeout(cap);
     return result.result;
   } on TimeoutException {
+    return null;
+  } catch (e, s) {
+    // Any failed read is "no outline": the callers then keep the course
+    // reading the shared quest (and a plan replace still clears the old
+    // quest's copy) rather than stopping half way.
+    ErrorHandler.logError(
+      e: e,
+      s: s,
+      data: {'quest_id': questId, 'course_room_id': courseRoomId},
+      level: SentryLevel.warning,
+    );
     return null;
   }
 }

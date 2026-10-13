@@ -219,11 +219,33 @@ void main() {
     const spaceId = '!1234:fakeServer.notExisting';
     late Client client;
 
+    /// The course rooms each outline read was scoped to (null = unscoped).
+    late List<String?> outlineReads;
+
+    /// What the outline read answers; null = a failed read.
+    QuestOutline? Function(String? courseRoomId)? answer;
+
     setUp(() async {
       client = await getTestClient();
       FakeMatrixApi.calledEndpoints.clear();
+      QuestRepo.resetOutlineCacheForTest();
+      QuestRepo.debugDisplayL1 = 'en';
+      outlineReads = [];
+      answer = null;
+      QuestRepo.debugBuildOutline = (id, {courseRoomId}) async {
+        outlineReads.add(courseRoomId);
+        final outline = answer?.call(courseRoomId);
+        return outline == null
+            ? Result<QuestOutline>.error('boom')
+            : Result.value(outline);
+      };
     });
-    tearDown(() => client.dispose());
+    tearDown(() {
+      QuestRepo.debugBuildOutline = null;
+      QuestRepo.debugDisplayL1 = null;
+      QuestRepo.resetOutlineCacheForTest();
+      client.dispose();
+    });
 
     Room space({required int ownLevel, String planId = 'q1'}) {
       final room = Room(
@@ -282,9 +304,8 @@ void main() {
     ];
 
     test('an admin writes the snapshot, pins applied, revision 1', () async {
-      await space(
-        ownLevel: 100,
-      ).addCourseToSpace('q1', targetLanguage: 'es', shownOutline: shown());
+      answer = (_) => shown();
+      await space(ownLevel: 100).addCourseToSpace('q1', targetLanguage: 'es');
       final writes = copyWrites();
       expect(writes, hasLength(1));
       expect(jsonDecode(writes.single as String), {
@@ -304,20 +325,47 @@ void main() {
     });
 
     test('a non-admin writes nothing', () async {
-      await space(
-        ownLevel: 50,
-      ).addCourseToSpace('q1', targetLanguage: 'es', shownOutline: shown());
+      answer = (_) => shown();
+      await space(ownLevel: 50).addCourseToSpace('q1', targetLanguage: 'es');
       expect(copyWrites(), isEmpty);
+    });
+
+    test('the snapshot is the list this course shows its members: read '
+        'through the course-scoped listing, so the quest owner\'s private '
+        'activities stay in the copy', () async {
+      // The course-scoped read also returns 'p1', a private activity of the
+      // quest owner; an unscoped read (a preview) would not.
+      answer = (courseRoomId) {
+        final base = shown();
+        if (courseRoomId != spaceId) return base;
+        return QuestOutline(
+          quest: base.quest,
+          groups: [
+            base.groups[0],
+            QuestObjectiveGroup(
+              objective: base.groups[1].objective,
+              activities: [
+                ...base.groups[1].activities,
+                QuestActivity(activityId: 'p1', plan: _plan('p1')),
+              ],
+            ),
+          ],
+        );
+      };
+      await space(ownLevel: 100).addCourseToSpace('q1', targetLanguage: 'es');
+      expect(outlineReads, [spaceId]);
+      final written = jsonDecode(copyWrites().single as String) as Map;
+      expect((written['missions'] as List)[1], {
+        'lo_id': 'lo-2',
+        'activity_ids': ['b1', 'p1'],
+      });
     });
 
     /// Replaces the plan on a space whose copy names the old quest's Can-Dos,
     /// answering the plan write's wait-for-sync the way the server would.
     Future<void> replacePlan(Room room, {bool withOutline = true}) async {
-      final attach = room.addCourseToSpace(
-        'q1',
-        targetLanguage: 'es',
-        shownOutline: withOutline ? shown() : null,
-      );
+      answer = withOutline ? (_) => shown() : null;
+      final attach = room.addCourseToSpace('q1', targetLanguage: 'es');
       var done = false;
       unawaited(attach.whenComplete(() => done = true));
       for (var i = 0; i < 100 && !done; i++) {
@@ -377,6 +425,23 @@ void main() {
       },
     );
 
+    test('replacing the plan when the outline read throws still clears '
+        'the old quest\'s copy', () async {
+      final room = space(ownLevel: 100, planId: 'q0');
+      putState(
+        room,
+        PangeaEventTypes.courseMissions,
+        copyContent({
+          'old-lo': ['old-a'],
+        }, revision: 3),
+        sender: self,
+      );
+      QuestRepo.debugBuildOutline = (id, {courseRoomId}) async =>
+          throw StateError('boom');
+      await replacePlan(room, withOutline: false);
+      expect(jsonDecode(copyWrites().single as String), <String, dynamic>{});
+    });
+
     test('replacing the plan with no snapshot and no old copy writes '
         'nothing', () async {
       await replacePlan(space(ownLevel: 100, planId: 'q0'), withOutline: false);
@@ -423,18 +488,15 @@ void main() {
         }),
         sender: self,
       );
-      await room.addCourseToSpace(
-        'q1',
-        targetLanguage: 'es',
-        shownOutline: shown(),
-      );
+      answer = (_) => shown();
+      await room.addCourseToSpace('q1', targetLanguage: 'es');
       expect(copyWrites(), isEmpty);
     });
   });
 
-  /// Creation waits briefly for the outline read the create page already
-  /// has in flight, so a quick "Create course" still gets the copy.
-  group('outlineForNewCourse (creation)', () {
+  /// A new course's copy is read through the course-scoped listing right
+  /// after the space exists, waiting briefly; it never blocks creation.
+  group('courseScopedOutline (creation and attach snapshots)', () {
     QuestOutline outlineFor(String id) => QuestOutline(
       quest: QuestPlan(
         id: id,
@@ -456,28 +518,34 @@ void main() {
       QuestRepo.resetOutlineCacheForTest();
     });
 
-    test('joins the read already in flight', () async {
-      final pending = Completer<Result<QuestOutline>>();
-      var reads = 0;
-      QuestRepo.debugBuildOutline = (id, {courseRoomId}) {
-        reads++;
-        return pending.future;
-      };
-      // The create page's own load, still in flight.
-      final pageLoad = QuestRepo.outline('q1');
-      final created = outlineForNewCourse('q1');
-      await Future<void>.delayed(const Duration(milliseconds: 20));
-      pending.complete(Result.value(outlineFor('q1')));
-      expect((await created)?.quest.id, 'q1');
-      await pageLoad;
-      expect(reads, 1);
-    });
+    test(
+      'reads for the course and joins that course\'s read in flight',
+      () async {
+        final pending = Completer<Result<QuestOutline>>();
+        final scopes = <String?>[];
+        QuestRepo.debugBuildOutline = (id, {courseRoomId}) {
+          scopes.add(courseRoomId);
+          return pending.future;
+        };
+        final pageLoad = QuestRepo.outline('q1', courseRoomId: '!c:x');
+        final snapshot = courseScopedOutline('q1', '!c:x');
+        await Future<void>.delayed(const Duration(milliseconds: 20));
+        pending.complete(Result.value(outlineFor('q1')));
+        expect((await snapshot)?.quest.id, 'q1');
+        await pageLoad;
+        expect(scopes, ['!c:x']);
+      },
+    );
 
     test('gives up at the cap', () async {
       QuestRepo.debugBuildOutline = (id, {courseRoomId}) =>
           Completer<Result<QuestOutline>>().future;
       expect(
-        await outlineForNewCourse('q1', cap: const Duration(milliseconds: 50)),
+        await courseScopedOutline(
+          'q1',
+          '!c:x',
+          cap: const Duration(milliseconds: 50),
+        ),
         isNull,
       );
     });
@@ -485,8 +553,125 @@ void main() {
     test('a failed read is no outline', () async {
       QuestRepo.debugBuildOutline = (id, {courseRoomId}) async =>
           Result<QuestOutline>.error('boom');
-      expect(await outlineForNewCourse('q1'), isNull);
+      expect(await courseScopedOutline('q1', '!c:x'), isNull);
     });
+
+    test('a read that throws is no outline, never an error', () async {
+      QuestRepo.debugBuildOutline = (id, {courseRoomId}) async =>
+          throw StateError('boom');
+      expect(await courseScopedOutline('q1', '!c:x'), isNull);
+    });
+  });
+
+  /// The creator writes the new course's copy once the space exists.
+  group('writeNewCourseCopy (creation)', () {
+    const self = '@test:fakeServer.notExisting';
+    const spaceId = '!1234:fakeServer.notExisting';
+    late Client client;
+    late List<String?> scopes;
+
+    QuestOutline outline({bool withPrivate = false}) => QuestOutline(
+      quest: const QuestPlan(
+        id: 'q1',
+        name: '',
+        description: '',
+        targetLanguage: 'es',
+        sequence: [],
+      ),
+      groups: [
+        QuestObjectiveGroup(
+          objective: const LearningObjective(id: 'lo-1', objective: ''),
+          activities: [
+            QuestActivity(activityId: 'a1', plan: _plan('a1')),
+            if (withPrivate) QuestActivity(activityId: 'p1', plan: _plan('p1')),
+          ],
+        ),
+      ],
+    );
+
+    setUp(() async {
+      client = await getTestClient();
+      FakeMatrixApi.calledEndpoints.clear();
+      QuestRepo.resetOutlineCacheForTest();
+      QuestRepo.debugDisplayL1 = 'en';
+      scopes = [];
+      QuestRepo.debugBuildOutline = (id, {courseRoomId}) async {
+        scopes.add(courseRoomId);
+        // Only a read scoped to the course carries the owner's private one.
+        return Result.value(outline(withPrivate: courseRoomId == spaceId));
+      };
+    });
+    tearDown(() {
+      QuestRepo.debugBuildOutline = null;
+      QuestRepo.debugDisplayL1 = null;
+      QuestRepo.resetOutlineCacheForTest();
+      client.dispose();
+    });
+
+    Room newSpace({int ownLevel = 100}) {
+      final room = Room(
+        id: spaceId,
+        client: client,
+        membership: Membership.join,
+      );
+      putState(room, EventTypes.RoomPowerLevels, {
+        'users': {self: ownLevel},
+      }, sender: self);
+      putState(
+        room,
+        PangeaEventTypes.coursePlan,
+        CoursePlanEvent(uuid: 'q1', l2: 'es').toJson(),
+        sender: self,
+      );
+      client.rooms.add(room);
+      return room;
+    }
+
+    List<dynamic> copyWrites() => [
+      for (final e in FakeMatrixApi.calledEndpoints.entries)
+        if (e.key.contains('/state/${PangeaEventTypes.courseMissions}'))
+          ...e.value,
+    ];
+
+    test('writes revision 1 from the course-scoped list, the quest owner\'s '
+        'private activity included', () async {
+      await newSpace().writeNewCourseCopy();
+      expect(scopes, [spaceId]);
+      expect(jsonDecode(copyWrites().single as String), {
+        'version': 1,
+        'revision': 1,
+        'missions': [
+          {
+            'lo_id': 'lo-1',
+            'activity_ids': ['a1', 'p1'],
+          },
+        ],
+      });
+    });
+
+    test(
+      'a failed read writes nothing (the course reads the shared quest)',
+      () async {
+        QuestRepo.debugBuildOutline = (id, {courseRoomId}) async =>
+            Result<QuestOutline>.error('boom');
+        await newSpace().writeNewCourseCopy();
+        expect(copyWrites(), isEmpty);
+      },
+    );
+
+    test(
+      'a non-admin, or a course that already has a copy, writes nothing',
+      () async {
+        await newSpace(ownLevel: 50).writeNewCourseCopy();
+        expect(copyWrites(), isEmpty);
+        final room = newSpace();
+        putCopy(room, {
+          'lo-1': ['a1'],
+        }, sender: self);
+        await room.writeNewCourseCopy();
+        expect(copyWrites(), isEmpty);
+      },
+    );
   });
 
   group('restrictCardsForCourse (course-scoped map markers)', () {
