@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
@@ -8,6 +9,7 @@ import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/teacher_mode_model.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -96,9 +98,10 @@ extension CoursePlanRoomExtension on Room {
       }
     }
     // After the plan, so no reader pairs the new copy with the old quest.
-    if (shownOutline != null && shownOutline.quest.id == courseId) {
-      await _writeCourseMissionsCopy(shownOutline, planChanged: planChanged);
-    }
+    await _writeCourseMissionsCopy(
+      shownOutline?.quest.id == courseId ? shownOutline : null,
+      planChanged: planChanged,
+    );
   }
 
   /// Write the course's own copy when attaching a plan: admin only (readers
@@ -107,13 +110,32 @@ extension CoursePlanRoomExtension on Room {
   /// would name the previous quest's Can-Dos. The snapshot is the list the
   /// course shows without a copy, so this space's pins apply. A revision
   /// above any existing copy's lets open surfaces refresh.
+  ///
+  /// A plan change with no snapshot to hand ([outline] null) clears the old
+  /// quest's copy with an empty record, so readers fall back to the new
+  /// shared quest rather than listing the old quest's Can-Dos.
   Future<void> _writeCourseMissionsCopy(
-    QuestOutline outline, {
+    QuestOutline? outline, {
     required bool planChanged,
   }) async {
     if (!isRoomAdmin) return;
     final existing = courseMissions;
     if (existing != null && !planChanged) return;
+    if (outline == null) {
+      if (existing == null) return;
+      ErrorHandler.logError(
+        e: 'Plan replaced without a Can-Do snapshot; course copy cleared',
+        data: {'room_id': id},
+        level: SentryLevel.warning,
+      );
+      await client.setRoomStateWithKey(
+        id,
+        PangeaEventTypes.courseMissions,
+        '',
+        const <String, dynamic>{},
+      );
+      return;
+    }
     final snapshot = CourseMissionsEvent.snapshotOf(
       outline.restrictedTo(teacherMode.pinnedActivitiesByObjective),
       revision: (existing?.revision ?? 0) + 1,

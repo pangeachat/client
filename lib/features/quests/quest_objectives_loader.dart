@@ -345,3 +345,20 @@ class _OutlineRequest {
   /// The course copy's revision the outline was built with (0 = no copy).
   final int copyRevision;
 }
+
+/// [questId]'s shared, unrestricted outline for snapshotting a new course's
+/// own copy, waiting up to [cap]. Goes through [QuestRepo.outline], so it
+/// joins the read the create page already has in flight (or its cached
+/// result) and does not depend on that page staying mounted. Null on a
+/// failed read or the cap — the course is then created without a copy.
+Future<QuestOutline?> outlineForNewCourse(
+  String questId, {
+  Duration cap = const Duration(seconds: 5),
+}) async {
+  try {
+    final result = await QuestRepo.outline(questId).timeout(cap);
+    return result.result;
+  } on TimeoutException {
+    return null;
+  }
+}

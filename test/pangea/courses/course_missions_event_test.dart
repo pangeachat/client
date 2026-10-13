@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:async/async.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:matrix/matrix.dart';
+import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
@@ -13,6 +14,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
+import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -310,11 +312,11 @@ void main() {
 
     /// Replaces the plan on a space whose copy names the old quest's Can-Dos,
     /// answering the plan write's wait-for-sync the way the server would.
-    Future<void> replacePlan(Room room) async {
+    Future<void> replacePlan(Room room, {bool withOutline = true}) async {
       final attach = room.addCourseToSpace(
         'q1',
         targetLanguage: 'es',
-        shownOutline: shown(),
+        shownOutline: withOutline ? shown() : null,
       );
       var done = false;
       unawaited(attach.whenComplete(() => done = true));
@@ -353,6 +355,51 @@ void main() {
       );
     });
 
+    test(
+      'replacing the plan with no snapshot to hand clears the old '
+      'quest\'s copy, so readers fall back to the new shared quest',
+      () async {
+        final room = space(ownLevel: 100, planId: 'q0');
+        putState(
+          room,
+          PangeaEventTypes.courseMissions,
+          copyContent({
+            'old-lo': ['old-a'],
+          }, revision: 3),
+          sender: self,
+        );
+        await replacePlan(room, withOutline: false);
+        final writes = copyWrites();
+        expect(writes, hasLength(1));
+        expect(jsonDecode(writes.single as String), <String, dynamic>{});
+        // And an empty record reads as no copy.
+        expect(CourseMissionsEvent.tryParse(<String, dynamic>{}), isNull);
+      },
+    );
+
+    test('replacing the plan with no snapshot and no old copy writes '
+        'nothing', () async {
+      await replacePlan(space(ownLevel: 100, planId: 'q0'), withOutline: false);
+      expect(copyWrites(), isEmpty);
+    });
+
+    test(
+      're-attaching the same plan with no snapshot keeps the copy',
+      () async {
+        final room = space(ownLevel: 100);
+        putState(
+          room,
+          PangeaEventTypes.courseMissions,
+          copyContent({
+            'lo-2': ['b1'],
+          }),
+          sender: self,
+        );
+        await room.addCourseToSpace('q1', targetLanguage: 'es');
+        expect(copyWrites(), isEmpty);
+      },
+    );
+
     test('a non-admin replacing the plan writes no copy (today)', () async {
       final room = space(ownLevel: 50, planId: 'q0');
       await replacePlan(room);
@@ -382,6 +429,63 @@ void main() {
         shownOutline: shown(),
       );
       expect(copyWrites(), isEmpty);
+    });
+  });
+
+  /// Creation waits briefly for the outline read the create page already
+  /// has in flight, so a quick "Create course" still gets the copy.
+  group('outlineForNewCourse (creation)', () {
+    QuestOutline outlineFor(String id) => QuestOutline(
+      quest: QuestPlan(
+        id: id,
+        name: '',
+        description: '',
+        targetLanguage: 'es',
+        sequence: const [],
+      ),
+      groups: const [],
+    );
+
+    setUp(() {
+      QuestRepo.resetOutlineCacheForTest();
+      QuestRepo.debugDisplayL1 = 'en';
+    });
+    tearDown(() {
+      QuestRepo.debugBuildOutline = null;
+      QuestRepo.debugDisplayL1 = null;
+      QuestRepo.resetOutlineCacheForTest();
+    });
+
+    test('joins the read already in flight', () async {
+      final pending = Completer<Result<QuestOutline>>();
+      var reads = 0;
+      QuestRepo.debugBuildOutline = (id, {courseRoomId}) {
+        reads++;
+        return pending.future;
+      };
+      // The create page's own load, still in flight.
+      final pageLoad = QuestRepo.outline('q1');
+      final created = outlineForNewCourse('q1');
+      await Future<void>.delayed(const Duration(milliseconds: 20));
+      pending.complete(Result.value(outlineFor('q1')));
+      expect((await created)?.quest.id, 'q1');
+      await pageLoad;
+      expect(reads, 1);
+    });
+
+    test('gives up at the cap', () async {
+      QuestRepo.debugBuildOutline = (id, {courseRoomId}) =>
+          Completer<Result<QuestOutline>>().future;
+      expect(
+        await outlineForNewCourse('q1', cap: const Duration(milliseconds: 50)),
+        isNull,
+      );
+    });
+
+    test('a failed read is no outline', () async {
+      QuestRepo.debugBuildOutline = (id, {courseRoomId}) async =>
+          Result<QuestOutline>.error('boom');
+      expect(await outlineForNewCourse('q1'), isNull);
     });
   });
 

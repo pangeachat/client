@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart' as sdk;
+import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/analytics_access/course_settings_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
@@ -16,7 +17,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -115,50 +116,59 @@ class SelectedCourseController extends State<SelectedCourse>
     }
   }
 
-  /// The outline this page shows for [widget.courseId], once loaded — what a
-  /// new course's own copy is snapshotted from. Null while loading or after a
-  /// failed read: the course is then created without a copy and behaves as
-  /// courses always have (the Studio's first publish saves one).
-  QuestOutline? get _shownOutline =>
-      switch (objectivesProvider.questLoader.value) {
-        AsyncLoaded(value: final outline)
-            when outline.quest.id == widget.courseId =>
-          outline,
-        _ => null,
-      };
+  /// The outline this page shows for [widget.courseId] — what a new course's
+  /// own copy is snapshotted from. Waits briefly for a load already in
+  /// flight; null after a failed read or the wait, and the course is then
+  /// created without a copy as courses always were (the Studio's first
+  /// publish saves one).
+  Future<QuestOutline?> _shownOutline() async {
+    final questId = widget.courseId;
+    final outline = await outlineForNewCourse(questId);
+    if (outline == null) {
+      ErrorHandler.logError(
+        e: 'Course created without its own Can-Do copy: outline not loaded',
+        data: {'quest_id': questId},
+        level: SentryLevel.warning,
+      );
+    }
+    return outline;
+  }
 
   Future<void> launchCourse(String courseId, CoursePlanModel course) async {
     final client = Matrix.of(context).client;
-    final outline = _shownOutline;
     final Completer<String> completer = Completer<String>();
-    client
-        .createPangeaSpace(
-          name: course.title,
-          topic: course.description,
-          avatarUrl: course.imageUrl?.toString(),
-          visibility: sdk.Visibility.public,
-          joinRules: sdk.JoinRules.knock,
-          initialState: [
-            sdk.StateEvent(
-              type: PangeaEventTypes.coursePlan,
-              content: CoursePlanEvent(
-                uuid: courseId,
-                l2: course.targetLanguage,
-              ).toJson(),
-            ),
-            sdk.StateEvent(
-              type: PangeaEventTypes.courseSettings,
-              content: CourseSettingsModel(
-                requireAnalyticsAccess: true,
-              ).toJson(),
-            ),
-            if (outline != null)
+    // Navigation does not wait: the new-course page shows its own progress
+    // while the outline (capped) and the space creation finish.
+    _shownOutline()
+        .then(
+          (outline) => client.createPangeaSpace(
+            name: course.title,
+            topic: course.description,
+            avatarUrl: course.imageUrl?.toString(),
+            visibility: sdk.Visibility.public,
+            joinRules: sdk.JoinRules.knock,
+            initialState: [
               sdk.StateEvent(
-                type: PangeaEventTypes.courseMissions,
-                content: CourseMissionsEvent.snapshotOf(outline).toJson(),
+                type: PangeaEventTypes.coursePlan,
+                content: CoursePlanEvent(
+                  uuid: courseId,
+                  l2: course.targetLanguage,
+                ).toJson(),
               ),
-          ],
-          spaceChild: 0,
+              sdk.StateEvent(
+                type: PangeaEventTypes.courseSettings,
+                content: CourseSettingsModel(
+                  requireAnalyticsAccess: true,
+                ).toJson(),
+              ),
+              if (outline != null)
+                sdk.StateEvent(
+                  type: PangeaEventTypes.courseMissions,
+                  content: CourseMissionsEvent.snapshotOf(outline).toJson(),
+                ),
+            ],
+            spaceChild: 0,
+          ),
         )
         .then((spaceId) => completer.complete(spaceId))
         .catchError((error) => completer.completeError(error));
@@ -188,7 +198,7 @@ class SelectedCourseController extends State<SelectedCourse>
     await space.addCourseToSpace(
       widget.courseId,
       targetLanguage: course.targetLanguage,
-      shownOutline: _shownOutline,
+      shownOutline: await _shownOutline(),
     );
 
     if (space.name.isEmpty) {
