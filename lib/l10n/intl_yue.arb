@@ -8692,8 +8692,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "啟用寫作輔助",
-    "autoIGCToolDescription": "自動運行 Pangea Chat 工具以將發送的消息更正為目標語言。",
+    "autoIGCToolName": "傳送時自動檢查",
+    "autoIGCToolDescription": "當你點擊傳送時，檢查你的訊息是否有錯誤。關閉此功能後，請點擊寫作輔助按鈕自行檢查訊息。",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

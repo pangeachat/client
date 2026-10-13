@@ -7920,8 +7920,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Activar a asistencia de escritura",
-    "autoIGCToolDescription": "Executar automaticamente as ferramentas de Pangea Chat para corrixir os mensaxes enviados á lingua de destino.",
+    "autoIGCToolName": "Comprobación automática ao enviar",
+    "autoIGCToolDescription": "Comproba a túa mensaxe por erros cando premes enviar. Cando esta opción está desactivada, preme o botón de asistencia de escritura para comprobar unha mensaxe ti mesmo.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

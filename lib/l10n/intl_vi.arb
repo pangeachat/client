@@ -5046,8 +5046,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Bật trợ giúp viết",
-    "autoIGCToolDescription": "Tự động chạy các công cụ Pangea Chat để sửa các tin nhắn đã gửi sang ngôn ngữ mục tiêu.",
+    "autoIGCToolName": "Tự động kiểm tra khi gửi",
+    "autoIGCToolDescription": "Kiểm tra tin nhắn của bạn để tìm lỗi khi bạn nhấn gửi. Khi tắt tính năng này, hãy nhấn nút hỗ trợ viết để tự kiểm tra tin nhắn.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

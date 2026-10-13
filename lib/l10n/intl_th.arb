@@ -8372,8 +8372,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "เปิดใช้งานความช่วยเหลือในการเขียน",
-    "autoIGCToolDescription": "เรียกใช้เครื่องมือ Pangea Chat โดยอัตโนมัติเพื่อแก้ไขข้อความที่ส่งไปยังภาษาที่ต้องการ.",
+    "autoIGCToolName": "ตรวจสอบอัตโนมัติเมื่อส่ง",
+    "autoIGCToolDescription": "ตรวจสอบข้อความของคุณเพื่อหาข้อผิดพลาดเมื่อคุณแตะส่ง หากปิดใช้งานอยู่ ให้แตะปุ่มช่วยเหลือการเขียนเพื่อตรวจสอบข้อความด้วยตนเอง",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

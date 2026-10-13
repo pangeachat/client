@@ -8110,8 +8110,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Activer l'assistance à l'écriture",
-    "autoIGCToolDescription": "Exécutez automatiquement les outils de Pangea Chat pour corriger les messages envoyés dans la langue cible.",
+    "autoIGCToolName": "Vérification auto à l'envoi",
+    "autoIGCToolDescription": "Vérifie les erreurs dans votre message lorsque vous appuyez sur envoyer. Lorsque cette option est désactivée, appuyez sur le bouton d'aide à la rédaction pour vérifier un message vous-même.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

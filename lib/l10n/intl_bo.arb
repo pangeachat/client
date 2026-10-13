@@ -7083,8 +7083,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Buka bantuan nulis",
-    "autoIGCToolDescription": "Secara otomatis menjalankan alat Pangea Chat untuk memperbaiki pesan yang dikirim ke bahasa target.",
+    "autoIGCToolName": "སྐད་ཆ་བསྐུར་སྐབས་རང་འགུལ་ཞིབ་བཤེར།",
+    "autoIGCToolDescription": "ཁྱེད་ཀྱིས་སྐད་ཆ་བསྐུར་སྐབས་ནོར་འཁྲུལ་ཡོད་མེད་ཞིབ་བཤེར་བྱེད་པ། འདི་མེད་པའི་སྐབས་སུ་ཁྱེད་རང་གིས་སྐད་ཆ་ཞིག་ཞིབ་བཤེར་བྱེད་པར་ཡིག་རོགས་ཀྱི་ බොར་མནོན།",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

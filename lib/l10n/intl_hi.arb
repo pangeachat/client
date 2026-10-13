@@ -8372,8 +8372,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "लेखन सहायता सक्षम करें",
-    "autoIGCToolDescription": "लक्षित भाषा में भेजे गए संदेशों को सही करने के लिए स्वचालित रूप से Pangea चैट उपकरण चलाएँ।",
+    "autoIGCToolName": "भेजने पर स्वतः जांच करें",
+    "autoIGCToolDescription": "जब आप भेजें पर टैप करें तो अपने संदेश में गलतियों की जांच करें। जब यह बंद हो, तो किसी संदेश की स्वयं जांच करने के लिए लेखन सहायता बटन पर टैप करें।",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

@@ -8509,8 +8509,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "ライティングアシスタントを有効にする",
-    "autoIGCToolDescription": "送信されたメッセージをターゲット言語に修正するために、Pangea Chatツールを自動的に実行します。",
+    "autoIGCToolName": "送信時に自動チェック",
+    "autoIGCToolDescription": "送信をタップしたときにメッセージの間違いをチェックします。オフの場合、ライティングアシスタンスボタンをタップして自分でメッセージをチェックしてください。",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

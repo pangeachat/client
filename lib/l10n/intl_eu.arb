@@ -7920,8 +7920,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Idazteko laguntza aktibatu",
-    "autoIGCToolDescription": "Automatikoki exekutatu Pangea Chat tresnak helburu hizkuntzara bidalitako mezuak zuzentzeko.",
+    "autoIGCToolName": "Automatikoki egiaztatu bidaltzean",
+    "autoIGCToolDescription": "Egiaztatu zure mezuan akatsik dagoen bidali sakatzean. Desaktibatuta dagoenean, sakatu idazketa-laguntzako botoia mezu bat zuk zeuk egiaztatzeko.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

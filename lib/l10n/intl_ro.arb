@@ -8472,8 +8472,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Activare asistență la scriere",
-    "autoIGCToolDescription": "Rulați automat instrumentele Pangea Chat pentru a corecta mesajele trimise în limba țintă.",
+    "autoIGCToolName": "Verificare automată la trimitere",
+    "autoIGCToolDescription": "Verifică-ți mesajul pentru greșeli când apeși trimite. Când această opțiune este dezactivată, apasă butonul de asistență la scriere pentru a verifica singur un mesaj.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

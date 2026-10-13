@@ -7920,8 +7920,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Schrijfassistentie inschakelen",
-    "autoIGCToolDescription": "Voer automatisch Pangea Chat-tools uit om verzonden berichten naar de doeltaal te corrigeren.",
+    "autoIGCToolName": "Autocontrole bij verzenden",
+    "autoIGCToolDescription": "Controleer je bericht op fouten wanneer je op verzenden tikt. Als dit is uitgeschakeld, tik je op de knop voor schrijfhulp om zelf een bericht te controleren.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

@@ -7867,8 +7867,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Activar l'assistència d'escriptura",
-    "autoIGCToolDescription": "Executar automàticament les eines de Pangea Chat per corregir els missatges enviats a l'idioma de destinació.",
+    "autoIGCToolName": "Revisió automàtica en enviar",
+    "autoIGCToolDescription": "Revisa el teu missatge per errors quan toques enviar. Quan aquesta opció està desactivada, toca el botó d'assistència d'escriptura per revisar un missatge tu mateix.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

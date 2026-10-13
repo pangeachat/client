@@ -7941,8 +7941,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Schreibassistenz aktivieren",
-    "autoIGCToolDescription": "Automatisch Pangea Chat-Tools ausführen, um gesendete Nachrichten in die Zielsprache zu korrigieren.",
+    "autoIGCToolName": "Automatische Prüfung beim Senden",
+    "autoIGCToolDescription": "Überprüfe deine Nachricht auf Fehler, wenn du auf „Senden“ tippst. Wenn dies deaktiviert ist, tippe auf die Schaltfläche für Schreibhilfe, um eine Nachricht selbst zu überprüfen.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

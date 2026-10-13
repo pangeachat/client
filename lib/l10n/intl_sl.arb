@@ -8685,8 +8685,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Omogoči pomoč pri pisanju",
-    "autoIGCToolDescription": "Samodejno zaženi orodja Pangea Chat za popravljanje poslanih sporočil v ciljni jezik.",
+    "autoIGCToolName": "Samodejno preverjanje ob pošiljanju",
+    "autoIGCToolDescription": "Preveri sporočilo za napake, ko tapneš Pošlji. Ko je to izklopljeno, tapni gumb za pomoč pri pisanju, da sam preveriš sporočilo.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

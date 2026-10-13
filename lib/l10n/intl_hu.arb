@@ -7843,8 +7843,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Írássegítő engedélyezése",
-    "autoIGCToolDescription": "Automatikusan futtassa a Pangea Chat eszközöket a küldött üzenetek célnyelvre történő javításához.",
+    "autoIGCToolName": "Automatikus ellenőrzés küldéskor",
+    "autoIGCToolDescription": "Ellenőrizze üzenetét hibákra, amikor megérinti a küldés gombot. Ha ez ki van kapcsolva, érintse meg az írássegítő gombot az üzenet saját ellenőrzéséhez.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

@@ -8685,8 +8685,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Ebligi skriban asistadon",
-    "autoIGCToolDescription": "Aŭtomate funkciigi Pangea Chat-ilojn por korekti senditajn mesaĝojn al la cellingvo.",
+    "autoIGCToolName": "Aŭtomata kontrolo je sendo",
+    "autoIGCToolDescription": "Kontrolu vian mesaĝon pri eraroj kiam vi frapetas sendi. Kiam ĉi tio estas malŝaltita, frapetu la butonon de skribasistado por kontroli mesaĝon mem.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

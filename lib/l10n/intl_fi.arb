@@ -7908,8 +7908,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Ota käyttöön kirjoitusapu",
-    "autoIGCToolDescription": "Suorita automaattisesti Pangea Chat -työkaluja korjataksesi lähetetyt viestit kohdekielelle.",
+    "autoIGCToolName": "Automaattinen tarkistus lähettäessä",
+    "autoIGCToolDescription": "Tarkista viestisi virheiden varalta, kun napautat lähetä. Kun tämä on pois päältä, napauta kirjoitusavustuspainiketta tarkistaaksesi viestin itse.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

@@ -7843,8 +7843,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Aktifkan bantuan penulisan",
-    "autoIGCToolDescription": "Secara otomatis menjalankan alat Pangea Chat untuk memperbaiki pesan yang dikirim ke bahasa target.",
+    "autoIGCToolName": "Periksa otomatis saat kirim",
+    "autoIGCToolDescription": "Periksa pesan Anda dari kesalahan saat Anda mengetuk kirim. Jika ini mati, ketuk tombol bantuan menulis untuk memeriksa pesan sendiri.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

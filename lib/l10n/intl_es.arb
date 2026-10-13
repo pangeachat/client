@@ -6055,8 +6055,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Habilitar asistencia de escritura",
-    "autoIGCToolDescription": "Ejecutar automáticamente las herramientas de Pangea Chat para corregir los mensajes enviados al idioma de destino.",
+    "autoIGCToolName": "Revisión automática al enviar",
+    "autoIGCToolDescription": "Revisa tu mensaje en busca de errores al tocar enviar. Cuando esta opción está desactivada, toca el botón de asistencia de escritura para revisar un mensaje tú mismo.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

@@ -267,8 +267,10 @@
        `pangea://` + timer pattern failed silently (#7830). The automatic
        leg is OS-level Android App Links instead (AndroidManifest, #8031):
        links tapped OUTSIDE the browser open the installed app directly.
-       This bar covers browser landings: the tap is an intent:// URL that
-       opens the installed app at the current route and falls back to the
+       This bar covers browser landings: the tap is an intent:// URL for the
+       pangea:// scheme, which the app accepts on every path (App Links leave
+       the sign-in pages to the browser, #9441), so it opens the installed
+       app at the current route and falls back to the
        Play Store natively in Chromium browsers; non-Chromium (Firefox)
        gets a plain Play Store link. Shown on every path — the tap carries
        the route, so a deep link no longer costs its payload
@@ -290,7 +292,7 @@
       const isChromium = /chrome\/\d/i.test(ua);
       const href = isChromium
         ? 'intent://' + window.location.host + window.location.pathname +
-          window.location.search + '#Intent;scheme=https;' +
+          window.location.search + '#Intent;scheme=pangea;' +
           'package=com.talktolearn.chat;S.browser_fallback_url=' +
           encodeURIComponent(playUrl) + ';end'
         : playUrl;

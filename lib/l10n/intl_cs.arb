@@ -8248,8 +8248,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Povolit asistenci při psaní",
-    "autoIGCToolDescription": "Automaticky spouštět nástroje Pangea Chat pro opravu odeslaných zpráv do cílového jazyka.",
+    "autoIGCToolName": "Automatická kontrola při odeslání",
+    "autoIGCToolDescription": "Zkontrolovat zprávu, zda neobsahuje chyby, když klepnete na odeslat. Pokud je tato funkce vypnutá, klepněte na tlačítko asistenta psaní a zkontrolujte zprávu sami.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

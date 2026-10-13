@@ -8050,8 +8050,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "تفعيل مساعدة الكتابة",
-    "autoIGCToolDescription": "تشغيل أدوات دردشة بانجيا تلقائيًا لتصحيح الرسائل المرسلة إلى اللغة المستهدفة.",
+    "autoIGCToolName": "تدقيق تلقائي عند الإرسال",
+    "autoIGCToolDescription": "تدقيق رسالتك بحثًا عن الأخطاء عند النقر على إرسال. عندما يكون هذا الخيار غير مفعّل، انقر على زر مساعدة الكتابة لتدقيق الرسالة بنفسك.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

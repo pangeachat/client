@@ -8676,8 +8676,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Abilita l'assistenza alla scrittura",
-    "autoIGCToolDescription": "Esegui automaticamente gli strumenti di Pangea Chat per correggere i messaggi inviati nella lingua target.",
+    "autoIGCToolName": "Autoverification al inviar",
+    "autoIGCToolDescription": "Verifica tu message pro errores quando tu pulsa inviar. Quando isto es disactivate, pulsa le button de assistentia de scriptura pro verificar un message tu mesme.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

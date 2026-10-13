@@ -7920,8 +7920,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Iespējot rakstīšanas palīdzību",
-    "autoIGCToolDescription": "Automātiski palaist Pangea Chat rīkus, lai labotu nosūtītās ziņas mērķa valodā.",
+    "autoIGCToolName": "Automātiskā pārbaude nosūtot",
+    "autoIGCToolDescription": "Pārbaudīt ziņojumu, vai nav kļūdu, kad nospiežat sūtīšanas pogu. Ja šī opcija ir izslēgta, pieskarieties rakstīšanas palīdzības pogai, lai pats pārbaudītu ziņojumu.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

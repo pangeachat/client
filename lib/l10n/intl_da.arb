@@ -8660,8 +8660,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Aktivér skriveassistance",
-    "autoIGCToolDescription": "Kør automatisk Pangea Chat-værktøjer for at rette sendte beskeder til målsproget.",
+    "autoIGCToolName": "Autotjek ved afsendelse",
+    "autoIGCToolDescription": "Tjek din besked for fejl, når du trykker på send. Når dette er slået fra, skal du trykke på skrivehjælpsknappen for selv at tjekke en besked.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

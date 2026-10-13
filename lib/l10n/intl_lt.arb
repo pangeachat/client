@@ -8521,8 +8521,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Įgalinti rašymo pagalbą",
-    "autoIGCToolDescription": "Automatiškai paleisti Pangea Chat įrankius, kad ištaisytumėte išsiųstas žinutes į tikslinę kalbą.",
+    "autoIGCToolName": "Automatinis tikrinimas išsiunčiant",
+    "autoIGCToolDescription": "Patikrinkite, ar jūsų žinutėje nėra klaidų, kai paspausite siuntimo mygtuką. Kai ši funkcija išjungta, patys paspauskite rašymo pagalbos mygtuką, kad patikrintumėte žinutę.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
