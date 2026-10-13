@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:02:19.329729",
+    "@@last_modified": "2026-10-13 13:03:43.792114",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10046,5 +10046,9 @@
     "activityLaunchFindingCourses": "Ricerca dei tuoi corsi…",
     "activityLaunchCreatingRoom": "Creazione della tua attività…",
     "activityLaunchOpeningRoom": "Apertura della tua attività…",
+    "playWithOthers": "Gioca con gli altri",
+    "openRole": "Apri: {role}",
+    "waitingFor": "In attesa {duration}",
+    "onlineInCourse": "{count} online in {course}",
     "newCourseChat": "Nuova chat del corso"
 }

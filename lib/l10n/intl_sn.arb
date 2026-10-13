@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-13 13:02:25.473088",
+    "@@last_modified": "2026-10-13 13:03:48.787137",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "Kutsvaga makosi ako…",
     "activityLaunchCreatingRoom": "Kugadzira chiitiko chako…",
     "activityLaunchOpeningRoom": "Kuvhura chiitiko chako…",
+    "playWithOthers": "Tamba nevamwe",
+    "openRole": "Vhura: {role}",
+    "waitingFor": "Kwakumirira {duration}",
+    "onlineInCourse": "{count} vari online mu {course}",
     "newCourseChat": "Hurukuro itsva yechikoro"
 }

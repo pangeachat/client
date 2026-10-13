@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-13 13:02:24.736294",
+    "@@last_modified": "2026-10-13 13:03:48.432179",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10918,5 +10918,9 @@
     "activityLaunchFindingCourses": "Hľadáme vaše kurzy…",
     "activityLaunchCreatingRoom": "Vytvárame vašu aktivitu…",
     "activityLaunchOpeningRoom": "Otvárame vašu aktivitu…",
+    "playWithOthers": "Hrať s ostatnými",
+    "openRole": "Otvorené: {role}",
+    "waitingFor": "Čaká sa {duration}",
+    "onlineInCourse": "{count} online v kurze {course}",
     "newCourseChat": "Nový chat kurzu"
 }

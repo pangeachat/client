@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:02:10.914032",
+    "@@last_modified": "2026-10-13 13:03:40.250365",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10100,5 +10100,9 @@
     "activityLaunchFindingCourses": "Trobant els teus cursos…",
     "activityLaunchCreatingRoom": "Creant la teva activitat…",
     "activityLaunchOpeningRoom": "Obrint la teva activitat…",
+    "playWithOthers": "Juga amb altres",
+    "openRole": "Obert: {role}",
+    "waitingFor": "Esperant {duration}",
+    "onlineInCourse": "{count} en línia a {course}",
     "newCourseChat": "Nou xat del curs"
 }

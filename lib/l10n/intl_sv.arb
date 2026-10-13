@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:02:29.328466",
+    "@@last_modified": "2026-10-13 13:03:49.346743",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10491,5 +10491,9 @@
     "activityLaunchFindingCourses": "Hittar dina kurser…",
     "activityLaunchCreatingRoom": "Skapar din aktivitet…",
     "activityLaunchOpeningRoom": "Öppnar din aktivitet…",
+    "playWithOthers": "Spela med andra",
+    "openRole": "Öppen: {role}",
+    "waitingFor": "Väntar {duration}",
+    "onlineInCourse": "{count} online i {course}",
     "newCourseChat": "Ny kurschatt"
 }

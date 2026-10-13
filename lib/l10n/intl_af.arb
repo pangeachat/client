@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-13 13:02:10.139881",
+    "@@last_modified": "2026-10-13 13:03:40.135565",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "Vind jou kursusse…",
     "activityLaunchCreatingRoom": "Skep jou aktiwiteit…",
     "activityLaunchOpeningRoom": "Maak jou aktiwiteit oop…",
+    "playWithOthers": "Speel met ander",
+    "openRole": "Oop: {role}",
+    "waitingFor": "Wag {duration}",
+    "onlineInCourse": "{count} aanlyn in {course}",
     "newCourseChat": "Nuwe kursusklets"
 }

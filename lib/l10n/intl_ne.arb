@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-13 13:02:21.792871",
+    "@@last_modified": "2026-10-13 13:03:47.314530",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "तपाईंका पाठ्यक्रमहरू खोज्दैछ…",
     "activityLaunchCreatingRoom": "तपाईंको गतिविधि सिर्जना गर्दैछ…",
     "activityLaunchOpeningRoom": "तपाईंको गतिविधि खोल्दैछ…",
+    "playWithOthers": "अरूसँग खेल्नुहोस्",
+    "openRole": "खुला: {role}",
+    "waitingFor": "{duration} पर्खँदै",
+    "onlineInCourse": "{course} मा {count} जना अनलाइन",
     "newCourseChat": "नयाँ कोर्स च्याट"
 }

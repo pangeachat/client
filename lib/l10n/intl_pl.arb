@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-13 13:02:23.109024",
+    "@@last_modified": "2026-10-13 13:03:47.028989",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10058,5 +10058,9 @@
     "activityLaunchFindingCourses": "Wyszukiwanie kursów…",
     "activityLaunchCreatingRoom": "Tworzenie aktywności…",
     "activityLaunchOpeningRoom": "Otwieranie aktywności…",
+    "playWithOthers": "Graj z innymi",
+    "openRole": "Otwarte: {role}",
+    "waitingFor": "Oczekiwanie {duration}",
+    "onlineInCourse": "{count} online w {course}",
     "newCourseChat": "Nowy czat kursu"
 }

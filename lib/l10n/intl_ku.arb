@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-13 13:02:18.992099",
+    "@@last_modified": "2026-10-13 13:03:44.907716",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "دەستنیشانکردنی خولەکانت…",
     "activityLaunchCreatingRoom": "دروستکردنی چالاکییەکەت…",
     "activityLaunchOpeningRoom": "کردنەوەی چالاکییەکەت…",
+    "playWithOthers": "لەگەڵ ئەوانی تر یاری بکە",
+    "openRole": "کراوە: {role}",
+    "waitingFor": "{duration} چاوەڕوانکردن",
+    "onlineInCourse": "{count} ئۆنلاین لە {course}",
     "newCourseChat": "چاتی خولی نوێ"
 }

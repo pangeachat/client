@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-13 13:02:22.207674",
+    "@@last_modified": "2026-10-13 13:03:47.108167",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "Finner kursene dine …",
     "activityLaunchCreatingRoom": "Oppretter aktiviteten din …",
     "activityLaunchOpeningRoom": "Åpner aktiviteten din …",
+    "playWithOthers": "Spill med andre",
+    "openRole": "Åpen: {role}",
+    "waitingFor": "Venter {duration}",
+    "onlineInCourse": "{count} online i {course}",
     "newCourseChat": "Ny kursprat"
 }

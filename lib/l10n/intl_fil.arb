@@ -2076,7 +2076,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-13 13:02:13.523883",
+    "@@last_modified": "2026-10-13 13:03:41.457157",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10833,5 +10833,9 @@
     "activityLaunchFindingCourses": "Hinahanap ang iyong mga kurso…",
     "activityLaunchCreatingRoom": "Ginagawa ang iyong aktibidad…",
     "activityLaunchOpeningRoom": "Binubuksan ang iyong aktibidad…",
+    "playWithOthers": "Makipaglaro sa iba",
+    "openRole": "Bukas: {role}",
+    "waitingFor": "Naghihintay {duration}",
+    "onlineInCourse": "{count} online sa {course}",
     "newCourseChat": "Bagong chat sa kurso"
 }

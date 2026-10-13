@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:02:10.134542",
+    "@@last_modified": "2026-10-13 13:03:39.526270",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10601,5 +10601,9 @@
     "activityLaunchFindingCourses": "আপনার কোর্সগুলি খোঁজা হচ্ছে…",
     "activityLaunchCreatingRoom": "আপনার কার্যকলাপ তৈরি করা হচ্ছে…",
     "activityLaunchOpeningRoom": "আপনার কার্যকলাপ খোলা হচ্ছে…",
+    "playWithOthers": "অন্যদের সাথে খেলুন",
+    "openRole": "খুলুন: {role}",
+    "waitingFor": "{duration} অপেক্ষা করা হচ্ছে",
+    "onlineInCourse": "{course}-এ {count} জন অনলাইন আছেন",
     "newCourseChat": "নতুন কোর্স চ্যাট"
 }

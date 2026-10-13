@@ -74,6 +74,9 @@ class PangeaEventTypes {
   static const analyticsSettings = "pangea.analytics_settings";
 
   static const regenerationRequest = "pangea.regeneration_request";
+
+  /// A notice the engagement runner sends into a learner's bot DM.
+  static const botNotice = "p.room.notice";
   static const botNotificationOpened = "p.room.notice.opened";
 
   static const knockedRooms = 'org.pangea.knocked_rooms';

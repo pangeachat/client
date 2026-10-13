@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-13 13:02:10.350685",
+    "@@last_modified": "2026-10-13 13:03:39.665324",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "ኮርሶችዎን በመፈለግ ላይ…",
     "activityLaunchCreatingRoom": "እንቅስቃሴዎን በመፍጠር ላይ…",
     "activityLaunchOpeningRoom": "እንቅስቃሴዎን በመክፈት ላይ…",
+    "playWithOthers": "ከሌሎች ጋር ይጫወቱ",
+    "openRole": "ክፍት: {role}",
+    "waitingFor": "{duration} በመጠበቅ ላይ",
+    "onlineInCourse": "{course} ውስጥ {count} በመስመር ላይ",
     "newCourseChat": "አዲስ የኮርስ ውይይት"
 }

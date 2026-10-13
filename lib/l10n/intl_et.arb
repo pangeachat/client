@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-13 13:02:12.520452",
+    "@@last_modified": "2026-10-13 13:03:41.211831",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9970,5 +9970,9 @@
     "activityLaunchFindingCourses": "Kursuste otsimine…",
     "activityLaunchCreatingRoom": "Tegevuse loomine…",
     "activityLaunchOpeningRoom": "Tegevuse avamine…",
+    "playWithOthers": "Mängi teistega",
+    "openRole": "Avatud: {role}",
+    "waitingFor": "Ootab {duration}",
+    "onlineInCourse": "{count} võrgus kursusel {course}",
     "newCourseChat": "Uus kursusevestlus"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-13 13:02:31.041706",
+    "@@last_modified": "2026-10-13 13:03:50.961285",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "Wiwa awọn iṣẹ ikẹkọ rẹ…",
     "activityLaunchCreatingRoom": "Ṣiṣẹda iṣẹ rẹ…",
     "activityLaunchOpeningRoom": "Ṣiṣi iṣẹ rẹ…",
+    "playWithOthers": "Ṣeré pẹlu awọn miiran",
+    "openRole": "Ṣíi: {role}",
+    "waitingFor": "Nduro de {duration}",
+    "onlineInCourse": "{count} lóńláìní nínú {course}",
     "newCourseChat": "Ìjíròrò ẹ̀kọ́ tuntun"
 }

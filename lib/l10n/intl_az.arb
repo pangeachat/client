@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-13 13:02:10.384920",
+    "@@last_modified": "2026-10-13 13:03:40.013344",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "Kurslarınız axtarılır…",
     "activityLaunchCreatingRoom": "Fəaliyyətiniz yaradılır…",
     "activityLaunchOpeningRoom": "Fəaliyyətiniz açılır…",
+    "playWithOthers": "Başqaları ilə oyna",
+    "openRole": "Açıq: {role}",
+    "waitingFor": "{duration} gözləyir",
+    "onlineInCourse": "{count} nəfər {course} kursunda onlayndır",
     "newCourseChat": "Yeni kurs söhbəti"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-13 13:02:18.361313",
+    "@@last_modified": "2026-10-13 13:03:44.927713",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "De find yu kɔsis…",
     "activityLaunchCreatingRoom": "De mek yu aktiviti…",
     "activityLaunchOpeningRoom": "De ɔpen yu aktiviti…",
+    "playWithOthers": "Ple wit ɔda pipul dɛn",
+    "openRole": "Opin: {role}",
+    "waitingFor": "De wet {duration}",
+    "onlineInCourse": "{count} de ɔnlayn insay {course}",
     "newCourseChat": "Nyu kos chat"
 }

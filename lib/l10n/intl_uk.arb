@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-13 13:02:32.800338",
+    "@@last_modified": "2026-10-13 13:03:50.617241",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9973,5 +9973,9 @@
     "activityLaunchFindingCourses": "Пошук ваших курсів…",
     "activityLaunchCreatingRoom": "Створення вашої активності…",
     "activityLaunchOpeningRoom": "Відкриття вашої активності…",
+    "playWithOthers": "Грати з іншими",
+    "openRole": "Відкрито: {role}",
+    "waitingFor": "Очікування {duration}",
+    "onlineInCourse": "{count} онлайн у {course}",
     "newCourseChat": "Новий чат курсу"
 }

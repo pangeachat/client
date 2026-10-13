@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-13 13:02:13.166309",
+    "@@last_modified": "2026-10-13 13:03:41.977908",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "Sykje nei dyn kursussen…",
     "activityLaunchCreatingRoom": "Dyn aktiviteit oanmeitsje…",
     "activityLaunchOpeningRoom": "Dyn aktiviteit iepenje…",
+    "playWithOthers": "Boartsje mei oaren",
+    "openRole": "Iepen: {role}",
+    "waitingFor": "Wachtsje {duration}",
+    "onlineInCourse": "{count} online yn {course}",
     "newCourseChat": "Nije kursuschats"
 }

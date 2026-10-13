@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-13 13:02:20.768977",
+    "@@last_modified": "2026-10-13 13:03:46.647402",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "Mencari kursus anda…",
     "activityLaunchCreatingRoom": "Mencipta aktiviti anda…",
     "activityLaunchOpeningRoom": "Membuka aktiviti anda…",
+    "playWithOthers": "Main dengan orang lain",
+    "openRole": "Buka: {role}",
+    "waitingFor": "Menunggu {duration}",
+    "onlineInCourse": "{count} dalam talian dalam {course}",
     "newCourseChat": "Sembang kursus baharu"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-13 13:02:10.074208",
+    "@@last_modified": "2026-10-13 13:03:39.731287",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10279,5 +10279,9 @@
     "activityLaunchFindingCourses": "جارٍ العثور على دوراتك التدريبية…",
     "activityLaunchCreatingRoom": "جارٍ إنشاء نشاطك…",
     "activityLaunchOpeningRoom": "جارٍ فتح نشاطك…",
+    "playWithOthers": "العب مع الآخرين",
+    "openRole": "مفتوح: {role}",
+    "waitingFor": "في انتظار {duration}",
+    "onlineInCourse": "{count} متصلون في {course}",
     "newCourseChat": "محادثة دورة جديدة"
 }

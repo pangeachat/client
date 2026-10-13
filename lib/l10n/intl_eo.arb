@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:02:11.564525",
+    "@@last_modified": "2026-10-13 13:03:40.881852",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10918,5 +10918,9 @@
     "activityLaunchFindingCourses": "Trovante viajn kursojn...",
     "activityLaunchCreatingRoom": "Kreante vian agadon...",
     "activityLaunchOpeningRoom": "Malfermante vian agadon...",
+    "playWithOthers": "Ludu kun aliaj",
+    "openRole": "Malferma: {role}",
+    "waitingFor": "Atendante {duration}",
+    "onlineInCourse": "{count} enrete en {course}",
     "newCourseChat": "Nova kursa babilejo"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-13 13:02:09.945914",
+    "@@last_modified": "2026-10-13 13:03:39.510186",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "Търсене на курсове…",
     "activityLaunchCreatingRoom": "Създаване на дейност…",
     "activityLaunchOpeningRoom": "Отваряне на дейност…",
+    "playWithOthers": "Играйте с други",
+    "openRole": "Отворено: {role}",
+    "waitingFor": "Изчакване {duration}",
+    "onlineInCourse": "{count} онлайн в {course}",
     "newCourseChat": "Нов чат за курса"
 }

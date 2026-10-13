@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-13 13:02:23.914452",
+    "@@last_modified": "2026-10-13 13:03:45.146324",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "Sichen Är Coursen…",
     "activityLaunchCreatingRoom": "Erstelle Är Aktivitéit…",
     "activityLaunchOpeningRoom": "Maachen Är Aktivitéit op…",
+    "playWithOthers": "Mat anere spillen",
+    "openRole": "Oppen: {role}",
+    "waitingFor": "Waarden {duration}",
+    "onlineInCourse": "{count} online am Cours {course}",
     "newCourseChat": "Neie Cours-Chat"
 }

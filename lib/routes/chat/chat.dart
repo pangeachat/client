@@ -2973,6 +2973,7 @@ class ChatController extends State<ChatPageWithRoom>
       .firstWhereOrNull(
         (event) =>
             event.isVisibleInGui &&
+            !event.isBotNotice &&
             event.senderId != room.client.userID &&
             !event.redacted,
       )
@@ -2982,6 +2983,7 @@ class ChatController extends State<ChatPageWithRoom>
     final candidate = timeline!.events.firstWhereOrNull(
       (event) =>
           event.isVisibleInGui &&
+          !event.isBotNotice &&
           event.senderId != room.client.userID &&
           event.senderId == BotName.byEnvironment,
     );

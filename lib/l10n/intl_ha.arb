@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-13 13:02:16.313102",
+    "@@last_modified": "2026-10-13 13:03:42.516149",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "Neman darussanka…",
     "activityLaunchCreatingRoom": "Ƙirƙirar ayyukanka…",
     "activityLaunchOpeningRoom": "Buɗe ayyukanka…",
+    "playWithOthers": "Yi wasa da wasu",
+    "openRole": "Bude: {role}",
+    "waitingFor": "Jira {duration}",
+    "onlineInCourse": "{count} a kan layi a {course}",
     "newCourseChat": "Sabon darasi na hira"
 }

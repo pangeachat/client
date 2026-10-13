@@ -2963,7 +2963,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-13 13:02:19.297403",
+    "@@last_modified": "2026-10-13 13:03:45.352847",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10754,5 +10754,9 @@
     "activityLaunchFindingCourses": "Ieškoma jūsų kursų…",
     "activityLaunchCreatingRoom": "Kuriama jūsų veikla…",
     "activityLaunchOpeningRoom": "Atidaroma jūsų veikla…",
+    "playWithOthers": "Žaisti su kitais",
+    "openRole": "Atvira: {role}",
+    "waitingFor": "Laukiama {duration}",
+    "onlineInCourse": "{count} prisijungę {course}",
     "newCourseChat": "Naujas kurso pokalbis"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-13 13:02:28.173928",
+    "@@last_modified": "2026-10-13 13:03:50.507151",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "آپ کے کورسز تلاش کر رہے ہیں…",
     "activityLaunchCreatingRoom": "آپ کی سرگرمی بنا رہے ہیں…",
     "activityLaunchOpeningRoom": "آپ کی سرگرمی کھول رہے ہیں…",
+    "playWithOthers": "دوسروں کے ساتھ کھیلیں",
+    "openRole": "کھولیں: {role}",
+    "waitingFor": "{duration} انتظار کر رہا ہے",
+    "onlineInCourse": "{count} {course} میں آن لائن",
     "newCourseChat": "نئی کورس چیٹ"
 }

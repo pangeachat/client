@@ -1259,7 +1259,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-13 13:02:30.296779",
+    "@@last_modified": "2026-10-13 13:03:51.046533",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10930,5 +10930,9 @@
     "activityLaunchFindingCourses": "搵緊你嘅課程…",
     "activityLaunchCreatingRoom": "建立緊你嘅活動…",
     "activityLaunchOpeningRoom": "開緊你嘅活動…",
+    "playWithOthers": "同其他人玩",
+    "openRole": "開放：{role}",
+    "waitingFor": "等緊 {duration}",
+    "onlineInCourse": "{count} 個喺 {course} 度上線",
     "newCourseChat": "新課程聊天"
 }

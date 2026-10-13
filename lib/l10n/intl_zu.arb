@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-13 13:02:30.740154",
+    "@@last_modified": "2026-10-13 13:03:51.432100",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "Sithola izifundo zakho…",
     "activityLaunchCreatingRoom": "Sakha umsebenzi wakho…",
     "activityLaunchOpeningRoom": "Sivula umsebenzi wakho…",
+    "playWithOthers": "Dlala nabanye",
+    "openRole": "Vula: {role}",
+    "waitingFor": "Ilinde {duration}",
+    "onlineInCourse": "{count} abaku-inthanethi ku-{course}",
     "newCourseChat": "Ingxoxo entsha yesifundo"
 }

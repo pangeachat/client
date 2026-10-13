@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-13 13:02:16.561615",
+    "@@last_modified": "2026-10-13 13:03:43.127513",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10076,5 +10076,9 @@
     "activityLaunchFindingCourses": "Keresem a kurzusaidat…",
     "activityLaunchCreatingRoom": "Létrehozom a tevékenységedet…",
     "activityLaunchOpeningRoom": "Megnyitom a tevékenységedet…",
+    "playWithOthers": "Játssz másokkal",
+    "openRole": "Nyitott: {role}",
+    "waitingFor": "Várakozás: {duration}",
+    "onlineInCourse": "{count} online a {course} kurzuson",
     "newCourseChat": "Új tanfolyami csevegés"
 }

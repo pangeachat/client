@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-13 13:02:13.436076",
+    "@@last_modified": "2026-10-13 13:03:41.976027",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "A' lorg nan cùrsaichean agad…",
     "activityLaunchCreatingRoom": "A' cruthachadh do ghnìomhachd…",
     "activityLaunchOpeningRoom": "A' fosgladh do ghnìomhachd…",
+    "playWithOthers": "Cluich le càch",
+    "openRole": "Fosgailte: {role}",
+    "waitingFor": "A’ feitheamh {duration}",
+    "onlineInCourse": "{count} air-loidhne ann an {course}",
     "newCourseChat": "Còmhradh cùrsa ùr"
 }

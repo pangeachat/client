@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-13 13:02:31.134225",
+    "@@last_modified": "2026-10-13 13:03:50.880208",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "געפֿינען דיין קורסן…",
     "activityLaunchCreatingRoom": "שאַפֿן דיין אַקטיוויטעט…",
     "activityLaunchOpeningRoom": "עפֿענען דיין אַקטיוויטעט…",
+    "playWithOthers": "שפּיל מיט אַנדערע",
+    "openRole": "אָפֿן: {role}",
+    "waitingFor": "וואַרטן {duration}",
+    "onlineInCourse": "{count} אָנליין אין {course}",
     "newCourseChat": "נייַ קורס שמועס"
 }

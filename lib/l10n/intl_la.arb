@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-13 13:02:19.140082",
+    "@@last_modified": "2026-10-13 13:03:44.824694",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "Curricula tua quaerimus…",
     "activityLaunchCreatingRoom": "Actio tua creatur…",
     "activityLaunchOpeningRoom": "Actio tua aperitur…",
+    "playWithOthers": "Cum aliis lude",
+    "openRole": "Apertum: {role}",
+    "waitingFor": "Exspectans {duration}",
+    "onlineInCourse": "{count} in {course} adsunt",
     "newCourseChat": "Novae cursus sermocinatio"
 }

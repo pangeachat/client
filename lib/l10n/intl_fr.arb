@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-13 13:02:16.617296",
+    "@@last_modified": "2026-10-13 13:03:43.100368",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10328,5 +10328,9 @@
     "activityLaunchFindingCourses": "Recherche de vos cours…",
     "activityLaunchCreatingRoom": "Création de votre activité…",
     "activityLaunchOpeningRoom": "Ouverture de votre activité…",
+    "playWithOthers": "Jouer avec d'autres",
+    "openRole": "Ouvert : {role}",
+    "waitingFor": "En attente {duration}",
+    "onlineInCourse": "{count} en ligne dans {course}",
     "newCourseChat": "Nouveau chat de cours"
 }

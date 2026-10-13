@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-13 13:02:24.687609",
+    "@@last_modified": "2026-10-13 13:03:48.314643",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2422,5 +2422,9 @@
     "activityLaunchFindingCourses": "توهان جا ڪورس ڳولي رهيا آهيون…",
     "activityLaunchCreatingRoom": "توهان جي سرگرمي ٺاهي رهيا آهيون…",
     "activityLaunchOpeningRoom": "توهان جي سرگرمي کولي رهيا آهيون…",
+    "playWithOthers": "ٻين سان گڏ کيڏيو",
+    "openRole": "کليل: {role}",
+    "waitingFor": "انتظار {duration}",
+    "onlineInCourse": "{count} آن لائن {course} ۾",
     "newCourseChat": "نئون ڪورس چيٽ"
 }
