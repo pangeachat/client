@@ -2425,5 +2425,6 @@
     "playWithOthers": "Soro ndị ọzọ gwuo egwu",
     "openRole": "Mepee: {role}",
     "waitingFor": "Na-eche {duration}",
-    "onlineInCourse": "{count} n'ịntanetị na {course}"
+    "onlineInCourse": "{count} n'ịntanetị na {course}",
+    "newCourseChat": "Nkata ọmụmụ ihe ọhụrụ"
 }

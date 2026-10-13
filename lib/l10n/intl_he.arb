@@ -10890,5 +10890,6 @@
     "playWithOthers": "שחק עם אחרים",
     "openRole": "פתוח: {role}",
     "waitingFor": "ממתין {duration}",
-    "onlineInCourse": "{count} מחוברים ב{course}"
+    "onlineInCourse": "{count} מחוברים ב{course}",
+    "newCourseChat": "צ'אט קורס חדש"
 }

@@ -10079,5 +10079,6 @@
     "playWithOthers": "Játssz másokkal",
     "openRole": "Nyitott: {role}",
     "waitingFor": "Várakozás: {duration}",
-    "onlineInCourse": "{count} online a {course} kurzuson"
+    "onlineInCourse": "{count} online a {course} kurzuson",
+    "newCourseChat": "Új tanfolyami csevegés"
 }

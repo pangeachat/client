@@ -10608,5 +10608,6 @@
     "playWithOthers": "เล่นกับคนอื่น",
     "openRole": "เปิด: {role}",
     "waitingFor": "กำลังรอ {duration}",
-    "onlineInCourse": "{count} ออนไลน์ใน {course}"
+    "onlineInCourse": "{count} ออนไลน์ใน {course}",
+    "newCourseChat": "แชทคอร์สใหม่"
 }

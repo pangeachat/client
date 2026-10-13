@@ -10912,5 +10912,6 @@
     "playWithOthers": "Jocar con alteres",
     "openRole": "Aperte: {role}",
     "waitingFor": "Attendente {duration}",
-    "onlineInCourse": "{count} in linea in {course}"
+    "onlineInCourse": "{count} in linea in {course}",
+    "newCourseChat": "Nove chat de curso"
 }

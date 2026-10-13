@@ -2425,5 +2425,6 @@
     "playWithOthers": "Dlala nabanye",
     "openRole": "Vula: {role}",
     "waitingFor": "Ilinde {duration}",
-    "onlineInCourse": "{count} abaku-inthanethi ku-{course}"
+    "onlineInCourse": "{count} abaku-inthanethi ku-{course}",
+    "newCourseChat": "Ingxoxo entsha yesifundo"
 }

@@ -10033,5 +10033,6 @@
     "playWithOthers": "Spill med andre",
     "openRole": "Åpen: {role}",
     "waitingFor": "Venter {duration}",
-    "onlineInCourse": "{count} pålogget i {course}"
+    "onlineInCourse": "{count} pålogget i {course}",
+    "newCourseChat": "Ny kursprat"
 }

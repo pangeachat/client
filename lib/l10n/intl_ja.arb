@@ -10745,5 +10745,6 @@
     "playWithOthers": "他のユーザーとプレイ",
     "openRole": "募集: {role}",
     "waitingFor": "{duration}待機中",
-    "onlineInCourse": "{course}で{count}人がオンライン"
+    "onlineInCourse": "{course}で{count}人がオンライン",
+    "newCourseChat": "新しいコースチャット"
 }

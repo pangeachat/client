@@ -2425,5 +2425,6 @@
     "playWithOthers": "മറ്റുള്ളവരുമായി കളിക്കുക",
     "openRole": "തുറക്കുക: {role}",
     "waitingFor": "{duration} കാത്തിരിക്കുന്നു",
-    "onlineInCourse": "{course} എന്നതിൽ {count} പേർ ഓൺലൈനിൽ"
+    "onlineInCourse": "{course} എന്നതിൽ {count} പേർ ഓൺലൈനിൽ",
+    "newCourseChat": "പുതിയ കോഴ്‌സ് ചാറ്റ്"
 }

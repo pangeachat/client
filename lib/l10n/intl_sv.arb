@@ -10494,5 +10494,6 @@
     "playWithOthers": "Spela med andra",
     "openRole": "Öppen: {role}",
     "waitingFor": "Väntar {duration}",
-    "onlineInCourse": "{count} online i {course}"
+    "onlineInCourse": "{count} online i {course}",
+    "newCourseChat": "Ny kurschatt"
 }

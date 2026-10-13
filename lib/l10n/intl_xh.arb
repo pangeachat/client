@@ -2425,5 +2425,6 @@
     "playWithOthers": "Dlala nabanye",
     "openRole": "Vula: {role}",
     "waitingFor": "Kulindwe {duration}",
-    "onlineInCourse": "{count} kwi-intanethi kwi-{course}"
+    "onlineInCourse": "{count} kwi-intanethi kwi-{course}",
+    "newCourseChat": "Incoko entsha yekhosi"
 }

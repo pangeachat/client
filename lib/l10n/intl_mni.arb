@@ -2425,5 +2425,6 @@
     "playWithOthers": "Akhannabasingga khannou",
     "openRole": "Hangdok: {role}",
     "waitingFor": "{duration} ngairammi",
-    "onlineInCourse": "{course} da {count} online lei"
+    "onlineInCourse": "{course} da {count} online lei",
+    "newCourseChat": "নবীন কোর্স চ্যাট"
 }

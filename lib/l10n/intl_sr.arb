@@ -10925,5 +10925,6 @@
     "playWithOthers": "Igrajte se sa drugima",
     "openRole": "Otvoreno: {role}",
     "waitingFor": "Čekanje {duration}",
-    "onlineInCourse": "{count} na mreži u {course}"
+    "onlineInCourse": "{count} na mreži u {course}",
+    "newCourseChat": "Novo ćaskanje o kursu"
 }

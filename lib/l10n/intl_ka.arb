@@ -10876,5 +10876,6 @@
     "playWithOthers": "ითამაშეთ სხვებთან ერთად",
     "openRole": "ღია: {role}",
     "waitingFor": "ლოდინი {duration}",
-    "onlineInCourse": "{count} ონლაინ {course}-ში"
+    "onlineInCourse": "{count} ონლაინ {course}-ში",
+    "newCourseChat": "ახალი კურსის ჩეთი"
 }

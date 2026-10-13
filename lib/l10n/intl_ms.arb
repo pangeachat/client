@@ -2425,5 +2425,6 @@
     "playWithOthers": "Main dengan orang lain",
     "openRole": "Buka: {role}",
     "waitingFor": "Menunggu {duration}",
-    "onlineInCourse": "{count} dalam talian dalam {course}"
+    "onlineInCourse": "{count} dalam talian dalam {course}",
+    "newCourseChat": "Sembang kursus baharu"
 }

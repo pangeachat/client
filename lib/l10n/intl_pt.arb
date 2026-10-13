@@ -10920,5 +10920,6 @@
     "playWithOthers": "Jogar com outras pessoas",
     "openRole": "Aberto: {role}",
     "waitingFor": "Aguardando {duration}",
-    "onlineInCourse": "{count} online em {course}"
+    "onlineInCourse": "{count} online em {course}",
+    "newCourseChat": "Novo chat do curso"
 }

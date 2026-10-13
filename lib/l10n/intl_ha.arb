@@ -2425,5 +2425,6 @@
     "playWithOthers": "Yi wasa da wasu",
     "openRole": "Bude: {role}",
     "waitingFor": "Jira {duration}",
-    "onlineInCourse": "{count} a kan layi a {course}"
+    "onlineInCourse": "{count} a kan layi a {course}",
+    "newCourseChat": "Sabon darasi na hira"
 }

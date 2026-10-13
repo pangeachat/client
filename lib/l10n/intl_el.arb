@@ -10851,5 +10851,6 @@
     "playWithOthers": "Παίξτε με άλλους",
     "openRole": "Ανοιχτό: {role}",
     "waitingFor": "Αναμονή {duration}",
-    "onlineInCourse": "{count} συνδεδεμένοι στο {course}"
+    "onlineInCourse": "{count} συνδεδεμένοι στο {course}",
+    "newCourseChat": "Νέα συνομιλία μαθήματος"
 }

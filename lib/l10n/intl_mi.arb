@@ -2425,5 +2425,6 @@
     "playWithOthers": "Tākaro tahi me ētahi atu",
     "openRole": "Wātea: {role}",
     "waitingFor": "E tatari ana {duration}",
-    "onlineInCourse": "{count} kei te ipurangi i roto i te {course}"
+    "onlineInCourse": "{count} kei te ipurangi i roto i te {course}",
+    "newCourseChat": "Kōrerorero akoranga hōu"
 }

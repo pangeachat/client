@@ -10604,5 +10604,6 @@
     "playWithOthers": "অন্যদের সাথে খেলুন",
     "openRole": "খুলুন: {role}",
     "waitingFor": "{duration} অপেক্ষা করা হচ্ছে",
-    "onlineInCourse": "{course}-এ {count} জন অনলাইন আছেন"
+    "onlineInCourse": "{course}-এ {count} জন অনলাইন আছেন",
+    "newCourseChat": "নতুন কোর্স চ্যাট"
 }

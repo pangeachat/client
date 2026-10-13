@@ -9980,5 +9980,6 @@
     "playWithOthers": "Boshqalar bilan o'ynang",
     "openRole": "Ochiq: {role}",
     "waitingFor": "{duration} kutish",
-    "onlineInCourse": "{course}da {count} ta onlayn"
+    "onlineInCourse": "{course}da {count} ta onlayn",
+    "newCourseChat": "Yangi kurs chati"
 }

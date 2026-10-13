@@ -9976,5 +9976,6 @@
     "playWithOthers": "Besteekin jolastu",
     "openRole": "Ireki: {role}",
     "waitingFor": "Zain {duration}",
-    "onlineInCourse": "{count} linean {course} ikastaroan"
+    "onlineInCourse": "{count} linean {course} ikastaroan",
+    "newCourseChat": "Ikastaro-txat berria"
 }

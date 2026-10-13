@@ -2425,5 +2425,6 @@
     "playWithOthers": "Boartsje mei oaren",
     "openRole": "Iepen: {role}",
     "waitingFor": "Wachtsje {duration}",
-    "onlineInCourse": "{count} online yn {course}"
+    "onlineInCourse": "{count} online yn {course}",
+    "newCourseChat": "Nije kursuschats"
 }

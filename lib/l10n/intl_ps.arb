@@ -2425,5 +2425,6 @@
     "playWithOthers": "له نورو سره لوبې وکړئ",
     "openRole": "خلاص: {role}",
     "waitingFor": "{duration} انتظار",
-    "onlineInCourse": "{count} په {course} کې آنلاین"
+    "onlineInCourse": "{count} په {course} کې آنلاین",
+    "newCourseChat": "د نوي کورس خبرې اترې"
 }

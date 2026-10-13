@@ -2425,5 +2425,6 @@
     "playWithOthers": "Бусадтай тоглох",
     "openRole": "Нээлттэй: {role}",
     "waitingFor": "{duration} хүлээж байна",
-    "onlineInCourse": "{course}-д {count} хүн онлайн байна"
+    "onlineInCourse": "{course}-д {count} хүн онлайн байна",
+    "newCourseChat": "Шинэ хичээлийн чат"
 }

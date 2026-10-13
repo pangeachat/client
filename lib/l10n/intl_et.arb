@@ -9973,5 +9973,6 @@
     "playWithOthers": "Mängi teistega",
     "openRole": "Avatud: {role}",
     "waitingFor": "Ootab {duration}",
-    "onlineInCourse": "{count} võrgus kursusel {course}"
+    "onlineInCourse": "{count} võrgus kursusel {course}",
+    "newCourseChat": "Uus kursusevestlus"
 }

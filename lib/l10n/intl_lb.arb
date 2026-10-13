@@ -2425,5 +2425,6 @@
     "playWithOthers": "Mat anere spillen",
     "openRole": "Oppen: {role}",
     "waitingFor": "Waarden {duration}",
-    "onlineInCourse": "{count} online am Cours {course}"
+    "onlineInCourse": "{count} online am Cours {course}",
+    "newCourseChat": "Neie Cours-Chat"
 }

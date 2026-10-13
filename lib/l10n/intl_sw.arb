@@ -2425,5 +2425,6 @@
     "playWithOthers": "Cheza na wengine",
     "openRole": "Fungua: {role}",
     "waitingFor": "Inasubiri {duration}",
-    "onlineInCourse": "{count} wako mtandaoni katika {course}"
+    "onlineInCourse": "{count} wako mtandaoni katika {course}",
+    "newCourseChat": "Gumzo jipya la kozi"
 }

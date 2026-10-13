@@ -2425,5 +2425,6 @@
     "playWithOthers": "ከሌሎች ጋር ይጫወቱ",
     "openRole": "ክፍት: {role}",
     "waitingFor": "{duration} በመጠበቅ ላይ",
-    "onlineInCourse": "{course} ውስጥ {count} በመስመር ላይ"
+    "onlineInCourse": "{course} ውስጥ {count} በመስመር ላይ",
+    "newCourseChat": "አዲስ የኮርስ ውይይት"
 }

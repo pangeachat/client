@@ -2425,5 +2425,6 @@
     "playWithOthers": "Chwarae gydag eraill",
     "openRole": "Agored: {role}",
     "waitingFor": "Yn aros {duration}",
-    "onlineInCourse": "{count} ar-lein yn {course}"
+    "onlineInCourse": "{count} ar-lein yn {course}",
+    "newCourseChat": "Sgwrs cwrs newydd"
 }

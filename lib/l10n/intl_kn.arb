@@ -2425,5 +2425,6 @@
     "playWithOthers": "ಇತರರೊಂದಿಗೆ ಆಟವಾಡಿ",
     "openRole": "ತೆರೆದಿದೆ: {role}",
     "waitingFor": "{duration} ಕಾಯಲಾಗುತ್ತಿದೆ",
-    "onlineInCourse": "{course} ನಲ್ಲಿ {count} ಆನ್‌ಲೈನ್"
+    "onlineInCourse": "{course} ನಲ್ಲಿ {count} ಆನ್‌ಲೈನ್",
+    "newCourseChat": "ಹೊಸ ಕೋರ್ಸ್ ಚಾಟ್"
 }

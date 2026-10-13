@@ -2425,5 +2425,6 @@
     "playWithOthers": "Speel met ander",
     "openRole": "Oop: {role}",
     "waitingFor": "Wag {duration}",
-    "onlineInCourse": "{count} aanlyn in {course}"
+    "onlineInCourse": "{count} aanlyn in {course}",
+    "newCourseChat": "Nuwe kursusklets"
 }

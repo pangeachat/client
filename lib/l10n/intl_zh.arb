@@ -9976,5 +9976,6 @@
     "playWithOthers": "与他人一起玩",
     "openRole": "开放：{role}",
     "waitingFor": "等待 {duration}",
-    "onlineInCourse": "{count} 人在线，在 {course} 课程中"
+    "onlineInCourse": "{count} 人在线，在 {course} 课程中",
+    "newCourseChat": "新课程聊天"
 }

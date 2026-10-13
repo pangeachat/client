@@ -2425,5 +2425,6 @@
     "playWithOthers": "Duwa uban sa uban",
     "openRole": "Bukas: {role}",
     "waitingFor": "Naghuwat {duration}",
-    "onlineInCourse": "{count} online sa {course}"
+    "onlineInCourse": "{count} online sa {course}",
+    "newCourseChat": "Bag-ong chat sa kurso"
 }

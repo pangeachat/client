@@ -10933,5 +10933,6 @@
     "playWithOthers": "同其他人玩",
     "openRole": "開放：{role}",
     "waitingFor": "等緊 {duration}",
-    "onlineInCourse": "{count} 個喺 {course} 度上線"
+    "onlineInCourse": "{count} 個喺 {course} 度上線",
+    "newCourseChat": "新課程聊天"
 }

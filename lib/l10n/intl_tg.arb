@@ -2425,5 +2425,6 @@
     "playWithOthers": "Бо дигарон бозӣ кунед",
     "openRole": "Кушода: {role}",
     "waitingFor": "Интизорӣ {duration}",
-    "onlineInCourse": "{count} онлайн дар {course}"
+    "onlineInCourse": "{count} онлайн дар {course}",
+    "newCourseChat": "Чат курси нав"
 }

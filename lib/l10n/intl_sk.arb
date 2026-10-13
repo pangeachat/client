@@ -10921,5 +10921,6 @@
     "playWithOthers": "Hrať s ostatnými",
     "openRole": "Otvorené: {role}",
     "waitingFor": "Čaká sa {duration}",
-    "onlineInCourse": "{count} online v kurze {course}"
+    "onlineInCourse": "{count} online v kurze {course}",
+    "newCourseChat": "Nový chat kurzu"
 }

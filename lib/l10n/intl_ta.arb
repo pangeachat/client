@@ -10068,5 +10068,6 @@
     "playWithOthers": "மற்றவர்களுடன் விளையாடு",
     "openRole": "திறந்த: {role}",
     "waitingFor": "காத்திருக்கிறது {duration}",
-    "onlineInCourse": "{course} இல் {count} பேர் ஆன்லைனில் உள்ளனர்"
+    "onlineInCourse": "{course} இல் {count} பேர் ஆன்லைனில் உள்ளனர்",
+    "newCourseChat": "புதிய பாடநெறி அரட்டை"
 }

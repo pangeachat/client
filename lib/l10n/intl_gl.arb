@@ -9976,5 +9976,6 @@
     "playWithOthers": "Xogar con outros",
     "openRole": "Aberto: {role}",
     "waitingFor": "Agardando {duration}",
-    "onlineInCourse": "{count} en liña en {course}"
+    "onlineInCourse": "{count} en liña en {course}",
+    "newCourseChat": "Novo chat do curso"
 }

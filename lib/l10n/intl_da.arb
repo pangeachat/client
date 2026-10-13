@@ -10896,5 +10896,6 @@
     "playWithOthers": "Spil med andre",
     "openRole": "Åben: {role}",
     "waitingFor": "Venter {duration}",
-    "onlineInCourse": "{count} online i {course}"
+    "onlineInCourse": "{count} online i {course}",
+    "newCourseChat": "Ny kursuschatsamtale"
 }

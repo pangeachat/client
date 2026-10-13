@@ -2425,5 +2425,6 @@
     "playWithOthers": "שפּיל מיט אַנדערע",
     "openRole": "אָפֿן: {role}",
     "waitingFor": "וואַרטן {duration}",
-    "onlineInCourse": "{count} אָנליין אין {course}"
+    "onlineInCourse": "{count} אָנליין אין {course}",
+    "newCourseChat": "נייַ קורס שמועס"
 }

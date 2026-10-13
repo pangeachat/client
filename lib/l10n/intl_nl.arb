@@ -9976,5 +9976,6 @@
     "playWithOthers": "Speel met anderen",
     "openRole": "Open: {role}",
     "waitingFor": "Wachten {duration}",
-    "onlineInCourse": "{count} online in {course}"
+    "onlineInCourse": "{count} online in {course}",
+    "newCourseChat": "Nieuwe cursuschat"
 }

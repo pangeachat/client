@@ -9987,5 +9987,6 @@
     "playWithOthers": "Imir le daoine eile",
     "openRole": "Oscailte: {role}",
     "waitingFor": "Ag fanacht {duration}",
-    "onlineInCourse": "{count} ar líne i {course}"
+    "onlineInCourse": "{count} ar líne i {course}",
+    "newCourseChat": "Comhrá cúrsa nua"
 }

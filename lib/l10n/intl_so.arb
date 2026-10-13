@@ -2425,5 +2425,6 @@
     "playWithOthers": "La ciyaar kuwa kale",
     "openRole": "Furan: {role}",
     "waitingFor": "Sugaya {duration}",
-    "onlineInCourse": "{count} ayaa khadka ku jira {course}"
+    "onlineInCourse": "{count} ayaa khadka ku jira {course}",
+    "newCourseChat": "Sheeko kooras cusub"
 }

@@ -10282,5 +10282,6 @@
     "playWithOthers": "العب مع الآخرين",
     "openRole": "مفتوح: {role}",
     "waitingFor": "في انتظار {duration}",
-    "onlineInCourse": "{count} متصلون في {course}"
+    "onlineInCourse": "{count} متصلون في {course}",
+    "newCourseChat": "محادثة دورة جديدة"
 }

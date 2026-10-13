@@ -10013,5 +10013,6 @@
     "playWithOthers": "Pelaa muiden kanssa",
     "openRole": "Avoin: {role}",
     "waitingFor": "Odotetaan {duration}",
-    "onlineInCourse": "{count} paikalla kurssilla {course}"
+    "onlineInCourse": "{count} paikalla kurssilla {course}",
+    "newCourseChat": "Uusi kurssikeskustelu"
 }

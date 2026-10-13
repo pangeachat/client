@@ -9976,5 +9976,6 @@
     "playWithOthers": "Spēlē ar citiem",
     "openRole": "Atvērts: {role}",
     "waitingFor": "Gaida {duration}",
-    "onlineInCourse": "{count} tiešsaistē kursā {course}"
+    "onlineInCourse": "{count} tiešsaistē kursā {course}",
+    "newCourseChat": "Jauna kursa tērzēšana"
 }

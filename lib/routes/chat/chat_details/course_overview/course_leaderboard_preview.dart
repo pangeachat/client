@@ -84,7 +84,8 @@ class CourseLeaderboardPreview extends StatelessWidget {
                     if (room.canInvite)
                       CourseSectionShortcut(
                         icon: Icons.person_add_outlined,
-                        tooltip: l10n.invite,
+                        label: l10n.invite,
+                        showLabel: false,
                         onPressed: onInvite,
                       ),
                     if (subpageHasMore)

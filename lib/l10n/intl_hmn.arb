@@ -2425,5 +2425,6 @@
     "playWithOthers": "Ua si nrog lwm tus",
     "openRole": "Qhib: {role}",
     "waitingFor": "Tos {duration}",
-    "onlineInCourse": "{count} tus nyob online hauv {course}"
+    "onlineInCourse": "{count} tus nyob online hauv {course}",
+    "newCourseChat": "Kev sib tham kawm tshiab"
 }

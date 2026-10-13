@@ -10836,5 +10836,6 @@
     "playWithOthers": "Makipaglaro sa iba",
     "openRole": "Bukas: {role}",
     "waitingFor": "Naghihintay {duration}",
-    "onlineInCourse": "{count} online sa {course}"
+    "onlineInCourse": "{count} online sa {course}",
+    "newCourseChat": "Bagong chat sa kurso"
 }

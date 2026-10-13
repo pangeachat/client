@@ -2425,5 +2425,6 @@
     "playWithOthers": "باشقىلار بىلەن ئويناڭ",
     "openRole": "ئوچۇق: {role}",
     "waitingFor": "{duration} ساقلاۋاتىدۇ",
-    "onlineInCourse": "{course} دە {count} ئادەم توردا"
+    "onlineInCourse": "{course} دە {count} ئادەم توردا",
+    "newCourseChat": "يېڭى دەرس پاراڭلىرى"
 }

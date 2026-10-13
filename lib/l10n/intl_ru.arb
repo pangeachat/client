@@ -10948,5 +10948,6 @@
     "playWithOthers": "Играть с другими",
     "openRole": "Открыто: {role}",
     "waitingFor": "Ожидание {duration}",
-    "onlineInCourse": "{count} онлайн в {course}"
+    "onlineInCourse": "{count} онлайн в {course}",
+    "newCourseChat": "Новый чат курса"
 }

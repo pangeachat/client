@@ -2425,5 +2425,6 @@
     "playWithOthers": "අන් අය සමඟ සෙල්ලම් කරන්න",
     "openRole": "විවෘත: {role}",
     "waitingFor": "{duration} බලා සිටී",
-    "onlineInCourse": "{count} දෙනෙක් {course} හි මාර්ගගතව සිටිති"
+    "onlineInCourse": "{count} දෙනෙක් {course} හි මාර්ගගතව සිටිති",
+    "newCourseChat": "නව පාඨමාලා කතාබස්"
 }

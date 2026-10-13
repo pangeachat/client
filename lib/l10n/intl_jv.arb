@@ -2425,5 +2425,6 @@
     "playWithOthers": "Dolanan karo liyané",
     "openRole": "Buka: {role}",
     "waitingFor": "Ngenteni {duration}",
-    "onlineInCourse": "{count} online ing {course}"
+    "onlineInCourse": "{count} online ing {course}",
+    "newCourseChat": "Obrolan kursus anyar"
 }

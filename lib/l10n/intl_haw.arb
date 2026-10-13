@@ -2425,5 +2425,6 @@
     "playWithOthers": "Pāʻani me nā mea ʻē aʻe",
     "openRole": "Hāmama: {role}",
     "waitingFor": "Ke kali nei {duration}",
-    "onlineInCourse": "{count} ma ka pūnaewele ma {course}"
+    "onlineInCourse": "{count} ma ka pūnaewele ma {course}",
+    "newCourseChat": "Kūkākūkā papa hou"
 }

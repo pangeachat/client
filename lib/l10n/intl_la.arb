@@ -2425,5 +2425,6 @@
     "playWithOthers": "Cum aliis lude",
     "openRole": "Apertum: {role}",
     "waitingFor": "Exspectans {duration}",
-    "onlineInCourse": "{count} in {course} adsunt"
+    "onlineInCourse": "{count} in {course} adsunt",
+    "newCourseChat": "Novae cursus sermocinatio"
 }

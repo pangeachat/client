@@ -2425,5 +2425,6 @@
     "playWithOthers": "Ghjucà cù l'altri",
     "openRole": "Apertu: {role}",
     "waitingFor": "Aspittendu {duration}",
-    "onlineInCourse": "{count} in ligna in {course}"
+    "onlineInCourse": "{count} in ligna in {course}",
+    "newCourseChat": "Nova cunversazione di corsu"
 }

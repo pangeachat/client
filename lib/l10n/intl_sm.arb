@@ -2425,5 +2425,6 @@
     "playWithOthers": "Taʻalo ma isi",
     "openRole": "Tatala: {role}",
     "waitingFor": "Faatali {duration}",
-    "onlineInCourse": "{count} i luga ole laiga ile {course}"
+    "onlineInCourse": "{count} i luga ole laiga ile {course}",
+    "newCourseChat": "Talanoaga fou o le kosi"
 }

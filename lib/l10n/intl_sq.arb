@@ -2425,5 +2425,6 @@
     "playWithOthers": "Luaj me të tjerët",
     "openRole": "Hapur: {role}",
     "waitingFor": "Duke pritur {duration}",
-    "onlineInCourse": "{count} online në {course}"
+    "onlineInCourse": "{count} online në {course}",
+    "newCourseChat": "Bisedë e re kursi"
 }

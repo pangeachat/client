@@ -10103,5 +10103,6 @@
     "playWithOthers": "Juga amb altres",
     "openRole": "Obert: {role}",
     "waitingFor": "Esperant {duration}",
-    "onlineInCourse": "{count} en línia a {course}"
+    "onlineInCourse": "{count} en línia a {course}",
+    "newCourseChat": "Nou xat del curs"
 }

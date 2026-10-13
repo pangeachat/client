@@ -2425,5 +2425,6 @@
     "playWithOthers": "Başqaları ilə oyna",
     "openRole": "Açıq: {role}",
     "waitingFor": "{duration} gözləyir",
-    "onlineInCourse": "{count} nəfər {course} kursunda onlayndır"
+    "onlineInCourse": "{count} nəfər {course} kursunda onlayndır",
+    "newCourseChat": "Yeni kurs söhbəti"
 }

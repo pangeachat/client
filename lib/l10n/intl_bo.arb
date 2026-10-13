@@ -9587,5 +9587,6 @@
     "playWithOthers": "གཞན་དང་མཉམ་དུ་རྩེད།",
     "openRole": "ཁ་ཕྱེ།: {role}",
     "waitingFor": "{duration}སྒུག་བཞིན་པ།",
-    "onlineInCourse": "{course}ནང་མི་གྲངས་{count}དྲ་ཐོག་ཏུ་ཡོད།"
+    "onlineInCourse": "{course}ནང་མི་གྲངས་{count}དྲ་ཐོག་ཏུ་ཡོད།",
+    "newCourseChat": "སློབ་ཚན་གསར་པའི་ཁ་བརྡ།"
 }

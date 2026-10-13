@@ -2425,5 +2425,6 @@
     "playWithOthers": "Sewerani ndi ena",
     "openRole": "Tsegulani: {role}",
     "waitingFor": "Kudikira {duration}",
-    "onlineInCourse": "{count} pa intaneti mu {course}"
+    "onlineInCourse": "{count} pa intaneti mu {course}",
+    "newCourseChat": "Macheza atsopano a maphunziro"
 }

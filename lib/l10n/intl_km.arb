@@ -2425,5 +2425,6 @@
     "playWithOthers": "លេងជាមួយអ្នកដទៃ",
     "openRole": "បើក៖ {role}",
     "waitingFor": "កំពុងរង់ចាំ {duration}",
-    "onlineInCourse": "{count} នាក់កំពុងអនឡាញក្នុង {course}"
+    "onlineInCourse": "{count} នាក់កំពុងអនឡាញក្នុង {course}",
+    "newCourseChat": "ការជជែកវគ្គសិក្សាថ្មី"
 }

@@ -10757,5 +10757,6 @@
     "playWithOthers": "Žaisti su kitais",
     "openRole": "Atvira: {role}",
     "waitingFor": "Laukiama {duration}",
-    "onlineInCourse": "{count} prisijungę {course}"
+    "onlineInCourse": "{count} prisijungę {course}",
+    "newCourseChat": "Naujas kurso pokalbis"
 }

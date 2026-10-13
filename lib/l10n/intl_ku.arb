@@ -2425,5 +2425,6 @@
     "playWithOthers": "لەگەڵ ئەوانی تر یاری بکە",
     "openRole": "کراوە: {role}",
     "waitingFor": "{duration} چاوەڕوانکردن",
-    "onlineInCourse": "{count} ئۆنلاین لە {course}"
+    "onlineInCourse": "{count} ئۆنلاین لە {course}",
+    "newCourseChat": "چاتی خولی نوێ"
 }

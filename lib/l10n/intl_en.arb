@@ -5844,5 +5844,9 @@
     "filteredNetworkMapBlocked": "This network blocks the map.",
     "@filteredNetworkMapBlocked": {
         "description": "Note shown over the world map when the network blocks the map."
+    },
+    "newCourseChat": "New course chat",
+    "@newCourseChat": {
+        "description": "Label of the button in the course page's Chats section header that creates a new group chat in the course. Shown to course admins."
     }
 }

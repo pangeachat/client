@@ -2425,5 +2425,6 @@
     "playWithOthers": "Ṣeré pẹlu awọn miiran",
     "openRole": "Ṣíi: {role}",
     "waitingFor": "Nduro de {duration}",
-    "onlineInCourse": "{count} lóńláìní nínú {course}"
+    "onlineInCourse": "{count} lóńláìní nínú {course}",
+    "newCourseChat": "Ìjíròrò ẹ̀kọ́ tuntun"
 }

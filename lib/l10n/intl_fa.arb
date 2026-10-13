@@ -10064,5 +10064,6 @@
     "playWithOthers": "بازی با دیگران",
     "openRole": "باز: {role}",
     "waitingFor": "در انتظار {duration}",
-    "onlineInCourse": "{count} نفر آنلاین در {course}"
+    "onlineInCourse": "{count} نفر آنلاین در {course}",
+    "newCourseChat": "چت دوره جدید"
 }

@@ -2425,5 +2425,6 @@
     "playWithOthers": "Tamba nevamwe",
     "openRole": "Vhura: {role}",
     "waitingFor": "Kwakumirira {duration}",
-    "onlineInCourse": "{count} vari online mu {course}"
+    "onlineInCourse": "{count} vari online mu {course}",
+    "newCourseChat": "Hurukuro itsva yechikoro"
 }

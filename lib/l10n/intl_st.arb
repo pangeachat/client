@@ -2425,5 +2425,6 @@
     "playWithOthers": "Bapala le ba bang",
     "openRole": "Bula: {role}",
     "waitingFor": "Emela {duration}",
-    "onlineInCourse": "{count} ba inthaneteng ho {course}"
+    "onlineInCourse": "{count} ba inthaneteng ho {course}",
+    "newCourseChat": "Puisano e ncha ea thuto"
 }

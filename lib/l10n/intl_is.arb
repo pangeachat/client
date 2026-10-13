@@ -2425,5 +2425,6 @@
     "playWithOthers": "Spila með öðrum",
     "openRole": "Opið: {role}",
     "waitingFor": "Beðið í {duration}",
-    "onlineInCourse": "{count} á netinu í {course}"
+    "onlineInCourse": "{count} á netinu í {course}",
+    "newCourseChat": "Nýtt námskeiðsspjall"
 }

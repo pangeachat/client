@@ -2425,5 +2425,6 @@
     "playWithOthers": "Ple wit ɔda pipul dɛn",
     "openRole": "Opin: {role}",
     "waitingFor": "De wet {duration}",
-    "onlineInCourse": "{count} de ɔnlayn insay {course}"
+    "onlineInCourse": "{count} de ɔnlayn insay {course}",
+    "newCourseChat": "Nyu kos chat"
 }

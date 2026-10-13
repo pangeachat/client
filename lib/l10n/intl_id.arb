@@ -10049,5 +10049,6 @@
     "playWithOthers": "Bermain dengan yang lain",
     "openRole": "Buka: {role}",
     "waitingFor": "Menunggu {duration}",
-    "onlineInCourse": "{count} daring di {course}"
+    "onlineInCourse": "{count} daring di {course}",
+    "newCourseChat": "Obrolan kursus baru"
 }

@@ -2425,5 +2425,6 @@
     "playWithOthers": "دوسروں کے ساتھ کھیلیں",
     "openRole": "کھولیں: {role}",
     "waitingFor": "{duration} انتظار کر رہا ہے",
-    "onlineInCourse": "{count} {course} میں آن لائن"
+    "onlineInCourse": "{count} {course} میں آن لائن",
+    "newCourseChat": "نئی کورس چیٹ"
 }

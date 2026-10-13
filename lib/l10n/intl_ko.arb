@@ -10169,5 +10169,6 @@
     "playWithOthers": "다른 사람들과 플레이",
     "openRole": "열기: {role}",
     "waitingFor": "{duration} 기다리는 중",
-    "onlineInCourse": "{course}에서 {count}명 온라인"
+    "onlineInCourse": "{course}에서 {count}명 온라인",
+    "newCourseChat": "새 코스 채팅"
 }

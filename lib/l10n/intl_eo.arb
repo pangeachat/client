@@ -10921,5 +10921,6 @@
     "playWithOthers": "Ludu kun aliaj",
     "openRole": "Malferma: {role}",
     "waitingFor": "Atendante {duration}",
-    "onlineInCourse": "{count} enrete en {course}"
+    "onlineInCourse": "{count} enrete en {course}",
+    "newCourseChat": "Nova kursa babilejo"
 }

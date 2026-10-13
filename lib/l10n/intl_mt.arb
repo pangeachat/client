@@ -2425,5 +2425,6 @@
     "playWithOthers": "Ilghab ma' oħrajn",
     "openRole": "Miftuħ: {role}",
     "waitingFor": "Qed tistenna {duration}",
-    "onlineInCourse": "{count} online f'{course}'"
+    "onlineInCourse": "{count} online f'{course}'",
+    "newCourseChat": "Chat ġdid tal-kors"
 }

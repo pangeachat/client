@@ -9990,5 +9990,6 @@
     "playWithOthers": "Гуляць з іншымі",
     "openRole": "Адкрыта: {role}",
     "waitingFor": "Чакаем {duration}",
-    "onlineInCourse": "{count} анлайн у {course}"
+    "onlineInCourse": "{count} анлайн у {course}",
+    "newCourseChat": "Новы чат курса"
 }

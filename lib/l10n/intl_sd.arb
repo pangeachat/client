@@ -2425,5 +2425,6 @@
     "playWithOthers": "ٻين سان گڏ کيڏيو",
     "openRole": "کليل: {role}",
     "waitingFor": "انتظار {duration}",
-    "onlineInCourse": "{count} آن لائن {course} ۾"
+    "onlineInCourse": "{count} آن لائن {course} ۾",
+    "newCourseChat": "نئون ڪورس چيٽ"
 }

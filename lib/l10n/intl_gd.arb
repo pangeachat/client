@@ -2425,5 +2425,6 @@
     "playWithOthers": "Cluich le càch",
     "openRole": "Fosgailte: {role}",
     "waitingFor": "A’ feitheamh {duration}",
-    "onlineInCourse": "{count} air-loidhne ann an {course}"
+    "onlineInCourse": "{count} air-loidhne ann an {course}",
+    "newCourseChat": "Còmhradh cùrsa ùr"
 }
