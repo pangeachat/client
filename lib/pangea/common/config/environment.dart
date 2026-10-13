@@ -333,14 +333,12 @@ class Environment {
       : 'https://sygnal.pangea.chat/_matrix/push/v1/notify';
 
   static String get sentryDsn {
-    return appConfigOverride?.sentryDsn ??
-        dotenv.env["SENTRY_DSN"] ??
+    return dotenv.env["SENTRY_DSN"] ??
         'https://c2fd19ab2cdc4ebb939a32d01c0e9fa1@o225078.ingest.sentry.io/1376295';
   }
 
   static String? get googleAnalyticsFirebaseOptionsBase64 {
-    return appConfigOverride?.googleAnalyticsFirebaseOptionsBase64 ??
-        dotenv.env["GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64"];
+    return dotenv.env["GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64"];
   }
 
   static String get supportUserId {
@@ -393,8 +391,6 @@ class AppConfigOverride {
   final bool? dosageVoiceMessagesEnabled;
   final bool? voiceTranscriptDecoupleEnabled;
   final bool? liveStreamingSttEnabled;
-  final String? sentryDsn;
-  final String? googleAnalyticsFirebaseOptionsBase64;
   final String? botName;
 
   const AppConfigOverride({
@@ -409,8 +405,6 @@ class AppConfigOverride {
     this.dosageVoiceMessagesEnabled,
     this.voiceTranscriptDecoupleEnabled,
     this.liveStreamingSttEnabled,
-    this.sentryDsn,
-    this.googleAnalyticsFirebaseOptionsBase64,
     this.botName,
   });
 
@@ -470,9 +464,6 @@ class AppConfigOverride {
       voiceTranscriptDecoupleEnabled:
           json['voiceTranscriptDecoupleEnabled'] as bool?,
       liveStreamingSttEnabled: json['liveStreamingSttEnabled'] as bool?,
-      sentryDsn: json['sentryDsn'] as String?,
-      googleAnalyticsFirebaseOptionsBase64:
-          json['googleAnalyticsFirebaseOptionsBase64'] as String?,
       botName: json['botName'] as String?,
     );
   }
@@ -490,9 +481,6 @@ class AppConfigOverride {
       'dosageVoiceMessagesEnabled': dosageVoiceMessagesEnabled,
       'voiceTranscriptDecoupleEnabled': voiceTranscriptDecoupleEnabled,
       'liveStreamingSttEnabled': liveStreamingSttEnabled,
-      'sentryDsn': sentryDsn,
-      'googleAnalyticsFirebaseOptionsBase64':
-          googleAnalyticsFirebaseOptionsBase64,
       'botName': botName,
     };
   }
@@ -510,8 +498,6 @@ class AppConfigOverride {
         dosageVoiceMessagesEnabled.hashCode ^
         voiceTranscriptDecoupleEnabled.hashCode ^
         liveStreamingSttEnabled.hashCode ^
-        sentryDsn.hashCode ^
-        googleAnalyticsFirebaseOptionsBase64.hashCode ^
         botName.hashCode;
   }
 
@@ -531,9 +517,6 @@ class AppConfigOverride {
         voiceTranscriptDecoupleEnabled ==
             other.voiceTranscriptDecoupleEnabled &&
         liveStreamingSttEnabled == other.liveStreamingSttEnabled &&
-        sentryDsn == other.sentryDsn &&
-        googleAnalyticsFirebaseOptionsBase64 ==
-            other.googleAnalyticsFirebaseOptionsBase64 &&
         botName == other.botName;
   }
 }
