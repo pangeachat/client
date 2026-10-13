@@ -66,10 +66,6 @@ class PinSemanticsLayer extends StatefulWidget {
   /// counts can never drift (#8753).
   final String? Function(QuestActivityCard card)? liveDetailOf;
 
-  /// Whether course progression locks a pin; its label then says so, since
-  /// the gray pin's colour alone carries nothing to a screen reader.
-  final bool Function(String activityId)? lockedOf;
-
   const PinSemanticsLayer({
     super.key,
     required this.mapController,
@@ -77,7 +73,6 @@ class PinSemanticsLayer extends StatefulWidget {
     required this.stateOf,
     required this.onTap,
     this.liveDetailOf,
-    this.lockedOf,
   });
 
   @override
@@ -201,8 +196,6 @@ class PinSemanticsLayerState extends State<PinSemanticsLayer> {
     ?card.cefr,
     ?widget.liveDetailOf?.call(card),
     widget.stateOf(card.activityId).label(l10n),
-    if (widget.lockedOf?.call(card.activityId) ?? false)
-      l10n.lockedMissionRequirement,
   ].join(', ');
 
   @override

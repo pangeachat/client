@@ -133,15 +133,16 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   bool get _pingedSectionSeen => _seenPingedActivityId == _pingedActivityId;
 
-  /// Whether the learner folded (true) or opened (false) each Mission they
-  /// touched, by id. Untouched Missions fall back to the default — folded
-  /// when locked, open otherwise — and a choice survives the Mission
-  /// unlocking. Held here rather than in each [ObjectiveSection] because the
-  /// list builds lazily and disposes sections scrolled out of view (#9248).
-  final Map<String, bool> _collapsedByChoice = {};
+  /// Missions the learner folded, by id. Held here rather than in each
+  /// [ObjectiveSection] because the list builds lazily and disposes sections
+  /// scrolled out of view (#9248).
+  final Set<String> _collapsedMissionIds = {};
 
-  void _setMissionCollapsed(String missionId, bool collapsed) =>
-      setState(() => _collapsedByChoice[missionId] = collapsed);
+  void _toggleMissionCollapsed(String missionId) => setState(() {
+    if (!_collapsedMissionIds.remove(missionId)) {
+      _collapsedMissionIds.add(missionId);
+    }
+  });
 
   /// This list is the course card's full course plan — the one surface an
   /// activity's back arrow returns to (routing.instructions.md).
@@ -658,7 +659,6 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                       missionGradient:
                           widget.objectivesProvider.missionGradient,
                       signalsFor: _signalsFor,
-                      isLocked: widget.objectivesProvider.isActivityLocked,
                     );
                     if (suggested.isEmpty) return const SizedBox.shrink();
                     // The course tutorial's "pick an activity" step lights
@@ -734,15 +734,6 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     separatorBuilder: (_, _) => const SizedBox(height: 24.0),
                     itemBuilder: (context, i) {
                       final group = groups[i];
-                      final lock = hasProgress
-                          ? widget.objectivesProvider.missionLock(
-                              group.objective.id,
-                            )
-                          : null;
-                      final collapsed =
-                          widget.collapsibleMissions &&
-                          (_collapsedByChoice[group.objective.id] ??
-                              lock != null);
                       return ObjectiveSection(
                         key: i == pingedGroupIndex
                             ? _pingedSectionKey
@@ -752,12 +743,11 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                         pingedActivityId: i == pingedGroupIndex
                             ? pingedActivityId
                             : null,
-                        collapsed: collapsed,
+                        collapsed: _collapsedMissionIds.contains(
+                          group.objective.id,
+                        ),
                         onToggleCollapsed: widget.collapsibleMissions
-                            ? () => _setMissionCollapsed(
-                                group.objective.id,
-                                !collapsed,
-                              )
+                            ? () => _toggleMissionCollapsed(group.objective.id)
                             : null,
                         isUpNext: group.objective.id == anchorId,
                         group: group,
@@ -766,10 +756,6 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                             ? widget.objectivesProvider.missionProgress(
                                 group.objective.id,
                               )
-                            : null,
-                        lock: lock,
-                        isActivityLocked: hasProgress
-                            ? widget.objectivesProvider.isActivityLocked
                             : null,
                         onTap: _openActivity,
                         userStarsByActivity: _userStarsByActivity,

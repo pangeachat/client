@@ -274,13 +274,6 @@ class WorldMapPinsManager {
 
   int? activityStarsEarned(String activityId) => _userStars[activityId];
 
-  /// A locked pin can't be started yet. A live session is never locked, so
-  /// open sessions stay joinable.
-  /// With [courseRoomId] (a course-scoped map), only that course's locks count.
-  bool isLocked(QuestActivityCard card, {String? courseRoomId}) =>
-      !displayStateOf(card).isLive &&
-      _progression.isActivityLocked(card.activityId, courseId: courseRoomId);
-
   /// Activity ids the learner has earned at least one star in — the trail the
   /// ranking reserves slots for (world-map.instructions.md, "Goal Progress").
   Set<String> get progressedActivityIds => {
@@ -645,9 +638,7 @@ class WorldMapPinsManager {
     try {
       final outline = (await QuestRepo.outline(
         coursePlanId,
-        // An unjoined course ranks toward its next Mission but locks nothing:
-        // locks only apply to the learner's own courses.
-      )).result?.toCourseLoOutline(locksExempt: true);
+      )).result?.toCourseLoOutline();
       // A re-scope may have raced ahead; only apply if still the active scope.
       if (_scopedCourseOutlineId != coursePlanId) return;
       _scopedCourseOutline = outline;

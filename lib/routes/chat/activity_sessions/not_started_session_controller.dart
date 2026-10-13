@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
@@ -14,21 +13,16 @@ import 'package:fluffychat/features/activity_sessions/play_with_bot_intent.dart'
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
-import 'package:fluffychat/features/quests/activity_lock_client_extension.dart';
 import 'package:fluffychat/features/room_summaries/activity_sessions_status_model.dart';
 import 'package:fluffychat/features/room_summaries/activity_summary_status_enum.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start_view.dart';
-import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
-import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -83,40 +77,19 @@ class NotStartedSessionController extends State<NotStartedSession>
   NotStartedSubPage _subPage = NotStartedSubPage.main;
   final _goalsHandler = GoalsSubscriptionHandler();
 
-  /// The courses whose progression locks starting a new session; joining an
-  /// open one never is. Null until the first check lands — the start buttons
-  /// wait for it rather than flashing and vanishing.
-  List<Room>? _lockingCourses;
-  List<Room> get lockingCourses => _lockingCourses ?? const [];
-  bool get isLocked => lockingCourses.isNotEmpty;
-  bool get lockResolved => _lockingCourses != null;
-
-  /// Bumped per check, so an older check that finishes late is dropped.
-  int _lockCheck = 0;
-
   /// The join list was opened for the learner because the activity had open
   /// sessions, rather than by a tap.
   bool _landedOnJoinList = false;
 
-  /// Stars and teacher flags are room state, so a sync can change the lock
-  /// while the page is open; only syncs carrying them re-check.
-  StreamSubscription? _lockRefreshSub;
-
   @override
   void initState() {
     super.initState();
-    _resolveLock();
-    _lockRefreshSub = Matrix.of(context).client.onSync.stream
-        .where(ActivityLockClientExtension.syncAffectsLocks)
-        .rateLimit(const Duration(seconds: 2))
-        .listen((_) => _resolveLock());
     _syncJoinListLanding();
   }
 
   @override
   void didUpdateWidget(NotStartedSession oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.course?.id != widget.course?.id) _resolveLock();
     _syncJoinListLanding();
   }
 
@@ -139,48 +112,6 @@ class NotStartedSessionController extends State<NotStartedSession>
     }
   }
 
-  /// How long the start buttons wait on a lock check before giving up on it.
-  static const Duration _lockCheckLimit = Duration(seconds: 10);
-
-  Future<void> _resolveLock() async {
-    final check = ++_lockCheck;
-    List<Room> courses;
-    try {
-      courses = await Matrix.of(context).client
-          .coursesLockingActivity(
-            widget.activityId,
-            courseId: widget.course?.id,
-          )
-          .timeoutNamed(_lockCheckLimit, 'lock check: activity start page');
-    } catch (e, s) {
-      // A failed or stuck check must not hold the start buttons on their
-      // loading bar: fail open, as the resolver does before progress loads.
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'activityId': widget.activityId},
-        level: SentryLevel.warning,
-      );
-      courses = const [];
-    }
-    if (!mounted || check != _lockCheck) return;
-    final previous = _lockingCourses;
-    final unchanged =
-        previous != null &&
-        previous.map((r) => r.id).join() == courses.map((r) => r.id).join();
-    if (!unchanged) setState(() => _lockingCourses = courses);
-  }
-
-  /// Open [course] on its course plan, where the learner's current Mission
-  /// is — the way to unlock this activity.
-  void goToLockingCourse(Room course) => context.go(
-    WorkspaceNav.openCourse(
-      GoRouterState.of(context).uri,
-      course.id,
-      tab: SpaceSettingsTabs.course,
-    ),
-  );
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -189,7 +120,6 @@ class NotStartedSessionController extends State<NotStartedSession>
 
   @override
   void dispose() {
-    _lockRefreshSub?.cancel();
     _goalsHandler.cancel();
     super.dispose();
   }
@@ -350,7 +280,6 @@ class NotStartedSessionController extends State<NotStartedSession>
   /// Every start says whether the bot comes along, so an earlier "Play with
   /// Pangea Bot" that was backed out of can't carry into a later start.
   void startNewActivity({bool withBot = false}) {
-    if (isLocked) return;
     PlayWithBotIntent.set(widget.activityId, withBot: withBot);
     //Nothing to jump to if container is minimized, so skip
     if (widget.scrollController.hasClients) widget.scrollController.jumpTo(0);

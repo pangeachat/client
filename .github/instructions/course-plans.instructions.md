@@ -130,7 +130,7 @@ Returned by `CourseActivityRepo.get()`. Full activity plan with all fields (titl
 
 ## 7. Unlocking
 
-Topic unlocking is gone with the v1 course view. Missions now unlock by stars — see [quests.instructions.md](quests.instructions.md#mission-locks).
+Topic unlocking is gone with the v1 course view. Nothing is locked now: progression only ranks — see [quests.instructions.md](quests.instructions.md).
 
 ---
 

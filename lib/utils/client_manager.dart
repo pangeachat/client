@@ -203,7 +203,6 @@ abstract class ClientManager {
         PangeaEventTypes.analyticsStatus,
         PangeaEventTypes.coursePlan,
         PangeaEventTypes.teacherMode,
-        PangeaEventTypes.courseTeacher,
         PangeaEventTypes.courseChatList,
         PangeaEventTypes.analyticsSettings,
         PangeaEventTypes.courseSettings,

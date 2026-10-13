@@ -4342,20 +4342,6 @@
             "total": {}
         }
     },
-    "lockedMissionRequirement": "Finish earlier missions to unlock",
-    "unlockInCourse": "Unlock in {course}",
-    "@unlockInCourse": {
-        "placeholders": {
-            "course": {"type": "String"}
-        }
-    },
-    "missionLockedStars": "Locked. {earned} of {required} stars from earlier missions needed to unlock",
-    "@missionLockedStars": {
-        "placeholders": {
-            "earned": {},
-            "required": {}
-        }
-    },
     "activityNoLongerSupported": "This activity ran on an older version of activities and is no longer supported. You can still review what happened in this session.",
     "activityLoadFailed": "Couldn't load the activity. Check your connection and try again.",
     "levelUpChip": "Level {level}!",
@@ -5077,26 +5063,30 @@
     "openRole": "Open: {role}",
     "@openRole": {
         "placeholders": {
-            "role": {"type": "String"}
+            "role": {
+                "type": "String"
+            }
         }
     },
-    "roleAlreadyDone": "You've already completed this role",
     "waitingFor": "Waiting {duration}",
     "@waitingFor": {
         "placeholders": {
-            "duration": {"type": "String"}
+            "duration": {
+                "type": "String"
+            }
         }
     },
     "onlineInCourse": "{count} online in {course}",
     "@onlineInCourse": {
         "placeholders": {
-            "count": {"type": "int"},
-            "course": {"type": "String"}
+            "count": {
+                "type": "int"
+            },
+            "course": {
+                "type": "String"
+            }
         }
     },
-    "teachingThisCourseTitle": "I'm teaching this course",
-    "teachingThisCourseDesc": "Teachers have access to all content but cannot place on the leaderboard",
-    "teacher": "Teacher",
     "requireAnalyticsAccessTitle": "Require analytics access to join",
     "requireAnalyticsAccessDesc": "Participants must grant access to their learning analytics to join this course",
     "moreOptions": "More options",

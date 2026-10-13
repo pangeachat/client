@@ -225,7 +225,7 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     // The join list is where a joinable activity lands, so it has no Back:
     // the panel's own close returns. It keeps a quiet way to start your own
-    // (unless locked) and the Completed list.
+    // and the Completed list.
     if (controller.subPage == NotStartedSubPage.join) {
       // The minimized phone sheet hides the list itself, so it offers one
       // row: open the list full, or start your own.
@@ -243,28 +243,26 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
                 filled: true,
               ),
             ),
-            if (!controller.isLocked)
-              _ActivityCtaChip(
-                label: L10n.of(context).startOwn,
-                icon: ActivityPinState.available.icon,
-                onPressed: () {
-                  expand?.call();
-                  controller.startNewActivity();
-                },
-              ),
+            _ActivityCtaChip(
+              label: L10n.of(context).startOwn,
+              icon: ActivityPinState.available.icon,
+              onPressed: () {
+                expand?.call();
+                controller.startNewActivity();
+              },
+            ),
           ],
         );
       }
       return Column(
         spacing: 16.0,
         children: [
-          if (!controller.isLocked)
-            ActivitySessionCTAButton(
-              L10n.of(context).startOwn,
-              () => controller.startNewActivity(),
-              secondary: true,
-              icon: ActivityPinState.available.icon,
-            ),
+          ActivitySessionCTAButton(
+            L10n.of(context).startOwn,
+            () => controller.startNewActivity(),
+            secondary: true,
+            icon: ActivityPinState.available.icon,
+          ),
           if (controller.hasCompletedSessions)
             ActivitySessionCTAButton(
               L10n.of(context).mapFilterCompleted,
@@ -290,8 +288,7 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
         // Wait on the participant count AND the open-session summaries, so the
         // join/start choice never flashes "Start" before the sessions land.
         if (snapshot.connectionState == ConnectionState.waiting ||
-            controller.summariesLoading ||
-            !controller.lockResolved) {
+            controller.summariesLoading) {
           return const LinearProgressIndicator();
         }
 
@@ -352,31 +349,7 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
               // An open session to join is the encouraged choice, so it leads
               // and "start my own" drops to a de-emphasized option; with none to
               // join, starting is the single primary action.
-              // Locked: only an open session can still be joined.
-              if (controller.isLocked) ...[
-                Text(
-                  L10n.of(context).lockedMissionRequirement,
-                  textAlign: TextAlign.center,
-                ),
-                // Where to go to unlock it: each course that locks it.
-                for (final course in controller.lockingCourses)
-                  ActivitySessionCTAButton(
-                    L10n.of(context).unlockInCourse(
-                      course.getLocalizedDisplayname(
-                        MatrixLocals(L10n.of(context)),
-                      ),
-                    ),
-                    () => controller.goToLockingCourse(course),
-                    secondary: true,
-                    icon: Icons.lock_open_outlined,
-                  ),
-                if (controller.openSessionCount > 0)
-                  ActivitySessionCTAButton(
-                    '${L10n.of(context).joinOpenSession} (${controller.openSessionCount})',
-                    controller.goToJoinPage,
-                    icon: ActivityPinState.joinable.icon,
-                  ),
-              ] else if (controller.offersBot)
+              if (controller.offersBot)
                 _PlayChoiceTiles(controller)
               else
                 ActivitySessionCTAButton(
@@ -436,29 +409,6 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
           onPressed: controller.goToJoinedActivity,
           filled: true,
         ),
-      );
-    } else if (controller.isLocked) {
-      chips.add(
-        controller.openSessionCount > 0
-            ? _ActivityCtaChip(
-                label:
-                    '${l10n.joinOpenSession} (${controller.openSessionCount})',
-                icon: ActivityPinState.joinable.icon,
-                onPressed: expandThen(controller.goToJoinPage),
-                filled: true,
-              )
-            : _ActivityCtaChip(
-                label: l10n.unlockInCourse(
-                  controller.lockingCourses.first.getLocalizedDisplayname(
-                    MatrixLocals(l10n),
-                  ),
-                ),
-                icon: Icons.lock_open_outlined,
-                onPressed: () => controller.goToLockingCourse(
-                  controller.lockingCourses.first,
-                ),
-                filled: true,
-              ),
       );
     } else if (controller.offersBot) {
       // Two equal choices, both stretched.

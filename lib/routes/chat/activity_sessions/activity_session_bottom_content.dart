@@ -4,7 +4,6 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/room_summaries/activity_summary_status_enum.dart';
@@ -17,7 +16,6 @@ import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart'
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/session_last_active_label.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/session_presence_tracker.dart';
-import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivitySessionBottomContent extends StatelessWidget {
@@ -197,19 +195,14 @@ class _ActivitySummaryStatusSectionState
           .where((e) => e.value == Membership.join.name)
           .map((e) => e.key);
 
-  /// The open roles of [summary], each flagged when the learner has already
-  /// completed it in another session ([completedRoleIds]), so they can pick
-  /// a session before joining.
-  List<({String name, bool done})> _openRolesOf(
-    RoomSummaryResponse summary,
-    Set<String> completedRoleIds,
-  ) {
+  /// The names of [summary]'s open roles, so the learner can pick a session
+  /// before joining.
+  List<String> _openRolesOf(RoomSummaryResponse summary) {
     final plan = summary.resolvedActivityPlan;
     if (!_isOpenList || plan == null) return const [];
     return [
       for (final id in summary.openRoleIds)
-        if (plan.roles[id] != null)
-          (name: plan.roles[id]!.name, done: completedRoleIds.contains(id)),
+        if (plan.roles[id] != null) plan.roles[id]!.name,
     ];
   }
 
@@ -226,9 +219,6 @@ class _ActivitySummaryStatusSectionState
         final theme = Theme.of(context);
         final entries = widget.roomSummaries.entries.toList();
         final now = DateTime.now();
-        final completedRoles = _isOpenList
-            ? Matrix.of(context).client.completedRolesByActivity
-            : const <String, Set<String>>{};
         if (_isOpenList) {
           // Most recently active first, so the sessions most likely to answer
           // are the easiest to join; room id breaks ties so the order holds
@@ -265,10 +255,7 @@ class _ActivitySummaryStatusSectionState
                   pinged: e.key == widget.pingedRoomId,
                   showLastActive: _isOpenList,
                   lastActive: _lastActiveOf(e.value, now),
-                  openRoles: _openRolesOf(
-                    e.value,
-                    completedRoles[e.value.activityId] ?? const {},
-                  ),
+                  openRoles: _openRolesOf(e.value),
                   onTap: () => widget.onTap(e.key),
                 ),
             ],
@@ -289,8 +276,8 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
   final bool showLastActive;
   final DateTime? lastActive;
 
-  /// The seats a joiner can take, flagged when already completed.
-  final List<({String name, bool done})> openRoles;
+  /// The names of the seats a joiner can take.
+  final List<String> openRoles;
 
   final VoidCallback onTap;
 
@@ -355,20 +342,11 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                L10n.of(context).openRole(role.name),
+                                L10n.of(context).openRole(role),
                                 style: theme.textTheme.labelMedium?.copyWith(
                                   color: theme.colorScheme.primary,
                                 ),
                               ),
-                              if (role.done)
-                                Tooltip(
-                                  message: L10n.of(context).roleAlreadyDone,
-                                  child: Icon(
-                                    Icons.check_circle,
-                                    size: 14.0,
-                                    color: theme.pangea.success,
-                                  ),
-                                ),
                             ],
                           ),
                       ],

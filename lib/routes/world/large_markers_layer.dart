@@ -76,7 +76,6 @@ class LargeMarkersLayer {
                     openSlots: snap.openSlots,
                     starLevel: snap.starLevel,
                     understaffed: snap.understaffed,
-                    locked: snap.locked,
                     isFocused: card.activityId == focusedId,
                     onTap: () => onTap(card),
                     onClose: () => onClose(card),
