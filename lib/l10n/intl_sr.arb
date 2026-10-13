@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:12:03.596654",
+    "@@last_modified": "2026-10-13 13:03:48.852012",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -8689,8 +8689,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Omogući pomoć pri pisanju",
-    "autoIGCToolDescription": "Automatski pokreni Pangea Chat alate za ispravljanje poslatih poruka na ciljni jezik.",
+    "autoIGCToolName": "Automatska provera pri slanju",
+    "autoIGCToolDescription": "Proverite poruku da li ima grešaka kada dodirnete „Pošalji“. Kada je ovo isključeno, dodirnite dugme za pomoć pri pisanju da biste sami proverili poruku.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10922,6 +10922,11 @@
     "activityLaunchFindingCourses": "Pronalaženje kurseva…",
     "activityLaunchCreatingRoom": "Kreiranje aktivnosti…",
     "activityLaunchOpeningRoom": "Otvaranje aktivnosti…",
+    "playWithOthers": "Igrajte se sa drugima",
+    "openRole": "Otvoreno: {role}",
+    "waitingFor": "Čekanje {duration}",
+    "onlineInCourse": "{count} na mreži u {course}",
+    "newCourseChat": "Novo ćaskanje o kursu",
     "teamCode": "Kod tima",
     "reopenAppToFinishSwitching": "Potpuno zatvorite aplikaciju i ponovo je otvorite da biste završili prebacivanje."
 }

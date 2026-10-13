@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:12:04.406204",
+    "@@last_modified": "2026-10-13 13:03:49.346743",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -8258,8 +8258,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Aktivera skrivhjälp",
-    "autoIGCToolDescription": "Kör automatiskt Pangea Chat-verktyg för att korrigera skickade meddelanden till målspråket.",
+    "autoIGCToolName": "Autokontroll vid sändning",
+    "autoIGCToolDescription": "Kontrollera ditt meddelande efter misstag när du trycker på skicka. När detta är avstängt, tryck på skrivhjälpsknappen för att själv kontrollera ett meddelande.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10491,6 +10491,11 @@
     "activityLaunchFindingCourses": "Hittar dina kurser…",
     "activityLaunchCreatingRoom": "Skapar din aktivitet…",
     "activityLaunchOpeningRoom": "Öppnar din aktivitet…",
+    "playWithOthers": "Spela med andra",
+    "openRole": "Öppen: {role}",
+    "waitingFor": "Väntar {duration}",
+    "onlineInCourse": "{count} online i {course}",
+    "newCourseChat": "Ny kurschatt",
     "teamCode": "Teamkod",
     "reopenAppToFinishSwitching": "Stäng appen helt och öppna den igen för att slutföra bytet."
 }

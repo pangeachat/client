@@ -3559,7 +3559,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-12 13:11:52.279105",
+    "@@last_modified": "2026-10-13 13:03:41.886927",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -7927,8 +7927,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Cuir ar chumas cúnamh scríbhneoireachta",
-    "autoIGCToolDescription": "Rith uathoibríoch uirlisí Pangea Chat chun teachtaireachtaí a sheoladh a cheartú go teanga sprioc.",
+    "autoIGCToolName": "Uathsheiceáil ar sheoladh",
+    "autoIGCToolDescription": "Seiceáil do theachtaireacht le haghaidh botún nuair a thapálann tú seol. Nuair a bhíonn sé seo múchta, tapáil an cnaipe cúnaimh scríbhneoireachta chun teachtaireacht a sheiceáil tú féin.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9984,6 +9984,11 @@
     "activityLaunchFindingCourses": "Ag aimsiú do chúrsaí…",
     "activityLaunchCreatingRoom": "Ag cruthú do ghníomhaíochta…",
     "activityLaunchOpeningRoom": "Ag oscailt do ghníomhaíochta…",
+    "playWithOthers": "Imir le daoine eile",
+    "openRole": "Oscailte: {role}",
+    "waitingFor": "Ag fanacht {duration}",
+    "onlineInCourse": "{count} ar líne i {course}",
+    "newCourseChat": "Comhrá cúrsa nua",
     "teamCode": "Cód foirne",
     "reopenAppToFinishSwitching": "Dún an aip go hiomlán agus oscail arís í chun an t-athrú a chríochnú."
 }

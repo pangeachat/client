@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-12 13:12:01.140077",
+    "@@last_modified": "2026-10-13 13:03:47.028989",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -7834,8 +7834,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Włącz pomoc w pisaniu",
-    "autoIGCToolDescription": "Automatycznie uruchom narzędzia Pangea Chat, aby poprawić wysłane wiadomości na docelowy język.",
+    "autoIGCToolName": "Autokorekta przy wysyłaniu",
+    "autoIGCToolDescription": "Sprawdź wiadomość pod kątem błędów po naciśnięciu przycisku Wyślij. Gdy ta opcja jest wyłączona, naciśnij przycisk pomocy w pisaniu, aby samodzielnie sprawdzić wiadomość.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10058,6 +10058,11 @@
     "activityLaunchFindingCourses": "Wyszukiwanie kursów…",
     "activityLaunchCreatingRoom": "Tworzenie aktywności…",
     "activityLaunchOpeningRoom": "Otwieranie aktywności…",
+    "playWithOthers": "Graj z innymi",
+    "openRole": "Otwarte: {role}",
+    "waitingFor": "Oczekiwanie {duration}",
+    "onlineInCourse": "{count} online w {course}",
+    "newCourseChat": "Nowy czat kursu",
     "teamCode": "Kod zespołu",
     "reopenAppToFinishSwitching": "Całkowicie zamknij aplikację i otwórz ją ponownie, aby zakończyć przełączanie."
 }

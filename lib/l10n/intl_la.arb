@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-12 13:11:58.173320",
+    "@@last_modified": "2026-10-13 13:03:44.824694",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Defalte, cursus publice quaeribiles sunt et approbationem administratoris ad iungendum requirunt. Has optiones quovis tempore mutare potes.",
     "onboardingLanguagesTitle": "Quam linguam discis?",
     "supportSubtitle": "Quaestiones? Hic sumus ut adiuvamus!",
-    "autoIGCToolName": "Activare auxilium scribendi",
-    "autoIGCToolDescription": "Automate utere instrumentis Pangea Chat ad corrigenda nuntia missa ad linguam discendam.",
+    "autoIGCToolName": "Sponte reprehende cum mittis",
+    "autoIGCToolDescription": "Reprehende nuntium tuum pro erroribus cum mittis. Cum hoc non est, tange puga pyga auxilii scribendi ut nuntium ipse reprehendas.",
     "emptyAudioError": "Recordatio defecit. Quaeso permissiones audibiles tuas inspice et iterum conare.",
     "spanTypeSpelling": "Orthographia",
     "spanTypePunctuation": "Interpunctio",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "Curricula tua quaerimus…",
     "activityLaunchCreatingRoom": "Actio tua creatur…",
     "activityLaunchOpeningRoom": "Actio tua aperitur…",
+    "playWithOthers": "Cum aliis lude",
+    "openRole": "Apertum: {role}",
+    "waitingFor": "Exspectans {duration}",
+    "onlineInCourse": "{count} in {course} adsunt",
+    "newCourseChat": "Novae cursus sermocinatio",
     "teamCode": "Codex turmae",
     "reopenAppToFinishSwitching": "Claude app omnino et iterum aperi ad perficiendum commutationem."
 }

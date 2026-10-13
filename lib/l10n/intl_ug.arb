@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-12 13:12:08.336786",
+    "@@last_modified": "2026-10-13 13:03:50.715288",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "كۆڭۈلدىكى ھالەتتە، دەرسلىكلەر ئاممىۋى ئىزدەشچان بولۇپ، قوشۇلۇش ئۈچۈن باشقۇرغۇچىنىڭ تەستىقىنى تەلەپ قىلىدۇ. بۇ تەڭشەكلەرنى خالىغان ۋاقىتتا تەھرىرلىيەلەيسىز.",
     "onboardingLanguagesTitle": "قايسى تىلنى ئۆگىنىۋاتىسىز؟",
     "supportSubtitle": "سوئاللار بارمۇ؟ بىز ياردەم قىلىشقا تەييار!",
-    "autoIGCToolName": "يېزىش ياردىمىنى قوزغىتىش",
-    "autoIGCToolDescription": "ئەۋەتىلگەن ئۇچۇرلارنى نىشان تىلىغا توغرىلاش ئۈچۈن Pangea Chat قوراللىرىنى ئاپتوماتىك ئىجرا قىلىڭ.",
+    "autoIGCToolName": "ئەۋەتكەندە ئاپتوماتىك تەكشۈرۈش",
+    "autoIGCToolDescription": "ئەۋەتىش كۇنۇپكىسىنى باسقاندا ئۇچۇرىڭىزدىكى خاتالىقلارنى تەكشۈرۈڭ. بۇ تاقالغاندا، ئۆزىڭىز ئۇچۇرنى تەكشۈرۈش ئۈچۈن يېزىق ياردەمچى كۇنۇپكىسىنى بېسىڭ.",
     "emptyAudioError": "ئۈنئالغۇ خاتالىقى. ئاۋاز ئىجازىتىڭىزنى تەكشۈرۈپ قايتا سىناڭ.",
     "spanTypeSpelling": "ئىملانى تەكشۈرۈش",
     "spanTypePunctuation": "تىنىش بەلگىسى",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "دەرىسلىكىڭىزنى تېپىۋاتىدۇ…",
     "activityLaunchCreatingRoom": "پائالىيىتىڭىزنى قۇرۇۋاتىدۇ…",
     "activityLaunchOpeningRoom": "پائالىيىتىڭىزنى ئېچىۋاتىدۇ…",
+    "playWithOthers": "باشقىلار بىلەن ئويناڭ",
+    "openRole": "ئوچۇق: {role}",
+    "waitingFor": "{duration} ساقلاۋاتىدۇ",
+    "onlineInCourse": "{course} دە {count} ئادەم توردا",
+    "newCourseChat": "يېڭى دەرس پاراڭلىرى",
     "teamCode": "گۇرۇپپا كودى",
     "reopenAppToFinishSwitching": "ئالماشتۇرۇشنى تاماملاش ئۈچۈن ئەپنى تاقاپ قايتا ئېچىڭ."
 }

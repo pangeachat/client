@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-12 13:12:05.219481",
+    "@@last_modified": "2026-10-13 13:03:49.973985",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -8041,8 +8041,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Yazma yardımını etkinleştir",
-    "autoIGCToolDescription": "Gönderilen mesajları hedef dile düzeltmek için Pangea Chat araçlarını otomatik olarak çalıştır.",
+    "autoIGCToolName": "Gönderimde otomatik kontrol",
+    "autoIGCToolDescription": "Gönder'e dokunduğunuzda mesajınızı hatalara karşı kontrol edin. Bu kapalıyken, bir mesajı kendiniz kontrol etmek için yazma yardım düğmesine dokunun.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10274,6 +10274,11 @@
     "activityLaunchFindingCourses": "Kurslarınız bulunuyor…",
     "activityLaunchCreatingRoom": "Etkinliğiniz oluşturuluyor…",
     "activityLaunchOpeningRoom": "Etkinliğiniz açılıyor…",
+    "playWithOthers": "Başkalarıyla oyna",
+    "openRole": "Açık: {role}",
+    "waitingFor": "{duration} bekleniyor",
+    "onlineInCourse": "{count} kişi {course} içinde çevrimiçi",
+    "newCourseChat": "Yeni kurs sohbeti",
     "teamCode": "Takım kodu",
     "reopenAppToFinishSwitching": "Geçişi tamamlamak için uygulamayı tamamen kapatın ve tekrar açın."
 }

@@ -3531,7 +3531,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-10-12 13:11:58.233323",
+    "@@last_modified": "2026-10-13 13:03:45.389562",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -7920,8 +7920,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Iespējot rakstīšanas palīdzību",
-    "autoIGCToolDescription": "Automātiski palaist Pangea Chat rīkus, lai labotu nosūtītās ziņas mērķa valodā.",
+    "autoIGCToolName": "Automātiskā pārbaude nosūtot",
+    "autoIGCToolDescription": "Pārbaudīt ziņojumu, vai nav kļūdu, kad nospiežat sūtīšanas pogu. Ja šī opcija ir izslēgta, pieskarieties rakstīšanas palīdzības pogai, lai pats pārbaudītu ziņojumu.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9973,6 +9973,11 @@
     "activityLaunchFindingCourses": "Meklējam jūsu kursus…",
     "activityLaunchCreatingRoom": "Veidojam jūsu aktivitāti…",
     "activityLaunchOpeningRoom": "Atveram jūsu aktivitāti…",
+    "playWithOthers": "Spēlē ar citiem",
+    "openRole": "Atvērts: {role}",
+    "waitingFor": "Gaida {duration}",
+    "onlineInCourse": "{count} tiešsaistē kursā {course}",
+    "newCourseChat": "Jauna kursa tērzēšana",
     "teamCode": "Komandas kods",
     "reopenAppToFinishSwitching": "Pilnībā aizveriet lietotni un atveriet to vēlreiz, lai pabeigtu pārslēgšanos."
 }

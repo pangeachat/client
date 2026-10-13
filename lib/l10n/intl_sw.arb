@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-12 13:12:06.548707",
+    "@@last_modified": "2026-10-13 13:03:49.464059",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Kwa chaguo-msingi, kozi zinaweza kutafutwa hadharani na zinahitaji idhini ya msimamizi ili kujiunga. Unaweza kuhariri mipangilio hii wakati wowote.",
     "onboardingLanguagesTitle": "Unajifunza lugha gani?",
     "supportSubtitle": "Maswali? Tuko hapa kukusaidia!",
-    "autoIGCToolName": "Washa usaidizi wa uandishi",
-    "autoIGCToolDescription": "Endesha kiotomatiki zana za Pangea Chat ili kurekebisha ujumbe uliotumwa kwa lugha lengwa.",
+    "autoIGCToolName": "Kukagua kiotomatiki unapotuma",
+    "autoIGCToolDescription": "Kagua ujumbe wako kwa makosa unapotuma. Ikiwa hii imezimwa, gusa kitufe cha usaidizi wa uandishi ili kukagua ujumbe mwenyewe.",
     "emptyAudioError": "Kurekodi kumefeli. Tafadhali angalia ruhusa zako za sauti na ujaribu tena.",
     "spanTypeSpelling": "Tahajia",
     "spanTypePunctuation": "Alama za uandishi",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "Tunatafuta kozi zako…",
     "activityLaunchCreatingRoom": "Tunatayarisha shughuli yako…",
     "activityLaunchOpeningRoom": "Tunafungua shughuli yako…",
+    "playWithOthers": "Cheza na wengine",
+    "openRole": "Fungua: {role}",
+    "waitingFor": "Inasubiri {duration}",
+    "onlineInCourse": "{count} wako mtandaoni katika {course}",
+    "newCourseChat": "Gumzo jipya la kozi",
     "teamCode": "Msimbo wa timu",
     "reopenAppToFinishSwitching": "Funga programu kabisa kisha uifungue tena ili umalize kubadili."
 }

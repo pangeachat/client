@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-12 13:12:01.370248",
+    "@@last_modified": "2026-10-13 13:03:46.338317",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "B'mod awtomatiku, il-korsijiet huma pubblikament riċerkabbli u jeħtieġu l-approvazzjoni tal-amministratur biex tingħaqad. Tista' teditja dawn is-settings fi kwalunkwe ħin.",
     "onboardingLanguagesTitle": "Liema lingwa qed titgħallem?",
     "supportSubtitle": "Mistoqsijiet? Aħna qegħdin hawn biex ngħinu!",
-    "autoIGCToolName": "Ippermetti l-assistenza fil-kitba",
-    "autoIGCToolDescription": "Mexxi awtomatikament l-għodod ta' Pangea Chat biex tikkoreġi l-messaġġi mibgħuta fil-lingwa fil-mira.",
+    "autoIGCToolName": "Iċċekkja awtomatikament meta tibgħat",
+    "autoIGCToolDescription": "Iċċekkja l-messaġġ tiegħek għal żbalji meta tagħfas tibgħat. Meta din l-għażla tkun mitfija, agħfas il-buttuna tal-assistenza tal-kitba biex tiċċekkja messaġġ int stess.",
     "emptyAudioError": "Ir-reġistrazzjoni falliet. Jekk jogħġbok iċċekkja l-permessi tal-awdjo tiegħek u erġa' pprova.",
     "spanTypeSpelling": "Ortografija",
     "spanTypePunctuation": "Punteġġjatura",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "Qed insibu l-korsijiet tiegħek…",
     "activityLaunchCreatingRoom": "Qed noħolqu l-attività tiegħek…",
     "activityLaunchOpeningRoom": "Qed niftħu l-attività tiegħek…",
+    "playWithOthers": "Ilghab ma' oħrajn",
+    "openRole": "Miftuħ: {role}",
+    "waitingFor": "Qed tistenna {duration}",
+    "onlineInCourse": "{count} online f'{course}'",
+    "newCourseChat": "Chat ġdid tal-kors",
     "teamCode": "Kodiċi tat-tim",
     "reopenAppToFinishSwitching": "Agħlaq l-app kompletament u erġa' iftaħha biex tispiċċa taqleb."
 }

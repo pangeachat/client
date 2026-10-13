@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-12 13:12:03.046260",
+    "@@last_modified": "2026-10-13 13:03:48.432179",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -8685,8 +8685,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Povoliť pomoc pri písaní",
-    "autoIGCToolDescription": "Automaticky spustiť nástroje Pangea Chat na opravu odoslaných správ do cieľového jazyka.",
+    "autoIGCToolName": "Automatická kontrola pri odoslaní",
+    "autoIGCToolDescription": "Skontrolujte svoju správu, či neobsahuje chyby, keď klepnete na odoslať. Keď je táto funkcia vypnutá, klepnite na tlačidlo asistenta písania, aby ste si správu skontrolovali sami.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10918,6 +10918,11 @@
     "activityLaunchFindingCourses": "Hľadáme vaše kurzy…",
     "activityLaunchCreatingRoom": "Vytvárame vašu aktivitu…",
     "activityLaunchOpeningRoom": "Otvárame vašu aktivitu…",
+    "playWithOthers": "Hrať s ostatnými",
+    "openRole": "Otvorené: {role}",
+    "waitingFor": "Čaká sa {duration}",
+    "onlineInCourse": "{count} online v kurze {course}",
+    "newCourseChat": "Nový chat kurzu",
     "teamCode": "Kód tímu",
     "reopenAppToFinishSwitching": "Úplne zatvorte aplikáciu a znova ju otvorte, aby ste dokončili prepínanie."
 }

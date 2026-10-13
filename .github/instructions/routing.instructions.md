@@ -125,14 +125,7 @@ chrome (rail, bottom nav, cluster) all derive from the same tokens, so they
 cannot disagree about what is open. Closing a panel is just dropping its token:
 there is no second, path-driven copy to leave standing.
 
-External pointers never carry workspace paths either: a push notification
-resolves through its structured content keys and a `matrix.to` link through the
-in-app link handler — both emit token URLs in code
-([deep-linking.instructions.md](../../../.github/.github/instructions/deep-linking.instructions.md)).
-The URLs that arrive from outside — the shareable standalone activity link
-(`/<uuid>`) and the course join link (`/<code>`) — are rewritten to their tokens
-at the router redirect before anything renders — so there is exactly one
-representation by the time the shell builds.
+External pointers rarely carry workspace paths: a push notification resolves through its structured content keys and a `matrix.to` link through the in-app link handler — both emit token URLs in code ([deep-linking.instructions.md](../../../.github/.github/instructions/deep-linking.instructions.md)). The exception is a notice from the bot, which may also carry an app path for a destination the keys cannot name; the client follows it through the router like a URL typed in the address bar ([notices.instructions.md](notices.instructions.md)). The URLs that arrive from outside — the shareable standalone activity link (`/<uuid>`) and the course join link (`/<code>`) — are rewritten to their tokens at the router redirect before anything renders — so there is exactly one representation by the time the shell builds.
 
 ### The course context
 
@@ -320,6 +313,7 @@ user came from:
   from (see Activity plan below).
 - An **X** means closing simply reveals what is beneath: the other panels and
   the map.
+- A **session opened from an activity's join list** opens inside that activity's panel, and its link records that origin, so its close is a back arrow to the join list. Sessions opened any other way keep their usual close.
 - An **expand/collapse chevron** replaces both where a panel has a **floor
   instead of a close**. The only one is the course panel under `?c=`
   ([#8816](https://github.com/pangeachat/client/issues/8816)), and it has a

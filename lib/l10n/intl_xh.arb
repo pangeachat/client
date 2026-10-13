@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-12 13:12:07.660118",
+    "@@last_modified": "2026-10-13 13:03:50.778714",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Ngokungagqibekanga, iikhosi ziyakhangelwa esidlangalaleni kwaye zifuna imvume yomlawuli ukungena. Ungazihlela ezi setingi nangaliphi na ixesha.",
     "onboardingLanguagesTitle": "Loluphi ulwimi olufundayo?",
     "supportSubtitle": "Imibuzo? Silapha ukunceda!",
-    "autoIGCToolName": "Vula uncedo lokubhala",
-    "autoIGCToolDescription": "Sebenzisa ngokuzenzekelayo izixhobo zePangea Chat ukulungisa imiyalezo ethunyelweyo kulwimi ekujoliswe kulo.",
+    "autoIGCToolName": "Ukuzihlola xa uthumela",
+    "autoIGCToolDescription": "Hlola umyalezo wakho ukuze ubone iimpazamo xa ucofa ukuthumela. Xa oku kuvaliwe, cofa iqhosha loncedo lokubhala ukuze uzihlolele umyalezo.",
     "emptyAudioError": "Ukurekhoda akusebenzanga. Nceda ujonge iimvume zakho zeaudio kwaye uzame kwakhona.",
     "spanTypeSpelling": "Upelo",
     "spanTypePunctuation": "Izimpawu zokubhala",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "Ndizifumana iikhosi zakho…",
     "activityLaunchCreatingRoom": "Ndenza umsebenzi wakho…",
     "activityLaunchOpeningRoom": "Ndivula umsebenzi wakho…",
+    "playWithOthers": "Dlala nabanye",
+    "openRole": "Vula: {role}",
+    "waitingFor": "Kulindwe {duration}",
+    "onlineInCourse": "{count} kwi-intanethi kwi-{course}",
+    "newCourseChat": "Incoko entsha yekhosi",
     "teamCode": "Ikhowudi yeqela",
     "reopenAppToFinishSwitching": "Vala ngokupheleleyo i-app uze uyivule kwakhona ukuze ugqibezele ukutshintsha."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-12 13:11:52.236287",
+    "@@last_modified": "2026-10-13 13:03:41.977908",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Standert binne kursussen iepenbier te finen en fereaskje se goedkarring fan in behearder om mei te dwaan. Jo kinne dizze ynstellings op elk momint bewurkje.",
     "onboardingLanguagesTitle": "Hokker taal learst?",
     "supportSubtitle": "Fragen? Wy binne hjir om te helpen!",
-    "autoIGCToolName": "Skriuwassistinsje ynskeakelje",
-    "autoIGCToolDescription": "Automatysk Pangea Chat-ark útfiere om ferstjoerde berjochten te korrizjearjen nei de doeltaal.",
+    "autoIGCToolName": "Automatysk kontrolearje by ferstjoeren",
+    "autoIGCToolDescription": "Kontrolearje jo berjocht op flaters as jo op ferstjoere tikje. As dit útstiet, tikje dan op de knop foar skriuwassistinsje om sels in berjocht te kontrolearjen.",
     "emptyAudioError": "Opname mislearre. Kontrolearje jo audiotastimmingen en besykje it op 'e nij.",
     "spanTypeSpelling": "Stavering",
     "spanTypePunctuation": "Punktuaasje",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "Sykje nei dyn kursussen…",
     "activityLaunchCreatingRoom": "Dyn aktiviteit oanmeitsje…",
     "activityLaunchOpeningRoom": "Dyn aktiviteit iepenje…",
+    "playWithOthers": "Boartsje mei oaren",
+    "openRole": "Iepen: {role}",
+    "waitingFor": "Wachtsje {duration}",
+    "onlineInCourse": "{count} online yn {course}",
+    "newCourseChat": "Nije kursuschats",
     "teamCode": "Teamkoade",
     "reopenAppToFinishSwitching": "Slút de app folslein en iepenje him opnij om it wikseljen te foltôgjen."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-12 13:11:49.769989",
+    "@@last_modified": "2026-10-13 13:03:39.392804",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Po defaultu, kursevi su javno pretraživi i zahtijevaju odobrenje administratora za pridruživanje. Ove postavke možete urediti u bilo kojem trenutku.",
     "onboardingLanguagesTitle": "Koji jezik učite?",
     "supportSubtitle": "Pitanja? Tu smo da pomognemo!",
-    "autoIGCToolName": "Omogući pomoć pri pisanju",
-    "autoIGCToolDescription": "Automatski pokreni Pangea Chat alate za ispravljanje poslanih poruka na ciljni jezik.",
+    "autoIGCToolName": "Automatska provjera pri slanju",
+    "autoIGCToolDescription": "Provjerite poruku za greške kada pritisnete pošalji. Kada je ovo isključeno, dodirnite dugme za pomoć pri pisanju da sami provjerite poruku.",
     "emptyAudioError": "Snimanje nije uspjelo. Molimo provjerite svoje audio dozvole i pokušajte ponovo.",
     "spanTypeSpelling": "Pravopis",
     "spanTypePunctuation": "Interpunkcija",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "Pronalaženje vaših kurseva…",
     "activityLaunchCreatingRoom": "Kreiranje vaše aktivnosti…",
     "activityLaunchOpeningRoom": "Otvaranje vaše aktivnosti…",
+    "playWithOthers": "Igrajte se s drugima",
+    "openRole": "Otvoreno: {role}",
+    "waitingFor": "Čekanje {duration}",
+    "onlineInCourse": "{count} online u {course}",
+    "newCourseChat": "Novi chat kursa",
     "teamCode": "Kod tima",
     "reopenAppToFinishSwitching": "Potpuno zatvorite aplikaciju i ponovo je otvorite da biste završili prebacivanje."
 }

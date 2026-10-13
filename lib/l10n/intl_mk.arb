@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-12 13:11:59.043921",
+    "@@last_modified": "2026-10-13 13:03:46.096792",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Стандардно, курсевите се јавно пребарувани и бараат одобрение од администратор за приклучување. Овие поставки можете да ги уредувате во секое време.",
     "onboardingLanguagesTitle": "Кој јазик го учите?",
     "supportSubtitle": "Прашања? Тука сме да помогнеме!",
-    "autoIGCToolName": "Овозможи помош при пишување",
-    "autoIGCToolDescription": "Автоматски извршувајте ги алатките на Pangea Chat за да ги коригирате испратените пораки на целниот јазик.",
+    "autoIGCToolName": "Автоматска проверка при испраќање",
+    "autoIGCToolDescription": "Проверете ја вашата порака за грешки кога ќе допрете испрати. Кога ова е исклучено, допрете го копчето за помош при пишување за сами да ја проверите пораката.",
     "emptyAudioError": "Снимањето не успеа. Ве молиме проверете ги вашите аудио дозволи и обидете се повторно.",
     "spanTypeSpelling": "Правопис",
     "spanTypePunctuation": "Интерпункција",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "Пронаоѓање на вашите курсеви…",
     "activityLaunchCreatingRoom": "Креирање на вашата активност…",
     "activityLaunchOpeningRoom": "Отворање на вашата активност…",
+    "playWithOthers": "Играј со други",
+    "openRole": "Отворено: {role}",
+    "waitingFor": "Се чека {duration}",
+    "onlineInCourse": "{count} онлајн во {course}",
+    "newCourseChat": "Нов разговор за курс",
     "teamCode": "Код на тим",
     "reopenAppToFinishSwitching": "Затворете ја апликацијата целосно и отворете ја повторно за да завршите со префрлувањето."
 }

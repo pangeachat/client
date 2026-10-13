@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-12 13:12:03.783477",
+    "@@last_modified": "2026-10-13 13:03:48.814573",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "E masani lava, e mafai ona suʻeina kosi e tagata lautele ma manaʻomia le faʻamaoniga a le pule e auai. E mafai ona e faʻasaʻo nei faʻatulagaga i soʻo se taimi.",
     "onboardingLanguagesTitle": "O le a le gagana o loʻo e aʻoaʻoina?",
     "supportSubtitle": "Fesili? Matou te fia fesoasoani!",
-    "autoIGCToolName": "Faʻataga le fesoasoani tusitusi",
-    "autoIGCToolDescription": "Faʻatautaia otometi meafaigaluega Pangea Chat e faʻasaʻo feʻau na auina atu i le gagana faʻatatau.",
+    "autoIGCToolName": "Siaki otometi pe a auina atu",
+    "autoIGCToolDescription": "Siaki lau feʻau mo mea sese pe a e paʻi i le auina atu. A tape lenei, paʻi i le faamau fesoasoani tusitusi e siaki ai oe lava se feʻau.",
     "emptyAudioError": "Ua le manuia le puʻeina. Faʻamolemole siaki au faʻatagaga leo ma toe taumafai.",
     "spanTypeSpelling": "Sipela",
     "spanTypePunctuation": "Faʻailoga",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "Su'e au kosi…",
     "activityLaunchCreatingRoom": "Fausia lau gaioiga…",
     "activityLaunchOpeningRoom": "Tatala lau gaioiga…",
+    "playWithOthers": "Taʻalo ma isi",
+    "openRole": "Tatala: {role}",
+    "waitingFor": "Faatali {duration}",
+    "onlineInCourse": "{count} i luga ole laiga ile {course}",
+    "newCourseChat": "Talanoaga fou o le kosi",
     "teamCode": "Tulafono a le 'au",
     "reopenAppToFinishSwitching": "Tapuni atoa le app ona toe tatala lea e fa'auma ai le fesuiaiga."
 }

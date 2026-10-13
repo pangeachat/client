@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-12 13:12:04.179038",
+    "@@last_modified": "2026-10-13 13:03:49.843070",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Ka ho sa feleng, lithupelo li ka batloa ke sechaba 'me li hloka tumello ea molaoli ho kena. U ka fetola litlhophiso tsena neng kapa neng.",
     "onboardingLanguagesTitle": "U ithuta puo efe?",
     "supportSubtitle": "Lipotso? Re teng ho thusa!",
-    "autoIGCToolName": "Bulela thuso ea ho ngola",
-    "autoIGCToolDescription": "Iketsetse lisebelisoa tsa Pangea Chat ho lokisa melaetsa e rometsoeng puong eo u e ithutang.",
+    "autoIGCToolName": "Itlhahlobe ha o romela",
+    "autoIGCToolDescription": "Hlahloba molaetsa wa hao hore o se be le diphoso ha o tobetsa romela. Ha sena se tingwa, tobetsa konopo ya thuso ya ho ngola ho itlhahloba molaetsa.",
     "emptyAudioError": "Ho rekota ho hlotsoe. Ka kopo hlahloba litumello tsa hau tsa molumo 'me u leke hape.",
     "spanTypeSpelling": "Mopeleto",
     "spanTypePunctuation": "Matšoao a puo",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "Ke batla dithuto tsa hao…",
     "activityLaunchCreatingRoom": "Ke theha mosebetsi wa hao…",
     "activityLaunchOpeningRoom": "Ke bula mosebetsi wa hao…",
+    "playWithOthers": "Bapala le ba bang",
+    "openRole": "Bula: {role}",
+    "waitingFor": "Emela {duration}",
+    "onlineInCourse": "{count} ba inthaneteng ho {course}",
+    "newCourseChat": "Puisano e ncha ea thuto",
     "teamCode": "Khoutu ea sehlopha",
     "reopenAppToFinishSwitching": "Koala app ka ho feletseng ebe o e bula hape ho qetela ho fetohela."
 }

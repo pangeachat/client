@@ -1259,7 +1259,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-12 13:12:07.515130",
+    "@@last_modified": "2026-10-13 13:03:51.046533",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -8692,8 +8692,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "啟用寫作輔助",
-    "autoIGCToolDescription": "自動運行 Pangea Chat 工具以將發送的消息更正為目標語言。",
+    "autoIGCToolName": "傳送時自動檢查",
+    "autoIGCToolDescription": "當你點擊傳送時，檢查你的訊息是否有錯誤。關閉此功能後，請點擊寫作輔助按鈕自行檢查訊息。",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10930,6 +10930,11 @@
     "activityLaunchFindingCourses": "搵緊你嘅課程…",
     "activityLaunchCreatingRoom": "建立緊你嘅活動…",
     "activityLaunchOpeningRoom": "開緊你嘅活動…",
+    "playWithOthers": "同其他人玩",
+    "openRole": "開放：{role}",
+    "waitingFor": "等緊 {duration}",
+    "onlineInCourse": "{count} 個喺 {course} 度上線",
+    "newCourseChat": "新課程聊天",
     "teamCode": "團隊代碼",
     "reopenAppToFinishSwitching": "請完全關閉應用程式，然後重新開啟以完成切換。"
 }

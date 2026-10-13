@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:12:02.363582",
+    "@@last_modified": "2026-10-13 13:03:47.942545",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -8472,8 +8472,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Activare asistență la scriere",
-    "autoIGCToolDescription": "Rulați automat instrumentele Pangea Chat pentru a corecta mesajele trimise în limba țintă.",
+    "autoIGCToolName": "Verificare automată la trimitere",
+    "autoIGCToolDescription": "Verifică-ți mesajul pentru greșeli când apeși trimite. Când această opțiune este dezactivată, apasă butonul de asistență la scriere pentru a verifica singur un mesaj.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10705,6 +10705,11 @@
     "activityLaunchFindingCourses": "Se caută cursurile tale…",
     "activityLaunchCreatingRoom": "Se creează activitatea ta…",
     "activityLaunchOpeningRoom": "Se deschide activitatea ta…",
+    "playWithOthers": "Joacă-te cu alții",
+    "openRole": "Deschis: {role}",
+    "waitingFor": "Se așteaptă {duration}",
+    "onlineInCourse": "{count} online în {course}",
+    "newCourseChat": "Chat nou de curs",
     "teamCode": "Codul echipei",
     "reopenAppToFinishSwitching": "Închide aplicația complet și redeschide-o pentru a finaliza schimbarea."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-12 13:12:05.367858",
+    "@@last_modified": "2026-10-13 13:03:50.617241",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -7920,8 +7920,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Увімкнути допомогу в написанні",
-    "autoIGCToolDescription": "Автоматично запускати інструменти Pangea Chat для виправлення надісланих повідомлень на цільову мову.",
+    "autoIGCToolName": "Автоматична перевірка при надсиланні",
+    "autoIGCToolDescription": "Перевіряйте повідомлення на наявність помилок, коли надсилаєте його. Якщо цю функцію вимкнено, натисніть кнопку помічника з написання, щоб перевірити повідомлення самостійно.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9973,6 +9973,11 @@
     "activityLaunchFindingCourses": "Пошук ваших курсів…",
     "activityLaunchCreatingRoom": "Створення вашої активності…",
     "activityLaunchOpeningRoom": "Відкриття вашої активності…",
+    "playWithOthers": "Грати з іншими",
+    "openRole": "Відкрито: {role}",
+    "waitingFor": "Очікування {duration}",
+    "onlineInCourse": "{count} онлайн у {course}",
+    "newCourseChat": "Новий чат курсу",
     "teamCode": "Код команди",
     "reopenAppToFinishSwitching": "Повністю закрийте програму та відкрийте її знову, щоб завершити перемикання."
 }

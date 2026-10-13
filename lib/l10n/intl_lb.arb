@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-12 13:12:00.380056",
+    "@@last_modified": "2026-10-13 13:03:45.146324",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Standardméisseg sinn d'Coursen ëffentlech sichbar a erfuerderen d'Zoustëmmung vum Admin fir matzemaachen. Dir kënnt dës Astellungen zu all Moment änneren.",
     "onboardingLanguagesTitle": "Wat fir eng Sprooch léiert Dir?",
     "supportSubtitle": "Froen? Mir sinn hei fir ze hëllefen!",
-    "autoIGCToolName": "Schreifhëllef aktivéieren",
-    "autoIGCToolDescription": "Automatesch Pangea Chat Tools ausféieren fir geschéckt Messagen un d'Zilsprooch ze korrigéieren.",
+    "autoIGCToolName": "Automatesch Kontroll beim Schécken",
+    "autoIGCToolDescription": "Kontrolléiert Är Noriicht op Feeler wann Dir op Schécken tippt. Wann dës Funktioun ausgeschalt ass, tippt op de Schreifhëllef-Knäppchen fir eng Noriicht selwer ze kontrolléieren.",
     "emptyAudioError": "Opnam ass feelgeschloen. Kontrolléiert w.e.g. Är Audio-Permissiounen a probéiert et nach eng Kéier.",
     "spanTypeSpelling": "Orthographie",
     "spanTypePunctuation": "Punktuéierung",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "Sichen Är Coursen…",
     "activityLaunchCreatingRoom": "Erstelle Är Aktivitéit…",
     "activityLaunchOpeningRoom": "Maachen Är Aktivitéit op…",
+    "playWithOthers": "Mat anere spillen",
+    "openRole": "Oppen: {role}",
+    "waitingFor": "Waarden {duration}",
+    "onlineInCourse": "{count} online am Cours {course}",
+    "newCourseChat": "Neie Cours-Chat",
     "teamCode": "Team Code",
     "reopenAppToFinishSwitching": "Maach d'App komplett zou an dann nees op fir de Wiessel ofzeschléissen."
 }

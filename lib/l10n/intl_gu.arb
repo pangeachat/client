@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-12 13:11:53.697295",
+    "@@last_modified": "2026-10-13 13:03:42.267460",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "ડિફૉલ્ટ રૂપે, કોર્સ સાર્વજનિક રીતે શોધી શકાય છે અને જોડાવા માટે એડમિનની મંજૂરીની જરૂર છે. તમે આ સેટિંગ્સને કોઈપણ સમયે સંપાદિત કરી શકો છો.",
     "onboardingLanguagesTitle": "તમે કઈ ભાષા શીખી રહ્યા છો?",
     "supportSubtitle": "પ્રશ્નો છે? અમે મદદ કરવા માટે અહીં છીએ!",
-    "autoIGCToolName": "લેખન સહાયતા સક્ષમ કરો",
-    "autoIGCToolDescription": "મોકલેલા સંદેશાઓને લક્ષ્ય ભાષામાં સુધારવા માટે Pangea ચેટ ટૂલ્સને આપમેળે ચલાવો.",
+    "autoIGCToolName": "મોકલવા પર સ્વતઃ તપાસ",
+    "autoIGCToolDescription": "જ્યારે તમે મોકલો પર ટેપ કરો ત્યારે તમારા સંદેશામાં ભૂલો માટે તપાસ કરો. જ્યારે આ બંધ હોય, ત્યારે સંદેશાને જાતે તપાસવા માટે લેખન સહાય બટન પર ટેપ કરો.",
     "emptyAudioError": "રેકોર્ડિંગ નિષ્ફળ ગયું. કૃપા કરીને તમારી ઓડિયો પરવાનગીઓ તપાસો અને ફરી પ્રયાસ કરો.",
     "spanTypeSpelling": "જોડણી",
     "spanTypePunctuation": "વિરામચિહ્ન",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "તમારા અભ્યાસક્રમો શોધી રહ્યાં છીએ…",
     "activityLaunchCreatingRoom": "તમારી પ્રવૃત્તિ બનાવી રહ્યાં છીએ…",
     "activityLaunchOpeningRoom": "તમારી પ્રવૃત્તિ ખોલી રહ્યાં છીએ…",
+    "playWithOthers": "અન્ય લોકો સાથે રમો",
+    "openRole": "ખુલ્લું: {role}",
+    "waitingFor": "{duration} રાહ જોઈ રહ્યા છીએ",
+    "onlineInCourse": "{course} માં {count} ઑનલાઇન",
+    "newCourseChat": "નવી કોર્સ ચેટ",
     "teamCode": "ટીમ કોડ",
     "reopenAppToFinishSwitching": "સ્વિચિંગ પૂર્ણ કરવા માટે એપ્લિકેશનને સંપૂર્ણપણે બંધ કરો અને તેને ફરીથી ખોલો."
 }

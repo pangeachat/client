@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:12:00.064301",
+    "@@last_modified": "2026-10-13 13:03:46.975324",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -7976,8 +7976,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Aktiver skriveassistent",
-    "autoIGCToolDescription": "Kjør Pangea Chat-verktøy automatisk for å korrigere sendte meldinger til målspråket.",
+    "autoIGCToolName": "Autokontroll ved sending",
+    "autoIGCToolDescription": "Sjekk meldingen din for feil når du trykker send. Når dette er av, trykk på skrivehjelpsknappen for å sjekke en melding selv.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10030,6 +10030,11 @@
     "activityLaunchFindingCourses": "Finner kursene dine …",
     "activityLaunchCreatingRoom": "Oppretter aktiviteten din …",
     "activityLaunchOpeningRoom": "Åpner aktiviteten din …",
+    "playWithOthers": "Spill med andre",
+    "openRole": "Åpen: {role}",
+    "waitingFor": "Venter {duration}",
+    "onlineInCourse": "{count} pålogget i {course}",
+    "newCourseChat": "Ny kursprat",
     "teamCode": "Teamkode",
     "reopenAppToFinishSwitching": "Lukk appen helt og åpne den igjen for å fullføre byttet."
 }

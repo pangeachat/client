@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:11:49.913846",
+    "@@last_modified": "2026-10-13 13:03:40.250365",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -7867,8 +7867,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Activar l'assistència d'escriptura",
-    "autoIGCToolDescription": "Executar automàticament les eines de Pangea Chat per corregir els missatges enviats a l'idioma de destinació.",
+    "autoIGCToolName": "Revisió automàtica en enviar",
+    "autoIGCToolDescription": "Revisa el teu missatge per errors quan toques enviar. Quan aquesta opció està desactivada, toca el botó d'assistència d'escriptura per revisar un missatge tu mateix.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10100,6 +10100,11 @@
     "activityLaunchFindingCourses": "Trobant els teus cursos…",
     "activityLaunchCreatingRoom": "Creant la teva activitat…",
     "activityLaunchOpeningRoom": "Obrint la teva activitat…",
+    "playWithOthers": "Juga amb altres",
+    "openRole": "Obert: {role}",
+    "waitingFor": "Esperant {duration}",
+    "onlineInCourse": "{count} en línia a {course}",
+    "newCourseChat": "Nou xat del curs",
     "teamCode": "Codi d'equip",
     "reopenAppToFinishSwitching": "Tanca l'aplicació completament i torna-la a obrir per acabar de canviar."
 }

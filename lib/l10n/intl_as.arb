@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-12 13:11:49.499418",
+    "@@last_modified": "2026-10-13 13:03:39.618624",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "ডিফল্টভাৱে, পাঠ্যক্ৰমসমূহ ৰাজহুৱাভাৱে সন্ধানযোগ্য আৰু যোগদান কৰিবলৈ প্ৰশাসকৰ অনুমোদনৰ প্ৰয়োজন। আপুনি এই ছেটিংছসমূহ যিকোনো সময়তে সম্পাদনা কৰিব পাৰে।",
     "onboardingLanguagesTitle": "আপুনি কোনটো ভাষা শিকি আছে?",
     "supportSubtitle": "প্ৰশ্ন আছে? আমি সহায় কৰিবলৈ ইয়াত আছোঁ!",
-    "autoIGCToolName": "লিখাৰ সহায় সক্ষম কৰক",
-    "autoIGCToolDescription": "পঠিওৱা বাৰ্তাসমূহ লক্ষ্য ভাষালৈ শুদ্ধ কৰিবলৈ Pangea Chat সঁজুলিসমূহ স্বয়ংক্ৰিয়ভাৱে চলাওক।",
+    "autoIGCToolName": "পঠাওঁতে স্বয়ংক্ৰিয় পৰীক্ষা",
+    "autoIGCToolDescription": "আপুনি পঠাওঁতে আপোনাৰ বাৰ্তাৰ ভুলবোৰ পৰীক্ষা কৰক। যেতিয়া এইটো বন্ধ থাকে, তেতিয়া আপুনি নিজেই এটা বাৰ্তা পৰীক্ষা কৰিবলৈ লিখাৰ সহায় বুটামটো টিপক।",
     "emptyAudioError": "ৰেকৰ্ডিং విఫలమైంది। অনুগ্ৰহ কৰি আপোনাৰ অডিঅ' অনুমতিসমূহ পৰীক্ষা কৰক আৰু পুনৰ চেষ্টা কৰক।",
     "spanTypeSpelling": "বানান",
     "spanTypePunctuation": "যতি চিহ্ন",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "আপোনাৰ পাঠ্যক্ৰমসমূহ বিচাৰি উলিওৱা হৈছে…",
     "activityLaunchCreatingRoom": "আপোনাৰ কাৰ্য্যকলাপ সৃষ্টি কৰা হৈছে…",
     "activityLaunchOpeningRoom": "আপোনাৰ কাৰ্য্যকলাপ খোলা হৈছে…",
+    "playWithOthers": "আনৰ সৈতে খেলক",
+    "openRole": "খোলক: {role}",
+    "waitingFor": "{duration} অপেক্ষা কৰি আছে",
+    "onlineInCourse": "{course}ত {count} জন অনলাইনত আছে",
+    "newCourseChat": "নতুন পাঠ্যক্ৰমৰ আড্ডা",
     "teamCode": "দলৰ ক'ড",
     "reopenAppToFinishSwitching": "সুইচিং শেষ কৰিবলৈ এপটো সম্পূৰ্ণৰূপে বন্ধ কৰি পুনৰ খুলক।"
 }

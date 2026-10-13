@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-12 13:11:59.592902",
+    "@@last_modified": "2026-10-13 13:03:45.993467",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Анхдагчаар, хичээлүүд олон нийтэд хайгдах боломжтой бөгөөд нэгдэхийн тулд админы зөвшөөрөл шаарддаг. Та эдгээр тохиргоог хүссэн үедээ засах боломжтой.",
     "onboardingLanguagesTitle": "Та ямар хэл сурч байна вэ?",
     "supportSubtitle": "Асуулт байна уу? Бид туслахад бэлэн!",
-    "autoIGCToolName": "Бичихэд туслах хэрэгслийг идэвхжүүлэх",
-    "autoIGCToolDescription": "Илгээсэн мессежүүдийг зорилтот хэл рүү засахын тулд Pangea Chat хэрэгслүүдийг автоматаар ажиллуулна.",
+    "autoIGCToolName": "Илгээх үед автоматаар шалгах",
+    "autoIGCToolDescription": "Илгээх товчийг дарахад таны мессежийг алдаа эсэхийг шалгана. Энэ нь унтарсан үед, мессежийг өөрөө шалгахын тулд бичих туслах товчийг дарна уу.",
     "emptyAudioError": "Бичлэг хийх амжилтгүй боллоо. Аудио зөвшөөрлөө шалгаад дахин оролдоно уу.",
     "spanTypeSpelling": "Үсгийн алдаа",
     "spanTypePunctuation": "Цэг таслал",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "Таны хичээлүүдийг хайж байна…",
     "activityLaunchCreatingRoom": "Таны үйлдлийг үүсгэж байна…",
     "activityLaunchOpeningRoom": "Таны үйлдлийг нээж байна…",
+    "playWithOthers": "Бусадтай тоглох",
+    "openRole": "Нээлттэй: {role}",
+    "waitingFor": "{duration} хүлээж байна",
+    "onlineInCourse": "{course}-д {count} хүн онлайн байна",
+    "newCourseChat": "Шинэ хичээлийн чат",
     "teamCode": "Багийн код",
     "reopenAppToFinishSwitching": "Шилжүүлгийг дуусгахын тулд аппыг бүрэн хаагаад дахин нээнэ үү."
 }

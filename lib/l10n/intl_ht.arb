@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-12 13:11:54.850124",
+    "@@last_modified": "2026-10-13 13:03:43.288900",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Pa defo, kou yo ka chèche piblikman epi yo mande apwobasyon admin pou rantre. Ou ka modifye paramèt sa yo nenpòt ki lè.",
     "onboardingLanguagesTitle": "Ki lang w ap aprann?",
     "supportSubtitle": "Kesyon? Nou la pou ede!",
-    "autoIGCToolName": "Pèmèt asistans ekriti",
-    "autoIGCToolDescription": "Otomatikman kouri zouti Pangea Chat pou korije mesaj yo voye nan lang sib la.",
+    "autoIGCToolName": "Verifikasyon otomatik lè w voye",
+    "autoIGCToolDescription": "Tcheke mesaj ou a pou erè lè w tape voye. Lè sa a etenn, tape bouton asistans ekriti a pou tcheke yon mesaj ou menm.",
     "emptyAudioError": "Anrejistreman echwe. Tanpri tcheke pèmisyon odyo ou epi eseye ankò.",
     "spanTypeSpelling": "Òtograf",
     "spanTypePunctuation": "Ponktiyasyon",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "Nou ap chèche kou ou yo…",
     "activityLaunchCreatingRoom": "Nou ap kreye aktivite ou a…",
     "activityLaunchOpeningRoom": "Nou ap ouvri aktivite ou a…",
+    "playWithOthers": "Jwe ak lòt moun",
+    "openRole": "Louvri: {role}",
+    "waitingFor": "Nap tann {duration}",
+    "onlineInCourse": "{count} an liy nan {course}",
+    "newCourseChat": "Nouvo chat kou",
     "teamCode": "Kòd ekip",
     "reopenAppToFinishSwitching": "Fèmen aplikasyon an nèt epi ouvri l ankò pou fini chanjman an."
 }

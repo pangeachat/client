@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-12 13:11:55.419942",
+    "@@last_modified": "2026-10-13 13:03:43.127513",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -7843,8 +7843,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Írássegítő engedélyezése",
-    "autoIGCToolDescription": "Automatikusan futtassa a Pangea Chat eszközöket a küldött üzenetek célnyelvre történő javításához.",
+    "autoIGCToolName": "Automatikus ellenőrzés küldéskor",
+    "autoIGCToolDescription": "Ellenőrizze üzenetét hibákra, amikor megérinti a küldés gombot. Ha ez ki van kapcsolva, érintse meg az írássegítő gombot az üzenet saját ellenőrzéséhez.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10076,6 +10076,11 @@
     "activityLaunchFindingCourses": "Keresem a kurzusaidat…",
     "activityLaunchCreatingRoom": "Létrehozom a tevékenységedet…",
     "activityLaunchOpeningRoom": "Megnyitom a tevékenységedet…",
+    "playWithOthers": "Játssz másokkal",
+    "openRole": "Nyitott: {role}",
+    "waitingFor": "Várakozás: {duration}",
+    "onlineInCourse": "{count} online a {course} kurzuson",
+    "newCourseChat": "Új tanfolyami csevegés",
     "teamCode": "Csapatkód",
     "reopenAppToFinishSwitching": "A váltás befejezéséhez zárd be teljesen az alkalmazást, majd nyisd meg újra."
 }

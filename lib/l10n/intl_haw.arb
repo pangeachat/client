@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-12 13:11:56.663996",
+    "@@last_modified": "2026-10-13 13:03:42.683638",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Ma ke ʻano paʻamau, hiki ke huli ākea ʻia nā papa a koi ʻia ka ʻae a ke poʻo no ke komo ʻana. Hiki iā ʻoe ke hoʻoponopono i kēia mau hoʻonohonoho i kēlā me kēia manawa.",
     "onboardingLanguagesTitle": "He aha ka ʻōlelo āu e aʻo nei?",
     "supportSubtitle": "He nīnau? Aia mākou ma ʻaneʻi e kōkua!",
-    "autoIGCToolName": "Hoʻā i ke kōkua kākau",
-    "autoIGCToolDescription": "Hoʻohana ʻakomi i nā mea hana Pangea Chat no ka hoʻoponopono ʻana i nā leka i hoʻouna ʻia i ka ʻōlelo i makemake ʻia.",
+    "autoIGCToolName": "Nānā aunoa ke hoʻouna",
+    "autoIGCToolDescription": "E nānā i kāu leka no nā hewa ke paʻi ʻoe i ka hoʻouna. Ke pio kēia, e kaomi i ke pihi kōkua kākau e nānā iā ʻoe iho i kahi leka.",
     "emptyAudioError": "ʻAʻole i holo ka hoʻopaʻa leo. E ʻoluʻolu e nānā i kou mau ʻae leo a hoʻāʻo hou.",
     "spanTypeSpelling": "Pele",
     "spanTypePunctuation": "Kiko",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "Ke ʻimi nei i kāu mau papa…",
     "activityLaunchCreatingRoom": "Ke hana nei i kāu hana…",
     "activityLaunchOpeningRoom": "Ke wehe nei i kāu hana…",
+    "playWithOthers": "Pāʻani me nā mea ʻē aʻe",
+    "openRole": "Hāmama: {role}",
+    "waitingFor": "Ke kali nei {duration}",
+    "onlineInCourse": "{count} ma ka pūnaewele ma {course}",
+    "newCourseChat": "Kūkākūkā papa hou",
     "teamCode": "Helu hui",
     "reopenAppToFinishSwitching": "E pani loa i ka polokalamu a e wehe hou e hoʻopau i ka hoʻololi ʻana."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:12:06.003776",
+    "@@last_modified": "2026-10-13 13:03:49.817961",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -7842,8 +7842,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "எழுத்து உதவியை செயல்படுத்தவும்",
-    "autoIGCToolDescription": "அனுப்பிய செய்திகளை இலக்கு மொழிக்கு சரிசெய்ய பாஙோ உரையாடல் கருவிகளை தானாகவே இயக்கவும்.",
+    "autoIGCToolName": "அனுப்பும்போது தானாகச் சரிபார்க்கவும்",
+    "autoIGCToolDescription": "நீங்கள் அனுப்பும் செய்தியில் உள்ள பிழைகளை, அனுப்பும் பொத்தானைத் தட்டும்போது சரிபார்க்கவும். இது முடக்கப்பட்டிருந்தால், நீங்களே செய்தியைச் சரிபார்க்க எழுத்து உதவி பொத்தானைத் தட்டவும்.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10065,6 +10065,11 @@
     "activityLaunchFindingCourses": "உங்கள் படிப்புகளைக் கண்டறிகிறது…",
     "activityLaunchCreatingRoom": "உங்கள் செயல்பாட்டை உருவாக்குகிறது…",
     "activityLaunchOpeningRoom": "உங்கள் செயல்பாட்டைத் திறக்கிறது…",
+    "playWithOthers": "மற்றவர்களுடன் விளையாடு",
+    "openRole": "திறந்த: {role}",
+    "waitingFor": "காத்திருக்கிறது {duration}",
+    "onlineInCourse": "{course} இல் {count} பேர் ஆன்லைனில் உள்ளனர்",
+    "newCourseChat": "புதிய பாடநெறி அரட்டை",
     "teamCode": "அணிக் குறியீடு",
     "reopenAppToFinishSwitching": "மாற்றுவதை முடிக்க, பயன்பாட்டை முழுமையாக மூடிவிட்டு மீண்டும் திறக்கவும்."
 }

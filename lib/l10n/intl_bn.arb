@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:11:48.350314",
+    "@@last_modified": "2026-10-13 13:03:39.526270",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -8368,8 +8368,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "লেখার সহায়তা সক্রিয় করুন",
-    "autoIGCToolDescription": "লক্ষ্য ভাষায় পাঠানো বার্তা সংশোধন করতে স্বয়ংক্রিয়ভাবে প্যাঙ্গিয়া চ্যাট টুলগুলি চালান।",
+    "autoIGCToolName": "পাঠানোর সময় স্বয়ংক্রিয়ভাবে পরীক্ষা করুন",
+    "autoIGCToolDescription": "আপনি যখন পাঠান বোতামে ট্যাপ করবেন তখন আপনার মেসেজে ভুল আছে কিনা তা পরীক্ষা করুন। এটি বন্ধ থাকলে, নিজে মেসেজ পরীক্ষা করতে লেখার সহায়তা বোতামে ট্যাপ করুন।",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10601,6 +10601,11 @@
     "activityLaunchFindingCourses": "আপনার কোর্সগুলি খোঁজা হচ্ছে…",
     "activityLaunchCreatingRoom": "আপনার কার্যকলাপ তৈরি করা হচ্ছে…",
     "activityLaunchOpeningRoom": "আপনার কার্যকলাপ খোলা হচ্ছে…",
+    "playWithOthers": "অন্যদের সাথে খেলুন",
+    "openRole": "খুলুন: {role}",
+    "waitingFor": "{duration} অপেক্ষা করা হচ্ছে",
+    "onlineInCourse": "{course}-এ {count} জন অনলাইন আছেন",
+    "newCourseChat": "নতুন কোর্স চ্যাট",
     "teamCode": "টিম কোড",
     "reopenAppToFinishSwitching": "সুইচিং শেষ করতে অ্যাপটি সম্পূর্ণ বন্ধ করুন এবং আবার খুলুন।"
 }

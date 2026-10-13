@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:11:50.763345",
+    "@@last_modified": "2026-10-13 13:03:40.881852",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -8685,8 +8685,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Ebligi skriban asistadon",
-    "autoIGCToolDescription": "Aŭtomate funkciigi Pangea Chat-ilojn por korekti senditajn mesaĝojn al la cellingvo.",
+    "autoIGCToolName": "Aŭtomata kontrolo je sendo",
+    "autoIGCToolDescription": "Kontrolu vian mesaĝon pri eraroj kiam vi frapetas sendi. Kiam ĉi tio estas malŝaltita, frapetu la butonon de skribasistado por kontroli mesaĝon mem.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10918,6 +10918,11 @@
     "activityLaunchFindingCourses": "Trovante viajn kursojn...",
     "activityLaunchCreatingRoom": "Kreante vian agadon...",
     "activityLaunchOpeningRoom": "Malfermante vian agadon...",
+    "playWithOthers": "Ludu kun aliaj",
+    "openRole": "Malferma: {role}",
+    "waitingFor": "Atendante {duration}",
+    "onlineInCourse": "{count} enrete en {course}",
+    "newCourseChat": "Nova kursa babilejo",
     "teamCode": "Teama kodo",
     "reopenAppToFinishSwitching": "Fermu la apon tute kaj remalfermu ĝin por fini la ŝanĝon."
 }

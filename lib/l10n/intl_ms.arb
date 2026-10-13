@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-12 13:11:59.788454",
+    "@@last_modified": "2026-10-13 13:03:46.647402",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Secara lalai, kursus boleh dicari secara awam dan memerlukan kelulusan pentadbir untuk menyertai. Anda boleh mengedit tetapan ini pada bila-bila masa.",
     "onboardingLanguagesTitle": "Bahasa apa yang anda pelajari?",
     "supportSubtitle": "Ada soalan? Kami sedia membantu!",
-    "autoIGCToolName": "Dayakan bantuan penulisan",
-    "autoIGCToolDescription": "Jalankan alat Pangea Chat secara automatik untuk membetulkan mesej yang dihantar ke bahasa sasaran.",
+    "autoIGCToolName": "Semak automatik semasa hantar",
+    "autoIGCToolDescription": "Semak mesej anda untuk kesilapan apabila anda mengetik hantar. Apabila ini dimatikan, ketik butang bantuan penulisan untuk menyemak mesej sendiri.",
     "emptyAudioError": "Rakaman gagal. Sila semak kebenaran audio anda dan cuba lagi.",
     "spanTypeSpelling": "Ejaan",
     "spanTypePunctuation": "Tanda baca",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "Mencari kursus anda…",
     "activityLaunchCreatingRoom": "Mencipta aktiviti anda…",
     "activityLaunchOpeningRoom": "Membuka aktiviti anda…",
+    "playWithOthers": "Main dengan orang lain",
+    "openRole": "Buka: {role}",
+    "waitingFor": "Menunggu {duration}",
+    "onlineInCourse": "{count} dalam talian dalam {course}",
+    "newCourseChat": "Sembang kursus baharu",
     "teamCode": "Kod pasukan",
     "reopenAppToFinishSwitching": "Tutup aplikasi sepenuhnya dan buka semula untuk menyelesaikan penukaran."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-12 13:11:52.892847",
+    "@@last_modified": "2026-10-13 13:03:41.976027",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Gu gnàthach, tha cùrsaichean rim faighinn gu poblach agus feumaidh iad cead rianadair airson a dhol a-steach. Faodaidh tu na roghainnean sin a dheasachadh aig àm sam bith.",
     "onboardingLanguagesTitle": "Dè an cànan a tha thu ag ionnsachadh?",
     "supportSubtitle": "Ceistean? Tha sinn an seo gus cuideachadh!",
-    "autoIGCToolName": "Cuir an comas taic sgrìobhaidh",
-    "autoIGCToolDescription": "Ruith innealan Pangea Chat gu fèin-ghluasadach gus teachdaireachdan a chaidh a chuir a cheartachadh gu cànan targaid.",
+    "autoIGCToolName": "Fèin-sgrùdadh nuair a chuireas tu",
+    "autoIGCToolDescription": "Dèan sgrùdadh air an teachdaireachd agad airson mhearachdan nuair a phutas tu cuir. Nuair a tha seo dheth, tap air a’ phutan taic sgrìobhaidh gus teachdaireachd a sgrùdadh thu fhèin.",
     "emptyAudioError": "Dh'fhàillig an clàradh. Feuch an dèan thu sgrùdadh air na ceadan claisneachd agad agus feuch ris a-rithist.",
     "spanTypeSpelling": "Litreachadh",
     "spanTypePunctuation": "Puingeachadh",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "A' lorg nan cùrsaichean agad…",
     "activityLaunchCreatingRoom": "A' cruthachadh do ghnìomhachd…",
     "activityLaunchOpeningRoom": "A' fosgladh do ghnìomhachd…",
+    "playWithOthers": "Cluich le càch",
+    "openRole": "Fosgailte: {role}",
+    "waitingFor": "A’ feitheamh {duration}",
+    "onlineInCourse": "{count} air-loidhne ann an {course}",
+    "newCourseChat": "Còmhradh cùrsa ùr",
     "teamCode": "Còd sgioba",
     "reopenAppToFinishSwitching": "Dùin an aplacaid gu tur agus fosgail a-rithist i gus crìoch a chur air an atharrachadh."
 }

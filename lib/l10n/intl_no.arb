@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-12 13:12:01.288273",
+    "@@last_modified": "2026-10-13 13:03:47.108167",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Som standard er kurs offentlig søkbare og krever administratorgodkjenning for å bli med. Du kan redigere disse innstillingene når som helst.",
     "onboardingLanguagesTitle": "Hvilket språk lærer du?",
     "supportSubtitle": "Spørsmål? Vi er her for å hjelpe!",
-    "autoIGCToolName": "Aktiver skrivehjelp",
-    "autoIGCToolDescription": "Kjør automatisk Pangea Chat-verktøy for å korrigere sendte meldinger til målspråket.",
+    "autoIGCToolName": "Autosjekk ved sending",
+    "autoIGCToolDescription": "Sjekk meldingen din for feil når du trykker send. Når dette er av, trykk på skrivehjelp-knappen for å sjekke en melding selv.",
     "emptyAudioError": "Opptak mislyktes. Vennligst sjekk lydtillatelsene dine og prøv igjen.",
     "spanTypeSpelling": "Stavemåte",
     "spanTypePunctuation": "Tegnsetting",
@@ -2422,6 +2422,11 @@
     "activityLaunchFindingCourses": "Finner kursene dine …",
     "activityLaunchCreatingRoom": "Oppretter aktiviteten din …",
     "activityLaunchOpeningRoom": "Åpner aktiviteten din …",
+    "playWithOthers": "Spill med andre",
+    "openRole": "Åpen: {role}",
+    "waitingFor": "Venter {duration}",
+    "onlineInCourse": "{count} online i {course}",
+    "newCourseChat": "Ny kursprat",
     "teamCode": "Teamkode",
     "reopenAppToFinishSwitching": "Lukk appen helt og åpne den igjen for å fullføre byttet."
 }
