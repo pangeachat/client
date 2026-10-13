@@ -343,14 +343,6 @@ class Environment {
         dotenv.env["GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64"];
   }
 
-  static String get stripeManagementUrl {
-    return appConfigOverride?.stripeManagementUrl ??
-        dotenv.env["STRIPE_MANAGEMENT_LINK"] ??
-        (isStagingEnvironment
-            ? 'https://billing.stripe.com/p/login/test_9AQaI8d3O9lmaXe5kk'
-            : 'https://billing.stripe.com/p/login/dR6dSkf5p6rBc4EcMM');
-  }
-
   static String get supportUserId {
     return synapseURL.contains('staging')
         ? '@support:staging.pangea.chat'
@@ -403,7 +395,6 @@ class AppConfigOverride {
   final bool? liveStreamingSttEnabled;
   final String? sentryDsn;
   final String? googleAnalyticsFirebaseOptionsBase64;
-  final String? stripeManagementUrl;
   final String? botName;
 
   const AppConfigOverride({
@@ -420,7 +411,6 @@ class AppConfigOverride {
     this.liveStreamingSttEnabled,
     this.sentryDsn,
     this.googleAnalyticsFirebaseOptionsBase64,
-    this.stripeManagementUrl,
     this.botName,
   });
 
@@ -431,7 +421,6 @@ class AppConfigOverride {
     'SYNAPSE_URL',
     'CHOREO_API',
     'TEACHER_BFF_API',
-    'STRIPE_MANAGEMENT_LINK',
     'BOT_NAME',
   ];
 
@@ -463,7 +452,6 @@ class AppConfigOverride {
       dosageVoiceMessagesEnabled: flag('DOSAGE_VOICE_MESSAGES_ENABLED'),
       voiceTranscriptDecoupleEnabled: flag('VOICE_TRANSCRIPT_DECOUPLE_ENABLED'),
       liveStreamingSttEnabled: flag('LIVE_STREAMING_STT_ENABLED'),
-      stripeManagementUrl: envFile['STRIPE_MANAGEMENT_LINK'],
       botName: envFile['BOT_NAME'],
     );
   }
@@ -485,7 +473,6 @@ class AppConfigOverride {
       sentryDsn: json['sentryDsn'] as String?,
       googleAnalyticsFirebaseOptionsBase64:
           json['googleAnalyticsFirebaseOptionsBase64'] as String?,
-      stripeManagementUrl: json['stripeManagementUrl'] as String?,
       botName: json['botName'] as String?,
     );
   }
@@ -506,7 +493,6 @@ class AppConfigOverride {
       'sentryDsn': sentryDsn,
       'googleAnalyticsFirebaseOptionsBase64':
           googleAnalyticsFirebaseOptionsBase64,
-      'stripeManagementUrl': stripeManagementUrl,
       'botName': botName,
     };
   }
@@ -526,7 +512,6 @@ class AppConfigOverride {
         liveStreamingSttEnabled.hashCode ^
         sentryDsn.hashCode ^
         googleAnalyticsFirebaseOptionsBase64.hashCode ^
-        stripeManagementUrl.hashCode ^
         botName.hashCode;
   }
 
@@ -549,7 +534,6 @@ class AppConfigOverride {
         sentryDsn == other.sentryDsn &&
         googleAnalyticsFirebaseOptionsBase64 ==
             other.googleAnalyticsFirebaseOptionsBase64 &&
-        stripeManagementUrl == other.stripeManagementUrl &&
         botName == other.botName;
   }
 }

@@ -26,7 +26,6 @@ CHOREO_API = 'https://api.staging.pangea.chat'
 FRONTEND_URL='https://app.staging.pangea.chat'
 SYNAPSE_URL = 'matrix.staging.pangea.chat'
 TEACHER_BFF_API=https://admin-dash-api.staging.pangea.chat
-STRIPE_MANAGEMENT_LINK=https://billing.stripe.com/p/login/test_9AQaI8d3O9lmaXe5kk
 BOT_NAME=@bot:staging.pangea.chat
 ANALYTICS_DUAL_WRITE_ENABLED=true
 DOSAGE_SIGNALS_ENABLED=true

@@ -90,7 +90,7 @@ What follows the switch:
 
 | Part | Follows | Why |
 |---|---|---|
-| Synapse, choreographer, CMS, teacher dashboard API, Stripe, bot, and the feature flags `AppConfigOverride` carries | The switch | Read from the chosen environment's `.env`. Each environment's `WEB_APP_ENV` must name all of them, including `BOT_NAME` and `STRIPE_MANAGEMENT_LINK`, because a missing value would fall back to the build's own environment and mix the two. |
+| Synapse, choreographer, CMS, teacher dashboard API, bot, and the feature flags `AppConfigOverride` carries | The switch | Read from the chosen environment's `.env`. Each environment's `WEB_APP_ENV` must name all of them, including `BOT_NAME`, because a missing value would fall back to the build's own environment and mix the two. |
 | Push | The build | The phone's push token belongs to the Firebase project built into the app, so the app always registers its own build's Sygnal. Staging reaches a switched production build through production Sygnal, notices included ([notice delivery](../../../synapse-pangea-chat/.github/instructions/notice-delivery.instructions.md#direct-push-send_push)). |
 | Sentry | The switch | `sentryEnvironment` follows the Synapse address, and the `config_override` tag marks a switched build. |
 | Google Analytics | Off | A mobile build can only report into its own build's Firebase project, so a switched build stops collecting. This keeps staging use out of production reports. |
