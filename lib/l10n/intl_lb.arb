@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Blummen, beherrschte Wierder",
     "filterAndSearch": "Filteren a sichen",
     "participantsOfTotal": "{filled} vun {total} Spiller",
-    "mapAttributionLabel": "OpenStreetMap Mataarbechter, Copyright a Lizenz",
     "seeAll": "Alles gesinn",
     "seeAllSection": "Alles gesinn {section}",
     "showMoreOptionsHint": "méi Optiounen uweisen",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Benotzt Äre Mikro fir Uriff",
     "callMicrophoneMessage": "Pangea Chat brauch Äre Mikro fir Uriff, och Uriff déi Dir vum Spärbildschierm beäntwert.",
     "callMicrophoneOffTitle": "Ären Uruff gouf net ugeschloss",
-    "callMicrophoneOffMessage": "Pangea Chat kann Äre Mikro net benotzen. Tippen fir en an den Astellungen unzeschalten."
+    "callMicrophoneOffMessage": "Pangea Chat kann Äre Mikro net benotzen. Tippen fir en an den Astellungen unzeschalten.",
+    "mapCreditsLabel": "Kaart Credits: Stadia Maps, OpenMapTiles an OpenStreetMap"
 }

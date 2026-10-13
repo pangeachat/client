@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Voninkazo, teny efa mahay",
     "filterAndSearch": "Sivana sy karoka",
     "participantsOfTotal": "{filled} amin'ny mpilalao {total}",
-    "mapAttributionLabel": "Mpanome anjara OpenStreetMap, zon'ny mpamorona ary fahazoan-dàlana",
     "seeAll": "Jereo daholo",
     "seeAllSection": "Jereo daholo ny {section}",
     "showMoreOptionsHint": "asehoy safidy bebe kokoa",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Ampiasao ny mikrôfôninao amin'ny antso",
     "callMicrophoneMessage": "Mila ny mikrôfôninao ny Pangea Chat ho an'ny antso, anisan'izany ny antso valianao avy amin'ny efijery mihidy.",
     "callMicrophoneOffTitle": "Tsy nifandray ny antsonao",
-    "callMicrophoneOffMessage": "Tsy afaka mampiasa ny mikrôfôninao ny Pangea Chat. Tsindrio raha te hampandeha azy ao amin'ny Fikirana."
+    "callMicrophoneOffMessage": "Tsy afaka mampiasa ny mikrôfôninao ny Pangea Chat. Tsindrio raha te hampandeha azy ao amin'ny Fikirana.",
+    "mapCreditsLabel": "Fampiasana sarintany: Stadia Maps, OpenMapTiles ary OpenStreetMap"
 }

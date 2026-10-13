@@ -9834,7 +9834,6 @@
     "constructLevelFlowers": "Kukat, hallitut sanat",
     "filterAndSearch": "Suodata ja hae",
     "participantsOfTotal": "{filled}/{total} pelaajaa",
-    "mapAttributionLabel": "OpenStreetMapin tekijät, tekijänoikeudet ja lisenssi",
     "seeAll": "Näytä kaikki",
     "seeAllSection": "Näytä kaikki {section}",
     "showMoreOptionsHint": "näytä lisää vaihtoehtoja",
@@ -10006,5 +10005,6 @@
     "callMicrophoneTitle": "Käytä mikrofonia puheluihin",
     "callMicrophoneMessage": "Pangea Chat tarvitsee mikrofonisi puheluihin, myös lukitusnäytöltä vastaamiisi puheluihin.",
     "callMicrophoneOffTitle": "Puhelu ei yhdistynyt",
-    "callMicrophoneOffMessage": "Pangea Chat ei voi käyttää mikrofonia. Napauta ottaaksesi sen käyttöön asetuksista."
+    "callMicrophoneOffMessage": "Pangea Chat ei voi käyttää mikrofonia. Napauta ottaaksesi sen käyttöön asetuksista.",
+    "mapCreditsLabel": "Karttatiedot: Stadia Maps, OpenMapTiles ja OpenStreetMap"
 }

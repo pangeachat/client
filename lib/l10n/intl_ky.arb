@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Гүлдөр, өздөштүрүлгөн сөздөр",
     "filterAndSearch": "Чыпкалоо жана издөө",
     "participantsOfTotal": "{filled} / {total} оюнчу",
-    "mapAttributionLabel": "OpenStreetMap салымчылары, автордук укук жана лицензия",
     "seeAll": "Баарын көрүү",
     "seeAllSection": "Баарын көрүү {section}",
     "showMoreOptionsHint": "көбүрөөк параметрлерди көрсөтүү",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Чакыруулар үчүн микрофонуңузду колдонуңуз",
     "callMicrophoneMessage": "Pangea Chat чакыруулар үчүн микрофонуңузду колдонушу керек, анын ичинде кулпуланган экрандан жооп берген чакыруулар да бар.",
     "callMicrophoneOffTitle": "Чакырууңуз туташкан жок",
-    "callMicrophoneOffMessage": "Pangea Chat микрофонуңузду колдоно албайт. Жөндөөлөрдөн күйгүзүү үчүн таптаңыз."
+    "callMicrophoneOffMessage": "Pangea Chat микрофонуңузду колдоно албайт. Жөндөөлөрдөн күйгүзүү үчүн таптаңыз.",
+    "mapCreditsLabel": "Картанын авторлору: Stadia Maps, OpenMapTiles жана OpenStreetMap"
 }

@@ -17,7 +17,7 @@ When a network blocks a host the app needs, the app tells the user what they can
 | Pangea API | `api.pangea.chat` | The language tools, activities and subscriptions |
 | Images | `content.pangea.chat` | Activity and course images |
 | Video | YouTube | Activity videos |
-| Map | `tile.openstreetmap.org` | The world map background |
+| Map | `tiles.stadiamaps.com` | The world map background |
 | Sign-in providers | Google and Apple sign-in | Google and Apple sign-in; email sign-in still works |
 
 A blocked chat server or Pangea API stops the app. Any other blocked host breaks one feature, and the rest of the app keeps working. When the app starts to depend on a new host, add it here and to the domain list the app shows IT staff.

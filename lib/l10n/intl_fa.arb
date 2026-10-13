@@ -9885,7 +9885,6 @@
     "constructLevelFlowers": "گل‌ها، کلمات تسلط یافته",
     "filterAndSearch": "فیلتر و جستجو",
     "participantsOfTotal": "{filled} از {total} بازیکن",
-    "mapAttributionLabel": "مشارکت‌کنندگان OpenStreetMap، حق تکثیر و مجوز",
     "seeAll": "مشاهده همه",
     "seeAllSection": "مشاهده همه {section}",
     "showMoreOptionsHint": "نمایش گزینه‌های بیشتر",
@@ -10057,5 +10056,6 @@
     "callMicrophoneTitle": "از میکروفون خود برای تماس‌ها استفاده کنید",
     "callMicrophoneMessage": "پنگه‌آ چت برای تماس‌ها، از جمله تماس‌هایی که از صفحه قفل پاسخ می‌دهید، به میکروفون شما نیاز دارد.",
     "callMicrophoneOffTitle": "تماس شما وصل نشد",
-    "callMicrophoneOffMessage": "پنگه‌آ چت نمی‌تواند از میکروفون شما استفاده کند. برای روشن کردن آن در تنظیمات ضربه بزنید."
+    "callMicrophoneOffMessage": "پنگه‌آ چت نمی‌تواند از میکروفون شما استفاده کند. برای روشن کردن آن در تنظیمات ضربه بزنید.",
+    "mapCreditsLabel": "اعتبار نقشه: Stadia Maps, OpenMapTiles و OpenStreetMap"
 }

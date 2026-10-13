@@ -9903,7 +9903,6 @@
     "constructLevelFlowers": "花朵，已掌握的單字",
     "filterAndSearch": "篩選與搜尋",
     "participantsOfTotal": "{filled} / {total} 位玩家",
-    "mapAttributionLabel": "OpenStreetMap 貢獻者、版權與許可",
     "seeAll": "查看全部",
     "seeAllSection": "查看全部{section}",
     "showMoreOptionsHint": "顯示更多選項",
@@ -10075,5 +10074,6 @@
     "callMicrophoneTitle": "將麥克風用於通話",
     "callMicrophoneMessage": "Pangea Chat 需要您的麥克風才能進行通話，包括您從鎖定畫面接聽的通話。",
     "callMicrophoneOffTitle": "您的通話未連線",
-    "callMicrophoneOffMessage": "Pangea Chat 無法使用您的麥克風。輕點以在「設定」中開啟。"
+    "callMicrophoneOffMessage": "Pangea Chat 無法使用您的麥克風。輕點以在「設定」中開啟。",
+    "mapCreditsLabel": "地圖來源：Stadia Maps、OpenMapTiles 和 OpenStreetMap"
 }

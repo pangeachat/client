@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "ផ្កា ពាក្យដែលស្ទាត់ជំនាញ",
     "filterAndSearch": "ត្រង និងស្វែងរក",
     "participantsOfTotal": "អ្នកលេង {filled} នៃ {total} នាក់",
-    "mapAttributionLabel": "អ្នករួមចំណែក OpenStreetMap, ការរក្សាសិទ្ធិ និងអាជ្ញាប័ណ្ណ",
     "seeAll": "មើលទាំងអស់",
     "seeAllSection": "មើល {section} ទាំងអស់",
     "showMoreOptionsHint": "បង្ហាញជម្រើសច្រើនទៀត",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "ប្រើមីក្រូហ្វូនរបស់អ្នកសម្រាប់ការហៅទូរសព្ទ",
     "callMicrophoneMessage": "Pangea Chat ត្រូវការមីក្រូហ្វូនរបស់អ្នកសម្រាប់ការហៅទូរសព្ទ រួមទាំងការហៅទូរសព្ទដែលអ្នកទទួលពីអេក្រង់ចាក់សោ។",
     "callMicrophoneOffTitle": "ការហៅទូរសព្ទរបស់អ្នកមិនបានភ្ជាប់ទេ។",
-    "callMicrophoneOffMessage": "Pangea Chat មិនអាចប្រើមីក្រូហ្វូនរបស់អ្នកបានទេ។ ចុចដើម្បីបើកវានៅក្នុងការកំណត់។"
+    "callMicrophoneOffMessage": "Pangea Chat មិនអាចប្រើមីក្រូហ្វូនរបស់អ្នកបានទេ។ ចុចដើម្បីបើកវានៅក្នុងការកំណត់។",
+    "mapCreditsLabel": "ការផ្ដល់កិត្តិយសផែនទី៖ Stadia Maps, OpenMapTiles និង OpenStreetMap"
 }

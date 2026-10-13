@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "ਫੁੱਲ, ਮੁਹਾਰਤ ਵਾਲੇ ਸ਼ਬਦ",
     "filterAndSearch": "ਫਿਲਟਰ ਕਰੋ ਅਤੇ ਖੋਜੋ",
     "participantsOfTotal": "{total} ਖਿਡਾਰੀਆਂ ਵਿੱਚੋਂ {filled}",
-    "mapAttributionLabel": "ਓਪਨਸਟ੍ਰੀਟਮੈਪ ਯੋਗਦਾਨੀ, ਕਾਪੀਰਾਈਟ ਅਤੇ ਲਾਇਸੰਸ",
     "seeAll": "ਸਾਰੇ ਦੇਖੋ",
     "seeAllSection": "ਸਾਰੇ {section} ਦੇਖੋ",
     "showMoreOptionsHint": "ਹੋਰ ਵਿਕਲਪ ਦਿਖਾਓ",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "ਕਾਲਾਂ ਲਈ ਆਪਣਾ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਵਰਤੋ",
     "callMicrophoneMessage": "Pangea Chat ਨੂੰ ਕਾਲਾਂ ਲਈ ਤੁਹਾਡੇ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਦੀ ਲੋੜ ਹੈ, ਜਿਸ ਵਿੱਚ ਉਹ ਕਾਲਾਂ ਵੀ ਸ਼ਾਮਲ ਹਨ ਜਿਨ੍ਹਾਂ ਦਾ ਤੁਸੀਂ ਲੌਕ ਸਕ੍ਰੀਨ ਤੋਂ ਜਵਾਬ ਦਿੰਦੇ ਹੋ।",
     "callMicrophoneOffTitle": "ਤੁਹਾਡੀ ਕਾਲ ਕਨੈਕਟ ਨਹੀਂ ਹੋਈ",
-    "callMicrophoneOffMessage": "Pangea Chat ਤੁਹਾਡਾ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਨਹੀਂ ਵਰਤ ਸਕਦਾ। ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਇਸਨੂੰ ਚਾਲੂ ਕਰਨ ਲਈ ਟੈਪ ਕਰੋ।"
+    "callMicrophoneOffMessage": "Pangea Chat ਤੁਹਾਡਾ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਨਹੀਂ ਵਰਤ ਸਕਦਾ। ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਇਸਨੂੰ ਚਾਲੂ ਕਰਨ ਲਈ ਟੈਪ ਕਰੋ।",
+    "mapCreditsLabel": "ਨਕਸ਼ੇ ਦੇ ਕ੍ਰੈਡਿਟ: ਸਟੇਡੀਆ ਮੈਪਸ, ਓਪਨਮੈਪਟਾਈਲਸ ਅਤੇ ਓਪਨਸਟ੍ਰੀਟਮੈਪ"
 }

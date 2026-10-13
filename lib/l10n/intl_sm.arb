@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Fugalaau, upu ua atamai",
     "filterAndSearch": "Faamama ma suʻe",
     "participantsOfTotal": "{filled} o le {total} tagata taaalo",
-    "mapAttributionLabel": "OpenStreetMap tagata foaʻi, puletaofia ma laisene",
     "seeAll": "Vaʻai uma",
     "seeAllSection": "Vaʻai uma {section}",
     "showMoreOptionsHint": "fa'aali nisi filifiliga",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Fa'aaoga lau masini faaleo mo vala'au",
     "callMicrophoneMessage": "E mana'omia e le Pangea Chat lau masini faaleo mo vala'au, e aofia ai vala'au e te taliina mai le lau loka.",
     "callMicrophoneOffTitle": "E le'i feso'ota'i lau vala'au",
-    "callMicrophoneOffMessage": "E le mafai e le Pangea Chat ona fa'aaoga lau masini faaleo. Pa'i e ki i totonu o Fa'atonuga."
+    "callMicrophoneOffMessage": "E le mafai e le Pangea Chat ona fa'aaoga lau masini faaleo. Pa'i e ki i totonu o Fa'atonuga.",
+    "mapCreditsLabel": "Fa'afetai mo fa'afanua: Stadia Maps, OpenMapTiles ma OpenStreetMap"
 }

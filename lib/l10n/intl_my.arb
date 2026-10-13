@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "ပန်းများ၊ ကျွမ်းကျင်သော စကားလုံးများ",
     "filterAndSearch": "စစ်ထုတ်ပြီး ရှာဖွေပါ",
     "participantsOfTotal": "{total} ကစားသမားများထဲမှ {filled}",
-    "mapAttributionLabel": "OpenStreetMap ပံ့ပိုးသူများ၊ မူပိုင်ခွင့်နှင့် လိုင်စင်",
     "seeAll": "အားလုံးကြည့်ရန်",
     "seeAllSection": "{section} အားလုံးကြည့်ရန်",
     "showMoreOptionsHint": "ရွေးချယ်စရာများ ထပ်ပြရန်",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "ခေါ်ဆိုမှုများအတွက် သင့်မိုက်ခရိုဖုန်းကို အသုံးပြုပါ",
     "callMicrophoneMessage": "Pangea Chat သည် လော့ခ်မျက်နှာပြင်မှ သင်ဖြေကြားသည့် ခေါ်ဆိုမှုများအပါအဝင် ခေါ်ဆိုမှုများအတွက် သင့်မိုက်ခရိုဖုန်း လိုအပ်ပါသည်။",
     "callMicrophoneOffTitle": "သင့်ခေါ်ဆိုမှု မချိတ်ဆက်ပါ",
-    "callMicrophoneOffMessage": "Pangea Chat သည် သင့်မိုက်ခရိုဖုန်းကို အသုံးပြု၍မရပါ။ ဆက်တင်များတွင် ဖွင့်ရန် နှိပ်ပါ။"
+    "callMicrophoneOffMessage": "Pangea Chat သည် သင့်မိုက်ခရိုဖုန်းကို အသုံးပြု၍မရပါ။ ဆက်တင်များတွင် ဖွင့်ရန် နှိပ်ပါ။",
+    "mapCreditsLabel": "မြေပုံခရက်ဒစ်များ- Stadia Maps, OpenMapTiles နှင့် OpenStreetMap"
 }

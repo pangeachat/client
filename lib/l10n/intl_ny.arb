@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Maluwa, mawu odziwika bwino",
     "filterAndSearch": "Sefa ndi kusaka",
     "participantsOfTotal": "{filled} mwa osewera {total}",
-    "mapAttributionLabel": "Othandizira a OpenStreetMap, umwini ndi chilolezo",
     "seeAll": "Onani zonse",
     "seeAllSection": "Onani zonse {section}",
     "showMoreOptionsHint": "onetsani zosankha zambiri",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Gwiritsani ntchito maikolofoni yanu pama foni",
     "callMicrophoneMessage": "Pangea Chat ikufuna maikolofoni yanu pama foni, kuphatikizapo ma foni omwe mumayankha kuchokera pa chophimba chotsekedwa.",
     "callMicrophoneOffTitle": "Foni yanu sinayankhe",
-    "callMicrophoneOffMessage": "Pangea Chat singagwiritse ntchito maikolofoni yanu. Dinani kuti muyatse mu Zokonda."
+    "callMicrophoneOffMessage": "Pangea Chat singagwiritse ntchito maikolofoni yanu. Dinani kuti muyatse mu Zokonda.",
+    "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles ndi OpenStreetMap"
 }

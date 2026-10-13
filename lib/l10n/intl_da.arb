@@ -10717,7 +10717,6 @@
     "constructLevelFlowers": "Blomster, mestret ord",
     "filterAndSearch": "Filtrer og søg",
     "participantsOfTotal": "{filled} af {total} spillere",
-    "mapAttributionLabel": "OpenStreetMap-bidragydere, ophavsret og licens",
     "seeAll": "Se alle",
     "seeAllSection": "Se alle {section}",
     "showMoreOptionsHint": "vis flere valgmuligheder",
@@ -10889,5 +10888,6 @@
     "callMicrophoneTitle": "Brug din mikrofon til opkald",
     "callMicrophoneMessage": "Pangea Chat skal bruge din mikrofon til opkald, herunder opkald, du besvarer fra låseskærmen.",
     "callMicrophoneOffTitle": "Dit opkald blev ikke forbundet",
-    "callMicrophoneOffMessage": "Pangea Chat kan ikke bruge din mikrofon. Tryk for at slå den til i Indstillinger."
+    "callMicrophoneOffMessage": "Pangea Chat kan ikke bruge din mikrofon. Tryk for at slå den til i Indstillinger.",
+    "mapCreditsLabel": "Kortkreditering: Stadia Maps, OpenMapTiles og OpenStreetMap"
 }

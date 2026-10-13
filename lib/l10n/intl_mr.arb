@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "फ्लॉवर्स, पारंगत शब्द",
     "filterAndSearch": "फिल्टर करा आणि शोधा",
     "participantsOfTotal": "{total} पैकी {filled} खेळाडू",
-    "mapAttributionLabel": "ओपनस्ट्रीटमॅप योगदानकर्ते, कॉपीराइट आणि परवाना",
     "seeAll": "सर्व पहा",
     "seeAllSection": "सर्व {section} पहा",
     "showMoreOptionsHint": "अधिक पर्याय दाखवा",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "कॉलसाठी तुमचा मायक्रोफोन वापरा",
     "callMicrophoneMessage": "पँजिया चॅटला कॉलसाठी तुमचा मायक्रोफोन आवश्यक आहे, ज्यामध्ये लॉक स्क्रीनवरून उत्तर दिलेले कॉल देखील समाविष्ट आहेत.",
     "callMicrophoneOffTitle": "तुमचा कॉल कनेक्ट झाला नाही",
-    "callMicrophoneOffMessage": "पँजिया चॅट तुमचा मायक्रोफोन वापरू शकत नाही. सेटिंग्जमध्ये तो चालू करण्यासाठी टॅप करा."
+    "callMicrophoneOffMessage": "पँजिया चॅट तुमचा मायक्रोफोन वापरू शकत नाही. सेटिंग्जमध्ये तो चालू करण्यासाठी टॅप करा.",
+    "mapCreditsLabel": "नकाशा क्रेडिट्स: Stadia Maps, OpenMapTiles आणि OpenStreetMap"
 }

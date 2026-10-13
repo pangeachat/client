@@ -10103,7 +10103,6 @@
     "constructLevelFlowers": "الزهور، كلمات متقنة",
     "filterAndSearch": "تصفية وبحث",
     "participantsOfTotal": "{filled} من أصل {total} لاعبين",
-    "mapAttributionLabel": "مساهمو OpenStreetMap، حقوق النشر والترخيص",
     "seeAll": "مشاهدة الكل",
     "seeAllSection": "مشاهدة كل {section}",
     "showMoreOptionsHint": "عرض المزيد من الخيارات",
@@ -10275,5 +10274,6 @@
     "callMicrophoneTitle": "استخدم الميكروفون للمكالمات",
     "callMicrophoneMessage": "يحتاج Pangea Chat إلى الميكروفون الخاص بك للمكالمات، بما في ذلك المكالمات التي تجيب عليها من شاشة القفل.",
     "callMicrophoneOffTitle": "لم يتم توصيل مكالمتك",
-    "callMicrophoneOffMessage": "لا يمكن لـ Pangea Chat استخدام الميكروفون الخاص بك. انقر لتشغيله في الإعدادات."
+    "callMicrophoneOffMessage": "لا يمكن لـ Pangea Chat استخدام الميكروفون الخاص بك. انقر لتشغيله في الإعدادات.",
+    "mapCreditsLabel": "اعتمادات الخريطة: Stadia Maps، OpenMapTiles وOpenStreetMap"
 }

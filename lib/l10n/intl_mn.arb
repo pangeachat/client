@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Цэцэг, эзэмшсэн үгс",
     "filterAndSearch": "Шүүж хайх",
     "participantsOfTotal": "{total} тоглогчоос {filled} нь",
-    "mapAttributionLabel": "OpenStreetMap-ийн хувь нэмэр оруулагчид, зохиогчийн эрх, лиценз",
     "seeAll": "Бүгдийг харах",
     "seeAllSection": "Бүх {section}-г харах",
     "showMoreOptionsHint": "бусад сонголтыг харах",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Дуудлага хийхдээ микрофоноо ашиглана уу",
     "callMicrophoneMessage": "Пангеа Чат дуудлага хийхэд таны микрофон хэрэгтэй, үүнд түгжигдсэн дэлгэцээс хариулах дуудлага багтана.",
     "callMicrophoneOffTitle": "Таны дуудлага холбогдоогүй байна",
-    "callMicrophoneOffMessage": "Пангеа Чат таны микрофоныг ашиглах боломжгүй байна. Тохиргооноос асаахын тулд товшино уу."
+    "callMicrophoneOffMessage": "Пангеа Чат таны микрофоныг ашиглах боломжгүй байна. Тохиргооноос асаахын тулд товшино уу.",
+    "mapCreditsLabel": "Газрын зургийн эрх: Stadia Maps, OpenMapTiles болон OpenStreetMap"
 }

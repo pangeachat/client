@@ -10429,7 +10429,6 @@
     "constructLevelFlowers": "Bláthanna, focail máistrithe",
     "filterAndSearch": "Scag agus cuardaigh",
     "participantsOfTotal": "{filled} de {total} imreoirí",
-    "mapAttributionLabel": "Ranníocóirí OpenStreetMap, cóipcheart agus ceadúnas",
     "seeAll": "Féach ar fad",
     "seeAllSection": "Féach ar {section} ar fad",
     "showMoreOptionsHint": "taispeáin tuilleadh roghanna",
@@ -10601,5 +10600,6 @@
     "callMicrophoneTitle": "Bain úsáid as do mhicreafón le haghaidh glaonna",
     "callMicrophoneMessage": "Tá micreafón ag teastáil ó Pangea Chat le haghaidh glaonna, lena n-áirítear glaonna a fhreagraíonn tú ón scáileán glasála.",
     "callMicrophoneOffTitle": "Níor nasc do ghlao",
-    "callMicrophoneOffMessage": "Ní féidir le Pangea Chat do mhicreafón a úsáid. Tapáil chun é a chur ar siúl i Socruithe."
+    "callMicrophoneOffMessage": "Ní féidir le Pangea Chat do mhicreafón a úsáid. Tapáil chun é a chur ar siúl i Socruithe.",
+    "mapCreditsLabel": "Léarscáil creidmheasanna: Stadia Maps, OpenMapTiles agus OpenStreetMap"
 }

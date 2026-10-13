@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Mga bulak, hanas nga mga pulong",
     "filterAndSearch": "Filter ug pangita",
     "participantsOfTotal": "{filled} sa {total} ka magdudula",
-    "mapAttributionLabel": "Mga nag-amot sa OpenStreetMap, copyright ug lisensya",
     "seeAll": "Tan-awa tanan",
     "seeAllSection": "Tan-awa tanan {section}",
     "showMoreOptionsHint": "ipakita ang dugang nga kapilian",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Gamita ang imong mikropono para sa mga tawag",
     "callMicrophoneMessage": "Kinahanglan sa Pangea Chat ang imong mikropono para sa mga tawag, apil na ang mga tawag nga imong tubagon gikan sa lock screen.",
     "callMicrophoneOffTitle": "Wala nakakonekta ang imong tawag",
-    "callMicrophoneOffMessage": "Dili magamit sa Pangea Chat ang imong mikropono. I-tap aron i-on kini sa Settings."
+    "callMicrophoneOffMessage": "Dili magamit sa Pangea Chat ang imong mikropono. I-tap aron i-on kini sa Settings.",
+    "mapCreditsLabel": "Mga kredito sa mapa: Stadia Maps, OpenMapTiles ug OpenStreetMap"
 }

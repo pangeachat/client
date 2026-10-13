@@ -10742,7 +10742,6 @@
     "constructLevelFlowers": "Floroj, regataj vortoj",
     "filterAndSearch": "Filtri kaj serĉi",
     "participantsOfTotal": "{filled} el {total} ludantoj",
-    "mapAttributionLabel": "OpenStreetMap-kontribuantoj, kopirajto kaj permesilo",
     "seeAll": "Vidi ĉion",
     "seeAllSection": "Vidi ĉion en {section}",
     "showMoreOptionsHint": "montri pliajn opciojn",
@@ -10914,5 +10913,6 @@
     "callMicrophoneTitle": "Uzu vian mikrofonon por vokoj",
     "callMicrophoneMessage": "Pangea Chat bezonas vian mikrofonon por vokoj, inkluzive de vokoj, kiujn vi respondas de la ŝlosila ekrano.",
     "callMicrophoneOffTitle": "Via voko ne konektiĝis",
-    "callMicrophoneOffMessage": "Pangea Chat ne povas uzi vian mikrofonon. Frapu por ŝalti ĝin en Agordoj."
+    "callMicrophoneOffMessage": "Pangea Chat ne povas uzi vian mikrofonon. Frapu por ŝalti ĝin en Agordoj.",
+    "mapCreditsLabel": "Mapaj atribuoj: Stadia Maps, OpenMapTiles kaj OpenStreetMap"
 }

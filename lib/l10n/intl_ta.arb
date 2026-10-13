@@ -9889,7 +9889,6 @@
     "constructLevelFlowers": "மலர்கள், தேர்ச்சி பெற்ற சொற்கள்",
     "filterAndSearch": "வடிகட்டி தேடு",
     "participantsOfTotal": "{total} வீரர்களில் {filled} பேர்",
-    "mapAttributionLabel": "OpenStreetMap பங்களிப்பாளர்கள், பதிப்புரிமை மற்றும் உரிமம்",
     "seeAll": "அனைத்தையும் காட்டு",
     "seeAllSection": "அனைத்தையும் காட்டு {section}",
     "showMoreOptionsHint": "மேலும் விருப்பங்களைக் காட்டு",
@@ -10061,5 +10060,6 @@
     "callMicrophoneTitle": "அழைப்புகளுக்கு உங்கள் மைக்ரோஃபோனைப் பயன்படுத்தவும்",
     "callMicrophoneMessage": "லாக் ஸ்கிரீனில் இருந்து நீங்கள் பதிலளிக்கும் அழைப்புகள் உட்பட, அழைப்புகளுக்கு Pangea Chat-க்கு உங்கள் மைக்ரோஃபோன் தேவை.",
     "callMicrophoneOffTitle": "உங்கள் அழைப்பு இணைக்கப்படவில்லை",
-    "callMicrophoneOffMessage": "Pangea Chat உங்கள் மைக்ரோஃபோனைப் பயன்படுத்த முடியாது. அமைப்புகளில் அதை இயக்க தட்டவும்."
+    "callMicrophoneOffMessage": "Pangea Chat உங்கள் மைக்ரோஃபோனைப் பயன்படுத்த முடியாது. அமைப்புகளில் அதை இயக்க தட்டவும்.",
+    "mapCreditsLabel": "வரைபட வரவுகள்: Stadia Maps, OpenMapTiles மற்றும் OpenStreetMap"
 }

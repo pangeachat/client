@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Ubax, ereyo la bartay",
     "filterAndSearch": "Shaandhee oo raadi",
     "participantsOfTotal": "{filled} ka mid ah {total} ciyaartoy",
-    "mapAttributionLabel": "Kuwa wax ku darsaday OpenStreetMap, xuquuqda daabacaadda iyo shatiga",
     "seeAll": "Arag dhammaan",
     "seeAllSection": "Arag dhammaan {section}",
     "showMoreOptionsHint": "muuji doorashooyin dheeraad ah",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "U adeegso makarafoonkaaga wicitaanada",
     "callMicrophoneMessage": "Pangea Chat waxay u baahan tahay makarafoonkaaga wicitaanada, oo ay ku jiraan wicitaanada aad ka jawaabto shaashadda qufulka.",
     "callMicrophoneOffTitle": "Wicitaankaagu ma xirmin",
-    "callMicrophoneOffMessage": "Pangea Chat ma isticmaali karto makarafoonkaaga. Taabo si aad uga shiddo Settings."
+    "callMicrophoneOffMessage": "Pangea Chat ma isticmaali karto makarafoonkaaga. Taabo si aad uga shiddo Settings.",
+    "mapCreditsLabel": "Aqoonsiga khariidadda: Khariidadaha Stadia, OpenMapTiles iyo OpenStreetMap"
 }

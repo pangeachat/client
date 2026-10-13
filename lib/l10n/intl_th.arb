@@ -10429,7 +10429,6 @@
     "constructLevelFlowers": "ดอกไม้, คำศัพท์ที่เชี่ยวชาญแล้ว",
     "filterAndSearch": "กรองและค้นหา",
     "participantsOfTotal": "{filled} จากผู้เล่นทั้งหมด {total} คน",
-    "mapAttributionLabel": "ผู้ร่วมให้ข้อมูล OpenStreetMap, ลิขสิทธิ์และใบอนุญาต",
     "seeAll": "ดูทั้งหมด",
     "seeAllSection": "ดูทั้งหมด {section}",
     "showMoreOptionsHint": "แสดงตัวเลือกเพิ่มเติม",
@@ -10601,5 +10600,6 @@
     "callMicrophoneTitle": "ใช้ไมโครโฟนของคุณสำหรับการโทร",
     "callMicrophoneMessage": "Pangea Chat ต้องใช้ไมโครโฟนของคุณสำหรับการโทร รวมถึงการโทรที่คุณรับจากหน้าจอล็อก",
     "callMicrophoneOffTitle": "การโทรของคุณไม่สามารถเชื่อมต่อได้",
-    "callMicrophoneOffMessage": "Pangea Chat ไม่สามารถใช้ไมโครโฟนของคุณได้ แตะเพื่อเปิดใช้งานในการตั้งค่า"
+    "callMicrophoneOffMessage": "Pangea Chat ไม่สามารถใช้ไมโครโฟนของคุณได้ แตะเพื่อเปิดใช้งานในการตั้งค่า",
+    "mapCreditsLabel": "เครดิตแผนที่: Stadia Maps, OpenMapTiles และ OpenStreetMap"
 }

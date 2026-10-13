@@ -9797,7 +9797,6 @@
     "constructLevelFlowers": "Bloemen, beheerste woorden",
     "filterAndSearch": "Filteren en zoeken",
     "participantsOfTotal": "{filled} van de {total} spelers",
-    "mapAttributionLabel": "OpenStreetMap-medewerkers, auteursrecht en licentie",
     "seeAll": "Alles weergeven",
     "seeAllSection": "Alle {section} weergeven",
     "showMoreOptionsHint": "meer opties weergeven",
@@ -9969,5 +9968,6 @@
     "callMicrophoneTitle": "Gebruik je microfoon voor gesprekken",
     "callMicrophoneMessage": "Pangea Chat heeft je microfoon nodig voor gesprekken, inclusief gesprekken die je beantwoordt vanaf het vergrendelscherm.",
     "callMicrophoneOffTitle": "Je gesprek is niet verbonden",
-    "callMicrophoneOffMessage": "Pangea Chat kan je microfoon niet gebruiken. Tik om deze in te schakelen in Instellingen."
+    "callMicrophoneOffMessage": "Pangea Chat kan je microfoon niet gebruiken. Tik om deze in te schakelen in Instellingen.",
+    "mapCreditsLabel": "Kaartcredits: Stadia Maps, OpenMapTiles en OpenStreetMap"
 }

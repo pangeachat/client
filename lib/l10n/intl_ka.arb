@@ -10697,7 +10697,6 @@
     "constructLevelFlowers": "ყვავილები, ათვისებული სიტყვები",
     "filterAndSearch": "გაფილტვრა და ძიება",
     "participantsOfTotal": "{filled} / {total} მოთამაშე",
-    "mapAttributionLabel": "OpenStreetMap-ის კონტრიბუტორები, საავტორო უფლებები და ლიცენზია",
     "seeAll": "ყველას ნახვა",
     "seeAllSection": "ყველა {section}-ის ნახვა",
     "showMoreOptionsHint": "მეტი ვარიანტის ჩვენება",
@@ -10869,5 +10868,6 @@
     "callMicrophoneTitle": "გამოიყენეთ მიკროფონი ზარებისთვის",
     "callMicrophoneMessage": "Pangea Chat-ს სჭირდება თქვენი მიკროფონი ზარებისთვის, მათ შორის ზარებისთვის, რომლებსაც უპასუხებთ დაბლოკილი ეკრანიდან.",
     "callMicrophoneOffTitle": "თქვენი ზარი არ დაკავშირდა",
-    "callMicrophoneOffMessage": "Pangea Chat-ს არ შეუძლია თქვენი მიკროფონის გამოყენება. შეეხეთ, რომ ჩართოთ პარამეტრებში."
+    "callMicrophoneOffMessage": "Pangea Chat-ს არ შეუძლია თქვენი მიკროფონის გამოყენება. შეეხეთ, რომ ჩართოთ პარამეტრებში.",
+    "mapCreditsLabel": "რუკის კრედიტები: Stadia Maps, OpenMapTiles და OpenStreetMap"
 }

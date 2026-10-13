@@ -9882,7 +9882,6 @@
     "constructLevelFlowers": "Kwiaty, opanowane słowa",
     "filterAndSearch": "Filtruj i szukaj",
     "participantsOfTotal": "{filled} z {total} graczy",
-    "mapAttributionLabel": "Współtwórcy OpenStreetMap, prawa autorskie i licencja",
     "seeAll": "Zobacz wszystkie",
     "seeAllSection": "Zobacz wszystkie {section}",
     "showMoreOptionsHint": "pokaż więcej opcji",
@@ -10054,5 +10053,6 @@
     "callMicrophoneTitle": "Użyj mikrofonu do połączeń",
     "callMicrophoneMessage": "Pangea Chat potrzebuje Twojego mikrofonu do połączeń, w tym połączeń odbieranych z ekranu blokady.",
     "callMicrophoneOffTitle": "Twoje połączenie nie zostało nawiązane",
-    "callMicrophoneOffMessage": "Pangea Chat nie może używać Twojego mikrofonu. Stuknij, aby włączyć go w Ustawieniach."
+    "callMicrophoneOffMessage": "Pangea Chat nie może używać Twojego mikrofonu. Stuknij, aby włączyć go w Ustawieniach.",
+    "mapCreditsLabel": "Źródło map: Stadia Maps, OpenMapTiles i OpenStreetMap"
 }

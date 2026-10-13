@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Гүлдер, меңгерілген сөздер",
     "filterAndSearch": "Сүзгілеу және іздеу",
     "participantsOfTotal": "{total} ойыншының {filled}-і",
-    "mapAttributionLabel": "OpenStreetMap қатысушылары, авторлық құқық және лицензия",
     "seeAll": "Барлығын қарау",
     "seeAllSection": "Барлық {section} қарау",
     "showMoreOptionsHint": "қосымша опцияларды көрсету",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Қоңыраулар үшін микрофоныңызды пайдаланыңыз",
     "callMicrophoneMessage": "Pangea Chat қоңыраулар үшін микрофоныңызды қажет етеді, соның ішінде құлыптау экранынан жауап беретін қоңыраулар да бар.",
     "callMicrophoneOffTitle": "Қоңырауыңыз қосылмады",
-    "callMicrophoneOffMessage": "Pangea Chat микрофоныңызды пайдалана алмайды. Параметрлерде қосу үшін түртіңіз."
+    "callMicrophoneOffMessage": "Pangea Chat микрофоныңызды пайдалана алмайды. Параметрлерде қосу үшін түртіңіз.",
+    "mapCreditsLabel": "Карта несиелері: Stadia Maps, OpenMapTiles және OpenStreetMap"
 }

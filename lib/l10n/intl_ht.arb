@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Flè, mo ou metrize",
     "filterAndSearch": "Filtre epi chèche",
     "participantsOfTotal": "{filled} sou {total} jwè",
-    "mapAttributionLabel": "Kontribitè OpenStreetMap, copyright ak lisans",
     "seeAll": "Gade tout",
     "seeAllSection": "Gade tout {section}",
     "showMoreOptionsHint": "montre plis opsyon",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Sèvi ak mikwofòn ou pou apèl yo",
     "callMicrophoneMessage": "Pangea Chat bezwen mikwofòn ou pou apèl yo, enkli apèl ou reponn depi ekran bloke a.",
     "callMicrophoneOffTitle": "Apèl ou a pa konekte",
-    "callMicrophoneOffMessage": "Pangea Chat pa ka sèvi ak mikwofòn ou. Tape pou limen li nan Anviwònman."
+    "callMicrophoneOffMessage": "Pangea Chat pa ka sèvi ak mikwofòn ou. Tape pou limen li nan Anviwònman.",
+    "mapCreditsLabel": "Kredi kat: Stadia Maps, OpenMapTiles ak OpenStreetMap"
 }

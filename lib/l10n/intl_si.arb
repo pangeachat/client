@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "මල්, ප්‍රගුණ කළ වචන",
     "filterAndSearch": "පෙරහන් කර සොයන්න",
     "participantsOfTotal": "{total} ක්‍රීඩකයන්ගෙන් {filled}ක්",
-    "mapAttributionLabel": "OpenStreetMap දායකයින්, ප්‍රකාශන හිමිකම සහ බලපත්‍රය",
     "seeAll": "සියල්ල බලන්න",
     "seeAllSection": "සියලු {section} බලන්න",
     "showMoreOptionsHint": "තවත් විකල්ප පෙන්වන්න",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "ඇමතුම් සඳහා ඔබේ මයික්‍රෆෝනය භාවිත කරන්න",
     "callMicrophoneMessage": "අගුළු තිරයෙන් පිළිගන්නා ඇමතුම් ඇතුළුව, ඇමතුම් සඳහා Pangea Chat හට ඔබේ මයික්‍රෆෝනය අවශ්‍ය වේ.",
     "callMicrophoneOffTitle": "ඔබේ ඇමතුම සම්බන්ධ නොවීය",
-    "callMicrophoneOffMessage": "Pangea Chat හට ඔබේ මයික්‍රෆෝනය භාවිත කළ නොහැක. සැකසීම් තුළ එය ක්‍රියාත්මක කිරීමට තට්ටු කරන්න."
+    "callMicrophoneOffMessage": "Pangea Chat හට ඔබේ මයික්‍රෆෝනය භාවිත කළ නොහැක. සැකසීම් තුළ එය ක්‍රියාත්මක කිරීමට තට්ටු කරන්න.",
+    "mapCreditsLabel": "සිතියම් ණය: Stadia Maps, OpenMapTiles සහ OpenStreetMap"
 }

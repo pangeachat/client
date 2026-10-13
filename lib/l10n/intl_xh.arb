@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Iintyatyambo, amagama aphucukileyo",
     "filterAndSearch": "Hluza uze ukhangele",
     "participantsOfTotal": "{filled} kubadlali abali-{total}",
-    "mapAttributionLabel": "Abanikeli be-OpenStreetMap, ilungelo lokushicilela kunye nelayisensi",
     "seeAll": "Bona konke",
     "seeAllSection": "Bona konke {section}",
     "showMoreOptionsHint": "bonisa iinketho ezininzi",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Sebenzisa imakrofoni yakho kwiifowuni",
     "callMicrophoneMessage": "I-Pangea Chat ifuna imakrofoni yakho kwiifowuni, kuquka neefowuni oziphendulayo kwisikrini esitshixiweyo.",
     "callMicrophoneOffTitle": "Ifowuni yakho ayixhunywanga",
-    "callMicrophoneOffMessage": "I-Pangea Chat ayikwazi ukusebenzisa imakrofoni yakho. Cofa ukuze uyivule kwiiSetingi."
+    "callMicrophoneOffMessage": "I-Pangea Chat ayikwazi ukusebenzisa imakrofoni yakho. Cofa ukuze uyivule kwiiSetingi.",
+    "mapCreditsLabel": "Amakhredithi emephu: Stadia Maps, OpenMapTiles kunye ne-OpenStreetMap"
 }

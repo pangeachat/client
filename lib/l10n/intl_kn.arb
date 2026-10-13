@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "ಹೂವುಗಳು, ಕರಗತವಾದ ಪದಗಳು",
     "filterAndSearch": "ಫಿಲ್ಟರ್ ಮಾಡಿ ಮತ್ತು ಹುಡುಕಿ",
     "participantsOfTotal": "{total} ಆಟಗಾರರಲ್ಲಿ {filled}",
-    "mapAttributionLabel": "ಓಪನ್‌ಸ್ಟ್ರೀಟ್‌ಮ್ಯಾಪ್ ಕೊಡುಗೆದಾರರು, ಹಕ್ಕುಸ್ವಾಮ್ಯ ಮತ್ತು ಪರವಾನಗಿ",
     "seeAll": "ಎಲ್ಲವನ್ನೂ ನೋಡಿ",
     "seeAllSection": "ಎಲ್ಲವನ್ನೂ ನೋಡಿ {section}",
     "showMoreOptionsHint": "ಇನ್ನಷ್ಟು ಆಯ್ಕೆಗಳನ್ನು ತೋರಿಸಿ",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "ಕರೆಗಳಿಗಾಗಿ ನಿಮ್ಮ ಮೈಕ್ರೊಫೋನ್ ಬಳಸಿ",
     "callMicrophoneMessage": "ಲಾಕ್ ಸ್ಕ್ರೀನ್‌ನಿಂದ ನೀವು ಉತ್ತರಿಸುವ ಕರೆಗಳು ಸೇರಿದಂತೆ, ಕರೆಗಳಿಗಾಗಿ Pangea Chat ಗೆ ನಿಮ್ಮ ಮೈಕ್ರೊಫೋನ್ ಅಗತ್ಯವಿದೆ.",
     "callMicrophoneOffTitle": "ನಿಮ್ಮ ಕರೆ ಸಂಪರ್ಕಗೊಂಡಿಲ್ಲ",
-    "callMicrophoneOffMessage": "Pangea Chat ನಿಮ್ಮ ಮೈಕ್ರೊಫೋನ್ ಬಳಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅದನ್ನು ಆನ್ ಮಾಡಲು ಟ್ಯಾಪ್ ಮಾಡಿ."
+    "callMicrophoneOffMessage": "Pangea Chat ನಿಮ್ಮ ಮೈಕ್ರೊಫೋನ್ ಬಳಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅದನ್ನು ಆನ್ ಮಾಡಲು ಟ್ಯಾಪ್ ಮಾಡಿ.",
+    "mapCreditsLabel": "ನಕ್ಷೆ ಕ್ರೆಡಿಟ್‌ಗಳು: ಸ್ಟೇಡಿಯಾ ಮ್ಯಾಪ್ಸ್, ಓಪನ್‌ಮ್ಯಾಪ್‌ಟೈಲ್ಸ್ ಮತ್ತು ಓಪನ್‌ಸ್ಟ್ರೀಟ್‌ಮ್ಯಾಪ್"
 }

@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Ծաղիկներ, յուրացված բառեր",
     "filterAndSearch": "Զտել և որոնել",
     "participantsOfTotal": "{filled} / {total} խաղացող",
-    "mapAttributionLabel": "OpenStreetMap-ի մասնակիցներ, հեղինակային իրավունք և լիցենզիա",
     "seeAll": "Տեսնել բոլորը",
     "seeAllSection": "Տեսնել բոլոր {section}",
     "showMoreOptionsHint": "ցուցադրել այլ ընտրանքներ",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Օգտագործեք խոսափողը զանգերի համար",
     "callMicrophoneMessage": "Pangea Chat-ին անհրաժեշտ է ձեր խոսափողը զանգերի համար, ներառյալ այն զանգերը, որոնց պատասխանում եք կողպված էկրանից։",
     "callMicrophoneOffTitle": "Ձեր զանգը չմիացավ",
-    "callMicrophoneOffMessage": "Pangea Chat-ը չի կարող օգտագործել ձեր խոսափողը։ Սեղմեք՝ այն Կարգավորումներում միացնելու համար։"
+    "callMicrophoneOffMessage": "Pangea Chat-ը չի կարող օգտագործել ձեր խոսափողը։ Սեղմեք՝ այն Կարգավորումներում միացնելու համար։",
+    "mapCreditsLabel": "Քարտեզի հեղինակներ՝ Stadia Maps, OpenMapTiles և OpenStreetMap"
 }

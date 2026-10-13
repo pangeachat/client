@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "فلاورس، ماهر لفظ",
     "filterAndSearch": "فلٽر ۽ ڳولا ڪريو",
     "participantsOfTotal": "{total} رانديگرن مان {filled}",
-    "mapAttributionLabel": "اوپن اسٽريٽ ميپ جا حصو وٺندڙ، ڪاپي رائيٽ ۽ لائسنس",
     "seeAll": "سڀ ڏسو",
     "seeAllSection": "سڀ ڏسو {section}",
     "showMoreOptionsHint": "وڌيڪ آپشن ڏيکاريو",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "ڪالن لاءِ پنهنجو مائڪروفون استعمال ڪريو",
     "callMicrophoneMessage": "پينگيا چيٽ کي ڪالن لاءِ توهان جي مائڪروفون جي ضرورت آهي، جنهن ۾ اهي ڪالون به شامل آهن جيڪي توهان لاڪ اسڪرين تان جواب ڏيو ٿا.",
     "callMicrophoneOffTitle": "توهان جي ڪال ڳنڍي نه سگهي",
-    "callMicrophoneOffMessage": "پينگيا چيٽ توهان جو مائڪروفون استعمال نٿو ڪري سگهي. سيٽنگز ۾ ان کي آن ڪرڻ لاءِ ٽيپ ڪريو."
+    "callMicrophoneOffMessage": "پينگيا چيٽ توهان جو مائڪروفون استعمال نٿو ڪري سگهي. سيٽنگز ۾ ان کي آن ڪرڻ لاءِ ٽيپ ڪريو.",
+    "mapCreditsLabel": "نقشي جا ڪريڊٽ: اسٽيڊيا ميپس، اوپن ميپ ٽائيلز ۽ اوپن اسٽريٽ ميپ"
 }

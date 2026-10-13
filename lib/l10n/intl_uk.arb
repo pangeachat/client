@@ -9797,7 +9797,6 @@
     "constructLevelFlowers": "Квіти, опановані слова",
     "filterAndSearch": "Фільтрувати та шукати",
     "participantsOfTotal": "{filled} з {total} гравців",
-    "mapAttributionLabel": "Учасники OpenStreetMap, авторські права та ліцензія",
     "seeAll": "Переглянути всі",
     "seeAllSection": "Переглянути всі {section}",
     "showMoreOptionsHint": "показати більше опцій",
@@ -9969,5 +9968,6 @@
     "callMicrophoneTitle": "Використовуйте мікрофон для дзвінків",
     "callMicrophoneMessage": "Pangea Chat потрібен ваш мікрофон для дзвінків, включно з тими, на які ви відповідаєте з екрана блокування.",
     "callMicrophoneOffTitle": "Ваш дзвінок не з’єднався",
-    "callMicrophoneOffMessage": "Pangea Chat не може використовувати ваш мікрофон. Натисніть, щоб увімкнути його в Налаштуваннях."
+    "callMicrophoneOffMessage": "Pangea Chat не може використовувати ваш мікрофон. Натисніть, щоб увімкнути його в Налаштуваннях.",
+    "mapCreditsLabel": "Авторство карти: Stadia Maps, OpenMapTiles та OpenStreetMap"
 }

@@ -2250,7 +2250,6 @@
     "constructLevelFlowers": "Blodau, geiriau wedi'u meistroli",
     "filterAndSearch": "Hidlo a chwilio",
     "participantsOfTotal": "{filled} o {total} chwaraewr",
-    "mapAttributionLabel": "Cyfranwyr OpenStreetMap, hawlfraint a thrwydded",
     "seeAll": "Gweld y cyfan",
     "seeAllSection": "Gweld pob {section}",
     "showMoreOptionsHint": "dangos mwy o opsiynau",
@@ -2418,5 +2417,6 @@
     "callMicrophoneTitle": "Defnyddiwch eich meicroffon ar gyfer galwadau",
     "callMicrophoneMessage": "Mae angen eich meicroffon ar Pangea Chat ar gyfer galwadau, gan gynnwys galwadau rydych chi'n eu hateb o'r sgrin glo.",
     "callMicrophoneOffTitle": "Ni chysylltodd eich galwad",
-    "callMicrophoneOffMessage": "Ni all Pangea Chat ddefnyddio'ch meicroffon. Tapiwch i'w droi ymlaen yn Gosodiadau."
+    "callMicrophoneOffMessage": "Ni all Pangea Chat ddefnyddio'ch meicroffon. Tapiwch i'w droi ymlaen yn Gosodiadau.",
+    "mapCreditsLabel": "Credydau map: Stadia Maps, OpenMapTiles ac OpenStreetMap"
 }
