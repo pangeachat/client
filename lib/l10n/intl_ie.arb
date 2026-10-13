@@ -3089,7 +3089,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-12 13:11:56.251571",
+    "@@last_modified": "2026-10-13 13:03:44.748206",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10604,5 +10604,9 @@
     "mapCreditsLabel": "Léarscáil creidmheasanna: Stadia Maps, OpenMapTiles agus OpenStreetMap",
     "activityLaunchFindingCourses": "Ag aimsiú do chúrsaí…",
     "activityLaunchCreatingRoom": "Ag cruthú do ghníomhaíochta…",
-    "activityLaunchOpeningRoom": "Ag oscailt do ghníomhaíochta…"
+    "activityLaunchOpeningRoom": "Ag oscailt do ghníomhaíochta…",
+    "playWithOthers": "Seinn le daoine eile",
+    "openRole": "Oscailte: {role}",
+    "waitingFor": "Ag fanacht {duration}",
+    "onlineInCourse": "{count} ar líne i {course}"
 }

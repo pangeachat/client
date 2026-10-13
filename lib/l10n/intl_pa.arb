@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-12 13:12:02.261094",
+    "@@last_modified": "2026-10-13 13:03:47.666094",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "ਨਕਸ਼ੇ ਦੇ ਕ੍ਰੈਡਿਟ: ਸਟੇਡੀਆ ਮੈਪਸ, ਓਪਨਮੈਪਟਾਈਲਸ ਅਤੇ ਓਪਨਸਟ੍ਰੀਟਮੈਪ",
     "activityLaunchFindingCourses": "ਤੁਹਾਡੇ ਕੋਰਸ ਲੱਭ ਰਹੇ ਹਾਂ…",
     "activityLaunchCreatingRoom": "ਤੁਹਾਡੀ ਗਤੀਵਿਧੀ ਬਣਾ ਰਹੇ ਹਾਂ…",
-    "activityLaunchOpeningRoom": "ਤੁਹਾਡੀ ਗਤੀਵਿਧੀ ਖੋਲ੍ਹ ਰਹੇ ਹਾਂ…"
+    "activityLaunchOpeningRoom": "ਤੁਹਾਡੀ ਗਤੀਵਿਧੀ ਖੋਲ੍ਹ ਰਹੇ ਹਾਂ…",
+    "playWithOthers": "ਦੂਜਿਆਂ ਨਾਲ ਖੇਡੋ",
+    "openRole": "ਖੁੱਲ੍ਹਾ: {role}",
+    "waitingFor": "{duration} ਉਡੀਕ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ",
+    "onlineInCourse": "{course} ਵਿੱਚ {count} ਔਨਲਾਈਨ"
 }

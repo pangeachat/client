@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-12 13:11:53.686990",
+    "@@last_modified": "2026-10-13 13:03:41.760375",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9972,5 +9972,9 @@
     "mapCreditsLabel": "Créditos do mapa: Stadia Maps, OpenMapTiles e OpenStreetMap",
     "activityLaunchFindingCourses": "Buscando os teus cursos…",
     "activityLaunchCreatingRoom": "Creando a túa actividade…",
-    "activityLaunchOpeningRoom": "Abrindo a túa actividade…"
+    "activityLaunchOpeningRoom": "Abrindo a túa actividade…",
+    "playWithOthers": "Xogar con outros",
+    "openRole": "Aberto: {role}",
+    "waitingFor": "Agardando {duration}",
+    "onlineInCourse": "{count} en liña en {course}"
 }

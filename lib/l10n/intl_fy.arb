@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-12 13:11:52.236287",
+    "@@last_modified": "2026-10-13 13:03:41.977908",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Kaartkrediten: Stadia Maps, OpenMapTiles en OpenStreetMap",
     "activityLaunchFindingCourses": "Sykje nei dyn kursussen…",
     "activityLaunchCreatingRoom": "Dyn aktiviteit oanmeitsje…",
-    "activityLaunchOpeningRoom": "Dyn aktiviteit iepenje…"
+    "activityLaunchOpeningRoom": "Dyn aktiviteit iepenje…",
+    "playWithOthers": "Boartsje mei oaren",
+    "openRole": "Iepen: {role}",
+    "waitingFor": "Wachtsje {duration}",
+    "onlineInCourse": "{count} online yn {course}"
 }

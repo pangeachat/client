@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-12 13:12:01.140077",
+    "@@last_modified": "2026-10-13 13:03:47.028989",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10057,5 +10057,9 @@
     "mapCreditsLabel": "Źródło map: Stadia Maps, OpenMapTiles i OpenStreetMap",
     "activityLaunchFindingCourses": "Wyszukiwanie kursów…",
     "activityLaunchCreatingRoom": "Tworzenie aktywności…",
-    "activityLaunchOpeningRoom": "Otwieranie aktywności…"
+    "activityLaunchOpeningRoom": "Otwieranie aktywności…",
+    "playWithOthers": "Graj z innymi",
+    "openRole": "Otwarte: {role}",
+    "waitingFor": "Oczekiwanie {duration}",
+    "onlineInCourse": "{count} online w {course}"
 }

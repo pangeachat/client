@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-12 13:12:08.336786",
+    "@@last_modified": "2026-10-13 13:03:50.715288",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "خەرىتە ئىناۋىتى: Stadia Maps, OpenMapTiles ۋە OpenStreetMap",
     "activityLaunchFindingCourses": "دەرىسلىكىڭىزنى تېپىۋاتىدۇ…",
     "activityLaunchCreatingRoom": "پائالىيىتىڭىزنى قۇرۇۋاتىدۇ…",
-    "activityLaunchOpeningRoom": "پائالىيىتىڭىزنى ئېچىۋاتىدۇ…"
+    "activityLaunchOpeningRoom": "پائالىيىتىڭىزنى ئېچىۋاتىدۇ…",
+    "playWithOthers": "باشقىلار بىلەن ئويناڭ",
+    "openRole": "ئوچۇق: {role}",
+    "waitingFor": "{duration} ساقلاۋاتىدۇ",
+    "onlineInCourse": "{course} دە {count} ئادەم توردا"
 }

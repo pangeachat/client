@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-12 13:11:59.128221",
+    "@@last_modified": "2026-10-13 13:03:45.359556",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "ຂໍ້ມູນແຜນທີ່: Stadia Maps, OpenMapTiles ແລະ OpenStreetMap",
     "activityLaunchFindingCourses": "ກຳລັງຊອກຫາຫຼັກສູດຂອງທ່ານ…",
     "activityLaunchCreatingRoom": "ກຳລັງສ້າງກິດຈະກຳຂອງທ່ານ…",
-    "activityLaunchOpeningRoom": "ກຳລັງເປີດກິດຈະກຳຂອງທ່ານ…"
+    "activityLaunchOpeningRoom": "ກຳລັງເປີດກິດຈະກຳຂອງທ່ານ…",
+    "playWithOthers": "ຫຼິ້ນກັບຄົນອື່ນ",
+    "openRole": "ເປີດ: {role}",
+    "waitingFor": "ລໍຖ້າ {duration}",
+    "onlineInCourse": "ມີ {count} ຄົນອອນລາຍໃນ {course}"
 }

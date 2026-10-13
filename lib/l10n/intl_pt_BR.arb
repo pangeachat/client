@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:12:02.194229",
+    "@@last_modified": "2026-10-13 13:03:47.852696",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9972,5 +9972,9 @@
     "mapCreditsLabel": "Créditos do mapa: Stadia Maps, OpenMapTiles e OpenStreetMap",
     "activityLaunchFindingCourses": "Encontrando seus cursos…",
     "activityLaunchCreatingRoom": "Criando sua atividade…",
-    "activityLaunchOpeningRoom": "Abrindo sua atividade…"
+    "activityLaunchOpeningRoom": "Abrindo sua atividade…",
+    "playWithOthers": "Jogar com outras pessoas",
+    "openRole": "Aberto: {role}",
+    "waitingFor": "Aguardando {duration}",
+    "onlineInCourse": "{count} online em {course}"
 }

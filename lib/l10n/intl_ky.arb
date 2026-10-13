@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-12 13:11:58.372283",
+    "@@last_modified": "2026-10-13 13:03:44.723288",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Картанын авторлору: Stadia Maps, OpenMapTiles жана OpenStreetMap",
     "activityLaunchFindingCourses": "Курстарыңызды издөө…",
     "activityLaunchCreatingRoom": "Ишиңизди түзүү…",
-    "activityLaunchOpeningRoom": "Ишиңизди ачуу…"
+    "activityLaunchOpeningRoom": "Ишиңизди ачуу…",
+    "playWithOthers": "Башкалар менен ойноо",
+    "openRole": "Ачык: {role}",
+    "waitingFor": "{duration} күтүү",
+    "onlineInCourse": "{course} ичинде {count} онлайн"
 }

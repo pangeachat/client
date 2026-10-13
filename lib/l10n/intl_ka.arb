@@ -1933,7 +1933,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-12 13:11:56.811532",
+    "@@last_modified": "2026-10-13 13:03:44.341739",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10872,5 +10872,9 @@
     "mapCreditsLabel": "რუკის კრედიტები: Stadia Maps, OpenMapTiles და OpenStreetMap",
     "activityLaunchFindingCourses": "თქვენი კურსების მოძიება…",
     "activityLaunchCreatingRoom": "თქვენი აქტივობის შექმნა…",
-    "activityLaunchOpeningRoom": "თქვენი აქტივობის გახსნა…"
+    "activityLaunchOpeningRoom": "თქვენი აქტივობის გახსნა…",
+    "playWithOthers": "ითამაშეთ სხვებთან ერთად",
+    "openRole": "ღია: {role}",
+    "waitingFor": "ლოდინი {duration}",
+    "onlineInCourse": "{count} ონლაინ {course}-ში"
 }

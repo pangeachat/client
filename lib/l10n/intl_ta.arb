@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:12:06.003776",
+    "@@last_modified": "2026-10-13 13:03:49.817961",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10064,5 +10064,9 @@
     "mapCreditsLabel": "வரைபட வரவுகள்: Stadia Maps, OpenMapTiles மற்றும் OpenStreetMap",
     "activityLaunchFindingCourses": "உங்கள் படிப்புகளைக் கண்டறிகிறது…",
     "activityLaunchCreatingRoom": "உங்கள் செயல்பாட்டை உருவாக்குகிறது…",
-    "activityLaunchOpeningRoom": "உங்கள் செயல்பாட்டைத் திறக்கிறது…"
+    "activityLaunchOpeningRoom": "உங்கள் செயல்பாட்டைத் திறக்கிறது…",
+    "playWithOthers": "மற்றவர்களுடன் விளையாடு",
+    "openRole": "திறந்த: {role}",
+    "waitingFor": "காத்திருக்கிறது {duration}",
+    "onlineInCourse": "{course} இல் {count} பேர் ஆன்லைனில் உள்ளனர்"
 }

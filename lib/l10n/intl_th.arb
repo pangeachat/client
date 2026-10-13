@@ -3089,7 +3089,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-12 13:12:05.011744",
+    "@@last_modified": "2026-10-13 13:03:49.836411",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10604,5 +10604,9 @@
     "mapCreditsLabel": "เครดิตแผนที่: Stadia Maps, OpenMapTiles และ OpenStreetMap",
     "activityLaunchFindingCourses": "กำลังค้นหาคอร์สของคุณ…",
     "activityLaunchCreatingRoom": "กำลังสร้างกิจกรรมของคุณ…",
-    "activityLaunchOpeningRoom": "กำลังเปิดกิจกรรมของคุณ…"
+    "activityLaunchOpeningRoom": "กำลังเปิดกิจกรรมของคุณ…",
+    "playWithOthers": "เล่นกับคนอื่น",
+    "openRole": "เปิด: {role}",
+    "waitingFor": "กำลังรอ {duration}",
+    "onlineInCourse": "{count} ออนไลน์ใน {course}"
 }

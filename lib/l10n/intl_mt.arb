@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-12 13:12:01.370248",
+    "@@last_modified": "2026-10-13 13:03:46.338317",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Krediti tal-mappa: Stadia Maps, OpenMapTiles u OpenStreetMap",
     "activityLaunchFindingCourses": "Qed insibu l-korsijiet tiegħek…",
     "activityLaunchCreatingRoom": "Qed noħolqu l-attività tiegħek…",
-    "activityLaunchOpeningRoom": "Qed niftħu l-attività tiegħek…"
+    "activityLaunchOpeningRoom": "Qed niftħu l-attività tiegħek…",
+    "playWithOthers": "Ilghab ma' oħrajn",
+    "openRole": "Miftuħ: {role}",
+    "waitingFor": "Qed tistenna {duration}",
+    "onlineInCourse": "{count} online f'{course}'"
 }

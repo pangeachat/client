@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-12 13:12:03.783477",
+    "@@last_modified": "2026-10-13 13:03:48.814573",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Fa'afetai mo fa'afanua: Stadia Maps, OpenMapTiles ma OpenStreetMap",
     "activityLaunchFindingCourses": "Su'e au kosi…",
     "activityLaunchCreatingRoom": "Fausia lau gaioiga…",
-    "activityLaunchOpeningRoom": "Tatala lau gaioiga…"
+    "activityLaunchOpeningRoom": "Tatala lau gaioiga…",
+    "playWithOthers": "Taʻalo ma isi",
+    "openRole": "Tatala: {role}",
+    "waitingFor": "Faatali {duration}",
+    "onlineInCourse": "{count} i luga ole laiga ile {course}"
 }

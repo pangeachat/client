@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-12 13:11:54.444521",
+    "@@last_modified": "2026-10-13 13:03:40.596131",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9959,5 +9959,9 @@
     "mapCreditsLabel": "Karten-Credits: Stadia Maps, OpenMapTiles und OpenStreetMap",
     "activityLaunchFindingCourses": "Kurse werden gesucht…",
     "activityLaunchCreatingRoom": "Aktivität wird erstellt…",
-    "activityLaunchOpeningRoom": "Aktivität wird geöffnet…"
+    "activityLaunchOpeningRoom": "Aktivität wird geöffnet…",
+    "playWithOthers": "Mit anderen spielen",
+    "openRole": "Offen: {role}",
+    "waitingFor": "Warten {duration}",
+    "onlineInCourse": "{count} online in {course}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-12 13:12:03.020984",
+    "@@last_modified": "2026-10-13 13:03:49.136430",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "සිතියම් ණය: Stadia Maps, OpenMapTiles සහ OpenStreetMap",
     "activityLaunchFindingCourses": "ඔබේ පාඨමාලා සොයමින්...",
     "activityLaunchCreatingRoom": "ඔබේ ක්‍රියාකාරකම සාදමින්...",
-    "activityLaunchOpeningRoom": "ඔබේ ක්‍රියාකාරකම විවෘත කරමින්..."
+    "activityLaunchOpeningRoom": "ඔබේ ක්‍රියාකාරකම විවෘත කරමින්...",
+    "playWithOthers": "අන් අය සමඟ සෙල්ලම් කරන්න",
+    "openRole": "විවෘත: {role}",
+    "waitingFor": "{duration} බලා සිටී",
+    "onlineInCourse": "{count} දෙනෙක් {course} හි මාර්ගගතව සිටිති"
 }

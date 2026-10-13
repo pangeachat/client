@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-12 13:12:03.930010",
+    "@@last_modified": "2026-10-13 13:03:47.157163",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles ndi OpenStreetMap",
     "activityLaunchFindingCourses": "Kupeza maphunziro anu…",
     "activityLaunchCreatingRoom": "Kupanga ntchito yanu…",
-    "activityLaunchOpeningRoom": "Kutsegula ntchito yanu…"
+    "activityLaunchOpeningRoom": "Kutsegula ntchito yanu…",
+    "playWithOthers": "Sewerani ndi ena",
+    "openRole": "Tsegulani: {role}",
+    "waitingFor": "Kudikira {duration}",
+    "onlineInCourse": "{count} pa intaneti mu {course}"
 }

@@ -3559,7 +3559,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-12 13:11:52.279105",
+    "@@last_modified": "2026-10-13 13:03:41.886927",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9983,5 +9983,9 @@
     "mapCreditsLabel": "Creidmheasanna léarscáile: Stadia Maps, OpenMapTiles agus OpenStreetMap",
     "activityLaunchFindingCourses": "Ag aimsiú do chúrsaí…",
     "activityLaunchCreatingRoom": "Ag cruthú do ghníomhaíochta…",
-    "activityLaunchOpeningRoom": "Ag oscailt do ghníomhaíochta…"
+    "activityLaunchOpeningRoom": "Ag oscailt do ghníomhaíochta…",
+    "playWithOthers": "Imir le daoine eile",
+    "openRole": "Oscailte: {role}",
+    "waitingFor": "Ag fanacht {duration}",
+    "onlineInCourse": "{count} ar líne i {course}"
 }

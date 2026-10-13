@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-12 13:11:50.177615",
+    "@@last_modified": "2026-10-13 13:03:40.842016",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Mga kredito sa mapa: Stadia Maps, OpenMapTiles ug OpenStreetMap",
     "activityLaunchFindingCourses": "Nangita sa imong mga kurso…",
     "activityLaunchCreatingRoom": "Gihimo ang imong kalihokan…",
-    "activityLaunchOpeningRoom": "Giablihan ang imong kalihokan…"
+    "activityLaunchOpeningRoom": "Giablihan ang imong kalihokan…",
+    "playWithOthers": "Duwa uban sa uban",
+    "openRole": "Bukas: {role}",
+    "waitingFor": "Naghuwat {duration}",
+    "onlineInCourse": "{count} online sa {course}"
 }

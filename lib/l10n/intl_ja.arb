@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-12 13:11:56.309183",
+    "@@last_modified": "2026-10-13 13:03:43.923768",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10741,5 +10741,9 @@
     "mapCreditsLabel": "マップクレジット: Stadia Maps, OpenMapTiles, OpenStreetMap",
     "activityLaunchFindingCourses": "コースを検索中…",
     "activityLaunchCreatingRoom": "アクティビティを作成中…",
-    "activityLaunchOpeningRoom": "アクティビティを開いています…"
+    "activityLaunchOpeningRoom": "アクティビティを開いています…",
+    "playWithOthers": "他のユーザーとプレイ",
+    "openRole": "募集: {role}",
+    "waitingFor": "{duration}待機中",
+    "onlineInCourse": "{course}で{count}人がオンライン"
 }

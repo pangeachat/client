@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-12 13:12:05.237329",
+    "@@last_modified": "2026-10-13 13:03:49.907557",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Ҳуқуқи харита: Stadia Maps, OpenMapTiles ва OpenStreetMap",
     "activityLaunchFindingCourses": "Дарёфти курсҳои шумо…",
     "activityLaunchCreatingRoom": "Сохтани фаъолияти шумо…",
-    "activityLaunchOpeningRoom": "Кушодани фаъолияти шумо…"
+    "activityLaunchOpeningRoom": "Кушодани фаъолияти шумо…",
+    "playWithOthers": "Бо дигарон бозӣ кунед",
+    "openRole": "Кушода: {role}",
+    "waitingFor": "Интизорӣ {duration}",
+    "onlineInCourse": "{count} онлайн дар {course}"
 }

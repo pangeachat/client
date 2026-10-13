@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:12:15.413539",
+    "@@last_modified": "2026-10-13 13:03:50.775174",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7274,5 +7274,9 @@
     "mapCreditsLabel": "Bản quyền bản đồ: Stadia Maps, OpenMapTiles và OpenStreetMap",
     "activityLaunchFindingCourses": "Đang tìm khóa học của bạn…",
     "activityLaunchCreatingRoom": "Đang tạo hoạt động của bạn…",
-    "activityLaunchOpeningRoom": "Đang mở hoạt động của bạn…"
+    "activityLaunchOpeningRoom": "Đang mở hoạt động của bạn…",
+    "playWithOthers": "Chơi với người khác",
+    "openRole": "Mở: {role}",
+    "waitingFor": "Đang chờ {duration}",
+    "onlineInCourse": "{count} người trực tuyến trong khóa {course}"
 }

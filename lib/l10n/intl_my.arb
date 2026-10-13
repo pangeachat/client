@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-12 13:12:01.415119",
+    "@@last_modified": "2026-10-13 13:03:46.666908",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "မြေပုံခရက်ဒစ်များ- Stadia Maps, OpenMapTiles နှင့် OpenStreetMap",
     "activityLaunchFindingCourses": "သင်ခန်းစာများကို ရှာဖွေနေသည်...",
     "activityLaunchCreatingRoom": "သင်၏လုပ်ဆောင်ချက်ကို ဖန်တီးနေသည်...",
-    "activityLaunchOpeningRoom": "သင်၏လုပ်ဆောင်ချက်ကို ဖွင့်နေသည်..."
+    "activityLaunchOpeningRoom": "သင်၏လုပ်ဆောင်ချက်ကို ဖွင့်နေသည်...",
+    "playWithOthers": "အခြားသူများနှင့် ကစားပါ",
+    "openRole": "ဖွင့်သည်- {role}",
+    "waitingFor": "{duration} စောင့်ဆိုင်းနေသည်",
+    "onlineInCourse": "{count} ဦး {course} တွင် အွန်လိုင်းပေါ်ရှိသည်"
 }

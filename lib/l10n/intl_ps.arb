@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-12 13:12:01.779708",
+    "@@last_modified": "2026-10-13 13:03:47.618313",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "د نقشې کریډیټونه: Stadia Maps, OpenMapTiles او OpenStreetMap",
     "activityLaunchFindingCourses": "ستاسو کورسونه لټول…",
     "activityLaunchCreatingRoom": "ستاسو فعالیت جوړول…",
-    "activityLaunchOpeningRoom": "ستاسو فعالیت پرانیستل…"
+    "activityLaunchOpeningRoom": "ستاسو فعالیت پرانیستل…",
+    "playWithOthers": "له نورو سره لوبې وکړئ",
+    "openRole": "خلاص: {role}",
+    "waitingFor": "{duration} انتظار",
+    "onlineInCourse": "{count} په {course} کې آنلاین"
 }

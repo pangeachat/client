@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-12 13:12:03.581054",
+    "@@last_modified": "2026-10-13 13:03:48.962747",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Kreditet e hartës: Stadia Maps, OpenMapTiles dhe OpenStreetMap",
     "activityLaunchFindingCourses": "Po gjejmë kurset tuaja…",
     "activityLaunchCreatingRoom": "Po krijojmë aktivitetin tuaj…",
-    "activityLaunchOpeningRoom": "Po hapim aktivitetin tuaj…"
+    "activityLaunchOpeningRoom": "Po hapim aktivitetin tuaj…",
+    "playWithOthers": "Luaj me të tjerët",
+    "openRole": "Hapur: {role}",
+    "waitingFor": "Duke pritur {duration}",
+    "onlineInCourse": "{count} online në {course}"
 }

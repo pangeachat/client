@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:11:55.350615",
+    "@@last_modified": "2026-10-13 13:03:43.310498",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10045,5 +10045,9 @@
     "mapCreditsLabel": "Kredit peta: Stadia Maps, OpenMapTiles, dan OpenStreetMap",
     "activityLaunchFindingCourses": "Mencari kursus Anda…",
     "activityLaunchCreatingRoom": "Membuat aktivitas Anda…",
-    "activityLaunchOpeningRoom": "Membuka aktivitas Anda…"
+    "activityLaunchOpeningRoom": "Membuka aktivitas Anda…",
+    "playWithOthers": "Bermain dengan yang lain",
+    "openRole": "Buka: {role}",
+    "waitingFor": "Menunggu {duration}",
+    "onlineInCourse": "{count} daring di {course}"
 }

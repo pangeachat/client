@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-12 13:11:51.192169",
+    "@@last_modified": "2026-10-13 13:03:41.211831",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9969,5 +9969,9 @@
     "mapCreditsLabel": "Kaardi autorid: Stadia Maps, OpenMapTiles ja OpenStreetMap",
     "activityLaunchFindingCourses": "Kursuste otsimine…",
     "activityLaunchCreatingRoom": "Tegevuse loomine…",
-    "activityLaunchOpeningRoom": "Tegevuse avamine…"
+    "activityLaunchOpeningRoom": "Tegevuse avamine…",
+    "playWithOthers": "Mängi teistega",
+    "openRole": "Avatud: {role}",
+    "waitingFor": "Ootab {duration}",
+    "onlineInCourse": "{count} võrgus kursusel {course}"
 }

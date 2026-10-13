@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:11:51.748743",
+    "@@last_modified": "2026-10-13 13:03:41.466551",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10060,5 +10060,9 @@
     "mapCreditsLabel": "اعتبار نقشه: Stadia Maps, OpenMapTiles و OpenStreetMap",
     "activityLaunchFindingCourses": "در حال یافتن دوره‌های شما…",
     "activityLaunchCreatingRoom": "در حال ایجاد فعالیت شما…",
-    "activityLaunchOpeningRoom": "در حال باز کردن فعالیت شما…"
+    "activityLaunchOpeningRoom": "در حال باز کردن فعالیت شما…",
+    "playWithOthers": "بازی با دیگران",
+    "openRole": "باز: {role}",
+    "waitingFor": "در انتظار {duration}",
+    "onlineInCourse": "{count} نفر آنلاین در {course}"
 }

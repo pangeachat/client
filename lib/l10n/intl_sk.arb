@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-12 13:12:03.046260",
+    "@@last_modified": "2026-10-13 13:03:48.432179",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10917,5 +10917,9 @@
     "mapCreditsLabel": "Autorské práva k mape: Stadia Maps, OpenMapTiles a OpenStreetMap",
     "activityLaunchFindingCourses": "Hľadáme vaše kurzy…",
     "activityLaunchCreatingRoom": "Vytvárame vašu aktivitu…",
-    "activityLaunchOpeningRoom": "Otvárame vašu aktivitu…"
+    "activityLaunchOpeningRoom": "Otvárame vašu aktivitu…",
+    "playWithOthers": "Hrať s ostatnými",
+    "openRole": "Otvorené: {role}",
+    "waitingFor": "Čaká sa {duration}",
+    "onlineInCourse": "{count} online v kurze {course}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-12 13:11:50.125969",
+    "@@last_modified": "2026-10-13 13:03:40.564966",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Crediti di a carta: Stadia Maps, OpenMapTiles è OpenStreetMap",
     "activityLaunchFindingCourses": "Truvendu i vostri corsi…",
     "activityLaunchCreatingRoom": "Creendu a vostra attività…",
-    "activityLaunchOpeningRoom": "Aprende a vostra attività…"
+    "activityLaunchOpeningRoom": "Aprende a vostra attività…",
+    "playWithOthers": "Ghjucà cù l'altri",
+    "openRole": "Apertu: {role}",
+    "waitingFor": "Aspittendu {duration}",
+    "onlineInCourse": "{count} in ligna in {course}"
 }

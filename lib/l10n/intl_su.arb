@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-12 13:12:04.479294",
+    "@@last_modified": "2026-10-13 13:03:49.416056",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Kredit peta: Stadia Maps, OpenMapTiles sareng OpenStreetMap",
     "activityLaunchFindingCourses": "Milarian kursus anjeun…",
     "activityLaunchCreatingRoom": "Nyiptakeun kagiatan anjeun…",
-    "activityLaunchOpeningRoom": "Muka kagiatan anjeun…"
+    "activityLaunchOpeningRoom": "Muka kagiatan anjeun…",
+    "playWithOthers": "Maén jeung nu séjén",
+    "openRole": "Buka: {role}",
+    "waitingFor": "Ngantosan {duration}",
+    "onlineInCourse": "{count} online di {course}"
 }

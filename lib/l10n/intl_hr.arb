@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-12 13:11:54.707291",
+    "@@last_modified": "2026-10-13 13:03:42.943836",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10408,5 +10408,9 @@
     "mapCreditsLabel": "Zasluge za kartu: Stadia Maps, OpenMapTiles i OpenStreetMap",
     "activityLaunchFindingCourses": "Tražim vaše tečajeve…",
     "activityLaunchCreatingRoom": "Stvaram vašu aktivnost…",
-    "activityLaunchOpeningRoom": "Otvaram vašu aktivnost…"
+    "activityLaunchOpeningRoom": "Otvaram vašu aktivnost…",
+    "playWithOthers": "Igrajte se s drugima",
+    "openRole": "Otvoreno: {role}",
+    "waitingFor": "Čekanje {duration}",
+    "onlineInCourse": "{count} na mreži u {course}"
 }
