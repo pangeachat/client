@@ -10935,5 +10935,7 @@
     "waitingFor": "等緊 {duration}",
     "onlineInCourse": "{count} 個喺 {course} 度上線",
     "newCourseChat": "新課程聊天",
-    "customCourseStepDesc": "課程係一系列對話活動，學生可以跟住你嘅教科書，一齊做功課。"
+    "customCourseStepDesc": "課程係一系列對話活動，學生可以跟住你嘅教科書，一齊做功課。",
+    "reopenAppToFinishSwitching": "請完全關閉應用程式，然後重新開啟以完成切換。",
+    "teamCode": "團隊代碼"
 }

@@ -9978,5 +9978,7 @@
     "waitingFor": "等待 {duration}",
     "onlineInCourse": "{count} 人在线，在 {course} 课程中",
     "newCourseChat": "新课程聊天",
-    "customCourseStepDesc": "课程是一系列对话活动，学生可以根据您的教材，一起完成这些活动作为家庭作业。"
+    "customCourseStepDesc": "课程是一系列对话活动，学生可以根据您的教材，一起完成这些活动作为家庭作业。",
+    "reopenAppToFinishSwitching": "请完全关闭应用，然后重新打开以完成切换。",
+    "teamCode": "团队代码"
 }

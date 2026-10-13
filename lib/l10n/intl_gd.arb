@@ -2427,5 +2427,7 @@
     "waitingFor": "A’ feitheamh {duration}",
     "onlineInCourse": "{count} air-loidhne ann an {course}",
     "newCourseChat": "Còmhradh cùrsa ùr",
-    "customCourseStepDesc": "’S e seata de ghnìomhachdan còmhraidh a th’ ann an cùrsa a leanas an leabhar-teacsa agad, airson gum bi na h-oileanaich agad ga dhèanamh còmhla mar obair-dachaigh."
+    "customCourseStepDesc": "’S e seata de ghnìomhachdan còmhraidh a th’ ann an cùrsa a leanas an leabhar-teacsa agad, airson gum bi na h-oileanaich agad ga dhèanamh còmhla mar obair-dachaigh.",
+    "reopenAppToFinishSwitching": "Dùin an aplacaid gu tur agus fosgail a-rithist i gus crìoch a chur air an atharrachadh.",
+    "teamCode": "Còd sgioba"
 }

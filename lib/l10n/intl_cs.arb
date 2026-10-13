@@ -10472,5 +10472,7 @@
     "waitingFor": "Čekání {duration}",
     "onlineInCourse": "{count} online v {course}",
     "newCourseChat": "Nový chat kurzu",
-    "customCourseStepDesc": "Kurz je soubor konverzačních aktivit, které následují vaši učebnici, aby je vaši studenti dělali společně jako domácí úkol."
+    "customCourseStepDesc": "Kurz je soubor konverzačních aktivit, které následují vaši učebnici, aby je vaši studenti dělali společně jako domácí úkol.",
+    "reopenAppToFinishSwitching": "Zavřete aplikaci úplně a znovu ji otevřete, abyste dokončili přepínání.",
+    "teamCode": "Kód týmu"
 }

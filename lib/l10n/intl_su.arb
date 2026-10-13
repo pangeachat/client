@@ -2427,5 +2427,7 @@
     "waitingFor": "Ngantosan {duration}",
     "onlineInCourse": "{count} online di {course}",
     "newCourseChat": "Obrolan kursus anyar",
-    "customCourseStepDesc": "Kursus nyaéta runtuyan kagiatan paguneman anu nuturkeun buku téks anjeun, pikeun siswa anjeun pikeun ngalakukeun babarengan salaku PR."
+    "customCourseStepDesc": "Kursus nyaéta runtuyan kagiatan paguneman anu nuturkeun buku téks anjeun, pikeun siswa anjeun pikeun ngalakukeun babarengan salaku PR.",
+    "reopenAppToFinishSwitching": "Tutup aplikasi sagemblengna teras buka deui kanggo ngarengsekeun gentos.",
+    "teamCode": "Kode tim"
 }

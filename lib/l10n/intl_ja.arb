@@ -10747,5 +10747,7 @@
     "waitingFor": "{duration}待機中",
     "onlineInCourse": "{course}で{count}人がオンライン",
     "newCourseChat": "新しいコースチャット",
-    "customCourseStepDesc": "コースとは、教科書に沿った会話アクティビティのセットで、生徒が宿題として一緒に取り組むものです。"
+    "customCourseStepDesc": "コースとは、教科書に沿った会話アクティビティのセットで、生徒が宿題として一緒に取り組むものです。",
+    "reopenAppToFinishSwitching": "切り替えを完了するには、アプリを完全に閉じてからもう一度開いてください。",
+    "teamCode": "チームコード"
 }

@@ -2427,5 +2427,7 @@
     "waitingFor": "Waarden {duration}",
     "onlineInCourse": "{count} online am Cours {course}",
     "newCourseChat": "Neie Cours-Chat",
-    "customCourseStepDesc": "E Cours ass eng Rei vu Gespréichsaktivitéiten, déi Äert Léierbuch verfollegen, fir Är Schüler als Hausaufgab zesummen ze maachen."
+    "customCourseStepDesc": "E Cours ass eng Rei vu Gespréichsaktivitéiten, déi Äert Léierbuch verfollegen, fir Är Schüler als Hausaufgab zesummen ze maachen.",
+    "reopenAppToFinishSwitching": "Maach d'App komplett zou an dann nees op fir de Wiessel ofzeschléissen.",
+    "teamCode": "Team Code"
 }

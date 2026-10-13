@@ -10496,5 +10496,7 @@
     "waitingFor": "Väntar {duration}",
     "onlineInCourse": "{count} online i {course}",
     "newCourseChat": "Ny kurschatt",
-    "customCourseStepDesc": "En kurs är en uppsättning konversationsaktiviteter som följer din lärobok, för dina elever att göra tillsammans som läxa."
+    "customCourseStepDesc": "En kurs är en uppsättning konversationsaktiviteter som följer din lärobok, för dina elever att göra tillsammans som läxa.",
+    "reopenAppToFinishSwitching": "Stäng appen helt och öppna den igen för att slutföra bytet.",
+    "teamCode": "Teamkod"
 }

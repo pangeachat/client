@@ -9989,5 +9989,7 @@
     "waitingFor": "Ag fanacht {duration}",
     "onlineInCourse": "{count} ar líne i {course}",
     "newCourseChat": "Comhrá cúrsa nua",
-    "customCourseStepDesc": "Is éard is cúrsa ann ná sraith gníomhaíochtaí comhrá a leanann do théacsleabhar, le go ndéanfaidh do mhic léinn iad le chéile mar obair bhaile."
+    "customCourseStepDesc": "Is éard is cúrsa ann ná sraith gníomhaíochtaí comhrá a leanann do théacsleabhar, le go ndéanfaidh do mhic léinn iad le chéile mar obair bhaile.",
+    "reopenAppToFinishSwitching": "Dún an aip go hiomlán agus oscail arís í chun an t-athrú a chríochnú.",
+    "teamCode": "Cód foirne"
 }

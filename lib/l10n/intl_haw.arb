@@ -2427,5 +2427,7 @@
     "waitingFor": "Ke kali nei {duration}",
     "onlineInCourse": "{count} ma ka pūnaewele ma {course}",
     "newCourseChat": "Kūkākūkā papa hou",
-    "customCourseStepDesc": "He papa hana kamaʻilio ka papa e pili ana i kāu puke aʻo, no kāu mau haumāna e hana pū ai ma ke ʻano he haʻawina home."
+    "customCourseStepDesc": "He papa hana kamaʻilio ka papa e pili ana i kāu puke aʻo, no kāu mau haumāna e hana pū ai ma ke ʻano he haʻawina home.",
+    "reopenAppToFinishSwitching": "E pani loa i ka polokalamu a e wehe hou e hoʻopau i ka hoʻololi ʻana.",
+    "teamCode": "Helu hui"
 }

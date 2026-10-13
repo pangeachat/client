@@ -2427,5 +2427,7 @@
     "waitingFor": "Wachtsje {duration}",
     "onlineInCourse": "{count} online yn {course}",
     "newCourseChat": "Nije kursuschats",
-    "customCourseStepDesc": "In kursus is in set petearaktiviteiten dy't jo learboek folgje, foar jo studinten om tegearre as húswurk te dwaan."
+    "customCourseStepDesc": "In kursus is in set petearaktiviteiten dy't jo learboek folgje, foar jo studinten om tegearre as húswurk te dwaan.",
+    "reopenAppToFinishSwitching": "Slút de app folslein en iepenje him opnij om it wikseljen te foltôgjen.",
+    "teamCode": "Teamkoade"
 }

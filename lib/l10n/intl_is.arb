@@ -2427,5 +2427,7 @@
     "waitingFor": "Beðið í {duration}",
     "onlineInCourse": "{count} á netinu í {course}",
     "newCourseChat": "Nýtt námskeiðsspjall",
-    "customCourseStepDesc": "Námskeið er safn samtalsæfinga sem fylgja kennslubókinni þinni, fyrir nemendur þína til að gera saman sem heimanám."
+    "customCourseStepDesc": "Námskeið er safn samtalsæfinga sem fylgja kennslubókinni þinni, fyrir nemendur þína til að gera saman sem heimanám.",
+    "reopenAppToFinishSwitching": "Lokaðu forritinu alveg og opnaðu það aftur til að ljúka skiptunum.",
+    "teamCode": "Liðskóði"
 }

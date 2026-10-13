@@ -10923,5 +10923,7 @@
     "waitingFor": "Atendante {duration}",
     "onlineInCourse": "{count} enrete en {course}",
     "newCourseChat": "Nova kursa babilejo",
-    "customCourseStepDesc": "Kurso estas aro de konversaciaj agadoj, kiuj sekvas vian lernolibron, por ke viaj studentoj faru kune kiel hejmtasko."
+    "customCourseStepDesc": "Kurso estas aro de konversaciaj agadoj, kiuj sekvas vian lernolibron, por ke viaj studentoj faru kune kiel hejmtasko.",
+    "reopenAppToFinishSwitching": "Fermu la apon tute kaj remalfermu ĝin por fini la ŝanĝon.",
+    "teamCode": "Teama kodo"
 }

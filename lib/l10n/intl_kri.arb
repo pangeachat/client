@@ -2427,5 +2427,7 @@
     "waitingFor": "De wet {duration}",
     "onlineInCourse": "{count} de ɔnlayn insay {course}",
     "newCourseChat": "Nyu kos chat",
-    "customCourseStepDesc": "Wan kos na wan set fɔ kɔnvɛseshɔn aktivitis we de fala yu tɛksbuk, fɔ mek yu studɛnt dɛn du togɛda as homwɔk."
+    "customCourseStepDesc": "Wan kos na wan set fɔ kɔnvɛseshɔn aktivitis we de fala yu tɛksbuk, fɔ mek yu studɛnt dɛn du togɛda as homwɔk.",
+    "reopenAppToFinishSwitching": "Klos di ap ɔlgeda ɛn opin am bak fɔ fɛnɛsh di chenj.",
+    "teamCode": "Tim kɔd"
 }

@@ -16,6 +16,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/network_filter/widgets/filtered_network_banner.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/pangea/common/widgets/environment_banner.dart';
 import 'package:fluffychat/routes/chat/calls/global_call_tile.dart';
 import 'package:fluffychat/routes/chat/calls/incoming_call_banner.dart';
 import 'package:fluffychat/widgets/app_lock.dart';
@@ -89,20 +90,22 @@ class FluffyChatApp extends StatelessWidget {
         // builder: (context, child) => AppLockWidget(
         builder: (context, child) => Directionality(
           textDirection: TextDirection.ltr,
-          child: AppLockWidget(
-            pincode: pincode,
-            clients: clients,
-            // Need a navigator above the Matrix widget for
-            // displaying dialogs
-            child: Matrix(
+          child: EnvironmentBanner(
+            child: AppLockWidget(
+              pincode: pincode,
               clients: clients,
-              store: store,
-              // Inside Matrix, so the call service is resolvable; above the
-              // router, so a call announces itself wherever the learner is
-              // rather than only on the chat it belongs to.
-              child: IncomingCallBanner(
-                child: GlobalCallTile(
-                  child: FilteredNetworkBanner(child: testWidget ?? child),
+              // Need a navigator above the Matrix widget for
+              // displaying dialogs
+              child: Matrix(
+                clients: clients,
+                store: store,
+                // Inside Matrix, so the call service is resolvable; above the
+                // router, so a call announces itself wherever the learner is
+                // rather than only on the chat it belongs to.
+                child: IncomingCallBanner(
+                  child: GlobalCallTile(
+                    child: FilteredNetworkBanner(child: testWidget ?? child),
+                  ),
                 ),
               ),
             ),

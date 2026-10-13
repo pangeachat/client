@@ -2427,5 +2427,7 @@
     "waitingFor": "Čekanje {duration}",
     "onlineInCourse": "{count} online u {course}",
     "newCourseChat": "Novi chat kursa",
-    "customCourseStepDesc": "Kurs je skup konverzacijskih aktivnosti koje prate vaš udžbenik, a koje vaši učenici rade zajedno kao domaći zadatak."
+    "customCourseStepDesc": "Kurs je skup konverzacijskih aktivnosti koje prate vaš udžbenik, a koje vaši učenici rade zajedno kao domaći zadatak.",
+    "reopenAppToFinishSwitching": "Potpuno zatvorite aplikaciju i ponovo je otvorite da biste završili prebacivanje.",
+    "teamCode": "Kod tima"
 }

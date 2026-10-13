@@ -9978,5 +9978,7 @@
     "waitingFor": "Zain {duration}",
     "onlineInCourse": "{count} linean {course} ikastaroan",
     "newCourseChat": "Ikastaro-txat berria",
-    "customCourseStepDesc": "Ikastaro bat elkarrizketa-jardueren multzo bat da, zure testuliburua jarraitzen duena, zure ikasleek elkarrekin etxeko lan gisa egiteko."
+    "customCourseStepDesc": "Ikastaro bat elkarrizketa-jardueren multzo bat da, zure testuliburua jarraitzen duena, zure ikasleek elkarrekin etxeko lan gisa egiteko.",
+    "reopenAppToFinishSwitching": "Itxi aplikazioa erabat eta ireki berriro aldatzen amaitzeko.",
+    "teamCode": "Talde-kodea"
 }

@@ -190,6 +190,8 @@ Signup and login are separate destinations offering the same three methods: Appl
 
 When a previous method is known, both screens name it. Login dims the other two options to guide without removing them; signup goes further and links across to login, since someone who already has an account has usually landed on the wrong screen. Neither screen removes an option, because the stored hint can be wrong and a person may intend a different method.
 
+The login page's heading also opens the team's hidden environment switcher ([deployment § Environment switcher](deployment.instructions.md#environment-switcher)). It adds nothing visible to the page.
+
 ## Arriving with a class code
 
 A visitor who opens a class link while signed out is sent to this screen, and the code is kept in the stored destination ([joining-courses.instructions.md § Route 1 — Class link](joining-courses.instructions.md#route-1--class-link), Pre-login). They should know the code was kept and that signing in is the only step left, so they don't look for a code field or give up on the pitch.
