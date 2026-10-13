@@ -143,8 +143,11 @@ jobs:
         # defaults include-hidden-files to false, so a .env baked into
         # build/web at build time never survives into the web artifact.
         # Writing it in the deploy job keeps config resolution in the job
-        # that owns the environment.
+        # that owns the environment. The .well-known link files are dropped
+        # from the artifact the same way, so they come from this job's
+        # checkout.
         run: |
+          cp -r web/.well-known build/web/
           echo "$WEB_APP_ENV" > build/web/.env
           # Production streaming-STT client gate (Environment.liveStreamingSttEnabled),
           # enabled the same way staging does in main_deploy.yaml. The choreo backend
