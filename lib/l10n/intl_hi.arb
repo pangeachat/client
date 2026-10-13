@@ -10601,5 +10601,8 @@
     "callMicrophoneMessage": "Pangea Chat को कॉल के लिए आपके माइक्रोफ़ोन की आवश्यकता है, जिसमें लॉक स्क्रीन से आपके द्वारा उत्तर दिए गए कॉल भी शामिल हैं।",
     "callMicrophoneOffTitle": "आपकी कॉल कनेक्ट नहीं हुई",
     "callMicrophoneOffMessage": "Pangea Chat आपके माइक्रोफ़ोन का उपयोग नहीं कर सकता है। सेटिंग्स में इसे चालू करने के लिए टैप करें।",
-    "mapCreditsLabel": "मैप क्रेडिट: स्टेडिया मैप्स, ओपनमैपटाइल्स और ओपनस्ट्रीटमैप"
+    "mapCreditsLabel": "मैप क्रेडिट: स्टेडिया मैप्स, ओपनमैपटाइल्स और ओपनस्ट्रीटमैप",
+    "activityLaunchFindingCourses": "आपके पाठ्यक्रम ढूँढे जा रहे हैं…",
+    "activityLaunchCreatingRoom": "आपकी गतिविधि बनाई जा रही है…",
+    "activityLaunchOpeningRoom": "आपकी गतिविधि खोली जा रही है…"
 }

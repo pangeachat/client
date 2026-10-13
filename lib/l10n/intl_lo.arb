@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat ຕ້ອງການໄມໂຄຣໂຟນຂອງທ່ານສຳລັບການໂທ, ລວມທັງການໂທທີ່ທ່ານຮັບຈາກໜ້າຈໍລັອກ.",
     "callMicrophoneOffTitle": "ການໂທຂອງທ່ານບໍ່ໄດ້ເຊື່ອມຕໍ່",
     "callMicrophoneOffMessage": "Pangea Chat ບໍ່ສາມາດໃຊ້ໄມໂຄຣໂຟນຂອງທ່ານໄດ້. ແຕະເພື່ອເປີດໃຊ້ໃນການຕັ້ງຄ່າ.",
-    "mapCreditsLabel": "ຂໍ້ມູນແຜນທີ່: Stadia Maps, OpenMapTiles ແລະ OpenStreetMap"
+    "mapCreditsLabel": "ຂໍ້ມູນແຜນທີ່: Stadia Maps, OpenMapTiles ແລະ OpenStreetMap",
+    "activityLaunchFindingCourses": "ກຳລັງຊອກຫາຫຼັກສູດຂອງທ່ານ…",
+    "activityLaunchCreatingRoom": "ກຳລັງສ້າງກິດຈະກຳຂອງທ່ານ…",
+    "activityLaunchOpeningRoom": "ກຳລັງເປີດກິດຈະກຳຂອງທ່ານ…"
 }

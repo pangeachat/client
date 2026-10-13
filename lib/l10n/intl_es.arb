@@ -8198,5 +8198,8 @@
     "callMicrophoneMessage": "Pangea Chat necesita tu micrófono para las llamadas, incluidas las que respondas desde la pantalla de bloqueo.",
     "callMicrophoneOffTitle": "Tu llamada no se conectó",
     "callMicrophoneOffMessage": "Pangea Chat no puede usar tu micrófono. Toca para activarlo en Ajustes.",
-    "mapCreditsLabel": "Créditos del mapa: Stadia Maps, OpenMapTiles y OpenStreetMap"
+    "mapCreditsLabel": "Créditos del mapa: Stadia Maps, OpenMapTiles y OpenStreetMap",
+    "activityLaunchFindingCourses": "Buscando tus cursos…",
+    "activityLaunchCreatingRoom": "Creando tu actividad…",
+    "activityLaunchOpeningRoom": "Abriendo tu actividad…"
 }

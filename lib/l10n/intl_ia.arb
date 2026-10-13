@@ -10905,5 +10905,8 @@
     "callMicrophoneMessage": "Pangea Chat necessita tu microphono pro appellatas, includente appellatas que tu responde del schermo blocate.",
     "callMicrophoneOffTitle": "Tu appellata non se connecteva",
     "callMicrophoneOffMessage": "Pangea Chat non pote usar tu microphono. Pulsa pro activar lo in le Preferentias.",
-    "mapCreditsLabel": "Creditos del mappa: Stadia Maps, OpenMapTiles e OpenStreetMap"
+    "mapCreditsLabel": "Creditos del mappa: Stadia Maps, OpenMapTiles e OpenStreetMap",
+    "activityLaunchFindingCourses": "Cercante tu cursos…",
+    "activityLaunchCreatingRoom": "Creante tu activitate…",
+    "activityLaunchOpeningRoom": "Aperiente tu activitate…"
 }

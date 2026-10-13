@@ -10750,5 +10750,8 @@
     "callMicrophoneMessage": "„Pangea Chat“ reikalingas jūsų mikrofonas skambučiams, įskaitant tuos, kuriuos atsiliepiate iš užrakinimo ekrano.",
     "callMicrophoneOffTitle": "Nepavyko prisijungti prie skambučio",
     "callMicrophoneOffMessage": "„Pangea Chat“ negali naudoti jūsų mikrofono. Bakstelėkite, kad įjungtumėte jį nustatymuose.",
-    "mapCreditsLabel": "Žemėlapio autoriai: Stadia Maps, OpenMapTiles ir OpenStreetMap"
+    "mapCreditsLabel": "Žemėlapio autoriai: Stadia Maps, OpenMapTiles ir OpenStreetMap",
+    "activityLaunchFindingCourses": "Ieškoma jūsų kursų…",
+    "activityLaunchCreatingRoom": "Kuriama jūsų veikla…",
+    "activityLaunchOpeningRoom": "Atidaroma jūsų veikla…"
 }

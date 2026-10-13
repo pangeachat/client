@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "ፓንጋያ ቻት ለጥሪዎች ማይክሮፎንዎን ይፈልጋል፣ ከመቆለፊያ ማያ ገጽ የሚመልሷቸውን ጥሪዎች ጨምሮ።",
     "callMicrophoneOffTitle": "ጥሪዎ አልተገናኘም",
     "callMicrophoneOffMessage": "ፓንጋያ ቻት ማይክሮፎንዎን መጠቀም አይችልም። በቅንብሮች ውስጥ ለማብራት ይንኩ።",
-    "mapCreditsLabel": "የካርታ ክሬዲቶች: Stadia Maps, OpenMapTiles እና OpenStreetMap"
+    "mapCreditsLabel": "የካርታ ክሬዲቶች: Stadia Maps, OpenMapTiles እና OpenStreetMap",
+    "activityLaunchFindingCourses": "ኮርሶችዎን በመፈለግ ላይ…",
+    "activityLaunchCreatingRoom": "እንቅስቃሴዎን በመፍጠር ላይ…",
+    "activityLaunchOpeningRoom": "እንቅስቃሴዎን በመክፈት ላይ…"
 }

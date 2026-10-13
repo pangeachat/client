@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat-ին անհրաժեշտ է ձեր խոսափողը զանգերի համար, ներառյալ այն զանգերը, որոնց պատասխանում եք կողպված էկրանից։",
     "callMicrophoneOffTitle": "Ձեր զանգը չմիացավ",
     "callMicrophoneOffMessage": "Pangea Chat-ը չի կարող օգտագործել ձեր խոսափողը։ Սեղմեք՝ այն Կարգավորումներում միացնելու համար։",
-    "mapCreditsLabel": "Քարտեզի հեղինակներ՝ Stadia Maps, OpenMapTiles և OpenStreetMap"
+    "mapCreditsLabel": "Քարտեզի հեղինակներ՝ Stadia Maps, OpenMapTiles և OpenStreetMap",
+    "activityLaunchFindingCourses": "Ձեր դասընթացները գտնվում են…",
+    "activityLaunchCreatingRoom": "Ձեր ակտիվությունը ստեղծվում է…",
+    "activityLaunchOpeningRoom": "Ձեր ակտիվությունը բացվում է…"
 }

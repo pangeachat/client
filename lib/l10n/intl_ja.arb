@@ -10738,5 +10738,8 @@
     "callMicrophoneMessage": "Pangea Chatが通話でマイクを使用できるようにしてください。ロック画面から応答する通話も含まれます。",
     "callMicrophoneOffTitle": "通話に接続できませんでした",
     "callMicrophoneOffMessage": "Pangea Chatがマイクを使用できません。タップして設定でオンにしてください。",
-    "mapCreditsLabel": "マップクレジット: Stadia Maps, OpenMapTiles, OpenStreetMap"
+    "mapCreditsLabel": "マップクレジット: Stadia Maps, OpenMapTiles, OpenStreetMap",
+    "activityLaunchFindingCourses": "コースを検索中…",
+    "activityLaunchCreatingRoom": "アクティビティを作成中…",
+    "activityLaunchOpeningRoom": "アクティビティを開いています…"
 }

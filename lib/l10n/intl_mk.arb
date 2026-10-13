@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat има потреба од вашиот микрофон за повици, вклучувајќи ги и повиците на кои одговарате од заклучениот екран.",
     "callMicrophoneOffTitle": "Вашиот повик не се поврза",
     "callMicrophoneOffMessage": "Pangea Chat не може да го користи вашиот микрофон. Допрете за да го вклучите во Поставки.",
-    "mapCreditsLabel": "Кредити за мапа: Stadia Maps, OpenMapTiles и OpenStreetMap"
+    "mapCreditsLabel": "Кредити за мапа: Stadia Maps, OpenMapTiles и OpenStreetMap",
+    "activityLaunchFindingCourses": "Пронаоѓање на вашите курсеви…",
+    "activityLaunchCreatingRoom": "Креирање на вашата активност…",
+    "activityLaunchOpeningRoom": "Отворање на вашата активност…"
 }

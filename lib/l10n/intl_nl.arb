@@ -9969,5 +9969,8 @@
     "callMicrophoneMessage": "Pangea Chat heeft je microfoon nodig voor gesprekken, inclusief gesprekken die je beantwoordt vanaf het vergrendelscherm.",
     "callMicrophoneOffTitle": "Je gesprek is niet verbonden",
     "callMicrophoneOffMessage": "Pangea Chat kan je microfoon niet gebruiken. Tik om deze in te schakelen in Instellingen.",
-    "mapCreditsLabel": "Kaartcredits: Stadia Maps, OpenMapTiles en OpenStreetMap"
+    "mapCreditsLabel": "Kaartcredits: Stadia Maps, OpenMapTiles en OpenStreetMap",
+    "activityLaunchFindingCourses": "Je cursussen zoeken…",
+    "activityLaunchCreatingRoom": "Je activiteit aanmaken…",
+    "activityLaunchOpeningRoom": "Je activiteit openen…"
 }

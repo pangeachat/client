@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat e hloka maekrofounu ea hau bakeng sa mehala, ho kenyeletsoa le mehala eo u e arabang ho tsoa skrineng sa senotlolo.",
     "callMicrophoneOffTitle": "Mohala oa hau ha oa hokela",
     "callMicrophoneOffMessage": "Pangea Chat e ke ke ea sebelisa maekrofounu ea hau. Tlanya ho e bulela ho Litlhophiso.",
-    "mapCreditsLabel": "Liteboho tsa 'mapa: Limmapa tsa Stadia, OpenMapTiles le OpenStreetMap"
+    "mapCreditsLabel": "Liteboho tsa 'mapa: Limmapa tsa Stadia, OpenMapTiles le OpenStreetMap",
+    "activityLaunchFindingCourses": "Ke batla dithuto tsa hao…",
+    "activityLaunchCreatingRoom": "Ke theha mosebetsi wa hao…",
+    "activityLaunchOpeningRoom": "Ke bula mosebetsi wa hao…"
 }

@@ -10597,5 +10597,8 @@
     "callMicrophoneMessage": "Pangea Chat-এর কলের জন্য আপনার মাইক্রোফোন প্রয়োজন, যার মধ্যে লক স্ক্রিন থেকে উত্তর দেওয়া কলও রয়েছে।",
     "callMicrophoneOffTitle": "আপনার কল সংযুক্ত হয়নি",
     "callMicrophoneOffMessage": "Pangea Chat আপনার মাইক্রোফোন ব্যবহার করতে পারছে না। সেটিংসে এটি চালু করতে ট্যাপ করুন।",
-    "mapCreditsLabel": "মানচিত্র ক্রেডিট: Stadia Maps, OpenMapTiles এবং OpenStreetMap"
+    "mapCreditsLabel": "মানচিত্র ক্রেডিট: Stadia Maps, OpenMapTiles এবং OpenStreetMap",
+    "activityLaunchFindingCourses": "আপনার কোর্সগুলি খোঁজা হচ্ছে…",
+    "activityLaunchCreatingRoom": "আপনার কার্যকলাপ তৈরি করা হচ্ছে…",
+    "activityLaunchOpeningRoom": "আপনার কার্যকলাপ খোলা হচ্ছে…"
 }

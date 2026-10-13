@@ -10914,5 +10914,8 @@
     "callMicrophoneMessage": "Pangea Chat potrebuje váš mikrofón pre hovory, vrátane hovorov, ktoré prijmete z uzamknutej obrazovky.",
     "callMicrophoneOffTitle": "Váš hovor sa nepodarilo spojiť",
     "callMicrophoneOffMessage": "Pangea Chat nemôže používať váš mikrofón. Klepnutím ho zapnete v Nastaveniach.",
-    "mapCreditsLabel": "Autorské práva k mape: Stadia Maps, OpenMapTiles a OpenStreetMap"
+    "mapCreditsLabel": "Autorské práva k mape: Stadia Maps, OpenMapTiles a OpenStreetMap",
+    "activityLaunchFindingCourses": "Hľadáme vaše kurzy…",
+    "activityLaunchCreatingRoom": "Vytvárame vašu aktivitu…",
+    "activityLaunchOpeningRoom": "Otvárame vašu aktivitu…"
 }

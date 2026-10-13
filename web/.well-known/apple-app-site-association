@@ -1,0 +1,31 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [
+          "PJ8L5H7L7H.com.talktolearn.chat"
+        ],
+        "paths": [
+          "NOT /auth.html",
+          "*"
+        ],
+        "components": [
+          {
+            "/": "/auth.html",
+            "exclude": true,
+            "comment": "Web sign-in callback: a sign-in started in the browser finishes there (client#9441)"
+          },
+          {
+            "/": "/*"
+          }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "PJ8L5H7L7H.com.talktolearn.chat"
+    ]
+  }
+}

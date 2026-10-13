@@ -10914,5 +10914,8 @@
     "callMicrophoneMessage": "Pangea Chat bezonas vian mikrofonon por vokoj, inkluzive de vokoj, kiujn vi respondas de la ŝlosila ekrano.",
     "callMicrophoneOffTitle": "Via voko ne konektiĝis",
     "callMicrophoneOffMessage": "Pangea Chat ne povas uzi vian mikrofonon. Frapu por ŝalti ĝin en Agordoj.",
-    "mapCreditsLabel": "Mapaj atribuoj: Stadia Maps, OpenMapTiles kaj OpenStreetMap"
+    "mapCreditsLabel": "Mapaj atribuoj: Stadia Maps, OpenMapTiles kaj OpenStreetMap",
+    "activityLaunchFindingCourses": "Trovante viajn kursojn...",
+    "activityLaunchCreatingRoom": "Kreante vian agadon...",
+    "activityLaunchOpeningRoom": "Malfermante vian agadon..."
 }

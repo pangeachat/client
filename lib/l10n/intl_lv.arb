@@ -9969,5 +9969,8 @@
     "callMicrophoneMessage": "Pangea Chat ir nepieciešams jūsu mikrofons zvaniem, tostarp zvaniem, ko atbildat no bloķēšanas ekrāna.",
     "callMicrophoneOffTitle": "Jūsu zvans netika savienots",
     "callMicrophoneOffMessage": "Pangea Chat nevar izmantot jūsu mikrofonu. Pieskarieties, lai to ieslēgtu iestatījumos.",
-    "mapCreditsLabel": "Kartes atsauces: Stadia Maps, OpenMapTiles un OpenStreetMap"
+    "mapCreditsLabel": "Kartes atsauces: Stadia Maps, OpenMapTiles un OpenStreetMap",
+    "activityLaunchFindingCourses": "Meklējam jūsu kursus…",
+    "activityLaunchCreatingRoom": "Veidojam jūsu aktivitāti…",
+    "activityLaunchOpeningRoom": "Atveram jūsu aktivitāti…"
 }

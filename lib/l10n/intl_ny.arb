@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat ikufuna maikolofoni yanu pama foni, kuphatikizapo ma foni omwe mumayankha kuchokera pa chophimba chotsekedwa.",
     "callMicrophoneOffTitle": "Foni yanu sinayankhe",
     "callMicrophoneOffMessage": "Pangea Chat singagwiritse ntchito maikolofoni yanu. Dinani kuti muyatse mu Zokonda.",
-    "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles ndi OpenStreetMap"
+    "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles ndi OpenStreetMap",
+    "activityLaunchFindingCourses": "Kupeza maphunziro anu…",
+    "activityLaunchCreatingRoom": "Kupanga ntchito yanu…",
+    "activityLaunchOpeningRoom": "Kutsegula ntchito yanu…"
 }

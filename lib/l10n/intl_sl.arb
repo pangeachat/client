@@ -10914,5 +10914,8 @@
     "callMicrophoneMessage": "Pangea Chat potrebuje vaš mikrofon za klice, vključno s klici, na katere odgovorite z zaklenjenega zaslona.",
     "callMicrophoneOffTitle": "Vaš klic se ni povezal",
     "callMicrophoneOffMessage": "Pangea Chat ne more uporabljati vašega mikrofona. Tapnite, da ga vklopite v nastavitvah.",
-    "mapCreditsLabel": "Zasluge za zemljevid: Stadia Maps, OpenMapTiles in OpenStreetMap"
+    "mapCreditsLabel": "Zasluge za zemljevid: Stadia Maps, OpenMapTiles in OpenStreetMap",
+    "activityLaunchFindingCourses": "Iščem vaše tečaje …",
+    "activityLaunchCreatingRoom": "Ustvarjam vašo dejavnost …",
+    "activityLaunchOpeningRoom": "Odpiram vašo dejavnost …"
 }

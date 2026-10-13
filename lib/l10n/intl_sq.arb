@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat ka nevojë për mikrofonin tuaj për thirrje, duke përfshirë thirrjet që u përgjigjeni nga ekrani i kyçur.",
     "callMicrophoneOffTitle": "Thirrja juaj nuk u lidh",
     "callMicrophoneOffMessage": "Pangea Chat nuk mund të përdorë mikrofonin tuaj. Prekni për ta ndezur te Cilësimet.",
-    "mapCreditsLabel": "Kreditet e hartës: Stadia Maps, OpenMapTiles dhe OpenStreetMap"
+    "mapCreditsLabel": "Kreditet e hartës: Stadia Maps, OpenMapTiles dhe OpenStreetMap",
+    "activityLaunchFindingCourses": "Po gjejmë kurset tuaja…",
+    "activityLaunchCreatingRoom": "Po krijojmë aktivitetin tuaj…",
+    "activityLaunchOpeningRoom": "Po hapim aktivitetin tuaj…"
 }

@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat chọrọ igwe okwu gị maka oku, gụnyere oku ị zara site na ihuenyo mkpọchi.",
     "callMicrophoneOffTitle": "Oku gị ejikọtaghị",
     "callMicrophoneOffMessage": "Pangea Chat enweghị ike iji igwe okwu gị. Pịa ka ịgbanwuo ya na Ntọala.",
-    "mapCreditsLabel": "Ebe e si nweta maapụ: Stadia Maps, OpenMapTiles na OpenStreetMap"
+    "mapCreditsLabel": "Ebe e si nweta maapụ: Stadia Maps, OpenMapTiles na OpenStreetMap",
+    "activityLaunchFindingCourses": "Na-achọ nkuzi gị…",
+    "activityLaunchCreatingRoom": "Na-emepụta ọrụ gị…",
+    "activityLaunchOpeningRoom": "Na-emepe ọrụ gị…"
 }

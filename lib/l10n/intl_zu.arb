@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "I-Pangea Chat idinga imakrofoni yakho ukuze ushaye izingcingo, okuhlanganisa nezingcingo oziphendulayo esikrinini esikhiyiwe.",
     "callMicrophoneOffTitle": "Ucingo lwakho aluxhumekanga",
     "callMicrophoneOffMessage": "I-Pangea Chat ayikwazi ukusebenzisa imakrofoni yakho. Thepha ukuze uyivule kokuthi Izilungiselelo.",
-    "mapCreditsLabel": "Amakhredithi emephu: Stadia Maps, OpenMapTiles kanye ne-OpenStreetMap"
+    "mapCreditsLabel": "Amakhredithi emephu: Stadia Maps, OpenMapTiles kanye ne-OpenStreetMap",
+    "activityLaunchFindingCourses": "Sithola izifundo zakho…",
+    "activityLaunchCreatingRoom": "Sakha umsebenzi wakho…",
+    "activityLaunchOpeningRoom": "Sivula umsebenzi wakho…"
 }

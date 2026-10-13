@@ -10162,5 +10162,8 @@
     "callMicrophoneMessage": "Pangea Chat은 잠금 화면에서 응답하는 통화를 포함하여 통화에 마이크가 필요합니다.",
     "callMicrophoneOffTitle": "통화가 연결되지 않았습니다",
     "callMicrophoneOffMessage": "Pangea Chat이 마이크를 사용할 수 없습니다. 설정을 탭하여 켜세요.",
-    "mapCreditsLabel": "지도 출처: Stadia Maps, OpenMapTiles 및 OpenStreetMap"
+    "mapCreditsLabel": "지도 출처: Stadia Maps, OpenMapTiles 및 OpenStreetMap",
+    "activityLaunchFindingCourses": "코스 찾는 중…",
+    "activityLaunchCreatingRoom": "활동 만드는 중…",
+    "activityLaunchOpeningRoom": "활동 여는 중…"
 }

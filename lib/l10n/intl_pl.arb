@@ -10054,5 +10054,8 @@
     "callMicrophoneMessage": "Pangea Chat potrzebuje Twojego mikrofonu do połączeń, w tym połączeń odbieranych z ekranu blokady.",
     "callMicrophoneOffTitle": "Twoje połączenie nie zostało nawiązane",
     "callMicrophoneOffMessage": "Pangea Chat nie może używać Twojego mikrofonu. Stuknij, aby włączyć go w Ustawieniach.",
-    "mapCreditsLabel": "Źródło map: Stadia Maps, OpenMapTiles i OpenStreetMap"
+    "mapCreditsLabel": "Źródło map: Stadia Maps, OpenMapTiles i OpenStreetMap",
+    "activityLaunchFindingCourses": "Wyszukiwanie kursów…",
+    "activityLaunchCreatingRoom": "Tworzenie aktywności…",
+    "activityLaunchOpeningRoom": "Otwieranie aktywności…"
 }

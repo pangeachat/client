@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat پێویستی بە مایکرۆفۆنەکەت هەیە بۆ پەیوەندییەکان، لەوانەش ئەو پەیوەندییانەی کە لە شاشەی قفڵەوە وەڵامیان دەدەیتەوە.",
     "callMicrophoneOffTitle": "پەیوەندییەکەت نەبەسترا",
     "callMicrophoneOffMessage": "Pangea Chat ناتوانێت مایکرۆفۆنەکەت بەکاربهێنێت. دەست لێبدە بۆ چالاککردنی لە ڕێکخستنەکان.",
-    "mapCreditsLabel": "مافی نەخشەکان: نەخشەکانی ستادیا، OpenMapTiles و OpenStreetMap"
+    "mapCreditsLabel": "مافی نەخشەکان: نەخشەکانی ستادیا، OpenMapTiles و OpenStreetMap",
+    "activityLaunchFindingCourses": "دەستنیشانکردنی خولەکانت…",
+    "activityLaunchCreatingRoom": "دروستکردنی چالاکییەکەت…",
+    "activityLaunchOpeningRoom": "کردنەوەی چالاکییەکەت…"
 }

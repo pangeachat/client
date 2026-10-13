@@ -202,12 +202,14 @@ class SelectRoleSessionController extends State<SelectRoleSession>
       await showFutureLoadingDialog(context: context, future: _joinActivity);
     } else {
       final client = Matrix.of(context).client;
+      final l10n = L10n.of(context);
       final resp = await showFutureLoadingDialog(
         context: context,
-        future: () => client.launchActivitySession(
+        futureWithStatus: (setStatus) => client.launchActivitySession(
           activity,
           activity.roles[selectedRoleId],
           primarySpace: widget.course,
+          onStage: (stage) => setStatus(stage.label(l10n)),
         ),
       );
       if (resp.isError || resp.result == null) {

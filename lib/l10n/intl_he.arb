@@ -10883,5 +10883,8 @@
     "callMicrophoneMessage": "Pangea Chat זקוק למיקרופון שלך לשיחות, כולל שיחות שאת/ה עונה להן ממסך הנעילה.",
     "callMicrophoneOffTitle": "השיחה שלך לא התחברה",
     "callMicrophoneOffMessage": "Pangea Chat לא יכול להשתמש במיקרופון שלך. הקש/י כדי להפעיל אותו בהגדרות.",
-    "mapCreditsLabel": "קרדיטים למפה: Stadia Maps, OpenMapTiles ו-OpenStreetMap"
+    "mapCreditsLabel": "קרדיטים למפה: Stadia Maps, OpenMapTiles ו-OpenStreetMap",
+    "activityLaunchFindingCourses": "מוצאים את הקורסים שלך…",
+    "activityLaunchCreatingRoom": "יוצרים את הפעילות שלך…",
+    "activityLaunchOpeningRoom": "פותחים את הפעילות שלך…"
 }

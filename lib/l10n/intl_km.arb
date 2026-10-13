@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat ត្រូវការមីក្រូហ្វូនរបស់អ្នកសម្រាប់ការហៅទូរសព្ទ រួមទាំងការហៅទូរសព្ទដែលអ្នកទទួលពីអេក្រង់ចាក់សោ។",
     "callMicrophoneOffTitle": "ការហៅទូរសព្ទរបស់អ្នកមិនបានភ្ជាប់ទេ។",
     "callMicrophoneOffMessage": "Pangea Chat មិនអាចប្រើមីក្រូហ្វូនរបស់អ្នកបានទេ។ ចុចដើម្បីបើកវានៅក្នុងការកំណត់។",
-    "mapCreditsLabel": "ការផ្ដល់កិត្តិយសផែនទី៖ Stadia Maps, OpenMapTiles និង OpenStreetMap"
+    "mapCreditsLabel": "ការផ្ដល់កិត្តិយសផែនទី៖ Stadia Maps, OpenMapTiles និង OpenStreetMap",
+    "activityLaunchFindingCourses": "កំពុងស្វែងរកវគ្គសិក្សារបស់អ្នក…",
+    "activityLaunchCreatingRoom": "កំពុងបង្កើតសកម្មភាពរបស់អ្នក…",
+    "activityLaunchOpeningRoom": "កំពុងបើកសកម្មភាពរបស់អ្នក…"
 }
