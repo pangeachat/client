@@ -2421,5 +2421,6 @@
     "mapCreditsLabel": "Газрын зургийн эрх: Stadia Maps, OpenMapTiles болон OpenStreetMap",
     "activityLaunchFindingCourses": "Таны хичээлүүдийг хайж байна…",
     "activityLaunchCreatingRoom": "Таны үйлдлийг үүсгэж байна…",
-    "activityLaunchOpeningRoom": "Таны үйлдлийг нээж байна…"
+    "activityLaunchOpeningRoom": "Таны үйлдлийг нээж байна…",
+    "newCourseChat": "Шинэ хичээлийн чат"
 }

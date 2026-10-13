@@ -2421,5 +2421,6 @@
     "mapCreditsLabel": "Карта: Stadia Maps, OpenMapTiles и OpenStreetMap",
     "activityLaunchFindingCourses": "Търсене на курсове…",
     "activityLaunchCreatingRoom": "Създаване на дейност…",
-    "activityLaunchOpeningRoom": "Отваряне на дейност…"
+    "activityLaunchOpeningRoom": "Отваряне на дейност…",
+    "newCourseChat": "Нов чат за курса"
 }

@@ -10604,5 +10604,6 @@
     "mapCreditsLabel": "เครดิตแผนที่: Stadia Maps, OpenMapTiles และ OpenStreetMap",
     "activityLaunchFindingCourses": "กำลังค้นหาคอร์สของคุณ…",
     "activityLaunchCreatingRoom": "กำลังสร้างกิจกรรมของคุณ…",
-    "activityLaunchOpeningRoom": "กำลังเปิดกิจกรรมของคุณ…"
+    "activityLaunchOpeningRoom": "กำลังเปิดกิจกรรมของคุณ…",
+    "newCourseChat": "แชทคอร์สใหม่"
 }

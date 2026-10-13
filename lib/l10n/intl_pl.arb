@@ -10057,5 +10057,6 @@
     "mapCreditsLabel": "Źródło map: Stadia Maps, OpenMapTiles i OpenStreetMap",
     "activityLaunchFindingCourses": "Wyszukiwanie kursów…",
     "activityLaunchCreatingRoom": "Tworzenie aktywności…",
-    "activityLaunchOpeningRoom": "Otwieranie aktywności…"
+    "activityLaunchOpeningRoom": "Otwieranie aktywności…",
+    "newCourseChat": "Nowy czat kursu"
 }

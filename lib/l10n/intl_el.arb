@@ -10847,5 +10847,6 @@
     "mapCreditsLabel": "Συντελεστές χάρτη: Stadia Maps, OpenMapTiles και OpenStreetMap",
     "activityLaunchFindingCourses": "Εύρεση των μαθημάτων σας…",
     "activityLaunchCreatingRoom": "Δημιουργία της δραστηριότητάς σας…",
-    "activityLaunchOpeningRoom": "Άνοιγμα της δραστηριότητάς σας…"
+    "activityLaunchOpeningRoom": "Άνοιγμα της δραστηριότητάς σας…",
+    "newCourseChat": "Νέα συνομιλία μαθήματος"
 }

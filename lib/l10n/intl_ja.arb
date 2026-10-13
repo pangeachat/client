@@ -10741,5 +10741,6 @@
     "mapCreditsLabel": "マップクレジット: Stadia Maps, OpenMapTiles, OpenStreetMap",
     "activityLaunchFindingCourses": "コースを検索中…",
     "activityLaunchCreatingRoom": "アクティビティを作成中…",
-    "activityLaunchOpeningRoom": "アクティビティを開いています…"
+    "activityLaunchOpeningRoom": "アクティビティを開いています…",
+    "newCourseChat": "新しいコースチャット"
 }

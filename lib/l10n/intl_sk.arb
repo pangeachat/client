@@ -10917,5 +10917,6 @@
     "mapCreditsLabel": "Autorské práva k mape: Stadia Maps, OpenMapTiles a OpenStreetMap",
     "activityLaunchFindingCourses": "Hľadáme vaše kurzy…",
     "activityLaunchCreatingRoom": "Vytvárame vašu aktivitu…",
-    "activityLaunchOpeningRoom": "Otvárame vašu aktivitu…"
+    "activityLaunchOpeningRoom": "Otvárame vašu aktivitu…",
+    "newCourseChat": "Nový chat kurzu"
 }

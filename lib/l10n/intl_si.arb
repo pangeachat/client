@@ -2421,5 +2421,6 @@
     "mapCreditsLabel": "සිතියම් ණය: Stadia Maps, OpenMapTiles සහ OpenStreetMap",
     "activityLaunchFindingCourses": "ඔබේ පාඨමාලා සොයමින්...",
     "activityLaunchCreatingRoom": "ඔබේ ක්‍රියාකාරකම සාදමින්...",
-    "activityLaunchOpeningRoom": "ඔබේ ක්‍රියාකාරකම විවෘත කරමින්..."
+    "activityLaunchOpeningRoom": "ඔබේ ක්‍රියාකාරකම විවෘත කරමින්...",
+    "newCourseChat": "නව පාඨමාලා කතාබස්"
 }

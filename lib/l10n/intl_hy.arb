@@ -2421,5 +2421,6 @@
     "mapCreditsLabel": "Քարտեզի հեղինակներ՝ Stadia Maps, OpenMapTiles և OpenStreetMap",
     "activityLaunchFindingCourses": "Ձեր դասընթացները գտնվում են…",
     "activityLaunchCreatingRoom": "Ձեր ակտիվությունը ստեղծվում է…",
-    "activityLaunchOpeningRoom": "Ձեր ակտիվությունը բացվում է…"
+    "activityLaunchOpeningRoom": "Ձեր ակտիվությունը բացվում է…",
+    "newCourseChat": "Նոր դասընթացի զրույց"
 }

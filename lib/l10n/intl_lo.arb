@@ -2421,5 +2421,6 @@
     "mapCreditsLabel": "ຂໍ້ມູນແຜນທີ່: Stadia Maps, OpenMapTiles ແລະ OpenStreetMap",
     "activityLaunchFindingCourses": "ກຳລັງຊອກຫາຫຼັກສູດຂອງທ່ານ…",
     "activityLaunchCreatingRoom": "ກຳລັງສ້າງກິດຈະກຳຂອງທ່ານ…",
-    "activityLaunchOpeningRoom": "ກຳລັງເປີດກິດຈະກຳຂອງທ່ານ…"
+    "activityLaunchOpeningRoom": "ກຳລັງເປີດກິດຈະກຳຂອງທ່ານ…",
+    "newCourseChat": "ສົນທະນາຫຼັກສູດໃໝ່"
 }

@@ -10075,5 +10075,6 @@
     "mapCreditsLabel": "Térkép forrása: Stadia Maps, OpenMapTiles és OpenStreetMap",
     "activityLaunchFindingCourses": "Keresem a kurzusaidat…",
     "activityLaunchCreatingRoom": "Létrehozom a tevékenységedet…",
-    "activityLaunchOpeningRoom": "Megnyitom a tevékenységedet…"
+    "activityLaunchOpeningRoom": "Megnyitom a tevékenységedet…",
+    "newCourseChat": "Új tanfolyami csevegés"
 }

@@ -10273,5 +10273,6 @@
     "mapCreditsLabel": "Harita bilgileri: Stadia Maps, OpenMapTiles ve OpenStreetMap",
     "activityLaunchFindingCourses": "Kurslarınız bulunuyor…",
     "activityLaunchCreatingRoom": "Etkinliğiniz oluşturuluyor…",
-    "activityLaunchOpeningRoom": "Etkinliğiniz açılıyor…"
+    "activityLaunchOpeningRoom": "Etkinliğiniz açılıyor…",
+    "newCourseChat": "Yeni kurs sohbeti"
 }

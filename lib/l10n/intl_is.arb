@@ -2421,5 +2421,6 @@
     "mapCreditsLabel": "Kortaupplýsingar: Stadia Maps, OpenMapTiles og OpenStreetMap",
     "activityLaunchFindingCourses": "Finn námskeiðin þín…",
     "activityLaunchCreatingRoom": "Bý til virknina þína…",
-    "activityLaunchOpeningRoom": "Opna virknina þína…"
+    "activityLaunchOpeningRoom": "Opna virknina þína…",
+    "newCourseChat": "Nýtt námskeiðsspjall"
 }

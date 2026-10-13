@@ -9959,5 +9959,6 @@
     "mapCreditsLabel": "Karten-Credits: Stadia Maps, OpenMapTiles und OpenStreetMap",
     "activityLaunchFindingCourses": "Kurse werden gesucht…",
     "activityLaunchCreatingRoom": "Aktivität wird erstellt…",
-    "activityLaunchOpeningRoom": "Aktivität wird geöffnet…"
+    "activityLaunchOpeningRoom": "Aktivität wird geöffnet…",
+    "newCourseChat": "Neuer Kurs-Chat"
 }

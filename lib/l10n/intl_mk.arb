@@ -2421,5 +2421,6 @@
     "mapCreditsLabel": "Кредити за мапа: Stadia Maps, OpenMapTiles и OpenStreetMap",
     "activityLaunchFindingCourses": "Пронаоѓање на вашите курсеви…",
     "activityLaunchCreatingRoom": "Креирање на вашата активност…",
-    "activityLaunchOpeningRoom": "Отворање на вашата активност…"
+    "activityLaunchOpeningRoom": "Отворање на вашата активност…",
+    "newCourseChat": "Нов разговор за курс"
 }

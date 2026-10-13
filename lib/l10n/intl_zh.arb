@@ -9972,5 +9972,6 @@
     "mapCreditsLabel": "地图来源：Stadia Maps、OpenMapTiles 和 OpenStreetMap",
     "activityLaunchFindingCourses": "正在查找您的课程…",
     "activityLaunchCreatingRoom": "正在创建您的活动…",
-    "activityLaunchOpeningRoom": "正在打开您的活动…"
+    "activityLaunchOpeningRoom": "正在打开您的活动…",
+    "newCourseChat": "新课程聊天"
 }

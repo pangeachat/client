@@ -10278,5 +10278,6 @@
     "mapCreditsLabel": "اعتمادات الخريطة: Stadia Maps، OpenMapTiles وOpenStreetMap",
     "activityLaunchFindingCourses": "جارٍ العثور على دوراتك التدريبية…",
     "activityLaunchCreatingRoom": "جارٍ إنشاء نشاطك…",
-    "activityLaunchOpeningRoom": "جارٍ فتح نشاطك…"
+    "activityLaunchOpeningRoom": "جارٍ فتح نشاطك…",
+    "newCourseChat": "محادثة دورة جديدة"
 }

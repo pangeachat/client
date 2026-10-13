@@ -2421,5 +2421,6 @@
     "mapCreditsLabel": "Kartkreditering: Stadia Maps, OpenMapTiles og OpenStreetMap",
     "activityLaunchFindingCourses": "Finner kursene dine …",
     "activityLaunchCreatingRoom": "Oppretter aktiviteten din …",
-    "activityLaunchOpeningRoom": "Åpner aktiviteten din …"
+    "activityLaunchOpeningRoom": "Åpner aktiviteten din …",
+    "newCourseChat": "Ny kursprat"
 }

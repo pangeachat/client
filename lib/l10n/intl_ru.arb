@@ -10944,5 +10944,6 @@
     "mapCreditsLabel": "Авторы карты: Stadia Maps, OpenMapTiles и OpenStreetMap",
     "activityLaunchFindingCourses": "Поиск ваших курсов…",
     "activityLaunchCreatingRoom": "Создание вашей активности…",
-    "activityLaunchOpeningRoom": "Открытие вашей активности…"
+    "activityLaunchOpeningRoom": "Открытие вашей активности…",
+    "newCourseChat": "Новый чат курса"
 }

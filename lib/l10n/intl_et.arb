@@ -9969,5 +9969,6 @@
     "mapCreditsLabel": "Kaardi autorid: Stadia Maps, OpenMapTiles ja OpenStreetMap",
     "activityLaunchFindingCourses": "Kursuste otsimine…",
     "activityLaunchCreatingRoom": "Tegevuse loomine…",
-    "activityLaunchOpeningRoom": "Tegevuse avamine…"
+    "activityLaunchOpeningRoom": "Tegevuse avamine…",
+    "newCourseChat": "Uus kursusevestlus"
 }

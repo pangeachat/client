@@ -2421,5 +2421,6 @@
     "mapCreditsLabel": "नक्सा क्रेडिट: Stadia Maps, OpenMapTiles र OpenStreetMap",
     "activityLaunchFindingCourses": "तपाईंका पाठ्यक्रमहरू खोज्दैछ…",
     "activityLaunchCreatingRoom": "तपाईंको गतिविधि सिर्जना गर्दैछ…",
-    "activityLaunchOpeningRoom": "तपाईंको गतिविधि खोल्दैछ…"
+    "activityLaunchOpeningRoom": "तपाईंको गतिविधि खोल्दैछ…",
+    "newCourseChat": "नयाँ कोर्स च्याट"
 }

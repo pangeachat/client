@@ -9583,5 +9583,6 @@
     "mapCreditsLabel": "ផែនទីཡི་ཡོན་ཏན་: Stadia Maps, OpenMapTiles དང་ OpenStreetMap",
     "activityLaunchFindingCourses": "ཁྱེད་ཀྱི་སློབ་ཚན་འཚོལ་བཞིན་པ།",
     "activityLaunchCreatingRoom": "ཁྱེད་ཀྱི་བྱེད་སྒོ་བཟོ་བཞིན་པ།",
-    "activityLaunchOpeningRoom": "ཁྱེད་ཀྱི་བྱེད་སྒོ་འབྱེད་བཞིན་པ།"
+    "activityLaunchOpeningRoom": "ཁྱེད་ཀྱི་བྱེད་སྒོ་འབྱེད་བཞིན་པ།",
+    "newCourseChat": "སློབ་ཚན་གསར་པའི་ཁ་བརྡ།"
 }

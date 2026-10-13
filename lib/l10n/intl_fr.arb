@@ -10327,5 +10327,6 @@
     "mapCreditsLabel": "Crédits cartographiques : Stadia Maps, OpenMapTiles et OpenStreetMap",
     "activityLaunchFindingCourses": "Recherche de vos cours…",
     "activityLaunchCreatingRoom": "Création de votre activité…",
-    "activityLaunchOpeningRoom": "Ouverture de votre activité…"
+    "activityLaunchOpeningRoom": "Ouverture de votre activité…",
+    "newCourseChat": "Nouveau chat de cours"
 }

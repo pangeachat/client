@@ -10078,5 +10078,6 @@
     "mapCreditsLabel": "地圖來源：Stadia Maps、OpenMapTiles 和 OpenStreetMap",
     "activityLaunchFindingCourses": "正在尋找您的課程…",
     "activityLaunchCreatingRoom": "正在建立您的活動…",
-    "activityLaunchOpeningRoom": "正在開啟您的活動…"
+    "activityLaunchOpeningRoom": "正在開啟您的活動…",
+    "newCourseChat": "新課程聊天"
 }

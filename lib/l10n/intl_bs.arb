@@ -2421,5 +2421,6 @@
     "mapCreditsLabel": "Zasluge za mapu: Stadia Maps, OpenMapTiles i OpenStreetMap",
     "activityLaunchFindingCourses": "Pronalaženje vaših kurseva…",
     "activityLaunchCreatingRoom": "Kreiranje vaše aktivnosti…",
-    "activityLaunchOpeningRoom": "Otvaranje vaše aktivnosti…"
+    "activityLaunchOpeningRoom": "Otvaranje vaše aktivnosti…",
+    "newCourseChat": "Novi chat kursa"
 }
