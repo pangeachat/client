@@ -72,9 +72,29 @@ The root `.env` is the **single config source** on every platform. There is no t
 
 - **Web**: `.env` is not a bundled asset. [`EnvLoader`](../../lib/pangea/common/config/env_loader.dart) fetches `/.env` from the web root at startup, so deploy jobs must place the env file at the web root (`build/web/.env`). This is what lets one web artifact be stamped with the target env at deploy time without a rebuild. There is no fallback: if `/.env` can't be fetched, the load fails.
 - **Native**: `.env` is a bundled asset, but the pubspec declaration stays commented on `main` because a declared-but-missing asset fails the build and `.env` is gitignored. CI writes the file and applies [`enable_mobile_env.patch`](../../scripts/enable_mobile_env.patch) to uncomment it. If the pubspec asset block changes, regenerate the patch or mobile builds break at `git apply`.
-- **Env switcher** (staging builds): `envs.json` / `appConfigOverride` overlays whatever dotenv loaded; it is independent of where the file came from.
+- **Environment switcher**: `envs.json` / `appConfigOverride` overlays whatever dotenv loaded, independent of where the file came from. See [Environment switcher](#environment-switcher).
 
 The GitHub Actions environment variable `WEB_APP_ENV` is the source for generated `.env` files in deploy workflows. It should include the runtime web Firebase analytics config as `GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64`, with a base64-encoded Firebase options JSON value for the target environment.
+
+## Environment switcher
+
+The team tests staging on the phone they already use. Staging and production builds share one app ID, so installing a staging build replaces the production app. The switcher points the installed build at the other environment instead.
+
+- **Where it is.** iOS and Android builds, production and staging alike. Web builds don't offer it, because the staging web app has its own address.
+- **Opening it.** On the login page, tap the "Log in to your account" heading 7 times in quick succession, then enter the team code `pangeaqa`. Nothing on screen hints at it. A wrong code closes the prompt without saying why. The code ships inside the app, so it stops accidental switching, not a determined person. Staging is public anyway.
+- **Choosing.** The picker lists the environments in `envs.json`. Choosing the build's own environment removes the switch.
+- **Applying it.** The person is already signed out on the login page. Switching saves the choice, erases what the app cached from the old environment, and asks the person to close and reopen the app. Sentry, Google Analytics and several caches are set up once at launch, so only a fresh launch sets up all of them from the new environment.
+- **Badge.** While a build runs against an environment other than its own, a banner with that environment's name shows on every screen. It doesn't block taps. It tells a teammate where they are, and it tells anyone else who finds the switch that they have left the real app.
+
+What follows the switch:
+
+| Part | Follows | Why |
+|---|---|---|
+| Synapse, choreographer, CMS, teacher dashboard API, Stripe, bot | The switch | `envs.json` names each one. A unit test fails if an entry leaves one out, because a missing value falls back to the build's own environment and mixes the two. |
+| Push | The build | The phone's push token belongs to the Firebase project built into the app, so the app always registers its own build's Sygnal. Staging reaches a switched production build through production Sygnal, notices included ([notice delivery](../../../synapse-pangea-chat/.github/instructions/notice-delivery.instructions.md#direct-push-send_push)). |
+| Sentry | The switch | `sentryEnvironment` follows the Synapse address, and the `config_override` tag marks a switched build. |
+| Google Analytics | Off | A mobile build can only report into its own build's Firebase project, so a switched build stops collecting. This keeps staging use out of production reports. |
+| Staging-only team tools | The build | The orchestrator feedback flag, goal reports and the developer settings tile stay hidden on a switched production build. |
 
 ## CI Secrets
 
