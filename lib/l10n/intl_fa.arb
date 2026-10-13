@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:11:51.748743",
+    "@@last_modified": "2026-10-13 13:02:15.152114",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -7833,8 +7833,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "فعال‌سازی کمک‌نویس",
-    "autoIGCToolDescription": "به‌طور خودکار ابزارهای چت پانژیا را برای اصلاح پیام‌های ارسال‌شده به زبان هدف اجرا کنید.",
+    "autoIGCToolName": "بررسی خودکار هنگام ارسال",
+    "autoIGCToolDescription": "هنگام ارسال، پیام شما را از نظر اشتباهات بررسی می‌کند. وقتی این گزینه خاموش است، برای بررسی پیام خود روی دکمه کمک نوشتاری ضربه بزنید.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

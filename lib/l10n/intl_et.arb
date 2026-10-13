@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-12 13:11:51.192169",
+    "@@last_modified": "2026-10-13 13:02:12.520452",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -7931,8 +7931,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Luba kirjutamise abi",
-    "autoIGCToolDescription": "Käivita automaatselt Pangea Chat tööriistad, et parandada saadetud sõnumid sihtkeelde.",
+    "autoIGCToolName": "Automaatne kontroll saatmisel",
+    "autoIGCToolDescription": "Kontrolli oma sõnumit vigade suhtes, kui vajutad saatmisnuppu. Kui see on välja lülitatud, puuduta kirjutamisabi nuppu, et sõnumit ise kontrollida.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

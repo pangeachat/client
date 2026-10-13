@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-12 13:12:07.727354",
+    "@@last_modified": "2026-10-13 13:02:31.041706",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Nipa aiyipada, awọn ẹkọ jẹ wiwa ni gbangba ati nilo ifọwọsi alakoso lati darapọ mọ. O le ṣatunkọ awọn eto wọnyi nigbakugba.",
     "onboardingLanguagesTitle": "Ede wo ni o n kọ?",
     "supportSubtitle": "Awọn ibeere? A wa nibi lati ṣe iranlọwọ!",
-    "autoIGCToolName": "Muu iranlọwọ kikọ ṣiṣẹ",
-    "autoIGCToolDescription": "Ṣiṣe awọn irinṣẹ Pangea Chat laifọwọyi lati ṣe atunṣe awọn ifiranṣẹ ti a firanṣẹ si ede ibi-afẹde.",
+    "autoIGCToolName": "Ṣàyẹ̀wò fúnra rẹ̀ nígbà tó bá fi ránṣẹ́",
+    "autoIGCToolDescription": "Ṣàyẹ̀wò àṣìṣe nínú ọ̀rọ̀ rẹ nígbà tó o bá tẹ fi ránṣẹ́. Nígbà tí èyí bá wà ní àìṣiṣẹ́, tẹ bọtini ìrànlọ́wọ́ ìkọ̀wé láti ṣàyẹ̀wò ọ̀rọ̀ fúnra rẹ.",
     "emptyAudioError": "Igbasilẹ kuna. Jọwọ ṣayẹwo awọn igbanilaaye ohun rẹ ki o tun gbiyanju.",
     "spanTypeSpelling": "Akọtọ",
     "spanTypePunctuation": "Ami ifamisi",

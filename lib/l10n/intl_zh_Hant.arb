@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:12:08.972425",
+    "@@last_modified": "2026-10-13 13:02:34.529080",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -7841,8 +7841,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "啟用寫作輔助",
-    "autoIGCToolDescription": "自動運行 Pangea Chat 工具以將發送的消息更正為目標語言。",
+    "autoIGCToolName": "傳送時自動檢查",
+    "autoIGCToolDescription": "傳送訊息時自動檢查錯誤。關閉此功能後，請點擊寫作輔助按鈕自行檢查訊息。",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

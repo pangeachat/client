@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-12 13:12:03.046260",
+    "@@last_modified": "2026-10-13 13:02:24.736294",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -8685,8 +8685,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Povoliť pomoc pri písaní",
-    "autoIGCToolDescription": "Automaticky spustiť nástroje Pangea Chat na opravu odoslaných správ do cieľového jazyka.",
+    "autoIGCToolName": "Automatická kontrola pri odoslaní",
+    "autoIGCToolDescription": "Skontrolujte svoju správu, či neobsahuje chyby, keď klepnete na odoslať. Keď je táto funkcia vypnutá, klepnite na tlačidlo asistenta písania, aby ste si správu skontrolovali sami.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

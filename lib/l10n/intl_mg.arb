@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-12 13:11:58.697938",
+    "@@last_modified": "2026-10-13 13:02:19.946983",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Amin'ny alàlan'ny default, ny taranja dia azo karohina ampahibemaso ary mitaky fankatoavan'ny mpitantana vao afaka miditra. Azonao atao ny manova ireo toe-javatra ireo amin'ny fotoana rehetra.",
     "onboardingLanguagesTitle": "Inona no fiteny ianaranao?",
     "supportSubtitle": "Fanontaniana? Eto izahay hanampy!",
-    "autoIGCToolName": "Alefaso ny fanampiana amin'ny fanoratana",
-    "autoIGCToolDescription": "Alefaso ho azy ny fitaovana Pangea Chat hanitsiana ny hafatra nalefa amin'ny fiteny kendrena.",
+    "autoIGCToolName": "Fanamarinana mandeha ho azy rehefa mandefa",
+    "autoIGCToolDescription": "Jereo ny hafatrao raha misy fahadisoana rehefa manindry ny hoe mandefa ianao. Rehefa maty ity, tsindrio ny bokotra fanampiana amin'ny fanoratana mba hijerena ny hafatrao manokana.",
     "emptyAudioError": "Tsy nahomby ny fandraisam-peo. Azafady jereo ny fahazoan-dàlana amin'ny feo ary andramo indray.",
     "spanTypeSpelling": "Tsipelina",
     "spanTypePunctuation": "Mari-piatoana",

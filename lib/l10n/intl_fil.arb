@@ -2076,7 +2076,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-12 13:11:53.641298",
+    "@@last_modified": "2026-10-13 13:02:13.523883",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -8595,8 +8595,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Paganahin ang tulong sa pagsusulat",
-    "autoIGCToolDescription": "Awtomatikong patakbuhin ang mga tool ng Pangea Chat upang ituwid ang mga ipinadalang mensahe sa target na wika.",
+    "autoIGCToolName": "Awtomatikong suriin sa pagpapadala",
+    "autoIGCToolDescription": "Suriin ang iyong mensahe para sa mga pagkakamali kapag nag-tap ka ng send. Kapag naka-off ito, i-tap ang button ng tulong sa pagsusulat upang suriin ang isang mensahe nang mag-isa.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-12 13:11:49.769989",
+    "@@last_modified": "2026-10-13 13:02:10.079218",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Po defaultu, kursevi su javno pretraživi i zahtijevaju odobrenje administratora za pridruživanje. Ove postavke možete urediti u bilo kojem trenutku.",
     "onboardingLanguagesTitle": "Koji jezik učite?",
     "supportSubtitle": "Pitanja? Tu smo da pomognemo!",
-    "autoIGCToolName": "Omogući pomoć pri pisanju",
-    "autoIGCToolDescription": "Automatski pokreni Pangea Chat alate za ispravljanje poslanih poruka na ciljni jezik.",
+    "autoIGCToolName": "Automatska provjera pri slanju",
+    "autoIGCToolDescription": "Provjerite poruku za greške kada pritisnete pošalji. Kada je ovo isključeno, dodirnite dugme za pomoć pri pisanju da sami provjerite poruku.",
     "emptyAudioError": "Snimanje nije uspjelo. Molimo provjerite svoje audio dozvole i pokušajte ponovo.",
     "spanTypeSpelling": "Pravopis",
     "spanTypePunctuation": "Interpunkcija",

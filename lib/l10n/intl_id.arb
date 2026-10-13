@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:11:55.350615",
+    "@@last_modified": "2026-10-13 13:02:16.034291",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -7843,8 +7843,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Aktifkan bantuan penulisan",
-    "autoIGCToolDescription": "Secara otomatis menjalankan alat Pangea Chat untuk memperbaiki pesan yang dikirim ke bahasa target.",
+    "autoIGCToolName": "Periksa otomatis saat kirim",
+    "autoIGCToolDescription": "Periksa pesan Anda dari kesalahan saat Anda mengetuk kirim. Jika ini mati, ketuk tombol bantuan menulis untuk memeriksa pesan sendiri.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

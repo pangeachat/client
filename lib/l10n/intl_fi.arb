@@ -3532,7 +3532,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-12 13:11:53.084417",
+    "@@last_modified": "2026-10-13 13:02:12.442296",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -7908,8 +7908,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Ota käyttöön kirjoitusapu",
-    "autoIGCToolDescription": "Suorita automaattisesti Pangea Chat -työkaluja korjataksesi lähetetyt viestit kohdekielelle.",
+    "autoIGCToolName": "Automaattinen tarkistus lähettäessä",
+    "autoIGCToolDescription": "Tarkista viestisi virheiden varalta, kun napautat lähetä. Kun tämä on pois päältä, napauta kirjoitusavustuspainiketta tarkistaaksesi viestin itse.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

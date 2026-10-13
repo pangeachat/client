@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:12:01.092756",
+    "@@last_modified": "2026-10-13 13:02:21.812519",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -7920,8 +7920,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Schrijfassistentie inschakelen",
-    "autoIGCToolDescription": "Voer automatisch Pangea Chat-tools uit om verzonden berichten naar de doeltaal te corrigeren.",
+    "autoIGCToolName": "Autocontrole bij verzenden",
+    "autoIGCToolDescription": "Controleer je bericht op fouten wanneer je op verzenden tikt. Als dit is uitgeschakeld, tik je op de knop voor schrijfhulp om zelf een bericht te controleren.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

@@ -1358,7 +1358,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-12 13:11:55.333344",
+    "@@last_modified": "2026-10-13 13:02:18.529802",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8676,8 +8676,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Abilita l'assistenza alla scrittura",
-    "autoIGCToolDescription": "Esegui automaticamente gli strumenti di Pangea Chat per correggere i messaggi inviati nella lingua target.",
+    "autoIGCToolName": "Autoverification al inviar",
+    "autoIGCToolDescription": "Verifica tu message pro errores quando tu pulsa inviar. Quando isto es disactivate, pulsa le button de assistentia de scriptura pro verificar un message tu mesme.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

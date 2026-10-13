@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-12 13:11:49.861688",
+    "@@last_modified": "2026-10-13 13:02:10.384920",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Standart olaraq, kurslar ictimai axtarışa açıqdır və qoşulmaq üçün administrator təsdiqi tələb edir. Bu ayarları istənilən vaxt redaktə edə bilərsiniz.",
     "onboardingLanguagesTitle": "Hansı dili öyrənirsiniz?",
     "supportSubtitle": "Suallarınız var? Kömək etmək üçün buradayıq!",
-    "autoIGCToolName": "Yazı yardımını aktivləşdir",
-    "autoIGCToolDescription": "Göndərilən mesajları hədəf dilə düzəltmək üçün Pangea Chat alətlərini avtomatik işə salın.",
+    "autoIGCToolName": "Göndərəndə avtomatik yoxla",
+    "autoIGCToolDescription": "Mesajı göndərərkən səhvlərini yoxla. Bu funksiya söndürüldükdə, mesajı özün yoxlamaq üçün yazı köməkçisi düyməsinə toxun.",
     "emptyAudioError": "Səsyazma uğursuz oldu. Lütfən, audio icazələrinizi yoxlayın və yenidən cəhd edin.",
     "spanTypeSpelling": "Orfoqrafiya",
     "spanTypePunctuation": "Punktuasiya",

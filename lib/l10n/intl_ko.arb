@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:11:57.079656",
+    "@@last_modified": "2026-10-13 13:02:18.172130",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -7933,8 +7933,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "쓰기 지원 활성화",
-    "autoIGCToolDescription": "전송된 메시지를 목표 언어로 수정하기 위해 Pangea Chat 도구를 자동으로 실행합니다.",
+    "autoIGCToolName": "전송 시 자동 확인",
+    "autoIGCToolDescription": "메시지를 보낼 때 오류를 확인합니다. 이 기능이 꺼져 있으면 쓰기 지원 버튼을 탭하여 직접 메시지를 확인하세요.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

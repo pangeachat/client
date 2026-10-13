@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-12 13:11:50.177615",
+    "@@last_modified": "2026-10-13 13:02:11.162058",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Sa kasagaran, ang mga kurso mahimong pangitaon sa publiko ug nagkinahanglan og pag-uyon sa admin aron makaapil. Mahimo nimong i-edit kini nga mga setting bisan unsang orasa.",
     "onboardingLanguagesTitle": "Unsang pinulongan ang imong gitun-an?",
     "supportSubtitle": "Mga pangutana? Ania kami aron motabang!",
-    "autoIGCToolName": "I-enable ang tabang sa pagsulat",
-    "autoIGCToolDescription": "Awtomatikong padagana ang mga gamit sa Pangea Chat aron itul-id ang mga gipadala nga mensahe ngadto sa target nga pinulongan.",
+    "autoIGCToolName": "Autocheck sa pagpadala",
+    "autoIGCToolDescription": "Susiha ang imong mensahe alang sa mga sayop kon imong i-tap ang send. Kon kini gipalong, i-tap ang writing assistance button aron masusi ang usa ka mensahe sa imong kaugalingon.",
     "emptyAudioError": "Napakyas ang pagrekord. Palihug susiha ang imong mga permiso sa audio ug sulayi pag-usab.",
     "spanTypeSpelling": "Pag-espeling",
     "spanTypePunctuation": "Punctuation",

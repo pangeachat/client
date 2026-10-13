@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-12 13:11:54.707291",
+    "@@last_modified": "2026-10-13 13:02:14.627930",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -8176,8 +8176,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Omogući pomoć pri pisanju",
-    "autoIGCToolDescription": "Automatski pokreni Pangea Chat alate za ispravljanje poslanih poruka na ciljni jezik.",
+    "autoIGCToolName": "Automatska provjera pri slanju",
+    "autoIGCToolDescription": "Provjerite poruku za pogreške kada dodirnete Pošalji. Kada je ovo isključeno, dodirnite gumb za pomoć pri pisanju kako biste sami provjerili poruku.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}

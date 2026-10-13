@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-12 13:12:04.479294",
+    "@@last_modified": "2026-10-13 13:02:27.035316",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1701,8 +1701,8 @@
     "newCourseAccess": "Sacara standar, kursus tiasa dipilarian sacara umum sareng peryogi persetujuan admin pikeun gabung. Anjeun tiasa ngédit setélan ieu iraha waé.",
     "onboardingLanguagesTitle": "Basa naon anu anjeun diajar?",
     "supportSubtitle": "Patarosan? Kami di dieu pikeun ngabantosan!",
-    "autoIGCToolName": "Aktipkeun bantosan nulis",
-    "autoIGCToolDescription": "Otomatis ngajalankeun alat Pangea Chat pikeun ngabenerkeun pesen anu dikirim ka basa target.",
+    "autoIGCToolName": "Pariksa otomatis nalika ngirim",
+    "autoIGCToolDescription": "Pariksa kasalahan dina pesen anjeun nalika anjeun ngirim. Upami ieu dipareuman, ketok tombol bantuan nulis pikeun mariksa pesen anjeun nyalira.",
     "emptyAudioError": "Rekaman gagal. Mangga parios idin audio anjeun sareng cobian deui.",
     "spanTypeSpelling": "Éjahan",
     "spanTypePunctuation": "Tanda baca",
