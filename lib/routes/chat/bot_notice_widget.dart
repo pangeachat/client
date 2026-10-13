@@ -20,6 +20,7 @@ class BotNoticeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final hasDestination = event.hasNoticeDestination;
     return Center(
       child: Container(
         constraints: const BoxConstraints(
@@ -39,9 +40,11 @@ class BotNoticeWidget extends StatelessWidget {
                 constraints: const BoxConstraints(
                   maxWidth: FluffyThemes.columnWidth * 1.5,
                 ),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16.0,
-                  vertical: 8.0,
+                padding: EdgeInsets.fromLTRB(
+                  16.0,
+                  8.0,
+                  16.0,
+                  hasDestination ? 12.0 : 8.0,
                 ),
                 decoration: BoxDecoration(
                   color: theme.colorScheme.surfaceContainerHigh,
@@ -50,6 +53,7 @@ class BotNoticeWidget extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 8.0,
                   children: [
                     Text(
                       event.noticeBody ?? '',
@@ -58,13 +62,15 @@ class BotNoticeWidget extends StatelessWidget {
                         fontSize: AppConfig.messageFontSize,
                       ),
                     ),
-                    if (event.hasNoticeDestination)
-                      TextButton(
+                    if (hasDestination)
+                      FilledButton.tonalIcon(
                         onPressed: () => NotificationTapUtil.openNotice(
                           event,
                           GoRouter.of(context),
                         ),
-                        child: Text(L10n.of(context).open),
+                        icon: const Icon(Icons.arrow_forward),
+                        iconAlignment: IconAlignment.end,
+                        label: Text(L10n.of(context).open),
                       ),
                   ],
                 ),
