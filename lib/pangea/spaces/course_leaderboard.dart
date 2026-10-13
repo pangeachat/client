@@ -44,7 +44,7 @@ class CourseLeaderboard {
   /// Joined admins, by name — the line above the ranking.
   final List<User> admins;
 
-  /// Every joined member but the bot, best first.
+  /// Every joined member but the admins and the bot, best first.
   final List<LeaderboardEntry> ranked;
 
   /// Invited and knocking members: shown, never ranked.
@@ -78,8 +78,11 @@ class CourseLeaderboard {
       if (user.id == BotName.byEnvironment) continue;
       switch (user.membership) {
         case Membership.join:
+          // Listed, never ranked: a teacher who plays the activities would
+          // otherwise rank the students against the teaching team (#9481).
           if (user.powerLevel >= SpaceConstants.powerLevelOfAdmin) {
             admins.add(user);
+            continue;
           }
           final profile = profileOf(user.id);
           final language = langCode ?? profile?.targetLanguage;
