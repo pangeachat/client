@@ -5,8 +5,8 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 
 /// The base tiles behind every map in the app — the world map and the chat
 /// location bubble. Phase 2 of world-map-tiles.instructions.md: Stadia Maps'
-/// Alidade Smooth raster styles, a light and a dark one, so dark theme needs
-/// no client-side filter.
+/// Alidade Bright in light theme and Alidade Smooth Dark in dark theme, so
+/// dark theme needs no client-side filter.
 class MapTiles {
   const MapTiles._();
 
@@ -16,7 +16,7 @@ class MapTiles {
 
   static String urlTemplate(Brightness brightness) =>
       'https://$host/tiles/'
-      '${brightness == Brightness.dark ? 'alidade_smooth_dark' : 'alidade_smooth'}'
+      '${brightness == Brightness.dark ? 'alidade_smooth_dark' : 'alidade_bright'}'
       '/{z}/{x}/{y}.png';
 
   /// The tiles' land colour, painted wherever a tile has not arrived (or
@@ -24,7 +24,7 @@ class MapTiles {
   static Color background(Brightness brightness) =>
       brightness == Brightness.dark
       ? const Color(0xFF333333)
-      : const Color(0xFFF2F3F0);
+      : const Color(0xFFF4ECE1);
 
   /// Request headers for the tile provider. Native builds authenticate with
   /// the API key; web sends none, because Stadia checks the page's domain and

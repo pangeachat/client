@@ -11,7 +11,7 @@ void main() {
   test('each theme gets its own Stadia style', () {
     expect(
       MapTiles.urlTemplate(Brightness.light),
-      contains('/alidade_smooth/'),
+      contains('/alidade_bright/'),
     );
     expect(
       MapTiles.urlTemplate(Brightness.dark),

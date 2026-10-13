@@ -15,7 +15,7 @@ Free raster tiles from **OpenStreetMap**'s standard layer, with dark theme drawn
 
 The same kind of raster tiles, from a provider licensed for commercial use: **Stadia Maps**, on a paid plan. Hosted providers' free tiers are non-commercial only, so there is no free step between Phase 1 and this one. Stadia because it bills per tile request, which suits how the map is used, and ships its own dark style, so dark theme needs no client-side filter.
 
-- **Styles.** Alidade Smooth in light theme, Alidade Smooth Dark in dark theme. The map background, which shows wherever a tile hasn't loaded, matches the tiles' land colour, so a gap reads as unfilled map rather than a flash.
+- **Styles.** Alidade Bright in light theme, Alidade Smooth Dark in dark theme. The map background, which shows wherever a tile hasn't loaded, matches the tiles' land colour, so a gap reads as unfilled map rather than a flash.
 - **Credits.** Stadia Maps, OpenMapTiles and OpenStreetMap, each linked to its attribution page.
 - **Web authenticates by domain.** Stadia checks the page's domain: `app.pangea.chat` for production, `*.staging.pangea.chat` for staging and PR previews, and localhost needs nothing. Web builds never carry the key, because the web `.env` is served publicly.
 - **Native builds carry an API key.** The Android and iOS builds get it from AWS Secrets Manager at build time, one key per environment. It is sent in a request header rather than the tile URL, so it never appears in error reports.
