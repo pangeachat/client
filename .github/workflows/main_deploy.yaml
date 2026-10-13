@@ -129,6 +129,9 @@ jobs:
       WEBAPP_S3_BUCKET: ${{ vars.WEBAPP_S3_BUCKET }}
       CF_DISTRIBUTION_ID: ${{ vars.CF_DISTRIBUTION_ID }}
     steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          sparse-checkout: web/.well-known
       - name: Download web
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
@@ -136,6 +139,9 @@ jobs:
           path: build/web
       - name: Update Website files
         run: |
+          # upload-artifact v4 leaves hidden files out of the artifact, so the
+          # link files come from this job's checkout instead.
+          cp -r web/.well-known build/web/
           touch build/web/.env
           echo "$WEB_APP_ENV" >> build/web/.env
           # Staging only: force the Flutter accessibility (semantics) tree on so
