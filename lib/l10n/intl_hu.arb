@@ -2817,7 +2817,6 @@
     "errorDisableIGCClassDesc": "A nyelvtani segítség kikapcsolva van az adott kurzushoz tartozó csevegésben.",
     "error405Desc": "Kérjük, állítsa be nyelveit a Főmenü > Tanulási Beállítások menüpontban.",
     "termsAndConditions": "Felhasználási feltételeket",
-    "andCertifyIAmAtLeast13YearsOfAge": " és igazolom, hogy legalább 16 éves vagyok.",
     "error502504Desc": "A fordítási és nyelvtani eszközök lehetnek lassúak vagy nem elérhetők, amíg a Pangea botok utolérik magukat.",
     "error404Desc": "A Pangea Bot nem biztos benne, hogyan fordítsa ezt...",
     "errorPleaseRefresh": "Ellenőrizzük a problémát! Kérjük, frissítse az oldalt és próbálja újra.",
@@ -3621,10 +3620,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10070,5 +10065,28 @@
     "xpToCompleteObjectiveDesc": "Állítsd be a küldetések teljesítéséhez szükséges XP-t",
     "objectiveCircleComplete": "Küldetés {index}: kész",
     "objectiveCircleUpNext": "Küldetés {index}: következik",
-    "useActivityImageAsChatBackground": "Tevékenység képének használata chat háttérként"
+    "useActivityImageAsChatBackground": "Tevékenység képének használata chat háttérként",
+    "useActivityImageAsChatBackground": "Tevékenység képének használata chat háttérként",
+    "andCertifyIMeetTheMinimumAge": " és igazolom, hogy betöltöttem a 13. életévemet, vagy az országomban előírt magasabb minimális életkort.",
+    "filteredNetworkBlockedTitle": "Ez a hálózat blokkolja a Pangea Chatet",
+    "filteredNetworkPartlyBlockedTitle": "Ez a hálózat részben blokkolja a Pangea Chatet",
+    "filteredNetworkWhatCanIDo": "Mit tehetek?",
+    "filteredNetworkPhoneAdvice": "Kapcsolja ki a Wi-Fi-t, és használjon mobiladatot helyette.",
+    "filteredNetworkComputerAdvice": "Csatlakozzon a telefonja hotspotjához a Wi-Fi helyett.",
+    "filteredNetworkItHeading": "Tanároknak és informatikai személyzetnek",
+    "filteredNetworkItBody": "Kérje meg az informatikai csapatot, hogy engedélyezze ezeket a domaineket:",
+    "filteredNetworkAskForHelp": "Kérjen segítséget a Pangeától",
+    "filteredNetworkHelpExplanation": "E-mailben felvesszük Önnel a kapcsolatot, hogy segítsünk a Pangea Chat működésében ezen a hálózaton.",
+    "filteredNetworkHelpWaiting": "Kérését elküldjük, amint csatlakozik.",
+    "filteredNetworkHelpSent": "Elküldve. E-mailben felvesszük Önnel a kapcsolatot.",
+    "filteredNetworkHelpRefused": "Nem tudtuk elküldeni kérését. Kérjük, írjon e-mailt a support@pangea.chat címre.",
+    "filteredNetworkVideoBlocked": "Ez a hálózat blokkolja a videókat.",
+    "filteredNetworkImagesBlocked": "Ez a hálózat blokkolja a képeket.",
+    "filteredNetworkMapBlocked": "Ez a hálózat blokkolja a térképet.",
+    "callFullScreenTitle": "Hívások teljes képernyőn",
+    "callFullScreenMessage": "Hívás érkezett, miközben a Pangea Chat zárva volt, de a telefon csak egy kis értesítést tudott megjeleníteni róla. Engedélyezze a teljes képernyős hívásokat, hogy a következő hívás a teljes képernyőn jelenjen meg, még akkor is, ha a telefon zárolva van.",
+    "callMicrophoneTitle": "Használja a mikrofonját hívásokhoz",
+    "callMicrophoneMessage": "A Pangea Chatnek szüksége van a mikrofonjára a hívásokhoz, beleértve a zárolási képernyőről fogadott hívásokat is.",
+    "callMicrophoneOffTitle": "A hívás nem jött létre",
+    "callMicrophoneOffMessage": "A Pangea Chat nem tudja használni a mikrofonját. Koppintson ide a beállításokban való bekapcsoláshoz."
 }

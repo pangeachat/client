@@ -2721,7 +2721,6 @@
     "errorDisableIGCClassDesc": "تم إيقاف مساعدة القواعد للفصل الذي يوجد فيه هذا الدردشة.",
     "error405Desc": "يرجى تعيين لغاتك في القائمة الرئيسية > إعدادات التعلم.",
     "termsAndConditions": "الشروط والأحكام",
-    "andCertifyIAmAtLeast13YearsOfAge": " وأشهد أن عمري لا يقل عن 16 عامًا.",
     "error502504Desc": "قد تكون أدوات الترجمة والقواعد بطيئة أو غير متاحة أثناء متابعة بوتات بانجيا.",
     "error404Desc": "بوت بانجيا غير متأكد من كيفية ترجمة ذلك...",
     "errorPleaseRefresh": "نحن نبحث في الأمر! يرجى إعادة التحميل والمحاولة مرة أخرى.",
@@ -3828,10 +3827,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10273,5 +10268,28 @@
     "xpToCompleteObjectiveDesc": "حدد نقاط الخبرة اللازمة لإكمال كل مهمة",
     "objectiveCircleComplete": "المهمة {index}: اكتملت",
     "objectiveCircleUpNext": "المهمة {index}: التالية",
-    "useActivityImageAsChatBackground": "استخدام صورة النشاط كخلفية للدردشة"
+    "useActivityImageAsChatBackground": "استخدام صورة النشاط كخلفية للدردشة",
+    "useActivityImageAsChatBackground": "استخدام صورة النشاط كخلفية للدردشة",
+    "andCertifyIMeetTheMinimumAge": " وأقر بأن عمري لا يقل عن 13 عامًا، أو عن الحد الأدنى للسن المطلوب في بلدي إذا كان أعلى من ذلك.",
+    "filteredNetworkBlockedTitle": "هذه الشبكة تحظر دردشة Pangea",
+    "filteredNetworkPartlyBlockedTitle": "هذه الشبكة تحظر جزءًا من دردشة Pangea",
+    "filteredNetworkWhatCanIDo": "ماذا يمكنني أن أفعل؟",
+    "filteredNetworkPhoneAdvice": "أوقف تشغيل Wi-Fi واستخدم بيانات الجوال بدلاً من ذلك.",
+    "filteredNetworkComputerAdvice": "اتصل بنقطة اتصال هاتفك بدلاً من شبكة Wi-Fi هذه.",
+    "filteredNetworkItHeading": "للمعلمين وموظفي تكنولوجيا المعلومات",
+    "filteredNetworkItBody": "اطلب من فريق تكنولوجيا المعلومات لديك السماح بهذه النطاقات:",
+    "filteredNetworkAskForHelp": "اطلب المساعدة من Pangea",
+    "filteredNetworkHelpExplanation": "سنتواصل معك عبر البريد الإلكتروني للمساعدة في تشغيل دردشة Pangea على هذه الشبكة.",
+    "filteredNetworkHelpWaiting": "سيتم إرسال طلبك بمجرد اتصالك.",
+    "filteredNetworkHelpSent": "تم الإرسال. سنتواصل معك عبر البريد الإلكتروني.",
+    "filteredNetworkHelpRefused": "لم نتمكن من إرسال طلبك. يرجى إرسال بريد إلكتروني إلى support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "هذه الشبكة تحظر مقاطع الفيديو.",
+    "filteredNetworkImagesBlocked": "هذه الشبكة تحظر الصور.",
+    "filteredNetworkMapBlocked": "هذه الشبكة تحظر الخريطة.",
+    "callFullScreenTitle": "السماح للمكالمات بالرنين بملء الشاشة",
+    "callFullScreenMessage": "وردت مكالمة بينما كان Pangea Chat مغلقًا، ولكن هاتفك لم يتمكن سوى من عرض إشعار صغير لها. اسمح بالمكالمات بملء الشاشة لكي ترن المكالمة التالية على شاشتك بالكامل، حتى عندما يكون هاتفك مقفلاً.",
+    "callMicrophoneTitle": "استخدم الميكروفون للمكالمات",
+    "callMicrophoneMessage": "يحتاج Pangea Chat إلى الميكروفون الخاص بك للمكالمات، بما في ذلك المكالمات التي تجيب عليها من شاشة القفل.",
+    "callMicrophoneOffTitle": "لم يتم توصيل مكالمتك",
+    "callMicrophoneOffMessage": "لا يمكن لـ Pangea Chat استخدام الميكروفون الخاص بك. انقر لتشغيله في الإعدادات."
 }

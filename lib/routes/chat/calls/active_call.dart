@@ -129,6 +129,11 @@ class ActiveCall extends ChangeNotifier {
   /// await, so a hangup that lands mid-connect stops the sequence instead of
   /// racing it to completion.
   bool _ending = false;
+
+  final _mediaReleased = Completer<void>();
+
+  /// Completes once the call has let go of the microphone and the speaker.
+  Future<void> get mediaReleased => _mediaReleased.future;
   AudioTrack? _track;
   StreamSubscription? _declines;
   String? _notificationId;
@@ -2835,6 +2840,8 @@ class ActiveCall extends ChangeNotifier {
         await media.dispose();
       } catch (e, s) {
         Logs().e('Could not release the call media', e, s);
+      } finally {
+        if (!_mediaReleased.isCompleted) _mediaReleased.complete();
       }
     }();
 

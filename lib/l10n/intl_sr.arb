@@ -2090,7 +2090,6 @@
     "errorDisableIGCClassDesc": "Pomoć u gramatici je isključena za kurs u kojem se nalazi ovaj chat.",
     "error405Desc": "Molimo vas da postavite svoje jezike u Glavnom meniju > Postavke učenja.",
     "termsAndConditions": "Uslovima i odredbama",
-    "andCertifyIAmAtLeast13YearsOfAge": " i potvrđujem da imam najmanje 16 godina.",
     "error502504Desc": "Alati za prevod i gramatiku mogu biti spori ili nedostupni dok Pangea botovi ne stignu do trenutka.",
     "error404Desc": "Pangea Bot nije siguran kako da prevede to...",
     "errorPleaseRefresh": "Radimo na tome! Molimo vas da osvežite stranicu i pokušate ponovo.",
@@ -4467,10 +4466,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10916,5 +10911,28 @@
     "xpToCompleteObjectiveDesc": "Podesite XP potreban za završetak svake misije",
     "objectiveCircleComplete": "Misija {index}: završena",
     "objectiveCircleUpNext": "Misija {index}: sledeća",
-    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu ćaskanja"
+    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu ćaskanja",
+    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu ćaskanja",
+    "andCertifyIMeetTheMinimumAge": " i potvrđujem da imam najmanje 13 godina, ili minimalnu starost propisanu u mojoj zemlji ako je ona viša.",
+    "filteredNetworkBlockedTitle": "Ova mreža blokira Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Ova mreža delimično blokira Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Šta mogu da uradim?",
+    "filteredNetworkPhoneAdvice": "Isključite Wi-Fi i koristite mobilne podatke.",
+    "filteredNetworkComputerAdvice": "Povežite se na hotspot telefona umesto na ovaj Wi-Fi.",
+    "filteredNetworkItHeading": "Za nastavnike i IT osoblje",
+    "filteredNetworkItBody": "Zatražite od svog IT tima da dozvoli ove domene:",
+    "filteredNetworkAskForHelp": "Zatražite pomoć od Pangee",
+    "filteredNetworkHelpExplanation": "Poslaćemo vam e-poštu da vam pomognemo da Pangea Chat radi na ovoj mreži.",
+    "filteredNetworkHelpWaiting": "Vaš zahtev će biti poslat čim se povežete.",
+    "filteredNetworkHelpSent": "Poslato. Javićemo vam se putem e-pošte.",
+    "filteredNetworkHelpRefused": "Nismo mogli da pošaljemo vaš zahtev. Pošaljite e-poštu na support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Ova mreža blokira video zapise.",
+    "filteredNetworkImagesBlocked": "Ova mreža blokira slike.",
+    "filteredNetworkMapBlocked": "Ova mreža blokira mapu.",
+    "callFullScreenTitle": "Neka pozivi zvone preko celog ekrana",
+    "callFullScreenMessage": "Poziv je stigao dok je Pangea Chat bio zatvoren, ali vaš telefon je mogao da prikaže samo malo obaveštenje o tome. Dozvolite pozive preko celog ekrana kako bi sledeći poziv zvonio preko celog ekrana, čak i kada je vaš telefon zaključan.",
+    "callMicrophoneTitle": "Koristite mikrofon za pozive",
+    "callMicrophoneMessage": "Pangea Chat-u je potreban vaš mikrofon za pozive, uključujući pozive na koje odgovarate sa zaključanog ekrana.",
+    "callMicrophoneOffTitle": "Vaš poziv nije povezan",
+    "callMicrophoneOffMessage": "Pangea Chat ne može da koristi vaš mikrofon. Dodirnite da biste ga uključili u Podešavanjima."
 }

@@ -2379,7 +2379,6 @@
     "errorDisableIGCClassDesc": "Asistența de gramatică este dezactivată pentru cursul în care se află această conversație.",
     "error405Desc": "Vă rugăm să setați limbile în Meniu Principal > Setări de Învățare.",
     "termsAndConditions": "Termenii și Condițiile",
-    "andCertifyIAmAtLeast13YearsOfAge": " și certific că am cel puțin 16 ani.",
     "error502504Desc": "Instrumentele de traducere și gramatică pot fi lente sau indisponibile în timp ce roboții Pangea se actualizează.",
     "error404Desc": "Botul Pangea nu este sigur cum să traducă asta...",
     "errorPleaseRefresh": "Ne uităm la problemă! Vă rugăm să reîncărcați și să încercați din nou.",
@@ -4250,10 +4249,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10699,5 +10694,28 @@
     "xpToCompleteObjectiveDesc": "Setează XP-ul necesar pentru a finaliza fiecare misiune",
     "objectiveCircleComplete": "Misiunea {index}: finalizată",
     "objectiveCircleUpNext": "Misiunea {index}: urmează",
-    "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal de chat"
+    "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal de chat",
+    "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal de chat",
+    "andCertifyIMeetTheMinimumAge": " și certific că am cel puțin 13 ani, sau vârsta minimă cerută în țara mea dacă aceasta este mai mare.",
+    "filteredNetworkBlockedTitle": "Această rețea blochează Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Această rețea blochează o parte din Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Ce pot face?",
+    "filteredNetworkPhoneAdvice": "Dezactivează Wi-Fi și folosește datele mobile.",
+    "filteredNetworkComputerAdvice": "Conectează-te la hotspot-ul telefonului în loc de acest Wi-Fi.",
+    "filteredNetworkItHeading": "Pentru profesori și personalul IT",
+    "filteredNetworkItBody": "Roagă echipa IT să permită aceste domenii:",
+    "filteredNetworkAskForHelp": "Cere ajutor de la Pangea",
+    "filteredNetworkHelpExplanation": "Îți vom trimite un e-mail pentru a te ajuta să faci Pangea Chat să funcționeze pe această rețea.",
+    "filteredNetworkHelpWaiting": "Solicitarea ta va fi trimisă imediat ce te vei conecta.",
+    "filteredNetworkHelpSent": "Trimis. Te vom contacta prin e-mail.",
+    "filteredNetworkHelpRefused": "Nu am putut trimite solicitarea ta. Te rugăm să trimiți un e-mail la support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Această rețea blochează videoclipurile.",
+    "filteredNetworkImagesBlocked": "Această rețea blochează imaginile.",
+    "filteredNetworkMapBlocked": "Această rețea blochează harta.",
+    "callFullScreenTitle": "Permite apelurilor să sune pe tot ecranul",
+    "callFullScreenMessage": "A intrat un apel în timp ce Pangea Chat era închis, dar telefonul tău a putut afișa doar o notificare mică pentru acesta. Permite apeluri pe tot ecranul, astfel încât următorul să sune pe întregul ecran, chiar și atunci când telefonul este blocat.",
+    "callMicrophoneTitle": "Folosește microfonul pentru apeluri",
+    "callMicrophoneMessage": "Pangea Chat are nevoie de microfonul tău pentru apeluri, inclusiv pentru apelurile la care răspunzi din ecranul de blocare.",
+    "callMicrophoneOffTitle": "Apelul tău nu s-a conectat",
+    "callMicrophoneOffMessage": "Pangea Chat nu poate folosi microfonul tău. Atinge pentru a-l activa din Setări."
 }

@@ -2914,7 +2914,6 @@
     "errorDisableIGCClassDesc": "此课程中的语法协助已关闭。",
     "error405Desc": "请在主菜单 > 学习设置中设置您的语言。",
     "termsAndConditions": "条款和条件",
-    "andCertifyIAmAtLeast13YearsOfAge": "并证明我已满16岁。",
     "error502504Desc": "在Pangea机器人赶上进度时，翻译和语法工具可能会变慢或不可用。",
     "error404Desc": "Pangea机器人不确定如何翻译这个...",
     "errorPleaseRefresh": "我们正在处理！请重新加载并重试。",
@@ -3698,10 +3697,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -9967,5 +9962,28 @@
     "xpToCompleteObjectiveDesc": "设置完成每个任务所需的 XP",
     "objectiveCircleComplete": "任务 {index}：已完成",
     "objectiveCircleUpNext": "任务 {index}：即将开始",
-    "useActivityImageAsChatBackground": "使用活动图片作为聊天背景"
+    "useActivityImageAsChatBackground": "使用活动图片作为聊天背景",
+    "useActivityImageAsChatBackground": "使用活动图片作为聊天背景",
+    "andCertifyIMeetTheMinimumAge": "并证明我已年满13周岁，如果我的国家/地区要求更高的最低年龄，则以该年龄为准。",
+    "filteredNetworkBlockedTitle": "此网络正在阻止 Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "此网络正在部分阻止 Pangea Chat",
+    "filteredNetworkWhatCanIDo": "我能做什么？",
+    "filteredNetworkPhoneAdvice": "关闭 Wi-Fi，改用移动数据。",
+    "filteredNetworkComputerAdvice": "连接到手机热点，而不是此 Wi-Fi。",
+    "filteredNetworkItHeading": "致教师和 IT 人员",
+    "filteredNetworkItBody": "请您的 IT 团队允许以下域：",
+    "filteredNetworkAskForHelp": "向 Pangea 寻求帮助",
+    "filteredNetworkHelpExplanation": "我们会通过电子邮件联系您，帮助您在此网络上使用 Pangea Chat。",
+    "filteredNetworkHelpWaiting": "连接后，您的请求将立即发送。",
+    "filteredNetworkHelpSent": "已发送。我们将通过电子邮件与您联系。",
+    "filteredNetworkHelpRefused": "我们无法发送您的请求。请发送电子邮件至 support@pangea.chat。",
+    "filteredNetworkVideoBlocked": "此网络阻止视频。",
+    "filteredNetworkImagesBlocked": "此网络阻止图片。",
+    "filteredNetworkMapBlocked": "此网络阻止地图。",
+    "callFullScreenTitle": "让通话全屏响铃",
+    "callFullScreenMessage": "Pangea Chat 关闭时有来电，但您的手机只能显示一个小通知。允许全屏通话，这样即使手机锁屏，下次来电也会在您的整个屏幕上响铃。",
+    "callMicrophoneTitle": "使用麦克风进行通话",
+    "callMicrophoneMessage": "Pangea Chat 需要使用您的麦克风进行通话，包括您从锁定屏幕接听的电话。",
+    "callMicrophoneOffTitle": "您的通话未接通",
+    "callMicrophoneOffMessage": "Pangea Chat 无法使用您的麦克风。轻点以在“设置”中将其打开。"
 }

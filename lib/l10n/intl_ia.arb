@@ -718,7 +718,6 @@
     "errorDisableIGCClassDesc": "Le assistance de grammatica es disactivate pro le curso in le qual iste chat es.",
     "error405Desc": "Per favor, definite tuas linguas in le Menu Principal > Configuration de Aprendimento.",
     "termsAndConditions": "Terminos e Condiciones",
-    "andCertifyIAmAtLeast13YearsOfAge": " e certifica que io ha al minus 16 annos de etate.",
     "error502504Desc": "Le instrumentos de translation e grammatica pote esser lente o non disponibile durante que le bots Pangea se actualisa.",
     "error404Desc": "Le Bot Pangea non es secur de como traducer isto...",
     "errorPleaseRefresh": "Nos es in le processus de investigar! Per favor, re-intra e tenta ancora.",
@@ -4454,10 +4453,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10903,5 +10898,28 @@
     "xpToCompleteObjectiveDesc": "Define le XP necessari pro completar cata mission",
     "objectiveCircleComplete": "Mission {index}: complete",
     "objectiveCircleUpNext": "Mission {index}: sequente",
-    "useActivityImageAsChatBackground": "Usar imagine de activitate como fundo de chat"
+    "useActivityImageAsChatBackground": "Usar imagine de activitate como fundo de chat",
+    "useActivityImageAsChatBackground": "Usar imagine de activitate como fundo de chat",
+    "andCertifyIMeetTheMinimumAge": " e certifica que io ha al minus 13 annos de etate, o le etate minimal requirite in mi pais si illo es plus alte.",
+    "filteredNetworkBlockedTitle": "Iste rete bloca Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Iste rete bloca un parte de Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Que pote io facer?",
+    "filteredNetworkPhoneAdvice": "Disactiva le Wi-Fi e usa datos mobile in su loco.",
+    "filteredNetworkComputerAdvice": "Connecte te al hotspot de tu telephono in loco de iste Wi-Fi.",
+    "filteredNetworkItHeading": "Pro professores e personal de IT",
+    "filteredNetworkItBody": "Peti a tu equipa de IT de permitter iste dominios:",
+    "filteredNetworkAskForHelp": "Peti adjuta a Pangea",
+    "filteredNetworkHelpExplanation": "Nos te inviara un e-mail pro adjutar te a facer funcionar Pangea Chat in iste rete.",
+    "filteredNetworkHelpWaiting": "Tu requesta essera inviate assim tosto que tu es connectite.",
+    "filteredNetworkHelpSent": "Inviate. Nos te contactara per e-mail.",
+    "filteredNetworkHelpRefused": "Nos non poteva inviar tu requesta. Per favor, invia un e-mail a support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Iste rete bloca videos.",
+    "filteredNetworkImagesBlocked": "Iste rete bloca imagines.",
+    "filteredNetworkMapBlocked": "Iste rete bloca le mappa.",
+    "callFullScreenTitle": "Permitter le appellos sonar a schermo plen",
+    "callFullScreenMessage": "Un appello arrivava dum Pangea Chat esseva claudite, ma tu telephono poteva solmente monstrar un parve notification pro illo. Permitte appellos a schermo plen a fin que le proxime sona super tu integre schermo, mesmo quando tu telephono es blocate.",
+    "callMicrophoneTitle": "Usa tu microphono pro appellatas",
+    "callMicrophoneMessage": "Pangea Chat necessita tu microphono pro appellatas, includente appellatas que tu responde del schermo blocate.",
+    "callMicrophoneOffTitle": "Tu appellata non se connecteva",
+    "callMicrophoneOffMessage": "Pangea Chat non pote usar tu microphono. Pulsa pro activar lo in le Preferentias."
 }

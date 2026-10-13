@@ -88,12 +88,7 @@ class FakeCalls extends CallService {
       callerPresenceOverride ??
       (callerHoldsMembership ? PeerPresence.live : PeerPresence.gone);
 
-  final _callerStateChanges = StreamController<void>.broadcast();
   final _callerStateUpdates = StreamController<StrippedStateEvent>.broadcast();
-
-  @override
-  Stream<void> callerPresenceChanges(matrix.Room room, String callerId) =>
-      _callerStateChanges.stream;
 
   @override
   Stream<StrippedStateEvent> callerStateUpdates(
@@ -102,8 +97,7 @@ class FakeCalls extends CallService {
   ) => _callerStateUpdates.stream;
 
   /// Whether anything is still waiting on the caller's membership to arrive.
-  bool get watchingCallerState =>
-      _callerStateChanges.hasListener || _callerStateUpdates.hasListener;
+  bool get watchingCallerState => _callerStateUpdates.hasListener;
 
   /// A member state event from the peer's ringing device.
   Event peerMember(String eventId, {required bool holding, DateTime? at}) =>
@@ -135,7 +129,6 @@ class FakeCalls extends CallService {
     for (final event in events) {
       callerPresenceOverride = collapsed;
       _callerStateUpdates.add(event);
-      _callerStateChanges.add(null);
     }
     await pumpEventQueue();
   }
@@ -1026,6 +1019,27 @@ void main() {
       expect(call.talkStartedAt, isNotNull);
       expect(call.talkDuration, greaterThan(Duration.zero));
       expect(media, isNotNull);
+    });
+
+    test('says when it has let go of the media', () async {
+      final (call, calls, media, _) = await build();
+      await call.start(roomStub(calls.client), video: false);
+      var released = false;
+      unawaited(call.mediaReleased.then((_) => released = true));
+      await pumpEventQueue();
+      expect(released, isFalse, reason: 'the call is still up');
+
+      await call.hangUp();
+      await pumpEventQueue();
+      expect(released, isTrue);
+    });
+
+    test('says so even when releasing the media failed', () async {
+      final (call, calls, media, _) = await build();
+      media.disposeError = StateError('dispose failed');
+      await call.start(roomStub(calls.client), video: false);
+      await call.hangUp();
+      await expectLater(call.mediaReleased, completes);
     });
 
     test('a call nobody answered lasted no time at all', () async {

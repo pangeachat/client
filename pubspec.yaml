@@ -5,7 +5,7 @@ description: Learn a language while texting your friends.
 # Pangea#
 publish_to: none
 # On version bump also increase the build number for F-Droid
-version: 5.0.11+1
+version: 5.0.12+1
 
 environment:
   sdk: ">=3.10.0 <4.0.0"
@@ -21,6 +21,7 @@ dependencies:
   collection: ^1.18.0
   cross_file: ^0.3.5
   confetti: ^0.8.0
+  connectivity_plus: ^7.3.1
   cupertino_icons: any
   # #Pangea
   # desktop_drop: ^0.7.0

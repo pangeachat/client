@@ -2797,7 +2797,6 @@
     "errorDisableIGCClassDesc": "L'assistència de gramàtica està desactivada per al curs en què es troba aquest xat.",
     "error405Desc": "Si us plau, configureu els vostres idiomes al Menú Principal > Configuració d'Aprenentatge.",
     "termsAndConditions": "Termes i Condicions",
-    "andCertifyIAmAtLeast13YearsOfAge": " i certifico que tinc almenys 16 anys.",
     "error502504Desc": "Les eines de traducció i gramàtica poden ser lentes o no estar disponibles mentre els bots de Pangea s'actualitzen.",
     "error404Desc": "El Pangea Bot no està segur de com traduir això...",
     "errorPleaseRefresh": "Ho estem investigant! Si us plau, actualitza i torna a provar.",
@@ -3645,10 +3644,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10094,5 +10089,28 @@
     "xpToCompleteObjectiveDesc": "Defineix els XP necessaris per completar cada missió",
     "objectiveCircleComplete": "Missió {index}: completada",
     "objectiveCircleUpNext": "Missió {index}: següent",
-    "useActivityImageAsChatBackground": "Utilitza la imatge de l'activitat com a fons del xat"
+    "useActivityImageAsChatBackground": "Utilitza la imatge de l'activitat com a fons del xat",
+    "useActivityImageAsChatBackground": "Utilitza la imatge de l'activitat com a fons del xat",
+    "andCertifyIMeetTheMinimumAge": " i certifico que tinc almenys 13 anys, o l'edat mínima requerida al meu país si és superior.",
+    "filteredNetworkBlockedTitle": "Aquesta xarxa està bloquejant Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Aquesta xarxa està bloquejant part de Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Què puc fer?",
+    "filteredNetworkPhoneAdvice": "Desactiva la Wi-Fi i utilitza les dades mòbils.",
+    "filteredNetworkComputerAdvice": "Connecta't al punt d'accés del teu telèfon en lloc d'aquesta Wi-Fi.",
+    "filteredNetworkItHeading": "Per a professors i personal informàtic",
+    "filteredNetworkItBody": "Demana al teu equip informàtic que permeti aquests dominis:",
+    "filteredNetworkAskForHelp": "Demana ajuda a Pangea",
+    "filteredNetworkHelpExplanation": "T'enviarem un correu electrònic per ajudar-te a fer funcionar Pangea Chat en aquesta xarxa.",
+    "filteredNetworkHelpWaiting": "La teva sol·licitud s'enviarà tan aviat com estiguis connectat.",
+    "filteredNetworkHelpSent": "Enviat. Ens posarem en contacte per correu electrònic.",
+    "filteredNetworkHelpRefused": "No hem pogut enviar la teva sol·licitud. Si us plau, envia un correu electrònic a support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Aquesta xarxa bloqueja els vídeos.",
+    "filteredNetworkImagesBlocked": "Aquesta xarxa bloqueja les imatges.",
+    "filteredNetworkMapBlocked": "Aquesta xarxa bloqueja el mapa.",
+    "callFullScreenTitle": "Deixa que les trucades sonin a pantalla completa",
+    "callFullScreenMessage": "Va entrar una trucada mentre Pangea Chat estava tancat, però el teu telèfon només podia mostrar una petita notificació. Permet les trucades a pantalla completa perquè la següent soni a tota la pantalla, fins i tot quan el telèfon estigui bloquejat.",
+    "callMicrophoneTitle": "Utilitza el micròfon per a les trucades",
+    "callMicrophoneMessage": "Pangea Chat necessita el teu micròfon per a les trucades, incloses les trucades que responguis des de la pantalla de bloqueig.",
+    "callMicrophoneOffTitle": "La teva trucada no s'ha pogut connectar",
+    "callMicrophoneOffMessage": "Pangea Chat no pot utilitzar el teu micròfon. Toca per activar-lo a Configuració."
 }

@@ -680,7 +680,6 @@
     "errorDisableIGCClassDesc": "ఈ చాట్ ఉన్న కోర్సుకు వ్యాకరణ సహాయం ఆఫ్ చేయబడింది.",
     "error405Desc": "దయచేసి మీ భాషలను ప్రధాన మెనూ > శిక్షణ సెట్టింగుల్లో సెట్ చేయండి.",
     "termsAndConditions": "నిబంధనలు మరియు షరతులు",
-    "andCertifyIAmAtLeast13YearsOfAge": "మరియు నేను కనీసం 16 సంవత్సరాల వయస్సు ఉన్నానని ధృవీకరిస్తున్నాను.",
     "error502504Desc": "పాంజియా బాట్స్ ట్రాన్స్‌లేషన్ మరియు వ్యాకరణ సాధనాలు ఆలస్యంగా ఉండవచ్చు లేదా అందుబాటులో ఉండకపోవచ్చు.",
     "error404Desc": "పాంజియా బాట్ దాన్ని ఎలా అనువదించాలో తెలియదు...",
     "errorPleaseRefresh": "మేము దీని గురించి చూస్తున్నాము! దయచేసి పేజీని రిఫ్రెష్ చేసి మళ్లీ ప్రయత్నించండి.",
@@ -4468,10 +4467,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10917,5 +10912,28 @@
     "xpToCompleteObjectiveDesc": "ప్రతి మిషన్‌ను పూర్తి చేయడానికి అవసరమైన XPని సెట్ చేయండి",
     "objectiveCircleComplete": "మిషన్ {index}: పూర్తయింది",
     "objectiveCircleUpNext": "మిషన్ {index}: తర్వాత",
-    "useActivityImageAsChatBackground": "యాక్టివిటీ చిత్రాన్ని చాట్ బ్యాక్‌గ్రౌండ్‌గా ఉపయోగించండి"
+    "useActivityImageAsChatBackground": "యాక్టివిటీ చిత్రాన్ని చాట్ బ్యాక్‌గ్రౌండ్‌గా ఉపయోగించండి",
+    "useActivityImageAsChatBackground": "యాక్టివిటీ చిత్రాన్ని చాట్ బ్యాక్‌గ్రౌండ్‌గా ఉపయోగించండి",
+    "andCertifyIMeetTheMinimumAge": "మరియు నాకు కనీసం 13 సంవత్సరాలు లేదా నా దేశంలో అవసరమైన కనీస వయస్సు అంతకంటే ఎక్కువ ఉంటే, ఆ వయస్సు ఉందని నేను ధృవీకరిస్తున్నాను.",
+    "filteredNetworkBlockedTitle": "ఈ నెట్‌వర్క్ పాంగియా చాట్‌ను బ్లాక్ చేస్తోంది",
+    "filteredNetworkPartlyBlockedTitle": "ఈ నెట్‌వర్క్ పాంగియా చాట్‌లో కొంత భాగాన్ని బ్లాక్ చేస్తోంది",
+    "filteredNetworkWhatCanIDo": "నేను ఏమి చేయగలను?",
+    "filteredNetworkPhoneAdvice": "Wi-Fiని ఆఫ్ చేసి, మొబైల్ డేటాను ఉపయోగించండి.",
+    "filteredNetworkComputerAdvice": "ఈ Wi-Fiకి బదులుగా మీ ఫోన్ హాట్‌స్పాట్‌కు కనెక్ట్ చేయండి.",
+    "filteredNetworkItHeading": "ఉపాధ్యాయులు మరియు IT సిబ్బంది కోసం",
+    "filteredNetworkItBody": "ఈ డొమైన్‌లను అనుమతించమని మీ IT బృందాన్ని అడగండి:",
+    "filteredNetworkAskForHelp": "సహాయం కోసం పాంగియాను అడగండి",
+    "filteredNetworkHelpExplanation": "ఈ నెట్‌వర్క్‌లో పాంగియా చాట్ పని చేయడానికి మేము మీకు ఇమెయిల్ చేస్తాము.",
+    "filteredNetworkHelpWaiting": "మీరు కనెక్ట్ అయిన వెంటనే మీ అభ్యర్థన పంపబడుతుంది.",
+    "filteredNetworkHelpSent": "పంపబడింది. మేము ఇమెయిల్ ద్వారా సంప్రదిస్తాము.",
+    "filteredNetworkHelpRefused": "మేము మీ అభ్యర్థనను పంపలేకపోయాము. దయచేసి support@pangea.chatకు ఇమెయిల్ చేయండి.",
+    "filteredNetworkVideoBlocked": "ఈ నెట్‌వర్క్ వీడియోలను బ్లాక్ చేస్తుంది.",
+    "filteredNetworkImagesBlocked": "ఈ నెట్‌వర్క్ చిత్రాలను బ్లాక్ చేస్తుంది.",
+    "filteredNetworkMapBlocked": "ఈ నెట్‌వర్క్ మ్యాప్‌ను బ్లాక్ చేస్తుంది.",
+    "callFullScreenTitle": "కాల్‌లను పూర్తి స్క్రీన్‌లో రింగ్ చేయనివ్వండి",
+    "callFullScreenMessage": "పాంగియా చాట్ మూసివేయబడినప్పుడు ఒక కాల్ వచ్చింది, కానీ మీ ఫోన్ దాని కోసం చిన్న నోటిఫికేషన్‌ను మాత్రమే చూపగలదు. పూర్తి-స్క్రీన్ కాల్‌లను అనుమతించండి, తద్వారా తదుపరి కాల్ మీ ఫోన్ లాక్ చేయబడినప్పటికీ, మీ మొత్తం స్క్రీన్‌పై రింగ్ అవుతుంది.",
+    "callMicrophoneTitle": "కాల్స్ కోసం మీ మైక్రోఫోన్‌ను ఉపయోగించండి",
+    "callMicrophoneMessage": "లాక్ స్క్రీన్ నుండి మీరు సమాధానం ఇచ్చే కాల్‌లతో సహా, కాల్స్ కోసం పాంగియా చాట్‌కు మీ మైక్రోఫోన్ అవసరం.",
+    "callMicrophoneOffTitle": "మీ కాల్ కనెక్ట్ అవ్వలేదు",
+    "callMicrophoneOffMessage": "పాంగియా చాట్ మీ మైక్రోఫోన్‌ను ఉపయోగించదు. సెట్టింగ్‌లలో దాన్ని ఆన్ చేయడానికి నొక్కండి."
 }

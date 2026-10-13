@@ -257,6 +257,31 @@ void main() {
         isFalse,
       );
     });
+
+    // The closed-app push handler has no client and reads the bare event. It
+    // has to reach the banner's answer, not one of its own.
+    test('the bare event decides as the room event does', () {
+      final cases = {
+        'fresh': notification(),
+        'own': notification(sender: me),
+        'names no call': notification(relatesTo: null),
+        'not a ring': notification(type: 'm.room.message'),
+      };
+      for (final MapEntry(:key, :value) in cases.entries) {
+        final bare = IncomingRing(
+          event: MatrixEvent.fromJson(value.toJson()),
+          myUserId: me,
+          alreadyJoined: false,
+        );
+        for (final at in [now, now.add(const Duration(seconds: 31))]) {
+          expect(
+            bare.shouldRing(at),
+            incoming(value).shouldRing(at),
+            reason: '$key at $at',
+          );
+        }
+      }
+    });
   });
 
   group('how long it rings', () {

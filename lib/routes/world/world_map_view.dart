@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math' as math;
 import 'dart:ui' as ui show SemanticsHitTestBehavior;
 
@@ -19,6 +20,9 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
+import 'package:fluffychat/features/network_filter/filtered_network_controller.dart';
+import 'package:fluffychat/features/network_filter/network_host_category.dart';
+import 'package:fluffychat/features/network_filter/widgets/filtered_network_note.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
@@ -311,6 +315,11 @@ class _WorldMapViewState extends State<WorldMapView>
       return;
     }
     _tileRetries.schedule(tile);
+    // A connectivity failure is the learner's own network — offline, or a
+    // filter. The check tells which, and reports only a filter.
+    unawaited(
+      FilteredNetworkController.instance.checkIfStale(NetworkHostCategory.map),
+    );
   }
 
   /// Entry/exit animation bookkeeping for the small/mid dot tier: which pins
@@ -1065,7 +1074,8 @@ class _WorldMapViewState extends State<WorldMapView>
             // HiDPI as a result; legible on-brand labels are a later-phase
             // goal anyway, where they cost nothing.
             final tileLayer = TileLayer(
-              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+              urlTemplate:
+                  'https://${WorldMapConstants.tileHost}/{z}/{x}/{y}.png',
               retinaMode: false,
               // How far outside the view a tile survives pruning. flutter_map
               // covers a still-loading level by scaling a neighbouring level it
@@ -1389,30 +1399,34 @@ class _WorldMapViewState extends State<WorldMapView>
           // The "Course preview" pill (#7826), centered over the exposed map
           // on both form factors — below the analytics bar band on narrow, in
           // the top margin on wide (where the search slot empties, below).
+          // A blocked-map note stacks under it in the same place.
           Positioned(
             top: 0,
             left: widget.controller.widget.leftOverlayWidth,
             right: widget.controller.widget.rightOverlayWidth,
-            child: ValueListenableBuilder<MapContext>(
-              valueListenable: MapContextController.notifier,
-              builder: (context, mapContext, _) {
-                if (mapContext is! CoursePreviewMapContext) {
-                  return const SizedBox.shrink();
-                }
-                return SafeArea(
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                      top: FluffyThemes.isColumnMode(context)
-                          ? 12.0
-                          : WorldAnalyticsBar.expandedHeight + 24.0,
+            child: SafeArea(
+              child: Padding(
+                padding: EdgeInsets.only(
+                  top: FluffyThemes.isColumnMode(context)
+                      ? 12.0
+                      : WorldAnalyticsBar.expandedHeight + 24.0,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ValueListenableBuilder<MapContext>(
+                      valueListenable: MapContextController.notifier,
+                      builder: (context, mapContext, _) =>
+                          mapContext is CoursePreviewMapContext
+                          ? const CoursePreviewBanner()
+                          : const SizedBox.shrink(),
                     ),
-                    child: const Align(
-                      alignment: Alignment.topCenter,
-                      child: CoursePreviewBanner(),
+                    const FilteredNetworkNote(
+                      category: NetworkHostCategory.map,
                     ),
-                  ),
-                );
-              },
+                  ],
+                ),
+              ),
             ),
           ),
           // Column mode only: on a narrow screen the search rides the floating

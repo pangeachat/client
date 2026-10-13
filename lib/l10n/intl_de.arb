@@ -2935,7 +2935,6 @@
     "errorDisableIGCClassDesc": "Die Grammatikhilfe ist für den Kurs, in dem sich dieser Chat befindet, deaktiviert.",
     "error405Desc": "Bitte stellen Sie Ihre Sprachen im Hauptmenü > Lerneinstellungen ein.",
     "termsAndConditions": "Allgemeinen Geschäftsbedingungen",
-    "andCertifyIAmAtLeast13YearsOfAge": " zu und bestätigen, dass ich mindestens 16 Jahre alt bin.",
     "error502504Desc": "Übersetzungs- und Grammatiktools könnten langsam sein oder nicht verfügbar sein, während die Pangea-Bots aufholen.",
     "error404Desc": "Der Pangea-Bot ist sich nicht sicher, wie das zu übersetzen ist...",
     "errorPleaseRefresh": "Wir kümmern uns darum! Bitte laden Sie die Seite neu und versuchen Sie es erneut.",
@@ -3719,10 +3718,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -9954,5 +9949,28 @@
     "xpToCompleteObjectiveDesc": "Lege die benötigten XP fest, um jede Mission abzuschließen",
     "objectiveCircleComplete": "Mission {index}: abgeschlossen",
     "objectiveCircleUpNext": "Mission {index}: als Nächstes",
-    "useActivityImageAsChatBackground": "Aktivitätsbild als Chat-Hintergrund verwenden"
+    "useActivityImageAsChatBackground": "Aktivitätsbild als Chat-Hintergrund verwenden",
+    "useActivityImageAsChatBackground": "Aktivitätsbild als Chat-Hintergrund verwenden",
+    "andCertifyIMeetTheMinimumAge": " zu und bestätige, dass ich mindestens 13 Jahre alt bin oder das in meinem Land erforderliche Mindestalter erreicht habe, falls dieses höher ist.",
+    "filteredNetworkBlockedTitle": "Dieses Netzwerk blockiert Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Dieses Netzwerk blockiert einen Teil von Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Was kann ich tun?",
+    "filteredNetworkPhoneAdvice": "Schalten Sie WLAN aus und nutzen Sie stattdessen mobile Daten.",
+    "filteredNetworkComputerAdvice": "Verbinden Sie sich mit dem Hotspot Ihres Telefons anstelle dieses WLANs.",
+    "filteredNetworkItHeading": "Für Lehrkräfte und IT-Mitarbeiter",
+    "filteredNetworkItBody": "Bitten Sie Ihr IT-Team, diese Domains zuzulassen:",
+    "filteredNetworkAskForHelp": "Pangea um Hilfe bitten",
+    "filteredNetworkHelpExplanation": "Wir werden Ihnen eine E-Mail senden, um Pangea Chat in diesem Netzwerk zum Laufen zu bringen.",
+    "filteredNetworkHelpWaiting": "Ihre Anfrage wird gesendet, sobald Sie verbunden sind.",
+    "filteredNetworkHelpSent": "Gesendet. Wir melden uns per E-Mail bei Ihnen.",
+    "filteredNetworkHelpRefused": "Ihre Anfrage konnte nicht gesendet werden. Bitte senden Sie eine E-Mail an support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Dieses Netzwerk blockiert Videos.",
+    "filteredNetworkImagesBlocked": "Dieses Netzwerk blockiert Bilder.",
+    "filteredNetworkMapBlocked": "Dieses Netzwerk blockiert die Karte.",
+    "callFullScreenTitle": "Anrufe im Vollbildmodus klingeln lassen",
+    "callFullScreenMessage": "Ein Anruf kam herein, während Pangea Chat geschlossen war, aber Ihr Telefon konnte nur eine kleine Benachrichtigung dafür anzeigen. Erlauben Sie Vollbildanrufe, damit der nächste Anruf auf Ihrem gesamten Bildschirm klingelt, auch wenn Ihr Telefon gesperrt ist.",
+    "callMicrophoneTitle": "Mikrofon für Anrufe verwenden",
+    "callMicrophoneMessage": "Pangea Chat benötigt Ihr Mikrofon für Anrufe, einschließlich Anrufe, die Sie vom Sperrbildschirm aus annehmen.",
+    "callMicrophoneOffTitle": "Ihr Anruf konnte nicht verbunden werden",
+    "callMicrophoneOffMessage": "Pangea Chat kann Ihr Mikrofon nicht verwenden. Tippen Sie hier, um es in den Einstellungen zu aktivieren."
 }

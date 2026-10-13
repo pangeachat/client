@@ -2925,7 +2925,6 @@
     "errorDisableIGCClassDesc": "Grammatikaabi on välja lülitatud selle vestluse ruumi jaoks.",
     "error405Desc": "Palun seadistage oma keeled peamenüüs > Õpeseadistused.",
     "termsAndConditions": "Tingimuste ja nõuetega",
-    "andCertifyIAmAtLeast13YearsOfAge": " ning kinnitan, et olen vähemalt 16 aastat vana.",
     "error502504Desc": "Tõlke- ja grammatikatööriistad võivad olla aeglased või kättesaamatud, kuni Pangea botid jõuavad järele.",
     "error404Desc": "Pangea bot ei ole kindel, kuidas seda tõlkida...",
     "errorPleaseRefresh": "Uurime seda välja! Palun laadin uuesti ja proovi uuesti.",
@@ -3615,10 +3614,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -9964,5 +9959,28 @@
     "xpToCompleteObjectiveDesc": "Määra XP, mis on vajalik iga missiooni läbimiseks",
     "objectiveCircleComplete": "Missioon {index}: täidetud",
     "objectiveCircleUpNext": "Missioon {index}: järgmine",
-    "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana"
+    "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
+    "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
+    "andCertifyIMeetTheMinimumAge": " ja kinnitan, et olen vähemalt 13-aastane või minu riigis nõutavast vanusest vanem, kui see on kõrgem.",
+    "filteredNetworkBlockedTitle": "See võrk blokeerib Pangea Chati",
+    "filteredNetworkPartlyBlockedTitle": "See võrk blokeerib osa Pangea Chatist",
+    "filteredNetworkWhatCanIDo": "Mida ma teha saan?",
+    "filteredNetworkPhoneAdvice": "Lülita Wi-Fi välja ja kasuta mobiilset andmesidet.",
+    "filteredNetworkComputerAdvice": "Ühenda selle Wi-Fi asemel oma telefoni levialaga.",
+    "filteredNetworkItHeading": "Õpetajatele ja IT-personalile",
+    "filteredNetworkItBody": "Paluge oma IT-meeskonnal lubada järgmised domeenid:",
+    "filteredNetworkAskForHelp": "Küsi Pangealt abi",
+    "filteredNetworkHelpExplanation": "Saadame teile e-kirja, et aidata Pangea Chat selle võrguga tööle saada.",
+    "filteredNetworkHelpWaiting": "Teie taotlus saadetakse kohe, kui olete ühendatud.",
+    "filteredNetworkHelpSent": "Saadetud. Võtame teiega e-posti teel ühendust.",
+    "filteredNetworkHelpRefused": "Me ei saanud teie taotlust saata. Palun saatke e-kiri aadressile support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "See võrk blokeerib videod.",
+    "filteredNetworkImagesBlocked": "See võrk blokeerib pildid.",
+    "filteredNetworkMapBlocked": "See võrk blokeerib kaardi.",
+    "callFullScreenTitle": "Luba kõnedele täisekraan",
+    "callFullScreenMessage": "Kõne tuli sisse, kui Pangea Chat oli suletud, kuid teie telefon sai selle kohta näidata ainult väikest teavitust. Lubage täisekraankõned, et järgmine kõne heliseks kogu ekraanil, isegi kui teie telefon on lukus.",
+    "callMicrophoneTitle": "Kasuta kõnede jaoks mikrofoni",
+    "callMicrophoneMessage": "Pangea Chat vajab kõnede jaoks teie mikrofoni, sealhulgas kõnede jaoks, millele vastate lukustuskuvalt.",
+    "callMicrophoneOffTitle": "Teie kõne ei ühendunud",
+    "callMicrophoneOffMessage": "Pangea Chat ei saa teie mikrofoni kasutada. Puudutage, et see seadetes sisse lülitada."
 }

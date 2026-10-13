@@ -2892,7 +2892,6 @@
     "errorDisableIGCClassDesc": "Kielenhuollon apu on pois päältä tämän keskustelun kurssille.",
     "error405Desc": "Aseta kielesi Päävalikosta > Oppimisasetukset.",
     "termsAndConditions": "käyttöehdot",
-    "andCertifyIAmAtLeast13YearsOfAge": " ja vahvistan, että olen vähintään 16-vuotias.",
     "error502504Desc": "Käännös- ja kielioppityökalut saattavat olla hitaita tai poissa käytöstä, kun Pangea-botit saavat kiinni.",
     "error404Desc": "Pangea-botti ei ole varma, miten tämä tulisi kääntää...",
     "errorPleaseRefresh": "Tarkistamme asiaa! Lataa sivu uudelleen ja yritä uudelleen.",
@@ -3686,10 +3685,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10004,5 +9999,28 @@
     "xpToCompleteObjectiveDesc": "Aseta XP-määrä, joka tarvitaan kunkin tehtävän suorittamiseen",
     "objectiveCircleComplete": "Tehtävä {index}: valmis",
     "objectiveCircleUpNext": "Tehtävä {index}: seuraavana",
-    "useActivityImageAsChatBackground": "Käytä aktiviteetin kuvaa chatin taustana"
+    "useActivityImageAsChatBackground": "Käytä aktiviteetin kuvaa chatin taustana",
+    "useActivityImageAsChatBackground": "Käytä aktiviteetin kuvaa chatin taustana",
+    "andCertifyIMeetTheMinimumAge": " ja vakuutan olevani vähintään 13-vuotias tai maassani vaaditun korkeamman vähimmäisiän mukainen.",
+    "filteredNetworkBlockedTitle": "Tämä verkko estää Pangea Chatin",
+    "filteredNetworkPartlyBlockedTitle": "Tämä verkko estää osan Pangea Chatista",
+    "filteredNetworkWhatCanIDo": "Mitä voin tehdä?",
+    "filteredNetworkPhoneAdvice": "Sammuta Wi-Fi ja käytä sen sijaan mobiilidataa.",
+    "filteredNetworkComputerAdvice": "Yhdistä puhelimesi tukiasemaan tämän Wi-Fin sijaan.",
+    "filteredNetworkItHeading": "Opettajille ja IT-henkilöstölle",
+    "filteredNetworkItBody": "Pyydä IT-tiimiäsi sallimaan nämä verkkotunnukset:",
+    "filteredNetworkAskForHelp": "Pyydä Pangealta apua",
+    "filteredNetworkHelpExplanation": "Lähetämme sinulle sähköpostia auttaaksemme Pangea Chatin toimimaan tässä verkossa.",
+    "filteredNetworkHelpWaiting": "Pyynnösi lähetetään heti, kun olet yhteydessä.",
+    "filteredNetworkHelpSent": "Lähetetty. Otamme sinuun yhteyttä sähköpostitse.",
+    "filteredNetworkHelpRefused": "Emme voineet lähettää pyyntöäsi. Lähetä sähköpostia osoitteeseen support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Tämä verkko estää videot.",
+    "filteredNetworkImagesBlocked": "Tämä verkko estää kuvat.",
+    "filteredNetworkMapBlocked": "Tämä verkko estää kartan.",
+    "callFullScreenTitle": "Anna puheluiden soida koko näytöllä",
+    "callFullScreenMessage": "Puhelu saapui Pangea Chatin ollessa suljettuna, mutta puhelimesi pystyi näyttämään siitä vain pienen ilmoituksen. Salli koko näytön puhelut, jotta seuraava puhelu soi koko näytölläsi, vaikka puhelimesi olisi lukittuna.",
+    "callMicrophoneTitle": "Käytä mikrofonia puheluihin",
+    "callMicrophoneMessage": "Pangea Chat tarvitsee mikrofonisi puheluihin, myös lukitusnäytöltä vastaamiisi puheluihin.",
+    "callMicrophoneOffTitle": "Puhelu ei yhdistynyt",
+    "callMicrophoneOffMessage": "Pangea Chat ei voi käyttää mikrofonia. Napauta ottaaksesi sen käyttöön asetuksista."
 }

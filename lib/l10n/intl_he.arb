@@ -1714,7 +1714,6 @@
     "errorDisableIGCClassDesc": "עזרה בדקדוק מושבתת עבור הקורס שבו נמצא הצ'אט הזה.",
     "error405Desc": "אנא הגדר את שפותיך בתפריט הראשי > הגדרות למידה.",
     "termsAndConditions": "תנאים והגבלות",
-    "andCertifyIAmAtLeast13YearsOfAge": "ומאשר שאני בן לפחות 16 שנים.",
     "error502504Desc": "כלי תרגום ודקדוק עלולים להיות איטיים או לא זמינים בזמן שהבוטים של פנגיאה מעדכנים.",
     "error404Desc": "בוט פנגיאה לא בטוח איך לתרגם את זה...",
     "errorPleaseRefresh": "אנחנו בודקים את זה! אנא טען מחדש ונסה שוב.",
@@ -4432,10 +4431,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10881,5 +10876,28 @@
     "xpToCompleteObjectiveDesc": "קבע את נקודות הניסיון הדרושות להשלמת כל משימה",
     "objectiveCircleComplete": "משימה {index}: הושלמה",
     "objectiveCircleUpNext": "משימה {index}: הבאה בתור",
-    "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט"
+    "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט",
+    "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט",
+    "andCertifyIMeetTheMinimumAge": "ומאשר/ת שאני בן/בת 13 לפחות, או בגיל המינימלי הנדרש במדינתי אם הוא גבוה יותר.",
+    "filteredNetworkBlockedTitle": "רשת זו חוסמת את Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "רשת זו חוסמת חלק מ-Pangea Chat",
+    "filteredNetworkWhatCanIDo": "מה אפשר לעשות?",
+    "filteredNetworkPhoneAdvice": "כבה/כבי את ה-Wi-Fi והשתמש/השתמשי במקום זאת בנתונים ניידים.",
+    "filteredNetworkComputerAdvice": "התחבר/התחברי לנקודה חמה של הטלפון שלך במקום ל-Wi-Fi הזה.",
+    "filteredNetworkItHeading": "למורים ולצוותי IT",
+    "filteredNetworkItBody": "בקש/בקשי מצוות ה-IT שלך לאפשר את הדומיינים הבאים:",
+    "filteredNetworkAskForHelp": "בקש/בקשי עזרה מ-Pangea",
+    "filteredNetworkHelpExplanation": "נשלח לך אימייל כדי לעזור לך להפעיל את Pangea Chat ברשת זו.",
+    "filteredNetworkHelpWaiting": "בקשתך תישלח ברגע שתתחבר/תתחברי.",
+    "filteredNetworkHelpSent": "נשלח. ניצור קשר באימייל.",
+    "filteredNetworkHelpRefused": "לא הצלחנו לשלוח את בקשתך. אנא שלח/שלחי אימייל ל-support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "רשת זו חוסמת סרטונים.",
+    "filteredNetworkImagesBlocked": "רשת זו חוסמת תמונות.",
+    "filteredNetworkMapBlocked": "רשת זו חוסמת את המפה.",
+    "callFullScreenTitle": "אפשר לשיחות לצלצל במסך מלא",
+    "callFullScreenMessage": "התקבלה שיחה כש־Pangea Chat הייתה סגורה, אבל הטלפון שלך הציג רק התראה קטנה עבורה. אפשר שיחות במסך מלא כדי שהשיחה הבאה תצלצל על כל המסך, גם כשהטלפון שלך נעול.",
+    "callMicrophoneTitle": "השתמש/י במיקרופון שלך לשיחות",
+    "callMicrophoneMessage": "Pangea Chat זקוק למיקרופון שלך לשיחות, כולל שיחות שאת/ה עונה להן ממסך הנעילה.",
+    "callMicrophoneOffTitle": "השיחה שלך לא התחברה",
+    "callMicrophoneOffMessage": "Pangea Chat לא יכול להשתמש במיקרופון שלך. הקש/י כדי להפעיל אותו בהגדרות."
 }

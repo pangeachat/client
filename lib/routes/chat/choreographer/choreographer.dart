@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:async/async.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
+import 'package:fluffychat/features/journey_checklist/journey_moments.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_paywall_status_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/active_suggestion_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_controller.dart';
@@ -355,6 +356,11 @@ class Choreographer extends ChangeNotifier {
 
   void _onUpdateMatch(PangeaMatchState match) {
     textController.setSystemText(igcController.currentText!, EditTypeEnum.igc);
+
+    if (match.updatedMatch.status == PangeaMatchStatusEnum.accepted &&
+        match.updatedMatch.isTranslationMatch) {
+      JourneyMoments.translationAccepted(room.client);
+    }
 
     switch (match.updatedMatch.status) {
       case PangeaMatchStatusEnum.accepted:

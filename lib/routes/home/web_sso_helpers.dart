@@ -36,17 +36,6 @@ String sameTabSsoRedirectUrl(String authHtmlUrl, String returnHref) =>
       authHtmlUrl,
     ).replace(queryParameters: {'return': returnHref}).toString();
 
-/// A URL on the provider's sign-in host that a network filter blocking that
-/// provider would refuse. A 204 endpoint for Google; a static file for Apple.
-String ssoProviderProbeUrl(SSOProvider provider) {
-  switch (provider) {
-    case SSOProvider.google:
-      return 'https://accounts.google.com/generate_204';
-    case SSOProvider.apple:
-      return 'https://appleid.apple.com/favicon.ico';
-  }
-}
-
 SSOProvider? ssoProviderFromName(String? name) {
   for (final p in SSOProvider.values) {
     if (p.name == name) return p;

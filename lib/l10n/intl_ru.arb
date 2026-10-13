@@ -3486,7 +3486,6 @@
     "errorDisableIGCClassDesc": "Помощь с грамматикой отключена для курса, в котором находится этот чат.",
     "error405Desc": "Пожалуйста, установите ваши языки в Главное меню > Настройки обучения.",
     "termsAndConditions": "Условиями использования",
-    "andCertifyIAmAtLeast13YearsOfAge": " и подтверждаю, что мне не менее 16 лет.",
     "error502504Desc": "Инструменты перевода и грамматики могут работать медленно или быть недоступны, пока боты Pangea обрабатывают запросы.",
     "error404Desc": "Бот Pangea не уверен, как это перевести...",
     "errorPleaseRefresh": "Мы этим занимаемся! Пожалуйста, обновите страницу и попробуйте снова.",
@@ -4377,10 +4376,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10939,5 +10934,28 @@
     "xpToCompleteObjectiveDesc": "Установите количество XP, необходимое для завершения каждой миссии",
     "objectiveCircleComplete": "Миссия {index}: выполнена",
     "objectiveCircleUpNext": "Миссия {index}: следующая",
-    "useActivityImageAsChatBackground": "Использовать изображение активности в качестве фона чата"
+    "useActivityImageAsChatBackground": "Использовать изображение активности в качестве фона чата",
+    "useActivityImageAsChatBackground": "Использовать изображение активности в качестве фона чата",
+    "andCertifyIMeetTheMinimumAge": " и подтверждаю, что мне не менее 13 лет или минимальный возраст, требуемый в моей стране, если он выше.",
+    "filteredNetworkBlockedTitle": "Эта сеть блокирует Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Эта сеть частично блокирует Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Что я могу сделать?",
+    "filteredNetworkPhoneAdvice": "Отключите Wi-Fi и используйте мобильные данные.",
+    "filteredNetworkComputerAdvice": "Подключитесь к точке доступа телефона вместо этой сети Wi-Fi.",
+    "filteredNetworkItHeading": "Для учителей и ИТ-персонала",
+    "filteredNetworkItBody": "Попросите вашу ИТ-команду разрешить следующие домены:",
+    "filteredNetworkAskForHelp": "Обратиться за помощью к Pangea",
+    "filteredNetworkHelpExplanation": "Мы свяжемся с вами по электронной почте, чтобы помочь запустить Pangea Chat в этой сети.",
+    "filteredNetworkHelpWaiting": "Ваш запрос будет отправлен, как только вы подключитесь.",
+    "filteredNetworkHelpSent": "Отправлено. Мы свяжемся с вами по электронной почте.",
+    "filteredNetworkHelpRefused": "Не удалось отправить ваш запрос. Пожалуйста, напишите на support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Эта сеть блокирует видео.",
+    "filteredNetworkImagesBlocked": "Эта сеть блокирует изображения.",
+    "filteredNetworkMapBlocked": "Эта сеть блокирует карту.",
+    "callFullScreenTitle": "Разрешить звонкам отображаться на весь экран",
+    "callFullScreenMessage": "Вам звонили, пока Pangea Chat был закрыт, но на телефоне отобразилось только небольшое уведомление. Разрешите звонки на весь экран, чтобы следующий звонок отображался на всём экране, даже когда телефон заблокирован.",
+    "callMicrophoneTitle": "Использовать микрофон для звонков",
+    "callMicrophoneMessage": "Pangea Chat требуется доступ к микрофону для звонков, включая звонки, на которые вы отвечаете с экрана блокировки.",
+    "callMicrophoneOffTitle": "Не удалось подключиться к звонку",
+    "callMicrophoneOffMessage": "Pangea Chat не может использовать ваш микрофон. Нажмите, чтобы включить его в настройках."
 }

@@ -1425,7 +1425,6 @@
     "errorDisableIGCClassDesc": "Naka-off ang tulong sa gramatika para sa kurso kung saan naroroon ang chat na ito.",
     "error405Desc": "Mangyaring itakda ang iyong mga wika sa Main Menu > Learning Settings.",
     "termsAndConditions": "Mga Tuntunin at Kondisyon",
-    "andCertifyIAmAtLeast13YearsOfAge": " at certipikadong ako ay hindi bababa sa 16 na taong gulang.",
     "error502504Desc": "Maaaring maging mabagal o hindi magagamit ang mga translation at grammar tools habang nakakaabante ang mga Pangea bots.",
     "error404Desc": "Hindi sigurado ang Pangea Bot kung paano isasalin iyon...",
     "errorPleaseRefresh": "Tinitingnan namin ito! Mangyaring i-reload at subukan muli.",
@@ -4389,10 +4388,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10827,5 +10822,28 @@
     "xpToCompleteObjectiveDesc": "Itakda ang XP na kailangan para makumpleto ang bawat misyon",
     "objectiveCircleComplete": "Misyon {index}: kumpleto",
     "objectiveCircleUpNext": "Misyon {index}: susunod",
-    "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat"
+    "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat",
+    "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat",
+    "andCertifyIMeetTheMinimumAge": " at pinapatunayan kong ako ay hindi bababa sa 13 taong gulang, o ang minimum na edad na kinakailangan sa aking bansa kung ito ay mas mataas.",
+    "filteredNetworkBlockedTitle": "Hinarangan ng network na ito ang Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Hinarangan ng network na ito ang bahagi ng Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Ano ang puwede kong gawin?",
+    "filteredNetworkPhoneAdvice": "I-off ang Wi-Fi at gamitin na lang ang mobile data.",
+    "filteredNetworkComputerAdvice": "Kumonekta sa hotspot ng iyong telepono sa halip na sa Wi-Fi na ito.",
+    "filteredNetworkItHeading": "Para sa mga guro at IT staff",
+    "filteredNetworkItBody": "Hilingin sa iyong IT team na payagan ang mga domain na ito:",
+    "filteredNetworkAskForHelp": "Humiling ng tulong sa Pangea",
+    "filteredNetworkHelpExplanation": "Mag-e-email kami sa iyo para matulungan kang gumana ang Pangea Chat sa network na ito.",
+    "filteredNetworkHelpWaiting": "Ipadadala ang iyong kahilingan sa sandaling makakonekta ka.",
+    "filteredNetworkHelpSent": "Naipadala. Makikipag-ugnayan kami sa pamamagitan ng email.",
+    "filteredNetworkHelpRefused": "Hindi namin maipadala ang iyong kahilingan. Mangyaring mag-email sa support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Hinarangan ng network na ito ang mga video.",
+    "filteredNetworkImagesBlocked": "Hinarangan ng network na ito ang mga larawan.",
+    "filteredNetworkMapBlocked": "Hinarangan ng network na ito ang mapa.",
+    "callFullScreenTitle": "Hayaang mag-ring nang full screen ang mga tawag",
+    "callFullScreenMessage": "May pumasok na tawag habang sarado ang Pangea Chat, pero maliit na notification lang ang naipakita ng iyong telepono para dito. Payagan ang full-screen na tawag para sa susunod na ring sa iyong buong screen, kahit naka-lock ang iyong telepono.",
+    "callMicrophoneTitle": "Gamitin ang iyong mikropono para sa mga tawag",
+    "callMicrophoneMessage": "Kailangan ng Pangea Chat ang iyong mikropono para sa mga tawag, kasama ang mga tawag na sinasagot mo mula sa lock screen.",
+    "callMicrophoneOffTitle": "Hindi nakakonekta ang iyong tawag",
+    "callMicrophoneOffMessage": "Hindi magagamit ng Pangea Chat ang iyong mikropono. I-tap para i-on ito sa Settings."
 }

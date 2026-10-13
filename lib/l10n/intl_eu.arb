@@ -2914,7 +2914,6 @@
     "errorDisableIGCClassDesc": "Gramatika laguntza desgaituta dago ikastaro honetan dagoen chat-entzat.",
     "error405Desc": "Mesedez, ezarri zure hizkuntzak Nagusien Menuko > Ikaskuntza Ezarpenetan.",
     "termsAndConditions": " Baldintzak eta Baldintzak",
-    "andCertifyIAmAtLeast13YearsOfAge": " eta ziurtatzen dut gutxienez 16 urte ditudala.",
     "error502504Desc": "Itzulpen eta gramatika tresnak motel edo erabilgarri ez egon daitezke Pangea botak eguneratzen direnean.",
     "error404Desc": "Pangea Botak ez du ziur nola itzuli hori...",
     "errorPleaseRefresh": "Begiratzen ari gara! Mesedez, kargatu berriro eta saiatu berriro.",
@@ -3698,10 +3697,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -9967,5 +9962,28 @@
     "xpToCompleteObjectiveDesc": "Ezarri misio bakoitza osatzeko behar den XP kopurua",
     "objectiveCircleComplete": "Misioa {index}: osatuta",
     "objectiveCircleUpNext": "Misioa {index}: hurrengoa",
-    "useActivityImageAsChatBackground": "Erabili jardueraren irudia txataren atzeko plano gisa"
+    "useActivityImageAsChatBackground": "Erabili jardueraren irudia txataren atzeko plano gisa",
+    "useActivityImageAsChatBackground": "Erabili jardueraren irudia txataren atzeko plano gisa",
+    "andCertifyIMeetTheMinimumAge": " eta ziurtatzen dut gutxienez 13 urte ditudala, edo nire herrialdean eskatzen den gutxieneko adina, hori handiagoa bada.",
+    "filteredNetworkBlockedTitle": "Sare honek Pangea Chat blokeatzen du",
+    "filteredNetworkPartlyBlockedTitle": "Sare honek Pangea Chaten zati bat blokeatzen du",
+    "filteredNetworkWhatCanIDo": "Zer egin dezaket?",
+    "filteredNetworkPhoneAdvice": "Desaktibatu Wi-Fi eta erabili datu mugikorrak horren ordez.",
+    "filteredNetworkComputerAdvice": "Konektatu zure telefonoaren hotspotera Wi-Fi honen ordez.",
+    "filteredNetworkItHeading": "Irakasle eta informatika-langileentzat",
+    "filteredNetworkItBody": "Eskatu zure informatika-taldeari domeinu hauek baimentzeko:",
+    "filteredNetworkAskForHelp": "Eskatu laguntza Pangea-ri",
+    "filteredNetworkHelpExplanation": "Mezu elektroniko bat bidaliko dizugu Pangea Chat sare honetan funtzionatzen laguntzeko.",
+    "filteredNetworkHelpWaiting": "Zure eskaera konektatu bezain laster bidaliko da.",
+    "filteredNetworkHelpSent": "Bidalita. Posta elektronikoz jarriko gara harremanetan.",
+    "filteredNetworkHelpRefused": "Ezin izan dugu zure eskaera bidali. Mesedez, bidali mezu elektroniko bat support@pangea.chat helbidera.",
+    "filteredNetworkVideoBlocked": "Sare honek bideoak blokeatzen ditu.",
+    "filteredNetworkImagesBlocked": "Sare honek irudiak blokeatzen ditu.",
+    "filteredNetworkMapBlocked": "Sare honek mapa blokeatzen du.",
+    "callFullScreenTitle": "Deiak pantaila osoan erakutsi",
+    "callFullScreenMessage": "Dei bat jaso duzu Pangea Chat itxita zegoen bitartean, baina telefonoak jakinarazpen txiki bat baino ezin izan du erakutsi. Baimendu pantaila osoko deiak, hurrengoa pantaila osoan ager dadin, telefonoa blokeatuta egon arren.",
+    "callMicrophoneTitle": "Erabili mikrofonoa deietarako",
+    "callMicrophoneMessage": "Pangea Chat-ek zure mikrofonoa behar du deietarako, blokeo-pantailatik erantzuten dituzun deiak barne.",
+    "callMicrophoneOffTitle": "Zure deia ez da konektatu",
+    "callMicrophoneOffMessage": "Pangea Chat-ek ezin du zure mikrofonoa erabili. Sakatu Ezarpenetan aktibatzeko."
 }

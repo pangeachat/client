@@ -2918,7 +2918,6 @@
     "errorDisableIGCClassDesc": "Ushbu suhbat bo'lib o'tadigan kurs uchun grammatik yordam o'chirilgan.",
     "error405Desc": "Iltimos, Asosiy menyu > O'rganish sozlamalarida tillaringizni belgilang.",
     "termsAndConditions": "Shartlar va shartlar",
-    "andCertifyIAmAtLeast13YearsOfAge": " va kamida 16 yoshda ekanligimni tasdiqlayman.",
     "error502504Desc": "Tarjimalar va grammatik vositalar sekin yoki mavjud bo'lmasligi mumkin, Pangea botlari yangilanishni kutmoqda.",
     "error404Desc": "Pangea Bot bu qanday tarjima qilishni bilmayapti...",
     "errorPleaseRefresh": "Biz bu muammoni hal qilmoqdamiz! Iltimos, sahifani yangilang va qayta urinib ko'ring.",
@@ -4071,10 +4070,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -9971,5 +9966,28 @@
     "xpToCompleteObjectiveDesc": "Har bir topshiriqni bajarish uchun kerak bo'ladigan XP ni belgilang",
     "objectiveCircleComplete": "Missiya {index}: yakunlandi",
     "objectiveCircleUpNext": "Missiya {index}: keyingisi",
-    "useActivityImageAsChatBackground": "Faoliyat rasmini chat fon rasmi sifatida ishlatish"
+    "useActivityImageAsChatBackground": "Faoliyat rasmini chat fon rasmi sifatida ishlatish",
+    "useActivityImageAsChatBackground": "Faoliyat rasmini chat fon rasmi sifatida ishlatish",
+    "andCertifyIMeetTheMinimumAge": " va men kamida 13 yoshda ekanligimni yoki agar yuqori bo'lsa, mamlakatimda talab qilinadigan minimal yoshga to'g'ri kelishimni tasdiqlayman.",
+    "filteredNetworkBlockedTitle": "Bu tarmoq Pangea Chat'ni bloklamoqda",
+    "filteredNetworkPartlyBlockedTitle": "Bu tarmoq Pangea Chat'ning bir qismini bloklamoqda",
+    "filteredNetworkWhatCanIDo": "Nima qilishim mumkin?",
+    "filteredNetworkPhoneAdvice": "Wi-Fi'ni oʻchiring va buning oʻrniga mobil maʼlumotlardan foydalaning.",
+    "filteredNetworkComputerAdvice": "Bu Wi-Fi oʻrniga telefoningizning hotspotiga ulaning.",
+    "filteredNetworkItHeading": "Oʻqituvchilar va IT xodimlari uchun",
+    "filteredNetworkItBody": "IT jamoangizdan ushbu domenlarga ruxsat berishni soʻrang:",
+    "filteredNetworkAskForHelp": "Yordam uchun Pangea'ga murojaat qiling",
+    "filteredNetworkHelpExplanation": "Pangea Chat'ni ushbu tarmoqda ishlashiga yordam berish uchun sizga elektron pochta orqali xabar yuboramiz.",
+    "filteredNetworkHelpWaiting": "Ulanishingiz bilanoq soʻrovingiz yuboriladi.",
+    "filteredNetworkHelpSent": "Yuborildi. Siz bilan elektron pochta orqali bogʻlanamiz.",
+    "filteredNetworkHelpRefused": "Soʻrovingizni yubora olmadik. Iltimos, support@pangea.chat manziliga elektron pochta yuboring.",
+    "filteredNetworkVideoBlocked": "Bu tarmoq videolarni bloklaydi.",
+    "filteredNetworkImagesBlocked": "Bu tarmoq rasmlarni bloklaydi.",
+    "filteredNetworkMapBlocked": "Bu tarmoq xaritani bloklaydi.",
+    "callFullScreenTitle": "Qo‘ng‘iroqlar to‘liq ekranda jiringlasin",
+    "callFullScreenMessage": "Pangea Chat yopiq bo‘lganida qo‘ng‘iroq keldi, ammo telefoningiz faqat kichik bildirishnoma ko‘rsata oldi. To‘liq ekranli qo‘ng‘iroqlarga ruxsat bering, shunda keyingi qo‘ng‘iroq telefoningiz qulflangan bo‘lsa ham butun ekranda jiringlaydi.",
+    "callMicrophoneTitle": "Qoʻngʻiroqlar uchun mikrofoningizdan foydalaning",
+    "callMicrophoneMessage": "Pangea Chat qoʻngʻiroqlar, shu jumladan qulflangan ekrandan javob beradigan qoʻngʻiroqlar uchun mikrofoningizga muhtoj.",
+    "callMicrophoneOffTitle": "Qoʻngʻirogʻingiz ulanmadi",
+    "callMicrophoneOffMessage": "Pangea Chat mikrofoningizdan foydalana olmaydi. Sozlamalarda yoqish uchun bosing."
 }

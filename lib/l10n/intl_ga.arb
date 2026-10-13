@@ -2919,7 +2919,6 @@
     "errorDisableIGCClassDesc": "Tá cabhair gramadála dícheangailte don chúrsa ina bhfuil an comhrá seo.",
     "error405Desc": "Le do thoil, socraigh do chuid teangacha sa Bhealach Príomh > Socruithe Foghlama.",
     "termsAndConditions": "Tearmaí agus Coinníollacha",
-    "andCertifyIAmAtLeast13YearsOfAge": " agus deimhním go bhfuil mé ar a laghad 16 bliain d'aois.",
     "error502504Desc": "D'fhéadfadh go mbeadh na huirlisí aistriúcháin agus gramadach mall nó neamh-inmhianaithe agus na bots Pangea ag teacht chun cinn.",
     "error404Desc": "Níl a fhios ag Bot Pangea conas é a aistriú...",
     "errorPleaseRefresh": "Táimid ag déileáil leis! Le do thoil, luchtú arís agus bain triail eile as.",
@@ -3705,10 +3704,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -9978,5 +9973,28 @@
     "xpToCompleteObjectiveDesc": "Socraigh an XP atá ag teastáil chun gach misean a chríochnú",
     "objectiveCircleComplete": "Misean {index}: críochnaithe",
     "objectiveCircleUpNext": "Misean {index}: an chéad cheann eile",
-    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá"
+    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
+    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
+    "andCertifyIMeetTheMinimumAge": " agus deimhním go bhfuil mé 13 bliana d’aois ar a laghad, nó an aois íosta a theastaíonn i mo thír má tá sin níos airde.",
+    "filteredNetworkBlockedTitle": "Tá an líonra seo ag blocáil Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Tá an líonra seo ag blocáil cuid de Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Cad is féidir liom a dhéanamh?",
+    "filteredNetworkPhoneAdvice": "Múch an Wi-Fi agus bain úsáid as sonraí soghluaiste ina ionad.",
+    "filteredNetworkComputerAdvice": "Ceangail le hotspot do ghutháin in ionad an Wi-Fi seo.",
+    "filteredNetworkItHeading": "Do mhúinteoirí agus d'fhoireann TF",
+    "filteredNetworkItBody": "Iarr ar d'fhoireann TF na fearainn seo a cheadú:",
+    "filteredNetworkAskForHelp": "Iarr cabhair ar Pangea",
+    "filteredNetworkHelpExplanation": "Seolfaimid ríomhphost chugat chun cabhrú le Pangea Chat a chur ag obair ar an líonra seo.",
+    "filteredNetworkHelpWaiting": "Seolfar d'iarratas a luaithe a bheidh tú ceangailte.",
+    "filteredNetworkHelpSent": "Seolta. Beimid i dteagmháil leat trí ríomhphost.",
+    "filteredNetworkHelpRefused": "Níorbh fhéidir linn d'iarratas a sheoladh. Seol ríomhphost chuig support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Blocálann an líonra seo físeáin.",
+    "filteredNetworkImagesBlocked": "Blocálann an líonra seo íomhánna.",
+    "filteredNetworkMapBlocked": "Blocálann an líonra seo an léarscáil.",
+    "callFullScreenTitle": "Lig do ghlaonna glaoch lánscáileáin",
+    "callFullScreenMessage": "Tháinig glao isteach nuair a bhí Pangea Chat dúnta, ach ní fhéadfadh do ghuthán ach fógra beag a thaispeáint dó. Ceadaigh glaonna lánscáileáin ionas go nglaonn an chéad cheann eile ar do scáileán iomlán, fiú nuair a bhíonn do ghuthán faoi ghlas.",
+    "callMicrophoneTitle": "Úsáid do mhicreafón le haghaidh glaonna",
+    "callMicrophoneMessage": "Teastaíonn do mhicreafón ó Pangea Chat le haghaidh glaonna, lena n-áirítear glaonna a bhfreagraíonn tú dóibh ón scáileán glasála.",
+    "callMicrophoneOffTitle": "Níor nascadh do ghlao",
+    "callMicrophoneOffMessage": "Ní féidir le Pangea Chat do mhicreafón a úsáid. Tapáil chun é a chur ar siúl sna Socruithe."
 }

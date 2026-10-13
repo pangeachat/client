@@ -10,7 +10,7 @@ Product analytics is GA4 via `firebase_analytics`, wrapped in
 and called from discrete product moments (signup, login, subscription,
 tutorials, notification opens, toolbar actions). The bot-notification open
 event and its metadata are a separate cross-repo contract —
-[bot-notification-open-analytics.instructions.md](../../../.github/.github/instructions/bot-notification-open-analytics.instructions.md)
+[analytics](../../../engagement/.github/instructions/analytics.instructions.md)
 — carried in Matrix event content, not URLs, so routing changes never affect
 it.
 
@@ -24,7 +24,7 @@ and onboarding decisions read first-party signals (persisted Matrix opened
 events, Synapse user activity, journey-checklist state), and a GA-sourced
 signal may only ever *suppress* a bot send, never cause one — the architecture
 and rationale live in the
-[engagement-analytics contract](../../../.github/.github/instructions/bot-notification-open-analytics.instructions.md).
+[engagement-analytics contract](../../../engagement/.github/instructions/analytics.instructions.md).
 Event names, params, and screen names are still a cross-service contract: the
 measurement mirror must stay joinable by name with those first-party facts.
 
@@ -118,17 +118,13 @@ reporting:
   are possible.
 - **Notification-tap events carry the notification type and intended action**
   per the
-  [bot-notification contract](../../../.github/.github/instructions/bot-notification-open-analytics.instructions.md);
+  [bot-notification contract](../../../engagement/.github/instructions/analytics.instructions.md);
   only those events have them.
 - **Room-scoped events may carry a room id** as a row-level param, never a
   registered dimension (the cardinality rule).
 - **Timestamp and web/mobile platform come from GA4 automatically** (event
   timestamp; per-platform streams) — do not duplicate them as params.
-- **One writer per product moment.** A moment that both advances the
-  first-party journey checklist and emits a GA event goes through a single
-  client helper that writes both together, so state and mirror can never
-  drift — the analytics twin of the routing rule that only `WorkspaceNav`
-  writes URLs.
+- **One writer per product moment.** A moment that both advances the first-party journey checklist and emits a GA event goes through a single client helper that writes both together, so state and mirror can never drift — the analytics twin of the routing rule that only `WorkspaceNav` writes URLs. That helper is [`JourneyMoments`](../../lib/features/journey_checklist/journey_moments.dart); which steps exist and what the record holds are the [journey-checklist contract](../../../engagement/.github/instructions/analytics.instructions.md).
 
 ## User properties
 

@@ -690,7 +690,6 @@
     "errorDisableIGCClassDesc": "Grammatikassistance er deaktiveret for kurset, som denne chat er i.",
     "error405Desc": "Indstil dine sprog i Hovedmenu > Læringsindstillinger.",
     "termsAndConditions": "Vilkår og betingelser",
-    "andCertifyIAmAtLeast13YearsOfAge": " og bekræfter, at jeg er mindst 16 år gammel.",
     "error502504Desc": "Oversættelses- og grammatikværktøjer kan være langsomme eller utilgængelige, mens Pangea-botterne indhenter.",
     "error404Desc": "Pangea-botten er ikke sikker på, hvordan det skal oversætte det...",
     "errorPleaseRefresh": "Vi undersøger det! Opdater venligst siden og prøv igen.",
@@ -4438,10 +4437,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10887,5 +10882,28 @@
     "xpToCompleteObjectiveDesc": "Indstil den XP, der er nødvendig for at fuldføre hver mission",
     "objectiveCircleComplete": "Mission {index}: gennemført",
     "objectiveCircleUpNext": "Mission {index}: næste",
-    "useActivityImageAsChatBackground": "Brug aktivitetsbillede som chatbaggrund"
+    "useActivityImageAsChatBackground": "Brug aktivitetsbillede som chatbaggrund",
+    "useActivityImageAsChatBackground": "Brug aktivitetsbillede som chatbaggrund",
+    "andCertifyIMeetTheMinimumAge": " og bekræfter, at jeg er mindst 13 år gammel, eller den minimumsalder, der kræves i mit land, hvis den er højere.",
+    "filteredNetworkBlockedTitle": "Dette netværk blokerer Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Dette netværk blokerer dele af Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Hvad kan jeg gøre?",
+    "filteredNetworkPhoneAdvice": "Slå Wi-Fi fra, og brug mobildata i stedet.",
+    "filteredNetworkComputerAdvice": "Opret forbindelse til din telefons hotspot i stedet for dette Wi-Fi.",
+    "filteredNetworkItHeading": "Til lærere og IT-personale",
+    "filteredNetworkItBody": "Bed dit IT-team om at tillade disse domæner:",
+    "filteredNetworkAskForHelp": "Spørg Pangea om hjælp",
+    "filteredNetworkHelpExplanation": "Vi sender dig en e-mail for at hjælpe med at få Pangea Chat til at fungere på dette netværk.",
+    "filteredNetworkHelpWaiting": "Din anmodning sendes, så snart du er forbundet.",
+    "filteredNetworkHelpSent": "Sendt. Vi kontakter dig via e-mail.",
+    "filteredNetworkHelpRefused": "Vi kunne ikke sende din anmodning. Send venligst en e-mail til support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Dette netværk blokerer videoer.",
+    "filteredNetworkImagesBlocked": "Dette netværk blokerer billeder.",
+    "filteredNetworkMapBlocked": "Dette netværk blokerer kortet.",
+    "callFullScreenTitle": "Lad opkald ringe på fuld skærm",
+    "callFullScreenMessage": "Der kom et opkald, mens Pangea Chat var lukket, men din telefon kunne kun vise en lille notifikation for det. Tillad fuldskærmsopkald, så det næste ringer på hele din skærm, selv når din telefon er låst.",
+    "callMicrophoneTitle": "Brug din mikrofon til opkald",
+    "callMicrophoneMessage": "Pangea Chat skal bruge din mikrofon til opkald, herunder opkald, du besvarer fra låseskærmen.",
+    "callMicrophoneOffTitle": "Dit opkald blev ikke forbundet",
+    "callMicrophoneOffMessage": "Pangea Chat kan ikke bruge din mikrofon. Tryk for at slå den til i Indstillinger."
 }

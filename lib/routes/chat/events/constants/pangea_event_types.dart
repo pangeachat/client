@@ -54,6 +54,7 @@ class PangeaEventTypes {
   static const report = 'm.report';
   static const textToSpeechRule = "p.rule.text_to_speech";
   static const analyticsInviteRule = "p.rule.analytics_invite";
+  static const missedCallRule = "p.rule.missed_call";
   static const analyticsInviteContent = "p.analytics_request";
 
   /// A practice exercise that is related to a message
@@ -91,4 +92,10 @@ class PangeaEventTypes {
   static const firstBotDMMessage = "pangea_first_bot_dm_message";
 
   static const onboardingSettings = "org.pangea.onboarding_settings";
+
+  /// The learner's journey steps and app-ask history, read by the engagement
+  /// system (engagement analytics.instructions.md, Journey-checklist
+  /// state). Its own event so older clients, which rewrite the profile event
+  /// whole, never erase it.
+  static const journeyChecklist = 'pangea.journey_checklist';
 }

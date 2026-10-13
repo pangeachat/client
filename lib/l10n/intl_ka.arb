@@ -1293,7 +1293,6 @@
     "errorDisableIGCClassDesc": "გრამატიკის დახმარება გამორთულია ამ კურსისთვის, სადაც ეს ჩატი მდებარეობს.",
     "error405Desc": "გთხოვთ, დააყენოთ თქვენი ენები მთავარი მენიუდან > სწავლების პარამეტრებიდან.",
     "termsAndConditions": "წესებს და პირობებს",
-    "andCertifyIAmAtLeast13YearsOfAge": "და ვადასტურებ, რომ მე მინიმუმ 16 წლის ვარ.",
     "error502504Desc": "თარგმნის და გრამატიკის ხელსაწყოები შეიძლება იყოს ნელი ან მიუწვდომელი, სანამ პანგეა ბოტები არ დაეწევიან.",
     "error404Desc": "Pangea Bot-ი ვერ გარჩევს, როგორ უნდა თარგმნოს ეს...",
     "errorPleaseRefresh": "ჩვენ ამას ვისწრაფვით! გთხოვთ, განაახლოთ გვერდი და სცადოთ თავიდან.",
@@ -4418,10 +4417,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -10867,5 +10862,28 @@
     "xpToCompleteObjectiveDesc": "დააყენეთ XP, რომელიც საჭიროა თითოეული მისიის დასასრულებლად",
     "objectiveCircleComplete": "მისია {index}: დასრულებულია",
     "objectiveCircleUpNext": "მისია {index}: შემდეგი",
-    "useActivityImageAsChatBackground": "აქტივობის სურათის გამოყენება ჩეთის ფონად"
+    "useActivityImageAsChatBackground": "აქტივობის სურათის გამოყენება ჩეთის ფონად",
+    "useActivityImageAsChatBackground": "აქტივობის სურათის გამოყენება ჩეთის ფონად",
+    "andCertifyIMeetTheMinimumAge": " და ვადასტურებ, რომ ვარ მინიმუმ 13 წლის, ან ჩემს ქვეყანაში მოთხოვნილი მინიმალური ასაკის, თუ ის უფრო მაღალია.",
+    "filteredNetworkBlockedTitle": "ეს ქსელი ბლოკავს Pangea Chat-ს",
+    "filteredNetworkPartlyBlockedTitle": "ეს ქსელი ბლოკავს Pangea Chat-ის ნაწილს",
+    "filteredNetworkWhatCanIDo": "რა შემიძლია გავაკეთო?",
+    "filteredNetworkPhoneAdvice": "გამორთეთ Wi-Fi და ამის ნაცვლად გამოიყენეთ მობილური ინტერნეტი.",
+    "filteredNetworkComputerAdvice": "ამ Wi-Fi-ის ნაცვლად დაუკავშირდით თქვენი ტელეფონის ცხელ წერტილს.",
+    "filteredNetworkItHeading": "მასწავლებლებისა და IT პერსონალისთვის",
+    "filteredNetworkItBody": "სთხოვეთ თქვენს IT გუნდს, დაუშვას ეს დომენები:",
+    "filteredNetworkAskForHelp": "სთხოვეთ Pangea-ს დახმარება",
+    "filteredNetworkHelpExplanation": "ჩვენ გამოგიგზავნით ელფოსტას, რათა დაგეხმაროთ Pangea Chat-ის ამ ქსელში მუშაობაში.",
+    "filteredNetworkHelpWaiting": "თქვენი მოთხოვნა გაიგზავნება, როგორც კი დაუკავშირდებით.",
+    "filteredNetworkHelpSent": "გაგზავნილია. ჩვენ დაგიკავშირდებით ელფოსტით.",
+    "filteredNetworkHelpRefused": "თქვენი მოთხოვნის გაგზავნა ვერ მოხერხდა. გთხოვთ, გამოაგზავნოთ ელფოსტა support@pangea.chat-ზე.",
+    "filteredNetworkVideoBlocked": "ეს ქსელი ბლოკავს ვიდეოებს.",
+    "filteredNetworkImagesBlocked": "ეს ქსელი ბლოკავს სურათებს.",
+    "filteredNetworkMapBlocked": "ეს ქსელი ბლოკავს რუკას.",
+    "callFullScreenTitle": "ზარები მთელ ეკრანზე",
+    "callFullScreenMessage": "ზარი შემოვიდა, როცა Pangea Chat დახურული იყო, მაგრამ თქვენს ტელეფონს შეეძლო მხოლოდ მცირე შეტყობინების ჩვენება. დაუშვით სრულეკრანიანი ზარები, რათა შემდეგი ზარი მთელ ეკრანზე გამოჩნდეს, მაშინაც კი, როცა თქვენი ტელეფონი დაბლოკილია.",
+    "callMicrophoneTitle": "გამოიყენეთ მიკროფონი ზარებისთვის",
+    "callMicrophoneMessage": "Pangea Chat-ს სჭირდება თქვენი მიკროფონი ზარებისთვის, მათ შორის ზარებისთვის, რომლებსაც უპასუხებთ დაბლოკილი ეკრანიდან.",
+    "callMicrophoneOffTitle": "თქვენი ზარი არ დაკავშირდა",
+    "callMicrophoneOffMessage": "Pangea Chat-ს არ შეუძლია თქვენი მიკროფონის გამოყენება. შეეხეთ, რომ ჩართოთ პარამეტრებში."
 }

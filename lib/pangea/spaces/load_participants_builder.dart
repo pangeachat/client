@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
+import 'package:fluffychat/features/user/member_analytics_profiles_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/spaces/course_leaderboard.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -57,7 +58,7 @@ class LoadParticipantsBuilderState extends State<LoadParticipantsBuilder> {
       // level sorting/styling: this instance's cache starts empty regardless.
       if (widget.loadProfiles && widget.room?.membership == Membership.join) {
         try {
-          await _cacheLevels();
+          await _cacheLevels(_fetchRoomProfiles());
         } catch (err, s) {
           ErrorHandler.logError(
             e: err,
@@ -80,13 +81,17 @@ class LoadParticipantsBuilderState extends State<LoadParticipantsBuilder> {
         error = null;
       });
 
+      // Started before the member list: the server knows the room's members
+      // itself, so the two requests need not wait on each other.
+      final roomProfiles = widget.loadProfiles ? _fetchRoomProfiles() : null;
+
       await widget.room?.requestParticipants(
         [Membership.join, Membership.invite, Membership.knock],
         false,
         true,
       );
 
-      if (widget.loadProfiles) await _cacheLevels();
+      if (roomProfiles != null) await _cacheLevels(roomProfiles);
     } catch (err, s) {
       error = err.toString();
       ErrorHandler.logError(e: err, s: s, data: {'roomId': widget.room?.id});
@@ -128,7 +133,21 @@ class LoadParticipantsBuilderState extends State<LoadParticipantsBuilder> {
   /// but bounded so a large course doesn't burst the analytics endpoint.
   static const int _profileConcurrency = 8;
 
-  Future<void> _cacheLevels() async {
+  /// Every joined member's profile in one request. Empty when the server
+  /// predates that read or it failed (the repo reports the failure), which
+  /// leaves every member to [_cacheLevels]' one-at-a-time fetch.
+  Future<Map<String, AnalyticsProfileModel>> _fetchRoomProfiles() async {
+    final room = widget.room!;
+    final result = await room.client.getMemberAnalyticsProfiles(room.id);
+    return result.asValue?.value ?? const {};
+  }
+
+  /// Caches [roomProfiles], then fetches one at a time only the joined
+  /// members it lacks: a remote member, or one who joined after the read.
+  Future<void> _cacheLevels(
+    Future<Map<String, AnalyticsProfileModel>> roomProfiles,
+  ) async {
+    _levelsCache.addAll(await roomProfiles);
     final pending = participants
         .where(
           (user) =>
