@@ -208,7 +208,7 @@ void main() {
 
   Finder sectionHeader() => find.text('Chats');
   Finder seeAll() => find.text('See all');
-  Finder createChat() => find.byTooltip('Create group chat');
+  Finder createChat() => find.widgetWithText(FilledButton, 'New course chat');
 
   testWidgets('a learner with no chats gets no section at all', (tester) async {
     stubHierarchy([]);
@@ -230,6 +230,8 @@ void main() {
     expect(find.byType(ChatListItem), findsNWidgets(ids.length));
     // Every joined chat is already on screen; the subpage would repeat them.
     expect(seeAll(), findsNothing);
+    // Only a course admin can add a chat to the course.
+    expect(createChat(), findsNothing);
   });
 
   testWidgets('more chats than fit add See all without asking the server', (

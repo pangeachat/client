@@ -10,9 +10,8 @@ import 'package:flutter/material.dart';
 ///
 /// The action row holds the section's "See all" ([CourseSectionButton]) and,
 /// before it, any shortcut the section offers ([CourseSectionShortcut]:
-/// create a chat, invite a member). The actions take the width they need and
-/// the title takes the rest, so a long localized label squeezes the title
-/// instead of overflowing the row.
+/// create a chat, invite a member). The actions sit at the end of the title's
+/// line when they fit and wrap under the title when they don't (#9492).
 class CourseSectionHeader extends StatelessWidget {
   final String title;
   final IconData? icon;
@@ -22,14 +21,9 @@ class CourseSectionHeader extends StatelessWidget {
   /// match.
   static const double iconSize = 20.0;
 
-  /// The share of the row the actions may take before one has to wrap —
-  /// enough that no realistic label wraps in a narrow course column, and
-  /// little enough that the title never disappears behind one that does.
-  static const double _maxActionsFraction = 0.7;
-
-  /// Between two actions — each a full-size control since #8815, not a bare
-  /// glyph that carried its own margin.
-  static const double _actionSpacing = 8.0;
+  /// Between the icon and title, and between two actions — each a full-size
+  /// control since #8815, not a bare glyph that carried its own margin.
+  static const double _spacing = 8.0;
 
   const CourseSectionHeader({
     required this.title,
@@ -42,35 +36,33 @@ class CourseSectionHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
-      child: LayoutBuilder(
-        builder: (context, constraints) => Row(
-          spacing: 8.0,
-          children: [
-            if (icon != null) Icon(icon, size: iconSize),
-            Expanded(
-              child: Text(
-                title,
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+      child: Wrap(
+        alignment: WrapAlignment.spaceBetween,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        spacing: _spacing,
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            spacing: _spacing,
+            children: [
+              if (icon != null) Icon(icon, size: iconSize),
+              Flexible(
+                child: Text(
+                  title,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
+            ],
+          ),
+          if (actions.isNotEmpty)
+            Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
+              spacing: _spacing,
+              children: actions,
             ),
-            if (actions.isNotEmpty)
-              // Bounding the actions is what lets a label wrap: the row hands
-              // a non-flex child unbounded width, under which a wrapping
-              // label can't measure itself.
-              ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxWidth: constraints.maxWidth * _maxActionsFraction,
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  spacing: _actionSpacing,
-                  children: actions,
-                ),
-              ),
-          ],
-        ),
+        ],
       ),
     );
   }
