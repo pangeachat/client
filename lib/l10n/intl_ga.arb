@@ -9980,5 +9980,8 @@
     "callMicrophoneMessage": "Teastaíonn do mhicreafón ó Pangea Chat le haghaidh glaonna, lena n-áirítear glaonna a bhfreagraíonn tú dóibh ón scáileán glasála.",
     "callMicrophoneOffTitle": "Níor nascadh do ghlao",
     "callMicrophoneOffMessage": "Ní féidir le Pangea Chat do mhicreafón a úsáid. Tapáil chun é a chur ar siúl sna Socruithe.",
-    "mapCreditsLabel": "Creidmheasanna léarscáile: Stadia Maps, OpenMapTiles agus OpenStreetMap"
+    "mapCreditsLabel": "Creidmheasanna léarscáile: Stadia Maps, OpenMapTiles agus OpenStreetMap",
+    "activityLaunchFindingCourses": "Ag aimsiú do chúrsaí…",
+    "activityLaunchCreatingRoom": "Ag cruthú do ghníomhaíochta…",
+    "activityLaunchOpeningRoom": "Ag oscailt do ghníomhaíochta…"
 }

@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat brauch Äre Mikro fir Uriff, och Uriff déi Dir vum Spärbildschierm beäntwert.",
     "callMicrophoneOffTitle": "Ären Uruff gouf net ugeschloss",
     "callMicrophoneOffMessage": "Pangea Chat kann Äre Mikro net benotzen. Tippen fir en an den Astellungen unzeschalten.",
-    "mapCreditsLabel": "Kaart Credits: Stadia Maps, OpenMapTiles an OpenStreetMap"
+    "mapCreditsLabel": "Kaart Credits: Stadia Maps, OpenMapTiles an OpenStreetMap",
+    "activityLaunchFindingCourses": "Sichen Är Coursen…",
+    "activityLaunchCreatingRoom": "Erstelle Är Aktivitéit…",
+    "activityLaunchOpeningRoom": "Maachen Är Aktivitéit op…"
 }

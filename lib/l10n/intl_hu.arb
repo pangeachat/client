@@ -10072,5 +10072,8 @@
     "callMicrophoneMessage": "A Pangea Chatnek szüksége van a mikrofonjára a hívásokhoz, beleértve a zárolási képernyőről fogadott hívásokat is.",
     "callMicrophoneOffTitle": "A hívás nem jött létre",
     "callMicrophoneOffMessage": "A Pangea Chat nem tudja használni a mikrofonját. Koppintson ide a beállításokban való bekapcsoláshoz.",
-    "mapCreditsLabel": "Térkép forrása: Stadia Maps, OpenMapTiles és OpenStreetMap"
+    "mapCreditsLabel": "Térkép forrása: Stadia Maps, OpenMapTiles és OpenStreetMap",
+    "activityLaunchFindingCourses": "Keresem a kurzusaidat…",
+    "activityLaunchCreatingRoom": "Létrehozom a tevékenységedet…",
+    "activityLaunchOpeningRoom": "Megnyitom a tevékenységedet…"
 }

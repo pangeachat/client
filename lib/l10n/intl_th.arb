@@ -10601,5 +10601,8 @@
     "callMicrophoneMessage": "Pangea Chat ต้องใช้ไมโครโฟนของคุณสำหรับการโทร รวมถึงการโทรที่คุณรับจากหน้าจอล็อก",
     "callMicrophoneOffTitle": "การโทรของคุณไม่สามารถเชื่อมต่อได้",
     "callMicrophoneOffMessage": "Pangea Chat ไม่สามารถใช้ไมโครโฟนของคุณได้ แตะเพื่อเปิดใช้งานในการตั้งค่า",
-    "mapCreditsLabel": "เครดิตแผนที่: Stadia Maps, OpenMapTiles และ OpenStreetMap"
+    "mapCreditsLabel": "เครดิตแผนที่: Stadia Maps, OpenMapTiles และ OpenStreetMap",
+    "activityLaunchFindingCourses": "กำลังค้นหาคอร์สของคุณ…",
+    "activityLaunchCreatingRoom": "กำลังสร้างกิจกรรมของคุณ…",
+    "activityLaunchOpeningRoom": "กำลังเปิดกิจกรรมของคุณ…"
 }

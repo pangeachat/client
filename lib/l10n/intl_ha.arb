@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat na buƙatar makirufonka don kira, gami da kiran da ka amsa daga allon kulle.",
     "callMicrophoneOffTitle": "Kiran ka bai haɗu ba",
     "callMicrophoneOffMessage": "Pangea Chat ba zai iya amfani da makirufonka ba. Danna don kunna shi a Saituna.",
-    "mapCreditsLabel": "Godiya ga taswira: Stadia Maps, OpenMapTiles da OpenStreetMap"
+    "mapCreditsLabel": "Godiya ga taswira: Stadia Maps, OpenMapTiles da OpenStreetMap",
+    "activityLaunchFindingCourses": "Neman darussanka…",
+    "activityLaunchCreatingRoom": "Ƙirƙirar ayyukanka…",
+    "activityLaunchOpeningRoom": "Buɗe ayyukanka…"
 }

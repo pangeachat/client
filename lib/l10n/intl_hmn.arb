@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat xav tau koj lub microphone rau kev hu, suav nrog kev hu uas koj teb los ntawm lub vijtsam kaw.",
     "callMicrophoneOffTitle": "Koj qhov kev hu tsis txuas",
     "callMicrophoneOffMessage": "Pangea Chat tsis tuaj yeem siv koj lub microphone. Coj mus rhaub kom qhib nws hauv Chaw.",
-    "mapCreditsLabel": "Daim ntawv qhia chaw: Stadia Maps, OpenMapTiles thiab OpenStreetMap"
+    "mapCreditsLabel": "Daim ntawv qhia chaw: Stadia Maps, OpenMapTiles thiab OpenStreetMap",
+    "activityLaunchFindingCourses": "Nrhiav koj cov hoob kawm…",
+    "activityLaunchCreatingRoom": "Tsim koj qhov kev ua si…",
+    "activityLaunchOpeningRoom": "Qhib koj qhov kev ua si…"
 }

@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Mila ny mikrôfôninao ny Pangea Chat ho an'ny antso, anisan'izany ny antso valianao avy amin'ny efijery mihidy.",
     "callMicrophoneOffTitle": "Tsy nifandray ny antsonao",
     "callMicrophoneOffMessage": "Tsy afaka mampiasa ny mikrôfôninao ny Pangea Chat. Tsindrio raha te hampandeha azy ao amin'ny Fikirana.",
-    "mapCreditsLabel": "Fampiasana sarintany: Stadia Maps, OpenMapTiles ary OpenStreetMap"
+    "mapCreditsLabel": "Fampiasana sarintany: Stadia Maps, OpenMapTiles ary OpenStreetMap",
+    "activityLaunchFindingCourses": "Mitady ny taranjao…",
+    "activityLaunchCreatingRoom": "Mamorona ny hetsikao…",
+    "activityLaunchOpeningRoom": "Manokatra ny hetsikao…"
 }

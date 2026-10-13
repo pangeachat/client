@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat କୁ କଲ୍ ପାଇଁ ଆପଣଙ୍କ ମାଇକ୍ରୋଫୋନ୍ ଆବଶ୍ୟକ, ଲକ୍ ସ୍କ୍ରିନରୁ ଆପଣ ଉଠାଉଥିବା କଲ୍ ସମେତ।",
     "callMicrophoneOffTitle": "ଆପଣଙ୍କ କଲ୍ ସଂଯୋଗ ହୋଇପାରିଲା ନାହିଁ",
     "callMicrophoneOffMessage": "Pangea Chat ଆପଣଙ୍କ ମାଇକ୍ରୋଫୋନ୍ ବ୍ୟବହାର କରିପାରୁ ନାହିଁ। ସେଟିଙ୍ଗ୍ସରେ ଏହାକୁ ଅନ୍ କରିବା ପାଇଁ ଟ୍ୟାପ୍ କରନ୍ତୁ।",
-    "mapCreditsLabel": "ମାନଚିତ୍ର କ୍ରେଡିଟ୍: Stadia Maps, OpenMapTiles ଏବଂ OpenStreetMap"
+    "mapCreditsLabel": "ମାନଚିତ୍ର କ୍ରେଡିଟ୍: Stadia Maps, OpenMapTiles ଏବଂ OpenStreetMap",
+    "activityLaunchFindingCourses": "ଆପଣଙ୍କ ପାଠ୍ୟକ୍ରମ ଖୋଜାଯାଉଛି…",
+    "activityLaunchCreatingRoom": "ଆପଣଙ୍କ କାର୍ଯ୍ୟକଳାପ ସୃଷ୍ଟି କରାଯାଉଛି…",
+    "activityLaunchOpeningRoom": "ଆପଣଙ୍କ କାର୍ଯ୍ୟକଳାପ ଖୋଲାଯାଉଛି…"
 }

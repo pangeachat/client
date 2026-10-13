@@ -9973,5 +9973,8 @@
     "callMicrophoneMessage": "Pangea Chat qoʻngʻiroqlar, shu jumladan qulflangan ekrandan javob beradigan qoʻngʻiroqlar uchun mikrofoningizga muhtoj.",
     "callMicrophoneOffTitle": "Qoʻngʻirogʻingiz ulanmadi",
     "callMicrophoneOffMessage": "Pangea Chat mikrofoningizdan foydalana olmaydi. Sozlamalarda yoqish uchun bosing.",
-    "mapCreditsLabel": "Xarita mualliflari: Stadia Maps, OpenMapTiles va OpenStreetMap"
+    "mapCreditsLabel": "Xarita mualliflari: Stadia Maps, OpenMapTiles va OpenStreetMap",
+    "activityLaunchFindingCourses": "Kurslaringizni topish…",
+    "activityLaunchCreatingRoom": "Faoliyatingizni yaratish…",
+    "activityLaunchOpeningRoom": "Faoliyatingizni ochish…"
 }

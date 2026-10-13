@@ -10061,5 +10061,8 @@
     "callMicrophoneMessage": "லாக் ஸ்கிரீனில் இருந்து நீங்கள் பதிலளிக்கும் அழைப்புகள் உட்பட, அழைப்புகளுக்கு Pangea Chat-க்கு உங்கள் மைக்ரோஃபோன் தேவை.",
     "callMicrophoneOffTitle": "உங்கள் அழைப்பு இணைக்கப்படவில்லை",
     "callMicrophoneOffMessage": "Pangea Chat உங்கள் மைக்ரோஃபோனைப் பயன்படுத்த முடியாது. அமைப்புகளில் அதை இயக்க தட்டவும்.",
-    "mapCreditsLabel": "வரைபட வரவுகள்: Stadia Maps, OpenMapTiles மற்றும் OpenStreetMap"
+    "mapCreditsLabel": "வரைபட வரவுகள்: Stadia Maps, OpenMapTiles மற்றும் OpenStreetMap",
+    "activityLaunchFindingCourses": "உங்கள் படிப்புகளைக் கண்டறிகிறது…",
+    "activityLaunchCreatingRoom": "உங்கள் செயல்பாட்டை உருவாக்குகிறது…",
+    "activityLaunchOpeningRoom": "உங்கள் செயல்பாட்டைத் திறக்கிறது…"
 }

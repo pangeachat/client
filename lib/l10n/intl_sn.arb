@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat inoda maikorofoni yako pakufona, kusanganisira mafoni aunopindura kubva pa lock screen.",
     "callMicrophoneOffTitle": "Foni yako haina kubatana",
     "callMicrophoneOffMessage": "Pangea Chat haigone kushandisa maikorofoni yako. Dzvanya kuti uibatidze muZvirongwa.",
-    "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles neOpenStreetMap"
+    "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles neOpenStreetMap",
+    "activityLaunchFindingCourses": "Kutsvaga makosi ako…",
+    "activityLaunchCreatingRoom": "Kugadzira chiitiko chako…",
+    "activityLaunchOpeningRoom": "Kuvhura chiitiko chako…"
 }

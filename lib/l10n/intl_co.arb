@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat hà bisognu di u vostru microfonu per e chjame, cumprese e chjame chì rispondi da u screnu di bloccu.",
     "callMicrophoneOffTitle": "A vostra chjama ùn s'hè cunnessa",
     "callMicrophoneOffMessage": "Pangea Chat ùn pò micca aduprà u vostru microfonu. Toccate per accende lu in i Paràmetri.",
-    "mapCreditsLabel": "Crediti di a carta: Stadia Maps, OpenMapTiles è OpenStreetMap"
+    "mapCreditsLabel": "Crediti di a carta: Stadia Maps, OpenMapTiles è OpenStreetMap",
+    "activityLaunchFindingCourses": "Truvendu i vostri corsi…",
+    "activityLaunchCreatingRoom": "Creendu a vostra attività…",
+    "activityLaunchOpeningRoom": "Aprende a vostra attività…"
 }

@@ -10913,5 +10913,8 @@
     "callMicrophoneMessage": "O Pangea Chat precisa do seu microfone para chamadas, incluindo chamadas que você atende da tela de bloqueio.",
     "callMicrophoneOffTitle": "Sua chamada não conectou",
     "callMicrophoneOffMessage": "O Pangea Chat não pode usar seu microfone. Toque para ativá-lo em Configurações.",
-    "mapCreditsLabel": "Créditos do mapa: Stadia Maps, OpenMapTiles e OpenStreetMap"
+    "mapCreditsLabel": "Créditos do mapa: Stadia Maps, OpenMapTiles e OpenStreetMap",
+    "activityLaunchFindingCourses": "Encontrando seus cursos…",
+    "activityLaunchCreatingRoom": "Criando sua atividade…",
+    "activityLaunchOpeningRoom": "Abrindo sua atividade…"
 }

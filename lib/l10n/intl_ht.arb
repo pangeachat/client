@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat bezwen mikwofòn ou pou apèl yo, enkli apèl ou reponn depi ekran bloke a.",
     "callMicrophoneOffTitle": "Apèl ou a pa konekte",
     "callMicrophoneOffMessage": "Pangea Chat pa ka sèvi ak mikwofòn ou. Tape pou limen li nan Anviwònman.",
-    "mapCreditsLabel": "Kredi kat: Stadia Maps, OpenMapTiles ak OpenStreetMap"
+    "mapCreditsLabel": "Kredi kat: Stadia Maps, OpenMapTiles ak OpenStreetMap",
+    "activityLaunchFindingCourses": "Nou ap chèche kou ou yo…",
+    "activityLaunchCreatingRoom": "Nou ap kreye aktivite ou a…",
+    "activityLaunchOpeningRoom": "Nou ap ouvri aktivite ou a…"
 }

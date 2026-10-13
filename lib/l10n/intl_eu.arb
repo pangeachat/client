@@ -9969,5 +9969,8 @@
     "callMicrophoneMessage": "Pangea Chat-ek zure mikrofonoa behar du deietarako, blokeo-pantailatik erantzuten dituzun deiak barne.",
     "callMicrophoneOffTitle": "Zure deia ez da konektatu",
     "callMicrophoneOffMessage": "Pangea Chat-ek ezin du zure mikrofonoa erabili. Sakatu Ezarpenetan aktibatzeko.",
-    "mapCreditsLabel": "Maparen kredituak: Stadia Maps, OpenMapTiles eta OpenStreetMap"
+    "mapCreditsLabel": "Maparen kredituak: Stadia Maps, OpenMapTiles eta OpenStreetMap",
+    "activityLaunchFindingCourses": "Zure ikastaroak bilatzen…",
+    "activityLaunchCreatingRoom": "Zure jarduera sortzen…",
+    "activityLaunchOpeningRoom": "Zure jarduera irekitzen…"
 }

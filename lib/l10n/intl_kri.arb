@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat nid yu maykrofon fɔ kɔl dɛn, inklud kɔl dɛn we yu ansar frɔm di lɔk skrin.",
     "callMicrophoneOffTitle": "Yu kɔl nɔ kɔnɛkt",
     "callMicrophoneOffMessage": "Pangea Chat nɔ go ebul yuz yu maykrofon. Tap fɔ tɔn am ɔn insay Sɛtinz.",
-    "mapCreditsLabel": "Map credit dɛn: Stadia Maps, OpenMapTiles ɛn OpenStreetMap"
+    "mapCreditsLabel": "Map credit dɛn: Stadia Maps, OpenMapTiles ɛn OpenStreetMap",
+    "activityLaunchFindingCourses": "De find yu kɔsis…",
+    "activityLaunchCreatingRoom": "De mek yu aktiviti…",
+    "activityLaunchOpeningRoom": "De ɔpen yu aktiviti…"
 }

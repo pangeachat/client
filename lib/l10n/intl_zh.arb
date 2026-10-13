@@ -9969,5 +9969,8 @@
     "callMicrophoneMessage": "Pangea Chat 需要使用您的麦克风进行通话，包括您从锁定屏幕接听的电话。",
     "callMicrophoneOffTitle": "您的通话未接通",
     "callMicrophoneOffMessage": "Pangea Chat 无法使用您的麦克风。轻点以在“设置”中将其打开。",
-    "mapCreditsLabel": "地图来源：Stadia Maps、OpenMapTiles 和 OpenStreetMap"
+    "mapCreditsLabel": "地图来源：Stadia Maps、OpenMapTiles 和 OpenStreetMap",
+    "activityLaunchFindingCourses": "正在查找您的课程…",
+    "activityLaunchCreatingRoom": "正在创建您的活动…",
+    "activityLaunchOpeningRoom": "正在打开您的活动…"
 }

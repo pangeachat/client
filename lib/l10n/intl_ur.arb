@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat کو کالز کے لیے آپ کے مائیکروفون کی ضرورت ہے، بشمول وہ کالز جو آپ لاک اسکرین سے جواب دیتے ہیں۔",
     "callMicrophoneOffTitle": "آپ کی کال منسلک نہیں ہوئی",
     "callMicrophoneOffMessage": "Pangea Chat آپ کا مائیکروفون استعمال نہیں کر سکتا۔ سیٹنگز میں اسے آن کرنے کے لیے ٹیپ کریں۔",
-    "mapCreditsLabel": "نقشہ کے کریڈٹس: Stadia Maps، OpenMapTiles اور OpenStreetMap"
+    "mapCreditsLabel": "نقشہ کے کریڈٹس: Stadia Maps، OpenMapTiles اور OpenStreetMap",
+    "activityLaunchFindingCourses": "آپ کے کورسز تلاش کر رہے ہیں…",
+    "activityLaunchCreatingRoom": "آپ کی سرگرمی بنا رہے ہیں…",
+    "activityLaunchOpeningRoom": "آپ کی سرگرمی کھول رہے ہیں…"
 }

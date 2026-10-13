@@ -10042,5 +10042,8 @@
     "callMicrophoneMessage": "Pangea Chat ha bisogno del tuo microfono per le chiamate, incluse quelle a cui rispondi dalla schermata di blocco.",
     "callMicrophoneOffTitle": "La tua chiamata non si è collegata",
     "callMicrophoneOffMessage": "Pangea Chat non può usare il tuo microfono. Tocca per attivarlo nelle Impostazioni.",
-    "mapCreditsLabel": "Crediti mappa: Stadia Maps, OpenMapTiles e OpenStreetMap"
+    "mapCreditsLabel": "Crediti mappa: Stadia Maps, OpenMapTiles e OpenStreetMap",
+    "activityLaunchFindingCourses": "Ricerca dei tuoi corsi…",
+    "activityLaunchCreatingRoom": "Creazione della tua attività…",
+    "activityLaunchOpeningRoom": "Apertura della tua attività…"
 }

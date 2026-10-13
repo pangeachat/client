@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "پنګیا چټ ستاسو مایکروفون د زنګونو لپاره اړتیا لري، پشمول هغه زنګونه چې تاسو یې د لاک سکرین څخه ځوابوئ.",
     "callMicrophoneOffTitle": "ستاسو زنګ وصل نشو",
     "callMicrophoneOffMessage": "پنګیا چټ نشي کولی ستاسو مایکروفون وکاروي. په ترتیباتو کې د فعالولو لپاره ټایپ کړئ.",
-    "mapCreditsLabel": "د نقشې کریډیټونه: Stadia Maps, OpenMapTiles او OpenStreetMap"
+    "mapCreditsLabel": "د نقشې کریډیټونه: Stadia Maps, OpenMapTiles او OpenStreetMap",
+    "activityLaunchFindingCourses": "ستاسو کورسونه لټول…",
+    "activityLaunchCreatingRoom": "ستاسو فعالیت جوړول…",
+    "activityLaunchOpeningRoom": "ستاسو فعالیت پرانیستل…"
 }

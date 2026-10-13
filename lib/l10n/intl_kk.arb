@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat қоңыраулар үшін микрофоныңызды қажет етеді, соның ішінде құлыптау экранынан жауап беретін қоңыраулар да бар.",
     "callMicrophoneOffTitle": "Қоңырауыңыз қосылмады",
     "callMicrophoneOffMessage": "Pangea Chat микрофоныңызды пайдалана алмайды. Параметрлерде қосу үшін түртіңіз.",
-    "mapCreditsLabel": "Карта несиелері: Stadia Maps, OpenMapTiles және OpenStreetMap"
+    "mapCreditsLabel": "Карта несиелері: Stadia Maps, OpenMapTiles және OpenStreetMap",
+    "activityLaunchFindingCourses": "Курстарыңызды табудамыз…",
+    "activityLaunchCreatingRoom": "Әрекетіңізді жасаудамыз…",
+    "activityLaunchOpeningRoom": "Әрекетіңізді ашудамыз…"
 }

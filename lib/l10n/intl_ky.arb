@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat чакыруулар үчүн микрофонуңузду колдонушу керек, анын ичинде кулпуланган экрандан жооп берген чакыруулар да бар.",
     "callMicrophoneOffTitle": "Чакырууңуз туташкан жок",
     "callMicrophoneOffMessage": "Pangea Chat микрофонуңузду колдоно албайт. Жөндөөлөрдөн күйгүзүү үчүн таптаңыз.",
-    "mapCreditsLabel": "Картанын авторлору: Stadia Maps, OpenMapTiles жана OpenStreetMap"
+    "mapCreditsLabel": "Картанын авторлору: Stadia Maps, OpenMapTiles жана OpenStreetMap",
+    "activityLaunchFindingCourses": "Курстарыңызды издөө…",
+    "activityLaunchCreatingRoom": "Ишиңизди түзүү…",
+    "activityLaunchOpeningRoom": "Ишиңизди ачуу…"
 }

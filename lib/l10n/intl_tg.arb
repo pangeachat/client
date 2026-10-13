@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat барои зангҳо, аз ҷумла зангҳое, ки шумо аз экрани қулф ҷавоб медиҳед, ба микрофони шумо ниёз дорад.",
     "callMicrophoneOffTitle": "Занги шумо пайваст нашуд",
     "callMicrophoneOffMessage": "Pangea Chat наметавонад микрофони шуморо истифода барад. Барои фаъол кардани он дар Танзимот ламс кунед.",
-    "mapCreditsLabel": "Ҳуқуқи харита: Stadia Maps, OpenMapTiles ва OpenStreetMap"
+    "mapCreditsLabel": "Ҳуқуқи харита: Stadia Maps, OpenMapTiles ва OpenStreetMap",
+    "activityLaunchFindingCourses": "Дарёфти курсҳои шумо…",
+    "activityLaunchCreatingRoom": "Сохтани фаъолияти шумо…",
+    "activityLaunchOpeningRoom": "Кушодани фаъолияти шумо…"
 }

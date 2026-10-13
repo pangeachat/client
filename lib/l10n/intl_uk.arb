@@ -9969,5 +9969,8 @@
     "callMicrophoneMessage": "Pangea Chat потрібен ваш мікрофон для дзвінків, включно з тими, на які ви відповідаєте з екрана блокування.",
     "callMicrophoneOffTitle": "Ваш дзвінок не з’єднався",
     "callMicrophoneOffMessage": "Pangea Chat не може використовувати ваш мікрофон. Натисніть, щоб увімкнути його в Налаштуваннях.",
-    "mapCreditsLabel": "Авторство карти: Stadia Maps, OpenMapTiles та OpenStreetMap"
+    "mapCreditsLabel": "Авторство карти: Stadia Maps, OpenMapTiles та OpenStreetMap",
+    "activityLaunchFindingCourses": "Пошук ваших курсів…",
+    "activityLaunchCreatingRoom": "Створення вашої активності…",
+    "activityLaunchOpeningRoom": "Відкриття вашої активності…"
 }

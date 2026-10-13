@@ -10042,5 +10042,8 @@
     "callMicrophoneMessage": "Pangea Chat memerlukan mikrofon Anda untuk panggilan, termasuk panggilan yang Anda jawab dari layar kunci.",
     "callMicrophoneOffTitle": "Panggilan Anda tidak tersambung",
     "callMicrophoneOffMessage": "Pangea Chat tidak dapat menggunakan mikrofon Anda. Ketuk untuk mengaktifkannya di Pengaturan.",
-    "mapCreditsLabel": "Kredit peta: Stadia Maps, OpenMapTiles, dan OpenStreetMap"
+    "mapCreditsLabel": "Kredit peta: Stadia Maps, OpenMapTiles, dan OpenStreetMap",
+    "activityLaunchFindingCourses": "Mencari kursus Anda…",
+    "activityLaunchCreatingRoom": "Membuat aktivitas Anda…",
+    "activityLaunchOpeningRoom": "Membuka aktivitas Anda…"
 }

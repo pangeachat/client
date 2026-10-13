@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat ને કૉલ માટે તમારા માઇક્રોફોનની જરૂર છે, જેમાં લૉક સ્ક્રીન પરથી તમે જવાબ આપો છો તે કૉલનો સમાવેશ થાય છે.",
     "callMicrophoneOffTitle": "તમારો કૉલ કનેક્ટ થયો નથી",
     "callMicrophoneOffMessage": "Pangea Chat તમારા માઇક્રોફોનનો ઉપયોગ કરી શકતું નથી. સેટિંગ્સમાં તેને ચાલુ કરવા માટે ટેપ કરો.",
-    "mapCreditsLabel": "નકશા ક્રેડિટ્સ: Stadia Maps, OpenMapTiles અને OpenStreetMap"
+    "mapCreditsLabel": "નકશા ક્રેડિટ્સ: Stadia Maps, OpenMapTiles અને OpenStreetMap",
+    "activityLaunchFindingCourses": "તમારા અભ્યાસક્રમો શોધી રહ્યાં છીએ…",
+    "activityLaunchCreatingRoom": "તમારી પ્રવૃત્તિ બનાવી રહ્યાં છીએ…",
+    "activityLaunchOpeningRoom": "તમારી પ્રવૃત્તિ ખોલી રહ્યાં છીએ…"
 }

@@ -9956,5 +9956,8 @@
     "callMicrophoneMessage": "Pangea Chat benötigt Ihr Mikrofon für Anrufe, einschließlich Anrufe, die Sie vom Sperrbildschirm aus annehmen.",
     "callMicrophoneOffTitle": "Ihr Anruf konnte nicht verbunden werden",
     "callMicrophoneOffMessage": "Pangea Chat kann Ihr Mikrofon nicht verwenden. Tippen Sie hier, um es in den Einstellungen zu aktivieren.",
-    "mapCreditsLabel": "Karten-Credits: Stadia Maps, OpenMapTiles und OpenStreetMap"
+    "mapCreditsLabel": "Karten-Credits: Stadia Maps, OpenMapTiles und OpenStreetMap",
+    "activityLaunchFindingCourses": "Kurse werden gesucht…",
+    "activityLaunchCreatingRoom": "Aktivität wird erstellt…",
+    "activityLaunchOpeningRoom": "Aktivität wird geöffnet…"
 }

@@ -2418,5 +2418,8 @@
     "callMicrophoneMessage": "Pangea Chat သည် လော့ခ်မျက်နှာပြင်မှ သင်ဖြေကြားသည့် ခေါ်ဆိုမှုများအပါအဝင် ခေါ်ဆိုမှုများအတွက် သင့်မိုက်ခရိုဖုန်း လိုအပ်ပါသည်။",
     "callMicrophoneOffTitle": "သင့်ခေါ်ဆိုမှု မချိတ်ဆက်ပါ",
     "callMicrophoneOffMessage": "Pangea Chat သည် သင့်မိုက်ခရိုဖုန်းကို အသုံးပြု၍မရပါ။ ဆက်တင်များတွင် ဖွင့်ရန် နှိပ်ပါ။",
-    "mapCreditsLabel": "မြေပုံခရက်ဒစ်များ- Stadia Maps, OpenMapTiles နှင့် OpenStreetMap"
+    "mapCreditsLabel": "မြေပုံခရက်ဒစ်များ- Stadia Maps, OpenMapTiles နှင့် OpenStreetMap",
+    "activityLaunchFindingCourses": "သင်ခန်းစာများကို ရှာဖွေနေသည်...",
+    "activityLaunchCreatingRoom": "သင်၏လုပ်ဆောင်ချက်ကို ဖန်တီးနေသည်...",
+    "activityLaunchOpeningRoom": "သင်၏လုပ်ဆောင်ချက်ကို ဖွင့်နေသည်..."
 }
