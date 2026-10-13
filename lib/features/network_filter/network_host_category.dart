@@ -1,7 +1,7 @@
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
-import 'package:fluffychat/routes/world/world_map_constants.dart';
+import 'package:fluffychat/pangea/common/utils/map_tiles.dart';
 
 /// A host, or group of hosts, the app needs to reach. A network filter blocks
 /// the app one category at a time. See filtered-network.instructions.md,
@@ -31,7 +31,9 @@ enum NetworkHostCategory {
     pangeaApi => Uri.parse(PApiUrls.appVersion),
     images => Uri.https(AppConfig.contentCdnHost),
     video => Uri.https(_videoEmbedHost),
-    map => Uri.https(WorldMapConstants.tileHost),
+    // Not the bare host: it redirects to stadiamaps.com, which the native
+    // probe reads as a filter's block page. `/tiles/` answers 404 in place.
+    map => Uri.https(MapTiles.host, '/tiles/'),
     googleSignIn => Uri.https('accounts.google.com', '/generate_204'),
     appleSignIn => Uri.https('appleid.apple.com', '/favicon.ico'),
   };
@@ -51,7 +53,7 @@ enum NetworkHostCategory {
       'ytimg.com',
       'googlevideo.com',
     ],
-    map => [WorldMapConstants.tileHost],
+    map => [MapTiles.host],
     googleSignIn => ['accounts.google.com'],
     appleSignIn => ['appleid.apple.com'],
   };

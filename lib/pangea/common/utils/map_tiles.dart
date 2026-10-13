@@ -10,8 +10,12 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 class MapTiles {
   const MapTiles._();
 
+  /// The tile provider's host. The filtered-network check probes it and lists
+  /// it for IT staff to allow — see filtered-network.instructions.md.
+  static const String host = 'tiles.stadiamaps.com';
+
   static String urlTemplate(Brightness brightness) =>
-      'https://tiles.stadiamaps.com/tiles/'
+      'https://$host/tiles/'
       '${brightness == Brightness.dark ? 'alidade_smooth_dark' : 'alidade_smooth'}'
       '/{z}/{x}/{y}.png';
 
