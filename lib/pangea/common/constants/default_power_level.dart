@@ -76,6 +76,9 @@ class RoomDefaults {
       "m.room.power_levels": 100,
       "m.room.join_rules": 100,
       "m.space.child": spaceChild,
+      // Only a course admin may send the course's own Can-Do copy; readers
+      // also ignore one whose sender is below 100.
+      PangeaEventTypes.courseMissions: 100,
     },
     "events_default": 0,
     "state_default": 50,

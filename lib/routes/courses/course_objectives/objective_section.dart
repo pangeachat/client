@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/quests/mission_due_date.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -154,6 +155,29 @@ class ObjectiveSection extends StatelessWidget {
             ),
           )
         : null;
+    // The course's own note and soft due date (content-studio), under the
+    // title. The date stays after it passes; nothing is blocked or marked.
+    final pacing = group.pacing;
+    final pacingStyle = theme.textTheme.bodySmall?.copyWith(
+      color: theme.colorScheme.onSurfaceVariant,
+    );
+    final pacingLines = pacing == null
+        ? null
+        : Padding(
+            padding: const EdgeInsets.only(top: 4.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (pacing.note case final note? when note.isNotEmpty)
+                  Text(note, style: pacingStyle),
+                if (pacing.dueAt case final dueAt?)
+                  Text(
+                    missionDueLabel(context, dueAt, pacing.timeZone),
+                    style: pacingStyle,
+                  ),
+              ],
+            ),
+          );
     final collapseChevron = _collapsible
         ? AnimatedRotation(
             turns: collapsed ? -0.25 : 0,
@@ -162,12 +186,13 @@ class ObjectiveSection extends StatelessWidget {
           )
         : null;
 
-    final activities = group.activities;
-    activities.sort(
-      (a, b) => a.plan.req.numberOfParticipants.compareTo(
-        b.plan.req.numberOfParticipants,
-      ),
-    );
+    // Sorted as a copy: the group's list can be the shared outline cache's.
+    final activities = [...group.activities]
+      ..sort(
+        (a, b) => a.plan.req.numberOfParticipants.compareTo(
+          b.plan.req.numberOfParticipants,
+        ),
+      );
 
     return Semantics(
       label: L10n.of(context).objective,
@@ -241,6 +266,7 @@ class ObjectiveSection extends StatelessWidget {
                     ),
             ),
           ),
+          ?pacingLines,
           // No per-Mission progress bar — only the overall course has a bar (in
           // the header). A Mission shows just its star count above (#7597).
           if (!collapsed) const SizedBox(height: 12.0),

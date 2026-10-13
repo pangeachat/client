@@ -121,8 +121,6 @@ class _CourseContextBarState extends State<CourseContextBar> {
       if (!mounted) return;
       _objectivesProvider.loadOutline(
         room.coursePlan?.uuid,
-        pinnedActivitiesByObjective:
-            room.teacherMode.pinnedActivitiesByObjective,
         courseRoomId: room.id,
       );
     });
