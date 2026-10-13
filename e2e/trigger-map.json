@@ -47,5 +47,15 @@
     ],
     "web": "e2e/scripts/course-search.spec.ts",
     "mobile": null
+  },
+  "sso-network-check": {
+    "globs": [
+      "lib/routes/home/p_sso_button.dart",
+      "lib/routes/home/sso_provider_enum.dart",
+      "lib/features/network_filter/**",
+      "e2e/scripts/sso-network-check.spec.ts"
+    ],
+    "web": "e2e/scripts/sso-network-check.spec.ts",
+    "mobile": null
   }
 }
