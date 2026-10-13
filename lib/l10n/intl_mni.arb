@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-13 13:02:21.702918",
+    "@@last_modified": "2026-10-13 13:03:46.101261",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles অমসুং OpenStreetMap",
     "activityLaunchFindingCourses": "ನೋಂಗ್ಚುಪ್‌ಸಿಂಗ್‌ಬಾ ಖುರೈರಿಂಗ್‌ಬಾ…",
     "activityLaunchCreatingRoom": "ನೋಂಗ್ಚುಪ್‌ಸಿಂಗ್‌ಬಾ ಖುರೈರಿಂಗ್‌ಬಾ…",
-    "activityLaunchOpeningRoom": "ನೋಂಗ್ಚುಪ್‌ಸಿಂಗ್‌ಬಾ ಖುರೈರಿಂಗ್‌ಬಾ…"
+    "activityLaunchOpeningRoom": "ನೋಂಗ್ಚುಪ್‌ಸಿಂಗ್‌ಬಾ ಖುರೈರಿಂಗ್‌ಬಾ…",
+    "playWithOthers": "Akhannabasingga khannou",
+    "openRole": "Hangdok: {role}",
+    "waitingFor": "{duration} ngairammi",
+    "onlineInCourse": "{course} da {count} online lei"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-13 13:02:21.688240",
+    "@@last_modified": "2026-10-13 13:03:45.993467",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Газрын зургийн эрх: Stadia Maps, OpenMapTiles болон OpenStreetMap",
     "activityLaunchFindingCourses": "Таны хичээлүүдийг хайж байна…",
     "activityLaunchCreatingRoom": "Таны үйлдлийг үүсгэж байна…",
-    "activityLaunchOpeningRoom": "Таны үйлдлийг нээж байна…"
+    "activityLaunchOpeningRoom": "Таны үйлдлийг нээж байна…",
+    "playWithOthers": "Бусадтай тоглох",
+    "openRole": "Нээлттэй: {role}",
+    "waitingFor": "{duration} хүлээж байна",
+    "onlineInCourse": "{course}-д {count} хүн онлайн байна"
 }

@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-13 13:02:29.075826",
+    "@@last_modified": "2026-10-13 13:03:50.416110",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9976,5 +9976,9 @@
     "mapCreditsLabel": "Xarita mualliflari: Stadia Maps, OpenMapTiles va OpenStreetMap",
     "activityLaunchFindingCourses": "Kurslaringizni topish…",
     "activityLaunchCreatingRoom": "Faoliyatingizni yaratish…",
-    "activityLaunchOpeningRoom": "Faoliyatingizni ochish…"
+    "activityLaunchOpeningRoom": "Faoliyatingizni ochish…",
+    "playWithOthers": "Boshqalar bilan o'ynang",
+    "openRole": "Ochiq: {role}",
+    "waitingFor": "{duration} kutish",
+    "onlineInCourse": "{course}da {count} ta onlayn"
 }

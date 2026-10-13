@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:02:25.040610",
+    "@@last_modified": "2026-10-13 13:03:47.942545",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10704,5 +10704,9 @@
     "mapCreditsLabel": "Credite hartă: Stadia Maps, OpenMapTiles și OpenStreetMap",
     "activityLaunchFindingCourses": "Se caută cursurile tale…",
     "activityLaunchCreatingRoom": "Se creează activitatea ta…",
-    "activityLaunchOpeningRoom": "Se deschide activitatea ta…"
+    "activityLaunchOpeningRoom": "Se deschide activitatea ta…",
+    "playWithOthers": "Joacă-te cu alții",
+    "openRole": "Deschis: {role}",
+    "waitingFor": "Se așteaptă {duration}",
+    "onlineInCourse": "{count} online în {course}"
 }

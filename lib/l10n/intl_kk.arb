@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-13 13:02:17.308150",
+    "@@last_modified": "2026-10-13 13:03:44.256706",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Карта несиелері: Stadia Maps, OpenMapTiles және OpenStreetMap",
     "activityLaunchFindingCourses": "Курстарыңызды табудамыз…",
     "activityLaunchCreatingRoom": "Әрекетіңізді жасаудамыз…",
-    "activityLaunchOpeningRoom": "Әрекетіңізді ашудамыз…"
+    "activityLaunchOpeningRoom": "Әрекетіңізді ашудамыз…",
+    "playWithOthers": "Басқалармен ойнау",
+    "openRole": "Ашық: {role}",
+    "waitingFor": "{duration} күту",
+    "onlineInCourse": "{count} {course} курсында онлайн"
 }

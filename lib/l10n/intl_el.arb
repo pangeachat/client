@@ -3396,7 +3396,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-13 13:02:11.418464",
+    "@@last_modified": "2026-10-13 13:03:40.861219",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10847,5 +10847,9 @@
     "mapCreditsLabel": "Συντελεστές χάρτη: Stadia Maps, OpenMapTiles και OpenStreetMap",
     "activityLaunchFindingCourses": "Εύρεση των μαθημάτων σας…",
     "activityLaunchCreatingRoom": "Δημιουργία της δραστηριότητάς σας…",
-    "activityLaunchOpeningRoom": "Άνοιγμα της δραστηριότητάς σας…"
+    "activityLaunchOpeningRoom": "Άνοιγμα της δραστηριότητάς σας…",
+    "playWithOthers": "Παίξτε με άλλους",
+    "openRole": "Ανοιχτό: {role}",
+    "waitingFor": "Αναμονή {duration}",
+    "onlineInCourse": "{count} συνδεδεμένοι στο {course}"
 }

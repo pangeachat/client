@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-13 13:02:20.374133",
+    "@@last_modified": "2026-10-13 13:03:46.076881",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Ngā takoha mahere: Stadia Maps, OpenMapTiles me OpenStreetMap",
     "activityLaunchFindingCourses": "E kimi ana i ō akoranga…",
     "activityLaunchCreatingRoom": "E waihanga ana i tō mahi…",
-    "activityLaunchOpeningRoom": "E huaki ana i tō mahi…"
+    "activityLaunchOpeningRoom": "E huaki ana i tō mahi…",
+    "playWithOthers": "Tākaro tahi me ētahi atu",
+    "openRole": "Wātea: {role}",
+    "waitingFor": "E tatari ana {duration}",
+    "onlineInCourse": "{count} kei te ipurangi i roto i te {course}"
 }

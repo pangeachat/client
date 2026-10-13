@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-13 13:02:16.111427",
+    "@@last_modified": "2026-10-13 13:03:43.510669",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Քարտեզի հեղինակներ՝ Stadia Maps, OpenMapTiles և OpenStreetMap",
     "activityLaunchFindingCourses": "Ձեր դասընթացները գտնվում են…",
     "activityLaunchCreatingRoom": "Ձեր ակտիվությունը ստեղծվում է…",
-    "activityLaunchOpeningRoom": "Ձեր ակտիվությունը բացվում է…"
+    "activityLaunchOpeningRoom": "Ձեր ակտիվությունը բացվում է…",
+    "playWithOthers": "Խաղալ ուրիշների հետ",
+    "openRole": "Բացել՝ {role}",
+    "waitingFor": "Սպասում է {duration}",
+    "onlineInCourse": "{count} առցանց՝ {course}-ում"
 }

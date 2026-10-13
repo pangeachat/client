@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-13 13:02:11.414156",
+    "@@last_modified": "2026-10-13 13:03:40.536169",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Credydau map: Stadia Maps, OpenMapTiles ac OpenStreetMap",
     "activityLaunchFindingCourses": "Yn dod o hyd i'ch cyrsiau…",
     "activityLaunchCreatingRoom": "Yn creu eich gweithgaredd…",
-    "activityLaunchOpeningRoom": "Yn agor eich gweithgaredd…"
+    "activityLaunchOpeningRoom": "Yn agor eich gweithgaredd…",
+    "playWithOthers": "Chwarae gydag eraill",
+    "openRole": "Agored: {role}",
+    "waitingFor": "Yn aros {duration}",
+    "onlineInCourse": "{count} ar-lein yn {course}"
 }

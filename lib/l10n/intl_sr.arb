@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:02:28.314389",
+    "@@last_modified": "2026-10-13 13:03:48.852012",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10921,5 +10921,9 @@
     "mapCreditsLabel": "Zasluge za mapu: Stadia Maps, OpenMapTiles i OpenStreetMap",
     "activityLaunchFindingCourses": "Pronalaženje kurseva…",
     "activityLaunchCreatingRoom": "Kreiranje aktivnosti…",
-    "activityLaunchOpeningRoom": "Otvaranje aktivnosti…"
+    "activityLaunchOpeningRoom": "Otvaranje aktivnosti…",
+    "playWithOthers": "Igrajte se sa drugima",
+    "openRole": "Otvoreno: {role}",
+    "waitingFor": "Čekanje {duration}",
+    "onlineInCourse": "{count} na mreži u {course}"
 }

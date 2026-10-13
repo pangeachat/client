@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-13 13:02:11.289394",
+    "@@last_modified": "2026-10-13 13:03:40.576631",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10466,5 +10466,9 @@
     "mapCreditsLabel": "Zásluhy mapy: Stadia Maps, OpenMapTiles a OpenStreetMap",
     "activityLaunchFindingCourses": "Hledáme vaše kurzy…",
     "activityLaunchCreatingRoom": "Vytváříme vaši aktivitu…",
-    "activityLaunchOpeningRoom": "Otevíráme vaši aktivitu…"
+    "activityLaunchOpeningRoom": "Otevíráme vaši aktivitu…",
+    "playWithOthers": "Hrát s ostatními",
+    "openRole": "Otevřít: {role}",
+    "waitingFor": "Čekání {duration}",
+    "onlineInCourse": "{count} online v {course}"
 }

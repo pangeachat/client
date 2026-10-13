@@ -1798,7 +1798,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-13 13:02:24.504775",
+    "@@last_modified": "2026-10-13 13:03:48.534232",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10917,5 +10917,9 @@
     "mapCreditsLabel": "Zasluge za zemljevid: Stadia Maps, OpenMapTiles in OpenStreetMap",
     "activityLaunchFindingCourses": "Iščem vaše tečaje …",
     "activityLaunchCreatingRoom": "Ustvarjam vašo dejavnost …",
-    "activityLaunchOpeningRoom": "Odpiram vašo dejavnost …"
+    "activityLaunchOpeningRoom": "Odpiram vašo dejavnost …",
+    "playWithOthers": "Igraj z drugimi",
+    "openRole": "Odprto: {role}",
+    "waitingFor": "Čakanje {duration}",
+    "onlineInCourse": "{count} na spletu v {course}"
 }

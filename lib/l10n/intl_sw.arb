@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-13 13:02:27.015665",
+    "@@last_modified": "2026-10-13 13:03:49.464059",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Mikopo ya ramani: Ramani za Stadia, OpenMapTiles na OpenStreetMap",
     "activityLaunchFindingCourses": "Tunatafuta kozi zako…",
     "activityLaunchCreatingRoom": "Tunatayarisha shughuli yako…",
-    "activityLaunchOpeningRoom": "Tunafungua shughuli yako…"
+    "activityLaunchOpeningRoom": "Tunafungua shughuli yako…",
+    "playWithOthers": "Cheza na wengine",
+    "openRole": "Fungua: {role}",
+    "waitingFor": "Inasubiri {duration}",
+    "onlineInCourse": "{count} wako mtandaoni katika {course}"
 }

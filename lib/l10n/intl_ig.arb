@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-13 13:02:17.141294",
+    "@@last_modified": "2026-10-13 13:03:43.790979",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Ebe e si nweta maapụ: Stadia Maps, OpenMapTiles na OpenStreetMap",
     "activityLaunchFindingCourses": "Na-achọ nkuzi gị…",
     "activityLaunchCreatingRoom": "Na-emepụta ọrụ gị…",
-    "activityLaunchOpeningRoom": "Na-emepe ọrụ gị…"
+    "activityLaunchOpeningRoom": "Na-emepe ọrụ gị…",
+    "playWithOthers": "Soro ndị ọzọ gwuo egwu",
+    "openRole": "Mepee: {role}",
+    "waitingFor": "Na-eche {duration}",
+    "onlineInCourse": "{count} n'ịntanetị na {course}"
 }

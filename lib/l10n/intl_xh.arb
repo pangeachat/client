@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-13 13:02:29.860758",
+    "@@last_modified": "2026-10-13 13:03:50.778714",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Amakhredithi emephu: Stadia Maps, OpenMapTiles kunye ne-OpenStreetMap",
     "activityLaunchFindingCourses": "Ndizifumana iikhosi zakho…",
     "activityLaunchCreatingRoom": "Ndenza umsebenzi wakho…",
-    "activityLaunchOpeningRoom": "Ndivula umsebenzi wakho…"
+    "activityLaunchOpeningRoom": "Ndivula umsebenzi wakho…",
+    "playWithOthers": "Dlala nabanye",
+    "openRole": "Vula: {role}",
+    "waitingFor": "Kulindwe {duration}",
+    "onlineInCourse": "{count} kwi-intanethi kwi-{course}"
 }

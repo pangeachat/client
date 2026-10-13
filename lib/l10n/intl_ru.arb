@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-13 13:02:24.259423",
+    "@@last_modified": "2026-10-13 13:03:47.982552",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10944,5 +10944,9 @@
     "mapCreditsLabel": "Авторы карты: Stadia Maps, OpenMapTiles и OpenStreetMap",
     "activityLaunchFindingCourses": "Поиск ваших курсов…",
     "activityLaunchCreatingRoom": "Создание вашей активности…",
-    "activityLaunchOpeningRoom": "Открытие вашей активности…"
+    "activityLaunchOpeningRoom": "Открытие вашей активности…",
+    "playWithOthers": "Играть с другими",
+    "openRole": "Открыто: {role}",
+    "waitingFor": "Ожидание {duration}",
+    "onlineInCourse": "{count} онлайн в {course}"
 }

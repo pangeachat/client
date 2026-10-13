@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-10-13 13:02:18.111920",
+    "@@last_modified": "2026-10-13 13:03:44.291482",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "ការផ្ដល់កិត្តិយសផែនទី៖ Stadia Maps, OpenMapTiles និង OpenStreetMap",
     "activityLaunchFindingCourses": "កំពុងស្វែងរកវគ្គសិក្សារបស់អ្នក…",
     "activityLaunchCreatingRoom": "កំពុងបង្កើតសកម្មភាពរបស់អ្នក…",
-    "activityLaunchOpeningRoom": "កំពុងបើកសកម្មភាពរបស់អ្នក…"
+    "activityLaunchOpeningRoom": "កំពុងបើកសកម្មភាពរបស់អ្នក…",
+    "playWithOthers": "លេងជាមួយអ្នកដទៃ",
+    "openRole": "បើក៖ {role}",
+    "waitingFor": "កំពុងរង់ចាំ {duration}",
+    "onlineInCourse": "{count} នាក់កំពុងអនឡាញក្នុង {course}"
 }

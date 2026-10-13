@@ -5062,6 +5062,34 @@
     },
     "vocabLevelsDescSeed": "This is where new vocab words will appear!",
     "readingAssistanceTutorialCollectToken": "Select words to learn more about them",
+    "playWithOthers": "Play with others",
+    "openRole": "Open: {role}",
+    "@openRole": {
+        "placeholders": {
+            "role": {
+                "type": "String"
+            }
+        }
+    },
+    "waitingFor": "Waiting {duration}",
+    "@waitingFor": {
+        "placeholders": {
+            "duration": {
+                "type": "String"
+            }
+        }
+    },
+    "onlineInCourse": "{count} online in {course}",
+    "@onlineInCourse": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            },
+            "course": {
+                "type": "String"
+            }
+        }
+    },
     "requireAnalyticsAccessTitle": "Require analytics access to join",
     "requireAnalyticsAccessDesc": "Participants must grant access to their learning analytics to join this course",
     "moreOptions": "More options",

@@ -1358,7 +1358,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-13 13:02:18.529802",
+    "@@last_modified": "2026-10-13 13:03:43.376411",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10908,5 +10908,9 @@
     "mapCreditsLabel": "Creditos del mappa: Stadia Maps, OpenMapTiles e OpenStreetMap",
     "activityLaunchFindingCourses": "Cercante tu cursos…",
     "activityLaunchCreatingRoom": "Creante tu activitate…",
-    "activityLaunchOpeningRoom": "Aperiente tu activitate…"
+    "activityLaunchOpeningRoom": "Aperiente tu activitate…",
+    "playWithOthers": "Jocar con alteres",
+    "openRole": "Aperte: {role}",
+    "waitingFor": "Attendente {duration}",
+    "onlineInCourse": "{count} in linea in {course}"
 }

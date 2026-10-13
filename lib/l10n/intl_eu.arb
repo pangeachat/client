@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-13 13:02:15.809166",
+    "@@last_modified": "2026-10-13 13:03:41.642359",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9972,5 +9972,9 @@
     "mapCreditsLabel": "Maparen kredituak: Stadia Maps, OpenMapTiles eta OpenStreetMap",
     "activityLaunchFindingCourses": "Zure ikastaroak bilatzen…",
     "activityLaunchCreatingRoom": "Zure jarduera sortzen…",
-    "activityLaunchOpeningRoom": "Zure jarduera irekitzen…"
+    "activityLaunchOpeningRoom": "Zure jarduera irekitzen…",
+    "playWithOthers": "Besteekin jolastu",
+    "openRole": "Ireki: {role}",
+    "waitingFor": "Zain {duration}",
+    "onlineInCourse": "{count} linean {course} ikastaroan"
 }

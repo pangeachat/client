@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-10-13 13:02:23.242583",
+    "@@last_modified": "2026-10-13 13:03:47.327687",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "ମାନଚିତ୍ର କ୍ରେଡିଟ୍: Stadia Maps, OpenMapTiles ଏବଂ OpenStreetMap",
     "activityLaunchFindingCourses": "ଆପଣଙ୍କ ପାଠ୍ୟକ୍ରମ ଖୋଜାଯାଉଛି…",
     "activityLaunchCreatingRoom": "ଆପଣଙ୍କ କାର୍ଯ୍ୟକଳାପ ସୃଷ୍ଟି କରାଯାଉଛି…",
-    "activityLaunchOpeningRoom": "ଆପଣଙ୍କ କାର୍ଯ୍ୟକଳାପ ଖୋଲାଯାଉଛି…"
+    "activityLaunchOpeningRoom": "ଆପଣଙ୍କ କାର୍ଯ୍ୟକଳାପ ଖୋଲାଯାଉଛି…",
+    "playWithOthers": "ଅନ୍ୟମାନଙ୍କ ସହିତ ଖେଳନ୍ତୁ",
+    "openRole": "ଖୋଲା: {role}",
+    "waitingFor": "{duration} ଅପେକ୍ଷା କରୁଛି",
+    "onlineInCourse": "{count} ଜଣ {course} ରେ ଅନଲାଇନ୍ ଅଛନ୍ତି"
 }

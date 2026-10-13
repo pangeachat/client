@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-13 13:02:20.510596",
+    "@@last_modified": "2026-10-13 13:03:46.045975",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "മാപ്പ് ക്രെഡിറ്റുകൾ: സ്റ്റേഡിയ മാപ്‌സ്, ഓപ്പൺമാപ്‌ടൈൽസ്, ഓപ്പൺസ്ട്രീറ്റ്മാപ്പ്",
     "activityLaunchFindingCourses": "നിങ്ങളുടെ കോഴ്സുകൾ കണ്ടെത്തുന്നു…",
     "activityLaunchCreatingRoom": "നിങ്ങളുടെ പ്രവർത്തനം സൃഷ്ടിക്കുന്നു…",
-    "activityLaunchOpeningRoom": "നിങ്ങളുടെ പ്രവർത്തനം തുറക്കുന്നു…"
+    "activityLaunchOpeningRoom": "നിങ്ങളുടെ പ്രവർത്തനം തുറക്കുന്നു…",
+    "playWithOthers": "മറ്റുള്ളവരുമായി കളിക്കുക",
+    "openRole": "തുറക്കുക: {role}",
+    "waitingFor": "{duration} കാത്തിരിക്കുന്നു",
+    "onlineInCourse": "{course} എന്നതിൽ {count} പേർ ഓൺലൈനിൽ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-13 13:02:14.519307",
+    "@@last_modified": "2026-10-13 13:03:42.889476",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Daim ntawv qhia chaw: Stadia Maps, OpenMapTiles thiab OpenStreetMap",
     "activityLaunchFindingCourses": "Nrhiav koj cov hoob kawm…",
     "activityLaunchCreatingRoom": "Tsim koj qhov kev ua si…",
-    "activityLaunchOpeningRoom": "Qhib koj qhov kev ua si…"
+    "activityLaunchOpeningRoom": "Qhib koj qhov kev ua si…",
+    "playWithOthers": "Ua si nrog lwm tus",
+    "openRole": "Qhib: {role}",
+    "waitingFor": "Tos {duration}",
+    "onlineInCourse": "{count} tus nyob online hauv {course}"
 }

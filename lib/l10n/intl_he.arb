@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:02:14.577743",
+    "@@last_modified": "2026-10-13 13:03:42.349889",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10886,5 +10886,9 @@
     "mapCreditsLabel": "קרדיטים למפה: Stadia Maps, OpenMapTiles ו-OpenStreetMap",
     "activityLaunchFindingCourses": "מוצאים את הקורסים שלך…",
     "activityLaunchCreatingRoom": "יוצרים את הפעילות שלך…",
-    "activityLaunchOpeningRoom": "פותחים את הפעילות שלך…"
+    "activityLaunchOpeningRoom": "פותחים את הפעילות שלך…",
+    "playWithOthers": "שחק עם אחרים",
+    "openRole": "פתוח: {role}",
+    "waitingFor": "ממתין {duration}",
+    "onlineInCourse": "{count} מחוברים ב{course}"
 }

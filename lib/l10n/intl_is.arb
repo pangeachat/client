@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-13 13:02:17.398423",
+    "@@last_modified": "2026-10-13 13:03:43.833583",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Kortaupplýsingar: Stadia Maps, OpenMapTiles og OpenStreetMap",
     "activityLaunchFindingCourses": "Finn námskeiðin þín…",
     "activityLaunchCreatingRoom": "Bý til virknina þína…",
-    "activityLaunchOpeningRoom": "Opna virknina þína…"
+    "activityLaunchOpeningRoom": "Opna virknina þína…",
+    "playWithOthers": "Spila með öðrum",
+    "openRole": "Opið: {role}",
+    "waitingFor": "Beðið í {duration}",
+    "onlineInCourse": "{count} á netinu í {course}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-13 13:02:30.097581",
+    "@@last_modified": "2026-10-13 13:03:51.167346",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9972,5 +9972,9 @@
     "mapCreditsLabel": "地图来源：Stadia Maps、OpenMapTiles 和 OpenStreetMap",
     "activityLaunchFindingCourses": "正在查找您的课程…",
     "activityLaunchCreatingRoom": "正在创建您的活动…",
-    "activityLaunchOpeningRoom": "正在打开您的活动…"
+    "activityLaunchOpeningRoom": "正在打开您的活动…",
+    "playWithOthers": "与他人一起玩",
+    "openRole": "开放：{role}",
+    "waitingFor": "等待 {duration}",
+    "onlineInCourse": "{count} 人在线，在 {course} 课程中"
 }

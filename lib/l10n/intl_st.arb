@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-13 13:02:29.236448",
+    "@@last_modified": "2026-10-13 13:03:49.843070",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2421,5 +2421,9 @@
     "mapCreditsLabel": "Liteboho tsa 'mapa: Limmapa tsa Stadia, OpenMapTiles le OpenStreetMap",
     "activityLaunchFindingCourses": "Ke batla dithuto tsa hao…",
     "activityLaunchCreatingRoom": "Ke theha mosebetsi wa hao…",
-    "activityLaunchOpeningRoom": "Ke bula mosebetsi wa hao…"
+    "activityLaunchOpeningRoom": "Ke bula mosebetsi wa hao…",
+    "playWithOthers": "Bapala le ba bang",
+    "openRole": "Bula: {role}",
+    "waitingFor": "Emela {duration}",
+    "onlineInCourse": "{count} ba inthaneteng ho {course}"
 }

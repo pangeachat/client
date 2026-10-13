@@ -1330,7 +1330,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-13 13:02:12.407020",
+    "@@last_modified": "2026-10-13 13:03:40.638893",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10892,5 +10892,9 @@
     "mapCreditsLabel": "Kortkreditering: Stadia Maps, OpenMapTiles og OpenStreetMap",
     "activityLaunchFindingCourses": "Finder dine kurser…",
     "activityLaunchCreatingRoom": "Opretter din aktivitet…",
-    "activityLaunchOpeningRoom": "Åbner din aktivitet…"
+    "activityLaunchOpeningRoom": "Åbner din aktivitet…",
+    "playWithOthers": "Spil med andre",
+    "openRole": "Åben: {role}",
+    "waitingFor": "Venter {duration}",
+    "onlineInCourse": "{count} online i {course}"
 }

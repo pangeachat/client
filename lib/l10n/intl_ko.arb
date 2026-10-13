@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:02:18.172130",
+    "@@last_modified": "2026-10-13 13:03:44.735226",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10165,5 +10165,9 @@
     "mapCreditsLabel": "지도 출처: Stadia Maps, OpenMapTiles 및 OpenStreetMap",
     "activityLaunchFindingCourses": "코스 찾는 중…",
     "activityLaunchCreatingRoom": "활동 만드는 중…",
-    "activityLaunchOpeningRoom": "활동 여는 중…"
+    "activityLaunchOpeningRoom": "활동 여는 중…",
+    "playWithOthers": "다른 사람들과 플레이",
+    "openRole": "열기: {role}",
+    "waitingFor": "{duration} 기다리는 중",
+    "onlineInCourse": "{course}에서 {count}명 온라인"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:02:21.199381",
+    "@@last_modified": "2026-10-13 13:03:46.975324",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10029,5 +10029,9 @@
     "mapCreditsLabel": "Kartkreditering: Stadia Maps, OpenMapTiles og OpenStreetMap",
     "activityLaunchFindingCourses": "Finner kursene dine …",
     "activityLaunchCreatingRoom": "Oppretter aktiviteten din …",
-    "activityLaunchOpeningRoom": "Åpner aktiviteten din …"
+    "activityLaunchOpeningRoom": "Åpner aktiviteten din …",
+    "playWithOthers": "Spill med andre",
+    "openRole": "Åpen: {role}",
+    "waitingFor": "Venter {duration}",
+    "onlineInCourse": "{count} pålogget i {course}"
 }

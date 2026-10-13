@@ -3544,7 +3544,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-13 13:02:10.053307",
+    "@@last_modified": "2026-10-13 13:03:39.593333",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9986,5 +9986,9 @@
     "mapCreditsLabel": "Аўтарства карты: Stadia Maps, OpenMapTiles і OpenStreetMap",
     "activityLaunchFindingCourses": "Пошук вашых курсаў…",
     "activityLaunchCreatingRoom": "Стварэнне вашай актыўнасці…",
-    "activityLaunchOpeningRoom": "Адкрыццё вашай актыўнасці…"
+    "activityLaunchOpeningRoom": "Адкрыццё вашай актыўнасці…",
+    "playWithOthers": "Гуляць з іншымі",
+    "openRole": "Адкрыта: {role}",
+    "waitingFor": "Чакаем {duration}",
+    "onlineInCourse": "{count} анлайн у {course}"
 }

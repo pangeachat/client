@@ -2555,7 +2555,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-13 13:02:23.638643",
+    "@@last_modified": "2026-10-13 13:03:48.343362",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10889,5 +10889,9 @@
     "mapCreditsLabel": "Créditos do mapa: Stadia Maps, OpenMapTiles e OpenStreetMap",
     "activityLaunchFindingCourses": "A encontrar os seus cursos…",
     "activityLaunchCreatingRoom": "A criar a sua atividade…",
-    "activityLaunchOpeningRoom": "A abrir a sua atividade…"
+    "activityLaunchOpeningRoom": "A abrir a sua atividade…",
+    "playWithOthers": "Jogar com outros",
+    "openRole": "Aberto: {role}",
+    "waitingFor": "A aguardar {duration}",
+    "onlineInCourse": "{count} online em {course}"
 }

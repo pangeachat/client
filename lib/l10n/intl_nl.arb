@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:02:21.812519",
+    "@@last_modified": "2026-10-13 13:03:47.004463",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9972,5 +9972,9 @@
     "mapCreditsLabel": "Kaartcredits: Stadia Maps, OpenMapTiles en OpenStreetMap",
     "activityLaunchFindingCourses": "Je cursussen zoeken…",
     "activityLaunchCreatingRoom": "Je activiteit aanmaken…",
-    "activityLaunchOpeningRoom": "Je activiteit openen…"
+    "activityLaunchOpeningRoom": "Je activiteit openen…",
+    "playWithOthers": "Speel met anderen",
+    "openRole": "Open: {role}",
+    "waitingFor": "Wachten {duration}",
+    "onlineInCourse": "{count} online in {course}"
 }
