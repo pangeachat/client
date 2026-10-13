@@ -10332,5 +10332,6 @@
     "openRole": "Ouvert : {role}",
     "waitingFor": "En attente {duration}",
     "onlineInCourse": "{count} en ligne dans {course}",
-    "newCourseChat": "Nouveau chat de cours"
+    "newCourseChat": "Nouveau chat de cours",
+    "customCourseStepDesc": "Un cours est un ensemble d'activités de conversation qui suivent votre manuel, que vos étudiants peuvent faire ensemble comme devoirs."
 }

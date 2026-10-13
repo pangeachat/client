@@ -2426,5 +2426,6 @@
     "openRole": "Tatala: {role}",
     "waitingFor": "Faatali {duration}",
     "onlineInCourse": "{count} i luga ole laiga ile {course}",
-    "newCourseChat": "Talanoaga fou o le kosi"
+    "newCourseChat": "Talanoaga fou o le kosi",
+    "customCourseStepDesc": "O se kosi o se seti o gaioiga talanoaga e mulimuli i lau tusi aʻoga, mo au tamaiti aʻoga e fai faʻatasi e fai ma meaaoga."
 }

@@ -2426,5 +2426,6 @@
     "openRole": "Buka: {role}",
     "waitingFor": "Menunggu {duration}",
     "onlineInCourse": "{count} dalam talian dalam {course}",
-    "newCourseChat": "Sembang kursus baharu"
+    "newCourseChat": "Sembang kursus baharu",
+    "customCourseStepDesc": "Kurs ialah set aktiviti perbualan yang mengikut buku teks anda, untuk pelajar anda lakukan bersama sebagai kerja rumah."
 }

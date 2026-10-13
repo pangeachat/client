@@ -2426,5 +2426,6 @@
     "openRole": "ખુલ્લું: {role}",
     "waitingFor": "{duration} રાહ જોઈ રહ્યા છીએ",
     "onlineInCourse": "{course} માં {count} ઑનલાઇન",
-    "newCourseChat": "નવી કોર્સ ચેટ"
+    "newCourseChat": "નવી કોર્સ ચેટ",
+    "customCourseStepDesc": "કોર્સ એ વાતચીતની પ્રવૃત્તિઓનો સમૂહ છે જે તમારી પાઠ્યપુસ્તકને અનુસરે છે, જે તમારા વિદ્યાર્થીઓ માટે હોમવર્ક તરીકે સાથે કરવા માટે છે."
 }

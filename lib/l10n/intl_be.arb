@@ -9991,5 +9991,6 @@
     "openRole": "Адкрыта: {role}",
     "waitingFor": "Чакаем {duration}",
     "onlineInCourse": "{count} анлайн у {course}",
-    "newCourseChat": "Новы чат курса"
+    "newCourseChat": "Новы чат курса",
+    "customCourseStepDesc": "Курс — гэта набор размоўных заняткаў, якія адпавядаюць вашаму падручніку, для сумеснага выканання вашымі студэнтамі ў якасці хатняга задання."
 }

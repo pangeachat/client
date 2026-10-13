@@ -10083,5 +10083,6 @@
     "openRole": "開放：{role}",
     "waitingFor": "等待 {duration}",
     "onlineInCourse": "{count} 人在 {course} 中上線",
-    "newCourseChat": "新課程聊天"
+    "newCourseChat": "新課程聊天",
+    "customCourseStepDesc": "課程是一系列對話活動，可讓學生按照課本內容，一起完成作業。"
 }

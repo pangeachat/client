@@ -2426,5 +2426,6 @@
     "openRole": "Louvri: {role}",
     "waitingFor": "Nap tann {duration}",
     "onlineInCourse": "{count} an liy nan {course}",
-    "newCourseChat": "Nouvo chat kou"
+    "newCourseChat": "Nouvo chat kou",
+    "customCourseStepDesc": "Yon kou se yon seri aktivite konvèsasyon ki swiv liv ou a, pou elèv ou yo fè ansanm kòm devwa."
 }

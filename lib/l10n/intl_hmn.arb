@@ -2426,5 +2426,6 @@
     "openRole": "Qhib: {role}",
     "waitingFor": "Tos {duration}",
     "onlineInCourse": "{count} tus nyob online hauv {course}",
-    "newCourseChat": "Kev sib tham kawm tshiab"
+    "newCourseChat": "Kev sib tham kawm tshiab",
+    "customCourseStepDesc": "Ib chav kawm yog ib pawg kev sib tham uas ua raws li koj phau ntawv kawm, rau koj cov tub ntxhais kawm ua ke ua homework."
 }

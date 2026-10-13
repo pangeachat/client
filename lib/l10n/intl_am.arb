@@ -2426,5 +2426,6 @@
     "openRole": "ክፍት: {role}",
     "waitingFor": "{duration} በመጠበቅ ላይ",
     "onlineInCourse": "{course} ውስጥ {count} በመስመር ላይ",
-    "newCourseChat": "አዲስ የኮርስ ውይይት"
+    "newCourseChat": "አዲስ የኮርስ ውይይት",
+    "customCourseStepDesc": "ኮርስ ማለት ተማሪዎችዎ እንደ የቤት ስራ አብረው እንዲሰሩት የመማሪያ መጽሐፍዎን የሚከተሉ የውይይት እንቅስቃሴዎች ስብስብ ነው።"
 }

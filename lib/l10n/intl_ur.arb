@@ -2426,5 +2426,6 @@
     "openRole": "کھولیں: {role}",
     "waitingFor": "{duration} انتظار کر رہا ہے",
     "onlineInCourse": "{count} {course} میں آن لائن",
-    "newCourseChat": "نئی کورس چیٹ"
+    "newCourseChat": "نئی کورس چیٹ",
+    "customCourseStepDesc": "ایک کورس گفتگو کی سرگرمیوں کا ایک مجموعہ ہے جو آپ کی نصابی کتاب کی پیروی کرتا ہے، تاکہ آپ کے طلباء ہوم ورک کے طور پر ایک ساتھ کر سکیں۔"
 }

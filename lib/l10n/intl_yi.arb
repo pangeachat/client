@@ -2426,5 +2426,6 @@
     "openRole": "אָפֿן: {role}",
     "waitingFor": "וואַרטן {duration}",
     "onlineInCourse": "{count} אָנליין אין {course}",
-    "newCourseChat": "נייַ קורס שמועס"
+    "newCourseChat": "נייַ קורס שמועס",
+    "customCourseStepDesc": "אַ קורס איז אַ סכום פון שמועס-אַקטיוויטעטן וואָס פאָלגן דיין לערנבוך, כּדי דיינע סטודענטן זאָלן דאָס טאָן צוזאַמען ווי הײם־אַרבעט."
 }

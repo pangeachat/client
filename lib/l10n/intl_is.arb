@@ -2426,5 +2426,6 @@
     "openRole": "Opið: {role}",
     "waitingFor": "Beðið í {duration}",
     "onlineInCourse": "{count} á netinu í {course}",
-    "newCourseChat": "Nýtt námskeiðsspjall"
+    "newCourseChat": "Nýtt námskeiðsspjall",
+    "customCourseStepDesc": "Námskeið er safn samtalsæfinga sem fylgja kennslubókinni þinni, fyrir nemendur þína til að gera saman sem heimanám."
 }

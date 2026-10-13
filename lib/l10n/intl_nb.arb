@@ -10034,5 +10034,6 @@
     "openRole": "Åpen: {role}",
     "waitingFor": "Venter {duration}",
     "onlineInCourse": "{count} pålogget i {course}",
-    "newCourseChat": "Ny kursprat"
+    "newCourseChat": "Ny kursprat",
+    "customCourseStepDesc": "Et kurs er et sett med samtaleaktiviteter som følger læreboken din, som elevene dine kan gjøre sammen som lekser."
 }

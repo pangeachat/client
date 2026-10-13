@@ -2426,5 +2426,6 @@
     "openRole": "Furan: {role}",
     "waitingFor": "Sugaya {duration}",
     "onlineInCourse": "{count} ayaa khadka ku jira {course}",
-    "newCourseChat": "Sheeko kooras cusub"
+    "newCourseChat": "Sheeko kooras cusub",
+    "customCourseStepDesc": "Koorsadu waa qaybo waxqabadyo wada-hadal ah oo raacaya buuggaaga, si ardaydaadu ay u wada qabtaan shaqo-guri ahaan."
 }

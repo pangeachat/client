@@ -2426,5 +2426,6 @@
     "openRole": "Hapur: {role}",
     "waitingFor": "Duke pritur {duration}",
     "onlineInCourse": "{count} online në {course}",
-    "newCourseChat": "Bisedë e re kursi"
+    "newCourseChat": "Bisedë e re kursi",
+    "customCourseStepDesc": "Një kurs është një grup aktivitetesh bisede që ndjekin tekstin tuaj shkollor, që studentët tuaj të bëjnë së bashku si detyrë shtëpie."
 }

@@ -10897,5 +10897,6 @@
     "openRole": "Åben: {role}",
     "waitingFor": "Venter {duration}",
     "onlineInCourse": "{count} online i {course}",
-    "newCourseChat": "Ny kursuschatsamtale"
+    "newCourseChat": "Ny kursuschatsamtale",
+    "customCourseStepDesc": "Et kursus er et sæt samtaleaktiviteter, der følger din lærebog, som dine elever kan lave sammen som lektier."
 }

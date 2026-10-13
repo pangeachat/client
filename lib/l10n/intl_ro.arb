@@ -10709,5 +10709,6 @@
     "openRole": "Deschis: {role}",
     "waitingFor": "Se așteaptă {duration}",
     "onlineInCourse": "{count} online în {course}",
-    "newCourseChat": "Chat nou de curs"
+    "newCourseChat": "Chat nou de curs",
+    "customCourseStepDesc": "Un curs este un set de activități de conversație care urmează manualul tău, pentru ca studenții tăi să le facă împreună ca temă."
 }

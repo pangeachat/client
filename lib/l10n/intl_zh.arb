@@ -9977,5 +9977,6 @@
     "openRole": "开放：{role}",
     "waitingFor": "等待 {duration}",
     "onlineInCourse": "{count} 人在线，在 {course} 课程中",
-    "newCourseChat": "新课程聊天"
+    "newCourseChat": "新课程聊天",
+    "customCourseStepDesc": "课程是一系列对话活动，学生可以根据您的教材，一起完成这些活动作为家庭作业。"
 }

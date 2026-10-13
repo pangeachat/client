@@ -7279,5 +7279,6 @@
     "openRole": "Mở: {role}",
     "waitingFor": "Đang chờ {duration}",
     "onlineInCourse": "{count} người trực tuyến trong khóa {course}",
-    "newCourseChat": "Trò chuyện khóa học mới"
+    "newCourseChat": "Trò chuyện khóa học mới",
+    "customCourseStepDesc": "Một khóa học là một tập hợp các hoạt động hội thoại theo sách giáo khoa của bạn, để học sinh của bạn cùng nhau làm bài tập về nhà."
 }

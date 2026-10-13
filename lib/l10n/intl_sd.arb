@@ -2426,5 +2426,6 @@
     "openRole": "کليل: {role}",
     "waitingFor": "انتظار {duration}",
     "onlineInCourse": "{count} آن لائن {course} ۾",
-    "newCourseChat": "نئون ڪورس چيٽ"
+    "newCourseChat": "نئون ڪورس چيٽ",
+    "customCourseStepDesc": "هڪ ڪورس ڳالهين جي سرگرمين جو هڪ مجموعو آهي جيڪو توهان جي درسي ڪتاب جي پيروي ڪري ٿو، توهان جي شاگردن لاءِ گڏجي گهر جو ڪم ڪرڻ لاءِ."
 }

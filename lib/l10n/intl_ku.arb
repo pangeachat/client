@@ -2426,5 +2426,6 @@
     "openRole": "کراوە: {role}",
     "waitingFor": "{duration} چاوەڕوانکردن",
     "onlineInCourse": "{count} ئۆنلاین لە {course}",
-    "newCourseChat": "چاتی خولی نوێ"
+    "newCourseChat": "چاتی خولی نوێ",
+    "customCourseStepDesc": "کۆرس کۆمەڵێک چالاکی گفتوگۆیە کە بەدوای کتێبی خوێندنەکەتدا دێت، بۆ ئەوەی خوێندکارەکانت وەک ئەرکی ماڵەوە پێکەوە ئەنجامی بدەن."
 }

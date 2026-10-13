@@ -2426,5 +2426,6 @@
     "openRole": "Apertum: {role}",
     "waitingFor": "Exspectans {duration}",
     "onlineInCourse": "{count} in {course} adsunt",
-    "newCourseChat": "Novae cursus sermocinatio"
+    "newCourseChat": "Novae cursus sermocinatio",
+    "customCourseStepDesc": "Cursus est copia exercitationum sermonis quae librum tuum sequuntur, ut discipuli tui simul pro pensis domesticis faciant."
 }

@@ -10922,5 +10922,6 @@
     "openRole": "Odprto: {role}",
     "waitingFor": "Čakanje {duration}",
     "onlineInCourse": "{count} na spletu v {course}",
-    "newCourseChat": "Nov klepet tečaja"
+    "newCourseChat": "Nov klepet tečaja",
+    "customCourseStepDesc": "Tečaj je sklop pogovornih dejavnosti, ki sledijo vašemu učbeniku, da jih vaši učenci skupaj opravijo kot domačo nalogo."
 }

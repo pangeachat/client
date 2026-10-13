@@ -10283,5 +10283,6 @@
     "openRole": "مفتوح: {role}",
     "waitingFor": "في انتظار {duration}",
     "onlineInCourse": "{count} متصلون في {course}",
-    "newCourseChat": "محادثة دورة جديدة"
+    "newCourseChat": "محادثة دورة جديدة",
+    "customCourseStepDesc": "الدورة التدريبية هي مجموعة من أنشطة المحادثة التي تتبع كتابك المدرسي، ليقوم بها طلابك معًا كواجب منزلي."
 }

@@ -10609,5 +10609,6 @@
     "openRole": "खुला: {role}",
     "waitingFor": "{duration} प्रतीक्षा कर रहा है",
     "onlineInCourse": "{course} में {count} ऑनलाइन",
-    "newCourseChat": "नई कोर्स चैट"
+    "newCourseChat": "नई कोर्स चैट",
+    "customCourseStepDesc": "एक कोर्स बातचीत की गतिविधियों का एक सेट है जो आपकी पाठ्यपुस्तक का अनुसरण करता है, जिसे आपके छात्र होमवर्क के रूप में एक साथ करते हैं।"
 }

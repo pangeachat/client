@@ -2426,5 +2426,6 @@
     "openRole": "Açıq: {role}",
     "waitingFor": "{duration} gözləyir",
     "onlineInCourse": "{count} nəfər {course} kursunda onlayndır",
-    "newCourseChat": "Yeni kurs söhbəti"
+    "newCourseChat": "Yeni kurs söhbəti",
+    "customCourseStepDesc": "Kurs, tələbələrinizin ev tapşırığı olaraq birlikdə edəcəyi, dərsliklərinizə uyğun söhbət fəaliyyətləri toplusudur."
 }

@@ -10609,5 +10609,6 @@
     "openRole": "Oscailte: {role}",
     "waitingFor": "Ag fanacht {duration}",
     "onlineInCourse": "{count} ar líne i {course}",
-    "newCourseChat": "Comhrá cúrsa nua"
+    "newCourseChat": "Comhrá cúrsa nua",
+    "customCourseStepDesc": "Is sraith gníomhaíochtaí comhrá é cúrsa a leanann do théacsleabhar, le déanamh ag do mhic léinn le chéile mar obair bhaile."
 }

@@ -9977,5 +9977,6 @@
     "openRole": "Atvērts: {role}",
     "waitingFor": "Gaida {duration}",
     "onlineInCourse": "{count} tiešsaistē kursā {course}",
-    "newCourseChat": "Jauna kursa tērzēšana"
+    "newCourseChat": "Jauna kursa tērzēšana",
+    "customCourseStepDesc": "Kurss ir sarunu aktivitāšu kopums, kas seko jūsu mācību grāmatai, lai jūsu studenti to darītu kopā kā mājasdarbu."
 }

@@ -2426,5 +2426,6 @@
     "openRole": "Tsegulani: {role}",
     "waitingFor": "Kudikira {duration}",
     "onlineInCourse": "{count} pa intaneti mu {course}",
-    "newCourseChat": "Macheza atsopano a maphunziro"
+    "newCourseChat": "Macheza atsopano a maphunziro",
+    "customCourseStepDesc": "Maphunziro ndi mndandanda wa zokambirana zomwe zimatsatira buku lanu, kuti ophunzira anu azichita limodzi ngati ntchito yakunyumba."
 }

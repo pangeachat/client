@@ -2426,5 +2426,6 @@
     "openRole": "Vula: {role}",
     "waitingFor": "Ilinde {duration}",
     "onlineInCourse": "{count} abaku-inthanethi ku-{course}",
-    "newCourseChat": "Ingxoxo entsha yesifundo"
+    "newCourseChat": "Ingxoxo entsha yesifundo",
+    "customCourseStepDesc": "Ikhosi iqoqo lemisebenzi yengxoxo elandela incwadi yakho, ukuze abafundi bakho bayenze ndawonye njengomsebenzi wesikole."
 }

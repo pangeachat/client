@@ -10891,5 +10891,6 @@
     "openRole": "פתוח: {role}",
     "waitingFor": "ממתין {duration}",
     "onlineInCourse": "{count} מחוברים ב{course}",
-    "newCourseChat": "צ'אט קורס חדש"
+    "newCourseChat": "צ'אט קורס חדש",
+    "customCourseStepDesc": "קורס הוא סדרה של פעילויות שיחה שעוקבות אחר ספר הלימוד שלך, כדי שהתלמידים שלך יוכלו לעשות יחד כשיעורי בית."
 }

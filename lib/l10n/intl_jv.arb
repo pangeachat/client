@@ -2426,5 +2426,6 @@
     "openRole": "Buka: {role}",
     "waitingFor": "Ngenteni {duration}",
     "onlineInCourse": "{count} online ing {course}",
-    "newCourseChat": "Obrolan kursus anyar"
+    "newCourseChat": "Obrolan kursus anyar",
+    "customCourseStepDesc": "Kursus yaiku sakumpulan aktivitas pacelathon sing ngetutake buku teks sampeyan, kanggo siswa sampeyan supaya bisa nindakake bebarengan minangka PR."
 }

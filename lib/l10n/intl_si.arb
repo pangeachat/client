@@ -2426,5 +2426,6 @@
     "openRole": "විවෘත: {role}",
     "waitingFor": "{duration} බලා සිටී",
     "onlineInCourse": "{count} දෙනෙක් {course} හි මාර්ගගතව සිටිති",
-    "newCourseChat": "නව පාඨමාලා කතාබස්"
+    "newCourseChat": "නව පාඨමාලා කතාබස්",
+    "customCourseStepDesc": "පාඨමාලාවක් යනු ඔබේ පෙළපොතට අනුව සකස් කරන ලද සංවාද ක්‍රියාකාරකම් සමූහයකි. එය ඔබේ සිසුන්ට ගෙදර වැඩ ලෙස එකට කිරීමට පුළුවන."
 }

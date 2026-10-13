@@ -10104,5 +10104,6 @@
     "openRole": "Obert: {role}",
     "waitingFor": "Esperant {duration}",
     "onlineInCourse": "{count} en línia a {course}",
-    "newCourseChat": "Nou xat del curs"
+    "newCourseChat": "Nou xat del curs",
+    "customCourseStepDesc": "Un curs és un conjunt d'activitats de conversa que segueixen el teu llibre de text, perquè els teus estudiants les facin junts com a deures."
 }

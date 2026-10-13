@@ -2426,5 +2426,6 @@
     "openRole": "Fungua: {role}",
     "waitingFor": "Inasubiri {duration}",
     "onlineInCourse": "{count} wako mtandaoni katika {course}",
-    "newCourseChat": "Gumzo jipya la kozi"
+    "newCourseChat": "Gumzo jipya la kozi",
+    "customCourseStepDesc": "Kozi ni seti ya shughuli za mazungumzo zinazofuata kitabu chako cha kiada, kwa ajili ya wanafunzi wako kufanya pamoja kama kazi ya nyumbani."
 }

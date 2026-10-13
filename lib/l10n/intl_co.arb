@@ -2426,5 +2426,6 @@
     "openRole": "Apertu: {role}",
     "waitingFor": "Aspittendu {duration}",
     "onlineInCourse": "{count} in ligna in {course}",
-    "newCourseChat": "Nova cunversazione di corsu"
+    "newCourseChat": "Nova cunversazione di corsu",
+    "customCourseStepDesc": "Un corsu hè un inseme d'attività di cunversazione chì seguitanu u vostru libru di testu, per i vostri studienti à fà inseme cum'è duveri."
 }

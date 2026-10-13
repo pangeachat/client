@@ -2426,5 +2426,6 @@
     "openRole": "Wātea: {role}",
     "waitingFor": "E tatari ana {duration}",
     "onlineInCourse": "{count} kei te ipurangi i roto i te {course}",
-    "newCourseChat": "Kōrerorero akoranga hōu"
+    "newCourseChat": "Kōrerorero akoranga hōu",
+    "customCourseStepDesc": "He huinga mahi kōrerorero te akoranga e whai ana i tō pukapuka, mā ō ākonga e mahi ngātahi hei mahi kāinga."
 }

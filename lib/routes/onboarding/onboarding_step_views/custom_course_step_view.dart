@@ -120,6 +120,13 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
                       ),
                     ),
                   ),
+                  // What the instructor is requesting, said as what the course
+                  // is: the brand rule "What a course is, to an instructor".
+                  Text(
+                    L10n.of(context).customCourseStepDesc,
+                    style: theme.textTheme.bodyMedium,
+                    textAlign: TextAlign.center,
+                  ),
                   // The textbook is the first thing we ask, since it is
                   // usually all we need to build the course. Submits as
                   // `goals`, the same field the website form uses.

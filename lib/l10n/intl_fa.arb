@@ -10065,5 +10065,6 @@
     "openRole": "باز: {role}",
     "waitingFor": "در انتظار {duration}",
     "onlineInCourse": "{count} نفر آنلاین در {course}",
-    "newCourseChat": "چت دوره جدید"
+    "newCourseChat": "چت دوره جدید",
+    "customCourseStepDesc": "یک دوره مجموعه‌ای از فعالیت‌های مکالمه است که از کتاب درسی شما پیروی می‌کند و دانش‌آموزان شما می‌توانند آن را به عنوان تکلیف با هم انجام دهند."
 }

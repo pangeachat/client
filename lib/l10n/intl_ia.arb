@@ -10913,5 +10913,6 @@
     "openRole": "Aperte: {role}",
     "waitingFor": "Attendente {duration}",
     "onlineInCourse": "{count} in linea in {course}",
-    "newCourseChat": "Nove chat de curso"
+    "newCourseChat": "Nove chat de curso",
+    "customCourseStepDesc": "Un curso es un insimul de activitates conversational que seque tu manual, pro que tu studentes los face insimul como deberes."
 }

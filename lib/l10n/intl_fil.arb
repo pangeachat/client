@@ -10837,5 +10837,6 @@
     "openRole": "Bukas: {role}",
     "waitingFor": "Naghihintay {duration}",
     "onlineInCourse": "{count} online sa {course}",
-    "newCourseChat": "Bagong chat sa kurso"
+    "newCourseChat": "Bagong chat sa kurso",
+    "customCourseStepDesc": "Ang kurso ay isang hanay ng mga aktibidad sa pag-uusap na sumusunod sa iyong aklat-aralin, para sa iyong mga mag-aaral na gawin nang magkasama bilang takdang-aralin."
 }

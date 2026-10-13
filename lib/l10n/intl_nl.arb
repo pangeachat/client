@@ -9977,5 +9977,6 @@
     "openRole": "Open: {role}",
     "waitingFor": "Wachten {duration}",
     "onlineInCourse": "{count} online in {course}",
-    "newCourseChat": "Nieuwe cursuschat"
+    "newCourseChat": "Nieuwe cursuschat",
+    "customCourseStepDesc": "Een cursus is een reeks gespreksactiviteiten die je leerboek volgen, die je studenten samen als huiswerk kunnen doen."
 }

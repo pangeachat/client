@@ -2426,5 +2426,6 @@
     "openRole": "Отворено: {role}",
     "waitingFor": "Изчакване {duration}",
     "onlineInCourse": "{count} онлайн в {course}",
-    "newCourseChat": "Нов чат за курса"
+    "newCourseChat": "Нов чат за курса",
+    "customCourseStepDesc": "Курсът е набор от разговорни дейности, които следват учебника ви, за да ги изпълняват учениците ви заедно като домашно."
 }

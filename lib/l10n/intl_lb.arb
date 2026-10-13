@@ -2426,5 +2426,6 @@
     "openRole": "Oppen: {role}",
     "waitingFor": "Waarden {duration}",
     "onlineInCourse": "{count} online am Cours {course}",
-    "newCourseChat": "Neie Cours-Chat"
+    "newCourseChat": "Neie Cours-Chat",
+    "customCourseStepDesc": "E Cours ass eng Rei vu Gespréichsaktivitéiten, déi Äert Léierbuch verfollegen, fir Är Schüler als Hausaufgab zesummen ze maachen."
 }

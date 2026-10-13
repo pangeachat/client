@@ -2426,5 +2426,6 @@
     "openRole": "Agored: {role}",
     "waitingFor": "Yn aros {duration}",
     "onlineInCourse": "{count} ar-lein yn {course}",
-    "newCourseChat": "Sgwrs cwrs newydd"
+    "newCourseChat": "Sgwrs cwrs newydd",
+    "customCourseStepDesc": "Mae cwrs yn set o weithgareddau sgwrsio sy'n dilyn eich gwerslyfr, i'ch myfyrwyr eu gwneud gyda'i gilydd fel gwaith cartref."
 }

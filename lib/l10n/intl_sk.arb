@@ -10922,5 +10922,6 @@
     "openRole": "Otvorené: {role}",
     "waitingFor": "Čaká sa {duration}",
     "onlineInCourse": "{count} online v kurze {course}",
-    "newCourseChat": "Nový chat kurzu"
+    "newCourseChat": "Nový chat kurzu",
+    "customCourseStepDesc": "Kurz je súbor konverzačných aktivít, ktoré nasledujú vašu učebnicu, aby ich vaši študenti robili spoločne ako domácu úlohu."
 }
