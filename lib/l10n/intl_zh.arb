@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-12 13:12:07.733381",
+    "@@last_modified": "2026-10-13 11:25:08.585552",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9969,5 +9969,7 @@
     "callMicrophoneMessage": "Pangea Chat 需要使用您的麦克风进行通话，包括您从锁定屏幕接听的电话。",
     "callMicrophoneOffTitle": "您的通话未接通",
     "callMicrophoneOffMessage": "Pangea Chat 无法使用您的麦克风。轻点以在“设置”中将其打开。",
-    "mapCreditsLabel": "地图来源：Stadia Maps、OpenMapTiles 和 OpenStreetMap"
+    "mapCreditsLabel": "地图来源：Stadia Maps、OpenMapTiles 和 OpenStreetMap",
+    "teamCode": "团队代码",
+    "reopenAppToFinishSwitching": "请完全关闭应用，然后重新打开以完成切换。"
 }

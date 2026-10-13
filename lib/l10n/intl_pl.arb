@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-12 13:12:01.140077",
+    "@@last_modified": "2026-10-13 11:25:03.966689",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10054,5 +10054,7 @@
     "callMicrophoneMessage": "Pangea Chat potrzebuje Twojego mikrofonu do połączeń, w tym połączeń odbieranych z ekranu blokady.",
     "callMicrophoneOffTitle": "Twoje połączenie nie zostało nawiązane",
     "callMicrophoneOffMessage": "Pangea Chat nie może używać Twojego mikrofonu. Stuknij, aby włączyć go w Ustawieniach.",
-    "mapCreditsLabel": "Źródło map: Stadia Maps, OpenMapTiles i OpenStreetMap"
+    "mapCreditsLabel": "Źródło map: Stadia Maps, OpenMapTiles i OpenStreetMap",
+    "teamCode": "Kod zespołu",
+    "reopenAppToFinishSwitching": "Całkowicie zamknij aplikację i otwórz ją ponownie, aby zakończyć przełączanie."
 }

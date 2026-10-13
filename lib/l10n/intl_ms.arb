@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-12 13:11:59.788454",
+    "@@last_modified": "2026-10-13 11:25:03.369986",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2418,5 +2418,7 @@
     "callMicrophoneMessage": "Pangea Chat memerlukan mikrofon anda untuk panggilan, termasuk panggilan yang anda jawab dari skrin kunci.",
     "callMicrophoneOffTitle": "Panggilan anda tidak bersambung",
     "callMicrophoneOffMessage": "Pangea Chat tidak boleh menggunakan mikrofon anda. Ketik untuk menghidupkannya dalam Tetapan.",
-    "mapCreditsLabel": "Kredit peta: Stadia Maps, OpenMapTiles dan OpenStreetMap"
+    "mapCreditsLabel": "Kredit peta: Stadia Maps, OpenMapTiles dan OpenStreetMap",
+    "teamCode": "Kod pasukan",
+    "reopenAppToFinishSwitching": "Tutup aplikasi sepenuhnya dan buka semula untuk menyelesaikan penukaran."
 }

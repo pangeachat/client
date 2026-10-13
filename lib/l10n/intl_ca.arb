@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:11:49.913846",
+    "@@last_modified": "2026-10-13 11:24:51.425263",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10096,5 +10096,7 @@
     "callMicrophoneMessage": "Pangea Chat necessita el teu micròfon per a les trucades, incloses les trucades que responguis des de la pantalla de bloqueig.",
     "callMicrophoneOffTitle": "La teva trucada no s'ha pogut connectar",
     "callMicrophoneOffMessage": "Pangea Chat no pot utilitzar el teu micròfon. Toca per activar-lo a Configuració.",
-    "mapCreditsLabel": "Crèdits del mapa: Stadia Maps, OpenMapTiles i OpenStreetMap"
+    "mapCreditsLabel": "Crèdits del mapa: Stadia Maps, OpenMapTiles i OpenStreetMap",
+    "teamCode": "Codi d'equip",
+    "reopenAppToFinishSwitching": "Tanca l'aplicació completament i torna-la a obrir per acabar de canviar."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-12 13:11:56.962461",
+    "@@last_modified": "2026-10-13 11:24:56.865518",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2418,5 +2418,7 @@
     "callMicrophoneMessage": "Pangea Chat-ին անհրաժեշտ է ձեր խոսափողը զանգերի համար, ներառյալ այն զանգերը, որոնց պատասխանում եք կողպված էկրանից։",
     "callMicrophoneOffTitle": "Ձեր զանգը չմիացավ",
     "callMicrophoneOffMessage": "Pangea Chat-ը չի կարող օգտագործել ձեր խոսափողը։ Սեղմեք՝ այն Կարգավորումներում միացնելու համար։",
-    "mapCreditsLabel": "Քարտեզի հեղինակներ՝ Stadia Maps, OpenMapTiles և OpenStreetMap"
+    "mapCreditsLabel": "Քարտեզի հեղինակներ՝ Stadia Maps, OpenMapTiles և OpenStreetMap",
+    "teamCode": "Թիմի կոդը",
+    "reopenAppToFinishSwitching": "Փակեք հավելվածը և նորից բացեք՝ անցումն ավարտելու համար։"
 }

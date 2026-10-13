@@ -5813,5 +5813,13 @@
     "filteredNetworkMapBlocked": "This network blocks the map.",
     "@filteredNetworkMapBlocked": {
         "description": "Note shown over the world map when the network blocks the map."
+    },
+    "teamCode": "Team code",
+    "@teamCode": {
+        "description": "Title of the prompt for the Pangea team's code, which opens the hidden environment switcher on the login page."
+    },
+    "reopenAppToFinishSwitching": "Close the app completely and open it again to finish switching.",
+    "@reopenAppToFinishSwitching": {
+        "description": "Shown after a Pangea team member switches the app between the production and staging servers; the switch applies on the next launch."
     }
 }

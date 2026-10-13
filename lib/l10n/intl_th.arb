@@ -3089,7 +3089,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-12 13:12:05.011744",
+    "@@last_modified": "2026-10-13 11:25:07.164111",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10601,5 +10601,7 @@
     "callMicrophoneMessage": "Pangea Chat ต้องใช้ไมโครโฟนของคุณสำหรับการโทร รวมถึงการโทรที่คุณรับจากหน้าจอล็อก",
     "callMicrophoneOffTitle": "การโทรของคุณไม่สามารถเชื่อมต่อได้",
     "callMicrophoneOffMessage": "Pangea Chat ไม่สามารถใช้ไมโครโฟนของคุณได้ แตะเพื่อเปิดใช้งานในการตั้งค่า",
-    "mapCreditsLabel": "เครดิตแผนที่: Stadia Maps, OpenMapTiles และ OpenStreetMap"
+    "mapCreditsLabel": "เครดิตแผนที่: Stadia Maps, OpenMapTiles และ OpenStreetMap",
+    "teamCode": "รหัสทีม",
+    "reopenAppToFinishSwitching": "ปิดแอปทั้งหมดแล้วเปิดใหม่อีกครั้งเพื่อสิ้นสุดการสลับ"
 }

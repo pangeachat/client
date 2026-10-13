@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-12 13:11:54.707291",
+    "@@last_modified": "2026-10-13 11:24:55.852972",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10405,5 +10405,7 @@
     "callMicrophoneMessage": "Pangea Chat treba vaš mikrofon za pozive, uključujući pozive na koje odgovarate sa zaključanog zaslona.",
     "callMicrophoneOffTitle": "Vaš poziv nije uspostavljen",
     "callMicrophoneOffMessage": "Pangea Chat ne može koristiti vaš mikrofon. Dodirnite za uključivanje u Postavkama.",
-    "mapCreditsLabel": "Zasluge za kartu: Stadia Maps, OpenMapTiles i OpenStreetMap"
+    "mapCreditsLabel": "Zasluge za kartu: Stadia Maps, OpenMapTiles i OpenStreetMap",
+    "teamCode": "Kôd tima",
+    "reopenAppToFinishSwitching": "Potpuno zatvorite aplikaciju i ponovno je otvorite kako biste dovršili prebacivanje."
 }

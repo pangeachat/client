@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-12 13:11:53.452259",
+    "@@last_modified": "2026-10-13 11:24:55.719062",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9969,5 +9969,7 @@
     "callMicrophoneMessage": "Pangea Chat-ek zure mikrofonoa behar du deietarako, blokeo-pantailatik erantzuten dituzun deiak barne.",
     "callMicrophoneOffTitle": "Zure deia ez da konektatu",
     "callMicrophoneOffMessage": "Pangea Chat-ek ezin du zure mikrofonoa erabili. Sakatu Ezarpenetan aktibatzeko.",
-    "mapCreditsLabel": "Maparen kredituak: Stadia Maps, OpenMapTiles eta OpenStreetMap"
+    "mapCreditsLabel": "Maparen kredituak: Stadia Maps, OpenMapTiles eta OpenStreetMap",
+    "teamCode": "Talde-kodea",
+    "reopenAppToFinishSwitching": "Itxi aplikazioa erabat eta ireki berriro aldatzen amaitzeko."
 }

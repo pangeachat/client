@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-12 13:11:54.846408",
+    "@@last_modified": "2026-10-13 11:24:56.324273",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2418,5 +2418,7 @@
     "callMicrophoneMessage": "Pangea Chat xav tau koj lub microphone rau kev hu, suav nrog kev hu uas koj teb los ntawm lub vijtsam kaw.",
     "callMicrophoneOffTitle": "Koj qhov kev hu tsis txuas",
     "callMicrophoneOffMessage": "Pangea Chat tsis tuaj yeem siv koj lub microphone. Coj mus rhaub kom qhib nws hauv Chaw.",
-    "mapCreditsLabel": "Daim ntawv qhia chaw: Stadia Maps, OpenMapTiles thiab OpenStreetMap"
+    "mapCreditsLabel": "Daim ntawv qhia chaw: Stadia Maps, OpenMapTiles thiab OpenStreetMap",
+    "teamCode": "Pab pawg tus lej",
+    "reopenAppToFinishSwitching": "Kaw tag nrho lub app thiab mam li qhib dua kom tiav kev hloov."
 }

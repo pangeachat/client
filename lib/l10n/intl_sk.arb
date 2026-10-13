@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-12 13:12:03.046260",
+    "@@last_modified": "2026-10-13 11:25:06.296920",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10914,5 +10914,7 @@
     "callMicrophoneMessage": "Pangea Chat potrebuje váš mikrofón pre hovory, vrátane hovorov, ktoré prijmete z uzamknutej obrazovky.",
     "callMicrophoneOffTitle": "Váš hovor sa nepodarilo spojiť",
     "callMicrophoneOffMessage": "Pangea Chat nemôže používať váš mikrofón. Klepnutím ho zapnete v Nastaveniach.",
-    "mapCreditsLabel": "Autorské práva k mape: Stadia Maps, OpenMapTiles a OpenStreetMap"
+    "mapCreditsLabel": "Autorské práva k mape: Stadia Maps, OpenMapTiles a OpenStreetMap",
+    "teamCode": "Kód tímu",
+    "reopenAppToFinishSwitching": "Úplne zatvorte aplikáciu a znova ju otvorte, aby ste dokončili prepínanie."
 }

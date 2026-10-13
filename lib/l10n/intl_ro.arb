@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:12:02.363582",
+    "@@last_modified": "2026-10-13 11:25:05.428586",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10701,5 +10701,7 @@
     "callMicrophoneMessage": "Pangea Chat are nevoie de microfonul tău pentru apeluri, inclusiv pentru apelurile la care răspunzi din ecranul de blocare.",
     "callMicrophoneOffTitle": "Apelul tău nu s-a conectat",
     "callMicrophoneOffMessage": "Pangea Chat nu poate folosi microfonul tău. Atinge pentru a-l activa din Setări.",
-    "mapCreditsLabel": "Credite hartă: Stadia Maps, OpenMapTiles și OpenStreetMap"
+    "mapCreditsLabel": "Credite hartă: Stadia Maps, OpenMapTiles și OpenStreetMap",
+    "teamCode": "Codul echipei",
+    "reopenAppToFinishSwitching": "Închide aplicația complet și redeschide-o pentru a finaliza schimbarea."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-12 13:12:00.570615",
+    "@@last_modified": "2026-10-13 11:25:02.943191",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2418,5 +2418,7 @@
     "callMicrophoneMessage": "Pangea Chat लाई कलका लागि तपाईंको माइक्रोफोन चाहिन्छ, जसमा तपाईंले लक स्क्रिनबाट उठाउनुहुने कलहरू पनि समावेश छन्।",
     "callMicrophoneOffTitle": "तपाईंको कल जडान भएन",
     "callMicrophoneOffMessage": "Pangea Chat ले तपाईंको माइक्रोफोन प्रयोग गर्न सक्दैन। सेटिङमा यसलाई अन गर्न ट्याप गर्नुहोस्।",
-    "mapCreditsLabel": "नक्सा क्रेडिट: Stadia Maps, OpenMapTiles र OpenStreetMap"
+    "mapCreditsLabel": "नक्सा क्रेडिट: Stadia Maps, OpenMapTiles र OpenStreetMap",
+    "teamCode": "टिम कोड",
+    "reopenAppToFinishSwitching": "स्विच गर्न समाप्त गर्नको लागि एपलाई पूर्ण रूपमा बन्द गर्नुहोस् र फेरि खोल्नुहोस्।"
 }

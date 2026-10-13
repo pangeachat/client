@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:12:15.413539",
+    "@@last_modified": "2026-10-13 11:25:07.923120",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7271,5 +7271,7 @@
     "callMicrophoneMessage": "Pangea Chat cần micrô của bạn cho các cuộc gọi, bao gồm cả các cuộc gọi bạn trả lời từ màn hình khóa.",
     "callMicrophoneOffTitle": "Cuộc gọi của bạn không kết nối được",
     "callMicrophoneOffMessage": "Pangea Chat không thể sử dụng micrô của bạn. Nhấn để bật micrô trong Cài đặt.",
-    "mapCreditsLabel": "Bản quyền bản đồ: Stadia Maps, OpenMapTiles và OpenStreetMap"
+    "mapCreditsLabel": "Bản quyền bản đồ: Stadia Maps, OpenMapTiles và OpenStreetMap",
+    "teamCode": "Mã nhóm",
+    "reopenAppToFinishSwitching": "Đóng hoàn toàn ứng dụng và mở lại để hoàn tất việc chuyển đổi."
 }

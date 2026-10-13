@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-12 13:11:55.750783",
+    "@@last_modified": "2026-10-13 11:24:56.995756",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2418,5 +2418,7 @@
     "callMicrophoneMessage": "Pangea Chat þarf aðgang að hljóðnemanum þínum fyrir símtöl, þar á meðal símtöl sem þú svarar frá lásskjánum.",
     "callMicrophoneOffTitle": "Símtalið þitt tengdist ekki",
     "callMicrophoneOffMessage": "Pangea Chat getur ekki notað hljóðnemann þinn. Bankaðu til að kveikja á honum í stillingum.",
-    "mapCreditsLabel": "Kortaupplýsingar: Stadia Maps, OpenMapTiles og OpenStreetMap"
+    "mapCreditsLabel": "Kortaupplýsingar: Stadia Maps, OpenMapTiles og OpenStreetMap",
+    "teamCode": "Liðskóði",
+    "reopenAppToFinishSwitching": "Lokaðu forritinu alveg og opnaðu það aftur til að ljúka skiptunum."
 }

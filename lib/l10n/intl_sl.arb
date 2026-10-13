@@ -1798,7 +1798,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-12 13:12:03.179496",
+    "@@last_modified": "2026-10-13 11:25:05.300460",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10914,5 +10914,7 @@
     "callMicrophoneMessage": "Pangea Chat potrebuje vaš mikrofon za klice, vključno s klici, na katere odgovorite z zaklenjenega zaslona.",
     "callMicrophoneOffTitle": "Vaš klic se ni povezal",
     "callMicrophoneOffMessage": "Pangea Chat ne more uporabljati vašega mikrofona. Tapnite, da ga vklopite v nastavitvah.",
-    "mapCreditsLabel": "Zasluge za zemljevid: Stadia Maps, OpenMapTiles in OpenStreetMap"
+    "mapCreditsLabel": "Zasluge za zemljevid: Stadia Maps, OpenMapTiles in OpenStreetMap",
+    "teamCode": "Koda ekipe",
+    "reopenAppToFinishSwitching": "Popolnoma zaprite aplikacijo in jo znova odprite, da dokončate preklop."
 }

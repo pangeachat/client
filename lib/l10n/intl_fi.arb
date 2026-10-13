@@ -3532,7 +3532,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-12 13:11:53.084417",
+    "@@last_modified": "2026-10-13 11:24:56.708655",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10006,5 +10006,7 @@
     "callMicrophoneMessage": "Pangea Chat tarvitsee mikrofonisi puheluihin, myös lukitusnäytöltä vastaamiisi puheluihin.",
     "callMicrophoneOffTitle": "Puhelu ei yhdistynyt",
     "callMicrophoneOffMessage": "Pangea Chat ei voi käyttää mikrofonia. Napauta ottaaksesi sen käyttöön asetuksista.",
-    "mapCreditsLabel": "Karttatiedot: Stadia Maps, OpenMapTiles ja OpenStreetMap"
+    "mapCreditsLabel": "Karttatiedot: Stadia Maps, OpenMapTiles ja OpenStreetMap",
+    "teamCode": "Tiimikoodi",
+    "reopenAppToFinishSwitching": "Sulje sovellus kokonaan ja avaa se uudelleen vaihdon viimeistelemiseksi."
 }

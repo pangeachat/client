@@ -2963,7 +2963,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-12 13:11:58.159791",
+    "@@last_modified": "2026-10-13 11:25:01.021325",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10750,5 +10750,7 @@
     "callMicrophoneMessage": "„Pangea Chat“ reikalingas jūsų mikrofonas skambučiams, įskaitant tuos, kuriuos atsiliepiate iš užrakinimo ekrano.",
     "callMicrophoneOffTitle": "Nepavyko prisijungti prie skambučio",
     "callMicrophoneOffMessage": "„Pangea Chat“ negali naudoti jūsų mikrofono. Bakstelėkite, kad įjungtumėte jį nustatymuose.",
-    "mapCreditsLabel": "Žemėlapio autoriai: Stadia Maps, OpenMapTiles ir OpenStreetMap"
+    "mapCreditsLabel": "Žemėlapio autoriai: Stadia Maps, OpenMapTiles ir OpenStreetMap",
+    "teamCode": "Komandos kodas",
+    "reopenAppToFinishSwitching": "Visiškai uždarykite programėlę ir atidarykite ją iš naujo, kad užbaigtumėte perjungimą."
 }

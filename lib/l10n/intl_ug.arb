@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-12 13:12:08.336786",
+    "@@last_modified": "2026-10-13 11:25:07.604583",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2418,5 +2418,7 @@
     "callMicrophoneMessage": "Pangea پاراڭ سۆھبىتى چاقىرىش ئۈچۈن مىكروفونىڭىزغا ئېھتىياجلىق، بۇنىڭ ئىچىدە قۇلۇپ ئېكرانىدىن جاۋاب بەرگەن چاقىرىشلارنىمۇ ئۆز ئىچىگە ئالىدۇ.",
     "callMicrophoneOffTitle": "چاقىرىشىڭىز ئۇلانمىدى",
     "callMicrophoneOffMessage": "Pangea پاراڭ سۆھبىتى مىكروفونىڭىزنى ئىشلىتەلمەيدۇ. تەڭشەكلەردە ئېچىش ئۈچۈن چېكىڭ.",
-    "mapCreditsLabel": "خەرىتە ئىناۋىتى: Stadia Maps, OpenMapTiles ۋە OpenStreetMap"
+    "mapCreditsLabel": "خەرىتە ئىناۋىتى: Stadia Maps, OpenMapTiles ۋە OpenStreetMap",
+    "teamCode": "گۇرۇپپا كودى",
+    "reopenAppToFinishSwitching": "ئالماشتۇرۇشنى تاماملاش ئۈچۈن ئەپنى تاقاپ قايتا ئېچىڭ."
 }

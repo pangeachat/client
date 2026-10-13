@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-12 13:12:01.288273",
+    "@@last_modified": "2026-10-13 11:25:03.632075",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2418,5 +2418,7 @@
     "callMicrophoneMessage": "Pangea Chat trenger mikrofonen din for samtaler, inkludert samtaler du svarer på fra låseskjermen.",
     "callMicrophoneOffTitle": "Samtalen din ble ikke koblet til",
     "callMicrophoneOffMessage": "Pangea Chat kan ikke bruke mikrofonen din. Trykk for å slå den på i Innstillinger.",
-    "mapCreditsLabel": "Kartkreditering: Stadia Maps, OpenMapTiles og OpenStreetMap"
+    "mapCreditsLabel": "Kartkreditering: Stadia Maps, OpenMapTiles og OpenStreetMap",
+    "teamCode": "Teamkode",
+    "reopenAppToFinishSwitching": "Lukk appen helt og åpne den igjen for å fullføre byttet."
 }

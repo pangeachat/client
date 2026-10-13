@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-12 13:11:52.049179",
+    "@@last_modified": "2026-10-13 11:24:54.278727",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10324,5 +10324,7 @@
     "callMicrophoneMessage": "Pangea Chat a besoin de votre microphone pour les appels, y compris ceux auxquels vous répondez depuis l'écran verrouillé.",
     "callMicrophoneOffTitle": "Votre appel n'a pas abouti",
     "callMicrophoneOffMessage": "Pangea Chat ne peut pas utiliser votre microphone. Appuyez pour l'activer dans les réglages.",
-    "mapCreditsLabel": "Crédits cartographiques : Stadia Maps, OpenMapTiles et OpenStreetMap"
+    "mapCreditsLabel": "Crédits cartographiques : Stadia Maps, OpenMapTiles et OpenStreetMap",
+    "teamCode": "Code d'équipe",
+    "reopenAppToFinishSwitching": "Fermez complètement l'application et rouvrez-la pour terminer le changement."
 }

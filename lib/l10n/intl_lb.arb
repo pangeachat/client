@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-12 13:12:00.380056",
+    "@@last_modified": "2026-10-13 11:25:01.237389",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2418,5 +2418,7 @@
     "callMicrophoneMessage": "Pangea Chat brauch Äre Mikro fir Uriff, och Uriff déi Dir vum Spärbildschierm beäntwert.",
     "callMicrophoneOffTitle": "Ären Uruff gouf net ugeschloss",
     "callMicrophoneOffMessage": "Pangea Chat kann Äre Mikro net benotzen. Tippen fir en an den Astellungen unzeschalten.",
-    "mapCreditsLabel": "Kaart Credits: Stadia Maps, OpenMapTiles an OpenStreetMap"
+    "mapCreditsLabel": "Kaart Credits: Stadia Maps, OpenMapTiles an OpenStreetMap",
+    "teamCode": "Team Code",
+    "reopenAppToFinishSwitching": "Maach d'App komplett zou an dann nees op fir de Wiessel ofzeschléissen."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-12 13:11:59.255650",
+    "@@last_modified": "2026-10-13 11:25:02.831919",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2418,5 +2418,7 @@
     "callMicrophoneMessage": "Me whai hopuoro a Pangea Chat mō ngā waea, tae atu ki ngā waea ka whakautua e koe mai i te mata maukati.",
     "callMicrophoneOffTitle": "Kāore i hono tō waea",
     "callMicrophoneOffMessage": "Kāore e taea e Pangea Chat te whakamahi i tō hopuoro. Pāwhiritia kia whakakāhia i ngā Tautuhinga.",
-    "mapCreditsLabel": "Ngā takoha mahere: Stadia Maps, OpenMapTiles me OpenStreetMap"
+    "mapCreditsLabel": "Ngā takoha mahere: Stadia Maps, OpenMapTiles me OpenStreetMap",
+    "teamCode": "Waehere tīma",
+    "reopenAppToFinishSwitching": "Katia katoatia te taupānga ka whakatuwhera anō kia oti ai te huri."
 }

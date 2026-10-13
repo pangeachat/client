@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:11:48.350314",
+    "@@last_modified": "2026-10-13 11:24:51.448390",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10597,5 +10597,7 @@
     "callMicrophoneMessage": "Pangea Chat-এর কলের জন্য আপনার মাইক্রোফোন প্রয়োজন, যার মধ্যে লক স্ক্রিন থেকে উত্তর দেওয়া কলও রয়েছে।",
     "callMicrophoneOffTitle": "আপনার কল সংযুক্ত হয়নি",
     "callMicrophoneOffMessage": "Pangea Chat আপনার মাইক্রোফোন ব্যবহার করতে পারছে না। সেটিংসে এটি চালু করতে ট্যাপ করুন।",
-    "mapCreditsLabel": "মানচিত্র ক্রেডিট: Stadia Maps, OpenMapTiles এবং OpenStreetMap"
+    "mapCreditsLabel": "মানচিত্র ক্রেডিট: Stadia Maps, OpenMapTiles এবং OpenStreetMap",
+    "teamCode": "টিম কোড",
+    "reopenAppToFinishSwitching": "সুইচিং শেষ করতে অ্যাপটি সম্পূর্ণ বন্ধ করুন এবং আবার খুলুন।"
 }

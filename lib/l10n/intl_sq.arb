@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-12 13:12:03.581054",
+    "@@last_modified": "2026-10-13 11:25:06.927461",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2418,5 +2418,7 @@
     "callMicrophoneMessage": "Pangea Chat ka nevojë për mikrofonin tuaj për thirrje, duke përfshirë thirrjet që u përgjigjeni nga ekrani i kyçur.",
     "callMicrophoneOffTitle": "Thirrja juaj nuk u lidh",
     "callMicrophoneOffMessage": "Pangea Chat nuk mund të përdorë mikrofonin tuaj. Prekni për ta ndezur te Cilësimet.",
-    "mapCreditsLabel": "Kreditet e hartës: Stadia Maps, OpenMapTiles dhe OpenStreetMap"
+    "mapCreditsLabel": "Kreditet e hartës: Stadia Maps, OpenMapTiles dhe OpenStreetMap",
+    "teamCode": "Kodi i ekipit",
+    "reopenAppToFinishSwitching": "Mbylleni plotësisht aplikacionin dhe hapeni sërish për të përfunduar ndërrimin."
 }

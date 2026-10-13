@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_storage/get_storage.dart';
@@ -54,6 +51,23 @@ class Environment {
 
   static bool get isStagingEnvironment =>
       dotenv.env["ENVIRONMENT"] == "staging";
+
+  static const String production = 'production';
+  static const String staging = 'staging';
+
+  /// The environment this build was made for, from its own `.env`. Push
+  /// registration follows it even while switched: the push token belongs to
+  /// the build's Firebase project.
+  static String get buildEnvironment =>
+      isStagingEnvironment ? staging : production;
+
+  /// The environment the app talks to: the switched-to one, else the build's.
+  static String get activeEnvironment =>
+      appConfigOverride?.environment ?? buildEnvironment;
+
+  /// Whether the environment switcher points this build away from its own
+  /// environment (deployment.instructions.md § Environment switcher).
+  static bool get isSwitched => activeEnvironment != buildEnvironment;
 
   /// The Sentry-reportable environment for this build, per the allow-list in
   /// sentry.instructions.md (only `staging`/`production` are valid; anything
@@ -332,42 +346,40 @@ class Environment {
     return appConfigOverride?.botName ?? dotenv.env["BOT_NAME"];
   }
 
-  static final GetStorage appConfigurationStorage = GetStorage('env_override');
+  static const String appConfigurationStorageName = 'env_override';
 
-  static Future<List<AppConfigOverride>> getAppConfigOverrides() async {
-    if (!isStagingEnvironment) {
-      return [];
-    }
+  /// Persists the switched-to environment. `main` awaits its `initStorage`
+  /// before anything reads [appConfigOverride], or the first reads at launch
+  /// (Sentry's environment among them) would see an unloaded, empty box.
+  static final GetStorage appConfigurationStorage = GetStorage(
+    appConfigurationStorageName,
+  );
 
-    List<dynamic> data = [];
-    try {
-      final String jsonString = await rootBundle.loadString('envs.json');
-      data = jsonDecode(jsonString);
-    } catch (e) {
-      return [];
-    }
-
-    final List<AppConfigOverride> overrides = [];
-    for (final entry in data) {
-      if (entry is! Map<String, dynamic>) {
-        ErrorHandler.logError(
-          e: Exception("Invalid entry in envs.json"),
-          s: StackTrace.current,
-          data: entry,
-        );
-        continue;
-      }
-
-      try {
-        final override = AppConfigOverride.fromJson(entry);
-        overrides.add(override);
-      } catch (e, s) {
-        ErrorHandler.logError(e: e, s: s, data: entry);
-        continue;
-      }
-    }
-    return overrides;
-  }
+  /// The environments the switcher offers. Each entry names every value that
+  /// differs between environments: one left out would fall back to the
+  /// build's own `.env` and mix the two.
+  static const List<AppConfigOverride> switchableEnvironments = [
+    AppConfigOverride(
+      environment: production,
+      frontendURL: 'https://app.pangea.chat',
+      synapseURL: 'matrix.pangea.chat',
+      choreoApi: 'https://api.pangea.chat',
+      teacherBffApi: 'https://admin-dash-api.pangea.chat',
+      stripeManagementUrl:
+          'https://billing.stripe.com/p/login/dR6dSkf5p6rBc4EcMM',
+      botName: '@bot:pangea.chat',
+    ),
+    AppConfigOverride(
+      environment: staging,
+      frontendURL: 'https://app.staging.pangea.chat',
+      synapseURL: 'matrix.staging.pangea.chat',
+      choreoApi: 'https://api.staging.pangea.chat',
+      teacherBffApi: 'https://admin-dash-api.staging.pangea.chat',
+      stripeManagementUrl:
+          'https://billing.stripe.com/p/login/test_9AQaI8d3O9lmaXe5kk',
+      botName: '@bot:staging.pangea.chat',
+    ),
+  ];
 
   static AppConfigOverride? get appConfigOverride {
     final entry = appConfigurationStorage.read(PLocalKey.appConfigOverride);
@@ -381,7 +393,7 @@ class Environment {
   }
 
   static Future<void> setAppConfigOverride(AppConfigOverride? override) async {
-    appConfigurationStorage.write(
+    await appConfigurationStorage.write(
       PLocalKey.appConfigOverride,
       override?.toJson(),
     );

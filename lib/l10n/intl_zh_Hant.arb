@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:12:08.972425",
+    "@@last_modified": "2026-10-13 11:25:08.665959",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10075,5 +10075,7 @@
     "callMicrophoneMessage": "Pangea Chat 需要您的麥克風才能進行通話，包括您從鎖定畫面接聽的通話。",
     "callMicrophoneOffTitle": "您的通話未連線",
     "callMicrophoneOffMessage": "Pangea Chat 無法使用您的麥克風。輕點以在「設定」中開啟。",
-    "mapCreditsLabel": "地圖來源：Stadia Maps、OpenMapTiles 和 OpenStreetMap"
+    "mapCreditsLabel": "地圖來源：Stadia Maps、OpenMapTiles 和 OpenStreetMap",
+    "teamCode": "團隊代碼",
+    "reopenAppToFinishSwitching": "請完全關閉應用程式，然後重新開啟以完成切換。"
 }

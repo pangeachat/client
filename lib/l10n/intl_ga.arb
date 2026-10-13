@@ -3559,7 +3559,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-12 13:11:52.279105",
+    "@@last_modified": "2026-10-13 11:24:54.608357",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9980,5 +9980,7 @@
     "callMicrophoneMessage": "Teastaíonn do mhicreafón ó Pangea Chat le haghaidh glaonna, lena n-áirítear glaonna a bhfreagraíonn tú dóibh ón scáileán glasála.",
     "callMicrophoneOffTitle": "Níor nascadh do ghlao",
     "callMicrophoneOffMessage": "Ní féidir le Pangea Chat do mhicreafón a úsáid. Tapáil chun é a chur ar siúl sna Socruithe.",
-    "mapCreditsLabel": "Creidmheasanna léarscáile: Stadia Maps, OpenMapTiles agus OpenStreetMap"
+    "mapCreditsLabel": "Creidmheasanna léarscáile: Stadia Maps, OpenMapTiles agus OpenStreetMap",
+    "teamCode": "Cód foirne",
+    "reopenAppToFinishSwitching": "Dún an aip go hiomlán agus oscail arís í chun an t-athrú a chríochnú."
 }

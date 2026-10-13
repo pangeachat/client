@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-12 13:11:48.600052",
+    "@@last_modified": "2026-10-13 11:24:50.574227",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10275,5 +10275,7 @@
     "callMicrophoneMessage": "يحتاج Pangea Chat إلى الميكروفون الخاص بك للمكالمات، بما في ذلك المكالمات التي تجيب عليها من شاشة القفل.",
     "callMicrophoneOffTitle": "لم يتم توصيل مكالمتك",
     "callMicrophoneOffMessage": "لا يمكن لـ Pangea Chat استخدام الميكروفون الخاص بك. انقر لتشغيله في الإعدادات.",
-    "mapCreditsLabel": "اعتمادات الخريطة: Stadia Maps، OpenMapTiles وOpenStreetMap"
+    "mapCreditsLabel": "اعتمادات الخريطة: Stadia Maps، OpenMapTiles وOpenStreetMap",
+    "teamCode": "رمز الفريق",
+    "reopenAppToFinishSwitching": "أغلق التطبيق تمامًا وافتحه مرة أخرى لإنهاء التبديل."
 }

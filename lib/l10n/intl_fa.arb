@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:11:51.748743",
+    "@@last_modified": "2026-10-13 11:24:53.748711",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10057,5 +10057,7 @@
     "callMicrophoneMessage": "پنگه‌آ چت برای تماس‌ها، از جمله تماس‌هایی که از صفحه قفل پاسخ می‌دهید، به میکروفون شما نیاز دارد.",
     "callMicrophoneOffTitle": "تماس شما وصل نشد",
     "callMicrophoneOffMessage": "پنگه‌آ چت نمی‌تواند از میکروفون شما استفاده کند. برای روشن کردن آن در تنظیمات ضربه بزنید.",
-    "mapCreditsLabel": "اعتبار نقشه: Stadia Maps, OpenMapTiles و OpenStreetMap"
+    "mapCreditsLabel": "اعتبار نقشه: Stadia Maps, OpenMapTiles و OpenStreetMap",
+    "teamCode": "کد تیم",
+    "reopenAppToFinishSwitching": "برای اتمام جابجایی، برنامه را به طور کامل ببندید و دوباره باز کنید."
 }

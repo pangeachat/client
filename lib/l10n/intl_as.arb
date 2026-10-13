@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-12 13:11:49.499418",
+    "@@last_modified": "2026-10-13 11:24:52.861252",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2418,5 +2418,7 @@
     "callMicrophoneMessage": "লক স্ক্ৰীণৰ পৰা উত্তৰ দিয়া কলসমূহকে ধৰি কলৰ বাবে পেংগিয়া চেটক আপোনাৰ মাইক্ৰ'ফোনৰ প্ৰয়োজন।",
     "callMicrophoneOffTitle": "আপোনাৰ কল সংযোগ হোৱা নাই",
     "callMicrophoneOffMessage": "পেংগিয়া চেটে আপোনাৰ মাইক্ৰ'ফোন ব্যৱহাৰ কৰিব নোৱাৰে। ছেটিংছত ইয়াক অন কৰিবলৈ টেপ কৰক।",
-    "mapCreditsLabel": "মানচিত্ৰৰ ক্ৰেডিটসমূহ: Stadia Maps, OpenMapTiles আৰু OpenStreetMap"
+    "mapCreditsLabel": "মানচিত্ৰৰ ক্ৰেডিটসমূহ: Stadia Maps, OpenMapTiles আৰু OpenStreetMap",
+    "teamCode": "দলৰ ক'ড",
+    "reopenAppToFinishSwitching": "সুইচিং শেষ কৰিবলৈ এপটো সম্পূৰ্ণৰূপে বন্ধ কৰি পুনৰ খুলক।"
 }

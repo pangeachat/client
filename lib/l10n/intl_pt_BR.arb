@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:12:02.194229",
+    "@@last_modified": "2026-10-13 11:25:04.490730",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9969,5 +9969,7 @@
     "callMicrophoneMessage": "O Pangea Chat precisa do seu microfone para chamadas, incluindo as chamadas que você atende da tela de bloqueio.",
     "callMicrophoneOffTitle": "Sua chamada não conectou",
     "callMicrophoneOffMessage": "O Pangea Chat não pode usar seu microfone. Toque para ativá-lo nas Configurações.",
-    "mapCreditsLabel": "Créditos do mapa: Stadia Maps, OpenMapTiles e OpenStreetMap"
+    "mapCreditsLabel": "Créditos do mapa: Stadia Maps, OpenMapTiles e OpenStreetMap",
+    "teamCode": "Código da equipe",
+    "reopenAppToFinishSwitching": "Feche o aplicativo completamente e abra-o novamente para finalizar a troca."
 }

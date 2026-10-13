@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-12 13:11:54.444521",
+    "@@last_modified": "2026-10-13 11:24:52.204246",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9956,5 +9956,7 @@
     "callMicrophoneMessage": "Pangea Chat benötigt Ihr Mikrofon für Anrufe, einschließlich Anrufe, die Sie vom Sperrbildschirm aus annehmen.",
     "callMicrophoneOffTitle": "Ihr Anruf konnte nicht verbunden werden",
     "callMicrophoneOffMessage": "Pangea Chat kann Ihr Mikrofon nicht verwenden. Tippen Sie hier, um es in den Einstellungen zu aktivieren.",
-    "mapCreditsLabel": "Karten-Credits: Stadia Maps, OpenMapTiles und OpenStreetMap"
+    "mapCreditsLabel": "Karten-Credits: Stadia Maps, OpenMapTiles und OpenStreetMap",
+    "teamCode": "Teamcode",
+    "reopenAppToFinishSwitching": "Schließe die App vollständig und öffne sie erneut, um den Wechsel abzuschließen."
 }

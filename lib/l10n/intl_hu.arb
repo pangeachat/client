@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-12 13:11:55.419942",
+    "@@last_modified": "2026-10-13 11:24:56.548892",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10072,5 +10072,7 @@
     "callMicrophoneMessage": "A Pangea Chatnek szüksége van a mikrofonjára a hívásokhoz, beleértve a zárolási képernyőről fogadott hívásokat is.",
     "callMicrophoneOffTitle": "A hívás nem jött létre",
     "callMicrophoneOffMessage": "A Pangea Chat nem tudja használni a mikrofonját. Koppintson ide a beállításokban való bekapcsoláshoz.",
-    "mapCreditsLabel": "Térkép forrása: Stadia Maps, OpenMapTiles és OpenStreetMap"
+    "mapCreditsLabel": "Térkép forrása: Stadia Maps, OpenMapTiles és OpenStreetMap",
+    "teamCode": "Csapatkód",
+    "reopenAppToFinishSwitching": "A váltás befejezéséhez zárd be teljesen az alkalmazást, majd nyisd meg újra."
 }

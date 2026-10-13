@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-12 13:12:06.073363",
+    "@@last_modified": "2026-10-13 11:25:08.971470",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9973,5 +9973,7 @@
     "callMicrophoneMessage": "Pangea Chat qoʻngʻiroqlar, shu jumladan qulflangan ekrandan javob beradigan qoʻngʻiroqlar uchun mikrofoningizga muhtoj.",
     "callMicrophoneOffTitle": "Qoʻngʻirogʻingiz ulanmadi",
     "callMicrophoneOffMessage": "Pangea Chat mikrofoningizdan foydalana olmaydi. Sozlamalarda yoqish uchun bosing.",
-    "mapCreditsLabel": "Xarita mualliflari: Stadia Maps, OpenMapTiles va OpenStreetMap"
+    "mapCreditsLabel": "Xarita mualliflari: Stadia Maps, OpenMapTiles va OpenStreetMap",
+    "teamCode": "Jamoa kodi",
+    "reopenAppToFinishSwitching": "Oʻzgartirishni yakunlash uchun ilovani toʻliq yoping va qayta oching."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-12 13:11:50.177615",
+    "@@last_modified": "2026-10-13 11:24:51.960372",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2418,5 +2418,7 @@
     "callMicrophoneMessage": "Kinahanglan sa Pangea Chat ang imong mikropono para sa mga tawag, apil na ang mga tawag nga imong tubagon gikan sa lock screen.",
     "callMicrophoneOffTitle": "Wala nakakonekta ang imong tawag",
     "callMicrophoneOffMessage": "Dili magamit sa Pangea Chat ang imong mikropono. I-tap aron i-on kini sa Settings.",
-    "mapCreditsLabel": "Mga kredito sa mapa: Stadia Maps, OpenMapTiles ug OpenStreetMap"
+    "mapCreditsLabel": "Mga kredito sa mapa: Stadia Maps, OpenMapTiles ug OpenStreetMap",
+    "teamCode": "Team code",
+    "reopenAppToFinishSwitching": "Isira ang app sa hingpit ug ablihi kini pag-usab aron mahuman ang pagbalhin."
 }

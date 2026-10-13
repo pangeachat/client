@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-12 13:11:59.592902",
+    "@@last_modified": "2026-10-13 11:25:02.504257",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2418,5 +2418,7 @@
     "callMicrophoneMessage": "Пангеа Чат дуудлага хийхэд таны микрофон хэрэгтэй, үүнд түгжигдсэн дэлгэцээс хариулах дуудлага багтана.",
     "callMicrophoneOffTitle": "Таны дуудлага холбогдоогүй байна",
     "callMicrophoneOffMessage": "Пангеа Чат таны микрофоныг ашиглах боломжгүй байна. Тохиргооноос асаахын тулд товшино уу.",
-    "mapCreditsLabel": "Газрын зургийн эрх: Stadia Maps, OpenMapTiles болон OpenStreetMap"
+    "mapCreditsLabel": "Газрын зургийн эрх: Stadia Maps, OpenMapTiles болон OpenStreetMap",
+    "teamCode": "Багийн код",
+    "reopenAppToFinishSwitching": "Шилжүүлгийг дуусгахын тулд аппыг бүрэн хаагаад дахин нээнэ үү."
 }

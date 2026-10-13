@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-12 13:11:58.372283",
+    "@@last_modified": "2026-10-13 11:25:01.142747",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2418,5 +2418,7 @@
     "callMicrophoneMessage": "Pangea Chat чакыруулар үчүн микрофонуңузду колдонушу керек, анын ичинде кулпуланган экрандан жооп берген чакыруулар да бар.",
     "callMicrophoneOffTitle": "Чакырууңуз туташкан жок",
     "callMicrophoneOffMessage": "Pangea Chat микрофонуңузду колдоно албайт. Жөндөөлөрдөн күйгүзүү үчүн таптаңыз.",
-    "mapCreditsLabel": "Картанын авторлору: Stadia Maps, OpenMapTiles жана OpenStreetMap"
+    "mapCreditsLabel": "Картанын авторлору: Stadia Maps, OpenMapTiles жана OpenStreetMap",
+    "teamCode": "Команда коду",
+    "reopenAppToFinishSwitching": "Колдонмону толугу менен жаап, андан кийин кайра ачыңыз."
 }

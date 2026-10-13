@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-12 13:12:05.237329",
+    "@@last_modified": "2026-10-13 11:25:07.893745",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2418,5 +2418,7 @@
     "callMicrophoneMessage": "Pangea Chat барои зангҳо, аз ҷумла зангҳое, ки шумо аз экрани қулф ҷавоб медиҳед, ба микрофони шумо ниёз дорад.",
     "callMicrophoneOffTitle": "Занги шумо пайваст нашуд",
     "callMicrophoneOffMessage": "Pangea Chat наметавонад микрофони шуморо истифода барад. Барои фаъол кардани он дар Танзимот ламс кунед.",
-    "mapCreditsLabel": "Ҳуқуқи харита: Stadia Maps, OpenMapTiles ва OpenStreetMap"
+    "mapCreditsLabel": "Ҳуқуқи харита: Stadia Maps, OpenMapTiles ва OpenStreetMap",
+    "teamCode": "Рамзи даста",
+    "reopenAppToFinishSwitching": "Барои анҷом додани ивазкунӣ барномаро пурра пӯшед ва дубора кушоед."
 }

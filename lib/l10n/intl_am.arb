@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-12 13:11:49.122851",
+    "@@last_modified": "2026-10-13 11:24:50.751361",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2418,5 +2418,7 @@
     "callMicrophoneMessage": "ፓንጋያ ቻት ለጥሪዎች ማይክሮፎንዎን ይፈልጋል፣ ከመቆለፊያ ማያ ገጽ የሚመልሷቸውን ጥሪዎች ጨምሮ።",
     "callMicrophoneOffTitle": "ጥሪዎ አልተገናኘም",
     "callMicrophoneOffMessage": "ፓንጋያ ቻት ማይክሮፎንዎን መጠቀም አይችልም። በቅንብሮች ውስጥ ለማብራት ይንኩ።",
-    "mapCreditsLabel": "የካርታ ክሬዲቶች: Stadia Maps, OpenMapTiles እና OpenStreetMap"
+    "mapCreditsLabel": "የካርታ ክሬዲቶች: Stadia Maps, OpenMapTiles እና OpenStreetMap",
+    "teamCode": "የቡድን ኮድ",
+    "reopenAppToFinishSwitching": "መቀየር ለመጨረስ መተግበሪያውን ሙሉ በሙሉ ዘግተው እንደገና ይክፈቱት።"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-12 13:11:50.064738",
+    "@@last_modified": "2026-10-13 11:24:52.168694",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10463,5 +10463,7 @@
     "callMicrophoneMessage": "Pangea Chat potřebuje váš mikrofon pro hovory, včetně hovorů, které přijmete z uzamčené obrazovky.",
     "callMicrophoneOffTitle": "Váš hovor se nespojil",
     "callMicrophoneOffMessage": "Pangea Chat nemůže použít váš mikrofon. Klepnutím jej zapnete v Nastavení.",
-    "mapCreditsLabel": "Zásluhy mapy: Stadia Maps, OpenMapTiles a OpenStreetMap"
+    "mapCreditsLabel": "Zásluhy mapy: Stadia Maps, OpenMapTiles a OpenStreetMap",
+    "teamCode": "Kód týmu",
+    "reopenAppToFinishSwitching": "Zavřete aplikaci úplně a znovu ji otevřete, abyste dokončili přepínání."
 }

@@ -1259,7 +1259,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-12 13:12:07.515130",
+    "@@last_modified": "2026-10-13 11:25:08.648123",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10926,5 +10926,7 @@
     "callMicrophoneMessage": "Pangea Chat 需要使用你的咪高風進行通話，包括從鎖定畫面接聽的通話。",
     "callMicrophoneOffTitle": "你的通話未能連接",
     "callMicrophoneOffMessage": "Pangea Chat 無法使用你的咪高風。輕按以在「設定」中開啟。",
-    "mapCreditsLabel": "地圖來源：Stadia Maps、OpenMapTiles 同 OpenStreetMap"
+    "mapCreditsLabel": "地圖來源：Stadia Maps、OpenMapTiles 同 OpenStreetMap",
+    "teamCode": "團隊代碼",
+    "reopenAppToFinishSwitching": "請完全關閉應用程式，然後重新開啟以完成切換。"
 }

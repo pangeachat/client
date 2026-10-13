@@ -56,6 +56,10 @@ class GoogleAnalytics {
     }
 
     analytics = FirebaseAnalytics.instanceFor(app: app);
+    // A switched build would report into its own build's project, mixing
+    // staging use into production reports. Set both ways: the platform
+    // remembers the setting across launches.
+    await analytics?.setAnalyticsCollectionEnabled(!Environment.isSwitched);
     // Client is not automatically set on web
     await _setClientVersion();
     await _setEnvironment();

@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-12 13:12:03.783477",
+    "@@last_modified": "2026-10-13 11:25:05.596441",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2418,5 +2418,7 @@
     "callMicrophoneMessage": "E mana'omia e le Pangea Chat lau masini faaleo mo vala'au, e aofia ai vala'au e te taliina mai le lau loka.",
     "callMicrophoneOffTitle": "E le'i feso'ota'i lau vala'au",
     "callMicrophoneOffMessage": "E le mafai e le Pangea Chat ona fa'aaoga lau masini faaleo. Pa'i e ki i totonu o Fa'atonuga.",
-    "mapCreditsLabel": "Fa'afetai mo fa'afanua: Stadia Maps, OpenMapTiles ma OpenStreetMap"
+    "mapCreditsLabel": "Fa'afetai mo fa'afanua: Stadia Maps, OpenMapTiles ma OpenStreetMap",
+    "teamCode": "Tulafono a le 'au",
+    "reopenAppToFinishSwitching": "Tapuni atoa le app ona toe tatala lea e fa'auma ai le fesuiaiga."
 }
