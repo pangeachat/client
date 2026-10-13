@@ -43,6 +43,28 @@ class EnvLoader {
     }
   }
 
+  /// The `.env` the web app at [webAppUrl] runs on, parsed, for the
+  /// environment switcher (deployment.instructions.md § Environment
+  /// switcher). Throws when the file can't be fetched or isn't an env file.
+  static Future<Map<String, String>> fetchFromWebApp(
+    String webAppUrl, {
+    http.Client? client,
+  }) async {
+    final httpClient = client ?? http.Client();
+    try {
+      final url = Uri.parse(webAppUrl).resolve('/.env');
+      final response = await httpClient
+          .get(url)
+          .timeout(const Duration(seconds: 15));
+      if (response.statusCode != 200 || !looksLikeEnvFile(response.body)) {
+        throw Exception('No .env at $url (HTTP ${response.statusCode})');
+      }
+      return Map.of((DotEnv()..testLoad(fileInput: response.body)).env);
+    } finally {
+      if (client == null) httpClient.close();
+    }
+  }
+
   static Future<void> load() async {
     if (kIsWeb) {
       if (await tryLoadFromWebRoot()) return;

@@ -8,15 +8,19 @@ import 'package:get_storage/get_storage.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/config/env_loader.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 /// The team's hidden environment switcher on the login page
 /// (deployment.instructions.md § Environment switcher). Tapping [child]
 /// [tapsToOpen] times in quick succession asks for the team code, then offers
-/// the environments to switch to. Off iOS and Android it is just [child].
+/// the build's own environment and the one its `.env` names. Off iOS and
+/// Android, or when the `.env` names no other environment, it is just
+/// [child].
 class EnvironmentSwitcherTapTarget extends StatefulWidget {
   static const int tapsToOpen = 7;
   static const Duration maxGapBetweenTaps = Duration(seconds: 1);
@@ -60,28 +64,40 @@ class _EnvironmentSwitcherTapTargetState
       return;
     }
 
-    final chosen = await showModalActionPopup<AppConfigOverride>(
+    final chosen = await showModalActionPopup<String>(
       context: context,
       cancelLabel: L10n.of(context).cancel,
       actions: [
-        for (final environment in Environment.switchableEnvironments)
+        for (final environment in [
+          Environment.buildEnvironment,
+          Environment.otherEnvironment,
+        ])
           AdaptiveModalAction(
             value: environment,
-            label: environment.environment!,
-            isDefaultAction:
-                environment.environment == Environment.activeEnvironment,
+            label: environment,
+            isDefaultAction: environment == Environment.activeEnvironment,
           ),
       ],
     );
-    if (!mounted ||
-        chosen == null ||
-        chosen.environment == Environment.activeEnvironment) {
+    if (!mounted || chosen == null || chosen == Environment.activeEnvironment) {
       return;
     }
 
-    await Environment.setAppConfigOverride(
-      chosen.environment == Environment.buildEnvironment ? null : chosen,
-    );
+    AppConfigOverride? override;
+    if (chosen != Environment.buildEnvironment) {
+      // Shows the error and reports it to Sentry when the download fails.
+      final download = await showFutureLoadingDialog(
+        context: context,
+        future: () async => AppConfigOverride.fromEnvFile(
+          chosen,
+          await EnvLoader.fetchFromWebApp(Environment.environmentSwitcherUrl!),
+        ),
+      );
+      if (!mounted || download.isError) return;
+      override = download.result;
+    }
+
+    await Environment.setAppConfigOverride(override);
     await _eraseStorageFromOldEnvironment();
     if (!mounted) return;
     // Never closes: the switch applies on the next launch, so nothing in this
@@ -146,7 +162,9 @@ class _EnvironmentSwitcherTapTargetState
           TargetPlatform.android,
           TargetPlatform.iOS,
         }.contains(defaultTargetPlatform);
-    if (!offered) return widget.child;
+    if (!offered || Environment.environmentSwitcherUrl == null) {
+      return widget.child;
+    }
     return GestureDetector(
       onTap: _onTap,
       // Hidden: a screen reader must not announce the heading as tappable.
