@@ -19,9 +19,11 @@ library;
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/routes/chat/calls/call_audio_closure.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_repo.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
 
 /// One `pangea.call_audio` event fetched by id, normalized to what provenance
 /// needs to rule on it.
@@ -253,10 +255,11 @@ bool _manifestOutranks(
 /// The one manifest to resolve peer claims against, or null when none is
 /// genuine yet.
 ///
-/// A manifest that validates NOTHING is not selected: its coverage says nothing
-/// at all, and treating it as "the manifest" would turn every real peer half
-/// into a not-in-manifest reject (attributed to its writer) on the strength of a
-/// flood. With no genuine manifest, peer claims stay pending until one arrives.
+/// Only a trusted manifest has a count at all: a flood, a partial merge or one
+/// listing anything that is not a participant's recording of this call is never
+/// "the manifest", so it cannot turn real peer halves into not-in-manifest
+/// rejects. With no trusted manifest, peer claims stay pending until one
+/// arrives.
 CallAudioMergedRecording? _selectManifest(
   List<CallAudioMergedRecording> manifests,
   Map<String, int> validatedCounts,
@@ -282,11 +285,13 @@ CallAudioMergedRecording? _selectManifest(
 /// `sourceAudioEventId` is in the manifest the reader will select — never an
 /// alternate the producer chose by list order or on a transient miss.
 ///
-/// The rule (unchanged, lifted out of [resolveTranscriptProvenance]): among the
-/// participant-authored merges of THIS call, count each one's VALIDATED source
-/// coverage through [resolve] and pick the greatest by [_selectManifest]'s total
-/// order (validated count, then earliest ts, then sender id, then merged event
-/// id). [uncertain] is true when any validation fetch came back
+/// The rule: among the participant-authored merges of THIS call, only a
+/// TRUSTED merge of the whole call it covers counts (`isTrustedWholeMerge`,
+/// client#9173) -- every listed source resolves through [resolve] to a
+/// validated unit and those units close into the whole call -- and the greatest
+/// is picked by [_selectManifest]'s total order (coverage, then earliest ts,
+/// then sender id, then merged event id). [uncertain] is true when any
+/// validation fetch came back
 /// [AudioResolutionKind.pending]: the true manifest may have been undercounted,
 /// so a caller must NOT commit to the selection — the reader holds affected
 /// claims pending, and the producer treats it as "no manifest yet" and retries.
@@ -310,25 +315,86 @@ selectCallAudioManifest({
         merged,
   ];
 
-  final validatedCounts = <String, int>{};
+  // Only a TRUSTED merge of the whole call it covers is a manifest
+  // (client#9173): every listed source must resolve to a participant's own
+  // recording of this call, those recordings must close into the whole call
+  // (`closeCall`), and the merge must cover exactly them -- the same test the
+  // merge coordinator retires a call on and the view shows a merge on. One
+  // source that is not a validated unit disqualifies the merge; one that could
+  // not be looked up makes the selection uncertain rather than deciding.
+  final trustedCounts = <String, int>{};
   var uncertain = false;
   for (final manifest in manifests) {
-    var validated = 0;
-    // De-duplicated defensively -- `fromJson` already canonicalises, but the
-    // count must not depend on that continuing to hold.
+    final halves = <CallAudioRecording>[];
+    var usable = true;
     for (final id in manifest.content.sourceEventIds.toSet()) {
       final resolution = await resolve(id);
-      if (resolution.kind == AudioResolutionKind.pending) uncertain = true;
-      if (resolution.isValidatedUnitFor(participants, callKey)) validated++;
+      if (resolution.kind == AudioResolutionKind.pending) {
+        uncertain = true;
+        usable = false;
+        continue;
+      }
+      if (!resolution.isValidatedUnitFor(participants, callKey)) {
+        usable = false;
+        continue;
+      }
+      halves.add(
+        CallAudioRecording(
+          eventId: id,
+          senderId: resolution.senderId!,
+          originServerTs: resolution.originServerTs ?? manifest.originServerTs,
+          content: resolution.content!,
+        ),
+      );
     }
-    validatedCounts[manifest.eventId] = validated;
+    if (!usable) continue;
+    final closure = closeCall(halves, participants);
+    if (closure is! ClosedCall) continue;
+    if (!isTrustedWholeMerge(
+      merged: manifest,
+      closed: closure,
+      participants: participants,
+      callKey: callKey,
+    )) {
+      continue;
+    }
+    trustedCounts[manifest.eventId] = halves.length;
   }
 
   return (
-    manifest: _selectManifest(manifests, validatedCounts),
+    manifest: _selectManifest(manifests, trustedCounts),
     uncertain: uncertain,
   );
 }
+
+/// The provenance resolver EVERY reader of call [callKey]'s transcript hands
+/// `fetchCallTranscript` -- the transcript screen and the whole-call
+/// transcriber alike -- so both judge a peer-produced half against the same
+/// manifest by the same rule.
+///
+/// A reader without it can never honour a `spokenBy` claim: assembly holds the
+/// claim pending, so a half a subscriber produced for the other speaker never
+/// reached the screen, which kept showing that speaker's empty half (#8792).
+Future<Map<String, ProvenanceState>> Function(List<TranscriptCandidate>)
+transcriptProvenanceResolver({
+  required RelationsFetcher fetch,
+  required AudioEventFetcher audioFetch,
+  required String roomId,
+  required String callKey,
+  required Set<String> participants,
+}) =>
+    (candidates) async => resolveTranscriptProvenance(
+      candidates: candidates,
+      mergedRecordings: await fetchCallAudioMerged(
+        fetch: fetch,
+        roomId: roomId,
+        callKey: callKey,
+      ),
+      participants: participants,
+      callKey: callKey,
+      roomId: roomId,
+      fetch: audioFetch,
+    );
 
 /// Resolves the provenance of every peer-produced half among [candidates].
 ///
@@ -392,7 +458,24 @@ Future<Map<String, ProvenanceState>> resolveTranscriptProvenance({
   // set, not the validated subset. A source that is listed but has since been
   // redacted must resolve to "audio unavailable" (it IS in the manifest), not
   // to "not in the manifest".
-  final manifestIds = selection.manifest?.content.sourceEventIds.toSet();
+  //
+  // With no trusted manifest, a participant's merge whose every listed source
+  // is either a validated recording or GONE (redacted, not found) still
+  // answers claims: it is untrusted only because audio was removed, so a claim
+  // naming the removed audio is "audio unavailable" -- terminal, as before
+  // client#9173 -- rather than waiting forever. It is never shown or used to
+  // retire the call.
+  final manifestIds =
+      (selection.manifest ??
+              await _manifestMissingOnlyGoneAudio(
+                mergedRecordings: mergedRecordings,
+                participants: participants,
+                callKey: callKey,
+                resolve: resolve,
+              ))
+          ?.content
+          .sourceEventIds
+          .toSet();
 
   final result = <String, ProvenanceState>{};
   for (final candidate in peers) {
@@ -406,6 +489,43 @@ Future<Map<String, ProvenanceState>> resolveTranscriptProvenance({
     );
   }
   return result;
+}
+
+/// The first participant's merge of this call whose listed sources are all
+/// validated recordings or gone, with at least one of each; null when none
+/// is.
+/// Pending sources disqualify (the caller is already uncertain), as does any
+/// source that resolved to something that is not this call's recording.
+Future<CallAudioMergedRecording?> _manifestMissingOnlyGoneAudio({
+  required List<CallAudioMergedRecording> mergedRecordings,
+  required Set<String> participants,
+  required String callKey,
+  required AudioResolver resolve,
+}) async {
+  for (final merged in mergedRecordings) {
+    if (!participants.contains(merged.senderId) ||
+        merged.content.callKey != callKey) {
+      continue;
+    }
+    var gone = 0;
+    var validated = 0;
+    var usable = true;
+    for (final id in merged.content.sourceEventIds.toSet()) {
+      final resolution = await resolve(id);
+      if (resolution.kind == AudioResolutionKind.gone) {
+        gone++;
+      } else if (resolution.isValidatedUnitFor(participants, callKey)) {
+        validated++;
+      } else {
+        usable = false;
+        break;
+      }
+    }
+    // At least one real recording: a flood of ids that resolve to nothing is
+    // not a merge whose audio was removed.
+    if (usable && gone > 0 && validated > 0) return merged;
+  }
+  return null;
 }
 
 Future<ProvenanceState> _resolvePeerClaim({

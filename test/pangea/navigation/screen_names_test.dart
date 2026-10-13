@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/screen_names.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
@@ -46,6 +47,17 @@ void main() {
           SettingsTokenParam.parse('subscription'),
         ).screenName,
         'settingspage:subscription',
+      );
+      // A gift link's promo code names one person's gift: identity, dropped.
+      expect(
+        SettingsPagePanelToken(
+          SettingsTokenParam.parse('subscription/discount.TESOL26-alice'),
+        ).screenName,
+        'settingspage:subscription/discount',
+      );
+      expect(
+        name(PRoutes.giftLink('TESOL26-alice')),
+        'settingspage:subscription/discount',
       );
       expect(
         AnalyticsPanelToken(AnalyticsTokenParam.parse('vocab')).screenName,

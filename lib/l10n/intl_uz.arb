@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-05 13:57:54.811660",
+    "@@last_modified": "2026-10-12 13:12:06.073363",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -2918,7 +2918,6 @@
     "errorDisableIGCClassDesc": "Ushbu suhbat bo'lib o'tadigan kurs uchun grammatik yordam o'chirilgan.",
     "error405Desc": "Iltimos, Asosiy menyu > O'rganish sozlamalarida tillaringizni belgilang.",
     "termsAndConditions": "Shartlar va shartlar",
-    "andCertifyIAmAtLeast13YearsOfAge": " va kamida 16 yoshda ekanligimni tasdiqlayman.",
     "error502504Desc": "Tarjimalar va grammatik vositalar sekin yoki mavjud bo'lmasligi mumkin, Pangea botlari yangilanishni kutmoqda.",
     "error404Desc": "Pangea Bot bu qanday tarjima qilishni bilmayapti...",
     "errorPleaseRefresh": "Biz bu muammoni hal qilmoqdamiz! Iltimos, sahifani yangilang va qayta urinib ko'ring.",
@@ -3226,9 +3225,6 @@
     "why": "Nima uchun?",
     "definition": "Taqrif",
     "reportToTeacher": "Bu xabarni kimga xabar qilmoqchisiz?",
-    "reportMessageTitle": "{reportingUserId} chatda {reportedUserId} dan xabarni xabar qildi {roomName}",
-    "reportMessageBody": "Xabar: {reportedMessage}\nSabab: {reason}",
-    "noTeachersFound": "Xabar qilinadigan o'qituvchi topilmadi",
     "trialExpiration": "Bepul sinov muddati {expiration} da tugaydi",
     "freeTrialDesc": "Yangi foydalanuvchilar uchun Pangea Chat ning bir haftalik bepul sinovi taqdim etiladi",
     "activateTrial": "Bepul 7 kunlik sinov",
@@ -4074,10 +4070,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5324,35 +5316,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -9838,7 +9801,6 @@
     "constructLevelFlowers": "Gullar, oʻzlashtirilgan soʻzlar",
     "filterAndSearch": "Filtrlash va qidirish",
     "participantsOfTotal": "{total} o'yinchidan {filled} nafari",
-    "mapAttributionLabel": "OpenStreetMap ishtirokchilari, mualliflik huquqi va litsenziyasi",
     "seeAll": "Hammasini koʻrish",
     "seeAllSection": "Barcha {section}ni koʻrish",
     "showMoreOptionsHint": "koʻproq variantlarni koʻrsatish",
@@ -9984,5 +9946,32 @@
     "ssoTryAnyway": "Baribir urinib ko'ring",
     "publicCoursesFilterTooltip": "Faqat har kim qo'shila oladigan kurslarni ko'rsatish",
     "restrictedCoursesFilterTooltip": "Faqat siz qo'shilish uchun so'rashingiz kerak bo'lgan kurslarni ko'rsatish",
-    "viewImageLabel": "Rasmni koʻrish"
+    "viewImageLabel": "Rasmni koʻrish",
+    "reportSent": "Xabar yuborildi",
+    "reportNotSent": "Xabaringiz yuborilmadi. Internet aloqangizni tekshiring va qayta urinib koʻring.",
+    "reportPointerMessage": "{courseName} dagi xabar haqida xabar berildi — Xavfsizlik boʻlimiga qarang",
+    "useActivityImageAsChatBackground": "Faoliyat rasmini chat fon rasmi sifatida ishlatish",
+    "andCertifyIMeetTheMinimumAge": " va men kamida 13 yoshda ekanligimni yoki agar yuqori bo'lsa, mamlakatimda talab qilinadigan minimal yoshga to'g'ri kelishimni tasdiqlayman.",
+    "filteredNetworkBlockedTitle": "Bu tarmoq Pangea Chat'ni bloklamoqda",
+    "filteredNetworkPartlyBlockedTitle": "Bu tarmoq Pangea Chat'ning bir qismini bloklamoqda",
+    "filteredNetworkWhatCanIDo": "Nima qilishim mumkin?",
+    "filteredNetworkPhoneAdvice": "Wi-Fi'ni oʻchiring va buning oʻrniga mobil maʼlumotlardan foydalaning.",
+    "filteredNetworkComputerAdvice": "Bu Wi-Fi oʻrniga telefoningizning hotspotiga ulaning.",
+    "filteredNetworkItHeading": "Oʻqituvchilar va IT xodimlari uchun",
+    "filteredNetworkItBody": "IT jamoangizdan ushbu domenlarga ruxsat berishni soʻrang:",
+    "filteredNetworkAskForHelp": "Yordam uchun Pangea'ga murojaat qiling",
+    "filteredNetworkHelpExplanation": "Pangea Chat'ni ushbu tarmoqda ishlashiga yordam berish uchun sizga elektron pochta orqali xabar yuboramiz.",
+    "filteredNetworkHelpWaiting": "Ulanishingiz bilanoq soʻrovingiz yuboriladi.",
+    "filteredNetworkHelpSent": "Yuborildi. Siz bilan elektron pochta orqali bogʻlanamiz.",
+    "filteredNetworkHelpRefused": "Soʻrovingizni yubora olmadik. Iltimos, support@pangea.chat manziliga elektron pochta yuboring.",
+    "filteredNetworkVideoBlocked": "Bu tarmoq videolarni bloklaydi.",
+    "filteredNetworkImagesBlocked": "Bu tarmoq rasmlarni bloklaydi.",
+    "filteredNetworkMapBlocked": "Bu tarmoq xaritani bloklaydi.",
+    "callFullScreenTitle": "Qo‘ng‘iroqlar to‘liq ekranda jiringlasin",
+    "callFullScreenMessage": "Pangea Chat yopiq bo‘lganida qo‘ng‘iroq keldi, ammo telefoningiz faqat kichik bildirishnoma ko‘rsata oldi. To‘liq ekranli qo‘ng‘iroqlarga ruxsat bering, shunda keyingi qo‘ng‘iroq telefoningiz qulflangan bo‘lsa ham butun ekranda jiringlaydi.",
+    "callMicrophoneTitle": "Qoʻngʻiroqlar uchun mikrofoningizdan foydalaning",
+    "callMicrophoneMessage": "Pangea Chat qoʻngʻiroqlar, shu jumladan qulflangan ekrandan javob beradigan qoʻngʻiroqlar uchun mikrofoningizga muhtoj.",
+    "callMicrophoneOffTitle": "Qoʻngʻirogʻingiz ulanmadi",
+    "callMicrophoneOffMessage": "Pangea Chat mikrofoningizdan foydalana olmaydi. Sozlamalarda yoqish uchun bosing.",
+    "mapCreditsLabel": "Xarita mualliflari: Stadia Maps, OpenMapTiles va OpenStreetMap"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-05 13:57:46.556552",
+    "@@last_modified": "2026-10-12 13:11:51.192169",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -2925,7 +2925,6 @@
     "errorDisableIGCClassDesc": "Grammatikaabi on välja lülitatud selle vestluse ruumi jaoks.",
     "error405Desc": "Palun seadistage oma keeled peamenüüs > Õpeseadistused.",
     "termsAndConditions": "Tingimuste ja nõuetega",
-    "andCertifyIAmAtLeast13YearsOfAge": " ning kinnitan, et olen vähemalt 16 aastat vana.",
     "error502504Desc": "Tõlke- ja grammatikatööriistad võivad olla aeglased või kättesaamatud, kuni Pangea botid jõuavad järele.",
     "error404Desc": "Pangea bot ei ole kindel, kuidas seda tõlkida...",
     "errorPleaseRefresh": "Uurime seda välja! Palun laadin uuesti ja proovi uuesti.",
@@ -3232,9 +3231,6 @@
     "why": "Miks?",
     "definition": "Määratlus",
     "reportToTeacher": "Kellele soovite seda sõnumit teatada?",
-    "reportMessageTitle": "{reportingUserId} on teatanud sõnumist {reportedUserId} vestluses {roomName}",
-    "reportMessageBody": "Sõnum: {reportedMessage}\nPõhjus: {reason}",
-    "noTeachersFound": "Õpetajaid ei leitud teatamiseks",
     "trialExpiration": "Teie tasuta prooviperiood lõpeb {expiration}",
     "freeTrialDesc": "Uued kasutajad saavad ühe nädala tasuta Pangea Chat-i prooviperioodi",
     "activateTrial": "Tasuta 7-päevane proov",
@@ -3618,10 +3614,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4864,35 +4856,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -9831,7 +9794,6 @@
     "constructLevelFlowers": "Lilled, omandatud sõnad",
     "filterAndSearch": "Filtreeri ja otsi",
     "participantsOfTotal": "{filled}/{total} mängijat",
-    "mapAttributionLabel": "OpenStreetMapi kaastöölised, autoriõigus ja litsents",
     "seeAll": "Vaata kõiki",
     "seeAllSection": "Vaata kõiki {section}",
     "showMoreOptionsHint": "näita rohkem valikuid",
@@ -9977,5 +9939,32 @@
     "ssoTryAnyway": "Proovi ikkagi",
     "publicCoursesFilterTooltip": "Näita ainult kursuseid, millega igaüks saab liituda",
     "restrictedCoursesFilterTooltip": "Näita ainult kursuseid, millega liitumiseks pead luba küsima",
-    "viewImageLabel": "Vaata pilti"
+    "viewImageLabel": "Vaata pilti",
+    "reportSent": "Aruanne saadetud",
+    "reportNotSent": "Teie aruannet ei saanud saata. Kontrollige oma ühendust ja proovige uuesti.",
+    "reportPointerMessage": "Sõnumist teatati kursusel {courseName} – vaadake jaotist „Ohutus“",
+    "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
+    "andCertifyIMeetTheMinimumAge": " ja kinnitan, et olen vähemalt 13-aastane või minu riigis nõutavast vanusest vanem, kui see on kõrgem.",
+    "filteredNetworkBlockedTitle": "See võrk blokeerib Pangea Chati",
+    "filteredNetworkPartlyBlockedTitle": "See võrk blokeerib osa Pangea Chatist",
+    "filteredNetworkWhatCanIDo": "Mida ma teha saan?",
+    "filteredNetworkPhoneAdvice": "Lülita Wi-Fi välja ja kasuta mobiilset andmesidet.",
+    "filteredNetworkComputerAdvice": "Ühenda selle Wi-Fi asemel oma telefoni levialaga.",
+    "filteredNetworkItHeading": "Õpetajatele ja IT-personalile",
+    "filteredNetworkItBody": "Paluge oma IT-meeskonnal lubada järgmised domeenid:",
+    "filteredNetworkAskForHelp": "Küsi Pangealt abi",
+    "filteredNetworkHelpExplanation": "Saadame teile e-kirja, et aidata Pangea Chat selle võrguga tööle saada.",
+    "filteredNetworkHelpWaiting": "Teie taotlus saadetakse kohe, kui olete ühendatud.",
+    "filteredNetworkHelpSent": "Saadetud. Võtame teiega e-posti teel ühendust.",
+    "filteredNetworkHelpRefused": "Me ei saanud teie taotlust saata. Palun saatke e-kiri aadressile support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "See võrk blokeerib videod.",
+    "filteredNetworkImagesBlocked": "See võrk blokeerib pildid.",
+    "filteredNetworkMapBlocked": "See võrk blokeerib kaardi.",
+    "callFullScreenTitle": "Luba kõnedele täisekraan",
+    "callFullScreenMessage": "Kõne tuli sisse, kui Pangea Chat oli suletud, kuid teie telefon sai selle kohta näidata ainult väikest teavitust. Lubage täisekraankõned, et järgmine kõne heliseks kogu ekraanil, isegi kui teie telefon on lukus.",
+    "callMicrophoneTitle": "Kasuta kõnede jaoks mikrofoni",
+    "callMicrophoneMessage": "Pangea Chat vajab kõnede jaoks teie mikrofoni, sealhulgas kõnede jaoks, millele vastate lukustuskuvalt.",
+    "callMicrophoneOffTitle": "Teie kõne ei ühendunud",
+    "callMicrophoneOffMessage": "Pangea Chat ei saa teie mikrofoni kasutada. Puudutage, et see seadetes sisse lülitada.",
+    "mapCreditsLabel": "Kaardi autorid: Stadia Maps, OpenMapTiles ja OpenStreetMap"
 }

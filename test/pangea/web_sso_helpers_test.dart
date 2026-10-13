@@ -67,17 +67,6 @@ void main() {
   });
 
   group('provider helpers', () {
-    test('probe URLs are on the sign-in hosts', () {
-      expect(
-        ssoProviderProbeUrl(SSOProvider.google),
-        startsWith('https://accounts.google.com/'),
-      );
-      expect(
-        ssoProviderProbeUrl(SSOProvider.apple),
-        startsWith('https://appleid.apple.com/'),
-      );
-    });
-
     test('a stored provider name round-trips', () {
       expect(ssoProviderFromName('google'), SSOProvider.google);
       expect(ssoProviderFromName('apple'), SSOProvider.apple);

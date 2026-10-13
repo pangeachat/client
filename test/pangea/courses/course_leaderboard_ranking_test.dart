@@ -17,7 +17,7 @@ import '../get_test_client.dart';
 
 /// The one ranking behind the course page's Leaderboard section and its full
 /// page (course-leaderboard.instructions.md): stars, then level, then name and
-/// id; admins ranked and also listed; the bot never; invited and knocking
+/// id; admins listed but never ranked; the bot never; invited and knocking
 /// members listed but never ranked.
 void main() {
   late Client client;
@@ -131,7 +131,12 @@ void main() {
     expect(board.rest.map((e) => e.rank), [4, 5]);
   });
 
-  test('admins are ranked and also listed; the bot is nowhere', () {
+  test('admins are listed, never ranked; the bot is nowhere (#9481)', () {
+    final profiles = {
+      // The teacher has played the most, and would top the board.
+      '@teacher:fakeServer.notExisting': profile(lang: 'es', stars: 50),
+      '@student:fakeServer.notExisting': profile(lang: 'es', stars: 1),
+    };
     final board = CourseLeaderboard.rank(
       [
         member('teacher', powerLevel: SpaceConstants.powerLevelOfAdmin),
@@ -139,14 +144,28 @@ void main() {
         member('student'),
       ],
       langCode: 'es',
-      profileOf: (_) => null,
+      profileOf: (id) => profiles[id],
     );
 
     expect(board.admins.map((u) => u.id), ['@teacher:fakeServer.notExisting']);
     expect(board.ranked.map((e) => e.user.id), [
       '@student:fakeServer.notExisting',
-      '@teacher:fakeServer.notExisting',
     ]);
+    expect(board.ranked.single.rank, 1);
+  });
+
+  test('an admin alone in the course is listed, not ranked', () {
+    final board = CourseLeaderboard.rank(
+      [
+        member('learner', powerLevel: SpaceConstants.powerLevelOfAdmin),
+        member('bot', powerLevel: SpaceConstants.powerLevelOfAdmin),
+      ],
+      langCode: 'es',
+      profileOf: (_) => profile(lang: 'es', stars: 3),
+    );
+
+    expect(board.admins.map((u) => u.id), ['@learner:fakeServer.notExisting']);
+    expect(board.ranked, isEmpty);
   });
 
   test('invited and knocking members are listed after, never ranked', () {
@@ -235,7 +254,7 @@ void main() {
       ]);
     });
 
-    test('an admin whose flag is off is still ranked', () {
+    test('an admin whose flag is off is still listed, not ranked', () {
       final users = [
         member('teacher', powerLevel: SpaceConstants.powerLevelOfAdmin),
       ];
@@ -246,9 +265,10 @@ void main() {
         profileOf: (_) => null,
       );
 
-      expect(board.ranked.map((e) => e.user.id), [
+      expect(board.admins.map((u) => u.id), [
         '@teacher:fakeServer.notExisting',
       ]);
+      expect(board.ranked, isEmpty);
     });
 
     test('a non-admin with a stale flag is not teaching, and is ranked', () {

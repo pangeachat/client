@@ -24,6 +24,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_media_visibility.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
@@ -53,6 +54,7 @@ class ActivityChatController {
   final ValueNotifier<bool> showInstructions = ValueNotifier(false);
   final ValueNotifier<bool> showActivityDropdown = ValueNotifier(false);
   final ValueNotifier<bool> confettiNotifier = ValueNotifier(false);
+  final ActivityMediaVisibility mediaVisibility = ActivityMediaVisibility();
 
   /// What the finished activity shows where its summary goes. Recomputed on
   /// every room-state change that feeds it, and when a loading state expires.
@@ -94,6 +96,7 @@ class ActivityChatController {
     showInstructions.dispose();
     showActivityDropdown.dispose();
     confettiNotifier.dispose();
+    mediaVisibility.dispose();
     _summaryLoadingTimer?.cancel();
     summaryView.dispose();
     _rolesSubscription.cancel();

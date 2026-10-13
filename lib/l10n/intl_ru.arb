@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-05 13:57:52.189535",
+    "@@last_modified": "2026-10-12 13:12:02.509214",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -3486,7 +3486,6 @@
     "errorDisableIGCClassDesc": "Помощь с грамматикой отключена для курса, в котором находится этот чат.",
     "error405Desc": "Пожалуйста, установите ваши языки в Главное меню > Настройки обучения.",
     "termsAndConditions": "Условиями использования",
-    "andCertifyIAmAtLeast13YearsOfAge": " и подтверждаю, что мне не менее 16 лет.",
     "error502504Desc": "Инструменты перевода и грамматики могут работать медленно или быть недоступны, пока боты Pangea обрабатывают запросы.",
     "error404Desc": "Бот Pangea не уверен, как это перевести...",
     "errorPleaseRefresh": "Мы этим занимаемся! Пожалуйста, обновите страницу и попробуйте снова.",
@@ -4377,10 +4376,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5651,35 +5646,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8884,9 +8850,6 @@
     },
     "exampleSentence": "Пример предложения",
     "reportToTeacher": "Кому вы хотите пожаловаться на это сообщение?",
-    "reportMessageTitle": "{reportingUserId} пожаловался на сообщение от {reportedUserId} в чате {roomName}",
-    "reportMessageBody": "Сообщение: {reportedMessage}\nПричина: {reason}",
-    "noTeachersFound": "Не найдено учителей для отправки жалобы",
     "trialExpiration": "Ваша бесплатная пробная версия заканчивается {expiration}",
     "freeTrialDesc": "Новые пользователи получают недельный бесплатный пробный период Pangea Chat",
     "constructUseCollected": "Собрано в чате",
@@ -10806,7 +10769,6 @@
     "constructLevelFlowers": "Цветы, освоенные слова",
     "filterAndSearch": "Фильтр и поиск",
     "participantsOfTotal": "{filled} из {total} игроков",
-    "mapAttributionLabel": "Участники OpenStreetMap, авторские права и лицензия",
     "seeAll": "Посмотреть все",
     "seeAllSection": "Посмотреть все {section}",
     "showMoreOptionsHint": "показать больше опций",
@@ -10952,5 +10914,32 @@
     "ssoTryAnyway": "Всё равно попробовать",
     "publicCoursesFilterTooltip": "Показывать только курсы, к которым может присоединиться любой желающий",
     "restrictedCoursesFilterTooltip": "Показывать только курсы, к которым нужно запросить доступ",
-    "viewImageLabel": "Посмотреть изображение"
+    "viewImageLabel": "Посмотреть изображение",
+    "reportSent": "Жалоба отправлена",
+    "reportNotSent": "Не удалось отправить жалобу. Проверьте подключение и повторите попытку.",
+    "reportPointerMessage": "Сообщение было отправлено в {courseName} — см. раздел «Безопасность»",
+    "useActivityImageAsChatBackground": "Использовать изображение активности в качестве фона чата",
+    "andCertifyIMeetTheMinimumAge": " и подтверждаю, что мне не менее 13 лет или минимальный возраст, требуемый в моей стране, если он выше.",
+    "filteredNetworkBlockedTitle": "Эта сеть блокирует Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Эта сеть частично блокирует Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Что я могу сделать?",
+    "filteredNetworkPhoneAdvice": "Отключите Wi-Fi и используйте мобильные данные.",
+    "filteredNetworkComputerAdvice": "Подключитесь к точке доступа телефона вместо этой сети Wi-Fi.",
+    "filteredNetworkItHeading": "Для учителей и ИТ-персонала",
+    "filteredNetworkItBody": "Попросите вашу ИТ-команду разрешить следующие домены:",
+    "filteredNetworkAskForHelp": "Обратиться за помощью к Pangea",
+    "filteredNetworkHelpExplanation": "Мы свяжемся с вами по электронной почте, чтобы помочь запустить Pangea Chat в этой сети.",
+    "filteredNetworkHelpWaiting": "Ваш запрос будет отправлен, как только вы подключитесь.",
+    "filteredNetworkHelpSent": "Отправлено. Мы свяжемся с вами по электронной почте.",
+    "filteredNetworkHelpRefused": "Не удалось отправить ваш запрос. Пожалуйста, напишите на support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Эта сеть блокирует видео.",
+    "filteredNetworkImagesBlocked": "Эта сеть блокирует изображения.",
+    "filteredNetworkMapBlocked": "Эта сеть блокирует карту.",
+    "callFullScreenTitle": "Разрешить звонкам отображаться на весь экран",
+    "callFullScreenMessage": "Вам звонили, пока Pangea Chat был закрыт, но на телефоне отобразилось только небольшое уведомление. Разрешите звонки на весь экран, чтобы следующий звонок отображался на всём экране, даже когда телефон заблокирован.",
+    "callMicrophoneTitle": "Использовать микрофон для звонков",
+    "callMicrophoneMessage": "Pangea Chat требуется доступ к микрофону для звонков, включая звонки, на которые вы отвечаете с экрана блокировки.",
+    "callMicrophoneOffTitle": "Не удалось подключиться к звонку",
+    "callMicrophoneOffMessage": "Pangea Chat не может использовать ваш микрофон. Нажмите, чтобы включить его в настройках.",
+    "mapCreditsLabel": "Авторы карты: Stadia Maps, OpenMapTiles и OpenStreetMap"
 }

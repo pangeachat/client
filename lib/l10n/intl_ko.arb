@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:49.102067",
+    "@@last_modified": "2026-10-12 13:11:57.079656",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -2767,7 +2767,6 @@
     "errorDisableIGCClassDesc": "이 채팅이 속한 강좌에 대한 문법 지원이 꺼져 있습니다.",
     "error405Desc": "메인 메뉴 > 학습 설정에서 언어를 설정하세요.",
     "termsAndConditions": "이용 약관",
-    "andCertifyIAmAtLeast13YearsOfAge": " 및 만 16세 이상임을 인증합니다.",
     "error502504Desc": "파니아 봇이 따라잡는 동안 번역 및 문법 도구가 느리거나 사용할 수 없을 수 있습니다.",
     "error404Desc": "파니아 봇이 어떻게 번역해야 할지 확실하지 않아요...",
     "errorPleaseRefresh": "문제를 해결 중입니다! 새로고침 후 다시 시도하세요.",
@@ -3075,9 +3074,6 @@
     "why": "왜?",
     "definition": "정의",
     "reportToTeacher": "이 메시지를 누구에게 신고하시겠습니까?",
-    "reportMessageTitle": "{reportingUserId}님이 채팅 {roomName}에서 {reportedUserId}의 메시지를 신고했습니다",
-    "reportMessageBody": "메시지: {reportedMessage}\n이유: {reason}",
-    "noTeachersFound": "신고할 선생님을 찾을 수 없습니다",
     "trialExpiration": "무료 체험이 {expiration}에 만료됩니다",
     "freeTrialDesc": "신규 사용자는 일주일간 무료 체험을 받습니다",
     "activateTrial": "무료 7일 체험 시작",
@@ -3714,10 +3710,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4964,35 +4956,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10027,7 +9990,6 @@
     "constructLevelFlowers": "꽃, 마스터한 단어",
     "filterAndSearch": "필터 및 검색",
     "participantsOfTotal": "{total}명 중 {filled}명",
-    "mapAttributionLabel": "OpenStreetMap 기여자, 저작권 및 라이선스",
     "seeAll": "모두 보기",
     "seeAllSection": "{section} 모두 보기",
     "showMoreOptionsHint": "더 많은 옵션 보기",
@@ -10173,5 +10135,32 @@
     "ssoTryAnyway": "그래도 시도",
     "publicCoursesFilterTooltip": "누구나 참여할 수 있는 코스만 표시",
     "restrictedCoursesFilterTooltip": "참여를 요청해야 하는 코스만 표시",
-    "viewImageLabel": "이미지 보기"
+    "viewImageLabel": "이미지 보기",
+    "reportSent": "신고가 전송되었습니다",
+    "reportNotSent": "신고를 보낼 수 없습니다. 연결 상태를 확인하고 다시 시도해 주세요.",
+    "reportPointerMessage": "{courseName}에서 메시지가 신고되었습니다. 안전을 참조하세요.",
+    "useActivityImageAsChatBackground": "활동 이미지를 채팅 배경으로 사용",
+    "andCertifyIMeetTheMinimumAge": " 및 저는 13세 이상이거나, 해당 국가에서 요구하는 최소 연령(더 높은 경우) 이상임을 증명합니다.",
+    "filteredNetworkBlockedTitle": "이 네트워크는 Pangea Chat을 차단하고 있습니다",
+    "filteredNetworkPartlyBlockedTitle": "이 네트워크는 Pangea Chat의 일부를 차단하고 있습니다",
+    "filteredNetworkWhatCanIDo": "어떻게 해야 하나요?",
+    "filteredNetworkPhoneAdvice": "Wi-Fi를 끄고 모바일 데이터를 사용하세요.",
+    "filteredNetworkComputerAdvice": "이 Wi-Fi 대신 휴대폰 핫스팟에 연결하세요.",
+    "filteredNetworkItHeading": "교사 및 IT 담당자용",
+    "filteredNetworkItBody": "IT 팀에 다음 도메인을 허용하도록 요청하세요:",
+    "filteredNetworkAskForHelp": "Pangea에 도움 요청",
+    "filteredNetworkHelpExplanation": "이 네트워크에서 Pangea Chat이 작동하도록 이메일로 도움을 드리겠습니다.",
+    "filteredNetworkHelpWaiting": "연결되는 즉시 요청이 전송됩니다.",
+    "filteredNetworkHelpSent": "전송되었습니다. 이메일로 연락드리겠습니다.",
+    "filteredNetworkHelpRefused": "요청을 보낼 수 없습니다. support@pangea.chat으로 이메일을 보내주세요.",
+    "filteredNetworkVideoBlocked": "이 네트워크는 동영상을 차단합니다.",
+    "filteredNetworkImagesBlocked": "이 네트워크는 이미지를 차단합니다.",
+    "filteredNetworkMapBlocked": "이 네트워크는 지도를 차단합니다.",
+    "callFullScreenTitle": "전체 화면으로 전화 수신",
+    "callFullScreenMessage": "Pangea Chat이 닫혀 있는 동안 전화가 걸려왔지만, 휴대폰에 작은 알림만 표시되었습니다. 다음 전화부터는 휴대폰이 잠겨 있을 때도 전체 화면으로 벨이 울리도록 전체 화면 통화를 허용하세요.",
+    "callMicrophoneTitle": "통화에 마이크 사용",
+    "callMicrophoneMessage": "Pangea Chat은 잠금 화면에서 응답하는 통화를 포함하여 통화에 마이크가 필요합니다.",
+    "callMicrophoneOffTitle": "통화가 연결되지 않았습니다",
+    "callMicrophoneOffMessage": "Pangea Chat이 마이크를 사용할 수 없습니다. 설정을 탭하여 켜세요.",
+    "mapCreditsLabel": "지도 출처: Stadia Maps, OpenMapTiles 및 OpenStreetMap"
 }

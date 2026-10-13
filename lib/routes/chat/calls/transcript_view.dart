@@ -15,13 +15,14 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_box.dart';
 import 'package:fluffychat/routes/chat/audio_player.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_closure.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
-import 'package:fluffychat/routes/chat/calls/call_audio_merged_selection.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_repo.dart';
 import 'package:fluffychat/routes/chat/calls/call_playback_controller.dart';
 import 'package:fluffychat/routes/chat/calls/call_recordings_load.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_provenance.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_tokens.dart';
@@ -162,6 +163,11 @@ class CallTranscriptView extends StatefulWidget {
   /// Injected only by tests, which have no homeserver to read from.
   final RelationsFetcher? fetcher;
 
+  /// Injected only by tests: resolves a peer-produced half's source recording
+  /// by id. Production reads it off [room].
+  @visibleForTesting
+  final AudioEventFetcher? audioFetcher;
+
   /// Injected only by tests, so a widget test can drive the "Full call" slot's
   /// [CallRecordingsLoadState] deterministically (its own grace clock and
   /// timer) rather than waiting out a real ~30s window. Production always
@@ -211,6 +217,7 @@ class CallTranscriptView extends StatefulWidget {
     required this.room,
     required this.callKey,
     this.fetcher,
+    this.audioFetcher,
     this.recordingsLoadController,
     this.audioPlayerFactory,
     this.mergedFileLoader,
@@ -243,8 +250,8 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// Isolated from both the transcript AND the halves the same way [_recordings]
   /// is: [_loadMerged] catches and logs, so a slow or failed merged read never
   /// holds up -- or takes down -- either. The player picks ONE of these to show
-  /// via [selectMergedRow]; a stray extra merge in room history is not this
-  /// screen's problem to resolve.
+  /// via [_trustedMergedRow]: a merge that is not a trusted merge of the whole
+  /// call is never shown.
   late Future<List<CallAudioMergedRecording>> _merged;
 
   /// The "Full call" slot's loading state machine (spec section 3). Fed the
@@ -370,6 +377,37 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// settle ([_feedLoadController]) and on every displayed swap.
   int _shownHalfCount = 0;
   bool _shownHasMerge = false;
+  List<CallAudioRecording> _shownRecordings = const [];
+
+  /// The two people a merge may cover, or fewer while the peer is unknown.
+  Set<String> get _mergeParticipants => {
+    ?widget.room.client.userID,
+    ?callPeerOf(widget.room),
+  };
+
+  /// The ONE merged row to show: a trusted merge of the WHOLE call
+  /// (client#9173) -- covering every half the room holds, each speaker's moved
+  /// call included -- or null. A merge that covers less than every known half
+  /// is never shown, so a moved call never plays as if half of it were all of
+  /// it.
+  CallAudioMergedRecording? _trustedMergedRow(
+    List<CallAudioRecording> halves,
+    List<CallAudioMergedRecording> merged,
+  ) {
+    final participants = _mergeParticipants;
+    final closure = closeCall(halves, participants);
+    if (closure is! ClosedCall) return null;
+    return selectTrustedMerge(
+      merged: merged,
+      closed: closure,
+      participants: participants,
+      callKey: widget.callKey,
+    );
+  }
+
+  /// Whether [halves] can never be merged into one whole call.
+  bool _neverMergeable(List<CallAudioRecording> halves) =>
+      closeCall(halves, _mergeParticipants) is BrokenCall;
 
   /// What the currently-DISPLAYED [_transcript] future resolved to, or null
   /// before the initial read has landed.
@@ -534,6 +572,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       expectedSenders: participants.ids,
       participantsKnown: participants.known,
       encrypted: widget.room.encrypted,
+      resolveProvenance: _provenanceResolver(fetch, participants.ids),
     );
     _transcript = transcript;
     // Feeds the transcript's OWN live-refresh baseline the instant this
@@ -623,15 +662,13 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       }
       final recs = results[0] as List<CallAudioRecording>;
       final mergedList = results[1] as List<CallAudioMergedRecording>;
-      final mergedRow = selectMergedRow(mergedList, recs.length);
-      // More than two halves is a mid-call device switch: `selectMergedRow`
-      // suppresses the merge for v1, so NO merge is ever coming. Feed the
-      // machine zero MERGEABLE halves in that case, so it resolves `none` (the
-      // note, immediately) rather than sitting in `pendingMerge` shimmering
-      // out the full grace for a merge that will never arrive. A `<= 2`-half
-      // call with no merge yet still feeds its real count, so it correctly
-      // waits (pendingMerge) for a merge that genuinely might land.
-      final mergeableHalfCount = recs.length > 2 ? 0 : recs.length;
+      final mergedRow = _trustedMergedRow(recs, mergedList);
+      // Halves that can never be one whole call (two devices of one speaker
+      // that both carried on, a broken chain) will never be merged: feed the
+      // machine zero MERGEABLE halves so it resolves `none` (the note, at once)
+      // rather than shimmering out the grace for a merge that cannot arrive.
+      // Anything else feeds its real count and waits for a merge that may.
+      final mergeableHalfCount = _neverMergeable(recs) ? 0 : recs.length;
       _loadController.update(
         readsInFlight: false,
         halfCount: mergeableHalfCount,
@@ -640,6 +677,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       // What these DISPLAYED futures resolved to, so a later [_refreshRecordings]
       // only swaps (and rebuilds) on a material change (see that method).
       _shownHalfCount = recs.length;
+      _shownRecordings = recs;
       _shownHasMerge = mergedRow != null;
       // The initial reads have fed the machine; live refreshes may now run.
       _initialReadsSettled = true;
@@ -796,8 +834,11 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     // per-device list; a shrunk one leaves the displayed rows untouched.
     final shrank = recs.length < _shownHalfCount;
     final effectiveHalfCount = shrank ? _shownHalfCount : recs.length;
-    final mergedRow = selectMergedRow(mergedList, effectiveHalfCount);
-    final mergeableHalfCount = effectiveHalfCount > 2 ? 0 : effectiveHalfCount;
+    // A shrunk read is a failed read, not fewer halves: judge the merge
+    // against the halves already shown in that case.
+    final judged = shrank ? _shownRecordings : recs;
+    final mergedRow = _trustedMergedRow(judged, mergedList);
+    final mergeableHalfCount = _neverMergeable(judged) ? 0 : effectiveHalfCount;
     // FEED, never reset: `readsInFlight` stays false, so the true->false edge
     // that stamps the grace does NOT fire again and the monotonic grace keeps
     // running (see [CallRecordingsLoadController]'s own doc against re-stamps).
@@ -834,6 +875,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         if (!shrank) {
           _recordings = SynchronousFuture(recs);
           _shownHalfCount = recs.length;
+          _shownRecordings = recs;
         }
         _merged = SynchronousFuture(mergedList);
         _shownHasMerge = mergedRow != null;
@@ -934,6 +976,20 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     }
   }
 
+  /// Judges the peer-produced halves this screen reads, by the same rule and
+  /// against the same manifest as the whole-call transcriber that wrote them.
+  /// Without it every such half stays pending and the reader keeps seeing the
+  /// speaker's own empty half (#8792).
+  Future<Map<String, ProvenanceState>> Function(List<TranscriptCandidate>)
+  _provenanceResolver(RelationsFetcher fetch, List<String> participants) =>
+      transcriptProvenanceResolver(
+        fetch: fetch,
+        audioFetch: widget.audioFetcher ?? audioEventFetcherFor(widget.room),
+        roomId: widget.room.id,
+        callKey: widget.callKey,
+        participants: participants.toSet(),
+      );
+
   /// Re-reads the transcript for [_refreshTranscript]'s live-refresh pass. A
   /// failure is turned into `null` -- "nothing new to show this pass" --
   /// rather than left to propagate, the same shape as
@@ -960,6 +1016,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         expectedSenders: participants.ids,
         participantsKnown: participants.known,
         encrypted: widget.room.encrypted,
+        resolveProvenance: _provenanceResolver(fetch, participants.ids),
       );
     } catch (e, s) {
       Logs().w(
@@ -1686,17 +1743,13 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
                 builder: (context, mergedSnapshot) {
                   final mergedList =
                       mergedSnapshot.data ?? const <CallAudioMergedRecording>[];
-                  // The ONE merged row to show, or null when there is no merge
-                  // or the call switched devices mid-way (more than two halves,
-                  // out of v1 scope). Suppression is keyed on the number of
-                  // halves the room actually shows, which is why the count
-                  // comes from `recordings` rather than the merge's coverage.
+                  // The ONE merged row to show: a trusted merge of every half
+                  // the room actually shows (see [_trustedMergedRow]), or null.
                   //
-                  // Deferred until BOTH reads are done: `selectMergedRow`'s
-                  // half count is only trustworthy once `recordings` has
-                  // landed. If the merged read finishes FIRST, the count is
-                  // transiently 0, which would show the player -- then the
-                  // recordings read landing with >2 halves would SUPPRESS it,
+                  // Deferred until BOTH reads are done: the halves are only
+                  // trustworthy once `recordings` has landed. If the merged
+                  // read finishes FIRST the halves are transiently none -- and
+                  // a recordings read landing afterwards could withdraw it,
                   // unmounting a possibly-playing merged player mid-frame. Not
                   // showing it until the count is settled keeps the bar on its
                   // shimmer (the load machine is `loading` until both land) and
@@ -1706,7 +1759,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
                           ConnectionState.done &&
                       mergedSnapshot.connectionState == ConnectionState.done;
                   final mergedRow = readsSettled
-                      ? selectMergedRow(mergedList, recordings.length)
+                      ? _trustedMergedRow(recordings, mergedList)
                       : null;
 
                   // Rebuilt here, not reused from above, because only here is
@@ -1906,12 +1959,14 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
           now.difference(recordedAt) < transcribingWindow;
     }
 
-    // Worked out here, where the recording set is in scope, so a half still
-    // being transcribed drops out of the notes and shows as loading instead.
-    final notes = transcript.halves
-        .map((half) => _noteFor(half, l10n, transcribing: transcribing(half)))
-        .nonNulls
-        .toList();
+    // Task 3 (#8792): the recordings the view already fetches name which
+    // speakers have a manifest recording -- `recordingTimes` is keyed by sender
+    // exactly for this (see its own doc above). Never on the VIEWER's OWN half:
+    // the on-demand path only produces a PEER's half (`_produceOnePeer` refuses
+    // `spokenBy == self`), so offering it on one's own half is a button that can
+    // only no-op. The viewer's own half is the ordinary call-end flow's job.
+    bool hasRecording(TranscriptHalf half) =>
+        half.senderId != me && recordingTimes.containsKey(half.senderId);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1962,16 +2017,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
               transcribing: transcribing(half),
               theme: theme,
               l10n: l10n,
-              // Task 3 (#8792): the recordings the view already fetches name
-              // which speakers have a manifest recording -- `recordingTimes`
-              // is keyed by sender exactly for this (see its own doc above).
-              // Never on the VIEWER's OWN half: the on-demand path only produces
-              // a PEER's half (`_produceOnePeer` refuses `spokenBy == self`), so
-              // offering it on one's own absent half is a button that can only
-              // no-op. The viewer's own half is the ordinary call-end flow's job.
-              hasRecording:
-                  half.senderId != me &&
-                  recordingTimes.containsKey(half.senderId),
+              hasRecording: hasRecording(half),
               onDemandInFlight: _onDemandInFlight.contains(half.senderId),
               onDemandUnavailable: _onDemandUnavailable.contains(half.senderId),
               onTranscribe: () => unawaited(_onTranscribeTapped(half.senderId)),
@@ -1983,7 +2029,27 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         // spoke. The per-speaker view says these itself, so they are added out
         // here only when the timeline is what is drawn.
         if (displayTurns.isNotEmpty) ...[
-          for (final note in notes) _Muted(text: note),
+          // Worked out here, where the recording set is in scope, so a half
+          // still being transcribed drops out of the notes and shows as loading
+          // instead. A half emptied only because its writer had no subscription
+          // carries the same on-demand offer the per-speaker view gives it
+          // (#8792); every other note is text alone, as before.
+          for (final half in transcript.halves)
+            if (_noteFor(half, l10n, transcribing: transcribing(half))
+                case final note?)
+              if (half.emptiedOnlyByNoSubscription)
+                ..._onDemandOffer(
+                  note: note,
+                  name: _nameFor(half.senderId, l10n),
+                  l10n: l10n,
+                  hasRecording: hasRecording(half),
+                  inFlight: _onDemandInFlight.contains(half.senderId),
+                  unavailable: _onDemandUnavailable.contains(half.senderId),
+                  onTranscribe: () =>
+                      unawaited(_onTranscribeTapped(half.senderId)),
+                )
+              else
+                _Muted(text: note),
           // A half still being transcribed is loading, not missing. The
           // per-speaker view says this in the half's own section; the timeline
           // says it here, below the conversation, beside the absent/silent
@@ -2854,31 +2920,30 @@ class _HalfSection extends StatelessWidget {
     // silent": a silent speaker still writes an empty half, and that case is
     // the one below.
     if (half.state == HalfState.absent) {
-      // Task 3 (#8792): a terminal note over the button, never a stuck one --
-      // see [onDemandUnavailable]'s own doc for why a plain false maps here.
-      if (onDemandUnavailable) {
-        return [_Muted(text: l10n.callTranscriptAudioUnavailable(name))];
-      }
-      if (onDemandInFlight) {
-        return [_Loading(text: l10n.callTranscriptTranscribing(name))];
-      }
-      return [
-        _Muted(text: l10n.callTranscriptNone(name)),
-        // A manifest recording exists for this speaker's unit but nobody has
-        // transcribed it yet -- offer to on demand, rather than only ever
-        // waiting for a subscriber to open this screen after the auto path
-        // already had its chance (spec section 4 bullet 2).
-        if (hasRecording) ...[
-          const SizedBox(height: 4),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: TextButton(
-              onPressed: onTranscribe,
-              child: Text(l10n.callTranscriptTranscribeButton),
-            ),
-          ),
-        ],
-      ];
+      return _onDemandOffer(
+        note: l10n.callTranscriptNone(name),
+        name: name,
+        l10n: l10n,
+        hasRecording: hasRecording,
+        inFlight: onDemandInFlight,
+        unavailable: onDemandUnavailable,
+        onTranscribe: onTranscribe,
+      );
+    }
+
+    // A half emptied only because its writer had no subscription was never
+    // produced from their audio, so it is offered exactly as an absent half is
+    // (#8792): a subscribed reader can have it transcribed from the recording.
+    if (half.emptiedOnlyByNoSubscription) {
+      return _onDemandOffer(
+        note: emptyHalfNote(half, name, l10n),
+        name: name,
+        l10n: l10n,
+        hasRecording: hasRecording,
+        inFlight: onDemandInFlight,
+        unavailable: onDemandUnavailable,
+        onTranscribe: onTranscribe,
+      );
     }
 
     // Shared with the notes drawn under the timeline, because it is the same
@@ -2908,6 +2973,48 @@ class _HalfSection extends StatelessWidget {
       ],
     ];
   }
+}
+
+/// Task 3's (#8792) on-demand offer for a half nobody has transcribed from its
+/// recording: [note], then the Transcribe button when [hasRecording].
+///
+/// Shared by an absent half and by one emptied only because its writer had no
+/// subscription, in both shapes of the screen, so the gating cannot drift
+/// between them. A terminal note replaces the button once the audio proved
+/// unusable ([unavailable]), and a loading row replaces it while a request
+/// runs ([inFlight]) -- never a stuck button.
+List<Widget> _onDemandOffer({
+  required String note,
+  required String name,
+  required L10n l10n,
+  required bool hasRecording,
+  required bool inFlight,
+  required bool unavailable,
+  required VoidCallback onTranscribe,
+}) {
+  if (unavailable) {
+    return [_Muted(text: l10n.callTranscriptAudioUnavailable(name))];
+  }
+  if (inFlight) {
+    return [_Loading(text: l10n.callTranscriptTranscribing(name))];
+  }
+  return [
+    _Muted(text: note),
+    // A manifest recording exists for this speaker's unit but nobody has
+    // transcribed it yet -- offer to on demand, rather than only ever waiting
+    // for a subscriber to open this screen after the auto path already had its
+    // chance (spec section 4 bullet 2).
+    if (hasRecording) ...[
+      const SizedBox(height: 4),
+      Align(
+        alignment: Alignment.centerLeft,
+        child: TextButton(
+          onPressed: onTranscribe,
+          child: Text(l10n.callTranscriptTranscribeButton),
+        ),
+      ),
+    ],
+  ];
 }
 
 /// Task 3's (#8792) language picker: a plain list, shown when the peer's

@@ -7,6 +7,7 @@ import 'package:async/async.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/network_filter/filtered_network_controller.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -29,9 +30,12 @@ class LanguageRepo {
 
   /// Fetches languages directly from CMS REST API (public, no auth required).
   static Future<List<LanguageModel>> _fetch() async {
-    final response = await http.get(
-      Uri.parse('${PApiUrls.cmsLanguages}?limit=500&sort=language_name'),
-      headers: {'Accept': 'application/json'},
+    final url = Uri.parse(
+      '${PApiUrls.cmsLanguages}?limit=500&sort=language_name',
+    );
+    final response = await FilteredNetworkController.instance.observe(
+      url,
+      http.get(url, headers: {'Accept': 'application/json'}),
     );
 
     if (response.statusCode != 200) {

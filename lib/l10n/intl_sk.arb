@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-05 13:57:52.393235",
+    "@@last_modified": "2026-10-12 13:12:03.046260",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -1747,7 +1747,6 @@
     "errorDisableIGCClassDesc": "Pomoc s gramatikou je vypnutá pre kurz, v ktorom sa nachádza tento chat.",
     "error405Desc": "Prosím, nastavte si svoje jazyky v Hlavnom menu > Nastavenia učenia.",
     "termsAndConditions": "Podmienkami a podmienkami",
-    "andCertifyIAmAtLeast13YearsOfAge": " a potvrdzujem, že mám najmenej 16 rokov.",
     "error502504Desc": "Nástroje na preklad a gramatiku môžu byť pomalé alebo nedostupné, kým Pangea boty dobehnú.",
     "error404Desc": "Pangea Bot si nie je istý, ako to preložiť...",
     "errorPleaseRefresh": "Pozeráme sa na to! Prosím, načítajte stránku znova a skúste to znova.",
@@ -2055,9 +2054,6 @@
     "why": "Prečo?",
     "definition": "Definícia",
     "reportToTeacher": "Komu chcete nahlásiť túto správu?",
-    "reportMessageTitle": "{reportingUserId} nahlásil správu od {reportedUserId} v chate {roomName}",
-    "reportMessageBody": "Správa: {reportedMessage}\nDôvod: {reason}",
-    "noTeachersFound": "Nenašli sa žiadni učitelia na nahlásenie",
     "trialExpiration": "Váš bezplatný skúšobný čas vyprší dňa {expiration}",
     "freeTrialDesc": "Noví používatelia dostanú týždennú bezplatnú skúšobnú verziu Pangea Chat",
     "activateTrial": "Bezplatná 7-dňová skúšobná verzia",
@@ -4469,10 +4465,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
         "type": "String",
         "placeholders": {}
@@ -5716,35 +5708,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10779,7 +10742,6 @@
     "constructLevelFlowers": "Kvety, zvládnuté slová",
     "filterAndSearch": "Filtrovať a hľadať",
     "participantsOfTotal": "{filled} z {total} hráčov",
-    "mapAttributionLabel": "Prispievatelia OpenStreetMap, autorské práva a licencia",
     "seeAll": "Zobraziť všetko",
     "seeAllSection": "Zobraziť všetko: {section}",
     "showMoreOptionsHint": "zobraziť viac možností",
@@ -10925,5 +10887,32 @@
     "ssoTryAnyway": "Aj tak skúsiť",
     "publicCoursesFilterTooltip": "Zobraziť iba kurzy, do ktorých sa môže zapojiť ktokoľvek",
     "restrictedCoursesFilterTooltip": "Zobraziť iba kurzy, do ktorých sa musíte prihlásiť",
-    "viewImageLabel": "Zobraziť obrázok"
+    "viewImageLabel": "Zobraziť obrázok",
+    "reportSent": "Nahlásenie odoslané",
+    "reportNotSent": "Vaše nahlásenie sa nepodarilo odoslať. Skontrolujte pripojenie a skúste to znova.",
+    "reportPointerMessage": "V kurze {courseName} bola nahlásená správa – pozrite si Bezpečnosť",
+    "useActivityImageAsChatBackground": "Použiť obrázok aktivity ako pozadie chatu",
+    "andCertifyIMeetTheMinimumAge": " a potvrdzujem, že mám aspoň 13 rokov, alebo minimálny vek požadovaný v mojej krajine, ak je vyšší.",
+    "filteredNetworkBlockedTitle": "Táto sieť blokuje Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Táto sieť blokuje časť Pangea Chatu",
+    "filteredNetworkWhatCanIDo": "Čo môžem urobiť?",
+    "filteredNetworkPhoneAdvice": "Vypnite Wi-Fi a namiesto toho použite mobilné dáta.",
+    "filteredNetworkComputerAdvice": "Namiesto tejto Wi-Fi sa pripojte k hotspotu svojho telefónu.",
+    "filteredNetworkItHeading": "Pre učiteľov a IT personál",
+    "filteredNetworkItBody": "Požiadajte svoj IT tím, aby povolil tieto domény:",
+    "filteredNetworkAskForHelp": "Požiadajte Pangeu o pomoc",
+    "filteredNetworkHelpExplanation": "Pošleme vám e-mail, aby sme vám pomohli spustiť Pangea Chat v tejto sieti.",
+    "filteredNetworkHelpWaiting": "Vaša požiadavka bude odoslaná hneď, ako sa pripojíte.",
+    "filteredNetworkHelpSent": "Odoslané. Budeme vás kontaktovať e-mailom.",
+    "filteredNetworkHelpRefused": "Vašu požiadavku sa nám nepodarilo odoslať. Pošlite e-mail na adresu support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Táto sieť blokuje videá.",
+    "filteredNetworkImagesBlocked": "Táto sieť blokuje obrázky.",
+    "filteredNetworkMapBlocked": "Táto sieť blokuje mapu.",
+    "callFullScreenTitle": "Nechajte hovory zvoniť na celú obrazovku",
+    "callFullScreenMessage": "Prišiel hovor, keď bol Pangea Chat zatvorený, ale váš telefón naň dokázal zobraziť iba malé upozornenie. Povoľte hovory na celú obrazovku, aby ďalší hovor zvonil na celej obrazovke, aj keď je váš telefón uzamknutý.",
+    "callMicrophoneTitle": "Používať mikrofón pre hovory",
+    "callMicrophoneMessage": "Pangea Chat potrebuje váš mikrofón pre hovory, vrátane hovorov, ktoré prijmete z uzamknutej obrazovky.",
+    "callMicrophoneOffTitle": "Váš hovor sa nepodarilo spojiť",
+    "callMicrophoneOffMessage": "Pangea Chat nemôže používať váš mikrofón. Klepnutím ho zapnete v Nastaveniach.",
+    "mapCreditsLabel": "Autorské práva k mape: Stadia Maps, OpenMapTiles a OpenStreetMap"
 }

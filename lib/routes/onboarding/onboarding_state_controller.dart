@@ -27,7 +27,8 @@ class OnboardingStateController {
     required this.courseProvider,
     required this.avatarProvider,
     required this.trialInfoProvider,
-  });
+    UserType? userType,
+  }) : _userType = userType;
 
   AvatarInfo? _avatarInfo;
   String? _displayName;

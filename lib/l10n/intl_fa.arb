@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:46.740276",
+    "@@last_modified": "2026-10-12 13:11:51.748743",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -2822,7 +2822,6 @@
     "errorDisableIGCClassDesc": "کمک گرامر برای دوره‌ای که این چت در آن است غیرفعال شده است.",
     "error405Desc": "لطفاً زبان‌های خود را در منوی اصلی > تنظیمات یادگیری تنظیم کنید.",
     "termsAndConditions": "شرایط و ضوابط",
-    "andCertifyIAmAtLeast13YearsOfAge": " و گواهی می‌دهم که حداقل ۱۳ سال سن دارم.",
     "error502504Desc": "ابزارهای ترجمه و گرامر ممکن است کند یا در دسترس نباشند در حالی که ربات‌های پنگئا جبران می‌کنند.",
     "error404Desc": "ربات پنگئا مطمئن نیست چگونه آن را ترجمه کند...",
     "errorPleaseRefresh": "در حال بررسی مشکل هستیم! لطفاً صفحه را مجدداً بارگذاری کنید و دوباره تلاش کنید.",
@@ -3130,9 +3129,6 @@
     "why": "چرا؟",
     "definition": "تعریف",
     "reportToTeacher": "می‌خواهید این پیام را به چه کسی گزارش دهید؟",
-    "reportMessageTitle": "{reportingUserId} یک پیام از {reportedUserId} در چت {roomName} گزارش کرده است",
-    "reportMessageBody": "پیام: {reportedMessage}\nدلیل: {reason}",
-    "noTeachersFound": "هیچ معلمی برای گزارش یافت نشد",
     "trialExpiration": "آزمایش رایگان شما در تاریخ {expiration} به پایان می‌رسد",
     "freeTrialDesc": "کاربران جدید یک هفته آزمایش رایگان پنگئا چت دریافت می‌کنند",
     "activateTrial": "آزمایش رایگان 7 روزه",
@@ -3614,10 +3610,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4864,35 +4856,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -9922,7 +9885,6 @@
     "constructLevelFlowers": "گل‌ها، کلمات تسلط یافته",
     "filterAndSearch": "فیلتر و جستجو",
     "participantsOfTotal": "{filled} از {total} بازیکن",
-    "mapAttributionLabel": "مشارکت‌کنندگان OpenStreetMap، حق تکثیر و مجوز",
     "seeAll": "مشاهده همه",
     "seeAllSection": "مشاهده همه {section}",
     "showMoreOptionsHint": "نمایش گزینه‌های بیشتر",
@@ -10068,5 +10030,32 @@
     "ssoTryAnyway": "به هر حال امتحان کن",
     "publicCoursesFilterTooltip": "فقط دوره‌هایی را نشان بده که همه می‌توانند به آن‌ها بپیوندند",
     "restrictedCoursesFilterTooltip": "فقط دوره‌هایی را نشان بده که برای پیوستن به آن‌ها باید درخواست دهید",
-    "viewImageLabel": "مشاهده تصویر"
+    "viewImageLabel": "مشاهده تصویر",
+    "reportSent": "گزارش ارسال شد",
+    "reportNotSent": "گزارش شما ارسال نشد. اتصال خود را بررسی کرده و دوباره امتحان کنید.",
+    "reportPointerMessage": "پیامی در {courseName} گزارش شد — به بخش ایمنی مراجعه کنید",
+    "useActivityImageAsChatBackground": "استفاده از تصویر فعالیت به عنوان پس‌زمینه چت",
+    "andCertifyIMeetTheMinimumAge": " و تأیید می‌کنم که حداقل ۱۳ سال سن دارم، یا اگر در کشورم سن قانونی بالاتری لازم است، آن سن را دارم.",
+    "filteredNetworkBlockedTitle": "این شبکه Pangea Chat را مسدود کرده است",
+    "filteredNetworkPartlyBlockedTitle": "این شبکه بخشی از Pangea Chat را مسدود کرده است",
+    "filteredNetworkWhatCanIDo": "چه کاری می‌توانم انجام دهم؟",
+    "filteredNetworkPhoneAdvice": "وای‌فای را خاموش کنید و به جای آن از داده تلفن همراه استفاده کنید.",
+    "filteredNetworkComputerAdvice": "به جای این وای‌فای، به هات‌اسپات تلفن خود متصل شوید.",
+    "filteredNetworkItHeading": "برای معلمان و کارکنان فناوری اطلاعات",
+    "filteredNetworkItBody": "از تیم فناوری اطلاعات خود بخواهید این دامنه‌ها را مجاز کند:",
+    "filteredNetworkAskForHelp": "از Pangea کمک بخواهید",
+    "filteredNetworkHelpExplanation": "ما به شما ایمیل می‌زنیم تا به شما کمک کنیم Pangea Chat در این شبکه کار کند.",
+    "filteredNetworkHelpWaiting": "درخواست شما به محض اتصال ارسال خواهد شد.",
+    "filteredNetworkHelpSent": "ارسال شد. از طریق ایمیل با شما در تماس خواهیم بود.",
+    "filteredNetworkHelpRefused": "نتوانستیم درخواست شما را ارسال کنیم. لطفاً به support@pangea.chat ایمیل بزنید.",
+    "filteredNetworkVideoBlocked": "این شبکه ویدیوها را مسدود می‌کند.",
+    "filteredNetworkImagesBlocked": "این شبکه تصاویر را مسدود می‌کند.",
+    "filteredNetworkMapBlocked": "این شبکه نقشه را مسدود می‌کند.",
+    "callFullScreenTitle": "اجازه دهید تماس‌ها تمام صفحه زنگ بخورند",
+    "callFullScreenMessage": "هنگامی که Pangea Chat بسته بود، تماسی دریافت شد، اما تلفن شما فقط می‌توانست یک اعلان کوچک برای آن نمایش دهد. تماس‌های تمام صفحه را فعال کنید تا تماس بعدی در کل صفحه شما زنگ بخورد، حتی زمانی که تلفن شما قفل است.",
+    "callMicrophoneTitle": "از میکروفون خود برای تماس‌ها استفاده کنید",
+    "callMicrophoneMessage": "پنگه‌آ چت برای تماس‌ها، از جمله تماس‌هایی که از صفحه قفل پاسخ می‌دهید، به میکروفون شما نیاز دارد.",
+    "callMicrophoneOffTitle": "تماس شما وصل نشد",
+    "callMicrophoneOffMessage": "پنگه‌آ چت نمی‌تواند از میکروفون شما استفاده کند. برای روشن کردن آن در تنظیمات ضربه بزنید.",
+    "mapCreditsLabel": "اعتبار نقشه: Stadia Maps, OpenMapTiles و OpenStreetMap"
 }

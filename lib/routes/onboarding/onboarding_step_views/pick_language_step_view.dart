@@ -370,6 +370,10 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
               child: OnboardingForwardButton(
                 onPressed: _step.enableGoForward ? widget.forward : null,
                 loading: widget.loading,
+                // An identical-language pick is shown at the dropdown above.
+                error: widget.error is IdenticalLanguageException
+                    ? null
+                    : widget.error,
                 label: widget.hasNextStep
                     ? _step.nextStepText(L10n.of(context))
                     : _step.lastStepText(L10n.of(context)),

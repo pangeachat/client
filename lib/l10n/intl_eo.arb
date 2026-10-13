@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:46.858090",
+    "@@last_modified": "2026-10-12 13:11:50.763345",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -2161,7 +2161,6 @@
     "errorDisableIGCClassDesc": "Gramatika helpo estas malŝaltita por la kurso en kiu ĉi tiu babilejo estas.",
     "error405Desc": "Bonvolu agordi viajn lingvojn en Ĉefa menuo > Lernagordoj.",
     "termsAndConditions": "Kondicxoj kaj Kondicxoj",
-    "andCertifyIAmAtLeast13YearsOfAge": " kaj atestigas ke mi estas almenaŭ 16 jarojn aĝa.",
     "error502504Desc": "Tradukiloj kaj gramatikaj iloj eble estos malrapidaj aŭ nehaveblaj dum la Pangea-botoj okupiĝas.",
     "error404Desc": "Pangea-boto ne certas kiel traduki tion...",
     "errorPleaseRefresh": "Ni esploras ĝin! Bonvolu reŝarĝi kaj provi denove.",
@@ -2469,9 +2468,6 @@
     "why": "Kial?",
     "definition": "Difino",
     "reportToTeacher": "Al kiu vi volas raporti ĉi tiun mesaĝon?",
-    "reportMessageTitle": "{reportingUserId} raportis mesaĝon de {reportedUserId} en la babilejo {roomName}",
-    "reportMessageBody": "Mesaĝo: {reportedMessage}\nKialo: {reason}",
-    "noTeachersFound": "Neniu instruisto trovita por raporti",
     "trialExpiration": "Via senpaga provtempo finiĝos je {expiration}",
     "freeTrialDesc": "Novaj uzantoj ricevas semajnan senpagan provon de Pangea Chat",
     "activateTrial": "Aktivigu Senpagan 7-tagan Provon",
@@ -4469,10 +4465,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
         "type": "String",
         "placeholders": {}
@@ -5716,35 +5708,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10779,7 +10742,6 @@
     "constructLevelFlowers": "Floroj, regataj vortoj",
     "filterAndSearch": "Filtri kaj serĉi",
     "participantsOfTotal": "{filled} el {total} ludantoj",
-    "mapAttributionLabel": "OpenStreetMap-kontribuantoj, kopirajto kaj permesilo",
     "seeAll": "Vidi ĉion",
     "seeAllSection": "Vidi ĉion en {section}",
     "showMoreOptionsHint": "montri pliajn opciojn",
@@ -10925,5 +10887,32 @@
     "ssoTryAnyway": "Provu ĉiukaze",
     "publicCoursesFilterTooltip": "Montri nur kursojn al kiuj iu ajn povas aliĝi",
     "restrictedCoursesFilterTooltip": "Montri nur kursojn al kiuj vi devas peti aliĝon",
-    "viewImageLabel": "Vidi bildon"
+    "viewImageLabel": "Vidi bildon",
+    "reportSent": "Raporto sendita",
+    "reportNotSent": "Via raporto ne povis esti sendita. Kontrolu vian konekton kaj reprovu.",
+    "reportPointerMessage": "Mesaĝo estis raportita en {courseName} — vidu Sekurecon",
+    "useActivityImageAsChatBackground": "Uzi agadan bildon kiel babilejan fonon",
+    "andCertifyIMeetTheMinimumAge": " kaj mi certigas, ke mi aĝas almenaŭ 13 jarojn, aŭ la minimuman aĝon postulatan en mia lando se tio estas pli alta.",
+    "filteredNetworkBlockedTitle": "Ĉi tiu reto blokas Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Ĉi tiu reto parte blokas Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Kion mi povas fari?",
+    "filteredNetworkPhoneAdvice": "Malŝaltu Wi-Fi kaj uzu poŝtelefonajn datumojn anstataŭe.",
+    "filteredNetworkComputerAdvice": "Konektiĝu al la retpunkto de via telefono anstataŭ ĉi tiu Wi-Fi.",
+    "filteredNetworkItHeading": "Por instruistoj kaj IT-personaro",
+    "filteredNetworkItBody": "Petu vian IT-teamon permesi ĉi tiujn domajnojn:",
+    "filteredNetworkAskForHelp": "Petu helpon de Pangea",
+    "filteredNetworkHelpExplanation": "Ni retpoŝtos al vi por helpi funkciigi Pangea Chat en ĉi tiu reto.",
+    "filteredNetworkHelpWaiting": "Via peto estos sendita tuj kiam vi estos konektita.",
+    "filteredNetworkHelpSent": "Sendite. Ni kontaktos vin per retpoŝto.",
+    "filteredNetworkHelpRefused": "Ni ne povis sendi vian peton. Bonvolu retpoŝti al support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Ĉi tiu reto blokas filmetojn.",
+    "filteredNetworkImagesBlocked": "Ĉi tiu reto blokas bildojn.",
+    "filteredNetworkMapBlocked": "Ĉi tiu reto blokas la mapon.",
+    "callFullScreenTitle": "Permesu alvokojn sonori tutekrane",
+    "callFullScreenMessage": "Alvoko venis dum Pangea Chat estis fermita, sed via telefono povis montri nur malgrandan sciigon por ĝi. Permesu tutekranajn alvokojn tiel ke la sekva sonoros sur via tuta ekrano, eĉ kiam via telefono estas ŝlosita.",
+    "callMicrophoneTitle": "Uzu vian mikrofonon por vokoj",
+    "callMicrophoneMessage": "Pangea Chat bezonas vian mikrofonon por vokoj, inkluzive de vokoj, kiujn vi respondas de la ŝlosila ekrano.",
+    "callMicrophoneOffTitle": "Via voko ne konektiĝis",
+    "callMicrophoneOffMessage": "Pangea Chat ne povas uzi vian mikrofonon. Frapu por ŝalti ĝin en Agordoj.",
+    "mapCreditsLabel": "Mapaj atribuoj: Stadia Maps, OpenMapTiles kaj OpenStreetMap"
 }

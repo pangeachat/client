@@ -16,7 +16,20 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 enum CourseInviteAction { accept, decline }
 
 class RoomInviteDialog {
+  static final Set<String> _promptingRoomIds = {};
+
   static Future<void> show(BuildContext context, Room room) async {
+    // A tapped notification and the chat list's invite listener both prompt
+    // when the invite arrives in the sync the tap is waiting on; ask once.
+    if (!_promptingRoomIds.add(room.id)) return;
+    try {
+      await _show(context, room);
+    } finally {
+      _promptingRoomIds.remove(room.id);
+    }
+  }
+
+  static Future<void> _show(BuildContext context, Room room) async {
     // Joining rebuilds the course lists, so the row that opened this dialog is
     // likely unmounted by the time the join lands (CLIENT-EX3). Read the route
     // now, and run everything after the join off the router's own navigator.

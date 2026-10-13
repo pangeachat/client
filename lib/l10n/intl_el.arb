@@ -2756,7 +2756,6 @@
     "errorDisableIGCClassDesc": "Η βοήθεια γραμματικής είναι απενεργοποιημένη για το μάθημα στο οποίο βρίσκεται αυτή η συνομιλία.",
     "error405Desc": "Ορίστε τις γλώσσες σας στο Μενού > Ρυθμίσεις Μάθησης.",
     "termsAndConditions": "Όρους και Προϋποθέσεις",
-    "andCertifyIAmAtLeast13YearsOfAge": " και πιστοποιώ ότι είμαι τουλάχιστον 16 ετών.",
     "error502504Desc": "Τα εργαλεία μετάφρασης και γραμματικής ενδέχεται να είναι αργά ή μη διαθέσιμα ενώ οι bots της Pangea ενημερώνονται.",
     "error404Desc": "Ο Pangea Bot δεν είναι σίγουρος πώς να μεταφράσει αυτό...",
     "errorPleaseRefresh": "Το ερευνούμε! Παρακαλούμε ανανεώστε και δοκιμάστε ξανά.",
@@ -3064,9 +3063,6 @@
     "why": "Γιατί;",
     "definition": "Ορισμός",
     "reportToTeacher": "Σε ποιον θέλετε να αναφέρετε αυτό το μήνυμα;",
-    "reportMessageTitle": "{reportingUserId} ανέφερε ένα μήνυμα από τον {reportedUserId} στη συνομιλία {roomName}",
-    "reportMessageBody": "Μήνυμα: {reportedMessage}\nΑιτία: {reason}",
-    "noTeachersFound": "Δεν βρέθηκαν δάσκαλοι για αναφορά",
     "trialExpiration": "Η δωρεάν δοκιμή σας λήγει στις {expiration}",
     "freeTrialDesc": "Οι νέοι χρήστες λαμβάνουν μια εβδομάδα δωρεάν δοκιμής του Pangea Chat",
     "activateTrial": "Δωρεάν 7-ήμερη Δοκιμή",
@@ -3400,7 +3396,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-05 13:57:46.295438",
+    "@@last_modified": "2026-10-12 13:11:50.837532",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -4396,10 +4392,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5646,35 +5638,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10709,7 +10672,6 @@
     "constructLevelFlowers": "Λουλούδια, λέξεις που έχετε κατακτήσει",
     "filterAndSearch": "Φιλτράρισμα και αναζήτηση",
     "participantsOfTotal": "{filled} από {total} παίκτες",
-    "mapAttributionLabel": "Συνεισφέροντες στο OpenStreetMap, πνευματικά δικαιώματα και άδεια",
     "seeAll": "Δείτε όλα",
     "seeAllSection": "Δείτε όλα τα {section}",
     "showMoreOptionsHint": "εμφάνιση περισσότερων επιλογών",
@@ -10855,5 +10817,32 @@
     "ssoTryAnyway": "Δοκιμάστε ούτως ή άλλως",
     "publicCoursesFilterTooltip": "Εμφάνιση μόνο μαθημάτων στα οποία μπορεί να συμμετάσχει ο καθένας",
     "restrictedCoursesFilterTooltip": "Εμφάνιση μόνο μαθημάτων στα οποία πρέπει να ζητήσετε να συμμετάσχετε",
-    "viewImageLabel": "Προβολή εικόνας"
+    "viewImageLabel": "Προβολή εικόνας",
+    "reportSent": "Η αναφορά στάλθηκε",
+    "reportNotSent": "Η αναφορά σας δεν μπόρεσε να σταλεί. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
+    "reportPointerMessage": "Αναφέρθηκε ένα μήνυμα στο {courseName} — δείτε την ενότητα Ασφάλεια",
+    "useActivityImageAsChatBackground": "Χρήση εικόνας δραστηριότητας ως φόντο συνομιλίας",
+    "andCertifyIMeetTheMinimumAge": " και βεβαιώνω ότι είμαι τουλάχιστον 13 ετών ή της ελάχιστης απαιτούμενης ηλικίας στη χώρα μου, εάν αυτή είναι μεγαλύτερη.",
+    "filteredNetworkBlockedTitle": "Αυτό το δίκτυο μπλοκάρει το Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Αυτό το δίκτυο μπλοκάρει μέρος του Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Τι μπορώ να κάνω;",
+    "filteredNetworkPhoneAdvice": "Απενεργοποιήστε το Wi-Fi και χρησιμοποιήστε δεδομένα κινητής τηλεφωνίας.",
+    "filteredNetworkComputerAdvice": "Συνδεθείτε στο hotspot του τηλεφώνου σας αντί για αυτό το Wi-Fi.",
+    "filteredNetworkItHeading": "Για εκπαιδευτικούς και προσωπικό IT",
+    "filteredNetworkItBody": "Ζητήστε από την ομάδα IT σας να επιτρέψει αυτούς τους τομείς:",
+    "filteredNetworkAskForHelp": "Ζητήστε βοήθεια από το Pangea",
+    "filteredNetworkHelpExplanation": "Θα σας στείλουμε email για να σας βοηθήσουμε να λειτουργήσει το Pangea Chat σε αυτό το δίκτυο.",
+    "filteredNetworkHelpWaiting": "Το αίτημά σας θα σταλεί μόλις συνδεθείτε.",
+    "filteredNetworkHelpSent": "Στάλθηκε. Θα επικοινωνήσουμε μαζί σας μέσω email.",
+    "filteredNetworkHelpRefused": "Δεν ήταν δυνατή η αποστολή του αιτήματός σας. Παρακαλούμε στείλτε email στο support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Αυτό το δίκτυο μπλοκάρει τα βίντεο.",
+    "filteredNetworkImagesBlocked": "Αυτό το δίκτυο μπλοκάρει τις εικόνες.",
+    "filteredNetworkMapBlocked": "Αυτό το δίκτυο μπλοκάρει τον χάρτη.",
+    "callFullScreenTitle": "Να κουδουνίζει η κλήση σε πλήρη οθόνη",
+    "callFullScreenMessage": "Έγινε μια κλήση ενώ το Pangea Chat ήταν κλειστό, αλλά το τηλέφωνό σας μπορούσε να εμφανίσει μόνο μια μικρή ειδοποίηση για αυτήν. Επιτρέψτε τις κλήσεις πλήρους οθόνης, ώστε η επόμενη να κουδουνίζει σε ολόκληρη την οθόνη σας, ακόμα και όταν το τηλέφωνό σας είναι κλειδωμένο.",
+    "callMicrophoneTitle": "Χρησιμοποιήστε το μικρόφωνό σας για κλήσεις",
+    "callMicrophoneMessage": "Το Pangea Chat χρειάζεται το μικρόφωνό σας για κλήσεις, συμπεριλαμβανομένων των κλήσεων που απαντάτε από την οθόνη κλειδώματος.",
+    "callMicrophoneOffTitle": "Η κλήση σας δεν συνδέθηκε",
+    "callMicrophoneOffMessage": "Το Pangea Chat δεν μπορεί να χρησιμοποιήσει το μικρόφωνό σας. Πατήστε για να το ενεργοποιήσετε στις Ρυθμίσεις.",
+    "mapCreditsLabel": "Συντελεστές χάρτη: Stadia Maps, OpenMapTiles και OpenStreetMap"
 }

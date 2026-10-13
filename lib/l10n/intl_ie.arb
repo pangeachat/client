@@ -2449,7 +2449,6 @@
     "errorDisableIGCClassDesc": "Le adjuta de grammatica es disactivate pro le curso in le qual iste chat es.",
     "error405Desc": "Per favor, configura tu linguas in le Menu Principal > Configuration de Aprendissage.",
     "termsAndConditions": "Termes e Condiciones",
-    "andCertifyIAmAtLeast13YearsOfAge": " e certifies que ha minimum 16 annos de etate.",
     "error502504Desc": "Instrumentes de translation e grammatica pote esser lente o unavailable durante que le bots Pangea se actualisa.",
     "error404Desc": "Le Bot Pangea non es secur de como traducer isto...",
     "errorPleaseRefresh": "Nos es in le processus de investigar! Per favor, re-iniciar e tentar ancora.",
@@ -2757,9 +2756,6 @@
     "why": "Proque?",
     "definition": "Definition",
     "reportToTeacher": "A qui vole tu reportar iste message?",
-    "reportMessageTitle": "{reportingUserId} ha reportate un message de {reportedUserId} in le chat {roomName}",
-    "reportMessageBody": "Message: {reportedMessage}\nRation: {reason}",
-    "noTeachersFound": "Nula maestri trovate por reportar",
     "trialExpiration": "Vostre perìo de prova gratuite expira en {expiration}",
     "freeTrialDesc": "Novos usatores recive un septimana de prova gratuita de Pangea Chat",
     "activateTrial": "Prova Gratuita de 7 Dies",
@@ -3093,7 +3089,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-05 13:57:48.523062",
+    "@@last_modified": "2026-10-12 13:11:56.251571",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -4153,10 +4149,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5403,35 +5395,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10466,7 +10429,6 @@
     "constructLevelFlowers": "Bláthanna, focail máistrithe",
     "filterAndSearch": "Scag agus cuardaigh",
     "participantsOfTotal": "{filled} de {total} imreoirí",
-    "mapAttributionLabel": "Ranníocóirí OpenStreetMap, cóipcheart agus ceadúnas",
     "seeAll": "Féach ar fad",
     "seeAllSection": "Féach ar {section} ar fad",
     "showMoreOptionsHint": "taispeáin tuilleadh roghanna",
@@ -10612,5 +10574,32 @@
     "ssoTryAnyway": "Bain triail as ar aon nós",
     "publicCoursesFilterTooltip": "Taispeáin cúrsaí ar féidir le duine ar bith a bheith páirteach iontu amháin",
     "restrictedCoursesFilterTooltip": "Taispeáin cúrsaí nach mór duit a iarraidh a bheith páirteach iontu amháin",
-    "viewImageLabel": "Féach ar an íomhá"
+    "viewImageLabel": "Féach ar an íomhá",
+    "reportSent": "Tuarascáil seolta",
+    "reportNotSent": "Níorbh fhéidir do thuarascáil a sheoladh. Seiceáil do nasc agus bain triail eile as.",
+    "reportPointerMessage": "Tuairiscíodh teachtaireacht i {courseName} — féach Sábháilteacht",
+    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
+    "andCertifyIMeetTheMinimumAge": " e certifies que ha minimum 13 annos de etate, o li etate minimal requisit in mi land si it es plu alt.",
+    "filteredNetworkBlockedTitle": "Tá an líonra seo ag blocáil Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Tá an líonra seo ag blocáil cuid de Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Cad is féidir liom a dhéanamh?",
+    "filteredNetworkPhoneAdvice": "Múch an Wi-Fi agus bain úsáid as sonraí soghluaiste ina ionad.",
+    "filteredNetworkComputerAdvice": "Ceangail le hotspot do ghutháin in ionad an Wi-Fi seo.",
+    "filteredNetworkItHeading": "Do mhúinteoirí agus d'fhoireann TF",
+    "filteredNetworkItBody": "Iarr ar d'fhoireann TF na fearainn seo a cheadú:",
+    "filteredNetworkAskForHelp": "Iarr cabhair ar Pangea",
+    "filteredNetworkHelpExplanation": "Seolfaimid ríomhphost chugat chun cabhrú le Pangea Chat a chur ag obair ar an líonra seo.",
+    "filteredNetworkHelpWaiting": "Seolfar d'iarratas a luaithe a bheidh tú ceangailte.",
+    "filteredNetworkHelpSent": "Seolta. Beimid i dteagmháil leat trí ríomhphost.",
+    "filteredNetworkHelpRefused": "Níorbh fhéidir linn d'iarratas a sheoladh. Seol ríomhphost chuig support@pangea.chat le do thoil.",
+    "filteredNetworkVideoBlocked": "Blocálann an líonra seo físeáin.",
+    "filteredNetworkImagesBlocked": "Blocálann an líonra seo íomhánna.",
+    "filteredNetworkMapBlocked": "Blocálann an líonra seo an léarscáil.",
+    "callFullScreenTitle": "Lass Anrufe im Vollbildmodus klingeln",
+    "callFullScreenMessage": "Ein Anruf kam an, während Pangea Chat geschlossen war, aber dein Telefon konnte nur eine kleine Benachrichtigung dafür anzeigen. Erlaube Vollbildanrufe, damit der nächste Anruf auf deinem gesamten Bildschirm klingelt, auch wenn dein Telefon gesperrt ist.",
+    "callMicrophoneTitle": "Bain úsáid as do mhicreafón le haghaidh glaonna",
+    "callMicrophoneMessage": "Tá micreafón ag teastáil ó Pangea Chat le haghaidh glaonna, lena n-áirítear glaonna a fhreagraíonn tú ón scáileán glasála.",
+    "callMicrophoneOffTitle": "Níor nasc do ghlao",
+    "callMicrophoneOffMessage": "Ní féidir le Pangea Chat do mhicreafón a úsáid. Tapáil chun é a chur ar siúl i Socruithe.",
+    "mapCreditsLabel": "Léarscáil creidmheasanna: Stadia Maps, OpenMapTiles agus OpenStreetMap"
 }

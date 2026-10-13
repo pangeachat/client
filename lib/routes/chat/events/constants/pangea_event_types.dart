@@ -54,6 +54,7 @@ class PangeaEventTypes {
   static const report = 'm.report';
   static const textToSpeechRule = "p.rule.text_to_speech";
   static const analyticsInviteRule = "p.rule.analytics_invite";
+  static const missedCallRule = "p.rule.missed_call";
   static const analyticsInviteContent = "p.analytics_request";
 
   /// A practice exercise that is related to a message
@@ -80,11 +81,25 @@ class PangeaEventTypes {
   static const botNotificationOpened = "p.room.notice.opened";
 
   static const knockedRooms = 'org.pangea.knocked_rooms';
-  static const notificationSettings = 'org.pangea.notification_settings';
+
+  /// Retired: read only to carry an old email opt-out into
+  /// [communicationPreferences].
+  static const legacyNotificationSettings = 'org.pangea.notification_settings';
+  static const communicationPreferences = 'pangea.communication_preferences';
+
+  /// Account data the admin dashboard writes: the session rooms it joined this
+  /// user to so they could review them.
+  static const adminReviewRooms = 'pangea.admin_review';
 
   static const accessNoticeShown = 'org.pangea.analytics_access_notice_shown';
 
   static const firstBotDMMessage = "pangea_first_bot_dm_message";
 
   static const onboardingSettings = "org.pangea.onboarding_settings";
+
+  /// The learner's journey steps and app-ask history, read by the engagement
+  /// system (engagement analytics.instructions.md, Journey-checklist
+  /// state). Its own event so older clients, which rewrite the profile event
+  /// whole, never erase it.
+  static const journeyChecklist = 'pangea.journey_checklist';
 }

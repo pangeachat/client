@@ -1,10 +1,13 @@
 import 'dart:async';
 
-import 'package:matrix/matrix.dart';
+import 'package:matrix/matrix.dart' hide Profile;
 
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/user/user_constants.dart';
+import 'package:fluffychat/features/user/user_model.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_settings_model.dart';
+import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 
 extension OnboardingClientExtension on Client {
   OnboardingSettingsModel get _onboardingSettingsModel {
@@ -16,6 +19,14 @@ extension OnboardingClientExtension on Client {
   }
 
   bool get showedTrialPage => _onboardingSettingsModel.showedTrialPage;
+
+  /// The role this account chose in an earlier onboarding, so a restarted
+  /// onboarding resumes on the same path. Read from this client's own
+  /// account data rather than the process-wide profile cache, which belongs
+  /// to whichever account is foregrounded.
+  UserType? get selfIdentifiedRole => Profile.fromAccountData(
+    accountData[UserConstants.userProfile]?.content,
+  )?.userSettings.selfIdentifiedRole;
 
   Future<void> _setOnboardingSettings(OnboardingSettingsModel update) async {
     await setAccountData(

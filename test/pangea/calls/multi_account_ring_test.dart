@@ -306,7 +306,7 @@ void main() {
   group('the prompt for a second account watches that account', () {
     testWidgets('so the caller giving up takes it away', (tester) async {
       // The watchers are the half of this bug that would have bitten
-      // silently. `callerPresenceChanges` reads the SERVICE's own client, so
+      // silently. `callerStateUpdates` reads the SERVICE's own client, so
       // run through the ACTIVE account's service it listens to the active
       // client's `onRoomState` -- which never emits for another account's
       // rooms. The prompt would have sat there offering to answer a call the

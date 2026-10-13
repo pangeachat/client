@@ -207,6 +207,37 @@ bool discardExplainsEmptiness(
   HalfAccounting accounting,
 ) => explainsEmptiness(MissingAudio.heldForASibling, segments, accounting);
 
+/// Whether an empty half is empty ONLY because its writer had no subscription:
+/// every chunk it lost was refused by the transcriber for that reason, and
+/// nothing else about the accounting is in doubt.
+///
+/// Such a half is not a record of what the speaker said; it is a record that
+/// nobody was paying to transcribe it from that device. A subscribed
+/// participant can still transcribe the speaker's saved recording (#8792), so
+/// this half counts as NOT produced: the backfill does not skip it, and a valid
+/// peer-produced half for the same unit wins over it in assembly. Any other
+/// loss or gap the writer admits (audio dropped at capture, a stretch handed to
+/// a sibling, words omitted to fit, an unfinished drain), an incoherent or
+/// undeclared accounting, or a refused microphone keeps the half exactly as it
+/// was.
+bool noSubscriptionExplainsEmptiness(
+  List<TranscriptSegment> segments,
+  HalfAccounting accounting,
+) =>
+    segments.isEmpty &&
+    accounting.declared &&
+    !accounting.incoherent &&
+    !accounting.unreadableContent &&
+    !accounting.readerShortened &&
+    !accounting.captureRefused &&
+    accounting.captureDroppedMs == 0 &&
+    accounting.chunksDiscarded == 0 &&
+    !accounting.truncated &&
+    accounting.segmentsOmitted == 0 &&
+    accounting.drainComplete &&
+    accounting.chunksLost > 0 &&
+    accounting.chunksRefusedUnsubscribed == accounting.chunksLost;
+
 /// Whether [claim]'s audio is missing from the TRANSCRIPT -- gone from this
 /// half and from every other half of the same speaker in the same assembly.
 ///
@@ -1213,6 +1244,11 @@ class TranscriptHalf {
   /// actually said. The duplicate is kept and declared instead of guessed at.
   final int deviceCount;
 
+  /// Which devices this speaker's half was written from, by id: what lets a
+  /// reader ask whether ONE device's stretch of a moved call (client#9173) has
+  /// a half yet, not only whether the speaker does.
+  final Set<String> deviceIds;
+
   /// Whether every stretch this account's devices handed to a sibling is inside
   /// a stretch one of its OTHER halves states it kept.
   ///
@@ -1242,6 +1278,7 @@ class TranscriptHalf {
     this.langCode,
     this.positionsMarked = false,
     this.deviceCount = 1,
+    this.deviceIds = const {},
     this.discardWasCovered = false,
     required this.arrival,
   });
@@ -1406,6 +1443,14 @@ class TranscriptHalf {
     accounting,
     discardWasCovered: discardWasCovered,
   );
+
+  /// Whether this half is empty only because its writer had no subscription,
+  /// so it still waits on a transcription of the speaker's saved recording.
+  /// See [noSubscriptionExplainsEmptiness]; asked through [issue] as well so
+  /// the screen, the backfill and the note all name the same cause.
+  bool get emptiedOnlyByNoSubscription =>
+      issue == HalfIssue.notSubscribed &&
+      noSubscriptionExplainsEmptiness(segments, accounting);
 
   /// Whether this half is a person who was recorded and said nothing.
   ///
@@ -1769,6 +1814,9 @@ class _AssembledHalf {
 
   /// Whether every discarded stretch among these devices is held by one of the
   /// others. See [TranscriptHalf.discardWasCovered].
+  /// The devices this half was assembled from, by id.
+  final Set<String> deviceIds;
+
   final bool discardWasCovered;
 
   const _AssembledHalf({
@@ -1777,6 +1825,7 @@ class _AssembledHalf {
     required this.clockAnchor,
     required this.positionsMarked,
     required this.deviceCount,
+    required this.deviceIds,
     required this.discardWasCovered,
     this.langCode,
   });
@@ -2081,6 +2130,11 @@ int _byMostSpeech(TranscriptCandidate a, TranscriptCandidate b) {
 /// in the words, and the wrong guess deletes speech somebody actually said.
 /// A visible duplicate is a duplicate somebody can count;
 /// [TranscriptHalf.deviceCount] is what says it is there.
+/// The devices a speaker's assembled half was written from, by id.
+Set<String> _deviceIdsOf(List<TranscriptCandidate> perDevice) => {
+  for (final candidate in perDevice) ?candidate.deviceId,
+};
+
 _AssembledHalf _assembleDevices(List<TranscriptCandidate> perDevice) {
   final found = perDevice.length;
 
@@ -2152,6 +2206,7 @@ _AssembledHalf _assembleDevices(List<TranscriptCandidate> perDevice) {
           : kept.map((candidate) => candidate.langCode).nonNulls.firstOrNull,
       positionsMarked: only?.positionsMarked ?? false,
       deviceCount: found,
+      deviceIds: _deviceIdsOf(perDevice),
       discardWasCovered: discardWasCovered,
     );
   }
@@ -2209,6 +2264,7 @@ _AssembledHalf _assembleDevices(List<TranscriptCandidate> perDevice) {
           .firstOrNull,
       positionsMarked: false,
       deviceCount: found,
+      deviceIds: _deviceIdsOf(perDevice),
       discardWasCovered: discardWasCovered,
     );
   }
@@ -2238,6 +2294,7 @@ _AssembledHalf _assembleDevices(List<TranscriptCandidate> perDevice) {
     // one writer that never made it leaves segments here nobody vouched for.
     positionsMarked: speaking.every((candidate) => candidate.positionsMarked),
     deviceCount: found,
+    deviceIds: _deviceIdsOf(perDevice),
     discardWasCovered: discardWasCovered,
   );
 }
@@ -2563,6 +2620,7 @@ CallTranscript assembleTranscript({
         // shown, and only the copies that supplied them may make it.
         positionsMarked: candidate.positionsMarked,
         deviceCount: candidate.deviceCount,
+        deviceIds: candidate.deviceIds,
         // Established across this sender's devices while they were all in hand,
         // and carried rather than re-derived: the half no longer holds the
         // extents it was worked out from, and a second derivation from a
@@ -2636,20 +2694,40 @@ String? _effectiveSpeakerOf(
 ///    first, latest attempt within a lane. See there for why the lane, not the
 ///    clock, is primary.
 ///
+/// One exception to tier 1 (#8792): an authentic half emptied ONLY because its
+/// writer had no subscription ([noSubscriptionExplainsEmptiness]) ranks BELOW a
+/// peer-produced one. It is not the speaker's record of their words, only a
+/// record that nobody paid to transcribe them on that device, so a valid peer
+/// transcription of the same recording is the better account of the speaker.
+///
 /// Used as a running-max predicate: "does [candidate] rank strictly above
-/// [held]". Each tier is a total order and tier 1 is checked first, so the whole
-/// is a total order and the winner is independent of the order events arrived.
+/// [held]". The rank is compared first and each rank is a total order within
+/// itself, so the whole is a total order and the winner is independent of the
+/// order events arrived.
 bool _winsUnit(
   TranscriptCandidate candidate,
   TranscriptCandidate held, {
   required String speaker,
 }) {
-  final candidateAuthentic = candidate.senderId == speaker;
-  final heldAuthentic = held.senderId == speaker;
-  if (candidateAuthentic != heldAuthentic) return candidateAuthentic;
-  return candidateAuthentic
+  final candidateRank = _unitRank(candidate, speaker);
+  final heldRank = _unitRank(held, speaker);
+  if (candidateRank != heldRank) return candidateRank > heldRank;
+  return candidate.senderId == speaker
       ? _beats(candidate, held)
       : _peerBeats(candidate, held);
+}
+
+/// The tier [_winsUnit] compares first: an authentic half (2) over a
+/// peer-produced one (1) over an authentic half emptied only by the writer
+/// having no subscription (0).
+int _unitRank(TranscriptCandidate candidate, String speaker) {
+  if (candidate.senderId != speaker) return 1;
+  return noSubscriptionExplainsEmptiness(
+        candidate.segments,
+        candidate.accounting,
+      )
+      ? 0
+      : 2;
 }
 
 /// Which of two PEER-PRODUCED halves of one (speaker, device) unit to keep.

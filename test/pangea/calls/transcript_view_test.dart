@@ -23,6 +23,7 @@ import 'package:fluffychat/routes/chat/calls/call_recordings_load.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_provenance.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_view.dart';
@@ -293,6 +294,10 @@ void main() {
     int transcribed = 1,
     int lost = 0,
 
+    /// The share of [lost] the transcriber refused because the writer had no
+    /// subscription. Zero in every fixture that is not about that (#8792).
+    int refusedUnsubscribed = 0,
+
     /// Chunks the writing device's own speech detector held back. Zero in every
     /// fixture that is not about them, which is the ordinary case.
     int suppressed = 0,
@@ -386,6 +391,7 @@ void main() {
           chunksCaptured: captured,
           chunksTranscribed: transcribed,
           chunksLost: lost,
+          chunksRefusedUnsubscribed: refusedUnsubscribed,
           chunksSuppressed: suppressed,
           chunksDiscarded: discarded,
           captureRefused: captureRefused,
@@ -404,6 +410,11 @@ void main() {
     String sender, {
     String? deviceId,
     String url = 'mxc://fakeServer.notExisting/AUDIO',
+    // Where the recording's first sample sits on the SFU clock: a recording
+    // the merge coordinator could place, as every real one is.
+    int? fileStartSfuMs = _callStart,
+    String? continuedFrom,
+    String? handedOverTo,
   }) => MatrixEvent(
     type: CallAudioContent.relType,
     eventId: '\$audio-$sender-${deviceId ?? ''}',
@@ -412,6 +423,8 @@ void main() {
     content: CallAudioContent(
       callKey: _callKey,
       deviceId: deviceId,
+      continuedFrom: continuedFrom,
+      handedOverTo: handedOverTo,
       url: url,
       mimetype: 'audio/wav',
       codec: kCallAudioCodec,
@@ -419,6 +432,10 @@ void main() {
       durationMs: 4000,
       sampleRate: 16000,
       channels: 1,
+      clockAnchor: fileStartSfuMs == null
+          ? null
+          : ClockAnchor(sfuMs: fileStartSfuMs, deviceMs: fileStartSfuMs),
+      recordingStartedOffsetFromDeviceJoinMs: fileStartSfuMs == null ? null : 0,
     ).toJson(),
   );
 
@@ -430,11 +447,15 @@ void main() {
   MatrixEvent mergedEvent(
     String sender, {
     String eventId = r'$merged',
-    List<String> sourceEventIds = const [r'$a', r'$b'],
-    // The recording's start on the SFU clock. Null by default -- as an old or
-    // foreign merge that carries no start would be -- so the fixtures that are
-    // not about the timeline anchor keep the first-turn origin unchanged.
-    int? mergedStartSfuMs,
+    // By default the two plain halves [audioEvent] builds for each speaker,
+    // so the default merge is a trusted merge of the WHOLE call.
+    List<String> sourceEventIds = const ['\$audio-$_me-', '\$audio-$_peer-'],
+    // The recording's start on the SFU clock. The call's start by default:
+    // the default halves start there, and a merge is only trusted when it
+    // starts where the earliest half does (client#9173).
+    int? mergedStartSfuMs = _callStart,
+    // Null is a merge written before the field existed.
+    bool? complete = true,
   }) => MatrixEvent(
     type: CallAudioMergedContent.relType,
     eventId: eventId,
@@ -451,6 +472,7 @@ void main() {
       channels: 1,
       sourceEventIds: sourceEventIds,
       mergedStartSfuMs: mergedStartSfuMs,
+      complete: complete,
     ).toJson(),
   );
 
@@ -2256,6 +2278,9 @@ void main() {
       // picker's language list with plain fake seams.
       WholeCallTranscriber? transcriber,
       List<LanguageModel>? pickerLanguages,
+      // Injected only by the tests that read a peer-produced half, which
+      // resolve its source recording without a homeserver.
+      AudioEventFetcher? audioFetcher,
     }) async {
       await tester.pumpWidget(
         _TestMatrix(
@@ -2287,6 +2312,7 @@ void main() {
               room: testRoom,
               callKey: _callKey,
               fetcher: fetcher,
+              audioFetcher: audioFetcher,
               recordingsLoadController: loadController,
               audioPlayerFactory: audioPlayerFactory,
               mergedFileLoader: mergedFileLoader,
@@ -2538,7 +2564,10 @@ void main() {
           half(_peer, texts: const ['que tal']),
           audioEvent(_me, deviceId: 'PHONE'),
           audioEvent(_peer),
-          mergedEvent(_me),
+          mergedEvent(
+            _me,
+            sourceEventIds: const ['\$audio-$_me-PHONE', '\$audio-$_peer-'],
+          ),
         ]),
       );
 
@@ -2608,6 +2637,23 @@ void main() {
       expect(find.text('0:14'), findsNothing);
     });
 
+    testWidgets('a merge written before `complete` existed is still shown for '
+        'a plain two-half call', (tester) async {
+      final testRoom = room();
+      await pumpWithRecordings(
+        tester,
+        testRoom,
+        serving([
+          half(_me, texts: const ['hola']),
+          half(_peer, texts: const ['que tal']),
+          audioEvent(_me),
+          audioEvent(_peer),
+          mergedEvent(_me, complete: null),
+        ]),
+      );
+      expect(mergedPlayer(), findsOneWidget);
+    });
+
     testWidgets('with no merged recording the origin stays the first word', (
       tester,
     ) async {
@@ -2655,12 +2701,12 @@ void main() {
       expect(find.text('0:10'), findsNothing);
     });
 
-    testWidgets('a call with MORE THAN TWO halves shows no merged row, even '
-        'with a merge present', (tester) async {
-      // The enforced v1-scope suppression, on the screen. Three device halves
-      // means a mid-call device switch (out of v1 scope), so the player shows
-      // NO merged row and lists the individual halves -- EVEN THOUGH a stale
-      // two-half merge is in the room. The halves are unaffected.
+    testWidgets('two devices of one speaker that are NOT linked show no merged '
+        'row, even with a merge present', (tester) async {
+      // client#9173: two of one speaker's recordings with no handover between
+      // them are two devices that both carried on -- never one whole call --
+      // so the player shows NO merged row and lists the individual halves,
+      // EVEN THOUGH a merge is in the room. The halves are unaffected.
       final testRoom = room();
       await pumpWithRecordings(
         tester,
@@ -2675,20 +2721,18 @@ void main() {
         ]),
       );
 
-      // More than two halves is a mid-call device switch: the merged row is
-      // suppressed, so the bar never shows the merged PLAYER (the "Full call"
-      // label is the slot's own, always present) -- even though a stale
-      // two-half merge is in the room.
+      // The merged row is suppressed, so the bar never shows the merged
+      // PLAYER (the "Full call" label is the slot's own, always present).
       expect(
         mergedPlayer(),
         findsNothing,
-        reason: 'more than two halves suppresses the merged row',
+        reason: 'halves that can never close suppress the merged row',
       );
       // And the bar shows the "no recording" note IMMEDIATELY, not a
       // "Preparing" shimmer that waits out the full grace for a merge that can
-      // never arrive (the v1 suppression is definitive). Mutation: feed the
-      // machine the raw half count for a >2-half call -> pendingMerge shimmer
-      // -> this fails.
+      // never arrive (halves that can never close are definitive). Mutation:
+      // feed the machine the raw half count for such a call -> pendingMerge
+      // shimmer -> this fails.
       expect(find.text('No recording of the full call.'), findsOneWidget);
       expect(
         find.byType(ShimmerBox),
@@ -2774,11 +2818,19 @@ void main() {
             peerAudio,
             // No mergedStartSfuMs: the origin must fall back to the
             // first-placed turn exactly as it does with no recording at all.
+            // Such a merge is no longer trusted at all (client#9173), so it
+            // is not shown -- asserted below.
             mergedEvent(
               _me,
               sourceEventIds: [meAudio.eventId, peerAudio.eventId],
+              mergedStartSfuMs: null,
             ),
           ]),
+        );
+        expect(
+          mergedPlayer(),
+          findsNothing,
+          reason: 'a merge with no declared start is not a trusted merge',
         );
         expect(find.text('0:00'), findsOneWidget);
         expect(find.text('by 0:15'), findsOneWidget);
@@ -2854,8 +2906,8 @@ void main() {
       'the recording',
       (tester) async {
         final testRoom = room();
-        final meAudio = audioEvent(_me);
-        final peerAudio = audioEvent(_peer);
+        final meAudio = audioEvent(_me, fileStartSfuMs: _callStart - 2000);
+        final peerAudio = audioEvent(_peer, fileStartSfuMs: _callStart - 2000);
         await pumpWithRecordings(
           tester,
           testRoom,
@@ -2953,7 +3005,10 @@ void main() {
           sfuMs: _callStart - 2000,
           deviceMs: _callStart + 1000,
         );
-        final meAudio = audioEvent(_me);
+        final meAudio = audioEvent(_me, fileStartSfuMs: _callStart - 2000);
+        // The peer's recording too: a merge is shown only when it covers the
+        // whole call (client#9173).
+        final peerAudio = audioEvent(_peer, fileStartSfuMs: _callStart - 2000);
         await pumpWithRecordings(
           tester,
           testRoom,
@@ -2971,9 +3026,10 @@ void main() {
               anchor: aheadBy3s,
             ),
             meAudio,
+            peerAudio,
             mergedEvent(
               _me,
-              sourceEventIds: [meAudio.eventId],
+              sourceEventIds: [meAudio.eventId, peerAudio.eventId],
               mergedStartSfuMs: _callStart - 2000,
             ),
           ]),
@@ -3018,6 +3074,9 @@ void main() {
         // `audioEndMs`'s.
         final testRoom = room();
         final meAudio = audioEvent(_me);
+        // The peer's recording too: a merge is shown only when it covers the
+        // whole call (client#9173).
+        final peerAudio = audioEvent(_peer);
         await pumpWithRecordings(
           tester,
           testRoom,
@@ -3026,9 +3085,10 @@ void main() {
             // duration) -- past the end before this segment even opens.
             half(_me, texts: const ['late'], atMs: [_callStart + 12000]),
             meAudio,
+            peerAudio,
             mergedEvent(
               _me,
-              sourceEventIds: [meAudio.eventId],
+              sourceEventIds: [meAudio.eventId, peerAudio.eventId],
               mergedStartSfuMs: _callStart,
             ),
           ]),
@@ -3071,8 +3131,8 @@ void main() {
       'screen',
       (tester) async {
         final testRoom = room();
-        final meAudio = audioEvent(_me);
-        final peerAudio = audioEvent(_peer);
+        final meAudio = audioEvent(_me, fileStartSfuMs: _callStart - 2000);
+        final peerAudio = audioEvent(_peer, fileStartSfuMs: _callStart - 2000);
         await pumpWithRecordings(
           tester,
           testRoom,
@@ -3110,7 +3170,7 @@ void main() {
         // would print a confident window measured against a clock this half
         // never read.
         final testRoom = room();
-        final meAudio = audioEvent(_me);
+        final meAudio = audioEvent(_me, fileStartSfuMs: _callStart - 2000);
         await pumpWithRecordings(
           tester,
           testRoom,
@@ -3140,12 +3200,15 @@ void main() {
     );
 
     testWidgets(
-      'a half whose audio the merge does not name gets no window, even '
-      'though its clock is fine',
+      // client#9173: a merge that does not name every half of the call is
+      // not a merge of the whole call, so it is not shown at all -- and with
+      // it, no turn is windowed into audio that was never mixed.
+      'a merge that does not name every half is not shown, and no turn gets '
+      'a window',
       (tester) async {
         final testRoom = room();
-        final meAudio = audioEvent(_me);
-        final peerAudio = audioEvent(_peer);
+        final meAudio = audioEvent(_me, fileStartSfuMs: _callStart - 2000);
+        final peerAudio = audioEvent(_peer, fileStartSfuMs: _callStart - 2000);
         await pumpWithRecordings(
           tester,
           testRoom,
@@ -3169,7 +3232,8 @@ void main() {
         final hello = turns.singleWhere((t) => t.text == 'hello');
         final hi = turns.singleWhere((t) => t.text == 'hi');
 
-        expect(hello.audioStartMs, isNotNull);
+        expect(mergedPlayer(), findsNothing);
+        expect(hello.audioStartMs, isNull);
         expect(
           hi.audioStartMs,
           isNull,
@@ -3200,13 +3264,21 @@ void main() {
         //
         // The peer speaks but uploads no recording of their own, which keeps
         // this fixture's TOTAL recording count at two. A third recording here
-        // would also trip `selectMergedRow`'s unrelated more-than-two-halves
-        // v1-scope suppression (`call_audio_merged_selection.dart`) and
+        // would also make the merge cover less than the whole call -- not
+        // shown at all (client#9173) -- and
         // suppress the merged row entirely -- a different rule, already
         // exercised elsewhere, and not what this test is pinning.
         final testRoom = room();
-        final mePhone = audioEvent(_me, deviceId: 'PHONE');
-        final meLaptop = audioEvent(_me, deviceId: 'LAPTOP');
+        final mePhone = audioEvent(
+          _me,
+          deviceId: 'PHONE',
+          fileStartSfuMs: _callStart - 2000,
+        );
+        final meLaptop = audioEvent(
+          _me,
+          deviceId: 'LAPTOP',
+          fileStartSfuMs: _callStart - 2000,
+        );
         await pumpWithRecordings(
           tester,
           testRoom,
@@ -3265,8 +3337,22 @@ void main() {
       // up here rather than hiding behind the single-recording coverage
       // every other window test in this file already exercises.
       final testRoom = room();
-      final mePhone = audioEvent(_me, deviceId: 'PHONE');
-      final meLaptop = audioEvent(_me, deviceId: 'LAPTOP');
+      // Two recordings from one sender are one side of the call only when
+      // the learner MOVED the call between the devices, linked as such
+      // (client#9173); the peer's recording makes it the whole call.
+      final mePhone = audioEvent(
+        _me,
+        deviceId: 'PHONE',
+        fileStartSfuMs: _callStart - 2000,
+        handedOverTo: 'LAPTOP',
+      );
+      final meLaptop = audioEvent(
+        _me,
+        deviceId: 'LAPTOP',
+        fileStartSfuMs: _callStart - 2000,
+        continuedFrom: 'PHONE',
+      );
+      final peerAudio = audioEvent(_peer, fileStartSfuMs: _callStart - 2000);
       await pumpWithRecordings(
         tester,
         testRoom,
@@ -3274,14 +3360,24 @@ void main() {
           half(_me, texts: const ['hello'], atMs: [_callStart]),
           mePhone,
           meLaptop,
+          peerAudio,
           mergedEvent(
             _me,
-            sourceEventIds: [mePhone.eventId, meLaptop.eventId],
+            sourceEventIds: [
+              mePhone.eventId,
+              meLaptop.eventId,
+              peerAudio.eventId,
+            ],
             mergedStartSfuMs: _callStart - 2000,
           ),
         ]),
       );
 
+      expect(
+        mergedPlayer(),
+        findsOneWidget,
+        reason: 'a moved call merged whole is shown',
+      );
       final hello = renderedTurns(tester).single;
       expect(
         hello.audioStartMs,
@@ -4953,18 +5049,20 @@ void main() {
         // retry" test above does), so the assertion turns on `_isAtEnd`'s
         // processing-state check, not the load dance.
         //
-        // The merge is served with NO per-device recordings, deliberately: the
-        // stock per-device AudioPlayerWidgets stay mounted (offstage) and, on a
-        // shared-player `completed`, seek it back to 0 -- which would consume
-        // the completed state before this control saw it. That is a real "merge
-        // shown, no per-device rows" shape (a merge whose recordings read
-        // flaked, see D3), and it isolates THIS control's `_isAtEnd`.
+        // The stock per-device AudioPlayerWidgets stay mounted (offstage) and,
+        // once attached to the shared player, seek it back to 0 on `completed`
+        // -- which would consume the completed state before this control saw
+        // it. A merge is only shown beside the halves it covers (client#9173),
+        // so the rows are there; they are kept off the shared player below,
+        // which isolates THIS control's `_isAtEnd`.
         await pumpWithRecordings(
           tester,
           room(),
           serving([
             half(_me, texts: const ['hola']),
             half(_peer, texts: const ['que tal']),
+            audioEvent(_me),
+            audioEvent(_peer),
             mergedEvent(_me),
           ]),
         );
@@ -4972,8 +5070,12 @@ void main() {
 
         final matrixState = tester.state<MatrixState>(find.byType(_TestMatrix));
         final fake = _FakeAudioPlayer();
-        matrixState.audioPlayer = fake;
+        // The merge is only shown beside the halves it covers (client#9173),
+        // so the per-device rows are mounted. They attach to the shared player
+        // when the OWNER changes; naming the owner before the player exists
+        // keeps them off it, so this still isolates THIS control.
         matrixState.voiceMessageEventId.value = r'$merged';
+        matrixState.audioPlayer = fake;
         // The track ran to the end: completed, playing flag still set, duration
         // unknown (the fake reports null).
         fake.emitCompleted();
@@ -5008,7 +5110,8 @@ void main() {
         // E2: the replay path awaits seek(0) inside a caught transaction and
         // only resumes after it -- so a rejected seek aborts the replay (no
         // unhandled async error, no resume at EOF) rather than firing seek-
-        // then-resume blind. Merge served with NO per-device rows (see E1) so
+        // then-resume blind. The per-device rows are kept off the shared
+        // player (see E1) so
         // nothing else consumes the completed state.
         await pumpWithRecordings(
           tester,
@@ -5016,6 +5119,8 @@ void main() {
           serving([
             half(_me, texts: const ['hola']),
             half(_peer, texts: const ['que tal']),
+            audioEvent(_me),
+            audioEvent(_peer),
             mergedEvent(_me),
           ]),
         );
@@ -5023,8 +5128,12 @@ void main() {
 
         final matrixState = tester.state<MatrixState>(find.byType(_TestMatrix));
         final fake = _FakeAudioPlayer();
-        matrixState.audioPlayer = fake;
+        // The merge is only shown beside the halves it covers (client#9173),
+        // so the per-device rows are mounted. They attach to the shared player
+        // when the OWNER changes; naming the owner before the player exists
+        // keeps them off it, so this still isolates THIS control.
         matrixState.voiceMessageEventId.value = r'$merged';
+        matrixState.audioPlayer = fake;
         // Completed (so the tap takes the replay path), and the next seek will
         // REJECT.
         fake.emitCompleted();
@@ -5142,14 +5251,16 @@ void main() {
         // A pause tap landing in that window must WIN -- the replay must not
         // resume over it. A monotonic tap generation captured at the replay's
         // start and re-checked after the seek invalidates the resume when a newer
-        // tap occurs. Served with NO per-device rows (as E1/E2) so nothing else
-        // consumes the completed state.
+        // tap occurs. The per-device rows are kept off the player (as E1/E2) so
+        // nothing else consumes the completed state.
         await pumpWithRecordings(
           tester,
           room(),
           serving([
             half(_me, texts: const ['hola']),
             half(_peer, texts: const ['que tal']),
+            audioEvent(_me),
+            audioEvent(_peer),
             mergedEvent(_me),
           ]),
         );
@@ -5157,8 +5268,8 @@ void main() {
 
         final matrixState = tester.state<MatrixState>(find.byType(_TestMatrix));
         final fake = _FakeAudioPlayer();
-        matrixState.audioPlayer = fake;
         matrixState.voiceMessageEventId.value = r'$merged';
+        matrixState.audioPlayer = fake;
         // The track ran to the end -> the bar shows play, and a tap replays.
         fake.emitCompleted();
         await tester.pump();
@@ -5749,6 +5860,278 @@ void main() {
           // Only the peer's absent half offers the button; the viewer's own does
           // not.
           expect(find.text('Transcribe'), findsOneWidget);
+        },
+      );
+
+      // The peer's OWN half as an unsubscribed device writes it: every chunk
+      // refused for want of a subscription, so it carries no words (#8792).
+      MatrixEvent refusedHalf(String sender) => half(
+        sender,
+        texts: const [],
+        captured: 2,
+        transcribed: 0,
+        lost: 2,
+        refusedUnsubscribed: 2,
+      );
+
+      testWidgets(
+        "a half the subscriber produced replaces the peer's refused half",
+        (tester) async {
+          // The shape captured on the local stack (#8792): the unsubscribed
+          // peer's own half is empty with its one chunk refused, and the
+          // subscribed reader's device wrote a half FOR the peer from the
+          // peer's recording. The screen must read that produced half, not
+          // the refused one. Mutation proof: dropping `resolveProvenance` from
+          // the screen's read holds the produced half pending, and the screen
+          // falls back to the note and the Transcribe button -> RED.
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          const device = 'SXIFNASKUJ';
+          final peerAudio = audioEvent(_peer, deviceId: device);
+          final mine = audioEvent(_me, deviceId: 'HHPTNTFSGJ');
+          final produced = half(
+            _me,
+            texts: const ['the gardens open at a quarter past'],
+            deviceId: device,
+          );
+          final producedForPeer = MatrixEvent(
+            type: produced.type,
+            eventId: r'$produced-for-peer',
+            senderId: _me,
+            originServerTs: produced.originServerTs,
+            content: {
+              ...produced.content,
+              'spoken_by': _peer,
+              'source_audio_event_id': peerAudio.eventId,
+            },
+          );
+          final served = {
+            for (final audio in [peerAudio, mine])
+              audio.eventId: FetchedAudioEvent(
+                senderId: audio.senderId,
+                content: CallAudioContent.fromJson(audio.content),
+                originServerTs: audio.originServerTs,
+              ),
+          };
+          for (final placed in [true, false]) {
+            await pumpWithRecordings(
+              tester,
+              room(),
+              servingByType([
+                half(
+                  _me,
+                  texts: const ['hola'],
+                  atMs: placed ? [_callStart] : null,
+                ),
+                half(
+                  _peer,
+                  texts: const [],
+                  captured: 1,
+                  transcribed: 0,
+                  lost: 1,
+                  refusedUnsubscribed: 1,
+                  deviceId: device,
+                ),
+                producedForPeer,
+                peerAudio,
+                mine,
+                mergedEvent(
+                  _peer,
+                  sourceEventIds: [mine.eventId, peerAudio.eventId],
+                ),
+              ]),
+              audioFetcher: ({required roomId, required eventId}) async =>
+                  served[eventId],
+            );
+
+            expect(
+              find.textContaining('gardens', findRichText: true),
+              findsWidgets,
+              reason: "the peer's words, from the produced half",
+            );
+            expect(
+              find.textContaining('did not have a subscription'),
+              findsNothing,
+            );
+            expect(find.text('Transcribe'), findsNothing);
+          }
+        },
+      );
+
+      testWidgets(
+        'timeline: a peer half refused for no subscription offers Transcribe',
+        (tester) async {
+          // The QA scenario: the viewer's turns are placed, so the timeline is
+          // drawn and the peer's note sits below it. Mutation proof: dropping
+          // the offer from the timeline notes leaves only the note -> RED.
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType([
+              half(_me, texts: const ['hola'], atMs: [_callStart]),
+              refusedHalf(_peer),
+              audioEvent(_peer),
+            ]),
+          );
+
+          expect(find.byType(TurnTimeline), findsOneWidget);
+          expect(
+            find.textContaining('did not have a subscription'),
+            findsOneWidget,
+          );
+          expect(find.text('Transcribe'), findsOneWidget);
+        },
+      );
+
+      testWidgets('per speaker: a peer half refused for no subscription offers '
+          'Transcribe', (tester) async {
+        // Mutation proof: offering the button only for an ABSENT half leaves
+        // this section with the note alone -> RED.
+        MatrixState.pangeaController = FakePangeaController(subscribed: true);
+        await pumpWithRecordings(
+          tester,
+          room(),
+          servingByType([
+            half(_me, texts: const ['hola']),
+            refusedHalf(_peer),
+            audioEvent(_peer),
+          ]),
+        );
+
+        expect(find.byType(TurnTimeline), findsNothing);
+        expect(
+          find.textContaining('did not have a subscription'),
+          findsOneWidget,
+        );
+        expect(find.text('Transcribe'), findsOneWidget);
+      });
+
+      testWidgets(
+        'a refused peer half with no recording shows the note, no button',
+        (tester) async {
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          for (final placed in [true, false]) {
+            await pumpWithRecordings(
+              tester,
+              room(),
+              servingByType([
+                half(
+                  _me,
+                  texts: const ['hola'],
+                  atMs: placed ? [_callStart] : null,
+                ),
+                refusedHalf(_peer),
+              ]),
+            );
+            expect(
+              find.textContaining('did not have a subscription'),
+              findsOneWidget,
+            );
+            expect(find.text('Transcribe'), findsNothing);
+          }
+        },
+      );
+
+      testWidgets("the viewer's OWN refused half never offers Transcribe", (
+        tester,
+      ) async {
+        // Mutation proof: dropping the own-half guard offers a button on the
+        // viewer's own half, which the producer can never fill -> RED.
+        MatrixState.pangeaController = FakePangeaController(subscribed: true);
+        for (final placed in [true, false]) {
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType([
+              refusedHalf(_me),
+              half(
+                _peer,
+                texts: const ['que tal'],
+                atMs: placed ? [_callStart] : null,
+              ),
+              audioEvent(_me),
+            ]),
+            now: () =>
+                DateTime.fromMillisecondsSinceEpoch(1000 + 6 * 60 * 1000),
+          );
+          expect(find.text('Transcribe'), findsNothing);
+        }
+      });
+
+      testWidgets(
+        'an unsubscribed viewer of a refused peer half sees only the lock',
+        (tester) async {
+          MatrixState.pangeaController = FakePangeaController(
+            subscribed: false,
+          );
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType([
+              half(_me, texts: const ['hola'], atMs: [_callStart]),
+              refusedHalf(_peer),
+              audioEvent(_peer),
+            ]),
+          );
+          expect(find.byType(LockedPreviewBanner), findsOneWidget);
+          expect(find.text('Transcribe'), findsNothing);
+        },
+      );
+
+      testWidgets(
+        'timeline: tapping Transcribe on a refused peer half fills it in',
+        (tester) async {
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          final events = [
+            half(_me, texts: const ['hola'], atMs: [_callStart]),
+            refusedHalf(_peer),
+            audioEvent(_peer),
+          ];
+          final posted = <String>[];
+          final fake = buildFakeTranscriber(
+            post:
+                ({
+                  required callKey,
+                  required spokenBy,
+                  required sourceAudioEventId,
+                  required deviceId,
+                  required langCode,
+                  required clockAnchor,
+                  required segments,
+                }) async {
+                  posted.add(spokenBy);
+                  events.removeWhere(
+                    (e) =>
+                        e.type == CallTranscriptContent.relType &&
+                        e.senderId == _peer,
+                  );
+                  events.add(
+                    half(
+                      _peer,
+                      texts: const ['que tal'],
+                      atMs: [_callStart + 2000],
+                    ),
+                  );
+                },
+          );
+
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType(events),
+            transcriber: fake,
+          );
+
+          await tester.tap(find.text('Transcribe'));
+          await tester.pumpAndSettle();
+
+          expect(posted, [_peer]);
+          expect(find.textContaining('que tal'), findsOneWidget);
+          expect(
+            find.textContaining('did not have a subscription'),
+            findsNothing,
+          );
+          expect(find.text('Transcribe'), findsNothing);
         },
       );
 

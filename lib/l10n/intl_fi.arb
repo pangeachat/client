@@ -2892,7 +2892,6 @@
     "errorDisableIGCClassDesc": "Kielenhuollon apu on pois päältä tämän keskustelun kurssille.",
     "error405Desc": "Aseta kielesi Päävalikosta > Oppimisasetukset.",
     "termsAndConditions": "käyttöehdot",
-    "andCertifyIAmAtLeast13YearsOfAge": " ja vahvistan, että olen vähintään 16-vuotias.",
     "error502504Desc": "Käännös- ja kielioppityökalut saattavat olla hitaita tai poissa käytöstä, kun Pangea-botit saavat kiinni.",
     "error404Desc": "Pangea-botti ei ole varma, miten tämä tulisi kääntää...",
     "errorPleaseRefresh": "Tarkistamme asiaa! Lataa sivu uudelleen ja yritä uudelleen.",
@@ -3200,9 +3199,6 @@
     "why": "Miksi?",
     "definition": "Määritelmä",
     "reportToTeacher": "Kenelle haluat raportoida tämän viestin?",
-    "reportMessageTitle": "{reportingUserId} on raportoinut viestin käyttäjältä {reportedUserId} chatissa {roomName}",
-    "reportMessageBody": "Viesti: {reportedMessage}\nSyy: {reason}",
-    "noTeachersFound": "Ei opettajia raportoitu",
     "trialExpiration": "Ilmainen kokeilujakso päättyy {expiration}",
     "freeTrialDesc": "Uudet käyttäjät saavat viikon ilmaisen kokeilun Pangea Chatista",
     "activateTrial": "Vapaa 7 päivän kokeilu",
@@ -3536,7 +3532,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-05 13:57:46.951485",
+    "@@last_modified": "2026-10-12 13:11:53.084417",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -3689,10 +3685,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4939,35 +4931,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -9871,7 +9834,6 @@
     "constructLevelFlowers": "Kukat, hallitut sanat",
     "filterAndSearch": "Suodata ja hae",
     "participantsOfTotal": "{filled}/{total} pelaajaa",
-    "mapAttributionLabel": "OpenStreetMapin tekijät, tekijänoikeudet ja lisenssi",
     "seeAll": "Näytä kaikki",
     "seeAllSection": "Näytä kaikki {section}",
     "showMoreOptionsHint": "näytä lisää vaihtoehtoja",
@@ -10017,5 +9979,32 @@
     "ssoTryAnyway": "Yritä silti",
     "publicCoursesFilterTooltip": "Näytä vain kurssit, joihin kuka tahansa voi liittyä",
     "restrictedCoursesFilterTooltip": "Näytä vain kurssit, joihin liittymistä on pyydettävä",
-    "viewImageLabel": "Näytä kuva"
+    "viewImageLabel": "Näytä kuva",
+    "reportSent": "Ilmoitus lähetetty",
+    "reportNotSent": "Ilmoitustasi ei voitu lähettää. Tarkista yhteytesi ja yritä uudelleen.",
+    "reportPointerMessage": "Viestistä ilmoitettiin kurssilla {courseName} – katso Turvallisuus",
+    "useActivityImageAsChatBackground": "Käytä aktiviteetin kuvaa chatin taustana",
+    "andCertifyIMeetTheMinimumAge": " ja vakuutan olevani vähintään 13-vuotias tai maassani vaaditun korkeamman vähimmäisiän mukainen.",
+    "filteredNetworkBlockedTitle": "Tämä verkko estää Pangea Chatin",
+    "filteredNetworkPartlyBlockedTitle": "Tämä verkko estää osan Pangea Chatista",
+    "filteredNetworkWhatCanIDo": "Mitä voin tehdä?",
+    "filteredNetworkPhoneAdvice": "Sammuta Wi-Fi ja käytä sen sijaan mobiilidataa.",
+    "filteredNetworkComputerAdvice": "Yhdistä puhelimesi tukiasemaan tämän Wi-Fin sijaan.",
+    "filteredNetworkItHeading": "Opettajille ja IT-henkilöstölle",
+    "filteredNetworkItBody": "Pyydä IT-tiimiäsi sallimaan nämä verkkotunnukset:",
+    "filteredNetworkAskForHelp": "Pyydä Pangealta apua",
+    "filteredNetworkHelpExplanation": "Lähetämme sinulle sähköpostia auttaaksemme Pangea Chatin toimimaan tässä verkossa.",
+    "filteredNetworkHelpWaiting": "Pyynnösi lähetetään heti, kun olet yhteydessä.",
+    "filteredNetworkHelpSent": "Lähetetty. Otamme sinuun yhteyttä sähköpostitse.",
+    "filteredNetworkHelpRefused": "Emme voineet lähettää pyyntöäsi. Lähetä sähköpostia osoitteeseen support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Tämä verkko estää videot.",
+    "filteredNetworkImagesBlocked": "Tämä verkko estää kuvat.",
+    "filteredNetworkMapBlocked": "Tämä verkko estää kartan.",
+    "callFullScreenTitle": "Anna puheluiden soida koko näytöllä",
+    "callFullScreenMessage": "Puhelu saapui Pangea Chatin ollessa suljettuna, mutta puhelimesi pystyi näyttämään siitä vain pienen ilmoituksen. Salli koko näytön puhelut, jotta seuraava puhelu soi koko näytölläsi, vaikka puhelimesi olisi lukittuna.",
+    "callMicrophoneTitle": "Käytä mikrofonia puheluihin",
+    "callMicrophoneMessage": "Pangea Chat tarvitsee mikrofonisi puheluihin, myös lukitusnäytöltä vastaamiisi puheluihin.",
+    "callMicrophoneOffTitle": "Puhelu ei yhdistynyt",
+    "callMicrophoneOffMessage": "Pangea Chat ei voi käyttää mikrofonia. Napauta ottaaksesi sen käyttöön asetuksista.",
+    "mapCreditsLabel": "Karttatiedot: Stadia Maps, OpenMapTiles ja OpenStreetMap"
 }

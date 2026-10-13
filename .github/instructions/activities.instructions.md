@@ -21,6 +21,16 @@ On the write side, starting a session shares it into **every joined course the a
 
 Starting a session opens it once the new room has reached the client with its initial state, including the launcher's role, which is usually one sync after the server creates it. Sharing into courses and the bot invite finish in the background, and a room panel whose room hasn't synced yet shows a loading state for up to 10 seconds before the room-unavailable panel.
 
+## Sessions a teacher only reviewed stay out of their chats
+
+When a teacher opens a student's session from the admin dashboard, the dashboard joins the teacher to that session room so they can read it. The teacher takes no part in that conversation, so the room stays out of every chat list and unread badge, the same way an archived activity does ([#9364](https://github.com/pangeachat/client/issues/9364)).
+
+- **The dashboard keeps the list.** It records each room it joined for review in the teacher's `pangea.admin_review` account data, as a `room_ids` list. The record lives on the teacher's account rather than in the room, because a profile change rewrites the teacher's membership in every room and would erase a mark kept there.
+- **Taking a role ends the review.** A listed room shows again once the teacher takes a role in the session, because the teacher is then a participant.
+- **A direct link still opens it.** The room is hidden from the lists, but a link to it still opens it, so the dashboard's Open chat link keeps working.
+- **Leaving a course leaves these rooms too.** Leaving a course keeps only the teacher's analytics rooms and archived activities; a review room is left with the course.
+- **Muting these rooms, and later leaving them, is the dashboard's job, not the client's.**
+
 ## The start page mirrors the room
 
 The activity's start page doesn't store its own state; it reads it from the room — whether a room exists yet, whether the learner is in it, whether they've taken a role, whether every role is filled. From those facts it moves through a short sequence (not started → picking a role → in with a role → session full) and shows the right thing at each step: the waiting room (ping the course, play with the bot, or invite a friend — pinging is limited to once a minute so it can't be spammed), the role picker, or the live activity.
@@ -150,7 +160,9 @@ Two things shape how the client renders it. First, uploaded media arrives as a r
 
 On the plan page the lead block fills the top of the page, cropped to fit, with the goals and role cards over it. Tapping a lead image shows all of it in place: the goals, role cards and fade disappear, the image shows uncropped on a black band, and a close button above it, or a second tap on the image, brings back the cropped view and the overlays ([#9351](https://github.com/pangeachat/client/issues/9351)). A playing video clears the overlays the same way. The image opens in place on every platform, because an image has no webview to escape the mobile sheet. For the keyboard the image is one button, "View image": Enter or Space opens and closes it, and closing it from the close button puts focus back on the image.
 
-In the live session the carousel sits at the top of the chat, and tapping an image opens it full screen so the learner sees the whole image. The activity image is never drawn behind the messages: the chat background stays one plain color, because a photo behind the chat made the screen too busy over the map ([#9356](https://github.com/pangeachat/client/issues/9356)).
+In the live session the carousel sits at the top of the chat, and tapping an image opens it full screen so the learner sees the whole image. By default the activity image is not drawn behind the messages, and the chat background stays plain (or shows the learner's own wallpaper). A photo behind the chat made the screen too busy over the map ([#9356](https://github.com/pangeachat/client/issues/9356)).
+
+A learner who wants the photo can turn on **Use activity image as chat background** in Settings > Style, under the wallpaper controls. It is off by default and saved per device. The image and the background never compete. While the carousel is on screen the background stays plain. As the learner scrolls the carousel out of view, a faint copy of the activity image fades in behind the chat, keeping pace with the scroll and crossfading out their wallpaper if they have one. Scrolling back to the carousel reverses it ([#9440](https://github.com/pangeachat/client/issues/9440)). The background is the activity's own image: its first image, or a legacy activity's single image. An activity with no image of its own keeps the plain background.
 
 On the web, media images are fetched in a way that needs the content CDN to allow cross-origin requests; that requirement lives in the org and devops docs, not here.
 

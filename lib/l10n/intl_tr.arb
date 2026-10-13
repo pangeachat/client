@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-05 13:57:53.631201",
+    "@@last_modified": "2026-10-12 13:12:05.219481",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -2732,7 +2732,6 @@
     "errorDisableIGCClassDesc": "Bu sohbetin bulunduğu kursta dilbilgisi yardımı devre dışı bırakılmıştır.",
     "error405Desc": "Lütfen Ana Menü > Öğrenme Ayarları'ndan dillerinizi ayarlayın.",
     "termsAndConditions": "Şartlar ve Koşullar",
-    "andCertifyIAmAtLeast13YearsOfAge": " ve en az 16 yaşında olduğumu onaylıyorum.",
     "error502504Desc": "Çeviri ve dilbilgisi araçları, Pangea botları güncellenirken yavaş veya kullanılamayabilir.",
     "error404Desc": "Pangea Bot bunun nasıl çevrileceğinden emin değil...",
     "errorPleaseRefresh": "Bunu inceliyoruz! Lütfen sayfayı yeniden yükleyin ve tekrar deneyin.",
@@ -3040,9 +3039,6 @@
     "why": "Neden?",
     "definition": "Tanım",
     "reportToTeacher": "Bu mesajı kime bildirmek istiyorsunuz?",
-    "reportMessageTitle": "{reportingUserId} kullanıcısı, {roomName} sohbetinde {reportedUserId} kullanıcısının mesajını bildirdi",
-    "reportMessageBody": "Mesaj: {reportedMessage}\nNeden: {reason}",
-    "noTeachersFound": "Bildirilmek üzere öğretmen bulunamadı",
     "trialExpiration": "Ücretsiz deneme süreniz {expiration} tarihinde sona eriyor",
     "freeTrialDesc": "Yeni kullanıcılar Pangea Chat'te bir hafta ücretsiz deneme süresi kazanır",
     "activateTrial": "Ücretsiz 7 Günlük Deneme",
@@ -3822,10 +3818,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5072,35 +5064,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10135,7 +10098,6 @@
     "constructLevelFlowers": "Çiçekler, ustalaşmış kelimeler",
     "filterAndSearch": "Filtrele ve ara",
     "participantsOfTotal": "{total} oyuncudan {filled} tanesi",
-    "mapAttributionLabel": "OpenStreetMap katılımcıları, telif hakkı ve lisans",
     "seeAll": "Tümünü gör",
     "seeAllSection": "Tüm {section} bölümünü gör",
     "showMoreOptionsHint": "daha fazla seçenek göster",
@@ -10281,5 +10243,32 @@
     "ssoTryAnyway": "Yine de dene",
     "publicCoursesFilterTooltip": "Yalnızca herkesin katılabileceği kursları göster",
     "restrictedCoursesFilterTooltip": "Yalnızca katılmak için izin almanız gereken kursları göster",
-    "viewImageLabel": "Resmi görüntüle"
+    "viewImageLabel": "Resmi görüntüle",
+    "reportSent": "Rapor gönderildi",
+    "reportNotSent": "Raporunuz gönderilemedi. Bağlantınızı kontrol edip tekrar deneyin.",
+    "reportPointerMessage": "{courseName} içinde bir mesaj bildirildi — Güvenlik bölümüne bakın",
+    "useActivityImageAsChatBackground": "Etkinlik görselini sohbet arka planı olarak kullan",
+    "andCertifyIMeetTheMinimumAge": " ve en az 13 yaşında olduğumu veya ülkemde daha yüksekse gereken minimum yaşta olduğumu onaylıyorum.",
+    "filteredNetworkBlockedTitle": "Bu ağ Pangea Chat'i engelliyor",
+    "filteredNetworkPartlyBlockedTitle": "Bu ağ Pangea Chat'in bir kısmını engelliyor",
+    "filteredNetworkWhatCanIDo": "Ne yapabilirim?",
+    "filteredNetworkPhoneAdvice": "Wi-Fi'ı kapatın ve mobil veri kullanın.",
+    "filteredNetworkComputerAdvice": "Bu Wi-Fi yerine telefonunuzun internet paylaşımına bağlanın.",
+    "filteredNetworkItHeading": "Öğretmenler ve BT personeli için",
+    "filteredNetworkItBody": "BT ekibinizden şu alan adlarına izin vermesini isteyin:",
+    "filteredNetworkAskForHelp": "Pangea'dan yardım isteyin",
+    "filteredNetworkHelpExplanation": "Pangea Chat'i bu ağda çalıştırmanıza yardımcı olmak için size e-posta göndereceğiz.",
+    "filteredNetworkHelpWaiting": "İsteğiniz bağlandığınız anda gönderilecektir.",
+    "filteredNetworkHelpSent": "Gönderildi. E-posta yoluyla sizinle iletişime geçeceğiz.",
+    "filteredNetworkHelpRefused": "İsteğiniz gönderilemedi. Lütfen support@pangea.chat adresine e-posta gönderin.",
+    "filteredNetworkVideoBlocked": "Bu ağ videoları engelliyor.",
+    "filteredNetworkImagesBlocked": "Bu ağ görselleri engelliyor.",
+    "filteredNetworkMapBlocked": "Bu ağ haritayı engelliyor.",
+    "callFullScreenTitle": "Çağrıların tam ekranda çalmasına izin ver",
+    "callFullScreenMessage": "Pangea Chat kapalıyken bir çağrı geldi, ancak telefonunuz bunun için yalnızca küçük bir bildirim gösterebildi. Tam ekran çağrılara izin verin, böylece bir sonraki çağrı telefonunuz kilitli olsa bile tüm ekranınızda çalar.",
+    "callMicrophoneTitle": "Aramalar için mikrofonunuzu kullanın",
+    "callMicrophoneMessage": "Pangea Chat'in, kilit ekranından yanıtladığınız aramalar da dahil olmak üzere aramalar için mikrofonunuza erişmesi gerekiyor.",
+    "callMicrophoneOffTitle": "Aramanız bağlanmadı",
+    "callMicrophoneOffMessage": "Pangea Chat mikrofonunuzu kullanamıyor. Ayarlar'dan açmak için dokunun.",
+    "mapCreditsLabel": "Harita bilgileri: Stadia Maps, OpenMapTiles ve OpenStreetMap"
 }

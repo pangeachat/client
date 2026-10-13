@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:47.643939",
+    "@@last_modified": "2026-10-12 13:11:54.216711",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -1714,7 +1714,6 @@
     "errorDisableIGCClassDesc": "עזרה בדקדוק מושבתת עבור הקורס שבו נמצא הצ'אט הזה.",
     "error405Desc": "אנא הגדר את שפותיך בתפריט הראשי > הגדרות למידה.",
     "termsAndConditions": "תנאים והגבלות",
-    "andCertifyIAmAtLeast13YearsOfAge": "ומאשר שאני בן לפחות 16 שנים.",
     "error502504Desc": "כלי תרגום ודקדוק עלולים להיות איטיים או לא זמינים בזמן שהבוטים של פנגיאה מעדכנים.",
     "error404Desc": "בוט פנגיאה לא בטוח איך לתרגם את זה...",
     "errorPleaseRefresh": "אנחנו בודקים את זה! אנא טען מחדש ונסה שוב.",
@@ -2022,9 +2021,6 @@
     "why": "למה?",
     "definition": "הגדרה",
     "reportToTeacher": "למי תרצה לדווח על ההודעה הזו?",
-    "reportMessageTitle": "{reportingUserId} דיווחה על הודעה מ-{reportedUserId} בשיחה {roomName}",
-    "reportMessageBody": "הודעה: {reportedMessage}\nסיבה: {reason}",
-    "noTeachersFound": "לא נמצאו מורים לדווח אליהם",
     "trialExpiration": "המבחן החינמי שלך יפוג ב-{expiration}",
     "freeTrialDesc": "משתמשים חדשים מקבלים ניסיון חינם של שבוע ב-Pangea Chat",
     "activateTrial": "ניסיון חינם ל-7 ימים",
@@ -4438,10 +4434,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
         "type": "String",
         "placeholders": {}
@@ -5685,35 +5677,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10748,7 +10711,6 @@
     "constructLevelFlowers": "פרחים, מילים שנלמדו",
     "filterAndSearch": "סינון וחיפוש",
     "participantsOfTotal": "{filled} מתוך {total} שחקנים",
-    "mapAttributionLabel": "תורמי OpenStreetMap, זכויות יוצרים ורישיון",
     "seeAll": "הצג הכל",
     "seeAllSection": "הצג הכל {section}",
     "showMoreOptionsHint": "הצג אפשרויות נוספות",
@@ -10894,5 +10856,32 @@
     "ssoTryAnyway": "נסה בכל זאת",
     "publicCoursesFilterTooltip": "הצג רק קורסים שכל אחד יכול להצטרף אליהם",
     "restrictedCoursesFilterTooltip": "הצג רק קורסים שאתה צריך לבקש להצטרף אליהם",
-    "viewImageLabel": "הצג תמונה"
+    "viewImageLabel": "הצג תמונה",
+    "reportSent": "הדיווח נשלח",
+    "reportNotSent": "הדיווח שלך לא נשלח. בדוק את החיבור שלך ונסה שוב.",
+    "reportPointerMessage": "הודעה דווחה ב{courseName} — ראה בטיחות",
+    "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט",
+    "andCertifyIMeetTheMinimumAge": "ומאשר/ת שאני בן/בת 13 לפחות, או בגיל המינימלי הנדרש במדינתי אם הוא גבוה יותר.",
+    "filteredNetworkBlockedTitle": "רשת זו חוסמת את Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "רשת זו חוסמת חלק מ-Pangea Chat",
+    "filteredNetworkWhatCanIDo": "מה אפשר לעשות?",
+    "filteredNetworkPhoneAdvice": "כבה/כבי את ה-Wi-Fi והשתמש/השתמשי במקום זאת בנתונים ניידים.",
+    "filteredNetworkComputerAdvice": "התחבר/התחברי לנקודה חמה של הטלפון שלך במקום ל-Wi-Fi הזה.",
+    "filteredNetworkItHeading": "למורים ולצוותי IT",
+    "filteredNetworkItBody": "בקש/בקשי מצוות ה-IT שלך לאפשר את הדומיינים הבאים:",
+    "filteredNetworkAskForHelp": "בקש/בקשי עזרה מ-Pangea",
+    "filteredNetworkHelpExplanation": "נשלח לך אימייל כדי לעזור לך להפעיל את Pangea Chat ברשת זו.",
+    "filteredNetworkHelpWaiting": "בקשתך תישלח ברגע שתתחבר/תתחברי.",
+    "filteredNetworkHelpSent": "נשלח. ניצור קשר באימייל.",
+    "filteredNetworkHelpRefused": "לא הצלחנו לשלוח את בקשתך. אנא שלח/שלחי אימייל ל-support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "רשת זו חוסמת סרטונים.",
+    "filteredNetworkImagesBlocked": "רשת זו חוסמת תמונות.",
+    "filteredNetworkMapBlocked": "רשת זו חוסמת את המפה.",
+    "callFullScreenTitle": "אפשר לשיחות לצלצל במסך מלא",
+    "callFullScreenMessage": "התקבלה שיחה כש־Pangea Chat הייתה סגורה, אבל הטלפון שלך הציג רק התראה קטנה עבורה. אפשר שיחות במסך מלא כדי שהשיחה הבאה תצלצל על כל המסך, גם כשהטלפון שלך נעול.",
+    "callMicrophoneTitle": "השתמש/י במיקרופון שלך לשיחות",
+    "callMicrophoneMessage": "Pangea Chat זקוק למיקרופון שלך לשיחות, כולל שיחות שאת/ה עונה להן ממסך הנעילה.",
+    "callMicrophoneOffTitle": "השיחה שלך לא התחברה",
+    "callMicrophoneOffMessage": "Pangea Chat לא יכול להשתמש במיקרופון שלך. הקש/י כדי להפעיל אותו בהגדרות.",
+    "mapCreditsLabel": "קרדיטים למפה: Stadia Maps, OpenMapTiles ו-OpenStreetMap"
 }

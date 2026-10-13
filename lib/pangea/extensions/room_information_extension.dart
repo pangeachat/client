@@ -11,5 +11,6 @@ extension RoomInformationRoomExtension on Room {
   String? get roomType =>
       getState(EventTypes.RoomCreate)?.content.tryGet<String>('type');
 
-  bool get isHiddenRoom => isAnalyticsRoom || hasArchivedActivity;
+  bool get isHiddenRoom =>
+      isAnalyticsRoom || hasArchivedActivity || isAdminReviewOnly;
 }

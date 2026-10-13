@@ -1,6 +1,6 @@
 ---
-description: "Client call behaviour — presence authority, what ends a call, rejoining, call history, and where audio is tapped."
-applyTo: "lib/routes/chat/calls/**,pangea_packages/pangea_call_capture/**,lib/widgets/matrix.dart,ios/Runner/Info.plist,pubspec.yaml"
+description: "Client call behaviour — presence authority, what ends a call, rejoining, call history, where audio is tapped, and ringing a closed app."
+applyTo: "lib/routes/chat/calls/**,pangea_packages/pangea_call_capture/**,lib/widgets/matrix.dart,ios/Runner/Info.plist,pubspec.yaml,lib/utils/background_push.dart,lib/utils/push_helper.dart"
 ---
 
 # Voice & Video Calls — Client
@@ -125,7 +125,13 @@ first:
 
 The offer to return is a promise that there is something to return to, so it is
 watched: once the room's state says nobody else is holding the call, it withdraws
-itself and takes the breadcrumb with it. Refusing the offer ENDS the call — it
+itself and takes the breadcrumb with it. When this device's own membership has
+already aged out of state there is no call to scope that check by, so any unexpired
+membership from another participant in the room counts as somebody still holding
+the call. A leftover from an earlier call can therefore keep a dead offer up until
+it expires. That is accepted: a dead offer costs a rejoin into an empty room, which
+leaves quietly, while the opposite error withdraws the offer for a call the other
+person is still waiting in. Refusing the offer ENDS the call — it
 retracts the standing membership, so the other person stops waiting rather than
 watching a grace window run out for someone who already decided.
 
@@ -135,9 +141,7 @@ armed, and the other side hangs up on a live call seconds later. The call's
 identity and the membership currently carrying it are two different things, and
 only the first survives a rejoin.
 
-The clock a rejoined session shows continues the call rather than restarting. The
-two sides read their own local starts, so they agree to within however differently
-the SFU delivered one roster change, not exactly.
+The clock both people watch is the call's, not each device's. When both people are first in the call, one device writes that moment once, on the SFU's clock: the device whose own membership is the call's key, or failing that a device on the other account after half a minute. Every device converts that one moment through its own measured offset from the SFU, so a peer, a second device and a rejoined device all read the same elapsed time without comparing two device clocks. Until it is read, a device forms the same moment from the join stamps it can see, and only when it cannot does it count from first seeing the other person.
 
 ## What the conversation records
 
@@ -221,6 +225,8 @@ metadata. A half's event therefore stays small enough to ride the timeline while
 the audio is fetched on demand rather than pushed through every sync, and the
 recording inherits the retention already disclosed for voice messages. The merged
 full-call recording is one more such upload, referenced the same way.
+
+A call the learner moved between their devices leaves one speaker a recording on each device, each naming the device it came from and the one it went to. The full-call recording is made only from the whole call: both people, every device each used, linked in order. One of the devices the call ended on mixes it, and it cuts each moved-from recording where the next device began. A full-call recording that covers less than the whole call, cannot vouch for every recording it names, or does not say it is complete is never shown, never stops another device from making the true one, and never anchors a transcript. Two recordings from one person that are not linked mean two devices both carried on; that call keeps its separate recordings and gets no full-call recording.
 
 The recording-based pass is on by default. `CALL_RECORDING_TRANSCRIPT=false` is
 its kill switch: with it set, each half is the live one transcribed during the
@@ -395,6 +401,22 @@ Everything else degrades rather than fails:
   ordered transcript. A recording that was still uploading when the app was killed is
   uploaded on the next launch.
 
+## Ringing when the app is closed
+
+A call has to reach a learner whose app is closed or whose phone is locked. It builds on what already exists: the caller's ring event ([`CallNotification`](../../lib/routes/chat/calls/call_notification.dart)), the push rule that delivers it to the phone as a high-priority ringing push, and the in-app [`IncomingCallBanner`](../../lib/routes/chat/calls/incoming_call_banner.dart). Android needs no new pusher and no change to the push gateway; iOS needs both, below.
+
+**One decision about whether to ring.** The push wakes the app, which fetches the ring event and asks the same question the banner asks, `shouldRing`: is this a live ring for a call, sent by someone else, for a call this account has not already joined? So a closed phone never rings for a call that an open app would have stayed quiet for. Answering goes through one method on [`MatrixState`](../../lib/widgets/matrix.dart), which owns the call, and declining through [`CallService`](../../lib/routes/chat/calls/call_service.dart), so the banner, the Android notification and the iOS call screen answer and decline the same way.
+
+**No device rings forever.** The ring's own lifetime (30 seconds, never more than 90) is the timeout on every surface. A device stops sooner when the call is answered or declined on another of the learner's devices, or when the caller gives up.
+
+- **Android:** an incoming-call notification on its own calls channel. It shows full screen with a looping ringtone, Answer and Decline buttons, and a timeout equal to what is left of the ring. While it rings, a short foreground service keeps the app running for no longer than the ring, so answering or declining on another device stops the phone at once. On a locked phone it opens the app over the lock screen, and the banner takes over. Android 14 and later shows a full-screen ring by default only for apps Google Play accepts as calling apps. For any other app, the learner has to allow full-screen calls in Android settings, so the app asks them once; until they do, the phone shows a heads-up ring.
+- **iOS:** the native call screen, through CallKit, woken by a VoIP push. Apple stops waking an app that does not show a call for every VoIP push, so the server sends one only for a ring: the iOS app registers a second pusher for VoIP pushes, and the push gateway passes it rings and nothing else. The app shows each ring on the call screen at once, and ends straight away any ring that is already over. So that a ring does not also arrive as an ordinary notification, iOS builds that register for VoIP move their ordinary pusher to an app ID the push gateway sends no rings to; older builds keep today's notification. On iOS the call screen is the ring whether or not the app is open; the in-app prompt stands aside for it. The app also needs the `voip` background mode.
+- **Web:** open tabs already ring. Ringing a closed browser needs web push, which is a later phase.
+
+**The microphone on iOS.** A microphone that will not open is no call (see [Failure is not all-or-nothing](#failure-is-not-all-or-nothing)). On iOS the first call is often answered from the lock screen, which is the wrong moment to ask for the microphone. So the iOS app asks before a call can ring: once, the first time the app is open and calls can ring to it, and only if iOS has never asked. A one-line explanation comes first (calls need the microphone, including calls answered from the lock screen), then iOS's own prompt. It does not ask during a call. Once a learner has turned the microphone off, iOS does not let the app ask again. So if they answer a call while it is off, the call screen closes and the phone at once shows a notification: the call did not connect because Pangea Chat cannot use the microphone. Tapping it opens Pangea Chat's page in Settings. The caller is not told: their ring runs out and becomes a missed call.
+
+**Missed call.** When a ring ends unanswered, a silent push for the call's card replaces the ring with "Missed call". That push is also what stops a closed phone ringing when the caller gives up.
+
 ## Platform gates
 
 - **Android** — a foreground service with an ongoing-call notification holds a
@@ -402,12 +424,8 @@ Everything else degrades rather than fails:
   instruction carries the generation of the call it was issued for and the platform
   adjudicates: a stop meant for a call that already ended cannot touch its
   successor. Microphone permission is required for a call to start at all.
-- **iOS** — the audio background mode in `Info.plist` holds it. `voip` belongs with
-  CallKit, which is not built.
+- **iOS** — the audio background mode in `Info.plist` holds it. A call answered from the iOS call screen is also held by CallKit (see [Ringing when the app is closed](#ringing-when-the-app-is-closed)).
 - **Web** — no foreground-service concept; the call ends with the tab.
-
-Neither platform can ring a closed app yet, which is the largest gap in the
-feature.
 
 Call buttons are built behind a MatrixRTC focus lookup, so an environment without
 one renders nothing rather than buttons that fail. This is also what keeps calling

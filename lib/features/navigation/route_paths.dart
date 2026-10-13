@@ -1,6 +1,7 @@
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
+import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
 
 /// Canonical route paths for Pangea-owned surfaces (world_v2).
 ///
@@ -112,4 +113,23 @@ abstract class PRoutes {
 
   /// Whether [segment] is a course join code rather than a literal route.
   static bool isJoinCode(String segment) => _joinCodeRegExp.hasMatch(segment);
+
+  /// The gift link's first segment: `app.pangea.chat/gift/<code>` carries a
+  /// promo code into the discount page (subscriptions.instructions.md § Gift
+  /// link).
+  static const String giftSegment = 'gift';
+
+  /// A Stripe promotion code as we mint them: letters, digits, `-` and `_`.
+  /// Anything else under `/gift/` is left alone, so an unmatched path
+  /// recovers to the world map instead of reaching checkout.
+  static final RegExp _promoCodeRegExp = RegExp(r'^[A-Za-z0-9_-]{1,64}$');
+
+  /// Whether [segment] can be a promo code.
+  static bool isPromoCode(String segment) => _promoCodeRegExp.hasMatch(segment);
+
+  /// The gift link's rewrite target: the discount page alone over the world
+  /// map with the code in its token, re-entered after the login bounce as the
+  /// cached destination (PAuthGaurd) the same way [joinWithCode] is.
+  static String giftLink(String code) =>
+      '$world?right=${SettingsPagePanelToken(SettingsTokenParam(subpage: SettingsTokenParam.discountPage, promoCode: code)).encode()}';
 }

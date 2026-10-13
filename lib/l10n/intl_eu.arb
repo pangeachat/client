@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-05 13:57:46.786418",
+    "@@last_modified": "2026-10-12 13:11:53.452259",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -2914,7 +2914,6 @@
     "errorDisableIGCClassDesc": "Gramatika laguntza desgaituta dago ikastaro honetan dagoen chat-entzat.",
     "error405Desc": "Mesedez, ezarri zure hizkuntzak Nagusien Menuko > Ikaskuntza Ezarpenetan.",
     "termsAndConditions": " Baldintzak eta Baldintzak",
-    "andCertifyIAmAtLeast13YearsOfAge": " eta ziurtatzen dut gutxienez 16 urte ditudala.",
     "error502504Desc": "Itzulpen eta gramatika tresnak motel edo erabilgarri ez egon daitezke Pangea botak eguneratzen direnean.",
     "error404Desc": "Pangea Botak ez du ziur nola itzuli hori...",
     "errorPleaseRefresh": "Begiratzen ari gara! Mesedez, kargatu berriro eta saiatu berriro.",
@@ -3222,9 +3221,6 @@
     "why": "Zergatik?",
     "definition": "Definizioa",
     "reportToTeacher": "Nori jakinarazi nahi diozu mezua hau?",
-    "reportMessageTitle": "{reportingUserId} erabiltzaileak {roomName} txataren mezua salatu du {reportedUserId} erabiltzailearen izenean",
-    "reportMessageBody": "Mezua: {reportedMessage}\nArrazoia: {reason}",
-    "noTeachersFound": "Ez da irakaslerik aurkitu salatzeko",
     "trialExpiration": "Zure proba-aldia {expiration} data amaitzen da",
     "freeTrialDesc": "Erabiltzaile berriek Pangea Chat-en aste bateko proba-aldia doan jasotzen dute",
     "activateTrial": "Proba Doakoa 7 Egun",
@@ -3701,10 +3697,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4951,35 +4943,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -9834,7 +9797,6 @@
     "constructLevelFlowers": "Loreak, menderatutako hitzak",
     "filterAndSearch": "Iragazi eta bilatu",
     "participantsOfTotal": "{total} jokalarietatik {filled}",
-    "mapAttributionLabel": "OpenStreetMap-eko kolaboratzaileak, copyright eta lizentzia",
     "seeAll": "Ikusi guztiak",
     "seeAllSection": "Ikusi {section} guztiak",
     "showMoreOptionsHint": "aukera gehiago erakutsi",
@@ -9980,5 +9942,32 @@
     "ssoTryAnyway": "Dena den, saiatu",
     "publicCoursesFilterTooltip": "Edonork bat egin dezakeen ikastaroak bakarrik erakutsi",
     "restrictedCoursesFilterTooltip": "Bat egiteko eskatu behar duzun ikastaroak bakarrik erakutsi",
-    "viewImageLabel": "Ikusi irudia"
+    "viewImageLabel": "Ikusi irudia",
+    "reportSent": "Txostena bidali da",
+    "reportNotSent": "Ezin izan da zure txostena bidali. Egiaztatu konexioa eta saiatu berriro.",
+    "reportPointerMessage": "Mezu bat salatu da {courseName} ikastaroan — ikusi Segurtasuna",
+    "useActivityImageAsChatBackground": "Erabili jardueraren irudia txataren atzeko plano gisa",
+    "andCertifyIMeetTheMinimumAge": " eta ziurtatzen dut gutxienez 13 urte ditudala, edo nire herrialdean eskatzen den gutxieneko adina, hori handiagoa bada.",
+    "filteredNetworkBlockedTitle": "Sare honek Pangea Chat blokeatzen du",
+    "filteredNetworkPartlyBlockedTitle": "Sare honek Pangea Chaten zati bat blokeatzen du",
+    "filteredNetworkWhatCanIDo": "Zer egin dezaket?",
+    "filteredNetworkPhoneAdvice": "Desaktibatu Wi-Fi eta erabili datu mugikorrak horren ordez.",
+    "filteredNetworkComputerAdvice": "Konektatu zure telefonoaren hotspotera Wi-Fi honen ordez.",
+    "filteredNetworkItHeading": "Irakasle eta informatika-langileentzat",
+    "filteredNetworkItBody": "Eskatu zure informatika-taldeari domeinu hauek baimentzeko:",
+    "filteredNetworkAskForHelp": "Eskatu laguntza Pangea-ri",
+    "filteredNetworkHelpExplanation": "Mezu elektroniko bat bidaliko dizugu Pangea Chat sare honetan funtzionatzen laguntzeko.",
+    "filteredNetworkHelpWaiting": "Zure eskaera konektatu bezain laster bidaliko da.",
+    "filteredNetworkHelpSent": "Bidalita. Posta elektronikoz jarriko gara harremanetan.",
+    "filteredNetworkHelpRefused": "Ezin izan dugu zure eskaera bidali. Mesedez, bidali mezu elektroniko bat support@pangea.chat helbidera.",
+    "filteredNetworkVideoBlocked": "Sare honek bideoak blokeatzen ditu.",
+    "filteredNetworkImagesBlocked": "Sare honek irudiak blokeatzen ditu.",
+    "filteredNetworkMapBlocked": "Sare honek mapa blokeatzen du.",
+    "callFullScreenTitle": "Deiak pantaila osoan erakutsi",
+    "callFullScreenMessage": "Dei bat jaso duzu Pangea Chat itxita zegoen bitartean, baina telefonoak jakinarazpen txiki bat baino ezin izan du erakutsi. Baimendu pantaila osoko deiak, hurrengoa pantaila osoan ager dadin, telefonoa blokeatuta egon arren.",
+    "callMicrophoneTitle": "Erabili mikrofonoa deietarako",
+    "callMicrophoneMessage": "Pangea Chat-ek zure mikrofonoa behar du deietarako, blokeo-pantailatik erantzuten dituzun deiak barne.",
+    "callMicrophoneOffTitle": "Zure deia ez da konektatu",
+    "callMicrophoneOffMessage": "Pangea Chat-ek ezin du zure mikrofonoa erabili. Sakatu Ezarpenetan aktibatzeko.",
+    "mapCreditsLabel": "Maparen kredituak: Stadia Maps, OpenMapTiles eta OpenStreetMap"
 }

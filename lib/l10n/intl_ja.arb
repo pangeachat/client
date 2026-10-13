@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-05 13:57:48.603201",
+    "@@last_modified": "2026-10-12 13:11:56.309183",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -2305,7 +2305,6 @@
     "errorDisableIGCClassDesc": "このチャットが属するコースの文法支援がオフになっています。",
     "error405Desc": "メインメニュー > 学習設定で言語を設定してください。",
     "termsAndConditions": "利用規約",
-    "andCertifyIAmAtLeast13YearsOfAge": " および私は少なくとも16歳であることを証明します。",
     "error502504Desc": "Pangeaボットが追いつくまで、翻訳や文法ツールは遅くなるか利用できない場合があります。",
     "error404Desc": "Pangea Botはそれをどう翻訳すればいいかわかりません...",
     "errorPleaseRefresh": "調査中です！ページをリロードしてもう一度お試しください。",
@@ -2613,9 +2612,6 @@
     "why": "なぜ？",
     "definition": "定義",
     "reportToTeacher": "このメッセージを誰に報告しますか？",
-    "reportMessageTitle": "{reportingUserId}がチャット{roomName}で{reportedUserId}のメッセージを報告しました",
-    "reportMessageBody": "メッセージ: {reportedMessage}\n理由: {reason}",
-    "noTeachersFound": "報告する教師が見つかりません",
     "trialExpiration": "無料トライアルは {expiration} に終了します",
     "freeTrialDesc": "新規ユーザーはPangea Chatの1週間無料トライアルを受けられます",
     "activateTrial": "無料の7日間トライアルを開始",
@@ -4293,10 +4289,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
         "type": "String",
         "placeholders": {}
@@ -5540,35 +5532,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10603,7 +10566,6 @@
     "constructLevelFlowers": "フラワー、習得済みの単語",
     "filterAndSearch": "フィルターと検索",
     "participantsOfTotal": "{total}人中{filled}人",
-    "mapAttributionLabel": "OpenStreetMapの寄与者、著作権とライセンス",
     "seeAll": "すべて見る",
     "seeAllSection": "{section}をすべて見る",
     "showMoreOptionsHint": "その他のオプションを表示",
@@ -10749,5 +10711,32 @@
     "ssoTryAnyway": "とにかく試す",
     "publicCoursesFilterTooltip": "誰でも参加できるコースのみを表示",
     "restrictedCoursesFilterTooltip": "参加申請が必要なコースのみを表示",
-    "viewImageLabel": "画像を表示"
+    "viewImageLabel": "画像を表示",
+    "reportSent": "レポートを送信しました",
+    "reportNotSent": "レポートを送信できませんでした。接続を確認して、もう一度お試しください。",
+    "reportPointerMessage": "{courseName}でメッセージが報告されました — 安全設定を確認してください",
+    "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用",
+    "andCertifyIMeetTheMinimumAge": " また、私は13歳以上であること、または私の国で定められている場合はそれ以上の最低年齢であることを証明します。",
+    "filteredNetworkBlockedTitle": "このネットワークはPangea Chatをブロックしています",
+    "filteredNetworkPartlyBlockedTitle": "このネットワークはPangea Chatの一部をブロックしています",
+    "filteredNetworkWhatCanIDo": "どうすればいいですか？",
+    "filteredNetworkPhoneAdvice": "Wi-Fiをオフにして、代わりにモバイルデータを使用してください。",
+    "filteredNetworkComputerAdvice": "このWi-Fiの代わりに、スマートフォンのホットスポットに接続してください。",
+    "filteredNetworkItHeading": "教師とITスタッフの方へ",
+    "filteredNetworkItBody": "ITチームに以下のドメインを許可するよう依頼してください。",
+    "filteredNetworkAskForHelp": "Pangeaに助けを求める",
+    "filteredNetworkHelpExplanation": "このネットワークでPangea Chatが機能するように、メールでご連絡いたします。",
+    "filteredNetworkHelpWaiting": "接続され次第、リクエストが送信されます。",
+    "filteredNetworkHelpSent": "送信されました。メールでご連絡いたします。",
+    "filteredNetworkHelpRefused": "リクエストを送信できませんでした。support@pangea.chatまでメールでお問い合わせください。",
+    "filteredNetworkVideoBlocked": "このネットワークは動画をブロックしています。",
+    "filteredNetworkImagesBlocked": "このネットワークは画像をブロックしています。",
+    "filteredNetworkMapBlocked": "このネットワークは地図をブロックしています。",
+    "callFullScreenTitle": "着信を全画面で表示",
+    "callFullScreenMessage": "Pangea Chatを閉じていたときに着信がありましたが、スマートフォンには小さな通知しか表示されませんでした。全画面表示の着信を許可すると、次回からはスマートフォンがロックされている場合でも、画面全体に着信が表示されます。",
+    "callMicrophoneTitle": "通話でマイクを使用",
+    "callMicrophoneMessage": "Pangea Chatが通話でマイクを使用できるようにしてください。ロック画面から応答する通話も含まれます。",
+    "callMicrophoneOffTitle": "通話に接続できませんでした",
+    "callMicrophoneOffMessage": "Pangea Chatがマイクを使用できません。タップして設定でオンにしてください。",
+    "mapCreditsLabel": "マップクレジット: Stadia Maps, OpenMapTiles, OpenStreetMap"
 }

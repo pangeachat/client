@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 13:57:51.822604",
+    "@@last_modified": "2026-10-12 13:12:02.194229",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -2913,7 +2913,6 @@
     "errorDisableIGCClassDesc": "Assistência de gramática está desativada para o curso em que esta conversa está.",
     "error405Desc": "Por favor, configure seus idiomas no Menu Principal > Configurações de Aprendizado.",
     "termsAndConditions": "Termos e Condições",
-    "andCertifyIAmAtLeast13YearsOfAge": " e certifico que tenho pelo menos 16 anos de idade.",
     "error502504Desc": "Ferramentas de tradução e gramática podem estar lentas ou indisponíveis enquanto os bots do Pangea se atualizam.",
     "error404Desc": "O Pangea Bot não tem certeza de como traduzir isso...",
     "errorPleaseRefresh": "Estamos investigando! Por favor, recarregue e tente novamente.",
@@ -3221,9 +3220,6 @@
     "why": "Por quê?",
     "definition": "Definição",
     "reportToTeacher": "Para quem você quer reportar esta mensagem?",
-    "reportMessageTitle": "{reportingUserId} relatou uma mensagem de {reportedUserId} no chat {roomName}",
-    "reportMessageBody": "Mensagem: {reportedMessage}\nRazão: {reason}",
-    "noTeachersFound": "Nenhum professor encontrado para relatar",
     "trialExpiration": "Seu período de teste gratuito expira em {expiration}",
     "freeTrialDesc": "Novos usuários recebem uma semana de teste gratuito do Pangea Chat",
     "activateTrial": "Teste Gratuito de 7 Dias",
@@ -3712,10 +3708,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4962,35 +4954,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -9834,7 +9797,6 @@
     "constructLevelFlowers": "Flores, palavras dominadas",
     "filterAndSearch": "Filtrar e pesquisar",
     "participantsOfTotal": "{filled} de {total} jogadores",
-    "mapAttributionLabel": "Colaboradores do OpenStreetMap, direitos autorais e licença",
     "seeAll": "Ver tudo",
     "seeAllSection": "Ver tudo em {section}",
     "showMoreOptionsHint": "mostrar mais opções",
@@ -9980,5 +9942,32 @@
     "ssoTryAnyway": "Tentar mesmo assim",
     "publicCoursesFilterTooltip": "Mostrar apenas cursos que qualquer pessoa pode participar",
     "restrictedCoursesFilterTooltip": "Mostrar apenas cursos que você precisa pedir para participar",
-    "viewImageLabel": "Ver imagem"
+    "viewImageLabel": "Ver imagem",
+    "reportSent": "Denúncia enviada",
+    "reportNotSent": "Sua denúncia não pôde ser enviada. Verifique sua conexão e tente novamente.",
+    "reportPointerMessage": "Uma mensagem foi denunciada em {courseName} — veja Segurança",
+    "useActivityImageAsChatBackground": "Usar imagem da atividade como plano de fundo do chat",
+    "andCertifyIMeetTheMinimumAge": " e certifico que tenho pelo menos 13 anos de idade, ou a idade mínima exigida no meu país, se for superior.",
+    "filteredNetworkBlockedTitle": "Esta rede está bloqueando o Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Esta rede está bloqueando parte do Pangea Chat",
+    "filteredNetworkWhatCanIDo": "O que posso fazer?",
+    "filteredNetworkPhoneAdvice": "Desligue o Wi-Fi e use os dados móveis.",
+    "filteredNetworkComputerAdvice": "Conecte-se ao ponto de acesso do seu celular em vez deste Wi-Fi.",
+    "filteredNetworkItHeading": "Para professores e equipe de TI",
+    "filteredNetworkItBody": "Peça à sua equipe de TI para permitir estes domínios:",
+    "filteredNetworkAskForHelp": "Peça ajuda ao Pangea",
+    "filteredNetworkHelpExplanation": "Enviaremos um e-mail para ajudar a fazer o Pangea Chat funcionar nesta rede.",
+    "filteredNetworkHelpWaiting": "Sua solicitação será enviada assim que você estiver conectado.",
+    "filteredNetworkHelpSent": "Enviado. Entraremos em contato por e-mail.",
+    "filteredNetworkHelpRefused": "Não foi possível enviar sua solicitação. Envie um e-mail para support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Esta rede bloqueia vídeos.",
+    "filteredNetworkImagesBlocked": "Esta rede bloqueia imagens.",
+    "filteredNetworkMapBlocked": "Esta rede bloqueia o mapa.",
+    "callFullScreenTitle": "Permitir chamadas em tela cheia",
+    "callFullScreenMessage": "Uma chamada chegou enquanto o Pangea Chat estava fechado, mas seu telefone só conseguiu mostrar uma pequena notificação. Permita chamadas em tela cheia para que a próxima toque em toda a sua tela, mesmo quando seu telefone estiver bloqueado.",
+    "callMicrophoneTitle": "Use seu microfone para chamadas",
+    "callMicrophoneMessage": "O Pangea Chat precisa do seu microfone para chamadas, incluindo as chamadas que você atende da tela de bloqueio.",
+    "callMicrophoneOffTitle": "Sua chamada não conectou",
+    "callMicrophoneOffMessage": "O Pangea Chat não pode usar seu microfone. Toque para ativá-lo nas Configurações.",
+    "mapCreditsLabel": "Créditos do mapa: Stadia Maps, OpenMapTiles e OpenStreetMap"
 }

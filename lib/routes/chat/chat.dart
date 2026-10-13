@@ -1194,6 +1194,17 @@ class ChatController extends State<ChatPageWithRoom>
     scrollUpBannerEventId = eventId;
   });
 
+  /// The event the scroll-up banner offers after a timeline load failed with
+  /// [error], or null for no banner. Only a network failure while opening on
+  /// [eventContextId] leaves somewhere to go back to; a plain open has no event
+  /// to offer, and its fallback timeline has already loaded (CLIENT-CYX).
+  @visibleForTesting
+  static String? scrollUpBannerEventIdAfterLoadError(
+    Object error,
+    String? eventContextId,
+  ) =>
+      error is TimeoutException || error is IOException ? eventContextId : null;
+
   void updateView() {
     if (!mounted) return;
     setReadMarker();
@@ -1280,9 +1291,11 @@ class ChatController extends State<ChatPageWithRoom>
         onInsert: onInsert,
       );
       if (!mounted) return;
-      if (e is TimeoutException || e is IOException) {
-        _showScrollUpMaterialBanner(eventContextId!);
-      }
+      final bannerEventId = scrollUpBannerEventIdAfterLoadError(
+        e,
+        eventContextId,
+      );
+      if (bannerEventId != null) _showScrollUpMaterialBanner(bannerEventId);
     }
     // [timeline] can be gone by now: the history requests above take a while,
     // and meanwhile the chat can close (dispose clears it) or a jump to

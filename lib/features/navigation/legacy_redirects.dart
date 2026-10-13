@@ -5,13 +5,13 @@ import 'package:fluffychat/features/navigation/token_params/activity_token.dart'
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
 
-/// Folds externally produced activity, course-join, and Synapse email links
-/// into workspace tokens before rendering. Retired internal routes are not
+/// Folds externally produced activity, course-join, gift, and Synapse email
+/// links into workspace tokens before rendering. Retired internal routes are not
 /// supported. [handle] also shortens home-server room ids in every location.
 abstract class LegacyRedirects {
   static String? resolve(Uri uri) {
-    // Path-strategy web routing retains the fragment on the root location.
-    // Native app_links has already unwrapped it in incomingUriToPath.
+    // The web URL strategy drops the fragment at boot, so the email templates
+    // send the path form; native app_links unwraps it in incomingUriToPath.
     if (uri.path == '/' && uri.fragment.startsWith('/room/')) {
       return resolve(Uri.parse(uri.fragment));
     }
@@ -25,6 +25,12 @@ abstract class LegacyRedirects {
         segments[1],
         event: segments.length == 3 ? segments[2] : null,
       );
+    }
+    // The gift link `/gift/<code>` — the discount page with the code applied.
+    if (segments.length == 2 &&
+        segments.first == PRoutes.giftSegment &&
+        PRoutes.isPromoCode(segments[1])) {
+      return PRoutes.giftLink(segments[1]);
     }
     if (segments.length != 1) return null;
     final segment = segments.first;

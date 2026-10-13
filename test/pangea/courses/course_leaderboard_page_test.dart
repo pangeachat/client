@@ -20,6 +20,7 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 import 'package:fluffychat/widgets/matrix.dart';
 import '../fake_pangea_controller.dart';
 import '../get_test_client.dart';
+import '../settle_leaderboard.dart';
 
 class _TestMatrixState extends MatrixState {
   @override
@@ -98,7 +99,8 @@ void main() {
 
   /// A course the viewer administers with [members] joined (the viewer
   /// included), [invited] invitees and [knocking] knockers; Member i holds
-  /// i stars, so the ranking runs Member 5, 4, 3, 2, 1, Testy.
+  /// i stars, so the ranking runs Member 5, 4, 3, 2, 1 — the viewer, Testy,
+  /// is the admin and is not ranked.
   Room courseRoom({required int members, int invited = 0, int knocking = 0}) {
     MatrixState.pangeaController = FakePangeaController(
       analyticsProfiles: {
@@ -179,7 +181,7 @@ void main() {
         ),
       ),
     );
-    await tester.pumpAndSettle();
+    await settle(tester, find.byType(CourseLeaderboardPage));
   }
 
   Future<void> drain(WidgetTester tester) async {
@@ -188,6 +190,11 @@ void main() {
       () => Future.delayed(const Duration(milliseconds: 300)),
     );
     await tester.pump(const Duration(seconds: 10));
+    // The timers that pump fired answer presence reads, whose writes need
+    // real time to reach the database before `tearDown` closes it.
+    await tester.runAsync(
+      () => Future.delayed(const Duration(milliseconds: 300)),
+    );
   }
 
   List<int> tileRanks(WidgetTester tester) => tester
@@ -200,7 +207,7 @@ void main() {
   ) async {
     await pumpPage(
       tester,
-      courseRoom(members: 6),
+      courseRoom(members: 7),
       width: CourseLeaderboardPage.twoColumnMinWidth,
     );
 
@@ -245,7 +252,7 @@ void main() {
     (tester) async {
       await pumpPage(
         tester,
-        courseRoom(members: 2, invited: 1, knocking: 1),
+        courseRoom(members: 3, invited: 1, knocking: 1),
         width: 400,
       );
 

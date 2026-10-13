@@ -61,8 +61,10 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
 
   /// The unfilled length of a gold ring that paints over map tiles rather
   /// than a surface: dark in light so the bright arc rides on it, a mid gold
-  /// in dark so it still reads over near-black cartography (#8763). Not for
-  /// a bar on a surface, which takes the neutral track.
+  /// in dark so it still reads over the dark map tiles (#8763). The dark tone
+  /// sits in the narrow band that keeps 3:1 against both the tiles' land and
+  /// the arc (#8603). Not for a bar on a surface, which takes the neutral
+  /// track.
   final Color goldTrack;
 
   /// A tinted gold surface for washes and backfills. Always pair with
@@ -187,7 +189,7 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
       goldFixed: Color(gold.get(90)),
       goldFixedDim: Color(gold.get(80)),
       onGoldFixed: Color(gold.get(10)),
-      goldTrack: Color(gold.get(light ? 20 : 50)),
+      goldTrack: Color(gold.get(light ? 20 : 53)),
       goldContainer: Color(gold.get(light ? 90 : 30)),
       onGoldContainer: Color(gold.get(light ? 10 : 90)),
       goldHighlight: Color.lerp(Color(gold.get(80)), Colors.black, 0.2)!,

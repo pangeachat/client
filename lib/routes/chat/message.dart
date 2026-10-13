@@ -170,6 +170,7 @@ class Message extends StatelessWidget {
               isParticipantSelected: (id) =>
                   controller.room.ownRoleState?.id == id,
               usedVocab: controller.activityController.usedVocab,
+              mediaVisibility: controller.activityController.mediaVisibility,
             );
           },
         );

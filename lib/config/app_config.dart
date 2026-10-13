@@ -111,6 +111,10 @@ abstract class AppConfig {
     );
   }
 
+  /// The media CDN every environment serves activity, course and topic images
+  /// from. See devops image-cdn.instructions.md.
+  static const String contentCdnHost = "content.pangea.chat";
+
   static final Set<String> _allowedImageHosts = {
     "pangea.chat",
     "staging.pangea.chat",
@@ -119,8 +123,8 @@ abstract class AppConfig {
     "api.staging.pangea.chat",
     // Media CDN (image-cdn consolidation): activity/course/topic images are now
     // served from here. Without this, ImageByUrl rejects every CDN image and
-    // shows a placeholder. See devops image-cdn.instructions.md.
-    "content.pangea.chat",
+    // shows a placeholder.
+    contentCdnHost,
     // YouTube poster thumbnails for activity `youtube` media blocks. Both hosts
     // send `Access-Control-Allow-Origin: *`, so ImageByUrl's web XHR fetch works
     // (no auth, no platform-view needed).

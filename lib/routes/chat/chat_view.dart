@@ -13,6 +13,7 @@ import 'package:fluffychat/features/activity_sessions/activity_room_extension.da
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/unread_rooms_client_extension.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_background.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_finished_status_message.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_card.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
@@ -115,6 +116,7 @@ class ChatView extends StatelessWidget {
     final scrollUpBannerEventId = controller.scrollUpBannerEventId;
 
     final accountConfig = Matrix.of(context).client.applicationAccountConfig;
+    final activityBackgroundUrl = controller.room.activityPlan?.ownImageURL;
 
     return PopScope(
       canPop:
@@ -311,6 +313,16 @@ class ChatView extends StatelessWidget {
                             placeholder: (_) => Container(),
                           ),
                         ),
+                      ),
+                    ),
+                  if (activityBackgroundUrl != null)
+                    Positioned.fill(
+                      child: ActivityChatBackground(
+                        imageUrl: activityBackgroundUrl,
+                        blur: accountConfig.wallpaperBlur ?? 0.0,
+                        mediaVisibility:
+                            controller.activityController.mediaVisibility,
+                        scrollController: controller.scrollController,
                       ),
                     ),
                   Column(

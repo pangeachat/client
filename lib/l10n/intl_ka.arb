@@ -1293,7 +1293,6 @@
     "errorDisableIGCClassDesc": "გრამატიკის დახმარება გამორთულია ამ კურსისთვის, სადაც ეს ჩატი მდებარეობს.",
     "error405Desc": "გთხოვთ, დააყენოთ თქვენი ენები მთავარი მენიუდან > სწავლების პარამეტრებიდან.",
     "termsAndConditions": "წესებს და პირობებს",
-    "andCertifyIAmAtLeast13YearsOfAge": "და ვადასტურებ, რომ მე მინიმუმ 16 წლის ვარ.",
     "error502504Desc": "თარგმნის და გრამატიკის ხელსაწყოები შეიძლება იყოს ნელი ან მიუწვდომელი, სანამ პანგეა ბოტები არ დაეწევიან.",
     "error404Desc": "Pangea Bot-ი ვერ გარჩევს, როგორ უნდა თარგმნოს ეს...",
     "errorPleaseRefresh": "ჩვენ ამას ვისწრაფვით! გთხოვთ, განაახლოთ გვერდი და სცადოთ თავიდან.",
@@ -1601,9 +1600,6 @@
     "why": "რატომ?",
     "definition": "განმარტება",
     "reportToTeacher": "ვის გსურთ ამ შეტყობინების შეტყობინება?",
-    "reportMessageTitle": "{reportingUserId} შეტყობინება გაასაჯაროვა {reportedUserId}-ისგან ჩატში {roomName}",
-    "reportMessageBody": "შეტყობინება: {reportedMessage}\nმიზეზი: {reason}",
-    "noTeachersFound": "მასწავლებელი ვერ მოიძებნა შეტყობინებისთვის",
     "trialExpiration": "თქვენს უფასო ცდას ვადა ამოიწურება {expiration}",
     "freeTrialDesc": "ახალი მომხმარებლები იღებენ ერთკვირიან უფასო ცდას Pangea Chat-ის",
     "activateTrial": "უფასო 7-დღიანი საცდელი პერიოდი",
@@ -1937,7 +1933,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-05 13:57:49.186934",
+    "@@last_modified": "2026-10-12 13:11:56.811532",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -4424,10 +4420,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
         "type": "String",
         "placeholders": {}
@@ -5671,35 +5663,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10734,7 +10697,6 @@
     "constructLevelFlowers": "ყვავილები, ათვისებული სიტყვები",
     "filterAndSearch": "გაფილტვრა და ძიება",
     "participantsOfTotal": "{filled} / {total} მოთამაშე",
-    "mapAttributionLabel": "OpenStreetMap-ის კონტრიბუტორები, საავტორო უფლებები და ლიცენზია",
     "seeAll": "ყველას ნახვა",
     "seeAllSection": "ყველა {section}-ის ნახვა",
     "showMoreOptionsHint": "მეტი ვარიანტის ჩვენება",
@@ -10880,5 +10842,32 @@
     "ssoTryAnyway": "მაინც სცადე",
     "publicCoursesFilterTooltip": "აჩვენე მხოლოდ კურსები, რომლებზეც ნებისმიერს შეუძლია გაწევრიანება",
     "restrictedCoursesFilterTooltip": "აჩვენე მხოლოდ კურსები, რომლებზეც გაწევრიანების მოთხოვნაა საჭირო",
-    "viewImageLabel": "სურათის ნახვა"
+    "viewImageLabel": "სურათის ნახვა",
+    "reportSent": "მოხსენება გაგზავნილია",
+    "reportNotSent": "თქვენი მოხსენების გაგზავნა ვერ მოხერხდა. შეამოწმეთ კავშირი და სცადეთ ხელახლა.",
+    "reportPointerMessage": "შეტყობინება მოხსენებულია {courseName}-ში — იხილეთ უსაფრთხოება",
+    "useActivityImageAsChatBackground": "აქტივობის სურათის გამოყენება ჩეთის ფონად",
+    "andCertifyIMeetTheMinimumAge": " და ვადასტურებ, რომ ვარ მინიმუმ 13 წლის, ან ჩემს ქვეყანაში მოთხოვნილი მინიმალური ასაკის, თუ ის უფრო მაღალია.",
+    "filteredNetworkBlockedTitle": "ეს ქსელი ბლოკავს Pangea Chat-ს",
+    "filteredNetworkPartlyBlockedTitle": "ეს ქსელი ბლოკავს Pangea Chat-ის ნაწილს",
+    "filteredNetworkWhatCanIDo": "რა შემიძლია გავაკეთო?",
+    "filteredNetworkPhoneAdvice": "გამორთეთ Wi-Fi და ამის ნაცვლად გამოიყენეთ მობილური ინტერნეტი.",
+    "filteredNetworkComputerAdvice": "ამ Wi-Fi-ის ნაცვლად დაუკავშირდით თქვენი ტელეფონის ცხელ წერტილს.",
+    "filteredNetworkItHeading": "მასწავლებლებისა და IT პერსონალისთვის",
+    "filteredNetworkItBody": "სთხოვეთ თქვენს IT გუნდს, დაუშვას ეს დომენები:",
+    "filteredNetworkAskForHelp": "სთხოვეთ Pangea-ს დახმარება",
+    "filteredNetworkHelpExplanation": "ჩვენ გამოგიგზავნით ელფოსტას, რათა დაგეხმაროთ Pangea Chat-ის ამ ქსელში მუშაობაში.",
+    "filteredNetworkHelpWaiting": "თქვენი მოთხოვნა გაიგზავნება, როგორც კი დაუკავშირდებით.",
+    "filteredNetworkHelpSent": "გაგზავნილია. ჩვენ დაგიკავშირდებით ელფოსტით.",
+    "filteredNetworkHelpRefused": "თქვენი მოთხოვნის გაგზავნა ვერ მოხერხდა. გთხოვთ, გამოაგზავნოთ ელფოსტა support@pangea.chat-ზე.",
+    "filteredNetworkVideoBlocked": "ეს ქსელი ბლოკავს ვიდეოებს.",
+    "filteredNetworkImagesBlocked": "ეს ქსელი ბლოკავს სურათებს.",
+    "filteredNetworkMapBlocked": "ეს ქსელი ბლოკავს რუკას.",
+    "callFullScreenTitle": "ზარები მთელ ეკრანზე",
+    "callFullScreenMessage": "ზარი შემოვიდა, როცა Pangea Chat დახურული იყო, მაგრამ თქვენს ტელეფონს შეეძლო მხოლოდ მცირე შეტყობინების ჩვენება. დაუშვით სრულეკრანიანი ზარები, რათა შემდეგი ზარი მთელ ეკრანზე გამოჩნდეს, მაშინაც კი, როცა თქვენი ტელეფონი დაბლოკილია.",
+    "callMicrophoneTitle": "გამოიყენეთ მიკროფონი ზარებისთვის",
+    "callMicrophoneMessage": "Pangea Chat-ს სჭირდება თქვენი მიკროფონი ზარებისთვის, მათ შორის ზარებისთვის, რომლებსაც უპასუხებთ დაბლოკილი ეკრანიდან.",
+    "callMicrophoneOffTitle": "თქვენი ზარი არ დაკავშირდა",
+    "callMicrophoneOffMessage": "Pangea Chat-ს არ შეუძლია თქვენი მიკროფონის გამოყენება. შეეხეთ, რომ ჩართოთ პარამეტრებში.",
+    "mapCreditsLabel": "რუკის კრედიტები: Stadia Maps, OpenMapTiles და OpenStreetMap"
 }

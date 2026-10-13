@@ -22,10 +22,18 @@ class CallAudioMergeSource {
   /// identity; never as an input to the mix math.
   final String senderId;
 
+  /// Where this source stops counting, on the SFU's clock: the moment the
+  /// device the learner moved the call to began recording (client#9173). Null
+  /// for a source that ends its speaker's side of the call. What comes after
+  /// it is the moved-from device's hold -- silence while its successor speaks
+  /// -- and is cut rather than mixed over the successor.
+  final int? trimEndSfuMs;
+
   const CallAudioMergeSource({
     required this.wav,
     required this.fileStartSfuMs,
     required this.senderId,
+    this.trimEndSfuMs,
   });
 }
 
@@ -138,10 +146,18 @@ CallAudioMergeResult mergeCallAudio(CallAudioMergeRequest request) {
       anySkipped = true;
       continue;
     }
+    var samples = parsed.samples;
+    final trimEnd = source.trimEndSfuMs;
+    if (trimEnd != null) {
+      final keep = ((trimEnd - start) / 1000 * parsed.sampleRate).round();
+      if (keep < samples.length) {
+        samples = Int16List.sublistView(samples, 0, keep < 0 ? 0 : keep);
+      }
+    }
     kept.add(
       _KeptHalf(
         sampleRate: parsed.sampleRate,
-        samples: parsed.samples,
+        samples: samples,
         fileStartSfuMs: start,
         senderId: source.senderId,
       ),
@@ -230,7 +246,15 @@ CallAudioMergeResult mergeCallAudio(CallAudioMergeRequest request) {
 
   final coverage = tracks.map((track) => track.senderId).toList()..sort();
   final durationMs = commonRate == 0 ? 0 : (outLen * 1000) ~/ commonRate;
-  final complete = !anySkipped && tracks.length == expectedUsers && !truncated;
+  // Complete when every source was mixed and the mix holds exactly the
+  // expected SPEAKERS. A speaker can span several sources once a call has moved
+  // between their devices (client#9173), so it is speakers that are counted;
+  // the divisor above is the speaker count too, so one speaker's chain never
+  // weighs more than the other speaker.
+  final complete =
+      !anySkipped &&
+      tracks.map((track) => track.senderId).toSet().length == expectedUsers &&
+      !truncated;
 
   return CallAudioMergeResult(
     wav: wav,

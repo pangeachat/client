@@ -94,6 +94,7 @@ class CallAudioMergeCoordinator {
     required CallAudioMergeRoomSender send,
     required ExpiringStorageBox index,
     required bool? Function(String roomId) isDmRoom,
+    required Set<String> Function(String roomId) participants,
     required String Function() myUserId,
     required String? Function() myDeviceId,
     CallAudioMerger? mix,
@@ -114,6 +115,7 @@ class CallAudioMergeCoordinator {
        _send = send,
        _index = index,
        _isDmRoom = isDmRoom,
+       _participants = participants,
        _myUserId = myUserId,
        _myDeviceId = myDeviceId,
        _mix = mix ?? _defaultMix,
@@ -138,6 +140,9 @@ class CallAudioMergeCoordinator {
   final CallAudioMerger _mix;
   final ExpiringStorageBox _index;
   final bool? Function(String roomId) _isDmRoom;
+
+  /// The direct chat's two members, or fewer while they are not known.
+  final Set<String> Function(String roomId) _participants;
   final String Function() _myUserId;
   final String? Function() _myDeviceId;
   final DateTime Function() _clock;
@@ -234,20 +239,27 @@ class CallAudioMergeCoordinator {
     _schedule(roomId, callKey, _myUserId(), _myDeviceId());
   }
 
-  /// A `pangea.call_audio_merged` event for this call was seen in a sync: the
-  /// call is done. Cancel any in-flight attempt and retire the index entry.
+  /// A `pangea.call_audio_merged` event for this call was seen in a sync:
+  /// evaluate the call again.
   void onSyncedMergedEvent(String roomId, String callKey) {
     // No work after dispose, uniform with every other trigger: a disposed
     // coordinator touches neither its in-flight map nor the shared index (a
     // replacement coordinator, if any, owns reconciliation now).
     if (_disposed) return;
+    // A merge arriving no longer retires the call by itself (client#9173): it
+    // may cover less than the whole call, or not be trustworthy at all. The
+    // call is evaluated again at once -- an attempt waiting out its settle or
+    // its stagger stops waiting and re-decides -- and only a trusted merge of
+    // the whole call retires it.
     final key = _makeKey(roomId, callKey);
     final attempt = _inFlight[key];
     if (attempt != null) {
-      attempt.aborted = true;
+      attempt.dirty = true;
       attempt.cancelDelay?.call();
+      return;
     }
-    unawaited(_index.remove(key));
+    unawaited(_keepPending(key));
+    _schedule(roomId, callKey, _myUserId(), _myDeviceId());
   }
 
   /// A sync status transition back to `finished` (a reconnect). Re-run every
@@ -381,7 +393,9 @@ class CallAudioMergeCoordinator {
         isDmRoom: _isDmRoom(roomId),
         myUserId: myUserId,
         myDeviceId: myDeviceId,
-        mergedExists: merged.isNotEmpty,
+        merged: merged,
+        participants: _participants(roomId),
+        callKey: callKey,
       );
       switch (decided) {
         case AlreadyMerged():
@@ -429,6 +443,7 @@ class CallAudioMergeCoordinator {
             wav: bytes,
             fileStartSfuMs: half.content.fileStartSfuMs,
             senderId: half.senderId,
+            trimEndSfuMs: mergeable.trimEndSfuMs[half.eventId],
           ),
         );
       }
@@ -539,6 +554,9 @@ class CallAudioMergeCoordinator {
         channels: result.channels,
         sourceEventIds: coverage,
         mergedStartSfuMs: mergeable.mergedStartSfuMs,
+        // Only a complete mix reaches here (an incomplete one is retired
+        // above), so this says what the bytes are.
+        complete: true,
       );
       if (sentId == null) {
         await _recordTransient(key);
@@ -605,7 +623,9 @@ class CallAudioMergeCoordinator {
       isDmRoom: _isDmRoom(roomId),
       myUserId: myUserId,
       myDeviceId: myDeviceId,
-      mergedExists: merged.isNotEmpty,
+      merged: merged,
+      participants: _participants(roomId),
+      callKey: callKey,
     );
     if (decided is AlreadyMerged || decided is TerminallyIneligible) {
       await _retire(key, decided);

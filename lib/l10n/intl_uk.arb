@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-05 13:57:54.538715",
+    "@@last_modified": "2026-10-12 13:12:05.367858",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -2914,7 +2914,6 @@
     "errorDisableIGCClassDesc": "Допомога з граматикою вимкнена для курсу, у якому ведеться цей чат.",
     "error405Desc": "Будь ласка, налаштуйте свої мови у Головному меню > Налаштування навчання.",
     "termsAndConditions": "Умовами та положеннями",
-    "andCertifyIAmAtLeast13YearsOfAge": " і підтверджую, що мені щонайменше 16 років.",
     "error502504Desc": "Інструменти перекладу та граматики можуть працювати повільно або бути недоступними, поки боти Pangea наздоганяють.",
     "error404Desc": "Бот Pangea не впевнений, як це перекласти...",
     "errorPleaseRefresh": "Ми цим займаємося! Будь ласка, перезавантажте сторінку та спробуйте ще раз.",
@@ -3222,9 +3221,6 @@
     "why": "Чому?",
     "definition": "Визначення",
     "reportToTeacher": "Кому ви хочете повідомити це повідомлення?",
-    "reportMessageTitle": "{reportingUserId} повідомив повідомлення від {reportedUserId} у чаті {roomName}",
-    "reportMessageBody": "Повідомлення: {reportedMessage}\nПричина: {reason}",
-    "noTeachersFound": "Вчителі не знайдені для повідомлення",
     "trialExpiration": "Ваша безкоштовна пробна версія закінчується {expiration}",
     "freeTrialDesc": "Нові користувачі отримують тижневу безкоштовну пробну версію Pangea Chat",
     "activateTrial": "Безкоштовна 7-денна пробна версія",
@@ -3701,10 +3697,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4951,35 +4943,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -9834,7 +9797,6 @@
     "constructLevelFlowers": "Квіти, опановані слова",
     "filterAndSearch": "Фільтрувати та шукати",
     "participantsOfTotal": "{filled} з {total} гравців",
-    "mapAttributionLabel": "Учасники OpenStreetMap, авторські права та ліцензія",
     "seeAll": "Переглянути всі",
     "seeAllSection": "Переглянути всі {section}",
     "showMoreOptionsHint": "показати більше опцій",
@@ -9980,5 +9942,32 @@
     "ssoTryAnyway": "Все одно спробувати",
     "publicCoursesFilterTooltip": "Показувати лише курси, до яких може приєднатися будь-хто",
     "restrictedCoursesFilterTooltip": "Показувати лише курси, до яких потрібно запитувати дозвіл на приєднання",
-    "viewImageLabel": "Переглянути зображення"
+    "viewImageLabel": "Переглянути зображення",
+    "reportSent": "Звіт надіслано",
+    "reportNotSent": "Ваш звіт не вдалося надіслати. Перевірте з’єднання та спробуйте ще раз.",
+    "reportPointerMessage": "Повідомлення було надіслано в {courseName} — дивіться Безпека",
+    "useActivityImageAsChatBackground": "Використовувати зображення активності як фон чату",
+    "andCertifyIMeetTheMinimumAge": " і підтверджую, що мені виповнилося 13 років, або мінімальний вік, встановлений у моїй країні, якщо він вищий.",
+    "filteredNetworkBlockedTitle": "Ця мережа блокує Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Ця мережа частково блокує Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Що я можу зробити?",
+    "filteredNetworkPhoneAdvice": "Вимкніть Wi-Fi і використовуйте мобільний інтернет.",
+    "filteredNetworkComputerAdvice": "Підключіться до точки доступу свого телефону замість цього Wi-Fi.",
+    "filteredNetworkItHeading": "Для вчителів та ІТ-персоналу",
+    "filteredNetworkItBody": "Попросіть свою ІТ-команду дозволити ці домени:",
+    "filteredNetworkAskForHelp": "Звернутися по допомогу до Pangea",
+    "filteredNetworkHelpExplanation": "Ми надішлемо вам електронний лист, щоб допомогти налаштувати Pangea Chat у цій мережі.",
+    "filteredNetworkHelpWaiting": "Ваш запит буде надіслано, щойно ви підключитеся.",
+    "filteredNetworkHelpSent": "Надіслано. Ми зв'яжемося з вами електронною поштою.",
+    "filteredNetworkHelpRefused": "Не вдалося надіслати ваш запит. Будь ласка, напишіть на support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Ця мережа блокує відео.",
+    "filteredNetworkImagesBlocked": "Ця мережа блокує зображення.",
+    "filteredNetworkMapBlocked": "Ця мережа блокує карту.",
+    "callFullScreenTitle": "Дозволити дзвінкам дзвонити на весь екран",
+    "callFullScreenMessage": "Надійшов дзвінок, коли Pangea Chat було закрито, але ваш телефон міг показати лише невелике сповіщення про нього. Дозвольте дзвінки на весь екран, щоб наступний дзвінок відображався на всьому екрані, навіть коли ваш телефон заблоковано.",
+    "callMicrophoneTitle": "Використовуйте мікрофон для дзвінків",
+    "callMicrophoneMessage": "Pangea Chat потрібен ваш мікрофон для дзвінків, включно з тими, на які ви відповідаєте з екрана блокування.",
+    "callMicrophoneOffTitle": "Ваш дзвінок не з’єднався",
+    "callMicrophoneOffMessage": "Pangea Chat не може використовувати ваш мікрофон. Натисніть, щоб увімкнути його в Налаштуваннях.",
+    "mapCreditsLabel": "Авторство карти: Stadia Maps, OpenMapTiles та OpenStreetMap"
 }

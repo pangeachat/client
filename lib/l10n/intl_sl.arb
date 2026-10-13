@@ -1158,7 +1158,6 @@
     "errorDisableIGCClassDesc": "Pomoč pri slovnici je izklopljena za tečaj, v katerem je ta klepet.",
     "error405Desc": "Prosimo, nastavite svoje jezike v Glavnem meniju > Nastavitve učenja.",
     "termsAndConditions": "Pogoji in določila",
-    "andCertifyIAmAtLeast13YearsOfAge": "in potrjujem, da sem starejši od 16 let.",
     "error502504Desc": "Orodja za prevajanje in slovnico so lahko počasna ali nedosegljiva, medtem ko se bot Pangea posodablja.",
     "error404Desc": "Bot Pangea ni prepričan, kako naj to prevede...",
     "errorPleaseRefresh": "Preučujemo to! Prosimo, osvežite stran in poskusite znova.",
@@ -1466,9 +1465,6 @@
     "why": "Zakaj?",
     "definition": "Definicija",
     "reportToTeacher": "Kom želite prijaviti to sporočilo?",
-    "reportMessageTitle": "{reportingUserId} je prijavil sporočilo od {reportedUserId} v klepetu {roomName}",
-    "reportMessageBody": "Sporočilo: {reportedMessage}\nRazlog: {reason}",
-    "noTeachersFound": "Ni najdenih učiteljev za prijavo",
     "trialExpiration": "Vaša brezplačna preizkusna doba poteče {expiration}",
     "freeTrialDesc": "Novi uporabniki prejmejo enotedensko brezplačno preizkusno različico Pangea Chata",
     "activateTrial": "Brezplačna 7-dnevna preizkusna različica",
@@ -1802,7 +1798,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-05 13:57:52.676336",
+    "@@last_modified": "2026-10-12 13:12:03.179496",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -4469,10 +4465,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
         "type": "String",
         "placeholders": {}
@@ -5716,35 +5708,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -10779,7 +10742,6 @@
     "constructLevelFlowers": "Rože, obvladane besede",
     "filterAndSearch": "Filtriraj in išči",
     "participantsOfTotal": "{filled} od {total} igralcev",
-    "mapAttributionLabel": "Sodelavci OpenStreetMap, avtorske pravice in licenca",
     "seeAll": "Poglej vse",
     "seeAllSection": "Poglej vse {section}",
     "showMoreOptionsHint": "pokaži več možnosti",
@@ -10925,5 +10887,32 @@
     "ssoTryAnyway": "Vseeno poskusi",
     "publicCoursesFilterTooltip": "Prikaži samo tečaje, ki se jim lahko pridruži kdorkoli",
     "restrictedCoursesFilterTooltip": "Prikaži samo tečaje, za katere moraš zaprositi za pridružitev",
-    "viewImageLabel": "Ogled slike"
+    "viewImageLabel": "Ogled slike",
+    "reportSent": "Poročilo poslano",
+    "reportNotSent": "Vašega poročila ni bilo mogoče poslati. Preverite povezavo in poskusite znova.",
+    "reportPointerMessage": "Sporočilo je bilo prijavljeno v {courseName} – glejte Varnost",
+    "useActivityImageAsChatBackground": "Uporabi sliko dejavnosti kot ozadje klepeta",
+    "andCertifyIMeetTheMinimumAge": " in potrjujem, da sem star vsaj 13 let ali minimalno starost, ki je zahtevana v moji državi, če je ta višja.",
+    "filteredNetworkBlockedTitle": "To omrežje blokira Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "To omrežje delno blokira Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Kaj lahko storim?",
+    "filteredNetworkPhoneAdvice": "Izklopite Wi-Fi in namesto tega uporabite mobilne podatke.",
+    "filteredNetworkComputerAdvice": "Namesto tega Wi-Fi-ja se povežite z dostopno točko vašega telefona.",
+    "filteredNetworkItHeading": "Za učitelje in IT osebje",
+    "filteredNetworkItBody": "Prosite svojo IT ekipo, naj dovoli te domene:",
+    "filteredNetworkAskForHelp": "Prosite Pangeo za pomoč",
+    "filteredNetworkHelpExplanation": "Poslali vam bomo e-pošto, da vam pomagamo zagnati Pangea Chat v tem omrežju.",
+    "filteredNetworkHelpWaiting": "Vaša zahteva bo poslana takoj, ko boste povezani.",
+    "filteredNetworkHelpSent": "Poslano. Kontaktirali vas bomo po e-pošti.",
+    "filteredNetworkHelpRefused": "Vaše zahteve nismo mogli poslati. Prosimo, pošljite e-pošto na support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "To omrežje blokira videoposnetke.",
+    "filteredNetworkImagesBlocked": "To omrežje blokira slike.",
+    "filteredNetworkMapBlocked": "To omrežje blokira zemljevid.",
+    "callFullScreenTitle": "Dovoli, da klici zvonijo na celotnem zaslonu",
+    "callFullScreenMessage": "Klic je prispel, medtem ko je bil Pangea Chat zaprt, vendar je vaš telefon zanj lahko prikazal le majhno obvestilo. Dovoli klice na celotnem zaslonu, da bo naslednji klic zvonil na celotnem zaslonu, tudi ko je telefon zaklenjen.",
+    "callMicrophoneTitle": "Uporabite mikrofon za klice",
+    "callMicrophoneMessage": "Pangea Chat potrebuje vaš mikrofon za klice, vključno s klici, na katere odgovorite z zaklenjenega zaslona.",
+    "callMicrophoneOffTitle": "Vaš klic se ni povezal",
+    "callMicrophoneOffMessage": "Pangea Chat ne more uporabljati vašega mikrofona. Tapnite, da ga vklopite v nastavitvah.",
+    "mapCreditsLabel": "Zasluge za zemljevid: Stadia Maps, OpenMapTiles in OpenStreetMap"
 }

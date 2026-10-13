@@ -57,10 +57,11 @@ PurchasePresentation resolvePurchasePresentation({
   }
 }
 
-/// Whether the in-app discount-code field may be shown. Never on iOS, whatever
-/// the storefront: App Review rejects in-app code entry under 3.1.1 even when
-/// the code only pre-fills external checkout, so iOS users enter their code on
-/// the Stripe page instead.
+/// Whether the paywall may show its button to the discount-code page. Never on
+/// iOS, whatever the storefront: App Review rejects an in-app entry point to
+/// code redemption under 3.1.1 even when the code only pre-fills external
+/// checkout (#9316). The page itself still opens from a link on every
+/// platform (subscriptions.instructions.md § Purchase flow).
 bool allowsInAppDiscountCode({
   required bool isWeb,
   required TargetPlatform platform,

@@ -2,10 +2,13 @@ import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:matrix/matrix.dart' show Logs;
+import 'package:matrix/matrix.dart' show Logs, MatrixEvent;
 
+import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_pending_store.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_recorder.dart';
+import 'package:fluffychat/routes/chat/calls/call_half_resume.dart';
+import 'package:fluffychat/routes/chat/calls/call_transcript_outbox.dart';
 import 'call_transcript_sink_test.dart' show spokenWord;
 
 const _callKey = '\$membership:example.com';
@@ -99,6 +102,40 @@ void main() {
     expect(items.single.liveTranscriptContent, {'live': true});
     expect(items.single.transcriptTxnId, 'transcript-txn');
     expect(await store.readVerified(items.single), isNotNull);
+  });
+
+  test('a moved call\'s links survive the durable copy and the resume that '
+      'sends it after a kill (client#9173)', () async {
+    final r = recorder();
+    r.halfLinks = (continuedFrom: 'PHONE', handedOverTo: 'TABLET');
+    record(r);
+    await r.prepare(wasCarrier: true, callKey: _callKey);
+    final item = (await held()).single;
+
+    // The process dies here; the next launch resumes from the durable copy.
+    final resent = <Map<String, dynamic>>[];
+    await CallHalfResumer(
+      store: store,
+      outbox: CallTranscriptOutbox(store: InMemoryPendingCallTranscriptStore()),
+      fetch:
+          ({
+            required String roomId,
+            required String eventId,
+            required String relType,
+            String? from,
+          }) async => (chunk: <MatrixEvent>[], nextBatch: null),
+      upload: (b, {required filename, required contentType}) async =>
+          Uri.parse('mxc://example.com/blob'),
+      send: (roomId, type, content, txn) async {
+        if (type == CallAudioContent.relType) resent.add(content);
+        return '\$sent';
+      },
+      onAudioPosted: (roomId, callKey, owner, device) {},
+    ).resume(owner: item.owner);
+
+    final content = CallAudioContent.fromJson(resent.single)!;
+    expect(content.continuedFrom, 'PHONE');
+    expect(content.handedOverTo, 'TABLET');
   });
 
   test('a confirmed send removes the durable copy', () async {

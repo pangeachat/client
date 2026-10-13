@@ -13,4 +13,5 @@ class UserConstants {
   static const String userProfile = 'profile';
   static const String cefrLevel = 'user_cefr';
   static const String autoIGC = 'auto_igc';
+  static const String selfIdentifiedRole = 'self_identified_role';
 }
