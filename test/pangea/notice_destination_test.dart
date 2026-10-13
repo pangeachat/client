@@ -307,6 +307,17 @@ void main() {
         ).hasNoticeDestination,
         isTrue,
       );
+      // The tap handler skips empty session keys, so they name no place.
+      expect(
+        notice(
+          botDmId,
+          content: {
+            'pangea.activity.id': '',
+            'pangea.activity.session_room_id': joinedSessionId,
+          },
+        ).hasNoticeDestination,
+        isFalse,
+      );
       expect(
         notice(
           botDmId,

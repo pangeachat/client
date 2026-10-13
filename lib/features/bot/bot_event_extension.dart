@@ -35,6 +35,7 @@ extension BotEventExtension on Event {
 
   /// Whether the notice names a place to open: a session or an app path.
   bool get hasNoticeDestination =>
-      (coursePingSessionRoomId != null && coursePingActivityId != null) ||
+      (coursePingSessionRoomId?.isNotEmpty == true &&
+          coursePingActivityId?.isNotEmpty == true) ||
       PRoutes.isAppPath(content.tryGet<String>(noticeDestinationPathKey) ?? '');
 }
