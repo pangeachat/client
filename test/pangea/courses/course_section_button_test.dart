@@ -118,6 +118,11 @@ void main() {
   testWidgets('sits at the end of its header, opposite the title', (
     tester,
   ) async {
+    // A wide screen; a narrow one puts every section's actions under the
+    // title (#9492).
+    tester.view.physicalSize = const Size(1200, 900);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.reset);
     var taps = 0;
     await pump(
       tester,

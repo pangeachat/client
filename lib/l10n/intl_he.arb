@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:11:54.216711",
+    "@@last_modified": "2026-10-13 13:03:42.349889",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -8654,8 +8654,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "אפשר סיוע בכתיבה",
-    "autoIGCToolDescription": "הרץ אוטומטית את כלי Pangea Chat כדי לתקן הודעות שנשלחו לשפה היעד.",
+    "autoIGCToolName": "בדיקה אוטומטית בשליחה",
+    "autoIGCToolDescription": "בדוק את ההודעה שלך לשגיאות כשאתה מקיש על שלח. כשזה כבוי, הקש על כפתור עזרה בכתיבה כדי לבדוק הודעה בעצמך.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10711,7 +10711,6 @@
     "constructLevelFlowers": "פרחים, מילים שנלמדו",
     "filterAndSearch": "סינון וחיפוש",
     "participantsOfTotal": "{filled} מתוך {total} שחקנים",
-    "mapAttributionLabel": "תורמי OpenStreetMap, זכויות יוצרים ורישיון",
     "seeAll": "הצג הכל",
     "seeAllSection": "הצג הכל {section}",
     "showMoreOptionsHint": "הצג אפשרויות נוספות",
@@ -10883,5 +10882,17 @@
     "callMicrophoneTitle": "השתמש/י במיקרופון שלך לשיחות",
     "callMicrophoneMessage": "Pangea Chat זקוק למיקרופון שלך לשיחות, כולל שיחות שאת/ה עונה להן ממסך הנעילה.",
     "callMicrophoneOffTitle": "השיחה שלך לא התחברה",
-    "callMicrophoneOffMessage": "Pangea Chat לא יכול להשתמש במיקרופון שלך. הקש/י כדי להפעיל אותו בהגדרות."
+    "callMicrophoneOffMessage": "Pangea Chat לא יכול להשתמש במיקרופון שלך. הקש/י כדי להפעיל אותו בהגדרות.",
+    "mapCreditsLabel": "קרדיטים למפה: Stadia Maps, OpenMapTiles ו-OpenStreetMap",
+    "activityLaunchFindingCourses": "מוצאים את הקורסים שלך…",
+    "activityLaunchCreatingRoom": "יוצרים את הפעילות שלך…",
+    "activityLaunchOpeningRoom": "פותחים את הפעילות שלך…",
+    "playWithOthers": "שחק עם אחרים",
+    "openRole": "פתוח: {role}",
+    "waitingFor": "ממתין {duration}",
+    "onlineInCourse": "{count} מחוברים ב{course}",
+    "newCourseChat": "צ'אט קורס חדש",
+    "customCourseStepDesc": "קורס הוא סדרה של פעילויות שיחה שעוקבות אחר ספר הלימוד שלך, כדי שהתלמידים שלך יוכלו לעשות יחד כשיעורי בית.",
+    "reopenAppToFinishSwitching": "סגור את האפליקציה לחלוטין ופתח אותה שוב כדי לסיים את המעבר.",
+    "teamCode": "קוד צוות"
 }

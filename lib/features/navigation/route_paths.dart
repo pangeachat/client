@@ -127,6 +127,16 @@ abstract class PRoutes {
   /// Whether [segment] can be a promo code.
   static bool isPromoCode(String segment) => _promoCodeRegExp.hasMatch(segment);
 
+  /// Whether [location] is a path inside this app: relative, with no scheme
+  /// or host, so following it can never leave the app.
+  static bool isAppPath(String location) {
+    final uri = Uri.tryParse(location);
+    return uri != null &&
+        !uri.hasScheme &&
+        !uri.hasAuthority &&
+        location.startsWith('/');
+  }
+
   /// The gift link's rewrite target: the discount page alone over the world
   /// map with the code in its token, re-entered after the login bounce as the
   /// cached destination (PAuthGaurd) the same way [joinWithCode] is.

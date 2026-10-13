@@ -247,7 +247,9 @@ class _CourseChatsPreviewState extends State<CourseChatsPreview> {
                       _course.canChangeStateEvent(EventTypes.SpaceChild))
                     CourseSectionShortcut(
                       icon: Symbols.chat_add_on,
-                      tooltip: l10n.createGroupChat,
+                      label: l10n.newCourseChat,
+                      // As a bare icon, pilot teachers never found it (#9492).
+                      showLabel: true,
                       onPressed: widget.onCreateChat,
                     ),
                   if (showAll)

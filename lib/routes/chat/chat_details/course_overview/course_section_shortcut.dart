@@ -13,25 +13,42 @@ import 'package:fluffychat/routes/chat/chat_details/course_overview/course_secti
 class CourseSectionShortcut extends StatelessWidget {
   final IconData icon;
 
-  /// The accessible name too — the control has no visible label.
-  final String tooltip;
+  /// The tooltip and accessible name, and the visible label when [showLabel].
+  final String label;
+
+  /// For a shortcut people miss as a bare icon (#9492).
+  final bool showLabel;
+
   final VoidCallback onPressed;
 
   const CourseSectionShortcut({
     required this.icon,
-    required this.tooltip,
+    required this.label,
+    required this.showLabel,
     required this.onPressed,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return IconButton.filledTonal(
-      icon: Icon(icon),
-      // The header's own section glyph, so the row's icons match.
-      iconSize: CourseSectionHeader.iconSize,
-      tooltip: tooltip,
-      onPressed: onPressed,
+    // The header's own section glyph size, so the row's icons match.
+    final glyph = Icon(icon, size: CourseSectionHeader.iconSize);
+    if (!showLabel) {
+      return IconButton.filledTonal(
+        icon: glyph,
+        tooltip: label,
+        onPressed: onPressed,
+      );
+    }
+    return Tooltip(
+      message: label,
+      // The visible label already names the button for a screen reader.
+      excludeFromSemantics: true,
+      child: FilledButton.tonalIcon(
+        icon: glyph,
+        label: Text(label),
+        onPressed: onPressed,
+      ),
     );
   }
 }

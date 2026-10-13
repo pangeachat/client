@@ -1933,7 +1933,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-12 13:11:56.811532",
+    "@@last_modified": "2026-10-13 13:03:44.341739",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8640,8 +8640,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "წერის დახმარების ჩართვა",
-    "autoIGCToolDescription": "ავტომატურად გაწვდეთ Pangea Chat ინსტრუმენტები გაგზავნილი შეტყობინებების მიზნობრივი ენაზე გასასწორებლად.",
+    "autoIGCToolName": "ავტომატური შემოწმება გაგზავნისას",
+    "autoIGCToolDescription": "შეამოწმეთ თქვენი შეტყობინება შეცდომებზე გაგზავნის ღილაკზე დაჭერისას. როდესაც ეს გამორთულია, შეტყობინების შესამოწმებლად დააჭირეთ წერის დამხმარე ღილაკს.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10697,7 +10697,6 @@
     "constructLevelFlowers": "ყვავილები, ათვისებული სიტყვები",
     "filterAndSearch": "გაფილტვრა და ძიება",
     "participantsOfTotal": "{filled} / {total} მოთამაშე",
-    "mapAttributionLabel": "OpenStreetMap-ის კონტრიბუტორები, საავტორო უფლებები და ლიცენზია",
     "seeAll": "ყველას ნახვა",
     "seeAllSection": "ყველა {section}-ის ნახვა",
     "showMoreOptionsHint": "მეტი ვარიანტის ჩვენება",
@@ -10869,5 +10868,17 @@
     "callMicrophoneTitle": "გამოიყენეთ მიკროფონი ზარებისთვის",
     "callMicrophoneMessage": "Pangea Chat-ს სჭირდება თქვენი მიკროფონი ზარებისთვის, მათ შორის ზარებისთვის, რომლებსაც უპასუხებთ დაბლოკილი ეკრანიდან.",
     "callMicrophoneOffTitle": "თქვენი ზარი არ დაკავშირდა",
-    "callMicrophoneOffMessage": "Pangea Chat-ს არ შეუძლია თქვენი მიკროფონის გამოყენება. შეეხეთ, რომ ჩართოთ პარამეტრებში."
+    "callMicrophoneOffMessage": "Pangea Chat-ს არ შეუძლია თქვენი მიკროფონის გამოყენება. შეეხეთ, რომ ჩართოთ პარამეტრებში.",
+    "mapCreditsLabel": "რუკის კრედიტები: Stadia Maps, OpenMapTiles და OpenStreetMap",
+    "activityLaunchFindingCourses": "თქვენი კურსების მოძიება…",
+    "activityLaunchCreatingRoom": "თქვენი აქტივობის შექმნა…",
+    "activityLaunchOpeningRoom": "თქვენი აქტივობის გახსნა…",
+    "playWithOthers": "ითამაშეთ სხვებთან ერთად",
+    "openRole": "ღია: {role}",
+    "waitingFor": "ლოდინი {duration}",
+    "onlineInCourse": "{count} ონლაინ {course}-ში",
+    "newCourseChat": "ახალი კურსის ჩეთი",
+    "customCourseStepDesc": "კურსი არის სასაუბრო აქტივობების ნაკრები, რომელიც მიჰყვება თქვენს სახელმძღვანელოს, რათა თქვენმა სტუდენტებმა ერთად შეასრულონ საშინაო დავალების სახით.",
+    "reopenAppToFinishSwitching": "გთხოვთ, მთლიანად დახუროთ აპლიკაცია და ხელახლა გახსნათ, რომ გადართვა დასრულდეს.",
+    "teamCode": "გუნდის კოდი"
 }

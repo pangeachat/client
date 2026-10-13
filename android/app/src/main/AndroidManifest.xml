@@ -73,9 +73,13 @@
                    android:host="matrix.to"/>
             </intent-filter> -->
 
-            <!-- Android App Links: shared links (course /<code>, activity
-                 /<uuid>) tapped anywhere open the installed app with the
-                 route intact, like iOS universal links. Verified against
+            <!-- Android App Links: the inbound link shapes tapped anywhere
+                 open the installed app with the route intact, like iOS
+                 universal links. Only these paths are claimed: the web
+                 sign-in callback /auth.html and the /home sign-in pages must
+                 stay in the browser, and an intent filter cannot leave out a
+                 single path (#9441). A new inbound path shape goes here and
+                 in app_links_manifest_test.dart. Verified against
                  /.well-known/assetlinks.json served on both hosts
                  (joining-courses.instructions.md, Deep Linking). -->
             <intent-filter android:autoVerify="true">
@@ -84,6 +88,16 @@
                <category android:name="android.intent.category.BROWSABLE" />
                <data android:scheme="https" android:host="app.pangea.chat" />
                <data android:scheme="https" android:host="app.staging.pangea.chat" />
+               <!-- The root with any query, and a bare host with no slash. -->
+               <data android:path="/" />
+               <data android:path="" />
+               <!-- Course join code: exactly seven characters. -->
+               <data android:pathPattern="/......." />
+               <!-- Activity uuid: exactly 36 characters. -->
+               <data android:pathPattern="/...................................." />
+               <data android:pathPrefix="/invite_user/" />
+               <data android:pathPrefix="/room/" />
+               <data android:pathPrefix="/gift/" />
             </intent-filter>
             <!-- Pangea# -->
 
@@ -122,12 +136,15 @@
                 <data android:mimeType="*/*" />
             </intent-filter>
 
-            <!-- Custom scheme (no autoVerify) -->
+            <!-- Custom scheme (no autoVerify), on every path: the web
+                 "Open in app" bar opens it from pages App Links leave to the
+                 browser. -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data android:scheme="pangea" android:host="app.pangea.chat"/>
+                <data android:scheme="pangea" android:host="app.staging.pangea.chat"/>
             </intent-filter>
 
             <meta-data

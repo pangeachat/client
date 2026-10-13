@@ -15,6 +15,8 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
+import 'package:fluffychat/features/join_codes/join_code_constants.dart';
+import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/launch_activity_session.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
@@ -120,5 +122,33 @@ void main() {
     await seedActivityPlanState(client, roomId);
     await launch.timeout(const Duration(seconds: 2));
     expect(returned, isTrue);
+  });
+
+  // #9357 — the loading dialog shows each stage, so they must arrive in order
+  // and the last one must arrive before the sync wait, not after it.
+  test('reports every stage in order before waiting for sync', () async {
+    const roomId = '!1234:fakeServer.notExisting';
+    final stages = <ActivityLaunchStage>[];
+    final launch = client.launchActivitySession(
+      plan(),
+      null,
+      onStage: stages.add,
+    );
+
+    for (var i = 0; i < 50 && stages.length < 3; i++) {
+      await Future.delayed(const Duration(milliseconds: 20));
+    }
+    expect(stages, ActivityLaunchStage.values);
+
+    await seedActivityPlanState(client, roomId);
+    await launch.timeout(const Duration(seconds: 2));
+  });
+
+  test('join rules use a join code requested ahead of time', () async {
+    final event = await client.generateCustomJoinRules(
+      JoinRules.knock,
+      joinCode: Future.value('early-code'),
+    );
+    expect(event.content[JoinCodeConstants.accessCode], 'early-code');
   });
 }

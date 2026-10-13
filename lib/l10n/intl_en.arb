@@ -4273,6 +4273,9 @@
     "letsGo": "Let's go",
     "chooseRole": "Choose a role!",
     "chooseRoleToParticipate": "Choose a role to participate!",
+    "activityLaunchFindingCourses": "Finding your courses…",
+    "activityLaunchCreatingRoom": "Creating your activity…",
+    "activityLaunchOpeningRoom": "Opening your activity…",
     "waitingToFillRole": "Waiting to fill {num} roles...",
     "@waitingToFillRole": {
         "type": "int",
@@ -4831,8 +4834,8 @@
     "newCourseAccess": "By default, courses are publicly searchable and require admin approval to join. You can edit these settings at any time.",
     "onboardingLanguagesTitle": "What language are you learning?",
     "supportSubtitle": "Questions? We're here to help!",
-    "autoIGCToolName": "Enable writing assistance",
-    "autoIGCToolDescription": "Automatically run Pangea Chat tools to correct sent messages to target language.",
+    "autoIGCToolName": "Autocheck on send",
+    "autoIGCToolDescription": "Check your message for mistakes when you tap send. When this is off, tap the writing assistance button to check a message yourself.",
     "emptyAudioError": "Recording failed. Please check your audio permissions and try again.",
     "spanTypeSpelling": "Spelling",
     "spanTypePunctuation": "Punctuation",
@@ -5072,6 +5075,34 @@
     },
     "vocabLevelsDescSeed": "This is where new vocab words will appear!",
     "readingAssistanceTutorialCollectToken": "Select words to learn more about them",
+    "playWithOthers": "Play with others",
+    "openRole": "Open: {role}",
+    "@openRole": {
+        "placeholders": {
+            "role": {
+                "type": "String"
+            }
+        }
+    },
+    "waitingFor": "Waiting {duration}",
+    "@waitingFor": {
+        "placeholders": {
+            "duration": {
+                "type": "String"
+            }
+        }
+    },
+    "onlineInCourse": "{count} online in {course}",
+    "@onlineInCourse": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            },
+            "course": {
+                "type": "String"
+            }
+        }
+    },
     "requireAnalyticsAccessTitle": "Require analytics access to join",
     "requireAnalyticsAccessDesc": "Participants must grant access to their learning analytics to join this course",
     "moreOptions": "More options",
@@ -5104,6 +5135,7 @@
     "pickCefrLevelStudentStepTitle": "What level are you?",
     "pickCefrLevelStepSubtitle": "You can change this later",
     "customCourseStepTitle": "Fill this form to get a custom course",
+    "customCourseStepDesc": "A course is a set of conversation activities that follow your textbook, for your students to do together as homework.",
     "courseCodeStepErrorMessage": "Please check your code and try again",
     "institution": "Institution",
     "customCourseTextbookHint": "Tell us what textbook you use, or describe your curriculum",
@@ -5280,8 +5312,8 @@
             }
         }
     },
-    "mapAttributionLabel": "OpenStreetMap contributors, copyright and license",
-    "@mapAttributionLabel": {},
+    "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles and OpenStreetMap",
+    "@mapCreditsLabel": {},
     "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
     "abDisplayName": "Abkhazian",
     "elDisplayName": "Greek",
@@ -5826,5 +5858,17 @@
     "filteredNetworkMapBlocked": "This network blocks the map.",
     "@filteredNetworkMapBlocked": {
         "description": "Note shown over the world map when the network blocks the map."
+    },
+    "newCourseChat": "New course chat",
+    "@newCourseChat": {
+        "description": "Label of the button in the course page's Chats section header that creates a new group chat in the course. Shown to course admins."
+    },
+    "teamCode": "Team code",
+    "@teamCode": {
+        "description": "Title of the prompt for the Pangea team's code, which opens the hidden environment switcher on the login page."
+    },
+    "reopenAppToFinishSwitching": "Close the app completely and open it again to finish switching.",
+    "@reopenAppToFinishSwitching": {
+        "description": "Shown after a Pangea team member switches the app between the production and staging servers; the switch applies on the next launch."
     }
 }

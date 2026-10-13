@@ -55,7 +55,6 @@ class CourseLeaderboardPage extends StatelessWidget {
                       .floorToDouble();
               // Every member is one Tab stop, the arrow keys moving down the
               // page in reading order; the invite row after them is its own.
-              // An admin appears twice, so the ids carry which.
               return RovingFocusGroup(
                 ids: [
                   for (final user in board.admins) 'admin:${user.id}',

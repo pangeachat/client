@@ -1259,7 +1259,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-12 13:12:07.515130",
+    "@@last_modified": "2026-10-13 13:03:51.046533",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -8692,8 +8692,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "啟用寫作輔助",
-    "autoIGCToolDescription": "自動運行 Pangea Chat 工具以將發送的消息更正為目標語言。",
+    "autoIGCToolName": "傳送時自動檢查",
+    "autoIGCToolDescription": "當你點擊傳送時，檢查你的訊息是否有錯誤。關閉此功能後，請點擊寫作輔助按鈕自行檢查訊息。",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10754,7 +10754,6 @@
     "constructLevelFlowers": "花朵，已掌握嘅詞語",
     "filterAndSearch": "篩選同搜尋",
     "participantsOfTotal": "{filled}/{total} 位玩家",
-    "mapAttributionLabel": "OpenStreetMap 貢獻者、版權及許可",
     "seeAll": "查看全部",
     "seeAllSection": "查看全部{section}",
     "showMoreOptionsHint": "顯示更多選項",
@@ -10926,5 +10925,17 @@
     "callMicrophoneTitle": "通話時使用咪高風",
     "callMicrophoneMessage": "Pangea Chat 需要使用你的咪高風進行通話，包括從鎖定畫面接聽的通話。",
     "callMicrophoneOffTitle": "你的通話未能連接",
-    "callMicrophoneOffMessage": "Pangea Chat 無法使用你的咪高風。輕按以在「設定」中開啟。"
+    "callMicrophoneOffMessage": "Pangea Chat 無法使用你的咪高風。輕按以在「設定」中開啟。",
+    "mapCreditsLabel": "地圖來源：Stadia Maps、OpenMapTiles 同 OpenStreetMap",
+    "activityLaunchFindingCourses": "搵緊你嘅課程…",
+    "activityLaunchCreatingRoom": "建立緊你嘅活動…",
+    "activityLaunchOpeningRoom": "開緊你嘅活動…",
+    "playWithOthers": "同其他人玩",
+    "openRole": "開放：{role}",
+    "waitingFor": "等緊 {duration}",
+    "onlineInCourse": "{count} 個喺 {course} 度上線",
+    "newCourseChat": "新課程聊天",
+    "customCourseStepDesc": "課程係一系列對話活動，學生可以跟住你嘅教科書，一齊做功課。",
+    "reopenAppToFinishSwitching": "請完全關閉應用程式，然後重新開啟以完成切換。",
+    "teamCode": "團隊代碼"
 }

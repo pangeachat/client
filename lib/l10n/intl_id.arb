@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-12 13:11:55.350615",
+    "@@last_modified": "2026-10-13 13:03:43.310498",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -7843,8 +7843,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Aktifkan bantuan penulisan",
-    "autoIGCToolDescription": "Secara otomatis menjalankan alat Pangea Chat untuk memperbaiki pesan yang dikirim ke bahasa target.",
+    "autoIGCToolName": "Periksa otomatis saat kirim",
+    "autoIGCToolDescription": "Periksa pesan Anda dari kesalahan saat Anda mengetuk kirim. Jika ini mati, ketuk tombol bantuan menulis untuk memeriksa pesan sendiri.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9870,7 +9870,6 @@
     "constructLevelFlowers": "Bunga, kata-kata yang dikuasai",
     "filterAndSearch": "Filter dan cari",
     "participantsOfTotal": "{filled} dari {total} pemain",
-    "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta, dan lisensi",
     "seeAll": "Lihat semua",
     "seeAllSection": "Lihat semua {section}",
     "showMoreOptionsHint": "tampilkan opsi lainnya",
@@ -10042,5 +10041,17 @@
     "callMicrophoneTitle": "Gunakan mikrofon Anda untuk panggilan",
     "callMicrophoneMessage": "Pangea Chat memerlukan mikrofon Anda untuk panggilan, termasuk panggilan yang Anda jawab dari layar kunci.",
     "callMicrophoneOffTitle": "Panggilan Anda tidak tersambung",
-    "callMicrophoneOffMessage": "Pangea Chat tidak dapat menggunakan mikrofon Anda. Ketuk untuk mengaktifkannya di Pengaturan."
+    "callMicrophoneOffMessage": "Pangea Chat tidak dapat menggunakan mikrofon Anda. Ketuk untuk mengaktifkannya di Pengaturan.",
+    "mapCreditsLabel": "Kredit peta: Stadia Maps, OpenMapTiles, dan OpenStreetMap",
+    "activityLaunchFindingCourses": "Mencari kursus Anda…",
+    "activityLaunchCreatingRoom": "Membuat aktivitas Anda…",
+    "activityLaunchOpeningRoom": "Membuka aktivitas Anda…",
+    "playWithOthers": "Bermain dengan yang lain",
+    "openRole": "Buka: {role}",
+    "waitingFor": "Menunggu {duration}",
+    "onlineInCourse": "{count} daring di {course}",
+    "newCourseChat": "Obrolan kursus baru",
+    "customCourseStepDesc": "Kursus adalah serangkaian aktivitas percakapan yang mengikuti buku teks Anda, untuk dikerjakan siswa Anda bersama sebagai pekerjaan rumah.",
+    "reopenAppToFinishSwitching": "Tutup aplikasi sepenuhnya dan buka lagi untuk menyelesaikan peralihan.",
+    "teamCode": "Kode tim"
 }

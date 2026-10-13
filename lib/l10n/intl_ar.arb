@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-12 13:11:48.600052",
+    "@@last_modified": "2026-10-13 13:03:39.731287",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -8050,8 +8050,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "تفعيل مساعدة الكتابة",
-    "autoIGCToolDescription": "تشغيل أدوات دردشة بانجيا تلقائيًا لتصحيح الرسائل المرسلة إلى اللغة المستهدفة.",
+    "autoIGCToolName": "تدقيق تلقائي عند الإرسال",
+    "autoIGCToolDescription": "تدقيق رسالتك بحثًا عن الأخطاء عند النقر على إرسال. عندما يكون هذا الخيار غير مفعّل، انقر على زر مساعدة الكتابة لتدقيق الرسالة بنفسك.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10103,7 +10103,6 @@
     "constructLevelFlowers": "الزهور، كلمات متقنة",
     "filterAndSearch": "تصفية وبحث",
     "participantsOfTotal": "{filled} من أصل {total} لاعبين",
-    "mapAttributionLabel": "مساهمو OpenStreetMap، حقوق النشر والترخيص",
     "seeAll": "مشاهدة الكل",
     "seeAllSection": "مشاهدة كل {section}",
     "showMoreOptionsHint": "عرض المزيد من الخيارات",
@@ -10275,5 +10274,17 @@
     "callMicrophoneTitle": "استخدم الميكروفون للمكالمات",
     "callMicrophoneMessage": "يحتاج Pangea Chat إلى الميكروفون الخاص بك للمكالمات، بما في ذلك المكالمات التي تجيب عليها من شاشة القفل.",
     "callMicrophoneOffTitle": "لم يتم توصيل مكالمتك",
-    "callMicrophoneOffMessage": "لا يمكن لـ Pangea Chat استخدام الميكروفون الخاص بك. انقر لتشغيله في الإعدادات."
+    "callMicrophoneOffMessage": "لا يمكن لـ Pangea Chat استخدام الميكروفون الخاص بك. انقر لتشغيله في الإعدادات.",
+    "mapCreditsLabel": "اعتمادات الخريطة: Stadia Maps، OpenMapTiles وOpenStreetMap",
+    "activityLaunchFindingCourses": "جارٍ العثور على دوراتك التدريبية…",
+    "activityLaunchCreatingRoom": "جارٍ إنشاء نشاطك…",
+    "activityLaunchOpeningRoom": "جارٍ فتح نشاطك…",
+    "playWithOthers": "العب مع الآخرين",
+    "openRole": "مفتوح: {role}",
+    "waitingFor": "في انتظار {duration}",
+    "onlineInCourse": "{count} متصلون في {course}",
+    "newCourseChat": "محادثة دورة جديدة",
+    "customCourseStepDesc": "الدورة التدريبية هي مجموعة من أنشطة المحادثة التي تتبع كتابك المدرسي، ليقوم بها طلابك معًا كواجب منزلي.",
+    "reopenAppToFinishSwitching": "أغلق التطبيق تمامًا وافتحه مرة أخرى لإنهاء التبديل.",
+    "teamCode": "رمز الفريق"
 }

@@ -1320,7 +1320,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-12 13:12:05.231609",
+    "@@last_modified": "2026-10-13 13:03:49.823271",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -8690,8 +8690,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "రాయడం సహాయాన్ని ప్రారంభించండి",
-    "autoIGCToolDescription": "సమర్పించిన సందేశాలను లక్ష్య భాషకు సరిదిద్దడానికి పాంజియా చాట్ సాధనాలను ఆటోమేటిక్‌గా నడపండి.",
+    "autoIGCToolName": "పంపినప్పుడు ఆటోచెక్ చేయండి",
+    "autoIGCToolDescription": "మీరు పంపినప్పుడు మీ సందేశంలో తప్పులు ఉన్నాయో లేదో తనిఖీ చేయండి. ఇది ఆఫ్ చేయబడితే, మీరే సందేశాన్ని తనిఖీ చేయడానికి రైటింగ్ అసిస్టెన్స్ బటన్‌ను నొక్కండి.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10747,7 +10747,6 @@
     "constructLevelFlowers": "ఫ్లవర్స్, నేర్చుకున్న పదాలు",
     "filterAndSearch": "ఫిల్టర్ చేసి వెతకండి",
     "participantsOfTotal": "{total} ఆటగాళ్ళలో {filled} మంది",
-    "mapAttributionLabel": "ఓపెన్‌స్ట్రీట్‌మ్యాప్ కంట్రిబ్యూటర్లు, కాపీరైట్ మరియు లైసెన్స్",
     "seeAll": "అన్నీ చూడండి",
     "seeAllSection": "అన్నీ చూడండి {section}",
     "showMoreOptionsHint": "మరిన్ని ఎంపికలను చూపించు",
@@ -10919,5 +10918,17 @@
     "callMicrophoneTitle": "కాల్స్ కోసం మీ మైక్రోఫోన్‌ను ఉపయోగించండి",
     "callMicrophoneMessage": "లాక్ స్క్రీన్ నుండి మీరు సమాధానం ఇచ్చే కాల్‌లతో సహా, కాల్స్ కోసం పాంగియా చాట్‌కు మీ మైక్రోఫోన్ అవసరం.",
     "callMicrophoneOffTitle": "మీ కాల్ కనెక్ట్ అవ్వలేదు",
-    "callMicrophoneOffMessage": "పాంగియా చాట్ మీ మైక్రోఫోన్‌ను ఉపయోగించదు. సెట్టింగ్‌లలో దాన్ని ఆన్ చేయడానికి నొక్కండి."
+    "callMicrophoneOffMessage": "పాంగియా చాట్ మీ మైక్రోఫోన్‌ను ఉపయోగించదు. సెట్టింగ్‌లలో దాన్ని ఆన్ చేయడానికి నొక్కండి.",
+    "mapCreditsLabel": "మ్యాప్ క్రెడిట్‌లు: స్టాడియా మ్యాప్స్, ఓపెన్‌మ్యాప్‌టైల్స్ మరియు ఓపెన్‌స్ట్రీట్‌మ్యాప్",
+    "activityLaunchFindingCourses": "మీ కోర్సులను కనుగొంటున్నాము…",
+    "activityLaunchCreatingRoom": "మీ కార్యాచరణను సృష్టిస్తున్నాము…",
+    "activityLaunchOpeningRoom": "మీ కార్యాచరణను తెరుస్తున్నాము…",
+    "playWithOthers": "ఇతరులతో ఆడుకోండి",
+    "openRole": "తెరువు: {role}",
+    "waitingFor": "{duration} వేచి ఉంది",
+    "onlineInCourse": "{count} మంది {course}లో ఆన్‌లైన్‌లో ఉన్నారు",
+    "newCourseChat": "కొత్త కోర్సు చాట్",
+    "customCourseStepDesc": "ఒక కోర్సు అనేది మీ పాఠ్యపుస్తకాన్ని అనుసరించే సంభాషణ కార్యకలాపాల సమితి, మీ విద్యార్థులు హోంవర్క్‌గా కలిసి చేయడానికి.",
+    "reopenAppToFinishSwitching": "మారడాన్ని పూర్తి చేయడానికి యాప్‌ను పూర్తిగా మూసివేసి, మళ్లీ తెరవండి.",
+    "teamCode": "టీమ్ కోడ్"
 }

@@ -159,6 +159,18 @@ class RoomSummaryResponse {
     );
   }
 
+  /// The plan's roles no joined member holds — the seats a joiner can take.
+  /// Empty while the plan is still hydrating.
+  List<String> get openRoleIds {
+    final plan = resolvedActivityPlan;
+    if (plan == null) return const [];
+    final taken = joinedUsersWithRoles.keys.toSet();
+    return [
+      for (final id in plan.roles.keys)
+        if (!taken.contains(id)) id,
+    ];
+  }
+
   int get joinedMemberCount => membershipSummary.values
       .where((membership) => membership == Membership.join.name)
       .length;

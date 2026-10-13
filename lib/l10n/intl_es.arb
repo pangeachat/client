@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-12 13:11:50.847723",
+    "@@last_modified": "2026-10-13 13:03:41.047737",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -6055,8 +6055,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Habilitar asistencia de escritura",
-    "autoIGCToolDescription": "Ejecutar automáticamente las herramientas de Pangea Chat para corregir los mensajes enviados al idioma de destino.",
+    "autoIGCToolName": "Revisión automática al enviar",
+    "autoIGCToolDescription": "Revisa tu mensaje en busca de errores al tocar enviar. Cuando esta opción está desactivada, toca el botón de asistencia de escritura para revisar un mensaje tú mismo.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -8030,7 +8030,6 @@
     "constructLevelFlowers": "Flores, palabras dominadas",
     "filterAndSearch": "Filtrar y buscar",
     "participantsOfTotal": "{filled} de {total} jugadores",
-    "mapAttributionLabel": "Colaboradores de OpenStreetMap, derechos de autor y licencia",
     "seeAll": "Ver todo",
     "seeAllSection": "Ver todo {section}",
     "showMoreOptionsHint": "mostrar más opciones",
@@ -8198,5 +8197,17 @@
     "callMicrophoneTitle": "Usa tu micrófono para llamadas",
     "callMicrophoneMessage": "Pangea Chat necesita tu micrófono para las llamadas, incluidas las que respondas desde la pantalla de bloqueo.",
     "callMicrophoneOffTitle": "Tu llamada no se conectó",
-    "callMicrophoneOffMessage": "Pangea Chat no puede usar tu micrófono. Toca para activarlo en Ajustes."
+    "callMicrophoneOffMessage": "Pangea Chat no puede usar tu micrófono. Toca para activarlo en Ajustes.",
+    "mapCreditsLabel": "Créditos del mapa: Stadia Maps, OpenMapTiles y OpenStreetMap",
+    "activityLaunchFindingCourses": "Buscando tus cursos…",
+    "activityLaunchCreatingRoom": "Creando tu actividad…",
+    "activityLaunchOpeningRoom": "Abriendo tu actividad…",
+    "playWithOthers": "Jugar con otros",
+    "openRole": "Abierto: {role}",
+    "waitingFor": "Esperando {duration}",
+    "onlineInCourse": "{count} en línea en {course}",
+    "newCourseChat": "Nuevo chat del curso",
+    "customCourseStepDesc": "Un curso es un conjunto de actividades de conversación que siguen tu libro de texto, para que tus estudiantes las hagan juntos como tarea.",
+    "reopenAppToFinishSwitching": "Cierra la aplicación por completo y vuelve a abrirla para terminar de cambiar.",
+    "teamCode": "Código de equipo"
 }

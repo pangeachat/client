@@ -14,7 +14,7 @@ extension SpaceRoomTokenExtension on Room {
     final sessionRoomId = ping?.coursePingSessionRoomId;
     final activityId = ping?.coursePingActivityId;
     if (sessionRoomId != null && activityId != null) {
-      return client.coursePingLocation(
+      return client.activitySessionLocation(
         current,
         courseRoomId: id,
         sessionRoomId: sessionRoomId,
