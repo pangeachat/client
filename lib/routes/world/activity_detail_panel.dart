@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
@@ -12,6 +11,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/world/activity_course_resolver.dart';
+import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Activity detail, rendered as a first-class `left=activity:<id>` panel over the
@@ -56,24 +56,6 @@ class _LeftPanelActivityDetailsSubpageState
   void initState() {
     super.initState();
     _resolveParent();
-  }
-
-  /// Consume an activity id ferried across the login bounce
-  /// (PAuthGaurd.consumeCachedJoinCode, #7821). Called from exactly two
-  /// places, NOT from initState: a mount alone proved lossy — a competing
-  /// boot-time navigation can dispose this panel right after initState, and
-  /// clearing there consumed the ferry without the activity ever being seen
-  /// (the "landed in the world, no activity" QA report). Instead the cache
-  /// clears when a rendered frame SURVIVES (the panel is really on screen —
-  /// an interrupted attempt retries on the next logged-in landing), and
-  /// unconditionally on an explicit close/back — a deliberate dismissal must
-  /// never be resurrected by the ferry (the "uncloseable activity" QA
-  /// report). Fire-and-forget; a plain in-app open finds no cache and this
-  /// no-ops.
-  void _consumeFerriedActivity() {
-    if (SpaceCodeRepo.activityId == widget.param.activityId) {
-      SpaceCodeRepo.clearActivityId();
-    }
   }
 
   @override
@@ -141,23 +123,10 @@ class _LeftPanelActivityDetailsSubpageState
   }
 
   void _close() {
-    _consumeFerriedActivity();
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
     // Drop the activity token (and any legacy loose activity params) via the
     // one shared sweeper — the course context survives a close.
     context.go(WorkspaceNav.dropActivityOverlay(uri));
-  }
-
-  /// Back returns toward the course: pop history if there's something to pop,
-  /// otherwise just drop the activity token. Either way the course context stays
-  /// (the `?m=course:` scope survives) — this never leaves for a standalone open.
-  void _back() {
-    _consumeFerriedActivity();
-    if (context.canPop()) {
-      context.pop();
-    } else {
-      _close();
-    }
   }
 
   @override
@@ -167,13 +136,6 @@ class _LeftPanelActivityDetailsSubpageState
     // is fine; the session launches standalone. The activity view brings its
     // own AppBar (the back/X nav row when embedded), so it renders directly.
     if (!_loading) {
-      // A CONTENT frame survived on screen: consume the ferried id (see
-      // _consumeFerriedActivity — consuming any earlier lost interrupted
-      // opens). Post-frame + mounted so a build torn down before painting
-      // doesn't count as landed; idempotent across rebuilds.
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) _consumeFerriedActivity();
-      });
       return ActivitySessionStartPage(
         activityId: widget.param.activityId,
         parentId: _parentId,
@@ -203,7 +165,9 @@ class _LeftPanelActivityDetailsSubpageState
         children: [
           ActivityLoadingHeader(
             showBack: showBack,
-            onBack: _back,
+            // The same back as the loaded plan's, so the arrow lands on the
+            // same page whether or not the plan has finished resolving.
+            onBack: () => NavigationUtil.backFromActivityPlan(context),
             onClose: _close,
           ),
           const Expanded(

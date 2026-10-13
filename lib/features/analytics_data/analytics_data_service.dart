@@ -566,6 +566,7 @@ class AnalyticsDataService {
     ConstructTypeEnum type,
     String language,
   ) async {
+    await _ensureInitialized();
     final combined = await _analyticsClientGetter.database
         .getAggregatedConstructs(type, language);
 

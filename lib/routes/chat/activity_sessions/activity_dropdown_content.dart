@@ -7,6 +7,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_header_constants.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_header_label.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_status_widget.dart';
+import 'package:fluffychat/widgets/expandable_text.dart';
 
 class ActivityDropdownContent extends StatelessWidget {
   final List<ActivityRoleGoal> goals;
@@ -273,10 +274,12 @@ class _GoalRow extends StatelessWidget {
           ),
         const SizedBox(width: 12.0),
         Expanded(
-          child: Text(
+          // A long goal collapses behind its own "Show more" (#9318). On the
+          // top row that control sits inside the collapse toggle and takes
+          // its own taps; the rest of the row still collapses the list.
+          child: ExpandableText(
             goal.description,
             maxLines: 2,
-            overflow: TextOverflow.ellipsis,
             style: TextStyle(
               fontSize: 15.0,
               height: 1.2,

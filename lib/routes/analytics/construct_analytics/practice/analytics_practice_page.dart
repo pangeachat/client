@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart';
+import 'package:fluffychat/features/journey_checklist/journey_moments.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
@@ -290,6 +291,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       session.updateElapsedTime(DateTime.now().difference(startedAt).inSeconds);
     }
     session.completeSession();
+    JourneyMoments.practiceCompleted(Matrix.of(context).client, widget.type);
     progress.value = session.progress;
     // Idle stops the timer and, via the notifier, flips the panel to the
     // completion view and clears the cluster badge.

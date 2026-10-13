@@ -1,17 +1,26 @@
 package chat.pangea.call_capture
 
+import android.app.Activity
+import android.app.Application
 import android.content.Context
+import android.content.Intent
+import android.os.Build
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.WindowManager
 import java.util.concurrent.ConcurrentLinkedQueue
 import com.cloudwebrtc.webrtc.FlutterWebRTCPlugin
 import com.cloudwebrtc.webrtc.audio.AudioProcessingAdapter
 import com.cloudwebrtc.webrtc.audio.AudioProcessingController
 import io.flutter.embedding.engine.plugins.FlutterPlugin
+import io.flutter.embedding.engine.plugins.activity.ActivityAware
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
+import io.flutter.plugin.common.PluginRegistry
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import kotlin.math.roundToInt
@@ -32,7 +41,11 @@ import kotlin.math.roundToInt
  * what the other person hears.
  */
 class PangeaCallCapturePlugin :
-  FlutterPlugin, MethodChannel.MethodCallHandler, EventChannel.StreamHandler {
+  FlutterPlugin,
+  MethodChannel.MethodCallHandler,
+  EventChannel.StreamHandler,
+  ActivityAware,
+  PluginRegistry.NewIntentListener {
 
   private companion object {
     /// The most recent notification-action claim. Static, because the bridge
@@ -42,9 +55,22 @@ class PangeaCallCapturePlugin :
     @JvmStatic
     var currentActionClaim = 0
 
+    /// The most recent claim on answered rings, by the same rule.
+    @Volatile
+    @JvmStatic
+    var currentAnswerClaim = 0
+
     const val METHOD_CHANNEL = "pangea.chat/call_capture"
     const val EVENT_CHANNEL = "pangea.chat/call_capture/frames"
+
+    /// Its own channel, because the Dart side of [METHOD_CHANNEL] has one
+    /// handler slot and the ongoing call owns it.
+    const val RING_CHANNEL = "pangea.chat/call_ring"
   }
+
+  private var ringChannel: MethodChannel? = null
+  private var answerClaim = 0
+  private var activityBinding: ActivityPluginBinding? = null
 
   private var methodChannel: MethodChannel? = null
   private var eventChannel: EventChannel? = null
@@ -103,6 +129,9 @@ class PangeaCallCapturePlugin :
     eventChannel = EventChannel(binding.binaryMessenger, EVENT_CHANNEL).also {
       it.setStreamHandler(this)
     }
+    ringChannel = MethodChannel(binding.binaryMessenger, RING_CHANNEL).also {
+      it.setMethodCallHandler { call, result -> onRingCall(call, result) }
+    }
     // The WebRTC plugin registered into THIS engine, captured while the global
     // still points at it. flutter_webrtc publishes itself only through a static
     // sharedSingleton that every new instance overwrites in its CONSTRUCTOR --
@@ -122,6 +151,13 @@ class PangeaCallCapturePlugin :
       currentActionClaim = 0
     }
     actionClaim = 0
+    if (answerClaim != 0 && answerClaim == currentAnswerClaim) {
+      IncomingRingService.onAnswer = null
+      currentAnswerClaim = 0
+    }
+    answerClaim = 0
+    ringChannel?.setMethodCallHandler(null)
+    ringChannel = null
     appContext = null
     detach()
     methodChannel?.setMethodCallHandler(null)
@@ -200,6 +236,143 @@ class PangeaCallCapturePlugin :
         result.success(null)
       }
       else -> result.notImplemented()
+    }
+  }
+
+  /**
+   * Ringing for a call while the app is closed. Called from the push
+   * handler's background engine to ring and watch, and from the main engine
+   * to claim answered rings and to stop a ring the app has taken over.
+   */
+  private fun onRingCall(call: MethodCall, result: MethodChannel.Result) {
+    val context = appContext
+    if (context == null) {
+      result.success(null)
+      return
+    }
+    when (call.method) {
+      "ring" -> result.success(
+        IncomingRingService.ring(
+          context,
+          call.argument<String>("ringId") ?: "",
+          call.argument<String>("caller") ?: "",
+          call.argument<Boolean>("video") ?: false,
+          (call.argument<Number>("expiresAt") ?: 0).toLong(),
+          call.argument<String>("channel") ?: "",
+          call.argument<String>("payload") ?: "",
+        ),
+      )
+      "outcome" -> result.success(
+        IncomingRingService.outcome(call.argument<String>("ringId") ?: ""),
+      )
+      "stop" -> {
+        IncomingRingService.stop(context, call.argument<String>("ringId") ?: "")
+        result.success(null)
+      }
+      "full_screen_wanted" -> result.success(
+        IncomingRingService.fullScreenWanted(context),
+      )
+      "full_screen_asked" -> {
+        IncomingRingService.fullScreenAsked(context)
+        result.success(null)
+      }
+      "full_screen_settings" -> {
+        IncomingRingService.openFullScreenSettings(context)
+        result.success(null)
+      }
+      "claim_answers" -> {
+        // Only the engine with the app in it can answer a call, so it claims
+        // the bridge, the way the ongoing call claims its notification's.
+        answerClaim = ++currentAnswerClaim
+        val forward: (String) -> Unit = { payload ->
+          handler.post { ringChannel?.invokeMethod("answered", payload) }
+        }
+        IncomingRingService.onAnswer = forward
+        IncomingRingService.drainAnswers(forward)
+        result.success(null)
+      }
+      else -> result.notImplemented()
+    }
+  }
+
+  override fun onAttachedToActivity(binding: ActivityPluginBinding) {
+    activityBinding = binding
+    binding.addOnNewIntentListener(this)
+    handleRingIntent(binding.activity, binding.activity.intent)
+  }
+
+  override fun onDetachedFromActivityForConfigChanges() = onDetachedFromActivity()
+
+  override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) =
+    onAttachedToActivity(binding)
+
+  override fun onDetachedFromActivity() {
+    activityBinding?.removeOnNewIntentListener(this)
+    activityBinding = null
+  }
+
+  override fun onNewIntent(intent: Intent): Boolean {
+    activityBinding?.activity?.let { handleRingIntent(it, intent) }
+    return false
+  }
+
+  /**
+   * The app opened from a ring. Answer hands the call to the main engine;
+   * the extras are consumed, so the same intent read again after a
+   * configuration change does not answer twice.
+   */
+  private fun handleRingIntent(activity: Activity, intent: Intent?) {
+    intent ?: return
+    val answered = intent.getStringExtra(IncomingRingService.EXTRA_ANSWERED)
+    val shown = intent.getStringExtra(IncomingRingService.EXTRA_SHOWN)
+    if (answered != null) {
+      val ringId = intent.getStringExtra(IncomingRingService.EXTRA_RING_ID)
+      intent.removeExtra(IncomingRingService.EXTRA_ANSWERED)
+      appContext?.let { IncomingRingService.answered(it, ringId, answered) }
+    }
+    intent.removeExtra(IncomingRingService.EXTRA_SHOWN)
+    if (answered != null || shown != null) showOverLockScreen(activity)
+  }
+
+  /**
+   * Lets the app open over the lock screen for the ring that opened it, and
+   * only until it leaves the screen. While it shows over the lock screen the
+   * whole app is usable without unlocking, so that must not outlast the call
+   * it was for: the next time the app comes back, the lock screen is in front
+   * of it again.
+   */
+  private fun showOverLockScreen(activity: Activity) {
+    setShowWhenLocked(activity, true)
+    val app = activity.application
+    app.registerActivityLifecycleCallbacks(
+      object : Application.ActivityLifecycleCallbacks {
+        override fun onActivityStopped(stopped: Activity) {
+          if (stopped !== activity) return
+          setShowWhenLocked(activity, false)
+          app.unregisterActivityLifecycleCallbacks(this)
+        }
+
+        override fun onActivityDestroyed(destroyed: Activity) {
+          if (destroyed === activity) app.unregisterActivityLifecycleCallbacks(this)
+        }
+
+        override fun onActivityCreated(a: Activity, state: Bundle?) {}
+        override fun onActivityStarted(a: Activity) {}
+        override fun onActivityResumed(a: Activity) {}
+        override fun onActivityPaused(a: Activity) {}
+        override fun onActivitySaveInstanceState(a: Activity, state: Bundle) {}
+      },
+    )
+  }
+
+  /// The screen itself is already turned on by the activity's manifest entry.
+  private fun setShowWhenLocked(activity: Activity, on: Boolean) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+      activity.setShowWhenLocked(on)
+    } else {
+      @Suppress("DEPRECATION")
+      val flag = WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+      if (on) activity.window.addFlags(flag) else activity.window.clearFlags(flag)
     }
   }
 

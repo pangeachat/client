@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:cross_file/cross_file.dart';
 import 'package:flutter_shortcuts_new/flutter_shortcuts_new.dart';
 import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
@@ -31,14 +30,12 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
 import 'package:fluffychat/routes/chat_list/app_version_util.dart';
+import 'package:fluffychat/routes/chat_list/chat_invite_dialog.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_view.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
-import 'package:fluffychat/utils/localized_exception_extension.dart';
-import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/show_scaffold_dialog.dart';
 import 'package:fluffychat/utils/show_update_snackbar.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/invite_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
@@ -160,78 +157,7 @@ class ChatListController extends State<ChatList>
 
   void onChatTap(Room room) async {
     if (room.membership == Membership.invite) {
-      // #Pangea
-      final inviteEvent = room.getState(
-        EventTypes.RoomMember,
-        room.client.userID!,
-      );
-      final matrixLocals = MatrixLocals(L10n.of(context));
-      final action = await showInviteDialog<InviteAction>(
-        context,
-        title: room.getLocalizedDisplayname(matrixLocals),
-        message: inviteEvent == null
-            ? L10n.of(context).inviteForMe
-            : inviteEvent.content.tryGet<String>('reason') ??
-                  L10n.of(context).youInvitedBy(
-                    room
-                        .unsafeGetUserFromMemoryOrFallback(inviteEvent.senderId)
-                        .calcDisplayname(i18n: matrixLocals),
-                  ),
-        actions: [
-          InviteDialogAction(
-            label: L10n.of(context).accept,
-            value: InviteAction.accept,
-          ),
-          InviteDialogAction(
-            label: L10n.of(context).decline,
-            value: InviteAction.decline,
-            destructive: true,
-          ),
-          InviteDialogAction(
-            label: L10n.of(context).block,
-            value: InviteAction.block,
-            destructive: true,
-          ),
-        ],
-      );
-      switch (action) {
-        case null:
-          return;
-        case InviteAction.accept:
-          break;
-        case InviteAction.decline:
-          await showFutureLoadingDialog(
-            context: context,
-            future: () => room.leave(),
-          );
-          return;
-        case InviteAction.block:
-          final userId = inviteEvent?.senderId;
-          context.go(
-            WorkspaceNav.openSettings(
-              GoRouterState.of(context).uri,
-              page: userId == null
-                  ? 'security/ignorelist'
-                  : 'security/ignorelist/$userId',
-            ),
-          );
-          return;
-      }
-      if (!mounted) return;
-      // Pangea#
-      final joinResult = await showFutureLoadingDialog(
-        context: context,
-        future: () async {
-          final waitForRoom = room.client.waitForRoomInSync(
-            room.id,
-            join: true,
-          );
-          await room.join();
-          await waitForRoom;
-        },
-        exceptionContext: ExceptionContext.joinRoom,
-      );
-      if (joinResult.error != null) return;
+      if (!await ChatInviteDialog.show(context, room) || !mounted) return;
     }
 
     if (room.membership == Membership.ban) {
@@ -319,105 +245,14 @@ class ChatListController extends State<ChatList>
     context,
   ).client.rooms.where(getRoomFilterByActiveFilter(activeFilter)).toList();
 
+  /// Search filters the learner's own rooms only; it makes no server request
+  /// (#9431).
   bool isSearchMode = false;
-  Future<QueryPublicRoomsResponse>? publicRoomsResponse;
-  String? searchServer;
-  Timer? _coolDown;
-  SearchUserDirectoryResponse? userSearchResult;
-  QueryPublicRoomsResponse? roomSearchResult;
-
-  bool isSearching = false;
-  static const String _serverStoreNamespace = 'im.fluffychat.search.server';
-
-  void setServer() async {
-    final newServer = await showTextInputDialog(
-      useRootNavigator: false,
-      title: L10n.of(context).changeTheHomeserver,
-      context: context,
-      okLabel: L10n.of(context).ok,
-      cancelLabel: L10n.of(context).cancel,
-      prefixText: 'https://',
-      hintText: Matrix.of(context).client.homeserver?.host,
-      initialText: searchServer,
-      keyboardType: TextInputType.url,
-      autocorrect: false,
-      validator: (server) => server.contains('.') == true
-          ? null
-          : L10n.of(context).invalidServerName,
-    );
-    if (newServer == null) return;
-    Matrix.of(context).store.setString(_serverStoreNamespace, newServer);
-    setState(() {
-      searchServer = newServer;
-    });
-    _coolDown?.cancel();
-    _coolDown = Timer(const Duration(milliseconds: 500), _search);
-  }
 
   final TextEditingController searchController = TextEditingController();
   final FocusNode searchFocusNode = FocusNode();
 
-  void _search() async {
-    final client = Matrix.of(context).client;
-    if (!isSearching) {
-      setState(() {
-        isSearching = true;
-      });
-    }
-    SearchUserDirectoryResponse? userSearchResult;
-    QueryPublicRoomsResponse? roomSearchResult;
-    final searchQuery = searchController.text.trim();
-    try {
-      roomSearchResult = await client.queryPublicRooms(
-        server: searchServer,
-        filter: PublicRoomQueryFilter(genericSearchTerm: searchQuery),
-        limit: 20,
-      );
-
-      if (searchQuery.isValidMatrixId &&
-          searchQuery.sigil == '#' &&
-          roomSearchResult.chunk.any(
-                (room) => room.canonicalAlias == searchQuery,
-              ) ==
-              false) {
-        final response = await client.getRoomIdByAlias(searchQuery);
-        final roomId = response.roomId;
-        if (roomId != null) {
-          roomSearchResult.chunk.add(
-            PublishedRoomsChunk(
-              name: searchQuery,
-              guestCanJoin: false,
-              numJoinedMembers: 0,
-              roomId: roomId,
-              worldReadable: false,
-              canonicalAlias: searchQuery,
-            ),
-          );
-        }
-      }
-      userSearchResult = await client.searchUserDirectory(
-        searchController.text,
-        limit: 20,
-      );
-    } catch (e, s) {
-      Logs().w('Searching has crashed', e, s);
-      if (!mounted) return;
-      // #Pangea
-      ScaffoldMessenger.of(context).showSnackBarAnnounced(
-        SnackBar(content: Text(e.toLocalizedString(context))),
-        assertive: true,
-      );
-      // Pangea#
-    }
-    if (!mounted || !isSearchMode) return;
-    setState(() {
-      isSearching = false;
-      this.roomSearchResult = roomSearchResult;
-      this.userSearchResult = userSearchResult;
-    });
-  }
-
-  void onSearchEnter(String text, {bool globalSearch = true}) {
+  void onSearchEnter(String text) {
     if (text.isEmpty) {
       cancelSearch(unfocus: false);
       return;
@@ -426,27 +261,12 @@ class ChatListController extends State<ChatList>
     setState(() {
       isSearchMode = true;
     });
-    _coolDown?.cancel();
-    if (globalSearch) {
-      _coolDown = Timer(const Duration(milliseconds: 500), _search);
-    }
-  }
-
-  void startSearch() {
-    setState(() {
-      isSearchMode = true;
-    });
-    searchFocusNode.requestFocus();
-    _coolDown?.cancel();
-    _coolDown = Timer(const Duration(milliseconds: 500), _search);
   }
 
   void cancelSearch({bool unfocus = true}) {
     setState(() {
       searchController.clear();
       isSearchMode = false;
-      roomSearchResult = userSearchResult = null;
-      isSearching = false;
     });
     if (unfocus) searchFocusNode.unfocus();
   }
@@ -594,9 +414,6 @@ class ChatListController extends State<ChatList>
     _hackyWebRTCFixForWeb();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (mounted) {
-        searchServer = Matrix.of(
-          context,
-        ).store.getString(_serverStoreNamespace);
         Matrix.of(context).backgroundPush?.setupPush();
         UpdateNotifier.showUpdateSnackBar(context);
         // #Pangea
@@ -752,9 +569,6 @@ class ChatListController extends State<ChatList>
 
   @override
   void dispose() {
-    // A search debounced just before the list closes would otherwise run
-    // against a disposed State (CLIENT-CFA).
-    _coolDown?.cancel();
     _intentDataStreamSubscription?.cancel();
     _intentFileStreamSubscription?.cancel();
     //#Pangea
@@ -1306,8 +1120,3 @@ enum ChatContextAction {
   // Pangea#
   block,
 }
-
-// #Pangea
-enum InviteAction { accept, decline, block }
-
-// Pangea#

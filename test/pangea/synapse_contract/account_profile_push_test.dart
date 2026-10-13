@@ -7,8 +7,8 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_access/access_notice_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/notifications/communication_preferences.dart';
 import 'package:fluffychat/features/notifications/notifications_client_extension.dart';
-import 'package:fluffychat/features/notifications/notifications_settings_model.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/features/user/own_profile_client_extension.dart';
 import 'package:fluffychat/features/user/pangea_push_rules_extension.dart';
@@ -77,18 +77,29 @@ void main() {
       );
     });
 
-    test('notification settings write the serializer shape', () async {
-      // Flip relative to the LOCAL cached value — that is what the
-      // extension's equality early-return actually compares against, so
-      // flipping from anything else risks a skipped write.
-      final current = client.notificationSettings.enableEmailNotifs;
-      final model = NotificationsSettingsModel(enableEmailNotifs: !current);
+    test(
+      'the missed-message email choice writes the module\'s shape',
+      () async {
+        // The Synapse module's notice delivery and unsubscribe link read this
+        // event, so both directions are pinned against the server.
+        await client.setMissedMessageEmailsEnabled(false);
+        var data = await accountData(PangeaEventTypes.communicationPreferences);
+        expect(data['version'], CommunicationPreferences.version);
+        expect(data['source'], CommunicationPreferences.sourceApp);
+        expect(data['updated_ts'], isA<int>());
+        expect(
+          data['refused'],
+          contains(CommunicationPreferences.missedMessageCategory),
+        );
 
-      await client.setNotificationsSettings(model);
-
-      final data = await accountData(PangeaEventTypes.notificationSettings);
-      expect(data, model.toJson());
-    });
+        await client.setMissedMessageEmailsEnabled(true);
+        data = await accountData(PangeaEventTypes.communicationPreferences);
+        expect(
+          data['refused'],
+          isNot(contains(CommunicationPreferences.missedMessageCategory)),
+        );
+      },
+    );
 
     test('the p.user_profile bundle round-trips through the parser', () async {
       // Profile.saveProfileData is MatrixState-coupled, so this writes the

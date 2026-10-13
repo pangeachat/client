@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
@@ -53,11 +52,6 @@ class SettingsChatView extends StatelessWidget {
                 setting: AppSettings.swipeRightToLeftToReply,
               ),
               // #Pangea
-              SwitchListTile.adaptive(
-                value: AppConfig.useActivityImageAsChatBackground,
-                title: Text(L10n.of(context).useActivityImageAsChatBackground),
-                onChanged: controller.setUseActivityImageBackground,
-              ),
               // Divider(color: theme.dividerColor),
               // ListTile(
               //   title: Text(

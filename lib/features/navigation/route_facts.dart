@@ -208,8 +208,9 @@ ActivityTokenParam? activityFor(GoRouterState state) =>
 
 /// The course join code an open URI carries — the `addcourse` token's
 /// `private/<code>` leaf (the `LegacyRedirects` join-link rewrite target),
-/// decoded, or null. The auth guard reads this to ferry an inbound join code
-/// across the login bounce (PAuthGaurd.roomsRedirect, #7524).
+/// decoded, or null. Onboarding reads this out of the cached login-bounce
+/// destination to join a brand-new user (ClientCourseProvider, #7524), and
+/// the DM invite consumer reads it to wait while a coded join is in progress.
 String? joinCodeFor(Uri uri) {
   for (final token in parseOpenPanels(uri).left) {
     final param = token.param;

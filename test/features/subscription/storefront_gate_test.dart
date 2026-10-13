@@ -76,4 +76,15 @@ void main() {
       );
     });
   });
+  group('allowsInAppDiscountCode', () {
+    test('hidden on iOS only (Apple 3.1.1), shown on web everywhere', () {
+      for (final p in TargetPlatform.values) {
+        expect(
+          allowsInAppDiscountCode(isWeb: false, platform: p),
+          p != TargetPlatform.iOS,
+        );
+        expect(allowsInAppDiscountCode(isWeb: true, platform: p), isTrue);
+      }
+    });
+  });
 }

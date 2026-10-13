@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:collection';
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 
@@ -222,6 +223,29 @@ class ActivityPlanRepo
   /// turns a course screen from dozens of round trips into two or three.
   static const int _maxBatchSize = 18;
 
+  /// Activity reads this repo sends per [_readWindow].
+  ///
+  /// The in-flight cap above bounds reads at ONCE, not reads per minute: slots
+  /// come back as fast as answers do, so a cold start over hundreds of session
+  /// rooms kept cycling past the backend's allowance (`READ_RATE_LIMIT_PER_MINUTE`,
+  /// 240 per learner per 60 s, charged per activity). The batch that crossed it
+  /// was refused whole and armed [_rateLimitPause] for a full minute, blanking
+  /// every card that had not loaded yet (CLIENT-ER6, #9275).
+  ///
+  /// Set below the backend's figure because the map's area reads and the quest
+  /// reads draw on the same allowance and are not counted here. Keep it in step
+  /// if the backend's number changes.
+  static const int _readBudget = 200;
+  static const Duration _readWindow = Duration(seconds: 60);
+
+  /// When each activity read in the current window was sent, oldest first. One
+  /// entry per activity, since that is what the backend charges.
+  final Queue<DateTime> _readsSent = Queue();
+
+  /// Re-pumps when the oldest counted read leaves the window, so a backlog
+  /// held for budget resumes by itself rather than waiting for a rebuild.
+  Timer? _budgetRefill;
+
   int _inFlight = 0;
 
   /// Completes when the batch currently carrying a storage key finishes.
@@ -283,6 +307,8 @@ class ActivityPlanRepo
     _confirmedRemoved.clear();
     _unsatisfied.clear();
     _rateLimitPause.reset();
+    _readsSent.clear();
+    _budgetRefill?.cancel();
     // The backlog goes too. Dropping it loses nothing: clearing [_nextAttempt]
     // above un-parks every queued key, so `build()` re-offers them on the next
     // frame and they hydrate under the fresh budget. Keeping them would instead
@@ -329,6 +355,9 @@ class ActivityPlanRepo
 
   @override
   Future<Response> fetch(Requests req, ActivityPlanFetchRequest request) {
+    // A direct read is someone waiting on one activity, so it is counted
+    // against the budget but never held by it.
+    _spendReads(1);
     final uri = Uri.parse(PApiUrls.activityById(request.activityId)).replace(
       queryParameters: {
         if (request.l1.isNotEmpty) 'l1': request.l1,
@@ -682,6 +711,33 @@ class ActivityPlanRepo
     return true;
   }
 
+  /// Reads the budget still allows in the current window.
+  int _readsAvailable() {
+    final cutoff = now().subtract(_readWindow);
+    while (_readsSent.isNotEmpty && !_readsSent.first.isAfter(cutoff)) {
+      _readsSent.removeFirst();
+    }
+    return _readBudget - _readsSent.length;
+  }
+
+  void _spendReads(int count) {
+    final sentAt = now();
+    for (var i = 0; i < count; i++) {
+      _readsSent.add(sentAt);
+    }
+  }
+
+  /// Schedules one pump for the moment the oldest counted read leaves the
+  /// window.
+  void _armBudgetRefill() {
+    if (_budgetRefill?.isActive ?? false) return;
+    final wait = _readsSent.first.add(_readWindow).difference(now());
+    _budgetRefill = Timer(
+      wait.isNegative ? Duration.zero : wait,
+      _schedulePump,
+    );
+  }
+
   /// Whether a pump is already queued for the end of this turn.
   bool _pumpScheduled = false;
 
@@ -732,14 +788,23 @@ class ActivityPlanRepo
         _queued.clear();
         return;
       }
+      // Out of budget for this window: the backlog waits for it to refill
+      // rather than going out and being refused (#9275). Unlike the pause
+      // above, nothing here was refused, so the backlog is kept, not dropped.
+      final available = _readsAvailable();
+      if (available <= 0) {
+        _armBudgetRefill();
+        return;
+      }
       // Bounded by what is FREE, not by the request-size cap: taking a full
       // batch while 12 activities are still hydrating would put 62 in flight
       // and defeat the very bound this loop tests.
       final batch = _takeBatch(
-        (_maxInFlight - _inFlight).clamp(0, _maxBatchSize),
+        [_maxInFlight - _inFlight, _maxBatchSize, available].reduce(min),
       );
       if (batch.isEmpty) return;
       _inFlight += batch.length;
+      _spendReads(batch.length);
 
       // Releases ONE activity's slot. Capacity is returned per activity, not
       // per batch: a single slow media read would otherwise hold every slot its

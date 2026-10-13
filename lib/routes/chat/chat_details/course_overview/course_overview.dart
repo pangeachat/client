@@ -158,8 +158,10 @@ class _CourseOverviewState extends State<CourseOverview> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   // The course description leads the page (#8357 review
-                  // feedback), with the language/level/module chips directly
-                  // below it.
+                  // feedback), with the language and level chips directly
+                  // below it. No activity count here (#9390): beside the star
+                  // total below it read as a completion requirement, and the
+                  // star total alone is the course goal.
                   if (room.topic.isNotEmpty)
                     Padding(
                       padding: const EdgeInsets.only(bottom: 12.0),
@@ -174,6 +176,7 @@ class _CourseOverviewState extends State<CourseOverview> {
                       child: CourseInfoChips(
                         room.coursePlan!.uuid,
                         courseRoomId: room.id,
+                        showActivityCount: false,
                         fontSize: Theme.of(
                           context,
                         ).textTheme.bodySmall?.fontSize,

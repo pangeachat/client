@@ -10,6 +10,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart'
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
@@ -19,6 +20,21 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/routes/world/activity_course_resolver.dart';
 
+/// The steps [LaunchActivitySession.launchActivitySession] goes through, in
+/// order. Creating the room is the step that can take a long time when the
+/// homeserver is busy.
+enum ActivityLaunchStage {
+  findingCourses,
+  creatingRoom,
+  openingRoom;
+
+  String label(L10n l10n) => switch (this) {
+    findingCourses => l10n.activityLaunchFindingCourses,
+    creatingRoom => l10n.activityLaunchCreatingRoom,
+    openingRoom => l10n.activityLaunchOpeningRoom,
+  };
+}
+
 extension LaunchActivitySession on Client {
   /// Create an activity session room and share it into every joined
   /// course space whose plan includes the activity with a matching L2,
@@ -27,11 +43,24 @@ extension LaunchActivitySession on Client {
   /// [primarySpace] (the space the user launched from, if any) is always
   /// included. With no matching spaces the session is created private
   /// with a plain knock join rule.
+  ///
+  /// Returns once the room's initial state has reached the local store (or
+  /// after 10 seconds without it). Course sharing and the bot invite may
+  /// still be running.
+  ///
+  /// [onStage] reports each step as it starts, so a waiting learner can be
+  /// told what is happening.
   Future<String> launchActivitySession(
     ActivityPlanModel activity,
     ActivityRole? role, {
     Room? primarySpace,
+    void Function(ActivityLaunchStage stage)? onStage,
   }) async {
+    onStage?.call(ActivityLaunchStage.findingCourses);
+    // The join code doesn't depend on which courses match, so it is requested
+    // alongside the course lookup rather than after it.
+    final joinCode = requestJoinCodeOrNull();
+
     List<Room> matching = [];
     try {
       // Bounded: this runs inside a blocking loading dialog; a slow or
@@ -61,6 +90,13 @@ extension LaunchActivitySession on Client {
       for (final space in matching) space.id: space,
     };
 
+    final joinRules = await generateCustomJoinRules(
+      spaces.isEmpty ? JoinRules.knock : JoinRules.knockRestricted,
+      allowRoomIds: spaces.keys.toList(),
+      joinCode: joinCode,
+    );
+
+    onStage?.call(ActivityLaunchStage.creatingRoom);
     final roomID = await createPangeaRoom(
       createRoom(
         creationContent: {
@@ -100,10 +136,7 @@ extension LaunchActivitySession on Client {
                 ),
               }).toJson(),
             ),
-          await generateCustomJoinRules(
-            spaces.isEmpty ? JoinRules.knock : JoinRules.knockRestricted,
-            allowRoomIds: spaces.keys.toList(),
-          ),
+          joinRules,
           // Pin history visibility to `shared` at creation rather than relying
           // on the server default. A session room is a shared, course-scoped
           // conversation: a teacher who joins to review it — or a coursemate who
@@ -134,9 +167,60 @@ extension LaunchActivitySession on Client {
           botUserId: BotName.byEnvironment,
         ),
       ),
+      waitForSync: false,
     );
 
-    for (final space in spaces.values) {
+    // Course sharing and the bot invite are best-effort, so they finish behind
+    // the chat instead of behind the loading dialog (#9297).
+    unawaited(_finishActivitySessionSetup(roomID, spaces.values.toList()));
+
+    onStage?.call(ActivityLaunchStage.openingRoom);
+    await _waitForSessionState(roomID);
+    return roomID;
+  }
+
+  /// Waits, bounded, for [roomID]'s initial state to reach the local store.
+  /// Synapse delivers a new room in two syncs: the create event and the
+  /// creator's join first, the rest of the initial state (activity reference,
+  /// roles) in the next. Opening the session between the two shows the start
+  /// page without the launcher's role, and reads the latest activity version
+  /// instead of the pinned one.
+  Future<void> _waitForSessionState(String roomID) async {
+    bool arrived() =>
+        getRoomById(roomID)?.getState(PangeaEventTypes.activityPlan) != null;
+    if (arrived()) return;
+    try {
+      // Stream.timeout (not Future.timeout) so the sync listener is cancelled
+      // when the wait gives up.
+      await onSync.stream
+          .where((_) => arrived())
+          .timeout(const Duration(seconds: 10))
+          .first;
+    } on TimeoutException catch (e, s) {
+      // Open the session anyway; the room panel waits for the room itself.
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'roomId': roomID},
+        level: SentryLevel.warning,
+      );
+    }
+  }
+
+  Future<void> _finishActivitySessionSetup(
+    String roomID,
+    List<Room> spaces,
+  ) async {
+    try {
+      // Sharing needs the room in the local store (addSpaceChildKeepingParents
+      // skips a room it cannot resolve).
+      await waitForCreatedRoom(roomID);
+    } catch (_) {
+      // silent-ok: waitForCreatedRoom already logged it; sharing and the
+      // invite below are still worth attempting.
+    }
+
+    for (final space in spaces) {
       try {
         await space.addSpaceChildKeepingParents(roomID);
       } catch (e, s) {
@@ -172,7 +256,5 @@ extension LaunchActivitySession on Client {
         level: SentryLevel.warning,
       );
     }
-
-    return roomID;
   }
 }

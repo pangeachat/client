@@ -10,10 +10,8 @@ After identifying unused keys with `find_unused_intl_keys.py`, this script autom
 
 1. **Loads Unused Keys**: Reads the list of unused keys from `unused_intl_keys.json`
 2. **Processes Each File**: For each `.arb` file in `lib/l10n/`:
-   - Loads the file as JSON
-   - Identifies keys to remove (both base keys and their `@key` metadata)
-   - Removes those keys while preserving order
-   - Writes the cleaned JSON back to the file
+   - Deletes each key and its `@key` metadata from the file text, leaving every other line exactly as it was
+   - Checks that the result parses to the original entries minus the removed ones, and stops before writing if it does not
 3. **Reports Results**: Shows how many keys were removed from each file
 
 ## Usage
@@ -31,21 +29,13 @@ python3 scripts/remove_unused_intl_keys.py
 The script provides progress output showing how many keys were removed from each file:
 
 ```
-Loading unused keys from JSON file...
-Found 488 unused keys to remove.
+Removing 138 unused keys.
 
-Found 54 .arb files to process.
-
-Processing .arb files...
-================================================================================
-intl_en.arb: Removed 488 keys/metadata entries
-intl_es.arb: Removed 557 keys/metadata entries
-intl_fr.arb: Removed 950 keys/metadata entries
+intl_af.arb: removed 138 entries
+intl_am.arb: removed 138 entries
 ...
-================================================================================
 
-Total keys/metadata entries removed: 50015
-Processed 54 .arb files successfully.
+Total keys/metadata entries removed: 22998
 ```
 
 ## What Gets Removed
@@ -57,11 +47,8 @@ For each unused key (e.g., `accountInformation`), the script removes:
 ## Important Notes
 
 - **Backup recommended**: The script modifies files in place. Consider committing your work or creating a backup before running.
-- **JSON parsing**: The script uses Python's JSON library, which:
-  - Preserves the order of keys (using OrderedDict)
-  - May reformat indentation to 2 spaces
-  - Resolves duplicate keys by keeping the last value
-- **Validation**: After running, verify the files are still valid JSON and that the application still works correctly.
+- **Formatting**: Files are edited as text, not re-serialized, so hand-formatted entries in `intl_en.arb` keep their layout and each diff holds only the removed lines.
+- **Validation**: After running, run `fvm flutter gen-l10n` and `fvm flutter analyze` to confirm nothing referenced a removed key.
 
 ## Requirements
 

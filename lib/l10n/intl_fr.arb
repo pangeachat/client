@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-23 15:42:44.097828",
+    "@@last_modified": "2026-10-12 13:11:52.049179",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -2717,7 +2717,6 @@
     "errorDisableIGCClassDesc": "L'assistance à la grammaire est désactivée pour le cours dans lequel cette discussion a lieu.",
     "error405Desc": "Veuillez définir vos langues dans le menu principal > Paramètres d'apprentissage.",
     "termsAndConditions": "Termes et Conditions",
-    "andCertifyIAmAtLeast13YearsOfAge": " et je certifie que j'ai au moins 16 ans.",
     "error502504Desc": "Les outils de traduction et de grammaire peuvent être lents ou indisponibles pendant que les bots Pangea rattrapent leur retard.",
     "error404Desc": "Le bot Pangea n'est pas sûr de comment traduire cela...",
     "errorPleaseRefresh": "Nous étudions le problème ! Veuillez recharger et réessayer.",
@@ -3025,9 +3024,6 @@
     "why": "Pourquoi ?",
     "definition": "Définition",
     "reportToTeacher": "À qui souhaitez-vous signaler ce message ?",
-    "reportMessageTitle": "{reportingUserId} a signalé un message de {reportedUserId} dans le chat {roomName}",
-    "reportMessageBody": "Message : {reportedMessage}\nRaison : {reason}",
-    "noTeachersFound": "Aucun enseignant trouvé pour signaler",
     "trialExpiration": "Votre essai gratuit expire le {expiration}",
     "freeTrialDesc": "Les nouveaux utilisateurs bénéficient d'un essai gratuit d'une semaine de Pangea Chat",
     "activateTrial": "Essai gratuit de 7 jours",
@@ -3891,10 +3887,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5141,35 +5133,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8127,11 +8090,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Utiliser l'image d'activité comme arrière-plan de chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Discuter avec le support",
     "@chatWithSupport": {
         "type": "String",
@@ -9775,7 +9733,6 @@
     "activityLoadFailed": "Impossible de charger l'activité. Vérifiez votre connexion et réessayez.",
     "levelUpChip": "Niveau {level} !",
     "missingCourseOutline": "Ce cours n'est plus disponible",
-    "missingCourseOutlineCta": "Ce cours n'est plus disponible. Choisissez un nouveau plan de cours.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9800,10 +9757,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10199,7 +10152,6 @@
     "constructLevelFlowers": "Fleurs, mots maîtrisés",
     "filterAndSearch": "Filtrer et rechercher",
     "participantsOfTotal": "{filled} sur {total} joueurs",
-    "mapAttributionLabel": "Contributeurs OpenStreetMap, droits d'auteur et licence",
     "seeAll": "Tout voir",
     "seeAllSection": "Voir tout {section}",
     "showMoreOptionsHint": "afficher plus d'options",
@@ -10316,5 +10268,64 @@
     "goalReportErrorRetry": "La recherche du tour n'est pas terminée. Réessayez.",
     "summaryFeedbackReceived": "Merci ! Nous avons bien reçu vos commentaires.",
     "summaryFeedbackFailed": "Impossible d'envoyer vos commentaires. Veuillez réessayer.",
-    "summaryFeedbackProcessing": "Envoi de vos commentaires et mise à jour du résumé…"
+    "summaryFeedbackProcessing": "Envoi de vos commentaires et mise à jour du résumé…",
+    "callTranscriptTranscribing": "Transcription de l'enregistrement de {name} en cours…",
+    "callTranscriptSeekTo": "Écouter à partir de {time}",
+    "callTranscriptRecordings": "Enregistrements",
+    "callTranscriptFullCall": "Appel complet",
+    "callTranscriptPreparingRecording": "Préparation de l'enregistrement complet…",
+    "callTranscriptNoRecording": "Aucun enregistrement de l'appel complet.",
+    "callTranscriptNotSubscribed": "{name} n'avait pas d'abonnement pendant cet appel, donc ce qui a été dit n'a pas été transcrit.",
+    "joinYourCourse": "Rejoignez votre cours",
+    "courseCodeJoinExplanation": "Connectez-vous ou inscrivez-vous, et nous utiliserons votre code de cours pour vous ajouter automatiquement à votre cours.",
+    "courseCodeLabel": "Code de cours",
+    "courseCodeSaved": "Code de cours {code} enregistré",
+    "courseCodeSavedExplanation": "Inscrivez-vous ou connectez-vous et nous vous ajouterons à votre cours.",
+    "moderationRefusedContactDetails": "Votre message n'a pas été envoyé. Un filtre automatique a détecté des coordonnées, comme un numéro de téléphone. Veuillez les supprimer et réessayer.",
+    "moderationRefusedProfanity": "Votre message n'a pas été envoyé. Un filtre automatique a détecté un mot que nous n'autorisons pas dans le chat. Veuillez le modifier et réessayer.",
+    "callTranscriptTranscribeButton": "Transcrire",
+    "callTranscriptAudioUnavailable": "L'enregistrement sauvegardé de {name} n'a pas pu être téléchargé, il n'a donc pas pu être transcrit.",
+    "callTranscriptChooseLanguage": "Quelle langue a été parlée ?",
+    "callTranscriptSubscribeForTranscription": "S'abonner pour la transcription",
+    "unlockCallTranscript": "Déverrouiller la transcription de l'appel",
+    "activitySummaryUpdateFailed": "Ce résumé n'a pas pu être mis à jour.",
+    "courseNotFound": "Cours introuvable",
+    "askTeacherForNewCourse": "Demandez à votre professeur de choisir un nouveau cours.",
+    "pickNewCoursePlan": "Choisissez un nouveau plan de cours.",
+    "ssoNetworkBlockedTitle": "Site de connexion inaccessible",
+    "ssoNetworkBlockedDesc": "Ce réseau ne nous permet pas d'atteindre {provider} pour vous connecter. Les réseaux Wi-Fi scolaires et professionnels le bloquent souvent. Vous pouvez vous inscrire par e-mail à la place, ou passer à un autre réseau et réessayer.",
+    "ssoTryAnyway": "Essayer quand même",
+    "publicCoursesFilterTooltip": "Afficher uniquement les cours que tout le monde peut rejoindre",
+    "restrictedCoursesFilterTooltip": "Afficher uniquement les cours pour lesquels vous devez demander à être admis",
+    "viewImageLabel": "Voir l'image",
+    "reportSent": "Signalement envoyé",
+    "reportNotSent": "Votre signalement n'a pas pu être envoyé. Vérifiez votre connexion et réessayez.",
+    "reportPointerMessage": "Un message a été signalé dans {courseName} — voir Sécurité",
+    "useActivityImageAsChatBackground": "Utiliser l'image de l'activité comme arrière-plan de discussion",
+    "andCertifyIMeetTheMinimumAge": " et certifie que j'ai au moins 13 ans, ou l'âge minimum requis dans mon pays si celui-ci est plus élevé.",
+    "filteredNetworkBlockedTitle": "Ce réseau bloque Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Ce réseau bloque une partie de Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Que puis-je faire ?",
+    "filteredNetworkPhoneAdvice": "Désactivez le Wi-Fi et utilisez les données mobiles à la place.",
+    "filteredNetworkComputerAdvice": "Connectez-vous au point d'accès de votre téléphone au lieu de ce Wi-Fi.",
+    "filteredNetworkItHeading": "Pour les enseignants et le personnel informatique",
+    "filteredNetworkItBody": "Demandez à votre équipe informatique d'autoriser ces domaines :",
+    "filteredNetworkAskForHelp": "Demander de l'aide à Pangea",
+    "filteredNetworkHelpExplanation": "Nous vous enverrons un e-mail pour vous aider à faire fonctionner Pangea Chat sur ce réseau.",
+    "filteredNetworkHelpWaiting": "Votre demande sera envoyée dès que vous serez connecté.",
+    "filteredNetworkHelpSent": "Envoyé. Nous vous contacterons par e-mail.",
+    "filteredNetworkHelpRefused": "Nous n'avons pas pu envoyer votre demande. Veuillez envoyer un e-mail à support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Ce réseau bloque les vidéos.",
+    "filteredNetworkImagesBlocked": "Ce réseau bloque les images.",
+    "filteredNetworkMapBlocked": "Ce réseau bloque la carte.",
+    "callFullScreenTitle": "Autoriser les appels en plein écran",
+    "callFullScreenMessage": "Un appel est arrivé alors que Pangea Chat était fermé, mais votre téléphone n'a pu afficher qu'une petite notification. Autorisez les appels en plein écran pour que le prochain sonne sur tout votre écran, même lorsque votre téléphone est verrouillé.",
+    "callMicrophoneTitle": "Utiliser votre microphone pour les appels",
+    "callMicrophoneMessage": "Pangea Chat a besoin de votre microphone pour les appels, y compris ceux auxquels vous répondez depuis l'écran verrouillé.",
+    "callMicrophoneOffTitle": "Votre appel n'a pas abouti",
+    "callMicrophoneOffMessage": "Pangea Chat ne peut pas utiliser votre microphone. Appuyez pour l'activer dans les réglages.",
+    "mapCreditsLabel": "Crédits cartographiques : Stadia Maps, OpenMapTiles et OpenStreetMap",
+    "activityLaunchFindingCourses": "Recherche de vos cours…",
+    "activityLaunchCreatingRoom": "Création de votre activité…",
+    "activityLaunchOpeningRoom": "Ouverture de votre activité…"
 }

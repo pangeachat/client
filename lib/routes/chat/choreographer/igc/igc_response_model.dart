@@ -39,16 +39,18 @@ class IGCResponseModel extends BaseResponse {
     final String originalInput = json["original_input"];
     return IGCResponseModel(
       matches: json["matches"] != null
-          ? (json["matches"] as Iterable).map<PangeaMatch>((e) {
-              final serverMatch = PangeaMatch.fromJson(
-                e as Map<String, dynamic>,
-                fullText: originalInput,
-              );
-              return PangeaMatch(
-                match: _codepointsToGraphemes(serverMatch.match),
-                status: serverMatch.status,
-              );
-            }).toList()
+          ? _withoutOverlaps(
+              (json["matches"] as Iterable).map<PangeaMatch>((e) {
+                final serverMatch = PangeaMatch.fromJson(
+                  e as Map<String, dynamic>,
+                  fullText: originalInput,
+                );
+                return PangeaMatch(
+                  match: _codepointsToGraphemes(serverMatch.match),
+                  status: serverMatch.status,
+                );
+              }).toList(),
+            )
           : [],
       originalInput: originalInput,
       fullTextCorrection: json["full_text_correction"],
@@ -73,6 +75,57 @@ class IGCResponseModel extends BaseResponse {
     ChoreoConstants.enableIT: enableIT,
     ChoreoConstants.enableIGC: enableIGC,
   };
+
+  /// Spans must never overlap: accepting a correction shifts every later span
+  /// by the change in length, which walks a span nested inside it past its
+  /// own text, even below zero, and the input field then fails to draw
+  /// (#9256). Keeps the span that starts first (the longer one on a tie) and
+  /// reports the rest, so a server that breaks the contract degrades to fewer
+  /// suggestions rather than a broken composer. The kept spans stay in the
+  /// server's order.
+  static List<PangeaMatch> _withoutOverlaps(List<PangeaMatch> matches) {
+    final byPosition = List.of(matches)
+      ..sort((a, b) {
+        final byOffset = a.match.offset.compareTo(b.match.offset);
+        return byOffset != 0
+            ? byOffset
+            : b.match.length.compareTo(a.match.length);
+      });
+
+    final dropped = Set<PangeaMatch>.identity();
+    PangeaMatch? previous;
+    for (final match in byPosition) {
+      if (previous != null &&
+          match.match.offset < previous.match.offset + previous.match.length) {
+        dropped.add(match);
+        continue;
+      }
+      previous = match;
+    }
+
+    final kept = [
+      for (final match in matches)
+        if (!dropped.contains(match)) match,
+    ];
+    if (dropped.isNotEmpty) {
+      ErrorHandler.logError(
+        e: StateError(
+          'IGC response has ${dropped.length} span(s) overlapping another',
+        ),
+        data: {
+          'dropped': [
+            for (final match in dropped)
+              {'offset': match.match.offset, 'length': match.match.length},
+          ],
+          'kept': [
+            for (final match in kept)
+              {'offset': match.match.offset, 'length': match.match.length},
+          ],
+        },
+      );
+    }
+    return kept;
+  }
 
   /// A boundary that falls inside a grapheme cluster widens to take in the
   /// whole cluster, so a correction never splits a character.

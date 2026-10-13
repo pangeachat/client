@@ -370,7 +370,7 @@ packages:
     source: hosted
     version: "0.8.0"
   connectivity_plus:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: connectivity_plus
       sha256: "762c99f890ca8bf87f7337236f99edd42793843bc6c3631da294a76653a54bd0"
@@ -571,7 +571,7 @@ packages:
     source: git
     version: "4.0.6"
   fake_async:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: fake_async
       sha256: "5368f224a74523e8d2e7399ea1638b37aecfca824a3cc4dfdf77bf1fa905ac44"
@@ -1543,8 +1543,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: c77fe893a58f65cb17688545bb275397a8e5164a
-      resolved-ref: c77fe893a58f65cb17688545bb275397a8e5164a
+      ref: bc206b23b5d9d42e4a57d6339bb140bd791e0632
+      resolved-ref: bc206b23b5d9d42e4a57d6339bb140bd791e0632
       url: "https://github.com/pangeachat/matrix-dart-sdk.git"
     source: git
     version: "4.1.0"
@@ -2688,7 +2688,7 @@ packages:
     source: hosted
     version: "3.1.4"
   uuid:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: uuid
       sha256: "9b129329f58692f6e6578329498a8fe9fbe98f090beb764ffbb8ee2eadd01dcd"

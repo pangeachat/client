@@ -66,6 +66,7 @@ void main() {
               maxRemainingSteps: 3,
             ),
             loading: false,
+            error: null,
             hasNextStep: true,
             forward: () {},
           ),

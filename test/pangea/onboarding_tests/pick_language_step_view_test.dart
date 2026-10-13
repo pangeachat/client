@@ -13,6 +13,7 @@ import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
+import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/routes/onboarding/account_updater.dart';
 import 'package:fluffychat/routes/onboarding/avatar_provider.dart';
 import 'package:fluffychat/routes/onboarding/course_provider.dart';
@@ -20,6 +21,7 @@ import 'package:fluffychat/routes/onboarding/onboarding_state_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/pick_language_step_view.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/pick_language_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/trial_info_provider.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../get_test_client.dart';
 import 'announcement_capture.dart';
@@ -66,7 +68,7 @@ void main() {
 
   tearDownAll(() => client.dispose());
 
-  Future<void> pumpStep(WidgetTester tester) async {
+  Future<void> pumpStep(WidgetTester tester, {Object? error}) async {
     final state = OnboardingStateController(
       accountUpdater: MockAccountUpdater(),
       courseProvider: MockCourseProvider(),
@@ -89,7 +91,7 @@ void main() {
                 maxRemainingSteps: 2,
               ),
               loading: false,
-              error: null,
+              error: error,
               hasNextStep: true,
               forward: () {},
             ),
@@ -110,6 +112,16 @@ void main() {
     of: find.byType(CustomScrollView),
     matching: find.text(name),
   );
+
+  // #9445 — a failed profile save shows above the button; an identical-
+  // language pick is shown at the base-language dropdown instead, not twice.
+  testWidgets('a failed save is shown above the button', (tester) async {
+    await pumpStep(tester, error: Exception('save failed'));
+    expect(find.byType(ErrorIndicator), findsOneWidget);
+
+    await pumpStep(tester, error: IdenticalLanguageException());
+    expect(find.byType(ErrorIndicator), findsNothing);
+  });
 
   testWidgets('a picked language reads as a selected button and is announced', (
     tester,

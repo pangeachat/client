@@ -7,6 +7,8 @@ import 'package:fluffychat/features/keyboards/keyboard_prompt_local_store.dart';
 import 'package:fluffychat/features/user/user_constants.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/gender_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
@@ -31,6 +33,15 @@ class UserSettings {
   final LanguageLevelTypeEnum cefrLevel;
   final String? voice;
 
+  /// The role the person chose in onboarding, or null when they never chose
+  /// one, as on accounts that onboarded before it was stored (#9445).
+  ///
+  /// Outreach reads this from account data to tell self-identified teachers
+  /// from learners (pangea-bot's audience classifier), so null has to stay
+  /// null: it is never a student by default, and nothing infers it from
+  /// course permissions.
+  final UserType? selfIdentifiedRole;
+
   UserSettings({
     this.dateOfBirth,
     this.createdAt,
@@ -43,6 +54,7 @@ class UserSettings {
     this.about,
     this.cefrLevel = LanguageLevelTypeEnum.a1,
     this.voice,
+    this.selfIdentifiedRole,
   });
 
   factory UserSettings.fromJson(Map<String, dynamic> json) => UserSettings(
@@ -65,7 +77,25 @@ class UserSettings {
         ? LanguageLevelTypeEnum.fromString(json[UserConstants.cefrLevel])
         : LanguageLevelTypeEnum.a1,
     voice: json[ModelKey.voice],
+    selfIdentifiedRole: _parseSelfIdentifiedRole(
+      json[UserConstants.selfIdentifiedRole],
+    ),
   );
+
+  /// An unrecognized value is reported and read as unspecified, never as
+  /// either role.
+  static UserType? _parseSelfIdentifiedRole(Object? value) {
+    if (value == null) return null;
+    final role = value is String ? UserType.values.asNameMap()[value] : null;
+    if (role == null) {
+      ErrorHandler.logErrorOnce(
+        key: 'unrecognized_${UserConstants.selfIdentifiedRole}',
+        e: 'Unrecognized ${UserConstants.selfIdentifiedRole} in profile',
+        data: {'value': value},
+      );
+    }
+    return role;
+  }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
@@ -80,6 +110,11 @@ class UserSettings {
     data[UserConstants.userAbout] = about;
     data[UserConstants.cefrLevel] = cefrLevel.string;
     data[ModelKey.voice] = voice;
+    // Left out rather than written as null: a missing field is the
+    // "unspecified" every reader of it already handles.
+    if (selfIdentifiedRole != null) {
+      data[UserConstants.selfIdentifiedRole] = selfIdentifiedRole!.name;
+    }
     return data;
   }
 
@@ -156,6 +191,7 @@ class UserSettings {
     LanguageLevelTypeEnum? cefrLevel,
     String? voice,
     bool setVoiceNull = false,
+    UserType? selfIdentifiedRole,
   }) {
     return UserSettings(
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
@@ -169,6 +205,7 @@ class UserSettings {
       about: about ?? this.about,
       cefrLevel: cefrLevel ?? this.cefrLevel,
       voice: setVoiceNull ? null : (voice ?? this.voice),
+      selfIdentifiedRole: selfIdentifiedRole ?? this.selfIdentifiedRole,
     );
   }
 
@@ -187,7 +224,8 @@ class UserSettings {
         other.country == country &&
         other.about == about &&
         other.cefrLevel == cefrLevel &&
-        other.voice == voice;
+        other.voice == voice &&
+        other.selfIdentifiedRole == selfIdentifiedRole;
   }
 
   @override
@@ -203,6 +241,7 @@ class UserSettings {
     about.hashCode,
     cefrLevel.hashCode,
     voice.hashCode,
+    selfIdentifiedRole.hashCode,
   ]);
 }
 

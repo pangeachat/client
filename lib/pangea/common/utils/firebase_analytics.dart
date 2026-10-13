@@ -5,7 +5,6 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import 'package:fluffychat/features/bot/bot_target_event_name_enum.dart';
 import 'package:fluffychat/features/user/user_constants.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
@@ -289,35 +288,21 @@ class GoogleAnalytics {
     );
   }
 
+  /// A practice session completed. [practiceType] is `vocab` or `grammar`
+  /// (the token grammar's names, never `morph`). Sent only through
+  /// `recordJourneyStep`, which writes the journey checklist with it.
+  static void completePractice(String practiceType) {
+    logEvent('complete_practice', parameters: {'practice_type': practiceType});
+  }
+
   static void failUpdateNotificationBadge() {
     logEvent('fail_update_notification_badge');
   }
 
-  static void openBotNotification({
-    required BotTargetEventName targetEventName,
-    String? variant,
-    String? notificationType,
-    String? chatId,
-    String? groupId,
-    String? activityId,
-    String? roomId,
-    String? action,
-    String? name,
-  }) {
-    logEvent(
-      'bot_notification_opened',
-      parameters: {
-        'target_event_name': targetEventName.name,
-        'variant': ?variant,
-        'notification_type': ?notificationType,
-        'chat_id': ?chatId,
-        'group_id': ?groupId,
-        'activity_id': ?activityId,
-        'room_id': ?roomId,
-        'action': ?action,
-        'name': ?name,
-      },
-    );
+  /// A tapped notice; [parameters] come from
+  /// `NotificationTapUtil.botNotificationOpenedParameters`.
+  static void openBotNotification(Map<String, String> parameters) {
+    logEvent('bot_notification_opened', parameters: parameters);
   }
 
   static void completeTutorialStep(String tutorialName, int step) {

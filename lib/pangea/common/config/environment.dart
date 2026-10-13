@@ -132,6 +132,13 @@ class Environment {
         "Frontend URL NOT FOUND";
   }
 
+  /// Stadia Maps API key for native builds only; see `MapTiles`. Web builds
+  /// never carry it: Stadia authenticates web by domain, and the web `.env`
+  /// is publicly served. `isInitialized` because widget tests build maps
+  /// without loading an env.
+  static String? get stadiaMapsApiKey =>
+      dotenv.isInitialized ? dotenv.env["STADIA_MAPS_API_KEY"] : null;
+
   static String? get testUsername => dotenv.env["TEST_MATRIX_USERNAME"];
 
   static String? get testPassword => dotenv.env["TEST_MATRIX_PASSWORD"];
@@ -275,6 +282,23 @@ class Environment {
         (dotenv.env["LIVE_STREAMING_STT_ENABLED"]?.toLowerCase() == 'true');
   }
 
+  /// The recording-based call transcript. ON by default: at hangup each device
+  /// transcribes its OWN uploaded call recording -- the same audio the merged
+  /// playback is built from -- and publishes THOSE segments as its half.
+  /// `CALL_RECORDING_TRANSCRIPT=false` is a kill switch, not a rollout gate: it
+  /// falls back to the live 45-second chunk path byte-for-byte. Per-half fault
+  /// tolerance is preserved: a device whose recording or transcription is
+  /// missing falls back to its live-chunk half unchanged, so a call can carry
+  /// one recording-based half and one live half.
+  static bool get callRecordingTranscript =>
+      // `dotenv.env` throws when no env has been loaded, which a unit test that
+      // reaches this (a call service replaying a pending half) legitimately has
+      // not. No env loaded means no app config at all, so the feature stays off
+      // there -- guarded like `DosageMessageSignals` guards its own read. Any
+      // loaded env is ON unless it explicitly says `false`.
+      dotenv.isInitialized &&
+      dotenv.env["CALL_RECORDING_TRANSCRIPT"]?.toLowerCase() != 'false';
+
   static String get pushGatewayUrl => isStagingEnvironment
       ? 'https://sygnal.staging.pangea.chat/_matrix/push/v1/notify'
       : 'https://sygnal.pangea.chat/_matrix/push/v1/notify';
@@ -288,24 +312,6 @@ class Environment {
   static String? get googleAnalyticsFirebaseOptionsBase64 {
     return appConfigOverride?.googleAnalyticsFirebaseOptionsBase64 ??
         dotenv.env["GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64"];
-  }
-
-  static String get rcGoogleKey {
-    return appConfigOverride?.rcGoogleKey ??
-        dotenv.env["RC_GOOGLE_KEY"] ??
-        'goog_paQMrzFKGzuWZvcMTPkkvIsifJe';
-  }
-
-  static String get rcIosKey {
-    return appConfigOverride?.rcIosKey ??
-        dotenv.env["RC_IOS_KEY"] ??
-        'appl_DUPqnxuLjkBLzhBPTWeDjqNENuv';
-  }
-
-  static String get rcOfferingName {
-    return appConfigOverride?.rcOfferingName ??
-        dotenv.env["RC_OFFERING_NAME"] ??
-        'default';
   }
 
   static String get stripeManagementUrl {
@@ -396,9 +402,6 @@ class AppConfigOverride {
   final bool? liveStreamingSttEnabled;
   final String? sentryDsn;
   final String? googleAnalyticsFirebaseOptionsBase64;
-  final String? rcGoogleKey;
-  final String? rcIosKey;
-  final String? rcOfferingName;
   final String? stripeManagementUrl;
   final String? botName;
 
@@ -416,9 +419,6 @@ class AppConfigOverride {
     this.liveStreamingSttEnabled,
     this.sentryDsn,
     this.googleAnalyticsFirebaseOptionsBase64,
-    this.rcGoogleKey,
-    this.rcIosKey,
-    this.rcOfferingName,
     this.stripeManagementUrl,
     this.botName,
   });
@@ -440,9 +440,6 @@ class AppConfigOverride {
       sentryDsn: json['sentryDsn'] as String?,
       googleAnalyticsFirebaseOptionsBase64:
           json['googleAnalyticsFirebaseOptionsBase64'] as String?,
-      rcGoogleKey: json['rcGoogleKey'] as String?,
-      rcIosKey: json['rcIosKey'] as String?,
-      rcOfferingName: json['rcOfferingName'] as String?,
       stripeManagementUrl: json['stripeManagementUrl'] as String?,
       botName: json['botName'] as String?,
     );
@@ -464,9 +461,6 @@ class AppConfigOverride {
       'sentryDsn': sentryDsn,
       'googleAnalyticsFirebaseOptionsBase64':
           googleAnalyticsFirebaseOptionsBase64,
-      'rcGoogleKey': rcGoogleKey,
-      'rcIosKey': rcIosKey,
-      'rcOfferingName': rcOfferingName,
       'stripeManagementUrl': stripeManagementUrl,
       'botName': botName,
     };
@@ -487,9 +481,6 @@ class AppConfigOverride {
         liveStreamingSttEnabled.hashCode ^
         sentryDsn.hashCode ^
         googleAnalyticsFirebaseOptionsBase64.hashCode ^
-        rcGoogleKey.hashCode ^
-        rcIosKey.hashCode ^
-        rcOfferingName.hashCode ^
         stripeManagementUrl.hashCode ^
         botName.hashCode;
   }
@@ -513,9 +504,6 @@ class AppConfigOverride {
         sentryDsn == other.sentryDsn &&
         googleAnalyticsFirebaseOptionsBase64 ==
             other.googleAnalyticsFirebaseOptionsBase64 &&
-        rcGoogleKey == other.rcGoogleKey &&
-        rcIosKey == other.rcIosKey &&
-        rcOfferingName == other.rcOfferingName &&
         stripeManagementUrl == other.stripeManagementUrl &&
         botName == other.botName;
   }

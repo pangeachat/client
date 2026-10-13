@@ -17,6 +17,9 @@ Future<Result<T>> showFutureLoadingDialog<T>({
   required BuildContext context,
   Future<T> Function()? future,
   Future<T> Function(void Function(double?) setProgress)? futureWithProgress,
+  // Replaces the label with what the future is doing now, for a wait long
+  // enough that the learner should be told (interaction-latency doc).
+  Future<T> Function(void Function(String) setStatus)? futureWithStatus,
   String? title,
   String? backLabel,
   bool barrierDismissible = false,
@@ -31,10 +34,17 @@ Future<Result<T>> showFutureLoadingDialog<T>({
   bool popOnSuccess = true,
   // Pangea#
 }) async {
-  assert(future != null || futureWithProgress != null);
+  assert(
+    future != null || futureWithProgress != null || futureWithStatus != null,
+  );
   final onProgressStream = StreamController<double?>();
+  final onStatusStream = futureWithStatus == null
+      ? null
+      : StreamController<String>();
   final futureExec =
-      futureWithProgress?.call(onProgressStream.add) ?? future!();
+      futureWithProgress?.call(onProgressStream.add) ??
+      futureWithStatus?.call(onStatusStream!.add) ??
+      future!();
   final resultFuture = ResultFuture(futureExec);
 
   if (delay) {
@@ -70,6 +80,7 @@ Future<Result<T>> showFutureLoadingDialog<T>({
       backLabel: backLabel,
       exceptionContext: exceptionContext,
       onProgressStream: onProgressStream.stream,
+      onStatusStream: onStatusStream?.stream,
       // #Pangea
       showError: showError,
       onError: onError,
@@ -89,6 +100,7 @@ class LoadingDialog<T> extends StatefulWidget {
   final Future<T> future;
   final ExceptionContext? exceptionContext;
   final Stream<double?> onProgressStream;
+  final Stream<String>? onStatusStream;
   // #Pangea
   final bool Function(Object)? showError;
   final Object? Function(Object, StackTrace?)? onError;
@@ -104,6 +116,7 @@ class LoadingDialog<T> extends StatefulWidget {
     this.backLabel,
     this.exceptionContext,
     required this.onProgressStream,
+    this.onStatusStream,
     // #Pangea
     this.showError,
     this.onError,
@@ -124,10 +137,35 @@ class LoadingDialogState<T> extends State<LoadingDialog> {
   Object? _result;
   String? _successMessage;
   // Pangea#
+  String? _status;
+  StreamSubscription<String>? _statusSubscription;
+  Timer? _statusDebounce;
+
+  @override
+  void dispose() {
+    _statusSubscription?.cancel();
+    _statusDebounce?.cancel();
+    super.dispose();
+  }
+
+  /// The first status shows at once. A later one shows only once it has held
+  /// for 250 ms, so steps that finish quickly don't flash past unread — the
+  /// same delay as the login dialog's.
+  void _onStatus(String status) {
+    _statusDebounce?.cancel();
+    if (_status == null) {
+      setState(() => _status = status);
+      return;
+    }
+    _statusDebounce = Timer(const Duration(milliseconds: 250), () {
+      if (mounted) setState(() => _status = status);
+    });
+  }
 
   @override
   void initState() {
     super.initState();
+    _statusSubscription = widget.onStatusStream?.listen(_onStatus);
     // #Pangea
     // widget.future.then(
     //   (result) => Navigator.of(context).pop<Result<T>>(Result.value(result)),
@@ -182,7 +220,10 @@ class LoadingDialogState<T> extends State<LoadingDialog> {
     //     : widget.title ?? L10n.of(context).loadingPleaseWait;
     final titleLabel = exception != null
         ? exception.toLocalizedString(context, widget.exceptionContext)
-        : _successMessage ?? widget.title ?? L10n.of(context).loadingPleaseWait;
+        : _successMessage ??
+              _status ??
+              widget.title ??
+              L10n.of(context).loadingPleaseWait;
     // Pangea#
 
     return AlertDialog.adaptive(
@@ -195,41 +236,61 @@ class LoadingDialogState<T> extends State<LoadingDialog> {
             ),
       content: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 256),
-        child: Row(
-          crossAxisAlignment: .center,
-          children: [
-            // #Pangea
-            // if (exception == null) ...[
-            if (exception == null && _successMessage == null) ...[
-              // Pangea#
-              StreamBuilder(
-                stream: widget.onProgressStream,
-                builder: (context, snapshot) =>
-                    CircularProgressIndicator.adaptive(value: snapshot.data),
+        // A dialog that reports what it is doing is laid out like the login
+        // dialog: the status centred over a progress bar.
+        child:
+            widget.onStatusStream != null &&
+                exception == null &&
+                _successMessage == null
+            ? Column(
+                spacing: 12.0,
+                mainAxisSize: .min,
+                children: [
+                  Semantics(
+                    container: true,
+                    liveRegion: true,
+                    child: Text(titleLabel, textAlign: TextAlign.center),
+                  ),
+                  const LinearProgressIndicator(),
+                ],
+              )
+            : Row(
+                crossAxisAlignment: .center,
+                children: [
+                  // #Pangea
+                  // if (exception == null) ...[
+                  if (exception == null && _successMessage == null) ...[
+                    // Pangea#
+                    StreamBuilder(
+                      stream: widget.onProgressStream,
+                      builder: (context, snapshot) =>
+                          CircularProgressIndicator.adaptive(
+                            value: snapshot.data,
+                          ),
+                    ),
+                    const SizedBox(width: 20),
+                  ],
+                  Expanded(
+                    // #Pangea: a live region so the settled result (error or success)
+                    // is announced to screen readers; the loading state is already
+                    // read when the dialog opens, so the region only flips on once
+                    // there is a result (WCAG 4.1.3, #7203).
+                    child: Semantics(
+                      liveRegion: exception != null || _successMessage != null,
+                      child: Text(
+                        titleLabel,
+                        maxLines: 4,
+                        // textAlign: exception == null ? TextAlign.left : null,
+                        textAlign: exception == null && _successMessage == null
+                            ? TextAlign.left
+                            : null,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    // Pangea#
+                  ),
+                ],
               ),
-              const SizedBox(width: 20),
-            ],
-            Expanded(
-              // #Pangea: a live region so the settled result (error or success)
-              // is announced to screen readers; the loading state is already
-              // read when the dialog opens, so the region only flips on once
-              // there is a result (WCAG 4.1.3, #7203).
-              child: Semantics(
-                liveRegion: exception != null || _successMessage != null,
-                child: Text(
-                  titleLabel,
-                  maxLines: 4,
-                  // textAlign: exception == null ? TextAlign.left : null,
-                  textAlign: exception == null && _successMessage == null
-                      ? TextAlign.left
-                      : null,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-              // Pangea#
-            ),
-          ],
-        ),
       ),
       // #Pangea
       // actions: exception == null

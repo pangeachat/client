@@ -165,7 +165,12 @@ class UserDialog extends StatelessWidget {
                           onTap: avatar != null
                               ? () => showDialog(
                                   context: context,
-                                  builder: (_) => MxcImageViewer(avatar),
+                                  builder: (_) => MxcImageViewer(
+                                    avatar,
+                                    semanticsLabel: L10n.of(
+                                      context,
+                                    ).profileImageLabel,
+                                  ),
                                 )
                               : null,
                           userId: profile.userId,

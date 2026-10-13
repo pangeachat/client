@@ -690,7 +690,6 @@
     "errorDisableIGCClassDesc": "Grammatikassistance er deaktiveret for kurset, som denne chat er i.",
     "error405Desc": "Indstil dine sprog i Hovedmenu > Læringsindstillinger.",
     "termsAndConditions": "Vilkår og betingelser",
-    "andCertifyIAmAtLeast13YearsOfAge": " og bekræfter, at jeg er mindst 16 år gammel.",
     "error502504Desc": "Oversættelses- og grammatikværktøjer kan være langsomme eller utilgængelige, mens Pangea-botterne indhenter.",
     "error404Desc": "Pangea-botten er ikke sikker på, hvordan det skal oversætte det...",
     "errorPleaseRefresh": "Vi undersøger det! Opdater venligst siden og prøv igen.",
@@ -998,9 +997,6 @@
     "why": "Hvorfor?",
     "definition": "Definition",
     "reportToTeacher": "Hvem vil du rapportere denne besked til?",
-    "reportMessageTitle": "{reportingUserId} har rapporteret en besked fra {reportedUserId} i chatten {roomName}",
-    "reportMessageBody": "Besked: {reportedMessage}\nÅrsag: {reason}",
-    "noTeachersFound": "Ingen lærere fundet til rapportering",
     "trialExpiration": "Din gratis prøveperiode udløber den {expiration}",
     "freeTrialDesc": "Nye brugere får en gratis prøveperiode på en uge med Pangea Chat",
     "activateTrial": "Gratis 7-dages prøve",
@@ -1334,7 +1330,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-23 15:42:43.514136",
+    "@@last_modified": "2026-10-12 13:11:50.366258",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -4444,10 +4440,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
         "type": "String",
         "placeholders": {}
@@ -5691,35 +5683,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8677,11 +8640,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Brug aktivitetsbillede som chatbaggrund",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat med support",
     "@chatWithSupport": {
         "type": "String",
@@ -10340,7 +10298,6 @@
     "activityLoadFailed": "Kunne ikke indlæse aktiviteten. Tjek din forbindelse og prøv igen.",
     "levelUpChip": "Niveau {level}!",
     "missingCourseOutline": "Dette kursus er ikke længere tilgængeligt",
-    "missingCourseOutlineCta": "Dette kursus er ikke længere tilgængeligt. Vælg en ny kursusplan.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10365,10 +10322,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10764,7 +10717,6 @@
     "constructLevelFlowers": "Blomster, mestret ord",
     "filterAndSearch": "Filtrer og søg",
     "participantsOfTotal": "{filled} af {total} spillere",
-    "mapAttributionLabel": "OpenStreetMap-bidragydere, ophavsret og licens",
     "seeAll": "Se alle",
     "seeAllSection": "Se alle {section}",
     "showMoreOptionsHint": "vis flere valgmuligheder",
@@ -10881,5 +10833,64 @@
     "goalReportErrorRetry": "Søgningen efter turen blev ikke afsluttet. Prøv igen.",
     "summaryFeedbackReceived": "Tak! Vi har modtaget din feedback.",
     "summaryFeedbackFailed": "Kunne ikke sende din feedback. Prøv venligst igen.",
-    "summaryFeedbackProcessing": "Sender din feedback og opdaterer opsummeringen…"
+    "summaryFeedbackProcessing": "Sender din feedback og opdaterer opsummeringen…",
+    "callTranscriptTranscribing": "Transskriberer stadig optagelsen fra {name}…",
+    "callTranscriptSeekTo": "Afspil fra {time}",
+    "callTranscriptRecordings": "Optagelser",
+    "callTranscriptFullCall": "Hele opkaldet",
+    "callTranscriptPreparingRecording": "Forbereder hele optagelsen…",
+    "callTranscriptNoRecording": "Ingen optagelse af hele opkaldet.",
+    "callTranscriptNotSubscribed": "{name} havde ikke et abonnement under dette opkald, så det, der blev sagt, blev ikke transskriberet.",
+    "joinYourCourse": "Tilmeld dig dit kursus",
+    "courseCodeJoinExplanation": "Log ind eller tilmeld dig, så bruger vi din kursuskode til automatisk at tilføje dig til dit kursus.",
+    "courseCodeLabel": "Kursuskode",
+    "courseCodeSaved": "Kursuskode {code} gemt",
+    "courseCodeSavedExplanation": "Tilmeld dig eller log ind, så tilføjer vi dig til dit kursus.",
+    "moderationRefusedContactDetails": "Din besked blev ikke sendt. Et automatisk filter fandt kontaktoplysninger, f.eks. et telefonnummer. Fjern dem, og prøv igen.",
+    "moderationRefusedProfanity": "Din besked blev ikke sendt. Et automatisk filter fandt et ord, vi ikke tillader i chatten. Ret det, og prøv igen.",
+    "callTranscriptTranscribeButton": "Transskriber",
+    "callTranscriptAudioUnavailable": "Den gemte optagelse fra {name} kunne ikke downloades og kunne derfor ikke transskriberes.",
+    "callTranscriptChooseLanguage": "Hvilket sprog blev der talt?",
+    "callTranscriptSubscribeForTranscription": "Abonnér for transskription",
+    "unlockCallTranscript": "Lås op for opkaldstranskription",
+    "activitySummaryUpdateFailed": "Denne oversigt kunne ikke opdateres.",
+    "courseNotFound": "Kursus ikke fundet",
+    "askTeacherForNewCourse": "Bed din lærer om at vælge et nyt kursus.",
+    "pickNewCoursePlan": "Vælg en ny kursusplan.",
+    "ssoNetworkBlockedTitle": "Loginside utilgængelig",
+    "ssoNetworkBlockedDesc": "Dette netværk tillader os ikke at nå {provider} for at logge dig ind. Skole- og kontor-Wi-Fi blokerer det ofte. Du kan i stedet tilmelde dig med e-mail eller skifte til et andet netværk og prøve igen.",
+    "ssoTryAnyway": "Prøv alligevel",
+    "publicCoursesFilterTooltip": "Vis kun kurser, alle kan deltage i",
+    "restrictedCoursesFilterTooltip": "Vis kun kurser, du skal anmode om at deltage i",
+    "viewImageLabel": "Se billede",
+    "reportSent": "Rapport sendt",
+    "reportNotSent": "Din rapport kunne ikke sendes. Tjek din forbindelse, og prøv igen.",
+    "reportPointerMessage": "En besked blev rapporteret i {courseName} – se Sikkerhed",
+    "useActivityImageAsChatBackground": "Brug aktivitetsbillede som chatbaggrund",
+    "andCertifyIMeetTheMinimumAge": " og bekræfter, at jeg er mindst 13 år gammel, eller den minimumsalder, der kræves i mit land, hvis den er højere.",
+    "filteredNetworkBlockedTitle": "Dette netværk blokerer Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Dette netværk blokerer dele af Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Hvad kan jeg gøre?",
+    "filteredNetworkPhoneAdvice": "Slå Wi-Fi fra, og brug mobildata i stedet.",
+    "filteredNetworkComputerAdvice": "Opret forbindelse til din telefons hotspot i stedet for dette Wi-Fi.",
+    "filteredNetworkItHeading": "Til lærere og IT-personale",
+    "filteredNetworkItBody": "Bed dit IT-team om at tillade disse domæner:",
+    "filteredNetworkAskForHelp": "Spørg Pangea om hjælp",
+    "filteredNetworkHelpExplanation": "Vi sender dig en e-mail for at hjælpe med at få Pangea Chat til at fungere på dette netværk.",
+    "filteredNetworkHelpWaiting": "Din anmodning sendes, så snart du er forbundet.",
+    "filteredNetworkHelpSent": "Sendt. Vi kontakter dig via e-mail.",
+    "filteredNetworkHelpRefused": "Vi kunne ikke sende din anmodning. Send venligst en e-mail til support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Dette netværk blokerer videoer.",
+    "filteredNetworkImagesBlocked": "Dette netværk blokerer billeder.",
+    "filteredNetworkMapBlocked": "Dette netværk blokerer kortet.",
+    "callFullScreenTitle": "Lad opkald ringe på fuld skærm",
+    "callFullScreenMessage": "Der kom et opkald, mens Pangea Chat var lukket, men din telefon kunne kun vise en lille notifikation for det. Tillad fuldskærmsopkald, så det næste ringer på hele din skærm, selv når din telefon er låst.",
+    "callMicrophoneTitle": "Brug din mikrofon til opkald",
+    "callMicrophoneMessage": "Pangea Chat skal bruge din mikrofon til opkald, herunder opkald, du besvarer fra låseskærmen.",
+    "callMicrophoneOffTitle": "Dit opkald blev ikke forbundet",
+    "callMicrophoneOffMessage": "Pangea Chat kan ikke bruge din mikrofon. Tryk for at slå den til i Indstillinger.",
+    "mapCreditsLabel": "Kortkreditering: Stadia Maps, OpenMapTiles og OpenStreetMap",
+    "activityLaunchFindingCourses": "Finder dine kurser…",
+    "activityLaunchCreatingRoom": "Opretter din aktivitet…",
+    "activityLaunchOpeningRoom": "Åbner din aktivitet…"
 }

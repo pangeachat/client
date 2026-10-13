@@ -6,7 +6,14 @@ import 'package:fluffychat/widgets/url_image_widget.dart';
 class MxcImageViewer extends StatelessWidget {
   final Uri mxContent;
 
-  const MxcImageViewer(this.mxContent, {super.key});
+  /// What the image shows, read by screen readers.
+  final String semanticsLabel;
+
+  const MxcImageViewer(
+    this.mxContent, {
+    required this.semanticsLabel,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +59,7 @@ class MxcImageViewer extends StatelessWidget {
               //   animated: true,
               // ),
               child: Semantics(
-                label: L10n.of(context).profileImageLabel,
+                label: semanticsLabel,
                 child: ImageByUrl(
                   key: ValueKey(mxContent.toString()),
                   imageUrl: mxContent,

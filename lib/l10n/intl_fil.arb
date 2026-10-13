@@ -1425,7 +1425,6 @@
     "errorDisableIGCClassDesc": "Naka-off ang tulong sa gramatika para sa kurso kung saan naroroon ang chat na ito.",
     "error405Desc": "Mangyaring itakda ang iyong mga wika sa Main Menu > Learning Settings.",
     "termsAndConditions": "Mga Tuntunin at Kondisyon",
-    "andCertifyIAmAtLeast13YearsOfAge": " at certipikadong ako ay hindi bababa sa 16 na taong gulang.",
     "error502504Desc": "Maaaring maging mabagal o hindi magagamit ang mga translation at grammar tools habang nakakaabante ang mga Pangea bots.",
     "error404Desc": "Hindi sigurado ang Pangea Bot kung paano isasalin iyon...",
     "errorPleaseRefresh": "Tinitingnan namin ito! Mangyaring i-reload at subukan muli.",
@@ -1733,9 +1732,6 @@
     "why": "Bakit?",
     "definition": "Depinisyon",
     "reportToTeacher": "Kanino mo nais i-report ang mensaheng ito?",
-    "reportMessageTitle": "{reportingUserId} ay nag-ulat ng isang mensahe mula kay {reportedUserId} sa chat {roomName}",
-    "reportMessageBody": "Mensahe: {reportedMessage}\nDahilan: {reason}",
-    "noTeachersFound": "Walang natagpuang guro na maaaring i-report",
     "trialExpiration": "Mag-e-expire ang iyong libreng pagsubok sa {expiration}",
     "freeTrialDesc": "Nakakatanggap ang mga bagong user ng isang linggong libreng pagsubok sa Pangea Chat",
     "activateTrial": "Libreng 7-Araw na Pagsubok",
@@ -2080,7 +2076,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-23 15:42:44.064183",
+    "@@last_modified": "2026-10-12 13:11:53.641298",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -4395,10 +4391,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
         "type": "String",
         "placeholders": {}
@@ -5642,35 +5634,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8612,11 +8575,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Makipag-chat sa Suporta",
     "@chatWithSupport": {
         "type": "String",
@@ -10280,7 +10238,6 @@
     "activityLoadFailed": "Hindi ma-load ang aktibidad. Suriin ang iyong koneksyon at subukang muli.",
     "levelUpChip": "Antas {level}!",
     "missingCourseOutline": "Ang kursong ito ay hindi na available",
-    "missingCourseOutlineCta": "Ang kursong ito ay hindi na available. Pumili ng bagong plano ng kurso.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10305,10 +10262,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10704,7 +10657,6 @@
     "constructLevelFlowers": "Mga Bulaklak, mga salitang bihasa",
     "filterAndSearch": "I-filter at hanapin",
     "participantsOfTotal": "{filled} sa {total} na manlalaro",
-    "mapAttributionLabel": "Mga contributor ng OpenStreetMap, copyright at lisensya",
     "seeAll": "Tingnan lahat",
     "seeAllSection": "Tingnan lahat ng {section}",
     "showMoreOptionsHint": "ipakita ang higit pang opsyon",
@@ -10821,5 +10773,64 @@
     "goalReportErrorRetry": "Hindi natapos ang paghahanap para sa turn. Subukang muli.",
     "summaryFeedbackReceived": "Salamat! Natanggap namin ang iyong feedback.",
     "summaryFeedbackFailed": "Hindi maipadala ang iyong feedback. Pakisubukang muli.",
-    "summaryFeedbackProcessing": "Ipinapadala ang iyong feedback at ina-update ang buod…"
+    "summaryFeedbackProcessing": "Ipinapadala ang iyong feedback at ina-update ang buod…",
+    "callTranscriptTranscribing": "Isinasalin pa rin ang recording mula kay {name}...",
+    "callTranscriptSeekTo": "I-play mula {time}",
+    "callTranscriptRecordings": "Mga Recording",
+    "callTranscriptFullCall": "Buong tawag",
+    "callTranscriptPreparingRecording": "Inihahanda ang buong recording...",
+    "callTranscriptNoRecording": "Walang recording ng buong tawag.",
+    "callTranscriptNotSubscribed": "Walang subscription si {name} noong tawag na ito, kaya hindi na-transcribe ang sinabi.",
+    "joinYourCourse": "Sumali sa iyong kurso",
+    "courseCodeJoinExplanation": "Mag-log in o mag-sign up, at gagamitin namin ang iyong course code para awtomatiko kang maidagdag sa iyong kurso.",
+    "courseCodeLabel": "Course code",
+    "courseCodeSaved": "Na-save ang course code na {code}",
+    "courseCodeSavedExplanation": "Mag-sign up o mag-log in at idadagdag ka namin sa iyong kurso.",
+    "moderationRefusedContactDetails": "Hindi naipadala ang iyong mensahe. Nakakita ang awtomatikong filter ng mga detalye sa pakikipag-ugnayan, tulad ng numero ng telepono. Pakialisin ang mga ito at subukang muli.",
+    "moderationRefusedProfanity": "Hindi naipadala ang iyong mensahe. Nakakita ang awtomatikong filter ng salitang hindi namin pinapayagan sa chat. Pakipalitan ito at subukang muli.",
+    "callTranscriptTranscribeButton": "I-transcribe",
+    "callTranscriptAudioUnavailable": "Hindi ma-download ang na-save na recording mula kay {name}, kaya hindi ito ma-transcribe.",
+    "callTranscriptChooseLanguage": "Anong wika ang ginamit?",
+    "callTranscriptSubscribeForTranscription": "Mag-subscribe para sa transkripsyon",
+    "unlockCallTranscript": "I-unlock ang transkripsyon ng tawag",
+    "activitySummaryUpdateFailed": "Hindi ma-update ang buod na ito.",
+    "courseNotFound": "Hindi makita ang kurso",
+    "askTeacherForNewCourse": "Hilingin sa iyong guro na pumili ng bagong kurso.",
+    "pickNewCoursePlan": "Pumili ng bagong plano ng kurso.",
+    "ssoNetworkBlockedTitle": "Hindi maabot ang site ng pag-sign in",
+    "ssoNetworkBlockedDesc": "Hindi kami pinapayagan ng network na ito na maabot ang {provider} para i-sign in ka. Madalas itong hinaharangan ng Wi-Fi ng paaralan at opisina. Maaari kang mag-sign up gamit ang email sa halip, o lumipat sa ibang network at subukang muli.",
+    "ssoTryAnyway": "Subukan pa rin",
+    "publicCoursesFilterTooltip": "Ipakita lang ang mga kurso na maaaring salihan ng sinuman",
+    "restrictedCoursesFilterTooltip": "Ipakita lang ang mga kurso na kailangan mong humingi ng pahintulot para makasali",
+    "viewImageLabel": "Tingnan ang larawan",
+    "reportSent": "Naipadala ang ulat",
+    "reportNotSent": "Hindi maipadala ang iyong ulat. Tingnan ang iyong koneksyon at subukang muli.",
+    "reportPointerMessage": "May naiulat na mensahe sa {courseName} — tingnan ang Kaligtasan",
+    "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat",
+    "andCertifyIMeetTheMinimumAge": " at pinapatunayan kong ako ay hindi bababa sa 13 taong gulang, o ang minimum na edad na kinakailangan sa aking bansa kung ito ay mas mataas.",
+    "filteredNetworkBlockedTitle": "Hinarangan ng network na ito ang Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Hinarangan ng network na ito ang bahagi ng Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Ano ang puwede kong gawin?",
+    "filteredNetworkPhoneAdvice": "I-off ang Wi-Fi at gamitin na lang ang mobile data.",
+    "filteredNetworkComputerAdvice": "Kumonekta sa hotspot ng iyong telepono sa halip na sa Wi-Fi na ito.",
+    "filteredNetworkItHeading": "Para sa mga guro at IT staff",
+    "filteredNetworkItBody": "Hilingin sa iyong IT team na payagan ang mga domain na ito:",
+    "filteredNetworkAskForHelp": "Humiling ng tulong sa Pangea",
+    "filteredNetworkHelpExplanation": "Mag-e-email kami sa iyo para matulungan kang gumana ang Pangea Chat sa network na ito.",
+    "filteredNetworkHelpWaiting": "Ipadadala ang iyong kahilingan sa sandaling makakonekta ka.",
+    "filteredNetworkHelpSent": "Naipadala. Makikipag-ugnayan kami sa pamamagitan ng email.",
+    "filteredNetworkHelpRefused": "Hindi namin maipadala ang iyong kahilingan. Mangyaring mag-email sa support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Hinarangan ng network na ito ang mga video.",
+    "filteredNetworkImagesBlocked": "Hinarangan ng network na ito ang mga larawan.",
+    "filteredNetworkMapBlocked": "Hinarangan ng network na ito ang mapa.",
+    "callFullScreenTitle": "Hayaang mag-ring nang full screen ang mga tawag",
+    "callFullScreenMessage": "May pumasok na tawag habang sarado ang Pangea Chat, pero maliit na notification lang ang naipakita ng iyong telepono para dito. Payagan ang full-screen na tawag para sa susunod na ring sa iyong buong screen, kahit naka-lock ang iyong telepono.",
+    "callMicrophoneTitle": "Gamitin ang iyong mikropono para sa mga tawag",
+    "callMicrophoneMessage": "Kailangan ng Pangea Chat ang iyong mikropono para sa mga tawag, kasama ang mga tawag na sinasagot mo mula sa lock screen.",
+    "callMicrophoneOffTitle": "Hindi nakakonekta ang iyong tawag",
+    "callMicrophoneOffMessage": "Hindi magagamit ng Pangea Chat ang iyong mikropono. I-tap para i-on ito sa Settings.",
+    "mapCreditsLabel": "Mga credit sa mapa: Stadia Maps, OpenMapTiles at OpenStreetMap",
+    "activityLaunchFindingCourses": "Hinahanap ang iyong mga kurso…",
+    "activityLaunchCreatingRoom": "Ginagawa ang iyong aktibidad…",
+    "activityLaunchOpeningRoom": "Binubuksan ang iyong aktibidad…"
 }

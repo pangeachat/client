@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/journey_checklist/journey_moments.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/subscription/repo_v2/checkout_request.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
@@ -25,6 +26,12 @@ class SettingsSubscription extends StatefulWidget {
 class SettingsSubscriptionState extends State<SettingsSubscription>
     with PaymentPageMixin {
   final ValueNotifier<ProductPlan?> _selectedSubscription = ValueNotifier(null);
+
+  @override
+  void initState() {
+    super.initState();
+    JourneyMoments.subscriptionPageViewed(Matrix.of(context).client);
+  }
 
   @override
   void dispose() {

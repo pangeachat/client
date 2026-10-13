@@ -611,6 +611,131 @@ List<TranscriptSegment> buildSegments(
   return List.unmodifiable(segments);
 }
 
+/// Segments for the WHOLE-recording pass: the post-call transcription of a
+/// device's OWN uploaded recording -- the same continuous audio the mix is built
+/// from -- cut into utterances by pauses and placed by the provider's own word
+/// timestamps.
+///
+/// Unlike [buildSegments] this does NOT align the provider's word list to a
+/// separate punctuated transcript. The recording is one uninterrupted capture,
+/// so the word list IS the text and the timing: nothing is dropped for a
+/// tokenisation mismatch, no chunk is lost to a live-capture gap, and because
+/// every utterance is placed at its own word time on one clock, the two
+/// speakers' halves interleave in the order they were spoken by construction.
+///
+/// [startedAtMs] is when the recording began on the writing device's wall clock
+/// and [durationMs] is its length. Each utterance is placed at [startedAtMs] plus
+/// its first word's in-recording offset -- the same clock [TranscriptSegment.atMs]
+/// uses -- so the reader's per-half clock correction carries it onto the shared
+/// clock exactly as it does a live half. A word time outside the recording is
+/// ignored for placement rather than trusted, mirroring [momentWithinChunk]
+/// everywhere else. Positions are exact ([spanMs] null): a word timestamp is a
+/// moment, not a chunk-bounded estimate.
+List<TranscriptSegment> buildRecordingSegments(
+  SpeechToTextResponseModel result,
+  int startedAtMs,
+  int durationMs, {
+  Duration pause = kUtterancePause,
+}) {
+  if (!result.hasUsableTranscript) return const [];
+  final transcript = result.transcript;
+  return buildRecordingSegmentsFromTimings(
+    transcript.wordTimings,
+    transcript.text,
+    startedAtMs,
+    durationMs,
+    pause: pause,
+  );
+}
+
+/// The shared core of [buildRecordingSegments]: builds recording-based segments
+/// from a word-timing list and its text on the recording's [startedAtMs] /
+/// [durationMs] timeline.
+///
+/// The recorder calls this DIRECTLY with the timings of a CHUNKED transcription
+/// -- each cap-sized piece's timings offset onto one recording timeline and
+/// concatenated -- so a call of ANY length is transcribed in pieces that each
+/// fit the choreographer's request cap, without changing how utterances are cut
+/// or placed. [timings] must already be on the recording's own timeline
+/// (0..[durationMs]); this function does not know piece boundaries.
+List<TranscriptSegment> buildRecordingSegmentsFromTimings(
+  List<WordTiming>? timings,
+  String text,
+  int startedAtMs,
+  int durationMs, {
+  Duration pause = kUtterancePause,
+}) {
+  if (timings == null || timings.isEmpty) {
+    // No per-word timing at all: keep the whole recording's text as one
+    // utterance at its start rather than lose what was said.
+    final whole = text.trim();
+    return whole.isEmpty
+        ? const []
+        : [TranscriptSegment(whole, atMs: startedAtMs)];
+  }
+
+  final segments = <TranscriptSegment>[];
+  final words = <String>[];
+  int? openedAt;
+  // Where the NEXT gap is measured from: the previous word's END when known,
+  // otherwise its START -- so a long silence is still detected when the provider
+  // omits end times (without it, speech returning after a mute merges into the
+  // utterance before it instead of being placed late).
+  int? reference;
+  // A monotonic floor on emitted offsets. Word timings SHOULD be chronological;
+  // a provider that lists one out of order would otherwise place a later
+  // utterance before an earlier one, and the reader requires non-decreasing
+  // positions -- one backward step drops the whole half to the per-speaker view.
+  // Clamping keeps the half readable; ordered timings never trip it.
+  var lastOffset = 0;
+
+  void flush() {
+    if (words.isEmpty) return;
+    final offset = openedAt ?? lastOffset;
+    final placed = offset < lastOffset ? lastOffset : offset;
+    segments.add(
+      TranscriptSegment(words.join(' '), atMs: startedAtMs + placed),
+    );
+    lastOffset = placed;
+    words.clear();
+    openedAt = null;
+  }
+
+  for (final timing in timings) {
+    final word = timing.word.trim();
+    if (word.isEmpty) continue;
+    final start = momentWithinChunk(timing.startTimeMs, durationMs);
+    final gapOpens =
+        start != null &&
+        reference != null &&
+        start - reference >= pause.inMilliseconds;
+    if (gapOpens) flush();
+    if (words.isEmpty) openedAt = start;
+    words.add(word);
+    // Advance the gap reference to the RUNNING MAXIMUM of the words' ends (or
+    // their starts, when an end is absent). A running max, not the latest value:
+    // a small overlap -- b starting a few ms before a ends -- must not walk the
+    // reference backwards and fake a pause before the next word.
+    final candidate = momentWithinChunk(timing.endTimeMs, durationMs) ?? start;
+    if (candidate != null && (reference == null || candidate > reference)) {
+      reference = candidate;
+    }
+  }
+  flush();
+  // Timings were present but every one trimmed to empty, so the loop added
+  // nothing. Fall back to the whole text rather than return an empty half:
+  // CallRecord reads an empty list as "no recording half" and silently falls
+  // back to the live path, dropping speech the provider actually returned.
+  // Mirrors the no-timings branch above.
+  if (segments.isEmpty) {
+    final whole = text.trim();
+    if (whole.isNotEmpty) {
+      segments.add(TranscriptSegment(whole, atMs: startedAtMs));
+    }
+  }
+  return List.unmodifiable(segments);
+}
+
 /// Whether a chunk's timings are a WELL-FORMED SEQUENCE, which is the only
 /// thing that lets its segments be positioned:
 ///

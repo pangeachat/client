@@ -2,11 +2,11 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/navigation/legacy_redirects.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
 
-/// The inbound URL rewrites (routing.instructions.md): the shareable
-/// standalone activity link and the course join link. Every other legacy
-/// shape is deleted, not redirected — the client is the only producer of its
-/// URLs.
+/// Activity and course-join inbound rewrites. Synapse email links are covered
+/// by notification_email_link_test.dart; retired internal routes stay retired.
 void main() {
   String? resolve(String location) =>
       LegacyRedirects.resolve(Uri.parse(location));
@@ -60,6 +60,37 @@ void main() {
 
     test('idempotent: the token form never re-fires', () {
       expect(resolve(resolve('/vj3pc8b')!), isNull);
+    });
+  });
+
+  group('the gift link /gift/<code> (subscriptions § Gift link)', () {
+    const code = 'TESOL26-alice_2026';
+
+    test('folds to the discount page alone, carrying the code', () {
+      final out = resolve('/gift/$code');
+      expect(out, PRoutes.giftLink(code));
+      final outUri = Uri.parse(out!);
+      // A workspace location (`/` with a query): the shape the login-bounce
+      // ferry keeps, so the link survives sign-in like the course link.
+      expect(outUri.path, '/');
+      final right = parseOpenPanels(outUri).right;
+      expect(right, hasLength(1));
+      final param = right.single.param as SettingsTokenParam;
+      expect(param.subpage, SettingsTokenParam.discountPage);
+      expect(param.promoCode, code);
+    });
+
+    test('anything that is not a promo code is left alone', () {
+      expect(resolve('/gift'), isNull);
+      expect(resolve('/gift/'), isNull);
+      expect(resolve('/gift/a/b'), isNull);
+      expect(resolve('/gift/not%20a%20code'), isNull);
+      expect(resolve('/gift/x.y'), isNull);
+      expect(resolve('/Gift/$code'), isNull);
+    });
+
+    test('idempotent: the token form never re-fires', () {
+      expect(resolve(resolve('/gift/$code')!), isNull);
     });
   });
 

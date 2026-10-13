@@ -1,11 +1,11 @@
 {
-    "name": "FluffyChat",
-    "short_name": "FluffyChat",
+    "name": "Pangea Chat",
+    "short_name": "Pangea Chat",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "The cutest messenger in the Matrix network",
+    "background_color": "#FFFFFF",
+    "theme_color": "#5E3ACF",
+    "description": "Learn a language while texting your friends.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

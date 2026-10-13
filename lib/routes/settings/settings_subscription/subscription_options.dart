@@ -1,7 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
+import 'package:fluffychat/features/subscription/utils/storefront_gate.dart';
 import 'package:fluffychat/features/subscription/widgets/subscription_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
@@ -113,25 +115,29 @@ class SubscriptionOptionsInternal extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              width: rowWidth,
-              child: ElevatedButton(
-                onPressed: onEnterDiscountCode,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: theme.colorScheme.primary,
-                  foregroundColor: theme.colorScheme.onPrimary,
-                ),
-                child: Text(
-                  L10n.of(context).enterDiscountCode,
-                  textAlign: TextAlign.center,
-                  style:
-                      (isColumnMode
-                              ? theme.textTheme.titleMedium
-                              : theme.textTheme.titleSmall)
-                          ?.copyWith(color: theme.colorScheme.onPrimary),
+            if (allowsInAppDiscountCode(
+              isWeb: kIsWeb,
+              platform: defaultTargetPlatform,
+            ))
+              SizedBox(
+                width: rowWidth,
+                child: ElevatedButton(
+                  onPressed: onEnterDiscountCode,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: theme.colorScheme.primary,
+                    foregroundColor: theme.colorScheme.onPrimary,
+                  ),
+                  child: Text(
+                    L10n.of(context).enterDiscountCode,
+                    textAlign: TextAlign.center,
+                    style:
+                        (isColumnMode
+                                ? theme.textTheme.titleMedium
+                                : theme.textTheme.titleSmall)
+                            ?.copyWith(color: theme.colorScheme.onPrimary),
+                  ),
                 ),
               ),
-            ),
           ],
         );
       },

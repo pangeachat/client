@@ -70,7 +70,7 @@ These definitions are analogous to the SemVer standard definitions for these ver
 
 The root `.env` is the **single config source** on every platform. There is no tracked `assets/.env`; don't reintroduce one — a second copy is what previously let web silently ignore the root file.
 
-- **Web**: `.env` is not a bundled asset. [`EnvLoader`](../../lib/pangea/common/config/env_loader.dart) fetches `/.env` from the web root at startup, so deploy jobs must place the env file at the web root (`build/web/.env`). This is what lets one web artifact be stamped with the target env at deploy time without a rebuild.
+- **Web**: `.env` is not a bundled asset. [`EnvLoader`](../../lib/pangea/common/config/env_loader.dart) fetches `/.env` from the web root at startup, so deploy jobs must place the env file at the web root (`build/web/.env`). This is what lets one web artifact be stamped with the target env at deploy time without a rebuild. There is no fallback: if `/.env` can't be fetched, the load fails.
 - **Native**: `.env` is a bundled asset, but the pubspec declaration stays commented on `main` because a declared-but-missing asset fails the build and `.env` is gitignored. CI writes the file and applies [`enable_mobile_env.patch`](../../scripts/enable_mobile_env.patch) to uncomment it. If the pubspec asset block changes, regenerate the patch or mobile builds break at `git apply`.
 - **Env switcher** (staging builds): `envs.json` / `appConfigOverride` overlays whatever dotenv loaded; it is independent of where the file came from.
 
@@ -86,6 +86,8 @@ Mobile Firebase messaging setup uses GitHub Actions secrets:
 | `GOOGLE_SERVICES_PLIST` | `ios/Runner/GoogleService-Info.plist` |
 
 Both values are base64-encoded file contents. Run [`configure-firebase-messaging.sh`](../../scripts/configure-firebase-messaging.sh) to set up the environment.
+
+The Android and iOS build jobs also fetch the Stadia Maps key from AWS Secrets Manager into the bundled `.env` as `STADIA_MAPS_API_KEY`; web builds never get it. See [world-map-tiles.instructions.md](world-map-tiles.instructions.md).
 
 ## Production Hotfix Process
 

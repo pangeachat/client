@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_report_repo.dart';
+import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extension.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 
 /// The prompt behind a goal star (staging only, for the team).
@@ -25,7 +28,7 @@ Future<void> showGoalReportDialog({
   required String roleId,
   required ActivityRoleGoal goal,
   required GoalReportDirection direction,
-  Future<List<Event>> Function()? ownMessagesOverride,
+  Future<Timeline> Function()? timelineOverride,
 }) => showDialog<void>(
   context: context,
   builder: (_) => _GoalReportDialog(
@@ -41,7 +44,7 @@ Future<void> showGoalReportDialog({
     // (`workspace_shell.dart`). A confirmation sent there asserts instead of
     // showing.
     messenger: ScaffoldMessenger.of(context),
-    ownMessagesOverride: ownMessagesOverride,
+    timelineOverride: timelineOverride,
   ),
 );
 
@@ -55,9 +58,9 @@ class _GoalReportDialog extends StatefulWidget {
   /// opened the prompt rather than from the prompt's own.
   final ScaffoldMessengerState messenger;
 
-  /// Test seam: the reporter's own messages, without a Matrix client behind
-  /// them. Null in the app, where they come from the room's timeline.
-  final Future<List<Event>> Function()? ownMessagesOverride;
+  /// Test seam: the timeline the reporter's messages are read from, without a
+  /// Matrix client behind it. Null in the app, where it is the room's own.
+  final Future<Timeline> Function()? timelineOverride;
 
   const _GoalReportDialog({
     required this.room,
@@ -65,7 +68,7 @@ class _GoalReportDialog extends StatefulWidget {
     required this.goal,
     required this.direction,
     required this.messenger,
-    this.ownMessagesOverride,
+    this.timelineOverride,
   });
 
   @override
@@ -74,12 +77,12 @@ class _GoalReportDialog extends StatefulWidget {
 
 class _GoalReportDialogState extends State<_GoalReportDialog> {
   final TextEditingController _comment = TextEditingController();
-  Event? _evidence;
+  _EvidenceOption? _evidence;
   bool _submitting = false;
   String? _error;
 
   /// Null until the load finishes; empty when the reporter has sent nothing.
-  List<Event>? _ownMessages;
+  List<_EvidenceOption>? _ownMessages;
 
   bool get _needsEvidence => widget.direction == GoalReportDirection.underAward;
 
@@ -103,27 +106,36 @@ class _GoalReportDialogState extends State<_GoalReportDialog> {
   /// A one-shot snapshot, not a live timeline: the messages a report can point
   /// at are already sent, so the list has nothing to follow.
   Future<void> _loadOwnMessages() async {
-    final override = widget.ownMessagesOverride;
-    final events = override != null
-        ? await override()
-        : await _ownMessagesFromTimeline();
+    final messages = await _ownMessagesFromTimeline();
     if (!mounted) return;
-    setState(() => _ownMessages = events);
+    setState(() => _ownMessages = messages.map(_EvidenceOption.new).toList());
   }
 
-  Future<List<Event>> _ownMessagesFromTimeline() async {
+  /// The reporter's own messages, exactly as the chat shows them. The chat's
+  /// own filter is what keeps out the audio a read-aloud leaves behind (an
+  /// audio event carrying another message's transcription, sent under the
+  /// listener's name) and each edit's separate event, so the picker never
+  /// offers a message the chat does not.
+  Future<List<PangeaMessageEvent>> _ownMessagesFromTimeline() async {
     final userId = widget.room.client.userID;
-    final timeline = await widget.room.getTimeline();
+    final timeline =
+        await widget.timelineOverride?.call() ??
+        await widget.room.getTimeline();
     try {
       return timeline.events
+          .filterByVisibleInGui()
           .where(
             (e) =>
                 e.type == EventTypes.Message &&
                 e.senderId == userId &&
-                !e.redacted &&
-                // An edit carries its own event id and would read as a second
-                // copy of the message it replaces.
-                e.relationshipType != RelationshipTypes.edit,
+                !e.redacted,
+          )
+          .map(
+            (e) => PangeaMessageEvent(
+              event: e,
+              timeline: timeline,
+              ownMessage: true,
+            ),
           )
           .toList();
     } finally {
@@ -188,50 +200,56 @@ class _GoalReportDialogState extends State<_GoalReportDialog> {
     final theme = Theme.of(context);
     return AlertDialog(
       title: Text(l10n.goalReportTitle),
-      content: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Which star this is about. The prompt alone does not say, and the
-            // dialog covers the list the star was tapped in.
-            Text(widget.goal.description, style: theme.textTheme.titleSmall),
-            const SizedBox(height: 12.0),
-            Text(
-              _needsEvidence
-                  ? l10n.goalReportUnderAwardPrompt
-                  : l10n.goalReportOverAwardPrompt,
-            ),
-            const SizedBox(height: 16.0),
-            TextField(
-              controller: _comment,
-              autofocus: true,
-              minLines: 2,
-              maxLines: 5,
-              maxLength: GoalReportRepo.maxCommentLength,
-              enabled: !_submitting,
-              decoration: InputDecoration(
-                hintText: l10n.orchestratorFeedbackCommentHint,
-                helperText: l10n.orchestratorFeedbackCommentRequired,
-                errorText: _error,
-              ),
-              onChanged: (_) => setState(() {}),
-            ),
-            if (_needsEvidence) ...[
-              const SizedBox(height: 8.0),
+      // A fixed width, not the content's: AlertDialog sizes to its content's
+      // intrinsic width, and a multiline TextField reports that as its text on
+      // one line, so every typed character would widen the dialog.
+      content: SizedBox(
+        width: FluffyThemes.columnWidth,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // Which star this is about. The prompt alone does not say, and the
+              // dialog covers the list the star was tapped in.
+              Text(widget.goal.description, style: theme.textTheme.titleSmall),
+              const SizedBox(height: 12.0),
               Text(
-                l10n.goalReportPickMessage,
-                style: theme.textTheme.bodySmall,
+                _needsEvidence
+                    ? l10n.goalReportUnderAwardPrompt
+                    : l10n.goalReportOverAwardPrompt,
               ),
-              const SizedBox(height: 8.0),
-              _EvidencePicker(
-                messages: _ownMessages,
-                selected: _evidence,
+              const SizedBox(height: 16.0),
+              TextField(
+                controller: _comment,
+                autofocus: true,
+                minLines: 2,
+                maxLines: 5,
+                maxLength: GoalReportRepo.maxCommentLength,
                 enabled: !_submitting,
-                onSelected: (e) => setState(() => _evidence = e),
+                decoration: InputDecoration(
+                  hintText: l10n.orchestratorFeedbackCommentHint,
+                  helperText: l10n.orchestratorFeedbackCommentRequired,
+                  errorText: _error,
+                ),
+                onChanged: (_) => setState(() {}),
               ),
+              if (_needsEvidence) ...[
+                const SizedBox(height: 8.0),
+                Text(
+                  l10n.goalReportPickMessage,
+                  style: theme.textTheme.bodySmall,
+                ),
+                const SizedBox(height: 8.0),
+                _EvidencePicker(
+                  messages: _ownMessages,
+                  selected: _evidence,
+                  enabled: !_submitting,
+                  onSelected: (e) => setState(() => _evidence = e),
+                ),
+              ],
             ],
-          ],
+          ),
         ),
       ),
       actions: [
@@ -248,13 +266,40 @@ class _GoalReportDialogState extends State<_GoalReportDialog> {
   }
 }
 
+/// One of the reporter's messages as the picker lists it.
+class _EvidenceOption {
+  /// The id and time the server resolves the nominated turn from: the latest
+  /// edit's, for an edited message. The orchestrator's history carries an
+  /// edited message under its newest edit, so the original's id matches no turn.
+  final String eventId;
+  final DateTime originServerTs;
+
+  /// When the message was first sent, which is the time the chat shows it at.
+  final DateTime sentAt;
+
+  /// What the reporter recognises the message by: the latest edit's text, or
+  /// for a voice message the transcript already stored on it. Null for a voice
+  /// message with no stored transcript — the picker reads only what is stored
+  /// and never requests one, so opening a report cannot fan out a
+  /// speech-to-text call per message.
+  final String? text;
+
+  _EvidenceOption(PangeaMessageEvent message)
+    : eventId = message.eventId,
+      originServerTs = message.originServerTs,
+      sentAt = message.event.originServerTs,
+      text = message.isAudioMessage
+          ? message.getSpeechToTextLocal()?.transcript.text.trim()
+          : message.body;
+}
+
 /// The reporter's own messages, newest first, one of which is the evidence.
 class _EvidencePicker extends StatelessWidget {
   /// Null while loading, empty when the reporter has sent nothing yet.
-  final List<Event>? messages;
-  final Event? selected;
+  final List<_EvidenceOption>? messages;
+  final _EvidenceOption? selected;
   final bool enabled;
-  final ValueChanged<Event> onSelected;
+  final ValueChanged<_EvidenceOption> onSelected;
 
   const _EvidencePicker({
     required this.messages,
@@ -287,23 +332,23 @@ class _EvidencePicker extends StatelessWidget {
     return RadioGroup<String>(
       groupValue: selected?.eventId,
       onChanged: (eventId) {
-        final picked = messages.firstWhereOrNull((e) => e.eventId == eventId);
+        final picked = messages.firstWhereOrNull((m) => m.eventId == eventId);
         if (picked != null) onSelected(picked);
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          for (final event in messages)
+          for (final message in messages)
             RadioListTile<String>(
-              value: event.eventId,
+              value: message.eventId,
               enabled: enabled,
               dense: true,
               title: Text(
-                event.body,
+                message.text ?? L10n.of(context).voiceMessage,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
-              subtitle: Text(event.originServerTs.localizedTime(context)),
+              subtitle: Text(message.sentAt.localizedTime(context)),
             ),
         ],
       ),

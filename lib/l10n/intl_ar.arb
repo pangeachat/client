@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-23 15:42:42.936500",
+    "@@last_modified": "2026-10-12 13:11:48.600052",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -2721,7 +2721,6 @@
     "errorDisableIGCClassDesc": "تم إيقاف مساعدة القواعد للفصل الذي يوجد فيه هذا الدردشة.",
     "error405Desc": "يرجى تعيين لغاتك في القائمة الرئيسية > إعدادات التعلم.",
     "termsAndConditions": "الشروط والأحكام",
-    "andCertifyIAmAtLeast13YearsOfAge": " وأشهد أن عمري لا يقل عن 16 عامًا.",
     "error502504Desc": "قد تكون أدوات الترجمة والقواعد بطيئة أو غير متاحة أثناء متابعة بوتات بانجيا.",
     "error404Desc": "بوت بانجيا غير متأكد من كيفية ترجمة ذلك...",
     "errorPleaseRefresh": "نحن نبحث في الأمر! يرجى إعادة التحميل والمحاولة مرة أخرى.",
@@ -3029,9 +3028,6 @@
     "why": "لماذا؟",
     "definition": "تعريف",
     "reportToTeacher": "من تريد الإبلاغ عن هذه الرسالة إليه؟",
-    "reportMessageTitle": "قام {reportingUserId} بالإبلاغ عن رسالة من {reportedUserId} في الدردشة {roomName}",
-    "reportMessageBody": "الرسالة: {reportedMessage}\nالسبب: {reason}",
-    "noTeachersFound": "لم يتم العثور على معلمين للإبلاغ إليهم",
     "trialExpiration": "تنتهي فترة التجربة المجانية الخاصة بك في {expiration}",
     "freeTrialDesc": "يستفيد المستخدمون الجدد من تجربة مجانية لمدة أسبوع على Pangea Chat",
     "activateTrial": "تجربة مجانية لمدة 7 أيام",
@@ -3831,10 +3827,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5081,35 +5073,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8067,11 +8030,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "استخدم صورة النشاط كخلفية للدردشة",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "الدردشة مع الدعم",
     "@chatWithSupport": {
         "type": "String",
@@ -9718,7 +9676,6 @@
     "activityLoadFailed": "تعذر تحميل النشاط. تحقق من اتصالك وحاول مرة أخرى.",
     "levelUpChip": "المستوى {level}!",
     "missingCourseOutline": "لم يعد هذا المقرر متاحًا",
-    "missingCourseOutlineCta": "لم يعد هذا المقرر متاحًا. اختر خطة مقرر جديدة.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9743,10 +9700,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10150,7 +10103,6 @@
     "constructLevelFlowers": "الزهور، كلمات متقنة",
     "filterAndSearch": "تصفية وبحث",
     "participantsOfTotal": "{filled} من أصل {total} لاعبين",
-    "mapAttributionLabel": "مساهمو OpenStreetMap، حقوق النشر والترخيص",
     "seeAll": "مشاهدة الكل",
     "seeAllSection": "مشاهدة كل {section}",
     "showMoreOptionsHint": "عرض المزيد من الخيارات",
@@ -10267,5 +10219,64 @@
     "goalReportErrorRetry": "لم يكتمل البحث عن الدورة. حاول مرة أخرى.",
     "summaryFeedbackReceived": "شكرًا! لقد تلقينا ملاحظاتك.",
     "summaryFeedbackFailed": "تعذر إرسال ملاحظاتك. يرجى المحاولة مرة أخرى.",
-    "summaryFeedbackProcessing": "جارٍ إرسال ملاحظاتك وتحديث الملخص…"
+    "summaryFeedbackProcessing": "جارٍ إرسال ملاحظاتك وتحديث الملخص…",
+    "callTranscriptTranscribing": "ما زلنا نُفرّغ التسجيل من {name}...",
+    "callTranscriptSeekTo": "تشغيل من {time}",
+    "callTranscriptRecordings": "التسجيلات",
+    "callTranscriptFullCall": "المكالمة كاملة",
+    "callTranscriptPreparingRecording": "جارٍ إعداد التسجيل الكامل...",
+    "callTranscriptNoRecording": "لا يوجد تسجيل للمكالمة كاملة.",
+    "callTranscriptNotSubscribed": "لم يكن لدى {name} اشتراك خلال هذه المكالمة، لذلك لم يتم نسخ ما قيل.",
+    "joinYourCourse": "انضم إلى دورتك التدريبية",
+    "courseCodeJoinExplanation": "سجّل الدخول أو أنشئ حسابًا، وسنستخدم رمز دورتك التدريبية لإضافتك إلى دورتك تلقائيًا.",
+    "courseCodeLabel": "رمز الدورة التدريبية",
+    "courseCodeSaved": "تم حفظ رمز الدورة التدريبية {code}",
+    "courseCodeSavedExplanation": "سجّل أو سجّل الدخول وسنضيفك إلى دورتك التدريبية.",
+    "moderationRefusedContactDetails": "لم يتم إرسال رسالتك. عثر فلتر تلقائي على تفاصيل اتصال، مثل رقم هاتف. يُرجى إزالتها والمحاولة مرة أخرى.",
+    "moderationRefusedProfanity": "لم يتم إرسال رسالتك. عثر فلتر تلقائي على كلمة غير مسموح بها في الدردشة. يُرجى تغييرها والمحاولة مرة أخرى.",
+    "callTranscriptTranscribeButton": "نسخ",
+    "callTranscriptAudioUnavailable": "تعذر تنزيل التسجيل المحفوظ من {name}، لذلك لم يتمكن من نسخه.",
+    "callTranscriptChooseLanguage": "ما هي اللغة التي تم التحدث بها؟",
+    "callTranscriptSubscribeForTranscription": "اشترك لنسخ المحادثة",
+    "unlockCallTranscript": "فتح نسخة المحادثة",
+    "activitySummaryUpdateFailed": "تعذر تحديث هذا الملخص.",
+    "courseNotFound": "لم يتم العثور على الدورة التدريبية",
+    "askTeacherForNewCourse": "اطلب من معلمك اختيار دورة تدريبية جديدة.",
+    "pickNewCoursePlan": "اختر خطة دراسية جديدة.",
+    "ssoNetworkBlockedTitle": "موقع تسجيل الدخول غير متاح",
+    "ssoNetworkBlockedDesc": "لا تسمح لنا هذه الشبكة بالوصول إلى {provider} لتسجيل دخولك. غالبًا ما تحظر شبكات Wi-Fi المدرسية والمكتبية ذلك. يمكنك التسجيل باستخدام البريد الإلكتروني بدلاً من ذلك، أو التبديل إلى شبكة أخرى والمحاولة مرة أخرى.",
+    "ssoTryAnyway": "المحاولة على أي حال",
+    "publicCoursesFilterTooltip": "إظهار الدورات التدريبية التي يمكن لأي شخص الانضمام إليها فقط",
+    "restrictedCoursesFilterTooltip": "إظهار الدورات التدريبية التي يجب عليك طلب الانضمام إليها فقط",
+    "viewImageLabel": "عرض الصورة",
+    "reportSent": "تم إرسال البلاغ",
+    "reportNotSent": "تعذر إرسال بلاغك. تحقق من اتصالك وحاول مرة أخرى.",
+    "reportPointerMessage": "تم الإبلاغ عن رسالة في {courseName} — راجع الأمان",
+    "useActivityImageAsChatBackground": "استخدام صورة النشاط كخلفية للدردشة",
+    "andCertifyIMeetTheMinimumAge": " وأقر بأن عمري لا يقل عن 13 عامًا، أو عن الحد الأدنى للسن المطلوب في بلدي إذا كان أعلى من ذلك.",
+    "filteredNetworkBlockedTitle": "هذه الشبكة تحظر دردشة Pangea",
+    "filteredNetworkPartlyBlockedTitle": "هذه الشبكة تحظر جزءًا من دردشة Pangea",
+    "filteredNetworkWhatCanIDo": "ماذا يمكنني أن أفعل؟",
+    "filteredNetworkPhoneAdvice": "أوقف تشغيل Wi-Fi واستخدم بيانات الجوال بدلاً من ذلك.",
+    "filteredNetworkComputerAdvice": "اتصل بنقطة اتصال هاتفك بدلاً من شبكة Wi-Fi هذه.",
+    "filteredNetworkItHeading": "للمعلمين وموظفي تكنولوجيا المعلومات",
+    "filteredNetworkItBody": "اطلب من فريق تكنولوجيا المعلومات لديك السماح بهذه النطاقات:",
+    "filteredNetworkAskForHelp": "اطلب المساعدة من Pangea",
+    "filteredNetworkHelpExplanation": "سنتواصل معك عبر البريد الإلكتروني للمساعدة في تشغيل دردشة Pangea على هذه الشبكة.",
+    "filteredNetworkHelpWaiting": "سيتم إرسال طلبك بمجرد اتصالك.",
+    "filteredNetworkHelpSent": "تم الإرسال. سنتواصل معك عبر البريد الإلكتروني.",
+    "filteredNetworkHelpRefused": "لم نتمكن من إرسال طلبك. يرجى إرسال بريد إلكتروني إلى support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "هذه الشبكة تحظر مقاطع الفيديو.",
+    "filteredNetworkImagesBlocked": "هذه الشبكة تحظر الصور.",
+    "filteredNetworkMapBlocked": "هذه الشبكة تحظر الخريطة.",
+    "callFullScreenTitle": "السماح للمكالمات بالرنين بملء الشاشة",
+    "callFullScreenMessage": "وردت مكالمة بينما كان Pangea Chat مغلقًا، ولكن هاتفك لم يتمكن سوى من عرض إشعار صغير لها. اسمح بالمكالمات بملء الشاشة لكي ترن المكالمة التالية على شاشتك بالكامل، حتى عندما يكون هاتفك مقفلاً.",
+    "callMicrophoneTitle": "استخدم الميكروفون للمكالمات",
+    "callMicrophoneMessage": "يحتاج Pangea Chat إلى الميكروفون الخاص بك للمكالمات، بما في ذلك المكالمات التي تجيب عليها من شاشة القفل.",
+    "callMicrophoneOffTitle": "لم يتم توصيل مكالمتك",
+    "callMicrophoneOffMessage": "لا يمكن لـ Pangea Chat استخدام الميكروفون الخاص بك. انقر لتشغيله في الإعدادات.",
+    "mapCreditsLabel": "اعتمادات الخريطة: Stadia Maps، OpenMapTiles وOpenStreetMap",
+    "activityLaunchFindingCourses": "جارٍ العثور على دوراتك التدريبية…",
+    "activityLaunchCreatingRoom": "جارٍ إنشاء نشاطك…",
+    "activityLaunchOpeningRoom": "جارٍ فتح نشاطك…"
 }

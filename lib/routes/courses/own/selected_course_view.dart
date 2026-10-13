@@ -42,6 +42,11 @@ class SelectedCourseView extends StatelessWidget {
   final AddCourseTileContent? content;
   final bool loading;
   final bool hasError;
+
+  /// Set when the course is known not to be there — its quest plan is
+  /// confirmed gone, or the link points at no course. Shown in place of the
+  /// generic error, since nothing is broken (#380).
+  final String? unavailableMessage;
   final VoidCallback onTapCta;
   final String ctaButtonText;
 
@@ -58,6 +63,7 @@ class SelectedCourseView extends StatelessWidget {
     this.content,
     this.loading = false,
     this.hasError = false,
+    this.unavailableMessage,
     required this.onTapCta,
     required this.ctaButtonText,
     this.objectivesProvider,
@@ -115,6 +121,22 @@ class SelectedCourseView extends StatelessWidget {
                     if (loading) {
                       return const Center(
                         child: CircularProgressIndicator.adaptive(),
+                      );
+                    }
+
+                    final unavailableMessage = this.unavailableMessage;
+                    if (unavailableMessage != null) {
+                      return Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(24.0),
+                          child: Text(
+                            unavailableMessage,
+                            textAlign: TextAlign.center,
+                            style: theme.textTheme.bodyLarge?.copyWith(
+                              color: theme.colorScheme.outline,
+                            ),
+                          ),
+                        ),
                       );
                     }
 

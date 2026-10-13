@@ -8,14 +8,14 @@ import 'package:get_storage/get_storage.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 
-/// The cached-join-code TTL (#7524): an inbound join link's code is ferried
+/// The ferry TTL (#7524): a logged-out visitor's destination is ferried
 /// through GetStorage across the login bounce, so an entry cached long ago
 /// (a visitor who never logged in, or an onboarding that never finished) must
-/// not surprise-join a later login, possibly by a different account on a
-/// shared browser. [SpaceCodeRepo.spaceCode] applies [SpaceCodeRepo.isFresh]
-/// to the stored write stamp and clears stale entries on read; the boundary
-/// logic is pinned here, along with the write's atomicity against a
-/// concurrent read.
+/// not carry a later login, possibly by a different account on a shared
+/// browser, somewhere it never asked to go. [SpaceCodeRepo.destination]
+/// applies [SpaceCodeRepo.isFresh] to the stored write stamp and clears stale
+/// entries on read; the boundary logic is pinned here, along with the write's
+/// atomicity against a concurrent read.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -66,8 +66,8 @@ void main() {
   /// invite the route had just cached. The link then did nothing until it was
   /// tapped a second time with the app already up (#8555).
   ///
-  /// All three payloads (join code, activity id, DM invite) share the write,
-  /// so the DM invite stands in for the set.
+  /// Both entries (the destination and the DM invite) share the write, so
+  /// the DM invite stands in for the pair.
   group('SpaceCodeRepo — a read taken while a write is in flight', () {
     const invitedUser = '@william11:staging.pangea.chat';
 

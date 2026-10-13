@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-23 15:42:50.190113",
+    "@@last_modified": "2026-10-12 13:12:07.733381",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -2914,7 +2914,6 @@
     "errorDisableIGCClassDesc": "此课程中的语法协助已关闭。",
     "error405Desc": "请在主菜单 > 学习设置中设置您的语言。",
     "termsAndConditions": "条款和条件",
-    "andCertifyIAmAtLeast13YearsOfAge": "并证明我已满16岁。",
     "error502504Desc": "在Pangea机器人赶上进度时，翻译和语法工具可能会变慢或不可用。",
     "error404Desc": "Pangea机器人不确定如何翻译这个...",
     "errorPleaseRefresh": "我们正在处理！请重新加载并重试。",
@@ -3222,9 +3221,6 @@
     "why": "为什么？",
     "definition": "定义",
     "reportToTeacher": "你想向谁举报这条消息？",
-    "reportMessageTitle": "{reportingUserId} 在房间 {roomName} 中举报了来自 {reportedUserId} 的消息",
-    "reportMessageBody": "消息：{reportedMessage}\n原因：{reason}",
-    "noTeachersFound": "未找到可举报的老师",
     "trialExpiration": "您的免费试用将在 {expiration} 到期",
     "freeTrialDesc": "新用户可获得为期一周的Pangea聊天免费试用",
     "activateTrial": "免费7天试用",
@@ -3701,10 +3697,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4951,35 +4943,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -7937,11 +7900,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "将活动图像用作聊天背景",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "与支持聊天",
     "@chatWithSupport": {
         "type": "String",
@@ -9420,7 +9378,6 @@
     "activityLoadFailed": "无法加载活动。请检查您的连接并重试。",
     "levelUpChip": "等级 {level}！",
     "missingCourseOutline": "此课程不再可用",
-    "missingCourseOutlineCta": "此课程不再可用。请选择一个新的课程计划。",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9445,10 +9402,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9844,7 +9797,6 @@
     "constructLevelFlowers": "花朵，掌握词",
     "filterAndSearch": "筛选和搜索",
     "participantsOfTotal": "{filled}/{total} 位玩家",
-    "mapAttributionLabel": "OpenStreetMap 贡献者，版权和许可",
     "seeAll": "查看全部",
     "seeAllSection": "查看全部{section}",
     "showMoreOptionsHint": "显示更多选项",
@@ -9961,5 +9913,64 @@
     "goalReportErrorRetry": "回合搜索未完成。请重试。",
     "summaryFeedbackReceived": "感谢！我们已收到您的反馈。",
     "summaryFeedbackFailed": "无法发送您的反馈。请再试一次。",
-    "summaryFeedbackProcessing": "正在发送您的反馈并更新摘要…"
+    "summaryFeedbackProcessing": "正在发送您的反馈并更新摘要…",
+    "callTranscriptTranscribing": "正在转录 {name} 的录音…",
+    "callTranscriptSeekTo": "从 {time} 开始播放",
+    "callTranscriptRecordings": "录音",
+    "callTranscriptFullCall": "完整通话",
+    "callTranscriptPreparingRecording": "正在准备完整录音…",
+    "callTranscriptNoRecording": "没有完整通话的录音。",
+    "callTranscriptNotSubscribed": "{name} 在通话期间没有订阅，因此通话内容未被转录。",
+    "joinYourCourse": "加入您的课程",
+    "courseCodeJoinExplanation": "登录或注册后，我们将使用您的课程代码自动将您添加到课程中。",
+    "courseCodeLabel": "课程代码",
+    "courseCodeSaved": "课程代码 {code} 已保存",
+    "courseCodeSavedExplanation": "注册或登录后，我们会将您添加到您的课程中。",
+    "moderationRefusedContactDetails": "您的消息未能发送。自动过滤器检测到联系方式，例如电话号码。请删除后重试。",
+    "moderationRefusedProfanity": "您的消息未能发送。自动过滤器检测到聊天中不允许使用的词语。请修改后重试。",
+    "callTranscriptTranscribeButton": "转录",
+    "callTranscriptAudioUnavailable": "无法下载 {name} 的已保存录音，因此无法转录。",
+    "callTranscriptChooseLanguage": "说的是什么语言？",
+    "callTranscriptSubscribeForTranscription": "订阅转录服务",
+    "unlockCallTranscript": "解锁通话记录",
+    "activitySummaryUpdateFailed": "此摘要未能更新。",
+    "courseNotFound": "未找到课程",
+    "askTeacherForNewCourse": "请老师选择新课程。",
+    "pickNewCoursePlan": "选择新的课程计划。",
+    "ssoNetworkBlockedTitle": "无法访问登录网站",
+    "ssoNetworkBlockedDesc": "此网络不允许我们访问 {provider} 来登录。学校和办公室的 Wi-Fi 通常会阻止它。您可以改为使用电子邮件注册，或切换到其他网络再试一次。",
+    "ssoTryAnyway": "仍然尝试",
+    "publicCoursesFilterTooltip": "仅显示任何人都可以加入的课程",
+    "restrictedCoursesFilterTooltip": "仅显示您必须申请才能加入的课程",
+    "viewImageLabel": "查看图片",
+    "reportSent": "举报已发送",
+    "reportNotSent": "无法发送您的举报。请检查您的网络连接，然后重试。",
+    "reportPointerMessage": "在 {courseName} 中举报了一条消息 — 请查看“安全”",
+    "useActivityImageAsChatBackground": "使用活动图片作为聊天背景",
+    "andCertifyIMeetTheMinimumAge": "并证明我已年满13周岁，如果我的国家/地区要求更高的最低年龄，则以该年龄为准。",
+    "filteredNetworkBlockedTitle": "此网络正在阻止 Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "此网络正在部分阻止 Pangea Chat",
+    "filteredNetworkWhatCanIDo": "我能做什么？",
+    "filteredNetworkPhoneAdvice": "关闭 Wi-Fi，改用移动数据。",
+    "filteredNetworkComputerAdvice": "连接到手机热点，而不是此 Wi-Fi。",
+    "filteredNetworkItHeading": "致教师和 IT 人员",
+    "filteredNetworkItBody": "请您的 IT 团队允许以下域：",
+    "filteredNetworkAskForHelp": "向 Pangea 寻求帮助",
+    "filteredNetworkHelpExplanation": "我们会通过电子邮件联系您，帮助您在此网络上使用 Pangea Chat。",
+    "filteredNetworkHelpWaiting": "连接后，您的请求将立即发送。",
+    "filteredNetworkHelpSent": "已发送。我们将通过电子邮件与您联系。",
+    "filteredNetworkHelpRefused": "我们无法发送您的请求。请发送电子邮件至 support@pangea.chat。",
+    "filteredNetworkVideoBlocked": "此网络阻止视频。",
+    "filteredNetworkImagesBlocked": "此网络阻止图片。",
+    "filteredNetworkMapBlocked": "此网络阻止地图。",
+    "callFullScreenTitle": "让通话全屏响铃",
+    "callFullScreenMessage": "Pangea Chat 关闭时有来电，但您的手机只能显示一个小通知。允许全屏通话，这样即使手机锁屏，下次来电也会在您的整个屏幕上响铃。",
+    "callMicrophoneTitle": "使用麦克风进行通话",
+    "callMicrophoneMessage": "Pangea Chat 需要使用您的麦克风进行通话，包括您从锁定屏幕接听的电话。",
+    "callMicrophoneOffTitle": "您的通话未接通",
+    "callMicrophoneOffMessage": "Pangea Chat 无法使用您的麦克风。轻点以在“设置”中将其打开。",
+    "mapCreditsLabel": "地图来源：Stadia Maps、OpenMapTiles 和 OpenStreetMap",
+    "activityLaunchFindingCourses": "正在查找您的课程…",
+    "activityLaunchCreatingRoom": "正在创建您的活动…",
+    "activityLaunchOpeningRoom": "正在打开您的活动…"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 15:42:44.764112",
+    "@@last_modified": "2026-10-12 13:11:54.216711",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -1714,7 +1714,6 @@
     "errorDisableIGCClassDesc": "עזרה בדקדוק מושבתת עבור הקורס שבו נמצא הצ'אט הזה.",
     "error405Desc": "אנא הגדר את שפותיך בתפריט הראשי > הגדרות למידה.",
     "termsAndConditions": "תנאים והגבלות",
-    "andCertifyIAmAtLeast13YearsOfAge": "ומאשר שאני בן לפחות 16 שנים.",
     "error502504Desc": "כלי תרגום ודקדוק עלולים להיות איטיים או לא זמינים בזמן שהבוטים של פנגיאה מעדכנים.",
     "error404Desc": "בוט פנגיאה לא בטוח איך לתרגם את זה...",
     "errorPleaseRefresh": "אנחנו בודקים את זה! אנא טען מחדש ונסה שוב.",
@@ -2022,9 +2021,6 @@
     "why": "למה?",
     "definition": "הגדרה",
     "reportToTeacher": "למי תרצה לדווח על ההודעה הזו?",
-    "reportMessageTitle": "{reportingUserId} דיווחה על הודעה מ-{reportedUserId} בשיחה {roomName}",
-    "reportMessageBody": "הודעה: {reportedMessage}\nסיבה: {reason}",
-    "noTeachersFound": "לא נמצאו מורים לדווח אליהם",
     "trialExpiration": "המבחן החינמי שלך יפוג ב-{expiration}",
     "freeTrialDesc": "משתמשים חדשים מקבלים ניסיון חינם של שבוע ב-Pangea Chat",
     "activateTrial": "ניסיון חינם ל-7 ימים",
@@ -4438,10 +4434,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
         "type": "String",
         "placeholders": {}
@@ -5685,35 +5677,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8671,11 +8634,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "השתמש בתמונה של הפעילות כרקע לצ'אט",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "צ'אט עם תמיכה",
     "@chatWithSupport": {
         "type": "String",
@@ -10334,7 +10292,6 @@
     "activityLoadFailed": "לא ניתן לטעון את הפעילות. בדוק את החיבור שלך ונסה שוב.",
     "levelUpChip": "רמה {level}!",
     "missingCourseOutline": "הקורס הזה אינו זמין יותר",
-    "missingCourseOutlineCta": "הקורס הזה אינו זמין יותר. בחר תוכנית קורס חדשה.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10359,10 +10316,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10758,7 +10711,6 @@
     "constructLevelFlowers": "פרחים, מילים שנלמדו",
     "filterAndSearch": "סינון וחיפוש",
     "participantsOfTotal": "{filled} מתוך {total} שחקנים",
-    "mapAttributionLabel": "תורמי OpenStreetMap, זכויות יוצרים ורישיון",
     "seeAll": "הצג הכל",
     "seeAllSection": "הצג הכל {section}",
     "showMoreOptionsHint": "הצג אפשרויות נוספות",
@@ -10875,5 +10827,64 @@
     "goalReportErrorRetry": "החיפוש אחר התור לא הסתיים. נסה שוב.",
     "summaryFeedbackReceived": "תודה! קיבלנו את המשוב שלך.",
     "summaryFeedbackFailed": "לא ניתן היה לשלוח את המשוב שלך. אנא נסה שוב.",
-    "summaryFeedbackProcessing": "שולח את המשוב שלך ומעדכן את הסיכום…"
+    "summaryFeedbackProcessing": "שולח את המשוב שלך ומעדכן את הסיכום…",
+    "callTranscriptTranscribing": "עדיין מתמלל את ההקלטה מ{name}…",
+    "callTranscriptSeekTo": "נגן מ{time}",
+    "callTranscriptRecordings": "הקלטות",
+    "callTranscriptFullCall": "שיחה מלאה",
+    "callTranscriptPreparingRecording": "מכין את ההקלטה המלאה…",
+    "callTranscriptNoRecording": "אין הקלטה של השיחה המלאה.",
+    "callTranscriptNotSubscribed": "{name} לא היה מנוי במהלך השיחה הזו, ולכן מה שנאמר לא תומלל.",
+    "joinYourCourse": "הצטרף לקורס שלך",
+    "courseCodeJoinExplanation": "התחבר או הירשם, ואנו נשתמש בקוד הקורס שלך כדי להוסיף אותך לקורס באופן אוטומטי.",
+    "courseCodeLabel": "קוד קורס",
+    "courseCodeSaved": "קוד קורס {code} נשמר",
+    "courseCodeSavedExplanation": "הירשם או התחבר ואנו נוסיף אותך לקורס שלך.",
+    "moderationRefusedContactDetails": "ההודעה שלך לא נשלחה. מסנן אוטומטי זיהה פרטי התקשרות, כמו מספר טלפון. אנא הסר אותם ונסה שוב.",
+    "moderationRefusedProfanity": "ההודעה שלך לא נשלחה. מסנן אוטומטי זיהה מילה שאנו לא מאפשרים בצ'אט. אנא שנה אותה ונסה שוב.",
+    "callTranscriptTranscribeButton": "תמלול",
+    "callTranscriptAudioUnavailable": "ההקלטה השמורה מ{name} לא ניתנת להורדה, ולכן לא ניתן לתמלל אותה.",
+    "callTranscriptChooseLanguage": "באיזו שפה דיברתם?",
+    "callTranscriptSubscribeForTranscription": "הירשם לתימלול",
+    "unlockCallTranscript": "פתח את תמלול השיחה",
+    "activitySummaryUpdateFailed": "לא ניתן היה לעדכן את הסיכום הזה.",
+    "courseNotFound": "הקורס לא נמצא",
+    "askTeacherForNewCourse": "בקש מהמורה שלך לבחור קורס חדש.",
+    "pickNewCoursePlan": "בחר תוכנית קורס חדשה.",
+    "ssoNetworkBlockedTitle": "אתר ההתחברות אינו זמין",
+    "ssoNetworkBlockedDesc": "רשת זו אינה מאפשרת לנו להגיע אל {provider} כדי לחבר אותך. רשתות Wi-Fi בבתי ספר ובמשרדים חוסמות זאת לעיתים קרובות. באפשרותך להירשם באמצעות דוא\"ל במקום זאת, או לעבור לרשת אחרת ולנסות שוב.",
+    "ssoTryAnyway": "נסה בכל זאת",
+    "publicCoursesFilterTooltip": "הצג רק קורסים שכל אחד יכול להצטרף אליהם",
+    "restrictedCoursesFilterTooltip": "הצג רק קורסים שאתה צריך לבקש להצטרף אליהם",
+    "viewImageLabel": "הצג תמונה",
+    "reportSent": "הדיווח נשלח",
+    "reportNotSent": "הדיווח שלך לא נשלח. בדוק את החיבור שלך ונסה שוב.",
+    "reportPointerMessage": "הודעה דווחה ב{courseName} — ראה בטיחות",
+    "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט",
+    "andCertifyIMeetTheMinimumAge": "ומאשר/ת שאני בן/בת 13 לפחות, או בגיל המינימלי הנדרש במדינתי אם הוא גבוה יותר.",
+    "filteredNetworkBlockedTitle": "רשת זו חוסמת את Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "רשת זו חוסמת חלק מ-Pangea Chat",
+    "filteredNetworkWhatCanIDo": "מה אפשר לעשות?",
+    "filteredNetworkPhoneAdvice": "כבה/כבי את ה-Wi-Fi והשתמש/השתמשי במקום זאת בנתונים ניידים.",
+    "filteredNetworkComputerAdvice": "התחבר/התחברי לנקודה חמה של הטלפון שלך במקום ל-Wi-Fi הזה.",
+    "filteredNetworkItHeading": "למורים ולצוותי IT",
+    "filteredNetworkItBody": "בקש/בקשי מצוות ה-IT שלך לאפשר את הדומיינים הבאים:",
+    "filteredNetworkAskForHelp": "בקש/בקשי עזרה מ-Pangea",
+    "filteredNetworkHelpExplanation": "נשלח לך אימייל כדי לעזור לך להפעיל את Pangea Chat ברשת זו.",
+    "filteredNetworkHelpWaiting": "בקשתך תישלח ברגע שתתחבר/תתחברי.",
+    "filteredNetworkHelpSent": "נשלח. ניצור קשר באימייל.",
+    "filteredNetworkHelpRefused": "לא הצלחנו לשלוח את בקשתך. אנא שלח/שלחי אימייל ל-support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "רשת זו חוסמת סרטונים.",
+    "filteredNetworkImagesBlocked": "רשת זו חוסמת תמונות.",
+    "filteredNetworkMapBlocked": "רשת זו חוסמת את המפה.",
+    "callFullScreenTitle": "אפשר לשיחות לצלצל במסך מלא",
+    "callFullScreenMessage": "התקבלה שיחה כש־Pangea Chat הייתה סגורה, אבל הטלפון שלך הציג רק התראה קטנה עבורה. אפשר שיחות במסך מלא כדי שהשיחה הבאה תצלצל על כל המסך, גם כשהטלפון שלך נעול.",
+    "callMicrophoneTitle": "השתמש/י במיקרופון שלך לשיחות",
+    "callMicrophoneMessage": "Pangea Chat זקוק למיקרופון שלך לשיחות, כולל שיחות שאת/ה עונה להן ממסך הנעילה.",
+    "callMicrophoneOffTitle": "השיחה שלך לא התחברה",
+    "callMicrophoneOffMessage": "Pangea Chat לא יכול להשתמש במיקרופון שלך. הקש/י כדי להפעיל אותו בהגדרות.",
+    "mapCreditsLabel": "קרדיטים למפה: Stadia Maps, OpenMapTiles ו-OpenStreetMap",
+    "activityLaunchFindingCourses": "מוצאים את הקורסים שלך…",
+    "activityLaunchCreatingRoom": "יוצרים את הפעילות שלך…",
+    "activityLaunchOpeningRoom": "פותחים את הפעילות שלך…"
 }

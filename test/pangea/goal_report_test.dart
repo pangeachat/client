@@ -11,7 +11,9 @@ import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' hide Client;
 import 'package:http/testing.dart';
 import 'package:matrix/matrix.dart' hide Result;
+import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
@@ -42,6 +44,10 @@ void main() {
           (methodCall) async => tempDir.path,
         );
     await GetStorage.init('env_override');
+    // The evidence picker reuses the chat's visibility filter, which reads the
+    // hide-redacted and hide-unknown settings.
+    SharedPreferences.setMockInitialValues({});
+    await AppSettings.init(loadWebConfigFile: false);
     MatrixState.pangeaController = FakePangeaController(
       accessToken: 'syt_test_token',
     );
@@ -161,24 +167,69 @@ void main() {
 
   group('the report prompt', () {
     late Client client;
+    late Room room;
+    late Timeline timeline;
 
-    setUp(() async => client = await getTestClient());
-    tearDown(() async => client.dispose());
+    setUp(() async {
+      client = await getTestClient();
+      room = Room(id: roomId, client: client);
+      timeline = await room.getTimeline();
+    });
+    tearDown(() async {
+      timeline.cancelSubscriptions();
+      await client.dispose();
+    });
 
-    Event message(String body, int seq) => Event(
+    Event rawEvent(
+      String eventId,
+      Map<String, dynamic> content, {
+      String sender = senderId,
+      int minute = 0,
+      Map<String, dynamic>? unsigned,
+    }) => Event(
       type: EventTypes.Message,
-      content: {'msgtype': 'm.text', 'body': body},
-      senderId: senderId,
-      eventId: '\$msg$seq',
-      originServerTs: DateTime.utc(2026, 9, 22, 12, seq),
-      room: Room(id: roomId, client: client),
+      content: content,
+      senderId: sender,
+      eventId: eventId,
+      originServerTs: DateTime.utc(2026, 9, 22, 12, minute),
+      unsigned: unsigned,
+      room: room,
     );
+
+    Event message(String body, int seq) =>
+        rawEvent('\$msg$seq', {'msgtype': 'm.text', 'body': body}, minute: seq);
+
+    /// A voice message. Its body is what the SDK falls back to, which for a
+    /// voice message says nothing the reporter recognises.
+    Event voiceMessage(int seq, {String? transcript}) => rawEvent('\$msg$seq', {
+      'msgtype': 'm.audio',
+      'body': '\$msg$seq',
+      if (transcript != null)
+        'user_stt': {
+          'results': [
+            {
+              'transcripts': [
+                {
+                  'confidence': 90,
+                  'lang_code': 'es',
+                  'transcript': transcript,
+                  'words_per_hr': 100,
+                  'stt_tokens': <Map<String, dynamic>>[],
+                },
+              ],
+            },
+          ],
+        },
+    }, minute: seq);
 
     Future<void> open(
       WidgetTester tester, {
       required GoalReportDirection direction,
-      List<Event> ownMessages = const [],
+      List<Event> timelineEvents = const [],
     }) async {
+      timeline.events
+        ..clear()
+        ..addAll(timelineEvents);
       await tester.pumpWidget(
         MaterialApp(
           localizationsDelegates: L10n.localizationsDelegates,
@@ -193,11 +244,11 @@ void main() {
                 body: TextButton(
                   onPressed: () => showGoalReportDialog(
                     context: context,
-                    room: Room(id: roomId, client: client),
+                    room: room,
                     roleId: 'customer',
                     goal: goal,
                     direction: direction,
-                    ownMessagesOverride: () async => ownMessages,
+                    timelineOverride: () async => timeline,
                   ),
                   child: const Text('open'),
                 ),
@@ -256,7 +307,10 @@ void main() {
       await open(
         tester,
         direction: GoalReportDirection.underAward,
-        ownMessages: [message('un café por favor', 1), message('gracias', 2)],
+        timelineEvents: [
+          message('un café por favor', 1),
+          message('gracias', 2),
+        ],
       );
 
       expect(
@@ -277,6 +331,126 @@ void main() {
       await tester.tap(find.text('un café por favor'));
       await tester.pumpAndSettle();
       expect(sendAction(tester), isNotNull);
+    });
+
+    testWidgets('lists only the messages the chat shows as the reporter\'s', (
+      tester,
+    ) async {
+      await open(
+        tester,
+        direction: GoalReportDirection.underAward,
+        timelineEvents: [
+          message('hola', 1),
+          voiceMessage(2, transcript: 'quiero un café'),
+          // #9267: playing another message aloud leaves an audio event under
+          // the LISTENER's name carrying that message's words. The chat hides
+          // it; the picker used to offer it as the listener's own voice
+          // message.
+          rawEvent(r'$readAloud', {
+            'msgtype': 'm.audio',
+            'body': r'audio_for_$bot1_es.mp3',
+            'transcription': {'text': 'Qué día tan bonito'},
+            'm.relates_to': {
+              'rel_type': 'pangea.text_to_speech',
+              'event_id': r'$bot1',
+            },
+          }),
+          // An edit is its own event but not a second message.
+          rawEvent(r'$edit', {
+            'msgtype': 'm.text',
+            'body': '* hola!',
+            'm.new_content': {'msgtype': 'm.text', 'body': 'hola!'},
+            'm.relates_to': {'rel_type': 'm.replace', 'event_id': r'$msg1'},
+          }),
+          rawEvent(r'$other', {
+            'msgtype': 'm.text',
+            'body': 'buenas',
+          }, sender: '@bot:fakeServer.notExisting'),
+          rawEvent(
+            r'$gone',
+            {},
+            unsigned: {
+              'redacted_because': {
+                'type': EventTypes.Redaction,
+                'sender': senderId,
+                'event_id': r'$redaction',
+                'content': <String, dynamic>{},
+              },
+            },
+          ),
+        ],
+      );
+
+      expect(find.byType(RadioListTile<String>), findsNWidgets(2));
+      expect(find.text('hola'), findsOneWidget);
+      expect(find.text('quiero un café'), findsOneWidget);
+    });
+
+    testWidgets('a voice message is listed by its stored transcript', (
+      tester,
+    ) async {
+      await open(
+        tester,
+        direction: GoalReportDirection.underAward,
+        timelineEvents: [
+          voiceMessage(1, transcript: 'quiero un café'),
+          voiceMessage(2),
+        ],
+      );
+
+      // #9259: the transcript, never the body the SDK falls back to.
+      expect(find.text('quiero un café'), findsOneWidget);
+      expect(find.text(r'$msg1'), findsNothing);
+      // Nothing stored and nothing requested: named as a voice message, told
+      // apart from the others by its time.
+      expect(find.text('Voice message'), findsOneWidget);
+      expect(find.text(r'$msg2'), findsNothing);
+
+      await tester.enterText(find.byType(TextField), 'I ordered out loud');
+      await tester.tap(find.text('quiero un café'));
+      await tester.pumpAndSettle();
+      expect(sendAction(tester), isNotNull);
+    });
+
+    testWidgets('an edited message is sent as its latest edit', (tester) async {
+      final original = message('un cafe', 1);
+      Event edit(String eventId, String body, int minute) => rawEvent(eventId, {
+        'msgtype': 'm.text',
+        'body': '* $body',
+        'm.new_content': {'msgtype': 'm.text', 'body': body},
+        'm.relates_to': {'rel_type': 'm.replace', 'event_id': r'$msg1'},
+      }, minute: minute);
+      timeline.addAggregatedEvent(edit(r'$edit1', 'un café', 5));
+      timeline.addAggregatedEvent(edit(r'$edit2', 'un café, por favor', 9));
+
+      Map<String, dynamic>? sent;
+      await runWithClient(
+        () async {
+          await open(
+            tester,
+            direction: GoalReportDirection.underAward,
+            timelineEvents: [original],
+          );
+          // Listed by what the chat shows now, at the time it was first sent.
+          await tester.tap(find.text('un café, por favor'));
+          await tester.enterText(find.byType(TextField), 'I ordered politely');
+          await tester.pump();
+          await tester.tap(find.widgetWithText(TextButton, 'Send'));
+          await tester.pumpAndSettle();
+        },
+        () => MockClient((request) async {
+          sent = jsonDecode(request.body) as Map<String, dynamic>;
+          return Response('{"report_id": "rep-1"}', 200);
+        }),
+      );
+
+      // #9267: the orchestrator's history carries an edited message under its
+      // newest edit, so the original's id would match no turn.
+      expect(sent?['evidence_event_id'], r'$edit2');
+      expect(
+        sent?['evidence_origin_ts'],
+        DateTime.utc(2026, 9, 22, 12, 9).millisecondsSinceEpoch,
+      );
     });
 
     testWidgets('a sent report thanks the reporter and closes the prompt', (
@@ -301,6 +475,26 @@ void main() {
       expect(tester.takeException(), isNull);
       expect(find.text('Reported. Thanks!'), findsOneWidget);
       expect(find.text('Order a drink'), findsNothing);
+    });
+
+    testWidgets('a long comment wraps instead of widening the prompt', (
+      tester,
+    ) async {
+      // A screen wide enough that filling it cannot pass for a normal width.
+      tester.view.physicalSize = const Size(1600, 1200);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.reset);
+      await open(tester, direction: GoalReportDirection.overAward);
+      final field = find.byType(TextField);
+      final openWidth = tester.getSize(field).width;
+
+      await tester.enterText(field, 'la cuenta ' * 40);
+      await tester.pump();
+
+      // Wrapped at the dialog's width, not stretched toward the screen's.
+      expect(tester.getSize(field).width, openWidth);
+      expect(openWidth, lessThan(800));
+      expect(tester.takeException(), isNull);
     });
 
     testWidgets('an under-award with nothing said says so', (tester) async {

@@ -107,6 +107,83 @@ void main() {
     },
   );
 
+  // #9266 — when the words are buttons, the whole transcript is also one
+  // text-only node, read first. On web a node with children is named by an
+  // `aria-label` and a button is read the same way, both in the UI voice.
+  group('whole transcript for screen readers', () {
+    SpeechToTextResponseModel twoWords() => SpeechToTextResponseModel.fromJson({
+      'results': [
+        {
+          'transcripts': [
+            {
+              'confidence': 100,
+              'lang_code': 'es',
+              'stt_tokens': [
+                for (final (word, offset) in [('Hola', 0), ('mundo', 5)])
+                  {
+                    'token': {
+                      'text': {'content': word, 'offset': offset},
+                      'lemma': {
+                        'text': word.toLowerCase(),
+                        'save_vocab': true,
+                        'form': word,
+                      },
+                      'pos': 'NOUN',
+                      'morph': <String, dynamic>{},
+                    },
+                    'start_time': 0,
+                    'end_time': 100,
+                    'confidence': 100,
+                  },
+              ],
+              'transcript': 'Hola mundo',
+              'words_per_hr': 120,
+            },
+          ],
+        },
+      ],
+    });
+
+    Future<void> pump(WidgetTester tester, {required bool buttons}) =>
+        tester.pumpWidget(
+          MaterialApp(
+            home: Scaffold(
+              body: SttTranscriptTokens(
+                eventId: 'test',
+                model: twoWords(),
+                onClick: buttons ? (_) {} : null,
+                newTokensOverride: const <PangeaTokenText>{},
+              ),
+            ),
+          ),
+        );
+
+    testWidgets('with word buttons, the transcript is read first as text', (
+      tester,
+    ) async {
+      final semantics = tester.ensureSemantics();
+      await pump(tester, buttons: true);
+
+      final whole = tester.getSemantics(find.bySemanticsLabel('Hola mundo'));
+      expect(whole.childrenCount, 0);
+      final order = tester.semantics
+          .simulatedAccessibilityTraversal()
+          .map((n) => n.getSemanticsData().label)
+          .toList();
+      expect(order.indexOf('Hola mundo'), lessThan(order.indexOf('Hola')));
+      semantics.dispose();
+    });
+
+    testWidgets('without word buttons there is no second copy', (tester) async {
+      final semantics = tester.ensureSemantics();
+      await pump(tester, buttons: false);
+
+      expect(find.bySemanticsLabel('Hola mundo'), findsNothing);
+      expect(find.bySemanticsLabel(RegExp('Hola')), findsOneWidget);
+      semantics.dispose();
+    });
+  });
+
   // ---------------------------------------------------------------------
   // Rendering-contract integration test.
   //

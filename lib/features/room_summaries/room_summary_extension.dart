@@ -12,7 +12,9 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
+import 'package:fluffychat/features/activity_sessions/activity_summary_analytics_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
@@ -108,6 +110,7 @@ class RoomSummaryResponse {
   final ActivityPlanModel? activityPlan;
   final ActivityRolesModel? activityRoles;
   final ActivitySummaryModel? activitySummary;
+  final ActivitySummaryAnalyticsModel? activitySummaryAnalytics;
   final CoursePlanEvent? coursePlan;
 
   final JoinRules? joinRule;
@@ -122,6 +125,7 @@ class RoomSummaryResponse {
     this.activityPlan,
     this.activityRoles,
     this.activitySummary,
+    this.activitySummaryAnalytics,
     this.coursePlan,
     this.joinRule,
     this.powerLevels,
@@ -262,21 +266,31 @@ class RoomSummaryResponse {
       roles = ActivityRolesModel.fromJson(rolesEntry);
     }
 
-    final summaryEntry = json[PangeaEventTypes.activitySummary];
-    final legacySummaryEntry = summaryEntry?["default"]?["content"];
-    final currentSummaryEntry = summaryEntry?[l1Code]?["content"];
-
-    ActivitySummaryModel? summary;
-    if (legacySummaryEntry != null &&
-        legacySummaryEntry is Map<String, dynamic>) {
-      summary = ActivitySummaryModel.fromJson(legacySummaryEntry);
+    // The same slots, in the same order, as ActivitySummaryRoomExtension:
+    // the bot's summary, else one an older client wrote.
+    final summaryEntries = json[PangeaEventTypes.activitySummary];
+    Map<String, dynamic>? summaryContent(
+      String? stateKey, {
+      bool fromBot = false,
+    }) {
+      final entry = summaryEntries is Map ? summaryEntries[stateKey] : null;
+      if (entry is! Map<String, dynamic>) return null;
+      if (fromBot && entry['sender'] != BotName.byEnvironment) return null;
+      final content = entry['content'];
+      return content is Map<String, dynamic> ? content : null;
     }
 
-    if (summary == null &&
-        currentSummaryEntry != null &&
-        currentSummaryEntry is Map<String, dynamic>) {
-      summary = ActivitySummaryModel.fromJson(currentSummaryEntry);
-    }
+    final summaryJson =
+        summaryContent(ActivitySummaryStateKeys.canonical, fromBot: true) ??
+        summaryContent(l1Code) ??
+        summaryContent(ActivitySummaryStateKeys.legacyPreview);
+    final summary = summaryJson == null
+        ? null
+        : ActivitySummaryModel.fromJson(summaryJson);
+    final analyticsJson = summaryContent(ActivitySummaryStateKeys.analytics);
+    final summaryAnalytics = analyticsJson == null
+        ? summary?.analytics
+        : ActivitySummaryAnalyticsModel.fromJson(analyticsJson);
 
     final coursePlanEntry =
         json[PangeaEventTypes.coursePlan]?["default"]?["content"];
@@ -317,6 +331,7 @@ class RoomSummaryResponse {
       activityPlan: plan,
       activityRoles: roles,
       activitySummary: summary,
+      activitySummaryAnalytics: summaryAnalytics,
       coursePlan: coursePlan,
       powerLevels: powerLevels,
       joinRule: joinRule,

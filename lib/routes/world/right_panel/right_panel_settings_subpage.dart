@@ -69,8 +69,14 @@ class RightPanelSettingsSubpage extends StatelessWidget {
         return SettingsSubscription(closeButton: closeButton);
       case 'subscription/history':
         return SubscriptionHistory(closeButton: closeButton);
-      case 'subscription/discount':
-        return DiscountCodePage(closeButton: closeButton);
+      case SettingsTokenParam.discountPage:
+        // On iOS the paywall hides its button to this page, so the page is
+        // reached by link there; it opens everywhere, with a gift link's code
+        // applied at once (subscriptions.instructions.md § Gift link).
+        return DiscountCodePage(
+          closeButton: closeButton,
+          linkCode: param?.promoCode,
+        );
       case 'subscription/selected':
         final planId = param?.planId;
         return planId != null

@@ -2,21 +2,31 @@ import 'dart:async';
 import 'dart:io' show Platform;
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart' show AppLifecycleListener;
 
-import 'package:matrix/matrix.dart' show Logs;
+import 'package:matrix/matrix.dart' show Logs, MatrixEvent;
 import 'package:permission_handler/permission_handler.dart';
 
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_pending_store.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_recorder.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_upload_state_store.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
+import 'package:fluffychat/routes/chat/calls/call_key_clock.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_transcript_outbox.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/calls/ring_player.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_writer.dart';
+import 'package:fluffychat/routes/chat/calls/whole_call_transcriber.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 import 'package:matrix/matrix.dart'
@@ -30,6 +40,13 @@ import 'package:pangea_call_capture/pangea_call_capture.dart'
 /// reconnecting tone while the caller's own link to the SFU recovers. The
 /// call-cut cue is a one-shot, not a loop, so it is not one of these.
 enum _RingCue { ringback, reconnecting }
+
+/// Where this device's halves sit in a call the learner moved between their
+/// devices (client#9173): filled once before the record finishes, read by the
+/// transcript and audio writers.
+class _HalfLinks {
+  ({String? continuedFrom, String? handedOverTo})? value;
+}
 
 /// One call, owned ABOVE the widget tree.
 ///
@@ -86,6 +103,14 @@ class CallSession extends ChangeNotifier {
 
   final String? _myUserId;
   final String? _peerUserId;
+  final _HalfLinks _halfLinks;
+  final CallAudioRecorder? _audioRecorder;
+
+  /// The links the audio half was handed when it was published, so a test can
+  /// see that the audio half carries the same links as the transcript half.
+  @visibleForTesting
+  ({String? continuedFrom, String? handedOverTo})? get audioHalfLinksForTest =>
+      _audioRecorder?.halfLinks;
 
   bool _muted = false;
   bool _camera = false;
@@ -96,6 +121,13 @@ class CallSession extends ChangeNotifier {
   bool _usedVideo = false;
   bool _reachedCall = false;
   bool _minimized = false;
+
+  /// Whether the call was minimized before the ownership prompt forced it full
+  /// screen, or null when the prompt forced nothing or the learner has changed
+  /// the view since. Only this needs keeping: the prompt forces the call only
+  /// when it was not already full screen.
+  bool? _minimizedBeforePrompt;
+  bool _hadOwnershipPrompt = false;
   bool _over = false;
   bool _recordingFinished = false;
 
@@ -106,6 +138,11 @@ class CallSession extends ChangeNotifier {
   int _presenters = 0;
 
   Timer? _tick;
+
+  /// Tells the call each time the app comes back to the foreground, which is
+  /// when Android will let an unprotected call start its service. Only on a
+  /// call that has a service to start; null everywhere else.
+  AppLifecycleListener? _lifecycle;
 
   /// Fires when the session is over and should be released by its holder.
   final void Function(CallSession) _onReleased;
@@ -126,7 +163,11 @@ class CallSession extends ChangeNotifier {
     this.platformLabels,
     this.tonesOverride,
     bool fullscreen = false,
+    _HalfLinks? halfLinks,
+    CallAudioRecorder? audioRecorder,
   }) : _record = record,
+       _audioRecorder = audioRecorder,
+       _halfLinks = halfLinks ?? _HalfLinks(),
        _myUserId = myUserId,
        _peerUserId = peerUserId,
        _fullscreen = fullscreen,
@@ -141,6 +182,13 @@ class CallSession extends ChangeNotifier {
     // The notification's buttons act on THIS session, through the same
     // controls the screen uses -- one mute path, one hangup path.
     _foregroundActions();
+    // A refused service start is owed again at the next moment it is legal,
+    // and coming back to the app is that moment -- including the instant the
+    // microphone dialog closes on a first call (#410). Wired before the call
+    // starts, so no return to the app is missed.
+    if (call.hasForegroundService) {
+      _lifecycle = AppLifecycleListener(onResume: call.appResumed);
+    }
     // Android 13+ shows no notification without this. Asked at call start --
     // the moment its value is self-evident -- and a refusal costs only the
     // visible chip: the foreground service, which is the actual survival
@@ -177,6 +225,15 @@ class CallSession extends ChangeNotifier {
     required String userL2,
     required CallAnalyticsSink analytics,
     required void Function(CallSession) onReleased,
+
+    /// Whether the invoking user is subscribed, read LIVE at run time (never
+    /// cached), and how a peer's `(l1, l2)` languages resolve. Both are the
+    /// whole-call transcriber's controller-facing seams, supplied by the widget
+    /// layer that holds those controllers; null on a path that does not wire the
+    /// feature (a test, or before the controllers exist), which leaves the
+    /// transcriber unwired and the call byte-for-byte as before.
+    bool Function()? isSubscribed,
+    Future<({String? l1, String? l2})> Function(String userId)? peerLanguages,
     String? notificationEventId,
     String? rejoinAnchor,
     DateTime? rejoinSince,
@@ -199,11 +256,76 @@ class CallSession extends ChangeNotifier {
       userL1: userL1,
       userL2: userL2,
     );
+    // WHO IS WRITING THIS HALF, READ ONCE HERE -- shared with the transcript
+    // half's own identical latch below, and for the identical reason: the
+    // audio recording's transaction id is keyed by (call key, sender,
+    // device) exactly as the transcript's is, and both have to be frozen for
+    // the whole call rather than re-read per attempt.
+    final audioSenderId = room.client.userID ?? '';
+    final audioDeviceId = room.client.deviceID;
+
+    // The recording-based call transcript, read ONCE here and used to gate both
+    // the recorder's transcription below and CallRecord's preference for it. Off
+    // (the default) both stay unwired: the recorder never transcribes and its
+    // audio path is byte-for-byte today's, and CallRecord publishes the live
+    // 45-second transcript half exactly as before -- so the feature reverts by
+    // flipping this one flag.
+    final recordingTranscript = Environment.callRecordingTranscript;
+
+    // Owns this device's own call-audio-recording half from first frame to
+    // upload. A plain field, never overridden in a test the way [capture] and
+    // [record] are: it does nothing unless [capture] actually feeds it a run
+    // (see [CallCaptureService.audioRecording]), so an unused instance in a
+    // test that never starts a real recording costs nothing and touches
+    // neither the network nor the room.
+    final audioRecorder = CallAudioRecorder(
+      senderId: audioSenderId,
+      deviceId: audioDeviceId,
+      // Plain upload: Pangea creates its rooms unencrypted (see
+      // `transcript_writer.dart`'s own `encrypted` parameter for the
+      // precedent), so there is no attached-file key to produce and nothing
+      // downstream ever needs to decrypt this.
+      upload: room.client.uploadContent,
+      send: (content, txid) =>
+          room.sendEvent(content, type: CallAudioContent.relType, txid: txid),
+      // Read FRESH at finish, never latched at run start: the anchor is
+      // read off the SFU's join response, which can arrive after the
+      // recording has already started, and [media] is the one place both
+      // this and the transcript's own clockAnchor read it from -- reading it
+      // any earlier could leave this half with no anchor while the
+      // transcript half, reading the same source later, had a perfectly
+      // good one.
+      clockAnchor: () => media.clockAnchor,
+      // Durable, not merely in-memory: SharedPreferences, the same store
+      // `CallBreadcrumb` uses for the same reason -- a retry that only
+      // failed at the send step, possibly in a process that has since
+      // restarted, must not re-upload a recording that already landed.
+      uploadStateStore: const SharedPreferencesCallAudioUploadStateStore(),
+      // Wired ONLY when the recording-based transcript feature is on. Off (the
+      // default) these stay null, so the recorder never transcribes and its
+      // audio path is unchanged. The two languages are the speaker's own,
+      // frozen at t0 exactly as the live sink above froze them, so this half
+      // and the live one can never disagree about the language.
+      transcribe: recordingTranscript ? transcribe : null,
+      userL1: recordingTranscript ? userL1 : null,
+      userL2: recordingTranscript ? userL2 : null,
+      // On the recording-based path the finished WAV is kept on disk (in
+      // memory on the web) until its half is sent, so an app kill or a parked
+      // upload resumes on the next launch or foreground instead of losing it.
+      // Off, the recording stays in memory exactly as before.
+      pendingStore: recordingTranscript
+          ? pendingCallAudioStoreForPlatform()
+          : null,
+      roomId: room.id,
+    );
+
     // Built here rather than inline below, because the half published at the
     // end of the call has to state how much audio the CAPTURE PATH lost --
     // audio that never became a chunk, so the sink has never heard of it and
     // no count it keeps can carry it.
-    final capture = captureOverride ?? CallCaptureService(sink: transcripts);
+    final capture =
+        captureOverride ??
+        CallCaptureService(sink: transcripts, audioRecording: audioRecorder);
 
     // WHO IS WRITING THIS HALF, READ ONCE, HERE, WHILE THE CALL IS BEING SET UP.
     //
@@ -229,6 +351,130 @@ class CallSession extends ChangeNotifier {
     final writerUserId = room.client.userID ?? '';
     final writerDeviceId = room.client.deviceID;
 
+    // This device's transcript half, straight to the room.
+    Future<String?> sendTranscriptEvent(
+      Map<String, dynamic> content,
+      String txnId,
+    ) => room.sendEvent(
+      content,
+      type: CallTranscriptContent.relType,
+      txid: txnId,
+    );
+
+    // The recording-based half is published SECONDS after hangup, once a
+    // whole-recording speech-to-text round trip has returned -- by which point
+    // a phone whose user has walked away has backgrounded, and the OS drops the
+    // late send. The outbox remembers the built half on disk BEFORE the send
+    // and replays it on the next launch or foreground if it did not land; the
+    // deterministic transaction id makes the replay a no-op when it did. See
+    // [CallService.flushPendingCallTranscripts] for the replay.
+    //
+    // OFF (the default), this is the bare send -- byte-for-byte the behaviour
+    // before the feature, the outbox never constructed or touched. The problem
+    // it solves is specific to the recording-based path: the live-chunk half
+    // publishes FIRST, before that STT, so it is not late.
+    final TranscriptSender transcriptSend = recordingTranscript
+        ? CallTranscriptOutbox().guard(
+            room.id,
+            writerUserId,
+            sendTranscriptEvent,
+          )
+        : sendTranscriptEvent;
+
+    // The whole-call transcriber (#8792), wired only when the recording-based
+    // transcript feature is on AND the widget layer supplied the controller
+    // seams. Off (the default), or in a test that does not pass them, this stays
+    // null and CallRecord's own-half flow is byte-for-byte unchanged. When wired,
+    // the transcriber still gates itself on the flag and the invoker's LIVE
+    // subscription at run time, so building it here commits to nothing.
+    final wholeCallTranscriber =
+        recordingTranscript && isSubscribed != null && peerLanguages != null
+        ? WholeCallTranscriber.forCall(
+            room: room,
+            transcribe: transcribe,
+            isSubscribed: isSubscribed,
+            peerLanguages: peerLanguages,
+          )
+        : null;
+
+    // Where this device's halves sit in a call the learner moved between their
+    // devices (client#9173). Filled once by the session before the record
+    // finishes, and read by both writers below.
+    final halfLinks = _HalfLinks();
+
+    // This device's transcript half, written through [send]. One function for
+    // the real publish and for freezing the live half into the durable
+    // recording record, so the two can never build different events.
+    Future<bool> writeHalf(
+      TranscriptSender send, {
+
+      required String callKey,
+      required List<TranscriptSegment> segments,
+      required int chunksCaptured,
+      required int chunksTranscribed,
+      required int chunksLost,
+      required int chunksRefusedUnsubscribed,
+      required int chunksSuppressed,
+      required bool captureRefused,
+      required bool drainComplete,
+      String? langCode,
+    }) => writeCallTranscript(
+      send: send,
+      callKey: callKey,
+      // Both taken from the latches above, never read off the client
+      // here: this closure runs once per RETRY, and the transaction
+      // id built from these two is what makes a retry a retry.
+      senderId: writerUserId,
+      // The ACCOUNT above, and the DEVICE here, because they answer
+      // two different questions and one of them used to answer both.
+      // Two of a learner's devices in one call write two halves of
+      // what that person said; keyed by the account alone those two
+      // halves are indistinguishable, and the reader keeps one and
+      // presents it as the whole of it.
+      deviceId: writerDeviceId,
+      segments: segments,
+      chunksCaptured: chunksCaptured,
+      chunksTranscribed: chunksTranscribed,
+      chunksLost: chunksLost,
+      chunksRefusedUnsubscribed: chunksRefusedUnsubscribed,
+      chunksSuppressed: chunksSuppressed,
+      captureRefused: captureRefused,
+      drainComplete: drainComplete,
+      // Read here rather than threaded through the record's
+      // publisher, the same seam that already closes over the
+      // clock anchor below. Both are frozen long before this can
+      // run -- the recorder ends its last run, which is the only
+      // thing that discards a chunk or counts a dropped one, and
+      // only then closes the sink the record waits on -- so the
+      // record's rule that a resend must carry the same bytes
+      // holds for them as it does for the counts it reads once.
+      chunksDiscarded: transcripts.chunksDiscarded,
+      captureDroppedMs: capture.captureDroppedMs,
+      // Read from the same seam and frozen by the same ordering: a
+      // run's extent is recorded where the run ends, and the last run
+      // has ended before the sink this record waits on is closed. The
+      // count above says a stretch was handed over; these say WHICH,
+      // which is what lets a reader ask whether the sibling that was
+      // supposed to hold it actually did.
+      keptSpans: capture.keptSpans,
+      discardedSpans: capture.discardedSpans,
+      // The room inflates what it is handed, and the server's limit
+      // applies to the inflated event.
+      encrypted: room.encrypted,
+      langCode: langCode,
+      // Read from the LATCH here, not measured here. It was taken
+      // when this device joined the SFU, minutes before this runs,
+      // and reading the two clocks now would measure the call's own
+      // length instead of the disagreement between them.
+      //
+      // Closed over rather than threaded through CallRecord: the
+      // record is deliberately free of anything to do with media,
+      // and this is the same seam that already knows the room.
+      clockAnchor: media.clockAnchor,
+      continuedFrom: halfLinks.value?.continuedFrom,
+      handedOverTo: halfLinks.value?.handedOverTo,
+    );
+
     final record =
         recordOverride ??
         CallRecord(
@@ -247,67 +493,120 @@ class CallSession extends ChangeNotifier {
                 required int chunksCaptured,
                 required int chunksTranscribed,
                 required int chunksLost,
+                required int chunksRefusedUnsubscribed,
                 required int chunksSuppressed,
                 required bool captureRefused,
                 required bool drainComplete,
                 String? langCode,
-              }) => writeCallTranscript(
-                send: (content, txid) => room.sendEvent(
-                  content,
-                  type: CallTranscriptContent.relType,
-                  txid: txid,
-                ),
+              }) => writeHalf(
+                transcriptSend,
                 callKey: callKey,
-                // Both taken from the latches above, never read off the client
-                // here: this closure runs once per RETRY, and the transaction
-                // id built from these two is what makes a retry a retry.
-                senderId: writerUserId,
-                // The ACCOUNT above, and the DEVICE here, because they answer
-                // two different questions and one of them used to answer both.
-                // Two of a learner's devices in one call write two halves of
-                // what that person said; keyed by the account alone those two
-                // halves are indistinguishable, and the reader keeps one and
-                // presents it as the whole of it.
-                deviceId: writerDeviceId,
                 segments: segments,
                 chunksCaptured: chunksCaptured,
                 chunksTranscribed: chunksTranscribed,
                 chunksLost: chunksLost,
+                chunksRefusedUnsubscribed: chunksRefusedUnsubscribed,
                 chunksSuppressed: chunksSuppressed,
                 captureRefused: captureRefused,
                 drainComplete: drainComplete,
-                // Read here rather than threaded through the record's
-                // publisher, the same seam that already closes over the
-                // clock anchor below. Both are frozen long before this can
-                // run -- the recorder ends its last run, which is the only
-                // thing that discards a chunk or counts a dropped one, and
-                // only then closes the sink the record waits on -- so the
-                // record's rule that a resend must carry the same bytes
-                // holds for them as it does for the counts it reads once.
-                chunksDiscarded: transcripts.chunksDiscarded,
-                captureDroppedMs: capture.captureDroppedMs,
-                // Read from the same seam and frozen by the same ordering: a
-                // run's extent is recorded where the run ends, and the last run
-                // has ended before the sink this record waits on is closed. The
-                // count above says a stretch was handed over; these say WHICH,
-                // which is what lets a reader ask whether the sibling that was
-                // supposed to hold it actually did.
-                keptSpans: capture.keptSpans,
-                discardedSpans: capture.discardedSpans,
-                // The room inflates what it is handed, and the server's limit
-                // applies to the inflated event.
-                encrypted: room.encrypted,
                 langCode: langCode,
-                // Read from the LATCH here, not measured here. It was taken
-                // when this device joined the SFU, minutes before this runs,
-                // and reading the two clocks now would measure the call's own
-                // length instead of the disagreement between them.
-                //
-                // Closed over rather than threaded through CallRecord: the
-                // record is deliberately free of anything to do with media,
-                // and this is the same seam that already knows the room.
-                clockAnchor: media.clockAnchor,
               ),
+          // Finalises and, if this device is still the one carrying the
+          // recording, uploads and sends this device's call-audio half. See
+          // `CallCaptureService.wasCarryingBeforeLastStop` for why THAT is
+          // the fact this reads rather than `capture.isRecording`: by the
+          // time `CallRecord.finish` runs, `ActiveCall.hangUp` has already
+          // called `capture.stop()` (and `capture.finish()`), so
+          // `isRecording` can never answer the question this needs asked.
+          //
+          // `wasCarrier` is read HERE, fresh, on every call -- `finish` is
+          // idempotent and this closure may run again on a retried credit --
+          // never cached, because `CallAudioRecorder.finish` is what re-
+          // checks the SAME fact again through its own upload, and a stale
+          // copy handed in once would defeat that. The parameter is named
+          // `wasCarrier`, not `carriedOn`, precisely so this line cannot be
+          // misread as the ownership arbiter's unrelated `carriedOn`: the value
+          // is `capture.wasCarryingBeforeLastStop`, the recorder's carrier fact.
+          publishCallAudio: ({required String? callKey}) =>
+              audioRecorder.finish(
+                wasCarrier: capture.wasCarryingBeforeLastStop,
+                callKey: callKey,
+              ),
+          // Gated on the same flag as the recorder's transcription above: when
+          // ON, CallRecord prefers this device's whole-recording segments over
+          // the live-chunk ones and publishes the audio half FIRST so they are
+          // ready to read; when OFF this is null and the live transcript-first
+          // path is unchanged. `audioRecorder.recordingSegments` is filled by
+          // `audioRecorder.finish`, which `publishCallAudio` above runs.
+          recordingSegments: recordingTranscript
+              ? () => audioRecorder.recordingSegmentsReady
+              : null,
+          // The credit-first finish (#9302): the recording is finalised and
+          // made durable locally before the credit, with the live transcript
+          // half frozen beside it for a resume after a kill. Both halves are
+          // claimed for the finish's duration so a resume or outbox replay in
+          // this process leaves them alone. All wired only on the
+          // recording-based path, which is the one that publishes late.
+          prepareCallAudio: recordingTranscript
+              ? ({
+                  required String? callKey,
+                  Map<String, dynamic>? liveTranscriptContent,
+                  String? transcriptTxnId,
+                }) => audioRecorder.prepare(
+                  wasCarrier: capture.wasCarryingBeforeLastStop,
+                  callKey: callKey,
+                  liveTranscriptContent: liveTranscriptContent,
+                  transcriptTxnId: transcriptTxnId,
+                )
+              : null,
+          buildLiveTranscript: recordingTranscript
+              ? ({
+                  required String callKey,
+                  required List<TranscriptSegment> segments,
+                  required int chunksCaptured,
+                  required int chunksTranscribed,
+                  required int chunksLost,
+                  required int chunksRefusedUnsubscribed,
+                  required int chunksSuppressed,
+                  required bool captureRefused,
+                  required bool drainComplete,
+                  String? langCode,
+                }) async {
+                  ({Map<String, dynamic> content, String txnId})? built;
+                  await writeHalf(
+                    (content, txnId) async =>
+                        built = (content: content, txnId: txnId),
+                    callKey: callKey,
+                    segments: segments,
+                    chunksCaptured: chunksCaptured,
+                    chunksTranscribed: chunksTranscribed,
+                    chunksLost: chunksLost,
+                    chunksRefusedUnsubscribed: chunksRefusedUnsubscribed,
+                    chunksSuppressed: chunksSuppressed,
+                    captureRefused: captureRefused,
+                    drainComplete: drainComplete,
+                    langCode: langCode,
+                  );
+                  return built;
+                }
+              : null,
+          audioTxnIdFor: recordingTranscript
+              ? (callKey) => CallAudioContent.txnId(
+                  callKey,
+                  audioSenderId,
+                  audioDeviceId,
+                )
+              : null,
+          transcriptTxnIdFor: recordingTranscript
+              ? (callKey) => CallTranscriptContent.txnId(
+                  callKey,
+                  writerUserId,
+                  writerDeviceId,
+                )
+              : null,
+          // Runs the peer backfill once this device's own half is posted. Null
+          // when the feature is unwired, which keeps the record's flow unchanged.
+          backfillPeerTranscripts: wholeCallTranscriber?.transcribeAtCallEnd,
           analytics: analytics,
         );
     return CallSession._(
@@ -337,6 +636,8 @@ class CallSession extends ChangeNotifier {
       platformLabels: platformLabels,
       fullscreen: fullscreen,
       tonesOverride: tonesOverride,
+      halfLinks: halfLinks,
+      audioRecorder: audioRecorder,
     );
   }
 
@@ -361,6 +662,7 @@ class CallSession extends ChangeNotifier {
   bool _fullscreen;
 
   void toggleFullscreen() {
+    _minimizedBeforePrompt = null;
     _fullscreen = !_fullscreen;
     if (_fullscreen) _minimized = false;
     _notify();
@@ -376,6 +678,7 @@ class CallSession extends ChangeNotifier {
   /// mute. A toggle is the wrong verb for "show me this call".
   void showFullscreen() {
     if (_fullscreen && !_minimized) return;
+    _minimizedBeforePrompt = null;
     _fullscreen = true;
     _minimized = false;
     _notify();
@@ -393,6 +696,9 @@ class CallSession extends ChangeNotifier {
   /// looks normal; the other person hears nothing.
   bool get microphoneRefused => media.captureRefused;
   bool get isOver => _over;
+
+  /// See [ActiveCall.mediaReleased].
+  Future<void> get mediaReleased => call.mediaReleased;
   bool get hasPresenter => _presenters > 0;
 
   /// The failure to show, when the call could not be established. The session
@@ -470,6 +776,7 @@ class CallSession extends ChangeNotifier {
 
   void minimize() {
     if (_minimized && !_fullscreen) return;
+    _minimizedBeforePrompt = null;
     _minimized = true;
     // Minimizing IS leaving fullscreen; the tile takes over either way.
     _fullscreen = false;
@@ -478,6 +785,7 @@ class CallSession extends ChangeNotifier {
 
   void expand() {
     if (!_minimized) return;
+    _minimizedBeforePrompt = null;
     _minimized = false;
     _notify();
   }
@@ -665,6 +973,37 @@ class CallSession extends ChangeNotifier {
     if (any) _usedVideo = true;
   }
 
+  /// Opens the call full screen when the ownership prompt appears where it
+  /// cannot be seen, and puts the view back once this device carries on
+  /// (call-device-ownership.instructions.md, "The prompt comes to the front").
+  ///
+  /// Acts on the prompt's EDGES only, so a learner who minimizes the call while
+  /// the prompt is up is not overruled on the next tick.
+  void _bringOwnershipPromptToFront() {
+    final hasPrompt = call.ownershipPrompt != null;
+    if (hasPrompt == _hadOwnershipPrompt) return;
+    _hadOwnershipPrompt = hasPrompt;
+
+    if (hasPrompt) {
+      // The prompt is drawn only by the full panel: full screen, or expanded
+      // inside a chat that is showing. Anywhere else the call is a mini tile.
+      final promptVisible = _fullscreen || (!_minimized && _presenters > 0);
+      if (promptVisible) return;
+      _minimizedBeforePrompt = _minimized;
+      _fullscreen = true;
+      _minimized = false;
+      return;
+    }
+
+    final minimizedBefore = _minimizedBeforePrompt;
+    _minimizedBeforePrompt = null;
+    // A device that is leaving keeps the full panel: it is about to say the
+    // call continues on the other device.
+    if (minimizedBefore == null || !call.carriedOn) return;
+    _fullscreen = false;
+    _minimized = minimizedBefore;
+  }
+
   void _onCallChanged() {
     _latchVideo();
     // The button reflects the camera the user HAS, not the one they asked
@@ -683,6 +1022,7 @@ class CallSession extends ChangeNotifier {
       unawaited(media.setCameraEnabled(_camera));
     }
     _wasMediaHeld = call.mediaHeld;
+    _bringOwnershipPromptToFront();
     // The outcome is latched the instant the call's fate is decided, seconds
     // before the stage catches up — this is what makes hanging up feel
     // immediate on both sides.
@@ -730,7 +1070,18 @@ class CallSession extends ChangeNotifier {
       // no transcript half, no analytics, no summary (doc:236). Keyed on the
       // FACT (carriedOn), not on which outcome fired, so an ordinary `ended`
       // reached while held is caught alongside `movedToOtherDevice`.
-      if (!call.carriedOn) {
+      //
+      // A PREDECESSOR is the exception (client#9173): the learner moved the
+      // call on from it, so the stretch it captured is nobody else's. It
+      // publishes that stretch -- half, audio, credit -- and, when the call
+      // continues on the other device, writes no card: the call is not over.
+      final predecessor = !call.carriedOn && call.isPredecessor;
+      if (predecessor && outcome == CallOutcome.movedToOtherDevice) {
+        Logs().i('This device handed the call on; publishing its stretch');
+        _finishRecording();
+      }
+      if (!call.carriedOn &&
+          !(predecessor && outcome != CallOutcome.movedToOtherDevice)) {
         _finish();
         // A MOVED leave still says WHY (the panel reads the outcome), so it
         // earns a brief moment on screen; a give-up goes at once.
@@ -768,6 +1119,7 @@ class CallSession extends ChangeNotifier {
       }
       return;
     }
+    _driveKeyClock();
     if (call.stage == CallStage.connected) _reachedCall = true;
     if (call.hadPeer && _tick == null && !_over) {
       _tick = Timer.periodic(const Duration(seconds: 1), (_) {
@@ -1033,14 +1385,27 @@ class CallSession extends ChangeNotifier {
             // at the WRITE itself, not at any one caller, so every path here
             // is covered by the same check rather than by remembering to
             // guard each one.
-            if (!call.carriedOn) return;
+            if (!call.carriedOn && !call.isPredecessor) return;
             // The card is normally already in the timeline by now (written the
             // moment the call ended); this call credits the transcripts against
             // it, and writes the card itself only if that earlier attempt had
             // failed outright.
 
             final identity = _callIdentity;
-            return _record.finish(
+            _halfLinks.value ??= await _resolveHalfLinks(identity.key);
+            // Handed to the recorder BEFORE the record finishes: finishing
+            // first makes the recording durable (an app kill resumes it from
+            // that copy), so links assigned any later would be missing from
+            // the half a resume sends.
+            _audioRecorder?.halfLinks = _halfLinks.value;
+            // Awaited rather than returned so the merge kick below runs after
+            // this device's own half is finished + posted. `_record.finish`
+            // returns `Future<void>`, so this preserves the callback's prior
+            // (void) completion; awaiting inside this already-async callback
+            // keeps its error handling -- a finish throw still propagates to
+            // the outer `.catchError` on the unawaited chain, exactly as when
+            // the future was returned.
+            await _record.finish(
               duration: call.talkDuration,
               video: _usedVideo,
               // Whether the call earned any trace: it got established, it
@@ -1061,11 +1426,31 @@ class CallSession extends ChangeNotifier {
               captureRefused: microphoneRefused,
               answered: call.hadPeer,
               declined: call.wasDeclined,
-              writeTimelineEvent: _writesTheCall,
+              // A call that continues on another device is not over, so the
+              // device it moved on from writes no card for it.
+              writeTimelineEvent:
+                  _writesTheCall &&
+                  call.outcome != CallOutcome.movedToOtherDevice,
               callerId: identity.caller,
               callKey: identity.key,
               anchorEventId: notificationEventId ?? call.callAnchorId,
             );
+            // The post-call merge kick: this device just posted its OWN half,
+            // so bring up the merge subsystem and index the call, to evaluate
+            // whether this device should mix the two halves. Guarded on a
+            // non-null, non-empty call key (the same key `finish` published the
+            // half under) -- a call with no key posted no half and has nothing
+            // to merge. CallService.onOwnCallAudioPosted is a no-op while its
+            // storage is still loading, unavailable, or after teardown.
+            final callKey = identity.key;
+            if (callKey != null && callKey.isNotEmpty) {
+              call.calls.onOwnCallAudioPosted(
+                room.id,
+                callKey,
+                room.client.userID ?? '',
+                room.client.deviceID,
+              );
+            }
           })
           .catchError((Object e, StackTrace s) {
             Logs().e('Could not finish the call recording', e, s);
@@ -1082,15 +1467,271 @@ class CallSession extends ChangeNotifier {
   /// learned it from the winner's simultaneous ring. The caller field names
   /// the same tie-break winner; `placedCall ? me : peer` would, on glare,
   /// name the LOSER on the loser's card.
-  ({String? key, String? caller}) get _callIdentity => resolveCallIdentity(
-    placed: call.placedCall,
-    peerAlsoPlaced: call.peerAlsoPlaced,
-    myUserId: _myUserId,
-    peerUserId: _peerUserId ?? call.peerRingSenderId,
-    ownMembershipId: call.callAnchorId,
-    peerRingMembershipId: call.peerRingMembershipId,
-    callerMembershipEventId: callerMembershipEventId,
-  );
+  ///
+  /// A device that neither rang nor was rung -- one joining a call already
+  /// under way, a sibling taking it over, a rejoin -- has no ring to resolve
+  /// from, so it falls back to the key it adopted (see [_resolveJoinerKey]).
+  ({String? key, String? caller}) get _callIdentity {
+    final resolved = resolveCallIdentity(
+      placed: call.placedCall,
+      peerAlsoPlaced: call.peerAlsoPlaced,
+      myUserId: _myUserId,
+      peerUserId: _peerUserId ?? call.peerRingSenderId,
+      ownMembershipId: call.callAnchorId,
+      peerRingMembershipId: call.peerRingMembershipId,
+      callerMembershipEventId: callerMembershipEventId,
+    );
+    final joined = _joinerKey;
+    if (resolved.key != null || joined == null) return resolved;
+    return (key: joined.key, caller: joined.caller ?? resolved.caller);
+  }
+
+  // ------------------------------------------ the call key and clock (#9173)
+
+  /// Replaces the coordinator's homeserver seams in a test. Set right after
+  /// the session is built, before anything reaches the call.
+  @visibleForTesting
+  CallKeyClock? keyClockOverride;
+
+  late final CallKeyClock _keyClock = keyClockOverride ?? _buildKeyClock();
+  bool _keyClockStarted = false;
+
+  /// The key this device ADOPTED as a joiner. Latched on first success: every
+  /// half it writes is keyed by it, and a resend must carry the same identity.
+  ({String key, String? caller})? _joinerKey;
+  bool _joinerRingTried = false;
+
+  bool get _isKeylessJoiner =>
+      !call.placedCall &&
+      !call.peerAlsoPlaced &&
+      callerMembershipEventId == null &&
+      notificationEventId == null;
+
+  /// Records the key for this account's other devices, writes the call clock
+  /// when this device is its writer, and reads it. Re-run on every change of
+  /// the call; each step is latched inside, so a repeat costs nothing.
+  void _driveKeyClock() {
+    if (_over || _disposing) return;
+    if (_joinerKey == null && _isKeylessJoiner && call.hadPeer) {
+      _resolveJoinerKey();
+    }
+    final identity = _callIdentity;
+    final key = CallRecord.usableKey(identity.key);
+    final membership = call.membershipEventId;
+    final me = _myUserId;
+    final device = room.client.deviceID;
+    if (key == null || membership == null || me == null || device == null) {
+      return;
+    }
+    _keyClockStarted = true;
+    _keyClock.keyResolved(
+      callKey: key,
+      callerId: identity.caller,
+      writerDeviceId: device,
+      writerMembershipEventId: membership,
+    );
+    if (!call.hadPeer) return;
+    _keyClock.peerArrived(
+      callKey: key,
+      isPrimaryWriter: CallClockContent.isPrimaryWriter(
+        callKey: key,
+        ownAnchorId: call.callAnchorId,
+        rejoined: call.rejoinedCall,
+      ),
+      isFallbackWriter: () => CallClockContent.isFallbackWriter(
+        rejoined: call.rejoinedCall,
+        callerId: _callIdentity.caller,
+        myUserId: me,
+        myDeviceId: device,
+        siblingDeviceIds: call.siblingDeviceIds,
+        ownMembershipCurrent: call.calls.membershipEventIsCurrent(
+          room,
+          me,
+          membership,
+        ),
+      ),
+      epochSfuMs: () => call.callEpochFromSfuJoins,
+      writerSenderId: me,
+      writerDeviceId: device,
+      writerAnchorId: () => call.membershipEventId,
+    );
+  }
+
+  /// A joiner's key: this account's `pangea.call_in_progress` when it can be
+  /// trusted, else the current ring, else none -- exactly as before.
+  void _resolveJoinerKey() {
+    final me = _myUserId;
+    final data = CallInProgress.fromJson(
+      room.roomAccountData[CallInProgress.type]?.content,
+    );
+    if (data != null &&
+        me != null &&
+        CallInProgress.accepts(
+          data: data,
+          siblingDeviceIdsInSfu: call.siblingDeviceIds,
+          isCurrentOwnMembership: (id) =>
+              call.calls.membershipEventIsCurrent(room, me, id),
+          myDeviceId: room.client.deviceID,
+          rejoinAnchor: call.rejoinedCall ? call.callAnchorId : null,
+        )) {
+      _joinerKey = (key: data.callKey, caller: data.callerId);
+      Logs().i('Adopted the call key this account recorded for the call');
+      return;
+    }
+    if (_joinerRingTried) return;
+    _joinerRingTried = true;
+    unawaited(_joinerKeyFromRing());
+  }
+
+  Future<void> _joinerKeyFromRing() async {
+    try {
+      final events = await _timelineEvents();
+      if (_joinerKey != null || _over || _disposing) return;
+      final found = keyFromCurrentRing(
+        events,
+        (sender, id) => call.calls.membershipEventIsCurrent(room, sender, id),
+      );
+      if (found == null) {
+        Logs().i('Joined a call under way with no key: nothing names it');
+        return;
+      }
+      _joinerKey = (key: found.key, caller: found.caller);
+      Logs().i('Adopted the call key from the ring still in force');
+      _driveKeyClock();
+    } catch (e, s) {
+      Logs().w('Could not look for the ring of a call under way', e, s);
+    }
+  }
+
+  /// Every event relating to [key] under [relType], within the reader's
+  /// usual page and event ceilings. Throws when it could not look.
+  Future<List<MatrixEvent>> _fetchRelated(
+    RelationsFetcher relations,
+    String key,
+    String relType,
+  ) async {
+    final events = <MatrixEvent>[];
+    String? from;
+    for (var page = 0; page < kMaxRelationPages; page++) {
+      final batch = await relations(
+        roomId: room.id,
+        eventId: key,
+        relType: relType,
+        from: from,
+      );
+      events.addAll(batch.chunk);
+      from = batch.nextBatch;
+      if (from == null || events.length >= kMaxRelationEvents) break;
+    }
+    return events;
+  }
+
+  /// Seam for the half-link lookup in tests.
+  @visibleForTesting
+  Future<List<MatrixEvent>> Function(String key, String relType)?
+  relatedEventsOverride;
+
+  /// How long the finish waits to learn which device it continued from.
+  static const _linkLookupWithin = Duration(seconds: 5);
+
+  /// Where this device's halves sit in a call the learner moved (client#9173).
+  ///
+  /// HANDED OVER TO: set only on a predecessor that left because the call
+  /// moved on -- the sibling it moved to. A device that ended (nobody chose)
+  /// handed nothing over.
+  ///
+  /// CONTINUED FROM: set only when this account already has a half for this
+  /// call that says it was handed over to THIS device. Read from the room
+  /// rather than inferred, so a link is only ever written to a half that
+  /// exists: a race the other device rightly discarded leaves nothing to
+  /// point at, and a reader is never sent waiting for a half that will not
+  /// come.
+  Future<({String? continuedFrom, String? handedOverTo})> _resolveHalfLinks(
+    String? key,
+  ) async {
+    final handedOverTo = !call.carriedOn ? call.continuingOnDeviceId : null;
+    final me = _myUserId;
+    final device = room.client.deviceID;
+    String? continuedFrom;
+    if (key != null && me != null && device != null && call.sawSibling) {
+      try {
+        final fetch =
+            relatedEventsOverride ??
+            (String k, String rel) =>
+                _fetchRelated(relationsFetcherFor(room.client), k, rel);
+        final found = await Future.wait([
+          fetch(key, CallAudioContent.relType),
+          fetch(key, CallTranscriptContent.relType),
+        ]).timeout(_linkLookupWithin);
+        continuedFrom = handedOverFrom(
+          found.expand((events) => events),
+          me: me,
+          myDeviceId: device,
+        );
+      } catch (e, s) {
+        Logs().w('Could not look for the half this device continued', e, s);
+      }
+    }
+    return (continuedFrom: continuedFrom, handedOverTo: handedOverTo);
+  }
+
+  /// The device whose half says it handed this call over to [myDeviceId]:
+  /// one of [me]'s own halves, from a different device of the account.
+  @visibleForTesting
+  static String? handedOverFrom(
+    Iterable<MatrixEvent> events, {
+    required String me,
+    required String myDeviceId,
+  }) {
+    for (final event in events) {
+      if (event.senderId != me) continue;
+      final content = event.content;
+      final to = CallTranscriptContent.usableDeviceId(
+        content['handed_over_to'],
+      );
+      final from = CallTranscriptContent.usableDeviceId(content['device_id']);
+      if (to == myDeviceId && from != null && from != myDeviceId) return from;
+    }
+    return null;
+  }
+
+  CallKeyClock _buildKeyClock() {
+    final client = room.client;
+    final relations = relationsFetcherFor(client);
+    return CallKeyClock(
+      writeCallInProgress: (content) => client.setAccountDataPerRoom(
+        client.userID!,
+        room.id,
+        CallInProgress.type,
+        content,
+      ),
+      sendClock: (content, txnId) async {
+        // Same bytes, same transaction id, both attempts: a lost response
+        // whose event landed comes back as that event, not a second one.
+        for (var attempt = 0; attempt < 2; attempt++) {
+          final id = await room.sendEvent(
+            content,
+            type: CallClockContent.type,
+            txid: txnId,
+          );
+          if (id != null) return;
+        }
+        throw StateError('the call clock was not sent');
+      },
+      fetchClockEvents: (key) =>
+          _fetchRelated(relations, key, CallClockContent.type),
+      fetchEvent: room.getEventById,
+      clockArrivals: client.onTimelineEvent.stream.where(
+        (e) => e.room.id == room.id && e.type == CallClockContent.type,
+      ),
+      onEpoch: call.adoptCallEpoch,
+      dmMembers: () => {
+        if (_myUserId != null) _myUserId,
+        if (_peerUserId != null) _peerUserId,
+      },
+      callId: () => call.calls.currentCallId,
+    );
+  }
 
   /// The rule itself, pure so the glare arms can be pinned directly.
   @visibleForTesting
@@ -1177,6 +1818,7 @@ class CallSession extends ChangeNotifier {
   void _finish() {
     if (_over) return;
     _over = true;
+    if (_keyClockStarted) _keyClock.dispose();
     _endedAt = DateTime.now();
     _tick?.cancel();
     _tick = null;
@@ -1245,11 +1887,14 @@ class CallSession extends ChangeNotifier {
     final tones = _tonesInstance;
     if (tones != null) unawaited(tones.dispose());
     call.clearForegroundActions();
+    _lifecycle?.dispose();
+    _lifecycle = null;
     _tick?.cancel();
     // A summary still holding its 3s when the holder discards the session --
     // logout, a redial stepping over -- must not fire into a disposed one.
     _summaryHold?.cancel();
     _summaryHold = null;
+    if (_keyClockStarted) _keyClock.dispose();
     _finishRecording();
     // ActiveCall.dispose hangs up (idempotent), so a session discarded by its
     // holder — logout, app teardown — can never leave a call running headless.

@@ -2904,7 +2904,6 @@
     "errorDisableIGCClassDesc": "Gramatikas palīdzība ir izslēgta kursam, kurā atrodas šī tērzēšana.",
     "error405Desc": "Lūdzu, iestatiet savas valodas galvenajā izvēlnē > Mācību iestatījumi.",
     "termsAndConditions": "Noteikumiem un nosacījumiem",
-    "andCertifyIAmAtLeast13YearsOfAge": " un apliecinu, ka man ir vismaz 16 gadu.",
     "error502504Desc": "Tulkotāja un gramatikas rīki var būt lēni vai nepieejami, kamēr Pangea roboti seko līdzi.",
     "error404Desc": "Pangea bots nav pārliecināts, kā to tulkot...",
     "errorPleaseRefresh": "Mēs to izpētām! Lūdzu, ielādējiet lapu vēlreiz un mēģiniet vēlreiz.",
@@ -3212,9 +3211,6 @@
     "why": "Kāpēc?",
     "definition": "Definīcija",
     "reportToTeacher": "Kam vēlaties ziņot šo ziņojumu?",
-    "reportMessageTitle": "{reportingUserId} ir ziņojis par ziņojumu no {reportedUserId} čatā {roomName}",
-    "reportMessageBody": "Ziņojums: {reportedMessage}\nIemesls: {reason}",
-    "noTeachersFound": "Nav atrasts skolotājs ziņošanai",
     "trialExpiration": "Jūsu bezmaksas izmēģinājuma termiņš beidzas {expiration}",
     "freeTrialDesc": "Jauniem lietotājiem ir viena nedēļa bezmaksas Pangea Chat izmēģinājuma",
     "activateTrial": "Bezmaksas 7 dienu izmēģinājums",
@@ -3535,7 +3531,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-09-23 15:42:46.701733",
+    "@@last_modified": "2026-10-12 13:11:58.233323",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -3701,10 +3697,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4951,35 +4943,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -7937,11 +7900,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Izmantojiet aktivitātes attēlu kā čata fona",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Sarunāties ar atbalstu",
     "@chatWithSupport": {
         "type": "String",
@@ -9420,7 +9378,6 @@
     "activityLoadFailed": "Neizdevās ielādēt aktivitāti. Pārbaudiet savu savienojumu un mēģiniet vēlreiz.",
     "levelUpChip": "Līmenis {level}!",
     "missingCourseOutline": "Šis kurss vairs nav pieejams",
-    "missingCourseOutlineCta": "Šis kurss vairs nav pieejams. Izvēlieties jaunu kursa plānu.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9445,10 +9402,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9844,7 +9797,6 @@
     "constructLevelFlowers": "Ziedi, apgūtie vārdi",
     "filterAndSearch": "Filtrēt un meklēt",
     "participantsOfTotal": "{filled} no {total} spēlētājiem",
-    "mapAttributionLabel": "OpenStreetMap līdzstrādnieki, autortiesības un licence",
     "seeAll": "Skatīt visu",
     "seeAllSection": "Skatīt visu sadaļu {section}",
     "showMoreOptionsHint": "rādīt vairāk opciju",
@@ -9961,5 +9913,64 @@
     "goalReportErrorRetry": "Kārtas meklēšana netika pabeigta. Mēģiniet vēlreiz.",
     "summaryFeedbackReceived": "Paldies! Mēs saņēmām jūsu atsauksmes.",
     "summaryFeedbackFailed": "Neizdevās nosūtīt jūsu atsauksmes. Lūdzu, mēģiniet vēlreiz.",
-    "summaryFeedbackProcessing": "Sūta jūsu atsauksmes un atjaunina kopsavilkumu…"
+    "summaryFeedbackProcessing": "Sūta jūsu atsauksmes un atjaunina kopsavilkumu…",
+    "callTranscriptTranscribing": "Joprojām tiek atšifrēts ieraksts no {name}…",
+    "callTranscriptSeekTo": "Atskaņot no {time}",
+    "callTranscriptRecordings": "Ieraksti",
+    "callTranscriptFullCall": "Pilns zvans",
+    "callTranscriptPreparingRecording": "Tiek sagatavots pilns ieraksts…",
+    "callTranscriptNoRecording": "Nav pilna zvana ieraksta.",
+    "callTranscriptNotSubscribed": "{name} nebija abonementa šī zvana laikā, tāpēc teiktais netika pārrakstīts.",
+    "joinYourCourse": "Pievienojies savam kursam",
+    "courseCodeJoinExplanation": "Piesakies vai reģistrējies, un mēs izmantosim tavu kursa kodu, lai automātiski tevi pievienotu kursam.",
+    "courseCodeLabel": "Kursa kods",
+    "courseCodeSaved": "Kursa kods {code} saglabāts",
+    "courseCodeSavedExplanation": "Reģistrējies vai piesakies, un mēs tevi pievienosim tavam kursam.",
+    "moderationRefusedContactDetails": "Jūsu ziņojums netika nosūtīts. Automātiskais filtrs atrada kontaktinformāciju, piemēram, tālruņa numuru. Lūdzu, noņemiet to un mēģiniet vēlreiz.",
+    "moderationRefusedProfanity": "Jūsu ziņojums netika nosūtīts. Automātiskais filtrs atrada vārdu, ko neatļaujam tērzēšanā. Lūdzu, mainiet to un mēģiniet vēlreiz.",
+    "callTranscriptTranscribeButton": "Transkribēt",
+    "callTranscriptAudioUnavailable": "Saglabāto ierakstu no {name} nevarēja lejupielādēt, tāpēc to nevarēja transkribēt.",
+    "callTranscriptChooseLanguage": "Kādā valodā runājāt?",
+    "callTranscriptSubscribeForTranscription": "Abonēt transkripciju",
+    "unlockCallTranscript": "Atbloķēt zvanu transkriptu",
+    "activitySummaryUpdateFailed": "Šo kopsavilkumu nevarēja atjaunināt.",
+    "courseNotFound": "Kurss nav atrasts",
+    "askTeacherForNewCourse": "Palūdziet savam skolotājam izvēlēties jaunu kursu.",
+    "pickNewCoursePlan": "Izvēlieties jaunu kursa plānu.",
+    "ssoNetworkBlockedTitle": "Pieteikšanās vietne nav sasniedzama",
+    "ssoNetworkBlockedDesc": "Šis tīkls neļauj mums sasniegt {provider}, lai jūs pieteiktu. Skolas un biroja Wi-Fi bieži to bloķē. Jūs varat reģistrēties ar e-pastu vai pārslēgties uz citu tīklu un mēģināt vēlreiz.",
+    "ssoTryAnyway": "Tomēr mēģināt",
+    "publicCoursesFilterTooltip": "Rādīt tikai kursus, kuriem var pievienoties ikviens",
+    "restrictedCoursesFilterTooltip": "Rādīt tikai kursus, kuriem jāpieprasa pievienošanās",
+    "viewImageLabel": "Skatīt attēlu",
+    "reportSent": "Ziņojums nosūtīts",
+    "reportNotSent": "Jūsu ziņojumu nevarēja nosūtīt. Pārbaudiet savienojumu un mēģiniet vēlreiz.",
+    "reportPointerMessage": "Ziņojums tika ziņots kursā {courseName} — skatiet Drošība",
+    "useActivityImageAsChatBackground": "Izmantot aktivitātes attēlu kā tērzēšanas fonu",
+    "andCertifyIMeetTheMinimumAge": " un apliecinu, ka esmu vismaz 13 gadus vecs vai sasniedzis minimālo vecumu, kas noteikts manā valstī, ja tas ir augstāks.",
+    "filteredNetworkBlockedTitle": "Šis tīkls bloķē Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Šis tīkls daļēji bloķē Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Ko es varu darīt?",
+    "filteredNetworkPhoneAdvice": "Izslēdziet Wi-Fi un izmantojiet mobilos datus.",
+    "filteredNetworkComputerAdvice": "Pievienojieties tālruņa tīklājam, nevis šim Wi-Fi.",
+    "filteredNetworkItHeading": "Skolotājiem un IT personālam",
+    "filteredNetworkItBody": "Palūdziet savai IT komandai atļaut šos domēnus:",
+    "filteredNetworkAskForHelp": "Lūgt Pangea palīdzību",
+    "filteredNetworkHelpExplanation": "Mēs jums nosūtīsim e-pastu, lai palīdzētu Pangea Chat darboties šajā tīklā.",
+    "filteredNetworkHelpWaiting": "Jūsu pieprasījums tiks nosūtīts, tiklīdz būsiet izveidojis savienojumu.",
+    "filteredNetworkHelpSent": "Nosūtīts. Mēs sazināsimies ar jums pa e-pastu.",
+    "filteredNetworkHelpRefused": "Mēs nevarējām nosūtīt jūsu pieprasījumu. Lūdzu, rakstiet uz support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Šis tīkls bloķē video.",
+    "filteredNetworkImagesBlocked": "Šis tīkls bloķē attēlus.",
+    "filteredNetworkMapBlocked": "Šis tīkls bloķē karti.",
+    "callFullScreenTitle": "Ļaut zvaniem zvanīt pilnekrāna režīmā",
+    "callFullScreenMessage": "Ienāca zvans, kamēr Pangea Chat bija aizvērts, taču jūsu tālrunis varēja parādīt tikai nelielu paziņojumu par to. Atļaujiet pilnekrāna zvanus, lai nākamais zvans zvanītu uz visu ekrānu, pat ja tālrunis ir bloķēts.",
+    "callMicrophoneTitle": "Izmantojiet mikrofonu zvaniem",
+    "callMicrophoneMessage": "Pangea Chat ir nepieciešams jūsu mikrofons zvaniem, tostarp zvaniem, ko atbildat no bloķēšanas ekrāna.",
+    "callMicrophoneOffTitle": "Jūsu zvans netika savienots",
+    "callMicrophoneOffMessage": "Pangea Chat nevar izmantot jūsu mikrofonu. Pieskarieties, lai to ieslēgtu iestatījumos.",
+    "mapCreditsLabel": "Kartes atsauces: Stadia Maps, OpenMapTiles un OpenStreetMap",
+    "activityLaunchFindingCourses": "Meklējam jūsu kursus…",
+    "activityLaunchCreatingRoom": "Veidojam jūsu aktivitāti…",
+    "activityLaunchOpeningRoom": "Atveram jūsu aktivitāti…"
 }

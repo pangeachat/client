@@ -2348,7 +2348,6 @@
     "errorDisableIGCClassDesc": "འདི་ལས་སྤྱོད་ནས་རྒྱུན་ལས་འབད་མེད།",
     "error405Desc": "Խնդրում ենք սահմանել ձեր լեզուները Մենյու գլխավոր > Ուսուցման կարգավորումներ բաժնում։",
     "termsAndConditions": "Պայմաններն ու դրույթները",
-    "andCertifyIAmAtLeast13YearsOfAge": "և վկայում եմ, որ ինձ առնվազն 16 տարեկան եմ։",
     "error502504Desc": "Թարգմանության և գրականության գործիքները կարող են դանդաղել կամ անհասանելի լինել, մինչ Պանգեա բոտերը լրացնում են տվյալները։",
     "error404Desc": "Պանգեա Բոտը չգիտի, թե ինչպես թարգմանել դա...",
     "errorPleaseRefresh": "Մենք աշխատում ենք դրա վրա։ Խնդրում ենք թարմացնել և փորձել նորից։",
@@ -2639,9 +2638,6 @@
     "total": "کل: ",
     "noDataFound": "کوئی ڈیٹا نہیں ملا",
     "reportToTeacher": "ཁྱེད་ཀྱང་འདི་ལ་འགྱོ་སྤྱོད་འདི་ལ་གནང་བ་སྤྱོད་ཀྱི་རེད།",
-    "reportMessageTitle": "{reportingUserId} འདི་ལ་འབྲེལ་བའི་ཚེས་གྲངས {reportedUserId} འདི་ལ་འབྲེལ་བའི་ཚེས་གྲངས {roomName} ལ་འབྲེལ་བའི་ཚེས་གྲངས",
-    "reportMessageBody": "ཚེས་གྲངས: {reportedMessage}\nལེགས་སྤྱོད: {reason}",
-    "noTeachersFound": "འདི་ལ་འགྱོ་སྤྱོད་འདི་ལ་འབྲེལ་བའི་སློབ་དཔོན་མེད།",
     "trialExpiration": "ཁྱེད་ཀྱང་གནང་བའི་སྤྱི་ཚེས {expiration} ལ་སྟེང་འགྱོའི་ཡོད།",
     "freeTrialDesc": "གསར་བའི་རོགས་མིང་ཚོས་སྤྱི་ཚེས་དུས་སུ་གནང་བའི་སྤྱི་ཚེས་གཅིག་ལ་སྤྱོད་ཚུལ།",
     "activateTrial": "རོགས་མིང་ཚོས་སྤྱི་ཚེས 7 ཉིན་ལ་སྤྱོད་ཚུལ།",
@@ -2919,7 +2915,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-09-23 15:42:43.204697",
+    "@@last_modified": "2026-10-12 13:11:50.297638",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -3764,10 +3760,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4942,35 +4934,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -7100,11 +7063,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat with Support",
     "@chatWithSupport": {
         "type": "String",
@@ -9031,7 +8989,6 @@
     "activityLoadFailed": "Couldn't load the activity. Check your connection and try again.",
     "levelUpChip": "Level {level}!",
     "missingCourseOutline": "Ita course is no longer available",
-    "missingCourseOutlineCta": "Ita course is no longer available. Pick a new course plan.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9056,10 +9013,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9455,7 +9408,6 @@
     "constructLevelFlowers": "མེ་ཏོག བྱང་ཆུབ་པའི་ཚིག",
     "filterAndSearch": "ཚགས་འདེམས་དང་འཚོལ་བཤེར།",
     "participantsOfTotal": "རྩེད་མཁན་ {total} ནང་ནས་ {filled}",
-    "mapAttributionLabel": "OpenStreetMap ལ་མཉམ་ཞུགས་བྱེད་མཁན་ཚོ། བདག་དབང་དང་ཆོག་མཆན།",
     "seeAll": "ཚང་མ་གཟིགས།",
     "seeAllSection": "{section} ཚང་མ་གཟིགས།",
     "showMoreOptionsHint": "འདེམས་ངོ་མང་ཙམ་བསྟན་",
@@ -9572,5 +9524,64 @@
     "goalReportErrorRetry": "སྐོར་འཚོལ་བ་མ་ཚར། བསྐྱར་དུ་ཚོད་ལྟ་གནང་རོགས།",
     "summaryFeedbackReceived": "ཐུགས་རྗེ་ཆེ། ཁྱེད་ཀྱི་བསམ་འཆར་འབྱོར་སོང་།",
     "summaryFeedbackFailed": "ཁྱེད་ཀྱི་བསམ་འཆར་གཏོང་མ་ཐུབ། བསྐྱར་དུ་ཚོད་ལྟ་གནང་རོགས།",
-    "summaryFeedbackProcessing": "ཁྱེད་ཀྱི་ལན་འདེབས་བསྐུར་བ་དང་སྙིང་བསྡུས་གསར་སྒྱུར་བྱེད་བཞིན་པ།"
+    "summaryFeedbackProcessing": "ཁྱེད་ཀྱི་ལན་འདེབས་བསྐུར་བ་དང་སྙིང་བསྡུས་གསར་སྒྱུར་བྱེད་བཞིན་པ།",
+    "callTranscriptTranscribing": "{name} ནས་བླངས་པའི་སྐད་སྒྲ་ད་དུང་ཡིག་ཐོག་ཏུ་བསྒྱུར་བཞིན་འདུག",
+    "callTranscriptSeekTo": "{time} ནས་འཁྲབ་པ།",
+    "callTranscriptRecordings": "སྐད་སྒྲ་བླངས་པ།",
+    "callTranscriptFullCall": "བསྐྱར་ཟློས་ཆ་ཚང་།",
+    "callTranscriptPreparingRecording": "བསྐྱར་ཟློས་ཆ་ཚང་གྲ་སྒྲིག་བྱེད་བཞིན་པ།",
+    "callTranscriptNoRecording": "བསྐྱར་ཟློས་ཆ་ཚང་མེད།",
+    "callTranscriptNotSubscribed": "འདི་ཉིད་སྐད་ཆ་ཤོད་རེས་བྱེད་སྐབས་ {name} ལ་ཐོ་འགོད་བྱས་མེད་པས། བཤད་པའི་སྐད་ཆ་དེ་དག་ཡིག་ཐོག་ཏུ་ཕབ་མེད།",
+    "joinYourCourse": "သင်တန်းသို့ဝင်ရောက်ပါ",
+    "courseCodeJoinExplanation": "အကောင့်ဝင်ပါ သို့မဟုတ် စာရင်းသွင်းပါ၊ သင်၏သင်တန်းကုဒ်ကို အသုံးပြု၍ သင့်ကို သင်တန်းသို့ အလိုအလျောက်ထည့်သွင်းပေးပါမည်။",
+    "courseCodeLabel": "သင်တန်းကုဒ်",
+    "courseCodeSaved": "သင်တန်းကုဒ် {code} သိမ်းဆည်းပြီးပါပြီ",
+    "courseCodeSavedExplanation": "စာရင်းသွင်းပါ သို့မဟုတ် အကောင့်ဝင်ပါ၊ သင့်ကို သင်တန်းသို့ ထည့်သွင်းပေးပါမည်။",
+    "moderationRefusedContactDetails": "ཁྱེད་ཀྱི་འཕྲིན་ཐུང་བསྐུར་མེད། རང་འགུལ་ཚགས་འདོན་མ་ལག་གིས་ཁ་པར་ཨང་གྲངས་ལྟ་བུའི་འབྲེལ་གཏུག་གི་ཞིབ་ཕྲ་རྙེད་སོང་། དེ་དག་བསུབ་ནས་བསྐྱར་དུ་ཚོད་ལྟ་གནང་རོགས།",
+    "moderationRefusedProfanity": "ཁྱེད་ཀྱི་འཕྲིན་ཐུང་བསྐུར་མེད། རང་འགུལ་ཚགས་འདོན་མ་ལག་གིས་ང་ཚོས་ཁ་བརྡའི་ནང་དུ་བཀག་པའི་ཚིག་ཅིག་རྙེད་སོང་། དེ་བསྒྱུར་ནས་བསྐྱར་དུ་ཚོད་ལྟ་གནང་རོགས།",
+    "callTranscriptTranscribeButton": "ถอดความ",
+    "callTranscriptAudioUnavailable": "{name} ནས་ཉར་ཚགས་བྱས་པའི་སྒྲ་ཕབ་ཕབ་ལེན་བྱེད་མ་ཐུབ་པས་དེ་ལ་ཡིག་སྒྱུར་བྱེད་མ་ཐུབ།",
+    "callTranscriptChooseLanguage": "སྐད་ཡིག་གང་ཞིག་བཤད་པ་ཡིན་ནམ།",
+    "callTranscriptSubscribeForTranscription": "ཡིག་སྒྱུར་བྱེད་པར་ཐོ་འགོད་བྱེད་དགོས།",
+    "unlockCallTranscript": "ཁ་པར་གྱི་ཡིག་སྒྱུར་འབྱེད་པ།",
+    "activitySummaryUpdateFailed": "སྙན་ཐོ་འདི་གསར་སྒྱུར་བྱེད་མ་ཐུབ།",
+    "courseNotFound": "སློབ་ཚན་མ་རྙེད།",
+    "askTeacherForNewCourse": "དགེ་རྒན་ལ་སློབ་ཚན་གསར་པ་ཞིག་འདེམས་དགོས་པར་ཞུ་བསྐུལ་བྱེད་ပါ။",
+    "pickNewCoursePlan": "སློབ་ཚན་གསར་པ་ཞིག་འདེམས་རོགས།",
+    "ssoNetworkBlockedTitle": "ནང་འཛུལ་དྲ་རྒྱ་འབྲེལ་མཐུད་མེད།",
+    "ssoNetworkBlockedDesc": "དྲ་རྒྱ་འདིས་ཁྱེད་རང་ནང་འཛུལ་བྱེད་པར་ {provider} དང་འབྲེལ་མཐུད་བྱེད་དུ་འཇུག་གི་མེད། སློབ་གྲྭ་དང་ལས་ཁུངས་ཀྱི་ཝའེ་ཧྥའེ་ཡིས་དེ་བཀག་སྡོམ་བྱེད་པ་རྒྱུན་ལྡན་རེད། ཁྱེད་ཀྱིས་དེ་བརྗེས་ནས་གློག་འཕྲིན་བརྒྱུད་ནས་ཐོ་འགོད་བྱེད་ཆོག་གམ་ཡང་ན་དྲ་རྒྱ་གཞན་ཞིག་ལ་བརྗེ་ནས་ཡང་བསྐྱར་ཚོད་ལྟ་བྱེད་ཆོག",
+    "ssoTryAnyway": "གང་ལྟར་ཚོད་ལྟ་བྱོས།",
+    "publicCoursesFilterTooltip": "སུ་ཡང་ཞུགས་ཆོག་པའི་སློབ་ཚན་ཁོ་ན་བསྟན་པ།",
+    "restrictedCoursesFilterTooltip": "ཁྱེད་ཀྱིས་ཞུགས་རྒྱུར་རེ་བ་བྱེད་དགོས་པའི་སློབ་ཚན་ཁོ་ན་བསྟན་པ།",
+    "viewImageLabel": "པར་ལ་ལྟ་བ།",
+    "reportSent": "སྙན་ཞུ་བསྐུར་ཚར།",
+    "reportNotSent": "ཁྱེད་ཀྱི་སྙན་ཞུ་བསྐུར་མ་ཐུབ། དྲ་རྒྱ་ཞིབ་བཤེར་བྱས་ནས་བསྐྱར་དུ་ཚོད་ལྟ་བྱེད་རོགས།",
+    "reportPointerMessage": "{courseName}ནང་དུ་འཕྲིན་ཡིག་ཅིག་སྙན་ཞུ་བྱས་འདུག བདེ་འཇགས་ལ་གཟིགས།",
+    "useActivityImageAsChatBackground": "བྱ་བའི་པར་དེ་ཁ་བརྡའི་རྒྱབ་ལྗོངས་སུ་བེད་སྤྱོད་པ།",
+    "andCertifyIMeetTheMinimumAge": "དང་ང་རང་ལོ་ ༡༣ ལོན་པ་དང་། ཡང་ན་ངའི་རྒྱལ་ཁབ་ཀྱི་བླང་བྱ་ལྟར་ན་དེ་ལས་མཐོ་བ་ཡོད་ཚེ་དེ་ལོན་ཡོད་པའི་ངོས་ལེན་བྱེད་ཀྱི་ཡོད།",
+    "filteredNetworkBlockedTitle": "དྲ་རྒྱ་འདིས་Pangea Chatབཀག་འགོག་བྱེད་བཞིན་ཡོད།",
+    "filteredNetworkPartlyBlockedTitle": "དྲ་རྒྱ་འདིས་Pangea Chatགྱི་ཆ་ཤས་བཀག་འགོག་བྱེད་བཞིན་ཡོད།",
+    "filteredNetworkWhatCanIDo": "ངས་ཅི་བྱེད་ཐུབ།",
+    "filteredNetworkPhoneAdvice": "Wi-Fiབཀར་ནས་བརྒྱུད་འཕྲིན་གྱི་དྲ་རྒྱ་བེད་སྤྱོད་གནང་རོགས།",
+    "filteredNetworkComputerAdvice": "Wi-Fiའདིའི་ཚབ་ཏུ་ཁྱེད་ཀྱི་ཁ་པར་གྱི་Hotspotདང་སྦྲེལ་མཐུད་གནང་རོགས།",
+    "filteredNetworkItHeading": "དགེ་རྒན་དང་ITལས་མི་ཚོའི་ཆེད།",
+    "filteredNetworkItBody": "ཁྱེད་ཀྱི་ITཚོགས་ཆུང་ལ་Domainའདི་དག་བཀག་འགོག་མི་བྱེད་པར་བཅུག་རོགས་ཞུ་དགོས།",
+    "filteredNetworkAskForHelp": "Pangeaལ་རོགས་རམ་ཞུ་དགོས།",
+    "filteredNetworkHelpExplanation": "Pangea Chatདྲ་རྒྱ་འདིའི་ཐོག་བེད་སྤྱོད་ཐུབ་པ་བྱེད་ཆེད་ང་ཚོས་ཁྱེད་ལ་གློག་འཕྲིན་བསྐུར་ཆོག",
+    "filteredNetworkHelpWaiting": "ཁྱེད་ཀྱི་རེ་བ་སྦྲེལ་མཐུད་བྱས་མ་ཐག་བསྐུར་ངེས།",
+    "filteredNetworkHelpSent": "བསྐུར་ཚར། ང་ཚོས་གློག་འཕྲིན་བརྒྱུད་ནས་འབྲེལ་བ་བྱེད་ངེས།",
+    "filteredNetworkHelpRefused": "ང་ཚོས་ཁྱེད་ཀྱི་རེ་བ་བསྐུར་མ་ཐུབ། གློག་འཕྲིན་support@pangea.chatལ་བསྐུར་རོགས།",
+    "filteredNetworkVideoBlocked": "དྲ་རྒྱ་འདིས་བརྙན་རིས་བཀག་འགོག་བྱེད་བཞིན་ཡོད།",
+    "filteredNetworkImagesBlocked": "དྲ་རྒྱ་འདིས་པར་རིས་བཀག་འགོག་བྱེད་བཞིན་ཡོད།",
+    "filteredNetworkMapBlocked": "དྲ་རྒྱ་འདིས་ས་ཁྲ་བཀག་འགོག་བྱེད་བཞིན་ཡོད།",
+    "callFullScreenTitle": "འབོད་པ་ཡོངས་ངོས་སུ་སྒྲ་གྲགས་སུ་འཇུག",
+    "callFullScreenMessage": "Pangea Chat བཀག་ཡོད་པའི་སྐབས་སུ་འབོད་པ་ཞིག་འབྱོར་ཡང་། ཁྱེད་ཀྱི་ཁ་པར་གྱིས་དེའི་ཆེད་དུ་བརྡ་ཐོ་ཆུང་ངུ་ཞིག་མ་གཏོགས་མངོན་མི་ཐུབ། འབོད་པ་ཡོངས་ངོས་སུ་སྒྲ་གྲགས་སུ་འཇུག་པར་ཆོག་པ་སྤྲོད་དང་། དེ་ནས་འབོད་པ་རྗེས་མ་དེ་ཁྱེད་ཀྱི་ཁ་པར་བཀག་ཡོད་པའི་སྐབས་སུའང་ཡོངས་ངོས་སུ་སྒྲ་གྲགས་པར་འགྱུར།",
+    "callMicrophoneTitle": "ཁ་པར་བརྒྱབ་ཆེད་དུ་ཁྱེད་ཀྱི་སྒྲ་སྡུད་འཕྲུལ་ཆས་བེད་སྤྱོད་གནང་།",
+    "callMicrophoneMessage": "Pangea Chat ལ་ཁ་པར་བརྒྱབ་ཆེད་དུ་ཁྱེད་ཀྱི་སྒྲ་སྡུད་འཕྲུལ་ཆས་དགོས། དེའི་ནང་དུ་བཀག་པའི་བརྡ་འཕྲིན་གྱི་ངོས་ནས་ལན་བརྒྱབ་པའི་ཁ་པར་ཡང་ཚུད་ཡོད།",
+    "callMicrophoneOffTitle": "ཁྱེད་ཀྱི་ཁ་པར་འབྲེལ་མཐུད་བྱུང་མེད།",
+    "callMicrophoneOffMessage": "Pangea Chat གྱིས་ཁྱེད་ཀྱི་སྒྲ་སྡུད་འཕྲུལ་ཆས་བེད་སྤྱོད་གནང་ཐུབ་ཀྱི་མེད། སྒྲིག་སྦྱོར་ནང་དུ་སྒྲ་སྡུད་འཕྲུལ་ཆས་འབྱེད་པར་མནོན།",
+    "mapCreditsLabel": "ផែនទីཡི་ཡོན་ཏན་: Stadia Maps, OpenMapTiles དང་ OpenStreetMap",
+    "activityLaunchFindingCourses": "ཁྱེད་ཀྱི་སློབ་ཚན་འཚོལ་བཞིན་པ།",
+    "activityLaunchCreatingRoom": "ཁྱེད་ཀྱི་བྱེད་སྒོ་བཟོ་བཞིན་པ།",
+    "activityLaunchOpeningRoom": "ཁྱེད་ཀྱི་བྱེད་སྒོ་འབྱེད་བཞིན་པ།"
 }

@@ -9,6 +9,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/course_plan_return.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -115,6 +116,16 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   /// floating ping-bar can tell whether it's on screen and scroll to it.
   final GlobalKey _pingedSectionKey = GlobalKey();
 
+  /// The activity the learner just backed out of to this full plan, taken
+  /// once on mount ([CoursePlanReturn]); its Mission is scrolled into view
+  /// once, as soon as the plan loads.
+  String? _returnActivityId;
+  bool _returnScrollScheduled = false;
+
+  /// Attached to the ObjectiveSection holding [_returnActivityId] — unless
+  /// that is also the pinged section, which already wears [_pingedSectionKey].
+  final GlobalKey _returnSectionKey = GlobalKey();
+
   /// The pinged activity whose section has been in view — its ping-bar hides
   /// and never comes back this visit. Per-activity, so a NEW ping landing
   /// while the plan is open gets its own bar (#8319).
@@ -122,9 +133,29 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   bool get _pingedSectionSeen => _seenPingedActivityId == _pingedActivityId;
 
+  /// Missions the learner folded, by id. Held here rather than in each
+  /// [ObjectiveSection] because the list builds lazily and disposes sections
+  /// scrolled out of view (#9248).
+  final Set<String> _collapsedMissionIds = {};
+
+  void _toggleMissionCollapsed(String missionId) => setState(() {
+    if (!_collapsedMissionIds.remove(missionId)) {
+      _collapsedMissionIds.add(missionId);
+    }
+  });
+
+  /// This list is the course card's full course plan — the one surface an
+  /// activity's back arrow returns to (routing.instructions.md).
+  bool get _isFullCoursePlan =>
+      widget.room != null && !widget.suggestedOnly && !widget.readOnly;
+
   @override
   void initState() {
     super.initState();
+    final room = widget.room;
+    if (_isFullCoursePlan && room != null) {
+      _returnActivityId = CoursePlanReturn.take(room.id);
+    }
     _loadAvailableParticipants();
     // The course page stashes the ping asynchronously (it reads the timeline),
     // usually after this list first builds — rebuild when it lands.
@@ -378,32 +409,46 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     }
   }
 
-  /// Scroll to the pinged activity's section. The list builds lazily, so an
-  /// unbuilt target has no context to ensureVisible — step down a viewport at
-  /// a time until it mounts, then settle on it.
-  Future<void> _scrollToPinged() async {
-    while (_pingedSectionKey.currentContext == null &&
+  /// Scroll to the section [sectionKey] is attached to. The list builds
+  /// lazily, so an unbuilt target has no context to ensureVisible — step down
+  /// a viewport at a time until it mounts, then settle on it. [animate] false
+  /// jumps instead: arriving back on the plan puts the learner where they
+  /// left off, rather than playing a scroll they did not ask for.
+  Future<void> _scrollToSection(
+    GlobalKey sectionKey, {
+    bool animate = true,
+  }) async {
+    while (mounted &&
+        sectionKey.currentContext == null &&
         _scrollController.hasClients) {
       final position = _scrollController.position;
       if (position.pixels >= position.maxScrollExtent) break;
-      await _scrollController.animateTo(
-        (position.pixels + position.viewportDimension * 0.8).clamp(
-          0.0,
-          position.maxScrollExtent,
-        ),
-        duration: const Duration(milliseconds: 150),
-        curve: Curves.linear,
+      final target = (position.pixels + position.viewportDimension * 0.8).clamp(
+        0.0,
+        position.maxScrollExtent,
       );
+      if (animate) {
+        await _scrollController.animateTo(
+          target,
+          duration: const Duration(milliseconds: 150),
+          curve: Curves.linear,
+        );
+      } else {
+        _scrollController.jumpTo(target);
+        await WidgetsBinding.instance.endOfFrame;
+      }
     }
-    final sectionContext = _pingedSectionKey.currentContext;
-    if (sectionContext == null) return;
+    final sectionContext = sectionKey.currentContext;
+    if (!mounted || sectionContext == null) return;
     await Scrollable.ensureVisible(
       sectionContext,
-      duration: const Duration(milliseconds: 300),
+      duration: animate ? const Duration(milliseconds: 300) : Duration.zero,
       curve: Curves.easeOut,
       alignment: 0.1,
     );
   }
+
+  Future<void> _scrollToPinged() => _scrollToSection(_pingedSectionKey);
 
   Future<void> _loadAvailableParticipants() async {
     final room = widget.room;
@@ -551,6 +596,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
         autoplay:
             ref.plan.heroBlock?.isVideo == true ||
             ref.plan.heroBlock?.isYoutube == true,
+        fromCoursePlan: _isFullCoursePlan,
       ),
     );
   }
@@ -580,7 +626,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
             case AsyncIdle():
               return const Center(child: CircularProgressIndicator.adaptive());
             case AsyncError(error: final error):
-              return _QuestLoadErrorView(
+              return QuestLoadErrorView(
                 error,
                 showAddCourse: widget.room?.isRoomAdmin == true,
               );
@@ -591,7 +637,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
               final groups = widget.objectivesProvider.filteredObjectiveGroups;
               final anchorId = widget.objectivesProvider.anchorMissionId;
               if (groups.isEmpty) {
-                return _QuestLoadErrorView(
+                return QuestLoadErrorView(
                   MissingQuestException(),
                   showAddCourse: widget.room?.isRoomAdmin == true,
                 );
@@ -660,6 +706,23 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                       (_) => _checkPingedSectionSeen(),
                     );
                   }
+                  final returnActivityId = _returnActivityId;
+                  final returnGroupIndex = returnActivityId == null
+                      ? -1
+                      : groups.indexWhere(
+                          (g) => g.activities.any(
+                            (a) => a.activityId == returnActivityId,
+                          ),
+                        );
+                  final returnSectionKey = returnGroupIndex == pingedGroupIndex
+                      ? _pingedSectionKey
+                      : _returnSectionKey;
+                  if (returnGroupIndex >= 0 && !_returnScrollScheduled) {
+                    _returnScrollScheduled = true;
+                    WidgetsBinding.instance.addPostFrameCallback(
+                      (_) => _scrollToSection(returnSectionKey, animate: false),
+                    );
+                  }
                   final list = ListView.separated(
                     controller: widget.shrinkWrap ? null : _scrollController,
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -672,11 +735,20 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     itemBuilder: (context, i) {
                       final group = groups[i];
                       return ObjectiveSection(
-                        key: i == pingedGroupIndex ? _pingedSectionKey : null,
+                        key: i == pingedGroupIndex
+                            ? _pingedSectionKey
+                            : i == returnGroupIndex
+                            ? _returnSectionKey
+                            : null,
                         pingedActivityId: i == pingedGroupIndex
                             ? pingedActivityId
                             : null,
-                        collapsible: widget.collapsibleMissions,
+                        collapsed: _collapsedMissionIds.contains(
+                          group.objective.id,
+                        ),
+                        onToggleCollapsed: widget.collapsibleMissions
+                            ? () => _toggleMissionCollapsed(group.objective.id)
+                            : null,
                         isUpNext: group.objective.id == anchorId,
                         group: group,
                         hasCompletedActivity: widget.hasCompletedActivity,
@@ -770,11 +842,18 @@ class _PingedActivityBar extends StatelessWidget {
   }
 }
 
-class _QuestLoadErrorView extends StatelessWidget {
+/// The course plan's failed-load state. A missing quest (#7479) offers an
+/// admin the re-select CTA and tells everyone else the course is gone (#380).
+@visibleForTesting
+class QuestLoadErrorView extends StatelessWidget {
   final Object error;
   final bool showAddCourse;
 
-  const _QuestLoadErrorView(this.error, {required this.showAddCourse});
+  const QuestLoadErrorView(
+    this.error, {
+    super.key,
+    required this.showAddCourse,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -788,13 +867,22 @@ class _QuestLoadErrorView extends StatelessWidget {
               Semantics(
                 container: true,
                 child: Text(
-                  showAddCourse
-                      ? L10n.of(context).missingCourseOutlineCta
-                      : L10n.of(context).missingCourseOutline,
+                  L10n.of(context).missingCourseOutline,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: Theme.of(context).colorScheme.outline,
                   ),
+                ),
+              ),
+              // The next step: an admin re-selects; a member can't, so they
+              // are pointed at who can.
+              Text(
+                showAddCourse
+                    ? L10n.of(context).pickNewCoursePlan
+                    : L10n.of(context).askTeacherForNewCourse,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.outline,
                 ),
               ),
               if (showAddCourse)

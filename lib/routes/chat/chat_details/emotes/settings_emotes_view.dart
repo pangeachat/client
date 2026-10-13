@@ -365,8 +365,11 @@ class _EmoteImage extends StatelessWidget {
     final key = 'sticker_preview_$mxc';
     return InkWell(
       borderRadius: BorderRadius.circular(4),
-      onTap: () =>
-          showDialog(context: context, builder: (_) => MxcImageViewer(mxc)),
+      onTap: () => showDialog(
+        context: context,
+        builder: (_) =>
+            MxcImageViewer(mxc, semanticsLabel: L10n.of(context).image),
+      ),
       child: MxcImage(
         key: ValueKey(key),
         cacheKey: key,

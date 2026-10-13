@@ -59,6 +59,7 @@ class LeftPanelAddCourseSubpage extends StatelessWidget {
           closeButton: closeButton,
           initialLanguageCode: param.initialLanguageFilter,
           showAll: param.allLanguagesFilter,
+          initialAccessFilter: param.accessFilter,
         );
       case AddCourseSubpageEnum.private:
         return CourseCodePage(

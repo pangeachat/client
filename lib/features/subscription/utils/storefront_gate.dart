@@ -5,7 +5,8 @@ import 'package:flutter/foundation.dart';
 /// differs per store — see the subscriptions Platform policy design doc. This
 /// is a legal constraint, not a UX preference.
 enum PurchasePresentation {
-  /// Plans, prices, the discount field, and web checkout are all shown.
+  /// Plans, prices, and web checkout are all shown, plus the discount field
+  /// where [allowsInAppDiscountCode] permits it.
   full,
 
   /// The web is named as the place to subscribe, with no tappable link and no
@@ -55,3 +56,13 @@ PurchasePresentation resolvePurchasePresentation({
       return PurchasePresentation.full;
   }
 }
+
+/// Whether the paywall may show its button to the discount-code page. Never on
+/// iOS, whatever the storefront: App Review rejects an in-app entry point to
+/// code redemption under 3.1.1 even when the code only pre-fills external
+/// checkout (#9316). The page itself still opens from a link on every
+/// platform (subscriptions.instructions.md § Purchase flow).
+bool allowsInAppDiscountCode({
+  required bool isWeb,
+  required TargetPlatform platform,
+}) => isWeb || platform != TargetPlatform.iOS;

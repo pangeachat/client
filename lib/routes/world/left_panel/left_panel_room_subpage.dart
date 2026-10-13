@@ -1,10 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/space_room_token_extension.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -31,7 +35,7 @@ import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 String chatPanelNavigatorId(PanelTypesEnum tokenType, String roomId) =>
     "chat_page_with_room_${tokenType.name}_$roomId";
 
-class LeftPanelRoomSubpage extends StatelessWidget {
+class LeftPanelRoomSubpage extends StatefulWidget {
   /// The panel's token type (`room`, `session`, or `archivedroom`) — part of
   /// the nested Navigator's identity, see [chatPanelNavigatorId].
   final PanelTypesEnum tokenType;
@@ -48,22 +52,118 @@ class LeftPanelRoomSubpage extends StatelessWidget {
   });
 
   @override
+  State<LeftPanelRoomSubpage> createState() => _LeftPanelRoomSubpageState();
+}
+
+class _LeftPanelRoomSubpageState extends State<LeftPanelRoomSubpage> {
+  /// How long a panel naming a room the client does not have yet waits for it
+  /// to arrive in sync before showing the unavailable state. The panel can
+  /// open before its room syncs: a new activity session opens as soon as the
+  /// server has created it (#9297).
+  static const _roomArrivalBound = Duration(seconds: 10);
+
+  /// The room id this panel last waited on, and whether that wait is still
+  /// running. One wait per id, so a rebuild never restarts it.
+  String? _awaitedRoomId;
+  bool _awaitingRoom = false;
+
+  /// Cancelled when the wait ends for any reason. A plain
+  /// `waitForRoomInSync(...).timeout(...)` would leave its sync listener
+  /// attached forever for an id that never syncs.
+  StreamSubscription<SyncUpdate>? _roomArrival;
+  Timer? _roomArrivalTimeout;
+
+  void _awaitRoom(Client client, String roomId) {
+    _cancelRoomWait();
+    _awaitedRoomId = roomId;
+    _awaitingRoom = true;
+    // onSync fires after the sync has been applied to the room store.
+    _roomArrival = client.onSync.stream
+        .where((_) => client.getRoomById(roomId) != null)
+        .listen((_) => _endRoomWait());
+    // An id that never syncs is unknown or hand-edited: the unavailable state
+    // is the answer, not a fault. A just-created room's sync timeout is logged
+    // by waitForCreatedRoom.
+    _roomArrivalTimeout = Timer(_roomArrivalBound, _endRoomWait);
+  }
+
+  void _endRoomWait() {
+    _cancelRoomWait();
+    if (mounted) setState(() => _awaitingRoom = false);
+  }
+
+  void _cancelRoomWait() {
+    _roomArrival?.cancel();
+    _roomArrival = null;
+    _roomArrivalTimeout?.cancel();
+    _roomArrivalTimeout = null;
+  }
+
+  /// The space token this panel last replaced, so a rebuild never replaces it
+  /// twice.
+  String? _replacedSpaceToken;
+
+  void _replaceSpaceToken(Room space, String? eventId) {
+    final token = '${space.id}/$eventId';
+    if (_replacedSpaceToken == token) return;
+    _replacedSpaceToken = token;
+    final router = GoRouter.of(context);
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final current = router.routeInformationProvider.value.uri;
+      final location = await space.spaceTokenReplacement(
+        current,
+        eventId: eventId,
+      );
+      // The learner may have navigated while the event loaded.
+      if (!mounted || router.routeInformationProvider.value.uri != current) {
+        return;
+      }
+      router.replace(location);
+    });
+  }
+
+  @override
+  void dispose() {
+    _cancelRoomWait();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final param = widget.param;
+    final closeButton = widget.closeButton;
     final emptyPage = RoomUnavailablePanel(closeButton: closeButton);
 
     final id = param?.id;
     if (id == null) return emptyPage;
 
     final roomId = fullRoomId(id);
-    final room = Matrix.of(context).client.getRoomById(roomId);
+    final client = Matrix.of(context).client;
+    final room = client.getRoomById(roomId);
     final sub = param?.subpage ?? '';
 
-    // A space has no timeline, so it must never render as a chat — drop to a
-    // graceful empty state instead of spinning up a ChatController on it.
+    final loadingPage = Scaffold(
+      appBar: AppBar(leading: closeButton),
+      body: Center(
+        child: CircularProgressIndicator.adaptive(
+          semanticsLabel: L10n.of(context).loadingPleaseWait,
+        ),
+      ),
+    );
+
+    if (room == null) {
+      if (_awaitedRoomId != roomId) _awaitRoom(client, roomId);
+      return _awaitingRoom ? loadingPage : emptyPage;
+    }
+
+    // A space has no timeline, so it must never render as a chat. A token names
+    // one when a link points into a course — a course ping's email — so the
+    // token is replaced with the course or the ping's activity.
     // A LEFT room deliberately does NOT drop here: getRoomById also returns
     // archived rooms, and those stay viewable as read-only chats (#8148).
-    if (room == null || room.isSpace) {
-      return emptyPage;
+    if (room.isSpace) {
+      _replaceSpaceToken(room, param?.eventId);
+      return loadingPage;
     }
 
     // An analytics room is an internal construct store, never a chat surface
@@ -110,7 +210,7 @@ class LeftPanelRoomSubpage extends StatelessWidget {
             );
           }
 
-          final param = this.param;
+          final param = widget.param;
           return LeftPanelRoomDetailsSubpage(
             roomId: roomId,
             param: param != null
@@ -136,7 +236,7 @@ class LeftPanelRoomSubpage extends StatelessWidget {
     // whole chat by its children instead of announcing "Chat page".
     return Navigator(
       key: MatrixState.pAnyState
-          .layerLinkAndKey(chatPanelNavigatorId(tokenType, roomId))
+          .layerLinkAndKey(chatPanelNavigatorId(widget.tokenType, roomId))
           .key,
       onGenerateRoute: (_) => MaterialPageRoute(
         // Every route publishes an unremovable scopesRoute semantics node —
@@ -154,7 +254,7 @@ class LeftPanelRoomSubpage extends StatelessWidget {
           child: ChatPage(
             roomId: roomId,
             eventId: param?.eventId,
-            shareItems: shareItems,
+            shareItems: widget.shareItems,
             backButton: closeButton,
           ),
         ),

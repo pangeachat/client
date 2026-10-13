@@ -20,6 +20,7 @@ import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/message_content.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'get_test_client.dart';
+import 'one_node_control.dart';
 
 /// #8081 — the vocab details example-message walk: one example per source
 /// message (dedup by event id, capped at 5), every used form recorded on its
@@ -314,6 +315,42 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.textContaining('mucho', findRichText: true), findsNWidgets(2));
+  });
+
+  // #9266 — the chip is one button named by its message, in the message's
+  // language, with no nodes inside it. A child would make web name it with an
+  // `aria-label`, which VoiceOver reads in the UI voice.
+  testWidgets('the chip is one button named by its message, in Spanish', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    const text = 'corro mucho';
+    final event = tokenizedMessageEvent('\$e1', text);
+    final tokens = tokenize(text);
+
+    await tester.pumpWidget(
+      MaterialApp(
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Scaffold(
+          body: LemmaUseExampleMessages(
+            construct: constructFor([
+              use('correr', 'corro', '\$e1', DateTime(2026, 1, 1)),
+            ]),
+            client: client,
+            resolveExampleMessage: (_) async =>
+                ExampleMessage(messageEvent: event, tokens: tokens),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expectOneNodeControl(tester, text);
+    final chip = tester.getSemantics(find.bySemanticsLabel(text));
+    expect(chip.getSemanticsData().locale, const Locale('es'));
+    expect(chip.childrenCount, 0, reason: 'no word nodes inside the chip');
+    semantics.dispose();
   });
 }
 

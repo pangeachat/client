@@ -44,7 +44,7 @@ class TransparentBackdrop extends StatelessWidget {
       tween: Tween<double>(begin: animateBackground ? 0.0 : 1.0, end: 1.0),
       duration: animateBackground ? backgroundAnimationDuration : Duration.zero,
       builder: (context, t, child) {
-        return Material(
+        final Widget scrim = Material(
           borderOnForeground: false,
           color: Color.lerp(Colors.transparent, targetColor, t),
           clipBehavior: Clip.antiAlias,
@@ -63,15 +63,21 @@ class TransparentBackdrop extends StatelessWidget {
                 onDismiss?.call();
                 MatrixState.pAnyState.closeOverlay();
               },
-              child: BackdropFilter(
-                filter: ImageFilter.blur(
-                  sigmaX: blurBackground ? 3.0 * t : 0,
-                  sigmaY: blurBackground ? 3.0 * t : 0,
-                ),
-                child: const SizedBox.expand(),
-              ),
+              child: const SizedBox.expand(),
             ),
           ),
+        );
+
+        // A BackdropFilter only when blurring, and beneath the tint rather
+        // than over it. On web, once the scene holds a platform view (every
+        // activity chat does, via EmbedPointerShield), CanvasKit re-darkens
+        // the backdrop for each filter over the scrim: a zero-sigma filter in
+        // a backdrop stacked on the message toolbar turned the chat nearly
+        // black (#9255).
+        if (!blurBackground) return scrim;
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 3.0 * t, sigmaY: 3.0 * t),
+          child: scrim,
         );
       },
     );

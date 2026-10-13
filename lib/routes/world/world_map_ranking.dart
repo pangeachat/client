@@ -562,7 +562,8 @@ class PlacementResult {
 /// large card is a *box*, not a point (world-map.instructions.md, pipeline step
 /// 4). Walks [orderedCandidates] top-down and admits one as large only if its
 /// card footprint fits the unclaimed [safeArea] (on-screen, not under a panel)
-/// and does not overlap a card already placed this pass. The [focusedId] (its
+/// and overlaps neither an [obstacleRects] chrome footprint inside it (the
+/// course context bar, #9291) nor a card already placed this pass. The [focusedId] (its
 /// detail panel is open) is placed **first** when it is itself a candidate, so
 /// its footprint is claimed before the rest and the others yield around it —
 /// priority Focused → by score. Focus does not *force* a card: a focused pin that
@@ -581,6 +582,7 @@ PlacementResult placeLargeCards({
   required Offset? Function(String id) screenOffsetOf,
   required Size cardSize,
   required Rect safeArea,
+  List<Rect> obstacleRects = const [],
   int largeBudget = 3,
   Set<String> largeEligibleIds = const {},
   Set<String> dismissedIds = const {},
@@ -625,6 +627,7 @@ PlacementResult placeLargeCards({
     if (o == null) continue;
     final rect = cardRectAt(o);
     if (!_fitsWithin(safeArea, rect)) continue;
+    if (obstacleRects.any(rect.overlaps)) continue;
     if (placedRects.any(rect.overlaps)) continue;
     largeIds.add(id);
     placedRects.add(rect);

@@ -1,18 +1,26 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/features/bot/bot_target_event_name_enum.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_constants.dart';
+import 'package:fluffychat/routes/chat_list/chat_invite_dialog.dart';
+import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 
 class NotificationTapUtil {
   static const _sessionIdKey =
@@ -78,11 +86,33 @@ class NotificationTapUtil {
   }
 
   static void _sendCheckinAnalytics(Map<String, dynamic> notification) {
-    final targetEventNameEntry = notification[_targetEventKey] as String?;
+    try {
+      final parameters = botNotificationOpenedParameters(notification);
+      if (parameters != null) GoogleAnalytics.openBotNotification(parameters);
+    } catch (err, s) {
+      ErrorHandler.logError(e: err, s: s, data: {'notification': notification});
+    }
+  }
+
+  /// The `bot_notification_opened` parameters for a tapped notice, or null
+  /// when it carries neither a variant nor a known product action. An open is
+  /// counted by its variant; the product action rides along only when the
+  /// notice's goal names one, and an unknown one is reported and left off
+  /// rather than dropping the open (the notice content contract in the
+  /// engagement repo's analytics.instructions.md).
+  @visibleForTesting
+  static Map<String, String>? botNotificationOpenedParameters(
+    Map<String, dynamic> notification,
+  ) {
+    String? read(String key) {
+      final value = notification[key];
+      return value is String && value.isNotEmpty ? value : null;
+    }
+
+    final targetEventNameEntry = read(_targetEventKey);
     final targetEventName = BotTargetEventName.values.firstWhereOrNull(
       (e) => e.name == targetEventNameEntry,
     );
-
     if (targetEventNameEntry != null && targetEventName == null) {
       ErrorHandler.logError(
         e: Exception('Unknown BotTargetEventName: $targetEventNameEntry'),
@@ -90,39 +120,19 @@ class NotificationTapUtil {
       );
     }
 
-    if (targetEventName != null) {
-      try {
-        final variant = notification[_variantKey] as String?;
-        final notificationType = notification[_checkInTypeKey] as String?;
-        final chatId = notification[_chatIdKey] as String?;
-        final groupId = notification[_groupIdKey] as String?;
-        final activityId = notification[_botActivityIdKey] as String?;
-        final roomId = notification[_roomIdKey] as String?;
-        final action = notification[_actionKey] as String?;
-        final name = notification[_nameKey] as String?;
-
-        GoogleAnalytics.openBotNotification(
-          targetEventName: targetEventName,
-          variant: variant,
-          notificationType: notificationType,
-          chatId: chatId,
-          groupId: groupId,
-          activityId: activityId,
-          roomId: roomId,
-          action: action,
-          name: name,
-        );
-      } catch (err, s) {
-        ErrorHandler.logError(
-          e: err,
-          s: s,
-          data: {
-            'targetEventName': targetEventName.name,
-            'notification': notification,
-          },
-        );
-      }
-    }
+    final variant = read(_variantKey);
+    if (variant == null && targetEventName == null) return null;
+    return {
+      'target_event_name': ?targetEventName?.name,
+      'variant': ?variant,
+      'notification_type': ?read(_checkInTypeKey),
+      'chat_id': ?read(_chatIdKey),
+      'group_id': ?read(_groupIdKey),
+      'activity_id': ?read(_botActivityIdKey),
+      'room_id': ?read(_roomIdKey),
+      'action': ?read(_actionKey),
+      'name': ?read(_nameKey),
+    };
   }
 
   static void _navigateToActivitySession({
@@ -133,31 +143,58 @@ class NotificationTapUtil {
     required String activityId,
   }) {
     try {
-      final session = client.getRoomById(sessionRoomId);
-      // Pings sent before #8138 carry the course space id instead of the
-      // session room id, so a space here falls through to the activity page.
-      if (session != null &&
-          !session.isSpace &&
-          session.membership == Membership.join) {
-        router.go(
-          WorkspaceNav.openRoomById(
-            router.routeInformationProvider.value.uri,
-            sessionRoomId,
-          ),
-        );
-        return;
-      }
-
       router.go(
-        WorkspaceNav.openCourseActivity(
-          roomId,
-          activityId,
-          roomId: sessionRoomId,
+        client.coursePingLocation(
+          router.routeInformationProvider.value.uri,
+          courseRoomId: roomId,
+          sessionRoomId: sessionRoomId,
+          activityId: activityId,
+        ),
+      );
+    } catch (err, s) {
+      ErrorHandler.logError(e: err, s: s, data: {'roomId': sessionRoomId});
+    }
+  }
+
+  /// Answers an invite in the prompt the app uses for that kind of room, never
+  /// by opening the room: the chat view joins an invited room as it builds,
+  /// which would accept the invite without asking.
+  static Future<void> _answerInvite(GoRouter router, Room room) async {
+    final context = router.routerDelegate.navigatorKey.currentContext;
+    if (context == null) {
+      ErrorHandler.logError(
+        e: Exception('No navigator to prompt for a tapped invite'),
+        data: {'roomId': room.id},
+      );
+      return;
+    }
+
+    if (room.isSpace) {
+      // The course prompt opens the course itself once accepted; a response
+      // here means the invite was accepted without asking.
+      final joinResp = await SpaceTapUtil.onInviteTap(context, room);
+      if (joinResp == null || !context.mounted) return;
+      final joinedRoomId = await JoinRoomAnalyticsConsentHandler(
+        joinResp,
+        room,
+      ).handle(context);
+      if (joinedRoomId == null) return;
+      router.go(
+        WorkspaceNav.openCourse(
+          router.routeInformationProvider.value.uri,
+          joinedRoomId,
         ),
       );
       return;
-    } catch (err, s) {
-      ErrorHandler.logError(e: err, s: s, data: {'roomId': sessionRoomId});
+    }
+
+    if (await ChatInviteDialog.show(context, room)) {
+      router.go(
+        WorkspaceNav.openRoomById(
+          router.routeInformationProvider.value.uri,
+          room.id,
+        ),
+      );
     }
   }
 
@@ -220,6 +257,24 @@ class NotificationTapUtil {
       return;
     }
 
+    // An invite to an activity session opens its activity page with the
+    // session bound, not the room: the chat view joins an invited room as it
+    // builds, and the start page's role picker is where the invitee accepts.
+    // No course context is forced open (joining-courses.instructions.md).
+    final invitedActivityId = room.membership == Membership.invite
+        ? room.activityId
+        : null;
+    if (invitedActivityId != null) {
+      router.go(
+        WorkspaceNav.setLeft(uri, [
+          ActivityPanelToken(
+            ActivityTokenParam(activityId: invitedActivityId, roomId: roomId),
+          ),
+        ]),
+      );
+      return;
+    }
+
     Logs().w("Notification Body: $notification");
     if (notification?['type'] == EventTypes.RoomMember &&
         room.membership == Membership.invite &&
@@ -235,11 +290,36 @@ class NotificationTapUtil {
     }
 
     if (room.membership == Membership.invite) {
-      router.go(PRoutes.world);
+      await _answerInvite(router, room);
     } else if (room.isSpace == true) {
       router.go(WorkspaceNav.openCourse(uri, roomId));
     } else {
       router.go(WorkspaceNav.openRoomById(uri, roomId));
     }
+  }
+}
+
+extension CoursePingClientExtension on Client {
+  /// Where a course ping opens: the session itself once this user has joined
+  /// it, otherwise the activity in its course with the session bound.
+  String coursePingLocation(
+    Uri current, {
+    required String courseRoomId,
+    required String sessionRoomId,
+    required String activityId,
+  }) {
+    final session = getRoomById(sessionRoomId);
+    // Pings sent before #8138 carry the course space id instead of the
+    // session room id, so a space here falls through to the activity page.
+    if (session != null &&
+        !session.isSpace &&
+        session.membership == Membership.join) {
+      return WorkspaceNav.openRoomById(current, sessionRoomId);
+    }
+    return WorkspaceNav.openCourseActivity(
+      courseRoomId,
+      activityId,
+      roomId: sessionRoomId,
+    );
   }
 }

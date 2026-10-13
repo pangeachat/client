@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 15:42:49.377243",
+    "@@last_modified": "2026-10-12 13:12:06.003776",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -2823,7 +2823,6 @@
     "errorDisableIGCClassDesc": "இந்த உரையாடல் உள்ள பாடத்திற்கான வாக்கிய அமைப்பு உதவி அணைக்கப்பட்டுள்ளது.",
     "error405Desc": "தயவுசெய்து உங்கள் மொழிகளை முதன்மை மெனு > கற்றல் அமைப்புகளில் அமைக்கவும்.",
     "termsAndConditions": "விதிகள் மற்றும் நிபந்தனைகள்",
-    "andCertifyIAmAtLeast13YearsOfAge": " மற்றும் நான் குறைந்தபட்சம் 16 வயதுடையவன் என்பதை சான்றளிக்கின்றேன்.",
     "error502504Desc": "பெய்ஜியா பாட்டுகள் பின்தொடரும்போது மொழிபெயர்ப்பு மற்றும் இலக்கண கருவிகள் மெதுவாக அல்லது கிடைக்காமல் இருக்கலாம்.",
     "error404Desc": "பெய்ஜியா பாட்டுக்கு அது எப்படி மொழிபெயர்க்க வேண்டும் என்று தெரியவில்லை...",
     "errorPleaseRefresh": "நாம் இதை ஆராய்கிறோம்! தயவுசெய்து மீண்டும் ஏற்றவும் மற்றும் முயற்சிக்கவும்.",
@@ -3131,9 +3130,6 @@
     "why": "ஏன்?",
     "definition": "வரையறை",
     "reportToTeacher": "இந்த செய்தியை யாருக்கு அறிக்கை செய்ய விரும்புகிறீர்கள்?",
-    "reportMessageTitle": "{reportingUserId} என்பவர் {reportedUserId} இன் செய்தியை {roomName} இல் அறிக்கை செய்துள்ளார்",
-    "reportMessageBody": "செய்தி: {reportedMessage}\nகாரணம்: {reason}",
-    "noTeachersFound": "அறிக்கை செய்ய ஆசிரியர்கள் இல்லை",
     "trialExpiration": "உங்கள் இலவச சோதனை {expiration} அன்று முடிவடைகிறது",
     "freeTrialDesc": "புதிய பயனர்கள் பங்கேயா சந்தையில் ஒரு வார இலவச சோதனை பெறுகிறார்கள்",
     "activateTrial": "இலவச 7-நாள் சோதனை",
@@ -3623,10 +3619,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4873,35 +4865,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -7859,11 +7822,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "செயல்பாட்டு படத்தை உரையாடல் பின்னணி ஆக பயன்படுத்தவும்",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "ஆதரவுடன் உரையாடவும்",
     "@chatWithSupport": {
         "type": "String",
@@ -9512,7 +9470,6 @@
     "activityLoadFailed": "செயல்பாட்டை ஏற்ற முடியவில்லை. உங்கள் இணைப்பை சரிபார்க்கவும் மற்றும் மீண்டும் முயற்சிக்கவும்.",
     "levelUpChip": "அடுக்கு {level}!",
     "missingCourseOutline": "இந்த பாடம் இனி கிடைக்கவில்லை",
-    "missingCourseOutlineCta": "இந்த பாடம் இனி கிடைக்கவில்லை. புதிய பாட திட்டத்தை தேர்ந்தெடுக்கவும்.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9537,10 +9494,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9936,7 +9889,6 @@
     "constructLevelFlowers": "மலர்கள், தேர்ச்சி பெற்ற சொற்கள்",
     "filterAndSearch": "வடிகட்டி தேடு",
     "participantsOfTotal": "{total} வீரர்களில் {filled} பேர்",
-    "mapAttributionLabel": "OpenStreetMap பங்களிப்பாளர்கள், பதிப்புரிமை மற்றும் உரிமம்",
     "seeAll": "அனைத்தையும் காட்டு",
     "seeAllSection": "அனைத்தையும் காட்டு {section}",
     "showMoreOptionsHint": "மேலும் விருப்பங்களைக் காட்டு",
@@ -10053,5 +10005,64 @@
     "goalReportErrorRetry": "திருப்பத்திற்கான தேடல் முடிவடையவில்லை. மீண்டும் முயற்சிக்கவும்.",
     "summaryFeedbackReceived": "நன்றி! உங்கள் கருத்து எங்களுக்குக் கிடைத்தது.",
     "summaryFeedbackFailed": "உங்கள் கருத்தை அனுப்ப முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
-    "summaryFeedbackProcessing": "உங்கள் கருத்தை அனுப்பி, சுருக்கத்தைப் புதுப்பிக்கிறது…"
+    "summaryFeedbackProcessing": "உங்கள் கருத்தை அனுப்பி, சுருக்கத்தைப் புதுப்பிக்கிறது…",
+    "callTranscriptTranscribing": "{name} இலிருந்து பதிவை இன்னும் படியெடுத்துக்கொண்டிருக்கிறது…",
+    "callTranscriptSeekTo": "{time} இலிருந்து இயக்கு",
+    "callTranscriptRecordings": "பதிவுகள்",
+    "callTranscriptFullCall": "முழு அழைப்பு",
+    "callTranscriptPreparingRecording": "முழு பதிவும் தயாராகிறது…",
+    "callTranscriptNoRecording": "முழு அழைப்பிலும் பதிவு இல்லை.",
+    "callTranscriptNotSubscribed": "{name} இந்த அழைப்பின் போது சந்தா வைத்திருக்கவில்லை, எனவே பேசியது படியெடுக்கப்படவில்லை.",
+    "joinYourCourse": "உங்கள் பாடத்திட்டத்தில் சேரவும்",
+    "courseCodeJoinExplanation": "உள்நுழையவும் அல்லது பதிவு செய்யவும், உங்கள் பாடத்திட்டக் குறியீட்டைப் பயன்படுத்தி உங்களை தானாகவே உங்கள் பாடத்திட்டத்தில் சேர்ப்போம்.",
+    "courseCodeLabel": "பாடத்திட்டக் குறியீடு",
+    "courseCodeSaved": "பாடத்திட்டக் குறியீடு {code} சேமிக்கப்பட்டது",
+    "courseCodeSavedExplanation": "பதிவு செய்யவும் அல்லது உள்நுழையவும், உங்களை உங்கள் பாடத்திட்டத்தில் சேர்ப்போம்.",
+    "moderationRefusedContactDetails": "உங்கள் செய்தி அனுப்பப்படவில்லை. தானியங்கு வடிகட்டி தொலைபேசி எண் போன்ற தொடர்பு விவரங்களைக் கண்டறிந்தது. அவற்றை அகற்றிவிட்டு மீண்டும் முயற்சிக்கவும்.",
+    "moderationRefusedProfanity": "உங்கள் செய்தி அனுப்பப்படவில்லை. தானியங்கு வடிகட்டி அரட்டையில் நாங்கள் அனுமதிக்காத ஒரு வார்த்தையைக் கண்டறிந்தது. அதை மாற்றிவிட்டு மீண்டும் முயற்சிக்கவும்.",
+    "callTranscriptTranscribeButton": "படியெடுக்கவும்",
+    "callTranscriptAudioUnavailable": "{name} இலிருந்து சேமிக்கப்பட்ட பதிவு பதிவிறக்க முடியவில்லை, எனவே அதை படியெடுக்க முடியவில்லை.",
+    "callTranscriptChooseLanguage": "எந்த மொழி பேசப்பட்டது?",
+    "callTranscriptSubscribeForTranscription": "படியெடுத்தலுக்கு குழுசேரவும்",
+    "unlockCallTranscript": "அழைப்புப் படியெடுத்தலைத் திறக்கவும்",
+    "activitySummaryUpdateFailed": "இந்தச் சுருக்கத்தைப் புதுப்பிக்க முடியவில்லை.",
+    "courseNotFound": "பாடநெறி காணப்படவில்லை",
+    "askTeacherForNewCourse": "புதிய பாடத்திட்டத்தைத் தேர்வுசெய்ய உங்கள் ஆசிரியரிடம் கேளுங்கள்.",
+    "pickNewCoursePlan": "புதிய பாடத்திட்டத்தைத் தேர்ந்தெடுக்கவும்.",
+    "ssoNetworkBlockedTitle": "உள்நுழைவு தளம் அணுக முடியாதது",
+    "ssoNetworkBlockedDesc": "உங்களை உள்நுழைய வைக்க {provider} ஐ அணுக இந்த நெட்வொர்க் எங்களை அனுமதிக்கவில்லை. பள்ளி மற்றும் அலுவலக வைஃபை பெரும்பாலும் இதைத் தடுக்கிறது. அதற்கு பதிலாக நீங்கள் மின்னஞ்சல் மூலம் பதிவு செய்யலாம் அல்லது வேறு நெட்வொர்க்கிற்கு மாறி மீண்டும் முயற்சி செய்யலாம்.",
+    "ssoTryAnyway": "எப்படியும் முயற்சி செய்",
+    "publicCoursesFilterTooltip": "யாரும் சேரக்கூடிய படிப்புகளை மட்டும் காட்டு",
+    "restrictedCoursesFilterTooltip": "நீங்கள் சேர அனுமதி கேட்க வேண்டிய படிப்புகளை மட்டும் காட்டு",
+    "viewImageLabel": "படத்தைப் பார்",
+    "reportSent": "புகார் அனுப்பப்பட்டது",
+    "reportNotSent": "உங்கள் புகாரை அனுப்ப முடியவில்லை. உங்கள் இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.",
+    "reportPointerMessage": "{courseName} இல் ஒரு செய்தி புகாரளிக்கப்பட்டது — பாதுகாப்பைப் பார்க்கவும்",
+    "useActivityImageAsChatBackground": "செயல்பாட்டுப் படத்தை அரட்டைப் பின்னணியாகப் பயன்படுத்து",
+    "andCertifyIMeetTheMinimumAge": " மேலும் எனக்கு குறைந்தபட்சம் 13 வயது அல்லது எனது நாட்டில் தேவைப்படும் குறைந்தபட்ச வயது (அது அதிகமாக இருந்தால்) ஆகிறது என்பதை நான் சான்றளிக்கிறேன்.",
+    "filteredNetworkBlockedTitle": "இந்த நெட்வொர்க் பான்ஜியா அரட்டையைத் தடுக்கிறது",
+    "filteredNetworkPartlyBlockedTitle": "இந்த நெட்வொர்க் பான்ஜியா அரட்டையின் ஒரு பகுதியைத் தடுக்கிறது",
+    "filteredNetworkWhatCanIDo": "நான் என்ன செய்ய முடியும்?",
+    "filteredNetworkPhoneAdvice": "Wi-Fi ஐ அணைத்துவிட்டு, அதற்குப் பதிலாக மொபைல் டேட்டாவைப் பயன்படுத்தவும்.",
+    "filteredNetworkComputerAdvice": "இந்த Wi-Fi க்குப் பதிலாக உங்கள் ஃபோனின் ஹாட்ஸ்பாட்டுடன் இணைக்கவும்.",
+    "filteredNetworkItHeading": "ஆசிரியர்கள் மற்றும் IT ஊழியர்களுக்காக",
+    "filteredNetworkItBody": "இந்த டொமைன்களை அனுமதிக்க உங்கள் IT குழுவிடம் கேளுங்கள்:",
+    "filteredNetworkAskForHelp": "பான்ஜியாவிடம் உதவி கேளுங்கள்",
+    "filteredNetworkHelpExplanation": "இந்த நெட்வொர்க்கில் பான்ஜியா அரட்டை வேலை செய்ய உங்களுக்கு உதவ நாங்கள் உங்களுக்கு மின்னஞ்சல் அனுப்புவோம்.",
+    "filteredNetworkHelpWaiting": "நீங்கள் இணைந்தவுடன் உங்கள் கோரிக்கை அனுப்பப்படும்.",
+    "filteredNetworkHelpSent": "அனுப்பப்பட்டது. நாங்கள் மின்னஞ்சல் மூலம் தொடர்பில் இருப்போம்.",
+    "filteredNetworkHelpRefused": "உங்கள் கோரிக்கையை எங்களால் அனுப்ப முடியவில்லை. support@pangea.chat க்கு மின்னஞ்சல் செய்யவும்.",
+    "filteredNetworkVideoBlocked": "இந்த நெட்வொர்க் வீடியோக்களைத் தடுக்கிறது.",
+    "filteredNetworkImagesBlocked": "இந்த நெட்வொர்க் படங்களைத் தடுக்கிறது.",
+    "filteredNetworkMapBlocked": "இந்த நெட்வொர்க் வரைபடத்தைத் தடுக்கிறது.",
+    "callFullScreenTitle": "அழைப்புகளை முழுத்திரையில் ஒலிக்க விடுங்கள்",
+    "callFullScreenMessage": "Pangea Chat மூடப்பட்டிருந்தபோது ஒரு அழைப்பு வந்தது, ஆனால் உங்கள் ஃபோன் அதற்கான சிறிய அறிவிப்பை மட்டுமே காட்ட முடிந்தது. முழுத்திரை அழைப்புகளை அனுமதிக்கவும், இதன் மூலம் அடுத்த அழைப்பு உங்கள் ஃபோன் பூட்டப்பட்டிருந்தாலும் உங்கள் முழுத்திரையிலும் ஒலிக்கும்.",
+    "callMicrophoneTitle": "அழைப்புகளுக்கு உங்கள் மைக்ரோஃபோனைப் பயன்படுத்தவும்",
+    "callMicrophoneMessage": "லாக் ஸ்கிரீனில் இருந்து நீங்கள் பதிலளிக்கும் அழைப்புகள் உட்பட, அழைப்புகளுக்கு Pangea Chat-க்கு உங்கள் மைக்ரோஃபோன் தேவை.",
+    "callMicrophoneOffTitle": "உங்கள் அழைப்பு இணைக்கப்படவில்லை",
+    "callMicrophoneOffMessage": "Pangea Chat உங்கள் மைக்ரோஃபோனைப் பயன்படுத்த முடியாது. அமைப்புகளில் அதை இயக்க தட்டவும்.",
+    "mapCreditsLabel": "வரைபட வரவுகள்: Stadia Maps, OpenMapTiles மற்றும் OpenStreetMap",
+    "activityLaunchFindingCourses": "உங்கள் படிப்புகளைக் கண்டறிகிறது…",
+    "activityLaunchCreatingRoom": "உங்கள் செயல்பாட்டை உருவாக்குகிறது…",
+    "activityLaunchOpeningRoom": "உங்கள் செயல்பாட்டைத் திறக்கிறது…"
 }

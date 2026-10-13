@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:livekit_client/livekit_client.dart' as lk;
 
+import 'package:fluffychat/features/subscription/widgets/unlock_button.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
@@ -12,6 +13,7 @@ import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_session.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 /// The call, rendered INSIDE the chat panel it belongs to.
 ///
@@ -105,12 +107,39 @@ class _CallPanelState extends State<CallPanel> {
                       if (!session.isFailed)
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 24),
-                          child: Text(
-                            l10n.callTranscriptSharedNotice,
-                            textAlign: TextAlign.center,
-                            style: theme.textTheme.bodySmall?.copyWith(
-                              color: Colors.white38,
-                            ),
+                          child: Column(
+                            children: [
+                              Text(
+                                l10n.callTranscriptSharedNotice,
+                                textAlign: TextAlign.center,
+                                style: theme.textTheme.bodySmall?.copyWith(
+                                  color: Colors.white38,
+                                ),
+                              ),
+                              // Task 4 (#8792): an unsubscribed local user gets
+                              // a way to unlock the whole-call transcript
+                              // right where the notice tells them this call is
+                              // being saved, rather than only discovering the
+                              // gate later inside the transcript reader.
+                              // Read live, never cached -- the same "checked
+                              // at read time" rule the reader's own paywall
+                              // follows.
+                              if (!MatrixState
+                                  .pangeaController
+                                  .subscriptionController
+                                  .showSubscriptionGatedContent) ...[
+                                const SizedBox(height: 8),
+                                UnlockButton(
+                                  label: l10n
+                                      .callTranscriptSubscribeForTranscription,
+                                  fontSize: 13,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                    vertical: 8,
+                                  ),
+                                ),
+                              ],
+                            ],
                           ),
                         ),
                       _ownershipBanner(l10n, theme),

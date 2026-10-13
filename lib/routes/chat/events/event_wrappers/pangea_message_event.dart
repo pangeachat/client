@@ -18,6 +18,7 @@ import 'package:fluffychat/routes/chat/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_representation_event.dart';
 import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/representation_content_model.dart';
 import 'package:fluffychat/routes/chat/events/models/stt_translation_model.dart';
 import 'package:fluffychat/routes/chat/events/models/tokens_event_content_model.dart';
@@ -271,6 +272,16 @@ class PangeaMessageEvent {
       // leaves behind (D5).
       ? getSpeechToTextLocal(preferTokens: true)?.constructs(room.id, eventId)
       : originalSent?.vocabAndMorphUses;
+
+  /// The tokens of what the sender sent — the transcript's for an audio
+  /// message, the original text's otherwise; what [constructUses] derives
+  /// from. Null until the tokens exist.
+  List<PangeaToken>? get sentTokens {
+    if (!isAudioMessage) return originalSent?.tokens;
+    final stt = getSpeechToTextLocal(preferTokens: true);
+    if (stt == null || stt.results.isEmpty) return null;
+    return stt.transcript.sttTokens.map((t) => t.token).toList();
+  }
 
   RepresentationEvent? get originalWritten => representations.firstWhereOrNull(
     (element) => element.content.originalWritten,

@@ -7,10 +7,12 @@ import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_fields.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 
 /// The token-grammar encoding contract (routing.instructions.md): params carry
 /// open-ended, all-language content; every value round-trips the URL
@@ -149,6 +151,7 @@ void main() {
       expect(parsed.roomId, isNull);
       expect(parsed.launch, isFalse);
       expect(parsed.autoplay, isNull);
+      expect(parsed.fromCoursePlan, isFalse);
     });
 
     test('all fields round-trip', () {
@@ -157,12 +160,14 @@ void main() {
         roomId: '!sess',
         launch: true,
         autoplay: 2,
+        fromCoursePlan: true,
       ).build();
       final parsed = ActivityTokenParam.parse(param);
       expect(parsed.activityId, 'act-1');
       expect(parsed.roomId, '!sess');
       expect(parsed.launch, isTrue);
       expect(parsed.autoplay, 2);
+      expect(parsed.fromCoursePlan, isTrue);
     });
 
     test('unknown fields are ignored (newer URL, older client)', () {
@@ -347,9 +352,31 @@ void main() {
       final backToCard = u(
         WorkspaceNav.dropActivityOverlay(open, reopenCourseCard: true),
       );
-      expect(parseOpenPanels(backToCard).left.map((t) => t.type), [
-        PanelTypesEnum.course,
+      expect(parseOpenPanels(backToCard).left, [const CoursePanelToken()]);
+    });
+
+    test('an activity opened from the full course plan backs out to that '
+        'plan, not the card top (#9367)', () {
+      final open = u(
+        WorkspaceNav.openCourseActivity('!s', 'act-1', fromCoursePlan: true),
+      );
+      final back = u(
+        WorkspaceNav.dropActivityOverlay(open, reopenCourseCard: true),
+      );
+      expect(activeSpaceIdFor(back), '!s');
+      expect(parseOpenPanels(back).left, [
+        const CoursePanelToken(
+          CourseDetailsTokenParam(
+            activeTab: SpaceSettingsTabs.course,
+            expanded: true,
+          ),
+        ),
       ]);
+      // A plain close (the X / a session start) still just drops the plan.
+      expect(
+        parseOpenPanels(u(WorkspaceNav.dropActivityOverlay(open))).left,
+        isEmpty,
+      );
     });
   });
 }

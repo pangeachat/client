@@ -189,6 +189,7 @@ class SelectRoleSessionController extends State<SelectRoleSession>
     }
 
     final activityRoom = this.activityRoom;
+    String? roomId = widget.roomId;
     if (activityRoom != null && activityRoom.membership == Membership.join) {
       await showFutureLoadingDialog(
         context: context,
@@ -198,23 +199,27 @@ class SelectRoleSessionController extends State<SelectRoleSession>
     } else if (widget.roomId != null) {
       await showFutureLoadingDialog(context: context, future: _joinActivity);
     } else {
+      final l10n = L10n.of(context);
       final resp = await showFutureLoadingDialog(
         context: context,
-        future: () => Matrix.of(context).client.launchActivitySession(
-          activity,
-          activity.roles[selectedRoleId],
-          primarySpace: widget.course,
-        ),
+        futureWithStatus: (setStatus) =>
+            Matrix.of(context).client.launchActivitySession(
+              activity,
+              activity.roles[selectedRoleId],
+              primarySpace: widget.course,
+              onStage: (stage) => setStatus(stage.label(l10n)),
+            ),
       );
 
       if (!resp.isError) {
-        NavigationUtil.goToSpaceRoute(resp.result, [], context);
+        roomId = resp.result;
+        NavigationUtil.goToSpaceRoute(roomId, [], context);
       }
     }
 
     GoogleAnalytics.startActivity(
       activity.activityId,
-      widget.roomId ?? '',
+      roomId ?? '',
       versionPinHonored: !activity.usedFallbackVersion,
       fallbackCause: activity.fallbackCause,
     );
@@ -227,8 +232,14 @@ class SelectRoleSessionController extends State<SelectRoleSession>
       );
     }
 
+    // The start page swaps this picker for the confirmed-role view as soon as
+    // the claimed role syncs, which can be before the claim returns. So past
+    // the first await nothing reads this State's context (CLIENT-EZ3).
     final client = Matrix.of(context).client;
-    if (activityRoom?.membership != Membership.join) {
+    final page = widget.controller;
+    Room? room() => client.getRoomById(widget.roomId!);
+
+    if (room()?.membership != Membership.join) {
       await client.joinRoom(
         widget.roomId!,
         serverName: widget.course?.spaceChildren
@@ -236,15 +247,15 @@ class SelectRoleSessionController extends State<SelectRoleSession>
             ?.via,
       );
 
-      if (activityRoom == null || activityRoom!.membership != Membership.join) {
+      if (room()?.membership != Membership.join) {
         await client.waitForRoomInSync(widget.roomId!, join: true);
       }
 
-      if (activityRoom == null || activityRoom!.membership != Membership.join) {
+      if (room()?.membership != Membership.join) {
         throw Exception(
           "Failed to join activity room. "
           "Room ID: ${widget.roomId}, "
-          "Membership status: ${activityRoom?.membership}",
+          "Membership status: ${room()?.membership}",
         );
       }
     }
@@ -258,20 +269,23 @@ class SelectRoleSessionController extends State<SelectRoleSession>
       // Since the method that check for assigned roles needs to know each
       // participant's membership status (to exclude left users), we need
       // to pre-load the room's participants list.
-      await activityRoom!.requestParticipants(
+      await room()!.requestParticipants(
         const [Membership.join, Membership.invite, Membership.knock],
         false,
         true,
       );
 
-      await activityRoom!.joinActivity(activity.roles[_selectedRoleId]!);
+      await room()!.joinActivity(activity.roles[_selectedRoleId]!);
     } catch (e) {
       if (e is! RoleException) {
         rethrow;
       }
     }
 
-    NavigationUtil.goToSpaceRoute(widget.roomId, [], context);
+    // The start page outlives the swap; it is gone only if the learner left.
+    if (page.mounted) {
+      NavigationUtil.goToSpaceRoute(widget.roomId, [], page.context);
+    }
   }
 
   @override

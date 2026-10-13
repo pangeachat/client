@@ -17,9 +17,11 @@ import 'package:fluffychat/features/join_codes/knock_with_code_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/join_codes/too_many_requests_dialog.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
@@ -121,18 +123,26 @@ class SpaceCodeController {
         : NavigationUtil.goToSpaceRoute(target.roomId, const [], context);
   }
 
-  static Future<void> cacheRoomCodeToJoin(String code) =>
-      SpaceCodeRepo.setSpaceCode(code);
-
   /// Whether a failed join means the CODE was wrong: the server's 404
-  /// `ORG.PANGEA.CODE_NOT_FOUND` (a 400 from a server predating that split
-  /// means the same), or the client-side empty result. Everything else — the
-  /// server's 500 `ORG.PANGEA.INVITE_FAILED` for a valid code it could not
-  /// invite to, the join call, the network — is not the learner's code (#8831).
+  /// `ORG.PANGEA.CODE_NOT_FOUND`, its 400 for text that is not a code at all,
+  /// or the client-side empty result. Everything else — the server's 500
+  /// `ORG.PANGEA.INVITE_FAILED` for a valid code it could not invite to, the
+  /// join call, the network — is not the learner's code (#8831).
   static bool isCodeNotFound(Object error) {
     if (error is NotFoundException) return true;
     final status = PangeaHttpException.statusCodeOf(error);
     return status == 404 || status == 400;
+  }
+
+  /// Whether a failed join is the learner's input the server refused — a code
+  /// matching nothing, or text that is not a code (400 `M_INVALID_PARAM`; the
+  /// server alone checks the format). Reported at info: only the learner can
+  /// act on it. A 400 without that errcode is a request we built wrong.
+  static bool isRejectedInput(Object error) {
+    if (!isCodeNotFound(error)) return false;
+    if (PangeaHttpException.statusCodeOf(error) != 400) return true;
+    return error is PangeaHttpException &&
+        error.detail == MatrixError.M_INVALID_PARAM.name;
   }
 
   /// The one message for a failed join-with-code, shared by every entry
@@ -154,13 +164,30 @@ class SpaceCodeController {
     return L10n.of(context).unableToJoinCourseError;
   }
 
+  /// The code to join with from what was typed or pasted into a code field:
+  /// a pasted course link on this build's own app host (`FRONTEND_URL`, so
+  /// `https://app.pangea.chat/<code>` on production) yields its code (#9376),
+  /// and any other text goes as typed, trimmed — the server alone checks the
+  /// format.
+  static String codeFromInput(String input) {
+    final text = input.trim();
+    final uri = Uri.tryParse(text);
+    final appHost = Uri.tryParse(Environment.frontendURL)?.host;
+    if (uri == null || !uri.hasAuthority || uri.host != appHost) return text;
+    final segments = uri.pathSegments.where((s) => s.isNotEmpty);
+    return segments.length == 1 && PRoutes.isJoinCode(segments.single)
+        ? segments.single
+        : text;
+  }
+
   static Future<Result<JoinResponse>> joinSpaceWithCode(
-    String spaceCode, {
+    String input, {
     required Client client,
     String? notFoundError,
     BuildContext? context,
     bool showLoading = true,
   }) async {
+    final spaceCode = codeFromInput(input);
     final inFlight = _inFlightJoins[spaceCode];
     if (inFlight != null) return inFlight;
     final completer = Completer<Result<JoinResponse>>();
@@ -188,7 +215,7 @@ class SpaceCodeController {
         e: e,
         s: s,
         data: {"spaceCode": spaceCode},
-        level: e is NotFoundException ? SentryLevel.info : null,
+        level: isRejectedInput(e) ? SentryLevel.info : null,
       );
       if (PangeaHttpException.statusCodeOf(e) == 429 && context != null) {
         await showDialog(

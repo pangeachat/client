@@ -144,8 +144,7 @@ class GoalStarAnimationState extends State<GoalStarAnimation>
   Widget build(BuildContext context) {
     // Decoration, so it keeps the bright [PangeaColors.goldFixedDim] rather than
     // the readable [PangeaColors.goldGraphic] its siblings took (#8983): this
-    // star pops, arcs and fades over whatever is behind the overlay — with
-    // `useActivityImageAsChatBackground` a photo, not a theme surface — and the
+    // star pops, arcs and fades over whatever is behind the overlay, and the
     // state it celebrates is carried persistently by the goal star it flies to.
     final iconColor = Theme.of(context).pangea.goldFixedDim;
 

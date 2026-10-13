@@ -304,35 +304,51 @@ void main() {
       LemmaInfoResponse.fromJson(json);
     });
 
-    test("Activity summary endpoint test", () async {
-      // Send mock request
-      final Map<String, dynamic> request = ActivitySummaryRequestModel(
-        activity: ActivityPlanModel(
-          req: ActivityPlanRequest(
-            topic: '',
-            mode: '',
-            objective: '',
-            media: MediaEnum.nan,
-            cefrLevel: LanguageLevelTypeEnum.a2,
-            languageOfInstructions: 'en',
-            targetLanguage: 'es',
-            numberOfParticipants: 2,
-          ),
-          title: '',
-          learningObjective: '',
-          instructions: '',
-          vocab: [],
-          activityId: '',
+    test("Activity summary translation endpoint test", () async {
+      final activity = ActivityPlanModel(
+        req: ActivityPlanRequest(
+          topic: '',
+          mode: '',
+          objective: '',
+          media: MediaEnum.nan,
+          cefrLevel: LanguageLevelTypeEnum.a2,
+          languageOfInstructions: 'en',
+          targetLanguage: 'es',
+          numberOfParticipants: 2,
         ),
-        activityResults: [],
-        contentFeedback: [],
-        mock: true,
-      ).toJson();
-
+        title: '',
+        learningObjective: '',
+        instructions: '',
+        vocab: [],
+        activityId: 'endpoint-test-activity',
+      );
       final Requests req = Requests(accessToken: authToken);
+
+      // The bot's canonical call stores the summary and returns its row id.
+      final Response canonical = await req.post(
+        url: "$choreoApi/activity_summary",
+        body: {
+          'activity': activity.toJson(),
+          'activity_results': [],
+          'role_state': {'roles': {}},
+          'viewer_l1': 'en',
+          'mock': true,
+        },
+      );
+      assert(canonical.statusCode == 200);
+      final rowId =
+          jsonDecode(utf8.decode(canonical.bodyBytes))['request_hash']
+              as String;
+
+      // A viewer in another language asks for that row, translated.
       final Response res = await req.post(
         url: "$choreoApi/activity_summary",
-        body: request,
+        body: ActivitySummaryRequestModel(
+          activity: activity,
+          sourceRequestHash: rowId,
+          viewerL1: 'es',
+          mock: true,
+        ).toJson(),
       );
 
       // Ensure mock response is valid and compatible with response model

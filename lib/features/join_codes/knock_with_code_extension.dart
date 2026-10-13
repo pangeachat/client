@@ -27,9 +27,9 @@ extension KnockWithCodeApiExtension on Api {
       // typed HTTP failure — status in the Sentry title, errcode as detail —
       // instead of the raw response's blind "Instance of 'StreamedResponse'"
       // (#8693). Callers read the status off it: 404 is the server's
-      // ORG.PANGEA.CODE_NOT_FOUND for a code matching no room (a 400 from a
-      // server predating that split means the same to the user), and 429
-      // drives the retry dialog.
+      // ORG.PANGEA.CODE_NOT_FOUND for a code matching no room, 400
+      // M_INVALID_PARAM is text that is not a code at all, and 429 drives the
+      // retry dialog.
       final banned = BannedFromRoomException.fromErrorBody(responseString);
       if (banned != null) throw banned;
       throw PangeaHttpException.fromStreamedResponse(

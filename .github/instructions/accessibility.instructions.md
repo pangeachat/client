@@ -44,6 +44,22 @@ explicitly and say why; an unmarked fixed size is indistinguishable from an over
 
 **Fixed-size boxes around text must grow with the text inside them.** A glyph in a hard-coded `SizedBox` is clipped at 2×: let the box size itself, or scale it by the factor the device scaler applies at the font size of the text it holds (`TextScaler.factorAt`). Scaling it by its own dimension is wrong — `TextScaler.scale` takes a font size, and Android 14+ answers from a curve where small text grows more than large, so a 250px word card is answered as if it were 250pt type: it grows by the factor huge text gets rather than the factor its 16pt contents get, and still clips. Anything that takes a plain scale multiplier needs the same factor.
 
+## Language of text
+
+A screen reader chooses its voice from the language the text is marked with. The app's own copy is declared once for the whole app in the learner's UI language, so it needs nothing per widget. Text in any other language, above all the learner's target language (L2), must be marked with its own language. Otherwise it is read in the UI voice, and a Spanish message is pronounced as English. In a language-learning app that is most of the content (WCAG 3.1.2).
+
+- **Mark the text, not what surrounds it.** Text in another language goes in its own semantics container that states the language (`localeForSubtree`). The container keeps the language on that text, so it does not spread to the sender name, timestamp or buttons beside it. Everything inside inherits the language, so a message's per-word buttons need nothing of their own.
+- **On web, the text is written into the page.** VoiceOver on web switches voice for text written into the page, including the text of a button with nothing inside it, It reads a name given as an `aria-label` in its own default voice, whatever the language of the element or the page. Flutter's web engine gives an `aria-label` to any node that has children, and to every toggle, checkbox, radio button, slider, tab and text field. So a message or voice-message transcript whose words are their own buttons also carries its whole text as a text-only node, read before the words; without word buttons, the text is already page text. A sentence switches voice reliably, but a single word does not, whether it's text or a button. A message's words and the word card's title in a chat were read in the UI voice, while a transcript's words were read in the target language. Single words keep their language for iOS and Android. When the app is shown in the target language, its text and simple buttons follow the app's language, but those `aria-label` controls stay in VoiceOver's default voice.
+- **A message is its sender, then its text.** A text message's row is named by its sender alone, and its text is the next stop, read in its own language. If the text were part of the row's name, it would be read in the UI voice.
+- **Use the language we already display with.** A chat message is marked with `messageDisplayLangCode`, the same value that sets its text direction. The other L2 surfaces use the language their content is recorded in: the word card's lemma, vocab tiles, practice choices, activity vocabulary, transcripts, example sentences and the forms used in chats on a word's page.
+- **An unknown language stays unmarked** and is read in the UI voice. Never guess that it is the L2.
+- **A message gets one language.** A message that mixes languages is marked with the language it was detected as, because tokens don't carry a language of their own.
+- **A control named in two languages stays one node.** A vocab tile is named "bien, Seeds, new words", and a practice card turned over to its lemma is named by the emoji and the lemma. Splitting the word out would take the name off the button, so only the word's part of the name is marked with its language. iOS and Android read that part in its language. Flutter's web engine ignores language inside a name, so on web the whole name is read in the UI voice.
+- **An example chip is one button named by its message.** The message's word buttons are left out of it, so the chip has nothing inside it and its name is written into the page, which means it is read once, in the message's language. Tapping the chip opens the toolbar, where the words are.
+- **App copy counts too.** The tutorial greeting shows one word from the L2's copy. The "Show the app in the language I'm learning" setting stays in the base language after the rest of the app switches to the L2. Each is marked with its own language.
+
+Whether the voice actually switches also depends on the listener's device. NVDA and JAWS switch only when that language's voice is installed and automatic language switching is on. A missing voice is not a defect in the app. Shared implementation: [`LanguageSemantics` and `WholeTextSemantics`](../../lib/pangea/common/widgets/language_semantics.dart).
+
 ## Automated auditing proves only part
 
 We run axe-core (WCAG 2.1 AA) against the semantics overlay. Two decisions shape coverage:
@@ -104,6 +120,7 @@ Every custom control authors its own keyboard focus ring. The ring shows only wh
 5. **Visible label = accessible name.** What a sighted user reads and what a screen reader speaks should match.
 6. **Group and label inputs.** Each field has a label; errors are stated in text, not just a red border.
 7. **Announce what changes.** Loading, success, and error states reach assistive tech (live regions), not just a visual flash.
+8. **Mark text that isn't in the UI language.** L2 text carries its own language, or a screen reader reads it in the wrong voice. See [Language of text](#language-of-text).
 
 ## Responsibility
 

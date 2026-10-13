@@ -82,6 +82,15 @@ class CourseInfoChips extends StatefulWidget {
   /// it shows while the outline is still loading.
   final int? members;
 
+  /// Whether the activity-count chip is shown. The course page turns it off
+  /// (#9390): beside the course's star total it read as a completion
+  /// requirement — learners and a pilot instructor tried to work out how
+  /// "96 activities" become "100 stars" — when the star total alone is the
+  /// goal, reached by choosing among the activities. The browse tiles,
+  /// the invite page and onboarding keep it: there it says how much content a
+  /// course carries, with no star total beside it to compete with.
+  final bool showActivityCount;
+
   final double? fontSize;
   final double? iconSize;
   final EdgeInsets? padding;
@@ -91,6 +100,7 @@ class CourseInfoChips extends StatefulWidget {
     super.key,
     this.courseRoomId,
     this.members,
+    this.showActivityCount = true,
     this.fontSize,
     this.iconSize,
     this.padding,
@@ -190,17 +200,18 @@ class CourseInfoChipsState extends State<CourseInfoChips> {
             iconSize: widget.iconSize,
             padding: widget.padding,
           ),
-          CourseInfoChip(
-            icon: Icons.location_on,
-            text: L10n.of(context).numActivities(
-              objectiveGroupsWithActivities(
-                outline.groups,
-              ).fold<int>(0, (sum, group) => sum + group.activities.length),
+          if (widget.showActivityCount)
+            CourseInfoChip(
+              icon: Icons.location_on,
+              text: L10n.of(context).numActivities(
+                objectiveGroupsWithActivities(
+                  outline.groups,
+                ).fold<int>(0, (sum, group) => sum + group.activities.length),
+              ),
+              fontSize: widget.fontSize,
+              iconSize: widget.iconSize,
+              padding: widget.padding,
             ),
-            fontSize: widget.fontSize,
-            iconSize: widget.iconSize,
-            padding: widget.padding,
-          ),
         ],
       ],
     );

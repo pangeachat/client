@@ -26,8 +26,13 @@ class FocusRingTapTarget extends StatefulWidget {
   /// still unmissable while tabbing.
   static const double ringWidth = 2.0;
 
-  static BorderSide ringSide(BuildContext context) =>
-      BorderSide(color: Theme.of(context).pangea.goldGraphic, width: ringWidth);
+  /// Gold by default; [color] for a control that sits on gold itself, where a
+  /// gold ring cannot clear 3:1 (the inline tooltip's close button, #9278).
+  static BorderSide ringSide(BuildContext context, {Color? color}) =>
+      BorderSide(
+        color: color ?? Theme.of(context).pangea.goldGraphic,
+        width: ringWidth,
+      );
 
   /// The two-tone ring's pair, light on the mark's side and dark beyond it —
   /// also the map pins' ring (PinSemanticsLayer). Deliberately not theme
@@ -43,10 +48,11 @@ class FocusRingTapTarget extends StatefulWidget {
   /// [highlightsEnabled] here too, because [WidgetState.focused] is set
   /// whether or not Material would show a focus highlight.
   static WidgetStateProperty<BorderSide> ringSideProperty(
-    BuildContext context,
-  ) => WidgetStateProperty.resolveWith(
+    BuildContext context, {
+    Color? color,
+  }) => WidgetStateProperty.resolveWith(
     (states) => states.contains(WidgetState.focused) && highlightsEnabled
-        ? ringSide(context)
+        ? ringSide(context, color: color)
         : BorderSide.none,
   );
 
@@ -68,6 +74,11 @@ class FocusRingTapTarget extends StatefulWidget {
   /// Tab to), and an `onTap` on an outer Semantics splits the tap onto a
   /// second, nameless focusable node (#8873).
   final String? label;
+
+  /// For a target that opens and closes something in place, whether it is
+  /// open now, announced as the button's expanded state. Needs [label]: only a
+  /// named target carries its own semantics node.
+  final bool? expanded;
 
   /// Optional external focus node for the InkWell — for callers that need to
   /// hand the node elsewhere too (the filter pill gives its node to
@@ -96,6 +107,7 @@ class FocusRingTapTarget extends StatefulWidget {
     required this.shape,
     required this.child,
     this.label,
+    this.expanded,
     this.focusNode,
     this.onHover,
     this.hoverColor,
@@ -105,7 +117,8 @@ class FocusRingTapTarget extends StatefulWidget {
   }) : assert(
          !twoToneRing || ringStrokeAlign != BorderSide.strokeAlignCenter,
          'a two-tone ring sits on one side of the edge',
-       );
+       ),
+       assert(expanded == null || label != null, 'expanded needs a label');
 
   @override
   State<FocusRingTapTarget> createState() => _FocusRingTapTargetState();
@@ -155,7 +168,15 @@ class _FocusRingTapTargetState extends State<FocusRingTapTarget> {
       ),
     );
     if (label == null) return target;
-    return Semantics(button: true, label: label, child: target);
+    // A container, or the button absorbs the text of the widgets beside it
+    // into its own name (#9356).
+    return Semantics(
+      container: true,
+      button: true,
+      label: label,
+      expanded: widget.expanded,
+      child: target,
+    );
   }
 }
 

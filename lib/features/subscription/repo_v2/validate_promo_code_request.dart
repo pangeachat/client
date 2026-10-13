@@ -18,4 +18,9 @@ class ValidatePromoCodeRequest extends BaseRequest {
 
   @override
   Map<String, dynamic> toJson() => {"code": code, "duration": duration?.name};
+
+  /// The code names one person's gift or discount; it stays out of error
+  /// telemetry (#9281).
+  @override
+  Map<String, dynamic> toReportData() => {"duration": duration?.name};
 }

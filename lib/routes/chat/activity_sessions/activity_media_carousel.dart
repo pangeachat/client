@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -5,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
+import 'package:fluffychat/features/network_filter/filtered_network_controller.dart';
+import 'package:fluffychat/features/network_filter/network_host_category.dart';
+import 'package:fluffychat/features/network_filter/widgets/filtered_network_note.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_play_badge.dart';
@@ -12,6 +16,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_video_player.d
 import 'package:fluffychat/routes/chat/activity_sessions/activity_video_screen.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_youtube_player.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/widgets/mxc_image_viewer.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
 
 /// The focused-surface media display for an activity (plan page and live
@@ -77,6 +82,15 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
     _playingIndex = PlatformInfos.isMobile ? null : widget.autoplayIndex;
     _page = widget.autoplayIndex ?? 0;
     _mutedAutostart = !PlatformInfos.isMobile && widget.autoplayIndex != null;
+    // An activity with a video opening is when to check for a filter: the
+    // embed's own failures happen inside its frame, out of the app's sight.
+    if (widget.media.any((block) => block.isYoutube)) {
+      unawaited(
+        FilteredNetworkController.instance.checkIfStale(
+          NetworkHostCategory.video,
+        ),
+      );
+    }
   }
 
   List<ActivityMediaBlock> get _visible =>
@@ -142,21 +156,22 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
     child: SizedBox(width: size, height: size, child: child),
   );
 
-  Widget _fallback(double size) => ImageByUrl(
-    imageUrl: widget.fallbackImageUrl,
-    width: size,
-    borderRadius: BorderRadius.zero,
-    replacement: SizedBox(height: size),
+  Widget _fallback(double size) => _ExpandableActivityImage(
+    displayUrl: widget.fallbackImageUrl,
+    fullUrl: widget.fallbackImageUrl,
+    size: size,
   );
 
   Widget _buildPage(ActivityMediaBlock block, int index, double size) {
     if (block.isImage) {
       final url = block.displayUrl(size);
-      return ImageByUrl(
-        imageUrl: url != null ? Uri.tryParse(url) : widget.fallbackImageUrl,
-        width: size,
-        borderRadius: BorderRadius.zero,
-        replacement: SizedBox(height: size),
+      final fullUrl = block.resolvedUrl;
+      return _ExpandableActivityImage(
+        displayUrl: url != null ? Uri.tryParse(url) : widget.fallbackImageUrl,
+        fullUrl: fullUrl != null
+            ? Uri.tryParse(fullUrl)
+            : widget.fallbackImageUrl,
+        size: size,
       );
     }
 
@@ -183,7 +198,7 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
 
     // thumbnail + play badge — tap to play (with sound)
     final thumb = block.displayUrl(size);
-    return FocusRingTapTarget(
+    final thumbnail = FocusRingTapTarget(
       label: L10n.of(context).playVideo,
       shape: const RoundedRectangleBorder(),
       // The ring crosses the thumbnail, where no single colour holds 3:1.
@@ -225,6 +240,12 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
         ],
       ),
     );
+    return block.isYoutube
+        ? FilteredNetworkNote(
+            category: NetworkHostCategory.video,
+            child: thumbnail,
+          )
+        : thumbnail;
   }
 
   Widget _dots(int count) => Row(
@@ -244,4 +265,48 @@ class _ActivityMediaCarouselState extends State<ActivityMediaCarousel> {
         ),
     ],
   );
+}
+
+/// A square image cell that opens [fullUrl] in the full-screen image viewer on
+/// tap, so the learner can see the whole image the square crop cuts off.
+class _ExpandableActivityImage extends StatelessWidget {
+  final Uri? displayUrl;
+  final Uri? fullUrl;
+  final double size;
+
+  const _ExpandableActivityImage({
+    required this.displayUrl,
+    required this.fullUrl,
+    required this.size,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final image = ImageByUrl(
+      imageUrl: displayUrl,
+      width: size,
+      borderRadius: BorderRadius.zero,
+      replacement: SizedBox(height: size),
+    );
+    final fullUrl = this.fullUrl;
+    return FilteredNetworkNote(
+      category: NetworkHostCategory.images,
+      child: fullUrl == null
+          ? image
+          : FocusRingTapTarget(
+              label: L10n.of(context).viewImageLabel,
+              shape: const RoundedRectangleBorder(),
+              // The ring crosses the image, where no single colour holds 3:1.
+              twoToneRing: true,
+              onTap: () => showDialog(
+                context: context,
+                builder: (_) => MxcImageViewer(
+                  fullUrl,
+                  semanticsLabel: L10n.of(context).image,
+                ),
+              ),
+              child: image,
+            ),
+    );
+  }
 }

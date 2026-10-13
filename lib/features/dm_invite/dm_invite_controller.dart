@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/user_id_url.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
@@ -14,13 +15,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// Opens the DM a `/invite_user/<id>` link points at (#8436).
 ///
 /// The invite route itself never renders: its redirect caches the invited
-/// user in the login-bounce ferry (SpaceCodeRepo.dmInviteUserId) and lands
+/// user in its own ferry entry (SpaceCodeRepo.dmInviteUserId) and lands
 /// the user on the world map with the chat list open — so a slow first sync
 /// is spent looking at the app, not a blank page. The DM is then opened from
 /// INSIDE the shell by [DmInviteFerryConsumer], which calls [consumePending]
 /// on mount, on every workspace navigation, and whenever [signalPending]
 /// fires — the three ways an invite can become actionable (a boot or
-/// post-login landing, a higher-precedence ferry entry finishing, and an
+/// post-login landing, a coded join it waited behind landing, and an
 /// in-session link tap that never remounts the shell).
 abstract class DmInviteController {
   /// Fires when the invite redirect has just cached a link (any login state),
@@ -40,30 +41,29 @@ abstract class DmInviteController {
   /// The invite the shell should open now — the ferried user id with the home
   /// domain re-attached (a link clicked logged out is cached as the bare
   /// localpart it rode in as, since the domain is unknown pre-login) — or null
-  /// when nothing is pending. Defers behind a pending join code or activity:
-  /// the ferry's precedence (PAuthGaurd.consumeCachedJoinCode) puts the DM
-  /// invite last, and opening the DM over the join flow would yank the user
-  /// out of it; the next workspace navigation (the join landing) re-checks.
-  /// Pure over the ferry, so it is unit-tested.
-  static String? pendingInviteUserId({String? domain}) {
+  /// when nothing is pending. Waits while [current] is a coded join page
+  /// (`left=addcourse:private/<code>`, the auto-submitting join a class link
+  /// lands on): opening the DM over it would yank the user out of the join
+  /// mid-flight, so the next workspace navigation (the join landing)
+  /// re-checks. Pure over the ferry and the URL, so it is unit-tested.
+  static String? pendingInviteUserId(Uri current, {String? domain}) {
     final cached = SpaceCodeRepo.dmInviteUserId;
     if (cached == null) return null;
-    if (SpaceCodeRepo.spaceCode != null || SpaceCodeRepo.activityId != null) {
-      return null;
-    }
+    if (joinCodeFor(current) != null) return null;
     return fullUserId(cached, domain: domain);
   }
 
-  /// Open the pending invite's DM, if any, from a mounted shell [context]:
+  /// Open the pending invite's DM, if any, from a mounted shell [context] at
+  /// workspace location [current]:
   /// find-or-create the DM under the standard loading dialog, then land on it
   /// over the chat list (`chats,room:<id>`), keeping the course context and
   /// right column. The ferry is spent once the DM has actually opened, or the
   /// open has definitively failed (the dialog already showed the error; a bad
   /// link must not re-fire on every landing) — never before. An own invite
   /// link (#6361) has nothing to open and just spends the ferry.
-  static Future<void> consumePending(BuildContext context) async {
+  static Future<void> consumePending(BuildContext context, Uri current) async {
     if (_consuming) return;
-    final userId = pendingInviteUserId();
+    final userId = pendingInviteUserId(current);
     if (userId == null) return;
     _consuming = true;
     try {

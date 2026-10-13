@@ -202,6 +202,9 @@ class _LeftPanelCoursesListViewState extends State<LeftPanelCoursesListView> {
   /// Open joined courses, or open popup for invited courses
   Future<void> onTapCourse(BuildContext context, Room course) async {
     final uri = GoRouterState.of(context).uri;
+    // Joining rebuilds this list, so [context] is likely unmounted once the
+    // join lands (CLIENT-EX3): what follows it runs off the router instead.
+    final router = GoRouter.of(context);
     final membership = course.membership;
 
     if (!{Membership.invite, Membership.leave}.contains(membership)) {
@@ -223,10 +226,12 @@ class _LeftPanelCoursesListViewState extends State<LeftPanelCoursesListView> {
     if (joinedRoom == null) return;
 
     final handler = JoinRoomAnalyticsConsentHandler(joinResp, joinedRoom);
-    final joinedRoomId = await handler.handle(context);
+    final joinedRoomId = await handler.handle(
+      router.routerDelegate.navigatorKey.currentContext ?? context,
+    );
     if (joinedRoomId == null) return;
 
-    context.go(
+    router.go(
       WorkspaceNav.openCourseSection(uri, joinedRoomId, keepRoom: false),
     );
   }

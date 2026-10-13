@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/journey_checklist/journey_moments.dart';
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_content.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_model.dart';
@@ -13,7 +14,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class DiscountCodePage extends StatefulWidget {
   final Widget closeButton;
-  const DiscountCodePage({super.key, required this.closeButton});
+
+  /// The code a gift link carried in, validated at once so the page opens on
+  /// the plans with the discount applied (subscriptions.instructions.md §
+  /// Gift link). A rejected code shows the usual error with the field.
+  final String? linkCode;
+
+  const DiscountCodePage({super.key, required this.closeButton, this.linkCode});
 
   @override
   DiscountCodePageState createState() => DiscountCodePageState();
@@ -23,7 +30,14 @@ class DiscountCodePageState extends State<DiscountCodePage>
     with PaymentPageMixin {
   late final DiscountCodeViewModel _viewModel = DiscountCodeViewModel(
     userID: Matrix.of(context).client.userID!,
+    initialCode: widget.linkCode,
   );
+
+  @override
+  void initState() {
+    super.initState();
+    JourneyMoments.subscriptionPageViewed(Matrix.of(context).client);
+  }
 
   @override
   void dispose() {

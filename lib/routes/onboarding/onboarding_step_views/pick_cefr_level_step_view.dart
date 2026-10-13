@@ -12,6 +12,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class PickCefrLevelStepView extends StatefulWidget {
   final PickCefrLevelOnboardingStep step;
   final bool loading;
+  final Object? error;
   final bool hasNextStep;
   final VoidCallback forward;
 
@@ -19,6 +20,7 @@ class PickCefrLevelStepView extends StatefulWidget {
     super.key,
     required this.step,
     required this.loading,
+    required this.error,
     required this.hasNextStep,
     required this.forward,
   });
@@ -200,6 +202,7 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
           builder: (context, _, _) => OnboardingForwardButton(
             onPressed: _step.enableGoForward ? widget.forward : null,
             loading: widget.loading,
+            error: widget.error,
             label: widget.hasNextStep
                 ? _step.nextStepText(L10n.of(context))
                 : _step.lastStepText(L10n.of(context)),

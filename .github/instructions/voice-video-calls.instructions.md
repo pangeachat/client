@@ -1,6 +1,6 @@
 ---
-description: "Client call behaviour — presence authority, what ends a call, rejoining, call history, and where audio is tapped."
-applyTo: "lib/routes/chat/calls/**,pangea_packages/pangea_call_capture/**,lib/widgets/matrix.dart,ios/Runner/Info.plist,pubspec.yaml"
+description: "Client call behaviour — presence authority, what ends a call, rejoining, call history, where audio is tapped, and ringing a closed app."
+applyTo: "lib/routes/chat/calls/**,pangea_packages/pangea_call_capture/**,lib/widgets/matrix.dart,ios/Runner/Info.plist,pubspec.yaml,lib/utils/background_push.dart,lib/utils/push_helper.dart"
 ---
 
 # Voice & Video Calls — Client
@@ -125,7 +125,13 @@ first:
 
 The offer to return is a promise that there is something to return to, so it is
 watched: once the room's state says nobody else is holding the call, it withdraws
-itself and takes the breadcrumb with it. Refusing the offer ENDS the call — it
+itself and takes the breadcrumb with it. When this device's own membership has
+already aged out of state there is no call to scope that check by, so any unexpired
+membership from another participant in the room counts as somebody still holding
+the call. A leftover from an earlier call can therefore keep a dead offer up until
+it expires. That is accepted: a dead offer costs a rejoin into an empty room, which
+leaves quietly, while the opposite error withdraws the offer for a call the other
+person is still waiting in. Refusing the offer ENDS the call — it
 retracts the standing membership, so the other person stops waiting rather than
 watching a grace window run out for someone who already decided.
 
@@ -135,9 +141,7 @@ armed, and the other side hangs up on a live call seconds later. The call's
 identity and the membership currently carrying it are two different things, and
 only the first survives a rejoin.
 
-The clock a rejoined session shows continues the call rather than restarting. The
-two sides read their own local starts, so they agree to within however differently
-the SFU delivered one roster change, not exactly.
+The clock both people watch is the call's, not each device's. When both people are first in the call, one device writes that moment once, on the SFU's clock: the device whose own membership is the call's key, or failing that a device on the other account after half a minute. Every device converts that one moment through its own measured offset from the SFU, so a peer, a second device and a rejoined device all read the same elapsed time without comparing two device clocks. Until it is read, a device forms the same moment from the join stamps it can see, and only when it cannot does it count from first seeing the other person.
 
 ## What the conversation records
 
@@ -201,13 +205,33 @@ for what the detector decides on and which of its numbers are still unvalidated.
 
 ## What the transcript says
 
-A transcript is ASSEMBLED, not recorded. Each device transcribes the audio it
-captured — its own microphone, per the tap above — and writes one event, its
-half; a reader merges the two. Both halves hang off the caller's membership
+A transcript is ASSEMBLED, not recorded, and it is drawn from the same audio the
+call already saved. Each device uploads its own captured half; after the call
+that recording is transcribed in one pass and becomes that speaker's half. A
+device whose recording never uploaded falls back to the audio it transcribed live
+during the call — see [Failure is not all-or-nothing]. Either way a device speaks
+only for its own microphone, per the tap above, writes one event, and a reader
+merges the two. Both halves hang off the caller's membership
 event, which is the one id both sides know from the moment the call starts. The
 call card is not that anchor: only one side writes it, and a call both people
 reloaded out of leaves none, which would strand the other half in exactly the
 case a transcript is most wanted.
+
+The words of a half travel in its event; the audio does not. A recording is a
+Matrix media upload, exactly like a voice message: the bytes live in the
+homeserver's media store — the same S3-backed store voice-message audio already
+uses — and the event carries only an `mxc://` reference and the recording's
+metadata. A half's event therefore stays small enough to ride the timeline while
+the audio is fetched on demand rather than pushed through every sync, and the
+recording inherits the retention already disclosed for voice messages. The merged
+full-call recording is one more such upload, referenced the same way.
+
+A call the learner moved between their devices leaves one speaker a recording on each device, each naming the device it came from and the one it went to. The full-call recording is made only from the whole call: both people, every device each used, linked in order. One of the devices the call ended on mixes it, and it cuts each moved-from recording where the next device began. A full-call recording that covers less than the whole call, cannot vouch for every recording it names, or does not say it is complete is never shown, never stops another device from making the true one, and never anchors a transcript. Two recordings from one person that are not linked mean two devices both carried on; that call keeps its separate recordings and gets no full-call recording.
+
+The recording-based pass is on by default. `CALL_RECORDING_TRANSCRIPT=false` is
+its kill switch: with it set, each half is the live one transcribed during the
+call (see [Failure is not all-or-nothing]) instead of the recording pass this
+section describes, with the per-turn `m:ss` timing it makes possible.
 
 A half is one event or it is missing, never a series of parts. Parts need a
 sequence that survives process death across a rejoin, and leave no answer for
@@ -235,10 +259,16 @@ Two rules keep that honest:
   entry we could not parse — each is named, and named as ours. "It said I said
   nothing" is unanswerable if all we kept was the state.
 
+**Transcription is paid, and it follows the subscription, not the speaker.** A call's audio is always saved to the room (audio only, never video), so transcription can run against that audio rather than only live. It runs whenever at least one person on the call is subscribed: a subscribed participant's own client transcribes every half — theirs and the others' — from the saved audio, so a paying user reads the whole conversation, not just their side. When no one is subscribed the call is not transcribed then and is never backfilled on its own, though the audio is kept. A subscribed reader who opens a half that was never produced can ask for it, and it is transcribed on demand from the saved audio. A reader without a subscription can open the transcript but sees a locked placeholder with a way to subscribe in place of the words, the same as other paid surfaces; during a call they are offered the subscription rather than left wondering why nothing appears.
+
 Who was on the call is derived locally from the direct chat, and only those two
 get a section. The card names a caller, but anybody can write a card, and a
 section for a name that was never on the call lends a forgery the standing of a
 record.
+
+### Whose half is whose
+
+A call transcript has one half per speaker, and normally each speaker's half is written by that speaker's own device. When one person on the call is subscribed and the other is not, the subscribed person's client also produces the other's half from the recording the call saved — so a paying reader sees the whole conversation, not one side. Such a half names the speaker it belongs to and points at that speaker's own saved recording; a reader trusts the named speaker only when that recording is genuinely theirs, for this call and this device. A name that was never on the call cannot be attached to a half, and wherever the words are in doubt the saved audio is the record that settles it. What a paying reader sees is gated in the app, not sealed cryptographically: the words live in the room like the rest of the call, and the gate is the same one the app uses for its other paid surfaces.
 
 ### What a turn's time promises
 
@@ -250,10 +280,14 @@ A position is known to one of three resolutions, and the screen says which:
 | by `m:ss` | only the chunk of audio bounds it |
 | no time | it never said which of those two this is |
 
-A bounded turn is placed at the LATEST moment it could have been spoken, not at
-its estimate: an estimate can render a turn a whole chunk early and put an
-answer before its question, while the end of the audio it came from cannot place
-any turn earlier than it was said. A position whose writer never characterised
+The recording pass times each turn's first word, so `m:ss` is the ordinary
+resolution; `by m:ss` belongs to the fallback, whose live capture can bound a
+turn only to the chunk of audio it was cut from. A bounded turn is placed at the
+LATEST moment it could have been spoken, not at its estimate: an estimate can put
+an answer before its question, while the end of the audio it came from cannot
+place any turn earlier than it was said. The fallback's chunks are kept short so
+that end stays near when the turn was spoken — a long chunk placed at its end is a
+turn dragged far past its moment. A position whose writer never characterised
 it keeps its place in the order — there is nothing else to order it by — and
 gets no time printed, because printing one puts this app's confidence behind
 another device's silence.
@@ -288,15 +322,19 @@ separated by it.
 
 ### The words are the transcript's; the timings only say when
 
-Segment text comes from the provider's transcript, and its word list supplies
-nothing but the when. Providers return a punctuation-free word list beside a
-punctuated transcript, so text assembled from the words loses the punctuation the
-learner reads and matches the transcript on almost no chunk. Timings are used
-only where they line up with that text word for word, which is what refuses a
-provider that re-cut the boundaries — the one failure that could genuinely put a
-word in a speaker's mouth. On any disagreement the transcript's own text still
-stands and only the precision of the time is lost, so no word a speaker did not
-say can reach the screen.
+Segment text today comes from the provider's punctuation-free WORD LIST, not the
+punctuated transcript: each turn's words are joined from the word list and the
+timings place the turn, while the punctuated `text` is read only when the
+provider returns no word-level timings at all. So the recording-based half loses
+the punctuation the learner reads. Showing the punctuated transcript instead —
+using the timings only to place turn boundaries — is the intended target, tracked
+in pangeachat/client#9303; it needs a word-list-to-transcript alignment step,
+because the two do not reconstruct one-for-one. Either way the words are the
+provider's own, so no word a speaker did not say reaches the screen, and only the
+boundary between two turns can fall a little off. The live fallback, which cannot
+re-transcribe the audio it cut, keeps the stricter rule and bounds the whole
+chunk on any disagreement. Both depend on the provider returning word-level
+timings alongside the transcript.
 
 ### Reading it back
 
@@ -355,8 +393,29 @@ Everything else degrades rather than fails:
 - A camera that will not open is a degraded call, not a failed one.
 - A local participant that never materialises is reported on screen as the other
   person not being able to hear, rather than dropping the call.
-- Losing the recording costs analytics and leaves the conversation untouched, which
-  is the right way round.
+- A half whose recording never uploaded still gets its recording-based transcript,
+  because the device transcribes its own recording on the device; the upload only decides
+  whether that half has playback audio. A half falls back to the audio the device read
+  live during the call only when its recording cannot be transcribed in time. The two
+  halves are decided independently, so one side failing still leaves a whole, correctly
+  ordered transcript. A recording that was still uploading when the app was killed is
+  uploaded on the next launch.
+
+## Ringing when the app is closed
+
+A call has to reach a learner whose app is closed or whose phone is locked. It builds on what already exists: the caller's ring event ([`CallNotification`](../../lib/routes/chat/calls/call_notification.dart)), the push rule that delivers it to the phone as a high-priority ringing push, and the in-app [`IncomingCallBanner`](../../lib/routes/chat/calls/incoming_call_banner.dart). Android needs no new pusher and no change to the push gateway; iOS needs both, below.
+
+**One decision about whether to ring.** The push wakes the app, which fetches the ring event and asks the same question the banner asks, `shouldRing`: is this a live ring for a call, sent by someone else, for a call this account has not already joined? So a closed phone never rings for a call that an open app would have stayed quiet for. Answering goes through one method on [`MatrixState`](../../lib/widgets/matrix.dart), which owns the call, and declining through [`CallService`](../../lib/routes/chat/calls/call_service.dart), so the banner, the Android notification and the iOS call screen answer and decline the same way.
+
+**No device rings forever.** The ring's own lifetime (30 seconds, never more than 90) is the timeout on every surface. A device stops sooner when the call is answered or declined on another of the learner's devices, or when the caller gives up.
+
+- **Android:** an incoming-call notification on its own calls channel. It shows full screen with a looping ringtone, Answer and Decline buttons, and a timeout equal to what is left of the ring. While it rings, a short foreground service keeps the app running for no longer than the ring, so answering or declining on another device stops the phone at once. On a locked phone it opens the app over the lock screen, and the banner takes over. Android 14 and later shows a full-screen ring by default only for apps Google Play accepts as calling apps. For any other app, the learner has to allow full-screen calls in Android settings, so the app asks them once; until they do, the phone shows a heads-up ring.
+- **iOS:** the native call screen, through CallKit, woken by a VoIP push. Apple stops waking an app that does not show a call for every VoIP push, so the server sends one only for a ring: the iOS app registers a second pusher for VoIP pushes, and the push gateway passes it rings and nothing else. The app shows each ring on the call screen at once, and ends straight away any ring that is already over. So that a ring does not also arrive as an ordinary notification, iOS builds that register for VoIP move their ordinary pusher to an app ID the push gateway sends no rings to; older builds keep today's notification. On iOS the call screen is the ring whether or not the app is open; the in-app prompt stands aside for it. The app also needs the `voip` background mode.
+- **Web:** open tabs already ring. Ringing a closed browser needs web push, which is a later phase.
+
+**The microphone on iOS.** A microphone that will not open is no call (see [Failure is not all-or-nothing](#failure-is-not-all-or-nothing)). On iOS the first call is often answered from the lock screen, which is the wrong moment to ask for the microphone. So the iOS app asks before a call can ring: once, the first time the app is open and calls can ring to it, and only if iOS has never asked. A one-line explanation comes first (calls need the microphone, including calls answered from the lock screen), then iOS's own prompt. It does not ask during a call. Once a learner has turned the microphone off, iOS does not let the app ask again. So if they answer a call while it is off, the call screen closes and the phone at once shows a notification: the call did not connect because Pangea Chat cannot use the microphone. Tapping it opens Pangea Chat's page in Settings. The caller is not told: their ring runs out and becomes a missed call.
+
+**Missed call.** When a ring ends unanswered, a silent push for the call's card replaces the ring with "Missed call". That push is also what stops a closed phone ringing when the caller gives up.
 
 ## Platform gates
 
@@ -365,12 +424,8 @@ Everything else degrades rather than fails:
   instruction carries the generation of the call it was issued for and the platform
   adjudicates: a stop meant for a call that already ended cannot touch its
   successor. Microphone permission is required for a call to start at all.
-- **iOS** — the audio background mode in `Info.plist` holds it. `voip` belongs with
-  CallKit, which is not built.
+- **iOS** — the audio background mode in `Info.plist` holds it. A call answered from the iOS call screen is also held by CallKit (see [Ringing when the app is closed](#ringing-when-the-app-is-closed)).
 - **Web** — no foreground-service concept; the call ends with the tab.
-
-Neither platform can ring a closed app yet, which is the largest gap in the
-feature.
 
 Call buttons are built behind a MatrixRTC focus lookup, so an environment without
 one renders nothing rather than buttons that fail. This is also what keeps calling

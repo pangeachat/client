@@ -17,6 +17,7 @@ import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
 import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
+import 'package:fluffychat/pangea/spaces/course_access_filter.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
@@ -420,8 +421,10 @@ abstract class WorkspaceNav {
   /// turn. The surviving context keeps the plan's close a back-arrow that
   /// reopens the card. [launch] skips the lobby straight to role selection;
   /// [roomId] reopens/rejoins a specific session room; [autoplay] autostarts
-  /// the plan's hero media (muted, block 0) — all three ride as fields of the
-  /// activity token's param ([ActivityTokenParam]), never as loose query params.
+  /// the plan's hero media (muted, block 0); [fromCoursePlan] marks an open
+  /// from the card's full course plan, so the back-arrow reopens that page —
+  /// all four ride as fields of the activity token's param
+  /// ([ActivityTokenParam]), never as loose query params.
   ///
   /// Inbound `/courses/:id?activity=` external links and the standalone
   /// `/<uuid>` link map to this same token form through `legacy_redirects`. The
@@ -433,6 +436,7 @@ abstract class WorkspaceNav {
     bool launch = false,
     String? roomId,
     bool autoplay = false,
+    bool fromCoursePlan = false,
   }) {
     final token = ActivityPanelToken(
       ActivityTokenParam(
@@ -440,6 +444,7 @@ abstract class WorkspaceNav {
         roomId: roomId,
         launch: launch,
         autoplay: autoplay ? 0 : null,
+        fromCoursePlan: fromCoursePlan,
       ),
     );
 
@@ -488,7 +493,8 @@ abstract class WorkspaceNav {
   /// Drop the open `activity` token, keeping the rest of the workspace —
   /// notably the course context, which a close never consumes
   /// (routing.instructions.md). [reopenCourseCard] additionally reseats the
-  /// `course` card over a surviving context (the plan's back-arrow target).
+  /// `course` card over a surviving context (the plan's back-arrow target) —
+  /// on its full course plan when the activity was opened from there (#9367).
   /// Emits the world path: activity overlays only ever ride over the map.
   static String dropActivityOverlay(
     Uri current, {
@@ -502,9 +508,17 @@ abstract class WorkspaceNav {
     if (reopenCourseCard &&
         activeSpaceIdFor(current) != null &&
         left.every((t) => t.type != PanelTypesEnum.course)) {
+      // Last, like every course open (#9037).
       left.add(
-        const CoursePanelToken(),
-      ); // last, like every course open (#9037)
+        CoursePanelToken(
+          activityInfoFor(current)?.fromCoursePlan == true
+              ? const CourseDetailsTokenParam(
+                  activeTab: SpaceSettingsTabs.course,
+                  expanded: true,
+                )
+              : null,
+        ),
+      );
     }
     if (left.isNotEmpty) {
       parts.add('left=${left.map((t) => t.encode()).join(',')}');
@@ -769,6 +783,7 @@ abstract class WorkspaceNav {
     String? initialLanguageFilter,
     bool? allLanguagesFilter,
     String? previewRoomId,
+    CourseAccessFilter? accessFilter,
     String? createCourseId,
     bool showNewCourseInvitePage = false,
     String? privateCourseJoinCode,
@@ -783,6 +798,9 @@ abstract class WorkspaceNav {
     final carriedAllLanguagesFilter =
         matchingTypePanel.firstOrNull?.param?.allLanguagesFilter;
 
+    final carriedAccessFilter =
+        matchingTypePanel.firstOrNull?.param?.accessFilter;
+
     return _mutate(
       current,
       'left',
@@ -796,6 +814,8 @@ abstract class WorkspaceNav {
             allLanguagesFilter:
                 allLanguagesFilter ?? carriedAllLanguagesFilter ?? false,
             previewRoomId: previewRoomId,
+            accessFilter:
+                accessFilter ?? carriedAccessFilter ?? CourseAccessFilter.all,
             createCourseId: createCourseId,
             showNewCourseInvitePage: showNewCourseInvitePage,
             privateCourseJoinCode: privateCourseJoinCode,

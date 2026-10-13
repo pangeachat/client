@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-23 15:42:43.478561",
+    "@@last_modified": "2026-10-12 13:11:49.913846",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -2797,7 +2797,6 @@
     "errorDisableIGCClassDesc": "L'assistència de gramàtica està desactivada per al curs en què es troba aquest xat.",
     "error405Desc": "Si us plau, configureu els vostres idiomes al Menú Principal > Configuració d'Aprenentatge.",
     "termsAndConditions": "Termes i Condicions",
-    "andCertifyIAmAtLeast13YearsOfAge": " i certifico que tinc almenys 16 anys.",
     "error502504Desc": "Les eines de traducció i gramàtica poden ser lentes o no estar disponibles mentre els bots de Pangea s'actualitzen.",
     "error404Desc": "El Pangea Bot no està segur de com traduir això...",
     "errorPleaseRefresh": "Ho estem investigant! Si us plau, actualitza i torna a provar.",
@@ -3105,9 +3104,6 @@
     "why": "Per què?",
     "definition": "Definició",
     "reportToTeacher": "A qui vols informar d'aquest missatge?",
-    "reportMessageTitle": "{reportingUserId} ha reportat un missatge de {reportedUserId} a la conversa {roomName}",
-    "reportMessageBody": "Missatge: {reportedMessage}\nMotiu: {reason}",
-    "noTeachersFound": "No s'han trobat mestres per informar-hi",
     "trialExpiration": "La teva prova gratuïta expira el {expiration}",
     "freeTrialDesc": "Els nous usuaris reben una prova gratuïta d'una setmana de Pangea Chat",
     "activateTrial": "Prova gratuïta de 7 dies",
@@ -3648,10 +3644,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4898,35 +4890,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -7884,11 +7847,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Utilitza la imatge d'activitat com a fons de xat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Xateja amb el Suport",
     "@chatWithSupport": {
         "type": "String",
@@ -9547,7 +9505,6 @@
     "activityLoadFailed": "No s'ha pogut carregar l'activitat. Comprova la teva connexió i torna a provar-ho.",
     "levelUpChip": "Nivell {level}!",
     "missingCourseOutline": "Aquest curs ja no està disponible",
-    "missingCourseOutlineCta": "Aquest curs ja no està disponible. Tria un nou pla de curs.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9572,10 +9529,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9971,7 +9924,6 @@
     "constructLevelFlowers": "Flors, paraules dominades",
     "filterAndSearch": "Filtra i cerca",
     "participantsOfTotal": "{filled} de {total} jugadors",
-    "mapAttributionLabel": "Col·laboradors d'OpenStreetMap, drets d'autor i llicència",
     "seeAll": "Veure-ho tot",
     "seeAllSection": "Veure-ho tot a {section}",
     "showMoreOptionsHint": "mostrar més opcions",
@@ -10088,5 +10040,64 @@
     "goalReportErrorRetry": "La cerca del torn no ha finalitzat. Torna-ho a provar.",
     "summaryFeedbackReceived": "Gràcies! Hem rebut els teus comentaris.",
     "summaryFeedbackFailed": "No s'han pogut enviar els teus comentaris. Torna-ho a provar.",
-    "summaryFeedbackProcessing": "S'està enviant el teu feedback i actualitzant el resum…"
+    "summaryFeedbackProcessing": "S'està enviant el teu feedback i actualitzant el resum…",
+    "callTranscriptTranscribing": "Encara s'està transcrivint l'enregistrament de {name}…",
+    "callTranscriptSeekTo": "Reproduir des de les {time}",
+    "callTranscriptRecordings": "Enregistraments",
+    "callTranscriptFullCall": "Trucada completa",
+    "callTranscriptPreparingRecording": "S'està preparant l'enregistrament complet…",
+    "callTranscriptNoRecording": "No hi ha enregistrament de la trucada completa.",
+    "callTranscriptNotSubscribed": "{name} no tenia una subscripció durant aquesta trucada, així que el que es va dir no es va transcriure.",
+    "joinYourCourse": "Uneix-te al teu curs",
+    "courseCodeJoinExplanation": "Inicia sessió o registra't, i utilitzarem el teu codi de curs per afegir-te al teu curs automàticament.",
+    "courseCodeLabel": "Codi de curs",
+    "courseCodeSaved": "Codi de curs {code} desat",
+    "courseCodeSavedExplanation": "Registra't o inicia sessió i t'afegirem al teu curs.",
+    "moderationRefusedContactDetails": "El teu missatge no s'ha enviat. Un filtre automàtic ha detectat dades de contacte, com ara un número de telèfon. Si us plau, elimina-les i torna-ho a provar.",
+    "moderationRefusedProfanity": "El teu missatge no s'ha enviat. Un filtre automàtic ha detectat una paraula que no permetem al xat. Si us plau, canvia-la i torna-ho a provar.",
+    "callTranscriptTranscribeButton": "Transcriure",
+    "callTranscriptAudioUnavailable": "No s'ha pogut descarregar l'enregistrament desat de {name}, per tant no s'ha pogut transcriure.",
+    "callTranscriptChooseLanguage": "En quina llengua es va parlar?",
+    "callTranscriptSubscribeForTranscription": "Subscriu-te per a la transcripció",
+    "unlockCallTranscript": "Desbloqueja la transcripció de la trucada",
+    "activitySummaryUpdateFailed": "Aquest resum no s'ha pogut actualitzar.",
+    "courseNotFound": "Curs no trobat",
+    "askTeacherForNewCourse": "Demana al teu professor que triï un nou curs.",
+    "pickNewCoursePlan": "Tria un nou pla de curs.",
+    "ssoNetworkBlockedTitle": "Lloc d'inici de sessió inaccessible",
+    "ssoNetworkBlockedDesc": "Aquesta xarxa no ens permet connectar amb {provider} per iniciar la sessió. Sovint, les xarxes Wi-Fi d'escoles i oficines bloquegen l'accés. Pots registrar-te amb el correu electrònic o canviar a una altra xarxa i tornar-ho a provar.",
+    "ssoTryAnyway": "Prova igualment",
+    "publicCoursesFilterTooltip": "Mostra només els cursos als quals qualsevol es pot unir",
+    "restrictedCoursesFilterTooltip": "Mostra només els cursos als quals has de demanar unió",
+    "viewImageLabel": "Veure imatge",
+    "reportSent": "Informe enviat",
+    "reportNotSent": "No s'ha pogut enviar l'informe. Comprova la connexió i torna-ho a provar.",
+    "reportPointerMessage": "S'ha informat d'un missatge a {courseName}; consulta Seguretat",
+    "useActivityImageAsChatBackground": "Utilitza la imatge de l'activitat com a fons del xat",
+    "andCertifyIMeetTheMinimumAge": " i certifico que tinc almenys 13 anys, o l'edat mínima requerida al meu país si és superior.",
+    "filteredNetworkBlockedTitle": "Aquesta xarxa està bloquejant Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Aquesta xarxa està bloquejant part de Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Què puc fer?",
+    "filteredNetworkPhoneAdvice": "Desactiva la Wi-Fi i utilitza les dades mòbils.",
+    "filteredNetworkComputerAdvice": "Connecta't al punt d'accés del teu telèfon en lloc d'aquesta Wi-Fi.",
+    "filteredNetworkItHeading": "Per a professors i personal informàtic",
+    "filteredNetworkItBody": "Demana al teu equip informàtic que permeti aquests dominis:",
+    "filteredNetworkAskForHelp": "Demana ajuda a Pangea",
+    "filteredNetworkHelpExplanation": "T'enviarem un correu electrònic per ajudar-te a fer funcionar Pangea Chat en aquesta xarxa.",
+    "filteredNetworkHelpWaiting": "La teva sol·licitud s'enviarà tan aviat com estiguis connectat.",
+    "filteredNetworkHelpSent": "Enviat. Ens posarem en contacte per correu electrònic.",
+    "filteredNetworkHelpRefused": "No hem pogut enviar la teva sol·licitud. Si us plau, envia un correu electrònic a support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Aquesta xarxa bloqueja els vídeos.",
+    "filteredNetworkImagesBlocked": "Aquesta xarxa bloqueja les imatges.",
+    "filteredNetworkMapBlocked": "Aquesta xarxa bloqueja el mapa.",
+    "callFullScreenTitle": "Deixa que les trucades sonin a pantalla completa",
+    "callFullScreenMessage": "Va entrar una trucada mentre Pangea Chat estava tancat, però el teu telèfon només podia mostrar una petita notificació. Permet les trucades a pantalla completa perquè la següent soni a tota la pantalla, fins i tot quan el telèfon estigui bloquejat.",
+    "callMicrophoneTitle": "Utilitza el micròfon per a les trucades",
+    "callMicrophoneMessage": "Pangea Chat necessita el teu micròfon per a les trucades, incloses les trucades que responguis des de la pantalla de bloqueig.",
+    "callMicrophoneOffTitle": "La teva trucada no s'ha pogut connectar",
+    "callMicrophoneOffMessage": "Pangea Chat no pot utilitzar el teu micròfon. Toca per activar-lo a Configuració.",
+    "mapCreditsLabel": "Crèdits del mapa: Stadia Maps, OpenMapTiles i OpenStreetMap",
+    "activityLaunchFindingCourses": "Trobant els teus cursos…",
+    "activityLaunchCreatingRoom": "Creant la teva activitat…",
+    "activityLaunchOpeningRoom": "Obrint la teva activitat…"
 }

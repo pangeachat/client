@@ -13,6 +13,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/navigation/legacy_redirects.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/network_filter/widgets/filtered_network_banner.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/chat/calls/global_call_tile.dart';
@@ -36,22 +37,18 @@ class FluffyChatApp extends StatelessWidget {
     this.pincode,
   });
 
-  /// getInitialLink may rereturn the value multiple times if this view is
-  /// opened multiple times for example if the user logs out after they logged
-  /// in with qr code or magic link.
-  static bool gotInitialLink = false;
-
   // Router must be outside of build method so that hot reload does not reset
   // the current path.
   static final GoRouter router = GoRouter(
     routes: AppRoutes.routes,
+    onException: AppRoutes.onException,
     // #Pangea
     // Null-aware element: the analytics observer is absent when Firebase init
     // was skipped (no env config, e.g. local dev).
     observers: [?GoogleAnalytics.getAnalyticsObserver()],
     redirect: (context, state) {
-      // Permanent shims from pre-world_v2 /rooms/... paths first (on a redirect
-      // the re-run handles panels). Otherwise keep open `?right=`/`?left=`
+      // Fold external links first (the redirect re-run handles panels).
+      // Otherwise keep open `?right=`/`?left=`
       // panels across a left-side navigation so they aren't dropped by a bare
       // context.go — the panels are the URL's, persistent across nav.
       final legacy = LegacyRedirects.handle(state.uri);
@@ -104,7 +101,9 @@ class FluffyChatApp extends StatelessWidget {
               // router, so a call announces itself wherever the learner is
               // rather than only on the chat it belongs to.
               child: IncomingCallBanner(
-                child: GlobalCallTile(child: testWidget ?? child),
+                child: GlobalCallTile(
+                  child: FilteredNetworkBanner(child: testWidget ?? child),
+                ),
               ),
             ),
           ),

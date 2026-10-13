@@ -10,8 +10,8 @@ import 'package:fluffychat/features/dm_invite/dm_invite_controller.dart';
 ///
 /// - **mount** — a boot or post-login landing (the ferried logged-out click);
 /// - **[uri] change** — any workspace navigation, which is how an invite that
-///   deferred behind a pending join code or activity gets its turn once that
-///   flow lands;
+///   waited behind a coded join in progress gets its turn once the join
+///   lands;
 /// - **DmInviteController.pendingSignal** — the invite redirect just cached an
 ///   in-session link tap, which lands on a location that may not remount or
 ///   even change anything (the chat list already open on mobile).
@@ -55,7 +55,7 @@ class _DmInviteFerryConsumerState extends State<DmInviteFerryConsumer> {
   void _tryConsume() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      DmInviteController.consumePending(context);
+      DmInviteController.consumePending(context, widget.uri);
     });
     WidgetsBinding.instance.ensureVisualUpdate();
   }
