@@ -635,7 +635,7 @@ void main() {
 
     test('writes revision 1 from the course-scoped list, the quest owner\'s '
         'private activity included', () async {
-      await newSpace().writeNewCourseCopy();
+      await newSpace().writeNewCourseCopy('q1');
       expect(scopes, [spaceId]);
       expect(jsonDecode(copyWrites().single as String), {
         'version': 1,
@@ -649,12 +649,29 @@ void main() {
       });
     });
 
+    test('writes from the quest it was created with, before the space\'s '
+        'plan event is readable (a just-created space may hold only its '
+        'create event)', () async {
+      final room = Room(
+        id: spaceId,
+        client: client,
+        membership: Membership.join,
+      );
+      putState(room, EventTypes.RoomPowerLevels, {
+        'users': {self: 100},
+      }, sender: self);
+      client.rooms.add(room);
+      await room.writeNewCourseCopy('q1');
+      expect(scopes, [spaceId]);
+      expect(copyWrites(), hasLength(1));
+    });
+
     test(
       'a failed read writes nothing (the course reads the shared quest)',
       () async {
         QuestRepo.debugBuildOutline = (id, {courseRoomId}) async =>
             Result<QuestOutline>.error('boom');
-        await newSpace().writeNewCourseCopy();
+        await newSpace().writeNewCourseCopy('q1');
         expect(copyWrites(), isEmpty);
       },
     );
@@ -662,13 +679,13 @@ void main() {
     test(
       'a non-admin, or a course that already has a copy, writes nothing',
       () async {
-        await newSpace(ownLevel: 50).writeNewCourseCopy();
+        await newSpace(ownLevel: 50).writeNewCourseCopy('q1');
         expect(copyWrites(), isEmpty);
         final room = newSpace();
         putCopy(room, {
           'lo-1': ['a1'],
         }, sender: self);
-        await room.writeNewCourseCopy();
+        await room.writeNewCourseCopy('q1');
         expect(copyWrites(), isEmpty);
       },
     );

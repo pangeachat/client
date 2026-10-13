@@ -104,14 +104,18 @@ extension CoursePlanRoomExtension on Room {
     );
   }
 
-  /// A new course's own copy, written by its creator right after the space
-  /// exists: snapshotted from the course-scoped list, which only a member of
-  /// the course can read with the quest owner's private activities in it, so
-  /// it cannot ride in the creation request. A failed or slow read leaves the
-  /// course without a copy (logged), reading the shared quest as before.
-  Future<void> writeNewCourseCopy() async {
-    final questId = coursePlan?.uuid;
-    if (questId == null || !isRoomAdmin || courseMissions != null) return;
+  /// A new course's own copy for [questId], written by its creator right
+  /// after the space exists: snapshotted from the course-scoped list, which
+  /// only a member of the course can read with the quest owner's private
+  /// activities in it, so it cannot ride in the creation request. A failed or
+  /// slow read leaves the course without a copy (logged), reading the shared
+  /// quest as before.
+  ///
+  /// [questId] comes from the creation itself: right after the space arrives
+  /// in sync its state can hold only `m.room.create`, so the plan event may
+  /// not be readable here yet.
+  Future<void> writeNewCourseCopy(String questId) async {
+    if (!isRoomAdmin || courseMissions != null) return;
     final outline = await courseScopedOutline(questId, id);
     if (outline == null) {
       ErrorHandler.logError(

@@ -144,7 +144,7 @@ class SelectedCourseController extends State<SelectedCourse>
           spaceChild: 0,
         )
         .then<void>((spaceId) async {
-          await _writeNewCourseCopy(client, spaceId);
+          await _writeNewCourseCopy(client, spaceId, courseId);
           completer.complete(spaceId);
         })
         .catchError((error) => completer.completeError(error));
@@ -163,7 +163,11 @@ class SelectedCourseController extends State<SelectedCourse>
   /// The new course's own copy, from the list its members are shown. Never
   /// fails the creation: an error is logged and the course reads the shared
   /// quest until the Studio's first publish.
-  Future<void> _writeNewCourseCopy(sdk.Client client, String spaceId) async {
+  Future<void> _writeNewCourseCopy(
+    sdk.Client client,
+    String spaceId,
+    String questId,
+  ) async {
     try {
       final room = client.getRoomById(spaceId);
       if (room == null) {
@@ -174,7 +178,7 @@ class SelectedCourseController extends State<SelectedCourse>
         );
         return;
       }
-      await room.writeNewCourseCopy();
+      await room.writeNewCourseCopy(questId);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
