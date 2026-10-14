@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-14 10:27:52.728480",
+    "@@last_modified": "2026-10-14 13:23:18.449749",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -1549,11 +1549,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Eşzamanlanıyor… Lütfen bekleyin.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "Sistem",
     "@systemTheme": {
         "type": "String",
@@ -2616,19 +2611,9 @@
     "@commandHint_roomupgrade": {},
     "checkList": "Kontrol listesi",
     "@checkList": {},
-    "synchronizingPleaseWaitCounter": " Senkronize ediliyor… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "previous": "Önceki",
     "otherPartyNotLoggedIn": "Diğer taraf şu anda giriş yapmadı ve bu nedenle mesaj alamaz!",
     "open": "Aç",
-    "waitingForServer": "Sunucu bekleniyor...",
     "newChatRequest": "📩 Yeni sohbet isteği",
     "contentNotificationSettings": "İçerik bildirim ayarları",
     "generalNotificationSettings": "Genel bildirim ayarları",
@@ -3380,10 +3365,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10282,5 +10263,8 @@
     "customCourseStepDesc": "Bir kurs, öğrencilerinizin ödev olarak birlikte yapmaları için ders kitabınızı takip eden bir dizi konuşma etkinliğidir.",
     "reopenAppToFinishSwitching": "Geçişi tamamlamak için uygulamayı tamamen kapatın ve tekrar açın.",
     "teamCode": "Takım kodu",
+    "connectionOffline": "Çevrimdışısınız. Bağlantınız geri geldiğinde Pangea Chat yeniden bağlanacaktır.",
+    "connectionUnreachable": "Pangea Chat'e ulaşılamıyor. Tekrar deneniyor…",
+    "connectionBackOnline": "Tekrar çevrimiçi",
     "missionDueDate": "{date}, {time} tarihinde bitiyor"
 }

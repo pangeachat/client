@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-14 10:27:47.267095",
+    "@@last_modified": "2026-10-14 13:23:09.901778",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -364,8 +364,6 @@
     "status": "Статус",
     "statusExampleMessage": "Бүгүн кандайсыз?",
     "submit": "Жөнөтүү",
-    "synchronizingPleaseWait": "Синхрондоштурулууда… Сураныч, күтө туруңуз.",
-    "synchronizingPleaseWaitCounter": " Синхрондоштурулууда… ({percentage}%)",
     "systemTheme": "Система",
     "theyDontMatch": "Алар дал келбейт",
     "theyMatch": "Алар дал келет",
@@ -590,7 +588,6 @@
     "previous": "Мурунку",
     "otherPartyNotLoggedIn": "Экинчи тарап учурда кирген эмес, ошондуктан билдирүүлөрдү ала албайт!",
     "open": "Ачуу",
-    "waitingForServer": "Серверди күтүүдө...",
     "newChatRequest": "📩 Жаңы чат сурамы",
     "contentNotificationSettings": "Мазмун эскертме жөндөөлөрү",
     "generalNotificationSettings": "Жалпы эскертме жөндөөлөрү",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "Курс – бул сиздин окуу китебиңизге ылайык келген баарлашуу иш-аракеттеринин жыйындысы, аны студенттериңиз үй тапшырмасы катары чогуу аткарышат.",
     "reopenAppToFinishSwitching": "Колдонмону толугу менен жаап, андан кийин кайра ачыңыз.",
     "teamCode": "Команда коду",
+    "connectionOffline": "Сиз оффлайнсыз. Pangea Chat байланышыңыз кайра келгенде кайра туташат.",
+    "connectionUnreachable": "Pangea Chat'ка жете албай жатабыз. Кайра аракет кылууда…",
+    "connectionBackOnline": "Кайра онлайн",
     "missionDueDate": "{date}, {time} чейин"
 }

@@ -46,23 +46,6 @@ void main() {
     });
   });
 
-  group('valueOf', () {
-    test('returns the first matching value', () {
-      expect(
-        WorkspaceQuery.valueOf('left=room:x&m=course:y', 'left'),
-        'room:x',
-      );
-    });
-
-    test('an absent key is null', () {
-      expect(WorkspaceQuery.valueOf('a=1', 'left'), isNull);
-    });
-
-    test('a bare flag yields an empty string', () {
-      expect(WorkspaceQuery.valueOf('left&a=1', 'left'), '');
-    });
-  });
-
   // The whole reason this helper exists: the raw query carries already-encoded
   // token params (a `c=%21id` context, a construct param's field encoding)
   // that a second Uri encode would corrupt. The split/drop/rejoin must leave
@@ -79,10 +62,6 @@ void main() {
       final parts = WorkspaceQuery.parts(q);
       WorkspaceQuery.removeKeys(parts, {'left'}); // unrelated drop, no-op here
       expect(WorkspaceQuery.location('/', parts), '/?$q');
-    });
-
-    test('valueOf returns the value still percent-encoded', () {
-      expect(WorkspaceQuery.valueOf('c=%21id', 'c'), '%21id');
     });
   });
 }

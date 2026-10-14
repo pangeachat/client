@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-14 10:27:49.520367",
+    "@@last_modified": "2026-10-14 13:23:13.501264",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -364,8 +364,6 @@
     "status": "Momwe zinthu zilili",
     "statusExampleMessage": "Muli bwanji lero?",
     "submit": "Tumiza",
-    "synchronizingPleaseWait": "Kugwirizanitsa… Chonde dikirani.",
-    "synchronizingPleaseWaitCounter": " Kugwirizanitsa… ({percentage}%)",
     "systemTheme": "Dongosolo",
     "theyDontMatch": "Sakugwirizana",
     "theyMatch": "Akugwirizana",
@@ -590,7 +588,6 @@
     "previous": "M'mbuyomu",
     "otherPartyNotLoggedIn": "Winayo salowetsedwa pakali pano ndipo sangalandire mauthenga!",
     "open": "Tsegulani",
-    "waitingForServer": "Kudikira seva...",
     "newChatRequest": "📩 Pempho latsopano la macheza",
     "contentNotificationSettings": "Zokonda zidziwitso za zomwe zili",
     "generalNotificationSettings": "Zokonda zidziwitso zonse",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "Maphunziro ndi mndandanda wa zokambirana zomwe zimatsatira buku lanu, kuti ophunzira anu azichita limodzi ngati ntchito yakunyumba.",
     "reopenAppToFinishSwitching": "Tsekani pulogalamuyi kwathunthu ndikuyitsegulanso kuti mumalize kusintha.",
     "teamCode": "Nambala ya gulu",
+    "connectionOffline": "Simuli pa intaneti. Pangea Chat idzalumikizananso intaneti ikabweranso.",
+    "connectionUnreachable": "Sindingathe kufika ku Pangea Chat. Kuyesanso…",
+    "connectionBackOnline": "Kubwerera pa intaneti",
     "missionDueDate": "Chifukwa {date}, {time}"
 }

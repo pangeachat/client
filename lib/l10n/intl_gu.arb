@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-14 10:27:44.319228",
+    "@@last_modified": "2026-10-14 13:23:04.680000",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -364,8 +364,6 @@
     "status": "સ્ટેટસ",
     "statusExampleMessage": "આજે તમે કેમ છો?",
     "submit": "સબમિટ કરો",
-    "synchronizingPleaseWait": "સિન્ક્રોનાઇઝ થઈ રહ્યું છે… કૃપા કરીને રાહ જુઓ.",
-    "synchronizingPleaseWaitCounter": " સિન્ક્રોનાઇઝ થઈ રહ્યું છે… ({percentage}%)",
     "systemTheme": "સિસ્ટમ",
     "theyDontMatch": "તેઓ મેળ ખાતા નથી",
     "theyMatch": "તેઓ મેળ ખાય છે",
@@ -590,7 +588,6 @@
     "previous": "પહેલાનું",
     "otherPartyNotLoggedIn": "બીજો પક્ષ હાલમાં લૉગ ઇન નથી અને તેથી સંદેશા પ્રાપ્ત કરી શકતો નથી!",
     "open": "ખોલો",
-    "waitingForServer": "સર્વરની રાહ જોઈ રહ્યું છે...",
     "newChatRequest": "📩 નવી ચેટ વિનંતી",
     "contentNotificationSettings": "સામગ્રી સૂચના સેટિંગ્સ",
     "generalNotificationSettings": "સામાન્ય સૂચના સેટિંગ્સ",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "કોર્સ એ વાતચીતની પ્રવૃત્તિઓનો સમૂહ છે જે તમારી પાઠ્યપુસ્તકને અનુસરે છે, જે તમારા વિદ્યાર્થીઓ માટે હોમવર્ક તરીકે સાથે કરવા માટે છે.",
     "reopenAppToFinishSwitching": "સ્વિચિંગ પૂર્ણ કરવા માટે એપ્લિકેશનને સંપૂર્ણપણે બંધ કરો અને તેને ફરીથી ખોલો.",
     "teamCode": "ટીમ કોડ",
+    "connectionOffline": "તમે ઑફલાઇન છો. તમારું કનેક્શન પાછું આવશે ત્યારે Pangea Chat ફરીથી કનેક્ટ થશે.",
+    "connectionUnreachable": "Pangea Chat સુધી પહોંચી શકાતું નથી. ફરીથી પ્રયાસ કરી રહ્યું છે…",
+    "connectionBackOnline": "ફરીથી ઑનલાઇન",
     "missionDueDate": "{date}, {time} ના રોજ થવાનું છે"
 }

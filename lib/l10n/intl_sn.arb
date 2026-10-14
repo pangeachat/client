@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-14 10:27:51.303092",
+    "@@last_modified": "2026-10-14 13:23:17.691569",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -364,8 +364,6 @@
     "status": "Chimiro",
     "statusExampleMessage": "Makadii nhasi?",
     "submit": "Tumira",
-    "synchronizingPleaseWait": "Kugadzirisa… Ndapota mirira.",
-    "synchronizingPleaseWaitCounter": " Kugadzirisa… ({percentage}%)",
     "systemTheme": "System",
     "theyDontMatch": "Hazvifani",
     "theyMatch": "Zvinofana",
@@ -590,7 +588,6 @@
     "previous": "Zvapfuura",
     "otherPartyNotLoggedIn": "Mumwe wacho haana kupinda parizvino uye haakwanisi kugamuchira mameseji!",
     "open": "Vhura",
-    "waitingForServer": "Kumirira sevha...",
     "newChatRequest": "📩 Chikumbiro chitsva chechat",
     "contentNotificationSettings": "Zvirongwa zvezviziviso zvezviri mukati",
     "generalNotificationSettings": "Zvirongwa zvezviziviso zvakajairika",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "Kosi iseti yezviitiko zvekukurukurirana zvinotevera bhuku rako, kuti vadzidzi vako vaite pamwe chete sehomweki.",
     "reopenAppToFinishSwitching": "Vhara app zvachose woivhura zvakare kuti upedze kuchinja.",
     "teamCode": "Kodhi yechikwata",
+    "connectionOffline": "Haugona paIndaneti. Pangea Chat ichabatana zvakare kana wabatana.",
+    "connectionUnreachable": "Haugoni kusvika kuPangea Chat. Kuedza zvakare…",
+    "connectionBackOnline": "Wadzoka paIndaneti",
     "missionDueDate": "Inofanira kunge yapera pana {date}, {time}"
 }

@@ -276,8 +276,6 @@
     "status": "狀態",
     "statusExampleMessage": "你今日點呀？",
     "submit": "提交",
-    "synchronizingPleaseWait": "同步中… 請稍候。",
-    "synchronizingPleaseWaitCounter": "同步中… ({percentage}%)",
     "systemTheme": "系統",
     "theyDontMatch": "佢哋唔啱",
     "theyMatch": "佢哋啱",
@@ -502,7 +500,6 @@
     "previous": "上一個",
     "otherPartyNotLoggedIn": "對方目前未登入，因此無法接收訊息！",
     "open": "打開",
-    "waitingForServer": "等待伺服器...",
     "newChatRequest": "📩 新的聊天請求",
     "contentNotificationSettings": "內容通知設定",
     "generalNotificationSettings": "一般通知設定",
@@ -1259,7 +1256,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-14 10:27:53.857209",
+    "@@last_modified": "2026-10-14 13:23:21.019518",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -2583,18 +2580,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@systemTheme": {
         "type": "String",
         "placeholders": {}
@@ -3659,10 +3644,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10938,5 +10919,8 @@
     "customCourseStepDesc": "課程係一系列對話活動，學生可以跟住你嘅教科書，一齊做功課。",
     "reopenAppToFinishSwitching": "請完全關閉應用程式，然後重新開啟以完成切換。",
     "teamCode": "團隊代碼",
+    "connectionOffline": "你已離線。當你嘅連線恢復時，Pangea Chat 會自動重新連接。",
+    "connectionUnreachable": "無法連接到 Pangea Chat。正在重試…",
+    "connectionBackOnline": "已重新連線",
     "missionDueDate": "{date} {time} 到期"
 }

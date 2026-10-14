@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-14 10:27:45.147337",
+    "@@last_modified": "2026-10-14 13:23:06.398139",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -1491,11 +1491,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Sinkronizira se … Pričekaj.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "Sustav",
     "@systemTheme": {
         "type": "String",
@@ -2469,7 +2464,6 @@
     "spaces": "Prostori",
     "checkList": "Popis za provjeru",
     "sendImages": "Pošalji {count} sliku",
-    "synchronizingPleaseWaitCounter": "Sinkronizacija… ({percentage}%)",
     "invitedBy": "📩 Pozvao {user}",
     "goToSpace": "Idi u prostor: {space}",
     "markAsUnread": "Označi kao nepročitano",
@@ -2517,7 +2511,6 @@
     "previous": "Prethodno",
     "otherPartyNotLoggedIn": "Druga strana trenutno nije prijavljena i stoga ne može primati poruke!",
     "open": "Otvoriti",
-    "waitingForServer": "Čekanje na poslužitelj...",
     "newChatRequest": "📩 Novi zahtjev za razgovor",
     "contentNotificationSettings": "Postavke obavijesti o sadržaju",
     "generalNotificationSettings": "Opće postavke obavijesti",
@@ -3296,14 +3289,6 @@
             }
         }
     },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@invitedBy": {
         "type": "String",
         "placeholders": {
@@ -3515,10 +3500,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10417,5 +10398,8 @@
     "customCourseStepDesc": "Tečaj je skup konverzacijskih aktivnosti koje prate vaš udžbenik, a namijenjene su vašim učenicima za zajedničku izradu domaće zadaće.",
     "reopenAppToFinishSwitching": "Potpuno zatvorite aplikaciju i ponovno je otvorite kako biste dovršili prebacivanje.",
     "teamCode": "Kôd tima",
+    "connectionOffline": "Izvan mreže ste. Pangea Chat će se ponovno povezati kada se vaša veza vrati.",
+    "connectionUnreachable": "Pangea Chat je nedostupan. Pokušavam ponovno…",
+    "connectionBackOnline": "Ponovno online",
     "missionDueDate": "Rok: {date}, {time}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-14 10:27:41.073280",
+    "@@last_modified": "2026-10-14 13:23:02.556370",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -364,8 +364,6 @@
     "status": "Статус",
     "statusExampleMessage": "Как си днес?",
     "submit": "Изпрати",
-    "synchronizingPleaseWait": "Синхронизиране… Моля, изчакайте.",
-    "synchronizingPleaseWaitCounter": " Синхронизиране… ({percentage}%)",
     "systemTheme": "Системна",
     "theyDontMatch": "Не съвпадат",
     "theyMatch": "Съвпадат",
@@ -590,7 +588,6 @@
     "previous": "Предишен",
     "otherPartyNotLoggedIn": "Другата страна в момента не е влязла и следователно не може да получава съобщения!",
     "open": "Отвори",
-    "waitingForServer": "Изчакване на сървъра...",
     "newChatRequest": "📩 Нова заявка за чат",
     "contentNotificationSettings": "Настройки за известия за съдържание",
     "generalNotificationSettings": "Общи настройки за известия",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "Курсът е набор от разговорни дейности, които следват учебника ви, за да ги изпълняват учениците ви заедно като домашно.",
     "reopenAppToFinishSwitching": "Затворете изцяло приложението и го отворете отново, за да завършите превключването.",
     "teamCode": "Код на екипа",
+    "connectionOffline": "Нямате връзка. Pangea Chat ще се свърже отново, когато връзката ви се възстанови.",
+    "connectionUnreachable": "Pangea Chat е недостъпен. Опитва се отново...",
+    "connectionBackOnline": "Връзката е възстановена",
     "missionDueDate": "Краен срок: {date}, {time}"
 }

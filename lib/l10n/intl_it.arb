@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-14 10:27:46.358471",
+    "@@last_modified": "2026-10-14 13:23:09.545593",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -1869,11 +1869,6 @@
     "@sender": {},
     "makeAdminDescription": "Una volta che fai questo utente amministratore, potresti non essere in grado di rimuoverlo, in quanto avrà i tuoi stessi privilegi.",
     "@makeAdminDescription": {},
-    "synchronizingPleaseWait": "Sincronizzazione... Attendere prego.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "commandHint_clearcache": "Pulisci cache",
     "@commandHint_clearcache": {
         "type": "String",
@@ -2712,17 +2707,6 @@
     "@verifiedDevicesOnly": {},
     "open": "Apri",
     "@open": {},
-    "waitingForServer": "In attesa del server...",
-    "@waitingForServer": {},
-    "synchronizingPleaseWaitCounter": " Sincronizzazione… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "notificationRuleMemberEventDescription": "Silenzia le notifiche per gli eventi dei membri.",
     "@notificationRuleMemberEventDescription": {},
     "notificationRuleContainsDisplayName": "Contiene nome visualizzato",
@@ -10054,5 +10038,8 @@
     "customCourseStepDesc": "Un corso è un insieme di attività di conversazione che seguono il tuo libro di testo, che i tuoi studenti possono svolgere insieme come compito a casa.",
     "reopenAppToFinishSwitching": "Chiudi completamente l'app e riaprila per completare il cambio.",
     "teamCode": "Codice team",
+    "connectionOffline": "Sei offline. Pangea Chat si riconnetterà quando la tua connessione sarà di nuovo disponibile.",
+    "connectionUnreachable": "Impossibile raggiungere Pangea Chat. Riprovo…",
+    "connectionBackOnline": "Di nuovo online",
     "missionDueDate": "Scadenza {date}, {time}"
 }

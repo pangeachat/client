@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-14 10:27:47.440175",
+    "@@last_modified": "2026-10-14 13:23:10.800011",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -364,8 +364,6 @@
     "status": "Status",
     "statusExampleMessage": "Quid agis hodie?",
     "submit": "Submitte",
-    "synchronizingPleaseWait": "Synchronizatur… Quaeso, exspecta.",
-    "synchronizingPleaseWaitCounter": " Synchronizatur… ({percentage}%)",
     "systemTheme": "Systema",
     "theyDontMatch": "Non congruunt",
     "theyMatch": "Congruunt",
@@ -590,7 +588,6 @@
     "previous": "Prior",
     "otherPartyNotLoggedIn": "Pars altera nunc non est connexa et ideo nuntios accipere non potest!",
     "open": "Aperi",
-    "waitingForServer": "Ministrum exspectans...",
     "newChatRequest": "📩 Nova petitio colloquii",
     "contentNotificationSettings": "Configurationes notificationum de contentis",
     "generalNotificationSettings": "Configurationes notificationum generales",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "Cursus est copia exercitationum sermonis quae librum tuum sequuntur, ut discipuli tui simul pro pensis domesticis faciant.",
     "reopenAppToFinishSwitching": "Claude app omnino et iterum aperi ad perficiendum commutationem.",
     "teamCode": "Codex turmae",
+    "connectionOffline": "Abes es. Pangea Chat iterum coniungetur cum conexio tua redierit.",
+    "connectionUnreachable": "Pangea Chat attingi non potest. Iterum temptatur…",
+    "connectionBackOnline": "Iterum online",
     "missionDueDate": "Debetur {date}, {time}"
 }

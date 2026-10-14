@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-14 10:27:46.705781",
+    "@@last_modified": "2026-10-14 13:23:08.879637",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -364,8 +364,6 @@
     "status": "ಸ್ಥಿತಿ",
     "statusExampleMessage": "ಇಂದು ಹೇಗಿದ್ದೀರಿ?",
     "submit": "ಸಲ್ಲಿಸಿ",
-    "synchronizingPleaseWait": "ಸಿಂಕ್ರೊನೈಸ್ ಆಗುತ್ತಿದೆ… ದಯವಿಟ್ಟು ನಿರೀಕ್ಷಿಸಿ.",
-    "synchronizingPleaseWaitCounter": " ಸಿಂಕ್ರೊನೈಸ್ ಆಗುತ್ತಿದೆ… ({percentage}%)",
     "systemTheme": "ಸಿಸ್ಟಮ್",
     "theyDontMatch": "ಅವು ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ",
     "theyMatch": "ಅವು ಹೊಂದಿಕೆಯಾಗುತ್ತವೆ",
@@ -590,7 +588,6 @@
     "previous": "ಹಿಂದಿನದು",
     "otherPartyNotLoggedIn": "ಇನ್ನೊಬ್ಬರು ಪ್ರಸ್ತುತ ಲಾಗ್ ಇನ್ ಆಗಿಲ್ಲ ಮತ್ತು ಆದ್ದರಿಂದ ಸಂದೇಶಗಳನ್ನು ಸ್ವೀಕರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ!",
     "open": "ತೆರೆಯಿರಿ",
-    "waitingForServer": "ಸರ್ವರ್‌ಗಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ...",
     "newChatRequest": "📩 ಹೊಸ ಚಾಟ್ ವಿನಂತಿ",
     "contentNotificationSettings": "ವಿಷಯ ಅಧಿಸೂಚನೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು",
     "generalNotificationSettings": "ಸಾಮಾನ್ಯ ಅಧಿಸೂಚನೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "ಕೋರ್ಸ್ ಎಂದರೆ ನಿಮ್ಮ ಪಠ್ಯಪುಸ್ತಕವನ್ನು ಅನುಸರಿಸುವ ಸಂಭಾಷಣಾ ಚಟುವಟಿಕೆಗಳ ಒಂದು ಗುಂಪಾಗಿದ್ದು, ನಿಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳು ಮನೆಕೆಲಸವಾಗಿ ಒಟ್ಟಾಗಿ ಮಾಡಲು.",
     "reopenAppToFinishSwitching": "ಸ್ವಿಚ್ ಮಾಡುವುದನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಮುಚ್ಚಿ ಮತ್ತು ಅದನ್ನು ಮತ್ತೆ ತೆರೆಯಿರಿ.",
     "teamCode": "ತಂಡದ ಕೋಡ್",
+    "connectionOffline": "ನೀವು ಆಫ್‌ಲೈನ್‌ನಲ್ಲಿದ್ದೀರಿ. ನಿಮ್ಮ ಸಂಪರ್ಕ ಮರಳಿ ಬಂದಾಗ ಪ್ಯಾಂಗಿಯಾ ಚಾಟ್ ಮರುಸಂಪರ್ಕಗೊಳ್ಳುತ್ತದೆ.",
+    "connectionUnreachable": "ಪ್ಯಾಂಗಿಯಾ ಚಾಟ್ ತಲುಪಲು ಸಾಧ್ಯವಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಲಾಗುತ್ತಿದೆ…",
+    "connectionBackOnline": "ಮರಳಿ ಆನ್‌ಲೈನ್",
     "missionDueDate": "{date}, {time} ರಂದು ನಿಗದಿಯಾಗಿದೆ"
 }

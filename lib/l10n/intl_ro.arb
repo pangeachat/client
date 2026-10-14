@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-14 10:27:50.371471",
+    "@@last_modified": "2026-10-14 13:23:15.367408",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -1246,11 +1246,6 @@
             }
         }
     },
-    "synchronizingPleaseWait": "Sincronizează... Vă rugăm să așteptați.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "Sistem",
     "@systemTheme": {
         "type": "String",
@@ -2154,7 +2149,6 @@
     "sendImages": "Trimite {count} imagine",
     "setChatDescription": "Setează descrierea chat-ului",
     "presencesToggle": "Afișează mesajele de stare de la alți utilizatori",
-    "synchronizingPleaseWaitCounter": "Se sincronizează… ({percentage}%)",
     "invitedBy": "📩 Invitat de {user}",
     "hasKnocked": "🚪 {user} a bătut la ușă",
     "knock": "Bate la ușă",
@@ -2275,7 +2269,6 @@
     "previous": "Anterior",
     "otherPartyNotLoggedIn": "Cealaltă parte nu este conectată în prezent și, prin urmare, nu poate primi mesaje!",
     "open": "Deschide",
-    "waitingForServer": "Se așteaptă serverul...",
     "newChatRequest": "📩 Cerere de chat nou",
     "contentNotificationSettings": "Setări notificări conținut",
     "generalNotificationSettings": "Setări generale de notificare",
@@ -3246,14 +3239,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@invitedBy": {
         "type": "String",
         "placeholders": {
@@ -3811,10 +3796,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10713,5 +10694,8 @@
     "customCourseStepDesc": "Un curs este un set de activități de conversație care urmează manualul tău, pentru ca studenții tăi să le facă împreună ca temă.",
     "reopenAppToFinishSwitching": "Închide aplicația complet și redeschide-o pentru a finaliza schimbarea.",
     "teamCode": "Codul echipei",
+    "connectionOffline": "Ești offline. Pangea Chat se va reconecta când vei avea din nou o conexiune.",
+    "connectionUnreachable": "Pangea Chat nu poate fi accesat. Se încearcă din nou…",
+    "connectionBackOnline": "Revenit online",
     "missionDueDate": "Scadența: {date}, {time}"
 }

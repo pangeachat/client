@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-14 10:27:48.014918",
+    "@@last_modified": "2026-10-14 13:23:10.538530",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -364,8 +364,6 @@
     "status": "ສະຖານະ",
     "statusExampleMessage": "ມື້ນີ້ເຈົ້າເປັນແນວໃດ?",
     "submit": "ສົ່ງ",
-    "synchronizingPleaseWait": "ກຳລັງຊິງຄ໌… ກະລຸນາລໍຖ້າ.",
-    "synchronizingPleaseWaitCounter": " ກຳລັງຊິງຄ໌… ({percentage}%)",
     "systemTheme": "ລະບົບ",
     "theyDontMatch": "ພວກມັນບໍ່ກົງກັນ",
     "theyMatch": "ພວກມັນກົງກັນ",
@@ -590,7 +588,6 @@
     "previous": "ກ່ອນໜ້າ",
     "otherPartyNotLoggedIn": "ອີກຝ່າຍໜຶ່ງບໍ່ໄດ້ເຂົ້າສູ່ລະບົບໃນຂະນະນີ້ ແລະ ດັ່ງນັ້ນຈຶ່ງບໍ່ສາມາດຮັບຂໍ້ຄວາມໄດ້!",
     "open": "ເປີດ",
-    "waitingForServer": "ກຳລັງລໍຖ້າເຊີບເວີ...",
     "newChatRequest": "📩 ຄຳຮ້ອງຂໍການສົນທະນາໃໝ່",
     "contentNotificationSettings": "ການຕັ້ງຄ່າການແຈ້ງເຕືອນເນື້ອຫາ",
     "generalNotificationSettings": "ການຕັ້ງຄ່າການແຈ້ງເຕືອນທົ່ວໄປ",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "ຫຼັກສູດແມ່ນຊຸດຂອງກິດຈະກຳການສົນທະນາທີ່ສອດຄ່ອງກັບປຶ້ມແບບຮຽນຂອງທ່ານ, ໃຫ້ນັກຮຽນຂອງທ່ານເຮັດຮ່ວມກັນເປັນວຽກບ້ານ.",
     "reopenAppToFinishSwitching": "ປິດແອັບທັງໝົດແລ້ວເປີດໃໝ່ເພື່ອສຳເລັດການປ່ຽນ.",
     "teamCode": "ລະຫັດທີມ",
+    "connectionOffline": "ທ່ານອອບລາຍ. Pangea Chat ຈະເຊື່ອມຕໍ່ໃໝ່ເມື່ອການເຊື່ອມຕໍ່ຂອງທ່ານກັບມາ.",
+    "connectionUnreachable": "ບໍ່ສາມາດເຂົ້າເຖິງ Pangea Chat ໄດ້. ພະຍາຍາມອີກຄັ້ງ…",
+    "connectionBackOnline": "ກັບມາອອນລາຍແລ້ວ",
     "missionDueDate": "ກຳນົດສົ່ງ {date}, {time}"
 }

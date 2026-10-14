@@ -1397,11 +1397,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Synkronoidaan... Hetkinen.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "Järjestelmä",
     "@systemTheme": {
         "type": "String",
@@ -2321,15 +2316,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWaitCounter": " Synkronoidaan… ({percentage} %)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "invitedBy": "📩 Kutsujana {user}",
     "@invitedBy": {
         "placeholders": {
@@ -2639,8 +2625,6 @@
     "@unableToJoinChat": {},
     "otherPartyNotLoggedIn": "Toinen osapuoli ei ole tällä hetkellä kirjautuneena sisään, joten ei voi vastaanottaa viestejä!",
     "@otherPartyNotLoggedIn": {},
-    "waitingForServer": "Odotetaan palvelinta...",
-    "@waitingForServer": {},
     "newChatRequest": "📩 Uusi pikakeskustelupyyntö",
     "@newChatRequest": {},
     "contentNotificationSettings": "Sisältöilmoitusten asetukset",
@@ -3532,7 +3516,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-14 10:27:43.334306",
+    "@@last_modified": "2026-10-14 13:23:03.000133",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10018,5 +10002,8 @@
     "customCourseStepDesc": "Kurssi on joukko keskusteluharjoituksia, jotka seuraavat oppikirjaasi, ja jotka opiskelijasi tekevät yhdessä kotitehtävänä.",
     "reopenAppToFinishSwitching": "Sulje sovellus kokonaan ja avaa se uudelleen vaihdon viimeistelemiseksi.",
     "teamCode": "Tiimikoodi",
+    "connectionOffline": "Olet offline-tilassa. Pangea Chat yhdistää uudelleen, kun yhteys palautuu.",
+    "connectionUnreachable": "Pangea Chatiin ei saada yhteyttä. Yritetään uudelleen…",
+    "connectionBackOnline": "Takaisin online-tilassa",
     "missionDueDate": "Erääntyy {date} klo {time}"
 }

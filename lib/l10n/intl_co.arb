@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-14 10:27:42.115067",
+    "@@last_modified": "2026-10-14 13:23:00.548557",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -364,8 +364,6 @@
     "status": "Statutu",
     "statusExampleMessage": "Cumu vai oghje?",
     "submit": "Invià",
-    "synchronizingPleaseWait": "Sincrunizazione in corsu… Aspettate per piacè.",
-    "synchronizingPleaseWaitCounter": " Sincrunizazione in corsu… ({percentage}%)",
     "systemTheme": "Sistemu",
     "theyDontMatch": "Ùn currispondenu micca",
     "theyMatch": "Currispondenu",
@@ -590,7 +588,6 @@
     "previous": "Precedente",
     "otherPartyNotLoggedIn": "L'altra persona ùn hè micca cunnessa à u mumentu è ùn pò dunque riceve messaghji !",
     "open": "Apre",
-    "waitingForServer": "Aspittendu u servitore...",
     "newChatRequest": "📩 Nova dumanda di chat",
     "contentNotificationSettings": "Paràmetri di nutificazione di u cuntenutu",
     "generalNotificationSettings": "Paràmetri di nutificazione generali",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "Un corsu hè un inseme d'attività di cunversazione chì seguitanu u vostru libru di testu, per i vostri studienti à fà inseme cum'è duveri.",
     "reopenAppToFinishSwitching": "Chiudite l'app cumpletamente è riapritela per finisce u cambiamentu.",
     "teamCode": "Codice di a squadra",
+    "connectionOffline": "Sì fora ligna. Pangea Chat si ricunnetterà quandu a vostra cunnessione serà torna.",
+    "connectionUnreachable": "Ùn si pò ghjunghje à Pangea Chat. Pruvendu torna…",
+    "connectionBackOnline": "Torna in ligna",
     "missionDueDate": "Da rende u {date}, à {time}"
 }

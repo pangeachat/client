@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-14 10:27:48.358214",
+    "@@last_modified": "2026-10-14 13:23:11.201677",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -364,8 +364,6 @@
     "status": "Статус",
     "statusExampleMessage": "Како си денес?",
     "submit": "Поднеси",
-    "synchronizingPleaseWait": "Синхронизирање… Ве молиме почекајте.",
-    "synchronizingPleaseWaitCounter": " Синхронизирање… ({percentage}%)",
     "systemTheme": "Системска",
     "theyDontMatch": "Не се совпаѓаат",
     "theyMatch": "Се совпаѓаат",
@@ -590,7 +588,6 @@
     "previous": "Претходно",
     "otherPartyNotLoggedIn": "Другата страна моментално не е најавена и затоа не може да прима пораки!",
     "open": "Отвори",
-    "waitingForServer": "Се чека сервер...",
     "newChatRequest": "📩 Ново барање за разговор",
     "contentNotificationSettings": "Поставки за известувања за содржина",
     "generalNotificationSettings": "Општи поставки за известувања",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "Курсот е збир на активности за разговор кои ја следат вашата книга, за вашите ученици да ги прават заедно како домашна задача.",
     "reopenAppToFinishSwitching": "Затворете ја апликацијата целосно и отворете ја повторно за да завршите со префрлувањето.",
     "teamCode": "Код на тим",
+    "connectionOffline": "Офлајн сте. Pangea Chat повторно ќе се поврзе кога ќе се врати вашата врска.",
+    "connectionUnreachable": "Не може да се дојде до Pangea Chat. Обидувам повторно…",
+    "connectionBackOnline": "Повторно онлајн",
     "missionDueDate": "Доспева на {date}, {time}"
 }

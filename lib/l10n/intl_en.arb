@@ -1973,20 +1973,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Synchronizing… Please wait.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "synchronizingPleaseWaitCounter": " Synchronizing… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "systemTheme": "System",
     "@systemTheme": {
         "type": "String",
@@ -2819,8 +2805,6 @@
     "@open": {},
     "ongoing": "Ongoing",
     "@ongoing": {},
-    "waitingForServer": "Waiting for server...",
-    "@waitingForServer": {},
     "newChatRequest": "📩 New chat request",
     "@newChatRequest": {},
     "contentNotificationSettings": "Content notification settings",
@@ -5870,5 +5854,17 @@
     "reopenAppToFinishSwitching": "Close the app completely and open it again to finish switching.",
     "@reopenAppToFinishSwitching": {
         "description": "Shown after a Pangea team member switches the app between the production and staging servers; the switch applies on the next launch."
+    },
+    "connectionOffline": "You're offline. Pangea Chat will reconnect when your connection is back.",
+    "@connectionOffline": {
+        "description": "Banner at the top of the app when the device has no internet connection."
+    },
+    "connectionUnreachable": "Can't reach Pangea Chat. Trying again…",
+    "@connectionUnreachable": {
+        "description": "Banner at the top of the app when the device is online but the Pangea Chat server is not answering."
+    },
+    "connectionBackOnline": "Back online",
+    "@connectionBackOnline": {
+        "description": "Banner shown for a few seconds when the connection to Pangea Chat comes back after being lost."
     }
 }

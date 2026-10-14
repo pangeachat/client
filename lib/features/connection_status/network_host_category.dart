@@ -4,7 +4,7 @@ import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/map_tiles.dart';
 
 /// A host, or group of hosts, the app needs to reach. A network filter blocks
-/// the app one category at a time. See filtered-network.instructions.md,
+/// the app one category at a time. See connection-status.instructions.md,
 /// "Hosts the app needs".
 enum NetworkHostCategory {
   chatServer,
@@ -21,6 +21,10 @@ enum NetworkHostCategory {
 
   /// Whether a block stops the app as a whole, rather than one feature.
   bool get stopsApp => this == chatServer || this == pangeaApi;
+
+  /// Whether the category is one of our own servers, which a deploy restarts.
+  /// While it restarts it refuses connections, the way a filter does.
+  bool get isOurServer => this == chatServer || this == pangeaApi;
 
   /// A cheap URL on the category's host. Any answer means the host is
   /// reachable, so the path only has to exist on that host — and answer

@@ -1,8 +1,8 @@
-import 'package:fluffychat/features/network_filter/network_host_category.dart';
-import 'package:fluffychat/features/network_filter/network_type.dart';
+import 'package:fluffychat/features/connection_status/network_host_category.dart';
+import 'package:fluffychat/features/connection_status/network_type.dart';
 
 /// A user's request for help with a network that blocks the app, sent to the
-/// team as a CMS form submission. See filtered-network.instructions.md,
+/// team as a CMS form submission. See connection-status.instructions.md,
 /// "Asking Pangea for help".
 class NetworkHelpRequest {
   /// The CMS form type the team notification email is keyed on.

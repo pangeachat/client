@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
 
-import 'package:fluffychat/features/network_filter/filtered_network_controller.dart';
+import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
 
 /// Wraps the Matrix client's HTTP client so every chat server request tells
 /// [FilteredNetworkController] whether it reached the server. Sync retries

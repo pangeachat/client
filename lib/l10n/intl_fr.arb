@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-14 10:27:43.478024",
+    "@@last_modified": "2026-10-14 13:23:03.527209",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -1549,11 +1549,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Synchronisation... Veuillez patienter.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "Système",
     "@systemTheme": {
         "type": "String",
@@ -2507,15 +2502,6 @@
     "@changeTheCanonicalRoomAlias": {},
     "changelog": "Journal des modifications",
     "@changelog": {},
-    "synchronizingPleaseWaitCounter": " Synchronisation… ({percentage} %)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "updateInstalled": "🎉 La mise à niveau {version} est installée !",
     "@updateInstalled": {
         "type": "String",
@@ -2614,7 +2600,6 @@
     "previous": "Précédent",
     "otherPartyNotLoggedIn": "L'autre partie n'est pas actuellement connectée et ne peut donc pas recevoir de messages !",
     "open": "Ouvrir",
-    "waitingForServer": "En attente du serveur...",
     "newChatRequest": "📩 Nouvelle demande de chat",
     "contentNotificationSettings": "Paramètres de notification du contenu",
     "generalNotificationSettings": "Paramètres de notification généraux",
@@ -3453,10 +3438,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10336,5 +10317,8 @@
     "customCourseStepDesc": "Un cours est un ensemble d'activités de conversation qui suivent votre manuel, que vos étudiants peuvent faire ensemble comme devoirs.",
     "reopenAppToFinishSwitching": "Fermez complètement l'application et rouvrez-la pour terminer le changement.",
     "teamCode": "Code d'équipe",
+    "connectionOffline": "Vous êtes hors ligne. Pangea Chat se reconnectera lorsque votre connexion sera rétablie.",
+    "connectionUnreachable": "Impossible d'atteindre Pangea Chat. Nouvelle tentative…",
+    "connectionBackOnline": "De nouveau en ligne",
     "missionDueDate": "Échéance le {date} à {time}"
 }

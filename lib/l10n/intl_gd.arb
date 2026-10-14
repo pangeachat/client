@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-14 10:27:44.178610",
+    "@@last_modified": "2026-10-14 13:23:04.454375",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -364,8 +364,6 @@
     "status": "Inbhe",
     "statusExampleMessage": "Ciamar a tha thu an-diugh?",
     "submit": "Cuir a-steach",
-    "synchronizingPleaseWait": "A’ sioncronachadh… Fuirich, mas e do thoil e.",
-    "synchronizingPleaseWaitCounter": " A’ sioncronachadh… ({percentage}%)",
     "systemTheme": "Siostam",
     "theyDontMatch": "Chan eil iad a’ maidseadh",
     "theyMatch": "Tha iad a’ maidseadh",
@@ -590,7 +588,6 @@
     "previous": "Roimhe",
     "otherPartyNotLoggedIn": "Chan eil am pàrtaidh eile air logadh a-steach an-dràsta agus mar sin chan urrainn dhaibh teachdaireachdan fhaighinn!",
     "open": "Fosgail",
-    "waitingForServer": "A' feitheamh ris an fhrithealaiche...",
     "newChatRequest": "📩 Iarrtas còmhradh ùr",
     "contentNotificationSettings": "Roghainnean fios susbaint",
     "generalNotificationSettings": "Roghainnean fios coitcheann",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "’S e seata de ghnìomhachdan còmhraidh a th’ ann an cùrsa a leanas an leabhar-teacsa agad, airson gum bi na h-oileanaich agad ga dhèanamh còmhla mar obair-dachaigh.",
     "reopenAppToFinishSwitching": "Dùin an aplacaid gu tur agus fosgail a-rithist i gus crìoch a chur air an atharrachadh.",
     "teamCode": "Còd sgioba",
+    "connectionOffline": "Tha thu far-loidhne. Nì Pangea Chat ath-cheangal nuair a bhios an ceangal agad air ais.",
+    "connectionUnreachable": "Chan urrainn dhuinn Pangea Chat a ruighinn. A’ feuchainn a-rithist…",
+    "connectionBackOnline": "Air ais air-loidhne",
     "missionDueDate": "Ri phàigheadh {date}, {time}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-14 10:27:50.459790",
+    "@@last_modified": "2026-10-14 13:23:15.597743",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -364,8 +364,6 @@
     "status": "තත්ත්වය",
     "statusExampleMessage": "ඔබට අද කොහොමද?",
     "submit": "ඉදිරිපත් කරන්න",
-    "synchronizingPleaseWait": "සමමුහුර්ත වෙමින් පවතී… කරුණාකර රැඳී සිටින්න.",
-    "synchronizingPleaseWaitCounter": " සමමුහුර්ත වෙමින් පවතී… ({percentage}%)",
     "systemTheme": "පද්ධතිය",
     "theyDontMatch": "ඒවා නොගැලපේ",
     "theyMatch": "ඒවා ගැලපේ",
@@ -590,7 +588,6 @@
     "previous": "පෙර",
     "otherPartyNotLoggedIn": "අනෙක් පාර්ශවය දැනට ලොග් වී නොමැති අතර, එබැවින් පණිවිඩ ලබා ගත නොහැක!",
     "open": "විවෘත කරන්න",
-    "waitingForServer": "සේවාදායකය සඳහා රැඳී සිටිමින්...",
     "newChatRequest": "📩 නව චැට් ඉල්ලීම",
     "contentNotificationSettings": "අන්තර්ගත දැනුම්දීම් සැකසීම්",
     "generalNotificationSettings": "සාමාන්‍ය දැනුම්දීම් සැකසීම්",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "පාඨමාලාවක් යනු ඔබේ පෙළපොතට අනුව සකස් කරන ලද සංවාද ක්‍රියාකාරකම් සමූහයකි. එය ඔබේ සිසුන්ට ගෙදර වැඩ ලෙස එකට කිරීමට පුළුවන.",
     "reopenAppToFinishSwitching": "මාරු කිරීම අවසන් කිරීමට යෙදුම සම්පූර්ණයෙන්ම වසා නැවත විවෘත කරන්න.",
     "teamCode": "කණ්ඩායම් කේතය",
+    "connectionOffline": "ඔබ නොබැඳිව සිටී. ඔබගේ සම්බන්ධතාවය නැවත ලැබුණු විට Pangea Chat නැවත සම්බන්ධ වනු ඇත.",
+    "connectionUnreachable": "Pangea Chat වෙත ළඟා විය නොහැක. නැවත උත්සාහ කරමින්…",
+    "connectionBackOnline": "නැවත සබැඳි විය",
     "missionDueDate": "{date}, {time} වන විට"
 }

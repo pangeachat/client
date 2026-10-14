@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-14 10:27:41.425983",
+    "@@last_modified": "2026-10-14 13:23:01.070203",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -364,8 +364,6 @@
     "status": "ষ্টেটাছ",
     "statusExampleMessage": "আজি আপোনাৰ কেনে আছে?",
     "submit": "দাখিল কৰক",
-    "synchronizingPleaseWait": "চিনক্ৰনাইজ হৈ আছে… অনুগ্ৰহ কৰি অপেক্ষা কৰক।",
-    "synchronizingPleaseWaitCounter": " চিনক্ৰনাইজ হৈ আছে… ({percentage}%)",
     "systemTheme": "চিষ্টেম",
     "theyDontMatch": "এইবোৰ নিমিলে",
     "theyMatch": "এইবোৰ মিলে",
@@ -590,7 +588,6 @@
     "previous": "পূৰ্বৱৰ্তী",
     "otherPartyNotLoggedIn": "আন পক্ষই বৰ্তমান লগ ইন কৰা নাই আৰু সেয়ে বাৰ্তা গ্ৰহণ কৰিব নোৱাৰে!",
     "open": "খোলক",
-    "waitingForServer": "চাৰ্ভাৰৰ বাবে অপেক্ষা কৰি আছে...",
     "newChatRequest": "📩 নতুন চেট অনুৰোধ",
     "contentNotificationSettings": "সমল অধিসূচনা ছেটিংছ",
     "generalNotificationSettings": "সাধাৰণ অধিসূচনা ছেটিংছ",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "এটা পাঠ্যক্ৰম হৈছে আপোনাৰ পাঠ্যপুথি অনুসৰণ কৰা কথোপকথন কাৰ্যকলাপৰ এটা সংহতি, যি আপোনাৰ ছাত্ৰ-ছাত্ৰীসকলে ঘৰৰ কাম হিচাপে একেলগে কৰিব পাৰে।",
     "reopenAppToFinishSwitching": "সুইচিং শেষ কৰিবলৈ এপটো সম্পূৰ্ণৰূপে বন্ধ কৰি পুনৰ খুলক।",
     "teamCode": "দলৰ ক'ড",
+    "connectionOffline": "আপুনি অফলাইন। আপোনাৰ সংযোগ ঘূৰি অহাৰ লগে লগে Pangea Chat পুনৰ সংযোগ হ'ব।",
+    "connectionUnreachable": "Pangea Chat-লৈ যাব নোৱাৰি। পুনৰ চেষ্টা কৰি আছে…",
+    "connectionBackOnline": "পুনৰ অনলাইন হ'ল",
     "missionDueDate": "{date}, {time} তাৰিখে শেষ হ'ব"
 }

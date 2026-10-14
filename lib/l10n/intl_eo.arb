@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-14 10:27:43.440662",
+    "@@last_modified": "2026-10-14 13:23:01.780608",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -1505,11 +1505,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Spegulante… Bonvolu atendi.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "Sistema",
     "@systemTheme": {
         "type": "String",
@@ -1874,7 +1869,6 @@
     "separateChatTypes": "Apartigu Rektajn Babilejojn kaj Grupojn",
     "setChatDescription": "Agordu priskribon de la babilejo",
     "presencesToggle": "Montru statusajn mesaĝojn de aliaj uzantoj",
-    "synchronizingPleaseWaitCounter": "Sinkronigas… ({percentage}%)",
     "unverified": "Nekonfirmita",
     "messageInfo": "Informo pri mesaĝo",
     "time": "Tempo",
@@ -2057,7 +2051,6 @@
     "previous": "Antaŭa",
     "otherPartyNotLoggedIn": "La alia partio nun ne estas ensalutita kaj tial ne povas ricevi mesaĝojn!",
     "open": "Malfermi",
-    "waitingForServer": "Atendas la servilon...",
     "newChatRequest": "📩 Nova babilepeto",
     "contentNotificationSettings": "Agordoj por sciigo pri enhavo",
     "generalNotificationSettings": "Ĝeneralaj sciigaj agordoj",
@@ -3160,14 +3153,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@unverified": {
         "type": "String",
         "placeholders": {}
@@ -4024,10 +4009,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10926,5 +10907,8 @@
     "customCourseStepDesc": "Kurso estas aro de konversaciaj agadoj, kiuj sekvas vian lernolibron, por ke viaj studentoj faru kune kiel hejmtasko.",
     "reopenAppToFinishSwitching": "Fermu la apon tute kaj remalfermu ĝin por fini la ŝanĝon.",
     "teamCode": "Teama kodo",
+    "connectionOffline": "Vi estas eksterrete. Pangea Chat rekonektos kiam via konekto revenos.",
+    "connectionUnreachable": "Ne eblas atingi Pangea Chat. Reprovas…",
+    "connectionBackOnline": "Reen enrete",
     "missionDueDate": "Limdato {date}, {time}"
 }

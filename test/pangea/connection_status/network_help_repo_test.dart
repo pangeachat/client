@@ -11,11 +11,11 @@ import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:fluffychat/features/network_filter/filtered_network_controller.dart';
-import 'package:fluffychat/features/network_filter/network_help_repo.dart';
-import 'package:fluffychat/features/network_filter/network_help_request.dart';
-import 'package:fluffychat/features/network_filter/network_host_category.dart';
-import 'package:fluffychat/features/network_filter/network_type.dart';
+import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
+import 'package:fluffychat/features/connection_status/network_help_repo.dart';
+import 'package:fluffychat/features/connection_status/network_help_request.dart';
+import 'package:fluffychat/features/connection_status/network_host_category.dart';
+import 'package:fluffychat/features/connection_status/network_type.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import '../sentry_capture_harness.dart';
 

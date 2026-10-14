@@ -859,11 +859,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Sinchronizuojama… Prašome palaukti.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "verify": "Patvirtinti",
     "@verify": {
         "type": "String",
@@ -2084,7 +2079,6 @@
     "sendImages": "Siųsti {count} nuotrauką",
     "setChatDescription": "Nustatyti pokalbio aprašymą",
     "presencesToggle": "Rodyti būsenos žinutes iš kitų vartotojų",
-    "synchronizingPleaseWaitCounter": "Sinchronizuojama… ({percentage}%)",
     "invitedBy": "📩 Pakvietė {user}",
     "hasKnocked": "🚪 {user} pasibeldė",
     "knock": "Klausyti",
@@ -2219,7 +2213,6 @@
     "previous": "Ankstesnis",
     "otherPartyNotLoggedIn": "Kita šalis šiuo metu neprisijungusi ir todėl negali gauti žinučių!",
     "open": "Atidaryti",
-    "waitingForServer": "Laukiama serverio...",
     "newChatRequest": "📩 Naujas pokalbio užklausimas",
     "contentNotificationSettings": "Turinio pranešimų nustatymai",
     "generalNotificationSettings": "Bendrieji pranešimų nustatymai",
@@ -2963,7 +2956,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-14 10:27:47.571236",
+    "@@last_modified": "2026-10-14 13:23:10.807625",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -3226,14 +3219,6 @@
     "@presencesToggle": {
         "type": "String",
         "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "@invitedBy": {
         "type": "String",
@@ -3860,10 +3845,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10762,5 +10743,8 @@
     "customCourseStepDesc": "Kursas – tai pokalbių užduočių rinkinys, atitinkantis jūsų vadovėlį, skirtas jūsų studentams atlikti kartu kaip namų darbus.",
     "reopenAppToFinishSwitching": "Visiškai uždarykite programėlę ir atidarykite ją iš naujo, kad užbaigtumėte perjungimą.",
     "teamCode": "Komandos kodas",
+    "connectionOffline": "Esate neprisijungę. „Pangea Chat“ vėl prisijungs, kai atsiras ryšys.",
+    "connectionUnreachable": "Nepasiekiama „Pangea Chat“. Bandoma dar kartą…",
+    "connectionBackOnline": "Vėl prisijungę",
     "missionDueDate": "Terminas {date}, {time}"
 }

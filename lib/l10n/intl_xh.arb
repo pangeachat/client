@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-14 10:27:53.951138",
+    "@@last_modified": "2026-10-14 13:23:20.467791",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -364,8 +364,6 @@
     "status": "Isimo",
     "statusExampleMessage": "Unjani namhlanje?",
     "submit": "Ngenisa",
-    "synchronizingPleaseWait": "Iyangqamanisa… Nceda linda.",
-    "synchronizingPleaseWaitCounter": " Iyangqamanisa… ({percentage}%)",
     "systemTheme": "Inkqubo",
     "theyDontMatch": "Azihambelani",
     "theyMatch": "Ziyahambelana",
@@ -590,7 +588,6 @@
     "previous": "Okwangaphambili",
     "otherPartyNotLoggedIn": "Elinye iqela alikho kwi-intanethi okwangoku kwaye ngoko alikwazi ukufumana imiyalezo!",
     "open": "Vula",
-    "waitingForServer": "Kulindelwe umfanekiso omncinci wevidiyo...",
     "newChatRequest": "📩 Isicelo esitsha sencoko",
     "contentNotificationSettings": "Izicwangciso zezaziso zomxholo",
     "generalNotificationSettings": "Izicwangciso zezaziso ngokubanzi",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "Ikhosi yingqokelela yemisebenzi yencoko elandela incwadi yakho, ukuze abafundi bakho bayenze kunye njengomsebenzi wesikolo wasekhaya.",
     "reopenAppToFinishSwitching": "Vala ngokupheleleyo i-app uze uyivule kwakhona ukuze ugqibezele ukutshintsha.",
     "teamCode": "Ikhowudi yeqela",
+    "connectionOffline": "Ungaxhunyiwe kwi-intanethi. I-Pangea Chat izakuphinda ixhume xa unxibelelwano lwakho lubuyile.",
+    "connectionUnreachable": "Ayikwazi ukufikelela kwi-Pangea Chat. Izama kwakhona…",
+    "connectionBackOnline": "Ubuyile kwi-intanethi",
     "missionDueDate": "Ifuneka ngo-{date}, {time}"
 }

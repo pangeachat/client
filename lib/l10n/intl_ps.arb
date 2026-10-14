@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-14 10:27:50.231430",
+    "@@last_modified": "2026-10-14 13:23:14.917038",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -364,8 +364,6 @@
     "status": "حالت",
     "statusExampleMessage": "نن څنګه یاست؟",
     "submit": "سپارل",
-    "synchronizingPleaseWait": "همغږي کیږي… مهرباني وکړئ انتظار وکړئ.",
-    "synchronizingPleaseWaitCounter": " همغږي کیږي… ({percentage}%)",
     "systemTheme": "سیسټم",
     "theyDontMatch": "هغوی سره سمون نه خوري",
     "theyMatch": "هغوی سره سمون خوري",
@@ -590,7 +588,6 @@
     "previous": "مخکینی",
     "otherPartyNotLoggedIn": "بل اړخ اوس مهال ننوتلی نه دی او له همدې امله پیغامونه نشي ترلاسه کولی!",
     "open": "خلاص کړئ",
-    "waitingForServer": "د سرور لپاره انتظار...",
     "newChatRequest": "📩 د چټ نوې غوښتنه",
     "contentNotificationSettings": "د مینځپانګې خبرتیا تنظیمات",
     "generalNotificationSettings": "عمومي خبرتیا تنظیمات",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "یو کورس د خبرو اترو فعالیتونو یوه ټولګه ده چې ستاسو د درسي کتاب تعقیبوي، ترڅو ستاسو زده کونکي د کورني کار په توګه یوځای ترسره کړي.",
     "reopenAppToFinishSwitching": "اپلیکیشن په بشپړه توګه بند کړئ او بیا یې خلاص کړئ ترڅو بدلول پای ته ورسیږي.",
     "teamCode": "د ټیم کوډ",
+    "connectionOffline": "تاسو آفلاین یاست. پانګیا چیټ به بیا وصل شي کله چې ستاسو اړیکه بیرته راشي.",
+    "connectionUnreachable": "پانګیا چیټ ته لاسرسی نشته. بیا هڅه کوم…",
+    "connectionBackOnline": "بیا آنلاین شو",
     "missionDueDate": "د {date}, {time} پورې"
 }

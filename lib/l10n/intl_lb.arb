@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-14 10:27:47.416781",
+    "@@last_modified": "2026-10-14 13:23:10.379356",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -364,8 +364,6 @@
     "status": "Status",
     "statusExampleMessage": "Wéi geet et Iech haut?",
     "submit": "Ofschécken",
-    "synchronizingPleaseWait": "Synchroniséieren… Waart w.e.g.",
-    "synchronizingPleaseWaitCounter": " Synchroniséieren… ({percentage}%)",
     "systemTheme": "System",
     "theyDontMatch": "Si passen net",
     "theyMatch": "Si passen",
@@ -590,7 +588,6 @@
     "previous": "Zréck",
     "otherPartyNotLoggedIn": "Deen anere Participant ass aktuell net ageloggt a kann dofir keng Messagë kréien!",
     "open": "Opmaachen",
-    "waitingForServer": "Waart op de Server...",
     "newChatRequest": "📩 Nei Chat-Ufro",
     "contentNotificationSettings": "Notifikatiounsastellunge fir den Inhalt",
     "generalNotificationSettings": "Allgemeng Notifikatiounsastellungen",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "E Cours ass eng Rei vu Gespréichsaktivitéiten, déi Äert Léierbuch verfollegen, fir Är Schüler als Hausaufgab zesummen ze maachen.",
     "reopenAppToFinishSwitching": "Maach d'App komplett zou an dann nees op fir de Wiessel ofzeschléissen.",
     "teamCode": "Team Code",
+    "connectionOffline": "Dir sidd offline. Pangea Chat wäert sech erëm verbannen wann Är Verbindung erëm do ass.",
+    "connectionUnreachable": "Pangea Chat ass net erreechbar. Probéieren nach eng Kéier…",
+    "connectionBackOnline": "Erem online",
     "missionDueDate": "Fälleg {date}, {time}"
 }

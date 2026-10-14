@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-14 10:27:54.400190",
+    "@@last_modified": "2026-10-14 13:23:25.889961",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -364,8 +364,6 @@
     "status": "Isimo",
     "statusExampleMessage": "Unjani namuhla?",
     "submit": "Thumela",
-    "synchronizingPleaseWait": "Iyaqondanisa… Sicela ulinde.",
-    "synchronizingPleaseWaitCounter": " Iyaqondanisa… ({percentage}%)",
     "systemTheme": "Uhlelo",
     "theyDontMatch": "Azihambelani",
     "theyMatch": "Ziyahambelana",
@@ -590,7 +588,6 @@
     "previous": "Okwedlule",
     "otherPartyNotLoggedIn": "Omunye umuntu okwamanje akangeni ngemvume ngakho-ke akakwazi ukuthola imilayezo!",
     "open": "Vula",
-    "waitingForServer": "Kulindwe iseva...",
     "newChatRequest": "📩 Isicelo sengxoxo esisha",
     "contentNotificationSettings": "Izilungiselelo zezaziso zokuqukethwe",
     "generalNotificationSettings": "Izilungiselelo zezaziso ezijwayelekile",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "Ikhosi iqoqo lemisebenzi yengxoxo elandela incwadi yakho, ukuze abafundi bakho bayenze ndawonye njengomsebenzi wesikole.",
     "reopenAppToFinishSwitching": "Vala uhlelo lokusebenza ngokuphelele bese ulivula futhi ukuze uqedele ukushintsha.",
     "teamCode": "Ikhodi yeqembu",
+    "connectionOffline": "Awuxhunyiwe ku-inthanethi. I-Pangea Chat izophinda ixhumeke uma usubuyile ku-inthanethi.",
+    "connectionUnreachable": "Ayikwazi ukufinyelela i-Pangea Chat. Izama futhi…",
+    "connectionBackOnline": "Ubuyile ku-inthanethi",
     "missionDueDate": "Kufanele {date}, {time}"
 }

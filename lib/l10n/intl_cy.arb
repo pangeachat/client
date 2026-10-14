@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-14 10:27:42.036914",
+    "@@last_modified": "2026-10-14 13:23:00.977004",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -364,8 +364,6 @@
     "status": "Statws",
     "statusExampleMessage": "Sut wyt ti heddiw?",
     "submit": "Cyflwyno",
-    "synchronizingPleaseWait": "Yn cydamseru… Arhoswch.",
-    "synchronizingPleaseWaitCounter": " Yn cydamseru… ({percentage}%)",
     "systemTheme": "System",
     "theyDontMatch": "Nid ydynt yn cydweddu",
     "theyMatch": "Maent yn cydweddu",
@@ -590,7 +588,6 @@
     "previous": "Blaenorol",
     "otherPartyNotLoggedIn": "Nid yw'r parti arall wedi mewngofnodi ar hyn o bryd ac felly ni all dderbyn negeseuon!",
     "open": "Agor",
-    "waitingForServer": "Yn aros am y gweinydd...",
     "newChatRequest": "📩 Cais sgwrs newydd",
     "contentNotificationSettings": "Gosodiadau hysbysiadau cynnwys",
     "generalNotificationSettings": "Gosodiadau hysbysiadau cyffredinol",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "Mae cwrs yn set o weithgareddau sgwrsio sy'n dilyn eich gwerslyfr, i'ch myfyrwyr eu gwneud gyda'i gilydd fel gwaith cartref.",
     "reopenAppToFinishSwitching": "Caewch yr ap yn llwyr ac agorwch ef eto i orffen newid.",
     "teamCode": "Cod tîm",
+    "connectionOffline": "Rydych all-lein. Bydd Pangea Chat yn ailgysylltu pan fydd eich cysylltiad yn ôl.",
+    "connectionUnreachable": "Methu cyrraedd Pangea Chat. Yn ceisio eto…",
+    "connectionBackOnline": "Yn ôl ar-lein",
     "missionDueDate": "Dyddiad dyledus {date}, {time}"
 }

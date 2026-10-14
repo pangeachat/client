@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-14 10:27:53.260019",
+    "@@last_modified": "2026-10-14 13:23:20.027601",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -364,8 +364,6 @@
     "status": "اسٹیٹس",
     "statusExampleMessage": "آج آپ کیسے ہیں؟",
     "submit": "جمع کرائیں",
-    "synchronizingPleaseWait": "ہم آہنگ ہو رہا ہے… براہ کرم انتظار کریں۔",
-    "synchronizingPleaseWaitCounter": " ہم آہنگ ہو رہا ہے… ({percentage}%)",
     "systemTheme": "سسٹم",
     "theyDontMatch": "وہ مماثل نہیں ہیں",
     "theyMatch": "وہ مماثل ہیں",
@@ -590,7 +588,6 @@
     "previous": "پچھلا",
     "otherPartyNotLoggedIn": "دوسرا فریق فی الحال لاگ ان نہیں ہے اور اس لیے پیغامات وصول نہیں کر سکتا!",
     "open": "کھولیں",
-    "waitingForServer": "سرور کا انتظار ہے...",
     "newChatRequest": "📩 نئی چیٹ کی درخواست",
     "contentNotificationSettings": "مواد کی اطلاع کی ترتیبات",
     "generalNotificationSettings": "عمومی اطلاع کی ترتیبات",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "ایک کورس گفتگو کی سرگرمیوں کا ایک مجموعہ ہے جو آپ کی نصابی کتاب کی پیروی کرتا ہے، تاکہ آپ کے طلباء ہوم ورک کے طور پر ایک ساتھ کر سکیں۔",
     "reopenAppToFinishSwitching": "سوئچنگ مکمل کرنے کے لیے ایپ کو مکمل طور پر بند کریں اور دوبارہ کھولیں۔",
     "teamCode": "ٹیم کوڈ",
+    "connectionOffline": "آپ آف لائن ہیں۔ Pangea Chat آپ کا کنکشن واپس آنے پر دوبارہ جڑ جائے گا۔",
+    "connectionUnreachable": "Pangea Chat تک رسائی حاصل نہیں کر سکتے۔ دوبارہ کوشش کر رہے ہیں…",
+    "connectionBackOnline": "دوبارہ آن لائن",
     "missionDueDate": "{date}، {time} کو واجب الادا"
 }

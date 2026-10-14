@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-14 10:27:45.595068",
+    "@@last_modified": "2026-10-14 13:23:06.254947",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -1930,11 +1930,6 @@
     "@sender": {},
     "makeAdminDescription": "Miután a felhasználót aminisztrátorrá lépteti elő, nem fogja tudni visszavonni döntését, mivel azonos jogosultsági szinttel fognak rendelkezni.",
     "@makeAdminDescription": {},
-    "synchronizingPleaseWait": "Szinkronizálás... Kérem, várjon.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "pushRules": "Push szabályok",
     "@pushRules": {
         "type": "String",
@@ -2564,15 +2559,6 @@
     },
     "oneOfYourDevicesIsNotVerified": "Egyik készüléke nem hitelesített",
     "@oneOfYourDevicesIsNotVerified": {},
-    "synchronizingPleaseWaitCounter": " Szinkronizálás… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "calculatingFileSize": "Fájl méret kalkulálása...",
     "@calculatingFileSize": {},
     "prepareSendingAttachment": "Felkészülés csatolmány küldésére...",
@@ -2634,8 +2620,6 @@
     "@strikeThrough": {},
     "otherPartyNotLoggedIn": "A másik fél jelenleg nincs bejelentkezve, emiatt nem fogadhat üzeneteket!",
     "@otherPartyNotLoggedIn": {},
-    "waitingForServer": "Várakozás a szerverre...",
-    "@waitingForServer": {},
     "open": "Megnyitás",
     "@open": {},
     "notificationRuleSuppressNotices": "Minden automata üzenetet némít",
@@ -10084,5 +10068,8 @@
     "customCourseStepDesc": "A kurzus beszélgetési tevékenységek gyűjteménye, amelyek a tankönyvedet követik, és amelyeket a diákjaid együtt végezhetnek el házi feladatként.",
     "reopenAppToFinishSwitching": "A váltás befejezéséhez zárd be teljesen az alkalmazást, majd nyisd meg újra.",
     "teamCode": "Csapatkód",
+    "connectionOffline": "Offline vagy. A Pangea Chat újra csatlakozik, amint visszatér a kapcsolatod.",
+    "connectionUnreachable": "Nem érhető el a Pangea Chat. Újrapróbálkozás…",
+    "connectionBackOnline": "Újra online",
     "missionDueDate": "Esedékes: {date}, {time}"
 }

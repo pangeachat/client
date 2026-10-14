@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-14 10:27:46.617511",
+    "@@last_modified": "2026-10-14 13:23:10.794501",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -364,8 +364,6 @@
     "status": "Күй",
     "statusExampleMessage": "Бүгін қалыңыз қалай?",
     "submit": "Жіберу",
-    "synchronizingPleaseWait": "Синхрондау… Күте тұрыңыз.",
-    "synchronizingPleaseWaitCounter": " Синхрондау… ({percentage}%)",
     "systemTheme": "Жүйе",
     "theyDontMatch": "Олар сәйкес келмейді",
     "theyMatch": "Олар сәйкес келеді",
@@ -590,7 +588,6 @@
     "previous": "Алдыңғы",
     "otherPartyNotLoggedIn": "Екінші тарап қазір жүйеге кірмеген, сондықтан хабарламаларды қабылдай алмайды!",
     "open": "Ашу",
-    "waitingForServer": "Серверді күтуде...",
     "newChatRequest": "📩 Жаңа чат сұрауы",
     "contentNotificationSettings": "Мазмұн хабарландыру параметрлері",
     "generalNotificationSettings": "Жалпы хабарландыру параметрлері",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "Курс — бұл оқушыларыңыздың үй тапсырмасы ретінде бірге орындауы үшін оқулығыңызға сәйкес келетін сөйлесу әрекеттерінің жиынтығы.",
     "reopenAppToFinishSwitching": "Ауыстыруды аяқтау үшін қолданбаны толығымен жауып, қайта ашыңыз.",
     "teamCode": "Топ коды",
+    "connectionOffline": "Сіз офлайнсыз. Pangea Chat байланыс қалпына келгенде қайта қосылады.",
+    "connectionUnreachable": "Pangea Chat-қа қосылу мүмкін емес. Қайта әрекеттенуде…",
+    "connectionBackOnline": "Желідесіз",
     "missionDueDate": "{date}, {time} мерзімі"
 }

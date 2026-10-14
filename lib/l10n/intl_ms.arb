@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-14 10:27:48.499104",
+    "@@last_modified": "2026-10-14 13:23:12.051709",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -364,8 +364,6 @@
     "status": "Status",
     "statusExampleMessage": "Apa khabar hari ini?",
     "submit": "Hantar",
-    "synchronizingPleaseWait": "Menyegerakkan… Sila tunggu.",
-    "synchronizingPleaseWaitCounter": " Menyegerakkan… ({percentage}%)",
     "systemTheme": "Sistem",
     "theyDontMatch": "Tidak Sepadan",
     "theyMatch": "Sepadan",
@@ -590,7 +588,6 @@
     "previous": "Sebelumnya",
     "otherPartyNotLoggedIn": "Pihak lain tidak log masuk pada masa ini dan oleh itu tidak dapat menerima mesej!",
     "open": "Buka",
-    "waitingForServer": "Menunggu pelayan...",
     "newChatRequest": "📩 Permintaan sembang baharu",
     "contentNotificationSettings": "Tetapan pemberitahuan kandungan",
     "generalNotificationSettings": "Tetapan pemberitahuan umum",
@@ -2430,5 +2427,8 @@
     "customCourseStepDesc": "Kurs ialah set aktiviti perbualan yang mengikut buku teks anda, untuk pelajar anda lakukan bersama sebagai kerja rumah.",
     "reopenAppToFinishSwitching": "Tutup aplikasi sepenuhnya dan buka semula untuk menyelesaikan penukaran.",
     "teamCode": "Kod pasukan",
+    "connectionOffline": "Anda berada di luar talian. Sembang Pangea akan menyambung semula apabila sambungan anda kembali.",
+    "connectionUnreachable": "Tidak dapat mencapai Sembang Pangea. Mencuba lagi…",
+    "connectionBackOnline": "Kembali dalam talian",
     "missionDueDate": "Tamat {date}, {time}"
 }
