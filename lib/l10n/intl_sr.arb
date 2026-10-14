@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:48.852012",
+    "@@last_modified": "2026-10-14 13:23:18.054220",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -1802,8 +1802,6 @@
     "setChatDescription": "Поставите опис разговора",
     "shareLocation": "Дели локацију",
     "presencesToggle": "Прикажи статус поруке од других корисника",
-    "synchronizingPleaseWait": "Синхронизујемо… Молимо сачекајте.",
-    "synchronizingPleaseWaitCounter": " Синхронизујемо… ({percentage}%)",
     "unverified": "Непотврђено",
     "messageInfo": "Информације о поруци",
     "time": "Време",
@@ -1986,7 +1984,6 @@
     "previous": "Prethodno",
     "otherPartyNotLoggedIn": "Druga strana trenutno nije prijavljena i stoga ne može primati poruke!",
     "open": "Otvoreno",
-    "waitingForServer": "Čekanje na server...",
     "newChatRequest": "📩 Nova zahtev za chat",
     "contentNotificationSettings": "Podešavanja obaveštenja sadržaja",
     "generalNotificationSettings": "Opšta podešavanja obaveštenja",
@@ -3160,18 +3157,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@unverified": {
         "type": "String",
         "placeholders": {}
@@ -4028,10 +4013,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10929,5 +10910,8 @@
     "newCourseChat": "Novo ćaskanje o kursu",
     "customCourseStepDesc": "Kurs je skup konverzacijskih aktivnosti koje prate vaš udžbenik, a koje vaši učenici rade zajedno kao domaći zadatak.",
     "reopenAppToFinishSwitching": "Potpuno zatvorite aplikaciju i ponovo je otvorite da biste završili prebacivanje.",
-    "teamCode": "Kod tima"
+    "teamCode": "Kod tima",
+    "connectionOffline": "Nema interneta. Pangea Chat će se ponovo povezati kada se veza uspostavi.",
+    "connectionUnreachable": "Pangea Chat je nedostupan. Pokušavam ponovo…",
+    "connectionBackOnline": "Ponovo na mreži"
 }

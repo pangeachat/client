@@ -1312,10 +1312,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@passwordHasBeenChanged": {
         "type": "String",
         "placeholders": {}
@@ -2160,8 +2156,6 @@
     "presencesToggle": "Monstra message de stato de altere usatores",
     "startedACall": "{senderName} ha comenciat un appel",
     "statusExampleMessage": "Qual es tu hodie?",
-    "synchronizingPleaseWait": "Synchronisante… Per favor, aspetta.",
-    "synchronizingPleaseWaitCounter": " Synchronisante… ({percentage}%)",
     "theyDontMatch": "Il ne coincide pas",
     "tooManyRequestsWarning": "Tro má request. Per favor, tenta re-intrar pós tarde!",
     "tryToSendAgain": "Prova de mandar ancora",
@@ -2345,7 +2339,6 @@
     "previous": "Precedent",
     "otherPartyNotLoggedIn": "L'autra partia es actualmen ne connectet e per consequente ne pote acceptar messages!",
     "open": "Avertar",
-    "waitingForServer": "Spere pro server...",
     "newChatRequest": "📩 Nov request de chat",
     "contentNotificationSettings": "Configuraciones de notification de contento",
     "generalNotificationSettings": "Configuraciones general de notification",
@@ -3089,7 +3082,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-13 13:03:44.748206",
+    "@@last_modified": "2026-10-14 13:23:07.359119",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -3217,14 +3210,6 @@
     "@presencesToggle": {
         "type": "String",
         "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "@invitedBy": {
         "type": "String",
@@ -3711,10 +3696,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10612,5 +10593,8 @@
     "newCourseChat": "Comhrá cúrsa nua",
     "customCourseStepDesc": "Is sraith gníomhaíochtaí comhrá é cúrsa a leanann do théacsleabhar, le déanamh ag do mhic léinn le chéile mar obair bhaile.",
     "reopenAppToFinishSwitching": "Dún an aip go hiomlán agus oscail arís í chun an t-athrú a chríochnú.",
-    "teamCode": "Cód foirne"
+    "teamCode": "Cód foirne",
+    "connectionOffline": "Tá tú as líne. Déanfaidh Pangea Chat athcheangal nuair a bheidh do nasc ar ais.",
+    "connectionUnreachable": "Ní féidir Pangea Chat a bhaint amach. Ag iarraidh arís…",
+    "connectionBackOnline": "Ar ais ar líne"
 }

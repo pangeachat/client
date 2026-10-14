@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:47.852696",
+    "@@last_modified": "2026-10-14 13:23:15.821860",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -1546,11 +1546,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Sincronizando… Aguarde.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "Sistema",
     "@systemTheme": {
         "type": "String",
@@ -2496,15 +2491,6 @@
     "@crossVerifiedDevicesIfEnabled": {},
     "checkList": "Lista de tarefas",
     "@checkList": {},
-    "synchronizingPleaseWaitCounter": " Sincronizando… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "invitedBy": "📩 Convidado por {user}",
     "@invitedBy": {
         "placeholders": {
@@ -2667,8 +2653,6 @@
     "@notificationRuleEncryptedRoomOneToOne": {},
     "pleaseWaitUntilInvited": "Aguarde até que alguém da sala te convide.",
     "@pleaseWaitUntilInvited": {},
-    "waitingForServer": "Aguardando o servidor...",
-    "@waitingForServer": {},
     "notificationRuleEncryptedDescription": "Notifica o usuário de mensagens em salas criptografadas.",
     "@notificationRuleEncryptedDescription": {},
     "sendRoomNotifications": "Enviar notificações de @room",
@@ -9980,5 +9964,8 @@
     "newCourseChat": "Novo chat do curso",
     "customCourseStepDesc": "Um curso é um conjunto de atividades de conversação que seguem seu livro didático, para seus alunos fazerem juntos como lição de casa.",
     "reopenAppToFinishSwitching": "Feche o aplicativo completamente e abra-o novamente para finalizar a troca.",
-    "teamCode": "Código da equipe"
+    "teamCode": "Código da equipe",
+    "connectionOffline": "Você está offline. O Pangea Chat irá reconectar quando sua conexão voltar.",
+    "connectionUnreachable": "Não é possível acessar o Pangea Chat. Tentando novamente…",
+    "connectionBackOnline": "Online novamente"
 }

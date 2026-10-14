@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-13 13:03:40.013344",
+    "@@last_modified": "2026-10-14 13:23:02.825113",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -364,8 +364,6 @@
     "status": "Status",
     "statusExampleMessage": "Bu gün necəsən?",
     "submit": "Göndər",
-    "synchronizingPleaseWait": "Sinxronizasiya edilir… Zəhmət olmasa, gözləyin.",
-    "synchronizingPleaseWaitCounter": " Sinxronizasiya edilir… ({percentage}%)",
     "systemTheme": "Sistem",
     "theyDontMatch": "Uyğun gəlmirlər",
     "theyMatch": "Uyğun gəlirlər",
@@ -590,7 +588,6 @@
     "previous": "Əvvəlki",
     "otherPartyNotLoggedIn": "Qarşı tərəf hazırda daxil olmayıb və buna görə də mesajları qəbul edə bilmir!",
     "open": "Aç",
-    "waitingForServer": "Server gözlənilir...",
     "newChatRequest": "📩 Yeni söhbət istəyi",
     "contentNotificationSettings": "Məzmun bildiriş tənzimləmələri",
     "generalNotificationSettings": "Ümumi bildiriş tənzimləmələri",
@@ -2429,5 +2426,8 @@
     "newCourseChat": "Yeni kurs söhbəti",
     "customCourseStepDesc": "Kurs, tələbələrinizin ev tapşırığı olaraq birlikdə edəcəyi, dərsliklərinizə uyğun söhbət fəaliyyətləri toplusudur.",
     "reopenAppToFinishSwitching": "Keçidi tamamlamaq üçün proqramı tamamilə bağlayın və yenidən açın.",
-    "teamCode": "Komanda kodu"
+    "teamCode": "Komanda kodu",
+    "connectionOffline": "Siz oflaynsınız. Pangea Chat bağlantınız bərpa olunduqda yenidən qoşulacaq.",
+    "connectionUnreachable": "Pangea Chat-a çatmaq mümkün deyil. Yenidən cəhd edilir…",
+    "connectionBackOnline": "Yenidən onlayn"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:41.466551",
+    "@@last_modified": "2026-10-14 13:23:04.443833",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -1935,11 +1935,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "در حال همگام‌سازی... لطفا صبر کنید.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "unknownEvent": "رویداد ناشناخته '{type}'",
     "@unknownEvent": {
         "type": "String",
@@ -2244,15 +2239,6 @@
     "@presencesToggle": {
         "type": "String",
         "placeholders": {}
-    },
-    "synchronizingPleaseWaitCounter": " در حال همگام‌سازی... ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "invitedBy": "📩 دعوت‌شده توسط {user}",
     "@invitedBy": {
@@ -2628,8 +2614,6 @@
     "@otherPartyNotLoggedIn": {},
     "open": "باز کردن",
     "@open": {},
-    "waitingForServer": "در انتظار سرور...",
-    "@waitingForServer": {},
     "newChatRequest": "📩 درخواست گپ جدید",
     "@newChatRequest": {},
     "contentNotificationSettings": "تنظیمات آگاه‌ساز محتوا",
@@ -10068,5 +10052,8 @@
     "newCourseChat": "چت دوره جدید",
     "customCourseStepDesc": "یک دوره مجموعه‌ای از فعالیت‌های مکالمه است که از کتاب درسی شما پیروی می‌کند و دانش‌آموزان شما می‌توانند آن را به عنوان تکلیف با هم انجام دهند.",
     "reopenAppToFinishSwitching": "برای اتمام جابجایی، برنامه را به طور کامل ببندید و دوباره باز کنید.",
-    "teamCode": "کد تیم"
+    "teamCode": "کد تیم",
+    "connectionOffline": "شما آفلاین هستید. پنگه‌آ چت با وصل شدن اینترنت دوباره وصل می‌شود.",
+    "connectionUnreachable": "پنگه‌آ چت در دسترس نیست. دوباره تلاش می‌شود…",
+    "connectionBackOnline": "دوباره آنلاین شد"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:50.775174",
+    "@@last_modified": "2026-10-14 13:23:19.221684",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -1224,16 +1224,6 @@
     "status": "Trạng thái",
     "statusExampleMessage": "Hôm nay bạn thế nào?",
     "submit": "Gửi",
-    "synchronizingPleaseWait": "Đang đồng bộ… Vui lòng chờ.",
-    "synchronizingPleaseWaitCounter": "Đang đồng bộ… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "systemTheme": "Hệ thống",
     "theyDontMatch": "Không khớp",
     "theyMatch": "Khớp nhau",
@@ -2202,7 +2192,6 @@
     "instructions": "Hướng dẫn",
     "constructUsePvmDesc": "Đã sử dụng trong tin nhắn thoại",
     "open": "Mở",
-    "waitingForServer": "Đang đợi phản hồi từ máy chủ...",
     "constructUseCorMmDesc": "Đúng trong ý nghĩa tin nhắn",
     "constructUseIncMmDesc": "Sai trong ý nghĩa tin nhắn",
     "constructUseIgnMmDesc": "Bỏ qua trong ý nghĩa tin nhắn",
@@ -7282,5 +7271,8 @@
     "newCourseChat": "Trò chuyện khóa học mới",
     "customCourseStepDesc": "Một khóa học là một tập hợp các hoạt động hội thoại theo sách giáo khoa của bạn, để học sinh của bạn cùng nhau làm bài tập về nhà.",
     "reopenAppToFinishSwitching": "Đóng hoàn toàn ứng dụng và mở lại để hoàn tất việc chuyển đổi.",
-    "teamCode": "Mã nhóm"
+    "teamCode": "Mã nhóm",
+    "connectionOffline": "Bạn đang ngoại tuyến. Pangea Chat sẽ kết nối lại khi có mạng.",
+    "connectionUnreachable": "Không thể kết nối với Pangea Chat. Đang thử lại…",
+    "connectionBackOnline": "Đã trực tuyến trở lại"
 }

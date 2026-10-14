@@ -7,7 +7,7 @@ import 'package:cached_network_image_platform_interface/cached_network_image_pla
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/features/network_filter/filtered_network_controller.dart';
+import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/widgets/blur_hash.dart';
 import 'package:fluffychat/widgets/matrix.dart';

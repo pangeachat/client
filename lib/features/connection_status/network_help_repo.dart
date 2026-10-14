@@ -5,8 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' show ClientException;
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:fluffychat/features/network_filter/filtered_network_controller.dart';
-import 'package:fluffychat/features/network_filter/network_help_request.dart';
+import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
+import 'package:fluffychat/features/connection_status/network_help_request.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -29,7 +29,7 @@ enum NetworkHelpStatus {
 /// Sends a [NetworkHelpRequest] to the CMS, which emails it to the team. A
 /// request that cannot reach the CMS waits on the device and goes out on the
 /// next good connection: when a Pangea API request next succeeds, or the
-/// device changes network. See filtered-network.instructions.md, "Asking
+/// device changes network. See connection-status.instructions.md, "Asking
 /// Pangea for help".
 abstract final class NetworkHelpRepo {
   static const String _waitingKey = 'filtered_network_help_request';

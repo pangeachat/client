@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-13 13:03:43.510669",
+    "@@last_modified": "2026-10-14 13:23:05.974478",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -364,8 +364,6 @@
     "status": "Կարգավիճակ",
     "statusExampleMessage": "Ինչպե՞ս եք այսօր:",
     "submit": "Ուղարկել",
-    "synchronizingPleaseWait": "Համաժամացում… Խնդրում ենք սպասել։",
-    "synchronizingPleaseWaitCounter": " Համաժամացում… ({percentage}%)",
     "systemTheme": "Համակարգ",
     "theyDontMatch": "Նրանք չեն համընկնում",
     "theyMatch": "Նրանք համընկնում են",
@@ -590,7 +588,6 @@
     "previous": "Նախորդ",
     "otherPartyNotLoggedIn": "Մյուս կողմը ներկայումս մուտք չի գործել և, հետևաբար, չի կարող հաղորդագրություններ ստանալ։",
     "open": "Բացել",
-    "waitingForServer": "Սպասում եմ սերվերին...",
     "newChatRequest": "📩 Նոր չաթի հարցում",
     "contentNotificationSettings": "Բովանդակության ծանուցումների կարգավորումներ",
     "generalNotificationSettings": "Ընդհանուր ծանուցումների կարգավորումներ",
@@ -2429,5 +2426,8 @@
     "newCourseChat": "Նոր դասընթացի զրույց",
     "customCourseStepDesc": "Դասընթացը խոսակցական գործունեությունների շարք է, որոնք հետևում են ձեր դասագրքին, որպեսզի ձեր ուսանողները միասին կատարեն որպես տնային աշխատանք:",
     "reopenAppToFinishSwitching": "Փակեք հավելվածը և նորից բացեք՝ անցումն ավարտելու համար։",
-    "teamCode": "Թիմի կոդը"
+    "teamCode": "Թիմի կոդը",
+    "connectionOffline": "Դուք անցանց եք։ Pangea Chat-ը նորից կմիանա, երբ Ձեր կապը վերականգնվի։",
+    "connectionUnreachable": "Հնարավոր չէ հասնել Pangea Chat-ին։ Նորից փորձում է…",
+    "connectionBackOnline": "Կրկին առցանց"
 }

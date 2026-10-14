@@ -1338,20 +1338,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Сінхранізацыя... Калі ласка, пачакайце.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "synchronizingPleaseWaitCounter": " Сінхарнізацыя… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "systemTheme": "Сістэма",
     "@systemTheme": {
         "type": "String",
@@ -1712,8 +1698,6 @@
     "@otherPartyNotLoggedIn": {},
     "open": "Адкрыць",
     "@open": {},
-    "waitingForServer": "Чаканне сервера...",
-    "@waitingForServer": {},
     "newChatRequest": "📩 Запыт новага чату",
     "@newChatRequest": {},
     "contentNotificationSettings": "Налады паведамленняў кантэнту",
@@ -3544,7 +3528,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-13 13:03:39.593333",
+    "@@last_modified": "2026-10-14 13:22:59.103612",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9994,5 +9978,8 @@
     "newCourseChat": "Новы чат курса",
     "customCourseStepDesc": "Курс — гэта набор размоўных заняткаў, якія адпавядаюць вашаму падручніку, для сумеснага выканання вашымі студэнтамі ў якасці хатняга задання.",
     "reopenAppToFinishSwitching": "Цалкам зачыніце праграму і адкрыйце яе зноў, каб завяршыць пераключэнне.",
-    "teamCode": "Код каманды"
+    "teamCode": "Код каманды",
+    "connectionOffline": "Вы па-за сеткай. Pangea Chat адновіць злучэнне, калі ваша злучэнне будзе адноўлена.",
+    "connectionUnreachable": "Немагчыма дасягнуць Pangea Chat. Спрабуем яшчэ раз…",
+    "connectionBackOnline": "Зноў у сетцы"
 }

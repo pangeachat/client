@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:47.004463",
+    "@@last_modified": "2026-10-14 13:23:12.981283",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -1548,11 +1548,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Synchroniseren... Even geduld.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "Systeem",
     "@systemTheme": {
         "type": "String",
@@ -2416,15 +2411,6 @@
     },
     "wrongRecoveryKey": "Helaas... dit lijkt niet de correcte herstelsleutel.",
     "@wrongRecoveryKey": {},
-    "synchronizingPleaseWaitCounter": " Synchroniseren… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "databaseMigrationTitle": "Database is geoptimaliseerd",
     "@databaseMigrationTitle": {},
     "databaseMigrationBody": "Een ogenblik. Dit kan even duren.",
@@ -2506,8 +2492,6 @@
     "@contactServerAdmin": {},
     "noContactInformationProvided": "Server geeft geen geldige contactinformatie",
     "@noContactInformationProvided": {},
-    "waitingForServer": "Wachten op server...",
-    "@waitingForServer": {},
     "generalNotificationSettings": "Algemene melding instellingen",
     "@generalNotificationSettings": {},
     "notificationRuleInviteForMeDescription": "Stuur een melding wanneer je wordt uitgenodigd voor een chat.",
@@ -9980,5 +9964,8 @@
     "newCourseChat": "Nieuwe cursuschat",
     "customCourseStepDesc": "Een cursus is een reeks gespreksactiviteiten die je leerboek volgen, die je studenten samen als huiswerk kunnen doen.",
     "reopenAppToFinishSwitching": "Sluit de app volledig af en open hem opnieuw om het wisselen te voltooien.",
-    "teamCode": "Teamcode"
+    "teamCode": "Teamcode",
+    "connectionOffline": "Je bent offline. Pangea Chat maakt opnieuw verbinding wanneer je weer online bent.",
+    "connectionUnreachable": "Kan Pangea Chat niet bereiken. Opnieuw proberen…",
+    "connectionBackOnline": "Weer online"
 }

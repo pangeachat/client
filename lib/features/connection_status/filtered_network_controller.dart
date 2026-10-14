@@ -7,19 +7,19 @@ import 'package:http/http.dart' as http;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
-import 'package:fluffychat/features/network_filter/network_help_repo.dart';
-import 'package:fluffychat/features/network_filter/network_host_category.dart';
-import 'package:fluffychat/features/network_filter/network_probe.dart';
-import 'package:fluffychat/features/network_filter/network_type.dart';
-import 'package:fluffychat/features/network_filter/network_verdict.dart';
+import 'package:fluffychat/features/connection_status/network_help_repo.dart';
+import 'package:fluffychat/features/connection_status/network_host_category.dart';
+import 'package:fluffychat/features/connection_status/network_probe.dart';
+import 'package:fluffychat/features/connection_status/network_type.dart';
+import 'package:fluffychat/features/connection_status/network_verdict.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-import 'package:fluffychat/features/network_filter/tls_failure/tls_failure_stub.dart'
-    if (dart.library.io) 'package:fluffychat/features/network_filter/tls_failure/tls_failure_io.dart';
+import 'package:fluffychat/features/connection_status/tls_failure/tls_failure_stub.dart'
+    if (dart.library.io) 'package:fluffychat/features/connection_status/tls_failure/tls_failure_io.dart';
 
 /// Which host categories the current network blocks, and the checks that
-/// decide it. See filtered-network.instructions.md.
+/// decide it. See connection-status.instructions.md.
 ///
 /// A check runs only after something failed — a request with no response, a
 /// video opening, a sign-in starting — so a healthy network never pays for

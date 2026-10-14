@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-13 13:03:49.135024",
+    "@@last_modified": "2026-10-14 13:23:17.413736",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -364,8 +364,6 @@
     "status": "Xaaladda",
     "statusExampleMessage": "Sidee tahay maanta?",
     "submit": "Gudbi",
-    "synchronizingPleaseWait": "Isku-dubbaridid… Fadlan sug.",
-    "synchronizingPleaseWaitCounter": " Isku-dubbaridid… ({percentage}%)",
     "systemTheme": "Nidaamka",
     "theyDontMatch": "Iskuma dhigmaan",
     "theyMatch": "Way isku dhigmaan",
@@ -590,7 +588,6 @@
     "previous": "Hore",
     "otherPartyNotLoggedIn": "Qofka kale hadda kuma jiro barnaamijka sidaas darteed ma heli karo farriimo!",
     "open": "Fur",
-    "waitingForServer": "Sugitaanka serfarka...",
     "newChatRequest": "📩 Codsi sheeko oo cusub",
     "contentNotificationSettings": "Dejinta ogeysiisyada nuxurka",
     "generalNotificationSettings": "Dejinta ogeysiisyada guud",
@@ -2429,5 +2426,8 @@
     "newCourseChat": "Sheeko kooras cusub",
     "customCourseStepDesc": "Koorsadu waa qaybo waxqabadyo wada-hadal ah oo raacaya buuggaaga, si ardaydaadu ay u wada qabtaan shaqo-guri ahaan.",
     "reopenAppToFinishSwitching": "Si aad u dhammaystirto beddelka, gebi ahaanba xidh app-ka oo mar kale fur.",
-    "teamCode": "Koodhka kooxda"
+    "teamCode": "Koodhka kooxda",
+    "connectionOffline": "Waxaad ka maqan tahay khadka. Pangea Chat dib ayuu isku xirayaa marka xiriirkaagu soo laabto.",
+    "connectionUnreachable": "Lama gaari karo Pangea Chat. Mar kale ayuu isku dayayaa…",
+    "connectionBackOnline": "Khadkii ayaa soo laabtay"
 }

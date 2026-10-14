@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:46.975324",
+    "@@last_modified": "2026-10-14 13:23:12.271506",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -1661,11 +1661,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Synkroniserer … Vent litt.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "dismiss": "Avvis",
     "@dismiss": {},
     "openChat": "Åpne chat",
@@ -1680,8 +1675,6 @@
     "@inviteOtherUsers": {},
     "open": "Åpne",
     "@open": {},
-    "waitingForServer": "Venter på server...",
-    "@waitingForServer": {},
     "notificationRuleJitsi": "Jitsi",
     "@notificationRuleJitsi": {},
     "takeAPhoto": "Ta et bilde",
@@ -1787,15 +1780,6 @@
     "@newGroup": {},
     "addLink": "Legg til lenke",
     "@addLink": {},
-    "synchronizingPleaseWaitCounter": " Synkroniserer… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "unverified": "Ikke verifisert",
     "@unverified": {},
     "thisDevice": "Denne enheten:",
@@ -10037,5 +10021,8 @@
     "newCourseChat": "Ny kursprat",
     "customCourseStepDesc": "Et kurs er et sett med samtaleaktiviteter som følger læreboken din, som elevene dine kan gjøre sammen som lekser.",
     "reopenAppToFinishSwitching": "Lukk appen helt og åpne den igjen for å fullføre byttet.",
-    "teamCode": "Teamkode"
+    "teamCode": "Teamkode",
+    "connectionOffline": "Du er frakoblet. Pangea Chat kobles til igjen når du er på nett.",
+    "connectionUnreachable": "Får ikke kontakt med Pangea Chat. Prøver igjen …",
+    "connectionBackOnline": "Tilbake på nett"
 }

@@ -1,7 +1,7 @@
-import 'package:fluffychat/features/network_filter/network_probe.dart';
+import 'package:fluffychat/features/connection_status/network_probe.dart';
 
 /// What a check concludes about one host category. See
-/// filtered-network.instructions.md, "Detecting a block".
+/// connection-status.instructions.md, "Telling the causes apart".
 enum NetworkVerdict {
   /// The host answered, slowly or with an error from our own server. Either
   /// way the network let the request through.

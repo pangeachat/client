@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-13 13:03:40.576631",
+    "@@last_modified": "2026-10-14 13:23:02.106491",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -1547,11 +1547,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Synchronizace ... Čekejte prosím.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "Téma systému",
     "@systemTheme": {
         "type": "String",
@@ -2329,7 +2324,6 @@
     "setPermissionsLevelDescription": "Vyberte níže předdefinovanou roli nebo zadejte vlastní úroveň oprávnění mezi 0 a 100.",
     "commandHint_roomupgrade": "Upgradujte tento pokoj na danou verzi pokoje",
     "sendImages": "Odeslat {count} obrázek",
-    "synchronizingPleaseWaitCounter": "Synchronizuji… ({percentage}%)",
     "kickUserDescription": "Uživatel je vyhozen z chatu, ale není zablokován. Ve veřejných chatech se může kdykoli znovu připojit.",
     "noUsersFoundWithQuery": "Bohužel nebyl nalezen žádný uživatel s \"{query}\". Zkontrolujte, zda jste neudělali překlep.",
     "wrongRecoveryKey": "Omlouváme se... zdá se, že toto není správný klíč pro obnovení.",
@@ -2415,7 +2409,6 @@
     "previous": "Předchozí",
     "otherPartyNotLoggedIn": "Druhá strana momentálně není přihlášena a nemůže tak přijímat zprávy!",
     "open": "Otevřít",
-    "waitingForServer": "Čekání na server...",
     "newChatRequest": "📩 Nová žádost o chat",
     "contentNotificationSettings": "Nastavení oznámení obsahu",
     "generalNotificationSettings": "Obecná nastavení oznámení",
@@ -3174,14 +3167,6 @@
             }
         }
     },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@kickUserDescription": {
         "type": "String",
         "placeholders": {}
@@ -3587,10 +3572,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10474,5 +10455,8 @@
     "newCourseChat": "Nový chat kurzu",
     "customCourseStepDesc": "Kurz je soubor konverzačních aktivit, které následují vaši učebnici, aby je vaši studenti dělali společně jako domácí úkol.",
     "reopenAppToFinishSwitching": "Zavřete aplikaci úplně a znovu ji otevřete, abyste dokončili přepínání.",
-    "teamCode": "Kód týmu"
+    "teamCode": "Kód týmu",
+    "connectionOffline": "Jste offline. Pangea Chat se znovu připojí, až budete mít opět připojení.",
+    "connectionUnreachable": "Nelze se připojit k Pangea Chatu. Zkouším to znovu…",
+    "connectionBackOnline": "Zpět online"
 }

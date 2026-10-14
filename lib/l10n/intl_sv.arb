@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:49.346743",
+    "@@last_modified": "2026-10-14 13:23:17.785162",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -1750,11 +1750,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Synkroniserar… Var god vänta.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "showPassword": "Visa lösenord",
     "@showPassword": {
         "type": "String",
@@ -2380,7 +2375,6 @@
     "overview": "Översikt",
     "passwordRecoverySettings": "Inställningar för återställning av lösenord",
     "sendImages": "Skicka {count} bild",
-    "synchronizingPleaseWaitCounter": "Synkroniserar… ({percentage}%)",
     "invitedBy": "📩 Inbjuden av {user}",
     "knock": "Knacka",
     "knocking": "Knackar",
@@ -2444,7 +2438,6 @@
     "previous": "Föregående",
     "otherPartyNotLoggedIn": "Den andra parten är för närvarande inte inloggad och kan därför inte ta emot meddelanden!",
     "open": "Öppna",
-    "waitingForServer": "Väntar på server...",
     "newChatRequest": "📩 Ny chattförfrågan",
     "contentNotificationSettings": "Inställningar för innehållsaviseringar",
     "generalNotificationSettings": "Allmänna aviseringar",
@@ -3296,14 +3289,6 @@
             }
         }
     },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@invitedBy": {
         "type": "String",
         "placeholders": {
@@ -3597,10 +3582,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10498,5 +10479,8 @@
     "newCourseChat": "Ny kurschatt",
     "customCourseStepDesc": "En kurs är en uppsättning konversationsaktiviteter som följer din lärobok, för dina elever att göra tillsammans som läxa.",
     "reopenAppToFinishSwitching": "Stäng appen helt och öppna den igen för att slutföra bytet.",
-    "teamCode": "Teamkod"
+    "teamCode": "Teamkod",
+    "connectionOffline": "Du är offline. Pangea Chat återansluter när du har anslutning igen.",
+    "connectionUnreachable": "Kan inte nå Pangea Chat. Försöker igen…",
+    "connectionBackOnline": "Tillbaka online"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:43.310498",
+    "@@last_modified": "2026-10-14 13:23:06.735245",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -1207,11 +1207,6 @@
     },
     "systemTheme": "Sistem",
     "@systemTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "synchronizingPleaseWait": "Menyinkronkan... Mohon tunggu.",
-    "@synchronizingPleaseWait": {
         "type": "String",
         "placeholders": {}
     },
@@ -2710,21 +2705,10 @@
     "@allDevices": {},
     "crossVerifiedDevices": "Perangkat terverifikasi silang",
     "@crossVerifiedDevices": {},
-    "waitingForServer": "Menunggu server...",
-    "@waitingForServer": {},
     "notificationRuleContainsDisplayNameDescription": "Memberi tahu pengguna ketika pesan berisi nama tampilannya.",
     "@notificationRuleContainsDisplayNameDescription": {},
     "shareKeysWith": "Bagikan kunci dengan...",
     "@shareKeysWith": {},
-    "synchronizingPleaseWaitCounter": " Sinkronisasi… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "shareKeysWithDescription": "Perangkat apa saja yang dipercayai supaya mereka bisa membaca bersama dengan pesanmu dalam obrolan terenkripsi?",
     "@shareKeysWithDescription": {},
     "verifiedDevicesOnly": "Perangkat terverifikasi saja",
@@ -10053,5 +10037,8 @@
     "newCourseChat": "Obrolan kursus baru",
     "customCourseStepDesc": "Kursus adalah serangkaian aktivitas percakapan yang mengikuti buku teks Anda, untuk dikerjakan siswa Anda bersama sebagai pekerjaan rumah.",
     "reopenAppToFinishSwitching": "Tutup aplikasi sepenuhnya dan buka lagi untuk menyelesaikan peralihan.",
-    "teamCode": "Kode tim"
+    "teamCode": "Kode tim",
+    "connectionOffline": "Anda sedang offline. Pangea Chat akan menyambung kembali saat koneksi Anda pulih.",
+    "connectionUnreachable": "Tidak dapat menjangkau Pangea Chat. Mencoba lagi…",
+    "connectionBackOnline": "Kembali online"
 }

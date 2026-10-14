@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-13 13:03:44.907716",
+    "@@last_modified": "2026-10-14 13:23:09.107405",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -364,8 +364,6 @@
     "status": "بارودۆخ",
     "statusExampleMessage": "ئەمڕۆ چۆنیت؟",
     "submit": "ناردن",
-    "synchronizingPleaseWait": "هاوکاتکردن… تکایە چاوەڕێ بکە.",
-    "synchronizingPleaseWaitCounter": " هاوکاتکردن… ({percentage}%)",
     "systemTheme": "سیستەم",
     "theyDontMatch": "یەک ناگرنەوە",
     "theyMatch": "یەک دەگرنەوە",
@@ -590,7 +588,6 @@
     "previous": "پێشوو",
     "otherPartyNotLoggedIn": "لایەنی بەرامبەر لە ئێستادا چوونەژوورەوەی نەکردووە و بۆیە ناتوانێت پەیام وەربگرێت!",
     "open": "کردنەوە",
-    "waitingForServer": "چاوەڕێی سێرڤەر...",
     "newChatRequest": "📩 داوای چاتی نوێ",
     "contentNotificationSettings": "ڕێکخستنەکانی ئاگادارکردنەوەی ناوەڕۆک",
     "generalNotificationSettings": "ڕێکخستنەکانی ئاگادارکردنەوەی گشتی",
@@ -2429,5 +2426,8 @@
     "newCourseChat": "چاتی خولی نوێ",
     "customCourseStepDesc": "کۆرس کۆمەڵێک چالاکی گفتوگۆیە کە بەدوای کتێبی خوێندنەکەتدا دێت، بۆ ئەوەی خوێندکارەکانت وەک ئەرکی ماڵەوە پێکەوە ئەنجامی بدەن.",
     "reopenAppToFinishSwitching": "بۆ تەواوکردنی گۆڕینەکە، ئەپەکە بەتەواوی دابخە و دووبارە بیکەرەوە.",
-    "teamCode": "کۆدی تیم"
+    "teamCode": "کۆدی تیم",
+    "connectionOffline": "تۆ ئۆفلاینیت. چاتی پانجیا دووبارە دەبەسترێتەوە کاتێک پەیوەندیت گەڕایەوە.",
+    "connectionUnreachable": "ناتوانرێت دەستی بە چاتی پانجیا بگات. دووبارە هەوڵ دەدرێتەوە…",
+    "connectionBackOnline": "گەڕایەوە سەر هێڵ"
 }

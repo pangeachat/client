@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:47.867202",
+    "@@last_modified": "2026-10-14 13:23:15.649922",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -780,10 +780,6 @@
         "placeholders": {}
     },
     "@noEmotesFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@synchronizingPleaseWait": {
         "type": "String",
         "placeholders": {}
     },
@@ -2439,8 +2435,6 @@
     "status": "Status",
     "statusExampleMessage": "Como você está hoje?",
     "submit": "Enviar",
-    "synchronizingPleaseWait": "Sincronizando… Por favor, aguarde.",
-    "synchronizingPleaseWaitCounter": " Sincronizando… ({percentage}%)",
     "systemTheme": "Sistema",
     "theyDontMatch": "Eles não correspondem",
     "theyMatch": "Eles correspondem",
@@ -2664,7 +2658,6 @@
     "previous": "Anterior",
     "otherPartyNotLoggedIn": "A outra parte atualmente não está conectada e, portanto, não pode receber mensagens!",
     "open": "Abrir",
-    "waitingForServer": "Aguardando o servidor...",
     "newChatRequest": "📩 Novo pedido de chat",
     "contentNotificationSettings": "Configurações de notificação de conteúdo",
     "generalNotificationSettings": "Configurações gerais de notificação",
@@ -3530,14 +3523,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@invitedBy": {
         "type": "String",
         "placeholders": {
@@ -4023,10 +4008,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10924,5 +10905,8 @@
     "newCourseChat": "Novo chat do curso",
     "customCourseStepDesc": "Um curso é um conjunto de atividades de conversação que seguem seu livro didático, para seus alunos fazerem juntos como lição de casa.",
     "reopenAppToFinishSwitching": "Feche o aplicativo completamente e abra-o novamente para finalizar a troca.",
-    "teamCode": "Código da equipe"
+    "teamCode": "Código da equipe",
+    "connectionOffline": "Você está offline. O Pangea Chat irá reconectar quando sua conexão voltar.",
+    "connectionUnreachable": "Não é possível acessar o Pangea Chat. Tentando novamente…",
+    "connectionBackOnline": "Online novamente"
 }

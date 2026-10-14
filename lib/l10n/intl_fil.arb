@@ -1093,8 +1093,6 @@
     "status": "Katayuan",
     "statusExampleMessage": "Kumusta ka ngayon?",
     "submit": "Isumite",
-    "synchronizingPleaseWait": "Nagsi-synchronize... Pakiusap, maghintay.",
-    "synchronizingPleaseWaitCounter": "Nagsi-synchronize... ({percentage}%)",
     "systemTheme": "Sistema",
     "theyDontMatch": "Hindi Sila Magkatugma",
     "theyMatch": "Magkatugma Silang Dalawa",
@@ -1319,7 +1317,6 @@
     "previous": "Nakaraan",
     "otherPartyNotLoggedIn": "Hindi kasalukuyang naka-log in ang kabilang panig kaya hindi makakatanggap ng mga mensahe!",
     "open": "Buksan",
-    "waitingForServer": "Naghihintay sa server...",
     "newChatRequest": "📩 Bagong kahilingan sa chat",
     "contentNotificationSettings": "Mga setting ng notipikasyon sa nilalaman",
     "generalNotificationSettings": "Pangkalahatang mga setting ng notipikasyon",
@@ -2076,7 +2073,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-13 13:03:41.457157",
+    "@@last_modified": "2026-10-14 13:23:03.261415",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -2865,18 +2862,6 @@
     "@submit": {
         "type": "String",
         "placeholders": {}
-    },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "@systemTheme": {
         "type": "String",
@@ -3942,10 +3927,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10840,5 +10821,8 @@
     "newCourseChat": "Bagong chat sa kurso",
     "customCourseStepDesc": "Ang kurso ay isang hanay ng mga aktibidad sa pag-uusap na sumusunod sa iyong aklat-aralin, para sa iyong mga mag-aaral na gawin nang magkasama bilang takdang-aralin.",
     "reopenAppToFinishSwitching": "Ganap na isara ang app at buksan itong muli para matapos ang pagpapalit.",
-    "teamCode": "Code ng team"
+    "teamCode": "Code ng team",
+    "connectionOffline": "Offline ka. Muling magkokonekta ang Pangea Chat kapag bumalik na ang iyong koneksyon.",
+    "connectionUnreachable": "Hindi maabot ang Pangea Chat. Sinusubukang muli…",
+    "connectionBackOnline": "Online na ulit"
 }

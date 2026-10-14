@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
 import 'package:fluffychat/features/course_plans/payload_client/paginated_response.dart';
-import 'package:fluffychat/features/network_filter/filtered_network_controller.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 

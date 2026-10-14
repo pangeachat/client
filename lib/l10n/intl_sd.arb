@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-13 13:03:48.314643",
+    "@@last_modified": "2026-10-14 13:23:15.504870",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -364,8 +364,6 @@
     "status": "اسٽيٽس",
     "statusExampleMessage": "اڄ توهان ڪيئن آهيو؟",
     "submit": "جمع ڪريو",
-    "synchronizingPleaseWait": "هم وقت سازي ٿي رهي آهي… مهرباني ڪري انتظار ڪريو.",
-    "synchronizingPleaseWaitCounter": " هم وقت سازي ٿي رهي آهي… ({percentage}%)",
     "systemTheme": "سسٽم",
     "theyDontMatch": "اهي ملن ٿا",
     "theyMatch": "اهي ملن ٿا",
@@ -590,7 +588,6 @@
     "previous": "پويون",
     "otherPartyNotLoggedIn": "ٻي ڌر هن وقت لاگ ان نه آهي ۽ ان ڪري پيغام وصول نٿو ڪري سگهي!",
     "open": "کوليو",
-    "waitingForServer": "سرور جو انتظار ڪري رهيو آهي...",
     "newChatRequest": "📩 نئين چيٽ جي درخواست",
     "contentNotificationSettings": "مواد جي اطلاع جي سيٽنگون",
     "generalNotificationSettings": "عام اطلاع جي سيٽنگون",
@@ -2429,5 +2426,8 @@
     "newCourseChat": "نئون ڪورس چيٽ",
     "customCourseStepDesc": "هڪ ڪورس ڳالهين جي سرگرمين جو هڪ مجموعو آهي جيڪو توهان جي درسي ڪتاب جي پيروي ڪري ٿو، توهان جي شاگردن لاءِ گڏجي گهر جو ڪم ڪرڻ لاءِ.",
     "reopenAppToFinishSwitching": "مڪمل طور تي ايپ بند ڪريو ۽ سوئچنگ ختم ڪرڻ لاءِ ان کي ٻيهر کوليو.",
-    "teamCode": "ٽيم ڪوڊ"
+    "teamCode": "ٽيم ڪوڊ",
+    "connectionOffline": "توهان آف لائن آهيو. پينجيا چيٽ ٻيهر ڳنڍجي ويندي جڏهن توهان جو ڪنيڪشن واپس ايندو.",
+    "connectionUnreachable": "پينجيا چيٽ تائين پهچي نٿو سگهجي. ٻيهر ڪوشش ڪري رهيو آهيان…",
+    "connectionBackOnline": "واپس آن لائن"
 }
