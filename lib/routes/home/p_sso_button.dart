@@ -10,8 +10,8 @@ import 'package:matrix/matrix.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/features/network_filter/filtered_network_controller.dart';
-import 'package:fluffychat/features/network_filter/network_verdict.dart';
+import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
+import 'package:fluffychat/features/connection_status/network_verdict.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/home/login_loading_dialog.dart';
@@ -84,7 +84,7 @@ class _PangeaSsoButtonState extends State<PangeaSsoButton> {
   /// sign-in host fails the sign-in in a way the app cannot repair. Check
   /// the host first and say so, offering email instead; a slow answer lets
   /// the sign-in proceed, so nobody is stopped by a slow network. See
-  /// filtered-network.instructions.md.
+  /// connection-status.instructions.md.
   Future<bool> _providerReachable() async {
     if (!kIsWeb) return true;
     final verdict = await FilteredNetworkController.instance.check(

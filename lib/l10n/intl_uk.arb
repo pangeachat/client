@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-13 13:03:50.617241",
+    "@@last_modified": "2026-10-14 13:23:20.060330",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -1510,11 +1510,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Синхронізація… Будь ласка, зачекайте.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "noMatrixServer": "{server1} не є сервером matrix, використовувати {server2} натомість?",
     "@noMatrixServer": {
         "type": "String",
@@ -2608,15 +2603,6 @@
     "@otherPartyNotLoggedIn": {},
     "previous": "Попередній",
     "@previous": {},
-    "synchronizingPleaseWaitCounter": " Синхронізація… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "newChatRequest": "📩 Новий запит на спілкування",
     "@newChatRequest": {},
     "allDevices": "Усім пристроям",
@@ -2627,8 +2613,6 @@
     "@crossVerifiedDevices": {},
     "open": "Відкрити",
     "@open": {},
-    "waitingForServer": "Очікування сервера...",
-    "@waitingForServer": {},
     "shareKeysWithDescription": "Яким пристроям довіряти, щоб вони могли читати ваші повідомлення в зашифрованих бесідах?",
     "@shareKeysWithDescription": {},
     "verifiedDevicesOnly": "Лише верифіковані пристрої",
@@ -9994,5 +9978,9 @@
     "newCourseChat": "Новий чат курсу",
     "customCourseStepDesc": "Курс — це набір розмовних вправ, які відповідають вашому підручнику, для ваших учнів, щоб вони виконували їх разом як домашнє завдання.",
     "reopenAppToFinishSwitching": "Повністю закрийте програму та відкрийте її знову, щоб завершити перемикання.",
-    "teamCode": "Код команди"
+    "teamCode": "Код команди",
+    "connectionOffline": "Ви офлайн. Pangea Chat відновить з'єднання, коли ваше підключення відновиться.",
+    "connectionUnreachable": "Не вдається зв'язатися з Pangea Chat. Повторна спроба…",
+    "connectionBackOnline": "Знову онлайн",
+    "missionDueDate": "Термін: {date}, {time}"
 }

@@ -89,11 +89,6 @@ class SpaceDetailsController extends State<SpaceDetails> {
 
   String? get _questId => room.coursePlan?.uuid;
 
-  /// The course's per-Mission activity pin (org quests doc, client#7748) —
-  /// null when unset, which is the unrestricted default.
-  Map<String, List<String>>? get _pinnedActivitiesByObjective =>
-      room.teacherMode.pinnedActivitiesByObjective;
-
   @override
   void initState() {
     super.initState();
@@ -107,11 +102,7 @@ class SpaceDetailsController extends State<SpaceDetails> {
       activitiesToCompleteOverride: room.teacherMode.activitiesToUnlockTopic,
     );
 
-    _objectivesProvider.loadOutline(
-      _questId,
-      pinnedActivitiesByObjective: _pinnedActivitiesByObjective,
-      courseRoomId: room.id,
-    );
+    _objectivesProvider.loadOutline(_questId, courseRoomId: room.id);
     _loadSummaries();
     room.joinDefaultChats();
 
@@ -161,11 +152,7 @@ class SpaceDetailsController extends State<SpaceDetails> {
         if (mounted) SpaceGoneGate.maybeShowDialog(context, room.id);
       });
       _handleCoursePing();
-      _objectivesProvider.loadOutline(
-        _questId,
-        pinnedActivitiesByObjective: _pinnedActivitiesByObjective,
-        courseRoomId: room.id,
-      );
+      _objectivesProvider.loadOutline(_questId, courseRoomId: room.id);
       _loadSummaries();
       room.joinDefaultChats();
     }

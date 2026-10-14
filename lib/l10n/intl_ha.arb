@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-13 13:03:42.516149",
+    "@@last_modified": "2026-10-14 13:23:04.735081",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -364,8 +364,6 @@
     "status": "Yanayi",
     "statusExampleMessage": "Yaya kake yau?",
     "submit": "Gabatar",
-    "synchronizingPleaseWait": "Ana daidaitawa… A dakata don Allah.",
-    "synchronizingPleaseWaitCounter": " Ana daidaitawa… ({percentage}%)",
     "systemTheme": "Na tsarin waya",
     "theyDontMatch": "Ba su dace ba",
     "theyMatch": "Sun dace",
@@ -590,7 +588,6 @@
     "previous": "Baya",
     "otherPartyNotLoggedIn": "A halin yanzu ɗayan ɓangaren bai shiga ba don haka ba zai iya karɓar saƙonni ba!",
     "open": "Buɗe",
-    "waitingForServer": "Ana jiran sabar...",
     "newChatRequest": "📩 Sabuwar buƙatar hira",
     "contentNotificationSettings": "Saitunan sanarwar abun ciki",
     "generalNotificationSettings": "Saitunan sanarwa na gaba ɗaya",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "Sabon darasi na hira",
     "customCourseStepDesc": "Kwas shine saitin ayyukan tattaunawa waɗanda ke bin littafin karatun ku, don ɗaliban ku suyi tare a matsayin aikin gida.",
     "reopenAppToFinishSwitching": "Rufe manhajar gaba ɗaya sannan ka sake buɗewa don kammala canzawa.",
-    "teamCode": "Lambar ƙungiya"
+    "teamCode": "Lambar ƙungiya",
+    "connectionOffline": "Baka a layi. Pangea Chat zai sake haɗawa idan haɗin ku ya dawo.",
+    "connectionUnreachable": "Ba a iya kaiwa ga Pangea Chat. Ana sake gwadawa…",
+    "connectionBackOnline": "An dawo kan layi",
+    "missionDueDate": "Ranar ƙarshe {date}, {time}"
 }

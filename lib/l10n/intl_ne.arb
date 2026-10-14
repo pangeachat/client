@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-13 13:03:47.314530",
+    "@@last_modified": "2026-10-14 13:23:12.768067",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -364,8 +364,6 @@
     "status": "स्थिति",
     "statusExampleMessage": "आज तपाईंलाई कस्तो छ?",
     "submit": "पेश गर्नुहोस्",
-    "synchronizingPleaseWait": "सिंक्रोनाइज गर्दै… कृपया पर्खनुहोस्।",
-    "synchronizingPleaseWaitCounter": " सिंक्रोनाइज गर्दै… ({percentage}%)",
     "systemTheme": "प्रणाली",
     "theyDontMatch": "तिनीहरू मिल्दैनन्",
     "theyMatch": "तिनीहरू मिल्छन्",
@@ -590,7 +588,6 @@
     "previous": "अघिल्लो",
     "otherPartyNotLoggedIn": "अर्को पक्ष हाल लग इन छैन र त्यसैले सन्देशहरू प्राप्त गर्न सक्दैन!",
     "open": "खोल्नुहोस्",
-    "waitingForServer": "सर्भरको लागि पर्खँदै...",
     "newChatRequest": "📩 नयाँ च्याट अनुरोध",
     "contentNotificationSettings": "सामग्री सूचना सेटिङहरू",
     "generalNotificationSettings": "सामान्य सूचना सेटिङहरू",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "नयाँ कोर्स च्याट",
     "customCourseStepDesc": "पाठ्यक्रम भनेको तपाईंको पाठ्यपुस्तक पछ्याउने कुराकानी गतिविधिहरूको सेट हो, जुन तपाईंका विद्यार्थीहरूले गृहकार्यको रूपमा सँगै गर्न सक्छन्।",
     "reopenAppToFinishSwitching": "स्विच गर्न समाप्त गर्नको लागि एपलाई पूर्ण रूपमा बन्द गर्नुहोस् र फेरि खोल्नुहोस्।",
-    "teamCode": "टिम कोड"
+    "teamCode": "टिम कोड",
+    "connectionOffline": "तपाईं अफलाइन हुनुहुन्छ। तपाईंको जडान फिर्ता आउँदा पाङ्गिया च्याट पुन: जडान हुनेछ।",
+    "connectionUnreachable": "पाङ्गिया च्याटमा पुग्न सकिएन। फेरि प्रयास गर्दै…",
+    "connectionBackOnline": "फेरि अनलाइन",
+    "missionDueDate": "{date}, {time} मा बाँकी"
 }

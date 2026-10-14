@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:44.735226",
+    "@@last_modified": "2026-10-14 13:23:09.086293",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -1259,11 +1259,6 @@
     },
     "systemTheme": "시스템",
     "@systemTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "synchronizingPleaseWait": "동기화 중... 기다려주세요.",
-    "@synchronizingPleaseWait": {
         "type": "String",
         "placeholders": {}
     },
@@ -2611,17 +2606,6 @@
     "@previous": {},
     "newChatRequest": "📩 새 채팅 요청",
     "@newChatRequest": {},
-    "synchronizingPleaseWaitCounter": " 동기화중… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
-    "waitingForServer": "서버를 기다리는중...",
-    "@waitingForServer": {},
     "contentNotificationSettings": "콘텐츠 알림 설정",
     "@contentNotificationSettings": {},
     "generalNotificationSettings": "일반 알림 설정",
@@ -10187,5 +10171,9 @@
     "newCourseChat": "새 코스 채팅",
     "customCourseStepDesc": "코스는 교과서를 따르는 일련의 대화 활동으로, 학생들이 숙제로 함께 할 수 있습니다.",
     "reopenAppToFinishSwitching": "전환을 완료하려면 앱을 완전히 닫았다가 다시 여세요.",
-    "teamCode": "팀 코드"
+    "teamCode": "팀 코드",
+    "connectionOffline": "오프라인 상태입니다. 연결이 복원되면 Pangea Chat이 다시 연결됩니다.",
+    "connectionUnreachable": "Pangea Chat에 연결할 수 없습니다. 다시 시도 중…",
+    "connectionBackOnline": "온라인 상태로 돌아왔습니다.",
+    "missionDueDate": "{date} {time} 마감"
 }

@@ -25,7 +25,7 @@ class PApiUrls {
   static String cmsLanguages = "${Environment.cmsApi}/cms/api/languages";
 
   /// CMS form submissions (public create). The app sends a network help
-  /// request here; see filtered-network.instructions.md.
+  /// request here; see connection-status.instructions.md.
   static String cmsFormSubmissions =
       "${Environment.cmsApi}/cms/api/form-submissions";
 

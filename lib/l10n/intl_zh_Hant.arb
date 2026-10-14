@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:51.254496",
+    "@@last_modified": "2026-10-14 13:23:23.838152",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -2060,11 +2060,6 @@
             }
         }
     },
-    "synchronizingPleaseWait": "正在同步... 請稍候。",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "messageInfo": "訊息資訊",
     "@messageInfo": {},
     "emojis": "表情符號",
@@ -2577,15 +2572,6 @@
     "@continueText": {},
     "blur": "模糊:",
     "@blur": {},
-    "synchronizingPleaseWaitCounter": " 同步中… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "contentNotificationSettings": "內容通知設定",
     "@contentNotificationSettings": {},
     "generalNotificationSettings": "常規通知設定",
@@ -2648,8 +2634,6 @@
     "@invalidUrl": {},
     "open": "打開",
     "@open": {},
-    "waitingForServer": "等待伺服器中...",
-    "@waitingForServer": {},
     "previous": "上一個",
     "@previous": {},
     "otherPartyNotLoggedIn": "對方現未登入，未能接收訊息 !",
@@ -10100,5 +10084,9 @@
     "newCourseChat": "新課程聊天",
     "customCourseStepDesc": "課程是一系列對話活動，可讓學生按照課本內容，一起完成作業。",
     "reopenAppToFinishSwitching": "請完全關閉應用程式，然後重新開啟以完成切換。",
-    "teamCode": "團隊代碼"
+    "teamCode": "團隊代碼",
+    "connectionOffline": "您已離線。Pangea Chat 將在連線恢復時重新連線。",
+    "connectionUnreachable": "無法連線到 Pangea Chat。正在重試…",
+    "connectionBackOnline": "已重新連線",
+    "missionDueDate": "在 {date} {time} 到期"
 }

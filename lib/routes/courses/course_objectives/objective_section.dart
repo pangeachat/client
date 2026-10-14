@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/quests/mission_due_date.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
+import 'package:fluffychat/widgets/expandable_text.dart';
 
 /// One Mission of the full course plan: its can-do statement and star count
 /// above the row of activities that satisfy it. The row itself is the shared
@@ -157,6 +159,87 @@ class ObjectiveSection extends StatelessWidget {
             ),
           )
         : null;
+    // The course's own soft due date (content-studio) as a chip under the
+    // title, so it reads at a glance down the plan and stays when the Mission
+    // is folded. The date stays after it passes; nothing is blocked or marked.
+    final pacing = group.pacing;
+    final dueAt = pacing?.dueAt;
+    final dueChip = dueAt == null
+        ? null
+        : Container(
+            padding: const EdgeInsetsDirectional.fromSTEB(6.0, 2.0, 8.0, 2.0),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.surfaceContainerHigh,
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Text.rich(
+              TextSpan(
+                children: [
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    child: Padding(
+                      padding: const EdgeInsetsDirectional.only(end: 4.0),
+                      child: Icon(
+                        Icons.event,
+                        size: 14.0,
+                        color: theme.colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ),
+                  TextSpan(
+                    text: missionDueLabel(context, dueAt, pacing?.timeZone),
+                  ),
+                ],
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: theme.textTheme.labelMedium?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+          );
+    // The teacher's note under the date, clamped so a long one doesn't push
+    // the activities down; folded away with them. Inset so its icon and text
+    // line up with the chip's.
+    final note = pacing?.note;
+    final noteLine = collapsed || note == null || note.isEmpty
+        ? null
+        : Padding(
+            padding: const EdgeInsetsDirectional.only(start: 6.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 1.0),
+                  child: Icon(
+                    Icons.notes,
+                    size: 14.0,
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
+                ),
+                const SizedBox(width: 4.0),
+                Expanded(
+                  child: ExpandableText(
+                    note,
+                    maxLines: FluffyThemes.isColumnMode(context) ? 2 : 3,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.colorScheme.onSurfaceVariant,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+    final pacingLines = dueChip == null && noteLine == null
+        ? null
+        : Padding(
+            padding: const EdgeInsets.only(top: 6.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 4.0,
+              children: [?dueChip, ?noteLine],
+            ),
+          );
     final collapseChevron = _collapsible
         ? AnimatedRotation(
             turns: collapsed ? -0.25 : 0,
@@ -165,12 +248,13 @@ class ObjectiveSection extends StatelessWidget {
           )
         : null;
 
-    final activities = group.activities;
-    activities.sort(
-      (a, b) => a.plan.req.numberOfParticipants.compareTo(
-        b.plan.req.numberOfParticipants,
-      ),
-    );
+    // Sorted as a copy: the group's list can be the shared outline cache's.
+    final activities = [...group.activities]
+      ..sort(
+        (a, b) => a.plan.req.numberOfParticipants.compareTo(
+          b.plan.req.numberOfParticipants,
+        ),
+      );
 
     return Semantics(
       label: L10n.of(context).objective,
@@ -244,6 +328,7 @@ class ObjectiveSection extends StatelessWidget {
                     ),
             ),
           ),
+          ?pacingLines,
           // No per-Mission progress bar — only the overall course has a bar (in
           // the header). A Mission shows just its star count above (#7597).
           if (!collapsed) const SizedBox(height: 12.0),

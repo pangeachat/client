@@ -8,6 +8,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
+import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
@@ -158,6 +159,11 @@ class WorldMapPinsManager {
   /// quest uuids: a second room of an already-joined quest leaves the uuid set
   /// unchanged and would silently skip the rebuild (#8087).
   Set<String> _objectiveCacheRoomIds = const {};
+
+  /// Each joined course's copy revision at the last rebuild (0 = no copy): a
+  /// teacher's publish changes that course's outline, so it counts as a
+  /// change of the joined set.
+  Map<String, int> _objectiveCacheCopyRevisions = const {};
 
   /// The quest uuids of those same joined courses, kept solely for
   /// [ensureScopedCourseOutline]: the map's course scope carries a quest uuid
@@ -609,6 +615,9 @@ class WorldMapPinsManager {
         onError: reportCourseOutlineFailure,
       );
       _objectiveCacheRoomIds = rooms.map((r) => r.id).toSet();
+      _objectiveCacheCopyRevisions = {
+        for (final r in rooms) r.id: r.courseListRules.revision,
+      };
       _objectiveCacheQuestIds = rooms.map((r) => r.coursePlan!.uuid).toSet();
       resolveProgression(); // re-resolve the band with the loaded outlines
     } finally {
@@ -633,7 +642,11 @@ class WorldMapPinsManager {
 
     final setChanged =
         roomIds.length != _objectiveCacheRoomIds.length ||
-        !roomIds.containsAll(_objectiveCacheRoomIds);
+        !roomIds.containsAll(_objectiveCacheRoomIds) ||
+        client.joinedCourseRooms.any(
+          (r) =>
+              _objectiveCacheCopyRevisions[r.id] != r.courseListRules.revision,
+        );
 
     return shouldRebuildObjectiveCacheNow(
       rebuilding: _objectiveCacheRebuilding,
@@ -669,11 +682,17 @@ class WorldMapPinsManager {
     resolveProgression();
   }
 
+  /// The course copy revision the course-scoped pins were filtered with
+  /// (0 = no copy) — the world map re-loads them when it moves.
+  int get courseScopedCopyRevision => _courseScopedCopyRevision;
+  int _courseScopedCopyRevision = 0;
+
   Future<void> loadCourseScopedPins(
     String courseId, {
-    Map<String, List<String>>? pinnedActivitiesByObjective,
+    CourseListRules rules = CourseListRules.none,
     String? courseRoomId,
   }) async {
+    _courseScopedCopyRevision = rules.revision;
     // One choreo read: the quest's activities at its own L2, LO-grouped
     // server-side. [courseRoomId] admits the quest owner's private activities
     // when this learner is a joined member of the course.
@@ -691,39 +710,10 @@ class WorldMapPinsManager {
       return;
     }
 
-    _pins = _restrictCards(activityCards, pinnedActivitiesByObjective);
-  }
-
-  /// Course-scoped marker filter for per-course activity pinning (org quests
-  /// doc, client#7748): a card stays when at least one of its Mission refs
-  /// allows it — the same fail-open rule as the outline restriction, via the
-  /// shared [effectivePinnedActivityIds]. Null pins (not joined / unset) show
-  /// everything; the WORLD-scoped map is deliberately never filtered.
-  static List<QuestActivityCard> _restrictCards(
-    List<QuestActivityCard> cards,
-    Map<String, List<String>>? pinnedByObjective,
-  ) {
-    if (pinnedByObjective == null || pinnedByObjective.isEmpty) return cards;
-    final availableByLo = <String, Set<String>>{};
-    for (final card in cards) {
-      for (final loId in card.learningObjectiveRefs) {
-        (availableByLo[loId] ??= <String>{}).add(card.activityId);
-      }
-    }
-    final allowedByLo = {
-      for (final entry in availableByLo.entries)
-        entry.key: effectivePinnedActivityIds(
-          entry.value,
-          pinnedByObjective[entry.key],
-        ),
-    };
-    return cards
-        .where(
-          (card) => card.learningObjectiveRefs.any(
-            (loId) => allowedByLo[loId]?.contains(card.activityId) ?? true,
-          ),
-        )
-        .toList();
+    // The course's own list: its copy's per-Mission activities, else the
+    // fail-open per-Mission pins (client#7748). Not joined → no rules → every
+    // card; the WORLD-scoped map is deliberately never filtered.
+    _pins = restrictCardsForCourse(activityCards, rules);
   }
 
   Future<void> loadWorldScopedPins({

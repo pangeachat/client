@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-13 13:03:46.076881",
+    "@@last_modified": "2026-10-14 13:23:11.391580",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -364,8 +364,6 @@
     "status": "Tūnga",
     "statusExampleMessage": "Kei te pēhea koe i tēnei rā?",
     "submit": "Tukuna",
-    "synchronizingPleaseWait": "E tukutahi ana… Tēnā tatari.",
-    "synchronizingPleaseWaitCounter": " E tukutahi ana… ({percentage}%)",
     "systemTheme": "Pūnaha",
     "theyDontMatch": "Kāore i ōrite",
     "theyMatch": "E ōrite ana",
@@ -590,7 +588,6 @@
     "previous": "O mua",
     "otherPartyNotLoggedIn": "Kāore te tahi atu taha i te takiuru i tēnei wā, nō reira kāore e taea te whiwhi karere!",
     "open": "Whakatuwhera",
-    "waitingForServer": "E tatari ana mō te tūmau...",
     "newChatRequest": "📩 Tono kōrerorero hou",
     "contentNotificationSettings": "Ngā tautuhinga whakamōhiotanga ihirangi",
     "generalNotificationSettings": "Ngā tautuhinga whakamōhiotanga whānui",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "Kōrerorero akoranga hōu",
     "customCourseStepDesc": "He huinga mahi kōrerorero te akoranga e whai ana i tō pukapuka, mā ō ākonga e mahi ngātahi hei mahi kāinga.",
     "reopenAppToFinishSwitching": "Katia katoatia te taupānga ka whakatuwhera anō kia oti ai te huri.",
-    "teamCode": "Waehere tīma"
+    "teamCode": "Waehere tīma",
+    "connectionOffline": "Kua momotu koe. Ka hono anō a Pangea Chat ina hoki mai tō hononga.",
+    "connectionUnreachable": "Kāore e taea te tae atu ki a Pangea Chat. E ngana anō ana…",
+    "connectionBackOnline": "Kua hoki mai anō ki te ipurangi",
+    "missionDueDate": "Me oti i te {date}, {time}"
 }

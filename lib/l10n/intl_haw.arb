@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-13 13:03:42.683638",
+    "@@last_modified": "2026-10-14 13:23:04.625781",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -364,8 +364,6 @@
     "status": "Kūlana",
     "statusExampleMessage": "Pehea ʻoe i kēia lā?",
     "submit": "Waiho",
-    "synchronizingPleaseWait": "Ke hoʻopili nei… E ʻoluʻolu e kali.",
-    "synchronizingPleaseWaitCounter": " Ke hoʻopili nei… ({percentage}%)",
     "systemTheme": "Pūnaehana",
     "theyDontMatch": "ʻAʻole Kūlike",
     "theyMatch": "Kūlike",
@@ -590,7 +588,6 @@
     "previous": "Mua",
     "otherPartyNotLoggedIn": "ʻAʻole i komo ka ʻaoʻao ʻē aʻe i kēia manawa a no laila ʻaʻole hiki ke loaʻa nā leka!",
     "open": "Wehe",
-    "waitingForServer": "Ke kali nei i ke kikowaena...",
     "newChatRequest": "📩 Noi kamaʻilio hou",
     "contentNotificationSettings": "Nā hoʻonohonoho hoʻolaha maʻiʻo",
     "generalNotificationSettings": "Nā hoʻonohonoho hoʻolaha laulā",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "Kūkākūkā papa hou",
     "customCourseStepDesc": "He papa hana kamaʻilio ka papa e pili ana i kāu puke aʻo, no kāu mau haumāna e hana pū ai ma ke ʻano he haʻawina home.",
     "reopenAppToFinishSwitching": "E pani loa i ka polokalamu a e wehe hou e hoʻopau i ka hoʻololi ʻana.",
-    "teamCode": "Helu hui"
+    "teamCode": "Helu hui",
+    "connectionOffline": "Aia ʻoe ma waho pūnaewele. E hoʻohui hou ʻo Pangea Chat ke hoʻi mai kāu pilina.",
+    "connectionUnreachable": "ʻAʻole hiki ke hoʻopili iā Pangea Chat. Ke hoʻāʻo hou nei…",
+    "connectionBackOnline": "Ua hoʻi hou i ka pūnaewele",
+    "missionDueDate": "Pau i ka {date}, {time}"
 }

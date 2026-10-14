@@ -358,8 +358,6 @@
     "status": "Status",
     "statusExampleMessage": "Hvordan har du det i dag?",
     "submit": "Indsend",
-    "synchronizingPleaseWait": "Synkroniserer… Vent venligst.",
-    "synchronizingPleaseWaitCounter": " Synkroniserer… ({percentage}%)",
     "systemTheme": "System",
     "theyDontMatch": "De Stemmer Ikke Overens",
     "theyMatch": "De Stemmer Overens",
@@ -584,7 +582,6 @@
     "previous": "Forrige",
     "otherPartyNotLoggedIn": "Den anden part er i øjeblikket ikke logget ind og kan derfor ikke modtage beskeder!",
     "open": "Åben",
-    "waitingForServer": "Venter på server...",
     "newChatRequest": "📩 Ny chatanmodning",
     "contentNotificationSettings": "Indstillinger for indholdsnotifikationer",
     "generalNotificationSettings": "Generelle notifikationsindstillinger",
@@ -1330,7 +1327,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-13 13:03:40.638893",
+    "@@last_modified": "2026-10-14 13:23:00.465707",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -2915,18 +2912,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@systemTheme": {
         "type": "String",
         "placeholders": {}
@@ -3991,10 +3976,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10914,5 +10895,9 @@
     "newCourseChat": "Ny kursuschatsamtale",
     "customCourseStepDesc": "Et kursus er et sæt samtaleaktiviteter, der følger din lærebog, som dine elever kan lave sammen som lektier.",
     "reopenAppToFinishSwitching": "Luk appen helt, og åbn den igen for at fuldføre skiftet.",
-    "teamCode": "Teamkode"
+    "teamCode": "Teamkode",
+    "connectionOffline": "Du er offline. Pangea Chat opretter forbindelse igen, når du er online.",
+    "connectionUnreachable": "Kan ikke nå Pangea Chat. Prøver igen…",
+    "connectionBackOnline": "Tilbage online",
+    "missionDueDate": "Forfalder {date}, {time}"
 }

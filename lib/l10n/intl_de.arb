@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-13 13:03:40.596131",
+    "@@last_modified": "2026-10-14 13:23:01.118613",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -1533,11 +1533,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Synchronisiere... Bitte warten.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "System",
     "@systemTheme": {
         "type": "String",
@@ -2406,16 +2401,6 @@
     "supportPage": "Support-Seite",
     "serverInformation": "Server-Informationen:",
     "newChatRequest": "📩 Neue Chat-Anfrage",
-    "synchronizingPleaseWaitCounter": " Synchronisierung… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
-    "waitingForServer": "Auf Server warten...",
     "previous": "Vorige",
     "otherPartyNotLoggedIn": "Der User ist aktuell nicht eingeloggt und kann daher keine Nachrichten empfangen!",
     "open": "Offen",
@@ -2797,7 +2782,6 @@
     "@supportPage": {},
     "@serverInformation": {},
     "@newChatRequest": {},
-    "@waitingForServer": {},
     "@previous": {},
     "@otherPartyNotLoggedIn": {},
     "@open": {},
@@ -9981,5 +9965,9 @@
     "newCourseChat": "Neuer Kurs-Chat",
     "customCourseStepDesc": "Ein Kurs ist eine Reihe von Konversationsaktivitäten, die Ihrem Lehrbuch folgen und die Ihre Schüler als Hausaufgaben gemeinsam bearbeiten können.",
     "reopenAppToFinishSwitching": "Schließe die App vollständig und öffne sie erneut, um den Wechsel abzuschließen.",
-    "teamCode": "Teamcode"
+    "teamCode": "Teamcode",
+    "connectionOffline": "Du bist offline. Pangea Chat verbindet sich wieder, sobald deine Verbindung wiederhergestellt ist.",
+    "connectionUnreachable": "Pangea Chat ist nicht erreichbar. Versuche es erneut …",
+    "connectionBackOnline": "Wieder online",
+    "missionDueDate": "Fällig am {date}, {time}"
 }

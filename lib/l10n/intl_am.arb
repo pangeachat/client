@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-13 13:03:39.665324",
+    "@@last_modified": "2026-10-14 13:23:03.555584",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -364,8 +364,6 @@
     "status": "ሁኔታ",
     "statusExampleMessage": "ዛሬ እንዴት ነህ?",
     "submit": "አስገባ",
-    "synchronizingPleaseWait": "እየተመሳሰለ ነው… እባክዎ ይጠብቁ።",
-    "synchronizingPleaseWaitCounter": " እየተመሳሰለ ነው… ({percentage}%)",
     "systemTheme": "የስርዓት",
     "theyDontMatch": "አይዛመዱም",
     "theyMatch": "ይዛመዳሉ",
@@ -590,7 +588,6 @@
     "previous": "የቀድሞ",
     "otherPartyNotLoggedIn": "ሌላኛው ወገን በአሁኑ ጊዜ አልገባም ስለዚህ መልዕክቶችን መቀበል አይችልም!",
     "open": "ክፈት",
-    "waitingForServer": "ሰርቨር በመጠበቅ ላይ...",
     "newChatRequest": "📩 አዲስ የውይይት ጥያቄ",
     "contentNotificationSettings": "የይዘት ማሳወቂያ ቅንብሮች",
     "generalNotificationSettings": "አጠቃላይ የማሳወቂያ ቅንብሮች",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "አዲስ የኮርስ ውይይት",
     "customCourseStepDesc": "ኮርስ ማለት ተማሪዎችዎ እንደ የቤት ስራ አብረው እንዲሰሩት የመማሪያ መጽሐፍዎን የሚከተሉ የውይይት እንቅስቃሴዎች ስብስብ ነው።",
     "reopenAppToFinishSwitching": "መቀየር ለመጨረስ መተግበሪያውን ሙሉ በሙሉ ዘግተው እንደገና ይክፈቱት።",
-    "teamCode": "የቡድን ኮድ"
+    "teamCode": "የቡድን ኮድ",
+    "connectionOffline": "ከመስመር ውጭ ነዎት። ግንኙነትዎ ሲመለስ ፓንጋያ ቻት እንደገና ይገናኛል።",
+    "connectionUnreachable": "ፓንጋያ ቻት ማግኘት አልተቻለም። እንደገና በመሞከር ላይ…",
+    "connectionBackOnline": "በድጋሚ መስመር ላይ ነዎት",
+    "missionDueDate": "የሚጠናቀቅበት ቀን {date}, {time}"
 }

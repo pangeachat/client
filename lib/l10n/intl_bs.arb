@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-13 13:03:39.392804",
+    "@@last_modified": "2026-10-14 13:23:06.852109",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -364,8 +364,6 @@
     "status": "Status",
     "statusExampleMessage": "Kako si danas?",
     "submit": "Pošalji",
-    "synchronizingPleaseWait": "Sinhronizacija… Molimo sačekajte.",
-    "synchronizingPleaseWaitCounter": " Sinhronizacija… ({percentage}%)",
     "systemTheme": "Sistemska",
     "theyDontMatch": "Ne podudaraju se",
     "theyMatch": "Podudaraju se",
@@ -590,7 +588,6 @@
     "previous": "Prethodno",
     "otherPartyNotLoggedIn": "Druga strana trenutno nije prijavljena i stoga ne može primati poruke!",
     "open": "Otvori",
-    "waitingForServer": "Čeka se server...",
     "newChatRequest": "📩 Novi zahtjev za chat",
     "contentNotificationSettings": "Postavke obavijesti o sadržaju",
     "generalNotificationSettings": "Opće postavke obavijesti",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "Novi chat kursa",
     "customCourseStepDesc": "Kurs je skup konverzacijskih aktivnosti koje prate vaš udžbenik, a koje vaši učenici rade zajedno kao domaći zadatak.",
     "reopenAppToFinishSwitching": "Potpuno zatvorite aplikaciju i ponovo je otvorite da biste završili prebacivanje.",
-    "teamCode": "Kod tima"
+    "teamCode": "Kod tima",
+    "connectionOffline": "Nema interneta. Pangea Chat će se ponovo povezati kada se veza vrati.",
+    "connectionUnreachable": "Pangea Chat je nedostupan. Pokušavam ponovo…",
+    "connectionBackOnline": "Ponovo online",
+    "missionDueDate": "Rok: {date}, {time}"
 }

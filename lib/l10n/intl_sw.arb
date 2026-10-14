@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-13 13:03:49.464059",
+    "@@last_modified": "2026-10-14 13:23:18.061557",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -364,8 +364,6 @@
     "status": "Hali",
     "statusExampleMessage": "Ukoje leo?",
     "submit": "Wasilisha",
-    "synchronizingPleaseWait": "Inasawazisha… Tafadhali subiri.",
-    "synchronizingPleaseWaitCounter": " Inasawazisha… ({percentage}%)",
     "systemTheme": "Mfumo",
     "theyDontMatch": "Hazifanani",
     "theyMatch": "Zinafanana",
@@ -590,7 +588,6 @@
     "previous": "Iliyotangulia",
     "otherPartyNotLoggedIn": "Upande mwingine haujaingia kwa sasa na kwa hivyo hauwezi kupokea ujumbe!",
     "open": "Fungua",
-    "waitingForServer": "Inasubiri seva...",
     "newChatRequest": "📩 Ombi jipya la gumzo",
     "contentNotificationSettings": "Mipangilio ya arifa za maudhui",
     "generalNotificationSettings": "Mipangilio ya jumla ya arifa",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "Gumzo jipya la kozi",
     "customCourseStepDesc": "Kozi ni seti ya shughuli za mazungumzo zinazofuata kitabu chako cha kiada, kwa ajili ya wanafunzi wako kufanya pamoja kama kazi ya nyumbani.",
     "reopenAppToFinishSwitching": "Funga programu kabisa kisha uifungue tena ili umalize kubadili.",
-    "teamCode": "Msimbo wa timu"
+    "teamCode": "Msimbo wa timu",
+    "connectionOffline": "Hauna intaneti. Pangea Chat itaunganisha tena intaneti yako itakaporudi.",
+    "connectionUnreachable": "Haiwezi kufikia Pangea Chat. Inajaribu tena…",
+    "connectionBackOnline": "Umerudi mtandaoni",
+    "missionDueDate": "Tarehe ya kukamilisha {date}, {time}"
 }

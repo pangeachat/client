@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-13 13:03:47.666094",
+    "@@last_modified": "2026-10-14 13:23:17.295099",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -364,8 +364,6 @@
     "status": "ਸਥਿਤੀ",
     "statusExampleMessage": "ਤੁਹਾਡਾ ਕੀ ਹਾਲ ਹੈ?",
     "submit": "ਜਮ੍ਹਾਂ ਕਰੋ",
-    "synchronizingPleaseWait": "ਸਿੰਕ੍ਰੋਨਾਈਜ਼ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ... ਕਿਰਪਾ ਕਰਕੇ ਉਡੀਕ ਕਰੋ।",
-    "synchronizingPleaseWaitCounter": "ਸਿੰਕ੍ਰੋਨਾਈਜ਼ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ... ({percentage}%)",
     "systemTheme": "ਸਿਸਟਮ",
     "theyDontMatch": "ਇਹ ਮੇਲ ਨਹੀਂ ਖਾਂਦੇ",
     "theyMatch": "ਇਹ ਮੇਲ ਖਾਂਦੇ ਹਨ",
@@ -590,7 +588,6 @@
     "previous": "ਪਿਛਲਾ",
     "otherPartyNotLoggedIn": "ਦੂਜੀ ਧਿਰ ਇਸ ਵੇਲੇ ਲੌਗ ਇਨ ਨਹੀਂ ਹੈ ਅਤੇ ਇਸ ਲਈ ਸੁਨੇਹੇ ਪ੍ਰਾਪਤ ਨਹੀਂ ਕਰ ਸਕਦੀ!",
     "open": "ਖੋਲ੍ਹੋ",
-    "waitingForServer": "ਸਰਵਰ ਦੀ ਉਡੀਕ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ...",
     "newChatRequest": "📩 ਨਵੀਂ ਚੈਟ ਬੇਨਤੀ",
     "contentNotificationSettings": "ਸਮੱਗਰੀ ਨੋਟੀਫਿਕੇਸ਼ਨ ਸੈਟਿੰਗਾਂ",
     "generalNotificationSettings": "ਆਮ ਨੋਟੀਫਿਕੇਸ਼ਨ ਸੈਟਿੰਗਾਂ",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "ਨਵੀਂ ਕੋਰਸ ਚੈਟ",
     "customCourseStepDesc": "ਇੱਕ ਕੋਰਸ ਗੱਲਬਾਤ ਦੀਆਂ ਗਤੀਵਿਧੀਆਂ ਦਾ ਇੱਕ ਸਮੂਹ ਹੈ ਜੋ ਤੁਹਾਡੀ ਪਾਠ ਪੁਸਤਕ ਦੀ ਪਾਲਣਾ ਕਰਦਾ ਹੈ, ਤੁਹਾਡੇ ਵਿਦਿਆਰਥੀਆਂ ਲਈ ਹੋਮਵਰਕ ਵਜੋਂ ਇਕੱਠੇ ਕਰਨ ਲਈ।",
     "reopenAppToFinishSwitching": "ਸਵਿੱਚਿੰਗ ਪੂਰੀ ਕਰਨ ਲਈ ਐਪ ਨੂੰ ਪੂਰੀ ਤਰ੍ਹਾਂ ਬੰਦ ਕਰੋ ਅਤੇ ਇਸਨੂੰ ਦੁਬਾਰਾ ਖੋਲ੍ਹੋ।",
-    "teamCode": "ਟੀਮ ਕੋਡ"
+    "teamCode": "ਟੀਮ ਕੋਡ",
+    "connectionOffline": "ਤੁਸੀਂ ਔਫਲਾਈਨ ਹੋ। ਜਦੋਂ ਤੁਹਾਡਾ ਕਨੈਕਸ਼ਨ ਵਾਪਸ ਆਵੇਗਾ ਤਾਂ ਪੈਂਗੇਆ ਚੈਟ ਮੁੜ ਕਨੈਕਟ ਹੋ ਜਾਵੇਗੀ।",
+    "connectionUnreachable": "ਪੈਂਗੇਆ ਚੈਟ ਤੱਕ ਪਹੁੰਚ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ। ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ…",
+    "connectionBackOnline": "ਵਾਪਸ ਔਨਲਾਈਨ",
+    "missionDueDate": "{date}, {time} ਨੂੰ ਨਿਰਧਾਰਤ"
 }

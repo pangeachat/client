@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-13 13:03:42.889476",
+    "@@last_modified": "2026-10-14 13:23:06.313777",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -364,8 +364,6 @@
     "status": "Xwm txheej",
     "statusExampleMessage": "Koj nyob li cas hnub no?",
     "submit": "Xa",
-    "synchronizingPleaseWait": "Tab tom synchronize… Thov tos.",
-    "synchronizingPleaseWaitCounter": " Tab tom synchronize… ({percentage}%)",
     "systemTheme": "System",
     "theyDontMatch": "Lawv Tsis Sib Haum",
     "theyMatch": "Lawv Sib Haum",
@@ -590,7 +588,6 @@
     "previous": "Dhau los",
     "otherPartyNotLoggedIn": "Lwm tus neeg tam sim no tsis tau nkag mus thiab yog li ntawd tsis tuaj yeem tau txais lus!",
     "open": "Qhib",
-    "waitingForServer": "Tos tus neeg rau zaub mov...",
     "newChatRequest": "📩 Kev thov sib tham tshiab",
     "contentNotificationSettings": "Chaw ceeb toom cov ntsiab lus",
     "generalNotificationSettings": "Chaw ceeb toom dav dav",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "Kev sib tham kawm tshiab",
     "customCourseStepDesc": "Ib chav kawm yog ib pawg kev sib tham uas ua raws li koj phau ntawv kawm, rau koj cov tub ntxhais kawm ua ke ua homework.",
     "reopenAppToFinishSwitching": "Kaw tag nrho lub app thiab mam li qhib dua kom tiav kev hloov.",
-    "teamCode": "Pab pawg tus lej"
+    "teamCode": "Pab pawg tus lej",
+    "connectionOffline": "Koj tsis muaj internet. Pangea Chat yuav rov txuas thaum koj muaj internet dua.",
+    "connectionUnreachable": "Txuas tsis tau rau Pangea Chat. Rov sim dua…",
+    "connectionBackOnline": "Muaj internet dua",
+    "missionDueDate": "Yuav tsum ua tiav {date}, {time}"
 }

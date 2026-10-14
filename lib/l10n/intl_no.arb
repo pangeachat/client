@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-13 13:03:47.108167",
+    "@@last_modified": "2026-10-14 13:23:14.942992",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -364,8 +364,6 @@
     "status": "Status",
     "statusExampleMessage": "Hvordan har du det i dag?",
     "submit": "Send inn",
-    "synchronizingPleaseWait": "Synkroniserer… Vennligst vent.",
-    "synchronizingPleaseWaitCounter": " Synkroniserer… ({percentage}%)",
     "systemTheme": "System",
     "theyDontMatch": "De samsvarer ikke",
     "theyMatch": "De samsvarer",
@@ -590,7 +588,6 @@
     "previous": "Forrige",
     "otherPartyNotLoggedIn": "Den andre parten er for øyeblikket ikke logget inn og kan derfor ikke motta meldinger!",
     "open": "Åpne",
-    "waitingForServer": "Venter på server ...",
     "newChatRequest": "📩 Ny chatforespørsel",
     "contentNotificationSettings": "Innstillinger for innholdsvarsler",
     "generalNotificationSettings": "Generelle varslingsinnstillinger",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "Ny kursprat",
     "customCourseStepDesc": "Et kurs er et sett med samtaleaktiviteter som følger læreboken din, som studentene dine kan gjøre sammen som lekser.",
     "reopenAppToFinishSwitching": "Lukk appen helt og åpne den igjen for å fullføre byttet.",
-    "teamCode": "Teamkode"
+    "teamCode": "Teamkode",
+    "connectionOffline": "Du er frakoblet. Pangea Chat kobler til igjen når du er på nett.",
+    "connectionUnreachable": "Får ikke kontakt med Pangea Chat. Prøver igjen…",
+    "connectionBackOnline": "Tilbake på nett",
+    "missionDueDate": "Frist {date}, {time}"
 }

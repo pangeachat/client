@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-13 13:03:43.923768",
+    "@@last_modified": "2026-10-14 13:23:10.837582",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -1864,11 +1864,6 @@
     "@whyIsThisMessageEncrypted": {},
     "serverRequiresEmail": "このサーバーは、登録のためにメールアドレスを検証する必要があります。",
     "@serverRequiresEmail": {},
-    "synchronizingPleaseWait": "同期中...お待ちください。",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "emojis": "絵文字",
     "@emojis": {},
     "markAsRead": "既読にする",
@@ -2069,7 +2064,6 @@
     "separateChatTypes": "ダイレクトチャットとグループを分離",
     "setChatDescription": "チャットの説明を設定",
     "presencesToggle": "他のユーザーのステータスメッセージを表示",
-    "synchronizingPleaseWaitCounter": "同期中… ({percentage}%)",
     "dismiss": "閉じる",
     "widgetEtherpad": "テキストノート",
     "invitedBy": "📩 {user}によって招待されました",
@@ -2201,7 +2195,6 @@
     "previous": "前へ",
     "otherPartyNotLoggedIn": "相手は現在ログインしておらず、メッセージを受信できません！",
     "open": "開く",
-    "waitingForServer": "サーバーを待っています...",
     "newChatRequest": "📩 新しいチャットリクエスト",
     "contentNotificationSettings": "コンテンツ通知設定",
     "generalNotificationSettings": "一般通知設定",
@@ -3231,14 +3224,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@dismiss": {
         "type": "String",
         "placeholders": {}
@@ -3848,10 +3833,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10763,5 +10744,9 @@
     "newCourseChat": "新しいコースチャット",
     "customCourseStepDesc": "コースとは、教科書に沿った会話アクティビティのセットで、生徒が宿題として一緒に取り組むものです。",
     "reopenAppToFinishSwitching": "切り替えを完了するには、アプリを完全に閉じてからもう一度開いてください。",
-    "teamCode": "チームコード"
+    "teamCode": "チームコード",
+    "connectionOffline": "オフラインです。接続が回復すると、Pangea Chatは再接続します。",
+    "connectionUnreachable": "Pangea Chatに到達できません。再試行中…",
+    "connectionBackOnline": "オンラインに戻りました",
+    "missionDueDate": "{date} {time} 期限"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-13 13:03:47.028989",
+    "@@last_modified": "2026-10-14 13:23:14.021489",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -1193,11 +1193,6 @@
     },
     "statusExampleMessage": "Jak się masz dziś?",
     "@statusExampleMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "synchronizingPleaseWait": "Synchronizowanie… Proszę czekać.",
-    "@synchronizingPleaseWait": {
         "type": "String",
         "placeholders": {}
     },
@@ -2707,17 +2702,6 @@
     "@notificationRuleServerAclDescription": {},
     "newChatRequest": "📩 Nowa prośba o czat",
     "@newChatRequest": {},
-    "synchronizingPleaseWaitCounter": " Synchronizowanie… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
-    "waitingForServer": "Oczekiwanie na serwer...",
-    "@waitingForServer": {},
     "previous": "Poprzedni",
     "@previous": {},
     "otherPartyNotLoggedIn": "Druga strona nie jest obecnie zalogowana i dlatego nie może odbierać wiadomości!",
@@ -10079,5 +10063,9 @@
     "newCourseChat": "Nowy czat kursu",
     "customCourseStepDesc": "Kurs to zestaw ćwiczeń konwersacyjnych, które są zgodne z Twoim podręcznikiem, do wspólnego odrabiania przez Twoich uczniów jako praca domowa.",
     "reopenAppToFinishSwitching": "Całkowicie zamknij aplikację i otwórz ją ponownie, aby zakończyć przełączanie.",
-    "teamCode": "Kod zespołu"
+    "teamCode": "Kod zespołu",
+    "connectionOffline": "Jesteś offline. Pangea Chat połączy się ponownie, gdy odzyskasz połączenie.",
+    "connectionUnreachable": "Nie można nawiązać połączenia z Pangea Chat. Ponawiam próbę…",
+    "connectionBackOnline": "Ponownie online",
+    "missionDueDate": "Termin: {date}, {time}"
 }

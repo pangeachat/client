@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-13 13:03:44.927713",
+    "@@last_modified": "2026-10-14 13:23:08.717310",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -364,8 +364,6 @@
     "status": "Status",
     "statusExampleMessage": "Aw yu de tide?",
     "submit": "Sɛn",
-    "synchronizingPleaseWait": "De sinkronayz… Plis wet.",
-    "synchronizingPleaseWaitCounter": " De sinkronayz… ({percentage}%)",
     "systemTheme": "Sistɛm",
     "theyDontMatch": "Dɛn nɔ mach",
     "theyMatch": "Dɛn mach",
@@ -590,7 +588,6 @@
     "previous": "Prɛviɔs",
     "otherPartyNotLoggedIn": "Di ɔda pɔsin nɔ lɔg in naw, so i nɔ go ebul risiv mɛsej dɛn!",
     "open": "Opɛn",
-    "waitingForServer": "De wet fɔ sɛva...",
     "newChatRequest": "📩 Nyu chat rikwɛst",
     "contentNotificationSettings": "Kɔntɛnt notifikeshɔn sɛtin dɛn",
     "generalNotificationSettings": "Jɛnɛral notifikeshɔn sɛtin dɛn",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "Nyu kos chat",
     "customCourseStepDesc": "Wan kos na wan set fɔ kɔnvɛseshɔn aktivitis we de fala yu tɛksbuk, fɔ mek yu studɛnt dɛn du togɛda as homwɔk.",
     "reopenAppToFinishSwitching": "Klos di ap ɔlgeda ɛn opin am bak fɔ fɛnɛsh di chenj.",
-    "teamCode": "Tim kɔd"
+    "teamCode": "Tim kɔd",
+    "connectionOffline": "Yu de offline. Pangea Chat go reconnect wen yu connection kam bak.",
+    "connectionUnreachable": "Pangea Chat nɔ de rich. De tray bak…",
+    "connectionBackOnline": "Dɔn kɔm bak ɔnlayn",
+    "missionDueDate": "Fɔ du {date}, {time}"
 }

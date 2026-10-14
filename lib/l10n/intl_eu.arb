@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-13 13:03:41.642359",
+    "@@last_modified": "2026-10-14 13:23:02.299907",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -1858,11 +1858,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Sinkronizatzen… itxaron.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "tooManyRequestsWarning": "Eskaera gehiegi. Saiatu berriro geroago!",
     "@tooManyRequestsWarning": {
         "type": "String",
@@ -2632,17 +2627,6 @@
     "@roomNotificationSettings": {},
     "otherNotificationSettings": "Beste jakinarazpenen ezarpenak",
     "@otherNotificationSettings": {},
-    "waitingForServer": "Zerbitzariaren zain…",
-    "@waitingForServer": {},
-    "synchronizingPleaseWaitCounter": " Sinkronizatzen… (%{percentage})",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "notificationRuleInviteForMe": "Gonbidapena niretzat",
     "@notificationRuleInviteForMe": {},
     "notificationRuleInviteForMeDescription": "Erabiltzailea gela batera gonbidatzen dutenean jakinarazten du.",
@@ -9994,5 +9978,9 @@
     "newCourseChat": "Ikastaro-txat berria",
     "customCourseStepDesc": "Ikastaro bat elkarrizketa-jardueren multzo bat da, zure testuliburua jarraitzen duena, zure ikasleek elkarrekin etxeko lan gisa egiteko.",
     "reopenAppToFinishSwitching": "Itxi aplikazioa erabat eta ireki berriro aldatzen amaitzeko.",
-    "teamCode": "Talde-kodea"
+    "teamCode": "Talde-kodea",
+    "connectionOffline": "Lineaz kanpo zaude. Pangea Chat berriro konektatuko da konexioa berreskuratzean.",
+    "connectionUnreachable": "Ezin da Pangea Chat-era iritsi. Berriro saiatzen...",
+    "connectionBackOnline": "Berriro konektatuta",
+    "missionDueDate": "{date}, {time}rako"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-13 13:03:48.432179",
+    "@@last_modified": "2026-10-14 13:23:16.853316",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -1450,8 +1450,6 @@
     "presencesToggle": "Zobraziť stavové správy od iných používateľov",
     "startedACall": "{senderName} začal hovor",
     "status": "Stav",
-    "synchronizingPleaseWait": "Synchronizácia... Prosím čakajte.",
-    "synchronizingPleaseWaitCounter": " Synchronizácia... ({percentage}%)",
     "tooManyRequestsWarning": "Príliš veľa požiadaviek. Skúste to prosím neskôr!",
     "unavailable": "Nedostupné",
     "unpin": "Odinštalovať",
@@ -1643,7 +1641,6 @@
     "previous": "Predchádzajúce",
     "otherPartyNotLoggedIn": "Druhá strana momentálne nie je prihlásená a nemôže prijímať správy!",
     "open": "Otvoriť",
-    "waitingForServer": "Čaká sa na server...",
     "newChatRequest": "📩 Nová požiadavka na chat",
     "contentNotificationSettings": "Nastavenia oznámení obsahu",
     "generalNotificationSettings": "Všeobecné nastavenia oznámení",
@@ -3120,18 +3117,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@tooManyRequestsWarning": {
         "type": "String",
         "placeholders": {}
@@ -4024,10 +4009,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10939,5 +10920,9 @@
     "newCourseChat": "Nový chat kurzu",
     "customCourseStepDesc": "Kurz je súbor konverzačných aktivít, ktoré nasledujú vašu učebnicu, aby ich vaši študenti robili spoločne ako domácu úlohu.",
     "reopenAppToFinishSwitching": "Úplne zatvorte aplikáciu a znova ju otvorte, aby ste dokončili prepínanie.",
-    "teamCode": "Kód tímu"
+    "teamCode": "Kód tímu",
+    "connectionOffline": "Ste offline. Pangea Chat sa znova pripojí, keď budete mať opäť pripojenie.",
+    "connectionUnreachable": "Pangea Chat je nedostupný. Skúšam znova…",
+    "connectionBackOnline": "Späť online",
+    "missionDueDate": "Termín: {date}, {time}"
 }

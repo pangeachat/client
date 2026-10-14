@@ -1574,8 +1574,6 @@
     "status": "Estado",
     "statusExampleMessage": "Como estás hoje?",
     "submit": "Enviar",
-    "synchronizingPleaseWait": "A sincronizar… Por favor, aguarde.",
-    "synchronizingPleaseWaitCounter": " A sincronizar… ({percentage}%)",
     "systemTheme": "Sistema",
     "theyDontMatch": "Não Correspondem",
     "theyMatch": "Correspondem",
@@ -1800,7 +1798,6 @@
     "previous": "Anterior",
     "otherPartyNotLoggedIn": "A outra parte atualmente não está conectada e, portanto, não pode receber mensagens!",
     "open": "Abrir",
-    "waitingForServer": "A aguardar o servidor...",
     "newChatRequest": "📩 Novo pedido de chat",
     "contentNotificationSettings": "Configurações de notificação de conteúdo",
     "generalNotificationSettings": "Configurações gerais de notificação",
@@ -2555,7 +2552,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-13 13:03:48.343362",
+    "@@last_modified": "2026-10-14 13:23:15.490597",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -2930,18 +2927,6 @@
     "@submit": {
         "type": "String",
         "placeholders": {}
-    },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "@systemTheme": {
         "type": "String",
@@ -4007,10 +3992,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10911,5 +10892,9 @@
     "newCourseChat": "Novo chat do curso",
     "customCourseStepDesc": "Um curso é um conjunto de atividades de conversação que seguem o seu manual, para os seus alunos fazerem juntos como trabalho de casa.",
     "reopenAppToFinishSwitching": "Feche a aplicação completamente e abra-a novamente para terminar a mudança.",
-    "teamCode": "Código da equipa"
+    "teamCode": "Código da equipa",
+    "connectionOffline": "Está offline. O Pangea Chat irá reconectar quando a sua ligação for restabelecida.",
+    "connectionUnreachable": "Não é possível aceder ao Pangea Chat. A tentar novamente…",
+    "connectionBackOnline": "Online novamente",
+    "missionDueDate": "Até {date}, {time}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-13 13:03:43.790979",
+    "@@last_modified": "2026-10-14 13:23:07.337961",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -364,8 +364,6 @@
     "status": "Ọkwa",
     "statusExampleMessage": "Kedu ka ị dị taa?",
     "submit": "Nyefee",
-    "synchronizingPleaseWait": "Na-emekọrịta… Biko chere.",
-    "synchronizingPleaseWaitCounter": " Na-emekọrịta… ({percentage}%)",
     "systemTheme": "Sistemụ",
     "theyDontMatch": "Ha adabaghị",
     "theyMatch": "Ha dabara",
@@ -590,7 +588,6 @@
     "previous": "Nke gara aga",
     "otherPartyNotLoggedIn": "Onye nke ọzọ abanyebeghị ugbu a ma ya mere enweghị ike ịnata ozi!",
     "open": "Mepee",
-    "waitingForServer": "Na-eche ihe nkesa...",
     "newChatRequest": "📩 Arịrịọ nkata ọhụrụ",
     "contentNotificationSettings": "Ntọala ngosi ọdịnaya",
     "generalNotificationSettings": "Ntọala ngosi izugbe",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "Nkata ọmụmụ ihe ọhụrụ",
     "customCourseStepDesc": "Usoro ọmụmụ bụ usoro ihe omume mkparịta ụka na-eso akwụkwọ gị, maka ụmụ akwụkwọ gị ka ha na-eme ọnụ dị ka ihe omume ụlọ.",
     "reopenAppToFinishSwitching": "Mechie ngwa ahụ kpamkpam wee mepee ya ọzọ ka ịmechaa mgbanwe.",
-    "teamCode": "Koodu otu"
+    "teamCode": "Koodu otu",
+    "connectionOffline": "Ị nọ n'ịntanetị. Pangea Chat ga-ejikọgharị mgbe njikọ gị laghachiri.",
+    "connectionUnreachable": "Enweghị ike iru Pangea Chat. Na-anwa ọzọ…",
+    "connectionBackOnline": "Ịntanetị alaghachila",
+    "missionDueDate": "Oge ruru {date}, {time}"
 }

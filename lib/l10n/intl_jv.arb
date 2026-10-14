@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-13 13:03:43.876695",
+    "@@last_modified": "2026-10-14 13:23:07.759915",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -364,8 +364,6 @@
     "status": "Status",
     "statusExampleMessage": "Piye kabarmu dina iki?",
     "submit": "Kirim",
-    "synchronizingPleaseWait": "Nyinkronake… Mangga ngenteni.",
-    "synchronizingPleaseWaitCounter": " Nyinkronake… ({percentage}%)",
     "systemTheme": "Sistem",
     "theyDontMatch": "Ora Cocok",
     "theyMatch": "Cocok",
@@ -590,7 +588,6 @@
     "previous": "Sadurunge",
     "otherPartyNotLoggedIn": "Pihak liya saiki ora mlebu lan mulane ora bisa nampa pesen!",
     "open": "Bukak",
-    "waitingForServer": "Ngenteni server...",
     "newChatRequest": "📩 Panjaluk obrolan anyar",
     "contentNotificationSettings": "Setelan notifikasi konten",
     "generalNotificationSettings": "Setelan notifikasi umum",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "Obrolan kursus anyar",
     "customCourseStepDesc": "Kursus yaiku sakumpulan aktivitas pacelathon sing ngetutake buku teks sampeyan, kanggo siswa sampeyan supaya bisa nindakake bebarengan minangka PR.",
     "reopenAppToFinishSwitching": "Tutup aplikasi kanthi lengkap banjur bukak maneh kanggo ngrampungake ganti.",
-    "teamCode": "Kode tim"
+    "teamCode": "Kode tim",
+    "connectionOffline": "Sampeyan offline. Pangea Chat bakal nyambung maneh nalika sambungan sampeyan bali.",
+    "connectionUnreachable": "Ora bisa nyambung menyang Pangea Chat. Nyoba maneh…",
+    "connectionBackOnline": "Bali online",
+    "missionDueDate": "Kudu rampung {date}, {time}"
 }

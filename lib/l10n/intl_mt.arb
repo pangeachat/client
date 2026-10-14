@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-13 13:03:46.338317",
+    "@@last_modified": "2026-10-14 13:23:12.233420",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -364,8 +364,6 @@
     "status": "Status",
     "statusExampleMessage": "Kif int illum?",
     "submit": "Ibgħat",
-    "synchronizingPleaseWait": "Qed tissinkronizza… Jekk jogħġbok stenna.",
-    "synchronizingPleaseWaitCounter": " Qed tissinkronizza… ({percentage}%)",
     "systemTheme": "Sistema",
     "theyDontMatch": "Ma Jaqblux",
     "theyMatch": "Jaqblu",
@@ -590,7 +588,6 @@
     "previous": "Preċedenti",
     "otherPartyNotLoggedIn": "Il-parti l-oħra bħalissa mhix illoggjata u għalhekk ma tistax tirċievi messaġġi!",
     "open": "Iftaħ",
-    "waitingForServer": "Qed tistenna s-server...",
     "newChatRequest": "📩 Talba ġdida għal chat",
     "contentNotificationSettings": "Settings tan-notifiki tal-kontenut",
     "generalNotificationSettings": "Settings ġenerali tan-notifiki",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "Chat ġdid tal-kors",
     "customCourseStepDesc": "Kors huwa sett ta' attivitajiet ta' konverżazzjoni li jsegwu l-ktieb tiegħek, biex l-istudenti tiegħek jagħmluhom flimkien bħala xogħol tad-dar.",
     "reopenAppToFinishSwitching": "Agħlaq l-app kompletament u erġa' iftaħha biex tispiċċa taqleb.",
-    "teamCode": "Kodiċi tat-tim"
+    "teamCode": "Kodiċi tat-tim",
+    "connectionOffline": "M'intix online. Pangea Chat se jerġa' jgħaqqad meta terġa' jkollok konnessjoni.",
+    "connectionUnreachable": "Ma nistax nilħaq Pangea Chat. Qed nipprova mill-ġdid…",
+    "connectionBackOnline": "Erġajt online",
+    "missionDueDate": "Skadenza {date}, {time}"
 }

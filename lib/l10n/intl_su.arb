@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-13 13:03:49.416056",
+    "@@last_modified": "2026-10-14 13:23:17.516206",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -364,8 +364,6 @@
     "status": "Status",
     "statusExampleMessage": "Kumaha damang dinten ieu?",
     "submit": "Kirim",
-    "synchronizingPleaseWait": "Nyingkronkeun… Mangga antosan.",
-    "synchronizingPleaseWaitCounter": " Nyingkronkeun… ({percentage}%)",
     "systemTheme": "Sistem",
     "theyDontMatch": "Teu Cocog",
     "theyMatch": "Cocog",
@@ -590,7 +588,6 @@
     "previous": "Saméméhna",
     "otherPartyNotLoggedIn": "Pihak sanés ayeuna teu lebet sareng ku kituna teu tiasa nampi pesen!",
     "open": "Buka",
-    "waitingForServer": "Ngantosan server...",
     "newChatRequest": "📩 Paménta obrolan énggal",
     "contentNotificationSettings": "Setélan béwara eusi",
     "generalNotificationSettings": "Setélan béwara umum",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "Obrolan kursus anyar",
     "customCourseStepDesc": "Kursus nyaéta runtuyan kagiatan paguneman anu nuturkeun buku téks anjeun, pikeun siswa anjeun pikeun ngalakukeun babarengan salaku PR.",
     "reopenAppToFinishSwitching": "Tutup aplikasi sagemblengna teras buka deui kanggo ngarengsekeun gentos.",
-    "teamCode": "Kode tim"
+    "teamCode": "Kode tim",
+    "connectionOffline": "Anjeun pareum. Pangea Chat bakal nyambung deui nalika sambungan anjeun balik deui.",
+    "connectionUnreachable": "Teu tiasa ngahontal Pangea Chat. Nyobian deui…",
+    "connectionBackOnline": "Balik deui online",
+    "missionDueDate": "Tenggang {date}, {time}"
 }

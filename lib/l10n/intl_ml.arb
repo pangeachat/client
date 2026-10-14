@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-13 13:03:46.045975",
+    "@@last_modified": "2026-10-14 13:23:13.343804",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -364,8 +364,6 @@
     "status": "നില",
     "statusExampleMessage": "ഇന്ന് നിങ്ങൾക്ക് എങ്ങനെയുണ്ട്?",
     "submit": "സമർപ്പിക്കുക",
-    "synchronizingPleaseWait": "സമന്വയിപ്പിക്കുന്നു… ദയവായി കാത്തിരിക്കുക.",
-    "synchronizingPleaseWaitCounter": " സമന്വയിപ്പിക്കുന്നു… ({percentage}%)",
     "systemTheme": "സിസ്റ്റം",
     "theyDontMatch": "അവ പൊരുത്തപ്പെടുന്നില്ല",
     "theyMatch": "അവ പൊരുത്തപ്പെടുന്നു",
@@ -590,7 +588,6 @@
     "previous": "മുമ്പത്തെ",
     "otherPartyNotLoggedIn": "മറ്റേയാൾ നിലവിൽ ലോഗിൻ ചെയ്തിട്ടില്ലാത്തതിനാൽ സന്ദേശങ്ങൾ സ്വീകരിക്കാൻ കഴിയില്ല!",
     "open": "തുറക്കുക",
-    "waitingForServer": "സെർവറിനായി കാത്തിരിക്കുന്നു...",
     "newChatRequest": "📩 പുതിയ ചാറ്റ് അഭ്യർത്ഥന",
     "contentNotificationSettings": "ഉള്ളടക്ക അറിയിപ്പ് ക്രമീകരണങ്ങൾ",
     "generalNotificationSettings": "പൊതുവായ അറിയിപ്പ് ക്രമീകരണങ്ങൾ",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "പുതിയ കോഴ്‌സ് ചാറ്റ്",
     "customCourseStepDesc": "ഒരു കോഴ്‌സ് എന്നത് നിങ്ങളുടെ പാഠപുസ്തകത്തെ പിന്തുടരുന്ന സംഭാഷണ പ്രവർത്തനങ്ങളുടെ ഒരു കൂട്ടമാണ്, നിങ്ങളുടെ വിദ്യാർത്ഥികൾക്ക് ഒരുമിച്ച് ഗൃഹപാഠമായി ചെയ്യാൻ.",
     "reopenAppToFinishSwitching": "മാറ്റം പൂർത്തിയാക്കാൻ ആപ്പ് പൂർണ്ണമായി അടച്ച് വീണ്ടും തുറക്കുക.",
-    "teamCode": "ടീം കോഡ്"
+    "teamCode": "ടീം കോഡ്",
+    "connectionOffline": "നിങ്ങൾ ഓഫ്‌ലൈനിലാണ്. കണക്ഷൻ തിരിച്ചെത്തുമ്പോൾ പാൻജിയ ചാറ്റ് വീണ്ടും കണക്റ്റ് ചെയ്യും.",
+    "connectionUnreachable": "പാൻജിയ ചാറ്റിലേക്ക് എത്താനാവുന്നില്ല. വീണ്ടും ശ്രമിക്കുന്നു...",
+    "connectionBackOnline": "ഓൺലൈനിൽ തിരിച്ചെത്തി",
+    "missionDueDate": "{date}, {time} ന്"
 }

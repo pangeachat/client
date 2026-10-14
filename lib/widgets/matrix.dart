@@ -23,6 +23,7 @@ import 'package:fluffychat/features/activity_sessions/activity_auto_save_service
 import 'package:fluffychat/features/activity_sessions/activity_roles_state_repair.dart';
 import 'package:fluffychat/features/activity_sessions/play_with_bot_intent.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/connection_status/connection_status_controller.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
@@ -869,6 +870,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   final onNotification = <String, StreamSubscription>{};
   final onLoginStateChanged = <String, StreamSubscription<LoginState>>{};
   final onUiaRequest = <String, StreamSubscription<UiaRequest>>{};
+  final onSyncStatusSub = <String, StreamSubscription<SyncStatusUpdate>>{};
 
   String? _cachedPassword;
   Timer? _cachedPasswordClearTimer;
@@ -1069,6 +1071,12 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                 context,
           );
         });
+    // Only the active account's sync drives the connection banner.
+    onSyncStatusSub[name] ??= c.onSyncStatus.stream.listen((update) {
+      if (identical(c, client)) {
+        ConnectionStatusController.instance.onSyncStatus(update);
+      }
+    });
     final renewalFilter = TokenRenewalFilter(c.onLoginStateChanged.value);
     onLoginStateChanged[name] ??= c.onLoginStateChanged.stream.listen((
       state,
@@ -1235,6 +1243,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // #Pangea
     onUiaRequest[name]?.cancel();
     onUiaRequest.remove(name);
+    onSyncStatusSub[name]?.cancel();
+    onSyncStatusSub.remove(name);
+    // A stopped sync loop would never clear a lost connection.
+    ConnectionStatusController.instance.reset();
     await disposeAccountServices(name);
     // Pangea#
   }
@@ -1430,6 +1442,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     onKeyVerificationRequestSub.values.map((s) => s.cancel());
     onLoginStateChanged.values.map((s) => s.cancel());
     onNotification.values.map((s) => s.cancel());
+    for (final sub in onSyncStatusSub.values) {
+      sub.cancel();
+    }
     client.httpClient.close();
 
     linuxNotifications?.close();

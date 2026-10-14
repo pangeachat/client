@@ -589,10 +589,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@passwordHasBeenChanged": {
         "type": "String",
         "placeholders": {}
@@ -2117,8 +2113,6 @@
     "status": "स्थिति",
     "statusExampleMessage": "आज आप कैसे हैं?",
     "submit": "प्रस्तुत करें",
-    "synchronizingPleaseWait": "सिंक्रोनाइज़िंग… कृपया प्रतीक्षा करें।",
-    "synchronizingPleaseWaitCounter": "सिंक्रोनाइज़िंग… ({percentage}%)",
     "systemTheme": "सिस्टम",
     "theyDontMatch": "वे मेल नहीं खाते",
     "theyMatch": "वे मेल खाते हैं",
@@ -2343,7 +2337,6 @@
     "previous": "पिछला",
     "otherPartyNotLoggedIn": "दूसरी पार्टी वर्तमान में लॉग इन नहीं है और इसलिए संदेश प्राप्त नहीं कर सकती!",
     "open": "खुला",
-    "waitingForServer": "सर्वर का इंतजार कर रहा है...",
     "newChatRequest": "📩 नई चैट अनुरोध",
     "contentNotificationSettings": "सामग्री सूचनाएँ सेटिंग्स",
     "generalNotificationSettings": "सामान्य सूचनाएँ सेटिंग्स",
@@ -3089,7 +3082,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-10-13 13:03:42.649599",
+    "@@last_modified": "2026-10-14 13:23:09.068016",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -3217,14 +3210,6 @@
     "@presencesToggle": {
         "type": "String",
         "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "@invitedBy": {
         "type": "String",
@@ -3711,10 +3696,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10626,5 +10607,9 @@
     "newCourseChat": "नई कोर्स चैट",
     "customCourseStepDesc": "एक कोर्स बातचीत की गतिविधियों का एक सेट है जो आपकी पाठ्यपुस्तक का अनुसरण करता है, जिसे आपके छात्र होमवर्क के रूप में एक साथ करते हैं।",
     "reopenAppToFinishSwitching": "स्विचिंग पूरी करने के लिए ऐप को पूरी तरह से बंद करें और फिर से खोलें।",
-    "teamCode": "टीम कोड"
+    "teamCode": "टीम कोड",
+    "connectionOffline": "आप ऑफ़लाइन हैं। आपका कनेक्शन वापस आने पर पेंजिया चैट फिर से कनेक्ट हो जाएगा।",
+    "connectionUnreachable": "पेंजिया चैट तक नहीं पहुँच सकते। फिर से कोशिश कर रहा है…",
+    "connectionBackOnline": "वापस ऑनलाइन",
+    "missionDueDate": "{date}, {time} को देय"
 }

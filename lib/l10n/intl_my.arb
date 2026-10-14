@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-13 13:03:46.666908",
+    "@@last_modified": "2026-10-14 13:23:13.984641",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -364,8 +364,6 @@
     "status": "အခြေအနေ",
     "statusExampleMessage": "ဒီနေ့ ဘယ်လိုလဲ",
     "submit": "တင်ပြရန်",
-    "synchronizingPleaseWait": "တစ်ပြိုင်တည်းလုပ်ဆောင်နေသည်… ကျေးဇူးပြု၍ စောင့်ပါ။",
-    "synchronizingPleaseWaitCounter": "တစ်ပြိုင်တည်းလုပ်ဆောင်နေသည်… ({percentage}%)",
     "systemTheme": "စနစ်",
     "theyDontMatch": "၎င်းတို့ မတူညီပါ",
     "theyMatch": "၎င်းတို့ တူညီပါသည်",
@@ -590,7 +588,6 @@
     "previous": "ယခင်",
     "otherPartyNotLoggedIn": "တစ်ဖက်လူသည် လက်ရှိတွင် လော့ဂ်အင်ဝင်ထားခြင်း မရှိသောကြောင့် မက်ဆေ့ချ်များ လက်ခံရရှိနိုင်မည် မဟုတ်ပါ။",
     "open": "ဖွင့်ရန်",
-    "waitingForServer": "ဆာဗာကို စောင့်နေသည်...",
     "newChatRequest": "📩 ချတ်တောင်းဆိုမှုအသစ်",
     "contentNotificationSettings": "အကြောင်းအရာ အသိပေးချက် ဆက်တင်များ",
     "generalNotificationSettings": "အထွေထွေ အသိပေးချက် ဆက်တင်များ",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "သင်တန်းအသစ် စကားပြောခန်း",
     "customCourseStepDesc": "သင်ရိုးဆိုတာ သင့်ကျောင်းသားတွေ အိမ်စာအဖြစ် အတူတကွလုပ်ဆောင်ဖို့ သင့်ဖတ်စာအုပ်အတိုင်း လိုက်နာရတဲ့ စကားပြောလှုပ်ရှားမှုများ အစုံအလင်ပဲ ဖြစ်ပါတယ်။",
     "reopenAppToFinishSwitching": "ပြောင်းလဲခြင်းပြီးဆုံးရန် အက်ပ်ကို လုံးဝပိတ်ပြီး ပြန်ဖွင့်ပါ။",
-    "teamCode": "အဖွဲ့ကုဒ်"
+    "teamCode": "အဖွဲ့ကုဒ်",
+    "connectionOffline": "သင်အော့ဖ်လိုင်းဖြစ်နေပါသည်။ သင်၏အင်တာနက်ချိတ်ဆက်မှုပြန်ရသည်နှင့် Pangea Chat ပြန်လည်ချိတ်ဆက်ပါမည်။",
+    "connectionUnreachable": "Pangea Chat သို့ရောက်ရှိနိုင်ခြင်းမရှိပါ။ ထပ်မံကြိုးစားနေသည်...",
+    "connectionBackOnline": "အွန်လိုင်းပြန်ရောက်ပါပြီ",
+    "missionDueDate": "{date}, {time} တွင်ပြီးဆုံးမည်"
 }

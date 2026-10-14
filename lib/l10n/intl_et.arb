@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-13 13:03:41.211831",
+    "@@last_modified": "2026-10-14 13:23:02.461899",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -1547,11 +1547,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Sünkroniseerin andmeid… Palun oota.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "Süsteem",
     "@systemTheme": {
         "type": "String",
@@ -2610,17 +2605,6 @@
     "@otherPartyNotLoggedIn": {},
     "open": "Ava",
     "@open": {},
-    "waitingForServer": "Ootame serveri vastust...",
-    "@waitingForServer": {},
-    "synchronizingPleaseWaitCounter": " Sünkroniseerime… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "newChatRequest": "📩 Uus vestluskutse",
     "@newChatRequest": {},
     "notificationRuleCallDescription": "Teavita kasutajat saabuvast video- või häälkõnest.",
@@ -9991,5 +9975,9 @@
     "newCourseChat": "Uus kursusevestlus",
     "customCourseStepDesc": "Kursus on vestlustegevuste kogum, mis järgib teie õpikut ja mida teie õpilased saavad kodutööna koos teha.",
     "reopenAppToFinishSwitching": "Sulgege rakendus täielikult ja avage see uuesti, et vahetus lõpule viia.",
-    "teamCode": "Meeskonna kood"
+    "teamCode": "Meeskonna kood",
+    "connectionOffline": "Olete võrguühenduseta. Pangea Chat loob uuesti ühenduse, kui teie ühendus taastub.",
+    "connectionUnreachable": "Pangea Chatiga ei saa ühendust. Proovin uuesti…",
+    "connectionBackOnline": "Ühendus taastatud",
+    "missionDueDate": "Tähtaeg {date}, {time}"
 }

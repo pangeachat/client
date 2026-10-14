@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-13 13:03:41.760375",
+    "@@last_modified": "2026-10-14 13:23:03.837489",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -1547,11 +1547,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Sincronizando... Agarda.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "Sistema",
     "@systemTheme": {
         "type": "String",
@@ -2723,21 +2718,10 @@
     "@crossVerifiedDevices": {},
     "verifiedDevicesOnly": "Só dispositivos verificados",
     "@verifiedDevicesOnly": {},
-    "waitingForServer": "Agardando polo servidor…",
-    "@waitingForServer": {},
     "notificationRuleMasterDescription": "Sobrescribe todas as outras regras e desactiva todas as notificacións.",
     "@notificationRuleMasterDescription": {},
     "notificationRuleMemberEventDescription": "Suprime as notificacións dos eventos de participación.",
     "@notificationRuleMemberEventDescription": {},
-    "synchronizingPleaseWaitCounter": " Sincronizando…({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "optionalMessage": "(Optativo) mensaxe…",
     "@optionalMessage": {},
     "notSupportedOnThisDevice": "Non compatible co dispositivo",
@@ -9994,5 +9978,9 @@
     "newCourseChat": "Novo chat do curso",
     "customCourseStepDesc": "Un curso é un conxunto de actividades de conversa que seguen o teu libro de texto, para que os teus estudantes as fagan xuntos como deberes.",
     "reopenAppToFinishSwitching": "Pecha a aplicación completamente e ábrea de novo para rematar o cambio.",
-    "teamCode": "Código de equipo"
+    "teamCode": "Código de equipo",
+    "connectionOffline": "Estás sen conexión. Pangea Chat volverá conectar cando recuperes a conexión.",
+    "connectionUnreachable": "Non se pode conectar con Pangea Chat. Tentando de novo…",
+    "connectionBackOnline": "De novo en liña",
+    "missionDueDate": "Data de entrega: {date}, {time}"
 }

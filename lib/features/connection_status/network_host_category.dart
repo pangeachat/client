@@ -4,7 +4,7 @@ import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/map_tiles.dart';
 
 /// A host, or group of hosts, the app needs to reach. A network filter blocks
-/// the app one category at a time. See filtered-network.instructions.md,
+/// the app one category at a time. See connection-status.instructions.md,
 /// "Hosts the app needs".
 enum NetworkHostCategory {
   chatServer,

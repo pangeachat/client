@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-13 13:03:50.880208",
+    "@@last_modified": "2026-10-14 13:23:21.358097",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -364,8 +364,6 @@
     "status": "סטאַטוס",
     "statusExampleMessage": "ווי גייט עס דיר היינט?",
     "submit": "איבערגעבן",
-    "synchronizingPleaseWait": "סינכראָניזירט… ביטע וואַרטן.",
-    "synchronizingPleaseWaitCounter": " סינכראָניזירט… ({percentage}%)",
     "systemTheme": "סיסטעם",
     "theyDontMatch": "זיי שטימען נישט",
     "theyMatch": "זיי שטימען",
@@ -590,7 +588,6 @@
     "previous": "פֿריערדיקע",
     "otherPartyNotLoggedIn": "די אַנדערע פּאַרטיי איז דערווייל נישט איינגעלאָגט און קען דעריבער נישט באַקומען מעסעדזשעס!",
     "open": "עפֿן",
-    "waitingForServer": "וואַרטן אויף סערווער...",
     "newChatRequest": "📩 נייע שמועס בעטן",
     "contentNotificationSettings": "אינהאַלט נאָטיפיקאַציע סעטטינגס",
     "generalNotificationSettings": "אַלגעמיינע נאָטיפיקאַציע סעטטינגס",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "נייַ קורס שמועס",
     "customCourseStepDesc": "אַ קורס איז אַ סכום פון שמועס-אַקטיוויטעטן וואָס פאָלגן דיין לערנבוך, כּדי דיינע סטודענטן זאָלן דאָס טאָן צוזאַמען ווי הײם־אַרבעט.",
     "reopenAppToFinishSwitching": "שליסן די אַפּ גאַנץ און עפֿן עס ווידער צו ענדיקן דעם בייט.",
-    "teamCode": "קאָלעקטיוו קאָד"
+    "teamCode": "קאָלעקטיוו קאָד",
+    "connectionOffline": "איר זענט אָפפלינע. פּאַנגעאַ טשאַט וועט זיך ווידער פֿאַרבינדן ווען אייער פֿאַרבינדונג קומט צוריק.",
+    "connectionUnreachable": "קען נישט דערגרייכן פּאַנגעאַ טשאַט. פּרוּווט ווידער…",
+    "connectionBackOnline": "צוריק אָנליין",
+    "missionDueDate": "פֿאַרפֿאַלן {date}, {time}"
 }

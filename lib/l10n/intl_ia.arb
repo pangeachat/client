@@ -386,8 +386,6 @@
     "status": "Stato",
     "statusExampleMessage": "Como tu es hodie?",
     "submit": "Submitte",
-    "synchronizingPleaseWait": "Synchronisante… Per favor aspetta.",
-    "synchronizingPleaseWaitCounter": " Synchronisante… ({percentage}%)",
     "systemTheme": "Systema",
     "theyDontMatch": "Illes non coincide",
     "theyMatch": "Illes coincide",
@@ -612,7 +610,6 @@
     "previous": "Anterior",
     "otherPartyNotLoggedIn": "Le alter parte actualmente non es connectate e quindi non pote ricever messages!",
     "open": "Aperir",
-    "waitingForServer": "Expectante pro le servitor...",
     "newChatRequest": "📩 Requesta de nove chat",
     "contentNotificationSettings": "Configuration de notification de contento",
     "generalNotificationSettings": "Configuration general de notification",
@@ -1358,7 +1355,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-13 13:03:43.376411",
+    "@@last_modified": "2026-10-14 13:23:05.838273",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -2935,18 +2932,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@systemTheme": {
         "type": "String",
         "placeholders": {}
@@ -4007,10 +3992,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10930,5 +10911,9 @@
     "newCourseChat": "Nove chat de curso",
     "customCourseStepDesc": "Un curso es un insimul de activitates conversational que seque tu manual, pro que tu studentes los face insimul como deberes.",
     "reopenAppToFinishSwitching": "Claude le app completemente e aperi lo de novo pro finir le commutation.",
-    "teamCode": "Codice de equipa"
+    "teamCode": "Codice de equipa",
+    "connectionOffline": "Tu es offline. Pangea Chat se reconnectara quando tu es de nove connectite.",
+    "connectionUnreachable": "Non pote attinger Pangea Chat. Tentante de nove…",
+    "connectionBackOnline": "De nove online",
+    "missionDueDate": "Debite {date}, {time}"
 }

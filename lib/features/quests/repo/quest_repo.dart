@@ -91,14 +91,32 @@ class QuestActivity {
   const QuestActivity({required this.activityId, required this.plan});
 }
 
+/// A course's own note and soft due date for one Mission, from its copy
+/// (`pangea.course_missions`, content-studio.instructions.md). [timeZone] is
+/// the course's IANA zone the due date is shown in; null shows it in the
+/// viewer's own zone. A due date never blocks, hides or locks anything.
+class MissionPacing {
+  final String? note;
+  final DateTime? dueAt;
+  final String? timeZone;
+  const MissionPacing({this.note, this.dueAt, this.timeZone});
+
+  bool get isEmpty => note == null && dueAt == null;
+}
+
 /// A Learning Objective (Mission) with the activities that satisfy it, in
 /// quest order. A learner advances by completing any activity in the bucket.
 class QuestObjectiveGroup {
   final LearningObjective objective;
   final List<QuestActivity> activities;
+
+  /// The course's note and due date for this Mission; null when the course
+  /// has no copy or set neither.
+  final MissionPacing? pacing;
   const QuestObjectiveGroup({
     required this.objective,
     required this.activities,
+    this.pacing,
   });
 }
 
@@ -142,6 +160,7 @@ class QuestOutline {
       activities: group.activities
           .where((a) => allowed.contains(a.activityId))
           .toList(),
+      pacing: group.pacing,
     );
   }
 
@@ -171,14 +190,17 @@ class QuestOutline {
 
 /// v3 read layer for quests / learning-objectives / activities-v2.
 ///
-/// Reads CMS directly (Matrix Bearer auth), canonical only — localization is
-/// choreo's concern, consumed later when these reads swap to choreo endpoints
-/// (this repo is the swap point; callers don't change).
+/// The quest row is read from the CMS directly (Matrix Bearer auth): it is
+/// per-L1 content, so a direct read is already in its own language. Mission
+/// text and activity cards come from choreo's course outline read in the
+/// resolved display language — localized text is a join, and a direct
+/// `learning-objectives` read could only ever return canonical English, which
+/// is what the course page showed every learner until #8577.
 ///
 /// Deliberately NOT modeled on the v1 course-plan fan-out (plan → localized
 /// courses → topics → locations → activities, five sequential round-trips):
-///  - an outline is **three flat reads** — the quest, then the LO-text batch
-///    and the `activities-v2` query (all the quest's LOs at once) in parallel;
+///  - an outline is **two flat reads** — the quest, then the choreo outline
+///    read (the quest's Missions and all its activities at once);
 ///  - map pins are **one** thin read off the activities' own coordinates (no
 ///    topic/location join, no ring-offset hack).
 class QuestRepo {
@@ -211,7 +233,27 @@ class QuestRepo {
     retention: const Duration(hours: 24),
     now: () => QuestRepo.now(),
   );
-  static const String _learningObjectivesKey = 'learning-objectives';
+
+  /// Parse the choreo outline body's `missions` into Missions keyed by id —
+  /// each `{lo_id, objective, theme, cefr_level, ...}` with `objective` already
+  /// in the display language the read asked for (#8577). A Mission the server
+  /// could not resolve is simply absent; the caller falls back to the bare
+  /// step the quest row already holds.
+  @visibleForTesting
+  static Map<String, LearningObjective> questMissionsFromJson(dynamic decoded) {
+    if (decoded is! Map) return const {};
+    final list = decoded['missions'];
+    if (list is! List) return const {};
+    final out = <String, LearningObjective>{};
+    for (final e in list) {
+      if (e is! Map) continue;
+      final mission = LearningObjective.fromOutlineJson(
+        e.cast<String, dynamic>(),
+      );
+      if (mission != null) out[mission.id] = mission;
+    }
+    return out;
+  }
 
   /// Parse the choreo `GET /choreo/quests/{id}/activities` body into its raw
   /// activity entries (`{plan, version_id, learning_objective_refs}` maps).
@@ -278,16 +320,17 @@ class QuestRepo {
   /// earned their own.
   static RateLimitPause get activityReadPause => RateLimitPause.choreoReads;
 
-  /// The quest's activities from the choreo course listing — the
-  /// membership-aware read that may include the quest owner's private
-  /// activities when [courseRoomId] names a course the caller has joined.
+  /// The choreo course outline body — the quest's Missions in the display
+  /// language plus its activities, from the membership-aware read that may
+  /// include the quest owner's private activities when [courseRoomId] names a
+  /// course the caller has joined.
   ///
   /// Returns a [RateLimitedException] WITHOUT asking while
   /// [activityReadPause] is running. The 429 that started the pause was
   /// already captured once, so the suppression itself reports separately
   /// at `info` via [RateLimitPause.reportSuppressionOnce] — once per
   /// activation, not once per suppressed read (client#8507).
-  static Future<Result<List<Map<String, dynamic>>>> _questActivityEntries(
+  static Future<Result<Map<String, dynamic>>> _questOutlineBody(
     String questId, {
     String? courseRoomId,
   }) async {
@@ -303,11 +346,13 @@ class QuestRepo {
         queryParameters: {
           if (courseRoomId != null && courseRoomId.isNotEmpty)
             'course_room_id': courseRoomId,
-          // Overlays each plan's title/description/learning-objective from
-          // persisted translation rows, canonical fallback per activity —
-          // read-only server-side, never an LLM call (#8577). `version_id` is
-          // computed over canonical content, so it is identical across `l1`
-          // values and session pinning is unaffected.
+          // Each Mission's statement comes back in this language (the
+          // outline is a Mission's full tier, so the server translates on a
+          // miss), and each plan's title/description/learning-objective is
+          // overlaid from persisted translation rows only, canonical fallback
+          // per activity (#8577). `version_id` is computed over canonical
+          // content, so it is identical across `l1` values and session
+          // pinning is unaffected.
           'l1': displayL1,
         },
       );
@@ -319,8 +364,9 @@ class QuestRepo {
           'quest activities fetch failed (${response.statusCode})',
         );
       }
+      final decoded = jsonDecode(response.body);
       return Result.value(
-        questActivityEntriesFromJson(jsonDecode(response.body)),
+        decoded is Map ? decoded.cast<String, dynamic>() : const {},
       );
     } catch (e, s) {
       // Before the report, so the pause is armed even if reporting throws.
@@ -356,7 +402,7 @@ class QuestRepo {
 
   /// The quest with its ordered Learning Objective ids (one read). LO text is
   /// NOT populated by depth (Payload leaves the relationship-in-array a bare
-  /// id), so [_learningObjectives] resolves it in a separate batch read.
+  /// id); the outline read supplies it, in the display language.
   ///
   /// A confirmed 404 is answered from [removedQuests] without a request, and
   /// the repo owns its report — once per quest id per session, at warning,
@@ -395,33 +441,6 @@ class QuestRepo {
         e: e,
         s: s,
         data: {"quest_id": questId},
-        level: PangeaHttpException.severityOf(e),
-      );
-      return Result.error(e);
-    }
-  }
-
-  /// The full Learning Objectives for [ids], resolved in one batched read.
-  static Future<Result<Map<String, LearningObjective>>> _learningObjectives(
-    List<String> ids,
-  ) async {
-    try {
-      if (ids.isEmpty) return Result.value(const {});
-      final resp = await _client().find(
-        _learningObjectivesKey,
-        (json) => LearningObjective.fromJson(json),
-        where: {
-          'id': {'in': ids},
-        },
-        limit: ids.length,
-        depth: 0,
-      );
-      return Result.value({for (final lo in resp.docs) lo.id: lo});
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"lo_ids": ids},
         level: PangeaHttpException.severityOf(e),
       );
       return Result.error(e);
@@ -483,41 +502,51 @@ class QuestRepo {
     String questId, {
     String? courseRoomId,
   }) async {
-    final entriesResult = await _questActivityEntries(
+    final bodyResult = await _questOutlineBody(
       questId,
       courseRoomId: courseRoomId,
     );
-    final entries = entriesResult.result;
-    if (entries == null) {
+    final body = bodyResult.result;
+    if (body == null) {
       return Result.error(
-        entriesResult.error ?? "Failed to fetch quest activities",
+        bodyResult.error ?? "Failed to fetch quest activities",
       );
     }
-    final cards = entries
+    final cards = questActivityEntriesFromJson(body)
         .map((e) => QuestActivityCard.fromJson(cmsDocShapeFromEntry(e)))
         .where((card) => card.point != null)
         .toList();
     return Result.value(dedupeByActivityId(cards, (c) => c.activityId));
   }
 
-  /// Full activity plans for the quest (one choreo read), each paired with
-  /// the LO ids it satisfies (for grouping). [courseRoomId] admits the quest
-  /// owner's private activities when the caller is a joined member.
-  static Future<Result<List<({ActivityPlanModel plan, List<String> refs})>>>
-  _questActivityPlans(String questId, {String? courseRoomId}) async {
+  /// The course outline from one choreo read: the quest's Missions keyed by
+  /// id, text in the display language, and its full activity plans, each
+  /// paired with the LO ids it satisfies (for grouping). [courseRoomId]
+  /// admits the quest owner's private activities when the caller is a joined
+  /// member.
+  static Future<
+    Result<
+      ({
+        Map<String, LearningObjective> missions,
+        List<({ActivityPlanModel plan, List<String> refs})> activities,
+      })
+    >
+  >
+  _questOutlineRead(String questId, {String? courseRoomId}) async {
     try {
-      final entriesResult = await _questActivityEntries(
+      final bodyResult = await _questOutlineBody(
         questId,
         courseRoomId: courseRoomId,
       );
-      final rawEntries = entriesResult.result;
-      if (rawEntries == null) {
+      final body = bodyResult.result;
+      if (body == null) {
         return Result.error(
-          entriesResult.error ?? "Failed to fetch quest activities",
+          bodyResult.error ?? "Failed to fetch quest activities",
         );
       }
+      final missions = questMissionsFromJson(body);
       final entries = dedupeByActivityId(
-        rawEntries
+        questActivityEntriesFromJson(body)
             .map(
               (e) => (
                 plan: activityPlanFromV2(cmsDocShapeFromEntry(e)),
@@ -535,10 +564,13 @@ class QuestRepo {
         entries.map((e) => e.plan).toList(),
       );
 
-      return Result.value([
-        for (var i = 0; i < entries.length; i++)
-          (plan: resolved[i], refs: entries[i].refs),
-      ]);
+      return Result.value((
+        missions: missions,
+        activities: [
+          for (var i = 0; i < entries.length; i++)
+            (plan: resolved[i], refs: entries[i].refs),
+        ],
+      ));
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -669,8 +701,8 @@ class QuestRepo {
     return outline;
   }
 
-  /// Build a fresh outline — three reads (the quest, then the LO-text batch and
-  /// the activities query in parallel). Uncached; callers use [outline].
+  /// Build a fresh outline — two reads (the quest, then the choreo outline read
+  /// for its Missions and activities). Uncached; callers use [outline].
   static Future<Result<QuestOutline>> _buildOutline(
     String questId, {
     String? courseRoomId,
@@ -683,43 +715,32 @@ class QuestRepo {
         return Result.error(result.error ?? MissingQuestException());
       }
 
-      // LO text and activities both depend only on the quest — run in parallel.
-      final losFuture = _learningObjectives(quest.learningObjectiveIds);
-      final actsFuture = _questActivityPlans(
+      final outlineResult = await _questOutlineRead(
         questId,
         courseRoomId: courseRoomId,
       );
-
-      final learningObjectivesResult = await losFuture;
-      final learningObjectives = learningObjectivesResult.result;
-      if (learningObjectives == null) {
+      final read = outlineResult.result;
+      if (read == null) {
         return Result.error(
-          learningObjectivesResult.error ??
-              "Failed to fetch learning objectives",
-        );
-      }
-
-      final activitiesResult = await actsFuture;
-      final activities = activitiesResult.result;
-      if (activities == null) {
-        return Result.error(
-          activitiesResult.error ?? "Failed to fetch activities",
+          outlineResult.error ?? "Failed to fetch activities",
         );
       }
 
       final byLo = <String, List<QuestActivity>>{};
-      for (final a in activities) {
+      for (final a in read.activities) {
         final qa = QuestActivity(activityId: a.plan.activityId, plan: a.plan);
         for (final ref in a.refs) {
           (byLo[ref] ??= []).add(qa);
         }
       }
 
+      // Step order is the quest row's; the text is the outline read's. A
+      // Mission the server left out keeps the bare step (id, no text) so the
+      // group still exists and its activities still count.
       final groups = quest.sequence
           .map(
             (step) => QuestObjectiveGroup(
-              objective:
-                  learningObjectives[step.objective.id] ?? step.objective,
+              objective: read.missions[step.objective.id] ?? step.objective,
               activities: byLo[step.objective.id] ?? const [],
             ),
           )

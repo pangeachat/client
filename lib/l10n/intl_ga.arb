@@ -1765,11 +1765,6 @@
             }
         }
     },
-    "synchronizingPleaseWait": "Ag sioncrónú... Fan, le do thoil.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "startedACall": "Thosaigh {senderName} glao",
     "@startedACall": {
         "type": "String",
@@ -2609,19 +2604,8 @@
             }
         }
     },
-    "synchronizingPleaseWaitCounter": " Ag sioncronú… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "open": "Oscail",
     "@open": {},
-    "waitingForServer": "Ag fanacht leis an bhfreastalaí...",
-    "@waitingForServer": {},
     "previous": "Roimhe Seo",
     "@previous": {},
     "otherPartyNotLoggedIn": "Níl an páirtí eile logáilte isteach faoi láthair agus mar sin ní féidir leo teachtaireachtaí a fháil!",
@@ -3559,7 +3543,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-13 13:03:41.886927",
+    "@@last_modified": "2026-10-14 13:23:04.239750",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10005,5 +9989,9 @@
     "newCourseChat": "Comhrá cúrsa nua",
     "customCourseStepDesc": "Is éard is cúrsa ann ná sraith gníomhaíochtaí comhrá a leanann do théacsleabhar, le go ndéanfaidh do mhic léinn iad le chéile mar obair bhaile.",
     "reopenAppToFinishSwitching": "Dún an aip go hiomlán agus oscail arís í chun an t-athrú a chríochnú.",
-    "teamCode": "Cód foirne"
+    "teamCode": "Cód foirne",
+    "connectionOffline": "Tá tú as líne. Déanfaidh Pangea Chat athcheangal nuair a bheidh do nasc ar ais.",
+    "connectionUnreachable": "Ní féidir Pangea Chat a bhaint amach. Ag iarraidh arís…",
+    "connectionBackOnline": "Ar ais ar líne",
+    "missionDueDate": "Le críochnú {date}, {time}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-13 13:03:45.692386",
+    "@@last_modified": "2026-10-14 13:23:10.759041",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -364,8 +364,6 @@
     "status": "Sata",
     "statusExampleMessage": "Manao ahoana ianao anio?",
     "submit": "Alefaso",
-    "synchronizingPleaseWait": "Mampifanaraka… Andraso kely azafady.",
-    "synchronizingPleaseWaitCounter": " Mampifanaraka… ({percentage}%)",
     "systemTheme": "Rafitra",
     "theyDontMatch": "Tsy mifanaraka izy ireo",
     "theyMatch": "Mifanaraka izy ireo",
@@ -590,7 +588,6 @@
     "previous": "Teo aloha",
     "otherPartyNotLoggedIn": "Tsy tafiditra amin'izao fotoana izao ny ankilany ary noho izany dia tsy afaka mandray hafatra!",
     "open": "Sokafy",
-    "waitingForServer": "Miandry ny mpizara...",
     "newChatRequest": "📩 Fangatahana chat vaovao",
     "contentNotificationSettings": "Fikirana fampandrenesana votoaty",
     "generalNotificationSettings": "Fikirana fampandrenesana ankapobeny",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "Chat vaovao momba ny taranja",
     "customCourseStepDesc": "Ny taranja dia andiana asa fifampiresahana manaraka ny boky fianaranao, ho an'ny mpianatrao hatao miaraka ho enti-mody.",
     "reopenAppToFinishSwitching": "Akatona tanteraka ny fampiharana ary sokafy indray mba hamita ny fanovana.",
-    "teamCode": "Kaody ekipa"
+    "teamCode": "Kaody ekipa",
+    "connectionOffline": "Tsy mifandray amin'ny aterineto ianao. Hifandray indray ny Pangea Chat rehefa tafaverina ny fifandraisanao.",
+    "connectionUnreachable": "Tsy afaka mifandray amin'ny Pangea Chat. Manandrana indray…",
+    "connectionBackOnline": "Tafaverina amin'ny aterineto",
+    "missionDueDate": "Tokony ho vita amin'ny {date}, {time}"
 }

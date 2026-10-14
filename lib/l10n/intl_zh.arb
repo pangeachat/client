@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-13 13:03:51.167346",
+    "@@last_modified": "2026-10-14 13:23:20.975254",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -1482,11 +1482,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "同步中…请等待。",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "系统",
     "@systemTheme": {
         "type": "String",
@@ -2610,17 +2605,6 @@
     "@otherPartyNotLoggedIn": {},
     "open": "打开",
     "@open": {},
-    "waitingForServer": "正在等待服务器…",
-    "@waitingForServer": {},
-    "synchronizingPleaseWaitCounter": " 同步中… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "newChatRequest": "📩 新的聊天请求",
     "@newChatRequest": {},
     "generalNotificationSettings": "常规通知设置",
@@ -9994,5 +9978,9 @@
     "newCourseChat": "新课程聊天",
     "customCourseStepDesc": "课程是一系列对话活动，学生可以根据您的教材，一起完成这些活动作为家庭作业。",
     "reopenAppToFinishSwitching": "请完全关闭应用，然后重新打开以完成切换。",
-    "teamCode": "团队代码"
+    "teamCode": "团队代码",
+    "connectionOffline": "您已离线。Pangea Chat 将在连接恢复后重新连接。",
+    "connectionUnreachable": "无法连接到 Pangea Chat。正在重试…",
+    "connectionBackOnline": "已恢复在线",
+    "missionDueDate": "{date} {time} 到期"
 }

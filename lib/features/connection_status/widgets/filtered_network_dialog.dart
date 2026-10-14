@@ -7,11 +7,11 @@ import 'package:flutter/services.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/features/authentication/email_address_policy.dart';
-import 'package:fluffychat/features/network_filter/filtered_network_controller.dart';
-import 'package:fluffychat/features/network_filter/network_help_repo.dart';
-import 'package:fluffychat/features/network_filter/network_help_request.dart';
-import 'package:fluffychat/features/network_filter/network_host_category.dart';
-import 'package:fluffychat/features/network_filter/network_type.dart';
+import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
+import 'package:fluffychat/features/connection_status/network_help_repo.dart';
+import 'package:fluffychat/features/connection_status/network_help_request.dart';
+import 'package:fluffychat/features/connection_status/network_host_category.dart';
+import 'package:fluffychat/features/connection_status/network_type.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -22,7 +22,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 /// What a user on a filtered network can do: the advice for this device, the
 /// domains for IT staff, and the "Ask Pangea for help" request. See
-/// filtered-network.instructions.md, "What the user sees".
+/// connection-status.instructions.md, "What the user sees".
 class FilteredNetworkDialog extends StatefulWidget {
   const FilteredNetworkDialog({super.key});
 

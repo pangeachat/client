@@ -18,6 +18,7 @@ import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orche
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
+import '../courses/course_missions_fixtures.dart';
 import '../get_test_client.dart';
 
 /// #8915 — the course panel's progress was resolved once, when the outline
@@ -328,5 +329,128 @@ void main() {
     await loading;
     open.dispose();
     expect(swapped.missionProgress(missionId)?.xp, 200);
+  });
+
+  /// Content Studio — a teacher publishing the course's own copy changes its
+  /// Missions while the course page (or the context bar) is open. The loader
+  /// re-reads when the copy's revision moves, so the list and the star totals
+  /// follow without a reload.
+  group('course copy refresh', () {
+    void stubTwoMissions() {
+      LearningObjective lo(String id) =>
+          LearningObjective(id: id, objective: id);
+      QuestRepo.debugBuildOutline = (id, {courseRoomId}) async => Result.value(
+        QuestOutline(
+          quest: QuestPlan(
+            id: questId,
+            name: 'Quest',
+            description: '',
+            targetLanguage: 'de',
+            sequence: [
+              QuestObjectiveStep(objective: lo('lo-1'), wasMinted: false),
+              QuestObjectiveStep(objective: lo('lo-2'), wasMinted: false),
+            ],
+          ),
+          groups: [
+            QuestObjectiveGroup(
+              objective: lo('lo-1'),
+              activities: [QuestActivity(activityId: activityId, plan: plan())],
+            ),
+            QuestObjectiveGroup(
+              objective: lo('lo-2'),
+              activities: [QuestActivity(activityId: activityId, plan: plan())],
+            ),
+          ],
+        ),
+      );
+    }
+
+    List<String> shownMissions(QuestObjectivesLoader loader) =>
+        loader.filteredObjectiveGroups.map((g) => g.objective.id).toList();
+
+    Future<void> settle() async {
+      for (var i = 0; i < 5; i++) {
+        await Future<void>.delayed(Duration.zero);
+      }
+    }
+
+    test('a new revision re-reads the list and the totals', () async {
+      stubTwoMissions();
+      registerCourseSpace();
+      final space = client.getRoomById(courseRoomId)!;
+      putPowerLevels(space);
+      putCopy(space, {
+        'lo-1': [activityId],
+        'lo-2': [activityId],
+      });
+
+      final loader = QuestObjectivesLoader(client: client);
+      addTearDown(loader.dispose);
+      await loader.loadOutline(questId, courseRoomId: courseRoomId);
+      expect(shownMissions(loader), ['lo-1', 'lo-2']);
+      expect(loader.missionProgress('lo-1'), isNotNull);
+
+      putCopy(space, {
+        'lo-2': [activityId],
+      }, revision: 2);
+      await settle();
+
+      expect(shownMissions(loader), ['lo-2']);
+      expect(
+        loader.missionProgress('lo-1'),
+        isNull,
+        reason: 'the removed Mission leaves this course\'s totals',
+      );
+    });
+
+    test('the same revision does not re-read', () async {
+      stubTwoMissions();
+      registerCourseSpace();
+      final space = client.getRoomById(courseRoomId)!;
+      putPowerLevels(space);
+      putCopy(space, {
+        'lo-1': [activityId],
+        'lo-2': [activityId],
+      }, revision: 2);
+
+      final loader = QuestObjectivesLoader(client: client);
+      addTearDown(loader.dispose);
+      await loader.loadOutline(questId, courseRoomId: courseRoomId);
+      var notifications = 0;
+      loader.questLoader.addListener(() => notifications++);
+
+      putCopy(space, {
+        'lo-2': [activityId],
+      }, revision: 2);
+      await settle();
+
+      expect(notifications, 0);
+      expect(shownMissions(loader), ['lo-1', 'lo-2']);
+    });
+
+    test("another course's copy does not re-read this one", () async {
+      stubTwoMissions();
+      registerCourseSpace();
+      final other = Room(
+        id: '!other:fakeServer.notExisting',
+        client: client,
+        membership: Membership.join,
+      );
+      putPowerLevels(other);
+      client.rooms.add(other);
+
+      final loader = QuestObjectivesLoader(client: client);
+      addTearDown(loader.dispose);
+      await loader.loadOutline(questId, courseRoomId: courseRoomId);
+      var notifications = 0;
+      loader.questLoader.addListener(() => notifications++);
+
+      putCopy(other, {
+        'lo-2': [activityId],
+      }, revision: 5);
+      await settle();
+
+      expect(notifications, 0);
+    });
   });
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-13 13:03:43.288900",
+    "@@last_modified": "2026-10-14 13:23:07.419628",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -364,8 +364,6 @@
     "status": "Estati",
     "statusExampleMessage": "Kijan ou ye jodi a?",
     "submit": "Soumèt",
-    "synchronizingPleaseWait": "Senkronize… Tanpri tann.",
-    "synchronizingPleaseWaitCounter": " Senkronize… ({percentage}%)",
     "systemTheme": "Sistèm",
     "theyDontMatch": "Yo pa matche",
     "theyMatch": "Yo matche",
@@ -590,7 +588,6 @@
     "previous": "Anvan",
     "otherPartyNotLoggedIn": "Lòt pati a pa konekte kounye a e donk pa ka resevwa mesaj!",
     "open": "Louvri",
-    "waitingForServer": "Ap tann sèvè...",
     "newChatRequest": "📩 Nouvo demann chat",
     "contentNotificationSettings": "Anviwònman notifikasyon kontni",
     "generalNotificationSettings": "Anviwònman notifikasyon jeneral",
@@ -2443,5 +2440,9 @@
     "newCourseChat": "Nouvo chat kou",
     "customCourseStepDesc": "Yon kou se yon seri aktivite konvèsasyon ki swiv liv ou a, pou elèv ou yo fè ansanm kòm devwa.",
     "reopenAppToFinishSwitching": "Fèmen aplikasyon an nèt epi ouvri l ankò pou fini chanjman an.",
-    "teamCode": "Kòd ekip"
+    "teamCode": "Kòd ekip",
+    "connectionOffline": "Ou dekonekte. Pangea Chat ap rekonekte lè ou gen yon koneksyon ankò.",
+    "connectionUnreachable": "Pangea Chat pa ka jwenn. Ap eseye ankò…",
+    "connectionBackOnline": "Ou rekonekte",
+    "missionDueDate": "Dat limit: {date}, {time}"
 }
