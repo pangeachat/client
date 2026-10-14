@@ -156,11 +156,9 @@ class ObjectiveSection extends StatelessWidget {
             ),
           )
         : null;
-    // The course's own soft due date (content-studio) as a chip in the header,
-    // so it reads at a glance down the plan and stays when the Mission is
-    // folded. The date stays after it passes; nothing is blocked or marked.
-    // Text.rich rather than a Row: it sizes to its text in the wide header and
-    // ellipsizes in the phone header's bounded slot.
+    // The course's own soft due date (content-studio) as a chip under the
+    // title, so it reads at a glance down the plan and stays when the Mission
+    // is folded. The date stays after it passes; nothing is blocked or marked.
     final pacing = group.pacing;
     final dueAt = pacing?.dueAt;
     final dueChip = dueAt == null
@@ -197,19 +195,46 @@ class ObjectiveSection extends StatelessWidget {
               ),
             ),
           );
-    // The teacher's note under the title, clamped so a long one doesn't push
-    // the activities down; folded away with them.
+    // The teacher's note under the date, clamped so a long one doesn't push
+    // the activities down; folded away with them. Inset so its icon and text
+    // line up with the chip's.
     final note = pacing?.note;
-    final noteText = collapsed || note == null || note.isEmpty
+    final noteLine = collapsed || note == null || note.isEmpty
         ? null
         : Padding(
-            padding: const EdgeInsets.only(top: 4.0),
-            child: ExpandableText(
-              note,
-              maxLines: FluffyThemes.isColumnMode(context) ? 2 : 3,
-              style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.colorScheme.onSurfaceVariant,
-              ),
+            padding: const EdgeInsetsDirectional.only(start: 6.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 1.0),
+                  child: Icon(
+                    Icons.notes,
+                    size: 14.0,
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
+                ),
+                const SizedBox(width: 4.0),
+                Expanded(
+                  child: ExpandableText(
+                    note,
+                    maxLines: FluffyThemes.isColumnMode(context) ? 2 : 3,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.colorScheme.onSurfaceVariant,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+    final pacingLines = dueChip == null && noteLine == null
+        ? null
+        : Padding(
+            padding: const EdgeInsets.only(top: 6.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 4.0,
+              children: [?dueChip, ?noteLine],
             ),
           );
     final collapseChevron = _collapsible
@@ -240,8 +265,8 @@ class ObjectiveSection extends StatelessWidget {
         children: [
           // Objective header, left to right: the Mission's earned/threshold
           // stars when the shared rollup is in, the Up-next label when this is
-          // the anchor, the can-do statement, the due-date chip when the
-          // course set one, then the collapse chevron (full plan only).
+          // the anchor, the can-do statement, then the collapse chevron (full
+          // plan only).
           Semantics(
             // Without an explicit button container the toggle flattens into
             // the section's group semantics and is unreachable on web, where
@@ -268,10 +293,6 @@ class ObjectiveSection extends StatelessWidget {
                           const SizedBox(width: 8.0),
                         ],
                         Expanded(child: statement),
-                        if (dueChip != null) ...[
-                          const SizedBox(width: 8.0),
-                          dueChip,
-                        ],
                         if (collapseChevron != null) ...[
                           const SizedBox(width: 4.0),
                           collapseChevron,
@@ -283,8 +304,7 @@ class ObjectiveSection extends StatelessWidget {
                       children: [
                         if (collapseChevron != null ||
                             starFraction != null ||
-                            upNextLabel != null ||
-                            dueChip != null)
+                            upNextLabel != null)
                           Padding(
                             padding: const EdgeInsets.only(bottom: 4.0),
                             child: Row(
@@ -295,24 +315,7 @@ class ObjectiveSection extends StatelessWidget {
                                     const SizedBox(width: 8.0),
                                   upNextLabel,
                                 ],
-                                // The chip takes the free space up to the
-                                // chevron and ellipsizes on a narrow phone.
-                                if (dueChip != null)
-                                  Expanded(
-                                    child: Align(
-                                      alignment: AlignmentDirectional.centerEnd,
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsetsDirectional.only(
-                                              start: 8.0,
-                                              end: 4.0,
-                                            ),
-                                        child: dueChip,
-                                      ),
-                                    ),
-                                  )
-                                else
-                                  const Spacer(),
+                                const Spacer(),
                                 ?collapseChevron,
                               ],
                             ),
@@ -322,7 +325,7 @@ class ObjectiveSection extends StatelessWidget {
                     ),
             ),
           ),
-          ?noteText,
+          ?pacingLines,
           // No per-Mission progress bar — only the overall course has a bar (in
           // the header). A Mission shows just its star count above (#7597).
           if (!collapsed) const SizedBox(height: 12.0),

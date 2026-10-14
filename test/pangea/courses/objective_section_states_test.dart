@@ -265,10 +265,10 @@ void main() {
       expect(find.textContaining(dueLabel), findsOneWidget);
     });
 
-    // The phone header is the narrow case: star, Up-next label, chip and
-    // chevron share one row, so the chip has to give way rather than overflow.
+    // The date sits under the title, not beside it, so the can-do statement
+    // keeps the header's full width in both layouts.
     for (final width in [1200.0, 400.0]) {
-      testWidgets('the due date sits in the header at width $width', (
+      testWidgets('the due date sits under the title at width $width', (
         tester,
       ) async {
         await pumpAt(
@@ -278,14 +278,15 @@ void main() {
           progress: const MissionProgress(stars: 0, threshold: 4),
           pacing: MissionPacing(dueAt: dueAt, timeZone: 'America/New_York'),
         );
+        final due = find.textContaining(dueLabel);
+        expect(due, findsOneWidget);
+        expect(find.descendant(of: header(), matching: due), findsNothing);
         expect(
-          find.descendant(
-            of: header(),
-            matching: find.textContaining(dueLabel),
+          tester.getTopLeft(due).dy,
+          greaterThanOrEqualTo(
+            tester.getBottomLeft(find.text(objectiveText)).dy,
           ),
-          findsOneWidget,
         );
-        expect(find.text(upNextLabel), findsOneWidget);
       });
     }
 
