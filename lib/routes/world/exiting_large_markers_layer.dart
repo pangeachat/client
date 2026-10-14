@@ -2,7 +2,10 @@ import 'package:flutter/widgets.dart';
 
 import 'package:flutter_map/flutter_map.dart';
 
+import 'package:fluffychat/routes/world/world_map_activity_card.dart';
+import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_large_card.dart';
+import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_view.dart';
 
@@ -36,21 +39,33 @@ class ExitingLargeMarkersLayer {
             child: WorldMapLargeCardAnimated(
               dying: true,
               onExited: () => onExited(snap.card.activityId),
-              child: WorldMapLargeCard(
-                card: snap.card,
-                state: snap.state,
-                pinged: snap.pinged,
-                plan: snap.plan,
-                liveRoom: snap.liveRoom,
-                starsEarned: snap.starsEarned,
-                participants: snap.participants,
-                openSlots: snap.openSlots,
-                starLevel: snap.starLevel,
-                understaffed: snap.understaffed,
-                // No interaction on a card that's on its way out.
-                onTap: () {},
-                onClose: null,
-              ),
+              child: kMapActivityCards
+                  ? WorldMapActivityCard(
+                      card: snap.card,
+                      state: snap.state,
+                      plan: snap.plan,
+                      starsEarned: snap.starsEarned,
+                      participants: snap.participants,
+                      openSlots: snap.openSlots,
+                      standsOnStamp: snap.starLevel != ActivityStarLevel.none,
+                      // No interaction on a card that's on its way out.
+                      onTap: () {},
+                    )
+                  : WorldMapLargeCard(
+                      card: snap.card,
+                      state: snap.state,
+                      pinged: snap.pinged,
+                      plan: snap.plan,
+                      liveRoom: snap.liveRoom,
+                      starsEarned: snap.starsEarned,
+                      participants: snap.participants,
+                      openSlots: snap.openSlots,
+                      starLevel: snap.starLevel,
+                      understaffed: snap.understaffed,
+                      // No interaction on a card that's on its way out.
+                      onTap: () {},
+                      onClose: null,
+                    ),
             ),
           ),
         );

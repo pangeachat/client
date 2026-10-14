@@ -26,17 +26,26 @@ class WorldMapContext extends MapContext {
 class CourseMapContext extends MapContext {
   final String coursePlanId;
   final String? spaceId;
-  const CourseMapContext(this.coursePlanId, {this.spaceId});
+
+  /// The Mission picked in the URL (`?mission=`), or null for the course's
+  /// current Mission. The map shows only that Mission's activities, save for
+  /// the learner's own sessions and, when the Mission has no live session,
+  /// coursemates' live sessions elsewhere in the course (#9420 prototype).
+  final String? missionId;
+
+  const CourseMapContext(this.coursePlanId, {this.spaceId, this.missionId});
 
   @override
   bool operator ==(Object other) =>
       other.runtimeType == runtimeType &&
       other is CourseMapContext &&
       other.coursePlanId == coursePlanId &&
-      other.spaceId == spaceId;
+      other.spaceId == spaceId &&
+      other.missionId == missionId;
 
   @override
-  int get hashCode => Object.hash(runtimeType, coursePlanId, spaceId);
+  int get hashCode =>
+      Object.hash(runtimeType, coursePlanId, spaceId, missionId);
 }
 
 /// Scoped to a course plan the learner is PREVIEWING from the add-course flow

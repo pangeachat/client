@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_svg/svg.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
@@ -24,6 +22,10 @@ class ActivityCarousel extends StatefulWidget {
   final void Function(QuestActivity) onTap;
   final int Function(String) userStarsByActivity;
   final bool Function(String activityId)? hasCompletedActivity;
+
+  /// How many times the learner has finished an activity, for the ×N on its
+  /// completed stamp. Null counts a completed activity once.
+  final int Function(String activityId)? timesCompletedByActivity;
 
   /// The activity's live map-pin state (colour fill + banner) and "Open (N)"
   /// count, resolved by the parent which holds the course room.
@@ -73,6 +75,7 @@ class ActivityCarousel extends StatefulWidget {
     required this.hasCompletedActivity,
     required this.liveStateByActivity,
     required this.availableParticipants,
+    this.timesCompletedByActivity,
     this.pingedActivityId,
     this.spacing = 16.0,
     this.cardWidth,
@@ -159,7 +162,6 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return SizedBox(
       height: _cardHeight,
       child: Stack(
@@ -208,10 +210,16 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                     ref.activityId,
                   );
                   final liveState = widget.liveStateByActivity(ref.activityId);
-                  // A completed activity drops its state colouring for
-                  // the check overlay, so the card and its ping bell
-                  // both read it from here.
-                  final pinState = complete ? null : liveState.state;
+                  // A completed activity keeps its live state: the card
+                  // frames it and stamps the completion beside it.
+                  final pinState = liveState.state;
+                  final timesCompleted = complete
+                      ? (widget.timesCompletedByActivity?.call(
+                                  ref.activityId,
+                                ) ??
+                                1)
+                            .clamp(1, 99)
+                      : 0;
                   // Dim activities that can't be started yet: the course lacks
                   // enough members for their roles (tapping opens the start page's
                   // Invite CTA). A live (ongoing/joinable) session already filled
@@ -241,30 +249,16 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                           openSessions: liveState.openSessions,
                           participants: liveState.participants,
                           openSlots: liveState.openSlots,
+                          timesCompleted: timesCompleted,
                         ),
                       ),
-                      if (complete)
-                        Container(
-                          width: _cardWidth,
-                          height: _cardHeight,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            color: theme.colorScheme.surface.withAlpha(180),
-                          ),
-                          child: Center(
-                            child: SvgPicture.asset(
-                              'assets/pangea/check.svg',
-                              width: 48.0,
-                              height: 48.0,
-                            ),
-                          ),
-                        ),
                       // The course-ping bell, top-left so it shares
                       // the banner's row without covering it (#8319),
                       // in the card's own state hue (#8481).
+                      // Under the live state's corner tab when there is one.
                       if (ref.activityId == widget.pingedActivityId)
                         Positioned(
-                          top: 8.0,
+                          top: pinState == null ? 8.0 : 30.0,
                           left: 6.0,
                           child: CoursePingBadge(pinState: pinState),
                         ),

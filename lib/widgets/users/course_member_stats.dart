@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/user/public_profile_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/widgets/goal_diamond.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/users/level_ribbon.dart';
 
@@ -154,14 +154,10 @@ class MemberStatsRow extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     spacing: 2.0,
                     children: [
-                      // The banked goal total is drawn as a checkmark (#9420):
+                      // The banked goal total is drawn as a goal diamond (#9420):
                       // the member's activity goals, not completed Missions
                       // (quests.instructions.md, "Stars and checkmarks").
-                      Icon(
-                        Icons.check_circle,
-                        size: iconSize,
-                        color: Theme.of(context).pangea.goldGraphic,
-                      ),
+                      GoalDiamond(earned: true, size: iconSize),
                       Text('$stars', style: textStyle),
                     ],
                   ),

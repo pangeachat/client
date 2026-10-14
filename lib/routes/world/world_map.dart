@@ -11,8 +11,11 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
+import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
@@ -542,13 +545,99 @@ class WorldMapController extends State<WorldMap>
   /// whether the learner can refine them (world-map.instructions.md). The one
   /// scope-dependent term is the settings-fixed language, applied on the world
   /// map only; see [WorldMapFilterState.include].
-  List<QuestActivityCard> get visiblePins => _pinsManager.filteredPins(
-    (c) => _filterState.include(
-      c,
-      _pinsManager.displayStateOf(c),
-      applyLanguage: isWorld,
-    ),
-  );
+  List<QuestActivityCard> get visiblePins {
+    final filtered = _pinsManager.filteredPins(
+      (c) => _filterState.include(
+        c,
+        _pinsManager.displayStateOf(c),
+        applyLanguage: isWorld,
+      ),
+    );
+    final mission = selectedMissionId;
+    if (mission == null) return filtered;
+    // The soft lock (#9420 prototype): a joined course's map shows only the
+    // Mission the learner picked (else the current one). Two exceptions keep
+    // people talking: the learner's own unfinished sessions always show, and
+    // when the Mission has no live session to join, coursemates' live
+    // sessions elsewhere in the course show too, tagged with their Mission.
+    bool inMission(QuestActivityCard c) =>
+        c.learningObjectiveRefs.contains(mission);
+    final missionHasLive = filtered.any(
+      (c) =>
+          inMission(c) &&
+          _pinsManager.displayStateOf(c) == ActivityPinState.joinable,
+    );
+    return [
+      for (final c in filtered)
+        if (inMission(c) ||
+            _pinsManager.displayStateOf(c).isOngoing ||
+            (!missionHasLive &&
+                _pinsManager.displayStateOf(c) == ActivityPinState.joinable))
+          c,
+    ];
+  }
+
+  /// The Mission a joined course's map is narrowed to: the one picked in the
+  /// URL, else the course's current Mission. Null on the world map, in a
+  /// preview, and before the course's progression resolves.
+  String? get selectedMissionId {
+    final mapContext = MapContextController.notifier.value;
+    if (mapContext is! CourseMapContext ||
+        mapContext is CoursePreviewMapContext) {
+      return null;
+    }
+    final spaceId = mapContext.spaceId;
+    if (spaceId == null) return null;
+    return mapContext.missionId ??
+        _pinsManager.progression.forCourse(spaceId)?.anchorMissionId;
+  }
+
+  /// For a pin shown outside the selected Mission, the 1-based number of the
+  /// Mission it belongs to, for its "Mission N" tag; null for an in-Mission
+  /// pin or when the map isn't narrowed.
+  int? outOfMissionNumber(QuestActivityCard card) {
+    final mission = selectedMissionId;
+    if (mission == null || card.learningObjectiveRefs.contains(mission)) {
+      return null;
+    }
+    final spaceId =
+        (MapContextController.notifier.value as CourseMapContext).spaceId;
+    final quest = _pinsManager.progression.forCourse(spaceId!);
+    if (quest == null) return null;
+    final missions = [
+      for (final id in quest.orderedMissionIds)
+        if (quest.rollup.containsKey(id)) id,
+    ];
+    for (final ref in card.learningObjectiveRefs) {
+      final i = missions.indexOf(ref);
+      if (i >= 0) return i + 1;
+    }
+    return null;
+  }
+
+  /// The words the learner used most across their saved sessions of
+  /// [activityId], up to [limit] — what a completed stamp on the map webs out
+  /// (#9420 prototype). Read from the summaries saved with the sessions.
+  List<String> stampWordsFor(String activityId, {int limit = 5}) {
+    final client = _client;
+    final userId = client?.userID;
+    if (client == null || userId == null) return const [];
+    final archive = client.ownAnalyticsRoomLocalByL2?.archivedActivities ?? [];
+    final xpByLemma = <String, int>{};
+    for (final room in archive) {
+      if (room.activityId != activityId) continue;
+      final usages = room.activitySummaryAnalytics?.constructs[userId]?.usages;
+      if (usages == null) continue;
+      for (final usage in usages.values) {
+        if (usage.identifier.type != ConstructTypeEnum.vocab) continue;
+        final lemma = usage.identifier.lemma;
+        xpByLemma[lemma] = (xpByLemma[lemma] ?? 0) + usage.totalXP;
+      }
+    }
+    final ranked = xpByLemma.entries.toList()
+      ..sort((a, b) => b.value.compareTo(a.value));
+    return [for (final e in ranked.take(limit)) e.key];
+  }
 
   /// Why the view shows no matches — the empty-view card's diagnosis
   /// ([MapEmptyVerdict]), shared by the wide overlay and the narrow bar so the

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/widgets/goal_diamond.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class GoalStatusWidget extends StatelessWidget {
@@ -29,11 +30,12 @@ class GoalStatusWidget extends StatelessWidget {
     final theme = Theme.of(context);
     final gold = Theme.of(context).pangea.goldGraphic;
 
-    // A completed goal is a checkmark, never a star (#9420): the star marks
-    // the Learning Objective this goal pays into (quests.instructions.md).
-    Widget icon = Icon(
-      complete ? Icons.check_circle : Icons.check_circle_outline,
-      color: complete ? gold : theme.colorScheme.onSurfaceVariant,
+    // A goal is a diamond, never a star (#9420): the star marks the Learning
+    // Objective this goal pays into (quests.instructions.md).
+    Widget icon = GoalDiamond(
+      earned: complete,
+      color: gold,
+      emptyColor: theme.colorScheme.onSurfaceVariant,
       size: 28.0,
     );
 

@@ -95,8 +95,24 @@ PinBudget budgetForWidth(double width) {
   return kPinBudgetBreakpoints.last.budget;
 }
 
+/// The map's large tier as **activity cards** (#9420 prototype, option C): the
+/// course plan's own card, squared up, standing on the played stamp at the
+/// real location. False brings back the classic large callout cards — the one
+/// switch the whole experiment hangs on.
+const bool kMapActivityCards = true;
+
 /// Tier pixel sizes — also tuned here so all pin-density knobs live in one file.
 abstract class PinSize {
+  /// The activity card a large pin draws under [kMapActivityCards]: its
+  /// width, its card height (photo [mapCardImageHeight] + text), the tail
+  /// under it, and the gap left above the point for the played stamp it
+  /// stands on.
+  static const double mapCardWidth = 132.0;
+  static const double mapCardHeight = 152.0;
+  static const double mapCardImageHeight = 80.0;
+  static const double mapCardTail = 10.0;
+  static const double mapCardStampClearance = 14.0;
+
   /// Small dot — intentionally tiny, Google-Maps style (was 18px before the
   /// maps-like redesign).
   static const double smallDiameter = 8.0;
@@ -145,8 +161,11 @@ abstract class PinSize {
   /// progress on a pin is binary (a role is complete or it isn't), never a
   /// partial fraction, so the old grow-with-fill min/max sizing is gone. The
   /// super star is a touch larger to carry its busier star-on-a-star glyph.
-  static const double starDotDiameter = 20.0;
-  static const double superStarDotDiameter = 24.0;
+  // The played stamp, about 2/3 of a mid pin's head (#9420 prototype; was a
+  // 20/24px star). The super star no longer sizes up: a stamp marks a saved
+  // session, not every role done.
+  static const double starDotDiameter = 30.0;
+  static const double superStarDotDiameter = 30.0;
 
   /// Glyph size inside the regular / super star circle.
   static const double starGlyphSize = 16.0;

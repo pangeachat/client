@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
+import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 
 extension QuestsClientExtension on Client {
@@ -39,6 +40,28 @@ extension QuestsClientExtension on Client {
       final xpOfSession = sessionXp(room, creditedXpByRoom);
       if (xpOfSession <= 0) continue;
       xp[activityId] = (xp[activityId] ?? 0) + xpOfSession;
+    }
+    return xp;
+  }
+
+  /// [userXpByActivity] split by source: the same saved sessions, with each
+  /// room's chat and practice XP kept apart and the goal checkmarks on their
+  /// own. Feeds the Mission card's ring.
+  Map<String, MissionXpBreakdown> userXpBreakdownByActivity({
+    required Map<String, int> chatXpByRoom,
+    required Map<String, int> practiceXpByRoom,
+  }) {
+    final xp = <String, MissionXpBreakdown>{};
+    for (final room in rooms) {
+      final activityId = room.activityId;
+      if (activityId == null || !room.hasArchivedActivity) continue;
+      final session = MissionXpBreakdown(
+        chat: chatXpByRoom[room.id] ?? 0,
+        goals: kGoalXp * room.ownCompletedGoals.length,
+        practice: practiceXpByRoom[room.id] ?? 0,
+      );
+      if (session.total <= 0) continue;
+      xp[activityId] = (xp[activityId] ?? MissionXpBreakdown.zero) + session;
     }
     return xp;
   }

@@ -239,6 +239,26 @@ class QuestObjectivesLoader {
   MissionProgress? missionProgress(String missionId) =>
       _scopedQuest?.rollup[missionId];
 
+  /// Where this course's XP for [missionId] came from — chats, goals and
+  /// practice — summed over the same activities [missionProgress] counts.
+  /// Null when the rollup hasn't resolved.
+  MissionXpBreakdown? missionXpBreakdown(String missionId) {
+    final quest = _scopedQuest;
+    if (quest == null) return null;
+    final activities = quest.activityIdsByMission[missionId];
+    if (activities == null) return null;
+    final cache = MissionXpCache.instance;
+    final byActivity = client.userXpBreakdownByActivity(
+      chatXpByRoom: cache.chatXpByRoom,
+      practiceXpByRoom: cache.practiceXpByRoom,
+    );
+    var sum = MissionXpBreakdown.zero;
+    for (final activityId in activities) {
+      sum = sum + (byActivity[activityId] ?? MissionXpBreakdown.zero);
+    }
+    return sum;
+  }
+
   List<QuestObjectiveGroup> get filteredObjectiveGroups =>
       switch (_questLoader.value) {
         AsyncLoaded(value: final outline) => objectiveGroupsWithActivities(

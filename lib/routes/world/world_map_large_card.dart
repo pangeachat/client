@@ -11,6 +11,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_tile_body.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
+import 'package:fluffychat/routes/world/mission_pin_tag.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_pinged_badge.dart';
@@ -192,6 +193,10 @@ class WorldMapLargeCard extends StatelessWidget {
   /// pins"). Course-scoped only; never set for a live/completed card.
   final bool understaffed;
 
+  /// "Mission N" when the course map shows this card from outside its
+  /// selected Mission (#9420 prototype), led into the title row.
+  final int? missionNumber;
+
   /// When non-null, the card shows an explicit dismiss (X) that **demotes** the
   /// activity out of the large tier for the session — it re-renders as a mid pin
   /// or dot, never leaving the map (#7207). On a focused card the X also clears
@@ -208,6 +213,7 @@ class WorldMapLargeCard extends StatelessWidget {
     required this.onTap,
     this.liveRoom,
     this.isFocused = false,
+    this.missionNumber,
     this.onClose,
     this.participants = const [],
     this.openSlots = 0,
@@ -342,6 +348,12 @@ class WorldMapLargeCard extends StatelessWidget {
                             _CardTitleRow(
                               title: plan?.title ?? card.title,
                               titleColor: titleColor,
+                              missionTag: missionNumber == null
+                                  ? null
+                                  : MissionPinTag(
+                                      number: missionNumber!,
+                                      state: state,
+                                    ),
                             ),
                             _CardBody(
                               card: card,
@@ -491,14 +503,20 @@ class _LeadingGutter extends StatelessWidget {
 class _CardTitleRow extends StatelessWidget {
   final String title;
   final Color titleColor;
+  final Widget? missionTag;
 
-  const _CardTitleRow({required this.title, required this.titleColor});
+  const _CardTitleRow({
+    required this.title,
+    required this.titleColor,
+    this.missionTag,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
+        if (missionTag != null) ...[missionTag!, const SizedBox(width: 6.0)],
         // Flexible so a long title wraps/ellipsizes within the (capped) card
         // width instead of overflowing the shrink-to-fit row.
         Flexible(

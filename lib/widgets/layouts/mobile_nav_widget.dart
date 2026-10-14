@@ -258,7 +258,7 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   /// drops its tabs/content below `_kCompactCardMaxHeight` (168px) so this short
   /// box never overflows; the tabs slide in as the learner drags up (#7597, the
   /// Figma mobile-default frame). Kept a touch under that threshold.
-  static const double _peekHeight = 128.0;
+  static const double _peekHeight = 176.0;
   static const Duration _animationDuration = Duration(milliseconds: 240);
 
   /// The least the keyboard trim may leave of an OPEN cavity — the drag handle

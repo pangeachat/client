@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/pangea_colors.dart';
+import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 
 /// The completed-activity **trail marker**: a gold [Icons.star] (one role done)
@@ -19,22 +19,12 @@ class WorldMapStarDot extends StatelessWidget {
   static double diameterFor(bool superStar) =>
       superStar ? PinSize.superStarDotDiameter : PinSize.starDotDiameter;
 
+  // The completed stamp — a double ring with a check, the same mark the
+  // activity cards wear — so a played activity reads the same on its card and
+  // its pin (#9420 prototype). The super star (every role done) only sizes up.
   @override
-  Widget build(BuildContext context) => Container(
-    width: diameterFor(superStar),
-    height: diameterFor(superStar),
-    alignment: Alignment.center,
-    decoration: BoxDecoration(
-      color: Theme.of(context).colorScheme.surface,
-      shape: BoxShape.circle,
-      boxShadow: const [BoxShadow(blurRadius: 3, color: Colors.black38)],
-    ),
-    child: Icon(
-      superStar ? Icons.hotel_class : Icons.star,
-      size: superStar ? PinSize.superStarGlyphSize : PinSize.starGlyphSize,
-      color: Theme.of(context).pangea.goldGraphic,
-    ),
-  );
+  Widget build(BuildContext context) =>
+      CompletedStamp(size: diameterFor(superStar));
 }
 
 /// Places a completion [WorldMapStarDot] BEHIND [child], peeking out from

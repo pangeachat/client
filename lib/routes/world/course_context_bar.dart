@@ -11,7 +11,7 @@ import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_header_actions.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
-import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
+import 'package:fluffychat/routes/courses/course_objectives/objective_progress_circles.dart';
 import 'package:fluffychat/routes/world/left_panel/floor_chevron.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -75,7 +75,7 @@ class CourseContextBar extends StatefulWidget {
   static const double height =
       PanelHeader.wideHeight +
       SpaceDetailsContent.bodyTopInset +
-      ProgressBarRow.height +
+      ObjectiveProgressCircles.labelledHeight +
       bottomInset;
 
   @override

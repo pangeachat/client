@@ -132,17 +132,23 @@ enum PinTier {
   double dotHeight(ActivityPinState state) => switch (this) {
     PinTier.small => PinSize.smallDiameter,
     PinTier.mid => PinSize.midDiameter + PinSize.midPointHeight,
-    PinTier.large => switch (state) {
-      ActivityPinState.joinable ||
-      ActivityPinState.ongoingPending => PinSize.largeHeightJoinable,
-      _ => PinSize.largeHeight,
-    },
+    PinTier.large =>
+      kMapActivityCards
+          ? PinSize.mapCardHeight +
+                PinSize.mapCardTail +
+                PinSize.mapCardStampClearance
+          : switch (state) {
+              ActivityPinState.joinable ||
+              ActivityPinState.ongoingPending => PinSize.largeHeightJoinable,
+              _ => PinSize.largeHeight,
+            },
   };
 
   double get dotWidth => switch (this) {
     PinTier.small => PinSize.smallDiameter,
     PinTier.mid => PinSize.midDiameter,
-    PinTier.large => PinSize.largeWidth,
+    PinTier.large =>
+      kMapActivityCards ? PinSize.mapCardWidth : PinSize.largeWidth,
   };
 
   /// Whether a pin at this tier in [state] renders as a plain **dot** — the
@@ -721,6 +727,7 @@ MidPlacementResult placeMidPins({
   List<Rect> obstacleRects = const [],
   double headDiameter = PinSize.midDiameter,
   double pointHeight = PinSize.midPointHeight,
+  Size? Function(String id)? tagSizeOf,
 }) {
   // Focused pin first when it is a candidate, so an open pin claims its spot
   // and the rest yield around it (mirrors placeLargeCards).
@@ -735,11 +742,23 @@ MidPlacementResult placeMidPins({
     if (midIds.length >= midBudget) break;
     final o = screenOffsetOf(id);
     if (o == null) continue;
-    final rect = midPinRect(
+    var rect = midPinRect(
       o,
       headDiameter: headDiameter,
       pointHeight: pointHeight,
     );
+    // A pin wearing a "Mission N" tag (#9420 prototype) needs room for both:
+    // the tag sits on top of the head and may be wider than it.
+    final tag = tagSizeOf?.call(id);
+    if (tag != null) {
+      final width = rect.width > tag.width ? rect.width : tag.width;
+      rect = Rect.fromLTRB(
+        rect.center.dx - width / 2,
+        rect.top - tag.height - 2.0,
+        rect.center.dx + width / 2,
+        rect.bottom,
+      );
+    }
     // Under a placed large card, or over a higher-scored mid pin: demote to a
     // dot (skip — it isn't added to midIds, so it falls to the small tier).
     if (obstacleRects.any(rect.overlaps)) continue;

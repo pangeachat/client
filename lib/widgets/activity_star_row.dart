@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/widgets/goal_diamond.dart';
 
-/// An activity's goal row: one checkmark per goal, filled as the learner earns
+/// An activity's goal row: one diamond per goal, filled as the learner earns
 /// it. Checkmarks, not stars (#9420) — a star marks a Learning Objective, and
 /// an activity's goals are the checkmarks that pay XP into it
 /// (quests.instructions.md, "Stars and checkmarks"). The class keeps its name
@@ -56,7 +57,12 @@ class ActivityStarRow extends StatelessWidget {
             "$filled/$total",
             style: TextStyle(fontSize: iconSize, color: unearnedColor),
           ),
-          Icon(Icons.check_circle, size: iconSize, color: goldColor),
+          GoalDiamond(
+            earned: true,
+            size: iconSize,
+            color: goldColor,
+            fillColor: earnedColor,
+          ),
         ],
       );
     }
@@ -81,10 +87,12 @@ class ActivityStarRow extends StatelessWidget {
           spacing: 2.0,
           children: List.generate(
             total,
-            (i) => Icon(
-              i < filled ? Icons.check_circle : Icons.check_circle_outline,
+            (i) => GoalDiamond(
+              earned: i < filled,
               size: iconSize,
-              color: i < filled ? goldColor : unearnedColor,
+              color: goldColor,
+              fillColor: earnedColor,
+              emptyColor: unearnedColor,
             ),
           ),
         ),

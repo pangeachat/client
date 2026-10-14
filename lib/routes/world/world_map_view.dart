@@ -15,6 +15,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
@@ -30,6 +31,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/map_tiles.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
+import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/course_preview_banner.dart';
 import 'package:fluffychat/routes/world/dot_markers_layer.dart';
@@ -38,6 +40,7 @@ import 'package:fluffychat/routes/world/exiting_markers_layer.dart';
 import 'package:fluffychat/routes/world/large_markers_layer.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/map_exit_tracker.dart';
+import 'package:fluffychat/routes/world/mission_pin_tag.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/pin_semantics_layer.dart';
 import 'package:fluffychat/routes/world/tile_http_client.dart';
@@ -376,6 +379,15 @@ class _WorldMapViewState extends State<WorldMapView>
     );
   }
 
+  /// The "Mission N" a pin wears when the course map shows it from outside
+  /// the selected Mission (#9420 prototype), else null.
+  int? _missionTagFor(String id) {
+    final card = widget.controller.visiblePins.firstWhereOrNull(
+      (c) => c.activityId == id,
+    );
+    return card == null ? null : widget.controller.outOfMissionNumber(card);
+  }
+
   /// Hand the tutorial the on-screen rect of the pin it is pointing at, so its
   /// spotlight can be a hole the size and shape of that pin.
   ///
@@ -676,6 +688,9 @@ class _WorldMapViewState extends State<WorldMapView>
         screenOffsetOf: offsetOf,
         midBudget: midBudget,
         obstacleRects: obstacles,
+        tagSizeOf: (id) => _missionTagFor(id) == null
+            ? null
+            : const Size(MissionPinTag.width, MissionPinTag.height),
       );
     } catch (_) {
       // Camera not laid out yet: budget-only, no geometry — the next
@@ -1043,7 +1058,79 @@ class _WorldMapViewState extends State<WorldMapView>
               // — it animates in then, and holds full scale through the
               // State recreations MarkerLayer causes mid-gesture (#8136).
               animateInOf: _dotExits.markEntered,
+              missionTagOf: _missionTagFor,
             ).layer();
+            // The selected Mission's played stamps web out the words the
+            // learner used in them, once zoomed in far enough that stamps
+            // don't crowd; and pins from outside the Mission wear its number
+            // (#9420 prototype).
+            // Under the activity-card map a card keeps its words to itself:
+            // only bare stamps web out (#9420 prototype).
+            final shownCards = [
+              ...render.nonLargeCards,
+              if (!kMapActivityCards) ...render.largeCards,
+            ];
+            double zoom = 0;
+            try {
+              zoom = widget.controller.mapController.camera.zoom;
+            } catch (_) {
+              // silent-ok: the camera throws before first layout; no words yet.
+            }
+            final inMissionScope = widget.controller.selectedMissionId != null;
+            final Widget wordLayer = MarkerLayer(
+              markers: [
+                if (inMissionScope && zoom >= _stampWordsMinZoom)
+                  for (final card in shownCards)
+                    if (render.starLevelOf(card.activityId) !=
+                            ActivityStarLevel.none &&
+                        widget.controller.outOfMissionNumber(card) == null)
+                      for (final words in [
+                        widget.controller.stampWordsFor(card.activityId),
+                      ])
+                        if (words.isNotEmpty)
+                          Marker(
+                            point: card.point!,
+                            width: StampWordWeb.width,
+                            height: StampWordWeb.height,
+                            child: IgnorePointer(
+                              child: StampWordWeb(
+                                key: ValueKey('words-${card.activityId}'),
+                                words: words,
+                              ),
+                            ),
+                          ),
+              ],
+            );
+            // The played stamps as their own layer (activity-card map only):
+            // one at the point of every played activity in view that isn't
+            // already drawn AS its stamp, under the pins and cards that stand
+            // on it. Being apart from the pin is what keeps a stamp on the map
+            // when its card is dismissed or its pin drops out of the budget.
+            final Widget stampLayer = MarkerLayer(
+              markers: [
+                if (kMapActivityCards)
+                  for (final card in render.visible)
+                    if (card.point != null &&
+                        render.starLevelOf(card.activityId) !=
+                            ActivityStarLevel.none &&
+                        !(render.stateOf(card.activityId) ==
+                                ActivityPinState.inProgress &&
+                            render.activityIdToTier.containsKey(
+                              card.activityId,
+                            )))
+                      Marker(
+                        point: card.point!,
+                        width: PinSize.starDotDiameter + 4.0,
+                        height: PinSize.starDotDiameter + 4.0,
+                        child: IgnorePointer(
+                          key: ValueKey('stamp-${card.activityId}'),
+                          child: const CompletedStamp(
+                            size: PinSize.starDotDiameter,
+                          ),
+                        ),
+                      ),
+              ],
+            );
             final Widget largeLayer = LargeMarkersLayer(
               largeCards: render.largeCards,
               currentLarge: currentLarge,
@@ -1051,6 +1138,7 @@ class _WorldMapViewState extends State<WorldMapView>
               onTap: widget.controller.openActivity,
               onClose: widget.controller.dismissLargeCard,
               animateInOf: _largeExits.markEntered,
+              missionTagOf: _missionTagFor,
             ).layer();
             // Base tiles: Stadia's light or dark style by theme — see
             // [MapTiles] and world-map-tiles.instructions.md. Changing the
@@ -1146,6 +1234,8 @@ class _WorldMapViewState extends State<WorldMapView>
                   // width-driven budget. Small/mid dots render individually (no
                   // clustering); the large featured cards render unclustered above so
                   // they're always visible.
+                  wordLayer,
+                  stampLayer,
                   _ShimmerLayer(active: warming, child: dotLayer),
                   // Dying pins (a separate layer) so they don't disturb the live pins
                   // while animating out.
@@ -1693,4 +1783,113 @@ class _MapZoomControls extends StatelessWidget {
       ),
     );
   }
+}
+
+/// The zoom at and past which a played stamp webs out its words: closer than
+/// a whole-world view, where a Mission's stamps would pile into each other.
+const double _stampWordsMinZoom = 9.0;
+
+/// The words a played activity's stamp webs out on the map: light-gold chips
+/// around the stamp, each tied to it by a thin gold line, like the words a
+/// message gains in chat.
+class StampWordWeb extends StatelessWidget {
+  final List<String> words;
+
+  const StampWordWeb({required this.words, super.key});
+
+  static const double width = 300.0;
+  static const double height = 210.0;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final pangea = theme.pangea;
+    const center = Offset(width / 2, height / 2);
+    final positions = [
+      for (var i = 0; i < words.length; i++)
+        center +
+            Offset(
+              math.cos(-math.pi / 2 + (i + 0.5) * 2 * math.pi / words.length) *
+                  (width / 2 - 52),
+              math.sin(-math.pi / 2 + (i + 0.5) * 2 * math.pi / words.length) *
+                  (height / 2 - 18),
+            ),
+    ];
+    return SizedBox(
+      width: width,
+      height: height,
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          CustomPaint(
+            size: const Size(width, height),
+            painter: _WordWebPainter(
+              center: center,
+              ends: positions,
+              color: pangea.goldFixedDim,
+            ),
+          ),
+          for (var i = 0; i < words.length; i++)
+            Positioned(
+              left: positions[i].dx,
+              top: positions[i].dy,
+              child: FractionalTranslation(
+                translation: const Offset(-0.5, -0.5),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: pangea.goldContainer,
+                    borderRadius: BorderRadius.circular(999.0),
+                    border: Border.all(color: pangea.goldFixedDim, width: 1.5),
+                    boxShadow: const [
+                      BoxShadow(blurRadius: 2, color: Colors.black26),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0,
+                      vertical: 2.0,
+                    ),
+                    child: Text(
+                      words[i],
+                      style: theme.textTheme.labelMedium?.copyWith(
+                        color: pangea.onGoldContainer,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+class _WordWebPainter extends CustomPainter {
+  final Offset center;
+  final List<Offset> ends;
+  final Color color;
+
+  _WordWebPainter({
+    required this.center,
+    required this.ends,
+    required this.color,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..strokeWidth = 1.5;
+    for (final end in ends) {
+      canvas.drawLine(center, end, paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _WordWebPainter old) =>
+      old.center != center ||
+      old.color != color ||
+      old.ends.length != ends.length;
 }

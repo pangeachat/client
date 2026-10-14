@@ -17,14 +17,18 @@ import 'package:fluffychat/features/analytics_data/analytics_init_error_indicato
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
+import 'package:fluffychat/routes/analytics/activities/objective_details_view.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/start_practice.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/routes/courses/course_objectives/mission_xp_ring.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
@@ -201,6 +205,9 @@ class _ObjectiveList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
+    final selectedMissionId = activeObjectiveDetailFor(
+      GoRouterState.of(context).uri,
+    );
     final placed = <String>{};
     final seen = <String>{};
     final children = <Widget>[];
@@ -221,7 +228,7 @@ class _ObjectiveList extends StatelessWidget {
             group: group,
             progress: quest?.rollup[missionId],
             sessions: sessions,
-            selectedRoomId: selectedRoomId,
+            selected: missionId == selectedMissionId,
           ),
         );
       }
@@ -248,7 +255,7 @@ class _ObjectiveList extends StatelessWidget {
       // One Tab stop for the session list, arrow keys inside; Tab lands on
       // the open session (#8935).
       child: RovingFocusGroup(
-        ids: [for (final room in archive) room.id],
+        ids: [for (final room in other) room.id],
         selectedId: selectedRoomId,
         child: ListView(
           key: const PageStorageKey<String>('activity-archive'),
@@ -271,137 +278,146 @@ class _Heading extends StatelessWidget {
   );
 }
 
-/// One can-do: its star (filled once complete), its statement, its XP over the
-/// threshold when resolved, and Practice scoped to it (#9438). A tap on the
-/// statement shows the saved sessions that fed it; it opens already showing
-/// them when one of them is the open session.
-class _MissionTile extends StatefulWidget {
+/// One can-do as a self-contained unit (#9420 prototype): a gold XP ring
+/// with the Mission's star inside it, the statement, its XP over the threshold
+/// and how many of its activities the learner has played, and a practice
+/// button. A tap opens its detail page beside the list, as a word opens from
+/// the vocab list.
+class _MissionTile extends StatelessWidget {
   final QuestObjectiveGroup group;
   final MissionProgress? progress;
   final List<Room> sessions;
-  final String? selectedRoomId;
+  final bool selected;
 
   const _MissionTile({
     required this.group,
     required this.progress,
     required this.sessions,
-    required this.selectedRoomId,
+    required this.selected,
   });
-
-  @override
-  State<_MissionTile> createState() => _MissionTileState();
-}
-
-class _MissionTileState extends State<_MissionTile> {
-  late bool _expanded = widget.sessions.any(
-    (room) => room.id == widget.selectedRoomId,
-  );
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final scheme = theme.colorScheme;
     final l10n = L10n.of(context);
-    final progress = widget.progress;
+    final palette = MissionRingPalette.of(context);
+    final progress = this.progress;
     final satisfied = progress?.satisfied ?? false;
-    final hasSessions = widget.sessions.isNotEmpty;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Semantics(
-          button: hasSessions,
-          expanded: hasSessions ? _expanded : null,
+    final threshold = progress?.threshold ?? 0;
+    final breakdown = missionBreakdownFor(Matrix.of(context).client, group);
+    double share(int xp) => threshold <= 0 ? 0 : xp / threshold;
+    final played = {for (final room in sessions) room.activityId}.length;
+    final radius = BorderRadius.circular(20.0);
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6.0),
+      child: Semantics(
+        button: true,
+        selected: selected,
+        label: [
+          group.objective.objective,
+          if (progress != null)
+            l10n.xpTowardObjective(progress.xp, progress.threshold),
+          l10n.objectiveActivityCount(played),
+        ].join(', '),
+        child: Material(
+          color: scheme.surface,
+          shape: RoundedRectangleBorder(
+            borderRadius: radius,
+            side: BorderSide(
+              color: selected ? scheme.primary : scheme.outlineVariant,
+              width: selected ? 2.0 : 1.5,
+            ),
+          ),
           child: InkWell(
-            onTap: hasSessions
-                ? () => setState(() => _expanded = !_expanded)
-                : null,
-            borderRadius: BorderRadius.circular(8.0),
+            borderRadius: radius,
+            onTap: () => context.go(
+              WorkspaceNav.openObjectiveDetail(
+                GoRouterState.of(context).uri,
+                group.objective.id,
+              ),
+            ),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(8.0, 12.0, 8.0, 4.0),
+              padding: const EdgeInsets.fromLTRB(12.0, 12.0, 4.0, 12.0),
               child: Row(
-                spacing: 8.0,
+                spacing: 12.0,
                 children: [
-                  // The star marks the objective from the moment it appears;
-                  // completion fills it (org quests doc).
-                  Icon(
-                    satisfied ? Icons.star : Icons.star_border,
-                    size: 20.0,
-                    color: theme.pangea.goldGraphic,
+                  ExcludeSemantics(
+                    child: MissionXpRing(
+                      size: 60.0,
+                      strokeWidth: 7.0,
+                      trackColor: palette.track,
+                      gapColor: scheme.surface,
+                      segments: [
+                        MissionXpRingSegment(
+                          fraction: share(breakdown.chat),
+                          color: palette.chat,
+                        ),
+                        MissionXpRingSegment(
+                          fraction: share(breakdown.goals),
+                          color: palette.goals,
+                        ),
+                        MissionXpRingSegment(
+                          fraction: share(breakdown.practice),
+                          color: palette.practice,
+                        ),
+                      ],
+                      child: MissionStar(satisfied: satisfied, size: 26.0),
+                    ),
                   ),
                   Expanded(
-                    child: Text(
-                      widget.group.objective.objective,
-                      style: theme.textTheme.bodyMedium?.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: satisfied
-                            ? theme.colorScheme.onSurfaceVariant
-                            : null,
+                    child: ExcludeSemantics(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        spacing: 4.0,
+                        children: [
+                          Text(
+                            group.objective.objective,
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                            style: theme.textTheme.titleSmall?.copyWith(
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          Text(
+                            [
+                              if (progress != null)
+                                l10n.xpOfThreshold(
+                                  progress.xp,
+                                  progress.threshold,
+                                ),
+                              l10n.objectiveActivityCount(played),
+                            ].join('  ·  '),
+                            style: theme.textTheme.labelMedium?.copyWith(
+                              color: scheme.onSurfaceVariant,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  if (hasSessions)
-                    Icon(
-                      _expanded ? Icons.expand_less : Icons.expand_more,
-                      size: 20.0,
-                      color: theme.colorScheme.onSurfaceVariant,
+                  IconButton.filledTonal(
+                    tooltip: l10n.practiceObjective,
+                    icon: const Icon(Symbols.fitness_center, size: 20.0),
+                    onPressed: () => startPractice(
+                      context,
+                      ConstructTypeEnum.vocab,
+                      missionId: group.objective.id,
                     ),
+                  ),
+                  ExcludeSemantics(
+                    child: Icon(
+                      Icons.chevron_right_rounded,
+                      color: scheme.onSurfaceVariant,
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 4.0),
-          child: Row(
-            children: [
-              if (progress != null)
-                Padding(
-                  padding: const EdgeInsets.only(left: 28.0),
-                  child: Semantics(
-                    label: l10n.xpTowardObjective(
-                      progress.xp,
-                      progress.threshold,
-                    ),
-                    child: ExcludeSemantics(
-                      child: Text(
-                        l10n.xpOfThreshold(progress.xp, progress.threshold),
-                        style: theme.textTheme.labelMedium?.copyWith(
-                          color: theme.colorScheme.onSurfaceVariant,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              const Spacer(),
-              // The full phrase is the button's accessible name; the visible
-              // label stays short (the pattern of the analytics Practice
-              // pill, #8726).
-              Tooltip(
-                message: l10n.practiceObjective,
-                excludeFromSemantics: true,
-                child: TextButton.icon(
-                  onPressed: () => startPractice(
-                    context,
-                    ConstructTypeEnum.vocab,
-                    missionId: widget.group.objective.id,
-                  ),
-                  icon: const Icon(Symbols.fitness_center, size: 18.0),
-                  label: Text(
-                    l10n.practice,
-                    semanticsLabel: l10n.practiceObjective,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        if (_expanded)
-          for (final room in widget.sessions)
-            AnalyticsActivityItem(
-              room: room,
-              rovingId: room.id,
-              selected: room.id == widget.selectedRoomId,
-            ),
-      ],
+      ),
     );
   }
 }

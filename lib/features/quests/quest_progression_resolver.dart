@@ -37,6 +37,26 @@ class MissionProgress {
   double get fraction => threshold <= 0 ? 0 : (xp / threshold).clamp(0.0, 1.0);
 }
 
+/// Where a Mission's (or an activity's) XP came from: chat messages, goal
+/// checkmarks, and practice. The three sum to the XP the resolver counts.
+class MissionXpBreakdown {
+  final int chat;
+  final int goals;
+  final int practice;
+
+  const MissionXpBreakdown({this.chat = 0, this.goals = 0, this.practice = 0});
+
+  static const zero = MissionXpBreakdown();
+
+  int get total => chat + goals + practice;
+
+  MissionXpBreakdown operator +(MissionXpBreakdown other) => MissionXpBreakdown(
+    chat: chat + other.chat,
+    goals: goals + other.goals,
+    practice: practice + other.practice,
+  );
+}
+
 /// A quest's star summary: [earned] is the number of its Missions the learner
 /// has completed (a star is a completed Mission), [total] the number of
 /// Missions that can be — so earned/total is the full plan's progress

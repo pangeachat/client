@@ -207,6 +207,10 @@ class _WorldMapDotState extends State<WorldMapDot>
   /// `inProgress` already renders AS the star, and `available` never carries
   /// completion (it becomes `inProgress` the moment a role is done).
   Widget _withCompletionStar(Widget pin) {
+    // Under the activity-card map the played stamp is its own layer at the
+    // point, so a live pin never carries it — and dismissing or demoting the
+    // pin can't take the stamp with it (#9420 prototype).
+    if (kMapActivityCards) return pin;
     final state = widget.state;
     if (widget.starLevel == ActivityStarLevel.none ||
         state == ActivityPinState.inProgress ||

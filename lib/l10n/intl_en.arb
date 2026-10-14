@@ -5793,15 +5793,27 @@
     "xpTowardObjective": "{xp} of {threshold} XP toward this objective",
     "@xpTowardObjective": {
         "placeholders": {
-            "xp": {},
-            "threshold": {}
+            "xp": {
+                "type": "int",
+                "format": "decimalPattern"
+            },
+            "threshold": {
+                "type": "int",
+                "format": "decimalPattern"
+            }
         }
     },
     "xpOfThreshold": "{xp} / {threshold} XP",
     "@xpOfThreshold": {
         "placeholders": {
-            "xp": {},
-            "threshold": {}
+            "xp": {
+                "type": "int",
+                "format": "decimalPattern"
+            },
+            "threshold": {
+                "type": "int",
+                "format": "decimalPattern"
+            }
         }
     },
     "courseComplete": "Course complete!",
@@ -5912,5 +5924,103 @@
     "newCourseChat": "New course chat",
     "@newCourseChat": {
         "description": "Label of the button in the course page's Chats section header that creates a new group chat in the course. Shown to course admins."
+    },
+    "missionNumber": "Mission {index}",
+    "@missionNumber": {
+        "description": "Pill at the top of the course page's Mission card naming which Mission it shows.",
+        "placeholders": {
+            "index": {}
+        }
+    },
+    "xpToYourStar": "{xp} XP to your star",
+    "@xpToYourStar": {
+        "description": "Beside the Mission card's ring: how much more XP completes the Mission and earns its star.",
+        "placeholders": {
+            "xp": {}
+        }
+    },
+    "missionStarEarned": "Star earned!",
+    "@missionStarEarned": {
+        "description": "Beside the Mission card's ring once the Mission is complete."
+    },
+    "xpFromChats": "Chats {xp}",
+    "@xpFromChats": {
+        "description": "Legend on the Mission card's ring: XP earned from chat messages in this Mission's activities.",
+        "placeholders": {
+            "xp": {}
+        }
+    },
+    "xpFromGoals": "Goals {xp}",
+    "@xpFromGoals": {
+        "description": "Legend on the Mission card's ring: XP earned from completed activity goals.",
+        "placeholders": {
+            "xp": {}
+        }
+    },
+    "xpFromPractice": "Practice {xp}",
+    "@xpFromPractice": {
+        "description": "Legend on the Mission card's ring: XP earned from practice on this Mission's words.",
+        "placeholders": {
+            "xp": {}
+        }
+    },
+    "playMission": "Play",
+    "@playMission": {
+        "description": "Main button on the course page's Mission card; opens the best next activity for this Mission."
+    },
+    "practiceWords": "Practice words",
+    "@practiceWords": {
+        "description": "Button on the Mission card that opens vocabulary practice scoped to this Mission's words."
+    },
+    "wordCount": "{count, plural, =1{1 word} other{{count} words}}",
+    "@wordCount": {
+        "description": "Count of a Mission's target words, shown on its Practice words button.",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "continueActivity": "Continue",
+    "@continueActivity": {
+        "description": "The Mission card's main button when the learner is already in an unfinished activity session; it reopens that session. The activity's name shows under it."
+    },
+    "objectiveWordsHeading": "Words for this objective",
+    "@objectiveWordsHeading": {
+        "description": "Heading on a Learning Objective's detail page above the course's suggested words for it."
+    },
+    "objectiveActivitiesHeading": "Activities you've completed",
+    "@objectiveActivitiesHeading": {
+        "description": "Heading on a Learning Objective's detail page above the activities the learner has finished and saved toward it."
+    },
+    "noObjectiveActivitiesYet": "You haven't completed an activity for this objective yet. Start one from your course.",
+    "@noObjectiveActivitiesYet": {
+        "description": "Shown on a Learning Objective's detail page when the learner has finished none of its activities."
+    },
+    "objectiveNotInYourCourses": "This objective isn't in any of your courses.",
+    "@objectiveNotInYourCourses": {
+        "description": "Shown when a Learning Objective's detail page opens for an objective none of the learner's joined courses carries (an old link, or a course they left)."
+    },
+    "objectiveActivityCount": "{count, plural, =0{No activities yet} =1{1 activity played} other{{count} activities played}}",
+    "@objectiveActivityCount": {
+        "description": "Under a Learning Objective in the list: how many of its activities the learner has played.",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "activityCompleted": "Completed",
+    "@activityCompleted": {
+        "description": "Accessible name of the completed stamp on an activity card the learner has finished once."
+    },
+    "completedTimes": "Completed {count} times",
+    "@completedTimes": {
+        "description": "Accessible name of the completed stamp on an activity card the learner has finished more than once; the stamp shows ×{count}.",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
     }
 }

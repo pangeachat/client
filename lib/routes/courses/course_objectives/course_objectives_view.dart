@@ -36,7 +36,7 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/start_practice.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
-import 'package:fluffychat/routes/courses/course_objectives/objective_practice_card.dart';
+import 'package:fluffychat/routes/courses/course_objectives/mission_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
 import 'package:fluffychat/routes/courses/course_objectives/suggested_activities.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -45,6 +45,52 @@ import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+
+/// An activity's live state in a joined [course] — the learner's own
+/// unfinished session (ongoing, pending or active) first, else coursemates'
+/// open sessions from the discovery cache (joinable) — as its card draws it.
+/// Shared by the course page's row and a Learning Objective's detail page.
+({
+  ActivityPinState? state,
+  int openSessions,
+  List<String> participants,
+  int openSlots,
+})
+courseActivityLiveState(Room course, String activityId) {
+  final room = course;
+  final ongoingId = room.activeActivityRoomId(activityId);
+  if (ongoingId != null) {
+    final live = room.client.getRoomById(ongoingId);
+    final remaining = live?.numRemainingRoles ?? 0;
+    return (
+      state: remaining > 0
+          ? ActivityPinState.ongoingPending
+          : ActivityPinState.ongoingActive,
+      openSessions: 0,
+      participants: live?.largeCardParticipantIds ?? const [],
+      openSlots: remaining,
+    );
+  }
+
+  final cached = DiscoveredSessionsCache.instance.forActivity(
+    activityId,
+    course: room,
+  );
+  final open = cached == null
+      ? 0
+      : ActivitySessionSummariesModel(
+          cached,
+          activityId: activityId,
+        ).openSessions.length;
+  return open > 0
+      ? (
+          state: ActivityPinState.joinable,
+          openSessions: open,
+          participants: const [],
+          openSlots: 0,
+        )
+      : (state: null, openSessions: 0, participants: const [], openSlots: 0);
+}
 
 /// The Activities / Course-plan tab of a selected course (world_v2): the
 /// course's learning objectives, each with the activities that satisfy it.
@@ -524,39 +570,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
         openSlots: 0,
       );
     }
-
-    final ongoingId = room.activeActivityRoomId(activityId);
-    if (ongoingId != null) {
-      final live = room.client.getRoomById(ongoingId);
-      final remaining = live?.numRemainingRoles ?? 0;
-      return (
-        state: remaining > 0
-            ? ActivityPinState.ongoingPending
-            : ActivityPinState.ongoingActive,
-        openSessions: 0,
-        participants: live?.largeCardParticipantIds ?? const [],
-        openSlots: remaining,
-      );
-    }
-
-    final cached = DiscoveredSessionsCache.instance.forActivity(
-      activityId,
-      course: room,
-    );
-    final open = cached == null
-        ? 0
-        : ActivitySessionSummariesModel(
-            cached,
-            activityId: activityId,
-          ).openSessions.length;
-    return open > 0
-        ? (
-            state: ActivityPinState.joinable,
-            openSessions: open,
-            participants: const [],
-            openSlots: 0,
-          )
-        : (state: null, openSessions: 0, participants: const [], openSlots: 0);
+    return courseActivityLiveState(room, activityId);
   }
 
   /// The [PinSignals] the Priority matrix scores this activity on, built from
@@ -573,6 +587,31 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   int _userStarsByActivity(String activityId) =>
       widget.room?.client.userStarsByActivity[activityId] ?? 0;
+
+  /// The session the learner holds a role in and hasn't finished, preferring
+  /// one in [current]'s activities, then any in the course's [groups]; null
+  /// when there is none (or in a preview).
+  ({QuestActivity activity, String roomId})? _ongoingSession(
+    QuestObjectiveGroup current,
+    List<QuestObjectiveGroup> groups,
+  ) {
+    final room = widget.room;
+    if (room == null) return null;
+    for (final group in [current, ...groups]) {
+      for (final activity in group.activities) {
+        final roomId = room.activeActivityRoomId(activity.activityId);
+        if (roomId != null) return (activity: activity, roomId: roomId);
+      }
+    }
+    return null;
+  }
+
+  void _openSession(String roomId) {
+    PanelEntryIntent.instance.armForSwap();
+    context.go(
+      WorkspaceNav.openRoomById(GoRouterState.of(context).uri, roomId),
+    );
+  }
 
   void _openActivity(QuestActivity ref) {
     if (widget.readOnly) return;
@@ -678,42 +717,103 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                           widget.objectivesProvider.missionGradient,
                       signalsFor: _signalsFor,
                       cap: null,
+                      includeOngoing: true,
                     );
-                    // The course tutorial's "pick an activity" step lights
-                    // this row. Only the course page's row hosts the tutorial,
-                    // so only it claims the target id ([_hostsTutorial]).
-                    return TutorialTarget(
-                      targetId: _hostsTutorial
-                          ? TutorialTargetIds.courseActivities
-                          : null,
-                      child: ActivityCarousel(
-                        activities: [
-                          for (final suggestion in suggested)
-                            suggestion.activity,
+                    final activities = [
+                      for (final suggestion in suggested) suggestion.activity,
+                    ];
+                    // Play opens the row's top item — a coursemate's open
+                    // session first, else the best unfinished activity — and,
+                    // once every activity is finished, the Mission's first
+                    // activity for another round (#9420 prototype).
+                    final playTarget = activities.isNotEmpty
+                        ? activities.first
+                        : current.activities.firstOrNull;
+                    // ...but a session the learner is already in comes first,
+                    // this Mission's before any other: Play resumes it, so a
+                    // started activity gets finished before a new one starts.
+                    final ongoing = _ongoingSession(current, groups);
+                    final hasProgress = widget.room != null;
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        MissionCard(
+                          group: current,
+                          index:
+                              widget.objectivesProvider.filteredObjectiveGroups
+                                  .indexOf(current) +
+                              1,
+                          progress: hasProgress
+                              ? widget.objectivesProvider.missionProgress(
+                                  missionId,
+                                )
+                              : null,
+                          breakdown: hasProgress
+                              ? widget.objectivesProvider.missionXpBreakdown(
+                                  missionId,
+                                )
+                              : null,
+                          onPlay: widget.readOnly
+                              ? null
+                              : ongoing != null
+                              ? () => _openSession(ongoing.roomId)
+                              : playTarget == null
+                              ? null
+                              : () => _openActivity(playTarget),
+                          playLabel: ongoing == null
+                              ? null
+                              : L10n.of(context).continueActivity,
+                          playDetail: ongoing?.activity.plan.title,
+                          onPractice: () => startPractice(
+                            context,
+                            ConstructTypeEnum.vocab,
+                            missionId: missionId,
+                          ),
+                          // The course tutorial's progress step lights the
+                          // ring, as it lit the bar this card replaced.
+                          tutorialTargetId: _hostsTutorial
+                              ? TutorialTargetIds.courseProgressBar
+                              : null,
+                        ),
+                        if (activities.isNotEmpty) ...[
+                          const SizedBox(height: 20.0),
+                          Text(
+                            L10n.of(context).activities,
+                            style: Theme.of(context).textTheme.titleSmall
+                                ?.copyWith(fontWeight: FontWeight.w700),
+                          ),
+                          const SizedBox(height: 8.0),
+                          // The course tutorial's "pick an activity" step
+                          // lights this row. Only the course page's row hosts
+                          // the tutorial, so only it claims the target id
+                          // ([_hostsTutorial]).
+                          TutorialTarget(
+                            targetId: _hostsTutorial
+                                ? TutorialTargetIds.courseActivities
+                                : null,
+                            child: ActivityCarousel(
+                              activities: activities,
+                              onTap: (activity) {
+                                // A session the learner is in reopens its
+                                // chat; anything else opens its start page.
+                                final ongoingId = widget.room
+                                    ?.activeActivityRoomId(activity.activityId);
+                                if (ongoingId != null) {
+                                  _openSession(ongoingId);
+                                } else {
+                                  _openActivity(activity);
+                                }
+                              },
+                              userStarsByActivity: _userStarsByActivity,
+                              hasCompletedActivity: widget.hasCompletedActivity,
+                              liveStateByActivity: _liveStateFor,
+                              availableParticipants: _availableParticipants,
+                              pingedActivityId: _pingedActivityId,
+                              interactive: !widget.readOnly,
+                            ),
+                          ),
                         ],
-                        // Practice first (#9438): a preview has nothing to
-                        // practise toward, so it draws no tile.
-                        leadingBuilder: widget.readOnly
-                            ? null
-                            : (context, width, height, focusNode) =>
-                                  ObjectivePracticeCard(
-                                    width: width,
-                                    height: height,
-                                    focusNode: focusNode,
-                                    onTap: () => startPractice(
-                                      context,
-                                      ConstructTypeEnum.vocab,
-                                      missionId: missionId,
-                                    ),
-                                  ),
-                        onTap: _openActivity,
-                        userStarsByActivity: _userStarsByActivity,
-                        hasCompletedActivity: widget.hasCompletedActivity,
-                        liveStateByActivity: _liveStateFor,
-                        availableParticipants: _availableParticipants,
-                        pingedActivityId: _pingedActivityId,
-                        interactive: !widget.readOnly,
-                      ),
+                      ],
                     );
                   }
                   // Scoped to THIS course: the shared resolution spans every

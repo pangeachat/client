@@ -12,6 +12,7 @@ import 'package:fluffychat/features/navigation/token_params/analytics_practice_t
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
 import 'package:fluffychat/features/navigation/token_params/grammar_analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/objective_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
@@ -225,6 +226,45 @@ abstract class WorkspaceNav {
           );
         }
 
+        next.add(detail);
+        return next;
+      },
+    );
+  }
+
+  /// Pick the Mission the course card, its collapsed header and the course
+  /// map show: `?mission=<missionId>` beside `?c=`, every other part kept.
+  /// [selectedMissionIdFor] reads it back.
+  static String selectMission(Uri current, String missionId) {
+    final parts = WorkspaceQuery.parts(current.query);
+    WorkspaceQuery.removeKeys(parts, {'mission'});
+    parts.add('mission=${Uri.encodeComponent(missionId)}');
+    return WorkspaceQuery.location(current.path, parts);
+  }
+
+  /// Open a Learning Objective's detail beside the Learning Objectives list —
+  /// [openConstructDetail]'s twin: drops any other detail across columns,
+  /// seats the list (the analytics `activities` master) on a cold start, and
+  /// appends `objective:<missionId>` after it.
+  static String openObjectiveDetail(Uri current, String missionId) {
+    final PanelToken detail = ObjectivePanelToken(
+      ObjectiveTokenParam(missionId: missionId),
+    );
+    return _mutateBoth(
+      current,
+      (left) => left.where((t) => !_areSiblings(detail, t)).toList(),
+      (right) {
+        final next = right
+            .where((t) => t != detail && !_areSiblings(detail, t))
+            .toList();
+        if (!next.any((t) => t.type == PanelTypesEnum.analytics)) {
+          next.insert(
+            0,
+            const AnalyticsPanelToken(
+              AnalyticsTokenParam(subpage: ProgressIndicatorEnum.activities),
+            ),
+          );
+        }
         next.add(detail);
         return next;
       },

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
+import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
@@ -8,7 +9,9 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/course_settings_extension.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -20,7 +23,6 @@ import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
-import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_progress_circles.dart';
 import 'package:fluffychat/routes/world/left_panel/course_card_reveal.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_close_button.dart';
@@ -87,7 +89,7 @@ class SpaceDetailsContent extends StatelessWidget {
   /// decides instead. The old whole-card threshold was 168 with the ~56px
   /// header row inside the body; the header now sits above the body, so the
   /// same cavity heights trigger at 112. See [build].
-  static const double _kCompactCardMaxHeight = 112.0;
+  static const double _kCompactCardMaxHeight = 160.0;
 
   @override
   Widget build(BuildContext context) {
@@ -216,12 +218,12 @@ class SpaceDetailsHeader extends StatelessWidget {
   }
 }
 
-/// The progress bar as the course's two collapsed states show it — the wide
-/// context bar and the narrow cavity peek — top-aligned under the header in
-/// whatever height the host gives it. On wide it insets to the header's
-/// content edge, so the track ends where the header's buttons end instead of
-/// running past them (#8866); on narrow it keeps the sections' edge, because
-/// the peek slides up into the page and the bar must not shift.
+/// The Mission circles as the course's two collapsed states show them — the
+/// wide context bar and the narrow cavity peek — with the picked Mission named
+/// under its pointer. A tap picks that Mission for the course card and the
+/// map (`?mission=`, #9420 prototype; it replaced the course star bar). On
+/// wide it insets to the header's content edge (#8866); on narrow it keeps the
+/// sections' edge, because the peek slides up into the page.
 class CoursePeekProgressBar extends StatelessWidget {
   final QuestObjectivesLoader objectivesProvider;
 
@@ -238,7 +240,21 @@ class CoursePeekProgressBar extends StatelessWidget {
     // full page.
     child: Align(
       alignment: Alignment.topCenter,
-      child: CourseProgressBar(objectivesProvider: objectivesProvider),
+      child: CourseObjectiveCircles(
+        objectivesProvider: objectivesProvider,
+        showSelectedLabel: true,
+        selectedMissionId: selectedMissionIdFor(GoRouterState.of(context).uri),
+        onTap: (index) {
+          final groups = objectivesProvider.filteredObjectiveGroups;
+          if (index < 1 || index > groups.length) return;
+          context.go(
+            WorkspaceNav.selectMission(
+              GoRouterState.of(context).uri,
+              groups[index - 1].objective.id,
+            ),
+          );
+        },
+      ),
     ),
   );
 }

@@ -132,12 +132,13 @@ class WorldMapPinsManager {
   /// stays for the pins' checkmark display.
   Map<String, int> _xpByActivity = {};
 
-  // Star-tier inputs, precomputed once per sync (each a single rooms pass) so
-  // resolving a pin's display state / star level is an O(roles) lookup rather
-  // than an O(rooms) rescan per pin (world-map.instructions.md, "Goal Progress").
-  Map<String, List<OwnRoleAwards>> _ownRoleAwards = {};
-  Map<String, Set<String>> _completedRoles = {};
-  Map<String, Set<String>> _allRoles = {};
+  // Stamp input, precomputed once per sync (a single rooms pass) so a pin's
+  // display state is a set lookup rather than a rooms rescan per pin.
+
+  /// Activities the learner has a saved session of — they pressed "I'm done"
+  /// and the session was saved. What the map's completed stamp means now
+  /// (#9420 prototype): finishing, not filling every goal.
+  Set<String> _savedActivityIds = {};
 
   /// The shared next-Mission resolution the relevance band ranks toward, resolved
   /// from the objective cache's outlines + [_userStars]. Recomputed where its
@@ -258,12 +259,13 @@ class WorldMapPinsManager {
   /// without thin goals (world-map.instructions.md, "Goal Progress"). Reuses the
   /// precomputed star-input maps so it never rescans rooms.
   ActivityStarLevel starLevelOf(QuestActivityCard card) {
-    final id = card.activityId;
-    return starLevelForCard(card, _ownRoleAwards[id] ?? const []) ??
-        starLevelFor(
-          _completedRoles[id] ?? const {},
-          _allRoles[id] ?? card.roleIds,
-        );
+    // The stamp marks a saved session, not a full set of goals (#9420
+    // prototype — away from completionism): any activity the learner finished
+    // and saved wears it, however many goals they got. The goal-based tiers
+    // ([starLevelForCard] / [starLevelFor]) no longer decide it.
+    return _savedActivityIds.contains(card.activityId)
+        ? ActivityStarLevel.star
+        : ActivityStarLevel.none;
   }
 
   /// The activity's resolved display [ActivityPinState]: a live-session state
@@ -564,9 +566,11 @@ class WorldMapPinsManager {
     _xpByActivity = client.userXpByActivity(
       MissionXpCache.instance.creditedXpByRoom,
     );
-    _ownRoleAwards = client.ownRoleAwardsByActivity;
-    _completedRoles = client.completedRolesByActivity;
-    _allRoles = client.roleIdsByActivity;
+    _savedActivityIds = {
+      for (final room in client.rooms)
+        if (room.activityId != null && room.hasArchivedActivity)
+          room.activityId!,
+    };
     resolveProgression();
   }
 

@@ -38,6 +38,7 @@ import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/goal_diamond.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 // The close-only-this-room-token location moved to the navigation layer
@@ -570,11 +571,7 @@ class _ArchivedSessionFallbackBody extends StatelessWidget {
                   spacing: 4.0,
                   children: [
                     if (stars > 0) ...[
-                      Icon(
-                        Icons.check_circle,
-                        size: 18.0,
-                        color: theme.pangea.goldGraphic,
-                      ),
+                      const GoalDiamond(earned: true, size: 18.0),
                       Text('$stars'),
                     ],
                     if (role.isFinished)

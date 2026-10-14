@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/routes/world/world_map_activity_card.dart';
+import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_large_card.dart';
+import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_view.dart';
 
@@ -20,6 +23,10 @@ class LargeMarkersLayer {
   /// pop-in (#8136). Mirrors [DotMarkersLayer.animateInOf].
   final bool Function(String) animateInOf;
 
+  /// "Mission N" for a card from outside the course map's selected Mission,
+  /// shown inside the card's title row ([MissionPinTag]); null otherwise.
+  final int? Function(String)? missionTagOf;
+
   const LargeMarkersLayer({
     required this.largeCards,
     required this.currentLarge,
@@ -27,6 +34,7 @@ class LargeMarkersLayer {
     required this.onTap,
     required this.onClose,
     required this.animateInOf,
+    this.missionTagOf,
   });
 
   MarkerLayer layer() {
@@ -36,6 +44,38 @@ class LargeMarkersLayer {
           .map((card) {
             final snap = currentLarge[card.activityId];
             if (snap == null || card.point == null) return null;
+            if (kMapActivityCards) {
+              final standsOnStamp = snap.starLevel != ActivityStarLevel.none;
+              final box = WorldMapActivityCard.boxFor(
+                standsOnStamp: standsOnStamp,
+              );
+              return Marker(
+                point: card.point!,
+                width: box.width,
+                height: box.height,
+                alignment: Alignment.topCenter,
+                child: Align(
+                  key: ValueKey(card.activityId),
+                  alignment: Alignment.bottomCenter,
+                  child: WorldMapLargeCardAnimated(
+                    animateIn: animateInOf(card.activityId),
+                    child: WorldMapActivityCard(
+                      card: snap.card,
+                      state: snap.state,
+                      plan: snap.plan,
+                      starsEarned: snap.starsEarned,
+                      participants: snap.participants,
+                      openSlots: snap.openSlots,
+                      standsOnStamp: standsOnStamp,
+                      isFocused: card.activityId == focusedId,
+                      missionNumber: missionTagOf?.call(card.activityId),
+                      onTap: () => onTap(card),
+                      onClose: () => onClose(card),
+                    ),
+                  ),
+                ),
+              );
+            }
             return Marker(
               point: card.point!,
               // Widen by the badge overhang on both sides; the card centres within
@@ -77,6 +117,7 @@ class LargeMarkersLayer {
                     starLevel: snap.starLevel,
                     understaffed: snap.understaffed,
                     isFocused: card.activityId == focusedId,
+                    missionNumber: missionTagOf?.call(card.activityId),
                     onTap: () => onTap(card),
                     onClose: () => onClose(card),
                   ),

@@ -30,10 +30,21 @@ class MissionXpCache extends ChangeNotifier {
   static final MissionXpCache instance = MissionXpCache._();
 
   Map<String, int> _creditedXpByRoom = const {};
+  Map<String, int> _chatXpByRoom = const {};
+  Map<String, int> _practiceXpByRoom = const {};
 
   /// XP credited to each room: the XP earned there plus the room-less
   /// practice XP on words the learner wrote there.
   Map<String, int> get creditedXpByRoom => _creditedXpByRoom;
+
+  /// The chat part of [creditedXpByRoom]: XP from messages the learner wrote
+  /// in the room ([ConstructUseTypeEnum.isChatUse]).
+  Map<String, int> get chatXpByRoom => _chatXpByRoom;
+
+  /// The practice part of [creditedXpByRoom]: every other use in the room
+  /// (message practice and the like) plus the room-less practice credited to
+  /// it by word. With [chatXpByRoom] it sums to [creditedXpByRoom].
+  Map<String, int> get practiceXpByRoom => _practiceXpByRoom;
 
   bool _wired = false;
   StreamSubscription? _sub;
@@ -82,7 +93,7 @@ class MissionXpCache extends ChangeNotifier {
     final controller = MatrixState.pangeaController;
     final language = controller.userController.userL2?.langCodeShort;
     if (language == null) {
-      _publish(const {});
+      _publish(const {}, const {});
       return;
     }
     final analytics = controller.matrixState.analyticsServiceIfExists;
@@ -103,7 +114,8 @@ class MissionXpCache extends ChangeNotifier {
       );
       return;
     }
-    final byRoom = <String, int>{};
+    final chatByRoom = <String, int>{};
+    final practiceByRoom = <String, int>{};
     final byLemma = <String, int>{};
     final roomsByLemma = <String, Set<String>>{};
     for (final use in uses) {
@@ -113,14 +125,17 @@ class MissionXpCache extends ChangeNotifier {
         if (use.xp != 0) byLemma[lemma] = (byLemma[lemma] ?? 0) + use.xp;
         continue;
       }
-      if (use.xp != 0) byRoom[roomId] = (byRoom[roomId] ?? 0) + use.xp;
+      if (use.xp != 0) {
+        final bucket = use.useType.isChatUse ? chatByRoom : practiceByRoom;
+        bucket[roomId] = (bucket[roomId] ?? 0) + use.xp;
+      }
       // Only words the learner wrote: a word they read or heard in a room
       // is not theirs to be credited for practising.
       if (use.useType.sentByUser) {
         (roomsByLemma[lemma] ??= {}).add(roomId);
       }
     }
-    _publish(credit(byRoom, byLemma, roomsByLemma));
+    _publish(chatByRoom, credit(practiceByRoom, byLemma, roomsByLemma));
   }
 
   /// Chat XP per room plus the room-less practice XP on every word the
@@ -140,9 +155,17 @@ class MissionXpCache extends ChangeNotifier {
     return credited;
   }
 
-  void _publish(Map<String, int> credited) {
-    if (mapEquals(credited, _creditedXpByRoom)) return;
+  void _publish(Map<String, int> chat, Map<String, int> practice) {
+    final credited = Map<String, int>.of(chat);
+    practice.forEach((room, xp) => credited[room] = (credited[room] ?? 0) + xp);
+    if (mapEquals(credited, _creditedXpByRoom) &&
+        mapEquals(chat, _chatXpByRoom) &&
+        mapEquals(practice, _practiceXpByRoom)) {
+      return;
+    }
     _creditedXpByRoom = credited;
+    _chatXpByRoom = chat;
+    _practiceXpByRoom = practice;
     // A loader wires this cache from its constructor, which a context bar
     // runs inside a build; notifying there would mark its builders dirty
     // mid-build. The microtask runs once the build has unwound.
@@ -155,7 +178,7 @@ class MissionXpCache extends ChangeNotifier {
     Map<String, int> xpByRoom = const {},
     Map<String, int> practiceXpByLemma = const {},
     Map<String, Set<String>> roomsByLemma = const {},
-  }) => _publish(credit(xpByRoom, practiceXpByLemma, roomsByLemma));
+  }) => _publish(xpByRoom, credit(const {}, practiceXpByLemma, roomsByLemma));
 
   @override
   void dispose() {
