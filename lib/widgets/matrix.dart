@@ -337,6 +337,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     DateTime? rejoinSince,
     String? callerMembershipEventId,
 
+    /// The lifetime of the ring being answered (see
+    /// [call_ui.CallSession.start]).
+    Duration? answeredRingLifetime,
+
     /// Whether the call covers the whole app from its first frame, rather than
     /// waiting to be presented inside its own chat. Only a call answered on an
     /// account that is not the active one asks for this: its room belongs to
@@ -398,6 +402,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       rejoinAnchor: rejoinMembershipEventId,
       rejoinSince: rejoinSince,
       callerMembershipEventId: callerMembershipEventId,
+      answeredRingLifetime: answeredRingLifetime,
       // By the room's client OBJECT, not its name: the name-keyed getter
       // falls back to the ACTIVE account, and this is the call's own service
       // for its whole life. Resolving it the same way the incoming-call
@@ -512,6 +517,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // The caller's own membership, named by their ring: the call's SHARED
         // identity, which every card for this call is stamped with.
         callerMembershipEventId: ring.membershipEventId,
+        answeredRingLifetime: ring.lifetime,
         fullscreen: !onActiveAccount,
       );
     } on AlreadyInACall {

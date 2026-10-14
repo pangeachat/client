@@ -77,15 +77,18 @@ class CallInProgress {
   /// Two ways, and only two:
   ///
   /// * the writer is one of this account's devices the SFU names in the call
-  ///   RIGHT NOW and the membership it wrote with is still current -- so the
-  ///   record describes the call that is live, not one that ended in this room
-  ///   earlier (the call id is the room id, so nothing else tells them apart);
+  ///   RIGHT NOW and that device holds a live membership in this room -- so
+  ///   the record describes the call that is live, not one that ended in this
+  ///   room earlier. Asked of the DEVICE, not of the membership event it wrote
+  ///   with: the SDK rewrites a membership every couple of minutes, minting a
+  ///   new event id each time, so an exact-id check stopped adopting the key
+  ///   two minutes into every call -- exactly when a move becomes possible;
   /// * this device is REJOINING and the record is its own, written with the
   ///   very membership the rejoin returns to.
   static bool accepts({
     required CallInProgress data,
     required Iterable<String> siblingDeviceIdsInSfu,
-    required bool Function(String membershipEventId) isCurrentOwnMembership,
+    required bool Function(String deviceId) writerDeviceLive,
     required String? myDeviceId,
     required String? rejoinAnchor,
   }) {
@@ -95,18 +98,20 @@ class CallInProgress {
       return true;
     }
     return siblingDeviceIdsInSfu.contains(data.writerDeviceId) &&
-        isCurrentOwnMembership(data.writerMembershipEventId);
+        writerDeviceLive(data.writerDeviceId);
   }
 }
 
 /// The key a joiner falls back to when no account-data record can be adopted:
-/// the LATEST ring in the room whose membership is still current for whoever
-/// sent it. A ring names the caller's membership; a current membership means
-/// that call is still being held. Null when no ring qualifies -- the joiner
+/// the LATEST ring in the room whose sending DEVICE still holds a live
+/// membership. A ring names the caller's membership; the device that rang
+/// still being in a call here means that call is still going. Asked of the
+/// device, not of the named membership event, for the reason
+/// [CallInProgress.accepts] gives. Null when no ring qualifies -- the joiner
 /// then has no key, exactly as before this existed.
 ({String key, String caller})? keyFromCurrentRing(
   Iterable<Event> events,
-  bool Function(String senderId, String membershipEventId) isCurrent,
+  bool Function(String senderId, String deviceId) deviceLive,
 ) {
   ({String key, String caller, DateTime at})? best;
   for (final event in events) {
@@ -117,8 +122,9 @@ class CallInProgress {
       alreadyJoined: false,
     );
     final key = ring.membershipEventId;
-    if (!ring.isCall || !ring.isRing || key == null) continue;
-    if (!isCurrent(event.senderId, key)) continue;
+    final device = ring.senderDeviceId;
+    if (!ring.isCall || !ring.isRing || key == null || device == null) continue;
+    if (!deviceLive(event.senderId, device)) continue;
     if (best == null || event.originServerTs.isAfter(best.at)) {
       best = (key: key, caller: event.senderId, at: event.originServerTs);
     }

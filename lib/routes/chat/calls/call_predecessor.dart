@@ -26,9 +26,21 @@ import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 /// No anchor, or no bound on the ring, means NOT a predecessor: losing a
 /// stretch of credit is recoverable, inventing a duplicate of it is not.
 abstract final class CallPredecessor {
-  /// The longest a ring can live: any sibling joining within it may have
-  /// answered it.
+  /// The longest a ring can live, used when this device does not know the
+  /// ring's own lifetime: any sibling joining within it may have answered it.
   static const ringLifetime = CallNotification.maxLifetime;
+
+  /// The lifetime of the ring a sibling could have answered: the longest of
+  /// the rings this device knows (its own, the peer's on glare, the one it
+  /// answered), each already capped at [CallNotification.maxLifetime]; the
+  /// cap itself when it knows none (client#9173). Using the cap for a 30 s
+  /// ring made every move in the first two minutes read as an answer race.
+  static Duration ringLifetimeOf(Iterable<Duration?> known) {
+    final lifetimes = known.nonNulls.toList();
+    if (lifetimes.isEmpty) return ringLifetime;
+    final longest = lifetimes.reduce((a, b) => a > b ? a : b);
+    return longest > ringLifetime ? ringLifetime : longest;
+  }
 
   /// Clock skew between the ring's stamp and the SFU, the time a learner may
   /// take to answer after the ring ends, and the whole-second resolution of a
@@ -78,6 +90,7 @@ abstract final class CallPredecessor {
     required bool talkedBeforeFirstSibling,
     required Iterable<int> siblingFirstJoinSfuMs,
     required int? ringUpperSfuMs,
+    Duration ringLifetime = ringLifetime,
   }) {
     if (!talkedBeforeFirstSibling || ringUpperSfuMs == null) return false;
     if (siblingFirstJoinSfuMs.isEmpty) return false;

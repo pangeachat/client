@@ -328,6 +328,7 @@ class ActiveCall extends ChangeNotifier {
 
   void _settleGlare(IncomingCallNotification ring) {
     _peerAlsoPlaced = true;
+    _peerRingLifetime = ring.lifetime;
     // The ring that made this glare reached us no later than this; a ring we
     // never timed is bounded by now, which is later still.
     final arrived =
@@ -485,6 +486,7 @@ class ActiveCall extends ChangeNotifier {
     /// fixed at a decision the real arbiter reaches, so the election can be
     /// pinned in that state without replaying the whole ownership exchange.
     @visibleForTesting CallOwnership? ownership,
+    this.answeredRingLifetime,
   }) : _foreground = foreground,
        _ownership = ownership ?? CallOwnership() {
     // Wired here rather than at connect, so a tap that dies during the very
@@ -1681,7 +1683,19 @@ class ActiveCall extends ChangeNotifier {
     talkedBeforeFirstSibling: _ownership.talkedBeforeFirstSibling,
     siblingFirstJoinSfuMs: _ownership.siblingFirstJoinSfuMs,
     ringUpperSfuMs: _ringUpperSfuMs,
+    ringLifetime: CallPredecessor.ringLifetimeOf([
+      if (_placed) CallNotification.lifetime,
+      if (_peerAlsoPlaced) _peerRingLifetime,
+      answeredRingLifetime,
+    ]),
   );
+
+  /// The lifetime of the ring this device answered, when it answered one.
+  /// Handed in by whoever started the call; null otherwise.
+  final Duration? answeredRingLifetime;
+
+  /// The lifetime of the peer's ring that made this call glare.
+  Duration? _peerRingLifetime;
 
   int? get _ringUpperSfuMs {
     final start = _connectStartMono;

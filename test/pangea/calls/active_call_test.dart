@@ -905,6 +905,7 @@ void main() {
   Future<(ActiveCall, FakeCalls, FakeMedia, FakeCapture)> build({
     bool hasTrack = true,
     CallOwnership? ownership,
+    Duration? answeredRingLifetime,
   }) async {
     final calls = FakeCalls(await bareClient(), trace);
     final media = FakeMedia(trace, hasTrack: hasTrack);
@@ -922,6 +923,7 @@ void main() {
         media: media,
         capture: capture,
         ownership: ownership,
+        answeredRingLifetime: answeredRingLifetime,
       ),
       calls,
       media,
@@ -5368,8 +5370,11 @@ void main() {
       Future<ActiveCall> movedAfter(
         Duration siblingAfter, {
         bool siblingAtStart = false,
+        Duration? ringLifetime,
       }) async {
-        final (call, calls, media, _) = await build();
+        final (call, calls, media, _) = await build(
+          answeredRingLifetime: ringLifetime,
+        );
         media.anchorClocksTo((secondsMs: t0, ms: 0));
         calls.roster!.myJoin = (true, DateTime.fromMillisecondsSinceEpoch(t0));
         final sibling = '${calls.client.userID}:SIB';
@@ -5410,6 +5415,36 @@ void main() {
           expect(call.continuingOnDeviceId, 'SIB');
         },
       );
+
+      // client#9173: the window is the ring's OWN lifetime (30 s by default)
+      // plus margins, not always the 90 s cap -- so a move a minute or two in
+      // is a move, while two devices answering the same ring stay a race.
+      test(
+        'a move about seventy seconds in, after a 30 s ring, is a move',
+        () async {
+          final call = await movedAfter(
+            const Duration(seconds: 70),
+            ringLifetime: const Duration(seconds: 30),
+          );
+          expect(call.isPredecessor, isTrue);
+        },
+      );
+
+      test(
+        'a sibling that answered the same 30 s ring is still a race',
+        () async {
+          final call = await movedAfter(
+            const Duration(seconds: 25),
+            ringLifetime: const Duration(seconds: 30),
+          );
+          expect(call.isPredecessor, isFalse);
+        },
+      );
+
+      test('with no known ring lifetime the cap still applies', () async {
+        final call = await movedAfter(const Duration(seconds: 70));
+        expect(call.isPredecessor, isFalse);
+      });
 
       test('is NOT a device whose sibling joined inside the ring window: that '
           'is an answer race', () async {

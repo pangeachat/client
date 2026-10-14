@@ -2088,6 +2088,45 @@ class CallService {
     return false;
   }
 
+  /// Whether [userId]'s device [deviceId] holds a LIVE call membership in
+  /// [room] right now: a membership naming that device that has not expired.
+  ///
+  /// Asked of the DEVICE, not of one membership event (client#9173). The SDK
+  /// rewrites a device's membership every couple of minutes to push its
+  /// `expires_ts` forward, and each rewrite is a new state event with a new
+  /// id -- so "is THIS event id still current" stops being true two minutes
+  /// into every call, while the device is still in it. One live call per
+  /// direct chat, so a live membership in this room is this call's.
+  bool deviceHoldsLiveMembership(Room room, String userId, String deviceId) =>
+      liveMembershipIn(
+        room.states[EventTypes.GroupCallMember]?.values ?? const [],
+        userId,
+        deviceId,
+        nowMs: DateTime.now().millisecondsSinceEpoch,
+      );
+
+  /// The rule behind [deviceHoldsLiveMembership], pure for tests.
+  @visibleForTesting
+  static bool liveMembershipIn(
+    Iterable<StrippedStateEvent> memberStates,
+    String userId,
+    String deviceId, {
+    required int nowMs,
+  }) {
+    for (final state in memberStates) {
+      if (state.type != EventTypes.GroupCallMember) continue;
+      if (state.senderId != userId) continue;
+      final memberships = state.content['memberships'];
+      if (memberships is! List) continue;
+      for (final m in memberships) {
+        if (m is! Map || m['device_id'] != deviceId) continue;
+        final expires = m['expires_ts'];
+        if (expires is! int || expires > nowMs) return true;
+      }
+    }
+    return false;
+  }
+
   /// Whether ANOTHER device of this account has joined the call [ring] is
   /// for.
   ///

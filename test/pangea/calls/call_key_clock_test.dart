@@ -112,15 +112,15 @@ void main() {
       writerMembershipEventId: r'$m',
     );
 
-    test('a joiner adopts it only from a sibling present now whose '
-        'membership is current', () {
+    test('a joiner adopts it only from a sibling present now whose device '
+        'still holds a live membership', () {
       bool accepts({
         Iterable<String> siblings = const ['DEVA'],
         bool current = true,
       }) => CallInProgress.accepts(
         data: record,
         siblingDeviceIdsInSfu: siblings,
-        isCurrentOwnMembership: (id) => current && id == r'$m',
+        writerDeviceLive: (device) => current && device == 'DEVA',
         myDeviceId: 'DEVB',
         rejoinAnchor: null,
       );
@@ -133,7 +133,31 @@ void main() {
       expect(
         accepts(current: false),
         isFalse,
-        reason: 'a membership that is no longer current is an earlier call',
+        reason: 'a device with no live membership is not in this call',
+      );
+    });
+
+    // client#9173: the SDK refreshes a membership every two minutes, minting a
+    // new event id, and the record still names the FIRST one. The rule asks
+    // about the writer DEVICE only -- it is never handed the event id at all.
+    // That the production wiring answers from REFRESHED room state is pinned in
+    // call_session_test ("adopts the key its other device recorded") and
+    // call_service_test ("stays live across the two-minute membership
+    // refresh").
+    test('the rule asks only whether the writer DEVICE is live, never about '
+        'the event id the record names', () {
+      expect(
+        CallInProgress.accepts(
+          data: record,
+          siblingDeviceIdsInSfu: const ['DEVA'],
+          writerDeviceLive: (device) {
+            expect(device, 'DEVA', reason: 'asked about the device');
+            return true;
+          },
+          myDeviceId: 'DEVB',
+          rejoinAnchor: null,
+        ),
+        isTrue,
       );
     });
 
@@ -143,7 +167,7 @@ void main() {
           CallInProgress.accepts(
             data: record,
             siblingDeviceIdsInSfu: const [],
-            isCurrentOwnMembership: (_) => false,
+            writerDeviceLive: (_) => false,
             myDeviceId: me,
             rejoinAnchor: anchor,
           );
@@ -157,32 +181,47 @@ void main() {
     late Room room;
     setUp(() async => room = Room(id: '!r:server', client: await _client()));
 
-    Event ring(String id, String membership, DateTime at, {String? kind}) =>
-        Event(
-          type: PangeaEventTypes.callNotification,
-          content: {
-            'application': {
-              'type': 'm.call',
-              'notification_type': kind ?? 'ring',
-            },
-            'm.relates_to': {'rel_type': 'm.reference', 'event_id': membership},
-          },
-          eventId: id,
-          senderId: _peer,
-          originServerTs: at,
-          room: room,
-        );
+    Event ring(
+      String id,
+      String membership,
+      DateTime at, {
+      String? kind,
+      String device = 'PEERDEV',
+    }) => Event(
+      type: PangeaEventTypes.callNotification,
+      content: {
+        'application': {
+          'type': 'm.call',
+          'notification_type': kind ?? 'ring',
+          'device_id': device,
+        },
+        'm.relates_to': {'rel_type': 'm.reference', 'event_id': membership},
+      },
+      eventId: id,
+      senderId: _peer,
+      originServerTs: at,
+      room: room,
+    );
 
-    test('takes the latest ring whose membership is still current', () {
+    test('takes the latest ring whose sending device is still live', () {
       final events = [
-        ring(r'$r1', r'$old', DateTime.utc(2026, 10, 7, 10)),
-        ring(r'$r2', r'$live', DateTime.utc(2026, 10, 7, 11)),
-        ring(r'$r3', r'$stale', DateTime.utc(2026, 10, 7, 12)),
-        ring(r'$r4', r'$notify', DateTime.utc(2026, 10, 7, 13), kind: 'x'),
+        ring(r'$r1', r'$old', DateTime.utc(2026, 10, 7, 10), device: 'OLD'),
+        ring(r'$r2', r'$live', DateTime.utc(2026, 10, 7, 11), device: 'LIVE'),
+        ring(r'$r3', r'$stale', DateTime.utc(2026, 10, 7, 12), device: 'GONE'),
+        ring(
+          r'$r4',
+          r'$notify',
+          DateTime.utc(2026, 10, 7, 13),
+          kind: 'x',
+          device: 'LIVE',
+        ),
       ];
+      // Asked of the DEVICE: the membership each ring names has long been
+      // refreshed under a new id, which must not matter (client#9173).
       final found = keyFromCurrentRing(
         events,
-        (sender, id) => sender == _peer && (id == r'$live' || id == r'$old'),
+        (sender, device) =>
+            sender == _peer && (device == 'LIVE' || device == 'OLD'),
       );
       expect(found?.key, r'$live');
       expect(found?.caller, _peer);
