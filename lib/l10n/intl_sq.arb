@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Identifikohuni ose regjistrohuni, dhe ne do të përdorim kodin tuaj të kursit për t'ju shtuar automatikisht në kursin tuaj.",
     "courseCodeLabel": "Kodi i kursit",
     "courseCodeSaved": "Kodi i kursit {code} u ruajt",
-    "courseCodeSavedExplanation": "Regjistrohuni ose identifikohuni dhe ne do t'ju shtojmë në kursin tuaj."
+    "courseCodeSavedExplanation": "Regjistrohuni ose identifikohuni dhe ne do t'ju shtojmë në kursin tuaj.",
+    "missionDueDate": "Afati {date}, {time}"
 }

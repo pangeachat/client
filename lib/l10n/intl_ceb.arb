@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Pag-log in o pag-sign up, ug gamiton namo ang imong course code aron awtomatikong idugang ka sa imong kurso.",
     "courseCodeLabel": "Course code",
     "courseCodeSaved": "Na-save ang course code nga {code}",
-    "courseCodeSavedExplanation": "Pag-sign up o pag-log in ug idugang ka namo sa imong kurso."
+    "courseCodeSavedExplanation": "Pag-sign up o pag-log in ug idugang ka namo sa imong kurso.",
+    "missionDueDate": "Angay sa {date}, {time}"
 }

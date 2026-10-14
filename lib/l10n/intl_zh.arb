@@ -9981,5 +9981,6 @@
     "courseCodeJoinExplanation": "登录或注册后，我们将使用您的课程代码自动将您添加到课程中。",
     "courseCodeLabel": "课程代码",
     "courseCodeSaved": "课程代码 {code} 已保存",
-    "courseCodeSavedExplanation": "注册或登录后，我们会将您添加到您的课程中。"
+    "courseCodeSavedExplanation": "注册或登录后，我们会将您添加到您的课程中。",
+    "missionDueDate": "{date} {time} 到期"
 }

@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Daxil olun və ya qeydiyyatdan keçin, biz sizi kurs kodunuzdan istifadə edərək avtomatik olaraq kursunuza əlavə edəcəyik.",
     "courseCodeLabel": "Kurs kodu",
     "courseCodeSaved": "{code} kurs kodu yadda saxlanıldı",
-    "courseCodeSavedExplanation": "Qeydiyyatdan keçin və ya daxil olun, biz sizi kursunuza əlavə edəcəyik."
+    "courseCodeSavedExplanation": "Qeydiyyatdan keçin və ya daxil olun, biz sizi kursunuza əlavə edəcəyik.",
+    "missionDueDate": "{date}, {time} tarixinə qədər"
 }

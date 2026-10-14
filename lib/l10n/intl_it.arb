@@ -10054,5 +10054,6 @@
     "courseCodeJoinExplanation": "Accedi o iscriviti, e useremo il tuo codice corso per aggiungerti automaticamente al tuo corso.",
     "courseCodeLabel": "Codice corso",
     "courseCodeSaved": "Codice corso {code} salvato",
-    "courseCodeSavedExplanation": "Iscriviti o accedi e ti aggiungeremo al tuo corso."
+    "courseCodeSavedExplanation": "Iscriviti o accedi e ti aggiungeremo al tuo corso.",
+    "missionDueDate": "Scadenza {date}, {time}"
 }

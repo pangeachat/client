@@ -10336,5 +10336,6 @@
     "courseCodeJoinExplanation": "Connectez-vous ou inscrivez-vous, et nous utiliserons votre code de cours pour vous ajouter automatiquement à votre cours.",
     "courseCodeLabel": "Code de cours",
     "courseCodeSaved": "Code de cours {code} enregistré",
-    "courseCodeSavedExplanation": "Inscrivez-vous ou connectez-vous et nous vous ajouterons à votre cours."
+    "courseCodeSavedExplanation": "Inscrivez-vous ou connectez-vous et nous vous ajouterons à votre cours.",
+    "missionDueDate": "Échéance le {date} à {time}"
 }

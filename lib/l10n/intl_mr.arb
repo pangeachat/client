@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "लॉग इन करा किंवा साइन अप करा आणि आम्ही तुम्हाला तुमच्या कोर्समध्ये आपोआप जोडण्यासाठी तुमचा कोर्स कोड वापरू.",
     "courseCodeLabel": "कोर्स कोड",
     "courseCodeSaved": "कोर्स कोड {code} सेव्ह केला",
-    "courseCodeSavedExplanation": "साइन अप करा किंवा लॉग इन करा आणि आम्ही तुम्हाला तुमच्या कोर्समध्ये जोडू."
+    "courseCodeSavedExplanation": "साइन अप करा किंवा लॉग इन करा आणि आम्ही तुम्हाला तुमच्या कोर्समध्ये जोडू.",
+    "missionDueDate": "{date}, {time} रोजी देय"
 }

@@ -91,14 +91,32 @@ class QuestActivity {
   const QuestActivity({required this.activityId, required this.plan});
 }
 
+/// A course's own note and soft due date for one Mission, from its copy
+/// (`pangea.course_missions`, content-studio.instructions.md). [timeZone] is
+/// the course's IANA zone the due date is shown in; null shows it in the
+/// viewer's own zone. A due date never blocks, hides or locks anything.
+class MissionPacing {
+  final String? note;
+  final DateTime? dueAt;
+  final String? timeZone;
+  const MissionPacing({this.note, this.dueAt, this.timeZone});
+
+  bool get isEmpty => note == null && dueAt == null;
+}
+
 /// A Learning Objective (Mission) with the activities that satisfy it, in
 /// quest order. A learner advances by completing any activity in the bucket.
 class QuestObjectiveGroup {
   final LearningObjective objective;
   final List<QuestActivity> activities;
+
+  /// The course's note and due date for this Mission; null when the course
+  /// has no copy or set neither.
+  final MissionPacing? pacing;
   const QuestObjectiveGroup({
     required this.objective,
     required this.activities,
+    this.pacing,
   });
 }
 
@@ -142,6 +160,7 @@ class QuestOutline {
       activities: group.activities
           .where((a) => allowed.contains(a.activityId))
           .toList(),
+      pacing: group.pacing,
     );
   }
 

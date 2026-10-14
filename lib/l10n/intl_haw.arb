@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "E ʻeʻe a i ʻole e kau inoa, a e hoʻohana mākou i kāu code papa e hoʻohui aunoa iā ʻoe i kāu papa.",
     "courseCodeLabel": "Code papa",
     "courseCodeSaved": "Ua mālama ʻia ke code papa {code}",
-    "courseCodeSavedExplanation": "E kau inoa a i ʻole e ʻeʻe a e hoʻohui mākou iā ʻoe i kāu papa."
+    "courseCodeSavedExplanation": "E kau inoa a i ʻole e ʻeʻe a e hoʻohui mākou iā ʻoe i kāu papa.",
+    "missionDueDate": "Pau i ka {date}, {time}"
 }

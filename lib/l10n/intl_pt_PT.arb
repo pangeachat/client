@@ -10898,5 +10898,6 @@
     "courseCodeJoinExplanation": "Inicie sessão ou registe-se, e usaremos o seu código de curso para adicioná-lo automaticamente ao seu curso.",
     "courseCodeLabel": "Código do curso",
     "courseCodeSaved": "Código do curso {code} guardado",
-    "courseCodeSavedExplanation": "Registe-se ou inicie sessão e adicioná-lo-emos ao seu curso."
+    "courseCodeSavedExplanation": "Registe-se ou inicie sessão e adicioná-lo-emos ao seu curso.",
+    "missionDueDate": "Até {date}, {time}"
 }

@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Asup atawa daptar, sarta kami baris ngagunakeun kode kursus anjeun pikeun nambahkeun anjeun kana kursus anjeun sacara otomatis.",
     "courseCodeLabel": "Kode kursus",
     "courseCodeSaved": "Kode kursus {code} disimpen",
-    "courseCodeSavedExplanation": "Daptar atawa asup sarta kami baris nambahkeun anjeun kana kursus anjeun."
+    "courseCodeSavedExplanation": "Daptar atawa asup sarta kami baris nambahkeun anjeun kana kursus anjeun.",
+    "missionDueDate": "Tenggang {date}, {time}"
 }

@@ -10282,5 +10282,6 @@
     "courseCodeJoinExplanation": "Giriş yapın veya kaydolun, kurs kodunuzu kullanarak sizi otomatik olarak kursunuza ekleyeceğiz.",
     "courseCodeLabel": "Kurs kodu",
     "courseCodeSaved": "{code} kurs kodu kaydedildi",
-    "courseCodeSavedExplanation": "Kaydolun veya giriş yapın, sizi kursunuza ekleyeceğiz."
+    "courseCodeSavedExplanation": "Kaydolun veya giriş yapın, sizi kursunuza ekleyeceğiz.",
+    "missionDueDate": "{date}, {time} tarihinde bitiyor"
 }

@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Coniunge te vel subsigna, et codice tuo utemur ut te ad cursum tuum sponte addamus.",
     "courseCodeLabel": "Codex cursus",
     "courseCodeSaved": "Codex cursus {code} servatus",
-    "courseCodeSavedExplanation": "Subsigna vel coniunge te et te ad cursum tuum addemus."
+    "courseCodeSavedExplanation": "Subsigna vel coniunge te et te ad cursum tuum addemus.",
+    "missionDueDate": "Debetur {date}, {time}"
 }

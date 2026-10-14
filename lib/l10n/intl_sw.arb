@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Ingia au jisajili, na tutatumia msimbo wako wa kozi kukuongeza kwenye kozi yako kiotomatiki.",
     "courseCodeLabel": "Msimbo wa kozi",
     "courseCodeSaved": "Msimbo wa kozi {code} umefanikiwa kuhifadhiwa",
-    "courseCodeSavedExplanation": "Jisajili au ingia na tutakuongeza kwenye kozi yako."
+    "courseCodeSavedExplanation": "Jisajili au ingia na tutakuongeza kwenye kozi yako.",
+    "missionDueDate": "Tarehe ya kukamilisha {date}, {time}"
 }

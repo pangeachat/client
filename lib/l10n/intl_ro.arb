@@ -10713,5 +10713,6 @@
     "courseCodeJoinExplanation": "Conectează-te sau înregistrează-te, iar noi vom folosi codul tău de curs pentru a te adăuga automat la cursul tău.",
     "courseCodeLabel": "Codul cursului",
     "courseCodeSaved": "Codul cursului {code} a fost salvat",
-    "courseCodeSavedExplanation": "Înregistrează-te sau conectează-te și te vom adăuga la cursul tău."
+    "courseCodeSavedExplanation": "Înregistrează-te sau conectează-te și te vom adăuga la cursul tău.",
+    "missionDueDate": "Scadența: {date}, {time}"
 }

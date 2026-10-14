@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Нэвтрэх эсвэл бүртгүүлэх үед таны хичээлийн кодыг ашиглан таныг автоматаар хичээлд нэгтгэх болно.",
     "courseCodeLabel": "Хичээлийн код",
     "courseCodeSaved": "Хичээлийн код {code} хадгалагдсан",
-    "courseCodeSavedExplanation": "Бүртгүүлэх эсвэл нэвтрэх үед таныг хичээлд нэгтгэх болно."
+    "courseCodeSavedExplanation": "Бүртгүүлэх эсвэл нэвтрэх үед таныг хичээлд нэгтгэх болно.",
+    "missionDueDate": "{date}, {time} хүртэл"
 }

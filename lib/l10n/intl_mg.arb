@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Midira na misoratra anarana, ary hampiasainay ny kaody taranjao mba hanampiana anao ho azy ao amin'ny taranjao.",
     "courseCodeLabel": "Kaody taranja",
     "courseCodeSaved": "Kaody taranja {code} voatahiry",
-    "courseCodeSavedExplanation": "Misoratra anarana na midira ary hanampy anao amin'ny taranjao izahay."
+    "courseCodeSavedExplanation": "Misoratra anarana na midira ary hanampy anao amin'ny taranjao izahay.",
+    "missionDueDate": "Tokony ho vita amin'ny {date}, {time}"
 }

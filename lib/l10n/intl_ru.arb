@@ -10953,5 +10953,6 @@
     "courseCodeJoinExplanation": "Войдите или зарегистрируйтесь, и мы автоматически добавим вас к вашему курсу, используя ваш код курса.",
     "courseCodeLabel": "Код курса",
     "courseCodeSaved": "Код курса {code} сохранен",
-    "courseCodeSavedExplanation": "Зарегистрируйтесь или войдите, и мы добавим вас к вашему курсу."
+    "courseCodeSavedExplanation": "Зарегистрируйтесь или войдите, и мы добавим вас к вашему курсу.",
+    "missionDueDate": "Срок: {date}, {time}"
 }

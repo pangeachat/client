@@ -10069,5 +10069,6 @@
     "courseCodeJoinExplanation": "وارد شوید یا ثبت‌نام کنید، و ما از کد دوره شما برای افزودن خودکار شما به دوره استفاده خواهیم کرد.",
     "courseCodeLabel": "کد دوره",
     "courseCodeSaved": "کد دوره {code} ذخیره شد",
-    "courseCodeSavedExplanation": "ثبت‌نام کنید یا وارد شوید و ما شما را به دوره شما اضافه خواهیم کرد."
+    "courseCodeSavedExplanation": "ثبت‌نام کنید یا وارد شوید و ما شما را به دوره شما اضافه خواهیم کرد.",
+    "missionDueDate": "موعد مقرر: {date}، ساعت {time}"
 }

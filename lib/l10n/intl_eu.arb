@@ -9981,5 +9981,6 @@
     "courseCodeJoinExplanation": "Hasi saioa edo eman izena, eta zure ikastaro-kodea erabiliko dugu automatikoki zure ikastarora gehitzeko.",
     "courseCodeLabel": "Ikastaro-kodea",
     "courseCodeSaved": "{code} ikastaro-kodea gordeta",
-    "courseCodeSavedExplanation": "Eman izena edo hasi saioa eta zure ikastarora gehituko zaitugu."
+    "courseCodeSavedExplanation": "Eman izena edo hasi saioa eta zure ikastarora gehituko zaitugu.",
+    "missionDueDate": "{date}, {time}rako"
 }

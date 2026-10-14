@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Kena kapa ingolise, 'me re tla sebelisa khoutu ea thupelo ea hau ho u kenya thupelong ea hau ka bo eona.",
     "courseCodeLabel": "Khoutu ea thupelo",
     "courseCodeSaved": "Khoutu ea thupelo {code} e bolokiloe",
-    "courseCodeSavedExplanation": "Ingolise kapa u kene 'me re tla u kenya thupelong ea hau."
+    "courseCodeSavedExplanation": "Ingolise kapa u kene 'me re tla u kenya thupelong ea hau.",
+    "missionDueDate": "E lokela ho etsoa ka {date}, {time}"
 }

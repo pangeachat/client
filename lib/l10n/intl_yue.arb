@@ -10938,5 +10938,6 @@
     "courseCodeJoinExplanation": "登入或註冊，我們會使用你的課程代碼自動將你加入課程。",
     "courseCodeLabel": "課程代碼",
     "courseCodeSaved": "課程代碼 {code} 已儲存",
-    "courseCodeSavedExplanation": "註冊或登入，我們會將你加入課程。"
+    "courseCodeSavedExplanation": "註冊或登入，我們會將你加入課程。",
+    "missionDueDate": "{date} {time} 到期"
 }

@@ -4239,6 +4239,19 @@
     "@upNext": {
         "description": "Label on the course plan's next Mission (learning objective) header — the one the learner should work on next."
     },
+    "missionDueDate": "Due {date}, {time}",
+    "@missionDueDate": {
+        "description": "Soft due date a teacher set on a Mission (learning objective), shown under its title on the course page, e.g. 'Due Oct 20, 5:00 PM'. Nothing is blocked after it.",
+        "type": "String",
+        "placeholders": {
+            "date": {
+                "type": "String"
+            },
+            "time": {
+                "type": "String"
+            }
+        }
+    },
     "editCourseLater": "You can edit template title, descriptions, and course image later.",
     "createCourse": "Create course",
     "stats": "Stats",

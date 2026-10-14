@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "ننوتل یا نوم لیکنه وکړئ، او موږ به ستاسو د کورس کوډ وکاروو ترڅو تاسو په اتوماتيک ډول ستاسو کورس ته اضافه کړو.",
     "courseCodeLabel": "د کورس کوډ",
     "courseCodeSaved": "د کورس کوډ {code} خوندي شو",
-    "courseCodeSavedExplanation": "نوم لیکنه وکړئ یا ننوتل او موږ به تاسو خپل کورس ته اضافه کړو."
+    "courseCodeSavedExplanation": "نوم لیکنه وکړئ یا ننوتل او موږ به تاسو خپل کورس ته اضافه کړو.",
+    "missionDueDate": "د {date}, {time} پورې"
 }

@@ -67,6 +67,11 @@ class PangeaEventTypes {
   // deprecated, no longer used in client, used to filter out of permissions list
   static const courseUser = "p.course_user";
   static const teacherMode = "pangea.teacher_mode";
+
+  /// A course's own copy of its Can-Do list, notes and due dates
+  /// (content-studio.instructions.md). Separate from [teacherMode] so an app
+  /// that rewrites teacher settings can never wipe it.
+  static const courseMissions = "pangea.course_missions";
   static const courseChatList = "pangea.course_chat_list";
   static const courseSettings = "pangea.course_settings";
 

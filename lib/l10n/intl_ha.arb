@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Shiga ko yi rajista, kuma za mu yi amfani da lambar ajinka don ƙara ka a ajinka kai tsaye.",
     "courseCodeLabel": "Lambar aji",
     "courseCodeSaved": "An adana lambar aji {code}",
-    "courseCodeSavedExplanation": "Yi rajista ko shiga kuma za mu ƙara ka a ajinka."
+    "courseCodeSavedExplanation": "Yi rajista ko shiga kuma za mu ƙara ka a ajinka.",
+    "missionDueDate": "Ranar ƙarshe {date}, {time}"
 }

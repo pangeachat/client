@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Најави се или регистрирај се, и ние ќе го искористиме твојот код за курс за автоматски да те додадеме на твојот курс.",
     "courseCodeLabel": "Код за курс",
     "courseCodeSaved": "Кодот за курс {code} е зачуван",
-    "courseCodeSavedExplanation": "Регистрирај се или најави се и ние ќе те додадеме на твојот курс."
+    "courseCodeSavedExplanation": "Регистрирај се или најави се и ние ќе те додадеме на твојот курс.",
+    "missionDueDate": "Доспева на {date}, {time}"
 }

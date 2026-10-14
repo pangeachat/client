@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Log a-steach no clàraich, agus cleachdaidh sinn an còd cùrsa agad gus do chur ris a’ chùrsa agad gu fèin-obrachail.",
     "courseCodeLabel": "Còd cùrsa",
     "courseCodeSaved": "Còd cùrsa {code} air a shàbhaladh",
-    "courseCodeSavedExplanation": "Clàraich no log a-steach agus cuiridh sinn ris a’ chùrsa agad thu."
+    "courseCodeSavedExplanation": "Clàraich no log a-steach agus cuiridh sinn ris a’ chùrsa agad thu.",
+    "missionDueDate": "Ri phàigheadh {date}, {time}"
 }

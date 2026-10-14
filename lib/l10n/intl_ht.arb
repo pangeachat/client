@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Konekte oswa enskri, epi n ap itilize kòd kou ou a pou ajoute ou nan kou ou otomatikman.",
     "courseCodeLabel": "Kòd kou",
     "courseCodeSaved": "Kòd kou {code} anrejistre",
-    "courseCodeSavedExplanation": "Enskri oswa konekte epi n ap ajoute ou nan kou ou."
+    "courseCodeSavedExplanation": "Enskri oswa konekte epi n ap ajoute ou nan kou ou.",
+    "missionDueDate": "Dat limit: {date}, {time}"
 }

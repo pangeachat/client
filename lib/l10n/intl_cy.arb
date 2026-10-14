@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Mewngofnodwch neu gofrestrwch, a byddwn yn defnyddio'ch cod cwrs i'ch ychwanegu at eich cwrs yn awtomatig.",
     "courseCodeLabel": "Cod cwrs",
     "courseCodeSaved": "Cod cwrs {code} wedi'i gadw",
-    "courseCodeSavedExplanation": "Cofrestrwch neu mewngofnodwch a byddwn yn eich ychwanegu at eich cwrs."
+    "courseCodeSavedExplanation": "Cofrestrwch neu mewngofnodwch a byddwn yn eich ychwanegu at eich cwrs.",
+    "missionDueDate": "Dyddiad dyledus {date}, {time}"
 }

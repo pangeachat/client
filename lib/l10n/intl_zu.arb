@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Ngena noma bhalisa, futhi sizosebenzisa ikhodi yekhosi lakho ukukufaka ngokuzenzakalelayo ekosini lakho.",
     "courseCodeLabel": "Ikhodi yekhosi",
     "courseCodeSaved": "Ikhodi yekhosi {code} ilondoloziwe",
-    "courseCodeSavedExplanation": "Bhalisa noma ungene futhi sizokufaka ekosini lakho."
+    "courseCodeSavedExplanation": "Bhalisa noma ungene futhi sizokufaka ekosini lakho.",
+    "missionDueDate": "Kufanele {date}, {time}"
 }

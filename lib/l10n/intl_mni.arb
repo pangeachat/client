@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "ಲಾಗಿನ್ ತೌ ಅಥವ ಸೈನ್ ಅಪ್ ತೌ, ಅದুগಾ ನಾಲೈ-ನಾಲೈ কোর্স কোড শিজিন্নদুনা নঙবু নಾಲೈ-ನಾಲೈ কোর্সತಾ অটোমেটিক ওইনা য়াওহনগನಿ.",
     "courseCodeLabel": "ಕোর্স ಕೋಡ್",
     "courseCodeSaved": "ಕোর্স ಕೋಡ್ {code} ಸೇভ ತೌರೆ",
-    "courseCodeSavedExplanation": "ಸೈನ್ ಅಪ್ ಅಥವ ಲಾಗಿನ್ ತೌ ಅದুগಾ ನঙಬು ನಾಲೈ-ನಾಲೈ কোর্সತಾ য়াওহনগনি."
+    "courseCodeSavedExplanation": "ಸೈನ್ ಅಪ್ ಅಥವ ಲಾಗಿನ್ ತೌ ಅದুগಾ ನঙಬು ನಾಲೈ-ನಾಲೈ কোর্সತಾ য়াওহনগনি.",
+    "missionDueDate": "{date}, {time} da loisin'ganu"
 }

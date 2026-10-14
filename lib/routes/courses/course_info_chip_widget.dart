@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
-import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/languages/context_language_switch_target.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
@@ -134,20 +134,18 @@ class CourseInfoChipsState extends State<CourseInfoChips> {
       courseRoomId: widget.courseRoomId,
     );
     if (!mounted || loadGen != _loadGeneration) return;
-    // Restricted to the course's own activity pin, where there is a joined
-    // course room to read one from — `QuestRepo.outline` caches one outline per
-    // quest, shared by every course built from it, so the pin has to be applied
-    // per course. Without it the chip would count activities the course panel
-    // does not list (#7976). Unjoined tiles (previews, the plan picker) resolve
-    // no room and stay unrestricted, which is what the quest itself holds.
-    final pins = widget.courseRoomId == null
+    // Shown as the course shows it (its own copy, else its activity pins),
+    // where there is a joined course room to read one from —
+    // `QuestRepo.outline` caches one outline per quest, shared by every course
+    // built from it, so the course's list has to be applied per course.
+    // Without it the chip would count activities the course panel does not
+    // list (#7976). Unjoined tiles (previews, the plan picker) resolve no room
+    // and stay unrestricted, which is what the quest itself holds.
+    final room = widget.courseRoomId == null
         ? null
-        : Matrix.of(context).client
-              .getRoomById(widget.courseRoomId!)
-              ?.teacherMode
-              .pinnedActivitiesByObjective;
+        : Matrix.of(context).client.getRoomById(widget.courseRoomId!);
     // A failed read is already logged by the repo; the chips just stay hidden.
-    setState(() => _outline = result.result?.restrictedTo(pins));
+    setState(() => _outline = result.result?.forCourse(room));
   }
 
   @override

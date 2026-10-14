@@ -4,11 +4,15 @@ import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
+import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -60,6 +64,15 @@ class QuestObjectivesLoader {
     //
     // Guarded on the controller for the same reason [QuestRepo.displayL1]
     // guards its read: a loader can be constructed before (or without) one.
+    // A teacher publishing the course's own copy (content-studio) changes its
+    // order, activities, notes and due dates. Re-read when this course's copy
+    // revision moves, so the page, the context bar and the star totals follow
+    // without a reload. The outline itself is cached, so this is a pure
+    // re-transform plus a cache rebuild.
+    _courseMissionsSub = client.onRoomState.stream
+        .where((u) => u.state.type == PangeaEventTypes.courseMissions)
+        .listen((u) => _reloadOnCourseMissionsChange(u.roomId));
+
     if (MatrixState.isPangeaControllerInitialized) {
       final user = MatrixState.pangeaController.userController;
       _displayLanguageSub = StreamGroup.merge([
@@ -94,6 +107,7 @@ class QuestObjectivesLoader {
   final JoinedObjectiveCache _objectiveCache = JoinedObjectiveCache();
   StreamSubscription? _starsSub;
   StreamSubscription? _displayLanguageSub;
+  StreamSubscription? _courseMissionsSub;
 
   /// The last [loadOutline] call, kept so a display-language change can re-run
   /// exactly the read that is now stale. Null until the first load.
@@ -114,6 +128,7 @@ class QuestObjectivesLoader {
   void dispose() {
     _starsSub?.cancel();
     _displayLanguageSub?.cancel();
+    _courseMissionsSub?.cancel();
     _questLoader.dispose();
     // _progression is shared across loaders — never disposed with one of them.
     _disposed = true;
@@ -223,11 +238,23 @@ class QuestObjectivesLoader {
         request.displayL1 == QuestRepo.displayL1) {
       return;
     }
-    loadOutline(
-      request.questId,
-      pinnedActivitiesByObjective: request.pinnedActivitiesByObjective,
-      courseRoomId: request.courseRoomId,
-    );
+    loadOutline(request.questId, courseRoomId: request.courseRoomId);
+  }
+
+  /// Re-read when [roomId] is this loader's course and its copy revision no
+  /// longer matches the one the shown outline was built with.
+  void _reloadOnCourseMissionsChange(String roomId) {
+    final request = _request;
+    if (_disposed ||
+        request == null ||
+        request.questId == null ||
+        request.courseRoomId != roomId) {
+      return;
+    }
+    final room = client.getRoomById(roomId);
+    if (room == null) return;
+    if (room.courseListRules.revision == request.copyRevision) return;
+    loadOutline(request.questId, courseRoomId: roomId);
   }
 
   void _updateQuest(AsyncState<QuestOutline> value, int loadGen) {
@@ -236,28 +263,29 @@ class QuestObjectivesLoader {
     }
   }
 
-  /// [pinnedActivitiesByObjective] is the course's per-Mission activity pin
-  /// (room.teacherMode) — passed by callers with a joined course room in hand;
-  /// null (previews, no room) means unrestricted, the fail-open default.
-  /// Applied as a pure copy so the shared quest-outline cache is untouched.
-  /// [courseRoomId] (same callers) lets the outline include the quest owner's
-  /// private activities — membership is verified server-side, so passing it
-  /// for a non-member is harmless.
-  Future<void> loadOutline(
-    String? questId, {
-    Map<String, List<String>>? pinnedActivitiesByObjective,
-    String? courseRoomId,
-  }) async {
+  /// [courseRoomId] is the joined course room, passed by callers that have
+  /// one: the outline is shown as that course shows it
+  /// ([QuestOutlineForCourse.forCourse] — its own copy, else today's
+  /// per-Mission pins), and it lets the read include the quest owner's
+  /// private activities (membership is verified server-side, so passing it
+  /// for a non-member is harmless). Null (previews) is the shared quest,
+  /// unrestricted. Applied as a pure copy so the shared quest-outline cache
+  /// is untouched.
+  Future<void> loadOutline(String? questId, {String? courseRoomId}) async {
     if (_disposed) return;
 
     _loadGeneration++;
     final loadGen = _loadGeneration;
     _courseId = courseRoomId ?? questId;
+    final rules = courseRoomId == null
+        ? CourseListRules.none
+        : client.getRoomById(courseRoomId)?.courseListRules ??
+              CourseListRules.none;
     _request = _OutlineRequest(
       questId: questId,
-      pinnedActivitiesByObjective: pinnedActivitiesByObjective,
       courseRoomId: courseRoomId,
       displayL1: QuestRepo.displayL1,
+      copyRevision: rules.revision,
     );
 
     // world_v2 → v3: the course space's coursePlan.uuid (or the previewed
@@ -276,9 +304,7 @@ class QuestObjectivesLoader {
       questId,
       courseRoomId: courseRoomId,
     );
-    final outline = outlineResult.result?.restrictedTo(
-      pinnedActivitiesByObjective,
-    );
+    final outline = outlineResult.result?.forRules(rules);
 
     if (_disposed) return;
 
@@ -309,13 +335,50 @@ class QuestObjectivesLoader {
 class _OutlineRequest {
   const _OutlineRequest({
     required this.questId,
-    required this.pinnedActivitiesByObjective,
     required this.courseRoomId,
     required this.displayL1,
+    required this.copyRevision,
   });
 
   final String? questId;
-  final Map<String, List<String>>? pinnedActivitiesByObjective;
   final String? courseRoomId;
   final String displayL1;
+
+  /// The course copy's revision the outline was built with (0 = no copy).
+  final int copyRevision;
+}
+
+/// [questId]'s outline as course [courseRoomId] shows it to its members, for
+/// snapshotting the course's own copy, waiting up to [cap]. Read through the
+/// course-scoped listing ([QuestRepo.outline] with [courseRoomId]), which also
+/// returns the quest owner's private activities to a joined member, so the
+/// copy lists exactly the activities the course page shows. Joins a read
+/// already in flight for the same course. Null on a failed read or the cap —
+/// the course then keeps no copy and reads the shared quest, as courses
+/// always did (the Studio's first publish saves one).
+Future<QuestOutline?> courseScopedOutline(
+  String questId,
+  String courseRoomId, {
+  Duration cap = const Duration(seconds: 5),
+}) async {
+  try {
+    final result = await QuestRepo.outline(
+      questId,
+      courseRoomId: courseRoomId,
+    ).timeout(cap);
+    return result.result;
+  } on TimeoutException {
+    return null;
+  } catch (e, s) {
+    // Any failed read is "no outline": the callers then keep the course
+    // reading the shared quest (and a plan replace still clears the old
+    // quest's copy) rather than stopping half way.
+    ErrorHandler.logError(
+      e: e,
+      s: s,
+      data: {'quest_id': questId, 'course_room_id': courseRoomId},
+      level: SentryLevel.warning,
+    );
+    return null;
+  }
 }

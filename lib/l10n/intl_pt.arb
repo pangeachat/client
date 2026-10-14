@@ -10925,5 +10925,6 @@
     "courseCodeJoinExplanation": "Faça login ou cadastre-se, e usaremos seu código de curso para adicioná-lo ao seu curso automaticamente.",
     "courseCodeLabel": "Código do curso",
     "courseCodeSaved": "Código do curso {code} salvo",
-    "courseCodeSavedExplanation": "Cadastre-se ou faça login e nós o adicionaremos ao seu curso."
+    "courseCodeSavedExplanation": "Cadastre-se ou faça login e nós o adicionaremos ao seu curso.",
+    "missionDueDate": "Vence em {date}, {time}"
 }

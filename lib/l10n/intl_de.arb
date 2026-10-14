@@ -9968,5 +9968,6 @@
     "courseCodeJoinExplanation": "Melden Sie sich an oder registrieren Sie sich, und wir verwenden Ihren Kurscode, um Sie automatisch zu Ihrem Kurs hinzuzufügen.",
     "courseCodeLabel": "Kurscode",
     "courseCodeSaved": "Kurscode {code} gespeichert",
-    "courseCodeSavedExplanation": "Registrieren Sie sich oder melden Sie sich an, und wir fügen Sie Ihrem Kurs hinzu."
+    "courseCodeSavedExplanation": "Registrieren Sie sich oder melden Sie sich an, und wir fügen Sie Ihrem Kurs hinzu.",
+    "missionDueDate": "Fällig am {date}, {time}"
 }

@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Mell dech un oder registréier dech, a mir benotzen däi Cours-Code fir dech automatesch zu dengem Cours dobäizesetzen.",
     "courseCodeLabel": "Cours-Code",
     "courseCodeSaved": "Cours-Code {code} gespäichert",
-    "courseCodeSavedExplanation": "Mell dech un oder registréier dech a mir setzen dech zu dengem Cours dobäi."
+    "courseCodeSavedExplanation": "Mell dech un oder registréier dech a mir setzen dech zu dengem Cours dobäi.",
+    "missionDueDate": "Fälleg {date}, {time}"
 }

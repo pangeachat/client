@@ -10926,5 +10926,6 @@
     "courseCodeJoinExplanation": "Prihláste sa alebo sa zaregistrujte a my použijeme váš kód kurzu na automatické pridanie do kurzu.",
     "courseCodeLabel": "Kód kurzu",
     "courseCodeSaved": "Kód kurzu {code} uložený",
-    "courseCodeSavedExplanation": "Zaregistrujte sa alebo sa prihláste a my vás pridáme do vášho kurzu."
+    "courseCodeSavedExplanation": "Zaregistrujte sa alebo sa prihláste a my vás pridáme do vášho kurzu.",
+    "missionDueDate": "Termín: {date}, {time}"
 }

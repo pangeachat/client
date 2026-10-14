@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Pinda kana kusaina, uye tichashandisa kodhi yekosi yako kuti tikuwedzere kukosi yako otomatiki.",
     "courseCodeLabel": "Kodhi yekosi",
     "courseCodeSaved": "Kodhi yekosi {code} yachengetwa",
-    "courseCodeSavedExplanation": "Saina kana kupinda uye tichakuwedzera kukosi yako."
+    "courseCodeSavedExplanation": "Saina kana kupinda uye tichakuwedzera kukosi yako.",
+    "missionDueDate": "Inofanira kunge yapera pana {date}, {time}"
 }

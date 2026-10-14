@@ -10038,5 +10038,6 @@
     "courseCodeJoinExplanation": "Logg inn eller registrer deg, så bruker vi kurskoden din til å legge deg til kurset automatisk.",
     "courseCodeLabel": "Kurskode",
     "courseCodeSaved": "Kurskode {code} lagret",
-    "courseCodeSavedExplanation": "Registrer deg eller logg inn, så legger vi deg til kurset ditt."
+    "courseCodeSavedExplanation": "Registrer deg eller logg inn, så legger vi deg til kurset ditt.",
+    "missionDueDate": "Frist {date}, {time}"
 }
