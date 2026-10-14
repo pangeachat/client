@@ -88,12 +88,15 @@ void main() {
     double width, {
     required bool isUpNext,
     MissionProgress? progress,
+    MissionPacing? pacing,
   }) async {
     tester.view.physicalSize = Size(width, 900);
     tester.view.devicePixelRatio = 1.0;
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
-    await tester.pumpWidget(wrap(isUpNext: isUpNext, progress: progress));
+    await tester.pumpWidget(
+      wrap(isUpNext: isUpNext, progress: progress, pacing: pacing),
+    );
     await tester.pumpAndSettle();
   }
 
@@ -220,20 +223,34 @@ void main() {
     });
   });
 
-  // The course's own note and soft due date (content-studio): under the
-  // title, in the course's time zone, and nothing changes after the date.
+  // The course's own note and soft due date (content-studio): the date as a
+  // chip in the header, the note under the title, in the course's time zone,
+  // and nothing changes after the date. The chip's text shares a line with its
+  // icon, so it is found by containment.
   group('Mission note and due date', () {
     final year = DateTime.now().year;
     // 21:00 UTC on Oct 20 is 5:00 PM in New York (EDT) and 6:00 AM on Oct 21
     // in Tokyo — two zones that cannot both match the device's.
     final dueAt = DateTime.utc(year, 10, 20, 21);
+    const dueLabel = 'Due Oct 20, 5:00 PM';
 
-    Future<void> pumpPacing(WidgetTester tester, MissionPacing pacing) async {
-      await tester.pumpWidget(wrap(isUpNext: false, pacing: pacing));
+    Future<void> pumpPacing(
+      WidgetTester tester,
+      MissionPacing pacing, {
+      bool collapsed = false,
+    }) async {
+      await tester.pumpWidget(
+        wrap(isUpNext: false, pacing: pacing, collapsed: collapsed),
+      );
       await tester.pumpAndSettle();
     }
 
-    testWidgets('shows the note and the due line in the course zone', (
+    /// The tappable Mission header: the nearest ink around the statement.
+    Finder header() => find
+        .ancestor(of: find.text(objectiveText), matching: find.byType(InkWell))
+        .first;
+
+    testWidgets('shows the note and the due date in the course zone', (
       tester,
     ) async {
       await pumpPacing(
@@ -245,7 +262,61 @@ void main() {
         ),
       );
       expect(find.text('Lesson 6'), findsOneWidget);
-      expect(find.text('Due Oct 20, 5:00 PM'), findsOneWidget);
+      expect(find.textContaining(dueLabel), findsOneWidget);
+    });
+
+    // The phone header is the narrow case: star, Up-next label, chip and
+    // chevron share one row, so the chip has to give way rather than overflow.
+    for (final width in [1200.0, 400.0]) {
+      testWidgets('the due date sits in the header at width $width', (
+        tester,
+      ) async {
+        await pumpAt(
+          tester,
+          width,
+          isUpNext: true,
+          progress: const MissionProgress(stars: 0, threshold: 4),
+          pacing: MissionPacing(dueAt: dueAt, timeZone: 'America/New_York'),
+        );
+        expect(
+          find.descendant(
+            of: header(),
+            matching: find.textContaining(dueLabel),
+          ),
+          findsOneWidget,
+        );
+        expect(find.text(upNextLabel), findsOneWidget);
+      });
+    }
+
+    testWidgets('a folded Mission keeps its due date and hides its note', (
+      tester,
+    ) async {
+      await pumpPacing(
+        tester,
+        MissionPacing(
+          note: 'Lesson 6',
+          dueAt: dueAt,
+          timeZone: 'America/New_York',
+        ),
+        collapsed: true,
+      );
+      expect(find.textContaining(dueLabel), findsOneWidget);
+      expect(find.text('Lesson 6'), findsNothing);
+    });
+
+    testWidgets('a long note is clamped behind Show more', (tester) async {
+      await pumpAt(
+        tester,
+        400,
+        isUpNext: false,
+        pacing: MissionPacing(note: List.filled(20, 'Lesson six.').join(' ')),
+      );
+      expect(find.text('Show more'), findsOneWidget);
+
+      await tester.tap(find.text('Show more'));
+      await tester.pumpAndSettle();
+      expect(find.text('Show less'), findsOneWidget);
     });
 
     testWidgets('a different course zone shows a different wall time', (
@@ -255,14 +326,14 @@ void main() {
         tester,
         MissionPacing(dueAt: dueAt, timeZone: 'Asia/Tokyo'),
       );
-      expect(find.text('Due Oct 21, 6:00 AM'), findsOneWidget);
+      expect(find.textContaining('Due Oct 21, 6:00 AM'), findsOneWidget);
     });
 
     testWidgets('no course zone shows the device local time', (tester) async {
       await pumpPacing(tester, MissionPacing(dueAt: dueAt));
       final local = dueAt.toLocal();
       expect(
-        find.text(
+        find.textContaining(
           'Due ${DateFormat.MMMd('en').format(local)}, '
           '${DateFormat('h:mm a', 'en').format(local)}',
         ),
@@ -280,7 +351,7 @@ void main() {
           timeZone: 'America/New_York',
         ),
       );
-      expect(find.text('Due Jan 2, 4:00 PM'), findsOneWidget);
+      expect(find.textContaining('Due Jan 2, 4:00 PM'), findsOneWidget);
       expect(find.text('Old Town Directions'), findsOneWidget);
     });
 

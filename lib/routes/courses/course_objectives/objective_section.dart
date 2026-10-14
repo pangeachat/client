@@ -8,6 +8,7 @@ import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
+import 'package:fluffychat/widgets/expandable_text.dart';
 
 /// One Mission of the full course plan: its can-do statement and star count
 /// above the row of activities that satisfy it. The row itself is the shared
@@ -155,27 +156,60 @@ class ObjectiveSection extends StatelessWidget {
             ),
           )
         : null;
-    // The course's own note and soft due date (content-studio), under the
-    // title. The date stays after it passes; nothing is blocked or marked.
+    // The course's own soft due date (content-studio) as a chip in the header,
+    // so it reads at a glance down the plan and stays when the Mission is
+    // folded. The date stays after it passes; nothing is blocked or marked.
+    // Text.rich rather than a Row: it sizes to its text in the wide header and
+    // ellipsizes in the phone header's bounded slot.
     final pacing = group.pacing;
-    final pacingStyle = theme.textTheme.bodySmall?.copyWith(
-      color: theme.colorScheme.onSurfaceVariant,
-    );
-    final pacingLines = pacing == null
+    final dueAt = pacing?.dueAt;
+    final dueChip = dueAt == null
+        ? null
+        : Container(
+            padding: const EdgeInsetsDirectional.fromSTEB(6.0, 2.0, 8.0, 2.0),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.surfaceContainerHigh,
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Text.rich(
+              TextSpan(
+                children: [
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    child: Padding(
+                      padding: const EdgeInsetsDirectional.only(end: 4.0),
+                      child: Icon(
+                        Icons.event,
+                        size: 14.0,
+                        color: theme.colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ),
+                  TextSpan(
+                    text: missionDueLabel(context, dueAt, pacing?.timeZone),
+                  ),
+                ],
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: theme.textTheme.labelMedium?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+          );
+    // The teacher's note under the title, clamped so a long one doesn't push
+    // the activities down; folded away with them.
+    final note = pacing?.note;
+    final noteText = collapsed || note == null || note.isEmpty
         ? null
         : Padding(
             padding: const EdgeInsets.only(top: 4.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (pacing.note case final note? when note.isNotEmpty)
-                  Text(note, style: pacingStyle),
-                if (pacing.dueAt case final dueAt?)
-                  Text(
-                    missionDueLabel(context, dueAt, pacing.timeZone),
-                    style: pacingStyle,
-                  ),
-              ],
+            child: ExpandableText(
+              note,
+              maxLines: FluffyThemes.isColumnMode(context) ? 2 : 3,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
             ),
           );
     final collapseChevron = _collapsible
@@ -206,8 +240,8 @@ class ObjectiveSection extends StatelessWidget {
         children: [
           // Objective header, left to right: the Mission's earned/threshold
           // stars when the shared rollup is in, the Up-next label when this is
-          // the anchor, the can-do statement, then the collapse chevron (full
-          // plan only).
+          // the anchor, the can-do statement, the due-date chip when the
+          // course set one, then the collapse chevron (full plan only).
           Semantics(
             // Without an explicit button container the toggle flattens into
             // the section's group semantics and is unreachable on web, where
@@ -234,6 +268,10 @@ class ObjectiveSection extends StatelessWidget {
                           const SizedBox(width: 8.0),
                         ],
                         Expanded(child: statement),
+                        if (dueChip != null) ...[
+                          const SizedBox(width: 8.0),
+                          dueChip,
+                        ],
                         if (collapseChevron != null) ...[
                           const SizedBox(width: 4.0),
                           collapseChevron,
@@ -245,7 +283,8 @@ class ObjectiveSection extends StatelessWidget {
                       children: [
                         if (collapseChevron != null ||
                             starFraction != null ||
-                            upNextLabel != null)
+                            upNextLabel != null ||
+                            dueChip != null)
                           Padding(
                             padding: const EdgeInsets.only(bottom: 4.0),
                             child: Row(
@@ -256,7 +295,24 @@ class ObjectiveSection extends StatelessWidget {
                                     const SizedBox(width: 8.0),
                                   upNextLabel,
                                 ],
-                                const Spacer(),
+                                // The chip takes the free space up to the
+                                // chevron and ellipsizes on a narrow phone.
+                                if (dueChip != null)
+                                  Expanded(
+                                    child: Align(
+                                      alignment: AlignmentDirectional.centerEnd,
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsetsDirectional.only(
+                                              start: 8.0,
+                                              end: 4.0,
+                                            ),
+                                        child: dueChip,
+                                      ),
+                                    ),
+                                  )
+                                else
+                                  const Spacer(),
                                 ?collapseChevron,
                               ],
                             ),
@@ -266,7 +322,7 @@ class ObjectiveSection extends StatelessWidget {
                     ),
             ),
           ),
-          ?pacingLines,
+          ?noteText,
           // No per-Mission progress bar — only the overall course has a bar (in
           // the header). A Mission shows just its star count above (#7597).
           if (!collapsed) const SizedBox(height: 12.0),
