@@ -88,6 +88,13 @@ class SpeechToTextRequestModel extends BaseRequest {
   /// slot (see [storageKey]): the two responses differ in shape.
   final bool includeWordTimings;
 
+  /// When true, the transcript may come back in the speaker's L1 as well as
+  /// their L2 -- set only by the call transcript paths, where a learner speaks
+  /// both (#3351). Voice messages leave it false and stay pinned to the L2.
+  /// Like [includeWordTimings] it is omitted when false and is part of
+  /// [storageKey]: the two answers can differ for the same audio.
+  final bool allowSpeakerL1;
+
   SpeechToTextRequestModel({
     required this.audioContent,
     required this.config,
@@ -95,6 +102,7 @@ class SpeechToTextRequestModel extends BaseRequest {
     this.mock,
     this.skipTokenize = false,
     this.includeWordTimings = false,
+    this.allowSpeakerL1 = false,
   });
 
   /// A full sha256 digest of the audio content. The R0 key sampled only the
@@ -108,7 +116,7 @@ class SpeechToTextRequestModel extends BaseRequest {
   @override
   String get storageKey =>
       '$_audioDigest|${jsonEncode(config.toJson())}'
-      '|$skipTokenize|$includeWordTimings';
+      '|$skipTokenize|$includeWordTimings|$allowSpeakerL1';
 
   @override
   Map<String, dynamic> toJson() => {
@@ -123,6 +131,7 @@ class SpeechToTextRequestModel extends BaseRequest {
     // false. Still part of storageKey/==/hashCode so the cache never mixes
     // a with-timings response into a without-timings slot.
     if (includeWordTimings) "include_word_timings": true,
+    if (allowSpeakerL1) "allow_speaker_l1": true,
     if (mock != null) ModelKey.mock: mock,
   };
 
@@ -134,7 +143,8 @@ class SpeechToTextRequestModel extends BaseRequest {
     return listEquals(audioContent, other.audioContent) &&
         config == other.config &&
         skipTokenize == other.skipTokenize &&
-        includeWordTimings == other.includeWordTimings;
+        includeWordTimings == other.includeWordTimings &&
+        allowSpeakerL1 == other.allowSpeakerL1;
   }
 
   @override
@@ -143,6 +153,7 @@ class SpeechToTextRequestModel extends BaseRequest {
     config.hashCode,
     skipTokenize,
     includeWordTimings,
+    allowSpeakerL1,
   );
 }
 

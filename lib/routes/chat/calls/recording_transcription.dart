@@ -84,6 +84,9 @@ Future<List<TranscriptSegment>> transcribeRecordingPcm(
             channels: channels,
           ),
           includeWordTimings: true,
+          // Both the own half and a peer's half: the speaker's L1 comes back
+          // in L1 rather than translated into the L2 (#3351).
+          allowSpeakerL1: true,
           config: SpeechToTextAudioConfigModel(
             encoding: AudioEncodingEnum.linear16,
             sampleRateHertz: sttRate,
