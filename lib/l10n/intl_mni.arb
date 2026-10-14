@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-13 13:03:46.101261",
+    "@@last_modified": "2026-10-14 10:27:48.435878",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "নবীন কোর্স চ্যাট",
     "customCourseStepDesc": "কোর্স অসি কনভার্সেশন এক্টিভিটিশিংগী সেত অমনি, মদুনা নহাক্কী টেক্সটবুক অদু ফলো তৌই, নহাক্কী মহৈরোইশিংনা হোমৱার্ক ওইনা অমগা অমগা লোইননা তৌনবা।",
     "reopenAppToFinishSwitching": "সুইচিং লোড তৌবা লোইশিনবগীদমক এপ্প অদু মুক্ন থিংশিনবগা লোইননা অমুক হাংগদবনি।",
-    "teamCode": "টিম কোড"
+    "teamCode": "টিম কোড",
+    "missionDueDate": "{date}, {time} da loisin'ganu"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-13 13:03:48.314643",
+    "@@last_modified": "2026-10-14 10:27:50.409310",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "نئون ڪورس چيٽ",
     "customCourseStepDesc": "هڪ ڪورس ڳالهين جي سرگرمين جو هڪ مجموعو آهي جيڪو توهان جي درسي ڪتاب جي پيروي ڪري ٿو، توهان جي شاگردن لاءِ گڏجي گهر جو ڪم ڪرڻ لاءِ.",
     "reopenAppToFinishSwitching": "مڪمل طور تي ايپ بند ڪريو ۽ سوئچنگ ختم ڪرڻ لاءِ ان کي ٻيهر کوليو.",
-    "teamCode": "ٽيم ڪوڊ"
+    "teamCode": "ٽيم ڪوڊ",
+    "missionDueDate": "{date} تي، {time} تي"
 }

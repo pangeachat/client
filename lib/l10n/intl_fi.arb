@@ -3532,7 +3532,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-13 13:03:41.440115",
+    "@@last_modified": "2026-10-14 10:27:43.334306",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10017,5 +10017,6 @@
     "newCourseChat": "Uusi kurssikeskustelu",
     "customCourseStepDesc": "Kurssi on joukko keskusteluharjoituksia, jotka seuraavat oppikirjaasi, ja jotka opiskelijasi tekevät yhdessä kotitehtävänä.",
     "reopenAppToFinishSwitching": "Sulje sovellus kokonaan ja avaa se uudelleen vaihdon viimeistelemiseksi.",
-    "teamCode": "Tiimikoodi"
+    "teamCode": "Tiimikoodi",
+    "missionDueDate": "Erääntyy {date} klo {time}"
 }

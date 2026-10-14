@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:47.867202",
+    "@@last_modified": "2026-10-14 10:27:50.205445",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10924,5 +10924,6 @@
     "newCourseChat": "Novo chat do curso",
     "customCourseStepDesc": "Um curso é um conjunto de atividades de conversação que seguem seu livro didático, para seus alunos fazerem juntos como lição de casa.",
     "reopenAppToFinishSwitching": "Feche o aplicativo completamente e abra-o novamente para finalizar a troca.",
-    "teamCode": "Código da equipe"
+    "teamCode": "Código da equipe",
+    "missionDueDate": "Vence em {date}, {time}"
 }

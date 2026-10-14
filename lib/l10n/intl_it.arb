@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:43.792114",
+    "@@last_modified": "2026-10-14 10:27:46.358471",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10053,5 +10053,6 @@
     "newCourseChat": "Nuova chat del corso",
     "customCourseStepDesc": "Un corso è un insieme di attività di conversazione che seguono il tuo libro di testo, che i tuoi studenti possono svolgere insieme come compito a casa.",
     "reopenAppToFinishSwitching": "Chiudi completamente l'app e riaprila per completare il cambio.",
-    "teamCode": "Codice team"
+    "teamCode": "Codice team",
+    "missionDueDate": "Scadenza {date}, {time}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-13 13:03:40.135565",
+    "@@last_modified": "2026-10-14 10:27:41.579124",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Nuwe kursusklets",
     "customCourseStepDesc": "’n Kursus is ’n stel gespreksaktiwiteite wat jou handboek volg, vir jou studente om saam as huiswerk te doen.",
     "reopenAppToFinishSwitching": "Maak die toepassing heeltemal toe en maak dit weer oop om die oorskakeling te voltooi.",
-    "teamCode": "Spankode"
+    "teamCode": "Spankode",
+    "missionDueDate": "Verval {date}, {time}"
 }

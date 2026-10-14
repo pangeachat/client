@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-13 13:03:40.564966",
+    "@@last_modified": "2026-10-14 10:27:42.115067",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Nova cunversazione di corsu",
     "customCourseStepDesc": "Un corsu hè un inseme d'attività di cunversazione chì seguitanu u vostru libru di testu, per i vostri studienti à fà inseme cum'è duveri.",
     "reopenAppToFinishSwitching": "Chiudite l'app cumpletamente è riapritela per finisce u cambiamentu.",
-    "teamCode": "Codice di a squadra"
+    "teamCode": "Codice di a squadra",
+    "missionDueDate": "Da rende u {date}, à {time}"
 }

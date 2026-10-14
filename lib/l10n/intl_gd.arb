@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-13 13:03:41.976027",
+    "@@last_modified": "2026-10-14 10:27:44.178610",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Còmhradh cùrsa ùr",
     "customCourseStepDesc": "’S e seata de ghnìomhachdan còmhraidh a th’ ann an cùrsa a leanas an leabhar-teacsa agad, airson gum bi na h-oileanaich agad ga dhèanamh còmhla mar obair-dachaigh.",
     "reopenAppToFinishSwitching": "Dùin an aplacaid gu tur agus fosgail a-rithist i gus crìoch a chur air an atharrachadh.",
-    "teamCode": "Còd sgioba"
+    "teamCode": "Còd sgioba",
+    "missionDueDate": "Ri phàigheadh {date}, {time}"
 }

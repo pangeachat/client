@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-13 13:03:48.962747",
+    "@@last_modified": "2026-10-14 10:27:51.312401",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Bisedë e re kursi",
     "customCourseStepDesc": "Një kurs është një grup aktivitetesh bisede që ndjekin tekstin tuaj shkollor, që studentët tuaj të bëjnë së bashku si detyrë shtëpie.",
     "reopenAppToFinishSwitching": "Mbylleni plotësisht aplikacionin dhe hapeni sërish për të përfunduar ndërrimin.",
-    "teamCode": "Kodi i ekipit"
+    "teamCode": "Kodi i ekipit",
+    "missionDueDate": "Afati {date}, {time}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-13 13:03:43.923768",
+    "@@last_modified": "2026-10-14 10:27:46.186600",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10749,5 +10749,6 @@
     "newCourseChat": "新しいコースチャット",
     "customCourseStepDesc": "コースとは、教科書に沿った会話アクティビティのセットで、生徒が宿題として一緒に取り組むものです。",
     "reopenAppToFinishSwitching": "切り替えを完了するには、アプリを完全に閉じてからもう一度開いてください。",
-    "teamCode": "チームコード"
+    "teamCode": "チームコード",
+    "missionDueDate": "{date} {time} 期限"
 }

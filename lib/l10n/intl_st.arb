@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-13 13:03:49.843070",
+    "@@last_modified": "2026-10-14 10:27:51.807279",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Puisano e ncha ea thuto",
     "customCourseStepDesc": "Thupelo ke letoto la mesebetsi ea moqoqo e latelang buka ea hau, bakeng sa baithuti ba hau ho e etsa hammoho e le mosebetsi oa sekolo.",
     "reopenAppToFinishSwitching": "Koala app ka ho feletseng ebe o e bula hape ho qetela ho fetohela.",
-    "teamCode": "Khoutu ea sehlopha"
+    "teamCode": "Khoutu ea sehlopha",
+    "missionDueDate": "E lokela ho etsoa ka {date}, {time}"
 }

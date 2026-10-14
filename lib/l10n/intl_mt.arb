@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-13 13:03:46.338317",
+    "@@last_modified": "2026-10-14 10:27:48.706019",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Chat ġdid tal-kors",
     "customCourseStepDesc": "Kors huwa sett ta' attivitajiet ta' konverżazzjoni li jsegwu l-ktieb tiegħek, biex l-istudenti tiegħek jagħmluhom flimkien bħala xogħol tad-dar.",
     "reopenAppToFinishSwitching": "Agħlaq l-app kompletament u erġa' iftaħha biex tispiċċa taqleb.",
-    "teamCode": "Kodiċi tat-tim"
+    "teamCode": "Kodiċi tat-tim",
+    "missionDueDate": "Skadenza {date}, {time}"
 }

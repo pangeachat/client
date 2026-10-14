@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-13 13:03:41.642359",
+    "@@last_modified": "2026-10-14 10:27:43.454240",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9980,5 +9980,6 @@
     "newCourseChat": "Ikastaro-txat berria",
     "customCourseStepDesc": "Ikastaro bat elkarrizketa-jardueren multzo bat da, zure testuliburua jarraitzen duena, zure ikasleek elkarrekin etxeko lan gisa egiteko.",
     "reopenAppToFinishSwitching": "Itxi aplikazioa erabat eta ireki berriro aldatzen amaitzeko.",
-    "teamCode": "Talde-kodea"
+    "teamCode": "Talde-kodea",
+    "missionDueDate": "{date}, {time}rako"
 }

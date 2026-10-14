@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-13 13:03:50.416110",
+    "@@last_modified": "2026-10-14 10:27:53.198468",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9984,5 +9984,6 @@
     "newCourseChat": "Yangi kurs chati",
     "customCourseStepDesc": "Kurs — bu darsligingizga mos keladigan suhbat mashg‘ulotlari to‘plami bo‘lib, talabalaringiz uy vazifasi sifatida birgalikda bajarishlari uchun mo‘ljallangan.",
     "reopenAppToFinishSwitching": "Oʻzgartirishni yakunlash uchun ilovani toʻliq yoping va qayta oching.",
-    "teamCode": "Jamoa kodi"
+    "teamCode": "Jamoa kodi",
+    "missionDueDate": "{date}, {time} da tugaydi"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-13 13:03:43.127513",
+    "@@last_modified": "2026-10-14 10:27:45.595068",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10083,5 +10083,6 @@
     "newCourseChat": "Új tanfolyami csevegés",
     "customCourseStepDesc": "A kurzus beszélgetési tevékenységek gyűjteménye, amelyek a tankönyvedet követik, és amelyeket a diákjaid együtt végezhetnek el házi feladatként.",
     "reopenAppToFinishSwitching": "A váltás befejezéséhez zárd be teljesen az alkalmazást, majd nyisd meg újra.",
-    "teamCode": "Csapatkód"
+    "teamCode": "Csapatkód",
+    "missionDueDate": "Esedékes: {date}, {time}"
 }

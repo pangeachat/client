@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-13 13:03:45.692386",
+    "@@last_modified": "2026-10-14 10:27:48.188231",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Chat vaovao momba ny taranja",
     "customCourseStepDesc": "Ny taranja dia andiana asa fifampiresahana manaraka ny boky fianaranao, ho an'ny mpianatrao hatao miaraka ho enti-mody.",
     "reopenAppToFinishSwitching": "Akatona tanteraka ny fampiharana ary sokafy indray mba hamita ny fanovana.",
-    "teamCode": "Kaody ekipa"
+    "teamCode": "Kaody ekipa",
+    "missionDueDate": "Tokony ho vita amin'ny {date}, {time}"
 }

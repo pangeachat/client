@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:47.942545",
+    "@@last_modified": "2026-10-14 10:27:50.371471",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10712,5 +10712,6 @@
     "newCourseChat": "Chat nou de curs",
     "customCourseStepDesc": "Un curs este un set de activități de conversație care urmează manualul tău, pentru ca studenții tăi să le facă împreună ca temă.",
     "reopenAppToFinishSwitching": "Închide aplicația complet și redeschide-o pentru a finaliza schimbarea.",
-    "teamCode": "Codul echipei"
+    "teamCode": "Codul echipei",
+    "missionDueDate": "Scadența: {date}, {time}"
 }

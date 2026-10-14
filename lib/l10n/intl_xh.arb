@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-13 13:03:50.778714",
+    "@@last_modified": "2026-10-14 10:27:53.951138",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Incoko entsha yekhosi",
     "customCourseStepDesc": "Ikhosi yingqokelela yemisebenzi yencoko elandela incwadi yakho, ukuze abafundi bakho bayenze kunye njengomsebenzi wesikolo wasekhaya.",
     "reopenAppToFinishSwitching": "Vala ngokupheleleyo i-app uze uyivule kwakhona ukuze ugqibezele ukutshintsha.",
-    "teamCode": "Ikhowudi yeqela"
+    "teamCode": "Ikhowudi yeqela",
+    "missionDueDate": "Ifuneka ngo-{date}, {time}"
 }

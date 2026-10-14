@@ -3531,7 +3531,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-10-13 13:03:45.389562",
+    "@@last_modified": "2026-10-14 10:27:53.431612",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9980,5 +9980,6 @@
     "newCourseChat": "Jauna kursa tērzēšana",
     "customCourseStepDesc": "Kurss ir sarunu aktivitāšu kopums, kas seko jūsu mācību grāmatai, lai jūsu studenti to darītu kopā kā mājasdarbu.",
     "reopenAppToFinishSwitching": "Pilnībā aizveriet lietotni un atveriet to vēlreiz, lai pabeigtu pārslēgšanos.",
-    "teamCode": "Komandas kods"
+    "teamCode": "Komandas kods",
+    "missionDueDate": "Izpildes termiņš: {date}, {time}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-13 13:03:40.596131",
+    "@@last_modified": "2026-10-14 10:27:42.698310",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9967,5 +9967,6 @@
     "newCourseChat": "Neuer Kurs-Chat",
     "customCourseStepDesc": "Ein Kurs ist eine Reihe von Konversationsaktivitäten, die Ihrem Lehrbuch folgen und die Ihre Schüler als Hausaufgaben gemeinsam bearbeiten können.",
     "reopenAppToFinishSwitching": "Schließe die App vollständig und öffne sie erneut, um den Wechsel abzuschließen.",
-    "teamCode": "Teamcode"
+    "teamCode": "Teamcode",
+    "missionDueDate": "Fällig am {date}, {time}"
 }

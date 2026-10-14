@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-13 13:03:43.790979",
+    "@@last_modified": "2026-10-14 10:27:45.698534",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Nkata ọmụmụ ihe ọhụrụ",
     "customCourseStepDesc": "Usoro ọmụmụ bụ usoro ihe omume mkparịta ụka na-eso akwụkwọ gị, maka ụmụ akwụkwọ gị ka ha na-eme ọnụ dị ka ihe omume ụlọ.",
     "reopenAppToFinishSwitching": "Mechie ngwa ahụ kpamkpam wee mepee ya ọzọ ka ịmechaa mgbanwe.",
-    "teamCode": "Koodu otu"
+    "teamCode": "Koodu otu",
+    "missionDueDate": "Oge ruru {date}, {time}"
 }

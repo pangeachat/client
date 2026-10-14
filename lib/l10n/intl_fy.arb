@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-13 13:03:41.977908",
+    "@@last_modified": "2026-10-14 10:27:43.730096",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Nije kursuschats",
     "customCourseStepDesc": "In kursus is in set petearaktiviteiten dy't jo learboek folgje, foar jo studinten om tegearre as húswurk te dwaan.",
     "reopenAppToFinishSwitching": "Slút de app folslein en iepenje him opnij om it wikseljen te foltôgjen.",
-    "teamCode": "Teamkoade"
+    "teamCode": "Teamkoade",
+    "missionDueDate": "Ferfaldatum {date}, {time}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-13 13:03:41.047737",
+    "@@last_modified": "2026-10-14 10:27:42.842897",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8209,5 +8209,6 @@
     "newCourseChat": "Nuevo chat del curso",
     "customCourseStepDesc": "Un curso es un conjunto de actividades de conversación que siguen tu libro de texto, para que tus estudiantes las hagan juntos como tarea.",
     "reopenAppToFinishSwitching": "Cierra la aplicación por completo y vuelve a abrirla para terminar de cambiar.",
-    "teamCode": "Código de equipo"
+    "teamCode": "Código de equipo",
+    "missionDueDate": "Vence el {date} a las {time}"
 }

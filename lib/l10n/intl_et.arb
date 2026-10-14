@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-13 13:03:41.211831",
+    "@@last_modified": "2026-10-14 10:27:42.984692",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9977,5 +9977,6 @@
     "newCourseChat": "Uus kursusevestlus",
     "customCourseStepDesc": "Kursus on vestlustegevuste kogum, mis järgib teie õpikut ja mida teie õpilased saavad kodutööna koos teha.",
     "reopenAppToFinishSwitching": "Sulgege rakendus täielikult ja avage see uuesti, et vahetus lõpule viia.",
-    "teamCode": "Meeskonna kood"
+    "teamCode": "Meeskonna kood",
+    "missionDueDate": "Tähtaeg {date}, {time}"
 }

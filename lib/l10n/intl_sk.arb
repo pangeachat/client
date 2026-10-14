@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-13 13:03:48.432179",
+    "@@last_modified": "2026-10-14 10:27:50.745321",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10925,5 +10925,6 @@
     "newCourseChat": "Nový chat kurzu",
     "customCourseStepDesc": "Kurz je súbor konverzačných aktivít, ktoré nasledujú vašu učebnicu, aby ich vaši študenti robili spoločne ako domácu úlohu.",
     "reopenAppToFinishSwitching": "Úplne zatvorte aplikáciu a znova ju otvorte, aby ste dokončili prepínanie.",
-    "teamCode": "Kód tímu"
+    "teamCode": "Kód tímu",
+    "missionDueDate": "Termín: {date}, {time}"
 }

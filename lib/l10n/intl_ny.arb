@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-13 13:03:47.157163",
+    "@@last_modified": "2026-10-14 10:27:49.520367",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Macheza atsopano a maphunziro",
     "customCourseStepDesc": "Maphunziro ndi mndandanda wa zokambirana zomwe zimatsatira buku lanu, kuti ophunzira anu azichita limodzi ngati ntchito yakunyumba.",
     "reopenAppToFinishSwitching": "Tsekani pulogalamuyi kwathunthu ndikuyitsegulanso kuti mumalize kusintha.",
-    "teamCode": "Nambala ya gulu"
+    "teamCode": "Nambala ya gulu",
+    "missionDueDate": "Chifukwa {date}, {time}"
 }

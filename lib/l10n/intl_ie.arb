@@ -3089,7 +3089,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-13 13:03:44.748206",
+    "@@last_modified": "2026-10-14 10:27:45.688665",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10612,5 +10612,6 @@
     "newCourseChat": "Comhrá cúrsa nua",
     "customCourseStepDesc": "Is sraith gníomhaíochtaí comhrá é cúrsa a leanann do théacsleabhar, le déanamh ag do mhic léinn le chéile mar obair bhaile.",
     "reopenAppToFinishSwitching": "Dún an aip go hiomlán agus oscail arís í chun an t-athrú a chríochnú.",
-    "teamCode": "Cód foirne"
+    "teamCode": "Cód foirne",
+    "missionDueDate": "Le {date}, {time}"
 }

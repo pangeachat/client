@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-13 13:03:39.392804",
+    "@@last_modified": "2026-10-14 10:27:40.986740",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Novi chat kursa",
     "customCourseStepDesc": "Kurs je skup konverzacijskih aktivnosti koje prate vaš udžbenik, a koje vaši učenici rade zajedno kao domaći zadatak.",
     "reopenAppToFinishSwitching": "Potpuno zatvorite aplikaciju i ponovo je otvorite da biste završili prebacivanje.",
-    "teamCode": "Kod tima"
+    "teamCode": "Kod tima",
+    "missionDueDate": "Rok: {date}, {time}"
 }

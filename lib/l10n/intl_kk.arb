@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-13 13:03:44.256706",
+    "@@last_modified": "2026-10-14 10:27:46.617511",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Жаңа курс чаты",
     "customCourseStepDesc": "Курс — бұл оқушыларыңыздың үй тапсырмасы ретінде бірге орындауы үшін оқулығыңызға сәйкес келетін сөйлесу әрекеттерінің жиынтығы.",
     "reopenAppToFinishSwitching": "Ауыстыруды аяқтау үшін қолданбаны толығымен жауып, қайта ашыңыз.",
-    "teamCode": "Топ коды"
+    "teamCode": "Топ коды",
+    "missionDueDate": "{date}, {time} мерзімі"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:43.310498",
+    "@@last_modified": "2026-10-14 10:27:45.888812",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10053,5 +10053,6 @@
     "newCourseChat": "Obrolan kursus baru",
     "customCourseStepDesc": "Kursus adalah serangkaian aktivitas percakapan yang mengikuti buku teks Anda, untuk dikerjakan siswa Anda bersama sebagai pekerjaan rumah.",
     "reopenAppToFinishSwitching": "Tutup aplikasi sepenuhnya dan buka lagi untuk menyelesaikan peralihan.",
-    "teamCode": "Kode tim"
+    "teamCode": "Kode tim",
+    "missionDueDate": "Jatuh tempo {date}, {time}"
 }

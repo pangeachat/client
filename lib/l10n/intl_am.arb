@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-13 13:03:39.665324",
+    "@@last_modified": "2026-10-14 10:27:41.245328",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "አዲስ የኮርስ ውይይት",
     "customCourseStepDesc": "ኮርስ ማለት ተማሪዎችዎ እንደ የቤት ስራ አብረው እንዲሰሩት የመማሪያ መጽሐፍዎን የሚከተሉ የውይይት እንቅስቃሴዎች ስብስብ ነው።",
     "reopenAppToFinishSwitching": "መቀየር ለመጨረስ መተግበሪያውን ሙሉ በሙሉ ዘግተው እንደገና ይክፈቱት።",
-    "teamCode": "የቡድን ኮድ"
+    "teamCode": "የቡድን ኮድ",
+    "missionDueDate": "የሚጠናቀቅበት ቀን {date}, {time}"
 }

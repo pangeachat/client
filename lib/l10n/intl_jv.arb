@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-13 13:03:43.876695",
+    "@@last_modified": "2026-10-14 10:27:46.531289",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Obrolan kursus anyar",
     "customCourseStepDesc": "Kursus yaiku sakumpulan aktivitas pacelathon sing ngetutake buku teks sampeyan, kanggo siswa sampeyan supaya bisa nindakake bebarengan minangka PR.",
     "reopenAppToFinishSwitching": "Tutup aplikasi kanthi lengkap banjur bukak maneh kanggo ngrampungake ganti.",
-    "teamCode": "Kode tim"
+    "teamCode": "Kode tim",
+    "missionDueDate": "Kudu rampung {date}, {time}"
 }

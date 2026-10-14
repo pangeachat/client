@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:49.346743",
+    "@@last_modified": "2026-10-14 10:27:52.594419",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10498,5 +10498,6 @@
     "newCourseChat": "Ny kurschatt",
     "customCourseStepDesc": "En kurs är en uppsättning konversationsaktiviteter som följer din lärobok, för dina elever att göra tillsammans som läxa.",
     "reopenAppToFinishSwitching": "Stäng appen helt och öppna den igen för att slutföra bytet.",
-    "teamCode": "Teamkod"
+    "teamCode": "Teamkod",
+    "missionDueDate": "Förfaller {date}, {time}"
 }

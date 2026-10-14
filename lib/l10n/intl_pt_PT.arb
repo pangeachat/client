@@ -2555,7 +2555,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-13 13:03:48.343362",
+    "@@last_modified": "2026-10-14 10:27:50.789826",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10897,5 +10897,6 @@
     "newCourseChat": "Novo chat do curso",
     "customCourseStepDesc": "Um curso é um conjunto de atividades de conversação que seguem o seu manual, para os seus alunos fazerem juntos como trabalho de casa.",
     "reopenAppToFinishSwitching": "Feche a aplicação completamente e abra-a novamente para terminar a mudança.",
-    "teamCode": "Código da equipa"
+    "teamCode": "Código da equipa",
+    "missionDueDate": "Até {date}, {time}"
 }

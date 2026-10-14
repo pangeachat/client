@@ -2076,7 +2076,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-13 13:03:41.457157",
+    "@@last_modified": "2026-10-14 10:27:43.408054",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10840,5 +10840,6 @@
     "newCourseChat": "Bagong chat sa kurso",
     "customCourseStepDesc": "Ang kurso ay isang hanay ng mga aktibidad sa pag-uusap na sumusunod sa iyong aklat-aralin, para sa iyong mga mag-aaral na gawin nang magkasama bilang takdang-aralin.",
     "reopenAppToFinishSwitching": "Ganap na isara ang app at buksan itong muli para matapos ang pagpapalit.",
-    "teamCode": "Code ng team"
+    "teamCode": "Code ng team",
+    "missionDueDate": "Takdang petsa {date}, {time}"
 }

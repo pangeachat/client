@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-13 13:03:46.647402",
+    "@@last_modified": "2026-10-14 10:27:48.499104",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Sembang kursus baharu",
     "customCourseStepDesc": "Kurs ialah set aktiviti perbualan yang mengikut buku teks anda, untuk pelajar anda lakukan bersama sebagai kerja rumah.",
     "reopenAppToFinishSwitching": "Tutup aplikasi sepenuhnya dan buka semula untuk menyelesaikan penukaran.",
-    "teamCode": "Kod pasukan"
+    "teamCode": "Kod pasukan",
+    "missionDueDate": "Tamat {date}, {time}"
 }

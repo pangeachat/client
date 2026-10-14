@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:40.881852",
+    "@@last_modified": "2026-10-14 10:27:43.440662",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10925,5 +10925,6 @@
     "newCourseChat": "Nova kursa babilejo",
     "customCourseStepDesc": "Kurso estas aro de konversaciaj agadoj, kiuj sekvas vian lernolibron, por ke viaj studentoj faru kune kiel hejmtasko.",
     "reopenAppToFinishSwitching": "Fermu la apon tute kaj remalfermu ĝin por fini la ŝanĝon.",
-    "teamCode": "Teama kodo"
+    "teamCode": "Teama kodo",
+    "missionDueDate": "Limdato {date}, {time}"
 }

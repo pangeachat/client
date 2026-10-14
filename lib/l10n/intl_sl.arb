@@ -1798,7 +1798,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-13 13:03:48.534232",
+    "@@last_modified": "2026-10-14 10:27:51.183932",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10925,5 +10925,6 @@
     "newCourseChat": "Nov klepet tečaja",
     "customCourseStepDesc": "Tečaj je sklop pogovornih dejavnosti, ki sledijo vašemu učbeniku, da jih vaši učenci skupaj opravijo kot domačo nalogo.",
     "reopenAppToFinishSwitching": "Popolnoma zaprite aplikacijo in jo znova odprite, da dokončate preklop.",
-    "teamCode": "Koda ekipe"
+    "teamCode": "Koda ekipe",
+    "missionDueDate": "Rok {date}, {time}"
 }

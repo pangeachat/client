@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:48.852012",
+    "@@last_modified": "2026-10-14 10:27:51.519708",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10929,5 +10929,6 @@
     "newCourseChat": "Novo ćaskanje o kursu",
     "customCourseStepDesc": "Kurs je skup konverzacijskih aktivnosti koje prate vaš udžbenik, a koje vaši učenici rade zajedno kao domaći zadatak.",
     "reopenAppToFinishSwitching": "Potpuno zatvorite aplikaciju i ponovo je otvorite da biste završili prebacivanje.",
-    "teamCode": "Kod tima"
+    "teamCode": "Kod tima",
+    "missionDueDate": "Rok: {date}, {time}"
 }

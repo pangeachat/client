@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:50.775174",
+    "@@last_modified": "2026-10-14 10:27:53.478171",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7282,5 +7282,6 @@
     "newCourseChat": "Trò chuyện khóa học mới",
     "customCourseStepDesc": "Một khóa học là một tập hợp các hoạt động hội thoại theo sách giáo khoa của bạn, để học sinh của bạn cùng nhau làm bài tập về nhà.",
     "reopenAppToFinishSwitching": "Đóng hoàn toàn ứng dụng và mở lại để hoàn tất việc chuyển đổi.",
-    "teamCode": "Mã nhóm"
+    "teamCode": "Mã nhóm",
+    "missionDueDate": "Đến hạn {date}, {time}"
 }

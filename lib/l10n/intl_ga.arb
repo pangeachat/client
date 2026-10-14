@@ -3559,7 +3559,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-13 13:03:41.886927",
+    "@@last_modified": "2026-10-14 10:27:44.865888",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9991,5 +9991,6 @@
     "newCourseChat": "Comhrá cúrsa nua",
     "customCourseStepDesc": "Is éard is cúrsa ann ná sraith gníomhaíochtaí comhrá a leanann do théacsleabhar, le go ndéanfaidh do mhic léinn iad le chéile mar obair bhaile.",
     "reopenAppToFinishSwitching": "Dún an aip go hiomlán agus oscail arís í chun an t-athrú a chríochnú.",
-    "teamCode": "Cód foirne"
+    "teamCode": "Cód foirne",
+    "missionDueDate": "Le críochnú {date}, {time}"
 }

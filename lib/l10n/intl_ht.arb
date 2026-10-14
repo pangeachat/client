@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-13 13:03:43.288900",
+    "@@last_modified": "2026-10-14 10:27:45.337465",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Nouvo chat kou",
     "customCourseStepDesc": "Yon kou se yon seri aktivite konvèsasyon ki swiv liv ou a, pou elèv ou yo fè ansanm kòm devwa.",
     "reopenAppToFinishSwitching": "Fèmen aplikasyon an nèt epi ouvri l ankò pou fini chanjman an.",
-    "teamCode": "Kòd ekip"
+    "teamCode": "Kòd ekip",
+    "missionDueDate": "Dat limit: {date}, {time}"
 }

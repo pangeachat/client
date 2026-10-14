@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-13 13:03:47.666094",
+    "@@last_modified": "2026-10-14 10:27:49.479175",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "ਨਵੀਂ ਕੋਰਸ ਚੈਟ",
     "customCourseStepDesc": "ਇੱਕ ਕੋਰਸ ਗੱਲਬਾਤ ਦੀਆਂ ਗਤੀਵਿਧੀਆਂ ਦਾ ਇੱਕ ਸਮੂਹ ਹੈ ਜੋ ਤੁਹਾਡੀ ਪਾਠ ਪੁਸਤਕ ਦੀ ਪਾਲਣਾ ਕਰਦਾ ਹੈ, ਤੁਹਾਡੇ ਵਿਦਿਆਰਥੀਆਂ ਲਈ ਹੋਮਵਰਕ ਵਜੋਂ ਇਕੱਠੇ ਕਰਨ ਲਈ।",
     "reopenAppToFinishSwitching": "ਸਵਿੱਚਿੰਗ ਪੂਰੀ ਕਰਨ ਲਈ ਐਪ ਨੂੰ ਪੂਰੀ ਤਰ੍ਹਾਂ ਬੰਦ ਕਰੋ ਅਤੇ ਇਸਨੂੰ ਦੁਬਾਰਾ ਖੋਲ੍ਹੋ।",
-    "teamCode": "ਟੀਮ ਕੋਡ"
+    "teamCode": "ਟੀਮ ਕੋਡ",
+    "missionDueDate": "{date}, {time} ਨੂੰ ਨਿਰਧਾਰਤ"
 }

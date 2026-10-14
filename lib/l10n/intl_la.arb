@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-13 13:03:44.824694",
+    "@@last_modified": "2026-10-14 10:27:47.440175",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Novae cursus sermocinatio",
     "customCourseStepDesc": "Cursus est copia exercitationum sermonis quae librum tuum sequuntur, ut discipuli tui simul pro pensis domesticis faciant.",
     "reopenAppToFinishSwitching": "Claude app omnino et iterum aperi ad perficiendum commutationem.",
-    "teamCode": "Codex turmae"
+    "teamCode": "Codex turmae",
+    "missionDueDate": "Debetur {date}, {time}"
 }

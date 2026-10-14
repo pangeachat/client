@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-13 13:03:43.833583",
+    "@@last_modified": "2026-10-14 10:27:46.060053",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Nýtt námskeiðsspjall",
     "customCourseStepDesc": "Námskeið er safn samtalsæfinga sem fylgja kennslubókinni þinni, fyrir nemendur þína til að gera saman sem heimanám.",
     "reopenAppToFinishSwitching": "Lokaðu forritinu alveg og opnaðu það aftur til að ljúka skiptunum.",
-    "teamCode": "Liðskóði"
+    "teamCode": "Liðskóði",
+    "missionDueDate": "Skilafrestur {date}, {time}"
 }

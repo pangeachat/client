@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-13 13:03:49.973985",
+    "@@last_modified": "2026-10-14 10:27:52.728480",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10281,5 +10281,6 @@
     "newCourseChat": "Yeni kurs sohbeti",
     "customCourseStepDesc": "Bir kurs, öğrencilerinizin ödev olarak birlikte yapmaları için ders kitabınızı takip eden bir dizi konuşma etkinliğidir.",
     "reopenAppToFinishSwitching": "Geçişi tamamlamak için uygulamayı tamamen kapatın ve tekrar açın.",
-    "teamCode": "Takım kodu"
+    "teamCode": "Takım kodu",
+    "missionDueDate": "{date}, {time} tarihinde bitiyor"
 }

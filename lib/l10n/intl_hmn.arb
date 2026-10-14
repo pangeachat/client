@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-13 13:03:42.889476",
+    "@@last_modified": "2026-10-14 10:27:44.757074",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Kev sib tham kawm tshiab",
     "customCourseStepDesc": "Ib chav kawm yog ib pawg kev sib tham uas ua raws li koj phau ntawv kawm, rau koj cov tub ntxhais kawm ua ke ua homework.",
     "reopenAppToFinishSwitching": "Kaw tag nrho lub app thiab mam li qhib dua kom tiav kev hloov.",
-    "teamCode": "Pab pawg tus lej"
+    "teamCode": "Pab pawg tus lej",
+    "missionDueDate": "Yuav tsum ua tiav {date}, {time}"
 }

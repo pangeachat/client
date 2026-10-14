@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-13 13:03:43.510669",
+    "@@last_modified": "2026-10-14 10:27:45.368173",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Նոր դասընթացի զրույց",
     "customCourseStepDesc": "Դասընթացը խոսակցական գործունեությունների շարք է, որոնք հետևում են ձեր դասագրքին, որպեսզի ձեր ուսանողները միասին կատարեն որպես տնային աշխատանք:",
     "reopenAppToFinishSwitching": "Փակեք հավելվածը և նորից բացեք՝ անցումն ավարտելու համար։",
-    "teamCode": "Թիմի կոդը"
+    "teamCode": "Թիմի կոդը",
+    "missionDueDate": "{date}, {time}-ին"
 }

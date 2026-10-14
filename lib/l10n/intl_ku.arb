@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-13 13:03:44.907716",
+    "@@last_modified": "2026-10-14 10:27:47.029904",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "چاتی خولی نوێ",
     "customCourseStepDesc": "کۆرس کۆمەڵێک چالاکی گفتوگۆیە کە بەدوای کتێبی خوێندنەکەتدا دێت، بۆ ئەوەی خوێندکارەکانت وەک ئەرکی ماڵەوە پێکەوە ئەنجامی بدەن.",
     "reopenAppToFinishSwitching": "بۆ تەواوکردنی گۆڕینەکە، ئەپەکە بەتەواوی دابخە و دووبارە بیکەرەوە.",
-    "teamCode": "کۆدی تیم"
+    "teamCode": "کۆدی تیم",
+    "missionDueDate": "کاتی دیاریکراو {date}, {time}"
 }

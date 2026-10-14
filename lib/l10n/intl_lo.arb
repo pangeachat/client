@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-13 13:03:45.359556",
+    "@@last_modified": "2026-10-14 10:27:48.014918",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "ສົນທະນາຫຼັກສູດໃໝ່",
     "customCourseStepDesc": "ຫຼັກສູດແມ່ນຊຸດຂອງກິດຈະກຳການສົນທະນາທີ່ສອດຄ່ອງກັບປຶ້ມແບບຮຽນຂອງທ່ານ, ໃຫ້ນັກຮຽນຂອງທ່ານເຮັດຮ່ວມກັນເປັນວຽກບ້ານ.",
     "reopenAppToFinishSwitching": "ປິດແອັບທັງໝົດແລ້ວເປີດໃໝ່ເພື່ອສຳເລັດການປ່ຽນ.",
-    "teamCode": "ລະຫັດທີມ"
+    "teamCode": "ລະຫັດທີມ",
+    "missionDueDate": "ກຳນົດສົ່ງ {date}, {time}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-13 13:03:40.013344",
+    "@@last_modified": "2026-10-14 10:27:41.023503",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Yeni kurs söhbəti",
     "customCourseStepDesc": "Kurs, tələbələrinizin ev tapşırığı olaraq birlikdə edəcəyi, dərsliklərinizə uyğun söhbət fəaliyyətləri toplusudur.",
     "reopenAppToFinishSwitching": "Keçidi tamamlamaq üçün proqramı tamamilə bağlayın və yenidən açın.",
-    "teamCode": "Komanda kodu"
+    "teamCode": "Komanda kodu",
+    "missionDueDate": "{date}, {time} tarixinə qədər"
 }

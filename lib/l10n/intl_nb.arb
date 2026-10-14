@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:46.975324",
+    "@@last_modified": "2026-10-14 10:27:48.972567",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10037,5 +10037,6 @@
     "newCourseChat": "Ny kursprat",
     "customCourseStepDesc": "Et kurs er et sett med samtaleaktiviteter som følger læreboken din, som elevene dine kan gjøre sammen som lekser.",
     "reopenAppToFinishSwitching": "Lukk appen helt og åpne den igjen for å fullføre byttet.",
-    "teamCode": "Teamkode"
+    "teamCode": "Teamkode",
+    "missionDueDate": "Frist {date}, {time}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-13 13:03:50.961285",
+    "@@last_modified": "2026-10-14 10:27:53.582525",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Ìjíròrò ẹ̀kọ́ tuntun",
     "customCourseStepDesc": "Ìwé-ẹ̀kọ́ jẹ́ àwọn iṣẹ́ ìbánisọ̀rọ̀ tí ó tẹ̀lé ìwé-ẹ̀kọ́ rẹ, fún àwọn akẹ́kọ̀ọ́ rẹ láti ṣe pọ̀ gẹ́gẹ́ bí iṣẹ́-ilé.",
     "reopenAppToFinishSwitching": "Pa ohun elo naa patapata ki o si tun ṣi i lati pari iyipada.",
-    "teamCode": "Koodu Ẹgbẹ"
+    "teamCode": "Koodu Ẹgbẹ",
+    "missionDueDate": "Nitori {date}, {time}"
 }

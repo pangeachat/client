@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-13 13:03:50.507151",
+    "@@last_modified": "2026-10-14 10:27:53.260019",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "نئی کورس چیٹ",
     "customCourseStepDesc": "ایک کورس گفتگو کی سرگرمیوں کا ایک مجموعہ ہے جو آپ کی نصابی کتاب کی پیروی کرتا ہے، تاکہ آپ کے طلباء ہوم ورک کے طور پر ایک ساتھ کر سکیں۔",
     "reopenAppToFinishSwitching": "سوئچنگ مکمل کرنے کے لیے ایپ کو مکمل طور پر بند کریں اور دوبارہ کھولیں۔",
-    "teamCode": "ٹیم کوڈ"
+    "teamCode": "ٹیم کوڈ",
+    "missionDueDate": "{date}، {time} کو واجب الادا"
 }

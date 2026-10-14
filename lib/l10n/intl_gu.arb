@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-13 13:03:42.267460",
+    "@@last_modified": "2026-10-14 10:27:44.319228",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "નવી કોર્સ ચેટ",
     "customCourseStepDesc": "કોર્સ એ વાતચીતની પ્રવૃત્તિઓનો સમૂહ છે જે તમારી પાઠ્યપુસ્તકને અનુસરે છે, જે તમારા વિદ્યાર્થીઓ માટે હોમવર્ક તરીકે સાથે કરવા માટે છે.",
     "reopenAppToFinishSwitching": "સ્વિચિંગ પૂર્ણ કરવા માટે એપ્લિકેશનને સંપૂર્ણપણે બંધ કરો અને તેને ફરીથી ખોલો.",
-    "teamCode": "ટીમ કોડ"
+    "teamCode": "ટીમ કોડ",
+    "missionDueDate": "{date}, {time} ના રોજ થવાનું છે"
 }

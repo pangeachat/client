@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-13 13:03:49.135024",
+    "@@last_modified": "2026-10-14 10:27:51.656934",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Sheeko kooras cusub",
     "customCourseStepDesc": "Koorsadu waa qaybo waxqabadyo wada-hadal ah oo raacaya buuggaaga, si ardaydaadu ay u wada qabtaan shaqo-guri ahaan.",
     "reopenAppToFinishSwitching": "Si aad u dhammaystirto beddelka, gebi ahaanba xidh app-ka oo mar kale fur.",
-    "teamCode": "Koodhka kooxda"
+    "teamCode": "Koodhka kooxda",
+    "missionDueDate": "Waxaa la gaarayaa {date}, {time}"
 }

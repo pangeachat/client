@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-13 13:03:47.028989",
+    "@@last_modified": "2026-10-14 10:27:49.627549",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10065,5 +10065,6 @@
     "newCourseChat": "Nowy czat kursu",
     "customCourseStepDesc": "Kurs to zestaw ćwiczeń konwersacyjnych, które są zgodne z Twoim podręcznikiem, do wspólnego odrabiania przez Twoich uczniów jako praca domowa.",
     "reopenAppToFinishSwitching": "Całkowicie zamknij aplikację i otwórz ją ponownie, aby zakończyć przełączanie.",
-    "teamCode": "Kod zespołu"
+    "teamCode": "Kod zespołu",
+    "missionDueDate": "Termin: {date}, {time}"
 }

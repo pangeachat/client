@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-13 13:03:48.787137",
+    "@@last_modified": "2026-10-14 10:27:51.303092",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Hurukuro itsva yechikoro",
     "customCourseStepDesc": "Kosi iseti yezviitiko zvekukurukurirana zvinotevera bhuku rako, kuti vadzidzi vako vaite pamwe chete sehomweki.",
     "reopenAppToFinishSwitching": "Vhara app zvachose woivhura zvakare kuti upedze kuchinja.",
-    "teamCode": "Kodhi yechikwata"
+    "teamCode": "Kodhi yechikwata",
+    "missionDueDate": "Inofanira kunge yapera pana {date}, {time}"
 }

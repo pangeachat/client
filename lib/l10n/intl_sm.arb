@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-13 13:03:48.814573",
+    "@@last_modified": "2026-10-14 10:27:51.387518",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Talanoaga fou o le kosi",
     "customCourseStepDesc": "O se kosi o se seti o gaioiga talanoaga e mulimuli i lau tusi aʻoga, mo au tamaiti aʻoga e fai faʻatasi e fai ma meaaoga.",
     "reopenAppToFinishSwitching": "Tapuni atoa le app ona toe tatala lea e fa'auma ai le fesuiaiga.",
-    "teamCode": "Tulafono a le 'au"
+    "teamCode": "Tulafono a le 'au",
+    "missionDueDate": "E tatau ona maeʻa {date}, {time}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-13 13:03:47.108167",
+    "@@last_modified": "2026-10-14 10:27:49.342552",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Ny kursprat",
     "customCourseStepDesc": "Et kurs er et sett med samtaleaktiviteter som følger læreboken din, som studentene dine kan gjøre sammen som lekser.",
     "reopenAppToFinishSwitching": "Lukk appen helt og åpne den igjen for å fullføre byttet.",
-    "teamCode": "Teamkode"
+    "teamCode": "Teamkode",
+    "missionDueDate": "Frist {date}, {time}"
 }

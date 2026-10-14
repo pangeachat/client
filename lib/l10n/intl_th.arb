@@ -3089,7 +3089,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-13 13:03:49.836411",
+    "@@last_modified": "2026-10-14 10:27:54.352838",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10612,5 +10612,6 @@
     "newCourseChat": "แชทคอร์สใหม่",
     "customCourseStepDesc": "คอร์สคือชุดกิจกรรมการสนทนาที่อิงตามหนังสือเรียนของคุณ ให้นักเรียนทำร่วมกันเป็นการบ้าน",
     "reopenAppToFinishSwitching": "ปิดแอปทั้งหมดแล้วเปิดใหม่อีกครั้งเพื่อสิ้นสุดการสลับ",
-    "teamCode": "รหัสทีม"
+    "teamCode": "รหัสทีม",
+    "missionDueDate": "ครบกำหนด {date}, {time}"
 }

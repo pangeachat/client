@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-13 13:03:46.076881",
+    "@@last_modified": "2026-10-14 10:27:47.671125",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2429,5 +2429,6 @@
     "newCourseChat": "Kōrerorero akoranga hōu",
     "customCourseStepDesc": "He huinga mahi kōrerorero te akoranga e whai ana i tō pukapuka, mā ō ākonga e mahi ngātahi hei mahi kāinga.",
     "reopenAppToFinishSwitching": "Katia katoatia te taupānga ka whakatuwhera anō kia oti ai te huri.",
-    "teamCode": "Waehere tīma"
+    "teamCode": "Waehere tīma",
+    "missionDueDate": "Me oti i te {date}, {time}"
 }
