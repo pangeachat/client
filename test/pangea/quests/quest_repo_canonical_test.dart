@@ -61,6 +61,58 @@ void main() {
     });
   });
 
+  group('QuestRepo.questMissionsFromJson', () {
+    // The outline read's `missions`: each statement already in the display
+    // language the read asked for (#8577). The quest row keeps the order;
+    // this map supplies the text.
+    test('parses the missions list keyed by id', () {
+      final missions = QuestRepo.questMissionsFromJson({
+        'missions': [
+          {
+            'lo_id': 'lo-1',
+            'objective': 'Peut saluer quelqu\'un.',
+            'source_l1': 'en',
+            'localized': true,
+            'theme': 'daily life',
+            'cefr_level': 'A1',
+            'scale_id': 'just_chatting',
+          },
+          {
+            'lo_id': 'lo-2',
+            'objective': 'Can order a coffee.',
+            'source_l1': 'en',
+            'localized': false,
+          },
+        ],
+        'activities': [],
+      });
+      expect(missions.keys, ['lo-1', 'lo-2']);
+      expect(missions['lo-1']!.objective, 'Peut saluer quelqu\'un.');
+      expect(missions['lo-1']!.theme, 'daily life');
+      expect(missions['lo-1']!.cefr, 'A1');
+      expect(missions['lo-2']!.theme, isNull);
+    });
+
+    test(
+      'drops an entry with no id or no statement, and tolerates malformed bodies',
+      () {
+        final missions = QuestRepo.questMissionsFromJson({
+          'missions': [
+            {'lo_id': 'lo-1'},
+            {'objective': 'orphan'},
+            'x',
+            {'lo_id': 'lo-2', 'objective': 'Can order a coffee.'},
+          ],
+        });
+        expect(missions.keys, ['lo-2']);
+        expect(QuestRepo.questMissionsFromJson(null), isEmpty);
+        expect(QuestRepo.questMissionsFromJson({'missions': 'x'}), isEmpty);
+        // A body from a choreo that predates the field: no missions, no error.
+        expect(QuestRepo.questMissionsFromJson({'activities': []}), isEmpty);
+      },
+    );
+  });
+
   group('QuestRepo.cmsDocShapeFromEntry', () {
     test('adapts an entry to the shared card parser', () {
       final card = QuestActivityCard.fromJson(
