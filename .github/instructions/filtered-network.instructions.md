@@ -38,7 +38,9 @@ The check runs only when something has already gone wrong, so a healthy network 
 | Answers | Connection refused, or answered by a site that is not ours | Filtered | Filtered-network guidance |
 | Answers | Slow, or an error from our own server | Outage or slow network | The app's usual error |
 
-A Pangea outage shows as a slow answer or an error from our own servers, so an outage never sends every user the filtered-network message. A slow answer is never a block, the same rule the sign-in check uses. A web browser hides who answered a request, so on the web only a refused connection counts, and a filter that serves its own block page is missed there.
+A Pangea outage usually shows as a slow answer or an error from our own servers. A deploy is the exception: while the chat server restarts, it refuses connections for a minute or more, which looks the same as a filter. So a refused connection to the chat server or the Pangea API counts as a block only when it holds for three minutes. The app checks again every 30 seconds, and any answer in that time means our server was restarting. The guidance and the Sentry report for those two hosts therefore appear about three minutes after the first failure. Every other host, and the sign-in check, is decided on the first check: a deploy does not restart them, and sign-in cannot wait.
+
+A slow answer is never a block, the same rule the sign-in check uses. A web browser hides who answered a request, so on the web only a refused connection counts, and a filter that serves its own block page is missed there.
 
 The verdict clears as soon as a request to the blocked host succeeds, and the check runs again when the device changes network. A user who switches to mobile data carries on without restarting the app.
 
