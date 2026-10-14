@@ -38,14 +38,17 @@ abstract class LegacyRedirects {
   /// riding the token's fields ([ActivityToken]). Any prior panels/context
   /// are dropped — this link IS the activity. Idempotent: the result has no
   /// UUID path segment, so it never re-fires.
+  ///
+  /// The folded params are read decoded: a sender may percent-encode the
+  /// room id (`roomid=%21abc%3Aserver`), and the token re-encodes its fields,
+  /// so a verbatim read would bind a corrupted id (#9502).
   static String _resolveActivityLink(Uri uri) {
     final kept = WorkspaceQuery.parts(uri.query);
     final activityId = uri.pathSegments.first;
-    final roomId = WorkspaceQuery.valueOf(uri.query, 'roomid');
-    final launch = WorkspaceQuery.valueOf(uri.query, 'launch') == 'true';
-    final autoplay = int.tryParse(
-      WorkspaceQuery.valueOf(uri.query, 'autoplay') ?? '',
-    );
+    final params = uri.queryParameters;
+    final roomId = params['roomid'];
+    final launch = params['launch'] == 'true';
+    final autoplay = int.tryParse(params['autoplay'] ?? '');
     final activityTokenParam = ActivityTokenParam(
       activityId: activityId,
       roomId: roomId,
