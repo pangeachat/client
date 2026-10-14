@@ -366,7 +366,8 @@ in two separate languages.
 A call half may be transcribed in either of the speaker's languages: learners in a call
 speak their L1 as well as their L2. Every call request asks choreo to accept the L1
 (`allow_speaker_l1`), so L1 speech comes back as L1 text rather than translated into the
-target language. Speech in any third language still comes back empty.
+target language. Speech in any third language usually comes back empty, but a provider
+may return it as L1 or L2 text.
 
 The pair is captured once, when the call starts, and never re-read: a learner who
 changes their target language mid-call would otherwise have one call transcribed
