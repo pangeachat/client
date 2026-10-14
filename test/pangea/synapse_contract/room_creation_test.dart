@@ -551,7 +551,7 @@ void main() {
   });
 
   group('addDefaultChat (default course chats)', () {
-    test('announcements: restricted PL keeps learners read-only', () async {
+    test('announcements: learners react but cannot post', () async {
       final spaceId = await makeCourseSpace(nameSuffix: 'for-defaults');
       final space = client.getRoomById(spaceId);
       expect(space, isNotNull);
@@ -572,10 +572,13 @@ void main() {
       );
 
       // Restricted PL: learners (events_default 50 > users_default 0) cannot
-      // post in announcements.
+      // post in announcements, but can react and remove their reactions.
       final powerLevels = state['m.room.power_levels']?[''];
       expect(powerLevels?['events_default'], 50);
       expect(powerLevels?['users_default'], 0);
+      final events = powerLevels?['events'] as Map?;
+      expect(events?['m.reaction'], 0);
+      expect(events?['m.room.redaction'], 0);
 
       // knock_restricted scoped to the course, with an access code.
       final joinRules = state['m.room.join_rules']?[''];
