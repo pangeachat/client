@@ -6,10 +6,11 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/reaction_listener.dart';
 import 'get_test_client.dart';
 
-/// A read-only room (announcements) has no `m.reaction` power level of its own,
-/// so a learner's reaction is rejected by the server. The UI offers reactions
-/// only where [Room.canSendReactions], and a send that fails anyway must not
-/// leave its local echo behind looking like a delivered reaction (#9167).
+/// A read-only room has no `m.reaction` power level of its own, so a learner's
+/// reaction is rejected by the server. The UI offers reactions only where
+/// [Room.canSendReactions], and a send that fails anyway must not leave its
+/// local echo behind looking like a delivered reaction (#9167). Announcements
+/// is read-only for posting but lets learners react (#9515).
 void main() {
   const ownUserId = '@test:fakeServer.notExisting';
 
@@ -17,6 +18,9 @@ void main() {
   const writableRoomId = '!1234:fakeServer.notExisting';
   const rejectingRoomId = '!readonly:fakeServer.notExisting';
   const messageId = '\$message';
+
+  /// Only moderators may send anything, reactions included.
+  const readOnlyPowerLevels = {'events_default': 50};
 
   late Client client;
 
@@ -54,18 +58,13 @@ void main() {
 
   group('canSendReactions', () {
     test('a learner cannot react in a read-only room', () {
-      expect(
-        room(
-          powerLevels: RoomDefaults.restrictedPowerLevelsContent,
-        ).canSendReactions,
-        false,
-      );
+      expect(room(powerLevels: readOnlyPowerLevels).canSendReactions, false);
     });
 
     test('a moderator can react in a read-only room', () {
       expect(
         room(
-          powerLevels: RoomDefaults.restrictedPowerLevelsContent,
+          powerLevels: readOnlyPowerLevels,
           ownPowerLevel: 50,
         ).canSendReactions,
         true,
@@ -79,6 +78,24 @@ void main() {
         ).canSendReactions,
         true,
       );
+    });
+
+    test('a learner can react in announcements but not post', () {
+      final announcements = room(
+        powerLevels: RoomDefaults.restrictedPowerLevelsContent,
+      );
+      expect(announcements.canSendReactions, true);
+      expect(announcements.canSendDefaultMessages, false);
+    });
+
+    test('a learner can remove only their own reaction in announcements', () {
+      // Removing a reaction redacts it: the redaction event needs its own
+      // send level, while redacting someone else's event needs `redact`.
+      final announcements = room(
+        powerLevels: RoomDefaults.restrictedPowerLevelsContent,
+      );
+      expect(announcements.canSendEvent(EventTypes.Redaction), true);
+      expect(announcements.canRedact, false);
     });
 
     test('nobody can react in a room they have not joined', () {
@@ -110,7 +127,7 @@ void main() {
 
     test('discards a rejected reaction and tells its listeners', () async {
       final rejecting = room(
-        powerLevels: RoomDefaults.restrictedPowerLevelsContent,
+        powerLevels: readOnlyPowerLevels,
         id: rejectingRoomId,
       );
       final timeline = await rejecting.getTimeline();
