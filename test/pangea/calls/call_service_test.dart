@@ -2129,6 +2129,60 @@ void main() {
       },
     );
 
+    // client#9173: a device that JOINS a call already under way (a learner
+    // moving the call to another device, a rejoin) arrives long after the
+    // other person's membership was written -- the SDK only rewrites it every
+    // two minutes. The one-ring floor skipped it, presence fell to "cannot
+    // see", the remembered sighting made that "gone", and the joiner hung up
+    // two seconds after joining. Their state here is written now; we "join"
+    // 100 s later, so it is 100 s older than our join.
+    test(
+      'a joiner still sees a peer whose membership is 100 s older than its join',
+      () async {
+        final (service, room) = await withPeerState([
+          {'call_id': 'this-call', 'expires_ts': inFuture()},
+        ]);
+        service.adoptCallIdForTest('this-call');
+        final weJoined = DateTime.now().add(const Duration(seconds: 100));
+        expect(
+          service.peerPresenceInCurrentCall(
+            room,
+            peer,
+            notBefore: CallService.callFloorFrom(
+              weJoined,
+              joinedUnderWay: true,
+            ),
+            goneAfter: weJoined,
+          ),
+          PeerPresence.live,
+        );
+      },
+    );
+
+    // The tighter floor stays wherever a ring invited us: there, nobody can
+    // have joined more than one ring before we did, and a membership that old
+    // is a leftover of an earlier call.
+    test(
+      'a placed or answered call still screens a membership 100 s older than '
+      'its join',
+      () async {
+        final (service, room) = await withPeerState([
+          {'call_id': 'this-call', 'expires_ts': inFuture()},
+        ]);
+        service.adoptCallIdForTest('this-call');
+        final weJoined = DateTime.now().add(const Duration(seconds: 100));
+        expect(
+          service.peerPresenceInCurrentCall(
+            room,
+            peer,
+            notBefore: CallService.callFloorFrom(weJoined),
+            goneAfter: weJoined,
+          ),
+          PeerPresence.unknown,
+        );
+      },
+    );
+
     test(
       'a retraction from before we joined is not this call ending',
       () async {

@@ -2098,6 +2098,41 @@ void main() {
       );
     });
 
+    // client#9173: a device joining a call already under way -- a learner
+    // moving the call to another device -- finds the other person's
+    // membership up to one SDK refresh old. The ring floor skipped it and the
+    // joiner hung up on somebody who was talking.
+    test(
+      'reach back one refresh for a device joining a call under way',
+      () async {
+        final (call, calls, _, _) = await build();
+        calls.remotePresent = true;
+        final joined = DateTime.now();
+        calls.ourJoinAt = joined;
+        await call.start(roomStub(calls.client), video: false);
+        expect(call.placedCall, isFalse, reason: 'the peer was already here');
+        await call.tickReelectionForTest();
+        expect(
+          calls.lastNotBefore,
+          CallService.callFloorFrom(joined, joinedUnderWay: true),
+        );
+        expect(
+          calls.lastNotBefore,
+          joined.subtract(const Duration(minutes: 2, seconds: 30)),
+        );
+      },
+    );
+
+    test('keep the ring floor for a device that answered', () async {
+      final (call, calls, _, _) = await build();
+      calls.remotePresent = true;
+      final joined = DateTime.now();
+      calls.ourJoinAt = joined;
+      await call.start(roomStub(calls.client), video: false, answering: true);
+      await call.tickReelectionForTest();
+      expect(calls.lastNotBefore, joined.subtract(CallNotification.lifetime));
+    });
+
     test('are still re-asked until the room can date the anchor', () async {
       // The memo may not answer null from a cache. State lags a write, so the
       // first read after the anchor lands can find nothing to date it by, and

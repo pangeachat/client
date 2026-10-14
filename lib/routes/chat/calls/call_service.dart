@@ -1955,8 +1955,30 @@ class CallService {
   /// was sitting in the call waiting, as nobody, and withdrew the Return offer
   /// the moment it appeared. A ring cannot outlive its lifetime, so nothing
   /// older than that can belong to the call it invited us to.
-  static DateTime? callFloorFrom(DateTime? ourJoin) =>
-      ourJoin?.subtract(CallNotification.lifetime);
+  ///
+  /// A device that JOINS a call already under way ([joinedUnderWay]: a
+  /// learner moving the call to another device, a rejoin; client#9173) was not
+  /// invited by a ring, and the other person's membership is only rewritten
+  /// when the SDK refreshes it, every [membershipRefreshEvery] -- so it can be
+  /// nearly that old. A one-ring floor skipped it, read the person sitting in
+  /// the call as gone, and the device that had just joined hung up two seconds
+  /// later. Only that case reaches back one refresh plus slack; a placed or
+  /// answered call keeps the tighter ring floor, so a leftover of an earlier
+  /// call is still screened out there.
+  static DateTime? callFloorFrom(
+    DateTime? ourJoin, {
+    bool joinedUnderWay = false,
+  }) => ourJoin?.subtract(
+    joinedUnderWay
+        ? membershipRefreshEvery + _refreshSlack
+        : CallNotification.lifetime,
+  );
+
+  /// How often the SDK rewrites a device's call membership
+  /// (`VoipTimeouts.updateExpireTsTimerDuration`, which this app does not
+  /// override).
+  static const membershipRefreshEvery = Duration(minutes: 2);
+  static const _refreshSlack = Duration(seconds: 30);
 
   /// Whether anybody ELSE is still holding the call our membership belongs to.
   ///
