@@ -2429,5 +2429,6 @@
     "teamCode": "ລະຫັດທີມ",
     "connectionOffline": "ທ່ານອອບລາຍ. Pangea Chat ຈະເຊື່ອມຕໍ່ໃໝ່ເມື່ອການເຊື່ອມຕໍ່ຂອງທ່ານກັບມາ.",
     "connectionUnreachable": "ບໍ່ສາມາດເຂົ້າເຖິງ Pangea Chat ໄດ້. ພະຍາຍາມອີກຄັ້ງ…",
-    "connectionBackOnline": "ກັບມາອອນລາຍແລ້ວ"
+    "connectionBackOnline": "ກັບມາອອນລາຍແລ້ວ",
+    "missionDueDate": "ກຳນົດສົ່ງ {date}, {time}"
 }

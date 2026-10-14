@@ -2429,5 +2429,6 @@
     "teamCode": "Kode tim",
     "connectionOffline": "Sampeyan offline. Pangea Chat bakal nyambung maneh nalika sambungan sampeyan bali.",
     "connectionUnreachable": "Ora bisa nyambung menyang Pangea Chat. Nyoba maneh…",
-    "connectionBackOnline": "Bali online"
+    "connectionBackOnline": "Bali online",
+    "missionDueDate": "Kudu rampung {date}, {time}"
 }

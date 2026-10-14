@@ -2429,5 +2429,6 @@
     "teamCode": "Msimbo wa timu",
     "connectionOffline": "Hauna intaneti. Pangea Chat itaunganisha tena intaneti yako itakaporudi.",
     "connectionUnreachable": "Haiwezi kufikia Pangea Chat. Inajaribu tena…",
-    "connectionBackOnline": "Umerudi mtandaoni"
+    "connectionBackOnline": "Umerudi mtandaoni",
+    "missionDueDate": "Tarehe ya kukamilisha {date}, {time}"
 }

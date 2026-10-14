@@ -9967,5 +9967,6 @@
     "teamCode": "Talde-kodea",
     "connectionOffline": "Lineaz kanpo zaude. Pangea Chat berriro konektatuko da konexioa berreskuratzean.",
     "connectionUnreachable": "Ezin da Pangea Chat-era iritsi. Berriro saiatzen...",
-    "connectionBackOnline": "Berriro konektatuta"
+    "connectionBackOnline": "Berriro konektatuta",
+    "missionDueDate": "{date}, {time}rako"
 }

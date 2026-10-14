@@ -9967,5 +9967,6 @@
     "teamCode": "Komandas kods",
     "connectionOffline": "Jūs esat bezsaistē. Pangea tērzēšana atjaunos savienojumu, kad jūsu savienojums būs atjaunots.",
     "connectionUnreachable": "Nevar sasniegt Pangea tērzēšanu. Mēģina vēlreiz…",
-    "connectionBackOnline": "Atkal tiešsaistē"
+    "connectionBackOnline": "Atkal tiešsaistē",
+    "missionDueDate": "Izpildes termiņš: {date}, {time}"
 }

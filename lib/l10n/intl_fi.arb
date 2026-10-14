@@ -10004,5 +10004,6 @@
     "teamCode": "Tiimikoodi",
     "connectionOffline": "Olet offline-tilassa. Pangea Chat yhdistää uudelleen, kun yhteys palautuu.",
     "connectionUnreachable": "Pangea Chatiin ei saada yhteyttä. Yritetään uudelleen…",
-    "connectionBackOnline": "Takaisin online-tilassa"
+    "connectionBackOnline": "Takaisin online-tilassa",
+    "missionDueDate": "Erääntyy {date} klo {time}"
 }

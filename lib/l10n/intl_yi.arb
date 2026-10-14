@@ -2429,5 +2429,6 @@
     "teamCode": "קאָלעקטיוו קאָד",
     "connectionOffline": "איר זענט אָפפלינע. פּאַנגעאַ טשאַט וועט זיך ווידער פֿאַרבינדן ווען אייער פֿאַרבינדונג קומט צוריק.",
     "connectionUnreachable": "קען נישט דערגרייכן פּאַנגעאַ טשאַט. פּרוּווט ווידער…",
-    "connectionBackOnline": "צוריק אָנליין"
+    "connectionBackOnline": "צוריק אָנליין",
+    "missionDueDate": "פֿאַרפֿאַלן {date}, {time}"
 }

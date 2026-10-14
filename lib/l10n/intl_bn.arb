@@ -10592,5 +10592,6 @@
     "teamCode": "টিম কোড",
     "connectionOffline": "আপনি অফলাইন। আপনার সংযোগ ফিরে এলে প্যানগিয়া চ্যাট পুনরায় সংযুক্ত হবে।",
     "connectionUnreachable": "প্যানগিয়া চ্যাটে পৌঁছানো যাচ্ছে না। আবার চেষ্টা করা হচ্ছে…",
-    "connectionBackOnline": "আবার অনলাইন"
+    "connectionBackOnline": "আবার অনলাইন",
+    "missionDueDate": "{date}, {time} এর মধ্যে"
 }

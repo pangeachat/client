@@ -10909,5 +10909,6 @@
     "teamCode": "Teama kodo",
     "connectionOffline": "Vi estas eksterrete. Pangea Chat rekonektos kiam via konekto revenos.",
     "connectionUnreachable": "Ne eblas atingi Pangea Chat. Reprovas…",
-    "connectionBackOnline": "Reen enrete"
+    "connectionBackOnline": "Reen enrete",
+    "missionDueDate": "Limdato {date}, {time}"
 }

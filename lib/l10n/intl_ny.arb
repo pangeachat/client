@@ -2429,5 +2429,6 @@
     "teamCode": "Nambala ya gulu",
     "connectionOffline": "Simuli pa intaneti. Pangea Chat idzalumikizananso intaneti ikabweranso.",
     "connectionUnreachable": "Sindingathe kufika ku Pangea Chat. Kuyesanso…",
-    "connectionBackOnline": "Kubwerera pa intaneti"
+    "connectionBackOnline": "Kubwerera pa intaneti",
+    "missionDueDate": "Chifukwa {date}, {time}"
 }

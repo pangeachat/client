@@ -2429,5 +2429,6 @@
     "teamCode": "Cod tîm",
     "connectionOffline": "Rydych all-lein. Bydd Pangea Chat yn ailgysylltu pan fydd eich cysylltiad yn ôl.",
     "connectionUnreachable": "Methu cyrraedd Pangea Chat. Yn ceisio eto…",
-    "connectionBackOnline": "Yn ôl ar-lein"
+    "connectionBackOnline": "Yn ôl ar-lein",
+    "missionDueDate": "Dyddiad dyledus {date}, {time}"
 }

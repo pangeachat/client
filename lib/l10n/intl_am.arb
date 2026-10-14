@@ -2429,5 +2429,6 @@
     "teamCode": "የቡድን ኮድ",
     "connectionOffline": "ከመስመር ውጭ ነዎት። ግንኙነትዎ ሲመለስ ፓንጋያ ቻት እንደገና ይገናኛል።",
     "connectionUnreachable": "ፓንጋያ ቻት ማግኘት አልተቻለም። እንደገና በመሞከር ላይ…",
-    "connectionBackOnline": "በድጋሚ መስመር ላይ ነዎት"
+    "connectionBackOnline": "በድጋሚ መስመር ላይ ነዎት",
+    "missionDueDate": "የሚጠናቀቅበት ቀን {date}, {time}"
 }

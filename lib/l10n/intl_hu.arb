@@ -10070,5 +10070,6 @@
     "teamCode": "Csapatkód",
     "connectionOffline": "Offline vagy. A Pangea Chat újra csatlakozik, amint visszatér a kapcsolatod.",
     "connectionUnreachable": "Nem érhető el a Pangea Chat. Újrapróbálkozás…",
-    "connectionBackOnline": "Újra online"
+    "connectionBackOnline": "Újra online",
+    "missionDueDate": "Esedékes: {date}, {time}"
 }

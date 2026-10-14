@@ -10839,5 +10839,6 @@
     "teamCode": "Κωδικός ομάδας",
     "connectionOffline": "Είστε εκτός σύνδεσης. Το Pangea Chat θα επανασυνδεθεί όταν αποκατασταθεί η σύνδεσή σας.",
     "connectionUnreachable": "Δεν είναι δυνατή η πρόσβαση στο Pangea Chat. Προσπαθώ ξανά…",
-    "connectionBackOnline": "Πάλι συνδεδεμένοι"
+    "connectionBackOnline": "Πάλι συνδεδεμένοι",
+    "missionDueDate": "Λήγει {date}, {time}"
 }

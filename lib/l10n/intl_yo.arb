@@ -2429,5 +2429,6 @@
     "teamCode": "Koodu Ẹgbẹ",
     "connectionOffline": "O ti wa ni aisinipo. Pangea Chat yoo tun sopọ nigbati asopọ rẹ ba pada.",
     "connectionUnreachable": "Ko le de Pangea Chat. N gbiyanju lẹẹkansi…",
-    "connectionBackOnline": "Pada si ori ayelujara"
+    "connectionBackOnline": "Pada si ori ayelujara",
+    "missionDueDate": "Nitori {date}, {time}"
 }

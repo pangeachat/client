@@ -10458,5 +10458,6 @@
     "teamCode": "Kód týmu",
     "connectionOffline": "Jste offline. Pangea Chat se znovu připojí, až budete mít opět připojení.",
     "connectionUnreachable": "Nelze se připojit k Pangea Chatu. Zkouším to znovu…",
-    "connectionBackOnline": "Zpět online"
+    "connectionBackOnline": "Zpět online",
+    "missionDueDate": "Splatné {date}, {time}"
 }

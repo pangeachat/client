@@ -10024,5 +10024,6 @@
     "teamCode": "Teamkode",
     "connectionOffline": "Du er frakoblet. Pangea Chat kobles til igjen når du er på nett.",
     "connectionUnreachable": "Får ikke kontakt med Pangea Chat. Prøver igjen …",
-    "connectionBackOnline": "Tilbake på nett"
+    "connectionBackOnline": "Tilbake på nett",
+    "missionDueDate": "Frist {date}, {time}"
 }

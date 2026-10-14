@@ -2429,5 +2429,6 @@
     "teamCode": "Kode tim",
     "connectionOffline": "Anjeun pareum. Pangea Chat bakal nyambung deui nalika sambungan anjeun balik deui.",
     "connectionUnreachable": "Teu tiasa ngahontal Pangea Chat. Nyobian deui…",
-    "connectionBackOnline": "Balik deui online"
+    "connectionBackOnline": "Balik deui online",
+    "missionDueDate": "Tenggang {date}, {time}"
 }

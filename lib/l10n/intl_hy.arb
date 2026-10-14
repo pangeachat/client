@@ -2429,5 +2429,6 @@
     "teamCode": "Թիմի կոդը",
     "connectionOffline": "Դուք անցանց եք։ Pangea Chat-ը նորից կմիանա, երբ Ձեր կապը վերականգնվի։",
     "connectionUnreachable": "Հնարավոր չէ հասնել Pangea Chat-ին։ Նորից փորձում է…",
-    "connectionBackOnline": "Կրկին առցանց"
+    "connectionBackOnline": "Կրկին առցանց",
+    "missionDueDate": "{date}, {time}-ին"
 }

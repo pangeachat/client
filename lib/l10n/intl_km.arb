@@ -2429,5 +2429,6 @@
     "teamCode": "លេខកូដក្រុម",
     "connectionOffline": "អ្នក​គ្មាន​អ៊ីនធឺណិត​ទេ។ Pangea Chat នឹង​ភ្ជាប់​ឡើងវិញ​នៅពេល​អ្នក​មាន​អ៊ីនធឺណិត​វិញ។",
     "connectionUnreachable": "មិន​អាច​ភ្ជាប់​ទៅ Pangea Chat បាន​ទេ។ កំពុង​ព្យាយាម​ម្ដងទៀត…",
-    "connectionBackOnline": "មាន​អ៊ីនធឺណិត​វិញ​ហើយ"
+    "connectionBackOnline": "មាន​អ៊ីនធឺណិត​វិញ​ហើយ",
+    "missionDueDate": "ដល់កំណត់ {date}, ម៉ោង {time}"
 }

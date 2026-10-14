@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
@@ -92,11 +93,6 @@ class SpaceDetailsController extends State<SpaceDetails> {
 
   String? get _questId => room.coursePlan?.uuid;
 
-  /// The course's per-Mission activity pin (org quests doc, client#7748) —
-  /// null when unset, which is the unrestricted default.
-  Map<String, List<String>>? get _pinnedActivitiesByObjective =>
-      room.teacherMode.pinnedActivitiesByObjective;
-
   @override
   void initState() {
     super.initState();
@@ -110,11 +106,7 @@ class SpaceDetailsController extends State<SpaceDetails> {
       activitiesToCompleteOverride: room.teacherMode.activitiesToUnlockTopic,
     );
 
-    _objectivesProvider.loadOutline(
-      _questId,
-      pinnedActivitiesByObjective: _pinnedActivitiesByObjective,
-      courseRoomId: room.id,
-    );
+    _objectivesProvider.loadOutline(_questId, courseRoomId: room.id);
     _loadSummaries();
     room.joinDefaultChats();
 
@@ -164,11 +156,7 @@ class SpaceDetailsController extends State<SpaceDetails> {
         if (mounted) SpaceGoneGate.maybeShowDialog(context, room.id);
       });
       _handleCoursePing();
-      _objectivesProvider.loadOutline(
-        _questId,
-        pinnedActivitiesByObjective: _pinnedActivitiesByObjective,
-        courseRoomId: room.id,
-      );
+      _objectivesProvider.loadOutline(_questId, courseRoomId: room.id);
       _loadSummaries();
       room.joinDefaultChats();
     }
@@ -276,7 +264,11 @@ class SpaceDetailsController extends State<SpaceDetails> {
             // owner's private activities so the star cap counts them.
             courseRoomId: room.id,
           );
-          return outline.result?.groups
+          // The course's own list (its copy, else its pins): the cap
+          // must be reachable in the Missions this course shows.
+          return outline.result
+              ?.forCourse(room)
+              .groups
               .map(
                 (g) => g.activities.fold(
                   0,

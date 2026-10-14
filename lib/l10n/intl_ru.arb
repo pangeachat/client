@@ -10939,5 +10939,6 @@
     "teamCode": "Код команды",
     "connectionOffline": "Вы не в сети. Pangea Chat переподключится, когда соединение восстановится.",
     "connectionUnreachable": "Не удается подключиться к Pangea Chat. Повторная попытка…",
-    "connectionBackOnline": "Снова в сети"
+    "connectionBackOnline": "Снова в сети",
+    "missionDueDate": "Срок: {date}, {time}"
 }

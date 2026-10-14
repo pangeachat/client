@@ -2429,5 +2429,6 @@
     "teamCode": "ٽيم ڪوڊ",
     "connectionOffline": "توهان آف لائن آهيو. پينجيا چيٽ ٻيهر ڳنڍجي ويندي جڏهن توهان جو ڪنيڪشن واپس ايندو.",
     "connectionUnreachable": "پينجيا چيٽ تائين پهچي نٿو سگهجي. ٻيهر ڪوشش ڪري رهيو آهيان…",
-    "connectionBackOnline": "واپس آن لائن"
+    "connectionBackOnline": "واپس آن لائن",
+    "missionDueDate": "{date} تي، {time} تي"
 }

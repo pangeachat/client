@@ -2429,5 +2429,6 @@
     "teamCode": "Kod pasukan",
     "connectionOffline": "Anda berada di luar talian. Sembang Pangea akan menyambung semula apabila sambungan anda kembali.",
     "connectionUnreachable": "Tidak dapat mencapai Sembang Pangea. Mencuba lagi…",
-    "connectionBackOnline": "Kembali dalam talian"
+    "connectionBackOnline": "Kembali dalam talian",
+    "missionDueDate": "Tamat {date}, {time}"
 }

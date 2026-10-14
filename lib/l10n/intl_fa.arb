@@ -10055,5 +10055,6 @@
     "teamCode": "کد تیم",
     "connectionOffline": "شما آفلاین هستید. پنگه‌آ چت با وصل شدن اینترنت دوباره وصل می‌شود.",
     "connectionUnreachable": "پنگه‌آ چت در دسترس نیست. دوباره تلاش می‌شود…",
-    "connectionBackOnline": "دوباره آنلاین شد"
+    "connectionBackOnline": "دوباره آنلاین شد",
+    "missionDueDate": "موعد مقرر: {date}، ساعت {time}"
 }

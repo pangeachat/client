@@ -10094,5 +10094,6 @@
     "teamCode": "Codi d'equip",
     "connectionOffline": "No tens connexió. Pangea Chat es tornarà a connectar quan la recuperis.",
     "connectionUnreachable": "No es pot accedir a Pangea Chat. S'està tornant a intentar…",
-    "connectionBackOnline": "Torna a estar en línia"
+    "connectionBackOnline": "Torna a estar en línia",
+    "missionDueDate": "Data de venciment: {date}, {time}"
 }

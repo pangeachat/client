@@ -2429,5 +2429,6 @@
     "teamCode": "Kodiċi tat-tim",
     "connectionOffline": "M'intix online. Pangea Chat se jerġa' jgħaqqad meta terġa' jkollok konnessjoni.",
     "connectionUnreachable": "Ma nistax nilħaq Pangea Chat. Qed nipprova mill-ġdid…",
-    "connectionBackOnline": "Erġajt online"
+    "connectionBackOnline": "Erġajt online",
+    "missionDueDate": "Skadenza {date}, {time}"
 }

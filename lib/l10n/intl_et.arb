@@ -9964,5 +9964,6 @@
     "teamCode": "Meeskonna kood",
     "connectionOffline": "Olete võrguühenduseta. Pangea Chat loob uuesti ühenduse, kui teie ühendus taastub.",
     "connectionUnreachable": "Pangea Chatiga ei saa ühendust. Proovin uuesti…",
-    "connectionBackOnline": "Ühendus taastatud"
+    "connectionBackOnline": "Ühendus taastatud",
+    "missionDueDate": "Tähtaeg {date}, {time}"
 }

@@ -2429,5 +2429,6 @@
     "teamCode": "Codice di a squadra",
     "connectionOffline": "Sì fora ligna. Pangea Chat si ricunnetterà quandu a vostra cunnessione serà torna.",
     "connectionUnreachable": "Ùn si pò ghjunghje à Pangea Chat. Pruvendu torna…",
-    "connectionBackOnline": "Torna in ligna"
+    "connectionBackOnline": "Torna in ligna",
+    "missionDueDate": "Da rende u {date}, à {time}"
 }

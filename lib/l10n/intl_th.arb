@@ -10596,5 +10596,6 @@
     "teamCode": "รหัสทีม",
     "connectionOffline": "คุณออฟไลน์อยู่ Pangea Chat จะเชื่อมต่อใหม่เมื่อคุณกลับมาออนไลน์",
     "connectionUnreachable": "ไม่สามารถเข้าถึง Pangea Chat ได้ กำลังลองอีกครั้ง…",
-    "connectionBackOnline": "กลับมาออนไลน์แล้ว"
+    "connectionBackOnline": "กลับมาออนไลน์แล้ว",
+    "missionDueDate": "ครบกำหนด {date}, {time}"
 }

@@ -9967,5 +9967,6 @@
     "teamCode": "团队代码",
     "connectionOffline": "您已离线。Pangea Chat 将在连接恢复后重新连接。",
     "connectionUnreachable": "无法连接到 Pangea Chat。正在重试…",
-    "connectionBackOnline": "已恢复在线"
+    "connectionBackOnline": "已恢复在线",
+    "missionDueDate": "{date} {time} 到期"
 }

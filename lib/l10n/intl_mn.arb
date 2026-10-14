@@ -2429,5 +2429,6 @@
     "teamCode": "Багийн код",
     "connectionOffline": "Та офлайн байна. Таны холболт сэргэх үед Pangea Chat дахин холбогдоно.",
     "connectionUnreachable": "Pangea Chat-д холбогдох боломжгүй байна. Дахин оролдож байна…",
-    "connectionBackOnline": "Онлайн боллоо"
+    "connectionBackOnline": "Онлайн боллоо",
+    "missionDueDate": "{date}, {time} хүртэл"
 }

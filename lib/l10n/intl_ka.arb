@@ -10864,5 +10864,6 @@
     "teamCode": "გუნდის კოდი",
     "connectionOffline": "თქვენ ხართ ხაზგარეშე. Pangea Chat ხელახლა დაუკავშირდება, როდესაც თქვენი კავშირი აღდგება.",
     "connectionUnreachable": "Pangea Chat-თან დაკავშირება შეუძლებელია. ხელახლა ვცდილობ…",
-    "connectionBackOnline": "ხაზზე დაბრუნდა"
+    "connectionBackOnline": "ხაზზე დაბრუნდა",
+    "missionDueDate": "ვადა {date}, {time}"
 }

@@ -10482,5 +10482,6 @@
     "teamCode": "Teamkod",
     "connectionOffline": "Du är offline. Pangea Chat återansluter när du har anslutning igen.",
     "connectionUnreachable": "Kan inte nå Pangea Chat. Försöker igen…",
-    "connectionBackOnline": "Tillbaka online"
+    "connectionBackOnline": "Tillbaka online",
+    "missionDueDate": "Förfaller {date}, {time}"
 }

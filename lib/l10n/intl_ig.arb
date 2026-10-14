@@ -2429,5 +2429,6 @@
     "teamCode": "Koodu otu",
     "connectionOffline": "Ị nọ n'ịntanetị. Pangea Chat ga-ejikọgharị mgbe njikọ gị laghachiri.",
     "connectionUnreachable": "Enweghị ike iru Pangea Chat. Na-anwa ọzọ…",
-    "connectionBackOnline": "Ịntanetị alaghachila"
+    "connectionBackOnline": "Ịntanetị alaghachila",
+    "missionDueDate": "Oge ruru {date}, {time}"
 }

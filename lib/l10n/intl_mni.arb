@@ -2429,5 +2429,6 @@
     "teamCode": "টিম কোড",
     "connectionOffline": "Nangthou offline-ni. Nangthougi connection hallaklabadi Pangea Chat-na amuk hanna connect tougani.",
     "connectionUnreachable": "Pangea Chat-ta paudam yaba ngamde. Amuk hanna hotnari…",
-    "connectionBackOnline": "Amuk hanna online-da leire"
+    "connectionBackOnline": "Amuk hanna online-da leire",
+    "missionDueDate": "{date}, {time} da loisin'ganu"
 }

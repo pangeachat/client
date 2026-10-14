@@ -10900,5 +10900,6 @@
     "teamCode": "Codice de equipa",
     "connectionOffline": "Tu es offline. Pangea Chat se reconnectara quando tu es de nove connectite.",
     "connectionUnreachable": "Non pote attinger Pangea Chat. Tentante de nove…",
-    "connectionBackOnline": "De nove online"
+    "connectionBackOnline": "De nove online",
+    "missionDueDate": "Debite {date}, {time}"
 }

@@ -10909,5 +10909,6 @@
     "teamCode": "Kód tímu",
     "connectionOffline": "Ste offline. Pangea Chat sa znova pripojí, keď budete mať opäť pripojenie.",
     "connectionUnreachable": "Pangea Chat je nedostupný. Skúšam znova…",
-    "connectionBackOnline": "Späť online"
+    "connectionBackOnline": "Späť online",
+    "missionDueDate": "Termín: {date}, {time}"
 }

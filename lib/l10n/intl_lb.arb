@@ -2429,5 +2429,6 @@
     "teamCode": "Team Code",
     "connectionOffline": "Dir sidd offline. Pangea Chat wäert sech erëm verbannen wann Är Verbindung erëm do ass.",
     "connectionUnreachable": "Pangea Chat ass net erreechbar. Probéieren nach eng Kéier…",
-    "connectionBackOnline": "Erem online"
+    "connectionBackOnline": "Erem online",
+    "missionDueDate": "Fälleg {date}, {time}"
 }

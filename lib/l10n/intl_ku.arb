@@ -2429,5 +2429,6 @@
     "teamCode": "کۆدی تیم",
     "connectionOffline": "تۆ ئۆفلاینیت. چاتی پانجیا دووبارە دەبەسترێتەوە کاتێک پەیوەندیت گەڕایەوە.",
     "connectionUnreachable": "ناتوانرێت دەستی بە چاتی پانجیا بگات. دووبارە هەوڵ دەدرێتەوە…",
-    "connectionBackOnline": "گەڕایەوە سەر هێڵ"
+    "connectionBackOnline": "گەڕایەوە سەر هێڵ",
+    "missionDueDate": "کاتی دیاریکراو {date}, {time}"
 }

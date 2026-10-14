@@ -2429,5 +2429,6 @@
     "teamCode": "Kodi i ekipit",
     "connectionOffline": "Je offline. Pangea Chat do të rilidhet kur të kthehet lidhja jote.",
     "connectionUnreachable": "Nuk mund të arrihet Pangea Chat. Po provojmë sërish…",
-    "connectionBackOnline": "Sërish online"
+    "connectionBackOnline": "Sërish online",
+    "missionDueDate": "Afati {date}, {time}"
 }

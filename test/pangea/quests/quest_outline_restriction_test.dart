@@ -3,11 +3,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
+import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
 import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
+import '../courses/course_missions_fixtures.dart';
 
 /// Per-course activity pinning (client#7748): [QuestOutline.restrictedTo] is a
 /// PURE COPY transform — the quest-outline cache is shared across courses that
@@ -184,6 +186,162 @@ void main() {
       );
       // Unrestricted the ceiling would be 10 (4+6 = 10); pinned it is 4.
       expect(resolution.forCourse('q1')!.rollup['lo-1']!.threshold, 4);
+    });
+  });
+
+  /// The course's own copy (content-studio): one pure transform every reader
+  /// goes through. With a copy the course reads only it — its Can-Dos, its
+  /// order, its activities; without one, behaviour is today's pin rule.
+  group('QuestOutline.forRules (course copy)', () {
+    CourseListRules withCopy(
+      Map<String, List<String>> missions, {
+      Map<String, String> notes = const {},
+      Map<String, String> dueAt = const {},
+      String? timeZone,
+    }) => CourseListRules(
+      missions: CourseMissionsEvent.tryParse(
+        copyContent(missions, notes: notes, dueAt: dueAt, timeZone: timeZone),
+      ),
+    );
+
+    QuestOutline threeMissions() => outline({
+      'lo-1': [activity('a1'), activity('a2')],
+      'lo-2': [activity('b1'), activity('b2')],
+      'lo-3': [activity('c1')],
+    });
+
+    test('reorders and restricts to the copy, and orderedLoIds follows it', () {
+      final shown = threeMissions().forRules(
+        withCopy({
+          'lo-3': ['c1'],
+          'lo-1': ['a2'],
+        }),
+      );
+      expect(shown.groups.map((g) => g.objective.id), ['lo-3', 'lo-1']);
+      expect(idsOf(shown, 'lo-1'), {'a2'});
+      // The trap: toCourseLoOutline orders by the quest's sequence, so the
+      // sequence must follow the copy too.
+      expect(shown.quest.learningObjectiveIds, ['lo-3', 'lo-1']);
+      final projected = shown.toCourseLoOutline();
+      expect(projected.orderedLoIds, ['lo-3', 'lo-1']);
+      expect(projected.activityIdsByLo, {
+        'lo-3': {'c1'},
+        'lo-1': {'a2'},
+      });
+    });
+
+    test('an activity the library no longer returns drops; a Can-Do the quest '
+        'no longer carries drops; an emptied Can-Do stays with none', () {
+      final shown = threeMissions().forRules(
+        withCopy({
+          'lo-gone': ['x1'],
+          'lo-2': ['b2', 'withdrawn'],
+          'lo-3': ['withdrawn'],
+        }),
+      );
+      expect(shown.groups.map((g) => g.objective.id), ['lo-2', 'lo-3']);
+      expect(idsOf(shown, 'lo-2'), {'b2'});
+      expect(idsOf(shown, 'lo-3'), isEmpty);
+    });
+
+    test('a Can-Do\'s activities keep the library order, whatever order '
+        'the copy lists them in', () {
+      // Writers snapshot from different listings (the app's creation copy,
+      // the dashboard's publish and the backfill), so the copy's activity
+      // order is not a teacher choice in v1. Reading it as a set keeps what a
+      // student sees unchanged when a copy is written.
+      final shown = threeMissions().forRules(
+        withCopy({
+          'lo-1': ['a2', 'a1'],
+        }),
+      );
+      expect(shown.groups.single.activities.map((a) => a.activityId).toList(), [
+        'a1',
+        'a2',
+      ]);
+    });
+
+    test('ignores the pins when a copy exists', () {
+      final shown = threeMissions().forRules(
+        CourseListRules(
+          missions: withCopy({
+            'lo-1': ['a1', 'a2'],
+          }).missions,
+          pins: {
+            'lo-1': ['a1'],
+          },
+        ),
+      );
+      expect(idsOf(shown, 'lo-1'), {'a1', 'a2'});
+    });
+
+    test('carries the note, due date and course time zone', () {
+      final shown = threeMissions().forRules(
+        withCopy(
+          {
+            'lo-1': ['a1'],
+            'lo-2': ['b1'],
+          },
+          notes: {'lo-1': 'Lesson 6'},
+          dueAt: {'lo-1': '2026-10-20T21:00:00Z'},
+          timeZone: 'America/New_York',
+        ),
+      );
+      final pacing = shown.groups.first.pacing!;
+      expect(pacing.note, 'Lesson 6');
+      expect(pacing.dueAt, DateTime.utc(2026, 10, 20, 21));
+      expect(pacing.timeZone, 'America/New_York');
+      expect(shown.groups.last.pacing, isNull);
+    });
+
+    test('never mutates the shared source outline', () {
+      final source = threeMissions();
+      source.forRules(
+        withCopy({
+          'lo-2': ['b1'],
+        }),
+      );
+      expect(source.groups.map((g) => g.objective.id), [
+        'lo-1',
+        'lo-2',
+        'lo-3',
+      ]);
+      expect(source.quest.learningObjectiveIds, ['lo-1', 'lo-2', 'lo-3']);
+      expect(idsOf(source, 'lo-2'), {'b1', 'b2'});
+    });
+
+    test('no copy is identical to today: restrictedTo(pins)', () {
+      final source = threeMissions();
+      const pins = {
+        'lo-1': ['a1'],
+        'lo-3': ['stale'],
+      };
+      final today = source.restrictedTo(pins).toCourseLoOutline();
+      final shown = source
+          .forRules(const CourseListRules(pins: pins))
+          .toCourseLoOutline();
+      expect(shown.orderedLoIds, today.orderedLoIds);
+      expect(shown.activityIdsByLo, today.activityIdsByLo);
+      expect(shown.earnableByActivity, today.earnableByActivity);
+      expect(identical(source.forRules(CourseListRules.none), source), isTrue);
+    });
+
+    test('the next Mission follows the copy order', () {
+      final resolution = resolveProgression(
+        outlines: [
+          threeMissions()
+              .forRules(
+                withCopy({
+                  'lo-3': ['c1'],
+                  'lo-1': ['a1'],
+                }),
+              )
+              .toCourseLoOutline(),
+        ],
+        starsByActivity: const {},
+      );
+      expect(resolution.forCourse('q1')!.anchorMissionId, 'lo-3');
+      expect(resolution.forCourse('q1')!.rollup.keys, {'lo-3', 'lo-1'});
     });
   });
 }

@@ -2429,5 +2429,6 @@
     "teamCode": "Ikhodi yeqembu",
     "connectionOffline": "Awuxhunyiwe ku-inthanethi. I-Pangea Chat izophinda ixhumeke uma usubuyile ku-inthanethi.",
     "connectionUnreachable": "Ayikwazi ukufinyelela i-Pangea Chat. Izama futhi…",
-    "connectionBackOnline": "Ubuyile ku-inthanethi"
+    "connectionBackOnline": "Ubuyile ku-inthanethi",
+    "missionDueDate": "Kufanele {date}, {time}"
 }

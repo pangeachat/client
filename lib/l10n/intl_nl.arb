@@ -9967,5 +9967,6 @@
     "teamCode": "Teamcode",
     "connectionOffline": "Je bent offline. Pangea Chat maakt opnieuw verbinding wanneer je weer online bent.",
     "connectionUnreachable": "Kan Pangea Chat niet bereiken. Opnieuw proberen…",
-    "connectionBackOnline": "Weer online"
+    "connectionBackOnline": "Weer online",
+    "missionDueDate": "Verloopt op {date}, {time}"
 }

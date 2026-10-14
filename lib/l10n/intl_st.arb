@@ -2429,5 +2429,6 @@
     "teamCode": "Khoutu ea sehlopha",
     "connectionOffline": "Ha o inthaneteng. Pangea Chat e tla hokela hape ha khokahano ea hau e khutla.",
     "connectionUnreachable": "Ha e khone ho fihla ho Pangea Chat. E leka hape…",
-    "connectionBackOnline": "E khutletse inthaneteng"
+    "connectionBackOnline": "E khutletse inthaneteng",
+    "missionDueDate": "E lokela ho etsoa ka {date}, {time}"
 }

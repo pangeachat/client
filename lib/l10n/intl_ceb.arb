@@ -2429,5 +2429,6 @@
     "teamCode": "Team code",
     "connectionOffline": "Offline ka. Ang Pangea Chat magkonektar pag-usab kung mobalik na ang imong koneksyon.",
     "connectionUnreachable": "Dili maabot ang Pangea Chat. Gisulayan pag-usab…",
-    "connectionBackOnline": "Online na usab"
+    "connectionBackOnline": "Online na usab",
+    "missionDueDate": "Angay sa {date}, {time}"
 }

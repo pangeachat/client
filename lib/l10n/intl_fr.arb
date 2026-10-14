@@ -10319,5 +10319,6 @@
     "teamCode": "Code d'équipe",
     "connectionOffline": "Vous êtes hors ligne. Pangea Chat se reconnectera lorsque votre connexion sera rétablie.",
     "connectionUnreachable": "Impossible d'atteindre Pangea Chat. Nouvelle tentative…",
-    "connectionBackOnline": "De nouveau en ligne"
+    "connectionBackOnline": "De nouveau en ligne",
+    "missionDueDate": "Échéance le {date} à {time}"
 }

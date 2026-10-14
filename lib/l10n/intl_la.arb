@@ -2429,5 +2429,6 @@
     "teamCode": "Codex turmae",
     "connectionOffline": "Abes es. Pangea Chat iterum coniungetur cum conexio tua redierit.",
     "connectionUnreachable": "Pangea Chat attingi non potest. Iterum temptatur…",
-    "connectionBackOnline": "Iterum online"
+    "connectionBackOnline": "Iterum online",
+    "missionDueDate": "Debetur {date}, {time}"
 }

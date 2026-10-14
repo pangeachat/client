@@ -9981,5 +9981,6 @@
     "teamCode": "Код каманды",
     "connectionOffline": "Вы па-за сеткай. Pangea Chat адновіць злучэнне, калі ваша злучэнне будзе адноўлена.",
     "connectionUnreachable": "Немагчыма дасягнуць Pangea Chat. Спрабуем яшчэ раз…",
-    "connectionBackOnline": "Зноў у сетцы"
+    "connectionBackOnline": "Зноў у сетцы",
+    "missionDueDate": "Тэрмін {date}, {time}"
 }

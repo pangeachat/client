@@ -2429,5 +2429,6 @@
     "teamCode": "टिम कोड",
     "connectionOffline": "तपाईं अफलाइन हुनुहुन्छ। तपाईंको जडान फिर्ता आउँदा पाङ्गिया च्याट पुन: जडान हुनेछ।",
     "connectionUnreachable": "पाङ्गिया च्याटमा पुग्न सकिएन। फेरि प्रयास गर्दै…",
-    "connectionBackOnline": "फेरि अनलाइन"
+    "connectionBackOnline": "फेरि अनलाइन",
+    "missionDueDate": "{date}, {time} मा बाँकी"
 }

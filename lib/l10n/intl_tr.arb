@@ -10265,5 +10265,6 @@
     "teamCode": "Takım kodu",
     "connectionOffline": "Çevrimdışısınız. Bağlantınız geri geldiğinde Pangea Chat yeniden bağlanacaktır.",
     "connectionUnreachable": "Pangea Chat'e ulaşılamıyor. Tekrar deneniyor…",
-    "connectionBackOnline": "Tekrar çevrimiçi"
+    "connectionBackOnline": "Tekrar çevrimiçi",
+    "missionDueDate": "{date}, {time} tarihinde bitiyor"
 }

@@ -2429,5 +2429,6 @@
     "teamCode": "Waehere tīma",
     "connectionOffline": "Kua momotu koe. Ka hono anō a Pangea Chat ina hoki mai tō hononga.",
     "connectionUnreachable": "Kāore e taea te tae atu ki a Pangea Chat. E ngana anō ana…",
-    "connectionBackOnline": "Kua hoki mai anō ki te ipurangi"
+    "connectionBackOnline": "Kua hoki mai anō ki te ipurangi",
+    "missionDueDate": "Me oti i te {date}, {time}"
 }

@@ -2429,5 +2429,6 @@
     "teamCode": "टीम कोड",
     "connectionOffline": "तुम्ही ऑफलाइन आहात. तुमचं कनेक्शन परत आल्यावर पँजिया चॅट पुन्हा कनेक्ट होईल.",
     "connectionUnreachable": "पँजिया चॅटपर्यंत पोहोचता येत नाही. पुन्हा प्रयत्न करत आहे…",
-    "connectionBackOnline": "पुन्हा ऑनलाइन"
+    "connectionBackOnline": "पुन्हा ऑनलाइन",
+    "missionDueDate": "{date}, {time} रोजी देय"
 }

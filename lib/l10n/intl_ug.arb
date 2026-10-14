@@ -2429,5 +2429,6 @@
     "teamCode": "گۇرۇپپا كودى",
     "connectionOffline": "سىز تورسىز. Pangea پاراڭلىشىش تور ئۇلىنىشىڭىز ئەسلىگە كەلگەندە قايتا ئۇلىنىدۇ.",
     "connectionUnreachable": "Pangea پاراڭلىشىشقا يېتىش مۇمكىن ئەمەس. قايتا سىناۋاتىدۇ…",
-    "connectionBackOnline": "تورغا قايتا چىقتى"
+    "connectionBackOnline": "تورغا قايتا چىقتى",
+    "missionDueDate": "{date}, {time} غا قەدەر"
 }

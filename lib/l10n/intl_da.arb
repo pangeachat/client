@@ -10884,5 +10884,6 @@
     "teamCode": "Teamkode",
     "connectionOffline": "Du er offline. Pangea Chat opretter forbindelse igen, når du er online.",
     "connectionUnreachable": "Kan ikke nå Pangea Chat. Prøver igen…",
-    "connectionBackOnline": "Tilbage online"
+    "connectionBackOnline": "Tilbage online",
+    "missionDueDate": "Forfalder {date}, {time}"
 }

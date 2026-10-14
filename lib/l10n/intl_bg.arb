@@ -2429,5 +2429,6 @@
     "teamCode": "Код на екипа",
     "connectionOffline": "Нямате връзка. Pangea Chat ще се свърже отново, когато връзката ви се възстанови.",
     "connectionUnreachable": "Pangea Chat е недостъпен. Опитва се отново...",
-    "connectionBackOnline": "Връзката е възстановена"
+    "connectionBackOnline": "Връзката е възстановена",
+    "missionDueDate": "Краен срок: {date}, {time}"
 }

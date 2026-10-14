@@ -2429,5 +2429,6 @@
     "teamCode": "Рамзи даста",
     "connectionOffline": "Шумо офлайн ҳастед. Pangea Chat ҳангоми барқарор шудани пайвастшавӣ дубора пайваст мешавад.",
     "connectionUnreachable": "Ба Pangea Chat дастрасӣ нест. Аз нав кӯшиш карда мешавад…",
-    "connectionBackOnline": "Дубора онлайн шуд"
+    "connectionBackOnline": "Дубора онлайн шуд",
+    "missionDueDate": "Бояд иҷро шавад {date}, {time}"
 }

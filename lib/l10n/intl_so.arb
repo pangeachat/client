@@ -2429,5 +2429,6 @@
     "teamCode": "Koodhka kooxda",
     "connectionOffline": "Waxaad ka maqan tahay khadka. Pangea Chat dib ayuu isku xirayaa marka xiriirkaagu soo laabto.",
     "connectionUnreachable": "Lama gaari karo Pangea Chat. Mar kale ayuu isku dayayaa…",
-    "connectionBackOnline": "Khadkii ayaa soo laabtay"
+    "connectionBackOnline": "Khadkii ayaa soo laabtay",
+    "missionDueDate": "Waxaa la gaarayaa {date}, {time}"
 }

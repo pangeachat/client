@@ -10596,5 +10596,6 @@
     "teamCode": "टीम कोड",
     "connectionOffline": "आप ऑफ़लाइन हैं। आपका कनेक्शन वापस आने पर पेंजिया चैट फिर से कनेक्ट हो जाएगा।",
     "connectionUnreachable": "पेंजिया चैट तक नहीं पहुँच सकते। फिर से कोशिश कर रहा है…",
-    "connectionBackOnline": "वापस ऑनलाइन"
+    "connectionBackOnline": "वापस ऑनलाइन",
+    "missionDueDate": "{date}, {time} को देय"
 }

@@ -10270,5 +10270,6 @@
     "teamCode": "رمز الفريق",
     "connectionOffline": "أنت غير متصل. ستتم إعادة الاتصال بـ Pangea Chat عند عودة اتصالك.",
     "connectionUnreachable": "لا يمكن الوصول إلى Pangea Chat. جارٍ المحاولة مرة أخرى…",
-    "connectionBackOnline": "عاد الاتصال"
+    "connectionBackOnline": "عاد الاتصال",
+    "missionDueDate": "تستحق في {date}، الساعة {time}"
 }

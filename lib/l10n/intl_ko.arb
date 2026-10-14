@@ -10160,5 +10160,6 @@
     "teamCode": "팀 코드",
     "connectionOffline": "오프라인 상태입니다. 연결이 복원되면 Pangea Chat이 다시 연결됩니다.",
     "connectionUnreachable": "Pangea Chat에 연결할 수 없습니다. 다시 시도 중…",
-    "connectionBackOnline": "온라인 상태로 돌아왔습니다."
+    "connectionBackOnline": "온라인 상태로 돌아왔습니다.",
+    "missionDueDate": "{date} {time} 마감"
 }

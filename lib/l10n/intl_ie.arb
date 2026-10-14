@@ -10596,5 +10596,6 @@
     "teamCode": "Cód foirne",
     "connectionOffline": "Tá tú as líne. Déanfaidh Pangea Chat athcheangal nuair a bheidh do nasc ar ais.",
     "connectionUnreachable": "Ní féidir Pangea Chat a bhaint amach. Ag iarraidh arís…",
-    "connectionBackOnline": "Ar ais ar líne"
+    "connectionBackOnline": "Ar ais ar líne",
+    "missionDueDate": "Le {date}, {time}"
 }

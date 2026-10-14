@@ -2429,5 +2429,6 @@
     "teamCode": "Tim kɔd",
     "connectionOffline": "Yu de offline. Pangea Chat go reconnect wen yu connection kam bak.",
     "connectionUnreachable": "Pangea Chat nɔ de rich. De tray bak…",
-    "connectionBackOnline": "Dɔn kɔm bak ɔnlayn"
+    "connectionBackOnline": "Dɔn kɔm bak ɔnlayn",
+    "missionDueDate": "Fɔ du {date}, {time}"
 }

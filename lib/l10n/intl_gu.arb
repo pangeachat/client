@@ -2429,5 +2429,6 @@
     "teamCode": "ટીમ કોડ",
     "connectionOffline": "તમે ઑફલાઇન છો. તમારું કનેક્શન પાછું આવશે ત્યારે Pangea Chat ફરીથી કનેક્ટ થશે.",
     "connectionUnreachable": "Pangea Chat સુધી પહોંચી શકાતું નથી. ફરીથી પ્રયાસ કરી રહ્યું છે…",
-    "connectionBackOnline": "ફરીથી ઑનલાઇન"
+    "connectionBackOnline": "ફરીથી ઑનલાઇન",
+    "missionDueDate": "{date}, {time} ના રોજ થવાનું છે"
 }

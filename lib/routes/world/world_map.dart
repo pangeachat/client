@@ -13,6 +13,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
@@ -31,6 +32,7 @@ import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
@@ -221,6 +223,7 @@ class WorldMapController extends State<WorldMap>
   Client? _client;
 
   StreamSubscription<dynamic>? _syncSub;
+  StreamSubscription<dynamic>? _courseMissionsSub;
   StreamSubscription? _languageSubscription;
   StreamSubscription? _settingsSubscription;
 
@@ -375,6 +378,13 @@ class WorldMapController extends State<WorldMap>
       _recomputePinged(client);
       _discoverCoursemateSessions(client);
       _loadSessionParticipants(client);
+      // A teacher publishing a course's own copy (content-studio) changes that
+      // course's Missions: rebuild the outlines (the rebuild check compares
+      // copy revisions) and, when it is the course on screen, its markers.
+      _courseMissionsSub?.cancel();
+      _courseMissionsSub = client.onRoomState.stream
+          .where((u) => u.state.type == PangeaEventTypes.courseMissions)
+          .listen((u) => _onCourseMissionsChange(client, u.roomId));
       _syncSub?.cancel();
       _syncSub = client.onSync.stream
           .where((s) => s.hasRoomUpdate)
@@ -431,9 +441,22 @@ class WorldMapController extends State<WorldMap>
     }
   }
 
+  void _onCourseMissionsChange(Client client, String roomId) {
+    if (!mounted) return;
+    _maybeRebuildObjectiveCache(client);
+    final courseRoom = this.courseRoom;
+    if (courseRoom == null || courseRoom.id != roomId) return;
+    if (courseRoom.courseListRules.revision ==
+        _pinsManager.courseScopedCopyRevision) {
+      return;
+    }
+    _loadForContext();
+  }
+
   @override
   void dispose() {
     _syncSub?.cancel();
+    _courseMissionsSub?.cancel();
     _languageSubscription?.cancel();
     _settingsSubscription?.cancel();
     _refetchDebounce?.cancel();
@@ -739,14 +762,13 @@ class WorldMapController extends State<WorldMap>
       case CourseMapContext():
         _ensureScopedCourseOutline(mapContext.coursePlanId);
         try {
-          // The joined course's per-Mission activity pin scopes this view's
-          // markers (org quests doc, client#7748); not joined / unset → null →
-          // unrestricted.
+          // The joined course's own list scopes this view's markers: its copy
+          // (content-studio), else its per-Mission activity pins (client#7748);
+          // not joined → no rules → unrestricted.
           final courseRoom = this.courseRoom;
           await _pinsManager.loadCourseScopedPins(
             mapContext.coursePlanId,
-            pinnedActivitiesByObjective:
-                courseRoom?.teacherMode.pinnedActivitiesByObjective,
+            rules: courseRoom?.courseListRules ?? CourseListRules.none,
             // Joined-member reads may include the quest owner's private
             // activities (membership-verified server-side); not joined →
             // null → public rows only.

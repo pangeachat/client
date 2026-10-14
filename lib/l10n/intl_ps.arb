@@ -2429,5 +2429,6 @@
     "teamCode": "د ټیم کوډ",
     "connectionOffline": "تاسو آفلاین یاست. پانګیا چیټ به بیا وصل شي کله چې ستاسو اړیکه بیرته راشي.",
     "connectionUnreachable": "پانګیا چیټ ته لاسرسی نشته. بیا هڅه کوم…",
-    "connectionBackOnline": "بیا آنلاین شو"
+    "connectionBackOnline": "بیا آنلاین شو",
+    "missionDueDate": "د {date}, {time} پورې"
 }

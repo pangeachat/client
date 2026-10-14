@@ -9967,5 +9967,6 @@
     "teamCode": "Код команди",
     "connectionOffline": "Ви офлайн. Pangea Chat відновить з'єднання, коли ваше підключення відновиться.",
     "connectionUnreachable": "Не вдається зв'язатися з Pangea Chat. Повторна спроба…",
-    "connectionBackOnline": "Знову онлайн"
+    "connectionBackOnline": "Знову онлайн",
+    "missionDueDate": "Термін: {date}, {time}"
 }

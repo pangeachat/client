@@ -2429,5 +2429,6 @@
     "teamCode": "Còd sgioba",
     "connectionOffline": "Tha thu far-loidhne. Nì Pangea Chat ath-cheangal nuair a bhios an ceangal agad air ais.",
     "connectionUnreachable": "Chan urrainn dhuinn Pangea Chat a ruighinn. A’ feuchainn a-rithist…",
-    "connectionBackOnline": "Air ais air-loidhne"
+    "connectionBackOnline": "Air ais air-loidhne",
+    "missionDueDate": "Ri phàigheadh {date}, {time}"
 }

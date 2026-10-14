@@ -10913,5 +10913,6 @@
     "teamCode": "Kod tima",
     "connectionOffline": "Nema interneta. Pangea Chat će se ponovo povezati kada se veza uspostavi.",
     "connectionUnreachable": "Pangea Chat je nedostupan. Pokušavam ponovo…",
-    "connectionBackOnline": "Ponovo na mreži"
+    "connectionBackOnline": "Ponovo na mreži",
+    "missionDueDate": "Rok: {date}, {time}"
 }

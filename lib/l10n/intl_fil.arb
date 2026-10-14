@@ -10824,5 +10824,6 @@
     "teamCode": "Code ng team",
     "connectionOffline": "Offline ka. Muling magkokonekta ang Pangea Chat kapag bumalik na ang iyong koneksyon.",
     "connectionUnreachable": "Hindi maabot ang Pangea Chat. Sinusubukang muli…",
-    "connectionBackOnline": "Online na ulit"
+    "connectionBackOnline": "Online na ulit",
+    "missionDueDate": "Takdang petsa {date}, {time}"
 }

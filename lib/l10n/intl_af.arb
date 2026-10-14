@@ -2429,5 +2429,6 @@
     "teamCode": "Spankode",
     "connectionOffline": "Jy is vanlyn. Pangea Chat sal weer koppel sodra jou verbinding herstel is.",
     "connectionUnreachable": "Kan nie Pangea Chat bereik nie. Probeer weer…",
-    "connectionBackOnline": "Weer aanlyn"
+    "connectionBackOnline": "Weer aanlyn",
+    "missionDueDate": "Verval {date}, {time}"
 }

@@ -2429,5 +2429,6 @@
     "teamCode": "Kòd ekip",
     "connectionOffline": "Ou dekonekte. Pangea Chat ap rekonekte lè ou gen yon koneksyon ankò.",
     "connectionUnreachable": "Pangea Chat pa ka jwenn. Ap eseye ankò…",
-    "connectionBackOnline": "Ou rekonekte"
+    "connectionBackOnline": "Ou rekonekte",
+    "missionDueDate": "Dat limit: {date}, {time}"
 }

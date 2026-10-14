@@ -10733,5 +10733,6 @@
     "teamCode": "チームコード",
     "connectionOffline": "オフラインです。接続が回復すると、Pangea Chatは再接続します。",
     "connectionUnreachable": "Pangea Chatに到達できません。再試行中…",
-    "connectionBackOnline": "オンラインに戻りました"
+    "connectionBackOnline": "オンラインに戻りました",
+    "missionDueDate": "{date} {time} 期限"
 }

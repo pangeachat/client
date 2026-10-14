@@ -2429,5 +2429,6 @@
     "teamCode": "Lambar ƙungiya",
     "connectionOffline": "Baka a layi. Pangea Chat zai sake haɗawa idan haɗin ku ya dawo.",
     "connectionUnreachable": "Ba a iya kaiwa ga Pangea Chat. Ana sake gwadawa…",
-    "connectionBackOnline": "An dawo kan layi"
+    "connectionBackOnline": "An dawo kan layi",
+    "missionDueDate": "Ranar ƙarshe {date}, {time}"
 }

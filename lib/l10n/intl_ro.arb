@@ -10696,5 +10696,6 @@
     "teamCode": "Codul echipei",
     "connectionOffline": "Ești offline. Pangea Chat se va reconecta când vei avea din nou o conexiune.",
     "connectionUnreachable": "Pangea Chat nu poate fi accesat. Se încearcă din nou…",
-    "connectionBackOnline": "Revenit online"
+    "connectionBackOnline": "Revenit online",
+    "missionDueDate": "Scadența: {date}, {time}"
 }

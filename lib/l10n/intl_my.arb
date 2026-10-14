@@ -2429,5 +2429,6 @@
     "teamCode": "အဖွဲ့ကုဒ်",
     "connectionOffline": "သင်အော့ဖ်လိုင်းဖြစ်နေပါသည်။ သင်၏အင်တာနက်ချိတ်ဆက်မှုပြန်ရသည်နှင့် Pangea Chat ပြန်လည်ချိတ်ဆက်ပါမည်။",
     "connectionUnreachable": "Pangea Chat သို့ရောက်ရှိနိုင်ခြင်းမရှိပါ။ ထပ်မံကြိုးစားနေသည်...",
-    "connectionBackOnline": "အွန်လိုင်းပြန်ရောက်ပါပြီ"
+    "connectionBackOnline": "အွန်လိုင်းပြန်ရောက်ပါပြီ",
+    "missionDueDate": "{date}, {time} တွင်ပြီးဆုံးမည်"
 }

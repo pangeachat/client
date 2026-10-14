@@ -2429,5 +2429,6 @@
     "teamCode": "ଟିମ୍ କୋଡ୍",
     "connectionOffline": "ଆପଣ ଅଫଲାଇନ ଅଛନ୍ତି। ଆପଣଙ୍କ ସଂଯୋଗ ଫେରି ଆସିଲେ Pangea Chat ପୁନଃସଂଯୋଗ ହେବ।",
     "connectionUnreachable": "Pangea Chat ସହିତ ସଂଯୋଗ ହୋଇପାରୁ ନାହିଁ। ପୁଣି ଚେଷ୍ଟା କରାଯାଉଛି…",
-    "connectionBackOnline": "ପୁଣି ଅନଲାଇନରେ"
+    "connectionBackOnline": "ପୁଣି ଅନଲାଇନରେ",
+    "missionDueDate": "ଦେୟ {date}, {time}"
 }

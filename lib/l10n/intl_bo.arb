@@ -9575,5 +9575,6 @@
     "teamCode": "ཚོགས་པའི་ཨང་གྲངས།",
     "connectionOffline": "ཁྱེད་རང་དྲ་རྒྱ་ནས་ཕྱིར་ཐོན་འདུག ཁྱེད་ཀྱི་དྲ་རྒྱ་སླར་གསོ་བྱུང་སྐབས་Pangea Chat སླར་གསོ་བྱེད་ངེས།",
     "connectionUnreachable": "Pangea Chat ལ་འབྲེལ་གཏུགས་བྱེད་མི་ཐུབ། སླར་ཡང་འབྲེལ་གཏུགས་བྱེད་བཞིན་ཡོད།",
-    "connectionBackOnline": "དྲ་རྒྱ་སླར་གསོ་བྱུང་།"
+    "connectionBackOnline": "དྲ་རྒྱ་སླར་གསོ་བྱུང་།",
+    "missionDueDate": "{date}, {time} ལ་ཚང་དགོས།"
 }

@@ -2429,5 +2429,6 @@
     "teamCode": "ടീം കോഡ്",
     "connectionOffline": "നിങ്ങൾ ഓഫ്‌ലൈനിലാണ്. കണക്ഷൻ തിരിച്ചെത്തുമ്പോൾ പാൻജിയ ചാറ്റ് വീണ്ടും കണക്റ്റ് ചെയ്യും.",
     "connectionUnreachable": "പാൻജിയ ചാറ്റിലേക്ക് എത്താനാവുന്നില്ല. വീണ്ടും ശ്രമിക്കുന്നു...",
-    "connectionBackOnline": "ഓൺലൈനിൽ തിരിച്ചെത്തി"
+    "connectionBackOnline": "ഓൺലൈനിൽ തിരിച്ചെത്തി",
+    "missionDueDate": "{date}, {time} ന്"
 }

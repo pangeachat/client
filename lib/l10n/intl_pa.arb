@@ -2429,5 +2429,6 @@
     "teamCode": "ਟੀਮ ਕੋਡ",
     "connectionOffline": "ਤੁਸੀਂ ਔਫਲਾਈਨ ਹੋ। ਜਦੋਂ ਤੁਹਾਡਾ ਕਨੈਕਸ਼ਨ ਵਾਪਸ ਆਵੇਗਾ ਤਾਂ ਪੈਂਗੇਆ ਚੈਟ ਮੁੜ ਕਨੈਕਟ ਹੋ ਜਾਵੇਗੀ।",
     "connectionUnreachable": "ਪੈਂਗੇਆ ਚੈਟ ਤੱਕ ਪਹੁੰਚ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ। ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ…",
-    "connectionBackOnline": "ਵਾਪਸ ਔਨਲਾਈਨ"
+    "connectionBackOnline": "ਵਾਪਸ ਔਨਲਾਈਨ",
+    "missionDueDate": "{date}, {time} ਨੂੰ ਨਿਰਧਾਰਤ"
 }

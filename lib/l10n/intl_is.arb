@@ -2429,5 +2429,6 @@
     "teamCode": "Liðskóði",
     "connectionOffline": "Þú ert ótengdur. Pangea Chat mun tengjast aftur þegar nettengingin er komin á.",
     "connectionUnreachable": "Næ ekki sambandi við Pangea Chat. Reyni aftur…",
-    "connectionBackOnline": "Aftur á netinu"
+    "connectionBackOnline": "Aftur á netinu",
+    "missionDueDate": "Skilafrestur {date}, {time}"
 }

@@ -8196,5 +8196,6 @@
     "teamCode": "Código de equipo",
     "connectionOffline": "Estás sin conexión. Pangea Chat se reconectará cuando recuperes la conexión.",
     "connectionUnreachable": "No se puede conectar con Pangea Chat. Intentando de nuevo…",
-    "connectionBackOnline": "De nuevo en línea"
+    "connectionBackOnline": "De nuevo en línea",
+    "missionDueDate": "Vence el {date} a las {time}"
 }

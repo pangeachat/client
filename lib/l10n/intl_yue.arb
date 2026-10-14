@@ -10921,5 +10921,6 @@
     "teamCode": "團隊代碼",
     "connectionOffline": "你已離線。當你嘅連線恢復時，Pangea Chat 會自動重新連接。",
     "connectionUnreachable": "無法連接到 Pangea Chat。正在重試…",
-    "connectionBackOnline": "已重新連線"
+    "connectionBackOnline": "已重新連線",
+    "missionDueDate": "{date} {time} 到期"
 }

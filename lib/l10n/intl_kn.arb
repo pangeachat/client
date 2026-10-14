@@ -2429,5 +2429,6 @@
     "teamCode": "ತಂಡದ ಕೋಡ್",
     "connectionOffline": "ನೀವು ಆಫ್‌ಲೈನ್‌ನಲ್ಲಿದ್ದೀರಿ. ನಿಮ್ಮ ಸಂಪರ್ಕ ಮರಳಿ ಬಂದಾಗ ಪ್ಯಾಂಗಿಯಾ ಚಾಟ್ ಮರುಸಂಪರ್ಕಗೊಳ್ಳುತ್ತದೆ.",
     "connectionUnreachable": "ಪ್ಯಾಂಗಿಯಾ ಚಾಟ್ ತಲುಪಲು ಸಾಧ್ಯವಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಲಾಗುತ್ತಿದೆ…",
-    "connectionBackOnline": "ಮರಳಿ ಆನ್‌ಲೈನ್"
+    "connectionBackOnline": "ಮರಳಿ ಆನ್‌ಲೈನ್",
+    "missionDueDate": "{date}, {time} ರಂದು ನಿಗದಿಯಾಗಿದೆ"
 }

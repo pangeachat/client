@@ -2429,5 +2429,6 @@
     "teamCode": "Kaody ekipa",
     "connectionOffline": "Tsy mifandray amin'ny aterineto ianao. Hifandray indray ny Pangea Chat rehefa tafaverina ny fifandraisanao.",
     "connectionUnreachable": "Tsy afaka mifandray amin'ny Pangea Chat. Manandrana indray…",
-    "connectionBackOnline": "Tafaverina amin'ny aterineto"
+    "connectionBackOnline": "Tafaverina amin'ny aterineto",
+    "missionDueDate": "Tokony ho vita amin'ny {date}, {time}"
 }

@@ -10040,5 +10040,6 @@
     "teamCode": "Kode tim",
     "connectionOffline": "Anda sedang offline. Pangea Chat akan menyambung kembali saat koneksi Anda pulih.",
     "connectionUnreachable": "Tidak dapat menjangkau Pangea Chat. Mencoba lagi…",
-    "connectionBackOnline": "Kembali online"
+    "connectionBackOnline": "Kembali online",
+    "missionDueDate": "Jatuh tempo {date}, {time}"
 }

@@ -7274,5 +7274,6 @@
     "teamCode": "Mã nhóm",
     "connectionOffline": "Bạn đang ngoại tuyến. Pangea Chat sẽ kết nối lại khi có mạng.",
     "connectionUnreachable": "Không thể kết nối với Pangea Chat. Đang thử lại…",
-    "connectionBackOnline": "Đã trực tuyến trở lại"
+    "connectionBackOnline": "Đã trực tuyến trở lại",
+    "missionDueDate": "Đến hạn {date}, {time}"
 }

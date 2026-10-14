@@ -9971,5 +9971,6 @@
     "teamCode": "Jamoa kodi",
     "connectionOffline": "Siz oflaynsiz. Ulanish tiklanganda Pangea Chat qayta ulanadi.",
     "connectionUnreachable": "Pangea Chat'ga ulanib bo'lmadi. Qayta urinilmoqda…",
-    "connectionBackOnline": "Tarmoqqa qayta ulandik"
+    "connectionBackOnline": "Tarmoqqa qayta ulandik",
+    "missionDueDate": "{date}, {time} da tugaydi"
 }

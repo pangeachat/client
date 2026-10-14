@@ -2429,5 +2429,6 @@
     "teamCode": "Команда коду",
     "connectionOffline": "Сиз оффлайнсыз. Pangea Chat байланышыңыз кайра келгенде кайра туташат.",
     "connectionUnreachable": "Pangea Chat'ка жете албай жатабыз. Кайра аракет кылууда…",
-    "connectionBackOnline": "Кайра онлайн"
+    "connectionBackOnline": "Кайра онлайн",
+    "missionDueDate": "{date}, {time} чейин"
 }

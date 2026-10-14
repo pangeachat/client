@@ -1,6 +1,8 @@
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
@@ -26,6 +28,20 @@ class ActivityCourseResolver {
       matches.complete && matches.matches.length == 1
       ? matches.matches.single.id
       : null;
+
+  /// Whether a course running [quest] lists the activity. With the course's
+  /// own [copy] (content-studio): only when a listed Can-Do the activity
+  /// satisfies lists it — a removed Can-Do or a dropped activity is no longer
+  /// this course's. Without one: the quest's Missions intersect the
+  /// activity's LO refs, exactly as before.
+  static bool listsActivity(
+    QuestPlan quest,
+    CourseMissionsEvent? copy, {
+    required String activityId,
+    required Set<String> activityRefs,
+  }) => copy != null
+      ? copy.listsActivity(quest, activityId, activityRefs)
+      : quest.learningObjectiveIds.any(activityRefs.contains);
 
   /// Joined course spaces the activity is **eligible** for: those whose quest
   /// Learning Objectives intersect the activity's own LO refs, at a matching
@@ -91,7 +107,12 @@ class ActivityCourseResolver {
               short(quest.targetLanguage) != short(activityL2)) {
             return;
           }
-          if (quest.learningObjectiveIds.any(activityRefs.contains)) {
+          if (listsActivity(
+            quest,
+            space.courseMissions,
+            activityId: activityId,
+            activityRefs: activityRefs,
+          )) {
             matching.add(space);
           }
         } catch (_) {

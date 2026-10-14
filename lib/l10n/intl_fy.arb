@@ -2429,5 +2429,6 @@
     "teamCode": "Teamkoade",
     "connectionOffline": "Jo binne offline. Pangea Chat sil opnij ferbine as jo ferbining werom is.",
     "connectionUnreachable": "Pangea Chat is net berikber. Op 'e nij besykje…",
-    "connectionBackOnline": "Wer online"
+    "connectionBackOnline": "Wer online",
+    "missionDueDate": "Ferfaldatum {date}, {time}"
 }

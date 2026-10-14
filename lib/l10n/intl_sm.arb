@@ -2429,5 +2429,6 @@
     "teamCode": "Tulafono a le 'au",
     "connectionOffline": "Ua le fesoʻotaʻiga. O le a toe fesoʻotaʻi Pangea Chat pe a toe maua lau fesoʻotaʻiga.",
     "connectionUnreachable": "E le mafai ona maua Pangea Chat. Toe taumafai…",
-    "connectionBackOnline": "Ua toe fesoʻotaʻi"
+    "connectionBackOnline": "Ua toe fesoʻotaʻi",
+    "missionDueDate": "E tatau ona maeʻa {date}, {time}"
 }

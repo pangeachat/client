@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:intl/intl.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
@@ -51,6 +52,7 @@ void main() {
     MissionProgress? progress,
     bool collapsed = false,
     VoidCallback? onToggleCollapsed,
+    MissionPacing? pacing,
   }) => MaterialApp(
     localizationsDelegates: L10n.localizationsDelegates,
     supportedLocales: L10n.supportedLocales,
@@ -59,6 +61,7 @@ void main() {
         group: QuestObjectiveGroup(
           objective: LearningObjective(id: 'lo-1', objective: objectiveText),
           activities: [QuestActivity(activityId: 'a-0', plan: plan())],
+          pacing: pacing,
         ),
         onTap: (_) {},
         userStarsByActivity: (_) => 0,
@@ -85,12 +88,15 @@ void main() {
     double width, {
     required bool isUpNext,
     MissionProgress? progress,
+    MissionPacing? pacing,
   }) async {
     tester.view.physicalSize = Size(width, 900);
     tester.view.devicePixelRatio = 1.0;
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
-    await tester.pumpWidget(wrap(isUpNext: isUpNext, progress: progress));
+    await tester.pumpWidget(
+      wrap(isUpNext: isUpNext, progress: progress, pacing: pacing),
+    );
     await tester.pumpAndSettle();
   }
 
@@ -215,5 +221,203 @@ void main() {
       expect(find.text(objectiveText), findsOneWidget);
       expect(find.text('Old Town Directions'), findsNothing);
     });
+  });
+
+  // The course's own note and soft due date (content-studio): the date as a
+  // chip in the header, the note under the title, in the course's time zone,
+  // and nothing changes after the date. The chip's text shares a line with its
+  // icon, so it is found by containment.
+  group('Mission note and due date', () {
+    final year = DateTime.now().year;
+    // 21:00 UTC on Oct 20 is 5:00 PM in New York (EDT) and 6:00 AM on Oct 21
+    // in Tokyo — two zones that cannot both match the device's.
+    final dueAt = DateTime.utc(year, 10, 20, 21);
+    const dueLabel = 'Due Oct 20, 5:00 PM';
+
+    Future<void> pumpPacing(
+      WidgetTester tester,
+      MissionPacing pacing, {
+      bool collapsed = false,
+    }) async {
+      await tester.pumpWidget(
+        wrap(isUpNext: false, pacing: pacing, collapsed: collapsed),
+      );
+      await tester.pumpAndSettle();
+    }
+
+    /// The tappable Mission header: the nearest ink around the statement.
+    Finder header() => find
+        .ancestor(of: find.text(objectiveText), matching: find.byType(InkWell))
+        .first;
+
+    testWidgets('shows the note and the due date in the course zone', (
+      tester,
+    ) async {
+      await pumpPacing(
+        tester,
+        MissionPacing(
+          note: 'Lesson 6',
+          dueAt: dueAt,
+          timeZone: 'America/New_York',
+        ),
+      );
+      expect(find.text('Lesson 6'), findsOneWidget);
+      expect(find.textContaining(dueLabel), findsOneWidget);
+    });
+
+    // The date sits under the title, not beside it, so the can-do statement
+    // keeps the header's full width in both layouts.
+    for (final width in [1200.0, 400.0]) {
+      testWidgets('the due date sits under the title at width $width', (
+        tester,
+      ) async {
+        await pumpAt(
+          tester,
+          width,
+          isUpNext: true,
+          progress: const MissionProgress(stars: 0, threshold: 4),
+          pacing: MissionPacing(dueAt: dueAt, timeZone: 'America/New_York'),
+        );
+        final due = find.textContaining(dueLabel);
+        expect(due, findsOneWidget);
+        expect(find.descendant(of: header(), matching: due), findsNothing);
+        expect(
+          tester.getTopLeft(due).dy,
+          greaterThanOrEqualTo(
+            tester.getBottomLeft(find.text(objectiveText)).dy,
+          ),
+        );
+      });
+    }
+
+    testWidgets('a folded Mission keeps its due date and hides its note', (
+      tester,
+    ) async {
+      await pumpPacing(
+        tester,
+        MissionPacing(
+          note: 'Lesson 6',
+          dueAt: dueAt,
+          timeZone: 'America/New_York',
+        ),
+        collapsed: true,
+      );
+      expect(find.textContaining(dueLabel), findsOneWidget);
+      expect(find.text('Lesson 6'), findsNothing);
+    });
+
+    testWidgets('a long note is clamped behind Show more', (tester) async {
+      await pumpAt(
+        tester,
+        400,
+        isUpNext: false,
+        pacing: MissionPacing(note: List.filled(20, 'Lesson six.').join(' ')),
+      );
+      expect(find.text('Show more'), findsOneWidget);
+
+      await tester.tap(find.text('Show more'));
+      await tester.pumpAndSettle();
+      expect(find.text('Show less'), findsOneWidget);
+    });
+
+    testWidgets('a different course zone shows a different wall time', (
+      tester,
+    ) async {
+      await pumpPacing(
+        tester,
+        MissionPacing(dueAt: dueAt, timeZone: 'Asia/Tokyo'),
+      );
+      expect(find.textContaining('Due Oct 21, 6:00 AM'), findsOneWidget);
+    });
+
+    testWidgets('no course zone shows the device local time', (tester) async {
+      await pumpPacing(tester, MissionPacing(dueAt: dueAt));
+      final local = dueAt.toLocal();
+      expect(
+        find.textContaining(
+          'Due ${DateFormat.MMMd('en').format(local)}, '
+          '${DateFormat('h:mm a', 'en').format(local)}',
+        ),
+        findsOneWidget,
+      );
+    });
+
+    testWidgets('a past due date still shows and leaves the activities', (
+      tester,
+    ) async {
+      await pumpPacing(
+        tester,
+        MissionPacing(
+          dueAt: DateTime.utc(year, 1, 2, 21),
+          timeZone: 'America/New_York',
+        ),
+      );
+      expect(find.textContaining('Due Jan 2, 4:00 PM'), findsOneWidget);
+      expect(find.text('Old Town Directions'), findsOneWidget);
+    });
+
+    testWidgets('no pacing adds no lines', (tester) async {
+      await tester.pumpWidget(wrap(isUpNext: false));
+      await tester.pumpAndSettle();
+      expect(find.textContaining('Due '), findsNothing);
+    });
+  });
+
+  // The group's activity list can be the shared outline cache's (a course
+  // with no copy and no pins reads it as-is), so drawing it sorted must never
+  // reorder it in place.
+  testWidgets('drawing the section leaves the group\'s list in its order', (
+    tester,
+  ) async {
+    ActivityPlanModel sized(String id, int people) => ActivityPlanModel(
+      req: ActivityPlanRequest(
+        topic: '',
+        mode: '',
+        objective: '',
+        media: MediaEnum.nan,
+        cefrLevel: LanguageLevelTypeEnum.a2,
+        languageOfInstructions: 'en',
+        targetLanguage: 'de',
+        numberOfParticipants: people,
+      ),
+      title: id,
+      learningObjective: '',
+      instructions: '',
+      vocab: const [],
+      activityId: id,
+      imageURL: 'https://images.test.invalid/$id.png',
+    );
+    final activities = [
+      QuestActivity(activityId: 'big', plan: sized('big', 4)),
+      QuestActivity(activityId: 'small', plan: sized('small', 2)),
+    ];
+    await tester.pumpWidget(
+      MaterialApp(
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Scaffold(
+          body: ObjectiveSection(
+            group: QuestObjectiveGroup(
+              objective: const LearningObjective(id: 'lo-1', objective: 'x'),
+              activities: activities,
+            ),
+            onTap: (_) {},
+            userStarsByActivity: (_) => 0,
+            hasCompletedActivity: (_) => false,
+            liveStateByActivity: (_) => (
+              state: null,
+              openSessions: 0,
+              participants: const <String>[],
+              openSlots: 0,
+            ),
+            availableParticipants: 10,
+            progress: null,
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.byType(ObjectiveSection), findsOneWidget);
+    expect(activities.map((a) => a.activityId), ['big', 'small']);
   });
 }

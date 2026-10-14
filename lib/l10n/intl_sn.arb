@@ -2429,5 +2429,6 @@
     "teamCode": "Kodhi yechikwata",
     "connectionOffline": "Haugona paIndaneti. Pangea Chat ichabatana zvakare kana wabatana.",
     "connectionUnreachable": "Haugoni kusvika kuPangea Chat. Kuedza zvakare…",
-    "connectionBackOnline": "Wadzoka paIndaneti"
+    "connectionBackOnline": "Wadzoka paIndaneti",
+    "missionDueDate": "Inofanira kunge yapera pana {date}, {time}"
 }

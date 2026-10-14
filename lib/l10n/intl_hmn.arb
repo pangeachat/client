@@ -2429,5 +2429,6 @@
     "teamCode": "Pab pawg tus lej",
     "connectionOffline": "Koj tsis muaj internet. Pangea Chat yuav rov txuas thaum koj muaj internet dua.",
     "connectionUnreachable": "Txuas tsis tau rau Pangea Chat. Rov sim dua…",
-    "connectionBackOnline": "Muaj internet dua"
+    "connectionBackOnline": "Muaj internet dua",
+    "missionDueDate": "Yuav tsum ua tiav {date}, {time}"
 }

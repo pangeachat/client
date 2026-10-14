@@ -2429,5 +2429,6 @@
     "teamCode": "Helu hui",
     "connectionOffline": "Aia ʻoe ma waho pūnaewele. E hoʻohui hou ʻo Pangea Chat ke hoʻi mai kāu pilina.",
     "connectionUnreachable": "ʻAʻole hiki ke hoʻopili iā Pangea Chat. Ke hoʻāʻo hou nei…",
-    "connectionBackOnline": "Ua hoʻi hou i ka pūnaewele"
+    "connectionBackOnline": "Ua hoʻi hou i ka pūnaewele",
+    "missionDueDate": "Pau i ka {date}, {time}"
 }

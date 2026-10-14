@@ -2429,5 +2429,6 @@
     "teamCode": "দলৰ ক'ড",
     "connectionOffline": "আপুনি অফলাইন। আপোনাৰ সংযোগ ঘূৰি অহাৰ লগে লগে Pangea Chat পুনৰ সংযোগ হ'ব।",
     "connectionUnreachable": "Pangea Chat-লৈ যাব নোৱাৰি। পুনৰ চেষ্টা কৰি আছে…",
-    "connectionBackOnline": "পুনৰ অনলাইন হ'ল"
+    "connectionBackOnline": "পুনৰ অনলাইন হ'ল",
+    "missionDueDate": "{date}, {time} তাৰিখে শেষ হ'ব"
 }

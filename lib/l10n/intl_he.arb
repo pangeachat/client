@@ -10878,5 +10878,6 @@
     "teamCode": "קוד צוות",
     "connectionOffline": "אתה במצב לא מקוון. Pangea Chat יתחבר מחדש כשהחיבור שלך יחזור.",
     "connectionUnreachable": "לא ניתן להגיע ל-Pangea Chat. מנסה שוב…",
-    "connectionBackOnline": "חזר למצב מקוון"
+    "connectionBackOnline": "חזר למצב מקוון",
+    "missionDueDate": "תאריך יעד {date}, {time}"
 }

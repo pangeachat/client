@@ -10745,5 +10745,6 @@
     "teamCode": "Komandos kodas",
     "connectionOffline": "Esate neprisijungę. „Pangea Chat“ vėl prisijungs, kai atsiras ryšys.",
     "connectionUnreachable": "Nepasiekiama „Pangea Chat“. Bandoma dar kartą…",
-    "connectionBackOnline": "Vėl prisijungę"
+    "connectionBackOnline": "Vėl prisijungę",
+    "missionDueDate": "Terminas {date}, {time}"
 }
