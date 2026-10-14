@@ -363,12 +363,10 @@ Two learners studying different languages therefore have their halves transcribe
 differently, and that is the point: their speech is credited to two separate ledgers
 in two separate languages.
 
-The target language is not a soft hint. Choreo picks the whole provider fallback chain
-from it, constrains Deepgram's detection to it, and discards any transcript whose
-script does not match it — so the wrong pair returns nothing rather than something
-approximate, and a speaker who speaks outside their own target language gets an empty
-half. That is a settings problem and it is what the E2E harness refuses a run over;
-resolving the pair per-account does not and cannot fix it.
+A call half may be transcribed in either of the speaker's languages: learners in a call
+speak their L1 as well as their L2. Every call request asks choreo to accept the L1
+(`allow_speaker_l1`), so L1 speech comes back as L1 text rather than translated into the
+target language. Speech in any third language still comes back empty.
 
 The pair is captured once, when the call starts, and never re-read: a learner who
 changes their target language mid-call would otherwise have one call transcribed
