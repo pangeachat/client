@@ -2440,5 +2440,8 @@
     "openRole": "خلاص: {role}",
     "waitingFor": "{duration} انتظار",
     "onlineInCourse": "{count} په {course} کې آنلاین",
-    "newCourseChat": "د نوي کورس خبرې اترې"
+    "newCourseChat": "د نوي کورس خبرې اترې",
+    "customCourseStepDesc": "یو کورس د خبرو اترو فعالیتونو یوه ټولګه ده چې ستاسو د درسي کتاب تعقیبوي، ترڅو ستاسو زده کونکي د کورني کار په توګه یوځای ترسره کړي.",
+    "reopenAppToFinishSwitching": "اپلیکیشن په بشپړه توګه بند کړئ او بیا یې خلاص کړئ ترڅو بدلول پای ته ورسیږي.",
+    "teamCode": "د ټیم کوډ"
 }

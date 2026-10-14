@@ -10292,5 +10292,8 @@
     "openRole": "Açık: {role}",
     "waitingFor": "{duration} bekleniyor",
     "onlineInCourse": "{count} kişi {course} içinde çevrimiçi",
-    "newCourseChat": "Yeni kurs sohbeti"
+    "newCourseChat": "Yeni kurs sohbeti",
+    "customCourseStepDesc": "Bir kurs, öğrencilerinizin ödev olarak birlikte yapmaları için ders kitabınızı takip eden bir dizi konuşma etkinliğidir.",
+    "reopenAppToFinishSwitching": "Geçişi tamamlamak için uygulamayı tamamen kapatın ve tekrar açın.",
+    "teamCode": "Takım kodu"
 }

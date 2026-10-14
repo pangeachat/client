@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/home/class_code_notice.dart';
+import 'package:fluffychat/routes/home/login/environment_switcher.dart';
 import 'package:fluffychat/routes/home/login/login.dart';
 import 'package:fluffychat/routes/home/login/tos_indicator.dart';
 import 'package:fluffychat/routes/home/p_sso_button.dart';
@@ -74,13 +75,15 @@ class LoginOptionsViewState extends State<LoginOptionsView> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 if (joinCode != null) ClassCodeNotice(code: joinCode),
-                Semantics(
-                  container: true,
-                  child: Text(
-                    L10n.of(context).loginToAccount,
-                    textAlign: TextAlign.center,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
+                EnvironmentSwitcherTapTarget(
+                  child: Semantics(
+                    container: true,
+                    child: Text(
+                      L10n.of(context).loginToAccount,
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),

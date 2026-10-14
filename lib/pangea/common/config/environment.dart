@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_storage/get_storage.dart';
@@ -54,6 +51,38 @@ class Environment {
 
   static bool get isStagingEnvironment =>
       dotenv.env["ENVIRONMENT"] == "staging";
+
+  static const String production = 'production';
+  static const String staging = 'staging';
+
+  /// The environment this build was made for, from its own `.env`. Push
+  /// registration follows it even while switched: the push token belongs to
+  /// the build's Firebase project.
+  static String get buildEnvironment =>
+      isStagingEnvironment ? staging : production;
+
+  /// The environment the app talks to: the switched-to one, else the build's.
+  static String get activeEnvironment =>
+      appConfigOverride?.environment ?? buildEnvironment;
+
+  /// The web app of the environment the switcher offers besides the build's
+  /// own, from the build's `.env`; null when it names none, and then the
+  /// switcher isn't offered (deployment.instructions.md § Environment
+  /// switcher). `isInitialized` because widget tests build the login page
+  /// without an env.
+  static String? get environmentSwitcherUrl {
+    if (!dotenv.isInitialized) return null;
+    final url = dotenv.env['ENVIRONMENT_SWITCHER_URL']?.trim();
+    return url == null || url.isEmpty ? null : url;
+  }
+
+  /// The environment the switcher offers besides the build's own.
+  static String get otherEnvironment =>
+      buildEnvironment == production ? staging : production;
+
+  /// Whether the environment switcher points this build away from its own
+  /// environment (deployment.instructions.md § Environment switcher).
+  static bool get isSwitched => activeEnvironment != buildEnvironment;
 
   /// The Sentry-reportable environment for this build, per the allow-list in
   /// sentry.instructions.md (only `staging`/`production` are valid; anything
@@ -304,22 +333,12 @@ class Environment {
       : 'https://sygnal.pangea.chat/_matrix/push/v1/notify';
 
   static String get sentryDsn {
-    return appConfigOverride?.sentryDsn ??
-        dotenv.env["SENTRY_DSN"] ??
+    return dotenv.env["SENTRY_DSN"] ??
         'https://c2fd19ab2cdc4ebb939a32d01c0e9fa1@o225078.ingest.sentry.io/1376295';
   }
 
   static String? get googleAnalyticsFirebaseOptionsBase64 {
-    return appConfigOverride?.googleAnalyticsFirebaseOptionsBase64 ??
-        dotenv.env["GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64"];
-  }
-
-  static String get stripeManagementUrl {
-    return appConfigOverride?.stripeManagementUrl ??
-        dotenv.env["STRIPE_MANAGEMENT_LINK"] ??
-        (isStagingEnvironment
-            ? 'https://billing.stripe.com/p/login/test_9AQaI8d3O9lmaXe5kk'
-            : 'https://billing.stripe.com/p/login/dR6dSkf5p6rBc4EcMM');
+    return dotenv.env["GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64"];
   }
 
   static String get supportUserId {
@@ -332,42 +351,14 @@ class Environment {
     return appConfigOverride?.botName ?? dotenv.env["BOT_NAME"];
   }
 
-  static final GetStorage appConfigurationStorage = GetStorage('env_override');
+  static const String appConfigurationStorageName = 'env_override';
 
-  static Future<List<AppConfigOverride>> getAppConfigOverrides() async {
-    if (!isStagingEnvironment) {
-      return [];
-    }
-
-    List<dynamic> data = [];
-    try {
-      final String jsonString = await rootBundle.loadString('envs.json');
-      data = jsonDecode(jsonString);
-    } catch (e) {
-      return [];
-    }
-
-    final List<AppConfigOverride> overrides = [];
-    for (final entry in data) {
-      if (entry is! Map<String, dynamic>) {
-        ErrorHandler.logError(
-          e: Exception("Invalid entry in envs.json"),
-          s: StackTrace.current,
-          data: entry,
-        );
-        continue;
-      }
-
-      try {
-        final override = AppConfigOverride.fromJson(entry);
-        overrides.add(override);
-      } catch (e, s) {
-        ErrorHandler.logError(e: e, s: s, data: entry);
-        continue;
-      }
-    }
-    return overrides;
-  }
+  /// Persists the switched-to environment. `main` awaits its `initStorage`
+  /// before anything reads [appConfigOverride], or the first reads at launch
+  /// (Sentry's environment among them) would see an unloaded, empty box.
+  static final GetStorage appConfigurationStorage = GetStorage(
+    appConfigurationStorageName,
+  );
 
   static AppConfigOverride? get appConfigOverride {
     final entry = appConfigurationStorage.read(PLocalKey.appConfigOverride);
@@ -381,7 +372,7 @@ class Environment {
   }
 
   static Future<void> setAppConfigOverride(AppConfigOverride? override) async {
-    appConfigurationStorage.write(
+    await appConfigurationStorage.write(
       PLocalKey.appConfigOverride,
       override?.toJson(),
     );
@@ -400,9 +391,6 @@ class AppConfigOverride {
   final bool? dosageVoiceMessagesEnabled;
   final bool? voiceTranscriptDecoupleEnabled;
   final bool? liveStreamingSttEnabled;
-  final String? sentryDsn;
-  final String? googleAnalyticsFirebaseOptionsBase64;
-  final String? stripeManagementUrl;
   final String? botName;
 
   const AppConfigOverride({
@@ -417,11 +405,50 @@ class AppConfigOverride {
     this.dosageVoiceMessagesEnabled,
     this.voiceTranscriptDecoupleEnabled,
     this.liveStreamingSttEnabled,
-    this.sentryDsn,
-    this.googleAnalyticsFirebaseOptionsBase64,
-    this.stripeManagementUrl,
     this.botName,
   });
+
+  /// What an environment's `.env` must set for a switch to it: a value left
+  /// out would fall back to the build's own environment and mix the two.
+  static const List<String> requiredEnvFileKeys = [
+    'FRONTEND_URL',
+    'SYNAPSE_URL',
+    'CHOREO_API',
+    'TEACHER_BFF_API',
+    'BOT_NAME',
+  ];
+
+  /// The switch to [environment], from that environment's own `.env`. Takes
+  /// only what a switch covers: never `ENVIRONMENT` (push registration
+  /// follows the build) or developer settings. A flag the file leaves out is
+  /// off in that environment, so it is set off here rather than left to the
+  /// build's own value.
+  static AppConfigOverride fromEnvFile(
+    String environment,
+    Map<String, String> envFile,
+  ) {
+    final missing = requiredEnvFileKeys
+        .where((key) => (envFile[key] ?? '').trim().isEmpty)
+        .toList();
+    if (missing.isNotEmpty) {
+      throw IncompleteEnvironmentException(environment, missing);
+    }
+    bool flag(String key) => envFile[key]?.toLowerCase() == 'true';
+    return AppConfigOverride(
+      environment: environment,
+      frontendURL: envFile['FRONTEND_URL'],
+      synapseURL: envFile['SYNAPSE_URL'],
+      homeServer: envFile['HOME_SERVER'],
+      choreoApi: envFile['CHOREO_API'],
+      teacherBffApi: envFile['TEACHER_BFF_API'],
+      analyticsDualWriteEnabled: flag('ANALYTICS_DUAL_WRITE_ENABLED'),
+      dosageSignalsEnabled: flag('DOSAGE_SIGNALS_ENABLED'),
+      dosageVoiceMessagesEnabled: flag('DOSAGE_VOICE_MESSAGES_ENABLED'),
+      voiceTranscriptDecoupleEnabled: flag('VOICE_TRANSCRIPT_DECOUPLE_ENABLED'),
+      liveStreamingSttEnabled: flag('LIVE_STREAMING_STT_ENABLED'),
+      botName: envFile['BOT_NAME'],
+    );
+  }
 
   static AppConfigOverride fromJson(Map<String, dynamic> json) {
     return AppConfigOverride(
@@ -437,10 +464,6 @@ class AppConfigOverride {
       voiceTranscriptDecoupleEnabled:
           json['voiceTranscriptDecoupleEnabled'] as bool?,
       liveStreamingSttEnabled: json['liveStreamingSttEnabled'] as bool?,
-      sentryDsn: json['sentryDsn'] as String?,
-      googleAnalyticsFirebaseOptionsBase64:
-          json['googleAnalyticsFirebaseOptionsBase64'] as String?,
-      stripeManagementUrl: json['stripeManagementUrl'] as String?,
       botName: json['botName'] as String?,
     );
   }
@@ -458,10 +481,6 @@ class AppConfigOverride {
       'dosageVoiceMessagesEnabled': dosageVoiceMessagesEnabled,
       'voiceTranscriptDecoupleEnabled': voiceTranscriptDecoupleEnabled,
       'liveStreamingSttEnabled': liveStreamingSttEnabled,
-      'sentryDsn': sentryDsn,
-      'googleAnalyticsFirebaseOptionsBase64':
-          googleAnalyticsFirebaseOptionsBase64,
-      'stripeManagementUrl': stripeManagementUrl,
       'botName': botName,
     };
   }
@@ -479,9 +498,6 @@ class AppConfigOverride {
         dosageVoiceMessagesEnabled.hashCode ^
         voiceTranscriptDecoupleEnabled.hashCode ^
         liveStreamingSttEnabled.hashCode ^
-        sentryDsn.hashCode ^
-        googleAnalyticsFirebaseOptionsBase64.hashCode ^
-        stripeManagementUrl.hashCode ^
         botName.hashCode;
   }
 
@@ -501,10 +517,18 @@ class AppConfigOverride {
         voiceTranscriptDecoupleEnabled ==
             other.voiceTranscriptDecoupleEnabled &&
         liveStreamingSttEnabled == other.liveStreamingSttEnabled &&
-        sentryDsn == other.sentryDsn &&
-        googleAnalyticsFirebaseOptionsBase64 ==
-            other.googleAnalyticsFirebaseOptionsBase64 &&
-        stripeManagementUrl == other.stripeManagementUrl &&
         botName == other.botName;
   }
+}
+
+/// An environment's `.env` lacks values a switch to it needs.
+class IncompleteEnvironmentException implements Exception {
+  final String environment;
+  final List<String> missingKeys;
+
+  const IncompleteEnvironmentException(this.environment, this.missingKeys);
+
+  @override
+  String toString() =>
+      'The $environment .env is missing ${missingKeys.join(', ')}';
 }

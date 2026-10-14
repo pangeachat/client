@@ -42,7 +42,6 @@ jobs:
       version: ${{ steps.version.outputs.version }}
     env:
       WEB_APP_ENV: ${{ vars.WEB_APP_ENV }}
-      ENV_OVERRIDES: ${{ vars.ENV_OVERRIDES }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
@@ -88,8 +87,6 @@ jobs:
           # and the recorder falls back to batch (today's behavior).
           echo "LIVE_STREAMING_STT_ENABLED=true" >> .env
           echo "STADIA_MAPS_API_KEY=$STADIA_MAPS_API_KEY" >> .env
-          touch assets/envs.json
-          echo "$ENV_OVERRIDES" >> assets/envs.json
       - name: Apply .env patch
         run: git apply ./scripts/enable_mobile_env.patch
       - name: Install Fastlane

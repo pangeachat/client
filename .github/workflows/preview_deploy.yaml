@@ -170,7 +170,6 @@ jobs:
       PREVIEW_S3_BUCKET: ${{ vars.PREVIEW_S3_BUCKET }}
       PREVIEW_CF_DISTRIBUTION_ID: ${{ vars.PREVIEW_CF_DISTRIBUTION_ID }}
       WEB_APP_ENV: ${{ vars.WEB_APP_ENV }}
-      ENV_OVERRIDES: ${{ vars.ENV_OVERRIDES }}
       STICKY: .preview-tooling/scripts/preview_sticky_comment.sh
     steps:
       - name: Require the preview infrastructure variables
@@ -255,7 +254,6 @@ jobs:
             echo "ENABLE_SEMANTICS=true"
             echo "SENTRY_DSN="
           } > build/web/.env
-          echo "$ENV_OVERRIDES" > build/web/assets/envs.json
       - name: Set up AWS CLI
         uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4
         with:

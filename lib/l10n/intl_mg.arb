@@ -2440,5 +2440,8 @@
     "openRole": "Misokatra: {role}",
     "waitingFor": "Miandry {duration}",
     "onlineInCourse": "{count} an-tserasera ao amin'ny {course}",
-    "newCourseChat": "Chat vaovao momba ny taranja"
+    "newCourseChat": "Chat vaovao momba ny taranja",
+    "customCourseStepDesc": "Ny taranja dia andiana asa fifampiresahana manaraka ny boky fianaranao, ho an'ny mpianatrao hatao miaraka ho enti-mody.",
+    "reopenAppToFinishSwitching": "Akatona tanteraka ny fampiharana ary sokafy indray mba hamita ny fanovana.",
+    "teamCode": "Kaody ekipa"
 }

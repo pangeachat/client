@@ -2440,5 +2440,8 @@
     "openRole": "Bude: {role}",
     "waitingFor": "Jira {duration}",
     "onlineInCourse": "{count} a kan layi a {course}",
-    "newCourseChat": "Sabon darasi na hira"
+    "newCourseChat": "Sabon darasi na hira",
+    "customCourseStepDesc": "Kwas shine saitin ayyukan tattaunawa waɗanda ke bin littafin karatun ku, don ɗaliban ku suyi tare a matsayin aikin gida.",
+    "reopenAppToFinishSwitching": "Rufe manhajar gaba ɗaya sannan ka sake buɗewa don kammala canzawa.",
+    "teamCode": "Lambar ƙungiya"
 }

@@ -22,6 +22,10 @@ enum NetworkHostCategory {
   /// Whether a block stops the app as a whole, rather than one feature.
   bool get stopsApp => this == chatServer || this == pangeaApi;
 
+  /// Whether the category is one of our own servers, which a deploy restarts.
+  /// While it restarts it refuses connections, the way a filter does.
+  bool get isOurServer => this == chatServer || this == pangeaApi;
+
   /// A cheap URL on the category's host. Any answer means the host is
   /// reachable, so the path only has to exist on that host — and answer
   /// there: a browser follows redirects unseen, and one to plain `http` is

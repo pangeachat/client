@@ -10940,5 +10940,8 @@
     "openRole": "Otvoreno: {role}",
     "waitingFor": "Čekanje {duration}",
     "onlineInCourse": "{count} na mreži u {course}",
-    "newCourseChat": "Novo ćaskanje o kursu"
+    "newCourseChat": "Novo ćaskanje o kursu",
+    "customCourseStepDesc": "Kurs je skup konverzacijskih aktivnosti koje prate vaš udžbenik, a koje vaši učenici rade zajedno kao domaći zadatak.",
+    "reopenAppToFinishSwitching": "Potpuno zatvorite aplikaciju i ponovo je otvorite da biste završili prebacivanje.",
+    "teamCode": "Kod tima"
 }

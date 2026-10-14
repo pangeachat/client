@@ -21,8 +21,8 @@ extension UserPermissionsRoomExtension on Room {
   bool canRedactEventFrom(String senderId) =>
       senderId == client.userID || (!isDirectChat && canRedact);
 
-  /// Whether the room's power levels let the user react. A read-only room such
-  /// as announcements rejects a learner's reaction (#9167).
+  /// Whether the room's power levels let the user react. A read-only room
+  /// rejects a learner's reaction (#9167).
   bool get canSendReactions => canSendEvent(EventTypes.Reaction);
 
   /// The users currently knocking on this room, from the locally loaded member

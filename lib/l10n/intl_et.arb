@@ -9988,5 +9988,8 @@
     "openRole": "Avatud: {role}",
     "waitingFor": "Ootab {duration}",
     "onlineInCourse": "{count} võrgus kursusel {course}",
-    "newCourseChat": "Uus kursusevestlus"
+    "newCourseChat": "Uus kursusevestlus",
+    "customCourseStepDesc": "Kursus on vestlustegevuste kogum, mis järgib teie õpikut ja mida teie õpilased saavad kodutööna koos teha.",
+    "reopenAppToFinishSwitching": "Sulgege rakendus täielikult ja avage see uuesti, et vahetus lõpule viia.",
+    "teamCode": "Meeskonna kood"
 }

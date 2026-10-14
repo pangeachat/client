@@ -2440,5 +2440,8 @@
     "openRole": "Miftuħ: {role}",
     "waitingFor": "Qed tistenna {duration}",
     "onlineInCourse": "{count} online f'{course}'",
-    "newCourseChat": "Chat ġdid tal-kors"
+    "newCourseChat": "Chat ġdid tal-kors",
+    "customCourseStepDesc": "Kors huwa sett ta' attivitajiet ta' konverżazzjoni li jsegwu l-ktieb tiegħek, biex l-istudenti tiegħek jagħmluhom flimkien bħala xogħol tad-dar.",
+    "reopenAppToFinishSwitching": "Agħlaq l-app kompletament u erġa' iftaħha biex tispiċċa taqleb.",
+    "teamCode": "Kodiċi tat-tim"
 }

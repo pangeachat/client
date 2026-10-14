@@ -14,7 +14,6 @@ import 'package:fluffychat/features/navigation/token_params/grammar_analytics_to
 import 'package:fluffychat/features/navigation/token_params/objective_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
-import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 
 /// A target the map should bring into the exposed canvas. Sealed so adding a
@@ -110,9 +109,8 @@ bool coursesHubIsOpen(Uri uri) =>
 /// course card's circles, the collapsed course header and the course-scoped
 /// map, so the three always agree (#9420 prototype).
 String? selectedMissionIdFor(Uri uri) {
-  final value = WorkspaceQuery.valueOf(uri.query, 'mission');
-  if (value == null || value.isEmpty) return null;
-  return Uri.decodeComponent(value);
+  final value = uri.queryParameters['mission'];
+  return value == null || value.isEmpty ? null : value;
 }
 
 /// The active course space id — the workspace's `?c=<spaceid>` course context

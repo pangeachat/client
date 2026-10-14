@@ -2440,5 +2440,8 @@
     "openRole": "Hangdok: {role}",
     "waitingFor": "{duration} ngairammi",
     "onlineInCourse": "{course} da {count} online lei",
-    "newCourseChat": "নবীন কোর্স চ্যাট"
+    "newCourseChat": "নবীন কোর্স চ্যাট",
+    "customCourseStepDesc": "কোর্স অসি কনভার্সেশন এক্টিভিটিশিংগী সেত অমনি, মদুনা নহাক্কী টেক্সটবুক অদু ফলো তৌই, নহাক্কী মহৈরোইশিংনা হোমৱার্ক ওইনা অমগা অমগা লোইননা তৌনবা।",
+    "reopenAppToFinishSwitching": "সুইচিং লোড তৌবা লোইশিনবগীদমক এপ্প অদু মুক্ন থিংশিনবগা লোইননা অমুক হাংগদবনি।",
+    "teamCode": "টিম কোড"
 }

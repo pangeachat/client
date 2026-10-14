@@ -10094,5 +10094,8 @@
     "openRole": "Nyitott: {role}",
     "waitingFor": "Várakozás: {duration}",
     "onlineInCourse": "{count} online a {course} kurzuson",
-    "newCourseChat": "Új tanfolyami csevegés"
+    "newCourseChat": "Új tanfolyami csevegés",
+    "customCourseStepDesc": "A kurzus beszélgetési tevékenységek gyűjteménye, amelyek a tankönyvedet követik, és amelyeket a diákjaid együtt végezhetnek el házi feladatként.",
+    "reopenAppToFinishSwitching": "A váltás befejezéséhez zárd be teljesen az alkalmazást, majd nyisd meg újra.",
+    "teamCode": "Csapatkód"
 }

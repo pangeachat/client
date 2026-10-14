@@ -10076,5 +10076,8 @@
     "openRole": "Otwarte: {role}",
     "waitingFor": "Oczekiwanie {duration}",
     "onlineInCourse": "{count} online w {course}",
-    "newCourseChat": "Nowy czat kursu"
+    "newCourseChat": "Nowy czat kursu",
+    "customCourseStepDesc": "Kurs to zestaw ćwiczeń konwersacyjnych, które są zgodne z Twoim podręcznikiem, do wspólnego odrabiania przez Twoich uczniów jako praca domowa.",
+    "reopenAppToFinishSwitching": "Całkowicie zamknij aplikację i otwórz ją ponownie, aby zakończyć przełączanie.",
+    "teamCode": "Kod zespołu"
 }

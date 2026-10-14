@@ -34,6 +34,14 @@ class FilteredNetworkController {
   /// How long one check's answer stands before another failure re-checks.
   static const Duration recheckAfter = Duration(seconds: 30);
 
+  /// How long a refused connection to one of our own servers must last
+  /// before it counts as a block: a deploy restarts them, and they refuse
+  /// connections for a minute or more while it does.
+  static const Duration holdRefusalFor = Duration(minutes: 3);
+
+  /// How often a held refusal is checked again.
+  static const Duration recheckHeldRefusalEvery = Duration(seconds: 30);
+
   /// The categories the current network blocks.
   final ValueNotifier<Set<NetworkHostCategory>> blocked = ValueNotifier(
     const {},
@@ -53,6 +61,9 @@ class FilteredNetworkController {
 
   @visibleForTesting
   Future<NetworkType> Function() currentNetworkType = NetworkType.current;
+
+  @visibleForTesting
+  Future<void> Function(Duration) wait = Future<void>.delayed;
 
   @visibleForTesting
   List<String> Function() joinedCourseIds = _joinedCourseIds;
@@ -142,17 +153,12 @@ class FilteredNetworkController {
 
   Future<NetworkVerdict> _check(NetworkHostCategory category) async {
     final needed = await probe(category.probeUrl);
-    // The neutral addresses matter only when the host failed: they tell a
-    // filter from a dead connection.
-    final neutralAnswered =
-        needed.blocked &&
-        (await Future.wait(
-          NetworkProbe.neutralUrls.map(probe),
-        )).contains(NetworkProbeResult.answered);
-    final verdict = NetworkVerdict.of(
-      needed: needed,
-      neutralAnswered: neutralAnswered,
-    );
+    var verdict = await _verdictOf(needed);
+    if (verdict == NetworkVerdict.filtered &&
+        needed == NetworkProbeResult.refused &&
+        category.isOurServer) {
+      verdict = await _holdRefusal(category);
+    }
     _lastCheckedAt[category] = DateTime.now();
     switch (verdict) {
       case NetworkVerdict.filtered:
@@ -164,6 +170,31 @@ class FilteredNetworkController {
         break;
     }
     return verdict;
+  }
+
+  Future<NetworkVerdict> _verdictOf(NetworkProbeResult needed) async {
+    // The neutral addresses matter only when the host failed: they tell a
+    // filter from a dead connection.
+    final neutralAnswered =
+        needed.blocked &&
+        (await Future.wait(
+          NetworkProbe.neutralUrls.map(probe),
+        )).contains(NetworkProbeResult.answered);
+    return NetworkVerdict.of(needed: needed, neutralAnswered: neutralAnswered);
+  }
+
+  /// Checks a refusing server of ours again until [holdRefusalFor] has
+  /// passed. Any other verdict ends the hold: an answer means the server was
+  /// restarting, and offline says nothing about a filter.
+  Future<NetworkVerdict> _holdRefusal(NetworkHostCategory category) async {
+    final rechecks =
+        holdRefusalFor.inSeconds ~/ recheckHeldRefusalEvery.inSeconds;
+    for (var i = 0; i < rechecks; i++) {
+      await wait(recheckHeldRefusalEvery);
+      final verdict = await _verdictOf(await probe(category.probeUrl));
+      if (verdict != NetworkVerdict.filtered) return verdict;
+    }
+    return NetworkVerdict.filtered;
   }
 
   void _markBlocked(NetworkHostCategory category, NetworkProbeResult needed) {
@@ -274,6 +305,7 @@ class FilteredNetworkController {
     onNetworkChanged = () => Connectivity().onConnectivityChanged;
     currentNetworkType = NetworkType.current;
     joinedCourseIds = _joinedCourseIds;
+    wait = Future<void>.delayed;
   }
 }
 

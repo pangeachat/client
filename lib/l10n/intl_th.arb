@@ -10623,5 +10623,8 @@
     "openRole": "เปิด: {role}",
     "waitingFor": "กำลังรอ {duration}",
     "onlineInCourse": "{count} ออนไลน์ใน {course}",
-    "newCourseChat": "แชทคอร์สใหม่"
+    "newCourseChat": "แชทคอร์สใหม่",
+    "customCourseStepDesc": "คอร์สคือชุดกิจกรรมการสนทนาที่อิงตามหนังสือเรียนของคุณ ให้นักเรียนทำร่วมกันเป็นการบ้าน",
+    "reopenAppToFinishSwitching": "ปิดแอปทั้งหมดแล้วเปิดใหม่อีกครั้งเพื่อสิ้นสุดการสลับ",
+    "teamCode": "รหัสทีม"
 }

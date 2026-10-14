@@ -60,6 +60,9 @@ Future<void> _main() async {
   } catch (e) {
     Logs().e('Failed to load .env file', e);
   }
+  // The environment switcher's choice decides Sentry's environment and
+  // analytics below, so it must be loaded before they start.
+  await Environment.appConfigurationStorage.initStorage;
 
   // Force the accessibility semantics tree on when ENABLE_SEMANTICS=true, so
   // automation / assistive tech can drive the canvas-rendered UI by role+name

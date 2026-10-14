@@ -2440,5 +2440,8 @@
     "openRole": "Bukas: {role}",
     "waitingFor": "Naghuwat {duration}",
     "onlineInCourse": "{count} online sa {course}",
-    "newCourseChat": "Bag-ong chat sa kurso"
+    "newCourseChat": "Bag-ong chat sa kurso",
+    "customCourseStepDesc": "Ang kurso usa ka hugpong sa mga kalihokan sa panag-istoryahanay nga nagsunod sa imong libro, aron buhaton sa imong mga estudyante isip homework.",
+    "reopenAppToFinishSwitching": "Isira ang app sa hingpit ug ablihi kini pag-usab aron mahuman ang pagbalhin.",
+    "teamCode": "Team code"
 }

@@ -2440,5 +2440,8 @@
     "openRole": "Åpen: {role}",
     "waitingFor": "Venter {duration}",
     "onlineInCourse": "{count} online i {course}",
-    "newCourseChat": "Ny kursprat"
+    "newCourseChat": "Ny kursprat",
+    "customCourseStepDesc": "Et kurs er et sett med samtaleaktiviteter som følger læreboken din, som studentene dine kan gjøre sammen som lekser.",
+    "reopenAppToFinishSwitching": "Lukk appen helt og åpne den igjen for å fullføre byttet.",
+    "teamCode": "Teamkode"
 }

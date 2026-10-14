@@ -30,6 +30,7 @@ void main() {
   late Map<String, NetworkProbeResult> answers;
   late List<String> probedHosts;
   late StreamController<List<ConnectivityResult>> networkChanges;
+  late List<Duration> waits;
 
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -67,6 +68,8 @@ void main() {
     };
     controller.onNetworkChanged = () => networkChanges.stream;
     controller.currentNetworkType = () async => NetworkType.wifi;
+    waits = [];
+    controller.wait = (duration) async => waits.add(duration);
   });
 
   tearDown(() async {
@@ -104,6 +107,81 @@ void main() {
       );
     },
   );
+
+  group('#9507 a refusal from our own servers', () {
+    test('counts as a block only after it holds for three minutes', () async {
+      answers[chatHost] = NetworkProbeResult.refused;
+
+      expect(
+        await controller.check(NetworkHostCategory.chatServer),
+        NetworkVerdict.filtered,
+      );
+
+      expect(waits, List.filled(6, const Duration(seconds: 30)));
+      expect(probedHosts.where((host) => host == chatHost), hasLength(7));
+      expect(controller.blocked.value, {NetworkHostCategory.chatServer});
+    });
+
+    test(
+      'that ends while held was a restart: nothing is blocked or reported',
+      () async {
+        answers[chatHost] = NetworkProbeResult.refused;
+        controller.wait = (duration) async {
+          waits.add(duration);
+          if (waits.length == 2) {
+            answers[chatHost] = NetworkProbeResult.answered;
+          }
+        };
+
+        expect(
+          await controller.check(NetworkHostCategory.chatServer),
+          NetworkVerdict.reachable,
+        );
+        await settle();
+
+        expect(waits, hasLength(2));
+        expect(controller.blocked.value, isEmpty);
+        expect(ErrorHandler.reportedOnceKeysForTest, isEmpty);
+      },
+    );
+
+    test('shows and reports nothing while it is held', () async {
+      answers[apiHost] = NetworkProbeResult.refused;
+      final held = Completer<void>();
+      controller.wait = (_) => held.future;
+
+      final verdict = controller.check(NetworkHostCategory.pangeaApi);
+      await settle();
+
+      expect(controller.blocked.value, isEmpty);
+      expect(ErrorHandler.reportedOnceKeysForTest, isEmpty);
+
+      answers[apiHost] = NetworkProbeResult.answered;
+      held.complete();
+      expect(await verdict, NetworkVerdict.reachable);
+    });
+
+    test('that a redirect off the host shows is decided at once', () async {
+      answers[chatHost] = NetworkProbeResult.answeredElsewhere;
+
+      expect(
+        await controller.check(NetworkHostCategory.chatServer),
+        NetworkVerdict.filtered,
+      );
+      expect(waits, isEmpty);
+    });
+  });
+
+  test('a refused sign-in host is decided at once', () async {
+    answers[NetworkHostCategory.appleSignIn.probeUrl.host] =
+        NetworkProbeResult.refused;
+
+    expect(
+      await controller.check(NetworkHostCategory.appleSignIn),
+      NetworkVerdict.filtered,
+    );
+    expect(waits, isEmpty);
+  });
 
   test('a host that answers costs one request and blocks nothing', () async {
     expect(

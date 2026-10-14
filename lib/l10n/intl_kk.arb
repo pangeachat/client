@@ -2440,5 +2440,8 @@
     "openRole": "Ашық: {role}",
     "waitingFor": "{duration} күту",
     "onlineInCourse": "{count} {course} курсында онлайн",
-    "newCourseChat": "Жаңа курс чаты"
+    "newCourseChat": "Жаңа курс чаты",
+    "customCourseStepDesc": "Курс — бұл оқушыларыңыздың үй тапсырмасы ретінде бірге орындауы үшін оқулығыңызға сәйкес келетін сөйлесу әрекеттерінің жиынтығы.",
+    "reopenAppToFinishSwitching": "Ауыстыруды аяқтау үшін қолданбаны толығымен жауып, қайта ашыңыз.",
+    "teamCode": "Топ коды"
 }

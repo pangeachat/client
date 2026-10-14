@@ -10028,5 +10028,8 @@
     "openRole": "Avoin: {role}",
     "waitingFor": "Odotetaan {duration}",
     "onlineInCourse": "{count} paikalla kurssilla {course}",
-    "newCourseChat": "Uusi kurssikeskustelu"
+    "newCourseChat": "Uusi kurssikeskustelu",
+    "customCourseStepDesc": "Kurssi on joukko keskusteluharjoituksia, jotka seuraavat oppikirjaasi, ja jotka opiskelijasi tekevät yhdessä kotitehtävänä.",
+    "reopenAppToFinishSwitching": "Sulje sovellus kokonaan ja avaa se uudelleen vaihdon viimeistelemiseksi.",
+    "teamCode": "Tiimikoodi"
 }

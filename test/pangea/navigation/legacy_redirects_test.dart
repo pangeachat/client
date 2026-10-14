@@ -1,9 +1,13 @@
+import 'package:flutter/material.dart';
+
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/legacy_redirects.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
+import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 
 /// Activity and course-join inbound rewrites. Synapse email links are covered
 /// by notification_email_link_test.dart; retired internal routes stay retired.
@@ -39,6 +43,49 @@ void main() {
 
     test('idempotent: the token form never re-fires', () {
       expect(resolve(resolve('/$id')!), isNull);
+    });
+  });
+
+  group('the activity link\'s session room id (#9502)', () {
+    const roomId = '!example:pangea.chat';
+    final encoded = '/$id?roomid=${Uri.encodeComponent(roomId)}';
+    final unencoded = '/$id?roomid=$roomId';
+
+    String? boundRoomId(String location) =>
+        activityInfoFor(Uri.parse(location))?.roomId;
+
+    test('an encoded or unencoded full id binds the same session', () {
+      for (final link in [encoded, unencoded]) {
+        expect(
+          boundRoomId(LegacyRedirects.handle(Uri.parse(link))!),
+          roomId,
+          reason: link,
+        );
+      }
+    });
+
+    test('the signed-out destination keeps the session', () {
+      final handled = LegacyRedirects.handle(Uri.parse(encoded))!;
+      final destination = PAuthGaurd.bounceDestinationFor(Uri.parse(handled));
+      expect(destination, isNotNull);
+      expect(boundRoomId(destination!), roomId);
+    });
+
+    testWidgets('survives the router round trip at startup', (tester) async {
+      final router = GoRouter(
+        initialLocation: encoded,
+        redirect: (context, state) => LegacyRedirects.handle(state.uri),
+        routes: [
+          GoRoute(path: '/', builder: (context, state) => const Text('World')),
+        ],
+      );
+      addTearDown(router.dispose);
+      await tester.pumpWidget(MaterialApp.router(routerConfig: router));
+      await tester.pumpAndSettle();
+      final resolved = router.routeInformationProvider.value.uri;
+      expect(activityInfoFor(resolved)?.activityId, id);
+      expect(activityInfoFor(resolved)?.roomId, roomId);
+      expect(find.text('World'), findsOneWidget);
     });
   });
 

@@ -4773,7 +4773,13 @@
     "ssoDialogHelpText": "🤔 If you didn't see the new tab, please check your popup blocker.",
     "ssoNetworkBlockedTitle": "Sign-in site unreachable",
     "ssoNetworkBlockedDesc": "This network is not letting us reach {provider} to sign you in. School and office Wi-Fi often block it. You can sign up with email instead, or switch to another network and try again.",
-    "@ssoNetworkBlockedDesc": {"placeholders": {"provider": {"type": "String"}}},
+    "@ssoNetworkBlockedDesc": {
+        "placeholders": {
+            "provider": {
+                "type": "String"
+            }
+        }
+    },
     "ssoTryAnyway": "Try anyway",
     "disableLanguageToolsTitle": "Disable language tools",
     "disableLanguageToolsDesc": "Would you like to disable automatic language assistance?",
@@ -6022,5 +6028,14 @@
                 "type": "int"
             }
         }
+    },
+    "customCourseStepDesc": "A course is a set of conversation activities that follow your textbook, for your students to do together as homework.",
+    "teamCode": "Team code",
+    "@teamCode": {
+        "description": "Title of the prompt for the Pangea team's code, which opens the hidden environment switcher on the login page."
+    },
+    "reopenAppToFinishSwitching": "Close the app completely and open it again to finish switching.",
+    "@reopenAppToFinishSwitching": {
+        "description": "Shown after a Pangea team member switches the app between the production and staging servers; the switch applies on the next launch."
     }
 }

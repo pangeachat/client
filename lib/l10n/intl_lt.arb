@@ -10772,5 +10772,8 @@
     "openRole": "Atvira: {role}",
     "waitingFor": "Laukiama {duration}",
     "onlineInCourse": "{count} prisijungę {course}",
-    "newCourseChat": "Naujas kurso pokalbis"
+    "newCourseChat": "Naujas kurso pokalbis",
+    "customCourseStepDesc": "Kursas – tai pokalbių užduočių rinkinys, atitinkantis jūsų vadovėlį, skirtas jūsų studentams atlikti kartu kaip namų darbus.",
+    "reopenAppToFinishSwitching": "Visiškai uždarykite programėlę ir atidarykite ją iš naujo, kad užbaigtumėte perjungimą.",
+    "teamCode": "Komandos kodas"
 }

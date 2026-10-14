@@ -9991,5 +9991,8 @@
     "openRole": "Aberto: {role}",
     "waitingFor": "Agardando {duration}",
     "onlineInCourse": "{count} en liña en {course}",
-    "newCourseChat": "Novo chat do curso"
+    "newCourseChat": "Novo chat do curso",
+    "customCourseStepDesc": "Un curso é un conxunto de actividades de conversa que seguen o teu libro de texto, para que os teus estudantes as fagan xuntos como deberes.",
+    "reopenAppToFinishSwitching": "Pecha a aplicación completamente e ábrea de novo para rematar o cambio.",
+    "teamCode": "Código de equipo"
 }
