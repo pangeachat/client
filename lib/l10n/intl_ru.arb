@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-13 13:03:47.982552",
+    "@@last_modified": "2026-10-14 13:23:15.497884",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -1705,11 +1705,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Синхронизация… Пожалуйста, подождите.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "Системная",
     "@systemTheme": {
         "type": "String",
@@ -3060,15 +3055,6 @@
     "@notificationRuleEncrypted": {},
     "more": "Больше",
     "@more": {},
-    "synchronizingPleaseWaitCounter": " Синхронизация… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "contentNotificationSettings": "Настройки уведомлений о контенте",
     "@contentNotificationSettings": {
         "pangea_override": true
@@ -3109,8 +3095,6 @@
     },
     "open": "Открыть",
     "@open": {},
-    "waitingForServer": "Ожидание сервера...",
-    "@waitingForServer": {},
     "previous": "Предыдущий",
     "@previous": {},
     "notificationRuleCallDescription": "Уведомляет пользователя о звонках.",
@@ -10952,5 +10936,8 @@
     "newCourseChat": "Новый чат курса",
     "customCourseStepDesc": "Курс — это набор разговорных заданий, которые следуют вашему учебнику, для ваших студентов, чтобы выполнять их вместе в качестве домашнего задания.",
     "reopenAppToFinishSwitching": "Полностью закройте приложение и откройте его снова, чтобы завершить переключение.",
-    "teamCode": "Код команды"
+    "teamCode": "Код команды",
+    "connectionOffline": "Вы не в сети. Pangea Chat переподключится, когда соединение восстановится.",
+    "connectionUnreachable": "Не удается подключиться к Pangea Chat. Повторная попытка…",
+    "connectionBackOnline": "Снова в сети"
 }

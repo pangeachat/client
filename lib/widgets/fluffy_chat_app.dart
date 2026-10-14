@@ -10,10 +10,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluffychat/config/routes.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/connection_status/widgets/connection_banner.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/navigation/legacy_redirects.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
-import 'package:fluffychat/features/network_filter/widgets/filtered_network_banner.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/widgets/environment_banner.dart';
@@ -104,7 +104,7 @@ class FluffyChatApp extends StatelessWidget {
                 // rather than only on the chat it belongs to.
                 child: IncomingCallBanner(
                   child: GlobalCallTile(
-                    child: FilteredNetworkBanner(child: testWidget ?? child),
+                    child: ConnectionBanner(child: testWidget ?? child),
                   ),
                 ),
               ),

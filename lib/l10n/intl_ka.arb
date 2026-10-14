@@ -961,8 +961,6 @@
     "status": "სტატუსი",
     "statusExampleMessage": "როგორ ხარ დღეს?",
     "submit": "გაგზავნა",
-    "synchronizingPleaseWait": "სინქრონიზაცია… გთხოვთ დაელოდოთ.",
-    "synchronizingPleaseWaitCounter": "სინქრონიზაცია… ({percentage}%)",
     "systemTheme": "სისტემა",
     "theyDontMatch": "მათ შორის არ არის შესაბამისობა",
     "theyMatch": "მათ ემთხვევა",
@@ -1187,7 +1185,6 @@
     "previous": "წინა",
     "otherPartyNotLoggedIn": "მეორე მხარე ამჟამად არ არის შესული და შესაბამისად ვერ მიიღებს შეტყობინებებს!",
     "open": "გახსნა",
-    "waitingForServer": "მოსალოდნელია სერვერის პასუხი...",
     "newChatRequest": "📩 ახალი საუბრის მოთხოვნა",
     "contentNotificationSettings": "შინაარსის შეტყობინებების პარამეტრები",
     "generalNotificationSettings": "საერთო შეტყობინებების პარამეტრები",
@@ -1933,7 +1930,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-13 13:03:44.341739",
+    "@@last_modified": "2026-10-14 13:23:09.415692",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -2894,18 +2891,6 @@
     "@submit": {
         "type": "String",
         "placeholders": {}
-    },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "@systemTheme": {
         "type": "String",
@@ -3971,10 +3956,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10880,5 +10861,8 @@
     "newCourseChat": "ახალი კურსის ჩეთი",
     "customCourseStepDesc": "კურსი არის სასაუბრო აქტივობების ნაკრები, რომელიც მიჰყვება თქვენს სახელმძღვანელოს, რათა თქვენმა სტუდენტებმა ერთად შეასრულონ საშინაო დავალების სახით.",
     "reopenAppToFinishSwitching": "გთხოვთ, მთლიანად დახუროთ აპლიკაცია და ხელახლა გახსნათ, რომ გადართვა დასრულდეს.",
-    "teamCode": "გუნდის კოდი"
+    "teamCode": "გუნდის კოდი",
+    "connectionOffline": "თქვენ ხართ ხაზგარეშე. Pangea Chat ხელახლა დაუკავშირდება, როდესაც თქვენი კავშირი აღდგება.",
+    "connectionUnreachable": "Pangea Chat-თან დაკავშირება შეუძლებელია. ხელახლა ვცდილობ…",
+    "connectionBackOnline": "ხაზზე დაბრუნდა"
 }

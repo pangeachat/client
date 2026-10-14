@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-13 13:03:48.814573",
+    "@@last_modified": "2026-10-14 13:23:16.830392",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -364,8 +364,6 @@
     "status": "Tulaga",
     "statusExampleMessage": "O a mai oe i le asō?",
     "submit": "Tuʻuina atu",
-    "synchronizingPleaseWait": "Faʻamaopoopo… Faʻamolemole faʻatali.",
-    "synchronizingPleaseWaitCounter": " Faʻamaopoopo… ({percentage}%)",
     "systemTheme": "Faiga",
     "theyDontMatch": "E Le Tutusa",
     "theyMatch": "E Tutusa",
@@ -590,7 +588,6 @@
     "previous": "Talu ai",
     "otherPartyNotLoggedIn": "E leʻo saini le isi itu i le taimi nei ma e le mafai ona maua ni feʻau!",
     "open": "Tatala",
-    "waitingForServer": "Faʻatali mo le server...",
     "newChatRequest": "📩 Talosaga talanoaga fou",
     "contentNotificationSettings": "Faʻamatalaga faʻamatalaga o mea",
     "generalNotificationSettings": "Faʻamatalaga faʻamatalaga lautele",
@@ -2429,5 +2426,8 @@
     "newCourseChat": "Talanoaga fou o le kosi",
     "customCourseStepDesc": "O se kosi o se seti o gaioiga talanoaga e mulimuli i lau tusi aʻoga, mo au tamaiti aʻoga e fai faʻatasi e fai ma meaaoga.",
     "reopenAppToFinishSwitching": "Tapuni atoa le app ona toe tatala lea e fa'auma ai le fesuiaiga.",
-    "teamCode": "Tulafono a le 'au"
+    "teamCode": "Tulafono a le 'au",
+    "connectionOffline": "Ua le fesoʻotaʻiga. O le a toe fesoʻotaʻi Pangea Chat pe a toe maua lau fesoʻotaʻiga.",
+    "connectionUnreachable": "E le mafai ona maua Pangea Chat. Toe taumafai…",
+    "connectionBackOnline": "Ua toe fesoʻotaʻi"
 }

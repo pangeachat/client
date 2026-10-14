@@ -1774,20 +1774,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Sinxronlanmoqda... Iltimos, kuting.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "synchronizingPleaseWaitCounter": " Sinxronlanmoqda... ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "systemTheme": "Tizim",
     "@systemTheme": {
         "type": "String",
@@ -2585,8 +2571,6 @@
     "@otherPartyNotLoggedIn": {},
     "open": "Ochish",
     "@open": {},
-    "waitingForServer": "Server kutilmoqda...",
-    "@waitingForServer": {},
     "notificationRuleRoomServerAcl": "Guruh serveri ACL",
     "@notificationRuleRoomServerAcl": {},
     "notificationRuleRoomServerAclDescription": "Guruh serveriga kirishni boshqarish ro‘yxatlari (ACL) uchun bildirishnomalarni bostiradi.",
@@ -2873,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-13 13:03:50.416110",
+    "@@last_modified": "2026-10-14 13:23:19.247346",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9984,5 +9968,8 @@
     "newCourseChat": "Yangi kurs chati",
     "customCourseStepDesc": "Kurs — bu darsligingizga mos keladigan suhbat mashg‘ulotlari to‘plami bo‘lib, talabalaringiz uy vazifasi sifatida birgalikda bajarishlari uchun mo‘ljallangan.",
     "reopenAppToFinishSwitching": "Oʻzgartirishni yakunlash uchun ilovani toʻliq yoping va qayta oching.",
-    "teamCode": "Jamoa kodi"
+    "teamCode": "Jamoa kodi",
+    "connectionOffline": "Siz oflaynsiz. Ulanish tiklanganda Pangea Chat qayta ulanadi.",
+    "connectionUnreachable": "Pangea Chat'ga ulanib bo'lmadi. Qayta urinilmoqda…",
+    "connectionBackOnline": "Tarmoqqa qayta ulandik"
 }

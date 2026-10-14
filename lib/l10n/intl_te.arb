@@ -348,8 +348,6 @@
     "status": "స్థితి",
     "statusExampleMessage": "మీరు ఈ రోజు ఎలా ఉన్నారు?",
     "submit": "సమర్పించండి",
-    "synchronizingPleaseWait": "సమకాలీకరణ జరుగుతోంది… దయచేసి వేచిచూడండి.",
-    "synchronizingPleaseWaitCounter": "సమకాలీకరణ జరుగుతోంది… ({percentage}%)",
     "systemTheme": "సిస్టమ్",
     "theyDontMatch": "అవి సరిపోలడం లేదు",
     "theyMatch": "అవి సరిపోతున్నాయి",
@@ -574,7 +572,6 @@
     "previous": "మునుపటి",
     "otherPartyNotLoggedIn": "ఇతర పార్టీ ప్రస్తుతం లాగిన్ కాలేదు కాబట్టి సందేశాలు అందుకోలేరు!",
     "open": "తెరవండి",
-    "waitingForServer": "సర్వర్ కోసం వేచివున్నది...",
     "newChatRequest": "📩 కొత్త చాట్ అభ్యర్థన",
     "contentNotificationSettings": "విషయ సూచన నోటిఫికేషన్ సెట్టింగులు",
     "generalNotificationSettings": "సాధారణ నోటిఫికేషన్ సెట్టింగులు",
@@ -1320,7 +1317,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-13 13:03:49.823271",
+    "@@last_modified": "2026-10-14 13:23:23.960055",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -2945,18 +2942,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@systemTheme": {
         "type": "String",
         "placeholders": {}
@@ -4021,10 +4006,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10930,5 +10911,8 @@
     "newCourseChat": "కొత్త కోర్సు చాట్",
     "customCourseStepDesc": "ఒక కోర్సు అనేది మీ పాఠ్యపుస్తకాన్ని అనుసరించే సంభాషణ కార్యకలాపాల సమితి, మీ విద్యార్థులు హోంవర్క్‌గా కలిసి చేయడానికి.",
     "reopenAppToFinishSwitching": "మారడాన్ని పూర్తి చేయడానికి యాప్‌ను పూర్తిగా మూసివేసి, మళ్లీ తెరవండి.",
-    "teamCode": "టీమ్ కోడ్"
+    "teamCode": "టీమ్ కోడ్",
+    "connectionOffline": "మీరు ఆఫ్‌లైన్‌లో ఉన్నారు. మీ కనెక్షన్ తిరిగి వచ్చినప్పుడు పాంగియా చాట్ మళ్లీ కనెక్ట్ అవుతుంది.",
+    "connectionUnreachable": "పాంగియా చాట్‌ను చేరుకోలేము. మళ్లీ ప్రయత్నిస్తోంది…",
+    "connectionBackOnline": "మళ్లీ ఆన్‌లైన్‌లోకి వచ్చారు"
 }

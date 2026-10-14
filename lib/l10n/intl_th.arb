@@ -764,10 +764,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@passwordHasBeenChanged": {
         "type": "String",
         "placeholders": {}
@@ -2117,8 +2113,6 @@
     "status": "สถานะ",
     "statusExampleMessage": "คุณเป็นอย่างไรบ้างวันนี้?",
     "submit": "ส่ง",
-    "synchronizingPleaseWait": "กำลังซิงค์... กรุณารอ",
-    "synchronizingPleaseWaitCounter": "กำลังซิงค์... ({percentage}%)",
     "systemTheme": "ระบบ",
     "theyDontMatch": "ไม่ตรงกัน",
     "theyMatch": "ตรงกัน",
@@ -2343,7 +2337,6 @@
     "previous": "ก่อนหน้า",
     "otherPartyNotLoggedIn": "ฝ่ายอื่นยังไม่ได้เข้าสู่ระบบ จึงไม่สามารถรับข้อความได้!",
     "open": "เปิด",
-    "waitingForServer": "กำลังรอเซิร์ฟเวอร์...",
     "newChatRequest": "📩 คำขอแชทใหม่",
     "contentNotificationSettings": "การตั้งค่าการแจ้งเตือนเนื้อหา",
     "generalNotificationSettings": "การตั้งค่าการแจ้งเตือนทั่วไป",
@@ -3089,7 +3082,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-13 13:03:49.836411",
+    "@@last_modified": "2026-10-14 13:23:19.640739",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -3217,14 +3210,6 @@
     "@presencesToggle": {
         "type": "String",
         "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "@invitedBy": {
         "type": "String",
@@ -3711,10 +3696,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10612,5 +10593,8 @@
     "newCourseChat": "แชทคอร์สใหม่",
     "customCourseStepDesc": "คอร์สคือชุดกิจกรรมการสนทนาที่อิงตามหนังสือเรียนของคุณ ให้นักเรียนทำร่วมกันเป็นการบ้าน",
     "reopenAppToFinishSwitching": "ปิดแอปทั้งหมดแล้วเปิดใหม่อีกครั้งเพื่อสิ้นสุดการสลับ",
-    "teamCode": "รหัสทีม"
+    "teamCode": "รหัสทีม",
+    "connectionOffline": "คุณออฟไลน์อยู่ Pangea Chat จะเชื่อมต่อใหม่เมื่อคุณกลับมาออนไลน์",
+    "connectionUnreachable": "ไม่สามารถเข้าถึง Pangea Chat ได้ กำลังลองอีกครั้ง…",
+    "connectionBackOnline": "กลับมาออนไลน์แล้ว"
 }

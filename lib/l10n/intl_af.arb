@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-13 13:03:40.135565",
+    "@@last_modified": "2026-10-14 13:22:58.751727",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -364,8 +364,6 @@
     "status": "Status",
     "statusExampleMessage": "Hoe gaan dit vandag?",
     "submit": "Dien in",
-    "synchronizingPleaseWait": "Sinkroniseer… Wag asseblief.",
-    "synchronizingPleaseWaitCounter": " Sinkroniseer… ({percentage}%)",
     "systemTheme": "Stelsel",
     "theyDontMatch": "Hulle Stem Nie Ooreen Nie",
     "theyMatch": "Hulle Stem Ooreen",
@@ -590,7 +588,6 @@
     "previous": "Vorige",
     "otherPartyNotLoggedIn": "Die ander party is tans nie aangeteken nie en kan dus nie boodskappe ontvang nie!",
     "open": "Maak oop",
-    "waitingForServer": "Wag vir bediener...",
     "newChatRequest": "📩 Nuwe kletsversoek",
     "contentNotificationSettings": "Inhoudkennisgewing-instellings",
     "generalNotificationSettings": "Algemene kennisgewing-instellings",
@@ -2429,5 +2426,8 @@
     "newCourseChat": "Nuwe kursusklets",
     "customCourseStepDesc": "’n Kursus is ’n stel gespreksaktiwiteite wat jou handboek volg, vir jou studente om saam as huiswerk te doen.",
     "reopenAppToFinishSwitching": "Maak die toepassing heeltemal toe en maak dit weer oop om die oorskakeling te voltooi.",
-    "teamCode": "Spankode"
+    "teamCode": "Spankode",
+    "connectionOffline": "Jy is vanlyn. Pangea Chat sal weer koppel sodra jou verbinding herstel is.",
+    "connectionUnreachable": "Kan nie Pangea Chat bereik nie. Probeer weer…",
+    "connectionBackOnline": "Weer aanlyn"
 }

@@ -27,7 +27,7 @@ enum NetworkProbeResult {
 }
 
 /// One request to one host, classified by who answered. See
-/// filtered-network.instructions.md, "Detecting a block".
+/// connection-status.instructions.md, "Telling the causes apart".
 abstract final class NetworkProbe {
   static const Duration timeout = Duration(seconds: 4);
 

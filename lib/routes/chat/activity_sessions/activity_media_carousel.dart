@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
-import 'package:fluffychat/features/network_filter/filtered_network_controller.dart';
-import 'package:fluffychat/features/network_filter/network_host_category.dart';
-import 'package:fluffychat/features/network_filter/widgets/filtered_network_note.dart';
+import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
+import 'package:fluffychat/features/connection_status/network_host_category.dart';
+import 'package:fluffychat/features/connection_status/widgets/filtered_network_note.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_play_badge.dart';

@@ -2,26 +2,41 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/features/network_filter/filtered_network_controller.dart';
-import 'package:fluffychat/features/network_filter/network_host_category.dart';
-import 'package:fluffychat/features/network_filter/widgets/filtered_network_banner.dart';
-import 'package:fluffychat/features/network_filter/widgets/filtered_network_dialog.dart';
-import 'package:fluffychat/features/network_filter/widgets/filtered_network_note.dart';
+import 'package:fluffychat/features/connection_status/connection_status_controller.dart';
+import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
+import 'package:fluffychat/features/connection_status/network_host_category.dart';
+import 'package:fluffychat/features/connection_status/widgets/connection_banner.dart';
+import 'package:fluffychat/features/connection_status/widgets/filtered_network_dialog.dart';
+import 'package:fluffychat/features/connection_status/widgets/filtered_network_note.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
-/// #9434 — what the user sees when the network blocks a host.
+/// #9434, #9512 — what the user sees when the network blocks a host or the
+/// connection is lost.
 void main() {
   final blocked = FilteredNetworkController.instance.blocked;
   const bannerText = 'This network is blocking Pangea Chat';
 
-  tearDown(() => FilteredNetworkController.instance.resetForTest());
+  final status = ConnectionStatusController.instance.status;
+  const offlineText =
+      "You're offline. Pangea Chat will reconnect when your connection is back.";
+  const unreachableText = "Can't reach Pangea Chat. Trying again…";
+
+  tearDown(() {
+    FilteredNetworkController.instance.resetForTest();
+    ConnectionStatusController.instance.resetForTest();
+  });
 
   Widget app(Widget home) => MaterialApp(
     localizationsDelegates: L10n.localizationsDelegates,
     supportedLocales: L10n.supportedLocales,
-    builder: (context, child) => FilteredNetworkBanner(child: child),
+    builder: (context, child) => ConnectionBanner(child: child),
     home: Scaffold(body: home),
   );
+
+  Future<void> setStatus(WidgetTester tester, ConnectionStatus value) async {
+    status.value = value;
+    await tester.pump();
+  }
 
   Future<void> block(
     WidgetTester tester,
@@ -107,6 +122,73 @@ void main() {
         expect(find.text(bannerText), findsOneWidget);
       },
     );
+  });
+
+  group('the connection banner', () {
+    testWidgets('says which way the connection is lost', (tester) async {
+      await tester.pumpWidget(app(const SizedBox()));
+      await tester.pumpAndSettle();
+      expect(find.text(offlineText), findsNothing);
+
+      await setStatus(tester, ConnectionStatus.offline);
+      expect(find.text(offlineText), findsOneWidget);
+
+      await setStatus(tester, ConnectionStatus.unreachable);
+      expect(find.text(unreachableText), findsOneWidget);
+      expect(find.text(offlineText), findsNothing);
+
+      await setStatus(tester, ConnectionStatus.backOnline);
+      expect(find.text('Back online'), findsOneWidget);
+
+      await setStatus(tester, ConnectionStatus.connected);
+      expect(find.text('Back online'), findsNothing);
+    });
+
+    testWidgets('steps aside for the filtered-network banner', (tester) async {
+      await tester.pumpWidget(app(const SizedBox()));
+      await tester.pumpAndSettle();
+      await setStatus(tester, ConnectionStatus.unreachable);
+      await block(tester, {NetworkHostCategory.pangeaApi});
+
+      expect(find.text(bannerText), findsOneWidget);
+      expect(find.text(unreachableText), findsNothing);
+    });
+
+    testWidgets(
+      'stays hidden for a blocked chat server, even with that banner dismissed',
+      (tester) async {
+        await tester.pumpWidget(app(const SizedBox()));
+        await tester.pumpAndSettle();
+        await setStatus(tester, ConnectionStatus.unreachable);
+        await block(tester, {NetworkHostCategory.chatServer});
+        await tester.tap(find.bySemanticsLabel('Close'));
+        await tester.pump();
+
+        expect(find.text(bannerText), findsNothing);
+        expect(find.text(unreachableText), findsNothing);
+      },
+    );
+
+    testWidgets('once dismissed, comes back when the state changes', (
+      tester,
+    ) async {
+      await tester.pumpWidget(app(const SizedBox()));
+      await tester.pumpAndSettle();
+      await setStatus(tester, ConnectionStatus.offline);
+      await tester.tap(find.bySemanticsLabel('Close'));
+      await tester.pump();
+      expect(find.text(offlineText), findsNothing);
+
+      await setStatus(tester, ConnectionStatus.unreachable);
+      expect(find.text(unreachableText), findsOneWidget);
+      await tester.tap(find.bySemanticsLabel('Close'));
+      await tester.pump();
+      expect(find.text(unreachableText), findsNothing);
+
+      await setStatus(tester, ConnectionStatus.connected);
+      await setStatus(tester, ConnectionStatus.unreachable);
+      expect(find.text(unreachableText), findsOneWidget);
+    });
   });
 
   testWidgets('a note takes a blocked feature\'s place, and only its own', (

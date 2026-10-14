@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:39.526270",
+    "@@last_modified": "2026-10-14 13:22:58.334205",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -704,10 +704,6 @@
         "placeholders": {}
     },
     "@noEmotesFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@synchronizingPleaseWait": {
         "type": "String",
         "placeholders": {}
     },
@@ -2122,8 +2118,6 @@
     "status": "অবস্থা",
     "statusExampleMessage": "আজ আপনি কেমন আছেন?",
     "submit": "জমা দিন",
-    "synchronizingPleaseWait": "সিঙ্ক্রোনাইজিং… দয়া করে অপেক্ষা করুন।",
-    "synchronizingPleaseWaitCounter": "সিঙ্ক্রোনাইজিং… ({percentage}%)",
     "systemTheme": "সিস্টেম",
     "theyDontMatch": "তারা মেলে না",
     "theyMatch": "তারা মেলে",
@@ -2348,7 +2342,6 @@
     "previous": "আগে",
     "otherPartyNotLoggedIn": "অন্য পক্ষ বর্তমানে লগ ইন করেনি এবং তাই বার্তা গ্রহণ করতে পারবে না!",
     "open": "খুলুন",
-    "waitingForServer": "সার্ভারের জন্য অপেক্ষা করছে...",
     "newChatRequest": "📩 নতুন চ্যাট অনুরোধ",
     "contentNotificationSettings": "বিষয়বস্তুর বিজ্ঞপ্তি সেটিংস",
     "generalNotificationSettings": "সাধারণ বিজ্ঞপ্তি সেটিংস",
@@ -3214,14 +3207,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@invitedBy": {
         "type": "String",
         "placeholders": {
@@ -3707,10 +3692,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10608,5 +10589,8 @@
     "newCourseChat": "নতুন কোর্স চ্যাট",
     "customCourseStepDesc": "একটি কোর্স হল কথোপকথনমূলক কার্যকলাপের একটি সেট যা আপনার পাঠ্যপুস্তক অনুসরণ করে, আপনার শিক্ষার্থীদের জন্য হোমওয়ার্ক হিসাবে একসাথে করার জন্য।",
     "reopenAppToFinishSwitching": "সুইচিং শেষ করতে অ্যাপটি সম্পূর্ণ বন্ধ করুন এবং আবার খুলুন।",
-    "teamCode": "টিম কোড"
+    "teamCode": "টিম কোড",
+    "connectionOffline": "আপনি অফলাইন। আপনার সংযোগ ফিরে এলে প্যানগিয়া চ্যাট পুনরায় সংযুক্ত হবে।",
+    "connectionUnreachable": "প্যানগিয়া চ্যাটে পৌঁছানো যাচ্ছে না। আবার চেষ্টা করা হচ্ছে…",
+    "connectionBackOnline": "আবার অনলাইন"
 }

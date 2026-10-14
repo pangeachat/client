@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-13 13:03:48.962747",
+    "@@last_modified": "2026-10-14 13:23:17.311763",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -364,8 +364,6 @@
     "status": "Statusi",
     "statusExampleMessage": "Si je sot?",
     "submit": "Dërgo",
-    "synchronizingPleaseWait": "Po sinkronizohet… Ju lutemi prisni.",
-    "synchronizingPleaseWaitCounter": " Po sinkronizohet… ({percentage}%)",
     "systemTheme": "Sistemi",
     "theyDontMatch": "Nuk përputhen",
     "theyMatch": "Përputhen",
@@ -590,7 +588,6 @@
     "previous": "Mëparshme",
     "otherPartyNotLoggedIn": "Pala tjetër aktualisht nuk është e kyçur dhe për këtë arsye nuk mund të marrë mesazhe!",
     "open": "Hap",
-    "waitingForServer": "Duke pritur serverin...",
     "newChatRequest": "📩 Kërkesë e re bisede",
     "contentNotificationSettings": "Cilësimet e njoftimeve të përmbajtjes",
     "generalNotificationSettings": "Cilësimet e përgjithshme të njoftimeve",
@@ -2429,5 +2426,8 @@
     "newCourseChat": "Bisedë e re kursi",
     "customCourseStepDesc": "Një kurs është një grup aktivitetesh bisede që ndjekin tekstin tuaj shkollor, që studentët tuaj të bëjnë së bashku si detyrë shtëpie.",
     "reopenAppToFinishSwitching": "Mbylleni plotësisht aplikacionin dhe hapeni sërish për të përfunduar ndërrimin.",
-    "teamCode": "Kodi i ekipit"
+    "teamCode": "Kodi i ekipit",
+    "connectionOffline": "Je offline. Pangea Chat do të rilidhet kur të kthehet lidhja jote.",
+    "connectionUnreachable": "Nuk mund të arrihet Pangea Chat. Po provojmë sërish…",
+    "connectionBackOnline": "Sërish online"
 }

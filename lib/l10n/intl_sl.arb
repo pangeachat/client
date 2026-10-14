@@ -826,8 +826,6 @@
     "status": "Status",
     "statusExampleMessage": "Kako si danes?",
     "submit": "Pošlji",
-    "synchronizingPleaseWait": "Sinhronizacija… Prosimo počakajte.",
-    "synchronizingPleaseWaitCounter": "Sinhronizacija... ({percentage}%)",
     "systemTheme": "Sistem",
     "theyDontMatch": "Ne ujemajo se",
     "theyMatch": "Ujemajo se",
@@ -1052,7 +1050,6 @@
     "previous": "Prejšnje",
     "otherPartyNotLoggedIn": "Druga stran trenutno ni prijavljena in zato ne more prejemati sporočil!",
     "open": "Odpri",
-    "waitingForServer": "Čakanje na strežnik...",
     "newChatRequest": "📩 Nova zahteva za klepet",
     "contentNotificationSettings": "Nastavitve obvestil o vsebini",
     "generalNotificationSettings": "Splošne nastavitve obvestil",
@@ -1798,7 +1795,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-13 13:03:48.534232",
+    "@@last_modified": "2026-10-14 13:23:17.325075",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -2940,18 +2937,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@systemTheme": {
         "type": "String",
         "placeholders": {}
@@ -4016,10 +4001,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10925,5 +10906,8 @@
     "newCourseChat": "Nov klepet tečaja",
     "customCourseStepDesc": "Tečaj je sklop pogovornih dejavnosti, ki sledijo vašemu učbeniku, da jih vaši učenci skupaj opravijo kot domačo nalogo.",
     "reopenAppToFinishSwitching": "Popolnoma zaprite aplikacijo in jo znova odprite, da dokončate preklop.",
-    "teamCode": "Koda ekipe"
+    "teamCode": "Koda ekipe",
+    "connectionOffline": "Ste brez povezave. Pangea Chat se bo znova povezal, ko bo povezava spet vzpostavljena.",
+    "connectionUnreachable": "Pangea Chat ni dosegljiv. Poskušam znova …",
+    "connectionBackOnline": "Spet povezan"
 }

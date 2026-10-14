@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-13 13:03:45.993467",
+    "@@last_modified": "2026-10-14 13:23:12.460215",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -364,8 +364,6 @@
     "status": "Төлөв",
     "statusExampleMessage": "Та өнөөдөр ямар байна?",
     "submit": "Илгээх",
-    "synchronizingPleaseWait": "Тааруулж байна… Түр хүлээнэ үү.",
-    "synchronizingPleaseWaitCounter": " Тааруулж байна… ({percentage}%)",
     "systemTheme": "Систем",
     "theyDontMatch": "Тэд таарахгүй байна",
     "theyMatch": "Тэд таарч байна",
@@ -590,7 +588,6 @@
     "previous": "Өмнөх",
     "otherPartyNotLoggedIn": "Нөгөө тал одоогоор нэвтрээгүй байгаа тул мессеж хүлээн авах боломжгүй!",
     "open": "Нээх",
-    "waitingForServer": "Серверийг хүлээж байна...",
     "newChatRequest": "📩 Шинэ чат хүсэлт",
     "contentNotificationSettings": "Агуулгын мэдэгдлийн тохиргоо",
     "generalNotificationSettings": "Ерөнхий мэдэгдлийн тохиргоо",
@@ -2429,5 +2426,8 @@
     "newCourseChat": "Шинэ хичээлийн чат",
     "customCourseStepDesc": "Сургалт гэдэг нь таны сурах бичгийг дагасан ярианы үйл ажиллагааны багц бөгөөд таны оюутнууд гэрийн даалгавар болгон хамтдаа хийх зориулалттай.",
     "reopenAppToFinishSwitching": "Шилжүүлгийг дуусгахын тулд аппыг бүрэн хаагаад дахин нээнэ үү.",
-    "teamCode": "Багийн код"
+    "teamCode": "Багийн код",
+    "connectionOffline": "Та офлайн байна. Таны холболт сэргэх үед Pangea Chat дахин холбогдоно.",
+    "connectionUnreachable": "Pangea Chat-д холбогдох боломжгүй байна. Дахин оролдож байна…",
+    "connectionBackOnline": "Онлайн боллоо"
 }

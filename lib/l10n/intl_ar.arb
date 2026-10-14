@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-13 13:03:39.731287",
+    "@@last_modified": "2026-10-14 13:22:58.719696",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -1662,11 +1662,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "يُزامن… يرجى الانتظار.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "tooManyRequestsWarning": "طابات كثيرة. حاول مجددًا لاحقًا!",
     "@tooManyRequestsWarning": {
         "type": "String",
@@ -2615,9 +2610,7 @@
     "normalUser": "مستخدم عادي",
     "commandHint_roomupgrade": "ترقية هذه الغرفة إلى إصدار الغرفة المعطى",
     "checkList": "قائمة التحقق",
-    "synchronizingPleaseWaitCounter": "جارٍ المزامنة… ({percentage}%)",
     "open": "افتح",
-    "waitingForServer": "انتظار الخادم...",
     "newChatRequest": "📩 طلب دردشة جديد",
     "contentNotificationSettings": "إعدادات إشعارات المحتوى",
     "generalNotificationSettings": "إعدادات الإشعارات العامة",
@@ -3380,19 +3373,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10286,5 +10267,8 @@
     "newCourseChat": "محادثة دورة جديدة",
     "customCourseStepDesc": "الدورة التدريبية هي مجموعة من أنشطة المحادثة التي تتبع كتابك المدرسي، ليقوم بها طلابك معًا كواجب منزلي.",
     "reopenAppToFinishSwitching": "أغلق التطبيق تمامًا وافتحه مرة أخرى لإنهاء التبديل.",
-    "teamCode": "رمز الفريق"
+    "teamCode": "رمز الفريق",
+    "connectionOffline": "أنت غير متصل. ستتم إعادة الاتصال بـ Pangea Chat عند عودة اتصالك.",
+    "connectionUnreachable": "لا يمكن الوصول إلى Pangea Chat. جارٍ المحاولة مرة أخرى…",
+    "connectionBackOnline": "عاد الاتصال"
 }

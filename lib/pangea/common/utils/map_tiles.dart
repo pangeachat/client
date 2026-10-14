@@ -11,7 +11,7 @@ class MapTiles {
   const MapTiles._();
 
   /// The tile provider's host. The filtered-network check probes it and lists
-  /// it for IT staff to allow — see filtered-network.instructions.md.
+  /// it for IT staff to allow — see connection-status.instructions.md.
   static const String host = 'tiles.stadiamaps.com';
 
   static String urlTemplate(Brightness brightness) =>

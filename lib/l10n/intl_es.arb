@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-13 13:03:41.047737",
+    "@@last_modified": "2026-10-14 13:23:02.294141",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -1435,11 +1435,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Sincronizando... por favor espere.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "iHaveClickedOnLink": "He hecho clic en el enlace",
     "@iHaveClickedOnLink": {
         "type": "String",
@@ -2684,17 +2679,6 @@
     "@addLink": {},
     "unableToJoinChat": "No se puede entrar al chat. Puede que la otra parte ya haya cerrado la conversación.",
     "@unableToJoinChat": {},
-    "waitingForServer": "Esperando al servidor...",
-    "@waitingForServer": {},
-    "synchronizingPleaseWaitCounter": " Sincronizando… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "reportErrorDescription": "😭 Oh, no. Algo ha salido mal. Si quieres, puedes informar de este fallo a los desarrolladores.",
     "@reportErrorDescription": {},
     "hasKnocked": "🚪 {user} ha avisado",
@@ -8209,5 +8193,8 @@
     "newCourseChat": "Nuevo chat del curso",
     "customCourseStepDesc": "Un curso es un conjunto de actividades de conversación que siguen tu libro de texto, para que tus estudiantes las hagan juntos como tarea.",
     "reopenAppToFinishSwitching": "Cierra la aplicación por completo y vuelve a abrirla para terminar de cambiar.",
-    "teamCode": "Código de equipo"
+    "teamCode": "Código de equipo",
+    "connectionOffline": "Estás sin conexión. Pangea Chat se reconectará cuando recuperes la conexión.",
+    "connectionUnreachable": "No se puede conectar con Pangea Chat. Intentando de nuevo…",
+    "connectionBackOnline": "De nuevo en línea"
 }

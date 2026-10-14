@@ -7,7 +7,7 @@ import { expect, test } from "../fixtures";
  * dialog on an open network.
  *
  * Before either sign-in, the web app asks the provider's sign-in host
- * whether the network lets it through (filtered-network.instructions.md).
+ * whether the network lets it through (connection-status.instructions.md).
  * A check URL that a browser can never reach shows that dialog to every
  * user: the Apple one redirected to plain http, which an https page refuses
  * (#9441). Only an https build shows it; on http://localhost the browser
@@ -15,7 +15,7 @@ import { expect, test } from "../fixtures";
  *
  * Triggers:
  * - lib/routes/home/p_sso_button.dart
- * - lib/features/network_filter/**
+ * - lib/features/connection_status/**
  */
 
 const intl = JSON.parse(

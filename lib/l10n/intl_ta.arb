@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:49.817961",
+    "@@last_modified": "2026-10-14 13:23:19.588887",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -393,11 +393,6 @@
     },
     "downloadFile": "கோப்பைப் பதிவிறக்கவும்",
     "@downloadFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "synchronizingPleaseWait": "ஒத்திசைத்தல்… தயவுசெய்து காத்திருங்கள்.",
-    "@synchronizingPleaseWait": {
         "type": "String",
         "placeholders": {}
     },
@@ -2612,23 +2607,12 @@
     "@commandHint_roomupgrade": {},
     "checkList": "சரிபார்ப்பு பட்டியல்",
     "@checkList": {},
-    "synchronizingPleaseWaitCounter": " ஒத்திசைத்தல்… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "previous": "முந்தைய",
     "@previous": {},
     "otherPartyNotLoggedIn": "மற்ற கட்சி தற்போது உள்நுழைந்திருக்கவில்லை, எனவே செய்திகளைப் பெற முடியாது!",
     "@otherPartyNotLoggedIn": {},
     "open": "திற",
     "@open": {},
-    "waitingForServer": "சேவையகத்திற்காக காத்திருக்கிறது ...",
-    "@waitingForServer": {},
     "newChatRequest": "அரட்டை கோரிக்கை",
     "@newChatRequest": {},
     "contentNotificationSettings": "உள்ளடக்க அறிவிப்பு அமைப்புகள்",
@@ -10072,5 +10056,8 @@
     "newCourseChat": "புதிய பாடநெறி அரட்டை",
     "customCourseStepDesc": "ஒரு பாடம் என்பது உங்கள் பாடப்புத்தகத்தைப் பின்பற்றும் உரையாடல் செயல்பாடுகளின் தொகுப்பாகும், இதை உங்கள் மாணவர்கள் வீட்டுப்பாடமாக ஒன்றாகச் செய்ய வேண்டும்.",
     "reopenAppToFinishSwitching": "மாற்றுவதை முடிக்க, பயன்பாட்டை முழுமையாக மூடிவிட்டு மீண்டும் திறக்கவும்.",
-    "teamCode": "அணிக் குறியீடு"
+    "teamCode": "அணிக் குறியீடு",
+    "connectionOffline": "நீங்கள் ஆஃப்லைனில் உள்ளீர்கள். உங்கள் இணைப்பு திரும்பியதும் பான்ஜியா அரட்டை மீண்டும் இணைக்கப்படும்.",
+    "connectionUnreachable": "பான்ஜியா அரட்டையை அணுக முடியவில்லை. மீண்டும் முயற்சிக்கிறது…",
+    "connectionBackOnline": "மீண்டும் ஆன்லைனில்"
 }

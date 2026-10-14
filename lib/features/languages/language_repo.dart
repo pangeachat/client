@@ -6,8 +6,8 @@ import 'package:flutter/foundation.dart';
 import 'package:async/async.dart';
 import 'package:http/http.dart' as http;
 
+import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
-import 'package:fluffychat/features/network_filter/filtered_network_controller.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';

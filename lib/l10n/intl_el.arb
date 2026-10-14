@@ -1018,10 +1018,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@passwordHasBeenChanged": {
         "type": "String",
         "placeholders": {}
@@ -2424,8 +2420,6 @@
     "status": "Κατάσταση",
     "statusExampleMessage": "Πώς είστε σήμερα;",
     "submit": "Υποβολή",
-    "synchronizingPleaseWait": "Συγχρονισμός… Παρακαλώ περιμένετε.",
-    "synchronizingPleaseWaitCounter": "Συγχρονισμός… ({percentage}%)",
     "systemTheme": "Σύστημα",
     "theyDontMatch": "Δεν ταιριάζουν",
     "theyMatch": "Ταιριάζουν",
@@ -2650,7 +2644,6 @@
     "previous": "Προηγούμενο",
     "otherPartyNotLoggedIn": "Το άλλο μέρος δεν είναι αυτήν τη στιγμή συνδεδεμένο και επομένως δεν μπορεί να λάβει μηνύματα!",
     "open": "Άνοιγμα",
-    "waitingForServer": "Αναμονή για διακομιστή...",
     "newChatRequest": "📩 Νέα αίτηση συνομιλίας",
     "contentNotificationSettings": "Ρυθμίσεις ειδοποιήσεων περιεχομένου",
     "generalNotificationSettings": "Γενικές ρυθμίσεις ειδοποιήσεων",
@@ -3396,7 +3389,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-13 13:03:40.861219",
+    "@@last_modified": "2026-10-14 13:23:01.552521",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -3460,14 +3453,6 @@
     "@presencesToggle": {
         "type": "String",
         "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "@invitedBy": {
         "type": "String",
@@ -3954,10 +3939,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -10855,5 +10836,8 @@
     "newCourseChat": "Νέα συνομιλία μαθήματος",
     "customCourseStepDesc": "Ένα μάθημα είναι ένα σύνολο δραστηριοτήτων συνομιλίας που ακολουθούν το βιβλίο σας, για να κάνουν οι μαθητές σας μαζί ως εργασία για το σπίτι.",
     "reopenAppToFinishSwitching": "Κλείστε εντελώς την εφαρμογή και ανοίξτε την ξανά για να ολοκληρώσετε την αλλαγή.",
-    "teamCode": "Κωδικός ομάδας"
+    "teamCode": "Κωδικός ομάδας",
+    "connectionOffline": "Είστε εκτός σύνδεσης. Το Pangea Chat θα επανασυνδεθεί όταν αποκατασταθεί η σύνδεσή σας.",
+    "connectionUnreachable": "Δεν είναι δυνατή η πρόσβαση στο Pangea Chat. Προσπαθώ ξανά…",
+    "connectionBackOnline": "Πάλι συνδεδεμένοι"
 }

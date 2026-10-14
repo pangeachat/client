@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/features/network_filter/filtered_network_controller.dart';
-import 'package:fluffychat/features/network_filter/network_host_category.dart';
-import 'package:fluffychat/features/network_filter/widgets/filtered_network_dialog.dart';
+import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
+import 'package:fluffychat/features/connection_status/network_host_category.dart';
+import 'package:fluffychat/features/connection_status/widgets/filtered_network_dialog.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 /// A short note that the network blocks one feature — a video, an image, the
 /// map — so the rest of the screen keeps working. See
-/// filtered-network.instructions.md, "What the user sees".
+/// connection-status.instructions.md, "What the user sees".
 ///
 /// While [category] is blocked the note takes [child]'s place, filling its
 /// space; with no [child] it stands alone. Otherwise it shows [child], or

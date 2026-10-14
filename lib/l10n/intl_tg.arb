@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-13 13:03:49.907557",
+    "@@last_modified": "2026-10-14 13:23:19.994942",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -364,8 +364,6 @@
     "status": "Ҳолат",
     "statusExampleMessage": "Имрӯз чӣ хел ҳастед?",
     "submit": "Пешниҳод",
-    "synchronizingPleaseWait": "Ҳамоҳангсозӣ… Лутфан интизор шавед.",
-    "synchronizingPleaseWaitCounter": " Ҳамоҳангсозӣ… ({percentage}%)",
     "systemTheme": "Система",
     "theyDontMatch": "Онҳо мувофиқат намекунанд",
     "theyMatch": "Онҳо мувофиқат мекунанд",
@@ -590,7 +588,6 @@
     "previous": "Қаблӣ",
     "otherPartyNotLoggedIn": "Тарафи дигар ҳоло ворид нашудааст ва аз ин рӯ наметавонад паёмҳоро қабул кунад!",
     "open": "Кушодан",
-    "waitingForServer": "Интизори сервер...",
     "newChatRequest": "📩 Дархости чати нав",
     "contentNotificationSettings": "Танзимоти огоҳии мундариҷа",
     "generalNotificationSettings": "Танзимоти огоҳии умумӣ",
@@ -2429,5 +2426,8 @@
     "newCourseChat": "Чат курси нав",
     "customCourseStepDesc": "Курс маҷмӯи машғулиятҳои сӯҳбатӣ мебошад, ки китоби дарсии шуморо пайравӣ мекунад, то донишҷӯёни шумо онҳоро ҳамчун супориши хонагӣ якҷоя иҷро кунанд.",
     "reopenAppToFinishSwitching": "Барои анҷом додани ивазкунӣ барномаро пурра пӯшед ва дубора кушоед.",
-    "teamCode": "Рамзи даста"
+    "teamCode": "Рамзи даста",
+    "connectionOffline": "Шумо офлайн ҳастед. Pangea Chat ҳангоми барқарор шудани пайвастшавӣ дубора пайваст мешавад.",
+    "connectionUnreachable": "Ба Pangea Chat дастрасӣ нест. Аз нав кӯшиш карда мешавад…",
+    "connectionBackOnline": "Дубора онлайн шуд"
 }

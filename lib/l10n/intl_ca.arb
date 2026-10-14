@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-13 13:03:40.250365",
+    "@@last_modified": "2026-10-14 13:22:59.424802",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -1661,11 +1661,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "S’està sincronitzant… Espereu.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "reason": "Raó",
     "@reason": {
         "type": "String",
@@ -2720,19 +2715,8 @@
     "@crossVerifiedDevices": {},
     "verifiedDevicesOnly": "Només els dispositius verificats",
     "@verifiedDevicesOnly": {},
-    "synchronizingPleaseWaitCounter": " S'està sincronitzant... ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "open": "Obre",
     "@open": {},
-    "waitingForServer": "S'està esperant el servidor...",
-    "@waitingForServer": {},
     "shareKeysWith": "Comparteix les claus amb...",
     "@shareKeysWith": {},
     "crossVerifiedDevicesIfEnabled": "Els dispositius verificats mútuament, si està activat",
@@ -10107,5 +10091,8 @@
     "newCourseChat": "Nou xat del curs",
     "customCourseStepDesc": "Un curs és un conjunt d'activitats de conversa que segueixen el teu llibre de text, perquè els teus estudiants les facin junts com a deures.",
     "reopenAppToFinishSwitching": "Tanca l'aplicació completament i torna-la a obrir per acabar de canviar.",
-    "teamCode": "Codi d'equip"
+    "teamCode": "Codi d'equip",
+    "connectionOffline": "No tens connexió. Pangea Chat es tornarà a connectar quan la recuperis.",
+    "connectionUnreachable": "No es pot accedir a Pangea Chat. S'està tornant a intentar…",
+    "connectionBackOnline": "Torna a estar en línia"
 }

@@ -6,8 +6,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 
-import 'package:fluffychat/features/network_filter/network_probe.dart';
-import 'package:fluffychat/features/network_filter/network_verdict.dart';
+import 'package:fluffychat/features/connection_status/network_probe.dart';
+import 'package:fluffychat/features/connection_status/network_verdict.dart';
 
 /// #9434 — one request to one host, classified by who answered.
 void main() {

@@ -10,7 +10,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
-import 'package:fluffychat/features/network_filter/filtered_network_observer_client.dart';
+import 'package:fluffychat/features/connection_status/filtered_network_observer_client.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';

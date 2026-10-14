@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-13 13:03:49.843070",
+    "@@last_modified": "2026-10-14 13:23:16.919450",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -364,8 +364,6 @@
     "status": "Boemo",
     "statusExampleMessage": "U phela joang kajeno?",
     "submit": "Kenya",
-    "synchronizingPleaseWait": "E ntse e hokahanngoa… Ka kopo ema.",
-    "synchronizingPleaseWaitCounter": " E ntse e hokahanngoa… ({percentage}%)",
     "systemTheme": "Sistimi",
     "theyDontMatch": "Ha li Tšoane",
     "theyMatch": "Lia Tšoana",
@@ -590,7 +588,6 @@
     "previous": "E fetileng",
     "otherPartyNotLoggedIn": "Motho e mong ha a kene hona jwale mme ka hona a ke ke a amohela melaetsa!",
     "open": "Bula",
-    "waitingForServer": "Ho emetswe seva...",
     "newChatRequest": "📩 Kopo e ntjha ya moqoqo",
     "contentNotificationSettings": "Di-setting tsa tsebiso ya dikahare",
     "generalNotificationSettings": "Di-setting tsa tsebiso ka kakaretso",
@@ -2429,5 +2426,8 @@
     "newCourseChat": "Puisano e ncha ea thuto",
     "customCourseStepDesc": "Thupelo ke letoto la mesebetsi ea moqoqo e latelang buka ea hau, bakeng sa baithuti ba hau ho e etsa hammoho e le mosebetsi oa sekolo.",
     "reopenAppToFinishSwitching": "Koala app ka ho feletseng ebe o e bula hape ho qetela ho fetohela.",
-    "teamCode": "Khoutu ea sehlopha"
+    "teamCode": "Khoutu ea sehlopha",
+    "connectionOffline": "Ha o inthaneteng. Pangea Chat e tla hokela hape ha khokahano ea hau e khutla.",
+    "connectionUnreachable": "Ha e khone ho fihla ho Pangea Chat. E leka hape…",
+    "connectionBackOnline": "E khutletse inthaneteng"
 }
