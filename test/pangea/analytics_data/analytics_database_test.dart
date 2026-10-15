@@ -216,6 +216,27 @@ void main() {
       expect(vocab.map((c) => c.lemma), ['casa']);
     });
 
+    test('clearLocalConstructData cuts a trimmed batch down to its unsent '
+        'uses', () async {
+      await db.updateLocalAnalytics(usesFor('perro', count: 3), testLang);
+      final batch = (await db.getLocalUseBatches(testLang)).entries.single;
+
+      await db.clearLocalConstructData(
+        testLang,
+        batchKeys: const [],
+        trimmedBatches: {batch.key: batch.value.sublist(2)},
+      );
+
+      final remaining = await db.getLocalUseBatches(testLang);
+      expect(remaining.keys, [batch.key]);
+      expect(remaining[batch.key], hasLength(1));
+      final vocab = await db.getAggregatedConstructs(
+        ConstructTypeEnum.vocab,
+        testLang,
+      );
+      expect(vocab.single.numTotalUses, 1);
+    });
+
     test(
       'clearLocalConstructData keeps batches written after the flush snapshot '
       'and rebuilds their aggregates (#7720)',

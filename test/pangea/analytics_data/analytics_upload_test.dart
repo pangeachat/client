@@ -45,6 +45,9 @@ class _ConstructSendServer extends http.BaseClient {
   late Client client;
   bool syncCopies = true;
 
+  /// When set, the next construct send waits for it before answering.
+  Completer<void>? holdNextSend;
+
   @override
   Future<http.StreamedResponse> send(http.BaseRequest request) async {
     final isConstructSend =
@@ -54,6 +57,9 @@ class _ConstructSendServer extends http.BaseClient {
 
     final content = jsonDecode((request as http.Request).body) as Map;
     sentUses.add(content['uses'] as List);
+    final hold = holdNextSend;
+    holdNextSend = null;
+    if (hold != null) await hold.future;
     if (!accepts[sentUses.length - 1]) {
       return _json(400, {'errcode': 'M_UNKNOWN', 'error': 'refused'});
     }
@@ -99,6 +105,7 @@ class _FakeDataService implements AnalyticsDataService {
   final Room room;
   final Map<String, List<OneConstructUse>> batches;
   final List<String> clearedKeys = [];
+  final Map<String, List<OneConstructUse>> trimmedBatches = {};
 
   @override
   String? get accountUserId => testUserId;
@@ -117,8 +124,12 @@ class _FakeDataService implements AnalyticsDataService {
   @override
   Future<void> clearLocalAnalytics(
     String language,
-    Iterable<String> batchKeys,
-  ) async => clearedKeys.addAll(batchKeys);
+    Iterable<String> batchKeys, {
+    Map<String, List<OneConstructUse>> trimmedBatches = const {},
+  }) async {
+    clearedKeys.addAll(batchKeys);
+    this.trimmedBatches.addAll(trimmedBatches);
+  }
 
   @override
   dynamic noSuchMethod(Invocation invocation) => null;
@@ -238,6 +249,21 @@ void main() {
       expect(data.clearedKeys, ['a']);
     });
 
+    test('a batch split across events keeps only the uses the server did not '
+        'accept', () async {
+      await connect([true, false]);
+      final oversized = List.generate(5, thirdOfCapUse);
+      final data = _FakeDataService(room, {'a': oversized});
+
+      await updateService(
+        data,
+      ).sendLocalAnalyticsToAnalyticsRoom(l2Override: _spanish);
+
+      expect(server.sentUses.map((uses) => uses.length), [2, 2]);
+      expect(data.clearedKeys, isEmpty);
+      expect(data.trimmedBatches, {'a': oversized.sublist(2)});
+    });
+
     test('batches are cleared only after the server copy arrives', () async {
       await connect([true]);
       server.syncCopies = false;
@@ -291,6 +317,34 @@ void main() {
       connection.value = ConnectionStatus.backOnline;
       await pumpEventQueue();
       expect(server.sentUses, hasLength(1));
+      expect(data.clearedKeys, ['a']);
+    });
+
+    test('a return during an upload that then fails flushes again after '
+        'it', () async {
+      await connect([false, true]);
+      MatrixState.pangeaController = _FakePangeaController();
+      final data = _FakeDataService(room, {
+        'a': [use(lemma: 'uno', ts: at(0))],
+      });
+      final service = updateService(data)..start();
+      addTearDown(service.dispose);
+      final hold = server.holdNextSend = Completer<void>();
+
+      final inFlight = service.sendLocalAnalyticsToAnalyticsRoom(
+        l2Override: _spanish,
+      );
+      await pumpEventQueue();
+      expect(server.sentUses, hasLength(1));
+      connection.value = ConnectionStatus.offline;
+      connection.value = ConnectionStatus.backOnline;
+      await pumpEventQueue();
+      expect(server.sentUses, hasLength(1), reason: 'waits for the upload');
+
+      hold.complete();
+      await inFlight;
+      await pumpEventQueue();
+      expect(server.sentUses, hasLength(2));
       expect(data.clearedKeys, ['a']);
     });
   });

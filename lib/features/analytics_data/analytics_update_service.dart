@@ -207,7 +207,15 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     if (!wasLost || _lastConnectionStatus.isLost) return;
     final lang = _l2OrNull;
     if (lang == null || !dataService.isLogged) return;
-    unawaited(sendLocalAnalyticsToAnalyticsRoom(l2Override: lang));
+    unawaited(_flushAfterInFlightUpload(lang));
+  }
+
+  /// An upload already in flight may have started before the connection was
+  /// lost and still fail, so the reconnect flush runs after it rather than
+  /// joining it.
+  Future<void> _flushAfterInFlightUpload(LanguageModel lang) async {
+    await _updateCompleter?.future;
+    await sendLocalAnalyticsToAnalyticsRoom(l2Override: lang);
   }
 
   LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;
@@ -344,13 +352,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
 
     _updateCompleter = Completer<void>();
     try {
-      final sentBatchKeys = await _updateAnalytics(lang);
-      if (sentBatchKeys.isNotEmpty) {
-        await dataService.clearLocalAnalytics(
-          lang.langCodeShort,
-          sentBatchKeys,
-        );
-      }
+      await _updateAnalytics(lang);
     } on AnalyticsDatabaseClosedException catch (err, s) {
       // The store is gone and this instance cannot revive it, so every later
       // tick would fail identically. Stop the timer rather than let a dead
@@ -377,37 +379,61 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     }
   }
 
-  /// Uploads the pending local batches and returns the storage keys of the
-  /// batches the server accepted — the only ones the caller may clear. Uses
-  /// recorded while the upload was in flight land in new batches with new
-  /// keys and stay pending for the next flush (#7720), and so do batches the
-  /// server did not accept (#9511). Empty when there was nothing to send or no
-  /// room to send to, so nothing gets cleared.
-  Future<List<String>> _updateAnalytics(LanguageModel language) async {
-    final batches = await dataService.getLocalUseBatches(
+  /// Uploads the pending local batches and clears what the server accepted.
+  /// Uses recorded while the upload was in flight land in new batches with new
+  /// keys and stay pending for the next flush (#7720), and so does whatever
+  /// the server did not accept (#9511).
+  Future<void> _updateAnalytics(LanguageModel language) async {
+    final batches = (await dataService.getLocalUseBatches(
       language.langCodeShort,
-    );
-    if (batches.isEmpty) return [];
+    )).entries.toList();
+    if (batches.isEmpty) return;
     final analyticsRoom = await _getAnalyticsRoom(l2Override: language);
     if (analyticsRoom == null) {
       debugPrint(
         "No analytics room found for L2 Override: ${language.langCodeShort}",
       );
-      return [];
+      return;
     }
 
-    final batchKeys = batches.keys.toList();
     final arrivals = ServerEventArrivals(analyticsRoom);
     try {
       final upload = await analyticsRoom.sendConstructsEvent(
-        batches.values.toList(),
+        batches.map((batch) => batch.value).toList(),
       );
       if (!upload.allAccepted) _reportRefusedUpload(upload);
       await _waitForServerCopy(arrivals, upload);
-      return batchKeys.take(upload.acceptedBatchCount).toList();
+      await _clearAcceptedUses(language, batches, upload);
     } finally {
       await arrivals.cancel();
     }
+  }
+
+  /// Clears the batches the server accepted, and cuts a batch it accepted
+  /// only the first part of down to the uses it did not, so that part is not
+  /// sent twice.
+  Future<void> _clearAcceptedUses(
+    LanguageModel language,
+    List<MapEntry<String, List<OneConstructUse>>> batches,
+    ConstructsUploadResult upload,
+  ) async {
+    final acceptedKeys = batches
+        .take(upload.acceptedBatchCount)
+        .map((batch) => batch.key)
+        .toList();
+    final trimmedBatches = <String, List<OneConstructUse>>{};
+    if (upload.partlyAcceptedUseCount > 0) {
+      final splitBatch = batches[upload.acceptedBatchCount];
+      trimmedBatches[splitBatch.key] = splitBatch.value.sublist(
+        upload.partlyAcceptedUseCount,
+      );
+    }
+    if (acceptedKeys.isEmpty && trimmedBatches.isEmpty) return;
+    await dataService.clearLocalAnalytics(
+      language.langCodeShort,
+      acceptedKeys,
+      trimmedBatches: trimmedBatches,
+    );
   }
 
   void _reportRefusedUpload(ConstructsUploadResult upload) {

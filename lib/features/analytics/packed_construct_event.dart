@@ -13,7 +13,16 @@ class PackedConstructEvent {
   /// and every event before it are accepted.
   final int completedBatchCount;
 
-  const PackedConstructEvent(this.uses, this.completedBatchCount);
+  /// How many leading uses of the batch at [completedBatchCount] this event
+  /// and the ones before it carry. Non-zero only for a batch split across
+  /// events.
+  final int sentUsesOfSplitBatch;
+
+  const PackedConstructEvent(
+    this.uses,
+    this.completedBatchCount, {
+    this.sentUsesOfSplitBatch = 0,
+  });
 
   /// I tested with using the maxPDUSize constant, but the events were still
   /// too large. 50000 seems to be a safe number of bytes.
@@ -23,9 +32,8 @@ class PackedConstructEvent {
   /// in one event unless the batch alone is over [maxBytes].
   ///
   /// An over-cap batch is split across events and is complete only with its
-  /// last event. If an earlier part is accepted and a later part is not, the
-  /// next upload sends the whole batch again and the accepted part is stored
-  /// twice. That needs a batch over [maxBytes] and a failure inside it.
+  /// last event; [sentUsesOfSplitBatch] says how much of it the events up to
+  /// each one carry, so a part the server accepted is not sent again.
   static List<PackedConstructEvent> pack(List<List<OneConstructUse>> batches) {
     final events = <PackedConstructEvent>[];
     var uses = <OneConstructUse>[];
@@ -45,7 +53,7 @@ class PackedConstructEvent {
 
       for (var j = 0; j < sizes.length; j++) {
         if (uses.isNotEmpty && bytes + sizes[j] > maxBytes) {
-          events.add(PackedConstructEvent(uses, i));
+          events.add(PackedConstructEvent(uses, i, sentUsesOfSplitBatch: j));
           uses = [];
           bytes = 0;
         }

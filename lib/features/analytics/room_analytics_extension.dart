@@ -52,12 +52,14 @@ extension AnalyticsRoomExtension on Room {
       return ConstructsUploadResult(
         batchCount: batches.length,
         acceptedBatchCount: eventId == null ? 0 : batches.length,
+        partlyAcceptedUseCount: 0,
         acceptedEventIds: [?eventId],
       );
     }
 
     final acceptedEventIds = <String>[];
     var acceptedBatchCount = 0;
+    var partlyAcceptedUseCount = 0;
     for (final event in PackedConstructEvent.pack(batches)) {
       final eventId = await _sendConstructUses(event.uses);
       // The events after a refused one would most likely be refused too, and
@@ -65,6 +67,7 @@ extension AnalyticsRoomExtension on Room {
       if (eventId == null) break;
       acceptedEventIds.add(eventId);
       acceptedBatchCount = event.completedBatchCount;
+      partlyAcceptedUseCount = event.sentUsesOfSplitBatch;
 
       // Send-then-POST: the Matrix write is already durable; now best-effort
       // dual-write this batch to the teacher-BFF under its REAL event id. This
@@ -76,6 +79,7 @@ extension AnalyticsRoomExtension on Room {
     return ConstructsUploadResult(
       batchCount: batches.length,
       acceptedBatchCount: acceptedBatchCount,
+      partlyAcceptedUseCount: partlyAcceptedUseCount,
       acceptedEventIds: acceptedEventIds,
     );
   }

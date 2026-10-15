@@ -953,16 +953,19 @@ class AnalyticsDataService {
   /// sides, so the total is settled here rather than on the next unrelated
   /// sync. Only the uploaded batches may be dropped — uses recorded while the
   /// upload was in flight were not in it, and clearing the whole language
-  /// destroyed them before they were ever sent (#7720).
+  /// destroyed them before they were ever sent (#7720). [trimmedBatches] keeps
+  /// only the unsent part of a batch the server accepted part of (#9511).
   Future<void> clearLocalAnalytics(
     String language,
-    Iterable<String> batchKeys,
-  ) async {
+    Iterable<String> batchKeys, {
+    Map<String, List<OneConstructUse>> trimmedBatches = const {},
+  }) async {
     _invalidateCaches();
     await _ensureInitialized();
     await _analyticsClientGetter.database.clearLocalConstructData(
       language,
       batchKeys: batchKeys,
+      trimmedBatches: trimmedBatches,
     );
     _invalidateCaches();
     await _recomputeTotalXP(language);

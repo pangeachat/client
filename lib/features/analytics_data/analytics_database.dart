@@ -555,12 +555,22 @@ class AnalyticsDatabase with DatabaseFileStorage {
   /// while an upload was in flight sits in a batch that was NOT in the uploaded
   /// event, and a whole-language wipe here destroyed it before it was ever
   /// sent. Surviving batches are rare and small, so the rebuild is cheap.
+  ///
+  /// [trimmedBatches] replaces the uses of a batch the server accepted only
+  /// part of with the part it did not accept (#9511).
   Future<void> clearLocalConstructData(
     String language, {
     required Iterable<String> batchKeys,
+    Map<String, List<OneConstructUse>> trimmedBatches = const {},
   }) async {
     await _transaction(() async {
       await _localConstructsBox.deleteAll(batchKeys.toList());
+      for (final batch in trimmedBatches.entries) {
+        await _localConstructsBox.put(
+          batch.key,
+          batch.value.map((u) => u.toJson()).toList(),
+        );
+      }
 
       final survivors = await _readLocalUses(language);
 

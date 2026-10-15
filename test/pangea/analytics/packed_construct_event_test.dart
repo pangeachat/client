@@ -66,6 +66,11 @@ void main() {
       [...List.filled(events.length - 1, 1), 2],
       reason: 'only the oversized batch is spread across events',
     );
+    expect(
+      events.map((e) => e.sentUsesOfSplitBatch),
+      [2, 4, 0],
+      reason: 'how much of the oversized batch each event completes',
+    );
     for (final event in events) {
       expect(contentBytes(event), lessThan(maxPDUSize));
     }
