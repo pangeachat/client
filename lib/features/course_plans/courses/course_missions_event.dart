@@ -1,6 +1,7 @@
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/quests/activity_family.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
@@ -13,6 +14,11 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 class CourseMission {
   final String loId;
   final List<String> activityIds;
+
+  /// Activities the teacher hid or removed in this Can-Do: not shown to
+  /// students, still credited to the Can-Do. Showing one again moves it back
+  /// to [activityIds].
+  final List<String> removedActivityIds;
   final String? note;
 
   /// A UTC instant. Shown, never enforced: nothing is blocked after it.
@@ -21,6 +27,7 @@ class CourseMission {
   const CourseMission({
     required this.loId,
     required this.activityIds,
+    this.removedActivityIds = const [],
     this.note,
     this.dueAt,
   });
@@ -28,8 +35,32 @@ class CourseMission {
   Map<String, dynamic> toJson() => {
     'lo_id': loId,
     'activity_ids': activityIds,
+    if (removedActivityIds.isNotEmpty)
+      'removed_activity_ids': removedActivityIds,
     if (note != null) 'note': note,
     if (dueAt != null) 'due_at': dueAt!.toUtc().toIso8601String(),
+  };
+}
+
+/// A Can-Do the teacher removed: not shown, but its activities stay credited
+/// to the course total. [activityIds] holds every credited id of the Can-Do at
+/// removal (its shown ids, then its hidden ones); the first [shownCount] were
+/// shown, so restoring it puts those back and keeps the rest hidden.
+class RemovedMission {
+  final String loId;
+  final List<String> activityIds;
+  final int shownCount;
+
+  const RemovedMission({
+    required this.loId,
+    required this.activityIds,
+    required this.shownCount,
+  });
+
+  Map<String, dynamic> toJson() => {
+    'lo_id': loId,
+    'activity_ids': activityIds,
+    'shown_count': shownCount,
   };
 }
 
@@ -47,17 +78,30 @@ class CourseMissionsEvent {
   final String? timeZone;
   final List<CourseMission> missions;
 
+  /// Can-Dos the teacher removed; empty on every v1 record. Readers that
+  /// predate it ignore the field.
+  final List<RemovedMission> removedMissions;
+
   const CourseMissionsEvent({
     required this.revision,
     required this.missions,
+    this.removedMissions = const [],
     this.timeZone,
   });
+
+  /// Every Can-Do the record names: the shown ones and the removed ones.
+  Set<String> get allLoIds => {
+    for (final m in missions) m.loId,
+    for (final m in removedMissions) m.loId,
+  };
 
   Map<String, dynamic> toJson() => {
     'version': schemaVersion,
     'revision': revision,
     if (timeZone != null) 'time_zone': timeZone,
     'missions': [for (final m in missions) m.toJson()],
+    if (removedMissions.isNotEmpty)
+      'removed_missions': [for (final m in removedMissions) m.toJson()],
   };
 
   /// Strict parse: any field of the wrong type, a version other than 1, a
@@ -84,6 +128,11 @@ class CourseMissionsEvent {
       if (loId is! String || loId.isEmpty || !seen.add(loId)) return null;
       final rawIds = raw['activity_ids'];
       if (rawIds is! List || rawIds.any((id) => id is! String)) return null;
+      final rawRemoved = raw['removed_activity_ids'];
+      if (rawRemoved != null &&
+          (rawRemoved is! List || rawRemoved.any((id) => id is! String))) {
+        return null;
+      }
       final note = raw['note'];
       if (note != null && (note is! String || note.length > maxNoteLength)) {
         return null;
@@ -101,15 +150,46 @@ class CourseMissionsEvent {
         CourseMission(
           loId: loId,
           activityIds: rawIds.cast<String>().toSet().toList(),
+          removedActivityIds: rawRemoved == null
+              ? const []
+              : (rawRemoved as List).cast<String>().toSet().toList(),
           note: note as String?,
           dueAt: dueAt,
         ),
       );
     }
+    final removedMissions = <RemovedMission>[];
+    final rawRemovedMissions = content['removed_missions'];
+    if (rawRemovedMissions != null) {
+      if (rawRemovedMissions is! List) return null;
+      for (final raw in rawRemovedMissions) {
+        if (raw is! Map) return null;
+        final loId = raw['lo_id'];
+        final ids = raw['activity_ids'];
+        final shownCount = raw['shown_count'];
+        if (loId is! String ||
+            loId.isEmpty ||
+            ids is! List ||
+            ids.any((id) => id is! String) ||
+            shownCount is! int ||
+            shownCount < 0 ||
+            shownCount > ids.length) {
+          return null;
+        }
+        removedMissions.add(
+          RemovedMission(
+            loId: loId,
+            activityIds: ids.cast<String>().toList(),
+            shownCount: shownCount,
+          ),
+        );
+      }
+    }
     return CourseMissionsEvent(
       revision: revision,
       timeZone: timeZone as String?,
       missions: missions,
+      removedMissions: removedMissions,
     );
   }
 
@@ -208,12 +288,21 @@ extension QuestOutlineForCourse on QuestOutline {
   /// returns (in the library's order), plus the note and due date. The
   /// quest's sequence is reordered to match, so
   /// [QuestOutline.toCourseLoOutline]'s `orderedLoIds` follows the copy too.
+  /// A Can-Do the copy lists that the quest does not carry (one a teacher
+  /// added) comes from the listing's own Can-Dos ([addedGroups]).
+  ///
+  /// The listing also returns the course's own copies of activities; only the
+  /// ids the copy lists are shown. Everything the copy credits — shown,
+  /// hidden, and in removed Can-Dos — is gathered into [QuestOutline.credit]
+  /// so progress follows an activity across its copies.
   /// Without a copy: exactly today's pin restriction.
   QuestOutline forRules(CourseListRules rules) {
     final copy = rules.missions;
     if (copy == null) return restrictedTo(rules.pins);
 
-    final groupsById = {for (final g in groups) g.objective.id: g};
+    final groupsById = {
+      for (final g in [...groups, ...addedGroups]) g.objective.id: g,
+    };
     final stepsById = {for (final s in quest.sequence) s.objective.id: s};
     final nextGroups = <QuestObjectiveGroup>[];
     final nextSteps = <QuestObjectiveStep>[];
@@ -245,9 +334,49 @@ extension QuestOutlineForCourse on QuestOutline {
             QuestObjectiveStep(objective: group.objective, wasMinted: false),
       );
     }
-    return QuestOutline(
+    return withCourse(
       quest: quest.withSequence(nextSteps),
       groups: nextGroups,
+      credit: _creditFor(copy),
+    );
+  }
+
+  /// What [copy] credits: its activities in course order (each Can-Do's shown
+  /// ids, then its hidden ones, then the removed Can-Dos'), grouped into
+  /// families from the listing. [CourseCredit.none] when no activity has a
+  /// copy and nothing is hidden or removed, so a course without copies reads
+  /// exactly as it did before they existed.
+  CourseCredit _creditFor(CourseMissionsEvent copy) {
+    ListedActivity listed(String id, {required bool shown}) => ListedActivity(
+      activityId: id,
+      familyIds: familyIdsByActivity[id] ?? const [],
+      shown: shown,
+    );
+    final credited = <ListedActivity>[
+      for (final m in copy.missions) ...[
+        for (final id in m.activityIds) listed(id, shown: true),
+        for (final id in m.removedActivityIds) listed(id, shown: false),
+      ],
+      for (final rm in copy.removedMissions)
+        for (final id in rm.activityIds) listed(id, shown: false),
+    ];
+    final hasHidden =
+        copy.removedMissions.isNotEmpty ||
+        copy.missions.any((m) => m.removedActivityIds.isNotEmpty);
+    final hasFamily = credited.any(
+      (a) => a.familyIds.any((id) => id != a.activityId),
+    );
+    if (!hasHidden && !hasFamily) return CourseCredit.none;
+    return CourseCredit(
+      family: activityFamily(credited),
+      removedByLo: {
+        for (final m in copy.missions)
+          if (m.removedActivityIds.isNotEmpty) m.loId: m.removedActivityIds,
+      },
+      removedMissionActivityIds: {
+        for (final rm in copy.removedMissions) ...rm.activityIds,
+      },
+      shownIds: {for (final m in copy.missions) ...m.activityIds},
     );
   }
 }

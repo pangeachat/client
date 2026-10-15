@@ -126,6 +126,10 @@ class WorldMapPinsManager {
   Map<String, PinSignals> _signals = {};
   Map<String, int> _userStars = {};
 
+  /// [_userStars] with each in-scope course's shown activities credited across
+  /// their copies — what a pin shows. Recomputed with the progression.
+  Map<String, int> _creditedStars = {};
+
   // Star-tier inputs, precomputed once per sync (each a single rooms pass) so
   // resolving a pin's display state / star level is an O(roles) lookup rather
   // than an O(rooms) rescan per pin (world-map.instructions.md, "Goal Progress").
@@ -278,12 +282,12 @@ class WorldMapPinsManager {
         : ActivityPinState.inProgress;
   }
 
-  int? activityStarsEarned(String activityId) => _userStars[activityId];
+  int? activityStarsEarned(String activityId) => _creditedStars[activityId];
 
   /// Activity ids the learner has earned at least one star in — the trail the
   /// ranking reserves slots for (world-map.instructions.md, "Goal Progress").
   Set<String> get progressedActivityIds => {
-    for (final e in _userStars.entries)
+    for (final e in _creditedStars.entries)
       if (e.value > 0) e.key,
   };
 
@@ -568,6 +572,12 @@ class WorldMapPinsManager {
   /// Called where the inputs change — stars on room sync, the objective cache on
   /// course join/leave, and a course re-scope — never per frame.
   void resolveProgression() {
+    _creditedStars = _objectiveCache.creditedStars(
+      _userStars,
+      extraOutlines: _scopedCourseOutline == null
+          ? const []
+          : [_scopedCourseOutline!],
+    );
     _progression = _objectiveCache.resolution(
       _userStars,
       extraOutlines: _scopedCourseOutline == null
@@ -675,9 +685,23 @@ class WorldMapPinsManager {
     // One choreo read: the quest's activities at its own L2, LO-grouped
     // server-side. [courseRoomId] admits the quest owner's private activities
     // when this learner is a joined member of the course.
+    // A copy that adds a Can-Do the quest does not carry is asked for by id,
+    // so its activities get pins too. The outline read is cached by the course
+    // panel; a failed one only means no extras.
+    final copyLoIds = rules.missions?.allLoIds ?? const <String>{};
+    final questLoIds = copyLoIds.isEmpty
+        ? const <String>[]
+        : ((await QuestRepo.outline(
+                courseId,
+                courseRoomId: courseRoomId,
+                courseLoIds: copyLoIds,
+                copyRevision: rules.revision,
+              )).result?.quest.learningObjectiveIds ??
+              const <String>[]);
     final activityCardsResult = await QuestRepo.questActivityCards(
       courseId,
       courseRoomId: courseRoomId,
+      extraLoIds: QuestRepo.extraLoIdsFor(copyLoIds, questLoIds),
     );
     final activityCards = activityCardsResult.result;
     if (activityCards == null) {

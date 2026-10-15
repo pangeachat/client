@@ -4,6 +4,8 @@
 // network. Nothing is locked anymore; progression only ranks (#7186). Design:
 // quests.instructions.md.
 
+import 'package:fluffychat/features/quests/activity_family.dart';
+
 /// The default number of stars (orchestrator-awarded activity goals) the learner
 /// must earn in an objective to satisfy it and unlock the next one in the
 /// sequence. A teacher may override this per course.
@@ -41,6 +43,11 @@ class CourseLoOutline {
   /// in hand — the resolver then leaves the configured threshold unclamped.
   final Map<String, int> earnableByActivity;
 
+  /// What the course credits beyond the shown activities: its hidden and
+  /// removed activities, and each activity's copies. [CourseCredit.none] for
+  /// a course without a copy, where only [activityIdsByLo] counts.
+  final CourseCredit credit;
+
   const CourseLoOutline({
     required this.courseId,
     this.questId,
@@ -48,5 +55,6 @@ class CourseLoOutline {
     required this.activityIdsByLo,
     this.starsToUnlock = kDefaultStarsToUnlockObjective,
     this.earnableByActivity = const {},
+    this.credit = CourseCredit.none,
   });
 }

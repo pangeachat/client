@@ -108,6 +108,26 @@ class JoinedObjectiveCache {
     starsByActivity: starsByActivity,
   );
 
+  /// [starsByActivity] with each course's shown activities credited across
+  /// their copies, for the pins the map draws by activity id. Raw stars are
+  /// kept for every other activity; a credited one takes the larger of its own
+  /// and the credited sum, across the in-scope courses.
+  Map<String, int> creditedStars(
+    Map<String, int> starsByActivity, {
+    Iterable<CourseLoOutline> extraOutlines = const [],
+  }) {
+    var out = starsByActivity;
+    for (final outline in [..._outlines, ...extraOutlines]) {
+      if (outline.credit.isEmpty) continue;
+      final overlaid = outline.credit.overlayOn(starsByActivity);
+      if (identical(out, starsByActivity)) out = {...starsByActivity};
+      for (final entry in overlaid.entries) {
+        if (entry.value > (out[entry.key] ?? 0)) out[entry.key] = entry.value;
+      }
+    }
+    return out;
+  }
+
   /// Rebuild from the joined courses' quest outlines. [outlineOf] resolves a
   /// course key to its outline (defaults to the v3 quest read layer, which
   /// treats the key as a quest uuid; [rebuildFromJoinedCourses] keys by course
@@ -144,6 +164,7 @@ class JoinedObjectiveCache {
               starsToUnlock:
                   starsToUnlockOf?.call(key) ?? kDefaultStarsToUnlockObjective,
               earnableByActivity: o.earnableByActivity,
+              credit: o.credit,
             ),
           );
         } catch (e, s) {
@@ -218,6 +239,8 @@ class JoinedObjectiveCache {
     final outlineResult = await QuestRepo.outline(
       uuid,
       courseRoomId: courseRoomId,
+      courseLoIds: rules.missions?.allLoIds ?? const {},
+      copyRevision: rules.revision,
     );
     final outline = outlineResult.result;
     if (outline == null) {

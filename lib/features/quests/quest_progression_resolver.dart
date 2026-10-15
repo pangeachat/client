@@ -5,6 +5,7 @@
 // activity start page). Pure logic — no Matrix or network — so it stays
 // unit-testable. Design: quests.instructions.md, world-map.instructions.md.
 
+import 'package:fluffychat/features/quests/activity_family.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 
 /// How far along a quest the next-Mission gradient reaches before decaying to
@@ -238,6 +239,10 @@ ProgressionResolution resolveProgression({
     final seq = outline.orderedLoIds;
     if (seq.isEmpty) continue;
 
+    // Stars on any copy of an activity count toward the one the course shows;
+    // a no-op for a course without a copy (activity_family.dart).
+    final credited = outline.credit.creditedBy(starsByActivity);
+
     final rollup = <String, MissionProgress>{};
     for (final missionId in seq) {
       final activities = outline.activityIdsByLo[missionId] ?? const <String>{};
@@ -249,10 +254,16 @@ ProgressionResolution resolveProgression({
       // the Mission has activities whose plans carry no goal data.
       if (activities.isEmpty) continue;
 
-      var stars = 0;
+      // Hidden activities still count toward their Can-Do's stars; only the
+      // shown ones bound what it can offer (the threshold clamp below).
+      final stars = creditedForMission(
+        shownIds: activities,
+        loId: missionId,
+        credit: outline.credit,
+        credited: credited,
+      ).toInt();
       var earnableCeiling = 0;
       for (final activityId in activities) {
-        stars += starsByActivity[activityId] ?? 0;
         earnableCeiling += outline.earnableByActivity[activityId] ?? 0;
       }
       final configured = outline.starsToUnlock;
@@ -305,3 +316,39 @@ String? _anchorFor(List<String> seq, Map<String, MissionProgress> rollup) {
   }
   return null;
 }
+
+/// [outline]'s credited value per Can-Do, from one value per activity
+/// ([perMember], already reduced per member: best session for stars, summed
+/// sessions for XP). The same crediting [resolveProgression] applies to stars,
+/// exposed so the per-Can-Do XP reader (client#9450) shares it.
+///
+/// Includes a Can-Do whose activities are all hidden: nothing shows for it,
+/// but its credit is real and stays reported. (The star rollup above leaves
+/// such a Can-Do out because the panel does not render it, #7114.)
+Map<String, num> creditedByMission(
+  CourseLoOutline outline,
+  Map<String, num> perMember,
+) {
+  final credited = outline.credit.creditedBy(perMember);
+  return {
+    for (final entry in outline.activityIdsByLo.entries)
+      if (entry.value.isNotEmpty ||
+          (outline.credit.removedByLo[entry.key]?.isNotEmpty ?? false))
+        entry.key: creditedForMission(
+          shownIds: entry.value,
+          loId: entry.key,
+          credit: outline.credit,
+          credited: credited,
+        ),
+  };
+}
+
+/// [outline]'s credited value across the whole course, removed Can-Dos
+/// included: the client counterpart of the dashboard's course total. No screen
+/// reads it yet.
+num creditedCourseTotal(CourseLoOutline outline, Map<String, num> perMember) =>
+    creditedForCourse(
+      shownIds: {for (final ids in outline.activityIdsByLo.values) ...ids},
+      credit: outline.credit,
+      credited: outline.credit.creditedBy(perMember),
+    );

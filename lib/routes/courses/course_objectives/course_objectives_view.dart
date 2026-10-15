@@ -15,6 +15,7 @@ import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/activity_family.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
@@ -563,8 +564,17 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     pinged: activityId == _pingedActivityId,
   );
 
-  int _userStarsByActivity(String activityId) =>
-      widget.room?.client.userStarsByActivity[activityId] ?? 0;
+  /// Stars on [activityId], credited across its copies: a copy the teacher
+  /// swapped in shows the stars earned on the original, and the reverse.
+  int _userStarsByActivity(String activityId) {
+    final raw = widget.room?.client.userStarsByActivity;
+    if (raw == null) return 0;
+    final credit = switch (widget.objectivesProvider.questLoader.value) {
+      AsyncLoaded(value: final outline) => outline.credit,
+      _ => CourseCredit.none,
+    };
+    return credit.starsFor(activityId, raw);
+  }
 
   void _openActivity(QuestActivity ref) {
     if (widget.readOnly) return;
