@@ -5,7 +5,7 @@ description: "The course page's sections and their shared header (the title, See
 
 # Course Page
 
-The course page is the course card's main view. It opens on the course's **Mission circles** and the **Mission card** for the Mission on show, with no section header of their own, then a column of sections divided by full-width dividers: **Chats**, **Leaderboard** and **More**. The circles and the Mission card, with the Mission's activities inside it, are in [quests.instructions.md](quests.instructions.md) ("Progress display on the course page", "The Mission card"), and the Leaderboard is in [course-leaderboard.instructions.md](course-leaderboard.instructions.md).
+The course page is the course card's main view. It opens on the course's **Mission circles** and the **Mission card** for the Mission on show, with no section header of their own, then a column of sections divided by full-width dividers: **Chats**, **Leaderboard** and **More**. The circles and the Mission card, with the Mission's activities inside it and the quiet "See full course plan" link under it, are in [quests.instructions.md](quests.instructions.md) ("Progress display on the course page", "The Mission card"), and the Leaderboard is in [course-leaderboard.instructions.md](course-leaderboard.instructions.md).
 
 ## The section header
 

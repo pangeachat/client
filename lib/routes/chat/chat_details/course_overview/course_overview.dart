@@ -9,6 +9,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_catch_up.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
@@ -229,9 +230,8 @@ class _CourseOverviewState extends State<CourseOverview> {
                         children: [
                           // The section is the learner's CURRENT Mission
                           // (#9437): the Mission circles, then the Mission
-                          // card and the activities that satisfy it. No
-                          // section header and no way into the full plan from
-                          // here (#9420).
+                          // card and the activities that satisfy it, with no
+                          // section header (#9420).
                           CourseObjectiveCircles(
                             objectivesProvider: provider,
                             onSelectMission: _selectMission,
@@ -243,9 +243,9 @@ class _CourseOverviewState extends State<CourseOverview> {
                               objectiveCount: provider.objectiveCount,
                             )
                           else ...[
-                            // The Mission card (statement, XP ring, Play and
-                            // Practice words), then the Mission's activities,
-                            // with a pinged activity's badge on its card.
+                            // The Mission card (statement, XP ring, Play,
+                            // Practice and the Mission's activities), with a
+                            // pinged activity's badge on its card.
                             CourseObjectivesList(
                               room: room,
                               shrinkWrap: true,
@@ -261,6 +261,18 @@ class _CourseOverviewState extends State<CourseOverview> {
                               objectivesProvider: provider,
                             ),
                           ],
+                          // The full plan, for reading the course's shape —
+                          // educators asked for it — rather than choosing
+                          // what to do next, so a plain link under the card,
+                          // never competing with Play (#9420).
+                          Align(
+                            alignment: AlignmentDirectional.centerEnd,
+                            child: TextButton(
+                              onPressed: () =>
+                                  _openSubpage(SpaceSettingsTabs.course),
+                              child: Text(L10n.of(context).seeFullCoursePlan),
+                            ),
+                          ),
                         ],
                       );
                     },

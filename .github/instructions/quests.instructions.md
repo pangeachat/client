@@ -104,6 +104,8 @@ Under the circles, the course page opens on the **Mission card** for the Mission
 
 Equal scores break on a stable key, so a rebuild never reshuffles the row under a reader. A tap on a card whose session the learner is in reopens that chat; any other card opens the activity's start page.
 
+**The full course plan** — every Mission with its statement, its XP and its activities ("Mission header states on the course plan", below) — sits behind a quiet **"See full course plan"** link under the Mission card. It is for reading the course's shape, which educators asked to see, rather than for choosing what to do next, so it is a plain text link rather than a button and never competes with Play.
+
 **When every Mission is complete** there is no current Mission to show; unless a circle is tapped, the page shows a **course complete** card instead of the Mission card — the count of objectives done and a Practice button for the learner's usual session. The circles above it show every Mission's star.
 
 ## Activity cards
