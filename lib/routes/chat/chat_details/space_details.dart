@@ -31,7 +31,6 @@ import 'package:fluffychat/routes/chat/activity_sessions/course_ping_constants.d
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
-import 'package:fluffychat/routes/chat_list/default_chats_room_extension.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
@@ -108,7 +107,6 @@ class SpaceDetailsController extends State<SpaceDetails> {
 
     _objectivesProvider.loadOutline(_questId, courseRoomId: room.id);
     _loadSummaries();
-    room.joinDefaultChats();
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       _handleCoursePing();
@@ -158,7 +156,6 @@ class SpaceDetailsController extends State<SpaceDetails> {
       _handleCoursePing();
       _objectivesProvider.loadOutline(_questId, courseRoomId: room.id);
       _loadSummaries();
-      room.joinDefaultChats();
     }
 
     if (widget.activeTab == SpaceSettingsTabs.course &&

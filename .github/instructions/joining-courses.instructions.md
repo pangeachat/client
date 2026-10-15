@@ -142,7 +142,7 @@ Account data is used so the state survives reinstall, logout, and syncs across d
 
 ### All auto-join cases
 
-Every case where `room.join()` is called without explicit user confirmation:
+Every case where the user is joined to a room without confirming it. The client calls `room.join()` in every case except the course's default chats, which the server joins:
 
 | Condition                                                | Trigger                           |
 | -------------------------------------------------------- | --------------------------------- |
@@ -150,7 +150,7 @@ Every case where `room.join()` is called without explicit user confirmation:
 | Invited space is a child of a joined parent              | Space invite via sync             |
 | Tapping a left space in the list                         | User tap                          |
 | Analytics room invite                                    | Always auto-joined                |
-| Default chats in a course (announcements, introductions) | Viewing the course                |
+| Default chats in a course (announcements, introductions) | Server-side, when the user joins the course or the chat is linked to it ([course default chats](../../../synapse-pangea-chat/.github/instructions/course-default-chats.instructions.md)) |
 | knock_with_code succeeded                                | Code entry flow                   |
 | User previously knocked on the room                      | Invite received for a prior knock |
 
