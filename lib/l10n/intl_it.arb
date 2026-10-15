@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-14 13:23:09.545593",
+    "@@last_modified": "2026-10-15 16:24:15.730086",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10041,5 +10041,8 @@
     "connectionOffline": "Sei offline. Pangea Chat si riconnetterà quando la tua connessione sarà di nuovo disponibile.",
     "connectionUnreachable": "Impossibile raggiungere Pangea Chat. Riprovo…",
     "connectionBackOnline": "Di nuovo online",
-    "missionDueDate": "Scadenza {date}, {time}"
+    "missionDueDate": "Scadenza {date}, {time}",
+    "callNotificationsTitle": "Fai squillare le chiamate",
+    "callNotificationsMessage": "Le chiamate squillano come notifiche. Consenti le notifiche in modo che il telefono squilli per una chiamata, anche quando Pangea Chat è chiusa o il telefono è bloccato.",
+    "callNotificationsMissedMessage": "È arrivata una chiamata mentre Pangea Chat era chiusa, ma il telefono non ha potuto squillare perché le notifiche sono disattivate. Consenti le notifiche in modo che la prossima chiamata squilli."
 }

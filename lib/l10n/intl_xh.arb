@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-14 13:23:20.467791",
+    "@@last_modified": "2026-10-15 16:24:26.441901",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "Ungaxhunyiwe kwi-intanethi. I-Pangea Chat izakuphinda ixhume xa unxibelelwano lwakho lubuyile.",
     "connectionUnreachable": "Ayikwazi ukufikelela kwi-Pangea Chat. Izama kwakhona…",
     "connectionBackOnline": "Ubuyile kwi-intanethi",
-    "missionDueDate": "Ifuneka ngo-{date}, {time}"
+    "missionDueDate": "Ifuneka ngo-{date}, {time}",
+    "callNotificationsTitle": "Vumela iifowuni zikhale",
+    "callNotificationsMessage": "Iifowuni zikhala njengezaziso. Vumela izaziso ukuze ifowuni yakho ikhale xa kukho umnxeba, naxa iPangea Chat ivaliwe okanye ifowuni yakho itshixiwe.",
+    "callNotificationsMissedMessage": "Kwangena umnxeba ngelixa iPangea Chat ivaliwe, kodwa ifowuni yakho ayikwazanga ukukhala kuba izaziso zivaliwe. Vumela izaziso ukuze umnxeba olandelayo ukhale."
 }

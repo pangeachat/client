@@ -3082,7 +3082,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-14 13:23:07.359119",
+    "@@last_modified": "2026-10-15 16:24:15.734174",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10597,5 +10597,8 @@
     "connectionOffline": "Tá tú as líne. Déanfaidh Pangea Chat athcheangal nuair a bheidh do nasc ar ais.",
     "connectionUnreachable": "Ní féidir Pangea Chat a bhaint amach. Ag iarraidh arís…",
     "connectionBackOnline": "Ar ais ar líne",
-    "missionDueDate": "Le {date}, {time}"
+    "missionDueDate": "Le {date}, {time}",
+    "callNotificationsTitle": "Lig glaonna ar siúl",
+    "callNotificationsMessage": "Lig glaonna ar siúl mar fhógraí. Ceadaigh fógraí ionas go ligfidh do ghuthán ar siúl le haghaidh glaonna, fiú nuair a bhíonn Pangea Chat dúnta nó do ghuthán faoi ghlas.",
+    "callNotificationsMissedMessage": "Tháinig glao isteach nuair a bhí Pangea Chat dúnta, ach níor lig do ghuthán ar siúl mar go raibh fógraí múchta. Ceadaigh fógraí ionas go ligfidh an chéad ghlao eile ar siúl."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-14 13:22:59.424802",
+    "@@last_modified": "2026-10-15 16:24:11.305200",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10095,5 +10095,8 @@
     "connectionOffline": "No tens connexió. Pangea Chat es tornarà a connectar quan la recuperis.",
     "connectionUnreachable": "No es pot accedir a Pangea Chat. S'està tornant a intentar…",
     "connectionBackOnline": "Torna a estar en línia",
-    "missionDueDate": "Data de venciment: {date}, {time}"
+    "missionDueDate": "Data de venciment: {date}, {time}",
+    "callNotificationsTitle": "Permetre que les trucades sonin",
+    "callNotificationsMessage": "Les trucades sonen com a notificacions. Permet les notificacions perquè el teu telèfon soni quan hi hagi una trucada, fins i tot quan Pangea Chat estigui tancat o el telèfon estigui bloquejat.",
+    "callNotificationsMissedMessage": "Ha entrat una trucada mentre Pangea Chat estava tancat, però el teu telèfon no ha pogut sonar perquè les notificacions estan desactivades. Permet les notificacions perquè la propera trucada soni."
 }

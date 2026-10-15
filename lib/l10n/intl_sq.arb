@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-14 13:23:17.311763",
+    "@@last_modified": "2026-10-15 16:24:24.780406",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "Je offline. Pangea Chat do të rilidhet kur të kthehet lidhja jote.",
     "connectionUnreachable": "Nuk mund të arrihet Pangea Chat. Po provojmë sërish…",
     "connectionBackOnline": "Sërish online",
-    "missionDueDate": "Afati {date}, {time}"
+    "missionDueDate": "Afati {date}, {time}",
+    "callNotificationsTitle": "Lëri thirrjet të bien",
+    "callNotificationsMessage": "Thirrjet bien si njoftime. Lejo njoftimet që telefoni yt të bjerë për një thirrje, edhe kur Pangea Chat është i mbyllur ose telefoni yt është i kyçur.",
+    "callNotificationsMissedMessage": "Erdhi një thirrje ndërsa Pangea Chat ishte i mbyllur, por telefoni yt nuk mund të binte sepse njoftimet janë të fikura. Lejo njoftimet që thirrja tjetër të bjerë."
 }

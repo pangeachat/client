@@ -3528,7 +3528,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-14 13:22:59.103612",
+    "@@last_modified": "2026-10-15 16:24:10.182188",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9982,5 +9982,8 @@
     "connectionOffline": "Вы па-за сеткай. Pangea Chat адновіць злучэнне, калі ваша злучэнне будзе адноўлена.",
     "connectionUnreachable": "Немагчыма дасягнуць Pangea Chat. Спрабуем яшчэ раз…",
     "connectionBackOnline": "Зноў у сетцы",
-    "missionDueDate": "Тэрмін {date}, {time}"
+    "missionDueDate": "Тэрмін {date}, {time}",
+    "callNotificationsTitle": "Дазволіць званкам званіць",
+    "callNotificationsMessage": "Званкі званіць як апавяшчэнні. Дазвольце апавяшчэнні, каб ваш тэлефон званіў пры званку, нават калі Pangea Chat закрыты або ваш тэлефон заблакіраваны.",
+    "callNotificationsMissedMessage": "Прыйшоў званок, калі Pangea Chat быў закрыты, але ваш тэлефон не мог званіць, таму што апавяшчэнні адключаны. Дазвольце апавяшчэнні, каб наступны званок званіў."
 }

@@ -2552,7 +2552,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-14 13:23:15.490597",
+    "@@last_modified": "2026-10-15 16:24:22.091842",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10882,5 +10882,8 @@
     "connectionOffline": "Está offline. O Pangea Chat irá reconectar quando a sua ligação for restabelecida.",
     "connectionUnreachable": "Não é possível aceder ao Pangea Chat. A tentar novamente…",
     "connectionBackOnline": "Online novamente",
-    "missionDueDate": "Até {date}, {time}"
+    "missionDueDate": "Até {date}, {time}",
+    "callNotificationsTitle": "Permitir que as chamadas toquem",
+    "callNotificationsMessage": "As chamadas tocam como notificações. Permita as notificações para que o seu telemóvel toque quando há uma chamada, mesmo quando o Pangea Chat está fechado ou o seu telemóvel está bloqueado.",
+    "callNotificationsMissedMessage": "Recebeu uma chamada enquanto o Pangea Chat estava fechado, mas o seu telemóvel não conseguiu tocar porque as notificações estão desativadas. Permita as notificações para que a próxima chamada toque."
 }

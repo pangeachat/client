@@ -3516,7 +3516,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-14 13:23:03.000133",
+    "@@last_modified": "2026-10-15 16:24:12.816427",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10005,5 +10005,8 @@
     "connectionOffline": "Olet offline-tilassa. Pangea Chat yhdistää uudelleen, kun yhteys palautuu.",
     "connectionUnreachable": "Pangea Chatiin ei saada yhteyttä. Yritetään uudelleen…",
     "connectionBackOnline": "Takaisin online-tilassa",
-    "missionDueDate": "Erääntyy {date} klo {time}"
+    "missionDueDate": "Erääntyy {date} klo {time}",
+    "callNotificationsTitle": "Anna puheluiden soida",
+    "callNotificationsMessage": "Puhelut soivat ilmoituksina. Salli ilmoitukset, jotta puhelimesi soi puhelun tullessa, vaikka Pangea Chat olisi suljettu tai puhelimesi lukittu.",
+    "callNotificationsMissedMessage": "Puhelu tuli Pangea Chatin ollessa suljettuna, mutta puhelimesi ei voinut soida, koska ilmoitukset ovat pois päältä. Salli ilmoitukset, jotta seuraava puhelu soi."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-14 13:23:12.981283",
+    "@@last_modified": "2026-10-15 16:24:19.929723",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9968,5 +9968,8 @@
     "connectionOffline": "Je bent offline. Pangea Chat maakt opnieuw verbinding wanneer je weer online bent.",
     "connectionUnreachable": "Kan Pangea Chat niet bereiken. Opnieuw proberen…",
     "connectionBackOnline": "Weer online",
-    "missionDueDate": "Verloopt op {date}, {time}"
+    "missionDueDate": "Verloopt op {date}, {time}",
+    "callNotificationsTitle": "Laat oproepen overgaan",
+    "callNotificationsMessage": "Oproepen gaan over als meldingen. Sta meldingen toe zodat je telefoon overgaat bij een oproep, zelfs wanneer Pangea Chat gesloten is of je telefoon vergrendeld is.",
+    "callNotificationsMissedMessage": "Er kwam een oproep binnen terwijl Pangea Chat gesloten was, maar je telefoon kon niet overgaan omdat meldingen zijn uitgeschakeld. Sta meldingen toe zodat de volgende oproep wel overgaat."
 }

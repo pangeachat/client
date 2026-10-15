@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-14 13:23:08.717310",
+    "@@last_modified": "2026-10-15 16:24:17.689515",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "Yu de offline. Pangea Chat go reconnect wen yu connection kam bak.",
     "connectionUnreachable": "Pangea Chat nɔ de rich. De tray bak…",
     "connectionBackOnline": "Dɔn kɔm bak ɔnlayn",
-    "missionDueDate": "Fɔ du {date}, {time}"
+    "missionDueDate": "Fɔ du {date}, {time}",
+    "callNotificationsTitle": "Mek kɔl dɛn ring",
+    "callNotificationsMessage": "Kɔl dɛn de ring as notifikeshɔn. Alaw notifikeshɔn so dat yu fon go ring fɔ kɔl, ivin if Pangea Chat de klos ɔ yu fon de lɔk.",
+    "callNotificationsMissedMessage": "Wan kɔl bin kam we Pangea Chat bin de klos, bɔt yu fon nɔ bin ebul ring bikɔs notifikeshɔn dɛn nɔ ɔn. Alaw notifikeshɔn so dat di nɛks kɔl go ring."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-14 13:23:17.295099",
+    "@@last_modified": "2026-10-15 16:24:21.169407",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "ਤੁਸੀਂ ਔਫਲਾਈਨ ਹੋ। ਜਦੋਂ ਤੁਹਾਡਾ ਕਨੈਕਸ਼ਨ ਵਾਪਸ ਆਵੇਗਾ ਤਾਂ ਪੈਂਗੇਆ ਚੈਟ ਮੁੜ ਕਨੈਕਟ ਹੋ ਜਾਵੇਗੀ।",
     "connectionUnreachable": "ਪੈਂਗੇਆ ਚੈਟ ਤੱਕ ਪਹੁੰਚ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ। ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ…",
     "connectionBackOnline": "ਵਾਪਸ ਔਨਲਾਈਨ",
-    "missionDueDate": "{date}, {time} ਨੂੰ ਨਿਰਧਾਰਤ"
+    "missionDueDate": "{date}, {time} ਨੂੰ ਨਿਰਧਾਰਤ",
+    "callNotificationsTitle": "ਕਾਲਾਂ ਨੂੰ ਵੱਜਣ ਦਿਓ",
+    "callNotificationsMessage": "ਕਾਲਾਂ ਸੂਚਨਾਵਾਂ ਵਜੋਂ ਵੱਜਦੀਆਂ ਹਨ। ਸੂਚਨਾਵਾਂ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ ਤਾਂ ਜੋ ਤੁਹਾਡਾ ਫ਼ੋਨ ਕਾਲ ਲਈ ਵੱਜੇ, ਭਾਵੇਂ Pangea Chat ਬੰਦ ਹੋਵੇ ਜਾਂ ਤੁਹਾਡਾ ਫ਼ੋਨ ਲੌਕ ਹੋਵੇ।",
+    "callNotificationsMissedMessage": "ਜਦੋਂ Pangea Chat ਬੰਦ ਸੀ ਤਾਂ ਇੱਕ ਕਾਲ ਆਈ, ਪਰ ਤੁਹਾਡਾ ਫ਼ੋਨ ਵੱਜ ਨਹੀਂ ਸਕਿਆ ਕਿਉਂਕਿ ਸੂਚਨਾਵਾਂ ਬੰਦ ਹਨ। ਸੂਚਨਾਵਾਂ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ ਤਾਂ ਜੋ ਅਗਲੀ ਕਾਲ ਵੱਜੇ।"
 }

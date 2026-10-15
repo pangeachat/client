@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-14 13:23:06.254947",
+    "@@last_modified": "2026-10-15 16:24:15.213221",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10071,5 +10071,8 @@
     "connectionOffline": "Offline vagy. A Pangea Chat újra csatlakozik, amint visszatér a kapcsolatod.",
     "connectionUnreachable": "Nem érhető el a Pangea Chat. Újrapróbálkozás…",
     "connectionBackOnline": "Újra online",
-    "missionDueDate": "Esedékes: {date}, {time}"
+    "missionDueDate": "Esedékes: {date}, {time}",
+    "callNotificationsTitle": "Hívások csörgetése",
+    "callNotificationsMessage": "A hívások értesítésként csörögnek. Engedélyezze az értesítéseket, hogy a telefonja csörögjön hívás esetén, még akkor is, ha a Pangea Chat zárva van, vagy a telefonja le van zárva.",
+    "callNotificationsMissedMessage": "Hívás érkezett, miközben a Pangea Chat zárva volt, de a telefonja nem tudott csörögni, mert az értesítések ki vannak kapcsolva. Engedélyezze az értesítéseket, hogy a következő hívás csörögjön."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-14 13:23:16.919450",
+    "@@last_modified": "2026-10-15 16:24:24.096091",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "Ha o inthaneteng. Pangea Chat e tla hokela hape ha khokahano ea hau e khutla.",
     "connectionUnreachable": "Ha e khone ho fihla ho Pangea Chat. E leka hape…",
     "connectionBackOnline": "E khutletse inthaneteng",
-    "missionDueDate": "E lokela ho etsoa ka {date}, {time}"
+    "missionDueDate": "E lokela ho etsoa ka {date}, {time}",
+    "callNotificationsTitle": "Lumella mehala hore e lle",
+    "callNotificationsMessage": "Mehala e lla e le litsebiso. Lumella litsebiso e le hore fono ea hau e lle ha ho kena mohala, leha Pangea Chat e koetsoe kapa fono ea hau e notletsoe.",
+    "callNotificationsMissedMessage": "Ho kene mohala ha Pangea Chat e koetsoe, empa fono ea hau e ne e ke ke ea lla hobane litsebiso li tingoe. Lumella litsebiso e le hore mohala o latelang o lle."
 }

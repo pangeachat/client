@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-14 13:23:01.070203",
+    "@@last_modified": "2026-10-15 16:24:10.558295",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "আপুনি অফলাইন। আপোনাৰ সংযোগ ঘূৰি অহাৰ লগে লগে Pangea Chat পুনৰ সংযোগ হ'ব।",
     "connectionUnreachable": "Pangea Chat-লৈ যাব নোৱাৰি। পুনৰ চেষ্টা কৰি আছে…",
     "connectionBackOnline": "পুনৰ অনলাইন হ'ল",
-    "missionDueDate": "{date}, {time} তাৰিখে শেষ হ'ব"
+    "missionDueDate": "{date}, {time} তাৰিখে শেষ হ'ব",
+    "callNotificationsTitle": "কলসমূহ বাজিবলৈ দিয়ক",
+    "callNotificationsMessage": "কলসমূহ জাননী হিচাপে বাজে। জাননীসমূহৰ অনুমতি দিয়ক যাতে আপোনাৰ ফোন কলৰ বাবে বাজে, আনকি যেতিয়া পেংগিয়া চেট বন্ধ থাকে বা আপোনাৰ ফোন লক হৈ থাকে তেতিয়াও।",
+    "callNotificationsMissedMessage": "পেংগিয়া চেট বন্ধ হৈ থকা অৱস্থাত এটা কল আহিছিল, কিন্তু আপোনাৰ ফোন বাজিব নোৱাৰিলে কাৰণ জাননীসমূহ বন্ধ আছে। জাননীসমূহৰ অনুমতি দিয়ক যাতে পৰৱৰ্তী কল বাজে।"
 }

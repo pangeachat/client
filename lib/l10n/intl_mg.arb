@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-14 13:23:10.759041",
+    "@@last_modified": "2026-10-15 16:24:18.898098",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "Tsy mifandray amin'ny aterineto ianao. Hifandray indray ny Pangea Chat rehefa tafaverina ny fifandraisanao.",
     "connectionUnreachable": "Tsy afaka mifandray amin'ny Pangea Chat. Manandrana indray…",
     "connectionBackOnline": "Tafaverina amin'ny aterineto",
-    "missionDueDate": "Tokony ho vita amin'ny {date}, {time}"
+    "missionDueDate": "Tokony ho vita amin'ny {date}, {time}",
+    "callNotificationsTitle": "Avelao hiantso ny antso",
+    "callNotificationsMessage": "Miantso toy ny fampahafantarana ny antso. Avelao ny fampahafantarana mba hiantso ny findainao rehefa misy antso, na dia mihidy aza ny Pangea Chat na mihidy ny findainao.",
+    "callNotificationsMissedMessage": "Nisy antso tonga raha mihidy ny Pangea Chat, saingy tsy afaka niantso ny findainao satria maty ny fampahafantarana. Avelao ny fampahafantarana mba hiantso ny antso manaraka."
 }

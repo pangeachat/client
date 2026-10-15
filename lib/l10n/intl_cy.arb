@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-14 13:23:00.977004",
+    "@@last_modified": "2026-10-15 16:24:12.756944",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "Rydych all-lein. Bydd Pangea Chat yn ailgysylltu pan fydd eich cysylltiad yn ôl.",
     "connectionUnreachable": "Methu cyrraedd Pangea Chat. Yn ceisio eto…",
     "connectionBackOnline": "Yn ôl ar-lein",
-    "missionDueDate": "Dyddiad dyledus {date}, {time}"
+    "missionDueDate": "Dyddiad dyledus {date}, {time}",
+    "callNotificationsTitle": "Gadewch i alwadau ganu",
+    "callNotificationsMessage": "Mae galwadau'n canu fel hysbysiadau. Caniatewch hysbysiadau fel bod eich ffôn yn canu am alwad, hyd yn oed pan fydd Pangea Chat ar gau neu pan fydd eich ffôn wedi'i gloi.",
+    "callNotificationsMissedMessage": "Daeth galwad i mewn tra bod Pangea Chat ar gau, ond ni allai eich ffôn ganu oherwydd bod hysbysiadau i ffwrdd. Caniatewch hysbysiadau fel bod yr alwad nesaf yn canu."
 }

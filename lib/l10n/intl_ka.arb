@@ -1930,7 +1930,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-14 13:23:09.415692",
+    "@@last_modified": "2026-10-15 16:24:16.428861",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10865,5 +10865,8 @@
     "connectionOffline": "თქვენ ხართ ხაზგარეშე. Pangea Chat ხელახლა დაუკავშირდება, როდესაც თქვენი კავშირი აღდგება.",
     "connectionUnreachable": "Pangea Chat-თან დაკავშირება შეუძლებელია. ხელახლა ვცდილობ…",
     "connectionBackOnline": "ხაზზე დაბრუნდა",
-    "missionDueDate": "ვადა {date}, {time}"
+    "missionDueDate": "ვადა {date}, {time}",
+    "callNotificationsTitle": "ზარები დარეკავს",
+    "callNotificationsMessage": "ზარები დარეკავს შეტყობინებების სახით. დაუშვით შეტყობინებები, რათა თქვენი ტელეფონი დარეკოს ზარის დროს, მაშინაც კი, როდესაც Pangea Chat დახურულია ან თქვენი ტელეფონი დაბლოკილია.",
+    "callNotificationsMissedMessage": "ზარი შემოვიდა, როდესაც Pangea Chat დახურული იყო, მაგრამ თქვენს ტელეფონს არ შეეძლო დარეკვა, რადგან შეტყობინებები გამორთულია. დაუშვით შეტყობინებები, რათა შემდეგი ზარი დარეკოს."
 }

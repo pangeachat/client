@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-14 13:23:05.974478",
+    "@@last_modified": "2026-10-15 16:24:16.080463",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "Դուք անցանց եք։ Pangea Chat-ը նորից կմիանա, երբ Ձեր կապը վերականգնվի։",
     "connectionUnreachable": "Հնարավոր չէ հասնել Pangea Chat-ին։ Նորից փորձում է…",
     "connectionBackOnline": "Կրկին առցանց",
-    "missionDueDate": "{date}, {time}-ին"
+    "missionDueDate": "{date}, {time}-ին",
+    "callNotificationsTitle": "Թող զանգերը հնչեն",
+    "callNotificationsMessage": "Զանգերը հնչում են որպես ծանուցումներ։ Թույլ տվեք ծանուցումներ, որպեսզի ձեր հեռախոսը զանգի, նույնիսկ երբ Pangea Chat-ը փակ է կամ ձեր հեռախոսը կողպված է։",
+    "callNotificationsMissedMessage": "Զանգ է ստացվել, երբ Pangea Chat-ը փակ էր, բայց ձեր հեռախոսը չկարողացավ զանգել, քանի որ ծանուցումներն անջատված են։ Թույլ տվեք ծանուցումներ, որպեսզի հաջորդ զանգը հնչի։"
 }
