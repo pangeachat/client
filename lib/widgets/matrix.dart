@@ -43,6 +43,7 @@ import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
+import 'package:fluffychat/routes/chat/calls/call_ringing_ask.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_session.dart' as call_ui;
 import 'package:fluffychat/routes/chat/calls/ios_call_screen.dart';
@@ -543,32 +544,72 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     router.go(WorkspaceNav.openRoomById(uri, room.id));
   }
 
-  /// Asks once, on Android 14 and later, to allow full-screen calls -- at the
-  /// first moment the app is open after a ring could only show as a heads-up
-  /// notification. Never over a call: the call is what the learner is there
-  /// for, and the question can wait for the next time they open the app.
-  Future<void> _askForFullScreenCallsOnce() async {
-    if (!PlatformInfos.isAndroid || activeCall.value != null) return;
+  bool _askingForCallRinging = false;
+
+  /// Asks, on Android, for what a call needs to ring this phone while the app
+  /// is closed: notifications first, since the ring is one, and full screen
+  /// only once they are on. Only with an account signed in, and never over a
+  /// call: the call is what the learner is there for, and the question can
+  /// wait for the next time they open the app. Called once the pusher is in
+  /// place, and again at startup and on each return to the app.
+  Future<void> askForCallRingingOnce() async {
+    if (!PlatformInfos.isAndroid || _askingForCallRinging) return;
+    if (activeCall.value != null || !widget.clients.any((c) => c.isLogged())) {
+      return;
+    }
+    _askingForCallRinging = true;
     const ringer = IncomingCallRinger();
     try {
-      if (!await ringer.fullScreenWanted()) return;
+      final notificationsOn = await notificationsEnabled;
+      final ask = CallRingingAsk.next(
+        notificationsOn: notificationsOn,
+        askedForNotifications: AppSettings.callNotificationsAsked.value,
+        missedRingForNotifications:
+            !notificationsOn && await ringer.notificationsWanted(),
+        fullScreenWanted: notificationsOn && await ringer.fullScreenWanted(),
+      );
+      if (ask == CallRingingAsk.none) return;
       final dialogContext =
           FluffyChatApp.router.routerDelegate.navigatorKey.currentContext;
       if (!mounted || dialogContext == null) return;
       // Recorded before the question, so a second resume cannot ask it twice.
-      await ringer.fullScreenAsked();
+      switch (ask) {
+        case CallRingingAsk.fullScreen:
+          await ringer.fullScreenAsked();
+        case CallRingingAsk.notificationsAfterMissedRing:
+          await ringer.notificationsAsked();
+          await AppSettings.callNotificationsAsked.setItem(true);
+        case CallRingingAsk.notifications:
+          await AppSettings.callNotificationsAsked.setItem(true);
+        case CallRingingAsk.none:
+          return;
+      }
       if (!dialogContext.mounted) return;
       final l10n = L10n.of(dialogContext);
       final result = await showOkCancelAlertDialog(
         context: dialogContext,
-        title: l10n.callFullScreenTitle,
-        message: l10n.callFullScreenMessage,
+        title: ask == CallRingingAsk.fullScreen
+            ? l10n.callFullScreenTitle
+            : l10n.callNotificationsTitle,
+        message: switch (ask) {
+          CallRingingAsk.fullScreen => l10n.callFullScreenMessage,
+          CallRingingAsk.notificationsAfterMissedRing =>
+            l10n.callNotificationsMissedMessage,
+          _ => l10n.callNotificationsMessage,
+        },
         okLabel: l10n.allow,
         cancelLabel: l10n.cancel,
       );
-      if (result == OkCancelResult.ok) await ringer.openFullScreenSettings();
+      if (result != OkCancelResult.ok) return;
+      if (ask == CallRingingAsk.fullScreen) {
+        await ringer.openFullScreenSettings();
+      } else {
+        await requestNotificationPermission();
+      }
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {});
+    } finally {
+      _askingForCallRinging = false;
     }
   }
 
@@ -1354,7 +1395,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         (payload) => unawaited(_answerFromNotification(payload)),
       );
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) unawaited(_askForFullScreenCallsOnce());
+        if (mounted) unawaited(askForCallRingingOnce());
       });
     }
 
@@ -1408,7 +1449,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     }
 
     if (state == AppLifecycleState.resumed) {
-      unawaited(_askForFullScreenCallsOnce());
+      unawaited(askForCallRingingOnce());
       unawaited(askForMicrophoneOnce());
       pangeaController.subscriptionController.refreshOnAppResume(client.userID);
       // A call transcript half whose publish was dropped when the app

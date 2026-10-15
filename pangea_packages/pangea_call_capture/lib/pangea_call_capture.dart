@@ -315,6 +315,17 @@ class IncomingCallRinger {
   Future<void> openFullScreenSettings() =>
       _ring.invokeMethod<void>('full_screen_settings');
 
+  /// Whether to ask the learner, once, to allow notifications: a call has come
+  /// in that could not ring because they are off, and they have not been asked
+  /// about one before.
+  Future<bool> notificationsWanted() async =>
+      await _ring.invokeMethod<bool>('notifications_wanted') ?? false;
+
+  /// Records that the learner was asked after a missed ring, whatever they
+  /// chose.
+  Future<void> notificationsAsked() =>
+      _ring.invokeMethod<void>('notifications_asked');
+
   /// Hands each ring the learner answered from the notification to [handle],
   /// as the payload it was rung with, including any answered before this was
   /// called -- the app is usually being opened BY the answer.

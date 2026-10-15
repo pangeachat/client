@@ -18,6 +18,7 @@ import android.os.Looper
 import android.provider.Settings
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.Person
 
 /**
@@ -62,6 +63,18 @@ class IncomingRingService : Service() {
     private const val PREFS = "pangea_incoming_ring"
     private const val FULL_SCREEN_MISSED = "full_screen_missed"
     private const val FULL_SCREEN_ASKED = "full_screen_asked"
+    private const val NOTIFICATIONS_MISSED = "notifications_missed"
+    private const val NOTIFICATIONS_ASKED = "notifications_asked"
+
+    private fun prefs(context: Context) =
+      context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+
+    /**
+     * Whether Android lets this app post a notification at all. The ring is
+     * one, so with notifications off a call shows nothing and makes no sound.
+     */
+    private fun canNotify(context: Context): Boolean =
+      NotificationManagerCompat.from(context).areNotificationsEnabled()
 
     /**
      * Whether this app may ring full screen. Android 14 grants it only to apps
@@ -81,17 +94,31 @@ class IncomingRingService : Service() {
      */
     fun fullScreenWanted(context: Context): Boolean {
       if (canRingFullScreen(context)) return false
-      val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+      val prefs = prefs(context)
       return prefs.getBoolean(FULL_SCREEN_MISSED, false) &&
         !prefs.getBoolean(FULL_SCREEN_ASKED, false)
     }
 
     /** Never asks again, whatever the learner chose. */
     fun fullScreenAsked(context: Context) {
-      context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-        .edit()
-        .putBoolean(FULL_SCREEN_ASKED, true)
-        .apply()
+      prefs(context).edit().putBoolean(FULL_SCREEN_ASKED, true).apply()
+    }
+
+    /**
+     * Whether to ask the learner, once, to allow notifications: a call has
+     * come in that could not ring because they are off, and they have not
+     * been asked about one before.
+     */
+    fun notificationsWanted(context: Context): Boolean {
+      if (canNotify(context)) return false
+      val prefs = prefs(context)
+      return prefs.getBoolean(NOTIFICATIONS_MISSED, false) &&
+        !prefs.getBoolean(NOTIFICATIONS_ASKED, false)
+    }
+
+    /** Never asks again after a missed ring, whatever the learner chose. */
+    fun notificationsAsked(context: Context) {
+      prefs(context).edit().putBoolean(NOTIFICATIONS_ASKED, true).apply()
     }
 
     /** The system page where the learner allows full-screen calls. */
@@ -185,11 +212,18 @@ class IncomingRingService : Service() {
       payload: String,
     ): Boolean {
       if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return false
+      // Android would start the service and show nothing: no ring, no sound,
+      // and nothing to tell the push handler so. Refused instead, and
+      // remembered, so the app asks for notifications the next time it is
+      // open rather than for full screen, which cannot help while they are off.
+      if (!canNotify(context)) {
+        Log.w(TAG, "Notifications are off; cannot ring for $ringId")
+        prefs(context).edit().putBoolean(NOTIFICATIONS_MISSED, true).apply()
+        record(ringId, FAILED)
+        return false
+      }
       if (!canRingFullScreen(context)) {
-        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-          .edit()
-          .putBoolean(FULL_SCREEN_MISSED, true)
-          .apply()
+        prefs(context).edit().putBoolean(FULL_SCREEN_MISSED, true).apply()
       }
       record(ringId, RINGING)
       return try {
