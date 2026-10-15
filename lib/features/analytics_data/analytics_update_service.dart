@@ -352,18 +352,34 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
 
     _updateCompleter = Completer<void>();
     try {
-      await _updateAnalytics(lang, createRoom: true);
       // A language switch made while offline leaves the old language's
       // batches here, and nothing else sends them unless the learner switches
       // back. Only the current language may create a room: other languages
       // include uses filed under a language the learner never studied, such
       // as speech from a call held in their L1.
-      for (final code in await dataService.getLocalUseLanguages()) {
-        if (code == lang.langCodeShort) continue;
-        await _updateAnalytics(
-          LanguageModel(langCode: code, displayName: code),
-          createRoom: false,
-        );
+      final languages = [
+        lang,
+        for (final code in await dataService.getLocalUseLanguages())
+          if (code != lang.langCodeShort)
+            LanguageModel(langCode: code, displayName: code),
+      ];
+      for (final language in languages) {
+        try {
+          await _updateAnalytics(language, createRoom: language == lang);
+        } on AnalyticsDatabaseClosedException {
+          rethrow;
+        } catch (err, s) {
+          // One language's failure must not hold back the others; its batches
+          // stay on the device for the next flush.
+          ErrorHandler.logError(
+            e: err,
+            s: s,
+            data: {
+              "l2Override": l2Override,
+              "language": language.langCodeShort,
+            },
+          );
+        }
       }
     } on AnalyticsDatabaseClosedException catch (err, s) {
       // The store is gone and this instance cannot revive it, so every later

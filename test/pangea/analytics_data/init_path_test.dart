@@ -13,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/analytics_data/analytics_database.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/features/user/public_profile_model.dart';
@@ -130,7 +131,8 @@ void main() {
   /// A LOGGED-IN service, so `_initAnalytics` actually runs. The other tests
   /// here reach the state init runs in; this drives init itself, which is the
   /// only way to see anything init awaits.
-  Future<(AnalyticsDataService, _GatedProfileApi)> loggedInService() async {
+  Future<(AnalyticsDataService, _GatedProfileApi, AnalyticsDatabase)>
+  loggedInService() async {
     // A distinct store per call — a shared one carries the previous test's seed.
     final storeName = 'analytics_init_${storeSeq++}';
 
@@ -184,6 +186,7 @@ void main() {
     return (
       AnalyticsDataService(client, databaseBuilder: (_) async => db),
       api,
+      db,
     );
   }
 
@@ -194,7 +197,7 @@ void main() {
     // fires one off un-awaited on every startup. Awaiting reconciliation here
     // hung initialization outright, with initError null and no error state:
     // the #8592 failure reached through a different door.
-    final (service, api) = await loggedInService();
+    final (service, api, _) = await loggedInService();
     api.gate = Completer<void>();
 
     // Somebody else's publish, in flight and going nowhere.
@@ -215,6 +218,25 @@ void main() {
 
     expect(service.initError, isNull);
     api.gate!.complete();
+  });
+
+  test('clearing another language\'s sent batches leaves its total and level '
+      'alone', () async {
+    // The merge table and blocked constructs a recompute folds over are the
+    // L2's, so recomputing another language's total after a flush sent its
+    // batches would store and publish a level built from the wrong state.
+    final (service, api, db) = await loggedInService();
+    await service.initCompleter.future.timeout(const Duration(seconds: 10));
+    await db.updateLocalAnalytics([use(lemma: 'deux', ts: at(0))], 'fr');
+    await db.updateTotalXP(500, 'fr');
+    final batches = await service.getLocalUseBatches('fr');
+    final publishedBefore = api.puts.length;
+
+    await service.clearLocalAnalytics('fr', batches.keys);
+
+    expect(await service.getLocalUseBatches('fr'), isEmpty);
+    expect((await db.getDerivedStats('fr')).totalXP, 500);
+    expect(api.puts, hasLength(publishedBefore));
   });
 
   test(

@@ -975,6 +975,14 @@ class AnalyticsDataService {
       trimmedBatches: trimmedBatches,
     );
     _invalidateCaches();
-    await _recomputeTotalXP(language);
+    // The merge table and blocked constructs the total is folded over are the
+    // L2's, so another language's total is left as it is: recomputing it here
+    // would store and publish a level built from the wrong language's state.
+    // It is recomputed when the learner returns to that language and the sync
+    // controller catches up on its analytics room.
+    if (language ==
+        MatrixState.pangeaController.userController.userL2?.langCodeShort) {
+      await _recomputeTotalXP(language);
+    }
   }
 }

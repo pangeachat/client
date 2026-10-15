@@ -132,6 +132,9 @@ class _FakeDataService implements AnalyticsDataService {
   /// The languages a room was created for.
   final List<String> createdRoomsFor = [];
 
+  /// When set, looking up the L2's room throws.
+  bool l2RoomFails = false;
+
   @override
   String? get accountUserId => testUserId;
 
@@ -144,6 +147,9 @@ class _FakeDataService implements AnalyticsDataService {
 
   @override
   Future<Room?> getAnalyticsRoom(LanguageModel lang) async {
+    if (l2RoomFails && lang.langCodeShort == testLang) {
+      throw Exception('room lookup failed');
+    }
     final existing = getAnalyticsRoomLocal(lang);
     if (existing != null) return existing;
     createdRoomsFor.add(lang.langCodeShort);
@@ -415,6 +421,31 @@ void main() {
       expect(server.sentRoomIds, [_analyticsRoomId, frenchRoomId]);
       expect(data.clearedKeys, ['es1', 'fr1']);
       expect(data.batches['fr'], isEmpty);
+    });
+
+    test('a failure for the L2 does not hold back another language', () async {
+      await connect([true]);
+      MatrixState.pangeaController = _FakePangeaController();
+      final french = Room(id: frenchRoomId, client: client);
+      client.rooms.add(french);
+      final data = _FakeDataService(
+        room,
+        {
+          'es1': [use(lemma: 'uno', ts: at(0))],
+        },
+        otherBatches: {
+          'fr': {
+            'fr1': [use(lemma: 'deux', ts: at(1))],
+          },
+        },
+        otherRooms: {'fr': french},
+      )..l2RoomFails = true;
+
+      await updateService(data).sendLocalAnalyticsToAnalyticsRoom();
+
+      expect(server.sentRoomIds, [frenchRoomId]);
+      expect(data.clearedKeys, ['fr1']);
+      expect(data.batches[testLang]!.keys, ['es1']);
     });
 
     test('a language with no room keeps its batches, and no room is '
