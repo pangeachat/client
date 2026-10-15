@@ -285,7 +285,7 @@ extension QuestOutlineForCourse on QuestOutline {
   ///
   /// With a copy: the copy's Can-Dos in its order (ones the quest no longer
   /// carries drop), each with the copy's activity ids that the library still
-  /// returns (in the library's order), plus the note and due date. The
+  /// returns (in the copy's order), plus the note and due date. The
   /// quest's sequence is reordered to match, so
   /// [QuestOutline.toCourseLoOutline]'s `orderedLoIds` follows the copy too.
   /// A Can-Do the copy lists that the quest does not carry (one a teacher
@@ -309,11 +309,15 @@ extension QuestOutlineForCourse on QuestOutline {
     for (final mission in copy.missions) {
       final group = groupsById[mission.loId];
       if (group == null) continue;
-      // The copy's activity ids are a set in v1: writers snapshot from
-      // different listings (this app's creation copy, the dashboard's publish,
-      // the backfill), so their order is not a teacher's choice. Keeping the
-      // library order means writing a copy never reorders what a student sees.
-      final listed = mission.activityIds.toSet();
+      // Shown in the record's order: a teacher can reorder a Can-Do's
+      // activities (Content Studio v2). Records written before that listed
+      // the library's order, so they read as they always did. An id the
+      // listing no longer returns is dropped.
+      final available = {for (final a in group.activities) a.activityId: a};
+      final shown = [
+        for (final id in mission.activityIds)
+          if (available[id] != null) available[id]!,
+      ];
       final pacing = MissionPacing(
         note: mission.note,
         dueAt: mission.dueAt,
@@ -322,10 +326,7 @@ extension QuestOutlineForCourse on QuestOutline {
       nextGroups.add(
         QuestObjectiveGroup(
           objective: group.objective,
-          activities: [
-            for (final a in group.activities)
-              if (listed.contains(a.activityId)) a,
-          ],
+          activities: shown,
           pacing: pacing.isEmpty ? null : pacing,
         ),
       );

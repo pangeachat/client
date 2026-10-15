@@ -244,22 +244,48 @@ void main() {
       expect(idsOf(shown, 'lo-3'), isEmpty);
     });
 
-    test('a Can-Do\'s activities keep the library order, whatever order '
-        'the copy lists them in', () {
-      // Writers snapshot from different listings (the app's creation copy,
-      // the dashboard's publish and the backfill), so the copy's activity
-      // order is not a teacher choice in v1. Reading it as a set keeps what a
-      // student sees unchanged when a copy is written.
-      final shown = threeMissions().forRules(
-        withCopy({
-          'lo-1': ['a2', 'a1'],
-        }),
+    test(
+      'a Can-Do\'s activities follow the order the record lists them in',
+      () {
+        // A teacher can reorder a Can-Do's activities (Content Studio v2).
+        final shown = threeMissions().forRules(
+          withCopy({
+            'lo-1': ['a2', 'a1'],
+          }),
+        );
+        expect(
+          shown.groups.single.activities.map((a) => a.activityId).toList(),
+          ['a2', 'a1'],
+        );
+      },
+    );
+
+    test('a record written in listing order reads as the listing does', () {
+      final source = threeMissions();
+      final listing = source.groups.first.activities
+          .map((a) => a.activityId)
+          .toList();
+      final shown = source.forRules(withCopy({'lo-1': listing}));
+      expect(
+        shown.groups.single.activities.map((a) => a.activityId).toList(),
+        listing,
       );
-      expect(shown.groups.single.activities.map((a) => a.activityId).toList(), [
-        'a1',
-        'a2',
-      ]);
     });
+
+    test(
+      'a listed id the library no longer returns is dropped, order kept',
+      () {
+        final shown = threeMissions().forRules(
+          withCopy({
+            'lo-1': ['a2', 'gone', 'a1'],
+          }),
+        );
+        expect(
+          shown.groups.single.activities.map((a) => a.activityId).toList(),
+          ['a2', 'a1'],
+        );
+      },
+    );
 
     test('ignores the pins when a copy exists', () {
       final shown = threeMissions().forRules(
