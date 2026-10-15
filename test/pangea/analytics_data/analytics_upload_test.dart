@@ -42,6 +42,9 @@ class _ConstructSendServer extends http.BaseClient {
   final List<bool> accepts;
   final FakeMatrixApi _fallback = FakeMatrixApi();
   final List<List<dynamic>> sentUses = [];
+
+  /// The room each construct send, in order, was sent to.
+  final List<String> sentRoomIds = [];
   late Client client;
   bool syncCopies = true;
 
@@ -55,6 +58,9 @@ class _ConstructSendServer extends http.BaseClient {
         request.url.path.contains('/send/${PangeaEventTypes.construct}/');
     if (!isConstructSend) return _fallback.send(request);
 
+    final segments = request.url.pathSegments;
+    final roomId = segments[segments.indexOf('rooms') + 1];
+    sentRoomIds.add(roomId);
     final content = jsonDecode((request as http.Request).body) as Map;
     sentUses.add(content['uses'] as List);
     final hold = holdNextSend;
@@ -64,32 +70,33 @@ class _ConstructSendServer extends http.BaseClient {
       return _json(400, {'errcode': 'M_UNKNOWN', 'error': 'refused'});
     }
     final eventId = '\$construct${sentUses.length}';
-    if (syncCopies) syncServerCopy(eventId);
+    if (syncCopies) syncServerCopy(eventId, roomId: roomId);
     return _json(200, {'event_id': eventId});
   }
 
-  void syncServerCopy(String eventId) => client.onSync.add(
-    SyncUpdate(
-      nextBatch: 'next',
-      rooms: RoomsUpdate(
-        join: {
-          _analyticsRoomId: JoinedRoomUpdate(
-            timeline: TimelineUpdate(
-              events: [
-                MatrixEvent(
-                  type: PangeaEventTypes.construct,
-                  content: {},
-                  senderId: testUserId,
-                  eventId: eventId,
-                  originServerTs: DateTime.now(),
+  void syncServerCopy(String eventId, {String roomId = _analyticsRoomId}) =>
+      client.onSync.add(
+        SyncUpdate(
+          nextBatch: 'next',
+          rooms: RoomsUpdate(
+            join: {
+              roomId: JoinedRoomUpdate(
+                timeline: TimelineUpdate(
+                  events: [
+                    MatrixEvent(
+                      type: PangeaEventTypes.construct,
+                      content: {},
+                      senderId: testUserId,
+                      eventId: eventId,
+                      originServerTs: DateTime.now(),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            },
           ),
-        },
-      ),
-    ),
-  );
+        ),
+      );
 
   http.StreamedResponse _json(int status, Map<String, dynamic> body) =>
       http.StreamedResponse(
@@ -99,13 +106,31 @@ class _ConstructSendServer extends http.BaseClient {
       );
 }
 
+/// A local store holding [batches] for the L2 ([testLang]), whose analytics
+/// room is [room], and [otherBatches] for other languages, of which only those
+/// in [otherRooms] already have a room.
 class _FakeDataService implements AnalyticsDataService {
-  _FakeDataService(this.room, this.batches);
+  _FakeDataService(
+    this.room,
+    Map<String, List<OneConstructUse>> batches, {
+    Map<String, Map<String, List<OneConstructUse>>> otherBatches = const {},
+    this.otherRooms = const {},
+  }) : batches = {
+         testLang: Map.of(batches),
+         for (final entry in otherBatches.entries)
+           entry.key: Map.of(entry.value),
+       };
 
   final Room room;
-  final Map<String, List<OneConstructUse>> batches;
+  final Map<String, Room> otherRooms;
+
+  /// Pending batches by language, then by storage key.
+  final Map<String, Map<String, List<OneConstructUse>>> batches;
   final List<String> clearedKeys = [];
   final Map<String, List<OneConstructUse>> trimmedBatches = {};
+
+  /// The languages a room was created for.
+  final List<String> createdRoomsFor = [];
 
   @override
   String? get accountUserId => testUserId;
@@ -114,12 +139,25 @@ class _FakeDataService implements AnalyticsDataService {
   bool get isLogged => true;
 
   @override
-  Future<Room?> getAnalyticsRoom(LanguageModel lang) async => room;
+  Room? getAnalyticsRoomLocal(LanguageModel lang) =>
+      lang.langCodeShort == testLang ? room : otherRooms[lang.langCodeShort];
+
+  @override
+  Future<Room?> getAnalyticsRoom(LanguageModel lang) async {
+    final existing = getAnalyticsRoomLocal(lang);
+    if (existing != null) return existing;
+    createdRoomsFor.add(lang.langCodeShort);
+    return null;
+  }
+
+  @override
+  Future<Set<String>> getLocalUseLanguages() async =>
+      batches.keys.where((language) => batches[language]!.isNotEmpty).toSet();
 
   @override
   Future<Map<String, List<OneConstructUse>>> getLocalUseBatches(
     String language,
-  ) async => Map.of(batches);
+  ) async => Map.of(batches[language] ?? {});
 
   @override
   Future<void> clearLocalAnalytics(
@@ -129,6 +167,7 @@ class _FakeDataService implements AnalyticsDataService {
   }) async {
     clearedKeys.addAll(batchKeys);
     this.trimmedBatches.addAll(trimmedBatches);
+    batches[language]?.removeWhere((key, _) => batchKeys.contains(key));
   }
 
   @override
@@ -346,6 +385,57 @@ void main() {
       await pumpEventQueue();
       expect(server.sentUses, hasLength(2));
       expect(data.clearedKeys, ['a']);
+    });
+  });
+
+  group('languages other than the L2', () {
+    const frenchRoomId = '!french:fakeServer.notExisting';
+
+    test('a batch for another language goes to its own room and is '
+        'cleared', () async {
+      await connect([true, true]);
+      MatrixState.pangeaController = _FakePangeaController();
+      final french = Room(id: frenchRoomId, client: client);
+      client.rooms.add(french);
+      final data = _FakeDataService(
+        room,
+        {
+          'es1': [use(lemma: 'uno', ts: at(0))],
+        },
+        otherBatches: {
+          'fr': {
+            'fr1': [use(lemma: 'deux', ts: at(1))],
+          },
+        },
+        otherRooms: {'fr': french},
+      );
+
+      await updateService(data).sendLocalAnalyticsToAnalyticsRoom();
+
+      expect(server.sentRoomIds, [_analyticsRoomId, frenchRoomId]);
+      expect(data.clearedKeys, ['es1', 'fr1']);
+      expect(data.batches['fr'], isEmpty);
+    });
+
+    test('a language with no room keeps its batches, and no room is '
+        'made for it', () async {
+      await connect([]);
+      MatrixState.pangeaController = _FakePangeaController();
+      final data = _FakeDataService(
+        room,
+        {},
+        otherBatches: {
+          'fr': {
+            'fr1': [use(lemma: 'deux', ts: at(1))],
+          },
+        },
+      );
+
+      await updateService(data).sendLocalAnalyticsToAnalyticsRoom();
+
+      expect(server.sentUses, isEmpty);
+      expect(data.createdRoomsFor, isEmpty);
+      expect(data.batches['fr']!.keys, ['fr1']);
     });
   });
 
