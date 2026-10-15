@@ -144,6 +144,8 @@ Every construct use is filed under exactly one language, and that language comes
 
 A new source of construct uses therefore has to answer *how do you know what language this is in* before it records anything, and the answer belongs in the code as a required argument rather than as a check each call site is trusted to remember — see [Adding a use type](#adding-a-use-type).
 
+A flush sends the pending uses of every language on the device, not only the current target language's, so uses recorded before a language switch still reach their own room. It creates an analytics room only for the current target language: uses in any other language that has no room yet stay on the device until the learner studies that language.
+
 ### Multi-Device Sync
 
 Because analytics are stored in Matrix rooms, they sync across devices automatically via the Matrix sync protocol. On login or language change, [`AnalyticsSyncController`](../../lib/features/analytics_data/analytics_sync_controller.dart) performs a bulk catch-up from the analytics room before starting real-time tracking.

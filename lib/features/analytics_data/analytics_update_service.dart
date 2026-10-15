@@ -352,7 +352,35 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
 
     _updateCompleter = Completer<void>();
     try {
-      await _updateAnalytics(lang);
+      // A language switch made while offline leaves the old language's
+      // batches here, and nothing else sends them unless the learner switches
+      // back. Only the current language may create a room: other languages
+      // include uses filed under a language the learner never studied, such
+      // as speech from a call held in their L1.
+      final languages = [
+        lang,
+        for (final code in await dataService.getLocalUseLanguages())
+          if (code != lang.langCodeShort)
+            LanguageModel(langCode: code, displayName: code),
+      ];
+      for (final language in languages) {
+        try {
+          await _updateAnalytics(language, createRoom: language == lang);
+        } on AnalyticsDatabaseClosedException {
+          rethrow;
+        } catch (err, s) {
+          // One language's failure must not hold back the others; its batches
+          // stay on the device for the next flush.
+          ErrorHandler.logError(
+            e: err,
+            s: s,
+            data: {
+              "l2Override": l2Override,
+              "language": language.langCodeShort,
+            },
+          );
+        }
+      }
     } on AnalyticsDatabaseClosedException catch (err, s) {
       // The store is gone and this instance cannot revive it, so every later
       // tick would fail identically. Stop the timer rather than let a dead
@@ -382,13 +410,19 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
   /// Uploads the pending local batches and clears what the server accepted.
   /// Uses recorded while the upload was in flight land in new batches with new
   /// keys and stay pending for the next flush (#7720), and so does whatever
-  /// the server did not accept (#9511).
-  Future<void> _updateAnalytics(LanguageModel language) async {
+  /// the server did not accept (#9511). Without [createRoom], a language that
+  /// has no analytics room keeps its batches.
+  Future<void> _updateAnalytics(
+    LanguageModel language, {
+    required bool createRoom,
+  }) async {
     final batches = (await dataService.getLocalUseBatches(
       language.langCodeShort,
     )).entries.toList();
     if (batches.isEmpty) return;
-    final analyticsRoom = await _getAnalyticsRoom(l2Override: language);
+    final analyticsRoom = createRoom
+        ? await _getAnalyticsRoom(l2Override: language)
+        : dataService.getAnalyticsRoomLocal(language);
     if (analyticsRoom == null) {
       debugPrint(
         "No analytics room found for L2 Override: ${language.langCodeShort}",

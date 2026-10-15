@@ -428,6 +428,13 @@ class AnalyticsDatabase with DatabaseFileStorage {
     };
   }
 
+  /// The languages that have pending local batches, whatever the current L2.
+  Future<Set<String>> getLocalUseLanguages() async =>
+      (await _localConstructsBox.getAllKeys())
+          .where((key) => key.contains('|'))
+          .map((key) => key.split('|').first)
+          .toSet();
+
   Future<List<OneConstructUse>> _readLocalUses(
     String language, {
     String? roomId,
