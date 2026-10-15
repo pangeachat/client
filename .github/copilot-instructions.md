@@ -4,7 +4,7 @@
 - **Framework**: Flutter (SDK ≥3.0), Dart
 - **GitHub**: `pangeachat/client` (fork of `krille-chan/fluffychat`, package name `fluffychat`)
 - **Protocol**: Matrix Client-Server API via `matrix` Dart SDK
-- **Subscriptions**: RevenueCat
+- **Subscriptions**: choreographer-served status (CMS entitlements, Stripe checkout)
 - **Backend**: 2-step-choreographer (FastAPI) via `PApiUrls`
 - **Error Tracking**: Sentry
 - **Routing**: GoRouter

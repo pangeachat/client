@@ -10745,5 +10745,10 @@
     "callTranscriptAudioUnavailable": "{name}の保存された録音をダウンロードできなかったため、文字起こしできませんでした。",
     "callTranscriptChooseLanguage": "話された言語は何ですか？",
     "callTranscriptSubscribeForTranscription": "文字起こしを購読する",
-    "unlockCallTranscript": "通話記録のロックを解除"
+    "unlockCallTranscript": "通話記録のロックを解除",
+    "joinYourCourse": "コースに参加",
+    "courseCodeJoinExplanation": "ログインまたはサインアップすると、コースコードを使用してコースに自動的に追加されます。",
+    "courseCodeLabel": "コースコード",
+    "courseCodeSaved": "コースコード {code} が保存されました",
+    "courseCodeSavedExplanation": "サインアップまたはログインすると、コースに追加されます。"
 }

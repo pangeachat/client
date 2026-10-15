@@ -10608,5 +10608,10 @@
     "callTranscriptAudioUnavailable": "{name} से सहेजी गई रिकॉर्डिंग डाउनलोड नहीं की जा सकी, इसलिए इसे लिप्यंतरित नहीं किया जा सका।",
     "callTranscriptChooseLanguage": "कौन सी भाषा बोली गई थी?",
     "callTranscriptSubscribeForTranscription": "लिप्यंतरण के लिए सदस्यता लें",
-    "unlockCallTranscript": "कॉल ट्रांसक्रिप्ट अनलॉक करें"
+    "unlockCallTranscript": "कॉल ट्रांसक्रिप्ट अनलॉक करें",
+    "joinYourCourse": "अपने कोर्स में शामिल हों",
+    "courseCodeJoinExplanation": "लॉग इन करें या साइन अप करें, और हम आपको आपके कोर्स में स्वचालित रूप से जोड़ने के लिए आपके कोर्स कोड का उपयोग करेंगे।",
+    "courseCodeLabel": "कोर्स कोड",
+    "courseCodeSaved": "कोर्स कोड {code} सहेजा गया",
+    "courseCodeSavedExplanation": "साइन अप करें या लॉग इन करें और हम आपको आपके कोर्स में जोड़ देंगे।"
 }

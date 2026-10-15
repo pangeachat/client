@@ -9976,5 +9976,10 @@
     "callTranscriptAudioUnavailable": "{name} grabatutako grabazioa ezin izan da deskargatu, beraz, ezin izan da transkribatu.",
     "callTranscriptChooseLanguage": "Zein hizkuntzatan hitz egin zen?",
     "callTranscriptSubscribeForTranscription": "Harpidetu transkripziorako",
-    "unlockCallTranscript": "Desblokeatu deiaren transkripzioa"
+    "unlockCallTranscript": "Desblokeatu deiaren transkripzioa",
+    "joinYourCourse": "Sartu zure ikastaroan",
+    "courseCodeJoinExplanation": "Hasi saioa edo eman izena, eta zure ikastaro-kodea erabiliko dugu automatikoki zure ikastarora gehitzeko.",
+    "courseCodeLabel": "Ikastaro-kodea",
+    "courseCodeSaved": "{code} ikastaro-kodea gordeta",
+    "courseCodeSavedExplanation": "Eman izena edo hasi saioa eta zure ikastarora gehituko zaitugu."
 }

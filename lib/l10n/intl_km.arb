@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "មិនអាចទាញយកការថតដែលបានរក្សាទុកពី {name} បានទេ ដូច្នេះវាមិនអាចបំប្លែងបានទេ។",
     "callTranscriptChooseLanguage": "តើនិយាយភាសាអ្វី?",
     "callTranscriptSubscribeForTranscription": "ជាវសម្រាប់ការបំប្លែង",
-    "unlockCallTranscript": "ដោះសោប្រតិចារិកការហៅទូរសព្ទ"
+    "unlockCallTranscript": "ដោះសោប្រតិចារិកការហៅទូរសព្ទ",
+    "joinYourCourse": "ចូលរួមវគ្គសិក្សារបស់អ្នក",
+    "courseCodeJoinExplanation": "ចូល ឬ ចុះឈ្មោះ ហើយយើងនឹងប្រើលេខកូដវគ្គសិក្សារបស់អ្នកដើម្បីបញ្ចូលអ្នកទៅក្នុងវគ្គសិក្សារបស់អ្នកដោយស្វ័យប្រវត្តិ។",
+    "courseCodeLabel": "លេខកូដវគ្គសិក្សា",
+    "courseCodeSaved": "លេខកូដវគ្គសិក្សា {code} ត្រូវបានរក្សាទុក",
+    "courseCodeSavedExplanation": "ចុះឈ្មោះ ឬ ចូល ហើយយើងនឹងបញ្ចូលអ្នកទៅក្នុងវគ្គសិក្សារបស់អ្នក។"
 }

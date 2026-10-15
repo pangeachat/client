@@ -30,16 +30,25 @@ extension OnboardingClientExtension on Client {
   );
 
   Future<String> getCourseIdByRoomId(String roomId) async {
-    Room? room = getRoomById(roomId);
-    if (room == null || room.membership != Membership.join) {
+    // Wait for the course plan, not just the membership: a space's initial
+    // state syncs event by event, so a just-claimed course can show the
+    // user as joined before its course plan arrives (#9368).
+    bool hasCourse() {
+      final room = getRoomById(roomId);
+      return room?.membership == Membership.join && room?.coursePlan != null;
+    }
+
+    if (!hasCourse()) {
       try {
-        await waitForRoomInSync(roomId).timeout(Duration(seconds: 10));
+        await onSync.stream
+            .firstWhere((_) => hasCourse())
+            .timeout(Duration(seconds: 10));
       } catch (e) {
         if (e is! TimeoutException) rethrow;
       }
     }
 
-    room = getRoomById(roomId);
+    final room = getRoomById(roomId);
     if (room?.coursePlan == null) {
       throw "Room not found or doesn't contain course";
     }

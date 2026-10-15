@@ -10103,5 +10103,10 @@
     "callTranscriptAudioUnavailable": "No s'ha pogut descarregar l'enregistrament desat de {name}, per tant no s'ha pogut transcriure.",
     "callTranscriptChooseLanguage": "En quina llengua es va parlar?",
     "callTranscriptSubscribeForTranscription": "Subscriu-te per a la transcripció",
-    "unlockCallTranscript": "Desbloqueja la transcripció de la trucada"
+    "unlockCallTranscript": "Desbloqueja la transcripció de la trucada",
+    "joinYourCourse": "Uneix-te al teu curs",
+    "courseCodeJoinExplanation": "Inicia sessió o registra't, i utilitzarem el teu codi de curs per afegir-te al teu curs automàticament.",
+    "courseCodeLabel": "Codi de curs",
+    "courseCodeSaved": "Codi de curs {code} desat",
+    "courseCodeSavedExplanation": "Registra't o inicia sessió i t'afegirem al teu curs."
 }

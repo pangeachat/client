@@ -7,7 +7,13 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 
 extension CreateRoomExtension on Client {
-  Future<String> createPangeaRoom(Future<String> roomFuture) async {
+  /// [waitForSync] false returns as soon as the server has created the room,
+  /// before it reaches the local store; the caller then owns calling
+  /// [waitForCreatedRoom] if it needs the local [Room].
+  Future<String> createPangeaRoom(
+    Future<String> roomFuture, {
+    bool waitForSync = true,
+  }) async {
     String roomId;
     try {
       roomId = await roomFuture;
@@ -16,6 +22,14 @@ extension CreateRoomExtension on Client {
       rethrow;
     }
 
+    if (waitForSync) await waitForCreatedRoom(roomId);
+    return roomId;
+  }
+
+  /// Waits, bounded, for a room this client just created to arrive in sync.
+  /// A timeout is logged and swallowed; any other failure is logged and
+  /// rethrown.
+  Future<void> waitForCreatedRoom(String roomId) async {
     try {
       final room = getRoomById(roomId);
       if (room == null || room.membership != Membership.join) {
@@ -36,8 +50,6 @@ extension CreateRoomExtension on Client {
         rethrow;
       }
     }
-
-    return roomId;
   }
 
   Future<String> createPangeaDirectChat(

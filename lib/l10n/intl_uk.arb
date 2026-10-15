@@ -9976,5 +9976,10 @@
     "callTranscriptAudioUnavailable": "Збережений запис від {name} не вдалося завантажити, тому його неможливо транскрибувати.",
     "callTranscriptChooseLanguage": "Якою мовою розмовляли?",
     "callTranscriptSubscribeForTranscription": "Підписатися на транскрипцію",
-    "unlockCallTranscript": "Розблокувати стенограму дзвінка"
+    "unlockCallTranscript": "Розблокувати стенограму дзвінка",
+    "joinYourCourse": "Приєднатися до курсу",
+    "courseCodeJoinExplanation": "Увійдіть або зареєструйтеся, і ми використаємо ваш код курсу, щоб автоматично додати вас до нього.",
+    "courseCodeLabel": "Код курсу",
+    "courseCodeSaved": "Код курсу {code} збережено",
+    "courseCodeSavedExplanation": "Зареєструйтеся або увійдіть, і ми додамо вас до вашого курсу."
 }

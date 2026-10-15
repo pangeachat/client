@@ -8,7 +8,9 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/home/class_code_dialog.dart';
 import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
 
 class LoginOrSignupView extends StatefulWidget {
@@ -25,6 +27,20 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
       CarouselSliderController();
 
   int _currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    final joinCode = SpaceCodeRepo.pendingJoinCode;
+    if (joinCode == null) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      showDialog(
+        context: context,
+        builder: (context) => ClassCodeDialog(code: joinCode),
+      );
+    });
+  }
 
   /// Slide 1 carries the brand line inside its image, so it has no headline.
   List<String?> get _labels => [

@@ -10608,5 +10608,10 @@
     "callTranscriptAudioUnavailable": "ไม่สามารถดาวน์โหลดไฟล์บันทึกที่บันทึกไว้จาก {name} ได้ จึงไม่สามารถถอดเสียงได้",
     "callTranscriptChooseLanguage": "พูดภาษาอะไร",
     "callTranscriptSubscribeForTranscription": "สมัครสมาชิกเพื่อถอดเสียง",
-    "unlockCallTranscript": "ปลดล็อกบทสนทนาการโทร"
+    "unlockCallTranscript": "ปลดล็อกบทสนทนาการโทร",
+    "joinYourCourse": "เข้าร่วมคอร์สของคุณ",
+    "courseCodeJoinExplanation": "เข้าสู่ระบบหรือลงทะเบียน แล้วเราจะใช้รหัสคอร์สของคุณเพื่อเพิ่มคุณเข้าสู่คอร์สโดยอัตโนมัติ",
+    "courseCodeLabel": "รหัสคอร์ส",
+    "courseCodeSaved": "บันทึกรหัสคอร์ส {code} แล้ว",
+    "courseCodeSavedExplanation": "ลงทะเบียนหรือเข้าสู่ระบบ แล้วเราจะเพิ่มคุณเข้าสู่คอร์ส"
 }

@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "Cha b' urrainn an clàradh a chaidh a shàbhaladh bho {name} a luchdachadh a-nuas, is mar sin cha b' urrainn a thionnsgrìobhadh.",
     "callTranscriptChooseLanguage": "Dè an cànan a bhathar a' bruidhinn?",
     "callTranscriptSubscribeForTranscription": "Fo-sgrìobh airson tionnsgrìobhadh",
-    "unlockCallTranscript": "Fuadaich tionnsgrìobhadh a' ghairm"
+    "unlockCallTranscript": "Fuadaich tionnsgrìobhadh a' ghairm",
+    "joinYourCourse": "Thig a-steach don chùrsa agad",
+    "courseCodeJoinExplanation": "Log a-steach no clàraich, agus cleachdaidh sinn an còd cùrsa agad gus do chur ris a’ chùrsa agad gu fèin-obrachail.",
+    "courseCodeLabel": "Còd cùrsa",
+    "courseCodeSaved": "Còd cùrsa {code} air a shàbhaladh",
+    "courseCodeSavedExplanation": "Clàraich no log a-steach agus cuiridh sinn ris a’ chùrsa agad thu."
 }

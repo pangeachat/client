@@ -10920,5 +10920,10 @@
     "callTranscriptAudioUnavailable": "A gravação salva de {name} não pôde ser baixada, então não pôde ser transcrita.",
     "callTranscriptChooseLanguage": "Qual idioma foi falado?",
     "callTranscriptSubscribeForTranscription": "Assine para transcrever",
-    "unlockCallTranscript": "Desbloquear transcrição da chamada"
+    "unlockCallTranscript": "Desbloquear transcrição da chamada",
+    "joinYourCourse": "Entrar no seu curso",
+    "courseCodeJoinExplanation": "Faça login ou cadastre-se, e usaremos seu código de curso para adicioná-lo ao seu curso automaticamente.",
+    "courseCodeLabel": "Código do curso",
+    "courseCodeSaved": "Código do curso {code} salvo",
+    "courseCodeSavedExplanation": "Cadastre-se ou faça login e nós o adicionaremos ao seu curso."
 }

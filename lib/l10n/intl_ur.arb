@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "{name} سے محفوظ کردہ ریکارڈنگ ڈاؤن لوڈ نہیں کی جا سکی، اس لیے اسے ٹرانسکرائب نہیں کیا جا سکا۔",
     "callTranscriptChooseLanguage": "کون سی زبان بولی گئی تھی؟",
     "callTranscriptSubscribeForTranscription": "ٹرانسکرپشن کے لیے سبسکرائب کریں",
-    "unlockCallTranscript": "کال ٹرانسکرپٹ کو اَن لاک کریں"
+    "unlockCallTranscript": "کال ٹرانسکرپٹ کو اَن لاک کریں",
+    "joinYourCourse": "اپنے کورس میں شامل ہوں",
+    "courseCodeJoinExplanation": "لاگ ان کریں یا سائن اپ کریں، اور ہم آپ کو آپ کے کورس کوڈ کا استعمال کرتے ہوئے خود بخود آپ کے کورس میں شامل کر دیں گے۔",
+    "courseCodeLabel": "کورس کوڈ",
+    "courseCodeSaved": "کورس کوڈ {code} محفوظ ہو گیا",
+    "courseCodeSavedExplanation": "سائن اپ کریں یا لاگ ان کریں اور ہم آپ کو آپ کے کورس میں شامل کر دیں گے۔"
 }

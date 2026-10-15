@@ -18,7 +18,6 @@ void main() {
     List<SubscriptionEntitlement> entitlements = const [],
   }) => SubscriptionStatusResponse(
     accessLevel: accessLevel,
-    entitlementSource: "cms",
     winning: winning,
     entitlements: entitlements,
   );

@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "Anrejistreman ki te sove a soti nan {name} pa t ka telechaje, kidonk li pa t ka transkri.",
     "callTranscriptChooseLanguage": "Ki lang yo te pale?",
     "callTranscriptSubscribeForTranscription": "Abòne pou transkripsyon",
-    "unlockCallTranscript": "Debloke transkripsyon apèl la"
+    "unlockCallTranscript": "Debloke transkripsyon apèl la",
+    "joinYourCourse": "Antre nan kou ou",
+    "courseCodeJoinExplanation": "Konekte oswa enskri, epi n ap itilize kòd kou ou a pou ajoute ou nan kou ou otomatikman.",
+    "courseCodeLabel": "Kòd kou",
+    "courseCodeSaved": "Kòd kou {code} anrejistre",
+    "courseCodeSavedExplanation": "Enskri oswa konekte epi n ap ajoute ou nan kou ou."
 }

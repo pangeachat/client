@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "تۆماری پاشەکەوتکراوی {name} ناتوانرێت دابگیرێت، بۆیە ناتوانرێت بگۆڕدرێت بۆ نووسین.",
     "callTranscriptChooseLanguage": "بە چ زمانێک قسە کرا؟",
     "callTranscriptSubscribeForTranscription": "بەشداری بکە بۆ گۆڕین بۆ نووسین",
-    "unlockCallTranscript": "کردنەوەی گۆڕینی پەیوەندی بۆ نووسین"
+    "unlockCallTranscript": "کردنەوەی گۆڕینی پەیوەندی بۆ نووسین",
+    "joinYourCourse": "بەشداری خولەکەت بکە",
+    "courseCodeJoinExplanation": "بچۆ ژوورەوە یان خۆت تۆمار بکە، و ئێمە کۆدی خولەکەت بەکاردەهێنین بۆ ئەوەی بە شێوەیەکی خۆکارانە زیادتبکەین بۆ خولەکەت.",
+    "courseCodeLabel": "کۆدی خول",
+    "courseCodeSaved": "کۆدی خول {code} پاشەکەوت کرا",
+    "courseCodeSavedExplanation": "خۆت تۆمار بکە یان بچۆ ژوورەوە و ئێمە زیادتبکەین بۆ خولەکەت."
 }

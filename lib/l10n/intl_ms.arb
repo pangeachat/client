@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "Rakaman yang disimpan daripada {name} tidak dapat dimuat turun, jadi ia tidak dapat ditranskripsi.",
     "callTranscriptChooseLanguage": "Bahasa apa yang dituturkan?",
     "callTranscriptSubscribeForTranscription": "Langgan untuk transkripsi",
-    "unlockCallTranscript": "Buka kunci transkripsi panggilan"
+    "unlockCallTranscript": "Buka kunci transkripsi panggilan",
+    "joinYourCourse": "Sertai kursus anda",
+    "courseCodeJoinExplanation": "Log masuk atau daftar, dan kami akan menggunakan kod kursus anda untuk menambahkan anda ke kursus anda secara automatik.",
+    "courseCodeLabel": "Kod kursus",
+    "courseCodeSaved": "Kod kursus {code} disimpan",
+    "courseCodeSavedExplanation": "Daftar atau log masuk dan kami akan menambahkan anda ke kursus anda."
 }

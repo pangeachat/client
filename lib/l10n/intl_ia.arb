@@ -10912,5 +10912,10 @@
     "callTranscriptAudioUnavailable": "Le registration salvate de {name} non poteva esser discargate, ergo illo non poteva esser transcribite.",
     "callTranscriptChooseLanguage": "Qual lingua esseva parlate?",
     "callTranscriptSubscribeForTranscription": "Subscriber pro transcription",
-    "unlockCallTranscript": "Disblocar transcripto de appellation"
+    "unlockCallTranscript": "Disblocar transcripto de appellation",
+    "joinYourCourse": "Junger a tu curso",
+    "courseCodeJoinExplanation": "Aperir session o registrar se, e nos usara tu codice de curso pro adder te a tu curso automaticamente.",
+    "courseCodeLabel": "Codice de curso",
+    "courseCodeSaved": "Codice de curso {code} salvate",
+    "courseCodeSavedExplanation": "Registra te o aperi session e nos te addera a tu curso."
 }

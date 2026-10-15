@@ -9587,5 +9587,10 @@
     "callTranscriptAudioUnavailable": "{name} ནས་ཉར་ཚགས་བྱས་པའི་སྒྲ་ཕབ་ཕབ་ལེན་བྱེད་མ་ཐུབ་པས་དེ་ལ་ཡིག་སྒྱུར་བྱེད་མ་ཐུབ།",
     "callTranscriptChooseLanguage": "སྐད་ཡིག་གང་ཞིག་བཤད་པ་ཡིན་ནམ།",
     "callTranscriptSubscribeForTranscription": "ཡིག་སྒྱུར་བྱེད་པར་ཐོ་འགོད་བྱེད་དགོས།",
-    "unlockCallTranscript": "ཁ་པར་གྱི་ཡིག་སྒྱུར་འབྱེད་པ།"
+    "unlockCallTranscript": "ཁ་པར་གྱི་ཡིག་སྒྱུར་འབྱེད་པ།",
+    "joinYourCourse": "သင်တန်းသို့ဝင်ရောက်ပါ",
+    "courseCodeJoinExplanation": "အကောင့်ဝင်ပါ သို့မဟုတ် စာရင်းသွင်းပါ၊ သင်၏သင်တန်းကုဒ်ကို အသုံးပြု၍ သင့်ကို သင်တန်းသို့ အလိုအလျောက်ထည့်သွင်းပေးပါမည်။",
+    "courseCodeLabel": "သင်တန်းကုဒ်",
+    "courseCodeSaved": "သင်တန်းကုဒ် {code} သိမ်းဆည်းပြီးပါပြီ",
+    "courseCodeSavedExplanation": "စာရင်းသွင်းပါ သို့မဟုတ် အကောင့်ဝင်ပါ၊ သင့်ကို သင်တန်းသို့ ထည့်သွင်းပေးပါမည်။"
 }

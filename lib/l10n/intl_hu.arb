@@ -10079,5 +10079,10 @@
     "callTranscriptAudioUnavailable": "A {name} felvételét nem sikerült letölteni, ezért nem lehetett átírni.",
     "callTranscriptChooseLanguage": "Milyen nyelven beszéltek?",
     "callTranscriptSubscribeForTranscription": "Feliratkozás az átírásra",
-    "unlockCallTranscript": "Hívás átirat feloldása"
+    "unlockCallTranscript": "Hívás átirat feloldása",
+    "joinYourCourse": "Csatlakozás a kurzushoz",
+    "courseCodeJoinExplanation": "Jelentkezz be vagy regisztrálj, és a kurzuskódod segítségével automatikusan hozzáadunk a kurzushoz.",
+    "courseCodeLabel": "Kurzuskód",
+    "courseCodeSaved": "A(z) {code} kurzuskód elmentve",
+    "courseCodeSavedExplanation": "Regisztrálj vagy jelentkezz be, és hozzáadunk a kurzusodhoz."
 }

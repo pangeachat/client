@@ -10925,5 +10925,10 @@
     "callTranscriptAudioUnavailable": "Sačuvani snimak od {name} nije mogao da se preuzme, tako da nije mogao da bude prepisan.",
     "callTranscriptChooseLanguage": "Koji jezik je bio u upotrebi?",
     "callTranscriptSubscribeForTranscription": "Pretplatite se za transkripciju",
-    "unlockCallTranscript": "Otključaj transkript poziva"
+    "unlockCallTranscript": "Otključaj transkript poziva",
+    "joinYourCourse": "Pridružite se svom kursu",
+    "courseCodeJoinExplanation": "Prijavite se ili se registrujte, a mi ćemo koristiti vaš kod kursa da vas automatski dodamo na vaš kurs.",
+    "courseCodeLabel": "Kod kursa",
+    "courseCodeSaved": "Kod kursa {code} sačuvan",
+    "courseCodeSavedExplanation": "Registrujte se ili se prijavite i mi ćemo vas dodati na vaš kurs."
 }

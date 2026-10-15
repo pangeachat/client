@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "Ang na-save nga recording gikan kang {name} dili ma-download, busa dili kini ma-transcribe.",
     "callTranscriptChooseLanguage": "Unsang pinulongan ang gisulti?",
     "callTranscriptSubscribeForTranscription": "Mag-subscribe para sa transcription",
-    "unlockCallTranscript": "I-unlock ang transcript sa tawag"
+    "unlockCallTranscript": "I-unlock ang transcript sa tawag",
+    "joinYourCourse": "Apil sa imong kurso",
+    "courseCodeJoinExplanation": "Pag-log in o pag-sign up, ug gamiton namo ang imong course code aron awtomatikong idugang ka sa imong kurso.",
+    "courseCodeLabel": "Course code",
+    "courseCodeSaved": "Na-save ang course code nga {code}",
+    "courseCodeSavedExplanation": "Pag-sign up o pag-log in ug idugang ka namo sa imong kurso."
 }

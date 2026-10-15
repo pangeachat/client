@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "Зачуваната снимка од {name} не можеше да се преземе, па затоа не можеше да се транскрибира.",
     "callTranscriptChooseLanguage": "На кој јазик се зборуваше?",
     "callTranscriptSubscribeForTranscription": "Претплатете се за транскрипција",
-    "unlockCallTranscript": "Отклучи транскрипт на повик"
+    "unlockCallTranscript": "Отклучи транскрипт на повик",
+    "joinYourCourse": "Приклучи се на твојот курс",
+    "courseCodeJoinExplanation": "Најави се или регистрирај се, и ние ќе го искористиме твојот код за курс за автоматски да те додадеме на твојот курс.",
+    "courseCodeLabel": "Код за курс",
+    "courseCodeSaved": "Кодот за курс {code} е зачуван",
+    "courseCodeSavedExplanation": "Регистрирај се или најави се и ние ќе те додадеме на твојот курс."
 }

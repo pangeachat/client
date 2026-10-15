@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "Kurekodha kwakachengetwa kubva kuna {name} hakuna kukwanisa kutorwa, saka hakuna kukwanisa kunyorwa.",
     "callTranscriptChooseLanguage": "Mutauro upi wakataurwa?",
     "callTranscriptSubscribeForTranscription": "Nyorera kuti unyorerwe",
-    "unlockCallTranscript": "Vhura zvinyorwa zvekufona"
+    "unlockCallTranscript": "Vhura zvinyorwa zvekufona",
+    "joinYourCourse": "Joinha kosi yako",
+    "courseCodeJoinExplanation": "Pinda kana kusaina, uye tichashandisa kodhi yekosi yako kuti tikuwedzere kukosi yako otomatiki.",
+    "courseCodeLabel": "Kodhi yekosi",
+    "courseCodeSaved": "Kodhi yekosi {code} yachengetwa",
+    "courseCodeSavedExplanation": "Saina kana kupinda uye tichakuwedzera kukosi yako."
 }

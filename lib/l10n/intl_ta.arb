@@ -10068,5 +10068,10 @@
     "callTranscriptAudioUnavailable": "{name} இலிருந்து சேமிக்கப்பட்ட பதிவு பதிவிறக்க முடியவில்லை, எனவே அதை படியெடுக்க முடியவில்லை.",
     "callTranscriptChooseLanguage": "எந்த மொழி பேசப்பட்டது?",
     "callTranscriptSubscribeForTranscription": "படியெடுத்தலுக்கு குழுசேரவும்",
-    "unlockCallTranscript": "அழைப்புப் படியெடுத்தலைத் திறக்கவும்"
+    "unlockCallTranscript": "அழைப்புப் படியெடுத்தலைத் திறக்கவும்",
+    "joinYourCourse": "உங்கள் பாடத்திட்டத்தில் சேரவும்",
+    "courseCodeJoinExplanation": "உள்நுழையவும் அல்லது பதிவு செய்யவும், உங்கள் பாடத்திட்டக் குறியீட்டைப் பயன்படுத்தி உங்களை தானாகவே உங்கள் பாடத்திட்டத்தில் சேர்ப்போம்.",
+    "courseCodeLabel": "பாடத்திட்டக் குறியீடு",
+    "courseCodeSaved": "பாடத்திட்டக் குறியீடு {code} சேமிக்கப்பட்டது",
+    "courseCodeSavedExplanation": "பதிவு செய்யவும் அல்லது உள்நுழையவும், உங்களை உங்கள் பாடத்திட்டத்தில் சேர்ப்போம்."
 }

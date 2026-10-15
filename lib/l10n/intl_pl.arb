@@ -10061,5 +10061,10 @@
     "callTranscriptAudioUnavailable": "Nie udało się pobrać zapisanego nagrania od {name}, więc nie można go transkrybować.",
     "callTranscriptChooseLanguage": "W jakim języku mówiono?",
     "callTranscriptSubscribeForTranscription": "Subskrybuj, aby uzyskać transkrypcję",
-    "unlockCallTranscript": "Odblokuj transkrypcję rozmowy"
+    "unlockCallTranscript": "Odblokuj transkrypcję rozmowy",
+    "joinYourCourse": "Dołącz do kursu",
+    "courseCodeJoinExplanation": "Zaloguj się lub zarejestruj, a my użyjemy Twojego kodu kursu, aby automatycznie dodać Cię do kursu.",
+    "courseCodeLabel": "Kod kursu",
+    "courseCodeSaved": "Kod kursu {code} zapisany",
+    "courseCodeSavedExplanation": "Zarejestruj się lub zaloguj, a my dodamy Cię do kursu."
 }

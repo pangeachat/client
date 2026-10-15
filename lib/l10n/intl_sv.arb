@@ -10494,5 +10494,10 @@
     "callTranscriptAudioUnavailable": "Den sparade inspelningen från {name} kunde inte laddas ner, så den kunde inte transkriberas.",
     "callTranscriptChooseLanguage": "Vilket språk talades?",
     "callTranscriptSubscribeForTranscription": "Prenumerera för transkription",
-    "unlockCallTranscript": "Lås upp samtalstranskription"
+    "unlockCallTranscript": "Lås upp samtalstranskription",
+    "joinYourCourse": "Gå med i din kurs",
+    "courseCodeJoinExplanation": "Logga in eller registrera dig, så använder vi din kurskod för att automatiskt lägga till dig i din kurs.",
+    "courseCodeLabel": "Kurskod",
+    "courseCodeSaved": "Kurskod {code} sparad",
+    "courseCodeSavedExplanation": "Registrera dig eller logga in så lägger vi till dig i din kurs."
 }

@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "Ni ellid lawrlwytho'r recordiad a arbedwyd o {name}, felly ni ellid ei drawsgrifio.",
     "callTranscriptChooseLanguage": "Pa iaith gafodd ei siarad?",
     "callTranscriptSubscribeForTranscription": "Tanysgrifiwch ar gyfer trawsgrifio",
-    "unlockCallTranscript": "Datgloi trawsgrifiad galwad"
+    "unlockCallTranscript": "Datgloi trawsgrifiad galwad",
+    "joinYourCourse": "Ymunwch â'ch cwrs",
+    "courseCodeJoinExplanation": "Mewngofnodwch neu gofrestrwch, a byddwn yn defnyddio'ch cod cwrs i'ch ychwanegu at eich cwrs yn awtomatig.",
+    "courseCodeLabel": "Cod cwrs",
+    "courseCodeSaved": "Cod cwrs {code} wedi'i gadw",
+    "courseCodeSavedExplanation": "Cofrestrwch neu mewngofnodwch a byddwn yn eich ychwanegu at eich cwrs."
 }

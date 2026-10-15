@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "Die gestoorde opname van {name} kon nie afgelaai word nie, en kon dus nie getranskribeer word nie.",
     "callTranscriptChooseLanguage": "Watter taal is gepraat?",
     "callTranscriptSubscribeForTranscription": "Teken in vir transkripsie",
-    "unlockCallTranscript": "Ontsluit oproep-transkripsie"
+    "unlockCallTranscript": "Ontsluit oproep-transkripsie",
+    "joinYourCourse": "Sluit aan by jou kursus",
+    "courseCodeJoinExplanation": "Meld aan of registreer, en ons sal jou kursuskode gebruik om jou outomaties by jou kursus te voeg.",
+    "courseCodeLabel": "Kursuskode",
+    "courseCodeSaved": "Kursuskode {code} gestoor",
+    "courseCodeSavedExplanation": "Registreer of meld aan en ons sal jou by jou kursus voeg."
 }

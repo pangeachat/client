@@ -10470,5 +10470,10 @@
     "callTranscriptAudioUnavailable": "Uloženou nahrávku od {name} se nepodařilo stáhnout, takže ji nebylo možné přepsat.",
     "callTranscriptChooseLanguage": "Jakým jazykem se mluvilo?",
     "callTranscriptSubscribeForTranscription": "Předplatit si přepis",
-    "unlockCallTranscript": "Odemknout přepis hovoru"
+    "unlockCallTranscript": "Odemknout přepis hovoru",
+    "joinYourCourse": "Připojte se ke svému kurzu",
+    "courseCodeJoinExplanation": "Přihlaste se nebo se zaregistrujte a my použijeme váš kód kurzu k automatickému přidání do kurzu.",
+    "courseCodeLabel": "Kód kurzu",
+    "courseCodeSaved": "Kód kurzu {code} uložen",
+    "courseCodeSavedExplanation": "Zaregistrujte se nebo se přihlaste a my vás přidáme do vašeho kurzu."
 }

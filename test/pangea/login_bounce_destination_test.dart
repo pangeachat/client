@@ -193,6 +193,22 @@ void main() {
         expect(joinCodeFor(Uri.parse(location)), isNull, reason: location);
       }
     });
+
+    test('the pending join code is read from a join-link destination, '
+        'nothing from any other, and reading never clears it', () async {
+      await SpaceCodeRepo.setDestination(joinLink);
+      expect(SpaceCodeRepo.pendingJoinCode, 'vj3pc8b');
+      expect(SpaceCodeRepo.destination, joinLink);
+
+      for (final location in [settings, courseRoom, activity]) {
+        await SpaceCodeRepo.setDestination(location);
+        expect(SpaceCodeRepo.pendingJoinCode, isNull, reason: location);
+      }
+
+      await writeRaw(joinLink, age: SpaceCodeRepo.cacheTTL * 2);
+      expect(SpaceCodeRepo.pendingJoinCode, isNull);
+      await SpaceCodeRepo.clearDestination();
+    });
   });
 
   // The DM invite link (`/invite_user/<id>`) keeps its own entry (#8436): the

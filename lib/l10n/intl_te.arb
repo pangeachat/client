@@ -10926,5 +10926,10 @@
     "callTranscriptAudioUnavailable": "{name} నుండి సేవ్ చేసిన రికార్డింగ్ డౌన్‌లోడ్ చేయబడలేదు, కాబట్టి దానిని ట్రాన్స్‌క్రైబ్ చేయలేము.",
     "callTranscriptChooseLanguage": "ఏ భాష మాట్లాడబడింది?",
     "callTranscriptSubscribeForTranscription": "ట్రాన్స్‌క్రిప్షన్ కోసం సబ్‌స్క్రైబ్ చేయండి",
-    "unlockCallTranscript": "కాల్ ట్రాన్స్‌క్రిప్ట్‌ను అన్‌లాక్ చేయండి"
+    "unlockCallTranscript": "కాల్ ట్రాన్స్‌క్రిప్ట్‌ను అన్‌లాక్ చేయండి",
+    "joinYourCourse": "మీ కోర్సులో చేరండి",
+    "courseCodeJoinExplanation": "లాగిన్ అవ్వండి లేదా సైన్ అప్ చేయండి, మరియు మీ కోర్సు కోడ్‌ని ఉపయోగించి మిమ్మల్ని మీ కోర్సులో ఆటోమేటిక్‌గా చేరుస్తాము.",
+    "courseCodeLabel": "కోర్సు కోడ్",
+    "courseCodeSaved": "కోర్సు కోడ్ {code} సేవ్ చేయబడింది",
+    "courseCodeSavedExplanation": "సైన్ అప్ చేయండి లేదా లాగిన్ అవ్వండి మరియు మిమ్మల్ని మీ కోర్సులో చేరుస్తాము."
 }

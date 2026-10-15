@@ -10921,5 +10921,10 @@
     "callTranscriptAudioUnavailable": "La konservita registraĵo de {name} ne povis esti elŝutita, do ĝi ne povis esti transskribita.",
     "callTranscriptChooseLanguage": "Kiun lingvon oni parolis?",
     "callTranscriptSubscribeForTranscription": "Aboni por transskribo",
-    "unlockCallTranscript": "Malŝlosi alvokan transskribon"
+    "unlockCallTranscript": "Malŝlosi alvokan transskribon",
+    "joinYourCourse": "Aliĝu al via kurso",
+    "courseCodeJoinExplanation": "Ensalutu aŭ registriĝu, kaj ni uzos vian kurskodon por aŭtomate aldoni vin al via kurso.",
+    "courseCodeLabel": "Kurskodo",
+    "courseCodeSaved": "Kurskodo {code} konservita",
+    "courseCodeSavedExplanation": "Registriĝu aŭ ensalutu kaj ni aldonos vin al via kurso."
 }

@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "{name} ରୁ ସେଭ୍ ହୋଇଥିବା ରେକର୍ଡିଂ ଡାଉନଲୋଡ୍ ହୋଇପାରିଲା ନାହିଁ, ତେଣୁ ଏହାକୁ ଟ୍ରାନ୍ସକ୍ରାଇବ୍ କରାଯାଇପାରିଲା ନାହିଁ।",
     "callTranscriptChooseLanguage": "କେଉଁ ଭାଷାରେ କଥାବାର୍ତ୍ତା ହୋଇଥିଲା?",
     "callTranscriptSubscribeForTranscription": "ଟ୍ରାନ୍ସକ୍ରିପସନ୍ ପାଇଁ ସବସ୍କ୍ରାଇବ୍ କରନ୍ତୁ",
-    "unlockCallTranscript": "କଲ୍ ଟ୍ରାନ୍ସକ୍ରିପ୍ଟ ଅନଲକ୍ କରନ୍ତୁ"
+    "unlockCallTranscript": "କଲ୍ ଟ୍ରାନ୍ସକ୍ରିପ୍ଟ ଅନଲକ୍ କରନ୍ତୁ",
+    "joinYourCourse": "ଆପଣଙ୍କ କୋର୍ସରେ ଯୋଗ ଦିଅନ୍ତୁ",
+    "courseCodeJoinExplanation": "ଲଗ୍ ଇନ୍ କରନ୍ତୁ କିମ୍ବା ସାଇନ୍ ଅପ୍ କରନ୍ତୁ, ଏବଂ ଆମେ ଆପଣଙ୍କ କୋର୍ସ କୋଡ୍ ବ୍ୟବହାର କରି ଆପଣଙ୍କୁ ଆପଣଙ୍କ କୋର୍ସରେ ସ୍ୱୟଂଚାଳିତ ଭାବରେ ଯୋଗ କରିବୁ।",
+    "courseCodeLabel": "କୋର୍ସ କୋଡ୍",
+    "courseCodeSaved": "କୋର୍ସ କୋଡ୍ {code} ସେଭ୍ ହୋଇଛି",
+    "courseCodeSavedExplanation": "ସାଇନ୍ ଅପ୍ କରନ୍ତୁ କିମ୍ବା ଲଗ୍ ଇନ୍ କରନ୍ତୁ ଏବଂ ଆମେ ଆପଣଙ୍କୁ ଆପଣଙ୍କ କୋର୍ସରେ ଯୋଗ କରିବୁ।"
 }

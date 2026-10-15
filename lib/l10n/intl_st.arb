@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "Rekoto e bolokilweng ho tswa ho {name} ha e a ka ya jarollwa, ka hona ha e a ka ya ngolwa.",
     "callTranscriptChooseLanguage": "Ho ne ho buuwa puo efe?",
     "callTranscriptSubscribeForTranscription": "Ngolisa bakeng sa ho ngola",
-    "unlockCallTranscript": "Notlolla sengoloa sa mohala"
+    "unlockCallTranscript": "Notlolla sengoloa sa mohala",
+    "joinYourCourse": "Kena thupelong ea hau",
+    "courseCodeJoinExplanation": "Kena kapa ingolise, 'me re tla sebelisa khoutu ea thupelo ea hau ho u kenya thupelong ea hau ka bo eona.",
+    "courseCodeLabel": "Khoutu ea thupelo",
+    "courseCodeSaved": "Khoutu ea thupelo {code} e bolokiloe",
+    "courseCodeSavedExplanation": "Ingolise kapa u kene 'me re tla u kenya thupelong ea hau."
 }

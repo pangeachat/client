@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "Kāore i taea te tikiake i te rekoata i tiakina mai i a {name}, nō reira kāore i taea te tuhi.",
     "callTranscriptChooseLanguage": "He aha te reo i kōrerohia?",
     "callTranscriptSubscribeForTranscription": "Ohauru mō te tuhinga",
-    "unlockCallTranscript": "Wewete i te tuhinga waea"
+    "unlockCallTranscript": "Wewete i te tuhinga waea",
+    "joinYourCourse": "Hono atu ki tō akoranga",
+    "courseCodeJoinExplanation": "Takiuru, rēhita rānei, ā, mā tō waehere akoranga koe e tāpiri aunoa ki tō akoranga.",
+    "courseCodeLabel": "Waehere akoranga",
+    "courseCodeSaved": "Kua tiakina te waehere akoranga {code}",
+    "courseCodeSavedExplanation": "Rēhita, takiuru rānei, ā, mā mātou koe e tāpiri ki tō akoranga."
 }

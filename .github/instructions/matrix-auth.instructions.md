@@ -67,7 +67,7 @@ echo "$MATRIX_TOKEN"
 
 ### Choreo API
 
-Choreo gates on the Matrix token alone — it validates the bearer via Synapse `whoami` plus the RevenueCat entitlement check, and reads no API-key header:
+Choreo gates on the Matrix token alone — it validates the bearer via Synapse `whoami` plus the CMS entitlement check, and reads no API-key header:
 
 ```sh
 curl -s 'https://api.staging.pangea.chat/choreo/<endpoint>' \

@@ -15,7 +15,6 @@ import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
 import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
-import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
@@ -1579,7 +1578,7 @@ void main() {
       expect(uri.queryParameters['activity'], isNull);
       // #7267: the activity REPLACES the panels, so no `left=course` card rides
       // beside it and no right panel survives.
-      expect(WorkspaceQuery.valueOf(uri.query, 'right'), isNull);
+      expect(uri.queryParameters['right'], isNull);
       expect(parseOpenPanels(uri).left.map((t) => t.type), [
         PanelTypesEnum.activity,
       ]);

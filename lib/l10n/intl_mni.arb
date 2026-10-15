@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "{name} দগী সেভ তৌখিবা রেকর্ডিং অদু ডাউনলোড তৌবা ঙমখিদে, অদুগা ট্রান্সক্রাইব তৌবা ঙমখিদে.",
     "callTranscriptChooseLanguage": "কনাগুম্বা অমুন্না কয়া ঙাংখি?",
     "callTranscriptSubscribeForTranscription": "ট্রান্সক্রিপশনগীদমক সাবস্ক্রাইব তৌবীয়ু",
-    "unlockCallTranscript": "কল ট্রান্সক্রিপ্ট অদু অনলক তৌবীয়ু"
+    "unlockCallTranscript": "কল ট্রান্সক্রিপ্ট অদু অনলক তৌবীয়ু",
+    "joinYourCourse": "ನಾಲೈ-ನಾಲೈ কোর্সತಾ য়াও",
+    "courseCodeJoinExplanation": "ಲಾಗಿನ್ ತೌ ಅಥವ ಸೈನ್ ಅಪ್ ತೌ, ಅದুগಾ ನಾಲೈ-ನಾಲೈ কোর্স কোড শিজিন্নদুনা নঙবু নಾಲೈ-ನಾಲೈ কোর্সತಾ অটোমেটিক ওইনা য়াওহনগನಿ.",
+    "courseCodeLabel": "ಕোর্স ಕೋಡ್",
+    "courseCodeSaved": "ಕোর্স ಕೋಡ್ {code} ಸೇভ ತೌರೆ",
+    "courseCodeSavedExplanation": "ಸೈನ್ ಅಪ್ ಅಥವ ಲಾಗಿನ್ ತೌ ಅದুগಾ ನঙಬು ನಾಲೈ-ನಾಲೈ কোর্সತಾ য়াওহনগনি."
 }

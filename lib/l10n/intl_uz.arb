@@ -9980,5 +9980,10 @@
     "callTranscriptAudioUnavailable": "{name}dan saqlangan yozuvni yuklab bo‘lmadi, shuning uchun uni transkripsiya qilib bo‘lmadi.",
     "callTranscriptChooseLanguage": "Qaysi tilda gapirilgan?",
     "callTranscriptSubscribeForTranscription": "Transkripsiya uchun obuna bo‘lish",
-    "unlockCallTranscript": "Qo‘ng‘iroq transkriptini ochish"
+    "unlockCallTranscript": "Qo‘ng‘iroq transkriptini ochish",
+    "joinYourCourse": "Kursga qoʻshiling",
+    "courseCodeJoinExplanation": "Tizimga kiring yoki roʻyxatdan oʻting, biz sizning kurs kodingizdan avtomatik ravishda kursingizga qoʻshish uchun foydalanamiz.",
+    "courseCodeLabel": "Kurs kodi",
+    "courseCodeSaved": "Kurs kodi {code} saqlandi",
+    "courseCodeSavedExplanation": "Roʻyxatdan oʻting yoki tizimga kiring va biz sizni kursingizga qoʻshamiz."
 }
