@@ -6,20 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/course_plan_return.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
-import 'package:fluffychat/features/navigation/panel_types_enum.dart';
-import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
-import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
@@ -27,7 +23,6 @@ import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/tutorials/tutorial_seen_backfill.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
-import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
@@ -36,61 +31,15 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/start_practice.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
+import 'package:fluffychat/routes/courses/course_objectives/activity_live_state_room_extension.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
 import 'package:fluffychat/routes/courses/course_objectives/suggested_activities.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
-import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-
-/// An activity's live state in a joined [course] — the learner's own
-/// unfinished session (ongoing, pending or active) first, else coursemates'
-/// open sessions from the discovery cache (joinable) — as its card draws it.
-/// Shared by the course page's row and a Learning Objective's detail page.
-({
-  ActivityPinState? state,
-  int openSessions,
-  List<String> participants,
-  int openSlots,
-})
-courseActivityLiveState(Room course, String activityId) {
-  final room = course;
-  final ongoingId = room.activeActivityRoomId(activityId);
-  if (ongoingId != null) {
-    final live = room.client.getRoomById(ongoingId);
-    final remaining = live?.numRemainingRoles ?? 0;
-    return (
-      state: remaining > 0
-          ? ActivityPinState.ongoingPending
-          : ActivityPinState.ongoingActive,
-      openSessions: 0,
-      participants: live?.largeCardParticipantIds ?? const [],
-      openSlots: remaining,
-    );
-  }
-
-  final cached = DiscoveredSessionsCache.instance.forActivity(
-    activityId,
-    course: room,
-  );
-  final open = cached == null
-      ? 0
-      : ActivitySessionSummariesModel(
-          cached,
-          activityId: activityId,
-        ).openSessions.length;
-  return open > 0
-      ? (
-          state: ActivityPinState.joinable,
-          openSessions: open,
-          participants: const [],
-          openSlots: 0,
-        )
-      : (state: null, openSessions: 0, participants: const [], openSlots: 0);
-}
 
 /// The Activities / Course-plan tab of a selected course (world_v2): the
 /// course's learning objectives, each with the activities that satisfy it.
@@ -331,7 +280,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
     // Before resuming, not after: a resume onto a surface that isn't there
     // relaunches a step that immediately dismisses itself again.
-    if (_activitiesRowRect == null) return;
+    if (MatrixState.pAnyState.getRenderBox(TutorialTargetIds.coursePanel) ==
+        null) {
+      return;
+    }
 
     if (_tutorials.hasActiveSequence) {
       _tutorials.resumeIfStranded();
@@ -339,15 +291,6 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     }
 
     _tutorials.requestSequence(TutorialSequences.courseOrientationSequence);
-  }
-
-  /// The Activities row's carousel, if it is currently on screen.
-  Rect? get _activitiesRowRect {
-    final box = MatrixState.pAnyState.getRenderBox(
-      TutorialTargetIds.courseActivities,
-    );
-    if (box == null) return null;
-    return box.localToGlobal(Offset.zero) & box.size;
   }
 
   Future<void> _launchWelcomeTutorial() async {
@@ -361,25 +304,11 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     );
   }
 
-  /// Brings the tutorial's scroll-dependent targets — the course progress bar
-  /// and the Activities row — fully into view before the tutorial measures
-  /// them ([TutorialTarget.ensureVisible]). The progress bar goes last because
-  /// it sits above the row, so on a viewport too small for both the bar wins —
-  /// its step shows first, and the row's card anchors to whatever slice of the
-  /// row stays visible.
-  Future<void> _ensureTutorialTargetsVisible() async {
-    await TutorialTarget.ensureVisible(TutorialTargetIds.courseActivities);
-    await TutorialTarget.ensureVisible(TutorialTargetIds.courseProgressBar);
-  }
-
   Future<void> _launchCoursePlanTutorial() async {
     if (!mounted) return;
     final room = widget.room;
     final courseName =
         room?.getLocalizedDisplayname(MatrixLocals(L10n.of(context))) ?? '';
-
-    await _ensureTutorialTargetsVisible();
-    if (!mounted) return;
 
     _tutorials.launchTutorial(
       context: context,
@@ -394,39 +323,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
             canShowNextStep: () => true,
             tooltipArgs: () => [courseName],
           ),
-          TutorialStepData.single(
-            targetKey: TutorialTargetIds.courseProgressBar,
-            canShowNextStep: () => true,
-          ),
-          TutorialStepData(
-            // The carousel, resolved live so it tracks the plan scrolling.
-            spotlightRects: () {
-              final rect = _activitiesRowRect;
-              return rect == null ? const [] : [rect];
-            },
-            canShowNextStep: () => true,
-            // A non-empty arg switches to the copy for "we could not point at
-            // the Activities row".
-            tooltipArgs: () =>
-                _activitiesRowRect == null ? const ['empty'] : const [],
-            // Armed: the learner opens an activity themselves, however they
-            // reach it.
-            arming: TutorialStepArming(
-              signal: GoRouter.of(context).routeInformationProvider,
-              isSatisfied: _hasActivityPanelOpen,
-            ),
-          ),
         ],
       ),
       isFocused: true,
     );
-  }
-
-  bool _hasActivityPanelOpen() {
-    if (!mounted) return false;
-    return parseOpenPanels(
-      GoRouter.of(context).routeInformationProvider.value.uri,
-    ).left.any((token) => token.type == PanelTypesEnum.activity);
   }
 
   void _onLiveStateSourcesChanged() {
@@ -554,24 +454,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   ///    behind this panel keeps it fresh), the same source the activity start
   ///    page seeds its join list from.
   /// A preview (no joined [room]) has no live sessions, so cards stay plain.
-  ({
-    ActivityPinState? state,
-    int openSessions,
-    List<String> participants,
-    int openSlots,
-  })
-  _liveStateFor(String activityId) {
-    final room = widget.room;
-    if (room == null) {
-      return (
-        state: null,
-        openSessions: 0,
-        participants: const [],
-        openSlots: 0,
-      );
-    }
-    return courseActivityLiveState(room, activityId);
-  }
+  ActivityLiveState _liveStateFor(String activityId) =>
+      widget.room?.activityLiveState(activityId) ?? noActivityLiveState;
 
   /// The [PinSignals] the Priority matrix scores this activity on, built from
   /// the same live state the cards render. `recency` stays 0: open sessions
@@ -590,7 +474,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   /// The session the learner holds a role in and hasn't finished among
   /// [current]'s activities; null when there is none (or in a preview). Each
-  /// Mission keeps to its own activities (#9420 prototype) — a session from
+  /// Mission keeps to its own activities (#9420) — a session from
   /// another Mission resumes from that Mission's card or Chats.
   ({QuestActivity activity, String roomId})? _ongoingSession(
     QuestObjectiveGroup current,
@@ -692,16 +576,13 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                 valueListenable: widget.objectivesProvider.progression,
                 builder: (context, progression, _) {
                   if (widget.suggestedOnly) {
-                    // The course page's current-Mission row (#9437): the
-                    // Practice tile, then the Mission's activities, ordered by
-                    // the same Priority matrix the map ranks pins by. Sessions
-                    // the learner already holds a role in are dropped (#8741 —
-                    // resumed from Chats) and so are finished activities
-                    // (#8901, #9470 — the full plan behind "See all" keeps
-                    // them with their check). Empty only while the course is
-                    // complete or has no Mission; the page renders its own
-                    // card for that, and the section header and its "See all"
-                    // sit outside this widget.
+                    // The course page's Mission card and its activities
+                    // (#9437), ordered by the same Priority matrix the map
+                    // ranks pins by, the learner's own unfinished sessions
+                    // first. Finished activities drop out unless a session of
+                    // them is live. Empty only while the course is complete
+                    // or has no Mission; the page renders its own card for
+                    // that.
                     final current =
                         widget.objectivesProvider.objectiveGroup(
                           widget.missionId,
@@ -723,7 +604,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     // Play opens the row's top item — a coursemate's open
                     // session first, else the best unfinished activity — and,
                     // once every activity is finished, the Mission's first
-                    // activity for another round (#9420 prototype).
+                    // activity for another round (#9420).
                     final playTarget = activities.isNotEmpty
                         ? activities.first
                         : current.activities.firstOrNull;
@@ -732,86 +613,61 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     // activity gets finished before a new one starts.
                     final ongoing = _ongoingSession(current);
                     final hasProgress = widget.room != null;
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        MissionCard(
-                          group: current,
-                          index:
-                              widget.objectivesProvider.filteredObjectiveGroups
-                                  .indexOf(current) +
-                              1,
-                          progress: hasProgress
-                              ? widget.objectivesProvider.missionProgress(
-                                  missionId,
-                                )
-                              : null,
-                          breakdown: hasProgress
-                              ? widget.objectivesProvider.missionXpBreakdown(
-                                  missionId,
-                                )
-                              : null,
-                          onPlay: widget.readOnly
-                              ? null
-                              : ongoing != null
-                              ? () => _openSession(ongoing.roomId)
-                              : playTarget == null
-                              ? null
-                              : () => _openActivity(playTarget),
-                          playLabel: ongoing == null
-                              ? null
-                              : L10n.of(context).continueActivity,
-                          playDetail: ongoing?.activity.plan.title,
-                          onPractice: () => startPractice(
-                            context,
-                            ConstructTypeEnum.vocab,
-                            missionId: missionId,
-                          ),
-                          // The course tutorial's progress step lights the
-                          // ring, as it lit the bar this card replaced.
-                          tutorialTargetId: _hostsTutorial
-                              ? TutorialTargetIds.courseProgressBar
-                              : null,
-                          // The Mission's activities live in its card: they
-                          // are what fills it (#9420 prototype).
-                          activities: activities.isEmpty
-                              ? null
-                              :
-                                // The course tutorial's "pick an activity" step
-                                // lights this row. Only the course page's row hosts
-                                // the tutorial, so only it claims the target id
-                                // ([_hostsTutorial]).
-                                TutorialTarget(
-                                  targetId: _hostsTutorial
-                                      ? TutorialTargetIds.courseActivities
-                                      : null,
-                                  child: ActivityCarousel(
-                                    activities: activities,
-                                    onTap: (activity) {
-                                      // A session the learner is in reopens its
-                                      // chat; anything else opens its start page.
-                                      final ongoingId = widget.room
-                                          ?.activeActivityRoomId(
-                                            activity.activityId,
-                                          );
-                                      if (ongoingId != null) {
-                                        _openSession(ongoingId);
-                                      } else {
-                                        _openActivity(activity);
-                                      }
-                                    },
-                                    userStarsByActivity: _userStarsByActivity,
-                                    hasCompletedActivity:
-                                        widget.hasCompletedActivity,
-                                    liveStateByActivity: _liveStateFor,
-                                    availableParticipants:
-                                        _availableParticipants,
-                                    pingedActivityId: _pingedActivityId,
-                                    interactive: !widget.readOnly,
-                                  ),
-                                ),
-                        ),
-                      ],
+                    final position = widget
+                        .objectivesProvider
+                        .filteredObjectiveGroups
+                        .indexOf(current);
+                    return MissionCard(
+                      group: current,
+                      index: position < 0 ? null : position + 1,
+                      progress: hasProgress
+                          ? widget.objectivesProvider.missionProgress(missionId)
+                          : null,
+                      breakdown: hasProgress
+                          ? widget.objectivesProvider.missionXpBreakdown(
+                              missionId,
+                            )
+                          : null,
+                      onPlay: widget.readOnly
+                          ? null
+                          : ongoing != null
+                          ? () => _openSession(ongoing.roomId)
+                          : playTarget == null
+                          ? null
+                          : () => _openActivity(playTarget),
+                      playLabel: ongoing == null
+                          ? null
+                          : L10n.of(context).continueActivity,
+                      playDetail: ongoing?.activity.plan.title,
+                      onPractice: () => startPractice(
+                        context,
+                        ConstructTypeEnum.vocab,
+                        missionId: missionId,
+                      ),
+                      // The Mission's activities live in its card: they
+                      // are what fills it (#9420).
+                      activities: activities.isEmpty
+                          ? null
+                          : ActivityCarousel(
+                              activities: activities,
+                              onTap: (activity) {
+                                // A session the learner is in reopens its
+                                // chat; anything else opens its start page.
+                                final ongoingId = widget.room
+                                    ?.activeActivityRoomId(activity.activityId);
+                                if (ongoingId != null) {
+                                  _openSession(ongoingId);
+                                } else {
+                                  _openActivity(activity);
+                                }
+                              },
+                              userStarsByActivity: _userStarsByActivity,
+                              hasCompletedActivity: widget.hasCompletedActivity,
+                              liveStateByActivity: _liveStateFor,
+                              availableParticipants: _availableParticipants,
+                              pingedActivityId: _pingedActivityId,
+                              interactive: !widget.readOnly,
+                            ),
                     );
                   }
                   // Scoped to THIS course: the shared resolution spans every

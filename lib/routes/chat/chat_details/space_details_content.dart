@@ -22,6 +22,7 @@ import 'package:fluffychat/routes/chat/chat_details/delete_space_dialog.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
+import 'package:fluffychat/routes/courses/course_objectives/course_objective_circles.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_progress_circles.dart';
 import 'package:fluffychat/routes/world/left_panel/course_card_reveal.dart';
@@ -83,12 +84,12 @@ class SpaceDetailsContent extends StatelessWidget {
   static const double bodyTopInset = 16.0;
 
   /// Below this incoming BODY height (the card minus its header) the course
-  /// card renders only the progress bar — the collapsed mobile peek (the nav
-  /// cavity clips there). The expanded sheet is always well above it, and the
-  /// wide card only dips under it mid-reveal, where the cross-fade below
-  /// decides instead. The old whole-card threshold was 168 with the ~56px
-  /// header row inside the body; the header now sits above the body, so the
-  /// same cavity heights trigger at 112. See [build].
+  /// card renders only the Mission circles — the collapsed mobile peek (the
+  /// nav cavity clips there). It clears the labelled circles row
+  /// ([ObjectiveProgressCircles.labelledHeight]) with its insets, and the
+  /// peek's body stays just under it. The expanded sheet is always well above
+  /// it, and the wide card only dips under it mid-reveal, where the
+  /// cross-fade below decides instead. See [build].
   static const double _kCompactCardMaxHeight = 186.0;
 
   @override
@@ -221,7 +222,7 @@ class SpaceDetailsHeader extends StatelessWidget {
 /// The Mission circles as the course's two collapsed states show them — the
 /// wide context bar and the narrow cavity peek — with the picked Mission named
 /// under its pointer. A tap picks that Mission for the course card and the
-/// map (`?mission=`, #9420 prototype; it replaced the course star bar). On
+/// map (`?mission=`, #9420; it replaced the course star bar). On
 /// wide it insets to the header's content edge (#8866); on narrow it keeps the
 /// sections' edge, because the peek slides up into the page.
 class CoursePeekProgressBar extends StatelessWidget {
@@ -237,24 +238,27 @@ class CoursePeekProgressBar extends StatelessWidget {
     // The nav cavity hands the peek TIGHT height constraints, which would
     // inflate the bar's fixed-height box to fill the slot; Align restores
     // loose constraints so the peek bar renders at the same height as on the
-    // full page. Top-start, like the open course page's circles (#9420
-    // prototype): a short row hugs the left edge instead of centring.
+    // full page. Top-start, like the open course page's circles: a short row
+    // hugs the left edge instead of centring. The row's height is fixed, so
+    // the bar never shrinks while the plan loads and jumps when the circles
+    // arrive.
     child: Align(
       alignment: AlignmentDirectional.topStart,
-      child: CourseObjectiveCircles(
-        objectivesProvider: objectivesProvider,
-        showSelectedLabel: true,
-        selectedMissionId: selectedMissionIdFor(GoRouterState.of(context).uri),
-        onTap: (index) {
-          final groups = objectivesProvider.filteredObjectiveGroups;
-          if (index < 1 || index > groups.length) return;
-          context.go(
+      child: SizedBox(
+        height: ObjectiveProgressCircles.labelledHeight,
+        child: CourseObjectiveCircles(
+          objectivesProvider: objectivesProvider,
+          showSelectedLabel: true,
+          selectedMissionId: selectedMissionIdFor(
+            GoRouterState.of(context).uri,
+          ),
+          onSelectMission: (missionId) => context.go(
             WorkspaceNav.selectMission(
               GoRouterState.of(context).uri,
-              groups[index - 1].objective.id,
+              missionId,
             ),
-          );
-        },
+          ),
+        ),
       ),
     ),
   );

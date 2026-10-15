@@ -4,14 +4,20 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
+import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/routes/world/world_map_client_extension.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 extension QuestsClientExtension on Client {
   /// The learner's goal checkmarks per activity: their best single session's
-  /// orchestrator-awarded goals. Drawn on activity cards and map pins; it no
-  /// longer decides Mission completion, which [userXpByActivity] feeds.
+  /// orchestrator-awarded goals. Drawn on activity cards and map pins; Mission
+  /// completion is XP ([userXpByActivity]).
   Map<String, int> get userStarsByActivity {
     final stars = <String, int>{};
     for (final room in rooms) {
@@ -64,6 +70,57 @@ extension QuestsClientExtension on Client {
       xp[activityId] = (xp[activityId] ?? MissionXpBreakdown.zero) + session;
     }
     return xp;
+  }
+
+  /// [userXpBreakdownByActivity] read from the shared [MissionXpCache].
+  Map<String, MissionXpBreakdown> get cachedXpBreakdownByActivity {
+    final cache = MissionXpCache.instance;
+    return userXpBreakdownByActivity(
+      chatXpByRoom: cache.chatXpByRoom,
+      practiceXpByRoom: cache.practiceXpByRoom,
+    );
+  }
+
+  /// [group]'s XP by source: its activities' saved sessions plus practice
+  /// outside any session on its words — what the resolver totals for it.
+  /// Pass [byActivity] ([cachedXpBreakdownByActivity]) when breaking down
+  /// several Missions at once, so the rooms are walked once.
+  MissionXpBreakdown missionXpBreakdown(
+    QuestObjectiveGroup group, {
+    Map<String, MissionXpBreakdown>? byActivity,
+  }) {
+    final perActivity = byActivity ?? cachedXpBreakdownByActivity;
+    var sum = MissionXpBreakdown(
+      practice: MissionXpBreakdown.practiceFor(
+        group.lemmas,
+        MissionXpCache.instance.practiceXpByLemma,
+      ),
+    );
+    for (final activity in group.activities) {
+      sum = sum + (perActivity[activity.activityId] ?? MissionXpBreakdown.zero);
+    }
+    return sum;
+  }
+
+  /// [missionId]'s group in the first joined course that carries it, as that
+  /// course shows it (its copy, else its pins). Null when no joined course
+  /// does — a stale link, or a course since left.
+  Future<QuestObjectiveGroup?> joinedMissionGroup(String missionId) async {
+    for (final room in joinedCourseRooms) {
+      final questId = room.coursePlan?.uuid;
+      if (questId == null) continue;
+      final outline = (await QuestRepo.outline(
+        questId,
+        courseRoomId: room.id,
+      )).result;
+      // silent-ok: a course whose outline fails is reported where it loads
+      // (reportCourseOutlineFailure); the next joined course may carry it.
+      if (outline == null) continue;
+      for (final group in outline.forCourse(room).groups) {
+        if (group.objective.id == missionId) return group;
+      }
+    }
+    return null;
   }
 
   /// One session's XP: the XP credited to its room plus its goal checkmarks.

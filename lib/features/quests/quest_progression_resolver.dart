@@ -50,6 +50,20 @@ class MissionXpBreakdown {
 
   int get total => chat + goals + practice;
 
+  /// The practice XP earned outside any session on [lemmas] — a Mission's
+  /// word list — read from [practiceXpByLemma]. A word on two Missions' lists
+  /// counts for both.
+  static int practiceFor(
+    Iterable<String> lemmas,
+    Map<String, int> practiceXpByLemma,
+  ) {
+    var xp = 0;
+    for (final lemma in lemmas) {
+      xp += practiceXpByLemma[lemma] ?? 0;
+    }
+    return xp;
+  }
+
   MissionXpBreakdown operator +(MissionXpBreakdown other) => MissionXpBreakdown(
     chat: chat + other.chat,
     goals: goals + other.goals,
@@ -94,26 +108,25 @@ class QuestProgress {
 
   final Map<String, int> indexByMission;
 
-  /// This quest's OWN per-Mission rollup, scoped to the activities its outline
-  /// lists — which, for a course that pins, is the pinned set.
-  ///
-  /// Scoping is the whole point. Missions are a shared catalog reused across
-  /// quests, so two joined courses routinely carry the same Mission with
-  /// different activities; rolling them up globally would clamp this course's
-  /// effective threshold against another course's content and credit its stars
-  /// (#7771). Where two courses genuinely list the SAME activity, each still
-  /// counts it — that case needs no union, since both outlines carry it.
-  ///
   /// Which activities each scored Mission counts, from the outline — what a
   /// live session uses to find the Mission its XP serves
   /// ([ProgressionResolution.missionForActivity]).
   final Map<String, Set<String>> activityIdsByMission;
 
+  /// This quest's OWN per-Mission rollup, scoped to the activities its outline
+  /// lists — the course's copy, else its pins.
+  ///
+  /// Scoping is the whole point. Missions are a shared catalog reused across
+  /// quests, so two joined courses routinely carry the same Mission with
+  /// different activities; rolling them up globally would credit one course's
+  /// XP to another's content (#7771). Where two courses genuinely list the
+  /// SAME activity, each still counts it — that case needs no union, since
+  /// both outlines carry it.
+  ///
   /// Holds only the quest's **scored** Missions — those the outline gives at
-  /// least one activity. A Mission with no activities offers no stars and the
-  /// panel doesn't render it at all (#7114), so counting it would break the
-  /// doc's denominator invariant (#7663). [orderedMissionIds] still carries the
-  /// full sequence, so gradient distances are unaffected.
+  /// least one activity. A Mission with no activities offers no XP and the
+  /// panel doesn't render it at all (#7114). [orderedMissionIds] still carries
+  /// the full sequence, so gradient distances are unaffected.
   final Map<String, MissionProgress> rollup;
 
   const QuestProgress({
@@ -318,7 +331,7 @@ ProgressionResolution resolveProgression({
       for (final activityId in activities) {
         xp += xpByActivity[activityId] ?? 0;
       }
-      xp += practiceXpForLemmas(
+      xp += MissionXpBreakdown.practiceFor(
         outline.lemmasByLo[missionId] ?? const {},
         practiceXpByLemma,
       );
@@ -366,18 +379,4 @@ String? _anchorFor(List<String> seq, Map<String, MissionProgress> rollup) {
     if (!progress.satisfied) return missionId;
   }
   return null;
-}
-
-/// The practice XP earned outside any session on [lemmas] — a Mission's word
-/// list — read from [practiceXpByLemma]. A word on two Missions' lists counts
-/// for both.
-int practiceXpForLemmas(
-  Iterable<String> lemmas,
-  Map<String, int> practiceXpByLemma,
-) {
-  var xp = 0;
-  for (final lemma in lemmas) {
-    xp += practiceXpByLemma[lemma] ?? 0;
-  }
-  return xp;
 }

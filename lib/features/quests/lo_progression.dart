@@ -42,7 +42,7 @@ class CourseLoOutline {
 
   /// Each Mission's word list — every suggested word across its activities,
   /// lowercased. Practice on one of these words outside a session counts
-  /// toward the Mission (#9420 prototype). Empty for a caller with no plans.
+  /// toward the Mission (#9420). Empty for a caller with no plans.
   final Map<String, Set<String>> lemmasByLo;
 
   /// The XP that completes a Mission in this course — the instructor's

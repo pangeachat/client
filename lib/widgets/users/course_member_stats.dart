@@ -154,7 +154,7 @@ class MemberStatsRow extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     spacing: 2.0,
                     children: [
-                      // The banked goal total is drawn as a goal diamond (#9420):
+                      // The banked goal total is drawn as a goal diamond:
                       // the member's activity goals, not completed Missions
                       // (quests.instructions.md, "Stars and checkmarks").
                       GoalDiamond(earned: true, size: iconSize),

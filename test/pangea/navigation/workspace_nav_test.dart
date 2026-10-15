@@ -1620,4 +1620,30 @@ void main() {
       },
     );
   });
+
+  group('the picked Mission (?mission=, #9420)', () {
+    test('selectMission replaces the pick and keeps the rest', () {
+      final once = u(WorkspaceNav.selectMission(u('/?c=a&left=course'), 'm1'));
+      final twice = u(WorkspaceNav.selectMission(once, 'm2'));
+      expect(selectedMissionIdFor(twice), 'm2');
+      expect(twice.queryParameters['c'], 'a');
+      expect(twice.queryParameters['left'], 'course');
+    });
+
+    test(
+      'reopening the same course keeps its pick; another course drops it',
+      () {
+        final course = u(WorkspaceNav.openCourse(u('/'), '!a:server'));
+        final picked = u(WorkspaceNav.selectMission(course, 'm1'));
+        expect(
+          selectedMissionIdFor(u(WorkspaceNav.openCourse(picked, '!a:server'))),
+          'm1',
+        );
+        expect(
+          selectedMissionIdFor(u(WorkspaceNav.openCourse(picked, '!b:server'))),
+          isNull,
+        );
+      },
+    );
+  });
 }

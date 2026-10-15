@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 
+import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
+
 /// What the persistent world map is currently scoped to (world_v2 "Map
 /// content, context & filtering"). World shows all content; a selected
 /// course scopes the map to that course's content. Set by the shell from
@@ -28,12 +30,22 @@ class CourseMapContext extends MapContext {
   final String? spaceId;
 
   /// The Mission picked in the URL (`?mission=`), or null for the course's
-  /// current Mission. The map shows only that Mission's activities, save for
-  /// the learner's own sessions and, when the Mission has no live session,
-  /// coursemates' live sessions elsewhere in the course (#9420 prototype).
+  /// current Mission. The map shows only that Mission's activities.
   final String? missionId;
 
   const CourseMapContext(this.coursePlanId, {this.spaceId, this.missionId});
+
+  /// The Mission the map shows, given this course's resolved [progress]:
+  /// [missionId] when it is one of the course's Missions, else the course's
+  /// current (anchor) Mission — so a stale or filtered-out `?mission=` lands
+  /// on the same Mission the course page's circles fall back to. Null before
+  /// the course's progression resolves.
+  String? selectedMissionIn(QuestProgress? progress) {
+    if (progress == null) return null;
+    final picked = missionId;
+    if (picked != null && progress.rollup.containsKey(picked)) return picked;
+    return progress.anchorMissionId;
+  }
 
   @override
   bool operator ==(Object other) =>

@@ -275,7 +275,7 @@ void main() {
           tester,
           width,
           isUpNext: true,
-          progress: const MissionProgress(stars: 0, threshold: 4),
+          progress: const MissionProgress(xp: 0, threshold: 4),
           pacing: MissionPacing(dueAt: dueAt, timeZone: 'America/New_York'),
         );
         final due = find.textContaining(dueLabel);

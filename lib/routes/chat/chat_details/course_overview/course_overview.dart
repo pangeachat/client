@@ -22,8 +22,8 @@ import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_complete_card.dart';
+import 'package:fluffychat/routes/courses/course_objectives/course_objective_circles.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
-import 'package:fluffychat/routes/courses/course_objectives/objective_progress_circles.dart';
 import 'package:fluffychat/widgets/expandable_text.dart';
 
 /// The single scrollable course page (#8357, replacing the tab row): Course
@@ -61,22 +61,15 @@ class CourseOverview extends StatefulWidget {
 
 class _CourseOverviewState extends State<CourseOverview> {
   /// The Mission the Learning Objective section shows, picked from the
-  /// circles; null shows the resolver's current Mission. Ava and Tig read the
-  /// circles as a switcher — individually highlighted numbers that should
-  /// show that Mission, not open the whole plan. It rides the URL
+  /// circles; null shows the resolver's current Mission. It rides the URL
   /// (`?mission=`) so the collapsed header and the course map show the same
-  /// Mission (#9420 prototype).
+  /// Mission.
   String? get _selectedMissionId =>
       selectedMissionIdFor(GoRouterState.of(context).uri);
 
-  void _selectMission(int index) {
-    final groups = widget.controller.objectivesProvider.filteredObjectiveGroups;
-    if (index < 1 || index > groups.length) return;
+  void _selectMission(String missionId) {
     context.go(
-      WorkspaceNav.selectMission(
-        GoRouterState.of(context).uri,
-        groups[index - 1].objective.id,
-      ),
+      WorkspaceNav.selectMission(GoRouterState.of(context).uri, missionId),
     );
   }
 
@@ -238,10 +231,10 @@ class _CourseOverviewState extends State<CourseOverview> {
                           // (#9437): the Mission circles, then the Mission
                           // card and the activities that satisfy it. No
                           // section header and no way into the full plan from
-                          // here (#9420 prototype).
+                          // here (#9420).
                           CourseObjectiveCircles(
                             objectivesProvider: provider,
-                            onTap: _selectMission,
+                            onSelectMission: _selectMission,
                             selectedMissionId: _selectedMissionId,
                           ),
                           const SizedBox(height: 4.0),

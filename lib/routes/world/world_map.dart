@@ -23,6 +23,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/tutorials/tutorial_constants.dart';
@@ -319,6 +320,9 @@ class WorldMapController extends State<WorldMap>
     // sessions are open to join (#8895).
     ActivityPlanRepo.instance.addListener(_onPlanHydrate);
     DiscoveredSessionsCache.instance.addListener(_onDiscoveredPreviewsChanged);
+    // Practice outside a session moves Mission XP with no sync behind it, so
+    // the ranking re-resolves from the shared XP cache directly.
+    MissionXpCache.instance.addListener(_recomputeProgress);
 
     final user = MatrixState.pangeaController.userController;
 
@@ -478,12 +482,14 @@ class WorldMapController extends State<WorldMap>
     DiscoveredSessionsCache.instance.removeListener(
       _onDiscoveredPreviewsChanged,
     );
+    MissionXpCache.instance.removeListener(_recomputeProgress);
     _routeProvider?.removeListener(_scheduleOrientationCheck);
     _unregisterTutorialLaunchers();
     // Reset the process-global so a pin selected at teardown (e.g. logging out
     // with a pin sheet up) can't strand a stale `true` that would hide the bottom
     // nav at the bare map on the next mount. See `routing.instructions.md`.
     WorldMapPinsManager.set(false);
+    _pinsManager.dispose();
     super.dispose();
   }
 
@@ -578,8 +584,8 @@ class WorldMapController extends State<WorldMap>
     );
     final mission = selectedMissionId;
     if (mission == null) return filtered;
-    // The Mission lock (#9420 prototype): a joined course's map shows only
-    // the Mission on show — the one picked in the circles, else the current
+    // The Mission scope: a joined course's map shows only the Mission on
+    // show — the one picked in the circles, else the current
     // one. Nothing from another Mission, live sessions and the learner's own
     // included; a coursemate's ping elsewhere shows as a bell on that
     // Mission's circle instead.
@@ -598,15 +604,18 @@ class WorldMapController extends State<WorldMap>
         mapContext is CoursePreviewMapContext) {
       return null;
     }
-    final spaceId = mapContext.spaceId;
-    if (spaceId == null) return null;
-    return mapContext.missionId ??
-        _pinsManager.progression.forCourse(spaceId)?.anchorMissionId;
+    return mapContext.selectedMissionIn(
+      _pinsManager.progression.forCourse(mapContext.spaceId),
+    );
   }
+
+  /// The activities the learner has a saved session of — where the map draws
+  /// its completed stamps.
+  Set<String> get savedActivityIds => _pinsManager.savedActivityIds;
 
   /// The words the learner used most across their saved sessions of
   /// [activityId], up to [limit] — what a completed stamp on the map webs out
-  /// (#9420 prototype). Read from the summaries saved with the sessions.
+  /// under [kStampWordWeb]. Read from the summaries saved with the sessions.
   List<String> stampWordsFor(String activityId, {int limit = 5}) {
     final client = _client;
     final userId = client?.userID;

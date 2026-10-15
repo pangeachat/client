@@ -119,12 +119,25 @@ class QuestObjectiveGroup {
     this.pacing,
   });
 
-  /// The Mission's word list: every suggested word across its activities,
-  /// lowercased — what practice outside a session credits it by.
-  Set<String> get lemmas => {
-    for (final activity in activities)
-      for (final word in activity.plan.vocab) word.lemma.toLowerCase(),
-  };
+  /// The Mission's target vocabulary: every suggested word across its
+  /// activities, once per lemma ([lemmaKey]). What its Practice drills.
+  List<Vocab> get vocab {
+    final byLemma = <String, Vocab>{};
+    for (final activity in activities) {
+      for (final word in activity.plan.vocab) {
+        byLemma.putIfAbsent(lemmaKey(word.lemma), () => word);
+      }
+    }
+    return byLemma.values.toList();
+  }
+
+  /// The Mission's word list as [lemmaKey]s — what practice outside a
+  /// session credits it by.
+  Set<String> get lemmas => {for (final word in vocab) lemmaKey(word.lemma)};
+
+  /// The one normal form a lemma is matched in across plans, practice and
+  /// the learner's uses.
+  static String lemmaKey(String lemma) => lemma.toLowerCase();
 }
 
 /// A fully-resolved quest for the outline UI: the quest plus its objective

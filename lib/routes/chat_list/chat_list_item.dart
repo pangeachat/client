@@ -14,12 +14,13 @@ import 'package:fluffychat/pangea/common/widgets/course_image_builder.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_chip.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_item_subtitle.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
+import 'package:fluffychat/routes/world/saved_activities_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/room_status_extension.dart';
+import 'package:fluffychat/widgets/completed_stamp.dart';
 import '../../config/themes.dart';
 import '../../utils/date_time_extension.dart';
 import '../../widgets/avatar.dart';
@@ -156,25 +157,24 @@ class ChatListItem extends StatelessWidget {
             // tile — a semantic sibling of the row button — while an
             // invisible same-size copy holds its layout slot.
             // An activity session's row wears the activity's photo the way
-            // its card and map pin do (#9420 prototype): a rounded square in
-            // the session's state frame, with the played stamp on its corner
-            // when the learner is replaying an activity they've finished.
-            final isActivity =
-                room.isActivitySession && !room.isActivityFinished;
+            // its card and map pin do: a rounded square in the session's
+            // state frame, with the completed stamp on its corner when the
+            // learner is replaying an activity they've saved. Finished
+            // sessions never reach a list (isHiddenRoom), so every activity
+            // row here is a live one. A listed room is never saved itself,
+            // so a saved session of its activity is another room's.
+            final isActivity = room.isActivitySession;
             final activityFrame = !isActivity
                 ? null
                 : (room.isActivityStarted
                           ? ActivityPinState.ongoingActive
                           : ActivityPinState.ongoingPending)
                       .bodyColor(context);
+            final activityId = room.activityId;
             final replaying =
                 isActivity &&
-                room.client.rooms.any(
-                  (r) =>
-                      r.id != room.id &&
-                      r.activityId == room.activityId &&
-                      r.hasArchivedActivity,
-                );
+                activityId != null &&
+                room.client.hasSavedSessionOf(activityId);
             final leadingAvatar = ExcludeSemantics(
               child: SizedBox(
                 width: Avatar.defaultSize,

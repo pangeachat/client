@@ -4781,17 +4781,6 @@
     "disableLanguageToolsTitle": "Disable language tools",
     "disableLanguageToolsDesc": "Would you like to disable automatic language assistance?",
     "screenSizeWarning": "For the best experience using this application, please expand your screen size.",
-    "starsToUnlockObjectiveTitle": "Stars per Mission",
-    "starsToUnlockObjectiveDesc": "Set the number of stars needed to complete each mission",
-    "maxStarsPerMissionWarning": "This course has missions where only {maxValue} stars can be earned. Please enter a number less than or equal to {maxValue}.",
-    "@maxStarsPerMissionWarning": {
-        "type": "integer",
-        "placeholders": {
-            "maxValue": {
-                "type": "int"
-            }
-        }
-    },
     "activitySettingsOverrideWarning": "Language and language level determined by activity plan",
     "voice": "Voice",
     "youLeftTheChat": "🚪 You left the chat",
@@ -5698,9 +5687,6 @@
             }
         }
     },
-    "tutorialCoursePlanProgress": "Doing activities and practicing fills this objective. Fill it up to earn a star!",
-    "tutorialCoursePlanPickActivity": "These are this objective's activities. Tap one to open and start it!",
-    "tutorialCoursePlanNoActivities": "Tap any activity in your plan to open and start it!",
     "tutorialAppTourOffer": "Great job finishing your first activity! Would you like me to show you around the app?",
     "tutorialAppTourAccept": "Give me a tour",
     "tutorialAppTourDecline": "Skip",
@@ -6038,5 +6024,15 @@
     "classLocation": "Class location",
     "@classLocation": {
         "description": "Above the Mission circle the teacher's due dates say the class is on now."
+    },
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "@xpThresholdSuffix": {
+        "description": "Under the XP count in the middle of a Mission's ring: the XP that completes it.",
+        "placeholders": {
+            "threshold": {
+                "type": "int",
+                "format": "decimalPattern"
+            }
+        }
     }
 }

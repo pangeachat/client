@@ -1,32 +1,17 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/goal_diamond.dart';
 
-/// An activity's goal row: one diamond per goal, filled as the learner earns
-/// it. Checkmarks, not stars (#9420) — a star marks a Learning Objective, and
-/// an activity's goals are the checkmarks that pay XP into it
-/// (quests.instructions.md, "Stars and checkmarks"). The class keeps its name
-/// so its many hosts need no change.
+/// An activity's goal row: one [GoalDiamond] per goal, filled as the learner
+/// earns it. Checkmarks, not stars — a star marks a Learning Objective, and an
+/// activity's goals are the checkmarks that pay XP into it
+/// (quests.instructions.md, "Stars and checkmarks").
 class ActivityStarRow extends StatelessWidget {
   final int total;
   final int earned;
   final double iconSize;
   final bool condensed;
-
-  /// Colour for the empty (unearned) star borders and the condensed count text.
-  /// Defaults to the theme's `onSurfaceVariant`; pass the fill's ink when the
-  /// row sits on a coloured (Ongoing/Open) card so the borders read against
-  /// the fill.
-  final Color? emptyColor;
-
-  /// Colour for the earned stars. Defaults to the gold mark, which is tuned
-  /// for the theme's surfaces; on a saturated state fill (an ongoing or
-  /// joinable activity card) pass the fill's ink instead — the gold reads
-  /// muddy on a vivid purple or green, so there an earned star is a solid
-  /// star in the ink and an unearned one an outline in the same ink.
-  final Color? earnedColor;
 
   const ActivityStarRow({
     super.key,
@@ -34,20 +19,12 @@ class ActivityStarRow extends StatelessWidget {
     required this.earned,
     this.iconSize = 16,
     this.condensed = false,
-    this.emptyColor,
-    this.earnedColor,
   });
 
   @override
   Widget build(BuildContext context) {
     if (total == 0) return const SizedBox.shrink();
     final filled = earned.clamp(0, total);
-    // Both marks are theme-aware: the gold is unreadable on a light surface
-    // and the old fixed grey was unreadable on a dark one, so each state used
-    // to fail 1.4.11 in the theme the other passed (#8760).
-    final goldColor = earnedColor ?? Theme.of(context).pangea.goldGraphic;
-    final unearnedColor =
-        emptyColor ?? Theme.of(context).colorScheme.onSurfaceVariant;
     if (condensed) {
       return Row(
         mainAxisSize: MainAxisSize.min,
@@ -55,14 +32,12 @@ class ActivityStarRow extends StatelessWidget {
         children: [
           Text(
             "$filled/$total",
-            style: TextStyle(fontSize: iconSize, color: unearnedColor),
+            style: TextStyle(
+              fontSize: iconSize,
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
+            ),
           ),
-          GoalDiamond(
-            earned: true,
-            size: iconSize,
-            color: goldColor,
-            fillColor: earnedColor,
-          ),
+          GoalDiamond(earned: true, size: iconSize),
         ],
       );
     }
@@ -87,13 +62,7 @@ class ActivityStarRow extends StatelessWidget {
           spacing: 2.0,
           children: List.generate(
             total,
-            (i) => GoalDiamond(
-              earned: i < filled,
-              size: iconSize,
-              color: goldColor,
-              fillColor: earnedColor,
-              emptyColor: unearnedColor,
-            ),
+            (i) => GoalDiamond(earned: i < filled, size: iconSize),
           ),
         ),
       ),

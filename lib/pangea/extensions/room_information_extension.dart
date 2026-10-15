@@ -13,8 +13,8 @@ extension RoomInformationRoomExtension on Room {
 
   /// Kept out of every chat list: analytics rooms, review-only rooms, and
   /// activity sessions that are over — saved by the learner, or finished for
-  /// everyone (#9420 prototype: a finished activity lives on the Learning
-  /// Objectives page and the map, not in Chats).
+  /// everyone. A finished activity lives on the Learning Objectives page and
+  /// the map, not in Chats.
   bool get isHiddenRoom =>
       isAnalyticsRoom ||
       hasArchivedActivity ||

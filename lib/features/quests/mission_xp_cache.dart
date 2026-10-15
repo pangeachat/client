@@ -6,6 +6,7 @@ import 'package:async/async.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -15,7 +16,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// construct use that names a room credits that room; a room-less use
 /// (practice from the analytics page or a Mission's Practice) is kept by
 /// word, and counts toward every Mission whose word list holds it — whether
-/// or not the learner ever wrote it in a session (#9420 prototype).
+/// or not the learner ever wrote it in a session (#9420).
 ///
 /// One process-wide instance, refreshed from the local analytics database on
 /// construct updates and language changes, rate-limited like the sync-tick
@@ -123,7 +124,7 @@ class MissionXpCache extends ChangeNotifier {
       if (use.xp == 0) continue;
       final roomId = use.metadata.roomId;
       if (roomId == null) {
-        final lemma = use.lemma.toLowerCase();
+        final lemma = QuestObjectiveGroup.lemmaKey(use.lemma);
         byLemma[lemma] = (byLemma[lemma] ?? 0) + use.xp;
         continue;
       }
@@ -140,8 +141,7 @@ class MissionXpCache extends ChangeNotifier {
   ) {
     final credited = Map<String, int>.of(chat);
     practice.forEach((room, xp) => credited[room] = (credited[room] ?? 0) + xp);
-    if (mapEquals(credited, _creditedXpByRoom) &&
-        mapEquals(chat, _chatXpByRoom) &&
+    if (mapEquals(chat, _chatXpByRoom) &&
         mapEquals(practice, _practiceXpByRoom) &&
         mapEquals(byLemma, _practiceXpByLemma)) {
       return;

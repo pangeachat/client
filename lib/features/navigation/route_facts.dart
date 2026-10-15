@@ -107,7 +107,7 @@ bool coursesHubIsOpen(Uri uri) =>
 /// workspace's `?mission=<missionId>` beside `?c=` — else null, meaning the
 /// course's current Mission (the resolver's anchor). One value read by the
 /// course card's circles, the collapsed course header and the course-scoped
-/// map, so the three always agree (#9420 prototype).
+/// map, so the three always agree (#9420).
 String? selectedMissionIdFor(Uri uri) {
   final value = uri.queryParameters['mission'];
   return value == null || value.isEmpty ? null : value;

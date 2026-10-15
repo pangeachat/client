@@ -44,6 +44,7 @@ The whole grammar in one place. The path is always `/`; state rides in the query
   card, in the same slot. This is the one panel the token list does not spell
   out, and it is why collapsing the card moves nothing else in the column
   ([#9037](https://github.com/pangeachat/client/issues/9037)).
+- **`?mission=<missionId>`** — the **Mission on show** in the course context: the Mission circle the learner picked, read by the course page, the collapsed course bar and the course map alike, so all three show the same Mission ([quests.instructions.md](quests.instructions.md), "Progress display on the course page"). Absent means the course's current Mission; switching to another course drops it.
 - **`?left=` and `?right=`** — comma-separated ordered lists of **panel tokens**,
   one token per open panel, ordered from bottom to top.
 - A token is **`type:param`**. The type names the surface (`chats`, `room`,
@@ -807,7 +808,8 @@ behaves the same on mobile and desktop.
 | Chat members / settings (a regular chat) | the chat header's More menu | the chat panel | push (members/search live *within* the chat, not beside it) |
 | Analytics (vocab / grammar / sessions) | a top-right cluster tracker (the **Stars** tracker opens the Learning Objectives panel) | right | open panel (master) |
 | Level | the **level medal** on the powerups pill | right | open panel (an analytics tab) |
-| A construct detail | tapping a vocab/grammar item | right | open panel (detail) beside its summary; **one detail at a time, across both columns** — a vocab detail, a grammar detail, and a completed-activity `session` review share ONE slot (a live `room` chat is independent and stays open); folds under pressure |
+| A construct detail | tapping a vocab/grammar item | right | open panel (detail) beside its summary; **one detail at a time, across both columns** — a vocab detail, a grammar detail, a Learning Objective's `objective` page and a completed-activity `session` review share ONE slot (a live `room` chat is independent and stays open); folds under pressure |
+| A Learning Objective's page | a tile on the Learning Objectives page | right | an `objective:<missionId>` detail beside the list, in the same one-detail slot as a construct detail ([activities.instructions.md](activities.instructions.md), "A Learning Objective's page") |
 | Practice session | the **Practice** button on the vocab/grammar analytics panel; the live-session badge on that section's cluster tracker (resume) | right | a panel over a persistent background session — see [Practice](#practice-is-a-persistent-background-session) below |
 | Profile + settings menu | the top-right cluster avatar | right | open panel (master) |
 | A settings page (learning, style, security, …) | a settings-menu row | right | open panel (detail) beside the menu, folding only under width pressure — same fit test as a course management page |

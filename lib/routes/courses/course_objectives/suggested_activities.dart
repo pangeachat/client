@@ -73,7 +73,7 @@ List<SuggestedActivity> rankSuggestedActivities({
   for (final suggestion in byActivity.values) {
     final signals = signalsFor(suggestion.activityId);
     // [includeOngoing]: the learner's own sessions stay in — continuing
-    // what they started comes first (#9420 prototype).
+    // what they started comes first (#9420).
     if (signals.state.isOngoing && !includeOngoing) continue;
     if (signals.isCompleted && !signals.state.isLive) continue;
     final plan = suggestion.activity.plan;

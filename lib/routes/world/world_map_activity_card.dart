@@ -2,18 +2,23 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
+import 'package:fluffychat/routes/world/world_map_card_dismiss_button.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
-/// A large map pin drawn as the activity's own card (#9420 prototype, option C,
-/// under [kMapActivityCards]): the course plan's [ActivitySuggestionCard] with
-/// a squashed photo, its live state as the frame and corner tab, on a tail
-/// that points at the activity's location. When the learner has played it,
-/// the tail stops short of the point so the card stands on the played stamp
-/// — which the map draws on its own layer at the point, so dismissing the
-/// card leaves the stamp where it was.
+/// A large map pin drawn as the activity's own card (under
+/// [kMapActivityCards]): the course plan's [ActivitySuggestionCard] with a
+/// squashed photo, its live state as the frame and corner tab, on a tail that
+/// points at the activity's location. When the learner has a saved session of
+/// it, the tail stops short of the point so the card stands on the completed
+/// stamp — which the map draws on its own layer at the point, so dismissing
+/// the card leaves the stamp where it was.
+///
+/// Pointer-only, like the classic large card: the map is excluded from
+/// semantics, and its pins are reached by keyboard and screen reader through
+/// the pin semantics layer's single roving stop, so the card claims no focus
+/// of its own.
 class WorldMapActivityCard extends StatelessWidget {
   final QuestActivityCard card;
   final ActivityPinState state;
@@ -40,16 +45,6 @@ class WorldMapActivityCard extends StatelessWidget {
     super.key,
   });
 
-  /// The marker box this card needs: the card, its tail, the stamp clearance
-  /// when it stands on one, and room above for the focus ring.
-  static Size boxFor({required bool standsOnStamp}) => Size(
-    PinSize.mapCardWidth + 8.0,
-    PinSize.mapCardHeight +
-        PinSize.mapCardTail +
-        (standsOnStamp ? PinSize.mapCardStampClearance : 0) +
-        4.0,
-  );
-
   bool get _live =>
       state == ActivityPinState.joinable ||
       state == ActivityPinState.ongoingPending ||
@@ -58,7 +53,6 @@ class WorldMapActivityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final l10n = L10n.of(context);
     final tailColor = _live
         ? state.bodyColor(context)
         : theme.colorScheme.outlineVariant;
@@ -87,18 +81,18 @@ class WorldMapActivityCard extends StatelessWidget {
         Stack(
           clipBehavior: Clip.none,
           children: [
-            Semantics(
-              button: true,
-              label: '${l10n.activityLabel(title)}, ${state.label(l10n)}',
-              child: Material(
-                color: Colors.transparent,
-                elevation: 3.0,
-                shadowColor: Colors.black54,
-                borderRadius: BorderRadius.circular(12.0),
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(12.0),
-                  onTap: onTap,
-                  child: ExcludeSemantics(child: body),
+            MouseRegion(
+              cursor: SystemMouseCursors.click,
+              // The hover region is exactly the tap region.
+              hitTestBehavior: HitTestBehavior.deferToChild,
+              child: GestureDetector(
+                onTap: onTap,
+                child: Material(
+                  color: Colors.transparent,
+                  elevation: 3.0,
+                  shadowColor: Colors.black54,
+                  borderRadius: BorderRadius.circular(PinSize.mapCardRadius),
+                  child: body,
                 ),
               ),
             ),
@@ -107,7 +101,9 @@ class WorldMapActivityCard extends StatelessWidget {
                 child: IgnorePointer(
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(13.0),
+                      borderRadius: BorderRadius.circular(
+                        PinSize.mapCardFocusRadius,
+                      ),
                       border: Border.all(
                         color: theme.colorScheme.primary,
                         width: 2.0,
@@ -117,30 +113,11 @@ class WorldMapActivityCard extends StatelessWidget {
                   ),
                 ),
               ),
-            if (onClose != null)
+            if (onClose case final onClose?)
               Positioned(
                 top: 4.0,
                 right: 4.0,
-                child: Semantics(
-                  button: true,
-                  label: l10n.close,
-                  child: Material(
-                    color: Colors.black54,
-                    shape: const CircleBorder(),
-                    child: InkWell(
-                      customBorder: const CircleBorder(),
-                      onTap: onClose,
-                      child: const SizedBox.square(
-                        dimension: 22.0,
-                        child: Icon(
-                          Icons.close_rounded,
-                          size: 14.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                child: WorldMapCardDismissButton(onPressed: onClose),
               ),
           ],
         ),
@@ -169,7 +146,7 @@ class _PlainCard extends StatelessWidget {
       height: PinSize.mapCardHeight,
       decoration: BoxDecoration(
         color: theme.colorScheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(PinSize.mapCardRadius),
       ),
       padding: const EdgeInsets.all(8.0),
       alignment: Alignment.bottomLeft,

@@ -23,13 +23,19 @@ class ExitingLargeMarkersLayer {
     return MarkerLayer(
       markers: cards.map((snap) {
         const tier = PinTier.large;
+        final standsOnStamp = snap.starLevel != ActivityStarLevel.none;
+        final box = kMapActivityCards
+            ? PinSize.mapCardBox(standsOnStamp: standsOnStamp)
+            : Size(
+                tier.dotWidth + WorldMapLargeCard.badgeOverhang * 2,
+                tier.dotHeight(snap.state) +
+                    WorldMapLargeCard.tailHeight +
+                    WorldMapLargeCard.badgeOverhang,
+              );
         return Marker(
           point: snap.card.point!,
-          width: tier.dotWidth + WorldMapLargeCard.badgeOverhang * 2,
-          height:
-              tier.dotHeight(snap.state) +
-              WorldMapLargeCard.tailHeight +
-              WorldMapLargeCard.badgeOverhang,
+          width: box.width,
+          height: box.height,
           alignment: Alignment.topCenter,
           // Child key, never Marker.key — see dot_markers_layer.dart
           // (#7947/#8136).
@@ -47,7 +53,7 @@ class ExitingLargeMarkersLayer {
                       starsEarned: snap.starsEarned,
                       participants: snap.participants,
                       openSlots: snap.openSlots,
-                      standsOnStamp: snap.starLevel != ActivityStarLevel.none,
+                      standsOnStamp: standsOnStamp,
                       // No interaction on a card that's on its way out.
                       onTap: () {},
                     )

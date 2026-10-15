@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
+import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 
 /// The colours of a Mission's XP ring, shared by every surface that draws one
 /// (the course page's Mission card, the Learning Objectives list and detail).
@@ -39,6 +40,29 @@ class MissionRingPalette {
       practice: theme.pangea.goldFixed,
     );
   }
+
+  /// A Mission's ring: its chat, goal and practice XP, each as its share of
+  /// [threshold], in that order.
+  List<MissionXpRingSegment> segmentsFor(
+    MissionXpBreakdown breakdown,
+    int threshold,
+  ) => [
+    MissionXpRingSegment(
+      fraction: _share(breakdown.chat, threshold),
+      color: chat,
+    ),
+    MissionXpRingSegment(
+      fraction: _share(breakdown.goals, threshold),
+      color: goals,
+    ),
+    MissionXpRingSegment(
+      fraction: _share(breakdown.practice, threshold),
+      color: practice,
+    ),
+  ];
+
+  static double _share(int xp, int threshold) =>
+      threshold <= 0 ? 0 : xp / threshold;
 }
 
 /// One coloured run of a [MissionXpRing]: its share of the threshold.

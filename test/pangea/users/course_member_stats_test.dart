@@ -10,6 +10,7 @@ import 'package:fluffychat/features/user/public_profile_model.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
+import 'package:fluffychat/widgets/goal_diamond.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/users/course_member_stats.dart';
 import '../../utils/test_client.dart';
@@ -116,14 +117,14 @@ void main() {
   testWidgets('shows the goal count for the course language', (tester) async {
     await pumpStats(tester, starredId);
     expect(find.text('12'), findsOneWidget);
-    expect(find.byIcon(Icons.check_circle), findsOneWidget);
+    expect(find.byType(GoalDiamond), findsOneWidget);
   });
 
   testWidgets('a member with a level but no goals shows no goal count', (
     tester,
   ) async {
     await pumpStats(tester, levelOnlyId);
-    expect(find.byIcon(Icons.check_circle), findsNothing);
+    expect(find.byType(GoalDiamond), findsNothing);
     expect(
       tester.getSize(find.byType(CourseMemberStats)).height,
       greaterThan(0),
@@ -145,16 +146,16 @@ void main() {
     expect(tester.getSize(find.byType(CourseMemberStats)), Size.zero);
   });
 
-  // The shield path fills its box edge to edge; a Material icon insets its
-  // glyph inside its own (`Icons.check_circle` at 16 paints 12.75 of ink). So a shield
-  // that reads as the mark's equal is drawn a little SMALLER than the mark's
-  // nominal size — and never larger, which is what the old `iconSize + 2`
-  // produced back when the number still had to fit inside it (#8918).
+  // The shield path fills its box edge to edge, while the goal diamond insets
+  // its outline inside its own box. So a shield that reads as the mark's equal
+  // is drawn a little SMALLER than the mark's nominal size — and never larger,
+  // which is what the old `iconSize + 2` produced back when the number still
+  // had to fit inside it (#8918).
   testWidgets(
-    'the level shield is drawn no larger than the checkmark beside it',
+    'the level shield is drawn no larger than the goal diamond beside it',
     (tester) async {
       await pumpStats(tester, starredId);
-      final mark = tester.getSize(find.byIcon(Icons.check_circle));
+      final mark = tester.getSize(find.byType(GoalDiamond));
       final shield = tester.getSize(find.byType(SvgPicture));
       expect(shield.height, lessThan(mark.height));
       expect(shield.height, greaterThan(mark.height * 0.7));

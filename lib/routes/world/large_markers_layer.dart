@@ -41,9 +41,7 @@ class LargeMarkersLayer {
             if (snap == null || card.point == null) return null;
             if (kMapActivityCards) {
               final standsOnStamp = snap.starLevel != ActivityStarLevel.none;
-              final box = WorldMapActivityCard.boxFor(
-                standsOnStamp: standsOnStamp,
-              );
+              final box = PinSize.mapCardBox(standsOnStamp: standsOnStamp);
               return Marker(
                 point: card.point!,
                 width: box.width,

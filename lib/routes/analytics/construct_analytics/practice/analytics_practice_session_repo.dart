@@ -2,7 +2,8 @@ import 'dart:math';
 
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
-import 'package:fluffychat/features/quests/mission_vocab.dart';
+import 'package:fluffychat/features/quests/quests_client_extension.dart';
+import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
@@ -44,19 +45,19 @@ class AnalyticsPracticeSessionRepo {
         .getAggregatedConstructs(ConstructTypeEnum.vocab, userL2.langCodeShort)
         .then((map) => map.values.toList());
 
-    MissionVocab? scope;
+    QuestObjectiveGroup? scope;
     if (missionId != null && type == ConstructTypeEnum.vocab) {
-      scope = await MissionVocab.resolve(
-        MatrixState.pangeaController.matrixState.client,
-        missionId,
-      );
+      scope = await MatrixState.pangeaController.matrixState.client
+          .joinedMissionGroup(missionId);
       // silent-ok: a Mission no joined course carries (a stale link, a course
       // since left) falls back to the learner's usual session rather than an
       // empty panel; nothing is lost but the scope.
       if (scope != null) {
         final lemmas = scope.lemmas;
         vocabConstructs = vocabConstructs
-            .where((c) => lemmas.contains(c.lemma.toLowerCase()))
+            .where(
+              (c) => lemmas.contains(QuestObjectiveGroup.lemmaKey(c.lemma)),
+            )
             .toList();
       }
     }
@@ -88,7 +89,7 @@ class AnalyticsPracticeSessionRepo {
         // generator's distractors are per lemma, not per set phrase.
         final covered = {
           for (final target in targets)
-            target.target.tokens.first.lemma.text.toLowerCase(),
+            QuestObjectiveGroup.lemmaKey(target.target.tokens.first.lemma.text),
         };
         final words = [
           for (final word in scope.vocab)
@@ -96,7 +97,7 @@ class AnalyticsPracticeSessionRepo {
         ];
         for (final word in words) {
           if (targets.length >= totalNeeded) break;
-          final lemma = word.lemma.toLowerCase();
+          final lemma = QuestObjectiveGroup.lemmaKey(word.lemma);
           if (covered.contains(lemma)) continue;
           covered.add(lemma);
           targets.add(

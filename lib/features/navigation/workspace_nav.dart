@@ -335,7 +335,13 @@ abstract class WorkspaceNav {
       ),
     ];
     final parts = WorkspaceQuery.parts(current.query);
-    WorkspaceQuery.removeKeys(parts, {'c', 'left'});
+    WorkspaceQuery.removeKeys(parts, {
+      'c',
+      'left',
+      // The picked Mission belongs to the course it was picked in; another
+      // course opens on its own current Mission.
+      if (current.queryParameters['c'] != shortRoomId(spaceId)) 'mission',
+    });
     final query = <String>[
       'c=${Uri.encodeComponent(shortRoomId(spaceId))}',
       'left=${left.map((t) => t.encode()).join(',')}',

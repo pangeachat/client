@@ -1,30 +1,18 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
+import 'package:fluffychat/widgets/completed_stamp.dart';
 
-/// The completed-activity **trail marker**: a gold [Icons.star] (one role done)
-/// or a slightly larger [Icons.hotel_class] **super** star (all roles) centred
-/// in a base-colour circle, so it reads as a callout on the map rather than a
-/// bare glyph (world-map.instructions.md, "Pin state" / "Goal Progress").
-/// Shared by the pin ([WorldMapDot]) and the large card ([WorldMapLargeCard]) so
-/// a completed activity's star looks identical wherever it shows.
+/// The completed-activity **trail marker** on a pin: the [CompletedStamp] at
+/// [PinSize.starDotDiameter], so a saved activity reads the same on its card
+/// and its pin (world-map.instructions.md, "Pin state" / "Goal Progress").
+/// Shared by the pin ([WorldMapDot]) and the large card ([WorldMapLargeCard]).
 class WorldMapStarDot extends StatelessWidget {
-  final bool superStar;
+  const WorldMapStarDot({super.key});
 
-  const WorldMapStarDot({required this.superStar, super.key});
-
-  /// The circle diameter for a [superStar] / regular star — also what the
-  /// marker-box math and focus ring size to (the super star is the larger).
-  static double diameterFor(bool superStar) =>
-      superStar ? PinSize.superStarDotDiameter : PinSize.starDotDiameter;
-
-  // The completed stamp — a double ring with a check, the same mark the
-  // activity cards wear — so a played activity reads the same on its card and
-  // its pin (#9420 prototype). The super star (every role done) only sizes up.
   @override
   Widget build(BuildContext context) =>
-      CompletedStamp(size: diameterFor(superStar));
+      const CompletedStamp(size: PinSize.starDotDiameter);
 }
 
 /// Places a completion [WorldMapStarDot] BEHIND [child], peeking out from
@@ -37,17 +25,12 @@ class WorldMapStarDot extends StatelessWidget {
 /// when a joinable/ongoing pin is stacked over it).
 class CompletionStarBelowTip extends StatelessWidget {
   final Widget child;
-  final bool superStar;
 
-  const CompletionStarBelowTip({
-    required this.child,
-    required this.superStar,
-    super.key,
-  });
+  const CompletionStarBelowTip({required this.child, super.key});
 
   @override
   Widget build(BuildContext context) {
-    final radius = WorldMapStarDot.diameterFor(superStar) / 2;
+    const radius = PinSize.starDotDiameter / 2;
     return Stack(
       clipBehavior: Clip.none,
       // Bottom-centre aligns the star's base to the tip; nudging it down a touch
@@ -57,8 +40,8 @@ class CompletionStarBelowTip extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       children: [
         Transform.translate(
-          offset: Offset(0, radius + 3),
-          child: IgnorePointer(child: WorldMapStarDot(superStar: superStar)),
+          offset: const Offset(0, radius + 3),
+          child: const IgnorePointer(child: WorldMapStarDot()),
         ),
         child,
       ],

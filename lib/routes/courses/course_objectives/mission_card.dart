@@ -6,13 +6,14 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
-import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/bold_tonal_button.dart';
-import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
+import 'package:fluffychat/pangea/common/widgets/pulsing_glow.dart';
+import 'package:fluffychat/routes/courses/course_objectives/mission_play_button.dart';
+import 'package:fluffychat/routes/courses/course_objectives/mission_star.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_xp_ring.dart';
 
-/// The course page's Mission card (#9420 prototype): which Mission, its
+/// The course page's Mission card (#9420): which Mission, its
 /// can-do statement, a gold ring of the XP earned toward its star split by
 /// where it came from (chats, goals, practice), then Play — the best next
 /// thing to do for this Mission — and practice on its words.
@@ -39,9 +40,6 @@ class MissionCard extends StatelessWidget {
   final String? playDetail;
   final VoidCallback onPractice;
 
-  /// The course tutorial's "your progress" step lights the ring.
-  final String? tutorialTargetId;
-
   /// The Mission's activity row, under an "Activities" label at the foot of
   /// the card; null draws neither.
   final Widget? activities;
@@ -55,7 +53,6 @@ class MissionCard extends StatelessWidget {
     required this.onPractice,
     this.playLabel,
     this.playDetail,
-    this.tutorialTargetId,
     this.activities,
     super.key,
   });
@@ -78,14 +75,10 @@ class MissionCard extends StatelessWidget {
     final satisfied = progress?.satisfied ?? false;
     final threshold = progress?.threshold ?? 0;
     final breakdown = this.breakdown ?? MissionXpBreakdown.zero;
-    final wordCount = {
-      for (final activity in group.activities)
-        for (final word in activity.plan.vocab) word.lemma.toLowerCase(),
-    }.length;
+    final wordCount = group.lemmas.length;
 
     // The course panel's own surface, so the card reads as part of the page;
-    // only its brand-purple edge and the hard lip below it set it apart
-    // (#9420 prototype, option K).
+    // only its brand-purple edge and the hard lip below it set it apart.
     final cardFill = scheme.surface;
 
     final palette = MissionRingPalette.of(context);
@@ -93,7 +86,6 @@ class MissionCard extends StatelessWidget {
     final chatGold = palette.chat;
     final goalGold = palette.goals;
     final practiceGold = palette.practice;
-    double share(int xp) => threshold <= 0 ? 0 : xp / threshold;
 
     final ring = Semantics(
       label: progress == null
@@ -105,20 +97,7 @@ class MissionCard extends StatelessWidget {
           strokeWidth: _ringStroke,
           trackColor: ringTrack,
           gapColor: cardFill,
-          segments: [
-            MissionXpRingSegment(
-              fraction: share(breakdown.chat),
-              color: chatGold,
-            ),
-            MissionXpRingSegment(
-              fraction: share(breakdown.goals),
-              color: goalGold,
-            ),
-            MissionXpRingSegment(
-              fraction: share(breakdown.practice),
-              color: practiceGold,
-            ),
-          ],
+          segments: palette.segmentsFor(breakdown, threshold),
           child: progress == null
               ? null
               : Column(
@@ -132,7 +111,7 @@ class MissionCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '/ ${numbers.format(progress.threshold)} XP',
+                      l10n.xpThresholdSuffix(progress.threshold),
                       style: theme.textTheme.labelSmall?.copyWith(
                         color: scheme.onSurfaceVariant,
                         fontWeight: FontWeight.w700,
@@ -163,33 +142,32 @@ class MissionCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           spacing: 10.0,
           children: [
-            Row(
-              children: [
-                if (index != null)
-                  DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: scheme.primary,
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(999.0),
-                      ),
+            if (index != null)
+              Align(
+                alignment: AlignmentDirectional.centerStart,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: scheme.primary,
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(999.0),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10.0,
-                        vertical: 3.0,
-                      ),
-                      child: Text(
-                        l10n.missionNumber(index).toUpperCase(),
-                        style: theme.textTheme.labelSmall?.copyWith(
-                          color: scheme.onPrimary,
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: 0.8,
-                        ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10.0,
+                      vertical: 3.0,
+                    ),
+                    child: Text(
+                      l10n.missionNumber(index).toUpperCase(),
+                      style: theme.textTheme.labelSmall?.copyWith(
+                        color: scheme.onPrimary,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 0.8,
                       ),
                     ),
                   ),
-              ],
-            ),
+                ),
+              ),
             // The star leads the statement: it is this Mission's star — the
             // one the analytics bar counts — there from the start and filled
             // once the Mission is complete (quests.instructions.md, "Stars
@@ -198,33 +176,7 @@ class MissionCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 8.0,
               children: [
-                // Dark outline while the Mission is open; bright gold inside
-                // that outline once it's earned, the outline carrying the
-                // contrast on the light card.
-                Semantics(
-                  label: satisfied ? l10n.missionStarEarned : null,
-                  child: ExcludeSemantics(
-                    child: SizedBox.square(
-                      dimension: 28.0,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          if (satisfied)
-                            Icon(
-                              Icons.star_rounded,
-                              size: 25.0,
-                              color: pangea.goldFixedDim,
-                            ),
-                          Icon(
-                            Icons.star_outline_rounded,
-                            size: 28.0,
-                            color: scheme.onSurface,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                MissionStar(satisfied: satisfied, size: 28.0),
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 4.0),
@@ -241,78 +193,75 @@ class MissionCard extends StatelessWidget {
                 ),
               ],
             ),
-            TutorialTarget(
-              targetId: tutorialTargetId,
-              child: Row(
-                children: [
-                  ring,
-                  const SizedBox(width: 16.0),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      spacing: 8.0,
-                      children: [
-                        if (progress != null)
-                          Row(
-                            spacing: 6.0,
-                            children: [
-                              Icon(
-                                Icons.auto_awesome,
-                                size: 16.0,
-                                // Decorative: the text beside it says it.
-                                color: pangea.goldFixedDim,
-                              ),
-                              Flexible(
-                                child: Text(
-                                  satisfied
-                                      ? l10n.missionStarEarned
-                                      : l10n.xpToYourStar(
-                                          numbers.format(
-                                            progress.threshold - progress.xp,
-                                          ),
-                                        ),
-                                  style: theme.textTheme.labelLarge?.copyWith(
-                                    fontWeight: FontWeight.w800,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        Wrap(
-                          spacing: 10.0,
-                          runSpacing: 4.0,
+            Row(
+              children: [
+                ring,
+                const SizedBox(width: 16.0),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 8.0,
+                    children: [
+                      if (progress != null)
+                        Row(
+                          spacing: 6.0,
                           children: [
-                            _XpSourceLegend(
-                              color: chatGold,
-                              label: l10n.xpFromChats(
-                                numbers.format(breakdown.chat),
-                              ),
+                            Icon(
+                              Icons.auto_awesome,
+                              size: 16.0,
+                              // Decorative: the text beside it says it.
+                              color: pangea.goldFixedDim,
                             ),
-                            _XpSourceLegend(
-                              color: goalGold,
-                              label: l10n.xpFromGoals(
-                                numbers.format(breakdown.goals),
-                              ),
-                            ),
-                            _XpSourceLegend(
-                              color: practiceGold,
-                              label: l10n.xpFromPractice(
-                                numbers.format(breakdown.practice),
+                            Flexible(
+                              child: Text(
+                                satisfied
+                                    ? l10n.missionStarEarned
+                                    : l10n.xpToYourStar(
+                                        numbers.format(
+                                          progress.threshold - progress.xp,
+                                        ),
+                                      ),
+                                style: theme.textTheme.labelLarge?.copyWith(
+                                  fontWeight: FontWeight.w800,
+                                ),
                               ),
                             ),
                           ],
                         ),
-                      ],
-                    ),
+                      Wrap(
+                        spacing: 10.0,
+                        runSpacing: 4.0,
+                        children: [
+                          _XpSourceLegend(
+                            color: chatGold,
+                            label: l10n.xpFromChats(
+                              numbers.format(breakdown.chat),
+                            ),
+                          ),
+                          _XpSourceLegend(
+                            color: goalGold,
+                            label: l10n.xpFromGoals(
+                              numbers.format(breakdown.goals),
+                            ),
+                          ),
+                          _XpSourceLegend(
+                            color: practiceGold,
+                            label: l10n.xpFromPractice(
+                              numbers.format(breakdown.practice),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            _PulsingGlow(
+            PulsingGlow(
               enabled: onPlay != null && !satisfied,
               color: scheme.primary,
               borderRadius: const BorderRadius.all(Radius.circular(18.0)),
-              child: _PlayButton(
+              child: MissionPlayButton(
                 onPressed: onPlay,
                 label: playLabel,
                 detail: playDetail,
@@ -378,82 +327,6 @@ class _XpSourceLegend extends StatelessWidget {
   }
 }
 
-class _PlayButton extends StatelessWidget {
-  final VoidCallback? onPressed;
-  final String? label;
-  final String? detail;
-
-  const _PlayButton({required this.onPressed, this.label, this.detail});
-
-  static const BorderRadius _radius = BorderRadius.all(Radius.circular(18.0));
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final scheme = theme.colorScheme;
-    final enabled = onPressed != null;
-    final fill = enabled ? scheme.primary : scheme.surfaceContainerHighest;
-    final ink = enabled ? scheme.onPrimary : scheme.onSurfaceVariant;
-    final label = this.label ?? L10n.of(context).playMission;
-    final detail = this.detail;
-    return Semantics(
-      button: true,
-      enabled: enabled,
-      label: detail == null ? label : '$label: $detail',
-
-      child: ExcludeSemantics(
-        child: PressableButton(
-          borderRadius: _radius,
-          color: fill,
-          buttonHeight: 5.0,
-          onPressed: onPressed,
-          builder: (context, depressed, shadowColor) => Container(
-            constraints: const BoxConstraints(minHeight: 48.0),
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16.0,
-              vertical: 6.0,
-            ),
-            decoration: BoxDecoration(
-              color: depressed ? shadowColor : fill,
-              borderRadius: _radius,
-            ),
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  spacing: 8.0,
-                  children: [
-                    Icon(Icons.play_arrow_rounded, size: 26.0, color: ink),
-                    Text(
-                      label,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        color: ink,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                  ],
-                ),
-                if (detail != null)
-                  Text(
-                    detail,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: theme.textTheme.labelMedium?.copyWith(
-                      color: ink,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 /// The word count beside Practice.
 class _CountChip extends StatelessWidget {
   final String text;
@@ -481,83 +354,4 @@ class _CountChip extends StatelessWidget {
       ),
     );
   }
-}
-
-/// A soft glow that breathes out from behind [child] to draw the eye to the
-/// one thing to press. Still when [enabled] is false or the platform asks for
-/// reduced motion.
-class _PulsingGlow extends StatefulWidget {
-  final bool enabled;
-  final Color color;
-  final BorderRadius borderRadius;
-  final Widget child;
-
-  const _PulsingGlow({
-    required this.enabled,
-    required this.color,
-    required this.borderRadius,
-    required this.child,
-  });
-
-  @override
-  State<_PulsingGlow> createState() => _PulsingGlowState();
-}
-
-class _PulsingGlowState extends State<_PulsingGlow>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _controller = AnimationController(
-    vsync: this,
-    duration: const Duration(milliseconds: 1400),
-  );
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _sync();
-  }
-
-  @override
-  void didUpdateWidget(covariant _PulsingGlow oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    _sync();
-  }
-
-  void _sync() {
-    final animate = widget.enabled && !MediaQuery.disableAnimationsOf(context);
-    if (animate && !_controller.isAnimating) {
-      _controller.repeat();
-    } else if (!animate && _controller.isAnimating) {
-      _controller.stop();
-      _controller.value = 0;
-    }
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) => AnimatedBuilder(
-    animation: _controller,
-    child: widget.child,
-    builder: (context, child) {
-      final t = Curves.easeOut.transform(_controller.value);
-      return DecoratedBox(
-        decoration: BoxDecoration(
-          borderRadius: widget.borderRadius,
-          boxShadow: _controller.isAnimating
-              ? [
-                  BoxShadow(
-                    color: widget.color.withValues(alpha: 0.45 * (1 - t)),
-                    spreadRadius: 10.0 * t,
-                  ),
-                ]
-              : null,
-        ),
-        child: child,
-      );
-    },
-  );
 }

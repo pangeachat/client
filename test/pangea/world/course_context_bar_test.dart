@@ -26,7 +26,7 @@ import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_header_actions.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
-import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
+import 'package:fluffychat/routes/courses/course_objectives/objective_progress_circles.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/course_context_bar.dart';
 import 'package:fluffychat/routes/world/left_panel/floor_chevron.dart';
@@ -171,184 +171,9 @@ void main() {
     if (settle) await tester.pumpAndSettle();
   }
 
-  testWidgets('names the selected course and shows its progress', (
-    tester,
-  ) async {
-    await pumpBar(tester);
-
-    expect(find.text(courseName), findsOneWidget);
-    expect(find.byType(CourseProgressBar), findsOneWidget);
-  });
-
-  /// #8938 (reopened) — collapsing the card mounts this bar, and the bar loads
-  /// its outline post-frame (it loads from `build`). The loader learned which
-  /// course it was showing only inside that load, so for its first frames the
-  /// bar read no course at all and drew the empty track, although the card had
-  /// already resolved this course's progress into the shared resolution. The
-  /// first fix was checked against a loader that loads synchronously, which
-  /// the bar never does — so this one goes through the bar itself.
-  testWidgets('its first frame shows the progress the card already resolved', (
-    tester,
-  ) async {
-    final card = QuestObjectivesLoader(client: client);
-    addTearDown(() {
-      card.progression.value = ProgressionResolution.empty;
-      card.dispose();
-    });
-    card.progression.value = const ProgressionResolution(
-      quests: [
-        QuestProgress(
-          courseId: spaceId,
-          questId: 'quest-1',
-          orderedMissionIds: ['lo-1'],
-          anchorMissionId: 'lo-1',
-          indexByMission: {'lo-1': 0},
-          rollup: {'lo-1': MissionProgress(xp: 200, threshold: 300)},
-        ),
-      ],
-    );
-
-    await pumpBar(tester, settle: false);
-    // The L10n delegate resolves asynchronously, so the bar's first frame is
-    // a pump or two in. Stop ON it: settling would let a late rebuild pass.
-    final track = find.byType(ProgressBarRow);
-    for (var i = 0; i < 10 && track.evaluate().isEmpty; i++) {
-      await tester.pump(const Duration(milliseconds: 16));
-    }
-
-    expect(
-      tester.widget<ProgressBarRow>(track).fraction,
-      closeTo(200 / 300, 1e-9),
-      reason: 'the incoming bar must not draw the empty track',
-    );
-  });
-
-  testWidgets('tapping it reopens the course card over the same context', (
-    tester,
-  ) async {
-    await pumpBar(tester);
-
-    await tester.tap(find.text(courseName));
-    await tester.pumpAndSettle();
-
-    final uri = router.routerDelegate.currentConfiguration.uri;
-    expect(
-      parseOpenPanels(uri).left.any((t) => t.type == PanelTypesEnum.course),
-      isTrue,
-      reason: 'the bar is the way back into the course card',
-    );
-    // The context is a scope, not a panel: reopening the card must not disturb
-    // it (routing.instructions.md → The course context).
-    expect(activeSpaceIdFor(uri), spaceId);
-  });
-
-  testWidgets('carries no close control', (tester) async {
-    await pumpBar(tester);
-
-    expect(find.widgetWithIcon(IconButton, Icons.close), findsNothing);
-    expect(find.byType(BackButton), findsNothing);
-  });
-
-  testWidgets('its chevron trails the title, beside the actions (#8866)', (
-    tester,
-  ) async {
-    await pumpBar(tester);
-
-    final chevron = tester.getCenter(find.byType(ChevronToggle));
-    expect(chevron.dx, greaterThan(tester.getCenter(find.text(courseName)).dx));
-    expect(
-      chevron.dx,
-      greaterThan(tester.getCenter(find.byType(CourseHeaderActions)).dx),
-      reason: 'the chevron is the header\'s last control',
-    );
-  });
-
-  testWidgets('title, track and glyphs share the header\'s content inset', (
-    tester,
-  ) async {
-    await pumpBar(tester);
-
-    final bar = tester.getRect(find.byType(CourseContextBar));
-    final title = tester.getRect(find.text(courseName));
-    final track = tester.getRect(find.byType(ProgressBarRow));
-    final glyph = tester.getRect(
-      find.descendant(
-        of: find.byType(ChevronToggle),
-        matching: find.byIcon(Icons.expand_more),
-      ),
-    );
-    expect(title.left, bar.left + PanelHeader.contentInset);
-    expect(track.left, bar.left + PanelHeader.contentInset);
-    // The track ends where the buttons end, not past them.
-    expect(track.right, bar.right - PanelHeader.contentInset);
-    expect(glyph.right, bar.right - PanelHeader.contentInset);
-  });
-
-  testWidgets('stands exactly the height the card\'s reveal starts from', (
-    tester,
-  ) async {
-    await pumpBar(tester);
-
-    expect(
-      tester.getSize(find.byType(CourseContextBar)).height,
-      CourseContextBar.height,
-    );
-  });
-
-  testWidgets('docked above an activity plan it drops the actions', (
-    tester,
-  ) async {
-    await pumpBar(tester, showActions: false);
-
-    expect(find.byType(CourseHeaderActions), findsNothing);
-    expect(find.byType(ChevronToggle), findsOneWidget);
-  });
-
-  testWidgets('the chevron is its one announced control, saying collapsed', (
-    tester,
-  ) async {
-    final semantics = tester.ensureSemantics();
-    await pumpBar(tester);
-
-    // The bar is a named GROUP. It used to be one big button holding its own
-    // share action and star track, and a screen reader walked straight past
-    // the container to those children — leaving the expand affordance
-    // reachable by pointer only.
-    final bar = tester.getSemantics(find.byType(CourseContextBar));
-    expect(bar.flagsCollection.isButton, isFalse);
-    expect(bar.label, contains(courseName));
-
-    // The chevron is the control, carrying the state the open card's chevron
-    // carries expanded, so one control reads the same way in both states.
-    final chevron = tester.getSemantics(
-      find.descendant(
-        of: find.byType(ChevronToggle),
-        matching: find.byType(IconButton),
-      ),
-    );
-    expect(chevron.flagsCollection.isButton, isTrue);
-    expect(chevron.flagsCollection.isExpanded, Tristate.isFalse);
-    expect(chevron.id, isNot(bar.id), reason: 'a stop of its own');
-
-    // The whole-surface tap stays for pointers: it announces nothing and
-    // takes no focus, so it is no invisible dead stop for a keyboard user.
-    final surface = tester.widget<InkWell>(
-      find
-          .descendant(
-            of: find.byType(CourseContextBar),
-            matching: find.byType(InkWell),
-          )
-          .first,
-    );
-    expect(surface.excludeFromSemantics, isTrue);
-    expect(surface.canRequestFocus, isFalse);
-    semantics.dispose();
-  });
-
-  /// Content Studio — a teacher's publish reaches the bar while it is open:
-  /// the course's own copy drops a Mission, and the bar's star total follows
-  /// on the revision change, without a remount.
-  testWidgets('a published copy updates the progress total', (tester) async {
+  /// A two-Mission course (lo-1 → a1, lo-2 → b1, three goals each) whose
+  /// outline the bar's loader reads.
+  Room stubTwoMissionCourse() {
     ActivityPlanModel plan(String id) => ActivityPlanModel(
       req: ActivityPlanRequest(
         topic: '',
@@ -418,17 +243,159 @@ void main() {
       PangeaEventTypes.coursePlan,
       CoursePlanEvent(uuid: 'quest-1', l2: 'es').toJson(),
     );
+    return room;
+  }
+
+  testWidgets('names the selected course and shows its progress', (
+    tester,
+  ) async {
+    await pumpBar(tester);
+
+    expect(find.text(courseName), findsOneWidget);
+    expect(find.byType(ObjectiveProgressCircles), findsOneWidget);
+  });
+
+  testWidgets('tapping it reopens the course card over the same context', (
+    tester,
+  ) async {
+    await pumpBar(tester);
+
+    await tester.tap(find.text(courseName));
+    await tester.pumpAndSettle();
+
+    final uri = router.routerDelegate.currentConfiguration.uri;
+    expect(
+      parseOpenPanels(uri).left.any((t) => t.type == PanelTypesEnum.course),
+      isTrue,
+      reason: 'the bar is the way back into the course card',
+    );
+    // The context is a scope, not a panel: reopening the card must not disturb
+    // it (routing.instructions.md → The course context).
+    expect(activeSpaceIdFor(uri), spaceId);
+  });
+
+  testWidgets('carries no close control', (tester) async {
+    await pumpBar(tester);
+
+    expect(find.widgetWithIcon(IconButton, Icons.close), findsNothing);
+    expect(find.byType(BackButton), findsNothing);
+  });
+
+  testWidgets('its chevron trails the title, beside the actions (#8866)', (
+    tester,
+  ) async {
+    await pumpBar(tester);
+
+    final chevron = tester.getCenter(find.byType(ChevronToggle));
+    expect(chevron.dx, greaterThan(tester.getCenter(find.text(courseName)).dx));
+    expect(
+      chevron.dx,
+      greaterThan(tester.getCenter(find.byType(CourseHeaderActions)).dx),
+      reason: 'the chevron is the header\'s last control',
+    );
+  });
+
+  testWidgets('title, circles and glyphs share the header\'s content inset', (
+    tester,
+  ) async {
+    await pumpBar(tester);
+
+    final bar = tester.getRect(find.byType(CourseContextBar));
+    final title = tester.getRect(find.text(courseName));
+    final circles = tester.getRect(find.byType(ObjectiveProgressCircles));
+    final glyph = tester.getRect(
+      find.descendant(
+        of: find.byType(ChevronToggle),
+        matching: find.byIcon(Icons.expand_more),
+      ),
+    );
+    expect(title.left, bar.left + PanelHeader.contentInset);
+    expect(circles.left, bar.left + PanelHeader.contentInset);
+    // The row never runs past the buttons' edge.
+    expect(
+      circles.right,
+      lessThanOrEqualTo(bar.right - PanelHeader.contentInset),
+    );
+    expect(glyph.right, bar.right - PanelHeader.contentInset);
+  });
+
+  testWidgets('stands exactly the height the card\'s reveal starts from', (
+    tester,
+  ) async {
+    await pumpBar(tester);
+
+    expect(
+      tester.getSize(find.byType(CourseContextBar)).height,
+      CourseContextBar.height,
+    );
+  });
+
+  testWidgets('docked above an activity plan it drops the actions', (
+    tester,
+  ) async {
+    await pumpBar(tester, showActions: false);
+
+    expect(find.byType(CourseHeaderActions), findsNothing);
+    expect(find.byType(ChevronToggle), findsOneWidget);
+  });
+
+  testWidgets('the chevron is its one announced control, saying collapsed', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    await pumpBar(tester);
+
+    // The bar is a named GROUP. It used to be one big button holding its own
+    // share action and star track, and a screen reader walked straight past
+    // the container to those children — leaving the expand affordance
+    // reachable by pointer only.
+    final bar = tester.getSemantics(find.byType(CourseContextBar));
+    expect(bar.flagsCollection.isButton, isFalse);
+    expect(bar.label, contains(courseName));
+
+    // The chevron is the control, carrying the state the open card's chevron
+    // carries expanded, so one control reads the same way in both states.
+    final chevron = tester.getSemantics(
+      find.descendant(
+        of: find.byType(ChevronToggle),
+        matching: find.byType(IconButton),
+      ),
+    );
+    expect(chevron.flagsCollection.isButton, isTrue);
+    expect(chevron.flagsCollection.isExpanded, Tristate.isFalse);
+    expect(chevron.id, isNot(bar.id), reason: 'a stop of its own');
+
+    // The whole-surface tap stays for pointers: it announces nothing and
+    // takes no focus, so it is no invisible dead stop for a keyboard user.
+    final surface = tester.widget<InkWell>(
+      find
+          .descendant(
+            of: find.byType(CourseContextBar),
+            matching: find.byType(InkWell),
+          )
+          .first,
+    );
+    expect(surface.excludeFromSemantics, isTrue);
+    expect(surface.canRequestFocus, isFalse);
+    semantics.dispose();
+  });
+
+  /// Content Studio — a teacher's publish reaches the bar while it is open:
+  /// the course's own copy drops a Mission, and the bar's star total follows
+  /// on the revision change, without a remount.
+  testWidgets('a published copy updates the progress total', (tester) async {
+    final room = stubTwoMissionCourse();
     putCopy(room, {
       'lo-1': ['a1'],
       'lo-2': ['b1'],
     });
 
     await pumpBar(tester);
-    int? total() => tester
-        .widget<ProgressBarRow>(find.byType(ProgressBarRow))
-        .summary
-        ?.total;
-    expect(total(), 6, reason: 'two Missions of three stars');
+    int total() => tester
+        .widget<ObjectiveProgressCircles>(find.byType(ObjectiveProgressCircles))
+        .items
+        .length;
+    expect(total(), 2, reason: 'one circle per Mission in the copy');
 
     await tester.runAsync(() async {
       putCopy(room, {
@@ -437,6 +404,6 @@ void main() {
       await Future<void>.delayed(const Duration(milliseconds: 50));
     });
     await tester.pumpAndSettle();
-    expect(total(), 3, reason: 'the copy dropped lo-1');
+    expect(total(), 1, reason: 'the copy dropped lo-1');
   });
 }

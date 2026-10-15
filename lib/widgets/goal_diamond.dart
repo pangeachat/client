@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 
-/// One activity goal's mark (#9420 prototype): a diamond — gold and filled
-/// once earned, an outline while open. Every goal row, the in-session goal
-/// header and its fly-in use it, so a goal reads as one thing everywhere and
+/// One activity goal's mark: a diamond — gold and filled once earned, an
+/// outline while open. Every goal row, the in-session goal header and its
+/// fly-in use it, so a goal reads as one thing everywhere and
 /// never as a star (a Mission), the double-ring stamp (a finished activity) or
 /// a sparkle (XP).
 ///
 /// The earned diamond fills with the bright gold and edges in [color] (the
 /// darker mark gold by default), so it clears 3:1 on a light surface while the
-/// fill stays bright. An open one is the outline alone, in [emptyColor].
+/// fill stays bright. An open one is the outline alone, in `onSurfaceVariant`.
 class GoalDiamond extends StatelessWidget {
   final bool earned;
   final double size;
@@ -18,31 +18,27 @@ class GoalDiamond extends StatelessWidget {
   /// The edge of an earned diamond; null uses the theme's mark gold.
   final Color? color;
 
-  /// The fill of an earned diamond; null uses the theme's bright gold.
-  final Color? fillColor;
-
-  /// The outline of an open diamond; null uses `onSurfaceVariant`.
-  final Color? emptyColor;
-
   const GoalDiamond({
     required this.earned,
     required this.size,
     this.color,
-    this.fillColor,
-    this.emptyColor,
     super.key,
   });
+
+  /// The edge this diamond draws in [theme].
+  Color edgeIn(ThemeData theme) => earned
+      ? (color ?? theme.pangea.goldGraphic)
+      : theme.colorScheme.onSurfaceVariant;
+
+  /// The fill this diamond draws in [theme]; none while the goal is open.
+  Color? fillIn(ThemeData theme) => earned ? theme.pangea.goldFixedDim : null;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final edge = earned
-        ? (color ?? theme.pangea.goldGraphic)
-        : (emptyColor ?? theme.colorScheme.onSurfaceVariant);
-    final fill = earned ? (fillColor ?? theme.pangea.goldFixedDim) : null;
     return CustomPaint(
       size: Size.square(size),
-      painter: _DiamondPainter(edge: edge, fill: fill),
+      painter: _DiamondPainter(edge: edgeIn(theme), fill: fillIn(theme)),
     );
   }
 }

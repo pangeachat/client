@@ -190,17 +190,19 @@ void main() {
       );
     });
 
-    testWidgets('follows a completed card, which drops its state fill', (
+    // A completed activity keeps its live state (#9420): the card frames it
+    // and stamps the completion beside it, so the bell keeps that state's hue.
+    testWidgets('follows a completed card, which keeps its live state', (
       tester,
     ) async {
       await pump(
         tester,
         section(state: ActivityPinState.ongoingPending, complete: true),
       );
-      expect(cardState(tester), isNull);
+      expect(cardState(tester), ActivityPinState.ongoingPending);
       expect(
         badgeFill(tester),
-        ActivityPinState.joinable.bodyColor(
+        ActivityPinState.ongoingPending.bodyColor(
           tester.element(find.byType(CoursePingBadge)),
         ),
       );

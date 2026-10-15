@@ -145,6 +145,9 @@ void main() {
           })
           .toCourseLoOutline(xpToComplete: 500);
       expect(projected.activityIdsByLo['lo-1'], {'a1'});
+      // The word list practice credits the Mission by follows the same
+      // restriction, case-folded (#9420).
+      expect(projected.lemmasByLo['lo-1'], {'hola'});
       expect(projected.xpToComplete, 500);
     });
   });
@@ -299,7 +302,7 @@ void main() {
           .toCourseLoOutline();
       expect(shown.orderedLoIds, today.orderedLoIds);
       expect(shown.activityIdsByLo, today.activityIdsByLo);
-      expect(shown.earnableByActivity, today.earnableByActivity);
+      expect(shown.lemmasByLo, today.lemmasByLo);
       expect(identical(source.forRules(CourseListRules.none), source), isTrue);
     });
 
@@ -315,7 +318,7 @@ void main() {
               )
               .toCourseLoOutline(),
         ],
-        starsByActivity: const {},
+        xpByActivity: const {},
       );
       expect(resolution.forCourse('q1')!.anchorMissionId, 'lo-3');
       expect(resolution.forCourse('q1')!.rollup.keys, {'lo-3', 'lo-1'});

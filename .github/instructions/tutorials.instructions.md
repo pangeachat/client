@@ -101,7 +101,7 @@ A tutorial is offered when it is unseen, its trigger fires, and its gate passes.
 |---|---|---|
 | `welcome` | Orientation | first arrival at **either** the world map or a course plan — once ever, whichever comes first |
 | `worldMap` | Orientation | first world map with pins actually rendered |
-| `coursePlan` | Orientation | first joined course whose page is showing its Activities row |
+| `coursePlan` | Orientation | first joined course whose course panel is showing |
 | `appTour` | Orientation | next arrival at a map after the learner's first finished activity |
 | `openSessions` | Orientation | first open-sessions join list showing, with sessions in it |
 | `activityRoles` | Orientation | first role selection showing its role cards |
@@ -153,7 +153,7 @@ One step, no target: the bot introduces itself and greets the learner in their *
 
 **It must be a two-role activity — a hard gate.** The bot fills exactly one seat, so a two-role activity is the only kind a learner with nobody else around can actually start; anything else strands them on a start page waiting for humans who are not coming. Literally strands: an activity counts as *started* only once **every** role is filled, and until then the chat renders the start page instead of the timeline — so a 3+ role activity chosen for a lone learner has no goal header, no timeline and no composer for the whole session. It was this, not anything in the tutorial code, that made the activity tutorials appear only after the learner pressed *I'm done* — finishing is the other way an activity counts as started, so the chat flipped to the timeline at the one moment the tutorials were useless. The map already *demotes* 3+ role activities for a learner who hasn't finished one ([world map](world-map.instructions.md)); here they are excluded outright, because the tutorial is choosing on the learner's behalf and telling them to tap it. An unknown role count is excluded too — it cannot be confirmed to be two.
 
-**Among those the choice is deliberately blunt**: the first *placed* activity at the **lowest** level, preferring one plainly **available** over a live session someone else is running or a trail star already finished. No matching against the learner's own level and no keyword. The step teaches what an activity is, so the easiest one wins, and a rule with nothing to tune cannot quietly stop matching. State, unlike the role count, is only a preference, so a map whose two-role activities are all live sessions still yields a starter. **No qualifying activity means the step does not run** — the sequence ends after the introduction rather than pointing at something the learner cannot start.
+**Among those the choice is deliberately blunt**: the first *placed* activity at the **lowest** level, preferring one plainly **available** over a live session someone else is running or an activity already played. No matching against the learner's own level and no keyword. The step teaches what an activity is, so the easiest one wins, and a rule with nothing to tune cannot quietly stop matching. State, unlike the role count, is only a preference, so a map whose two-role activities are all live sessions still yields a starter. **No qualifying activity means the step does not run** — the sequence ends after the introduction rather than pointing at something the learner cannot start.
 
 **Centred, not focused.** Focus is the learner's own "I'm working with this one" state and carries its own ring; the tutorial has chosen nothing on their behalf, it is only pointing, so it moves the camera and leaves focus alone.
 
@@ -161,17 +161,11 @@ One step, no target: the bot introduces itself and greets the learner in their *
 
 ### coursePlan
 
-Mirrors `worldMap` — an introduction to the surface, then "go start one", with the course's own progress model in between:
+One step: **a welcome naming the course**, lighting the **whole course panel** — header, Mission circles and Mission card together — so the step is plainly about *this* course: a learning journey the learner takes with their course mates. A full-height target leaves no room beside it, so the card sits at the bottom **of the panel**, centred on it.
 
-1. **A welcome naming the course**, lighting the **whole course panel** — header, progress and plan sections together — so the step is plainly about *this* course: a learning journey the learner takes with their course mates. A full-height target leaves no room beside it, so the card sits at the bottom **of the panel**, centred on it.
-2. **The course progress bar** — the current Mission's meter. Doing activities and practising fills it, and a full meter is a **star**: one completed Mission, a learning objective — [quests](quests.instructions.md) owns both.
-3. **The course page's Learning Objective row** — the Practice tile and the current Mission's activities ([quests](quests.instructions.md)). Armed — the learner picks an activity themselves, from a set their course author chose; the map's equivalent points at one activity and opens it on a tap.
+It once went on to point at the course's progress bar and its Activities row. Both steps went with [client#9420](https://github.com/pangeachat/client/issues/9420), which replaced the bar with the Mission circles and moved the row inside the Mission card.
 
-**The row, not its individual cards.** A card would need a target id each, and the row re-ranks continuously, so no card is a stable claimant. The row is one widget on the course page, so pointing at it has a single claimant — and it says the more useful thing anyway: *these* are the activities to try next.
-
-**It runs on the course page's Activities row, not the full-plan subpage.** The subpage is pushed within the card, so both are mounted at once; the row wins, because it is what a learner sees when they open the course. A preview of an unjoined plan runs nothing — there is no learner progress to explain.
-
-**No two-role filter here, unlike the map.** On the world map, two-role activities are singled out because the bot fills one seat and a 3+ role activity is a dead end for a learner with nobody to play with. Inside a course that reasoning inverts: its activities were hand-picked by the course author, so a 3+ role one is a deliberate part of the syllabus — which is why the [world map](world-map.instructions.md) already declines to demote it there. The step points at the row and lets the learner choose.
+**It runs on the course page, not the full-plan subpage.** The subpage is pushed within the card, so both can be mounted at once; the course page wins, because it is what a learner sees when they open the course. A preview of an unjoined plan runs nothing — there is no learner progress to explain.
 
 ### Nothing orients inside the activity chat
 

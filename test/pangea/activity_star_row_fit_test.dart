@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
+import 'package:fluffychat/widgets/goal_diamond.dart';
 
 /// #8595: every host gives the star row a box that can't grow taller, so it
 /// must shrink to stay on one line instead of wrapping a run outside the card.
@@ -31,7 +32,7 @@ void main() {
     return tester.getSize(find.byType(ActivityStarRow));
   }
 
-  // Six 22pt stars want 142pt. The role card at 375pt gives each of its two
+  // Six 22pt diamonds want 142pt. The role card at 375pt gives each of its two
   // cards ~136pt of content, so they only fit scaled down.
   const naturalWidth = 6 * 22.0 + 5 * 2.0;
 
@@ -72,10 +73,10 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      // The first sparkle itself, not [ActivityStarRow]'s box: the box IS the
-      // whole tightened text column either way, so only where the sparkles
+      // The first diamond itself, not [ActivityStarRow]'s box: the box IS the
+      // whole tightened text column either way, so only where the diamonds
       // land inside it tells the two apart.
-      return tester.getTopLeft(find.byType(Icon).first).dx;
+      return tester.getTopLeft(find.byType(GoalDiamond).first).dx;
     }
 
     final withCefr = await starsLeft(withTrailing: true);

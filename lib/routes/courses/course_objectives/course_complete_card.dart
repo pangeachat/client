@@ -10,8 +10,8 @@ import 'package:fluffychat/routes/analytics/construct_analytics/practice/start_p
 /// What the course page's Learning Objective section shows once every
 /// Mission with an activity is complete (#9437): there is no next Mission to
 /// name (#8997), so the section says the course is done and offers practice
-/// to keep what was learned fresh. The full plan behind "See all" still lists
-/// every Mission, each with its check.
+/// to keep what was learned fresh. The Mission circles above it show every
+/// Mission's star.
 class CourseCompleteCard extends StatelessWidget {
   final int objectiveCount;
 

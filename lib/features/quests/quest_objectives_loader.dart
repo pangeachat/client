@@ -261,30 +261,9 @@ class QuestObjectivesLoader {
   /// practice — summed over the same activities [missionProgress] counts.
   /// Null when the rollup hasn't resolved.
   MissionXpBreakdown? missionXpBreakdown(String missionId) {
-    final quest = _scopedQuest;
-    if (quest == null) return null;
-    final activities = quest.activityIdsByMission[missionId];
-    if (activities == null) return null;
-    final cache = MissionXpCache.instance;
-    final byActivity = client.userXpBreakdownByActivity(
-      chatXpByRoom: cache.chatXpByRoom,
-      practiceXpByRoom: cache.practiceXpByRoom,
-    );
-    var sum = MissionXpBreakdown.zero;
-    for (final activityId in activities) {
-      sum = sum + (byActivity[activityId] ?? MissionXpBreakdown.zero);
-    }
-    // Practice outside any session, on the Mission's words.
+    if (_scopedQuest == null) return null;
     final group = objectiveGroup(missionId);
-    return group == null
-        ? sum
-        : sum +
-              MissionXpBreakdown(
-                practice: practiceXpForLemmas(
-                  group.lemmas,
-                  cache.practiceXpByLemma,
-                ),
-              );
+    return group == null ? null : client.missionXpBreakdown(group);
   }
 
   List<QuestObjectiveGroup> get filteredObjectiveGroups =>

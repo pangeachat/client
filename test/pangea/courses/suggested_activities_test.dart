@@ -107,6 +107,38 @@ void main() {
       expect(idsOf(ranked), ['plain']);
     });
 
+    test('with includeOngoing, the learner\'s own sessions stay and lead '
+        '(#9420)', () {
+      final ranked = rankSuggestedActivities(
+        groups: [
+          objGroup('m1', ['plain', 'open', 'ongoingPending']),
+        ],
+        missionGradient: flatBand,
+        includeOngoing: true,
+        signalsFor: (id) => switch (id) {
+          'open' => const PinSignals(state: ActivityPinState.joinable),
+          'ongoingPending' => const PinSignals(
+            state: ActivityPinState.ongoingPending,
+          ),
+          _ => const PinSignals(),
+        },
+      );
+
+      expect(idsOf(ranked), ['ongoingPending', 'open', 'plain']);
+    });
+
+    test('with no cap, every eligible activity is kept', () {
+      final ids = [for (var i = 0; i < kSuggestedActivitiesCap + 3; i++) 'a$i'];
+      final ranked = rankSuggestedActivities(
+        groups: [objGroup('m1', ids)],
+        missionGradient: flatBand,
+        signalsFor: plain,
+        cap: null,
+      );
+
+      expect(ranked, hasLength(ids.length));
+    });
+
     test("with nothing live, the course's next Mission decides the order", () {
       // The band stands in for the resolver: the anchor Mission's activity
       // scores highest, one Mission further along less, a satisfied one zero.

@@ -16,7 +16,7 @@
 /// boundary").
 library;
 
-import 'package:flutter/material.dart' show kMinInteractiveDimension;
+import 'package:flutter/material.dart' show Size, kMinInteractiveDimension;
 
 /// A resolved per-view pin budget: the constituent tier caps plus the trail
 /// reservation. [total] (`N`) is the sum of the tier caps.
@@ -95,23 +95,47 @@ PinBudget budgetForWidth(double width) {
   return kPinBudgetBreakpoints.last.budget;
 }
 
-/// The map's large tier as **activity cards** (#9420 prototype, option C): the
-/// course plan's own card, squared up, standing on the played stamp at the
-/// real location. False brings back the classic large callout cards — the one
-/// switch the whole experiment hangs on.
+/// The map's large tier as **activity cards**: the course plan's own card,
+/// squared up, standing on the completed stamp at the real location. False
+/// draws the classic large callout cards instead.
 const bool kMapActivityCards = true;
+
+/// Whether a completed stamp webs out the words the learner used in that
+/// activity, as gold chips around it. Off: none of the word web is computed
+/// or drawn.
+const bool kStampWordWeb = false;
 
 /// Tier pixel sizes — also tuned here so all pin-density knobs live in one file.
 abstract class PinSize {
   /// The activity card a large pin draws under [kMapActivityCards]: its
   /// width, its card height (photo [mapCardImageHeight] + text), the tail
-  /// under it, and the gap left above the point for the played stamp it
+  /// under it, and the gap left above the point for the completed stamp it
   /// stands on.
   static const double mapCardWidth = 132.0;
   static const double mapCardHeight = 152.0;
   static const double mapCardImageHeight = 80.0;
   static const double mapCardTail = 10.0;
   static const double mapCardStampClearance = 14.0;
+
+  /// Room around an activity card, on its sides and above it, for its focus
+  /// ring.
+  static const double mapCardFocusGutter = 4.0;
+
+  /// The corner radius of an activity card, and of the focus ring drawn just
+  /// outside it.
+  static const double mapCardRadius = 12.0;
+  static const double mapCardFocusRadius = mapCardRadius + 1.0;
+
+  /// The marker box of an activity card: the card, its tail, the stamp
+  /// clearance when it [standsOnStamp], and the focus gutter on the sides and
+  /// top. The one size every layer and placement pass uses for the card.
+  static Size mapCardBox({required bool standsOnStamp}) => Size(
+    mapCardWidth + mapCardFocusGutter * 2,
+    mapCardHeight +
+        mapCardTail +
+        (standsOnStamp ? mapCardStampClearance : 0) +
+        mapCardFocusGutter,
+  );
 
   /// Small dot — intentionally tiny, Google-Maps style (was 18px before the
   /// maps-like redesign).
@@ -154,20 +178,13 @@ abstract class PinSize {
   static const double largeHeight = 150.0;
   static const double largeHeightJoinable = 184.0;
 
-  /// Diameter of the completed-activity **star dot** — a gold [Icons.star] (one
-  /// role done) or, one size up, a [Icons.hotel_class] **super star** (all roles)
-  /// in a base-colour circle, drawn in place of (or, under a live pin, behind) a
-  /// coloured pin body (world-map.instructions.md, "Goal Progress"). Fixed:
-  /// progress on a pin is binary (a role is complete or it isn't), never a
-  /// partial fraction, so the old grow-with-fill min/max sizing is gone. The
-  /// super star is a touch larger to carry its busier star-on-a-star glyph.
-  // The played stamp, about 2/3 of a mid pin's head (#9420 prototype; was a
-  // 20/24px star). The super star no longer sizes up: a stamp marks a saved
-  // session, not every role done.
+  /// Diameter of the completed stamp on the map, about 2/3 of a mid pin's
+  /// head — drawn in place of (or, under a live pin, behind) a coloured pin
+  /// body (world-map.instructions.md, "Goal Progress"). Fixed: a stamp marks a
+  /// saved session, never a partial fraction.
   static const double starDotDiameter = 30.0;
-  static const double superStarDotDiameter = 30.0;
 
-  /// Glyph size inside the regular / super star circle.
-  static const double starGlyphSize = 16.0;
-  static const double superStarGlyphSize = 20.0;
+  /// The marker box of a stamp on its own layer: the stamp plus room for its
+  /// drop shadow.
+  static const double stampMarkerBox = starDotDiameter + 4.0;
 }
