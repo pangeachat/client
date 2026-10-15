@@ -10836,5 +10836,10 @@
     "callTranscriptAudioUnavailable": "Hindi ma-download ang na-save na recording mula kay {name}, kaya hindi ito ma-transcribe.",
     "callTranscriptChooseLanguage": "Anong wika ang ginamit?",
     "callTranscriptSubscribeForTranscription": "Mag-subscribe para sa transkripsyon",
-    "unlockCallTranscript": "I-unlock ang transkripsyon ng tawag"
+    "unlockCallTranscript": "I-unlock ang transkripsyon ng tawag",
+    "joinYourCourse": "Sumali sa iyong kurso",
+    "courseCodeJoinExplanation": "Mag-log in o mag-sign up, at gagamitin namin ang iyong course code para awtomatiko kang maidagdag sa iyong kurso.",
+    "courseCodeLabel": "Course code",
+    "courseCodeSaved": "Na-save ang course code na {code}",
+    "courseCodeSavedExplanation": "Mag-sign up o mag-log in at idadagdag ka namin sa iyong kurso."
 }

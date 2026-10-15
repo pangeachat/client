@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "{name}-ից պահպանված ձայնագրությունը հնարավոր չեղավ ներբեռնել, ուստի այն հնարավոր չեղավ տառադարձել։",
     "callTranscriptChooseLanguage": "Ի՞նչ լեզվով է խոսվել։",
     "callTranscriptSubscribeForTranscription": "Բաժանորդագրվել տառադարձման համար",
-    "unlockCallTranscript": "Բացել զանգի արտագրումը"
+    "unlockCallTranscript": "Բացել զանգի արտագրումը",
+    "joinYourCourse": "Միացեք Ձեր դասընթացին",
+    "courseCodeJoinExplanation": "Մուտք գործեք կամ գրանցվեք, և մենք կօգտագործենք Ձեր դասընթացի կոդը՝ Ձեզ ավտոմատ կերպով Ձեր դասընթացին ավելացնելու համար։",
+    "courseCodeLabel": "Դասընթացի կոդ",
+    "courseCodeSaved": "Դասընթացի կոդը՝ {code} պահպանված է",
+    "courseCodeSavedExplanation": "Գրանցվեք կամ մուտք գործեք, և մենք Ձեզ կավելացնենք Ձեր դասընթացին։"
 }

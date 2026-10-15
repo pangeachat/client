@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "Rekaman sing disimpen saka {name} ora bisa diundhuh, mula ora bisa ditranskripsi.",
     "callTranscriptChooseLanguage": "Basa apa sing diucapake?",
     "callTranscriptSubscribeForTranscription": "Langganan kanggo transkripsi",
-    "unlockCallTranscript": "Bukak kunci transkrip telpon"
+    "unlockCallTranscript": "Bukak kunci transkrip telpon",
+    "joinYourCourse": "Gabung kursusmu",
+    "courseCodeJoinExplanation": "Mlebu utawa ndaftar, lan kita bakal nggunakake kode kursusmu kanggo nambahake sampeyan menyang kursus kanthi otomatis.",
+    "courseCodeLabel": "Kode kursus",
+    "courseCodeSaved": "Kode kursus {code} wis disimpen",
+    "courseCodeSavedExplanation": "Ndaftar utawa mlebu lan kita bakal nambahake sampeyan menyang kursus."
 }

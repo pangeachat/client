@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "{name} कडून सेव्ह केलेली रेकॉर्डिंग डाउनलोड करता आली नाही, त्यामुळे तिचे लिप्यंतरण करता आले नाही.",
     "callTranscriptChooseLanguage": "कोणती भाषा बोलली गेली?",
     "callTranscriptSubscribeForTranscription": "लिप्यंतरणासाठी सदस्यता घ्या",
-    "unlockCallTranscript": "कॉल लिप्यंतरण अनलॉक करा"
+    "unlockCallTranscript": "कॉल लिप्यंतरण अनलॉक करा",
+    "joinYourCourse": "तुमच्या कोर्समध्ये सामील व्हा",
+    "courseCodeJoinExplanation": "लॉग इन करा किंवा साइन अप करा आणि आम्ही तुम्हाला तुमच्या कोर्समध्ये आपोआप जोडण्यासाठी तुमचा कोर्स कोड वापरू.",
+    "courseCodeLabel": "कोर्स कोड",
+    "courseCodeSaved": "कोर्स कोड {code} सेव्ह केला",
+    "courseCodeSavedExplanation": "साइन अप करा किंवा लॉग इन करा आणि आम्ही तुम्हाला तुमच्या कोर्समध्ये जोडू."
 }

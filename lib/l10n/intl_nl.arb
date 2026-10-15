@@ -9976,5 +9976,10 @@
     "callTranscriptAudioUnavailable": "De opgeslagen opname van {name} kon niet worden gedownload en kon daarom niet worden getranscribeerd.",
     "callTranscriptChooseLanguage": "Welke taal werd er gesproken?",
     "callTranscriptSubscribeForTranscription": "Abonneren voor transcriptie",
-    "unlockCallTranscript": "Ontgrendel gespreksafschrift"
+    "unlockCallTranscript": "Ontgrendel gespreksafschrift",
+    "joinYourCourse": "Deelnemen aan je cursus",
+    "courseCodeJoinExplanation": "Log in of meld je aan, en we gebruiken je cursuscode om je automatisch aan je cursus toe te voegen.",
+    "courseCodeLabel": "Cursuscode",
+    "courseCodeSaved": "Cursuscode {code} opgeslagen",
+    "courseCodeSavedExplanation": "Meld je aan of log in en we voegen je toe aan je cursus."
 }

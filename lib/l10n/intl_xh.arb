@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "Ukuqoshwa okugciniweyo okuvela ku-{name} akukwazanga ukukhutshelwa, ngoko ke akukwazanga ukubhalwa phantsi.",
     "callTranscriptChooseLanguage": "Loluphi ulwimi oluthethweyo?",
     "callTranscriptSubscribeForTranscription": "Bhalisa ukuze ufumane ukubhalwa phantsi",
-    "unlockCallTranscript": "Vula umbhalo wefowuni"
+    "unlockCallTranscript": "Vula umbhalo wefowuni",
+    "joinYourCourse": "Joyina ikhosi yakho",
+    "courseCodeJoinExplanation": "Ngena okanye ubhalise, kwaye siza kusebenzisa ikhowudi yekhosi yakho ukukongeza kwikhosi yakho ngokuzenzekelayo.",
+    "courseCodeLabel": "Ikhowudi yekhosi",
+    "courseCodeSaved": "Ikhowudi yekhosi {code} igciniwe",
+    "courseCodeSavedExplanation": "Bhalisa okanye ungene kwaye siza kukongeza kwikhosi yakho."
 }

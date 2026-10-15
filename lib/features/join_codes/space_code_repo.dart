@@ -1,5 +1,6 @@
 import 'package:get_storage/get_storage.dart';
 
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 
@@ -90,6 +91,15 @@ class SpaceCodeRepo {
     if (isValidDestination(location)) return location;
     _clearStamped(PLocalKey.cachedDestination, PLocalKey.cachedDestinationAt);
     return null;
+  }
+
+  /// The class code in the stored [destination] — a visitor opened a class
+  /// link before signing in — or null. Reading it never clears it: the
+  /// signed-out screens show it (signup-and-login.instructions.md § Arriving
+  /// with a class code) and a brand-new user's onboarding joins with it.
+  static String? get pendingJoinCode {
+    final location = destination;
+    return location == null ? null : joinCodeFor(Uri.parse(location));
   }
 
   static Future<void> setDestination(String location) => _writeStamped(

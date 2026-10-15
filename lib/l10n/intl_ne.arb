@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "{name} बाट सुरक्षित गरिएको रेकर्डिङ डाउनलोड गर्न सकिएन, त्यसैले यसलाई ट्रान्सक्राइब गर्न सकिएन।",
     "callTranscriptChooseLanguage": "कुन भाषा बोलिएको थियो?",
     "callTranscriptSubscribeForTranscription": "ट्रान्सक्रिप्शनका लागि सदस्यता लिनुहोस्",
-    "unlockCallTranscript": "कल ट्रान्सक्रिप्ट अनलक गर्नुहोस्"
+    "unlockCallTranscript": "कल ट्रान्सक्रिप्ट अनलक गर्नुहोस्",
+    "joinYourCourse": "आफ्नो कोर्समा सामेल हुनुहोस्",
+    "courseCodeJoinExplanation": "लग इन गर्नुहोस् वा साइन अप गर्नुहोस्, र हामी तपाईंको कोर्स कोड प्रयोग गरेर तपाईंलाई स्वचालित रूपमा तपाईंको कोर्समा थप्नेछौं।",
+    "courseCodeLabel": "कोर्स कोड",
+    "courseCodeSaved": "कोर्स कोड {code} सुरक्षित गरियो",
+    "courseCodeSavedExplanation": "साइन अप गर्नुहोस् वा लग इन गर्नुहोस् र हामी तपाईंलाई तपाईंको कोर्समा थप्नेछौं।"
 }

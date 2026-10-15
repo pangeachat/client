@@ -7268,5 +7268,10 @@
     "callTranscriptAudioUnavailable": "Không thể tải bản ghi đã lưu từ {name} xuống, nên không thể chép lại.",
     "callTranscriptChooseLanguage": "Ngôn ngữ được nói là gì?",
     "callTranscriptSubscribeForTranscription": "Đăng ký để chép lại",
-    "unlockCallTranscript": "Mở khóa bản chép lại cuộc gọi"
+    "unlockCallTranscript": "Mở khóa bản chép lại cuộc gọi",
+    "joinYourCourse": "Tham gia khóa học của bạn",
+    "courseCodeJoinExplanation": "Đăng nhập hoặc đăng ký, chúng tôi sẽ sử dụng mã khóa học của bạn để tự động thêm bạn vào khóa học.",
+    "courseCodeLabel": "Mã khóa học",
+    "courseCodeSaved": "Đã lưu mã khóa học {code}",
+    "courseCodeSavedExplanation": "Đăng ký hoặc đăng nhập và chúng tôi sẽ thêm bạn vào khóa học."
 }

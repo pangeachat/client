@@ -10757,5 +10757,10 @@
     "callTranscriptAudioUnavailable": "Įrašas iš {name} nebuvo atsisiųstas, todėl jo nebuvo galima transkribuoti.",
     "callTranscriptChooseLanguage": "Kokia kalba buvo kalbama?",
     "callTranscriptSubscribeForTranscription": "Prenumeruoti transkripciją",
-    "unlockCallTranscript": "Atrakinti pokalbio transkripciją"
+    "unlockCallTranscript": "Atrakinti pokalbio transkripciją",
+    "joinYourCourse": "Prisijunkite prie savo kurso",
+    "courseCodeJoinExplanation": "Prisijunkite arba užsiregistruokite, ir mes naudosime jūsų kurso kodą, kad automatiškai jus pridėtume prie jūsų kurso.",
+    "courseCodeLabel": "Kurso kodas",
+    "courseCodeSaved": "Kurso kodas {code} išsaugotas",
+    "courseCodeSavedExplanation": "Užsiregistruokite arba prisijunkite ir mes jus pridėsime prie jūsų kurso."
 }

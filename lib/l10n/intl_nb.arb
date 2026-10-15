@@ -10033,5 +10033,10 @@
     "callTranscriptAudioUnavailable": "Det lagrede opptaket fra {name} kunne ikke lastes ned, så det kunne ikke transkriberes.",
     "callTranscriptChooseLanguage": "Hvilket språk ble snakket?",
     "callTranscriptSubscribeForTranscription": "Abonner for transkripsjon",
-    "unlockCallTranscript": "Lås opp samtaletranskripsjon"
+    "unlockCallTranscript": "Lås opp samtaletranskripsjon",
+    "joinYourCourse": "Bli med på kurset ditt",
+    "courseCodeJoinExplanation": "Logg inn eller registrer deg, så bruker vi kurskoden din til å legge deg til kurset automatisk.",
+    "courseCodeLabel": "Kurskode",
+    "courseCodeSaved": "Kurskode {code} lagret",
+    "courseCodeSavedExplanation": "Registrer deg eller logg inn, så legger vi deg til kurset ditt."
 }

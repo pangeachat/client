@@ -555,7 +555,8 @@ class _WorldMapViewState extends State<WorldMapView>
 
   /// Footprint-aware placement of the large cards (pipeline step 4): projects each
   /// candidate to the screen via the live camera and keeps only those whose card
-  /// fits the visible safe area (viewport minus the left/right overlays) without
+  /// fits the visible safe area (viewport minus the left/right overlays, clear
+  /// of the course context bar) without
   /// overlapping one already placed; the focused card is placed first. Falls back
   /// to the static top-N (focused first) on the rare frame where the camera isn't
   /// laid out yet. Yields nothing when [largeBudget] is zero (narrow width).
@@ -591,6 +592,7 @@ class _WorldMapViewState extends State<WorldMapView>
           PinTier.large.dotHeight(ActivityPinState.joinable),
         ),
         safeArea: safeArea,
+        obstacleRects: [?widget.controller.widget.courseBarRect],
         largeBudget: largeBudget,
         largeEligibleIds: largeEligibleIds,
         dismissedIds: widget.controller.dismissedLargeIds,
@@ -1279,6 +1281,7 @@ class _WorldMapViewState extends State<WorldMapView>
     // sliver — the surviving overlap in #7088). Below a usable width it hides
     // entirely; close a panel to search.
     final courseScopeSpaceId = widget.controller.widget.courseScopeSpaceId;
+    final courseBarRect = widget.controller.widget.courseBarRect;
     // Inset by the PANEL CARD's own margin, not a literal of its own: this
     // slot carries the course context bar, which is the course panel's header
     // with the panel closed, so the closed bar's left edge has to land exactly
@@ -1418,7 +1421,11 @@ class _WorldMapViewState extends State<WorldMapView>
           // top-left spot belongs to the analytics bar.
           if (FluffyThemes.isColumnMode(context) && searchWidth >= 220)
             Positioned(
-              top: 12,
+              // Below the course context bar when it is drawn: the collapsed
+              // course panel is not part of the left overlay (#9291), so the
+              // slot starts under the bar instead of beside it. The bar's
+              // rect already carries the top safe area.
+              top: courseBarRect?.bottom ?? 12,
               left: searchLeft,
               width: searchWidth,
               // Tab-ranked with its browse key: after the cluster, before the
@@ -1443,6 +1450,7 @@ class _WorldMapViewState extends State<WorldMapView>
                   // panel's own job now, in either of its states (#9037).
                   child: courseScopeSpaceId != null
                       ? SafeArea(
+                          top: courseBarRect == null,
                           child:
                               widget.controller.emptyVerdict ==
                                   MapEmptyVerdict.none

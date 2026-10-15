@@ -10,7 +10,6 @@ import 'package:fluffychat/pangea/common/utils/date_formatter.dart';
 
 class SubscriptionStatusResponse extends BaseResponse {
   final SubscriptionAccessLevel accessLevel;
-  final String entitlementSource;
   final SubscriptionWinning? winning;
   final BillingIssue? billingIssue;
   final List<SubscriptionEntitlement> entitlements;
@@ -21,7 +20,6 @@ class SubscriptionStatusResponse extends BaseResponse {
 
   const SubscriptionStatusResponse({
     required this.accessLevel,
-    required this.entitlementSource,
     this.winning,
     this.billingIssue,
     required this.entitlements,
@@ -36,7 +34,6 @@ class SubscriptionStatusResponse extends BaseResponse {
       accessLevel: SubscriptionAccessLevel.fromString(
         json['access_level'] as String,
       ),
-      entitlementSource: json['entitlement_source'] as String,
       winning: json['winning'] != null
           ? SubscriptionWinning.fromJson(
               json['winning'] as Map<String, dynamic>,
@@ -63,7 +60,6 @@ class SubscriptionStatusResponse extends BaseResponse {
   Map<String, dynamic> toJson() {
     return {
       'access_level': accessLevel.name,
-      'entitlement_source': entitlementSource,
       'winning': winning?.toJson(),
       'billing_issue': billingIssue?.toJson(),
       'entitlements': entitlements.map((e) => e.toJson()).toList(),
@@ -79,20 +75,12 @@ class SubscriptionStatusResponse extends BaseResponse {
 
   bool get isTrialOfferable => trialEligible == true && trialClaimed != true;
 
-  /// The choreographer serves two phases behind one shape, named by
-  /// `entitlement_source`: the v2 CMS resolution and the legacy RevenueCat
-  /// one, which is store-managed and carries neither a CMS entitlement ref nor
-  /// a catalog plan.
-  static const String _cmsEntitlementSource = 'cms';
-
-  /// A billable v2 entitlement whose `planId` is missing. A catalog plan is
-  /// only expected of a CMS row, where it is reverse-mapped from the Stripe
-  /// price the CMS stored; a legacy RevenueCat status has none by construction
-  /// and renders the generic paid tile as intended (CLIENT-EMJ, #8842).
+  /// A billable entitlement whose `planId` is missing. The catalog plan is
+  /// reverse-mapped from the Stripe price the CMS stored, so a paid winner
+  /// without one is an anomaly (CLIENT-EMJ, #8842).
   bool get isPaidWithoutPlan {
     final winning = this.winning;
-    return entitlementSource == _cmsEntitlementSource &&
-        accessLevel == SubscriptionAccessLevel.full &&
+    return accessLevel == SubscriptionAccessLevel.full &&
         winning != null &&
         winning.planId == null &&
         winning.type?.isBillable == true;
@@ -269,8 +257,7 @@ class SubscriptionEntitlement {
   String subscriptionTitle(L10n l10n) {
     final fallback = l10n.currentSubscription;
     return switch (type) {
-      SubscriptionType.paid ||
-      SubscriptionType.individual => _duration?.copy(l10n) ?? fallback,
+      SubscriptionType.paid => _duration?.copy(l10n) ?? fallback,
       SubscriptionType.trial => l10n.freeTrial,
       SubscriptionType.comp => l10n.promoSubscription,
       SubscriptionType.seat => l10n.seatSubscription,
@@ -282,7 +269,6 @@ class SubscriptionEntitlement {
     final endsAt = this.endsAt;
     switch (type) {
       case SubscriptionType.paid:
-      case SubscriptionType.individual:
       case SubscriptionType.seat:
         if (endsAt == null) return null;
         return cancelAtPeriodEnd
@@ -304,7 +290,7 @@ class SubscriptionEntitlement {
 
   String? priceDisplay(L10n l10n) {
     return switch (type) {
-      SubscriptionType.paid || SubscriptionType.individual || null => null,
+      SubscriptionType.paid || null => null,
       SubscriptionType.trial ||
       SubscriptionType.comp ||
       SubscriptionType.seat => l10n.freeSubscription,

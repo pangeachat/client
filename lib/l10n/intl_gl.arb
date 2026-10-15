@@ -9976,5 +9976,10 @@
     "callTranscriptAudioUnavailable": "Non se puido descargar a gravación gardada de {name}, polo que non se puido transcribir.",
     "callTranscriptChooseLanguage": "Que idioma se falou?",
     "callTranscriptSubscribeForTranscription": "Subscribirse para transcribir",
-    "unlockCallTranscript": "Desbloquear transcrición da chamada"
+    "unlockCallTranscript": "Desbloquear transcrición da chamada",
+    "joinYourCourse": "Únete ao teu curso",
+    "courseCodeJoinExplanation": "Inicia sesión ou rexístrate, e usaremos o teu código de curso para engadirte ao teu curso automaticamente.",
+    "courseCodeLabel": "Código do curso",
+    "courseCodeSaved": "Código do curso {code} gardado",
+    "courseCodeSavedExplanation": "Rexístrate ou inicia sesión e engadirémoste ao teu curso."
 }

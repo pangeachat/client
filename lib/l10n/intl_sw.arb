@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "Rekodi iliyohifadhiwa kutoka {name} haikuweza kupakuliwa, kwa hivyo haikuweza kunakiliwa.",
     "callTranscriptChooseLanguage": "Ni lugha gani ilizungumzwa?",
     "callTranscriptSubscribeForTranscription": "Jisajili ili upate nakala",
-    "unlockCallTranscript": "Fungua nakala ya simu"
+    "unlockCallTranscript": "Fungua nakala ya simu",
+    "joinYourCourse": "Jiunge na kozi yako",
+    "courseCodeJoinExplanation": "Ingia au jisajili, na tutatumia msimbo wako wa kozi kukuongeza kwenye kozi yako kiotomatiki.",
+    "courseCodeLabel": "Msimbo wa kozi",
+    "courseCodeSaved": "Msimbo wa kozi {code} umefanikiwa kuhifadhiwa",
+    "courseCodeSavedExplanation": "Jisajili au ingia na tutakuongeza kwenye kozi yako."
 }

@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "Tsy afaka alaina ilay rakipeo voatahiry avy amin'i {name}, ka tsy azo soratana.",
     "callTranscriptChooseLanguage": "Inona no fiteny nampiasaina?",
     "callTranscriptSubscribeForTranscription": "Misoratra anarana ho an'ny fandikana",
-    "unlockCallTranscript": "Sokafy ny dika soratra antso"
+    "unlockCallTranscript": "Sokafy ny dika soratra antso",
+    "joinYourCourse": "Midira ao amin'ny taranjao",
+    "courseCodeJoinExplanation": "Midira na misoratra anarana, ary hampiasainay ny kaody taranjao mba hanampiana anao ho azy ao amin'ny taranjao.",
+    "courseCodeLabel": "Kaody taranja",
+    "courseCodeSaved": "Kaody taranja {code} voatahiry",
+    "courseCodeSavedExplanation": "Misoratra anarana na midira ary hanampy anao amin'ny taranjao izahay."
 }

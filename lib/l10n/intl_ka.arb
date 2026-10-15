@@ -10876,5 +10876,10 @@
     "callTranscriptAudioUnavailable": "{name}-ის შენახული ჩანაწერი ვერ ჩამოიტვირთა, ამიტომ მისი ტრანსკრიფცია ვერ მოხერხდა.",
     "callTranscriptChooseLanguage": "რა ენაზე საუბრობდით?",
     "callTranscriptSubscribeForTranscription": "გამოიწერეთ ტრანსკრიფციისთვის",
-    "unlockCallTranscript": "ზარის ტრანსკრიფციის განბლოკვა"
+    "unlockCallTranscript": "ზარის ტრანსკრიფციის განბლოკვა",
+    "joinYourCourse": "შეუერთდი შენს კურსს",
+    "courseCodeJoinExplanation": "შედი ან დარეგისტრირდი და ჩვენ გამოვიყენებთ შენს კურსის კოდს, რათა ავტომატურად დაგამატოთ კურსზე.",
+    "courseCodeLabel": "კურსის კოდი",
+    "courseCodeSaved": "კურსის კოდი {code} შენახულია",
+    "courseCodeSavedExplanation": "დარეგისტრირდი ან შედით სისტემაში და ჩვენ დაგამატებთ თქვენს კურსზე."
 }

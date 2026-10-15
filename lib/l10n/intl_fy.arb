@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "De bewarre opname fan {name} koe net downloade wurde, dus it koe net transkribearre wurde.",
     "callTranscriptChooseLanguage": "Hokker taal waard sprutsen?",
     "callTranscriptSubscribeForTranscription": "Abonnearje foar transkripsje",
-    "unlockCallTranscript": "Untskoattelje oproptranskripsje"
+    "unlockCallTranscript": "Untskoattelje oproptranskripsje",
+    "joinYourCourse": "Doch mei oan dyn kursus",
+    "courseCodeJoinExplanation": "Meld dy oan of registrearje dy, en wy sille dyn kursuskoade brûke om dy automatysk oan dyn kursus ta te foegjen.",
+    "courseCodeLabel": "Kursuskoade",
+    "courseCodeSaved": "Kursuskoade {code} bewarre",
+    "courseCodeSavedExplanation": "Meld dy oan of registrearje dy en wy sille dy tafoegje oan dyn kursus."
 }

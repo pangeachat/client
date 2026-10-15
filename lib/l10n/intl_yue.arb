@@ -10933,5 +10933,10 @@
     "callTranscriptAudioUnavailable": "無法下載來自{name}的已儲存錄音，因此無法轉錄。",
     "callTranscriptChooseLanguage": "說的是哪種語言？",
     "callTranscriptSubscribeForTranscription": "訂閱以獲取轉錄",
-    "unlockCallTranscript": "解鎖通話轉錄"
+    "unlockCallTranscript": "解鎖通話轉錄",
+    "joinYourCourse": "加入你的課程",
+    "courseCodeJoinExplanation": "登入或註冊，我們會使用你的課程代碼自動將你加入課程。",
+    "courseCodeLabel": "課程代碼",
+    "courseCodeSaved": "課程代碼 {code} 已儲存",
+    "courseCodeSavedExplanation": "註冊或登入，我們會將你加入課程。"
 }

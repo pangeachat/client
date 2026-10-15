@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "די געראַטעוועטע אויפֿנאַמע פֿון {name} האָט זיך נישט געקענט אַראָפּלאָדן, דערפֿאַר האָט מען זי נישט געקענט טראַנסקריבירן.",
     "callTranscriptChooseLanguage": "וועלכע שפּראַך איז גערעדט געוואָרן?",
     "callTranscriptSubscribeForTranscription": "סובסקריבירן פֿאַר טראַנסקריפּציע",
-    "unlockCallTranscript": "אַנשליסן רוף טראַנסקריפּט"
+    "unlockCallTranscript": "אַנשליסן רוף טראַנסקריפּט",
+    "joinYourCourse": "באַהעפֿט זיך צו דיין קורס",
+    "courseCodeJoinExplanation": "לייגט זיך איין אָדער שרייבט זיך איין, און מיר וועלן ניצן אייער קורס קאָד צו אייך אויטאָמאַטיש צולייגן צו אייער קורס.",
+    "courseCodeLabel": "קורס קאָד",
+    "courseCodeSaved": "קורס קאָד {code} איז געהיט געוואָרן",
+    "courseCodeSavedExplanation": "שרייבט זיך איין אָדער לייגט זיך איין און מיר וועלן אייך צולייגן צו אייער קורס."
 }

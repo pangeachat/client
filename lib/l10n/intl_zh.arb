@@ -9976,5 +9976,10 @@
     "callTranscriptAudioUnavailable": "无法下载 {name} 的已保存录音，因此无法转录。",
     "callTranscriptChooseLanguage": "说的是什么语言？",
     "callTranscriptSubscribeForTranscription": "订阅转录服务",
-    "unlockCallTranscript": "解锁通话记录"
+    "unlockCallTranscript": "解锁通话记录",
+    "joinYourCourse": "加入您的课程",
+    "courseCodeJoinExplanation": "登录或注册后，我们将使用您的课程代码自动将您添加到课程中。",
+    "courseCodeLabel": "课程代码",
+    "courseCodeSaved": "课程代码 {code} 已保存",
+    "courseCodeSavedExplanation": "注册或登录后，我们会将您添加到您的课程中。"
 }

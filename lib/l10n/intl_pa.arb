@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "{name} ਤੋਂ ਸੁਰੱਖਿਅਤ ਕੀਤੀ ਰਿਕਾਰਡਿੰਗ ਡਾਊਨਲੋਡ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ, ਇਸ ਲਈ ਇਸਨੂੰ ਲਿਖਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।",
     "callTranscriptChooseLanguage": "ਕਿਹੜੀ ਭਾਸ਼ਾ ਬੋਲੀ ਗਈ ਸੀ?",
     "callTranscriptSubscribeForTranscription": "ਲਿਖਣ ਲਈ ਗਾਹਕ ਬਣੋ",
-    "unlockCallTranscript": "ਕਾਲ ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਅਨਲੌਕ ਕਰੋ"
+    "unlockCallTranscript": "ਕਾਲ ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਅਨਲੌਕ ਕਰੋ",
+    "joinYourCourse": "ਆਪਣੇ ਕੋਰਸ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ",
+    "courseCodeJoinExplanation": "ਲੌਗ ਇਨ ਕਰੋ ਜਾਂ ਸਾਈਨ ਅੱਪ ਕਰੋ, ਅਤੇ ਅਸੀਂ ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ ਕੋਰਸ ਵਿੱਚ ਆਪਣੇ ਆਪ ਸ਼ਾਮਲ ਕਰਨ ਲਈ ਤੁਹਾਡੇ ਕੋਰਸ ਕੋਡ ਦੀ ਵਰਤੋਂ ਕਰਾਂਗੇ।",
+    "courseCodeLabel": "ਕੋਰਸ ਕੋਡ",
+    "courseCodeSaved": "ਕੋਰਸ ਕੋਡ {code} ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ",
+    "courseCodeSavedExplanation": "ਸਾਈਨ ਅੱਪ ਕਰੋ ਜਾਂ ਲੌਗ ਇਨ ਕਰੋ ਅਤੇ ਅਸੀਂ ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ ਕੋਰਸ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰਾਂਗੇ।"
 }

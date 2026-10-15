@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "د {name} څخه خوندي شوی ریکارډ ډاونلوډ نشو، نو له همدې امله ژباړل کیدی نشي.",
     "callTranscriptChooseLanguage": "کومه ژبه ویل شوې وه؟",
     "callTranscriptSubscribeForTranscription": "د ژباړې لپاره ګډون وکړئ",
-    "unlockCallTranscript": "د زنګ لیږد خلاص کړئ"
+    "unlockCallTranscript": "د زنګ لیږد خلاص کړئ",
+    "joinYourCourse": "خپل کورس سره یوځای شئ",
+    "courseCodeJoinExplanation": "ننوتل یا نوم لیکنه وکړئ، او موږ به ستاسو د کورس کوډ وکاروو ترڅو تاسو په اتوماتيک ډول ستاسو کورس ته اضافه کړو.",
+    "courseCodeLabel": "د کورس کوډ",
+    "courseCodeSaved": "د کورس کوډ {code} خوندي شو",
+    "courseCodeSavedExplanation": "نوم لیکنه وکړئ یا ننوتل او موږ به تاسو خپل کورس ته اضافه کړو."
 }

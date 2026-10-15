@@ -10708,5 +10708,10 @@
     "callTranscriptAudioUnavailable": "Înregistrarea salvată de la {name} nu a putut fi descărcată, prin urmare nu a putut fi transcrisă.",
     "callTranscriptChooseLanguage": "Ce limbă a fost vorbită?",
     "callTranscriptSubscribeForTranscription": "Abonează-te pentru transcriere",
-    "unlockCallTranscript": "Deblochează transcrierea apelului"
+    "unlockCallTranscript": "Deblochează transcrierea apelului",
+    "joinYourCourse": "Alătură-te cursului tău",
+    "courseCodeJoinExplanation": "Conectează-te sau înregistrează-te, iar noi vom folosi codul tău de curs pentru a te adăuga automat la cursul tău.",
+    "courseCodeLabel": "Codul cursului",
+    "courseCodeSaved": "Codul cursului {code} a fost salvat",
+    "courseCodeSavedExplanation": "Înregistrează-te sau conectează-te și te vom adăuga la cursul tău."
 }

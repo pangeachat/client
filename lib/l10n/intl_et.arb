@@ -9973,5 +9973,10 @@
     "callTranscriptAudioUnavailable": "Salvestatud heli {name} kasutajalt ei saanud alla laadida, seega ei saanud seda transkribeerida.",
     "callTranscriptChooseLanguage": "Mis keeles räägiti?",
     "callTranscriptSubscribeForTranscription": "Telli transkriptsioon",
-    "unlockCallTranscript": "Ava kõne transkriptsioon"
+    "unlockCallTranscript": "Ava kõne transkriptsioon",
+    "joinYourCourse": "Liitu oma kursusega",
+    "courseCodeJoinExplanation": "Logi sisse või registreeru ja me kasutame sinu kursuse koodi, et sind automaatselt kursusele lisada.",
+    "courseCodeLabel": "Kursuse kood",
+    "courseCodeSaved": "Kursuse kood {code} salvestatud",
+    "courseCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind kursusele."
 }

@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "{name} માંથી સાચવેલી રેકોર્ડિંગ ડાઉનલોડ કરી શકાઈ નથી, તેથી તેને ટ્રાન્સક્રાઇબ કરી શકાઈ નથી.",
     "callTranscriptChooseLanguage": "કઈ ભાષા બોલવામાં આવી હતી?",
     "callTranscriptSubscribeForTranscription": "ટ્રાન્સક્રિપ્શન માટે સબ્સ્ક્રાઇબ કરો",
-    "unlockCallTranscript": "કૉલ ટ્રાન્સક્રિપ્ટ અનલૉક કરો"
+    "unlockCallTranscript": "કૉલ ટ્રાન્સક્રિપ્ટ અનલૉક કરો",
+    "joinYourCourse": "તમારા કોર્સમાં જોડાઓ",
+    "courseCodeJoinExplanation": "લૉગ ઇન કરો અથવા સાઇન અપ કરો, અને અમે તમને તમારા કોર્સમાં આપમેળે ઉમેરવા માટે તમારા કોર્સ કોડનો ઉપયોગ કરીશું.",
+    "courseCodeLabel": "કોર્સ કોડ",
+    "courseCodeSaved": "કોર્સ કોડ {code} સાચવવામાં આવ્યો",
+    "courseCodeSavedExplanation": "સાઇન અપ કરો અથવા લૉગ ઇન કરો અને અમે તમને તમારા કોર્સમાં ઉમેરીશું."
 }

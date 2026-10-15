@@ -10890,5 +10890,10 @@
     "callTranscriptAudioUnavailable": "ההקלטה השמורה מ{name} לא ניתנת להורדה, ולכן לא ניתן לתמלל אותה.",
     "callTranscriptChooseLanguage": "באיזו שפה דיברתם?",
     "callTranscriptSubscribeForTranscription": "הירשם לתימלול",
-    "unlockCallTranscript": "פתח את תמלול השיחה"
+    "unlockCallTranscript": "פתח את תמלול השיחה",
+    "joinYourCourse": "הצטרף לקורס שלך",
+    "courseCodeJoinExplanation": "התחבר או הירשם, ואנו נשתמש בקוד הקורס שלך כדי להוסיף אותך לקורס באופן אוטומטי.",
+    "courseCodeLabel": "קוד קורס",
+    "courseCodeSaved": "קוד קורס {code} נשמר",
+    "courseCodeSavedExplanation": "הירשם או התחבר ואנו נוסיף אותך לקורס שלך."
 }

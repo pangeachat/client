@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "E le'i mafai ona la'u mai le pu'eina na sefe mai ia {name}, o lea e le'i mafai ai ona fa'aliliu.",
     "callTranscriptChooseLanguage": "O le a le gagana na tautalagia?",
     "callTranscriptSubscribeForTranscription": "Lesitala mo le fa'aliliuga",
-    "unlockCallTranscript": "Tatala le fa'aliliuga o le vala'au"
+    "unlockCallTranscript": "Tatala le fa'aliliuga o le vala'au",
+    "joinYourCourse": "Auai i lau kosi",
+    "courseCodeJoinExplanation": "Saini i totonu pe saini i luga, ma o le a matou fa'aogaina lau code kosi e fa'aopoopo otometi ai oe i lau kosi.",
+    "courseCodeLabel": "Code kosi",
+    "courseCodeSaved": "Code kosi {code} ua sefe",
+    "courseCodeSavedExplanation": "Saini i luga pe saini i totonu ma o le a matou fa'aopoopoina oe i lau kosi."
 }

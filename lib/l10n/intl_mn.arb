@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "{name}-ээс хадгалсан бичлэгийг татаж авах боломжгүй байсан тул хөрвүүлж чадсангүй.",
     "callTranscriptChooseLanguage": "Ямар хэлээр ярьсан бэ?",
     "callTranscriptSubscribeForTranscription": "Хөрвүүлэлтэд бүртгүүлэх",
-    "unlockCallTranscript": "Дуудлагын хөрвүүлэлтийг нээх"
+    "unlockCallTranscript": "Дуудлагын хөрвүүлэлтийг нээх",
+    "joinYourCourse": "Хичээлдээ нэгдэх",
+    "courseCodeJoinExplanation": "Нэвтрэх эсвэл бүртгүүлэх үед таны хичээлийн кодыг ашиглан таныг автоматаар хичээлд нэгтгэх болно.",
+    "courseCodeLabel": "Хичээлийн код",
+    "courseCodeSaved": "Хичээлийн код {code} хадгалагдсан",
+    "courseCodeSavedExplanation": "Бүртгүүлэх эсвэл нэвтрэх үед таныг хичээлд нэгтгэх болно."
 }

@@ -27,6 +27,10 @@ extension LaunchActivitySession on Client {
   /// [primarySpace] (the space the user launched from, if any) is always
   /// included. With no matching spaces the session is created private
   /// with a plain knock join rule.
+  ///
+  /// Returns once the room's initial state has reached the local store (or
+  /// after 10 seconds without it). Course sharing and the bot invite may
+  /// still be running.
   Future<String> launchActivitySession(
     ActivityPlanModel activity,
     ActivityRole? role, {
@@ -134,9 +138,59 @@ extension LaunchActivitySession on Client {
           botUserId: BotName.byEnvironment,
         ),
       ),
+      waitForSync: false,
     );
 
-    for (final space in spaces.values) {
+    // Course sharing and the bot invite are best-effort, so they finish behind
+    // the chat instead of behind the loading dialog (#9297).
+    unawaited(_finishActivitySessionSetup(roomID, spaces.values.toList()));
+
+    await _waitForSessionState(roomID);
+    return roomID;
+  }
+
+  /// Waits, bounded, for [roomID]'s initial state to reach the local store.
+  /// Synapse delivers a new room in two syncs: the create event and the
+  /// creator's join first, the rest of the initial state (activity reference,
+  /// roles) in the next. Opening the session between the two shows the start
+  /// page without the launcher's role, and reads the latest activity version
+  /// instead of the pinned one.
+  Future<void> _waitForSessionState(String roomID) async {
+    bool arrived() =>
+        getRoomById(roomID)?.getState(PangeaEventTypes.activityPlan) != null;
+    if (arrived()) return;
+    try {
+      // Stream.timeout (not Future.timeout) so the sync listener is cancelled
+      // when the wait gives up.
+      await onSync.stream
+          .where((_) => arrived())
+          .timeout(const Duration(seconds: 10))
+          .first;
+    } on TimeoutException catch (e, s) {
+      // Open the session anyway; the room panel waits for the room itself.
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'roomId': roomID},
+        level: SentryLevel.warning,
+      );
+    }
+  }
+
+  Future<void> _finishActivitySessionSetup(
+    String roomID,
+    List<Room> spaces,
+  ) async {
+    try {
+      // Sharing needs the room in the local store (addSpaceChildKeepingParents
+      // skips a room it cannot resolve).
+      await waitForCreatedRoom(roomID);
+    } catch (_) {
+      // silent-ok: waitForCreatedRoom already logged it; sharing and the
+      // invite below are still worth attempting.
+    }
+
+    for (final space in spaces) {
       try {
         await space.addSpaceChildKeepingParents(roomID);
       } catch (e, s) {
@@ -172,7 +226,5 @@ extension LaunchActivitySession on Client {
         level: SentryLevel.warning,
       );
     }
-
-    return roomID;
   }
 }

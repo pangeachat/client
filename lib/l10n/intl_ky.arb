@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "{name} жаздырылган үнүн жүктөп алуу мүмкүн болгон жок, андыктан транскрипциялоо мүмкүн болгон жок.",
     "callTranscriptChooseLanguage": "Кайсы тилде сүйлөштү?",
     "callTranscriptSubscribeForTranscription": "Транскрипция үчүн жазылуу",
-    "unlockCallTranscript": "Чакыруу транскрипциясын ачуу"
+    "unlockCallTranscript": "Чакыруу транскрипциясын ачуу",
+    "joinYourCourse": "Курсуңузга кошулуңуз",
+    "courseCodeJoinExplanation": "Кириңиз же катталыңыз, биз сиздин курс кодуңузду колдонуп, сизди курсуңузга автоматтык түрдө кошо алабыз.",
+    "courseCodeLabel": "Курс коду",
+    "courseCodeSaved": "{code} курс коду сакталды",
+    "courseCodeSavedExplanation": "Катталыңыз же кириңиз, биз сизди курсуңузга кошо алабыз."
 }

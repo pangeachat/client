@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "{name} qeydə alınmış səsi yüklənmədi, buna görə də transkripsiya edilə bilmədi.",
     "callTranscriptChooseLanguage": "Hansı dildə danışılıb?",
     "callTranscriptSubscribeForTranscription": "Transkripsiya üçün abunə olun",
-    "unlockCallTranscript": "Zəng transkripsiyasını açın"
+    "unlockCallTranscript": "Zəng transkripsiyasını açın",
+    "joinYourCourse": "Kursunuza qoşulun",
+    "courseCodeJoinExplanation": "Daxil olun və ya qeydiyyatdan keçin, biz sizi kurs kodunuzdan istifadə edərək avtomatik olaraq kursunuza əlavə edəcəyik.",
+    "courseCodeLabel": "Kurs kodu",
+    "courseCodeSaved": "{code} kurs kodu yadda saxlanıldı",
+    "courseCodeSavedExplanation": "Qeydiyyatdan keçin və ya daxil olun, biz sizi kursunuza əlavə edəcəyik."
 }

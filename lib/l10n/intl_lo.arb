@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "ບໍ່ສາມາດດາວໂຫຼດສຽງທີ່ບັນທຶກຈາກ {name} ໄດ້, ສະນັ້ນຈຶ່ງບໍ່ສາມາດຖອດຂໍ້ຄວາມໄດ້.",
     "callTranscriptChooseLanguage": "ເວົ້າພາສາຫຍັງ?",
     "callTranscriptSubscribeForTranscription": "ສະໝັກໃຊ້ສຳລັບການຖອດຂໍ້ຄວາມ",
-    "unlockCallTranscript": "ປົດລັອກການຖອດຂໍ້ຄວາມການໂທ"
+    "unlockCallTranscript": "ປົດລັອກການຖອດຂໍ້ຄວາມການໂທ",
+    "joinYourCourse": "ເຂົ້າຮ່ວມຫຼັກສູດຂອງທ່ານ",
+    "courseCodeJoinExplanation": "ເຂົ້າສູ່ລະບົບ ຫຼື ລົງທະບຽນ, ແລະພວກເຮົາຈະໃຊ້ລະຫັດຫຼັກສູດຂອງທ່ານເພື່ອເພີ່ມທ່ານເຂົ້າໃນຫຼັກສູດຂອງທ່ານໂດຍອັດຕະໂນມັດ.",
+    "courseCodeLabel": "ລະຫັດຫຼັກສູດ",
+    "courseCodeSaved": "ລະຫັດຫຼັກສູດ {code} ຖືກບັນທຶກແລ້ວ",
+    "courseCodeSavedExplanation": "ລົງທະບຽນ ຫຼື ເຂົ້າສູ່ລະບົບ ແລະພວກເຮົາຈະເພີ່ມທ່ານເຂົ້າໃນຫຼັກສູດຂອງທ່ານ."
 }

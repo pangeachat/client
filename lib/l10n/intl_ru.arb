@@ -10948,5 +10948,10 @@
     "callTranscriptAudioUnavailable": "Сохранённая запись от {name} не может быть загружена, поэтому её нельзя расшифровать.",
     "callTranscriptChooseLanguage": "На каком языке говорили?",
     "callTranscriptSubscribeForTranscription": "Подписаться на расшифровку",
-    "unlockCallTranscript": "Разблокировать расшифровку звонка"
+    "unlockCallTranscript": "Разблокировать расшифровку звонка",
+    "joinYourCourse": "Присоединиться к курсу",
+    "courseCodeJoinExplanation": "Войдите или зарегистрируйтесь, и мы автоматически добавим вас к вашему курсу, используя ваш код курса.",
+    "courseCodeLabel": "Код курса",
+    "courseCodeSaved": "Код курса {code} сохранен",
+    "courseCodeSavedExplanation": "Зарегистрируйтесь или войдите, и мы добавим вас к вашему курсу."
 }

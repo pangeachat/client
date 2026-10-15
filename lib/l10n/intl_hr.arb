@@ -10412,5 +10412,10 @@
     "callTranscriptAudioUnavailable": "Spremljena snimka od {name} nije se mogla preuzeti, stoga se nije mogla ni prepisati.",
     "callTranscriptChooseLanguage": "Koji je jezik bio govoren?",
     "callTranscriptSubscribeForTranscription": "Pretplatite se za prijepis",
-    "unlockCallTranscript": "Otključaj prijepis poziva"
+    "unlockCallTranscript": "Otključaj prijepis poziva",
+    "joinYourCourse": "Pridružite se svom tečaju",
+    "courseCodeJoinExplanation": "Prijavite se ili registrirajte, a mi ćemo upotrijebiti vaš kod tečaja kako bismo vas automatski dodali na vaš tečaj.",
+    "courseCodeLabel": "Kod tečaja",
+    "courseCodeSaved": "Kod tečaja {code} spremljen",
+    "courseCodeSavedExplanation": "Registrirajte se ili prijavite i dodat ćemo vas na vaš tečaj."
 }

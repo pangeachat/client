@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "Записаният разговор от {name} не можа да бъде изтеглен и съответно не можа да бъде транскрибиран.",
     "callTranscriptChooseLanguage": "На какъв език се говореше?",
     "callTranscriptSubscribeForTranscription": "Абонирайте се за транскрипция",
-    "unlockCallTranscript": "Отключване на препис от разговора"
+    "unlockCallTranscript": "Отключване на препис от разговора",
+    "joinYourCourse": "Присъединете се към курса си",
+    "courseCodeJoinExplanation": "Влезте или се регистрирайте и ние автоматично ще ви добавим към курса ви, използвайки кода на курса.",
+    "courseCodeLabel": "Код на курса",
+    "courseCodeSaved": "Кодът на курса {code} е запазен",
+    "courseCodeSavedExplanation": "Регистрирайте се или влезте и ние ще ви добавим към курса ви."
 }

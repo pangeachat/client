@@ -9990,5 +9990,10 @@
     "callTranscriptAudioUnavailable": "Захаваны запіс ад {name} не ўдалося спампаваць, таму яго не атрымалася транскрыбаваць.",
     "callTranscriptChooseLanguage": "На якой мове размаўлялі?",
     "callTranscriptSubscribeForTranscription": "Падпісацца на транскрыпцыю",
-    "unlockCallTranscript": "Разблакіраваць стэнаграму званка"
+    "unlockCallTranscript": "Разблакіраваць стэнаграму званка",
+    "joinYourCourse": "Далучайцеся да свайго курса",
+    "courseCodeJoinExplanation": "Увайдзіце або зарэгіструйцеся, і мы выкарыстаем ваш код курса, каб аўтаматычна дадаць вас да яго.",
+    "courseCodeLabel": "Код курса",
+    "courseCodeSaved": "Код курса {code} захаваны",
+    "courseCodeSavedExplanation": "Зарэгіструйцеся або ўвайдзіце, і мы дададзім вас да вашага курса."
 }

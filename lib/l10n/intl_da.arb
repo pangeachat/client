@@ -10896,5 +10896,10 @@
     "callTranscriptAudioUnavailable": "Den gemte optagelse fra {name} kunne ikke downloades og kunne derfor ikke transskriberes.",
     "callTranscriptChooseLanguage": "Hvilket sprog blev der talt?",
     "callTranscriptSubscribeForTranscription": "Abonnér for transskription",
-    "unlockCallTranscript": "Lås op for opkaldstranskription"
+    "unlockCallTranscript": "Lås op for opkaldstranskription",
+    "joinYourCourse": "Tilmeld dig dit kursus",
+    "courseCodeJoinExplanation": "Log ind eller tilmeld dig, så bruger vi din kursuskode til automatisk at tilføje dig til dit kursus.",
+    "courseCodeLabel": "Kursuskode",
+    "courseCodeSaved": "Kursuskode {code} gemt",
+    "courseCodeSavedExplanation": "Tilmeld dig eller log ind, så tilføjer vi dig til dit kursus."
 }

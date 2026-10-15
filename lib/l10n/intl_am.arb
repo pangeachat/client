@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "ከ{name} የተቀመጠው ቅጂ ማውረድ አልተቻለም፣ ስለዚህ ወደ ጽሑፍ መቀየር አልተቻለም።",
     "callTranscriptChooseLanguage": "የተነገረው ቋንቋ የትኛው ነው?",
     "callTranscriptSubscribeForTranscription": "ለጽሑፍ መቀየር ይመዝገቡ",
-    "unlockCallTranscript": "የጥሪ ግልባጭ ክፈት"
+    "unlockCallTranscript": "የጥሪ ግልባጭ ክፈት",
+    "joinYourCourse": "ኮርስዎን ይቀላቀሉ",
+    "courseCodeJoinExplanation": "ይግቡ ወይም ይመዝገቡ፣ እና ኮርስ ኮድዎን ተጠቅመን በራስ-ሰር ወደ ኮርስዎ እናስገባዎታለን።",
+    "courseCodeLabel": "የኮርስ ኮድ",
+    "courseCodeSaved": "የኮርስ ኮድ {code} ተቀምጧል",
+    "courseCodeSavedExplanation": "ይመዝገቡ ወይም ይግቡ እና ወደ ኮርስዎ እናስገባዎታለን።"
 }

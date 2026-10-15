@@ -10013,5 +10013,10 @@
     "callTranscriptAudioUnavailable": "Tallennetun äänitteen lataaminen käyttäjältä {name} epäonnistui, joten sitä ei voitu litteroida.",
     "callTranscriptChooseLanguage": "Mitä kieltä puhuttiin?",
     "callTranscriptSubscribeForTranscription": "Tilaa litterointi",
-    "unlockCallTranscript": "Avaa puhelun litterointi"
+    "unlockCallTranscript": "Avaa puhelun litterointi",
+    "joinYourCourse": "Liity kurssillesi",
+    "courseCodeJoinExplanation": "Kirjaudu sisään tai rekisteröidy, niin lisäämme sinut kurssillesi automaattisesti kurssikoodisi avulla.",
+    "courseCodeLabel": "Kurssikoodi",
+    "courseCodeSaved": "Kurssikoodi {code} tallennettu",
+    "courseCodeSavedExplanation": "Rekisteröidy tai kirjaudu sisään, niin lisäämme sinut kurssillesi."
 }

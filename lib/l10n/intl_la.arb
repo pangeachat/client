@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "Registratio servata ab {name} deponi non potuit, ergo transcribi non potuit.",
     "callTranscriptChooseLanguage": "Qua lingua locutum est?",
     "callTranscriptSubscribeForTranscription": "Subscribere pro transcriptione",
-    "unlockCallTranscript": "Reserare transcriptionem vocis"
+    "unlockCallTranscript": "Reserare transcriptionem vocis",
+    "joinYourCourse": "Coniunge cursum tuum",
+    "courseCodeJoinExplanation": "Coniunge te vel subsigna, et codice tuo utemur ut te ad cursum tuum sponte addamus.",
+    "courseCodeLabel": "Codex cursus",
+    "courseCodeSaved": "Codex cursus {code} servatus",
+    "courseCodeSavedExplanation": "Subsigna vel coniunge te et te ad cursum tuum addemus."
 }

@@ -10282,5 +10282,10 @@
     "callTranscriptAudioUnavailable": "تعذر تنزيل التسجيل المحفوظ من {name}، لذلك لم يتمكن من نسخه.",
     "callTranscriptChooseLanguage": "ما هي اللغة التي تم التحدث بها؟",
     "callTranscriptSubscribeForTranscription": "اشترك لنسخ المحادثة",
-    "unlockCallTranscript": "فتح نسخة المحادثة"
+    "unlockCallTranscript": "فتح نسخة المحادثة",
+    "joinYourCourse": "انضم إلى دورتك التدريبية",
+    "courseCodeJoinExplanation": "سجّل الدخول أو أنشئ حسابًا، وسنستخدم رمز دورتك التدريبية لإضافتك إلى دورتك تلقائيًا.",
+    "courseCodeLabel": "رمز الدورة التدريبية",
+    "courseCodeSaved": "تم حفظ رمز الدورة التدريبية {code}",
+    "courseCodeSavedExplanation": "سجّل أو سجّل الدخول وسنضيفك إلى دورتك التدريبية."
 }

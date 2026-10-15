@@ -10851,5 +10851,10 @@
     "callTranscriptAudioUnavailable": "Η αποθηκευμένη ηχογράφηση από τον/την {name} δεν ήταν δυνατή να ληφθεί, επομένως δεν ήταν δυνατή η μεταγραφή της.",
     "callTranscriptChooseLanguage": "Ποια γλώσσα ομιλήθηκε;",
     "callTranscriptSubscribeForTranscription": "Εγγραφείτε για μεταγραφή",
-    "unlockCallTranscript": "Ξεκλείδωμα μεταγραφής κλήσης"
+    "unlockCallTranscript": "Ξεκλείδωμα μεταγραφής κλήσης",
+    "joinYourCourse": "Συμμετοχή στο μάθημά σας",
+    "courseCodeJoinExplanation": "Συνδεθείτε ή εγγραφείτε και θα χρησιμοποιήσουμε τον κωδικό μαθήματός σας για να σας προσθέσουμε αυτόματα στο μάθημά σας.",
+    "courseCodeLabel": "Κωδικός μαθήματος",
+    "courseCodeSaved": "Ο κωδικός μαθήματος {code} αποθηκεύτηκε",
+    "courseCodeSavedExplanation": "Εγγραφείτε ή συνδεθείτε και θα σας προσθέσουμε στο μάθημά σας."
 }

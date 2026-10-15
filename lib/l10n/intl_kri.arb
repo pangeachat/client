@@ -2384,5 +2384,10 @@
     "callTranscriptAudioUnavailable": "Wi nɔ ebul fɔ daunlod di rikɔdin frɔm {name}, so wi nɔ ebul fɔ transkrayb am.",
     "callTranscriptChooseLanguage": "Us langwej dɛn bin tɔk?",
     "callTranscriptSubscribeForTranscription": "Sabsakrayb fɔ transkripshɔn",
-    "unlockCallTranscript": "Ɔnlɔk kɔl transkript"
+    "unlockCallTranscript": "Ɔnlɔk kɔl transkript",
+    "joinYourCourse": "Jɔyn yu kɔs",
+    "courseCodeJoinExplanation": "Lɔg in ɔ sayn ap, ɛn wi go yuz yu kɔs kod fɔ ad yu to yu kɔs ɔtɔmatikali.",
+    "courseCodeLabel": "Kɔs kod",
+    "courseCodeSaved": "Kɔs kod {code} dɔn sev",
+    "courseCodeSavedExplanation": "Sayn ap ɔ lɔg in ɛn wi go ad yu to yu kɔs."
 }

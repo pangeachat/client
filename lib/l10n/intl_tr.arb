@@ -10277,5 +10277,10 @@
     "callTranscriptAudioUnavailable": "{name} adlı kaydın indirilmesi mümkün olmadığından metne çevrilemedi.",
     "callTranscriptChooseLanguage": "Hangi dil konuşuldu?",
     "callTranscriptSubscribeForTranscription": "Metne çevirme için abone ol",
-    "unlockCallTranscript": "Çağrı dökümünü aç"
+    "unlockCallTranscript": "Çağrı dökümünü aç",
+    "joinYourCourse": "Kursunuza katılın",
+    "courseCodeJoinExplanation": "Giriş yapın veya kaydolun, kurs kodunuzu kullanarak sizi otomatik olarak kursunuza ekleyeceğiz.",
+    "courseCodeLabel": "Kurs kodu",
+    "courseCodeSaved": "{code} kurs kodu kaydedildi",
+    "courseCodeSavedExplanation": "Kaydolun veya giriş yapın, sizi kursunuza ekleyeceğiz."
 }

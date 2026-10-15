@@ -9976,5 +9976,10 @@
     "callTranscriptAudioUnavailable": "Saglabāto ierakstu no {name} nevarēja lejupielādēt, tāpēc to nevarēja transkribēt.",
     "callTranscriptChooseLanguage": "Kādā valodā runājāt?",
     "callTranscriptSubscribeForTranscription": "Abonēt transkripciju",
-    "unlockCallTranscript": "Atbloķēt zvanu transkriptu"
+    "unlockCallTranscript": "Atbloķēt zvanu transkriptu",
+    "joinYourCourse": "Pievienojies savam kursam",
+    "courseCodeJoinExplanation": "Piesakies vai reģistrējies, un mēs izmantosim tavu kursa kodu, lai automātiski tevi pievienotu kursam.",
+    "courseCodeLabel": "Kursa kods",
+    "courseCodeSaved": "Kursa kods {code} saglabāts",
+    "courseCodeSavedExplanation": "Reģistrējies vai piesakies, un mēs tevi pievienosim tavam kursam."
 }
