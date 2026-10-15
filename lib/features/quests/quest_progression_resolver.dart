@@ -252,6 +252,13 @@ ProgressionResolution resolveProgression({
       // denominator no content backs, which is how one 4-star activity came to
       // display as 44 (#7663). Distinct from the zero-CEILING case below, where
       // the Mission has activities whose plans carry no goal data.
+      //
+      // No screen shows a raw course-level star total: the only course-wide
+      // number is [QuestStarSummary] (the progress bar), a fraction of each
+      // RENDERED Mission's capped stars over its threshold. A hidden-only
+      // Mission has no threshold in that denominator, so its credit cannot
+      // enter it; it is reported by [creditedByMission] and
+      // [creditedCourseTotal] for readers that want the raw number.
       if (activities.isEmpty) continue;
 
       // Hidden activities still count toward their Can-Do's stars; only the
