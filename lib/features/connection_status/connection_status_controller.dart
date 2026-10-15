@@ -76,8 +76,8 @@ class ConnectionStatusController {
   Future<NetworkType> Function() currentNetworkType = NetworkType.current;
 
   /// Whether the app is in the foreground. A suspended app's requests fail
-  /// because the OS paused them, not because the connection is gone.
-  @visibleForTesting
+  /// because the OS paused them, not because the connection is gone. The
+  /// filter check reads it too, so the two agree. Replaced in tests.
   bool Function() isAppResumed = _isAppResumed;
 
   /// Takes one update from the active account's sync loop.

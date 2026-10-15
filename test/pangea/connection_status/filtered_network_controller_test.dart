@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -32,7 +33,7 @@ void main() {
   late StreamController<List<ConnectivityResult>> networkChanges;
   late List<Duration> waits;
 
-  TestWidgetsFlutterBinding.ensureInitialized();
+  final binding = TestWidgetsFlutterBinding.ensureInitialized();
 
   setUpAll(() async {
     // Environment.appConfigOverride reads a GetStorage('env_override') box that
@@ -169,6 +170,85 @@ void main() {
         NetworkVerdict.filtered,
       );
       expect(waits, isEmpty);
+    });
+  });
+
+  group('#9525 while the app is in the background', () {
+    tearDown(
+      () => binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed),
+    );
+
+    // The web app is hidden with its tab; the phone apps are paused.
+    for (final state in [AppLifecycleState.hidden, AppLifecycleState.paused]) {
+      test('(${state.name}) a refusal blocks and reports nothing', () async {
+        answers[chatHost] = NetworkProbeResult.refused;
+        binding.handleAppLifecycleStateChanged(state);
+
+        await controller.check(NetworkHostCategory.chatServer);
+        await settle();
+
+        expect(controller.blocked.value, isEmpty);
+        expect(ErrorHandler.reportedOnceKeysForTest, isEmpty);
+      });
+    }
+
+    test('a refusal that comes back there reaches no verdict', () async {
+      final videoHost = NetworkHostCategory.video.probeUrl.host;
+      answers[videoHost] = NetworkProbeResult.refused;
+      final probe = controller.probe;
+      controller.probe = (url) async {
+        if (url.host == videoHost) {
+          binding.handleAppLifecycleStateChanged(AppLifecycleState.paused);
+        }
+        return probe(url);
+      };
+
+      await controller.check(NetworkHostCategory.video);
+      await settle();
+
+      expect(controller.blocked.value, isEmpty);
+      expect(ErrorHandler.reportedOnceKeysForTest, isEmpty);
+    });
+
+    test(
+      'a held refusal skips its rechecks there and goes on when the app comes back',
+      () async {
+        answers[chatHost] = NetworkProbeResult.refused;
+        controller.wait = (duration) async {
+          waits.add(duration);
+          if (waits.length == 2) {
+            binding.handleAppLifecycleStateChanged(AppLifecycleState.paused);
+          }
+          if (waits.length == 4) {
+            binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+          }
+        };
+
+        expect(
+          await controller.check(NetworkHostCategory.chatServer),
+          NetworkVerdict.filtered,
+        );
+
+        // Rechecks 2 and 3 fell in the background: six refusals in the
+        // foreground still make the three minutes.
+        expect(waits, hasLength(8));
+        expect(probedHosts.where((host) => host == chatHost), hasLength(7));
+        expect(controller.blocked.value, {NetworkHostCategory.chatServer});
+      },
+    );
+
+    test('the first failure after the app comes back checks at once', () async {
+      final url = Uri.https(apiHost, '/choreo/tokenize');
+      binding.handleAppLifecycleStateChanged(AppLifecycleState.paused);
+      controller.onRequestFailed(url);
+      await settle();
+      expect(probedHosts, isEmpty);
+
+      binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+      controller.onRequestFailed(url);
+      await settle();
+
+      expect(probedHosts, [apiHost]);
     });
   });
 
