@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
+import 'package:fluffychat/features/connection_status/connection_status_controller.dart';
 import 'package:fluffychat/features/connection_status/network_help_repo.dart';
 import 'package:fluffychat/features/connection_status/network_host_category.dart';
 import 'package:fluffychat/features/connection_status/network_probe.dart';
@@ -49,7 +50,7 @@ class FilteredNetworkController {
 
   final Map<NetworkHostCategory, DateTime> _firstBlockedAt = {};
   final Map<NetworkHostCategory, DateTime> _lastCheckedAt = {};
-  final Map<NetworkHostCategory, Future<NetworkVerdict>> _inFlight = {};
+  final Map<NetworkHostCategory, Future<NetworkVerdict?>> _inFlight = {};
   StreamSubscription<List<ConnectivityResult>>? _networkChanges;
 
   @visibleForTesting
@@ -85,8 +86,9 @@ class FilteredNetworkController {
             earliest == null || at.isBefore(earliest) ? at : earliest,
       );
 
-  /// Checks [category] now, sharing a check already in flight.
-  Future<NetworkVerdict> check(NetworkHostCategory category) =>
+  /// Checks [category] now, sharing a check already in flight. Null when the
+  /// app was in the background, where a check reaches no verdict.
+  Future<NetworkVerdict?> check(NetworkHostCategory category) =>
       _inFlight[category] ??= _check(category).whenComplete(() {
         // A block body, not an arrow: `remove` returns this very future, and
         // whenComplete would wait on it — the check would wait on itself.
@@ -151,9 +153,11 @@ class FilteredNetworkController {
     }
   }
 
-  Future<NetworkVerdict> _check(NetworkHostCategory category) async {
+  Future<NetworkVerdict?> _check(NetworkHostCategory category) async {
+    if (!_inForeground) return null;
     final needed = await probe(category.probeUrl);
     var verdict = await _verdictOf(needed);
+    if (!_inForeground) return null;
     if (verdict == NetworkVerdict.filtered &&
         needed == NetworkProbeResult.refused &&
         category.isOurServer) {
@@ -183,19 +187,30 @@ class FilteredNetworkController {
     return NetworkVerdict.of(needed: needed, neutralAnswered: neutralAnswered);
   }
 
-  /// Checks a refusing server of ours again until [holdRefusalFor] has
-  /// passed. Any other verdict ends the hold: an answer means the server was
-  /// restarting, and offline says nothing about a filter.
+  /// Checks a refusing server of ours again until it has refused for
+  /// [holdRefusalFor] of the app's time in the foreground. Any other verdict
+  /// ends the hold: an answer means the server was restarting, and offline
+  /// says nothing about a filter. A recheck due in the background is
+  /// skipped, and the hold goes on when the app comes back.
   Future<NetworkVerdict> _holdRefusal(NetworkHostCategory category) async {
     final rechecks =
         holdRefusalFor.inSeconds ~/ recheckHeldRefusalEvery.inSeconds;
-    for (var i = 0; i < rechecks; i++) {
+    var refused = 0;
+    while (refused < rechecks) {
       await wait(recheckHeldRefusalEvery);
+      if (!_inForeground) continue;
       final verdict = await _verdictOf(await probe(category.probeUrl));
+      if (!_inForeground) continue;
       if (verdict != NetworkVerdict.filtered) return verdict;
+      refused++;
     }
     return NetworkVerdict.filtered;
   }
+
+  /// A backgrounded app's requests fail because the OS paused them, so
+  /// nothing a check sees there is a verdict. The banner's own signal, so
+  /// the two agree on when the app is in the background.
+  bool get _inForeground => ConnectionStatusController.instance.isAppResumed();
 
   void _markBlocked(NetworkHostCategory category, NetworkProbeResult needed) {
     if (blocked.value.contains(category)) return;

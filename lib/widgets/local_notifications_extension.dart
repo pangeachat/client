@@ -244,6 +244,8 @@ extension LocalNotificationsExtension on MatrixState {
 
     final canShow = await NotificationsRequestRepo.canShowRequest(userId);
     if (!canShow) return;
+    // The page that asked may have closed during the checks above (#9528).
+    if (!context.mounted) return;
 
     final result = await showDialog<OkCancelResult>(
       context: context,
