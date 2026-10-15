@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-14 13:23:11.391580",
+    "@@last_modified": "2026-10-15 16:24:18.584232",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "Kua momotu koe. Ka hono anō a Pangea Chat ina hoki mai tō hononga.",
     "connectionUnreachable": "Kāore e taea te tae atu ki a Pangea Chat. E ngana anō ana…",
     "connectionBackOnline": "Kua hoki mai anō ki te ipurangi",
-    "missionDueDate": "Me oti i te {date}, {time}"
+    "missionDueDate": "Me oti i te {date}, {time}",
+    "callNotificationsTitle": "Tukua ngā waea kia tangi",
+    "callNotificationsMessage": "Ka tangi ngā waea hei whakamōhiotanga. Tukua ngā whakamōhiotanga kia tangi ai tō waea mō te waea, ahakoa kua katia a Pangea Chat, kua raka rānei tō waea.",
+    "callNotificationsMissedMessage": "I tae mai he waea i te wā e katia ana a Pangea Chat, engari kāore i taea e tō waea te tangi nā te mea kua weto ngā whakamōhiotanga. Tukua ngā whakamōhiotanga kia tangi ai te waea e whai ake nei."
 }

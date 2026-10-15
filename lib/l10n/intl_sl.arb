@@ -1795,7 +1795,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-14 13:23:17.325075",
+    "@@last_modified": "2026-10-15 16:24:22.403577",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10924,5 +10924,8 @@
     "connectionOffline": "Ste brez povezave. Pangea Chat se bo znova povezal, ko bo povezava spet vzpostavljena.",
     "connectionUnreachable": "Pangea Chat ni dosegljiv. Poskušam znova …",
     "connectionBackOnline": "Spet povezan",
-    "missionDueDate": "Rok {date}, {time}"
+    "missionDueDate": "Rok {date}, {time}",
+    "callNotificationsTitle": "Dovoli zvonjenje klicev",
+    "callNotificationsMessage": "Klici zvonijo kot obvestila. Dovoli obvestila, da bo telefon zvonil ob klicu, tudi ko je Pangea Chat zaprt ali je telefon zaklenjen.",
+    "callNotificationsMissedMessage": "Klic je prišel, ko je bil Pangea Chat zaprt, vendar telefon ni mogel zvoniti, ker so obvestila izklopljena. Dovoli obvestila, da bo naslednji klic zvonil."
 }

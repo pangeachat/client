@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-14 13:23:09.901778",
+    "@@last_modified": "2026-10-15 16:24:17.682587",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "Сиз оффлайнсыз. Pangea Chat байланышыңыз кайра келгенде кайра туташат.",
     "connectionUnreachable": "Pangea Chat'ка жете албай жатабыз. Кайра аракет кылууда…",
     "connectionBackOnline": "Кайра онлайн",
-    "missionDueDate": "{date}, {time} чейин"
+    "missionDueDate": "{date}, {time} чейин",
+    "callNotificationsTitle": "Чакырууларга уруксат берүү",
+    "callNotificationsMessage": "Чакыруулар эскертме катары шыңгырайт. Эскертмелерге уруксат бериңиз, ошондо Pangea Chat жабык болсо да же телефонуңуз кулпуланган болсо да, телефонуңуз чалуу үчүн шыңгырайт.",
+    "callNotificationsMissedMessage": "Pangea Chat жабык турганда чалуу келди, бирок эскертмелер өчүк болгондуктан телефонуңуз шыңгырай алган жок. Кийинки чалуу шыңгырашы үчүн эскертмелерге уруксат бериңиз."
 }

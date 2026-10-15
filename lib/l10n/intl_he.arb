@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-14 13:23:05.763916",
+    "@@last_modified": "2026-10-15 16:24:14.237517",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10893,5 +10893,8 @@
     "connectionOffline": "אתה במצב לא מקוון. Pangea Chat יתחבר מחדש כשהחיבור שלך יחזור.",
     "connectionUnreachable": "לא ניתן להגיע ל-Pangea Chat. מנסה שוב…",
     "connectionBackOnline": "חזר למצב מקוון",
-    "missionDueDate": "תאריך יעד {date}, {time}"
+    "missionDueDate": "תאריך יעד {date}, {time}",
+    "callNotificationsTitle": "אפשר לשיחות לצלצל",
+    "callNotificationsMessage": "שיחות מצלצלות כהתראות. אפשר התראות כדי שהטלפון שלך יצלצל לשיחה, גם כש-Pangea Chat סגור או כשהטלפון שלך נעול.",
+    "callNotificationsMissedMessage": "שיחה נכנסה כש-Pangea Chat היה סגור, אך הטלפון שלך לא יכל לצלצל כי ההתראות כבויות. אפשר התראות כדי שהשיחה הבאה תצלצל."
 }

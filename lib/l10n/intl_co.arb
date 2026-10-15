@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-14 13:23:00.548557",
+    "@@last_modified": "2026-10-15 16:24:11.460790",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "Sì fora ligna. Pangea Chat si ricunnetterà quandu a vostra cunnessione serà torna.",
     "connectionUnreachable": "Ùn si pò ghjunghje à Pangea Chat. Pruvendu torna…",
     "connectionBackOnline": "Torna in ligna",
-    "missionDueDate": "Da rende u {date}, à {time}"
+    "missionDueDate": "Da rende u {date}, à {time}",
+    "callNotificationsTitle": "Lascià sunà e chjame",
+    "callNotificationsMessage": "E chjame sunanu cum'è notificazioni. Permettite e notificazioni per chì u vostru telefunu suni per una chjama, ancu quandu Pangea Chat hè chjusu o u vostru telefunu hè bluccatu.",
+    "callNotificationsMissedMessage": "Una chjama hè ghjunta mentre Pangea Chat era chjusu, ma u vostru telefunu ùn pudia micca sunà perchè e notificazioni sò spente. Permettite e notificazioni per chì a prossima chjama suni."
 }

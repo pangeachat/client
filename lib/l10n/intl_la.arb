@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-14 13:23:10.800011",
+    "@@last_modified": "2026-10-15 16:24:17.348439",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "Abes es. Pangea Chat iterum coniungetur cum conexio tua redierit.",
     "connectionUnreachable": "Pangea Chat attingi non potest. Iterum temptatur…",
     "connectionBackOnline": "Iterum online",
-    "missionDueDate": "Debetur {date}, {time}"
+    "missionDueDate": "Debetur {date}, {time}",
+    "callNotificationsTitle": "Sinite vocem sonare",
+    "callNotificationsMessage": "Voces sonant ut notificationes. Sinite notificationes ut telephonum vestrum sonet pro voce, etiam cum Pangea Chat clausum est vel telephonum vestrum clausum est.",
+    "callNotificationsMissedMessage": "Vox advenit dum Pangea Chat clausum erat, sed telephonum vestrum sonare non potuit quia notificationes sunt off. Sinite notificationes ut proxima vox sonet."
 }

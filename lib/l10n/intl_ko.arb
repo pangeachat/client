@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-14 13:23:09.086293",
+    "@@last_modified": "2026-10-15 16:24:16.984568",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10175,5 +10175,8 @@
     "connectionOffline": "오프라인 상태입니다. 연결이 복원되면 Pangea Chat이 다시 연결됩니다.",
     "connectionUnreachable": "Pangea Chat에 연결할 수 없습니다. 다시 시도 중…",
     "connectionBackOnline": "온라인 상태로 돌아왔습니다.",
-    "missionDueDate": "{date} {time} 마감"
+    "missionDueDate": "{date} {time} 마감",
+    "callNotificationsTitle": "전화 수신 허용",
+    "callNotificationsMessage": "전화는 알림으로 수신됩니다. Pangea Chat이 닫혀 있거나 휴대폰이 잠겨 있을 때도 전화가 울리도록 알림을 허용하세요.",
+    "callNotificationsMissedMessage": "Pangea Chat이 닫혀 있는 동안 전화가 걸려왔지만, 알림이 꺼져 있어 휴대폰이 울리지 않았습니다. 다음 전화가 울리도록 알림을 허용하세요."
 }

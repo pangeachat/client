@@ -2956,7 +2956,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-14 13:23:10.807625",
+    "@@last_modified": "2026-10-15 16:24:18.140181",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10760,5 +10760,8 @@
     "connectionOffline": "Esate neprisijungę. „Pangea Chat“ vėl prisijungs, kai atsiras ryšys.",
     "connectionUnreachable": "Nepasiekiama „Pangea Chat“. Bandoma dar kartą…",
     "connectionBackOnline": "Vėl prisijungę",
-    "missionDueDate": "Terminas {date}, {time}"
+    "missionDueDate": "Terminas {date}, {time}",
+    "callNotificationsTitle": "Leisti skambučiams skambėti",
+    "callNotificationsMessage": "Skambučiai skamba kaip pranešimai. Leiskite pranešimus, kad telefonas skambėtų, net kai „Pangea Chat“ yra uždaryta arba telefonas užrakintas.",
+    "callNotificationsMissedMessage": "Skambutis atėjo, kai „Pangea Chat“ buvo uždaryta, bet jūsų telefonas negalėjo skambėti, nes pranešimai yra išjungti. Leiskite pranešimus, kad kitas skambutis skambėtų."
 }

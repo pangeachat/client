@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-14 13:23:02.106491",
+    "@@last_modified": "2026-10-15 16:24:11.320421",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10473,5 +10473,8 @@
     "connectionOffline": "Jste offline. Pangea Chat se znovu připojí, až budete mít opět připojení.",
     "connectionUnreachable": "Nelze se připojit k Pangea Chatu. Zkouším to znovu…",
     "connectionBackOnline": "Zpět online",
-    "missionDueDate": "Splatné {date}, {time}"
+    "missionDueDate": "Splatné {date}, {time}",
+    "callNotificationsTitle": "Nechat hovory zvonit",
+    "callNotificationsMessage": "Hovory zvoní jako oznámení. Povolte oznámení, aby vám telefon zvonil při hovoru, i když je Pangea Chat zavřený nebo je telefon zamčený.",
+    "callNotificationsMissedMessage": "Přišel hovor, když byl Pangea Chat zavřený, ale váš telefon nemohl zvonit, protože jsou vypnutá oznámení. Povolte oznámení, aby další hovor zvonil."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-14 13:23:06.852109",
+    "@@last_modified": "2026-10-15 16:24:10.130414",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "Nema interneta. Pangea Chat će se ponovo povezati kada se veza vrati.",
     "connectionUnreachable": "Pangea Chat je nedostupan. Pokušavam ponovo…",
     "connectionBackOnline": "Ponovo online",
-    "missionDueDate": "Rok: {date}, {time}"
+    "missionDueDate": "Rok: {date}, {time}",
+    "callNotificationsTitle": "Dozvoli zvonjenje poziva",
+    "callNotificationsMessage": "Pozivi zvone kao obavještenja. Dozvolite obavještenja kako bi vaš telefon zvonio za poziv, čak i kada je Pangea Chat zatvoren ili je vaš telefon zaključan.",
+    "callNotificationsMissedMessage": "Poziv je stigao dok je Pangea Chat bio zatvoren, ali vaš telefon nije mogao zvoniti jer su obavještenja isključena. Dozvolite obavještenja kako bi sljedeći poziv zvonio."
 }

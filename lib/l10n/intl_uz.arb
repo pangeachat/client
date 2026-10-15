@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-14 13:23:19.247346",
+    "@@last_modified": "2026-10-15 16:24:26.548850",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9986,5 +9986,8 @@
     "connectionOffline": "Siz oflaynsiz. Ulanish tiklanganda Pangea Chat qayta ulanadi.",
     "connectionUnreachable": "Pangea Chat'ga ulanib bo'lmadi. Qayta urinilmoqda…",
     "connectionBackOnline": "Tarmoqqa qayta ulandik",
-    "missionDueDate": "{date}, {time} da tugaydi"
+    "missionDueDate": "{date}, {time} da tugaydi",
+    "callNotificationsTitle": "Qo‘ng‘iroqlarga ruxsat berish",
+    "callNotificationsMessage": "Qo‘ng‘iroqlar bildirishnomalar sifatida jiringlaydi. Pangea Chat yopiq bo‘lsa ham yoki telefoningiz qulflangan bo‘lsa ham, qo‘ng‘iroqlar uchun telefoningiz jiringlashi uchun bildirishnomalarga ruxsat bering.",
+    "callNotificationsMissedMessage": "Pangea Chat yopiq bo‘lganida qo‘ng‘iroq keldi, ammo bildirishnomalar o‘chirilganligi sababli telefoningiz jiringlay olmadi. Keyingi qo‘ng‘iroq jiringlashi uchun bildirishnomalarga ruxsat bering."
 }

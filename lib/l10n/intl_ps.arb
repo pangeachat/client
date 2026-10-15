@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-14 13:23:14.917038",
+    "@@last_modified": "2026-10-15 16:24:21.768875",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "تاسو آفلاین یاست. پانګیا چیټ به بیا وصل شي کله چې ستاسو اړیکه بیرته راشي.",
     "connectionUnreachable": "پانګیا چیټ ته لاسرسی نشته. بیا هڅه کوم…",
     "connectionBackOnline": "بیا آنلاین شو",
-    "missionDueDate": "د {date}, {time} پورې"
+    "missionDueDate": "د {date}, {time} پورې",
+    "callNotificationsTitle": "زنګونه غږول",
+    "callNotificationsMessage": "زنګونه د خبرتیاوو په توګه غږیږي. خبرتیاوو ته اجازه ورکړئ ترڅو ستاسو تلیفون د زنګ لپاره غږ شي، حتی کله چې پینګیا چیټ بند وي یا ستاسو تلیفون لاک وي.",
+    "callNotificationsMissedMessage": "یو زنګ راغی پداسې حال کې چې پینګیا چیټ بند و، مګر ستاسو تلیفون نشو کولی غږ وکړي ځکه چې خبرتیاوې بندې دي. خبرتیاوو ته اجازه ورکړئ ترڅو راتلونکی زنګ غږ شي."
 }

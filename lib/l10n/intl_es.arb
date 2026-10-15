@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-14 13:23:02.294141",
+    "@@last_modified": "2026-10-15 16:24:12.650073",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8211,5 +8211,8 @@
     "connectionOffline": "Estás sin conexión. Pangea Chat se reconectará cuando recuperes la conexión.",
     "connectionUnreachable": "No se puede conectar con Pangea Chat. Intentando de nuevo…",
     "connectionBackOnline": "De nuevo en línea",
-    "missionDueDate": "Vence el {date} a las {time}"
+    "missionDueDate": "Vence el {date} a las {time}",
+    "callNotificationsTitle": "Permitir que las llamadas suenen",
+    "callNotificationsMessage": "Las llamadas suenan como notificaciones. Permite las notificaciones para que tu teléfono suene cuando recibas una llamada, incluso cuando Pangea Chat esté cerrado o tu teléfono esté bloqueado.",
+    "callNotificationsMissedMessage": "Entró una llamada mientras Pangea Chat estaba cerrado, pero tu teléfono no pudo sonar porque las notificaciones están desactivadas. Permite las notificaciones para que la próxima llamada suene."
 }

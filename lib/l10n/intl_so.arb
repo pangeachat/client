@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-14 13:23:17.413736",
+    "@@last_modified": "2026-10-15 16:24:23.695569",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "Waxaad ka maqan tahay khadka. Pangea Chat dib ayuu isku xirayaa marka xiriirkaagu soo laabto.",
     "connectionUnreachable": "Lama gaari karo Pangea Chat. Mar kale ayuu isku dayayaa…",
     "connectionBackOnline": "Khadkii ayaa soo laabtay",
-    "missionDueDate": "Waxaa la gaarayaa {date}, {time}"
+    "missionDueDate": "Waxaa la gaarayaa {date}, {time}",
+    "callNotificationsTitle": "Wacitaannada ha dhawaaqaan",
+    "callNotificationsMessage": "Wacitaannadu waxay u dhawaaqaan sida ogeysiisyada. Oggolow ogeysiisyada si taleefankaagu u dhawaaqo marka lagu soo waco, xitaa marka Pangea Chat xiran yahay ama taleefankaagu xiran yahay.",
+    "callNotificationsMissedMessage": "Wacitaan ayaa soo galay iyadoo Pangea Chat xiran yahay, laakiin taleefankaagu ma dhawaaqi karin sababtoo ah ogeysiisyada waa dansan yihiin. Oggolow ogeysiisyada si wacitaanka xiga uu u dhawaaqo."
 }

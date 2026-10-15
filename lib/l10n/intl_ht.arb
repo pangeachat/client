@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-14 13:23:07.419628",
+    "@@last_modified": "2026-10-15 16:24:15.114962",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "Ou dekonekte. Pangea Chat ap rekonekte lè ou gen yon koneksyon ankò.",
     "connectionUnreachable": "Pangea Chat pa ka jwenn. Ap eseye ankò…",
     "connectionBackOnline": "Ou rekonekte",
-    "missionDueDate": "Dat limit: {date}, {time}"
+    "missionDueDate": "Dat limit: {date}, {time}",
+    "callNotificationsTitle": "Kite apèl yo sonnen",
+    "callNotificationsMessage": "Apèl yo sonnen tankou notifikasyon. Pèmèt notifikasyon pou telefòn ou sonnen pou yon apèl, menm lè Pangea Chat fèmen oswa telefòn ou bloke.",
+    "callNotificationsMissedMessage": "Yon apèl te antre pandan Pangea Chat te fèmen, men telefòn ou pa t' ka sonnen paske notifikasyon yo etenn. Pèmèt notifikasyon pou pwochen apèl la sonnen."
 }

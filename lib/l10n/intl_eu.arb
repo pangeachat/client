@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-14 13:23:02.299907",
+    "@@last_modified": "2026-10-15 16:24:13.019060",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9982,5 +9982,8 @@
     "connectionOffline": "Lineaz kanpo zaude. Pangea Chat berriro konektatuko da konexioa berreskuratzean.",
     "connectionUnreachable": "Ezin da Pangea Chat-era iritsi. Berriro saiatzen...",
     "connectionBackOnline": "Berriro konektatuta",
-    "missionDueDate": "{date}, {time}rako"
+    "missionDueDate": "{date}, {time}rako",
+    "callNotificationsTitle": "Deiek jo dezatela",
+    "callNotificationsMessage": "Deiek jakinarazpen gisa jotzen dute. Baimendu jakinarazpenak, zure telefonoak dei bat jasotzean jo dezan, Pangea Chat itxita egon arren edo telefonoa blokeatuta egon arren.",
+    "callNotificationsMissedMessage": "Dei bat jaso da Pangea Chat itxita zegoen bitartean, baina zure telefonoak ezin izan du jo, jakinarazpenak desaktibatuta zeudelako. Baimendu jakinarazpenak hurrengo deiak jo dezan."
 }

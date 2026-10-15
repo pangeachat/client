@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-14 13:23:15.597743",
+    "@@last_modified": "2026-10-15 16:24:24.017970",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "ඔබ නොබැඳිව සිටී. ඔබගේ සම්බන්ධතාවය නැවත ලැබුණු විට Pangea Chat නැවත සම්බන්ධ වනු ඇත.",
     "connectionUnreachable": "Pangea Chat වෙත ළඟා විය නොහැක. නැවත උත්සාහ කරමින්…",
     "connectionBackOnline": "නැවත සබැඳි විය",
-    "missionDueDate": "{date}, {time} වන විට"
+    "missionDueDate": "{date}, {time} වන විට",
+    "callNotificationsTitle": "ඇමතුම් නාද වීමට ඉඩ දෙන්න",
+    "callNotificationsMessage": "ඇමතුම් දැනුම්දීම් ලෙස නාද වේ. Pangea Chat වසා තිබුණත් හෝ ඔබගේ දුරකථනය අගුළු දමා තිබුණත්, ඇමතුමක් සඳහා ඔබගේ දුරකථනය නාද වීමට දැනුම්දීම් වලට ඉඩ දෙන්න.",
+    "callNotificationsMissedMessage": "Pangea Chat වසා තිබියදී ඇමතුමක් පැමිණියේය, නමුත් දැනුම්දීම් අක්‍රිය කර ඇති නිසා ඔබගේ දුරකථනය නාද නොවීය. ඊළඟ ඇමතුම නාද වීමට දැනුම්දීම් වලට ඉඩ දෙන්න."
 }

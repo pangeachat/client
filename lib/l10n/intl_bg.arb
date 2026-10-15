@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-14 13:23:02.556370",
+    "@@last_modified": "2026-10-15 16:24:10.373091",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "Нямате връзка. Pangea Chat ще се свърже отново, когато връзката ви се възстанови.",
     "connectionUnreachable": "Pangea Chat е недостъпен. Опитва се отново...",
     "connectionBackOnline": "Връзката е възстановена",
-    "missionDueDate": "Краен срок: {date}, {time}"
+    "missionDueDate": "Краен срок: {date}, {time}",
+    "callNotificationsTitle": "Позволяване на звънене при повиквания",
+    "callNotificationsMessage": "Повикванията звънят като известия. Разрешете известията, за да звъни телефонът ви при повикване, дори когато Pangea Chat е затворен или телефонът ви е заключен.",
+    "callNotificationsMissedMessage": "Получено е повикване, докато Pangea Chat е бил затворен, но телефонът ви не е могъл да звъни, защото известията са изключени. Разрешете известията, за да звъни следващото повикване."
 }

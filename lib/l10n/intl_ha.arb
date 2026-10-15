@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-14 13:23:04.735081",
+    "@@last_modified": "2026-10-15 16:24:14.340292",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "Baka a layi. Pangea Chat zai sake haɗawa idan haɗin ku ya dawo.",
     "connectionUnreachable": "Ba a iya kaiwa ga Pangea Chat. Ana sake gwadawa…",
     "connectionBackOnline": "An dawo kan layi",
-    "missionDueDate": "Ranar ƙarshe {date}, {time}"
+    "missionDueDate": "Ranar ƙarshe {date}, {time}",
+    "callNotificationsTitle": "Bari kiran ya yi ƙara",
+    "callNotificationsMessage": "Kira na yin ƙara a matsayin sanarwa. Bada izinin sanarwa don wayarka ta yi ƙara don kira, ko da Pangea Chat a rufe take ko wayarka a kulle take.",
+    "callNotificationsMissedMessage": "An shigo da kira yayin da Pangea Chat a rufe take, amma wayarka ba ta iya yin ƙara ba saboda an kashe sanarwa. Bada izinin sanarwa don kiran na gaba ya yi ƙara."
 }

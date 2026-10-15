@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-14 13:23:12.460215",
+    "@@last_modified": "2026-10-15 16:24:19.537989",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "Та офлайн байна. Таны холболт сэргэх үед Pangea Chat дахин холбогдоно.",
     "connectionUnreachable": "Pangea Chat-д холбогдох боломжгүй байна. Дахин оролдож байна…",
     "connectionBackOnline": "Онлайн боллоо",
-    "missionDueDate": "{date}, {time} хүртэл"
+    "missionDueDate": "{date}, {time} хүртэл",
+    "callNotificationsTitle": "Дуудлагыг дуугаргах",
+    "callNotificationsMessage": "Дуудлага мэдэгдэл хэлбэрээр дуугарна. Pangea Chat хаалттай эсвэл таны утас түгжигдсэн байсан ч дуудлага ирэхэд утас дуугарахын тулд мэдэгдлийг зөвшөөрнө үү.",
+    "callNotificationsMissedMessage": "Pangea Chat хаалттай байхад дуудлага ирсэн боловч мэдэгдэл унтарсан байсан тул таны утас дуугарч чадаагүй. Дараагийн дуудлага дуугарахын тулд мэдэгдлийг зөвшөөрнө үү."
 }

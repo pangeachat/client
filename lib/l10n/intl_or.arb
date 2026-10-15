@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-10-14 13:23:14.329662",
+    "@@last_modified": "2026-10-15 16:24:21.773780",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "ଆପଣ ଅଫଲାଇନ ଅଛନ୍ତି। ଆପଣଙ୍କ ସଂଯୋଗ ଫେରି ଆସିଲେ Pangea Chat ପୁନଃସଂଯୋଗ ହେବ।",
     "connectionUnreachable": "Pangea Chat ସହିତ ସଂଯୋଗ ହୋଇପାରୁ ନାହିଁ। ପୁଣି ଚେଷ୍ଟା କରାଯାଉଛି…",
     "connectionBackOnline": "ପୁଣି ଅନଲାଇନରେ",
-    "missionDueDate": "ଦେୟ {date}, {time}"
+    "missionDueDate": "ଦେୟ {date}, {time}",
+    "callNotificationsTitle": "କଲ୍‌ଗୁଡ଼ିକୁ ରିଙ୍ଗ୍‌ ହେବାକୁ ଦିଅନ୍ତୁ",
+    "callNotificationsMessage": "କଲ୍‌ଗୁଡ଼ିକ ବିଜ୍ଞପ୍ତି ଭାବରେ ରିଙ୍ଗ୍‌ ହୁଏ। ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକୁ ଅନୁମତି ଦିଅନ୍ତୁ ଯାହାଫଳରେ Pangea Chat ବନ୍ଦ ଥିଲେ କିମ୍ବା ଆପଣଙ୍କ ଫୋନ୍‌ ଲକ୍‌ ଥିଲେ ମଧ୍ୟ କଲ୍‌ ପାଇଁ ଆପଣଙ୍କ ଫୋନ୍‌ ରିଙ୍ଗ୍‌ ହେବ।",
+    "callNotificationsMissedMessage": "Pangea Chat ବନ୍ଦ ଥିବାବେଳେ ଏକ କଲ୍‌ ଆସିଥିଲା, କିନ୍ତୁ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ବନ୍ଦ ଥିବାରୁ ଆପଣଙ୍କ ଫୋନ୍‌ ରିଙ୍ଗ୍‌ ହୋଇପାରିଲା ନାହିଁ। ପରବର୍ତ୍ତୀ କଲ୍‌ ରିଙ୍ଗ୍‌ ହେବା ପାଇଁ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକୁ ଅନୁମତି ଦିଅନ୍ତୁ।"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-14 13:22:58.751727",
+    "@@last_modified": "2026-10-15 16:24:11.840014",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "Jy is vanlyn. Pangea Chat sal weer koppel sodra jou verbinding herstel is.",
     "connectionUnreachable": "Kan nie Pangea Chat bereik nie. Probeer weer…",
     "connectionBackOnline": "Weer aanlyn",
-    "missionDueDate": "Verval {date}, {time}"
+    "missionDueDate": "Verval {date}, {time}",
+    "callNotificationsTitle": "Laat oproepe lui",
+    "callNotificationsMessage": "Oproepe lui as kennisgewings. Laat kennisgewings toe sodat jou foon lui vir 'n oproep, selfs wanneer Pangea Chat gesluit is of jou foon gesluit is.",
+    "callNotificationsMissedMessage": "'n Oproep het ingekom terwyl Pangea Chat gesluit was, maar jou foon kon nie lui nie omdat kennisgewings afgeskakel is. Laat kennisgewings toe sodat die volgende oproep lui."
 }

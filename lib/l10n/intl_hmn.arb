@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-14 13:23:06.313777",
+    "@@last_modified": "2026-10-15 16:24:14.791654",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "Koj tsis muaj internet. Pangea Chat yuav rov txuas thaum koj muaj internet dua.",
     "connectionUnreachable": "Txuas tsis tau rau Pangea Chat. Rov sim dua…",
     "connectionBackOnline": "Muaj internet dua",
-    "missionDueDate": "Yuav tsum ua tiav {date}, {time}"
+    "missionDueDate": "Yuav tsum ua tiav {date}, {time}",
+    "callNotificationsTitle": "Cia hu xov tooj nrov",
+    "callNotificationsMessage": "Hu xov tooj nrov ua ceeb toom. Tso cai ceeb toom kom koj lub xov tooj nrov thaum muaj kev hu, txawm tias Pangea Chat kaw lawm los yog koj lub xov tooj raug kaw.",
+    "callNotificationsMissedMessage": "Muaj kev hu tuaj thaum Pangea Chat kaw lawm, tiam sis koj lub xov tooj tsis tuaj yeem nrov vim tias cov ceeb toom raug kaw. Tso cai ceeb toom kom kev hu tom ntej nrov."
 }

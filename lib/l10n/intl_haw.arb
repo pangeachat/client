@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-14 13:23:04.625781",
+    "@@last_modified": "2026-10-15 16:24:14.581761",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "Aia ʻoe ma waho pūnaewele. E hoʻohui hou ʻo Pangea Chat ke hoʻi mai kāu pilina.",
     "connectionUnreachable": "ʻAʻole hiki ke hoʻopili iā Pangea Chat. Ke hoʻāʻo hou nei…",
     "connectionBackOnline": "Ua hoʻi hou i ka pūnaewele",
-    "missionDueDate": "Pau i ka {date}, {time}"
+    "missionDueDate": "Pau i ka {date}, {time}",
+    "callNotificationsTitle": "E kani nā kelepona",
+    "callNotificationsMessage": "Kani nā kelepona ma ke ʻano he mau leka hoʻomaopopo. E ʻae i nā leka hoʻomaopopo i kani kāu kelepona no ke kelepona ʻana, ʻoiai inā ua pani ʻia ʻo Pangea Chat a i ʻole ua paʻa kāu kelepona.",
+    "callNotificationsMissedMessage": "Ua komo mai kahi kelepona i ka wā i pani ʻia ai ʻo Pangea Chat, akā ʻaʻole hiki i kāu kelepona ke kani no ka mea ua pio nā leka hoʻomaopopo. E ʻae i nā leka hoʻomaopopo i kani ke kelepona aʻe."
 }

@@ -3082,7 +3082,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-14 13:23:19.640739",
+    "@@last_modified": "2026-10-15 16:24:25.675027",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10611,5 +10611,8 @@
     "connectionOffline": "คุณออฟไลน์อยู่ Pangea Chat จะเชื่อมต่อใหม่เมื่อคุณกลับมาออนไลน์",
     "connectionUnreachable": "ไม่สามารถเข้าถึง Pangea Chat ได้ กำลังลองอีกครั้ง…",
     "connectionBackOnline": "กลับมาออนไลน์แล้ว",
-    "missionDueDate": "ครบกำหนด {date}, {time}"
+    "missionDueDate": "ครบกำหนด {date}, {time}",
+    "callNotificationsTitle": "ให้สายเรียกเข้าดัง",
+    "callNotificationsMessage": "สายเรียกเข้าจะดังเป็นการแจ้งเตือน อนุญาตการแจ้งเตือนเพื่อให้โทรศัพท์ของคุณดังเมื่อมีสายเรียกเข้า แม้ว่า Pangea Chat จะปิดอยู่หรือโทรศัพท์ของคุณจะล็อกอยู่ก็ตาม",
+    "callNotificationsMissedMessage": "มีสายเรียกเข้าขณะที่ Pangea Chat ปิดอยู่ แต่โทรศัพท์ของคุณไม่สามารถดังได้เนื่องจากการแจ้งเตือนปิดอยู่ อนุญาตการแจ้งเตือนเพื่อให้สายเรียกเข้าครั้งต่อไปดังขึ้น"
 }

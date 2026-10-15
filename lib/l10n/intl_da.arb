@@ -1327,7 +1327,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-14 13:23:00.465707",
+    "@@last_modified": "2026-10-15 16:24:11.418835",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10899,5 +10899,8 @@
     "connectionOffline": "Du er offline. Pangea Chat opretter forbindelse igen, når du er online.",
     "connectionUnreachable": "Kan ikke nå Pangea Chat. Prøver igen…",
     "connectionBackOnline": "Tilbage online",
-    "missionDueDate": "Forfalder {date}, {time}"
+    "missionDueDate": "Forfalder {date}, {time}",
+    "callNotificationsTitle": "Lad opkald ringe",
+    "callNotificationsMessage": "Opkald ringer som notifikationer. Tillad notifikationer, så din telefon ringer ved et opkald, selv når Pangea Chat er lukket, eller din telefon er låst.",
+    "callNotificationsMissedMessage": "Et opkald kom ind, mens Pangea Chat var lukket, men din telefon kunne ikke ringe, fordi notifikationer er slået fra. Tillad notifikationer, så det næste opkald ringer."
 }

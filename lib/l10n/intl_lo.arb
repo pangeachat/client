@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-14 13:23:10.538530",
+    "@@last_modified": "2026-10-15 16:24:18.002538",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "ທ່ານອອບລາຍ. Pangea Chat ຈະເຊື່ອມຕໍ່ໃໝ່ເມື່ອການເຊື່ອມຕໍ່ຂອງທ່ານກັບມາ.",
     "connectionUnreachable": "ບໍ່ສາມາດເຂົ້າເຖິງ Pangea Chat ໄດ້. ພະຍາຍາມອີກຄັ້ງ…",
     "connectionBackOnline": "ກັບມາອອນລາຍແລ້ວ",
-    "missionDueDate": "ກຳນົດສົ່ງ {date}, {time}"
+    "missionDueDate": "ກຳນົດສົ່ງ {date}, {time}",
+    "callNotificationsTitle": "ໃຫ້ສາຍໂທເຂົ້າດັງ",
+    "callNotificationsMessage": "ສາຍໂທເຂົ້າຈະດັງເປັນການແຈ້ງເຕືອນ. ອະນຸຍາດການແຈ້ງເຕືອນເພື່ອໃຫ້ໂທລະສັບຂອງທ່ານດັງເມື່ອມີສາຍໂທເຂົ້າ, ເຖິງແມ່ນວ່າ Pangea Chat ຈະປິດຢູ່ ຫຼື ໂທລະສັບຂອງທ່ານຖືກລັອກຢູ່ກໍຕາມ.",
+    "callNotificationsMissedMessage": "ມີສາຍໂທເຂົ້າໃນຂະນະທີ່ Pangea Chat ປິດຢູ່, ແຕ່ໂທລະສັບຂອງທ່ານບໍ່ສາມາດດັງໄດ້ເນື່ອງຈາກການແຈ້ງເຕືອນຖືກປິດຢູ່. ອະນຸຍາດການແຈ້ງເຕືອນເພື່ອໃຫ້ສາຍໂທເຂົ້າຄັ້ງຕໍ່ໄປດັງ."
 }

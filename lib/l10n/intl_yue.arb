@@ -1256,7 +1256,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-14 13:23:21.019518",
+    "@@last_modified": "2026-10-15 16:24:26.567489",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10936,5 +10936,8 @@
     "connectionOffline": "你已離線。當你嘅連線恢復時，Pangea Chat 會自動重新連接。",
     "connectionUnreachable": "無法連接到 Pangea Chat。正在重試…",
     "connectionBackOnline": "已重新連線",
-    "missionDueDate": "{date} {time} 到期"
+    "missionDueDate": "{date} {time} 到期",
+    "callNotificationsTitle": "讓來電響鈴",
+    "callNotificationsMessage": "來電會以通知形式響鈴。請允許通知，即使 Pangea Chat 已關閉或手機已鎖定，你的手機仍會為來電響鈴。",
+    "callNotificationsMissedMessage": "Pangea Chat 關閉時有來電，但由於通知已關閉，你的手機無法響鈴。請允許通知，以便下次來電響鈴。"
 }

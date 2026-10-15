@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-14 13:23:15.821860",
+    "@@last_modified": "2026-10-15 16:24:21.419054",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9982,5 +9982,8 @@
     "connectionOffline": "Você está offline. O Pangea Chat irá reconectar quando sua conexão voltar.",
     "connectionUnreachable": "Não é possível acessar o Pangea Chat. Tentando novamente…",
     "connectionBackOnline": "Online novamente",
-    "missionDueDate": "Vencimento: {date}, {time}"
+    "missionDueDate": "Vencimento: {date}, {time}",
+    "callNotificationsTitle": "Deixar as chamadas tocarem",
+    "callNotificationsMessage": "As chamadas tocam como notificações. Permita as notificações para que seu telefone toque em uma chamada, mesmo quando o Pangea Chat estiver fechado ou seu telefone estiver bloqueado.",
+    "callNotificationsMissedMessage": "Uma chamada chegou enquanto o Pangea Chat estava fechado, mas seu telefone não pôde tocar porque as notificações estão desativadas. Permita as notificações para que a próxima chamada toque."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-14 13:23:13.352569",
+    "@@last_modified": "2026-10-15 16:24:20.253797",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "Nangthou offline-ni. Nangthougi connection hallaklabadi Pangea Chat-na amuk hanna connect tougani.",
     "connectionUnreachable": "Pangea Chat-ta paudam yaba ngamde. Amuk hanna hotnari…",
     "connectionBackOnline": "Amuk hanna online-da leire",
-    "missionDueDate": "{date}, {time} da loisin'ganu"
+    "missionDueDate": "{date}, {time} da loisin'ganu",
+    "callNotificationsTitle": "কলশিংনা রিং তৌহনবীয়ু",
+    "callNotificationsMessage": "কলশিংনা নোটিফিকেসন ওইনা রিং তৌই. নোটিফিকেসনশিং এলাও তৌবীয়ু মদুনা নখোঙগী ফোননা কল অমাগীদমক রিং তৌগনি, পঙ্গিয়া চ্যাট থিংদুনরিংদা নত্ত্রগা নখোঙগী ফোন লক তৌদুনরিংদসু.",
+    "callNotificationsMissedMessage": "পঙ্গিয়া চ্যাট থিংদুনরিংদা কল অমা লাকখি, অদুবু নখোঙগী ফোননা রিং তৌবা ঙমখিদে মরমদি নোটিফিকেসনশিং অফ তৌখি. নোটিফিকেসনশিং এলাও তৌবীয়ু মদুনা অতোপ্পা কল অদুনা রিং তৌগনি."
 }

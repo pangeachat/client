@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-14 13:23:20.027601",
+    "@@last_modified": "2026-10-15 16:24:25.332708",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "آپ آف لائن ہیں۔ Pangea Chat آپ کا کنکشن واپس آنے پر دوبارہ جڑ جائے گا۔",
     "connectionUnreachable": "Pangea Chat تک رسائی حاصل نہیں کر سکتے۔ دوبارہ کوشش کر رہے ہیں…",
     "connectionBackOnline": "دوبارہ آن لائن",
-    "missionDueDate": "{date}، {time} کو واجب الادا"
+    "missionDueDate": "{date}، {time} کو واجب الادا",
+    "callNotificationsTitle": "کالز کو رنگ کرنے دیں",
+    "callNotificationsMessage": "کالز نوٹیفکیشن کے طور پر رنگ کرتی ہیں۔ نوٹیفکیشنز کی اجازت دیں تاکہ آپ کے فون کی گھنٹی بجے، چاہے Pangea Chat بند ہو یا آپ کا فون لاک ہو۔",
+    "callNotificationsMissedMessage": "جب Pangea Chat بند تھا تو ایک کال آئی، لیکن آپ کا فون رنگ نہیں کر سکا کیونکہ نوٹیفکیشنز بند ہیں۔ نوٹیفکیشنز کی اجازت دیں تاکہ اگلی کال رنگ کرے۔"
 }

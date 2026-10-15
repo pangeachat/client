@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-14 13:23:22.913820",
+    "@@last_modified": "2026-10-15 16:24:26.831582",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "سىز تورسىز. Pangea پاراڭلىشىش تور ئۇلىنىشىڭىز ئەسلىگە كەلگەندە قايتا ئۇلىنىدۇ.",
     "connectionUnreachable": "Pangea پاراڭلىشىشقا يېتىش مۇمكىن ئەمەس. قايتا سىناۋاتىدۇ…",
     "connectionBackOnline": "تورغا قايتا چىقتى",
-    "missionDueDate": "{date}, {time} غا قەدەر"
+    "missionDueDate": "{date}, {time} غا قەدەر",
+    "callNotificationsTitle": "چېقىرىشلارنى جىرىڭلىتىڭ",
+    "callNotificationsMessage": "چېقىرىشلار ئۇقتۇرۇش سۈپىتىدە جىرىڭلايدۇ. Pangea Chat تاقالغان ياكى تېلېفونىڭىز قۇلۇپلانغان ۋاقىتتىمۇ تېلېفونىڭىزنىڭ جىرىڭلىشى ئۈچۈن ئۇقتۇرۇشقا رۇخسەت قىلىڭ.",
+    "callNotificationsMissedMessage": "Pangea Chat تاقالغان ۋاقىتتا بىر تېلېفون كەلدى، ئەمما ئۇقتۇرۇش ئېتىۋېتىلگەنلىكتىن تېلېفونىڭىز جىرىڭلىمىدى. كېيىنكى تېلېفوننىڭ جىرىڭلىشى ئۈچۈن ئۇقتۇرۇشقا رۇخسەت قىلىڭ."
 }

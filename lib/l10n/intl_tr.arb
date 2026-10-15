@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-14 13:23:18.449749",
+    "@@last_modified": "2026-10-15 16:24:25.002604",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10280,5 +10280,8 @@
     "connectionOffline": "Çevrimdışısınız. Bağlantınız geri geldiğinde Pangea Chat yeniden bağlanacaktır.",
     "connectionUnreachable": "Pangea Chat'e ulaşılamıyor. Tekrar deneniyor…",
     "connectionBackOnline": "Tekrar çevrimiçi",
-    "missionDueDate": "{date}, {time} tarihinde bitiyor"
+    "missionDueDate": "{date}, {time} tarihinde bitiyor",
+    "callNotificationsTitle": "Çağrıların çalmasına izin ver",
+    "callNotificationsMessage": "Çağrılar bildirim olarak çalar. Pangea Chat kapalıyken veya telefonunuz kilitliyken bile bir çağrı için telefonunuzun çalması için bildirimlere izin verin.",
+    "callNotificationsMissedMessage": "Pangea Chat kapalıyken bir çağrı geldi, ancak bildirimler kapalı olduğu için telefonunuz çalamadı. Bir sonraki çağrının çalması için bildirimlere izin verin."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-14 13:23:03.555584",
+    "@@last_modified": "2026-10-15 16:24:10.501682",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2444,5 +2444,8 @@
     "connectionOffline": "ከመስመር ውጭ ነዎት። ግንኙነትዎ ሲመለስ ፓንጋያ ቻት እንደገና ይገናኛል።",
     "connectionUnreachable": "ፓንጋያ ቻት ማግኘት አልተቻለም። እንደገና በመሞከር ላይ…",
     "connectionBackOnline": "በድጋሚ መስመር ላይ ነዎት",
-    "missionDueDate": "የሚጠናቀቅበት ቀን {date}, {time}"
+    "missionDueDate": "የሚጠናቀቅበት ቀን {date}, {time}",
+    "callNotificationsTitle": "ጥሪዎች እንዲጠሩ ፍቀድ",
+    "callNotificationsMessage": "ጥሪዎች እንደ ማሳወቂያ ይጠራሉ። ፓንጋያ ቻት ዝግ ቢሆንም ወይም ስልክዎ ተቆልፎ ቢሆንም ስልክዎ ለጥሪ እንዲጠራ ማሳወቂያዎችን ይፍቀዱ።",
+    "callNotificationsMissedMessage": "ፓንጋያ ቻት ዝግ እያለ ጥሪ መጥቶ ነበር፣ ነገር ግን ማሳወቂያዎች ስለጠፉ ስልክዎ ሊጠራ አልቻለም። ቀጣዩ ጥሪ እንዲጠራ ማሳወቂያዎችን ይፍቀዱ።"
 }

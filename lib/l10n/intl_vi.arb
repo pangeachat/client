@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-14 13:23:19.221684",
+    "@@last_modified": "2026-10-15 16:24:26.038115",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7289,5 +7289,8 @@
     "connectionOffline": "Bạn đang ngoại tuyến. Pangea Chat sẽ kết nối lại khi có mạng.",
     "connectionUnreachable": "Không thể kết nối với Pangea Chat. Đang thử lại…",
     "connectionBackOnline": "Đã trực tuyến trở lại",
-    "missionDueDate": "Đến hạn {date}, {time}"
+    "missionDueDate": "Đến hạn {date}, {time}",
+    "callNotificationsTitle": "Cho phép cuộc gọi đổ chuông",
+    "callNotificationsMessage": "Cuộc gọi đổ chuông dưới dạng thông báo. Cho phép thông báo để điện thoại của bạn đổ chuông khi có cuộc gọi, ngay cả khi Pangea Chat đã đóng hoặc điện thoại của bạn bị khóa.",
+    "callNotificationsMissedMessage": "Có cuộc gọi đến khi Pangea Chat đã đóng, nhưng điện thoại của bạn không thể đổ chuông vì thông báo đã tắt. Cho phép thông báo để cuộc gọi tiếp theo đổ chuông."
 }

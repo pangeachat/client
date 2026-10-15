@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-14 13:23:23.838152",
+    "@@last_modified": "2026-10-15 16:24:26.907718",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10088,5 +10088,8 @@
     "connectionOffline": "您已離線。Pangea Chat 將在連線恢復時重新連線。",
     "connectionUnreachable": "無法連線到 Pangea Chat。正在重試…",
     "connectionBackOnline": "已重新連線",
-    "missionDueDate": "在 {date} {time} 到期"
+    "missionDueDate": "在 {date} {time} 到期",
+    "callNotificationsTitle": "讓來電響鈴",
+    "callNotificationsMessage": "來電會以通知形式響鈴。請允許通知，這樣即使 Pangea Chat 關閉或手機鎖定，您的手機也能響鈴。",
+    "callNotificationsMissedMessage": "Pangea Chat 關閉時有來電，但由於通知已關閉，您的手機無法響鈴。請允許通知，以便下次來電響鈴。"
 }

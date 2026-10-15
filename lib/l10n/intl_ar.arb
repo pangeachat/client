@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-14 13:22:58.719696",
+    "@@last_modified": "2026-10-15 16:24:10.115816",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10285,5 +10285,8 @@
     "connectionOffline": "أنت غير متصل. ستتم إعادة الاتصال بـ Pangea Chat عند عودة اتصالك.",
     "connectionUnreachable": "لا يمكن الوصول إلى Pangea Chat. جارٍ المحاولة مرة أخرى…",
     "connectionBackOnline": "عاد الاتصال",
-    "missionDueDate": "تستحق في {date}، الساعة {time}"
+    "missionDueDate": "تستحق في {date}، الساعة {time}",
+    "callNotificationsTitle": "السماح للمكالمات بالرنين",
+    "callNotificationsMessage": "ترن المكالمات كإشعارات. اسمح بالإشعارات حتى يرن هاتفك عند ورود مكالمة، حتى عندما يكون Pangea Chat مغلقًا أو هاتفك مقفلاً.",
+    "callNotificationsMissedMessage": "وردت مكالمة بينما كان Pangea Chat مغلقًا، ولكن لم يتمكن هاتفك من الرنين لأن الإشعارات متوقفة. اسمح بالإشعارات حتى ترن المكالمة التالية."
 }
