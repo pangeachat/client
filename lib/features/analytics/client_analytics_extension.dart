@@ -371,11 +371,24 @@ extension AnalyticsClientExtension on Client {
 
         final constructEvents =
             roomConstructEvents ?? <ConstructAnalyticsEvent>[];
-        final allUses = constructEvents
-            .map((e) => e.content.uses)
-            .expand((u) => u)
-            .toList();
-        await canonicalAnalyticsRoom.sendConstructsEvent(allUses);
+        final upload = await canonicalAnalyticsRoom.sendConstructsEvent(
+          constructEvents.map((e) => e.content.uses).toList(),
+        );
+        // The room stays unmerged so the next combine tries again. That sends
+        // the accepted part again too, which the canonical room then holds
+        // twice; losing the rest would be worse.
+        if (!upload.allAccepted) {
+          ErrorHandler.logError(
+            e: "Analytics room merge upload not accepted",
+            data: {
+              'analytics_room_id': analyticsRoom.id,
+              'batchCount': upload.batchCount,
+              'acceptedBatchCount': upload.acceptedBatchCount,
+            },
+            level: SentryLevel.warning,
+          );
+          continue;
+        }
 
         final activityRoomIds = analyticsRoom.activityRoomIds.toSet();
         await canonicalAnalyticsRoom.addActivityRoomIds(activityRoomIds);

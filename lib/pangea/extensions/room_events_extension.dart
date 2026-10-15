@@ -290,6 +290,10 @@ extension EventsRoomExtension on Room {
   /// Get a list of events in the room that are of type [PangeaEventTypes.construct]
   /// and have the sender as [userID]. If [count] is provided, the function will
   /// return at most [count] events.
+  ///
+  /// Only the server's events count: a send that failed stays in the local
+  /// timeline with an error status, and reading it as analytics counts uses
+  /// that never reached the server (#9511).
   Future<List<Event>> getRoomAnalyticsEvents({
     String? userID,
     int? count,
@@ -329,7 +333,10 @@ extension EventsRoomExtension on Room {
 
     final events = timeline.chunk.events
         .where(
-          (e) => e.type == PangeaEventTypes.construct && e.senderId == userID,
+          (e) =>
+              e.type == PangeaEventTypes.construct &&
+              e.senderId == userID &&
+              e.status.isSynced,
         )
         .map((e) => Event.fromMatrixEvent(e, this));
 

@@ -134,6 +134,8 @@ Users should never see their level go down due to negative-XP construct uses. If
 
 All analytics computation happens against [`AnalyticsDatabase`](../../lib/features/analytics_data/analytics_database.dart) (SQLite on native, IndexedDB on web). The app never queries the server for analytics on a per-message basis. [`AnalyticsUpdateService`](../../lib/features/analytics_data/analytics_update_service.dart) syncs data to a dedicated Matrix room in the background — batched every 10 messages or 10 minutes, whichever comes first. [`AnalyticsDataService`](../../lib/features/analytics_data/analytics_data_service.dart) is the central orchestrator that wires everything together.
 
+A use stays on the device until the server has accepted the event that carries it. When a flush fails, in whole or in part, every batch the server did not accept stays on the device, and no batch the server accepted is sent again. Uploads pause while the [connection banner](connection-status.instructions.md#losing-the-connection) says the connection is lost, and run once when it returns.
+
 ### Per-Language Isolation
 
 Each target language has its own analytics room and its own local database partition. Switching languages reinitializes the analytics context cleanly.

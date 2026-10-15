@@ -430,10 +430,6 @@ class AnalyticsDataService {
     );
   }
 
-  Future<void> waitForSync(String analyticsRoomID) async {
-    await _syncController?.waitForSync(analyticsRoomID);
-  }
-
   /// The cached stats, but only when they are [language]'s. This is the
   /// synchronous placeholder a UI surface paints before [derivedData] resolves,
   /// so handing back another language's totals shows the learner a level that
