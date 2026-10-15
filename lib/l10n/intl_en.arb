@@ -3717,6 +3717,18 @@
     "callDecline": "Decline",
     "callFullScreenTitle": "Let calls ring full screen",
     "callFullScreenMessage": "A call came in while Pangea Chat was closed, but your phone could only show a small notification for it. Allow full-screen calls so the next one rings on your whole screen, even when your phone is locked.",
+    "callNotificationsTitle": "Let calls ring",
+    "@callNotificationsTitle": {
+        "description": "Android only. Title of the explanation shown before Android asks to allow notifications, which a call needs to ring the phone."
+    },
+    "callNotificationsMessage": "Calls ring as notifications. Allow notifications so your phone rings for a call, even when Pangea Chat is closed or your phone is locked.",
+    "@callNotificationsMessage": {
+        "description": "Android only. Body of the one-time explanation shown before Android's own notifications prompt."
+    },
+    "callNotificationsMissedMessage": "A call came in while Pangea Chat was closed, but your phone could not ring because notifications are off. Allow notifications so the next call rings.",
+    "@callNotificationsMissedMessage": {
+        "description": "Android only. Body of the explanation shown after a call could not ring because notifications were off, before Android's own notifications prompt."
+    },
     "callMicrophoneTitle": "Use your microphone for calls",
     "@callMicrophoneTitle": {
         "description": "iPhone only. Title of the one-time explanation shown before iOS asks for the microphone, so calls answered later from the lock screen can connect."

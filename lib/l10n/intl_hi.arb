@@ -3082,7 +3082,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-10-14 13:23:09.068016",
+    "@@last_modified": "2026-10-15 16:24:14.059718",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10597,5 +10597,8 @@
     "connectionOffline": "आप ऑफ़लाइन हैं। आपका कनेक्शन वापस आने पर पेंजिया चैट फिर से कनेक्ट हो जाएगा।",
     "connectionUnreachable": "पेंजिया चैट तक नहीं पहुँच सकते। फिर से कोशिश कर रहा है…",
     "connectionBackOnline": "वापस ऑनलाइन",
-    "missionDueDate": "{date}, {time} को देय"
+    "missionDueDate": "{date}, {time} को देय",
+    "callNotificationsTitle": "कॉल को बजने दें",
+    "callNotificationsMessage": "कॉल सूचनाओं के रूप में बजती हैं। सूचनाओं की अनुमति दें ताकि आपका फ़ोन कॉल के लिए बजे, तब भी जब पेंजिया चैट बंद हो या आपका फ़ोन लॉक हो।",
+    "callNotificationsMissedMessage": "पेंजिया चैट बंद होने पर एक कॉल आई थी, लेकिन आपका फ़ोन बज नहीं सका क्योंकि सूचनाएँ बंद हैं। सूचनाओं की अनुमति दें ताकि अगली कॉल बजे।"
 }

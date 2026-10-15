@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-14 13:23:10.837582",
+    "@@last_modified": "2026-10-15 16:24:16.068088",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10734,5 +10734,8 @@
     "connectionOffline": "オフラインです。接続が回復すると、Pangea Chatは再接続します。",
     "connectionUnreachable": "Pangea Chatに到達できません。再試行中…",
     "connectionBackOnline": "オンラインに戻りました",
-    "missionDueDate": "{date} {time} 期限"
+    "missionDueDate": "{date} {time} 期限",
+    "callNotificationsTitle": "通話を着信音で通知",
+    "callNotificationsMessage": "通話は通知として着信します。Pangea Chatが閉じている場合や、スマートフォンがロックされている場合でも、通話時に着信音が鳴るように通知を許可してください。",
+    "callNotificationsMissedMessage": "Pangea Chatが閉じている間に通話がありましたが、通知がオフになっているため、スマートフォンで着信音を鳴らすことができませんでした。次回の通話で着信音が鳴るように通知を許可してください。"
 }

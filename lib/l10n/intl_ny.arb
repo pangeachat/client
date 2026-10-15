@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-14 13:23:13.501264",
+    "@@last_modified": "2026-10-15 16:24:21.189800",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "Simuli pa intaneti. Pangea Chat idzalumikizananso intaneti ikabweranso.",
     "connectionUnreachable": "Sindingathe kufika ku Pangea Chat. Kuyesanso…",
     "connectionBackOnline": "Kubwerera pa intaneti",
-    "missionDueDate": "Chifukwa {date}, {time}"
+    "missionDueDate": "Chifukwa {date}, {time}",
+    "callNotificationsTitle": "Maimbidwe a foni azilira",
+    "callNotificationsMessage": "Maimbidwe a foni amadzera ngati zidziwitso. Lolani zidziwitso kuti foni yanu izilira ngati kuli kaimbidwe, ngakhale Pangea Chat yatsekedwa kapena foni yanu yatsekedwa.",
+    "callNotificationsMissedMessage": "Kaimbidwe ka foni kanabwera pamene Pangea Chat inatsekedwa, koma foni yanu sinathe kulira chifukwa zidziwitso zazimitsidwa. Lolani zidziwitso kuti kaimbidwe kotsatira kazilira."
 }

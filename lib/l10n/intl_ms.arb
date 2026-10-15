@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-14 13:23:12.051709",
+    "@@last_modified": "2026-10-15 16:24:21.118070",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "Anda berada di luar talian. Sembang Pangea akan menyambung semula apabila sambungan anda kembali.",
     "connectionUnreachable": "Tidak dapat mencapai Sembang Pangea. Mencuba lagi…",
     "connectionBackOnline": "Kembali dalam talian",
-    "missionDueDate": "Tamat {date}, {time}"
+    "missionDueDate": "Tamat {date}, {time}",
+    "callNotificationsTitle": "Benarkan panggilan berdering",
+    "callNotificationsMessage": "Panggilan berdering sebagai pemberitahuan. Benarkan pemberitahuan supaya telefon anda berdering untuk panggilan, walaupun Pangea Chat ditutup atau telefon anda dikunci.",
+    "callNotificationsMissedMessage": "Panggilan masuk semasa Pangea Chat ditutup, tetapi telefon anda tidak dapat berdering kerana pemberitahuan dimatikan. Benarkan pemberitahuan supaya panggilan seterusnya berdering."
 }

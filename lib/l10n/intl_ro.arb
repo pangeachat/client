@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-14 13:23:15.367408",
+    "@@last_modified": "2026-10-15 16:24:22.276444",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10697,5 +10697,8 @@
     "connectionOffline": "Ești offline. Pangea Chat se va reconecta când vei avea din nou o conexiune.",
     "connectionUnreachable": "Pangea Chat nu poate fi accesat. Se încearcă din nou…",
     "connectionBackOnline": "Revenit online",
-    "missionDueDate": "Scadența: {date}, {time}"
+    "missionDueDate": "Scadența: {date}, {time}",
+    "callNotificationsTitle": "Permite apelurilor să sune",
+    "callNotificationsMessage": "Apelurile sună ca notificări. Permite notificările pentru ca telefonul tău să sune la un apel, chiar și atunci când Pangea Chat este închis sau telefonul tău este blocat.",
+    "callNotificationsMissedMessage": "A intrat un apel în timp ce Pangea Chat era închis, dar telefonul tău nu a putut suna deoarece notificările sunt dezactivate. Permite notificările pentru ca următorul apel să sune."
 }

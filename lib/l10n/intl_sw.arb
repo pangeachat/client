@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-14 13:23:18.061557",
+    "@@last_modified": "2026-10-15 16:24:25.553294",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "Hauna intaneti. Pangea Chat itaunganisha tena intaneti yako itakaporudi.",
     "connectionUnreachable": "Haiwezi kufikia Pangea Chat. Inajaribu tena…",
     "connectionBackOnline": "Umerudi mtandaoni",
-    "missionDueDate": "Tarehe ya kukamilisha {date}, {time}"
+    "missionDueDate": "Tarehe ya kukamilisha {date}, {time}",
+    "callNotificationsTitle": "Ruhusu simu ziite",
+    "callNotificationsMessage": "Simu huita kama arifa. Ruhusu arifa ili simu yako iite kwa simu, hata kama Pangea Chat imefungwa au simu yako imefungwa.",
+    "callNotificationsMissedMessage": "Simu iliingia wakati Pangea Chat ilifungwa, lakini simu yako haikuweza kuita kwa sababu arifa zimezimwa. Ruhusu arifa ili simu inayofuata iite."
 }

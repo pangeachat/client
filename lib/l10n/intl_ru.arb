@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-14 13:23:15.497884",
+    "@@last_modified": "2026-10-15 16:24:22.419445",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10940,5 +10940,8 @@
     "connectionOffline": "Вы не в сети. Pangea Chat переподключится, когда соединение восстановится.",
     "connectionUnreachable": "Не удается подключиться к Pangea Chat. Повторная попытка…",
     "connectionBackOnline": "Снова в сети",
-    "missionDueDate": "Срок: {date}, {time}"
+    "missionDueDate": "Срок: {date}, {time}",
+    "callNotificationsTitle": "Разрешить звонки",
+    "callNotificationsMessage": "Звонки поступают как уведомления. Разрешите уведомления, чтобы ваш телефон звонил при входящем звонке, даже когда Pangea Chat закрыт или ваш телефон заблокирован.",
+    "callNotificationsMissedMessage": "Входящий звонок поступил, когда Pangea Chat был закрыт, но ваш телефон не мог звонить, потому что уведомления отключены. Разрешите уведомления, чтобы следующий звонок прозвучал."
 }

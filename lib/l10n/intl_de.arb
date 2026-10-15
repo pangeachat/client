@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-14 13:23:01.118613",
+    "@@last_modified": "2026-10-15 16:24:11.578838",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9955,5 +9955,8 @@
     "connectionOffline": "Du bist offline. Pangea Chat verbindet sich wieder, sobald deine Verbindung wiederhergestellt ist.",
     "connectionUnreachable": "Pangea Chat ist nicht erreichbar. Versuche es erneut …",
     "connectionBackOnline": "Wieder online",
-    "missionDueDate": "Fällig am {date}, {time}"
+    "missionDueDate": "Fällig am {date}, {time}",
+    "callNotificationsTitle": "Anrufe klingeln lassen",
+    "callNotificationsMessage": "Anrufe klingeln als Benachrichtigungen. Erlaube Benachrichtigungen, damit dein Telefon bei einem Anruf klingelt, auch wenn Pangea Chat geschlossen oder dein Telefon gesperrt ist.",
+    "callNotificationsMissedMessage": "Ein Anruf kam herein, während Pangea Chat geschlossen war, aber dein Telefon konnte nicht klingeln, da Benachrichtigungen deaktiviert sind. Erlaube Benachrichtigungen, damit der nächste Anruf klingelt."
 }

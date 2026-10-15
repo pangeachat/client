@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-14 13:23:07.337961",
+    "@@last_modified": "2026-10-15 16:24:15.957524",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "Ị nọ n'ịntanetị. Pangea Chat ga-ejikọgharị mgbe njikọ gị laghachiri.",
     "connectionUnreachable": "Enweghị ike iru Pangea Chat. Na-anwa ọzọ…",
     "connectionBackOnline": "Ịntanetị alaghachila",
-    "missionDueDate": "Oge ruru {date}, {time}"
+    "missionDueDate": "Oge ruru {date}, {time}",
+    "callNotificationsTitle": "Kwe ka oku kụọ",
+    "callNotificationsMessage": "Oku na-ada ka ọkwa. Kwe ka ọkwa ka ekwentị gị wee kụọ maka oku, ọbụlagodi mgbe Pangea Chat mechiri ma ọ bụ ekwentị gị kpọchiri.",
+    "callNotificationsMissedMessage": "Oku batara mgbe Pangea Chat mechiri, mana ekwentị gị enweghị ike ịda n'ihi na agbanyụrụ ọkwa. Kwe ka ọkwa ka oku na-abịa kụọ."
 }

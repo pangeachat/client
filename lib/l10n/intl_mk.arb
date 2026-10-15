@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-14 13:23:11.201677",
+    "@@last_modified": "2026-10-15 16:24:18.637581",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "Офлајн сте. Pangea Chat повторно ќе се поврзе кога ќе се врати вашата врска.",
     "connectionUnreachable": "Не може да се дојде до Pangea Chat. Обидувам повторно…",
     "connectionBackOnline": "Повторно онлајн",
-    "missionDueDate": "Доспева на {date}, {time}"
+    "missionDueDate": "Доспева на {date}, {time}",
+    "callNotificationsTitle": "Дозволи повиците да ѕвонат",
+    "callNotificationsMessage": "Повиците ѕвонат како известувања. Дозволете известувања за да ѕвони вашиот телефон при повик, дури и кога Pangea Chat е затворен или вашиот телефон е заклучен.",
+    "callNotificationsMissedMessage": "Дојде повик додека Pangea Chat беше затворен, но вашиот телефон не можеше да ѕвони бидејќи известувањата се исклучени. Дозволете известувања за следниот повик да ѕвони."
 }

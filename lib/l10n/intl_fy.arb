@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-14 13:23:06.102536",
+    "@@last_modified": "2026-10-15 16:24:13.299575",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "Jo binne offline. Pangea Chat sil opnij ferbine as jo ferbining werom is.",
     "connectionUnreachable": "Pangea Chat is net berikber. Op 'e nij besykje…",
     "connectionBackOnline": "Wer online",
-    "missionDueDate": "Ferfaldatum {date}, {time}"
+    "missionDueDate": "Ferfaldatum {date}, {time}",
+    "callNotificationsTitle": "Lit petearen oergean",
+    "callNotificationsMessage": "Petearen geane oer as notifikaasjes. Tastean notifikaasjes ta, sadat jo tillefoan oergiet foar in petear, sels as Pangea Chat sletten is of jo tillefoan beskoattele is.",
+    "callNotificationsMissedMessage": "Der kaam in petear binnen wylst Pangea Chat sletten wie, mar jo tillefoan koe net oergean om't notifikaasjes útstien. Tastean notifikaasjes ta, sadat it folgjende petear oergiet."
 }

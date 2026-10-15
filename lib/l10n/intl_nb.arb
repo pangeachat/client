@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-14 13:23:12.271506",
+    "@@last_modified": "2026-10-15 16:24:21.184877",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10025,5 +10025,8 @@
     "connectionOffline": "Du er frakoblet. Pangea Chat kobles til igjen når du er på nett.",
     "connectionUnreachable": "Får ikke kontakt med Pangea Chat. Prøver igjen …",
     "connectionBackOnline": "Tilbake på nett",
-    "missionDueDate": "Frist {date}, {time}"
+    "missionDueDate": "Frist {date}, {time}",
+    "callNotificationsTitle": "La anrop ringe",
+    "callNotificationsMessage": "Anrop ringer som varsler. Tillat varsler slik at telefonen din ringer for et anrop, selv når Pangea Chat er lukket eller telefonen din er låst.",
+    "callNotificationsMissedMessage": "Et anrop kom inn mens Pangea Chat var lukket, men telefonen din kunne ikke ringe fordi varsler er slått av. Tillat varsler slik at neste anrop ringer."
 }

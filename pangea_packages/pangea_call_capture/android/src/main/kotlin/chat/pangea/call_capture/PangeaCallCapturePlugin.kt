@@ -280,6 +280,13 @@ class PangeaCallCapturePlugin :
         IncomingRingService.openFullScreenSettings(context)
         result.success(null)
       }
+      "notifications_wanted" -> result.success(
+        IncomingRingService.notificationsWanted(context),
+      )
+      "notifications_asked" -> {
+        IncomingRingService.notificationsAsked(context)
+        result.success(null)
+      }
       "claim_answers" -> {
         // Only the engine with the app in it can answer a call, so it claims
         // the bridge, the way the ongoing call claims its notification's.

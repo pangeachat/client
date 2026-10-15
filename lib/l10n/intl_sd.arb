@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-14 13:23:15.504870",
+    "@@last_modified": "2026-10-15 16:24:22.341553",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "توهان آف لائن آهيو. پينجيا چيٽ ٻيهر ڳنڍجي ويندي جڏهن توهان جو ڪنيڪشن واپس ايندو.",
     "connectionUnreachable": "پينجيا چيٽ تائين پهچي نٿو سگهجي. ٻيهر ڪوشش ڪري رهيو آهيان…",
     "connectionBackOnline": "واپس آن لائن",
-    "missionDueDate": "{date} تي، {time} تي"
+    "missionDueDate": "{date} تي، {time} تي",
+    "callNotificationsTitle": "ڪالز کي وڄڻ ڏيو",
+    "callNotificationsMessage": "ڪالز نوٽيفڪيشن طور وڄن ٿيون. نوٽيفڪيشنز جي اجازت ڏيو ته جيئن توهان جو فون ڪال لاءِ وڄي، جيتوڻيڪ پينگيا چيٽ بند هجي يا توهان جو فون لاڪ هجي.",
+    "callNotificationsMissedMessage": "هڪ ڪال آئي جڏهن پينگيا چيٽ بند هو، پر توهان جو فون وڄي نه سگهيو ڇاڪاڻ ته نوٽيفڪيشنز بند آهن. نوٽيفڪيشنز جي اجازت ڏيو ته جيئن ايندڙ ڪال وڄي."
 }

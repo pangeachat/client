@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-14 13:23:04.680000",
+    "@@last_modified": "2026-10-15 16:24:13.955917",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "તમે ઑફલાઇન છો. તમારું કનેક્શન પાછું આવશે ત્યારે Pangea Chat ફરીથી કનેક્ટ થશે.",
     "connectionUnreachable": "Pangea Chat સુધી પહોંચી શકાતું નથી. ફરીથી પ્રયાસ કરી રહ્યું છે…",
     "connectionBackOnline": "ફરીથી ઑનલાઇન",
-    "missionDueDate": "{date}, {time} ના રોજ થવાનું છે"
+    "missionDueDate": "{date}, {time} ના રોજ થવાનું છે",
+    "callNotificationsTitle": "કૉલ્સ રિંગ થવા દો",
+    "callNotificationsMessage": "કૉલ્સ નોટિફિકેશન તરીકે રિંગ થાય છે. નોટિફિકેશનની પરવાનગી આપો જેથી Pangea Chat બંધ હોય અથવા તમારો ફોન લૉક હોય ત્યારે પણ તમારા ફોનમાં કૉલ આવે.",
+    "callNotificationsMissedMessage": "Pangea Chat બંધ હતું ત્યારે કૉલ આવ્યો હતો, પરંતુ નોટિફિકેશન બંધ હોવાને કારણે તમારો ફોન રિંગ થઈ શક્યો નહીં. નોટિફિકેશનની પરવાનગી આપો જેથી આગલો કૉલ રિંગ થાય."
 }

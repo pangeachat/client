@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-14 13:23:01.780608",
+    "@@last_modified": "2026-10-15 16:24:12.355627",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10910,5 +10910,8 @@
     "connectionOffline": "Vi estas eksterrete. Pangea Chat rekonektos kiam via konekto revenos.",
     "connectionUnreachable": "Ne eblas atingi Pangea Chat. Reprovas…",
     "connectionBackOnline": "Reen enrete",
-    "missionDueDate": "Limdato {date}, {time}"
+    "missionDueDate": "Limdato {date}, {time}",
+    "callNotificationsTitle": "Lasu vokojn sonori",
+    "callNotificationsMessage": "Vokoj sonoras kiel sciigoj. Permesu sciigojn por ke via telefono sonoru por voko, eĉ kiam Pangea Chat estas fermita aŭ via telefono estas ŝlosita.",
+    "callNotificationsMissedMessage": "Voko envenis dum Pangea Chat estis fermita, sed via telefono ne povis sonori ĉar sciigoj estas malŝaltitaj. Permesu sciigojn por ke la sekva voko sonoru."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-14 13:23:07.282790",
+    "@@last_modified": "2026-10-15 16:24:16.383297",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "Þú ert ótengdur. Pangea Chat mun tengjast aftur þegar nettengingin er komin á.",
     "connectionUnreachable": "Næ ekki sambandi við Pangea Chat. Reyni aftur…",
     "connectionBackOnline": "Aftur á netinu",
-    "missionDueDate": "Skilafrestur {date}, {time}"
+    "missionDueDate": "Skilafrestur {date}, {time}",
+    "callNotificationsTitle": "Láta símtöl hringja",
+    "callNotificationsMessage": "Símtöl hringja sem tilkynningar. Leyfðu tilkynningar svo síminn þinn hringi þegar símtal berst, jafnvel þegar Pangea Chat er lokað eða síminn þinn er læstur.",
+    "callNotificationsMissedMessage": "Símtal barst á meðan Pangea Chat var lokað, en síminn þinn gat ekki hringt vegna þess að tilkynningar eru óvirkar. Leyfðu tilkynningar svo næsta símtal hringi."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-14 13:23:10.379356",
+    "@@last_modified": "2026-10-15 16:24:18.579718",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "Dir sidd offline. Pangea Chat wäert sech erëm verbannen wann Är Verbindung erëm do ass.",
     "connectionUnreachable": "Pangea Chat ass net erreechbar. Probéieren nach eng Kéier…",
     "connectionBackOnline": "Erem online",
-    "missionDueDate": "Fälleg {date}, {time}"
+    "missionDueDate": "Fälleg {date}, {time}",
+    "callNotificationsTitle": "Uruff schelle loossen",
+    "callNotificationsMessage": "Uriff schellen als Notifikatiounen. Erlaabt Notifikatiounen, fir datt Ären Telefon schellt wann en Uruff erakënnt, och wann Pangea Chat zou ass oder Ären Telefon gespaart ass.",
+    "callNotificationsMissedMessage": "En Uruff ass erakomm, während Pangea Chat zou war, awer Ären Telefon konnt net schellen, well Notifikatiounen ausgeschalt sinn. Erlaabt Notifikatiounen, fir datt den nächste Ruff schellt."
 }

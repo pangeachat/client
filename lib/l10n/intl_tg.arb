@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-14 13:23:19.994942",
+    "@@last_modified": "2026-10-15 16:24:24.791077",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2430,5 +2430,8 @@
     "connectionOffline": "Шумо офлайн ҳастед. Pangea Chat ҳангоми барқарор шудани пайвастшавӣ дубора пайваст мешавад.",
     "connectionUnreachable": "Ба Pangea Chat дастрасӣ нест. Аз нав кӯшиш карда мешавад…",
     "connectionBackOnline": "Дубора онлайн шуд",
-    "missionDueDate": "Бояд иҷро шавад {date}, {time}"
+    "missionDueDate": "Бояд иҷро шавад {date}, {time}",
+    "callNotificationsTitle": "Зангҳоро иҷозат диҳед",
+    "callNotificationsMessage": "Зангҳо ҳамчун огоҳинома садо медиҳанд. Огоҳиномаҳоро иҷозат диҳед, то телефони шумо барои занг садо диҳад, ҳатто вақте ки Pangea Chat пӯшида аст ё телефони шумо қулф аст.",
+    "callNotificationsMissedMessage": "Ҳангоми пӯшида будани Pangea Chat занг омад, аммо телефони шумо садо дода натавонист, зеро огоҳиномаҳо хомӯшанд. Огоҳиномаҳоро иҷозат диҳед, то занги навбатӣ садо диҳад."
 }

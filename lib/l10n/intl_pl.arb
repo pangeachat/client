@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-14 13:23:14.021489",
+    "@@last_modified": "2026-10-15 16:24:21.156450",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10053,5 +10053,8 @@
     "connectionOffline": "Jesteś offline. Pangea Chat połączy się ponownie, gdy odzyskasz połączenie.",
     "connectionUnreachable": "Nie można nawiązać połączenia z Pangea Chat. Ponawiam próbę…",
     "connectionBackOnline": "Ponownie online",
-    "missionDueDate": "Termin: {date}, {time}"
+    "missionDueDate": "Termin: {date}, {time}",
+    "callNotificationsTitle": "Zezwól na dzwonienie połączeń",
+    "callNotificationsMessage": "Połączenia dzwonią jako powiadomienia. Zezwól na powiadomienia, aby telefon dzwonił w przypadku połączenia, nawet gdy Pangea Chat jest zamknięty lub telefon jest zablokowany.",
+    "callNotificationsMissedMessage": "Połączenie nadeszło, gdy Pangea Chat był zamknięty, ale telefon nie mógł zadzwonić, ponieważ powiadomienia są wyłączone. Zezwól na powiadomienia, aby następne połączenie zadzwoniło."
 }

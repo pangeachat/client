@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-14 13:23:18.054220",
+    "@@last_modified": "2026-10-15 16:24:23.559084",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10914,5 +10914,8 @@
     "connectionOffline": "Nema interneta. Pangea Chat će se ponovo povezati kada se veza uspostavi.",
     "connectionUnreachable": "Pangea Chat je nedostupan. Pokušavam ponovo…",
     "connectionBackOnline": "Ponovo na mreži",
-    "missionDueDate": "Rok: {date}, {time}"
+    "missionDueDate": "Rok: {date}, {time}",
+    "callNotificationsTitle": "Dozvoli pozivima da zvone",
+    "callNotificationsMessage": "Pozivi zvone kao obaveštenja. Dozvolite obaveštenja kako bi vaš telefon zvonio za poziv, čak i kada je Pangea Chat zatvoren ili je vaš telefon zaključan.",
+    "callNotificationsMissedMessage": "Poziv je stigao dok je Pangea Chat bio zatvoren, ali vaš telefon nije mogao da zvoni jer su obaveštenja isključena. Dozvolite obaveštenja kako bi sledeći poziv zvonio."
 }
