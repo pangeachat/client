@@ -683,4 +683,10 @@ class _FakeRinger implements IncomingCallRinger {
 
   @override
   Future<void> openFullScreenSettings() async {}
+
+  @override
+  Future<bool> notificationsWanted() async => false;
+
+  @override
+  Future<void> notificationsAsked() async {}
 }
