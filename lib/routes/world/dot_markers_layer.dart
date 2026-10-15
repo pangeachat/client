@@ -4,7 +4,6 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
-import 'package:fluffychat/routes/world/mission_pin_tag.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_state_dot.dart';
@@ -21,11 +20,6 @@ class DotMarkersLayer {
   final Alignment Function(ActivityPinState, PinTier) markerAlignment;
   final String? focusedId;
   final void Function(QuestActivityCard) onTap;
-
-  /// "Mission N" for a pin from outside the course map's selected Mission,
-  /// else null. Drawn atop a mid teardrop only — the marker grows to hold it,
-  /// tip still on the point; small dots carry none ([MissionPinTag]).
-  final int? Function(String)? missionTagOf;
 
   /// Whether this pin should play its entry scale-in — false for pins already
   /// on screen at the last settle, so a State recreated by MarkerLayer's
@@ -51,7 +45,6 @@ class DotMarkersLayer {
     required this.onTap,
     required this.animateInOf,
     required this.sessionParticipants,
-    this.missionTagOf,
   });
 
   /// The mid-pin "num/num" participant counts for `joinable`/`ongoingPending`
@@ -99,42 +92,12 @@ class DotMarkersLayer {
         final tier = tierOf(card.activityId);
         final box = markerBox(state, tier);
         final counts = _participantCounts(card.activityId, state);
-        final tag = tier == PinTier.mid && !tier.isDot(state)
-            ? missionTagOf?.call(card.activityId)
-            : null;
-        final width = tag == null || box.width >= MissionPinTag.width
-            ? box.width
-            : MissionPinTag.width;
-        final height = tag == null
-            ? box.height
-            : box.height + MissionPinTag.height + 2.0;
 
-        final dot = WorldMapDot(
-          card: card,
-          state: state,
-          tier: tier,
-          onTap: () => onTap(card),
-          pinged: pingedOf(card.activityId),
-          starLevel: starLevelOf(card.activityId),
-          unreadRoom: _unreadRoomFor(card.activityId, state),
-          participantsFilled: counts.filled,
-          participantsTotal: counts.total,
-          isFocused: card.activityId == focusedId,
-          animateIn: animateInOf(card.activityId),
-        );
         return Marker(
           point: card.point!,
-          width: width,
-          height: height,
-          // A tagged mid pin still stands on its tip: the box's bottom centre.
-          alignment: tag == null
-              ? markerAlignment(state, tier)
-              : Marker.computePixelAlignment(
-                  width: width,
-                  height: height,
-                  left: width / 2,
-                  top: height,
-                ),
+          width: box.width,
+          height: box.height,
+          alignment: markerAlignment(state, tier),
           // The key goes on the CHILD, never on Marker.key: MarkerLayer emits
           // one Positioned(key: marker.key) per visible world copy as siblings
           // of one Stack, so a Marker.key crashes with duplicate keys when the
@@ -146,20 +109,19 @@ class DotMarkersLayer {
           child: Opacity(
             key: ValueKey(card.activityId),
             opacity: nonStartableOf(card.activityId) ? 0.5 : 1.0,
-            child: tag == null
-                ? dot
-                : Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      MissionPinTag(number: tag, state: state),
-                      const SizedBox(height: 2.0),
-                      SizedBox(
-                        width: box.width,
-                        height: box.height,
-                        child: dot,
-                      ),
-                    ],
-                  ),
+            child: WorldMapDot(
+              card: card,
+              state: state,
+              tier: tier,
+              onTap: () => onTap(card),
+              pinged: pingedOf(card.activityId),
+              starLevel: starLevelOf(card.activityId),
+              unreadRoom: _unreadRoomFor(card.activityId, state),
+              participantsFilled: counts.filled,
+              participantsTotal: counts.total,
+              isFocused: card.activityId == focusedId,
+              animateIn: animateInOf(card.activityId),
+            ),
           ),
         );
       }).toList(),

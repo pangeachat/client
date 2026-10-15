@@ -8,6 +8,7 @@ import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/bold_tonal_button.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_xp_ring.dart';
 
@@ -41,6 +42,10 @@ class MissionCard extends StatelessWidget {
   /// The course tutorial's "your progress" step lights the ring.
   final String? tutorialTargetId;
 
+  /// The Mission's activity row, under an "Activities" label at the foot of
+  /// the card; null draws neither.
+  final Widget? activities;
+
   const MissionCard({
     required this.group,
     required this.index,
@@ -51,11 +56,12 @@ class MissionCard extends StatelessWidget {
     this.playLabel,
     this.playDetail,
     this.tutorialTargetId,
+    this.activities,
     super.key,
   });
 
-  static const double _ringSize = 108.0;
-  static const double _ringStroke = 12.0;
+  static const double _ringSize = 84.0;
+  static const double _ringStroke = 9.0;
   static const BorderRadius _radius = BorderRadius.all(Radius.circular(24.0));
 
   @override
@@ -120,7 +126,7 @@ class MissionCard extends StatelessWidget {
                   children: [
                     Text(
                       numbers.format(progress.xp),
-                      style: theme.textTheme.titleLarge?.copyWith(
+                      style: theme.textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w800,
                         height: 1.0,
                       ),
@@ -152,10 +158,10 @@ class MissionCard extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(16.0, 14.0, 16.0, 18.0),
+        padding: const EdgeInsets.fromLTRB(14.0, 12.0, 14.0, 14.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          spacing: 12.0,
+          spacing: 10.0,
           children: [
             Row(
               children: [
@@ -199,19 +205,19 @@ class MissionCard extends StatelessWidget {
                   label: satisfied ? l10n.missionStarEarned : null,
                   child: ExcludeSemantics(
                     child: SizedBox.square(
-                      dimension: 40.0,
+                      dimension: 28.0,
                       child: Stack(
                         alignment: Alignment.center,
                         children: [
                           if (satisfied)
                             Icon(
                               Icons.star_rounded,
-                              size: 36.0,
+                              size: 25.0,
                               color: pangea.goldFixedDim,
                             ),
                           Icon(
                             Icons.star_outline_rounded,
-                            size: 40.0,
+                            size: 28.0,
                             color: scheme.onSurface,
                           ),
                         ],
@@ -222,11 +228,13 @@ class MissionCard extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 4.0),
+                    // Never larger than the course title above the card
+                    // (PanelHeader.titleStyle).
                     child: Text(
                       group.objective.objective,
-                      style: theme.textTheme.titleLarge?.copyWith(
+                      style: theme.textTheme.titleSmall?.copyWith(
                         fontWeight: FontWeight.w800,
-                        height: 1.15,
+                        height: 1.25,
                       ),
                     ),
                   ),
@@ -250,7 +258,7 @@ class MissionCard extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.auto_awesome,
-                                size: 20.0,
+                                size: 16.0,
                                 // Decorative: the text beside it says it.
                                 color: pangea.goldFixedDim,
                               ),
@@ -263,7 +271,7 @@ class MissionCard extends StatelessWidget {
                                             progress.threshold - progress.xp,
                                           ),
                                         ),
-                                  style: theme.textTheme.titleSmall?.copyWith(
+                                  style: theme.textTheme.labelLarge?.copyWith(
                                     fontWeight: FontWeight.w800,
                                   ),
                                 ),
@@ -310,7 +318,26 @@ class MissionCard extends StatelessWidget {
                 detail: playDetail,
               ),
             ),
-            _PracticeWordsButton(onPressed: onPractice, wordCount: wordCount),
+            BoldTonalButton(
+              icon: Symbols.fitness_center,
+              label: l10n.practice,
+              semanticsLabel: '${l10n.practice}, ${l10n.wordCount(wordCount)}',
+              expand: true,
+              onPressed: onPractice,
+              trailing: wordCount > 0
+                  ? _CountChip(l10n.wordCount(wordCount))
+                  : null,
+            ),
+            if (activities != null) ...[
+              const SizedBox(height: 4.0),
+              Text(
+                l10n.activities,
+                style: theme.textTheme.titleSmall?.copyWith(
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              activities!,
+            ],
           ],
         ),
       ),
@@ -381,10 +408,10 @@ class _PlayButton extends StatelessWidget {
           buttonHeight: 5.0,
           onPressed: onPressed,
           builder: (context, depressed, shadowColor) => Container(
-            constraints: const BoxConstraints(minHeight: 60.0),
+            constraints: const BoxConstraints(minHeight: 48.0),
             padding: const EdgeInsets.symmetric(
               horizontal: 16.0,
-              vertical: 8.0,
+              vertical: 6.0,
             ),
             decoration: BoxDecoration(
               color: depressed ? shadowColor : fill,
@@ -398,10 +425,10 @@ class _PlayButton extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   spacing: 8.0,
                   children: [
-                    Icon(Icons.play_arrow_rounded, size: 32.0, color: ink),
+                    Icon(Icons.play_arrow_rounded, size: 26.0, color: ink),
                     Text(
                       label,
-                      style: theme.textTheme.headlineSmall?.copyWith(
+                      style: theme.textTheme.titleMedium?.copyWith(
                         color: ink,
                         fontWeight: FontWeight.w800,
                       ),
@@ -427,73 +454,28 @@ class _PlayButton extends StatelessWidget {
   }
 }
 
-class _PracticeWordsButton extends StatelessWidget {
-  final VoidCallback onPressed;
-  final int wordCount;
+/// The word count beside Practice.
+class _CountChip extends StatelessWidget {
+  final String text;
 
-  const _PracticeWordsButton({
-    required this.onPressed,
-    required this.wordCount,
-  });
-
-  static const BorderRadius _radius = BorderRadius.all(Radius.circular(999.0));
+  const _CountChip(this.text);
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
-    final l10n = L10n.of(context);
-    final fill = scheme.secondaryContainer;
-    final ink = scheme.onSecondaryContainer;
-    return Semantics(
-      button: true,
-      label: '${l10n.practiceWords}, ${l10n.wordCount(wordCount)}',
-      child: ExcludeSemantics(
-        child: PressableButton(
-          borderRadius: _radius,
-          color: fill,
-          onPressed: onPressed,
-          builder: (context, depressed, shadowColor) => Container(
-            height: 46.0,
-            decoration: BoxDecoration(
-              color: depressed ? shadowColor : fill,
-              borderRadius: _radius,
-            ),
-            alignment: Alignment.center,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              spacing: 8.0,
-              children: [
-                Icon(Symbols.fitness_center, size: 20.0, color: ink),
-                Text(
-                  l10n.practiceWords,
-                  style: theme.textTheme.titleSmall?.copyWith(
-                    color: ink,
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
-                if (wordCount > 0)
-                  DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: scheme.surface.withValues(alpha: 0.6),
-                      borderRadius: _radius,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8.0,
-                        vertical: 1.0,
-                      ),
-                      child: Text(
-                        l10n.wordCount(wordCount),
-                        style: theme.textTheme.labelSmall?.copyWith(
-                          color: ink,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                  ),
-              ],
-            ),
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: scheme.surface.withValues(alpha: 0.6),
+        borderRadius: const BorderRadius.all(Radius.circular(999.0)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 1.0),
+        child: Text(
+          text,
+          style: theme.textTheme.labelSmall?.copyWith(
+            color: scheme.onSecondaryContainer,
+            fontWeight: FontWeight.w700,
           ),
         ),
       ),

@@ -40,6 +40,11 @@ class CourseLoOutline {
   final List<String> orderedLoIds;
   final Map<String, Set<String>> activityIdsByLo;
 
+  /// Each Mission's word list — every suggested word across its activities,
+  /// lowercased. Practice on one of these words outside a session counts
+  /// toward the Mission (#9420 prototype). Empty for a caller with no plans.
+  final Map<String, Set<String>> lemmasByLo;
+
   /// The XP that completes a Mission in this course — the instructor's
   /// setting, or [kDefaultXpToCompleteObjective].
   final int xpToComplete;
@@ -49,6 +54,7 @@ class CourseLoOutline {
     this.questId,
     required this.orderedLoIds,
     required this.activityIdsByLo,
+    this.lemmasByLo = const {},
     this.xpToComplete = kDefaultXpToCompleteObjective,
   });
 }

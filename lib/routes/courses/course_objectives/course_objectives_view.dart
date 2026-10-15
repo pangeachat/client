@@ -588,20 +588,18 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   int _userStarsByActivity(String activityId) =>
       widget.room?.client.userStarsByActivity[activityId] ?? 0;
 
-  /// The session the learner holds a role in and hasn't finished, preferring
-  /// one in [current]'s activities, then any in the course's [groups]; null
-  /// when there is none (or in a preview).
+  /// The session the learner holds a role in and hasn't finished among
+  /// [current]'s activities; null when there is none (or in a preview). Each
+  /// Mission keeps to its own activities (#9420 prototype) — a session from
+  /// another Mission resumes from that Mission's card or Chats.
   ({QuestActivity activity, String roomId})? _ongoingSession(
     QuestObjectiveGroup current,
-    List<QuestObjectiveGroup> groups,
   ) {
     final room = widget.room;
     if (room == null) return null;
-    for (final group in [current, ...groups]) {
-      for (final activity in group.activities) {
-        final roomId = room.activeActivityRoomId(activity.activityId);
-        if (roomId != null) return (activity: activity, roomId: roomId);
-      }
+    for (final activity in current.activities) {
+      final roomId = room.activeActivityRoomId(activity.activityId);
+      if (roomId != null) return (activity: activity, roomId: roomId);
     }
     return null;
   }
@@ -729,10 +727,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     final playTarget = activities.isNotEmpty
                         ? activities.first
                         : current.activities.firstOrNull;
-                    // ...but a session the learner is already in comes first,
-                    // this Mission's before any other: Play resumes it, so a
-                    // started activity gets finished before a new one starts.
-                    final ongoing = _ongoingSession(current, groups);
+                    // ...but a session the learner is already in, in this
+                    // Mission, comes first: Play resumes it, so a started
+                    // activity gets finished before a new one starts.
+                    final ongoing = _ongoingSession(current);
                     final hasProgress = widget.room != null;
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -774,45 +772,45 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                           tutorialTargetId: _hostsTutorial
                               ? TutorialTargetIds.courseProgressBar
                               : null,
+                          // The Mission's activities live in its card: they
+                          // are what fills it (#9420 prototype).
+                          activities: activities.isEmpty
+                              ? null
+                              :
+                                // The course tutorial's "pick an activity" step
+                                // lights this row. Only the course page's row hosts
+                                // the tutorial, so only it claims the target id
+                                // ([_hostsTutorial]).
+                                TutorialTarget(
+                                  targetId: _hostsTutorial
+                                      ? TutorialTargetIds.courseActivities
+                                      : null,
+                                  child: ActivityCarousel(
+                                    activities: activities,
+                                    onTap: (activity) {
+                                      // A session the learner is in reopens its
+                                      // chat; anything else opens its start page.
+                                      final ongoingId = widget.room
+                                          ?.activeActivityRoomId(
+                                            activity.activityId,
+                                          );
+                                      if (ongoingId != null) {
+                                        _openSession(ongoingId);
+                                      } else {
+                                        _openActivity(activity);
+                                      }
+                                    },
+                                    userStarsByActivity: _userStarsByActivity,
+                                    hasCompletedActivity:
+                                        widget.hasCompletedActivity,
+                                    liveStateByActivity: _liveStateFor,
+                                    availableParticipants:
+                                        _availableParticipants,
+                                    pingedActivityId: _pingedActivityId,
+                                    interactive: !widget.readOnly,
+                                  ),
+                                ),
                         ),
-                        if (activities.isNotEmpty) ...[
-                          const SizedBox(height: 20.0),
-                          Text(
-                            L10n.of(context).activities,
-                            style: Theme.of(context).textTheme.titleSmall
-                                ?.copyWith(fontWeight: FontWeight.w700),
-                          ),
-                          const SizedBox(height: 8.0),
-                          // The course tutorial's "pick an activity" step
-                          // lights this row. Only the course page's row hosts
-                          // the tutorial, so only it claims the target id
-                          // ([_hostsTutorial]).
-                          TutorialTarget(
-                            targetId: _hostsTutorial
-                                ? TutorialTargetIds.courseActivities
-                                : null,
-                            child: ActivityCarousel(
-                              activities: activities,
-                              onTap: (activity) {
-                                // A session the learner is in reopens its
-                                // chat; anything else opens its start page.
-                                final ongoingId = widget.room
-                                    ?.activeActivityRoomId(activity.activityId);
-                                if (ongoingId != null) {
-                                  _openSession(ongoingId);
-                                } else {
-                                  _openActivity(activity);
-                                }
-                              },
-                              userStarsByActivity: _userStarsByActivity,
-                              hasCompletedActivity: widget.hasCompletedActivity,
-                              liveStateByActivity: _liveStateFor,
-                              availableParticipants: _availableParticipants,
-                              pingedActivityId: _pingedActivityId,
-                              interactive: !widget.readOnly,
-                            ),
-                          ),
-                        ],
                       ],
                     );
                   }

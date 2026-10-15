@@ -103,9 +103,11 @@ class JoinedObjectiveCache {
   ProgressionResolution resolution(
     Map<String, int> xpByActivity, {
     Iterable<CourseLoOutline> extraOutlines = const [],
+    Map<String, int> practiceXpByLemma = const {},
   }) => resolveProgression(
     outlines: [..._outlines, ...extraOutlines],
     xpByActivity: xpByActivity,
+    practiceXpByLemma: practiceXpByLemma,
   );
 
   /// Rebuild from the joined courses' quest outlines. [outlineOf] resolves a
@@ -141,6 +143,7 @@ class JoinedObjectiveCache {
               questId: o.questId,
               orderedLoIds: o.orderedLoIds,
               activityIdsByLo: o.activityIdsByLo,
+              lemmasByLo: o.lemmasByLo,
               xpToComplete:
                   xpToCompleteOf?.call(key) ?? kDefaultXpToCompleteObjective,
             ),

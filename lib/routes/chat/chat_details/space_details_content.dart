@@ -89,7 +89,7 @@ class SpaceDetailsContent extends StatelessWidget {
   /// decides instead. The old whole-card threshold was 168 with the ~56px
   /// header row inside the body; the header now sits above the body, so the
   /// same cavity heights trigger at 112. See [build].
-  static const double _kCompactCardMaxHeight = 160.0;
+  static const double _kCompactCardMaxHeight = 186.0;
 
   @override
   Widget build(BuildContext context) {
@@ -237,9 +237,10 @@ class CoursePeekProgressBar extends StatelessWidget {
     // The nav cavity hands the peek TIGHT height constraints, which would
     // inflate the bar's fixed-height box to fill the slot; Align restores
     // loose constraints so the peek bar renders at the same height as on the
-    // full page.
+    // full page. Top-start, like the open course page's circles (#9420
+    // prototype): a short row hugs the left edge instead of centring.
     child: Align(
-      alignment: Alignment.topCenter,
+      alignment: AlignmentDirectional.topStart,
       child: CourseObjectiveCircles(
         objectivesProvider: objectivesProvider,
         showSelectedLabel: true,

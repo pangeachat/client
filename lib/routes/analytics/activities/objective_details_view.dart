@@ -7,9 +7,9 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
-import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
@@ -22,15 +22,18 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/activities/activity_archive.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/start_practice.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_xp_ring.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
+import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Where a Mission's XP came from, summed over [group]'s activities from the
 /// learner's saved sessions — the same activities the resolver's rollup
-/// counts for that course.
+/// counts for that course — plus practice outside any session on its words.
 MissionXpBreakdown missionBreakdownFor(
   Client client,
   QuestObjectiveGroup group,
@@ -44,7 +47,10 @@ MissionXpBreakdown missionBreakdownFor(
   for (final activity in group.activities) {
     sum = sum + (byActivity[activity.activityId] ?? MissionXpBreakdown.zero);
   }
-  return sum;
+  return sum +
+      MissionXpBreakdown(
+        practice: practiceXpForLemmas(group.lemmas, cache.practiceXpByLemma),
+      );
 }
 
 /// A Learning Objective's detail page (#9420 prototype), opened from the
@@ -90,13 +96,26 @@ class _ObjectiveDetailsViewState extends State<ObjectiveDetailsView> {
         centerTitle: false,
         titleSpacing: 0,
         actions: [
-          IconButton(
-            tooltip: l10n.practiceObjective,
-            icon: const Icon(Symbols.fitness_center),
-            onPressed: () => startPractice(
-              context,
-              ConstructTypeEnum.vocab,
-              missionId: widget.missionId,
+          // The vocab and grammar pages' Practice pill (primary, icon and
+          // the short label), so practice looks the same wherever it starts.
+          Tooltip(
+            message: l10n.practiceObjective,
+            excludeFromSemantics: true,
+            child: FilledButton.icon(
+              onPressed: () => startPractice(
+                context,
+                ConstructTypeEnum.vocab,
+                missionId: widget.missionId,
+              ),
+              icon: const Icon(Symbols.fitness_center, size: 18),
+              label: Text(
+                l10n.practice,
+                semanticsLabel: l10n.practiceObjective,
+              ),
+              style: FilledButton.styleFrom(
+                backgroundColor: theme.colorScheme.primary,
+                foregroundColor: theme.colorScheme.onPrimary,
+              ),
             ),
           ),
           const SizedBox(width: 8.0),
@@ -173,13 +192,12 @@ class _ObjectiveDetailsBody extends StatelessWidget {
 
     // The course's words for this objective: every suggested word across its
     // activities, once per lemma.
-    final vocab = <String, ({String lemma, String pos})>{};
+    final vocab = <String, Vocab>{};
+    String? langCode;
     for (final activity in group.activities) {
+      langCode ??= activity.plan.req.targetLanguage;
       for (final word in activity.plan.vocab) {
-        vocab.putIfAbsent(
-          word.lemma.toLowerCase(),
-          () => (lemma: word.lemma, pos: word.pos),
-        );
+        vocab.putIfAbsent(word.lemma.toLowerCase(), () => word);
       }
     }
 
@@ -207,13 +225,14 @@ class _ObjectiveDetailsBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           spacing: 24.0,
           children: [
+            _CourseLink(room: course.room, missionId: group.objective.id),
             _ObjectiveHero(
               statement: group.objective.objective,
               progress: progress,
               breakdown: missionBreakdownFor(client, group),
             ),
             _Section(
-              title: l10n.objectiveActivitiesHeading,
+              title: l10n.completedActivitiesTitle(activities.length),
               child: activities.isEmpty
                   ? Text(
                       l10n.noObjectiveActivitiesYet,
@@ -246,10 +265,16 @@ class _ObjectiveDetailsBody extends StatelessWidget {
                       availableParticipants: null,
                     ),
             ),
-            if (vocab.isNotEmpty)
-              _Section(
-                title: l10n.objectiveWordsHeading,
-                child: _ObjectiveWords(words: vocab.values.toList()),
+            // The activity page's own word chips: its "Suggested vocab"
+            // heading, and a tap opens the word card in place.
+            if (vocab.isNotEmpty && langCode != null)
+              ActivityVocabWidget(
+                vocab: vocab.values.toList(),
+                langCode: langCode,
+                activityLangCode: langCode,
+                targetId: 'objective-vocab-${group.objective.id}',
+                usedVocab: null,
+                roomId: null,
               ),
           ],
         ),
@@ -258,34 +283,70 @@ class _ObjectiveDetailsBody extends StatelessWidget {
   }
 }
 
-/// The objective's words as chips, each opening its vocab page.
-class _ObjectiveWords extends StatelessWidget {
-  final List<({String lemma, String pos})> words;
+/// The course this objective's page reads from, as a link back to it — on
+/// the course page with this Mission picked.
+class _CourseLink extends StatelessWidget {
+  final Room room;
+  final String missionId;
 
-  const _ObjectiveWords({required this.words});
+  const _CourseLink({required this.room, required this.missionId});
 
   @override
-  Widget build(BuildContext context) => Wrap(
-    spacing: 8.0,
-    runSpacing: 8.0,
-    children: [
-      for (final word in words)
-        ActionChip(
-          label: Text(word.lemma),
-          onPressed: () => context.go(
-            WorkspaceNav.openConstructDetail(
-              GoRouterState.of(context).uri,
-              ConstructTypeEnum.vocab,
-              constructId: ConstructIdentifier(
-                lemma: word.lemma,
-                type: ConstructTypeEnum.vocab,
-                category: word.pos,
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final name = room.getLocalizedDisplayname(MatrixLocals(L10n.of(context)));
+    return Align(
+      alignment: AlignmentDirectional.centerStart,
+      child: Material(
+        color: theme.colorScheme.surfaceContainer,
+        borderRadius: BorderRadius.circular(999.0),
+        clipBehavior: Clip.hardEdge,
+        child: InkWell(
+          onTap: () {
+            final uri = GoRouterState.of(context).uri;
+            context.go(
+              WorkspaceNav.selectMission(
+                Uri.parse(WorkspaceNav.openCourse(uri, room.id)),
+                missionId,
               ),
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 10.0, 4.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              spacing: 8.0,
+              children: [
+                ExcludeSemantics(
+                  child: Avatar(
+                    mxContent: room.avatar,
+                    name: name,
+                    size: 24.0,
+                    borderRadius: BorderRadius.circular(6.0),
+                  ),
+                ),
+                Flexible(
+                  child: Text(
+                    name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+                Icon(
+                  Icons.chevron_right_rounded,
+                  size: 18.0,
+                  color: theme.colorScheme.onSurfaceVariant,
+                ),
+              ],
             ),
           ),
         ),
-    ],
-  );
+      ),
+    );
+  }
 }
 
 class _Section extends StatelessWidget {

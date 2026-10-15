@@ -23,10 +23,6 @@ class LargeMarkersLayer {
   /// pop-in (#8136). Mirrors [DotMarkersLayer.animateInOf].
   final bool Function(String) animateInOf;
 
-  /// "Mission N" for a card from outside the course map's selected Mission,
-  /// shown inside the card's title row ([MissionPinTag]); null otherwise.
-  final int? Function(String)? missionTagOf;
-
   const LargeMarkersLayer({
     required this.largeCards,
     required this.currentLarge,
@@ -34,7 +30,6 @@ class LargeMarkersLayer {
     required this.onTap,
     required this.onClose,
     required this.animateInOf,
-    this.missionTagOf,
   });
 
   MarkerLayer layer() {
@@ -68,7 +63,6 @@ class LargeMarkersLayer {
                       openSlots: snap.openSlots,
                       standsOnStamp: standsOnStamp,
                       isFocused: card.activityId == focusedId,
-                      missionNumber: missionTagOf?.call(card.activityId),
                       onTap: () => onTap(card),
                       onClose: () => onClose(card),
                     ),
@@ -117,7 +111,6 @@ class LargeMarkersLayer {
                     starLevel: snap.starLevel,
                     understaffed: snap.understaffed,
                     isFocused: card.activityId == focusedId,
-                    missionNumber: missionTagOf?.call(card.activityId),
                     onTap: () => onTap(card),
                     onClose: () => onClose(card),
                   ),

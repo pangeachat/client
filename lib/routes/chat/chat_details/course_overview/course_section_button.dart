@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/bold_tonal_button.dart';
 
 /// A course-page section's "See all" button, opening the section's full
 /// subpage within the card.
@@ -48,9 +49,12 @@ class CourseSectionButton extends StatelessWidget {
     // A long localization can outrun a narrow course column; the label is a
     // plain [Text], so it wraps inside the width the header allows it rather
     // than overflowing the header's row.
-    return FilledButton.tonal(
+    // The bold pressable style of the page's other secondary actions
+    // (#9420 prototype).
+    return BoldTonalButton(
+      label: l10n.seeAll,
+      semanticsLabel: l10n.seeAllSection(section),
       onPressed: onPressed,
-      child: Text(l10n.seeAll, semanticsLabel: l10n.seeAllSection(section)),
     );
   }
 }

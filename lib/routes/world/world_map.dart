@@ -578,25 +578,14 @@ class WorldMapController extends State<WorldMap>
     );
     final mission = selectedMissionId;
     if (mission == null) return filtered;
-    // The soft lock (#9420 prototype): a joined course's map shows only the
-    // Mission the learner picked (else the current one). Two exceptions keep
-    // people talking: the learner's own unfinished sessions always show, and
-    // when the Mission has no live session to join, coursemates' live
-    // sessions elsewhere in the course show too, tagged with their Mission.
-    bool inMission(QuestActivityCard c) =>
-        c.learningObjectiveRefs.contains(mission);
-    final missionHasLive = filtered.any(
-      (c) =>
-          inMission(c) &&
-          _pinsManager.displayStateOf(c) == ActivityPinState.joinable,
-    );
+    // The Mission lock (#9420 prototype): a joined course's map shows only
+    // the Mission on show — the one picked in the circles, else the current
+    // one. Nothing from another Mission, live sessions and the learner's own
+    // included; a coursemate's ping elsewhere shows as a bell on that
+    // Mission's circle instead.
     return [
       for (final c in filtered)
-        if (inMission(c) ||
-            _pinsManager.displayStateOf(c).isOngoing ||
-            (!missionHasLive &&
-                _pinsManager.displayStateOf(c) == ActivityPinState.joinable))
-          c,
+        if (c.learningObjectiveRefs.contains(mission)) c,
     ];
   }
 
@@ -613,29 +602,6 @@ class WorldMapController extends State<WorldMap>
     if (spaceId == null) return null;
     return mapContext.missionId ??
         _pinsManager.progression.forCourse(spaceId)?.anchorMissionId;
-  }
-
-  /// For a pin shown outside the selected Mission, the 1-based number of the
-  /// Mission it belongs to, for its "Mission N" tag; null for an in-Mission
-  /// pin or when the map isn't narrowed.
-  int? outOfMissionNumber(QuestActivityCard card) {
-    final mission = selectedMissionId;
-    if (mission == null || card.learningObjectiveRefs.contains(mission)) {
-      return null;
-    }
-    final spaceId =
-        (MapContextController.notifier.value as CourseMapContext).spaceId;
-    final quest = _pinsManager.progression.forCourse(spaceId!);
-    if (quest == null) return null;
-    final missions = [
-      for (final id in quest.orderedMissionIds)
-        if (quest.rollup.containsKey(id)) id,
-    ];
-    for (final ref in card.learningObjectiveRefs) {
-      final i = missions.indexOf(ref);
-      if (i >= 0) return i + 1;
-    }
-    return null;
   }
 
   /// The words the learner used most across their saved sessions of

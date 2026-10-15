@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
+import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
+import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
+import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_xp_ring.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section_scroll_arrow.dart';
+import 'package:fluffychat/routes/world/world_map_pins_manager.dart';
+import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 /// Where one Mission stands in the plan, for its circle.
 enum ObjectiveCircleState { complete, current, later }
@@ -26,12 +32,23 @@ class ObjectiveCircleData {
   /// can pick a complete or a later Mission to look at.
   final bool selected;
 
+  /// Where the teacher's due dates put the class: marked by a quieter
+  /// pointer above the circle, labelled "Class location".
+  final bool classLocation;
+
+  /// A coursemate pinged a session of this Mission that is still open to
+  /// join — a bell on the circle, since the map shows only the Mission on
+  /// show (#9420 prototype).
+  final bool pinged;
+
   const ObjectiveCircleData({
     required this.index,
     required this.statement,
     required this.state,
     this.progress = 0.0,
     this.selected = false,
+    this.classLocation = false,
+    this.pinged = false,
   });
 }
 
@@ -52,19 +69,30 @@ class ObjectiveProgressCircles extends StatefulWidget {
   /// collapsed course header and peek, where no Mission card below says it.
   final bool showSelectedLabel;
 
+  /// Keep the "Class location" strip above the circles even when no circle
+  /// carries it, so a fixed-height host ([labelledHeight]) never shifts.
+  final bool reserveClassLocation;
+
   static const double diameter = 40.0;
   static const double _ringWidth = 3.5;
   static const double _pointerHeight = 9.0;
   static const double _labelHeight = 18.0;
+  static const double _classLabelHeight = 16.0;
   static const double _spacing = 8.0;
 
-  /// The row's height with [showSelectedLabel] on.
-  static const double labelledHeight = diameter + _pointerHeight + _labelHeight;
+  /// The strip above the circles holding the "Class location" label and its
+  /// pointer.
+  static const double classLocationHeight = _classLabelHeight + _pointerHeight;
+
+  /// The row's height with [showSelectedLabel] and [reserveClassLocation] on.
+  static const double labelledHeight =
+      classLocationHeight + diameter + _pointerHeight + _labelHeight;
 
   const ObjectiveProgressCircles({
     required this.items,
     this.onTap,
     this.showSelectedLabel = false,
+    this.reserveClassLocation = false,
     super.key,
   });
 
@@ -82,7 +110,12 @@ class _ObjectiveProgressCirclesState extends State<ObjectiveProgressCircles> {
   static const double _step =
       ObjectiveProgressCircles.diameter + ObjectiveProgressCircles._spacing;
 
-  double get _labelInset => widget.showSelectedLabel ? 22.0 : 0.0;
+  bool get _hasClassStrip =>
+      widget.reserveClassLocation ||
+      widget.items.any((item) => item.classLocation);
+
+  double get _labelInset =>
+      widget.showSelectedLabel || _hasClassStrip ? 22.0 : 0.0;
 
   @override
   void initState() {
@@ -157,6 +190,10 @@ class _ObjectiveProgressCirclesState extends State<ObjectiveProgressCircles> {
     if (widget.items.isEmpty) return const SizedBox.shrink();
     _revealSelected();
     final onTap = widget.onTap;
+    final classStrip = _hasClassStrip;
+    final circleTop = classStrip
+        ? ObjectiveProgressCircles.classLocationHeight
+        : 0.0;
     // The activity row's arrows and behaviour (ActivityCarousel): each arrow
     // floats over its edge of the row and exists only while the row can still
     // move that way — never a hidden-but-present arrow, whose semantics node
@@ -186,6 +223,7 @@ class _ObjectiveProgressCirclesState extends State<ObjectiveProgressCircles> {
                     item: item,
                     count: widget.items.length,
                     showSelectedLabel: widget.showSelectedLabel,
+                    showClassStrip: classStrip,
                     onTap: onTap == null ? null : () => onTap(item.index),
                   ),
               ],
@@ -195,8 +233,8 @@ class _ObjectiveProgressCirclesState extends State<ObjectiveProgressCircles> {
         if (_canBack)
           Positioned(
             left: 0,
-            top: 0,
-            bottom: ObjectiveProgressCircles._pointerHeight,
+            top: circleTop,
+            height: ObjectiveProgressCircles.diameter,
             child: ObjectiveSectionScrollArrow(
               direction: ArrowDirection.back,
               onTap: () => _scrollBy(-1),
@@ -205,8 +243,8 @@ class _ObjectiveProgressCirclesState extends State<ObjectiveProgressCircles> {
         if (_canForward)
           Positioned(
             right: 0,
-            top: 0,
-            bottom: ObjectiveProgressCircles._pointerHeight,
+            top: circleTop,
+            height: ObjectiveProgressCircles.diameter,
             child: ObjectiveSectionScrollArrow(
               direction: ArrowDirection.forward,
               onTap: () => _scrollBy(1),
@@ -221,12 +259,14 @@ class _ObjectiveCircle extends StatelessWidget {
   final ObjectiveCircleData item;
   final int count;
   final bool showSelectedLabel;
+  final bool showClassStrip;
   final VoidCallback? onTap;
 
   const _ObjectiveCircle({
     required this.item,
     required this.count,
     required this.showSelectedLabel,
+    required this.showClassStrip,
     required this.onTap,
   });
 
@@ -287,6 +327,20 @@ class _ObjectiveCircle extends StatelessWidget {
     if (item.state == ObjectiveCircleState.later) {
       circle = Opacity(opacity: 0.8, child: circle);
     }
+    if (item.pinged) {
+      // Inside the circle's own box (top-right, over the ring): the row's
+      // scroll view clips anything that sticks out.
+      circle = Stack(
+        children: [
+          circle,
+          const Positioned(
+            top: 0,
+            right: 0,
+            child: CoursePingBadge(size: 16.0),
+          ),
+        ],
+      );
+    }
     // The pointer ties the circle to the Mission card under the row; every
     // circle keeps its slot so the row doesn't shift when the pick moves.
     final pointer = SizedBox(
@@ -295,6 +349,55 @@ class _ObjectiveCircle extends StatelessWidget {
       child: item.selected
           ? CustomPaint(
               painter: _PointerPainter(color: theme.colorScheme.primary),
+            )
+          : null,
+    );
+    // The class's place, from the teacher's due dates: a quiet grey bubble
+    // whose pointer turns down onto the circle — a pill like the "Mission N"
+    // tags, but muted, so it reads as the class's mark, not the learner's.
+    final classFill = theme.colorScheme.outlineVariant;
+    final classInk = theme.colorScheme.onSurfaceVariant;
+    final classMarker = SizedBox(
+      width: ObjectiveProgressCircles.diameter,
+      height: ObjectiveProgressCircles.classLocationHeight,
+      child: item.classLocation
+          ? Column(
+              children: [
+                SizedBox(
+                  height: ObjectiveProgressCircles._classLabelHeight,
+                  child: OverflowBox(
+                    maxWidth: 120.0,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 7.0),
+                      decoration: BoxDecoration(
+                        color: classFill,
+                        borderRadius: BorderRadius.circular(999.0),
+                      ),
+                      // Hug the text: an aligned Container would stretch
+                      // to the OverflowBox's full width.
+                      child: Center(
+                        widthFactor: 1.0,
+                        child: Text(
+                          l10n.classLocation,
+                          maxLines: 1,
+                          style: theme.textTheme.labelSmall?.copyWith(
+                            color: classInk,
+                            fontWeight: FontWeight.w700,
+                            height: 1.0,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: ObjectiveProgressCircles.diameter,
+                  height: ObjectiveProgressCircles._pointerHeight,
+                  child: CustomPaint(
+                    painter: _PointerPainter(color: classFill, down: true),
+                  ),
+                ),
+              ],
             )
           : null,
     );
@@ -308,7 +411,8 @@ class _ObjectiveCircle extends StatelessWidget {
     // The state is in the accessible name and the statement in the tooltip,
     // so neither the colour nor the number is the only carrier.
     return Semantics(
-      label: '$label: ${item.statement}',
+      label:
+          '${[label, if (item.classLocation) l10n.classLocation, if (item.pinged) l10n.pingedLabel].join(', ')}: ${item.statement}',
       selected: item.selected,
       button: onTap != null,
       child: ExcludeSemantics(
@@ -317,6 +421,7 @@ class _ObjectiveCircle extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              if (showClassStrip) classMarker,
               tappable,
               pointer,
               if (showSelectedLabel)
@@ -346,25 +451,30 @@ class _ObjectiveCircle extends StatelessWidget {
   }
 }
 
-/// An upward-pointing triangle, the tip at the top centre.
+/// A triangle pointing at the circle: up from below (the tip at the top
+/// centre), or [down] from above (the tip at the bottom centre).
 class _PointerPainter extends CustomPainter {
   final Color color;
+  final bool down;
 
-  _PointerPainter({required this.color});
+  _PointerPainter({required this.color, this.down = false});
 
   @override
   void paint(Canvas canvas, Size size) {
     const halfWidth = 8.0;
+    final tip = down ? size.height - 1.0 : 1.0;
+    final base = down ? 0.0 : size.height;
     final path = Path()
-      ..moveTo(size.width / 2, 1.0)
-      ..lineTo(size.width / 2 + halfWidth, size.height)
-      ..lineTo(size.width / 2 - halfWidth, size.height)
+      ..moveTo(size.width / 2, tip)
+      ..lineTo(size.width / 2 + halfWidth, base)
+      ..lineTo(size.width / 2 - halfWidth, base)
       ..close();
     canvas.drawPath(path, Paint()..color = color);
   }
 
   @override
-  bool shouldRepaint(covariant _PointerPainter old) => old.color != color;
+  bool shouldRepaint(covariant _PointerPainter old) =>
+      old.color != color || old.down != down;
 }
 
 /// The circles for a course, read from its shared resolver: Missions with an
@@ -395,22 +505,44 @@ class CourseObjectiveCircles extends StatelessWidget {
     listenable: Listenable.merge([
       objectivesProvider.questLoader,
       objectivesProvider.progression,
+      WorldMapPinsManager.pingedActivityIds,
+      DiscoveredSessionsCache.instance,
     ]),
     builder: (context, _) {
       final groups = objectivesProvider.filteredObjectiveGroups;
+      final courseId = objectivesProvider.courseId;
+      final course = courseId == null
+          ? null
+          : objectivesProvider.client.getRoomById(courseId);
       final currentId = objectivesProvider.currentObjectiveGroup?.objective.id;
       final shownId =
           objectivesProvider.objectiveGroup(selectedMissionId)?.objective.id ??
           currentId;
+      final pinged = WorldMapPinsManager.pingedActivityIds.value;
+      // A Mission other than the one on show with a pinged session still
+      // open to join.
+      bool hasPing(QuestObjectiveGroup group) =>
+          course != null &&
+          group.objective.id != shownId &&
+          group.activities.any(
+            (a) =>
+                pinged.contains(a.activityId) &&
+                courseActivityLiveState(course, a.activityId).state ==
+                    ActivityPinState.joinable,
+          );
+      final classIndex = classLocationIndex(groups, DateTime.now());
       return ObjectiveProgressCircles(
         onTap: onTap,
         showSelectedLabel: showSelectedLabel,
+        reserveClassLocation: showSelectedLabel,
         items: [
           for (var i = 0; i < groups.length; i++)
             ObjectiveCircleData(
               index: i + 1,
               statement: groups[i].objective.objective,
               selected: groups[i].objective.id == shownId,
+              classLocation: i == classIndex,
+              pinged: hasPing(groups[i]),
               progress:
                   objectivesProvider
                       .missionProgress(groups[i].objective.id)
@@ -430,4 +562,18 @@ class CourseObjectiveCircles extends StatelessWidget {
       );
     },
   );
+}
+
+/// Where the class is, by the teacher's due dates (#9420 prototype): the
+/// first Mission in plan order still due at [now], else — every dated Mission
+/// past — the last dated one. Null when the course sets no due dates.
+int? classLocationIndex(List<QuestObjectiveGroup> groups, DateTime now) {
+  int? lastDated;
+  for (var i = 0; i < groups.length; i++) {
+    final dueAt = groups[i].pacing?.dueAt;
+    if (dueAt == null) continue;
+    if (dueAt.isAfter(now)) return i;
+    lastDated = i;
+  }
+  return lastDated;
 }

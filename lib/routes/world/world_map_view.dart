@@ -40,7 +40,6 @@ import 'package:fluffychat/routes/world/exiting_markers_layer.dart';
 import 'package:fluffychat/routes/world/large_markers_layer.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/map_exit_tracker.dart';
-import 'package:fluffychat/routes/world/mission_pin_tag.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/pin_semantics_layer.dart';
 import 'package:fluffychat/routes/world/tile_http_client.dart';
@@ -379,15 +378,6 @@ class _WorldMapViewState extends State<WorldMapView>
     );
   }
 
-  /// The "Mission N" a pin wears when the course map shows it from outside
-  /// the selected Mission (#9420 prototype), else null.
-  int? _missionTagFor(String id) {
-    final card = widget.controller.visiblePins.firstWhereOrNull(
-      (c) => c.activityId == id,
-    );
-    return card == null ? null : widget.controller.outOfMissionNumber(card);
-  }
-
   /// Hand the tutorial the on-screen rect of the pin it is pointing at, so its
   /// spotlight can be a hole the size and shape of that pin.
   ///
@@ -688,9 +678,6 @@ class _WorldMapViewState extends State<WorldMapView>
         screenOffsetOf: offsetOf,
         midBudget: midBudget,
         obstacleRects: obstacles,
-        tagSizeOf: (id) => _missionTagFor(id) == null
-            ? null
-            : const Size(MissionPinTag.width, MissionPinTag.height),
       );
     } catch (_) {
       // Camera not laid out yet: budget-only, no geometry — the next
@@ -1058,12 +1045,10 @@ class _WorldMapViewState extends State<WorldMapView>
               // — it animates in then, and holds full scale through the
               // State recreations MarkerLayer causes mid-gesture (#8136).
               animateInOf: _dotExits.markEntered,
-              missionTagOf: _missionTagFor,
             ).layer();
             // The selected Mission's played stamps web out the words the
             // learner used in them, once zoomed in far enough that stamps
-            // don't crowd; and pins from outside the Mission wear its number
-            // (#9420 prototype).
+            // don't crowd (#9420 prototype).
             // Under the activity-card map a card keeps its words to itself:
             // only bare stamps web out (#9420 prototype).
             final shownCards = [
@@ -1082,8 +1067,7 @@ class _WorldMapViewState extends State<WorldMapView>
                 if (inMissionScope && zoom >= _stampWordsMinZoom)
                   for (final card in shownCards)
                     if (render.starLevelOf(card.activityId) !=
-                            ActivityStarLevel.none &&
-                        widget.controller.outOfMissionNumber(card) == null)
+                        ActivityStarLevel.none)
                       for (final words in [
                         widget.controller.stampWordsFor(card.activityId),
                       ])
@@ -1138,7 +1122,6 @@ class _WorldMapViewState extends State<WorldMapView>
               onTap: widget.controller.openActivity,
               onClose: widget.controller.dismissLargeCard,
               animateInOf: _largeExits.markEntered,
-              missionTagOf: _missionTagFor,
             ).layer();
             // Base tiles: Stadia's light or dark style by theme — see
             // [MapTiles] and world-map-tiles.instructions.md. Changing the

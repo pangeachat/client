@@ -195,6 +195,13 @@ class WorldMapPinsManager {
   /// joined course-space messages). Folded into [_signals].
   Set<String> _pingedActivityIds = {};
 
+  /// The same pinged set, published for surfaces off the map: the course
+  /// page's Mission circles bell a Mission whose pinged session the
+  /// Mission-locked map no longer shows (#9420 prototype).
+  static final ValueNotifier<Set<String>> pingedActivityIds = ValueNotifier(
+    const {},
+  );
+
   /// Paces the coursemate-session discovery reads so the two triggers (sync
   /// ticks, and camera settles while panning) don't re-poll the server on every
   /// event: 3s keeps the matrix's live facts feeling current while scrolling
@@ -360,6 +367,7 @@ class WorldMapPinsManager {
       return false;
     }
     _pingedActivityIds = pinged;
+    pingedActivityIds.value = pinged;
     return true;
   }
 
@@ -587,6 +595,7 @@ class WorldMapPinsManager {
   void resolveProgression() {
     _progression = _objectiveCache.resolution(
       _xpByActivity,
+      practiceXpByLemma: MissionXpCache.instance.practiceXpByLemma,
       extraOutlines: _scopedCourseOutline == null
           ? const []
           : [_scopedCourseOutline!],

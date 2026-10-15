@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_header.dart';
+import 'package:fluffychat/pangea/common/widgets/bold_tonal_button.dart';
 
 /// A course-page section's shortcut — the one-tap action a section offers
 /// beside its "See all" (create a chat, invite a member), riding the header's
@@ -8,8 +8,9 @@ import 'package:fluffychat/routes/chat/chat_details/course_overview/course_secti
 ///
 /// A tonal circle rather than a bare glyph (#8815): as a plain icon it read as
 /// decoration, and in the Chats section it was the twin of the create-chat
-/// tile's leading glyph one row down — one a button, one not. The fill is the
-/// one the "See all" beside it wears, so the two read as one row of actions.
+/// tile's leading glyph one row down — one a button, one not. The bold
+/// pressable style the "See all" beside it and the Mission card's Practice
+/// wear (#9420 prototype), so the page's secondary actions read as one set.
 class CourseSectionShortcut extends StatelessWidget {
   final IconData icon;
 
@@ -30,25 +31,10 @@ class CourseSectionShortcut extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    // The header's own section glyph size, so the row's icons match.
-    final glyph = Icon(icon, size: CourseSectionHeader.iconSize);
-    if (!showLabel) {
-      return IconButton.filledTonal(
-        icon: glyph,
-        tooltip: label,
-        onPressed: onPressed,
-      );
-    }
-    return Tooltip(
-      message: label,
-      // The visible label already names the button for a screen reader.
-      excludeFromSemantics: true,
-      child: FilledButton.tonalIcon(
-        icon: glyph,
-        label: Text(label),
-        onPressed: onPressed,
-      ),
-    );
-  }
+  Widget build(BuildContext context) => BoldTonalButton(
+    icon: icon,
+    label: showLabel ? label : null,
+    semanticsLabel: label,
+    onPressed: onPressed,
+  );
 }

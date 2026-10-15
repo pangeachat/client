@@ -154,6 +154,9 @@ class QuestObjectivesLoader {
   /// Pure state — it notifies nothing, so it is safe to call mid-build.
   void scopeToCourse(String courseId) => _courseId = courseId;
 
+  /// The course room this loader is scoped to, when it is one.
+  String? get courseId => _courseId;
+
   QuestLoader get questLoader => _questLoader;
   ValueNotifier<ProgressionResolution> get progression => _progression;
 
@@ -271,7 +274,17 @@ class QuestObjectivesLoader {
     for (final activityId in activities) {
       sum = sum + (byActivity[activityId] ?? MissionXpBreakdown.zero);
     }
-    return sum;
+    // Practice outside any session, on the Mission's words.
+    final group = objectiveGroup(missionId);
+    return group == null
+        ? sum
+        : sum +
+              MissionXpBreakdown(
+                practice: practiceXpForLemmas(
+                  group.lemmas,
+                  cache.practiceXpByLemma,
+                ),
+              );
   }
 
   List<QuestObjectiveGroup> get filteredObjectiveGroups =>
@@ -296,6 +309,7 @@ class QuestObjectivesLoader {
     _updateProgression(
       _objectiveCache.resolution(
         client.userXpByActivity(MissionXpCache.instance.creditedXpByRoom),
+        practiceXpByLemma: MissionXpCache.instance.practiceXpByLemma,
       ),
       loadGen,
     );

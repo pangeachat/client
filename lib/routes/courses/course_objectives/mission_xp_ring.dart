@@ -123,8 +123,9 @@ class _MissionXpRingPainter extends CustomPainter {
       drawn.add(start);
     }
     // Cuts between neighbouring segments (not after the last one, unless the
-    // ring is full and the last meets the first).
-    if (drawn.length > 1 || remaining <= 0) {
+    // ring is full and the last meets a different first). A ring one segment
+    // fills alone is closed — no seam at the top.
+    if (drawn.length > 1) {
       final cuts = remaining <= 0 ? drawn : drawn.sublist(0, drawn.length - 1);
       final cut = Paint()
         ..color = gapColor

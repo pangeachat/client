@@ -118,6 +118,13 @@ class QuestObjectiveGroup {
     required this.activities,
     this.pacing,
   });
+
+  /// The Mission's word list: every suggested word across its activities,
+  /// lowercased — what practice outside a session credits it by.
+  Set<String> get lemmas => {
+    for (final activity in activities)
+      for (final word in activity.plan.vocab) word.lemma.toLowerCase(),
+  };
 }
 
 /// A fully-resolved quest for the outline UI: the quest plus its objective
@@ -184,6 +191,7 @@ class QuestOutline {
       for (final group in groups)
         group.objective.id: group.activities.map((a) => a.activityId).toSet(),
     },
+    lemmasByLo: {for (final group in groups) group.objective.id: group.lemmas},
     xpToComplete: xpToComplete,
   );
 }

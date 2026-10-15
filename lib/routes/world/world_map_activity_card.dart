@@ -4,7 +4,6 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
-import 'package:fluffychat/routes/world/mission_pin_tag.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
@@ -24,7 +23,6 @@ class WorldMapActivityCard extends StatelessWidget {
   final int openSlots;
   final bool standsOnStamp;
   final bool isFocused;
-  final int? missionNumber;
   final VoidCallback onTap;
   final VoidCallback? onClose;
 
@@ -38,7 +36,6 @@ class WorldMapActivityCard extends StatelessWidget {
     required this.standsOnStamp,
     required this.onTap,
     this.isFocused = false,
-    this.missionNumber,
     this.onClose,
     super.key,
   });
@@ -118,14 +115,6 @@ class WorldMapActivityCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
-              ),
-            if (missionNumber != null)
-              Positioned(
-                left: 6.0,
-                top: PinSize.mapCardImageHeight - MissionPinTag.height - 6.0,
-                child: IgnorePointer(
-                  child: MissionPinTag(number: missionNumber!, state: state),
                 ),
               ),
             if (onClose != null)

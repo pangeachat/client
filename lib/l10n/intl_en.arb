@@ -5971,10 +5971,6 @@
     "@playMission": {
         "description": "Main button on the course page's Mission card; opens the best next activity for this Mission."
     },
-    "practiceWords": "Practice words",
-    "@practiceWords": {
-        "description": "Button on the Mission card that opens vocabulary practice scoped to this Mission's words."
-    },
     "wordCount": "{count, plural, =1{1 word} other{{count} words}}",
     "@wordCount": {
         "description": "Count of a Mission's target words, shown on its Practice words button.",
@@ -5987,14 +5983,6 @@
     "continueActivity": "Continue",
     "@continueActivity": {
         "description": "The Mission card's main button when the learner is already in an unfinished activity session; it reopens that session. The activity's name shows under it."
-    },
-    "objectiveWordsHeading": "Words for this objective",
-    "@objectiveWordsHeading": {
-        "description": "Heading on a Learning Objective's detail page above the course's suggested words for it."
-    },
-    "objectiveActivitiesHeading": "Activities you've completed",
-    "@objectiveActivitiesHeading": {
-        "description": "Heading on a Learning Objective's detail page above the activities the learner has finished and saved toward it."
     },
     "noObjectiveActivitiesYet": "You haven't completed an activity for this objective yet. Start one from your course.",
     "@noObjectiveActivitiesYet": {
@@ -6046,5 +6034,9 @@
     "connectionBackOnline": "Back online",
     "@connectionBackOnline": {
         "description": "Banner shown for a few seconds when the connection to Pangea Chat comes back after being lost."
+    },
+    "classLocation": "Class location",
+    "@classLocation": {
+        "description": "Above the Mission circle the teacher's due dates say the class is on now."
     }
 }

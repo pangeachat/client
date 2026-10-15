@@ -279,12 +279,15 @@ class ProgressionResolution {
 
 /// Resolve progression from each in-scope quest's [outlines] and the learner's
 /// activity XP per activity ([xpByActivity] — saved sessions' credited XP plus
-/// goal checkmarks, `Client.userXpByActivity`). Pure. In-scope quests are the
+/// goal checkmarks, `Client.userXpByActivity`), plus the practice done outside
+/// any session on each Mission's words ([practiceXpByLemma], #9420
+/// prototype). Pure. In-scope quests are the
 /// learner's joined courses by default, or whatever the world map's quest filter
 /// selects — the caller decides which outlines to pass; this only resolves them.
 ProgressionResolution resolveProgression({
   required Iterable<CourseLoOutline> outlines,
   required Map<String, int> xpByActivity,
+  Map<String, int> practiceXpByLemma = const {},
 }) {
   // Resolved per outline, NOT unioned across them. A Mission's XP total is
   // only meaningful against the activity set it was summed over, and Missions
@@ -315,6 +318,10 @@ ProgressionResolution resolveProgression({
       for (final activityId in activities) {
         xp += xpByActivity[activityId] ?? 0;
       }
+      xp += practiceXpForLemmas(
+        outline.lemmasByLo[missionId] ?? const {},
+        practiceXpByLemma,
+      );
       rollup[missionId] = MissionProgress(
         xp: xp,
         threshold: outline.xpToComplete,
@@ -359,4 +366,18 @@ String? _anchorFor(List<String> seq, Map<String, MissionProgress> rollup) {
     if (!progress.satisfied) return missionId;
   }
   return null;
+}
+
+/// The practice XP earned outside any session on [lemmas] — a Mission's word
+/// list — read from [practiceXpByLemma]. A word on two Missions' lists counts
+/// for both.
+int practiceXpForLemmas(
+  Iterable<String> lemmas,
+  Map<String, int> practiceXpByLemma,
+) {
+  var xp = 0;
+  for (final lemma in lemmas) {
+    xp += practiceXpByLemma[lemma] ?? 0;
+  }
+  return xp;
 }
