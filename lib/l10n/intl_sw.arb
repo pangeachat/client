@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-16 10:37:34.392710",
+    "@@last_modified": "2026-10-16 11:49:07.551635",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "Simu iliingia wakati Pangea Chat ilifungwa, lakini simu yako haikuweza kuita kwa sababu arifa zimezimwa. Ruhusu arifa ili simu inayofuata iite.",
     "connectionPracticeVocab": "Jizoeze msamiati unaposubiri",
     "offlinePracticeNote": "Nje ya mtandao. Majibu yako yatapakiwa ukiwa mtandaoni tena.",
-    "offlinePracticeSavedNote": "Imehifadhiwa kwenye kifaa hiki. XP yako itapakiwa ukiwa mtandaoni tena."
+    "offlinePracticeSavedNote": "Imehifadhiwa kwenye kifaa hiki. XP yako itapakiwa ukiwa mtandaoni tena.",
+    "offlinePracticeNothingSaved": "Hakuna kilichohifadhiwa cha kutosha kwenye kifaa hiki kwa ajili ya mazoezi ya nje ya mtandao. Jaribu tena ukiwa mtandaoni."
 }

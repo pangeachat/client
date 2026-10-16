@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-16 10:37:27.288310",
+    "@@last_modified": "2026-10-16 11:49:01.057474",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "Ana telpon mlebu nalika Pangea Chat ditutup, nanging telpon sampeyan ora bisa muni amarga notifikasi dipateni. Ngidini notifikasi supaya telpon sabanjure muni.",
     "connectionPracticeVocab": "Gladhen kosakata nalika ngenteni",
     "offlinePracticeNote": "Offline. Wangsulanmu bakal diunggah nalika sampeyan bali.",
-    "offlinePracticeSavedNote": "Disimpen ing piranti iki. XP-mu bakal diunggah nalika sampeyan online maneh."
+    "offlinePracticeSavedNote": "Disimpen ing piranti iki. XP-mu bakal diunggah nalika sampeyan online maneh.",
+    "offlinePracticeNothingSaved": "Ora cukup sing disimpen ing piranti iki kanggo gladhen offline. Coba maneh nalika sampeyan wis online."
 }

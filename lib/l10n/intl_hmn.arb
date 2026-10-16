@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-16 10:37:26.311997",
+    "@@last_modified": "2026-10-16 11:48:57.219948",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "Muaj kev hu tuaj thaum Pangea Chat kaw lawm, tiam sis koj lub xov tooj tsis tuaj yeem nrov vim tias cov ceeb toom raug kaw. Tso cai ceeb toom kom kev hu tom ntej nrov.",
     "connectionPracticeVocab": "Xyaum cov lus thaum koj tos",
     "offlinePracticeNote": "Tsis muaj internet. Koj cov lus teb yuav raug upload thaum koj rov online.",
-    "offlinePracticeSavedNote": "Txuag rau hauv lub cuab yeej no. Koj cov XP yuav raug upload thaum koj rov online."
+    "offlinePracticeSavedNote": "Txuag rau hauv lub cuab yeej no. Koj cov XP yuav raug upload thaum koj rov online.",
+    "offlinePracticeNothingSaved": "Tsis muaj dab tsi txaus tau raug cawm rau ntawm lub cuab yeej no los xyaum offline. Sim dua thaum koj rov online."
 }

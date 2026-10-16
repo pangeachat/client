@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 10:37:27.802340",
+    "@@last_modified": "2026-10-16 11:49:03.976131",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10167,5 +10167,6 @@
     "callNotificationsMissedMessage": "Pangea Chat이 닫혀 있는 동안 전화가 걸려왔지만, 알림이 꺼져 있어 휴대폰이 울리지 않았습니다. 다음 전화가 울리도록 알림을 허용하세요.",
     "connectionPracticeVocab": "기다리는 동안 어휘 연습",
     "offlinePracticeNote": "오프라인입니다. 다시 연결되면 답변이 업로드됩니다.",
-    "offlinePracticeSavedNote": "이 기기에 저장되었습니다. 다시 온라인 상태가 되면 XP가 업로드됩니다."
+    "offlinePracticeSavedNote": "이 기기에 저장되었습니다. 다시 온라인 상태가 되면 XP가 업로드됩니다.",
+    "offlinePracticeNothingSaved": "오프라인 연습을 할 만큼 이 기기에 저장된 내용이 충분하지 않습니다. 다시 온라인 상태가 되면 다시 시도해 주세요."
 }

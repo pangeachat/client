@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-16 10:37:22.937415",
+    "@@last_modified": "2026-10-16 11:48:53.358632",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "ፓንጋያ ቻት ዝግ እያለ ጥሪ መጥቶ ነበር፣ ነገር ግን ማሳወቂያዎች ስለጠፉ ስልክዎ ሊጠራ አልቻለም። ቀጣዩ ጥሪ እንዲጠራ ማሳወቂያዎችን ይፍቀዱ።",
     "connectionPracticeVocab": "በምትጠብቅበት ጊዜ የቃላት ልምምድ አድርግ",
     "offlinePracticeNote": "ከመስመር ውጪ ነዎት። መልሶችዎ ሲመለሱ ይሰቀላሉ።",
-    "offlinePracticeSavedNote": "በዚህ መሳሪያ ላይ ተቀምጧል። በመስመር ላይ ሲመለሱ የእርስዎ XP ይሰቀላል።"
+    "offlinePracticeSavedNote": "በዚህ መሳሪያ ላይ ተቀምጧል። በመስመር ላይ ሲመለሱ የእርስዎ XP ይሰቀላል።",
+    "offlinePracticeNothingSaved": "ከመስመር ውጭ ለመለማመድ በዚህ መሳሪያ ላይ በቂ አልተቀመጠም። መስመር ላይ ሲሆኑ እንደገና ይሞክሩ።"
 }

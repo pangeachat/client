@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-16 10:37:36.377553",
+    "@@last_modified": "2026-10-16 11:49:09.969202",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "Ipe kan wọle nigba ti Pangea Chat ti wa ni pipade, ṣugbọn foonu rẹ ko le dun nitori awọn iwifunni ti wa ni pipa. Gba awọn iwifunni laaye ki ipe ti o tẹle le dun.",
     "connectionPracticeVocab": "Ṣe àṣàrò lórí àwọn ọ̀rọ̀ tuntun nígbà tí o bá ń dúró",
     "offlinePracticeNote": "Ní àìsí Íntánẹ́ẹ̀tì. Àwọn ìdáhùn rẹ yóò gbé sórí ẹ̀rọ ayélujára nígbà tí o bá padà wá sórí Íntánẹ́ẹ̀tì.",
-    "offlinePracticeSavedNote": "Ti wà ní ìpamọ́ sórí ẹ̀rọ yìí. XP rẹ yóò gbé sórí ẹ̀rọ ayélujára nígbà tí o bá padà wá sórí Íntánẹ́ẹ̀tì."
+    "offlinePracticeSavedNote": "Ti wà ní ìpamọ́ sórí ẹ̀rọ yìí. XP rẹ yóò gbé sórí ẹ̀rọ ayélujára nígbà tí o bá padà wá sórí Íntánẹ́ẹ̀tì.",
+    "offlinePracticeNothingSaved": "Kò sí ohun tó tó tí wọ́n ti fi pamọ́ sórí ẹ̀rọ yìí láti fi ṣe ìdánilẹ́kọ̀ọ́ nígbà tí kò sí Íńtánẹ́ẹ̀tì. Gbìyànjú lẹ́ẹ̀kan sí nígbà tó o bá ti padà sórí Íńtánẹ́ẹ̀tì."
 }

@@ -18,8 +18,8 @@ For **conversation activities**, see [activities.instructions.md](activities.ins
 
 | Entry Point | What It Is | Where It Lives | Activity Types Used |
 |---|---|---|---|
-| **Vocab Practice** | Standalone session of ~10 vocab exercises drawn from the user's weakest words | Analytics page → "Practice Vocab" button, or the connection banner's "Practice vocab while you wait" → [`AnalyticsPracticePage`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_page.dart) (`type: vocab`) | `lemmaMeaning`, `lemmaAudio` (`lemmaMeaning` only [offline](#offline-vocab-practice)) |
-| **Grammar Practice** | Standalone session of ~10 grammar exercises drawn from recent errors + weak morphology | Analytics page → "Practice Grammar" button → [`AnalyticsPracticePage`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_page.dart) (`type: morph`) | `grammarError`, `grammarCategory` |
+| **Vocab Practice** | Standalone session of ~10 vocab exercises drawn from the user's weakest words | Analytics page → "Practice Vocab" button, or the connection banner's "Practice vocab while you wait" → [`AnalyticsPracticePage`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_page.dart) (`type: vocab`) | `lemmaMeaning`, `lemmaAudio` (`lemmaMeaning` only [offline](#offline-practice)) |
+| **Grammar Practice** | Standalone session of ~10 grammar exercises drawn from recent errors + weak morphology | Analytics page → "Practice Grammar" button → [`AnalyticsPracticePage`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_page.dart) (`type: morph`) | `grammarError`, `grammarCategory` (both [offline](#offline-practice), `grammarError` without its hint) |
 | **Message Practice** | Per-message practice accessed from the toolbar; exercises target words in that specific message | Toolbar → 💪 button → [`PracticeController`](../../lib/routes/chat/toolbar/message_practice/practice_controller.dart) | `wordMeaning`, `wordFocusListening`, `emoji`, `morphId` |
 
 All three entry points produce the same [`ConstructUseModel`](../../lib/pangea/analytics_misc/constructs_model.dart) records, so practice from any source contributes equally to the user's vocabulary garden and XP.
@@ -186,15 +186,25 @@ badge, and the same-section analytics block — live in
   clears the holder and the cluster badge.
 - **Elapsed time is wall-clock from the first exercise appearing** (see [Loading & Generation Sequencing](#loading--generation-sequencing)), not time-on-screen. The timer keeps counting while the panel is closed — an anti-cheat mechanism in its own right: leaving mid-session to consult a dictionary or an AI costs the clock, so the speed bonus rewards finishing unaided in one sitting. The cluster badge shows the same running clock.
 
-### Offline Vocab Practice
+### Offline Practice
 
-A vocab session that starts while the app cannot reach Pangea ([connection-status](connection-status.instructions.md)) is an **offline session**, whichever button started it. It uses only what the device already has:
+A practice session that starts while the app cannot reach Pangea ([connection-status](connection-status.instructions.md)) is an **offline session**, whichever button started it. It uses only what the device already has, and it has as many exercises as that allows, up to the usual 10. When the device has nothing to practice, the page says "Not enough is saved on this device to practice offline. Try again when you're back online."
+
+**Vocab.**
 
 - It uses meaning exercises only, because audio exercises need an example message and speech audio from the network.
 - Every word in it, the answers and the wrong choices alike, has a meaning saved on the device. That is the meaning the learner picked in meaning practice, or a dictionary meaning the app fetched in the last 30 days, from a word card or from practice ([`ConstructIdentifier.knownMeanings`](../../lib/features/analytics/construct_identifier.dart)).
 - Words come in the usual priority order, without the 24-hour pause on recently practiced words, because the saved words are all the session has.
 - The pronunciation line under the word is hidden, because it needs the network. The example message shows only when that message is saved on the device.
-- Answers are recorded and earn XP as usual. They stay on the device and upload when the connection returns ([analytics-system § Local-First, Sync-Later](analytics-system.instructions.md#local-first-sync-later)).
+
+**Grammar.**
+
+- It uses both grammar exercises, built only from messages saved on the device. The app does not ask the server for a message that is not saved, because that request can wait 35 seconds when the server is not answering.
+- Grammar-category exercises need grammar labels for this language pair saved on the device, of any age ([grammar-analytics](grammar-analytics.instructions.md#morph-feature-inventory)). Without them, the session uses grammar-error exercises only, because the built-in labels are in English.
+- Grammar-error exercises have no hint, because the hint is the sentence's translation, which needs the network. The learner's own error is always one of the choices.
+- The 24-hour pauses on recently practiced grammar and sentences still apply.
+
+Answers are recorded and earn XP as usual. They stay on the device and upload when the connection returns ([analytics-system § Local-First, Sync-Later](analytics-system.instructions.md#local-first-sync-later)).
 
 A session keeps the mode it started in. While the app cannot reach Pangea, the practice page says "Offline. Your answers upload when you're back." under the progress bar. The completion view says "Saved on this device. Your XP uploads when you're back online."
 

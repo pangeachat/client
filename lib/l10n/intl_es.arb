@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-16 10:37:23.796163",
+    "@@last_modified": "2026-10-16 11:48:59.794636",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8203,5 +8203,6 @@
     "callNotificationsMissedMessage": "Entró una llamada mientras Pangea Chat estaba cerrado, pero tu teléfono no pudo sonar porque las notificaciones están desactivadas. Permite las notificaciones para que la próxima llamada suene.",
     "connectionPracticeVocab": "Practica vocabulario mientras esperas",
     "offlinePracticeNote": "Sin conexión. Tus respuestas se subirán cuando vuelvas a tener conexión.",
-    "offlinePracticeSavedNote": "Guardado en este dispositivo. Tu XP se subirá cuando vuelvas a tener conexión."
+    "offlinePracticeSavedNote": "Guardado en este dispositivo. Tu XP se subirá cuando vuelvas a tener conexión.",
+    "offlinePracticeNothingSaved": "No hay suficiente guardado en este dispositivo para practicar sin conexión. Intenta de nuevo cuando tengas conexión."
 }

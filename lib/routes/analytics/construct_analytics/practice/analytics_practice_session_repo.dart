@@ -14,7 +14,13 @@ import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_a
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_meaning_target_generator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class InsufficientDataException implements Exception {}
+class InsufficientDataException implements Exception {
+  /// The session was to run offline, so what it lacks is data saved on this
+  /// device. See practice-exercises.instructions.md, "Offline Practice".
+  final bool offline;
+
+  const InsufficientDataException({this.offline = false});
+}
 
 class AnalyticsPracticeSessionRepo {
   static Future<AnalyticsPracticeSessionModel> get(
@@ -39,11 +45,9 @@ class AnalyticsPracticeSessionRepo {
 
     // Decided once, at the start: the session keeps this mode if the
     // connection comes or goes while it runs.
-    final offline =
-        type == ConstructTypeEnum.vocab &&
-        ConnectionStatusController.instance.cannotReachPangea;
+    final offline = ConnectionStatusController.instance.cannotReachPangea;
 
-    if (offline) {
+    if (offline && type == ConstructTypeEnum.vocab) {
       await LemmaInfoRepo.instance.cacheReady;
       targets.addAll(
         await VocabMeaningTargetGenerator.get(vocabConstructs, offline: true),
@@ -70,6 +74,7 @@ class AnalyticsPracticeSessionRepo {
     } else {
       final errorTargets = await GrammarErrorTargetGenerator.get(
         vocabConstructs,
+        offline: offline,
       );
       targets.addAll(errorTargets);
 
@@ -80,7 +85,10 @@ class AnalyticsPracticeSessionRepo {
               userL2.langCodeShort,
             )
             .then((map) => map.values.toList());
-        final morphs = await GrammarMatchTargetGenerator.get(morphConstructs);
+        final morphs = await GrammarMatchTargetGenerator.get(
+          morphConstructs,
+          offline: offline,
+        );
         final remainingCount =
             AnalyticsPracticeConstants.targetsToGenerate - targets.length;
 
@@ -90,7 +98,7 @@ class AnalyticsPracticeSessionRepo {
     }
 
     if (targets.isEmpty) {
-      throw InsufficientDataException();
+      throw InsufficientDataException(offline: offline);
     }
 
     targets.shuffle();

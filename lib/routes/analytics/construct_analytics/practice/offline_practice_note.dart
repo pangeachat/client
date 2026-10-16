@@ -5,7 +5,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 
 /// A quiet line, shown only while the app cannot reach Pangea, saying that
 /// practice keeps working and when its results upload. See
-/// practice-exercises.instructions.md, "Offline Vocab Practice".
+/// practice-exercises.instructions.md, "Offline Practice".
 class OfflinePracticeNote extends StatelessWidget {
   final bool _completed;
 

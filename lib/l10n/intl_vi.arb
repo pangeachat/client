@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 10:37:35.182691",
+    "@@last_modified": "2026-10-16 11:49:09.212066",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7281,5 +7281,6 @@
     "callNotificationsMissedMessage": "Có cuộc gọi đến khi Pangea Chat đã đóng, nhưng điện thoại của bạn không thể đổ chuông vì thông báo đã tắt. Cho phép thông báo để cuộc gọi tiếp theo đổ chuông.",
     "connectionPracticeVocab": "Luyện từ vựng trong khi chờ",
     "offlinePracticeNote": "Ngoại tuyến. Câu trả lời của bạn sẽ được tải lên khi bạn trực tuyến trở lại.",
-    "offlinePracticeSavedNote": "Đã lưu trên thiết bị này. XP của bạn sẽ được tải lên khi bạn trực tuyến trở lại."
+    "offlinePracticeSavedNote": "Đã lưu trên thiết bị này. XP của bạn sẽ được tải lên khi bạn trực tuyến trở lại.",
+    "offlinePracticeNothingSaved": "Không có đủ dữ liệu được lưu trên thiết bị này để luyện tập ngoại tuyến. Hãy thử lại khi bạn có kết nối mạng."
 }

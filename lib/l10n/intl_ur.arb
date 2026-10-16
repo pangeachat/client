@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-16 10:37:35.309013",
+    "@@last_modified": "2026-10-16 11:49:08.681785",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "جب Pangea Chat بند تھا تو ایک کال آئی، لیکن آپ کا فون رنگ نہیں کر سکا کیونکہ نوٹیفکیشنز بند ہیں۔ نوٹیفکیشنز کی اجازت دیں تاکہ اگلی کال رنگ کرے۔",
     "connectionPracticeVocab": "انتظار کے دوران الفاظ کی مشق کریں",
     "offlinePracticeNote": "آف لائن۔ آپ کے جوابات واپس آنے پر اپ لوڈ ہو جائیں گے۔",
-    "offlinePracticeSavedNote": "اس ڈیوائس پر محفوظ ہو گیا۔ آپ کا XP آن لائن واپس آنے پر اپ لوڈ ہو جائے گا۔"
+    "offlinePracticeSavedNote": "اس ڈیوائس پر محفوظ ہو گیا۔ آپ کا XP آن لائن واپس آنے پر اپ لوڈ ہو جائے گا۔",
+    "offlinePracticeNothingSaved": "آف لائن مشق کے لیے اس ڈیوائس پر کافی مواد محفوظ نہیں ہے۔ جب آپ دوبارہ آن لائن ہوں تو دوبارہ کوشش کریں۔"
 }

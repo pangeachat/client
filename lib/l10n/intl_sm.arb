@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-16 10:37:33.173777",
+    "@@last_modified": "2026-10-16 11:49:06.840852",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "Na maua se vala'au a'o tapunia le Pangea Chat, ae le'i mafai ona tatagi lau telefoni ona ua tape fa'asilasilaga. Fa'ataga fa'asilasilaga ina ia tatagi le isi vala'au.",
     "connectionPracticeVocab": "Fa'ata'ita'i upu a'o e fa'atali",
     "offlinePracticeNote": "Leai se initaneti. O au tali o le a lafo i luga pe a e toe feso'ota'i.",
-    "offlinePracticeSavedNote": "Ua sefe i luga o lenei masini. O lau XP o le a lafo i luga pe a e toe feso'ota'i i le initaneti."
+    "offlinePracticeSavedNote": "Ua sefe i luga o lenei masini. O lau XP o le a lafo i luga pe a e toe feso'ota'i i le initaneti.",
+    "offlinePracticeNothingSaved": "E le lava mea o lo'o teuina i luga o lenei masini e fa'ata'ita'i ai tuimotu. Toe taumafai pe a e toe feso'ota'i i luga o le initaneti."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-16 10:37:33.597584",
+    "@@last_modified": "2026-10-16 11:49:07.221407",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "Aya telepon asup nalika Pangea Chat ditutup, tapi telepon anjeun teu bisa disada sabab béwara pareum. Idinan béwara sangkan telepon salajengna disada.",
     "connectionPracticeVocab": "Latihan kosakata bari ngantosan",
     "offlinePracticeNote": "Pareum. Jawaban anjeun diunggah nalika anjeun uih deui.",
-    "offlinePracticeSavedNote": "Disimpen dina alat ieu. XP anjeun diunggah nalika anjeun online deui online."
+    "offlinePracticeSavedNote": "Disimpen dina alat ieu. XP anjeun diunggah nalika anjeun online deui online.",
+    "offlinePracticeNothingSaved": "Teu cekap disimpen dina alat ieu pikeun latihan offline. Cobi deui nalika anjeun online."
 }

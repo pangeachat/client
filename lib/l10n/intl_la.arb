@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-16 10:37:28.226445",
+    "@@last_modified": "2026-10-16 11:49:00.583771",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "Vox advenit dum Pangea Chat clausum erat, sed telephonum vestrum sonare non potuit quia notificationes sunt off. Sinite notificationes ut proxima vox sonet.",
     "connectionPracticeVocab": "Dum exspectas, verba exerce",
     "offlinePracticeNote": "Sine conexione. Responsa tua, cum redieris, mittentur.",
-    "offlinePracticeSavedNote": "In hoc artificio servatum. XP tua, cum redieris, mittentur."
+    "offlinePracticeSavedNote": "In hoc artificio servatum. XP tua, cum redieris, mittentur.",
+    "offlinePracticeNothingSaved": "Non satis servatum est in hac machina ad exercendum offline. Iterum conare cum online eris."
 }

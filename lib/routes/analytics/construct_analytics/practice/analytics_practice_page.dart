@@ -136,6 +136,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
           exercise.practiceTarget,
           _l2!.langCodeShort,
         ),
+        savedOnly: session.session?.offline ?? false,
       ),
     };
 

@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-16 10:37:34.961216",
+    "@@last_modified": "2026-10-16 11:49:08.951033",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9978,5 +9978,6 @@
     "callNotificationsMissedMessage": "Pangea Chat yopiq bo‘lganida qo‘ng‘iroq keldi, ammo bildirishnomalar o‘chirilganligi sababli telefoningiz jiringlay olmadi. Keyingi qo‘ng‘iroq jiringlashi uchun bildirishnomalarga ruxsat bering.",
     "connectionPracticeVocab": "Kutayotganingizda lug'at mashq qiling",
     "offlinePracticeNote": "Oflayn. Qaytib kelganingizda javoblaringiz yuklanadi.",
-    "offlinePracticeSavedNote": "Ushbu qurilmaga saqlandi. Onlayn bo'lganingizda XP'ingiz yuklanadi."
+    "offlinePracticeSavedNote": "Ushbu qurilmaga saqlandi. Onlayn bo'lganingizda XP'ingiz yuklanadi.",
+    "offlinePracticeNothingSaved": "Oflayn mashq qilish uchun ushbu qurilmada yetarlicha maʼlumot saqlanmagan. Tarmoqqa qaytganingizda qayta urinib koʻring."
 }

@@ -2552,7 +2552,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-16 10:37:31.722005",
+    "@@last_modified": "2026-10-16 11:49:05.547356",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10888,5 +10888,6 @@
     "callNotificationsMissedMessage": "Recebeu uma chamada enquanto o Pangea Chat estava fechado, mas o seu telemóvel não conseguiu tocar porque as notificações estão desativadas. Permita as notificações para que a próxima chamada toque.",
     "connectionPracticeVocab": "Pratique vocabulário enquanto espera",
     "offlinePracticeNote": "Offline. As suas respostas serão enviadas quando voltar a ter ligação.",
-    "offlinePracticeSavedNote": "Guardado neste dispositivo. A sua XP será enviada quando voltar a ter ligação."
+    "offlinePracticeSavedNote": "Guardado neste dispositivo. A sua XP será enviada quando voltar a ter ligação.",
+    "offlinePracticeNothingSaved": "Não há conteúdo suficiente guardado neste dispositivo para praticar offline. Tente novamente quando estiver online."
 }

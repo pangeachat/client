@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-16 10:37:26.075022",
+    "@@last_modified": "2026-10-16 11:48:56.835871",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10407,5 +10407,6 @@
     "callNotificationsMissedMessage": "Poziv je stigao dok je Pangea Chat bio zatvoren, ali vaš telefon nije mogao zvoniti jer su obavijesti isključene. Dopustite obavijesti kako bi sljedeći poziv zvonio.",
     "connectionPracticeVocab": "Vježbaj riječi dok čekaš",
     "offlinePracticeNote": "Izvan mreže. Tvoji će se odgovori učitati kad se vratiš.",
-    "offlinePracticeSavedNote": "Spremljeno na ovom uređaju. Tvoj XP će se učitati kad se vratiš na mrežu."
+    "offlinePracticeSavedNote": "Spremljeno na ovom uređaju. Tvoj XP će se učitati kad se vratiš na mrežu.",
+    "offlinePracticeNothingSaved": "Nema dovoljno spremljenog sadržaja na ovom uređaju za vježbanje izvan mreže. Pokušajte ponovno kada budete na mreži."
 }

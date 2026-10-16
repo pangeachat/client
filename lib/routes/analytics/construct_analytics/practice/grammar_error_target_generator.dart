@@ -17,9 +17,13 @@ class GrammarErrorTargetGenerator {
   static PracticeExerciseTypeEnum exerciseType =
       PracticeExerciseTypeEnum.grammarError;
 
+  /// [offline] picks for an offline session: only messages saved on this
+  /// device, and no translation, so the exercise goes without its hint. See
+  /// practice-exercises.instructions.md, "Offline Practice".
   static Future<List<AnalyticsPracticeTarget>> get(
-    List<ConstructUses> constructs,
-  ) async {
+    List<ConstructUses> constructs, {
+    bool offline = false,
+  }) async {
     final client = MatrixState.pangeaController.matrixState.client;
     final Map<String, PangeaMessageEvent?> seenEventIDs = {};
 
@@ -55,7 +59,8 @@ class GrammarErrorTargetGenerator {
         }
 
         final event =
-            seenEventIDs[eventID] ?? await client.getEventByConstructUse(use);
+            seenEventIDs[eventID] ??
+            await client.getEventByConstructUse(use, savedOnly: offline);
 
         seenEventIDs[eventID] = event;
       }
@@ -63,7 +68,7 @@ class GrammarErrorTargetGenerator {
 
     final events = seenEventIDs.values.whereType<PangeaMessageEvent>();
     for (final event in events) {
-      final eventTargets = await _getTargetFromEvent(event);
+      final eventTargets = await _getTargetFromEvent(event, offline: offline);
       targets.addAll(eventTargets);
       if (targets.length >= AnalyticsPracticeConstants.targetsToGenerate) {
         return targets;
@@ -103,8 +108,9 @@ class GrammarErrorTargetGenerator {
   }
 
   static Future<List<AnalyticsPracticeTarget>> _getTargetFromEvent(
-    PangeaMessageEvent event,
-  ) async {
+    PangeaMessageEvent event, {
+    required bool offline,
+  }) async {
     final List<AnalyticsPracticeTarget> targets = [];
     final l2Code =
         MatrixState.pangeaController.userController.userL2!.langCodeShort;
@@ -176,23 +182,27 @@ class GrammarErrorTargetGenerator {
         continue;
       }
 
-      try {
-        final resp = await event.requestTranslationByL1();
-        translation ??= resp.bestTranslation;
-      } catch (e, s) {
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: {
-            'context': 'AnalyticsPracticeSessionRepo._fetchErrors',
-            'message': 'Failed to fetch translation for analytics practice',
-            'event_id': event.eventId,
-          },
-        );
-      }
+      // The translation is the exercise's hint, and it comes from the network,
+      // so an offline exercise goes without it.
+      if (!offline) {
+        try {
+          final resp = await event.requestTranslationByL1();
+          translation ??= resp.bestTranslation;
+        } catch (e, s) {
+          ErrorHandler.logError(
+            e: e,
+            s: s,
+            data: {
+              'context': 'AnalyticsPracticeSessionRepo._fetchErrors',
+              'message': 'Failed to fetch translation for analytics practice',
+              'event_id': event.eventId,
+            },
+          );
+        }
 
-      if (translation == null) {
-        continue;
+        if (translation == null) {
+          continue;
+        }
       }
 
       targets.add(

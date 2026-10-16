@@ -5890,5 +5890,9 @@
     "offlinePracticeSavedNote": "Saved on this device. Your XP uploads when you're back online.",
     "@offlinePracticeSavedNote": {
         "description": "Note on the practice completion screen while the app has no connection to Pangea Chat. The XP earned is stored on the device and sent when the connection returns."
+    },
+    "offlinePracticeNothingSaved": "Not enough is saved on this device to practice offline. Try again when you're back online.",
+    "@offlinePracticeNothingSaved": {
+        "description": "Shown instead of a practice session when the app has no connection to Pangea Chat and the device has not saved enough words or messages to build one offline."
     }
 }

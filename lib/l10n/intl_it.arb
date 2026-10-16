@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 10:37:29.259817",
+    "@@last_modified": "2026-10-16 11:48:58.834299",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10047,5 +10047,6 @@
     "callNotificationsMissedMessage": "È arrivata una chiamata mentre Pangea Chat era chiusa, ma il telefono non ha potuto squillare perché le notifiche sono disattivate. Consenti le notifiche in modo che la prossima chiamata squilli.",
     "connectionPracticeVocab": "Esercitati con il vocabolario mentre aspetti",
     "offlinePracticeNote": "Offline. Le tue risposte verranno caricate quando tornerai online.",
-    "offlinePracticeSavedNote": "Salvato su questo dispositivo. I tuoi XP verranno caricati quando tornerai online."
+    "offlinePracticeSavedNote": "Salvato su questo dispositivo. I tuoi XP verranno caricati quando tornerai online.",
+    "offlinePracticeNothingSaved": "Non c'è abbastanza contenuto salvato su questo dispositivo per esercitarsi offline. Riprova quando sarai di nuovo online."
 }

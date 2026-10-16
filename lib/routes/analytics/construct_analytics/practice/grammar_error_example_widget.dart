@@ -72,6 +72,7 @@ class GrammarErrorExampleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final errorLength = analyticsPracticeExercise.errorLength;
+    final translation = analyticsPracticeExercise.translation;
 
     final split = splitAroundBlank(
       analyticsPracticeExercise.text,
@@ -130,13 +131,13 @@ class GrammarErrorExampleWidget extends StatelessWidget {
             duration: const Duration(milliseconds: 200),
             curve: Curves.easeInOut,
             alignment: Alignment.topCenter,
-            child: showTranslation
+            child: showTranslation && translation != null
                 ? Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       const SizedBox(height: 8),
                       Text(
-                        analyticsPracticeExercise.translation,
+                        translation,
                         style: textStyle?.copyWith(
                           color: Theme.of(context).colorScheme.onPrimary,
                           fontStyle: FontStyle.italic,

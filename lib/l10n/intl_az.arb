@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-16 10:37:22.144066",
+    "@@last_modified": "2026-10-16 11:48:53.190638",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "Pangea Chat bağlı olarkən zəng gəldi, lakin bildirişlər söndürüldüyü üçün telefonunuz çala bilmədi. Növbəti zəngin çalması üçün bildirişlərə icazə verin.",
     "connectionPracticeVocab": "Gözləyərkən söz ehtiyatını təkmilləşdirin",
     "offlinePracticeNote": "Oflayn. Cavablarınız geri qayıtdığınızda yüklənəcək.",
-    "offlinePracticeSavedNote": "Bu cihazda saxlanıldı. Onlayn olduğunuzda XP-niz yüklənəcək."
+    "offlinePracticeSavedNote": "Bu cihazda saxlanıldı. Onlayn olduğunuzda XP-niz yüklənəcək.",
+    "offlinePracticeNothingSaved": "Oflayn məşq etmək üçün bu cihazda kifayət qədər məlumat yoxdur. Onlayn olanda yenidən cəhd edin."
 }

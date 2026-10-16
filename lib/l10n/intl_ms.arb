@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-16 10:37:30.505114",
+    "@@last_modified": "2026-10-16 11:49:03.010296",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "Panggilan masuk semasa Pangea Chat ditutup, tetapi telefon anda tidak dapat berdering kerana pemberitahuan dimatikan. Benarkan pemberitahuan supaya panggilan seterusnya berdering.",
     "connectionPracticeVocab": "Latih perbendaharaan kata sementara anda menunggu",
     "offlinePracticeNote": "Luar talian. Jawapan anda akan dimuat naik apabila anda kembali dalam talian.",
-    "offlinePracticeSavedNote": "Disimpan pada peranti ini. XP anda akan dimuat naik apabila anda kembali dalam talian."
+    "offlinePracticeSavedNote": "Disimpan pada peranti ini. XP anda akan dimuat naik apabila anda kembali dalam talian.",
+    "offlinePracticeNothingSaved": "Tidak cukup disimpan pada peranti ini untuk berlatih di luar talian. Cuba lagi apabila anda kembali dalam talian."
 }

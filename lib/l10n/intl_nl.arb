@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 10:37:30.575953",
+    "@@last_modified": "2026-10-16 11:49:05.149858",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9974,5 +9974,6 @@
     "callNotificationsMissedMessage": "Er kwam een oproep binnen terwijl Pangea Chat gesloten was, maar je telefoon kon niet overgaan omdat meldingen zijn uitgeschakeld. Sta meldingen toe zodat de volgende oproep wel overgaat.",
     "connectionPracticeVocab": "Oefen woordenschat terwijl je wacht",
     "offlinePracticeNote": "Offline. Je antwoorden worden geüpload wanneer je weer online bent.",
-    "offlinePracticeSavedNote": "Opgeslagen op dit apparaat. Je XP wordt geüpload wanneer je weer online bent."
+    "offlinePracticeSavedNote": "Opgeslagen op dit apparaat. Je XP wordt geüpload wanneer je weer online bent.",
+    "offlinePracticeNothingSaved": "Er is niet genoeg opgeslagen op dit apparaat om offline te oefenen. Probeer het opnieuw wanneer je weer online bent."
 }
