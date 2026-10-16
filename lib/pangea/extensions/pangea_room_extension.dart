@@ -12,8 +12,11 @@ import 'package:matrix/src/utils/markdown.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/analytics/constructs_event.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/analytics/constructs_upload_result.dart';
+import 'package:fluffychat/features/analytics/packed_construct_event.dart';
 import 'package:fluffychat/features/analytics_data/analytics_events_repo.dart';
 import 'package:fluffychat/features/analytics_data/analytics_status_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';

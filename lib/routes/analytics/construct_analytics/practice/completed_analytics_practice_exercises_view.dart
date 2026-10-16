@@ -6,6 +6,7 @@ import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/offline_practice_note.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/percent_marker_bar.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/stat_card.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -95,11 +96,20 @@ class CompletedAnalyticsPracticeExercisesView extends StatelessWidget {
                       ),
               ),
             ),
-            StatCard(
-              icon: Icons.alarm,
-              text: "${L10n.of(context).time}: ${_formatTime(elapsedSeconds)}",
-              isAchievement: timeAchievement,
-              achievementText: "+ ${session.state.timeBonusXP} XP",
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                StatCard(
+                  icon: Icons.alarm,
+                  text:
+                      "${L10n.of(context).time}: ${_formatTime(elapsedSeconds)}",
+                  isAchievement: timeAchievement,
+                  achievementText: "+ ${session.state.timeBonusXP} XP",
+                ),
+                const OfflinePracticeNote.completed(
+                  padding: EdgeInsets.only(top: 32.0),
+                ),
+              ],
             ),
             Column(
               spacing: 16.0,

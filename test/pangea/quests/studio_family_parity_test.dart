@@ -145,40 +145,44 @@ void main() {
         final want = entry.value as Map<String, dynamic>;
         final own = sessions.where((s) => s['student'] == student).toList();
 
-        // Stars: best session per member, the reduction userStarsByActivity
-        // applies to the learner's own session rooms.
+        // Stars (goal checkmarks): best session per member, the reduction
+        // userStarsByActivity applies to the learner's own session rooms.
         final stars = bestStarsByActivity([
           for (final s in own)
             (activityId: s['activity_id'] as String, stars: s['stars'] as int),
         ]);
-        // XP: sessions summed per member. The client has no per-Can-Do XP
-        // reader yet (client#9450); the shared crediting is what it will call.
-        final xp = <String, num>{};
-        for (final s in own) {
-          xp[s['activity_id'] as String] =
-              (xp[s['activity_id'] as String] ?? 0) + (s['xp'] as num);
-        }
+        // XP: saved sessions summed per member, the reduction
+        // userXpByActivity applies.
+        final xp = sumXpByActivity([
+          for (final s in own)
+            (activityId: s['activity_id'] as String, xp: s['xp'] as int),
+        ]);
 
         final wantMissions = (want['missions'] as Map).cast<String, dynamic>();
         final wantTotal = want['course_total'] as Map<String, dynamic>;
 
         test('$student: Can-Do stars', () {
+          expect(creditedByMission(courseOutline, stars), {
+            for (final e in wantMissions.entries)
+              e.key: (e.value as Map)['stars'],
+          });
+        });
+
+        // The real Mission XP rollup, whatever the threshold.
+        test('$student: Can-Do XP', () {
           final rollup =
               resolveProgression(
                 outlines: [courseOutline],
-                starsByActivity: stars,
+                xpByActivity: xp,
               ).forCourse(courseOutline.courseId)?.rollup ??
               const {};
           expect(
-            {for (final e in rollup.entries) e.key: e.value.stars},
+            {for (final e in rollup.entries) e.key: e.value.xp},
             {
               for (final e in wantMissions.entries)
-                e.key: (e.value as Map)['stars'],
+                e.key: (e.value as Map)['xp'],
             },
           );
-        });
-
-        test('$student: Can-Do XP', () {
           expect(creditedByMission(courseOutline, xp), {
             for (final e in wantMissions.entries) e.key: (e.value as Map)['xp'],
           });

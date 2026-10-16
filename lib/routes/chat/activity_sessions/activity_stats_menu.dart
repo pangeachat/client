@@ -183,6 +183,7 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
                   ActivityGoalHeaderCard(
                     showDropdown: showDropdown,
                     isComplete: allComplete,
+                    xpRingRoom: room,
                     collapsed: collapsed,
                     expanded: ActivityDropdownContent(
                       goals: goals,

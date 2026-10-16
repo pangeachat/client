@@ -8,6 +8,7 @@ import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_video_tag.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
+import 'package:fluffychat/widgets/completed_stamp.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class ActivitySuggestionCard extends StatelessWidget {
@@ -28,13 +29,23 @@ class ActivitySuggestionCard extends StatelessWidget {
   final List<String> participants;
   final int openSlots;
 
-  /// The activity's live map-pin state, or null for a plain card. Drives the
-  /// colour-state fill + bookmark banner so the card matches the map's pins:
-  /// Ongoing (dark purple) or Open/joinable (green). See [ActivityPinState].
+  /// The activity's live map-pin state, or null for a plain card. Drawn as a
+  /// frame in the pin's state hue with a corner tab naming it, so the card
+  /// matches the map's pins: Ongoing (dark purple) or Open/joinable (green).
+  /// See [ActivityPinState].
   final ActivityPinState? pinState;
 
-  /// How far the banner's straight right edge pokes past the card's right edge.
-  static const double _bannerPoke = 8.0;
+  /// How many times the learner has finished this activity. Above zero the
+  /// card wears the completed stamp (a double ring with a check) in its
+  /// top-right corner — the same mark as on the map — with "×N" past one. It
+  /// sits beside a live [pinState], never instead of it (#9420 prototype).
+  final int timesCompleted;
+
+  /// The photo's height; null keeps it square (width × width). The map's
+  /// activity cards squash it so the card reads squarer.
+  final double? imageHeight;
+
+  static const double _frameWidth = 3.0;
 
   const ActivitySuggestionCard({
     super.key,
@@ -49,6 +60,8 @@ class ActivitySuggestionCard extends StatelessWidget {
     this.pinState,
     this.participants = const [],
     this.openSlots = 0,
+    this.timesCompleted = 0,
+    this.imageHeight,
   });
 
   // One player's earnable stars — uniform across roles by generation, min
@@ -65,15 +78,15 @@ class ActivitySuggestionCard extends StatelessWidget {
         ? Uri.tryParse(heroDisplayUrl)
         : activity.imageURL;
 
-    // Match the map's state pins: a colour-state fill on the info section + a
-    // bookmark banner, both in the pin's state hue
+    // Match the map's state pins: a frame and a corner tab in the pin's state
+    // hue. The info section keeps the plain card surface and ink.
     final stateColor = pinState?.bodyColor(context);
     final onState = pinState?.onBodyColor(context);
 
     // Shared style for the mode + participant-count labels
     final labelStyle = fontSizeSmall != null
-        ? TextStyle(fontSize: fontSizeSmall, color: onState)
-        : theme.textTheme.labelSmall?.copyWith(color: onState);
+        ? TextStyle(fontSize: fontSizeSmall)
+        : theme.textTheme.labelSmall;
 
     return SizedBox(
       height: height,
@@ -95,12 +108,31 @@ class ActivitySuggestionCard extends StatelessWidget {
                   Stack(
                     alignment: Alignment.center,
                     children: [
-                      ImageByUrl(
-                        imageUrl: heroUrl,
-                        width: width,
-                        borderRadius: const BorderRadius.all(Radius.zero),
-                        replacement: SizedBox(height: width),
-                      ),
+                      if (imageHeight == null)
+                        ImageByUrl(
+                          imageUrl: heroUrl,
+                          width: width,
+                          borderRadius: const BorderRadius.all(Radius.zero),
+                          replacement: SizedBox(height: width),
+                        )
+                      else
+                        SizedBox(
+                          width: width,
+                          height: imageHeight,
+                          child: FittedBox(
+                            fit: BoxFit.cover,
+                            clipBehavior: Clip.hardEdge,
+                            child: ImageByUrl(
+                              imageUrl: heroUrl,
+                              width: width,
+                              borderRadius: const BorderRadius.all(Radius.zero),
+                              replacement: SizedBox(
+                                width: width,
+                                height: width,
+                              ),
+                            ),
+                          ),
+                        ),
                       // A video tag, not a play badge: tapping the card opens the
                       // activity (where the video plays), so a play glyph here would
                       // mislead. See #7543.
@@ -115,10 +147,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                     ],
                   ),
                   Expanded(
-                    // The colour-state fill for Ongoing / Open; null (transparent,
-                    // surfaceContainer shows through) for a plain card.
                     child: Container(
-                      color: stateColor,
                       padding: const EdgeInsets.symmetric(
                         vertical: 2.0,
                         horizontal: 4.0,
@@ -134,10 +163,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                           Flexible(
                             child: Text(
                               activity.title,
-                              style: TextStyle(
-                                fontSize: fontSize,
-                                color: onState,
-                              ),
+                              style: TextStyle(fontSize: fontSize),
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -148,9 +174,6 @@ class ActivitySuggestionCard extends StatelessWidget {
                               earned: starsEarned.clamp(0, _starsTotal),
                               iconSize: 12,
                               condensed: _starsTotal > 7,
-                              // On the state fill both stars take its ink.
-                              earnedColor: onState,
-                              emptyColor: onState,
                             ),
                           Row(
                             mainAxisSize: MainAxisSize.min,
@@ -176,7 +199,6 @@ class ActivitySuggestionCard extends StatelessWidget {
                                     Icon(
                                       Icons.group_outlined,
                                       size: iconSize ?? 12.0,
-                                      color: onState,
                                     ),
                                     Semantics(
                                       label:
@@ -201,21 +223,40 @@ class ActivitySuggestionCard extends StatelessWidget {
               ),
             ),
           ),
+          // The live state as a frame around the whole card.
+          if (stateColor != null)
+            IgnorePointer(
+              child: Container(
+                width: width,
+                height: height,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12.0),
+                  border: Border.all(color: stateColor, width: _frameWidth),
+                ),
+              ),
+            ),
+          // ...and named in a tab in its top-left corner, with the Waiting
+          // state's roster just under it, on the photo with no bar behind it.
           if (pinState != null && stateColor != null)
             Positioned(
-              top: 8.0,
-              right: -_bannerPoke,
+              top: 0,
+              left: 0,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _ActivityStateBanner(
-                    color: stateColor,
-                    minWidth: width / 2 + _bannerPoke,
-                    maxWidth: width + _bannerPoke,
+                  Container(
+                    constraints: BoxConstraints(maxWidth: width * 0.75),
+                    padding: const EdgeInsets.fromLTRB(8.0, 3.0, 9.0, 4.0),
+                    decoration: BoxDecoration(
+                      color: stateColor,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(12.0),
+                        bottomRight: Radius.circular(10.0),
+                      ),
+                    ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         // The shared status glyph, matching the map pin.
                         Icon(
@@ -227,13 +268,12 @@ class ActivitySuggestionCard extends StatelessWidget {
                         Flexible(
                           child: Text(
                             _stateLabel(context),
-                            textAlign: TextAlign.center,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               color: onState,
                               fontSize: fontSizeSmall ?? 11.0,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
                         ),
@@ -242,13 +282,26 @@ class ActivitySuggestionCard extends StatelessWidget {
                   ),
                   if (pinState == ActivityPinState.ongoingPending &&
                       (participants.isNotEmpty || openSlots > 0))
-                    _WaitingParticipantBar(
-                      color: stateColor,
-                      cardWidth: width,
-                      participants: participants,
-                      openSlots: openSlots,
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(6.0, 4.0, 0, 0),
+                      child: ActivityParticipantRow(
+                        icon: null,
+                        accent: stateColor,
+                        participants: participants,
+                        openSlots: openSlots,
+                        avatarSize: (width / 8).clamp(14.0, 24.0),
+                      ),
                     ),
                 ],
+              ),
+            ),
+          if (timesCompleted > 0)
+            Positioned(
+              top: 5.0,
+              right: 5.0,
+              child: CompletedStamp(
+                size: (width / 6).clamp(22.0, 32.0),
+                times: timesCompleted,
               ),
             ),
         ],
@@ -259,125 +312,9 @@ class ActivitySuggestionCard extends StatelessWidget {
   String _stateLabel(BuildContext context) => switch (pinState!) {
     ActivityPinState.ongoingActive => L10n.of(context).ongoing,
     ActivityPinState.ongoingPending => L10n.of(context).mapStatusWaiting,
-    _ => "${L10n.of(context).open} (${openSessions ?? 0})",
+    _ =>
+      openSessions == null
+          ? L10n.of(context).open
+          : "${L10n.of(context).open} ($openSessions)",
   };
-}
-
-/// The second bookmark bar for the Waiting state. Sizes each avatar down so a
-/// full roster (up to [ActivityParticipantRow.defaultMaxVisible] seats) fits
-/// within the card's width
-class _WaitingParticipantBar extends StatelessWidget {
-  final Color color;
-
-  /// The width of the card this bar hangs off, used to size the avatars down.
-  final double cardWidth;
-
-  final List<String> participants;
-  final int openSlots;
-
-  const _WaitingParticipantBar({
-    required this.color,
-    required this.cardWidth,
-    required this.participants,
-    required this.openSlots,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final visible = (participants.length + openSlots).clamp(
-      1,
-      ActivityParticipantRow.defaultMaxVisible,
-    );
-    // The bar's inner padding (matches _ActivityStateBanner) plus the 4px gap
-    // the row leaves after each circle.
-    const hPadding = 16.0 + 10.0;
-    const gapPerAvatar = 4.0;
-    const leftInset = 16.0;
-    final barMaxWidth =
-        cardWidth + ActivitySuggestionCard._bannerPoke - leftInset;
-    final avail = barMaxWidth - hPadding - visible * gapPerAvatar;
-    final avatarSize = (avail / visible).clamp(10.0, 28.0);
-    final barWidth = hPadding + visible * (avatarSize + gapPerAvatar);
-
-    return Padding(
-      padding: const EdgeInsets.only(top: 8.0),
-      child: _ActivityStateBanner(
-        color: color,
-        // The roster bar wants an exact width sized to its avatars, so pin it.
-        minWidth: barWidth,
-        maxWidth: barWidth,
-        child: ActivityParticipantRow(
-          icon: null,
-          accent: Colors.white,
-          participants: participants,
-          openSlots: openSlots,
-          avatarSize: avatarSize,
-        ),
-      ),
-    );
-  }
-}
-
-class _ActivityStateBanner extends StatelessWidget {
-  final Color color;
-  final Widget child;
-
-  /// The banner sizes to its content between these bounds. [minWidth] keeps a
-  /// short label reading as a proper bookmark (left edge ~mid-card, the original
-  /// look); [maxWidth] lets a longer label (e.g. "Ongoing", now that a glyph
-  /// rides beside it) grow leftward into the free space rather than overflow —
-  /// capped so it can't run off the card. The clipper is size-driven, so the
-  /// bookmark shape follows whatever width results.
-  final double minWidth;
-  final double maxWidth;
-
-  const _ActivityStateBanner({
-    required this.color,
-    required this.child,
-    required this.minWidth,
-    required this.maxWidth,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    // PhysicalShape clips to the bookmark path AND casts a soft elevation
-    // shadow that follows it.
-    return PhysicalShape(
-      clipper: const _BookmarkBannerClipper(),
-      clipBehavior: Clip.antiAlias,
-      color: color,
-      elevation: 3.0,
-      child: ConstrainedBox(
-        constraints: BoxConstraints(minWidth: minWidth, maxWidth: maxWidth),
-        child: Padding(
-          // Extra left padding clears the bookmark notch.
-          padding: const EdgeInsets.fromLTRB(16.0, 3.0, 10.0, 3.0),
-          child: child,
-        ),
-      ),
-    );
-  }
-}
-
-class _BookmarkBannerClipper extends CustomClipper<Path> {
-  const _BookmarkBannerClipper();
-
-  /// How far the middle of the left edge caves in toward the text.
-  static const double _notch = 7.0;
-
-  @override
-  Path getClip(Size size) {
-    final w = size.width;
-    final h = size.height;
-    return Path()
-      ..moveTo(0, 0) // top-left tip
-      ..lineTo(w, 0) // top edge
-      ..lineTo(w, h) // right edge
-      ..lineTo(0, h) // bottom-left tip
-      ..lineTo(_notch, h / 2) // cave in to the mid-height notch
-      ..close();
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
 }

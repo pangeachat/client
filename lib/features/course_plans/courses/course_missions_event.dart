@@ -300,6 +300,7 @@ extension QuestOutlineForCourse on QuestOutline {
     final copy = rules.missions;
     if (copy == null) return restrictedTo(rules.pins);
 
+    final credit = _creditFor(copy);
     final groupsById = {
       for (final g in [...groups, ...addedGroups]) g.objective.id: g,
     };
@@ -313,6 +314,17 @@ extension QuestOutlineForCourse on QuestOutline {
       // activities (Content Studio v2). Records written before that listed
       // the library's order, so they read as they always did. An id the
       // listing no longer returns is dropped.
+      final hidden = mission.removedActivityIds.toSet();
+      final listedIds = mission.activityIds.toSet();
+      // Family members of what this Can-Do shows (an original the record
+      // does not name) are credited here too, so their words count.
+      final creditedHere = {
+        for (final id in [
+          ...mission.activityIds,
+          ...mission.removedActivityIds,
+        ])
+          credit.canonicalOf(id),
+      };
       final available = {for (final a in group.activities) a.activityId: a};
       final shown = [
         for (final id in mission.activityIds)
@@ -328,6 +340,17 @@ extension QuestOutlineForCourse on QuestOutline {
           objective: group.objective,
           activities: shown,
           pacing: pacing.isEmpty ? null : pacing,
+          credit: credit,
+          hiddenActivities: [
+            for (final a in group.activities)
+              if (!listedIds.contains(a.activityId) &&
+                  (hidden.contains(a.activityId) ||
+                      (credit.family.containsKey(a.activityId) &&
+                          creditedHere.contains(
+                            credit.canonicalOf(a.activityId),
+                          ))))
+                a,
+          ],
         ),
       );
       nextSteps.add(
@@ -338,7 +361,7 @@ extension QuestOutlineForCourse on QuestOutline {
     return withCourse(
       quest: quest.withSequence(nextSteps),
       groups: nextGroups,
-      credit: _creditFor(copy),
+      credit: credit,
     );
   }
 

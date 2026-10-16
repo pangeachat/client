@@ -114,11 +114,51 @@ class QuestObjectiveGroup {
   /// The course's note and due date for this Mission; null when the course
   /// has no copy or set neither.
   final MissionPacing? pacing;
+
+  /// What the course credits to this Mission beyond [activities]: family
+  /// copies and hidden activities. [CourseCredit.none] for the shared quest.
+  /// Mission XP readers sum through it (activity_family.dart).
+  final CourseCredit credit;
+
+  /// The Mission's hidden activities the listing still returns. Not shown, but
+  /// the words they taught still count toward practice XP ([creditedLemmas]),
+  /// so hiding or swapping an activity never lowers a Mission's XP.
+  final List<QuestActivity> hiddenActivities;
   const QuestObjectiveGroup({
     required this.objective,
     required this.activities,
     this.pacing,
+    this.credit = CourseCredit.none,
+    this.hiddenActivities = const [],
   });
+
+  /// The Mission's target vocabulary: every suggested word across its
+  /// activities, once per lemma ([lemmaKey]). What its Practice drills.
+  List<Vocab> get vocab {
+    final byLemma = <String, Vocab>{};
+    for (final activity in activities) {
+      for (final word in activity.plan.vocab) {
+        byLemma.putIfAbsent(lemmaKey(word.lemma), () => word);
+      }
+    }
+    return byLemma.values.toList();
+  }
+
+  /// The Mission's word list as [lemmaKey]s — what practice outside a
+  /// session credits it by.
+  Set<String> get lemmas => {for (final word in vocab) lemmaKey(word.lemma)};
+
+  /// [lemmas] plus the words of the hidden activities: what practice outside
+  /// a session credits this Mission by.
+  Set<String> get creditedLemmas => {
+    ...lemmas,
+    for (final activity in hiddenActivities)
+      for (final word in activity.plan.vocab) lemmaKey(word.lemma),
+  };
+
+  /// The one normal form a lemma is matched in across plans, practice and
+  /// the learner's uses.
+  static String lemmaKey(String lemma) => lemma.toLowerCase();
 }
 
 /// A fully-resolved quest for the outline UI: the quest plus its objective
@@ -196,16 +236,18 @@ class QuestOutline {
           .where((a) => allowed.contains(a.activityId))
           .toList(),
       pacing: group.pacing,
+      credit: group.credit,
+      hiddenActivities: group.hiddenActivities,
     );
   }
 
   /// Project this outline into the pure [CourseLoOutline] the progression gate
   /// consumes: the quest's ordered objective ids, and per objective the set of
-  /// activity ids that satisfy it. [starsToUnlock] carries the course's teacher
+  /// activity ids that satisfy it. [xpToComplete] carries the course's teacher
   /// override (defaults to the standard threshold). The single home for this
   /// mapping — the joined-course cache and the activity-session lock both use it.
   CourseLoOutline toCourseLoOutline({
-    int starsToUnlock = kDefaultStarsToUnlockObjective,
+    int xpToComplete = kDefaultXpToCompleteObjective,
   }) => CourseLoOutline(
     // The quest id serves as the scoping key here — right for scoped/preview
     // outlines that have no room. The joined-course cache re-keys courseId to
@@ -219,12 +261,11 @@ class QuestOutline {
       for (final group in groups)
         group.objective.id: group.activities.map((a) => a.activityId).toSet(),
     },
-    starsToUnlock: starsToUnlock,
-    credit: credit,
-    earnableByActivity: {
-      for (final group in groups)
-        for (final a in group.activities) a.activityId: a.plan.earnableStars,
+    lemmasByLo: {
+      for (final group in groups) group.objective.id: group.creditedLemmas,
     },
+    xpToComplete: xpToComplete,
+    credit: credit,
   );
 }
 

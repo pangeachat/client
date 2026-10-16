@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/subscription/repo_v2/checkout_exceptions.dart';
+
 /// A failed HTTP call, typed. Thrown by [Requests] (and [PayloadClient]) for
 /// any response ≥ 400 — never the raw [http.Response], whose missing
 /// `toString()` collapsed every failure across every endpoint into one Sentry
@@ -236,7 +238,9 @@ class PangeaHttpException implements Exception {
   /// The one severity table for a repo-layer fetch failure
   /// (repos-and-error-handling.instructions.md § Severity policy). Severity is
   /// a property of the failure, not of the author's judgment at the call site:
-  /// input the homeserver refused ([_rejectedInputErrors]) is info; timeouts
+  /// input the homeserver refused ([_rejectedInputErrors]) and a checkout
+  /// refused because the account already has a subscription
+  /// ([ConflictCheckoutException], a 409) are info; timeouts
   /// are transient, a request that never reached a server (offline, DNS,
   /// CORS, a blocked request — every one a [http.ClientException]) has
   /// nothing in code to fix, 401 is token lifecycle, 404/410 mean the
@@ -250,6 +254,7 @@ class PangeaHttpException implements Exception {
         _rejectedInputErrors.contains(error.error)) {
       return SentryLevel.info;
     }
+    if (error is ConflictCheckoutException) return SentryLevel.info;
     switch (statusCodeOf(error)) {
       case 401:
       case 404:

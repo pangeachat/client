@@ -127,13 +127,20 @@ class AnalyticsPracticeDataService {
     _audioTranslations[eventId] = translation;
   }
 
+  /// [offline] reads each meaning from this device instead of fetching it,
+  /// for an offline practice session.
   Future<void> prefetchExerciseInfo(
-    MultipleChoicePracticeExerciseModel exercise,
-  ) async {
+    MultipleChoicePracticeExerciseModel exercise, {
+    bool offline = false,
+  }) async {
     // Prefetch lemma info for meaning activities before marking ready
     if (exercise is VocabMeaningPracticeExerciseModel) {
       final choices = exercise.multipleChoiceContent.choices.toList();
-      await _prefetchLemmaInfo(exercise.storageKey, choices);
+      if (offline) {
+        _setSavedLemmaInfo(exercise.storageKey, choices);
+      } else {
+        await _prefetchLemmaInfo(exercise.storageKey, choices);
+      }
     }
 
     // Prefetch audio for audio activities before marking ready
@@ -187,6 +194,28 @@ class AnalyticsPracticeDataService {
     // Prefetch the translation
     final translation = await pangeaEvent.requestTranslationByL1();
     _setAudioInfo(eventId, audioFile, translation.bestTranslation);
+  }
+
+  /// The saved meaning of every choice. A choice without one fails the
+  /// exercise, which practice then skips.
+  void _setSavedLemmaInfo(String requestKey, List<String> choiceIds) {
+    final texts = <String, String>{};
+    final emojis = <String, String?>{};
+
+    for (final id in choiceIds) {
+      final cId = ConstructIdentifier.fromString(id);
+      if (cId == null) continue;
+
+      final meaning = cId.savedMeaning;
+      if (meaning == null) {
+        throw Exception("No saved meaning for id $id");
+      }
+
+      texts[id] = meaning;
+      emojis[id] = cId.savedEmoji;
+    }
+
+    _setLemmaInfo(requestKey, texts, emojis);
   }
 
   Future<void> _prefetchLemmaInfo(

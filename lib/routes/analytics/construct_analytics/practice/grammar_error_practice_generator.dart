@@ -39,15 +39,17 @@ class GrammarErrorPracticeGenerator {
 
     // Offer the learner's own pre-correction text as a distractor — the whole
     // point of the exercise is choosing between it and the correction. Skipped
-    // when it already appears in the L1 translation printed under the sentence.
+    // when it already appears in the L1 translation printed under the sentence;
+    // an offline exercise has no translation, so it is always offered.
     final errorSpan = originalErrorSpan(
       choreo: choreo,
       stepIndex: stepIndex,
       matchOffset: igcMatch.offset,
       correctChoice: correctChoice,
     );
+    final translation = req.grammarErrorInfo!.translation;
     if (errorSpan != null &&
-        !req.grammarErrorInfo!.translation.contains(errorSpan)) {
+        (translation == null || !translation.contains(errorSpan))) {
       choices.add(errorSpan);
     }
 

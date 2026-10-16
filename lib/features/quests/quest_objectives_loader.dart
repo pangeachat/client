@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
@@ -49,6 +50,14 @@ class QuestObjectivesLoader {
         .where((s) => s.hasRoomUpdate)
         .rateLimit(const Duration(seconds: 2))
         .listen((_) => _resolveProgression(_loadGeneration));
+
+    // A Mission's meter fills with XP, which lives in the local analytics
+    // database rather than in room state (#9420). The shared cache re-reads
+    // it on construct updates and tells every live loader to re-resolve, so
+    // the course page's bar moves as the learner chats or practises.
+    MissionXpCache.instance
+      ..ensureWired()
+      ..addListener(_onXpChanged);
 
     // Activity-card text is served in the resolved display language (#8577)
     // and [QuestRepo.outline] keys its cache on it — but nothing asked again
@@ -128,6 +137,7 @@ class QuestObjectivesLoader {
   void dispose() {
     _starsSub?.cancel();
     _displayLanguageSub?.cancel();
+    MissionXpCache.instance.removeListener(_onXpChanged);
     _courseMissionsSub?.cancel();
     _questLoader.dispose();
     // _progression is shared across loaders — never disposed with one of them.
@@ -144,8 +154,31 @@ class QuestObjectivesLoader {
   /// Pure state — it notifies nothing, so it is safe to call mid-build.
   void scopeToCourse(String courseId) => _courseId = courseId;
 
+  /// The course room this loader is scoped to, when it is one.
+  String? get courseId => _courseId;
+
   QuestLoader get questLoader => _questLoader;
   ValueNotifier<ProgressionResolution> get progression => _progression;
+
+  /// The shared resolution for readers with no loader of their own — the
+  /// analytics bar's star count (#9436).
+  static ValueListenable<ProgressionResolution> get sharedProgression =>
+      _progression;
+
+  /// Publish a resolution computed elsewhere. The world map's pins manager
+  /// resolves the same inputs on every sync, and it is what resolves first
+  /// in a session, so publishing from there puts a star count on the
+  /// analytics bar before any course page has been opened.
+  ///
+  /// Deferred to a microtask: the map resolves from paths that can run
+  /// inside a build (a course-scoped outline set as a widget mounts), and a
+  /// notifier fired there marks every listening builder dirty mid-build,
+  /// which the framework rejects. A microtask runs once the build has
+  /// unwound, and the pins manager's own copy stays synchronous for the map.
+  static void publishProgression(ProgressionResolution value) =>
+      scheduleMicrotask(() => _progression.value = value);
+
+  void _onXpChanged() => _resolveProgression(_loadGeneration);
 
   /// The header's star summary, or null before this course's progress resolves
   /// (the bar then renders its muted empty state).
@@ -170,6 +203,43 @@ class QuestObjectivesLoader {
   /// the course is satisfied (#8997). No Mission wears the label then.
   String? get anchorMissionId => _scopedQuest?.anchorMissionId;
 
+  /// The Mission the course page opens on (#9437): the anchor's group — or,
+  /// before this course's progress resolves, the first Mission, so a cold open
+  /// still shows the plan's start rather than nothing. Null once the course is
+  /// complete ([isCourseComplete]) or when the plan has nothing to show.
+  QuestObjectiveGroup? get currentObjectiveGroup {
+    final groups = filteredObjectiveGroups;
+    if (groups.isEmpty) return null;
+    final anchor = anchorMissionId;
+    if (anchor == null) return hasResolvedProgress ? null : groups.first;
+    for (final group in groups) {
+      if (group.objective.id == anchor) return group;
+    }
+    return groups.first;
+  }
+
+  /// Every Mission with an activity is complete — the course page shows its
+  /// finished state instead of a current Mission (#9437).
+  bool get isCourseComplete =>
+      hasResolvedProgress &&
+      anchorMissionId == null &&
+      filteredObjectiveGroups.isNotEmpty;
+
+  /// The current Mission's XP meter, or null before it resolves.
+  MissionProgress? get currentObjectiveProgress => _scopedQuest?.anchorProgress;
+
+  int get objectiveCount => filteredObjectiveGroups.length;
+
+  /// The rendered group for [missionId], or null when it is null or the plan
+  /// no longer lists it — the course page then falls back to the current one.
+  QuestObjectiveGroup? objectiveGroup(String? missionId) {
+    if (missionId == null) return null;
+    for (final group in filteredObjectiveGroups) {
+      if (group.objective.id == missionId) return group;
+    }
+    return null;
+  }
+
   /// The next-Mission gradient (0..[kBandCeiling]) for an activity satisfying
   /// [missionRefs], scoped to THIS course — the relevance band the course
   /// page's Activities row ranks toward. Deliberately not the shared
@@ -187,6 +257,15 @@ class QuestObjectivesLoader {
   MissionProgress? missionProgress(String missionId) =>
       _scopedQuest?.rollup[missionId];
 
+  /// Where this course's XP for [missionId] came from — chats, goals and
+  /// practice — summed over the same activities [missionProgress] counts.
+  /// Null when the rollup hasn't resolved.
+  MissionXpBreakdown? missionXpBreakdown(String missionId) {
+    if (_scopedQuest == null) return null;
+    final group = objectiveGroup(missionId);
+    return group == null ? null : client.missionXpBreakdown(group);
+  }
+
   List<QuestObjectiveGroup> get filteredObjectiveGroups =>
       switch (_questLoader.value) {
         AsyncLoaded(value: final outline) => objectiveGroupsWithActivities(
@@ -196,10 +275,10 @@ class QuestObjectivesLoader {
       };
 
   /// Re-resolve the shared progression from the cached outlines and the
-  /// learner's current per-activity stars — the SAME inputs and resolver the
-  /// world map uses, so the star numbers can never disagree
-  /// (quests.instructions.md). Pure and cheap: no network, no reads beyond
-  /// room state the client already holds.
+  /// learner's current XP — the SAME inputs and resolver the world map uses,
+  /// so the numbers can never disagree (quests.instructions.md). Pure and
+  /// cheap: no network, no reads beyond room state the client already holds
+  /// and the XP maps the shared cache keeps current.
   ///
   /// Publishes nothing before the first rebuild lands, so a course whose
   /// outlines aren't in yet keeps its muted empty bar rather than briefly
@@ -207,7 +286,10 @@ class QuestObjectivesLoader {
   void _resolveProgression(int loadGen) {
     if (_disposed || _objectiveCache.outlines.isEmpty) return;
     _updateProgression(
-      _objectiveCache.resolution(client.userStarsByActivity),
+      _objectiveCache.resolution(
+        client.userXpByActivity(MissionXpCache.instance.creditedXpByRoom),
+        practiceXpByLemma: MissionXpCache.instance.practiceXpByLemma,
+      ),
       loadGen,
     );
   }

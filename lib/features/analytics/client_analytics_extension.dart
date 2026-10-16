@@ -288,15 +288,21 @@ extension AnalyticsClientExtension on Client {
         .isNotEmpty;
   }
 
+  /// The message [use] came from. [savedOnly] reads only the messages saved
+  /// on this device and never asks the server, for an offline practice
+  /// session; a message that is not saved is then null. See
+  /// practice-exercises.instructions.md, "Offline Practice".
   Future<PangeaMessageEvent?> getEventByConstructUse(
-    OneConstructUse use,
-  ) async {
+    OneConstructUse use, {
+    bool savedOnly = false,
+  }) async {
     if (use.metadata.eventId == null || use.metadata.roomId == null) {
       return null;
     }
 
-    // wait for all rooms to sync
-    if (prevBatch == null) {
+    // wait for all rooms to sync. A device that never synced has no saved
+    // messages to wait for.
+    if (prevBatch == null && !savedOnly) {
       await onSync.stream.first;
     }
 
@@ -306,9 +312,15 @@ extension AnalyticsClientExtension on Client {
       return null;
     }
 
+    Future<Event?> lookUp(String eventId) => savedOnly
+        ? database.getEventById(eventId, room)
+        : room.getEventById(eventId);
+
     try {
-      Event? event = await room.getEventById(use.metadata.eventId!);
+      Event? event = await lookUp(use.metadata.eventId!);
       if (event == null) {
+        // Expected offline: not every message is saved on this device.
+        if (savedOnly) return null;
         ErrorHandler.logError(
           e: "Event not found for construct use",
           level: SentryLevel.warning,
@@ -325,7 +337,7 @@ extension AnalyticsClientExtension on Client {
       if (event.relationshipType == RelationshipTypes.edit) {
         final parentId = event.relationshipEventId;
         if (parentId != null) {
-          final parentEvent = await room.getEventById(parentId);
+          final parentEvent = await lookUp(parentId);
           if (parentEvent == null) return null;
           event = parentEvent;
         }
@@ -371,11 +383,24 @@ extension AnalyticsClientExtension on Client {
 
         final constructEvents =
             roomConstructEvents ?? <ConstructAnalyticsEvent>[];
-        final allUses = constructEvents
-            .map((e) => e.content.uses)
-            .expand((u) => u)
-            .toList();
-        await canonicalAnalyticsRoom.sendConstructsEvent(allUses);
+        final upload = await canonicalAnalyticsRoom.sendConstructsEvent(
+          constructEvents.map((e) => e.content.uses).toList(),
+        );
+        // The room stays unmerged so the next combine tries again. That sends
+        // the accepted part again too, which the canonical room then holds
+        // twice; losing the rest would be worse.
+        if (!upload.allAccepted) {
+          ErrorHandler.logError(
+            e: "Analytics room merge upload not accepted",
+            data: {
+              'analytics_room_id': analyticsRoom.id,
+              'batchCount': upload.batchCount,
+              'acceptedBatchCount': upload.acceptedBatchCount,
+            },
+            level: SentryLevel.warning,
+          );
+          continue;
+        }
 
         final activityRoomIds = analyticsRoom.activityRoomIds.toSet();
         await canonicalAnalyticsRoom.addActivityRoomIds(activityRoomIds);

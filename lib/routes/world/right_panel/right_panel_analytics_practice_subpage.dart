@@ -51,6 +51,7 @@ class RightPanelAnalyticsPracticeSubpage extends StatelessWidget {
             ).pageLabel(PanelTypesEnum.practice.displayName(L10n.of(context))),
             child: AnalyticsPractice(
               type: type,
+              missionId: param.missionId,
               closeIcon: icon,
               closeTooltip: tooltip,
               close: close,

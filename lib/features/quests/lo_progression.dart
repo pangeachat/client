@@ -6,14 +6,21 @@
 
 import 'package:fluffychat/features/quests/activity_family.dart';
 
-/// The default number of stars (orchestrator-awarded activity goals) the learner
-/// must earn in an objective to satisfy it and unlock the next one in the
-/// sequence. A teacher may override this per course.
-const int kDefaultStarsToUnlockObjective = 10;
+/// The XP a learner must earn under a Mission for it to count as complete
+/// (#9420) when the course sets no override: the Standard preset, sized from
+/// measured sessions as two activities with their goals at typical assistance
+/// use. The instructor picks a preset or a custom value in the admin dashboard
+/// (org quests-and-learning-objectives doc, "XP per objective").
+const int kDefaultXpToCompleteObjective = 1600;
+
+/// What one awarded activity goal — a checkmark — pays into the session's
+/// activity XP, flat. Goals guide the conversation and reward it; the XP is
+/// what completes the Mission (org activities doc, "Activity XP").
+const int kGoalXp = 100;
 
 /// One course's ordered objective sequence and the activities that satisfy each
-/// objective, plus the star threshold that unlocks the next objective. Built
-/// from a quest outline (the ordered sequence and its per-objective activities).
+/// objective, plus the XP threshold that completes an objective. Built from a
+/// quest outline (the ordered sequence and its per-objective activities).
 class CourseLoOutline {
   /// The key a per-course surface scopes its rollup by — the course ROOM id
   /// for joined courses, or the quest uuid for scoped/preview outlines that
@@ -34,14 +41,15 @@ class CourseLoOutline {
 
   final List<String> orderedLoIds;
   final Map<String, Set<String>> activityIdsByLo;
-  final int starsToUnlock;
 
-  /// Stars ONE player can earn per activity (ActivityPlanModel.earnableStars),
-  /// keyed by activity id. Feeds the resolver's threshold clamp: an objective's
-  /// effective threshold never exceeds the sum of earnable stars across its
-  /// activities (quests.instructions.md). Empty when the builder had no plans
-  /// in hand — the resolver then leaves the configured threshold unclamped.
-  final Map<String, int> earnableByActivity;
+  /// Each Mission's word list — every suggested word across its activities,
+  /// lowercased. Practice on one of these words outside a session counts
+  /// toward the Mission (#9420). Empty for a caller with no plans.
+  final Map<String, Set<String>> lemmasByLo;
+
+  /// The XP that completes a Mission in this course — the instructor's
+  /// setting, or [kDefaultXpToCompleteObjective].
+  final int xpToComplete;
 
   /// What the course credits beyond the shown activities: its hidden and
   /// removed activities, and each activity's copies. [CourseCredit.none] for
@@ -53,8 +61,8 @@ class CourseLoOutline {
     this.questId,
     required this.orderedLoIds,
     required this.activityIdsByLo,
-    this.starsToUnlock = kDefaultStarsToUnlockObjective,
-    this.earnableByActivity = const {},
+    this.lemmasByLo = const {},
+    this.xpToComplete = kDefaultXpToCompleteObjective,
     this.credit = CourseCredit.none,
   });
 }

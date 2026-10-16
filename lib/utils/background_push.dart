@@ -476,6 +476,8 @@ class BackgroundPush {
             "data_message": pusherDataMessageFormat,
           })) {
         Logs().i('[Push] Pusher already set');
+        // Calls can ring to this phone; on Android only if it may notify.
+        unawaited(matrix?.askForCallRingingOnce());
       } else {
         Logs().i('Need to set new pusher');
         oldTokens.add(token);
@@ -522,6 +524,9 @@ class BackgroundPush {
           ),
           append: false,
         );
+        // Calls can ring to this phone from here on; on Android only if it
+        // may notify.
+        unawaited(matrix?.askForCallRingingOnce());
       } catch (e, s) {
         Logs().e('[Push] Unable to set pushers', e, s);
         // #Pangea

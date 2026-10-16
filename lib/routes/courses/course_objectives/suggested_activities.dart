@@ -48,11 +48,15 @@ class SuggestedActivity {
 /// open sessions from the discovery cache, which carries no per-session start
 /// time, and a continuously-decaying term would reorder the row under a learner
 /// who is only reading it.
+///
+/// The course page's current-Mission row (#9437) passes [cap] null: the row is
+/// the Mission's content, not a shortlist.
 List<SuggestedActivity> rankSuggestedActivities({
   required List<QuestObjectiveGroup> groups,
   required double Function(Set<String> missionRefs) missionGradient,
   required PinSignals Function(String activityId) signalsFor,
-  int cap = kSuggestedActivitiesCap,
+  int? cap = kSuggestedActivitiesCap,
+  bool includeOngoing = false,
 }) {
   final byActivity = <String, SuggestedActivity>{};
   for (final group in groups) {
@@ -68,10 +72,10 @@ List<SuggestedActivity> rankSuggestedActivities({
   final scored = <(SuggestedActivity, double)>[];
   for (final suggestion in byActivity.values) {
     final signals = signalsFor(suggestion.activityId);
-    if (signals.state.isOngoing) continue;
-    if (signals.isCompleted && signals.state != ActivityPinState.joinable) {
-      continue;
-    }
+    // [includeOngoing]: the learner's own sessions stay in — continuing
+    // what they started comes first (#9420).
+    if (signals.state.isOngoing && !includeOngoing) continue;
+    if (signals.isCompleted && !signals.state.isLive) continue;
     final plan = suggestion.activity.plan;
     scored.add((
       suggestion,
@@ -87,10 +91,17 @@ List<SuggestedActivity> rankSuggestedActivities({
   // activityId tiebreaker: List.sort is unstable, so equal-score activities
   // would otherwise swap places between rebuilds and the row would reshuffle
   // itself while the learner looks at it (the map hit this as #8136).
+  // With [includeOngoing], the learner's own sessions lead outright, then
+  // the score decides.
+  int ongoingFirst(SuggestedActivity s) =>
+      includeOngoing && signalsFor(s.activityId).state.isOngoing ? 0 : 1;
   scored.sort((a, b) {
+    final byOngoing = ongoingFirst(a.$1).compareTo(ongoingFirst(b.$1));
+    if (byOngoing != 0) return byOngoing;
     final byScore = b.$2.compareTo(a.$2);
     return byScore != 0 ? byScore : a.$1.activityId.compareTo(b.$1.activityId);
   });
 
-  return [for (final (suggestion, _) in scored.take(cap)) suggestion];
+  final kept = cap == null ? scored : scored.take(cap);
+  return [for (final (suggestion, _) in kept) suggestion];
 }

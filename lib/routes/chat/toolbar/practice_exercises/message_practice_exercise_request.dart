@@ -43,7 +43,10 @@ class GrammarErrorRequestInfo {
   final ChoreoRecordModel choreo;
   final int stepIndex;
   final String eventID;
-  final String translation;
+
+  /// The sentence in the learner's L1, shown as the hint. Null in an offline
+  /// session, which has no hint because the translation needs the network.
+  final String? translation;
 
   /// The message as it was actually sent — every accepted writing-assistance
   /// correction applied. The example sentence is rendered off this, not off the
@@ -56,7 +59,7 @@ class GrammarErrorRequestInfo {
     required this.choreo,
     required this.stepIndex,
     required this.eventID,
-    required this.translation,
+    this.translation,
     this.sentText,
   });
 
@@ -75,7 +78,7 @@ class GrammarErrorRequestInfo {
       choreo: ChoreoRecordModel.fromJson(json['choreo']),
       stepIndex: json['step_index'] as int,
       eventID: json['event_id'] as String,
-      translation: json['translation'] as String,
+      translation: json['translation'] as String?,
       sentText: json['sent_text'] as String?,
     );
   }
@@ -102,6 +105,11 @@ class MessagePracticeExerciseRequest {
   /// the feedback flow invalidates the cached exercise when it changes).
   final Map<ConstructIdentifier, String> avoidContent;
 
+  /// For an offline practice session: the exercise is built only from what
+  /// this device has, so a meaning exercise picks its wrong choices among
+  /// words with a saved meaning. Client-side only, like [avoidContent].
+  final bool offline;
+
   MessagePracticeExerciseRequest({
     required this.userL1,
     required this.userL2,
@@ -112,6 +120,7 @@ class MessagePracticeExerciseRequest {
     this.audioExampleMessage,
     this.mock,
     this.avoidContent = const {},
+    this.offline = false,
   }) {
     if (target.tokens.isEmpty) {
       throw Exception('Target tokens must not be empty');

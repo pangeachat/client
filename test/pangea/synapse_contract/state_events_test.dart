@@ -22,6 +22,7 @@ import 'package:fluffychat/features/analytics_access/course_settings_extension.d
 import 'package:fluffychat/features/analytics_data/analytics_settings_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_settings_model.dart';
 import 'package:fluffychat/features/analytics_data/analytics_status_room_extension.dart';
+import 'package:fluffychat/features/analytics_data/server_event_arrivals.dart';
 import 'package:fluffychat/features/bot/bot_options_model.dart';
 import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
@@ -355,7 +356,10 @@ void main() {
       ContractHarness.trackRoom(learner, room.id);
 
       // Enough uses to exceed the maxPDUSize-10000 packing threshold and
-      // force MULTIPLE pangea.construct events — the size-cap contract.
+      // force MULTIPLE pangea.construct events — the size-cap contract. They
+      // go as batches, as local uses do, and each event must carry whole
+      // batches so its acceptance settles them (#9511).
+      const batchSize = 50;
       final uses = List.generate(
         1200,
         (i) => OneConstructUse(
@@ -372,13 +376,27 @@ void main() {
           xp: 1,
         ),
       );
-      await room.sendConstructsEvent(uses);
+      final batches = [
+        for (var i = 0; i < uses.length; i += batchSize)
+          uses.sublist(i, i + batchSize),
+      ];
+      // The flush clears its batches only once the server's copy syncs back,
+      // so the copy has to be recognisable on the real sync loop.
+      final arrivals = ServerEventArrivals(room);
+      addTearDown(arrivals.cancel);
+      final upload = await room.sendConstructsEvent(batches);
+      expect(upload.allAccepted, isTrue);
+      expect(
+        await arrivals.waitFor(
+          upload.acceptedEventIds.last,
+          const Duration(seconds: 30),
+        ),
+        isTrue,
+        reason: "the last event's server copy reaches the device by sync",
+      );
 
-      // SERVER read-back: sendConstructsEvent ignores rejected chunks, and
-      // the local timeline still holds them with EventStatus.error — so the
-      // local getAnalyticsEvents path is green even when Synapse 413s every
-      // chunk. Ask the server directly with the same type/sender filter the
-      // analytics sync uses.
+      // SERVER read-back with the same type/sender filter the analytics sync
+      // uses: only the server can show what it stored.
       final resp = await learner.getRoomEvents(
         room.id,
         Direction.b,
@@ -398,6 +416,18 @@ void main() {
             'a batch this large must be chunked into multiple '
             'pangea.construct events (size cap)',
       );
+      expect(
+        serverEvents.map((e) => e.eventId).toSet(),
+        upload.acceptedEventIds.toSet(),
+        reason: 'the upload reports exactly the events the server stored',
+      );
+      for (final event in serverEvents) {
+        expect(
+          (event.content['uses'] as List).length % batchSize,
+          0,
+          reason: 'an event carries whole batches',
+        );
+      }
       final totalUses = serverEvents.fold<int>(
         0,
         (sum, e) => sum + ((e.content['uses'] as List?)?.length ?? 0),

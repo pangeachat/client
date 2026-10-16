@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/connection_status/connection_status_controller.dart';
 import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
 import 'package:fluffychat/features/connection_status/network_host_category.dart';
 import 'package:fluffychat/features/connection_status/widgets/connection_banner.dart';
 import 'package:fluffychat/features/connection_status/widgets/filtered_network_dialog.dart';
 import 'package:fluffychat/features/connection_status/widgets/filtered_network_note.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/lemmas/lemma.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_repo.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_type_enum.dart';
+import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_target.dart';
 
 /// #9434, #9512 — what the user sees when the network blocks a host or the
 /// connection is lost.
@@ -188,6 +200,162 @@ void main() {
       await setStatus(tester, ConnectionStatus.connected);
       await setStatus(tester, ConnectionStatus.unreachable);
       expect(find.text(unreachableText), findsOneWidget);
+    });
+  });
+
+  // #9513 — practice that works offline, offered from the banner.
+  group('the practice offer', () {
+    const offerText = 'Practice vocab while you wait';
+    final holder = PracticeSessionHolder.instance;
+    late GoRouter router;
+
+    setUp(() {
+      ConnectionBanner.canPracticeOffline = () async => true;
+      router = GoRouter(
+        routes: [
+          GoRoute(path: '/', builder: (context, state) => const Scaffold()),
+        ],
+      );
+    });
+
+    tearDown(() {
+      ConnectionBanner.canPracticeOffline =
+          AnalyticsPracticeSessionRepo.canStartOffline;
+      holder.end();
+      router.dispose();
+    });
+
+    Widget routedApp() => MaterialApp.router(
+      localizationsDelegates: L10n.localizationsDelegates,
+      supportedLocales: L10n.supportedLocales,
+      routerConfig: router,
+      builder: (context, child) =>
+          ConnectionBanner(router: router, child: child),
+    );
+
+    /// One pump for the banner, one for the offer's check to land.
+    Future<void> settle(WidgetTester tester) async {
+      await tester.pump();
+      await tester.pump();
+    }
+
+    testWidgets('is made on every banner that says Pangea is out of reach', (
+      tester,
+    ) async {
+      await tester.pumpWidget(routedApp());
+      await tester.pumpAndSettle();
+      expect(find.text(offerText), findsNothing);
+
+      status.value = ConnectionStatus.offline;
+      await settle(tester);
+      expect(find.text(offlineText), findsOneWidget);
+      expect(find.text(offerText), findsOneWidget);
+
+      status.value = ConnectionStatus.unreachable;
+      await settle(tester);
+      expect(find.text(unreachableText), findsOneWidget);
+      expect(find.text(offerText), findsOneWidget);
+
+      blocked.value = {NetworkHostCategory.pangeaApi};
+      await settle(tester);
+      expect(find.text(bannerText), findsOneWidget);
+      expect(find.text(offerText), findsOneWidget);
+
+      blocked.value = {};
+      status.value = ConnectionStatus.backOnline;
+      await settle(tester);
+      expect(find.text(offerText), findsNothing);
+    });
+
+    testWidgets('is not made without a session\'s worth of saved meanings', (
+      tester,
+    ) async {
+      ConnectionBanner.canPracticeOffline = () async => false;
+      await tester.pumpWidget(routedApp());
+      await tester.pumpAndSettle();
+
+      status.value = ConnectionStatus.offline;
+      await settle(tester);
+      expect(find.text(offlineText), findsOneWidget);
+      expect(find.text(offerText), findsNothing);
+    });
+
+    testWidgets('dismisses the banner and opens vocab practice', (
+      tester,
+    ) async {
+      await tester.pumpWidget(routedApp());
+      await tester.pumpAndSettle();
+      status.value = ConnectionStatus.offline;
+      await settle(tester);
+
+      await tester.tap(find.text(offerText));
+      await tester.pumpAndSettle();
+
+      expect(find.text(offlineText), findsNothing);
+      final uri = router.routeInformationProvider.value.uri;
+      expect(practiceIsOpen(uri), isTrue);
+      expect(uri.toString(), contains('vocab'));
+    });
+
+    testWidgets('is not made while the practice page is open', (tester) async {
+      await tester.pumpWidget(routedApp());
+      await tester.pumpAndSettle();
+      router.go(
+        WorkspaceNav.openPractice(
+          router.routeInformationProvider.value.uri,
+          ConstructTypeEnum.vocab,
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      status.value = ConnectionStatus.offline;
+      await settle(tester);
+      expect(find.text(offlineText), findsOneWidget);
+      expect(find.text(offerText), findsNothing);
+    });
+
+    testWidgets('waits while a practice session is in progress', (
+      tester,
+    ) async {
+      await tester.pumpWidget(routedApp());
+      await tester.pumpAndSettle();
+      holder
+          .claim(ConstructTypeEnum.morph)
+          .sessionController
+          .session = AnalyticsPracticeSessionModel(
+        type: ConstructTypeEnum.morph,
+        practiceTargets: [
+          AnalyticsPracticeTarget(
+            target: PracticeTarget(
+              tokens: [
+                PangeaToken(
+                  text: PangeaTokenText.fromJson({
+                    'content': 'gato',
+                    'offset': 0,
+                  }),
+                  lemma: Lemma(text: 'gato', saveVocab: true, form: 'gato'),
+                  pos: 'NOUN',
+                  morph: const {},
+                ),
+              ],
+              exerciseType: PracticeExerciseTypeEnum.lemmaMeaning,
+            ),
+          ),
+        ],
+        userL1: 'en',
+        userL2: 'es',
+      );
+      holder.bump();
+      expect(holder.hasUnfinishedSession, isTrue);
+
+      status.value = ConnectionStatus.offline;
+      await settle(tester);
+      expect(find.text(offlineText), findsOneWidget);
+      expect(find.text(offerText), findsNothing);
+
+      holder.end();
+      await settle(tester);
+      expect(find.text(offerText), findsOneWidget);
     });
   });
 

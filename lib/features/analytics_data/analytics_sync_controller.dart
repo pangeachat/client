@@ -204,23 +204,6 @@ class AnalyticsSyncController {
     }
   }
 
-  Future<void> waitForSync(String analyticsRoomId) async {
-    await client.onSync.stream.firstWhere((update) {
-      final roomUpdate = update.rooms?.join?[analyticsRoomId];
-      if (roomUpdate == null) return false;
-
-      final hasAnalyticsEvent =
-          roomUpdate.timeline?.events?.any(
-            (e) =>
-                e.type == PangeaEventTypes.construct &&
-                e.senderId == client.userID,
-          ) ??
-          false;
-
-      return hasAnalyticsEvent;
-    });
-  }
-
   Future<void> bulkUpdate(String language) async {
     final analyticsRoom = _getAnalyticsRoom();
     if (analyticsRoom == null) return;

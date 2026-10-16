@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/widgets/goal_diamond.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class GoalStatusWidget extends StatelessWidget {
@@ -27,13 +27,10 @@ class GoalStatusWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final gold = Theme.of(context).pangea.goldGraphic;
 
-    Widget icon = Icon(
-      complete ? Icons.star : Icons.star_border,
-      color: complete ? gold : null,
-      size: 28.0,
-    );
+    // A goal is a diamond, never a star: the star marks the Learning
+    // Objective this goal pays into (quests.instructions.md).
+    Widget icon = GoalDiamond(earned: complete, size: 28.0);
 
     // Every star sits in the same padded box so active and inactive stars line
     // up with each other; only the active one fills its box with a highlight.

@@ -114,23 +114,26 @@ class ObjectiveSection extends StatelessWidget {
         : Semantics(
             label: L10n.of(
               context,
-            ).starsEarnedOfTotal(progress!.stars, progress!.threshold),
+            ).xpTowardObjective(progress!.xp, progress!.threshold),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
+                // The star marks the objective and is there from the moment
+                // it appears; completion fills it (org quests doc, "The star
+                // marks the objective, not a grade").
                 Icon(
-                  satisfied ? Icons.check_circle : Icons.star,
+                  satisfied ? Icons.star : Icons.star_border,
                   size: 18.0,
-                  color: satisfied
-                      ? Theme.of(context).pangea.success
-                      : Theme.of(context).pangea.goldGraphic,
+                  color: Theme.of(context).pangea.goldGraphic,
                 ),
                 const SizedBox(width: 4.0),
                 ExcludeSemantics(
                   child: Text(
-                    // Raw stars over the satisfaction threshold — surplus
-                    // shows (12/7); only the quest header caps.
-                    '${progress!.stars}/${progress!.threshold}',
+                    // Raw XP over the completion threshold — surplus shows
+                    // (340/300); only the bar clamps (#9420).
+                    L10n.of(
+                      context,
+                    ).xpOfThreshold(progress!.xp, progress!.threshold),
                     style: theme.textTheme.bodyMedium?.copyWith(
                       color: headerColor,
                     ),

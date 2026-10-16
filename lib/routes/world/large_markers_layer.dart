@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/routes/world/world_map_activity_card.dart';
+import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_large_card.dart';
+import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_view.dart';
 
@@ -36,6 +39,35 @@ class LargeMarkersLayer {
           .map((card) {
             final snap = currentLarge[card.activityId];
             if (snap == null || card.point == null) return null;
+            if (kMapActivityCards) {
+              final standsOnStamp = snap.starLevel != ActivityStarLevel.none;
+              final box = PinSize.mapCardBox(standsOnStamp: standsOnStamp);
+              return Marker(
+                point: card.point!,
+                width: box.width,
+                height: box.height,
+                alignment: Alignment.topCenter,
+                child: Align(
+                  key: ValueKey(card.activityId),
+                  alignment: Alignment.bottomCenter,
+                  child: WorldMapLargeCardAnimated(
+                    animateIn: animateInOf(card.activityId),
+                    child: WorldMapActivityCard(
+                      card: snap.card,
+                      state: snap.state,
+                      plan: snap.plan,
+                      starsEarned: snap.starsEarned,
+                      participants: snap.participants,
+                      openSlots: snap.openSlots,
+                      standsOnStamp: standsOnStamp,
+                      isFocused: card.activityId == focusedId,
+                      onTap: () => onTap(card),
+                      onClose: () => onClose(card),
+                    ),
+                  ),
+                ),
+              );
+            }
             return Marker(
               point: card.point!,
               // Widen by the badge overhang on both sides; the card centres within

@@ -16,6 +16,11 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// practice-exercises.instructions.md § Session Persistence & Lifecycle.
 class PracticeSessionState {
   final ConstructTypeEnum type;
+
+  /// The Mission this session practises, or null for the learner's usual
+  /// weak-word session (#9438). Part of the session's identity: a tap for
+  /// another Mission replaces, a tap for this one resumes.
+  final String? missionId;
   final PracticeSessionController sessionController =
       PracticeSessionController();
   final AnalyticsPracticeDataService dataService =
@@ -39,7 +44,7 @@ class PracticeSessionState {
   /// Lifecycle.
   DateTime lastInteractionAt = DateTime.now();
 
-  PracticeSessionState(this.type);
+  PracticeSessionState(this.type, {this.missionId});
 
   /// Started, not completed, not errored — the session the cluster badge shows
   /// and the same-section analytics block keys off.
@@ -108,17 +113,23 @@ class PracticeSessionHolder extends ChangeNotifier with WidgetsBindingObserver {
   ConstructTypeEnum? get liveType =>
       _current?.isLive == true ? _current!.type : null;
 
+  /// The live session's Mission scope, or null when it is unscoped or there
+  /// is no live session (read beside [liveType]).
+  String? get liveMissionId =>
+      _current?.isLive == true ? _current!.missionId : null;
+
   bool get hasUnfinishedSession => liveType != null;
 
   /// Whether opening [type]'s analytics summary/details is blocked (no peeking
   /// at definitions mid-session) — callers resume practice instead.
   bool blocksAnalytics(ConstructTypeEnum type) => liveType == type;
 
-  /// Return the held session for [type] (resume — completed sessions included,
-  /// so reopening shows the completion view), or start holding a fresh one,
-  /// replacing any other-type session. Confirmation for replacing an
-  /// unfinished session happens at the tap site, before navigation.
-  PracticeSessionState claim(ConstructTypeEnum type) {
+  /// Return the held session for [type] and [missionId] (resume — completed
+  /// sessions included, so reopening shows the completion view), or start
+  /// holding a fresh one, replacing any other session. Confirmation for
+  /// replacing an unfinished session happens at the tap site, before
+  /// navigation.
+  PracticeSessionState claim(ConstructTypeEnum type, {String? missionId}) {
     _ensureLanguageSubscription();
     _ensureLifecycleObserver();
 
@@ -130,12 +141,14 @@ class PracticeSessionHolder extends ChangeNotifier with WidgetsBindingObserver {
     evaluateIdleTimeout();
 
     final current = _current;
-    if (current != null && current.type == type) {
+    if (current != null &&
+        current.type == type &&
+        current.missionId == missionId) {
       markInteraction();
       return current;
     }
 
-    _current = PracticeSessionState(type);
+    _current = PracticeSessionState(type, missionId: missionId);
     _scheduleIdleTimeout();
     notifyListeners();
     return _current!;

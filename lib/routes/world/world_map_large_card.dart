@@ -11,6 +11,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_tile_body.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
+import 'package:fluffychat/routes/world/world_map_card_dismiss_button.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_pinged_badge.dart';
@@ -171,7 +172,7 @@ class WorldMapLargeCard extends StatelessWidget {
   final VoidCallback onTap;
 
   /// The learner's completion tier for this activity. When not `none`, the
-  /// completed-activity trail star (or super star) rides BEHIND the card,
+  /// completed stamp rides BEHIND the card,
   /// peeking below the caret tip exactly like a mid pin — a joinable/ongoing
   /// card stacked on a previously-completed activity keeps its star visible
   /// (world-map.instructions.md, "Goal Progress"). Distinct from the in-session
@@ -241,8 +242,9 @@ class WorldMapLargeCard extends StatelessWidget {
   /// paints over the content rather than taking a slot in a row, clears the
   /// text. Constant whether or not the card has an X, so an exiting card
   /// (which drops its X) doesn't shift its text as it animates out.
-  double get _gutterWidth =>
-      _hasThumbnail ? _thumbnailSize + 8.0 : _DismissButton.size + 4.0;
+  double get _gutterWidth => _hasThumbnail
+      ? _thumbnailSize + 8.0
+      : WorldMapCardDismissButton.size + 4.0;
 
   @override
   Widget build(BuildContext context) {
@@ -362,7 +364,7 @@ class WorldMapLargeCard extends StatelessWidget {
                       Positioned(
                         top: _cardPadding,
                         left: _cardPadding,
-                        child: _DismissButton(onPressed: onClose!),
+                        child: WorldMapCardDismissButton(onPressed: onClose!),
                       ),
                   ],
                 ),
@@ -433,10 +435,7 @@ class WorldMapLargeCard extends StatelessWidget {
     // Progress"). Only when the learner has earned it — never on the caret alone.
     final Widget content = starLevel == ActivityStarLevel.none
         ? cardVisual
-        : CompletionStarBelowTip(
-            superStar: starLevel == ActivityStarLevel.superStar,
-            child: cardVisual,
-          );
+        : CompletionStarBelowTip(child: cardVisual);
 
     // An understaffed `available` card dims to 50%, matching its mid pin — purely
     // cosmetic, it still taps and opens the plan (world-map.instructions.md,
@@ -639,55 +638,6 @@ class _AvailableBody extends StatelessWidget {
           ),
         ],
       ],
-    );
-  }
-}
-
-/// The dismiss X, as a corner badge: a close glyph on a surface-coloured disc
-/// with the same white ring the top-right badges wear, so it reads against both
-/// the card's accent border and the map behind it. Sized to sit in the border's
-/// corner curve. Tapping it demotes the card
-/// ([WorldMapLargeCard.onClose]); it sits ABOVE the card's content in the
-/// stack, and the gesture arena routes its tap here rather than to the card's
-/// open-on-tap beneath.
-class _DismissButton extends StatelessWidget {
-  /// Diameter — small enough to nestle in the card's 12px corner radius, big
-  /// enough to be a real tap target on a touch screen.
-  static const double size = 30.0;
-
-  final VoidCallback onPressed;
-
-  const _DismissButton({required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    // Pointer-only: the card draws inside the ExcludeSemantics'd map subtree,
-    // which hides this button from assistive tech but NOT from Tab traversal —
-    // leaving it in makes an invisible dead Tab stop per visible card (2.4.7).
-    // The keyboard path to pins is the mirror layer's single roving stop
-    // (#8714, world-map.instructions.md → Keyboard access).
-    return ExcludeFocus(
-      child: IconButton(
-        onPressed: onPressed,
-        icon: const Icon(Icons.close),
-        iconSize: 18,
-        padding: EdgeInsets.zero,
-        visualDensity: VisualDensity.compact,
-        constraints: const BoxConstraints(minWidth: size, minHeight: size),
-        tooltip: L10n.of(context).close,
-        color: theme.colorScheme.onSurfaceVariant,
-        style: IconButton.styleFrom(
-          // Without this the button's box is the 48px padded tap target, not the
-          // disc — it would overhang the gutter and swallow taps on the content
-          // it paints over.
-          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          backgroundColor: theme.colorScheme.surface,
-          shape: const CircleBorder(
-            side: BorderSide(color: Colors.white, width: 1.5),
-          ),
-        ),
-      ),
     );
   }
 }

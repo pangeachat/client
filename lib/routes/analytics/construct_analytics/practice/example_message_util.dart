@@ -38,15 +38,19 @@ class _ExampleMessageResult {
 }
 
 class ExampleMessageUtil {
+  /// [savedOnly] picks among the messages saved on this device without asking
+  /// the server, for an offline practice session.
   static Future<List<InlineSpan>?> getExampleMessage(
     ConstructUses construct, {
     String? form,
     bool noBold = false,
+    bool savedOnly = false,
   }) async {
     final result = await _getExampleMessageResult(
       construct,
       form: form,
       noBold: noBold,
+      savedOnly: savedOnly,
     );
     return result?.toSpans();
   }
@@ -88,6 +92,7 @@ class ExampleMessageUtil {
     ConstructUses construct, {
     String? form,
     bool noBold = false,
+    bool savedOnly = false,
   }) async {
     final uses = List<OneConstructUse>.from(construct.cappedUses);
     uses.shuffle(); // Shuffle to get a random example message each time
@@ -95,7 +100,10 @@ class ExampleMessageUtil {
     for (final use in uses) {
       if (form != null && use.form != form) continue;
       final client = MatrixState.pangeaController.matrixState.client;
-      final event = await client.getEventByConstructUse(use);
+      final event = await client.getEventByConstructUse(
+        use,
+        savedOnly: savedOnly,
+      );
       if (event == null) continue;
 
       final result = _buildExampleMessage(use.form, event, noBold: noBold);

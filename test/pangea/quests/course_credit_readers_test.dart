@@ -13,44 +13,47 @@ import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
+import '../get_test_client.dart';
 
 /// Where the family crediting reaches the readers beyond the parity fixture:
 /// the Mission rollup the course panel and the world map band read, the
 /// per-activity numbers on cards and pins, and — the safety rail — that a
 /// course with no copy reads exactly as it did before copies existed.
 void main() {
-  ActivityPlanModel plan(String id) => ActivityPlanModel(
-    req: ActivityPlanRequest(
-      topic: '',
-      mode: '',
-      objective: '',
-      media: MediaEnum.nan,
-      cefrLevel: LanguageLevelTypeEnum.a2,
-      languageOfInstructions: 'en',
-      targetLanguage: 'es',
-      numberOfParticipants: 2,
-    ),
-    title: '',
-    learningObjective: '',
-    instructions: '',
-    vocab: const [],
-    activityId: id,
-    roles: {
-      'r1': ActivityRole(
-        id: 'r1',
-        name: 'r1',
-        goal: null,
-        goals: [
-          for (var i = 0; i < 4; i++)
-            ActivityRoleGoal(id: '$id-g$i', description: 'g$i'),
-        ],
-      ),
-    },
-  );
+  ActivityPlanModel plan(String id, {List<Vocab> vocab = const []}) =>
+      ActivityPlanModel(
+        req: ActivityPlanRequest(
+          topic: '',
+          mode: '',
+          objective: '',
+          media: MediaEnum.nan,
+          cefrLevel: LanguageLevelTypeEnum.a2,
+          languageOfInstructions: 'en',
+          targetLanguage: 'es',
+          numberOfParticipants: 2,
+        ),
+        title: '',
+        learningObjective: '',
+        instructions: '',
+        vocab: vocab,
+        activityId: id,
+        roles: {
+          'r1': ActivityRole(
+            id: 'r1',
+            name: 'r1',
+            goal: null,
+            goals: [
+              for (var i = 0; i < 4; i++)
+                ActivityRoleGoal(id: '$id-g$i', description: 'g$i'),
+            ],
+          ),
+        },
+      );
 
   QuestOutline library(
     Map<String, List<String>> activitiesByLo, {
     Map<String, List<String>> family = const {},
+    Map<String, List<Vocab>> vocab = const {},
   }) => QuestOutline(
     quest: QuestPlan(
       id: 'q1',
@@ -71,7 +74,10 @@ void main() {
           objective: LearningObjective(id: e.key, objective: e.key),
           activities: [
             for (final id in e.value)
-              QuestActivity(activityId: id, plan: plan(id)),
+              QuestActivity(
+                activityId: id,
+                plan: plan(id, vocab: vocab[id] ?? const []),
+              ),
           ],
         ),
     ],
@@ -128,16 +134,55 @@ void main() {
       expect(withFamilies.forRules(rules).credit.isEmpty, isTrue);
     });
 
-    test('the rollup is the plain sum over the shown activities', () {
-      const stars = {'a1': 2, 'a2': 3, 'b1': 1, 'elsewhere': 9};
-      final resolution = resolveProgression(
+    test('the XP rollup is the plain sum over the shown activities', () {
+      const xp = {'a1': 200, 'a2': 300, 'b1': 100, 'elsewhere': 900};
+      final rollup = resolveProgression(
         outlines: [source.forRules(rules).toCourseLoOutline()],
-        starsByActivity: stars,
-      );
-      final rollup = resolution.forCourse('q1')!.rollup;
-      expect(rollup['lo1']!.stars, 5);
-      expect(rollup['lo2']!.stars, 1);
+        xpByActivity: xp,
+        practiceXpByLemma: const {'hola': 40},
+      ).forCourse('q1')!.rollup;
+      expect(rollup['lo1']!.xp, 500);
+      expect(rollup['lo2']!.xp, 100);
     });
+
+    test('the rollup equals the same course read without a copy record', () {
+      // What a course reads from the shared quest and what it reads through
+      // a v1 copy record are the same numbers.
+      const xp = {'a1': 1500, 'a2': 300, 'b1': 100, 'zzz': 50};
+      final viaRecord = resolveProgression(
+        outlines: [source.forRules(rules).toCourseLoOutline()],
+        xpByActivity: xp,
+      ).forCourse('q1')!;
+      final viaQuest = resolveProgression(
+        outlines: [source.toCourseLoOutline()],
+        xpByActivity: xp,
+      ).forCourse('q1')!;
+      for (final lo in ['lo1', 'lo2']) {
+        expect(viaRecord.rollup[lo]!.xp, viaQuest.rollup[lo]!.xp);
+        expect(viaRecord.rollup[lo]!.satisfied, viaQuest.rollup[lo]!.satisfied);
+      }
+      expect(viaRecord.anchorMissionId, viaQuest.anchorMissionId);
+      expect(viaRecord.starSummary.earned, viaQuest.starSummary.earned);
+    });
+
+    test(
+      'the Mission breakdown is the plain sum over the shown activities',
+      () async {
+        final client = await getTestClient();
+        final group = source.forRules(rules).groups.first;
+        final breakdown = client.missionXpBreakdown(
+          group,
+          byActivity: const {
+            'a1': MissionXpBreakdown(chat: 100, goals: 100),
+            'a2': MissionXpBreakdown(chat: 50),
+            'zzz': MissionXpBreakdown(chat: 999),
+          },
+        );
+        expect(breakdown.chat, 150);
+        expect(breakdown.goals, 100);
+        await client.dispose();
+      },
+    );
 
     test('the cache hands the same star map back untouched', () {
       final cache = JoinedObjectiveCache();
@@ -184,12 +229,70 @@ void main() {
     );
     const stars = {'a1': 2, 'c1': 1, 'a2': 1};
 
-    test('the Can-Do rollup sums the family onto the shown copy', () {
+    const xp = {'a1': 1200, 'c1': 300, 'a2': 100};
+
+    test('the Can-Do XP sums the family onto the shown copy', () {
       final rollup = resolveProgression(
         outlines: [shown.toCourseLoOutline()],
-        starsByActivity: stars,
+        xpByActivity: xp,
       ).forCourse('q1')!.rollup;
-      expect(rollup['lo1']!.stars, 4);
+      expect(rollup['lo1']!.xp, 1600);
+      expect(rollup['lo1']!.satisfied, isTrue);
+    });
+
+    test('a teacher swapping an activity never un-completes a Can-Do', () {
+      // Before: lo1 shows a1 and a2 and the learner completed it on a1's XP.
+      const earned = {'a1': 1700};
+      final before = resolveProgression(
+        outlines: [
+          listing
+              .forRules(
+                record({
+                  'lo1': ['a1', 'a2'],
+                }),
+              )
+              .toCourseLoOutline(),
+        ],
+        xpByActivity: earned,
+      ).forCourse('q1')!;
+      expect(before.rollup['lo1']!.satisfied, isTrue);
+      // After: a1 is swapped for c1, which nobody has played.
+      final after = resolveProgression(
+        outlines: [shown.toCourseLoOutline()],
+        xpByActivity: earned,
+      ).forCourse('q1')!;
+      expect(after.rollup['lo1']!.satisfied, isTrue);
+      expect(after.starSummary.earned, before.starSummary.earned);
+      // Without the family credit the swap would have un-completed it.
+      final uncredited = resolveProgression(
+        outlines: [
+          CourseLoOutline(
+            courseId: 'q1',
+            orderedLoIds: const ['lo1'],
+            activityIdsByLo: const {
+              'lo1': {'c1', 'a2'},
+            },
+          ),
+        ],
+        xpByActivity: earned,
+      ).forCourse('q1')!;
+      expect(uncredited.rollup['lo1']!.satisfied, isFalse);
+    });
+
+    test('the Mission breakdown sums every family member onto the shown '
+        'copy', () async {
+      final client = await getTestClient();
+      final breakdown = client.missionXpBreakdown(
+        shown.groups.single,
+        byActivity: const {
+          'a1': MissionXpBreakdown(chat: 700, goals: 500),
+          'c1': MissionXpBreakdown(chat: 300),
+          'a2': MissionXpBreakdown(goals: 100),
+        },
+      );
+      expect(breakdown.chat, 1000);
+      expect(breakdown.goals, 600);
+      await client.dispose();
     });
 
     test('credit survives the joined-course cache re-key', () async {
@@ -199,8 +302,8 @@ void main() {
       ], outlineOf: (_) async => shown.toCourseLoOutline());
       expect(cache.outlines.single.courseId, 'room1');
       expect(cache.outlines.single.credit.isEmpty, isFalse);
-      final rollup = cache.resolution(stars).forCourse('room1')!.rollup;
-      expect(rollup['lo1']!.stars, 4);
+      final rollup = cache.resolution(xp).forCourse('room1')!.rollup;
+      expect(rollup['lo1']!.xp, 1600);
     });
 
     test('a card for the shown copy shows the family total', () {
@@ -218,12 +321,6 @@ void main() {
       // The original keeps its own stars where it is shown on its own.
       expect(credited['a1'], 2);
       expect(credited['a2'], 1);
-    });
-
-    test('the threshold clamp is bound by the shown activities only', () {
-      // The hidden original adds stars to the Can-Do but no earnable ceiling.
-      final outline = shown.toCourseLoOutline();
-      expect(outline.earnableByActivity.keys.toSet(), {'c1', 'a2'});
     });
   });
 
@@ -255,6 +352,106 @@ void main() {
     });
   });
 
+  group('practice XP', () {
+    test('words of a hidden activity still count toward the Can-Do', () {
+      final shown =
+          library(
+            {
+              'lo1': ['a1', 'c1'],
+            },
+            family: {
+              'a1': ['a1', 'c1'],
+              'c1': ['a1', 'c1'],
+            },
+            vocab: {
+              'a1': [Vocab(lemma: 'Hola', pos: 'intj')],
+              'c1': [Vocab(lemma: 'nuevo', pos: 'adj')],
+            },
+          ).forRules(
+            record(
+              {
+                'lo1': ['c1'],
+              },
+              removed: {
+                'lo1': ['a1'],
+              },
+            ),
+          );
+      final outline = shown.toCourseLoOutline();
+      expect(outline.lemmasByLo['lo1'], {'hola', 'nuevo'});
+      // The learner completed lo1 on 1,200 session XP plus 400 practice XP
+      // on a word only the now-hidden activity taught.
+      final rollup = resolveProgression(
+        outlines: [outline],
+        xpByActivity: const {'a1': 1200},
+        practiceXpByLemma: const {'hola': 400},
+      ).forCourse('q1')!.rollup;
+      expect(rollup['lo1']!.xp, 1600);
+      expect(rollup['lo1']!.satisfied, isTrue);
+      // What the panel drills is still only the shown words.
+      expect(shown.groups.single.lemmas, {'nuevo'});
+    });
+  });
+
+  group('practice XP of an original the record does not name', () {
+    test('a swapped-out family member still lends its words', () {
+      final shown =
+          library(
+            {
+              'lo1': ['a1', 'c1'],
+            },
+            family: {
+              'a1': ['a1', 'c1'],
+              'c1': ['a1', 'c1'],
+            },
+            vocab: {
+              'a1': [Vocab(lemma: 'hola', pos: 'intj')],
+              'c1': [Vocab(lemma: 'nuevo', pos: 'adj')],
+            },
+          ).forRules(
+            record({
+              'lo1': ['c1'],
+            }),
+          );
+      expect(shown.toCourseLoOutline().lemmasByLo['lo1'], {'hola', 'nuevo'});
+    });
+
+    test('an unrelated listed activity does not', () {
+      final shown =
+          library(
+            {
+              'lo1': ['c1', 'x1'],
+            },
+            family: {
+              'a1': ['a1', 'c1'],
+              'c1': ['a1', 'c1'],
+            },
+            vocab: {
+              'c1': [Vocab(lemma: 'nuevo', pos: 'adj')],
+              'x1': [Vocab(lemma: 'otro', pos: 'adj')],
+            },
+          ).forRules(
+            record({
+              'lo1': ['c1'],
+            }),
+          );
+      expect(shown.toCourseLoOutline().lemmasByLo['lo1'], {'nuevo'});
+    });
+  });
+
+  group('session XP reduction', () {
+    test('sums saved sessions and leaves no entry for one with no XP', () {
+      expect(
+        sumXpByActivity([
+          (activityId: 'a1', xp: 300),
+          (activityId: 'a1', xp: 200),
+          (activityId: 'a2', xp: 0),
+        ]),
+        {'a1': 500},
+      );
+    });
+  });
+
   group('edge cases of the credit', () {
     test('a Can-Do whose activities are all hidden still reports its XP', () {
       final shown =
@@ -277,10 +474,10 @@ void main() {
         'lo1': 300,
         'lo2': 50,
       });
-      // Nothing shows for lo1, so the panel's star rollup leaves it out.
+      // Nothing shows for lo1, so the panel's rollup leaves it out.
       final rollup = resolveProgression(
         outlines: [outline],
-        starsByActivity: {'a1': 2, 'b1': 1},
+        xpByActivity: {'a1': 200, 'b1': 100},
       ).forCourse('q1')!.rollup;
       expect(rollup.keys, ['lo2']);
       expect(creditedCourseTotal(outline, {'a1': 2, 'b1': 1}), 3);

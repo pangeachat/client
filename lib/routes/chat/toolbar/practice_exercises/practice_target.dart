@@ -29,10 +29,18 @@ class PracticeTarget {
   /// this is only defined for morphId exercises
   final MorphFeaturesEnum? morphFeature;
 
+  /// Extra wrong-answer candidates for a meaning exercise, beside the
+  /// learner's own vocabulary — a Mission-scoped session passes the Mission's
+  /// other words, so a learner with little vocabulary of their own still gets
+  /// a real multiple choice (#9438). Not persisted: a target rebuilt from
+  /// storage falls back to the learner's vocabulary alone.
+  final List<ConstructIdentifier> distractorCandidates;
+
   PracticeTarget({
     required this.tokens,
     required this.exerciseType,
     this.morphFeature,
+    this.distractorCandidates = const [],
   }) {
     if (PracticeExerciseTypeEnum.morphId == exerciseType &&
         morphFeature == null) {
