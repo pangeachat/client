@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-15 16:24:26.441901",
+    "@@last_modified": "2026-10-16 11:49:09.641230",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2447,5 +2447,9 @@
     "missionDueDate": "Ifuneka ngo-{date}, {time}",
     "callNotificationsTitle": "Vumela iifowuni zikhale",
     "callNotificationsMessage": "Iifowuni zikhala njengezaziso. Vumela izaziso ukuze ifowuni yakho ikhale xa kukho umnxeba, naxa iPangea Chat ivaliwe okanye ifowuni yakho itshixiwe.",
-    "callNotificationsMissedMessage": "Kwangena umnxeba ngelixa iPangea Chat ivaliwe, kodwa ifowuni yakho ayikwazanga ukukhala kuba izaziso zivaliwe. Vumela izaziso ukuze umnxeba olandelayo ukhale."
+    "callNotificationsMissedMessage": "Kwangena umnxeba ngelixa iPangea Chat ivaliwe, kodwa ifowuni yakho ayikwazanga ukukhala kuba izaziso zivaliwe. Vumela izaziso ukuze umnxeba olandelayo ukhale.",
+    "connectionPracticeVocab": "Ziqhelanise nesigama ngelixa ulindile",
+    "offlinePracticeNote": "Akukho intanethi. Iimpendulo zakho ziya kulayishwa xa ubuyile.",
+    "offlinePracticeSavedNote": "Igcinwe kwesi sixhobo. I-XP yakho iya kulayishwa xa ubuyile kwi-intanethi.",
+    "offlinePracticeNothingSaved": "Akukho okwaneleyo okugcinwe kwesi sixhobo ukuze uziqhelanise ungaxhunyiwe kwi-intanethi. Zama kwakhona xa ubuyele kwi-intanethi."
 }

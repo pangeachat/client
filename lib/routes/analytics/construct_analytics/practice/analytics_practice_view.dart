@@ -179,7 +179,7 @@ class AnalyticsPracticeView extends StatelessWidget {
         final error = controller.session.sessionError;
         if (error != null) {
           if (error is InsufficientDataException) {
-            return InsufficientDataIndicator();
+            return InsufficientDataIndicator(offline: error.offline);
           }
 
           return error is UnsubscribedException

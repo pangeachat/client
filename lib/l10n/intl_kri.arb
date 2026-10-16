@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-15 16:24:17.689515",
+    "@@last_modified": "2026-10-16 11:49:05.273259",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2447,5 +2447,9 @@
     "missionDueDate": "Fɔ du {date}, {time}",
     "callNotificationsTitle": "Mek kɔl dɛn ring",
     "callNotificationsMessage": "Kɔl dɛn de ring as notifikeshɔn. Alaw notifikeshɔn so dat yu fon go ring fɔ kɔl, ivin if Pangea Chat de klos ɔ yu fon de lɔk.",
-    "callNotificationsMissedMessage": "Wan kɔl bin kam we Pangea Chat bin de klos, bɔt yu fon nɔ bin ebul ring bikɔs notifikeshɔn dɛn nɔ ɔn. Alaw notifikeshɔn so dat di nɛks kɔl go ring."
+    "callNotificationsMissedMessage": "Wan kɔl bin kam we Pangea Chat bin de klos, bɔt yu fon nɔ bin ebul ring bikɔs notifikeshɔn dɛn nɔ ɔn. Alaw notifikeshɔn so dat di nɛks kɔl go ring.",
+    "connectionPracticeVocab": "Pratiks vokab wɛn yu de wɛt",
+    "offlinePracticeNote": "Yu nɔ de ɔnlayn. Yu ansa dɛn go ɔplod wɛn yu kɔm bak.",
+    "offlinePracticeSavedNote": "Dɛn sev am na dis divays. Yu XP go ɔplod wɛn yu kɔm bak ɔnlayn.",
+    "offlinePracticeNothingSaved": "Nɔ ɛnɔf dɔn sev na dis divays fɔ praktis we yu nɔ ɔnlayn. Tray bak we yu dɔn kɔm ɔnlayn."
 }

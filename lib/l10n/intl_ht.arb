@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-15 16:24:15.114962",
+    "@@last_modified": "2026-10-16 11:48:56.958110",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2447,5 +2447,9 @@
     "missionDueDate": "Dat limit: {date}, {time}",
     "callNotificationsTitle": "Kite apèl yo sonnen",
     "callNotificationsMessage": "Apèl yo sonnen tankou notifikasyon. Pèmèt notifikasyon pou telefòn ou sonnen pou yon apèl, menm lè Pangea Chat fèmen oswa telefòn ou bloke.",
-    "callNotificationsMissedMessage": "Yon apèl te antre pandan Pangea Chat te fèmen, men telefòn ou pa t' ka sonnen paske notifikasyon yo etenn. Pèmèt notifikasyon pou pwochen apèl la sonnen."
+    "callNotificationsMissedMessage": "Yon apèl te antre pandan Pangea Chat te fèmen, men telefòn ou pa t' ka sonnen paske notifikasyon yo etenn. Pèmèt notifikasyon pou pwochen apèl la sonnen.",
+    "connectionPracticeVocab": "Pratike vokabilè pandan w ap tann",
+    "offlinePracticeNote": "Dekonekte. Repons ou yo ap telechaje lè w konekte ankò.",
+    "offlinePracticeSavedNote": "Sove sou aparèy sa a. XP ou ap telechaje lè w konekte ankò.",
+    "offlinePracticeNothingSaved": "Pa gen ase ki sove sou aparèy sa a pou pratike offline. Eseye ankò lè ou konekte."
 }

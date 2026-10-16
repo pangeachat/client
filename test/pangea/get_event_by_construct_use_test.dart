@@ -42,8 +42,9 @@ void main() {
   Future<PangeaMessageEvent?> lookUp(
     String roomId,
     String eventId,
-    List<MatrixEvent> events,
-  ) async {
+    List<MatrixEvent> events, {
+    bool savedOnly = false,
+  }) async {
     await client.handleSync(
       SyncUpdate(
         nextBatch: 'batch$testCounter',
@@ -71,7 +72,7 @@ void main() {
       ),
     );
 
-    final future = client.getEventByConstructUse(use);
+    final future = client.getEventByConstructUse(use, savedOnly: savedOnly);
     await client.handleSync(SyncUpdate(nextBatch: 'nudge$testCounter'));
     return future;
   }
@@ -116,6 +117,45 @@ void main() {
         ),
       ]);
       expect(result, isNull);
+    },
+  );
+
+  MatrixEvent message(String eventId) => MatrixEvent(
+    eventId: eventId,
+    type: EventTypes.Message,
+    senderId: '@caller:example.com',
+    originServerTs: DateTime.utc(2026, 1, 2),
+    content: {'msgtype': MessageTypes.Text, 'body': 'hola'},
+  );
+
+  Iterable<String> eventRequests() => FakeMatrixApi.calledEndpoints.keys.where(
+    (endpoint) => endpoint.contains('/event/'),
+  );
+
+  // #9541 — an offline practice session reads only the messages saved on the
+  // device: asking the server for a missing one can wait 35 seconds.
+  test('a saved-only lookup finds a message saved on the device', () async {
+    final eventId = '\$saved$testCounter:example.com';
+    final result = await lookUp('!room$testCounter:example.com', eventId, [
+      message(eventId),
+    ], savedOnly: true);
+    expect(result?.eventId, eventId);
+  });
+
+  test(
+    'a saved-only lookup never asks the server for a missing message',
+    () async {
+      final roomId = '!room$testCounter:example.com';
+      final saved = message('\$saved$testCounter:example.com');
+      final missing = '\$missing$testCounter:example.com';
+
+      FakeMatrixApi.calledEndpoints.clear();
+      expect(await lookUp(roomId, missing, [saved], savedOnly: true), isNull);
+      expect(eventRequests(), isEmpty);
+
+      // Control: the default lookup does ask, so the check above can fail.
+      await lookUp(roomId, missing, [saved]);
+      expect(eventRequests(), isNotEmpty);
     },
   );
 

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-15 16:24:22.276444",
+    "@@last_modified": "2026-10-16 11:49:06.126482",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10714,5 +10714,9 @@
     "missionDueDate": "Scadența: {date}, {time}",
     "callNotificationsTitle": "Permite apelurilor să sune",
     "callNotificationsMessage": "Apelurile sună ca notificări. Permite notificările pentru ca telefonul tău să sune la un apel, chiar și atunci când Pangea Chat este închis sau telefonul tău este blocat.",
-    "callNotificationsMissedMessage": "A intrat un apel în timp ce Pangea Chat era închis, dar telefonul tău nu a putut suna deoarece notificările sunt dezactivate. Permite notificările pentru ca următorul apel să sune."
+    "callNotificationsMissedMessage": "A intrat un apel în timp ce Pangea Chat era închis, dar telefonul tău nu a putut suna deoarece notificările sunt dezactivate. Permite notificările pentru ca următorul apel să sune.",
+    "connectionPracticeVocab": "Exersează vocabularul în timp ce aștepți",
+    "offlinePracticeNote": "Ești offline. Răspunsurile tale se vor încărca atunci când vei fi din nou online.",
+    "offlinePracticeSavedNote": "Salvat pe acest dispozitiv. XP-ul tău se va încărca atunci când vei fi din nou online.",
+    "offlinePracticeNothingSaved": "Nu s-au salvat suficiente date pe acest dispozitiv pentru a exersa offline. Încearcă din nou când ești online."
 }

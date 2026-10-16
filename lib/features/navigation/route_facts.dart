@@ -113,6 +113,15 @@ String? selectedMissionIdFor(Uri uri) {
   return value == null || value.isEmpty ? null : value;
 }
 
+/// Whether the standalone practice panel is open, in either column.
+bool practiceIsOpen(Uri uri) {
+  final panels = parseOpenPanels(uri);
+  return [
+    ...panels.left,
+    ...panels.right,
+  ].any((t) => t.type == PanelTypesEnum.practice);
+}
+
 /// The active course space id — the workspace's `?c=<spaceid>` course context
 /// (a bare localpart) — else null. One value read by the map (scope) and the
 /// course-family panels (identity) alike, independent of the panel tokens.

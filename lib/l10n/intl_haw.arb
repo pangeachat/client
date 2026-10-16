@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-15 16:24:14.581761",
+    "@@last_modified": "2026-10-16 11:48:56.285757",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2447,5 +2447,9 @@
     "missionDueDate": "Pau i ka {date}, {time}",
     "callNotificationsTitle": "E kani nā kelepona",
     "callNotificationsMessage": "Kani nā kelepona ma ke ʻano he mau leka hoʻomaopopo. E ʻae i nā leka hoʻomaopopo i kani kāu kelepona no ke kelepona ʻana, ʻoiai inā ua pani ʻia ʻo Pangea Chat a i ʻole ua paʻa kāu kelepona.",
-    "callNotificationsMissedMessage": "Ua komo mai kahi kelepona i ka wā i pani ʻia ai ʻo Pangea Chat, akā ʻaʻole hiki i kāu kelepona ke kani no ka mea ua pio nā leka hoʻomaopopo. E ʻae i nā leka hoʻomaopopo i kani ke kelepona aʻe."
+    "callNotificationsMissedMessage": "Ua komo mai kahi kelepona i ka wā i pani ʻia ai ʻo Pangea Chat, akā ʻaʻole hiki i kāu kelepona ke kani no ka mea ua pio nā leka hoʻomaopopo. E ʻae i nā leka hoʻomaopopo i kani ke kelepona aʻe.",
+    "connectionPracticeVocab": "E hoʻomaʻamaʻa i nā huaʻōlelo ke kali ʻoe",
+    "offlinePracticeNote": "Ma waho pūnaewele. E hoʻouka ʻia kāu mau pane ke hoʻi mai ʻoe.",
+    "offlinePracticeSavedNote": "Mālama ʻia ma kēia hāmeʻa. E hoʻouka ʻia kāu XP ke hoʻi ʻoe i ka pūnaewele.",
+    "offlinePracticeNothingSaved": "ʻAʻole lawa ka mea i mālama ʻia ma kēia hāmeʻa no ka hoʻomaʻamaʻa ʻana ma waho pūnaewele. E hoʻāʻo hou ke hoʻi ʻoe i ka pūnaewele."
 }

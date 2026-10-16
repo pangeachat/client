@@ -174,7 +174,7 @@ class PracticeSessionController {
       final initialExercise = await _initExerciseData(onSkip, onFetch);
       if (initialExercise == null && session.state.currentIndex == 0) {
         // No activities were successfully loaded, and we haven't completed any yet, so throw an error
-        throw InsufficientDataException();
+        throw InsufficientDataException(offline: session.offline);
       }
       return initialExercise;
     }
@@ -195,7 +195,7 @@ class PracticeSessionController {
 
     if (session.state.currentIndex == 0) {
       // No activities were successfully loaded, and we haven't completed any yet, so throw an error
-      throw InsufficientDataException();
+      throw InsufficientDataException(offline: session.offline);
     }
 
     return null;

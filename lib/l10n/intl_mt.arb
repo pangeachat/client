@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-15 16:24:20.887112",
+    "@@last_modified": "2026-10-16 11:49:03.432147",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2447,5 +2447,9 @@
     "missionDueDate": "Skadenza {date}, {time}",
     "callNotificationsTitle": "Ħalli s-sejħiet idoqqu",
     "callNotificationsMessage": "Is-sejħiet idoqqu bħala notifiki. Ħalli n-notifiki biex it-telefon tiegħek idoqq għal sejħa, anke meta Pangea Chat tkun magħluqa jew it-telefon tiegħek ikun illokkjat.",
-    "callNotificationsMissedMessage": "Waslet sejħa waqt li Pangea Chat kienet magħluqa, iżda t-telefon tiegħek ma setax idoqq minħabba li n-notifiki huma mitfija. Ħalli n-notifiki biex is-sejħa li jmiss iddoqq."
+    "callNotificationsMissedMessage": "Waslet sejħa waqt li Pangea Chat kienet magħluqa, iżda t-telefon tiegħek ma setax idoqq minħabba li n-notifiki huma mitfija. Ħalli n-notifiki biex is-sejħa li jmiss iddoqq.",
+    "connectionPracticeVocab": "Ipprattika l-vokabularju waqt li tkun qed tistenna",
+    "offlinePracticeNote": "Offline. It-tweġibiet tiegħek jittellgħu meta terġa' tkun online.",
+    "offlinePracticeSavedNote": "Issejvjat fuq dan l-apparat. L-XP tiegħek jittella' meta terġa' tkun online.",
+    "offlinePracticeNothingSaved": "Mhux biżżejjed salvat fuq dan l-apparat biex tipprattika offline. Erġa' pprova meta terġa' tkun online."
 }

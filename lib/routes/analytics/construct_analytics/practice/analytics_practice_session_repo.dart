@@ -1,10 +1,13 @@
 import 'dart:math';
 
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/connection_status/connection_status_controller.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/grammar_error_target_generator.dart';
@@ -15,7 +18,13 @@ import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exerc
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_target.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class InsufficientDataException implements Exception {}
+class InsufficientDataException implements Exception {
+  /// The session was to run offline, so what it lacks is data saved on this
+  /// device. See practice-exercises.instructions.md, "Offline Practice".
+  final bool offline;
+
+  const InsufficientDataException({this.offline = false});
+}
 
 class AnalyticsPracticeSessionRepo {
   /// Select a session's targets. With [missionId], a vocab session is scoped
@@ -62,7 +71,16 @@ class AnalyticsPracticeSessionRepo {
       }
     }
 
-    if (type == ConstructTypeEnum.vocab) {
+    // Decided once, at the start: the session keeps this mode if the
+    // connection comes or goes while it runs.
+    final offline = ConnectionStatusController.instance.cannotReachPangea;
+
+    if (offline && type == ConstructTypeEnum.vocab) {
+      await LemmaInfoRepo.instance.cacheReady;
+      targets.addAll(
+        await VocabMeaningTargetGenerator.get(vocabConstructs, offline: true),
+      );
+    } else if (type == ConstructTypeEnum.vocab) {
       final totalNeeded = AnalyticsPracticeConstants.targetsToGenerate;
       final halfNeeded = (totalNeeded / 2).ceil();
 
@@ -121,6 +139,7 @@ class AnalyticsPracticeSessionRepo {
     } else {
       final errorTargets = await GrammarErrorTargetGenerator.get(
         vocabConstructs,
+        offline: offline,
       );
       targets.addAll(errorTargets);
 
@@ -131,7 +150,10 @@ class AnalyticsPracticeSessionRepo {
               userL2.langCodeShort,
             )
             .then((map) => map.values.toList());
-        final morphs = await GrammarMatchTargetGenerator.get(morphConstructs);
+        final morphs = await GrammarMatchTargetGenerator.get(
+          morphConstructs,
+          offline: offline,
+        );
         final remainingCount =
             AnalyticsPracticeConstants.targetsToGenerate - targets.length;
 
@@ -141,7 +163,7 @@ class AnalyticsPracticeSessionRepo {
     }
 
     if (targets.isEmpty) {
-      throw InsufficientDataException();
+      throw InsufficientDataException(offline: offline);
     }
 
     targets.shuffle();
@@ -154,7 +176,47 @@ class AnalyticsPracticeSessionRepo {
       practiceTargets: targets,
       missionId: scope?.objective.id,
       missionLabel: scope?.objective.objective,
+      offline: offline,
     );
     return session;
+  }
+
+  /// Whether the connection banner may offer an offline vocab session: the app
+  /// does not know the learner to be unsubscribed, and this device has a full
+  /// session's worth of different words whose meanings are saved on it. Reads
+  /// the learner's whole vocab, so the banner asks once per lost connection,
+  /// not on every build. See connection-status.instructions.md, "What the
+  /// user sees".
+  static Future<bool> canStartOffline() async {
+    final pangea = MatrixState.pangeaController;
+    if (!pangea.subscriptionController.showSubscriptionGatedContent) {
+      return false;
+    }
+    final l2 = pangea.userController.userL2;
+    if (l2 == null) return false;
+
+    try {
+      await LemmaInfoRepo.instance.cacheReady;
+      final ids = await pangea.matrixState.analyticsDataService
+          .getAggregatedConstructIds(ConstructTypeEnum.vocab, l2.langCodeShort);
+      final lemmas = <String>{};
+      for (final id in ids) {
+        if (id.knownMeanings.isEmpty) continue;
+        lemmas.add(id.lemma);
+        if (lemmas.length >= AnalyticsPracticeConstants.practiceGroupSize) {
+          return true;
+        }
+      }
+      return false;
+    } catch (e, s) {
+      // Asked again on every lost connection, so one report a session.
+      ErrorHandler.logErrorOnce(
+        key: 'AnalyticsPracticeSessionRepo.canStartOffline',
+        e: e,
+        s: s,
+        data: {'l2': l2.langCodeShort},
+      );
+      return false;
+    }
   }
 }

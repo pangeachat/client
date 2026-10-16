@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-15 16:24:23.764858",
+    "@@last_modified": "2026-10-16 11:49:07.221407",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2447,5 +2447,9 @@
     "missionDueDate": "Tenggang {date}, {time}",
     "callNotificationsTitle": "Telepon disada",
     "callNotificationsMessage": "Telepon disada salaku béwara. Idinan béwara sangkan telepon anjeun disada pikeun telepon, sanajan Pangea Chat ditutup atawa telepon anjeun dikonci.",
-    "callNotificationsMissedMessage": "Aya telepon asup nalika Pangea Chat ditutup, tapi telepon anjeun teu bisa disada sabab béwara pareum. Idinan béwara sangkan telepon salajengna disada."
+    "callNotificationsMissedMessage": "Aya telepon asup nalika Pangea Chat ditutup, tapi telepon anjeun teu bisa disada sabab béwara pareum. Idinan béwara sangkan telepon salajengna disada.",
+    "connectionPracticeVocab": "Latihan kosakata bari ngantosan",
+    "offlinePracticeNote": "Pareum. Jawaban anjeun diunggah nalika anjeun uih deui.",
+    "offlinePracticeSavedNote": "Disimpen dina alat ieu. XP anjeun diunggah nalika anjeun online deui online.",
+    "offlinePracticeNothingSaved": "Teu cekap disimpen dina alat ieu pikeun latihan offline. Cobi deui nalika anjeun online."
 }

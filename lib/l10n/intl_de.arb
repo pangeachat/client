@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-15 16:24:11.578838",
+    "@@last_modified": "2026-10-16 11:48:54.043069",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9972,5 +9972,9 @@
     "missionDueDate": "Fällig am {date}, {time}",
     "callNotificationsTitle": "Anrufe klingeln lassen",
     "callNotificationsMessage": "Anrufe klingeln als Benachrichtigungen. Erlaube Benachrichtigungen, damit dein Telefon bei einem Anruf klingelt, auch wenn Pangea Chat geschlossen oder dein Telefon gesperrt ist.",
-    "callNotificationsMissedMessage": "Ein Anruf kam herein, während Pangea Chat geschlossen war, aber dein Telefon konnte nicht klingeln, da Benachrichtigungen deaktiviert sind. Erlaube Benachrichtigungen, damit der nächste Anruf klingelt."
+    "callNotificationsMissedMessage": "Ein Anruf kam herein, während Pangea Chat geschlossen war, aber dein Telefon konnte nicht klingeln, da Benachrichtigungen deaktiviert sind. Erlaube Benachrichtigungen, damit der nächste Anruf klingelt.",
+    "connectionPracticeVocab": "Vokabeln üben, während du wartest",
+    "offlinePracticeNote": "Offline. Deine Antworten werden hochgeladen, wenn du wieder online bist.",
+    "offlinePracticeSavedNote": "Auf diesem Gerät gespeichert. Deine XP werden hochgeladen, wenn du wieder online bist.",
+    "offlinePracticeNothingSaved": "Auf diesem Gerät ist nicht genug gespeichert, um offline zu üben. Versuche es erneut, wenn du wieder online bist."
 }

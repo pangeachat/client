@@ -1355,7 +1355,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-15 16:24:16.135810",
+    "@@last_modified": "2026-10-16 11:48:57.911549",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10918,5 +10918,9 @@
     "missionDueDate": "Debite {date}, {time}",
     "callNotificationsTitle": "Permitter sonar le appellos",
     "callNotificationsMessage": "Le appellos sona como notificationes. Permitte notificationes a fin que tu telephono sona pro un appello, mesmo quando Pangea Chat es claudite o tu telephono es blocate.",
-    "callNotificationsMissedMessage": "Un appello arrivava dum Pangea Chat esseva claudite, ma tu telephono non poteva sonar proque le notificationes es disactivate. Permitte notificationes a fin que le proxime appello sona."
+    "callNotificationsMissedMessage": "Un appello arrivava dum Pangea Chat esseva claudite, ma tu telephono non poteva sonar proque le notificationes es disactivate. Permitte notificationes a fin que le proxime appello sona.",
+    "connectionPracticeVocab": "Practica vocabulario durante que tu attende",
+    "offlinePracticeNote": "Offline. Tu responsas se cargara quando tu es de nove connectite.",
+    "offlinePracticeSavedNote": "Salvate in iste apparato. Tu XP se cargara quando tu es de nove connectite.",
+    "offlinePracticeNothingSaved": "Non satis es salvate in iste apparato pro practicar offline. Reprova quando tu es de nove in linea."
 }

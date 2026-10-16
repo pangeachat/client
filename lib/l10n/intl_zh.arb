@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-15 16:24:28.403495",
+    "@@last_modified": "2026-10-16 11:49:09.819744",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9985,5 +9985,9 @@
     "missionDueDate": "{date} {time} 到期",
     "callNotificationsTitle": "让通话响铃",
     "callNotificationsMessage": "通话会以通知的形式响铃。请允许通知，这样即使 Pangea Chat 关闭或手机锁定时，您的手机也能在有来电时响铃。",
-    "callNotificationsMissedMessage": "Pangea Chat 关闭时有来电，但由于通知已关闭，您的手机无法响铃。请允许通知，以便下次来电时响铃。"
+    "callNotificationsMissedMessage": "Pangea Chat 关闭时有来电，但由于通知已关闭，您的手机无法响铃。请允许通知，以便下次来电时响铃。",
+    "connectionPracticeVocab": "等待时练习词汇",
+    "offlinePracticeNote": "离线。您的答案将在您上线后上传。",
+    "offlinePracticeSavedNote": "已保存到此设备。您的经验值将在您上线后上传。",
+    "offlinePracticeNothingSaved": "此设备上没有足够的已保存内容可供离线练习。请在联网后重试。"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-15 16:24:10.501682",
+    "@@last_modified": "2026-10-16 11:48:53.358632",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2447,5 +2447,9 @@
     "missionDueDate": "የሚጠናቀቅበት ቀን {date}, {time}",
     "callNotificationsTitle": "ጥሪዎች እንዲጠሩ ፍቀድ",
     "callNotificationsMessage": "ጥሪዎች እንደ ማሳወቂያ ይጠራሉ። ፓንጋያ ቻት ዝግ ቢሆንም ወይም ስልክዎ ተቆልፎ ቢሆንም ስልክዎ ለጥሪ እንዲጠራ ማሳወቂያዎችን ይፍቀዱ።",
-    "callNotificationsMissedMessage": "ፓንጋያ ቻት ዝግ እያለ ጥሪ መጥቶ ነበር፣ ነገር ግን ማሳወቂያዎች ስለጠፉ ስልክዎ ሊጠራ አልቻለም። ቀጣዩ ጥሪ እንዲጠራ ማሳወቂያዎችን ይፍቀዱ።"
+    "callNotificationsMissedMessage": "ፓንጋያ ቻት ዝግ እያለ ጥሪ መጥቶ ነበር፣ ነገር ግን ማሳወቂያዎች ስለጠፉ ስልክዎ ሊጠራ አልቻለም። ቀጣዩ ጥሪ እንዲጠራ ማሳወቂያዎችን ይፍቀዱ።",
+    "connectionPracticeVocab": "በምትጠብቅበት ጊዜ የቃላት ልምምድ አድርግ",
+    "offlinePracticeNote": "ከመስመር ውጪ ነዎት። መልሶችዎ ሲመለሱ ይሰቀላሉ።",
+    "offlinePracticeSavedNote": "በዚህ መሳሪያ ላይ ተቀምጧል። በመስመር ላይ ሲመለሱ የእርስዎ XP ይሰቀላል።",
+    "offlinePracticeNothingSaved": "ከመስመር ውጭ ለመለማመድ በዚህ መሳሪያ ላይ በቂ አልተቀመጠም። መስመር ላይ ሲሆኑ እንደገና ይሞክሩ።"
 }

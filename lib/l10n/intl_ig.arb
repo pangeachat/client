@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-15 16:24:15.957524",
+    "@@last_modified": "2026-10-16 11:48:59.013981",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2447,5 +2447,9 @@
     "missionDueDate": "Oge ruru {date}, {time}",
     "callNotificationsTitle": "Kwe ka oku kụọ",
     "callNotificationsMessage": "Oku na-ada ka ọkwa. Kwe ka ọkwa ka ekwentị gị wee kụọ maka oku, ọbụlagodi mgbe Pangea Chat mechiri ma ọ bụ ekwentị gị kpọchiri.",
-    "callNotificationsMissedMessage": "Oku batara mgbe Pangea Chat mechiri, mana ekwentị gị enweghị ike ịda n'ihi na agbanyụrụ ọkwa. Kwe ka ọkwa ka oku na-abịa kụọ."
+    "callNotificationsMissedMessage": "Oku batara mgbe Pangea Chat mechiri, mana ekwentị gị enweghị ike ịda n'ihi na agbanyụrụ ọkwa. Kwe ka ọkwa ka oku na-abịa kụọ.",
+    "connectionPracticeVocab": "Mụta okwu mgbe ị na-eche",
+    "offlinePracticeNote": "Anọghị n'ịntanetị. Azịza gị ga-ebunye mgbe ị lọghachiri.",
+    "offlinePracticeSavedNote": "Echekwara na ngwaọrụ a. XP gị ga-ebunye mgbe ị nọ n'ịntanetị ọzọ.",
+    "offlinePracticeNothingSaved": "Echekwaala ihe zuru oke na ngwaọrụ a iji mee ihe na-anọghị n'ịntanetị. Gbalịa ọzọ mgbe ịlaghachiri n'ịntanetị."
 }

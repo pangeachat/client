@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-15 16:24:17.348439",
+    "@@last_modified": "2026-10-16 11:49:00.583771",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2447,5 +2447,9 @@
     "missionDueDate": "Debetur {date}, {time}",
     "callNotificationsTitle": "Sinite vocem sonare",
     "callNotificationsMessage": "Voces sonant ut notificationes. Sinite notificationes ut telephonum vestrum sonet pro voce, etiam cum Pangea Chat clausum est vel telephonum vestrum clausum est.",
-    "callNotificationsMissedMessage": "Vox advenit dum Pangea Chat clausum erat, sed telephonum vestrum sonare non potuit quia notificationes sunt off. Sinite notificationes ut proxima vox sonet."
+    "callNotificationsMissedMessage": "Vox advenit dum Pangea Chat clausum erat, sed telephonum vestrum sonare non potuit quia notificationes sunt off. Sinite notificationes ut proxima vox sonet.",
+    "connectionPracticeVocab": "Dum exspectas, verba exerce",
+    "offlinePracticeNote": "Sine conexione. Responsa tua, cum redieris, mittentur.",
+    "offlinePracticeSavedNote": "In hoc artificio servatum. XP tua, cum redieris, mittentur.",
+    "offlinePracticeNothingSaved": "Non satis servatum est in hac machina ad exercendum offline. Iterum conare cum online eris."
 }

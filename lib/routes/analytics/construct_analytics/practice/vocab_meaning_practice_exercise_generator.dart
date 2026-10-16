@@ -13,6 +13,7 @@ class VocabMeaningPracticeExerciseGenerator {
           token,
           language: req.userL2.split('-').first,
           extraCandidates: req.target.distractorCandidates,
+          savedMeaningsOnly: req.offline,
         );
 
     if (!choices.contains(token.vocabConstructID)) {

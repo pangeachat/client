@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-15 16:24:12.756944",
+    "@@last_modified": "2026-10-16 11:48:54.336244",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2447,5 +2447,9 @@
     "missionDueDate": "Dyddiad dyledus {date}, {time}",
     "callNotificationsTitle": "Gadewch i alwadau ganu",
     "callNotificationsMessage": "Mae galwadau'n canu fel hysbysiadau. Caniatewch hysbysiadau fel bod eich ffôn yn canu am alwad, hyd yn oed pan fydd Pangea Chat ar gau neu pan fydd eich ffôn wedi'i gloi.",
-    "callNotificationsMissedMessage": "Daeth galwad i mewn tra bod Pangea Chat ar gau, ond ni allai eich ffôn ganu oherwydd bod hysbysiadau i ffwrdd. Caniatewch hysbysiadau fel bod yr alwad nesaf yn canu."
+    "callNotificationsMissedMessage": "Daeth galwad i mewn tra bod Pangea Chat ar gau, ond ni allai eich ffôn ganu oherwydd bod hysbysiadau i ffwrdd. Caniatewch hysbysiadau fel bod yr alwad nesaf yn canu.",
+    "connectionPracticeVocab": "Ymarfer geirfa tra byddwch chi'n aros",
+    "offlinePracticeNote": "All-lein. Bydd eich atebion yn uwchlwytho pan fyddwch chi'n ôl.",
+    "offlinePracticeSavedNote": "Wedi'i gadw ar y ddyfais hon. Bydd eich XP yn uwchlwytho pan fyddwch chi'n ôl ar-lein.",
+    "offlinePracticeNothingSaved": "Nid oes digon wedi'i gadw ar y ddyfais hon i ymarfer all-lein. Rhowch gynnig arall pan fyddwch chi'n ôl ar-lein."
 }

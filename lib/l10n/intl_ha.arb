@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-15 16:24:14.340292",
+    "@@last_modified": "2026-10-16 11:48:56.115348",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2447,5 +2447,9 @@
     "missionDueDate": "Ranar ƙarshe {date}, {time}",
     "callNotificationsTitle": "Bari kiran ya yi ƙara",
     "callNotificationsMessage": "Kira na yin ƙara a matsayin sanarwa. Bada izinin sanarwa don wayarka ta yi ƙara don kira, ko da Pangea Chat a rufe take ko wayarka a kulle take.",
-    "callNotificationsMissedMessage": "An shigo da kira yayin da Pangea Chat a rufe take, amma wayarka ba ta iya yin ƙara ba saboda an kashe sanarwa. Bada izinin sanarwa don kiran na gaba ya yi ƙara."
+    "callNotificationsMissedMessage": "An shigo da kira yayin da Pangea Chat a rufe take, amma wayarka ba ta iya yin ƙara ba saboda an kashe sanarwa. Bada izinin sanarwa don kiran na gaba ya yi ƙara.",
+    "connectionPracticeVocab": "Yi amfani da kalmomi yayin da kake jira",
+    "offlinePracticeNote": "Babu intanet. Amsoshinka za su hau idan ka dawo kan layi.",
+    "offlinePracticeSavedNote": "An adana a kan wannan na'urar. XP ɗinka zai hau idan ka dawo kan layi.",
+    "offlinePracticeNothingSaved": "Ba a adana isasshen abu a kan wannan na'urar don yin aiki a layi ba. Gwada sake idan ka dawo kan layi."
 }

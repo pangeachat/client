@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-15 16:24:27.235984",
+    "@@last_modified": "2026-10-16 11:49:10.778543",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2447,5 +2447,9 @@
     "missionDueDate": "Kufanele {date}, {time}",
     "callNotificationsTitle": "Vumela izingcingo zikhale",
     "callNotificationsMessage": "Izingcingo zikhala njengezaziso. Vumela izaziso ukuze ifoni yakho ikhale uma kukhona ucingo, noma ngabe i-Pangea Chat ivaliwe noma ifoni yakho ikhiyiwe.",
-    "callNotificationsMissedMessage": "Ucingo lungene ngenkathi i-Pangea Chat ivaliwe, kodwa ifoni yakho ayikwazanga ukukhala ngoba izaziso zivaliwe. Vumela izaziso ukuze ucingo olulandelayo lukhale."
+    "callNotificationsMissedMessage": "Ucingo lungene ngenkathi i-Pangea Chat ivaliwe, kodwa ifoni yakho ayikwazanga ukukhala ngoba izaziso zivaliwe. Vumela izaziso ukuze ucingo olulandelayo lukhale.",
+    "connectionPracticeVocab": "Zijwayeze amagama amasha ngenkathi ulindile",
+    "offlinePracticeNote": "Awuxhunyiwe. Izimpendulo zakho zizolayishwa uma usubuyile.",
+    "offlinePracticeSavedNote": "Kugcinwe kule divayisi. I-XP yakho izofakwa uma usubuyile ku-inthanethi.",
+    "offlinePracticeNothingSaved": "Akukho okwanele okugcinwe kule divayisi ukuze uzilolonge ungaxhunyiwe ku-inthanethi. Zama futhi uma usubuyele ku-inthanethi."
 }

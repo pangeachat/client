@@ -56,7 +56,9 @@ mixin PaymentPageMixin<T extends StatefulWidget> on State<T> {
 
           final checkoutResponse = checkoutResult.result;
           if (checkoutResponse == null) {
-            throw checkoutResult.asError ?? "Failed to checkout";
+            // The exception itself, not its ErrorResult wrapper:
+            // _refreshOnCheckoutException matches on its type (#9538).
+            throw checkoutResult.error ?? "Failed to checkout";
           }
 
           return checkoutResponse;

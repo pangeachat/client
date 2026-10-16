@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-15 16:24:15.213221",
+    "@@last_modified": "2026-10-16 11:48:56.944655",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10088,5 +10088,9 @@
     "missionDueDate": "Esedékes: {date}, {time}",
     "callNotificationsTitle": "Hívások csörgetése",
     "callNotificationsMessage": "A hívások értesítésként csörögnek. Engedélyezze az értesítéseket, hogy a telefonja csörögjön hívás esetén, még akkor is, ha a Pangea Chat zárva van, vagy a telefonja le van zárva.",
-    "callNotificationsMissedMessage": "Hívás érkezett, miközben a Pangea Chat zárva volt, de a telefonja nem tudott csörögni, mert az értesítések ki vannak kapcsolva. Engedélyezze az értesítéseket, hogy a következő hívás csörögjön."
+    "callNotificationsMissedMessage": "Hívás érkezett, miközben a Pangea Chat zárva volt, de a telefonja nem tudott csörögni, mert az értesítések ki vannak kapcsolva. Engedélyezze az értesítéseket, hogy a következő hívás csörögjön.",
+    "connectionPracticeVocab": "Gyakorold a szókincset, amíg vársz",
+    "offlinePracticeNote": "Offline. A válaszaid feltöltődnek, ha visszatérsz.",
+    "offlinePracticeSavedNote": "Mentve ezen az eszközön. Az XP-d feltöltődik, ha újra online leszel.",
+    "offlinePracticeNothingSaved": "Nincs elég tartalom mentve ezen az eszközön az offline gyakorláshoz. Próbáld újra, ha online leszel."
 }

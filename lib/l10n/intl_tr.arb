@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-15 16:24:25.002604",
+    "@@last_modified": "2026-10-16 11:49:08.314861",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10283,5 +10283,9 @@
     "missionDueDate": "{date}, {time} tarihinde bitiyor",
     "callNotificationsTitle": "Çağrıların çalmasına izin ver",
     "callNotificationsMessage": "Çağrılar bildirim olarak çalar. Pangea Chat kapalıyken veya telefonunuz kilitliyken bile bir çağrı için telefonunuzun çalması için bildirimlere izin verin.",
-    "callNotificationsMissedMessage": "Pangea Chat kapalıyken bir çağrı geldi, ancak bildirimler kapalı olduğu için telefonunuz çalamadı. Bir sonraki çağrının çalması için bildirimlere izin verin."
+    "callNotificationsMissedMessage": "Pangea Chat kapalıyken bir çağrı geldi, ancak bildirimler kapalı olduğu için telefonunuz çalamadı. Bir sonraki çağrının çalması için bildirimlere izin verin.",
+    "connectionPracticeVocab": "Beklerken kelime pratiği yapın",
+    "offlinePracticeNote": "Çevrimdışı. Geri döndüğünüzde cevaplarınız yüklenecek.",
+    "offlinePracticeSavedNote": "Bu cihaza kaydedildi. Çevrimiçi olduğunuzda XP'niz yüklenecek.",
+    "offlinePracticeNothingSaved": "Çevrimdışı pratik yapmak için bu cihaza yeterli veri kaydedilmemiş. Tekrar çevrimiçi olduğunuzda deneyin."
 }

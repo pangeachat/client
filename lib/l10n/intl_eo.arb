@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-15 16:24:12.355627",
+    "@@last_modified": "2026-10-16 11:48:54.334637",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10927,5 +10927,9 @@
     "missionDueDate": "Limdato {date}, {time}",
     "callNotificationsTitle": "Lasu vokojn sonori",
     "callNotificationsMessage": "Vokoj sonoras kiel sciigoj. Permesu sciigojn por ke via telefono sonoru por voko, eĉ kiam Pangea Chat estas fermita aŭ via telefono estas ŝlosita.",
-    "callNotificationsMissedMessage": "Voko envenis dum Pangea Chat estis fermita, sed via telefono ne povis sonori ĉar sciigoj estas malŝaltitaj. Permesu sciigojn por ke la sekva voko sonoru."
+    "callNotificationsMissedMessage": "Voko envenis dum Pangea Chat estis fermita, sed via telefono ne povis sonori ĉar sciigoj estas malŝaltitaj. Permesu sciigojn por ke la sekva voko sonoru.",
+    "connectionPracticeVocab": "Ekzercu vortprovizon dum vi atendas",
+    "offlinePracticeNote": "Senkonekta. Viaj respondoj alŝutiĝos kiam vi revenos.",
+    "offlinePracticeSavedNote": "Konservita en ĉi tiu aparato. Viaj XP alŝutiĝos kiam vi revenos enretan.",
+    "offlinePracticeNothingSaved": "Ne sufiĉas konservite en ĉi tiu aparato por ekzerci eksterrete. Provu denove kiam vi estos konektita."
 }

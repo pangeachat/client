@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-15 16:24:26.907718",
+    "@@last_modified": "2026-10-16 11:49:10.277003",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10091,5 +10091,9 @@
     "missionDueDate": "在 {date} {time} 到期",
     "callNotificationsTitle": "讓來電響鈴",
     "callNotificationsMessage": "來電會以通知形式響鈴。請允許通知，這樣即使 Pangea Chat 關閉或手機鎖定，您的手機也能響鈴。",
-    "callNotificationsMissedMessage": "Pangea Chat 關閉時有來電，但由於通知已關閉，您的手機無法響鈴。請允許通知，以便下次來電響鈴。"
+    "callNotificationsMissedMessage": "Pangea Chat 關閉時有來電，但由於通知已關閉，您的手機無法響鈴。請允許通知，以便下次來電響鈴。",
+    "connectionPracticeVocab": "等待時練習詞彙",
+    "offlinePracticeNote": "離線。上線後將上傳您的答案。",
+    "offlinePracticeSavedNote": "已儲存至此裝置。上線後將上傳您的經驗值。",
+    "offlinePracticeNothingSaved": "此裝置上儲存的內容不足，無法離線練習。請在連線後再試一次。"
 }

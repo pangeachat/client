@@ -1256,7 +1256,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-15 16:24:26.567489",
+    "@@last_modified": "2026-10-16 11:49:15.434779",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10939,5 +10939,9 @@
     "missionDueDate": "{date} {time} 到期",
     "callNotificationsTitle": "讓來電響鈴",
     "callNotificationsMessage": "來電會以通知形式響鈴。請允許通知，即使 Pangea Chat 已關閉或手機已鎖定，你的手機仍會為來電響鈴。",
-    "callNotificationsMissedMessage": "Pangea Chat 關閉時有來電，但由於通知已關閉，你的手機無法響鈴。請允許通知，以便下次來電響鈴。"
+    "callNotificationsMissedMessage": "Pangea Chat 關閉時有來電，但由於通知已關閉，你的手機無法響鈴。請允許通知，以便下次來電響鈴。",
+    "connectionPracticeVocab": "等緊嗰陣練下詞彙",
+    "offlinePracticeNote": "離線。你嘅答案會喺你返嚟嗰陣上載。",
+    "offlinePracticeSavedNote": "已儲存喺呢部裝置。你嘅經驗值會喺你上返線嗰陣上載。",
+    "offlinePracticeNothingSaved": "此裝置未儲存足夠內容以供離線練習。請在連線後再試一次。"
 }
