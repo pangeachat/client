@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-15 16:24:15.134399",
+    "@@last_modified": "2026-10-16 10:37:26.374839",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10044,5 +10044,8 @@
     "missionDueDate": "Jatuh tempo {date}, {time}",
     "callNotificationsTitle": "Biarkan panggilan berdering",
     "callNotificationsMessage": "Panggilan berdering sebagai notifikasi. Izinkan notifikasi agar ponsel Anda berdering untuk panggilan, bahkan saat Pangea Chat ditutup atau ponsel Anda terkunci.",
-    "callNotificationsMissedMessage": "Ada panggilan masuk saat Pangea Chat ditutup, tetapi ponsel Anda tidak dapat berdering karena notifikasi dimatikan. Izinkan notifikasi agar panggilan berikutnya berdering."
+    "callNotificationsMissedMessage": "Ada panggilan masuk saat Pangea Chat ditutup, tetapi ponsel Anda tidak dapat berdering karena notifikasi dimatikan. Izinkan notifikasi agar panggilan berikutnya berdering.",
+    "connectionPracticeVocab": "Latih kosakata selagi menunggu",
+    "offlinePracticeNote": "Offline. Jawaban Anda akan diunggah saat Anda kembali online.",
+    "offlinePracticeSavedNote": "Tersimpan di perangkat ini. XP Anda akan diunggah saat Anda kembali online."
 }

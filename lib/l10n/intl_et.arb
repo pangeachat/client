@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-15 16:24:14.023403",
+    "@@last_modified": "2026-10-16 10:37:24.256979",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9968,5 +9968,8 @@
     "missionDueDate": "Tähtaeg {date}, {time}",
     "callNotificationsTitle": "Lase kõnedel heliseda",
     "callNotificationsMessage": "Kõned helisevad märguannetena. Luba märguanded, et telefon heliseks kõne puhul ka siis, kui Pangea Chat on suletud või telefon lukus.",
-    "callNotificationsMissedMessage": "Kõne tuli sisse, kui Pangea Chat oli suletud, kuid telefon ei saanud heliseda, sest märguanded on välja lülitatud. Luba märguanded, et järgmine kõne heliseks."
+    "callNotificationsMissedMessage": "Kõne tuli sisse, kui Pangea Chat oli suletud, kuid telefon ei saanud heliseda, sest märguanded on välja lülitatud. Luba märguanded, et järgmine kõne heliseks.",
+    "connectionPracticeVocab": "Harjuta sõnavara oodates",
+    "offlinePracticeNote": "Ühenduseta. Sinu vastused laaditakse üles, kui oled tagasi.",
+    "offlinePracticeSavedNote": "Salvestatud sellesse seadmesse. Sinu XP laaditakse üles, kui oled jälle võrgus."
 }

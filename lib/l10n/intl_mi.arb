@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-15 16:24:18.584232",
+    "@@last_modified": "2026-10-16 10:37:29.544247",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2433,5 +2433,8 @@
     "missionDueDate": "Me oti i te {date}, {time}",
     "callNotificationsTitle": "Tukua ngā waea kia tangi",
     "callNotificationsMessage": "Ka tangi ngā waea hei whakamōhiotanga. Tukua ngā whakamōhiotanga kia tangi ai tō waea mō te waea, ahakoa kua katia a Pangea Chat, kua raka rānei tō waea.",
-    "callNotificationsMissedMessage": "I tae mai he waea i te wā e katia ana a Pangea Chat, engari kāore i taea e tō waea te tangi nā te mea kua weto ngā whakamōhiotanga. Tukua ngā whakamōhiotanga kia tangi ai te waea e whai ake nei."
+    "callNotificationsMissedMessage": "I tae mai he waea i te wā e katia ana a Pangea Chat, engari kāore i taea e tō waea te tangi nā te mea kua weto ngā whakamōhiotanga. Tukua ngā whakamōhiotanga kia tangi ai te waea e whai ake nei.",
+    "connectionPracticeVocab": "Parakatihitia ngā kupu hou i a koe e tatari ana",
+    "offlinePracticeNote": "Tuimotu. Ka tukuna ō whakautu ina hoki mai koe.",
+    "offlinePracticeSavedNote": "Kua tiakina ki tēnei pūrere. Ka tukuna tō XP ina hoki mai koe ki te ipurangi."
 }

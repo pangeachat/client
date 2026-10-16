@@ -1327,7 +1327,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-15 16:24:11.418835",
+    "@@last_modified": "2026-10-16 10:37:23.766625",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10888,5 +10888,8 @@
     "missionDueDate": "Forfalder {date}, {time}",
     "callNotificationsTitle": "Lad opkald ringe",
     "callNotificationsMessage": "Opkald ringer som notifikationer. Tillad notifikationer, så din telefon ringer ved et opkald, selv når Pangea Chat er lukket, eller din telefon er låst.",
-    "callNotificationsMissedMessage": "Et opkald kom ind, mens Pangea Chat var lukket, men din telefon kunne ikke ringe, fordi notifikationer er slået fra. Tillad notifikationer, så det næste opkald ringer."
+    "callNotificationsMissedMessage": "Et opkald kom ind, mens Pangea Chat var lukket, men din telefon kunne ikke ringe, fordi notifikationer er slået fra. Tillad notifikationer, så det næste opkald ringer.",
+    "connectionPracticeVocab": "Øv ordforråd, mens du venter",
+    "offlinePracticeNote": "Offline. Dine svar uploades, når du er tilbage.",
+    "offlinePracticeSavedNote": "Gemt på denne enhed. Din XP uploades, når du er online igen."
 }

@@ -39,6 +39,7 @@ class MeaningChoiceCard extends StatelessWidget {
         (Theme.of(context).textTheme.titleMedium?.fontSize ?? 16) *
         (height / 72.0).clamp(1.0, 1.4);
     final emojiSize = baseTextSize * 1.2;
+    final emoji = this.emoji;
     final lemma = ConstructIdentifier.fromString(choiceId)!.lemma;
 
     return GameChoiceCard(
@@ -52,14 +53,17 @@ class MeaningChoiceCard extends StatelessWidget {
       altChild: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          if (emoji != null && emoji!.isNotEmpty)
-            SizedBox(
-              width: height * .7,
-              height: height,
-              child: Center(
-                child: Text(emoji!, style: TextStyle(fontSize: emojiSize)),
-              ),
-            ),
+          // Kept when there is no emoji, so every choice's text starts at the
+          // same place instead of against the card's edge.
+          SizedBox(
+            width: height * .7,
+            height: height,
+            child: emoji == null || emoji.isEmpty
+                ? null
+                : Center(
+                    child: Text(emoji, style: TextStyle(fontSize: emojiSize)),
+                  ),
+          ),
           Expanded(
             // Merges into the card's one name beside the emoji, so the lemma
             // is marked by range rather than as a node of its own (#9266).
@@ -85,14 +89,17 @@ class MeaningChoiceCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          if (emoji != null && emoji!.isNotEmpty)
-            SizedBox(
-              width: height * .7,
-              height: height,
-              child: Center(
-                child: Text(emoji!, style: TextStyle(fontSize: emojiSize)),
-              ),
-            ),
+          // Kept when there is no emoji, so every choice's text starts at the
+          // same place instead of against the card's edge.
+          SizedBox(
+            width: height * .7,
+            height: height,
+            child: emoji == null || emoji.isEmpty
+                ? null
+                : Center(
+                    child: Text(emoji, style: TextStyle(fontSize: emojiSize)),
+                  ),
+          ),
           Expanded(
             child: Text(
               displayText,

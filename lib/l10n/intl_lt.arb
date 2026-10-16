@@ -2956,7 +2956,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-15 16:24:18.140181",
+    "@@last_modified": "2026-10-16 10:37:28.983291",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10749,5 +10749,8 @@
     "missionDueDate": "Terminas {date}, {time}",
     "callNotificationsTitle": "Leisti skambučiams skambėti",
     "callNotificationsMessage": "Skambučiai skamba kaip pranešimai. Leiskite pranešimus, kad telefonas skambėtų, net kai „Pangea Chat“ yra uždaryta arba telefonas užrakintas.",
-    "callNotificationsMissedMessage": "Skambutis atėjo, kai „Pangea Chat“ buvo uždaryta, bet jūsų telefonas negalėjo skambėti, nes pranešimai yra išjungti. Leiskite pranešimus, kad kitas skambutis skambėtų."
+    "callNotificationsMissedMessage": "Skambutis atėjo, kai „Pangea Chat“ buvo uždaryta, bet jūsų telefonas negalėjo skambėti, nes pranešimai yra išjungti. Leiskite pranešimus, kad kitas skambutis skambėtų.",
+    "connectionPracticeVocab": "Praktikuokite žodyną laukdami",
+    "offlinePracticeNote": "Neprisijungus. Jūsų atsakymai bus įkelti, kai vėl prisijungsite.",
+    "offlinePracticeSavedNote": "Išsaugota šiame įrenginyje. Jūsų XP bus įkelta, kai vėl prisijungsite."
 }

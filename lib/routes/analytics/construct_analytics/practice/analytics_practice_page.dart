@@ -332,9 +332,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     _clearExerciseState(loadingExercise: true);
 
     try {
+      final offline = session.session?.offline ?? false;
       final resp = await session.getNextExercise(
         skipExercise,
-        data.prefetchExerciseInfo,
+        (exercise) => data.prefetchExerciseInfo(exercise, offline: offline),
       );
 
       if (resp != null) {

@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-15 16:24:14.139042",
+    "@@last_modified": "2026-10-16 10:37:25.287747",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2433,5 +2433,8 @@
     "missionDueDate": "Ri phàigheadh {date}, {time}",
     "callNotificationsTitle": "Leig le gairmean seinn",
     "callNotificationsMessage": "Bidh gairmean a' seinn mar fhiosan. Leig le fiosan gus am bi am fòn agad a' seinn airson gairm, eadhon nuair a tha Pangea Chat dùinte no am fòn agad glaiste.",
-    "callNotificationsMissedMessage": "Thàinig gairm a-steach fhad 's a bha Pangea Chat dùinte, ach cha b' urrainn don fhòn agad seinn oir tha fiosan dheth. Leig le fiosan gus an seinn an ath ghairm."
+    "callNotificationsMissedMessage": "Thàinig gairm a-steach fhad 's a bha Pangea Chat dùinte, ach cha b' urrainn don fhòn agad seinn oir tha fiosan dheth. Leig le fiosan gus an seinn an ath ghairm.",
+    "connectionPracticeVocab": "Cleachd briathrachas fhad 's a tha thu a' feitheamh",
+    "offlinePracticeNote": "Far-loidhne. Thèid na freagairtean agad a luchdachadh suas nuair a thilleas tu.",
+    "offlinePracticeSavedNote": "Air a shàbhaladh air an inneal seo. Thèid an XP agad a luchdachadh suas nuair a bhios tu air-loidhne a-rithist."
 }

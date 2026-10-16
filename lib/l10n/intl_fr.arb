@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-15 16:24:12.989785",
+    "@@last_modified": "2026-10-16 10:37:24.574555",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10323,5 +10323,8 @@
     "missionDueDate": "Échéance le {date} à {time}",
     "callNotificationsTitle": "Laisser les appels sonner",
     "callNotificationsMessage": "Les appels sonnent comme des notifications. Autorisez les notifications pour que votre téléphone sonne lors d'un appel, même lorsque Pangea Chat est fermé ou que votre téléphone est verrouillé.",
-    "callNotificationsMissedMessage": "Un appel est arrivé alors que Pangea Chat était fermé, mais votre téléphone n'a pas pu sonner car les notifications sont désactivées. Autorisez les notifications pour que le prochain appel sonne."
+    "callNotificationsMissedMessage": "Un appel est arrivé alors que Pangea Chat était fermé, mais votre téléphone n'a pas pu sonner car les notifications sont désactivées. Autorisez les notifications pour que le prochain appel sonne.",
+    "connectionPracticeVocab": "Pratiquez le vocabulaire pendant que vous attendez",
+    "offlinePracticeNote": "Hors ligne. Vos réponses seront téléchargées lorsque vous serez de retour.",
+    "offlinePracticeSavedNote": "Enregistré sur cet appareil. Votre XP sera téléchargé lorsque vous serez de nouveau en ligne."
 }

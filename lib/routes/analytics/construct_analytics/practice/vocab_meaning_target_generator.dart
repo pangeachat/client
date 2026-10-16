@@ -9,9 +9,14 @@ class VocabMeaningTargetGenerator {
   static PracticeExerciseTypeEnum exerciseType =
       PracticeExerciseTypeEnum.lemmaMeaning;
 
+  /// [offline] picks for an offline session: only words with a meaning saved
+  /// on this device, and without the 24-hour pause on recently practiced
+  /// words, because the saved words are all the session has. See
+  /// practice-exercises.instructions.md, "Offline Vocab Practice".
   static Future<List<AnalyticsPracticeTarget>> get(
-    List<ConstructUses> constructs,
-  ) async {
+    List<ConstructUses> constructs, {
+    bool offline = false,
+  }) async {
     // Score and sort by priority (highest first). Uses shared scorer for
     // consistent prioritization with message practice.
     final sortedConstructs = constructs.practiceSort(exerciseType);
@@ -22,17 +27,22 @@ class VocabMeaningTargetGenerator {
     for (final construct in sortedConstructs) {
       if (seenLemmas.contains(construct.lemma)) continue;
 
-      if (construct.shouldSkipForRecentPractice(exerciseType)) {
-        continue;
-      }
+      if (offline) {
+        if (construct.id.knownMeanings.isEmpty) continue;
+        seenLemmas.add(construct.lemma);
+      } else {
+        if (construct.shouldSkipForRecentPractice(exerciseType)) {
+          continue;
+        }
 
-      seenLemmas.add(construct.lemma);
+        seenLemmas.add(construct.lemma);
 
-      if (!construct.cappedUses.any(
-        (u) => u.metadata.eventId != null && u.metadata.roomId != null,
-      )) {
-        // Skip if no uses have eventId + roomId, so example message can be fetched.
-        continue;
+        if (!construct.cappedUses.any(
+          (u) => u.metadata.eventId != null && u.metadata.roomId != null,
+        )) {
+          // Skip if no uses have eventId + roomId, so example message can be fetched.
+          continue;
+        }
       }
 
       targets.add(

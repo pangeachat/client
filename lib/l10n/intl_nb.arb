@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-15 16:24:21.184877",
+    "@@last_modified": "2026-10-16 10:37:31.153576",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10028,5 +10028,8 @@
     "missionDueDate": "Frist {date}, {time}",
     "callNotificationsTitle": "La anrop ringe",
     "callNotificationsMessage": "Anrop ringer som varsler. Tillat varsler slik at telefonen din ringer for et anrop, selv når Pangea Chat er lukket eller telefonen din er låst.",
-    "callNotificationsMissedMessage": "Et anrop kom inn mens Pangea Chat var lukket, men telefonen din kunne ikke ringe fordi varsler er slått av. Tillat varsler slik at neste anrop ringer."
+    "callNotificationsMissedMessage": "Et anrop kom inn mens Pangea Chat var lukket, men telefonen din kunne ikke ringe fordi varsler er slått av. Tillat varsler slik at neste anrop ringer.",
+    "connectionPracticeVocab": "Øv på gloser mens du venter",
+    "offlinePracticeNote": "Frakoblet. Svarene dine lastes opp når du er tilbake.",
+    "offlinePracticeSavedNote": "Lagret på denne enheten. XP-en din lastes opp når du er tilbake på nett."
 }

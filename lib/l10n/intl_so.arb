@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-15 16:24:23.695569",
+    "@@last_modified": "2026-10-16 10:37:32.842179",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2433,5 +2433,8 @@
     "missionDueDate": "Waxaa la gaarayaa {date}, {time}",
     "callNotificationsTitle": "Wacitaannada ha dhawaaqaan",
     "callNotificationsMessage": "Wacitaannadu waxay u dhawaaqaan sida ogeysiisyada. Oggolow ogeysiisyada si taleefankaagu u dhawaaqo marka lagu soo waco, xitaa marka Pangea Chat xiran yahay ama taleefankaagu xiran yahay.",
-    "callNotificationsMissedMessage": "Wacitaan ayaa soo galay iyadoo Pangea Chat xiran yahay, laakiin taleefankaagu ma dhawaaqi karin sababtoo ah ogeysiisyada waa dansan yihiin. Oggolow ogeysiisyada si wacitaanka xiga uu u dhawaaqo."
+    "callNotificationsMissedMessage": "Wacitaan ayaa soo galay iyadoo Pangea Chat xiran yahay, laakiin taleefankaagu ma dhawaaqi karin sababtoo ah ogeysiisyada waa dansan yihiin. Oggolow ogeysiisyada si wacitaanka xiga uu u dhawaaqo.",
+    "connectionPracticeVocab": "Ku celceli ereyada inta aad sugayso",
+    "offlinePracticeNote": "Offline. Jawaabahaagu way soo geli doonaan marka aad soo noqoto.",
+    "offlinePracticeSavedNote": "Kumbuyuutarkan lagu kaydiyay. XP-gaagu wuu soo geli doonaa marka aad online noqoto."
 }

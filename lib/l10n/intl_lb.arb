@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-15 16:24:18.579718",
+    "@@last_modified": "2026-10-16 10:37:28.758710",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2433,5 +2433,8 @@
     "missionDueDate": "Fälleg {date}, {time}",
     "callNotificationsTitle": "Uruff schelle loossen",
     "callNotificationsMessage": "Uriff schellen als Notifikatiounen. Erlaabt Notifikatiounen, fir datt Ären Telefon schellt wann en Uruff erakënnt, och wann Pangea Chat zou ass oder Ären Telefon gespaart ass.",
-    "callNotificationsMissedMessage": "En Uruff ass erakomm, während Pangea Chat zou war, awer Ären Telefon konnt net schellen, well Notifikatiounen ausgeschalt sinn. Erlaabt Notifikatiounen, fir datt den nächste Ruff schellt."
+    "callNotificationsMissedMessage": "En Uruff ass erakomm, während Pangea Chat zou war, awer Ären Telefon konnt net schellen, well Notifikatiounen ausgeschalt sinn. Erlaabt Notifikatiounen, fir datt den nächste Ruff schellt.",
+    "connectionPracticeVocab": "Vokabelen üben, während Dir waart",
+    "offlinePracticeNote": "Offline. Är Äntwerte ginn eropgelueden, wann Dir erëm online sidd.",
+    "offlinePracticeSavedNote": "Op dësem Apparat gespäichert. Är XP ginn eropgelueden, wann Dir erëm online sidd."
 }

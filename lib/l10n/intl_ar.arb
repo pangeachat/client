@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-15 16:24:10.115816",
+    "@@last_modified": "2026-10-16 10:37:22.099023",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10274,5 +10274,8 @@
     "missionDueDate": "تستحق في {date}، الساعة {time}",
     "callNotificationsTitle": "السماح للمكالمات بالرنين",
     "callNotificationsMessage": "ترن المكالمات كإشعارات. اسمح بالإشعارات حتى يرن هاتفك عند ورود مكالمة، حتى عندما يكون Pangea Chat مغلقًا أو هاتفك مقفلاً.",
-    "callNotificationsMissedMessage": "وردت مكالمة بينما كان Pangea Chat مغلقًا، ولكن لم يتمكن هاتفك من الرنين لأن الإشعارات متوقفة. اسمح بالإشعارات حتى ترن المكالمة التالية."
+    "callNotificationsMissedMessage": "وردت مكالمة بينما كان Pangea Chat مغلقًا، ولكن لم يتمكن هاتفك من الرنين لأن الإشعارات متوقفة. اسمح بالإشعارات حتى ترن المكالمة التالية.",
+    "connectionPracticeVocab": "تدرب على المفردات أثناء انتظارك",
+    "offlinePracticeNote": "غير متصل. سيتم تحميل إجاباتك عند عودتك.",
+    "offlinePracticeSavedNote": "محفوظ على هذا الجهاز. سيتم تحميل نقاط XP الخاصة بك عند عودتك للاتصال بالإنترنت."
 }

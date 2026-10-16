@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-15 16:24:26.548850",
+    "@@last_modified": "2026-10-16 10:37:34.961216",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9975,5 +9975,8 @@
     "missionDueDate": "{date}, {time} da tugaydi",
     "callNotificationsTitle": "Qo‘ng‘iroqlarga ruxsat berish",
     "callNotificationsMessage": "Qo‘ng‘iroqlar bildirishnomalar sifatida jiringlaydi. Pangea Chat yopiq bo‘lsa ham yoki telefoningiz qulflangan bo‘lsa ham, qo‘ng‘iroqlar uchun telefoningiz jiringlashi uchun bildirishnomalarga ruxsat bering.",
-    "callNotificationsMissedMessage": "Pangea Chat yopiq bo‘lganida qo‘ng‘iroq keldi, ammo bildirishnomalar o‘chirilganligi sababli telefoningiz jiringlay olmadi. Keyingi qo‘ng‘iroq jiringlashi uchun bildirishnomalarga ruxsat bering."
+    "callNotificationsMissedMessage": "Pangea Chat yopiq bo‘lganida qo‘ng‘iroq keldi, ammo bildirishnomalar o‘chirilganligi sababli telefoningiz jiringlay olmadi. Keyingi qo‘ng‘iroq jiringlashi uchun bildirishnomalarga ruxsat bering.",
+    "connectionPracticeVocab": "Kutayotganingizda lug'at mashq qiling",
+    "offlinePracticeNote": "Oflayn. Qaytib kelganingizda javoblaringiz yuklanadi.",
+    "offlinePracticeSavedNote": "Ushbu qurilmaga saqlandi. Onlayn bo'lganingizda XP'ingiz yuklanadi."
 }

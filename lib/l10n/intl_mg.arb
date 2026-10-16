@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-15 16:24:18.898098",
+    "@@last_modified": "2026-10-16 10:37:29.387584",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2433,5 +2433,8 @@
     "missionDueDate": "Tokony ho vita amin'ny {date}, {time}",
     "callNotificationsTitle": "Avelao hiantso ny antso",
     "callNotificationsMessage": "Miantso toy ny fampahafantarana ny antso. Avelao ny fampahafantarana mba hiantso ny findainao rehefa misy antso, na dia mihidy aza ny Pangea Chat na mihidy ny findainao.",
-    "callNotificationsMissedMessage": "Nisy antso tonga raha mihidy ny Pangea Chat, saingy tsy afaka niantso ny findainao satria maty ny fampahafantarana. Avelao ny fampahafantarana mba hiantso ny antso manaraka."
+    "callNotificationsMissedMessage": "Nisy antso tonga raha mihidy ny Pangea Chat, saingy tsy afaka niantso ny findainao satria maty ny fampahafantarana. Avelao ny fampahafantarana mba hiantso ny antso manaraka.",
+    "connectionPracticeVocab": "Manao fanazaran-teny voambolana eo am-piandrasana",
+    "offlinePracticeNote": "Tsy an-tserasera. Hampidirina ny valinteninao rehefa miverina ianao.",
+    "offlinePracticeSavedNote": "Voatahiry amin'ity fitaovana ity. Hampidirina ny XP-nao rehefa miverina an-tserasera ianao."
 }
