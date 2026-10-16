@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-15 16:24:24.096091",
+    "@@last_modified": "2026-10-16 10:37:34.225132",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2433,5 +2433,8 @@
     "missionDueDate": "E lokela ho etsoa ka {date}, {time}",
     "callNotificationsTitle": "Lumella mehala hore e lle",
     "callNotificationsMessage": "Mehala e lla e le litsebiso. Lumella litsebiso e le hore fono ea hau e lle ha ho kena mohala, leha Pangea Chat e koetsoe kapa fono ea hau e notletsoe.",
-    "callNotificationsMissedMessage": "Ho kene mohala ha Pangea Chat e koetsoe, empa fono ea hau e ne e ke ke ea lla hobane litsebiso li tingoe. Lumella litsebiso e le hore mohala o latelang o lle."
+    "callNotificationsMissedMessage": "Ho kene mohala ha Pangea Chat e koetsoe, empa fono ea hau e ne e ke ke ea lla hobane litsebiso li tingoe. Lumella litsebiso e le hore mohala o latelang o lle.",
+    "connectionPracticeVocab": "Itloaetse mantsoe ha o ntse o emetse",
+    "offlinePracticeNote": "Ha o inthaneteng. Likarabo tsa hao li tla kenngoa ha o khutla.",
+    "offlinePracticeSavedNote": "E bolokiloe sesebelisoa sena. XP ea hao e tla kenngoa ha o khutla inthaneteng."
 }

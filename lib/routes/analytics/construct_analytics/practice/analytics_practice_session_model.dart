@@ -126,6 +126,11 @@ class AnalyticsPracticeSessionModel {
   final String userL1;
   final String userL2;
 
+  /// Started while the app could not reach Pangea, so built only from what
+  /// this device has. Kept for the whole session. See
+  /// practice-exercises.instructions.md, "Offline Vocab Practice".
+  final bool offline;
+
   AnalyticsPracticeSessionState state;
 
   AnalyticsPracticeSessionModel({
@@ -134,6 +139,7 @@ class AnalyticsPracticeSessionModel {
     required this.practiceTargets,
     required this.userL1,
     required this.userL2,
+    this.offline = false,
     AnalyticsPracticeSessionState? state,
   }) : state = state ?? const AnalyticsPracticeSessionState();
 
@@ -181,6 +187,7 @@ class AnalyticsPracticeSessionModel {
         grammarErrorInfo: target.grammarErrorInfo,
         exampleMessage: target.exampleMessage,
         audioExampleMessage: target.audioExampleMessage,
+        offline: offline,
       );
     }).toList();
   }
@@ -249,6 +256,7 @@ class AnalyticsPracticeSessionModel {
           .toList(),
       userL1: json['userL1'] as String,
       userL2: json['userL2'] as String,
+      offline: json['offline'] as bool? ?? false,
       state: AnalyticsPracticeSessionState.fromJson(json),
     );
   }
@@ -260,6 +268,7 @@ class AnalyticsPracticeSessionModel {
       'practiceTargets': practiceTargets.map((e) => e.toJson()).toList(),
       'userL1': userL1,
       'userL2': userL2,
+      'offline': offline,
       ...state.toJson(),
     };
   }

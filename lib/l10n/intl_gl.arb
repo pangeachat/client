@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-15 16:24:13.789209",
+    "@@last_modified": "2026-10-16 10:37:25.292006",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9971,5 +9971,8 @@
     "missionDueDate": "Data de entrega: {date}, {time}",
     "callNotificationsTitle": "Permitir que as chamadas soen",
     "callNotificationsMessage": "As chamadas soan como notificacións. Permite as notificacións para que o teu teléfono soe cando recibas unha chamada, mesmo cando Pangea Chat estea pechado ou o teu teléfono estea bloqueado.",
-    "callNotificationsMissedMessage": "Recibiuse unha chamada mentres Pangea Chat estaba pechado, pero o teu teléfono non puido soar porque as notificacións están desactivadas. Permite as notificacións para que a próxima chamada soe."
+    "callNotificationsMissedMessage": "Recibiuse unha chamada mentres Pangea Chat estaba pechado, pero o teu teléfono non puido soar porque as notificacións están desactivadas. Permite as notificacións para que a próxima chamada soe.",
+    "connectionPracticeVocab": "Practica vocabulario mentres esperas",
+    "offlinePracticeNote": "Sen conexión. As túas respostas subiranse cando volvas ter conexión.",
+    "offlinePracticeSavedNote": "Gardado neste dispositivo. A túa XP subirase cando volvas ter conexión."
 }

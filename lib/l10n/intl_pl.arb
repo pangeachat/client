@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-15 16:24:21.156450",
+    "@@last_modified": "2026-10-16 10:37:31.528657",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10056,5 +10056,8 @@
     "missionDueDate": "Termin: {date}, {time}",
     "callNotificationsTitle": "Zezwól na dzwonienie połączeń",
     "callNotificationsMessage": "Połączenia dzwonią jako powiadomienia. Zezwól na powiadomienia, aby telefon dzwonił w przypadku połączenia, nawet gdy Pangea Chat jest zamknięty lub telefon jest zablokowany.",
-    "callNotificationsMissedMessage": "Połączenie nadeszło, gdy Pangea Chat był zamknięty, ale telefon nie mógł zadzwonić, ponieważ powiadomienia są wyłączone. Zezwól na powiadomienia, aby następne połączenie zadzwoniło."
+    "callNotificationsMissedMessage": "Połączenie nadeszło, gdy Pangea Chat był zamknięty, ale telefon nie mógł zadzwonić, ponieważ powiadomienia są wyłączone. Zezwól na powiadomienia, aby następne połączenie zadzwoniło.",
+    "connectionPracticeVocab": "Ćwicz słownictwo, czekając",
+    "offlinePracticeNote": "Offline. Twoje odpowiedzi zostaną przesłane, gdy wrócisz do sieci.",
+    "offlinePracticeSavedNote": "Zapisano na tym urządzeniu. Twoje PD zostaną przesłane, gdy wrócisz do sieci."
 }

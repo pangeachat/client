@@ -34,16 +34,20 @@ class LemmaPracticeExerciseGenerator {
     );
   }
 
+  /// [savedMeaningsOnly] limits the choices to words whose meaning is saved on
+  /// this device, for a practice session that runs offline.
   static Future<Set<ConstructIdentifier>> lemmaPracticeExerciseDistractors(
     PangeaToken token, {
     required String language,
     int? maxChoices = 4,
+    bool savedMeaningsOnly = false,
   }) async {
     // Only identifiers are needed here; the ids-only read skips deserializing
     // every vocab use per exercise (#8433).
     final constructIds =
         (await MatrixState.pangeaController.matrixState.analyticsDataService
                 .getAggregatedConstructIds(ConstructTypeEnum.vocab, language))
+            .where((id) => !savedMeaningsOnly || id.knownMeanings.isNotEmpty)
             .toList();
     // Offload computation to an isolate
     final Map<ConstructIdentifier, int> distances = await compute(

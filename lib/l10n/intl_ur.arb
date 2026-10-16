@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-15 16:24:25.332708",
+    "@@last_modified": "2026-10-16 10:37:35.309013",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2433,5 +2433,8 @@
     "missionDueDate": "{date}، {time} کو واجب الادا",
     "callNotificationsTitle": "کالز کو رنگ کرنے دیں",
     "callNotificationsMessage": "کالز نوٹیفکیشن کے طور پر رنگ کرتی ہیں۔ نوٹیفکیشنز کی اجازت دیں تاکہ آپ کے فون کی گھنٹی بجے، چاہے Pangea Chat بند ہو یا آپ کا فون لاک ہو۔",
-    "callNotificationsMissedMessage": "جب Pangea Chat بند تھا تو ایک کال آئی، لیکن آپ کا فون رنگ نہیں کر سکا کیونکہ نوٹیفکیشنز بند ہیں۔ نوٹیفکیشنز کی اجازت دیں تاکہ اگلی کال رنگ کرے۔"
+    "callNotificationsMissedMessage": "جب Pangea Chat بند تھا تو ایک کال آئی، لیکن آپ کا فون رنگ نہیں کر سکا کیونکہ نوٹیفکیشنز بند ہیں۔ نوٹیفکیشنز کی اجازت دیں تاکہ اگلی کال رنگ کرے۔",
+    "connectionPracticeVocab": "انتظار کے دوران الفاظ کی مشق کریں",
+    "offlinePracticeNote": "آف لائن۔ آپ کے جوابات واپس آنے پر اپ لوڈ ہو جائیں گے۔",
+    "offlinePracticeSavedNote": "اس ڈیوائس پر محفوظ ہو گیا۔ آپ کا XP آن لائن واپس آنے پر اپ لوڈ ہو جائے گا۔"
 }

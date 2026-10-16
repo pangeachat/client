@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-15 16:24:21.419054",
+    "@@last_modified": "2026-10-16 10:37:31.629332",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9971,5 +9971,8 @@
     "missionDueDate": "Vencimento: {date}, {time}",
     "callNotificationsTitle": "Deixar as chamadas tocarem",
     "callNotificationsMessage": "As chamadas tocam como notificações. Permita as notificações para que seu telefone toque em uma chamada, mesmo quando o Pangea Chat estiver fechado ou seu telefone estiver bloqueado.",
-    "callNotificationsMissedMessage": "Uma chamada chegou enquanto o Pangea Chat estava fechado, mas seu telefone não pôde tocar porque as notificações estão desativadas. Permita as notificações para que a próxima chamada toque."
+    "callNotificationsMissedMessage": "Uma chamada chegou enquanto o Pangea Chat estava fechado, mas seu telefone não pôde tocar porque as notificações estão desativadas. Permita as notificações para que a próxima chamada toque.",
+    "connectionPracticeVocab": "Pratique o vocabulário enquanto espera",
+    "offlinePracticeNote": "Offline. Suas respostas serão enviadas quando você estiver de volta.",
+    "offlinePracticeSavedNote": "Salvo neste dispositivo. Sua XP será enviada quando você estiver online novamente."
 }

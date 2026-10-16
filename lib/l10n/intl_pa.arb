@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-15 16:24:21.169407",
+    "@@last_modified": "2026-10-16 10:37:31.371022",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2433,5 +2433,8 @@
     "missionDueDate": "{date}, {time} ਨੂੰ ਨਿਰਧਾਰਤ",
     "callNotificationsTitle": "ਕਾਲਾਂ ਨੂੰ ਵੱਜਣ ਦਿਓ",
     "callNotificationsMessage": "ਕਾਲਾਂ ਸੂਚਨਾਵਾਂ ਵਜੋਂ ਵੱਜਦੀਆਂ ਹਨ। ਸੂਚਨਾਵਾਂ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ ਤਾਂ ਜੋ ਤੁਹਾਡਾ ਫ਼ੋਨ ਕਾਲ ਲਈ ਵੱਜੇ, ਭਾਵੇਂ Pangea Chat ਬੰਦ ਹੋਵੇ ਜਾਂ ਤੁਹਾਡਾ ਫ਼ੋਨ ਲੌਕ ਹੋਵੇ।",
-    "callNotificationsMissedMessage": "ਜਦੋਂ Pangea Chat ਬੰਦ ਸੀ ਤਾਂ ਇੱਕ ਕਾਲ ਆਈ, ਪਰ ਤੁਹਾਡਾ ਫ਼ੋਨ ਵੱਜ ਨਹੀਂ ਸਕਿਆ ਕਿਉਂਕਿ ਸੂਚਨਾਵਾਂ ਬੰਦ ਹਨ। ਸੂਚਨਾਵਾਂ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ ਤਾਂ ਜੋ ਅਗਲੀ ਕਾਲ ਵੱਜੇ।"
+    "callNotificationsMissedMessage": "ਜਦੋਂ Pangea Chat ਬੰਦ ਸੀ ਤਾਂ ਇੱਕ ਕਾਲ ਆਈ, ਪਰ ਤੁਹਾਡਾ ਫ਼ੋਨ ਵੱਜ ਨਹੀਂ ਸਕਿਆ ਕਿਉਂਕਿ ਸੂਚਨਾਵਾਂ ਬੰਦ ਹਨ। ਸੂਚਨਾਵਾਂ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ ਤਾਂ ਜੋ ਅਗਲੀ ਕਾਲ ਵੱਜੇ।",
+    "connectionPracticeVocab": "ਉਡੀਕਦੇ ਹੋਏ ਸ਼ਬਦਾਵਲੀ ਦਾ ਅਭਿਆਸ ਕਰੋ",
+    "offlinePracticeNote": "ਔਫਲਾਈਨ। ਤੁਹਾਡੇ ਜਵਾਬ ਵਾਪਸ ਆਉਣ 'ਤੇ ਅੱਪਲੋਡ ਹੋ ਜਾਣਗੇ।",
+    "offlinePracticeSavedNote": "ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ। ਤੁਹਾਡਾ XP ਵਾਪਸ ਔਨਲਾਈਨ ਹੋਣ 'ਤੇ ਅੱਪਲੋਡ ਹੋ ਜਾਵੇਗਾ।"
 }

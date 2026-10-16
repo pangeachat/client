@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-15 16:24:24.017970",
+    "@@last_modified": "2026-10-16 10:37:32.703927",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2433,5 +2433,8 @@
     "missionDueDate": "{date}, {time} වන විට",
     "callNotificationsTitle": "ඇමතුම් නාද වීමට ඉඩ දෙන්න",
     "callNotificationsMessage": "ඇමතුම් දැනුම්දීම් ලෙස නාද වේ. Pangea Chat වසා තිබුණත් හෝ ඔබගේ දුරකථනය අගුළු දමා තිබුණත්, ඇමතුමක් සඳහා ඔබගේ දුරකථනය නාද වීමට දැනුම්දීම් වලට ඉඩ දෙන්න.",
-    "callNotificationsMissedMessage": "Pangea Chat වසා තිබියදී ඇමතුමක් පැමිණියේය, නමුත් දැනුම්දීම් අක්‍රිය කර ඇති නිසා ඔබගේ දුරකථනය නාද නොවීය. ඊළඟ ඇමතුම නාද වීමට දැනුම්දීම් වලට ඉඩ දෙන්න."
+    "callNotificationsMissedMessage": "Pangea Chat වසා තිබියදී ඇමතුමක් පැමිණියේය, නමුත් දැනුම්දීම් අක්‍රිය කර ඇති නිසා ඔබගේ දුරකථනය නාද නොවීය. ඊළඟ ඇමතුම නාද වීමට දැනුම්දීම් වලට ඉඩ දෙන්න.",
+    "connectionPracticeVocab": "ඔබ බලා සිටින අතරතුර වචන මාලාව පුහුණු වන්න",
+    "offlinePracticeNote": "නොබැඳි. ඔබ නැවත පැමිණි විට ඔබේ පිළිතුරු උඩුගත වේ.",
+    "offlinePracticeSavedNote": "මෙම උපාංගයේ සුරැකිණි. ඔබ නැවත සබැඳි වූ විට ඔබේ XP උඩුගත වේ."
 }

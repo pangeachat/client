@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-15 16:24:23.281009",
+    "@@last_modified": "2026-10-16 10:37:33.823162",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10486,5 +10486,8 @@
     "missionDueDate": "Förfaller {date}, {time}",
     "callNotificationsTitle": "Låt samtal ringa",
     "callNotificationsMessage": "Samtal ringer som aviseringar. Tillåt aviseringar så att din telefon ringer för ett samtal, även när Pangea Chat är stängt eller din telefon är låst.",
-    "callNotificationsMissedMessage": "Ett samtal kom in medan Pangea Chat var stängt, men din telefon kunde inte ringa eftersom aviseringar är avstängda. Tillåt aviseringar så att nästa samtal ringer."
+    "callNotificationsMissedMessage": "Ett samtal kom in medan Pangea Chat var stängt, men din telefon kunde inte ringa eftersom aviseringar är avstängda. Tillåt aviseringar så att nästa samtal ringer.",
+    "connectionPracticeVocab": "Öva glosor medan du väntar",
+    "offlinePracticeNote": "Offline. Dina svar laddas upp när du är tillbaka.",
+    "offlinePracticeSavedNote": "Sparat på den här enheten. Din XP laddas upp när du är online igen."
 }

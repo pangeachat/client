@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-15 16:24:22.917340",
+    "@@last_modified": "2026-10-16 10:37:33.173777",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2433,5 +2433,8 @@
     "missionDueDate": "E tatau ona maeʻa {date}, {time}",
     "callNotificationsTitle": "Tu'u atu vala'au e tatagi",
     "callNotificationsMessage": "E tatagi vala'au e pei o fa'asilasilaga. Fa'ataga fa'asilasilaga ina ia tatagi lau telefoni mo se vala'au, tusa lava pe tapunia le Pangea Chat po'o loka lau telefoni.",
-    "callNotificationsMissedMessage": "Na maua se vala'au a'o tapunia le Pangea Chat, ae le'i mafai ona tatagi lau telefoni ona ua tape fa'asilasilaga. Fa'ataga fa'asilasilaga ina ia tatagi le isi vala'au."
+    "callNotificationsMissedMessage": "Na maua se vala'au a'o tapunia le Pangea Chat, ae le'i mafai ona tatagi lau telefoni ona ua tape fa'asilasilaga. Fa'ataga fa'asilasilaga ina ia tatagi le isi vala'au.",
+    "connectionPracticeVocab": "Fa'ata'ita'i upu a'o e fa'atali",
+    "offlinePracticeNote": "Leai se initaneti. O au tali o le a lafo i luga pe a e toe feso'ota'i.",
+    "offlinePracticeSavedNote": "Ua sefe i luga o lenei masini. O lau XP o le a lafo i luga pe a e toe feso'ota'i i le initaneti."
 }

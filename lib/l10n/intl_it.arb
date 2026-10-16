@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-15 16:24:15.730086",
+    "@@last_modified": "2026-10-16 10:37:29.259817",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10044,5 +10044,8 @@
     "missionDueDate": "Scadenza {date}, {time}",
     "callNotificationsTitle": "Fai squillare le chiamate",
     "callNotificationsMessage": "Le chiamate squillano come notifiche. Consenti le notifiche in modo che il telefono squilli per una chiamata, anche quando Pangea Chat è chiusa o il telefono è bloccato.",
-    "callNotificationsMissedMessage": "È arrivata una chiamata mentre Pangea Chat era chiusa, ma il telefono non ha potuto squillare perché le notifiche sono disattivate. Consenti le notifiche in modo che la prossima chiamata squilli."
+    "callNotificationsMissedMessage": "È arrivata una chiamata mentre Pangea Chat era chiusa, ma il telefono non ha potuto squillare perché le notifiche sono disattivate. Consenti le notifiche in modo che la prossima chiamata squilli.",
+    "connectionPracticeVocab": "Esercitati con il vocabolario mentre aspetti",
+    "offlinePracticeNote": "Offline. Le tue risposte verranno caricate quando tornerai online.",
+    "offlinePracticeSavedNote": "Salvato su questo dispositivo. I tuoi XP verranno caricati quando tornerai online."
 }

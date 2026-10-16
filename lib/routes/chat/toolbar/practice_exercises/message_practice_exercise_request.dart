@@ -102,6 +102,11 @@ class MessagePracticeExerciseRequest {
   /// the feedback flow invalidates the cached exercise when it changes).
   final Map<ConstructIdentifier, String> avoidContent;
 
+  /// For an offline practice session: the exercise is built only from what
+  /// this device has, so a meaning exercise picks its wrong choices among
+  /// words with a saved meaning. Client-side only, like [avoidContent].
+  final bool offline;
+
   MessagePracticeExerciseRequest({
     required this.userL1,
     required this.userL2,
@@ -112,6 +117,7 @@ class MessagePracticeExerciseRequest {
     this.audioExampleMessage,
     this.mock,
     this.avoidContent = const {},
+    this.offline = false,
   }) {
     if (target.tokens.isEmpty) {
       throw Exception('Target tokens must not be empty');

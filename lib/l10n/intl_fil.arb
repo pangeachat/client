@@ -2073,7 +2073,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-15 16:24:13.028089",
+    "@@last_modified": "2026-10-16 10:37:26.189709",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10828,5 +10828,8 @@
     "missionDueDate": "Takdang petsa {date}, {time}",
     "callNotificationsTitle": "Hayaang mag-ring ang mga tawag",
     "callNotificationsMessage": "Nagri-ring ang mga tawag bilang mga notification. Payagan ang mga notification para mag-ring ang iyong telepono para sa isang tawag, kahit na sarado ang Pangea Chat o naka-lock ang iyong telepono.",
-    "callNotificationsMissedMessage": "May tumawag habang sarado ang Pangea Chat, ngunit hindi nag-ring ang iyong telepono dahil naka-off ang mga notification. Payagan ang mga notification para mag-ring ang susunod na tawag."
+    "callNotificationsMissedMessage": "May tumawag habang sarado ang Pangea Chat, ngunit hindi nag-ring ang iyong telepono dahil naka-off ang mga notification. Payagan ang mga notification para mag-ring ang susunod na tawag.",
+    "connectionPracticeVocab": "Magsanay ng bokabularyo habang naghihintay",
+    "offlinePracticeNote": "Offline. Maa-upload ang iyong mga sagot kapag online ka na ulit.",
+    "offlinePracticeSavedNote": "Naka-save sa device na ito. Maa-upload ang iyong XP kapag online ka na ulit."
 }

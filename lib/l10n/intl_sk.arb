@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-15 16:24:22.450057",
+    "@@last_modified": "2026-10-16 10:37:32.568358",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10913,5 +10913,8 @@
     "missionDueDate": "Termín: {date}, {time}",
     "callNotificationsTitle": "Nechajte hovory zvoniť",
     "callNotificationsMessage": "Hovory zvonia ako upozornenia. Povoľte upozornenia, aby vám telefón zvonil pri hovore, aj keď je Pangea Chat zatvorený alebo je telefón uzamknutý.",
-    "callNotificationsMissedMessage": "Prišiel hovor, keď bol Pangea Chat zatvorený, ale váš telefón nemohol zvoniť, pretože upozornenia sú vypnuté. Povoľte upozornenia, aby ďalší hovor zvonil."
+    "callNotificationsMissedMessage": "Prišiel hovor, keď bol Pangea Chat zatvorený, ale váš telefón nemohol zvoniť, pretože upozornenia sú vypnuté. Povoľte upozornenia, aby ďalší hovor zvonil.",
+    "connectionPracticeVocab": "Precvičte si slovnú zásobu, kým čakáte",
+    "offlinePracticeNote": "Offline. Vaše odpovede sa nahrajú, keď budete späť online.",
+    "offlinePracticeSavedNote": "Uložené v tomto zariadení. Vaše XP sa nahrá, keď budete opäť online."
 }

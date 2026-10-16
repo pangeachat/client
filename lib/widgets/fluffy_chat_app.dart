@@ -104,7 +104,10 @@ class FluffyChatApp extends StatelessWidget {
                 // rather than only on the chat it belongs to.
                 child: IncomingCallBanner(
                   child: GlobalCallTile(
-                    child: ConnectionBanner(child: testWidget ?? child),
+                    child: ConnectionBanner(
+                      router: router,
+                      child: testWidget ?? child,
+                    ),
                   ),
                 ),
               ),

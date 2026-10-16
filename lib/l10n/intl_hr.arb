@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-15 16:24:15.041707",
+    "@@last_modified": "2026-10-16 10:37:26.075022",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10404,5 +10404,8 @@
     "missionDueDate": "Rok: {date}, {time}",
     "callNotificationsTitle": "Dopusti zvonjenje poziva",
     "callNotificationsMessage": "Pozivi zvone kao obavijesti. Dopustite obavijesti kako bi vaš telefon zvonio za poziv, čak i kada je Pangea Chat zatvoren ili je vaš telefon zaključan.",
-    "callNotificationsMissedMessage": "Poziv je stigao dok je Pangea Chat bio zatvoren, ali vaš telefon nije mogao zvoniti jer su obavijesti isključene. Dopustite obavijesti kako bi sljedeći poziv zvonio."
+    "callNotificationsMissedMessage": "Poziv je stigao dok je Pangea Chat bio zatvoren, ali vaš telefon nije mogao zvoniti jer su obavijesti isključene. Dopustite obavijesti kako bi sljedeći poziv zvonio.",
+    "connectionPracticeVocab": "Vježbaj riječi dok čekaš",
+    "offlinePracticeNote": "Izvan mreže. Tvoji će se odgovori učitati kad se vratiš.",
+    "offlinePracticeSavedNote": "Spremljeno na ovom uređaju. Tvoj XP će se učitati kad se vratiš na mrežu."
 }

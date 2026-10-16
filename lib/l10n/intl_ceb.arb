@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-15 16:24:12.136349",
+    "@@last_modified": "2026-10-16 10:37:23.584747",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2433,5 +2433,8 @@
     "missionDueDate": "Angay sa {date}, {time}",
     "callNotificationsTitle": "Patingoga ang mga tawag",
     "callNotificationsMessage": "Ang mga tawag motingog isip mga notipikasyon. Tugoti ang mga notipikasyon aron motingog ang imong telepono alang sa usa ka tawag, bisan kung sirado ang Pangea Chat o naka-lock ang imong telepono.",
-    "callNotificationsMissedMessage": "Adunay tawag nga miabot samtang sirado ang Pangea Chat, apan dili makatingog ang imong telepono tungod kay gipalong ang mga notipikasyon. Tugoti ang mga notipikasyon aron motingog ang sunod nga tawag."
+    "callNotificationsMissedMessage": "Adunay tawag nga miabot samtang sirado ang Pangea Chat, apan dili makatingog ang imong telepono tungod kay gipalong ang mga notipikasyon. Tugoti ang mga notipikasyon aron motingog ang sunod nga tawag.",
+    "connectionPracticeVocab": "Pagpraktis og bokabularyo samtang naghulat ka",
+    "offlinePracticeNote": "Offline. Ang imong mga tubag ma-upload kung makabalik ka na.",
+    "offlinePracticeSavedNote": "Naka-save sa kini nga device. Ang imong XP ma-upload kung online ka na usab."
 }

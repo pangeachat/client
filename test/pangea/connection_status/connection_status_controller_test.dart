@@ -11,6 +11,8 @@ import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/features/connection_status/connection_status_controller.dart';
+import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
+import 'package:fluffychat/features/connection_status/network_host_category.dart';
 import 'package:fluffychat/features/connection_status/network_probe.dart';
 import 'package:fluffychat/features/connection_status/network_type.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -205,5 +207,27 @@ void main() {
     controller.reset();
 
     expect(controller.status.value, ConnectionStatus.connected);
+  });
+
+  // #9513 — when practice started now runs offline.
+  test('Pangea is out of reach while either banner is up', () {
+    final blocked = FilteredNetworkController.instance.blocked;
+    addTearDown(FilteredNetworkController.instance.resetForTest);
+    expect(controller.cannotReachPangea, isFalse);
+
+    for (final status in [
+      ConnectionStatus.offline,
+      ConnectionStatus.unreachable,
+    ]) {
+      controller.status.value = status;
+      expect(controller.cannotReachPangea, isTrue, reason: status.name);
+    }
+    controller.status.value = ConnectionStatus.backOnline;
+    expect(controller.cannotReachPangea, isFalse);
+
+    blocked.value = {NetworkHostCategory.video, NetworkHostCategory.map};
+    expect(controller.cannotReachPangea, isFalse);
+    blocked.value = {NetworkHostCategory.pangeaApi};
+    expect(controller.cannotReachPangea, isTrue);
   });
 }

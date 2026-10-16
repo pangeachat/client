@@ -58,6 +58,20 @@ class ConnectionStatusController {
     ConnectionStatus.connected,
   );
 
+  /// Whether the app cannot reach Pangea now: the connection is lost, or this
+  /// network blocks the chat server or the Pangea API. Either way a banner is
+  /// up, and vocab practice started now runs offline. See
+  /// practice-exercises.instructions.md, "Offline Vocab Practice".
+  bool get cannotReachPangea =>
+      status.value.isLost ||
+      FilteredNetworkController.instance.blocked.value.any((c) => c.stopsApp);
+
+  /// Notifies when [cannotReachPangea] may have changed.
+  late final Listenable reachability = Listenable.merge([
+    status,
+    FilteredNetworkController.instance.blocked,
+  ]);
+
   int _consecutiveFailures = 0;
   bool _deviceReportsNoNetwork = false;
   DateTime? _classifiedAt;

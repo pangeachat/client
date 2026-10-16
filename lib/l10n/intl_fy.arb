@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-15 16:24:13.299575",
+    "@@last_modified": "2026-10-16 10:37:24.820450",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2433,5 +2433,8 @@
     "missionDueDate": "Ferfaldatum {date}, {time}",
     "callNotificationsTitle": "Lit petearen oergean",
     "callNotificationsMessage": "Petearen geane oer as notifikaasjes. Tastean notifikaasjes ta, sadat jo tillefoan oergiet foar in petear, sels as Pangea Chat sletten is of jo tillefoan beskoattele is.",
-    "callNotificationsMissedMessage": "Der kaam in petear binnen wylst Pangea Chat sletten wie, mar jo tillefoan koe net oergean om't notifikaasjes útstien. Tastean notifikaasjes ta, sadat it folgjende petear oergiet."
+    "callNotificationsMissedMessage": "Der kaam in petear binnen wylst Pangea Chat sletten wie, mar jo tillefoan koe net oergean om't notifikaasjes útstien. Tastean notifikaasjes ta, sadat it folgjende petear oergiet.",
+    "connectionPracticeVocab": "Oefenje wurdskat wylst jo wachtsje",
+    "offlinePracticeNote": "Offline. Jo antwurden wurde upload as jo wer online binne.",
+    "offlinePracticeSavedNote": "Opslein op dit apparaat. Jo XP wurdt upload as jo wer online binne."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-15 16:24:10.283620",
+    "@@last_modified": "2026-10-16 10:37:22.144066",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2433,5 +2433,8 @@
     "missionDueDate": "{date}, {time} tarixinə qədər",
     "callNotificationsTitle": "Zənglərə icazə verin",
     "callNotificationsMessage": "Zənglər bildiriş kimi gəlir. Pangea Chat bağlı olsa və ya telefonunuz kilidli olsa belə, zəng gəldikdə telefonunuzun çalması üçün bildirişlərə icazə verin.",
-    "callNotificationsMissedMessage": "Pangea Chat bağlı olarkən zəng gəldi, lakin bildirişlər söndürüldüyü üçün telefonunuz çala bilmədi. Növbəti zəngin çalması üçün bildirişlərə icazə verin."
+    "callNotificationsMissedMessage": "Pangea Chat bağlı olarkən zəng gəldi, lakin bildirişlər söndürüldüyü üçün telefonunuz çala bilmədi. Növbəti zəngin çalması üçün bildirişlərə icazə verin.",
+    "connectionPracticeVocab": "Gözləyərkən söz ehtiyatını təkmilləşdirin",
+    "offlinePracticeNote": "Oflayn. Cavablarınız geri qayıtdığınızda yüklənəcək.",
+    "offlinePracticeSavedNote": "Bu cihazda saxlanıldı. Onlayn olduğunuzda XP-niz yüklənəcək."
 }
