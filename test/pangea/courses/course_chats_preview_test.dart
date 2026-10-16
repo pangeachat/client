@@ -11,12 +11,14 @@ import 'package:provider/provider.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
+import 'package:fluffychat/pangea/common/widgets/bold_tonal_button.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_item.dart';
 import 'package:fluffychat/routes/chat_list/unjoined_chat_list_item.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import '../audio_players_stub.dart';
 import '../fake_pangea_controller.dart';
 import '../get_test_client.dart';
 
@@ -38,6 +40,7 @@ class _FakeMatrixState extends MatrixState {
 }
 
 void main() {
+  tearDownAll(AudioPlayersStub.uninstall);
   TestWidgetsFlutterBinding.ensureInitialized();
 
   late Client client;
@@ -58,6 +61,7 @@ void main() {
   }
 
   setUpAll(() async {
+    AudioPlayersStub.install();
     // `Avatar` resolves the bot name at build time, which reads GetStorage
     // (path_provider-backed) and dotenv.
     final tempDir = await Directory.systemTemp.createTemp('course_chats');
@@ -208,7 +212,8 @@ void main() {
 
   Finder sectionHeader() => find.text('Chats');
   Finder seeAll() => find.text('See all');
-  Finder createChat() => find.widgetWithText(FilledButton, 'New course chat');
+  Finder createChat() =>
+      find.widgetWithText(BoldTonalButton, 'New course chat');
 
   testWidgets('a learner with no chats gets no section at all', (tester) async {
     stubHierarchy([]);

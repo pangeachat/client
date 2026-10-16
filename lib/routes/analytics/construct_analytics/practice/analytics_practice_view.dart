@@ -73,7 +73,28 @@ class AnalyticsPracticeView extends StatelessWidget {
           // Silent leave: the session stays alive in the holder.
           onPressed: controller.widget.close,
         ),
-        title: Text(L10n.of(context).practice),
+        // A Mission-scoped session names its Mission under the title (#9438),
+        // so the learner knows which words the session draws on.
+        title: ValueListenableBuilder(
+          valueListenable: controller.practiceExerciseState,
+          builder: (context, _, _) {
+            final label = controller.session.session?.missionLabel;
+            if (label == null) return Text(L10n.of(context).practice);
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(L10n.of(context).practice),
+                Text(
+                  label,
+                  style: Theme.of(context).textTheme.bodySmall,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            );
+          },
+        ),
         actions: [_headerActions(context)],
       ),
       body: _body(context),

@@ -129,7 +129,7 @@ class TutorialStepTemplates {
     ),
   ];
 
-  /// Mirrors [worldMap]: an introduction to the surface, then "go start one".
+  /// One step: the course panel, naming the course.
   static final List<TutorialStepTemplate> coursePlan = [
     TutorialStepTemplate(
       // args: [the course's name]
@@ -139,20 +139,6 @@ class TutorialStepTemplates {
       // corners. A full-height target leaves no room above or below it, so the
       // placement rule seats the card at the bottom OF THE PANEL, centred on it.
       borderRadius: AppConfig.borderRadius,
-    ),
-    TutorialStepTemplate(
-      tooltip: (l10n, _) => l10n.tutorialCoursePlanProgress,
-      tooltipSize: const Size(280, 150),
-      borderRadius: AppConfig.borderRadius,
-      padding: 6.0,
-    ),
-    TutorialStepTemplate(
-      tooltip: (l10n, args) => args.isEmpty
-          ? l10n.tutorialCoursePlanPickActivity
-          : l10n.tutorialCoursePlanNoActivities,
-      tooltipSize: const Size(280, 150),
-      borderRadius: AppConfig.borderRadius,
-      padding: 4.0,
     ),
   ];
 

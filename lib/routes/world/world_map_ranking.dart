@@ -17,9 +17,9 @@ enum ActivityPinState {
   /// Playable, nothing live and no stars yet — the default. Light brand.
   available,
 
-  /// The learner has fully completed at least one role and has no live session
-  /// — their trail. Renders as a fixed-size gold star dot (a super star once
-  /// every role is done); partial progress is never shown. Gold.
+  /// The learner has a saved session of the activity and has no live session
+  /// — their trail. Renders as the fixed-size completed stamp; partial
+  /// progress is never shown. Gold.
   inProgress,
 
   /// An open, live session the learner can join (someone else's) — the map's
@@ -132,17 +132,24 @@ enum PinTier {
   double dotHeight(ActivityPinState state) => switch (this) {
     PinTier.small => PinSize.smallDiameter,
     PinTier.mid => PinSize.midDiameter + PinSize.midPointHeight,
-    PinTier.large => switch (state) {
-      ActivityPinState.joinable ||
-      ActivityPinState.ongoingPending => PinSize.largeHeightJoinable,
-      _ => PinSize.largeHeight,
-    },
+    PinTier.large =>
+      // An activity card reserves its tallest box: standing on a stamp.
+      kMapActivityCards
+          ? PinSize.mapCardBox(standsOnStamp: true).height
+          : switch (state) {
+              ActivityPinState.joinable ||
+              ActivityPinState.ongoingPending => PinSize.largeHeightJoinable,
+              _ => PinSize.largeHeight,
+            },
   };
 
   double get dotWidth => switch (this) {
     PinTier.small => PinSize.smallDiameter,
     PinTier.mid => PinSize.midDiameter,
-    PinTier.large => PinSize.largeWidth,
+    PinTier.large =>
+      kMapActivityCards
+          ? PinSize.mapCardBox(standsOnStamp: true).width
+          : PinSize.largeWidth,
   };
 
   /// Whether a pin at this tier in [state] renders as a plain **dot** — the
@@ -667,8 +674,10 @@ Rect midPinRect(
 ///
 ///  * **mid** (a teardrop, except the inProgress star) hangs its box above the
 ///    point, tip on it — [midPinRect].
-///  * **large** anchors `topCenter`, so the card sits above the point with room
-///    reserved for the tail beneath and the badge overhang above and aside.
+///  * **large** anchors `topCenter`, so the card sits above the point. An
+///    activity card's box ([PinSize.mapCardBox]) already holds its tail; a
+///    classic card reserves [largeTailHeight] beneath and
+///    [largeBadgeOverhang] above and aside.
 ///  * everything else is a plain box centred on the point.
 Rect pinRectAt(
   Offset tip, {
@@ -681,9 +690,18 @@ Rect pinRectAt(
     return midPinRect(tip);
   }
   if (tier == PinTier.large) {
-    final width = tier.dotWidth + largeBadgeOverhang * 2;
-    final height = tier.dotHeight(state) + largeTailHeight + largeBadgeOverhang;
-    return Rect.fromLTWH(tip.dx - width / 2, tip.dy - height, width, height);
+    final box = kMapActivityCards
+        ? Size(tier.dotWidth, tier.dotHeight(state))
+        : Size(
+            tier.dotWidth + largeBadgeOverhang * 2,
+            tier.dotHeight(state) + largeTailHeight + largeBadgeOverhang,
+          );
+    return Rect.fromLTWH(
+      tip.dx - box.width / 2,
+      tip.dy - box.height,
+      box.width,
+      box.height,
+    );
   }
   final box = tier.markerBox(state);
   return Rect.fromCenter(center: tip, width: box.width, height: box.height);

@@ -126,6 +126,11 @@ class AnalyticsPracticeSessionModel {
   final String userL1;
   final String userL2;
 
+  /// The Mission this session is scoped to and its can-do statement, for the
+  /// panel's header (#9438); both null for an unscoped session.
+  final String? missionId;
+  final String? missionLabel;
+
   /// Started while the app could not reach Pangea, so built only from what
   /// this device has. Kept for the whole session. See
   /// practice-exercises.instructions.md, "Offline Practice".
@@ -139,6 +144,8 @@ class AnalyticsPracticeSessionModel {
     required this.practiceTargets,
     required this.userL1,
     required this.userL2,
+    this.missionId,
+    this.missionLabel,
     this.offline = false,
     AnalyticsPracticeSessionState? state,
   }) : state = state ?? const AnalyticsPracticeSessionState();
@@ -256,6 +263,8 @@ class AnalyticsPracticeSessionModel {
           .toList(),
       userL1: json['userL1'] as String,
       userL2: json['userL2'] as String,
+      missionId: json['missionId'] as String?,
+      missionLabel: json['missionLabel'] as String?,
       offline: json['offline'] as bool? ?? false,
       state: AnalyticsPracticeSessionState.fromJson(json),
     );
@@ -268,6 +277,8 @@ class AnalyticsPracticeSessionModel {
       'practiceTargets': practiceTargets.map((e) => e.toJson()).toList(),
       'userL1': userL1,
       'userL2': userL2,
+      if (missionId != null) 'missionId': missionId,
+      if (missionLabel != null) 'missionLabel': missionLabel,
       'offline': offline,
       ...state.toJson(),
     };

@@ -40,6 +40,7 @@ import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/map_exit_tracker.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/pin_semantics_layer.dart';
+import 'package:fluffychat/routes/world/stamp_word_web.dart';
 import 'package:fluffychat/routes/world/tile_http_client.dart';
 import 'package:fluffychat/routes/world/tile_retry_queue.dart';
 import 'package:fluffychat/routes/world/trackpad_pinch_zoom.dart';
@@ -55,6 +56,7 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/widgets/completed_stamp.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
 import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -112,8 +114,8 @@ class _PinRenderer {
     return tier == PinTier.mid || tier == PinTier.small;
   }).toList();
 
-  // The completion tier for the inProgress (trail) state — a plain star vs a
-  // super star, or none (world-map.instructions.md, "Goal Progress").
+  // Whether a rendered pin wears the completed stamp (world-map.instructions.md,
+  // "Goal Progress").
   ActivityStarLevel starLevelOf(String id) =>
       activityIdToStarLevel[id] ?? ActivityStarLevel.none;
 
@@ -755,14 +757,12 @@ class _WorldMapViewState extends State<WorldMapView>
 
       pings[id] = signals[id]?.pinged ?? false;
 
-      // The learner's completion tier and the pin's resolved display state come
+      // The learner's completed stamp and the pin's resolved display state come
       // from the shared resolver in the pins manager (reuse), so the Status
       // filter and this renderer never drift: a live-session state wins the
-      // colour, else the completed star tier layers in (the star rides behind a
-      // live pin), else the plain `available` default. A gold star appears ONLY
-      // once a full role is done — a plain star (≥1 role) or super star (all
-      // roles); partial progress is never shown (world-map.instructions.md,
-      // "Goal Progress" / "Pin state").
+      // colour, else a saved session layers in `inProgress`, else the plain
+      // `available` default (world-map.instructions.md, "Goal Progress" / "Pin
+      // state").
       starLevels[id] = widget.controller.starLevelOf(c);
       states[id] = widget.controller.displayStateOf(c);
 
@@ -1044,6 +1044,37 @@ class _WorldMapViewState extends State<WorldMapView>
               // State recreations MarkerLayer causes mid-gesture (#8136).
               animateInOf: _dotExits.markEntered,
             ).layer();
+            // The completed stamps as their own layer (activity-card map
+            // only): one at the point of every saved activity in view that
+            // isn't already drawn AS its stamp, under the pins and cards that
+            // stand on it. Read from the saved set rather than the tiered
+            // pins, so a stamp stays on the map when its card is dismissed or
+            // its pin falls outside the budget.
+            final savedIds = widget.controller.savedActivityIds;
+            final Widget stampLayer = MarkerLayer(
+              markers: [
+                if (kMapActivityCards)
+                  for (final card in render.visible)
+                    if (card.point != null &&
+                        savedIds.contains(card.activityId) &&
+                        !(render.stateOf(card.activityId) ==
+                                ActivityPinState.inProgress &&
+                            render.activityIdToTier.containsKey(
+                              card.activityId,
+                            )))
+                      Marker(
+                        point: card.point!,
+                        width: PinSize.stampMarkerBox,
+                        height: PinSize.stampMarkerBox,
+                        child: IgnorePointer(
+                          key: ValueKey('stamp-${card.activityId}'),
+                          child: const CompletedStamp(
+                            size: PinSize.starDotDiameter,
+                          ),
+                        ),
+                      ),
+              ],
+            );
             final Widget largeLayer = LargeMarkersLayer(
               largeCards: render.largeCards,
               currentLarge: currentLarge,
@@ -1146,6 +1177,20 @@ class _WorldMapViewState extends State<WorldMapView>
                   // width-driven budget. Small/mid dots render individually (no
                   // clustering); the large featured cards render unclustered above so
                   // they're always visible.
+                  // A Mission's completed stamps web out the words the learner
+                  // used in them. Under the activity-card map a card keeps its
+                  // words to itself: only bare stamps web out.
+                  if (kStampWordWeb &&
+                      widget.controller.selectedMissionId != null)
+                    StampWordWebLayer(
+                      cards: [
+                        ...render.nonLargeCards,
+                        if (!kMapActivityCards) ...render.largeCards,
+                      ],
+                      savedActivityIds: savedIds,
+                      wordsFor: widget.controller.stampWordsFor,
+                    ),
+                  stampLayer,
                   _ShimmerLayer(active: warming, child: dotLayer),
                   // Dying pins (a separate layer) so they don't disturb the live pins
                   // while animating out.

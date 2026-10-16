@@ -20,6 +20,7 @@ import 'package:fluffychat/routes/chat/chat_details/leaderboard_row.dart';
 import 'package:fluffychat/routes/chat/chat_details/participant_card.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import '../audio_players_stub.dart';
 import '../fake_pangea_controller.dart';
 import '../get_test_client.dart';
 import '../settle_leaderboard.dart';
@@ -51,6 +52,7 @@ class _TestMatrix extends Matrix {
 /// and #9154 — invite in the header whenever this user may invite, and one
 /// Tab stop with the arrow keys moving between cards and rows.
 void main() {
+  tearDownAll(AudioPlayersStub.uninstall);
   TestWidgetsFlutterBinding.ensureInitialized();
 
   late Client client;
@@ -64,6 +66,7 @@ void main() {
   const width = 360.0;
 
   setUpAll(() async {
+    AudioPlayersStub.install();
     // `Avatar` resolves the bot name from the environment at build time, which
     // reads GetStorage (path_provider-backed) and dotenv.
     final tempDir = await Directory.systemTemp.createTemp('course_leaderboard');
@@ -265,7 +268,7 @@ void main() {
     await drain(tester);
   });
 
-  testWidgets('rows rank by stars, then level, and show both', (tester) async {
+  testWidgets('rows rank by goals, then level, and show both', (tester) async {
     MatrixState.pangeaController = FakePangeaController(
       analyticsProfiles: {
         // The admin has played the most, and still does not place (#9481).
@@ -286,7 +289,7 @@ void main() {
         .firstWhere((n) => n.getSemanticsData().label.contains('Member 3'))
         .getSemanticsData();
     expect(first.label, contains('Rank 1'));
-    expect(first.label, contains('Stars earned in'));
+    expect(first.label, contains('Goals completed in'));
     expect(first.label, contains(': 10'));
     expect(first.label, contains('Level 1'));
     handle.dispose();

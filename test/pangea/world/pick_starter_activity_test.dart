@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 /// The rule choosing the ONE activity the world tutorial points at: the first
@@ -243,18 +244,20 @@ void main() {
       expect(rect.center, tip);
     });
 
-    test(
-      'a large card sits above the point and reserves its tail + overhang',
-      () {
-        final rect = pinRectAt(
-          tip,
-          tier: PinTier.large,
-          state: ActivityPinState.joinable,
-          largeTailHeight: 11,
-          largeBadgeOverhang: 8,
-        );
-        expect(rect.bottom, tip.dy);
-        expect(rect.center.dx, tip.dx);
+    test('a large card sits above the point in its own marker box', () {
+      final rect = pinRectAt(
+        tip,
+        tier: PinTier.large,
+        state: ActivityPinState.joinable,
+        largeTailHeight: 11,
+        largeBadgeOverhang: 8,
+      );
+      expect(rect.bottom, tip.dy);
+      expect(rect.center.dx, tip.dx);
+      if (kMapActivityCards) {
+        // The activity card's box already holds its tail and focus gutter.
+        expect(rect.size, PinSize.mapCardBox(standsOnStamp: true));
+      } else {
         expect(
           rect.width,
           PinTier.large.dotWidth + 16,
@@ -264,8 +267,8 @@ void main() {
           rect.height,
           PinTier.large.dotHeight(ActivityPinState.joinable) + 11 + 8,
         );
-      },
-    );
+      }
+    });
 
     test('a large card is far bigger than a mid pin — the two are not '
         'interchangeable, which is what made the hole miss', () {

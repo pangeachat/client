@@ -118,6 +118,26 @@ class QuestObjectiveGroup {
     required this.activities,
     this.pacing,
   });
+
+  /// The Mission's target vocabulary: every suggested word across its
+  /// activities, once per lemma ([lemmaKey]). What its Practice drills.
+  List<Vocab> get vocab {
+    final byLemma = <String, Vocab>{};
+    for (final activity in activities) {
+      for (final word in activity.plan.vocab) {
+        byLemma.putIfAbsent(lemmaKey(word.lemma), () => word);
+      }
+    }
+    return byLemma.values.toList();
+  }
+
+  /// The Mission's word list as [lemmaKey]s — what practice outside a
+  /// session credits it by.
+  Set<String> get lemmas => {for (final word in vocab) lemmaKey(word.lemma)};
+
+  /// The one normal form a lemma is matched in across plans, practice and
+  /// the learner's uses.
+  static String lemmaKey(String lemma) => lemma.toLowerCase();
 }
 
 /// A fully-resolved quest for the outline UI: the quest plus its objective
@@ -166,11 +186,11 @@ class QuestOutline {
 
   /// Project this outline into the pure [CourseLoOutline] the progression gate
   /// consumes: the quest's ordered objective ids, and per objective the set of
-  /// activity ids that satisfy it. [starsToUnlock] carries the course's teacher
+  /// activity ids that satisfy it. [xpToComplete] carries the course's teacher
   /// override (defaults to the standard threshold). The single home for this
   /// mapping — the joined-course cache and the activity-session lock both use it.
   CourseLoOutline toCourseLoOutline({
-    int starsToUnlock = kDefaultStarsToUnlockObjective,
+    int xpToComplete = kDefaultXpToCompleteObjective,
   }) => CourseLoOutline(
     // The quest id serves as the scoping key here — right for scoped/preview
     // outlines that have no room. The joined-course cache re-keys courseId to
@@ -184,11 +204,8 @@ class QuestOutline {
       for (final group in groups)
         group.objective.id: group.activities.map((a) => a.activityId).toSet(),
     },
-    starsToUnlock: starsToUnlock,
-    earnableByActivity: {
-      for (final group in groups)
-        for (final a in group.activities) a.activityId: a.plan.earnableStars,
-    },
+    lemmasByLo: {for (final group in groups) group.objective.id: group.lemmas},
+    xpToComplete: xpToComplete,
   );
 }
 

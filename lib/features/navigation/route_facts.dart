@@ -11,6 +11,7 @@ import 'package:fluffychat/features/navigation/token_params/activity_token.dart'
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/features/navigation/token_params/grammar_analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/objective_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
@@ -102,6 +103,16 @@ AppSection sectionFor(Uri uri) {
 bool coursesHubIsOpen(Uri uri) =>
     parseOpenPanels(uri).left.any((t) => t.type.isAddCoursePanel);
 
+/// The Mission the learner picked to work on in the active course — the
+/// workspace's `?mission=<missionId>` beside `?c=` — else null, meaning the
+/// course's current Mission (the resolver's anchor). One value read by the
+/// course card's circles, the collapsed course header and the course-scoped
+/// map, so the three always agree (#9420).
+String? selectedMissionIdFor(Uri uri) {
+  final value = uri.queryParameters['mission'];
+  return value == null || value.isEmpty ? null : value;
+}
+
 /// Whether the standalone practice panel is open, in either column.
 bool practiceIsOpen(Uri uri) {
   final panels = parseOpenPanels(uri);
@@ -156,6 +167,18 @@ ConstructIdentifier? activeConstructDetailFor(Uri uri) {
   return null;
 }
 
+/// The Learning Objective whose detail panel is open (an `objective:` token),
+/// or null — the Learning Objectives list lights that item, as the vocab list
+/// lights its open construct ([activeConstructDetailFor]).
+String? activeObjectiveDetailFor(Uri uri) {
+  final panels = parseOpenPanels(uri);
+  for (final token in [...panels.right, ...panels.left]) {
+    final param = token.param;
+    if (param is ObjectiveTokenParam) return param.missionId;
+  }
+  return null;
+}
+
 /// The analytics metric whose panel is currently open — what the top-right
 /// cluster / analytics bar highlights as active (#7977). Returned in the
 /// cluster's own vocabulary: [ProgressIndicatorEnum.wordsUsed] / [morphsUsed]
@@ -179,6 +202,7 @@ ProgressIndicatorEnum? activeAnalyticsTabFor(Uri uri) {
     if (param is GrammarAnalyticsTokenParam) {
       return ProgressIndicatorEnum.morphsUsed;
     }
+    if (param is ObjectiveTokenParam) return ProgressIndicatorEnum.stars;
     if (param is AnalyticsTokenParam) {
       // The sessions summary rides `activities`, but the cluster's tracker for
       // it is `stars` — map it across so the right button lights.

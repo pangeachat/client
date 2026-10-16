@@ -12,7 +12,9 @@ import 'package:fluffychat/features/course_plans/courses/course_missions_event.d
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
@@ -24,6 +26,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/trailing_throttle.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
+import 'package:fluffychat/routes/world/saved_activities_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_signals.dart';
@@ -119,24 +122,37 @@ class WorldMapPinsManager {
     if (notifier.value != open) notifier.value = open;
   }
 
+  /// Clears the process-global [pingedActivityIds] so a later map, or a
+  /// course page opened without one, never reads this map's stale pings.
+  void dispose() {
+    pingedActivityIds.value = const {};
+  }
+
   /// The activity pins currently shown — the active context's set (the whole
   /// world, or a selected quest's activities). Thin: id, title, point.
   List<QuestActivityCard> _pins = [];
 
   Map<String, PinSignals> _signals = {};
+
+  /// The learner's goal checkmarks per activity — the pins' checkmark display
+  /// and the trail the ranking reserves slots for.
   Map<String, int> _userStars = {};
 
-  // Star-tier inputs, precomputed once per sync (each a single rooms pass) so
-  // resolving a pin's display state / star level is an O(roles) lookup rather
-  // than an O(rooms) rescan per pin (world-map.instructions.md, "Goal Progress").
-  Map<String, List<OwnRoleAwards>> _ownRoleAwards = {};
-  Map<String, Set<String>> _completedRoles = {};
-  Map<String, Set<String>> _allRoles = {};
+  /// Activity XP per activity (saved sessions' credited XP plus goal
+  /// checkmarks) — what resolves Mission completion.
+  Map<String, int> _xpByActivity = {};
+
+  /// Activities the learner has a saved session of — what the completed stamp
+  /// marks: finishing an activity, not filling every goal. Precomputed once
+  /// per sync (a single rooms pass) so a pin's display state is a set lookup
+  /// rather than a rooms rescan per pin.
+  Set<String> _savedActivityIds = {};
 
   /// The shared next-Mission resolution the relevance band ranks toward, resolved
-  /// from the objective cache's outlines + [_userStars]. Recomputed where its
-  /// inputs change — the objective cache rebuilds (course join/leave) and user
-  /// stars change on room sync — NOT per frame. See world-map.instructions.md.
+  /// from the objective cache's outlines + [_xpByActivity]. Recomputed where its
+  /// inputs change — the objective cache rebuilds (course join/leave) and the
+  /// learner's XP changes on room sync — NOT per frame. See
+  /// world-map.instructions.md.
   ProgressionResolution _progression = ProgressionResolution.empty;
 
   /// Learning-objective ids across the learner's joined courses, for relevance
@@ -184,8 +200,13 @@ class WorldMapPinsManager {
   CourseLoOutline? _scopedCourseOutline;
 
   /// Activity ids with a recently-pinged open session (best-effort, scanned from
-  /// joined course-space messages). Folded into [_signals].
-  Set<String> _pingedActivityIds = {};
+  /// joined course-space messages). Folded into [_signals], and read off the
+  /// map by the course page's Mission circles, which bell a Mission whose
+  /// pinged session the Mission-scoped map doesn't show. Reset to empty when
+  /// the map's pins manager is disposed.
+  static final ValueNotifier<Set<String>> pingedActivityIds = ValueNotifier(
+    const {},
+  );
 
   /// Paces the coursemate-session discovery reads so the two triggers (sync
   /// ticks, and camera settles while panning) don't re-poll the server on every
@@ -252,21 +273,20 @@ class WorldMapPinsManager {
     bool Function(QuestActivityCard) filter,
   ) => _pins.where(filter).toList();
 
-  /// The learner's star tier for [card], resolved hydration-free against the
-  /// card's current thin goals, falling back to the room-derived path for cards
-  /// without thin goals (world-map.instructions.md, "Goal Progress"). Reuses the
-  /// precomputed star-input maps so it never rescans rooms.
-  ActivityStarLevel starLevelOf(QuestActivityCard card) {
-    final id = card.activityId;
-    return starLevelForCard(card, _ownRoleAwards[id] ?? const []) ??
-        starLevelFor(
-          _completedRoles[id] ?? const {},
-          _allRoles[id] ?? card.roleIds,
-        );
-  }
+  /// The activities the learner has a saved session of — every completed
+  /// stamp the map draws, whether or not its pin made the tier budget.
+  Set<String> get savedActivityIds => _savedActivityIds;
+
+  /// Whether [card] wears the completed stamp: the learner has a saved
+  /// session of it, however many goals they got (world-map.instructions.md,
+  /// "Goal Progress"). A set lookup, never a rooms rescan.
+  ActivityStarLevel starLevelOf(QuestActivityCard card) =>
+      _savedActivityIds.contains(card.activityId)
+      ? ActivityStarLevel.star
+      : ActivityStarLevel.none;
 
   /// The activity's resolved display [ActivityPinState]: a live-session state
-  /// (from [_signals]) wins the colour, else the completed star tier layers in
+  /// (from [_signals]) wins the colour, else a saved session layers in
   /// `inProgress`, else the plain `available` default. The single source shared
   /// by the Status filter ([WorldMapFilterState.include]) and the pin renderer
   /// so the two can never drift (world-map.instructions.md, "Pin state").
@@ -280,7 +300,7 @@ class WorldMapPinsManager {
 
   int? activityStarsEarned(String activityId) => _userStars[activityId];
 
-  /// Activity ids the learner has earned at least one star in — the trail the
+  /// Activity ids the learner has earned at least one goal in — the trail the
   /// ranking reserves slots for (world-map.instructions.md, "Goal Progress").
   Set<String> get progressedActivityIds => {
     for (final e in _userStars.entries)
@@ -346,11 +366,11 @@ class WorldMapPinsManager {
       }
     }
 
-    if (pinged.length == _pingedActivityIds.length &&
-        pinged.containsAll(_pingedActivityIds)) {
+    final current = pingedActivityIds.value;
+    if (pinged.length == current.length && pinged.containsAll(current)) {
       return false;
     }
-    _pingedActivityIds = pinged;
+    pingedActivityIds.value = pinged;
     return true;
   }
 
@@ -550,16 +570,20 @@ class WorldMapPinsManager {
   /// null on the world map.
   void recomputeProgress(Client client, {Room? course}) {
     final signals = client.deriveActivitySignals(
-      pingedActivityIds: _pingedActivityIds,
+      pingedActivityIds: pingedActivityIds.value,
       extraFacts: _discoveredSessionFacts(client, course),
     );
     final userStars = client.userStarsByActivity;
+    // Mission meters fill with XP; the shared cache keeps the learner's XP
+    // current, and the map re-resolves when it changes.
+    MissionXpCache.instance.ensureWired();
 
     _signals = signals;
     _userStars = userStars;
-    _ownRoleAwards = client.ownRoleAwardsByActivity;
-    _completedRoles = client.completedRolesByActivity;
-    _allRoles = client.roleIdsByActivity;
+    _xpByActivity = client.userXpByActivity(
+      MissionXpCache.instance.creditedXpByRoom,
+    );
+    _savedActivityIds = client.savedActivityIds;
     resolveProgression();
   }
 
@@ -569,11 +593,16 @@ class WorldMapPinsManager {
   /// course join/leave, and a course re-scope — never per frame.
   void resolveProgression() {
     _progression = _objectiveCache.resolution(
-      _userStars,
+      _xpByActivity,
+      practiceXpByLemma: MissionXpCache.instance.practiceXpByLemma,
       extraOutlines: _scopedCourseOutline == null
           ? const []
           : [_scopedCourseOutline!],
     );
+    // One shared answer (quests.instructions.md): the course panel and the
+    // analytics bar read what the map resolved, and the map resolves first in
+    // a session, so the star count is live before any course page opens.
+    QuestObjectivesLoader.publishProgression(_progression);
   }
 
   /// Rebuild the joined-course outlines (a few quest reads), reading each

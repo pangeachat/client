@@ -21,9 +21,9 @@ class WorldMapDot extends StatefulWidget {
   final VoidCallback onTap;
   final bool pinged;
 
-  /// The learner's completion tier, used only by the `inProgress` (trail) state
-  /// to draw a plain star vs a super star (world-map.instructions.md, "Goal
-  /// Progress"). `none` for every other state.
+  /// Whether the learner has a saved session of this activity — the completed
+  /// stamp that rides behind a live pin (world-map.instructions.md, "Goal
+  /// Progress").
   final ActivityStarLevel starLevel;
 
   /// The learner's own live room for this activity, when it has unread
@@ -200,31 +200,34 @@ class _WorldMapDotState extends State<WorldMapDot>
   }
 
   /// A completed activity keeps its star visible even when a NEW session turns
-  /// the pin joinable/ongoing: the live pin sits on top and the gold star (or
-  /// super star) rides BEHIND it, so the learner still sees they've done this one
+  /// the pin joinable/ongoing: the live pin sits on top and the completed stamp
+  /// rides BEHIND it, so the learner still sees they've done this one
   /// before (world-map.instructions.md, "Goal Progress"). Non-interactive — the
   /// live pin owns the tap. Pass-through when there's nothing to show behind:
   /// `inProgress` already renders AS the star, and `available` never carries
-  /// completion (it becomes `inProgress` the moment a role is done).
+  /// completion (it becomes `inProgress` once a session is saved).
   Widget _withCompletionStar(Widget pin) {
+    // Under the activity-card map the played stamp is its own layer at the
+    // point, so a live pin never carries it — and dismissing or demoting the
+    // pin can't take the stamp with it.
+    if (kMapActivityCards) return pin;
     final state = widget.state;
     if (widget.starLevel == ActivityStarLevel.none ||
         state == ActivityPinState.inProgress ||
         state == ActivityPinState.available) {
       return pin;
     }
-    final superStar = widget.starLevel == ActivityStarLevel.superStar;
     // Mid teardrop: the star peeks out from beneath the tip (shared with the
     // large card via [CompletionStarBelowTip], so both read identically). A small
     // dot (8) is smaller than the star, so the dot just sits centred on top of it.
     if (widget.tier == PinTier.mid) {
-      return CompletionStarBelowTip(superStar: superStar, child: pin);
+      return CompletionStarBelowTip(child: pin);
     }
     return Stack(
       clipBehavior: Clip.none,
       alignment: Alignment.center,
       children: [
-        IgnorePointer(child: WorldMapStarDot(superStar: superStar)),
+        const IgnorePointer(child: WorldMapStarDot()),
         pin,
       ],
     );
@@ -363,11 +366,9 @@ class _MediumDotContent extends StatelessWidget {
 /// The pin body, keyed off the colour [state]:
 ///
 ///  - **inProgress** renders as a completed-activity **star dot** (the state
-///    _is_ the progress): a gold star (one role done) or a shine super star
-///    (all roles — [starLevel]) in a base-colour circle, in place of the
-///    coloured body. Binary, never a partial fraction — a pin shows no progress
-///    until a full role is complete (world-map.instructions.md, "Goal
-///    Progress");
+///    _is_ the progress): the completed stamp in place of the coloured body.
+///    Binary, never a partial fraction — a pin shows no progress until a
+///    session is saved (world-map.instructions.md, "Goal Progress");
 ///  - every other state renders as a [state]-coloured body with a white border
 ///    and an optional [glyph] centered on its circular head. When
 ///    [pointHeight] is 0 the body is a plain circle (small tier); otherwise a
@@ -404,14 +405,12 @@ class _WorldMapStateDot extends StatelessWidget {
     final bodyColor = _bodyColor(context);
 
     if (state == ActivityPinState.inProgress) {
-      // Progress is the state: a fixed-size star dot replaces the coloured body
-      // — a super star (all roles) or a plain star (one role). No shape/point.
-      final superStar = starLevel == ActivityStarLevel.superStar;
-      final star = WorldMapStarDot(superStar: superStar);
+      // Progress is the state: the fixed-size completed stamp replaces the
+      // coloured body. No shape/point.
       return _withSelectedGlow(
         context,
-        star,
-        WorldMapStarDot.diameterFor(superStar),
+        const WorldMapStarDot(),
+        PinSize.starDotDiameter,
       );
     }
 

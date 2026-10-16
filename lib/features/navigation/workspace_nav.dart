@@ -12,6 +12,7 @@ import 'package:fluffychat/features/navigation/token_params/analytics_practice_t
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
 import 'package:fluffychat/features/navigation/token_params/grammar_analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/objective_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
@@ -231,6 +232,45 @@ abstract class WorkspaceNav {
     );
   }
 
+  /// Pick the Mission the course card, its collapsed header and the course
+  /// map show: `?mission=<missionId>` beside `?c=`, every other part kept.
+  /// [selectedMissionIdFor] reads it back.
+  static String selectMission(Uri current, String missionId) {
+    final parts = WorkspaceQuery.parts(current.query);
+    WorkspaceQuery.removeKeys(parts, {'mission'});
+    parts.add('mission=${Uri.encodeComponent(missionId)}');
+    return WorkspaceQuery.location(current.path, parts);
+  }
+
+  /// Open a Learning Objective's detail beside the Learning Objectives list —
+  /// [openConstructDetail]'s twin: drops any other detail across columns,
+  /// seats the list (the analytics `activities` master) on a cold start, and
+  /// appends `objective:<missionId>` after it.
+  static String openObjectiveDetail(Uri current, String missionId) {
+    final PanelToken detail = ObjectivePanelToken(
+      ObjectiveTokenParam(missionId: missionId),
+    );
+    return _mutateBoth(
+      current,
+      (left) => left.where((t) => !_areSiblings(detail, t)).toList(),
+      (right) {
+        final next = right
+            .where((t) => t != detail && !_areSiblings(detail, t))
+            .toList();
+        if (!next.any((t) => t.type == PanelTypesEnum.analytics)) {
+          next.insert(
+            0,
+            const AnalyticsPanelToken(
+              AnalyticsTokenParam(subpage: ProgressIndicatorEnum.activities),
+            ),
+          );
+        }
+        next.add(detail);
+        return next;
+      },
+    );
+  }
+
   /// Open a practice session as a right-column panel that **takes over the
   /// analytics surface**: it clears the analytics master and any vocab/grammar
   /// detail on the right (and a left `session` review — practice shares the one
@@ -240,21 +280,29 @@ abstract class WorkspaceNav {
   /// cluster's analytics replaces the whole right column. Practice is a normal
   /// bounded panel, not a route or a fullscreen surface. See
   /// `routing.instructions.md`.
-  static String openPractice(Uri current, ConstructTypeEnum type) =>
-      _mutateBoth(
-        current,
-        (left) => left.where((t) => t.type != PanelTypesEnum.session).toList(),
-        (right) {
-          final next = right.where((t) => !t.type.isAnalyticsPanel).toList();
-          next.insert(
-            0,
-            AnalyticsPracticePanelToken(
-              AnalyticsPracticeTokenParam(constructType: type),
-            ),
-          );
-          return next;
-        },
+  /// [missionId] scopes the session to a Mission's target vocabulary (#9438);
+  /// the scope rides the token so it survives a panel swap and can be linked.
+  static String openPractice(
+    Uri current,
+    ConstructTypeEnum type, {
+    String? missionId,
+  }) => _mutateBoth(
+    current,
+    (left) => left.where((t) => t.type != PanelTypesEnum.session).toList(),
+    (right) {
+      final next = right.where((t) => !t.type.isAnalyticsPanel).toList();
+      next.insert(
+        0,
+        AnalyticsPracticePanelToken(
+          AnalyticsPracticeTokenParam(
+            constructType: type,
+            missionId: missionId,
+          ),
+        ),
       );
+      return next;
+    },
+  );
 
   /// Switch the workspace to course [spaceId]: set the `?c=<id>` scope
   /// filter AND a `course` left panel (at [tab] in its param if given),
@@ -287,7 +335,13 @@ abstract class WorkspaceNav {
       ),
     ];
     final parts = WorkspaceQuery.parts(current.query);
-    WorkspaceQuery.removeKeys(parts, {'c', 'left'});
+    WorkspaceQuery.removeKeys(parts, {
+      'c',
+      'left',
+      // The picked Mission belongs to the course it was picked in; another
+      // course opens on its own current Mission.
+      if (current.queryParameters['c'] != shortRoomId(spaceId)) 'mission',
+    });
     final query = <String>[
       'c=${Uri.encodeComponent(shortRoomId(spaceId))}',
       'left=${left.map((t) => t.encode()).join(',')}',
