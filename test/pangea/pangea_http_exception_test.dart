@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/subscription/repo_v2/checkout_exceptions.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 
 /// The typed HTTP failure behind #8094: every ≥400 response used to be thrown
@@ -304,6 +305,18 @@ void main() {
     test('non-HTTP failures are errors', () {
       expect(
         PangeaHttpException.severityOf(Exception('parse')),
+        SentryLevel.error,
+      );
+    });
+
+    test('checkout refused as already subscribed (409) is info, other '
+        'checkout failures stay errors (#9538)', () {
+      expect(
+        PangeaHttpException.severityOf(ConflictCheckoutException()),
+        SentryLevel.info,
+      );
+      expect(
+        PangeaHttpException.severityOf(UnknownCheckoutException()),
         SentryLevel.error,
       );
     });
