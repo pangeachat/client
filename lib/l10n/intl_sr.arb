@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 10:37:33.466871",
+    "@@last_modified": "2026-10-16 11:49:07.087054",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10920,5 +10920,6 @@
     "callNotificationsMissedMessage": "Poziv je stigao dok je Pangea Chat bio zatvoren, ali vaš telefon nije mogao da zvoni jer su obaveštenja isključena. Dozvolite obaveštenja kako bi sledeći poziv zvonio.",
     "connectionPracticeVocab": "Vežbaj rečnik dok čekaš",
     "offlinePracticeNote": "Van mreže. Tvoji odgovori će se otpremiti kada se vratiš.",
-    "offlinePracticeSavedNote": "Sačuvano na ovom uređaju. Tvoj XP će se otpremiti kada budeš ponovo onlajn."
+    "offlinePracticeSavedNote": "Sačuvano na ovom uređaju. Tvoj XP će se otpremiti kada budeš ponovo onlajn.",
+    "offlinePracticeNothingSaved": "Nema dovoljno sačuvanog na ovom uređaju za vežbanje van mreže. Pokušajte ponovo kada budete na mreži."
 }

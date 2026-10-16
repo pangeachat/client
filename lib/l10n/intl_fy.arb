@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-16 10:37:24.820450",
+    "@@last_modified": "2026-10-16 11:48:55.176228",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "Der kaam in petear binnen wylst Pangea Chat sletten wie, mar jo tillefoan koe net oergean om't notifikaasjes útstien. Tastean notifikaasjes ta, sadat it folgjende petear oergiet.",
     "connectionPracticeVocab": "Oefenje wurdskat wylst jo wachtsje",
     "offlinePracticeNote": "Offline. Jo antwurden wurde upload as jo wer online binne.",
-    "offlinePracticeSavedNote": "Opslein op dit apparaat. Jo XP wurdt upload as jo wer online binne."
+    "offlinePracticeSavedNote": "Opslein op dit apparaat. Jo XP wurdt upload as jo wer online binne.",
+    "offlinePracticeNothingSaved": "Der is net genôch opslein op dit apparaat om offline te oefenjen. Besykje it opnij as jo wer online binne."
 }

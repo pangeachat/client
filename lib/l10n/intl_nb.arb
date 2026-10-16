@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 10:37:31.153576",
+    "@@last_modified": "2026-10-16 11:49:05.177609",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10031,5 +10031,6 @@
     "callNotificationsMissedMessage": "Et anrop kom inn mens Pangea Chat var lukket, men telefonen din kunne ikke ringe fordi varsler er slått av. Tillat varsler slik at neste anrop ringer.",
     "connectionPracticeVocab": "Øv på gloser mens du venter",
     "offlinePracticeNote": "Frakoblet. Svarene dine lastes opp når du er tilbake.",
-    "offlinePracticeSavedNote": "Lagret på denne enheten. XP-en din lastes opp når du er tilbake på nett."
+    "offlinePracticeSavedNote": "Lagret på denne enheten. XP-en din lastes opp når du er tilbake på nett.",
+    "offlinePracticeNothingSaved": "Ikke nok er lagret på denne enheten til å øve offline. Prøv igjen når du er online."
 }

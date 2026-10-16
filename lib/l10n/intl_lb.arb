@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-16 10:37:28.758710",
+    "@@last_modified": "2026-10-16 11:49:00.804206",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "En Uruff ass erakomm, während Pangea Chat zou war, awer Ären Telefon konnt net schellen, well Notifikatiounen ausgeschalt sinn. Erlaabt Notifikatiounen, fir datt den nächste Ruff schellt.",
     "connectionPracticeVocab": "Vokabelen üben, während Dir waart",
     "offlinePracticeNote": "Offline. Är Äntwerte ginn eropgelueden, wann Dir erëm online sidd.",
-    "offlinePracticeSavedNote": "Op dësem Apparat gespäichert. Är XP ginn eropgelueden, wann Dir erëm online sidd."
+    "offlinePracticeSavedNote": "Op dësem Apparat gespäichert. Är XP ginn eropgelueden, wann Dir erëm online sidd.",
+    "offlinePracticeNothingSaved": "Net genuch ass op dësem Apparat gespäichert fir offline ze üben. Probéiert et nach eng Kéier wann Dir erëm online sidd."
 }

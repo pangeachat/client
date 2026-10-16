@@ -1795,7 +1795,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-16 10:37:32.346720",
+    "@@last_modified": "2026-10-16 11:49:06.322290",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10916,5 +10916,6 @@
     "callNotificationsMissedMessage": "Klic je prišel, ko je bil Pangea Chat zaprt, vendar telefon ni mogel zvoniti, ker so obvestila izklopljena. Dovoli obvestila, da bo naslednji klic zvonil.",
     "connectionPracticeVocab": "Vadite besedišče, medtem ko čakate",
     "offlinePracticeNote": "Brez povezave. Vaši odgovori se naložijo, ko se vrnete.",
-    "offlinePracticeSavedNote": "Shranjeno v tej napravi. Vaš XP se naloži, ko ste spet povezani."
+    "offlinePracticeSavedNote": "Shranjeno v tej napravi. Vaš XP se naloži, ko ste spet povezani.",
+    "offlinePracticeNothingSaved": "Na tej napravi ni dovolj shranjenega za vadbo brez povezave. Poskusite znova, ko boste spet povezani."
 }

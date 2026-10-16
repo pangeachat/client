@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-16 10:37:24.787701",
+    "@@last_modified": "2026-10-16 11:48:54.431437",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9974,5 +9974,6 @@
     "callNotificationsMissedMessage": "Dei bat jaso da Pangea Chat itxita zegoen bitartean, baina zure telefonoak ezin izan du jo, jakinarazpenak desaktibatuta zeudelako. Baimendu jakinarazpenak hurrengo deiak jo dezan.",
     "connectionPracticeVocab": "Praktikatu hiztegia itxaroten duzun bitartean",
     "offlinePracticeNote": "Lineaz kanpo. Zure erantzunak igoko dira berriro konektatzen zarenean.",
-    "offlinePracticeSavedNote": "Gailu honetan gordeta. Zure XP igoko da berriro konektatzen zarenean."
+    "offlinePracticeSavedNote": "Gailu honetan gordeta. Zure XP igoko da berriro konektatzen zarenean.",
+    "offlinePracticeNothingSaved": "Ez dago nahikoa gordeta gailu honetan lineaz kanpo praktikatzeko. Saiatu berriro konektatuta zaudenean."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 10:37:26.374839",
+    "@@last_modified": "2026-10-16 11:48:57.558185",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10047,5 +10047,6 @@
     "callNotificationsMissedMessage": "Ada panggilan masuk saat Pangea Chat ditutup, tetapi ponsel Anda tidak dapat berdering karena notifikasi dimatikan. Izinkan notifikasi agar panggilan berikutnya berdering.",
     "connectionPracticeVocab": "Latih kosakata selagi menunggu",
     "offlinePracticeNote": "Offline. Jawaban Anda akan diunggah saat Anda kembali online.",
-    "offlinePracticeSavedNote": "Tersimpan di perangkat ini. XP Anda akan diunggah saat Anda kembali online."
+    "offlinePracticeSavedNote": "Tersimpan di perangkat ini. XP Anda akan diunggah saat Anda kembali online.",
+    "offlinePracticeNothingSaved": "Tidak cukup data tersimpan di perangkat ini untuk berlatih secara offline. Coba lagi saat Anda kembali online."
 }

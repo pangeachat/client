@@ -18,18 +18,25 @@ class GrammarMatchTargetGenerator {
   static PracticeExerciseTypeEnum exerciseType =
       PracticeExerciseTypeEnum.grammarCategory;
 
+  /// [offline] picks for an offline session: only example messages saved on
+  /// this device, and only with grammar labels saved on it. See
+  /// practice-exercises.instructions.md, "Offline Practice".
   static Future<List<AnalyticsPracticeTarget>> get(
-    List<ConstructUses> constructs,
-    // String userL1,
-    // String userL2,
-  ) async {
+    List<ConstructUses> constructs, {
+    bool offline = false,
+  }) async {
     // Score and sort by priority (highest first). Uses shared scorer for
     // consistent prioritization with message practice.
     final sortedConstructs = constructs.practiceSort(exerciseType);
 
     final Set<String> seenForms = {};
 
-    final morphs = await GrammarConstructsProvider.fetchFeaturesAndTags();
+    final morphs = offline
+        ? await GrammarConstructsProvider.savedFeaturesAndTags()
+        : await GrammarConstructsProvider.fetchFeaturesAndTags();
+    // Offline without saved labels: the built-in ones are in English, so the
+    // session goes without grammar-category exercises.
+    if (morphs == null) return [];
 
     // Build list of features with multiple tags (valid for practice)
     final List<String> validFeatures = morphs.features
@@ -73,6 +80,7 @@ class GrammarMatchTargetGenerator {
         exampleMessage = await ExampleMessageUtil.getExampleMessage(
           construct,
           form: form.form,
+          savedOnly: offline,
         );
         if (exampleMessage == null) continue;
 

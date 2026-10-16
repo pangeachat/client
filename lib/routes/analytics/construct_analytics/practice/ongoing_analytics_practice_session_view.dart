@@ -160,7 +160,9 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
                           switch (state) {
                             AsyncError(error: final error) =>
                               error is InsufficientDataException
-                                  ? InsufficientDataIndicator()
+                                  ? InsufficientDataIndicator(
+                                      offline: error.offline,
+                                    )
                                   : Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,

@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-16 10:37:29.544247",
+    "@@last_modified": "2026-10-16 11:49:04.491555",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "I tae mai he waea i te wā e katia ana a Pangea Chat, engari kāore i taea e tō waea te tangi nā te mea kua weto ngā whakamōhiotanga. Tukua ngā whakamōhiotanga kia tangi ai te waea e whai ake nei.",
     "connectionPracticeVocab": "Parakatihitia ngā kupu hou i a koe e tatari ana",
     "offlinePracticeNote": "Tuimotu. Ka tukuna ō whakautu ina hoki mai koe.",
-    "offlinePracticeSavedNote": "Kua tiakina ki tēnei pūrere. Ka tukuna tō XP ina hoki mai koe ki te ipurangi."
+    "offlinePracticeSavedNote": "Kua tiakina ki tēnei pūrere. Ka tukuna tō XP ina hoki mai koe ki te ipurangi.",
+    "offlinePracticeNothingSaved": "Kāore i rawaka ngā mea kua tiakina ki tēnei pūrere hei whakaharatau tuimotu. Me ngana anō ka hoki ana koe ki te ipurangi."
 }

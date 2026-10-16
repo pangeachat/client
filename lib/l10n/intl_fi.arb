@@ -3516,7 +3516,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-16 10:37:24.740399",
+    "@@last_modified": "2026-10-16 11:48:55.171520",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10011,5 +10011,6 @@
     "callNotificationsMissedMessage": "Puhelu tuli Pangea Chatin ollessa suljettuna, mutta puhelimesi ei voinut soida, koska ilmoitukset ovat pois päältä. Salli ilmoitukset, jotta seuraava puhelu soi.",
     "connectionPracticeVocab": "Harjoittele sanastoa odottaessasi",
     "offlinePracticeNote": "Offline-tilassa. Vastauksesi lähetetään, kun olet taas online-tilassa.",
-    "offlinePracticeSavedNote": "Tallennettu tälle laitteelle. XP-pisteesi lähetetään, kun olet taas online-tilassa."
+    "offlinePracticeSavedNote": "Tallennettu tälle laitteelle. XP-pisteesi lähetetään, kun olet taas online-tilassa.",
+    "offlinePracticeNothingSaved": "Tälle laitteelle ei ole tallennettu tarpeeksi harjoiteltavaa offline-tilassa. Yritä uudelleen, kun olet taas online-tilassa."
 }

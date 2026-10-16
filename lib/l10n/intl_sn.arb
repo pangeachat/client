@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-16 10:37:32.894641",
+    "@@last_modified": "2026-10-16 11:49:07.094184",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "Foni yakapinda Pangea Chat yakavharwa, asi foni yako haina kukwanisa kurira nekuti notifications dzakadzimwa. Bvumira notifications kuti foni inotevera irire.",
     "connectionPracticeVocab": "Dzidzira mazwi uchimirira",
     "offlinePracticeNote": "Huri paIndaneti. Mhinduro dzako dzichatumirwa kana wadzoka.",
-    "offlinePracticeSavedNote": "Yakachengetwa pachigadzirwa ichi. XP yako ichatumirwa kana wadzoka paIndaneti."
+    "offlinePracticeSavedNote": "Yakachengetwa pachigadzirwa ichi. XP yako ichatumirwa kana wadzoka paIndaneti.",
+    "offlinePracticeNothingSaved": "Hazvina kukwana zvakachengetwa pachigadzirwa ichi kuti udzidzire usina Indaneti. Edza zvakare kana wadzoka paIndaneti."
 }

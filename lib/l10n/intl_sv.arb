@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 10:37:33.823162",
+    "@@last_modified": "2026-10-16 11:49:08.550548",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10489,5 +10489,6 @@
     "callNotificationsMissedMessage": "Ett samtal kom in medan Pangea Chat var stängt, men din telefon kunde inte ringa eftersom aviseringar är avstängda. Tillåt aviseringar så att nästa samtal ringer.",
     "connectionPracticeVocab": "Öva glosor medan du väntar",
     "offlinePracticeNote": "Offline. Dina svar laddas upp när du är tillbaka.",
-    "offlinePracticeSavedNote": "Sparat på den här enheten. Din XP laddas upp när du är online igen."
+    "offlinePracticeSavedNote": "Sparat på den här enheten. Din XP laddas upp när du är online igen.",
+    "offlinePracticeNothingSaved": "Inte tillräckligt har sparats på den här enheten för att öva offline. Försök igen när du är online."
 }

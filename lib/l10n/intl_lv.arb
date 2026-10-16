@@ -3515,7 +3515,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-10-16 10:37:29.104280",
+    "@@last_modified": "2026-10-16 11:49:01.557983",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9974,5 +9974,6 @@
     "callNotificationsMissedMessage": "Ienāca zvans, kamēr Pangea Chat bija aizvērta, taču tālrunis nevarēja zvanīt, jo paziņojumi ir izslēgti. Atļaujiet paziņojumus, lai nākamais zvans zvanītu.",
     "connectionPracticeVocab": "Praktizē vārdu krājumu, kamēr gaidi",
     "offlinePracticeNote": "Bezsaistē. Tavas atbildes tiks augšupielādētas, kad būsi atpakaļ.",
-    "offlinePracticeSavedNote": "Saglabāts šajā ierīcē. Tavs XP tiks augšupielādēts, kad būsi tiešsaistē."
+    "offlinePracticeSavedNote": "Saglabāts šajā ierīcē. Tavs XP tiks augšupielādēts, kad būsi tiešsaistē.",
+    "offlinePracticeNothingSaved": "Šajā ierīcē nav saglabāts pietiekami daudz, lai praktizētu bezsaistē. Mēģiniet vēlreiz, kad būsiet tiešsaistē."
 }

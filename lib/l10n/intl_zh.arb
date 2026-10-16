@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-16 10:37:35.232823",
+    "@@last_modified": "2026-10-16 11:49:09.819744",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9974,5 +9974,6 @@
     "callNotificationsMissedMessage": "Pangea Chat 关闭时有来电，但由于通知已关闭，您的手机无法响铃。请允许通知，以便下次来电时响铃。",
     "connectionPracticeVocab": "等待时练习词汇",
     "offlinePracticeNote": "离线。您的答案将在您上线后上传。",
-    "offlinePracticeSavedNote": "已保存到此设备。您的经验值将在您上线后上传。"
+    "offlinePracticeSavedNote": "已保存到此设备。您的经验值将在您上线后上传。",
+    "offlinePracticeNothingSaved": "此设备上没有足够的已保存内容可供离线练习。请在联网后重试。"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-16 10:37:31.075375",
+    "@@last_modified": "2026-10-16 11:49:06.978180",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "Kaimbidwe ka foni kanabwera pamene Pangea Chat inatsekedwa, koma foni yanu sinathe kulira chifukwa zidziwitso zazimitsidwa. Lolani zidziwitso kuti kaimbidwe kotsatira kazilira.",
     "connectionPracticeVocab": "Yesetsani mawu pamene mukudikira",
     "offlinePracticeNote": "Palibe intaneti. Mayankho anu adzakwera mukabwerera.",
-    "offlinePracticeSavedNote": "Zasungidwa pa chipangizochi. XP yanu idzakwera mukabwerera pa intaneti."
+    "offlinePracticeSavedNote": "Zasungidwa pa chipangizochi. XP yanu idzakwera mukabwerera pa intaneti.",
+    "offlinePracticeNothingSaved": "Zosakwanira zasungidwa pa chipangizochi kuti muzichita popanda intaneti. Yesaninso mukakhala pa intaneti."
 }

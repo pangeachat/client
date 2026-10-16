@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-16 10:37:22.062289",
+    "@@last_modified": "2026-10-16 11:48:52.820616",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "'n Oproep het ingekom terwyl Pangea Chat gesluit was, maar jou foon kon nie lui nie omdat kennisgewings afgeskakel is. Laat kennisgewings toe sodat die volgende oproep lui.",
     "connectionPracticeVocab": "Oefen woordeskat terwyl jy wag",
     "offlinePracticeNote": "Vanlyn. Jou antwoorde laai op wanneer jy terug is.",
-    "offlinePracticeSavedNote": "Gestoor op hierdie toestel. Jou XP laai op wanneer jy weer aanlyn is."
+    "offlinePracticeSavedNote": "Gestoor op hierdie toestel. Jou XP laai op wanneer jy weer aanlyn is.",
+    "offlinePracticeNothingSaved": "Nie genoeg is op hierdie toestel gestoor om vanlyn te oefen nie. Probeer weer wanneer jy aanlyn is."
 }

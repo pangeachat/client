@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-16 10:37:23.163515",
+    "@@last_modified": "2026-10-16 11:48:53.748609",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "Una chjama hè ghjunta mentre Pangea Chat era chjusu, ma u vostru telefunu ùn pudia micca sunà perchè e notificazioni sò spente. Permettite e notificazioni per chì a prossima chjama suni.",
     "connectionPracticeVocab": "Praticà u vucabulariu mentre aspettate",
     "offlinePracticeNote": "Fora linea. E vostre risposte si caricanu quandu site di ritornu.",
-    "offlinePracticeSavedNote": "Salvàtu nant'à stu dispusitivu. U vostru XP si carica quandu site di ritornu in linea."
+    "offlinePracticeSavedNote": "Salvàtu nant'à stu dispusitivu. U vostru XP si carica quandu site di ritornu in linea.",
+    "offlinePracticeNothingSaved": "Ùn ci hè micca abbastanza salvatu nant'à stu dispusitivu per praticà fora di linea. Pruvate di novu quandu sarete in linea."
 }

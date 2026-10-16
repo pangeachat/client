@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-16 10:37:33.421804",
+    "@@last_modified": "2026-10-16 11:49:13.359110",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "Erdhi një thirrje ndërsa Pangea Chat ishte i mbyllur, por telefoni yt nuk mund të binte sepse njoftimet janë të fikura. Lejo njoftimet që thirrja tjetër të bjerë.",
     "connectionPracticeVocab": "Praktiko fjalorin ndërsa pret",
     "offlinePracticeNote": "Jashtë linje. Përgjigjet e tua ngarkohen kur të rikthehesh.",
-    "offlinePracticeSavedNote": "Ruajtur në këtë pajisje. XP-ja jote ngarkohet kur të jesh sërish online."
+    "offlinePracticeSavedNote": "Ruajtur në këtë pajisje. XP-ja jote ngarkohet kur të jesh sërish online.",
+    "offlinePracticeNothingSaved": "Nuk ka mjaftueshëm të dhëna të ruajtura në këtë pajisje për të praktikuar jashtë linje. Provojeni sërish kur të jeni online."
 }

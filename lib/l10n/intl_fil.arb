@@ -2073,7 +2073,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-16 10:37:26.189709",
+    "@@last_modified": "2026-10-16 11:48:54.807213",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10831,5 +10831,6 @@
     "callNotificationsMissedMessage": "May tumawag habang sarado ang Pangea Chat, ngunit hindi nag-ring ang iyong telepono dahil naka-off ang mga notification. Payagan ang mga notification para mag-ring ang susunod na tawag.",
     "connectionPracticeVocab": "Magsanay ng bokabularyo habang naghihintay",
     "offlinePracticeNote": "Offline. Maa-upload ang iyong mga sagot kapag online ka na ulit.",
-    "offlinePracticeSavedNote": "Naka-save sa device na ito. Maa-upload ang iyong XP kapag online ka na ulit."
+    "offlinePracticeSavedNote": "Naka-save sa device na ito. Maa-upload ang iyong XP kapag online ka na ulit.",
+    "offlinePracticeNothingSaved": "Hindi sapat ang na-save sa device na ito para mag-practice offline. Subukang muli kapag online ka na."
 }

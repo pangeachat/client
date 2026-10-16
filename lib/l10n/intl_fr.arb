@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-16 10:37:24.574555",
+    "@@last_modified": "2026-10-16 11:48:55.512251",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10326,5 +10326,6 @@
     "callNotificationsMissedMessage": "Un appel est arrivé alors que Pangea Chat était fermé, mais votre téléphone n'a pas pu sonner car les notifications sont désactivées. Autorisez les notifications pour que le prochain appel sonne.",
     "connectionPracticeVocab": "Pratiquez le vocabulaire pendant que vous attendez",
     "offlinePracticeNote": "Hors ligne. Vos réponses seront téléchargées lorsque vous serez de retour.",
-    "offlinePracticeSavedNote": "Enregistré sur cet appareil. Votre XP sera téléchargé lorsque vous serez de nouveau en ligne."
+    "offlinePracticeSavedNote": "Enregistré sur cet appareil. Votre XP sera téléchargé lorsque vous serez de nouveau en ligne.",
+    "offlinePracticeNothingSaved": "Pas assez de contenu est enregistré sur cet appareil pour pratiquer hors ligne. Réessayez lorsque vous serez de nouveau en ligne."
 }

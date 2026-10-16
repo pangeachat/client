@@ -128,7 +128,7 @@ class AnalyticsPracticeSessionModel {
 
   /// Started while the app could not reach Pangea, so built only from what
   /// this device has. Kept for the whole session. See
-  /// practice-exercises.instructions.md, "Offline Vocab Practice".
+  /// practice-exercises.instructions.md, "Offline Practice".
   final bool offline;
 
   AnalyticsPracticeSessionState state;

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-16 10:37:23.200661",
+    "@@last_modified": "2026-10-16 11:48:54.116102",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10465,5 +10465,6 @@
     "callNotificationsMissedMessage": "Přišel hovor, když byl Pangea Chat zavřený, ale váš telefon nemohl zvonit, protože jsou vypnutá oznámení. Povolte oznámení, aby další hovor zvonil.",
     "connectionPracticeVocab": "Procvičte si slovíčka, než se připojíte",
     "offlinePracticeNote": "Offline. Vaše odpovědi se nahrají, až budete zpět.",
-    "offlinePracticeSavedNote": "Uloženo v tomto zařízení. Vaše XP se nahraje, až budete online."
+    "offlinePracticeSavedNote": "Uloženo v tomto zařízení. Vaše XP se nahraje, až budete online.",
+    "offlinePracticeNothingSaved": "Na tomto zařízení není uloženo dostatek obsahu pro offline procvičování. Zkuste to znovu, až budete online."
 }

@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
 
+import 'package:fluffychat/features/connection_status/connection_status_controller.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_repo.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_request.dart';
@@ -79,27 +80,44 @@ class GrammarConstructsProvider {
     return morphs.getFeature(feature);
   }
 
-  static MorphFeaturesAndTags getFeaturesAndTags() {
-    final response = GrammarConstructsRepo.instance.getCached(_request);
-    if (response != null) {
-      return MorphFeaturesAndTags.fromGrammarConstructsResponse(
-        response: response,
-      );
-    }
+  /// The last labels fetched for the learner's language pair, whatever their
+  /// age, else the built-in English ones. Reads no network. See
+  /// grammar-analytics.instructions.md, "Morph feature inventory".
+  static MorphFeaturesAndTags getFeaturesAndTags() =>
+      _savedFeaturesAndTags() ?? defaultFeaturesAndTags;
 
-    return defaultFeaturesAndTags;
+  /// The labels saved on this device for the learner's language pair, whatever
+  /// their age, or null when this device has never fetched any. Reads no
+  /// network.
+  static Future<MorphFeaturesAndTags?> savedFeaturesAndTags() async {
+    await GrammarConstructsRepo.instance.cacheReady;
+    return _savedFeaturesAndTags();
   }
 
+  static MorphFeaturesAndTags? _savedFeaturesAndTags() {
+    final response = GrammarConstructsRepo.instance.getSaved(_request);
+    if (response == null) return null;
+    return MorphFeaturesAndTags.fromGrammarConstructsResponse(
+      response: response,
+    );
+  }
+
+  /// Today's labels, fetched when the saved ones are more than a day old. When
+  /// a fetch fails, or the app cannot reach Pangea, the saved labels of any
+  /// age stand in. No fetch is tried while the app cannot reach Pangea, because
+  /// it would wait out the request timeout before falling back the same way.
   static Future<MorphFeaturesAndTags> fetchFeaturesAndTags() async {
-    final result = await GrammarConstructsRepo.instance.get(_request);
-    final response = result.asValue?.value;
-    if (response != null) {
-      return MorphFeaturesAndTags.fromGrammarConstructsResponse(
-        response: response,
-      );
+    if (!ConnectionStatusController.instance.cannotReachPangea) {
+      final result = await GrammarConstructsRepo.instance.get(_request);
+      final response = result.asValue?.value;
+      if (response != null) {
+        return MorphFeaturesAndTags.fromGrammarConstructsResponse(
+          response: response,
+        );
+      }
     }
 
-    return defaultFeaturesAndTags;
+    return await savedFeaturesAndTags() ?? defaultFeaturesAndTags;
   }
 
   /// Flag a grammar meaning (#6839): send the user's feedback to the

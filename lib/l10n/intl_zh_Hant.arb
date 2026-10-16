@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 10:37:35.799128",
+    "@@last_modified": "2026-10-16 11:49:10.277003",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10080,5 +10080,6 @@
     "callNotificationsMissedMessage": "Pangea Chat 關閉時有來電，但由於通知已關閉，您的手機無法響鈴。請允許通知，以便下次來電響鈴。",
     "connectionPracticeVocab": "等待時練習詞彙",
     "offlinePracticeNote": "離線。上線後將上傳您的答案。",
-    "offlinePracticeSavedNote": "已儲存至此裝置。上線後將上傳您的經驗值。"
+    "offlinePracticeSavedNote": "已儲存至此裝置。上線後將上傳您的經驗值。",
+    "offlinePracticeNothingSaved": "此裝置上儲存的內容不足，無法離線練習。請在連線後再試一次。"
 }

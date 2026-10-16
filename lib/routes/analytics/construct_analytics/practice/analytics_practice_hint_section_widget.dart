@@ -53,6 +53,8 @@ class AnalyticsPracticeExerciseHintSection extends StatelessWidget {
           ),
         ),
       ),
+      // An offline exercise has no translation, so it has no hint.
+      GrammarErrorPracticeExerciseModel(translation: null) => const SizedBox(),
       GrammarErrorPracticeExerciseModel() => Container(
         padding: const EdgeInsets.symmetric(vertical: 16.0),
         constraints: const BoxConstraints(minHeight: 50.0),

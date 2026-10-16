@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-16 10:37:27.211917",
+    "@@last_modified": "2026-10-16 11:48:58.780687",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2436,5 +2436,6 @@
     "callNotificationsMissedMessage": "Símtal barst á meðan Pangea Chat var lokað, en síminn þinn gat ekki hringt vegna þess að tilkynningar eru óvirkar. Leyfðu tilkynningar svo næsta símtal hringi.",
     "connectionPracticeVocab": "Æfðu orðaforða á meðan þú bíður",
     "offlinePracticeNote": "Ótengdur. Svörin þín hlaðast upp þegar þú ert kominn aftur.",
-    "offlinePracticeSavedNote": "Vistað á þessu tæki. XP þín hlaðast upp þegar þú ert kominn aftur á netið."
+    "offlinePracticeSavedNote": "Vistað á þessu tæki. XP þín hlaðast upp þegar þú ert kominn aftur á netið.",
+    "offlinePracticeNothingSaved": "Ekki er nægilegt efni vistað á þessu tæki til að æfa án nettengingar. Reyndu aftur þegar þú ert kominn/komin á netið."
 }

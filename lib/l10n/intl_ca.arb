@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 10:37:22.906432",
+    "@@last_modified": "2026-10-16 11:48:53.548840",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10101,5 +10101,6 @@
     "callNotificationsMissedMessage": "Ha entrat una trucada mentre Pangea Chat estava tancat, però el teu telèfon no ha pogut sonar perquè les notificacions estan desactivades. Permet les notificacions perquè la propera trucada soni.",
     "connectionPracticeVocab": "Practica vocabulari mentre esperes",
     "offlinePracticeNote": "Fora de línia. Les teves respostes es pujaran quan tornis a estar connectat.",
-    "offlinePracticeSavedNote": "Guardat en aquest dispositiu. La teva XP es pujarà quan tornis a estar en línia."
+    "offlinePracticeSavedNote": "Guardat en aquest dispositiu. La teva XP es pujarà quan tornis a estar en línia.",
+    "offlinePracticeNothingSaved": "No s'ha desat prou contingut en aquest dispositiu per practicar sense connexió. Torna-ho a provar quan tinguis connexió."
 }

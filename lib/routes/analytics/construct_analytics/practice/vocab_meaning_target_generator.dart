@@ -12,7 +12,7 @@ class VocabMeaningTargetGenerator {
   /// [offline] picks for an offline session: only words with a meaning saved
   /// on this device, and without the 24-hour pause on recently practiced
   /// words, because the saved words are all the session has. See
-  /// practice-exercises.instructions.md, "Offline Vocab Practice".
+  /// practice-exercises.instructions.md, "Offline Practice".
   static Future<List<AnalyticsPracticeTarget>> get(
     List<ConstructUses> constructs, {
     bool offline = false,

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 10:37:25.717956",
+    "@@last_modified": "2026-10-16 11:48:56.034574",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10885,5 +10885,6 @@
     "callNotificationsMissedMessage": "שיחה נכנסה כש-Pangea Chat היה סגור, אך הטלפון שלך לא יכל לצלצל כי ההתראות כבויות. אפשר התראות כדי שהשיחה הבאה תצלצל.",
     "connectionPracticeVocab": "תרגל אוצר מילים בזמן שאתה ממתין",
     "offlinePracticeNote": "לא מקוון. התשובות שלך יעלו כשתחזור.",
-    "offlinePracticeSavedNote": "נשמר במכשיר זה. ה-XP שלך יעלה כשתחזור למצב מקוון."
+    "offlinePracticeSavedNote": "נשמר במכשיר זה. ה-XP שלך יעלה כשתחזור למצב מקוון.",
+    "offlinePracticeNothingSaved": "לא נשמר מספיק ביישום זה כדי לתרגל במצב לא מקוון. נסה שוב כשתהיה מחובר."
 }

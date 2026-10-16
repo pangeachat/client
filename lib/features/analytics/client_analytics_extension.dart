@@ -288,15 +288,21 @@ extension AnalyticsClientExtension on Client {
         .isNotEmpty;
   }
 
+  /// The message [use] came from. [savedOnly] reads only the messages saved
+  /// on this device and never asks the server, for an offline practice
+  /// session; a message that is not saved is then null. See
+  /// practice-exercises.instructions.md, "Offline Practice".
   Future<PangeaMessageEvent?> getEventByConstructUse(
-    OneConstructUse use,
-  ) async {
+    OneConstructUse use, {
+    bool savedOnly = false,
+  }) async {
     if (use.metadata.eventId == null || use.metadata.roomId == null) {
       return null;
     }
 
-    // wait for all rooms to sync
-    if (prevBatch == null) {
+    // wait for all rooms to sync. A device that never synced has no saved
+    // messages to wait for.
+    if (prevBatch == null && !savedOnly) {
       await onSync.stream.first;
     }
 
@@ -306,9 +312,15 @@ extension AnalyticsClientExtension on Client {
       return null;
     }
 
+    Future<Event?> lookUp(String eventId) => savedOnly
+        ? database.getEventById(eventId, room)
+        : room.getEventById(eventId);
+
     try {
-      Event? event = await room.getEventById(use.metadata.eventId!);
+      Event? event = await lookUp(use.metadata.eventId!);
       if (event == null) {
+        // Expected offline: not every message is saved on this device.
+        if (savedOnly) return null;
         ErrorHandler.logError(
           e: "Event not found for construct use",
           level: SentryLevel.warning,
@@ -325,7 +337,7 @@ extension AnalyticsClientExtension on Client {
       if (event.relationshipType == RelationshipTypes.edit) {
         final parentId = event.relationshipEventId;
         if (parentId != null) {
-          final parentEvent = await room.getEventById(parentId);
+          final parentEvent = await lookUp(parentId);
           if (parentEvent == null) return null;
           event = parentEvent;
         }

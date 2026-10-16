@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-16 10:37:31.528657",
+    "@@last_modified": "2026-10-16 11:49:04.877119",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10059,5 +10059,6 @@
     "callNotificationsMissedMessage": "Połączenie nadeszło, gdy Pangea Chat był zamknięty, ale telefon nie mógł zadzwonić, ponieważ powiadomienia są wyłączone. Zezwól na powiadomienia, aby następne połączenie zadzwoniło.",
     "connectionPracticeVocab": "Ćwicz słownictwo, czekając",
     "offlinePracticeNote": "Offline. Twoje odpowiedzi zostaną przesłane, gdy wrócisz do sieci.",
-    "offlinePracticeSavedNote": "Zapisano na tym urządzeniu. Twoje PD zostaną przesłane, gdy wrócisz do sieci."
+    "offlinePracticeSavedNote": "Zapisano na tym urządzeniu. Twoje PD zostaną przesłane, gdy wrócisz do sieci.",
+    "offlinePracticeNothingSaved": "Na tym urządzeniu nie ma wystarczającej liczby zapisanych danych, aby ćwiczyć offline. Spróbuj ponownie, gdy będziesz online."
 }
