@@ -284,6 +284,14 @@ extension WorldMapClientExtension on Client {
     return WorldMapSignalUtils.reduceActivityCompletions(facts);
   }
 
+  /// Activities where one of the learner's sessions has a full star row (every
+  /// goal of their role collected): the Priority matrix's `completed` term,
+  /// which the course page's Activities row drops (quests.instructions.md).
+  Set<String> get fullStarRowActivityIds => {
+    for (final e in activityCompletionStatuses.entries)
+      if (e.value == MapCompletionFilter.completed) e.key,
+  };
+
   List<ActivitySessionFacts> get _activitySessionFacts => rooms
       .map((r) {
         final activityId = r.activityId;

@@ -16,9 +16,10 @@ import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 /// dropped server-side. Contract: activity-session-previews.instructions.md
 /// (synapse-pangea-chat).
 ///
-/// Not yet wired into discovery — the world map and activity start page still
-/// resolve sessions via the client-side hierarchy walk in
-/// activity_session_discovery.dart until the adoption lands.
+/// This is discovery's server half: the world map and the activity start page
+/// read course sessions through [loadActivitySessionPreviews];
+/// activity_session_discovery.dart keeps the local inputs (which spaces to ask
+/// about, and which invited rooms need their own preview).
 extension ActivitySessionPreviewsApi on Api {
   Future<RoomSummariesResponse> getActivitySessionPreviews(
     List<String> spaceIds, {

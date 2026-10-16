@@ -47,9 +47,13 @@ class CourseInfoSummariesModel extends RoomSummariesModel {
     this.activitiesToCompleteOverride,
   });
 
+  // [RoomSummaryResponse.activityId] first: a v3 session's thin plan ref
+  // leaves [RoomSummaryResponse.activityPlan] null, so keying on the plan alone
+  // never marked a v3 activity complete. The plan covers legacy rooms that
+  // carry only a `bookmark_id`.
   Set<String> _completedActivities(String userID) => _roomSummaries.values
       .where((e) => e.isCompleteByUserId(userID))
-      .map((e) => e.activityPlan?.activityId)
+      .map((e) => e.activityId ?? e.activityPlan?.activityId)
       .whereType<String>()
       .toSet();
 
