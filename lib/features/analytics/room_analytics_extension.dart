@@ -36,70 +36,73 @@ extension AnalyticsRoomExtension on Room {
     return analyticsEvents;
   }
 
-  /// Sends construct events to the server.
+  /// Sends [batches] of construct uses in order and reports which of them the
+  /// server accepted.
   ///
-  /// The [uses] parameter is a list of [OneConstructUse] objects representing the
-  /// constructs to be sent. To prevent hitting the maximum event size, the events
-  /// are chunked into smaller lists. Each chunk is sent as a separate event.
-  Future<void> sendConstructsEvent(List<OneConstructUse> uses) async {
+  /// No pending copy is shown: nothing displays this room, and a pending copy
+  /// reads as the server's on `onSync` and outlives a failed send (#9511).
+  Future<ConstructsUploadResult> sendConstructsEvent(
+    List<List<OneConstructUse>> batches,
+  ) async {
     // It's possible that the user has no info to send yet, but to prevent trying
     // to load the data over and over again, we'll sometimes send an empty event to
     // indicate that we have checked and there was no data.
-    if (uses.isEmpty) {
-      final constructsModel = ConstructAnalyticsModel(uses: []);
-      await sendEvent(
-        constructsModel.toJson(),
-        type: PangeaEventTypes.construct,
+    if (batches.every((batch) => batch.isEmpty)) {
+      final eventId = await _sendConstructUses([]);
+      return ConstructsUploadResult(
+        batchCount: batches.length,
+        acceptedBatchCount: eventId == null ? 0 : batches.length,
+        partlyAcceptedUseCount: 0,
+        acceptedEventIds: [?eventId],
       );
-      return;
     }
 
-    // these events can get big, so we chunk them to prevent hitting the max event size.
-    // go through each of the uses being sent and add them to the current chunk until
-    // the size (in bytes) of the current chunk is greater than the max event size, then
-    // start a new chunk until all uses have been added.
-    final List<List<OneConstructUse>> useChunks = [];
-    List<OneConstructUse> currentChunk = [];
-    int currentChunkSize = 0;
-
-    for (final use in uses) {
-      // get the size, in bytes, of the json representation of the use
-      final json = use.toJson();
-      final jsonString = jsonEncode(json);
-      final jsonSizeInBytes = utf8.encode(jsonString).length;
-
-      // If this use would tip this chunk over the size limit,
-      // add it to the list of all chunks and start a new chunk.
-      //
-      // I tested with using the maxPDUSize constant, but the events
-      // were still too large. 50000 seems to be a safe number of bytes.
-      if (currentChunkSize + jsonSizeInBytes > (maxPDUSize - 10000)) {
-        useChunks.add(currentChunk);
-        currentChunk = [];
-        currentChunkSize = 0;
-      }
-
-      // add this use to the current chunk
-      currentChunk.add(use);
-      currentChunkSize += jsonSizeInBytes;
-    }
-
-    if (currentChunk.isNotEmpty) {
-      useChunks.add(currentChunk);
-    }
-
-    for (final chunk in useChunks) {
-      final constructsModel = ConstructAnalyticsModel(uses: chunk);
-      final String? eventId = await sendEvent(
-        constructsModel.toJson(),
-        type: PangeaEventTypes.construct,
-      );
+    final acceptedEventIds = <String>[];
+    var acceptedBatchCount = 0;
+    var partlyAcceptedUseCount = 0;
+    for (final event in PackedConstructEvent.pack(batches)) {
+      final eventId = await _sendConstructUses(event.uses);
+      // The events after a refused one would most likely be refused too, and
+      // each refusal costs the SDK's full send timeout.
+      if (eventId == null) break;
+      acceptedEventIds.add(eventId);
+      acceptedBatchCount = event.completedBatchCount;
+      partlyAcceptedUseCount = event.sentUsesOfSplitBatch;
 
       // Send-then-POST: the Matrix write is already durable; now best-effort
       // dual-write this batch to the teacher-BFF under its REAL event id. This
       // is a no-op unless the feature is enabled + a BFF URL is configured, and
       // it never throws — a failure is swallowed and cannot affect this flow.
-      _dualWriteConstructUses(eventId, chunk);
+      _dualWriteConstructUses(eventId, event.uses);
+    }
+
+    return ConstructsUploadResult(
+      batchCount: batches.length,
+      acceptedBatchCount: acceptedBatchCount,
+      partlyAcceptedUseCount: partlyAcceptedUseCount,
+      acceptedEventIds: acceptedEventIds,
+    );
+  }
+
+  /// The id the server gave the event, or null when it did not accept it.
+  ///
+  /// The SDK returns null for most refusals but throws for a few (`M_FORBIDDEN`,
+  /// an event over its size limit). Those are caught here so that an upload
+  /// still reports the events accepted before the refused one.
+  Future<String?> _sendConstructUses(List<OneConstructUse> uses) async {
+    try {
+      return await sendEvent(
+        ConstructAnalyticsModel(uses: uses).toJson(),
+        type: PangeaEventTypes.construct,
+        displayPendingEvent: false,
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"roomId": id, "useCount": uses.length},
+      );
+      return null;
     }
   }
 
@@ -108,12 +111,9 @@ extension AnalyticsRoomExtension on Room {
   /// Deliberately NOT awaited: the construct event is already written to Matrix
   /// (the durable source of truth), so the dual-write is a pure side-channel and
   /// must not add latency or failure surface to [sendConstructsEvent]. The repo
-  /// never throws; this only guards the pre-conditions (a resolved event id and
-  /// a self-owned analytics room) before firing.
-  void _dualWriteConstructUses(String? eventId, List<OneConstructUse> chunk) {
-    // A null id means sendEvent could not resolve one (e.g. offline queue); the
-    // server rejects blank/placeholder ids, so skip rather than post a bad one.
-    if (eventId == null || eventId.isEmpty) return;
+  /// never throws; this only guards the pre-condition (a self-owned analytics
+  /// room) before firing.
+  void _dualWriteConstructUses(String eventId, List<OneConstructUse> chunk) {
     // The endpoint's ownership check requires the caller to be the analytics
     // room creator; only dual-write our OWN analytics room.
     if (!isAnalyticsRoomOfUser(client.userID ?? "")) return;

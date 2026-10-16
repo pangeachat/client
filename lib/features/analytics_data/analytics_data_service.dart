@@ -161,7 +161,10 @@ class AnalyticsDataService {
   /// auto-save sweep keeps running on either side of that window (its own
   /// client is alive, with rooms), so reading through the analytics client
   /// threw on every plan hydration and blocked the archive (#9017).
-  Room? _getAnalyticsRoomLocal(LanguageModel lang) =>
+  ///
+  /// [getAnalyticsRoomLocal] never creates a room; [getAnalyticsRoom] creates
+  /// one when the language has none.
+  Room? getAnalyticsRoomLocal(LanguageModel lang) =>
       _accountClient.ownAnalyticsRoomLocal(lang: lang);
 
   Future<Room?> getAnalyticsRoom(LanguageModel lang) =>
@@ -243,9 +246,7 @@ class AnalyticsDataService {
         l2 != null ? database.getAnalyticsRoomId() : Future<String?>.value(),
       ).wait;
 
-      final analyticsRoomId = l2 != null
-          ? _getAnalyticsRoomLocal(l2)?.id
-          : null;
+      final analyticsRoomId = l2 != null ? getAnalyticsRoomLocal(l2)?.id : null;
 
       if (analyticsUserId != client.userID ||
           storedLanguage == null ||
@@ -430,10 +431,6 @@ class AnalyticsDataService {
     );
   }
 
-  Future<void> waitForSync(String analyticsRoomID) async {
-    await _syncController?.waitForSync(analyticsRoomID);
-  }
-
   /// The cached stats, but only when they are [language]'s. This is the
   /// synchronous placeholder a UI surface paints before [derivedData] resolves,
   /// so handing back another language's totals shows the learner a level that
@@ -521,6 +518,12 @@ class AnalyticsDataService {
   ) async {
     await _ensureInitialized();
     return _analyticsClientGetter.database.getLocalUseBatches(language);
+  }
+
+  /// See [AnalyticsDatabase.getLocalUseLanguages].
+  Future<Set<String>> getLocalUseLanguages() async {
+    await _ensureInitialized();
+    return _analyticsClientGetter.database.getLocalUseLanguages();
   }
 
   Future<int> getLocalConstructCount(String language) async {
@@ -957,18 +960,29 @@ class AnalyticsDataService {
   /// sides, so the total is settled here rather than on the next unrelated
   /// sync. Only the uploaded batches may be dropped — uses recorded while the
   /// upload was in flight were not in it, and clearing the whole language
-  /// destroyed them before they were ever sent (#7720).
+  /// destroyed them before they were ever sent (#7720). [trimmedBatches] keeps
+  /// only the unsent part of a batch the server accepted part of (#9511).
   Future<void> clearLocalAnalytics(
     String language,
-    Iterable<String> batchKeys,
-  ) async {
+    Iterable<String> batchKeys, {
+    Map<String, List<OneConstructUse>> trimmedBatches = const {},
+  }) async {
     _invalidateCaches();
     await _ensureInitialized();
     await _analyticsClientGetter.database.clearLocalConstructData(
       language,
       batchKeys: batchKeys,
+      trimmedBatches: trimmedBatches,
     );
     _invalidateCaches();
-    await _recomputeTotalXP(language);
+    // The merge table and blocked constructs the total is folded over are the
+    // L2's, so another language's total is left as it is: recomputing it here
+    // would store and publish a level built from the wrong language's state.
+    // It is recomputed when the learner returns to that language and the sync
+    // controller catches up on its analytics room.
+    if (language ==
+        MatrixState.pangeaController.userController.userL2?.langCodeShort) {
+      await _recomputeTotalXP(language);
+    }
   }
 }
