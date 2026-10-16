@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-16 11:49:03.350828",
+    "@@last_modified": "2026-10-16 16:33:07.687635",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "စောင့်နေတုန်း ဝေါဟာရလေ့ကျင့်ပါ",
     "offlinePracticeNote": "အော့ဖ်လိုင်း။ သင်ပြန်ရောက်တဲ့အခါ သင့်အဖြေများကို အပ်လုဒ်လုပ်ပါမည်။",
     "offlinePracticeSavedNote": "ဤစက်တွင် သိမ်းဆည်းထားသည်။ သင်အွန်လိုင်းပြန်ရောက်သည့်အခါ သင့် XP ကို အပ်လုဒ်လုပ်ပါမည်။",
-    "offlinePracticeNothingSaved": "အော့ဖ်လိုင်းလေ့ကျင့်ဖို့ ဒီစက်ထဲမှာ လုံလောက်အောင် သိမ်းဆည်းထားတာ မရှိသေးပါဘူး။ အွန်လိုင်းပြန်ရောက်တဲ့အခါ ထပ်ကြိုးစားကြည့်ပါ။"
+    "offlinePracticeNothingSaved": "အော့ဖ်လိုင်းလေ့ကျင့်ဖို့ ဒီစက်ထဲမှာ လုံလောက်အောင် သိမ်းဆည်းထားတာ မရှိသေးပါဘူး။ အွန်လိုင်းပြန်ရောက်တဲ့အခါ ထပ်ကြိုးစားကြည့်ပါ။",
+    "missionNumber": "မစ်ရှင် {index}",
+    "xpToYourStar": "သင့်ကြယ်ပွင့်အတွက် {xp} XP",
+    "missionStarEarned": "ကြယ်ပွင့်ရရှိခဲ့သည်!",
+    "xpFromChats": "ချက်တင်များ {xp}",
+    "xpFromGoals": "ပန်းတိုင်များ {xp}",
+    "xpFromPractice": "လေ့ကျင့်မှု {xp}",
+    "playMission": "ကစားရန်",
+    "wordCount": "{count, plural, =1{စကားလုံး ၁ လုံး} other{စကားလုံး {count} လုံး}}",
+    "continueActivity": "ဆက်လုပ်ရန်",
+    "noObjectiveActivitiesYet": "ဤပန်းတိုင်အတွက် လှုပ်ရှားမှုတစ်ခုမျှ မပြီးဆုံးသေးပါ။ သင့်သင်တန်းမှ စတင်လိုက်ပါ။",
+    "objectiveNotInYourCourses": "ဤပန်းတိုင်သည် သင့်သင်တန်းများထဲတွင် မရှိပါ။",
+    "objectiveActivityCount": "{count, plural, =0{လှုပ်ရှားမှုများ မရှိသေးပါ} =1{လှုပ်ရှားမှု ၁ ခု ကစားပြီးပါပြီ} other{လှုပ်ရှားမှု {count} ခု ကစားပြီးပါပြီ}}",
+    "activityCompleted": "ပြီးစီးခဲ့သည်",
+    "completedTimes": "{count} ကြိမ် ပြီးစီးခဲ့သည်",
+    "classLocation": "အတန်းတည်နေရာ",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

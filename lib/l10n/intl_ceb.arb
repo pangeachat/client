@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-16 11:48:53.595165",
+    "@@last_modified": "2026-10-16 16:32:55.471253",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Pagpraktis og bokabularyo samtang naghulat ka",
     "offlinePracticeNote": "Offline. Ang imong mga tubag ma-upload kung makabalik ka na.",
     "offlinePracticeSavedNote": "Naka-save sa kini nga device. Ang imong XP ma-upload kung online ka na usab.",
-    "offlinePracticeNothingSaved": "Dili pa igo ang na-save sa kini nga device aron makapraktis offline. Sulayi pag-usab kung online ka na."
+    "offlinePracticeNothingSaved": "Dili pa igo ang na-save sa kini nga device aron makapraktis offline. Sulayi pag-usab kung online ka na.",
+    "missionNumber": "Misyon {index}",
+    "xpToYourStar": "{xp} XP sa imong bituon",
+    "missionStarEarned": "Nakakuha og bituon!",
+    "xpFromChats": "Mga chat {xp}",
+    "xpFromGoals": "Mga tumong {xp}",
+    "xpFromPractice": "Praktis {xp}",
+    "playMission": "Pagdula",
+    "wordCount": "{count, plural, =1{1 ka pulong} other{{count} ka pulong}}",
+    "continueActivity": "Ipadayon",
+    "noObjectiveActivitiesYet": "Wala ka pa nakakompleto og kalihokan para niining tumong. Sugdi ang usa gikan sa imong kurso.",
+    "objectiveNotInYourCourses": "Kini nga tumong wala sa bisan asa sa imong mga kurso.",
+    "objectiveActivityCount": "{count, plural, =0{Wala pay kalihokan} =1{1 ka kalihokan ang nadula} other{{count} ka kalihokan ang nadula}}",
+    "activityCompleted": "Nakompleto",
+    "completedTimes": "Nakompleto {count} ka beses",
+    "classLocation": "Lokasyon sa klase",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

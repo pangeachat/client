@@ -2073,7 +2073,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-16 11:48:54.807213",
+    "@@last_modified": "2026-10-16 16:32:57.499198",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10846,5 +10846,21 @@
     "connectionPracticeVocab": "Magsanay ng bokabularyo habang naghihintay",
     "offlinePracticeNote": "Offline. Maa-upload ang iyong mga sagot kapag online ka na ulit.",
     "offlinePracticeSavedNote": "Naka-save sa device na ito. Maa-upload ang iyong XP kapag online ka na ulit.",
-    "offlinePracticeNothingSaved": "Hindi sapat ang na-save sa device na ito para mag-practice offline. Subukang muli kapag online ka na."
+    "offlinePracticeNothingSaved": "Hindi sapat ang na-save sa device na ito para mag-practice offline. Subukang muli kapag online ka na.",
+    "missionNumber": "Misyon {index}",
+    "xpToYourStar": "{xp} XP para sa iyong bituin",
+    "missionStarEarned": "Nakuha ang bituin!",
+    "xpFromChats": "Mga chat {xp}",
+    "xpFromGoals": "Mga layunin {xp}",
+    "xpFromPractice": "Pagsasanay {xp}",
+    "playMission": "Maglaro",
+    "wordCount": "{count, plural, =1{1 salita} other{{count} salita}}",
+    "continueActivity": "Magpatuloy",
+    "noObjectiveActivitiesYet": "Hindi mo pa nakumpleto ang isang aktibidad para sa layuning ito. Magsimula ng isa mula sa iyong kurso.",
+    "objectiveNotInYourCourses": "Wala ang layuning ito sa alinman sa iyong mga kurso.",
+    "objectiveActivityCount": "{count, plural, =0{Wala pang aktibidad} =1{1 aktibidad ang nilaro} other{{count} aktibidad ang nilaro}}",
+    "activityCompleted": "Nakumpleto",
+    "completedTimes": "Nakumpleto nang {count} beses",
+    "classLocation": "Lokasyon ng klase",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

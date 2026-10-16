@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-16 11:49:09.641230",
+    "@@last_modified": "2026-10-16 16:33:15.908664",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Ziqhelanise nesigama ngelixa ulindile",
     "offlinePracticeNote": "Akukho intanethi. Iimpendulo zakho ziya kulayishwa xa ubuyile.",
     "offlinePracticeSavedNote": "Igcinwe kwesi sixhobo. I-XP yakho iya kulayishwa xa ubuyile kwi-intanethi.",
-    "offlinePracticeNothingSaved": "Akukho okwaneleyo okugcinwe kwesi sixhobo ukuze uziqhelanise ungaxhunyiwe kwi-intanethi. Zama kwakhona xa ubuyele kwi-intanethi."
+    "offlinePracticeNothingSaved": "Akukho okwaneleyo okugcinwe kwesi sixhobo ukuze uziqhelanise ungaxhunyiwe kwi-intanethi. Zama kwakhona xa ubuyele kwi-intanethi.",
+    "missionNumber": "Umsebenzi {index}",
+    "xpToYourStar": "{xp} XP kwinkwenkwezi yakho",
+    "missionStarEarned": "Inkwenkwezi ifunyenwe!",
+    "xpFromChats": "Iingxoxo {xp}",
+    "xpFromGoals": "Iinjongo {xp}",
+    "xpFromPractice": "Ziqhelanise {xp}",
+    "playMission": "Dlala",
+    "wordCount": "{count, plural, =1{1 igama} other{{count} amagama}}",
+    "continueActivity": "Qhubeka",
+    "noObjectiveActivitiesYet": "Awukawugqibi umsebenzi wale njongo okwangoku. Qala omnye kwikhosi yakho.",
+    "objectiveNotInYourCourses": "Le njongo ayikho nakweyiphi na ikhosi yakho.",
+    "objectiveActivityCount": "{count, plural, =0{Ayikho imisebenzi okwangoku} =1{1 umsebenzi odlalwe} other{{count} imisebenzi edlalwe}}",
+    "activityCompleted": "Kugqityiwe",
+    "completedTimes": "Kugqityiwe {count} amaxesha",
+    "classLocation": "Indawo yeklasi",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

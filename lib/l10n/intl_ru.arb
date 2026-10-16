@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-16 11:49:05.730735",
+    "@@last_modified": "2026-10-16 16:33:10.250957",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10961,5 +10961,21 @@
     "connectionPracticeVocab": "Практикуйте лексику, пока ждете",
     "offlinePracticeNote": "Офлайн. Ваши ответы загрузятся, когда вы вернетесь в сеть.",
     "offlinePracticeSavedNote": "Сохранено на этом устройстве. Ваш опыт загрузится, когда вы снова будете онлайн.",
-    "offlinePracticeNothingSaved": "На этом устройстве недостаточно сохранено для практики в автономном режиме. Повторите попытку, когда снова будете в сети."
+    "offlinePracticeNothingSaved": "На этом устройстве недостаточно сохранено для практики в автономном режиме. Повторите попытку, когда снова будете в сети.",
+    "missionNumber": "Миссия {index}",
+    "xpToYourStar": "{xp} XP до вашей звезды",
+    "missionStarEarned": "Звезда получена!",
+    "xpFromChats": "Чаты {xp}",
+    "xpFromGoals": "Цели {xp}",
+    "xpFromPractice": "Практика {xp}",
+    "playMission": "Играть",
+    "wordCount": "{count, plural, =1{1 слово} few{{count} слова} many{{count} слов} other{{count} слов}}",
+    "continueActivity": "Продолжить",
+    "noObjectiveActivitiesYet": "Вы еще не выполнили задание для этой цели. Начните его из своего курса.",
+    "objectiveNotInYourCourses": "Этой цели нет ни в одном из ваших курсов.",
+    "objectiveActivityCount": "{count, plural, =0{Пока нет заданий} =1{Выполнено 1 задание} few{Выполнено {count} задания} many{Выполнено {count} заданий} other{Выполнено {count} заданий}}",
+    "activityCompleted": "Выполнено",
+    "completedTimes": "Выполнено {count} раз",
+    "classLocation": "Место проведения занятия",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

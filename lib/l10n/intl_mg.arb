@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-16 11:49:02.921605",
+    "@@last_modified": "2026-10-16 16:33:05.589419",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Manao fanazaran-teny voambolana eo am-piandrasana",
     "offlinePracticeNote": "Tsy an-tserasera. Hampidirina ny valinteninao rehefa miverina ianao.",
     "offlinePracticeSavedNote": "Voatahiry amin'ity fitaovana ity. Hampidirina ny XP-nao rehefa miverina an-tserasera ianao.",
-    "offlinePracticeNothingSaved": "Tsy ampy ny voatahiry amin'ity fitaovana ity mba hanaovana fanazaran-tena ivelan'ny aterineto. Andramo indray rehefa tafaverina an-tserasera ianao."
+    "offlinePracticeNothingSaved": "Tsy ampy ny voatahiry amin'ity fitaovana ity mba hanaovana fanazaran-tena ivelan'ny aterineto. Andramo indray rehefa tafaverina an-tserasera ianao.",
+    "missionNumber": "Ireo iraka {index}",
+    "xpToYourStar": "{xp} XP mankany amin'ny kintanao",
+    "missionStarEarned": "Kintana azo!",
+    "xpFromChats": "Chat {xp}",
+    "xpFromGoals": "Tanjona {xp}",
+    "xpFromPractice": "Fanazaran-tena {xp}",
+    "playMission": "Alefaso",
+    "wordCount": "{count, plural, =1{teny 1} other{{count} teny}}",
+    "continueActivity": "Tohizo",
+    "noObjectiveActivitiesYet": "Mbola tsy nahavita asa ho an'ity tanjona ity ianao. Atombohy avy amin'ny taranjao.",
+    "objectiveNotInYourCourses": "Ity tanjona ity dia tsy ao anatin'ny taranjao rehetra.",
+    "objectiveActivityCount": "{count, plural, =0{Tsy misy asa eto} =1{Asa 1 vita} other{{count} asa vita}}",
+    "activityCompleted": "Vita",
+    "completedTimes": "Vita in- {count}",
+    "classLocation": "Toerana misy ny kilasy",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

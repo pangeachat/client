@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-16 11:49:06.840852",
+    "@@last_modified": "2026-10-16 16:33:11.482189",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Fa'ata'ita'i upu a'o e fa'atali",
     "offlinePracticeNote": "Leai se initaneti. O au tali o le a lafo i luga pe a e toe feso'ota'i.",
     "offlinePracticeSavedNote": "Ua sefe i luga o lenei masini. O lau XP o le a lafo i luga pe a e toe feso'ota'i i le initaneti.",
-    "offlinePracticeNothingSaved": "E le lava mea o lo'o teuina i luga o lenei masini e fa'ata'ita'i ai tuimotu. Toe taumafai pe a e toe feso'ota'i i luga o le initaneti."
+    "offlinePracticeNothingSaved": "E le lava mea o lo'o teuina i luga o lenei masini e fa'ata'ita'i ai tuimotu. Toe taumafai pe a e toe feso'ota'i i luga o le initaneti.",
+    "missionNumber": "Misiona {index}",
+    "xpToYourStar": "{xp} XP i lau fetu",
+    "missionStarEarned": "Ua maua le fetu!",
+    "xpFromChats": "Talanoaga {xp}",
+    "xpFromGoals": "Sini {xp}",
+    "xpFromPractice": "Faataʻitaʻiga {xp}",
+    "playMission": "Taaalo",
+    "wordCount": "{count, plural, =1{1 upu} other{{count} upu}}",
+    "continueActivity": "Faʻaauau",
+    "noObjectiveActivitiesYet": "E te leʻi faʻamaeʻaina se gaioiga mo lenei sini. Amata se tasi mai lau kosi.",
+    "objectiveNotInYourCourses": "O lenei sini e le o iai i au kosi.",
+    "objectiveActivityCount": "{count, plural, =0{Leai ni gaioiga} =1{1 gaioiga na taʻalo} other{{count} gaioiga na taʻalo}}",
+    "activityCompleted": "Faʻamaeʻaina",
+    "completedTimes": "Faʻamaeʻaina {count} taimi",
+    "classLocation": "Nofoaga o le vasega",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

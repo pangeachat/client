@@ -1930,7 +1930,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-16 11:49:02.602502",
+    "@@last_modified": "2026-10-16 16:33:02.508666",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10886,5 +10886,21 @@
     "connectionPracticeVocab": "ივარჯიშე ლექსიკაში, სანამ ელოდები",
     "offlinePracticeNote": "ხაზგარეშე რეჟიმში ხარ. შენი პასუხები აიტვირთება, როცა დაბრუნდები.",
     "offlinePracticeSavedNote": "შენახულია ამ მოწყობილობაზე. შენი XP აიტვირთება, როცა ონლაინ რეჟიმში დაბრუნდები.",
-    "offlinePracticeNothingSaved": "ამ მოწყობილობაზე საკმარისი არ არის შენახული ოფლაინ პრაქტიკისთვის. სცადეთ ხელახლა, როცა ონლაინ იქნებით."
+    "offlinePracticeNothingSaved": "ამ მოწყობილობაზე საკმარისი არ არის შენახული ოფლაინ პრაქტიკისთვის. სცადეთ ხელახლა, როცა ონლაინ იქნებით.",
+    "missionNumber": "მისია {index}",
+    "xpToYourStar": "{xp} XP თქვენს ვარსკვლავამდე",
+    "missionStarEarned": "ვარსკვლავი მოპოვებულია!",
+    "xpFromChats": "ჩეთები {xp}",
+    "xpFromGoals": "მიზნები {xp}",
+    "xpFromPractice": "პრაქტიკა {xp}",
+    "playMission": "თამაში",
+    "wordCount": "{count, plural, =1{1 სიტყვა} other{{count} სიტყვა}}",
+    "continueActivity": "გაგრძელება",
+    "noObjectiveActivitiesYet": "ამ მიზნისთვის აქტივობა ჯერ არ დაგისრულებიათ. დაიწყეთ თქვენი კურსიდან.",
+    "objectiveNotInYourCourses": "ეს მიზანი არ არის თქვენს არცერთ კურსში.",
+    "objectiveActivityCount": "{count, plural, =0{აქტივობები ჯერ არ არის} =1{1 აქტივობა შესრულებულია} other{{count} აქტივობა შესრულებულია}}",
+    "activityCompleted": "დასრულებულია",
+    "completedTimes": "დასრულებულია {count} ჯერ",
+    "classLocation": "კლასის მდებარეობა",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

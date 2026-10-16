@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 11:48:53.548840",
+    "@@last_modified": "2026-10-16 16:32:55.063851",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10116,5 +10116,21 @@
     "connectionPracticeVocab": "Practica vocabulari mentre esperes",
     "offlinePracticeNote": "Fora de línia. Les teves respostes es pujaran quan tornis a estar connectat.",
     "offlinePracticeSavedNote": "Guardat en aquest dispositiu. La teva XP es pujarà quan tornis a estar en línia.",
-    "offlinePracticeNothingSaved": "No s'ha desat prou contingut en aquest dispositiu per practicar sense connexió. Torna-ho a provar quan tinguis connexió."
+    "offlinePracticeNothingSaved": "No s'ha desat prou contingut en aquest dispositiu per practicar sense connexió. Torna-ho a provar quan tinguis connexió.",
+    "missionNumber": "Missió {index}",
+    "xpToYourStar": "{xp} XP per a la teva estrella",
+    "missionStarEarned": "Estrella aconseguida!",
+    "xpFromChats": "Xats {xp}",
+    "xpFromGoals": "Objectius {xp}",
+    "xpFromPractice": "Pràctica {xp}",
+    "playMission": "Jugar",
+    "wordCount": "{count, plural, =1{1 paraula} other{{count} paraules}}",
+    "continueActivity": "Continuar",
+    "noObjectiveActivitiesYet": "Encara no has completat cap activitat per a aquest objectiu. Comença'n una des del teu curs.",
+    "objectiveNotInYourCourses": "Aquest objectiu no es troba en cap dels teus cursos.",
+    "objectiveActivityCount": "{count, plural, =0{Encara no hi ha activitats} =1{1 activitat feta} other{{count} activitats fetes}}",
+    "activityCompleted": "Completada",
+    "completedTimes": "Completada {count} vegades",
+    "classLocation": "Ubicació de la classe",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

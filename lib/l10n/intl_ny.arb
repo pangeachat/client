@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-16 11:49:06.978180",
+    "@@last_modified": "2026-10-16 16:33:08.382100",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Yesetsani mawu pamene mukudikira",
     "offlinePracticeNote": "Palibe intaneti. Mayankho anu adzakwera mukabwerera.",
     "offlinePracticeSavedNote": "Zasungidwa pa chipangizochi. XP yanu idzakwera mukabwerera pa intaneti.",
-    "offlinePracticeNothingSaved": "Zosakwanira zasungidwa pa chipangizochi kuti muzichita popanda intaneti. Yesaninso mukakhala pa intaneti."
+    "offlinePracticeNothingSaved": "Zosakwanira zasungidwa pa chipangizochi kuti muzichita popanda intaneti. Yesaninso mukakhala pa intaneti.",
+    "missionNumber": "Ntchito {index}",
+    "xpToYourStar": "{xp} XP ku nyenyezi yanu",
+    "missionStarEarned": "Nyenyezi yapezeka!",
+    "xpFromChats": "Macheza {xp}",
+    "xpFromGoals": "Zolinga {xp}",
+    "xpFromPractice": "Kuchita {xp}",
+    "playMission": "Sewerani",
+    "wordCount": "{count, plural, =1{liwu limodzi} other{mawu {count}}}",
+    "continueActivity": "Pitirizani",
+    "noObjectiveActivitiesYet": "Simunamalizebe ntchito iliyonse pa cholinga ichi. Yambani imodzi kuchokera ku maphunziro anu.",
+    "objectiveNotInYourCourses": "Cholinga ichi sichili mu maphunziro anu aliwonse.",
+    "objectiveActivityCount": "{count, plural, =0{Palibe ntchitobe} =1{ntchito imodzi yachitika} other{ntchito {count} zachitika}}",
+    "activityCompleted": "Yamalizidwa",
+    "completedTimes": "Yamalizidwa {count} nthawi",
+    "classLocation": "Malo a kalasi",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

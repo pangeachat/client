@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 11:48:54.793166",
+    "@@last_modified": "2026-10-16 16:32:57.179931",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10077,5 +10077,21 @@
     "connectionPracticeVocab": "هنگام انتظار، واژگان را تمرین کنید",
     "offlinePracticeNote": "آفلاین. پاسخ‌های شما پس از اتصال به اینترنت بارگذاری می‌شوند.",
     "offlinePracticeSavedNote": "در این دستگاه ذخیره شد. امتیاز XP شما پس از اتصال به اینترنت بارگذاری می‌شود.",
-    "offlinePracticeNothingSaved": "به اندازه کافی در این دستگاه برای تمرین آفلاین ذخیره نشده است. وقتی آنلاین شدید دوباره امتحان کنید."
+    "offlinePracticeNothingSaved": "به اندازه کافی در این دستگاه برای تمرین آفلاین ذخیره نشده است. وقتی آنلاین شدید دوباره امتحان کنید.",
+    "missionNumber": "مأموریت {index}",
+    "xpToYourStar": "{xp} امتیاز برای ستاره شما",
+    "missionStarEarned": "ستاره کسب شد!",
+    "xpFromChats": "چت‌ها {xp}",
+    "xpFromGoals": "اهداف {xp}",
+    "xpFromPractice": "تمرین {xp}",
+    "playMission": "بازی",
+    "wordCount": "{count, plural, =1{۱ کلمه} other{{count} کلمه}}",
+    "continueActivity": "ادامه",
+    "noObjectiveActivitiesYet": "هنوز فعالیتی برای این هدف تکمیل نکرده‌اید. یکی از دوره‌های خود را شروع کنید.",
+    "objectiveNotInYourCourses": "این هدف در هیچ یک از دوره‌های شما نیست.",
+    "objectiveActivityCount": "{count, plural, =0{هنوز فعالیتی نیست} =1{۱ فعالیت انجام شد} other{{count} فعالیت انجام شد}}",
+    "activityCompleted": "تکمیل شد",
+    "completedTimes": "{count} بار تکمیل شد",
+    "classLocation": "مکان کلاس",
+    "xpThresholdSuffix": "/ {threshold} امتیاز"
 }

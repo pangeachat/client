@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-16 11:48:55.176228",
+    "@@last_modified": "2026-10-16 16:32:57.909054",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Oefenje wurdskat wylst jo wachtsje",
     "offlinePracticeNote": "Offline. Jo antwurden wurde upload as jo wer online binne.",
     "offlinePracticeSavedNote": "Opslein op dit apparaat. Jo XP wurdt upload as jo wer online binne.",
-    "offlinePracticeNothingSaved": "Der is net genôch opslein op dit apparaat om offline te oefenjen. Besykje it opnij as jo wer online binne."
+    "offlinePracticeNothingSaved": "Der is net genôch opslein op dit apparaat om offline te oefenjen. Besykje it opnij as jo wer online binne.",
+    "missionNumber": "Missy {index}",
+    "xpToYourStar": "{xp} XP nei dyn stjer",
+    "missionStarEarned": "Stjer fertsjinne!",
+    "xpFromChats": "Chats {xp}",
+    "xpFromGoals": "Doelen {xp}",
+    "xpFromPractice": "Oefenje {xp}",
+    "playMission": "Spielje",
+    "wordCount": "{count, plural, =1{1 wurd} other{{count} wurden}}",
+    "continueActivity": "Fierdergean",
+    "noObjectiveActivitiesYet": "Jo hawwe noch gjin aktiviteit foltôge foar dit doel. Begjin ien fan jo kursus.",
+    "objectiveNotInYourCourses": "Dit doel sit net yn ien fan jo kursussen.",
+    "objectiveActivityCount": "{count, plural, =0{Noch gjin aktiviteiten} =1{1 aktiviteit spile} other{{count} aktiviteiten spile}}",
+    "activityCompleted": "Foltôge",
+    "completedTimes": "{count} kear foltôge",
+    "classLocation": "Lokaasje fan de klasse",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-16 11:49:09.819744",
+    "@@last_modified": "2026-10-16 16:33:15.569490",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9989,5 +9989,21 @@
     "connectionPracticeVocab": "等待时练习词汇",
     "offlinePracticeNote": "离线。您的答案将在您上线后上传。",
     "offlinePracticeSavedNote": "已保存到此设备。您的经验值将在您上线后上传。",
-    "offlinePracticeNothingSaved": "此设备上没有足够的已保存内容可供离线练习。请在联网后重试。"
+    "offlinePracticeNothingSaved": "此设备上没有足够的已保存内容可供离线练习。请在联网后重试。",
+    "missionNumber": "任务 {index}",
+    "xpToYourStar": "距获得星星还差 {xp} XP",
+    "missionStarEarned": "获得星星！",
+    "xpFromChats": "聊天 {xp}",
+    "xpFromGoals": "目标 {xp}",
+    "xpFromPractice": "练习 {xp}",
+    "playMission": "开始",
+    "wordCount": "{count, plural, =1{1 个单词} other{{count} 个单词}}",
+    "continueActivity": "继续",
+    "noObjectiveActivitiesYet": "您尚未完成此目标的任何活动。请从您的课程中开始一项。",
+    "objectiveNotInYourCourses": "此目标不在您的任何课程中。",
+    "objectiveActivityCount": "{count, plural, =0{暂无活动} =1{已完成 1 项活动} other{已完成 {count} 项活动}}",
+    "activityCompleted": "已完成",
+    "completedTimes": "已完成 {count} 次",
+    "classLocation": "上课地点",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

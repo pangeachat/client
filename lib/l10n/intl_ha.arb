@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-16 11:48:56.115348",
+    "@@last_modified": "2026-10-16 16:32:59.016142",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Yi amfani da kalmomi yayin da kake jira",
     "offlinePracticeNote": "Babu intanet. Amsoshinka za su hau idan ka dawo kan layi.",
     "offlinePracticeSavedNote": "An adana a kan wannan na'urar. XP ɗinka zai hau idan ka dawo kan layi.",
-    "offlinePracticeNothingSaved": "Ba a adana isasshen abu a kan wannan na'urar don yin aiki a layi ba. Gwada sake idan ka dawo kan layi."
+    "offlinePracticeNothingSaved": "Ba a adana isasshen abu a kan wannan na'urar don yin aiki a layi ba. Gwada sake idan ka dawo kan layi.",
+    "missionNumber": "Manufa {index}",
+    "xpToYourStar": "{xp} XP zuwa tauraronka",
+    "missionStarEarned": "An samu tauraro!",
+    "xpFromChats": "Taɗi {xp}",
+    "xpFromGoals": "Manufofi {xp}",
+    "xpFromPractice": "Aiki {xp}",
+    "playMission": "Kunna",
+    "wordCount": "{count, plural, =1{kalma 1} other{{count} kalmomi}}",
+    "continueActivity": "Ci gaba",
+    "noObjectiveActivitiesYet": "Ba ka kammala wani aiki don wannan manufa ba tukuna. Fara ɗaya daga cikin darussanka.",
+    "objectiveNotInYourCourses": "Wannan manufa ba ta cikin kowane ɗayan darussanka.",
+    "objectiveActivityCount": "{count, plural, =0{Babu ayyuka tukuna} =1{An yi aiki 1} other{An yi ayyuka {count}}}",
+    "activityCompleted": "An kammala",
+    "completedTimes": "An kammala sau {count}",
+    "classLocation": "Wurin aji",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

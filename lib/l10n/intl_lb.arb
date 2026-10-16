@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-16 11:49:00.804206",
+    "@@last_modified": "2026-10-16 16:33:04.199613",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Vokabelen üben, während Dir waart",
     "offlinePracticeNote": "Offline. Är Äntwerte ginn eropgelueden, wann Dir erëm online sidd.",
     "offlinePracticeSavedNote": "Op dësem Apparat gespäichert. Är XP ginn eropgelueden, wann Dir erëm online sidd.",
-    "offlinePracticeNothingSaved": "Net genuch ass op dësem Apparat gespäichert fir offline ze üben. Probéiert et nach eng Kéier wann Dir erëm online sidd."
+    "offlinePracticeNothingSaved": "Net genuch ass op dësem Apparat gespäichert fir offline ze üben. Probéiert et nach eng Kéier wann Dir erëm online sidd.",
+    "missionNumber": "Missioun {index}",
+    "xpToYourStar": "{xp} XP bis zu dengem Stär",
+    "missionStarEarned": "Stär verdéngt!",
+    "xpFromChats": "Chatten {xp}",
+    "xpFromGoals": "Ziler {xp}",
+    "xpFromPractice": "Übung {xp}",
+    "playMission": "Spillen",
+    "wordCount": "{count, plural, =1{1 Wuert} other{{count} Wierder}}",
+    "continueActivity": "Weidergoen",
+    "noObjectiveActivitiesYet": "Du hues nach keng Aktivitéit fir dëst Zil ofgeschloss. Start eng aus dengem Cours.",
+    "objectiveNotInYourCourses": "Dëst Zil ass an kengem vun dengen Coursen.",
+    "objectiveActivityCount": "{count, plural, =0{Nach keng Aktivitéiten} =1{1 Aktivitéit gespillt} other{{count} Aktivitéite gespillt}}",
+    "activityCompleted": "Ofgeschloss",
+    "completedTimes": "{count} Mol ofgeschloss",
+    "classLocation": "Klass Standuert",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

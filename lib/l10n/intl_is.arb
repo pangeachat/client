@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-16 11:48:58.780687",
+    "@@last_modified": "2026-10-16 16:33:02.832877",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Æfðu orðaforða á meðan þú bíður",
     "offlinePracticeNote": "Ótengdur. Svörin þín hlaðast upp þegar þú ert kominn aftur.",
     "offlinePracticeSavedNote": "Vistað á þessu tæki. XP þín hlaðast upp þegar þú ert kominn aftur á netið.",
-    "offlinePracticeNothingSaved": "Ekki er nægilegt efni vistað á þessu tæki til að æfa án nettengingar. Reyndu aftur þegar þú ert kominn/komin á netið."
+    "offlinePracticeNothingSaved": "Ekki er nægilegt efni vistað á þessu tæki til að æfa án nettengingar. Reyndu aftur þegar þú ert kominn/komin á netið.",
+    "missionNumber": "Verkefni {index}",
+    "xpToYourStar": "{xp} XP í stjörnuna þína",
+    "missionStarEarned": "Stjarna fengin!",
+    "xpFromChats": "Spjall {xp}",
+    "xpFromGoals": "Markmið {xp}",
+    "xpFromPractice": "Æfing {xp}",
+    "playMission": "Spila",
+    "wordCount": "{count, plural, =1{1 orð} other{{count} orð}}",
+    "continueActivity": "Halda áfram",
+    "noObjectiveActivitiesYet": "Þú hefur ekki lokið verkefni fyrir þetta markmið ennþá. Byrjaðu á einu úr námskeiðinu þínu.",
+    "objectiveNotInYourCourses": "Þetta markmið er ekki í neinu af námskeiðunum þínum.",
+    "objectiveActivityCount": "{count, plural, =0{Engin verkefni ennþá} =1{1 verkefni spilað} other{{count} verkefni spiluð}}",
+    "activityCompleted": "Lokið",
+    "completedTimes": "Lokið {count} sinnum",
+    "classLocation": "Staðsetning kennslustundar",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

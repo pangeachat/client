@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-16 11:48:59.013981",
+    "@@last_modified": "2026-10-16 16:33:01.615392",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Mụta okwu mgbe ị na-eche",
     "offlinePracticeNote": "Anọghị n'ịntanetị. Azịza gị ga-ebunye mgbe ị lọghachiri.",
     "offlinePracticeSavedNote": "Echekwara na ngwaọrụ a. XP gị ga-ebunye mgbe ị nọ n'ịntanetị ọzọ.",
-    "offlinePracticeNothingSaved": "Echekwaala ihe zuru oke na ngwaọrụ a iji mee ihe na-anọghị n'ịntanetị. Gbalịa ọzọ mgbe ịlaghachiri n'ịntanetị."
+    "offlinePracticeNothingSaved": "Echekwaala ihe zuru oke na ngwaọrụ a iji mee ihe na-anọghị n'ịntanetị. Gbalịa ọzọ mgbe ịlaghachiri n'ịntanetị.",
+    "missionNumber": "Mishọn {index}",
+    "xpToYourStar": "{xp} XP na kpakpando gị",
+    "missionStarEarned": "Enwetara kpakpando!",
+    "xpFromChats": "Nkata {xp}",
+    "xpFromGoals": "Ebumnuche {xp}",
+    "xpFromPractice": "Omume {xp}",
+    "playMission": "Gwuo egwu",
+    "wordCount": "{count, plural, =1{okwu 1} other{okwu {count}}}",
+    "continueActivity": "Gaa n'ihu",
+    "noObjectiveActivitiesYet": "Ịmebeghị ihe omume maka ebumnuche a. Bido otu site na nkuzi gị.",
+    "objectiveNotInYourCourses": "Ebumnuche a adịghị na nkuzi gị ọ bụla.",
+    "objectiveActivityCount": "{count, plural, =0{Enwebeghị ihe omume} =1{Egwuru ihe omume 1} other{Egwuru ihe omume {count}}}",
+    "activityCompleted": "Emechara",
+    "completedTimes": "Emechara {count} ugboro",
+    "classLocation": "Ebe klasị",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

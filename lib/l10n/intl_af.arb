@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-16 11:48:52.820616",
+    "@@last_modified": "2026-10-16 16:32:53.253836",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Oefen woordeskat terwyl jy wag",
     "offlinePracticeNote": "Vanlyn. Jou antwoorde laai op wanneer jy terug is.",
     "offlinePracticeSavedNote": "Gestoor op hierdie toestel. Jou XP laai op wanneer jy weer aanlyn is.",
-    "offlinePracticeNothingSaved": "Nie genoeg is op hierdie toestel gestoor om vanlyn te oefen nie. Probeer weer wanneer jy aanlyn is."
+    "offlinePracticeNothingSaved": "Nie genoeg is op hierdie toestel gestoor om vanlyn te oefen nie. Probeer weer wanneer jy aanlyn is.",
+    "missionNumber": "Missie {index}",
+    "xpToYourStar": "{xp} XP na jou ster",
+    "missionStarEarned": "Ster verdien!",
+    "xpFromChats": "Geselsies {xp}",
+    "xpFromGoals": "Doelwitte {xp}",
+    "xpFromPractice": "Oefening {xp}",
+    "playMission": "Speel",
+    "wordCount": "{count, plural, =1{1 woord} other{{count} woorde}}",
+    "continueActivity": "Gaan voort",
+    "noObjectiveActivitiesYet": "Jy het nog nie 'n aktiwiteit vir hierdie doelwit voltooi nie. Begin een vanuit jou kursus.",
+    "objectiveNotInYourCourses": "Hierdie doelwit is nie in enige van jou kursusse nie.",
+    "objectiveActivityCount": "{count, plural, =0{Nog geen aktiwiteite nie} =1{1 aktiwiteit gespeel} other{{count} aktiwiteite gespeel}}",
+    "activityCompleted": "Voltooi",
+    "completedTimes": "{count} keer voltooi",
+    "classLocation": "Klasligging",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

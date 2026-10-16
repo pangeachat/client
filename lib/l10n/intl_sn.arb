@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-16 11:49:07.094184",
+    "@@last_modified": "2026-10-16 16:33:12.085660",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Dzidzira mazwi uchimirira",
     "offlinePracticeNote": "Huri paIndaneti. Mhinduro dzako dzichatumirwa kana wadzoka.",
     "offlinePracticeSavedNote": "Yakachengetwa pachigadzirwa ichi. XP yako ichatumirwa kana wadzoka paIndaneti.",
-    "offlinePracticeNothingSaved": "Hazvina kukwana zvakachengetwa pachigadzirwa ichi kuti udzidzire usina Indaneti. Edza zvakare kana wadzoka paIndaneti."
+    "offlinePracticeNothingSaved": "Hazvina kukwana zvakachengetwa pachigadzirwa ichi kuti udzidzire usina Indaneti. Edza zvakare kana wadzoka paIndaneti.",
+    "missionNumber": "Mishoni {index}",
+    "xpToYourStar": "{xp} XP kune nyenyedzi yako",
+    "missionStarEarned": "Nyenyedzi yawana!",
+    "xpFromChats": "Chats {xp}",
+    "xpFromGoals": "Zvinangwa {xp}",
+    "xpFromPractice": "Kudzidzira {xp}",
+    "playMission": "Tamba",
+    "wordCount": "{count, plural, =1{izwi rimwe} other{mazwi {count}}}",
+    "continueActivity": "Enderera",
+    "noObjectiveActivitiesYet": "Hauna kupedza chiitiko chechinangwa ichi. Tanga chimwe kubva kukosi yako.",
+    "objectiveNotInYourCourses": "Chinangwa ichi hachisi mune chero makosi ako.",
+    "objectiveActivityCount": "{count, plural, =0{Hapana zviitiko zvakadaro} =1{Chiitiko chimwe chatambwa} other{Zviitiko {count} zvatambwa}}",
+    "activityCompleted": "Zvapedzwa",
+    "completedTimes": "Zvapedzwa {count} nguva",
+    "classLocation": "Nzvimbo yekirasi",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

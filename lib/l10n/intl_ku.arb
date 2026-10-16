@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-16 11:49:00.803234",
+    "@@last_modified": "2026-10-16 16:33:05.003406",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "وشەکان ڕابهێنە لە کاتی چاوەڕوانیدا",
     "offlinePracticeNote": "لە دەرەوەی هێڵ. وەڵامەکانت باردەکرێن کاتێک دەگەڕێیتەوە.",
     "offlinePracticeSavedNote": "لەسەر ئەم ئامێرە پاشەکەوتکراوە. XPـەکەت باردەکرێت کاتێک دەگەڕێیتەوە سەر هێڵ.",
-    "offlinePracticeNothingSaved": "بڕی پێویست لەسەر ئەم ئامێرە پاشەکەوت نەکراوە بۆ ئەوەی بەبێ ئینتەرنێت ڕاهێنان بکەیت. کاتێک گەڕایتەوە سەر هێڵ، دووبارە هەوڵبدەوە."
+    "offlinePracticeNothingSaved": "بڕی پێویست لەسەر ئەم ئامێرە پاشەکەوت نەکراوە بۆ ئەوەی بەبێ ئینتەرنێت ڕاهێنان بکەیت. کاتێک گەڕایتەوە سەر هێڵ، دووبارە هەوڵبدەوە.",
+    "missionNumber": "ئەرکی {index}",
+    "xpToYourStar": "{xp} خاڵی ئەزموون بۆ ئەستێرەکەت",
+    "missionStarEarned": "ئەستێرە بەدەست هات!",
+    "xpFromChats": "چاتەکان {xp}",
+    "xpFromGoals": "ئامانجەکان {xp}",
+    "xpFromPractice": "ڕاهێنان {xp}",
+    "playMission": "یاری بکە",
+    "wordCount": "{count, plural, =1{1 وشە} other{{count} وشە}}",
+    "continueActivity": "بەردەوام بە",
+    "noObjectiveActivitiesYet": "هێشتا هیچ چالاکییەکت بۆ ئەم ئامانجە تەواو نەکردووە. یەکێک لە خولەکەتەوە دەست پێ بکە.",
+    "objectiveNotInYourCourses": "ئەم ئامانجە لە هیچ کام لە خولەکانتدا نییە.",
+    "objectiveActivityCount": "{count, plural, =0{هێشتا هیچ چالاکییەک نییە} =1{1 چالاکی ئەنجامدرا} other{{count} چالاکی ئەنجامدرا}}",
+    "activityCompleted": "تەواوکرا",
+    "completedTimes": "{count} جار تەواوکرا",
+    "classLocation": "شوێنی پۆل",
+    "xpThresholdSuffix": "/ {threshold} خاڵی ئەزموون"
 }

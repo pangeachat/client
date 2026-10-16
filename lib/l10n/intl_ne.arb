@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-16 11:49:03.729582",
+    "@@last_modified": "2026-10-16 16:33:07.103007",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "पर्खँदै गर्दा शब्दहरू अभ्यास गर्नुहोस्",
     "offlinePracticeNote": "अफलाइन। तपाईं फर्कँदा तपाईंका जवाफहरू अपलोड हुनेछन्।",
     "offlinePracticeSavedNote": "यस यन्त्रमा सुरक्षित गरियो। तपाईं अनलाइन फर्कँदा तपाईंको XP अपलोड हुनेछ।",
-    "offlinePracticeNothingSaved": "अफलाइन अभ्यास गर्नको लागि यस यन्त्रमा पर्याप्त बचत गरिएको छैन। तपाईं अनलाइन भएपछि फेरि प्रयास गर्नुहोस्।"
+    "offlinePracticeNothingSaved": "अफलाइन अभ्यास गर्नको लागि यस यन्त्रमा पर्याप्त बचत गरिएको छैन। तपाईं अनलाइन भएपछि फेरि प्रयास गर्नुहोस्।",
+    "missionNumber": "मिसन {index}",
+    "xpToYourStar": "तपाईंको तारामा {xp} XP",
+    "missionStarEarned": "तारा प्राप्त भयो!",
+    "xpFromChats": "च्याट {xp}",
+    "xpFromGoals": "लक्ष्य {xp}",
+    "xpFromPractice": "अभ्यास {xp}",
+    "playMission": "खेल्नुहोस्",
+    "wordCount": "{count, plural, =1{१ शब्द} other{{count} शब्दहरू}}",
+    "continueActivity": "जारी राख्नुहोस्",
+    "noObjectiveActivitiesYet": "तपाईंले यस उद्देश्यका लागि कुनै गतिविधि पूरा गर्नुभएको छैन। आफ्नो पाठ्यक्रमबाट एउटा सुरु गर्नुहोस्।",
+    "objectiveNotInYourCourses": "यो उद्देश्य तपाईंको कुनै पनि पाठ्यक्रममा छैन।",
+    "objectiveActivityCount": "{count, plural, =0{अहिलेसम्म कुनै गतिविधि छैन} =1{१ गतिविधि खेलियो} other{{count} गतिविधिहरू खेलियो}}",
+    "activityCompleted": "पूरा भयो",
+    "completedTimes": "{count} पटक पूरा भयो",
+    "classLocation": "कक्षाको स्थान",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

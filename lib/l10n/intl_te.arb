@@ -1317,7 +1317,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-16 11:49:07.916351",
+    "@@last_modified": "2026-10-16 16:33:13.854955",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10936,5 +10936,21 @@
     "connectionPracticeVocab": "వేచి ఉన్నప్పుడు పదజాలాన్ని సాధన చేయండి",
     "offlinePracticeNote": "ఆఫ్‌లైన్. మీరు తిరిగి వచ్చినప్పుడు మీ సమాధానాలు అప్‌లోడ్ చేయబడతాయి.",
     "offlinePracticeSavedNote": "ఈ పరికరంలో సేవ్ చేయబడింది. మీరు ఆన్‌లైన్‌కి తిరిగి వచ్చినప్పుడు మీ XP అప్‌లోడ్ చేయబడుతుంది.",
-    "offlinePracticeNothingSaved": "ఆఫ్‌లైన్‌లో ప్రాక్టీస్ చేయడానికి ఈ పరికరంలో తగినంత సేవ్ చేయబడలేదు. మీరు ఆన్‌లైన్‌లోకి వచ్చినప్పుడు మళ్లీ ప్రయత్నించండి."
+    "offlinePracticeNothingSaved": "ఆఫ్‌లైన్‌లో ప్రాక్టీస్ చేయడానికి ఈ పరికరంలో తగినంత సేవ్ చేయబడలేదు. మీరు ఆన్‌లైన్‌లోకి వచ్చినప్పుడు మళ్లీ ప్రయత్నించండి.",
+    "missionNumber": "మిషన్ {index}",
+    "xpToYourStar": "మీ స్టార్‌కు {xp} XP",
+    "missionStarEarned": "స్టార్ సంపాదించారు!",
+    "xpFromChats": "చాట్‌లు {xp}",
+    "xpFromGoals": "లక్ష్యాలు {xp}",
+    "xpFromPractice": "ప్రాక్టీస్ {xp}",
+    "playMission": "ఆడండి",
+    "wordCount": "{count, plural, =1{1 పదం} other{{count} పదాలు}}",
+    "continueActivity": "కొనసాగించు",
+    "noObjectiveActivitiesYet": "మీరు ఇంకా ఈ లక్ష్యం కోసం ఒక కార్యాచరణను పూర్తి చేయలేదు. మీ కోర్సు నుండి ఒకదాన్ని ప్రారంభించండి.",
+    "objectiveNotInYourCourses": "ఈ లక్ష్యం మీ కోర్సులలో దేనిలోనూ లేదు.",
+    "objectiveActivityCount": "{count, plural, =0{ఇంకా కార్యకలాపాలు లేవు} =1{1 కార్యాచరణ ఆడబడింది} other{{count} కార్యకలాపాలు ఆడబడ్డాయి}}",
+    "activityCompleted": "పూర్తయింది",
+    "completedTimes": "{count} సార్లు పూర్తయింది",
+    "classLocation": "తరగతి స్థానం",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

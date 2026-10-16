@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-16 11:49:02.167564",
+    "@@last_modified": "2026-10-16 16:33:05.022289",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Вежбајте вокабулар додека чекате",
     "offlinePracticeNote": "Офлајн. Вашите одговори ќе се прикачат кога ќе се вратите.",
     "offlinePracticeSavedNote": "Зачувано на овој уред. Вашето XP ќе се прикачи кога ќе бидете повторно онлајн.",
-    "offlinePracticeNothingSaved": "Нема доволно зачувано на овој уред за вежбање офлајн. Обидете се повторно кога ќе бидете онлајн."
+    "offlinePracticeNothingSaved": "Нема доволно зачувано на овој уред за вежбање офлајн. Обидете се повторно кога ќе бидете онлајн.",
+    "missionNumber": "Мисија {index}",
+    "xpToYourStar": "{xp} XP до вашата ѕвезда",
+    "missionStarEarned": "Ѕвездата е освоена!",
+    "xpFromChats": "Разговори {xp}",
+    "xpFromGoals": "Цели {xp}",
+    "xpFromPractice": "Вежбање {xp}",
+    "playMission": "Играј",
+    "wordCount": "{count, plural, =1{1 збор} other{{count} зборови}}",
+    "continueActivity": "Продолжи",
+    "noObjectiveActivitiesYet": "Сè уште немате завршено активност за оваа цел. Започнете една од вашиот курс.",
+    "objectiveNotInYourCourses": "Оваа цел не е во ниту еден од вашите курсеви.",
+    "objectiveActivityCount": "{count, plural, =0{Сè уште нема активности} =1{1 активност одиграна} other{{count} активности одиграни}}",
+    "activityCompleted": "Завршено",
+    "completedTimes": "Завршено {count} пати",
+    "classLocation": "Локација на часот",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

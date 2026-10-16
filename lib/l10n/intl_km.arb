@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-10-16 11:48:59.769797",
+    "@@last_modified": "2026-10-16 16:33:03.382168",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "អនុវត្តវាក្យសព្ទពេលកំពុងរង់ចាំ",
     "offlinePracticeNote": "គ្មានអ៊ីនធឺណិត។ ចម្លើយរបស់អ្នកនឹងផ្ទុកឡើងនៅពេលអ្នកភ្ជាប់អ៊ីនធឺណិតវិញ។",
     "offlinePracticeSavedNote": "បានរក្សាទុកនៅលើឧបករណ៍នេះ។ XP របស់អ្នកនឹងផ្ទុកឡើងនៅពេលអ្នកភ្ជាប់អ៊ីនធឺណិតវិញ។",
-    "offlinePracticeNothingSaved": "មិនមានទិន្នន័យគ្រប់គ្រាន់ត្រូវបានរក្សាទុកនៅលើឧបករណ៍នេះសម្រាប់អនុវត្តក្រៅបណ្ដាញទេ។ សូមព្យាយាមម្ដងទៀតនៅពេលអ្នកភ្ជាប់អ៊ីនធឺណិតវិញ។"
+    "offlinePracticeNothingSaved": "មិនមានទិន្នន័យគ្រប់គ្រាន់ត្រូវបានរក្សាទុកនៅលើឧបករណ៍នេះសម្រាប់អនុវត្តក្រៅបណ្ដាញទេ។ សូមព្យាយាមម្ដងទៀតនៅពេលអ្នកភ្ជាប់អ៊ីនធឺណិតវិញ។",
+    "missionNumber": "បេសកកម្មទី {index}",
+    "xpToYourStar": "{xp} XP ទៅកាន់ផ្កាយរបស់អ្នក",
+    "missionStarEarned": "បានទទួលផ្កាយ!",
+    "xpFromChats": "ការជជែក {xp}",
+    "xpFromGoals": "គោលដៅ {xp}",
+    "xpFromPractice": "ការអនុវត្ត {xp}",
+    "playMission": "លេង",
+    "wordCount": "{count, plural, =1{1 ពាក្យ} other{{count} ពាក្យ}}",
+    "continueActivity": "បន្ត",
+    "noObjectiveActivitiesYet": "អ្នកមិនទាន់បានបញ្ចប់សកម្មភាពសម្រាប់គោលបំណងនេះនៅឡើយទេ។ ចាប់ផ្តើមមួយពីវគ្គសិក្សារបស់អ្នក។",
+    "objectiveNotInYourCourses": "គោលបំណងនេះមិនមាននៅក្នុងវគ្គសិក្សារបស់អ្នកណាមួយទេ។",
+    "objectiveActivityCount": "{count, plural, =0{មិនទាន់មានសកម្មភាពនៅឡើយ} =1{បានលេងសកម្មភាព 1} other{បានលេងសកម្មភាព {count}}}",
+    "activityCompleted": "បានបញ្ចប់",
+    "completedTimes": "បានបញ្ចប់ {count} ដង",
+    "classLocation": "ទីតាំងថ្នាក់រៀន",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

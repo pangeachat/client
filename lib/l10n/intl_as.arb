@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-16 11:48:53.053981",
+    "@@last_modified": "2026-10-16 16:32:53.929058",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "অপেক্ষা কৰি থাকোঁতে শব্দভাণ্ডাৰ অনুশীলন কৰক",
     "offlinePracticeNote": "অফলাইন। আপুনি ঘূৰি অহাৰ লগে লগে আপোনাৰ উত্তৰসমূহ আপলোড হ'ব।",
     "offlinePracticeSavedNote": "এই ডিভাইচত সংৰক্ষিত হৈছে। আপুনি অনলাইন হোৱাৰ লগে লগে আপোনাৰ XP আপলোড হ'ব।",
-    "offlinePracticeNothingSaved": "অফলাইন অনুশীলনৰ বাবে এই ডিভাইচত পৰ্যাপ্ত তথ্য সংৰক্ষণ কৰা হোৱা নাই। আপুনি পুনৰ অনলাইন হ'লে চেষ্টা কৰক।"
+    "offlinePracticeNothingSaved": "অফলাইন অনুশীলনৰ বাবে এই ডিভাইচত পৰ্যাপ্ত তথ্য সংৰক্ষণ কৰা হোৱা নাই। আপুনি পুনৰ অনলাইন হ'লে চেষ্টা কৰক।",
+    "missionNumber": "মিছন {index}",
+    "xpToYourStar": "আপোনাৰ তাৰকালৈ {xp} XP",
+    "missionStarEarned": "তাৰকা অৰ্জন কৰা হ'ল!",
+    "xpFromChats": "আলাপ {xp}",
+    "xpFromGoals": "লক্ষ্য {xp}",
+    "xpFromPractice": "অনুশীলন {xp}",
+    "playMission": "খেলক",
+    "wordCount": "{count, plural, =1{1 শব্দ} other{{count} শব্দ}}",
+    "continueActivity": "অব্যাহত ৰাখক",
+    "noObjectiveActivitiesYet": "আপুনি এই উদ্দেশ্যৰ বাবে এতিয়ালৈকে কোনো কাৰ্য্য সম্পূৰ্ণ কৰা নাই। আপোনাৰ পাঠ্যক্ৰমৰ পৰা এটা আৰম্ভ কৰক।",
+    "objectiveNotInYourCourses": "এই উদ্দেশ্য আপোনাৰ কোনো পাঠ্যক্ৰমত নাই।",
+    "objectiveActivityCount": "{count, plural, =0{এতিয়ালৈকে কোনো কাৰ্য্য নাই} =1{1টা কাৰ্য্য খেলা হ'ল} other{{count}টা কাৰ্য্য খেলা হ'ল}}",
+    "activityCompleted": "সম্পূৰ্ণ হ'ল",
+    "completedTimes": "{count} বাৰ সম্পূৰ্ণ হ'ল",
+    "classLocation": "শ্ৰেণীৰ স্থান",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

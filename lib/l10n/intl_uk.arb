@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-16 11:49:09.834156",
+    "@@last_modified": "2026-10-16 16:33:13.781654",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9989,5 +9989,21 @@
     "connectionPracticeVocab": "Практикуйте словниковий запас, поки чекаєте",
     "offlinePracticeNote": "Офлайн. Ваші відповіді завантажаться, коли ви повернетеся.",
     "offlinePracticeSavedNote": "Збережено на цьому пристрої. Ваш XP завантажиться, коли ви знову будете онлайн.",
-    "offlinePracticeNothingSaved": "На цьому пристрої недостатньо збережених даних для офлайн-практики. Спробуйте ще раз, коли будете онлайн."
+    "offlinePracticeNothingSaved": "На цьому пристрої недостатньо збережених даних для офлайн-практики. Спробуйте ще раз, коли будете онлайн.",
+    "missionNumber": "Місія {index}",
+    "xpToYourStar": "{xp} XP до вашої зірки",
+    "missionStarEarned": "Зірку здобуто!",
+    "xpFromChats": "Чати {xp}",
+    "xpFromGoals": "Цілі {xp}",
+    "xpFromPractice": "Практика {xp}",
+    "playMission": "Грати",
+    "wordCount": "{count, plural, =1{1 слово} other{{count} слів}}",
+    "continueActivity": "Продовжити",
+    "noObjectiveActivitiesYet": "Ви ще не виконали жодної вправи для цієї цілі. Розпочніть її зі свого курсу.",
+    "objectiveNotInYourCourses": "Цієї цілі немає в жодному з ваших курсів.",
+    "objectiveActivityCount": "{count, plural, =0{Ще немає вправ} =1{Виконано 1 вправу} other{Виконано {count} вправ}}",
+    "activityCompleted": "Завершено",
+    "completedTimes": "Завершено {count} разів",
+    "classLocation": "Місце проведення заняття",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

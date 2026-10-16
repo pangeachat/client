@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 11:48:56.034574",
+    "@@last_modified": "2026-10-16 16:32:58.959597",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10900,5 +10900,21 @@
     "connectionPracticeVocab": "תרגל אוצר מילים בזמן שאתה ממתין",
     "offlinePracticeNote": "לא מקוון. התשובות שלך יעלו כשתחזור.",
     "offlinePracticeSavedNote": "נשמר במכשיר זה. ה-XP שלך יעלה כשתחזור למצב מקוון.",
-    "offlinePracticeNothingSaved": "לא נשמר מספיק ביישום זה כדי לתרגל במצב לא מקוון. נסה שוב כשתהיה מחובר."
+    "offlinePracticeNothingSaved": "לא נשמר מספיק ביישום זה כדי לתרגל במצב לא מקוון. נסה שוב כשתהיה מחובר.",
+    "missionNumber": "משימה {index}",
+    "xpToYourStar": "{xp} נקודות ניסיון לכוכב שלך",
+    "missionStarEarned": "הכוכב הושג!",
+    "xpFromChats": "צ׳אטים {xp}",
+    "xpFromGoals": "יעדים {xp}",
+    "xpFromPractice": "תרגול {xp}",
+    "playMission": "שחק",
+    "wordCount": "{count, plural, =1{מילה אחת} other{{count} מילים}}",
+    "continueActivity": "המשך",
+    "noObjectiveActivitiesYet": "עוד לא השלמת פעילות עבור יעד זה. התחל אחת מהקורס שלך.",
+    "objectiveNotInYourCourses": "יעד זה אינו נמצא באף אחד מהקורסים שלך.",
+    "objectiveActivityCount": "{count, plural, =0{אין עדיין פעילויות} =1{פעילות אחת ששוחקה} other{{count} פעילויות ששוחקו}}",
+    "activityCompleted": "הושלם",
+    "completedTimes": "הושלם {count} פעמים",
+    "classLocation": "מיקום השיעור",
+    "xpThresholdSuffix": "/ {threshold} נקודות ניסיון"
 }

@@ -1355,7 +1355,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-16 11:48:57.911549",
+    "@@last_modified": "2026-10-16 16:33:00.979844",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10922,5 +10922,21 @@
     "connectionPracticeVocab": "Practica vocabulario durante que tu attende",
     "offlinePracticeNote": "Offline. Tu responsas se cargara quando tu es de nove connectite.",
     "offlinePracticeSavedNote": "Salvate in iste apparato. Tu XP se cargara quando tu es de nove connectite.",
-    "offlinePracticeNothingSaved": "Non satis es salvate in iste apparato pro practicar offline. Reprova quando tu es de nove in linea."
+    "offlinePracticeNothingSaved": "Non satis es salvate in iste apparato pro practicar offline. Reprova quando tu es de nove in linea.",
+    "missionNumber": "Mission {index}",
+    "xpToYourStar": "{xp} XP a tu stella",
+    "missionStarEarned": "Stella ganiate!",
+    "xpFromChats": "Conversas {xp}",
+    "xpFromGoals": "Objectivos {xp}",
+    "xpFromPractice": "Practica {xp}",
+    "playMission": "Jocar",
+    "wordCount": "{count, plural, =1{1 parola} other{{count} parolas}}",
+    "continueActivity": "Continuar",
+    "noObjectiveActivitiesYet": "Tu non ha ancora completate un activitate pro iste objectivo. Comencia un de tu curso.",
+    "objectiveNotInYourCourses": "Iste objectivo non es in ulle de tu cursos.",
+    "objectiveActivityCount": "{count, plural, =0{Nulle activitates ancora} =1{1 activitate jocate} other{{count} activitates jocate}}",
+    "activityCompleted": "Completate",
+    "completedTimes": "Completate {count} vices",
+    "classLocation": "Loco del classe",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

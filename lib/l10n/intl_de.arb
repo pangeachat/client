@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-16 11:48:54.043069",
+    "@@last_modified": "2026-10-16 16:32:55.166942",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9976,5 +9976,21 @@
     "connectionPracticeVocab": "Vokabeln üben, während du wartest",
     "offlinePracticeNote": "Offline. Deine Antworten werden hochgeladen, wenn du wieder online bist.",
     "offlinePracticeSavedNote": "Auf diesem Gerät gespeichert. Deine XP werden hochgeladen, wenn du wieder online bist.",
-    "offlinePracticeNothingSaved": "Auf diesem Gerät ist nicht genug gespeichert, um offline zu üben. Versuche es erneut, wenn du wieder online bist."
+    "offlinePracticeNothingSaved": "Auf diesem Gerät ist nicht genug gespeichert, um offline zu üben. Versuche es erneut, wenn du wieder online bist.",
+    "missionNumber": "Mission {index}",
+    "xpToYourStar": "{xp} XP bis zu deinem Stern",
+    "missionStarEarned": "Stern verdient!",
+    "xpFromChats": "Chats {xp}",
+    "xpFromGoals": "Ziele {xp}",
+    "xpFromPractice": "Übung {xp}",
+    "playMission": "Spielen",
+    "wordCount": "{count, plural, =1{1 Wort} other{{count} Wörter}}",
+    "continueActivity": "Weiter",
+    "noObjectiveActivitiesYet": "Du hast noch keine Aktivität für dieses Ziel abgeschlossen. Starte eine aus deinem Kurs.",
+    "objectiveNotInYourCourses": "Dieses Ziel ist in keinem deiner Kurse.",
+    "objectiveActivityCount": "{count, plural, =0{Noch keine Aktivitäten} =1{1 Aktivität gespielt} other{{count} Aktivitäten gespielt}}",
+    "activityCompleted": "Abgeschlossen",
+    "completedTimes": "{count} Mal abgeschlossen",
+    "classLocation": "Kursort",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

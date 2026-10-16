@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-16 11:49:02.261800",
+    "@@last_modified": "2026-10-16 16:33:06.307640",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "കാത്തിരിക്കുമ്പോൾ പദസമ്പത്ത് പരിശീലിക്കുക",
     "offlinePracticeNote": "ഓഫ്‌ലൈൻ. നിങ്ങൾ തിരികെ വരുമ്പോൾ നിങ്ങളുടെ ഉത്തരങ്ങൾ അപ്‌ലോഡ് ചെയ്യും.",
     "offlinePracticeSavedNote": "ഈ ഉപകരണത്തിൽ സംരക്ഷിച്ചു. നിങ്ങൾ ഓൺലൈനിൽ തിരികെ വരുമ്പോൾ നിങ്ങളുടെ XP അപ്‌ലോഡ് ചെയ്യും.",
-    "offlinePracticeNothingSaved": "ഓഫ്‌ലൈനായി പരിശീലിക്കാൻ ഈ ഉപകരണത്തിൽ ആവശ്യമായതൊന്നും സംരക്ഷിച്ചിട്ടില്ല. നിങ്ങൾ വീണ്ടും ഓൺലൈനാകുമ്പോൾ വീണ്ടും ശ്രമിക്കുക."
+    "offlinePracticeNothingSaved": "ഓഫ്‌ലൈനായി പരിശീലിക്കാൻ ഈ ഉപകരണത്തിൽ ആവശ്യമായതൊന്നും സംരക്ഷിച്ചിട്ടില്ല. നിങ്ങൾ വീണ്ടും ഓൺലൈനാകുമ്പോൾ വീണ്ടും ശ്രമിക്കുക.",
+    "missionNumber": "മിഷൻ {index}",
+    "xpToYourStar": "നിങ്ങളുടെ സ്റ്റാറിലേക്ക് {xp} XP",
+    "missionStarEarned": "സ്റ്റാർ ലഭിച്ചു!",
+    "xpFromChats": "ചാറ്റുകൾ {xp}",
+    "xpFromGoals": "ലക്ഷ്യങ്ങൾ {xp}",
+    "xpFromPractice": "പരിശീലനം {xp}",
+    "playMission": "കളിക്കുക",
+    "wordCount": "{count, plural, =1{1 വാക്ക്} other{{count} വാക്കുകൾ}}",
+    "continueActivity": "തുടരുക",
+    "noObjectiveActivitiesYet": "ഈ ലക്ഷ്യത്തിനായി നിങ്ങൾ ഇതുവരെ ഒരു പ്രവർത്തനവും പൂർത്തിയാക്കിയിട്ടില്ല. നിങ്ങളുടെ കോഴ്സിൽ നിന്ന് ഒന്ന് ആരംഭിക്കുക.",
+    "objectiveNotInYourCourses": "ഈ ലക്ഷ്യം നിങ്ങളുടെ കോഴ്സുകളിലൊന്നിലും ഇല്ല.",
+    "objectiveActivityCount": "{count, plural, =0{പ്രവർത്തനങ്ങളൊന്നും ഇതുവരെയില്ല} =1{1 പ്രവർത്തനം കളിച്ചു} other{{count} പ്രവർത്തനങ്ങൾ കളിച്ചു}}",
+    "activityCompleted": "പൂർത്തിയാക്കി",
+    "completedTimes": "{count} തവണ പൂർത്തിയാക്കി",
+    "classLocation": "ക്ലാസ് സ്ഥലം",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-16 11:49:00.824440",
+    "@@last_modified": "2026-10-16 16:33:04.898199",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "ຝຶກຄຳສັບໃນຂະນະທີ່ທ່ານລໍຖ້າ",
     "offlinePracticeNote": "ອອບລາຍ. ຄຳຕອບຂອງທ່ານຈະຖືກອັບໂຫຼດເມື່ອທ່ານກັບມາ.",
     "offlinePracticeSavedNote": "ບັນທຶກໄວ້ໃນອຸປະກອນນີ້. XP ຂອງທ່ານຈະຖືກອັບໂຫຼດເມື່ອທ່ານກັບມາອອນລາຍ.",
-    "offlinePracticeNothingSaved": "ບໍ່ມີຂໍ້ມູນທີ່ຖືກບັນທຶກໄວ້ໃນອຸປະກອນນີ້ພຽງພໍທີ່ຈະຝຶກຊ້ອມແບບອອບລາຍ. ລອງໃໝ່ອີກຄັ້ງເມື່ອທ່ານກັບມາອອນລາຍ."
+    "offlinePracticeNothingSaved": "ບໍ່ມີຂໍ້ມູນທີ່ຖືກບັນທຶກໄວ້ໃນອຸປະກອນນີ້ພຽງພໍທີ່ຈະຝຶກຊ້ອມແບບອອບລາຍ. ລອງໃໝ່ອີກຄັ້ງເມື່ອທ່ານກັບມາອອນລາຍ.",
+    "missionNumber": "ພາລະກິດທີ {index}",
+    "xpToYourStar": "{xp} XP ເພື່ອດາວຂອງທ່ານ",
+    "missionStarEarned": "ໄດ້ຮັບດາວແລ້ວ!",
+    "xpFromChats": "ສົນທະນາ {xp}",
+    "xpFromGoals": "ເປົ້າໝາຍ {xp}",
+    "xpFromPractice": "ຝຶກຊ້ອມ {xp}",
+    "playMission": "ຫຼິ້ນ",
+    "wordCount": "{count, plural, =1{1 ຄຳສັບ} other{{count} ຄຳສັບ}}",
+    "continueActivity": "ສືບຕໍ່",
+    "noObjectiveActivitiesYet": "ທ່ານຍັງບໍ່ໄດ້ເຮັດກິດຈະກຳສຳລັບຈຸດປະສົງນີ້ເທື່ອ. ເລີ່ມຕົ້ນຈາກຫຼັກສູດຂອງທ່ານ.",
+    "objectiveNotInYourCourses": "ຈຸດປະສົງນີ້ບໍ່ໄດ້ຢູ່ໃນຫຼັກສູດໃດໆຂອງທ່ານ.",
+    "objectiveActivityCount": "{count, plural, =0{ຍັງບໍ່ມີກິດຈະກຳເທື່ອ} =1{ຫຼິ້ນ 1 ກິດຈະກຳແລ້ວ} other{ຫຼິ້ນ {count} ກິດຈະກຳແລ້ວ}}",
+    "activityCompleted": "ສຳເລັດແລ້ວ",
+    "completedTimes": "ສຳເລັດ {count} ຄັ້ງ",
+    "classLocation": "ສະຖານທີ່ຮຽນ",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

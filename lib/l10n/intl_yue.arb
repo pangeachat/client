@@ -1256,7 +1256,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-16 11:49:15.434779",
+    "@@last_modified": "2026-10-16 16:33:15.895220",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10943,5 +10943,21 @@
     "connectionPracticeVocab": "等緊嗰陣練下詞彙",
     "offlinePracticeNote": "離線。你嘅答案會喺你返嚟嗰陣上載。",
     "offlinePracticeSavedNote": "已儲存喺呢部裝置。你嘅經驗值會喺你上返線嗰陣上載。",
-    "offlinePracticeNothingSaved": "此裝置未儲存足夠內容以供離線練習。請在連線後再試一次。"
+    "offlinePracticeNothingSaved": "此裝置未儲存足夠內容以供離線練習。請在連線後再試一次。",
+    "missionNumber": "任務 {index}",
+    "xpToYourStar": "距離您的星星還有 {xp} 經驗值",
+    "missionStarEarned": "已獲得星星！",
+    "xpFromChats": "對話 {xp}",
+    "xpFromGoals": "目標 {xp}",
+    "xpFromPractice": "練習 {xp}",
+    "playMission": "玩",
+    "wordCount": "{count, plural, =1{1 個單字} other{{count} 個單字}}",
+    "continueActivity": "繼續",
+    "noObjectiveActivitiesYet": "您尚未完成此目標的活動。請從您的課程開始一個。",
+    "objectiveNotInYourCourses": "此目標不在您的任何課程中。",
+    "objectiveActivityCount": "{count, plural, =0{尚未有活動} =1{已玩 1 個活動} other{已玩 {count} 個活動}}",
+    "activityCompleted": "已完成",
+    "completedTimes": "已完成 {count} 次",
+    "classLocation": "上課地點",
+    "xpThresholdSuffix": "/ {threshold} 經驗值"
 }

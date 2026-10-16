@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-16 11:48:59.794636",
+    "@@last_modified": "2026-10-16 16:32:56.551670",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8218,5 +8218,21 @@
     "connectionPracticeVocab": "Practica vocabulario mientras esperas",
     "offlinePracticeNote": "Sin conexión. Tus respuestas se subirán cuando vuelvas a tener conexión.",
     "offlinePracticeSavedNote": "Guardado en este dispositivo. Tu XP se subirá cuando vuelvas a tener conexión.",
-    "offlinePracticeNothingSaved": "No hay suficiente guardado en este dispositivo para practicar sin conexión. Intenta de nuevo cuando tengas conexión."
+    "offlinePracticeNothingSaved": "No hay suficiente guardado en este dispositivo para practicar sin conexión. Intenta de nuevo cuando tengas conexión.",
+    "missionNumber": "Misión {index}",
+    "xpToYourStar": "{xp} XP para tu estrella",
+    "missionStarEarned": "¡Estrella ganada!",
+    "xpFromChats": "Chats {xp}",
+    "xpFromGoals": "Metas {xp}",
+    "xpFromPractice": "Práctica {xp}",
+    "playMission": "Jugar",
+    "wordCount": "{count, plural, =1{1 palabra} other{{count} palabras}}",
+    "continueActivity": "Continuar",
+    "noObjectiveActivitiesYet": "Todavía no has completado una actividad para este objetivo. Comienza una desde tu curso.",
+    "objectiveNotInYourCourses": "Este objetivo no está en ninguno de tus cursos.",
+    "objectiveActivityCount": "{count, plural, =0{Ninguna actividad aún} =1{1 actividad jugada} other{{count} actividades jugadas}}",
+    "activityCompleted": "Completada",
+    "completedTimes": "Completada {count} veces",
+    "classLocation": "Ubicación de la clase",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

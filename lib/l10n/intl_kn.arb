@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-16 11:48:59.519643",
+    "@@last_modified": "2026-10-16 16:33:03.213625",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "ನೀವು ಕಾಯುತ್ತಿರುವಾಗ ಶಬ್ದಕೋಶವನ್ನು ಅಭ್ಯಾಸ ಮಾಡಿ",
     "offlinePracticeNote": "ಆಫ್‌ಲೈನ್. ನೀವು ಹಿಂತಿರುಗಿದಾಗ ನಿಮ್ಮ ಉತ್ತರಗಳು ಅಪ್‌ಲೋಡ್ ಆಗುತ್ತವೆ.",
     "offlinePracticeSavedNote": "ಈ ಸಾಧನದಲ್ಲಿ ಉಳಿಸಲಾಗಿದೆ. ನೀವು ಆನ್‌ಲೈನ್‌ಗೆ ಮರಳಿದಾಗ ನಿಮ್ಮ XP ಅಪ್‌ಲೋಡ್ ಆಗುತ್ತದೆ.",
-    "offlinePracticeNothingSaved": "ಆಫ್‌ಲೈನ್‌ನಲ್ಲಿ ಅಭ್ಯಾಸ ಮಾಡಲು ಈ ಸಾಧನದಲ್ಲಿ ಸಾಕಷ್ಟು ಉಳಿಸಿಲ್ಲ. ನೀವು ಆನ್‌ಲೈನ್‌ಗೆ ಬಂದಾಗ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+    "offlinePracticeNothingSaved": "ಆಫ್‌ಲೈನ್‌ನಲ್ಲಿ ಅಭ್ಯಾಸ ಮಾಡಲು ಈ ಸಾಧನದಲ್ಲಿ ಸಾಕಷ್ಟು ಉಳಿಸಿಲ್ಲ. ನೀವು ಆನ್‌ಲೈನ್‌ಗೆ ಬಂದಾಗ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    "missionNumber": "ಮಿಷನ್ {index}",
+    "xpToYourStar": "ನಿಮ್ಮ ಸ್ಟಾರ್‌ಗೆ {xp} XP",
+    "missionStarEarned": "ಸ್ಟಾರ್ ಗಳಿಸಿದ್ದೀರಿ!",
+    "xpFromChats": "ಚಾಟ್‌ಗಳು {xp}",
+    "xpFromGoals": "ಗುರಿಗಳು {xp}",
+    "xpFromPractice": "ಅಭ್ಯಾಸ {xp}",
+    "playMission": "ಪ್ಲೇ ಮಾಡಿ",
+    "wordCount": "{count, plural, =1{1 ಪದ} other{{count} ಪದಗಳು}}",
+    "continueActivity": "ಮುಂದುವರಿಸಿ",
+    "noObjectiveActivitiesYet": "ನೀವು ಈ ಉದ್ದೇಶಕ್ಕಾಗಿ ಯಾವುದೇ ಚಟುವಟಿಕೆಯನ್ನು ಇನ್ನೂ ಪೂರ್ಣಗೊಳಿಸಿಲ್ಲ. ನಿಮ್ಮ ಕೋರ್ಸ್‌ನಿಂದ ಒಂದನ್ನು ಪ್ರಾರಂಭಿಸಿ.",
+    "objectiveNotInYourCourses": "ಈ ಉದ್ದೇಶವು ನಿಮ್ಮ ಯಾವುದೇ ಕೋರ್ಸ್‌ಗಳಲ್ಲಿಲ್ಲ.",
+    "objectiveActivityCount": "{count, plural, =0{ಇನ್ನೂ ಯಾವುದೇ ಚಟುವಟಿಕೆಗಳಿಲ್ಲ} =1{1 ಚಟುವಟಿಕೆ ಆಡಲಾಗಿದೆ} other{{count} ಚಟುವಟಿಕೆಗಳು ಆಡಲಾಗಿದೆ}}",
+    "activityCompleted": "ಪೂರ್ಣಗೊಂಡಿದೆ",
+    "completedTimes": "{count} ಬಾರಿ ಪೂರ್ಣಗೊಂಡಿದೆ",
+    "classLocation": "ತರಗತಿಯ ಸ್ಥಳ",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

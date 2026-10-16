@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-16 11:48:59.486581",
+    "@@last_modified": "2026-10-16 16:33:02.827621",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Күтіп тұрғанда сөздік қорыңызды жаттықтырыңыз",
     "offlinePracticeNote": "Желіден тыс. Желіге қосылғанда жауаптарыңыз жүктеледі.",
     "offlinePracticeSavedNote": "Осы құрылғыда сақталды. Желіге қосылғанда XP ұпайларыңыз жүктеледі.",
-    "offlinePracticeNothingSaved": "Офлайн жаттығу үшін бұл құрылғыда жеткілікті сақталмаған. Желіге қайта қосылғанда әрекетті қайталаңыз."
+    "offlinePracticeNothingSaved": "Офлайн жаттығу үшін бұл құрылғыда жеткілікті сақталмаған. Желіге қайта қосылғанда әрекетті қайталаңыз.",
+    "missionNumber": "Миссия {index}",
+    "xpToYourStar": "Жұлдызыңызға дейін {xp} XP",
+    "missionStarEarned": "Жұлдызға ие болдыңыз!",
+    "xpFromChats": "Чаттар {xp}",
+    "xpFromGoals": "Мақсаттар {xp}",
+    "xpFromPractice": "Тәжірибе {xp}",
+    "playMission": "Ойнату",
+    "wordCount": "{count, plural, =1{1 сөз} other{{count} сөз}}",
+    "continueActivity": "Жалғастыру",
+    "noObjectiveActivitiesYet": "Бұл мақсат үшін әлі ешқандай әрекетті аяқтаған жоқсыз. Курсыңыздан бастаңыз.",
+    "objectiveNotInYourCourses": "Бұл мақсат сіздің курстарыңыздың ешқайсысында жоқ.",
+    "objectiveActivityCount": "{count, plural, =0{Әлі әрекеттер жоқ} =1{1 әрекет ойнатылды} other{{count} әрекет ойнатылды}}",
+    "activityCompleted": "Аяқталды",
+    "completedTimes": "{count} рет аяқталды",
+    "classLocation": "Сабақ орны",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

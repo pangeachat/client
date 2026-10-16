@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-16 11:49:02.247991",
+    "@@last_modified": "2026-10-16 16:33:07.202456",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Хүлээж байхдаа үгийн сангаа давт",
     "offlinePracticeNote": "Офлайн байна. Таны хариултууд буцаж ирэхэд тань байршина.",
     "offlinePracticeSavedNote": "Энэ төхөөрөмжид хадгалагдсан. Таны XP онлайнаар буцаж ирэхэд тань байршина.",
-    "offlinePracticeNothingSaved": "Офлайн дасгал хийх хангалттай мэдээлэл энэ төхөөрөмжид хадгалагдаагүй байна. Онлайнаар холбогдсон үедээ дахин оролдоно уу."
+    "offlinePracticeNothingSaved": "Офлайн дасгал хийх хангалттай мэдээлэл энэ төхөөрөмжид хадгалагдаагүй байна. Онлайнаар холбогдсон үедээ дахин оролдоно уу.",
+    "missionNumber": "Даалгавар {index}",
+    "xpToYourStar": "Од хүртэл {xp} XP",
+    "missionStarEarned": "Од авлаа!",
+    "xpFromChats": "Чат {xp}",
+    "xpFromGoals": "Зорилго {xp}",
+    "xpFromPractice": "Дадлага {xp}",
+    "playMission": "Тоглох",
+    "wordCount": "{count, plural, =1{1 үг} other{{count} үг}}",
+    "continueActivity": "Үргэлжлүүлэх",
+    "noObjectiveActivitiesYet": "Та энэ зорилгынхоо даалгаврыг хараахан гүйцэтгээгүй байна. Сургалтаасаа эхлүүлээрэй.",
+    "objectiveNotInYourCourses": "Энэ зорилго таны сургалтуудын алинд нь ч байхгүй байна.",
+    "objectiveActivityCount": "{count, plural, =0{Одоогоор даалгавар байхгүй} =1{1 даалгавар гүйцэтгэсэн} other{{count} даалгавар гүйцэтгэсэн}}",
+    "activityCompleted": "Гүйцэтгэсэн",
+    "completedTimes": "{count} удаа гүйцэтгэсэн",
+    "classLocation": "Хичээлийн байршил",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-16 11:48:55.476576",
+    "@@last_modified": "2026-10-16 16:33:00.160896",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "રાહ જોતી વખતે શબ્દભંડોળનો અભ્યાસ કરો",
     "offlinePracticeNote": "ઑફલાઇન. તમે પાછા આવો ત્યારે તમારા જવાબો અપલોડ થશે.",
     "offlinePracticeSavedNote": "આ ઉપકરણ પર સાચવેલ છે. તમે ઑનલાઇન પાછા આવો ત્યારે તમારો XP અપલોડ થશે.",
-    "offlinePracticeNothingSaved": "ઑફલાઇન પ્રેક્ટિસ કરવા માટે આ ઉપકરણ પર પૂરતું સાચવેલું નથી. જ્યારે તમે ઑનલાઇન પાછા આવો ત્યારે ફરી પ્રયાસ કરો."
+    "offlinePracticeNothingSaved": "ઑફલાઇન પ્રેક્ટિસ કરવા માટે આ ઉપકરણ પર પૂરતું સાચવેલું નથી. જ્યારે તમે ઑનલાઇન પાછા આવો ત્યારે ફરી પ્રયાસ કરો.",
+    "missionNumber": "મિશન {index}",
+    "xpToYourStar": "તમારા સ્ટાર માટે {xp} XP",
+    "missionStarEarned": "સ્ટાર મળ્યો!",
+    "xpFromChats": "ચેટ્સ {xp}",
+    "xpFromGoals": "ધ્યેય {xp}",
+    "xpFromPractice": "અભ્યાસ {xp}",
+    "playMission": "રમો",
+    "wordCount": "{count, plural, =1{1 શબ્દ} other{{count} શબ્દો}}",
+    "continueActivity": "ચાલુ રાખો",
+    "noObjectiveActivitiesYet": "તમે હજુ સુધી આ ઉદ્દેશ્ય માટે કોઈ પ્રવૃત્તિ પૂર્ણ કરી નથી. તમારા કોર્સમાંથી એક શરૂ કરો.",
+    "objectiveNotInYourCourses": "આ ઉદ્દેશ્ય તમારા કોઈપણ કોર્સમાં નથી.",
+    "objectiveActivityCount": "{count, plural, =0{હજુ સુધી કોઈ પ્રવૃત્તિઓ નથી} =1{1 પ્રવૃત્તિ રમાઈ} other{{count} પ્રવૃત્તિઓ રમાઈ}}",
+    "activityCompleted": "પૂર્ણ થયું",
+    "completedTimes": "{count} વાર પૂર્ણ થયું",
+    "classLocation": "વર્ગનું સ્થાન",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

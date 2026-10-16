@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-16 11:49:07.551635",
+    "@@last_modified": "2026-10-16 16:33:12.932247",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Jizoeze msamiati unaposubiri",
     "offlinePracticeNote": "Nje ya mtandao. Majibu yako yatapakiwa ukiwa mtandaoni tena.",
     "offlinePracticeSavedNote": "Imehifadhiwa kwenye kifaa hiki. XP yako itapakiwa ukiwa mtandaoni tena.",
-    "offlinePracticeNothingSaved": "Hakuna kilichohifadhiwa cha kutosha kwenye kifaa hiki kwa ajili ya mazoezi ya nje ya mtandao. Jaribu tena ukiwa mtandaoni."
+    "offlinePracticeNothingSaved": "Hakuna kilichohifadhiwa cha kutosha kwenye kifaa hiki kwa ajili ya mazoezi ya nje ya mtandao. Jaribu tena ukiwa mtandaoni.",
+    "missionNumber": "Dhamira {index}",
+    "xpToYourStar": "{xp} XP kufikia nyota yako",
+    "missionStarEarned": "Nyota imepatikana!",
+    "xpFromChats": "Gumzo {xp}",
+    "xpFromGoals": "Malengo {xp}",
+    "xpFromPractice": "Mazoezi {xp}",
+    "playMission": "Cheza",
+    "wordCount": "{count, plural, =1{neno 1} other{maneno {count}}}",
+    "continueActivity": "Endelea",
+    "noObjectiveActivitiesYet": "Bado hujakamilisha shughuli yoyote kwa lengo hili. Anzisha moja kutoka kozi yako.",
+    "objectiveNotInYourCourses": "Lengo hili halipo katika kozi zako zozote.",
+    "objectiveActivityCount": "{count, plural, =0{Hakuna shughuli bado} =1{Shughuli 1 imechezwa} other{Shughuli {count} zimechezwa}}",
+    "activityCompleted": "Imekamilika",
+    "completedTimes": "Imekamilika mara {count}",
+    "classLocation": "Mahali pa darasa",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

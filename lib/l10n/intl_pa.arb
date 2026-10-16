@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-16 11:49:05.135452",
+    "@@last_modified": "2026-10-16 16:33:08.866336",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "ਉਡੀਕਦੇ ਹੋਏ ਸ਼ਬਦਾਵਲੀ ਦਾ ਅਭਿਆਸ ਕਰੋ",
     "offlinePracticeNote": "ਔਫਲਾਈਨ। ਤੁਹਾਡੇ ਜਵਾਬ ਵਾਪਸ ਆਉਣ 'ਤੇ ਅੱਪਲੋਡ ਹੋ ਜਾਣਗੇ।",
     "offlinePracticeSavedNote": "ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ। ਤੁਹਾਡਾ XP ਵਾਪਸ ਔਨਲਾਈਨ ਹੋਣ 'ਤੇ ਅੱਪਲੋਡ ਹੋ ਜਾਵੇਗਾ।",
-    "offlinePracticeNothingSaved": "ਆਫਲਾਈਨ ਅਭਿਆਸ ਕਰਨ ਲਈ ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਕਾਫ਼ੀ ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤਾ ਗਿਆ ਹੈ। ਜਦੋਂ ਤੁਸੀਂ ਵਾਪਸ ਔਨਲਾਈਨ ਹੋਵੋ ਤਾਂ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
+    "offlinePracticeNothingSaved": "ਆਫਲਾਈਨ ਅਭਿਆਸ ਕਰਨ ਲਈ ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਕਾਫ਼ੀ ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤਾ ਗਿਆ ਹੈ। ਜਦੋਂ ਤੁਸੀਂ ਵਾਪਸ ਔਨਲਾਈਨ ਹੋਵੋ ਤਾਂ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
+    "missionNumber": "ਮਿਸ਼ਨ {index}",
+    "xpToYourStar": "ਤੁਹਾਡੇ ਸਟਾਰ ਲਈ {xp} XP",
+    "missionStarEarned": "ਸਟਾਰ ਕਮਾਇਆ!",
+    "xpFromChats": "ਚੈਟਾਂ {xp}",
+    "xpFromGoals": "ਟੀਚੇ {xp}",
+    "xpFromPractice": "ਅਭਿਆਸ {xp}",
+    "playMission": "ਖੇਡੋ",
+    "wordCount": "{count, plural, =1{1 ਸ਼ਬਦ} other{{count} ਸ਼ਬਦ}}",
+    "continueActivity": "ਜਾਰੀ ਰੱਖੋ",
+    "noObjectiveActivitiesYet": "ਤੁਸੀਂ ਅਜੇ ਇਸ ਉਦੇਸ਼ ਲਈ ਕੋਈ ਗਤੀਵਿਧੀ ਪੂਰੀ ਨਹੀਂ ਕੀਤੀ ਹੈ। ਆਪਣੇ ਕੋਰਸ ਤੋਂ ਇੱਕ ਸ਼ੁਰੂ ਕਰੋ।",
+    "objectiveNotInYourCourses": "ਇਹ ਉਦੇਸ਼ ਤੁਹਾਡੇ ਕਿਸੇ ਵੀ ਕੋਰਸ ਵਿੱਚ ਨਹੀਂ ਹੈ।",
+    "objectiveActivityCount": "{count, plural, =0{ਅਜੇ ਕੋਈ ਗਤੀਵਿਧੀ ਨਹੀਂ} =1{1 ਗਤੀਵਿਧੀ ਖੇਡੀ ਗਈ} other{{count} ਗਤੀਵਿਧੀਆਂ ਖੇਡੀਆਂ ਗਈਆਂ}}",
+    "activityCompleted": "ਪੂਰਾ ਹੋ ਗਿਆ",
+    "completedTimes": "{count} ਵਾਰ ਪੂਰਾ ਕੀਤਾ ਗਿਆ",
+    "classLocation": "ਕਲਾਸ ਦੀ ਸਥਿਤੀ",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

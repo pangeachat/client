@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-16 11:49:08.677233",
+    "@@last_modified": "2026-10-16 16:33:14.914608",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "ساقلاۋاتقاندا سۆزلۈك مەشىق قىلىڭ",
     "offlinePracticeNote": "تورسىز. جاۋابلىرىڭىز تورغا چىققاندا يۈكلىنىدۇ.",
     "offlinePracticeSavedNote": "بۇ ئۈسكۈنىگە ساقلاندى. تورغا چىققاندا XP نۇقتىڭىز يۈكلىنىدۇ.",
-    "offlinePracticeNothingSaved": "بۇ ئۈسكۈنىدە تورسىز مەشىق قىلىش ئۈچۈن يېتەرلىك سانلىق مەلۇمات ساقلانمىغان. تورغا چىققاندا قايتا سىناپ بېقىڭ."
+    "offlinePracticeNothingSaved": "بۇ ئۈسكۈنىدە تورسىز مەشىق قىلىش ئۈچۈن يېتەرلىك سانلىق مەلۇمات ساقلانمىغان. تورغا چىققاندا قايتا سىناپ بېقىڭ.",
+    "missionNumber": "ۋەزىپە {index}",
+    "xpToYourStar": "چولپىنىڭىزغا {xp} XP",
+    "missionStarEarned": "چولپانغا ئېرىشتىڭىز!",
+    "xpFromChats": "پارىڭى {xp}",
+    "xpFromGoals": "نىشانى {xp}",
+    "xpFromPractice": "مەشقى {xp}",
+    "playMission": "ئويناش",
+    "wordCount": "{count, plural, =1{1 سۆز} other{{count} سۆز}}",
+    "continueActivity": "داۋاملاشتۇرۇش",
+    "noObjectiveActivitiesYet": "بۇ نىشان ئۈچۈن تېخى بىر پائالىيەتنى تاماملىمىدىڭىز. دەرسلىكىڭىزدىن بىرنى باشلاڭ.",
+    "objectiveNotInYourCourses": "بۇ نىشان دەرسلىكىڭىزنىڭ ھېچقايسىسىدا يوق.",
+    "objectiveActivityCount": "{count, plural, =0{تېخى پائالىيەت يوق} =1{1 پائالىيەت ئوينالدى} other{{count} پائالىيەت ئوينالدى}}",
+    "activityCompleted": "تاماملاندى",
+    "completedTimes": "{count} قېتىم تاماملىنىدۇ",
+    "classLocation": "دەرس ئورنى",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

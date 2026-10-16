@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-10-16 11:49:02.847111",
+    "@@last_modified": "2026-10-16 16:33:06.454798",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "प्रतीक्षा करताना शब्दसंग्रहाचा सराव करा",
     "offlinePracticeNote": "ऑफलाइन. तुम्ही परत आल्यावर तुमची उत्तरे अपलोड होतील.",
     "offlinePracticeSavedNote": "या डिव्हाइसवर सेव्ह केले आहे. तुम्ही ऑनलाइन परत आल्यावर तुमचा XP अपलोड होईल.",
-    "offlinePracticeNothingSaved": "ऑफलाइन सराव करण्यासाठी या डिव्हाइसवर पुरेसे काहीही सेव्ह केलेले नाही. तुम्ही पुन्हा ऑनलाइन झाल्यावर प्रयत्न करा."
+    "offlinePracticeNothingSaved": "ऑफलाइन सराव करण्यासाठी या डिव्हाइसवर पुरेसे काहीही सेव्ह केलेले नाही. तुम्ही पुन्हा ऑनलाइन झाल्यावर प्रयत्न करा.",
+    "missionNumber": "मिशन {index}",
+    "xpToYourStar": "तुमच्या स्टारसाठी {xp} XP",
+    "missionStarEarned": "स्टार मिळवला!",
+    "xpFromChats": "चॅट्स {xp}",
+    "xpFromGoals": "ध्येये {xp}",
+    "xpFromPractice": "सराव {xp}",
+    "playMission": "खेळा",
+    "wordCount": "{count, plural, =1{1 शब्द} other{{count} शब्द}}",
+    "continueActivity": "सुरू ठेवा",
+    "noObjectiveActivitiesYet": "तुम्ही या उद्दिष्टासाठी अद्याप कोणतीही अ‍ॅक्टिव्हिटी पूर्ण केलेली नाही. तुमच्या कोर्समधून एक सुरू करा.",
+    "objectiveNotInYourCourses": "हे उद्दिष्ट तुमच्या कोणत्याही कोर्समध्ये नाही.",
+    "objectiveActivityCount": "{count, plural, =0{अद्याप कोणतीही अ‍ॅक्टिव्हिटी नाही} =1{1 अ‍ॅक्टिव्हिटी खेळली} other{{count} अ‍ॅक्टिव्हिटी खेळल्या}}",
+    "activityCompleted": "पूर्ण झाले",
+    "completedTimes": "{count} वेळा पूर्ण केले",
+    "classLocation": "वर्गाचे स्थान",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

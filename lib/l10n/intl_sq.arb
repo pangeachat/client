@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-16 11:49:13.359110",
+    "@@last_modified": "2026-10-16 16:33:12.357166",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Praktiko fjalorin ndërsa pret",
     "offlinePracticeNote": "Jashtë linje. Përgjigjet e tua ngarkohen kur të rikthehesh.",
     "offlinePracticeSavedNote": "Ruajtur në këtë pajisje. XP-ja jote ngarkohet kur të jesh sërish online.",
-    "offlinePracticeNothingSaved": "Nuk ka mjaftueshëm të dhëna të ruajtura në këtë pajisje për të praktikuar jashtë linje. Provojeni sërish kur të jeni online."
+    "offlinePracticeNothingSaved": "Nuk ka mjaftueshëm të dhëna të ruajtura në këtë pajisje për të praktikuar jashtë linje. Provojeni sërish kur të jeni online.",
+    "missionNumber": "Misioni {index}",
+    "xpToYourStar": "{xp} XP për yllin tënd",
+    "missionStarEarned": "Ylli u fitua!",
+    "xpFromChats": "Biseda {xp}",
+    "xpFromGoals": "Synime {xp}",
+    "xpFromPractice": "Praktikë {xp}",
+    "playMission": "Luaj",
+    "wordCount": "{count, plural, =1{1 fjalë} other{{count} fjalë}}",
+    "continueActivity": "Vazhdo",
+    "noObjectiveActivitiesYet": "Ende nuk ke përfunduar një aktivitet për këtë objektiv. Fillo një nga kursi yt.",
+    "objectiveNotInYourCourses": "Ky objektiv nuk është në asnjë nga kurset e tua.",
+    "objectiveActivityCount": "{count, plural, =0{Ende pa aktivitete} =1{1 aktivitet i luajtur} other{{count} aktivitete të luajtura}}",
+    "activityCompleted": "Përfunduar",
+    "completedTimes": "Përfunduar {count} herë",
+    "classLocation": "Vendndodhja e klasës",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

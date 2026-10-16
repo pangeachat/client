@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-16 11:48:54.431437",
+    "@@last_modified": "2026-10-16 16:32:57.161734",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9989,5 +9989,21 @@
     "connectionPracticeVocab": "Praktikatu hiztegia itxaroten duzun bitartean",
     "offlinePracticeNote": "Lineaz kanpo. Zure erantzunak igoko dira berriro konektatzen zarenean.",
     "offlinePracticeSavedNote": "Gailu honetan gordeta. Zure XP igoko da berriro konektatzen zarenean.",
-    "offlinePracticeNothingSaved": "Ez dago nahikoa gordeta gailu honetan lineaz kanpo praktikatzeko. Saiatu berriro konektatuta zaudenean."
+    "offlinePracticeNothingSaved": "Ez dago nahikoa gordeta gailu honetan lineaz kanpo praktikatzeko. Saiatu berriro konektatuta zaudenean.",
+    "missionNumber": "Misioa {index}",
+    "xpToYourStar": "{xp} XP zure izarrerako",
+    "missionStarEarned": "Izarra irabazi da!",
+    "xpFromChats": "Txatak {xp}",
+    "xpFromGoals": "Helburuak {xp}",
+    "xpFromPractice": "Praktika {xp}",
+    "playMission": "Jolastu",
+    "wordCount": "{count, plural, =1{hitz 1} other{{count} hitz}}",
+    "continueActivity": "Jarraitu",
+    "noObjectiveActivitiesYet": "Oraindik ez duzu helburu honetarako jarduerarik osatu. Hasi bat zure ikastaroan.",
+    "objectiveNotInYourCourses": "Helburu hau ez dago zure ikastaroetako batean ere.",
+    "objectiveActivityCount": "{count, plural, =0{Oraindik jarduerarik ez} =1{jarduera 1 jokatu da} other{{count} jarduera jokatu dira}}",
+    "activityCompleted": "Osatuta",
+    "completedTimes": "{count} aldiz osatuta",
+    "classLocation": "Klasearen kokapena",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

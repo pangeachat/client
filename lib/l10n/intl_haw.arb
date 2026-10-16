@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-16 11:48:56.285757",
+    "@@last_modified": "2026-10-16 16:32:59.350608",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "E hoʻomaʻamaʻa i nā huaʻōlelo ke kali ʻoe",
     "offlinePracticeNote": "Ma waho pūnaewele. E hoʻouka ʻia kāu mau pane ke hoʻi mai ʻoe.",
     "offlinePracticeSavedNote": "Mālama ʻia ma kēia hāmeʻa. E hoʻouka ʻia kāu XP ke hoʻi ʻoe i ka pūnaewele.",
-    "offlinePracticeNothingSaved": "ʻAʻole lawa ka mea i mālama ʻia ma kēia hāmeʻa no ka hoʻomaʻamaʻa ʻana ma waho pūnaewele. E hoʻāʻo hou ke hoʻi ʻoe i ka pūnaewele."
+    "offlinePracticeNothingSaved": "ʻAʻole lawa ka mea i mālama ʻia ma kēia hāmeʻa no ka hoʻomaʻamaʻa ʻana ma waho pūnaewele. E hoʻāʻo hou ke hoʻi ʻoe i ka pūnaewele.",
+    "missionNumber": "Mihana {index}",
+    "xpToYourStar": "{xp} XP i kou hōkū",
+    "missionStarEarned": "Ua loaʻa ka hōkū!",
+    "xpFromChats": "Kamaʻilio {xp}",
+    "xpFromGoals": "Pahu hopu {xp}",
+    "xpFromPractice": "Hoʻomaʻamaʻa {xp}",
+    "playMission": "Pāʻani",
+    "wordCount": "{count, plural, =1{1 huaʻōlelo} other{{count} mau huaʻōlelo}}",
+    "continueActivity": "Hoʻomau",
+    "noObjectiveActivitiesYet": "ʻAʻole ʻoe i hoʻopau i kahi hana no kēia pahuhopu. E hoʻomaka i kekahi mai kāu papa.",
+    "objectiveNotInYourCourses": "ʻAʻole kēia pahuhopu i kekahi o kāu mau papa.",
+    "objectiveActivityCount": "{count, plural, =0{ʻAʻohe hana i kēia manawa} =1{1 hana i pāʻani ʻia} other{{count} mau hana i pāʻani ʻia}}",
+    "activityCompleted": "Hoʻopau ʻia",
+    "completedTimes": "Hoʻopau ʻia {count} mau manawa",
+    "classLocation": "Kahi papa",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

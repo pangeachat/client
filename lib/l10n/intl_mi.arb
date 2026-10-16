@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-16 11:49:04.491555",
+    "@@last_modified": "2026-10-16 16:33:05.244885",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Parakatihitia ngā kupu hou i a koe e tatari ana",
     "offlinePracticeNote": "Tuimotu. Ka tukuna ō whakautu ina hoki mai koe.",
     "offlinePracticeSavedNote": "Kua tiakina ki tēnei pūrere. Ka tukuna tō XP ina hoki mai koe ki te ipurangi.",
-    "offlinePracticeNothingSaved": "Kāore i rawaka ngā mea kua tiakina ki tēnei pūrere hei whakaharatau tuimotu. Me ngana anō ka hoki ana koe ki te ipurangi."
+    "offlinePracticeNothingSaved": "Kāore i rawaka ngā mea kua tiakina ki tēnei pūrere hei whakaharatau tuimotu. Me ngana anō ka hoki ana koe ki te ipurangi.",
+    "missionNumber": "Mīhana {index}",
+    "xpToYourStar": "{xp} XP ki tō whetū",
+    "missionStarEarned": "Kua whiwhi whetū!",
+    "xpFromChats": "Kōrerorero {xp}",
+    "xpFromGoals": "Whāinga {xp}",
+    "xpFromPractice": "Mahi {xp}",
+    "playMission": "Tākaro",
+    "wordCount": "{count, plural, =1{1 kupu} other{{count} kupu}}",
+    "continueActivity": "Haere tonu",
+    "noObjectiveActivitiesYet": "Kāore anō koe kia whakaoti i tētahi mahi mō tēnei whāinga. Tīmatahia tētahi mai i tō akoranga.",
+    "objectiveNotInYourCourses": "Kāore tēnei whāinga i roto i ō akoranga.",
+    "objectiveActivityCount": "{count, plural, =0{Kāore anō he mahi} =1{1 mahi kua tākaro} other{{count} mahi kua tākaro}}",
+    "activityCompleted": "Kua oti",
+    "completedTimes": "Kua oti {count} wā",
+    "classLocation": "Wāhi akomanga",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

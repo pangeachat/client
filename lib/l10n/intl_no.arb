@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-16 11:49:05.389737",
+    "@@last_modified": "2026-10-16 16:33:08.049275",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Øv på gloser mens du venter",
     "offlinePracticeNote": "Frakoblet. Svarene dine lastes opp når du er tilbake.",
     "offlinePracticeSavedNote": "Lagret på denne enheten. XP-en din lastes opp når du er online igjen.",
-    "offlinePracticeNothingSaved": "Ikke nok er lagret på denne enheten til å øve offline. Prøv igjen når du er online."
+    "offlinePracticeNothingSaved": "Ikke nok er lagret på denne enheten til å øve offline. Prøv igjen når du er online.",
+    "missionNumber": "Oppdrag {index}",
+    "xpToYourStar": "{xp} XP til stjernen din",
+    "missionStarEarned": "Stjerne opptjent!",
+    "xpFromChats": "Chatter {xp}",
+    "xpFromGoals": "Mål {xp}",
+    "xpFromPractice": "Øvelse {xp}",
+    "playMission": "Spill",
+    "wordCount": "{count, plural, =1{1 ord} other{{count} ord}}",
+    "continueActivity": "Fortsett",
+    "noObjectiveActivitiesYet": "Du har ikke fullført en aktivitet for dette målet ennå. Start en fra kurset ditt.",
+    "objectiveNotInYourCourses": "Dette målet er ikke i noen av kursene dine.",
+    "objectiveActivityCount": "{count, plural, =0{Ingen aktiviteter ennå} =1{1 aktivitet spilt} other{{count} aktiviteter spilt}}",
+    "activityCompleted": "Fullført",
+    "completedTimes": "Fullført {count} ganger",
+    "classLocation": "Klassested",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

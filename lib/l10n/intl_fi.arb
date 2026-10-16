@@ -3516,7 +3516,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-16 11:48:55.171520",
+    "@@last_modified": "2026-10-16 16:32:56.989006",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10026,5 +10026,21 @@
     "connectionPracticeVocab": "Harjoittele sanastoa odottaessasi",
     "offlinePracticeNote": "Offline-tilassa. Vastauksesi lähetetään, kun olet taas online-tilassa.",
     "offlinePracticeSavedNote": "Tallennettu tälle laitteelle. XP-pisteesi lähetetään, kun olet taas online-tilassa.",
-    "offlinePracticeNothingSaved": "Tälle laitteelle ei ole tallennettu tarpeeksi harjoiteltavaa offline-tilassa. Yritä uudelleen, kun olet taas online-tilassa."
+    "offlinePracticeNothingSaved": "Tälle laitteelle ei ole tallennettu tarpeeksi harjoiteltavaa offline-tilassa. Yritä uudelleen, kun olet taas online-tilassa.",
+    "missionNumber": "Tehtävä {index}",
+    "xpToYourStar": "{xp} XP tähteesi",
+    "missionStarEarned": "Tähti ansaittu!",
+    "xpFromChats": "Keskustelut {xp}",
+    "xpFromGoals": "Tavoitteet {xp}",
+    "xpFromPractice": "Harjoitus {xp}",
+    "playMission": "Pelaa",
+    "wordCount": "{count, plural, =1{1 sana} other{{count} sanaa}}",
+    "continueActivity": "Jatka",
+    "noObjectiveActivitiesYet": "Et ole vielä suorittanut tähän tavoitteeseen liittyvää tehtävää. Aloita sellainen kurssiltasi.",
+    "objectiveNotInYourCourses": "Tämä tavoite ei sisälly mihinkään kursseistasi.",
+    "objectiveActivityCount": "{count, plural, =0{Ei vielä tehtäviä} =1{1 tehtävä suoritettu} other{{count} tehtävää suoritettu}}",
+    "activityCompleted": "Suoritettu",
+    "completedTimes": "Suoritettu {count} kertaa",
+    "classLocation": "Luokan sijainti",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

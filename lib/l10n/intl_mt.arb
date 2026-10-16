@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-16 11:49:03.432147",
+    "@@last_modified": "2026-10-16 16:33:07.027608",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Ipprattika l-vokabularju waqt li tkun qed tistenna",
     "offlinePracticeNote": "Offline. It-tweġibiet tiegħek jittellgħu meta terġa' tkun online.",
     "offlinePracticeSavedNote": "Issejvjat fuq dan l-apparat. L-XP tiegħek jittella' meta terġa' tkun online.",
-    "offlinePracticeNothingSaved": "Mhux biżżejjed salvat fuq dan l-apparat biex tipprattika offline. Erġa' pprova meta terġa' tkun online."
+    "offlinePracticeNothingSaved": "Mhux biżżejjed salvat fuq dan l-apparat biex tipprattika offline. Erġa' pprova meta terġa' tkun online.",
+    "missionNumber": "Missjoni {index}",
+    "xpToYourStar": "{xp} XP sal-istilla tiegħek",
+    "missionStarEarned": "Stilla miksuba!",
+    "xpFromChats": "Chats {xp}",
+    "xpFromGoals": "Għanijiet {xp}",
+    "xpFromPractice": "Prattika {xp}",
+    "playMission": "Ilgħab",
+    "wordCount": "{count, plural, =1{1 kelma} other{{count} kelma}}",
+    "continueActivity": "Kompli",
+    "noObjectiveActivitiesYet": "Għadek ma lestejtx attività għal dan l-objettiv. Ibda waħda mill-kors tiegħek.",
+    "objectiveNotInYourCourses": "Dan l-objettiv mhuwiex f'xi wieħed mill-korsijiet tiegħek.",
+    "objectiveActivityCount": "{count, plural, =0{Għad m'hemmx attivitajiet} =1{1 attività milgħuba} other{{count} attivitajiet milgħuba}}",
+    "activityCompleted": "Lest",
+    "completedTimes": "Lest {count} darbiet",
+    "classLocation": "Post tal-klassi",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

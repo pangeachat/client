@@ -3528,7 +3528,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-16 11:48:53.156058",
+    "@@last_modified": "2026-10-16 16:32:53.135464",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10003,5 +10003,21 @@
     "connectionPracticeVocab": "Практыкуйце слоўнікавы запас, пакуль чакаеце",
     "offlinePracticeNote": "Па-за сеткай. Вашы адказы загрузяцца, калі вы вернецеся ў сетку.",
     "offlinePracticeSavedNote": "Захавана на гэтай прыладзе. Ваш XP загрузіцца, калі вы вернецеся ў сетку.",
-    "offlinePracticeNothingSaved": "На гэтай прыладзе недастаткова захавана для практыкі ў аўтаномным рэжыме. Паспрабуйце яшчэ раз, калі вы будзеце ў сетцы."
+    "offlinePracticeNothingSaved": "На гэтай прыладзе недастаткова захавана для практыкі ў аўтаномным рэжыме. Паспрабуйце яшчэ раз, калі вы будзеце ў сетцы.",
+    "missionNumber": "Місія {index}",
+    "xpToYourStar": "{xp} XP да вашай зоркі",
+    "missionStarEarned": "Зорка зароблена!",
+    "xpFromChats": "Чаты {xp}",
+    "xpFromGoals": "Мэты {xp}",
+    "xpFromPractice": "Практыка {xp}",
+    "playMission": "Гуляць",
+    "wordCount": "{count, plural, =1{1 слова} other{{count} слоў}}",
+    "continueActivity": "Працягнуць",
+    "noObjectiveActivitiesYet": "Вы яшчэ не выканалі заданне для гэтай мэты. Пачніце адно з вашага курсу.",
+    "objectiveNotInYourCourses": "Гэтая мэта адсутнічае ў вашых курсах.",
+    "objectiveActivityCount": "{count, plural, =0{Пакуль няма заданняў} =1{1 заданне выканана} other{{count} заданняў выканана}}",
+    "activityCompleted": "Выканана",
+    "completedTimes": "Выканана {count} разоў",
+    "classLocation": "Месцазнаходжанне заняткаў",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

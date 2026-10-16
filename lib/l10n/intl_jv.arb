@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-16 11:49:01.057474",
+    "@@last_modified": "2026-10-16 16:33:02.208619",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Gladhen kosakata nalika ngenteni",
     "offlinePracticeNote": "Offline. Wangsulanmu bakal diunggah nalika sampeyan bali.",
     "offlinePracticeSavedNote": "Disimpen ing piranti iki. XP-mu bakal diunggah nalika sampeyan online maneh.",
-    "offlinePracticeNothingSaved": "Ora cukup sing disimpen ing piranti iki kanggo gladhen offline. Coba maneh nalika sampeyan wis online."
+    "offlinePracticeNothingSaved": "Ora cukup sing disimpen ing piranti iki kanggo gladhen offline. Coba maneh nalika sampeyan wis online.",
+    "missionNumber": "Misi {index}",
+    "xpToYourStar": "{xp} XP menyang lintangmu",
+    "missionStarEarned": "Lintang entuk!",
+    "xpFromChats": "Obrolan {xp}",
+    "xpFromGoals": "Tujuan {xp}",
+    "xpFromPractice": "Latihan {xp}",
+    "playMission": "Mulai",
+    "wordCount": "{count, plural, =1{1 tembung} other{{count} tembung}}",
+    "continueActivity": "Terusake",
+    "noObjectiveActivitiesYet": "Sampeyan durung ngrampungake kegiatan kanggo tujuan iki. Wiwiti siji saka kursus sampeyan.",
+    "objectiveNotInYourCourses": "Tujuan iki ora ana ing kursus sampeyan.",
+    "objectiveActivityCount": "{count, plural, =0{Durung ana kegiatan} =1{1 kegiatan dimainake} other{{count} kegiatan dimainake}}",
+    "activityCompleted": "Rampung",
+    "completedTimes": "Rampung {count} kaping",
+    "classLocation": "Lokasi kelas",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

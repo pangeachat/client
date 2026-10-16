@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-10-16 11:49:04.553094",
+    "@@last_modified": "2026-10-16 16:33:10.552496",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "ଅପେକ୍ଷା କରିଥିବା ସମୟରେ ଶବ୍ଦାବଳୀ ଅଭ୍ୟାସ କରନ୍ତୁ",
     "offlinePracticeNote": "ଅଫଲାଇନ୍। ଆପଣ ଫେରିବା ପରେ ଆପଣଙ୍କ ଉତ୍ତରଗୁଡ଼ିକ ଅପଲୋଡ୍ ହେବ।",
     "offlinePracticeSavedNote": "ଏହି ଡିଭାଇସରେ ସେଭ୍ ହୋଇଛି। ଆପଣ ଅନଲାଇନ୍ ହେବା ପରେ ଆପଣଙ୍କ XP ଅପଲୋଡ୍ ହେବ।",
-    "offlinePracticeNothingSaved": "ଅଫଲାଇନ୍ ଅଭ୍ୟାସ କରିବା ପାଇଁ ଏହି ଡିଭାଇସରେ ପର୍ଯ୍ୟାପ୍ତ ତଥ୍ୟ ସେଭ୍ ହୋଇନାହିଁ। ଆପଣ ଅନଲାଇନ୍ ହେବା ପରେ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।"
+    "offlinePracticeNothingSaved": "ଅଫଲାଇନ୍ ଅଭ୍ୟାସ କରିବା ପାଇଁ ଏହି ଡିଭାଇସରେ ପର୍ଯ୍ୟାପ୍ତ ତଥ୍ୟ ସେଭ୍ ହୋଇନାହିଁ। ଆପଣ ଅନଲାଇନ୍ ହେବା ପରେ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।",
+    "missionNumber": "ମିଶନ୍ {index}",
+    "xpToYourStar": "ଆପଣଙ୍କ ଷ୍ଟାର୍ ପାଇଁ {xp} XP",
+    "missionStarEarned": "ଷ୍ଟାର୍ ଅର୍ଜନ କରାଗଲା!",
+    "xpFromChats": "ଚାଟ୍‌ଗୁଡ଼ିକ {xp}",
+    "xpFromGoals": "ଲକ୍ଷ୍ୟଗୁଡ଼ିକ {xp}",
+    "xpFromPractice": "ଅଭ୍ୟାସ {xp}",
+    "playMission": "ଖେଳନ୍ତୁ",
+    "wordCount": "{count, plural, =1{1 ଶବ୍ଦ} other{{count} ଶବ୍ଦ}}",
+    "continueActivity": "ଜାରି ରଖନ୍ତୁ",
+    "noObjectiveActivitiesYet": "ଆପଣ ଏହି ଉଦ୍ଦେଶ୍ୟ ପାଇଁ ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି କାର୍ଯ୍ୟକଳାପ ସମାପ୍ତ କରିନାହାଁନ୍ତି। ଆପଣଙ୍କ ପାଠ୍ୟକ୍ରମରୁ ଗୋଟିଏ ଆରମ୍ଭ କରନ୍ତୁ।",
+    "objectiveNotInYourCourses": "ଏହି ଉଦ୍ଦେଶ୍ୟ ଆପଣଙ୍କ କୌଣସି ପାଠ୍ୟକ୍ରମରେ ନାହିଁ।",
+    "objectiveActivityCount": "{count, plural, =0{ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି କାର୍ଯ୍ୟକଳାପ ନାହିଁ} =1{1 କାର୍ଯ୍ୟକଳାପ ଖେଳାଯାଇଛି} other{{count} କାର୍ଯ୍ୟକଳାପ ଖେଳାଯାଇଛି}}",
+    "activityCompleted": "ସମାପ୍ତ ହୋଇଛି",
+    "completedTimes": "{count} ଥର ସମାପ୍ତ ହୋଇଛି",
+    "classLocation": "ଶ୍ରେଣୀ ସ୍ଥାନ",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

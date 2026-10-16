@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-16 11:49:09.762857",
+    "@@last_modified": "2026-10-16 16:33:16.434956",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "פּראַקטיצירן וואָקאַבולאַר בשעת איר וואַרטן",
     "offlinePracticeNote": "אָפפלינע. דיין ענטפֿערס וועלן אַרויפֿלאָדן ווען איר קומט צוריק.",
     "offlinePracticeSavedNote": "געראַטעוועט אויף דעם מיטל. דיין עקספּי וועט אַרויפֿלאָדן ווען איר זענט צוריק אָנליין.",
-    "offlinePracticeNothingSaved": "נישט גענוג איז אפגעהיט אויף דעם מיטל צו פּראַקטיצירן אָפפלינע. פּרוּווט ווידער ווען איר זענט צוריק אָנליין."
+    "offlinePracticeNothingSaved": "נישט גענוג איז אפגעהיט אויף דעם מיטל צו פּראַקטיצירן אָפפלינע. פּרוּווט ווידער ווען איר זענט צוריק אָנליין.",
+    "missionNumber": "מיסיע {index}",
+    "xpToYourStar": "{xp} עקזשפּ צו דיין שטערן",
+    "missionStarEarned": "שטערן פֿאַרדינט!",
+    "xpFromChats": "שמועסן {xp}",
+    "xpFromGoals": "צילן {xp}",
+    "xpFromPractice": "פּראַקטיק {xp}",
+    "playMission": "שפּילן",
+    "wordCount": "{count, plural, =1{1 וואָרט} other{{count} ווערטער}}",
+    "continueActivity": "פאָרזעצן",
+    "noObjectiveActivitiesYet": "איר האָט נאָך נישט געענדיקט קיין אַקטיוויטעט פֿאַר דעם ציל. הייבט אָן איינס פֿון אייער קורס.",
+    "objectiveNotInYourCourses": "דער ציל איז נישט אין קיין איינעם פֿון אייערע קורסן.",
+    "objectiveActivityCount": "{count, plural, =0{נאָך קיין אַקטיוויטעטן} =1{1 אַקטיוויטעט געשפּילט} other{{count} אַקטיוויטעטן געשפּילט}}",
+    "activityCompleted": "געענדיקט",
+    "completedTimes": "געענדיקט {count} מאָל",
+    "classLocation": "קלאַס אָרט",
+    "xpThresholdSuffix": "/ {threshold} עקזשפּ"
 }

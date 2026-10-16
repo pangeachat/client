@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 11:49:07.901157",
+    "@@last_modified": "2026-10-16 16:33:13.786711",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10081,5 +10081,21 @@
     "connectionPracticeVocab": "காத்திருக்கும்போது சொற்களஞ்சியத்தைப் பயிற்சி செய்யுங்கள்",
     "offlinePracticeNote": "ஆஃப்லைனில். நீங்கள் திரும்ப வரும்போது உங்கள் பதில்கள் பதிவேற்றப்படும்.",
     "offlinePracticeSavedNote": "இந்தச் சாதனத்தில் சேமிக்கப்பட்டது. நீங்கள் மீண்டும் ஆன்லைனில் வரும்போது உங்கள் XP பதிவேற்றப்படும்.",
-    "offlinePracticeNothingSaved": "ஆஃப்லைனில் பயிற்சி செய்ய இந்தச் சாதனத்தில் போதுமான அளவு சேமிக்கப்படவில்லை. நீங்கள் மீண்டும் ஆன்லைனில் வரும்போது மீண்டும் முயற்சிக்கவும்."
+    "offlinePracticeNothingSaved": "ஆஃப்லைனில் பயிற்சி செய்ய இந்தச் சாதனத்தில் போதுமான அளவு சேமிக்கப்படவில்லை. நீங்கள் மீண்டும் ஆன்லைனில் வரும்போது மீண்டும் முயற்சிக்கவும்.",
+    "missionNumber": "பணி {index}",
+    "xpToYourStar": "உங்கள் நட்சத்திரத்திற்கு {xp} XP",
+    "missionStarEarned": "நட்சத்திரம் கிடைத்தது!",
+    "xpFromChats": "அரட்டைகள் {xp}",
+    "xpFromGoals": "இலக்குகள் {xp}",
+    "xpFromPractice": "பயிற்சி {xp}",
+    "playMission": "விளையாடு",
+    "wordCount": "{count, plural, =1{1 வார்த்தை} other{{count} வார்த்தைகள்}}",
+    "continueActivity": "தொடரவும்",
+    "noObjectiveActivitiesYet": "இந்த நோக்கத்திற்கான எந்தச் செயலையும் நீங்கள் இன்னும் முடிக்கவில்லை. உங்கள் பாடத்திட்டத்திலிருந்து ஒன்றைத் தொடங்குங்கள்.",
+    "objectiveNotInYourCourses": "இந்த நோக்கம் உங்கள் பாடத்திட்டங்களில் இல்லை.",
+    "objectiveActivityCount": "{count, plural, =0{இதுவரை செயல்பாடுகள் இல்லை} =1{1 செயல்பாடு விளையாடப்பட்டது} other{{count} செயல்பாடுகள் விளையாடப்பட்டன}}",
+    "activityCompleted": "முடிந்தது",
+    "completedTimes": "{count} முறை முடிந்தது",
+    "classLocation": "வகுப்பு இருப்பிடம்",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

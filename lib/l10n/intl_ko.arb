@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 11:49:03.976131",
+    "@@last_modified": "2026-10-16 16:33:03.131261",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10182,5 +10182,21 @@
     "connectionPracticeVocab": "기다리는 동안 어휘 연습",
     "offlinePracticeNote": "오프라인입니다. 다시 연결되면 답변이 업로드됩니다.",
     "offlinePracticeSavedNote": "이 기기에 저장되었습니다. 다시 온라인 상태가 되면 XP가 업로드됩니다.",
-    "offlinePracticeNothingSaved": "오프라인 연습을 할 만큼 이 기기에 저장된 내용이 충분하지 않습니다. 다시 온라인 상태가 되면 다시 시도해 주세요."
+    "offlinePracticeNothingSaved": "오프라인 연습을 할 만큼 이 기기에 저장된 내용이 충분하지 않습니다. 다시 온라인 상태가 되면 다시 시도해 주세요.",
+    "missionNumber": "미션 {index}",
+    "xpToYourStar": "{xp} XP를 모아 별을 받으세요",
+    "missionStarEarned": "별 획득!",
+    "xpFromChats": "채팅 {xp}",
+    "xpFromGoals": "목표 {xp}",
+    "xpFromPractice": "연습 {xp}",
+    "playMission": "플레이",
+    "wordCount": "{count, plural, =1{단어 1개} other{단어 {count}개}}",
+    "continueActivity": "계속하기",
+    "noObjectiveActivitiesYet": "이 목표에 대한 활동을 아직 완료하지 않았습니다. 코스에서 시작하세요.",
+    "objectiveNotInYourCourses": "이 목표는 회원님의 코스에 없습니다.",
+    "objectiveActivityCount": "{count, plural, =0{아직 활동 없음} =1{활동 1개 플레이함} other{활동 {count}개 플레이함}}",
+    "activityCompleted": "완료됨",
+    "completedTimes": "{count}회 완료됨",
+    "classLocation": "수업 위치",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

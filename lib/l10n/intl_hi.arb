@@ -3082,7 +3082,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-10-16 11:48:56.650268",
+    "@@last_modified": "2026-10-16 16:32:59.010677",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10618,5 +10618,21 @@
     "connectionPracticeVocab": "इंतज़ार करते समय शब्दावली का अभ्यास करें",
     "offlinePracticeNote": "ऑफ़लाइन। आपके वापस आने पर आपके उत्तर अपलोड हो जाएँगे।",
     "offlinePracticeSavedNote": "इस डिवाइस पर सहेजा गया। आपके ऑनलाइन वापस आने पर आपका XP अपलोड हो जाएगा।",
-    "offlinePracticeNothingSaved": "ऑफ़लाइन अभ्यास के लिए इस डिवाइस पर पर्याप्त सेव नहीं किया गया है। जब आप वापस ऑनलाइन हों तो फिर से प्रयास करें।"
+    "offlinePracticeNothingSaved": "ऑफ़लाइन अभ्यास के लिए इस डिवाइस पर पर्याप्त सेव नहीं किया गया है। जब आप वापस ऑनलाइन हों तो फिर से प्रयास करें।",
+    "missionNumber": "मिशन {index}",
+    "xpToYourStar": "आपके स्टार के लिए {xp} XP",
+    "missionStarEarned": "स्टार अर्जित किया!",
+    "xpFromChats": "चैट {xp}",
+    "xpFromGoals": "लक्ष्य {xp}",
+    "xpFromPractice": "अभ्यास {xp}",
+    "playMission": "खेलें",
+    "wordCount": "{count, plural, =1{1 शब्द} other{{count} शब्द}}",
+    "continueActivity": "जारी रखें",
+    "noObjectiveActivitiesYet": "आपने अभी तक इस उद्देश्य के लिए कोई गतिविधि पूरी नहीं की है। अपने कोर्स से एक शुरू करें।",
+    "objectiveNotInYourCourses": "यह उद्देश्य आपके किसी भी कोर्स में नहीं है।",
+    "objectiveActivityCount": "{count, plural, =0{अभी तक कोई गतिविधि नहीं} =1{1 गतिविधि खेली गई} other{{count} गतिविधियाँ खेली गईं}}",
+    "activityCompleted": "पूरा हुआ",
+    "completedTimes": "{count} बार पूरा किया गया",
+    "classLocation": "कक्षा का स्थान",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

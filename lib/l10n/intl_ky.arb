@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-16 11:49:00.428679",
+    "@@last_modified": "2026-10-16 16:33:03.847358",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Күтүп жатканда сөз байлыгыңызды машыктырыңыз",
     "offlinePracticeNote": "Оффлайн. Кайра туташканда жоопторуңуз жүктөлөт.",
     "offlinePracticeSavedNote": "Бул түзмөккө сакталды. Кайра онлайн болгонуңузда XPңиз жүктөлөт.",
-    "offlinePracticeNothingSaved": "Оффлайн режиминде машыгуу үчүн бул түзмөккө жетиштүү маалымат сакталган эмес. Кайра онлайн болгонуңузда аракет кылып көрүңүз."
+    "offlinePracticeNothingSaved": "Оффлайн режиминде машыгуу үчүн бул түзмөккө жетиштүү маалымат сакталган эмес. Кайра онлайн болгонуңузда аракет кылып көрүңүз.",
+    "missionNumber": "Миссия {index}",
+    "xpToYourStar": "Жылдызыңызга чейин {xp} XP",
+    "missionStarEarned": "Жылдызга ээ болдуңуз!",
+    "xpFromChats": "Чаттар {xp}",
+    "xpFromGoals": "Максаттар {xp}",
+    "xpFromPractice": "Практика {xp}",
+    "playMission": "Ойноо",
+    "wordCount": "{count, plural, =1{1 сөз} other{{count} сөз}}",
+    "continueActivity": "Улантуу",
+    "noObjectiveActivitiesYet": "Бул максат үчүн эч кандай иш-аракетти аткара элексиз. Курсуңуздан баштаңыз.",
+    "objectiveNotInYourCourses": "Бул максат курстарыңыздын биринде да жок.",
+    "objectiveActivityCount": "{count, plural, =0{Азырынча иш-аракеттер жок} =1{1 иш-аракет аткарылды} other{{count} иш-аракет аткарылды}}",
+    "activityCompleted": "Аткарылды",
+    "completedTimes": "{count} жолу аткарылды",
+    "classLocation": "Сабактын жайгашкан жери",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

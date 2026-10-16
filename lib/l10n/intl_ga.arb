@@ -3543,7 +3543,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-16 11:48:55.850235",
+    "@@last_modified": "2026-10-16 16:32:58.033679",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10000,5 +10000,21 @@
     "connectionPracticeVocab": "Cleachtaigh foclóir agus tú ag fanacht",
     "offlinePracticeNote": "As líne. Uaslódálfar do chuid freagraí nuair a bheidh tú ar ais.",
     "offlinePracticeSavedNote": "Sábháilte ar an ngléas seo. Uaslódálfar do XP nuair a bheidh tú ar ais ar líne.",
-    "offlinePracticeNothingSaved": "Níl go leor sábháilte ar an ngléas seo le cleachtadh as líne. Bain triail eile as nuair a bheidh tú ar líne arís."
+    "offlinePracticeNothingSaved": "Níl go leor sábháilte ar an ngléas seo le cleachtadh as líne. Bain triail eile as nuair a bheidh tú ar líne arís.",
+    "missionNumber": "Misean {index}",
+    "xpToYourStar": "{xp} XP chuig do réalta",
+    "missionStarEarned": "Réalta tuillte!",
+    "xpFromChats": "Comhráite {xp}",
+    "xpFromGoals": "Spriocanna {xp}",
+    "xpFromPractice": "Cleachtadh {xp}",
+    "playMission": "Seinn",
+    "wordCount": "{count, plural, =1{1 fhocal} other{{count} focal}}",
+    "continueActivity": "Lean ar aghaidh",
+    "noObjectiveActivitiesYet": "Níl gníomhaíocht ar bith críochnaithe agat don chuspóir seo go fóill. Cuir tús le ceann amháin ó do chúrsa.",
+    "objectiveNotInYourCourses": "Níl an cuspóir seo in aon cheann de do chúrsaí.",
+    "objectiveActivityCount": "{count, plural, =0{Gan aon ghníomhaíocht go fóill} =1{1 ghníomhaíocht seinnte} other{{count} ghníomhaíocht seinnte}}",
+    "activityCompleted": "Críochnaithe",
+    "completedTimes": "Críochnaithe {count} uair",
+    "classLocation": "Suíomh ranga",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

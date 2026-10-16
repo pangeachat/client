@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-16 11:48:57.219948",
+    "@@last_modified": "2026-10-16 16:32:59.954936",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Xyaum cov lus thaum koj tos",
     "offlinePracticeNote": "Tsis muaj internet. Koj cov lus teb yuav raug upload thaum koj rov online.",
     "offlinePracticeSavedNote": "Txuag rau hauv lub cuab yeej no. Koj cov XP yuav raug upload thaum koj rov online.",
-    "offlinePracticeNothingSaved": "Tsis muaj dab tsi txaus tau raug cawm rau ntawm lub cuab yeej no los xyaum offline. Sim dua thaum koj rov online."
+    "offlinePracticeNothingSaved": "Tsis muaj dab tsi txaus tau raug cawm rau ntawm lub cuab yeej no los xyaum offline. Sim dua thaum koj rov online.",
+    "missionNumber": "Lub Hom Phiaj {index}",
+    "xpToYourStar": "{xp} XP rau koj lub hnub qub",
+    "missionStarEarned": "Tau lub hnub qub!",
+    "xpFromChats": "Sib tham {xp}",
+    "xpFromGoals": "Lub hom phiaj {xp}",
+    "xpFromPractice": "Xyaum {xp}",
+    "playMission": "Ua si",
+    "wordCount": "{count, plural, =1{1 lo lus} other{{count} lo lus}}",
+    "continueActivity": "Mus ntxiv",
+    "noObjectiveActivitiesYet": "Koj tseem tsis tau ua tiav ib qho haujlwm rau lub hom phiaj no. Pib ib qho los ntawm koj cov hoob kawm.",
+    "objectiveNotInYourCourses": "Lub hom phiaj no tsis nyob hauv ib qho ntawm koj cov hoob kawm.",
+    "objectiveActivityCount": "{count, plural, =0{Tseem tsis muaj haujlwm} =1{1 qhov haujlwm ua tiav} other{{count} qhov haujlwm ua tiav}}",
+    "activityCompleted": "Ua tiav",
+    "completedTimes": "Ua tiav {count} zaug",
+    "classLocation": "Qhov chaw kawm",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

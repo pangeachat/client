@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-16 11:48:59.744308",
+    "@@last_modified": "2026-10-16 16:32:58.931946",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Cleachd briathrachas fhad 's a tha thu a' feitheamh",
     "offlinePracticeNote": "Far-loidhne. Thèid na freagairtean agad a luchdachadh suas nuair a thilleas tu.",
     "offlinePracticeSavedNote": "Air a shàbhaladh air an inneal seo. Thèid an XP agad a luchdachadh suas nuair a bhios tu air-loidhne a-rithist.",
-    "offlinePracticeNothingSaved": "Chan eil gu leòr air a shàbhaladh air an inneal seo airson cleachdadh far-loidhne. Feuch a-rithist nuair a bhios tu air-loidhne."
+    "offlinePracticeNothingSaved": "Chan eil gu leòr air a shàbhaladh air an inneal seo airson cleachdadh far-loidhne. Feuch a-rithist nuair a bhios tu air-loidhne.",
+    "missionNumber": "Misean {index}",
+    "xpToYourStar": "{xp} XP chun do rionnag",
+    "missionStarEarned": "Rionnag air a cosnadh!",
+    "xpFromChats": "Còmhraidhean {xp}",
+    "xpFromGoals": "Amasan {xp}",
+    "xpFromPractice": "Cleachdadh {xp}",
+    "playMission": "Cluich",
+    "wordCount": "{count, plural, =1{1 fhacal} other{{count} facal}}",
+    "continueActivity": "Lean air adhart",
+    "noObjectiveActivitiesYet": "Cha do chrìochnaich thu gnìomh sam bith airson an amas seo fhathast. Tòisich fear bhon chùrsa agad.",
+    "objectiveNotInYourCourses": "Chan eil an amas seo ann an gin de na cùrsaichean agad.",
+    "objectiveActivityCount": "{count, plural, =0{Gun ghnìomhachd fhathast} =1{1 ghnìomhachd air a cluich} other{{count} gnìomhachdan air an cluich}}",
+    "activityCompleted": "Crìochnaichte",
+    "completedTimes": "Crìochnaichte {count} turas",
+    "classLocation": "Àite a' chlas",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-16 11:49:05.351550",
+    "@@last_modified": "2026-10-16 16:33:09.133611",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "د انتظار پر مهال لغتونه تمرین کړئ",
     "offlinePracticeNote": "آفلاین. ستاسو ځوابونه به هغه وخت اپلوډ شي کله چې تاسو بیرته راشئ.",
     "offlinePracticeSavedNote": "په دې وسیله کې خوندي شوي. ستاسو XP به هغه وخت اپلوډ شي کله چې تاسو آنلاین شئ.",
-    "offlinePracticeNothingSaved": "په دې وسیله کې د آفلاین تمرین لپاره کافي معلومات خوندي شوي ندي. کله چې تاسو آنلاین شئ بیا هڅه وکړئ."
+    "offlinePracticeNothingSaved": "په دې وسیله کې د آفلاین تمرین لپاره کافي معلومات خوندي شوي ندي. کله چې تاسو آنلاین شئ بیا هڅه وکړئ.",
+    "missionNumber": "ماموریت {index}",
+    "xpToYourStar": "{xp} XP ستاسو ستوري ته",
+    "missionStarEarned": "ستوری ترلاسه شو!",
+    "xpFromChats": "چیټونه {xp}",
+    "xpFromGoals": "هدفونه {xp}",
+    "xpFromPractice": "تمرین {xp}",
+    "playMission": "لوبول",
+    "wordCount": "{count, plural, =1{1 کلمه} other{{count} کلمې}}",
+    "continueActivity": "دوام ورکړئ",
+    "noObjectiveActivitiesYet": "تاسو تر اوسه د دې هدف لپاره کوم فعالیت نه دی بشپړ کړی. یو له خپل کورس څخه پیل کړئ.",
+    "objectiveNotInYourCourses": "دا هدف ستاسو په هیڅ کورس کې نشته.",
+    "objectiveActivityCount": "{count, plural, =0{تر اوسه کوم فعالیت نشته} =1{1 فعالیت ترسره شو} other{{count} فعالیتونه ترسره شول}}",
+    "activityCompleted": "بشپړ شو",
+    "completedTimes": "{count} ځله بشپړ شو",
+    "classLocation": "د ټولګي موقعیت",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-16 11:49:00.583771",
+    "@@last_modified": "2026-10-16 16:33:03.909892",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Dum exspectas, verba exerce",
     "offlinePracticeNote": "Sine conexione. Responsa tua, cum redieris, mittentur.",
     "offlinePracticeSavedNote": "In hoc artificio servatum. XP tua, cum redieris, mittentur.",
-    "offlinePracticeNothingSaved": "Non satis servatum est in hac machina ad exercendum offline. Iterum conare cum online eris."
+    "offlinePracticeNothingSaved": "Non satis servatum est in hac machina ad exercendum offline. Iterum conare cum online eris.",
+    "missionNumber": "Missio {index}",
+    "xpToYourStar": "{xp} XP ad stellam tuam",
+    "missionStarEarned": "Stella merita!",
+    "xpFromChats": "Colloquia {xp}",
+    "xpFromGoals": "Proposita {xp}",
+    "xpFromPractice": "Exercitatio {xp}",
+    "playMission": "Lude",
+    "wordCount": "{count, plural, =1{1 verbum} other{{count} verba}}",
+    "continueActivity": "Perge",
+    "noObjectiveActivitiesYet": "Nondum perfecisti actionem pro hoc proposito. Incipe unam ex cursu tuo.",
+    "objectiveNotInYourCourses": "Hoc propositum non est in ullis cursuum tuorum.",
+    "objectiveActivityCount": "{count, plural, =0{Nullae actiones adhuc} =1{1 actio peracta} other{{count} actiones peractae}}",
+    "activityCompleted": "Perfectum",
+    "completedTimes": "Perfectum {count} temporibus",
+    "classLocation": "Locus classis",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

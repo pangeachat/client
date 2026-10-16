@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-16 11:49:03.010296",
+    "@@last_modified": "2026-10-16 16:33:06.837637",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Latih perbendaharaan kata sementara anda menunggu",
     "offlinePracticeNote": "Luar talian. Jawapan anda akan dimuat naik apabila anda kembali dalam talian.",
     "offlinePracticeSavedNote": "Disimpan pada peranti ini. XP anda akan dimuat naik apabila anda kembali dalam talian.",
-    "offlinePracticeNothingSaved": "Tidak cukup disimpan pada peranti ini untuk berlatih di luar talian. Cuba lagi apabila anda kembali dalam talian."
+    "offlinePracticeNothingSaved": "Tidak cukup disimpan pada peranti ini untuk berlatih di luar talian. Cuba lagi apabila anda kembali dalam talian.",
+    "missionNumber": "Misi {index}",
+    "xpToYourStar": "{xp} XP untuk bintang anda",
+    "missionStarEarned": "Bintang diperoleh!",
+    "xpFromChats": "Sembang {xp}",
+    "xpFromGoals": "Matlamat {xp}",
+    "xpFromPractice": "Latihan {xp}",
+    "playMission": "Main",
+    "wordCount": "{count, plural, =1{1 perkataan} other{{count} perkataan}}",
+    "continueActivity": "Teruskan",
+    "noObjectiveActivitiesYet": "Anda belum melengkapkan aktiviti untuk objektif ini. Mulakan satu daripada kursus anda.",
+    "objectiveNotInYourCourses": "Objektif ini tiada dalam mana-mana kursus anda.",
+    "objectiveActivityCount": "{count, plural, =0{Tiada aktiviti lagi} =1{1 aktiviti dimainkan} other{{count} aktiviti dimainkan}}",
+    "activityCompleted": "Selesai",
+    "completedTimes": "Selesai {count} kali",
+    "classLocation": "Lokasi kelas",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

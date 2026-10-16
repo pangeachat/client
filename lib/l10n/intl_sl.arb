@@ -1795,7 +1795,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-16 11:49:06.322290",
+    "@@last_modified": "2026-10-16 16:33:10.850664",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10931,5 +10931,21 @@
     "connectionPracticeVocab": "Vadite besedišče, medtem ko čakate",
     "offlinePracticeNote": "Brez povezave. Vaši odgovori se naložijo, ko se vrnete.",
     "offlinePracticeSavedNote": "Shranjeno v tej napravi. Vaš XP se naloži, ko ste spet povezani.",
-    "offlinePracticeNothingSaved": "Na tej napravi ni dovolj shranjenega za vadbo brez povezave. Poskusite znova, ko boste spet povezani."
+    "offlinePracticeNothingSaved": "Na tej napravi ni dovolj shranjenega za vadbo brez povezave. Poskusite znova, ko boste spet povezani.",
+    "missionNumber": "Misija {index}",
+    "xpToYourStar": "{xp} XP do tvoje zvezde",
+    "missionStarEarned": "Zvezda pridobljena!",
+    "xpFromChats": "Klepeti {xp}",
+    "xpFromGoals": "Cilji {xp}",
+    "xpFromPractice": "Vaja {xp}",
+    "playMission": "Igraj",
+    "wordCount": "{count, plural, =1{1 beseda} other{{count} besed}}",
+    "continueActivity": "Nadaljuj",
+    "noObjectiveActivitiesYet": "Za ta cilj še niste dokončali nobene dejavnosti. Začnite eno iz svojega tečaja.",
+    "objectiveNotInYourCourses": "Ta cilj ni v nobenem od vaših tečajev.",
+    "objectiveActivityCount": "{count, plural, =0{Še ni dejavnosti} =1{1 dejavnost odigrana} other{{count} dejavnosti odigranih}}",
+    "activityCompleted": "Dokončano",
+    "completedTimes": "Dokončano {count}-krat",
+    "classLocation": "Lokacija razreda",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

@@ -2908,7 +2908,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-10-16 11:48:53.412543",
+    "@@last_modified": "2026-10-16 16:32:54.818488",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9597,5 +9597,21 @@
     "connectionPracticeVocab": "སྒུག་བཞིན་པའི་སྐབས་སུ་ཐ་སྙད་སྦྱོང་བརྡར་བྱེད་པ།",
     "offlinePracticeNote": "དྲ་རྒྱ་མེད། ཁྱེད་ཀྱི་ལན་དྲ་རྒྱ་སླར་གསོ་བྱེད་སྐབས་འགོད་ངེས།",
     "offlinePracticeSavedNote": "འཕྲུལ་ཆས་འདིའི་ནང་ཉར་ཚགས་བྱས་ཡོད། ཁྱེད་དྲ་རྒྱ་སླར་གསོ་བྱེད་སྐབས་ཁྱེད་ཀྱི་ཉམས་མྱོང་འགོད་ངེས།",
-    "offlinePracticeNothingSaved": "འཕྲུལ་ཆས་འདིའི་ནང་དྲ་རྒྱ་མེད་པར་སྦྱོང་བརྡར་བྱེད་པར་ཉར་ཚགས་བྱས་པ་འདང་ངེས་མི་འདུག ཁྱེད་དྲ་རྒྱ་དང་སྦྲེལ་རྗེས་བསྐྱར་དུ་ཚོད་ལྟ་བྱེད་རོགས།"
+    "offlinePracticeNothingSaved": "འཕྲུལ་ཆས་འདིའི་ནང་དྲ་རྒྱ་མེད་པར་སྦྱོང་བརྡར་བྱེད་པར་ཉར་ཚགས་བྱས་པ་འདང་ངེས་མི་འདུག ཁྱེད་དྲ་རྒྱ་དང་སྦྲེལ་རྗེས་བསྐྱར་དུ་ཚོད་ལྟ་བྱེད་རོགས།",
+    "missionNumber": "ལས་འགན་ {index}",
+    "xpToYourStar": "སྐར་མའི་བར་དུ་ {xp} XP",
+    "missionStarEarned": "སྐར་མ་ཐོབ་སོང་།",
+    "xpFromChats": "སྐད་ཆ་ {xp}",
+    "xpFromGoals": "དམིགས་ཡུལ་ {xp}",
+    "xpFromPractice": "སྦྱོང་བརྡར་ {xp}",
+    "playMission": "རྩེད་མོ་རྩེད།",
+    "wordCount": "{count, plural, =1{ཚིག་ ༡} other{ཚིག་ {count}}}",
+    "continueActivity": "མུ་མཐུད་བྱེད་སྒོ།",
+    "noObjectiveActivitiesYet": "ཁྱེད་ཀྱིས་ད་དུང་དམིགས་ཡུལ་འདིའི་ཆེད་དུ་བྱེད་སྒོ་གང་ཡང་མ་བསྒྲུབས། ཁྱེད་ཀྱི་སློབ་ཚན་ནས་གཅིག་འགོ་འཛུགས་བྱོས།",
+    "objectiveNotInYourCourses": "དམིགས་ཡུལ་འདི་ཁྱེད་ཀྱི་སློབ་ཚན་གང་གི་ནང་དུའང་མེད།",
+    "objectiveActivityCount": "{count, plural, =0{ད་དུང་བྱེད་སྒོ་མེད།} =1{བྱེད་སྒོ་ ༡ རྩེས་ཟིན།} other{བྱེད་སྒོ་ {count} རྩེས་ཟིན།}}",
+    "activityCompleted": "བསྒྲུབས་ཟིན།",
+    "completedTimes": "ཐེངས་ {count} བསྒྲུབས་ཟིན།",
+    "classLocation": "སློབ་ཁང་གི་གནས་ཡུལ།",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

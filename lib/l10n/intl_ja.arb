@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-16 11:48:58.650736",
+    "@@last_modified": "2026-10-16 16:33:01.900945",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10755,5 +10755,21 @@
     "connectionPracticeVocab": "待っている間に語彙を練習する",
     "offlinePracticeNote": "オフラインです。接続すると回答がアップロードされます。",
     "offlinePracticeSavedNote": "このデバイスに保存されました。オンラインに戻るとXPがアップロードされます。",
-    "offlinePracticeNothingSaved": "オフラインで練習するには、このデバイスに十分なデータが保存されていません。オンラインに戻ってからもう一度お試しください。"
+    "offlinePracticeNothingSaved": "オフラインで練習するには、このデバイスに十分なデータが保存されていません。オンラインに戻ってからもう一度お試しください。",
+    "missionNumber": "ミッション{index}",
+    "xpToYourStar": "スターまであと{xp} XP",
+    "missionStarEarned": "スターを獲得しました！",
+    "xpFromChats": "チャット{xp}",
+    "xpFromGoals": "目標{xp}",
+    "xpFromPractice": "練習{xp}",
+    "playMission": "プレイ",
+    "wordCount": "{count, plural, =1{1単語} other{{count}単語}}",
+    "continueActivity": "続ける",
+    "noObjectiveActivitiesYet": "この目標のアクティビティはまだ完了していません。コースから開始してください。",
+    "objectiveNotInYourCourses": "この目標はどのコースにもありません。",
+    "objectiveActivityCount": "{count, plural, =0{まだアクティビティはありません} =1{1つのアクティビティをプレイしました} other{{count}個のアクティビティをプレイしました}}",
+    "activityCompleted": "完了",
+    "completedTimes": "{count}回完了しました",
+    "classLocation": "クラスの場所",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

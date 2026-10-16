@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 11:49:08.550548",
+    "@@last_modified": "2026-10-16 16:33:12.461042",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10504,5 +10504,21 @@
     "connectionPracticeVocab": "Öva glosor medan du väntar",
     "offlinePracticeNote": "Offline. Dina svar laddas upp när du är tillbaka.",
     "offlinePracticeSavedNote": "Sparat på den här enheten. Din XP laddas upp när du är online igen.",
-    "offlinePracticeNothingSaved": "Inte tillräckligt har sparats på den här enheten för att öva offline. Försök igen när du är online."
+    "offlinePracticeNothingSaved": "Inte tillräckligt har sparats på den här enheten för att öva offline. Försök igen när du är online.",
+    "missionNumber": "Uppdrag {index}",
+    "xpToYourStar": "{xp} XP till din stjärna",
+    "missionStarEarned": "Stjärna intjänad!",
+    "xpFromChats": "Chattar {xp}",
+    "xpFromGoals": "Mål {xp}",
+    "xpFromPractice": "Övning {xp}",
+    "playMission": "Spela",
+    "wordCount": "{count, plural, =1{1 ord} other{{count} ord}}",
+    "continueActivity": "Fortsätt",
+    "noObjectiveActivitiesYet": "Du har inte slutfört någon aktivitet för det här målet än. Starta en från din kurs.",
+    "objectiveNotInYourCourses": "Det här målet finns inte i någon av dina kurser.",
+    "objectiveActivityCount": "{count, plural, =0{Inga aktiviteter än} =1{1 aktivitet spelad} other{{count} aktiviteter spelade}}",
+    "activityCompleted": "Slutförd",
+    "completedTimes": "Slutförd {count} gånger",
+    "classLocation": "Klassrumsplats",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

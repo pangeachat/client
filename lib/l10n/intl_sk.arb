@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-16 11:49:06.519535",
+    "@@last_modified": "2026-10-16 16:33:10.872519",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10931,5 +10931,21 @@
     "connectionPracticeVocab": "Precvičte si slovnú zásobu, kým čakáte",
     "offlinePracticeNote": "Offline. Vaše odpovede sa nahrajú, keď budete späť online.",
     "offlinePracticeSavedNote": "Uložené v tomto zariadení. Vaše XP sa nahrá, keď budete opäť online.",
-    "offlinePracticeNothingSaved": "Na tomto zariadení nie je uložené dostatočné množstvo obsahu na precvičovanie offline. Skúste to znova, keď budete online."
+    "offlinePracticeNothingSaved": "Na tomto zariadení nie je uložené dostatočné množstvo obsahu na precvičovanie offline. Skúste to znova, keď budete online.",
+    "missionNumber": "Misia {index}",
+    "xpToYourStar": "{xp} XP k tvojej hviezde",
+    "missionStarEarned": "Hviezda získaná!",
+    "xpFromChats": "Chaty {xp}",
+    "xpFromGoals": "Ciele {xp}",
+    "xpFromPractice": "Cvičenie {xp}",
+    "playMission": "Hrať",
+    "wordCount": "{count, plural, =1{1 slovo} other{{count} slov}}",
+    "continueActivity": "Pokračovať",
+    "noObjectiveActivitiesYet": "Zatiaľ si nedokončil(a) žiadnu aktivitu pre tento cieľ. Začni jednu zo svojho kurzu.",
+    "objectiveNotInYourCourses": "Tento cieľ nie je v žiadnom z tvojich kurzov.",
+    "objectiveActivityCount": "{count, plural, =0{Zatiaľ žiadne aktivity} =1{1 aktivita odohraná} other{{count} aktivít odohraných}}",
+    "activityCompleted": "Dokončené",
+    "completedTimes": "Dokončené {count}-krát",
+    "classLocation": "Umiestnenie triedy",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

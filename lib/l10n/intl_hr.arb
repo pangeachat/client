@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-16 11:48:56.835871",
+    "@@last_modified": "2026-10-16 16:32:59.780997",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10422,5 +10422,21 @@
     "connectionPracticeVocab": "Vježbaj riječi dok čekaš",
     "offlinePracticeNote": "Izvan mreže. Tvoji će se odgovori učitati kad se vratiš.",
     "offlinePracticeSavedNote": "Spremljeno na ovom uređaju. Tvoj XP će se učitati kad se vratiš na mrežu.",
-    "offlinePracticeNothingSaved": "Nema dovoljno spremljenog sadržaja na ovom uređaju za vježbanje izvan mreže. Pokušajte ponovno kada budete na mreži."
+    "offlinePracticeNothingSaved": "Nema dovoljno spremljenog sadržaja na ovom uređaju za vježbanje izvan mreže. Pokušajte ponovno kada budete na mreži.",
+    "missionNumber": "Misija {index}",
+    "xpToYourStar": "{xp} XP do vaše zvijezde",
+    "missionStarEarned": "Zvijezda osvojena!",
+    "xpFromChats": "Razgovori {xp}",
+    "xpFromGoals": "Ciljevi {xp}",
+    "xpFromPractice": "Vježba {xp}",
+    "playMission": "Igraj",
+    "wordCount": "{count, plural, =1{1 riječ} other{{count} riječi}}",
+    "continueActivity": "Nastavi",
+    "noObjectiveActivitiesYet": "Još niste dovršili aktivnost za ovaj cilj. Pokrenite je iz svog tečaja.",
+    "objectiveNotInYourCourses": "Ovaj cilj nije ni u jednom od vaših tečajeva.",
+    "objectiveActivityCount": "{count, plural, =0{Još nema aktivnosti} =1{1 aktivnost odigrana} other{{count} aktivnosti odigrano}}",
+    "activityCompleted": "Dovršeno",
+    "completedTimes": "Dovršeno {count} puta",
+    "classLocation": "Lokacija razreda",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

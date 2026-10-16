@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-16 11:48:53.106337",
+    "@@last_modified": "2026-10-16 16:32:53.422258",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10292,5 +10292,21 @@
     "connectionPracticeVocab": "تدرب على المفردات أثناء انتظارك",
     "offlinePracticeNote": "غير متصل. سيتم تحميل إجاباتك عند عودتك.",
     "offlinePracticeSavedNote": "محفوظ على هذا الجهاز. سيتم تحميل نقاط XP الخاصة بك عند عودتك للاتصال بالإنترنت.",
-    "offlinePracticeNothingSaved": "لم يتم حفظ ما يكفي على هذا الجهاز للتدرب دون اتصال. حاول مرة أخرى عندما تكون متصلاً بالإنترنت."
+    "offlinePracticeNothingSaved": "لم يتم حفظ ما يكفي على هذا الجهاز للتدرب دون اتصال. حاول مرة أخرى عندما تكون متصلاً بالإنترنت.",
+    "missionNumber": "المهمة {index}",
+    "xpToYourStar": "{xp} نقطة خبرة لنجمتك",
+    "missionStarEarned": "لقد ربحت نجمة!",
+    "xpFromChats": "المحادثات {xp}",
+    "xpFromGoals": "الأهداف {xp}",
+    "xpFromPractice": "التدريب {xp}",
+    "playMission": "تشغيل",
+    "wordCount": "{count, plural, =1{كلمة واحدة} other{{count} كلمات}}",
+    "continueActivity": "متابعة",
+    "noObjectiveActivitiesYet": "لم تكمل أي نشاط لهذا الهدف بعد. ابدأ واحدًا من دورتك.",
+    "objectiveNotInYourCourses": "هذا الهدف ليس ضمن أي من دوراتك.",
+    "objectiveActivityCount": "{count, plural, =0{لا توجد أنشطة بعد} =1{تم لعب نشاط واحد} other{تم لعب {count} أنشاط}}",
+    "activityCompleted": "مكتمل",
+    "completedTimes": "اكتمل {count} مرات",
+    "classLocation": "موقع الصف",
+    "xpThresholdSuffix": "/ {threshold} نقطة خبرة"
 }

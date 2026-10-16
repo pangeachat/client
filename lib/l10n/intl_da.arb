@@ -1327,7 +1327,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-16 11:48:54.054092",
+    "@@last_modified": "2026-10-16 16:32:55.088386",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10906,5 +10906,21 @@
     "connectionPracticeVocab": "Øv ordforråd, mens du venter",
     "offlinePracticeNote": "Offline. Dine svar uploades, når du er tilbage.",
     "offlinePracticeSavedNote": "Gemt på denne enhed. Din XP uploades, når du er online igen.",
-    "offlinePracticeNothingSaved": "Der er ikke gemt nok på denne enhed til at øve offline. Prøv igen, når du er online."
+    "offlinePracticeNothingSaved": "Der er ikke gemt nok på denne enhed til at øve offline. Prøv igen, når du er online.",
+    "missionNumber": "Mission {index}",
+    "xpToYourStar": "{xp} XP til din stjerne",
+    "missionStarEarned": "Stjerne optjent!",
+    "xpFromChats": "Chats {xp}",
+    "xpFromGoals": "Mål {xp}",
+    "xpFromPractice": "Øvelse {xp}",
+    "playMission": "Spil",
+    "wordCount": "{count, plural, =1{1 ord} other{{count} ord}}",
+    "continueActivity": "Fortsæt",
+    "noObjectiveActivitiesYet": "Du har ikke gennemført en aktivitet for dette mål endnu. Start en fra dit kursus.",
+    "objectiveNotInYourCourses": "Dette mål er ikke i nogen af dine kurser.",
+    "objectiveActivityCount": "{count, plural, =0{Ingen aktiviteter endnu} =1{1 aktivitet spillet} other{{count} aktiviteter spillet}}",
+    "activityCompleted": "Gennemført",
+    "completedTimes": "Gennemført {count} gange",
+    "classLocation": "Klasselokation",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

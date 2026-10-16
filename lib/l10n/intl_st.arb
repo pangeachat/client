@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-16 11:49:09.100878",
+    "@@last_modified": "2026-10-16 16:33:13.807986",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Itloaetse mantsoe ha o ntse o emetse",
     "offlinePracticeNote": "Ha o inthaneteng. Likarabo tsa hao li tla kenngoa ha o khutla.",
     "offlinePracticeSavedNote": "E bolokiloe sesebelisoa sena. XP ea hao e tla kenngoa ha o khutla inthaneteng.",
-    "offlinePracticeNothingSaved": "Ha ho letho le lekaneng le bolokilweng sesebedisweng sena ho itlwaetsa ntle le inthanete. Leka hape ha o se o kgutletse inthaneteng."
+    "offlinePracticeNothingSaved": "Ha ho letho le lekaneng le bolokilweng sesebedisweng sena ho itlwaetsa ntle le inthanete. Leka hape ha o se o kgutletse inthaneteng.",
+    "missionNumber": "Thomo ea {index}",
+    "xpToYourStar": "{xp} XP ho naleli ea hau",
+    "missionStarEarned": "Naleli e fumanoe!",
+    "xpFromChats": "Lipuisano {xp}",
+    "xpFromGoals": "Lipakane {xp}",
+    "xpFromPractice": "Boitloaelo {xp}",
+    "playMission": "Bapala",
+    "wordCount": "{count, plural, =1{lentsoe le le 1} other{mantswe a {count}}}",
+    "continueActivity": "Tsoela pele",
+    "noObjectiveActivitiesYet": "Ha o so qete mosebetsi bakeng sa sepheo sena. Qala o mong ho tsoa thupelong ea hau.",
+    "objectiveNotInYourCourses": "Sepheo sena ha se ho e 'ngoe ea lithupelo tsa hau.",
+    "objectiveActivityCount": "{count, plural, =0{Ha ho mesebetsi hajoale} =1{Mosebetsi o le 1 o bapaloang} other{Mesebetsi e {count} e bapaloang}}",
+    "activityCompleted": "E phethiloe",
+    "completedTimes": "E phethiloe ka makhetlo a {count}",
+    "classLocation": "Sebaka sa sehlopha",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

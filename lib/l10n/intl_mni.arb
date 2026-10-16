@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-16 11:49:04.849321",
+    "@@last_modified": "2026-10-16 16:33:06.714973",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "ঙাইরিঙৈদা ৱাহৈশিং প্রেকটিস তৌবীয়ু",
     "offlinePracticeNote": "অফলাইন। নখোয় হিংলকপা মতমদা নখোয়গী পাউখুমশিং আপলোড তৌগনি।",
     "offlinePracticeSavedNote": "অফলাইন। নখোয়গী পাউখুমশিং আপলোড তৌগনি।",
-    "offlinePracticeNothingSaved": "অফলাইন প্র্যাকটিস তৌনবা পাম্বীশিং অসিদা য়থেষ্ট্রা সেভ তৌদ্রি। নখোং অনলাইন্দা হল্লকপা মতমদা অমুক হন্না ট্রাই তৌ।"
+    "offlinePracticeNothingSaved": "অফলাইন প্র্যাকটিস তৌনবা পাম্বীশিং অসিদা য়থেষ্ট্রা সেভ তৌদ্রি। নখোং অনলাইন্দা হল্লকপা মতমদা অমুক হন্না ট্রাই তৌ।",
+    "missionNumber": "মিশন {index}",
+    "xpToYourStar": "নখোঙগী তারা ফংনবা {xp} XP",
+    "missionStarEarned": "তারা ফংলে!",
+    "xpFromChats": "চ্যাট {xp}",
+    "xpFromGoals": "গোল {xp}",
+    "xpFromPractice": "প্র্যাকটিস {xp}",
+    "playMission": "শাকু",
+    "wordCount": "{count, plural, =1{1 ৱাহৈ} other{{count} ৱাহৈ}}",
+    "continueActivity": "চিংনবা",
+    "noObjectiveActivitiesYet": "নঙনা অসিগী অবজেক্টিভ অসিগীদমক অ্যাক্টিভিটি অমত্তা লোইশিন্দ্রি। নখোঙগী কোর্সতগী অমত্তা হৌগৎলু।",
+    "objectiveNotInYourCourses": "অসিগী অবজেক্টিভ অসি নখোঙগী কোর্স অমত্তদা লৈতে।",
+    "objectiveActivityCount": "{count, plural, =0{অ্যাক্টিভিটি অমত্তা লৈত্ৰি} =1{1 অ্যাক্টিভিটি শাখ্রে} other{{count} অ্যাক্টিভিটি শাখ্রে}}",
+    "activityCompleted": "লোইশিনখ্রে",
+    "completedTimes": "{count} শরুক লোইশিনখ্রে",
+    "classLocation": "ক্লাস লম",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-16 11:49:06.329302",
+    "@@last_modified": "2026-10-16 16:33:11.809346",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "ඔබ බලා සිටින අතරතුර වචන මාලාව පුහුණු වන්න",
     "offlinePracticeNote": "නොබැඳි. ඔබ නැවත පැමිණි විට ඔබේ පිළිතුරු උඩුගත වේ.",
     "offlinePracticeSavedNote": "මෙම උපාංගයේ සුරැකිණි. ඔබ නැවත සබැඳි වූ විට ඔබේ XP උඩුගත වේ.",
-    "offlinePracticeNothingSaved": "නොබැඳිව පුහුණු වීමට මෙම උපාංගයේ ප්‍රමාණවත් දත්ත සුරැකී නොමැත. ඔබ නැවත සබැඳි වූ විට නැවත උත්සාහ කරන්න."
+    "offlinePracticeNothingSaved": "නොබැඳිව පුහුණු වීමට මෙම උපාංගයේ ප්‍රමාණවත් දත්ත සුරැකී නොමැත. ඔබ නැවත සබැඳි වූ විට නැවත උත්සාහ කරන්න.",
+    "missionNumber": "මෙහෙයුම {index}",
+    "xpToYourStar": "ඔබේ තාරකාවට {xp} XP",
+    "missionStarEarned": "තාරකාව දිනා ගත්තා!",
+    "xpFromChats": "චැට් {xp}",
+    "xpFromGoals": "ඉලක්ක {xp}",
+    "xpFromPractice": "පුහුණුව {xp}",
+    "playMission": "ක්‍රීඩා කරන්න",
+    "wordCount": "{count, plural, =1{1 වචනය} other{{count} වචන}}",
+    "continueActivity": "ඉදිරියට යන්න",
+    "noObjectiveActivitiesYet": "ඔබ තවමත් මෙම අරමුණ සඳහා ක්‍රියාකාරකමක් සම්පූර්ණ කර නැත. ඔබේ පාඨමාලාවෙන් එකක් ආරම්භ කරන්න.",
+    "objectiveNotInYourCourses": "මෙම අරමුණ ඔබේ කිසිදු පාඨමාලාවක නොමැත.",
+    "objectiveActivityCount": "{count, plural, =0{තවම ක්‍රියාකාරකම් නැත} =1{ක්‍රියාකාරකම් 1ක් ක්‍රීඩා කර ඇත} other{ක්‍රියාකාරකම් {count}ක් ක්‍රීඩා කර ඇත}}",
+    "activityCompleted": "සම්පූර්ණයි",
+    "completedTimes": "{count} වතාවක් සම්පූර්ණ කර ඇත",
+    "classLocation": "පන්ති ස්ථානය",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

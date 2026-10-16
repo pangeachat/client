@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-16 11:49:04.877119",
+    "@@last_modified": "2026-10-16 16:33:08.514237",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10074,5 +10074,21 @@
     "connectionPracticeVocab": "Ćwicz słownictwo, czekając",
     "offlinePracticeNote": "Offline. Twoje odpowiedzi zostaną przesłane, gdy wrócisz do sieci.",
     "offlinePracticeSavedNote": "Zapisano na tym urządzeniu. Twoje PD zostaną przesłane, gdy wrócisz do sieci.",
-    "offlinePracticeNothingSaved": "Na tym urządzeniu nie ma wystarczającej liczby zapisanych danych, aby ćwiczyć offline. Spróbuj ponownie, gdy będziesz online."
+    "offlinePracticeNothingSaved": "Na tym urządzeniu nie ma wystarczającej liczby zapisanych danych, aby ćwiczyć offline. Spróbuj ponownie, gdy będziesz online.",
+    "missionNumber": "Misja {index}",
+    "xpToYourStar": "{xp} PD do gwiazdki",
+    "missionStarEarned": "Gwiazdka zdobyta!",
+    "xpFromChats": "Czaty {xp}",
+    "xpFromGoals": "Cele {xp}",
+    "xpFromPractice": "Ćwiczenia {xp}",
+    "playMission": "Graj",
+    "wordCount": "{count, plural, =1{1 słowo} other{{count} słów}}",
+    "continueActivity": "Kontynuuj",
+    "noObjectiveActivitiesYet": "Nie ukończono jeszcze żadnego ćwiczenia dla tego celu. Rozpocznij jedno z kursu.",
+    "objectiveNotInYourCourses": "Ten cel nie znajduje się w żadnym z Twoich kursów.",
+    "objectiveActivityCount": "{count, plural, =0{Brak aktywności} =1{1 aktywność ukończona} other{{count} aktywności ukończonych}}",
+    "activityCompleted": "Ukończono",
+    "completedTimes": "Ukończono {count} razy",
+    "classLocation": "Lokalizacja zajęć",
+    "xpThresholdSuffix": "/ {threshold} PD"
 }

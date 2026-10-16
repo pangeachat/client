@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 11:48:57.558185",
+    "@@last_modified": "2026-10-16 16:33:00.988411",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10062,5 +10062,21 @@
     "connectionPracticeVocab": "Latih kosakata selagi menunggu",
     "offlinePracticeNote": "Offline. Jawaban Anda akan diunggah saat Anda kembali online.",
     "offlinePracticeSavedNote": "Tersimpan di perangkat ini. XP Anda akan diunggah saat Anda kembali online.",
-    "offlinePracticeNothingSaved": "Tidak cukup data tersimpan di perangkat ini untuk berlatih secara offline. Coba lagi saat Anda kembali online."
+    "offlinePracticeNothingSaved": "Tidak cukup data tersimpan di perangkat ini untuk berlatih secara offline. Coba lagi saat Anda kembali online.",
+    "missionNumber": "Misi {index}",
+    "xpToYourStar": "{xp} XP untuk bintangmu",
+    "missionStarEarned": "Bintang didapatkan!",
+    "xpFromChats": "Obrolan {xp}",
+    "xpFromGoals": "Sasaran {xp}",
+    "xpFromPractice": "Latihan {xp}",
+    "playMission": "Main",
+    "wordCount": "{count, plural, =1{1 kata} other{{count} kata}}",
+    "continueActivity": "Lanjutkan",
+    "noObjectiveActivitiesYet": "Kamu belum menyelesaikan aktivitas untuk tujuan ini. Mulai salah satu dari kursusmu.",
+    "objectiveNotInYourCourses": "Tujuan ini tidak ada di kursusmu.",
+    "objectiveActivityCount": "{count, plural, =0{Belum ada aktivitas} =1{1 aktivitas dimainkan} other{{count} aktivitas dimainkan}}",
+    "activityCompleted": "Selesai",
+    "completedTimes": "Selesai {count} kali",
+    "classLocation": "Lokasi kelas",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

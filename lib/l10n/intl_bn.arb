@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 11:48:52.942915",
+    "@@last_modified": "2026-10-16 16:32:53.340392",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10614,5 +10614,21 @@
     "connectionPracticeVocab": "অপেক্ষা করার সময় শব্দভান্ডার অনুশীলন করুন",
     "offlinePracticeNote": "অফলাইন। আপনি ফিরে এলে আপনার উত্তর আপলোড হবে।",
     "offlinePracticeSavedNote": "এই ডিভাইসে সংরক্ষিত। আপনি অনলাইনে ফিরে এলে আপনার XP আপলোড হবে।",
-    "offlinePracticeNothingSaved": "অফলাইনে অনুশীলন করার জন্য এই ডিভাইসে পর্যাপ্ত ডেটা সেভ করা নেই। আপনি যখন আবার অনলাইন হবেন তখন আবার চেষ্টা করুন।"
+    "offlinePracticeNothingSaved": "অফলাইনে অনুশীলন করার জন্য এই ডিভাইসে পর্যাপ্ত ডেটা সেভ করা নেই। আপনি যখন আবার অনলাইন হবেন তখন আবার চেষ্টা করুন।",
+    "missionNumber": "মিশন {index}",
+    "xpToYourStar": "আপনার তারার জন্য {xp} XP",
+    "missionStarEarned": "তারা অর্জিত হয়েছে!",
+    "xpFromChats": "চ্যাট {xp}",
+    "xpFromGoals": "লক্ষ্য {xp}",
+    "xpFromPractice": "অনুশীলন {xp}",
+    "playMission": "খেলুন",
+    "wordCount": "{count, plural, =1{1টি শব্দ} other{{count}টি শব্দ}}",
+    "continueActivity": "চালিয়ে যান",
+    "noObjectiveActivitiesYet": "আপনি এখনও এই লক্ষ্যের জন্য কোনো কার্যকলাপ সম্পন্ন করেননি। আপনার কোর্স থেকে একটি শুরু করুন।",
+    "objectiveNotInYourCourses": "এই লক্ষ্য আপনার কোনো কোর্সে নেই।",
+    "objectiveActivityCount": "{count, plural, =0{এখনও কোনো কার্যকলাপ নেই} =1{1টি কার্যকলাপ খেলা হয়েছে} other{{count}টি কার্যকলাপ খেলা হয়েছে}}",
+    "activityCompleted": "সম্পন্ন হয়েছে",
+    "completedTimes": "{count} বার সম্পন্ন হয়েছে",
+    "classLocation": "ক্লাসের অবস্থান",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

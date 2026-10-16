@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-16 11:48:53.190638",
+    "@@last_modified": "2026-10-16 16:32:53.707529",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2451,5 +2451,21 @@
     "connectionPracticeVocab": "Gözləyərkən söz ehtiyatını təkmilləşdirin",
     "offlinePracticeNote": "Oflayn. Cavablarınız geri qayıtdığınızda yüklənəcək.",
     "offlinePracticeSavedNote": "Bu cihazda saxlanıldı. Onlayn olduğunuzda XP-niz yüklənəcək.",
-    "offlinePracticeNothingSaved": "Oflayn məşq etmək üçün bu cihazda kifayət qədər məlumat yoxdur. Onlayn olanda yenidən cəhd edin."
+    "offlinePracticeNothingSaved": "Oflayn məşq etmək üçün bu cihazda kifayət qədər məlumat yoxdur. Onlayn olanda yenidən cəhd edin.",
+    "missionNumber": "Missiya {index}",
+    "xpToYourStar": "Ulduzunuza qədər {xp} XP",
+    "missionStarEarned": "Ulduz qazanıldı!",
+    "xpFromChats": "Söhbətlər {xp}",
+    "xpFromGoals": "Məqsədlər {xp}",
+    "xpFromPractice": "Təcrübə {xp}",
+    "playMission": "Oyna",
+    "wordCount": "{count, plural, =1{1 söz} other{{count} söz}}",
+    "continueActivity": "Davam et",
+    "noObjectiveActivitiesYet": "Bu məqsəd üçün hələ heç bir fəaliyyət tamamlamamısınız. Kursunuzdan birinə başlayın.",
+    "objectiveNotInYourCourses": "Bu məqsəd kurslarınızın heç birində yoxdur.",
+    "objectiveActivityCount": "{count, plural, =0{Hələ heç bir fəaliyyət yoxdur} =1{1 fəaliyyət oynanıldı} other{{count} fəaliyyət oynanıldı}}",
+    "activityCompleted": "Tamamlandı",
+    "completedTimes": "{count} dəfə tamamlandı",
+    "classLocation": "Dərs yeri",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

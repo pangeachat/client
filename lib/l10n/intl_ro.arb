@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 11:49:06.126482",
+    "@@last_modified": "2026-10-16 16:33:09.335151",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10718,5 +10718,21 @@
     "connectionPracticeVocab": "Exersează vocabularul în timp ce aștepți",
     "offlinePracticeNote": "Ești offline. Răspunsurile tale se vor încărca atunci când vei fi din nou online.",
     "offlinePracticeSavedNote": "Salvat pe acest dispozitiv. XP-ul tău se va încărca atunci când vei fi din nou online.",
-    "offlinePracticeNothingSaved": "Nu s-au salvat suficiente date pe acest dispozitiv pentru a exersa offline. Încearcă din nou când ești online."
+    "offlinePracticeNothingSaved": "Nu s-au salvat suficiente date pe acest dispozitiv pentru a exersa offline. Încearcă din nou când ești online.",
+    "missionNumber": "Misiunea {index}",
+    "xpToYourStar": "{xp} XP până la steaua ta",
+    "missionStarEarned": "Stea câștigată!",
+    "xpFromChats": "Chaturi {xp}",
+    "xpFromGoals": "Obiective {xp}",
+    "xpFromPractice": "Exersare {xp}",
+    "playMission": "Joacă",
+    "wordCount": "{count, plural, =1{1 cuvânt} other{{count} cuvinte}}",
+    "continueActivity": "Continuă",
+    "noObjectiveActivitiesYet": "Nu ai finalizat încă o activitate pentru acest obiectiv. Începe una din cursul tău.",
+    "objectiveNotInYourCourses": "Acest obiectiv nu se află în niciunul dintre cursurile tale.",
+    "objectiveActivityCount": "{count, plural, =0{Nicio activitate încă} =1{1 activitate jucată} other{{count} activități jucate}}",
+    "activityCompleted": "Finalizat",
+    "completedTimes": "Finalizat de {count} ori",
+    "classLocation": "Locația cursului",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 11:49:09.212066",
+    "@@last_modified": "2026-10-16 16:33:15.606803",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7296,5 +7296,21 @@
     "connectionPracticeVocab": "Luyện từ vựng trong khi chờ",
     "offlinePracticeNote": "Ngoại tuyến. Câu trả lời của bạn sẽ được tải lên khi bạn trực tuyến trở lại.",
     "offlinePracticeSavedNote": "Đã lưu trên thiết bị này. XP của bạn sẽ được tải lên khi bạn trực tuyến trở lại.",
-    "offlinePracticeNothingSaved": "Không có đủ dữ liệu được lưu trên thiết bị này để luyện tập ngoại tuyến. Hãy thử lại khi bạn có kết nối mạng."
+    "offlinePracticeNothingSaved": "Không có đủ dữ liệu được lưu trên thiết bị này để luyện tập ngoại tuyến. Hãy thử lại khi bạn có kết nối mạng.",
+    "missionNumber": "Nhiệm vụ {index}",
+    "xpToYourStar": "{xp} XP để đạt sao",
+    "missionStarEarned": "Đã đạt sao!",
+    "xpFromChats": "Trò chuyện {xp}",
+    "xpFromGoals": "Mục tiêu {xp}",
+    "xpFromPractice": "Luyện tập {xp}",
+    "playMission": "Chơi",
+    "wordCount": "{count, plural, =1{1 từ} other{{count} từ}}",
+    "continueActivity": "Tiếp tục",
+    "noObjectiveActivitiesYet": "Bạn chưa hoàn thành hoạt động nào cho mục tiêu này. Hãy bắt đầu một hoạt động từ khóa học của bạn.",
+    "objectiveNotInYourCourses": "Mục tiêu này không có trong bất kỳ khóa học nào của bạn.",
+    "objectiveActivityCount": "{count, plural, =0{Chưa có hoạt động nào} =1{Đã chơi 1 hoạt động} other{Đã chơi {count} hoạt động}}",
+    "activityCompleted": "Đã hoàn thành",
+    "completedTimes": "Đã hoàn thành {count} lần",
+    "classLocation": "Địa điểm lớp học",
+    "xpThresholdSuffix": "/ {threshold} XP"
 }
