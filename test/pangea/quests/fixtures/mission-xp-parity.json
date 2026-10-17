@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "about": "Shared XP parity fixture (XP-DASHBOARD-SPEC 3.8). Byte-identical in client test/pangea/quests/fixtures/ and admin-dash-api tests/fixtures/. Expected values were computed by hand from client origin/main 18036f7e7f: AnalyticsDataService.getUses(filterCapped: true), MissionXpCache._refresh, QuestsClientExtension.userXpBreakdownByActivity and userStarsByActivity, TeacherModeModel.fromJson, resolveProgression. Uses are stored-use JSON (OneConstructUse.fromJson). A session with membership 'leave' is a room the app no longer has (absent from client.rooms); archivedAt null is an unsaved session. blocked are pangea.analytics_settings ids. adapiOnly holds dashboard-only figures the client does not compute.",
+  "cases": [
+    {
+      "name": "rich",
+      "notes": "cap crossing with a tie at the cutoff (comer); case variant merged by the merge table, the later first-seen variant canonical (Bien/bien); blocked id (malo); invalid id (category other); xp 0 (ignPA) and a negative (incLM); room-less morph/vocab lemma collision (Past/past); left room (s3); unsaved room (s4); session totalling 0 or less (s5); activity under two Can-Dos (actB); unscored Can-Do (lo3); activity outside the course (actC); use in a non-session room (!other).",
+      "teacherMode": {"enabled": false, "xp_to_complete_objective": 300},
+      "blocked": [{"lemma": "malo", "type": "vocab", "cat": "adj"}],
+      "outline": {
+        "orderedLoIds": ["lo1", "lo2", "lo3"],
+        "activityIdsByLo": {"lo1": ["actA", "actB"], "lo2": ["actB"], "lo3": []},
+        "lemmasByLo": {"lo1": ["casa", "perro", "past"], "lo2": ["perro", "sol", "bien"], "lo3": ["gato"]}
+      },
+      "sessions": [
+        {"roomId": "!s1:x", "activityId": "actA", "archivedAt": "2026-10-01T10:00:00.000Z", "membership": "join", "ownGoals": 2},
+        {"roomId": "!s2:x", "activityId": "actB", "archivedAt": "2026-10-01T11:00:00.000Z", "membership": "join", "ownGoals": 1},
+        {"roomId": "!s3:x", "activityId": "actA", "archivedAt": "2026-10-01T12:00:00.000Z", "membership": "leave", "ownGoals": 3},
+        {"roomId": "!s4:x", "activityId": "actB", "archivedAt": null, "membership": "join", "ownGoals": 2},
+        {"roomId": "!s5:x", "activityId": "actA", "archivedAt": "2026-10-01T13:00:00.000Z", "membership": "invite", "ownGoals": 0},
+        {"roomId": "!s6:x", "activityId": "actC", "archivedAt": "2026-10-01T14:30:00.000Z", "membership": "join", "ownGoals": 1}
+      ],
+      "uses": [
+        {"timeStamp": "2026-10-01T09:00:00.000Z", "chatId": "!s1:x", "msgId": "$m1", "lemma": "hablar", "constructType": "vocab", "categories": "verb", "useType": "wa", "xp": 3},
+        {"timeStamp": "2026-10-01T09:01:00.000Z", "chatId": "!s1:x", "msgId": "$m1", "lemma": "hablar", "constructType": "vocab", "categories": "verb", "useType": "ga", "xp": 2},
+        {"timeStamp": "2026-10-01T09:02:00.000Z", "chatId": "!s1:x", "msgId": "$m2", "lemma": "mesa", "constructType": "vocab", "categories": "noun", "useType": "corPA", "xp": 5},
+        {"timeStamp": "2026-10-01T09:03:00.000Z", "chatId": "!s1:x", "msgId": "$m1", "lemma": "Past", "constructType": "morph", "categories": "Tense", "useType": "wa", "xp": 3},
+        {"timeStamp": "2026-10-01T09:10:00.000Z", "chatId": "!s2:x", "msgId": "$m3", "lemma": "comer", "constructType": "vocab", "categories": "verb", "useType": "wa", "xp": 60},
+        {"timeStamp": "2026-10-01T09:11:00.000Z", "chatId": "!s2:x", "msgId": "$m4", "lemma": "comer", "constructType": "vocab", "categories": "verb", "useType": "wa", "xp": 30},
+        {"timeStamp": "2026-10-01T09:12:00.000Z", "chatId": "!s2:x", "msgId": "$m5", "lemma": "comer", "constructType": "vocab", "categories": "verb", "useType": "wa", "xp": 20},
+        {"timeStamp": "2026-10-01T09:12:00.000Z", "chatId": "!s2:x", "msgId": "$m5", "lemma": "comer", "constructType": "vocab", "categories": "verb", "useType": "ga", "xp": 10},
+        {"timeStamp": "2026-10-01T09:13:00.000Z", "chatId": "!s2:x", "msgId": "$m6", "lemma": "comer", "constructType": "vocab", "categories": "verb", "useType": "wa", "xp": 5},
+        {"timeStamp": "2026-10-01T09:20:00.000Z", "chatId": null, "msgId": null, "lemma": "Bien", "constructType": "vocab", "categories": "adv", "useType": "corLM", "xp": 5},
+        {"timeStamp": "2026-10-01T09:21:00.000Z", "chatId": null, "msgId": null, "lemma": "bien", "constructType": "vocab", "categories": "adv", "useType": "corLM", "xp": 5},
+        {"timeStamp": "2026-10-01T09:22:00.000Z", "chatId": null, "msgId": null, "lemma": "Bien", "constructType": "vocab", "categories": "adv", "useType": "corLM", "xp": 5},
+        {"timeStamp": "2026-10-01T09:30:00.000Z", "chatId": null, "msgId": null, "lemma": "malo", "constructType": "vocab", "categories": "adj", "useType": "corLM", "xp": 5},
+        {"timeStamp": "2026-10-01T09:31:00.000Z", "chatId": null, "msgId": null, "lemma": "x", "constructType": "vocab", "categories": "", "useType": "corLM", "xp": 5},
+        {"timeStamp": "2026-10-01T09:32:00.000Z", "chatId": null, "msgId": null, "lemma": "perro", "constructType": "vocab", "categories": "noun", "useType": "ignPA", "xp": 0},
+        {"timeStamp": "2026-10-01T09:33:00.000Z", "chatId": null, "msgId": null, "lemma": "perro", "constructType": "vocab", "categories": "noun", "useType": "incLM", "xp": -1},
+        {"timeStamp": "2026-10-01T09:34:00.000Z", "chatId": null, "msgId": null, "lemma": "perro", "constructType": "vocab", "categories": "noun", "useType": "corLM", "xp": 5},
+        {"timeStamp": "2026-10-01T09:40:00.000Z", "chatId": null, "msgId": null, "lemma": "Past", "constructType": "morph", "categories": "Tense", "useType": "corGC", "xp": 5},
+        {"timeStamp": "2026-10-01T09:41:00.000Z", "chatId": null, "msgId": null, "lemma": "past", "constructType": "vocab", "categories": "noun", "useType": "corLM", "xp": 5},
+        {"timeStamp": "2026-10-01T10:30:00.000Z", "chatId": "!s1:x", "msgId": "$m7", "lemma": "silla", "constructType": "vocab", "categories": "noun", "useType": "corWL", "xp": 5},
+        {"timeStamp": "2026-10-01T11:30:00.000Z", "chatId": "!s3:x", "msgId": "$m8", "lemma": "ver", "constructType": "vocab", "categories": "verb", "useType": "wa", "xp": 7},
+        {"timeStamp": "2026-10-01T11:40:00.000Z", "chatId": "!s4:x", "msgId": "$m9", "lemma": "dar", "constructType": "vocab", "categories": "verb", "useType": "wa", "xp": 4},
+        {"timeStamp": "2026-10-01T11:50:00.000Z", "chatId": "!s6:x", "msgId": "$m10", "lemma": "tener", "constructType": "vocab", "categories": "verb", "useType": "wa", "xp": 6},
+        {"timeStamp": "2026-10-01T12:50:00.000Z", "chatId": "!s5:x", "msgId": "$m11", "lemma": "ir", "constructType": "vocab", "categories": "verb", "useType": "incIGC", "xp": -2},
+        {"timeStamp": "2026-10-01T14:00:00.000Z", "chatId": null, "msgId": null, "lemma": "sol", "constructType": "vocab", "categories": "noun", "useType": "corLA", "xp": 5},
+        {"timeStamp": "2026-10-01T14:01:00.000Z", "chatId": null, "msgId": null, "lemma": "gato", "constructType": "vocab", "categories": "noun", "useType": "corLM", "xp": 5},
+        {"timeStamp": "2026-10-01T14:02:00.000Z", "chatId": "!other:x", "msgId": "$m12", "lemma": "mesa", "constructType": "vocab", "categories": "noun", "useType": "wa", "xp": 4}
+      ],
+      "expected": {
+        "target": 300,
+        "chatXpByRoom": {"!s1:x": 8, "!s2:x": 120, "!s3:x": 7, "!s4:x": 4, "!s5:x": -2, "!s6:x": 6, "!other:x": 4},
+        "practiceXpByRoom": {"!s1:x": 10},
+        "practiceXpByLemma": {"bien": 10, "perro": 4, "past": 10, "sol": 5, "gato": 5},
+        "xpByActivity": {"actA": {"chat": 8, "goals": 200, "practice": 10}, "actB": {"chat": 120, "goals": 100, "practice": 0}, "actC": {"chat": 6, "goals": 100, "practice": 0}},
+        "bestDiamondsByActivity": {"actA": 2, "actB": 2, "actC": 1},
+        "missions": {
+          "lo1": {"chat": 128, "goals": 300, "practice": 24, "xp": 452, "satisfied": true},
+          "lo2": {"chat": 120, "goals": 100, "practice": 19, "xp": 239, "satisfied": false}
+        },
+        "starSummary": {"earned": 1, "total": 2}
+      },
+      "adapiOnly": {
+        "verdicts": {"capped": 2, "blocked": 1, "invalid": 1, "zero": 1, "counted": 22},
+        "wordPracticeByLo": {"lo1": 14, "lo2": 19},
+        "courseXp": 467,
+        "courseGoalXp": 300,
+        "allXp": 191,
+        "outsideXp": 24,
+        "completedOn": {"lo1": "2026-10-01T11:00:00+00:00", "lo2": null},
+        "sessions": {
+          "!s1:x": {"counted": true, "reason": null},
+          "!s2:x": {"counted": true, "reason": null},
+          "!s3:x": {"counted": false, "reason": "left"},
+          "!s4:x": {"counted": false, "reason": "not_saved"},
+          "!s5:x": {"counted": false, "reason": "no_xp"},
+          "!s6:x": {"counted": true, "reason": null}
+        }
+      }
+    },
+    {
+      "name": "pending",
+      "notes": "adapi-only: a saved session whose goal count is not verified pends the Can-Dos listing its activity and Course XP; one whose membership is unknown likewise; a pending session of an activity outside the course pends nothing. The client side skips this case (the app never lacks these inputs).",
+      "adapiOnlyCase": true,
+      "teacherMode": null,
+      "blocked": [],
+      "outline": {
+        "orderedLoIds": ["lo1", "lo2"],
+        "activityIdsByLo": {"lo1": ["actA"], "lo2": ["actB"]},
+        "lemmasByLo": {"lo1": ["casa"], "lo2": ["perro"]}
+      },
+      "sessions": [
+        {"roomId": "!p1:x", "activityId": "actA", "archivedAt": "2026-10-02T10:00:00.000Z", "membership": "join", "ownGoals": null},
+        {"roomId": "!p2:x", "activityId": "actB", "archivedAt": "2026-10-02T10:00:00.000Z", "membership": "join", "ownGoals": 3},
+        {"roomId": "!p3:x", "activityId": "actZ", "archivedAt": "2026-10-02T10:00:00.000Z", "membership": null, "ownGoals": 1}
+      ],
+      "uses": [
+        {"timeStamp": "2026-10-02T09:00:00.000Z", "chatId": null, "msgId": null, "lemma": "perro", "constructType": "vocab", "categories": "noun", "useType": "corLM", "xp": 5}
+      ],
+      "expected": null,
+      "adapiOnly": {
+        "target": 1600,
+        "missions": {
+          "lo1": {"xp": null, "pendingReason": "goals_unknown"},
+          "lo2": {"xp": 305, "pendingReason": null}
+        },
+        "courseXp": null,
+        "coursePendingReason": "goals_unknown"
+      }
+    }
+  ],
+  "targets": [
+    {"teacherMode": {"xp_to_complete_objective": 2400}, "expected": 2400},
+    {"teacherMode": {"xp_to_complete_objective": 2400, "enabled": false}, "expected": 2400},
+    {"teacherMode": {"xp_to_complete_objective": 0}, "expected": 0},
+    {"teacherMode": {"xp_to_complete_objective": "2400"}, "expected": 1600},
+    {"teacherMode": {"xp_to_complete_objective": true}, "expected": 1600},
+    {"teacherMode": {"enabled": true, "stars_to_unlock_objective": 3}, "expected": 1600},
+    {"teacherMode": {}, "expected": 1600},
+    {"teacherMode": null, "expected": 1600}
+  ]
+}
