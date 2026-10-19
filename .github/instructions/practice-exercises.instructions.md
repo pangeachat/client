@@ -4,7 +4,7 @@ applyTo: "lib/routes/chat/toolbar/practice_exercises/**,lib/routes/chat/toolbar/
 
 # Practice Exercises
 
-Practice exercises are multiple-choice exercises that reinforce vocabulary and grammar from real conversations. There are no disconnected flashcard decks — every practice item traces back to a message the user sent or received.
+Practice exercises are short solo exercises that reinforce vocabulary and grammar from real conversations: multiple-choice items, and a read-aloud item for speaking. There are no disconnected flashcard decks — every practice item traces back to a message the user sent or received.
 
 For **conversation activities**, see [activities.instructions.md](activities.instructions.md).
 
@@ -12,18 +12,19 @@ For **conversation activities**, see [activities.instructions.md](activities.ins
 
 | Term | Meaning | Code modules |
 |---|---|---|
-| **Practice exercise** | Multiple-choice quiz reinforcing vocab/grammar from real messages (solo) | `practice_activities/` (legacy name), `analytics_practice/`, `toolbar/message_practice/` |
+| **Practice exercise** | Multiple-choice quiz, or a read-aloud item, reinforcing vocab/grammar from real messages (solo) | `practice_activities/` (legacy name), `analytics_practice/`, `toolbar/message_practice/` |
 
-## Four Entry Points
+## Five Entry Points
 
 | Entry Point | What It Is | Where It Lives | Activity Types Used |
 |---|---|---|---|
 | **Vocab Practice** | Standalone session of ~10 vocab exercises drawn from the user's weakest words | Analytics page → "Practice Vocab" button, or the connection banner's "Practice vocab while you wait" → [`AnalyticsPracticePage`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_page.dart) (`type: vocab`) | `lemmaMeaning`, `lemmaAudio` (`lemmaMeaning` only [offline](#offline-practice)) |
 | **Grammar Practice** | Standalone session of ~10 grammar exercises drawn from recent errors + weak morphology | Analytics page → "Practice Grammar" button → [`AnalyticsPracticePage`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_page.dart) (`type: morph`) | `grammarError`, `grammarCategory` (both [offline](#offline-practice), `grammarError` without its hint) |
 | **Objective Practice** | A vocab session scoped to one Mission's target vocabulary (see [Objective practice](#objective-practice)) | The Mission card's Practice button and the Practice button on a Learning Objective's page → the same page with `practice:vocab/<missionId>` in the URL | `lemmaMeaning`, `lemmaAudio` |
+| **Speaking Practice** | Standalone session of up to 10 read-aloud items drawn from the user's weakest words that have an example sentence (see [Speaking practice](#speaking-practice)) | Vocabulary analytics section → mic button beside Practice → the same page with `practice:speaking` in the URL | `readAloud` |
 | **Message Practice** | Per-message practice accessed from the toolbar; exercises target words in that specific message | Toolbar → 💪 button → [`PracticeController`](../../lib/routes/chat/toolbar/message_practice/practice_controller.dart) | `wordMeaning`, `wordFocusListening`, `emoji`, `morphId` |
 
-All four entry points produce the same [`ConstructUseModel`](../../lib/pangea/analytics_misc/constructs_model.dart) records, so practice from any source contributes equally to the user's vocabulary garden and XP.
+All five entry points produce the same [`ConstructUseModel`](../../lib/pangea/analytics_misc/constructs_model.dart) records, so practice from any source contributes equally to the user's vocabulary garden and XP.
 
 ### Objective practice
 
@@ -36,7 +37,7 @@ The scope rides the URL token so it survives a panel swap and can be linked to, 
 ## Design Goals
 
 1. **Spaced repetition without the UI**: Users never configure schedules. The system silently prioritizes words they haven't seen recently and content words over function words.
-2. **Multi-modal learning**: Each word can be practiced through listening, meaning, emoji association, and grammar analysis — hitting visual, auditory, and semantic learning channels.
+2. **Multi-modal learning**: Each word can be practiced through listening, speaking, meaning, emoji association, and grammar analysis — hitting visual, auditory, semantic and spoken learning channels.
 3. **Completion, not perfection**: Wrong answers still contribute (at reduced XP), keeping the experience encouraging.
 4. **Always from real messages**: Every practice target traces back to a token from a real conversation message.
 
@@ -135,18 +136,20 @@ The [`ActivityTypeEnum`](../../lib/pangea/practice_activities/activity_type_enum
 | Vocab Audio | `lemmaAudio` | Hears a word in the context of an example sentence, identifies it | [`VocabAudioActivityGenerator`](../../lib/pangea/analytics_practice/vocab_audio_activity_generator.dart) |
 | Grammar Category | `grammarCategory` | Identifies the correct morph tag (e.g., "Past Tense") for a word | [`MorphCategoryActivityGenerator`](../../lib/pangea/analytics_practice/morph_category_activity_generator.dart) |
 | Grammar Error | `grammarError` | Picks the correct replacement for a grammar error they made | [`GrammarErrorPracticeGenerator`](../../lib/pangea/analytics_practice/grammar_error_practice_generator.dart) |
+| Read Aloud | `readAloud` | Reads the example sentence aloud; correct when the target word is heard (see [Speaking practice](#speaking-practice)) | `ReadAloudPracticeExerciseGenerator` |
 
 Each activity type maps to specific [`ConstructUseTypeEnum`](../../lib/pangea/analytics_misc/construct_use_type_enum.dart) values for correct/incorrect/ignored answers (e.g., `corLM`/`incLM` for lemmaMeaning).
 
 ---
 
-## Standalone Practice Sessions (Vocab & Grammar)
+## Standalone Practice Sessions (Vocab, Grammar & Speaking)
 
 ### Session Lifecycle
 
 1. [`AnalyticsPracticeSessionRepo.get(type, userL1, userL2)`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_session_repo.dart) selects the session's targets (words/constructs + exercise type), NOT their content:
    - **Vocab**: picks the user's weakest lemmas (by spaced-repetition score) and splits ~50/50 between `lemmaAudio` and `lemmaMeaning` targets. The split is by **count**; audio candidates are picked by a cheap local check that the lemma has an example-bearing use, and the example message itself is resolved later at generation (see [Loading & Generation Sequencing](#loading--generation-sequencing)).
    - **Grammar**: picks recent grammar errors first (`grammarError` targets), then fills remaining slots with weak morph features (`grammarCategory` targets)
+   - **Speaking**: picks the user's weakest lemmas that pass the same example-bearing check the audio split uses, as `readAloud` targets. A session has as many items as there are candidates, up to the usual 10.
    - Session size: 10 exercises shown, plus a 5-item error buffer (15 targets generated — `targetsToGenerate`; constants in [`AnalyticsPracticeConstants`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart)). The "~10" entry-point sessions above are this same 10 shown.
 2. [`PracticeSessionController`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_session_controller.dart) owns the session and the exercise queue; the page widgets show progress bar, timer, hints.
 3. For each target, a [`MessagePracticeExerciseRequest`](../../lib/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart) is routed by [`PracticeRepo`](../../lib/routes/chat/toolbar/practice_exercises/practice_generation_repo.dart) to the appropriate generator.
@@ -172,6 +175,8 @@ Standalone practice loads in two phases, and the learner waits behind a spinner 
 Selection must stay cheap: it reads aggregated constructs from local analytics and does **not** resolve per-target example messages, audio, or Matrix events. Those resolve during content generation, inside the eager background queue. The goal is not to defer the work — every exercise is still prefetched — but to keep it from gating first paint: resolving example messages *during selection* blocked the first exercise on N serial event fetches, which made practice load slowly and inconsistently (#7702).
 
 A `lemmaAudio` target whose audio example can't be resolved at generation **falls back to a `lemmaMeaning` exercise for the same lemma**, so a deferred resolution failure never leaves a gap. This is a degradation path only — the audio/meaning mix is set at selection by count, so it doesn't materially shift the mix.
+
+A `readAloud` target whose example message can't be resolved is dropped rather than swapped for a multiple-choice item, since a speaking session is for speaking; the five-target error buffer covers it the way it covers any other failed generation.
 
 ### Session Persistence & Lifecycle
 
@@ -211,6 +216,8 @@ A practice session that starts while the app cannot reach Pangea ([connection-st
 - Grammar-error exercises have no hint, because the hint is the sentence's translation, which needs the network. The learner's own error is always one of the choices.
 - The 24-hour pauses on recently practiced grammar and sentences still apply.
 
+**Speaking.** A speaking session cannot start offline, because every item needs transcription from the network: the mic button is disabled, with the same note. A running session whose connection drops shows a connection message on the item, with retry and skip, and never records a miss it could not hear.
+
 Answers are recorded and earn XP as usual. They stay on the device and upload when the connection returns ([analytics-system § Local-First, Sync-Later](analytics-system.instructions.md#local-first-sync-later)).
 
 A session keeps the mode it started in. While the app cannot reach Pangea, the practice page says "Offline. Your answers upload when you're back." under the progress bar. The completion view says "Saved on this device. Your XP uploads when you're back online."
@@ -218,6 +225,26 @@ A session keeps the mode it started in. While the app cannot reach Pangea, the p
 ### Subscription Gate
 
 Standalone practice requires an active subscription. [`UnsubscribedPracticePage`](../../lib/routes/analytics/construct_analytics/practice/unsubscribed_practice_page.dart) is shown if the user isn't subscribed.
+
+### Speaking practice
+
+The vocab session's spoken twin ([client#8967](https://github.com/pangeachat/client/issues/8967)): the learner reads a sentence they met in a real chat aloud, and the app shows which words it heard. Playtesters asked to practise speaking on sentences of their choosing rather than by inventing a reply to the bot in a voice message, and the live transcription voice messages use lets the words settle under their voice.
+
+**Entry.** A mic button beside Practice in the Vocabulary section's app bar, named "Practice speaking" for the tooltip and the screen reader. It is an icon rather than a second labelled pill because the Practice label was shortened to keep the section title visible ([#7979](https://github.com/pangeachat/client/issues/7979)), and a second word would squeeze it out again. It follows the Practice button's gates — locked under ten vocabulary constructs, subscription, a connection ([Offline Practice](#offline-practice)) — and opens the same panel with `practice:speaking` in the URL. For every rule in [routing](routing.instructions.md#practice-is-a-persistent-background-session) a speaking session is the Vocabulary section's session: one session at a time across all three kinds, the vocabulary cluster resumes it, and starting one replaces an unfinished vocab or grammar session after the usual confirmation. The Mission card keeps its single Practice button. Like objective practice, a speaking session names no room, so its XP counts toward every Mission whose word list holds the word.
+
+**An item** is the weak word's example message with the target in bold, its pronunciation line, and the emoji and meaning the learner has given it, over a player for the reference audio and the mic. The flow is the one the design team drew ([Figma](https://www.figma.com/design/JLTmfC5gKrFkBCylEUTaLf/In-chat-functionality?node-id=4309-13832)): listen, record, compare.
+
+- **Hear it first** is a switch in the session header, on by default and remembered on the device. On, the reference audio plays when the item appears and the mic pulses once it ends; off, the item opens on the mic. On by default because listen-then-repeat is the loop teachers asked for ([#2961](https://github.com/pangeachat/client/issues/2961)), and it stops a learner guessing at a sentence they cannot yet read. The reference is the sentence read by the audio source message read-aloud uses ([message-read-aloud](message-read-aloud.instructions.md)), so it spends a backend call only where the device has no known-good voice, and hearing it is listening exposure, recorded as such ([analytics-system](analytics-system.instructions.md#listening-exposure)).
+- **Recording** starts on a tap, never on its own. As the learner reads, each reference word fills in as the transcript settles it, in order, so the sentence completes under their voice; a settled word changes weight as well as colour, and the mic's accessible name says how many words are still unheard, so colour is never the only carrier. Recording ends on a second tap, when every word has settled, or at the voice message's maximum length. The reference and the mic never run together: the mic opens only once playback ends, and a tap on the mic during playback stops the playback first.
+- **Compare.** When the recording ends, the item shows two players, the reference and the learner's own recording, with the heard transcript under them, so they can hear the difference and go again. The learner's recording stays on the device for the item and goes nowhere but to transcription.
+- **What counts.** The item is correct when the target word was heard; the other words are feedback only. The target alone earns the use, as in every other exercise, so a long sentence is worth no more than a short one.
+- **Not heard is a retry, not a wrong answer.** A missed word is as likely the recognizer's miss as the learner's: recognition pinned to the target language is forgiving by design and reports whether a word was intelligible, not whether it sounded native. A miss leaves the missed words unfilled and offers another go, three recordings per item: enough to fix a slip, few enough that a word the recognizer will never hear does not trap the learner. The item is recorded once, correct on the first full pass or incorrect when the tries run out, and skip works as usual. The copy says what was heard, never that a word was pronounced well or badly, and there is no score: the filled sentence is the feedback.
+
+**Transcription.** An item uses the live streaming route voice messages use ([streaming-stt](../../../2-step-choreographer/.github/instructions/streaming-stt.instructions.md)) wherever the learner's target language is routed for streaming, and the judge is the settled final. Where the language is not routed, the recorder's batch path runs instead and the words fill in together after the recording ends. The recording is not sent through the batch route as well: a known reference makes the match far easier than open transcription, and a second transcription per item would double the cost. This is the one consumer that records a use from a streamed final; the streaming design otherwise keeps streamed text out of analytics, and names this consumer as its one exception. Speaking practice minutes count against the streaming monthly cap and are metered apart from voice messages, so the two can be told apart when the cap is reviewed. A recording no route can transcribe shows a connection message with retry and skip and is never recorded as a miss.
+
+**Scoring.** Correct reads and misses carry their own use types, `corRA` and `incRA`, classified as speaking, so they join voice messages and calls on the word card's speaking row and in the teacher summaries ([Adding a use type](analytics-system.instructions.md#adding-a-use-type)). A correct read earns what a correct listening answer earns. A miss is worth 0: the small negative XP on a wrong multiple-choice pick discourages guessing, and there is no guessing a read. The accuracy bonus applies as usual; the speed bonus does not, because rushing a read defeats the point. Speaking practice is not a voice message, so it does not count toward the dashboard's speaking minutes, which are voice messages and calls.
+
+**Microphone.** The first recording asks for microphone permission the way a voice message does. A refusal, or a device with no microphone, ends the session with a note that names the permission; the mic button stays, since the learner can grant it later.
 
 ---
 
@@ -283,12 +310,10 @@ All expose a `multipleChoiceContent` (choices + answers) and produce a `Practice
 - **All practice produces construct uses.** Whether from the toolbar or the standalone page, every answer is recorded as a `ConstructUseModel` that feeds into the analytics system.
 
 ## Future Work
-*Last updated: 2026-02-15*
+*Last updated: 2026-10-19*
 
 **Practice Types & Modalities**
 
-- [pangeachat/client#5656](https://github.com/pangeachat/client/issues/5656) — Voice practice ideas
-- [pangeachat/client#3175](https://github.com/pangeachat/client/discussions/3175) — Speaking practice for Voice/Audio message
 - [pangeachat/client#3176](https://github.com/pangeachat/client/discussions/3176) — New type of practice exercise
 - [pangeachat/client#2678](https://github.com/pangeachat/client/discussions/2678) — Listening exercises
 - [pangeachat/client#5654](https://github.com/pangeachat/client/issues/5654) — Are there more places where it makes sense to use the word audio?
@@ -313,4 +338,4 @@ All expose a `multipleChoiceContent` (choices + answers) and produce a `Practice
 
 - Server-side practice history to enable cross-device spaced repetition
 - [pangeachat/client#5700](https://github.com/pangeachat/client/issues/5700) Part 3 — Server-side message fetch fallback for practice (room resolution, related sub-event data)
-- More activity types (fill-in-the-blank, sentence reordering, pronunciation scoring)
+- More activity types (fill-in-the-blank, sentence reordering)
