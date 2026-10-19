@@ -137,6 +137,16 @@ void main() {
         ).starter,
         isFalse,
       );
+      // TEMPORARY with QuestActivityCard.temporaryStarterActivityIds: an
+      // allowlisted id with no flag reads as a starter on this path too.
+      expect(
+        QuestActivityCard.fromJson(
+          QuestRepo.cmsDocShapeFromEntry(
+            entry(QuestActivityCard.temporaryStarterActivityIds.first),
+          ),
+        ).starter,
+        isTrue,
+      );
     });
 
     test('adapts an entry to the shared plan parser with a version pin', () {

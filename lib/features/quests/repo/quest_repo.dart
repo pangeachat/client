@@ -582,12 +582,13 @@ class QuestRepo {
       final entries = dedupeByActivityId(
         questActivityEntriesFromJson(body).map((e) {
           final doc = cmsDocShapeFromEntry(e);
+          final plan = activityPlanFromV2(doc);
           return (
-            plan: activityPlanFromV2(doc),
+            plan: plan,
             refs: ((e['learning_objective_refs'] as List? ?? const [])
                 .map((x) => x as String)
                 .toList()),
-            starter: doc['starter'] == true,
+            starter: QuestActivityCard.starterFlagFrom(doc, plan.activityId),
           );
         }).toList(),
         (e) => e.plan.activityId,
