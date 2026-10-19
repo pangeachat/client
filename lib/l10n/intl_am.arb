@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-16 16:32:56.017277",
+    "@@last_modified": "2026-10-19 14:11:39.877237",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "ተጠናቋል",
     "completedTimes": "{count} ጊዜ ተጠናቋል",
     "classLocation": "የክፍል ቦታ",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "ይህ በኮርስዎ ውስጥ ማድረግ ያለብዎት የመጀመሪያው ነገር ነው። የመጀመሪያ እንቅስቃሴዎን ለመጀመር {play}ን ይንኩ!"
 }

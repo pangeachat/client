@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-16 16:33:14.138164",
+    "@@last_modified": "2026-10-19 14:11:49.903890",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Анҷом ёфт",
     "completedTimes": "{count} маротиба анҷом ёфт",
     "classLocation": "Ҷойгиршавии синф",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Ин аввалин корест, ки шумо бояд дар курси худ анҷом диҳед. Барои оғози фаъолияти аввалини худ {play}-ро пахш кунед!"
 }

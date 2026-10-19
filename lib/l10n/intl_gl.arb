@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-16 16:32:58.524346",
+    "@@last_modified": "2026-10-19 14:11:41.968632",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10005,5 +10005,6 @@
     "activityCompleted": "Completado",
     "completedTimes": "Completado {count} veces",
     "classLocation": "Localización da clase",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Isto é o primeiro que debes facer no teu curso. Toca {play} para comezar a túa primeira actividade!"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-16 16:33:11.482189",
+    "@@last_modified": "2026-10-19 14:11:48.244151",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Faʻamaeʻaina",
     "completedTimes": "Faʻamaeʻaina {count} taimi",
     "classLocation": "Nofoaga o le vasega",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "O le mea muamua lea e fai i lau kosi. Paʻi i le {play} e amata ai lau gaioiga muamua!"
 }

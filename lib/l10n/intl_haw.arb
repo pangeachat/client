@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-16 16:32:59.350608",
+    "@@last_modified": "2026-10-19 14:11:42.356523",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Hoʻopau ʻia",
     "completedTimes": "Hoʻopau ʻia {count} mau manawa",
     "classLocation": "Kahi papa",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "ʻO kēia ka mea mua e hana ai i kāu papa. E kaomi iā {play} e hoʻomaka i kāu hana mua!"
 }

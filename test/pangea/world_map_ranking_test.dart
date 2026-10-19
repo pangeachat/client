@@ -12,6 +12,7 @@ QuestActivityCard _card(
   String cefr = 'A2',
   List<String> refs = const [],
   int? roleCount,
+  bool starter = false,
 }) => QuestActivityCard(
   activityId: id,
   title: id,
@@ -20,6 +21,7 @@ QuestActivityCard _card(
   learningObjectiveRefs: refs,
   cefr: cefr,
   roleCount: roleCount,
+  starter: starter,
 );
 
 /// A one-quest progression whose anchor (next) Mission is [anchor], built so the
@@ -285,6 +287,94 @@ void main() {
     });
   });
 
+  group('pinScore — the starter term on a fresh map (#9561)', () {
+    test(
+      'a starter pin takes +7 while the learner has no finished activity',
+      () {
+        final score = pinScore(
+          ratingAverage: 0.5,
+          ratingCount: kNewRatingThreshold,
+          band: 0,
+          s: const PinSignals(),
+          starter: true,
+          isNewLearner: true,
+        );
+        expect(score, closeTo(kStarterWeight, 1e-9));
+      },
+    );
+
+    test('a returning learner is not steered — the term clears with the '
+        'first finished activity', () {
+      final score = pinScore(
+        ratingAverage: 0.5,
+        ratingCount: kNewRatingThreshold,
+        band: 0,
+        s: const PinSignals(),
+        starter: true,
+        isNewLearner: false,
+      );
+      expect(score, 0);
+    });
+
+    test('a non-starter pin is untouched for a new learner', () {
+      final score = pinScore(
+        ratingAverage: 0.5,
+        ratingCount: kNewRatingThreshold,
+        band: 0,
+        s: const PinSignals(),
+        starter: false,
+        isNewLearner: true,
+      );
+      expect(score, 0);
+    });
+
+    test('the weight clears everything else an available pin can add up to, '
+        'whatever the starter\'s own band or rating', () {
+      // The strongest available non-starter: saturated band, pinged, newest,
+      // all-up rated. The weakest starter: floor band, all-down rated.
+      final best = pinScore(
+        band: kBandCeiling,
+        s: const PinSignals(pinged: true, recency: 1.0),
+        ratingAverage: 1.0,
+        ratingCount: 5,
+        isNewLearner: true,
+      );
+      final worstStarter = pinScore(
+        band: 0.5,
+        s: const PinSignals(),
+        ratingAverage: 0.0,
+        ratingCount: 5,
+        starter: true,
+        isNewLearner: true,
+      );
+      expect(worstStarter, greaterThan(best));
+    });
+
+    test('a live session stacked on the strongest terms still beats it — '
+        'joining others stays the map\'s strongest bias', () {
+      final liveBest = pinScore(
+        band: kBandCeiling,
+        s: const PinSignals(
+          state: ActivityPinState.joinable,
+          pinged: true,
+          recency: 1.0,
+        ),
+        ratingAverage: 1.0,
+        ratingCount: 5,
+        isNewLearner: true,
+      );
+      final worstStarter = pinScore(
+        band: 0.5,
+        s: const PinSignals(),
+        ratingAverage: 0.0,
+        ratingCount: 5,
+        starter: true,
+        isNewLearner: true,
+      );
+      expect(liveBest, greaterThan(worstStarter));
+    });
+  });
+
   group('pinScore — ratings tiebreaker (#7993)', () {
     test('unrated (NEW) takes the top of the range (+2)', () {
       final score = pinScore(
@@ -448,6 +538,33 @@ void main() {
         expect(result.midIds.length + result.largeIds.length, 2);
       },
     );
+  });
+
+  group('rankPins — a starter leads a new learner\'s first map (#9561)', () {
+    test('the starter takes the one large slot over a better-banded pin, and '
+        'yields it once the learner has finished an activity', () {
+      final pins = [
+        _card('lvl', refs: ['b']), // band 1.0
+        _card('starter', refs: const [], starter: true), // band 0.5
+      ];
+      final signals = {
+        'lvl': const PinSignals(),
+        'starter': const PinSignals(),
+      };
+      final fresh = rank(
+        pins,
+        signals,
+        largeBudget: 1,
+        midBudget: 10,
+        isNewLearner: true,
+      );
+      expect(fresh.largeIds, ['starter']);
+      expect(fresh.midIds, {'lvl'});
+
+      final returning = rank(pins, signals, largeBudget: 1, midBudget: 10);
+      expect(returning.largeIds, ['lvl']);
+      expect(returning.midIds, {'starter'});
+    });
   });
 
   group('rankPins — large/mid fill by score', () {

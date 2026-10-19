@@ -1327,7 +1327,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-16 16:32:55.088386",
+    "@@last_modified": "2026-10-19 14:11:40.589981",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10922,5 +10922,6 @@
     "activityCompleted": "Gennemført",
     "completedTimes": "Gennemført {count} gange",
     "classLocation": "Klasselokation",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Dette er det første, du skal gøre i dit kursus. Tryk på {play} for at starte din første aktivitet!"
 }

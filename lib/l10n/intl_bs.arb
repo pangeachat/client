@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-16 16:32:53.366988",
+    "@@last_modified": "2026-10-19 14:11:39.853558",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Dovršeno",
     "completedTimes": "Dovršeno {count} puta",
     "classLocation": "Lokacija časa",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Ovo je prva stvar koju treba da uradite na svom kursu. Dodirnite {play} da započnete svoju prvu aktivnost!"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-16 16:32:59.780997",
+    "@@last_modified": "2026-10-19 14:11:43.488365",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10438,5 +10438,6 @@
     "activityCompleted": "Dovršeno",
     "completedTimes": "Dovršeno {count} puta",
     "classLocation": "Lokacija razreda",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Ovo je prva stvar koju trebate učiniti na svom tečaju. Dodirnite {play} za početak prve aktivnosti!"
 }

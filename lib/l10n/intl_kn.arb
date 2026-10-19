@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-16 16:33:03.213625",
+    "@@last_modified": "2026-10-19 14:11:44.723983",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "ಪೂರ್ಣಗೊಂಡಿದೆ",
     "completedTimes": "{count} ಬಾರಿ ಪೂರ್ಣಗೊಂಡಿದೆ",
     "classLocation": "ತರಗತಿಯ ಸ್ಥಳ",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "ಇದು ನಿಮ್ಮ ಕೋರ್ಸ್‌ನಲ್ಲಿ ಮಾಡಬೇಕಾದ ಮೊದಲ ವಿಷಯವಾಗಿದೆ. ನಿಮ್ಮ ಮೊದಲ ಚಟುವಟಿಕೆಯನ್ನು ಪ್ರಾರಂಭಿಸಲು {play} ಟ್ಯಾಪ್ ಮಾಡಿ!"
 }

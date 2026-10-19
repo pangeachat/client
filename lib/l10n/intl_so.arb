@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-16 16:33:12.140005",
+    "@@last_modified": "2026-10-19 14:11:48.952042",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "La dhammaystiray",
     "completedTimes": "La dhammaystiray {count} jeer",
     "classLocation": "Goobta fasalka",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Tani waa waxa ugu horreeya ee aad ku samayso koorsadaada. Taabo {play} si aad u bilowdo hawshaada ugu horreysa!"
 }

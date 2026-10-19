@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-16 16:33:12.932247",
+    "@@last_modified": "2026-10-19 14:11:48.971002",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Imekamilika",
     "completedTimes": "Imekamilika mara {count}",
     "classLocation": "Mahali pa darasa",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Hiki ndicho kitu cha kwanza kufanya katika kozi yako. Gusa {play} ili kuanza shughuli yako ya kwanza!"
 }

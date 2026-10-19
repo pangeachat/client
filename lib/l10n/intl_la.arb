@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-16 16:33:03.909892",
+    "@@last_modified": "2026-10-19 14:11:44.324752",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Perfectum",
     "completedTimes": "Perfectum {count} temporibus",
     "classLocation": "Locus classis",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Hoc est primum faciendum in cursu tuo. Tange {play} ut primam actionem tuam incipias!"
 }

@@ -89,6 +89,19 @@ void main() {
       expect(c.originalL1, 'en');
     });
 
+    test('parses the row-level starter flag, false when absent (#9561)', () {
+      expect(
+        QuestActivityCard.fromBboxCard({...card(), 'starter': true}).starter,
+        isTrue,
+      );
+      expect(
+        QuestActivityCard.fromBboxCard({...card(), 'starter': false}).starter,
+        isFalse,
+      );
+      // An older choreo sends no flag: no starters, and the steer is inert.
+      expect(QuestActivityCard.fromBboxCard(card()).starter, isFalse);
+    });
+
     test('role_count stays null when an older choreo omits roles (inert)', () {
       final c = QuestActivityCard.fromBboxCard(card());
       expect(c.roleCount, isNull);
@@ -117,6 +130,14 @@ void main() {
       },
       'learningObjectiveRefs': ['lo-a'],
     };
+
+    test('carries the row-level starter flag, false when absent (#9561)', () {
+      expect(
+        QuestActivityCard.fromJson({...doc(), 'starter': true}).starter,
+        isTrue,
+      );
+      expect(QuestActivityCard.fromJson(doc()).starter, isFalse);
+    });
 
     test('carries the CEFR level from res.plan.cefr_level (#8243)', () {
       final c = QuestActivityCard.fromJson(doc());

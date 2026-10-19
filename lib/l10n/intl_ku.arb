@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-16 16:33:05.003406",
+    "@@last_modified": "2026-10-19 14:11:45.160504",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "تەواوکرا",
     "completedTimes": "{count} جار تەواوکرا",
     "classLocation": "شوێنی پۆل",
-    "xpThresholdSuffix": "/ {threshold} خاڵی ئەزموون"
+    "xpThresholdSuffix": "/ {threshold} خاڵی ئەزموون",
+    "tutorialCoursePlanPlay": "ئەمە یەکەم شتە کە لە خولەکەتدا دەیکەیت. پەنجە بنێ بە {play} بۆ دەستپێکردنی یەکەم چالاکیت!"
 }

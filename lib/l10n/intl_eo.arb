@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:32:57.123104",
+    "@@last_modified": "2026-10-19 14:11:41.377687",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10947,5 +10947,6 @@
     "activityCompleted": "Kompletigita",
     "completedTimes": "Kompletigita {count} fojojn",
     "classLocation": "Klasloko",
-    "xpThresholdSuffix": "/ {threshold} SPertoj"
+    "xpThresholdSuffix": "/ {threshold} SPertoj",
+    "tutorialCoursePlanPlay": "Jen la unua afero farenda en via kurso. Frapu {play} por komenci vian unuan agadon!"
 }

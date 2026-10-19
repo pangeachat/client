@@ -129,7 +129,8 @@ class TutorialStepTemplates {
     ),
   ];
 
-  /// One step: the course panel, naming the course.
+  /// Two steps: the course panel, naming the course; then the Mission card's
+  /// Play — the first thing to do in it (#9561).
   static final List<TutorialStepTemplate> coursePlan = [
     TutorialStepTemplate(
       // args: [the course's name]
@@ -139,6 +140,16 @@ class TutorialStepTemplates {
       // corners. A full-height target leaves no room above or below it, so the
       // placement rule seats the card at the bottom OF THE PANEL, centred on it.
       borderRadius: AppConfig.borderRadius,
+    ),
+    TutorialStepTemplate(
+      // args: [Play's own label as drawn — "Play", or "Continue" when it
+      // resumes a session], so every locale names the button as it reads.
+      tooltip: (l10n, args) => l10n.tutorialCoursePlanPlay(args.first),
+      tooltipSize: const Size(280, 160),
+      // A rounded rect around the Play button, padded out a little so the
+      // hole frames the button rather than hugging it — the map's pin step.
+      borderRadius: AppConfig.borderRadius,
+      padding: 8.0,
     ),
   ];
 

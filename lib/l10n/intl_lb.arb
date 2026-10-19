@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-16 16:33:04.199613",
+    "@@last_modified": "2026-10-19 14:11:44.817348",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Ofgeschloss",
     "completedTimes": "{count} Mol ofgeschloss",
     "classLocation": "Klass Standuert",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Dat ass dat Éischt, wat Dir an Ärem Cours maache musst. Tippt op {play} fir Är éischt Aktivitéit unzefänken!"
 }

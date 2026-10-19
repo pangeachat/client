@@ -3528,7 +3528,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-16 16:32:53.135464",
+    "@@last_modified": "2026-10-19 14:11:41.231931",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10019,5 +10019,6 @@
     "activityCompleted": "Выканана",
     "completedTimes": "Выканана {count} разоў",
     "classLocation": "Месцазнаходжанне заняткаў",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Гэта першае, што трэба зрабіць у вашым курсе. Націсніце {play}, каб пачаць сваё першае заданне!"
 }

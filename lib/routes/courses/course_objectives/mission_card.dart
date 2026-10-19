@@ -38,6 +38,11 @@ class MissionCard extends StatelessWidget {
   /// A line under Play's label naming what it opens, e.g. the activity being
   /// continued.
   final String? playDetail;
+
+  /// The tutorial target id Play claims when this card is the one the course
+  /// tutorial points at ([TutorialTargetIds.missionPlayButton]); null
+  /// everywhere else.
+  final String? playTutorialTargetId;
   final VoidCallback onPractice;
 
   /// The Mission's activity row, under an "Activities" label at the foot of
@@ -53,6 +58,7 @@ class MissionCard extends StatelessWidget {
     required this.onPractice,
     this.playLabel,
     this.playDetail,
+    this.playTutorialTargetId,
     this.activities,
     super.key,
   });
@@ -265,6 +271,7 @@ class MissionCard extends StatelessWidget {
                 onPressed: onPlay,
                 label: playLabel,
                 detail: playDetail,
+                tutorialTargetId: playTutorialTargetId,
               ),
             ),
             BoldTonalButton(

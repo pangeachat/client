@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-16 16:32:58.931946",
+    "@@last_modified": "2026-10-19 14:11:42.368927",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Crìochnaichte",
     "completedTimes": "Crìochnaichte {count} turas",
     "classLocation": "Àite a' chlas",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Seo a’ chiad rud a nì thu sa chùrsa agad. Tap air {play} gus a’ chiad ghnìomhachd agad a thòiseachadh!"
 }

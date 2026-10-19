@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-16 16:33:08.382100",
+    "@@last_modified": "2026-10-19 14:11:46.884324",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Yamalizidwa",
     "completedTimes": "Yamalizidwa {count} nthawi",
     "classLocation": "Malo a kalasi",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Ichi ndicho chinthu choyamba kuchita mu kosi yanu. Dinani {play} kuti muyambe ntchito yanu yoyamba!"
 }

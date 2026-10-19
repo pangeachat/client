@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-16 16:32:53.707529",
+    "@@last_modified": "2026-10-19 14:11:39.822927",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Tamamlandı",
     "completedTimes": "{count} dəfə tamamlandı",
     "classLocation": "Dərs yeri",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Bu, kursunuzda edəcəyiniz ilk şeydir. İlk fəaliyyətinizə başlamaq üçün {play} üzərinə toxunun!"
 }

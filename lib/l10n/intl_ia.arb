@@ -1355,7 +1355,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-16 16:33:00.979844",
+    "@@last_modified": "2026-10-19 14:11:43.186120",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10938,5 +10938,6 @@
     "activityCompleted": "Completate",
     "completedTimes": "Completate {count} vices",
     "classLocation": "Loco del classe",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Isto es le prime cosa a facer in tu curso. Tappa {play} pro comenciar tu prime activitate!"
 }

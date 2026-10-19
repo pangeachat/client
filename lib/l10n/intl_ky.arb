@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-16 16:33:03.847358",
+    "@@last_modified": "2026-10-19 14:11:44.430710",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Аткарылды",
     "completedTimes": "{count} жолу аткарылды",
     "classLocation": "Сабактын жайгашкан жери",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Бул сиздин курсуңуздагы биринчи иш. Биринчи аракетиңизди баштоо үчүн {play} баскычын басыңыз!"
 }

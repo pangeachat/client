@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-16 16:33:04.898199",
+    "@@last_modified": "2026-10-19 14:11:45.153122",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "ສຳເລັດແລ້ວ",
     "completedTimes": "ສຳເລັດ {count} ຄັ້ງ",
     "classLocation": "ສະຖານທີ່ຮຽນ",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "ນີ້ແມ່ນສິ່ງທຳອິດທີ່ຕ້ອງເຮັດໃນຫຼັກສູດຂອງທ່ານ. ແຕະ {play} ເພື່ອເລີ່ມກິດຈະກຳທຳອິດຂອງທ່ານ!"
 }

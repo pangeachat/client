@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-16 16:33:14.805458",
+    "@@last_modified": "2026-10-19 14:11:49.815898",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10009,5 +10009,6 @@
     "activityCompleted": "Yakunlandi",
     "completedTimes": "{count} marta yakunlandi",
     "classLocation": "Dars joylashuvi",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Bu kursingizda qilishingiz kerak bo'lgan birinchi narsa. Birinchi mashg'ulotingizni boshlash uchun {play} tugmasini bosing!"
 }

@@ -11,10 +11,12 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/bold_tonal_button.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_card.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import '../audio_players_stub.dart';
 
 /// The course page's Mission card (#9420): its number, statement, XP ring,
@@ -57,6 +59,7 @@ void main() {
     VoidCallback? onPractice,
     String? playLabel,
     String? playDetail,
+    String? playTutorialTargetId,
     Widget? activities,
   }) async {
     await tester.pumpWidget(
@@ -80,6 +83,7 @@ void main() {
               onPractice: onPractice ?? () {},
               playLabel: playLabel,
               playDetail: playDetail,
+              playTutorialTargetId: playTutorialTargetId,
               activities: activities,
             ),
           ),
@@ -129,6 +133,27 @@ void main() {
     expect(plays, 1);
     expect(practices, 1);
     semantics.dispose();
+  });
+
+  testWidgets('Play claims the course tutorial\'s target id only when given '
+      'it (#9561)', (tester) async {
+    await pump(tester, onPlay: () {});
+    expect(
+      MatrixState.pAnyState.getRenderBox(TutorialTargetIds.missionPlayButton),
+      isNull,
+    );
+
+    await pump(
+      tester,
+      onPlay: () {},
+      playTutorialTargetId: TutorialTargetIds.missionPlayButton,
+    );
+    final box = MatrixState.pAnyState.getRenderBox(
+      TutorialTargetIds.missionPlayButton,
+    );
+    expect(box, isNotNull);
+    // The spotlight is the button's own box, not the whole card.
+    expect(box!.size, tester.getSize(find.bySemanticsLabel('Play')));
   });
 
   testWidgets('with nothing to open, Play is disabled', (tester) async {

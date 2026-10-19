@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-16 16:32:59.958620",
+    "@@last_modified": "2026-10-19 14:11:43.101126",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Fini",
     "completedTimes": "Fini {count} fwa",
     "classLocation": "Kote klas la",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Sa a se premye bagay pou w fè nan kou ou. Tape {play} pou kòmanse premye aktivite w la!"
 }

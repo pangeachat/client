@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-16 16:33:10.470840",
+    "@@last_modified": "2026-10-19 14:11:47.736859",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "مڪمل ٿيل",
     "completedTimes": "{count} ڀيرا مڪمل ٿيل",
     "classLocation": "ڪلاس جي جڳھ",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "هي توهان جي ڪورس ۾ ڪرڻ لاءِ پهرين شيءِ آهي. پنهنجي پهرين سرگرمي شروع ڪرڻ لاءِ {play} تي ٽيپ ڪريو!"
 }

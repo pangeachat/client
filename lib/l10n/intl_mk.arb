@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-16 16:33:05.022289",
+    "@@last_modified": "2026-10-19 14:11:45.908929",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Завршено",
     "completedTimes": "Завршено {count} пати",
     "classLocation": "Локација на часот",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Ова е првото нешто што треба да го направите на вашиот курс. Допрете {play} за да ја започнете вашата прва активност!"
 }

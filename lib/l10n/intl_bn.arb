@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:32:53.340392",
+    "@@last_modified": "2026-10-19 14:11:39.669376",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10630,5 +10630,6 @@
     "activityCompleted": "সম্পন্ন হয়েছে",
     "completedTimes": "{count} বার সম্পন্ন হয়েছে",
     "classLocation": "ক্লাসের অবস্থান",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "এটি আপনার কোর্সের প্রথম কাজ। আপনার প্রথম কার্যকলাপ শুরু করতে {play} ট্যাপ করুন!"
 }

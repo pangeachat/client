@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-16 16:32:57.909054",
+    "@@last_modified": "2026-10-19 14:11:42.656559",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Foltôge",
     "completedTimes": "{count} kear foltôge",
     "classLocation": "Lokaasje fan de klasse",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Dit is it earste wat jo yn jo kursus dwaan moatte. Tik op {play} om jo earste aktiviteit te begjinnen!"
 }

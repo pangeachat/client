@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:07.374568",
+    "@@last_modified": "2026-10-19 14:11:46.683744",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10062,5 +10062,6 @@
     "activityCompleted": "Fullført",
     "completedTimes": "Fullført {count} ganger",
     "classLocation": "Klassested",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Dette er det første du skal gjøre i kurset ditt. Trykk på {play} for å starte din første aktivitet!"
 }

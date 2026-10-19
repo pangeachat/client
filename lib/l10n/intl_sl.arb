@@ -1795,7 +1795,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-16 16:33:10.850664",
+    "@@last_modified": "2026-10-19 14:11:48.464346",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10947,5 +10947,6 @@
     "activityCompleted": "Dokončano",
     "completedTimes": "Dokončano {count}-krat",
     "classLocation": "Lokacija razreda",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "To je prva stvar, ki jo morate storiti v svojem tečaju. Tapnite {play} za začetek prve dejavnosti!"
 }

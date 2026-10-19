@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:13.786711",
+    "@@last_modified": "2026-10-19 14:11:49.298843",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10097,5 +10097,6 @@
     "activityCompleted": "முடிந்தது",
     "completedTimes": "{count} முறை முடிந்தது",
     "classLocation": "வகுப்பு இருப்பிடம்",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "இது உங்கள் பாடத்திட்டத்தில் செய்ய வேண்டிய முதல் விஷயம். உங்கள் முதல் செயல்பாட்டைத் தொடங்க {play} என்பதைத் தட்டவும்!"
 }

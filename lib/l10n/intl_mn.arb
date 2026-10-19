@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-16 16:33:07.202456",
+    "@@last_modified": "2026-10-19 14:11:46.489700",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Гүйцэтгэсэн",
     "completedTimes": "{count} удаа гүйцэтгэсэн",
     "classLocation": "Хичээлийн байршил",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Энэ бол таны хичээлд хийх хамгийн эхний зүйл. Эхний дасгалаа эхлүүлэхийн тулд {play} товчийг дарна уу!"
 }

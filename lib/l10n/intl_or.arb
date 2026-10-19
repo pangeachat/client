@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-10-16 16:33:10.552496",
+    "@@last_modified": "2026-10-19 14:11:47.270457",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "ସମାପ୍ତ ହୋଇଛି",
     "completedTimes": "{count} ଥର ସମାପ୍ତ ହୋଇଛି",
     "classLocation": "ଶ୍ରେଣୀ ସ୍ଥାନ",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "ଏହା ଆପଣଙ୍କ ପାଠ୍ୟକ୍ରମରେ କରିବାକୁ ଥିବା ପ୍ରଥମ କାର୍ଯ୍ୟ। ଆପଣଙ୍କର ପ୍ରଥମ କାର୍ଯ୍ୟକଳାପ ଆରମ୍ଭ କରିବାକୁ {play} ଉପରେ ଟ୍ୟାପ୍ କରନ୍ତୁ!"
 }

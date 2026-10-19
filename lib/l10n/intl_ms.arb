@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-16 16:33:06.837637",
+    "@@last_modified": "2026-10-19 14:11:46.124397",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Selesai",
     "completedTimes": "Selesai {count} kali",
     "classLocation": "Lokasi kelas",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Ini adalah perkara pertama yang perlu dilakukan dalam kursus anda. Ketik {play} untuk memulakan aktiviti pertama anda!"
 }

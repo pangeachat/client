@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-16 16:32:59.016142",
+    "@@last_modified": "2026-10-19 14:11:42.664731",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "An kammala",
     "completedTimes": "An kammala sau {count}",
     "classLocation": "Wurin aji",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Wannan shine abu na farko da za'a yi a cikin karatunka. Danna {play} don fara aikin farko!"
 }

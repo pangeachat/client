@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:32:58.959597",
+    "@@last_modified": "2026-10-19 14:11:42.303702",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10916,5 +10916,6 @@
     "activityCompleted": "הושלם",
     "completedTimes": "הושלם {count} פעמים",
     "classLocation": "מיקום השיעור",
-    "xpThresholdSuffix": "/ {threshold} נקודות ניסיון"
+    "xpThresholdSuffix": "/ {threshold} נקודות ניסיון",
+    "tutorialCoursePlanPlay": "זה הדבר הראשון לעשות בקורס שלך. הקש על {play} כדי להתחיל את הפעילות הראשונה שלך!"
 }

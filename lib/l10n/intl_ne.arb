@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-16 16:33:07.103007",
+    "@@last_modified": "2026-10-19 14:11:46.556276",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "पूरा भयो",
     "completedTimes": "{count} पटक पूरा भयो",
     "classLocation": "कक्षाको स्थान",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "यो तपाईंको पाठ्यक्रममा गर्नुपर्ने पहिलो कुरा हो। आफ्नो पहिलो गतिविधि सुरु गर्न {play} ट्याप गर्नुहोस्!"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:00.988411",
+    "@@last_modified": "2026-10-19 14:11:43.470218",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10078,5 +10078,6 @@
     "activityCompleted": "Selesai",
     "completedTimes": "Selesai {count} kali",
     "classLocation": "Lokasi kelas",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Ini hal pertama yang harus dilakukan di kursus Anda. Ketuk {play} untuk memulai aktivitas pertama Anda!"
 }

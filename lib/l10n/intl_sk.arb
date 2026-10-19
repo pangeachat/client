@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-16 16:33:10.872519",
+    "@@last_modified": "2026-10-19 14:11:48.082935",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10947,5 +10947,6 @@
     "activityCompleted": "Dokončené",
     "completedTimes": "Dokončené {count}-krát",
     "classLocation": "Umiestnenie triedy",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Toto je prvá vec, ktorú treba urobiť vo vašom kurze. Klepnite na {play} a začnite svoju prvú aktivitu!"
 }

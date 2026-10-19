@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-16 16:33:01.615392",
+    "@@last_modified": "2026-10-19 14:11:43.816905",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Emechara",
     "completedTimes": "Emechara {count} ugboro",
     "classLocation": "Ebe klasị",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Nke a bụ ihe mbụ ị ga-eme n'ọmụmụ ihe gị. Pịa {play} ka ịmalite ọrụ mbụ gị!"
 }

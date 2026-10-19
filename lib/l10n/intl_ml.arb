@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-16 16:33:06.307640",
+    "@@last_modified": "2026-10-19 14:11:46.192541",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "പൂർത്തിയാക്കി",
     "completedTimes": "{count} തവണ പൂർത്തിയാക്കി",
     "classLocation": "ക്ലാസ് സ്ഥലം",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "നിങ്ങളുടെ കോഴ്സിൽ ആദ്യം ചെയ്യേണ്ടത് ഇതാണ്. നിങ്ങളുടെ ആദ്യ പ്രവർത്തനം ആരംഭിക്കാൻ {play} ടാപ്പ് ചെയ്യുക!"
 }

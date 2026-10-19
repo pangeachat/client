@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-16 16:33:14.914608",
+    "@@last_modified": "2026-10-19 14:11:49.833761",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "تاماملاندى",
     "completedTimes": "{count} قېتىم تاماملىنىدۇ",
     "classLocation": "دەرس ئورنى",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "بۇ سىزنىڭ دەرسىڭىزدە قىلىدىغان تۇنجى ئىش. تۇنجى پائالىيىتىڭىزنى باشلاش ئۈچۈن {play} نى چېكىڭ!"
 }

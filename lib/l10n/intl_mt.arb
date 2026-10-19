@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-16 16:33:07.027608",
+    "@@last_modified": "2026-10-19 14:11:46.157364",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Lest",
     "completedTimes": "Lest {count} darbiet",
     "classLocation": "Post tal-klassi",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Din hija l-ewwel ħaġa li trid tagħmel fil-kors tiegħek. Taptap {play} biex tibda l-ewwel attività tiegħek!"
 }

@@ -47,8 +47,9 @@ class ActivityCardGoal {
 /// **non-localized** structural metadata so the map can rank and show progress
 /// without a full-plan hydration: [roleIds]/[roleCount] (the multi-person
 /// deprioritize, #7435), thin [goals] (per-role progress), [mode], the
-/// [ratingAverage]/[ratingCount], and [originalL1]. The heavy, localized content
-/// (role personas, goal copy, vocab, media) stays off the pin.
+/// [ratingAverage]/[ratingCount], [originalL1], and the row's [starter] flag.
+/// The heavy, localized content (role personas, goal copy, vocab, media) stays
+/// off the pin.
 class QuestActivityCard {
   final String activityId;
   final String title;
@@ -98,6 +99,13 @@ class QuestActivityCard {
   /// The activity's source language of authoring (non-localized).
   final String? originalL1;
 
+  /// Marked a **starter** on its row: the generic two-role A1 meet-and-greet a
+  /// brand-new learner is pointed at first (org activities doc, "Starter
+  /// activities"). Read from the top-level `starter` of both the bbox card and
+  /// the course listing's entry; false when the server does not send it, so
+  /// the steer is inert until the content and server halves ship.
+  final bool starter;
+
   const QuestActivityCard({
     required this.activityId,
     required this.title,
@@ -114,6 +122,7 @@ class QuestActivityCard {
     this.ratingAverage,
     this.ratingCount,
     this.originalL1,
+    this.starter = false,
   });
 
   /// True when [query] matches the activity's searchable text (title +
@@ -182,6 +191,7 @@ class QuestActivityCard {
       // and the card shows), so a course-scoped pin can dim when the course
       // lacks enough members to start it. Null when roles weren't projected.
       roleCount: rolesJson?.length,
+      starter: json['starter'] == true,
     );
   }
 
@@ -221,6 +231,7 @@ class QuestActivityCard {
       ratingAverage: (json['rating_average'] as num?)?.toDouble(),
       ratingCount: json['rating_count'] as int?,
       originalL1: json['original_l1'] as String?,
+      starter: json['starter'] == true,
     );
   }
 }

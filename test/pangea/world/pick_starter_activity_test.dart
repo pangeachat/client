@@ -17,6 +17,7 @@ void main() {
     String? cefr,
     bool placed = true,
     int? roleCount = 2,
+    bool starter = false,
   }) => QuestActivityCard(
     activityId: id,
     title: id,
@@ -25,6 +26,7 @@ void main() {
     roleCount: roleCount,
     coordinates: placed ? const [10.0, 20.0] : null,
     learningObjectiveRefs: const [],
+    starter: starter,
   );
 
   ActivityPinState Function(QuestActivityCard) states(
@@ -135,6 +137,69 @@ void main() {
         )?.activityId,
         'y',
       );
+    });
+  });
+
+  // Content marked as a starter is made for this step (org activities doc,
+  // "Starter activities"), so it wins over the blunt level rule — which, with
+  // no starter in view, still decides exactly as before (#9561).
+  group('pickStarterActivity — a starter pin wins first', () {
+    test('a starter beats a lower-level, available non-starter', () {
+      final chosen = pickStarterActivity(
+        candidates: [
+          card('easy', cefr: 'A1'),
+          card('starter', cefr: 'A2', starter: true),
+        ],
+        stateOf: states(const {}),
+      );
+      expect(chosen?.activityId, 'starter');
+    });
+
+    test('a starter wins whatever its state — a live session of it still '
+        'points at the right activity', () {
+      final chosen = pickStarterActivity(
+        candidates: [
+          card('fresh', cefr: 'A1'),
+          card('starter', cefr: 'A1', starter: true),
+        ],
+        stateOf: states(const {'starter': ActivityPinState.joinable}),
+      );
+      expect(chosen?.activityId, 'starter');
+    });
+
+    test('with no starter in view the level rule decides, as before', () {
+      final chosen = pickStarterActivity(
+        candidates: [
+          card('b1', cefr: 'B1'),
+          card('a1', cefr: 'A1'),
+        ],
+        stateOf: states(const {}),
+      );
+      expect(chosen?.activityId, 'a1');
+    });
+
+    test('the two-role gate and placement still apply to a starter', () {
+      final chosen = pickStarterActivity(
+        candidates: [
+          card('crowded', cefr: 'A1', roleCount: 3, starter: true),
+          card('unplaced', cefr: 'A1', placed: false, starter: true),
+          card('plain', cefr: 'B2'),
+        ],
+        stateOf: states(const {}),
+      );
+      expect(chosen?.activityId, 'plain');
+    });
+
+    test('among starters, state then level then input order break ties', () {
+      final chosen = pickStarterActivity(
+        candidates: [
+          card('live-a1', cefr: 'A1', starter: true),
+          card('open-b1', cefr: 'B1', starter: true),
+          card('open-a2', cefr: 'A2', starter: true),
+        ],
+        stateOf: states(const {'live-a1': ActivityPinState.ongoingActive}),
+      );
+      expect(chosen?.activityId, 'open-a2');
     });
   });
 
