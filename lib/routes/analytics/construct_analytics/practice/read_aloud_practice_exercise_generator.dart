@@ -1,8 +1,14 @@
 import 'dart:async';
+import 'dart:math';
+
+import 'package:flutter/material.dart';
 
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/read_aloud_match.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_audio_practice_exercise_generator.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_meaning_practice_exercise_generator.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart';
@@ -46,7 +52,68 @@ class ReadAloudPracticeExerciseGenerator {
         VocabAudioPracticeExerciseGenerator.asMeaningRequest(req),
       );
     }
-    return MessagePracticeExerciseResponse(exercise: exercise);
+    return MessagePracticeExerciseResponse(
+      exercise: trimToWindow(
+        exercise,
+        maxWords: AnalyticsPracticeConstants.readAloudMaxWords,
+      ),
+    );
+  }
+
+  /// At most [maxWords] words of the example around the target, with an
+  /// ellipsis where the sentence was cut: a long message is a chore to read
+  /// aloud, and the target is the point. Punctuation glued to the last word
+  /// stays with it, so a sentence that ends inside the window keeps its stop.
+  @visibleForTesting
+  static ReadAloudPracticeExerciseModel trimToWindow(
+    ReadAloudPracticeExerciseModel exercise, {
+    required int maxWords,
+  }) {
+    final words = exercise.referenceTokens;
+    final target = exercise.targetIndex;
+    if (words.length <= maxWords || target == -1) return exercise;
+
+    var start = max(0, target - (maxWords - 1) ~/ 2);
+    final end = min(words.length, start + maxWords);
+    start = max(0, end - maxWords);
+
+    final tokens = exercise.exampleTokens;
+    final firstIndex = tokens.indexWhere((t) => identical(t, words[start]));
+    var lastIndex = tokens.indexWhere((t) => identical(t, words[end - 1]));
+    while (lastIndex + 1 < tokens.length) {
+      final last = tokens[lastIndex].text;
+      final next = tokens[lastIndex + 1].text;
+      final glued =
+          next.offset == last.offset + last.content.characters.length &&
+          !isSpokenWord(next.content);
+      if (!glued) break;
+      lastIndex++;
+    }
+    final window = tokens.sublist(firstIndex, lastIndex + 1);
+
+    final chars = exercise.referenceText.characters.toList();
+    final base = tokens.first.text.offset;
+    final from = (window.first.text.offset - base).clamp(0, chars.length);
+    final to =
+        (window.last.text.offset +
+                window.last.text.content.characters.length -
+                base)
+            .clamp(0, chars.length);
+
+    return ReadAloudPracticeExerciseModel(
+      targetLemma: exercise.tokens.first.lemma.text,
+      exampleTokens: window,
+      langCode: exercise.langCode,
+      roomId: exercise.roomId,
+      eventId: exercise.eventId,
+      exampleMessage: ExampleMessageInfo(
+        exampleMessage: [
+          if (start > 0) const TextSpan(text: '… '),
+          TextSpan(text: chars.sublist(from, to).join()),
+          if (end < words.length) const TextSpan(text: '…'),
+        ],
+      ),
+    );
   }
 
   /// The swap is a degradation the session hides, since the learner just sees
