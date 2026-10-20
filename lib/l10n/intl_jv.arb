@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Mlebu utawa ndaftar, lan kita bakal nggunakake kode kursusmu kanggo nambahake sampeyan menyang kursus kanthi otomatis.",
     "courseCodeLabel": "Kode kursus",
     "courseCodeSaved": "Kode kursus {code} wis disimpen",
-    "courseCodeSavedExplanation": "Ndaftar utawa mlebu lan kita bakal nambahake sampeyan menyang kursus."
+    "courseCodeSavedExplanation": "Ndaftar utawa mlebu lan kita bakal nambahake sampeyan menyang kursus.",
+    "missionDueDate": "Kudu rampung {date}, {time}"
 }

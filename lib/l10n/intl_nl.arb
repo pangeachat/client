@@ -9981,5 +9981,6 @@
     "courseCodeJoinExplanation": "Log in of meld je aan, en we gebruiken je cursuscode om je automatisch aan je cursus toe te voegen.",
     "courseCodeLabel": "Cursuscode",
     "courseCodeSaved": "Cursuscode {code} opgeslagen",
-    "courseCodeSavedExplanation": "Meld je aan of log in en we voegen je toe aan je cursus."
+    "courseCodeSavedExplanation": "Meld je aan of log in en we voegen je toe aan je cursus.",
+    "missionDueDate": "Verloopt op {date}, {time}"
 }

@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Meld dy oan of registrearje dy, en wy sille dyn kursuskoade brûke om dy automatysk oan dyn kursus ta te foegjen.",
     "courseCodeLabel": "Kursuskoade",
     "courseCodeSaved": "Kursuskoade {code} bewarre",
-    "courseCodeSavedExplanation": "Meld dy oan of registrearje dy en wy sille dy tafoegje oan dyn kursus."
+    "courseCodeSavedExplanation": "Meld dy oan of registrearje dy en wy sille dy tafoegje oan dyn kursus.",
+    "missionDueDate": "Ferfaldatum {date}, {time}"
 }

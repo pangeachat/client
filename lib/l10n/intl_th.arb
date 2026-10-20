@@ -10613,5 +10613,6 @@
     "courseCodeJoinExplanation": "เข้าสู่ระบบหรือลงทะเบียน แล้วเราจะใช้รหัสคอร์สของคุณเพื่อเพิ่มคุณเข้าสู่คอร์สโดยอัตโนมัติ",
     "courseCodeLabel": "รหัสคอร์ส",
     "courseCodeSaved": "บันทึกรหัสคอร์ส {code} แล้ว",
-    "courseCodeSavedExplanation": "ลงทะเบียนหรือเข้าสู่ระบบ แล้วเราจะเพิ่มคุณเข้าสู่คอร์ส"
+    "courseCodeSavedExplanation": "ลงทะเบียนหรือเข้าสู่ระบบ แล้วเราจะเพิ่มคุณเข้าสู่คอร์ส",
+    "missionDueDate": "ครบกำหนด {date}, {time}"
 }

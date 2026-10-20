@@ -10417,5 +10417,6 @@
     "courseCodeJoinExplanation": "Prijavite se ili registrirajte, a mi ćemo upotrijebiti vaš kod tečaja kako bismo vas automatski dodali na vaš tečaj.",
     "courseCodeLabel": "Kod tečaja",
     "courseCodeSaved": "Kod tečaja {code} spremljen",
-    "courseCodeSavedExplanation": "Registrirajte se ili prijavite i dodat ćemo vas na vaš tečaj."
+    "courseCodeSavedExplanation": "Registrirajte se ili prijavite i dodat ćemo vas na vaš tečaj.",
+    "missionDueDate": "Rok: {date}, {time}"
 }

@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "بچۆ ژوورەوە یان خۆت تۆمار بکە، و ئێمە کۆدی خولەکەت بەکاردەهێنین بۆ ئەوەی بە شێوەیەکی خۆکارانە زیادتبکەین بۆ خولەکەت.",
     "courseCodeLabel": "کۆدی خول",
     "courseCodeSaved": "کۆدی خول {code} پاشەکەوت کرا",
-    "courseCodeSavedExplanation": "خۆت تۆمار بکە یان بچۆ ژوورەوە و ئێمە زیادتبکەین بۆ خولەکەت."
+    "courseCodeSavedExplanation": "خۆت تۆمار بکە یان بچۆ ژوورەوە و ئێمە زیادتبکەین بۆ خولەکەت.",
+    "missionDueDate": "کاتی دیاریکراو {date}, {time}"
 }

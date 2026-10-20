@@ -10881,5 +10881,6 @@
     "courseCodeJoinExplanation": "შედი ან დარეგისტრირდი და ჩვენ გამოვიყენებთ შენს კურსის კოდს, რათა ავტომატურად დაგამატოთ კურსზე.",
     "courseCodeLabel": "კურსის კოდი",
     "courseCodeSaved": "კურსის კოდი {code} შენახულია",
-    "courseCodeSavedExplanation": "დარეგისტრირდი ან შედით სისტემაში და ჩვენ დაგამატებთ თქვენს კურსზე."
+    "courseCodeSavedExplanation": "დარეგისტრირდი ან შედით სისტემაში და ჩვენ დაგამატებთ თქვენს კურსზე.",
+    "missionDueDate": "ვადა {date}, {time}"
 }

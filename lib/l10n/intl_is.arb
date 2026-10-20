@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Skráðu þig inn eða stofnaðu aðgang og við munum nota námskeiðskóðann þinn til að bæta þér sjálfkrafa við námskeiðið þitt.",
     "courseCodeLabel": "Námskeiðskóði",
     "courseCodeSaved": "Námskeiðskóði {code} vistaður",
-    "courseCodeSavedExplanation": "Skráðu þig eða skráðu þig inn og við munum bæta þér við námskeiðið þitt."
+    "courseCodeSavedExplanation": "Skráðu þig eða skráðu þig inn og við munum bæta þér við námskeiðið þitt.",
+    "missionDueDate": "Skilafrestur {date}, {time}"
 }

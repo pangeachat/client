@@ -9978,5 +9978,6 @@
     "courseCodeJoinExplanation": "Logi sisse või registreeru ja me kasutame sinu kursuse koodi, et sind automaatselt kursusele lisada.",
     "courseCodeLabel": "Kursuse kood",
     "courseCodeSaved": "Kursuse kood {code} salvestatud",
-    "courseCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind kursusele."
+    "courseCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind kursusele.",
+    "missionDueDate": "Tähtaeg {date}, {time}"
 }

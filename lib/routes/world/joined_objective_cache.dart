@@ -1,5 +1,6 @@
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
@@ -185,6 +186,10 @@ class JoinedObjectiveCache {
     final modes = <String, TeacherModeModel>{
       for (final room in client.joinedCourseRooms) room.id: room.teacherMode,
     };
+    final rules = <String, CourseListRules>{
+      for (final room in client.joinedCourseRooms)
+        room.id: room.courseListRules,
+    };
     return rebuild(
       questIdByRoom.keys.toList(),
       // A joined member's outline read carries the course room id, so the
@@ -193,7 +198,7 @@ class JoinedObjectiveCache {
       // removal).
       outlineOf: (roomId) => _outlineFromQuest(
         questIdByRoom[roomId]!,
-        pinnedByObjective: modes[roomId]?.pinnedActivitiesByObjective,
+        rules: rules[roomId] ?? CourseListRules.none,
         courseRoomId: roomId,
       ),
       starsToUnlockOf: (roomId) =>
@@ -207,7 +212,7 @@ class JoinedObjectiveCache {
 
   static Future<CourseLoOutline> _outlineFromQuest(
     String uuid, {
-    Map<String, List<String>>? pinnedByObjective,
+    required CourseListRules rules,
     String? courseRoomId,
   }) async {
     final outlineResult = await QuestRepo.outline(
@@ -218,6 +223,6 @@ class JoinedObjectiveCache {
     if (outline == null) {
       throw (outlineResult.error ?? MissingQuestException());
     }
-    return outline.restrictedTo(pinnedByObjective).toCourseLoOutline();
+    return outline.forRules(rules).toCourseLoOutline();
   }
 }

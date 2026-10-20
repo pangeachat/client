@@ -10901,5 +10901,6 @@
     "courseCodeJoinExplanation": "Log ind eller tilmeld dig, så bruger vi din kursuskode til automatisk at tilføje dig til dit kursus.",
     "courseCodeLabel": "Kursuskode",
     "courseCodeSaved": "Kursuskode {code} gemt",
-    "courseCodeSavedExplanation": "Tilmeld dig eller log ind, så tilføjer vi dig til dit kursus."
+    "courseCodeSavedExplanation": "Tilmeld dig eller log ind, så tilføjer vi dig til dit kursus.",
+    "missionDueDate": "Forfalder {date}, {time}"
 }

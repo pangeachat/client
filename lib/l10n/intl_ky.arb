@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Кириңиз же катталыңыз, биз сиздин курс кодуңузду колдонуп, сизди курсуңузга автоматтык түрдө кошо алабыз.",
     "courseCodeLabel": "Курс коду",
     "courseCodeSaved": "{code} курс коду сакталды",
-    "courseCodeSavedExplanation": "Катталыңыз же кириңиз, биз сизди курсуңузга кошо алабыз."
+    "courseCodeSavedExplanation": "Катталыңыз же кириңиз, биз сизди курсуңузга кошо алабыз.",
+    "missionDueDate": "{date}, {time} чейин"
 }

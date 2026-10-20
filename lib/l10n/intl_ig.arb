@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Banye ma ọ bụ debanye aha, anyị ga-eji koodu nkuzi gị tinye gị na nkuzi gị na-akpaghị aka.",
     "courseCodeLabel": "Koodu nkuzi",
     "courseCodeSaved": "Echekwara koodu nkuzi {code}",
-    "courseCodeSavedExplanation": "Debanye aha ma ọ bụ banye ma anyị ga-etinye gị na nkuzi gị."
+    "courseCodeSavedExplanation": "Debanye aha ma ọ bụ banye ma anyị ga-etinye gị na nkuzi gị.",
+    "missionDueDate": "Oge ruru {date}, {time}"
 }

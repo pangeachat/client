@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "ይግቡ ወይም ይመዝገቡ፣ እና ኮርስ ኮድዎን ተጠቅመን በራስ-ሰር ወደ ኮርስዎ እናስገባዎታለን።",
     "courseCodeLabel": "የኮርስ ኮድ",
     "courseCodeSaved": "የኮርስ ኮድ {code} ተቀምጧል",
-    "courseCodeSavedExplanation": "ይመዝገቡ ወይም ይግቡ እና ወደ ኮርስዎ እናስገባዎታለን።"
+    "courseCodeSavedExplanation": "ይመዝገቡ ወይም ይግቡ እና ወደ ኮርስዎ እናስገባዎታለን።",
+    "missionDueDate": "የሚጠናቀቅበት ቀን {date}, {time}"
 }

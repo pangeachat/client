@@ -10066,5 +10066,6 @@
     "courseCodeJoinExplanation": "Zaloguj się lub zarejestruj, a my użyjemy Twojego kodu kursu, aby automatycznie dodać Cię do kursu.",
     "courseCodeLabel": "Kod kursu",
     "courseCodeSaved": "Kod kursu {code} zapisany",
-    "courseCodeSavedExplanation": "Zarejestruj się lub zaloguj, a my dodamy Cię do kursu."
+    "courseCodeSavedExplanation": "Zarejestruj się lub zaloguj, a my dodamy Cię do kursu.",
+    "missionDueDate": "Termin: {date}, {time}"
 }

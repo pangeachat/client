@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Meld aan of registreer, en ons sal jou kursuskode gebruik om jou outomaties by jou kursus te voeg.",
     "courseCodeLabel": "Kursuskode",
     "courseCodeSaved": "Kursuskode {code} gestoor",
-    "courseCodeSavedExplanation": "Registreer of meld aan en ons sal jou by jou kursus voeg."
+    "courseCodeSavedExplanation": "Registreer of meld aan en ons sal jou by jou kursus voeg.",
+    "missionDueDate": "Verval {date}, {time}"
 }

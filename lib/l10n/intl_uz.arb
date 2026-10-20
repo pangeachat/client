@@ -9985,5 +9985,6 @@
     "courseCodeJoinExplanation": "Tizimga kiring yoki roʻyxatdan oʻting, biz sizning kurs kodingizdan avtomatik ravishda kursingizga qoʻshish uchun foydalanamiz.",
     "courseCodeLabel": "Kurs kodi",
     "courseCodeSaved": "Kurs kodi {code} saqlandi",
-    "courseCodeSavedExplanation": "Roʻyxatdan oʻting yoki tizimga kiring va biz sizni kursingizga qoʻshamiz."
+    "courseCodeSavedExplanation": "Roʻyxatdan oʻting yoki tizimga kiring va biz sizni kursingizga qoʻshamiz.",
+    "missionDueDate": "{date}, {time} da tugaydi"
 }

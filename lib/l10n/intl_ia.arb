@@ -10917,5 +10917,6 @@
     "courseCodeJoinExplanation": "Aperir session o registrar se, e nos usara tu codice de curso pro adder te a tu curso automaticamente.",
     "courseCodeLabel": "Codice de curso",
     "courseCodeSaved": "Codice de curso {code} salvate",
-    "courseCodeSavedExplanation": "Registra te o aperi session e nos te addera a tu curso."
+    "courseCodeSavedExplanation": "Registra te o aperi session e nos te addera a tu curso.",
+    "missionDueDate": "Debite {date}, {time}"
 }

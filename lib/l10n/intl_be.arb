@@ -9995,5 +9995,6 @@
     "courseCodeJoinExplanation": "Увайдзіце або зарэгіструйцеся, і мы выкарыстаем ваш код курса, каб аўтаматычна дадаць вас да яго.",
     "courseCodeLabel": "Код курса",
     "courseCodeSaved": "Код курса {code} захаваны",
-    "courseCodeSavedExplanation": "Зарэгіструйцеся або ўвайдзіце, і мы дададзім вас да вашага курса."
+    "courseCodeSavedExplanation": "Зарэгіструйцеся або ўвайдзіце, і мы дададзім вас да вашага курса.",
+    "missionDueDate": "Тэрмін {date}, {time}"
 }

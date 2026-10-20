@@ -10084,5 +10084,6 @@
     "courseCodeJoinExplanation": "Jelentkezz be vagy regisztrálj, és a kurzuskódod segítségével automatikusan hozzáadunk a kurzushoz.",
     "courseCodeLabel": "Kurzuskód",
     "courseCodeSaved": "A(z) {code} kurzuskód elmentve",
-    "courseCodeSavedExplanation": "Regisztrálj vagy jelentkezz be, és hozzáadunk a kurzusodhoz."
+    "courseCodeSavedExplanation": "Regisztrálj vagy jelentkezz be, és hozzáadunk a kurzusodhoz.",
+    "missionDueDate": "Esedékes: {date}, {time}"
 }

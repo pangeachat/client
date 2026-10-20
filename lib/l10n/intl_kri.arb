@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Lɔg in ɔ sayn ap, ɛn wi go yuz yu kɔs kod fɔ ad yu to yu kɔs ɔtɔmatikali.",
     "courseCodeLabel": "Kɔs kod",
     "courseCodeSaved": "Kɔs kod {code} dɔn sev",
-    "courseCodeSavedExplanation": "Sayn ap ɔ lɔg in ɛn wi go ad yu to yu kɔs."
+    "courseCodeSavedExplanation": "Sayn ap ɔ lɔg in ɛn wi go ad yu to yu kɔs.",
+    "missionDueDate": "Fɔ du {date}, {time}"
 }

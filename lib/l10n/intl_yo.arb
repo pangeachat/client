@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Wọlé tàbí forúkọ sílẹ̀, a ó sì lo koodu ikẹkọọ rẹ láti fi kún ọ sí ikẹkọọ rẹ lára-ẹni.",
     "courseCodeLabel": "Koodu ikẹkọọ",
     "courseCodeSaved": "Koodu ikẹkọọ {code} ti wà ní ìpamọ́",
-    "courseCodeSavedExplanation": "Forúkọ sílẹ̀ tàbí wọlé, a ó sì fi kún ọ sí ikẹkọọ rẹ."
+    "courseCodeSavedExplanation": "Forúkọ sílẹ̀ tàbí wọlé, a ó sì fi kún ọ sí ikẹkọọ rẹ.",
+    "missionDueDate": "Nitori {date}, {time}"
 }

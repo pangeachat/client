@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Takiuru, rēhita rānei, ā, mā tō waehere akoranga koe e tāpiri aunoa ki tō akoranga.",
     "courseCodeLabel": "Waehere akoranga",
     "courseCodeSaved": "Kua tiakina te waehere akoranga {code}",
-    "courseCodeSavedExplanation": "Rēhita, takiuru rānei, ā, mā mātou koe e tāpiri ki tō akoranga."
+    "courseCodeSavedExplanation": "Rēhita, takiuru rānei, ā, mā mātou koe e tāpiri ki tō akoranga.",
+    "missionDueDate": "Me oti i te {date}, {time}"
 }

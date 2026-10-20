@@ -10750,5 +10750,6 @@
     "courseCodeJoinExplanation": "ログインまたはサインアップすると、コースコードを使用してコースに自動的に追加されます。",
     "courseCodeLabel": "コースコード",
     "courseCodeSaved": "コースコード {code} が保存されました",
-    "courseCodeSavedExplanation": "サインアップまたはログインすると、コースに追加されます。"
+    "courseCodeSavedExplanation": "サインアップまたはログインすると、コースに追加されます。",
+    "missionDueDate": "{date} {time} 期限"
 }

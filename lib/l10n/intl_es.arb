@@ -8200,5 +8200,6 @@
     "courseCodeJoinExplanation": "Inicia sesión o regístrate, y usaremos tu código de curso para añadirte automáticamente a tu curso.",
     "courseCodeLabel": "Código de curso",
     "courseCodeSaved": "Código de curso {code} guardado",
-    "courseCodeSavedExplanation": "Regístrate o inicia sesión y te añadiremos a tu curso."
+    "courseCodeSavedExplanation": "Regístrate o inicia sesión y te añadiremos a tu curso.",
+    "missionDueDate": "Vence el {date} a las {time}"
 }

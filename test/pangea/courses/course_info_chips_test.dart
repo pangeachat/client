@@ -27,6 +27,7 @@ import 'package:fluffychat/routes/courses/course_members_chip.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../get_test_client.dart';
+import 'course_missions_fixtures.dart';
 
 /// Skips `initMatrix()` — the chips only want a client to resolve the course
 /// room's activity pin off.
@@ -244,6 +245,56 @@ void main() {
     // count that matches neither the Mission count (2) nor the unpinned
     // activity count (5).
     expect(find.text('4 activities'), findsOneWidget);
+  });
+
+  testWidgets("the course's own copy sets the count, not its pins", (
+    tester,
+  ) async {
+    seedCourseRoom({
+      'lo-1': ['a'],
+    });
+    final room = client.getRoomById(spaceId)!;
+    putPowerLevels(room);
+    putCopy(room, {
+      'lo-2': ['d', 'e'],
+      'lo-1': ['a', 'b', 'gone'],
+    });
+    await pumpChips(
+      tester,
+      outline([
+        group('lo-1', ['a', 'b', 'c']),
+        group('lo-2', ['d', 'e']),
+      ]),
+      courseRoomId: spaceId,
+    );
+
+    // The copy: a+b under lo-1 ("gone" drops) and d+e under lo-2 = 4 —
+    // neither the pinned count (3) nor the unrestricted one (5).
+    expect(find.text('4 activities'), findsOneWidget);
+  });
+
+  testWidgets("a non-admin's copy is ignored: the pins still count", (
+    tester,
+  ) async {
+    seedCourseRoom({
+      'lo-1': ['a'],
+    });
+    final room = client.getRoomById(spaceId)!;
+    putPowerLevels(room);
+    putCopy(room, {
+      'lo-2': ['d'],
+    }, sender: kStudent);
+    // A valid copy would count 1; the pin counts 1 + 2.
+    await pumpChips(
+      tester,
+      outline([
+        group('lo-1', ['a', 'b', 'c']),
+        group('lo-2', ['d', 'e']),
+      ]),
+      courseRoomId: spaceId,
+    );
+
+    expect(find.text('3 activities'), findsOneWidget);
   });
 
   testWidgets('a preview with no course room counts what the quest holds', (

@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "كىرىڭ ياكى تىزىملىتىڭ، بىز سىزنىڭ كۇرس كودىڭىزنى ئىشلىتىپ سىزنى ئاپتوماتىك ھالدا كۇرسىڭىزغا قوشىمىز.",
     "courseCodeLabel": "كۇرس كودى",
     "courseCodeSaved": "كۇرس كودى {code} ساقلاندى",
-    "courseCodeSavedExplanation": "تىزىملىتىڭ ياكى كىرىڭ، بىز سىزنى كۇرسىڭىزغا قوشىمىز."
+    "courseCodeSavedExplanation": "تىزىملىتىڭ ياكى كىرىڭ، بىز سىزنى كۇرسىڭىزغا قوشىمىز.",
+    "missionDueDate": "{date}, {time} غا قەدەر"
 }

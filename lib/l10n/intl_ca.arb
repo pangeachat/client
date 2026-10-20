@@ -10108,5 +10108,6 @@
     "courseCodeJoinExplanation": "Inicia sessió o registra't, i utilitzarem el teu codi de curs per afegir-te al teu curs automàticament.",
     "courseCodeLabel": "Codi de curs",
     "courseCodeSaved": "Codi de curs {code} desat",
-    "courseCodeSavedExplanation": "Registra't o inicia sessió i t'afegirem al teu curs."
+    "courseCodeSavedExplanation": "Registra't o inicia sessió i t'afegirem al teu curs.",
+    "missionDueDate": "Data de venciment: {date}, {time}"
 }

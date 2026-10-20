@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Lowani kapena lembetsani, ndipo tidzagwiritsa ntchito nambala yanu ya kosi kuti tikulowetseni mu kosi yanu zokha.",
     "courseCodeLabel": "Nambala ya kosi",
     "courseCodeSaved": "Nambala ya kosi {code} yasungidwa",
-    "courseCodeSavedExplanation": "Lembetsani kapena lowani ndipo tidzakulowetsani mu kosi yanu."
+    "courseCodeSavedExplanation": "Lembetsani kapena lowani ndipo tidzakulowetsani mu kosi yanu.",
+    "missionDueDate": "Chifukwa {date}, {time}"
 }

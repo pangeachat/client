@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "Idħol jew irreġistra, u aħna nużaw il-kodiċi tal-kors tiegħek biex inżiduk mal-kors tiegħek awtomatikament.",
     "courseCodeLabel": "Kodiċi tal-kors",
     "courseCodeSaved": "Kodiċi tal-kors {code} salvat",
-    "courseCodeSavedExplanation": "Irreġistra jew idħol u aħna nżiduk mal-kors tiegħek."
+    "courseCodeSavedExplanation": "Irreġistra jew idħol u aħna nżiduk mal-kors tiegħek.",
+    "missionDueDate": "Skadenza {date}, {time}"
 }

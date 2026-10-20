@@ -10841,5 +10841,6 @@
     "courseCodeJoinExplanation": "Mag-log in o mag-sign up, at gagamitin namin ang iyong course code para awtomatiko kang maidagdag sa iyong kurso.",
     "courseCodeLabel": "Course code",
     "courseCodeSaved": "Na-save ang course code na {code}",
-    "courseCodeSavedExplanation": "Mag-sign up o mag-log in at idadagdag ka namin sa iyong kurso."
+    "courseCodeSavedExplanation": "Mag-sign up o mag-log in at idadagdag ka namin sa iyong kurso.",
+    "missionDueDate": "Takdang petsa {date}, {time}"
 }

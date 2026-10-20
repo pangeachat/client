@@ -43,6 +43,19 @@ class QuestPlan {
     this.ownerId,
   });
 
+  /// This quest with [sequence] replaced — how a course's own copy reorders
+  /// and restricts its Missions without touching the shared quest.
+  QuestPlan withSequence(List<QuestObjectiveStep> sequence) => QuestPlan(
+    id: id,
+    name: name,
+    description: description,
+    targetLanguage: targetLanguage,
+    targetL1: targetL1,
+    targetCefr: targetCefr,
+    sequence: sequence,
+    ownerId: ownerId,
+  );
+
   List<String> get learningObjectiveIds =>
       sequence.map((step) => step.objective.id).toList();
 

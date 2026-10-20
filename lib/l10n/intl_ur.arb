@@ -2389,5 +2389,6 @@
     "courseCodeJoinExplanation": "لاگ ان کریں یا سائن اپ کریں، اور ہم آپ کو آپ کے کورس کوڈ کا استعمال کرتے ہوئے خود بخود آپ کے کورس میں شامل کر دیں گے۔",
     "courseCodeLabel": "کورس کوڈ",
     "courseCodeSaved": "کورس کوڈ {code} محفوظ ہو گیا",
-    "courseCodeSavedExplanation": "سائن اپ کریں یا لاگ ان کریں اور ہم آپ کو آپ کے کورس میں شامل کر دیں گے۔"
+    "courseCodeSavedExplanation": "سائن اپ کریں یا لاگ ان کریں اور ہم آپ کو آپ کے کورس میں شامل کر دیں گے۔",
+    "missionDueDate": "{date}، {time} کو واجب الادا"
 }
