@@ -368,6 +368,14 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
             ),
           ),
         ),
+        // Discards the recording in progress and begins a fresh one, without
+        // spending a take.
+        if (recording)
+          TextButton.icon(
+            onPressed: _recorder.restart,
+            icon: const Icon(Icons.replay),
+            label: Text(l10n.readAloudStartOver),
+          ),
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: SizedBox(

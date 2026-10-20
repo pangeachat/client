@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-20 12:56:39.656719",
+    "@@last_modified": "2026-10-20 15:00:23.267269",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "ඔබගේ පටිගත කිරීම පිටපත් කිරීමට නොහැකි විය. ඔබගේ සම්බන්ධතාවය පරීක්ෂා කර නැවත උත්සාහ කරන්න.",
     "readAloudMicUnavailable": "මයික්‍රෆෝනයක් නොමැති නිසා, මෙම වචනය වෙනුවට අර්ථය පිළිබඳ අභ්‍යාසයකි.",
     "readAloudYourRecording": "ඔබගේ පටිගත කිරීම",
-    "readAloudExample": "උදාහරණය"
+    "readAloudExample": "උදාහරණය",
+    "readAloudStartOver": "නැවත අරඹන්න"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-20 12:56:43.746934",
+    "@@last_modified": "2026-10-20 15:00:20.695519",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "Konnt deng Opnam net transkribéieren. Kontrolléier deng Verbindung a probéier et nach eng Kéier.",
     "readAloudMicUnavailable": "Kee Mikro ass disponibel, dofir ass dëst Wuert amplaz eng Bedeitungsübung.",
     "readAloudYourRecording": "Deng Opnam",
-    "readAloudExample": "Beispill"
+    "readAloudExample": "Beispill",
+    "readAloudStartOver": "Nei ufänken"
 }

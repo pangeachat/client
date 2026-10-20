@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 12:56:18.680748",
+    "@@last_modified": "2026-10-20 15:00:16.366183",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10646,5 +10646,6 @@
     "readAloudTranscribeFailed": "আপনার রেকর্ডিং প্রতিলিপি করা যায়নি। আপনার সংযোগ পরীক্ষা করুন এবং আবার চেষ্টা করুন।",
     "readAloudMicUnavailable": "কোনো মাইক্রোফোন উপলব্ধ নেই, তাই এই শব্দটি একটি অর্থ অনুশীলন হিসাবে ব্যবহৃত হবে।",
     "readAloudYourRecording": "আপনার রেকর্ডিং",
-    "readAloudExample": "উদাহরণ"
+    "readAloudExample": "উদাহরণ",
+    "readAloudStartOver": "আবার শুরু করুন"
 }

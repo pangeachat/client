@@ -2073,7 +2073,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-20 12:56:09.749631",
+    "@@last_modified": "2026-10-20 15:00:18.089654",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10878,5 +10878,6 @@
     "readAloudTranscribeFailed": "Hindi ma-transcribe ang iyong recording. Tingnan ang iyong koneksyon at subukang muli.",
     "readAloudMicUnavailable": "Walang available na mikropono, kaya ang salitang ito ay isang pagsasanay sa kahulugan sa halip.",
     "readAloudYourRecording": "Ang iyong recording",
-    "readAloudExample": "Halimbawa"
+    "readAloudExample": "Halimbawa",
+    "readAloudStartOver": "Magsimula muli"
 }

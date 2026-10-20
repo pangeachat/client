@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-20 12:56:50.483929",
+    "@@last_modified": "2026-10-20 15:00:23.203000",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "توهان جي رڪارڊنگ کي ٽرانسڪرائب نه ٿي سگهيو. پنهنجو ڪنيڪشن چيڪ ڪريو ۽ ٻيهر ڪوشش ڪريو.",
     "readAloudMicUnavailable": "ڪو به مائڪروفون موجود ناهي، تنهنڪري هي لفظ معنيٰ جي مشق آهي.",
     "readAloudYourRecording": "توهان جي رڪارڊنگ",
-    "readAloudExample": "مثال"
+    "readAloudExample": "مثال",
+    "readAloudStartOver": "ٻيهر شروع ڪريو"
 }

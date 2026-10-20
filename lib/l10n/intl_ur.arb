@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-20 12:56:53.059588",
+    "@@last_modified": "2026-10-20 15:00:24.977951",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "آپ کی ریکارڈنگ کو ٹرانسکرائب نہیں کر سکے۔ اپنا کنکشن چیک کریں اور دوبارہ کوشش کریں۔",
     "readAloudMicUnavailable": "کوئی مائیکروفون دستیاب نہیں ہے، لہذا یہ لفظ معنی کی مشق ہے۔",
     "readAloudYourRecording": "آپ کی ریکارڈنگ",
-    "readAloudExample": "مثال"
+    "readAloudExample": "مثال",
+    "readAloudStartOver": "دوبارہ شروع کریں"
 }

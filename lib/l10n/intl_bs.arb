@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-20 12:56:03.612002",
+    "@@last_modified": "2026-10-20 15:00:16.561106",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "Nije moguće transkribovati vaš snimak. Provjerite vezu i pokušajte ponovo.",
     "readAloudMicUnavailable": "Mikrofon nije dostupan, pa je ova riječ umjesto toga vježba značenja.",
     "readAloudYourRecording": "Vaš snimak",
-    "readAloudExample": "Primjer"
+    "readAloudExample": "Primjer",
+    "readAloudStartOver": "Počni ponovo"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 12:56:51.021267",
+    "@@last_modified": "2026-10-20 15:00:23.156202",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10750,5 +10750,6 @@
     "readAloudTranscribeFailed": "Nu s-a putut transcrie înregistrarea. Verifică-ți conexiunea și încearcă din nou.",
     "readAloudMicUnavailable": "Niciun microfon nu este disponibil, așa că acest cuvânt este un exercițiu de înțeles în schimb.",
     "readAloudYourRecording": "Înregistrarea ta",
-    "readAloudExample": "Exemplu"
+    "readAloudExample": "Exemplu",
+    "readAloudStartOver": "Ia-o de la capăt"
 }

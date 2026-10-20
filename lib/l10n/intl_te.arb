@@ -1317,7 +1317,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-20 12:56:47.485618",
+    "@@last_modified": "2026-10-20 15:00:24.330344",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10968,5 +10968,6 @@
     "readAloudTranscribeFailed": "మీ రికార్డింగ్‌ను ట్రాన్స్‌క్రైబ్ చేయలేకపోయాము. మీ కనెక్షన్‌ని తనిఖీ చేసి, మళ్లీ ప్రయత్నించండి.",
     "readAloudMicUnavailable": "మైక్రోఫోన్ అందుబాటులో లేదు, కాబట్టి ఈ పదం బదులుగా అర్థం చేసుకునే అభ్యాసం.",
     "readAloudYourRecording": "మీ రికార్డింగ్",
-    "readAloudExample": "ఉదాహరణ"
+    "readAloudExample": "ఉదాహరణ",
+    "readAloudStartOver": "మళ్ళీ మొదలుపెట్టు"
 }

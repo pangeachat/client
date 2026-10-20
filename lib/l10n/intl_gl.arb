@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-20 12:56:26.356210",
+    "@@last_modified": "2026-10-20 15:00:18.329669",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10021,5 +10021,6 @@
     "readAloudTranscribeFailed": "Non se puido transcribir a túa gravación. Comproba a túa conexión e téntao de novo.",
     "readAloudMicUnavailable": "Non hai micrófono dispoñible, polo que esta palabra é un exercicio de significado.",
     "readAloudYourRecording": "A túa gravación",
-    "readAloudExample": "Exemplo"
+    "readAloudExample": "Exemplo",
+    "readAloudStartOver": "Comezar de novo"
 }

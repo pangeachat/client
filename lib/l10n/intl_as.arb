@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-20 12:56:03.815007",
+    "@@last_modified": "2026-10-20 15:00:16.548666",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "আপোনাৰ ৰেকৰ্ডিং ট্ৰেন্সক্ৰাইব কৰিব পৰা নগ'ল। আপোনাৰ সংযোগ পৰীক্ষা কৰক আৰু পুনৰ চেষ্টা কৰক।",
     "readAloudMicUnavailable": "কোনো মাইক্ৰ'ফোন উপলব্ধ নহয়, সেয়েহে এই শব্দটো ইয়াৰ পৰিৱৰ্তে এটা অৰ্থ অনুশীলন।",
     "readAloudYourRecording": "আপোনাৰ ৰেকৰ্ডিং",
-    "readAloudExample": "উদাহৰণ"
+    "readAloudExample": "উদাহৰণ",
+    "readAloudStartOver": "পুনৰ আৰম্ভ কৰক"
 }

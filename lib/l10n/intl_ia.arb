@@ -1355,7 +1355,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-20 12:56:17.117649",
+    "@@last_modified": "2026-10-20 15:00:19.122978",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10954,5 +10954,6 @@
     "readAloudTranscribeFailed": "Non poteva transcribir tu registration. Verifica tu connexion e reprova.",
     "readAloudMicUnavailable": "Nulle microphono es disponibile, ergo iste parola es un exercitio de significato in su loco.",
     "readAloudYourRecording": "Tu registration",
-    "readAloudExample": "Exemplo"
+    "readAloudExample": "Exemplo",
+    "readAloudStartOver": "Recomenciar"
 }

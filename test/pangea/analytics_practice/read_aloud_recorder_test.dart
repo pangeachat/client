@@ -224,6 +224,56 @@ void main() {
       recorder.dispose();
     });
 
+    test('Start over discards the recording in progress and begins a fresh '
+        'one without spending a take', () async {
+      final captures = <_FakeCapture>[];
+      Uint8List? sent;
+      final recorder = ReadAloudRecorder(
+        reference: _reference,
+        hasMicPermission: () async => true,
+        streamingSessionFactory: null,
+        captureFactory: () {
+          final capture = _FakeCapture();
+          captures.add(capture);
+          return capture;
+        },
+        transcribe: (wav) async {
+          sent = wav;
+          return ['el', 'gato', 'come'];
+        },
+      );
+      await recorder.start();
+      captures.single.pushFrame(Uint8List(640));
+      await recorder.restart();
+
+      expect(recorder.phase, ReadAloudPhase.recording);
+      expect(recorder.triesUsed, 0);
+      expect(recorder.lastTake, isNull);
+      expect(captures, hasLength(2));
+      expect(captures.first.disposed, isTrue);
+
+      captures.last.pushFrame(Uint8List(320));
+      await recorder.stop();
+      expect(sent!.length, 44 + 320, reason: 'only the fresh take is sent');
+      expect(recorder.triesUsed, 1);
+      recorder.dispose();
+    });
+
+    test('cancel while recording returns the item to idle', () async {
+      final recorder = ReadAloudRecorder(
+        reference: _reference,
+        hasMicPermission: () async => true,
+        streamingSessionFactory: null,
+        captureFactory: () => _FakeCapture(),
+        transcribe: (_) async => const [],
+      );
+      await recorder.start();
+      await recorder.cancel();
+      expect(recorder.phase, ReadAloudPhase.idle);
+      expect(recorder.triesUsed, 0);
+      recorder.dispose();
+    });
+
     test(
       'no route to transcribe fails the take without spending a try',
       () async {

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-20 12:56:02.638733",
+    "@@last_modified": "2026-10-20 15:00:16.567847",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10324,5 +10324,6 @@
     "readAloudTranscribeFailed": "تعذر نسخ تسجيلك. تحقق من اتصالك وحاول مرة أخرى.",
     "readAloudMicUnavailable": "لا يتوفر ميكروفون، لذا فإن هذه الكلمة هي تمرين معنى بدلاً من ذلك.",
     "readAloudYourRecording": "تسجيلك",
-    "readAloudExample": "مثال"
+    "readAloudExample": "مثال",
+    "readAloudStartOver": "البدء من جديد"
 }

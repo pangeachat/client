@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-20 12:56:34.339459",
+    "@@last_modified": "2026-10-20 15:00:21.874125",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "Kunne ikke transkribere opptaket ditt. Sjekk tilkoblingen din og prøv igjen.",
     "readAloudMicUnavailable": "Ingen mikrofon er tilgjengelig, så dette ordet er i stedet en betydningsøvelse.",
     "readAloudYourRecording": "Ditt opptak",
-    "readAloudExample": "Eksempel"
+    "readAloudExample": "Eksempel",
+    "readAloudStartOver": "Start på nytt"
 }

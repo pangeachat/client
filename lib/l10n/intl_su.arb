@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-20 12:56:45.504420",
+    "@@last_modified": "2026-10-20 15:00:24.320518",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "Teu tiasa nranskripsi rékaman anjeun. Pariksa sambungan anjeun sareng cobian deui.",
     "readAloudMicUnavailable": "Teu aya mikropon nu sayogi, janten kecap ieu mangrupikeun latihan harti.",
     "readAloudYourRecording": "Rékaman anjeun",
-    "readAloudExample": "Conto"
+    "readAloudExample": "Conto",
+    "readAloudStartOver": "Mimitian deui"
 }

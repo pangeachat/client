@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-20 12:56:25.895221",
+    "@@last_modified": "2026-10-20 15:00:18.517445",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "તમારું રેકોર્ડિંગ ટ્રાન્સક્રાઇબ કરી શકાયું નથી. તમારું કનેક્શન તપાસો અને ફરી પ્રયાસ કરો.",
     "readAloudMicUnavailable": "કોઈ માઇક્રોફોન ઉપલબ્ધ નથી, તેથી આ શબ્દ તેના બદલે અર્થનો અભ્યાસ છે.",
     "readAloudYourRecording": "તમારું રેકોર્ડિંગ",
-    "readAloudExample": "ઉદાહરણ"
+    "readAloudExample": "ઉદાહરણ",
+    "readAloudStartOver": "ફરીથી શરૂ કરો"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 12:56:12.704546",
+    "@@last_modified": "2026-10-20 15:00:18.745398",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10932,5 +10932,6 @@
     "readAloudTranscribeFailed": "לא ניתן לתמלל את ההקלטה שלך. בדוק את החיבור שלך ונסה שוב.",
     "readAloudMicUnavailable": "אין מיקרופון זמין, לכן מילה זו היא תרגיל משמעות במקום זאת.",
     "readAloudYourRecording": "ההקלטה שלך",
-    "readAloudExample": "דוגמה"
+    "readAloudExample": "דוגמה",
+    "readAloudStartOver": "התחל מחדש"
 }

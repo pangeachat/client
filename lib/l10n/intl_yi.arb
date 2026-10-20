@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-20 12:56:56.053970",
+    "@@last_modified": "2026-10-20 15:00:25.404524",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "נישט געקענט טראנסקריבירן אייער רעקארדירונג. קאנטראלירט אייער פארבינדונג און פרובירט נאכאמאל.",
     "readAloudMicUnavailable": "קיין מיקראפאן איז נישט פאראן, דערפאר איז דאס ווארט א באדייטונגס-איבונג אנשטאט.",
     "readAloudYourRecording": "אייער רעקארדירונג",
-    "readAloudExample": "ביישפיל"
+    "readAloudExample": "ביישפיל",
+    "readAloudStartOver": "אָנהייבן פֿון ס׳נײַ"
 }

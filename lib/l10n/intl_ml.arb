@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-20 12:56:30.848763",
+    "@@last_modified": "2026-10-20 15:00:21.300267",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "നിങ്ങളുടെ റെക്കോർഡിംഗ് ട്രാൻസ്ക്രൈബ് ചെയ്യാൻ കഴിഞ്ഞില്ല. നിങ്ങളുടെ കണക്ഷൻ പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക.",
     "readAloudMicUnavailable": "മൈക്രോഫോൺ ലഭ്യമല്ലാത്തതിനാൽ, ഈ വാക്ക് ഒരു അർത്ഥ വ്യായാമമാണ്.",
     "readAloudYourRecording": "നിങ്ങളുടെ റെക്കോർഡിംഗ്",
-    "readAloudExample": "ഉദാഹരണം"
+    "readAloudExample": "ഉദാഹരണം",
+    "readAloudStartOver": "ആദ്യം മുതൽ തുടങ്ങുക"
 }

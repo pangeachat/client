@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-20 12:56:03.695894",
+    "@@last_modified": "2026-10-20 15:00:16.996174",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "ቅጂዎን መገልበጥ አልተቻለም። ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ።",
     "readAloudMicUnavailable": "ምንም ማይክሮፎን የለም፣ ስለዚህ ይህ ቃል የትርጉም ልምምድ ነው።",
     "readAloudYourRecording": "የእርስዎ ቅጂ",
-    "readAloudExample": "ምሳሌ"
+    "readAloudExample": "ምሳሌ",
+    "readAloudStartOver": "እንደገና ጀምር"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-20 12:56:36.120889",
+    "@@last_modified": "2026-10-20 15:00:23.180579",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10106,5 +10106,6 @@
     "readAloudTranscribeFailed": "Nie udało się przetranskrybować nagrania. Sprawdź połączenie i spróbuj ponownie.",
     "readAloudMicUnavailable": "Brak dostępnego mikrofonu, więc to słowo jest ćwiczeniem znaczeniowym.",
     "readAloudYourRecording": "Twoje nagranie",
-    "readAloudExample": "Przykład"
+    "readAloudExample": "Przykład",
+    "readAloudStartOver": "Zacznij od nowa"
 }

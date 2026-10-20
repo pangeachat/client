@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-20 12:56:30.557400",
+    "@@last_modified": "2026-10-20 15:00:21.050523",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "Не можевме да го транскрибираме вашето снимање. Проверете ја врската и обидете се повторно.",
     "readAloudMicUnavailable": "Нема достапен микрофон, па овој збор е вежба за значење наместо тоа.",
     "readAloudYourRecording": "Вашето снимање",
-    "readAloudExample": "Пример"
+    "readAloudExample": "Пример",
+    "readAloudStartOver": "Почни одново"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 12:56:36.761964",
+    "@@last_modified": "2026-10-20 15:00:22.437886",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10962,5 +10962,6 @@
     "readAloudTranscribeFailed": "Não foi possível transcrever sua gravação. Verifique sua conexão e tente novamente.",
     "readAloudMicUnavailable": "Nenhum microfone está disponível, então esta palavra é um exercício de significado.",
     "readAloudYourRecording": "Sua gravação",
-    "readAloudExample": "Exemplo"
+    "readAloudExample": "Exemplo",
+    "readAloudStartOver": "Recomeçar"
 }

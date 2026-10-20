@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-20 12:56:51.292699",
+    "@@last_modified": "2026-10-20 15:00:24.579213",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "Сабти шуморо транскрипт кардан ғайриимкон аст. Пайвасти худро тафтиш кунед ва дубора кӯшиш кунед.",
     "readAloudMicUnavailable": "Микрофон дастрас нест, аз ин рӯ ин калима ба ҷои он машқи маъноӣ мебошад.",
     "readAloudYourRecording": "Сабти шумо",
-    "readAloudExample": "Намуна"
+    "readAloudExample": "Намуна",
+    "readAloudStartOver": "Аз нав оғоз кунед"
 }

@@ -3082,7 +3082,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-20 12:56:53.345546",
+    "@@last_modified": "2026-10-20 15:00:24.672170",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10650,5 +10650,6 @@
     "readAloudTranscribeFailed": "ถอดเสียงบันทึกของคุณไม่ได้ โปรดตรวจสอบการเชื่อมต่อแล้วลองอีกครั้ง",
     "readAloudMicUnavailable": "ไม่มีไมโครโฟน ดังนั้นคำนี้จึงเป็นการฝึกความหมายแทน",
     "readAloudYourRecording": "การบันทึกของคุณ",
-    "readAloudExample": "ตัวอย่าง"
+    "readAloudExample": "ตัวอย่าง",
+    "readAloudStartOver": "เริ่มใหม่"
 }

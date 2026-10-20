@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-20 12:56:20.217976",
+    "@@last_modified": "2026-10-20 15:00:19.516096",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "Gat ekki umritað upptökuna þína. Athugaðu tenginguna þína og reyndu aftur.",
     "readAloudMicUnavailable": "Enginn hljóðnemi er tiltækur, svo þetta orð er merkingaræfing í staðinn.",
     "readAloudYourRecording": "Upptakan þín",
-    "readAloudExample": "Dæmi"
+    "readAloudExample": "Dæmi",
+    "readAloudStartOver": "Byrja upp á nýtt"
 }

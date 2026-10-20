@@ -1327,7 +1327,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-20 12:56:05.828845",
+    "@@last_modified": "2026-10-20 15:00:17.331565",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10938,5 +10938,6 @@
     "readAloudTranscribeFailed": "Kunne ikke transskribere din optagelse. Tjek din forbindelse og prøv igen.",
     "readAloudMicUnavailable": "Ingen mikrofon er tilgængelig, så dette ord er i stedet en betydningsøvelse.",
     "readAloudYourRecording": "Din optagelse",
-    "readAloudExample": "Eksempel"
+    "readAloudExample": "Eksempel",
+    "readAloudStartOver": "Start forfra"
 }

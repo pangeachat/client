@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-20 12:56:51.408593",
+    "@@last_modified": "2026-10-20 15:00:24.853044",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10319,5 +10319,6 @@
     "readAloudTranscribeFailed": "Kaydınız yazıya dökülemedi. Bağlantınızı kontrol edin ve tekrar deneyin.",
     "readAloudMicUnavailable": "Mikrofon kullanılamıyor, bu yüzden bu kelime bir anlam alıştırması olacak.",
     "readAloudYourRecording": "Kaydınız",
-    "readAloudExample": "Örnek"
+    "readAloudExample": "Örnek",
+    "readAloudStartOver": "Baştan başla"
 }

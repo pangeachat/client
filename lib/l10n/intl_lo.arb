@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-20 12:56:27.760884",
+    "@@last_modified": "2026-10-20 15:00:20.712599",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "ບໍ່ສາມາດຖອດສຽງບັນທຶກຂອງທ່ານໄດ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ ແລະ ລອງໃໝ່ອີກຄັ້ງ.",
     "readAloudMicUnavailable": "ບໍ່ມີໄມໂຄຣໂຟນ, ສະນັ້ນຄຳນີ້ຈຶ່ງເປັນການຝຶກຄວາມໝາຍແທນ.",
     "readAloudYourRecording": "ສຽງບັນທຶກຂອງທ່ານ",
-    "readAloudExample": "ຕົວຢ່າງ"
+    "readAloudExample": "ຕົວຢ່າງ",
+    "readAloudStartOver": "ເລີ່ມຕົ້ນໃໝ່"
 }

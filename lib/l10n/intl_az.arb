@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-20 12:56:04.370125",
+    "@@last_modified": "2026-10-20 15:00:16.547160",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "Qeydiniz transkripsiya edilə bilmədi. Bağlantınızı yoxlayın və yenidən cəhd edin.",
     "readAloudMicUnavailable": "Mikrofon mövcud deyil, buna görə bu söz əvəzinə məna məşqi olacaq.",
     "readAloudYourRecording": "Sizin qeydiniz",
-    "readAloudExample": "Nümunə"
+    "readAloudExample": "Nümunə",
+    "readAloudStartOver": "Yenidən başla"
 }

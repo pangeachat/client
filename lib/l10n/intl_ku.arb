@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-20 12:56:28.119289",
+    "@@last_modified": "2026-10-20 15:00:24.495516",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "نەتوانرا تۆمارەکەت بنووسرێتەوە. پەیوەندییەکەت بپشکنە و دووبارە هەوڵ بدەوە.",
     "readAloudMicUnavailable": "هیچ مایکرۆفۆنێک بەردەست نییە، بۆیە ئەم وشەیە لەبری ئەوە ڕاهێنانی مانایە.",
     "readAloudYourRecording": "تۆمارکردنەکەی تۆ",
-    "readAloudExample": "نموونە"
+    "readAloudExample": "نموونە",
+    "readAloudStartOver": "دەستپێکردنەوە"
 }

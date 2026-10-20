@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-20 12:56:36.982712",
+    "@@last_modified": "2026-10-20 15:00:22.790153",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "ستاسو ثبتول ونه شول. خپله اړیکه وګورئ او بیا هڅه وکړئ.",
     "readAloudMicUnavailable": "هیڅ مایکروفون شتون نلري، نو دا کلمه د معنی تمرین دی.",
     "readAloudYourRecording": "ستاسو ثبتول",
-    "readAloudExample": "مثال"
+    "readAloudExample": "مثال",
+    "readAloudStartOver": "بیا پیل کړئ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-20 12:56:04.910737",
+    "@@last_modified": "2026-10-20 15:00:17.353607",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "Dili ma-transcribe ang imong recording. Susiha ang imong koneksyon ug sulayi pag-usab.",
     "readAloudMicUnavailable": "Walay mikropono nga magamit, busa kini nga pulong usa ka ehersisyo sa kahulogan hinuon.",
     "readAloudYourRecording": "Imong recording",
-    "readAloudExample": "Pananglitan"
+    "readAloudExample": "Pananglitan",
+    "readAloudStartOver": "Sugdi pag-usab"
 }

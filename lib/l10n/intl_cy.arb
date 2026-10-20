@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-20 12:56:05.005815",
+    "@@last_modified": "2026-10-20 15:00:17.444237",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2483,5 +2483,6 @@
     "readAloudYourRecording": "Eich recordiad",
     "readAloudExample": "Enghraifft",
     "readAloudRecord": "Recordio",
-    "readAloudMicLabel": "{count, plural, =1{Recordio, 1 gair heb ei glywed eto} other{Recordio, {count} gair heb ei glywed eto}}"
+    "readAloudMicLabel": "{count, plural, =1{Recordio, 1 gair heb ei glywed eto} other{Recordio, {count} gair heb ei glywed eto}}",
+    "readAloudStartOver": "Dechrau drosodd"
 }

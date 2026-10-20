@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 12:56:53.003034",
+    "@@last_modified": "2026-10-20 15:00:25.047197",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7328,5 +7328,6 @@
     "readAloudTranscribeFailed": "Không thể phiên âm bản ghi âm của bạn. Hãy kiểm tra kết nối và thử lại.",
     "readAloudMicUnavailable": "Không có micrô, vì vậy từ này sẽ là một bài tập về nghĩa.",
     "readAloudYourRecording": "Bản ghi âm của bạn",
-    "readAloudExample": "Ví dụ"
+    "readAloudExample": "Ví dụ",
+    "readAloudStartOver": "Bắt đầu lại"
 }

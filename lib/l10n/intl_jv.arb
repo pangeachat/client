@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-20 12:56:23.290198",
+    "@@last_modified": "2026-10-20 15:00:20.102975",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "Ora bisa nyalin rekamanmu. Priksa sambunganmu lan coba maneh.",
     "readAloudMicUnavailable": "Ora ana mikropon sing kasedhiya, mula tembung iki dadi gladhen makna.",
     "readAloudYourRecording": "Rekamanmu",
-    "readAloudExample": "Tuladha"
+    "readAloudExample": "Tuladha",
+    "readAloudStartOver": "Mulai maneh"
 }

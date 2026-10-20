@@ -3543,7 +3543,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-20 12:56:10.735557",
+    "@@last_modified": "2026-10-20 15:00:18.190075",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10032,5 +10032,6 @@
     "readAloudTranscribeFailed": "Níorbh fhéidir do thaifeadadh a thras-scríobh. Seiceáil do nasc agus bain triail eile as.",
     "readAloudMicUnavailable": "Níl micreafón ar fáil, mar sin is cleachtadh brí é an focal seo ina ionad.",
     "readAloudYourRecording": "Do thaifeadadh",
-    "readAloudExample": "Sampla"
+    "readAloudExample": "Sampla",
+    "readAloudStartOver": "Tosaigh arís"
 }

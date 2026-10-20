@@ -3082,7 +3082,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-10-20 12:56:12.534705",
+    "@@last_modified": "2026-10-20 15:00:19.085598",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10650,5 +10650,6 @@
     "readAloudTranscribeFailed": "आपकी रिकॉर्डिंग को ट्रांसक्राइब नहीं किया जा सका। अपना कनेक्शन जाँचें और फिर से कोशिश करें।",
     "readAloudMicUnavailable": "कोई माइक्रोफ़ोन उपलब्ध नहीं है, इसलिए यह शब्द अर्थ का अभ्यास है।",
     "readAloudYourRecording": "आपकी रिकॉर्डिंग",
-    "readAloudExample": "उदाहरण"
+    "readAloudExample": "उदाहरण",
+    "readAloudStartOver": "फिर से शुरू करें"
 }

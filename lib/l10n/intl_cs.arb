@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-20 12:56:05.986301",
+    "@@last_modified": "2026-10-20 15:00:17.535446",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10512,5 +10512,6 @@
     "readAloudTranscribeFailed": "Nepodařilo se přepsat vaši nahrávku. Zkontrolujte připojení a zkuste to znovu.",
     "readAloudMicUnavailable": "Není k dispozici žádný mikrofon, takže toto slovo je místo toho cvičením na význam.",
     "readAloudYourRecording": "Vaše nahrávka",
-    "readAloudExample": "Příklad"
+    "readAloudExample": "Příklad",
+    "readAloudStartOver": "Začít znovu"
 }

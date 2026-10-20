@@ -3528,7 +3528,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-20 12:56:03.390615",
+    "@@last_modified": "2026-10-20 15:00:16.550557",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10035,5 +10035,6 @@
     "readAloudTranscribeFailed": "Не атрымалася расшыфраваць ваш запіс. Праверце злучэнне і паспрабуйце яшчэ раз.",
     "readAloudMicUnavailable": "Мікрафон недаступны, таму гэтае слова з'яўляецца практыкаваннем на значэнне.",
     "readAloudYourRecording": "Ваш запіс",
-    "readAloudExample": "Прыклад"
+    "readAloudExample": "Прыклад",
+    "readAloudStartOver": "Пачаць спачатку"
 }

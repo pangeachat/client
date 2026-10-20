@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-20 12:56:34.356469",
+    "@@last_modified": "2026-10-20 15:00:21.472271",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "নখোয়গী রিকোর্ডিং অদু ত্রান্সক্রাইব তৌবা ঙমদ্রে। নখোয়গী কনেক্সন চেক তৌদুনা অমুক হন্না ট্রাই তৌউ।",
     "readAloudMicUnavailable": "মাইক্রোফোন অমত্তা ফংদে, মদুগীদমক ৱাহৈ অসিগী মহুত্তা অর্থগী এক্সারসাইজ অমা ওইরি।",
     "readAloudYourRecording": "নখোয়গী রিকোর্ডিং",
-    "readAloudExample": "উদাহরন"
+    "readAloudExample": "উদাহরন",
+    "readAloudStartOver": "ꯑꯃꯨꯛ ꯍꯧꯒꯠꯄ"
 }

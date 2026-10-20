@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-20 12:56:55.139823",
+    "@@last_modified": "2026-10-20 15:00:25.668844",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10021,5 +10021,6 @@
     "readAloudTranscribeFailed": "无法转录您的录音。请检查您的网络连接并重试。",
     "readAloudMicUnavailable": "没有可用的麦克风，因此此单词将作为含义练习。",
     "readAloudYourRecording": "您的录音",
-    "readAloudExample": "示例"
+    "readAloudExample": "示例",
+    "readAloudStartOver": "重新开始"
 }

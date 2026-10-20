@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 12:56:09.615982",
+    "@@last_modified": "2026-10-20 15:00:17.990160",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10109,5 +10109,6 @@
     "readAloudTranscribeFailed": "ضبط شما قابل رونویسی نبود. اتصال خود را بررسی کنید و دوباره امتحان کنید.",
     "readAloudMicUnavailable": "میکروفونی در دسترس نیست، بنابراین این کلمه به جای آن یک تمرین معنایی است.",
     "readAloudYourRecording": "ضبط شما",
-    "readAloudExample": "مثال"
+    "readAloudExample": "مثال",
+    "readAloudStartOver": "شروع مجدد"
 }

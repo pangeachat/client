@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-20 12:56:09.561326",
+    "@@last_modified": "2026-10-20 15:00:18.056841",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10373,5 +10373,6 @@
     "readAloudTranscribeFailed": "Impossible de transcrire votre enregistrement. Vérifiez votre connexion et réessayez.",
     "readAloudMicUnavailable": "Aucun microphone n'est disponible, cet exercice est donc un exercice de sens à la place.",
     "readAloudYourRecording": "Votre enregistrement",
-    "readAloudExample": "Exemple"
+    "readAloudExample": "Exemple",
+    "readAloudStartOver": "Recommencer"
 }

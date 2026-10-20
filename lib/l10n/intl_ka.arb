@@ -1930,7 +1930,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-20 12:56:23.200841",
+    "@@last_modified": "2026-10-20 15:00:20.097648",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10918,5 +10918,6 @@
     "readAloudTranscribeFailed": "თქვენი ჩანაწერის ტრანსკრიბირება ვერ მოხერხდა. შეამოწმეთ კავშირი და სცადეთ ხელახლა.",
     "readAloudMicUnavailable": "მიკროფონი მიუწვდომელია, ამიტომ ეს სიტყვა მნიშვნელობის სავარჯიშოა.",
     "readAloudYourRecording": "თქვენი ჩანაწერი",
-    "readAloudExample": "მაგალითი"
+    "readAloudExample": "მაგალითი",
+    "readAloudStartOver": "თავიდან დაწყება"
 }

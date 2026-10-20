@@ -100,11 +100,18 @@ class ReadAloudRecorder extends ChangeNotifier {
   final BytesBuilder _pcm = BytesBuilder(copy: false);
   bool _disposed = false;
 
+  /// Bumped by [start] and [cancel], so a start, stop or relay callback still
+  /// in flight when the take was discarded cannot touch the next one.
+  int _generation = 0;
+
+  bool _stale(int generation) => _disposed || generation != _generation;
+
   Future<void> start() async {
     if (phase == ReadAloudPhase.recording ||
         phase == ReadAloudPhase.finalizing) {
       return;
     }
+    final generation = ++_generation;
     heard = List<bool>.filled(reference.length, false);
     liveTranscript = '';
     lastTake = null;
@@ -112,33 +119,43 @@ class ReadAloudRecorder extends ChangeNotifier {
     notifyListeners();
 
     if (!await _hasMicPermission()) {
-      _setPhase(ReadAloudPhase.micUnavailable);
+      if (!_stale(generation)) _setPhase(ReadAloudPhase.micUnavailable);
       return;
     }
-    if (_disposed) return;
+    if (_stale(generation)) return;
 
     final factory = _streamingSessionFactory;
     if (factory != null) {
       final session = factory();
-      session.onUpdate = () => _onLive(session.liveTranscript);
-      session.onMaxDuration = () => unawaited(stop());
-      session.onFatalError = () => _setPhase(ReadAloudPhase.failed);
+      session.onUpdate = () {
+        if (!_stale(generation)) _onLive(session.liveTranscript);
+      };
+      session.onMaxDuration = () {
+        if (!_stale(generation)) unawaited(stop());
+      };
+      session.onFatalError = () {
+        if (!_stale(generation)) _setPhase(ReadAloudPhase.failed);
+      };
       // The relay died after the mic was live: the session has stopped the
       // mic and kept the audio, so the batch route judges this take.
-      session.onStreamDegradeToBatch = (retained) => unawaited(
-        _finishFromBatch(
-          session.lastWav,
-          retained.duration,
-          session.amplitudeTimeline,
-        ),
-      );
+      session.onStreamDegradeToBatch = (retained) {
+        if (_stale(generation)) return;
+        unawaited(
+          _finishFromBatch(
+            session.lastWav,
+            retained.duration,
+            session.amplitudeTimeline,
+            generation,
+          ),
+        );
+      };
       bool opened;
       try {
         opened = await session.start();
       } catch (_) {
         opened = false;
       }
-      if (_disposed) {
+      if (_stale(generation)) {
         await session.teardown();
         return;
       }
@@ -161,7 +178,7 @@ class ReadAloudRecorder extends ChangeNotifier {
     } catch (_) {
       ok = false;
     }
-    if (_disposed) {
+    if (_stale(generation)) {
       await capture.dispose();
       return;
     }
@@ -173,10 +190,35 @@ class ReadAloudRecorder extends ChangeNotifier {
     _capture = capture;
   }
 
+  /// Discard the recording in progress without judging it or spending a
+  /// take: the mic closes, the words reset, and the item is idle again.
+  Future<void> cancel() async {
+    if (phase != ReadAloudPhase.recording) return;
+    _generation++;
+    final session = _session;
+    _session = null;
+    final capture = _capture;
+    _capture = null;
+    _pcm.clear();
+    heard = List<bool>.filled(reference.length, false);
+    liveTranscript = '';
+    _setPhase(ReadAloudPhase.idle);
+    if (session != null) await session.teardown();
+    if (capture != null) await capture.dispose();
+  }
+
+  /// Start over: discard the recording in progress and begin a fresh one.
+  Future<void> restart() async {
+    await cancel();
+    if (_disposed) return;
+    await start();
+  }
+
   /// End the take. The streaming path judges the settled final; the batch
   /// path sends the WAV for transcription first.
   Future<void> stop() async {
     if (phase != ReadAloudPhase.recording) return;
+    final generation = _generation;
     phase = ReadAloudPhase.finalizing;
     notifyListeners();
 
@@ -187,7 +229,7 @@ class ReadAloudRecorder extends ChangeNotifier {
       final wav = session.lastWav;
       final amplitudes = List<double>.from(session.amplitudeTimeline);
       await session.teardown();
-      if (_disposed) return;
+      if (_stale(generation)) return;
       if (result == null) {
         _setPhase(ReadAloudPhase.failed);
         return;
@@ -210,24 +252,25 @@ class ReadAloudRecorder extends ChangeNotifier {
     }
     await capture.stop();
     await capture.dispose();
-    if (_disposed) return;
+    if (_stale(generation)) return;
     final wav = pcm16ToWav(_pcm.takeBytes());
     // PCM16 mono at 16 kHz is 32 bytes per millisecond.
     final duration = Duration(milliseconds: (wav.length - 44) ~/ 32);
-    await _finishFromBatch(wav, duration, const <double>[]);
+    await _finishFromBatch(wav, duration, const <double>[], generation);
   }
 
   Future<void> _finishFromBatch(
     Uint8List? wav,
     Duration duration,
     List<double> amplitudes,
+    int generation,
   ) async {
     if (wav == null) {
       _setPhase(ReadAloudPhase.failed);
       return;
     }
     final words = await _transcribe(wav);
-    if (_disposed) return;
+    if (_stale(generation)) return;
     if (words == null) {
       _setPhase(ReadAloudPhase.failed);
       return;

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 12:56:55.398714",
+    "@@last_modified": "2026-10-20 15:00:25.928642",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10127,5 +10127,6 @@
     "readAloudTranscribeFailed": "無法轉錄您的錄音。請檢查您的連線並再試一次。",
     "readAloudMicUnavailable": "沒有可用的麥克風，因此此單字將改為意義練習。",
     "readAloudYourRecording": "您的錄音",
-    "readAloudExample": "範例"
+    "readAloudExample": "範例",
+    "readAloudStartOver": "重新開始"
 }

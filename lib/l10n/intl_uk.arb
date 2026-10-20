@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-20 12:56:58.266608",
+    "@@last_modified": "2026-10-20 15:00:25.116409",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10021,5 +10021,6 @@
     "readAloudTranscribeFailed": "Не вдалося розшифрувати ваш запис. Перевірте з’єднання та спробуйте ще раз.",
     "readAloudMicUnavailable": "Мікрофон недоступний, тому це слово є вправою на значення.",
     "readAloudYourRecording": "Ваш запис",
-    "readAloudExample": "Приклад"
+    "readAloudExample": "Приклад",
+    "readAloudStartOver": "Почати спочатку"
 }

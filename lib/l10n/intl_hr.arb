@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-20 12:56:15.709829",
+    "@@last_modified": "2026-10-20 15:00:19.034542",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10454,5 +10454,6 @@
     "readAloudTranscribeFailed": "Nije moguće transkribirati tvoju snimku. Provjeri vezu i pokušaj ponovno.",
     "readAloudMicUnavailable": "Mikrofon nije dostupan, pa je ova riječ umjesto toga vježba značenja.",
     "readAloudYourRecording": "Tvoja snimka",
-    "readAloudExample": "Primjer"
+    "readAloudExample": "Primjer",
+    "readAloudStartOver": "Počni ispočetka"
 }

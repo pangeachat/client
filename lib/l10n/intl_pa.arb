@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-20 12:56:37.173283",
+    "@@last_modified": "2026-10-20 15:00:25.045626",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "ਤੁਹਾਡੀ ਰਿਕਾਰਡਿੰਗ ਨੂੰ ਟ੍ਰਾਂਸਕ੍ਰਾਈਬ ਨਹੀਂ ਕਰ ਸਕਿਆ। ਆਪਣਾ ਕਨੈਕਸ਼ਨ ਜਾਂਚੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
     "readAloudMicUnavailable": "ਕੋਈ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਉਪਲਬਧ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਇਹ ਸ਼ਬਦ ਇਸਦੀ ਬਜਾਏ ਇੱਕ ਅਰਥ ਅਭਿਆਸ ਹੈ।",
     "readAloudYourRecording": "ਤੁਹਾਡੀ ਰਿਕਾਰਡਿੰਗ",
-    "readAloudExample": "ਉਦਾਹਰਨ"
+    "readAloudExample": "ਉਦਾਹਰਨ",
+    "readAloudStartOver": "ਮੁੜ ਸ਼ੁਰੂ ਕਰੋ"
 }

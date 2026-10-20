@@ -1256,7 +1256,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-20 12:56:55.123798",
+    "@@last_modified": "2026-10-20 15:00:25.935301",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10975,5 +10975,6 @@
     "readAloudTranscribeFailed": "無法轉錄您的錄音。請檢查您的連線並重試。",
     "readAloudMicUnavailable": "沒有可用的咪高峰，因此此字將改為意思練習。",
     "readAloudYourRecording": "您的錄音",
-    "readAloudExample": "範例"
+    "readAloudExample": "範例",
+    "readAloudStartOver": "重新開始"
 }

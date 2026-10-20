@@ -6150,5 +6150,9 @@
     "readAloudExample": "Example",
     "@readAloudExample": {
         "description": "Label of the player for the example sentence's audio on a read-aloud exercise."
+    },
+    "readAloudStartOver": "Start over",
+    "@readAloudStartOver": {
+        "description": "Button under the mic while a read-aloud recording runs: discards the recording in progress and begins a fresh one, without spending a take."
     }
 }

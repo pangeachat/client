@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-20 12:56:24.120334",
+    "@@last_modified": "2026-10-20 15:00:20.209398",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "ನಿಮ್ಮ ರೆಕಾರ್ಡಿಂಗ್ ಅನ್ನು ಲಿಪ್ಯಂತರ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
     "readAloudMicUnavailable": "ಮೈಕ್ರೊಫೋನ್ ಲಭ್ಯವಿಲ್ಲ, ಆದ್ದರಿಂದ ಈ ಪದವು ಅರ್ಥದ ವ್ಯಾಯಾಮವಾಗಿದೆ.",
     "readAloudYourRecording": "ನಿಮ್ಮ ರೆಕಾರ್ಡಿಂಗ್",
-    "readAloudExample": "ಉದಾಹರಣೆ"
+    "readAloudExample": "ಉದಾಹರಣೆ",
+    "readAloudStartOver": "ಮತ್ತೆ ಪ್ರಾರಂಭಿಸಿ"
 }

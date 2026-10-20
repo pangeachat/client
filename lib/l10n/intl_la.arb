@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-20 12:56:28.100183",
+    "@@last_modified": "2026-10-20 15:00:20.438921",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "Non potuit memoratio tua transcribi. Conexum tuum inspice et iterum conare.",
     "readAloudMicUnavailable": "Nullum microphonum praesto est, ergo hoc verbum est exercitatio significationis proinde.",
     "readAloudYourRecording": "Tua memoratio",
-    "readAloudExample": "Exemplum"
+    "readAloudExample": "Exemplum",
+    "readAloudStartOver": "Iterum incipe"
 }

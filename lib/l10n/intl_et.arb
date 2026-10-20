@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-20 12:56:08.279857",
+    "@@last_modified": "2026-10-20 15:00:18.071779",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10018,5 +10018,6 @@
     "readAloudTranscribeFailed": "Salvestust ei õnnestunud transkribeerida. Kontrolli ühendust ja proovi uuesti.",
     "readAloudMicUnavailable": "Mikrofon pole saadaval, seega on see sõna hoopis tähendusharjutus.",
     "readAloudYourRecording": "Sinu salvestus",
-    "readAloudExample": "Näide"
+    "readAloudExample": "Näide",
+    "readAloudStartOver": "Alusta uuesti"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-20 12:56:02.605577",
+    "@@last_modified": "2026-10-20 15:00:16.718688",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2483,5 +2483,6 @@
     "readAloudTranscribeFailed": "Kon nie jou opname transkribeer nie. Kontroleer jou verbinding en probeer weer.",
     "readAloudMicUnavailable": "Geen mikrofoon is beskikbaar nie, so hierdie woord is eerder 'n betekenis-oefening.",
     "readAloudYourRecording": "Jou opname",
-    "readAloudExample": "Voorbeeld"
+    "readAloudExample": "Voorbeeld",
+    "readAloudStartOver": "Begin oor"
 }
