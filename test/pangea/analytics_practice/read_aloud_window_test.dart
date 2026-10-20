@@ -66,8 +66,8 @@ void main() {
       maxWords: 8,
     );
     expect(trimmed.referenceTokens.length, 8);
+    // Three words before the target, four after.
     expect(trimmed.referenceTokens.map((t) => t.text.content), [
-      'y',
       'leche',
       'en',
       'el',
@@ -75,10 +75,11 @@ void main() {
       'pequeño',
       'cerca',
       'de',
+      'la',
     ]);
-    expect(trimmed.targetIndex, 4);
-    expect(_text(trimmed), '… y leche en el mercado pequeño cerca de…');
-    expect(trimmed.referenceText, 'y leche en el mercado pequeño cerca de');
+    expect(trimmed.targetIndex, 3);
+    expect(_text(trimmed), '… leche en el mercado pequeño cerca de la…');
+    expect(trimmed.referenceText, 'leche en el mercado pequeño cerca de la');
   });
 
   test('a target near the start keeps the sentence start', () {
@@ -99,10 +100,7 @@ void main() {
     );
     expect(trimmed.referenceTokens.length, 8);
     expect(trimmed.exampleTokens.last.text.content, '.');
-    expect(
-      _text(trimmed),
-      '… en el mercado pequeño cerca de la plaza antigua.',
-    );
+    expect(_text(trimmed), '… el mercado pequeño cerca de la plaza antigua.');
   });
 
   test('a short sentence is left whole', () {
