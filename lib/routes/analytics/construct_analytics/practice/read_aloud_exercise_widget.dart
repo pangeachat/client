@@ -257,6 +257,20 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
             ),
           ),
         ),
+        // The live transcript, replace-in-place as it settles, as the
+        // voice-message recorder shows it while the mic is hot.
+        if (recording || phase == ReadAloudPhase.finalizing)
+          Container(
+            constraints: const BoxConstraints(minHeight: 24.0),
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: Text(
+              _recorder.liveTranscript,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+          ),
         Wrap(
           alignment: WrapAlignment.center,
           spacing: 16.0,

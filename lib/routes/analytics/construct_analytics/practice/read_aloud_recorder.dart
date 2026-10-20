@@ -82,6 +82,12 @@ class ReadAloudRecorder extends ChangeNotifier {
   /// Per word of [reference], whether it has been heard: live while a
   /// streaming recording runs, settled once the take is done.
   List<bool> heard;
+
+  /// The transcript as it settles while a streaming recording runs, shown
+  /// under the sentence the way the voice-message recorder shows its live
+  /// line; the settled transcript once the take is done. Empty on the batch
+  /// route until the take ends.
+  String liveTranscript = '';
   ReadAloudTake? lastTake;
   int triesUsed = 0;
 
@@ -100,6 +106,7 @@ class ReadAloudRecorder extends ChangeNotifier {
       return;
     }
     heard = List<bool>.filled(reference.length, false);
+    liveTranscript = '';
     lastTake = null;
     phase = ReadAloudPhase.recording;
     notifyListeners();
@@ -242,6 +249,7 @@ class ReadAloudRecorder extends ChangeNotifier {
     List<int>? waveform,
   ) {
     heard = readAloudHeard(reference, words);
+    liveTranscript = transcript;
     lastTake = ReadAloudTake(
       transcript: transcript,
       wav: wav,
@@ -254,6 +262,7 @@ class ReadAloudRecorder extends ChangeNotifier {
 
   void _onLive(String transcript) {
     if (phase != ReadAloudPhase.recording) return;
+    liveTranscript = transcript;
     heard = readAloudHeard(reference, spokenWords(transcript));
     notifyListeners();
     // Every word settled: the take is complete without a second tap.

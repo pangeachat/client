@@ -123,6 +123,7 @@ void main() {
         ),
       );
       expect(recorder.heard, [true, true, false]);
+      expect(recorder.liveTranscript, 'el gato');
     });
 
     test('every word heard ends the take by itself and judges it', () async {
