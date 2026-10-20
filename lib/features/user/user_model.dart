@@ -297,7 +297,7 @@ class UserToolSettings {
     bool? enableAutocorrect,
     this.showDeveloperOptions = false,
     this.listenFirst = false,
-    this.hearItFirst = true,
+    this.hearItFirst = false,
   }) : enableAutocorrectChoice = enableAutocorrect;
 
   /// Device autocorrect defaults on only where the composer can tell the
@@ -340,7 +340,7 @@ class UserToolSettings {
     enableAutocorrect: json["enableAutocorrect"] as bool?,
     showDeveloperOptions: json["showDeveloperOptions"] ?? false,
     listenFirst: json["listenFirst"] ?? false,
-    hearItFirst: json["hearItFirst"] ?? true,
+    hearItFirst: json["hearItFirst"] ?? false,
   );
 
   Map<String, dynamic> toJson() {
