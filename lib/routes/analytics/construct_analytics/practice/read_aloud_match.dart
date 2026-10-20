@@ -8,12 +8,47 @@ final RegExp _edgePunctuation = RegExp(
 );
 final RegExp _whitespace = RegExp(r'\s+');
 
-/// A spoken word, folded for comparison: lower-cased, with the punctuation
-/// glued to its edges removed, because the recognizer writes "Gato." and the
-/// sentence "gato" for the same spoken word. Empty when [word] holds no letter
-/// or digit at all.
-String normalizeSpokenWord(String word) =>
-    word.toLowerCase().replaceAll(_edgePunctuation, '');
+/// Accented vowels to their base letter. A recognizer drops a stress mark as
+/// readily as it writes one, so "Cuándo" and "cuando" are the same spoken
+/// word. Consonants with marks (ñ, ç) are their own sounds and stay.
+const Map<String, String> _accentedVowels = {
+  'á': 'a',
+  'à': 'a',
+  'â': 'a',
+  'ä': 'a',
+  'ã': 'a',
+  'å': 'a',
+  'é': 'e',
+  'è': 'e',
+  'ê': 'e',
+  'ë': 'e',
+  'í': 'i',
+  'ì': 'i',
+  'î': 'i',
+  'ï': 'i',
+  'ó': 'o',
+  'ò': 'o',
+  'ô': 'o',
+  'ö': 'o',
+  'õ': 'o',
+  'ú': 'u',
+  'ù': 'u',
+  'û': 'u',
+  'ü': 'u',
+  'ý': 'y',
+  'ÿ': 'y',
+};
+
+/// A spoken word, folded for comparison: lower-cased, accented vowels
+/// folded, and the punctuation glued to its edges removed, because the
+/// recognizer writes "Gato." and the sentence "gato" for the same spoken
+/// word. Empty when [word] holds no letter or digit at all.
+String normalizeSpokenWord(String word) => word
+    .toLowerCase()
+    .replaceAll(_edgePunctuation, '')
+    .split('')
+    .map((c) => _accentedVowels[c] ?? c)
+    .join();
 
 /// Whether [text] is something a learner can be heard saying, as opposed to a
 /// punctuation-only token.

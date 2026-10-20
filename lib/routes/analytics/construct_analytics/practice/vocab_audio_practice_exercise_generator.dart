@@ -100,8 +100,9 @@ class VocabAudioPracticeExerciseGenerator {
   /// local analytics, then finds an audio-capable example message. Null when
   /// no usable example exists — the caller falls back to a meaning exercise.
   static Future<AudioExampleMessage?> resolveAudioExample(
-    MessagePracticeExerciseRequest req,
-  ) async {
+    MessagePracticeExerciseRequest req, {
+    int maxContextChars = ExampleMessageUtil.defaultMaxContextChars,
+  }) async {
     final id = req.target.tokens.first.vocabConstructID;
     final l2 = req.userL2.split('-').first;
     final constructs = await MatrixState
@@ -111,7 +112,11 @@ class VocabAudioPracticeExerciseGenerator {
         .getConstructUses([id], l2);
     final construct = constructs[id];
     if (construct == null) return null;
-    return ExampleMessageUtil.getAudioExampleMessage(construct, noBold: true);
+    return ExampleMessageUtil.getAudioExampleMessage(
+      construct,
+      noBold: true,
+      maxContextChars: maxContextChars,
+    );
   }
 
   /// A meaning-exercise request for the same lemma, used when an audio example

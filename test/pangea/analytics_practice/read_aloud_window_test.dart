@@ -16,10 +16,19 @@ List<PangeaToken> _tokens(String sentence) {
   var offset = 0;
   for (final raw in sentence.split(' ')) {
     var word = raw;
+    String? open;
     String? punct;
-    if (word.endsWith('.') || word.endsWith(',')) {
+    if (word.startsWith('¿') || word.startsWith('¡')) {
+      open = word.substring(0, 1);
+      word = word.substring(1);
+    }
+    if (word.isNotEmpty && '.,?!'.contains(word[word.length - 1])) {
       punct = word.substring(word.length - 1);
       word = word.substring(0, word.length - 1);
+    }
+    if (open != null) {
+      tokens.add(_token(open, offset));
+      offset += 1;
     }
     tokens.add(_token(word, offset));
     offset += word.length;
@@ -42,17 +51,23 @@ PangeaToken _token(String text, int offset) => PangeaToken(
 const _sentence =
     'Ayer mi hermana compró pan fresco, queso, manzanas y leche en el mercado pequeño cerca de la plaza antigua.';
 
-ReadAloudPracticeExerciseModel _exercise(String target) =>
+const _twoSentences =
+    '¿Cuándo debemos irnos? Tenemos que estar allí para las cinco.';
+
+ReadAloudPracticeExerciseModel _exerciseOf(String sentence, String target) =>
     ReadAloudPracticeExerciseModel(
       targetLemma: target,
-      exampleTokens: _tokens(_sentence),
+      exampleTokens: _tokens(sentence),
       langCode: 'es',
       roomId: '!room',
       eventId: r'$evt',
-      exampleMessage: const ExampleMessageInfo(
-        exampleMessage: [TextSpan(text: _sentence)],
+      exampleMessage: ExampleMessageInfo(
+        exampleMessage: [TextSpan(text: sentence)],
       ),
     );
+
+ReadAloudPracticeExerciseModel _exercise(String target) =>
+    _exerciseOf(_sentence, target);
 
 String _text(ReadAloudPracticeExerciseModel e) =>
     e.exampleMessage.exampleMessage.map((s) => (s as TextSpan).text).join();
@@ -60,8 +75,31 @@ String _text(ReadAloudPracticeExerciseModel e) =>
 /// A read-aloud item reads at most eight words around the target
 /// (practice-exercises.instructions.md, "Speaking practice").
 void main() {
+  test('keeps the whole sentence that holds the target, cut at its stops', () {
+    final trimmed = ReadAloudPracticeExerciseGenerator.trimToSentence(
+      _exerciseOf(_twoSentences, 'irnos'),
+      maxWords: 8,
+    );
+    expect(_text(trimmed), '¿Cuándo debemos irnos?');
+    expect(trimmed.referenceTokens.map((t) => t.text.content), [
+      'Cuándo',
+      'debemos',
+      'irnos',
+    ]);
+    expect(trimmed.targetIndex, 2);
+  });
+
+  test('a target in the second sentence gets that sentence alone', () {
+    final trimmed = ReadAloudPracticeExerciseGenerator.trimToSentence(
+      _exerciseOf(_twoSentences, 'cinco'),
+      maxWords: 8,
+    );
+    expect(_text(trimmed), 'Tenemos que estar allí para las cinco.');
+    expect(trimmed.referenceTokens.length, 7);
+  });
+
   test('a target in the middle gets a window around it, cut both sides', () {
-    final trimmed = ReadAloudPracticeExerciseGenerator.trimToWindow(
+    final trimmed = ReadAloudPracticeExerciseGenerator.trimToSentence(
       _exercise('mercado'),
       maxWords: 8,
     );
@@ -83,7 +121,7 @@ void main() {
   });
 
   test('a target near the start keeps the sentence start', () {
-    final trimmed = ReadAloudPracticeExerciseGenerator.trimToWindow(
+    final trimmed = ReadAloudPracticeExerciseGenerator.trimToSentence(
       _exercise('hermana'),
       maxWords: 8,
     );
@@ -94,7 +132,7 @@ void main() {
   });
 
   test('a target near the end keeps the final stop glued to its word', () {
-    final trimmed = ReadAloudPracticeExerciseGenerator.trimToWindow(
+    final trimmed = ReadAloudPracticeExerciseGenerator.trimToSentence(
       _exercise('plaza'),
       maxWords: 8,
     );
@@ -114,7 +152,7 @@ void main() {
     );
     expect(
       identical(
-        ReadAloudPracticeExerciseGenerator.trimToWindow(short, maxWords: 8),
+        ReadAloudPracticeExerciseGenerator.trimToSentence(short, maxWords: 8),
         short,
       ),
       isTrue,

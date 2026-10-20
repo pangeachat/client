@@ -8,12 +8,18 @@ void main() {
   group('normalizeSpokenWord', () {
     test('folds case and strips punctuation glued to the edges', () {
       expect(normalizeSpokenWord('Gato.'), 'gato');
-      expect(normalizeSpokenWord('¿Qué?'), 'qué');
+      expect(normalizeSpokenWord('¿Qué?'), 'que');
       expect(normalizeSpokenWord('"hola",'), 'hola');
     });
 
     test('keeps punctuation inside a word', () {
-      expect(normalizeSpokenWord("l'école"), "l'école");
+      expect(normalizeSpokenWord("l'école"), "l'ecole");
+    });
+
+    test('folds vowel accents but keeps ñ, which is its own sound', () {
+      expect(normalizeSpokenWord('Cuándo'), 'cuando');
+      expect(normalizeSpokenWord('allí'), 'alli');
+      expect(normalizeSpokenWord('niño'), 'niño');
     });
 
     test('a punctuation-only token is not a spoken word', () {
@@ -60,6 +66,14 @@ void main() {
 
     test('nothing heard leaves every word unheard', () {
       expect(readAloudHeard(['el', 'gato'], []), [false, false]);
+    });
+
+    test('a dropped stress mark is still the word, a dropped ñ is not', () {
+      expect(readAloudHeard(['¿Cuándo', 'debemos'], ['cuando', 'debemos']), [
+        true,
+        true,
+      ]);
+      expect(readAloudHeard(['niño'], ['nino']), [false]);
     });
 
     test('punctuation on either side never blocks a match', () {

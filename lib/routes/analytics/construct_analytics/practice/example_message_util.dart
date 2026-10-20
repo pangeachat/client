@@ -55,15 +55,20 @@ class ExampleMessageUtil {
     return result?.toSpans();
   }
 
+  /// [maxContextChars] is how much of the message around the target to keep;
+  /// the read-aloud exercise asks for more so the target's whole sentence is
+  /// there to cut to.
   static Future<AudioExampleMessage?> getAudioExampleMessage(
     ConstructUses construct, {
     String? form,
     bool noBold = false,
+    int maxContextChars = defaultMaxContextChars,
   }) async {
     final result = await _getExampleMessageResult(
       construct,
       form: form,
       noBold: noBold,
+      maxContextChars: maxContextChars,
     );
     return result?.toAudioExampleMessage();
   }
@@ -88,11 +93,14 @@ class ExampleMessageUtil {
     return allSpans;
   }
 
+  static const int defaultMaxContextChars = 100;
+
   static Future<_ExampleMessageResult?> _getExampleMessageResult(
     ConstructUses construct, {
     String? form,
     bool noBold = false,
     bool savedOnly = false,
+    int maxContextChars = defaultMaxContextChars,
   }) async {
     final uses = List<OneConstructUse>.from(construct.cappedUses);
     uses.shuffle(); // Shuffle to get a random example message each time
@@ -106,7 +114,12 @@ class ExampleMessageUtil {
       );
       if (event == null) continue;
 
-      final result = _buildExampleMessage(use.form, event, noBold: noBold);
+      final result = _buildExampleMessage(
+        use.form,
+        event,
+        noBold: noBold,
+        maxContextChars: maxContextChars,
+      );
       if (result != null) return result;
     }
     return null;
@@ -116,6 +129,7 @@ class ExampleMessageUtil {
     String? form,
     PangeaMessageEvent messageEvent, {
     bool noBold = false,
+    int maxContextChars = defaultMaxContextChars,
   }) {
     String? text;
     List<PangeaToken>? tokens;
@@ -143,8 +157,6 @@ class ExampleMessageUtil {
     }
 
     final targetToken = tokens[targetTokenIndex];
-
-    const maxContextChars = 100;
 
     final targetStart = targetToken.text.offset;
     final targetEnd = targetStart + targetToken.text.content.characters.length;

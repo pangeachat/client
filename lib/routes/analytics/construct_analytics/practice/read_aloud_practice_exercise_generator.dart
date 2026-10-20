@@ -11,6 +11,7 @@ import 'package:fluffychat/routes/analytics/construct_analytics/practice/analyti
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/read_aloud_match.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_audio_practice_exercise_generator.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_meaning_practice_exercise_generator.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
 
@@ -29,7 +30,10 @@ class ReadAloudPracticeExerciseGenerator {
     // the listening exercise takes.
     final example =
         req.audioExampleMessage ??
-        await VocabAudioPracticeExerciseGenerator.resolveAudioExample(req);
+        await VocabAudioPracticeExerciseGenerator.resolveAudioExample(
+          req,
+          maxContextChars: _contextChars,
+        );
     if (example == null) {
       _reportFallback('no_example', token.lemma.text);
       return VocabMeaningPracticeExerciseGenerator.get(
@@ -53,11 +57,71 @@ class ReadAloudPracticeExerciseGenerator {
       );
     }
     return MessagePracticeExerciseResponse(
-      exercise: trimToWindow(
+      exercise: trimToSentence(
         exercise,
         maxWords: AnalyticsPracticeConstants.readAloudMaxWords,
       ),
     );
+  }
+
+  /// Enough of the message around the target to hold its whole sentence; the
+  /// sentence cut and the word cap below do the rest.
+  static const int _contextChars = 400;
+
+  static final RegExp _sentenceEnd = RegExp(r'^[.!?…。！？]+$');
+  static final RegExp _sentenceOpen = RegExp(r'^[¿¡]+$');
+
+  static bool _endsSentence(PangeaToken t) =>
+      _sentenceEnd.hasMatch(t.text.content.trim());
+  static bool _opensSentence(PangeaToken t) =>
+      _sentenceOpen.hasMatch(t.text.content.trim());
+
+  /// The sentence of the example that holds the target, whole; a sentence
+  /// longer than [maxWords] is cut to a window inside it by [trimToWindow].
+  /// A cut at a stop reads naturally; one in the middle of a clause did not.
+  @visibleForTesting
+  static ReadAloudPracticeExerciseModel trimToSentence(
+    ReadAloudPracticeExerciseModel exercise, {
+    required int maxWords,
+  }) {
+    final tokens = exercise.exampleTokens;
+    final words = exercise.referenceTokens;
+    final target = exercise.targetIndex;
+    if (target == -1 || tokens.isEmpty) return exercise;
+    final targetAt = tokens.indexWhere((t) => identical(t, words[target]));
+
+    var first = 0;
+    for (var i = targetAt - 1; i >= 0; i--) {
+      if (_endsSentence(tokens[i])) {
+        first = i + 1;
+        break;
+      }
+    }
+    var last = tokens.length - 1;
+    for (var i = targetAt; i < tokens.length; i++) {
+      if (_endsSentence(tokens[i])) {
+        last = i;
+        break;
+      }
+    }
+    // Stray punctuation left at the front does not open a sentence; an
+    // inverted question or exclamation mark does.
+    while (first < targetAt &&
+        !isSpokenWord(tokens[first].text.content) &&
+        !_opensSentence(tokens[first])) {
+      first++;
+    }
+
+    final sentence = first == 0 && last == tokens.length - 1
+        ? exercise
+        : _rebuild(
+            exercise,
+            tokens.sublist(first, last + 1),
+            cutBefore: false,
+            cutAfter: false,
+          );
+    if (sentence.referenceTokens.length <= maxWords) return sentence;
+    return trimToWindow(sentence, maxWords: maxWords);
   }
 
   /// At most [maxWords] words of the example around the target, with an
@@ -89,10 +153,24 @@ class ReadAloudPracticeExerciseGenerator {
       if (!glued) break;
       lastIndex++;
     }
-    final window = tokens.sublist(firstIndex, lastIndex + 1);
+    return _rebuild(
+      exercise,
+      tokens.sublist(firstIndex, lastIndex + 1),
+      cutBefore: start > 0,
+      cutAfter: end < words.length,
+    );
+  }
 
+  /// The same exercise over [window], a contiguous run of its tokens, with
+  /// the displayed text sliced to match and an ellipsis on each cut side.
+  static ReadAloudPracticeExerciseModel _rebuild(
+    ReadAloudPracticeExerciseModel exercise,
+    List<PangeaToken> window, {
+    required bool cutBefore,
+    required bool cutAfter,
+  }) {
     final chars = exercise.referenceText.characters.toList();
-    final base = tokens.first.text.offset;
+    final base = exercise.exampleTokens.first.text.offset;
     final from = (window.first.text.offset - base).clamp(0, chars.length);
     final to =
         (window.last.text.offset +
@@ -108,9 +186,9 @@ class ReadAloudPracticeExerciseGenerator {
       eventId: exercise.eventId,
       exampleMessage: ExampleMessageInfo(
         exampleMessage: [
-          if (start > 0) const TextSpan(text: '… '),
+          if (cutBefore) const TextSpan(text: '… '),
           TextSpan(text: chars.sublist(from, to).join()),
-          if (end < words.length) const TextSpan(text: '…'),
+          if (cutAfter) const TextSpan(text: '…'),
         ],
       ),
     );
