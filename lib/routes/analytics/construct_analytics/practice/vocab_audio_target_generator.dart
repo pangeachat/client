@@ -9,20 +9,15 @@ class VocabAudioTargetGenerator {
   static PracticeExerciseTypeEnum exerciseType =
       PracticeExerciseTypeEnum.lemmaAudio;
 
-  /// Picks words that have an example message to hear or read. [type] is the
-  /// exercise the targets are for: the listening exercise by default, or the
-  /// read-aloud exercise, which needs the same example-bearing word
-  /// (practice-exercises.instructions.md, "Speaking practice"). Lemmas in
-  /// [excludeLemmas] are left out, so one session does not hear and read the
-  /// same word.
+  /// Picks words that have an example message to hear or read: the listening
+  /// targets, which the session repo also alternates into read-aloud targets
+  /// (practice-exercises.instructions.md, "Speaking practice").
   static Future<List<AnalyticsPracticeTarget>> get(
-    List<ConstructUses> constructs, {
-    PracticeExerciseTypeEnum type = PracticeExerciseTypeEnum.lemmaAudio,
-    Set<String> excludeLemmas = const {},
-  }) async {
+    List<ConstructUses> constructs,
+  ) async {
     // Score and sort by priority (highest first). Uses shared scorer for
     // consistent prioritization with message practice.
-    final sortedConstructs = constructs.practiceSort(type);
+    final sortedConstructs = constructs.practiceSort(exerciseType);
 
     final Set<String> seenLemmas = {};
 
@@ -34,9 +29,8 @@ class VocabAudioTargetGenerator {
       }
 
       if (seenLemmas.contains(construct.lemma)) continue;
-      if (excludeLemmas.contains(construct.lemma)) continue;
 
-      if (construct.shouldSkipForRecentPractice(type)) {
+      if (construct.shouldSkipForRecentPractice(exerciseType)) {
         continue;
       }
 
@@ -58,7 +52,7 @@ class VocabAudioTargetGenerator {
         AnalyticsPracticeTarget(
           target: PracticeTarget(
             tokens: [construct.id.asToken],
-            exerciseType: type,
+            exerciseType: exerciseType,
           ),
         ),
       );

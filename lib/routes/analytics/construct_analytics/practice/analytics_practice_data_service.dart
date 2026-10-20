@@ -1,8 +1,11 @@
 import 'dart:convert';
 
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_repo.dart';
@@ -182,23 +185,40 @@ class AnalyticsPracticeDataService {
       userL2: userController.userL2?.langCode ?? LanguageKeys.unknownLanguage,
       voice: userController.voice,
     );
-    final result = await TextToSpeechRepo.instance.get(request);
-    if (result.isError) {
-      Error.throwWithStackTrace(
-        result.asError!.error,
-        result.asError!.stackTrace,
+    try {
+      final result = await TextToSpeechRepo.instance.get(request);
+      if (result.isError) {
+        Error.throwWithStackTrace(
+          result.asError!.error,
+          result.asError!.stackTrace,
+        );
+      }
+      final response = result.result!;
+      final key = _readAloudKey(exercise);
+      _audioFiles[key] = PangeaAudioFile(
+        bytes: base64.decode(response.audioContent),
+        name: '$key.${response.fileExtension}',
+        mimeType: response.mimeType,
+        duration: response.durationMillis,
+        waveform: response.waveform,
+        tokens: response.ttsTokens,
       );
+    } catch (e, s) {
+      // A failed prefetch drops the item from the session without a trace
+      // otherwise, so say so once; the item is then skipped as any other
+      // failed generation is.
+      await ErrorHandler.logErrorOnce(
+        key: 'read_aloud_reference_audio',
+        e: e,
+        s: s,
+        data: {
+          'lemma': exercise.tokens.first.lemma.text,
+          'textLength': exercise.referenceText.length,
+        },
+        level: SentryLevel.warning,
+      );
+      rethrow;
     }
-    final response = result.result!;
-    final key = _readAloudKey(exercise);
-    _audioFiles[key] = PangeaAudioFile(
-      bytes: base64.decode(response.audioContent),
-      name: '$key.${response.fileExtension}',
-      mimeType: response.mimeType,
-      duration: response.durationMillis,
-      waveform: response.waveform,
-      tokens: response.ttsTokens,
-    );
   }
 
   Future<void> _prefetchAudioInfo(

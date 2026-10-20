@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/connection_status/connection_status_controller.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
@@ -84,32 +86,26 @@ class AnalyticsPracticeSessionRepo {
       // About a third each of listening, read-aloud and meaning, by count:
       // speaking is in every session without an item that needs a microphone
       // and the network dominating it (practice-exercises.instructions.md,
-      // "Speaking practice"). Listening and read-aloud both need an
-      // example-bearing word; meaning fills whatever is left.
+      // "Speaking practice"). Listening and read-aloud share the one pool of
+      // example-bearing words; meaning fills whatever is left.
       final totalNeeded = AnalyticsPracticeConstants.targetsToGenerate;
       final thirdNeeded = (totalNeeded / 3).ceil();
 
-      final audioTargets = await VocabAudioTargetGenerator.get(vocabConstructs);
-      final audioTargetsToAdd = audioTargets.take(thirdNeeded).toList();
-
-      final readAloudTargets = await VocabAudioTargetGenerator.get(
+      final exampleTargets = await VocabAudioTargetGenerator.get(
         vocabConstructs,
-        type: PracticeExerciseTypeEnum.readAloud,
-        excludeLemmas: {
-          for (final t in audioTargetsToAdd) t.target.tokens.first.lemma.text,
-        },
       );
-      final readAloudTargetsToAdd = readAloudTargets.take(thirdNeeded).toList();
+      final spokenTargets = alternateListeningAndReadAloud(
+        exampleTargets,
+        each: thirdNeeded,
+      );
 
-      final vocabNeeded =
-          totalNeeded - audioTargetsToAdd.length - readAloudTargetsToAdd.length;
+      final vocabNeeded = totalNeeded - spokenTargets.length;
       final vocabTargets = await VocabMeaningTargetGenerator.get(
         vocabConstructs,
       );
       final vocabCount = min(vocabTargets.length, vocabNeeded);
 
-      targets.addAll(audioTargetsToAdd);
-      targets.addAll(readAloudTargetsToAdd);
+      targets.addAll(spokenTargets);
       targets.addAll(vocabTargets.take(vocabCount));
 
       if (scope != null) {
@@ -191,6 +187,38 @@ class AnalyticsPracticeSessionRepo {
       offline: offline,
     );
     return session;
+  }
+
+  /// Listening and read-aloud both need an example-bearing word and the pool
+  /// can be small, so the two take turns down the one priority order,
+  /// listening first, up to [each] apiece. Giving listening its whole share
+  /// first starved read-aloud whenever the pool held [each] words or fewer.
+  @visibleForTesting
+  static List<AnalyticsPracticeTarget> alternateListeningAndReadAloud(
+    List<AnalyticsPracticeTarget> exampleTargets, {
+    required int each,
+  }) {
+    final listening = <AnalyticsPracticeTarget>[];
+    final readAloud = <AnalyticsPracticeTarget>[];
+    for (final target in exampleTargets) {
+      final listeningFull = listening.length >= each;
+      final readAloudFull = readAloud.length >= each;
+      if (listeningFull && readAloudFull) break;
+      if (readAloudFull ||
+          (!listeningFull && listening.length <= readAloud.length)) {
+        listening.add(target);
+      } else {
+        readAloud.add(
+          AnalyticsPracticeTarget(
+            target: PracticeTarget(
+              tokens: target.target.tokens,
+              exerciseType: PracticeExerciseTypeEnum.readAloud,
+            ),
+          ),
+        );
+      }
+    }
+    return [...listening, ...readAloud];
   }
 
   /// Whether the connection banner may offer an offline vocab session: the app
