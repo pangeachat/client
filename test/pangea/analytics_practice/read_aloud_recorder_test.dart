@@ -11,23 +11,19 @@ import 'package:fluffychat/routes/chat/events/streaming_stt/stt_stream_repo.dart
 import 'package:fluffychat/routes/chat/events/streaming_stt/stt_stream_state.dart';
 
 class _FakeCapture implements SttAudioCaptureApi {
-  _FakeCapture({this.permission = true});
-
-  final bool permission;
   void Function(Uint8List)? _onFrame;
   bool disposed = false;
 
   void pushFrame(Uint8List frame) => _onFrame?.call(frame);
 
   @override
-  Future<bool> hasPermission() async => permission;
+  Future<bool> hasPermission() async => true;
 
   @override
   Future<bool> start(
     void Function(Uint8List frame) onFrame, {
     void Function(Object error)? onError,
   }) async {
-    if (!permission) return false;
     _onFrame = onFrame;
     return true;
   }

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
-import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/read_aloud_match.dart';
@@ -203,7 +202,8 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
             matrixFile: file,
             autoplay: autoplay,
             playbackSpeedController: widget.playbackSpeedController,
-            listeningCategory: DosageListeningCategory.practiceAudio,
+            // No listening category, like the listening exercise's player: the
+            // shared-player practice surfaces stay dark until #8411 lands.
             exposure: exposure,
           ),
         ),
