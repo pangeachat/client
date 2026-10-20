@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-10-16 16:33:03.382168",
+    "@@last_modified": "2026-10-20 12:56:24.788307",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "បានបញ្ចប់",
     "completedTimes": "បានបញ្ចប់ {count} ដង",
     "classLocation": "ទីតាំងថ្នាក់រៀន",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "អានឮៗហើយបានឮ",
+    "constructUseIncRADesc": "អានឮៗ តែមិនបានឮ",
+    "hearItFirstToolName": "ស្ដាប់មុន",
+    "hearItFirstDescription": "ក្នុងការអនុវត្តការអានឮៗ ចាក់ប្រយោគមុនពេលអ្នកថត។",
+    "readAloudInstruction": "ចុចមីក្រូហ្វូន ហើយអានប្រយោគឮៗ",
+    "readAloudRecord": "ថត",
+    "readAloudMicLabel": "{count, plural, =1{ថត ពាក្យ ១ មិនទាន់បានឮ} other{ថត ពាក្យ {count} មិនទាន់បានឮ}}",
+    "readAloudStop": "បញ្ឈប់ការថត",
+    "readAloudHeardAll": "បានឮគ្រប់ពាក្យ!",
+    "readAloudNotHeard": "{count, plural, =1{ពាក្យ ១ មិនបានឮ} other{ពាក្យ {count} មិនបានឮ}}",
+    "readAloudTriesLeft": "{count, plural, =1{នៅសល់ ១ ដង} other{នៅសល់ {count} ដង}}",
+    "readAloudHeardTranscript": "បានឮ៖ {transcript}",
+    "readAloudTranscribeFailed": "មិនអាចបំប្លែងការថតរបស់អ្នកបានទេ។ សូមពិនិត្យមើលការតភ្ជាប់របស់អ្នក ហើយព្យាយាមម្ដងទៀត។",
+    "readAloudMicUnavailable": "គ្មានមីក្រូហ្វូនទេ ដូច្នេះពាក្យនេះគឺជាលំហាត់អត្ថន័យវិញ។",
+    "readAloudYourRecording": "ការថតរបស់អ្នក",
+    "readAloudExample": "ឧទាហរណ៍"
 }

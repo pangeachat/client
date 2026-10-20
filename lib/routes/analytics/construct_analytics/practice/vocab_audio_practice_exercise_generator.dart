@@ -21,9 +21,9 @@ class VocabAudioPracticeExerciseGenerator {
     // paint on N serial event fetches (#7702). If it can't be resolved, fall
     // back to a meaning exercise for the same lemma so the slot isn't lost.
     final audioExample =
-        req.audioExampleMessage ?? await _resolveAudioExample(req);
+        req.audioExampleMessage ?? await resolveAudioExample(req);
     if (audioExample == null) {
-      return VocabMeaningPracticeExerciseGenerator.get(_asMeaningRequest(req));
+      return VocabMeaningPracticeExerciseGenerator.get(asMeaningRequest(req));
     }
 
     // Find the matching token in the audio example message to get the correct form
@@ -99,7 +99,7 @@ class VocabAudioPracticeExerciseGenerator {
   /// (off the selection critical path, #7702). Looks the construct up from
   /// local analytics, then finds an audio-capable example message. Null when
   /// no usable example exists — the caller falls back to a meaning exercise.
-  static Future<AudioExampleMessage?> _resolveAudioExample(
+  static Future<AudioExampleMessage?> resolveAudioExample(
     MessagePracticeExerciseRequest req,
   ) async {
     final id = req.target.tokens.first.vocabConstructID;
@@ -116,7 +116,7 @@ class VocabAudioPracticeExerciseGenerator {
 
   /// A meaning-exercise request for the same lemma, used when an audio example
   /// can't be resolved. Meaning has no example-message dependency.
-  static MessagePracticeExerciseRequest _asMeaningRequest(
+  static MessagePracticeExerciseRequest asMeaningRequest(
     MessagePracticeExerciseRequest req,
   ) => MessagePracticeExerciseRequest(
     userL1: req.userL1,

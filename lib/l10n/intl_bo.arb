@@ -2908,7 +2908,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-10-16 16:32:54.818488",
+    "@@last_modified": "2026-10-20 12:56:07.315751",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9613,5 +9613,21 @@
     "activityCompleted": "བསྒྲུབས་ཟིན།",
     "completedTimes": "ཐེངས་ {count} བསྒྲུབས་ཟིན།",
     "classLocation": "སློབ་ཁང་གི་གནས་ཡུལ།",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "སྐད་བརྒྱབ་ནས་གོ་སོང་།",
+    "constructUseIncRADesc": "སྐད་བརྒྱབ་ཀྱང་གོ་མ་སོང་།",
+    "hearItFirstToolName": "ཐོག་མར་ཉོན་དང་།",
+    "hearItFirstDescription": "སྐད་བརྒྱབ་ནས་སྦྱོང་བརྡར་བྱེད་སྐབས། ཁྱེད་ཀྱིས་སྐད་བརྒྱབ་མ་ཐག་སྒྲ་ཕབ་བྱེད་དགོས།",
+    "readAloudInstruction": "མིང་སྒྲ་ཕབ་འཕྲུལ་ཆས་ལ་རེག་ནས་སྐད་ཆ་དེ་དག་སྐད་གསང་མཐོན་པོས་ཀློགས།",
+    "readAloudRecord": "སྒྲ་ཕབ།",
+    "readAloudMicLabel": "{count, plural, =1{ད་དུང་ཚིག་གཅིག་གོ་མ་སོང་། སྒྲ་ཕབ་བྱེད་དགོས།} other{ད་དུང་ཚིག་ {count} གོ་མ་སོང་། སྒྲ་ཕབ་བྱེད་དགོས།}}",
+    "readAloudStop": "སྒྲ་ཕབ་མཚམས་འཇོག",
+    "readAloudHeardAll": "ཚིག་ཚང་མ་གོ་སོང་།",
+    "readAloudNotHeard": "{count, plural, =1{ཚིག་གཅིག་གོ་མ་སོང་།} other{ཚིག་ {count} གོ་མ་སོང་།}}",
+    "readAloudTriesLeft": "{count, plural, =1{ཐེངས་གཅིག་ལྷག་འདུག} other{ཐེངས་ {count} ལྷག་འདུག}}",
+    "readAloudHeardTranscript": "གོ་བ་ནི། {transcript}",
+    "readAloudTranscribeFailed": "ཁྱེད་ཀྱི་སྒྲ་ཕབ་དེ་ཡིག་ཐོག་ཏུ་ཕབ་མ་ཐུབ། དྲ་རྒྱའི་འབྲེལ་མཐུད་ལ་བསྐྱར་དུ་ལྟ་ཞིབ་བྱས་ནས་བསྐྱར་དུ་ཚོད་ལྟ་བྱོས།",
+    "readAloudMicUnavailable": "མིང་སྒྲ་ཕབ་འཕྲུལ་ཆས་མེད་པས། ཚིག་འདི་དོན་དག་གི་སྦྱོང་བརྡར་ཞིག་ཏུ་བརྩི་རྒྱུ་ཡིན།",
+    "readAloudYourRecording": "ཁྱེད་ཀྱི་སྒྲ་ཕབ།",
+    "readAloudExample": "དཔེ་མཚོན།"
 }

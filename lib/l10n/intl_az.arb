@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-16 16:32:53.707529",
+    "@@last_modified": "2026-10-20 12:56:04.370125",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "Tamamlandı",
     "completedTimes": "{count} dəfə tamamlandı",
     "classLocation": "Dərs yeri",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Səsləndirildi və eşidildi",
+    "constructUseIncRADesc": "Səsləndirildi, eşidilmədi",
+    "hearItFirstToolName": "Əvvəlcə dinlə",
+    "hearItFirstDescription": "Səsləndirmə təcrübəsində, qeyd etməzdən əvvəl cümləni səsləndirin.",
+    "readAloudInstruction": "Mikrofona toxunun və cümləni ucadan oxuyun",
+    "readAloudRecord": "Qeyd et",
+    "readAloudMicLabel": "{count, plural, =1{Qeyd et, 1 söz hələ eşidilməyib} other{Qeyd et, {count} söz hələ eşidilməyib}}",
+    "readAloudStop": "Qeydi dayandır",
+    "readAloudHeardAll": "Hər söz eşidildi!",
+    "readAloudNotHeard": "{count, plural, =1{1 söz eşidilmədi} other{{count} söz eşidilmədi}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 cəhd qalıb} other{{count} cəhd qalıb}}",
+    "readAloudHeardTranscript": "Eşidildi: {transcript}",
+    "readAloudTranscribeFailed": "Qeydiniz transkripsiya edilə bilmədi. Bağlantınızı yoxlayın və yenidən cəhd edin.",
+    "readAloudMicUnavailable": "Mikrofon mövcud deyil, buna görə bu söz əvəzinə məna məşqi olacaq.",
+    "readAloudYourRecording": "Sizin qeydiniz",
+    "readAloudExample": "Nümunə"
 }

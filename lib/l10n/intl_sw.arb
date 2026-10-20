@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-16 16:33:12.932247",
+    "@@last_modified": "2026-10-20 12:56:47.815299",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "Imekamilika",
     "completedTimes": "Imekamilika mara {count}",
     "classLocation": "Mahali pa darasa",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Soma kwa sauti na kusikika",
+    "constructUseIncRADesc": "Soma kwa sauti, haikusikika",
+    "hearItFirstToolName": "Isikie kwanza",
+    "hearItFirstDescription": "Katika mazoezi ya kusoma kwa sauti, cheza sentensi kabla ya kurekodi.",
+    "readAloudInstruction": "Gonga maiki na usome sentensi kwa sauti",
+    "readAloudRecord": "Rekodi",
+    "readAloudMicLabel": "{count, plural, =1{Rekodi, neno 1 halijasikika bado} other{Rekodi, maneno {count} hayajasikika bado}}",
+    "readAloudStop": "Acha kurekodi",
+    "readAloudHeardAll": "Kila neno limesikika!",
+    "readAloudNotHeard": "{count, plural, =1{Neno 1 halikusikika} other{Maneno {count} hayakusikika}}",
+    "readAloudTriesLeft": "{count, plural, =1{Jaribio 1 limesalia} other{Majaribio {count} yamesalia}}",
+    "readAloudHeardTranscript": "Imesikika: {transcript}",
+    "readAloudTranscribeFailed": "Imeshindwa kunakili rekodi yako. Angalia muunganisho wako na ujaribu tena.",
+    "readAloudMicUnavailable": "Hakuna maiki inayopatikana, kwa hivyo neno hili ni zoezi la maana badala yake.",
+    "readAloudYourRecording": "Rekodi yako",
+    "readAloudExample": "Mfano"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:06.977421",
+    "@@last_modified": "2026-10-20 12:56:34.203306",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10005,5 +10005,21 @@
     "activityCompleted": "Voltooid",
     "completedTimes": "{count} keer voltooid",
     "classLocation": "Locatie van de les",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Hardop gelezen en gehoord",
+    "constructUseIncRADesc": "Hardop gelezen, niet gehoord",
+    "hearItFirstToolName": "Hoor het eerst",
+    "hearItFirstDescription": "Speel de zin af voordat je opneemt tijdens de hardop-leesoefening.",
+    "readAloudInstruction": "Tik op de microfoon en lees de zin hardop voor",
+    "readAloudRecord": "Opnemen",
+    "readAloudMicLabel": "{count, plural, =1{Opnemen, 1 woord nog niet gehoord} other{Opnemen, {count} woorden nog niet gehoord}}",
+    "readAloudStop": "Opname stoppen",
+    "readAloudHeardAll": "Elk woord gehoord!",
+    "readAloudNotHeard": "{count, plural, =1{1 woord niet gehoord} other{{count} woorden niet gehoord}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 poging over} other{{count} pogingen over}}",
+    "readAloudHeardTranscript": "Gehoord: {transcript}",
+    "readAloudTranscribeFailed": "Kon je opname niet transcriberen. Controleer je verbinding en probeer het opnieuw.",
+    "readAloudMicUnavailable": "Er is geen microfoon beschikbaar, dus dit woord is in plaats daarvan een betekenisoefening.",
+    "readAloudYourRecording": "Jouw opname",
+    "readAloudExample": "Voorbeeld"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-16 16:33:02.827621",
+    "@@last_modified": "2026-10-20 12:56:25.653340",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "Аяқталды",
     "completedTimes": "{count} рет аяқталды",
     "classLocation": "Сабақ орны",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Дауыстап оқып, естілді",
+    "constructUseIncRADesc": "Дауыстап оқылды, естілмеді",
+    "hearItFirstToolName": "Алдымен тыңдау",
+    "hearItFirstDescription": "Дауыстап оқу жаттығуында, жазбас бұрын сөйлемді ойнатыңыз.",
+    "readAloudInstruction": "Микрофонды басып, сөйлемді дауыстап оқыңыз",
+    "readAloudRecord": "Жазу",
+    "readAloudMicLabel": "{count, plural, =1{Жазу, 1 сөз әлі естілмеді} other{Жазу, {count} сөз әлі естілмеді}}",
+    "readAloudStop": "Жазуды тоқтату",
+    "readAloudHeardAll": "Әр сөз естілді!",
+    "readAloudNotHeard": "{count, plural, =1{1 сөз естілмеді} other{{count} сөз естілмеді}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 әрекет қалды} other{{count} әрекет қалды}}",
+    "readAloudHeardTranscript": "Естілді: {transcript}",
+    "readAloudTranscribeFailed": "Жазбаңызды транскрипциялау мүмкін болмады. Байланысыңызды тексеріп, қайталап көріңіз.",
+    "readAloudMicUnavailable": "Микрофон қолжетімді емес, сондықтан бұл сөз мағыналық жаттығу болады.",
+    "readAloudYourRecording": "Сіздің жазбаңыз",
+    "readAloudExample": "Мысал"
 }

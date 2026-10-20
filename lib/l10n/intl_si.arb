@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-16 16:33:11.809346",
+    "@@last_modified": "2026-10-20 12:56:39.656719",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "සම්පූර්ණයි",
     "completedTimes": "{count} වතාවක් සම්පූර්ණ කර ඇත",
     "classLocation": "පන්ති ස්ථානය",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "හඬ නඟා කියවා ඇසිණි",
+    "constructUseIncRADesc": "හඬ නඟා කියෙව්වත් ඇසුණේ නැත",
+    "hearItFirstToolName": "මුලින්ම අහන්න",
+    "hearItFirstDescription": "හඬ නඟා කියවීමේ පුහුණුවේදී, ඔබ පටිගත කිරීමට පෙර වාක්‍යය වාදනය කරන්න.",
+    "readAloudInstruction": "මයික්‍රෆෝනය තට්ටු කර වාක්‍යය හඬ නඟා කියවන්න",
+    "readAloudRecord": "පටිගත කරන්න",
+    "readAloudMicLabel": "{count, plural, =1{වාර්තා කරන්න, 1 වචනයක් තවම අසා නැත} other{වාර්තා කරන්න, {count} වචන තවම අසා නැත}}",
+    "readAloudStop": "පටිගත කිරීම නවත්වන්න",
+    "readAloudHeardAll": "සෑම වචනයක්ම ඇසිණි!",
+    "readAloudNotHeard": "{count, plural, =1{1 වචනයක් ඇසුණේ නැත} other{{count} වචන ඇසුණේ නැත}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 උත්සාහයක් ඉතිරිව ඇත} other{{count} උත්සාහයන් ඉතිරිව ඇත}}",
+    "readAloudHeardTranscript": "ඇසුණි: {transcript}",
+    "readAloudTranscribeFailed": "ඔබගේ පටිගත කිරීම පිටපත් කිරීමට නොහැකි විය. ඔබගේ සම්බන්ධතාවය පරීක්ෂා කර නැවත උත්සාහ කරන්න.",
+    "readAloudMicUnavailable": "මයික්‍රෆෝනයක් නොමැති නිසා, මෙම වචනය වෙනුවට අර්ථය පිළිබඳ අභ්‍යාසයකි.",
+    "readAloudYourRecording": "ඔබගේ පටිගත කිරීම",
+    "readAloudExample": "උදාහරණය"
 }

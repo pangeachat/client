@@ -6062,5 +6062,93 @@
     "offlinePracticeNothingSaved": "Not enough is saved on this device to practice offline. Try again when you're back online.",
     "@offlinePracticeNothingSaved": {
         "description": "Shown instead of a practice session when the app has no connection to Pangea Chat and the device has not saved enough words or messages to build one offline."
+    },
+    "constructUseCorRADesc": "Read aloud and heard",
+    "@constructUseCorRADesc": {
+        "description": "Analytics label for a read-aloud practice exercise where the target word was heard."
+    },
+    "constructUseIncRADesc": "Read aloud, not heard",
+    "@constructUseIncRADesc": {
+        "description": "Analytics label for a read-aloud practice exercise where the target word was not heard after every try."
+    },
+    "hearItFirstToolName": "Hear it first",
+    "@hearItFirstToolName": {
+        "description": "Audio setting: in read-aloud practice, the example sentence plays before the learner records."
+    },
+    "hearItFirstDescription": "In read-aloud practice, play the sentence before you record.",
+    "@hearItFirstDescription": {
+        "description": "Description under the Hear it first audio setting."
+    },
+    "readAloudInstruction": "Tap the mic and read the sentence aloud",
+    "@readAloudInstruction": {
+        "description": "Instruction on a read-aloud practice exercise before the learner records."
+    },
+    "readAloudRecord": "Record",
+    "@readAloudRecord": {
+        "description": "Accessible name of the record button on a read-aloud exercise before anything has been heard."
+    },
+    "readAloudMicLabel": "{count, plural, =1{Record, 1 word not yet heard} other{Record, {count} words not yet heard}}",
+    "@readAloudMicLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        },
+        "description": "Accessible name of the record button on a read-aloud exercise; count is how many words of the sentence have not been heard yet (never zero)."
+    },
+    "readAloudStop": "Stop recording",
+    "@readAloudStop": {
+        "description": "Accessible name of the record button while a read-aloud recording is running."
+    },
+    "readAloudHeardAll": "Every word heard!",
+    "@readAloudHeardAll": {
+        "description": "Shown when the learner read the whole sentence and every word was heard."
+    },
+    "readAloudNotHeard": "{count, plural, =1{1 word not heard} other{{count} words not heard}}",
+    "@readAloudNotHeard": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        },
+        "description": "Shown after a read-aloud recording in which some words of the sentence were not heard."
+    },
+    "readAloudTriesLeft": "{count, plural, =1{1 try left} other{{count} tries left}}",
+    "@readAloudTriesLeft": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        },
+        "description": "How many more recordings the learner may make on this read-aloud exercise."
+    },
+    "readAloudHeardTranscript": "Heard: {transcript}",
+    "@readAloudHeardTranscript": {
+        "type": "String",
+        "placeholders": {
+            "transcript": {
+                "type": "String"
+            }
+        },
+        "description": "The words the recognizer heard in the learner's read-aloud recording."
+    },
+    "readAloudTranscribeFailed": "Couldn't transcribe your recording. Check your connection and try again.",
+    "@readAloudTranscribeFailed": {
+        "description": "Shown when a read-aloud recording could not be transcribed by any route."
+    },
+    "readAloudMicUnavailable": "No microphone is available, so this word is a meaning exercise instead.",
+    "@readAloudMicUnavailable": {
+        "description": "Shown when microphone permission is refused or no microphone exists and a read-aloud exercise is swapped for a meaning exercise."
+    },
+    "readAloudYourRecording": "Your recording",
+    "@readAloudYourRecording": {
+        "description": "Label of the player for the learner's own read-aloud recording, beside the example audio."
+    },
+    "readAloudExample": "Example",
+    "@readAloudExample": {
+        "description": "Label of the player for the example sentence's audio on a read-aloud exercise."
     }
 }

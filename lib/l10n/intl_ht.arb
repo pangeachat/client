@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-16 16:32:59.958620",
+    "@@last_modified": "2026-10-20 12:56:14.479743",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "Fini",
     "completedTimes": "Fini {count} fwa",
     "classLocation": "Kote klas la",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Li awotvwa epi tande",
+    "constructUseIncRADesc": "Li awotvwa, pa tande",
+    "hearItFirstToolName": "Tande l anvan",
+    "hearItFirstDescription": "Nan egzèsis lekti awotvwa, jwe fraz la anvan ou anrejistre.",
+    "readAloudInstruction": "Tape mikwo a epi li fraz la awotvwa",
+    "readAloudRecord": "Anrejistre",
+    "readAloudMicLabel": "{count, plural, =1{Anrejistre, 1 mo poko tande} other{Anrejistre, {count} mo poko tande}}",
+    "readAloudStop": "Sispann anrejistre",
+    "readAloudHeardAll": "Tout mo yo tande!",
+    "readAloudNotHeard": "{count, plural, =1{1 mo pa tande} other{{count} mo pa tande}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 esè rete} other{{count} esè rete}}",
+    "readAloudHeardTranscript": "Tande: {transcript}",
+    "readAloudTranscribeFailed": "Nou pa t ka transkri anrejistreman ou. Tcheke koneksyon ou epi eseye ankò.",
+    "readAloudMicUnavailable": "Pa gen mikwofòn ki disponib, kidonk mo sa a se yon egzèsis siyifikasyon pito.",
+    "readAloudYourRecording": "Anrejistreman ou",
+    "readAloudExample": "Egzanp"
 }

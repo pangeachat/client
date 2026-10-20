@@ -181,6 +181,8 @@ class LearningSettingsViewModel extends ChangeNotifier {
         return _updatedProfile.userSettings.targetLanguage != null &&
             _selectedTargetLanguage != null &&
             toolSettings.listenFirst;
+      case ToolSetting.hearItFirst:
+        return toolSettings.hearItFirst;
       // Read-aloud is silent without a known-good device voice, so the toggle
       // reads off there whatever the account setting says — otherwise a
       // default-on toggle claims audio the device cannot produce (#8326).
@@ -225,6 +227,7 @@ class LearningSettingsViewModel extends ChangeNotifier {
       ToolSetting.audioWords => toolSettings.copyWith(audioWords: value),
       ToolSetting.audioChoices => toolSettings.copyWith(audioChoices: value),
       ToolSetting.listenFirst => toolSettings.copyWith(listenFirst: value),
+      ToolSetting.hearItFirst => toolSettings.copyWith(hearItFirst: value),
       ToolSetting.audioOnNewMessage => toolSettings.copyWith(
         audioOnNewMessage: value,
       ),

@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-16 16:33:05.022289",
+    "@@last_modified": "2026-10-20 12:56:30.557400",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "Завршено",
     "completedTimes": "Завршено {count} пати",
     "classLocation": "Локација на часот",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Прочитано на глас и слушнато",
+    "constructUseIncRADesc": "Прочитано на глас, не е слушнато",
+    "hearItFirstToolName": "Слушни го прво",
+    "hearItFirstDescription": "Во вежбањето читање на глас, пушти ја реченицата пред да снимиш.",
+    "readAloudInstruction": "Допрете го микрофонот и прочитајте ја реченицата на глас",
+    "readAloudRecord": "Сними",
+    "readAloudMicLabel": "{count, plural, =1{Сними, 1 збор сè уште не е слушнат} other{Сними, {count} зборови сè уште не се слушнати}}",
+    "readAloudStop": "Запри го снимањето",
+    "readAloudHeardAll": "Секој збор е слушнат!",
+    "readAloudNotHeard": "{count, plural, =1{1 збор не е слушнат} other{{count} зборови не се слушнати}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 обид преостанува} other{{count} обиди преостануваат}}",
+    "readAloudHeardTranscript": "Слушнато: {transcript}",
+    "readAloudTranscribeFailed": "Не можевме да го транскрибираме вашето снимање. Проверете ја врската и обидете се повторно.",
+    "readAloudMicUnavailable": "Нема достапен микрофон, па овој збор е вежба за значење наместо тоа.",
+    "readAloudYourRecording": "Вашето снимање",
+    "readAloudExample": "Пример"
 }

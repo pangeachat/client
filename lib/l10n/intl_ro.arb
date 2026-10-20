@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:09.335151",
+    "@@last_modified": "2026-10-20 12:56:51.021267",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10734,5 +10734,21 @@
     "activityCompleted": "Finalizat",
     "completedTimes": "Finalizat de {count} ori",
     "classLocation": "Locația cursului",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Citit cu voce tare și auzit",
+    "constructUseIncRADesc": "Citit cu voce tare, neauzit",
+    "hearItFirstToolName": "Auzi mai întâi",
+    "hearItFirstDescription": "La exercițiile de citire cu voce tare, redă propoziția înainte de a înregistra.",
+    "readAloudInstruction": "Atinge microfonul și citește propoziția cu voce tare",
+    "readAloudRecord": "Înregistrează",
+    "readAloudMicLabel": "{count, plural, =1{Înregistrează, 1 cuvânt neauzit încă} other{Înregistrează, {count} cuvinte neauzite încă}}",
+    "readAloudStop": "Oprește înregistrarea",
+    "readAloudHeardAll": "Fiecare cuvânt auzit!",
+    "readAloudNotHeard": "{count, plural, =1{1 cuvânt neauzit} other{{count} cuvinte neauzite}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 încercare rămasă} other{{count} încercări rămase}}",
+    "readAloudHeardTranscript": "Auzit: {transcript}",
+    "readAloudTranscribeFailed": "Nu s-a putut transcrie înregistrarea. Verifică-ți conexiunea și încearcă din nou.",
+    "readAloudMicUnavailable": "Niciun microfon nu este disponibil, așa că acest cuvânt este un exercițiu de înțeles în schimb.",
+    "readAloudYourRecording": "Înregistrarea ta",
+    "readAloudExample": "Exemplu"
 }

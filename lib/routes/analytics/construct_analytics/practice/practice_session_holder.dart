@@ -44,6 +44,11 @@ class PracticeSessionState {
   /// Lifecycle.
   DateTime lastInteractionAt = DateTime.now();
 
+  /// The microphone was refused or is absent, so this session's remaining
+  /// read-aloud items become meaning exercises; the next session tries again
+  /// (practice-exercises.instructions.md, "Microphone").
+  bool micUnavailable = false;
+
   PracticeSessionState(this.type, {this.missionId});
 
   /// Started, not completed, not errored — the session the cluster badge shows

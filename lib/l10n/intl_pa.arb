@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-16 16:33:08.866336",
+    "@@last_modified": "2026-10-20 12:56:37.173283",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "ਪੂਰਾ ਹੋ ਗਿਆ",
     "completedTimes": "{count} ਵਾਰ ਪੂਰਾ ਕੀਤਾ ਗਿਆ",
     "classLocation": "ਕਲਾਸ ਦੀ ਸਥਿਤੀ",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹਿਆ ਅਤੇ ਸੁਣਿਆ",
+    "constructUseIncRADesc": "ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹਿਆ, ਸੁਣਿਆ ਨਹੀਂ",
+    "hearItFirstToolName": "ਪਹਿਲਾਂ ਸੁਣੋ",
+    "hearItFirstDescription": "ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਅਭਿਆਸ ਕਰਨ ਲਈ, ਰਿਕਾਰਡ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਵਾਕ ਚਲਾਓ।",
+    "readAloudInstruction": "ਮਾਈਕ 'ਤੇ ਟੈਪ ਕਰੋ ਅਤੇ ਵਾਕ ਨੂੰ ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹੋ",
+    "readAloudRecord": "ਰਿਕਾਰਡ ਕਰੋ",
+    "readAloudMicLabel": "{count, plural, =1{ਰਿਕਾਰਡ ਕਰੋ, 1 ਸ਼ਬਦ ਅਜੇ ਸੁਣਿਆ ਨਹੀਂ ਗਿਆ} other{ਰਿਕਾਰਡ ਕਰੋ, {count} ਸ਼ਬਦ ਅਜੇ ਸੁਣੇ ਨਹੀਂ ਗਏ}}",
+    "readAloudStop": "ਰਿਕਾਰਡਿੰਗ ਬੰਦ ਕਰੋ",
+    "readAloudHeardAll": "ਹਰ ਸ਼ਬਦ ਸੁਣਿਆ!",
+    "readAloudNotHeard": "{count, plural, =1{1 ਸ਼ਬਦ ਸੁਣਿਆ ਨਹੀਂ ਗਿਆ} other{{count} ਸ਼ਬਦ ਸੁਣੇ ਨਹੀਂ ਗਏ}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 ਕੋਸ਼ਿਸ਼ ਬਾਕੀ} other{{count} ਕੋਸ਼ਿਸ਼ਾਂ ਬਾਕੀ}}",
+    "readAloudHeardTranscript": "ਸੁਣਿਆ: {transcript}",
+    "readAloudTranscribeFailed": "ਤੁਹਾਡੀ ਰਿਕਾਰਡਿੰਗ ਨੂੰ ਟ੍ਰਾਂਸਕ੍ਰਾਈਬ ਨਹੀਂ ਕਰ ਸਕਿਆ। ਆਪਣਾ ਕਨੈਕਸ਼ਨ ਜਾਂਚੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
+    "readAloudMicUnavailable": "ਕੋਈ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਉਪਲਬਧ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਇਹ ਸ਼ਬਦ ਇਸਦੀ ਬਜਾਏ ਇੱਕ ਅਰਥ ਅਭਿਆਸ ਹੈ।",
+    "readAloudYourRecording": "ਤੁਹਾਡੀ ਰਿਕਾਰਡਿੰਗ",
+    "readAloudExample": "ਉਦਾਹਰਨ"
 }

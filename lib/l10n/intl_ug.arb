@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-16 16:33:14.914608",
+    "@@last_modified": "2026-10-20 12:56:52.759871",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "تاماملاندى",
     "completedTimes": "{count} قېتىم تاماملىنىدۇ",
     "classLocation": "دەرس ئورنى",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "ئاۋازلىق ئوقۇلدى ۋە ئاڭلاندى",
+    "constructUseIncRADesc": "ئاۋازلىق ئوقۇلدى، ئاڭلانمىدى",
+    "hearItFirstToolName": "ئالدى بىلەن ئاڭلاڭ",
+    "hearItFirstDescription": "ئاۋازلىق ئوقۇش مەشىقىدە، خاتىرىلەشتىن بۇرۇن جۈملىنى قويۇڭ.",
+    "readAloudInstruction": "مىكروفوننى چېكىپ جۈملىنى ئاۋازلىق ئوقۇڭ",
+    "readAloudRecord": "خاتىرىلەش",
+    "readAloudMicLabel": "{count, plural, =1{خاتىرىلەش، 1 سۆز تېخى ئاڭلانمىدى} other{خاتىرىلەش، {count} سۆز تېخى ئاڭلانمىدى}}",
+    "readAloudStop": "خاتىرىلەشنى توختىتىش",
+    "readAloudHeardAll": "ھەر بىر سۆز ئاڭلاندى!",
+    "readAloudNotHeard": "{count, plural, =1{1 سۆز ئاڭلانمىدى} other{{count} سۆز ئاڭلانمىدى}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 قېتىم قالدى} other{{count} قېتىم قالدى}}",
+    "readAloudHeardTranscript": "ئاڭلاندى: {transcript}",
+    "readAloudTranscribeFailed": "خاتىرىلىگىنىڭىزنى تېكىستكە ئايلاندۇرغىلى بولمىدى. ئۇلىنىشىڭىزنى تەكشۈرۈپ قايتا سىناڭ.",
+    "readAloudMicUnavailable": "مىكروفون يوق، شۇڭا بۇ سۆزنىڭ ئورنىغا مەنىسىنى تېپىش مەشىقى قىلىنىدۇ.",
+    "readAloudYourRecording": "سىزنىڭ خاتىرىلىگىنىڭىز",
+    "readAloudExample": "مىسال"
 }

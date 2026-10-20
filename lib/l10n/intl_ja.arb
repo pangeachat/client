@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-16 16:33:01.900945",
+    "@@last_modified": "2026-10-20 12:56:22.161917",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10771,5 +10771,21 @@
     "activityCompleted": "完了",
     "completedTimes": "{count}回完了しました",
     "classLocation": "クラスの場所",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "読み上げ、聞き取り済み",
+    "constructUseIncRADesc": "読み上げ、聞き取り不可",
+    "hearItFirstToolName": "まず聞く",
+    "hearItFirstDescription": "読み上げ練習で、録音する前に文章を再生します。",
+    "readAloudInstruction": "マイクをタップして文章を読み上げてください",
+    "readAloudRecord": "録音",
+    "readAloudMicLabel": "{count, plural, =1{未聞き取りの単語が1つあります。録音してください} other{未聞き取りの単語が{count}つあります。録音してください}}",
+    "readAloudStop": "録音を停止",
+    "readAloudHeardAll": "すべての単語を聞き取りました！",
+    "readAloudNotHeard": "{count, plural, =1{聞き取れなかった単語が1つあります} other{聞き取れなかった単語が{count}つあります}}",
+    "readAloudTriesLeft": "{count, plural, =1{残り1回} other{残り{count}回}}",
+    "readAloudHeardTranscript": "聞き取り済み: {transcript}",
+    "readAloudTranscribeFailed": "録音を書き起こせませんでした。接続を確認してもう一度お試しください。",
+    "readAloudMicUnavailable": "マイクが利用できないため、この単語は意味の練習に変わります。",
+    "readAloudYourRecording": "あなたの録音",
+    "readAloudExample": "例"
 }

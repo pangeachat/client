@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-16 16:33:01.492576",
+    "@@last_modified": "2026-10-20 12:56:18.994758",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "Ավարտված է",
     "completedTimes": "Ավարտված է {count} անգամ",
     "classLocation": "Դասի վայրը",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Բարձրաձայն կարդացված և լսված",
+    "constructUseIncRADesc": "Բարձրաձայն կարդացված, չլսված",
+    "hearItFirstToolName": "Նախ լսել",
+    "hearItFirstDescription": "Բարձրաձայն կարդալու պրակտիկայի ժամանակ նախքան ձայնագրելը միացրեք նախադասությունը։",
+    "readAloudInstruction": "Հպեք խոսափողին և բարձրաձայն կարդացեք նախադասությունը",
+    "readAloudRecord": "Ձայնագրել",
+    "readAloudMicLabel": "{count, plural, =1{Ձայնագրել, 1 բառ դեռ չի լսվել} other{Ձայնագրել, {count} բառ դեռ չի լսվել}}",
+    "readAloudStop": "Դադարեցնել ձայնագրումը",
+    "readAloudHeardAll": "Ամեն բառ լսված է։",
+    "readAloudNotHeard": "{count, plural, =1{1 բառ չի լսվել} other{{count} բառ չի լսվել}}",
+    "readAloudTriesLeft": "{count, plural, =1{Մնացել է 1 փորձ} other{Մնացել է {count} փորձ}}",
+    "readAloudHeardTranscript": "Լսված է՝ {transcript}",
+    "readAloudTranscribeFailed": "Հնարավոր չեղավ արտագրել ձեր ձայնագրությունը։ Ստուգեք ձեր կապը և նորից փորձեք։",
+    "readAloudMicUnavailable": "Խոսափող հասանելի չէ, ուստի այս բառը իմաստային վարժություն է։",
+    "readAloudYourRecording": "Ձեր ձայնագրությունը",
+    "readAloudExample": "Օրինակ"
 }

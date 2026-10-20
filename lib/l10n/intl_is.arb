@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-16 16:33:02.832877",
+    "@@last_modified": "2026-10-20 12:56:20.217976",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "Lokið",
     "completedTimes": "Lokið {count} sinnum",
     "classLocation": "Staðsetning kennslustundar",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Lesið upphátt og heyrt",
+    "constructUseIncRADesc": "Lesið upphátt, ekki heyrt",
+    "hearItFirstToolName": "Heyra fyrst",
+    "hearItFirstDescription": "Í upplestraræfingum skaltu spila setninguna áður en þú tekur upp.",
+    "readAloudInstruction": "Pikkaðu á hljóðnemann og lestu setninguna upphátt",
+    "readAloudRecord": "Taka upp",
+    "readAloudMicLabel": "{count, plural, =1{Taka upp, 1 orð hefur ekki enn heyrst} other{Taka upp, {count} orð hafa ekki enn heyrst}}",
+    "readAloudStop": "Stöðva upptöku",
+    "readAloudHeardAll": "Öll orð heyrð!",
+    "readAloudNotHeard": "{count, plural, =1{1 orð ekki heyrt} other{{count} orð ekki heyrð}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 tilraun eftir} other{{count} tilraunir eftir}}",
+    "readAloudHeardTranscript": "Heyrt: {transcript}",
+    "readAloudTranscribeFailed": "Gat ekki umritað upptökuna þína. Athugaðu tenginguna þína og reyndu aftur.",
+    "readAloudMicUnavailable": "Enginn hljóðnemi er tiltækur, svo þetta orð er merkingaræfing í staðinn.",
+    "readAloudYourRecording": "Upptakan þín",
+    "readAloudExample": "Dæmi"
 }

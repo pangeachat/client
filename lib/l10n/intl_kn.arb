@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-16 16:33:03.213625",
+    "@@last_modified": "2026-10-20 12:56:24.120334",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "ಪೂರ್ಣಗೊಂಡಿದೆ",
     "completedTimes": "{count} ಬಾರಿ ಪೂರ್ಣಗೊಂಡಿದೆ",
     "classLocation": "ತರಗತಿಯ ಸ್ಥಳ",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "ಗಟ್ಟಿಯಾಗಿ ಓದಿ ಮತ್ತು ಕೇಳಿದೆ",
+    "constructUseIncRADesc": "ಗಟ್ಟಿಯಾಗಿ ಓದಿ, ಕೇಳಿಲ್ಲ",
+    "hearItFirstToolName": "ಮೊದಲು ಕೇಳಿ",
+    "hearItFirstDescription": "ಗಟ್ಟಿಯಾಗಿ ಓದುವ ಅಭ್ಯಾಸದಲ್ಲಿ, ನೀವು ರೆಕಾರ್ಡ್ ಮಾಡುವ ಮೊದಲು ವಾಕ್ಯವನ್ನು ಪ್ಲೇ ಮಾಡಿ.",
+    "readAloudInstruction": "ಮೈಕ್ ಟ್ಯಾಪ್ ಮಾಡಿ ಮತ್ತು ವಾಕ್ಯವನ್ನು ಗಟ್ಟಿಯಾಗಿ ಓದಿ",
+    "readAloudRecord": "ರೆಕಾರ್ಡ್ ಮಾಡಿ",
+    "readAloudMicLabel": "{count, plural, =1{ರೆಕಾರ್ಡ್ ಮಾಡಿ, 1 ಪದ ಇನ್ನೂ ಕೇಳಿಲ್ಲ} other{ರೆಕಾರ್ಡ್ ಮಾಡಿ, {count} ಪದಗಳು ಇನ್ನೂ ಕೇಳಿಲ್ಲ}}",
+    "readAloudStop": "ರೆಕಾರ್ಡಿಂಗ್ ನಿಲ್ಲಿಸಿ",
+    "readAloudHeardAll": "ಪ್ರತಿ ಪದ ಕೇಳಿದೆ!",
+    "readAloudNotHeard": "{count, plural, =1{1 ಪದ ಕೇಳಿಲ್ಲ} other{{count} ಪದಗಳು ಕೇಳಿಲ್ಲ}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 ಪ್ರಯತ್ನ ಬಾಕಿ ಇದೆ} other{{count} ಪ್ರಯತ್ನಗಳು ಬಾಕಿ ಇವೆ}}",
+    "readAloudHeardTranscript": "ಕೇಳಿದ್ದು: {transcript}",
+    "readAloudTranscribeFailed": "ನಿಮ್ಮ ರೆಕಾರ್ಡಿಂಗ್ ಅನ್ನು ಲಿಪ್ಯಂತರ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    "readAloudMicUnavailable": "ಮೈಕ್ರೊಫೋನ್ ಲಭ್ಯವಿಲ್ಲ, ಆದ್ದರಿಂದ ಈ ಪದವು ಅರ್ಥದ ವ್ಯಾಯಾಮವಾಗಿದೆ.",
+    "readAloudYourRecording": "ನಿಮ್ಮ ರೆಕಾರ್ಡಿಂಗ್",
+    "readAloudExample": "ಉದಾಹರಣೆ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-16 16:33:04.898199",
+    "@@last_modified": "2026-10-20 12:56:27.760884",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "ສຳເລັດແລ້ວ",
     "completedTimes": "ສຳເລັດ {count} ຄັ້ງ",
     "classLocation": "ສະຖານທີ່ຮຽນ",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "ອ່ານອອກສຽງ ແລະ ໄດ້ຍິນ",
+    "constructUseIncRADesc": "ອ່ານອອກສຽງ, ບໍ່ໄດ້ຍິນ",
+    "hearItFirstToolName": "ຟັງກ່ອນ",
+    "hearItFirstDescription": "ໃນການຝຶກອ່ານອອກສຽງ, ໃຫ້ຫຼິ້ນປະໂຫຍກກ່ອນທີ່ທ່ານຈະບັນທຶກ.",
+    "readAloudInstruction": "ແຕະໄມໂຄຣໂຟນ ແລະ ອ່ານປະໂຫຍກອອກສຽງ",
+    "readAloudRecord": "ບັນທຶກ",
+    "readAloudMicLabel": "{count, plural, =1{ບັນທຶກ, 1 ຄຳທີ່ຍັງບໍ່ໄດ້ຍິນ} other{ບັນທຶກ, {count} ຄຳທີ່ຍັງບໍ່ໄດ້ຍິນ}}",
+    "readAloudStop": "ຢຸດການບັນທຶກ",
+    "readAloudHeardAll": "ໄດ້ຍິນທຸກຄຳແລ້ວ!",
+    "readAloudNotHeard": "{count, plural, =1{1 ຄຳບໍ່ໄດ້ຍິນ} other{{count} ຄຳບໍ່ໄດ້ຍິນ}}",
+    "readAloudTriesLeft": "{count, plural, =1{ເຫຼືອ 1 ຄັ້ງ} other{ເຫຼືອ {count} ຄັ້ງ}}",
+    "readAloudHeardTranscript": "ໄດ້ຍິນ: {transcript}",
+    "readAloudTranscribeFailed": "ບໍ່ສາມາດຖອດສຽງບັນທຶກຂອງທ່ານໄດ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ ແລະ ລອງໃໝ່ອີກຄັ້ງ.",
+    "readAloudMicUnavailable": "ບໍ່ມີໄມໂຄຣໂຟນ, ສະນັ້ນຄຳນີ້ຈຶ່ງເປັນການຝຶກຄວາມໝາຍແທນ.",
+    "readAloudYourRecording": "ສຽງບັນທຶກຂອງທ່ານ",
+    "readAloudExample": "ຕົວຢ່າງ"
 }

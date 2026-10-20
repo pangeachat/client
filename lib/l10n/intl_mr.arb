@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-10-16 16:33:06.454798",
+    "@@last_modified": "2026-10-20 12:56:42.756335",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "पूर्ण झाले",
     "completedTimes": "{count} वेळा पूर्ण केले",
     "classLocation": "वर्गाचे स्थान",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "मोठ्याने वाचले आणि ऐकले",
+    "constructUseIncRADesc": "मोठ्याने वाचले, ऐकले नाही",
+    "hearItFirstToolName": "आधी ऐका",
+    "hearItFirstDescription": "मोठ्याने वाचण्याच्या सरावात, तुम्ही रेकॉर्ड करण्यापूर्वी वाक्य प्ले करा.",
+    "readAloudInstruction": "माइकवर टॅप करा आणि वाक्य मोठ्याने वाचा",
+    "readAloudRecord": "रेकॉर्ड करा",
+    "readAloudMicLabel": "{count, plural, =1{रेकॉर्ड करा, 1 शब्द अजून ऐकला नाही} other{रेकॉर्ड करा, {count} शब्द अजून ऐकले नाहीत}}",
+    "readAloudStop": "रेकॉर्डिंग थांबवा",
+    "readAloudHeardAll": "प्रत्येक शब्द ऐकला!",
+    "readAloudNotHeard": "{count, plural, =1{1 शब्द ऐकला नाही} other{{count} शब्द ऐकले नाहीत}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 प्रयत्न बाकी} other{{count} प्रयत्न बाकी}}",
+    "readAloudHeardTranscript": "ऐकले: {transcript}",
+    "readAloudTranscribeFailed": "तुमचे रेकॉर्डिंग ट्रान्सक्राइब करता आले नाही. तुमचे कनेक्शन तपासा आणि पुन्हा प्रयत्न करा.",
+    "readAloudMicUnavailable": "मायक्रोफोन उपलब्ध नाही, त्यामुळे हा शब्द अर्थाचा व्यायाम आहे.",
+    "readAloudYourRecording": "तुमचे रेकॉर्डिंग",
+    "readAloudExample": "उदाहरण"
 }

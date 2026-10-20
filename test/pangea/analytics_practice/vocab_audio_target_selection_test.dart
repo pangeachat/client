@@ -59,6 +59,32 @@ void main() {
       expect(targets.single.audioExampleMessage, isNull);
     });
 
+    test('picks the same example-bearing words as read-aloud targets, minus '
+        'the lemmas already taken for listening', () async {
+      final constructs = [
+        _construct('gato', [
+          _use(lemma: 'gato', eventId: r'$evt1', roomId: '!room1'),
+        ]),
+        _construct('perro', [
+          _use(lemma: 'perro', eventId: r'$evt2', roomId: '!room1'),
+        ]),
+        _construct('casa', [_use(lemma: 'casa')]),
+      ];
+
+      final targets = await VocabAudioTargetGenerator.get(
+        constructs,
+        type: PracticeExerciseTypeEnum.readAloud,
+        excludeLemmas: {'gato'},
+      );
+
+      expect(targets, hasLength(1));
+      expect(targets.single.target.tokens.single.lemma.text, 'perro');
+      expect(
+        targets.single.target.exerciseType,
+        PracticeExerciseTypeEnum.readAloud,
+      );
+    });
+
     test('skips a lemma whose uses point at no message (no eventId/roomId), so '
         'an audio example could never resolve', () async {
       final constructs = [

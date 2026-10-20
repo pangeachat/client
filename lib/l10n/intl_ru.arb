@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-16 16:33:10.250957",
+    "@@last_modified": "2026-10-20 12:56:38.958027",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10977,5 +10977,21 @@
     "activityCompleted": "Выполнено",
     "completedTimes": "Выполнено {count} раз",
     "classLocation": "Место проведения занятия",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Прочитано вслух и услышано",
+    "constructUseIncRADesc": "Прочитано вслух, но не услышано",
+    "hearItFirstToolName": "Сначала послушать",
+    "hearItFirstDescription": "В практике чтения вслух прослушайте предложение перед записью.",
+    "readAloudInstruction": "Нажмите на микрофон и прочитайте предложение вслух",
+    "readAloudRecord": "Записать",
+    "readAloudMicLabel": "{count, plural, =1{Записать, 1 слово еще не услышано} other{Записать, {count} слов еще не услышано}}",
+    "readAloudStop": "Остановить запись",
+    "readAloudHeardAll": "Все слова услышаны!",
+    "readAloudNotHeard": "{count, plural, =1{1 слово не услышано} other{{count} слов не услышано}}",
+    "readAloudTriesLeft": "{count, plural, =1{Осталась 1 попытка} other{Осталось {count} попыток}}",
+    "readAloudHeardTranscript": "Услышано: {transcript}",
+    "readAloudTranscribeFailed": "Не удалось расшифровать вашу запись. Проверьте подключение и попробуйте снова.",
+    "readAloudMicUnavailable": "Микрофон недоступен, поэтому это слово будет упражнением на значение.",
+    "readAloudYourRecording": "Ваша запись",
+    "readAloudExample": "Пример"
 }

@@ -1,10 +1,15 @@
+import 'package:flutter/material.dart';
+
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/read_aloud_match.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/match_practice_exercise_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/multiple_choice_practice_exercise_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_type_enum.dart';
@@ -49,6 +54,8 @@ sealed class PracticeExerciseModel {
         return PracticeExerciseTypeEnum.wordFocusListening;
       case GrammarErrorPracticeExerciseModel():
         return PracticeExerciseTypeEnum.grammarError;
+      case ReadAloudPracticeExerciseModel():
+        return PracticeExerciseTypeEnum.readAloud;
     }
   }
 
@@ -202,6 +209,19 @@ sealed class PracticeExerciseModel {
           errorLength: json['error_length'] as int,
           eventID: json['event_id'] as String,
           translation: json['translation'] as String?,
+        );
+      case PracticeExerciseTypeEnum.readAloud:
+        return ReadAloudPracticeExerciseModel(
+          targetLemma: tokens.first.lemma.text,
+          exampleTokens: (json['example_tokens'] as List? ?? const [])
+              .map((e) => PangeaToken.fromJson(e as Map<String, dynamic>))
+              .toList(),
+          langCode: langCode,
+          roomId: json['room_id'] as String?,
+          eventId: json['event_id'] as String?,
+          exampleMessage: json['example_message'] != null
+              ? ExampleMessageInfo.fromJson(json['example_message'])
+              : const ExampleMessageInfo(exampleMessage: []),
         );
       default:
         throw ("Unsupported exercise type in PracticeExerciseModel.fromJson: $type");
@@ -408,6 +428,96 @@ class VocabAudioPracticeExerciseModel
     json['room_id'] = roomId;
     json['event_id'] = eventId;
     json['example_message'] = exampleMessage.toJson();
+    return json;
+  }
+}
+
+/// The read-aloud exercise: the learner reads [exampleTokens] aloud and the
+/// target word must be heard (practice-exercises.instructions.md, "Speaking
+/// practice").
+///
+/// A multiple-choice model with one hidden choice, the target's surface form,
+/// which the learner's voice picks. That keeps the exercise inside the session
+/// queue, answer recording and XP every other standalone exercise uses: a
+/// heard target submits [heardAnswer] and records `corRA`; a miss submits
+/// [notHeard] and records `incRA`.
+class ReadAloudPracticeExerciseModel
+    extends MultipleChoicePracticeExerciseModel {
+  /// Every token of the displayed sentence, in order, punctuation included.
+  final List<PangeaToken> exampleTokens;
+  final String? roomId;
+  final String? eventId;
+  final ExampleMessageInfo exampleMessage;
+
+  ReadAloudPracticeExerciseModel({
+    required String targetLemma,
+    required this.exampleTokens,
+    required super.langCode,
+    this.roomId,
+    this.eventId,
+    required this.exampleMessage,
+  }) : super(
+         tokens: [_targetIn(exampleTokens, targetLemma)],
+         multipleChoiceContent: MultipleChoicePracticeExercise(
+           choices: {_targetIn(exampleTokens, targetLemma).text.content},
+           answers: {_targetIn(exampleTokens, targetLemma).text.content},
+         ),
+       );
+
+  /// The sentence's token for [lemma]: the one the use is recorded against and
+  /// the one the learner must be heard saying. Falls back to a bare token so a
+  /// sentence that somehow lacks it still builds; [targetIndex] is then -1 and
+  /// the generator swaps the exercise out.
+  static PangeaToken _targetIn(List<PangeaToken> tokens, String lemma) =>
+      tokens.firstWhere(
+        (t) => t.lemma.text.toLowerCase() == lemma.toLowerCase(),
+        orElse: () => PangeaToken(
+          text: PangeaTokenText(content: lemma, offset: -1, length: 0),
+          lemma: Lemma(text: lemma, saveVocab: true, form: lemma),
+          pos: '',
+          morph: const {},
+        ),
+      );
+
+  /// The one answer: the target as it appears in the sentence.
+  String get heardAnswer => tokens.first.text.content;
+
+  /// Submitted for a miss. An empty string is never a spoken word, so it can
+  /// never match the answer.
+  static const String notHeard = '';
+
+  /// The words the learner reads, in order: the sentence without its
+  /// punctuation-only tokens.
+  List<PangeaToken> get referenceTokens => [
+    for (final token in exampleTokens)
+      if (isSpokenWord(token.text.content)) token,
+  ];
+
+  /// The target's place in [referenceTokens], or -1 when it is not there.
+  int get targetIndex {
+    final target = tokens.first;
+    return referenceTokens.indexWhere(
+      (t) =>
+          t.text.offset == target.text.offset &&
+          t.text.content == target.text.content,
+    );
+  }
+
+  /// The sentence as shown, for the reference audio. A trimmed example
+  /// carries ellipses in its spans; they are not read.
+  String get referenceText => exampleMessage.exampleMessage
+      .map((span) => span is TextSpan ? span.text ?? '' : '')
+      .join()
+      .replaceAll('…', '')
+      .trim();
+
+  @override
+  Map<String, dynamic> toJson() {
+    final json = super.toJson();
+    json['room_id'] = roomId;
+    json['event_id'] = eventId;
+    json['example_message'] = exampleMessage.toJson();
+    json['example_tokens'] = exampleTokens.map((e) => e.toJson()).toList();
     return json;
   }
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-16 16:33:03.847358",
+    "@@last_modified": "2026-10-20 12:56:40.797985",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "Аткарылды",
     "completedTimes": "{count} жолу аткарылды",
     "classLocation": "Сабактын жайгашкан жери",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Үн чыгарып окулду жана угулду",
+    "constructUseIncRADesc": "Үн чыгарып окулду, бирок угулган жок",
+    "hearItFirstToolName": "Алгач ук",
+    "hearItFirstDescription": "Үн чыгарып окуу практикасында, жаздыруудан мурун сүйлөмдү ойнотуңуз.",
+    "readAloudInstruction": "Микрофонду таптап, сүйлөмдү үн чыгарып окуңуз",
+    "readAloudRecord": "Жаздыруу",
+    "readAloudMicLabel": "{count, plural, =1{Жаздыруу, 1 сөз угула элек} other{Жаздыруу, {count} сөз угула элек}}",
+    "readAloudStop": "Жаздырууну токтотуу",
+    "readAloudHeardAll": "Бардык сөздөр угулду!",
+    "readAloudNotHeard": "{count, plural, =1{1 сөз угулган жок} other{{count} сөз угулган жок}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 аракет калды} other{{count} аракет калды}}",
+    "readAloudHeardTranscript": "Угулду: {transcript}",
+    "readAloudTranscribeFailed": "Жазууңузду транскрипциялоо мүмкүн болгон жок. Байланышыңызды текшерип, кайра аракет кылыңыз.",
+    "readAloudMicUnavailable": "Микрофон жеткиликтүү эмес, ошондуктан бул сөз анын ордуна маани көнүгүүсү болот.",
+    "readAloudYourRecording": "Сиздин жазууңуз",
+    "readAloudExample": "Мисал"
 }

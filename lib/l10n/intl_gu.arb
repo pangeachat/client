@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-16 16:33:00.160896",
+    "@@last_modified": "2026-10-20 12:56:25.895221",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "પૂર્ણ થયું",
     "completedTimes": "{count} વાર પૂર્ણ થયું",
     "classLocation": "વર્ગનું સ્થાન",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "મોટેથી વાંચો અને સાંભળ્યું",
+    "constructUseIncRADesc": "મોટેથી વાંચો, સાંભળ્યું નથી",
+    "hearItFirstToolName": "પહેલા સાંભળો",
+    "hearItFirstDescription": "મોટેથી વાંચવાની પ્રેક્ટિસમાં, તમે રેકોર્ડ કરો તે પહેલાં વાક્ય ચલાવો.",
+    "readAloudInstruction": "માઇક પર ટેપ કરો અને વાક્ય મોટેથી વાંચો",
+    "readAloudRecord": "રેકોર્ડ કરો",
+    "readAloudMicLabel": "{count, plural, =1{રેકોર્ડ કરો, 1 શબ્દ હજુ સાંભળ્યો નથી} other{રેકોર્ડ કરો, {count} શબ્દો હજુ સાંભળ્યા નથી}}",
+    "readAloudStop": "રેકોર્ડિંગ બંધ કરો",
+    "readAloudHeardAll": "દરેક શબ્દ સાંભળ્યો!",
+    "readAloudNotHeard": "{count, plural, =1{1 શબ્દ સાંભળ્યો નથી} other{{count} શબ્દો સાંભળ્યા નથી}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 પ્રયાસ બાકી} other{{count} પ્રયાસો બાકી}}",
+    "readAloudHeardTranscript": "સાંભળ્યું: {transcript}",
+    "readAloudTranscribeFailed": "તમારું રેકોર્ડિંગ ટ્રાન્સક્રાઇબ કરી શકાયું નથી. તમારું કનેક્શન તપાસો અને ફરી પ્રયાસ કરો.",
+    "readAloudMicUnavailable": "કોઈ માઇક્રોફોન ઉપલબ્ધ નથી, તેથી આ શબ્દ તેના બદલે અર્થનો અભ્યાસ છે.",
+    "readAloudYourRecording": "તમારું રેકોર્ડિંગ",
+    "readAloudExample": "ઉદાહરણ"
 }

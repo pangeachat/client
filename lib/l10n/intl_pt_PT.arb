@@ -2552,7 +2552,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-16 16:33:09.043932",
+    "@@last_modified": "2026-10-20 12:56:39.797465",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10919,5 +10919,21 @@
     "activityCompleted": "Concluído",
     "completedTimes": "Concluído {count} vezes",
     "classLocation": "Local da aula",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Lido em voz alta e ouvido",
+    "constructUseIncRADesc": "Lido em voz alta, não ouvido",
+    "hearItFirstToolName": "Ouvir primeiro",
+    "hearItFirstDescription": "Na prática de leitura em voz alta, reproduza a frase antes de gravar.",
+    "readAloudInstruction": "Toque no microfone e leia a frase em voz alta",
+    "readAloudRecord": "Gravar",
+    "readAloudMicLabel": "{count, plural, =1{Gravar, 1 palavra ainda não ouvida} other{Gravar, {count} palavras ainda não ouvidas}}",
+    "readAloudStop": "Parar gravação",
+    "readAloudHeardAll": "Todas as palavras ouvidas!",
+    "readAloudNotHeard": "{count, plural, =1{1 palavra não ouvida} other{{count} palavras não ouvidas}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 tentativa restante} other{{count} tentativas restantes}}",
+    "readAloudHeardTranscript": "Ouvido: {transcript}",
+    "readAloudTranscribeFailed": "Não foi possível transcrever a sua gravação. Verifique a sua ligação e tente novamente.",
+    "readAloudMicUnavailable": "Não há microfone disponível, por isso esta palavra é um exercício de significado.",
+    "readAloudYourRecording": "A sua gravação",
+    "readAloudExample": "Exemplo"
 }

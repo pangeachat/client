@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-16 16:33:15.569490",
+    "@@last_modified": "2026-10-20 12:56:55.139823",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10005,5 +10005,21 @@
     "activityCompleted": "已完成",
     "completedTimes": "已完成 {count} 次",
     "classLocation": "上课地点",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "朗读并已听到",
+    "constructUseIncRADesc": "朗读但未听到",
+    "hearItFirstToolName": "先听为快",
+    "hearItFirstDescription": "在朗读练习中，录音前先播放句子。",
+    "readAloudInstruction": "点击麦克风并朗读句子",
+    "readAloudRecord": "录音",
+    "readAloudMicLabel": "{count, plural, =1{录音，1个单词未听到} other{录音，{count}个单词未听到}}",
+    "readAloudStop": "停止录音",
+    "readAloudHeardAll": "所有单词都听到了！",
+    "readAloudNotHeard": "{count, plural, =1{1个单词未听到} other{{count}个单词未听到}}",
+    "readAloudTriesLeft": "{count, plural, =1{还剩1次尝试} other{还剩{count}次尝试}}",
+    "readAloudHeardTranscript": "已听到：{transcript}",
+    "readAloudTranscribeFailed": "无法转录您的录音。请检查您的网络连接并重试。",
+    "readAloudMicUnavailable": "没有可用的麦克风，因此此单词将作为含义练习。",
+    "readAloudYourRecording": "您的录音",
+    "readAloudExample": "示例"
 }

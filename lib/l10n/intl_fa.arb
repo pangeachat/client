@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:32:57.179931",
+    "@@last_modified": "2026-10-20 12:56:09.615982",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10093,5 +10093,21 @@
     "activityCompleted": "تکمیل شد",
     "completedTimes": "{count} بار تکمیل شد",
     "classLocation": "مکان کلاس",
-    "xpThresholdSuffix": "/ {threshold} امتیاز"
+    "xpThresholdSuffix": "/ {threshold} امتیاز",
+    "constructUseCorRADesc": "با صدای بلند خوانده شد و شنیده شد",
+    "constructUseIncRADesc": "با صدای بلند خوانده شد، شنیده نشد",
+    "hearItFirstToolName": "اول بشنوید",
+    "hearItFirstDescription": "در تمرین بلندخوانی، جمله را قبل از ضبط پخش کنید.",
+    "readAloudInstruction": "روی میکروفون ضربه بزنید و جمله را با صدای بلند بخوانید",
+    "readAloudRecord": "ضبط",
+    "readAloudMicLabel": "{count, plural, =1{ضبط، ۱ کلمه هنوز شنیده نشده} other{ضبط، {count} کلمه هنوز شنیده نشده}}",
+    "readAloudStop": "توقف ضبط",
+    "readAloudHeardAll": "همه کلمات شنیده شد!",
+    "readAloudNotHeard": "{count, plural, =1{۱ کلمه شنیده نشد} other{{count} کلمه شنیده نشد}}",
+    "readAloudTriesLeft": "{count, plural, =1{۱ تلاش باقی مانده} other{{count} تلاش باقی مانده}}",
+    "readAloudHeardTranscript": "شنیده شد: {transcript}",
+    "readAloudTranscribeFailed": "ضبط شما قابل رونویسی نبود. اتصال خود را بررسی کنید و دوباره امتحان کنید.",
+    "readAloudMicUnavailable": "میکروفونی در دسترس نیست، بنابراین این کلمه به جای آن یک تمرین معنایی است.",
+    "readAloudYourRecording": "ضبط شما",
+    "readAloudExample": "مثال"
 }

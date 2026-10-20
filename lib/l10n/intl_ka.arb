@@ -1930,7 +1930,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-16 16:33:02.508666",
+    "@@last_modified": "2026-10-20 12:56:23.200841",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10902,5 +10902,21 @@
     "activityCompleted": "დასრულებულია",
     "completedTimes": "დასრულებულია {count} ჯერ",
     "classLocation": "კლასის მდებარეობა",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "ხმამაღლა წაკითხული და მოსმენილი",
+    "constructUseIncRADesc": "ხმამაღლა წაკითხული, არ მოსმენილი",
+    "hearItFirstToolName": "ჯერ მოუსმინე",
+    "hearItFirstDescription": "ხმამაღლა კითხვის პრაქტიკაში, ჩაწერამდე მოუსმინეთ წინადადებას.",
+    "readAloudInstruction": "შეეხეთ მიკროფონს და ხმამაღლა წაიკითხეთ წინადადება",
+    "readAloudRecord": "ჩაწერა",
+    "readAloudMicLabel": "{count, plural, =1{ჩაწერა, 1 სიტყვა ჯერ არ მოსმენილა} other{ჩაწერა, {count} სიტყვა ჯერ არ მოსმენილა}}",
+    "readAloudStop": "ჩაწერის შეჩერება",
+    "readAloudHeardAll": "ყველა სიტყვა მოსმენილია!",
+    "readAloudNotHeard": "{count, plural, =1{1 სიტყვა არ მოსმენილა} other{{count} სიტყვა არ მოსმენილა}}",
+    "readAloudTriesLeft": "{count, plural, =1{დარჩა 1 მცდელობა} other{დარჩა {count} მცდელობა}}",
+    "readAloudHeardTranscript": "მოსმენილია: {transcript}",
+    "readAloudTranscribeFailed": "თქვენი ჩანაწერის ტრანსკრიბირება ვერ მოხერხდა. შეამოწმეთ კავშირი და სცადეთ ხელახლა.",
+    "readAloudMicUnavailable": "მიკროფონი მიუწვდომელია, ამიტომ ეს სიტყვა მნიშვნელობის სავარჯიშოა.",
+    "readAloudYourRecording": "თქვენი ჩანაწერი",
+    "readAloudExample": "მაგალითი"
 }

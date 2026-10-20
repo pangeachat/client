@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-16 16:33:12.140005",
+    "@@last_modified": "2026-10-20 12:56:52.925038",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "La dhammaystiray",
     "completedTimes": "La dhammaystiray {count} jeer",
     "classLocation": "Goobta fasalka",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Kor u akhri oo la maqlay",
+    "constructUseIncRADesc": "Kor u akhri, lama maqal",
+    "hearItFirstToolName": "Marka hore maqal",
+    "hearItFirstDescription": "Ku celcelinta akhriska kor, ciyaar jumladaha ka hor intaadan duubin.",
+    "readAloudInstruction": "Taabo makarafoonka oo kor u akhri jumlada",
+    "readAloudRecord": "Duub",
+    "readAloudMicLabel": "{count, plural, =1{Duub, 1 eray weli lama maqal} other{Duub, {count} eray weli lama maqal}}",
+    "readAloudStop": "Jooji duubista",
+    "readAloudHeardAll": "Eray kasta waa la maqlay!",
+    "readAloudNotHeard": "{count, plural, =1{1 eray lama maqal} other{{count} eray lama maqal}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 isku day ayaa hadhay} other{{count} isku day ayaa hadhay}}",
+    "readAloudHeardTranscript": "La maqlay: {transcript}",
+    "readAloudTranscribeFailed": "Lama qori karin duubistaada. Hubi isku xirkaaga oo mar kale isku day.",
+    "readAloudMicUnavailable": "Ma jiro makarafoon diyaar ah, sidaa darteed eraygan wuxuu noqonayaa jimicsi macne ah.",
+    "readAloudYourRecording": "Duubistaada",
+    "readAloudExample": "Tusaale"
 }

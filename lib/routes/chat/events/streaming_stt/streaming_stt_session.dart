@@ -248,6 +248,13 @@ class StreamingSttSession {
   /// existing waveform renderer needs no change.
   List<double> get amplitudeTimeline => _amplitudeTimeline;
 
+  /// The retained WAV synthesized at stop, kept in memory so a caller can play
+  /// the recording back (the read-aloud exercise's compare row) without
+  /// re-reading the temp artifact, which on web is a blob URL. Null until a
+  /// stop has synthesized one.
+  Uint8List? get lastWav => _lastWav;
+  Uint8List? _lastWav;
+
   int get _durationMs =>
       (_pcm.length * 1000) ~/ (sampleRate * 2); // 16-bit mono
 
@@ -517,6 +524,7 @@ class StreamingSttSession {
       return null; // nothing to save (also guarded by _pcm.length>0)
     }
     final wav = pcm16ToWav(pcm, sampleRate: sampleRate);
+    _lastWav = wav;
     final path = await _tempFileWriter(wav);
     if (_teardownDone) {
       await _disposeTempArtifact(path);
@@ -551,6 +559,7 @@ class StreamingSttSession {
 
     final pcm = _pcm.toBytes();
     final wav = pcm16ToWav(pcm, sampleRate: sampleRate);
+    _lastWav = wav;
     final path = await _tempFileWriter(wav);
     // teardown() can also race the (async) write above — in which case it could
     // not have seen this path. Dispose it ourselves (web-aware: revoke the blob

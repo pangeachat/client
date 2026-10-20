@@ -1256,7 +1256,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-16 16:33:15.895220",
+    "@@last_modified": "2026-10-20 12:56:55.123798",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10959,5 +10959,21 @@
     "activityCompleted": "已完成",
     "completedTimes": "已完成 {count} 次",
     "classLocation": "上課地點",
-    "xpThresholdSuffix": "/ {threshold} 經驗值"
+    "xpThresholdSuffix": "/ {threshold} 經驗值",
+    "constructUseCorRADesc": "讀出並聽到",
+    "constructUseIncRADesc": "讀出但未聽到",
+    "hearItFirstToolName": "先聽一次",
+    "hearItFirstDescription": "在朗讀練習中，錄音前先播放句子。",
+    "readAloudInstruction": "點擊咪高峰並朗讀句子",
+    "readAloudRecord": "錄音",
+    "readAloudMicLabel": "{count, plural, =1{錄音，1個字未聽到} other{錄音，{count}個字未聽到}}",
+    "readAloudStop": "停止錄音",
+    "readAloudHeardAll": "所有字都聽到了！",
+    "readAloudNotHeard": "{count, plural, =1{1個字未聽到} other{{count}個字未聽到}}",
+    "readAloudTriesLeft": "{count, plural, =1{剩餘1次機會} other{剩餘{count}次機會}}",
+    "readAloudHeardTranscript": "聽到：{transcript}",
+    "readAloudTranscribeFailed": "無法轉錄您的錄音。請檢查您的連線並重試。",
+    "readAloudMicUnavailable": "沒有可用的咪高峰，因此此字將改為意思練習。",
+    "readAloudYourRecording": "您的錄音",
+    "readAloudExample": "範例"
 }

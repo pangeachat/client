@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-16 16:33:12.085660",
+    "@@last_modified": "2026-10-20 12:56:42.434629",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "Zvapedzwa",
     "completedTimes": "Zvapedzwa {count} nguva",
     "classLocation": "Nzvimbo yekirasi",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Verenga zvinonzwika uye wakanzwa",
+    "constructUseIncRADesc": "Verenga zvinonzwika, asi hauna kunzwa",
+    "hearItFirstToolName": "Inzwa kutanga",
+    "hearItFirstDescription": "Mukudzidzira kuverenga zvinonzwika, ridza mutongo usati warekodha.",
+    "readAloudInstruction": "Tinya maiki uverenge mutongo zvinonzwika",
+    "readAloudRecord": "Rekodha",
+    "readAloudMicLabel": "{count, plural, =1{Rekodha, izwi rimwe risati ranzwika} other{Rekodha, mazwi {count} asati anzwikwa}}",
+    "readAloudStop": "Misa kurekodha",
+    "readAloudHeardAll": "Izwi rega rega ranzwika!",
+    "readAloudNotHeard": "{count, plural, =1{Izwi rimwe risina kunzwikwa} other{Mazwi {count} asina kunzwikwa}}",
+    "readAloudTriesLeft": "{count, plural, =1{Kuedza kumwe kwasara} other{Kuedza {count} kwasara}}",
+    "readAloudHeardTranscript": "Zvanzwikwa: {transcript}",
+    "readAloudTranscribeFailed": "Hatigoni kunyora zvawataura. Tarisa internet yako woedza zvakare.",
+    "readAloudMicUnavailable": "Hapana maiki aripo, saka izwi iri riri kudzidzira zvarinoreva.",
+    "readAloudYourRecording": "Zvawataura",
+    "readAloudExample": "Muenzaniso"
 }

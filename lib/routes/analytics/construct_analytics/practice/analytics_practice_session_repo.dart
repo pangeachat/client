@@ -81,24 +81,36 @@ class AnalyticsPracticeSessionRepo {
         await VocabMeaningTargetGenerator.get(vocabConstructs, offline: true),
       );
     } else if (type == ConstructTypeEnum.vocab) {
+      // About a third each of listening, read-aloud and meaning, by count:
+      // speaking is in every session without an item that needs a microphone
+      // and the network dominating it (practice-exercises.instructions.md,
+      // "Speaking practice"). Listening and read-aloud both need an
+      // example-bearing word; meaning fills whatever is left.
       final totalNeeded = AnalyticsPracticeConstants.targetsToGenerate;
-      final halfNeeded = (totalNeeded / 2).ceil();
+      final thirdNeeded = (totalNeeded / 3).ceil();
 
-      // Fetch audio constructs (with example messages)
       final audioTargets = await VocabAudioTargetGenerator.get(vocabConstructs);
-      final audioCount = min(audioTargets.length, halfNeeded);
+      final audioTargetsToAdd = audioTargets.take(thirdNeeded).toList();
 
-      // Fetch vocab constructs to fill the rest
-      final vocabNeeded = totalNeeded - audioCount;
+      final readAloudTargets = await VocabAudioTargetGenerator.get(
+        vocabConstructs,
+        type: PracticeExerciseTypeEnum.readAloud,
+        excludeLemmas: {
+          for (final t in audioTargetsToAdd) t.target.tokens.first.lemma.text,
+        },
+      );
+      final readAloudTargetsToAdd = readAloudTargets.take(thirdNeeded).toList();
+
+      final vocabNeeded =
+          totalNeeded - audioTargetsToAdd.length - readAloudTargetsToAdd.length;
       final vocabTargets = await VocabMeaningTargetGenerator.get(
         vocabConstructs,
       );
       final vocabCount = min(vocabTargets.length, vocabNeeded);
 
-      final audioTargetsToAdd = audioTargets.take(audioCount);
-      final meaningTargetsToAdd = vocabTargets.take(vocabCount);
       targets.addAll(audioTargetsToAdd);
-      targets.addAll(meaningTargetsToAdd);
+      targets.addAll(readAloudTargetsToAdd);
+      targets.addAll(vocabTargets.take(vocabCount));
 
       if (scope != null) {
         // The Mission's words the learner has never used — no construct, so

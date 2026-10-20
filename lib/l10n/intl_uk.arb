@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-16 16:33:13.781654",
+    "@@last_modified": "2026-10-20 12:56:58.266608",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10005,5 +10005,21 @@
     "activityCompleted": "Завершено",
     "completedTimes": "Завершено {count} разів",
     "classLocation": "Місце проведення заняття",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Прочитано вголос і почуто",
+    "constructUseIncRADesc": "Прочитано вголос, не почуто",
+    "hearItFirstToolName": "Спершу послухайте",
+    "hearItFirstDescription": "Під час практики читання вголос відтворіть речення, перш ніж записувати.",
+    "readAloudInstruction": "Натисніть мікрофон і прочитайте речення вголос",
+    "readAloudRecord": "Записати",
+    "readAloudMicLabel": "{count, plural, =1{Записати, 1 слово ще не почуто} other{Записати, {count} слів ще не почуто}}",
+    "readAloudStop": "Зупинити запис",
+    "readAloudHeardAll": "Кожне слово почуто!",
+    "readAloudNotHeard": "{count, plural, =1{1 слово не почуто} other{{count} слів не почуто}}",
+    "readAloudTriesLeft": "{count, plural, =1{Залишилася 1 спроба} other{Залишилося {count} спроб}}",
+    "readAloudHeardTranscript": "Почуто: {transcript}",
+    "readAloudTranscribeFailed": "Не вдалося розшифрувати ваш запис. Перевірте з’єднання та спробуйте ще раз.",
+    "readAloudMicUnavailable": "Мікрофон недоступний, тому це слово є вправою на значення.",
+    "readAloudYourRecording": "Ваш запис",
+    "readAloudExample": "Приклад"
 }

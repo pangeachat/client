@@ -1355,7 +1355,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-16 16:33:00.979844",
+    "@@last_modified": "2026-10-20 12:56:17.117649",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10938,5 +10938,21 @@
     "activityCompleted": "Completate",
     "completedTimes": "Completate {count} vices",
     "classLocation": "Loco del classe",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Legite a alte e audite",
+    "constructUseIncRADesc": "Legite a alte, non audite",
+    "hearItFirstToolName": "Audi lo primo",
+    "hearItFirstDescription": "In le practica de leger a alte, audi le phrase ante que tu registra.",
+    "readAloudInstruction": "Tocca le microphono e lege le phrase a alte",
+    "readAloudRecord": "Registrar",
+    "readAloudMicLabel": "{count, plural, =1{Registra, 1 parola non ancora audite} other{Registra, {count} parolas non ancora audite}}",
+    "readAloudStop": "Stop registrar",
+    "readAloudHeardAll": "Omne parola audite!",
+    "readAloudNotHeard": "{count, plural, =1{1 parola non audite} other{{count} parolas non audite}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 tentativa remanente} other{{count} tentativas remanente}}",
+    "readAloudHeardTranscript": "Audite: {transcript}",
+    "readAloudTranscribeFailed": "Non poteva transcribir tu registration. Verifica tu connexion e reprova.",
+    "readAloudMicUnavailable": "Nulle microphono es disponibile, ergo iste parola es un exercitio de significato in su loco.",
+    "readAloudYourRecording": "Tu registration",
+    "readAloudExample": "Exemplo"
 }

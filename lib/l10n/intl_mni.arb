@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-16 16:33:06.714973",
+    "@@last_modified": "2026-10-20 12:56:34.356469",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "লোইশিনখ্রে",
     "completedTimes": "{count} শরুক লোইশিনখ্রে",
     "classLocation": "ক্লাস লম",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "খুদোমদা পরি অমদি তাখি",
+    "constructUseIncRADesc": "খুদোমদা পরি, তাবা ফংদ্রে",
+    "hearItFirstToolName": "ꯑহানবদা তাউ",
+    "hearItFirstDescription": "খুদোমদা পাম্বা প্রেকটিসতা, নখোয়না রিকোর্ড তৌদ্রিঙৈ মমাংদা ৱাহৈ অদু প্লে তৌউ।",
+    "readAloudInstruction": "মাইক অদু তপ তৌদুনা ৱাহৈ অদু খুদোমদা পাউ",
+    "readAloudRecord": "রিকোর্ড তৌউ",
+    "readAloudMicLabel": "{count, plural, =1{রিকোর্ড তৌউ, ৱাহৈ ১ অদুগী মতাংদা অদুগী মতাংদা তাদ্রি} other{রিকোর্ড তৌউ, ৱাহৈ {count} অদুগী মতাংদা অদুগী মতাংদা তাদ্রি}}",
+    "readAloudStop": "রিকোর্ডিং থিংজিল্লো",
+    "readAloudHeardAll": "ৱাহৈ খুদিংমক তাখি!",
+    "readAloudNotHeard": "{count, plural, =1{ৱাহৈ ১ তাদ্রি} other{ৱাহৈ {count} তাদ্রি}}",
+    "readAloudTriesLeft": "{count, plural, =1{১ চঙনবা লৈরি} other{{count} চঙনবা লৈরি}}",
+    "readAloudHeardTranscript": "তাখি: {transcript}",
+    "readAloudTranscribeFailed": "নখোয়গী রিকোর্ডিং অদু ত্রান্সক্রাইব তৌবা ঙমদ্রে। নখোয়গী কনেক্সন চেক তৌদুনা অমুক হন্না ট্রাই তৌউ।",
+    "readAloudMicUnavailable": "মাইক্রোফোন অমত্তা ফংদে, মদুগীদমক ৱাহৈ অসিগী মহুত্তা অর্থগী এক্সারসাইজ অমা ওইরি।",
+    "readAloudYourRecording": "নখোয়গী রিকোর্ডিং",
+    "readAloudExample": "উদাহরন"
 }

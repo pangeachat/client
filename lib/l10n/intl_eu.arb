@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-16 16:32:57.161734",
+    "@@last_modified": "2026-10-20 12:56:08.814417",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10005,5 +10005,21 @@
     "activityCompleted": "Osatuta",
     "completedTimes": "{count} aldiz osatuta",
     "classLocation": "Klasearen kokapena",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Ozenki irakurri eta entzun da",
+    "constructUseIncRADesc": "Ozenki irakurri, ez da entzun",
+    "hearItFirstToolName": "Entzun lehenik",
+    "hearItFirstDescription": "Ozenki irakurtzeko ariketan, grabatu aurretik esaldia erreproduzitu.",
+    "readAloudInstruction": "Sakatu mikrofonoa eta irakurri esaldia ozenki",
+    "readAloudRecord": "Grabatu",
+    "readAloudMicLabel": "{count, plural, =1{Grabatu, hitz 1 oraindik entzun gabe} other{Grabatu, {count} hitz oraindik entzun gabe}}",
+    "readAloudStop": "Grabaketa gelditu",
+    "readAloudHeardAll": "Hitz guztiak entzun dira!",
+    "readAloudNotHeard": "{count, plural, =1{Hitz 1 ez da entzun} other{{count} hitz ez dira entzun}}",
+    "readAloudTriesLeft": "{count, plural, =1{Saiakera 1 geratzen da} other{{count} saiakera geratzen dira}}",
+    "readAloudHeardTranscript": "Entzun da: {transcript}",
+    "readAloudTranscribeFailed": "Ezin izan da zure grabaketa transkribatu. Egiaztatu konexioa eta saiatu berriro.",
+    "readAloudMicUnavailable": "Ez dago mikrofono erabilgarririk, beraz, hitz hau esanahi-ariketa bat da horren ordez.",
+    "readAloudYourRecording": "Zure grabaketa",
+    "readAloudExample": "Adibidea"
 }

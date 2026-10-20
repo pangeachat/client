@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-16 16:33:16.434956",
+    "@@last_modified": "2026-10-20 12:56:56.053970",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "געענדיקט",
     "completedTimes": "געענדיקט {count} מאָל",
     "classLocation": "קלאַס אָרט",
-    "xpThresholdSuffix": "/ {threshold} עקזשפּ"
+    "xpThresholdSuffix": "/ {threshold} עקזשפּ",
+    "constructUseCorRADesc": "געלייענט הויך און געהערט",
+    "constructUseIncRADesc": "געלייענט הויך, נישט געהערט",
+    "hearItFirstToolName": "הער עס קודם",
+    "hearItFirstDescription": "אין הויך-לייענען פיר, שפילט דעם זאץ איידער איר רעקארדירט.",
+    "readAloudInstruction": "דרוקט דעם מיקראפאן און לייענט דעם זאץ הויך",
+    "readAloudRecord": "רעקארדירן",
+    "readAloudMicLabel": "{count, plural, =1{רעקארדירן, 1 ווארט נאך נישט געהערט} other{רעקארדירן, {count} ווערטער נאך נישט געהערט}}",
+    "readAloudStop": "אויפהערן רעקארדירן",
+    "readAloudHeardAll": "יעדער ווארט געהערט!",
+    "readAloudNotHeard": "{count, plural, =1{1 ווארט נישט געהערט} other{{count} ווערטער נישט געהערט}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 פרואוו איבערגעבליבן} other{{count} פרואוון איבערגעבליבן}}",
+    "readAloudHeardTranscript": "געהערט: {transcript}",
+    "readAloudTranscribeFailed": "נישט געקענט טראנסקריבירן אייער רעקארדירונג. קאנטראלירט אייער פארבינדונג און פרובירט נאכאמאל.",
+    "readAloudMicUnavailable": "קיין מיקראפאן איז נישט פאראן, דערפאר איז דאס ווארט א באדייטונגס-איבונג אנשטאט.",
+    "readAloudYourRecording": "אייער רעקארדירונג",
+    "readAloudExample": "ביישפיל"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-16 16:33:05.003406",
+    "@@last_modified": "2026-10-20 12:56:28.119289",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "تەواوکرا",
     "completedTimes": "{count} جار تەواوکرا",
     "classLocation": "شوێنی پۆل",
-    "xpThresholdSuffix": "/ {threshold} خاڵی ئەزموون"
+    "xpThresholdSuffix": "/ {threshold} خاڵی ئەزموون",
+    "constructUseCorRADesc": "بە دەنگی بەرز خوێندرایەوە و بیسترا",
+    "constructUseIncRADesc": "بە دەنگی بەرز خوێندرایەوە، بەڵام نەبیسترا",
+    "hearItFirstToolName": "یەکەمجار گوێی لێ بگرە",
+    "hearItFirstDescription": "لە ڕاهێنانی خوێندنەوە بە دەنگی بەرزدا، ڕستەکە لێبدە پێش ئەوەی تۆماری بکەیت.",
+    "readAloudInstruction": "مایکەکە دابگرە و ڕستەکە بە دەنگی بەرز بخوێنەرەوە",
+    "readAloudRecord": "تۆمارکردن",
+    "readAloudMicLabel": "{count, plural, =1{تۆمار بکە، 1 وشە هێشتا نەبیستراوە} other{تۆمار بکە، {count} وشە هێشتا نەبیستراون}}",
+    "readAloudStop": "ڕاگرتنی تۆمارکردن",
+    "readAloudHeardAll": "هەموو وشەیەک بیسترا!",
+    "readAloudNotHeard": "{count, plural, =1{1 وشە نەبیسترا} other{{count} وشە نەبیستران}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 هەوڵ ماوە} other{{count} هەوڵ ماون}}",
+    "readAloudHeardTranscript": "بیسترا: {transcript}",
+    "readAloudTranscribeFailed": "نەتوانرا تۆمارەکەت بنووسرێتەوە. پەیوەندییەکەت بپشکنە و دووبارە هەوڵ بدەوە.",
+    "readAloudMicUnavailable": "هیچ مایکرۆفۆنێک بەردەست نییە، بۆیە ئەم وشەیە لەبری ئەوە ڕاهێنانی مانایە.",
+    "readAloudYourRecording": "تۆمارکردنەکەی تۆ",
+    "readAloudExample": "نموونە"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:16.443223",
+    "@@last_modified": "2026-10-20 12:56:55.398714",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10111,5 +10111,21 @@
     "activityCompleted": "已完成",
     "completedTimes": "已完成 {count} 次",
     "classLocation": "上課地點",
-    "xpThresholdSuffix": "/ {threshold} 經驗值"
+    "xpThresholdSuffix": "/ {threshold} 經驗值",
+    "constructUseCorRADesc": "朗讀並聽到",
+    "constructUseIncRADesc": "朗讀但未聽到",
+    "hearItFirstToolName": "先聽為快",
+    "hearItFirstDescription": "在朗讀練習中，錄音前先播放句子。",
+    "readAloudInstruction": "點擊麥克風並朗讀句子",
+    "readAloudRecord": "錄音",
+    "readAloudMicLabel": "{count, plural, =1{錄音，1個字尚未聽到} other{錄音，{count}個字尚未聽到}}",
+    "readAloudStop": "停止錄音",
+    "readAloudHeardAll": "每個字都聽到了！",
+    "readAloudNotHeard": "{count, plural, =1{1個字未聽到} other{{count}個字未聽到}}",
+    "readAloudTriesLeft": "{count, plural, =1{剩下1次機會} other{剩下{count}次機會}}",
+    "readAloudHeardTranscript": "聽到：{transcript}",
+    "readAloudTranscribeFailed": "無法轉錄您的錄音。請檢查您的連線並再試一次。",
+    "readAloudMicUnavailable": "沒有可用的麥克風，因此此單字將改為意義練習。",
+    "readAloudYourRecording": "您的錄音",
+    "readAloudExample": "範例"
 }

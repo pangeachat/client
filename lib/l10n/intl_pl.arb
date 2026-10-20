@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-16 16:33:08.514237",
+    "@@last_modified": "2026-10-20 12:56:36.120889",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10090,5 +10090,21 @@
     "activityCompleted": "Ukończono",
     "completedTimes": "Ukończono {count} razy",
     "classLocation": "Lokalizacja zajęć",
-    "xpThresholdSuffix": "/ {threshold} PD"
+    "xpThresholdSuffix": "/ {threshold} PD",
+    "constructUseCorRADesc": "Przeczytaj na głos i usłysz",
+    "constructUseIncRADesc": "Przeczytaj na głos, nie usłyszano",
+    "hearItFirstToolName": "Posłuchaj najpierw",
+    "hearItFirstDescription": "W ćwiczeniu czytania na głos odtwórz zdanie, zanim nagrasz.",
+    "readAloudInstruction": "Dotknij mikrofonu i przeczytaj zdanie na głos",
+    "readAloudRecord": "Nagraj",
+    "readAloudMicLabel": "{count, plural, =1{Nagraj, 1 słowo jeszcze nieusłyszane} other{Nagraj, {count} słów jeszcze nieusłyszanych}}",
+    "readAloudStop": "Zatrzymaj nagrywanie",
+    "readAloudHeardAll": "Każde słowo usłyszane!",
+    "readAloudNotHeard": "{count, plural, =1{1 słowo nieusłyszane} other{{count} słów nieusłyszanych}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 próba pozostała} other{{count} prób pozostało}}",
+    "readAloudHeardTranscript": "Usłyszano: {transcript}",
+    "readAloudTranscribeFailed": "Nie udało się przetranskrybować nagrania. Sprawdź połączenie i spróbuj ponownie.",
+    "readAloudMicUnavailable": "Brak dostępnego mikrofonu, więc to słowo jest ćwiczeniem znaczeniowym.",
+    "readAloudYourRecording": "Twoje nagranie",
+    "readAloudExample": "Przykład"
 }

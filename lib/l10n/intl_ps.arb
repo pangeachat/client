@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-16 16:33:09.133611",
+    "@@last_modified": "2026-10-20 12:56:36.982712",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "بشپړ شو",
     "completedTimes": "{count} ځله بشپړ شو",
     "classLocation": "د ټولګي موقعیت",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "په لوړ غږ لوستل او اوریدل",
+    "constructUseIncRADesc": "په لوړ غږ لوستل، نه اوریدل",
+    "hearItFirstToolName": "لومړی یې واورئ",
+    "hearItFirstDescription": "د لوړ غږ لوستلو په تمرین کې، مخکې له دې چې ثبت یې کړئ، جمله وغږوئ.",
+    "readAloudInstruction": "مایک ټایپ کړئ او جمله په لوړ غږ ولولئ",
+    "readAloudRecord": "ثبت کړئ",
+    "readAloudMicLabel": "{count, plural, =1{ثبت کړئ، ۱ کلمه لا نه ده اوریدل شوې} other{ثبت کړئ، {count} کلمې لا نه دي اوریدل شوې}}",
+    "readAloudStop": "ثبتول بند کړئ",
+    "readAloudHeardAll": "هره کلمه اوریدل شوې!",
+    "readAloudNotHeard": "{count, plural, =1{۱ کلمه نه ده اوریدل شوې} other{{count} کلمې نه دي اوریدل شوې}}",
+    "readAloudTriesLeft": "{count, plural, =1{۱ هڅه پاتې ده} other{{count} هڅې پاتې دي}}",
+    "readAloudHeardTranscript": "اوریدل شوې: {transcript}",
+    "readAloudTranscribeFailed": "ستاسو ثبتول ونه شول. خپله اړیکه وګورئ او بیا هڅه وکړئ.",
+    "readAloudMicUnavailable": "هیڅ مایکروفون شتون نلري، نو دا کلمه د معنی تمرین دی.",
+    "readAloudYourRecording": "ستاسو ثبتول",
+    "readAloudExample": "مثال"
 }

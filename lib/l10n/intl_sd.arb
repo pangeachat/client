@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-16 16:33:10.470840",
+    "@@last_modified": "2026-10-20 12:56:50.483929",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "مڪمل ٿيل",
     "completedTimes": "{count} ڀيرا مڪمل ٿيل",
     "classLocation": "ڪلاس جي جڳھ",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "پڙهيو ۽ ٻڌو ويو",
+    "constructUseIncRADesc": "پڙهيو ويو، پر ٻڌو نه ويو",
+    "hearItFirstToolName": "پهرين ٻڌو",
+    "hearItFirstDescription": "پڙهڻ جي مشق ۾، رڪارڊ ڪرڻ کان اڳ جملو هلايو.",
+    "readAloudInstruction": "مائڪ تي ٽيپ ڪريو ۽ جملو بلند آواز ۾ پڙهو",
+    "readAloudRecord": "رڪارڊ ڪريو",
+    "readAloudMicLabel": "{count, plural, =1{رڪارڊ ڪريو، 1 لفظ اڃا ٻڌو نه ويو} other{رڪارڊ ڪريو، {count} لفظ اڃا ٻڌا نه ويا}}",
+    "readAloudStop": "رڪارڊنگ بند ڪريو",
+    "readAloudHeardAll": "هر لفظ ٻڌو ويو!",
+    "readAloudNotHeard": "{count, plural, =1{1 لفظ ٻڌو نه ويو} other{{count} لفظ ٻڌا نه ويا}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 ڪوشش باقي} other{{count} ڪوششون باقي}}",
+    "readAloudHeardTranscript": "ٻڌو ويو: {transcript}",
+    "readAloudTranscribeFailed": "توهان جي رڪارڊنگ کي ٽرانسڪرائب نه ٿي سگهيو. پنهنجو ڪنيڪشن چيڪ ڪريو ۽ ٻيهر ڪوشش ڪريو.",
+    "readAloudMicUnavailable": "ڪو به مائڪروفون موجود ناهي، تنهنڪري هي لفظ معنيٰ جي مشق آهي.",
+    "readAloudYourRecording": "توهان جي رڪارڊنگ",
+    "readAloudExample": "مثال"
 }

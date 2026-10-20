@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-16 16:33:05.244885",
+    "@@last_modified": "2026-10-20 12:56:32.298276",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "Kua oti",
     "completedTimes": "Kua oti {count} wā",
     "classLocation": "Wāhi akomanga",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Pānuitia me te rongo",
+    "constructUseIncRADesc": "Pānuitia, kāore i rangona",
+    "hearItFirstToolName": "Whakarongo tuatahi",
+    "hearItFirstDescription": "I roto i te mahi pānui-nui, whakatangihia te rerenga kōrero i mua i tō hopu.",
+    "readAloudInstruction": "Pāwhiritia te hopuoro ka pānuihia te rerenga kōrero",
+    "readAloudRecord": "Hopu",
+    "readAloudMicLabel": "{count, plural, =1{Hopu, 1 kupu kāore anō kia rangona} other{Hopu, {count} kupu kāore anō kia rangona}}",
+    "readAloudStop": "Kati te hopu",
+    "readAloudHeardAll": "Kua rangona ngā kupu katoa!",
+    "readAloudNotHeard": "{count, plural, =1{1 kupu kāore i rangona} other{{count} kupu kāore i rangona}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 ngana e toe ana} other{{count} ngana e toe ana}}",
+    "readAloudHeardTranscript": "Kua rangona: {transcript}",
+    "readAloudTranscribeFailed": "Kāore i taea te tuhi i tō hopunga. Tirohia tō hononga ka ngana anō.",
+    "readAloudMicUnavailable": "Kāore he hopuoro e wātea ana, nō reira he mahi tikanga tēnei kupu.",
+    "readAloudYourRecording": "Tō hopunga",
+    "readAloudExample": "Tauira"
 }

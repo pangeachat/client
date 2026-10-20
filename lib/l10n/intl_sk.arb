@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-16 16:33:10.872519",
+    "@@last_modified": "2026-10-20 12:56:41.530281",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10947,5 +10947,21 @@
     "activityCompleted": "Dokončené",
     "completedTimes": "Dokončené {count}-krát",
     "classLocation": "Umiestnenie triedy",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Prečítané nahlas a vypočuté",
+    "constructUseIncRADesc": "Prečítané nahlas, ale nepočuté",
+    "hearItFirstToolName": "Najprv si to vypočujte",
+    "hearItFirstDescription": "Pri precvičovaní čítania nahlas si prehrajte vetu predtým, ako ju nahráte.",
+    "readAloudInstruction": "Ťuknite na mikrofón a prečítajte vetu nahlas",
+    "readAloudRecord": "Nahrať",
+    "readAloudMicLabel": "{count, plural, =1{Nahrať, 1 slovo ešte nebolo vypočuté} other{Nahrať, {count} slov ešte nebolo vypočutých}}",
+    "readAloudStop": "Zastaviť nahrávanie",
+    "readAloudHeardAll": "Všetky slová vypočuté!",
+    "readAloudNotHeard": "{count, plural, =1{1 slovo nebolo vypočuté} other{{count} slov nebolo vypočutých}}",
+    "readAloudTriesLeft": "{count, plural, =1{Zostáva 1 pokus} other{Zostávajú {count} pokusy}}",
+    "readAloudHeardTranscript": "Vypočuté: {transcript}",
+    "readAloudTranscribeFailed": "Nepodarilo sa prepísať vašu nahrávku. Skontrolujte pripojenie a skúste to znova.",
+    "readAloudMicUnavailable": "Mikrofón nie je k dispozícii, takže toto slovo je namiesto toho cvičením na význam.",
+    "readAloudYourRecording": "Vaša nahrávka",
+    "readAloudExample": "Príklad"
 }

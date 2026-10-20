@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-16 16:32:58.524346",
+    "@@last_modified": "2026-10-20 12:56:26.356210",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10005,5 +10005,21 @@
     "activityCompleted": "Completado",
     "completedTimes": "Completado {count} veces",
     "classLocation": "Localización da clase",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Lido en voz alta e escoitado",
+    "constructUseIncRADesc": "Lido en voz alta, non escoitado",
+    "hearItFirstToolName": "Escoita primeiro",
+    "hearItFirstDescription": "Na práctica de lectura en voz alta, reproduce a frase antes de gravar.",
+    "readAloudInstruction": "Toca o micro e le a frase en voz alta",
+    "readAloudRecord": "Gravar",
+    "readAloudMicLabel": "{count, plural, =1{Gravar, 1 palabra aínda non escoitada} other{Gravar, {count} palabras aínda non escoitadas}}",
+    "readAloudStop": "Deter a gravación",
+    "readAloudHeardAll": "Todas as palabras escoitadas!",
+    "readAloudNotHeard": "{count, plural, =1{1 palabra non escoitada} other{{count} palabras non escoitadas}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 intento restante} other{{count} intentos restantes}}",
+    "readAloudHeardTranscript": "Escoitado: {transcript}",
+    "readAloudTranscribeFailed": "Non se puido transcribir a túa gravación. Comproba a túa conexión e téntao de novo.",
+    "readAloudMicUnavailable": "Non hai micrófono dispoñible, polo que esta palabra é un exercicio de significado.",
+    "readAloudYourRecording": "A túa gravación",
+    "readAloudExample": "Exemplo"
 }

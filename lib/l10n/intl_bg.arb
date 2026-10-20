@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-16 16:32:52.970940",
+    "@@last_modified": "2026-10-20 12:56:03.123031",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "Завършено",
     "completedTimes": "Завършени {count} пъти",
     "classLocation": "Местоположение на класа",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Прочетено на глас и чуто",
+    "constructUseIncRADesc": "Прочетено на глас, но нечуто",
+    "hearItFirstToolName": "Чуй го първо",
+    "hearItFirstDescription": "При упражненията за четене на глас, пуснете изречението, преди да запишете.",
+    "readAloudInstruction": "Докоснете микрофона и прочетете изречението на глас",
+    "readAloudRecord": "Запис",
+    "readAloudMicLabel": "{count, plural, =1{Запис, 1 дума все още не е чута} other{Запис, {count} думи все още не са чути}}",
+    "readAloudStop": "Спиране на записа",
+    "readAloudHeardAll": "Всяка дума е чута!",
+    "readAloudNotHeard": "{count, plural, =1{1 дума не е чута} other{{count} думи не са чути}}",
+    "readAloudTriesLeft": "{count, plural, =1{Остава 1 опит} other{Остават {count} опита}}",
+    "readAloudHeardTranscript": "Чуто: {transcript}",
+    "readAloudTranscribeFailed": "Неуспешно транскрибиране на записа. Проверете връзката си и опитайте отново.",
+    "readAloudMicUnavailable": "Няма наличен микрофон, така че тази дума е упражнение за значение вместо това.",
+    "readAloudYourRecording": "Вашият запис",
+    "readAloudExample": "Пример"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-16 16:32:59.016142",
+    "@@last_modified": "2026-10-20 12:56:27.076063",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "An kammala",
     "completedTimes": "An kammala sau {count}",
     "classLocation": "Wurin aji",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Karanta da babbar murya kuma an ji",
+    "constructUseIncRADesc": "Karanta da babbar murya, ba a ji ba",
+    "hearItFirstToolName": "Ji shi da farko",
+    "hearItFirstDescription": "A cikin aikin karatu da babbar murya, kunna jimlar kafin ka yi rikodi.",
+    "readAloudInstruction": "Danna makirufo kuma karanta jimlar da babbar murya",
+    "readAloudRecord": "Yi rikodi",
+    "readAloudMicLabel": "{count, plural, =1{Yi rikodi, kalma 1 ba a ji ba tukuna} other{Yi rikodi, kalmomi {count} ba a ji ba tukuna}}",
+    "readAloudStop": "Dakatar da rikodi",
+    "readAloudHeardAll": "An ji kowace kalma!",
+    "readAloudNotHeard": "{count, plural, =1{Kalma 1 ba a ji ba} other{Kalmomi {count} ba a ji ba}}",
+    "readAloudTriesLeft": "{count, plural, =1{Sauran gwaji 1} other{Sauran gwaje-gwaje {count}}}",
+    "readAloudHeardTranscript": "An ji: {transcript}",
+    "readAloudTranscribeFailed": "Ba a iya fassara rikodin ku ba. Duba haɗin ku kuma sake gwadawa.",
+    "readAloudMicUnavailable": "Babu makirufo, don haka wannan kalmar aikin ma'ana ce maimakon haka.",
+    "readAloudYourRecording": "Rikodin ku",
+    "readAloudExample": "Misali"
 }

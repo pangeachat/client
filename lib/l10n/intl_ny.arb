@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-16 16:33:08.382100",
+    "@@last_modified": "2026-10-20 12:56:49.124138",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "Yamalizidwa",
     "completedTimes": "Yamalizidwa {count} nthawi",
     "classLocation": "Malo a kalasi",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Werengani mokweza ndipo anamva",
+    "constructUseIncRADesc": "Werengani mokweza, osamva",
+    "hearItFirstToolName": "Imvani kaye",
+    "hearItFirstDescription": "Pochita kuwerenga mokweza, yambitsani chiganizo musanajambule.",
+    "readAloudInstruction": "Dinani maiki ndikuwerenga chiganizo mokweza",
+    "readAloudRecord": "Jambulani",
+    "readAloudMicLabel": "{count, plural, =1{Jambulani, mawu 1 sanamvekebe} other{Jambulani, mawu {count} sanamvekebe}}",
+    "readAloudStop": "Lekani kujambula",
+    "readAloudHeardAll": "Mawu onse amveka!",
+    "readAloudNotHeard": "{count, plural, =1{Mawu 1 sanamveke} other{Mawu {count} sanamveke}}",
+    "readAloudTriesLeft": "{count, plural, =1{Kuyesa kumodzi kwatsala} other{Kuyesa {count} kwatsala}}",
+    "readAloudHeardTranscript": "Kumveka: {transcript}",
+    "readAloudTranscribeFailed": "Sitheka kulemba zomwe mwajambula. Chongani intaneti yanu ndikuyesanso.",
+    "readAloudMicUnavailable": "Palibe maiki opezeka, choncho mawu awa ndi masewera a tanthauzo m'malo mwake.",
+    "readAloudYourRecording": "Zomwe mwajambula",
+    "readAloudExample": "Chitsanzo"
 }

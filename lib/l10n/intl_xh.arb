@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-16 16:33:15.908664",
+    "@@last_modified": "2026-10-20 12:56:55.201951",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "Kugqityiwe",
     "completedTimes": "Kugqityiwe {count} amaxesha",
     "classLocation": "Indawo yeklasi",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Funda ngokuvakalayo kwaye uviwe",
+    "constructUseIncRADesc": "Funda ngokuvakalayo, ayiviwanga",
+    "hearItFirstToolName": "Yiva kuqala",
+    "hearItFirstDescription": "Ekuqheliseni ukufunda ngokuvakalayo, dlala isivakalisi phambi kokuba urekhode.",
+    "readAloudInstruction": "Cofa imakrofoni uze ufunde isivakalisi ngokuvakalayo",
+    "readAloudRecord": "Rekhoda",
+    "readAloudMicLabel": "{count, plural, =1{Rekhoda, igama eli-1 lingekaviwa} other{Rekhoda, amagama angama-{count} angakaviwa}}",
+    "readAloudStop": "Yeka ukurekhoda",
+    "readAloudHeardAll": "Onke amagama aviwe!",
+    "readAloudNotHeard": "{count, plural, =1{Igama eli-1 aliviwanga} other{Amagama angama-{count} akaviwanga}}",
+    "readAloudTriesLeft": "{count, plural, =1{Kushiyeke umzamo o-1} other{Kushiyeke imizamo engama-{count}}}",
+    "readAloudHeardTranscript": "Kuviwe: {transcript}",
+    "readAloudTranscribeFailed": "Ayikwazanga ukubhala phantsi irekhodingi yakho. Jonga uqhagamshelwano lwakho uze uzame kwakhona.",
+    "readAloudMicUnavailable": "Akukho makrofoni ekhoyo, ngoko eli gama ngumthambo went singa endaweni yoko.",
+    "readAloudYourRecording": "Irekhodingi yakho",
+    "readAloudExample": "Umzekelo"
 }

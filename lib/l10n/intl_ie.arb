@@ -3082,7 +3082,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-16 16:33:01.185598",
+    "@@last_modified": "2026-10-20 12:56:19.740502",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10634,5 +10634,21 @@
     "activityCompleted": "Críochnaithe",
     "completedTimes": "Críochnaithe {count} uair",
     "classLocation": "Suíomh ranga",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Léigh os ard agus chuala",
+    "constructUseIncRADesc": "Léigh os ard, níor chuala",
+    "hearItFirstToolName": "Éist leis ar dtús",
+    "hearItFirstDescription": "I gcleachtadh léamh os ard, seinn an abairt sula ndéanann tú taifeadadh.",
+    "readAloudInstruction": "Beartaigh an mic agus léigh an abairt os ard",
+    "readAloudRecord": "Taifead",
+    "readAloudMicLabel": "{count, plural, =1{Taifead, 1 fhocal nár chualathas fós} other{Taifead, {count} focal nár chualathas fós}}",
+    "readAloudStop": "Stop an taifeadadh",
+    "readAloudHeardAll": "Gach focal cloiste!",
+    "readAloudNotHeard": "{count, plural, =1{1 fhocal nár chualathas} other{{count} focal nár chualathas}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 iarracht fágtha} other{{count} iarracht fágtha}}",
+    "readAloudHeardTranscript": "Cloiste: {transcript}",
+    "readAloudTranscribeFailed": "Níorbh fhéidir do thaifeadadh a thras-scríobh. Seiceáil do nasc agus bain triail eile as.",
+    "readAloudMicUnavailable": "Níl aon mhicreafón ar fáil, mar sin is cleachtadh brí é an focal seo ina ionad.",
+    "readAloudYourRecording": "Do thaifeadadh",
+    "readAloudExample": "Sampla"
 }

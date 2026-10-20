@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-16 16:32:57.034575",
+    "@@last_modified": "2026-10-20 12:56:08.279857",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10002,5 +10002,21 @@
     "activityCompleted": "Lõpetatud",
     "completedTimes": "Lõpetatud {count} korda",
     "classLocation": "Klassi asukoht",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Valjusti loetud ja kuuldud",
+    "constructUseIncRADesc": "Valjusti loetud, ei kuuldud",
+    "hearItFirstToolName": "Kuula enne",
+    "hearItFirstDescription": "Valjuhäälse lugemise harjutamisel esita lause enne salvestamist.",
+    "readAloudInstruction": "Puuduta mikrofoni ja loe lause valjusti ette",
+    "readAloudRecord": "Salvesta",
+    "readAloudMicLabel": "{count, plural, =1{Salvesta, 1 sõna veel kuulmata} other{Salvesta, {count} sõna veel kuulmata}}",
+    "readAloudStop": "Lõpeta salvestamine",
+    "readAloudHeardAll": "Kõik sõnad kuuldud!",
+    "readAloudNotHeard": "{count, plural, =1{1 sõna kuulmata} other{{count} sõna kuulmata}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 katse jäänud} other{{count} katset jäänud}}",
+    "readAloudHeardTranscript": "Kuuldud: {transcript}",
+    "readAloudTranscribeFailed": "Salvestust ei õnnestunud transkribeerida. Kontrolli ühendust ja proovi uuesti.",
+    "readAloudMicUnavailable": "Mikrofon pole saadaval, seega on see sõna hoopis tähendusharjutus.",
+    "readAloudYourRecording": "Sinu salvestus",
+    "readAloudExample": "Näide"
 }

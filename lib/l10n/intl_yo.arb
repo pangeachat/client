@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-16 16:33:17.042673",
+    "@@last_modified": "2026-10-20 12:56:55.985007",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "Pari",
     "completedTimes": "Pari nígbà {count}",
     "classLocation": "Ibi tí kíláàsì wà",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Ka jade ti a si gbo",
+    "constructUseIncRADesc": "Ka jade, ko si gbo",
+    "hearItFirstToolName": "Gbo o na ni",
+    "hearItFirstDescription": "Ni adaṣe kika-jade, mu gbolohun naa ṣaaju ki o to gba silẹ.",
+    "readAloudInstruction": "Fọwọ ba gbohungbohun ki o ka gbolohun naa jade",
+    "readAloudRecord": "Gba silẹ",
+    "readAloudMicLabel": "{count, plural, =1{Gba silẹ, ọrọ kan ko tii gbọ} other{Gba silẹ, {count} awọn ọrọ ko tii gbọ}}",
+    "readAloudStop": "Duro gbigbasilẹ",
+    "readAloudHeardAll": "Gbogbo ọrọ ti gbọ!",
+    "readAloudNotHeard": "{count, plural, =1{Ọrọ kan ko gbọ} other{{count} awọn ọrọ ko gbọ}}",
+    "readAloudTriesLeft": "{count, plural, =1{Igbiyanju 1 ku} other{{count} awọn igbiyanju ku}}",
+    "readAloudHeardTranscript": "Ti gbọ: {transcript}",
+    "readAloudTranscribeFailed": "Ko le ṣe atunkọ gbigbasilẹ rẹ. Ṣayẹwo asopọ rẹ ki o tun gbiyanju.",
+    "readAloudMicUnavailable": "Ko si gbohungbohun ti o wa, nitorinaa ọrọ yii jẹ adaṣe itumọ dipo.",
+    "readAloudYourRecording": "Gbigbasilẹ rẹ",
+    "readAloudExample": "Apẹẹrẹ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-16 16:33:06.307640",
+    "@@last_modified": "2026-10-20 12:56:30.848763",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "പൂർത്തിയാക്കി",
     "completedTimes": "{count} തവണ പൂർത്തിയാക്കി",
     "classLocation": "ക്ലാസ് സ്ഥലം",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "ഉറക്കെ വായിച്ചു, കേട്ടു",
+    "constructUseIncRADesc": "ഉറക്കെ വായിച്ചു, കേട്ടില്ല",
+    "hearItFirstToolName": "ആദ്യം കേൾക്കുക",
+    "hearItFirstDescription": "ഉറക്കെ വായിക്കുന്ന പരിശീലനത്തിൽ, റെക്കോർഡ് ചെയ്യുന്നതിന് മുമ്പ് വാക്യം പ്ലേ ചെയ്യുക.",
+    "readAloudInstruction": "മൈക്കിൽ ടാപ്പ് ചെയ്ത് വാക്യം ഉറക്കെ വായിക്കുക",
+    "readAloudRecord": "റെക്കോർഡ് ചെയ്യുക",
+    "readAloudMicLabel": "{count, plural, =1{റെക്കോർഡ് ചെയ്യുക, 1 വാക്ക് ഇതുവരെ കേട്ടിട്ടില്ല} other{റെക്കോർഡ് ചെയ്യുക, {count} വാക്കുകൾ ഇതുവരെ കേട്ടിട്ടില്ല}}",
+    "readAloudStop": "റെക്കോർഡിംഗ് നിർത്തുക",
+    "readAloudHeardAll": "എല്ലാ വാക്കുകളും കേട്ടു!",
+    "readAloudNotHeard": "{count, plural, =1{1 വാക്ക് കേട്ടില്ല} other{{count} വാക്കുകൾ കേട്ടില്ല}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 ശ്രമം ബാക്കി} other{{count} ശ്രമങ്ങൾ ബാക്കി}}",
+    "readAloudHeardTranscript": "കേട്ടത്: {transcript}",
+    "readAloudTranscribeFailed": "നിങ്ങളുടെ റെക്കോർഡിംഗ് ട്രാൻസ്ക്രൈബ് ചെയ്യാൻ കഴിഞ്ഞില്ല. നിങ്ങളുടെ കണക്ഷൻ പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക.",
+    "readAloudMicUnavailable": "മൈക്രോഫോൺ ലഭ്യമല്ലാത്തതിനാൽ, ഈ വാക്ക് ഒരു അർത്ഥ വ്യായാമമാണ്.",
+    "readAloudYourRecording": "നിങ്ങളുടെ റെക്കോർഡിംഗ്",
+    "readAloudExample": "ഉദാഹരണം"
 }

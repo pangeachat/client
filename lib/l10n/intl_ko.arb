@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:03.131261",
+    "@@last_modified": "2026-10-20 12:56:25.428021",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10198,5 +10198,21 @@
     "activityCompleted": "완료됨",
     "completedTimes": "{count}회 완료됨",
     "classLocation": "수업 위치",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "소리 내어 읽고 들음",
+    "constructUseIncRADesc": "소리 내어 읽었지만 들리지 않음",
+    "hearItFirstToolName": "먼저 듣기",
+    "hearItFirstDescription": "소리 내어 읽기 연습에서 녹음하기 전에 문장을 재생합니다.",
+    "readAloudInstruction": "마이크를 탭하고 문장을 소리 내어 읽으세요",
+    "readAloudRecord": "녹음",
+    "readAloudMicLabel": "{count, plural, =1{녹음, 아직 듣지 못한 단어 1개} other{녹음, 아직 듣지 못한 단어 {count}개}}",
+    "readAloudStop": "녹음 중지",
+    "readAloudHeardAll": "모든 단어를 들었습니다!",
+    "readAloudNotHeard": "{count, plural, =1{듣지 못한 단어 1개} other{듣지 못한 단어 {count}개}}",
+    "readAloudTriesLeft": "{count, plural, =1{남은 시도 1회} other{남은 시도 {count}회}}",
+    "readAloudHeardTranscript": "들음: {transcript}",
+    "readAloudTranscribeFailed": "녹음을 필사할 수 없습니다. 연결 상태를 확인하고 다시 시도하세요.",
+    "readAloudMicUnavailable": "사용 가능한 마이크가 없습니다. 대신 이 단어는 의미 연습입니다.",
+    "readAloudYourRecording": "내 녹음",
+    "readAloudExample": "예시"
 }

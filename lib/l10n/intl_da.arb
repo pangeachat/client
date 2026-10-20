@@ -1327,7 +1327,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-16 16:32:55.088386",
+    "@@last_modified": "2026-10-20 12:56:05.828845",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10922,5 +10922,21 @@
     "activityCompleted": "Gennemført",
     "completedTimes": "Gennemført {count} gange",
     "classLocation": "Klasselokation",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Læst højt og hørt",
+    "constructUseIncRADesc": "Læst højt, ikke hørt",
+    "hearItFirstToolName": "Hør det først",
+    "hearItFirstDescription": "I læse-højt-øvelser, afspil sætningen før du optager.",
+    "readAloudInstruction": "Tryk på mikrofonen og læs sætningen højt",
+    "readAloudRecord": "Optag",
+    "readAloudMicLabel": "{count, plural, =1{Optag, 1 ord endnu ikke hørt} other{Optag, {count} ord endnu ikke hørt}}",
+    "readAloudStop": "Stop optagelse",
+    "readAloudHeardAll": "Alle ord hørt!",
+    "readAloudNotHeard": "{count, plural, =1{1 ord ikke hørt} other{{count} ord ikke hørt}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 forsøg tilbage} other{{count} forsøg tilbage}}",
+    "readAloudHeardTranscript": "Hørt: {transcript}",
+    "readAloudTranscribeFailed": "Kunne ikke transskribere din optagelse. Tjek din forbindelse og prøv igen.",
+    "readAloudMicUnavailable": "Ingen mikrofon er tilgængelig, så dette ord er i stedet en betydningsøvelse.",
+    "readAloudYourRecording": "Din optagelse",
+    "readAloudExample": "Eksempel"
 }

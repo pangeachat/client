@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-16 16:32:55.198985",
+    "@@last_modified": "2026-10-20 12:56:05.986301",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10496,5 +10496,21 @@
     "activityCompleted": "Dokončeno",
     "completedTimes": "Dokončeno {count}krát",
     "classLocation": "Místo konání kurzu",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Přečteno nahlas a slyšeno",
+    "constructUseIncRADesc": "Přečteno nahlas, neslyšeno",
+    "hearItFirstToolName": "Nejprve si to poslechněte",
+    "hearItFirstDescription": "Při nácviku čtení nahlas si větu přehrajte, než ji nahrajete.",
+    "readAloudInstruction": "Klepněte na mikrofon a přečtěte větu nahlas",
+    "readAloudRecord": "Nahrát",
+    "readAloudMicLabel": "{count, plural, =1{Nahrát, 1 slovo ještě neslyšeno} other{Nahrát, {count} slov ještě neslyšeno}}",
+    "readAloudStop": "Zastavit nahrávání",
+    "readAloudHeardAll": "Všechna slova slyšena!",
+    "readAloudNotHeard": "{count, plural, =1{1 slovo neslyšeno} other{{count} slov neslyšeno}}",
+    "readAloudTriesLeft": "{count, plural, =1{Zbývá 1 pokus} other{Zbývá {count} pokusů}}",
+    "readAloudHeardTranscript": "Slyšeno: {transcript}",
+    "readAloudTranscribeFailed": "Nepodařilo se přepsat vaši nahrávku. Zkontrolujte připojení a zkuste to znovu.",
+    "readAloudMicUnavailable": "Není k dispozici žádný mikrofon, takže toto slovo je místo toho cvičením na význam.",
+    "readAloudYourRecording": "Vaše nahrávka",
+    "readAloudExample": "Příklad"
 }

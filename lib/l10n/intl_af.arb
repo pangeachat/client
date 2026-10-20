@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-16 16:32:53.253836",
+    "@@last_modified": "2026-10-20 12:56:02.605577",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2467,5 +2467,21 @@
     "activityCompleted": "Voltooi",
     "completedTimes": "{count} keer voltooi",
     "classLocation": "Klasligging",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "constructUseCorRADesc": "Hardop gelees en gehoor",
+    "constructUseIncRADesc": "Hardop gelees, nie gehoor nie",
+    "hearItFirstToolName": "Hoor dit eers",
+    "hearItFirstDescription": "In hardoplees-oefening, speel die sin voordat jy opneem.",
+    "readAloudInstruction": "Tik die mikrofoon en lees die sin hardop",
+    "readAloudRecord": "Neem op",
+    "readAloudMicLabel": "{count, plural, =1{Neem op, 1 woord nog nie gehoor nie} other{Neem op, {count} woorde nog nie gehoor nie}}",
+    "readAloudStop": "Stop opname",
+    "readAloudHeardAll": "Elke woord gehoor!",
+    "readAloudNotHeard": "{count, plural, =1{1 woord nie gehoor nie} other{{count} woorde nie gehoor nie}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 poging oor} other{{count} pogings oor}}",
+    "readAloudHeardTranscript": "Gehoor: {transcript}",
+    "readAloudTranscribeFailed": "Kon nie jou opname transkribeer nie. Kontroleer jou verbinding en probeer weer.",
+    "readAloudMicUnavailable": "Geen mikrofoon is beskikbaar nie, so hierdie woord is eerder 'n betekenis-oefening.",
+    "readAloudYourRecording": "Jou opname",
+    "readAloudExample": "Voorbeeld"
 }
