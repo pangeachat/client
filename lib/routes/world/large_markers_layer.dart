@@ -40,8 +40,8 @@ class LargeMarkersLayer {
             final snap = currentLarge[card.activityId];
             if (snap == null || card.point == null) return null;
             if (kMapActivityCards) {
-              final standsOnStamp = snap.starLevel != ActivityStarLevel.none;
-              final box = PinSize.mapCardBox(standsOnStamp: standsOnStamp);
+              final played = snap.starLevel != ActivityStarLevel.none;
+              final box = PinSize.mapCardBox;
               return Marker(
                 point: card.point!,
                 width: box.width,
@@ -56,10 +56,11 @@ class LargeMarkersLayer {
                       card: snap.card,
                       state: snap.state,
                       plan: snap.plan,
-                      starsEarned: snap.starsEarned,
                       participants: snap.participants,
                       openSlots: snap.openSlots,
-                      standsOnStamp: standsOnStamp,
+                      played: played,
+                      xpEarned: snap.xpEarned,
+                      pinged: snap.pinged,
                       isFocused: card.activityId == focusedId,
                       onTap: () => onTap(card),
                       onClose: () => onClose(card),
@@ -103,7 +104,6 @@ class LargeMarkersLayer {
                     pinged: snap.pinged,
                     plan: snap.plan,
                     liveRoom: snap.liveRoom,
-                    starsEarned: snap.starsEarned,
                     participants: snap.participants,
                     openSlots: snap.openSlots,
                     starLevel: snap.starLevel,

@@ -37,18 +37,30 @@ class MissionProgress {
   double get fraction => threshold <= 0 ? 0 : (xp / threshold).clamp(0.0, 1.0);
 }
 
-/// Where a Mission's (or an activity's) XP came from: chat messages, goal
-/// checkmarks, and practice. The three sum to the XP the resolver counts.
+/// Where a Mission's (or an activity's) XP came from: chat messages, voice
+/// messages and calls (speaking), goal checkmarks, and practice. The four sum
+/// to the XP the resolver counts.
 class MissionXpBreakdown {
   final int chat;
+  final int speaking;
   final int goals;
   final int practice;
 
-  const MissionXpBreakdown({this.chat = 0, this.goals = 0, this.practice = 0});
+  const MissionXpBreakdown({
+    this.chat = 0,
+    this.speaking = 0,
+    this.goals = 0,
+    this.practice = 0,
+  });
 
   static const zero = MissionXpBreakdown();
 
-  int get total => chat + goals + practice;
+  int get total => chat + speaking + goals + practice;
+
+  /// Everything earned by talking in an activity: typed messages, voice
+  /// messages and calls, and goals — the "Conversation" share every Mission
+  /// meter shows beside [practice] (#9559).
+  int get conversation => chat + speaking + goals;
 
   /// The practice XP earned outside any session on [lemmas] — a Mission's
   /// word list — read from [practiceXpByLemma]. A word on two Missions' lists
@@ -66,6 +78,7 @@ class MissionXpBreakdown {
 
   MissionXpBreakdown operator +(MissionXpBreakdown other) => MissionXpBreakdown(
     chat: chat + other.chat,
+    speaking: speaking + other.speaking,
     goals: goals + other.goals,
     practice: practice + other.practice,
   );

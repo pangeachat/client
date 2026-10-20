@@ -30,7 +30,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/map_tiles.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
-import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/course_preview_banner.dart';
 import 'package:fluffychat/routes/world/dot_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_large_markers_layer.dart';
@@ -56,7 +55,6 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
-import 'package:fluffychat/widgets/completed_stamp.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
 import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -157,7 +155,9 @@ class LargeCardSnapshot {
   final bool pinged;
   final ActivityPlanModel? plan;
   final Room? liveRoom;
-  final int starsEarned;
+
+  /// The learner's total XP from this activity, for a played card's coin.
+  final int xpEarned;
   final List<String> participants;
   final int openSlots;
   final ActivityStarLevel starLevel;
@@ -175,7 +175,7 @@ class LargeCardSnapshot {
     required this.pinged,
     required this.plan,
     required this.liveRoom,
-    required this.starsEarned,
+    required this.xpEarned,
     required this.participants,
     required this.openSlots,
     required this.starLevel,
@@ -896,16 +896,11 @@ class _WorldMapViewState extends State<WorldMapView>
       pinged: render.pingedOf(card.activityId),
       plan: plan,
       liveRoom: liveRoom,
-      // ongoingActive's star row is the CURRENT session's own progress, not
-      // the all-time/cross-session max (world-map.instructions.md, "Goal
-      // Progress") — every other state keeps the all-time value.
-      starsEarned: state == ActivityPinState.ongoingActive
-          ? (liveRoom?.ownCompletedGoals.length ?? 0)
-          : (widget.controller.activityStarsEarned(card.activityId) ?? 0),
+      xpEarned: widget.controller.activityXpEarned(card.activityId) ?? 0,
       participants: participants,
       openSlots: openSlots,
-      // The completed-activity trail tier (all-time), so a live large card on a
-      // previously-completed activity still shows its star below the caret.
+      // Whether the learner has a saved session of it — a played card wears
+      // the coin on its photo.
       starLevel: render.starLevelOf(card.activityId),
       // Dim an available card the course can't yet staff (course-scoped; the
       // renderer only ever flags `available` pins here).
@@ -1044,37 +1039,9 @@ class _WorldMapViewState extends State<WorldMapView>
               // State recreations MarkerLayer causes mid-gesture (#8136).
               animateInOf: _dotExits.markEntered,
             ).layer();
-            // The completed stamps as their own layer (activity-card map
-            // only): one at the point of every saved activity in view that
-            // isn't already drawn AS its stamp, under the pins and cards that
-            // stand on it. Read from the saved set rather than the tiered
-            // pins, so a stamp stays on the map when its card is dismissed or
-            // its pin falls outside the budget.
-            final savedIds = widget.controller.savedActivityIds;
-            final Widget stampLayer = MarkerLayer(
-              markers: [
-                if (kMapActivityCards)
-                  for (final card in render.visible)
-                    if (card.point != null &&
-                        savedIds.contains(card.activityId) &&
-                        !(render.stateOf(card.activityId) ==
-                                ActivityPinState.inProgress &&
-                            render.activityIdToTier.containsKey(
-                              card.activityId,
-                            )))
-                      Marker(
-                        point: card.point!,
-                        width: PinSize.stampMarkerBox,
-                        height: PinSize.stampMarkerBox,
-                        child: IgnorePointer(
-                          key: ValueKey('stamp-${card.activityId}'),
-                          child: const CompletedStamp(
-                            size: PinSize.starDotDiameter,
-                          ),
-                        ),
-                      ),
-              ],
-            );
+            // No stamp layer (#9559): a played activity with nothing live is
+            // drawn AS its stamp by its own pin, and a live pin or card never
+            // carries one — the card shows it under its name instead.
             final Widget largeLayer = LargeMarkersLayer(
               largeCards: render.largeCards,
               currentLarge: currentLarge,
@@ -1187,10 +1154,9 @@ class _WorldMapViewState extends State<WorldMapView>
                         ...render.nonLargeCards,
                         if (!kMapActivityCards) ...render.largeCards,
                       ],
-                      savedActivityIds: savedIds,
+                      savedActivityIds: widget.controller.savedActivityIds,
                       wordsFor: widget.controller.stampWordsFor,
                     ),
-                  stampLayer,
                   _ShimmerLayer(active: warming, child: dotLayer),
                   // Dying pins (a separate layer) so they don't disturb the live pins
                   // while animating out.

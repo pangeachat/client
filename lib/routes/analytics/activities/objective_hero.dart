@@ -4,22 +4,37 @@ import 'package:intl/intl.dart';
 
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_star.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_xp_ring.dart';
 
 /// The top of the page: the star and statement, then the XP ring with what's
-/// left to the star and where the XP came from.
+/// left to the star and where the XP came from — conversation (goals named
+/// within it) and practice, the same two golds as every Mission meter — then
+/// the same XP by skill (#9559).
 class ObjectiveHero extends StatelessWidget {
   final String statement;
   final MissionProgress? progress;
   final MissionXpBreakdown breakdown;
 
+  /// The Mission's XP by the skill it exercised; goals are in none of them.
+  final Map<LearningSkillsEnum, int> skillXp;
+
   const ObjectiveHero({
     required this.statement,
     required this.progress,
     required this.breakdown,
+    required this.skillXp,
     super.key,
   });
+
+  /// The four skills, in the order a teacher lists them.
+  static const List<LearningSkillsEnum> _skills = [
+    LearningSkillsEnum.speaking,
+    LearningSkillsEnum.hearing,
+    LearningSkillsEnum.writing,
+    LearningSkillsEnum.reading,
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -111,46 +126,154 @@ class ObjectiveHero extends StatelessWidget {
                         fontWeight: FontWeight.w800,
                       ),
                     ),
-                  for (final (color, label) in [
-                    (
-                      palette.chat,
-                      l10n.xpFromChats(numbers.format(breakdown.chat)),
+                  _LegendLine(
+                    color: palette.conversation,
+                    label: l10n.xpFromConversation(
+                      numbers.format(breakdown.conversation),
                     ),
-                    (
-                      palette.goals,
-                      l10n.xpFromGoals(numbers.format(breakdown.goals)),
+                    detail: breakdown.goals > 0
+                        ? l10n.xpIncludingGoals(numbers.format(breakdown.goals))
+                        : null,
+                  ),
+                  _LegendLine(
+                    color: palette.practice,
+                    label: l10n.xpFromPractice(
+                      numbers.format(breakdown.practice),
                     ),
-                    (
-                      palette.practice,
-                      l10n.xpFromPractice(numbers.format(breakdown.practice)),
-                    ),
-                  ])
-                    Row(
-                      spacing: 8.0,
-                      children: [
-                        Container(
-                          width: 12.0,
-                          height: 12.0,
-                          decoration: BoxDecoration(
-                            color: color,
-                            shape: BoxShape.circle,
-                            border: Border.all(color: scheme.outline),
-                          ),
-                        ),
-                        Text(
-                          label,
-                          style: theme.textTheme.labelLarge?.copyWith(
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ],
-                    ),
+                  ),
                 ],
               ),
             ),
           ],
         ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          spacing: 10.0,
+          children: [
+            Semantics(
+              header: true,
+              child: Text(
+                l10n.xpBySkillTitle,
+                style: theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ),
+            Row(
+              spacing: 8.0,
+              children: [
+                for (final skill in _skills)
+                  Expanded(
+                    child: _SkillTile(skill: skill, xp: skillXp[skill] ?? 0),
+                  ),
+              ],
+            ),
+          ],
+        ),
       ],
+    );
+  }
+}
+
+class _LegendLine extends StatelessWidget {
+  final Color color;
+  final String label;
+
+  /// A quieter line under [label], e.g. how much of it came from goals.
+  final String? detail;
+
+  const _LegendLine({required this.color, required this.label, this.detail});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final scheme = theme.colorScheme;
+    final detail = this.detail;
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 8.0,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 3.0),
+          child: MissionXpSwatch(color: color, size: 12.0),
+        ),
+        Flexible(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                label,
+                style: theme.textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              if (detail != null)
+                Text(
+                  detail,
+                  style: theme.textTheme.labelMedium?.copyWith(
+                    color: scheme.onSurfaceVariant,
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// One skill's XP: its icon, its name and the number, on a quiet tile.
+class _SkillTile extends StatelessWidget {
+  final LearningSkillsEnum skill;
+  final int xp;
+
+  const _SkillTile({required this.skill, required this.xp});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final scheme = theme.colorScheme;
+    final l10n = L10n.of(context);
+    final name = skill.tooltip(context);
+    final amount = l10n.xpAmount(xp);
+    return Semantics(
+      label: '$name, $amount',
+      child: ExcludeSemantics(
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: scheme.surfaceContainerHigh,
+            borderRadius: const BorderRadius.all(Radius.circular(12.0)),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 6.0,
+              vertical: 10.0,
+            ),
+            child: Column(
+              spacing: 4.0,
+              children: [
+                Icon(skill.icon, size: 20.0, color: scheme.onSurfaceVariant),
+                Text(
+                  name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.labelMedium?.copyWith(
+                    color: scheme.onSurfaceVariant,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Text(
+                  amount,
+                  maxLines: 1,
+                  style: theme.textTheme.labelLarge?.copyWith(
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

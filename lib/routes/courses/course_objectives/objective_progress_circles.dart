@@ -32,6 +32,10 @@ class ObjectiveCircleData {
   /// show (#9420).
   final bool pinged;
 
+  /// The course's progress is still on its way: the circle shimmers in
+  /// place of its ring and fill, so it doesn't fill and then jump (#9559).
+  final bool loading;
+
   const ObjectiveCircleData({
     required this.index,
     required this.statement,
@@ -40,6 +44,7 @@ class ObjectiveCircleData {
     this.selected = false,
     this.classLocation = false,
     this.pinged = false,
+    this.loading = false,
   });
 }
 

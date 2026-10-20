@@ -13,6 +13,7 @@ import 'package:fluffychat/routes/world/world_map_pinged_badge.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
 import 'package:fluffychat/routes/world/world_map_star_dot.dart';
+import 'package:fluffychat/widgets/completed_stamp.dart';
 
 class WorldMapDot extends StatefulWidget {
   final QuestActivityCard card;
@@ -405,8 +406,24 @@ class _WorldMapStateDot extends StatelessWidget {
     final bodyColor = _bodyColor(context);
 
     if (state == ActivityPinState.inProgress) {
-      // Progress is the state: the fixed-size completed stamp replaces the
-      // coloured body. No shape/point.
+      // Progress is the state: the completed stamp replaces the coloured
+      // body. At the small tier it is a single gold ring round a check, the
+      // size of the other dots (#9559) — the stamp's second ring would leave
+      // no room for the check at that size.
+      if (pointHeight <= 0) {
+        final size = diameter + 2 * borderWidth;
+        return _withSelectedGlow(
+          context,
+          CustomPaint(
+            size: Size.square(size),
+            painter: _SmallPlayedDotPainter(
+              ink: CompletedStamp.inkOf(Theme.of(context)),
+              paper: CompletedStamp.paperOf(Theme.of(context)),
+            ),
+          ),
+          size,
+        );
+      }
       return _withSelectedGlow(
         context,
         const WorldMapStarDot(),
@@ -511,4 +528,53 @@ class _WorldMapStateDot extends StatelessWidget {
       ],
     );
   }
+}
+
+/// The small-tier played dot (#9559): the completed stamp's gold coin reduced
+/// to one ring round a check, at a small dot's size.
+class _SmallPlayedDotPainter extends CustomPainter {
+  final Color ink;
+  final Color paper;
+
+  _SmallPlayedDotPainter({required this.ink, required this.paper});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final c = size.center(Offset.zero);
+    final r = size.shortestSide / 2;
+    canvas.drawCircle(
+      c.translate(0, 0.6),
+      r,
+      Paint()
+        ..color = Colors.black38
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 1.2),
+    );
+    canvas.drawCircle(c, r, Paint()..color = paper);
+    final stroke = (r * 0.28).clamp(1.0, 2.0);
+    canvas.drawCircle(
+      c,
+      r - stroke / 2,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = stroke
+        ..color = ink,
+    );
+    final check = Path()
+      ..moveTo(c.dx - r * 0.42, c.dy + r * 0.02)
+      ..lineTo(c.dx - r * 0.12, c.dy + r * 0.32)
+      ..lineTo(c.dx + r * 0.44, c.dy - r * 0.28);
+    canvas.drawPath(
+      check,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = stroke
+        ..strokeCap = StrokeCap.round
+        ..strokeJoin = StrokeJoin.round
+        ..color = ink,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant _SmallPlayedDotPainter old) =>
+      old.ink != ink || old.paper != paper;
 }

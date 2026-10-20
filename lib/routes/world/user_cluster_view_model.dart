@@ -12,13 +12,13 @@ import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
-import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
@@ -185,11 +185,9 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
     if (userL2 == null) return 0;
     return QuestObjectivesLoader.sharedProgression.value
         .completedMissionIds(
-          inScope: (courseId) {
-            final courseL2 = client.getRoomById(courseId)?.coursePlan?.l2;
-            return courseL2 == null ||
-                courseL2.split('-').first == userL2.langCodeShort;
-          },
+          inScope: (courseId) => CourseLanguageScope.courseInTargetLanguage(
+            client.getRoomById(courseId),
+          ),
         )
         .length;
   }

@@ -89,7 +89,7 @@ void main() {
             child: ObjectiveSection(
               group: objectiveGroup(),
               onTap: onTap ?? (_) {},
-              userStarsByActivity: (_) => 0,
+              xpByActivity: (_) => 0,
               hasCompletedActivity: (_) => false,
               liveStateByActivity: (_) => (
                 state: null,

@@ -64,7 +64,7 @@ void main() {
           pacing: pacing,
         ),
         onTap: (_) {},
-        userStarsByActivity: (_) => 0,
+        xpByActivity: (_) => 0,
         hasCompletedActivity: (_) => false,
         liveStateByActivity: (_) => (
           state: null,
@@ -402,7 +402,7 @@ void main() {
               activities: activities,
             ),
             onTap: (_) {},
-            userStarsByActivity: (_) => 0,
+            xpByActivity: (_) => 0,
             hasCompletedActivity: (_) => false,
             liveStateByActivity: (_) => (
               state: null,

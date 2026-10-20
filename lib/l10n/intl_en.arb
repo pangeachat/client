@@ -4238,7 +4238,7 @@
     "coursePlan": "Course Plan",
     "upNext": "Up next",
     "@upNext": {
-        "description": "Label on the course plan's next Mission (learning objective) header — the one the learner should work on next."
+        "description": "Label on the course plan's next Mission (learning objective) header — the one the learner should work on next — and above the activity the Mission card's main button opens."
     },
     "missionDueDate": "Due {date}, {time}",
     "@missionDueDate": {
@@ -5724,10 +5724,11 @@
     "analyticsSubscriptionWarningBody": "Without a subscription, your messages don't earn XP or add new words and grammar.",
     "xpAmount": "{count} XP",
     "@xpAmount": {
-        "description": "The XP a learner earned in one activity session, on its row in the Stars list.",
+        "description": "An amount of XP the learner earned: one activity session's on its row in the Stars list, or so far in a running session, at the left of its goal header.",
         "placeholders": {
             "count": {
-                "type": "int"
+                "type": "int",
+                "format": "decimalPattern"
             }
         }
     },
@@ -5951,6 +5952,45 @@
             "xp": {}
         }
     },
+    "xpFromConversation": "Conversation {xp}",
+    "@xpFromConversation": {
+        "description": "Legend on a Mission's XP bar or ring: XP earned by talking in this Mission's activities — typed and voice messages, calls, and goals.",
+        "placeholders": {
+            "xp": {}
+        }
+    },
+    "xpIncludingGoals": "including {xp} from goals",
+    "@xpIncludingGoals": {
+        "description": "Under the Conversation line on a Mission's detail page: how much of that XP came from activity goals.",
+        "placeholders": {
+            "xp": {}
+        }
+    },
+    "missionOtherLanguageNotice": "This Mission is from a course in {language}. Your progress on it only counts while you're learning {language}.",
+    "@missionOtherLanguageNotice": {
+        "description": "Shown in place of a Mission's detail page when the Mission belongs only to a course in a language other than the learner's current target language.",
+        "placeholders": {
+            "language": {}
+        }
+    },
+    "missionLanguageMismatchDesc": "This Mission is from a course in {language}. Switch your target language to {language}?",
+    "@missionLanguageMismatchDesc": {
+        "description": "Popup when the learner taps a Mission (or its Practice) on a course in another language than the one they are learning; confirming switches their target language.",
+        "placeholders": {
+            "language": {}
+        }
+    },
+    "missionSwitchToSeeProgress": "Switch to {language} to see your progress",
+    "@missionSwitchToSeeProgress": {
+        "description": "On the Mission card of a course in another language, where its progress would be; tapping it offers to switch the learner's target language.",
+        "placeholders": {
+            "language": {}
+        }
+    },
+    "xpBySkillTitle": "By skill",
+    "@xpBySkillTitle": {
+        "description": "Heading on a Mission's detail page over its XP split into writing, speaking, listening and reading."
+    },
     "xpFromGoals": "Goals {xp}",
     "@xpFromGoals": {
         "description": "Legend on the Mission card's ring: XP earned from completed activity goals.",
@@ -5960,7 +6000,7 @@
     },
     "xpFromPractice": "Practice {xp}",
     "@xpFromPractice": {
-        "description": "Legend on the Mission card's ring: XP earned from practice on this Mission's words.",
+        "description": "Legend on a Mission's XP bar or ring: XP earned from practice exercises toward this Mission.",
         "placeholders": {
             "xp": {}
         }
@@ -5981,6 +6021,46 @@
     "continueActivity": "Continue",
     "@continueActivity": {
         "description": "The Mission card's main button when the learner is already in an unfinished activity session; it reopens that session. The activity's name shows under it."
+    },
+    "missionNextActivity": "Next activity",
+    "@missionNextActivity": {
+        "description": "The Mission card's main button, directly above the activity it opens (marked \"Up next\")."
+    },
+    "missionContinueActivity": "Continue activity",
+    "@missionContinueActivity": {
+        "description": "The Mission card's main button when the learner is already in an unfinished session of the activity it sits above; it reopens that session."
+    },
+    "missionPlayTarget": "{action}: {activity}",
+    "@missionPlayTarget": {
+        "description": "Accessible name and tooltip of the Mission card's main button: the button's label, then the name of the activity it opens.",
+        "placeholders": {
+            "action": {},
+            "activity": {}
+        }
+    },
+    "goalXpGain": "+{xp}",
+    "@goalXpGain": {
+        "description": "Small gold label under an earned goal's diamond in an activity's goal header: the XP that goal paid into the session.",
+        "placeholders": {
+            "xp": {
+                "type": "int"
+            }
+        }
+    },
+    "activityXpStamp": "{xp} XP",
+    "@activityXpStamp": {
+        "description": "On the completed stamp of an activity card: the learner's total XP from every finished session of that activity, abbreviated (e.g. 1.2K XP).",
+        "placeholders": {
+            "xp": {}
+        }
+    },
+    "activityCompletedWithXp": "{completed}, {xp} XP earned",
+    "@activityCompletedWithXp": {
+        "description": "Accessible name of an activity card's completed stamp when it shows the learner's total XP from that activity: the completion (\"Completed\" or \"Completed 3 times\"), then the XP.",
+        "placeholders": {
+            "completed": {},
+            "xp": {}
+        }
     },
     "noObjectiveActivitiesYet": "You haven't completed an activity for this objective yet. Start one from your course.",
     "@noObjectiveActivitiesYet": {

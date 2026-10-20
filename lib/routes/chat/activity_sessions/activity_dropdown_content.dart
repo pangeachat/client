@@ -7,6 +7,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_header_constants.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_header_label.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_status_widget.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_xp_label.dart';
 import 'package:fluffychat/widgets/expandable_text.dart';
 
 class ActivityDropdownContent extends StatelessWidget {
@@ -38,6 +39,17 @@ class ActivityDropdownContent extends StatelessWidget {
   /// the toggle that opens this list, and the stars sit in the middle of it.
   final void Function(ActivityRoleGoal goal)? onReportStar;
 
+  /// What each earned goal paid, shown as a small gold "+N" at the end of
+  /// its row; null shows none.
+  final int? goalXp;
+
+  /// The session's XP so far (#9559). When set, the top row is the XP at the
+  /// far left and the collapse chevron at the far right, and every goal —
+  /// the first included — lists below it, as the collapsed header keeps the
+  /// same XP in the same place. Null keeps the first goal pinned beside the
+  /// chevron (the start and summary pages).
+  final Widget? sessionXp;
+
   const ActivityDropdownContent({
     super.key,
     required this.goals,
@@ -54,6 +66,8 @@ class ActivityDropdownContent extends StatelessWidget {
     this.finishActivityForMe,
     this.continueActivity,
     this.onReportStar,
+    this.goalXp,
+    this.sessionXp,
   });
 
   @override
@@ -64,7 +78,24 @@ class ActivityDropdownContent extends StatelessWidget {
 
     // The top row is the only toggle target. Padding is applied by the InkWell
     // wrapper below so its hover highlight matches the collapsed header.
-    final Widget topRow = goals.isEmpty
+    final sessionXp = this.sessionXp;
+    final xpTopRow = sessionXp != null && goals.isNotEmpty;
+    final Widget topRow = xpTopRow
+        ? Row(
+            children: [
+              Expanded(
+                child: Align(
+                  alignment: AlignmentDirectional.centerStart,
+                  child: sessionXp,
+                ),
+              ),
+              const SizedBox(
+                width: GoalHeaderConstants.chevronSlot,
+                child: Icon(Icons.expand_less),
+              ),
+            ],
+          )
+        : goals.isEmpty
         ? Row(
             children: [
               const SizedBox(width: GoalHeaderConstants.chevronSlot),
@@ -81,9 +112,12 @@ class ActivityDropdownContent extends StatelessWidget {
             isActive: goals.first.id == activeGoalId,
             isTop: true,
             onReportStar: onReportStar,
+            goalXp: goalXp,
           );
 
-    final restGoals = goals.length > 1
+    final restGoals = xpTopRow
+        ? goals
+        : goals.length > 1
         ? goals.skip(1).toList()
         : const <ActivityRoleGoal>[];
 
@@ -183,8 +217,10 @@ class ActivityDropdownContent extends StatelessWidget {
           // grow to cover the roles. Scrolling here never dismisses the menu.
           if (restGoals.isNotEmpty)
             ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxHeight: GoalHeaderConstants.goalsScrollMaxHeight,
+              constraints: BoxConstraints(
+                maxHeight: xpTopRow
+                    ? GoalHeaderConstants.allGoalsScrollMaxHeight
+                    : GoalHeaderConstants.goalsScrollMaxHeight,
               ),
               child: SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -199,6 +235,7 @@ class ActivityDropdownContent extends StatelessWidget {
                         isActive: g.id == activeGoalId,
                         isTop: false,
                         onReportStar: onReportStar,
+                        goalXp: goalXp,
                       ),
                     ],
                   ],
@@ -237,17 +274,22 @@ class _GoalRow extends StatelessWidget {
   /// Staging only — see [ActivityDropdownContent.onReportStar].
   final void Function(ActivityRoleGoal goal)? onReportStar;
 
+  /// See [ActivityDropdownContent.goalXp].
+  final int? goalXp;
+
   const _GoalRow({
     required this.goal,
     required this.complete,
     required this.isActive,
     required this.isTop,
     this.onReportStar,
+    this.goalXp,
   });
 
   @override
   Widget build(BuildContext context) {
     final onReportStar = this.onReportStar;
+    final goalXp = this.goalXp;
     final Widget star = GoalStatusWidget(
       goal: goal,
       complete: complete,
@@ -287,6 +329,11 @@ class _GoalRow extends StatelessWidget {
             ),
           ),
         ),
+        if (goalXp != null && complete)
+          Padding(
+            padding: const EdgeInsetsDirectional.only(start: 8.0),
+            child: GoalXpLabel(xp: goalXp),
+          ),
         if (isTop)
           const SizedBox(
             width: GoalHeaderConstants.chevronSlot,

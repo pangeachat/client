@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:shimmer/shimmer.dart';
+
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
@@ -78,6 +80,34 @@ class ObjectiveCircle extends StatelessWidget {
     );
     if (item.state == ObjectiveCircleState.later) {
       circle = Opacity(opacity: 0.8, child: circle);
+    }
+    if (item.loading) {
+      // The number stays readable; only the ring and fill, which are what
+      // jump as progress lands, shimmer (#9559).
+      circle = Stack(
+        alignment: Alignment.center,
+        children: [
+          Shimmer.fromColors(
+            baseColor: theme.colorScheme.surfaceContainerHigh,
+            highlightColor: theme.colorScheme.surfaceContainerHighest,
+            child: Container(
+              width: ObjectiveProgressCircles.diameter,
+              height: ObjectiveProgressCircles.diameter,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: theme.colorScheme.surfaceContainerHigh,
+              ),
+            ),
+          ),
+          Text(
+            '${item.index}',
+            style: theme.textTheme.labelLarge?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+        ],
+      );
     }
     if (item.pinged) {
       // Inside the circle's own box (top-right, over the ring): the row's

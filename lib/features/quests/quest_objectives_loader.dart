@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
+import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
@@ -84,10 +85,16 @@ class QuestObjectivesLoader {
 
     if (MatrixState.isPangeaControllerInitialized) {
       final user = MatrixState.pangeaController.userController;
-      _displayLanguageSub = StreamGroup.merge([
-        user.languageStream.stream,
-        user.settingsUpdateStream.stream,
-      ]).listen((_) => _refetchOnDisplayLanguageChange());
+      _displayLanguageSub =
+          StreamGroup.merge([
+            user.languageStream.stream,
+            user.settingsUpdateStream.stream,
+          ]).listen((_) {
+            _refetchOnDisplayLanguageChange();
+            // Which courses' progress counts follows the target language
+            // (#9559), so a switch re-scopes even when no XP moved.
+            _resolveProgression(_loadGeneration);
+          });
     }
   }
 
@@ -198,6 +205,31 @@ class QuestObjectivesLoader {
   /// the star display at all.
   bool get hasResolvedProgress => _scopedQuest != null;
 
+  /// This course's progress is on its way (#9559): a joined course in the
+  /// learner's language whose resolution hasn't landed, or whose language's
+  /// XP is still being read (start-up, a language switch). Its circles and
+  /// Mission header shimmer meanwhile rather than show a meter that is about
+  /// to jump. False for a preview or a course in another language, which
+  /// show no progress at all.
+  ///
+  /// Never stuck: once this course's rebuild has finished, a course the
+  /// resolution left out (its outline failed, it wasn't joined in time)
+  /// shows its empty meter rather than shimmering on.
+  bool get progressLoading {
+    final courseId = _courseId;
+    final room = courseId == null ? null : client.getRoomById(courseId);
+    if (room == null ||
+        room.membership != Membership.join ||
+        !CourseLanguageScope.courseInTargetLanguage(room)) {
+      return false;
+    }
+    if (MissionXpCache.instance.loading) return true;
+    return _scopedQuest == null && !_rebuildSettled;
+  }
+
+  /// This load's joined-course rebuild has finished, whatever it found.
+  bool _rebuildSettled = false;
+
   /// The "Up next" Mission — the shared resolver's anchor — or null when there
   /// is no next step: before the resolution lands, and once every Mission in
   /// the course is satisfied (#8997). No Mission wears the label then.
@@ -260,10 +292,17 @@ class QuestObjectivesLoader {
   /// Where this course's XP for [missionId] came from — chats, goals and
   /// practice — summed over the same activities [missionProgress] counts.
   /// Null when the rollup hasn't resolved.
-  MissionXpBreakdown? missionXpBreakdown(String missionId) {
+  /// Pass [byActivity] (`Client.cachedXpBreakdownByActivity`) when the
+  /// caller already holds it, so the rooms aren't walked twice in a build.
+  MissionXpBreakdown? missionXpBreakdown(
+    String missionId, {
+    Map<String, MissionXpBreakdown>? byActivity,
+  }) {
     if (_scopedQuest == null) return null;
     final group = objectiveGroup(missionId);
-    return group == null ? null : client.missionXpBreakdown(group);
+    return group == null
+        ? null
+        : client.missionXpBreakdown(group, byActivity: byActivity);
   }
 
   List<QuestObjectiveGroup> get filteredObjectiveGroups =>
@@ -289,6 +328,9 @@ class QuestObjectivesLoader {
       _objectiveCache.resolution(
         client.userXpByActivity(MissionXpCache.instance.creditedXpByRoom),
         practiceXpByLemma: MissionXpCache.instance.practiceXpByLemma,
+        inScope: (courseId) => CourseLanguageScope.courseInTargetLanguage(
+          client.getRoomById(courseId),
+        ),
       ),
       loadGen,
     );
@@ -359,6 +401,7 @@ class QuestObjectivesLoader {
     _loadGeneration++;
     final loadGen = _loadGeneration;
     _courseId = courseRoomId ?? questId;
+    _rebuildSettled = false;
     final rules = courseRoomId == null
         ? CourseListRules.none
         : client.getRoomById(courseRoomId)?.courseListRules ??
@@ -391,6 +434,7 @@ class QuestObjectivesLoader {
     if (_disposed) return;
 
     if (outline == null) {
+      _rebuildSettled = true;
       _updateQuest(
         AsyncError(outlineResult.error ?? MissingQuestException()),
         loadGen,
@@ -400,13 +444,17 @@ class QuestObjectivesLoader {
 
     _updateQuest(AsyncLoaded(outline), loadGen);
 
-    await _objectiveCache.rebuildFromJoinedCourses(
-      client,
-      // The SAME reporter the world map's rebuild passes — one throttle key,
-      // one severity rule, so this path and the map's can't disagree about a
-      // failure only one of them will end up reporting (#8470).
-      onError: reportCourseOutlineFailure,
-    );
+    try {
+      await _objectiveCache.rebuildFromJoinedCourses(
+        client,
+        // The SAME reporter the world map's rebuild passes — one throttle
+        // key, one severity rule, so this path and the map's can't disagree
+        // about a failure only one of them will end up reporting (#8470).
+        onError: reportCourseOutlineFailure,
+      );
+    } finally {
+      if (loadGen == _loadGeneration) _rebuildSettled = true;
+    }
     _resolveProgression(loadGen);
   }
 }

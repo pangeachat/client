@@ -15,11 +15,12 @@ import 'package:fluffychat/routes/world/world_map_activity_card.dart';
 import 'package:fluffychat/routes/world/world_map_card_dismiss_button.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
+import 'package:fluffychat/widgets/completed_stamp.dart';
 
 /// A large map pin drawn as the activity's own card: the plan's card once it
-/// loads, its title until then; it stands clear of the completed stamp when
-/// it has one; and it is pointer-only, leaving keyboard access to the pin
-/// semantics layer's single roving stop.
+/// loads, its title until then; a played card wears the completed stamp with
+/// its XP on the photo; and it is pointer-only, leaving keyboard access to
+/// the pin semantics layer's single roving stop.
 void main() {
   // The card's photo reads the CMS origin out of the environment.
   setUpAll(() => dotenv.testLoad(mergeWith: {}));
@@ -54,7 +55,8 @@ void main() {
   Future<void> pumpCard(
     WidgetTester tester, {
     ActivityPlanModel? plan,
-    bool standsOnStamp = false,
+    bool played = false,
+    int xpEarned = 0,
     VoidCallback? onTap,
     VoidCallback? onClose,
   }) async {
@@ -68,10 +70,10 @@ void main() {
               card: card,
               state: ActivityPinState.available,
               plan: plan,
-              starsEarned: 0,
               participants: const [],
               openSlots: 0,
-              standsOnStamp: standsOnStamp,
+              played: played,
+              xpEarned: xpEarned,
               onTap: onTap ?? () {},
               onClose: onClose,
             ),
@@ -103,26 +105,24 @@ void main() {
     expect(find.text('Ordering at a café'), findsOneWidget);
   });
 
-  testWidgets('standing on a stamp lifts the card by the stamp clearance', (
-    tester,
-  ) async {
-    await pumpCard(tester);
-    final bare = tester.getSize(find.byType(WorldMapActivityCard));
-    await pumpCard(tester, standsOnStamp: true);
-    final onStamp = tester.getSize(find.byType(WorldMapActivityCard));
+  testWidgets('a played card wears the stamp with its XP', (tester) async {
+    await pumpCard(tester, plan: plan, played: true, xpEarned: 2330);
+    expect(find.byType(CompletedStamp), findsOneWidget);
+    expect(find.text('2.3k XP'), findsOneWidget);
 
-    expect(onStamp.height - bare.height, PinSize.mapCardStampClearance);
-    expect(onStamp.width, bare.width);
+    await pumpCard(tester, plan: plan);
+    expect(find.byType(CompletedStamp), findsNothing);
+
+    // Let the photo's failed load run out its retry timer.
+    await tester.pumpWidget(const SizedBox.shrink());
+    await tester.pump(const Duration(seconds: 30));
   });
 
-  testWidgets('the marker box holds the card in both cases', (tester) async {
-    for (final standsOnStamp in [false, true]) {
-      await pumpCard(tester, standsOnStamp: standsOnStamp);
-      final drawn = tester.getSize(find.byType(WorldMapActivityCard));
-      final box = PinSize.mapCardBox(standsOnStamp: standsOnStamp);
-      expect(box.width, greaterThanOrEqualTo(drawn.width));
-      expect(box.height, greaterThanOrEqualTo(drawn.height));
-    }
+  testWidgets('the marker box holds the card', (tester) async {
+    await pumpCard(tester);
+    final drawn = tester.getSize(find.byType(WorldMapActivityCard));
+    expect(PinSize.mapCardBox.width, greaterThanOrEqualTo(drawn.width));
+    expect(PinSize.mapCardBox.height, greaterThanOrEqualTo(drawn.height));
   });
 
   testWidgets('tapping the card opens it; the X dismisses without opening', (
@@ -158,10 +158,9 @@ void main() {
                 card: card,
                 state: ActivityPinState.available,
                 plan: plan,
-                starsEarned: 0,
                 participants: const [],
                 openSlots: 0,
-                standsOnStamp: false,
+                played: false,
                 onTap: () {},
                 onClose: () {},
               ),

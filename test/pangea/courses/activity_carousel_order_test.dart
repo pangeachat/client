@@ -54,7 +54,7 @@ void main() {
         child: ActivityCarousel(
           activities: activities,
           onTap: (_) {},
-          userStarsByActivity: (_) => 0,
+          xpByActivity: (_) => 0,
           hasCompletedActivity: (_) => false,
           liveStateByActivity: (_) => (
             state: null,
@@ -102,5 +102,34 @@ void main() {
     // The plan carries a can-do statement; the row must not surface it — that
     // is the Mission header's job on the full course plan (#8741).
     expect(find.text('Can introduce self.'), findsNothing);
+  });
+
+  group('ActivityCarousel.canStart (#9559)', () {
+    bool canStart({
+      int? available = 2,
+      bool complete = false,
+      bool live = false,
+      int roles = 3,
+    }) => ActivityCarousel.canStart(
+      availableParticipants: available,
+      complete: complete,
+      live: live,
+      roles: roles,
+    );
+
+    test(
+      'an activity with more roles than the course can fill cannot start',
+      () {
+        expect(canStart(), isFalse);
+        expect(canStart(roles: 2), isTrue);
+      },
+    );
+
+    test('a live session, a finished activity or an unknown course size never '
+        'blocks', () {
+      expect(canStart(live: true), isTrue);
+      expect(canStart(complete: true), isTrue);
+      expect(canStart(available: null), isTrue);
+    });
   });
 }

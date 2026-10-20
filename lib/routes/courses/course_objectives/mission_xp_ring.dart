@@ -5,29 +5,26 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 
-/// The colours of a Mission's XP ring, shared by every surface that draws one
-/// (the course page's Mission card, the Learning Objectives list and detail).
-/// Bright gold only reads against something dark, so the empty band is dark in
-/// both themes and the XP golds stay bright: amber for chats, gold for goals,
-/// pale gold for practice — apart by lightness rather than hue alone.
+/// The colours of a Mission's XP meter, shared by every surface that draws
+/// one (the course page's Mission card bar, the Learning Objectives list and
+/// detail rings). Bright gold only reads against something dark, so the
+/// empty band is dark in both themes and the XP golds stay bright: deep gold
+/// for conversation, pale gold for practice — apart by lightness rather than
+/// hue alone (#9559).
 class MissionRingPalette {
   final Color track;
-  final Color chat;
-  final Color goals;
+  final Color conversation;
   final Color practice;
 
   const MissionRingPalette._({
     required this.track,
-    required this.chat,
-    required this.goals,
+    required this.conversation,
     required this.practice,
   });
 
   factory MissionRingPalette.of(BuildContext context) {
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
-    final goals = theme.pangea.goldFixedDim;
-    final hsl = HSLColor.fromColor(goals);
     return MissionRingPalette._(
       track: theme.brightness == Brightness.light
           ? Color.alphaBlend(
@@ -35,25 +32,20 @@ class MissionRingPalette {
               scheme.inverseSurface,
             )
           : scheme.surfaceContainerHighest,
-      chat: hsl.withLightness((hsl.lightness - 0.08).clamp(0.0, 1.0)).toColor(),
-      goals: goals,
+      conversation: theme.pangea.goldFixedDim,
       practice: theme.pangea.goldFixed,
     );
   }
 
-  /// A Mission's ring: its chat, goal and practice XP, each as its share of
-  /// [threshold], in that order.
+  /// A Mission's meter: its conversation XP (typed and spoken messages, and
+  /// goals) then its practice XP, each as its share of [threshold].
   List<MissionXpRingSegment> segmentsFor(
     MissionXpBreakdown breakdown,
     int threshold,
   ) => [
     MissionXpRingSegment(
-      fraction: _share(breakdown.chat, threshold),
-      color: chat,
-    ),
-    MissionXpRingSegment(
-      fraction: _share(breakdown.goals, threshold),
-      color: goals,
+      fraction: _share(breakdown.conversation, threshold),
+      color: conversation,
     ),
     MissionXpRingSegment(
       fraction: _share(breakdown.practice, threshold),
@@ -63,6 +55,27 @@ class MissionRingPalette {
 
   static double _share(int xp, int threshold) =>
       threshold <= 0 ? 0 : xp / threshold;
+}
+
+/// One XP source's colour key — a dot in that source's gold, outlined so
+/// the pale gold reads on any surface. Beside the source's name in every
+/// Mission meter's legend.
+class MissionXpSwatch extends StatelessWidget {
+  final Color color;
+  final double size;
+
+  const MissionXpSwatch({required this.color, this.size = 9.0, super.key});
+
+  @override
+  Widget build(BuildContext context) => Container(
+    width: size,
+    height: size,
+    decoration: BoxDecoration(
+      color: color,
+      shape: BoxShape.circle,
+      border: Border.all(color: Theme.of(context).colorScheme.outline),
+    ),
+  );
 }
 
 /// One coloured run of a [MissionXpRing]: its share of the threshold.

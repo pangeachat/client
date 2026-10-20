@@ -11,6 +11,7 @@ import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
@@ -298,7 +299,9 @@ class WorldMapPinsManager {
         : ActivityPinState.inProgress;
   }
 
-  int? activityStarsEarned(String activityId) => _userStars[activityId];
+  /// The learner's total XP from [activityId]'s saved sessions in their
+  /// current language — what a played card's coin shows (#9559).
+  int? activityXpEarned(String activityId) => _xpByActivity[activityId];
 
   /// Activity ids the learner has earned at least one goal in — the trail the
   /// ranking reserves slots for (world-map.instructions.md, "Goal Progress").
@@ -580,6 +583,7 @@ class WorldMapPinsManager {
 
     _signals = signals;
     _userStars = userStars;
+    _client = client;
     _xpByActivity = client.userXpByActivity(
       MissionXpCache.instance.creditedXpByRoom,
     );
@@ -587,10 +591,15 @@ class WorldMapPinsManager {
     resolveProgression();
   }
 
-  /// Re-resolve the cached [_progression] from the objective cache's outlines (+
-  /// any course-scoped outline) and the learner's current per-activity stars.
-  /// Called where the inputs change — stars on room sync, the objective cache on
-  /// course join/leave, and a course re-scope — never per frame.
+  /// The client [recomputeProgress] last read, for [resolveProgression]'s
+  /// language scope.
+  Client? _client;
+
+  /// Re-resolve the cached [_progression] from the objective cache's outlines
+  /// (+ any course-scoped outline) and the learner's current per-activity XP.
+  /// Called where the inputs change — XP and goals on room sync, the objective
+  /// cache on course join/leave, and a course re-scope — never per frame.
+
   void resolveProgression() {
     _progression = _objectiveCache.resolution(
       _xpByActivity,
@@ -598,6 +607,9 @@ class WorldMapPinsManager {
       extraOutlines: _scopedCourseOutline == null
           ? const []
           : [_scopedCourseOutline!],
+      inScope: (courseId) => CourseLanguageScope.courseInTargetLanguage(
+        _client?.getRoomById(courseId),
+      ),
     );
     // One shared answer (quests.instructions.md): the course panel and the
     // analytics bar read what the map resolved, and the map resolves first in

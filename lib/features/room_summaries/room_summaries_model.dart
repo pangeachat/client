@@ -47,9 +47,13 @@ class CourseInfoSummariesModel extends RoomSummariesModel {
     this.activitiesToCompleteOverride,
   });
 
+  // Keyed on the summary's own activity id first: a v3 session stores only
+  // a thin plan reference, so its summary carries no plan and a finished v3
+  // activity would never count as finished (#9559). An older summary with an
+  // embedded plan keeps its plan's id as the fallback.
   Set<String> _completedActivities(String userID) => _roomSummaries.values
       .where((e) => e.isCompleteByUserId(userID))
-      .map((e) => e.activityPlan?.activityId)
+      .map((e) => e.activityId ?? e.activityPlan?.activityId)
       .whereType<String>()
       .toSet();
 

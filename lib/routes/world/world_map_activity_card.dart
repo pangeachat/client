@@ -9,11 +9,11 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 /// A large map pin drawn as the activity's own card (under
 /// [kMapActivityCards]): the course plan's [ActivitySuggestionCard] with a
-/// squashed photo, its live state as the frame and corner tab, on a tail that
-/// points at the activity's location. When the learner has a saved session of
-/// it, the tail stops short of the point so the card stands on the completed
-/// stamp — which the map draws on its own layer at the point, so dismissing
-/// the card leaves the stamp where it was.
+/// squashed photo, its live state as the frame and the pill on its photo, on a
+/// tail that points at the activity's location. When the learner has a saved
+/// session of it, the card wears the completed stamp with their XP under its
+/// name, the same badge in the same place as on the course page's cards
+/// (#9559).
 ///
 /// Pointer-only, like the classic large card: the map is excluded from
 /// semantics, and its pins are reached by keyboard and screen reader through
@@ -23,10 +23,17 @@ class WorldMapActivityCard extends StatelessWidget {
   final QuestActivityCard card;
   final ActivityPinState state;
   final ActivityPlanModel? plan;
-  final int starsEarned;
   final List<String> participants;
   final int openSlots;
-  final bool standsOnStamp;
+
+  /// The learner has a saved session of this activity.
+  final bool played;
+
+  /// Their total XP from it, for the coin on a [played] card's photo.
+  final int xpEarned;
+
+  /// A coursemate pinged the course to fill its open session.
+  final bool pinged;
   final bool isFocused;
   final VoidCallback onTap;
   final VoidCallback? onClose;
@@ -35,10 +42,11 @@ class WorldMapActivityCard extends StatelessWidget {
     required this.card,
     required this.state,
     required this.plan,
-    required this.starsEarned,
     required this.participants,
     required this.openSlots,
-    required this.standsOnStamp,
+    required this.played,
+    this.xpEarned = 0,
+    this.pinged = false,
     required this.onTap,
     this.isFocused = false,
     this.onClose,
@@ -53,14 +61,17 @@ class WorldMapActivityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    // The pointer continues the card's frame (#9559): the live state's hue,
+    // else the not-started pin's colour a resting map card is outlined in —
+    // the same colour as the mid pin or dot it stands for.
     final tailColor = _live
         ? state.bodyColor(context)
-        : theme.colorScheme.outlineVariant;
+        : ActivityPinState.available.bodyColor(context);
     final plan = this.plan;
     final title = plan?.title ?? card.title;
 
     final body = plan == null
-        ? _PlainCard(title: title)
+        ? _PlainCard(title: title, live: _live)
         : ActivitySuggestionCard(
             activity: plan,
             width: PinSize.mapCardWidth,
@@ -69,10 +80,13 @@ class WorldMapActivityCard extends StatelessWidget {
             fontSize: 12.0,
             fontSizeSmall: 9.0,
             iconSize: 9.0,
-            starsEarned: starsEarned,
             pinState: _live ? state : null,
             participants: participants,
             openSlots: openSlots,
+            pinged: pinged && _live,
+            frameWhenResting: true,
+            timesCompleted: played ? 1 : 0,
+            xpEarned: played ? xpEarned : 0,
           );
 
     return Column(
@@ -125,8 +139,6 @@ class WorldMapActivityCard extends StatelessWidget {
           size: const Size(16.0, PinSize.mapCardTail),
           painter: _TailPainter(color: tailColor),
         ),
-        if (standsOnStamp)
-          const SizedBox(height: PinSize.mapCardStampClearance),
       ],
     );
   }
@@ -136,7 +148,11 @@ class WorldMapActivityCard extends StatelessWidget {
 class _PlainCard extends StatelessWidget {
   final String title;
 
-  const _PlainCard({required this.title});
+  /// A resting card wears the not-started outline, as the card that
+  /// replaces it will.
+  final bool live;
+
+  const _PlainCard({required this.title, required this.live});
 
   @override
   Widget build(BuildContext context) {
@@ -147,6 +163,12 @@ class _PlainCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: theme.colorScheme.surfaceContainer,
         borderRadius: BorderRadius.circular(PinSize.mapCardRadius),
+        border: live
+            ? null
+            : Border.all(
+                color: ActivityPinState.available.bodyColor(context),
+                width: 2.0,
+              ),
       ),
       padding: const EdgeInsets.all(8.0),
       alignment: Alignment.bottomLeft,

@@ -46,31 +46,32 @@ enum ActivityPinState {
   /// values.
   bool get isLive => isOngoing || this == ActivityPinState.joinable;
 
-  /// The pin body colour. See world-map.instructions.md ("Pin state").
-  Color bodyColor(BuildContext context) => switch (this) {
-    ActivityPinState.joinable => Theme.of(context).pangea.joinable,
-    ActivityPinState.ongoingPending || ActivityPinState.ongoingActive =>
-      Theme.of(context).colorScheme.primaryContainer,
-    ActivityPinState.inProgress => Theme.of(context).pangea.goldFixedDim,
-    ActivityPinState.available => Theme.of(
-      context,
-    ).colorScheme.secondaryContainer,
-  };
+  /// The pin body colour — also the card's frame and state pill. Each live
+  /// and resting state has its own role on [PangeaColors] (#9559), so it
+  /// doesn't follow the app colour the learner picks. See
+  /// world-map.instructions.md ("Pin state").
+  Color bodyColor(BuildContext context) {
+    final colors = Theme.of(context).pangea;
+    return switch (this) {
+      ActivityPinState.joinable => colors.activityOpen,
+      ActivityPinState.ongoingPending ||
+      ActivityPinState.ongoingActive => colors.activityOngoing,
+      ActivityPinState.inProgress => colors.goldFixedDim,
+      ActivityPinState.available => colors.activityAvailable,
+    };
+  }
 
   /// Ink for the icon and text drawn on [bodyColor].
-  Color onBodyColor(BuildContext context) => switch (this) {
-    ActivityPinState.joinable => Theme.of(context).pangea.onJoinable,
-    ActivityPinState.ongoingPending || ActivityPinState.ongoingActive =>
-      Theme.of(context).colorScheme.onPrimaryContainer,
-    ActivityPinState.inProgress => Theme.of(context).pangea.onGoldFixed,
-    // The pale light-mode available fill is too pale for white (1.57:1); it
-    // takes the dark-purple label colour there (#8243, #8968). The deep
-    // dark-mode fill carries white at 9.3:1.
-    ActivityPinState.available =>
-      Theme.of(context).brightness == Brightness.light
-          ? Theme.of(context).colorScheme.primary
-          : Colors.white,
-  };
+  Color onBodyColor(BuildContext context) {
+    final colors = Theme.of(context).pangea;
+    return switch (this) {
+      ActivityPinState.joinable => colors.onActivityOpen,
+      ActivityPinState.ongoingPending ||
+      ActivityPinState.ongoingActive => colors.onActivityOngoing,
+      ActivityPinState.inProgress => colors.onGoldFixed,
+      ActivityPinState.available => colors.onActivityAvailable,
+    };
+  }
 
   String label(L10n l10n) => switch (this) {
     ActivityPinState.ongoingPending => l10n.ongoingPendingLabel,
@@ -83,11 +84,12 @@ enum ActivityPinState {
   /// The glyph for this state — the single source of truth for the status
   /// iconography, shared by the map pin, the status filter, the activity
   /// suggestion card, and the start-page CTA row. `inProgress` (Completed) is a
-  /// star; the pin renders it as its gold body rather than a glyph, so the
-  /// pin's mid-glyph suppresses it (see `world_map_state_dot.dart`).
+  /// check, the played stamp's mark — a star is a Mission (#9559); the pin
+  /// renders it as its stamp rather than a glyph, so the pin's mid-glyph
+  /// suppresses it (see `world_map_state_dot.dart`).
   IconData get icon => switch (this) {
     ActivityPinState.available => Icons.add,
-    ActivityPinState.inProgress => Icons.star,
+    ActivityPinState.inProgress => Icons.check_circle_outline,
     ActivityPinState.joinable => Icons.meeting_room,
     ActivityPinState.ongoingPending => Icons.hourglass_bottom,
     ActivityPinState.ongoingActive => Icons.chat_bubble_outline,
@@ -133,9 +135,9 @@ enum PinTier {
     PinTier.small => PinSize.smallDiameter,
     PinTier.mid => PinSize.midDiameter + PinSize.midPointHeight,
     PinTier.large =>
-      // An activity card reserves its tallest box: standing on a stamp.
+      // An activity card's box: the card, its tail and the focus gutter.
       kMapActivityCards
-          ? PinSize.mapCardBox(standsOnStamp: true).height
+          ? PinSize.mapCardBox.height
           : switch (state) {
               ActivityPinState.joinable ||
               ActivityPinState.ongoingPending => PinSize.largeHeightJoinable,
@@ -147,9 +149,7 @@ enum PinTier {
     PinTier.small => PinSize.smallDiameter,
     PinTier.mid => PinSize.midDiameter,
     PinTier.large =>
-      kMapActivityCards
-          ? PinSize.mapCardBox(standsOnStamp: true).width
-          : PinSize.largeWidth,
+      kMapActivityCards ? PinSize.mapCardBox.width : PinSize.largeWidth,
   };
 
   /// Whether a pin at this tier in [state] renders as a plain **dot** — the

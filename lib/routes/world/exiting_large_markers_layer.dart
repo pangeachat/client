@@ -23,9 +23,9 @@ class ExitingLargeMarkersLayer {
     return MarkerLayer(
       markers: cards.map((snap) {
         const tier = PinTier.large;
-        final standsOnStamp = snap.starLevel != ActivityStarLevel.none;
+        final played = snap.starLevel != ActivityStarLevel.none;
         final box = kMapActivityCards
-            ? PinSize.mapCardBox(standsOnStamp: standsOnStamp)
+            ? PinSize.mapCardBox
             : Size(
                 tier.dotWidth + WorldMapLargeCard.badgeOverhang * 2,
                 tier.dotHeight(snap.state) +
@@ -50,10 +50,11 @@ class ExitingLargeMarkersLayer {
                       card: snap.card,
                       state: snap.state,
                       plan: snap.plan,
-                      starsEarned: snap.starsEarned,
                       participants: snap.participants,
                       openSlots: snap.openSlots,
-                      standsOnStamp: standsOnStamp,
+                      played: played,
+                      xpEarned: snap.xpEarned,
+                      pinged: snap.pinged,
                       // No interaction on a card that's on its way out.
                       onTap: () {},
                     )
@@ -63,7 +64,6 @@ class ExitingLargeMarkersLayer {
                       pinged: snap.pinged,
                       plan: snap.plan,
                       liveRoom: snap.liveRoom,
-                      starsEarned: snap.starsEarned,
                       participants: snap.participants,
                       openSlots: snap.openSlots,
                       starLevel: snap.starLevel,

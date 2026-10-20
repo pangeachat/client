@@ -6,10 +6,12 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -35,14 +37,23 @@ extension QuestsClientExtension on Client {
   /// counting the XP credited to its room ([creditedXpByRoom] — the chat XP
   /// earned there plus practice credited to it, MissionXpCache) and a flat
   /// [kGoalXp] per goal the learner was awarded in it. Repeat sessions
-  /// accumulate — XP is effort — and a session counts only once it is saved,
-  /// so finishing is what banks it (org activities doc, "Activity XP" and
-  /// "Saving"; quests.instructions.md, "What fills a Mission").
+  /// accumulate — XP is effort — and a session counts only once it is saved, so
+  /// finishing is what banks it (org activities doc, "Activity XP" and
+  /// "Saving"; quests.instructions.md, "What fills a Mission"). Only sessions
+  /// in the learner's current language count
+  /// ([CourseLanguageScope.savedSessionInTargetLanguage]).
   Map<String, int> userXpByActivity(Map<String, int> creditedXpByRoom) {
     final xp = <String, int>{};
+    final inLanguage = CourseLanguageScope.savedSessionIdsInTargetLanguage(
+      this,
+    );
     for (final room in rooms) {
       final activityId = room.activityId;
-      if (activityId == null || !room.hasArchivedActivity) continue;
+      if (activityId == null ||
+          !room.hasArchivedActivity ||
+          !CourseLanguageScope.savedSessionInTargetLanguage(room, inLanguage)) {
+        continue;
+      }
       final xpOfSession = sessionXp(room, creditedXpByRoom);
       if (xpOfSession <= 0) continue;
       xp[activityId] = (xp[activityId] ?? 0) + xpOfSession;
@@ -51,18 +62,27 @@ extension QuestsClientExtension on Client {
   }
 
   /// [userXpByActivity] split by source: the same saved sessions, with each
-  /// room's chat and practice XP kept apart and the goal checkmarks on their
-  /// own. Feeds the Mission card's ring.
+  /// room's chat, speaking and practice XP kept apart and the goal checkmarks
+  /// on their own. Feeds the Mission meters' split by source.
   Map<String, MissionXpBreakdown> userXpBreakdownByActivity({
     required Map<String, int> chatXpByRoom,
     required Map<String, int> practiceXpByRoom,
+    Map<String, int> speakingXpByRoom = const {},
   }) {
     final xp = <String, MissionXpBreakdown>{};
+    final inLanguage = CourseLanguageScope.savedSessionIdsInTargetLanguage(
+      this,
+    );
     for (final room in rooms) {
       final activityId = room.activityId;
-      if (activityId == null || !room.hasArchivedActivity) continue;
+      if (activityId == null ||
+          !room.hasArchivedActivity ||
+          !CourseLanguageScope.savedSessionInTargetLanguage(room, inLanguage)) {
+        continue;
+      }
       final session = MissionXpBreakdown(
         chat: chatXpByRoom[room.id] ?? 0,
+        speaking: speakingXpByRoom[room.id] ?? 0,
         goals: kGoalXp * room.ownCompletedGoals.length,
         practice: practiceXpByRoom[room.id] ?? 0,
       );
@@ -78,6 +98,7 @@ extension QuestsClientExtension on Client {
     return userXpBreakdownByActivity(
       chatXpByRoom: cache.chatXpByRoom,
       practiceXpByRoom: cache.practiceXpByRoom,
+      speakingXpByRoom: cache.speakingXpByRoom,
     );
   }
 
@@ -102,11 +123,54 @@ extension QuestsClientExtension on Client {
     return sum;
   }
 
-  /// [missionId]'s group in the first joined course that carries it, as that
-  /// course shows it (its copy, else its pins). Null when no joined course
-  /// does — a stale link, or a course since left.
+  /// [group]'s XP by the skill it exercised — writing, speaking, listening,
+  /// reading — over the same inputs as [missionXpBreakdown]: its activities'
+  /// saved sessions and practice outside any session on its words. Goals are
+  /// no skill and are not in it (their XP is [MissionXpBreakdown.goals]).
+  /// Listening counts listening exercises only: hearing a message read aloud
+  /// earns no XP.
+  Map<LearningSkillsEnum, int> missionSkillXp(QuestObjectiveGroup group) {
+    final cache = MissionXpCache.instance;
+    final activityIds = {for (final a in group.activities) a.activityId};
+    final xp = <LearningSkillsEnum, int>{};
+    final inLanguage = CourseLanguageScope.savedSessionIdsInTargetLanguage(
+      this,
+    );
+    for (final room in rooms) {
+      final activityId = room.activityId;
+      if (activityId == null ||
+          !activityIds.contains(activityId) ||
+          !room.hasArchivedActivity ||
+          !CourseLanguageScope.savedSessionInTargetLanguage(room, inLanguage)) {
+        continue;
+      }
+      _addSkills(xp, cache.skillXpByRoom[room.id]);
+    }
+    for (final lemma in group.lemmas) {
+      _addSkills(xp, cache.skillXpByLemma[lemma]);
+    }
+    return xp;
+  }
+
+  /// Adds each of [skills]' XP into [into].
+  static void _addSkills(
+    Map<LearningSkillsEnum, int> into,
+    Map<LearningSkillsEnum, int>? skills,
+  ) => skills?.forEach(
+    (skill, value) => into[skill] = (into[skill] ?? 0) + value,
+  );
+
+  /// [missionId]'s group in the first joined course in the learner's current
+  /// language that carries it, as that course shows it (its copy, else its
+  /// pins). Null when none does — a stale link, a course since left, or a
+  /// Mission only another language's course holds.
   Future<QuestObjectiveGroup?> joinedMissionGroup(String missionId) async {
-    for (final room in joinedCourseRooms) {
+    // Only courses in the learner's current language: the same Mission can
+    // sit in a course of another language, whose word list would match none
+    // of this language's words (#9559).
+    for (final room in joinedCourseRooms.where(
+      CourseLanguageScope.courseInTargetLanguage,
+    )) {
       final questId = room.coursePlan?.uuid;
       if (questId == null) continue;
       final outline = (await QuestRepo.outline(

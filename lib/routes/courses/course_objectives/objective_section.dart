@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/quests/mission_due_date.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
+import 'package:fluffychat/routes/courses/course_objectives/mission_pacing.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
-import 'package:fluffychat/widgets/expandable_text.dart';
 
 /// One Mission of the full course plan: its can-do statement and star count
 /// above the row of activities that satisfy it. The row itself is the shared
@@ -17,7 +16,7 @@ import 'package:fluffychat/widgets/expandable_text.dart';
 class ObjectiveSection extends StatelessWidget {
   final QuestObjectiveGroup group;
   final void Function(QuestActivity) onTap;
-  final int Function(String) userStarsByActivity;
+  final int Function(String) xpByActivity;
   final bool Function(String activityId)? hasCompletedActivity;
 
   /// The activity's live map-pin state (colour fill + banner) and "Open (N)"
@@ -69,7 +68,7 @@ class ObjectiveSection extends StatelessWidget {
     super.key,
     required this.group,
     required this.onTap,
-    required this.userStarsByActivity,
+    required this.xpByActivity,
     required this.hasCompletedActivity,
     required this.liveStateByActivity,
     required this.availableParticipants,
@@ -166,70 +165,12 @@ class ObjectiveSection extends StatelessWidget {
     final dueAt = pacing?.dueAt;
     final dueChip = dueAt == null
         ? null
-        : Container(
-            padding: const EdgeInsetsDirectional.fromSTEB(6.0, 2.0, 8.0, 2.0),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.surfaceContainerHigh,
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: Text.rich(
-              TextSpan(
-                children: [
-                  WidgetSpan(
-                    alignment: PlaceholderAlignment.middle,
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.only(end: 4.0),
-                      child: Icon(
-                        Icons.event,
-                        size: 14.0,
-                        color: theme.colorScheme.onSurfaceVariant,
-                      ),
-                    ),
-                  ),
-                  TextSpan(
-                    text: missionDueLabel(context, dueAt, pacing?.timeZone),
-                  ),
-                ],
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: theme.textTheme.labelMedium?.copyWith(
-                color: theme.colorScheme.onSurfaceVariant,
-              ),
-            ),
-          );
-    // The teacher's note under the date, clamped so a long one doesn't push
-    // the activities down; folded away with them. Inset so its icon and text
-    // line up with the chip's.
+        : MissionDueChip(dueAt: dueAt, timeZone: pacing?.timeZone);
+    // The teacher's note under the date; folded away with the activities.
     final note = pacing?.note;
     final noteLine = collapsed || note == null || note.isEmpty
         ? null
-        : Padding(
-            padding: const EdgeInsetsDirectional.only(start: 6.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 1.0),
-                  child: Icon(
-                    Icons.notes,
-                    size: 14.0,
-                    color: theme.colorScheme.onSurfaceVariant,
-                  ),
-                ),
-                const SizedBox(width: 4.0),
-                Expanded(
-                  child: ExpandableText(
-                    note,
-                    maxLines: FluffyThemes.isColumnMode(context) ? 2 : 3,
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: theme.colorScheme.onSurfaceVariant,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
+        : MissionNoteLine(note: note);
     final pacingLines = dueChip == null && noteLine == null
         ? null
         : Padding(
@@ -337,7 +278,7 @@ class ObjectiveSection extends StatelessWidget {
             ActivityCarousel(
               activities: activities,
               onTap: onTap,
-              userStarsByActivity: userStarsByActivity,
+              xpByActivity: xpByActivity,
               hasCompletedActivity: hasCompletedActivity,
               liveStateByActivity: liveStateByActivity,
               availableParticipants: availableParticipants,

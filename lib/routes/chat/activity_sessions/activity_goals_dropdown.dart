@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_content.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_header.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_goal_header_card.dart';
@@ -70,6 +71,10 @@ class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown>
     final goals = _displayGoals ?? const <ActivityRoleGoal>[];
     final active = firstIncompleteGoal(goals, _isGoalCompleted);
     final allComplete = goals.isNotEmpty && active == null;
+    // A goal pays its XP into the session it is earned in; once any is
+    // earned here, each earned diamond carries its "+100". A page with none
+    // earned (a session not yet started) keeps the plain row.
+    final goalXp = goals.any(_isGoalCompleted) ? kGoalXp : null;
 
     return ClipRect(
       child: AnimatedAlign(
@@ -87,6 +92,7 @@ class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown>
                   isGoalCompleted: _isGoalCompleted,
                   onToggle: _toggleShowDropdown,
                   activeGoalId: active?.id,
+                  goalXp: goalXp,
                   subtitle: allComplete
                       ? null
                       : GoalHeaderLabel(active?.description ?? '', maxLines: 4),
@@ -96,6 +102,7 @@ class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown>
                   isGoalCompleted: _isGoalCompleted,
                   onToggle: _toggleShowDropdown,
                   activeGoalId: active?.id,
+                  goalXp: goalXp,
                 ),
               ),
       ),

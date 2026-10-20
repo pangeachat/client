@@ -108,14 +108,13 @@ const bool kStampWordWeb = false;
 /// Tier pixel sizes — also tuned here so all pin-density knobs live in one file.
 abstract class PinSize {
   /// The activity card a large pin draws under [kMapActivityCards]: its
-  /// width, its card height (photo [mapCardImageHeight] + text), the tail
-  /// under it, and the gap left above the point for the completed stamp it
-  /// stands on.
+  /// width, its card height (photo [mapCardImageHeight] + text) and the tail
+  /// under it. A played card's coin rides its photo (#9559), so it needs no
+  /// room of its own.
   static const double mapCardWidth = 132.0;
   static const double mapCardHeight = 152.0;
   static const double mapCardImageHeight = 80.0;
   static const double mapCardTail = 10.0;
-  static const double mapCardStampClearance = 14.0;
 
   /// Room around an activity card, on its sides and above it, for its focus
   /// ring.
@@ -126,15 +125,12 @@ abstract class PinSize {
   static const double mapCardRadius = 12.0;
   static const double mapCardFocusRadius = mapCardRadius + 1.0;
 
-  /// The marker box of an activity card: the card, its tail, the stamp
-  /// clearance when it [standsOnStamp], and the focus gutter on the sides and
-  /// top. The one size every layer and placement pass uses for the card.
-  static Size mapCardBox({required bool standsOnStamp}) => Size(
+  /// The marker box of an activity card: the card, its tail, and the
+  /// focus gutter on the sides and top. The one size every layer and
+  /// placement pass uses for the card.
+  static const Size mapCardBox = Size(
     mapCardWidth + mapCardFocusGutter * 2,
-    mapCardHeight +
-        mapCardTail +
-        (standsOnStamp ? mapCardStampClearance : 0) +
-        mapCardFocusGutter,
+    mapCardHeight + mapCardTail + mapCardFocusGutter,
   );
 
   /// Small dot — intentionally tiny, Google-Maps style (was 18px before the
@@ -183,8 +179,4 @@ abstract class PinSize {
   /// body (world-map.instructions.md, "Goal Progress"). Fixed: a stamp marks a
   /// saved session, never a partial fraction.
   static const double starDotDiameter = 30.0;
-
-  /// The marker box of a stamp on its own layer: the stamp plus room for its
-  /// drop shadow.
-  static const double stampMarkerBox = starDotDiameter + 4.0;
 }

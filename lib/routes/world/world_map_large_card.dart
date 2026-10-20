@@ -114,11 +114,11 @@ class _WorldMapLargeCardAnimatedState extends State<WorldMapLargeCardAnimated>
 
 /// The large featured map card. Eligible for four colour-states
 /// (world-map.instructions.md, "Pin display"): only the completed trail star
-/// (`inProgress`) never renders here — it is a gold-star dot, excluded by the
-/// ranking/placement gate before this widget is ever built.
+/// (`inProgress`) never renders here — it is drawn as its played stamp,
+/// excluded by the ranking/placement gate before this widget is ever built.
 ///
-/// - **Available** (border maps the mid pin's body colour — the theme's
-///   `secondaryContainer`, pale in light mode and deep in dark;
+/// - **Available** (border maps the mid pin's body colour —
+///   `PangeaColors.activityAvailable`, pale in light mode and deep in dark;
 ///   dark-purple title) — title, then a row with the L2 language flag, CEFR
 ///   level, and designed party size (a people icon + the role count). No session
 ///   exists yet, so no participant avatars, rating, or stars. Dimmed to 50% when
@@ -166,7 +166,6 @@ class WorldMapLargeCard extends StatelessWidget {
   final bool pinged;
   final ActivityPlanModel? plan;
   final Room? liveRoom;
-  final int starsEarned;
   final List<String> participants;
   final int openSlots;
   final VoidCallback onTap;
@@ -205,7 +204,6 @@ class WorldMapLargeCard extends StatelessWidget {
     required this.state,
     required this.pinged,
     required this.plan,
-    required this.starsEarned,
     required this.onTap,
     this.liveRoom,
     this.isFocused = false,
@@ -215,17 +213,6 @@ class WorldMapLargeCard extends StatelessWidget {
     this.starLevel = ActivityStarLevel.none,
     this.understaffed = false,
   });
-
-  /// The activity's star total, never hydration-gated (#7602): the learner's
-  /// own role in the live session (real-time, and the same source as the
-  /// ongoing row's numerator) → the pin's thin goals (uniform across roles by
-  /// generation, min when they disagree — [QuestActivityCard.thinStarsTotal])
-  /// → the hydrated plan, a last resort for legacy cards without thin goals.
-  int get _starsTotal =>
-      liveRoom?.ownRole?.allGoals.length ??
-      card.thinStarsTotal ??
-      plan?.earnableStars ??
-      0;
 
   /// Inset between the card's border and its content.
   static const double _cardPadding = 10.0;
@@ -250,7 +237,7 @@ class WorldMapLargeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     // The outer frame (border + caret) maps the mid pin's BODY colour, so the
     // card and its pin read as one state. That is theme-aware: for `available`
-    // it is the theme's `secondaryContainer`, deep in dark mode (matching the
+    // it is `PangeaColors.activityAvailable`, deep in dark mode (matching the
     // dark-mode available pin, #8174) and pale in light. `bodyColor` == the
     // state hue for every other state.
     final baseAccent = state.bodyColor(context);
@@ -353,8 +340,6 @@ class WorldMapLargeCard extends StatelessWidget {
                               liveRoom: liveRoom,
                               participants: participants,
                               openSlots: openSlots,
-                              starsTotal: _starsTotal,
-                              starsEarned: starsEarned,
                             ),
                           ],
                         ),
@@ -523,7 +508,7 @@ class _CardTitleRow extends StatelessWidget {
 
 /// Dispatches to the one content layout that's real for this card's state.
 /// `inProgress` never reaches here in production (the completed trail star is a
-/// gold-star dot, excluded by the ranking/placement gate before this widget is
+/// played stamp, excluded by the ranking/placement gate before this widget is
 /// ever built — world-map.instructions.md, "Pin display"), so it renders a
 /// defensive empty body if a test constructs it directly.
 class _CardBody extends StatelessWidget {
@@ -534,8 +519,6 @@ class _CardBody extends StatelessWidget {
   final Room? liveRoom;
   final List<String> participants;
   final int openSlots;
-  final int starsTotal;
-  final int starsEarned;
 
   const _CardBody({
     required this.card,
@@ -545,8 +528,6 @@ class _CardBody extends StatelessWidget {
     required this.liveRoom,
     required this.participants,
     required this.openSlots,
-    required this.starsTotal,
-    required this.starsEarned,
   });
 
   @override
@@ -571,11 +552,7 @@ class _CardBody extends StatelessWidget {
       // states and the two surfaces in step.
       avatarSize: 24,
     ),
-    ActivityPinState.ongoingActive => ActivityTileBody(
-      room: liveRoom,
-      starsTotal: starsTotal,
-      starsEarned: starsEarned,
-    ),
+    ActivityPinState.ongoingActive => ActivityTileBody(room: liveRoom),
     ActivityPinState.inProgress => const SizedBox.shrink(),
   };
 }

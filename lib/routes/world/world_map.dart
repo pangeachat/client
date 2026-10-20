@@ -673,8 +673,8 @@ class WorldMapController extends State<WorldMap>
         : MapEmptyVerdict.noActivities;
   }
 
-  int? activityStarsEarned(String activityId) =>
-      _pinsManager.activityStarsEarned(activityId);
+  int? activityXpEarned(String activityId) =>
+      _pinsManager.activityXpEarned(activityId);
 
   /// The activity's resolved display state / star tier — delegated to the pins
   /// manager so the view and the Status filter read one source (reuse).

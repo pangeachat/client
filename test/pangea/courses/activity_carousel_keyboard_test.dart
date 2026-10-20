@@ -83,7 +83,7 @@ void main() {
             ActivityCarousel(
               activities: activities,
               onTap: (a) => opened.add(a.activityId),
-              userStarsByActivity: (_) => 0,
+              xpByActivity: (_) => 0,
               hasCompletedActivity: (_) => false,
               liveStateByActivity: (_) => (
                 state: null,
