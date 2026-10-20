@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-20 15:00:20.438921",
+    "@@last_modified": "2026-10-20 16:50:54.202846",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Nullum microphonum praesto est, ergo hoc verbum est exercitatio significationis proinde.",
     "readAloudYourRecording": "Tua memoratio",
     "readAloudExample": "Exemplum",
-    "readAloudStartOver": "Iterum incipe"
+    "readAloudStartOver": "Iterum incipe",
+    "readAloudStarting": "Microphonem paro…",
+    "readAloudListening": "Audio…"
 }

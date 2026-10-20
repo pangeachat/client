@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-20 15:00:16.718688",
+    "@@last_modified": "2026-10-20 16:50:49.689087",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Geen mikrofoon is beskikbaar nie, so hierdie woord is eerder 'n betekenis-oefening.",
     "readAloudYourRecording": "Jou opname",
     "readAloudExample": "Voorbeeld",
-    "readAloudStartOver": "Begin oor"
+    "readAloudStartOver": "Begin oor",
+    "readAloudStarting": "Maak mikrofoon gereed …",
+    "readAloudListening": "Luister …"
 }

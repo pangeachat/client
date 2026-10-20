@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-20 15:00:21.316781",
+    "@@last_modified": "2026-10-20 16:50:55.373094",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Tiada mikrofon tersedia, jadi perkataan ini adalah latihan makna.",
     "readAloudYourRecording": "Rakaman anda",
     "readAloudExample": "Contoh",
-    "readAloudStartOver": "Mula semula"
+    "readAloudStartOver": "Mula semula",
+    "readAloudStarting": "Menyediakan mikrofon…",
+    "readAloudListening": "Mendengar…"
 }

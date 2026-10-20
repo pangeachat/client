@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-20 15:00:20.209398",
+    "@@last_modified": "2026-10-20 16:50:53.870824",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "ಮೈಕ್ರೊಫೋನ್ ಲಭ್ಯವಿಲ್ಲ, ಆದ್ದರಿಂದ ಈ ಪದವು ಅರ್ಥದ ವ್ಯಾಯಾಮವಾಗಿದೆ.",
     "readAloudYourRecording": "ನಿಮ್ಮ ರೆಕಾರ್ಡಿಂಗ್",
     "readAloudExample": "ಉದಾಹರಣೆ",
-    "readAloudStartOver": "ಮತ್ತೆ ಪ್ರಾರಂಭಿಸಿ"
+    "readAloudStartOver": "ಮತ್ತೆ ಪ್ರಾರಂಭಿಸಿ",
+    "readAloudStarting": "ಮೈಕ್ರೊಫೋನ್ ಸಿದ್ಧವಾಗುತ್ತಿದೆ…",
+    "readAloudListening": "ಕೇಳಲಾಗುತ್ತಿದೆ…"
 }

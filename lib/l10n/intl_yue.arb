@@ -1256,7 +1256,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-20 15:00:25.935301",
+    "@@last_modified": "2026-10-20 16:50:59.274699",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10976,5 +10976,7 @@
     "readAloudMicUnavailable": "沒有可用的咪高峰，因此此字將改為意思練習。",
     "readAloudYourRecording": "您的錄音",
     "readAloudExample": "範例",
-    "readAloudStartOver": "重新開始"
+    "readAloudStartOver": "重新開始",
+    "readAloudStarting": "準備咪高峰中…",
+    "readAloudListening": "聆聽中…"
 }

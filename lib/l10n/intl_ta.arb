@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 15:00:24.573404",
+    "@@last_modified": "2026-10-20 16:50:57.970583",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10114,5 +10114,7 @@
     "readAloudMicUnavailable": "மைக்ரோஃபோன் எதுவும் கிடைக்கவில்லை, எனவே இந்த வார்த்தை அதற்குப் பதிலாக ஒரு அர்த்தப் பயிற்சியாகும்.",
     "readAloudYourRecording": "உங்கள் பதிவு",
     "readAloudExample": "உதாரணம்",
-    "readAloudStartOver": "மீண்டும் தொடங்கு"
+    "readAloudStartOver": "மீண்டும் தொடங்கு",
+    "readAloudStarting": "மைக்ரோஃபோனைத் தயார் செய்கிறது…",
+    "readAloudListening": "கேட்டுக் கொண்டிருக்கிறது…"
 }

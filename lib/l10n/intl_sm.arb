@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-20 15:00:23.747007",
+    "@@last_modified": "2026-10-20 16:50:57.160763",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "E leai se microphone o avanoa, o lea o lenei upu o se faʻamalositino uiga nai lo lena.",
     "readAloudYourRecording": "Lau puʻeina",
     "readAloudExample": "Faʻataʻitaʻiga",
-    "readAloudStartOver": "Toe amata"
+    "readAloudStartOver": "Toe amata",
+    "readAloudStarting": "Saunia le masini faaleotele leo…",
+    "readAloudListening": "Faʻalogo…"
 }

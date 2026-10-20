@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-20 15:00:21.050523",
+    "@@last_modified": "2026-10-20 16:50:54.486311",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Нема достапен микрофон, па овој збор е вежба за значење наместо тоа.",
     "readAloudYourRecording": "Вашето снимање",
     "readAloudExample": "Пример",
-    "readAloudStartOver": "Почни одново"
+    "readAloudStartOver": "Почни одново",
+    "readAloudStarting": "Се подготвува микрофонот…",
+    "readAloudListening": "Се слуша…"
 }

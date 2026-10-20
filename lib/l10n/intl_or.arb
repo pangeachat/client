@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-10-20 15:00:22.668124",
+    "@@last_modified": "2026-10-20 16:50:56.500650",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "କୌଣସି ମାଇକ୍ରୋଫୋନ୍ ଉପଲବ୍ଧ ନାହିଁ, ତେଣୁ ଏହି ଶବ୍ଦଟି ଏକ ଅର୍ଥ ବ୍ୟାୟାମ ଅଟେ।",
     "readAloudYourRecording": "ଆପଣଙ୍କ ରେକର୍ଡିଂ",
     "readAloudExample": "ଉଦାହରଣ",
-    "readAloudStartOver": "ପୁନରାବୃତ୍ତି କରନ୍ତୁ"
+    "readAloudStartOver": "ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
+    "readAloudStarting": "ମାଇକ୍ରୋଫୋନ୍ ପ୍ରସ୍ତୁତ ହେଉଛି…",
+    "readAloudListening": "ଶୁଣୁଛି…"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 15:00:22.437886",
+    "@@last_modified": "2026-10-20 16:50:56.333018",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10963,5 +10963,7 @@
     "readAloudMicUnavailable": "Nenhum microfone está disponível, então esta palavra é um exercício de significado.",
     "readAloudYourRecording": "Sua gravação",
     "readAloudExample": "Exemplo",
-    "readAloudStartOver": "Recomeçar"
+    "readAloudStartOver": "Recomeçar",
+    "readAloudStarting": "Preparando o microfone…",
+    "readAloudListening": "Ouvindo…"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-20 15:00:17.535446",
+    "@@last_modified": "2026-10-20 16:50:50.599514",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10513,5 +10513,7 @@
     "readAloudMicUnavailable": "Není k dispozici žádný mikrofon, takže toto slovo je místo toho cvičením na význam.",
     "readAloudYourRecording": "Vaše nahrávka",
     "readAloudExample": "Příklad",
-    "readAloudStartOver": "Začít znovu"
+    "readAloudStartOver": "Začít znovu",
+    "readAloudStarting": "Připravuji mikrofon…",
+    "readAloudListening": "Poslouchám…"
 }

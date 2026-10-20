@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-20 15:00:23.755977",
+    "@@last_modified": "2026-10-20 16:50:57.714948",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Ma jiro makarafoon diyaar ah, sidaa darteed eraygan wuxuu noqonayaa jimicsi macne ah.",
     "readAloudYourRecording": "Duubistaada",
     "readAloudExample": "Tusaale",
-    "readAloudStartOver": "Dib u bilaw"
+    "readAloudStartOver": "Dib u bilaw",
+    "readAloudStarting": "Makarafoonka oo la diyaarinayo…",
+    "readAloudListening": "Dhageysiga…"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-20 15:00:21.093817",
+    "@@last_modified": "2026-10-20 16:50:54.938723",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Kāore he hopuoro e wātea ana, nō reira he mahi tikanga tēnei kupu.",
     "readAloudYourRecording": "Tō hopunga",
     "readAloudExample": "Tauira",
-    "readAloudStartOver": "Tīmata anō"
+    "readAloudStartOver": "Tīmata anō",
+    "readAloudStarting": "E whakareri ana i te hopuoro…",
+    "readAloudListening": "E whakarongo ana…"
 }

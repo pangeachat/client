@@ -1795,7 +1795,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-20 15:00:23.659878",
+    "@@last_modified": "2026-10-20 16:50:56.972016",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10964,5 +10964,7 @@
     "readAloudMicUnavailable": "Mikrofon ni na voljo, zato je ta beseda namesto tega vaja pomena.",
     "readAloudYourRecording": "Vaš posnetek",
     "readAloudExample": "Primer",
-    "readAloudStartOver": "Začni znova"
+    "readAloudStartOver": "Začni znova",
+    "readAloudStarting": "Pripravljam mikrofon…",
+    "readAloudListening": "Poslušam…"
 }

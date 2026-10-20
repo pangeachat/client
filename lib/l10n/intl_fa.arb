@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 15:00:17.990160",
+    "@@last_modified": "2026-10-20 16:50:51.165503",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10110,5 +10110,7 @@
     "readAloudMicUnavailable": "میکروفونی در دسترس نیست، بنابراین این کلمه به جای آن یک تمرین معنایی است.",
     "readAloudYourRecording": "ضبط شما",
     "readAloudExample": "مثال",
-    "readAloudStartOver": "شروع مجدد"
+    "readAloudStartOver": "شروع مجدد",
+    "readAloudStarting": "آماده‌سازی میکروفون…",
+    "readAloudListening": "در حال گوش دادن…"
 }

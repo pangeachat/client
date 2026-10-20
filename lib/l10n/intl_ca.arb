@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 15:00:17.287433",
+    "@@last_modified": "2026-10-20 16:50:50.726761",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10149,5 +10149,7 @@
     "readAloudMicUnavailable": "No hi ha cap micròfon disponible, així que aquesta paraula és un exercici de significat en el seu lloc.",
     "readAloudYourRecording": "La teva gravació",
     "readAloudExample": "Exemple",
-    "readAloudStartOver": "Tornar a començar"
+    "readAloudStartOver": "Tornar a començar",
+    "readAloudStarting": "Preparant el micròfon…",
+    "readAloudListening": "Escolto…"
 }

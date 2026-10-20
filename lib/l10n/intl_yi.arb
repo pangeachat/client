@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-20 15:00:25.404524",
+    "@@last_modified": "2026-10-20 16:50:59.105440",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "קיין מיקראפאן איז נישט פאראן, דערפאר איז דאס ווארט א באדייטונגס-איבונג אנשטאט.",
     "readAloudYourRecording": "אייער רעקארדירונג",
     "readAloudExample": "ביישפיל",
-    "readAloudStartOver": "אָנהייבן פֿון ס׳נײַ"
+    "readAloudStartOver": "אָנהייבן פֿון ס׳נײַ",
+    "readAloudStarting": "גרייטן דעם מיקראָפֿאָן…",
+    "readAloudListening": "הערן…"
 }

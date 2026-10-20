@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-20 15:00:18.329669",
+    "@@last_modified": "2026-10-20 16:50:51.829434",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10022,5 +10022,7 @@
     "readAloudMicUnavailable": "Non hai micrófono dispoñible, polo que esta palabra é un exercicio de significado.",
     "readAloudYourRecording": "A túa gravación",
     "readAloudExample": "Exemplo",
-    "readAloudStartOver": "Comezar de novo"
+    "readAloudStartOver": "Comezar de novo",
+    "readAloudStarting": "Preparando o micrófono…",
+    "readAloudListening": "Escoitando…"
 }

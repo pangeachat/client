@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-20 15:00:18.517445",
+    "@@last_modified": "2026-10-20 16:50:51.874532",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "કોઈ માઇક્રોફોન ઉપલબ્ધ નથી, તેથી આ શબ્દ તેના બદલે અર્થનો અભ્યાસ છે.",
     "readAloudYourRecording": "તમારું રેકોર્ડિંગ",
     "readAloudExample": "ઉદાહરણ",
-    "readAloudStartOver": "ફરીથી શરૂ કરો"
+    "readAloudStartOver": "ફરીથી શરૂ કરો",
+    "readAloudStarting": "માઇક્રોફોન તૈયાર થઈ રહ્યું છે…",
+    "readAloudListening": "સાંભળી રહ્યા છીએ…"
 }

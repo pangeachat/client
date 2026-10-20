@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-20 15:00:21.612793",
+    "@@last_modified": "2026-10-20 16:50:54.942190",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Микрофон байхгүй тул энэ үгний оронд утгын дасгал хийнэ.",
     "readAloudYourRecording": "Таны бичлэг",
     "readAloudExample": "Жишээ",
-    "readAloudStartOver": "Дахин эхлэх"
+    "readAloudStartOver": "Дахин эхлэх",
+    "readAloudStarting": "Микрофоныг бэлдэж байна…",
+    "readAloudListening": "Сонсож байна…"
 }

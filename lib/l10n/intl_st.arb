@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-20 15:00:23.833018",
+    "@@last_modified": "2026-10-20 16:50:57.555359",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Ha ho maekrofounu e fumanehang, kahoo lentsoe lena ke boikoetliso ba moelelo ho e-na le hoo.",
     "readAloudYourRecording": "Rekoto ea hau",
     "readAloudExample": "Mohlala",
-    "readAloudStartOver": "Qala hape"
+    "readAloudStartOver": "Qala hape",
+    "readAloudStarting": "Ho lokisoa maekrofounu…",
+    "readAloudListening": "Ke mametse…"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 15:00:23.156202",
+    "@@last_modified": "2026-10-20 16:50:56.653189",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10751,5 +10751,7 @@
     "readAloudMicUnavailable": "Niciun microfon nu este disponibil, așa că acest cuvânt este un exercițiu de înțeles în schimb.",
     "readAloudYourRecording": "Înregistrarea ta",
     "readAloudExample": "Exemplu",
-    "readAloudStartOver": "Ia-o de la capăt"
+    "readAloudStartOver": "Ia-o de la capăt",
+    "readAloudStarting": "Se pregătește microfonul…",
+    "readAloudListening": "Se ascultă…"
 }

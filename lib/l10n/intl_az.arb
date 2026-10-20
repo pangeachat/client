@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-20 15:00:16.547160",
+    "@@last_modified": "2026-10-20 16:50:50.422274",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Mikrofon mövcud deyil, buna görə bu söz əvəzinə məna məşqi olacaq.",
     "readAloudYourRecording": "Sizin qeydiniz",
     "readAloudExample": "Nümunə",
-    "readAloudStartOver": "Yenidən başla"
+    "readAloudStartOver": "Yenidən başla",
+    "readAloudStarting": "Mikrofon hazırlanır…",
+    "readAloudListening": "Dinləyirəm…"
 }

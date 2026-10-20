@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-20 15:00:24.018710",
+    "@@last_modified": "2026-10-20 16:50:57.249042",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Nuk ka mikrofon të disponueshëm, kështu që kjo fjalë është një ushtrim kuptimi në vend të kësaj.",
     "readAloudYourRecording": "Regjistrimi juaj",
     "readAloudExample": "Shembull",
-    "readAloudStartOver": "Fillo nga e para"
+    "readAloudStartOver": "Fillo nga e para",
+    "readAloudStarting": "Po përgatis mikrofonin…",
+    "readAloudListening": "Po dëgjoj…"
 }

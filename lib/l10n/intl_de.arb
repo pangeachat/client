@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-20 15:00:17.292067",
+    "@@last_modified": "2026-10-20 16:50:50.536363",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10009,5 +10009,7 @@
     "readAloudMicUnavailable": "Es ist kein Mikrofon verfügbar, daher ist dieses Wort stattdessen eine Bedeutungsübung.",
     "readAloudYourRecording": "Deine Aufnahme",
     "readAloudExample": "Beispiel",
-    "readAloudStartOver": "Von vorne beginnen"
+    "readAloudStartOver": "Von vorne beginnen",
+    "readAloudStarting": "Mikrofon wird vorbereitet…",
+    "readAloudListening": "Höre zu…"
 }

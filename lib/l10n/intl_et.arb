@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-20 15:00:18.071779",
+    "@@last_modified": "2026-10-20 16:50:51.132123",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10019,5 +10019,7 @@
     "readAloudMicUnavailable": "Mikrofon pole saadaval, seega on see sõna hoopis tähendusharjutus.",
     "readAloudYourRecording": "Sinu salvestus",
     "readAloudExample": "Näide",
-    "readAloudStartOver": "Alusta uuesti"
+    "readAloudStartOver": "Alusta uuesti",
+    "readAloudStarting": "Mikrofoni ettevalmistamine…",
+    "readAloudListening": "Kuulan…"
 }

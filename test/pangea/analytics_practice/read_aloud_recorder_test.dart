@@ -12,6 +12,7 @@ import 'package:fluffychat/routes/chat/events/streaming_stt/stt_stream_state.dar
 
 class _FakeCapture implements SttAudioCaptureApi {
   void Function(Uint8List)? _onFrame;
+  bool started = false;
   bool disposed = false;
 
   void pushFrame(Uint8List frame) => _onFrame?.call(frame);
@@ -25,6 +26,7 @@ class _FakeCapture implements SttAudioCaptureApi {
     void Function(Object error)? onError,
   }) async {
     _onFrame = onFrame;
+    started = true;
     return true;
   }
 
@@ -172,6 +174,61 @@ void main() {
   });
 
   group('ReadAloudRecorder on the batch route', () {
+    test('is starting, not recording, until the mic is live; a cancel while '
+        'starting opens no mic', () async {
+      final permission = Completer<bool>();
+      final capture = _FakeCapture();
+      final recorder = ReadAloudRecorder(
+        reference: _reference,
+        hasMicPermission: () => permission.future,
+        streamingSessionFactory: null,
+        captureFactory: () => capture,
+        transcribe: (_) async => const [],
+      );
+      final starting = recorder.start();
+      await pumpEventQueue();
+      expect(recorder.phase, ReadAloudPhase.starting);
+
+      await recorder.cancel();
+      expect(recorder.phase, ReadAloudPhase.idle);
+      permission.complete(true);
+      await starting;
+      expect(recorder.phase, ReadAloudPhase.idle);
+      expect(capture.started, isFalse);
+      recorder.dispose();
+    });
+
+    test(
+      'the take carries a waveform from its frames, quiet below loud',
+      () async {
+        final capture = _FakeCapture();
+        final recorder = ReadAloudRecorder(
+          reference: _reference,
+          hasMicPermission: () async => true,
+          streamingSessionFactory: null,
+          captureFactory: () => capture,
+          transcribe: (_) async => ['el', 'gato', 'come'],
+        );
+        await recorder.start();
+        expect(recorder.phase, ReadAloudPhase.recording);
+        expect(capture.started, isTrue);
+
+        capture.pushFrame(Uint8List(320)); // silence
+        final loud = ByteData(320);
+        for (var i = 0; i < 160; i++) {
+          loud.setInt16(i * 2, 16384, Endian.little);
+        }
+        capture.pushFrame(loud.buffer.asUint8List());
+        await recorder.stop();
+
+        final waveform = recorder.lastTake!.waveform!;
+        expect(waveform.length, 2);
+        expect(waveform[0], lessThan(waveform[1]));
+        expect(waveform[1], greaterThan(800), reason: 'half scale is -6 dBFS');
+        recorder.dispose();
+      },
+    );
+
     test('records to a WAV, transcribes it and judges the words', () async {
       final capture = _FakeCapture();
       Uint8List? sent;

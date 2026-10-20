@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-20 15:00:24.495516",
+    "@@last_modified": "2026-10-20 16:50:53.948742",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "هیچ مایکرۆفۆنێک بەردەست نییە، بۆیە ئەم وشەیە لەبری ئەوە ڕاهێنانی مانایە.",
     "readAloudYourRecording": "تۆمارکردنەکەی تۆ",
     "readAloudExample": "نموونە",
-    "readAloudStartOver": "دەستپێکردنەوە"
+    "readAloudStartOver": "دەستپێکردنەوە",
+    "readAloudStarting": "مایکرۆفۆن ئامادە دەکرێت…",
+    "readAloudListening": "گوێ دەگیرێت…"
 }

@@ -402,27 +402,7 @@ class StreamingSttSession {
   }
 
   void _appendAmplitude(Uint8List frame) {
-    final sampleCount = frame.length ~/ 2;
-    if (sampleCount == 0) {
-      _amplitudeTimeline.add(1);
-      return;
-    }
-    final data = ByteData.view(
-      frame.buffer,
-      frame.offsetInBytes,
-      sampleCount * 2,
-    );
-    var sumSquares = 0.0;
-    for (var i = 0; i < sampleCount; i++) {
-      final sample = data.getInt16(i * 2, Endian.little);
-      sumSquares += sample * sample;
-    }
-    final rms = math.sqrt(sumSquares / sampleCount);
-    // dBFS relative to full-scale int16, mapped onto today's amplitude scale
-    // (`100 + amplitude.current * 2`, clamped to >= 1).
-    final dbfs = rms <= 0 ? -160.0 : 20 * (math.log(rms / 32768) / math.ln10);
-    final value = 100 + dbfs * 2;
-    _amplitudeTimeline.add(value < 1 ? 1 : value);
+    _amplitudeTimeline.add(pcm16FrameAmplitude(frame));
   }
 
   void _onPartial(SttPartial partial) {
@@ -709,4 +689,28 @@ Future<String> defaultWavTempFileWriter(Uint8List wav) async {
   final file = File(path_lib.join(dir.path, name));
   await file.writeAsBytes(wav);
   return file.path;
+}
+
+/// One PCM16 mono frame's loudness on the app's amplitude scale: dBFS
+/// relative to full-scale int16, mapped as the voice recorder maps the
+/// `record` package's reading (`100 + amplitude.current * 2`, never below 1).
+/// Shared by the streaming session and the read-aloud recorder's batch path,
+/// so a take's waveform bars match a voice message's.
+double pcm16FrameAmplitude(Uint8List frame) {
+  final sampleCount = frame.length ~/ 2;
+  if (sampleCount == 0) return 1;
+  final data = ByteData.view(
+    frame.buffer,
+    frame.offsetInBytes,
+    sampleCount * 2,
+  );
+  var sumSquares = 0.0;
+  for (var i = 0; i < sampleCount; i++) {
+    final sample = data.getInt16(i * 2, Endian.little);
+    sumSquares += sample * sample;
+  }
+  final rms = math.sqrt(sumSquares / sampleCount);
+  final dbfs = rms <= 0 ? -160.0 : 20 * (math.log(rms / 32768) / math.ln10);
+  final value = 100 + dbfs * 2;
+  return value < 1 ? 1 : value;
 }

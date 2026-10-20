@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -127,5 +128,71 @@ void main() {
     expect(capture.started, isTrue);
     expect(find.byIcon(Icons.stop), findsOneWidget);
     expect(find.byTooltip('Stop recording'), findsOneWidget);
+    expect(find.text('Listening…'), findsOneWidget);
+  });
+
+  testWidgets('says the mic is getting ready until it is live, and never '
+      'underlines the target', (tester) async {
+    final permission = Completer<bool>();
+    final speed = AudioPlaybackSpeedController();
+    addTearDown(speed.dispose);
+
+    await tester.pumpWidget(
+      MaterialApp(
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Scaffold(
+          body: ReadAloudExerciseWidget(
+            exercise: _exercise(),
+            referenceAudio: null,
+            hearItFirst: true,
+            playbackSpeedController: speed,
+            recorderFactory: (reference) => ReadAloudRecorder(
+              reference: reference,
+              hasMicPermission: () => permission.future,
+              streamingSessionFactory: null,
+              captureFactory: _FakeCapture.new,
+              transcribe: (_) async => const [],
+            ),
+            onRecorded: (_) {},
+            onContinue: () {},
+            onMicUnavailable: () {},
+            onSkip: () {},
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    // Bold alone marks the target: an underline reads as a link.
+    final sentence = tester.widget<Text>(
+      find.byWidgetPredicate((w) => w is Text && w.textSpan != null),
+    );
+    var underlined = false;
+    sentence.textSpan!.visitChildren((span) {
+      if (span is TextSpan &&
+          span.style?.decoration == TextDecoration.underline) {
+        underlined = true;
+      }
+      return true;
+    });
+    expect(underlined, isFalse);
+
+    // Between the tap and the mic being live the item says so, and the mic
+    // is neither a record nor a stop button.
+    await tester.tap(find.byIcon(Icons.mic));
+    await tester.pump();
+    expect(find.text('Getting the microphone ready…'), findsOneWidget);
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
+    expect(find.byIcon(Icons.stop), findsNothing);
+    expect(
+      tester.widget<IconButton>(find.byType(IconButton)).onPressed,
+      isNull,
+    );
+
+    permission.complete(true);
+    await tester.pumpAndSettle();
+    expect(find.byIcon(Icons.stop), findsOneWidget);
+    expect(find.text('Listening…'), findsOneWidget);
   });
 }

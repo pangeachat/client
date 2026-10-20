@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-10-20 15:00:22.365267",
+    "@@last_modified": "2026-10-20 16:50:55.184050",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "मायक्रोफोन उपलब्ध नाही, त्यामुळे हा शब्द अर्थाचा व्यायाम आहे.",
     "readAloudYourRecording": "तुमचे रेकॉर्डिंग",
     "readAloudExample": "उदाहरण",
-    "readAloudStartOver": "पुन्हा सुरू करा"
+    "readAloudStartOver": "पुन्हा सुरू करा",
+    "readAloudStarting": "मायक्रोफोन तयार करत आहे…",
+    "readAloudListening": "ऐकत आहे…"
 }

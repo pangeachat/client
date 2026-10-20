@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-20 15:00:21.472271",
+    "@@last_modified": "2026-10-20 16:50:54.869385",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "মাইক্রোফোন অমত্তা ফংদে, মদুগীদমক ৱাহৈ অসিগী মহুত্তা অর্থগী এক্সারসাইজ অমা ওইরি।",
     "readAloudYourRecording": "নখোয়গী রিকোর্ডিং",
     "readAloudExample": "উদাহরন",
-    "readAloudStartOver": "ꯑꯃꯨꯛ ꯍꯧꯒꯠꯄ"
+    "readAloudStartOver": "ꯑꯃꯨꯛ ꯍꯧꯒꯠꯄ",
+    "readAloudStarting": "মাইক্রোফোন শেম্নরি…",
+    "readAloudListening": "তাঞ্জরি…"
 }

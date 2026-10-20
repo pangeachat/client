@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-20 15:00:19.516096",
+    "@@last_modified": "2026-10-20 16:50:53.144451",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Enginn hljóðnemi er tiltækur, svo þetta orð er merkingaræfing í staðinn.",
     "readAloudYourRecording": "Upptakan þín",
     "readAloudExample": "Dæmi",
-    "readAloudStartOver": "Byrja upp á nýtt"
+    "readAloudStartOver": "Byrja upp á nýtt",
+    "readAloudStarting": "Undirbý hljóðnemann…",
+    "readAloudListening": "Hlusta…"
 }

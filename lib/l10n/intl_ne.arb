@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-20 15:00:21.872496",
+    "@@last_modified": "2026-10-20 16:50:55.717817",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "कुनै माइक्रोफोन उपलब्ध छैन, त्यसैले यो शब्द अर्थ अभ्यासको रूपमा छ।",
     "readAloudYourRecording": "तपाईंको रेकर्डिङ",
     "readAloudExample": "उदाहरण",
-    "readAloudStartOver": "फेरि सुरु गर्नुहोस्"
+    "readAloudStartOver": "फेरि सुरु गर्नुहोस्",
+    "readAloudStarting": "माइक्रोफोन तयार गर्दै...",
+    "readAloudListening": "सुन्दै..."
 }

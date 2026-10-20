@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-20 15:00:20.712599",
+    "@@last_modified": "2026-10-20 16:50:55.581927",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "ບໍ່ມີໄມໂຄຣໂຟນ, ສະນັ້ນຄຳນີ້ຈຶ່ງເປັນການຝຶກຄວາມໝາຍແທນ.",
     "readAloudYourRecording": "ສຽງບັນທຶກຂອງທ່ານ",
     "readAloudExample": "ຕົວຢ່າງ",
-    "readAloudStartOver": "ເລີ່ມຕົ້ນໃໝ່"
+    "readAloudStartOver": "ເລີ່ມຕົ້ນໃໝ່",
+    "readAloudStarting": "ກຳລັງກຽມໄມໂຄຣໂຟນ…",
+    "readAloudListening": "ກຳລັງຟັງ…"
 }

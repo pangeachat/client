@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 15:00:19.370557",
+    "@@last_modified": "2026-10-20 16:50:53.696766",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10095,5 +10095,7 @@
     "readAloudMicUnavailable": "Tidak ada mikrofon yang tersedia, jadi kata ini menjadi latihan makna.",
     "readAloudYourRecording": "Rekaman Anda",
     "readAloudExample": "Contoh",
-    "readAloudStartOver": "Mulai lagi"
+    "readAloudStartOver": "Mulai lagi",
+    "readAloudStarting": "Menyiapkan mikrofon…",
+    "readAloudListening": "Mendengarkan…"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-20 15:00:25.668844",
+    "@@last_modified": "2026-10-20 16:50:59.501208",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10022,5 +10022,7 @@
     "readAloudMicUnavailable": "没有可用的麦克风，因此此单词将作为含义练习。",
     "readAloudYourRecording": "您的录音",
     "readAloudExample": "示例",
-    "readAloudStartOver": "重新开始"
+    "readAloudStartOver": "重新开始",
+    "readAloudStarting": "准备麦克风…",
+    "readAloudListening": "正在听…"
 }

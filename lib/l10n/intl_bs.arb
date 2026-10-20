@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-20 15:00:16.561106",
+    "@@last_modified": "2026-10-20 16:50:50.347541",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Mikrofon nije dostupan, pa je ova riječ umjesto toga vježba značenja.",
     "readAloudYourRecording": "Vaš snimak",
     "readAloudExample": "Primjer",
-    "readAloudStartOver": "Počni ponovo"
+    "readAloudStartOver": "Počni ponovo",
+    "readAloudStarting": "Pripremam mikrofon…",
+    "readAloudListening": "Slušam…"
 }

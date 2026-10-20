@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 15:00:24.224527",
+    "@@last_modified": "2026-10-20 16:50:57.538165",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10968,5 +10968,7 @@
     "readAloudMicUnavailable": "Mikrofon nije dostupan, pa je ova reč umesto toga vežba značenja.",
     "readAloudYourRecording": "Tvoj snimak",
     "readAloudExample": "Primer",
-    "readAloudStartOver": "Počni ponovo"
+    "readAloudStartOver": "Počni ponovo",
+    "readAloudStarting": "Pripremam mikrofon…",
+    "readAloudListening": "Slušam…"
 }

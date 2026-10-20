@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-20 15:00:18.441735",
+    "@@last_modified": "2026-10-20 16:50:51.216874",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10022,5 +10022,7 @@
     "readAloudMicUnavailable": "Ez dago mikrofono erabilgarririk, beraz, hitz hau esanahi-ariketa bat da horren ordez.",
     "readAloudYourRecording": "Zure grabaketa",
     "readAloudExample": "Adibidea",
-    "readAloudStartOver": "Berriro hasi"
+    "readAloudStartOver": "Berriro hasi",
+    "readAloudStarting": "Mikrofonoa prestatzen…",
+    "readAloudListening": "Entzuten…"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-20 15:00:23.180579",
+    "@@last_modified": "2026-10-20 16:50:55.848875",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10107,5 +10107,7 @@
     "readAloudMicUnavailable": "Brak dostępnego mikrofonu, więc to słowo jest ćwiczeniem znaczeniowym.",
     "readAloudYourRecording": "Twoje nagranie",
     "readAloudExample": "Przykład",
-    "readAloudStartOver": "Zacznij od nowa"
+    "readAloudStartOver": "Zacznij od nowa",
+    "readAloudStarting": "Przygotowuję mikrofon…",
+    "readAloudListening": "Słucham…"
 }

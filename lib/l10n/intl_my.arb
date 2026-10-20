@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-20 15:00:21.617780",
+    "@@last_modified": "2026-10-20 16:50:55.277025",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "မိုက်ခရိုဖုန်း မရနိုင်ပါ၊ ထို့ကြောင့် ဤစကားလုံးသည် အဓိပ္ပာယ်လေ့ကျင့်ခန်း ဖြစ်ပါသည်။",
     "readAloudYourRecording": "သင်၏ မှတ်တမ်းတင်ထားသည်",
     "readAloudExample": "ဥပမာ",
-    "readAloudStartOver": "ပြန်စပါ"
+    "readAloudStartOver": "ပြန်စပါ",
+    "readAloudStarting": "မိုက်ခရိုဖုန်း ပြင်ဆင်နေသည်…",
+    "readAloudListening": "နားထောင်နေသည်…"
 }

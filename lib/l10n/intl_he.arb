@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 15:00:18.745398",
+    "@@last_modified": "2026-10-20 16:50:52.100754",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10933,5 +10933,7 @@
     "readAloudMicUnavailable": "אין מיקרופון זמין, לכן מילה זו היא תרגיל משמעות במקום זאת.",
     "readAloudYourRecording": "ההקלטה שלך",
     "readAloudExample": "דוגמה",
-    "readAloudStartOver": "התחל מחדש"
+    "readAloudStartOver": "התחל מחדש",
+    "readAloudStarting": "מכין את המיקרופון…",
+    "readAloudListening": "מקשיב…"
 }

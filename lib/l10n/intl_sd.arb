@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-20 15:00:23.203000",
+    "@@last_modified": "2026-10-20 16:50:56.984439",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "ڪو به مائڪروفون موجود ناهي، تنهنڪري هي لفظ معنيٰ جي مشق آهي.",
     "readAloudYourRecording": "توهان جي رڪارڊنگ",
     "readAloudExample": "مثال",
-    "readAloudStartOver": "ٻيهر شروع ڪريو"
+    "readAloudStartOver": "ٻيهر شروع ڪريو",
+    "readAloudStarting": "مائڪروفون تيار ڪيو پيو وڃي…",
+    "readAloudListening": "ٻڌي رهيو آهيان…"
 }

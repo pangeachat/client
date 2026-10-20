@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-20 15:00:23.738882",
+    "@@last_modified": "2026-10-20 16:50:57.256568",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Hapana maiki aripo, saka izwi iri riri kudzidzira zvarinoreva.",
     "readAloudYourRecording": "Zvawataura",
     "readAloudExample": "Muenzaniso",
-    "readAloudStartOver": "Tanga patsva"
+    "readAloudStartOver": "Tanga patsva",
+    "readAloudStarting": "Kugadzirira maikorofoni…",
+    "readAloudListening": "Ndichiteerera…"
 }

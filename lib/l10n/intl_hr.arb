@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-20 15:00:19.034542",
+    "@@last_modified": "2026-10-20 16:50:52.326606",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10455,5 +10455,7 @@
     "readAloudMicUnavailable": "Mikrofon nije dostupan, pa je ova riječ umjesto toga vježba značenja.",
     "readAloudYourRecording": "Tvoja snimka",
     "readAloudExample": "Primjer",
-    "readAloudStartOver": "Počni ispočetka"
+    "readAloudStartOver": "Počni ispočetka",
+    "readAloudStarting": "Pripremam mikrofon…",
+    "readAloudListening": "Slušam…"
 }

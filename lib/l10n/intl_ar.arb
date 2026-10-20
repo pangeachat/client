@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-20 15:00:16.567847",
+    "@@last_modified": "2026-10-20 16:50:49.618898",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10325,5 +10325,7 @@
     "readAloudMicUnavailable": "لا يتوفر ميكروفون، لذا فإن هذه الكلمة هي تمرين معنى بدلاً من ذلك.",
     "readAloudYourRecording": "تسجيلك",
     "readAloudExample": "مثال",
-    "readAloudStartOver": "البدء من جديد"
+    "readAloudStartOver": "البدء من جديد",
+    "readAloudStarting": "جارٍ تجهيز الميكروفون…",
+    "readAloudListening": "جارٍ الاستماع…"
 }

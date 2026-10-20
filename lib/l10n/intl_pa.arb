@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-20 15:00:25.045626",
+    "@@last_modified": "2026-10-20 16:50:56.035695",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "ਕੋਈ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਉਪਲਬਧ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਇਹ ਸ਼ਬਦ ਇਸਦੀ ਬਜਾਏ ਇੱਕ ਅਰਥ ਅਭਿਆਸ ਹੈ।",
     "readAloudYourRecording": "ਤੁਹਾਡੀ ਰਿਕਾਰਡਿੰਗ",
     "readAloudExample": "ਉਦਾਹਰਨ",
-    "readAloudStartOver": "ਮੁੜ ਸ਼ੁਰੂ ਕਰੋ"
+    "readAloudStartOver": "ਮੁੜ ਸ਼ੁਰੂ ਕਰੋ",
+    "readAloudStarting": "ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਤਿਆਰ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…",
+    "readAloudListening": "ਸੁਣ ਰਿਹਾ ਹੈ…"
 }

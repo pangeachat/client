@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-20 15:00:18.479147",
+    "@@last_modified": "2026-10-20 16:50:51.984985",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Chan eil microfòn ri fhaighinn, agus mar sin tha am facal seo na eacarsaich ciall an àite sin.",
     "readAloudYourRecording": "Do chlàradh",
     "readAloudExample": "Eisimpleir",
-    "readAloudStartOver": "Tòisich a-rithist"
+    "readAloudStartOver": "Tòisich a-rithist",
+    "readAloudStarting": "Ag ullachadh a’ mhicreofoin…",
+    "readAloudListening": "Ag èisteachd…"
 }

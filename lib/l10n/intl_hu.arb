@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-20 15:00:19.146223",
+    "@@last_modified": "2026-10-20 16:50:53.214271",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10125,5 +10125,7 @@
     "readAloudMicUnavailable": "Nincs mikrofon, ezért ez a szó helyett egy jelentésgyakorlat.",
     "readAloudYourRecording": "A felvételed",
     "readAloudExample": "Példa",
-    "readAloudStartOver": "Elölről"
+    "readAloudStartOver": "Elölről",
+    "readAloudStarting": "Készül a mikrofon…",
+    "readAloudListening": "Hallgatok…"
 }

@@ -11,6 +11,11 @@ import 'package:fluffychat/routes/chat/events/streaming_stt/wav_writer.dart';
 
 enum ReadAloudPhase {
   idle,
+
+  /// The mic is being opened: permission asked, the relay connected where the
+  /// language streams, the capture started. Nothing is recorded yet, so the
+  /// item says so rather than showing a mic that is not listening.
+  starting,
   recording,
 
   /// The mic has stopped and the words are settling, or the recording is
@@ -100,6 +105,10 @@ class ReadAloudRecorder extends ChangeNotifier {
   final BytesBuilder _pcm = BytesBuilder(copy: false);
   bool _disposed = false;
 
+  /// Loudness per frame on the batch route, for the take's waveform bars; the
+  /// streaming session keeps its own timeline.
+  final List<double> _batchAmplitudes = <double>[];
+
   /// Bumped by [start] and [cancel], so a start, stop or relay callback still
   /// in flight when the take was discarded cannot touch the next one.
   int _generation = 0;
@@ -107,7 +116,8 @@ class ReadAloudRecorder extends ChangeNotifier {
   bool _stale(int generation) => _disposed || generation != _generation;
 
   Future<void> start() async {
-    if (phase == ReadAloudPhase.recording ||
+    if (phase == ReadAloudPhase.starting ||
+        phase == ReadAloudPhase.recording ||
         phase == ReadAloudPhase.finalizing) {
       return;
     }
@@ -115,7 +125,8 @@ class ReadAloudRecorder extends ChangeNotifier {
     heard = List<bool>.filled(reference.length, false);
     liveTranscript = '';
     lastTake = null;
-    phase = ReadAloudPhase.recording;
+    _batchAmplitudes.clear();
+    phase = ReadAloudPhase.starting;
     notifyListeners();
 
     if (!await _hasMicPermission()) {
@@ -161,6 +172,7 @@ class ReadAloudRecorder extends ChangeNotifier {
       }
       if (opened) {
         _session = session;
+        _setPhase(ReadAloudPhase.recording);
         return;
       }
       // Not routed for streaming, or the relay refused: record for the batch
@@ -171,10 +183,10 @@ class ReadAloudRecorder extends ChangeNotifier {
     final capture = _captureFactory();
     bool ok;
     try {
-      ok = await capture.start(
-        _pcm.add,
-        onError: (_) => _setPhase(ReadAloudPhase.failed),
-      );
+      ok = await capture.start((frame) {
+        _pcm.add(frame);
+        _batchAmplitudes.add(pcm16FrameAmplitude(frame));
+      }, onError: (_) => _setPhase(ReadAloudPhase.failed));
     } catch (_) {
       ok = false;
     }
@@ -188,18 +200,22 @@ class ReadAloudRecorder extends ChangeNotifier {
       return;
     }
     _capture = capture;
+    _setPhase(ReadAloudPhase.recording);
   }
 
   /// Discard the recording in progress without judging it or spending a
   /// take: the mic closes, the words reset, and the item is idle again.
   Future<void> cancel() async {
-    if (phase != ReadAloudPhase.recording) return;
+    if (phase != ReadAloudPhase.starting && phase != ReadAloudPhase.recording) {
+      return;
+    }
     _generation++;
     final session = _session;
     _session = null;
     final capture = _capture;
     _capture = null;
     _pcm.clear();
+    _batchAmplitudes.clear();
     heard = List<bool>.filled(reference.length, false);
     liveTranscript = '';
     _setPhase(ReadAloudPhase.idle);
@@ -256,7 +272,12 @@ class ReadAloudRecorder extends ChangeNotifier {
     final wav = pcm16ToWav(_pcm.takeBytes());
     // PCM16 mono at 16 kHz is 32 bytes per millisecond.
     final duration = Duration(milliseconds: (wav.length - 44) ~/ 32);
-    await _finishFromBatch(wav, duration, const <double>[], generation);
+    await _finishFromBatch(
+      wav,
+      duration,
+      List<double>.of(_batchAmplitudes),
+      generation,
+    );
   }
 
   Future<void> _finishFromBatch(

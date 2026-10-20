@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-20 15:00:23.267269",
+    "@@last_modified": "2026-10-20 16:50:56.905895",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "මයික්‍රෆෝනයක් නොමැති නිසා, මෙම වචනය වෙනුවට අර්ථය පිළිබඳ අභ්‍යාසයකි.",
     "readAloudYourRecording": "ඔබගේ පටිගත කිරීම",
     "readAloudExample": "උදාහරණය",
-    "readAloudStartOver": "නැවත අරඹන්න"
+    "readAloudStartOver": "නැවත අරඹන්න",
+    "readAloudStarting": "මයික්‍රෆෝනය සූදානම් කරමින්…",
+    "readAloudListening": "සවන් දෙමින්…"
 }

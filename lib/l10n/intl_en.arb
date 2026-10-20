@@ -6101,6 +6101,14 @@
     "@readAloudStop": {
         "description": "Accessible name of the record button while a read-aloud recording is running."
     },
+    "readAloudStarting": "Getting the microphone ready…",
+    "@readAloudStarting": {
+        "description": "Status on a read-aloud exercise between the record tap and the microphone being live: permission is being asked and the connection opened, nothing is recorded yet."
+    },
+    "readAloudListening": "Listening…",
+    "@readAloudListening": {
+        "description": "Status on a read-aloud exercise while the microphone is live and nothing has been heard yet."
+    },
     "readAloudHeardAll": "Every word heard!",
     "@readAloudHeardAll": {
         "description": "Shown when the learner read the whole sentence and every word was heard."

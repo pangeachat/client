@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-20 15:00:23.455664",
+    "@@last_modified": "2026-10-20 16:50:56.959918",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10964,5 +10964,7 @@
     "readAloudMicUnavailable": "Mikrofón nie je k dispozícii, takže toto slovo je namiesto toho cvičením na význam.",
     "readAloudYourRecording": "Vaša nahrávka",
     "readAloudExample": "Príklad",
-    "readAloudStartOver": "Začať odznova"
+    "readAloudStartOver": "Začať odznova",
+    "readAloudStarting": "Pripravujem mikrofón…",
+    "readAloudListening": "Počúvam…"
 }

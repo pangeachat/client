@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-20 15:00:16.548666",
+    "@@last_modified": "2026-10-20 16:50:49.587620",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "কোনো মাইক্ৰ'ফোন উপলব্ধ নহয়, সেয়েহে এই শব্দটো ইয়াৰ পৰিৱৰ্তে এটা অৰ্থ অনুশীলন।",
     "readAloudYourRecording": "আপোনাৰ ৰেকৰ্ডিং",
     "readAloudExample": "উদাহৰণ",
-    "readAloudStartOver": "পুনৰ আৰম্ভ কৰক"
+    "readAloudStartOver": "পুনৰ আৰম্ভ কৰক",
+    "readAloudStarting": "মাইক্ৰ'ফোন সাজু কৰা হৈছে…",
+    "readAloudListening": "শুনি আছোঁ…"
 }

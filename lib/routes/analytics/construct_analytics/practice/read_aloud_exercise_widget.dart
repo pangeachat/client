@@ -51,6 +51,8 @@ class ReadAloudExerciseWidget extends StatefulWidget {
 }
 
 class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
+  static const double _playerWidth = 300.0;
+
   late final ReadAloudRecorder _recorder;
   bool _recorded = false;
   bool _micReported = false;
@@ -155,13 +157,7 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
       spans.add(
         TextSpan(
           text: token.text.content,
-          style: TextStyle(
-            color: color,
-            fontWeight: weight,
-            decoration: isWord && wordIndex - 1 == target
-                ? TextDecoration.underline
-                : null,
-          ),
+          style: TextStyle(color: color, fontWeight: weight),
         ),
       );
       previousEnd = end > previousEnd ? end : previousEnd;
@@ -185,10 +181,11 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
     final exercise = widget.exercise;
     return Column(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(label, style: theme.textTheme.labelMedium),
         SizedBox(
-          width: 220.0,
+          width: _playerWidth,
           height: 60.0,
           child: AudioPlayerWidget(
             null,
@@ -225,9 +222,12 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
             phase == ReadAloudPhase.done ||
             phase == ReadAloudPhase.failed);
     final recording = phase == ReadAloudPhase.recording;
+    final starting = phase == ReadAloudPhase.starting;
 
     final String micLabel = recording
         ? l10n.readAloudStop
+        : starting
+        ? l10n.readAloudStarting
         : _recorder.lastTake == null || _recorder.unheardCount == 0
         ? l10n.readAloudRecord
         : l10n.readAloudMicLabel(_recorder.unheardCount);
@@ -257,24 +257,32 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
             ),
           ),
         ),
-        // The live transcript, replace-in-place as it settles, as the
-        // voice-message recorder shows it while the mic is hot.
-        if (recording || phase == ReadAloudPhase.finalizing)
+        // What the mic is doing: getting ready (nothing is recorded yet, so
+        // a learner who starts on the tap is told to wait, not cut off), then
+        // listening, then the live transcript, replace-in-place as it
+        // settles, as the voice-message recorder shows it while the mic is hot.
+        if (starting || recording || phase == ReadAloudPhase.finalizing)
           Container(
             constraints: const BoxConstraints(minHeight: 24.0),
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: Text(
-              _recorder.liveTranscript,
+              starting
+                  ? l10n.readAloudStarting
+                  : recording && _recorder.liveTranscript.isEmpty
+                  ? l10n.readAloudListening
+                  : _recorder.liveTranscript,
               textAlign: TextAlign.center,
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: theme.colorScheme.onSurfaceVariant,
               ),
             ),
           ),
-        Wrap(
-          alignment: WrapAlignment.center,
-          spacing: 16.0,
-          runSpacing: 8.0,
+        // Stacked, the reference over the learner's take, each with the
+        // volume bars every recording in the app shows, so the shapes compare
+        // as well as the sounds.
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 8.0,
           children: [
             if (reference != null)
               _player(
@@ -349,6 +357,7 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
             onPressed: canRecord || recording ? _onMicTap : null,
             icon: switch (phase) {
               ReadAloudPhase.recording => const Icon(Icons.stop),
+              ReadAloudPhase.starting ||
               ReadAloudPhase.finalizing => const SizedBox(
                 width: 24,
                 height: 24,

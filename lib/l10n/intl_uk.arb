@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-20 15:00:25.116409",
+    "@@last_modified": "2026-10-20 16:50:58.528118",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10022,5 +10022,7 @@
     "readAloudMicUnavailable": "Мікрофон недоступний, тому це слово є вправою на значення.",
     "readAloudYourRecording": "Ваш запис",
     "readAloudExample": "Приклад",
-    "readAloudStartOver": "Почати спочатку"
+    "readAloudStartOver": "Почати спочатку",
+    "readAloudStarting": "Готуємо мікрофон…",
+    "readAloudListening": "Слухаємо…"
 }

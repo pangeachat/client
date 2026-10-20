@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 15:00:25.047197",
+    "@@last_modified": "2026-10-20 16:50:58.854173",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7329,5 +7329,7 @@
     "readAloudMicUnavailable": "Không có micrô, vì vậy từ này sẽ là một bài tập về nghĩa.",
     "readAloudYourRecording": "Bản ghi âm của bạn",
     "readAloudExample": "Ví dụ",
-    "readAloudStartOver": "Bắt đầu lại"
+    "readAloudStartOver": "Bắt đầu lại",
+    "readAloudStarting": "Đang chuẩn bị micrô…",
+    "readAloudListening": "Đang nghe…"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-20 15:00:24.853044",
+    "@@last_modified": "2026-10-20 16:50:58.365643",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10320,5 +10320,7 @@
     "readAloudMicUnavailable": "Mikrofon kullanılamıyor, bu yüzden bu kelime bir anlam alıştırması olacak.",
     "readAloudYourRecording": "Kaydınız",
     "readAloudExample": "Örnek",
-    "readAloudStartOver": "Baştan başla"
+    "readAloudStartOver": "Baştan başla",
+    "readAloudStarting": "Mikrofon hazırlanıyor…",
+    "readAloudListening": "Dinleniyor…"
 }

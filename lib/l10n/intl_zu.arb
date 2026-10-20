@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-20 15:00:25.792278",
+    "@@last_modified": "2026-10-20 16:50:59.601092",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Ayikho imakrofoni etholakalayo, ngakho leli gama liwumsebenzi wencazelo esikhundleni salokho.",
     "readAloudYourRecording": "Okurekhodiwe kwakho",
     "readAloudExample": "Isibonelo",
-    "readAloudStartOver": "Qala kabusha"
+    "readAloudStartOver": "Qala kabusha",
+    "readAloudStarting": "Ilungiselela imakrofoni…",
+    "readAloudListening": "Iyalalela…"
 }

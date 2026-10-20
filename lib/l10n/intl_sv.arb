@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 15:00:24.365065",
+    "@@last_modified": "2026-10-20 16:50:57.937351",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10537,5 +10537,7 @@
     "readAloudMicUnavailable": "Ingen mikrofon är tillgänglig, så det här ordet är istället en betydelseövning.",
     "readAloudYourRecording": "Din inspelning",
     "readAloudExample": "Exempel",
-    "readAloudStartOver": "Börja om"
+    "readAloudStartOver": "Börja om",
+    "readAloudStarting": "Förbereder mikrofonen…",
+    "readAloudListening": "Lyssnar…"
 }

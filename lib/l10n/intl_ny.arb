@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-20 15:00:22.368341",
+    "@@last_modified": "2026-10-20 16:50:56.116226",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Palibe maiki opezeka, choncho mawu awa ndi masewera a tanthauzo m'malo mwake.",
     "readAloudYourRecording": "Zomwe mwajambula",
     "readAloudExample": "Chitsanzo",
-    "readAloudStartOver": "Yambaninso"
+    "readAloudStartOver": "Yambaninso",
+    "readAloudStarting": "Tikukonza maikolofoni…",
+    "readAloudListening": "Tikumvetsera…"
 }

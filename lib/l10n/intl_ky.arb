@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-20 15:00:20.821709",
+    "@@last_modified": "2026-10-20 16:50:53.901079",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Микрофон жеткиликтүү эмес, ошондуктан бул сөз анын ордуна маани көнүгүүсү болот.",
     "readAloudYourRecording": "Сиздин жазууңуз",
     "readAloudExample": "Мисал",
-    "readAloudStartOver": "Башынан баштоо"
+    "readAloudStartOver": "Башынан баштоо",
+    "readAloudStarting": "Микрофон даярдалууда…",
+    "readAloudListening": "Угулууда…"
 }

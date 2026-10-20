@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-20 15:00:22.790153",
+    "@@last_modified": "2026-10-20 16:50:56.192791",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "هیڅ مایکروفون شتون نلري، نو دا کلمه د معنی تمرین دی.",
     "readAloudYourRecording": "ستاسو ثبتول",
     "readAloudExample": "مثال",
-    "readAloudStartOver": "بیا پیل کړئ"
+    "readAloudStartOver": "بیا پیل کړئ",
+    "readAloudStarting": "مایکروفون چمتو کیږي…",
+    "readAloudListening": "اوریدل کیږي…"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-20 15:00:20.851933",
+    "@@last_modified": "2026-10-20 16:50:55.298782",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Tsy misy mikrô azo ampiasaina, ka fanazaran-tena momba ny dikany ity teny ity.",
     "readAloudYourRecording": "Ny fandraisanao",
     "readAloudExample": "Ohatra",
-    "readAloudStartOver": "Atomboka indray"
+    "readAloudStartOver": "Atomboka indray",
+    "readAloudStarting": "Manomana ny mikrô...",
+    "readAloudListening": "Mihaino..."
 }

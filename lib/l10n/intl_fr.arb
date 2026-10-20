@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-20 15:00:18.056841",
+    "@@last_modified": "2026-10-20 16:50:52.294084",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10374,5 +10374,7 @@
     "readAloudMicUnavailable": "Aucun microphone n'est disponible, cet exercice est donc un exercice de sens à la place.",
     "readAloudYourRecording": "Votre enregistrement",
     "readAloudExample": "Exemple",
-    "readAloudStartOver": "Recommencer"
+    "readAloudStartOver": "Recommencer",
+    "readAloudStarting": "Préparation du microphone…",
+    "readAloudListening": "Écoute…"
 }

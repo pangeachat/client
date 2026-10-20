@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-20 15:00:24.335221",
+    "@@last_modified": "2026-10-20 16:50:58.067635",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2484,5 +2484,7 @@
     "readAloudMicUnavailable": "Hakuna maiki inayopatikana, kwa hivyo neno hili ni zoezi la maana badala yake.",
     "readAloudYourRecording": "Rekodi yako",
     "readAloudExample": "Mfano",
-    "readAloudStartOver": "Anza upya"
+    "readAloudStartOver": "Anza upya",
+    "readAloudStarting": "Inaandaa maikrofoni…",
+    "readAloudListening": "Inasikiliza…"
 }
