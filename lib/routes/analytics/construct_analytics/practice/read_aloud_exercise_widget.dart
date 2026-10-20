@@ -334,14 +334,12 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
               ),
             ),
         ],
-        if (phase == ReadAloudPhase.failed) ...[
+        if (phase == ReadAloudPhase.failed)
           Text(
             l10n.readAloudTranscribeFailed,
             textAlign: TextAlign.center,
             style: theme.textTheme.bodyMedium,
           ),
-          TextButton(onPressed: widget.onSkip, child: Text(l10n.skip)),
-        ],
         SizedBox(
           width: 72.0,
           height: 72.0,
@@ -376,17 +374,25 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
             icon: const Icon(Icons.replay),
             label: Text(l10n.readAloudStartOver),
           ),
+        // Skip is always offered: a learner may be somewhere they cannot
+        // speak, or the recognizer may not be taking their recording. It
+        // records nothing but the usual skip, so the word comes back later.
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: _recorded ? widget.onContinue : null,
-              child: Text(
-                l10n.continueText,
-                style: const TextStyle(fontSize: 16.0),
+          child: Row(
+            spacing: 8.0,
+            children: [
+              TextButton(onPressed: widget.onSkip, child: Text(l10n.skip)),
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: _recorded ? widget.onContinue : null,
+                  child: Text(
+                    l10n.continueText,
+                    style: const TextStyle(fontSize: 16.0),
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
         ),
       ],

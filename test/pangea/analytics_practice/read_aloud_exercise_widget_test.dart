@@ -69,6 +69,7 @@ void main() {
       'Continue until the item is answered', (tester) async {
     final capture = _FakeCapture();
     List<String>? referenceGiven;
+    var skipped = 0;
     final speed = AudioPlaybackSpeedController();
     addTearDown(speed.dispose);
 
@@ -95,7 +96,7 @@ void main() {
             onRecorded: (_) {},
             onContinue: () {},
             onMicUnavailable: () {},
-            onSkip: () {},
+            onSkip: () => skipped++,
           ),
         ),
       ),
@@ -115,6 +116,10 @@ void main() {
       find.widgetWithText(ElevatedButton, 'Continue'),
     );
     expect(continueButton.onPressed, isNull);
+
+    // Skip is there from the start, not only after a failure.
+    await tester.tap(find.widgetWithText(TextButton, 'Skip'));
+    expect(skipped, 1);
 
     await tester.tap(find.byIcon(Icons.mic));
     await tester.pumpAndSettle();
