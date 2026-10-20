@@ -121,9 +121,14 @@ class _PangeaSsoButtonState extends State<PangeaSsoButton> {
       if (proceed != true || !context.mounted) return;
     }
 
-    if (kIsWeb && browserNeedsSameTabSso(html.window.navigator.userAgent)) {
-      // Phones and in-app browsers refuse the popup; navigate this tab to
-      // the provider and finish on the way back (completePendingWebLogin).
+    if (kIsWeb &&
+        browserNeedsSameTabSso(
+          html.window.navigator.userAgent,
+          maxTouchPoints: html.window.navigator.maxTouchPoints ?? 0,
+        )) {
+      // Phones, tablets and in-app browsers refuse the popup; navigate this
+      // tab to the provider and finish on the way back
+      // (completePendingWebLogin).
       final client = await Matrix.of(context).getLoginClient();
       final href = html.window.location.href;
       final url = client.homeserver!.replace(
