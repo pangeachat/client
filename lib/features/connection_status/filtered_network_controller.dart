@@ -210,7 +210,8 @@ class FilteredNetworkController {
   /// A backgrounded app's requests fail because the OS paused them, so
   /// nothing a check sees there is a verdict. The banner's own signal, so
   /// the two agree on when the app is in the background.
-  bool get _inForeground => ConnectionStatusController.instance.isAppResumed();
+  bool get _inForeground =>
+      ConnectionStatusController.instance.isAppInForeground();
 
   void _markBlocked(NetworkHostCategory category, NetworkProbeResult needed) {
     if (blocked.value.contains(category)) return;

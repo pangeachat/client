@@ -252,6 +252,41 @@ void main() {
     });
   });
 
+  group('#9434 an unfocused window is in the foreground', () {
+    setUp(
+      () => binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive),
+    );
+    tearDown(
+      () => binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed),
+    );
+
+    test('a refusal there is a verdict', () async {
+      final videoHost = NetworkHostCategory.video.probeUrl.host;
+      answers[videoHost] = NetworkProbeResult.refused;
+
+      expect(
+        await controller.check(NetworkHostCategory.video),
+        NetworkVerdict.filtered,
+      );
+      await settle();
+
+      expect(controller.blocked.value, {NetworkHostCategory.video});
+    });
+
+    test('a held refusal keeps counting there', () async {
+      answers[chatHost] = NetworkProbeResult.refused;
+
+      expect(
+        await controller.check(NetworkHostCategory.chatServer),
+        NetworkVerdict.filtered,
+      );
+
+      expect(waits, List.filled(6, const Duration(seconds: 30)));
+      expect(probedHosts.where((host) => host == chatHost), hasLength(7));
+      expect(controller.blocked.value, {NetworkHostCategory.chatServer});
+    });
+  });
+
   test('a refused sign-in host is decided at once', () async {
     answers[NetworkHostCategory.appleSignIn.probeUrl.host] =
         NetworkProbeResult.refused;

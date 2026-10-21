@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -26,7 +27,7 @@ void main() {
   late StreamController<List<ConnectivityResult>> networkChanges;
   late bool resumed;
 
-  TestWidgetsFlutterBinding.ensureInitialized();
+  final binding = TestWidgetsFlutterBinding.ensureInitialized();
 
   setUpAll(() async {
     // A report reads Environment.appConfigOverride from a GetStorage box that
@@ -42,19 +43,24 @@ void main() {
     await GetStorage.init('env_override');
   });
 
-  setUp(() {
-    SharedPreferences.setMockInitialValues({});
-    neutralAnswer = NetworkProbeResult.answered;
-    probes = 0;
-    networkChanges = StreamController.broadcast();
-    resumed = true;
+  /// Fakes the network, leaving the foreground check as it is.
+  void fakeNetwork() {
     controller.probe = (url) async {
       probes++;
       return neutralAnswer;
     };
     controller.onNetworkChanged = () => networkChanges.stream;
     controller.currentNetworkType = () async => NetworkType.wifi;
-    controller.isAppResumed = () => resumed;
+  }
+
+  setUp(() {
+    SharedPreferences.setMockInitialValues({});
+    neutralAnswer = NetworkProbeResult.answered;
+    probes = 0;
+    networkChanges = StreamController.broadcast();
+    resumed = true;
+    fakeNetwork();
+    controller.isAppInForeground = () => resumed;
   });
 
   tearDown(() async {
@@ -149,6 +155,33 @@ void main() {
     await fail(3);
 
     expect(controller.status.value, ConnectionStatus.connected);
+  });
+
+  group('#9434 the real foreground check', () {
+    setUp(() {
+      // resetForTest puts the real check back; the network stays faked.
+      controller.resetForTest();
+      fakeNetwork();
+    });
+    tearDown(
+      () => binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed),
+    );
+
+    test('counts failures in an unfocused window', () async {
+      binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
+      await fail(2);
+
+      expect(controller.status.value, ConnectionStatus.unreachable);
+    });
+
+    for (final state in [AppLifecycleState.hidden, AppLifecycleState.paused]) {
+      test('ignores failures while ${state.name}', () async {
+        binding.handleAppLifecycleStateChanged(state);
+        await fail(3);
+
+        expect(controller.status.value, ConnectionStatus.connected);
+      });
+    }
   });
 
   test('a successful sync between failures resets the count', () async {

@@ -95,10 +95,12 @@ class ConnectionStatusController {
   @visibleForTesting
   Future<NetworkType> Function() currentNetworkType = NetworkType.current;
 
-  /// Whether the app is in the foreground. A suspended app's requests fail
-  /// because the OS paused them, not because the connection is gone. The
-  /// filter check reads it too, so the two agree. Replaced in tests.
-  bool Function() isAppResumed = _isAppResumed;
+  /// Whether the app is in the foreground: on screen, focused or not. A
+  /// hidden app's requests fail because the OS paused them, not because the
+  /// connection is gone; an unfocused window's requests run on. The filter
+  /// check reads it too, so the two agree. Replaced in tests. See
+  /// connection-status.instructions.md, "Telling the causes apart".
+  bool Function() isAppInForeground = _isAppInForeground;
 
   /// Takes one update from the active account's sync loop.
   void onSyncStatus(SyncStatusUpdate update) {
@@ -113,7 +115,7 @@ class ConnectionStatusController {
         // the answer is ours. Only a request that got no usable answer is a
         // lost connection.
         if (update.error?.exception is! SyncConnectionException) return;
-        if (!isAppResumed()) return;
+        if (!isAppInForeground()) return;
         _consecutiveFailures++;
         if (_consecutiveFailures >= failuresBeforeLost) _onLost();
       case SyncStatus.waitingForResponse:
@@ -230,10 +232,16 @@ class ConnectionStatusController {
         : ConnectionStatus.connected;
   }
 
-  static bool _isAppResumed() {
-    final state = WidgetsBinding.instance.lifecycleState;
-    return state == null || state == AppLifecycleState.resumed;
-  }
+  static bool _isAppInForeground() =>
+      switch (WidgetsBinding.instance.lifecycleState) {
+        // Null: the engine has not reported a state yet, so the app has just
+        // started. Inactive: a window that lost focus on the web or a
+        // computer, or a phone's notification shade or incoming call.
+        null || AppLifecycleState.resumed || AppLifecycleState.inactive => true,
+        AppLifecycleState.hidden ||
+        AppLifecycleState.paused ||
+        AppLifecycleState.detached => false,
+      };
 
   @visibleForTesting
   void resetForTest() {
@@ -245,7 +253,7 @@ class ConnectionStatusController {
     probe = NetworkProbe.probe;
     onNetworkChanged = () => Connectivity().onConnectivityChanged;
     currentNetworkType = NetworkType.current;
-    isAppResumed = _isAppResumed;
+    isAppInForeground = _isAppInForeground;
   }
 }
 
