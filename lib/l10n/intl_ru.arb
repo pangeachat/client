@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-20 16:50:56.554145",
+    "@@last_modified": "2026-10-21 10:12:59.978472",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10992,9 +10992,9 @@
     "readAloudHeardTranscript": "Услышано: {transcript}",
     "readAloudTranscribeFailed": "Не удалось расшифровать вашу запись. Проверьте подключение и попробуйте снова.",
     "readAloudMicUnavailable": "Микрофон недоступен, поэтому это слово будет упражнением на значение.",
-    "readAloudYourRecording": "Ваша запись",
     "readAloudExample": "Пример",
     "readAloudStartOver": "Начать сначала",
     "readAloudStarting": "Подготовка микрофона…",
-    "readAloudListening": "Слушаю…"
+    "readAloudListening": "Слушаю…",
+    "readAloudTake": "Попытка {number}"
 }

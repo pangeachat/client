@@ -205,11 +205,8 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
                                           exercise,
                                           heard: heard,
                                         ),
-                                    onContinue: controller.startNextExercise,
                                     onMicUnavailable: () =>
                                         controller.onMicUnavailable(exercise),
-                                    onSkip: () =>
-                                        controller.skipReadAloud(exercise),
                                   );
                                 }
                                 List<InlineSpan>? audioExampleMessage;
@@ -277,6 +274,15 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
                       exercise,
                     ),
                   ),
+                ),
+              ),
+            if (exercise is ReadAloudPracticeExerciseModel)
+              ListenableBuilder(
+                listenable: controller.notifier,
+                builder: (context, _) => ReadAloudContinueRow(
+                  complete: controller.notifier.exerciseComplete(exercise),
+                  onContinue: controller.startNextExercise,
+                  onSkip: () => controller.skipReadAloud(exercise),
                 ),
               ),
           ],

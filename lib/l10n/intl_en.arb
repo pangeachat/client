@@ -6151,13 +6151,19 @@
     "@readAloudMicUnavailable": {
         "description": "Shown when microphone permission is refused or no microphone exists and a read-aloud exercise is swapped for a meaning exercise."
     },
-    "readAloudYourRecording": "Your recording",
-    "@readAloudYourRecording": {
-        "description": "Label of the player for the learner's own read-aloud recording, beside the example audio."
-    },
     "readAloudExample": "Example",
     "@readAloudExample": {
         "description": "Label of the player for the example sentence's audio on a read-aloud exercise."
+    },
+    "readAloudTake": "Take {number}",
+    "@readAloudTake": {
+        "type": "String",
+        "placeholders": {
+            "number": {
+                "type": "int"
+            }
+        },
+        "description": "Label of the player for one of the learner's read-aloud recordings, numbered from 1 in the order they were made."
     },
     "readAloudStartOver": "Start over",
     "@readAloudStartOver": {

@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-20 16:50:59.601092",
+    "@@last_modified": "2026-10-21 10:13:07.915468",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Kuzwakale: {transcript}",
     "readAloudTranscribeFailed": "Ayikwazanga ukubhala phansi okurekhodiwe. Hlola uxhumano lwakho bese uzama futhi.",
     "readAloudMicUnavailable": "Ayikho imakrofoni etholakalayo, ngakho leli gama liwumsebenzi wencazelo esikhundleni salokho.",
-    "readAloudYourRecording": "Okurekhodiwe kwakho",
     "readAloudExample": "Isibonelo",
     "readAloudStartOver": "Qala kabusha",
     "readAloudStarting": "Ilungiselela imakrofoni…",
-    "readAloudListening": "Iyalalela…"
+    "readAloudListening": "Iyalalela…",
+    "readAloudTake": "Thatha {number}"
 }

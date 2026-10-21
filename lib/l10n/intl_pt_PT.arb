@@ -2552,7 +2552,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-20 16:50:56.306972",
+    "@@last_modified": "2026-10-21 10:12:59.835576",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10934,9 +10934,9 @@
     "readAloudHeardTranscript": "Ouvido: {transcript}",
     "readAloudTranscribeFailed": "Não foi possível transcrever a sua gravação. Verifique a sua ligação e tente novamente.",
     "readAloudMicUnavailable": "Não há microfone disponível, por isso esta palavra é um exercício de significado.",
-    "readAloudYourRecording": "A sua gravação",
     "readAloudExample": "Exemplo",
     "readAloudStartOver": "Começar de novo",
     "readAloudStarting": "A preparar o microfone…",
-    "readAloudListening": "A ouvir…"
+    "readAloudListening": "A ouvir…",
+    "readAloudTake": "Tentativa {number}"
 }

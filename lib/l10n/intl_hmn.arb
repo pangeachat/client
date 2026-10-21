@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-20 16:50:53.123503",
+    "@@last_modified": "2026-10-21 10:12:49.433666",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Hnov: {transcript}",
     "readAloudTranscribeFailed": "Tsis tuaj yeem sau koj cov lus kaw. Kuaj xyuas koj qhov kev sib txuas thiab sim dua.",
     "readAloudMicUnavailable": "Tsis muaj microphone, yog li lo lus no yog kev tawm dag zog txhais lus es tsis yog.",
-    "readAloudYourRecording": "Koj cov lus kaw",
     "readAloudExample": "Piv txwv",
     "readAloudStartOver": "Pib dua",
     "readAloudStarting": "Npaj lub microphone…",
-    "readAloudListening": "Mloog…"
+    "readAloudListening": "Mloog…",
+    "readAloudTake": "Siv {number}"
 }

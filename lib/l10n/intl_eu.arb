@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-20 16:50:51.216874",
+    "@@last_modified": "2026-10-21 10:13:05.408015",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10020,9 +10020,9 @@
     "readAloudHeardTranscript": "Entzun da: {transcript}",
     "readAloudTranscribeFailed": "Ezin izan da zure grabaketa transkribatu. Egiaztatu konexioa eta saiatu berriro.",
     "readAloudMicUnavailable": "Ez dago mikrofono erabilgarririk, beraz, hitz hau esanahi-ariketa bat da horren ordez.",
-    "readAloudYourRecording": "Zure grabaketa",
     "readAloudExample": "Adibidea",
     "readAloudStartOver": "Berriro hasi",
     "readAloudStarting": "Mikrofonoa prestatzen…",
-    "readAloudListening": "Entzuten…"
+    "readAloudListening": "Entzuten…",
+    "readAloudTake": "{number}. saiakera"
 }

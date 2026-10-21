@@ -13,8 +13,9 @@ import 'package:fluffychat/routes/chat/toolbar/message_practice/message_audio_ca
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-/// One read-aloud item: the sentence, the reference player, the mic, and after
-/// a take the compare row and the verdict. See
+/// One read-aloud item: the sentence, the reference player, every take so
+/// far, the mic, and the verdict. Skip and Continue are not here: they sit at
+/// the foot of the page in [ReadAloudContinueRow]. See
 /// practice-exercises.instructions.md, "Speaking practice".
 ///
 /// The widget owns the item's [ReadAloudRecorder] and reports upward once:
@@ -28,9 +29,7 @@ class ReadAloudExerciseWidget extends StatefulWidget {
   final AudioPlaybackSpeedController playbackSpeedController;
   final ReadAloudRecorder Function(List<String> reference) recorderFactory;
   final void Function(bool heard) onRecorded;
-  final VoidCallback onContinue;
   final VoidCallback onMicUnavailable;
-  final VoidCallback onSkip;
 
   const ReadAloudExerciseWidget({
     super.key,
@@ -40,9 +39,7 @@ class ReadAloudExerciseWidget extends StatefulWidget {
     required this.playbackSpeedController,
     required this.recorderFactory,
     required this.onRecorded,
-    required this.onContinue,
     required this.onMicUnavailable,
-    required this.onSkip,
   });
 
   @override
@@ -51,8 +48,6 @@ class ReadAloudExerciseWidget extends StatefulWidget {
 }
 
 class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
-  static const double _playerWidth = 300.0;
-
   late final ReadAloudRecorder _recorder;
   bool _recorded = false;
   bool _micReported = false;
@@ -124,7 +119,7 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
     final base = exercise.exampleTokens.isEmpty
         ? 0
         : exercise.exampleTokens.first.text.offset;
-    final hasTake = _recorder.lastTake != null;
+    final lastHeard = _recorder.lastTake?.heard;
     final target = exercise.targetIndex;
 
     final spans = <InlineSpan>[];
@@ -141,15 +136,28 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
       }
       final isWord = isSpokenWord(token.text.content);
       Color? color;
+      Color? background;
       var weight = FontWeight.normal;
       if (isWord) {
         final heard =
             wordIndex < _recorder.heard.length && _recorder.heard[wordIndex];
+        // A word the last take missed stays marked through the next take
+        // until that take settles it, so the learner sees what to fix as
+        // they retry; a word the last take heard waits unmarked.
+        final missedBefore =
+            lastHeard != null &&
+            wordIndex < lastHeard.length &&
+            !lastHeard[wordIndex];
+        // A highlight behind the word, not coloured text: the success and
+        // warning graphics have no contrast on the primary bubble, while
+        // each container is paired with its own text colour.
         if (heard) {
-          color = pangea.successGraphic;
+          background = pangea.successContainer;
+          color = pangea.onSuccessContainer;
           weight = FontWeight.bold;
-        } else if (hasTake) {
-          color = pangea.warningGraphic;
+        } else if (missedBefore) {
+          background = pangea.warningContainer;
+          color = pangea.onWarningContainer;
         }
         if (wordIndex == target) weight = FontWeight.bold;
         wordIndex++;
@@ -157,7 +165,11 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
       spans.add(
         TextSpan(
           text: token.text.content,
-          style: TextStyle(color: color, fontWeight: weight),
+          style: TextStyle(
+            color: color,
+            backgroundColor: background,
+            fontWeight: weight,
+          ),
         ),
       );
       previousEnd = end > previousEnd ? end : previousEnd;
@@ -166,46 +178,6 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
       spans.add(TextSpan(text: chars.sublist(previousEnd).join()));
     }
     return spans;
-  }
-
-  Widget _player(
-    BuildContext context, {
-    required Key key,
-    required String label,
-    required PangeaAudioFile file,
-    required String eventId,
-    required bool autoplay,
-    required ListeningExposureDeclaration exposure,
-  }) {
-    final theme = Theme.of(context);
-    final exercise = widget.exercise;
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(label, style: theme.textTheme.labelMedium),
-        SizedBox(
-          width: _playerWidth,
-          height: 60.0,
-          child: AudioPlayerWidget(
-            null,
-            key: key,
-            color: theme.colorScheme.primary,
-            linkColor: theme.colorScheme.secondary,
-            fontSize: AppConfig.messageFontSize,
-            eventId: eventId,
-            roomId: exercise.roomId ?? '',
-            senderId: Matrix.of(context).client.userID!,
-            matrixFile: file,
-            autoplay: autoplay,
-            playbackSpeedController: widget.playbackSpeedController,
-            // No listening category, like the listening exercise's player: the
-            // shared-player practice surfaces stay dark until #8411 lands.
-            exposure: exposure,
-          ),
-        ),
-      ],
-    );
   }
 
   @override
@@ -242,10 +214,12 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
             textAlign: TextAlign.center,
             style: theme.textTheme.bodyMedium,
           ),
+        // The bubble the listening exercise's answer sits in, so the item
+        // reads as one of the practice family.
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
-            color: theme.colorScheme.surfaceContainerHighest,
+            color: theme.colorScheme.primary,
             borderRadius: BorderRadius.circular(16),
           ),
           child: LanguageSemantics(
@@ -253,7 +227,9 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
             child: Text.rich(
               TextSpan(children: _sentenceSpans(context)),
               textAlign: TextAlign.center,
-              style: theme.textTheme.titleMedium,
+              style: theme.textTheme.titleMedium?.copyWith(
+                color: theme.colorScheme.onPrimary,
+              ),
             ),
           ),
         ),
@@ -277,50 +253,53 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
               ),
             ),
           ),
-        // Stacked, the reference over the learner's take, each with the
-        // volume bars every recording in the app shows, so the shapes compare
-        // as well as the sounds.
+        // Stacked, the reference over every take so far, each with the volume
+        // bars every recording in the app shows, so the shapes compare as
+        // well as the sounds and a retry can be set against the take before.
         Column(
           mainAxisSize: MainAxisSize.min,
           spacing: 8.0,
           children: [
             if (reference != null)
-              _player(
-                context,
+              _ReadAloudPlayer(
                 key: ValueKey('read_aloud_reference_$_referencePlayer'),
                 label: l10n.readAloudExample,
                 file: reference,
                 eventId: '${exercise.eventId}_read_aloud_reference',
+                roomId: exercise.roomId ?? '',
                 autoplay: _autoplayReference,
+                playbackSpeedController: widget.playbackSpeedController,
                 exposure: ListeningExposureDeclaration.ofTokens(
                   exercise.exampleTokens,
                   langCode: exercise.langCode,
                 ),
               ),
-            if (take?.wav != null)
-              _player(
-                context,
-                key: ValueKey('read_aloud_take_${_recorder.triesUsed}'),
-                label: l10n.readAloudYourRecording,
-                file: PangeaAudioFile(
-                  bytes: take!.wav!,
-                  name: 'read_aloud_take.wav',
-                  mimeType: 'audio/wav',
-                  duration: take.duration.inMilliseconds,
-                  waveform: take.waveform,
-                  tokens: null,
+            for (var i = 0; i < _recorder.takes.length; i++)
+              if (_recorder.takes[i].wav != null)
+                _ReadAloudPlayer(
+                  key: ValueKey('read_aloud_take_$i'),
+                  label: l10n.readAloudTake(i + 1),
+                  file: PangeaAudioFile(
+                    bytes: _recorder.takes[i].wav!,
+                    name: 'read_aloud_take_$i.wav',
+                    mimeType: 'audio/wav',
+                    duration: _recorder.takes[i].duration.inMilliseconds,
+                    waveform: _recorder.takes[i].waveform,
+                    tokens: null,
+                  ),
+                  eventId: '${exercise.eventId}_read_aloud_take_$i',
+                  roomId: exercise.roomId ?? '',
+                  autoplay: false,
+                  playbackSpeedController: widget.playbackSpeedController,
+                  // The learner's own voice is not exposure to the words.
+                  exposure: const ListeningExposureDeclaration.exempt(
+                    'the learner hearing their own read-aloud recording',
+                  ),
+                  heardTranscript: _recorder.takes[i].transcript,
                 ),
-                eventId:
-                    '${exercise.eventId}_read_aloud_take_${_recorder.triesUsed}',
-                autoplay: false,
-                // The learner's own voice is not exposure to the words.
-                exposure: const ListeningExposureDeclaration.exempt(
-                  'the learner hearing their own read-aloud recording',
-                ),
-              ),
           ],
         ),
-        if (phase == ReadAloudPhase.done && take != null) ...[
+        if (phase == ReadAloudPhase.done && take != null)
           Text(
             _recorder.allHeard
                 ? l10n.readAloudHeardAll
@@ -332,16 +311,6 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
             textAlign: TextAlign.center,
             style: theme.textTheme.bodyMedium,
           ),
-          if (take.transcript.trim().isNotEmpty)
-            Text(
-              l10n.readAloudHeardTranscript(take.transcript),
-              textAlign: TextAlign.center,
-              style: theme.textTheme.bodySmall?.copyWith(
-                fontStyle: FontStyle.italic,
-                color: theme.colorScheme.onSurfaceVariant,
-              ),
-            ),
-        ],
         if (phase == ReadAloudPhase.failed)
           Text(
             l10n.readAloudTranscribeFailed,
@@ -383,28 +352,117 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
             icon: const Icon(Icons.replay),
             label: Text(l10n.readAloudStartOver),
           ),
-        // Skip is always offered: a learner may be somewhere they cannot
-        // speak, or the recognizer may not be taking their recording. It
-        // records nothing but the usual skip, so the word comes back later.
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            spacing: 8.0,
-            children: [
-              TextButton(onPressed: widget.onSkip, child: Text(l10n.skip)),
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: _recorded ? widget.onContinue : null,
-                  child: Text(
-                    l10n.continueText,
-                    style: const TextStyle(fontSize: 16.0),
-                  ),
-                ),
-              ),
-            ],
+      ],
+    );
+  }
+}
+
+/// One player on a read-aloud item, labelled, the column's full width like
+/// the listening exercise's player, with the transcript heard from a take
+/// under it.
+class _ReadAloudPlayer extends StatelessWidget {
+  final String label;
+  final PangeaAudioFile file;
+  final String eventId;
+  final String roomId;
+  final bool autoplay;
+  final AudioPlaybackSpeedController playbackSpeedController;
+  final ListeningExposureDeclaration exposure;
+  final String? heardTranscript;
+
+  const _ReadAloudPlayer({
+    super.key,
+    required this.label,
+    required this.file,
+    required this.eventId,
+    required this.roomId,
+    required this.autoplay,
+    required this.playbackSpeedController,
+    required this.exposure,
+    this.heardTranscript,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final transcript = heardTranscript?.trim() ?? '';
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(label, style: theme.textTheme.labelMedium),
+        SizedBox(
+          height: 60.0,
+          child: AudioPlayerWidget(
+            null,
+            color: theme.colorScheme.primary,
+            linkColor: theme.colorScheme.secondary,
+            fontSize: AppConfig.messageFontSize,
+            eventId: eventId,
+            roomId: roomId,
+            senderId: Matrix.of(context).client.userID!,
+            matrixFile: file,
+            autoplay: autoplay,
+            playbackSpeedController: playbackSpeedController,
+            // No listening category, like the listening exercise's player: the
+            // shared-player practice surfaces stay dark until #8411 lands.
+            exposure: exposure,
           ),
         ),
+        if (transcript.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: Text(
+              L10n.of(context).readAloudHeardTranscript(transcript),
+              style: theme.textTheme.bodySmall?.copyWith(
+                fontStyle: FontStyle.italic,
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+          ),
       ],
+    );
+  }
+}
+
+/// Skip and Continue for a read-aloud item, at the foot of the page outside
+/// the scrolling content, where the listening exercise keeps its Continue.
+/// Skip is always offered: a learner may be somewhere they cannot speak, or
+/// the recognizer may not be taking their recording; it records nothing but
+/// the usual skip, so the word comes back later. Continue waits for the
+/// item to be answered.
+class ReadAloudContinueRow extends StatelessWidget {
+  final bool complete;
+  final VoidCallback onContinue;
+  final VoidCallback onSkip;
+
+  const ReadAloudContinueRow({
+    super.key,
+    required this.complete,
+    required this.onContinue,
+    required this.onSkip,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Row(
+        spacing: 8.0,
+        children: [
+          TextButton(onPressed: onSkip, child: Text(l10n.skip)),
+          Expanded(
+            child: ElevatedButton(
+              onPressed: complete ? onContinue : null,
+              child: Text(
+                l10n.continueText,
+                style: const TextStyle(fontSize: 16.0),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

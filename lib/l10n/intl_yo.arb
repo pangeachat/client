@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-20 16:50:59.119605",
+    "@@last_modified": "2026-10-21 10:13:06.504711",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Ti gbọ: {transcript}",
     "readAloudTranscribeFailed": "Ko le ṣe atunkọ gbigbasilẹ rẹ. Ṣayẹwo asopọ rẹ ki o tun gbiyanju.",
     "readAloudMicUnavailable": "Ko si gbohungbohun ti o wa, nitorinaa ọrọ yii jẹ adaṣe itumọ dipo.",
-    "readAloudYourRecording": "Gbigbasilẹ rẹ",
     "readAloudExample": "Apẹẹrẹ",
     "readAloudStartOver": "Bẹ̀rẹ̀ lẹ́ẹ̀kan sí",
     "readAloudStarting": "Maa n murasilẹ gbohungbohun…",
-    "readAloudListening": "N tẹtisi…"
+    "readAloudListening": "N tẹtisi…",
+    "readAloudTake": "Ya {number}"
 }

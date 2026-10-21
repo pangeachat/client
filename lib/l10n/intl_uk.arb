@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-20 16:50:58.528118",
+    "@@last_modified": "2026-10-21 10:13:07.578023",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10020,9 +10020,9 @@
     "readAloudHeardTranscript": "Почуто: {transcript}",
     "readAloudTranscribeFailed": "Не вдалося розшифрувати ваш запис. Перевірте з’єднання та спробуйте ще раз.",
     "readAloudMicUnavailable": "Мікрофон недоступний, тому це слово є вправою на значення.",
-    "readAloudYourRecording": "Ваш запис",
     "readAloudExample": "Приклад",
     "readAloudStartOver": "Почати спочатку",
     "readAloudStarting": "Готуємо мікрофон…",
-    "readAloudListening": "Слухаємо…"
+    "readAloudListening": "Слухаємо…",
+    "readAloudTake": "Спроба {number}"
 }

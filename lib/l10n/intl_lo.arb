@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-20 16:50:55.581927",
+    "@@last_modified": "2026-10-21 10:12:54.547915",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "ໄດ້ຍິນ: {transcript}",
     "readAloudTranscribeFailed": "ບໍ່ສາມາດຖອດສຽງບັນທຶກຂອງທ່ານໄດ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ ແລະ ລອງໃໝ່ອີກຄັ້ງ.",
     "readAloudMicUnavailable": "ບໍ່ມີໄມໂຄຣໂຟນ, ສະນັ້ນຄຳນີ້ຈຶ່ງເປັນການຝຶກຄວາມໝາຍແທນ.",
-    "readAloudYourRecording": "ສຽງບັນທຶກຂອງທ່ານ",
     "readAloudExample": "ຕົວຢ່າງ",
     "readAloudStartOver": "ເລີ່ມຕົ້ນໃໝ່",
     "readAloudStarting": "ກຳລັງກຽມໄມໂຄຣໂຟນ…",
-    "readAloudListening": "ກຳລັງຟັງ…"
+    "readAloudListening": "ກຳລັງຟັງ…",
+    "readAloudTake": "ຮອບທີ {number}"
 }

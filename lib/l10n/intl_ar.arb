@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-20 16:50:49.618898",
+    "@@last_modified": "2026-10-21 10:12:49.798682",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10323,9 +10323,9 @@
     "readAloudHeardTranscript": "سُمِع: {transcript}",
     "readAloudTranscribeFailed": "تعذر نسخ تسجيلك. تحقق من اتصالك وحاول مرة أخرى.",
     "readAloudMicUnavailable": "لا يتوفر ميكروفون، لذا فإن هذه الكلمة هي تمرين معنى بدلاً من ذلك.",
-    "readAloudYourRecording": "تسجيلك",
     "readAloudExample": "مثال",
     "readAloudStartOver": "البدء من جديد",
     "readAloudStarting": "جارٍ تجهيز الميكروفون…",
-    "readAloudListening": "جارٍ الاستماع…"
+    "readAloudListening": "جارٍ الاستماع…",
+    "readAloudTake": "خذ {number}"
 }

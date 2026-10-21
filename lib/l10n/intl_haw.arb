@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-20 16:50:52.339222",
+    "@@last_modified": "2026-10-21 10:12:48.665067",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Ua lohe ʻia: {transcript}",
     "readAloudTranscribeFailed": "ʻAʻole hiki ke kākau i kāu hoʻopaʻa ʻana. E nānā i kāu pili a hoʻāʻo hou.",
     "readAloudMicUnavailable": "ʻAʻohe microphone i loaʻa, no laila he hoʻomaʻamaʻa manaʻo kēia huaʻōlelo.",
-    "readAloudYourRecording": "Kāu hoʻopaʻa ʻana",
     "readAloudExample": "Laʻana",
     "readAloudStartOver": "Hoʻomaka hou",
     "readAloudStarting": "Ke hoʻomākaukau nei i ka microphone…",
-    "readAloudListening": "Ke hoʻolohe nei…"
+    "readAloudListening": "Ke hoʻolohe nei…",
+    "readAloudTake": "Lawe {number}"
 }

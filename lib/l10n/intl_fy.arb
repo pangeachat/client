@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-20 16:50:51.749593",
+    "@@last_modified": "2026-10-21 10:12:58.023194",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Heard: {transcript}",
     "readAloudTranscribeFailed": "Koe jo opname net transkribearje. Kontrolearje jo ferbining en besykje it opnij.",
     "readAloudMicUnavailable": "Gjin mikrofoan beskikber, dus dit wurd is ynstee in betsjuttingsopdracht.",
-    "readAloudYourRecording": "Jo opname",
     "readAloudExample": "Foarbyld",
     "readAloudStartOver": "Op 'e nij begjinne",
     "readAloudStarting": "Mikrofoan wurdt reemakke…",
-    "readAloudListening": "Der wurdt lústere…"
+    "readAloudListening": "Der wurdt lústere…",
+    "readAloudTake": "Nim {number}"
 }

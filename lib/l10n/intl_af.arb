@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-20 16:50:49.689087",
+    "@@last_modified": "2026-10-21 10:12:44.269844",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Gehoor: {transcript}",
     "readAloudTranscribeFailed": "Kon nie jou opname transkribeer nie. Kontroleer jou verbinding en probeer weer.",
     "readAloudMicUnavailable": "Geen mikrofoon is beskikbaar nie, so hierdie woord is eerder 'n betekenis-oefening.",
-    "readAloudYourRecording": "Jou opname",
     "readAloudExample": "Voorbeeld",
     "readAloudStartOver": "Begin oor",
     "readAloudStarting": "Maak mikrofoon gereed …",
-    "readAloudListening": "Luister …"
+    "readAloudListening": "Luister …",
+    "readAloudTake": "Neem {number}"
 }

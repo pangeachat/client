@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-20 16:50:49.665322",
+    "@@last_modified": "2026-10-21 10:12:52.064567",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Чуто: {transcript}",
     "readAloudTranscribeFailed": "Неуспешно транскрибиране на записа. Проверете връзката си и опитайте отново.",
     "readAloudMicUnavailable": "Няма наличен микрофон, така че тази дума е упражнение за значение вместо това.",
-    "readAloudYourRecording": "Вашият запис",
     "readAloudExample": "Пример",
     "readAloudStartOver": "Започни отначало",
     "readAloudStarting": "Подготвям микрофона…",
-    "readAloudListening": "Слушам…"
+    "readAloudListening": "Слушам…",
+    "readAloudTake": "Дубъл {number}"
 }

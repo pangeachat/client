@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 16:50:52.100754",
+    "@@last_modified": "2026-10-21 10:12:48.717543",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10931,9 +10931,9 @@
     "readAloudHeardTranscript": "נשמע: {transcript}",
     "readAloudTranscribeFailed": "לא ניתן לתמלל את ההקלטה שלך. בדוק את החיבור שלך ונסה שוב.",
     "readAloudMicUnavailable": "אין מיקרופון זמין, לכן מילה זו היא תרגיל משמעות במקום זאת.",
-    "readAloudYourRecording": "ההקלטה שלך",
     "readAloudExample": "דוגמה",
     "readAloudStartOver": "התחל מחדש",
     "readAloudStarting": "מכין את המיקרופון…",
-    "readAloudListening": "מקשיב…"
+    "readAloudListening": "מקשיב…",
+    "readAloudTake": "טייק {number}"
 }

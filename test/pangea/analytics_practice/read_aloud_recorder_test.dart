@@ -198,6 +198,37 @@ void main() {
       recorder.dispose();
     });
 
+    test('every take is kept with the words it heard; a retry judges afresh '
+        'but discards nothing', () async {
+      final capture = _FakeCapture();
+      var calls = 0;
+      final recorder = ReadAloudRecorder(
+        reference: _reference,
+        hasMicPermission: () async => true,
+        streamingSessionFactory: null,
+        captureFactory: () => capture,
+        transcribe: (_) async => ++calls == 1 ? ['el'] : ['el', 'gato', 'come'],
+      );
+      await recorder.start();
+      capture.pushFrame(Uint8List(320));
+      await recorder.stop();
+      final first = recorder.takes.single;
+      expect(first.heard, [true, false, false]);
+
+      await recorder.start();
+      expect(recorder.takes, [first], reason: 'the retry keeps the take');
+      expect(recorder.lastTake, same(first));
+      expect(recorder.heard, [false, false, false]);
+      capture.pushFrame(Uint8List(320));
+      await recorder.stop();
+
+      expect(recorder.takes.length, 2);
+      expect(recorder.takes.last.heard, [true, true, true]);
+      expect(first.heard, [true, false, false], reason: 'unchanged');
+      expect(recorder.triesUsed, 2);
+      recorder.dispose();
+    });
+
     test(
       'the take carries a waveform from its frames, quiet below loud',
       () async {

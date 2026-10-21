@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 16:50:53.848471",
+    "@@last_modified": "2026-10-21 10:12:53.294769",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10213,9 +10213,9 @@
     "readAloudHeardTranscript": "들음: {transcript}",
     "readAloudTranscribeFailed": "녹음을 필사할 수 없습니다. 연결 상태를 확인하고 다시 시도하세요.",
     "readAloudMicUnavailable": "사용 가능한 마이크가 없습니다. 대신 이 단어는 의미 연습입니다.",
-    "readAloudYourRecording": "내 녹음",
     "readAloudExample": "예시",
     "readAloudStartOver": "다시 시작",
     "readAloudStarting": "마이크 준비 중…",
-    "readAloudListening": "듣는 중…"
+    "readAloudListening": "듣는 중…",
+    "readAloudTake": "{number}번째 시도"
 }

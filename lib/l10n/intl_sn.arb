@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-20 16:50:57.256568",
+    "@@last_modified": "2026-10-21 10:13:01.073618",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Zvanzwikwa: {transcript}",
     "readAloudTranscribeFailed": "Hatigoni kunyora zvawataura. Tarisa internet yako woedza zvakare.",
     "readAloudMicUnavailable": "Hapana maiki aripo, saka izwi iri riri kudzidzira zvarinoreva.",
-    "readAloudYourRecording": "Zvawataura",
     "readAloudExample": "Muenzaniso",
     "readAloudStartOver": "Tanga patsva",
     "readAloudStarting": "Kugadzirira maikorofoni…",
-    "readAloudListening": "Ndichiteerera…"
+    "readAloudListening": "Ndichiteerera…",
+    "readAloudTake": "Tora {number}"
 }

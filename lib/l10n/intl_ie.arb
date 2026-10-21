@@ -3082,7 +3082,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-20 16:50:52.934998",
+    "@@last_modified": "2026-10-21 10:12:50.695137",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10649,9 +10649,9 @@
     "readAloudHeardTranscript": "Cloiste: {transcript}",
     "readAloudTranscribeFailed": "Níorbh fhéidir do thaifeadadh a thras-scríobh. Seiceáil do nasc agus bain triail eile as.",
     "readAloudMicUnavailable": "Níl aon mhicreafón ar fáil, mar sin is cleachtadh brí é an focal seo ina ionad.",
-    "readAloudYourRecording": "Do thaifeadadh",
     "readAloudExample": "Sampla",
     "readAloudStartOver": "Tosaigh arís",
     "readAloudStarting": "Ag ullmhú an mhicreafóin…",
-    "readAloudListening": "Ag éisteacht…"
+    "readAloudListening": "Ag éisteacht…",
+    "readAloudTake": "Glac {number}"
 }

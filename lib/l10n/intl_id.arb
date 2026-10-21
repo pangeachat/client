@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 16:50:53.696766",
+    "@@last_modified": "2026-10-21 10:12:54.183989",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10093,9 +10093,9 @@
     "readAloudHeardTranscript": "Terdengar: {transcript}",
     "readAloudTranscribeFailed": "Tidak dapat menyalin rekaman Anda. Periksa koneksi Anda dan coba lagi.",
     "readAloudMicUnavailable": "Tidak ada mikrofon yang tersedia, jadi kata ini menjadi latihan makna.",
-    "readAloudYourRecording": "Rekaman Anda",
     "readAloudExample": "Contoh",
     "readAloudStartOver": "Mulai lagi",
     "readAloudStarting": "Menyiapkan mikrofon…",
-    "readAloudListening": "Mendengarkan…"
+    "readAloudListening": "Mendengarkan…",
+    "readAloudTake": "Ambil {number}"
 }

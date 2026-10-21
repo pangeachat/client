@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-20 16:50:50.347541",
+    "@@last_modified": "2026-10-21 10:12:44.272976",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Čuto: {transcript}",
     "readAloudTranscribeFailed": "Nije moguće transkribovati vaš snimak. Provjerite vezu i pokušajte ponovo.",
     "readAloudMicUnavailable": "Mikrofon nije dostupan, pa je ova riječ umjesto toga vježba značenja.",
-    "readAloudYourRecording": "Vaš snimak",
     "readAloudExample": "Primjer",
     "readAloudStartOver": "Počni ponovo",
     "readAloudStarting": "Pripremam mikrofon…",
-    "readAloudListening": "Slušam…"
+    "readAloudListening": "Slušam…",
+    "readAloudTake": "Uzmite {number}"
 }

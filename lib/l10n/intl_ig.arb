@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-20 16:50:53.112235",
+    "@@last_modified": "2026-10-21 10:12:51.164573",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Anụla: {transcript}",
     "readAloudTranscribeFailed": "Enweghị ike idekọ ihe ị dekọrọ. Lelee njikọ gị wee nwaa ọzọ.",
     "readAloudMicUnavailable": "Enweghị igwe okwu dị, yabụ okwu a bụ mmega ahụ pụtara ihe kama.",
-    "readAloudYourRecording": "Ihe ị dekọrọ",
     "readAloudExample": "Ihe atụ",
     "readAloudStartOver": "Bido ọzọ",
     "readAloudStarting": "Na-edozi igwe okwu…",
-    "readAloudListening": "Na-ege ntị…"
+    "readAloudListening": "Na-ege ntị…",
+    "readAloudTake": "Were {number}"
 }

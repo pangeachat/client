@@ -3516,7 +3516,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-20 16:50:51.625411",
+    "@@last_modified": "2026-10-21 10:12:46.560353",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10057,9 +10057,9 @@
     "readAloudHeardTranscript": "Kuultu: {transcript}",
     "readAloudTranscribeFailed": "Nauhoitustasi ei voitu litteroida. Tarkista yhteytesi ja yritä uudelleen.",
     "readAloudMicUnavailable": "Mikrofonia ei ole saatavilla, joten tämä sana on sen sijaan merkitysharjoitus.",
-    "readAloudYourRecording": "Nauhoituksesi",
     "readAloudExample": "Esimerkki",
     "readAloudStartOver": "Aloita alusta",
     "readAloudStarting": "Valmistellaan mikrofonia…",
-    "readAloudListening": "Kuunnellaan…"
+    "readAloudListening": "Kuunnellaan…",
+    "readAloudTake": "Ota {number}"
 }

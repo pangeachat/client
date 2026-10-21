@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-10-20 16:50:56.500650",
+    "@@last_modified": "2026-10-21 10:12:58.698604",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "ଶୁଣାଗଲା: {transcript}",
     "readAloudTranscribeFailed": "ଆପଣଙ୍କ ରେକର୍ଡିଂକୁ ଟ୍ରାନ୍ସକ୍ରାଇବ୍ କରିହେଲା ନାହିଁ। ଆପଣଙ୍କ କନେକ୍ସନ୍ ଯାଞ୍ଚ କରନ୍ତୁ ଓ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।",
     "readAloudMicUnavailable": "କୌଣସି ମାଇକ୍ରୋଫୋନ୍ ଉପଲବ୍ଧ ନାହିଁ, ତେଣୁ ଏହି ଶବ୍ଦଟି ଏକ ଅର୍ଥ ବ୍ୟାୟାମ ଅଟେ।",
-    "readAloudYourRecording": "ଆପଣଙ୍କ ରେକର୍ଡିଂ",
     "readAloudExample": "ଉଦାହରଣ",
     "readAloudStartOver": "ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "readAloudStarting": "ମାଇକ୍ରୋଫୋନ୍ ପ୍ରସ୍ତୁତ ହେଉଛି…",
-    "readAloudListening": "ଶୁଣୁଛି…"
+    "readAloudListening": "ଶୁଣୁଛି…",
+    "readAloudTake": "ନିଅନ୍ତୁ {number}"
 }

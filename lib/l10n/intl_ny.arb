@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-20 16:50:56.116226",
+    "@@last_modified": "2026-10-21 10:12:59.089467",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Kumveka: {transcript}",
     "readAloudTranscribeFailed": "Sitheka kulemba zomwe mwajambula. Chongani intaneti yanu ndikuyesanso.",
     "readAloudMicUnavailable": "Palibe maiki opezeka, choncho mawu awa ndi masewera a tanthauzo m'malo mwake.",
-    "readAloudYourRecording": "Zomwe mwajambula",
     "readAloudExample": "Chitsanzo",
     "readAloudStartOver": "Yambaninso",
     "readAloudStarting": "Tikukonza maikolofoni…",
-    "readAloudListening": "Tikumvetsera…"
+    "readAloudListening": "Tikumvetsera…",
+    "readAloudTake": "Tenga {number}"
 }

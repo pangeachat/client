@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-20 16:50:58.952050",
+    "@@last_modified": "2026-10-21 10:13:04.791354",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "سنا گیا: {transcript}",
     "readAloudTranscribeFailed": "آپ کی ریکارڈنگ کو ٹرانسکرائب نہیں کر سکے۔ اپنا کنکشن چیک کریں اور دوبارہ کوشش کریں۔",
     "readAloudMicUnavailable": "کوئی مائیکروفون دستیاب نہیں ہے، لہذا یہ لفظ معنی کی مشق ہے۔",
-    "readAloudYourRecording": "آپ کی ریکارڈنگ",
     "readAloudExample": "مثال",
     "readAloudStartOver": "دوبارہ شروع کریں",
     "readAloudStarting": "مائیکروفون تیار ہو رہا ہے…",
-    "readAloudListening": "سن رہا ہے…"
+    "readAloudListening": "سن رہا ہے…",
+    "readAloudTake": "ٹیک {number}"
 }

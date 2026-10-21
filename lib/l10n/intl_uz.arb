@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-20 16:50:58.786870",
+    "@@last_modified": "2026-10-21 10:13:07.849504",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10024,9 +10024,9 @@
     "readAloudHeardTranscript": "Eshitildi: {transcript}",
     "readAloudTranscribeFailed": "Yozuvni transkripsiya qilib boʻlmadi. Ulanishingizni tekshiring va qayta urinib koʻring.",
     "readAloudMicUnavailable": "Mikrofon mavjud emas, shuning uchun bu soʻz maʼno mashqi sifatida beriladi.",
-    "readAloudYourRecording": "Sizning yozganingiz",
     "readAloudExample": "Misol",
     "readAloudStartOver": "Qaytadan boshlash",
     "readAloudStarting": "Mikrofon tayyorlanmoqda…",
-    "readAloudListening": "Tinglanmoqda…"
+    "readAloudListening": "Tinglanmoqda…",
+    "readAloudTake": "{number} qabul qiling"
 }

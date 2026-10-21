@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-20 16:50:53.254567",
+    "@@last_modified": "2026-10-21 10:12:52.169659",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10786,9 +10786,9 @@
     "readAloudHeardTranscript": "聞き取り済み: {transcript}",
     "readAloudTranscribeFailed": "録音を書き起こせませんでした。接続を確認してもう一度お試しください。",
     "readAloudMicUnavailable": "マイクが利用できないため、この単語は意味の練習に変わります。",
-    "readAloudYourRecording": "あなたの録音",
     "readAloudExample": "例",
     "readAloudStartOver": "やり直す",
     "readAloudStarting": "マイクを準備中…",
-    "readAloudListening": "聞き取り中…"
+    "readAloudListening": "聞き取り中…",
+    "readAloudTake": "{number}回目"
 }

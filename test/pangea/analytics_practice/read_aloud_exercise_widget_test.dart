@@ -62,15 +62,15 @@ ReadAloudPracticeExerciseModel _exercise() => ReadAloudPracticeExerciseModel(
   ),
 );
 
-/// The read-aloud item before any take: the sentence, the mic, and a Continue
-/// that waits for an answer. See practice-exercises.instructions.md,
-/// "Speaking practice".
+/// The read-aloud item before any take: the sentence and the mic; and the
+/// foot row that holds Skip always and Continue once answered. See
+/// practice-exercises.instructions.md, "Speaking practice".
 void main() {
-  testWidgets('renders the sentence, records on the mic tap, and holds '
-      'Continue until the item is answered', (tester) async {
+  testWidgets('renders the sentence and records on the mic tap', (
+    tester,
+  ) async {
     final capture = _FakeCapture();
     List<String>? referenceGiven;
-    var skipped = 0;
     final speed = AudioPlaybackSpeedController();
     addTearDown(speed.dispose);
 
@@ -95,9 +95,7 @@ void main() {
               );
             },
             onRecorded: (_) {},
-            onContinue: () {},
             onMicUnavailable: () {},
-            onSkip: () => skipped++,
           ),
         ),
       ),
@@ -112,15 +110,6 @@ void main() {
     );
     expect(find.byIcon(Icons.mic), findsOneWidget);
     expect(find.byTooltip('Record'), findsOneWidget);
-
-    final continueButton = tester.widget<ElevatedButton>(
-      find.widgetWithText(ElevatedButton, 'Continue'),
-    );
-    expect(continueButton.onPressed, isNull);
-
-    // Skip is there from the start, not only after a failure.
-    await tester.tap(find.widgetWithText(TextButton, 'Skip'));
-    expect(skipped, 1);
 
     await tester.tap(find.byIcon(Icons.mic));
     await tester.pumpAndSettle();
@@ -155,9 +144,7 @@ void main() {
               transcribe: (_) async => const [],
             ),
             onRecorded: (_) {},
-            onContinue: () {},
             onMicUnavailable: () {},
-            onSkip: () {},
           ),
         ),
       ),
@@ -194,5 +181,44 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byIcon(Icons.stop), findsOneWidget);
     expect(find.text('Listening…'), findsOneWidget);
+  });
+
+  testWidgets('the foot row holds Skip always and Continue once answered', (
+    tester,
+  ) async {
+    var skipped = 0;
+    var continued = 0;
+    Future<void> pump(bool complete) => tester.pumpWidget(
+      MaterialApp(
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Scaffold(
+          body: ReadAloudContinueRow(
+            complete: complete,
+            onContinue: () => continued++,
+            onSkip: () => skipped++,
+          ),
+        ),
+      ),
+    );
+
+    await pump(false);
+    await tester.pumpAndSettle();
+    expect(
+      tester
+          .widget<ElevatedButton>(
+            find.widgetWithText(ElevatedButton, 'Continue'),
+          )
+          .onPressed,
+      isNull,
+    );
+    // Skip is there from the start, not only after a failure.
+    await tester.tap(find.widgetWithText(TextButton, 'Skip'));
+    expect(skipped, 1);
+
+    await pump(true);
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(ElevatedButton, 'Continue'));
+    expect(continued, 1);
   });
 }

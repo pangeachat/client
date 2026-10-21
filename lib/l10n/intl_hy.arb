@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-20 16:50:52.574107",
+    "@@last_modified": "2026-10-21 10:12:50.789286",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Լսված է՝ {transcript}",
     "readAloudTranscribeFailed": "Հնարավոր չեղավ արտագրել ձեր ձայնագրությունը։ Ստուգեք ձեր կապը և նորից փորձեք։",
     "readAloudMicUnavailable": "Խոսափող հասանելի չէ, ուստի այս բառը իմաստային վարժություն է։",
-    "readAloudYourRecording": "Ձեր ձայնագրությունը",
     "readAloudExample": "Օրինակ",
     "readAloudStartOver": "Սկսել նորից",
     "readAloudStarting": "Միկրոֆոնը պատրաստվում է…",
-    "readAloudListening": "Լսում եմ…"
+    "readAloudListening": "Լսում եմ…",
+    "readAloudTake": "Կատարել {number}"
 }

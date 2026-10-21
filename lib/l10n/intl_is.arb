@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-20 16:50:53.144451",
+    "@@last_modified": "2026-10-21 10:12:51.356508",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Heyrt: {transcript}",
     "readAloudTranscribeFailed": "Gat ekki umritað upptökuna þína. Athugaðu tenginguna þína og reyndu aftur.",
     "readAloudMicUnavailable": "Enginn hljóðnemi er tiltækur, svo þetta orð er merkingaræfing í staðinn.",
-    "readAloudYourRecording": "Upptakan þín",
     "readAloudExample": "Dæmi",
     "readAloudStartOver": "Byrja upp á nýtt",
     "readAloudStarting": "Undirbý hljóðnemann…",
-    "readAloudListening": "Hlusta…"
+    "readAloudListening": "Hlusta…",
+    "readAloudTake": "Taka {number}"
 }

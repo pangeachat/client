@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-10-20 16:50:53.683239",
+    "@@last_modified": "2026-10-21 10:12:53.667102",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "បានឮ៖ {transcript}",
     "readAloudTranscribeFailed": "មិនអាចបំប្លែងការថតរបស់អ្នកបានទេ។ សូមពិនិត្យមើលការតភ្ជាប់របស់អ្នក ហើយព្យាយាមម្ដងទៀត។",
     "readAloudMicUnavailable": "គ្មានមីក្រូហ្វូនទេ ដូច្នេះពាក្យនេះគឺជាលំហាត់អត្ថន័យវិញ។",
-    "readAloudYourRecording": "ការថតរបស់អ្នក",
     "readAloudExample": "ឧទាហរណ៍",
     "readAloudStartOver": "ចាប់ផ្ដើមឡើងវិញ",
     "readAloudStarting": "កំពុងរៀបចំមីក្រូហ្វូន…",
-    "readAloudListening": "កំពុងស្ដាប់…"
+    "readAloudListening": "កំពុងស្ដាប់…",
+    "readAloudTake": "យក {number}"
 }

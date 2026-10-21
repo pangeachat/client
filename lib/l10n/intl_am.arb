@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-20 16:50:49.660173",
+    "@@last_modified": "2026-10-21 10:12:44.267251",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "የተሰማው: {transcript}",
     "readAloudTranscribeFailed": "ቅጂዎን መገልበጥ አልተቻለም። ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ።",
     "readAloudMicUnavailable": "ምንም ማይክሮፎን የለም፣ ስለዚህ ይህ ቃል የትርጉም ልምምድ ነው።",
-    "readAloudYourRecording": "የእርስዎ ቅጂ",
     "readAloudExample": "ምሳሌ",
     "readAloudStartOver": "እንደገና ጀምር",
     "readAloudStarting": "ማይክሮፎኑን በማዘጋጀት ላይ…",
-    "readAloudListening": "በማዳመጥ ላይ…"
+    "readAloudListening": "በማዳመጥ ላይ…",
+    "readAloudTake": "ይውሰዱ {number}"
 }

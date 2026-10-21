@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-20 16:51:00.940324",
+    "@@last_modified": "2026-10-21 10:12:52.897113",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Yɛri: {transcript}",
     "readAloudTranscribeFailed": "Nɔ ebul fɔ transkrayb yu rikɔdin. Chɛk yu kɔnɛkshɔn ɛn tray bak.",
     "readAloudMicUnavailable": "Nɔ gɛt mayk, so dis wɔd na minin ɛksasayz insay.",
-    "readAloudYourRecording": "Yu rikɔdin",
     "readAloudExample": "Ɛgzampul",
     "readAloudStartOver": "Bigin bak",
     "readAloudStarting": "Di microphone de rɛdi…",
-    "readAloudListening": "De lisin…"
+    "readAloudListening": "De lisin…",
+    "readAloudTake": "Tek {number}"
 }

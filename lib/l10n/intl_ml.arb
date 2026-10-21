@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-20 16:50:54.490745",
+    "@@last_modified": "2026-10-21 10:12:56.193827",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "കേട്ടത്: {transcript}",
     "readAloudTranscribeFailed": "നിങ്ങളുടെ റെക്കോർഡിംഗ് ട്രാൻസ്ക്രൈബ് ചെയ്യാൻ കഴിഞ്ഞില്ല. നിങ്ങളുടെ കണക്ഷൻ പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക.",
     "readAloudMicUnavailable": "മൈക്രോഫോൺ ലഭ്യമല്ലാത്തതിനാൽ, ഈ വാക്ക് ഒരു അർത്ഥ വ്യായാമമാണ്.",
-    "readAloudYourRecording": "നിങ്ങളുടെ റെക്കോർഡിംഗ്",
     "readAloudExample": "ഉദാഹരണം",
     "readAloudStartOver": "ആദ്യം മുതൽ തുടങ്ങുക",
     "readAloudStarting": "മൈക്രോഫോൺ തയ്യാറാക്കുന്നു…",
-    "readAloudListening": "ശ്രദ്ധിക്കുന്നു…"
+    "readAloudListening": "ശ്രദ്ധിക്കുന്നു…",
+    "readAloudTake": "എടുക്കുക {number}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-20 16:50:56.959918",
+    "@@last_modified": "2026-10-21 10:13:00.498936",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10962,9 +10962,9 @@
     "readAloudHeardTranscript": "Vypočuté: {transcript}",
     "readAloudTranscribeFailed": "Nepodarilo sa prepísať vašu nahrávku. Skontrolujte pripojenie a skúste to znova.",
     "readAloudMicUnavailable": "Mikrofón nie je k dispozícii, takže toto slovo je namiesto toho cvičením na význam.",
-    "readAloudYourRecording": "Vaša nahrávka",
     "readAloudExample": "Príklad",
     "readAloudStartOver": "Začať odznova",
     "readAloudStarting": "Pripravujem mikrofón…",
-    "readAloudListening": "Počúvam…"
+    "readAloudListening": "Počúvam…",
+    "readAloudTake": "Zobrať {number}"
 }

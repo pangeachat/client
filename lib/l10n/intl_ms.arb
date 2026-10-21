@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-20 16:50:55.373094",
+    "@@last_modified": "2026-10-21 10:13:01.264865",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Didengar: {transcript}",
     "readAloudTranscribeFailed": "Tidak dapat menyalin rakaman anda. Semak sambungan anda dan cuba lagi.",
     "readAloudMicUnavailable": "Tiada mikrofon tersedia, jadi perkataan ini adalah latihan makna.",
-    "readAloudYourRecording": "Rakaman anda",
     "readAloudExample": "Contoh",
     "readAloudStartOver": "Mula semula",
     "readAloudStarting": "Menyediakan mikrofon…",
-    "readAloudListening": "Mendengar…"
+    "readAloudListening": "Mendengar…",
+    "readAloudTake": "Ambil {number}"
 }

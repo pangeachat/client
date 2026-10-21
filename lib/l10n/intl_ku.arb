@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-20 16:50:53.948742",
+    "@@last_modified": "2026-10-21 10:12:57.977390",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "بیسترا: {transcript}",
     "readAloudTranscribeFailed": "نەتوانرا تۆمارەکەت بنووسرێتەوە. پەیوەندییەکەت بپشکنە و دووبارە هەوڵ بدەوە.",
     "readAloudMicUnavailable": "هیچ مایکرۆفۆنێک بەردەست نییە، بۆیە ئەم وشەیە لەبری ئەوە ڕاهێنانی مانایە.",
-    "readAloudYourRecording": "تۆمارکردنەکەی تۆ",
     "readAloudExample": "نموونە",
     "readAloudStartOver": "دەستپێکردنەوە",
     "readAloudStarting": "مایکرۆفۆن ئامادە دەکرێت…",
-    "readAloudListening": "گوێ دەگیرێت…"
+    "readAloudListening": "گوێ دەگیرێت…",
+    "readAloudTake": "وەرگرتنی {number}"
 }

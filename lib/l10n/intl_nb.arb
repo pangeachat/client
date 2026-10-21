@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-20 16:51:38.012279",
+    "@@last_modified": "2026-10-21 10:12:58.337285",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10077,9 +10077,9 @@
     "readAloudHeardTranscript": "Hørt: {transcript}",
     "readAloudTranscribeFailed": "Kunne ikke transkribere opptaket ditt. Sjekk tilkoblingen din og prøv igjen.",
     "readAloudMicUnavailable": "Ingen mikrofon er tilgjengelig, så dette ordet er i stedet en betydningsøvelse.",
-    "readAloudYourRecording": "Ditt opptak",
     "readAloudExample": "Eksempel",
     "readAloudStartOver": "Start på nytt",
     "readAloudStarting": "Klargjør mikrofonen …",
-    "readAloudListening": "Lytter …"
+    "readAloudListening": "Lytter …",
+    "readAloudTake": "Opptak {number}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-20 16:50:58.067635",
+    "@@last_modified": "2026-10-21 10:13:02.426387",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Imesikika: {transcript}",
     "readAloudTranscribeFailed": "Imeshindwa kunakili rekodi yako. Angalia muunganisho wako na ujaribu tena.",
     "readAloudMicUnavailable": "Hakuna maiki inayopatikana, kwa hivyo neno hili ni zoezi la maana badala yake.",
-    "readAloudYourRecording": "Rekodi yako",
     "readAloudExample": "Mfano",
     "readAloudStartOver": "Anza upya",
     "readAloudStarting": "Inaandaa maikrofoni…",
-    "readAloudListening": "Inasikiliza…"
+    "readAloudListening": "Inasikiliza…",
+    "readAloudTake": "Chukua {number}"
 }

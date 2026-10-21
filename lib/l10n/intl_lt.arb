@@ -2956,7 +2956,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-20 16:50:54.506153",
+    "@@last_modified": "2026-10-21 10:12:55.526368",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10798,9 +10798,9 @@
     "readAloudHeardTranscript": "Išgirsta: {transcript}",
     "readAloudTranscribeFailed": "Nepavyko transkribuoti jūsų įrašo. Patikrinkite ryšį ir bandykite dar kartą.",
     "readAloudMicUnavailable": "Nėra mikrofono, todėl šis žodis yra reikšmės pratimas.",
-    "readAloudYourRecording": "Jūsų įrašas",
     "readAloudExample": "Pavyzdys",
     "readAloudStartOver": "Pradėti iš naujo",
     "readAloudStarting": "Ruošiamas mikrofonas…",
-    "readAloudListening": "Klausausi…"
+    "readAloudListening": "Klausausi…",
+    "readAloudTake": "Paimkite {number}"
 }

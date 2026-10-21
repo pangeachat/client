@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-20 16:50:53.901079",
+    "@@last_modified": "2026-10-21 10:12:53.903930",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Угулду: {transcript}",
     "readAloudTranscribeFailed": "Жазууңузду транскрипциялоо мүмкүн болгон жок. Байланышыңызды текшерип, кайра аракет кылыңыз.",
     "readAloudMicUnavailable": "Микрофон жеткиликтүү эмес, ошондуктан бул сөз анын ордуна маани көнүгүүсү болот.",
-    "readAloudYourRecording": "Сиздин жазууңуз",
     "readAloudExample": "Мисал",
     "readAloudStartOver": "Башынан баштоо",
     "readAloudStarting": "Микрофон даярдалууда…",
-    "readAloudListening": "Угулууда…"
+    "readAloudListening": "Угулууда…",
+    "readAloudTake": "{number}-чи аракет"
 }

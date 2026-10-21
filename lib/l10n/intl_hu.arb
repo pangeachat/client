@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-20 16:50:53.214271",
+    "@@last_modified": "2026-10-21 10:12:50.037206",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10123,9 +10123,9 @@
     "readAloudHeardTranscript": "Hallható: {transcript}",
     "readAloudTranscribeFailed": "Nem sikerült átírni a felvételt. Ellenőrizd a kapcsolatot, és próbáld újra.",
     "readAloudMicUnavailable": "Nincs mikrofon, ezért ez a szó helyett egy jelentésgyakorlat.",
-    "readAloudYourRecording": "A felvételed",
     "readAloudExample": "Példa",
     "readAloudStartOver": "Elölről",
     "readAloudStarting": "Készül a mikrofon…",
-    "readAloudListening": "Hallgatok…"
+    "readAloudListening": "Hallgatok…",
+    "readAloudTake": "Felvétel {number}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-20 16:50:53.695400",
+    "@@last_modified": "2026-10-21 10:13:10.947018",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Естілді: {transcript}",
     "readAloudTranscribeFailed": "Жазбаңызды транскрипциялау мүмкін болмады. Байланысыңызды тексеріп, қайталап көріңіз.",
     "readAloudMicUnavailable": "Микрофон қолжетімді емес, сондықтан бұл сөз мағыналық жаттығу болады.",
-    "readAloudYourRecording": "Сіздің жазбаңыз",
     "readAloudExample": "Мысал",
     "readAloudStartOver": "Қайта бастау",
     "readAloudStarting": "Микрофонды дайындау…",
-    "readAloudListening": "Тыңдаудамын…"
+    "readAloudListening": "Тыңдаудамын…",
+    "readAloudTake": "{number} алу"
 }

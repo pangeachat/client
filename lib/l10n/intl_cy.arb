@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-20 16:50:50.340770",
+    "@@last_modified": "2026-10-21 10:12:45.269620",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2480,11 +2480,11 @@
     "readAloudHeardTranscript": "Clywyd: {transcript}",
     "readAloudTranscribeFailed": "Doedd dim modd trawsgrifio'ch recordiad. Gwiriwch eich cysylltiad a cheisiwch eto.",
     "readAloudMicUnavailable": "Nid oes meicroffon ar gael, felly mae'r gair hwn yn ymarfer ystyr yn lle hynny.",
-    "readAloudYourRecording": "Eich recordiad",
     "readAloudExample": "Enghraifft",
     "readAloudRecord": "Recordio",
     "readAloudMicLabel": "{count, plural, =1{Recordio, 1 gair heb ei glywed eto} other{Recordio, {count} gair heb ei glywed eto}}",
     "readAloudStartOver": "Dechrau drosodd",
     "readAloudStarting": "Yn paratoi'r meicroffon…",
-    "readAloudListening": "Yn gwrando…"
+    "readAloudListening": "Yn gwrando…",
+    "readAloudTake": "Cymryd {number}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-20 16:50:55.289895",
+    "@@last_modified": "2026-10-21 10:12:56.927932",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Instema': {transcript}",
     "readAloudTranscribeFailed": "Ma stajniex nittraskrivu r-reġistrazzjoni tiegħek. Iċċekkja l-konnessjoni tiegħek u erġa' pprova.",
     "readAloudMicUnavailable": "M'hemm l-ebda mikrofonu disponibbli, għalhekk din il-kelma hija eżerċizzju ta' tifsira minflok.",
-    "readAloudYourRecording": "Ir-reġistrazzjoni tiegħek",
     "readAloudExample": "Eżempju",
     "readAloudStartOver": "Erġa' ibda'",
     "readAloudStarting": "Qed inħejji l-mikrofonu…",
-    "readAloudListening": "Qed nisma’…"
+    "readAloudListening": "Qed nisma’…",
+    "readAloudTake": "Ħu {number}"
 }

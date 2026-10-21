@@ -38,12 +38,16 @@ enum ReadAloudPhase {
 class ReadAloudTake {
   const ReadAloudTake({
     required this.transcript,
+    required this.heard,
     required this.wav,
     required this.duration,
     required this.waveform,
   });
 
   final String transcript;
+
+  /// Per word of the reference, whether this take was heard saying it.
+  final List<bool> heard;
   final Uint8List? wav;
   final Duration duration;
   final List<int>? waveform;
@@ -93,7 +97,11 @@ class ReadAloudRecorder extends ChangeNotifier {
   /// line; the settled transcript once the take is done. Empty on the batch
   /// route until the take ends.
   String liveTranscript = '';
-  ReadAloudTake? lastTake;
+
+  /// Every take of the item in the order made, kept so a retry can be set
+  /// against the one before it; nothing here is cleared by a new take.
+  final List<ReadAloudTake> takes = <ReadAloudTake>[];
+  ReadAloudTake? get lastTake => takes.isEmpty ? null : takes.last;
   int triesUsed = 0;
 
   int get triesLeft => maxTries - triesUsed;
@@ -124,7 +132,6 @@ class ReadAloudRecorder extends ChangeNotifier {
     final generation = ++_generation;
     heard = List<bool>.filled(reference.length, false);
     liveTranscript = '';
-    lastTake = null;
     _batchAmplitudes.clear();
     phase = ReadAloudPhase.starting;
     notifyListeners();
@@ -314,11 +321,14 @@ class ReadAloudRecorder extends ChangeNotifier {
   ) {
     heard = readAloudHeard(reference, words);
     liveTranscript = transcript;
-    lastTake = ReadAloudTake(
-      transcript: transcript,
-      wav: wav,
-      duration: duration,
-      waveform: waveform,
+    takes.add(
+      ReadAloudTake(
+        transcript: transcript,
+        heard: heard,
+        wav: wav,
+        duration: duration,
+        waveform: waveform,
+      ),
     );
     triesUsed++;
     _setPhase(ReadAloudPhase.done);

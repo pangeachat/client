@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-20 16:50:56.192791",
+    "@@last_modified": "2026-10-21 10:12:59.153291",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "اوریدل شوې: {transcript}",
     "readAloudTranscribeFailed": "ستاسو ثبتول ونه شول. خپله اړیکه وګورئ او بیا هڅه وکړئ.",
     "readAloudMicUnavailable": "هیڅ مایکروفون شتون نلري، نو دا کلمه د معنی تمرین دی.",
-    "readAloudYourRecording": "ستاسو ثبتول",
     "readAloudExample": "مثال",
     "readAloudStartOver": "بیا پیل کړئ",
     "readAloudStarting": "مایکروفون چمتو کیږي…",
-    "readAloudListening": "اوریدل کیږي…"
+    "readAloudListening": "اوریدل کیږي…",
+    "readAloudTake": "واخلئ {number}"
 }

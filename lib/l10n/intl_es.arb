@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-20 16:50:51.161232",
+    "@@last_modified": "2026-10-21 10:13:07.371078",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8249,9 +8249,9 @@
     "readAloudHeardTranscript": "Escuchado: {transcript}",
     "readAloudTranscribeFailed": "No se pudo transcribir tu grabación. Revisa tu conexión e inténtalo de nuevo.",
     "readAloudMicUnavailable": "No hay micrófono disponible, así que esta palabra es un ejercicio de significado en su lugar.",
-    "readAloudYourRecording": "Tu grabación",
     "readAloudExample": "Ejemplo",
     "readAloudStartOver": "Empezar de nuevo",
     "readAloudStarting": "Preparando el micrófono…",
-    "readAloudListening": "Escuchando…"
+    "readAloudListening": "Escuchando…",
+    "readAloudTake": "Toma {number}"
 }

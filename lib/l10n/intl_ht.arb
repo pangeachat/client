@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-20 16:50:52.557228",
+    "@@last_modified": "2026-10-21 10:12:49.862999",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Tande: {transcript}",
     "readAloudTranscribeFailed": "Nou pa t ka transkri anrejistreman ou. Tcheke koneksyon ou epi eseye ankò.",
     "readAloudMicUnavailable": "Pa gen mikwofòn ki disponib, kidonk mo sa a se yon egzèsis siyifikasyon pito.",
-    "readAloudYourRecording": "Anrejistreman ou",
     "readAloudExample": "Egzanp",
     "readAloudStartOver": "Rekòmanse",
     "readAloudStarting": "Ap prepare mikwofòn nan…",
-    "readAloudListening": "Ap koute…"
+    "readAloudListening": "Ap koute…",
+    "readAloudTake": "Pran {number}"
 }

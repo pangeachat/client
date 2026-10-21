@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-20 16:50:50.748736",
+    "@@last_modified": "2026-10-21 10:12:52.071090",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Intesu: {transcript}",
     "readAloudTranscribeFailed": "Ùn hè micca pussibule di trascrive u vostru arregistramentu. Verificate a vostra cunnessione è riprovate.",
     "readAloudMicUnavailable": "Nisun microfonu hè dispunibule, cusì sta parolla hè un eserciziu di significatu invece.",
-    "readAloudYourRecording": "U vostru arregistramentu",
     "readAloudExample": "Esempiu",
     "readAloudStartOver": "Ricummincià",
     "readAloudStarting": "Preparazione di u microfonu…",
-    "readAloudListening": "Ascultendu…"
+    "readAloudListening": "Ascultendu…",
+    "readAloudTake": "Piglia {number}"
 }

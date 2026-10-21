@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-20 16:50:58.636462",
+    "@@last_modified": "2026-10-21 10:13:06.011762",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "ئاڭلاندى: {transcript}",
     "readAloudTranscribeFailed": "خاتىرىلىگىنىڭىزنى تېكىستكە ئايلاندۇرغىلى بولمىدى. ئۇلىنىشىڭىزنى تەكشۈرۈپ قايتا سىناڭ.",
     "readAloudMicUnavailable": "مىكروفون يوق، شۇڭا بۇ سۆزنىڭ ئورنىغا مەنىسىنى تېپىش مەشىقى قىلىنىدۇ.",
-    "readAloudYourRecording": "سىزنىڭ خاتىرىلىگىنىڭىز",
     "readAloudExample": "مىسال",
     "readAloudStartOver": "قايتا باشلاش",
     "readAloudStarting": "مىكروفون تەييارلىنىۋاتىدۇ…",
-    "readAloudListening": "تىڭشاش…"
+    "readAloudListening": "تىڭشاش…",
+    "readAloudTake": "{number}-قېتىملىق سۆزلەش"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-20 16:50:55.298782",
+    "@@last_modified": "2026-10-21 10:12:56.799880",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Re: {transcript}",
     "readAloudTranscribeFailed": "Tsy afaka nandika ny fandraisanao. Hamarino ny fifandraisanao ary andramo indray.",
     "readAloudMicUnavailable": "Tsy misy mikrô azo ampiasaina, ka fanazaran-tena momba ny dikany ity teny ity.",
-    "readAloudYourRecording": "Ny fandraisanao",
     "readAloudExample": "Ohatra",
     "readAloudStartOver": "Atomboka indray",
     "readAloudStarting": "Manomana ny mikrô...",
-    "readAloudListening": "Mihaino..."
+    "readAloudListening": "Mihaino...",
+    "readAloudTake": "Andao {number}"
 }

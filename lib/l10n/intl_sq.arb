@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-20 16:50:57.249042",
+    "@@last_modified": "2026-10-21 10:13:01.170063",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2482,9 +2482,9 @@
     "readAloudHeardTranscript": "Dëgjuar: {transcript}",
     "readAloudTranscribeFailed": "Nuk mundëm të transkriptonim regjistrimin tuaj. Kontrolloni lidhjen tuaj dhe provoni përsëri.",
     "readAloudMicUnavailable": "Nuk ka mikrofon të disponueshëm, kështu që kjo fjalë është një ushtrim kuptimi në vend të kësaj.",
-    "readAloudYourRecording": "Regjistrimi juaj",
     "readAloudExample": "Shembull",
     "readAloudStartOver": "Fillo nga e para",
     "readAloudStarting": "Po përgatis mikrofonin…",
-    "readAloudListening": "Po dëgjoj…"
+    "readAloudListening": "Po dëgjoj…",
+    "readAloudTake": "Marrja {number}"
 }

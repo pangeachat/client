@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-20 16:50:50.536363",
+    "@@last_modified": "2026-10-21 10:12:45.023980",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10007,9 +10007,9 @@
     "readAloudHeardTranscript": "Gehört: {transcript}",
     "readAloudTranscribeFailed": "Deine Aufnahme konnte nicht transkribiert werden. Überprüfe deine Verbindung und versuche es erneut.",
     "readAloudMicUnavailable": "Es ist kein Mikrofon verfügbar, daher ist dieses Wort stattdessen eine Bedeutungsübung.",
-    "readAloudYourRecording": "Deine Aufnahme",
     "readAloudExample": "Beispiel",
     "readAloudStartOver": "Von vorne beginnen",
     "readAloudStarting": "Mikrofon wird vorbereitet…",
-    "readAloudListening": "Höre zu…"
+    "readAloudListening": "Höre zu…",
+    "readAloudTake": "Versuch {number}"
 }
