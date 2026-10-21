@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 
 import 'package:record/record.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart';
@@ -590,9 +591,15 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   }
 
   /// The microphone for one read-aloud item: live through the streaming relay
-  /// where the target language is routed for it, else the batch route.
-  ReadAloudRecorder buildReadAloudRecorder(List<String> reference) {
+  /// where the target language is routed for it, else the batch route. On
+  /// both, [sentence] goes along as the expected-text hint, so recognition is
+  /// biased toward what the learner was asked to read.
+  ReadAloudRecorder buildReadAloudRecorder(
+    List<String> reference, {
+    required String sentence,
+  }) {
     final userController = MatrixState.pangeaController.userController;
+    final hint = _expectedTextHint(sentence);
     return ReadAloudRecorder(
       reference: reference,
       hasMicPermission: () => AudioRecorder().hasPermission(),
@@ -600,27 +607,42 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
         flagEnabled: Environment.liveStreamingSttEnabled,
         messageLangCodeShort: _l2?.langCodeShort,
         accessToken: userController.accessToken,
-        wsUrl: _readAloudStreamUrl,
+        wsUrl: readAloudRelayUrl(
+          PApiUrls.speechToTextStream,
+          expectedText: hint,
+        ),
       ),
       captureFactory: SttAudioCapture.new,
-      transcribe: _transcribeTake,
+      transcribe: (wav) => _transcribeTake(wav, expectedText: hint),
     );
   }
 
-  /// The relay URL tagged as practice, so read-aloud minutes can be metered
-  /// apart from voice messages against the same cap.
-  static String get _readAloudStreamUrl {
-    final uri = Uri.parse(PApiUrls.speechToTextStream);
-    return uri
-        .replace(
-          queryParameters: {...uri.queryParameters, 'source': 'practice'},
-        )
-        .toString();
+  /// The sentence as the hint, or none when it is over the choreographer's
+  /// cap, which would refuse the whole request. An item is at most a
+  /// sentence of eight words, so a hint that long is a generator fault worth
+  /// hearing about once.
+  String? _expectedTextHint(String sentence) {
+    final text = sentence.trim();
+    if (text.isEmpty) return null;
+    if (text.length <= SpeechToTextRequestModel.maxExpectedTextChars) {
+      return text;
+    }
+    ErrorHandler.logErrorOnce(
+      key: 'read_aloud_expected_text_over_cap',
+      e: 'read-aloud sentence over the expected_text cap',
+      s: StackTrace.current,
+      data: {'length': text.length},
+      level: SentryLevel.warning,
+    );
+    return null;
   }
 
   /// The words heard in a take through the batch route: empty when the audio
   /// held none, null when every provider failed and there is nothing to judge.
-  Future<List<String>?> _transcribeTake(Uint8List wav) async {
+  Future<List<String>?> _transcribeTake(
+    Uint8List wav, {
+    required String? expectedText,
+  }) async {
     final userController = MatrixState.pangeaController.userController;
     final result = await SpeechToTextRepo.instance.get(
       buildVoiceSttRequest(
@@ -630,6 +652,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
             userController.userL1?.langCodeShort ??
             LanguageKeys.unknownLanguage,
         userL2: _l2?.langCodeShort ?? LanguageKeys.unknownLanguage,
+        expectedText: expectedText,
       ),
     );
     if (result.isError) return null;

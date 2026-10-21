@@ -373,3 +373,21 @@ class ReadAloudRecorder extends ChangeNotifier {
     super.dispose();
   }
 }
+
+/// The streaming relay URL for a read-aloud item: tagged `source=practice`,
+/// so practice minutes are metered apart from voice messages against the
+/// same cap, and carrying the sentence as the relay's `expected_text` hint
+/// (streaming-stt.instructions.md), which each streaming provider takes as
+/// context for recognition. No hint when [expectedText] is null.
+String readAloudRelayUrl(String wsUrl, {required String? expectedText}) {
+  final uri = Uri.parse(wsUrl);
+  return uri
+      .replace(
+        queryParameters: {
+          ...uri.queryParameters,
+          'source': 'practice',
+          'expected_text': ?expectedText,
+        },
+      )
+      .toString();
+}

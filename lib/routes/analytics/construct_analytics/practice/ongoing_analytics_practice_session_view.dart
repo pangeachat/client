@@ -198,8 +198,11 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
                                         ToolSetting.hearItFirst.enabled,
                                     playbackSpeedController:
                                         controller.audioPlaybackSpeedController,
-                                    recorderFactory:
-                                        controller.buildReadAloudRecorder,
+                                    recorderFactory: (reference) =>
+                                        controller.buildReadAloudRecorder(
+                                          reference,
+                                          sentence: exercise.referenceText,
+                                        ),
                                     onRecorded: (heard) =>
                                         controller.submitReadAloud(
                                           exercise,
