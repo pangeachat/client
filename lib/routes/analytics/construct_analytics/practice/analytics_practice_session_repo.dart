@@ -189,6 +189,8 @@ class AnalyticsPracticeSessionRepo {
   /// user sees".
   static Future<bool> canStartOffline() async {
     final pangea = MatrixState.pangeaController;
+    // The banner shows on the sign-in page too, where nobody has words saved.
+    if (!pangea.matrixState.client.isLogged()) return false;
     if (!pangea.subscriptionController.showSubscriptionGatedContent) {
       return false;
     }

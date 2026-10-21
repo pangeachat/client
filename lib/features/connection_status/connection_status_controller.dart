@@ -74,6 +74,12 @@ class ConnectionStatusController {
 
   int _consecutiveFailures = 0;
   bool _deviceReportsNoNetwork = false;
+
+  /// Whether an account's sync loop is reporting in. Before sign-in none is,
+  /// so the device's own report is the only signal, and it also says when the
+  /// connection is back. See connection-status.instructions.md, "Before
+  /// sign-in".
+  bool _syncReporting = false;
   DateTime? _classifiedAt;
   Future<void>? _classifying;
   Timer? _backOnlineTimer;
@@ -96,9 +102,8 @@ class ConnectionStatusController {
 
   /// Takes one update from the active account's sync loop.
   void onSyncStatus(SyncStatusUpdate update) {
-    // A sync loop is running, so the device's own network reports now mean
-    // something to the banner.
-    _networkChanges ??= onNetworkChanged().listen(_onNetworkChanged);
+    _syncReporting = true;
+    watchDevice();
     switch (update.status) {
       case SyncStatus.finished:
         _consecutiveFailures = 0;
@@ -118,6 +123,13 @@ class ConnectionStatusController {
     }
   }
 
+  /// Watches the device's own network report. The banner calls this when it
+  /// comes on screen, so the report counts before an account signs in. See
+  /// connection-status.instructions.md, "Before sign-in".
+  void watchDevice() {
+    _networkChanges ??= onNetworkChanged().listen(_onNetworkChanged);
+  }
+
   void _onNetworkChanged(List<ConnectivityResult> results) {
     _deviceReportsNoNetwork =
         results.isNotEmpty &&
@@ -126,12 +138,17 @@ class ConnectionStatusController {
       _setLost(ConnectionStatus.offline);
       return;
     }
+    if (!status.value.isLost) return;
+    // Before sign-in no sync can confirm the connection is back, so the
+    // device's report decides.
+    if (!_syncReporting) {
+      _onConnected();
+      return;
+    }
     // A new network may answer where the last one did not; the next sync
     // says whether the chat server does.
-    if (status.value.isLost) {
-      _classifiedAt = null;
-      _onLost();
-    }
+    _classifiedAt = null;
+    _onLost();
   }
 
   void _onLost() {
@@ -199,17 +216,18 @@ class ConnectionStatusController {
     );
   }
 
-  /// Forgets the connection state, for an account that signed out: its sync
-  /// loop has stopped, so nothing would clear a lost connection.
+  /// Forgets an account's connection state when it signs out: its sync loop
+  /// has stopped, so nothing would clear a lost connection. The device's own
+  /// report outlives the account, for the sign-in page.
   void reset() {
     _consecutiveFailures = 0;
-    _deviceReportsNoNetwork = false;
+    _syncReporting = false;
     _classifiedAt = null;
     _backOnlineTimer?.cancel();
     _backOnlineTimer = null;
-    unawaited(_networkChanges?.cancel());
-    _networkChanges = null;
-    status.value = ConnectionStatus.connected;
+    status.value = _deviceReportsNoNetwork
+        ? ConnectionStatus.offline
+        : ConnectionStatus.connected;
   }
 
   static bool _isAppResumed() {
@@ -219,6 +237,9 @@ class ConnectionStatusController {
 
   @visibleForTesting
   void resetForTest() {
+    _deviceReportsNoNetwork = false;
+    unawaited(_networkChanges?.cancel());
+    _networkChanges = null;
     reset();
     _classifying = null;
     probe = NetworkProbe.probe;

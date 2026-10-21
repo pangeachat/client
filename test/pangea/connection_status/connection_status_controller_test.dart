@@ -168,6 +168,62 @@ void main() {
     expect(probes, 0);
   });
 
+  // Before sign-in there is no sync loop, so the device's own report is the
+  // only signal. See connection-status.instructions.md, "Before sign-in".
+  group('before any account signs in', () {
+    test('the device reporting no network is offline', () async {
+      controller.watchDevice();
+      networkChanges.add([ConnectivityResult.none]);
+      await settle();
+
+      expect(controller.status.value, ConnectionStatus.offline);
+      expect(probes, 0);
+    });
+
+    test('the device reporting a network again says back online', () async {
+      controller.watchDevice();
+      networkChanges.add([ConnectivityResult.none]);
+      await settle();
+      networkChanges.add([ConnectivityResult.wifi]);
+      await settle();
+
+      expect(controller.status.value, ConnectionStatus.backOnline);
+      expect(probes, 0);
+    });
+
+    test('signing out while the device is offline keeps it offline', () async {
+      controller.onSyncStatus(const SyncStatusUpdate(SyncStatus.finished));
+      networkChanges.add([ConnectivityResult.none]);
+      await settle();
+      expect(controller.status.value, ConnectionStatus.offline);
+
+      controller.reset();
+      expect(controller.status.value, ConnectionStatus.offline);
+
+      // The device's report still reaches the banner on the sign-in page.
+      networkChanges.add([ConnectivityResult.wifi]);
+      await settle();
+      expect(controller.status.value, ConnectionStatus.backOnline);
+    });
+  });
+
+  test(
+    'with an account signed in, a network again waits for the sync to confirm',
+    () async {
+      controller.onSyncStatus(const SyncStatusUpdate(SyncStatus.finished));
+      networkChanges.add([ConnectivityResult.none]);
+      await settle();
+      expect(controller.status.value, ConnectionStatus.offline);
+
+      networkChanges.add([ConnectivityResult.wifi]);
+      await settle();
+      expect(controller.status.value, ConnectionStatus.offline);
+
+      controller.onSyncStatus(const SyncStatusUpdate(SyncStatus.finished));
+      expect(controller.status.value, ConnectionStatus.backOnline);
+    },
+  );
+
   test(
     'a new network while lost asks again whether the device is online',
     () async {
