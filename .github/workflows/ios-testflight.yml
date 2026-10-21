@@ -111,7 +111,8 @@ jobs:
       # (rive-app/rive-flutter#566). Running it here, from the repo root, works
       # on a cold pub cache and is a no-op on a warm one.
       - name: Set up rive_native
-        run: dart run rive_native:setup --verbose --platform ios
+        # --clean: the cached marker trap integrate.yaml describes.
+        run: dart run rive_native:setup --verbose --clean --platform ios
       - name: Build iOS (unsigned)
         # BUILD_COMMIT_SHA is the only part of the version display that says
         # which code is in the build — fastlane derives the build number from
@@ -145,5 +146,22 @@ jobs:
       version: ${{ needs.build_ios_testflight.outputs.version }}
       headline: "(${{ inputs.environment }}) is on TestFlight"
       release_body: ${{ inputs.new_release_notes }}
+    secrets:
+      aws_role_arn: ${{ secrets.AWS_ROLE_ARN_PROD }}
+
+  notify_failure:
+    needs: build_ios_testflight
+    if: failure()
+    permissions:
+      id-token: write
+      contents: read
+    # Same room as the success notice, so a failed run is noticed where the
+    # build was expected to show up instead of only in the Actions tab.
+    uses: ./.github/workflows/notify-matrix-build.yml
+    with:
+      service_name: "Pangea Chat iOS"
+      version: ${{ needs.build_ios_testflight.outputs.version || github.ref_name }}
+      headline: "(${{ inputs.environment }}) TestFlight build FAILED: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+      failed: true
     secrets:
       aws_role_arn: ${{ secrets.AWS_ROLE_ARN_PROD }}

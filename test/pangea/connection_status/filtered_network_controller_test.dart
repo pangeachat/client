@@ -12,6 +12,7 @@ import 'package:http/http.dart' as http;
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:fluffychat/features/connection_status/connection_status_controller.dart';
 import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
 import 'package:fluffychat/features/connection_status/network_host_category.dart';
 import 'package:fluffychat/features/connection_status/network_probe.dart';
@@ -56,6 +57,12 @@ void main() {
     );
   });
 
+  Future<void> settle() async {
+    for (var i = 0; i < 20; i++) {
+      await Future<void>.delayed(Duration.zero);
+    }
+  }
+
   setUp(() {
     SharedPreferences.setMockInitialValues({});
     answers = {
@@ -71,19 +78,21 @@ void main() {
     controller.currentNetworkType = () async => NetworkType.wifi;
     waits = [];
     controller.wait = (duration) async => waits.add(duration);
+    // A chat-server check also tells the connection banner, which reports
+    // "unreachable" once a session; keep that report off the real plugin.
+    ConnectionStatusController.instance.currentNetworkType = () async =>
+        NetworkType.wifi;
   });
 
   tearDown(() async {
+    // A report in flight must land before the keys are cleared, or it lands
+    // in the next test.
+    await settle();
     controller.resetForTest();
+    ConnectionStatusController.instance.resetForTest();
     ErrorHandler.resetReportedOnceKeysForTest();
     unawaited(networkChanges.close());
   });
-
-  Future<void> settle() async {
-    for (var i = 0; i < 20; i++) {
-      await Future<void>.delayed(Duration.zero);
-    }
-  }
 
   test(
     'a refused host with the neutral hosts answering is filtered, and reported once',
@@ -142,7 +151,10 @@ void main() {
 
         expect(waits, hasLength(2));
         expect(controller.blocked.value, isEmpty);
-        expect(ErrorHandler.reportedOnceKeysForTest, isEmpty);
+        expect(
+          ErrorHandler.reportedOnceKeysForTest,
+          isNot(contains('filtered-network-chatServer')),
+        );
       },
     );
 
@@ -250,6 +262,140 @@ void main() {
 
       expect(probedHosts, [apiHost]);
     });
+  });
+
+  group('#9434 an unfocused window is in the foreground', () {
+    setUp(
+      () => binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive),
+    );
+    tearDown(
+      () => binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed),
+    );
+
+    test('a refusal there is a verdict', () async {
+      final videoHost = NetworkHostCategory.video.probeUrl.host;
+      answers[videoHost] = NetworkProbeResult.refused;
+
+      expect(
+        await controller.check(NetworkHostCategory.video),
+        NetworkVerdict.filtered,
+      );
+      await settle();
+
+      expect(controller.blocked.value, {NetworkHostCategory.video});
+    });
+
+    test('a held refusal keeps counting there', () async {
+      answers[chatHost] = NetworkProbeResult.refused;
+
+      expect(
+        await controller.check(NetworkHostCategory.chatServer),
+        NetworkVerdict.filtered,
+      );
+
+      expect(waits, List.filled(6, const Duration(seconds: 30)));
+      expect(probedHosts.where((host) => host == chatHost), hasLength(7));
+      expect(controller.blocked.value, {NetworkHostCategory.chatServer});
+    });
+  });
+
+  // #9582 — before sign-in, the chat-server check is the connection
+  // banner's signal. See connection-status.instructions.md, "Before sign-in".
+  group('before sign-in, the chat-server check drives the connection banner', () {
+    final connection = ConnectionStatusController.instance;
+
+    tearDown(connection.resetForTest);
+
+    test(
+      'a refused chat server says can\'t reach at once, and is blocked only after the hold',
+      () async {
+        answers[chatHost] = NetworkProbeResult.refused;
+        final held = Completer<void>();
+        controller.wait = (_) => held.future;
+
+        final verdict = controller.check(NetworkHostCategory.chatServer);
+        await settle();
+
+        expect(connection.status.value, ConnectionStatus.unreachable);
+        expect(controller.blocked.value, isEmpty);
+
+        held.complete();
+        expect(await verdict, NetworkVerdict.filtered);
+        expect(controller.blocked.value, {NetworkHostCategory.chatServer});
+      },
+    );
+
+    test(
+      'a hold that ends because the server answered says back online',
+      () async {
+        answers[chatHost] = NetworkProbeResult.refused;
+        controller.wait = (duration) async {
+          waits.add(duration);
+          answers[chatHost] = NetworkProbeResult.answered;
+        };
+
+        expect(
+          await controller.check(NetworkHostCategory.chatServer),
+          NetworkVerdict.reachable,
+        );
+
+        expect(connection.status.value, ConnectionStatus.backOnline);
+      },
+    );
+
+    test('no neutral answer says offline', () async {
+      answers[chatHost] = NetworkProbeResult.refused;
+      for (final host in neutralHosts) {
+        answers[host] = NetworkProbeResult.slow;
+      }
+
+      expect(
+        await controller.check(NetworkHostCategory.chatServer),
+        NetworkVerdict.offline,
+      );
+      expect(connection.status.value, ConnectionStatus.offline);
+    });
+
+    test('a chat-server request that gets an answer says back online', () {
+      connection.onChatServerChecked(NetworkVerdict.filtered);
+      expect(connection.status.value, ConnectionStatus.unreachable);
+
+      controller.onRequestSucceeded(
+        Uri.https(chatHost, '/_matrix/client/v3/login'),
+      );
+
+      expect(connection.status.value, ConnectionStatus.backOnline);
+    });
+
+    test('a network change checks the chat server again', () async {
+      connection.onNetworkChanged = () => networkChanges.stream;
+      connection.watchDevice();
+      connection.onChatServerChecked(NetworkVerdict.filtered);
+      expect(connection.status.value, ConnectionStatus.unreachable);
+
+      networkChanges.add([ConnectivityResult.wifi]);
+      await settle();
+
+      expect(probedHosts, contains(chatHost));
+      expect(connection.status.value, ConnectionStatus.backOnline);
+    });
+
+    test(
+      'the Pangea API check says nothing to the connection banner',
+      () async {
+        answers[apiHost] = NetworkProbeResult.refused;
+        final held = Completer<void>();
+        controller.wait = (_) => held.future;
+
+        unawaited(controller.check(NetworkHostCategory.pangeaApi));
+        await settle();
+
+        expect(connection.status.value, ConnectionStatus.connected);
+        answers[apiHost] = NetworkProbeResult.answered;
+        held.complete();
+        await settle();
+      },
+    );
   });
 
   test('a refused sign-in host is decided at once', () async {

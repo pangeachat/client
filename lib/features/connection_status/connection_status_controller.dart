@@ -7,8 +7,10 @@ import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
+import 'package:fluffychat/features/connection_status/network_host_category.dart';
 import 'package:fluffychat/features/connection_status/network_probe.dart';
 import 'package:fluffychat/features/connection_status/network_type.dart';
+import 'package:fluffychat/features/connection_status/network_verdict.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 /// What the connection banner says. See connection-status.instructions.md,
@@ -74,6 +76,12 @@ class ConnectionStatusController {
 
   int _consecutiveFailures = 0;
   bool _deviceReportsNoNetwork = false;
+
+  /// Whether an account's sync loop is reporting in. Before sign-in none is,
+  /// so the device's own report is the only signal, and it also says when the
+  /// connection is back. See connection-status.instructions.md, "Before
+  /// sign-in".
+  bool _syncReporting = false;
   DateTime? _classifiedAt;
   Future<void>? _classifying;
   Timer? _backOnlineTimer;
@@ -89,16 +97,17 @@ class ConnectionStatusController {
   @visibleForTesting
   Future<NetworkType> Function() currentNetworkType = NetworkType.current;
 
-  /// Whether the app is in the foreground. A suspended app's requests fail
-  /// because the OS paused them, not because the connection is gone. The
-  /// filter check reads it too, so the two agree. Replaced in tests.
-  bool Function() isAppResumed = _isAppResumed;
+  /// Whether the app is in the foreground: on screen, focused or not. A
+  /// hidden app's requests fail because the OS paused them, not because the
+  /// connection is gone; an unfocused window's requests run on. The filter
+  /// check reads it too, so the two agree. Replaced in tests. See
+  /// connection-status.instructions.md, "Telling the causes apart".
+  bool Function() isAppInForeground = _isAppInForeground;
 
   /// Takes one update from the active account's sync loop.
   void onSyncStatus(SyncStatusUpdate update) {
-    // A sync loop is running, so the device's own network reports now mean
-    // something to the banner.
-    _networkChanges ??= onNetworkChanged().listen(_onNetworkChanged);
+    _syncReporting = true;
+    watchDevice();
     switch (update.status) {
       case SyncStatus.finished:
         _consecutiveFailures = 0;
@@ -108,7 +117,7 @@ class ConnectionStatusController {
         // the answer is ours. Only a request that got no usable answer is a
         // lost connection.
         if (update.error?.exception is! SyncConnectionException) return;
-        if (!isAppResumed()) return;
+        if (!isAppInForeground()) return;
         _consecutiveFailures++;
         if (_consecutiveFailures >= failuresBeforeLost) _onLost();
       case SyncStatus.waitingForResponse:
@@ -116,6 +125,38 @@ class ConnectionStatusController {
       case SyncStatus.cleaningUp:
         break;
     }
+  }
+
+  /// Watches the device's own network report. The banner calls this when it
+  /// comes on screen, so the report counts before an account signs in. See
+  /// connection-status.instructions.md, "Before sign-in".
+  void watchDevice() {
+    _networkChanges ??= onNetworkChanged().listen(_onNetworkChanged);
+  }
+
+  /// Takes a result of the chat-server check: its first word before any
+  /// hold, and the hold's outcome. Before sign-in there is no sync loop, so
+  /// the check a failed sign-in request starts is the connection signal;
+  /// while a sync loop reports in, the sync decides and this says nothing.
+  /// See connection-status.instructions.md, "Before sign-in".
+  void onChatServerChecked(NetworkVerdict verdict) {
+    if (_syncReporting) return;
+    switch (verdict) {
+      case NetworkVerdict.offline:
+        _setLost(ConnectionStatus.offline);
+      case NetworkVerdict.filtered:
+        _setLost(ConnectionStatus.unreachable);
+        unawaited(_reportUnreachable());
+      case NetworkVerdict.reachable:
+        _onConnected();
+    }
+  }
+
+  /// A request to the chat server got an answer before sign-in: the
+  /// connection is back.
+  void onChatServerAnswered() {
+    if (_syncReporting) return;
+    _onConnected();
   }
 
   void _onNetworkChanged(List<ConnectivityResult> results) {
@@ -126,12 +167,26 @@ class ConnectionStatusController {
       _setLost(ConnectionStatus.offline);
       return;
     }
+    if (!status.value.isLost) return;
+    // Before sign-in no sync can confirm the connection is back: the device's
+    // report clears "offline", and the chat-server check decides whether the
+    // new network reaches the chat server.
+    if (!_syncReporting) {
+      if (status.value == ConnectionStatus.offline) {
+        _onConnected();
+      } else {
+        unawaited(
+          FilteredNetworkController.instance.check(
+            NetworkHostCategory.chatServer,
+          ),
+        );
+      }
+      return;
+    }
     // A new network may answer where the last one did not; the next sync
     // says whether the chat server does.
-    if (status.value.isLost) {
-      _classifiedAt = null;
-      _onLost();
-    }
+    _classifiedAt = null;
+    _onLost();
   }
 
   void _onLost() {
@@ -199,32 +254,42 @@ class ConnectionStatusController {
     );
   }
 
-  /// Forgets the connection state, for an account that signed out: its sync
-  /// loop has stopped, so nothing would clear a lost connection.
+  /// Forgets an account's connection state when it signs out: its sync loop
+  /// has stopped, so nothing would clear a lost connection. The device's own
+  /// report outlives the account, for the sign-in page.
   void reset() {
     _consecutiveFailures = 0;
-    _deviceReportsNoNetwork = false;
+    _syncReporting = false;
     _classifiedAt = null;
     _backOnlineTimer?.cancel();
     _backOnlineTimer = null;
-    unawaited(_networkChanges?.cancel());
-    _networkChanges = null;
-    status.value = ConnectionStatus.connected;
+    status.value = _deviceReportsNoNetwork
+        ? ConnectionStatus.offline
+        : ConnectionStatus.connected;
   }
 
-  static bool _isAppResumed() {
-    final state = WidgetsBinding.instance.lifecycleState;
-    return state == null || state == AppLifecycleState.resumed;
-  }
+  static bool _isAppInForeground() =>
+      switch (WidgetsBinding.instance.lifecycleState) {
+        // Null: the engine has not reported a state yet, so the app has just
+        // started. Inactive: a window that lost focus on the web or a
+        // computer, or a phone's notification shade or incoming call.
+        null || AppLifecycleState.resumed || AppLifecycleState.inactive => true,
+        AppLifecycleState.hidden ||
+        AppLifecycleState.paused ||
+        AppLifecycleState.detached => false,
+      };
 
   @visibleForTesting
   void resetForTest() {
+    _deviceReportsNoNetwork = false;
+    unawaited(_networkChanges?.cancel());
+    _networkChanges = null;
     reset();
     _classifying = null;
     probe = NetworkProbe.probe;
     onNetworkChanged = () => Connectivity().onConnectivityChanged;
     currentNetworkType = NetworkType.current;
-    isAppResumed = _isAppResumed;
+    isAppInForeground = _isAppInForeground;
   }
 }
 

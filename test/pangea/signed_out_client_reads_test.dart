@@ -81,6 +81,24 @@ void main() {
     expect(Room(id: roomId, client: client).isRoomAdmin, isFalse);
   });
 
+  test('canInviteMembers is false for a signed-out account', () async {
+    final client = await signedOutClient();
+    addTearDown(client.dispose);
+
+    expect(Room(id: roomId, client: client).canInviteMembers, isFalse);
+  });
+
+  test(
+    'canInviteMembers follows canInvite for the signed-in account',
+    () async {
+      final client = await getTestClient();
+      addTearDown(client.dispose);
+      final room = Room(id: roomId, client: client);
+
+      expect(room.canInviteMembers, room.canInvite);
+    },
+  );
+
   test('hasCompletedActivity is false without a user id', () {
     expect(
       CourseInfoSummariesModel({}).hasCompletedActivity(null, 'a1'),

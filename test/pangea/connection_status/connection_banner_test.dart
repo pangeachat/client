@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 
@@ -33,9 +36,20 @@ void main() {
       "You're offline. Pangea Chat will reconnect when your connection is back.";
   const unreachableText = "Can't reach Pangea Chat. Trying again…";
 
+  late StreamController<List<ConnectivityResult>> networkChanges;
+
+  setUp(() {
+    // The banner watches the device's own report from the moment it is on
+    // screen; a test must never reach the real plugin.
+    networkChanges = StreamController.broadcast();
+    ConnectionStatusController.instance.onNetworkChanged = () =>
+        networkChanges.stream;
+  });
+
   tearDown(() {
     FilteredNetworkController.instance.resetForTest();
     ConnectionStatusController.instance.resetForTest();
+    unawaited(networkChanges.close());
   });
 
   Widget app(Widget home) => MaterialApp(
@@ -137,6 +151,28 @@ void main() {
   });
 
   group('the connection banner', () {
+    // No account is signed in, so only the device's own report can show it.
+    testWidgets('before sign-in, shows the device\'s own report', (
+      tester,
+    ) async {
+      await tester.pumpWidget(app(const SizedBox()));
+      await tester.pumpAndSettle();
+      expect(find.text(offlineText), findsNothing);
+
+      networkChanges.add([ConnectivityResult.none]);
+      await tester.pump();
+      await tester.pump();
+      expect(find.text(offlineText), findsOneWidget);
+
+      networkChanges.add([ConnectivityResult.wifi]);
+      await tester.pump();
+      await tester.pump();
+      expect(find.text('Back online'), findsOneWidget);
+
+      await tester.pump(ConnectionStatusController.backOnlineFor);
+      expect(find.text('Back online'), findsNothing);
+    });
+
     testWidgets('says which way the connection is lost', (tester) async {
       await tester.pumpWidget(app(const SizedBox()));
       await tester.pumpAndSettle();

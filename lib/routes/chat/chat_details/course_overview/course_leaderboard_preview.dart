@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/course_leaderboard.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_button.dart';
@@ -81,7 +82,7 @@ class CourseLeaderboardPreview extends StatelessWidget {
                   title: title,
                   icon: Icons.group_outlined,
                   actions: [
-                    if (room.canInvite)
+                    if (room.canInviteMembers)
                       CourseSectionShortcut(
                         icon: Icons.person_add_outlined,
                         label: l10n.invite,
