@@ -170,12 +170,19 @@ extension LaunchActivitySession on Client {
       waitForSync: false,
     );
 
+    onStage?.call(ActivityLaunchStage.openingRoom);
+    // One bounded wait for the room's initial state serves both the launcher
+    // and the background setup below: two concurrent waits on the same room
+    // reported one slow creation twice (CLIENT-EW3 and CLIENT-F2B).
+    final sessionState = _waitForSessionState(roomID);
+
     // Course sharing and the bot invite are best-effort, so they finish behind
     // the chat instead of behind the loading dialog (#9297).
-    unawaited(_finishActivitySessionSetup(roomID, spaces.values.toList()));
+    unawaited(
+      _finishActivitySessionSetup(roomID, spaces.values.toList(), sessionState),
+    );
 
-    onStage?.call(ActivityLaunchStage.openingRoom);
-    await _waitForSessionState(roomID);
+    await sessionState;
     return roomID;
   }
 
@@ -210,14 +217,16 @@ extension LaunchActivitySession on Client {
   Future<void> _finishActivitySessionSetup(
     String roomID,
     List<Room> spaces,
+    Future<void> sessionState,
   ) async {
     try {
       // Sharing needs the room in the local store (addSpaceChildKeepingParents
-      // skips a room it cannot resolve).
-      await waitForCreatedRoom(roomID);
+      // skips a room it cannot resolve); the launcher's wait for the room's
+      // initial state covers that.
+      await sessionState;
     } catch (_) {
-      // silent-ok: waitForCreatedRoom already logged it; sharing and the
-      // invite below are still worth attempting.
+      // silent-ok: the launcher awaits the same future and reports it;
+      // sharing and the invite below are still worth attempting.
     }
 
     for (final space in spaces) {
