@@ -7,6 +7,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_video_tag.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
+import 'package:fluffychat/routes/world/world_map_selection.dart';
 import 'package:fluffychat/widgets/completed_stamp.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
 
@@ -51,6 +52,10 @@ class ActivitySuggestionCard extends StatelessWidget {
   /// a resting card stays plain.
   final bool frameWhenResting;
 
+  /// The map's focused card: its frame darkens slightly, the selected look
+  /// it shares with the map's pins ([WorldMapSelection]).
+  final bool selected;
+
   /// A coursemate pinged the course to fill this activity's open session:
   /// the live-state pill shows the ping's bell in place of its state glyph.
   final bool pinged;
@@ -77,6 +82,7 @@ class ActivitySuggestionCard extends StatelessWidget {
     this.xpEarned = 0,
     this.pinged = false,
     this.frameWhenResting = false,
+    this.selected = false,
     this.imageHeight,
   });
 
@@ -96,11 +102,14 @@ class ActivitySuggestionCard extends StatelessWidget {
     // hue, matching the map's pins.
     final stateColor = pinState?.bodyColor(context);
     final onState = pinState?.onBodyColor(context);
-    final frameColor =
+    final restingFrame =
         stateColor ??
         (frameWhenResting
             ? ActivityPinState.available.bodyColor(context)
             : null);
+    final frameColor = selected && restingFrame != null
+        ? WorldMapSelection.darken(restingFrame)
+        : restingFrame;
 
     // Shared style for the mode + participant-count labels
     final labelStyle = fontSizeSmall != null

@@ -6,6 +6,7 @@ import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dar
 import 'package:fluffychat/routes/world/world_map_card_dismiss_button.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
+import 'package:fluffychat/routes/world/world_map_selection.dart';
 
 /// A large map pin drawn as the activity's own card (under
 /// [kMapActivityCards]): the course plan's [ActivitySuggestionCard] with a
@@ -60,18 +61,23 @@ class WorldMapActivityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     // The pointer continues the card's frame (#9559): the live state's hue,
     // else the not-started pin's colour a resting map card is outlined in —
     // the same colour as the mid pin or dot it stands for.
-    final tailColor = _live
+    final frameColor = _live
         ? state.bodyColor(context)
         : ActivityPinState.available.bodyColor(context);
+    // Focused, the card takes the selected look it shares with the pins
+    // ([WorldMapSelection]): no outline — the frame and pointer darken
+    // slightly and the card glows in its frame's colour.
+    final tailColor = isFocused
+        ? WorldMapSelection.darken(frameColor)
+        : frameColor;
     final plan = this.plan;
     final title = plan?.title ?? card.title;
 
     final body = plan == null
-        ? _PlainCard(title: title, live: _live)
+        ? _PlainCard(title: title, live: _live, selected: isFocused)
         : ActivitySuggestionCard(
             activity: plan,
             width: PinSize.mapCardWidth,
@@ -85,6 +91,7 @@ class WorldMapActivityCard extends StatelessWidget {
             openSlots: openSlots,
             pinged: pinged && _live,
             frameWhenResting: true,
+            selected: isFocused,
             timesCompleted: played ? 1 : 0,
             xpEarned: played ? xpEarned : 0,
           );
@@ -101,32 +108,23 @@ class WorldMapActivityCard extends StatelessWidget {
               hitTestBehavior: HitTestBehavior.deferToChild,
               child: GestureDetector(
                 onTap: onTap,
-                child: Material(
-                  color: Colors.transparent,
-                  elevation: 3.0,
-                  shadowColor: Colors.black54,
-                  borderRadius: BorderRadius.circular(PinSize.mapCardRadius),
-                  child: body,
-                ),
-              ),
-            ),
-            if (isFocused)
-              Positioned.fill(
-                child: IgnorePointer(
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                        PinSize.mapCardFocusRadius,
-                      ),
-                      border: Border.all(
-                        color: theme.colorScheme.primary,
-                        width: 2.0,
-                        strokeAlign: BorderSide.strokeAlignOutside,
-                      ),
-                    ),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(PinSize.mapCardRadius),
+                    boxShadow: isFocused
+                        ? WorldMapSelection.glow(frameColor)
+                        : null,
+                  ),
+                  child: Material(
+                    color: Colors.transparent,
+                    elevation: 3.0,
+                    shadowColor: Colors.black54,
+                    borderRadius: BorderRadius.circular(PinSize.mapCardRadius),
+                    child: body,
                   ),
                 ),
               ),
+            ),
             if (onClose case final onClose?)
               Positioned(
                 top: 4.0,
@@ -152,7 +150,14 @@ class _PlainCard extends StatelessWidget {
   /// replaces it will.
   final bool live;
 
-  const _PlainCard({required this.title, required this.live});
+  /// Focused: the outline darkens, as the loaded card's frame does.
+  final bool selected;
+
+  const _PlainCard({
+    required this.title,
+    required this.live,
+    required this.selected,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -166,7 +171,11 @@ class _PlainCard extends StatelessWidget {
         border: live
             ? null
             : Border.all(
-                color: ActivityPinState.available.bodyColor(context),
+                color: selected
+                    ? WorldMapSelection.darken(
+                        ActivityPinState.available.bodyColor(context),
+                      )
+                    : ActivityPinState.available.bodyColor(context),
                 width: 2.0,
               ),
       ),

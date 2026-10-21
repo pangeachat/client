@@ -120,10 +120,8 @@ abstract class PinSize {
   /// ring.
   static const double mapCardFocusGutter = 4.0;
 
-  /// The corner radius of an activity card, and of the focus ring drawn just
-  /// outside it.
+  /// The corner radius of an activity card.
   static const double mapCardRadius = 12.0;
-  static const double mapCardFocusRadius = mapCardRadius + 1.0;
 
   /// The marker box of an activity card: the card, its tail, and the
   /// focus gutter on the sides and top. The one size every layer and

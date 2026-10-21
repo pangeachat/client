@@ -27,14 +27,11 @@ class CompletedStamp extends StatelessWidget {
     super.key,
   });
 
-  /// The coin's disc (#9559): `goldGraphic`, a deeper gold in light (T50)
-  /// and the bright gold in dark (T80), so the coin matches the XP marks
-  /// elsewhere in each theme.
-  static Color paperOf(ThemeData theme) => theme.pangea.goldGraphic;
+  /// The coin's disc (#9559): the bright fixed gold in both themes.
+  static Color paperOf(ThemeData theme) => theme.pangea.goldFixedDim;
 
-  /// The coin's rings and check: `onGoldFixed` (T10) in both themes — 3.8:1
-  /// on the light disc and 10:1 on the dark one, past the 3:1 floor for
-  /// marks.
+  /// The coin's rings and check: the fixed gold's own ink, about 10:1 on
+  /// the disc in both themes.
   static Color inkOf(ThemeData theme) => theme.pangea.onGoldFixed;
 
   /// The tab's see-through pill, for the photo it rides: the surface in

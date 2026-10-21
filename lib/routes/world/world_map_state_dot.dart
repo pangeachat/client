@@ -530,8 +530,8 @@ class _WorldMapStateDot extends StatelessWidget {
   }
 }
 
-/// The small-tier played dot (#9559): the completed stamp's gold coin reduced
-/// to one ring round a check, at a small dot's size.
+/// The small-tier played dot (#9559): the completed stamp's coin reduced to
+/// one ring round a check, at a small dot's size.
 class _SmallPlayedDotPainter extends CustomPainter {
   final Color ink;
   final Color paper;
