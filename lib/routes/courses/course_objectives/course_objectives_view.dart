@@ -11,6 +11,8 @@ import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/course_plan_return.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
@@ -35,6 +37,7 @@ import 'package:fluffychat/routes/courses/course_objectives/activity_live_state_
 import 'package:fluffychat/routes/courses/course_objectives/mission_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
 import 'package:fluffychat/routes/courses/course_objectives/suggested_activities.dart';
+import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -207,10 +210,23 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     if (_hostsTutorial) {
       _tutorials
         ..unregisterLauncher(TutorialEnum.welcome, _launchWelcomeTutorial)
-        ..unregisterLauncher(TutorialEnum.coursePlan, _launchCoursePlanTutorial)
-        // Nothing can show the remaining steps once this list is gone. Progress
-        // is persisted, so the next visit resumes where this one left off.
-        ..releaseSequence(TutorialSequences.courseOrientationSequence);
+        ..unregisterLauncher(
+          TutorialEnum.coursePlan,
+          _launchCoursePlanTutorial,
+        );
+      // Nothing can show the remaining steps once this list is gone. Progress
+      // is persisted, so the next visit resumes where this one left off.
+      //
+      // Unless a step is mid-advance: the Play step's tap opens the activity,
+      // which takes this page down while the overlay is still waiting on the
+      // panel to open. Released here, the sequence would end before that
+      // advance could record the step, and Play would light again on every
+      // return to the course. Left alone, the advance saves it and ends the
+      // run itself (tutorials.instructions.md, "Play takes the course page
+      // down").
+      if (!_tutorials.state.model.isStepTransitioning) {
+        _tutorials.releaseSequence(TutorialSequences.courseOrientationSequence);
+      }
     }
     super.dispose();
   }
@@ -307,8 +323,11 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   Future<void> _launchCoursePlanTutorial() async {
     if (!mounted) return;
     final room = widget.room;
-    final courseName =
-        room?.getLocalizedDisplayname(MatrixLocals(L10n.of(context))) ?? '';
+    final l10n = L10n.of(context);
+    final courseName = room?.getLocalizedDisplayname(MatrixLocals(l10n)) ?? '';
+    // Held, not read through [context] later: the Play step's gate and copy
+    // run after Play has taken this page down, when the context is gone.
+    final router = GoRouter.of(context);
 
     _tutorials.launchTutorial(
       context: context,
@@ -323,9 +342,33 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
             canShowNextStep: () => true,
             tooltipArgs: () => [courseName],
           ),
+          // The Mission card's Play: the first thing to do in the course. A
+          // tap ANYWHERE runs it, like the map's pin step — the learner cannot
+          // miss it and cannot pick the wrong one — and the step advances once
+          // what Play opens is on screen (tutorials.instructions.md,
+          // "coursePlan").
+          TutorialStepData.single(
+            targetKey: TutorialTargetIds.missionPlayButton,
+            onTap: () async => _missionPlayAction?.call(),
+            canShowNextStep: () => _playOpened(router),
+            tooltipArgs: () => [_missionPlayLabel(l10n)],
+          ),
         ],
       ),
       isFocused: true,
+    );
+  }
+
+  /// Whether Play's tap landed: its activity, or the session it resumed, is
+  /// the left column now.
+  static bool _playOpened(GoRouter router) {
+    final left = parseOpenPanels(
+      router.routeInformationProvider.value.uri,
+    ).left;
+    return left.any(
+      (token) =>
+          token.type == PanelTypesEnum.activity ||
+          token.type == PanelTypesEnum.room,
     );
   }
 
@@ -488,6 +531,64 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     return null;
   }
 
+  /// The Mission the card shows: the one the learner picked from the circles,
+  /// else the course's current Mission. Null while the course is complete or
+  /// has no Mission.
+  QuestObjectiveGroup? get _missionOnShow =>
+      widget.objectivesProvider.objectiveGroup(widget.missionId) ??
+      widget.objectivesProvider.currentObjectiveGroup;
+
+  /// [current]'s activities ordered by the same Priority matrix the map ranks
+  /// pins by, the learner's own unfinished sessions first (#9437). Finished
+  /// activities drop out unless a session of them is live. The `starter` term
+  /// applies here as on the map, while the learner has no finished activity
+  /// (world-map.instructions.md, "Priority matrix").
+  List<QuestActivity> _rankedActivities(QuestObjectiveGroup current) => [
+    for (final suggestion in rankSuggestedActivities(
+      groups: [current],
+      missionGradient: widget.objectivesProvider.missionGradient,
+      signalsFor: _signalsFor,
+      cap: null,
+      includeOngoing: true,
+      isNewLearner: widget.room?.client.hasAnyFinishedActivitySession == false,
+    ))
+      suggestion.activity,
+  ];
+
+  /// What Play does for [current]: resume the session the learner holds a
+  /// role in, so a started activity gets finished before a new one starts;
+  /// else open the row's top item — a coursemate's open session first, else
+  /// the best unfinished activity — and, once every activity is finished, the
+  /// Mission's first activity for another round (#9420). Null when there is
+  /// nothing to open, or in a preview.
+  VoidCallback? _playActionFor(
+    QuestObjectiveGroup current,
+    List<QuestActivity> ranked,
+  ) {
+    if (widget.readOnly) return null;
+    final ongoing = _ongoingSession(current);
+    if (ongoing != null) return () => _openSession(ongoing.roomId);
+    final target = ranked.firstOrNull ?? current.activities.firstOrNull;
+    return target == null ? null : () => _openActivity(target);
+  }
+
+  /// Play's action as the card shows it now — what the course tutorial's Play
+  /// step runs on a tap anywhere.
+  VoidCallback? get _missionPlayAction {
+    final current = _missionOnShow;
+    if (current == null) return null;
+    return _playActionFor(current, _rankedActivities(current));
+  }
+
+  /// Play's label as the card draws it now — "Continue" while it resumes a
+  /// session, else "Play" — so the tutorial's copy names the button the
+  /// learner sees.
+  String _missionPlayLabel(L10n l10n) {
+    final current = _missionOnShow;
+    final resumes = current != null && _ongoingSession(current) != null;
+    return resumes ? l10n.continueActivity : l10n.playMission;
+  }
+
   void _openSession(String roomId) {
     PanelEntryIntent.instance.armForSwap();
     context.go(
@@ -583,34 +684,13 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     // them is live. Empty only while the course is complete
                     // or has no Mission; the page renders its own card for
                     // that.
-                    final current =
-                        widget.objectivesProvider.objectiveGroup(
-                          widget.missionId,
-                        ) ??
-                        widget.objectivesProvider.currentObjectiveGroup;
+                    final current = _missionOnShow;
                     if (current == null) return const SizedBox.shrink();
                     final missionId = current.objective.id;
-                    final suggested = rankSuggestedActivities(
-                      groups: [current],
-                      missionGradient:
-                          widget.objectivesProvider.missionGradient,
-                      signalsFor: _signalsFor,
-                      cap: null,
-                      includeOngoing: true,
-                    );
-                    final activities = [
-                      for (final suggestion in suggested) suggestion.activity,
-                    ];
-                    // Play opens the row's top item — a coursemate's open
-                    // session first, else the best unfinished activity — and,
-                    // once every activity is finished, the Mission's first
-                    // activity for another round (#9420).
-                    final playTarget = activities.isNotEmpty
-                        ? activities.first
-                        : current.activities.firstOrNull;
-                    // ...but a session the learner is already in, in this
-                    // Mission, comes first: Play resumes it, so a started
-                    // activity gets finished before a new one starts.
+                    final activities = _rankedActivities(current);
+                    // A session the learner is already in, in this Mission,
+                    // is what Play resumes ([_playActionFor]); the card says
+                    // so under its label.
                     final ongoing = _ongoingSession(current);
                     final hasProgress = widget.room != null;
                     final position = widget
@@ -628,17 +708,16 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                               missionId,
                             )
                           : null,
-                      onPlay: widget.readOnly
-                          ? null
-                          : ongoing != null
-                          ? () => _openSession(ongoing.roomId)
-                          : playTarget == null
-                          ? null
-                          : () => _openActivity(playTarget),
+                      onPlay: _playActionFor(current, activities),
                       playLabel: ongoing == null
                           ? null
                           : L10n.of(context).continueActivity,
                       playDetail: ongoing?.activity.plan.title,
+                      // The course tutorial's Play step lights it; only the
+                      // hosting instance claims the id (one claimant per id).
+                      playTutorialTargetId: _hostsTutorial
+                          ? TutorialTargetIds.missionPlayButton
+                          : null,
                       onPractice: () => startPractice(
                         context,
                         ConstructTypeEnum.vocab,

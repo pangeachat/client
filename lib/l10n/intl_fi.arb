@@ -3516,7 +3516,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-16 16:32:56.989006",
+    "@@last_modified": "2026-10-19 14:11:42.696699",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10042,5 +10042,6 @@
     "activityCompleted": "Suoritettu",
     "completedTimes": "Suoritettu {count} kertaa",
     "classLocation": "Luokan sijainti",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Tämä on ensimmäinen asia, joka sinun tulee tehdä kurssillasi. Aloita ensimmäinen tehtävä napauttamalla {play}!"
 }

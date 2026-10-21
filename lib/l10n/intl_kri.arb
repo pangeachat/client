@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-16 16:33:03.254381",
+    "@@last_modified": "2026-10-19 14:11:44.791990",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Dɔn",
     "completedTimes": "Dɔn {count} tɛm",
     "classLocation": "Klas ples",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Dis na di fos tin fɔ du insaid yu kos. Tap {play} fɔ stat yu fos aktiviti!"
 }

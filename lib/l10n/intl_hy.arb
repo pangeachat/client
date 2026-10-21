@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-16 16:33:01.492576",
+    "@@last_modified": "2026-10-19 14:11:43.290163",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Ավարտված է",
     "completedTimes": "Ավարտված է {count} անգամ",
     "classLocation": "Դասի վայրը",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Սա առաջին բանն է, որ պետք է անել ձեր դասընթացում։ Հպեք {play}-ին՝ ձեր առաջին գործունեությունը սկսելու համար։"
 }

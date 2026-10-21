@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-16 16:32:59.954936",
+    "@@last_modified": "2026-10-19 14:11:42.800215",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Ua tiav",
     "completedTimes": "Ua tiav {count} zaug",
     "classLocation": "Qhov chaw kawm",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Nov yog thawj yam ua hauv koj qhov kev kawm. Coj {play} los pib koj thawj qhov kev ua si!"
 }

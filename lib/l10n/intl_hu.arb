@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-16 16:33:00.272432",
+    "@@last_modified": "2026-10-19 14:11:43.637995",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10108,5 +10108,6 @@
     "activityCompleted": "Elkészült",
     "completedTimes": "{count} alkalommal elvégezve",
     "classLocation": "Az óra helye",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Ez az első dolog, amit meg kell tenned a kurzusodon. Koppints a {play} gombra az első tevékenység elindításához!"
 }

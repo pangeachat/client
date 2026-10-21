@@ -1256,7 +1256,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-16 16:33:15.895220",
+    "@@last_modified": "2026-10-19 14:11:50.478295",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10959,5 +10959,6 @@
     "activityCompleted": "已完成",
     "completedTimes": "已完成 {count} 次",
     "classLocation": "上課地點",
-    "xpThresholdSuffix": "/ {threshold} 經驗值"
+    "xpThresholdSuffix": "/ {threshold} 經驗值",
+    "tutorialCoursePlanPlay": "呢個係你課程嘅第一步。點擊 {play} 開始你嘅第一個活動！"
 }

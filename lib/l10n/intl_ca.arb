@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:32:55.063851",
+    "@@last_modified": "2026-10-19 14:11:40.839597",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10132,5 +10132,6 @@
     "activityCompleted": "Completada",
     "completedTimes": "Completada {count} vegades",
     "classLocation": "Ubicació de la classe",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Això és el primer que has de fer al teu curs. Toca {play} per començar la teva primera activitat!"
 }

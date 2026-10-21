@@ -47,8 +47,9 @@ class ActivityCardGoal {
 /// **non-localized** structural metadata so the map can rank and show progress
 /// without a full-plan hydration: [roleIds]/[roleCount] (the multi-person
 /// deprioritize, #7435), thin [goals] (per-role progress), [mode], the
-/// [ratingAverage]/[ratingCount], and [originalL1]. The heavy, localized content
-/// (role personas, goal copy, vocab, media) stays off the pin.
+/// [ratingAverage]/[ratingCount], [originalL1], and the row's [starter] flag.
+/// The heavy, localized content (role personas, goal copy, vocab, media) stays
+/// off the pin.
 class QuestActivityCard {
   final String activityId;
   final String title;
@@ -98,6 +99,42 @@ class QuestActivityCard {
   /// The activity's source language of authoring (non-localized).
   final String? originalL1;
 
+  /// Marked a **starter** on its row: the generic two-role A1 meet-and-greet a
+  /// brand-new learner is pointed at first (org activities doc, "Starter
+  /// activities"). Read from the top-level `starter` of both the bbox card and
+  /// the course listing's entry ([starterFlagFrom]); false when the server
+  /// does not send it, so the steer is inert until the content and server
+  /// halves ship — except for the [temporaryStarterActivityIds] stopgap.
+  final bool starter;
+
+  /// TEMPORARY — remove with its uses once cms#504 and choreo#3383 are
+  /// deployed and the four rows' `starter` flags are ticked.
+  ///
+  /// The four starter rows authored for pangeachat/.github#734, treated as
+  /// starters while the server sends no `starter` field, so a working version
+  /// can be shown before the CMS and choreo halves ship (the user's call,
+  /// recorded on client#9562). A hard-coded id set is exactly what the org
+  /// activities doc's starter design rules out; this one is tolerable only
+  /// because `activity_id` is the env-stable content id the sync engine
+  /// preserves, so the same four ids name the rows on staging and production.
+  static const Set<String> temporaryStarterActivityIds = {
+    'c7fc5fb3-7c62-44c9-bc93-840ecb703b81', // es — Hello in Plaza Mayor
+    '256ffd18-637c-4b15-b591-9b735e118f61', // en — First Hello by the Fountain
+    'f4f2b1fb-8c6d-4a69-b2ae-4091981b4ff9', // fr — First Hello by the Pond
+    '8dd18ff7-e7ba-4ccd-bb04-765f36693766', // de — Hello at the Brandenburg Gate
+  };
+
+  /// The row's starter flag from [json]'s top-level `starter`: the server's
+  /// value whenever it sends one, else the [temporaryStarterActivityIds]
+  /// stopgap. The one place every read of the flag goes through — both card
+  /// parsers and the course outline's [QuestActivity] — so the stopgap is
+  /// removed in one edit.
+  static bool starterFlagFrom(Map<String, dynamic> json, String activityId) {
+    final flag = json['starter'];
+    if (flag is bool) return flag;
+    return temporaryStarterActivityIds.contains(activityId);
+  }
+
   const QuestActivityCard({
     required this.activityId,
     required this.title,
@@ -114,6 +151,7 @@ class QuestActivityCard {
     this.ratingAverage,
     this.ratingCount,
     this.originalL1,
+    this.starter = false,
   });
 
   /// True when [query] matches the activity's searchable text (title +
@@ -163,8 +201,9 @@ class QuestActivityCard {
     final coords = plan['coordinates'];
     final refs = (json['learningObjectiveRefs'] as List?) ?? const [];
     final rolesJson = plan['roles'] as List?;
+    final activityId = (plan['activity_id'] ?? json['id']) as String;
     return QuestActivityCard(
-      activityId: (plan['activity_id'] ?? json['id']) as String,
+      activityId: activityId,
       title: (plan['title'] ?? '') as String,
       l2: (plan['l2'] ?? '') as String,
       coordinates: coords is List
@@ -182,6 +221,7 @@ class QuestActivityCard {
       // and the card shows), so a course-scoped pin can dim when the course
       // lacks enough members to start it. Null when roles weren't projected.
       roleCount: rolesJson?.length,
+      starter: starterFlagFrom(json, activityId),
     );
   }
 
@@ -193,8 +233,9 @@ class QuestActivityCard {
     final refs = (json['learning_objective_refs'] as List?) ?? const [];
     final rolesJson = (json['roles'] as List?) ?? const [];
     final goalsJson = (json['goals'] as List?) ?? const [];
+    final activityId = json['activity_id'] as String;
     return QuestActivityCard(
-      activityId: json['activity_id'] as String,
+      activityId: activityId,
       title: (json['title'] ?? '') as String,
       l2: (json['l2'] ?? '') as String,
       coordinates: coords is List
@@ -221,6 +262,7 @@ class QuestActivityCard {
       ratingAverage: (json['rating_average'] as num?)?.toDouble(),
       ratingCount: json['rating_count'] as int?,
       originalL1: json['original_l1'] as String?,
+      starter: starterFlagFrom(json, activityId),
     );
   }
 }

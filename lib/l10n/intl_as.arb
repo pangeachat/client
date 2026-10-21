@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-16 16:32:53.929058",
+    "@@last_modified": "2026-10-19 14:11:40.192864",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "সম্পূৰ্ণ হ'ল",
     "completedTimes": "{count} বাৰ সম্পূৰ্ণ হ'ল",
     "classLocation": "শ্ৰেণীৰ স্থান",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "এইটো আপোনাৰ পাঠ্যক্ৰমত কৰিবলগীয়া প্ৰথম কাম। আপোনাৰ প্ৰথম কাৰ্য্যকলাপ আৰম্ভ কৰিবলৈ {play} টিপক!"
 }

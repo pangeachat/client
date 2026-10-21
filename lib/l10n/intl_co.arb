@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-16 16:32:55.967684",
+    "@@last_modified": "2026-10-19 14:11:40.544526",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Cumpiitu",
     "completedTimes": "Cumpiitu {count} volte",
     "classLocation": "Locu di a classa",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Hè a prima cosa da fà in u vostru corsu. Toccate {play} per principià a vostra prima attività!"
 }

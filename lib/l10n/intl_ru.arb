@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-16 16:33:10.250957",
+    "@@last_modified": "2026-10-19 14:11:47.635083",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10977,5 +10977,6 @@
     "activityCompleted": "Выполнено",
     "completedTimes": "Выполнено {count} раз",
     "classLocation": "Место проведения занятия",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Это первое, что нужно сделать в вашем курсе. Нажмите {play}, чтобы начать первое занятие!"
 }

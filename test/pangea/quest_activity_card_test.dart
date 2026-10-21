@@ -89,6 +89,46 @@ void main() {
       expect(c.originalL1, 'en');
     });
 
+    test('parses the row-level starter flag, false when absent (#9561)', () {
+      expect(
+        QuestActivityCard.fromBboxCard({...card(), 'starter': true}).starter,
+        isTrue,
+      );
+      expect(
+        QuestActivityCard.fromBboxCard({...card(), 'starter': false}).starter,
+        isFalse,
+      );
+      // An older choreo sends no flag: no starters, and the steer is inert.
+      expect(QuestActivityCard.fromBboxCard(card()).starter, isFalse);
+    });
+
+    // TEMPORARY with QuestActivityCard.temporaryStarterActivityIds: delete
+    // this test when the stopgap goes.
+    test('the temporary allowlist stands in only while the server sends no '
+        'flag — a server value always wins', () {
+      final id = QuestActivityCard.temporaryStarterActivityIds.first;
+      expect(
+        QuestActivityCard.fromBboxCard({...card(), 'activity_id': id}).starter,
+        isTrue,
+      );
+      expect(
+        QuestActivityCard.fromBboxCard({
+          ...card(),
+          'activity_id': id,
+          'starter': false,
+        }).starter,
+        isFalse,
+      );
+      expect(
+        QuestActivityCard.fromBboxCard({
+          ...card(),
+          'activity_id': id,
+          'starter': null,
+        }).starter,
+        isTrue,
+      );
+    });
+
     test('role_count stays null when an older choreo omits roles (inert)', () {
       final c = QuestActivityCard.fromBboxCard(card());
       expect(c.roleCount, isNull);
@@ -117,6 +157,33 @@ void main() {
       },
       'learningObjectiveRefs': ['lo-a'],
     };
+
+    test('carries the row-level starter flag, false when absent (#9561)', () {
+      expect(
+        QuestActivityCard.fromJson({...doc(), 'starter': true}).starter,
+        isTrue,
+      );
+      expect(QuestActivityCard.fromJson(doc()).starter, isFalse);
+    });
+
+    // TEMPORARY with QuestActivityCard.temporaryStarterActivityIds: delete
+    // this test when the stopgap goes.
+    test('the temporary allowlist applies to the course path too, and only '
+        'while the server sends no flag', () {
+      final id = QuestActivityCard.temporaryStarterActivityIds.first;
+      Map<String, dynamic> listed({bool? starter}) => {
+        'res': {
+          'plan': {...(doc()['res'] as Map)['plan'] as Map, 'activity_id': id},
+        },
+        'learningObjectiveRefs': const ['lo-a'],
+        'starter': starter,
+      };
+      expect(QuestActivityCard.fromJson(listed()).starter, isTrue);
+      expect(
+        QuestActivityCard.fromJson(listed(starter: false)).starter,
+        isFalse,
+      );
+    });
 
     test('carries the CEFR level from res.plan.cefr_level (#8243)', () {
       final c = QuestActivityCard.fromJson(doc());

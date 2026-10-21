@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-16 16:33:06.714973",
+    "@@last_modified": "2026-10-19 14:11:46.478469",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "লোইশিনখ্রে",
     "completedTimes": "{count} শরুক লোইশিনখ্রে",
     "classLocation": "ক্লাস লম",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Masini nanggi course-ta touba ahanba thabakni. Nanggi ahanba activity houba ngamnanaba {play}-da tap tou!"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-16 16:32:57.034575",
+    "@@last_modified": "2026-10-19 14:11:41.780833",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10002,5 +10002,6 @@
     "activityCompleted": "Lõpetatud",
     "completedTimes": "Lõpetatud {count} korda",
     "classLocation": "Klassi asukoht",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "See on esimene asi, mida oma kursusel teha. Puuduta {play}, et alustada oma esimest tegevust!"
 }

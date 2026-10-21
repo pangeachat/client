@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-16 16:32:53.253836",
+    "@@last_modified": "2026-10-19 14:11:39.716162",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Voltooi",
     "completedTimes": "{count} keer voltooi",
     "classLocation": "Klasligging",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Dit is die eerste ding om in jou kursus te doen. Tik {play} om jou eerste aktiwiteit te begin!"
 }

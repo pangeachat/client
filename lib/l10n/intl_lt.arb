@@ -2956,7 +2956,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-16 16:33:05.410541",
+    "@@last_modified": "2026-10-19 14:11:45.056692",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10783,5 +10783,6 @@
     "activityCompleted": "Atlikta",
     "completedTimes": "Atlikta {count} kartus",
     "classLocation": "Pamokos vieta",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Tai yra pirmas dalykas, kurį reikia padaryti jūsų kurse. Bakstelėkite {play}, kad pradėtumėte savo pirmąją veiklą!"
 }

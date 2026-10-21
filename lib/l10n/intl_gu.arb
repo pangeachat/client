@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-16 16:33:00.160896",
+    "@@last_modified": "2026-10-19 14:11:42.059423",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "પૂર્ણ થયું",
     "completedTimes": "{count} વાર પૂર્ણ થયું",
     "classLocation": "વર્ગનું સ્થાન",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "આ તમારા કોર્સમાં કરવાની પ્રથમ વસ્તુ છે. તમારી પ્રથમ પ્રવૃત્તિ શરૂ કરવા માટે {play} પર ટૅપ કરો!"
 }

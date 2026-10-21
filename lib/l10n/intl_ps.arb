@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-16 16:33:09.133611",
+    "@@last_modified": "2026-10-19 14:11:47.067220",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "بشپړ شو",
     "completedTimes": "{count} ځله بشپړ شو",
     "classLocation": "د ټولګي موقعیت",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "دا ستاسو په کورس کې لومړی کار دی. د خپل لومړي فعالیت پیل کولو لپاره {play} ټایپ کړئ!"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-16 16:33:18.286525",
+    "@@last_modified": "2026-10-19 14:11:50.861947",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Kuqediwe",
     "completedTimes": "Kuqediwe izikhathi eziyi-{count}",
     "classLocation": "Indawo yekilasi",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Lena into yokuqala okufanele uyenze esifundweni sakho. Thepha u-{play} ukuze uqale umsebenzi wakho wokuqala!"
 }

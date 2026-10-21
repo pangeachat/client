@@ -3389,7 +3389,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-16 16:32:55.973243",
+    "@@last_modified": "2026-10-19 14:11:40.881316",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10877,5 +10877,6 @@
     "activityCompleted": "Ολοκληρώθηκε",
     "completedTimes": "Ολοκληρώθηκε {count} φορές",
     "classLocation": "Τοποθεσία μαθήματος",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Αυτό είναι το πρώτο πράγμα που πρέπει να κάνετε στο μάθημά σας. Πατήστε {play} για να ξεκινήσετε την πρώτη σας δραστηριότητα!"
 }

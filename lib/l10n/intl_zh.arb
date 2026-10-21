@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-16 16:33:15.569490",
+    "@@last_modified": "2026-10-19 14:11:50.676261",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10005,5 +10005,6 @@
     "activityCompleted": "已完成",
     "completedTimes": "已完成 {count} 次",
     "classLocation": "上课地点",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "这是您课程中的第一件事。点击{play}开始您的第一个活动！"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-16 16:33:02.832877",
+    "@@last_modified": "2026-10-19 14:11:43.786642",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Lokið",
     "completedTimes": "Lokið {count} sinnum",
     "classLocation": "Staðsetning kennslustundar",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Þetta er fyrsta verkefnið í námskeiðinu þínu. Pikkaðu á {play} til að hefja fyrstu æfinguna þína!"
 }

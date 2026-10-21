@@ -125,6 +125,30 @@ void main() {
       expect(card.roleCount, 2);
     });
 
+    test('passes the row-level starter flag through to the card (#9561)', () {
+      final starter = QuestActivityCard.fromJson(
+        QuestRepo.cmsDocShapeFromEntry({...entry('act-1'), 'starter': true}),
+      );
+      expect(starter.starter, isTrue);
+      // An entry without the flag (an older choreo) is not a starter.
+      expect(
+        QuestActivityCard.fromJson(
+          QuestRepo.cmsDocShapeFromEntry(entry('act-2')),
+        ).starter,
+        isFalse,
+      );
+      // TEMPORARY with QuestActivityCard.temporaryStarterActivityIds: an
+      // allowlisted id with no flag reads as a starter on this path too.
+      expect(
+        QuestActivityCard.fromJson(
+          QuestRepo.cmsDocShapeFromEntry(
+            entry(QuestActivityCard.temporaryStarterActivityIds.first),
+          ),
+        ).starter,
+        isTrue,
+      );
+    });
+
     test('adapts an entry to the shared plan parser with a version pin', () {
       final plan = activityPlanFromV2(
         QuestRepo.cmsDocShapeFromEntry(entry('act-1')),

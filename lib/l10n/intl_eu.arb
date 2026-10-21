@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-16 16:32:57.161734",
+    "@@last_modified": "2026-10-19 14:11:42.517592",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10005,5 +10005,6 @@
     "activityCompleted": "Osatuta",
     "completedTimes": "{count} aldiz osatuta",
     "classLocation": "Klasearen kokapena",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Hau da zure ikastaroan egin beharreko lehen gauza. Sakatu {play} zure lehen jarduera hasteko!"
 }

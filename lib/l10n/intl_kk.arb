@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-16 16:33:02.827621",
+    "@@last_modified": "2026-10-19 14:11:45.229813",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Аяқталды",
     "completedTimes": "{count} рет аяқталды",
     "classLocation": "Сабақ орны",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Бұл сіздің курсыңыздағы бірінші іс. Алғашқы әрекетіңізді бастау үшін {play} түймесін басыңыз!"
 }

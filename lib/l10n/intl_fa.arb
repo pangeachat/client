@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:32:57.179931",
+    "@@last_modified": "2026-10-19 14:11:41.667495",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10093,5 +10093,6 @@
     "activityCompleted": "تکمیل شد",
     "completedTimes": "{count} بار تکمیل شد",
     "classLocation": "مکان کلاس",
-    "xpThresholdSuffix": "/ {threshold} امتیاز"
+    "xpThresholdSuffix": "/ {threshold} امتیاز",
+    "tutorialCoursePlanPlay": "این اولین کاری است که باید در دوره خود انجام دهید. برای شروع اولین فعالیت خود، روی {play} ضربه بزنید!"
 }

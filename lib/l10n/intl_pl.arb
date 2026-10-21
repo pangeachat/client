@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-16 16:33:08.514237",
+    "@@last_modified": "2026-10-19 14:11:47.487414",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10090,5 +10090,6 @@
     "activityCompleted": "Ukończono",
     "completedTimes": "Ukończono {count} razy",
     "classLocation": "Lokalizacja zajęć",
-    "xpThresholdSuffix": "/ {threshold} PD"
+    "xpThresholdSuffix": "/ {threshold} PD",
+    "tutorialCoursePlanPlay": "To pierwsza rzecz, którą należy zrobić w kursie. Stuknij {play}, aby rozpocząć pierwszą aktywność!"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-16 16:33:13.807986",
+    "@@last_modified": "2026-10-19 14:11:48.979411",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "E phethiloe",
     "completedTimes": "E phethiloe ka makhetlo a {count}",
     "classLocation": "Sebaka sa sehlopha",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Lena ke ntho ea pele eo u lokelang ho e etsa thupelong ea hau. Tlanya {play} ho qala mosebetsi oa hau oa pele!"
 }

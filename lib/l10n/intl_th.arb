@@ -3082,7 +3082,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-16 16:33:16.010353",
+    "@@last_modified": "2026-10-19 14:11:49.731019",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10634,5 +10634,6 @@
     "activityCompleted": "เสร็จสมบูรณ์",
     "completedTimes": "ทำเสร็จแล้ว {count} ครั้ง",
     "classLocation": "สถานที่เรียน",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "นี่คือสิ่งแรกที่ต้องทำในหลักสูตรของคุณ แตะ {play} เพื่อเริ่มกิจกรรมแรกของคุณ!"
 }

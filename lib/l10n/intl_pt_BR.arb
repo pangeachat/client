@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:09.219083",
+    "@@last_modified": "2026-10-19 14:11:47.471585",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -10005,5 +10005,6 @@
     "activityCompleted": "Concluído",
     "completedTimes": "Concluído {count} vezes",
     "classLocation": "Local da aula",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Esta é a primeira coisa a fazer no seu curso. Toque em {play} para iniciar sua primeira atividade!"
 }

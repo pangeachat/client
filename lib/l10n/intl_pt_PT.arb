@@ -2552,7 +2552,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-16 16:33:09.043932",
+    "@@last_modified": "2026-10-19 14:11:48.042823",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10919,5 +10919,6 @@
     "activityCompleted": "Concluído",
     "completedTimes": "Concluído {count} vezes",
     "classLocation": "Local da aula",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Esta é a primeira coisa a fazer no seu curso. Toque em {play} para iniciar a sua primeira atividade!"
 }

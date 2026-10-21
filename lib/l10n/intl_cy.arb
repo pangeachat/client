@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-16 16:32:55.336165",
+    "@@last_modified": "2026-10-19 14:11:40.721441",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Wedi'i chwblhau",
     "completedTimes": "Wedi'i chwblhau {count} gwaith",
     "classLocation": "Lleoliad dosbarth",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Dyma'r peth cyntaf i'w wneud yn eich cwrs. Tapiwch {play} i ddechrau eich gweithgaredd cyntaf!"
 }

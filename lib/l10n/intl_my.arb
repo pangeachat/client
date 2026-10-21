@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-16 16:33:07.687635",
+    "@@last_modified": "2026-10-19 14:11:46.940884",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "ပြီးစီးခဲ့သည်",
     "completedTimes": "{count} ကြိမ် ပြီးစီးခဲ့သည်",
     "classLocation": "အတန်းတည်နေရာ",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "ဒါက သင့်သင်တန်းမှာ ပထမဆုံးလုပ်ရမယ့်အရာပါ။ သင့်ရဲ့ ပထမဆုံးလှုပ်ရှားမှုကို စတင်ဖို့ {play} ကိုနှိပ်ပါ။"
 }

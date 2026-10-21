@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-10-16 16:33:06.454798",
+    "@@last_modified": "2026-10-19 14:11:45.715171",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "पूर्ण झाले",
     "completedTimes": "{count} वेळा पूर्ण केले",
     "classLocation": "वर्गाचे स्थान",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "तुमच्या कोर्समध्ये ही पहिली गोष्ट करायची आहे. तुमची पहिली अ‍ॅक्टिव्हिटी सुरू करण्यासाठी {play} वर टॅप करा!"
 }

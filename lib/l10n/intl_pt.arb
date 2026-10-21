@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:09.056759",
+    "@@last_modified": "2026-10-19 14:11:47.146524",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10946,5 +10946,6 @@
     "activityCompleted": "Concluído",
     "completedTimes": "Concluído {count} vezes",
     "classLocation": "Local da aula",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Esta é a primeira coisa a fazer no seu curso. Toque em {play} para iniciar sua primeira atividade!"
 }

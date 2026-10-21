@@ -246,7 +246,14 @@ class RankingResult {
 /// tutorial is choosing on the learner's behalf and telling them to tap it. An
 /// unknown role count is excluded too: it cannot be confirmed to be two.
 ///
-/// Among those, deliberately blunt: the **first** placed activity at the
+/// Among those, a **starter** wins first ([QuestActivityCard.starter] — the
+/// generic two-role A1 meet-and-greet content marked for exactly this moment,
+/// org activities doc "Starter activities"), whatever its state or level: the
+/// lowest-level pin the fallback below lands on was often a narrow scene that
+/// put a newcomer off (#9561). A map with no starters — an older server, or
+/// none in view — falls back to the rule below.
+///
+/// Among the rest, deliberately blunt: the **first** placed activity at the
 /// **lowest** level, preferring one that is plainly **available** over a live
 /// session someone else is running or a trail star the learner already
 /// finished. No level matching against the learner and no keyword — the step
@@ -279,7 +286,11 @@ QuestActivityCard? pickStarterActivity({
   int stateRank(QuestActivityCard card) =>
       stateOf(card) == ActivityPinState.available ? 0 : 1;
 
+  int starterRank(QuestActivityCard card) => card.starter ? 0 : 1;
+
   placed.sort((a, b) {
+    final byStarter = starterRank(a.card).compareTo(starterRank(b.card));
+    if (byStarter != 0) return byStarter;
     final byState = stateRank(a.card).compareTo(stateRank(b.card));
     if (byState != 0) return byState;
     final byLevel = levelRank(a.card).compareTo(levelRank(b.card));
@@ -320,6 +331,17 @@ bool _cefrAtOrBelow(String? cefr, LanguageLevelTypeEnum? userCefr) {
 /// the small-dot tail on a new learner's first map, but a deprioritize, not a
 /// gate. A hand-set lever like the rest of the weights (world-map.instructions.md).
 const double kMultiPersonFirstMapPenalty = 2.0;
+
+/// Weight of the `starter` term in [pinScore] (#9561): the pin is marked a
+/// starter ([QuestActivityCard.starter]) and the learner has no finished
+/// activity yet. Set above everything else an `available` pin can add up to —
+/// the band ceiling ([kBandCeiling]), `pinged` (0.6), `recency` (0.3) and the
+/// whole ratings spread (2·[kRatingWeight]) come to 6.9 — so on a fresh map a
+/// starter leads every other available activity whatever its own band or
+/// rating, while a live session's +3 on top of those still beats it. Clears
+/// with the first finished activity, like [kMultiPersonFirstMapPenalty]; it
+/// steers once and never gates. A hand-set lever (world-map.instructions.md).
+const double kStarterWeight = 7.0;
 
 /// Weight of the `dismissed` penalty (#7207/#7245): the learner X'd this
 /// activity's large card within the dismissal TTL. Deliberately the same
@@ -379,7 +401,7 @@ bool isMultiPersonFirstMap({
 
 /// score = 3*joinable + 2.4*ongoingActive + 1.6*ongoingPending + relevance_band
 /// + 0.6*pinged + 0.3*recency - 0.5*finished - 0.5*dismissed -
-/// 2*multi_person_first_map + ratings. A live session is the heaviest signal: +3 if the
+/// 2*multi_person_first_map + 7*starter + ratings. A live session is the heaviest signal: +3 if the
 /// learner can join it (open, someone else's); if they are already in it
 /// (ongoing), an active chat (+2.4) outweighs a still-pending one (+1.6) — real
 /// history should win a contested large-card slot. `joinable` and `ongoing` are
@@ -387,13 +409,15 @@ bool isMultiPersonFirstMap({
 /// of the three fires. A finished activity (full star row) demotes but stays
 /// visible (the trail reservation keeps it on the map), and an X-dismissed one
 /// demotes the same way while its TTL runs (#7207/#7245). The multi-person term
-/// deprioritizes a 3+ role activity on a new learner's first map (#7435). See
-/// world-map.instructions.md.
+/// deprioritizes a 3+ role activity on a new learner's first map (#7435), and
+/// the starter term leads a [starter]-marked pin on it ([kStarterWeight],
+/// #9561) — both only while [isNewLearner]. See world-map.instructions.md.
 double pinScore({
   required double band,
   required PinSignals s,
   int? roleCount,
   bool isNewLearner = false,
+  bool starter = false,
   bool isDismissed = false,
   double? ratingAverage,
   int? ratingCount,
@@ -406,6 +430,7 @@ double pinScore({
       _ => 0.0,
     }) +
     band +
+    kStarterWeight * (isNewLearner && starter ? 1 : 0) +
     0.6 * (s.pinged ? 1 : 0) +
     0.3 * s.recency.clamp(0.0, 1.0) -
     0.5 * (s.isCompleted ? 1 : 0) -
@@ -467,6 +492,7 @@ RankingResult rankPins({
             s: sig(p.activityId),
             roleCount: p.roleCount,
             isNewLearner: isNewLearner,
+            starter: p.starter,
             isDismissed: dismissedIds.contains(p.activityId),
             ratingAverage: p.ratingAverage,
             ratingCount: p.ratingCount,

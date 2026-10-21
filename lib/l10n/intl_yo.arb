@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-16 16:33:17.042673",
+    "@@last_modified": "2026-10-19 14:11:50.544685",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Pari",
     "completedTimes": "Pari nígbà {count}",
     "classLocation": "Ibi tí kíláàsì wà",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Eyi ni ohun akọkọ lati ṣe ninu ẹkọ rẹ. Fọwọkan {play} lati bẹrẹ iṣẹ akọkọ rẹ!"
 }

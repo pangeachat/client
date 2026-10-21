@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-16 16:33:12.085660",
+    "@@last_modified": "2026-10-19 14:11:48.907555",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Zvapedzwa",
     "completedTimes": "Zvapedzwa {count} nguva",
     "classLocation": "Nzvimbo yekirasi",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Ichi ndicho chinhu chekutanga kuita mukosi yako. Tinya {play} kuti utange chiitiko chako chekutanga!"
 }

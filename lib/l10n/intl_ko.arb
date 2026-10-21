@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:03.131261",
+    "@@last_modified": "2026-10-19 14:11:44.631311",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10198,5 +10198,6 @@
     "activityCompleted": "완료됨",
     "completedTimes": "{count}회 완료됨",
     "classLocation": "수업 위치",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "이것은 코스에서 가장 먼저 해야 할 일입니다. {play}를 탭하여 첫 번째 활동을 시작하세요!"
 }

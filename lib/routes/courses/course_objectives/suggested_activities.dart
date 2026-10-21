@@ -41,7 +41,12 @@ class SuggestedActivity {
 ///    and ranks as joinable.
 ///  * **multi_person_first_map** — world-map only. A course's activities were
 ///    hand-picked by its author, so a 3+ role one is part of the syllabus, not
-///    a dead end (world-map.instructions.md, "Priority matrix").
+///    a dead end (world-map.instructions.md, "Priority matrix"). No role count
+///    reaches [pinScore] from here, so [isNewLearner] cannot trip it.
+///
+/// The **starter** term does apply (#9561): with [isNewLearner] — no finished
+/// activity yet — a starter a Mission lists leads that Mission's row, as it
+/// leads the learner's first map.
 ///  * **dismissed** — the X on a large map card; this surface has no such card.
 ///
 /// [recency][PinSignals.recency] is likewise left at 0: the course page reads
@@ -57,6 +62,7 @@ List<SuggestedActivity> rankSuggestedActivities({
   required PinSignals Function(String activityId) signalsFor,
   int? cap = kSuggestedActivitiesCap,
   bool includeOngoing = false,
+  bool isNewLearner = false,
 }) {
   final byActivity = <String, SuggestedActivity>{};
   for (final group in groups) {
@@ -82,6 +88,8 @@ List<SuggestedActivity> rankSuggestedActivities({
       pinScore(
         band: missionGradient(suggestion.missionIds),
         s: signals,
+        isNewLearner: isNewLearner,
+        starter: suggestion.activity.starter,
         ratingAverage: plan.ratingAverage,
         ratingCount: plan.ratingCount,
       ),

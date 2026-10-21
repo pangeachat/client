@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:16.443223",
+    "@@last_modified": "2026-10-19 14:11:50.371169",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10111,5 +10111,6 @@
     "activityCompleted": "已完成",
     "completedTimes": "已完成 {count} 次",
     "classLocation": "上課地點",
-    "xpThresholdSuffix": "/ {threshold} 經驗值"
+    "xpThresholdSuffix": "/ {threshold} 經驗值",
+    "tutorialCoursePlanPlay": "這是您課程中的第一件事。點擊 {play} 開始您的第一個活動！"
 }

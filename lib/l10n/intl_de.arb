@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-16 16:32:55.166942",
+    "@@last_modified": "2026-10-19 14:11:40.832974",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9992,5 +9992,6 @@
     "activityCompleted": "Abgeschlossen",
     "completedTimes": "{count} Mal abgeschlossen",
     "classLocation": "Kursort",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Das ist das Erste, was du in deinem Kurs tun solltest. Tippe auf {play}, um deine erste Aktivität zu starten!"
 }

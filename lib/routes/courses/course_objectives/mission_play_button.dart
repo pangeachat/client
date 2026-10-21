@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 
@@ -8,10 +9,16 @@ class MissionPlayButton extends StatelessWidget {
   final String? label;
   final String? detail;
 
+  /// The tutorial target id this button claims, so the course tutorial's Play
+  /// step can light it ([TutorialTargetIds.missionPlayButton]). Null — every
+  /// card the tutorial does not point at — is a plain pass-through.
+  final String? tutorialTargetId;
+
   const MissionPlayButton({
     required this.onPressed,
     this.label,
     this.detail,
+    this.tutorialTargetId,
     super.key,
   });
 
@@ -26,57 +33,60 @@ class MissionPlayButton extends StatelessWidget {
     final ink = enabled ? scheme.onPrimary : scheme.onSurfaceVariant;
     final label = this.label ?? L10n.of(context).playMission;
     final detail = this.detail;
-    return Semantics(
-      button: true,
-      enabled: enabled,
-      label: detail == null ? label : '$label: $detail',
-      // The pressable below is excluded, so the tap is published here.
-      onTap: onPressed,
-      child: ExcludeSemantics(
-        child: PressableButton(
-          borderRadius: _radius,
-          color: fill,
-          buttonHeight: 5.0,
-          onPressed: onPressed,
-          builder: (context, depressed, shadowColor) => Container(
-            constraints: const BoxConstraints(minHeight: 48.0),
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16.0,
-              vertical: 6.0,
-            ),
-            decoration: BoxDecoration(
-              color: depressed ? shadowColor : fill,
-              borderRadius: _radius,
-            ),
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  spacing: 8.0,
-                  children: [
-                    Icon(Icons.play_arrow_rounded, size: 26.0, color: ink),
+    return TutorialTarget(
+      targetId: tutorialTargetId,
+      child: Semantics(
+        button: true,
+        enabled: enabled,
+        label: detail == null ? label : '$label: $detail',
+        // The pressable below is excluded, so the tap is published here.
+        onTap: onPressed,
+        child: ExcludeSemantics(
+          child: PressableButton(
+            borderRadius: _radius,
+            color: fill,
+            buttonHeight: 5.0,
+            onPressed: onPressed,
+            builder: (context, depressed, shadowColor) => Container(
+              constraints: const BoxConstraints(minHeight: 48.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 6.0,
+              ),
+              decoration: BoxDecoration(
+                color: depressed ? shadowColor : fill,
+                borderRadius: _radius,
+              ),
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    spacing: 8.0,
+                    children: [
+                      Icon(Icons.play_arrow_rounded, size: 26.0, color: ink),
+                      Text(
+                        label,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          color: ink,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ],
+                  ),
+                  if (detail != null)
                     Text(
-                      label,
-                      style: theme.textTheme.titleMedium?.copyWith(
+                      detail,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.labelMedium?.copyWith(
                         color: ink,
-                        fontWeight: FontWeight.w800,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
-                  ],
-                ),
-                if (detail != null)
-                  Text(
-                    detail,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: theme.textTheme.labelMedium?.copyWith(
-                      color: ink,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-16 16:33:08.049275",
+    "@@last_modified": "2026-10-19 14:11:47.005295",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Fullført",
     "completedTimes": "Fullført {count} ganger",
     "classLocation": "Klassested",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Dette er det første du må gjøre i kurset ditt. Trykk på {play} for å starte din første aktivitet!"
 }

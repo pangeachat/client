@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:11.947717",
+    "@@last_modified": "2026-10-19 14:11:48.578053",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10951,5 +10951,6 @@
     "activityCompleted": "Završeno",
     "completedTimes": "Završeno {count} puta",
     "classLocation": "Lokacija časa",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Ovo je prva stvar koju treba da uradite na kursu. Dodirnite {play} da započnete prvu aktivnost!"
 }

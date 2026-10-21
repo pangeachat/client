@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-16 16:33:12.357166",
+    "@@last_modified": "2026-10-19 14:11:48.331599",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Përfunduar",
     "completedTimes": "Përfunduar {count} herë",
     "classLocation": "Vendndodhja e klasës",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Kjo është gjëja e parë që duhet të bëni në kursin tuaj. Prekni {play} për të filluar aktivitetin tuaj të parë!"
 }

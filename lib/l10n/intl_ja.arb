@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-16 16:33:01.900945",
+    "@@last_modified": "2026-10-19 14:11:43.792903",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10771,5 +10771,6 @@
     "activityCompleted": "完了",
     "completedTimes": "{count}回完了しました",
     "classLocation": "クラスの場所",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "これはコースで最初にすることです。{play} をタップして最初のアクティビティを開始しましょう！"
 }

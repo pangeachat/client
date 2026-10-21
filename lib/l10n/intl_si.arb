@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-16 16:33:11.809346",
+    "@@last_modified": "2026-10-19 14:11:47.995407",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "සම්පූර්ණයි",
     "completedTimes": "{count} වතාවක් සම්පූර්ණ කර ඇත",
     "classLocation": "පන්ති ස්ථානය",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "මෙය ඔබගේ පාඨමාලාවේ කළ යුතු පළමු දෙයයි. ඔබගේ පළමු ක්‍රියාකාරකම ආරම්භ කිරීමට {play} තට්ටු කරන්න!"
 }

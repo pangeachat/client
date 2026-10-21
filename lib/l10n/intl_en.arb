@@ -5699,6 +5699,15 @@
             }
         }
     },
+    "tutorialCoursePlanPlay": "This is the first thing to do in your course. Tap {play} to start your first activity!",
+    "@tutorialCoursePlanPlay": {
+        "description": "Course tutorial, second step, pointing at the Mission card's Play button. {play} is the button's own label as drawn (playMission, or continueActivity when it resumes a session), so the sentence names the button exactly as the learner sees it.",
+        "placeholders": {
+            "play": {
+                "type": "String"
+            }
+        }
+    },
     "tutorialAppTourOffer": "Great job finishing your first activity! Would you like me to show you around the app?",
     "tutorialAppTourAccept": "Give me a tour",
     "tutorialAppTourDecline": "Skip",

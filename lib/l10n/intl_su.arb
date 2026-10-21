@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-16 16:33:12.145157",
+    "@@last_modified": "2026-10-19 14:11:49.011066",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Réngsé",
     "completedTimes": "Réngsé {count} kali",
     "classLocation": "Lokasi kelas",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Ieu hal kahiji anu kudu dilakukeun dina kursus anjeun. Ketok {play} pikeun ngamimitian kagiatan kahiji anjeun!"
 }

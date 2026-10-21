@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:12.461042",
+    "@@last_modified": "2026-10-19 14:11:49.351010",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10520,5 +10520,6 @@
     "activityCompleted": "Slutförd",
     "completedTimes": "Slutförd {count} gånger",
     "classLocation": "Klassrumsplats",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Detta är det första du ska göra i din kurs. Tryck på {play} för att starta din första aktivitet!"
 }

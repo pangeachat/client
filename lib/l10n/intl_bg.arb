@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-16 16:32:52.970940",
+    "@@last_modified": "2026-10-19 14:11:39.851416",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2467,5 +2467,6 @@
     "activityCompleted": "Завършено",
     "completedTimes": "Завършени {count} пъти",
     "classLocation": "Местоположение на класа",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Това е първото нещо, което трябва да направите в курса си. Докоснете {play}, за да започнете първата си дейност!"
 }

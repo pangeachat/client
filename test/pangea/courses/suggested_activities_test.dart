@@ -53,6 +53,43 @@ void main() {
     for (final s in suggestions) s.activityId,
   ];
 
+  group('rankSuggestedActivities — the starter term (#9561)', () {
+    QuestObjectiveGroup withStarter() => QuestObjectiveGroup(
+      objective: const LearningObjective(id: 'm1', objective: 'obj-m1'),
+      activities: [
+        QuestActivity(activityId: 'plain', plan: plan('plain')),
+        QuestActivity(
+          activityId: 'starter',
+          plan: plan('starter'),
+          starter: true,
+        ),
+      ],
+    );
+
+    test('a starter the Mission lists leads its row for a learner with no '
+        'finished activity, even against a pinged activity', () {
+      final ranked = rankSuggestedActivities(
+        groups: [withStarter()],
+        missionGradient: flatBand,
+        signalsFor: (id) =>
+            id == 'plain' ? const PinSignals(pinged: true) : const PinSignals(),
+        isNewLearner: true,
+      );
+      expect(idsOf(ranked), ['starter', 'plain']);
+    });
+
+    test('once the learner has finished an activity, the row ranks as '
+        'before', () {
+      final ranked = rankSuggestedActivities(
+        groups: [withStarter()],
+        missionGradient: flatBand,
+        signalsFor: (id) =>
+            id == 'plain' ? const PinSignals(pinged: true) : const PinSignals(),
+      );
+      expect(idsOf(ranked), ['plain', 'starter']);
+    });
+  });
+
   group('rankSuggestedActivities', () {
     test('an open session outranks a pinged one, which outranks a plain '
         'activity', () {

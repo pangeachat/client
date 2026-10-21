@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:15.606803",
+    "@@last_modified": "2026-10-19 14:11:49.998767",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7312,5 +7312,6 @@
     "activityCompleted": "Đã hoàn thành",
     "completedTimes": "Đã hoàn thành {count} lần",
     "classLocation": "Địa điểm lớp học",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Đây là việc đầu tiên cần làm trong khóa học của bạn. Nhấn {play} để bắt đầu hoạt động đầu tiên của bạn!"
 }

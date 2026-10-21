@@ -3082,7 +3082,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-16 16:33:01.185598",
+    "@@last_modified": "2026-10-19 14:11:43.643485",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10634,5 +10634,6 @@
     "activityCompleted": "Críochnaithe",
     "completedTimes": "Críochnaithe {count} uair",
     "classLocation": "Suíomh ranga",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Seo é an chéad rud le déanamh i do chúrsa. Tapáil {play} chun do chéad ghníomhaíocht a thosú!"
 }

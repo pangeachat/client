@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-16 16:33:13.781654",
+    "@@last_modified": "2026-10-19 14:11:49.615855",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10005,5 +10005,6 @@
     "activityCompleted": "Завершено",
     "completedTimes": "Завершено {count} разів",
     "classLocation": "Місце проведення заняття",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Це перше, що потрібно зробити у вашому курсі. Натисніть {play}, щоб розпочати першу вправу!"
 }

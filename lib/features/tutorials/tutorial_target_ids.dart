@@ -39,4 +39,10 @@ class TutorialTargetIds {
   /// page instance only — the activity summary mounts the same grid and never
   /// claims it.
   static const String activityRolesList = 'tutorial_activity_roles_list';
+
+  /// The Mission card's Play button on the course page — the course
+  /// tutorial's second step. Claimed by the course page's Activities row only:
+  /// the full-plan subpage mounted beside it draws no Mission card, and a
+  /// preview of an unjoined plan passes null.
+  static const String missionPlayButton = 'tutorial_mission_play_button';
 }

@@ -88,7 +88,16 @@ Set<String> effectivePinnedActivityIds(
 class QuestActivity {
   final String activityId;
   final ActivityPlanModel plan;
-  const QuestActivity({required this.activityId, required this.plan});
+
+  /// The row's starter flag, as the course listing's entry carries it — see
+  /// [QuestActivityCard.starter]. Scores the course page's Activities row for
+  /// a learner with no finished activity (world-map.instructions.md).
+  final bool starter;
+  const QuestActivity({
+    required this.activityId,
+    required this.plan,
+    this.starter = false,
+  });
 }
 
 /// A course's own note and soft due date for one Mission, from its copy
@@ -306,6 +315,9 @@ class QuestRepo {
       // from the outline pins its version without a refetch (the same token
       // GET /v2/activity/{id} returns).
       'version_id': entry['version_id'],
+      // The row's starter flag, beside the plan rather than in it: a row-level
+      // mark like `hidden`, which the card parser reads at the top level.
+      'starter': entry['starter'],
     };
   }
 
@@ -549,7 +561,8 @@ class QuestRepo {
     Result<
       ({
         Map<String, LearningObjective> missions,
-        List<({ActivityPlanModel plan, List<String> refs})> activities,
+        List<({ActivityPlanModel plan, List<String> refs, bool starter})>
+        activities,
       })
     >
   >
@@ -567,16 +580,17 @@ class QuestRepo {
       }
       final missions = questMissionsFromJson(body);
       final entries = dedupeByActivityId(
-        questActivityEntriesFromJson(body)
-            .map(
-              (e) => (
-                plan: activityPlanFromV2(cmsDocShapeFromEntry(e)),
-                refs: ((e['learning_objective_refs'] as List? ?? const [])
-                    .map((x) => x as String)
-                    .toList()),
-              ),
-            )
-            .toList(),
+        questActivityEntriesFromJson(body).map((e) {
+          final doc = cmsDocShapeFromEntry(e);
+          final plan = activityPlanFromV2(doc);
+          return (
+            plan: plan,
+            refs: ((e['learning_objective_refs'] as List? ?? const [])
+                .map((x) => x as String)
+                .toList()),
+            starter: QuestActivityCard.starterFlagFrom(doc, plan.activityId),
+          );
+        }).toList(),
         (e) => e.plan.activityId,
       );
 
@@ -589,7 +603,11 @@ class QuestRepo {
         missions: missions,
         activities: [
           for (var i = 0; i < entries.length; i++)
-            (plan: resolved[i], refs: entries[i].refs),
+            (
+              plan: resolved[i],
+              refs: entries[i].refs,
+              starter: entries[i].starter,
+            ),
         ],
       ));
     } catch (e, s) {
@@ -749,7 +767,11 @@ class QuestRepo {
 
       final byLo = <String, List<QuestActivity>>{};
       for (final a in read.activities) {
-        final qa = QuestActivity(activityId: a.plan.activityId, plan: a.plan);
+        final qa = QuestActivity(
+          activityId: a.plan.activityId,
+          plan: a.plan,
+          starter: a.starter,
+        );
         for (final ref in a.refs) {
           (byLo[ref] ??= []).add(qa);
         }

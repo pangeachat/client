@@ -2073,7 +2073,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-16 16:32:57.499198",
+    "@@last_modified": "2026-10-19 14:11:41.758263",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10862,5 +10862,6 @@
     "activityCompleted": "Nakumpleto",
     "completedTimes": "Nakumpleto nang {count} beses",
     "classLocation": "Lokasyon ng klase",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "tutorialCoursePlanPlay": "Ito ang unang gagawin sa iyong kurso. I-tap ang {play} para simulan ang iyong unang aktibidad!"
 }

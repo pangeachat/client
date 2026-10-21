@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-16 16:32:53.422258",
+    "@@last_modified": "2026-10-19 14:11:39.845541",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10308,5 +10308,6 @@
     "activityCompleted": "مكتمل",
     "completedTimes": "اكتمل {count} مرات",
     "classLocation": "موقع الصف",
-    "xpThresholdSuffix": "/ {threshold} نقطة خبرة"
+    "xpThresholdSuffix": "/ {threshold} نقطة خبرة",
+    "tutorialCoursePlanPlay": "هذا هو أول شيء تفعله في دورتك. اضغط على {play} لبدء نشاطك الأول!"
 }
