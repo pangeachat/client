@@ -16,6 +16,7 @@ import 'package:fluffychat/features/connection_status/filtered_network_controlle
 import 'package:fluffychat/features/connection_status/network_host_category.dart';
 import 'package:fluffychat/features/connection_status/network_probe.dart';
 import 'package:fluffychat/features/connection_status/network_type.dart';
+import 'package:fluffychat/features/connection_status/network_verdict.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 /// #9512 — when the connection to the chat server counts as lost, and why.
@@ -63,17 +64,20 @@ void main() {
     controller.isAppInForeground = () => resumed;
   });
 
-  tearDown(() async {
-    controller.resetForTest();
-    ErrorHandler.resetReportedOnceKeysForTest();
-    unawaited(networkChanges.close());
-  });
-
   Future<void> settle() async {
     for (var i = 0; i < 20; i++) {
       await Future<void>.delayed(Duration.zero);
     }
   }
+
+  tearDown(() async {
+    // A report in flight must land before the keys are cleared, or it lands
+    // in the next test.
+    await settle();
+    controller.resetForTest();
+    ErrorHandler.resetReportedOnceKeysForTest();
+    unawaited(networkChanges.close());
+  });
 
   SyncStatusUpdate connectionFailure() => SyncStatusUpdate(
     SyncStatus.error,
@@ -238,6 +242,43 @@ void main() {
       await settle();
       expect(controller.status.value, ConnectionStatus.backOnline);
     });
+
+    // A failed sign-in request starts the chat-server check; its first
+    // result is the banner's signal, since no sync loop can be.
+    test(
+      'the chat-server check says can\'t reach at once, and reports',
+      () async {
+        controller.onChatServerChecked(NetworkVerdict.filtered);
+
+        expect(controller.status.value, ConnectionStatus.unreachable);
+        await settle();
+        expect(ErrorHandler.reportedOnceKeysForTest, contains(unreachableKey));
+      },
+    );
+
+    test('the chat-server check says offline when nothing answers', () {
+      controller.onChatServerChecked(NetworkVerdict.offline);
+
+      expect(controller.status.value, ConnectionStatus.offline);
+    });
+
+    test('a chat server that answers says back online', () {
+      controller.onChatServerChecked(NetworkVerdict.filtered);
+      controller.onChatServerAnswered();
+      expect(controller.status.value, ConnectionStatus.backOnline);
+
+      controller.onChatServerChecked(NetworkVerdict.filtered);
+      controller.onChatServerChecked(NetworkVerdict.reachable);
+      expect(controller.status.value, ConnectionStatus.backOnline);
+    });
+  });
+
+  test('with an account signed in, the chat-server check says nothing', () {
+    controller.onSyncStatus(const SyncStatusUpdate(SyncStatus.finished));
+    controller.onChatServerChecked(NetworkVerdict.filtered);
+    controller.onChatServerAnswered();
+
+    expect(controller.status.value, ConnectionStatus.connected);
   });
 
   test(

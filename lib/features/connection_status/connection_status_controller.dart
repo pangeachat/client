@@ -7,8 +7,10 @@ import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
+import 'package:fluffychat/features/connection_status/network_host_category.dart';
 import 'package:fluffychat/features/connection_status/network_probe.dart';
 import 'package:fluffychat/features/connection_status/network_type.dart';
+import 'package:fluffychat/features/connection_status/network_verdict.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 /// What the connection banner says. See connection-status.instructions.md,
@@ -132,6 +134,31 @@ class ConnectionStatusController {
     _networkChanges ??= onNetworkChanged().listen(_onNetworkChanged);
   }
 
+  /// Takes a result of the chat-server check: its first word before any
+  /// hold, and the hold's outcome. Before sign-in there is no sync loop, so
+  /// the check a failed sign-in request starts is the connection signal;
+  /// while a sync loop reports in, the sync decides and this says nothing.
+  /// See connection-status.instructions.md, "Before sign-in".
+  void onChatServerChecked(NetworkVerdict verdict) {
+    if (_syncReporting) return;
+    switch (verdict) {
+      case NetworkVerdict.offline:
+        _setLost(ConnectionStatus.offline);
+      case NetworkVerdict.filtered:
+        _setLost(ConnectionStatus.unreachable);
+        unawaited(_reportUnreachable());
+      case NetworkVerdict.reachable:
+        _onConnected();
+    }
+  }
+
+  /// A request to the chat server got an answer before sign-in: the
+  /// connection is back.
+  void onChatServerAnswered() {
+    if (_syncReporting) return;
+    _onConnected();
+  }
+
   void _onNetworkChanged(List<ConnectivityResult> results) {
     _deviceReportsNoNetwork =
         results.isNotEmpty &&
@@ -141,10 +168,19 @@ class ConnectionStatusController {
       return;
     }
     if (!status.value.isLost) return;
-    // Before sign-in no sync can confirm the connection is back, so the
-    // device's report decides.
+    // Before sign-in no sync can confirm the connection is back: the device's
+    // report clears "offline", and the chat-server check decides whether the
+    // new network reaches the chat server.
     if (!_syncReporting) {
-      _onConnected();
+      if (status.value == ConnectionStatus.offline) {
+        _onConnected();
+      } else {
+        unawaited(
+          FilteredNetworkController.instance.check(
+            NetworkHostCategory.chatServer,
+          ),
+        );
+      }
       return;
     }
     // A new network may answer where the last one did not; the next sync
