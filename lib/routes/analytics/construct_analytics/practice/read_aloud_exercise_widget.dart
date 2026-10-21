@@ -116,9 +116,7 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
     final theme = Theme.of(context);
     final pangea = theme.pangea;
     final chars = exercise.referenceText.characters.toList();
-    final base = exercise.exampleTokens.isEmpty
-        ? 0
-        : exercise.exampleTokens.first.text.offset;
+    final base = exercise.exampleMessage.textOffset;
     final lastHeard = _recorder.lastTake?.heard;
     final target = exercise.targetIndex;
 

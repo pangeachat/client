@@ -12,7 +12,14 @@ import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_targe
 class ExampleMessageInfo {
   final List<InlineSpan> exampleMessage;
 
-  const ExampleMessageInfo({required this.exampleMessage});
+  /// The message offset of the first character of the spans' text (the
+  /// ellipsis markers aside), so a token's offset maps to an index into that
+  /// text as `offset - textOffset`. The slice starts at the message start
+  /// when nothing was trimmed before the target, whatever the first token's
+  /// offset is: a message may open with characters no token covers.
+  final int textOffset;
+
+  const ExampleMessageInfo({required this.exampleMessage, this.textOffset = 0});
 
   Map<String, dynamic> toJson() {
     final segments = <Map<String, dynamic>>[];
@@ -26,7 +33,7 @@ class ExampleMessageInfo {
       }
     }
 
-    return {'segments': segments};
+    return {'segments': segments, 'text_offset': textOffset};
   }
 
   factory ExampleMessageInfo.fromJson(Map<String, dynamic> json) {
@@ -45,7 +52,10 @@ class ExampleMessageInfo {
       );
     }
 
-    return ExampleMessageInfo(exampleMessage: spans);
+    return ExampleMessageInfo(
+      exampleMessage: spans,
+      textOffset: json['text_offset'] as int? ?? 0,
+    );
   }
 }
 

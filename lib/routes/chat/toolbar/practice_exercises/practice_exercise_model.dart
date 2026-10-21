@@ -7,6 +7,7 @@ import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/example_message_util.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/read_aloud_match.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
@@ -503,13 +504,14 @@ class ReadAloudPracticeExerciseModel
     );
   }
 
-  /// The sentence as shown, for the reference audio. A trimmed example
-  /// carries ellipses in its spans; they are not read.
+  /// The sentence as shown, for the reference audio and the hint. A trimmed
+  /// example carries ellipsis marker spans; they are not read. Nothing else
+  /// is dropped or trimmed, so index `i` here is message offset
+  /// `exampleMessage.textOffset + i` and every token's offset maps onto it.
   String get referenceText => exampleMessage.exampleMessage
+      .where((span) => !ExampleMessageUtil.isEllipsisMarker(span))
       .map((span) => span is TextSpan ? span.text ?? '' : '')
-      .join()
-      .replaceAll('…', '')
-      .trim();
+      .join();
 
   @override
   Map<String, dynamic> toJson() {

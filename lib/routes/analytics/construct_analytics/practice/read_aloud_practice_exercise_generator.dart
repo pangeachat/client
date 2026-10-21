@@ -8,6 +8,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/example_message_util.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/read_aloud_match.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_audio_practice_exercise_generator.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_meaning_practice_exercise_generator.dart';
@@ -170,7 +171,9 @@ class ReadAloudPracticeExerciseGenerator {
     required bool cutAfter,
   }) {
     final chars = exercise.referenceText.characters.toList();
-    final base = exercise.exampleTokens.first.text.offset;
+    // Where the shown text starts in the message: not the first token's
+    // offset, since a message may open with characters no token covers.
+    final base = exercise.exampleMessage.textOffset;
     final from = (window.first.text.offset - base).clamp(0, chars.length);
     final to =
         (window.last.text.offset +
@@ -186,10 +189,12 @@ class ReadAloudPracticeExerciseGenerator {
       eventId: exercise.eventId,
       exampleMessage: ExampleMessageInfo(
         exampleMessage: [
-          if (cutBefore) const TextSpan(text: '… '),
+          if (cutBefore)
+            const TextSpan(text: ExampleMessageUtil.ellipsisBefore),
           TextSpan(text: chars.sublist(from, to).join()),
-          if (cutAfter) const TextSpan(text: '…'),
+          if (cutAfter) const TextSpan(text: ExampleMessageUtil.ellipsisAfter),
         ],
+        textOffset: window.first.text.offset,
       ),
     );
   }

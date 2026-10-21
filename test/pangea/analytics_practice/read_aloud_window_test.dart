@@ -69,6 +69,22 @@ ReadAloudPracticeExerciseModel _exerciseOf(String sentence, String target) =>
 ReadAloudPracticeExerciseModel _exercise(String target) =>
     _exerciseOf(_sentence, target);
 
+/// Every token of [exercise] must read back from its reference text at its
+/// own offset, or the bubble stitches words into the wrong characters.
+void _expectAligned(ReadAloudPracticeExerciseModel exercise) {
+  final chars = exercise.referenceText.characters.toList();
+  final base = exercise.exampleMessage.textOffset;
+  for (final token in exercise.exampleTokens) {
+    final start = token.text.offset - base;
+    final end = start + token.text.content.characters.length;
+    expect(
+      chars.sublist(start, end).join(),
+      token.text.content,
+      reason: 'token at message offset ${token.text.offset}',
+    );
+  }
+}
+
 String _text(ReadAloudPracticeExerciseModel e) =>
     e.exampleMessage.exampleMessage.map((s) => (s as TextSpan).text).join();
 
@@ -87,6 +103,46 @@ void main() {
       'irnos',
     ]);
     expect(trimmed.targetIndex, 2);
+  });
+
+  test('a message that opens with text no token covers still cuts to the '
+      'right sentence', () {
+    // A reply fallback, a mention, a URL: text the tokenizer skipped, so the
+    // first token's offset is not where the shown text starts.
+    const prefix = '> a quoted line the tokenizer left out\n\n';
+    final exercise = ReadAloudPracticeExerciseModel(
+      targetLemma: 'cinco',
+      exampleTokens: [
+        for (final t in _tokens(_twoSentences))
+          _token(t.text.content, t.text.offset + prefix.length),
+      ],
+      langCode: 'es',
+      roomId: '!room',
+      eventId: r'$evt',
+      exampleMessage: const ExampleMessageInfo(
+        exampleMessage: [TextSpan(text: '$prefix$_twoSentences')],
+      ),
+    );
+    _expectAligned(exercise);
+
+    final second = ReadAloudPracticeExerciseGenerator.trimToSentence(
+      exercise,
+      maxWords: 8,
+    );
+    expect(second.referenceText, 'Tenemos que estar allí para las cinco.');
+    _expectAligned(second);
+
+    final first = ReadAloudPracticeExerciseGenerator.trimToSentence(
+      ReadAloudPracticeExerciseModel(
+        targetLemma: 'irnos',
+        exampleTokens: exercise.exampleTokens,
+        langCode: 'es',
+        exampleMessage: exercise.exampleMessage,
+      ),
+      maxWords: 8,
+    );
+    expect(first.referenceText, '¿Cuándo debemos irnos?');
+    _expectAligned(first);
   });
 
   test('a target in the second sentence gets that sentence alone', () {
