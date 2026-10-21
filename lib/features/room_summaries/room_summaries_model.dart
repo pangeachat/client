@@ -39,26 +39,3 @@ class ActivitySessionSummariesModel extends RoomSummariesModel {
     ...previews,
   }, activityId: activityId);
 }
-
-class CourseInfoSummariesModel extends RoomSummariesModel {
-  final int? activitiesToCompleteOverride;
-  CourseInfoSummariesModel(
-    super._roomSummaries, {
-    this.activitiesToCompleteOverride,
-  });
-
-  // Keyed on the summary's own activity id first: a v3 session stores only
-  // a thin plan reference, so its summary carries no plan and a finished v3
-  // activity would never count as finished (#9559). An older summary with an
-  // embedded plan keeps its plan's id as the fallback.
-  Set<String> _completedActivities(String userID) => _roomSummaries.values
-      .where((e) => e.isCompleteByUserId(userID))
-      .map((e) => e.activityId ?? e.activityPlan?.activityId)
-      .whereType<String>()
-      .toSet();
-
-  /// False for a signed-out account (no user id), which is what a course
-  /// page still building through logout asks (#9019).
-  bool hasCompletedActivity(String? userID, String activityID) =>
-      userID != null && _completedActivities(userID).contains(activityID);
-}

@@ -219,13 +219,13 @@ class _ObjectiveList extends StatelessWidget {
       for (final group in course.groups) {
         final missionId = group.objective.id;
         if (!seen.add(missionId)) continue;
+        // A session whose activity serves a Mission is that Mission's, not
+        // one of the "other activities" below.
         final ids = {for (final a in group.activities) a.activityId};
-        // A session is listed once, under the first Mission its activity
-        // serves — the add returns false for one already placed.
-        final sessions = [
+        placed.addAll([
           for (final room in archive)
-            if (ids.contains(room.activityId) && placed.add(room.id)) room,
-        ];
+            if (ids.contains(room.activityId)) room.id,
+        ]);
         children.add(
           MissionTile(
             group: group,
@@ -234,7 +234,7 @@ class _ObjectiveList extends StatelessWidget {
               group,
               byActivity: xpByActivity,
             ),
-            sessions: sessions,
+            courseId: course.room.id,
             selected: missionId == selectedMissionId,
           ),
         );

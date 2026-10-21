@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
@@ -20,7 +21,8 @@ class ActivitySuggestionCard extends StatelessWidget {
   final double? fontSizeSmall;
   final double? iconSize;
 
-  /// The count shown as "Open (N)" when [pinState] is the joinable state.
+  /// How many open sessions there are to join, shown as "Open (N)" when
+  /// [pinState] is the joinable state; null shows plain "Open".
   final int? openSessions;
 
   /// The live roster drawn in the Waiting ([ActivityPinState.ongoingPending])
@@ -74,8 +76,8 @@ class ActivitySuggestionCard extends StatelessWidget {
     this.fontSize,
     this.fontSizeSmall,
     this.iconSize,
-    this.openSessions,
     this.pinState,
+    this.openSessions,
     this.participants = const [],
     this.openSlots = 0,
     this.timesCompleted = 0,
@@ -176,16 +178,24 @@ class ActivitySuggestionCard extends StatelessWidget {
                       // photo: the corners above belong to the live state and
                       // the map's close button, and the bottom-left to the
                       // video tag.
-                      if (timesCompleted > 0)
-                        Positioned(
-                          right: 6.0,
-                          bottom: 6.0,
-                          child: CompletedStamp(
-                            size: (width / 8).clamp(14.0, 18.0),
-                            times: timesCompleted,
-                            xp: xpEarned,
-                          ),
+                      // Fades in: the XP behind it is read after the card
+                      // first draws, and a stamp popping in reads as a
+                      // glitch (#9559).
+                      Positioned(
+                        right: 6.0,
+                        bottom: 6.0,
+                        child: AnimatedSwitcher(
+                          duration: FluffyThemes.animationDuration,
+                          child: timesCompleted > 0
+                              ? CompletedStamp(
+                                  key: const ValueKey('stamp'),
+                                  size: (width / 8).clamp(14.0, 18.0),
+                                  times: timesCompleted,
+                                  xp: xpEarned,
+                                )
+                              : const SizedBox.shrink(),
                         ),
+                      ),
                     ],
                   ),
                   Expanded(
@@ -199,7 +209,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // Fixed-height card: cap the title and let it yield space
-                          // (Flexible) so the star row and participant/mode row below
+                          // (Flexible) so the participant/mode row below
                           // can't be pushed past the card's bottom edge and clipped by
                           // the ClipRRect when a long title wraps (#7675).
                           Flexible(
@@ -281,48 +291,58 @@ class ActivitySuggestionCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    // Room on the right for the map card's close button.
-                    constraints: BoxConstraints(maxWidth: width * 0.7),
-                    padding: const EdgeInsetsDirectional.fromSTEB(
-                      6.0,
-                      2.0,
-                      8.0,
-                      2.0,
-                    ),
-                    decoration: BoxDecoration(
-                      color: stateColor,
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(999.0),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        // The shared status glyph, matching the map pin —
-                        // or the ping's bell, folded into the pill so a card
-                        // carries one badge for what is live (#9559).
-                        Icon(
-                          pinged
-                              ? Icons.notifications_outlined
-                              : pinState!.icon,
-                          size: (fontSizeSmall ?? 11.0) + 3.0,
-                          color: onState,
+                  // Named as one: the state, and the ping its bell stands
+                  // for — the bell alone says nothing to a screen reader.
+                  Semantics(
+                    label: [
+                      _stateLabel(context),
+                      if (pinged) L10n.of(context).pingedLabel,
+                    ].join(', '),
+                    child: ExcludeSemantics(
+                      child: Container(
+                        // Room on the right for the map card's close button.
+                        constraints: BoxConstraints(maxWidth: width * 0.7),
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                          6.0,
+                          2.0,
+                          8.0,
+                          2.0,
                         ),
-                        const SizedBox(width: 4.0),
-                        Flexible(
-                          child: Text(
-                            _stateLabel(context),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              color: onState,
-                              fontSize: fontSizeSmall ?? 11.0,
-                              fontWeight: FontWeight.w700,
-                            ),
+                        decoration: BoxDecoration(
+                          color: stateColor,
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(999.0),
                           ),
                         ),
-                      ],
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            // The shared status glyph, matching the map pin —
+                            // or the ping's bell, folded into the pill so a card
+                            // carries one badge for what is live (#9559).
+                            Icon(
+                              pinged
+                                  ? Icons.notifications_outlined
+                                  : pinState!.icon,
+                              size: (fontSizeSmall ?? 11.0) + 3.0,
+                              color: onState,
+                            ),
+                            const SizedBox(width: 4.0),
+                            Flexible(
+                              child: Text(
+                                _stateLabel(context),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  color: onState,
+                                  fontSize: fontSizeSmall ?? 11.0,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                   if (pinState == ActivityPinState.ongoingPending &&
@@ -348,9 +368,11 @@ class ActivitySuggestionCard extends StatelessWidget {
   String _stateLabel(BuildContext context) => switch (pinState!) {
     ActivityPinState.ongoingActive => L10n.of(context).ongoing,
     ActivityPinState.ongoingPending => L10n.of(context).mapStatusWaiting,
-    _ =>
-      openSessions == null
-          ? L10n.of(context).open
-          : "${L10n.of(context).open} ($openSessions)",
+    // The count of open sessions to choose from, on the course page and the
+    // map alike (#9559).
+    _ => switch (openSessions) {
+      final count? when count > 0 => '${L10n.of(context).open} ($count)',
+      _ => L10n.of(context).open,
+    },
   };
 }

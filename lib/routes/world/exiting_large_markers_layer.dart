@@ -52,9 +52,11 @@ class ExitingLargeMarkersLayer {
                       plan: snap.plan,
                       participants: snap.participants,
                       openSlots: snap.openSlots,
+                      openSessions: snap.openSessions,
                       played: played,
                       xpEarned: snap.xpEarned,
                       pinged: snap.pinged,
+                      understaffed: snap.understaffed,
                       // No interaction on a card that's on its way out.
                       onTap: () {},
                     )

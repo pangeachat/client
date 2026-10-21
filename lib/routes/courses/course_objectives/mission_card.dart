@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
@@ -15,6 +14,7 @@ import 'package:fluffychat/routes/courses/course_objectives/mission_play_button.
 import 'package:fluffychat/routes/courses/course_objectives/mission_star.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_xp_bar.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_xp_ring.dart';
+import 'package:fluffychat/routes/courses/course_objectives/progress_shimmer.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// The course page's Mission card (#9420, #9559), read top to bottom:
@@ -53,7 +53,11 @@ class MissionCard extends StatelessWidget {
 
   /// The name of the activity Play opens, for its tooltip and accessible name.
   final String? playTarget;
-  final VoidCallback onPractice;
+
+  /// Drills the Mission's words; null hides Practice — a course in the
+  /// learner's base language, whose words aren't a language they're
+  /// learning (#9559).
+  final VoidCallback? onPractice;
 
   /// Opens the Mission's detail page from its star and can-do; null leaves
   /// them plain text (a preview has no progress to drill into).
@@ -200,17 +204,17 @@ class MissionCard extends StatelessWidget {
                 ],
               ),
             ),
-            BoldTonalButton(
-              icon: Symbols.fitness_center,
-              label: l10n.practice,
-              semanticsLabel: '${l10n.practice}, ${l10n.wordCount(wordCount)}',
-              onPressed: onPractice,
-              height: 34.0,
-              iconSize: 16.0,
-              trailing: wordCount > 0
-                  ? _CountChip(l10n.wordCount(wordCount))
-                  : null,
-            ),
+            if (onPractice case final onPractice?)
+              BoldTonalButton(
+                icon: Symbols.fitness_center,
+                label: l10n.practice,
+                semanticsLabel:
+                    '${l10n.practice}, ${l10n.wordCount(wordCount)}',
+                onPressed: onPractice,
+                trailing: wordCount > 0
+                    ? _CountChip(l10n.wordCount(wordCount))
+                    : null,
+              ),
           ],
         ),
         if (note != null && note.isNotEmpty) ...[
@@ -276,7 +280,7 @@ class MissionCard extends StatelessWidget {
             // While progress loads, the whole header — label, statement,
             // legend and bar — is one shimmering block over itself, drawn
             // invisibly at its real size, so nothing jumps when it lands.
-            if (loading) _HeaderShimmer(child: header) else header,
+            if (loading) ProgressShimmer(child: header) else header,
             const SizedBox(height: 18.0),
             // Play is the width of the card it opens and sits directly on
             // it under its "Up next", so the two read as one thing.
@@ -321,45 +325,6 @@ class _LanguageAnchor extends StatelessWidget {
     return CompositedTransformTarget(
       link: target.link,
       child: KeyedSubtree(key: target.key, child: child),
-    );
-  }
-}
-
-/// The Mission header's place while progress loads (#9559): one rounded
-/// shimmering block the exact size of the header, which is laid out under it
-/// invisibly — so the card keeps its height, nothing reads as zero, and
-/// nothing jumps when the real header takes over.
-class _HeaderShimmer extends StatelessWidget {
-  final Widget child;
-
-  const _HeaderShimmer({required this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Semantics(
-      label: L10n.of(context).loadingPleaseWait,
-      child: Stack(
-        children: [
-          IgnorePointer(
-            child: ExcludeSemantics(child: Opacity(opacity: 0.0, child: child)),
-          ),
-          Positioned.fill(
-            child: ExcludeSemantics(
-              child: Shimmer.fromColors(
-                baseColor: scheme.surfaceContainerHigh,
-                highlightColor: scheme.surfaceContainerHighest,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: scheme.surfaceContainerHigh,
-                    borderRadius: const BorderRadius.all(Radius.circular(12.0)),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
@@ -413,7 +378,7 @@ class _SwitchLanguageLine extends StatelessWidget {
                 Icon(Icons.translate, size: 16.0, color: ink),
                 Flexible(
                   child: Text(
-                    L10n.of(context).missionSwitchToSeeProgress(language),
+                    L10n.of(context).switchLanguageChipLabel(language),
                     style: theme.textTheme.labelMedium?.copyWith(
                       color: ink,
                       fontWeight: FontWeight.w700,

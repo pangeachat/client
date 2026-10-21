@@ -22,17 +22,17 @@ class ActivityCarousel extends StatefulWidget {
 
   final void Function(QuestActivity) onTap;
 
-  /// The learner's total XP from an activity's finished sessions, for its
-  /// completed stamp (#9559).
+  /// The learner's total XP from an activity's saved sessions in their
+  /// current language (#9559). Above zero is what "finished" means: the card
+  /// wears the completed stamp with this number.
   final int Function(String) xpByActivity;
-  final bool Function(String activityId)? hasCompletedActivity;
 
   /// How many times the learner has finished an activity, for the ×N on its
   /// completed stamp. Null counts a completed activity once.
   final int Function(String activityId)? timesCompletedByActivity;
 
-  /// The activity's live map-pin state (colour fill + banner) and "Open (N)"
-  /// count, resolved by the parent which holds the course room.
+  /// The activity's live map-pin state (frame + pill) and its open
+  /// sessions, resolved by the parent which holds the course room.
   final ({
     ActivityPinState? state,
     int openSessions,
@@ -73,7 +73,6 @@ class ActivityCarousel extends StatefulWidget {
     required this.activities,
     required this.onTap,
     required this.xpByActivity,
-    required this.hasCompletedActivity,
     required this.liveStateByActivity,
     required this.availableParticipants,
     this.timesCompletedByActivity,
@@ -127,6 +126,10 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
 
   double get _labelSpace =>
       widget.highlightedActivityId == null ? 0.0 : _labelHeight;
+
+  /// Where the cards start in the row: under its top padding and the
+  /// "Up next" line.
+  double get _cardsTop => widget.spacing / 2.0 + _labelSpace;
 
   bool get _showBackArrow {
     try {
@@ -209,14 +212,13 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                 itemCount: widget.activities.length,
                 separatorBuilder: (_, _) => SizedBox(width: widget.spacing),
                 padding: EdgeInsets.only(
-                  top: widget.spacing / 2.0 + _labelSpace,
+                  top: _cardsTop,
                   bottom: widget.spacing / 2.0,
                 ),
                 itemBuilder: (context, index) {
                   final ref = widget.activities[index];
-                  final complete =
-                      (widget.hasCompletedActivity?.call(ref.activityId) ??
-                      false);
+                  final xpEarned = widget.xpByActivity(ref.activityId);
+                  final complete = xpEarned > 0;
                   final liveState = widget.liveStateByActivity(ref.activityId);
                   // A completed activity keeps its live state: the card
                   // frames it and stamps the completion beside it.
@@ -259,9 +261,7 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                           participants: liveState.participants,
                           openSlots: liveState.openSlots,
                           timesCompleted: timesCompleted,
-                          xpEarned: complete
-                              ? widget.xpByActivity(ref.activityId)
-                              : 0,
+                          xpEarned: xpEarned,
                           // The course-ping bell rides in the live state's
                           // tab (#9559).
                           pinged:
@@ -342,9 +342,12 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
           // (IgnorePointer / opacity 0) still leaves a semantics node at the
           // edge that, on Flutter web, lets a tap fall through to the card
           // beneath it.
+          // Over the cards only, not the "Up next" line above them: the
+          // strips are filled, and from the top they painted over the foot
+          // of Play's glow (#9559).
           Positioned(
             left: 0,
-            top: 0,
+            top: _cardsTop,
             bottom: 0,
             child: ValueListenableBuilder<bool>(
               valueListenable: _showBackArrowNotifier,
@@ -358,7 +361,7 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
           ),
           Positioned(
             right: 0,
-            top: 0,
+            top: _cardsTop,
             bottom: 0,
             child: ValueListenableBuilder<bool>(
               valueListenable: _showForwardArrowNotifier,

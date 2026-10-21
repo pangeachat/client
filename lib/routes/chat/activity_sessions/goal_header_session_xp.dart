@@ -20,14 +20,17 @@ class GoalHeaderSessionXp extends StatelessWidget {
 
   const GoalHeaderSessionXp({required this.room, super.key});
 
+  /// Whether [room]'s XP is shown to the learner: they hold a role in it,
+  /// and it is in their current language. The goals' "+100" labels follow
+  /// the same rule, so a session never shows goal XP without its total.
+  static bool shows(Room room) =>
+      room.ownRole != null && CourseLanguageScope.sessionInTargetLanguage(room);
+
   @override
   Widget build(BuildContext context) => ListenableBuilder(
     listenable: MissionXpCache.instance,
     builder: (context, _) {
-      if (room.ownRole == null ||
-          !CourseLanguageScope.sessionInTargetLanguage(room)) {
-        return const SizedBox.shrink();
-      }
+      if (!shows(room)) return const SizedBox.shrink();
       final sessionXp = room.client.sessionXp(
         room,
         MissionXpCache.instance.creditedXpByRoom,

@@ -10,6 +10,7 @@ import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
+import 'package:fluffychat/widgets/completed_stamp.dart';
 
 /// The row's contract after #8741 pulled it out of [ObjectiveSection]: it draws
 /// the activities it is handed, in the order it is handed them, and nothing
@@ -45,7 +46,10 @@ void main() {
         imageURL: 'https://images.test.invalid/$id.png',
       );
 
-  Widget wrap(List<QuestActivity> activities) => MaterialApp(
+  Widget wrap(
+    List<QuestActivity> activities, {
+    int Function(String)? xpByActivity,
+  }) => MaterialApp(
     localizationsDelegates: L10n.localizationsDelegates,
     supportedLocales: L10n.supportedLocales,
     home: Scaffold(
@@ -54,8 +58,7 @@ void main() {
         child: ActivityCarousel(
           activities: activities,
           onTap: (_) {},
-          xpByActivity: (_) => 0,
-          hasCompletedActivity: (_) => false,
+          xpByActivity: xpByActivity ?? (_) => 0,
           liveStateByActivity: (_) => (
             state: null,
             openSessions: 0,
@@ -87,6 +90,20 @@ void main() {
     double x(String title) => tester.getTopLeft(find.text(title)).dx;
     expect(x('Alpha'), lessThan(x('Beta')));
     expect(x('Beta'), lessThan(x('Gamma')));
+  });
+
+  testWidgets('a card with XP from the learner wears the completed stamp '
+      'with it; one without stays plain (#9559)', (tester) async {
+    await tester.pumpWidget(
+      wrap([
+        QuestActivity(activityId: 'done', plan: plan('done', 'Done', 2)),
+        QuestActivity(activityId: 'fresh', plan: plan('fresh', 'Fresh', 2)),
+      ], xpByActivity: (id) => id == 'done' ? 450 : 0),
+    );
+    await tester.pump(const Duration(seconds: 1));
+
+    expect(find.byType(CompletedStamp), findsOneWidget);
+    expect(find.text('450 XP'), findsOneWidget);
   });
 
   testWidgets('renders no Mission statement of its own', (tester) async {

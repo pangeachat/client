@@ -159,7 +159,7 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
                     activeGoalId: ownRoleDone ? null : active?.id,
                     subtitle: subtitle,
                     contentLanguage: _sessionLanguage,
-                    goalXp: kGoalXp,
+                    goalXp: GoalHeaderSessionXp.shows(room) ? kGoalXp : null,
                     sessionXp: GoalHeaderSessionXp(room: room),
                   );
 
@@ -207,7 +207,7 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
                       finishActivityForMe: () => _finishActivityForMe(context),
                       continueActivity: room.continueActivity,
                       onReportStar: _onReportStar(context),
-                      goalXp: kGoalXp,
+                      goalXp: GoalHeaderSessionXp.shows(room) ? kGoalXp : null,
                       sessionXp: goals.isEmpty
                           ? null
                           : GoalHeaderSessionXp(room: room),

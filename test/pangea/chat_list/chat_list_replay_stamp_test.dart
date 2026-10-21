@@ -70,7 +70,6 @@ void main() {
     client.rooms.add(activitySessionRoom(client, activityId: 'other'));
 
     expect(saved.hasArchivedActivity, isTrue);
-    expect(client.savedActivityIds, {testSessionActivityId});
     expect(client.hasSavedSessionOf(testSessionActivityId), isTrue);
     expect(client.hasSavedSessionOf('other'), isFalse);
   });

@@ -84,7 +84,6 @@ void main() {
               activities: activities,
               onTap: (a) => opened.add(a.activityId),
               xpByActivity: (_) => 0,
-              hasCompletedActivity: (_) => false,
               liveStateByActivity: (_) => (
                 state: null,
                 openSessions: 0,

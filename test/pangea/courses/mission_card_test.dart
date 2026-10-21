@@ -57,6 +57,7 @@ void main() {
     WidgetTester tester, {
     VoidCallback? onPlay,
     VoidCallback? onPractice,
+    bool canPractice = true,
     String playLabel = 'Next activity',
     String? playTarget,
     Widget? activities,
@@ -82,7 +83,7 @@ void main() {
               progress: const MissionProgress(xp: 400, threshold: 1600),
               breakdown: const MissionXpBreakdown(chat: 200, goals: 200),
               onPlay: onPlay,
-              onPractice: onPractice ?? () {},
+              onPractice: canPractice ? onPractice ?? () {} : null,
               playLabel: playLabel,
               playTarget: playTarget,
               activities: activities,
@@ -163,6 +164,17 @@ void main() {
     expect(find.byType(Shimmer), findsOneWidget);
     await tester.tap(find.byType(BoldTonalButton), warnIfMissed: false);
     expect(practices, 0);
+  });
+
+  testWidgets('a course in the learner\'s base language shows no Practice '
+      '(#9559)', (tester) async {
+    await pump(
+      tester,
+      onPlay: () {},
+      otherLanguageName: 'English',
+      canPractice: false,
+    );
+    expect(find.byType(BoldTonalButton), findsNothing);
   });
 
   testWidgets('Play and Practice are pressable by a screen reader', (

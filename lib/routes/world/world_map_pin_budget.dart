@@ -16,7 +16,8 @@
 /// boundary").
 library;
 
-import 'package:flutter/material.dart' show Size, kMinInteractiveDimension;
+import 'package:flutter/material.dart'
+    show Color, Colors, Size, kMinInteractiveDimension;
 
 /// A resolved per-view pin budget: the constituent tier caps plus the trail
 /// reservation. [total] (`N`) is the sum of the tier caps.
@@ -107,6 +108,11 @@ const bool kStampWordWeb = false;
 
 /// Tier pixel sizes — also tuned here so all pin-density knobs live in one file.
 abstract class PinSize {
+  /// The ring round a map mark — a pin, its unread bubble, a card's close
+  /// button. White in both themes on purpose: a mark sits on map tiles, not
+  /// on the theme's surface, and the ring is what lifts it off them.
+  static const Color markRing = Colors.white;
+
   /// The activity card a large pin draws under [kMapActivityCards]: its
   /// width, its card height (photo [mapCardImageHeight] + text) and the tail
   /// under it. A played card's coin rides its photo (#9559), so it needs no

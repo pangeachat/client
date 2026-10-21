@@ -27,7 +27,6 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/trailing_throttle.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
-import 'package:fluffychat/routes/world/saved_activities_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_signals.dart';
@@ -169,6 +168,10 @@ class WorldMapPinsManager {
   /// unchanged and would silently skip the rebuild (#8087).
   Set<String> _objectiveCacheRoomIds = const {};
 
+  /// Whether the objective cache has finished a build — what lets an empty
+  /// resolution mean "no joined course" rather than "not loaded yet".
+  bool _objectiveCacheBuilt = false;
+
   /// Each joined course's copy revision at the last rebuild (0 = no copy): a
   /// teacher's publish changes that course's outline, so it counts as a
   /// change of the joined set.
@@ -274,13 +277,13 @@ class WorldMapPinsManager {
     bool Function(QuestActivityCard) filter,
   ) => _pins.where(filter).toList();
 
-  /// The activities the learner has a saved session of — every completed
-  /// stamp the map draws, whether or not its pin made the tier budget.
+  /// The activities the learner has finished — XP from a saved session in
+  /// their current language (#9559) — every completed stamp the map draws,
+  /// whether or not its pin made the tier budget.
   Set<String> get savedActivityIds => _savedActivityIds;
 
-  /// Whether [card] wears the completed stamp: the learner has a saved
-  /// session of it, however many goals they got (world-map.instructions.md,
-  /// "Goal Progress"). A set lookup, never a rooms rescan.
+  /// Whether [card] wears the completed stamp: the learner has finished it
+  /// ([savedActivityIds]). A set lookup, never a rooms rescan.
   ActivityStarLevel starLevelOf(QuestActivityCard card) =>
       _savedActivityIds.contains(card.activityId)
       ? ActivityStarLevel.star
@@ -587,7 +590,9 @@ class WorldMapPinsManager {
     _xpByActivity = client.userXpByActivity(
       MissionXpCache.instance.creditedXpByRoom,
     );
-    _savedActivityIds = client.savedActivityIds;
+    // Finished is XP from a saved session in the current language — the
+    // one rule every completed stamp reads (#9559).
+    _savedActivityIds = _xpByActivity.keys.toSet();
     resolveProgression();
   }
 
@@ -614,7 +619,15 @@ class WorldMapPinsManager {
     // One shared answer (quests.instructions.md): the course panel and the
     // analytics bar read what the map resolved, and the map resolves first in
     // a session, so the star count is live before any course page opens.
-    QuestObjectivesLoader.publishProgression(_progression);
+    // Only once the outlines it resolves from are in: before that the
+    // resolution is empty, and publishing it would read as zero stars
+    // (#9559). A learner with no joined course publishes their real zero.
+    final client = _client;
+    if (_objectiveCache.ids.isNotEmpty ||
+        (_objectiveCacheBuilt &&
+            (client == null || client.joinedCourseRooms.isEmpty))) {
+      QuestObjectivesLoader.publishProgression(_progression);
+    }
   }
 
   /// Rebuild the joined-course outlines (a few quest reads), reading each
@@ -639,6 +652,7 @@ class WorldMapPinsManager {
         for (final r in rooms) r.id: r.courseListRules.revision,
       };
       _objectiveCacheQuestIds = rooms.map((r) => r.coursePlan!.uuid).toSet();
+      _objectiveCacheBuilt = true;
       resolveProgression(); // re-resolve the band with the loaded outlines
     } finally {
       _objectiveCacheRebuilding = false;

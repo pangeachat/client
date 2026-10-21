@@ -5,10 +5,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
-import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
@@ -24,6 +21,7 @@ import 'package:fluffychat/routes/analytics/construct_analytics/practice/start_p
 import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_live_state_room_extension.dart';
+import 'package:fluffychat/routes/courses/course_objectives/progress_shimmer.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -39,11 +37,15 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// joined course that carries the Mission, as the list does.
 class ObjectiveDetailsView extends StatefulWidget {
   final String missionId;
+
+  /// The course the page was opened from (#9559); null picks one.
+  final String? courseId;
   final Widget closeButton;
 
   const ObjectiveDetailsView({
     required this.missionId,
     required this.closeButton,
+    this.courseId,
     super.key,
   });
 
@@ -56,23 +58,28 @@ class _ObjectiveDetailsViewState extends State<ObjectiveDetailsView> {
     Matrix.of(context).client,
   );
 
-  /// [ObjectiveDetailsView.missionId]'s course and group: a course in the
-  /// learner's current language first, since progress only counts there
-  /// (#9559); else the first other course that carries it; else null.
+  /// [ObjectiveDetailsView.missionId]'s course and group: the course it was
+  /// opened from ([ObjectiveDetailsView.courseId]) when that course carries
+  /// it; else a course in the learner's current language, since progress
+  /// only counts there (#9559); else the first other course that carries it;
+  /// else null.
   ({CourseMissions course, QuestObjectiveGroup group})? _find(
     List<CourseMissions> courses,
   ) {
+    ({CourseMissions course, QuestObjectiveGroup group})? inLanguage;
     ({CourseMissions course, QuestObjectiveGroup group})? other;
     for (final course in courses) {
       for (final group in course.groups) {
         if (group.objective.id != widget.missionId) continue;
+        final found = (course: course, group: group);
+        if (course.room.id == widget.courseId) return found;
         if (CourseLanguageScope.courseInTargetLanguage(course.room)) {
-          return (course: course, group: group);
+          inLanguage ??= found;
         }
-        other ??= (course: course, group: group);
+        other ??= found;
       }
     }
-    return other;
+    return inLanguage ?? other;
   }
 
   @override
@@ -248,21 +255,26 @@ class _ObjectiveDetailsBody extends StatelessWidget {
     final vocab = group.vocab;
     final langCode = group.activities.firstOrNull?.plan.req.targetLanguage;
 
-    // Only what the learner has finished and saved, in plan order — the
-    // record of the objective, not what they could do next (#9420
-    // prototype); each card wears its stamp with its XP, and opens the latest
-    // saved session.
-    final archive = client.ownAnalyticsRoomLocalByL2?.archivedActivities ?? [];
-    final sessionsByActivity = <String, List<Room>>{};
-    for (final session in archive) {
-      final id = session.activityId;
-      if (id != null) (sessionsByActivity[id] ??= []).add(session);
-    }
+    // Only what the learner has finished, in plan order — the record of the
+    // objective, not what they could do next (#9420 prototype). Finished is
+    // the one rule every stamp reads (#9559): XP from a saved session in the
+    // current language. Each card wears its stamp with that XP, and opens
+    // the latest of those sessions.
+    final xpByActivity = client.cachedXpBreakdownByActivity;
+    final sessionsByActivity = client.savedSessionsByActivity;
     final activities = [
       for (final activity in group.activities)
-        if (sessionsByActivity.containsKey(activity.activityId)) activity,
+        if ((xpByActivity[activity.activityId]?.total ?? 0) > 0 &&
+            sessionsByActivity.containsKey(activity.activityId))
+          activity,
     ];
-    final xpByActivity = client.cachedXpBreakdownByActivity;
+
+    final hero = ObjectiveHero(
+      statement: group.objective.objective,
+      progress: progress,
+      breakdown: client.missionXpBreakdown(group, byActivity: xpByActivity),
+      skillXp: client.missionSkillXp(group),
+    );
 
     return MaxWidthBody(
       maxWidth: 600.0,
@@ -274,15 +286,13 @@ class _ObjectiveDetailsBody extends StatelessWidget {
           spacing: 24.0,
           children: [
             _CourseLink(room: course.room, missionId: group.objective.id),
-            ObjectiveHero(
-              statement: group.objective.objective,
-              progress: progress,
-              breakdown: client.missionXpBreakdown(
-                group,
-                byActivity: xpByActivity,
-              ),
-              skillXp: client.missionSkillXp(group),
-            ),
+            // Shimmers until the Mission's progress and the XP it counts are
+            // in, like the course page's Mission card, rather than drawing an
+            // empty ring beside numbers that are about to change (#9559).
+            if (progress == null || MissionXpCache.instance.loading)
+              ProgressShimmer(child: hero)
+            else
+              hero,
             _Section(
               title: l10n.completedActivitiesTitle(activities.length),
               child: activities.isEmpty
@@ -300,11 +310,17 @@ class _ObjectiveDetailsBody extends StatelessWidget {
                             view: ProgressIndicatorEnum.activities,
                             activityRoomId:
                                 sessionsByActivity[activity.activityId]!
-                                    .last
+                                    .reduce(
+                                      (a, b) =>
+                                          b.latestEventReceivedTime.isAfter(
+                                            a.latestEventReceivedTime,
+                                          )
+                                          ? b
+                                          : a,
+                                    )
                                     .id,
                           ),
                       xpByActivity: (id) => xpByActivity[id]?.total ?? 0,
-                      hasCompletedActivity: sessionsByActivity.containsKey,
                       timesCompletedByActivity: (id) =>
                           sessionsByActivity[id]?.length ?? 1,
                       liveStateByActivity: (_) => noActivityLiveState,

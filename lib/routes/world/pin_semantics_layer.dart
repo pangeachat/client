@@ -66,6 +66,11 @@ class PinSemanticsLayer extends StatefulWidget {
   /// counts can never drift (#8753).
   final String? Function(QuestActivityCard card)? liveDetailOf;
 
+  /// What the pin's marks add after its status — a course ping, the learner's
+  /// finished XP (#9559) — or null when it carries neither. Drawn on the pin
+  /// or its card, so announced here too.
+  final String? Function(QuestActivityCard card)? markDetailOf;
+
   const PinSemanticsLayer({
     super.key,
     required this.mapController,
@@ -73,6 +78,7 @@ class PinSemanticsLayer extends StatefulWidget {
     required this.stateOf,
     required this.onTap,
     this.liveDetailOf,
+    this.markDetailOf,
   });
 
   @override
@@ -189,13 +195,14 @@ class PinSemanticsLayerState extends State<PinSemanticsLayer> {
   /// The announced pin: title, language and level (what the expanded card
   /// shows visually — announced on every pin since a card's content has no
   /// semantics of its own, #8753/#8646), the live seat count where one
-  /// exists, then the status.
+  /// exists, the status, then its marks (a ping, the learner's XP).
   String _labelOf(L10n l10n, QuestActivityCard card) => [
     l10n.activityLabel(card.title),
     PLanguageStore.byLangCode(card.l2)?.displayName ?? card.l2,
     ?card.cefr,
     ?widget.liveDetailOf?.call(card),
     widget.stateOf(card.activityId).label(l10n),
+    ?widget.markDetailOf?.call(card),
   ].join(', ');
 
   @override

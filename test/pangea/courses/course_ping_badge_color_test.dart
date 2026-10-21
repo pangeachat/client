@@ -102,6 +102,8 @@ void main() {
         SizedBox(
           width: 400.0,
           child: ObjectiveSection(
+            index: 1,
+            missionCount: 1,
             group: QuestObjectiveGroup(
               objective: LearningObjective(
                 id: 'lo-1',
@@ -111,7 +113,6 @@ void main() {
             ),
             onTap: (_) {},
             xpByActivity: (_) => 0,
-            hasCompletedActivity: (_) => complete,
             liveStateByActivity: (_) => (
               state: state,
               openSessions: state == ActivityPinState.joinable ? 1 : 0,

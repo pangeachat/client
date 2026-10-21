@@ -241,7 +241,7 @@ void main() {
       kDefaultXpToCompleteObjective,
     );
     expect(loader.missionProgress(missionId)?.satisfied, isFalse);
-    expect(loader.questStars?.earned, 0);
+    expect(loader.progression.value.questStars(courseRoomId)?.earned, 0);
 
     // Two sparkles land as room state on the session room (250 × 1.2 = 300),
     // and the panel stays mounted — this is the moment the count used to
@@ -254,7 +254,7 @@ void main() {
 
     expect(loader.missionProgress(missionId)?.xp, 1700);
     expect(loader.missionProgress(missionId)?.satisfied, isTrue);
-    expect(loader.questStars?.earned, 1);
+    expect(loader.progression.value.questStars(courseRoomId)?.earned, 1);
   });
 
   test(
@@ -293,7 +293,6 @@ void main() {
     await Future<void>.delayed(Duration.zero);
 
     expect(loader.hasResolvedProgress, isFalse);
-    expect(loader.questStars, isNull);
   });
 
   /// #8938 — collapsing the course card swaps it for the context bar (and

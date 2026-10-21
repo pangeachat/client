@@ -18,8 +18,8 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 extension QuestsClientExtension on Client {
   /// The learner's goal checkmarks per activity: their best single session's
-  /// orchestrator-awarded goals. Drawn on activity cards and map pins; Mission
-  /// completion is XP ([userXpByActivity]).
+  /// orchestrator-awarded goals. What the map's ranking reserves trail slots
+  /// for; cards and Missions read XP ([userXpByActivity]).
   Map<String, int> get userStarsByActivity {
     final stars = <String, int>{};
     for (final room in rooms) {
@@ -33,20 +33,15 @@ extension QuestsClientExtension on Client {
     return stars;
   }
 
-  /// The learner's activity XP per activity: every SAVED session of it, each
-  /// counting the XP credited to its room ([creditedXpByRoom] — the chat XP
-  /// earned there plus practice credited to it, MissionXpCache) and a flat
-  /// [kGoalXp] per goal the learner was awarded in it. Repeat sessions
-  /// accumulate — XP is effort — and a session counts only once it is saved, so
-  /// finishing is what banks it (org activities doc, "Activity XP" and
-  /// "Saving"; quests.instructions.md, "What fills a Mission"). Only sessions
-  /// in the learner's current language count
-  /// ([CourseLanguageScope.savedSessionInTargetLanguage]).
-  Map<String, int> userXpByActivity(Map<String, int> creditedXpByRoom) {
-    final xp = <String, int>{};
+  /// The learner's saved sessions per activity, in their current language
+  /// ([CourseLanguageScope.savedSessionInTargetLanguage]) — the sessions
+  /// every activity XP figure counts, and what a "finished" activity's
+  /// stamp and the Mission page's Finished row list (#9559).
+  Map<String, List<Room>> get savedSessionsByActivity {
     final inLanguage = CourseLanguageScope.savedSessionIdsInTargetLanguage(
       this,
     );
+    final sessions = <String, List<Room>>{};
     for (final room in rooms) {
       final activityId = room.activityId;
       if (activityId == null ||
@@ -54,9 +49,27 @@ extension QuestsClientExtension on Client {
           !CourseLanguageScope.savedSessionInTargetLanguage(room, inLanguage)) {
         continue;
       }
-      final xpOfSession = sessionXp(room, creditedXpByRoom);
-      if (xpOfSession <= 0) continue;
-      xp[activityId] = (xp[activityId] ?? 0) + xpOfSession;
+      (sessions[activityId] ??= []).add(room);
+    }
+    return sessions;
+  }
+
+  /// The learner's activity XP per activity: every saved session of it
+  /// ([savedSessionsByActivity]), each counting the XP credited to its room
+  /// ([creditedXpByRoom] — the chat XP earned there plus practice credited
+  /// to it, MissionXpCache) and a flat [kGoalXp] per goal the learner was
+  /// awarded in it. Repeat sessions accumulate — XP is effort — and a
+  /// session counts only once it is saved, so finishing is what banks it
+  /// (org activities doc, "Activity XP" and "Saving"; quests.instructions.md,
+  /// "What fills a Mission").
+  Map<String, int> userXpByActivity(Map<String, int> creditedXpByRoom) {
+    final xp = <String, int>{};
+    for (final entry in savedSessionsByActivity.entries) {
+      var sum = 0;
+      for (final room in entry.value) {
+        sum += sessionXp(room, creditedXpByRoom);
+      }
+      if (sum > 0) xp[entry.key] = sum;
     }
     return xp;
   }
@@ -70,24 +83,19 @@ extension QuestsClientExtension on Client {
     Map<String, int> speakingXpByRoom = const {},
   }) {
     final xp = <String, MissionXpBreakdown>{};
-    final inLanguage = CourseLanguageScope.savedSessionIdsInTargetLanguage(
-      this,
-    );
-    for (final room in rooms) {
-      final activityId = room.activityId;
-      if (activityId == null ||
-          !room.hasArchivedActivity ||
-          !CourseLanguageScope.savedSessionInTargetLanguage(room, inLanguage)) {
-        continue;
+    for (final entry in savedSessionsByActivity.entries) {
+      var sum = MissionXpBreakdown.zero;
+      for (final room in entry.value) {
+        sum =
+            sum +
+            MissionXpBreakdown(
+              chat: chatXpByRoom[room.id] ?? 0,
+              speaking: speakingXpByRoom[room.id] ?? 0,
+              goals: kGoalXp * room.ownCompletedGoals.length,
+              practice: practiceXpByRoom[room.id] ?? 0,
+            );
       }
-      final session = MissionXpBreakdown(
-        chat: chatXpByRoom[room.id] ?? 0,
-        speaking: speakingXpByRoom[room.id] ?? 0,
-        goals: kGoalXp * room.ownCompletedGoals.length,
-        practice: practiceXpByRoom[room.id] ?? 0,
-      );
-      if (session.total <= 0) continue;
-      xp[activityId] = (xp[activityId] ?? MissionXpBreakdown.zero) + session;
+      if (sum.total > 0) xp[entry.key] = sum;
     }
     return xp;
   }
@@ -133,18 +141,11 @@ extension QuestsClientExtension on Client {
     final cache = MissionXpCache.instance;
     final activityIds = {for (final a in group.activities) a.activityId};
     final xp = <LearningSkillsEnum, int>{};
-    final inLanguage = CourseLanguageScope.savedSessionIdsInTargetLanguage(
-      this,
-    );
-    for (final room in rooms) {
-      final activityId = room.activityId;
-      if (activityId == null ||
-          !activityIds.contains(activityId) ||
-          !room.hasArchivedActivity ||
-          !CourseLanguageScope.savedSessionInTargetLanguage(room, inLanguage)) {
-        continue;
+    final sessions = savedSessionsByActivity;
+    for (final activityId in activityIds) {
+      for (final room in sessions[activityId] ?? const <Room>[]) {
+        _addSkills(xp, cache.skillXpByRoom[room.id]);
       }
-      _addSkills(xp, cache.skillXpByRoom[room.id]);
     }
     for (final lemma in group.lemmas) {
       _addSkills(xp, cache.skillXpByLemma[lemma]);

@@ -121,11 +121,6 @@ class QuestProgress {
 
   final Map<String, int> indexByMission;
 
-  /// Which activities each scored Mission counts, from the outline — what a
-  /// live session uses to find the Mission its XP serves
-  /// ([ProgressionResolution.missionForActivity]).
-  final Map<String, Set<String>> activityIdsByMission;
-
   /// This quest's OWN per-Mission rollup, scoped to the activities its outline
   /// lists — the course's copy, else its pins.
   ///
@@ -149,7 +144,6 @@ class QuestProgress {
     required this.anchorMissionId,
     required this.indexByMission,
     required this.rollup,
-    this.activityIdsByMission = const {},
   });
 
   /// This quest's own next-Mission contribution for an activity carrying
@@ -229,30 +223,6 @@ class ProgressionResolution {
   /// rather than a denominator invented from default thresholds.
   QuestStarSummary? questStars(String? courseId) =>
       forCourse(courseId)?.starSummary;
-
-  /// The Mission a session of [activityId] serves, with its rollup: a quest's
-  /// anchor Mission when the activity carries it, else the first scored
-  /// Mission listing the activity, searched quest by quest. Null when no
-  /// in-scope quest lists the activity — a session outside every joined
-  /// course has no Mission to fill. The goal header's XP ring reads this.
-  ({MissionProgress progress, String missionId})? missionForActivity(
-    String activityId,
-  ) {
-    for (final quest in quests) {
-      final anchor = quest.anchorMissionId;
-      if (anchor != null &&
-          (quest.activityIdsByMission[anchor]?.contains(activityId) ?? false)) {
-        final progress = quest.rollup[anchor];
-        if (progress != null) return (progress: progress, missionId: anchor);
-      }
-      for (final entry in quest.activityIdsByMission.entries) {
-        if (!entry.value.contains(activityId)) continue;
-        final progress = quest.rollup[entry.key];
-        if (progress != null) return (progress: progress, missionId: entry.key);
-      }
-    }
-    return null;
-  }
 
   /// The learner's stars: every Mission complete in any in-scope quest, by
   /// Mission id — a Mission two courses share is one star, not two, since the
@@ -365,10 +335,6 @@ ProgressionResolution resolveProgression({
         anchorMissionId: _anchorFor(seq, rollup),
         indexByMission: {for (var i = 0; i < seq.length; i++) seq[i]: i},
         rollup: rollup,
-        activityIdsByMission: {
-          for (final missionId in rollup.keys)
-            missionId: outline.activityIdsByLo[missionId] ?? const {},
-        },
       ),
     );
   }

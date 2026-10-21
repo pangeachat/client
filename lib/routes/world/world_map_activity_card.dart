@@ -11,9 +11,9 @@ import 'package:fluffychat/routes/world/world_map_selection.dart';
 /// A large map pin drawn as the activity's own card (under
 /// [kMapActivityCards]): the course plan's [ActivitySuggestionCard] with a
 /// squashed photo, its live state as the frame and the pill on its photo, on a
-/// tail that points at the activity's location. When the learner has a saved
-/// session of it, the card wears the completed stamp with their XP under its
-/// name, the same badge in the same place as on the course page's cards
+/// tail that points at the activity's location. When the learner has
+/// finished it, the card wears the completed stamp with their XP on its
+/// photo, the same badge in the same place as on the course page's cards
 /// (#9559).
 ///
 /// Pointer-only, like the classic large card: the map is excluded from
@@ -27,6 +27,9 @@ class WorldMapActivityCard extends StatelessWidget {
   final List<String> participants;
   final int openSlots;
 
+  /// How many open sessions a joinable card offers, for its "Open (N)".
+  final int openSessions;
+
   /// The learner has a saved session of this activity.
   final bool played;
 
@@ -35,6 +38,11 @@ class WorldMapActivityCard extends StatelessWidget {
 
   /// A coursemate pinged the course to fill its open session.
   final bool pinged;
+
+  /// The course can't fill this activity's roles yet: the card dims to 50%,
+  /// like its mid pin — purely cosmetic, it still taps and opens the plan
+  /// (world-map.instructions.md, "Understaffed pins").
+  final bool understaffed;
   final bool isFocused;
   final VoidCallback onTap;
   final VoidCallback? onClose;
@@ -45,9 +53,11 @@ class WorldMapActivityCard extends StatelessWidget {
     required this.plan,
     required this.participants,
     required this.openSlots,
+    this.openSessions = 0,
     required this.played,
     this.xpEarned = 0,
     this.pinged = false,
+    this.understaffed = false,
     required this.onTap,
     this.isFocused = false,
     this.onClose,
@@ -87,6 +97,7 @@ class WorldMapActivityCard extends StatelessWidget {
             fontSizeSmall: 9.0,
             iconSize: 9.0,
             pinState: _live ? state : null,
+            openSessions: openSessions,
             participants: participants,
             openSlots: openSlots,
             pinged: pinged && _live,
@@ -96,7 +107,7 @@ class WorldMapActivityCard extends StatelessWidget {
             xpEarned: played ? xpEarned : 0,
           );
 
-    return Column(
+    final cardWithTail = Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Stack(
@@ -118,7 +129,9 @@ class WorldMapActivityCard extends StatelessWidget {
                   child: Material(
                     color: Colors.transparent,
                     elevation: 3.0,
-                    shadowColor: Colors.black54,
+                    shadowColor: Theme.of(
+                      context,
+                    ).colorScheme.shadow.withValues(alpha: 0.54),
                     borderRadius: BorderRadius.circular(PinSize.mapCardRadius),
                     child: body,
                   ),
@@ -139,6 +152,9 @@ class WorldMapActivityCard extends StatelessWidget {
         ),
       ],
     );
+    return understaffed
+        ? Opacity(opacity: 0.5, child: cardWithTail)
+        : cardWithTail;
   }
 }
 

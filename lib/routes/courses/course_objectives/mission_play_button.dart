@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/bold_tonal_button.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 
 /// The Mission card's main action, sitting on the card it opens (#9559): a
@@ -27,7 +28,9 @@ class MissionPlayButton extends StatelessWidget {
     super.key,
   });
 
-  static const double height = 40.0;
+  /// The page's button height — [BoldTonalButton]'s, which Practice and the
+  /// section buttons use — so every button on the course page is one size.
+  static const double height = 38.0;
   static const BorderRadius radius = BorderRadius.all(Radius.circular(999.0));
 
   @override

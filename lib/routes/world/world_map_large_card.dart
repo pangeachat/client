@@ -174,8 +174,7 @@ class WorldMapLargeCard extends StatelessWidget {
   /// completed stamp rides BEHIND the card,
   /// peeking below the caret tip exactly like a mid pin — a joinable/ongoing
   /// card stacked on a previously-completed activity keeps its star visible
-  /// (world-map.instructions.md, "Goal Progress"). Distinct from the in-session
-  /// star row, which shows only during an `ongoingActive` session.
+  /// (world-map.instructions.md, "Goal Progress").
   final ActivityStarLevel starLevel;
 
   /// When true, the activity is focused (its detail panel is open): the card
@@ -388,7 +387,7 @@ class WorldMapLargeCard extends StatelessWidget {
     final Widget? topRightBadge = (pinged && !state.isOngoing)
         ? const WorldMapPingedBadge()
         : (state == ActivityPinState.ongoingActive && liveRoom != null)
-        ? UnreadBubble(room: liveRoom!, borderColor: Colors.white)
+        ? UnreadBubble(room: liveRoom!, borderColor: PinSize.markRing)
         : null;
 
     // The peek is reserved *inside* this Stack: the card is inset by

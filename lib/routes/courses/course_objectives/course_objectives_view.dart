@@ -36,6 +36,7 @@ import 'package:fluffychat/routes/analytics/construct_analytics/practice/start_p
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_live_state_room_extension.dart';
+import 'package:fluffychat/routes/courses/course_objectives/course_objective_circles.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
 import 'package:fluffychat/routes/courses/course_objectives/suggested_activities.dart';
@@ -61,10 +62,6 @@ class CourseObjectivesList extends StatefulWidget {
   /// The v3 quest id whose outline to render. Defaults to the room's
   /// `coursePlan.uuid` when [room] is given; required when [room] is null.
   final String? questId;
-
-  /// Per-activity completion, e.g. `controller.roomSummariesModel
-  /// .hasCompletedActivity`. Null in a preview → no completion overlay.
-  final bool Function(String activityId)? hasCompletedActivity;
 
   /// Shrink-wrap the objective list instead of filling/scrolling its own
   /// viewport. Set true when embedded inside another scroll view (the
@@ -97,7 +94,6 @@ class CourseObjectivesList extends StatefulWidget {
     required this.objectivesProvider,
     this.room,
     this.questId,
-    this.hasCompletedActivity,
     this.shrinkWrap = false,
     this.suggestedOnly = false,
     this.missionId,
@@ -441,8 +437,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     });
   }
 
-  /// The activity's live map-pin state for the card's colour fill + banner, the
-  /// "Open (N)" count, and — for the Waiting state — the roster to draw. Mirrors
+  /// The activity's live map-pin state for the card's frame and pill, its open
+  /// sessions, and — for the Waiting state — the roster to draw. Mirrors
   /// the world map's pins, reusing the same resolvers so both surfaces agree:
   ///  * Ongoing wins over Open (the pin ladder). The course-scoped, first-joined
   ///    resume resolver ([Room.activeActivityRoomId]) already collapses multiple
@@ -466,18 +462,29 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   /// the same live state the cards render. `recency` stays 0: open sessions
   /// reach this surface through the discovery cache, which carries no
   /// per-session start time. See [rankSuggestedActivities].
-  PinSignals _signalsFor(String activityId) => PinSignals(
+  PinSignals _signalsFor(
+    String activityId,
+    Map<String, MissionXpBreakdown> xpByActivity,
+  ) => PinSignals(
     state: _liveStateFor(activityId).state ?? ActivityPinState.available,
-    completionFraction: (widget.hasCompletedActivity?.call(activityId) ?? false)
-        ? 1.0
-        : 0.0,
+    completionFraction: _finished(xpByActivity, activityId) ? 1.0 : 0.0,
     pinged: activityId == _pingedActivityId,
   );
 
-  /// The learner's total XP per activity from its finished sessions, for
-  /// the completed stamps (#9559). Read once per build: it walks the rooms.
+  /// The learner's XP per activity from its saved sessions in their current
+  /// language (#9559) — a preview's too, so a course they haven't joined
+  /// still shows what they earned in its activities elsewhere. Read once per
+  /// build: it walks the rooms.
   Map<String, MissionXpBreakdown> _xpByActivity() =>
-      widget.room?.client.cachedXpBreakdownByActivity ?? const {};
+      widget.objectivesProvider.client.cachedXpBreakdownByActivity;
+
+  /// Whether the learner has finished [activityId]: any XP from a saved
+  /// session of it in their current language (#9559) — the one rule every
+  /// completed stamp reads.
+  static bool _finished(
+    Map<String, MissionXpBreakdown> xpByActivity,
+    String activityId,
+  ) => (xpByActivity[activityId]?.total ?? 0) > 0;
 
   /// Where a Mission card anchors its language-switch popup.
   static String _languageTargetId(String missionId) =>
@@ -505,7 +512,11 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
       );
 
   void _openMissionDetails(String missionId) => context.go(
-    WorkspaceNav.openObjectiveDetail(GoRouterState.of(context).uri, missionId),
+    WorkspaceNav.openObjectiveDetail(
+      GoRouterState.of(context).uri,
+      missionId,
+      courseId: widget.room?.id,
+    ),
   );
 
   void _practiceMission(String missionId) =>
@@ -623,7 +634,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                       groups: [current],
                       missionGradient:
                           widget.objectivesProvider.missionGradient,
-                      signalsFor: _signalsFor,
+                      signalsFor: (id) => _signalsFor(id, xpByActivity),
                       cap: null,
                       includeOngoing: true,
                       includeCompleted: true,
@@ -631,11 +642,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                       // where it looks.
                       canStart: (activity) => ActivityCarousel.canStart(
                         availableParticipants: _availableParticipants,
-                        complete:
-                            widget.hasCompletedActivity?.call(
-                              activity.activityId,
-                            ) ??
-                            false,
+                        complete: _finished(xpByActivity, activity.activityId),
                         live: _liveStateFor(activity.activityId).state != null,
                         roles: activity.plan.req.numberOfParticipants,
                       ),
@@ -662,10 +669,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     final replay =
                         playTarget != null &&
                         ongoingRoomId == null &&
-                        (widget.hasCompletedActivity?.call(
-                              playTarget.activityId,
-                            ) ??
-                            false) &&
+                        _finished(xpByActivity, playTarget.activityId) &&
                         _liveStateFor(playTarget.activityId).state == null;
                     final l10n = L10n.of(context);
                     final hasProgress = widget.room != null;
@@ -679,7 +683,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     // its Practice go through the same "switch language?"
                     // popup a send in such a session does. Its base
                     // language can't be switched to, so there the link is
-                    // plain and Practice runs as it is.
+                    // plain and Practice is hidden.
                     final room = widget.room;
                     final otherLanguage =
                         room != null &&
@@ -724,12 +728,18 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                           : otherLanguage
                           ? null
                           : () => _openMissionDetails(missionId),
+                      // In another language, Practice first offers the
+                      // switch; in the learner's base language, which can't
+                      // be switched to, there is nothing to practise, so it
+                      // is hidden — as on the Mission's detail page.
                       onPractice: switchTo != null
                           ? _switchLanguageThen(
                               missionId,
                               switchTo,
                               () => _practiceMission(missionId),
                             )
+                          : otherLanguage
+                          ? null
                           : () => _practiceMission(missionId),
                       otherLanguageName: languageName,
                       onSwitchLanguage: switchTo == null || widget.readOnly
@@ -762,7 +772,6 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                               },
                               xpByActivity: (id) =>
                                   xpByActivity[id]?.total ?? 0,
-                              hasCompletedActivity: widget.hasCompletedActivity,
                               liveStateByActivity: _liveStateFor,
                               availableParticipants: _availableParticipants,
                               pingedActivityId: _pingedActivityId,
@@ -813,6 +822,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                       (_) => _scrollToSection(returnSectionKey, animate: false),
                     );
                   }
+                  final classIndex = CourseObjectiveCircles.classLocationIndex(
+                    groups,
+                    DateTime.now(),
+                  );
                   final list = ListView.separated(
                     controller: widget.shrinkWrap ? null : _scrollController,
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -840,8 +853,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                             ? () => _toggleMissionCollapsed(group.objective.id)
                             : null,
                         isUpNext: group.objective.id == anchorId,
+                        isClassLocation: i == classIndex,
+                        index: i + 1,
+                        missionCount: groups.length,
                         group: group,
-                        hasCompletedActivity: widget.hasCompletedActivity,
                         progress: hasProgress
                             ? widget.objectivesProvider.missionProgress(
                                 group.objective.id,

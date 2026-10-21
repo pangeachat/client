@@ -191,6 +191,7 @@ class WorkspaceRightPanel extends StatelessWidget {
             : PanelCard(
                 child: ObjectiveDetailsView(
                   missionId: param.missionId,
+                  courseId: param.courseId,
                   closeButton: IconButton(
                     tooltip: leadingTooltip,
                     icon: Icon(leadingIcon),

@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/world/compact_count.dart';
 
 /// The completed mark: a gold coin with a double ring and a check in dark ink,
 /// in the theme's golds — the same symbol on an activity's card and its map
@@ -17,15 +16,23 @@ class CompletedStamp extends StatelessWidget {
   final int times;
 
   /// The learner's total XP from every finished session of the activity;
-  /// above zero it takes the tab, abbreviated ("1.2K XP").
+  /// above zero it takes the tab ("450 XP", shortened from five digits).
   final int xp;
+
+  /// The tab's text size; null sizes it to a card's stamp. A larger badge —
+  /// the start page's total over its image — sets it.
+  final double? labelSize;
 
   const CompletedStamp({
     required this.size,
     this.times = 1,
     this.xp = 0,
+    this.labelSize,
     super.key,
   });
+
+  /// The XP from which the stamp's pill shortens the number ("12K XP").
+  static const int _compactFrom = 10000;
 
   /// The coin's disc (#9559): the bright fixed gold in both themes.
   static Color paperOf(ThemeData theme) => theme.pangea.goldFixedDim;
@@ -57,12 +64,14 @@ class CompletedStamp extends StatelessWidget {
             NumberFormat.decimalPattern(locale).format(xp),
           )
         : completed;
-    final tab = xp > 0
-        // The same short count the analytics cluster uses: narrow in every
-        // locale, and floored so it never overstates.
-        ? l10n.activityXpStamp(compactCount(xp))
+    // Locale-formatted like every other XP figure (#9559); only a total too
+    // wide for the stamp's pill is shortened, in the locale's own short form.
+    final tab = xp >= _compactFrom
+        ? l10n.activityXpStamp(NumberFormat.compact(locale: locale).format(xp))
+        : xp > 0
+        ? l10n.xpAmount(xp)
         : times > 1
-        ? '×$times'
+        ? '×${NumberFormat.decimalPattern(locale).format(times)}'
         : null;
     final coin = CustomPaint(
       size: Size.square(size),
@@ -77,7 +86,7 @@ class CompletedStamp extends StatelessWidget {
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.3),
+                  color: theme.colorScheme.shadow.withValues(alpha: 0.3),
                   blurRadius: 3.0,
                   offset: const Offset(0, 1.5),
                 ),
@@ -95,7 +104,12 @@ class CompletedStamp extends StatelessWidget {
       label: label,
       child: ExcludeSemantics(
         child: Container(
-          padding: const EdgeInsetsDirectional.fromSTEB(2.0, 2.0, 7.0, 2.0),
+          padding: EdgeInsetsDirectional.fromSTEB(
+            2.0,
+            2.0,
+            labelSize == null ? 7.0 : 10.0,
+            2.0,
+          ),
           decoration: BoxDecoration(
             color: scrimOf(theme),
             borderRadius: BorderRadius.circular(999.0),
@@ -111,7 +125,7 @@ class CompletedStamp extends StatelessWidget {
                 softWrap: false,
                 style: TextStyle(
                   color: theme.pangea.gold,
-                  fontSize: (size * 0.75).clamp(10.0, 12.0),
+                  fontSize: labelSize ?? (size * 0.75).clamp(10.0, 12.0),
                   fontWeight: FontWeight.w800,
                   height: 1.1,
                 ),

@@ -7,10 +7,9 @@ import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 
 /// The colours of a Mission's XP meter, shared by every surface that draws
 /// one (the course page's Mission card bar, the Learning Objectives list and
-/// detail rings). Bright gold only reads against something dark, so the
-/// empty band is dark in both themes and the XP golds stay bright: deep gold
-/// for conversation, pale gold for practice — apart by lightness rather than
-/// hue alone (#9559).
+/// detail rings): deep gold for conversation, pale gold for practice — apart
+/// by lightness rather than hue alone — on the same track as the Mission
+/// circles, whose single deeper gold marks overall progress (#9559).
 class MissionRingPalette {
   final Color track;
   final Color conversation;
@@ -26,12 +25,7 @@ class MissionRingPalette {
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
     return MissionRingPalette._(
-      track: theme.brightness == Brightness.light
-          ? Color.alphaBlend(
-              scheme.primary.withValues(alpha: 0.18),
-              scheme.inverseSurface,
-            )
-          : scheme.surfaceContainerHighest,
+      track: scheme.outlineVariant,
       conversation: theme.pangea.goldFixedDim,
       practice: theme.pangea.goldFixed,
     );

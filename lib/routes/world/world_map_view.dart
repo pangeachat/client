@@ -8,6 +8,7 @@ import 'package:flutter/rendering.dart';
 
 import 'package:collection/collection.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:intl/intl.dart' show NumberFormat;
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -24,6 +25,7 @@ import 'package:fluffychat/features/connection_status/filtered_network_controlle
 import 'package:fluffychat/features/connection_status/network_host_category.dart';
 import 'package:fluffychat/features/connection_status/widgets/filtered_network_note.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -160,6 +162,9 @@ class LargeCardSnapshot {
   final int xpEarned;
   final List<String> participants;
   final int openSlots;
+
+  /// How many open sessions a joinable card offers, for its "Open (N)".
+  final int openSessions;
   final ActivityStarLevel starLevel;
 
   /// True when this is an `available` card the course can't currently staff
@@ -178,6 +183,7 @@ class LargeCardSnapshot {
     required this.xpEarned,
     required this.participants,
     required this.openSlots,
+    this.openSessions = 0,
     required this.starLevel,
     this.understaffed = false,
   });
@@ -855,6 +861,23 @@ class _WorldMapViewState extends State<WorldMapView>
     }
   }
 
+  /// How many open sessions of [activityId] the learner can join, from the
+  /// same discovery cache — and course scope — the course page counts its
+  /// "Open (N)" from; at least one, since the pin is joinable.
+  int _openSessionCount(String activityId) {
+    final cached = DiscoveredSessionsCache.instance.forActivity(
+      activityId,
+      course: widget.controller.courseRoom,
+    );
+    final open = cached == null
+        ? 0
+        : ActivitySessionSummariesModel(
+            cached,
+            activityId: activityId,
+          ).openSessions.length;
+    return open > 0 ? open : 1;
+  }
+
   /// Resolves everything [WorldMapLargeCard] needs for [card] — hydrates the
   /// plan, and sources participants/seats from the right place per state (a
   /// joinable session's room-preview/room, or the learner's own live room for
@@ -899,6 +922,9 @@ class _WorldMapViewState extends State<WorldMapView>
       xpEarned: widget.controller.activityXpEarned(card.activityId) ?? 0,
       participants: participants,
       openSlots: openSlots,
+      openSessions: state == ActivityPinState.joinable
+          ? _openSessionCount(card.activityId)
+          : 0,
       // Whether the learner has a saved session of it — a played card wears
       // the coin on its photo.
       starLevel: render.starLevelOf(card.activityId),
@@ -1040,8 +1066,8 @@ class _WorldMapViewState extends State<WorldMapView>
               animateInOf: _dotExits.markEntered,
             ).layer();
             // No stamp layer (#9559): a played activity with nothing live is
-            // drawn AS its stamp by its own pin, and a live pin or card never
-            // carries one — the card shows it under its name instead.
+            // drawn AS its stamp by its own pin; a live card shows it on its
+            // photo, and a live mid pin doesn't mark it.
             final Widget largeLayer = LargeMarkersLayer(
               largeCards: render.largeCards,
               currentLarge: currentLarge,
@@ -1352,6 +1378,26 @@ class _WorldMapViewState extends State<WorldMapView>
                         return L10n.of(
                           context,
                         ).participantsOfTotal(participants.length, total);
+                      },
+                      markDetailOf: (card) {
+                        final l10n = L10n.of(context);
+                        final xp =
+                            widget.controller.activityXpEarned(
+                              card.activityId,
+                            ) ??
+                            0;
+                        final marks = [
+                          if (render.pingedOf(card.activityId))
+                            l10n.pingedLabel,
+                          if (xp > 0)
+                            l10n.activityCompletedWithXp(
+                              l10n.activityCompleted,
+                              NumberFormat.decimalPattern(
+                                Localizations.localeOf(context).toLanguageTag(),
+                              ).format(xp),
+                            ),
+                        ];
+                        return marks.isEmpty ? null : marks.join(', ');
                       },
                     ),
                   ),

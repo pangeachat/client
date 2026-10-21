@@ -108,9 +108,11 @@ void main() {
   testWidgets('a played card wears the stamp with its XP', (tester) async {
     await pumpCard(tester, plan: plan, played: true, xpEarned: 2330);
     expect(find.byType(CompletedStamp), findsOneWidget);
-    expect(find.text('2.3k XP'), findsOneWidget);
+    expect(find.text('2,330 XP'), findsOneWidget);
 
     await pumpCard(tester, plan: plan);
+    // The stamp fades out rather than vanishing.
+    await tester.pump(const Duration(seconds: 1));
     expect(find.byType(CompletedStamp), findsNothing);
 
     // Let the photo's failed load run out its retry timer.

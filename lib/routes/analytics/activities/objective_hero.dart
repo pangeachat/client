@@ -28,7 +28,9 @@ class ObjectiveHero extends StatelessWidget {
     super.key,
   });
 
-  /// The four skills, in the order a teacher lists them.
+  /// The four skills, in the order a teacher lists them, then "Other" — XP
+  /// no skill claims, such as practice bonuses — when there is any, so the
+  /// tiles add up to everything but goals (#9559).
   static const List<LearningSkillsEnum> _skills = [
     LearningSkillsEnum.speaking,
     LearningSkillsEnum.hearing,
@@ -162,7 +164,11 @@ class ObjectiveHero extends StatelessWidget {
             Row(
               spacing: 8.0,
               children: [
-                for (final skill in _skills)
+                for (final skill in [
+                  ..._skills,
+                  if ((skillXp[LearningSkillsEnum.other] ?? 0) > 0)
+                    LearningSkillsEnum.other,
+                ])
                   Expanded(
                     child: _SkillTile(skill: skill, xp: skillXp[skill] ?? 0),
                   ),

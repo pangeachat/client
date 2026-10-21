@@ -13,6 +13,11 @@ class ObjectiveCircle extends StatelessWidget {
   final int count;
   final bool showSelectedLabel;
   final bool showClassStrip;
+
+  /// Whether the circle keeps the slot under it for the picked Mission's
+  /// pointer — the row's circles do; a lone circle (a full-plan Mission
+  /// header) doesn't.
+  final bool showPointer;
   final VoidCallback? onTap;
 
   const ObjectiveCircle({
@@ -21,6 +26,7 @@ class ObjectiveCircle extends StatelessWidget {
     required this.showSelectedLabel,
     required this.showClassStrip,
     required this.onTap,
+    this.showPointer = true,
     super.key,
   });
 
@@ -54,7 +60,7 @@ class ObjectiveCircle extends StatelessWidget {
     Widget circle = MissionXpRing(
       size: ObjectiveProgressCircles.diameter,
       strokeWidth: ObjectiveProgressCircles.ringWidth,
-      trackColor: theme.colorScheme.outlineVariant,
+      trackColor: MissionRingPalette.of(context).track,
       gapColor: theme.colorScheme.surface,
       segments: [
         MissionXpRingSegment(
@@ -190,11 +196,21 @@ class ObjectiveCircle extends StatelessWidget {
             customBorder: const CircleBorder(),
             child: circle,
           );
-    // The state is in the accessible name and the statement in the tooltip,
-    // so neither the colour nor the number is the only carrier.
+    // The state, how far along it is and the statement are all in the
+    // accessible name, so neither the colour, the ring nor the number is the
+    // only carrier.
+    final xp = item.xp;
+    final status = [
+      label,
+      if (item.loading)
+        l10n.loadingPleaseWait
+      else if (xp != null && !complete)
+        l10n.xpTowardObjective(xp.xp, xp.threshold),
+      if (item.classLocation) l10n.classLocation,
+      if (item.pinged) l10n.pingedLabel,
+    ].join(', ');
     return Semantics(
-      label:
-          '${[label, if (item.classLocation) l10n.classLocation, if (item.pinged) l10n.pingedLabel].join(', ')}: ${item.statement}',
+      label: '$status: ${item.statement}',
       selected: item.selected,
       button: onTap != null,
       // The InkWell below is excluded, so the tap is published here.
@@ -207,7 +223,7 @@ class ObjectiveCircle extends StatelessWidget {
             children: [
               if (showClassStrip) classMarker,
               tappable,
-              pointer,
+              if (showPointer) pointer,
               if (showSelectedLabel)
                 SizedBox(
                   width: ObjectiveProgressCircles.diameter,

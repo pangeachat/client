@@ -83,12 +83,15 @@ class CourseObjectiveCircles extends StatelessWidget {
           ? null
           : objectivesProvider.client.getRoomById(courseId);
       final currentId = objectivesProvider.currentObjectiveGroup?.objective.id;
+      final loading = objectivesProvider.progressLoading;
+      // While progress loads the current Mission isn't known yet (it falls
+      // back to the first), so no circle is pointed at unless the learner
+      // picked one — the pointer would land on Mission 1, then jump (#9559).
       final shownId =
           objectivesProvider.objectiveGroup(selectedMissionId)?.objective.id ??
-          currentId;
+          (loading ? null : currentId);
       final pinged = WorldMapPinsManager.pingedActivityIds.value;
       final classIndex = classLocationIndex(groups, DateTime.now());
-      final loading = objectivesProvider.progressLoading;
       final onSelectMission = this.onSelectMission;
       return ObjectiveProgressCircles(
         onTap: onSelectMission == null
@@ -110,6 +113,7 @@ class CourseObjectiveCircles extends StatelessWidget {
                     group.objective.id != shownId &&
                     _hasPing(course, group, pinged),
                 progress: progress?.fraction ?? 0.0,
+                xp: progress,
                 loading: loading,
                 state: progress?.satisfied == true
                     ? ObjectiveCircleState.complete

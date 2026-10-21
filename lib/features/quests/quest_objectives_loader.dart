@@ -183,18 +183,20 @@ class QuestObjectivesLoader {
   /// which the framework rejects. A microtask runs once the build has
   /// unwound, and the pins manager's own copy stays synchronous for the map.
   static void publishProgression(ProgressionResolution value) =>
-      scheduleMicrotask(() => _progression.value = value);
+      scheduleMicrotask(() => _setShared(value));
+
+  /// Whether [sharedProgression] holds a real resolution yet — one resolved
+  /// from loaded outlines. Until then its value is the empty placeholder, so
+  /// a reader shows a loading state rather than zero (#9559).
+  static bool get sharedProgressionReady => _sharedProgressionReady;
+  static bool _sharedProgressionReady = false;
+
+  static void _setShared(ProgressionResolution value) {
+    _sharedProgressionReady = true;
+    _progression.value = value;
+  }
 
   void _onXpChanged() => _resolveProgression(_loadGeneration);
-
-  /// The header's star summary, or null before this course's progress resolves
-  /// (the bar then renders its muted empty state).
-  ///
-  /// Deliberately supplies no Mission list: the resolver owns which Missions
-  /// count. Passing `quest.learningObjectiveIds` here used to disagree with the
-  /// panel — which drops activity-less Missions (#7114) — so each hidden
-  /// Mission silently added a default threshold to the denominator (#7663).
-  QuestStarSummary? get questStars => progression.value.questStars(_courseId);
 
   /// This course's resolved quest, or null until the shared resolution lands
   /// (or when the course isn't joined) — the panel then shows no star display,
@@ -337,9 +339,7 @@ class QuestObjectivesLoader {
   }
 
   void _updateProgression(ProgressionResolution value, int loadGen) {
-    if (!_disposed && loadGen == _loadGeneration) {
-      _progression.value = value;
-    }
+    if (!_disposed && loadGen == _loadGeneration) _setShared(value);
   }
 
   /// Re-read the outline when the resolved display language no longer matches
