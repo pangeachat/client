@@ -111,7 +111,8 @@ jobs:
       # (rive-app/rive-flutter#566). Running it here, from the repo root, works
       # on a cold pub cache and is a no-op on a warm one.
       - name: Set up rive_native
-        run: dart run rive_native:setup --verbose --platform ios
+        # --clean: the cached marker trap integrate.yaml describes.
+        run: dart run rive_native:setup --verbose --clean --platform ios
       - name: Build iOS (unsigned)
         # BUILD_COMMIT_SHA is the only part of the version display that says
         # which code is in the build — fastlane derives the build number from

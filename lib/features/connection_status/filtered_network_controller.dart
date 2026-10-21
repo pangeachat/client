@@ -144,6 +144,11 @@ class FilteredNetworkController {
 
   void onRequestSucceeded(Uri url) {
     // Every request lands here; on a healthy network there is nothing to do.
+    final connection = ConnectionStatusController.instance;
+    if (connection.status.value.isLost &&
+        NetworkHostCategory.ofRequest(url) == NetworkHostCategory.chatServer) {
+      connection.onChatServerAnswered();
+    }
     if (blocked.value.isEmpty && !NetworkHelpRepo.isWaiting) return;
     final category = NetworkHostCategory.ofRequest(url);
     if (category == null) return;
@@ -158,10 +163,21 @@ class FilteredNetworkController {
     final needed = await probe(category.probeUrl);
     var verdict = await _verdictOf(needed);
     if (!_inForeground) return null;
+    // Before sign-in the connection banner has no sync loop to watch, so
+    // this check's first word is its signal, and the hold's outcome after.
+    // See connection-status.instructions.md, "Before sign-in".
+    final tellsConnection = category == NetworkHostCategory.chatServer;
+    if (tellsConnection) {
+      ConnectionStatusController.instance.onChatServerChecked(verdict);
+    }
     if (verdict == NetworkVerdict.filtered &&
         needed == NetworkProbeResult.refused &&
         category.isOurServer) {
-      verdict = await _holdRefusal(category);
+      final held = await _holdRefusal(category);
+      if (tellsConnection && held != verdict) {
+        ConnectionStatusController.instance.onChatServerChecked(held);
+      }
+      verdict = held;
     }
     _lastCheckedAt[category] = DateTime.now();
     switch (verdict) {
@@ -210,7 +226,8 @@ class FilteredNetworkController {
   /// A backgrounded app's requests fail because the OS paused them, so
   /// nothing a check sees there is a verdict. The banner's own signal, so
   /// the two agree on when the app is in the background.
-  bool get _inForeground => ConnectionStatusController.instance.isAppResumed();
+  bool get _inForeground =>
+      ConnectionStatusController.instance.isAppInForeground();
 
   void _markBlocked(NetworkHostCategory category, NetworkProbeResult needed) {
     if (blocked.value.contains(category)) return;
