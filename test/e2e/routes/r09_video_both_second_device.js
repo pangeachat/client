@@ -55,28 +55,23 @@ async function main() {
 
   let prompt1 = false;
   let prompt2 = false;
-  for (let i = 0; i < 10 && !(prompt1 && prompt2); i++) {
-    await wait(2000);
-    prompt1 = prompt1 || R.anyLabel(await ui.labels(L1.page).catch(() => []), 'callDevicesTitle');
-    prompt2 = prompt2 || R.anyLabel(await ui.labels(L2.page).catch(() => []), 'callDevicesTitle');
+  let left = null;
+  for (let i = 0; i < 12 && !left; i++) {
+    prompt1 = prompt1 || await R.sees(L1, 'callDevicesTitle', `prompt1-${i}`);
+    prompt2 = prompt2 || await R.sees(L2, 'callDevicesTitle', `prompt2-${i}`);
+    if (prompt2) left = await R.clickText(L2, 'callDevicesLeaveHere', `leave-${i}`);
+    if (!left) await wait(1500);
   }
   await R.dumpLabels(L1, 'prompt');
   await R.dumpLabels(L2, 'prompt');
-  h.check(s, 'device one is told the call is open on two devices (#9168)', prompt1, 'no "open on two of your devices" prompt on device one');
-  h.check(s, 'device two is told the call is open on two devices', prompt2, 'no prompt on device two');
-
-  const leaveHere = new Set(R.L('callDevicesLeaveHere'));
-  let left = false;
-  for (let i = 0; i < 10 && !left; i++) {
-    const l = await ui.labels(L2.page).catch(() => []);
-    const label = l.find((n) => leaveHere.has(n));
-    if (label) {
-      const r = await ui.findRect(L2.page, label, { exact: true }).catch(() => null);
-      if (r) { await L2.page.mouse.click(r.x, r.y); left = true; }
-    }
-    if (!left) await wait(2000);
+  h.check(s, 'device one is told the call is open on two devices (#9168)', prompt1, 'no "open on two of your devices" prompt on device one (labels + OCR)');
+  h.check(s, 'device two is told the call is open on two devices', prompt2, 'no prompt on device two (labels + OCR)');
+  h.check(s, 'device two pressed "Leave the call here"', !!left, 'no "Leave the call here" control (labels + OCR)');
+  if (!left) {
+    console.log('   (no choice was made: ending the call from the peer)');
+    await R.hangUp(s, P, roomId);
+    return R.finish(s, opened, { callKey: call.callKey, d1, d2, aborted: 'no Leave the call here' });
   }
-  h.check(s, 'device two pressed "Leave the call here"', left, 'no "Leave the call here" control');
   await wait(10000);
   const liveNow = await mx.liveMembershipDevices(L1.token, roomId, LEARNER);
   // Presence is evidence; a device's absence from one state write is not (the
@@ -88,8 +83,9 @@ async function main() {
   const still1 = liveNow.includes(d1);
   h.check(s, 'device one carries on in the call', still1, 'device one is no longer in the call');
   const after1 = await R.dumpLabels(L1, 'after-leave');
-  if (!after1.length || String(after1[0]).startsWith('<unreadable')) h.skipped(s, "device one's prompt withdrew", 'device one could not be read');
-  else h.check(s, "device one's prompt withdrew", !R.anyLabel(after1, 'callDevicesTitle'), 'prompt still up on device one');
+  const after1Text = await R.ocr(L1, 'after-leave');
+  if (after1Text == null) h.skipped(s, "device one's prompt withdrew", 'device one could not be read');
+  else h.check(s, "device one's prompt withdrew", !R.anyLabel(after1, 'callDevicesTitle') && !R.ocrHas(after1Text, R.EN('callDevicesTitle')), 'prompt still up on device one');
   await wait(30000);
   const callSeconds = Math.round((Date.now() - answeredAt) / 1000);
   await R.hangUp(s, L1, roomId);

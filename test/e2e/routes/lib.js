@@ -390,12 +390,36 @@ function ocrFind(p, tag, word) {
   const want = word.split(' ');
   const rows = String(r.stdout || '').split('\n').slice(1).map((l) => l.split('\t')).filter((c) => c.length >= 12 && c[11].trim());
   for (let i = 0; i + want.length <= rows.length; i++) {
-    if (want.every((w, j) => rows[i + j][11].trim() === w)) {
+    if (want.every((w, j) => rows[i + j][11].trim().replace(/[.,!?]+$/, '') === w)) {
       const c = rows[i];
       return { left: Number(c[6]), top: Number(c[7]), width: Number(c[8]), height: Number(c[9]) };
     }
   }
   return null;
+}
+
+/// Whether [p] shows the l10n [key]'s English text: semantics first, then OCR
+/// of the canvas.
+async function sees(p, key, tag) {
+  const l = await ui.labels(p.page).catch(() => []);
+  if (anyLabel(l, key)) return true;
+  return ocrHas(await ocr(p, tag), EN(key));
+}
+
+/// Clicks the control whose text is the l10n [key] (English), by its semantics
+/// node or, when the sheet is drawn on the canvas, where OCR finds the text.
+/// Returns how it clicked, or null when the text is nowhere on screen.
+async function clickText(p, key, tag) {
+  for (const label of L(key)) {
+    const r = await ui.findRect(p.page, label, { exact: true }).catch(() => null);
+    if (r) { await p.page.mouse.click(r.x, r.y); return 'label'; }
+  }
+  const t = await ocr(p, tag);
+  if (t == null) return null;
+  const box = ocrFind(p, tag, EN(key).replace(/[.]/g, ''));
+  if (!box) return null;
+  await p.page.mouse.click(box.left + 20, box.top + box.height / 2);
+  return 'ocr';
 }
 
 async function saveParticipant(p) {
@@ -655,6 +679,13 @@ async function checkCreditOnce(s, speakers, anchorIds, sinceTs, { waitS = 300 } 
 // ----------------------------------------------------------------- screens
 
 const L = (key) => labels.labelsFor(key);
+const EN_ARB = JSON.parse(fs.readFileSync(path.resolve(__dirname, '..', '..', '..', 'lib', 'l10n', 'intl_en.arb'), 'utf8'));
+/// The English string for an l10n key (the suite's accounts use English UI).
+const EN = (key) => {
+  const v = EN_ARB[key];
+  if (typeof v !== 'string') throw new Error(`no English string for ${key}`);
+  return v;
+};
 const anyLabel = (seen, key) => L(key).some((t) => t && seen.some((n) => n.includes(t)));
 
 /// Opens the NEWEST call card's transcript (the lowest reachable link).
@@ -950,5 +981,5 @@ module.exports = {
   placeAndAnswer, cameraOn, hangUp, related, eventsSince, collect, summarise, spoken, wordSet, hitsOf,
   probeMedia, creditsFor, checkCreditOnce, openNewestTranscript, watchLoading, readTranscriptScreen,
   assertTranscriptCriteria, assertPlays, assertScreens, repetition, clockOf, anyLabel, L,
-  finish, fatal, ocr, ocrHas,
+  finish, fatal, ocr, ocrHas, ocrFind, sees, clickText, EN,
 };
