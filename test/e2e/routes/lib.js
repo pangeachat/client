@@ -854,7 +854,7 @@ function assertScreens(s, screens, { subscribed, unsubscribed, anySubscribed, ca
     const l = sc.labels;
     h.check(s, `${sc.name} (unsubscribed) sees the locked transcript`, anyLabel(l, 'unlockCallTranscript') || anyLabel(l, 'callTranscriptSubscribeForTranscription') || ocrHas(sc.text, 'Unlock call transcript'),
       'no "Unlock call transcript" / subscribe placeholder');
-    h.check(s, `${sc.name} (unsubscribed) is offered no Transcribe button`, !l.includes('Transcribe'), 'a Transcribe button is offered');
+    h.check(s, `${sc.name} (unsubscribed) is offered no Transcribe button`, !l.includes('Transcribe') && !ocrHas(sc.text, 'Transcribe'), 'a Transcribe button is offered (label or OCR)');
   }
   if (!anySubscribed) {
     for (const sc of unsubscribed) {

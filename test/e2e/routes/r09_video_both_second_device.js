@@ -109,6 +109,8 @@ async function main() {
   R.assertScreens(s, [scP, scL], { subscribed: [scP, scL], unsubscribed: [], anySubscribed: true, callSeconds });
   await R.checkCreditOnce(s, [L1, P], [call.ring?.event_id, call.callKey,
     ...(await R.eventsSince(P.token, roomId, call.mark, [mx.CALL])).map((e) => e.event_id)].filter(Boolean), call.ringAt - 60000);
+  const cards = mx.cardsIn(await R.eventsSince(P.token, roomId, call.mark, [mx.CALL]), P.userId);
+  h.check(s, 'the call left exactly one card, answered', cards.length === 1 && cards[0].answered, JSON.stringify(cards));
   await R.confirmSubscriptions(s, { learner: true, calltester: true });
   return R.finish(s, opened, { callKey: call.callKey, d1, d2 });
 }

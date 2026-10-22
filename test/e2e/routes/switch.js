@@ -150,7 +150,9 @@ async function runSwitch({ id, moveAtS, talkAfterS = 40, sub = { L: true, P: tru
 
     await R.checkCreditOnce(s, [L2, P], [call.ring?.event_id, call.callKey,
       ...(await R.eventsSince(P.token, roomId, call.mark, [mx.CALL])).map((e) => e.event_id)].filter(Boolean), call.ringAt - 60000);
-    await R.confirmSubscriptions(s, { learner: sub.L, calltester: sub.P });
+      const cards = mx.cardsIn(await R.eventsSince(P.token, roomId, call.mark, [mx.CALL]), P.userId);
+    h.check(s, 'the call left exactly one card, answered', cards.length === 1 && cards[0].answered, JSON.stringify(cards));
+  await R.confirmSubscriptions(s, { learner: sub.L, calltester: sub.P });
   return R.finish(s, opened, { moveAtS, callKey: call.callKey, d1, d2 });
   } catch (e) {
     return R.fatal(s, opened)(e);

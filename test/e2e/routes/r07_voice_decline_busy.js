@@ -15,6 +15,7 @@ const R = require('./lib');
 const { h, ui, mx, wait } = R;
 const s = 'r07_voice_decline_busy';
 const opened = [];
+const closed = [];
 
 function tonesAfter(media, t0) {
   const ev = (media || []).filter((m) => m.t >= t0);
@@ -55,7 +56,7 @@ async function main() {
   console.log('[1] decline');
   const t0 = Date.now();
   const call = await R.placeAndAnswer(s, A, B, roomId, { answer: false });
-  if (!call) return R.finish(s, opened);
+  if (!call) return R.finish(s, opened, { closed });
   await wait(4000);
   const declined = await h.actUntil('decline', () => ui.clickBanner(B.page, 'decline'),
     async () => (await h.since(A.token, roomId, call.mark)).some((e) => e.type === mx.DECLINE && e.sender === B.userId));
@@ -91,16 +92,17 @@ async function main() {
   await h.recover(A, roomLp);
   await B.browser.close().catch(() => {});
   opened.splice(opened.indexOf(B), 1);
+  closed.push(B);
   const E = await R.openP('routes_es', esLp, 9773, { wav: R.fixture('es_mix') });
   opened.push(E);
   const B2 = await R.openP('calltester', esLp, 9772, { wav: R.fixture('peer') });
   opened.push(B2);
   const first = await R.placeAndAnswer(s, E, B2, esRoomId);
-  if (!first) return R.finish(s, opened);
+  if (!first) return R.finish(s, opened, { closed });
   await wait(5000);
   const tBusy = Date.now();
   const second = await R.placeAndAnswer(s, A, null, roomId, { answer: false });
-  if (!second) return R.finish(s, opened);
+  if (!second) return R.finish(s, opened, { closed });
   // The busy decline and the caller's "<name> is on another call" are asked
   // together, sampling the caller's screen (labels, then OCR of the canvas)
   // from the moment the ring goes out: the notice may be brief.
@@ -129,7 +131,7 @@ async function main() {
   const busyCards = mx.cardsIn(await R.eventsSince(A.token, roomId, second.mark), A.userId);
   R.save('events.json', { decline: dec, cardsA, cardsB, busy, busyCards });
   h.check(s, 'the busy attempt leaves one card, not answered', busyCards.length === 1 && !busyCards[0].answered, JSON.stringify(busyCards));
-  return R.finish(s, opened);
+  return R.finish(s, opened, { closed });
 }
 
 main().catch(R.fatal(s, opened));
