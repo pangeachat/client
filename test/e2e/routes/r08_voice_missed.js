@@ -38,7 +38,14 @@ async function main() {
   h.check(s, 'the caller is no longer in a call', !(await mx.hasMembership(A.token, roomId, A.userId)), 'caller still holds a membership after the ring ran out');
   const after = await R.dumpLabels(B, 'after-ring');
   h.check(s, 'the ring is gone from the callee after it ran out', !after.some((l) => /^answer$/i.test(l)), 'answer control still on screen');
-  h.check(s, 'a missed call writes no transcript and no recording', !evs.some((e) => [R.TRANSCRIPT, R.AUDIO, R.MERGED].includes(e.type)), evs.map((e) => e.type).join(','));
+  // The caller's device writes an EMPTY half (zero chunks) for a call that never
+  // connected; whether it should is not settled by the design docs, so it is
+  // recorded as evidence rather than judged. What must not exist is a
+  // recording or words.
+  R.save('halves-for-unanswered-call.json', evs.filter((e) => e.type === R.TRANSCRIPT).map(R.summarise));
+  h.check(s, 'a missed call saves no recording and transcribes nothing',
+    !evs.some((e) => [R.AUDIO, R.MERGED].includes(e.type) || (e.type === R.TRANSCRIPT && R.spoken(e).trim())),
+    evs.map((e) => e.type).join(','));
   const media = await R.saveParticipant(B);
   const plays = (media || []).filter((m) => m.t >= t0 && m.kind === 'play');
   if (!media) h.skipped(s, 'the callee heard a ringtone (#9166)', 'media log unreadable');

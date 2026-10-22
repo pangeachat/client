@@ -138,13 +138,18 @@ async function ensureSubscriptions(want) {
     const a = cfg.accounts[name];
     const { token, userId } = await mx.login(a.user, a.pass);
     try {
-      setEntitlement(userId, subscribed);
       const goal = subscribed ? 'full' : 'none';
       let got = null;
-      for (let i = 0; i < 30; i++) {
-        got = await accessLevel(token);
-        if (got === goal) break;
-        await wait(2000);
+      // Three rounds: the FIRST status read for a trial-eligible account claims
+      // its trial (a new active row), so a "none" set before that read is undone
+      // by it. Re-setting after the read expires the claimed trial too.
+      for (let round = 0; round < 3 && got !== goal; round++) {
+        setEntitlement(userId, subscribed);
+        for (let i = 0; i < 10; i++) {
+          got = await accessLevel(token);
+          if (got === goal) break;
+          await wait(2000);
+        }
       }
       if (got !== goal) throw new Error(`${name} should be ${goal} but choreo says ${got}`);
       console.log(`   (${name} subscription: ${got})`);
@@ -295,13 +300,15 @@ function sttCost(participants) {
   let seconds = 0;
   let usd = 0;
   for (const c of calls) {
+    // A refused request (401/403/5xx) reached no provider and cost nothing.
+    if (!(c.status >= 200 && c.status < 300)) continue;
     const sec = c.seconds || 0;
     seconds += sec;
     const k = String(c.service || '').toLowerCase();
     const rate = Object.entries(STT_PRICE_PER_MIN).find(([n]) => k.includes(n))?.[1] ?? 0.016;
     usd += (sec / 60) * rate;
   }
-  return { calls: calls.length, seconds: Math.round(seconds), usd: Math.round(usd * 10000) / 10000, unknownDuration: calls.filter((c) => c.seconds == null).length, services: [...new Set(calls.map((c) => c.service))] };
+  return { calls: calls.length, billable: calls.filter((c) => c.status >= 200 && c.status < 300).length, seconds: Math.round(seconds), usd: Math.round(usd * 10000) / 10000, unknownDuration: calls.filter((c) => c.seconds == null).length, services: [...new Set(calls.map((c) => c.service))] };
 }
 
 async function cdp(p) {
@@ -626,6 +633,9 @@ async function watchLoading(s, p, { seconds = 40 } = {}) {
 async function readTranscriptScreen(p, tag = 'final') {
   const opened = await openNewestTranscript(p);
   await wait(6000);
+  // Read once BEFORE the recordings list is opened: opened, it lies over the
+  // turns and the per-speaker notes.
+  const before = await ocr(p, `transcript-${tag}-collapsed`);
   // The recordings list is collapsed behind its header; open it so the
   // "Full call" row (or "No recording of the full call.") is on screen.
   for (const t of L('callTranscriptRecordings')) {
@@ -633,7 +643,7 @@ async function readTranscriptScreen(p, tag = 'final') {
     if (r) { await p.page.mouse.click(r.x, r.y); await wait(2500); break; }
   }
   const l = await dumpLabels(p, `transcript-${tag}`);
-  const text = await ocr(p, `transcript-${tag}`);
+  const text = `${before}\n${await ocr(p, `transcript-${tag}`)}`;
   await p.page.keyboard.press('Escape').catch(() => {});
   return { opened, labels: l, text };
 }
