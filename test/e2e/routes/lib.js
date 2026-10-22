@@ -220,7 +220,11 @@ async function instrument(page) {
     window.__routesMedia = [];
     const log = (kind, el) => {
       try {
-        if (!el.__rid) el.__rid = `m${(window.__routesMid = (window.__routesMid || 0) + 1)}`;
+        if (!el.__rid) {
+          el.__rid = `m${(window.__routesMid = (window.__routesMid || 0) + 1)}`;
+          // Kept by id: an element made with new Audio() is never in the DOM.
+          (window.__routesEls = window.__routesEls || {})[el.__rid] = el;
+        }
         el.setAttribute('data-routes-id', el.__rid);
         window.__routesMedia.push({ t: Date.now(), id: el.__rid, kind, src: String(el.currentSrc || el.src || '').slice(-80), at: el.currentTime, dur: el.duration });
       } catch (_) {}
@@ -739,7 +743,7 @@ async function readTranscriptScreen(p, tag = 'final') {
     let progressed = null;
     if (started) {
       progressed = await p.page.evaluate((id) => {
-        const el = Array.from(document.querySelectorAll('audio,video')).find((e) => e.__rid === id);
+        const el = (window.__routesEls || {})[id];
         return el ? el.currentTime : null;
       }, started.id).catch(() => null);
     }
