@@ -227,7 +227,7 @@ async function instrument(page) {
     HTMLMediaElement.prototype.play = function (...a) {
       if (!this.__routesHooked) {
         this.__routesHooked = true;
-        for (const ev of ['pause', 'ended', 'error']) this.addEventListener(ev, () => log(ev, this));
+        for (const ev of ['playing', 'pause', 'ended', 'error']) this.addEventListener(ev, () => log(ev, this));
       }
       log('play', this);
       return origPlay.apply(this, a);
@@ -669,7 +669,10 @@ async function openNewestTranscript(p) {
 
 /// Samples the transcript screen right after a call, while it should still be
 /// processing, for the loading state (#8808).
-async function watchLoading(s, p, { seconds = 40 } = {}) {
+async function watchLoading(s, p, { seconds = 40, doneAlready = null } = {}) {
+  // Whether everything this call will write had ALREADY landed when watching
+  // began: then no loading state was owed, and not seeing one proves nothing.
+  const finishedBefore = doneAlready ? await doneAlready().catch(() => false) : false;
   const opened = await openNewestTranscript(p);
   if (!opened) { h.skipped(s, `${p.name}: a loading indicator shows while the transcript is processing`, 'could not open the transcript right after the call'); return null; }
   const seen = [];
@@ -687,7 +690,12 @@ async function watchLoading(s, p, { seconds = 40 } = {}) {
     if (isLoading) { loading = true; await dumpLabels(p, 'loading'); break; }
     await wait(1500);
   }
-  save(`loading-${p.name}.json`, seen);
+  save(`loading-${p.name}.json`, { finishedBefore, seen });
+  if (!loading && finishedBefore) {
+    h.skipped(s, `${p.name}: a loading indicator shows while the transcript is processing`, 'processing had already finished when the screen was first watched');
+    await p.page.keyboard.press('Escape').catch(() => {});
+    return null;
+  }
   h.check(s, `${p.name}: a loading indicator shows while the transcript is processing`, loading,
     `no "Still transcribing" / "Preparing the full recording" (labels or OCR) in ${seconds}s on the transcript screen, opened right after hangup`);
   await p.page.keyboard.press('Escape').catch(() => {});
@@ -719,12 +727,22 @@ async function readTranscriptScreen(p, tag = 'final') {
     await p.page.mouse.click(full.left + 20, full.top + full.height + 22);
     await wait(4000);
     const media = await p.page.evaluate(() => window.__routesMedia || []).catch(() => null);
-    played = media == null ? null : media.some((m) => m.t >= t0 && m.kind === 'play');
+    // Started AND progressed: a 'playing' event and the element's clock past
+    // half a second, with no media error -- a rejected or stalled play() is not
+    // playback.
+    const fresh = (media || []).filter((m) => m.t >= t0);
+    const progressed = await p.page.evaluate(() => Array.from(document.querySelectorAll('audio,video')).some((e) => e.currentTime > 0.5)).catch(() => null);
+    played = media == null ? null : (fresh.some((m) => m.kind === 'playing') && !fresh.some((m) => m.kind === 'error')
+      && (progressed === true || fresh.some((m) => (m.kind === 'pause' || m.kind === 'ended') && m.at > 0.5)));
     await p.page.mouse.click(full.left + 20, full.top + full.height + 22).catch(() => {});
     save(`full-call-play-${p.name}.json`, { at: full, played, media: (media || []).filter((m) => m.t >= t0) });
   }
   await p.page.keyboard.press('Escape').catch(() => {});
-  return { opened, labels: l, text, fullCallPlayed: played, fullCallFound: !!full };
+  // The full call's length as the player shows it ("0:00 / 0:58"), to tie the
+  // screen to THIS call rather than whichever card was lowest.
+  const md = /\/\s*(\d{1,2}):(\d{2})/.exec(`${before || ''} ${after || ''}`);
+  const shownSeconds = md ? Number(md[1]) * 60 + Number(md[2]) : null;
+  return { opened, labels: l, text, textCollapsed: before, shownSeconds, fullCallPlayed: played, fullCallFound: !!full };
 }
 
 // ----------------------------------------------------------------- criteria
@@ -784,7 +802,15 @@ async function assertPlays(s, token, merged, callSeconds) {
     `${JSON.stringify(r)} for a ~${callSeconds}s call`);
 }
 
-function assertScreens(s, screens, { subscribed, unsubscribed, anySubscribed }) {
+function assertScreens(s, screens, { subscribed, unsubscribed, anySubscribed, callSeconds }) {
+  if (callSeconds) {
+    for (const sc of [...subscribed, ...unsubscribed]) {
+      if (!sc.opened) continue;
+      if (sc.shownSeconds == null) h.skipped(s, `${sc.name}'s transcript screen is this call's (full-call length matches)`, 'no "m:ss" length read off the full-call player');
+      else h.check(s, `${sc.name}'s transcript screen is this call's (full-call length matches)`, Math.abs(sc.shownSeconds - callSeconds) <= 6,
+        `the screen shows a ${sc.shownSeconds}s recording for a ${callSeconds}s call`);
+    }
+  }
   const looked = (sc) => Array.isArray(sc.labels) && sc.labels.length > 0 && !String(sc.labels[0]).startsWith('<unreadable');
   for (const sc of [...subscribed, ...unsubscribed]) {
     if (!sc.opened) { h.skipped(s, `${sc.name}'s transcript screen`, 'the transcript never opened, so nothing on it can be judged'); continue; }
@@ -798,9 +824,9 @@ function assertScreens(s, screens, { subscribed, unsubscribed, anySubscribed }) 
     else h.check(s, `${sc.name}: the full-call recording plays in the app`, sc.fullCallPlayed, 'pressing the full call\'s play started no media element');
   }
   for (const sc of subscribed) {
-    if (!sc.opened || sc.text == null || !looked(sc)) { h.skipped(s, `${sc.name}'s screen does not say a speaker said nothing or was lost`, 'screen not read'); continue; }
+    if (!sc.opened || sc.textCollapsed == null || !looked(sc)) { h.skipped(s, `${sc.name}'s screen does not say a speaker said nothing or was lost`, 'the turns were not read (OCR of the collapsed screen failed)'); continue; }
     const l = sc.labels;
-    const t = sc.text;
+    const t = sc.textCollapsed;
     const said = anyLabel(l, 'callTranscriptSaidNothing') || anyLabel(l, 'callTranscriptAudioLost')
       || ocrHas(t, 'did not say anything') || ocrHas(t, 'recorded but lost');
     h.check(s, `${sc.name}'s screen does not say a speaker said nothing or was lost`, !said,

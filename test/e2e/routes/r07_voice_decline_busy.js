@@ -21,14 +21,17 @@ function tonesAfter(media, t0) {
   const plays = ev.filter((m) => m.kind === 'play');
   return plays.map((p) => {
     const end = ev.find((m) => m.t > p.t && m.src === p.src && (m.kind === 'pause' || m.kind === 'ended'));
-    return { src: p.src, playedMs: end ? end.t - p.t : null, how: end ? end.kind : 'still playing', dur: p.dur };
+    return { src: p.src, startedAt: p.t, playedMs: end ? end.t - p.t : null, how: end ? end.kind : 'still playing', dur: p.dur };
   });
 }
 
 /// A tone is cut off when it stopped before most of it played: the file's own
 /// duration where the element knew it, else half a second.
-const cutOk = (x) => x.playedMs == null || x.how === 'ended'
-  || (Number.isFinite(x.dur) && x.dur > 0 ? x.playedMs >= 0.8 * x.dur * 1000 : x.playedMs >= 500);
+// Still playing when read (null) is a tone that never finished: not ok.
+const cutOk = (x) => x.playedMs != null && (x.how === 'ended'
+  || (Number.isFinite(x.dur) && x.dur > 0 ? x.playedMs >= 0.8 * x.dur * 1000 : x.playedMs >= 500));
+const RINGTONE = /\/(phone|call)\.(mp3|ogg)/;
+const ENDED_TONE = /\/call_ended\.(mp3|ogg)|busy|engaged/;
 
 async function main() {
   R.refuseIfNotLocal();
@@ -63,7 +66,7 @@ async function main() {
     JSON.stringify(dec?.content?.['m.relates_to']));
   const cardsA = mx.cardsIn(evs, A.userId);
   const cardsB = mx.cardsIn(await R.eventsSince(B.token, roomId, call.mark), B.userId);
-  h.check(s, 'one declined card, the same on both sides', cardsA.length === 1 && cardsA[0].declined && cardsB.length === 1 && cardsB[0].id === cardsA[0].id,
+  h.check(s, 'one declined card, the same on both sides', cardsA.length === 1 && cardsA[0].declined && cardsB.length === 1 && cardsB[0].id === cardsA[0].id && cardsB[0].declined,
     JSON.stringify({ cardsA, cardsB }));
   // The caller's device writes an EMPTY half (zero chunks) for a call that never
   // connected; whether it should is not settled by the design docs, so it is
@@ -75,10 +78,10 @@ async function main() {
     evs.map((e) => e.type).join(','));
   const mediaA = await R.saveParticipant(A);
   const mediaB = await R.saveParticipant(B);
-  const ring = tonesAfter(mediaB, t0).filter((x) => x.playedMs == null || x.playedMs > 0);
+  const ring = tonesAfter(mediaB, t0).filter((x) => RINGTONE.test(x.src) && x.startedAt <= tDecline);
   if (!mediaB) h.skipped(s, 'the callee heard a ringtone before declining (#9166)', 'media log unreadable');
   else h.check(s, 'the callee heard a ringtone before declining (#9166)', ring.length > 0, `media: ${JSON.stringify(mediaB).slice(0, 300)}`);
-  const ended = tonesAfter(mediaA, tDecline - 1000);
+  const ended = tonesAfter(mediaA, tDecline - 1000).filter((x) => ENDED_TONE.test(x.src));
   if (!ended.length) h.skipped(s, "the caller's call-ended tone is not cut off (#9458)", `no media element played on the caller after the decline: ${JSON.stringify(mediaA).slice(-300)}`);
   else h.check(s, "the caller's call-ended tone is not cut off (#9458)", ended.every(cutOk), JSON.stringify(ended));
 
@@ -114,7 +117,7 @@ async function main() {
   await R.dumpLabels(A, 'busy');
   h.check(s, 'the caller is told the other person is on another call', told, 'no "<name> is on another call" on the caller (labels + OCR, ~18s)');
   const mediaA2 = await R.saveParticipant(A);
-  const busyTone = tonesAfter(mediaA2, tBusy);
+  const busyTone = tonesAfter(mediaA2, tBusy).filter((x) => ENDED_TONE.test(x.src));
   if (!busyTone.length) h.skipped(s, 'the busy tone is not cut off (#9458)', 'no media element played on the caller after the busy decline');
   else h.check(s, 'the busy tone is not cut off (#9458)', busyTone.every(cutOk), JSON.stringify(busyTone));
   const stillFirst = await mx.hasMembership(E.token, esRoomId, E.userId) && await mx.hasMembership(B2.token, esRoomId, B2.userId);

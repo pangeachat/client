@@ -97,7 +97,7 @@ async function runSwitch({ id, moveAtS, talkAfterS = 40, sub = { L: true, P: tru
     }
     R.save('clocks.json', { preClock, clocks });
     const readable = clocks.filter((c) => c.device2 != null && c.peer != null);
-    if (!readable.length) h.skipped(s, "the switched device's clock agrees with the peer's (#9173)", `the call clock is not in the semantics tree: ${JSON.stringify(clocks)}`);
+    if (readable.length < clocks.length) h.skipped(s, "the switched device's clock agrees with the peer's (#9173)", `the call clock is not in the semantics tree: ${JSON.stringify(clocks)}`);
     else h.check(s, "the switched device's clock agrees with the peer's (#9173)", readable.every((c) => Math.abs(c.device2 - c.peer) <= 3),
       JSON.stringify(readable));
 
@@ -106,7 +106,7 @@ async function runSwitch({ id, moveAtS, talkAfterS = 40, sub = { L: true, P: tru
     await h.actUntil('hang up', () => ui.clickPanel(L2.page, 'hangup').catch(() => {}),
       async () => (await mx.liveMembershipDevices(L1.token, roomId, LEARNER)).length === 0, { tries: 5, gap: 3000 });
 
-    await R.watchLoading(s, P);
+    await R.watchLoading(s, P, { doneAlready: async () => (await R.related(P.token, roomId, call.callKey, R.MERGED)).length >= 1 });
     const got = await R.collect(P.token, roomId, call.callKey, { halves: 3, audio: 3, merged: 1, settleS: 300 });
     R.save('events.json', { callKey: call.callKey, d1, d2, callSeconds,
       transcripts: got.transcripts.map(R.summarise), audio: got.audio.map(R.summarise), merged: got.merged.map(R.summarise), clock: got.clock.map(R.summarise) });
@@ -141,7 +141,7 @@ async function runSwitch({ id, moveAtS, talkAfterS = 40, sub = { L: true, P: tru
 
     const scP = { name: P.name, ...(await R.readTranscriptScreen(P)) };
     const scL = { name: L2.name, ...(await R.readTranscriptScreen(L2)) };
-    R.assertScreens(s, [scP, scL], { subscribed: [scP, scL], unsubscribed: [], anySubscribed: true });
+    R.assertScreens(s, [scP, scL], { subscribed: [scP, scL], unsubscribed: [], anySubscribed: true, callSeconds });
 
     await R.checkCreditOnce(s, [L2, P], [call.ring?.event_id, call.callKey,
       ...(await R.eventsSince(P.token, roomId, call.mark, [mx.CALL])).map((e) => e.event_id)].filter(Boolean), call.ringAt - 60000);

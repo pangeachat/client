@@ -100,11 +100,20 @@ async function runStandardCall(def) {
 
     // Loading state, asked of a subscribed reader right away.
     const reader = sub.A ? A : (sub.B ? Bnow : null);
-    if (reader) await R.watchLoading(s, reader);
+    const expectHalves = anySubscribed ? (sub.A && sub.B ? 2 : 3) : 2;
+    if (reader) {
+      await R.watchLoading(s, reader, {
+        doneAlready: async () => {
+          const t = await R.related(A.token, roomId, call.callKey, R.TRANSCRIPT);
+          const m = await R.related(A.token, roomId, call.callKey, R.MERGED);
+          return t.length >= expectHalves && m.length >= 1;
+        },
+      });
+    }
 
     console.log('   (waiting for the halves, the recordings and the full-call recording)');
     const got = await R.collect(A.token, roomId, call.callKey, {
-      halves: anySubscribed ? (sub.A && sub.B ? 2 : 3) : 2, audio: 2, merged: 1, settleS: def.settleS || 300,
+      halves: expectHalves, audio: 2, merged: 1, settleS: def.settleS || 300,
     });
     if (net.mode === 'throttled') { await R.setNetwork(A, 'good').catch(() => {}); await R.setNetwork(Bnow, 'good').catch(() => {}); }
     R.save('events.json', {
@@ -151,7 +160,7 @@ async function runStandardCall(def) {
     R.assertScreens(s, [sA, sB], {
       subscribed: [sub.A ? sA : null, sub.B ? sB : null].filter(Boolean),
       unsubscribed: [sub.A ? null : sA, sub.B ? null : sB].filter(Boolean),
-      anySubscribed,
+      anySubscribed, callSeconds,
     });
 
     if (anySubscribed) {

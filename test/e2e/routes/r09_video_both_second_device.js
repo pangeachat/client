@@ -78,7 +78,13 @@ async function main() {
   }
   h.check(s, 'device two pressed "Leave the call here"', left, 'no "Leave the call here" control');
   await wait(10000);
-  const still1 = (await mx.liveMembershipDevices(L1.token, roomId, LEARNER)).includes(d1);
+  const liveNow = await mx.liveMembershipDevices(L1.token, roomId, LEARNER);
+  // Presence is evidence; a device's absence from one state write is not (the
+  // harness README), so device two leaving is asked as "not listed live" AND
+  // its page no longer showing the call.
+  const d2Panel = await ui.labels(L2.page).catch(() => []);
+  h.check(s, 'device two left the call', !liveNow.includes(d2) && !d2Panel.some((x) => /hang up/i.test(x)), `live devices ${liveNow.join(',')}; device two still shows hang up: ${d2Panel.some((x) => /hang up/i.test(x))}`);
+  const still1 = liveNow.includes(d1);
   h.check(s, 'device one carries on in the call', still1, 'device one is no longer in the call');
   const after1 = await R.dumpLabels(L1, 'after-leave');
   h.check(s, "device one's prompt withdrew", !R.anyLabel(after1, 'callDevicesTitle'), 'prompt still up on device one');
@@ -86,16 +92,16 @@ async function main() {
   const callSeconds = Math.round((Date.now() - answeredAt) / 1000);
   await R.hangUp(s, L1, roomId);
 
-  await R.watchLoading(s, P);
+  await R.watchLoading(s, P, { doneAlready: async () => (await R.related(P.token, roomId, call.callKey, R.MERGED)).length >= 1 });
   const got = await R.collect(P.token, roomId, call.callKey, { halves: 2, audio: 2, merged: 1, settleS: 300 });
   R.save('events.json', { callKey: call.callKey, d1, d2, transcripts: got.transcripts.map(R.summarise), audio: got.audio.map(R.summarise), merged: got.merged.map(R.summarise) });
-  const fromD2 = [...got.audio, ...got.transcripts].filter((e) => e.sender === LEARNER && e.content?.device_id === d2 && R.spoken(e).trim().length + (e.type === R.AUDIO ? 1 : 0) > 0);
+  const fromD2 = [...got.audio, ...got.transcripts].filter((e) => e.sender === LEARNER && e.content?.device_id === d2);
   h.check(s, 'the device that left writes no half and no recording', fromD2.length === 0, `${fromD2.length} event(s) from device two: ${fromD2.map((e) => e.type).join(',')}`);
   const merged = R.assertTranscriptCriteria(s, got, [{ p: L1, words: R.WORDS.learner }, { p: P, words: R.WORDS.peer }], { anySubscribed: true });
   await R.assertPlays(s, P.token, merged, callSeconds);
   const scP = { name: P.name, ...(await R.readTranscriptScreen(P)) };
   const scL = { name: L1.name, ...(await R.readTranscriptScreen(L1)) };
-  R.assertScreens(s, [scP, scL], { subscribed: [scP, scL], unsubscribed: [], anySubscribed: true });
+  R.assertScreens(s, [scP, scL], { subscribed: [scP, scL], unsubscribed: [], anySubscribed: true, callSeconds });
   await R.checkCreditOnce(s, [L1, P], [call.ring?.event_id, call.callKey,
     ...(await R.eventsSince(P.token, roomId, call.mark, [mx.CALL])).map((e) => e.event_id)].filter(Boolean), call.ringAt - 60000);
   await R.confirmSubscriptions(s, { learner: true, calltester: true });

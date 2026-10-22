@@ -32,14 +32,20 @@ clean_browsers() {
   find "$CALL_WORK_DIR" -maxdepth 2 -name 'Singleton*' -delete 2>/dev/null || true
 }
 
+RAN=()
 for r in "${ROUTES[@]}"; do
-  [ -f "$HERE/$r.js" ] || { echo "no such route: $r"; continue; }
+  RAN+=("$r")
+  if [ ! -f "$HERE/$r.js" ]; then
+    echo "no such route: $r"; mkdir -p "$OUT/$r"
+    echo "{\"route\":\"$r\",\"pass\":false,\"failing\":[\"no such route file\"]}" > "$OUT/$r/result.json"; continue
+  fi
   clean_browsers
   export CALL_SHOT_DIR="$OUT/$r"
   rm -rf "$CALL_SHOT_DIR"; mkdir -p "$CALL_SHOT_DIR"
   echo "=== $r ($(date '+%H:%M:%S'))"
   ( cd "$CLIENT" && timeout 1500 node "test/e2e/routes/$r.js" ) > "$CALL_SHOT_DIR/run.log" 2>&1
   code=$?
+  echo "$code" > "$CALL_SHOT_DIR/exit_code"
   echo "    exit $code -> $CALL_SHOT_DIR/run.log"
   [ -f "$CALL_SHOT_DIR/result.json" ] || echo "{\"route\":\"$r\",\"pass\":false,\"failing\":[\"route exited $code before writing a result\"]}" > "$CALL_SHOT_DIR/result.json"
   clean_browsers
@@ -48,10 +54,22 @@ done
 node -e '
 const fs = require("fs"), path = require("path");
 const out = process.argv[1];
-const rows = fs.readdirSync(out).filter((d) => fs.existsSync(path.join(out, d, "result.json"))).sort();
+// Only the routes THIS invocation ran; a result from an earlier run is never reported.
+const rows = process.argv.slice(2);
+let bad = 0;
 let md = "| route | result | failing / unproven assertion(s) | evidence |\n|---|---|---|---|\n";
 for (const d of rows) {
   const r = JSON.parse(fs.readFileSync(path.join(out, d, "result.json"), "utf8"));
+  const code = fs.existsSync(path.join(out, d, "exit_code")) ? fs.readFileSync(path.join(out, d, "exit_code"), "utf8").trim() : "not run";
+  // PASS needs BOTH the route saying so and the process exiting 0 (a timeout
+  // after a result was written is not a pass).
+  if (code !== "0") {
+    // Exit 1 is the route reporting its own FAIL/SKIP; anything else (a
+    // timeout is 124) or a 1 beside a "pass" is the process failing.
+    if (r.pass || code !== "1") (r.failing = r.failing || []).push(`process exit ${code}`);
+    r.pass = false;
+  }
+  if (!r.pass) bad++;
   const fails = (r.failing || []).map((x) => x.replace(/\|/g, "/").slice(0, 160));
   const skips = (r.skipped || []).map((x) => `SKIP ${x.name}: ${x.why}`.replace(/\|/g, "/").slice(0, 160));
   const status = r.pass ? "PASS" : (fails.length ? "FAIL" : "UNPROVEN");
@@ -59,4 +77,5 @@ for (const d of rows) {
 }
 fs.writeFileSync(path.join(out, "results.md"), md);
 console.log(md);
-' "$OUT"
+process.exit(bad ? 1 : 0);
+' "$OUT" "${RAN[@]}"
