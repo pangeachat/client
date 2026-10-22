@@ -469,19 +469,23 @@ async function related(token, roomId, callKey, relType) {
 async function eventsSince(token, roomId, mark, types) {
   const out = [];
   let from = null;
+  let hit = false;
   for (let page = 0; page < 6; page++) {
     const r = await mx.messagesBack(token, roomId, { from, limit: 200 });
     const chunk = r.chunk || [];
-    let hit = false;
-    // A backwards page is newest-first: walk it in that order and stop AT the
-    // mark, so what is kept is everything newer than it.
-    for (const e of chunk) {
+    // mx.messagesBack returns each backwards page OLDEST-first (it reverses the
+    // server's chunk), so walk it reversed -- newest first -- and stop AT the
+    // mark: what is kept is everything newer than it.
+    for (const e of chunk.slice().reverse()) {
       if (e.event_id === mark) { hit = true; break; }
       if (!types || types.includes(e.type)) out.push(e);
     }
     if (hit || !r.end || !chunk.length) break;
     from = r.end;
   }
+  // A mark that was never reached means "since" was not established: say so
+  // rather than hand back the whole searched window as if it were the delta.
+  if (mark && !hit) throw new Error(`eventsSince: mark ${mark} not found in the searched window`);
   return out.reverse();
 }
 
@@ -613,7 +617,7 @@ async function creditsFor(token, userId, anchorIds, sinceTs) {
 /// Asks the credit question for each subscribed speaker. Waits [waitS] for the
 /// analytics service to send; one that never sends within it is a SKIP, not a
 /// pass -- "nothing seen" is not "counted once".
-async function checkCreditOnce(s, speakers, anchorIds, sinceTs, { waitS = 150 } = {}) {
+async function checkCreditOnce(s, speakers, anchorIds, sinceTs, { waitS = 300 } = {}) {
   const deadline = Date.now() + waitS * 1000;
   const pending = new Map(speakers.map((p) => [p.name, p]));
   const out = {};
