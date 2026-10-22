@@ -18,7 +18,7 @@ const opened = [];
 
 function tonesAfter(media, t0) {
   const ev = (media || []).filter((m) => m.t >= t0);
-  const plays = ev.filter((m) => m.kind === 'play');
+  const plays = ev.filter((m) => m.kind === 'playing');
   return plays.map((p) => {
     const end = ev.find((m) => m.t > p.t && m.src === p.src && (m.kind === 'pause' || m.kind === 'ended'));
     return { src: p.src, startedAt: p.t, playedMs: end ? end.t - p.t : null, how: end ? end.kind : 'still playing', dur: p.dur };
@@ -116,6 +116,7 @@ async function main() {
     busy ? JSON.stringify(busy.content) : 'no decline at all');
   await R.dumpLabels(A, 'busy');
   h.check(s, 'the caller is told the other person is on another call', told, 'no "<name> is on another call" on the caller (labels + OCR, ~18s)');
+  await wait(6000); // let a tone that is still sounding finish before judging it
   const mediaA2 = await R.saveParticipant(A);
   const busyTone = tonesAfter(mediaA2, tBusy).filter((x) => ENDED_TONE.test(x.src));
   if (!busyTone.length) h.skipped(s, 'the busy tone is not cut off (#9458)', 'no media element played on the caller after the busy decline');

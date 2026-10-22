@@ -220,7 +220,9 @@ async function instrument(page) {
     window.__routesMedia = [];
     const log = (kind, el) => {
       try {
-        window.__routesMedia.push({ t: Date.now(), kind, src: String(el.currentSrc || el.src || '').slice(-80), at: el.currentTime, dur: el.duration });
+        if (!el.__rid) el.__rid = `m${(window.__routesMid = (window.__routesMid || 0) + 1)}`;
+        el.setAttribute('data-routes-id', el.__rid);
+        window.__routesMedia.push({ t: Date.now(), id: el.__rid, kind, src: String(el.currentSrc || el.src || '').slice(-80), at: el.currentTime, dur: el.duration });
       } catch (_) {}
     };
     const origPlay = HTMLMediaElement.prototype.play;
@@ -730,10 +732,19 @@ async function readTranscriptScreen(p, tag = 'final') {
     // Started AND progressed: a 'playing' event and the element's clock past
     // half a second, with no media error -- a rejected or stalled play() is not
     // playback.
+    // The element the press started, by its own id: it must reach 'playing',
+    // raise no error, and its clock must pass half a second.
     const fresh = (media || []).filter((m) => m.t >= t0);
-    const progressed = await p.page.evaluate(() => Array.from(document.querySelectorAll('audio,video')).some((e) => e.currentTime > 0.5)).catch(() => null);
-    played = media == null ? null : (fresh.some((m) => m.kind === 'playing') && !fresh.some((m) => m.kind === 'error')
-      && (progressed === true || fresh.some((m) => (m.kind === 'pause' || m.kind === 'ended') && m.at > 0.5)));
+    const started = fresh.find((m) => m.kind === 'playing');
+    let progressed = null;
+    if (started) {
+      progressed = await p.page.evaluate((id) => {
+        const el = Array.from(document.querySelectorAll('audio,video')).find((e) => e.__rid === id);
+        return el ? el.currentTime : null;
+      }, started.id).catch(() => null);
+    }
+    played = media == null ? null : (!!started && !fresh.some((m) => m.kind === 'error' && m.id === started.id)
+      && ((progressed != null && progressed > 0.5) || fresh.some((m) => m.id === started.id && (m.kind === 'pause' || m.kind === 'ended') && m.at > 0.5)));
     await p.page.mouse.click(full.left + 20, full.top + full.height + 22).catch(() => {});
     save(`full-call-play-${p.name}.json`, { at: full, played, media: (media || []).filter((m) => m.t >= t0) });
   }
@@ -758,6 +769,12 @@ function assertTranscriptCriteria(s, got, speakers, { anySubscribed, expectMerge
     const text = mine.map(spoken).join(' ');
     const hit = hitsOf(text, sp.words);
     if (anySubscribed) {
+      // Not the other person's words under this name: halves that each carry
+      // the whole conversation would otherwise pass on their own sentinels.
+      const others = speakers.filter((o) => o !== sp).flatMap((o) => o.words);
+      const crossed = hitsOf(text, others);
+      h.check(s, `${sp.p.name}'s half does not carry the other person's words`, crossed.length < 2,
+        `${sp.p.name}'s half carries ${crossed.join(', ')} (the other speaker's)`);
       h.check(s, `${sp.p.name}'s turns are transcribed (their own words under their name)`, hit.length >= 2,
         `expected one of ${sp.words.join('/')} in ${mine.length} half/halves for ${sp.p.name}; got: ${[...wordSet(text)].slice(0, 15).join(' ') || '(no words)'}`);
     } else {
