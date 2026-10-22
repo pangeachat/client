@@ -21,15 +21,17 @@ function tonesAfter(media, t0) {
   const plays = ev.filter((m) => m.kind === 'playing');
   return plays.map((p) => {
     const end = ev.find((m) => m.t > p.t && m.src === p.src && (m.kind === 'pause' || m.kind === 'ended'));
-    return { src: p.src, startedAt: p.t, playedMs: end ? end.t - p.t : null, how: end ? end.kind : 'still playing', dur: p.dur };
+    return { src: p.src, startedAt: p.t, playedMs: end ? end.t - p.t : null, endAt: end ? end.at : null, how: end ? end.kind : 'still playing', dur: p.dur };
   });
 }
 
 /// A tone is cut off when it stopped before most of it played: the file's own
 /// duration where the element knew it, else half a second.
 // Still playing when read (null) is a tone that never finished: not ok.
+// Judged on the media clock (where playback stood when it stopped), not wall
+// time: a stalled tone paused early has played little however long it sat.
 const cutOk = (x) => x.playedMs != null && (x.how === 'ended'
-  || (Number.isFinite(x.dur) && x.dur > 0 ? x.playedMs >= 0.8 * x.dur * 1000 : x.playedMs >= 500));
+  || (Number.isFinite(x.dur) && x.dur > 0 && Number.isFinite(x.endAt) && x.endAt >= 0.8 * x.dur));
 const RINGTONE = /\/(phone|call)\.(mp3|ogg)/;
 const ENDED_TONE = /\/call_ended\.(mp3|ogg)|busy|engaged/;
 

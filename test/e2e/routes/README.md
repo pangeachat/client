@@ -74,3 +74,8 @@ Chrome between them.
   double credit is detected as a second credit moment, every use doubled, or an
   analytics event repeated exactly. A partial re-send of some uses inside
   differently split events would not be seen.
+- **Which recording the in-app player played.** "The full-call recording plays
+  in the app" presses the play button OCR places under "Full call" and requires
+  that element to reach `playing` and advance. The two per-person recordings are
+  about as long as the full call, so a mis-wired button that played one of them
+  would not be told apart.
