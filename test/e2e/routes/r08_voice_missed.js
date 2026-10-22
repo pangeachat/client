@@ -1,0 +1,49 @@
+// Route 8 (pangeachat/2-step-choreographer#3350): voice, one subscribed,
+// MISSED -- the ring runs out. client#9166 (ringtone audible), missed-call
+// handling: the ring stops on its own, both sides get one "missed" card, no
+// transcript or recording is written.
+const R = require('./lib');
+
+const { h, mx, wait } = R;
+const s = 'r08_voice_missed';
+const opened = [];
+
+async function main() {
+  R.refuseIfNotLocal();
+  h.refuseIfAnotherRunIsLive();
+  const roomLp = R.rooms().learner_calltester;
+  const roomId = R.fullRoomId(roomLp);
+  await R.ensureSubscriptions({ learner: true, calltester: false });
+  await R.waitNoLiveCall(['learner', 'calltester'], roomId);
+  const A = await R.openP('learner', roomLp, 9781, { wav: R.fixture('learner') });
+  opened.push(A);
+  const B = await R.openP('calltester', roomLp, 9782, { wav: R.fixture('peer') });
+  opened.push(B);
+
+  const t0 = Date.now();
+  const call = await R.placeAndAnswer(s, A, B, roomId, { answer: false });
+  if (!call) return R.finish(s, opened);
+  await wait(8000);
+  const ringing = await R.dumpLabels(B, 'ringing');
+  h.check(s, 'the callee is shown the incoming call', ringing.some((l) => /answer/i.test(l)) || R.anyLabel(ringing, 'callAnswer'), 'no answer control on the callee');
+  // The ring lives 30s (never more than 90); wait well past it.
+  await wait(50000);
+  const evs = await R.eventsSince(A.token, roomId, call.mark);
+  const cardsA = mx.cardsIn(evs, A.userId);
+  const cardsB = mx.cardsIn(await R.eventsSince(B.token, roomId, call.mark), B.userId);
+  R.save('events.json', { ring: call.ring, cardsA, cardsB, types: evs.map((e) => e.type) });
+  h.check(s, 'one missed card, the same on both sides', cardsA.length === 1 && !cardsA[0].answered && !cardsA[0].declined
+    && cardsB.length === 1 && cardsB[0].id === cardsA[0].id, JSON.stringify({ cardsA, cardsB }));
+  h.check(s, 'the callee never joined', !(await mx.hasMembership(B.token, roomId, B.userId)), 'callee membership present');
+  h.check(s, 'the caller is no longer in a call', !(await mx.hasMembership(A.token, roomId, A.userId)), 'caller still holds a membership after the ring ran out');
+  const after = await R.dumpLabels(B, 'after-ring');
+  h.check(s, 'the ring is gone from the callee after it ran out', !after.some((l) => /^answer$/i.test(l)), 'answer control still on screen');
+  h.check(s, 'a missed call writes no transcript and no recording', !evs.some((e) => [R.TRANSCRIPT, R.AUDIO, R.MERGED].includes(e.type)), evs.map((e) => e.type).join(','));
+  const media = await R.saveParticipant(B);
+  const plays = (media || []).filter((m) => m.t >= t0 && m.kind === 'play');
+  if (!media) h.skipped(s, 'the callee heard a ringtone (#9166)', 'media log unreadable');
+  else h.check(s, 'the callee heard a ringtone (#9166)', plays.length > 0, 'no media element played on the callee while it rang');
+  return R.finish(s, opened);
+}
+
+main().catch(R.fatal(s, opened));
