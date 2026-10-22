@@ -822,7 +822,7 @@
             }
         }
     },
-    "createGroup": "Create group",
+    "createGroup": "Create chat",
     "@createGroup": {},
     "currentlyActive": "Currently active",
     "@currentlyActive": {
@@ -2499,7 +2499,7 @@
     "@knocking": {},
     "nothingFound": "Nothing found...",
     "@nothingFound": {},
-    "groupName": "Group name",
+    "groupName": "Chat name",
     "@groupName": {},
     "wrongRecoveryKey": "Sorry... this does not seem to be the correct recovery key.",
     "@wrongRecoveryKey": {},
