@@ -35,6 +35,9 @@ clean_browsers() {
 }
 
 RAN=()
+# ROUTES_TABLE_ONLY=1 rebuilds the table for the named routes from their
+# evidence folders without running anything.
+[ -n "${ROUTES_TABLE_ONLY:-}" ] && RAN=("${ROUTES[@]}") && ROUTES=()
 for r in "${ROUTES[@]}"; do
   RAN+=("$r")
   if [ ! -f "$HERE/$r.js" ]; then
