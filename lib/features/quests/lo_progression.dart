@@ -4,6 +4,8 @@
 // network. Nothing is locked anymore; progression only ranks (#7186). Design:
 // quests.instructions.md.
 
+import 'package:fluffychat/features/quests/activity_family.dart';
+
 /// The XP a learner must earn under a Mission for it to count as complete
 /// (#9420) when the course sets no override: the Standard preset, sized from
 /// measured sessions as two activities with their goals at typical assistance
@@ -49,6 +51,11 @@ class CourseLoOutline {
   /// setting, or [kDefaultXpToCompleteObjective].
   final int xpToComplete;
 
+  /// What the course credits beyond the shown activities: its hidden and
+  /// removed activities, and each activity's copies. [CourseCredit.none] for
+  /// a course without a copy, where only [activityIdsByLo] counts.
+  final CourseCredit credit;
+
   const CourseLoOutline({
     required this.courseId,
     this.questId,
@@ -56,5 +63,6 @@ class CourseLoOutline {
     required this.activityIdsByLo,
     this.lemmasByLo = const {},
     this.xpToComplete = kDefaultXpToCompleteObjective,
+    this.credit = CourseCredit.none,
   });
 }

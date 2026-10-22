@@ -5,6 +5,7 @@
 // activity start page). Pure logic — no Matrix or network — so it stays
 // unit-testable. Design: quests.instructions.md, world-map.instructions.md.
 
+import 'package:fluffychat/features/quests/activity_family.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 
 /// How far along a quest the next-Mission gradient reaches before decaying to
@@ -298,22 +299,32 @@ ProgressionResolution resolveProgression({
     final seq = outline.orderedLoIds;
     if (seq.isEmpty) continue;
 
+    // XP on any copy of an activity counts toward the one the course shows; a
+    // no-op for a course without a copy (activity_family.dart).
+    final credited = outline.credit.creditedBy(xpByActivity);
+
     final rollup = <String, MissionProgress>{};
     for (final missionId in seq) {
       final activities = outline.activityIdsByLo[missionId] ?? const <String>{};
       // A Mission the outline gives NO activities offers no XP, and the panel
       // doesn't render it (#7114). Leave it out of the rollup entirely rather
       // than scoring it: counting it would add a Mission to the denominator
-      // that no content backs (#7663).
+      // that no content backs (#7663). Its credit is not lost: it is reported
+      // by [creditedByMission] and [creditedCourseTotal], and a Mission that
+      // still shows an activity keeps the XP earned on its hidden ones.
       if (activities.isEmpty) continue;
 
-      // Activity XP summed across the Mission's activities. No ceiling clamp:
-      // XP is unbounded, so every Mission with an activity is completable at
-      // any threshold (quests.instructions.md, "What fills a Mission").
-      var xp = 0;
-      for (final activityId in activities) {
-        xp += xpByActivity[activityId] ?? 0;
-      }
+      // Activity XP summed across the Mission's activities, every member of
+      // an activity's family credited to the one the course shows and hidden
+      // activities included (activity_family.dart). No ceiling clamp: XP is
+      // unbounded, so every Mission with an activity is completable at any
+      // threshold (quests.instructions.md, "What fills a Mission").
+      var xp = creditedForMission(
+        shownIds: activities,
+        loId: missionId,
+        credit: outline.credit,
+        credited: credited,
+      ).toInt();
       xp += MissionXpBreakdown.practiceFor(
         outline.lemmasByLo[missionId] ?? const {},
         practiceXpByLemma,
@@ -359,3 +370,39 @@ String? _anchorFor(List<String> seq, Map<String, MissionProgress> rollup) {
   }
   return null;
 }
+
+/// [outline]'s credited value per Can-Do, from one value per activity
+/// ([perMember], already reduced per member: best session for stars, summed
+/// sessions for XP). The same crediting [resolveProgression] applies to stars,
+/// exposed so the per-Can-Do XP reader (client#9450) shares it.
+///
+/// Includes a Can-Do whose activities are all hidden: nothing shows for it,
+/// but its credit is real and stays reported. (The star rollup above leaves
+/// such a Can-Do out because the panel does not render it, #7114.)
+Map<String, num> creditedByMission(
+  CourseLoOutline outline,
+  Map<String, num> perMember,
+) {
+  final credited = outline.credit.creditedBy(perMember);
+  return {
+    for (final entry in outline.activityIdsByLo.entries)
+      if (entry.value.isNotEmpty ||
+          (outline.credit.removedByLo[entry.key]?.isNotEmpty ?? false))
+        entry.key: creditedForMission(
+          shownIds: entry.value,
+          loId: entry.key,
+          credit: outline.credit,
+          credited: credited,
+        ),
+  };
+}
+
+/// [outline]'s credited value across the whole course, removed Can-Dos
+/// included: the client counterpart of the dashboard's course total. No screen
+/// reads it yet.
+num creditedCourseTotal(CourseLoOutline outline, Map<String, num> perMember) =>
+    creditedForCourse(
+      shownIds: {for (final ids in outline.activityIdsByLo.values) ...ids},
+      credit: outline.credit,
+      credited: outline.credit.creditedBy(perMember),
+    );

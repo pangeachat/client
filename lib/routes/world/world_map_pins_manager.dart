@@ -138,6 +138,11 @@ class WorldMapPinsManager {
   /// and the trail the ranking reserves slots for.
   Map<String, int> _userStars = {};
 
+  /// [_userStars] with each in-scope course's shown activities credited across
+  /// their copies — the trail [progressedActivityIds] reads. Recomputed with
+  /// the progression.
+  Map<String, int> _creditedStars = {};
+
   /// Activity XP per activity (saved sessions' credited XP plus goal
   /// checkmarks) — what resolves Mission completion.
   Map<String, int> _xpByActivity = {};
@@ -309,7 +314,7 @@ class WorldMapPinsManager {
   /// Activity ids the learner has earned at least one goal in — the trail the
   /// ranking reserves slots for (world-map.instructions.md, "Goal Progress").
   Set<String> get progressedActivityIds => {
-    for (final e in _userStars.entries)
+    for (final e in _creditedStars.entries)
       if (e.value > 0) e.key,
   };
 
@@ -606,6 +611,12 @@ class WorldMapPinsManager {
   /// cache on course join/leave, and a course re-scope — never per frame.
 
   void resolveProgression() {
+    _creditedStars = _objectiveCache.creditedStars(
+      _userStars,
+      extraOutlines: _scopedCourseOutline == null
+          ? const []
+          : [_scopedCourseOutline!],
+    );
     _progression = _objectiveCache.resolution(
       _xpByActivity,
       practiceXpByLemma: MissionXpCache.instance.practiceXpByLemma,
@@ -730,9 +741,23 @@ class WorldMapPinsManager {
     // One choreo read: the quest's activities at its own L2, LO-grouped
     // server-side. [courseRoomId] admits the quest owner's private activities
     // when this learner is a joined member of the course.
+    // A copy that adds a Can-Do the quest does not carry is asked for by id,
+    // so its activities get pins too. The outline read is cached by the course
+    // panel; a failed one only means no extras.
+    final copyLoIds = rules.missions?.allLoIds ?? const <String>{};
+    final questLoIds = copyLoIds.isEmpty
+        ? const <String>[]
+        : ((await QuestRepo.outline(
+                courseId,
+                courseRoomId: courseRoomId,
+                courseLoIds: copyLoIds,
+                copyRevision: rules.revision,
+              )).result?.quest.learningObjectiveIds ??
+              const <String>[]);
     final activityCardsResult = await QuestRepo.questActivityCards(
       courseId,
       courseRoomId: courseRoomId,
+      extraLoIds: QuestRepo.extraLoIdsFor(copyLoIds, questLoIds),
     );
     final activityCards = activityCardsResult.result;
     if (activityCards == null) {

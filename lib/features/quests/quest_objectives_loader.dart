@@ -428,6 +428,8 @@ class QuestObjectivesLoader {
     final outlineResult = await QuestRepo.outline(
       questId,
       courseRoomId: courseRoomId,
+      courseLoIds: rules.missions?.allLoIds ?? const {},
+      copyRevision: rules.revision,
     );
     final outline = outlineResult.result?.forRules(rules);
 

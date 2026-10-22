@@ -16,22 +16,49 @@ import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orche
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
+/// One value per activity from its sessions' [(activityId, stars)] pairs: the
+/// best session's. The per-member reduction every stars reader applies before
+/// crediting a family (activity_family.dart).
+Map<String, int> bestStarsByActivity(
+  Iterable<({String activityId, int stars})> sessions,
+) {
+  final best = <String, int>{};
+  for (final session in sessions) {
+    best[session.activityId] = max(
+      best[session.activityId] ?? 0,
+      session.stars,
+    );
+  }
+  return best;
+}
+
+/// One value per activity from its saved sessions' [(activityId, xp)] pairs:
+/// every session with XP summed (XP is effort, so repeats accumulate). The per-member
+/// reduction the XP readers apply before crediting a family
+/// (activity_family.dart).
+Map<String, int> sumXpByActivity(
+  Iterable<({String activityId, int xp})> sessions,
+) {
+  final xp = <String, int>{};
+  for (final session in sessions) {
+    // A session that earned nothing leaves no entry.
+    if (session.xp <= 0) continue;
+    xp[session.activityId] = (xp[session.activityId] ?? 0) + session.xp;
+  }
+  return xp;
+}
+
 extension QuestsClientExtension on Client {
   /// The learner's goal checkmarks per activity: their best single session's
   /// orchestrator-awarded goals. What the map's ranking reserves trail slots
   /// for; cards and Missions read XP ([userXpByActivity]).
-  Map<String, int> get userStarsByActivity {
-    final stars = <String, int>{};
-    for (final room in rooms) {
-      final activityId = room.activityId;
-      if (activityId == null) continue;
-
-      final current = stars[activityId] ?? 0;
-      final collected = room.ownCompletedGoals.length;
-      stars[activityId] = max(current, collected);
-    }
-    return stars;
-  }
+  /// Raw per member: readers that answer for a course credit it across the
+  /// activity's copies ([CourseCredit], activity_family.dart).
+  Map<String, int> get userStarsByActivity => bestStarsByActivity([
+    for (final room in rooms)
+      if (room.activityId != null)
+        (activityId: room.activityId!, stars: room.ownCompletedGoals.length),
+  ]);
 
   /// The learner's saved sessions per activity, in their current language
   /// ([CourseLanguageScope.savedSessionInTargetLanguage]) — the sessions
@@ -62,17 +89,15 @@ extension QuestsClientExtension on Client {
   /// session counts only once it is saved, so finishing is what banks it
   /// (org activities doc, "Activity XP" and "Saving"; quests.instructions.md,
   /// "What fills a Mission").
-  Map<String, int> userXpByActivity(Map<String, int> creditedXpByRoom) {
-    final xp = <String, int>{};
-    for (final entry in savedSessionsByActivity.entries) {
-      var sum = 0;
-      for (final room in entry.value) {
-        sum += sessionXp(room, creditedXpByRoom);
-      }
-      if (sum > 0) xp[entry.key] = sum;
-    }
-    return xp;
-  }
+  ///
+  /// Raw per member: readers that answer for a course credit it across the
+  /// activity's copies ([CourseCredit.creditedBy]).
+  Map<String, int> userXpByActivity(Map<String, int> creditedXpByRoom) =>
+      sumXpByActivity([
+        for (final entry in savedSessionsByActivity.entries)
+          for (final room in entry.value)
+            (activityId: entry.key, xp: sessionXp(room, creditedXpByRoom)),
+      ]);
 
   /// [userXpByActivity] split by source: the same saved sessions, with each
   /// room's chat, speaking and practice XP kept apart and the goal checkmarks
@@ -121,12 +146,35 @@ extension QuestsClientExtension on Client {
     final perActivity = byActivity ?? cachedXpBreakdownByActivity;
     var sum = MissionXpBreakdown(
       practice: MissionXpBreakdown.practiceFor(
-        group.lemmas,
+        group.creditedLemmas,
         MissionXpCache.instance.practiceXpByLemma,
       ),
     );
-    for (final activity in group.activities) {
-      sum = sum + (perActivity[activity.activityId] ?? MissionXpBreakdown.zero);
+    final credit = group.credit;
+    if (credit.isEmpty) {
+      for (final activity in group.activities) {
+        sum =
+            sum + (perActivity[activity.activityId] ?? MissionXpBreakdown.zero);
+      }
+      return sum;
+    }
+    // Every member of an activity's family counts toward the member the
+    // course shows, hidden activities included (activity_family.dart).
+    final byCanonical = <String, MissionXpBreakdown>{};
+    for (final entry in perActivity.entries) {
+      if (!credit.family.containsKey(entry.key)) continue;
+      final canonical = credit.canonicalOf(entry.key);
+      byCanonical[canonical] =
+          (byCanonical[canonical] ?? MissionXpBreakdown.zero) + entry.value;
+    }
+    final ids = {
+      for (final a in group.activities) credit.canonicalOf(a.activityId),
+      for (final id
+          in credit.removedByLo[group.objective.id] ?? const <String>[])
+        credit.canonicalOf(id),
+    };
+    for (final id in ids) {
+      sum = sum + (byCanonical[id] ?? MissionXpBreakdown.zero);
     }
     return sum;
   }
