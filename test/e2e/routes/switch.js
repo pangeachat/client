@@ -116,6 +116,7 @@ async function runSwitch({ id, moveAtS, talkAfterS = 40, sub = { L: true, P: tru
     const a2 = mineAudio.find((e) => e.content?.device_id === d2);
     h.check(s, 'device one (moved FROM) saved its recording', !!a1, `learner recordings from: ${mineAudio.map((e) => e.content?.device_id).join(', ') || 'none'}`);
     h.check(s, 'device two (moved TO) saved its recording', !!a2, `learner recordings from: ${mineAudio.map((e) => e.content?.device_id).join(', ') || 'none'}`);
+    h.check(s, 'the peer saved a recording', got.audio.some((e) => e.sender === P.userId), 'no call_audio from the peer');
     h.check(s, 'device one links to device two (handed_over_to)', a1?.content?.handed_over_to === d2, `handed_over_to=${a1?.content?.handed_over_to}`);
     h.check(s, 'device two links back to device one (continued_from)', a2?.content?.continued_from === d1, `continued_from=${a2?.content?.continued_from}`);
 

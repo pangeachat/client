@@ -25,6 +25,8 @@ ALL=(r01_voice_both_good r02_voice_one_throttled r03_video_both_good r04_voice_b
      r08_voice_missed r09_video_both_second_device r10_video_one_dropmid r11_voice_neither
      r12_video_neither r13_voice_both_noisy r14_voice_es_l1l2 r15_voice_fr_l1l2)
 ROUTES=("${@:-${ALL[@]}}")
+# One result per route per invocation: a repeated name would overwrite the first.
+if [ "$(printf '%s\n' "${ROUTES[@]}" | sort | uniq -d | head -1)" != "" ]; then echo "a route is named twice"; exit 2; fi
 
 clean_browsers() {
   pkill -9 -f "user-data-dir=$CALL_WORK_DIR" 2>/dev/null || true

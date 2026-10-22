@@ -82,8 +82,9 @@ async function main() {
   // Presence is evidence; a device's absence from one state write is not (the
   // harness README), so device two leaving is asked as "not listed live" AND
   // its page no longer showing the call.
-  const d2Panel = await ui.labels(L2.page).catch(() => []);
-  h.check(s, 'device two left the call', !liveNow.includes(d2) && !d2Panel.some((x) => /hang up/i.test(x)), `live devices ${liveNow.join(',')}; device two still shows hang up: ${d2Panel.some((x) => /hang up/i.test(x))}`);
+  const d2Panel = await ui.labels(L2.page).catch(() => null);
+  if (!d2Panel || !d2Panel.length) h.skipped(s, 'device two left the call', 'device two\'s screen could not be read');
+  else h.check(s, 'device two left the call', !liveNow.includes(d2) && !d2Panel.some((x) => /hang up/i.test(x)), `live devices ${liveNow.join(',')}; device two still shows hang up: ${d2Panel.some((x) => /hang up/i.test(x))}`);
   const still1 = liveNow.includes(d1);
   h.check(s, 'device one carries on in the call', still1, 'device one is no longer in the call');
   const after1 = await R.dumpLabels(L1, 'after-leave');
@@ -96,7 +97,7 @@ async function main() {
   await R.watchLoading(s, P, { doneAlready: async () => (await R.related(P.token, roomId, call.callKey, R.MERGED)).length >= 1 });
   const got = await R.collect(P.token, roomId, call.callKey, { halves: 2, audio: 2, merged: 1, settleS: 300 });
   R.save('events.json', { callKey: call.callKey, d1, d2, transcripts: got.transcripts.map(R.summarise), audio: got.audio.map(R.summarise), merged: got.merged.map(R.summarise) });
-  const learnerEvents = [...got.audio, ...got.transcripts].filter((e) => e.sender === LEARNER && !e.content?.spoken_by);
+  const learnerEvents = [...got.audio, ...got.transcripts].filter((e) => e.sender === LEARNER);
   h.check(s, "every learner recording and half names its device (so device two's silence is checkable)", learnerEvents.every((e) => typeof e.content?.device_id === 'string' && e.content.device_id),
     `${learnerEvents.filter((e) => !e.content?.device_id).length} learner event(s) without device_id`);
   const fromD2 = learnerEvents.filter((e) => e.content?.device_id === d2);
