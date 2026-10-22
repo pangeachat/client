@@ -135,6 +135,24 @@ void main() {
     expect(backgroundOpacity(tester), 1);
   });
 
+  group('replacesWallpaper (#9514)', () {
+    final imageUrl = Uri.parse('https://example.com/scene.jpg');
+
+    test('setting off: the wallpaper stays', () {
+      expect(ActivityChatBackground.replacesWallpaper(imageUrl), isFalse);
+    });
+
+    test('setting on: the activity image replaces the wallpaper', () async {
+      await AppSettings.activityImageAsChatBackground.setItem(true);
+      expect(ActivityChatBackground.replacesWallpaper(imageUrl), isTrue);
+    });
+
+    test('setting on, no activity image: the wallpaper stays', () async {
+      await AppSettings.activityImageAsChatBackground.setItem(true);
+      expect(ActivityChatBackground.replacesWallpaper(null), isFalse);
+    });
+  });
+
   testWidgets('another setting changing leaves the background alone', (
     tester,
   ) async {
