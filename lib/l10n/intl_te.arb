@@ -1317,7 +1317,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-16 16:33:13.854955",
+    "@@last_modified": "2026-10-22 09:50:28.426326",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10952,5 +10952,19 @@
     "activityCompleted": "పూర్తయింది",
     "completedTimes": "{count} సార్లు పూర్తయింది",
     "classLocation": "తరగతి స్థానం",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "సంభాషణ {xp}",
+    "xpIncludingGoals": "లక్ష్యాల నుండి {xp} సహా",
+    "missionOtherLanguageNotice": "ఈ మిషన్ {language}లోని కోర్సు నుండి వచ్చింది. మీరు {language} నేర్చుకుంటున్నప్పుడు మాత్రమే దీనిపై మీ పురోగతి లెక్కించబడుతుంది.",
+    "missionLanguageMismatchDesc": "ఈ మిషన్ {language}లోని కోర్సు నుండి వచ్చింది. మీ లక్ష్య భాషను {language}కి మార్చాలా?",
+    "xpBySkillTitle": "నైపుణ్యం ద్వారా",
+    "missionNextActivity": "తదుపరి కార్యాచరణ",
+    "missionContinueActivity": "కార్యాచరణను కొనసాగించు",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "ఈ కోర్సులో పూర్తయింది ({num})",
+    "otherCoursesSessions": "ఇతర కోర్సులు ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP సంపాదించారు",
+    "currentMission": "ప్రస్తుత మిషన్"
 }

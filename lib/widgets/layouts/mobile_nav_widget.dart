@@ -258,7 +258,7 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   /// just under the card's compact threshold (`_kCompactCardMaxHeight` in
   /// space_details_content.dart), so the card renders only the circles and
   /// never overflows; its sections slide in as the learner drags up (#7597).
-  static const double _peekHeight = 202.0;
+  static const double _peekHeight = 172.0;
   static const Duration _animationDuration = Duration(milliseconds: 240);
 
   /// The least the keyboard trim may leave of an OPEN cavity — the drag handle

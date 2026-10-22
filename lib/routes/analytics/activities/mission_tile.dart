@@ -1,36 +1,33 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
-import 'package:material_symbols_icons/symbols.dart';
-import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/analytics/construct_analytics/practice/start_practice.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_star.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_xp_ring.dart';
 
-/// One can-do as a self-contained unit (#9420): a gold XP ring
-/// with the Mission's star inside it, the statement, its XP over the threshold
-/// and how many of its activities the learner has played, and a practice
-/// button. A tap opens its detail page beside the list, as a word opens from
-/// the vocab list.
+/// One can-do as a self-contained unit (#9420): a gold XP ring with the
+/// Mission's star inside it, the statement and its XP over the threshold. A
+/// tap opens its detail page beside the list, as a word opens from the vocab
+/// list; Practice is the detail page's main action (#9559).
 class MissionTile extends StatelessWidget {
   final QuestObjectiveGroup group;
   final MissionProgress? progress;
   final MissionXpBreakdown breakdown;
-  final List<Room> sessions;
+
+  /// The course this tile's numbers come from, so its detail page shows the
+  /// same course (#9559).
+  final String courseId;
   final bool selected;
 
   const MissionTile({
     required this.group,
     required this.progress,
     required this.breakdown,
-    required this.sessions,
+    required this.courseId,
     required this.selected,
     super.key,
   });
@@ -44,7 +41,6 @@ class MissionTile extends StatelessWidget {
     final progress = this.progress;
     final satisfied = progress?.satisfied ?? false;
     final threshold = progress?.threshold ?? 0;
-    final played = {for (final room in sessions) room.activityId}.length;
     final radius = BorderRadius.circular(20.0);
 
     return Padding(
@@ -56,7 +52,6 @@ class MissionTile extends StatelessWidget {
           group.objective.objective,
           if (progress != null)
             l10n.xpTowardObjective(progress.xp, progress.threshold),
-          l10n.objectiveActivityCount(played),
         ].join(', '),
         child: Material(
           color: scheme.surface,
@@ -73,6 +68,7 @@ class MissionTile extends StatelessWidget {
               WorkspaceNav.openObjectiveDetail(
                 GoRouterState.of(context).uri,
                 group.objective.id,
+                courseId: courseId,
               ),
             ),
             child: Padding(
@@ -104,30 +100,18 @@ class MissionTile extends StatelessWidget {
                               fontWeight: FontWeight.w700,
                             ),
                           ),
-                          Text(
-                            [
-                              if (progress != null)
-                                l10n.xpOfThreshold(
-                                  progress.xp,
-                                  progress.threshold,
-                                ),
-                              l10n.objectiveActivityCount(played),
-                            ].join('  ·  '),
-                            style: theme.textTheme.labelMedium?.copyWith(
-                              color: scheme.onSurfaceVariant,
+                          if (progress != null)
+                            Text(
+                              l10n.xpOfThreshold(
+                                progress.xp,
+                                progress.threshold,
+                              ),
+                              style: theme.textTheme.labelMedium?.copyWith(
+                                color: scheme.onSurfaceVariant,
+                              ),
                             ),
-                          ),
                         ],
                       ),
-                    ),
-                  ),
-                  IconButton.filledTonal(
-                    tooltip: l10n.practiceObjective,
-                    icon: const Icon(Symbols.fitness_center, size: 20.0),
-                    onPressed: () => startPractice(
-                      context,
-                      ConstructTypeEnum.vocab,
-                      missionId: group.objective.id,
                     ),
                   ),
                   ExcludeSemantics(

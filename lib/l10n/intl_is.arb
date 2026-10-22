@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-16 16:33:02.832877",
+    "@@last_modified": "2026-10-22 09:50:15.627520",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "Lokið",
     "completedTimes": "Lokið {count} sinnum",
     "classLocation": "Staðsetning kennslustundar",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Samtal {xp}",
+    "xpIncludingGoals": "þar á meðal {xp} frá markmiðum",
+    "missionOtherLanguageNotice": "Þetta verkefni er úr námskeiði í {language}. Framfarir þínar á því telja aðeins meðan þú ert að læra {language}.",
+    "missionLanguageMismatchDesc": "Þetta verkefni er úr námskeiði í {language}. Viltu skipta um markmál í {language}?",
+    "xpBySkillTitle": "Eftir færni",
+    "missionNextActivity": "Næsta verkefni",
+    "missionContinueActivity": "Halda áfram verkefni",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Lokið á þessu námskeiði ({num})",
+    "otherCoursesSessions": "Önnur námskeið ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP unnið",
+    "currentMission": "Núverandi verkefni"
 }

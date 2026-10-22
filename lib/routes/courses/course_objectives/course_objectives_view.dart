@@ -9,12 +9,15 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/course_plan_return.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
-import 'package:fluffychat/features/quests/activity_family.dart';
+import 'package:fluffychat/features/quests/course_language_scope.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
+import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
@@ -33,9 +36,11 @@ import 'package:fluffychat/routes/analytics/construct_analytics/practice/start_p
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_live_state_room_extension.dart';
+import 'package:fluffychat/routes/courses/course_objectives/course_objective_circles.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
 import 'package:fluffychat/routes/courses/course_objectives/suggested_activities.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -57,10 +62,6 @@ class CourseObjectivesList extends StatefulWidget {
   /// The v3 quest id whose outline to render. Defaults to the room's
   /// `coursePlan.uuid` when [room] is given; required when [room] is null.
   final String? questId;
-
-  /// Per-activity completion, e.g. `controller.roomSummariesModel
-  /// .hasCompletedActivity`. Null in a preview → no completion overlay.
-  final bool Function(String activityId)? hasCompletedActivity;
 
   /// Shrink-wrap the objective list instead of filling/scrolling its own
   /// viewport. Set true when embedded inside another scroll view (the
@@ -93,7 +94,6 @@ class CourseObjectivesList extends StatefulWidget {
     required this.objectivesProvider,
     this.room,
     this.questId,
-    this.hasCompletedActivity,
     this.shrinkWrap = false,
     this.suggestedOnly = false,
     this.missionId,
@@ -437,8 +437,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     });
   }
 
-  /// The activity's live map-pin state for the card's colour fill + banner, the
-  /// "Open (N)" count, and — for the Waiting state — the roster to draw. Mirrors
+  /// The activity's live map-pin state for the card's frame and pill, its open
+  /// sessions, and — for the Waiting state — the roster to draw. Mirrors
   /// the world map's pins, reusing the same resolvers so both surfaces agree:
   ///  * Ongoing wins over Open (the pin ladder). The course-scoped, first-joined
   ///    resume resolver ([Room.activeActivityRoomId]) already collapses multiple
@@ -462,41 +462,65 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   /// the same live state the cards render. `recency` stays 0: open sessions
   /// reach this surface through the discovery cache, which carries no
   /// per-session start time. See [rankSuggestedActivities].
-  PinSignals _signalsFor(String activityId) => PinSignals(
+  PinSignals _signalsFor(
+    String activityId,
+    Map<String, MissionXpBreakdown> xpByActivity,
+  ) => PinSignals(
     state: _liveStateFor(activityId).state ?? ActivityPinState.available,
-    completionFraction: (widget.hasCompletedActivity?.call(activityId) ?? false)
-        ? 1.0
-        : 0.0,
+    completionFraction: _finished(xpByActivity, activityId) ? 1.0 : 0.0,
     pinged: activityId == _pingedActivityId,
   );
 
-  /// Stars on [activityId], credited across its copies: a copy the teacher
-  /// swapped in shows the stars earned on the original, and the reverse.
-  int _userStarsByActivity(String activityId) {
-    final raw = widget.room?.client.userStarsByActivity;
-    if (raw == null) return 0;
-    final credit = switch (widget.objectivesProvider.questLoader.value) {
-      AsyncLoaded(value: final outline) => outline.credit,
-      _ => CourseCredit.none,
-    };
-    return credit.starsFor(activityId, raw);
-  }
+  /// The learner's XP per activity from its saved sessions in their current
+  /// language (#9559) — a preview's too, so a course they haven't joined
+  /// still shows what they earned in its activities elsewhere. Read once per
+  /// build: it walks the rooms.
+  Map<String, MissionXpBreakdown> _xpByActivity() =>
+      widget.objectivesProvider.client.cachedXpBreakdownByActivity;
 
-  /// The session the learner holds a role in and hasn't finished among
-  /// [current]'s activities; null when there is none (or in a preview). Each
-  /// Mission keeps to its own activities (#9420) — a session from
-  /// another Mission resumes from that Mission's card or Chats.
-  ({QuestActivity activity, String roomId})? _ongoingSession(
-    QuestObjectiveGroup current,
-  ) {
-    final room = widget.room;
-    if (room == null) return null;
-    for (final activity in current.activities) {
-      final roomId = room.activeActivityRoomId(activity.activityId);
-      if (roomId != null) return (activity: activity, roomId: roomId);
-    }
-    return null;
-  }
+  /// Whether the learner has finished [activityId]: any XP from a saved
+  /// session of it in their current language (#9559) — the one rule every
+  /// completed stamp reads.
+  static bool _finished(
+    Map<String, MissionXpBreakdown> xpByActivity,
+    String activityId,
+  ) => (xpByActivity[activityId]?.total ?? 0) > 0;
+
+  /// Where a Mission card anchors its language-switch popup.
+  static String _languageTargetId(String missionId) =>
+      'mission_language_$missionId';
+
+  /// A tap that offers the switch to [language] in [missionId]'s card's
+  /// mismatch popup, then runs [then] once it has switched — on this page's
+  /// own context, so a rebuild under the switch (the outline re-reading in
+  /// the new display language) can't leave it acting on a gone widget.
+  VoidCallback _switchLanguageThen(
+    String missionId,
+    LanguageModel language,
+    VoidCallback then,
+  ) =>
+      () => LanguageMismatchPopup.show(
+        context: context,
+        targetId: _languageTargetId(missionId),
+        message: L10n.of(context).missionLanguageMismatchDesc(
+          CourseLanguageScope.courseLanguageName(widget.room, L10n.of(context)),
+        ),
+        targetLanguage: language,
+        onConfirm: () => WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted) then();
+        }),
+      );
+
+  void _openMissionDetails(String missionId) => context.go(
+    WorkspaceNav.openObjectiveDetail(
+      GoRouterState.of(context).uri,
+      missionId,
+      courseId: widget.room?.id,
+    ),
+  );
+
+  void _practiceMission(String missionId) =>
+      startPractice(context, ConstructTypeEnum.vocab, missionId: missionId);
 
   void _openSession(String roomId) {
     PanelEntryIntent.instance.armForSwap();
@@ -582,17 +606,23 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                 );
               }
 
-              return ValueListenableBuilder(
-                valueListenable: widget.objectivesProvider.progression,
-                builder: (context, progression, _) {
+              // Also on the XP cache, whose loading flag the Mission header
+              // shimmers on (#9559).
+              return ListenableBuilder(
+                listenable: Listenable.merge([
+                  widget.objectivesProvider.progression,
+                  MissionXpCache.instance,
+                ]),
+                builder: (context, _) {
+                  final xpByActivity = _xpByActivity();
                   if (widget.suggestedOnly) {
                     // The course page's Mission card and its activities
                     // (#9437), ordered by the same Priority matrix the map
                     // ranks pins by, the learner's own unfinished sessions
-                    // first. Finished activities drop out unless a session of
-                    // them is live. Empty only while the course is complete
-                    // or has no Mission; the page renders its own card for
-                    // that.
+                    // first. The row is the Mission's whole queue (#9559):
+                    // finished activities stay, ranked after what is still
+                    // to do. Empty only while the course is complete or has
+                    // no Mission; the page renders its own card for that.
                     final current =
                         widget.objectivesProvider.objectiveGroup(
                           widget.missionId,
@@ -604,29 +634,66 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                       groups: [current],
                       missionGradient:
                           widget.objectivesProvider.missionGradient,
-                      signalsFor: _signalsFor,
+                      signalsFor: (id) => _signalsFor(id, xpByActivity),
                       cap: null,
                       includeOngoing: true,
+                      includeCompleted: true,
+                      // The carousel's own dimming rule, so a card ranks
+                      // where it looks.
+                      canStart: (activity) => ActivityCarousel.canStart(
+                        availableParticipants: _availableParticipants,
+                        complete: _finished(xpByActivity, activity.activityId),
+                        live: _liveStateFor(activity.activityId).state != null,
+                        roles: activity.plan.req.numberOfParticipants,
+                      ),
                     );
                     final activities = [
                       for (final suggestion in suggested) suggestion.activity,
                     ];
-                    // Play opens the row's top item — a coursemate's open
-                    // session first, else the best unfinished activity — and,
-                    // once every activity is finished, the Mission's first
-                    // activity for another round (#9420).
-                    final playTarget = activities.isNotEmpty
-                        ? activities.first
-                        : current.activities.firstOrNull;
-                    // ...but a session the learner is already in, in this
-                    // Mission, comes first: Play resumes it, so a started
-                    // activity gets finished before a new one starts.
-                    final ongoing = _ongoingSession(current);
+                    // Play opens the row's first card, and that card carries a
+                    // small "Up next" in Play's colour (#9559), so the two are
+                    // one thing. The row leads with a session the learner is
+                    // already in — Play reads "Continue activity" and reopens
+                    // it, so a started activity gets finished before a new one
+                    // starts — then a coursemate's open session, then the best
+                    // unfinished activity ("Next activity"), then a finished
+                    // one for another round ("Play again"), then what the
+                    // course can't fill yet. Each Mission keeps to its own
+                    // activities: a session from another Mission resumes from
+                    // that Mission's card or Chats.
+                    final inRow = activities.firstOrNull;
+                    final playTarget = inRow ?? current.activities.firstOrNull;
+                    final ongoingRoomId = inRow == null
+                        ? null
+                        : widget.room?.activeActivityRoomId(inRow.activityId);
+                    final replay =
+                        playTarget != null &&
+                        ongoingRoomId == null &&
+                        _finished(xpByActivity, playTarget.activityId) &&
+                        _liveStateFor(playTarget.activityId).state == null;
+                    final l10n = L10n.of(context);
                     final hasProgress = widget.room != null;
                     final position = widget
                         .objectivesProvider
                         .filteredObjectiveGroups
                         .indexOf(current);
+                    // A joined course in another language than the
+                    // learner's (#9559): its progress counts only there, so
+                    // the card hides it, and the Mission's detail page and
+                    // its Practice go through the same "switch language?"
+                    // popup a send in such a session does. Its base
+                    // language can't be switched to, so there the link is
+                    // plain and Practice is hidden.
+                    final room = widget.room;
+                    final otherLanguage =
+                        room != null &&
+                        !CourseLanguageScope.courseInTargetLanguage(room);
+                    final switchTo = otherLanguage
+                        ? CourseLanguageScope.courseSwitchLanguage(room)
+                        : null;
+                    final languageName = otherLanguage
+                        ? CourseLanguageScope.courseLanguageName(room, l10n)
+                        : null;
                     return MissionCard(
                       group: current,
                       index: position < 0 ? null : position + 1,
@@ -636,24 +703,56 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                       breakdown: hasProgress
                           ? widget.objectivesProvider.missionXpBreakdown(
                               missionId,
+                              byActivity: xpByActivity,
                             )
                           : null,
-                      onPlay: widget.readOnly
+                      onPlay: widget.readOnly || playTarget == null
                           ? null
-                          : ongoing != null
-                          ? () => _openSession(ongoing.roomId)
-                          : playTarget == null
-                          ? null
+                          : ongoingRoomId != null
+                          ? () => _openSession(ongoingRoomId)
                           : () => _openActivity(playTarget),
-                      playLabel: ongoing == null
+                      playLabel: ongoingRoomId != null
+                          ? l10n.missionContinueActivity
+                          : replay
+                          ? l10n.playAgain
+                          : l10n.missionNextActivity,
+                      playTarget: playTarget?.plan.title,
+                      onDetails: !hasProgress || widget.readOnly
                           ? null
-                          : L10n.of(context).continueActivity,
-                      playDetail: ongoing?.activity.plan.title,
-                      onPractice: () => startPractice(
-                        context,
-                        ConstructTypeEnum.vocab,
-                        missionId: missionId,
-                      ),
+                          : switchTo != null
+                          ? _switchLanguageThen(
+                              missionId,
+                              switchTo,
+                              () => _openMissionDetails(missionId),
+                            )
+                          : otherLanguage
+                          ? null
+                          : () => _openMissionDetails(missionId),
+                      // In another language, Practice first offers the
+                      // switch; in the learner's base language, which can't
+                      // be switched to, there is nothing to practise, so it
+                      // is hidden — as on the Mission's detail page.
+                      onPractice: switchTo != null
+                          ? _switchLanguageThen(
+                              missionId,
+                              switchTo,
+                              () => _practiceMission(missionId),
+                            )
+                          : otherLanguage
+                          ? null
+                          : () => _practiceMission(missionId),
+                      otherLanguageName: languageName,
+                      onSwitchLanguage: switchTo == null || widget.readOnly
+                          ? null
+                          : _switchLanguageThen(missionId, switchTo, () {}),
+                      // The popup's anchor, registered only when there is a
+                      // switch to offer.
+                      languageTargetId: switchTo == null
+                          ? null
+                          : _languageTargetId(missionId),
+                      // A joined course in the learner's language whose
+                      // progress hasn't resolved yet.
+                      loading: widget.objectivesProvider.progressLoading,
                       // The Mission's activities live in its card: they
                       // are what fills it (#9420).
                       activities: activities.isEmpty
@@ -671,11 +770,14 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                                   _openActivity(activity);
                                 }
                               },
-                              userStarsByActivity: _userStarsByActivity,
-                              hasCompletedActivity: widget.hasCompletedActivity,
+                              xpByActivity: (id) =>
+                                  xpByActivity[id]?.total ?? 0,
                               liveStateByActivity: _liveStateFor,
                               availableParticipants: _availableParticipants,
                               pingedActivityId: _pingedActivityId,
+                              highlightedActivityId: widget.readOnly
+                                  ? null
+                                  : inRow?.activityId,
                               interactive: !widget.readOnly,
                             ),
                     );
@@ -720,6 +822,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                       (_) => _scrollToSection(returnSectionKey, animate: false),
                     );
                   }
+                  final classIndex = CourseObjectiveCircles.classLocationIndex(
+                    groups,
+                    DateTime.now(),
+                  );
                   final list = ListView.separated(
                     controller: widget.shrinkWrap ? null : _scrollController,
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -747,15 +853,17 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                             ? () => _toggleMissionCollapsed(group.objective.id)
                             : null,
                         isUpNext: group.objective.id == anchorId,
+                        isClassLocation: i == classIndex,
+                        index: i + 1,
+                        missionCount: groups.length,
                         group: group,
-                        hasCompletedActivity: widget.hasCompletedActivity,
                         progress: hasProgress
                             ? widget.objectivesProvider.missionProgress(
                                 group.objective.id,
                               )
                             : null,
                         onTap: _openActivity,
-                        userStarsByActivity: _userStarsByActivity,
+                        xpByActivity: (id) => xpByActivity[id]?.total ?? 0,
                         liveStateByActivity: _liveStateFor,
                         availableParticipants: _availableParticipants,
                         interactive: !widget.readOnly,

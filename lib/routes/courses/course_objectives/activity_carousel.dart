@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
@@ -20,15 +21,18 @@ class ActivityCarousel extends StatefulWidget {
   final List<QuestActivity> activities;
 
   final void Function(QuestActivity) onTap;
-  final int Function(String) userStarsByActivity;
-  final bool Function(String activityId)? hasCompletedActivity;
+
+  /// The learner's total XP from an activity's saved sessions in their
+  /// current language (#9559). Above zero is what "finished" means: the card
+  /// wears the completed stamp with this number.
+  final int Function(String) xpByActivity;
 
   /// How many times the learner has finished an activity, for the ×N on its
   /// completed stamp. Null counts a completed activity once.
   final int Function(String activityId)? timesCompletedByActivity;
 
-  /// The activity's live map-pin state (colour fill + banner) and "Open (N)"
-  /// count, resolved by the parent which holds the course room.
+  /// The activity's live map-pin state (frame + pill) and its open
+  /// sessions, resolved by the parent which holds the course room.
   final ({
     ActivityPinState? state,
     int openSessions,
@@ -47,6 +51,14 @@ class ActivityCarousel extends StatefulWidget {
   /// card gets the bell badge (#8319). Null everywhere else.
   final String? pingedActivityId;
 
+  /// The card the Mission card's Play opens (#9559): a small "Up next" label
+  /// in Play's colour sits just above it. The label belongs to the card, so
+  /// it scrolls away with it rather than naming whichever card slides under
+  /// the button, and nothing touches the card itself, so its corner tags and
+  /// footer stay as they are. The row grows by the label's line to hold it.
+  /// Null everywhere else.
+  final String? highlightedActivityId;
+
   final double spacing;
   final double? cardWidth;
   final double? cardHeight;
@@ -60,17 +72,37 @@ class ActivityCarousel extends StatefulWidget {
     super.key,
     required this.activities,
     required this.onTap,
-    required this.userStarsByActivity,
-    required this.hasCompletedActivity,
+    required this.xpByActivity,
     required this.liveStateByActivity,
     required this.availableParticipants,
     this.timesCompletedByActivity,
     this.pingedActivityId,
+    this.highlightedActivityId,
     this.spacing = 16.0,
     this.cardWidth,
     this.cardHeight,
     this.interactive = true,
   });
+
+  /// Whether the learner can start an activity now — what a card dims on
+  /// and the course page's queue ranks on (#9559), so a card ranks where it
+  /// looks. A course that can fill its [roles] (the bot is a seat), a live
+  /// session already filled, or a finished activity (its replay is never
+  /// dimmed). Unknown headcount counts as startable.
+  static bool canStart({
+    required int? availableParticipants,
+    required bool complete,
+    required bool live,
+    required int roles,
+  }) =>
+      availableParticipants == null ||
+      complete ||
+      live ||
+      roles <= availableParticipants;
+
+  /// A card's default width here: wider in column mode.
+  static double defaultCardWidth(BuildContext context) =>
+      FluffyThemes.isColumnMode(context) ? 160.0 : 120.0;
 
   @override
   State<ActivityCarousel> createState() => _ActivityCarouselState();
@@ -82,11 +114,22 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
   final ValueNotifier<bool> _showForwardArrowNotifier = ValueNotifier(false);
 
   bool get _isColumnMode => FluffyThemes.isColumnMode(context);
-  double get _cardWidth => widget.cardWidth ?? (_isColumnMode ? 160.0 : 120.0);
+  double get _cardWidth =>
+      widget.cardWidth ?? ActivityCarousel.defaultCardWidth(context);
   double get _cardHeight =>
       widget.cardHeight ?? (_isColumnMode ? 280.0 : 225.0);
 
   double get _cardScrollDistance => _cardWidth + widget.spacing;
+
+  /// The line above the cards the "Up next" label sits on.
+  static const double _labelHeight = 16.0;
+
+  double get _labelSpace =>
+      widget.highlightedActivityId == null ? 0.0 : _labelHeight;
+
+  /// Where the cards start in the row: under its top padding and the
+  /// "Up next" line.
+  double get _cardsTop => widget.spacing / 2.0 + _labelSpace;
 
   bool get _showBackArrow {
     try {
@@ -149,7 +192,7 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: _cardHeight,
+      height: _cardHeight + _labelSpace,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -168,15 +211,14 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                 scrollDirection: Axis.horizontal,
                 itemCount: widget.activities.length,
                 separatorBuilder: (_, _) => SizedBox(width: widget.spacing),
-                padding: EdgeInsets.symmetric(vertical: widget.spacing / 2.0),
+                padding: EdgeInsets.only(
+                  top: _cardsTop,
+                  bottom: widget.spacing / 2.0,
+                ),
                 itemBuilder: (context, index) {
                   final ref = widget.activities[index];
-                  final complete =
-                      (widget.hasCompletedActivity?.call(ref.activityId) ??
-                      false);
-                  final starsEarned = widget.userStarsByActivity(
-                    ref.activityId,
-                  );
+                  final xpEarned = widget.xpByActivity(ref.activityId);
+                  final complete = xpEarned > 0;
                   final liveState = widget.liveStateByActivity(ref.activityId);
                   // A completed activity keeps its live state: the card
                   // frames it and stamps the completion beside it.
@@ -192,13 +234,15 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                   // enough members for their roles (tapping opens the start page's
                   // Invite CTA). A live (ongoing/joinable) session already filled
                   // its seats so it never dims
-                  final available = widget.availableParticipants;
-                  final canStart =
-                      available == null ||
-                      complete ||
-                      liveState.state != null ||
-                      ref.plan.req.numberOfParticipants <= available;
-                  final card = Stack(
+                  final canStart = ActivityCarousel.canStart(
+                    availableParticipants: widget.availableParticipants,
+                    complete: complete,
+                    live: liveState.state != null,
+                    roles: ref.plan.req.numberOfParticipants,
+                  );
+                  final highlighted =
+                      ref.activityId == widget.highlightedActivityId;
+                  final framed = Stack(
                     // The card's state banner peeks past its top-left
                     // corner, so this wrapping Stack must not clip it.
                     clipBehavior: Clip.hardEdge,
@@ -212,26 +256,45 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                           fontSize: _isColumnMode ? 16.0 : 12.0,
                           fontSizeSmall: _isColumnMode ? 12.0 : 8.0,
                           iconSize: _isColumnMode ? 12.0 : 8.0,
-                          starsEarned: starsEarned,
                           pinState: pinState,
                           openSessions: liveState.openSessions,
                           participants: liveState.participants,
                           openSlots: liveState.openSlots,
                           timesCompleted: timesCompleted,
+                          xpEarned: xpEarned,
+                          // The course-ping bell rides in the live state's
+                          // tab (#9559).
+                          pinged:
+                              pinState != null &&
+                              ref.activityId == widget.pingedActivityId,
                         ),
                       ),
-                      // The course-ping bell, top-left so it shares
-                      // the banner's row without covering it (#8319),
-                      // in the card's own state hue (#8481).
-                      // Under the live state's corner tab when there is one.
-                      if (ref.activityId == widget.pingedActivityId)
+                      // A ping on a card with no live state to carry it
+                      // (#8319): the bell alone, top-left.
+                      if (pinState == null &&
+                          ref.activityId == widget.pingedActivityId)
                         Positioned(
-                          top: pinState == null ? 8.0 : 30.0,
+                          top: 8.0,
                           left: 6.0,
                           child: CoursePingBadge(pinState: pinState),
                         ),
                     ],
                   );
+                  final card = !highlighted
+                      ? framed
+                      : Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            framed,
+                            Positioned(
+                              top: -_labelHeight - 2.0,
+                              left: 2.0,
+                              child: IgnorePointer(
+                                child: _UpNextLabel(height: _labelHeight),
+                              ),
+                            ),
+                          ],
+                        );
                   // The course preview's cards open nothing (#7826), so they are
                   // neither tap targets nor Tab stops.
                   if (!widget.interactive) return card;
@@ -279,9 +342,12 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
           // (IgnorePointer / opacity 0) still leaves a semantics node at the
           // edge that, on Flutter web, lets a tap fall through to the card
           // beneath it.
+          // Over the cards only, not the "Up next" line above them: the
+          // strips are filled, and from the top they painted over the foot
+          // of Play's glow (#9559).
           Positioned(
             left: 0,
-            top: 0,
+            top: _cardsTop,
             bottom: 0,
             child: ValueListenableBuilder<bool>(
               valueListenable: _showBackArrowNotifier,
@@ -295,7 +361,7 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
           ),
           Positioned(
             right: 0,
-            top: 0,
+            top: _cardsTop,
             bottom: 0,
             child: ValueListenableBuilder<bool>(
               valueListenable: _showForwardArrowNotifier,
@@ -305,6 +371,37 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                       onTap: () => _scrollByArrow(ArrowDirection.forward),
                     )
                   : const SizedBox.shrink(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// The small "Up next" over the card the Mission card's Play opens.
+class _UpNextLabel extends StatelessWidget {
+  final double height;
+
+  const _UpNextLabel({required this.height});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final ink = theme.colorScheme.primary;
+    return SizedBox(
+      height: height,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        spacing: 2.0,
+        children: [
+          Icon(Icons.arrow_downward_rounded, size: 12.0, color: ink),
+          Text(
+            L10n.of(context).upNext,
+            style: theme.textTheme.labelSmall?.copyWith(
+              color: ink,
+              fontWeight: FontWeight.w800,
+              height: 1.0,
             ),
           ),
         ],

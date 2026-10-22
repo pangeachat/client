@@ -66,6 +66,9 @@ class MockUserClusterViewModel implements UserClusterViewModel {
   int get starsEarned => 0;
 
   @override
+  bool get starsLoading => false;
+
+  @override
   int get numVocabConstructs => 0;
 
   @override

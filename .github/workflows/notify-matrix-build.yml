@@ -3,8 +3,10 @@ name: Notify Matrix — Build/Deploy
 # public, and GitHub does not allow public repos to call reusable workflows
 # from private repos, so the org workflow can't be referenced here (same
 # constraint as sygnal, which inlines these steps). Keep in sync with the org
-# workflow when it changes. One deliberate divergence: a release_body with no
-# template sections is treated entirely as the Summary (see parse step).
+# workflow when it changes. Two deliberate divergences: a release_body with no
+# template sections is treated entirely as the Summary (see parse step), and a
+# `failed` input swaps the rocket for a cross so the mobile build workflows can
+# post their failures to the same room.
 
 on:
   workflow_call:
@@ -27,6 +29,11 @@ on:
         required: false
         type: string
         default: "deployed to production"
+      failed:
+        description: "Post as a failure notice (cross instead of rocket)"
+        required: false
+        type: boolean
+        default: false
     secrets:
       aws_role_arn:
         description: "IAM role ARN to assume via OIDC for fetching Matrix credentials from Secrets Manager"
@@ -47,6 +54,7 @@ jobs:
           SERVICE_NAME: ${{ inputs.service_name }}
           VERSION: ${{ inputs.version }}
           HEADLINE: ${{ inputs.headline }}
+          FAILED: ${{ inputs.failed }}
         shell: bash
         run: |
           python3 << 'PYEOF'
@@ -56,6 +64,7 @@ jobs:
           service = os.environ["SERVICE_NAME"]
           version = os.environ["VERSION"]
           headline = os.environ.get("HEADLINE") or "deployed to production"
+          icon = "\u274c" if os.environ.get("FAILED") == "true" else "\U0001f680"
 
           def extract_section(text, heading):
               pattern = rf"^## {re.escape(heading)}\s*\n(.*?)(?=^## |\Z)"
@@ -101,7 +110,7 @@ jobs:
               summary = body.strip()
 
           # Plain text (markdown) — fallback for clients without HTML support
-          plain = f"\U0001f680 **{service} {version}** {headline}"
+          plain = f"{icon} **{service} {version}** {headline}"
           if summary:
               plain += f"\n\n**Summary**\n{summary}"
           if to_test:
@@ -110,7 +119,7 @@ jobs:
               plain += f"\n\n**To Test**\n{to_test_plain}"
 
           # HTML — what Matrix clients actually render
-          h = f"\U0001f680 <strong>{html.escape(service)} {html.escape(version)}</strong> {html.escape(headline)}"
+          h = f"{icon} <strong>{html.escape(service)} {html.escape(version)}</strong> {html.escape(headline)}"
           if summary:
               h += f"<br/><br/><strong>Summary</strong><br/>{md_to_html(summary)}"
           if to_test:

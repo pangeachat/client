@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:09.335151",
+    "@@last_modified": "2026-10-22 09:50:24.685833",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10734,5 +10734,19 @@
     "activityCompleted": "Finalizat",
     "completedTimes": "Finalizat de {count} ori",
     "classLocation": "Locația cursului",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Conversație {xp}",
+    "xpIncludingGoals": "inclusiv {xp} din obiective",
+    "missionOtherLanguageNotice": "Această misiune este dintr-un curs în {language}. Progresul tău în ea contează doar în timp ce înveți {language}.",
+    "missionLanguageMismatchDesc": "Această misiune este dintr-un curs în {language}. Vrei să schimbi limba țintă în {language}?",
+    "xpBySkillTitle": "Pe abilitate",
+    "missionNextActivity": "Următoarea activitate",
+    "missionContinueActivity": "Continuă activitatea",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Finalizat în acest curs ({num})",
+    "otherCoursesSessions": "Alte cursuri ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP câștigate",
+    "currentMission": "Misiune curentă"
 }

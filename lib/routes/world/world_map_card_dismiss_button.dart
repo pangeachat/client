@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 
 /// The dismiss X on a map card, as a corner badge: a close glyph on a
 /// surface-coloured disc with a white ring, so it reads against both the
@@ -41,7 +42,7 @@ class WorldMapCardDismissButton extends StatelessWidget {
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           backgroundColor: theme.colorScheme.surface,
           shape: const CircleBorder(
-            side: BorderSide(color: Colors.white, width: 1.5),
+            side: BorderSide(color: PinSize.markRing, width: 1.5),
           ),
         ),
       ),

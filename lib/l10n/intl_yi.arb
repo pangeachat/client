@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-16 16:33:16.434956",
+    "@@last_modified": "2026-10-22 09:50:30.792492",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "געענדיקט",
     "completedTimes": "געענדיקט {count} מאָל",
     "classLocation": "קלאַס אָרט",
-    "xpThresholdSuffix": "/ {threshold} עקזשפּ"
+    "xpThresholdSuffix": "/ {threshold} עקזשפּ",
+    "xpFromConversation": "שמועס {xp}",
+    "xpIncludingGoals": "אַרייַנגערעכנט {xp} פֿון צילן",
+    "missionOtherLanguageNotice": "די מיסיע איז פֿון אַ קורס אין {language}. דיין פּראָגרעס אויף איר ציילט נאָר בשעת דו לערנסט {language}.",
+    "missionLanguageMismatchDesc": "די מיסיע איז פֿון אַ קורס אין {language}. זאָל מען בייטן דיין ציל-שפּראַך צו {language}?",
+    "xpBySkillTitle": "לויט בקיאות",
+    "missionNextActivity": "קומענדיקע אַקטיוויטעט",
+    "missionContinueActivity": "פאָרזעצן אַקטיוויטעט",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "געענדיקט אין דעם קורס ({num})",
+    "otherCoursesSessions": "אַנדערע קורסן ({num})",
+    "activityXpStamp": "{xp} עקס-פּי",
+    "activityCompletedWithXp": "{completed}, {xp} עקס-פּי פֿאַרדינט",
+    "currentMission": "איצטיקע מיסיע"
 }

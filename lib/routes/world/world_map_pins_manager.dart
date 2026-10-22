@@ -11,6 +11,7 @@ import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
@@ -26,7 +27,6 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/trailing_throttle.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
-import 'package:fluffychat/routes/world/saved_activities_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_signals.dart';
@@ -139,7 +139,8 @@ class WorldMapPinsManager {
   Map<String, int> _userStars = {};
 
   /// [_userStars] with each in-scope course's shown activities credited across
-  /// their copies — what a pin shows. Recomputed with the progression.
+  /// their copies — the trail [progressedActivityIds] reads. Recomputed with
+  /// the progression.
   Map<String, int> _creditedStars = {};
 
   /// Activity XP per activity (saved sessions' credited XP plus goal
@@ -171,6 +172,10 @@ class WorldMapPinsManager {
   /// quest uuids: a second room of an already-joined quest leaves the uuid set
   /// unchanged and would silently skip the rebuild (#8087).
   Set<String> _objectiveCacheRoomIds = const {};
+
+  /// Whether the objective cache has finished a build — what lets an empty
+  /// resolution mean "no joined course" rather than "not loaded yet".
+  bool _objectiveCacheBuilt = false;
 
   /// Each joined course's copy revision at the last rebuild (0 = no copy): a
   /// teacher's publish changes that course's outline, so it counts as a
@@ -277,13 +282,13 @@ class WorldMapPinsManager {
     bool Function(QuestActivityCard) filter,
   ) => _pins.where(filter).toList();
 
-  /// The activities the learner has a saved session of — every completed
-  /// stamp the map draws, whether or not its pin made the tier budget.
+  /// The activities the learner has finished — XP from a saved session in
+  /// their current language (#9559) — every completed stamp the map draws,
+  /// whether or not its pin made the tier budget.
   Set<String> get savedActivityIds => _savedActivityIds;
 
-  /// Whether [card] wears the completed stamp: the learner has a saved
-  /// session of it, however many goals they got (world-map.instructions.md,
-  /// "Goal Progress"). A set lookup, never a rooms rescan.
+  /// Whether [card] wears the completed stamp: the learner has finished it
+  /// ([savedActivityIds]). A set lookup, never a rooms rescan.
   ActivityStarLevel starLevelOf(QuestActivityCard card) =>
       _savedActivityIds.contains(card.activityId)
       ? ActivityStarLevel.star
@@ -302,7 +307,9 @@ class WorldMapPinsManager {
         : ActivityPinState.inProgress;
   }
 
-  int? activityStarsEarned(String activityId) => _creditedStars[activityId];
+  /// The learner's total XP from [activityId]'s saved sessions in their
+  /// current language — what a played card's coin shows (#9559).
+  int? activityXpEarned(String activityId) => _xpByActivity[activityId];
 
   /// Activity ids the learner has earned at least one goal in — the trail the
   /// ranking reserves slots for (world-map.instructions.md, "Goal Progress").
@@ -584,17 +591,25 @@ class WorldMapPinsManager {
 
     _signals = signals;
     _userStars = userStars;
+    _client = client;
     _xpByActivity = client.userXpByActivity(
       MissionXpCache.instance.creditedXpByRoom,
     );
-    _savedActivityIds = client.savedActivityIds;
+    // Finished is XP from a saved session in the current language — the
+    // one rule every completed stamp reads (#9559).
+    _savedActivityIds = _xpByActivity.keys.toSet();
     resolveProgression();
   }
 
-  /// Re-resolve the cached [_progression] from the objective cache's outlines (+
-  /// any course-scoped outline) and the learner's current per-activity stars.
-  /// Called where the inputs change — stars on room sync, the objective cache on
-  /// course join/leave, and a course re-scope — never per frame.
+  /// The client [recomputeProgress] last read, for [resolveProgression]'s
+  /// language scope.
+  Client? _client;
+
+  /// Re-resolve the cached [_progression] from the objective cache's outlines
+  /// (+ any course-scoped outline) and the learner's current per-activity XP.
+  /// Called where the inputs change — XP and goals on room sync, the objective
+  /// cache on course join/leave, and a course re-scope — never per frame.
+
   void resolveProgression() {
     _creditedStars = _objectiveCache.creditedStars(
       _userStars,
@@ -608,11 +623,22 @@ class WorldMapPinsManager {
       extraOutlines: _scopedCourseOutline == null
           ? const []
           : [_scopedCourseOutline!],
+      inScope: (courseId) => CourseLanguageScope.courseInTargetLanguage(
+        _client?.getRoomById(courseId),
+      ),
     );
     // One shared answer (quests.instructions.md): the course panel and the
     // analytics bar read what the map resolved, and the map resolves first in
     // a session, so the star count is live before any course page opens.
-    QuestObjectivesLoader.publishProgression(_progression);
+    // Only once the outlines it resolves from are in: before that the
+    // resolution is empty, and publishing it would read as zero stars
+    // (#9559). A learner with no joined course publishes their real zero.
+    final client = _client;
+    if (_objectiveCache.ids.isNotEmpty ||
+        (_objectiveCacheBuilt &&
+            (client == null || client.joinedCourseRooms.isEmpty))) {
+      QuestObjectivesLoader.publishProgression(_progression);
+    }
   }
 
   /// Rebuild the joined-course outlines (a few quest reads), reading each
@@ -637,6 +663,7 @@ class WorldMapPinsManager {
         for (final r in rooms) r.id: r.courseListRules.revision,
       };
       _objectiveCacheQuestIds = rooms.map((r) => r.coursePlan!.uuid).toSet();
+      _objectiveCacheBuilt = true;
       resolveProgression(); // re-resolve the band with the loaded outlines
     } finally {
       _objectiveCacheRebuilding = false;

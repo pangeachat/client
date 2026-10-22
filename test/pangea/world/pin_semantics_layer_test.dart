@@ -431,7 +431,6 @@ void main() {
                               state: ActivityPinState.available,
                               pinged: false,
                               plan: null,
-                              starsEarned: 0,
                               participants: const [],
                               openSlots: 0,
                               onTap: () {},

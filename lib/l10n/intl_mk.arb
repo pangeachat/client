@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-16 16:33:05.022289",
+    "@@last_modified": "2026-10-22 09:50:20.133922",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "Завршено",
     "completedTimes": "Завршено {count} пати",
     "classLocation": "Локација на часот",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Разговор {xp}",
+    "xpIncludingGoals": "вклучувајќи {xp} од цели",
+    "missionOtherLanguageNotice": "Оваа мисија е од курс по {language}. Вашиот напредок во неа се брои само додека учите {language}.",
+    "missionLanguageMismatchDesc": "Оваа мисија е од курс по {language}. Дали сакате да го промените целниот јазик на {language}?",
+    "xpBySkillTitle": "По вештина",
+    "missionNextActivity": "Следна активност",
+    "missionContinueActivity": "Продолжи активност",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Завршено во овој курс ({num})",
+    "otherCoursesSessions": "Други курсеви ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, освоени {xp} XP",
+    "currentMission": "Тековна мисија"
 }

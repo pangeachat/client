@@ -245,10 +245,15 @@ abstract class WorkspaceNav {
   /// Open a Learning Objective's detail beside the Learning Objectives list —
   /// [openConstructDetail]'s twin: drops any other detail across columns,
   /// seats the list (the analytics `activities` master) on a cold start, and
-  /// appends `objective:<missionId>` after it.
-  static String openObjectiveDetail(Uri current, String missionId) {
+  /// appends `objective:<missionId>` after it. [courseId] is the course it
+  /// was opened from, so the detail shows that course's numbers (#9559).
+  static String openObjectiveDetail(
+    Uri current,
+    String missionId, {
+    String? courseId,
+  }) {
     final PanelToken detail = ObjectivePanelToken(
-      ObjectiveTokenParam(missionId: missionId),
+      ObjectiveTokenParam(missionId: missionId, courseId: courseId),
     );
     return _mutateBoth(
       current,

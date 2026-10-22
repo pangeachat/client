@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:32:53.340392",
+    "@@last_modified": "2026-10-22 09:50:06.518058",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10630,5 +10630,19 @@
     "activityCompleted": "সম্পন্ন হয়েছে",
     "completedTimes": "{count} বার সম্পন্ন হয়েছে",
     "classLocation": "ক্লাসের অবস্থান",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "কথোপকথন {xp}",
+    "xpIncludingGoals": "লক্ষ্য থেকে {xp} সহ",
+    "missionOtherLanguageNotice": "এই মিশনটি {language} ভাষার একটি কোর্স থেকে নেওয়া হয়েছে। এতে আপনার অগ্রগতি শুধুমাত্র তখনই গণনা করা হবে যখন আপনি {language} শিখছেন।",
+    "missionLanguageMismatchDesc": "এই মিশনটি {language} ভাষার একটি কোর্স থেকে নেওয়া হয়েছে। আপনার লক্ষ্য ভাষা কি {language}-এ পরিবর্তন করবেন?",
+    "xpBySkillTitle": "দক্ষতা অনুসারে",
+    "missionNextActivity": "পরবর্তী কার্যকলাপ",
+    "missionContinueActivity": "কার্যকলাপ চালিয়ে যান",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "এই কোর্সে সম্পন্ন হয়েছে ({num})",
+    "otherCoursesSessions": "অন্যান্য কোর্স ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP অর্জিত হয়েছে",
+    "currentMission": "বর্তমান মিশন"
 }

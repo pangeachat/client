@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:09.219083",
+    "@@last_modified": "2026-10-22 09:50:24.064516",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -10005,5 +10005,19 @@
     "activityCompleted": "Concluído",
     "completedTimes": "Concluído {count} vezes",
     "classLocation": "Local da aula",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Conversa {xp}",
+    "xpIncludingGoals": "incluindo {xp} de metas",
+    "missionOtherLanguageNotice": "Esta Missão é de um curso em {language}. Seu progresso nela só conta enquanto você estiver aprendendo {language}.",
+    "missionLanguageMismatchDesc": "Esta Missão é de um curso em {language}. Mudar seu idioma de destino para {language}?",
+    "xpBySkillTitle": "Por habilidade",
+    "missionNextActivity": "Próxima atividade",
+    "missionContinueActivity": "Continuar atividade",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Concluído neste curso ({num})",
+    "otherCoursesSessions": "Outros cursos ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP ganhos",
+    "currentMission": "Missão atual"
 }

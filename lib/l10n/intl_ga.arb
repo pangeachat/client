@@ -3543,7 +3543,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-16 16:32:58.033679",
+    "@@last_modified": "2026-10-22 09:50:12.176214",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10016,5 +10016,19 @@
     "activityCompleted": "Críochnaithe",
     "completedTimes": "Críochnaithe {count} uair",
     "classLocation": "Suíomh ranga",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Comhrá {xp}",
+    "xpIncludingGoals": "lena n-áirítear {xp} ó spriocanna",
+    "missionOtherLanguageNotice": "Tá an Misean seo ó chúrsa i {language}. Ní áirítear do dhul chun cinn air ach amháin fad is atá tú ag foghlaim {language}.",
+    "missionLanguageMismatchDesc": "Tá an Misean seo ó chúrsa i {language}. Athraigh do sprioc-theanga go {language}?",
+    "xpBySkillTitle": "De réir scile",
+    "missionNextActivity": "An chéad ghníomhaíocht eile",
+    "missionContinueActivity": "Lean ar aghaidh leis an ngníomhaíocht",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Críochnaithe sa chúrsa seo ({num})",
+    "otherCoursesSessions": "Cúrsaí eile ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP tuillte",
+    "currentMission": "Misean reatha"
 }

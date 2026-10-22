@@ -9,7 +9,7 @@ enum LearningSkillsEnum {
   reading(isVisible: true, icon: Symbols.two_pager),
   speaking(isVisible: true, icon: Icons.mic_outlined),
   hearing(isVisible: true, icon: Icons.volume_up),
-  other(isVisible: false);
+  other(isVisible: false, icon: Icons.more_horiz);
 
   final bool isVisible;
   final IconData icon;
@@ -29,8 +29,8 @@ enum LearningSkillsEnum {
         return L10n.of(context).listeningExercisesTooltip;
       case LearningSkillsEnum.speaking:
         return L10n.of(context).speakingExercisesTooltip;
-      default:
-        return "";
+      case LearningSkillsEnum.other:
+        return L10n.of(context).other;
     }
   }
 }

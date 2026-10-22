@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-16 16:33:03.847358",
+    "@@last_modified": "2026-10-22 09:50:18.467320",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "Аткарылды",
     "completedTimes": "{count} жолу аткарылды",
     "classLocation": "Сабактын жайгашкан жери",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Маектешүү {xp}",
+    "xpIncludingGoals": "максаттардан {xp} кошо",
+    "missionOtherLanguageNotice": "Бул миссия {language} тилиндеги курстан. Андагы ийгилигиңиз {language} тилин үйрөнүп жатканда гана эсептелет.",
+    "missionLanguageMismatchDesc": "Бул миссия {language} тилиндеги курстан. Максаттуу тилиңизди {language} тилине которосузбу?",
+    "xpBySkillTitle": "Көндүм боюнча",
+    "missionNextActivity": "Кийинки иш-аракет",
+    "missionContinueActivity": "Иш-аракетти улантуу",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Бул курста аяктады ({num})",
+    "otherCoursesSessions": "Башка курстар ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP алынды",
+    "currentMission": "Учурдагы миссия"
 }

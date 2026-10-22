@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_live_state_room_extension.dart';
@@ -71,6 +72,7 @@ class CourseObjectiveCircles extends StatelessWidget {
     listenable: Listenable.merge([
       objectivesProvider.questLoader,
       objectivesProvider.progression,
+      MissionXpCache.instance,
       WorldMapPinsManager.pingedActivityIds,
       DiscoveredSessionsCache.instance,
     ]),
@@ -81,9 +83,13 @@ class CourseObjectiveCircles extends StatelessWidget {
           ? null
           : objectivesProvider.client.getRoomById(courseId);
       final currentId = objectivesProvider.currentObjectiveGroup?.objective.id;
+      final loading = objectivesProvider.progressLoading;
+      // While progress loads the current Mission isn't known yet (it falls
+      // back to the first), so no circle is pointed at unless the learner
+      // picked one — the pointer would land on Mission 1, then jump (#9559).
       final shownId =
           objectivesProvider.objectiveGroup(selectedMissionId)?.objective.id ??
-          currentId;
+          (loading ? null : currentId);
       final pinged = WorldMapPinsManager.pingedActivityIds.value;
       final classIndex = classLocationIndex(groups, DateTime.now());
       final onSelectMission = this.onSelectMission;
@@ -107,6 +113,8 @@ class CourseObjectiveCircles extends StatelessWidget {
                     group.objective.id != shownId &&
                     _hasPing(course, group, pinged),
                 progress: progress?.fraction ?? 0.0,
+                xp: progress,
+                loading: loading,
                 state: progress?.satisfied == true
                     ? ObjectiveCircleState.complete
                     : group.objective.id == currentId

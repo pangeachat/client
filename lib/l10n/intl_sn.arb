@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-16 16:33:12.085660",
+    "@@last_modified": "2026-10-22 09:50:27.060833",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "Zvapedzwa",
     "completedTimes": "Zvapedzwa {count} nguva",
     "classLocation": "Nzvimbo yekirasi",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Hurukuro {xp}",
+    "xpIncludingGoals": "kusanganisira {xp} kubva kuzvinangwa",
+    "missionOtherLanguageNotice": "Basa iri rinobva kuchikoro che {language}. Kufambira mberi kwako kunongoverengwa chete paunenge uchidzidza {language}.",
+    "missionLanguageMismatchDesc": "Basa iri rinobva kuchikoro che {language}. Chinja mutauro wako wekudzidza kuita {language}?",
+    "xpBySkillTitle": "Nehunyanzvi",
+    "missionNextActivity": "Chiitiko chinotevera",
+    "missionContinueActivity": "Enderera nechiitiko",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Wapedza muchikoro chino ({num})",
+    "otherCoursesSessions": "Zvimwe zvikoro ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP yawana",
+    "currentMission": "Basa riripo"
 }

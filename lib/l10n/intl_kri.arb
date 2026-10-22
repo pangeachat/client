@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-16 16:33:03.254381",
+    "@@last_modified": "2026-10-22 09:50:18.006683",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "Dɔn",
     "completedTimes": "Dɔn {count} tɛm",
     "classLocation": "Klas ples",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Conversation {xp}",
+    "xpIncludingGoals": "plus {xp} frɔm gollɛn",
+    "missionOtherLanguageNotice": "Dis Mishɔn de frɔm wan kos na {language}. Yu prɔgrɛs pan am kɔnt ɔnli wɛn yu de lan {language}.",
+    "missionLanguageMismatchDesc": "Dis Mishɔn de frɔm wan kos na {language}. Chɛnj yu tɛgɛt langwej to {language}?",
+    "xpBySkillTitle": "Bay skil",
+    "missionNextActivity": "Nɛks aktiviti",
+    "missionContinueActivity": "Kɔntinyu aktiviti",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Dɔn insay dis kos ({num})",
+    "otherCoursesSessions": "Ɔda kos dɛn ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP gɛt",
+    "currentMission": "Kɔrɛnt mishɔn"
 }

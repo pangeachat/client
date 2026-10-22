@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:12.461042",
+    "@@last_modified": "2026-10-22 09:50:27.530524",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10520,5 +10520,19 @@
     "activityCompleted": "Slutförd",
     "completedTimes": "Slutförd {count} gånger",
     "classLocation": "Klassrumsplats",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Konversation {xp}",
+    "xpIncludingGoals": "inklusive {xp} från mål",
+    "missionOtherLanguageNotice": "Detta uppdrag är från en kurs i {language}. Dina framsteg räknas bara när du lär dig {language}.",
+    "missionLanguageMismatchDesc": "Detta uppdrag är från en kurs i {language}. Vill du byta målspråk till {language}?",
+    "xpBySkillTitle": "Per färdighet",
+    "missionNextActivity": "Nästa aktivitet",
+    "missionContinueActivity": "Fortsätt aktivitet",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Färdig i denna kurs ({num})",
+    "otherCoursesSessions": "Andra kurser ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP intjänade",
+    "currentMission": "Nuvarande uppdrag"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:11.947717",
+    "@@last_modified": "2026-10-22 09:50:26.387113",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10951,5 +10951,19 @@
     "activityCompleted": "Završeno",
     "completedTimes": "Završeno {count} puta",
     "classLocation": "Lokacija časa",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Razgovor {xp}",
+    "xpIncludingGoals": "uključujući {xp} iz ciljeva",
+    "missionOtherLanguageNotice": "Ova misija je sa kursa na jeziku {language}. Vaš napredak se računa samo dok učite {language}.",
+    "missionLanguageMismatchDesc": "Ova misija je sa kursa na jeziku {language}. Želite li da promenite ciljni jezik na {language}?",
+    "xpBySkillTitle": "Po veštini",
+    "missionNextActivity": "Sledeća aktivnost",
+    "missionContinueActivity": "Nastavi aktivnost",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Završeno na ovom kursu ({num})",
+    "otherCoursesSessions": "Drugi kursevi ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, osvojeno {xp} XP",
+    "currentMission": "Trenutna misija"
 }

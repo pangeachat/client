@@ -2908,7 +2908,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-10-16 16:32:54.818488",
+    "@@last_modified": "2026-10-22 09:50:07.925921",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9613,5 +9613,19 @@
     "activityCompleted": "བསྒྲུབས་ཟིན།",
     "completedTimes": "ཐེངས་ {count} བསྒྲུབས་ཟིན།",
     "classLocation": "སློབ་ཁང་གི་གནས་ཡུལ།",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "བགྲོ་གླེང་ {xp}",
+    "xpIncludingGoals": "དམིགས་ཡུལ་ནས་ {xp} ཚུད་པ།",
+    "missionOtherLanguageNotice": "འདིའི་དམིགས་འབེན་ནི་ {language} ནང་གི་སློབ་ཚན་ཞིག་ཡིན། ཁྱེད་ཀྱི་ཡར་རྒྱས་དེ་ {language} སྦྱོང་བཞིན་པའི་སྐབས་སུ་མ་གཏོགས་བརྩི་བཞིན་མེད།",
+    "missionLanguageMismatchDesc": "འདིའི་དམིགས་འབེན་ནི་ {language} ནང་གི་སློབ་ཚན་ཞིག་ཡིན། ཁྱེད་ཀྱི་དམིགས་འབེན་གྱི་སྐད་ཡིག་ {language} ལ་བསྒྱུར་རམ།",
+    "xpBySkillTitle": "ནུས་རྩལ་གྱིས་",
+    "missionNextActivity": "བྱེད་སྒོ་རྗེས་མ།",
+    "missionContinueActivity": "བྱེད་སྒོ་མུ་མཐུད་བྱེད་པ།",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "སློབ་ཚན་འདིའི་ནང་ཚར་བ། ({num})",
+    "otherCoursesSessions": "སློབ་ཚན་གཞན་དག ({num})",
+    "activityXpStamp": "{xp} ཉམས་མྱོང་།",
+    "activityCompletedWithXp": "{completed}, {xp} ཉམས་མྱོང་ཐོབ་པ།",
+    "currentMission": "དམིགས་འབེན་ད་ལྟ་བ།"
 }

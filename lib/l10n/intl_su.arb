@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-16 16:33:12.145157",
+    "@@last_modified": "2026-10-22 09:50:27.935038",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "Réngsé",
     "completedTimes": "Réngsé {count} kali",
     "classLocation": "Lokasi kelas",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Paguneman {xp}",
+    "xpIncludingGoals": "kaasup {xp} tina tujuan",
+    "missionOtherLanguageNotice": "Misi ieu ti kursus dina basa {language}. Kamajuan anjeun ngan diitung nalika anjeun diajar basa {language}.",
+    "missionLanguageMismatchDesc": "Misi ieu ti kursus dina basa {language}. Ganti basa target anjeun ka basa {language}?",
+    "xpBySkillTitle": "Ku kaahlian",
+    "missionNextActivity": "kagiatan salajengna",
+    "missionContinueActivity": "Teruskeun kagiatan",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Réngsé dina kursus ieu ({num})",
+    "otherCoursesSessions": "Kursus séjén ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP dimeunangkeun",
+    "currentMission": "Misi ayeuna"
 }

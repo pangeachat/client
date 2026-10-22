@@ -11,6 +11,11 @@ extension UserPermissionsRoomExtension on Room {
       client.userID != null &&
       ownPowerLevel >= SpaceConstants.powerLevelOfAdmin;
 
+  /// False for a signed-out account: the SDK's [canInvite] reads
+  /// `client.userID!`, and the course page's leaderboard can still build
+  /// through logout (CLIENT-F1F).
+  bool get canInviteMembers => client.userID != null && canInvite;
+
   /// Whether the user may redact an event sent by [senderId].
   ///
   /// Direct chats are created with the `trusted_private_chat` preset, so both

@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-16 16:33:07.103007",
+    "@@last_modified": "2026-10-22 09:50:22.538979",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "पूरा भयो",
     "completedTimes": "{count} पटक पूरा भयो",
     "classLocation": "कक्षाको स्थान",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "कुराकानी {xp}",
+    "xpIncludingGoals": "लक्ष्यहरूबाट {xp} सहित",
+    "missionOtherLanguageNotice": "यो मिसन {language} मा रहेको कोर्सबाट हो। यसमा तपाईंको प्रगति {language} सिक्दै गर्दा मात्र गणना हुन्छ।",
+    "missionLanguageMismatchDesc": "यो मिसन {language} मा रहेको कोर्सबाट हो। तपाईंको लक्षित भाषा {language} मा परिवर्तन गर्ने?",
+    "xpBySkillTitle": "सीप अनुसार",
+    "missionNextActivity": "अर्को गतिविधि",
+    "missionContinueActivity": "गतिविधि जारी राख्नुहोस्",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "यस कोर्समा समाप्त भयो ({num})",
+    "otherCoursesSessions": "अन्य कोर्सहरू ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP कमाइयो",
+    "currentMission": "हालको मिसन"
 }

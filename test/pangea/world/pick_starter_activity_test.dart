@@ -256,7 +256,7 @@ void main() {
       expect(rect.center.dx, tip.dx);
       if (kMapActivityCards) {
         // The activity card's box already holds its tail and focus gutter.
-        expect(rect.size, PinSize.mapCardBox(standsOnStamp: true));
+        expect(rect.size, PinSize.mapCardBox);
       } else {
         expect(
           rect.width,

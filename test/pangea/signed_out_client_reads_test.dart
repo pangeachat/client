@@ -5,7 +5,6 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
-import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'get_test_client.dart';
@@ -81,10 +80,21 @@ void main() {
     expect(Room(id: roomId, client: client).isRoomAdmin, isFalse);
   });
 
-  test('hasCompletedActivity is false without a user id', () {
-    expect(
-      CourseInfoSummariesModel({}).hasCompletedActivity(null, 'a1'),
-      isFalse,
-    );
+  test('canInviteMembers is false for a signed-out account', () async {
+    final client = await signedOutClient();
+    addTearDown(client.dispose);
+
+    expect(Room(id: roomId, client: client).canInviteMembers, isFalse);
   });
+
+  test(
+    'canInviteMembers follows canInvite for the signed-in account',
+    () async {
+      final client = await getTestClient();
+      addTearDown(client.dispose);
+      final room = Room(id: roomId, client: client);
+
+      expect(room.canInviteMembers, room.canInvite);
+    },
+  );
 }

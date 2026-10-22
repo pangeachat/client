@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-16 16:32:53.929058",
+    "@@last_modified": "2026-10-22 09:50:06.916505",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "সম্পূৰ্ণ হ'ল",
     "completedTimes": "{count} বাৰ সম্পূৰ্ণ হ'ল",
     "classLocation": "শ্ৰেণীৰ স্থান",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "কথা-বতৰাৰ পৰা {xp}",
+    "xpIncludingGoals": "লক্ষ্যৰ পৰা {xp} সহ",
+    "missionOtherLanguageNotice": "এই মিছনটো {language} এটা পাঠ্যক্ৰমৰ পৰা লোৱা হৈছে। আপুনি {language} শিকি থকা সময়তহে ইয়াৰ ওপৰত আপোনাৰ অগ্ৰগতি গণনা কৰা হ'ব।",
+    "missionLanguageMismatchDesc": "এই মিছনটো {language} এটা পাঠ্যক্ৰমৰ পৰা লোৱা হৈছে। আপোনাৰ লক্ষ্য ভাষা {language} লৈ সলনি কৰিবনে?",
+    "xpBySkillTitle": "দক্ষতা অনুসৰি",
+    "missionNextActivity": "পৰৱৰ্তী কাৰ্যকলাপ",
+    "missionContinueActivity": "কাৰ্যকলাপ অব্যাহত ৰাখক",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "এই পাঠ্যক্ৰমত সমাপ্ত কৰা হৈছে ({num})",
+    "otherCoursesSessions": "অন্যান্য পাঠ্যক্ৰমসমূহ ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP অৰ্জন কৰা হৈছে",
+    "currentMission": "বৰ্তমানৰ মিছন"
 }

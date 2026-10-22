@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
@@ -17,9 +18,10 @@ import 'package:fluffychat/routes/courses/course_objectives/mission_card.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import '../audio_players_stub.dart';
 
-/// The course page's Mission card (#9420): its number, statement, XP ring,
-/// Play (or Continue), Practice with the Mission's word count, and the
-/// Mission's activities inside it.
+/// The course page's Mission card (#9420, #9559): its number, statement, XP
+/// bar with its sources, Play (next, continue or again) on the activity it
+/// opens, Practice with the Mission's word count, and the Mission's
+/// activities inside it.
 void main() {
   setUpAll(AudioPlayersStub.install);
   tearDownAll(AudioPlayersStub.uninstall);
@@ -55,9 +57,13 @@ void main() {
     WidgetTester tester, {
     VoidCallback? onPlay,
     VoidCallback? onPractice,
-    String? playLabel,
-    String? playDetail,
+    bool canPractice = true,
+    String playLabel = 'Next activity',
+    String? playTarget,
     Widget? activities,
+    String? otherLanguageName,
+    VoidCallback? onSwitchLanguage,
+    bool loading = false,
   }) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -77,16 +83,23 @@ void main() {
               progress: const MissionProgress(xp: 400, threshold: 1600),
               breakdown: const MissionXpBreakdown(chat: 200, goals: 200),
               onPlay: onPlay,
-              onPractice: onPractice ?? () {},
+              onPractice: canPractice ? onPractice ?? () {} : null,
               playLabel: playLabel,
-              playDetail: playDetail,
+              playTarget: playTarget,
               activities: activities,
+              otherLanguageName: otherLanguageName,
+              onSwitchLanguage: onSwitchLanguage,
+              loading: loading,
             ),
           ),
         ),
       ),
     );
-    await tester.pumpAndSettle();
+    // The shimmer runs until progress lands, so a loading card never
+    // settles: pump past the localizations' load instead.
+    loading
+        ? await tester.pump(const Duration(milliseconds: 100))
+        : await tester.pumpAndSettle();
   }
 
   testWidgets('names the Mission and its XP toward the star', (tester) async {
@@ -99,17 +112,69 @@ void main() {
     );
   });
 
-  testWidgets('Play reads Continue with the activity when resuming', (
-    tester,
-  ) async {
+  testWidgets('the XP splits into conversation and practice', (tester) async {
+    await pump(tester, onPlay: () {});
+    // Conversation is chat, speaking and goals together.
+    expect(find.text('Conversation 400'), findsOneWidget);
+    expect(find.text('Practice 0'), findsOneWidget);
+    expect(find.text('400 / 1,600 XP'), findsOneWidget);
+  });
+
+  testWidgets('Play names the activity it opens', (tester) async {
     await pump(
       tester,
       onPlay: () {},
-      playLabel: 'Continue',
-      playDetail: 'Market day',
+      playLabel: 'Continue activity',
+      playTarget: 'Market day',
     );
-    expect(find.text('Continue'), findsOneWidget);
-    expect(find.bySemanticsLabel('Continue: Market day'), findsOneWidget);
+    expect(find.text('Continue activity'), findsOneWidget);
+    expect(
+      find.bySemanticsLabel('Continue activity: Market day'),
+      findsOneWidget,
+    );
+  });
+
+  testWidgets('a course in another language offers the switch in place of '
+      'its progress', (tester) async {
+    var switches = 0;
+    await pump(
+      tester,
+      onPlay: () {},
+      otherLanguageName: 'French',
+      onSwitchLanguage: () => switches++,
+    );
+    expect(find.textContaining('Conversation'), findsNothing);
+    expect(
+      find.bySemanticsLabel('400 of 1,600 XP toward this objective'),
+      findsNothing,
+    );
+    await tester.tap(find.textContaining('French'));
+    expect(switches, 1);
+  });
+
+  testWidgets('while progress loads, the header shimmers and is not '
+      'pressable', (tester) async {
+    var practices = 0;
+    await pump(
+      tester,
+      onPlay: () {},
+      onPractice: () => practices++,
+      loading: true,
+    );
+    expect(find.byType(Shimmer), findsOneWidget);
+    await tester.tap(find.byType(BoldTonalButton), warnIfMissed: false);
+    expect(practices, 0);
+  });
+
+  testWidgets('a course in the learner\'s base language shows no Practice '
+      '(#9559)', (tester) async {
+    await pump(
+      tester,
+      onPlay: () {},
+      otherLanguageName: 'English',
+      canPractice: false,
+    );
+    expect(find.byType(BoldTonalButton), findsNothing);
   });
 
   testWidgets('Play and Practice are pressable by a screen reader', (
@@ -123,7 +188,7 @@ void main() {
     void press(String label) =>
         tester.semantics.tap(find.semantics.byLabel(label));
 
-    press('Play');
+    press('Next activity');
     // Practice says how many words it drills: three, once per lemma.
     press('Practice, 3 words');
     expect(plays, 1);
@@ -135,7 +200,7 @@ void main() {
     final semantics = tester.ensureSemantics();
     await pump(tester);
     final data = tester
-        .getSemantics(find.bySemanticsLabel('Play'))
+        .getSemantics(find.bySemanticsLabel('Next activity'))
         .getSemanticsData();
     expect(data.flagsCollection.isEnabled, Tristate.isFalse);
     expect(data.hasAction(SemanticsAction.tap), isFalse);
@@ -143,17 +208,7 @@ void main() {
   });
 
   testWidgets('the Mission\'s activities sit inside the card', (tester) async {
-    await pump(tester, onPlay: () {});
-    expect(find.text('Activities'), findsNothing);
-
     await pump(tester, onPlay: () {}, activities: const Text('row'));
-    expect(
-      find.descendant(
-        of: find.byType(MissionCard),
-        matching: find.text('Activities'),
-      ),
-      findsOneWidget,
-    );
     expect(
       find.descendant(of: find.byType(MissionCard), matching: find.text('row')),
       findsOneWidget,

@@ -51,12 +51,24 @@ class SuggestedActivity {
 ///
 /// The course page's current-Mission row (#9437) passes [cap] null: the row is
 /// the Mission's content, not a shortlist.
+///
+/// With [includeCompleted] the row is the Mission's whole queue (#9559):
+/// nothing is dropped, and the order runs in tiers before the score —
+///  1. a session the learner is in (with [includeOngoing]);
+///  2. what they can play now: an unfinished activity they can start, or any
+///     activity with a live session;
+///  3. what they have finished, for another round;
+///  4. what they can't start yet — more roles than the course can fill
+///     ([canStart] false) and no live session to join.
+/// So a finished activity still leads when nothing unfinished is playable.
 List<SuggestedActivity> rankSuggestedActivities({
   required List<QuestObjectiveGroup> groups,
   required double Function(Set<String> missionRefs) missionGradient,
   required PinSignals Function(String activityId) signalsFor,
   int? cap = kSuggestedActivitiesCap,
   bool includeOngoing = false,
+  bool includeCompleted = false,
+  bool Function(QuestActivity activity)? canStart,
 }) {
   final byActivity = <String, SuggestedActivity>{};
   for (final group in groups) {
@@ -69,16 +81,31 @@ List<SuggestedActivity> rankSuggestedActivities({
     }
   }
 
-  final scored = <(SuggestedActivity, double)>[];
+  // Each kept activity with its tier (the order above; with
+  // [includeOngoing] alone, the learner's own sessions lead outright) and
+  // its score within the tier.
+  final scored = <(SuggestedActivity, int, double)>[];
   for (final suggestion in byActivity.values) {
     final signals = signalsFor(suggestion.activityId);
     // [includeOngoing]: the learner's own sessions stay in — continuing
     // what they started comes first (#9420).
     if (signals.state.isOngoing && !includeOngoing) continue;
-    if (signals.isCompleted && !signals.state.isLive) continue;
+    if (signals.isCompleted && !signals.state.isLive && !includeCompleted) {
+      continue;
+    }
+    final tier = includeOngoing && signals.state.isOngoing
+        ? 0
+        : !includeCompleted || signals.state.isLive
+        ? 1
+        : !(canStart?.call(suggestion.activity) ?? true)
+        ? 3
+        : signals.isCompleted
+        ? 2
+        : 1;
     final plan = suggestion.activity.plan;
     scored.add((
       suggestion,
+      tier,
       pinScore(
         band: missionGradient(suggestion.missionIds),
         s: signals,
@@ -91,17 +118,13 @@ List<SuggestedActivity> rankSuggestedActivities({
   // activityId tiebreaker: List.sort is unstable, so equal-score activities
   // would otherwise swap places between rebuilds and the row would reshuffle
   // itself while the learner looks at it (the map hit this as #8136).
-  // With [includeOngoing], the learner's own sessions lead outright, then
-  // the score decides.
-  int ongoingFirst(SuggestedActivity s) =>
-      includeOngoing && signalsFor(s.activityId).state.isOngoing ? 0 : 1;
   scored.sort((a, b) {
-    final byOngoing = ongoingFirst(a.$1).compareTo(ongoingFirst(b.$1));
-    if (byOngoing != 0) return byOngoing;
-    final byScore = b.$2.compareTo(a.$2);
+    final byTier = a.$2.compareTo(b.$2);
+    if (byTier != 0) return byTier;
+    final byScore = b.$3.compareTo(a.$3);
     return byScore != 0 ? byScore : a.$1.activityId.compareTo(b.$1.activityId);
   });
 
   final kept = cap == null ? scored : scored.take(cap);
-  return [for (final (suggestion, _) in kept) suggestion];
+  return [for (final (suggestion, _, _) in kept) suggestion];
 }

@@ -3528,7 +3528,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-16 16:32:53.135464",
+    "@@last_modified": "2026-10-22 09:50:06.743801",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10019,5 +10019,19 @@
     "activityCompleted": "Выканана",
     "completedTimes": "Выканана {count} разоў",
     "classLocation": "Месцазнаходжанне заняткаў",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Размова {xp}",
+    "xpIncludingGoals": "уключаючы {xp} з мэтаў",
+    "missionOtherLanguageNotice": "Гэтая місія з курса на {language}. Ваш прагрэс па ёй залічваецца толькі падчас вывучэння {language}.",
+    "missionLanguageMismatchDesc": "Гэтая місія з курса на {language}. Пераключыць мэтавую мову на {language}?",
+    "xpBySkillTitle": "Па навыках",
+    "missionNextActivity": "Наступнае заданне",
+    "missionContinueActivity": "Працягнуць заданне",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Завершана ў гэтым курсе ({num})",
+    "otherCoursesSessions": "Іншыя курсы ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, атрымана {xp} XP",
+    "currentMission": "Бягучая місія"
 }

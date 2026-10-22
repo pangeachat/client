@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-16 16:33:00.160896",
+    "@@last_modified": "2026-10-22 09:50:13.172225",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "પૂર્ણ થયું",
     "completedTimes": "{count} વાર પૂર્ણ થયું",
     "classLocation": "વર્ગનું સ્થાન",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "વાતચીત {xp}",
+    "xpIncludingGoals": "ધ્યેયોમાંથી {xp} સહિત",
+    "missionOtherLanguageNotice": "આ મિશન {language} માંના કોર્સનું છે. તમે {language} શીખી રહ્યા હોવ ત્યારે જ તમારી પ્રગતિ ગણવામાં આવશે.",
+    "missionLanguageMismatchDesc": "આ મિશન {language} માંના કોર્સનું છે. તમારી લક્ષ્ય ભાષા {language} પર બદલવી છે?",
+    "xpBySkillTitle": "કૌશલ્ય મુજબ",
+    "missionNextActivity": "આગળની પ્રવૃત્તિ",
+    "missionContinueActivity": "પ્રવૃત્તિ ચાલુ રાખો",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "આ કોર્સમાં પૂર્ણ થયું ({num})",
+    "otherCoursesSessions": "અન્ય કોર્સ ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP મેળવ્યા",
+    "currentMission": "વર્તમાન મિશન"
 }

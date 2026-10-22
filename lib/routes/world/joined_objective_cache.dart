@@ -100,12 +100,21 @@ class JoinedObjectiveCache {
   /// map ranks toward the viewed course's next Mission even before it's
   /// joined. Pure and cheap; the controller calls it where the inputs change
   /// (course join/leave, an XP update), not per frame.
+  ///
+  /// [inScope] keeps only the courses whose progress counts — the app passes
+  /// [CourseLanguageScope.courseInTargetLanguage], so a course in another
+  /// language resolves no progress at all rather than its goals without its XP
+  /// (#9559). Null resolves every outline.
   ProgressionResolution resolution(
     Map<String, int> xpByActivity, {
     Iterable<CourseLoOutline> extraOutlines = const [],
     Map<String, int> practiceXpByLemma = const {},
+    bool Function(String courseId)? inScope,
   }) => resolveProgression(
-    outlines: [..._outlines, ...extraOutlines],
+    outlines: [
+      for (final outline in [..._outlines, ...extraOutlines])
+        if (inScope?.call(outline.courseId) ?? true) outline,
+    ],
     xpByActivity: xpByActivity,
     practiceXpByLemma: practiceXpByLemma,
   );
