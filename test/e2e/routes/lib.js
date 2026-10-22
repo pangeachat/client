@@ -360,21 +360,39 @@ async function dumpLabels(p, tag) {
 async function ocr(p, tag) {
   const { spawnSync } = require('child_process');
   const f = path.join(evidenceDir(), `ocr-${p.name}-${tag}.png`);
-  await p.page.screenshot({ path: f }).catch(() => {});
-  if (!fs.existsSync(f)) return '';
+  fs.rmSync(f, { force: true });
+  try { await p.page.screenshot({ path: f }); } catch (e) { return null; }
+  if (!fs.existsSync(f)) return null;
   const r = spawnSync('tesseract', [f, '-', '--psm', '11'], { encoding: 'utf8' });
   const text = String(r.stdout || '');
   save(`ocr-${p.name}-${tag}.txt`, text);
-  return text;
+  // A failed or empty read is "could not look", never "nothing there".
+  return r.status === 0 && text.trim() ? text : null;
 }
 const norm = (t) => String(t).toLowerCase().replace(/[^a-z0-9: ]+/g, ' ').replace(/\s+/g, ' ');
-const ocrHas = (text, phrase) => norm(text).includes(norm(phrase).trim());
+const ocrHas = (text, phrase) => text != null && norm(text).includes(norm(phrase).trim());
+
+/// Where OCR found [word] on the last screenshot of [p] (tesseract TSV), or null.
+function ocrFind(p, tag, word) {
+  const { spawnSync } = require('child_process');
+  const f = path.join(evidenceDir(), `ocr-${p.name}-${tag}.png`);
+  if (!fs.existsSync(f)) return null;
+  const r = spawnSync('tesseract', [f, '-', '--psm', '11', 'tsv'], { encoding: 'utf8' });
+  for (const line of String(r.stdout || '').split('\n').slice(1)) {
+    const c = line.split('\t');
+    if (c.length >= 12 && c[11].trim().toLowerCase() === word.toLowerCase()) {
+      return { left: Number(c[6]), top: Number(c[7]), width: Number(c[8]), height: Number(c[9]) };
+    }
+  }
+  return null;
+}
 
 async function saveParticipant(p) {
-  save(`console-${p.name}.log`, (p.consoleLines || []).join('\n'));
-  save(`requests-${p.name}.json`, p.requests || []);
+  const tag = p.evTag ? `${p.name}-${p.evTag}` : p.name;
+  save(`console-${tag}.log`, (p.consoleLines || []).join('\n'));
+  save(`requests-${tag}.json`, p.requests || []);
   const media = await p.page.evaluate(() => window.__routesMedia || []).catch(() => null);
-  if (media) save(`media-${p.name}.json`, media);
+  if (media) save(`media-${tag}.json`, media);
   return media;
 }
 
@@ -385,7 +403,7 @@ async function saveParticipant(p) {
 async function placeAndAnswer(s, A, B, roomId, { video = false, answer = true } = {}) {
   const mark = await h.mark(A.token, roomId);
   const rang = await h.actUntil('place call',
-    async () => { await h.ensureRoom(A, A.roomLocalpart); await ui.clickControl(A.page, video ? 'videoCall' : 'call').catch(() => {}); },
+    async () => { await h.ensureRoom(A, A.roomLocalpart); await ui.clickControl(A.page, 'call').catch(() => {}); },
     async () => (await h.since(A.token, roomId, mark)).some((e) => e.type === mx.RING && e.sender === A.userId),
     { tries: 4, gap: 4000 });
   h.check(s, 'the call rang', rang, 'no ring event from the caller');
@@ -398,7 +416,24 @@ async function placeAndAnswer(s, A, B, roomId, { video = false, answer = true } 
     () => mx.hasMembership(B.token, roomId, B.userId));
   h.check(s, 'the callee answered (membership published)', joined, 'no callee membership');
   if (!joined) return null;
-  return { mark, ring, callKey, ringAt, answeredAt: Date.now() };
+  const answeredAt = Date.now();
+  // The chat header offers voice only (#8793); a video call is a call whose
+  // camera is turned on from the call panel, on both sides.
+  if (video) for (const p of [A, B]) await cameraOn(s, p);
+  return { mark, ring, callKey, ringAt, answeredAt };
+}
+
+async function cameraOn(s, p) {
+  const offLabels = L('callCameraOff');
+  let on = false;
+  for (let i = 0; i < 4 && !on; i++) {
+    await ui.clickPanel(p.page, 'camera').catch(() => {});
+    await wait(2500);
+    const l = await ui.labels(p.page).catch(() => []);
+    on = l.some((x) => offLabels.includes(x) || /camera off/i.test(x));
+  }
+  h.check(s, `${p.name} turned the camera on`, on, 'the panel never offered "turn camera off"');
+  return on;
 }
 
 async function hangUp(s, P, roomId) {
@@ -432,7 +467,9 @@ async function eventsSince(token, roomId, mark, types) {
     const r = await mx.messagesBack(token, roomId, { from, limit: 200 });
     const chunk = r.chunk || [];
     let hit = false;
-    for (const e of chunk.slice().reverse()) {
+    // A backwards page is newest-first: walk it in that order and stop AT the
+    // mark, so what is kept is everything newer than it.
+    for (const e of chunk) {
       if (e.event_id === mark) { hit = true; break; }
       if (!types || types.includes(e.type)) out.push(e);
     }
@@ -445,6 +482,7 @@ async function eventsSince(token, roomId, mark, types) {
 const spoken = (ev) => (Array.isArray(ev?.content?.segments) ? ev.content.segments : [])
   .map((x) => (x && typeof x.text === 'string' ? x.text : '')).join(' ');
 const wordSet = (t) => new Set(String(t).toLowerCase().split(/[^\p{L}\p{N}]+/u).filter((w) => w.length >= 4));
+const anyWords = (t) => String(t).split(/[^\p{L}\p{N}]+/u).filter(Boolean);
 const hitsOf = (t, words) => words.filter((w) => wordSet(t).has(w));
 
 /// Waits until the call's halves, recordings and merged recording settle, or
@@ -460,8 +498,22 @@ async function collect(token, roomId, callKey, { halves = 2, audio = 2, merged =
       merged: await related(token, roomId, callKey, MERGED),
       clock: await related(token, roomId, callKey, CLOCK).catch(() => []),
     };
-    if (got.transcripts.length >= halves && got.audio.length >= audio && got.merged.length >= merged) break;
     if (Date.now() > deadline) break;
+    if (got.transcripts.length >= halves && got.audio.length >= audio && got.merged.length >= merged) {
+      // One quiet re-read: a late recording, a second merged recording or a
+      // duplicate half lands after the minimum is in.
+      await wait(20000);
+      const again = {
+        transcripts: await related(token, roomId, callKey, TRANSCRIPT),
+        audio: await related(token, roomId, callKey, AUDIO),
+        merged: await related(token, roomId, callKey, MERGED),
+        clock: await related(token, roomId, callKey, CLOCK).catch(() => []),
+      };
+      const same = ['transcripts', 'audio', 'merged'].every((k) => again[k].length === got[k].length);
+      got = again;
+      if (same) break;
+      continue;
+    }
     await wait(8000);
   }
   return got;
@@ -492,8 +544,9 @@ async function probeMedia(token, mxc, tag) {
   if (probe.status !== 0 || !Number.isFinite(duration)) return { ok: false, bytes: buf.length, why: `does not decode: ${String(probe.stderr).slice(0, 200)}` };
   // ffmpeg prints volumedetect to STDERR.
   const vd = spawnSync('ffmpeg', ['-v', 'info', '-nostats', '-i', f, '-af', 'volumedetect', '-f', 'null', '-'], { encoding: 'utf8' });
-  const md = /mean_volume: (-?[\d.]+) dB/.exec(String(vd.stderr || ''));
-  const meanDb = md ? Number(md[1]) : null;
+  const md = /mean_volume: (-?(?:[\d.]+|inf)) dB/.exec(String(vd.stderr || ''));
+  const meanDb = md ? (md[1] === '-inf' ? -Infinity : Number(md[1])) : null;
+  if (vd.status !== 0 || meanDb == null) return { ok: false, bytes: buf.length, duration, why: `volume analysis failed (exit ${vd.status})` };
   return { ok: Number.isFinite(duration) && duration > 0, bytes: buf.length, duration, meanDb, file: f };
 }
 
@@ -539,10 +592,15 @@ async function creditsFor(token, userId, anchorIds, sinceTs) {
   let clusters = tss.length ? 1 : 0;
   for (let i = 1; i < tss.length; i++) if (tss[i] - tss[i - 1] > 2000) clusters++;
   const counts = {};
-  for (const u of uses) { const k = `${u.lemma}|${u.type}|${u.form}|${u.cat}|${u.ts}`; counts[k] = (counts[k] || 0) + 1; }
+  for (const u of uses) { const k = `${u.lemma}|${u.type}|${u.form}|${u.cat}|${u.useType}|${u.ts}`; counts[k] = (counts[k] || 0) + 1; }
   const keys = Object.values(counts);
   const doubled = keys.length > 5 && keys.every((c) => c % 2 === 0);
-  return { rooms: roomsSeen.length, uses: uses.length, events: [...new Set(uses.map((u) => u.event))].length, clusters, doubled,
+  // A resent analytics event: two events carrying the same list of uses.
+  const perEvent = {};
+  for (const u of uses) (perEvent[u.event] = perEvent[u.event] || []).push(`${u.lemma}|${u.type}|${u.form}|${u.cat}|${u.useType}|${u.ts}`);
+  const sigs = Object.values(perEvent).map((l) => l.sort().join(','));
+  const resentEvents = sigs.length - new Set(sigs).size;
+  return { rooms: roomsSeen.length, uses: uses.length, events: [...new Set(uses.map((u) => u.event))].length, clusters, doubled, resentEvents,
     clusterTimes: tss.length ? [new Date(tss[0]).toISOString(), new Date(tss[tss.length - 1]).toISOString()] : [], sample: uses.slice(0, 3) };
 }
 
@@ -573,8 +631,8 @@ async function checkCreditOnce(s, speakers, anchorIds, sinceTs, { waitS = 150 } 
         `no construct uses for this call reached ${p.name}'s analytics room within ${waitS}s (${c.rooms} analytics room(s) read)`);
       continue;
     }
-    h.check(s, `${p.name}'s speaking time is credited exactly once`, c.clusters === 1 && !c.doubled,
-      `${c.uses} uses in ${c.events} event(s) form ${c.clusters} separate credit(s)${c.doubled ? ' and every use appears an even number of times (sent twice)' : ''}; times ${c.clusterTimes.join(' .. ')}`);
+    h.check(s, `${p.name}'s speaking time is credited exactly once`, c.clusters === 1 && !c.doubled && c.resentEvents === 0,
+      `${c.uses} uses in ${c.events} event(s) form ${c.clusters} separate credit(s)${c.doubled ? ' and every use appears an even number of times (sent twice)' : ''}${c.resentEvents ? `; ${c.resentEvents} event(s) repeat another's uses exactly` : ''}; times ${c.clusterTimes.join(' .. ')}`);
   }
   return out;
 }
@@ -594,7 +652,15 @@ async function openNewestTranscript(p) {
     if (nodes.length) {
       const lowest = nodes.reduce((a, b) => (b.y > a.y ? b : a));
       await p.page.mouse.click(lowest.x, lowest.y);
-      return true;
+      // Proven open by its title (OCR: drawn on the canvas) or its turn
+      // controls, not by the click.
+      for (let j = 0; j < 4; j++) {
+        await wait(2500);
+        const l = await ui.labels(p.page).catch(() => []);
+        if (l.some((x) => /^Play from \d+:\d{2}$/.test(x))) return true;
+        if (ocrHas(await ocr(p, `open-check-${j}`), 'Call transcript')) return true;
+      }
+      return false;
     }
     await wait(3000);
   }
@@ -612,8 +678,7 @@ async function watchLoading(s, p, { seconds = 40 } = {}) {
   while (Date.now() < deadline) {
     await ui.enableSemantics(p.page).catch(() => {});
     const l = await ui.labels(p.page).catch(() => []);
-    let isLoading = anyLabel(l, 'callTranscriptTranscribing') || anyLabel(l, 'callTranscriptPreparingRecording')
-      || l.some((x) => /progress|loading/i.test(x));
+    let isLoading = anyLabel(l, 'callTranscriptTranscribing') || anyLabel(l, 'callTranscriptPreparingRecording');
     if (!isLoading) {
       const t = await ocr(p, `loading-${seen.length}`);
       isLoading = ocrHas(t, 'Still transcribing') || ocrHas(t, 'Preparing the full recording');
@@ -624,7 +689,7 @@ async function watchLoading(s, p, { seconds = 40 } = {}) {
   }
   save(`loading-${p.name}.json`, seen);
   h.check(s, `${p.name}: a loading indicator shows while the transcript is processing`, loading,
-    `no "Still transcribing" / "Preparing the full recording" / progress label in ${seconds}s on the transcript screen`);
+    `no "Still transcribing" / "Preparing the full recording" (labels or OCR) in ${seconds}s on the transcript screen, opened right after hangup`);
   await p.page.keyboard.press('Escape').catch(() => {});
   return loading;
 }
@@ -643,9 +708,23 @@ async function readTranscriptScreen(p, tag = 'final') {
     if (r) { await p.page.mouse.click(r.x, r.y); await wait(2500); break; }
   }
   const l = await dumpLabels(p, `transcript-${tag}`);
-  const text = `${before}\n${await ocr(p, `transcript-${tag}`)}`;
+  const after = await ocr(p, `transcript-${tag}`);
+  const text = before == null && after == null ? null : `${before || ''}\n${after || ''}`;
+  // Press the full call's play button and watch the page's media elements: the
+  // in-app player, not only the file, has to play.
+  let played = null;
+  const full = ocrFind(p, `transcript-${tag}`, 'Full') || ocrFind(p, `transcript-${tag}-collapsed`, 'Full');
+  if (full) {
+    const t0 = Date.now();
+    await p.page.mouse.click(full.left + 20, full.top + full.height + 22);
+    await wait(4000);
+    const media = await p.page.evaluate(() => window.__routesMedia || []).catch(() => null);
+    played = media == null ? null : media.some((m) => m.t >= t0 && m.kind === 'play');
+    await p.page.mouse.click(full.left + 20, full.top + full.height + 22).catch(() => {});
+    save(`full-call-play-${p.name}.json`, { at: full, played, media: (media || []).filter((m) => m.t >= t0) });
+  }
   await p.page.keyboard.press('Escape').catch(() => {});
-  return { opened, labels: l, text };
+  return { opened, labels: l, text, fullCallPlayed: played, fullCallFound: !!full };
 }
 
 // ----------------------------------------------------------------- criteria
@@ -661,11 +740,11 @@ function assertTranscriptCriteria(s, got, speakers, { anySubscribed, expectMerge
     const text = mine.map(spoken).join(' ');
     const hit = hitsOf(text, sp.words);
     if (anySubscribed) {
-      h.check(s, `${sp.p.name}'s turns are transcribed (their own words under their name)`, hit.length > 0,
+      h.check(s, `${sp.p.name}'s turns are transcribed (their own words under their name)`, hit.length >= 2,
         `expected one of ${sp.words.join('/')} in ${mine.length} half/halves for ${sp.p.name}; got: ${[...wordSet(text)].slice(0, 15).join(' ') || '(no words)'}`);
     } else {
-      h.check(s, `${sp.p.name}: nothing transcribed (nobody subscribed)`, wordSet(text).size === 0,
-        `${wordSet(text).size} words transcribed although nobody was subscribed`);
+      h.check(s, `${sp.p.name}: nothing transcribed (nobody subscribed)`, anyWords(text).length === 0,
+        `${anyWords(text).length} words transcribed although nobody was subscribed`);
     }
   }
   if (anySubscribed) {
@@ -701,33 +780,45 @@ async function assertPlays(s, token, merged, callSeconds) {
   const r = await probeMedia(token, url, 'merged');
   save('merged-probe.json', r);
   h.check(s, 'the full-call recording plays back (decodes, has sound, about the call length)',
-    r.ok && r.meanDb > -70 && r.duration >= 0.6 * callSeconds,
+    r.ok && Number.isFinite(r.meanDb) && r.meanDb > -60 && r.duration >= 0.8 * callSeconds && r.duration <= 1.25 * callSeconds + 5,
     `${JSON.stringify(r)} for a ~${callSeconds}s call`);
 }
 
 function assertScreens(s, screens, { subscribed, unsubscribed, anySubscribed }) {
-  for (const sc of subscribed) {
+  const looked = (sc) => Array.isArray(sc.labels) && sc.labels.length > 0 && !String(sc.labels[0]).startsWith('<unreadable');
+  for (const sc of [...subscribed, ...unsubscribed]) {
+    if (!sc.opened) { h.skipped(s, `${sc.name}'s transcript screen`, 'the transcript never opened, so nothing on it can be judged'); continue; }
     const l = sc.labels;
-    const t = sc.text || '';
+    const t = sc.text;
+    if (t == null) { h.skipped(s, `${sc.name}'s screen offers the full-call recording`, 'OCR could not read the screen'); continue; }
     const noRec = anyLabel(l, 'callTranscriptNoRecording') || ocrHas(t, 'No recording of the full call');
     h.check(s, `${sc.name}'s screen offers the full-call recording`, !noRec && (anyLabel(l, 'callTranscriptFullCall') || ocrHas(t, 'Full call')),
       noRec ? '"No recording of the full call." is shown' : `no "Full call" on the transcript screen (OCR: ${norm(t).slice(0, 160)})`);
+    if (sc.fullCallPlayed == null) h.skipped(s, `${sc.name}: the full-call recording plays in the app`, sc.fullCallFound ? 'media log unreadable' : 'no "Full call" player located to press');
+    else h.check(s, `${sc.name}: the full-call recording plays in the app`, sc.fullCallPlayed, 'pressing the full call\'s play started no media element');
+  }
+  for (const sc of subscribed) {
+    if (!sc.opened || sc.text == null || !looked(sc)) { h.skipped(s, `${sc.name}'s screen does not say a speaker said nothing or was lost`, 'screen not read'); continue; }
+    const l = sc.labels;
+    const t = sc.text;
     const said = anyLabel(l, 'callTranscriptSaidNothing') || anyLabel(l, 'callTranscriptAudioLost')
       || ocrHas(t, 'did not say anything') || ocrHas(t, 'recorded but lost');
     h.check(s, `${sc.name}'s screen does not say a speaker said nothing or was lost`, !said,
       'the screen says someone "did not say anything" or that what they said was lost');
   }
   for (const sc of unsubscribed) {
+    if (!sc.opened || !looked(sc)) { h.skipped(s, `${sc.name} (unsubscribed) sees the locked transcript`, 'screen not read'); continue; }
     const l = sc.labels;
-    h.check(s, `${sc.name} (unsubscribed) sees the locked transcript`, anyLabel(l, 'unlockCallTranscript') || anyLabel(l, 'callTranscriptSubscribeForTranscription') || ocrHas(sc.text || '', 'Unlock call transcript'),
+    h.check(s, `${sc.name} (unsubscribed) sees the locked transcript`, anyLabel(l, 'unlockCallTranscript') || anyLabel(l, 'callTranscriptSubscribeForTranscription') || ocrHas(sc.text, 'Unlock call transcript'),
       'no "Unlock call transcript" / subscribe placeholder');
     h.check(s, `${sc.name} (unsubscribed) is offered no Transcribe button`, !l.includes('Transcribe'), 'a Transcribe button is offered');
   }
   if (!anySubscribed) {
     for (const sc of unsubscribed) {
+      if (!sc.opened || (sc.text == null && !looked(sc))) { h.skipped(s, `${sc.name} sees "no transcript" text`, 'screen not read'); continue; }
       h.check(s, `${sc.name} sees "no transcript" text`, anyLabel(sc.labels, 'callTranscriptNotSubscribed') || anyLabel(sc.labels, 'callTranscriptNone')
-        || ocrHas(sc.text || '', 'did not have a subscription') || ocrHas(sc.text || '', 'No transcript'),
-        'neither "did not have a subscription", "No transcript from" nor the lock is on screen');
+        || ocrHas(sc.text, 'did not have a subscription') || ocrHas(sc.text, 'No transcript'),
+        `neither "did not have a subscription" nor "No transcript from" on screen (OCR: ${norm(sc.text || '').slice(0, 160)})`);
     }
   }
 }
@@ -769,9 +860,8 @@ async function finish(s, participants, extraInfo = {}) {
   console.log(`   STT: ${cost.calls} request(s), ${cost.seconds}s of audio, ~$${cost.usd} (${cost.services.join(',')})`);
   delete extraInfo.closed;
   extraInfo.stt = cost;
-  for (const p of participants) {
-    if (!p) continue;
-    await saveParticipant(p).catch(() => {});
+  for (const p of all) {
+    if (participants.includes(p)) await saveParticipant(p).catch(() => {});
     h.check(s, `${p.name} had no unhandled page errors`, p.errors.length === 0, JSON.stringify(p.errors.slice(0, 2)));
     h.check(s, `${p.name}'s recorder logged no capture failure`, (p.recorderWarnings || []).length === 0, JSON.stringify((p.recorderWarnings || []).slice(0, 2)));
   }
@@ -800,7 +890,7 @@ module.exports = {
   WORDS, fixture, rooms, fullRoomId, extra,
   refuseIfNotLocal, ensureSubscriptions, confirmSubscriptions, refuseIfLearning, waitNoLiveCall, setEntitlement,
   openP, setNetwork, save, dumpLabels, saveParticipant,
-  placeAndAnswer, hangUp, related, eventsSince, collect, summarise, spoken, wordSet, hitsOf,
+  placeAndAnswer, cameraOn, hangUp, related, eventsSince, collect, summarise, spoken, wordSet, hitsOf,
   probeMedia, creditsFor, checkCreditOnce, openNewestTranscript, watchLoading, readTranscriptScreen,
   assertTranscriptCriteria, assertPlays, assertScreens, repetition, clockOf, anyLabel, L,
   finish, fatal, ocr, ocrHas,

@@ -25,7 +25,7 @@ async function main() {
   opened.push(P);
   const LEARNER = L1.userId;
 
-  const call = await R.placeAndAnswer(s, P, null, roomId, { video: true, answer: false });
+  const call = await R.placeAndAnswer(s, P, null, roomId, { answer: false });
   if (!call) return R.finish(s, opened);
   let d1 = null;
   for (let i = 0; i < 15 && !d1; i++) {
@@ -37,12 +37,14 @@ async function main() {
   h.check(s, 'device one answered', !!d1, 'no learner membership');
   if (!d1) return R.finish(s, opened);
   const answeredAt = Date.now();
-  await wait(30000);
+  await R.cameraOn(s, P);
+  await R.cameraOn(s, L1);
+  await wait(25000);
 
   let d2 = null;
   for (let i = 0; i < 8 && !d2; i++) {
     await h.ensureRoom(L2, roomLp);
-    await ui.clickControl(L2.page, 'videoCall').catch(() => ui.clickControl(L2.page, 'call').catch(() => {}));
+    await ui.clickControl(L2.page, 'call').catch(() => {});
     for (let j = 0; j < 6 && !d2; j++) {
       await wait(2000);
       d2 = (await mx.liveMembershipDevices(L1.token, roomId, LEARNER)).find((d) => d !== d1) || null;

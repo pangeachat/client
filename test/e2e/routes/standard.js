@@ -75,6 +75,11 @@ async function runStandardCall(def) {
       // The app is killed while its recording is still to be uploaded, then
       // reopened with the network back.
       await wait(4000);
+      // The premise: the callee's recording has NOT landed yet. If it already
+      // has, this run did not test a kill during upload and says so.
+      const landed = (await R.related(A.token, roomId, call.callKey, R.AUDIO)).some((e) => e.sender === netTarget.userId);
+      if (landed) h.skipped(s, 'the app was killed while its recording was still to upload', 'the recording had already landed before the kill');
+      else console.log('   (premise holds: the callee recording has not landed at the kill)');
       console.log(`   (SIGKILL ${netTarget.name} during upload)`);
       await R.saveParticipant(netTarget);
       await h.kill(netTarget);
@@ -83,6 +88,7 @@ async function runStandardCall(def) {
       await wait(def.killForS ? def.killForS * 1000 : 10000);
       const re = await R.openP(netTarget.name, roomLp, netTarget.port, { wav: netTarget === A ? def.wavA : def.wavB });
       re.name = netTarget.name;
+      re.evTag = 'relaunched';
       opened.push(re);
       if (netTarget === B) Bnow = re;
       console.log(`   (${re.name} relaunched; network good)`);
@@ -119,8 +125,10 @@ async function runStandardCall(def) {
       const unsub = sub.A ? Bnow : A;
       const subd = sub.A ? A : Bnow;
       const produced = got.transcripts.find((e) => e.sender === subd.userId && e.content?.spoken_by === unsub.userId);
-      h.check(s, "the subscriber's device produced the unsubscribed person's half (spoken_by)", !!produced,
-        'no half from the subscriber with spoken_by = the unsubscribed person');
+      const unsubWords = unsub === A ? (def.wordsA || R.WORDS.learner) : (def.wordsB || R.WORDS.peer);
+      const producedHits = R.hitsOf(R.spoken(produced), unsubWords);
+      h.check(s, "the subscriber's device produced the unsubscribed person's half, with their words (spoken_by)", !!produced && producedHits.length >= 2,
+        produced ? `the produced half carries ${producedHits.length} of their words` : 'no half from the subscriber with spoken_by = the unsubscribed person');
     }
 
     if (def.l1Words) {
