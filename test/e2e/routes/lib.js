@@ -384,9 +384,14 @@ function ocrFind(p, tag, word) {
   const f = path.join(evidenceDir(), `ocr-${p.name}-${tag}.png`);
   if (!fs.existsSync(f)) return null;
   const r = spawnSync('tesseract', [f, '-', '--psm', '11', 'tsv'], { encoding: 'utf8' });
-  for (const line of String(r.stdout || '').split('\n').slice(1)) {
-    const c = line.split('\t');
-    if (c.length >= 12 && c[11].trim().toLowerCase() === word.toLowerCase()) {
+  // [word] may be two words ("Full call"): matched case-sensitively and in
+  // sequence, so "the full call" inside "No recording of the full call." is
+  // not taken for the player's heading.
+  const want = word.split(' ');
+  const rows = String(r.stdout || '').split('\n').slice(1).map((l) => l.split('\t')).filter((c) => c.length >= 12 && c[11].trim());
+  for (let i = 0; i + want.length <= rows.length; i++) {
+    if (want.every((w, j) => rows[i + j][11].trim() === w)) {
+      const c = rows[i];
       return { left: Number(c[6]), top: Number(c[7]), width: Number(c[8]), height: Number(c[9]) };
     }
   }
@@ -731,7 +736,8 @@ async function readTranscriptScreen(p, tag = 'final') {
   // Press the full call's play button and watch the page's media elements: the
   // in-app player, not only the file, has to play.
   let played = null;
-  const full = ocrFind(p, `transcript-${tag}`, 'Full') || ocrFind(p, `transcript-${tag}-collapsed`, 'Full');
+  const noRecShown = ocrHas(`${before || ''} ${after || ''}`, 'No recording of the full call');
+  const full = noRecShown ? null : (ocrFind(p, `transcript-${tag}`, 'Full call') || ocrFind(p, `transcript-${tag}-collapsed`, 'Full call'));
   if (full) {
     const t0 = Date.now();
     await p.page.mouse.click(full.left + 20, full.top + full.height + 22);
