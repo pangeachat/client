@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-16 16:32:55.967684",
+    "@@last_modified": "2026-10-22 09:50:08.052130",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "Cumpiitu",
     "completedTimes": "Cumpiitu {count} volte",
     "classLocation": "Locu di a classa",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Cunversazione {xp}",
+    "xpIncludingGoals": "cumpresi {xp} da i scopi",
+    "missionOtherLanguageNotice": "Sta Missione hè di un corsu in {language}. U vostru prugressu nantu à ella conta solu mentre amparate {language}.",
+    "missionLanguageMismatchDesc": "Sta Missione hè di un corsu in {language}. Cambià a vostra lingua di destinazione in {language}?",
+    "xpBySkillTitle": "Per cumpetenza",
+    "missionNextActivity": "Attività dopu",
+    "missionContinueActivity": "Cuntinuà l'attività",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Finitu in stu corsu ({num})",
+    "otherCoursesSessions": "Altri corsi ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP guadagnati",
+    "currentMission": "Missione attuale"
 }

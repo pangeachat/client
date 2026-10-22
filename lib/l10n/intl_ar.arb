@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-16 16:32:53.422258",
+    "@@last_modified": "2026-10-22 09:50:06.074157",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10308,5 +10308,19 @@
     "activityCompleted": "مكتمل",
     "completedTimes": "اكتمل {count} مرات",
     "classLocation": "موقع الصف",
-    "xpThresholdSuffix": "/ {threshold} نقطة خبرة"
+    "xpThresholdSuffix": "/ {threshold} نقطة خبرة",
+    "xpFromConversation": "محادثة {xp}",
+    "xpIncludingGoals": "بما في ذلك {xp} من الأهداف",
+    "missionOtherLanguageNotice": "هذه المهمة من دورة في {language}. لا يتم احتساب تقدمك فيها إلا أثناء تعلمك {language}.",
+    "missionLanguageMismatchDesc": "هذه المهمة من دورة في {language}. هل تريد تبديل لغتك المستهدفة إلى {language}؟",
+    "xpBySkillTitle": "حسب المهارة",
+    "missionNextActivity": "النشاط التالي",
+    "missionContinueActivity": "متابعة النشاط",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "اكتمل في هذه الدورة ({num})",
+    "otherCoursesSessions": "دورات أخرى ({num})",
+    "activityXpStamp": "{xp} نقطة خبرة",
+    "activityCompletedWithXp": "{completed}، تم ربح {xp} نقطة خبرة",
+    "currentMission": "المهمة الحالية"
 }

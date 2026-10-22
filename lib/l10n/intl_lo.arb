@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-16 16:33:04.898199",
+    "@@last_modified": "2026-10-22 09:50:19.086401",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "ສຳເລັດແລ້ວ",
     "completedTimes": "ສຳເລັດ {count} ຄັ້ງ",
     "classLocation": "ສະຖານທີ່ຮຽນ",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "ການສົນທະນາ {xp}",
+    "xpIncludingGoals": "ລວມທັງ {xp} ຈາກເປົ້າໝາຍ",
+    "missionOtherLanguageNotice": "ພາລະກິດນີ້ແມ່ນມາຈາກຫຼັກສູດໃນ {language}. ຄວາມຄືບໜ້າຂອງທ່ານຈະຖືກນັບສະເພາະໃນຂະນະທີ່ທ່ານກຳລັງຮຽນ {language} ເທົ່ານັ້ນ.",
+    "missionLanguageMismatchDesc": "ພາລະກິດນີ້ແມ່ນມາຈາກຫຼັກສູດໃນ {language}. ປ່ຽນພາສາເປົ້າໝາຍຂອງທ່ານເປັນ {language} ບໍ?",
+    "xpBySkillTitle": "ຕາມທັກສະ",
+    "missionNextActivity": "ກິດຈະກຳຕໍ່ໄປ",
+    "missionContinueActivity": "ສືບຕໍ່ກິດຈະກຳ",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "ສຳເລັດໃນຫຼັກສູດນີ້ ({num})",
+    "otherCoursesSessions": "ຫຼັກສູດອື່ນໆ ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, ໄດ້ຮັບ {xp} XP",
+    "currentMission": "ພາລະກິດປັດຈຸບັນ"
 }

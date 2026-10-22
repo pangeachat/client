@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-16 16:33:06.307640",
+    "@@last_modified": "2026-10-22 09:50:20.373329",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "പൂർത്തിയാക്കി",
     "completedTimes": "{count} തവണ പൂർത്തിയാക്കി",
     "classLocation": "ക്ലാസ് സ്ഥലം",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "സംഭാഷണം {xp}",
+    "xpIncludingGoals": "ലക്ഷ്യങ്ങളിൽ നിന്ന് {xp} ഉൾപ്പെടെ",
+    "missionOtherLanguageNotice": "ഈ ദൗത്യം {language} എന്ന കോഴ്‌സിൽ നിന്നുള്ളതാണ്. നിങ്ങൾ {language} പഠിക്കുമ്പോൾ മാത്രമേ ഇതിലെ നിങ്ങളുടെ പുരോഗതി കണക്കാക്കുകയുള്ളൂ.",
+    "missionLanguageMismatchDesc": "ഈ ദൗത്യം {language} എന്ന കോഴ്‌സിൽ നിന്നുള്ളതാണ്. നിങ്ങളുടെ ടാർഗെറ്റ് ഭാഷ {language} എന്നതിലേക്ക് മാറ്റണോ?",
+    "xpBySkillTitle": "നൈപുണ്യം അനുസരിച്ച്",
+    "missionNextActivity": "അടുത്ത പ്രവർത്തനം",
+    "missionContinueActivity": "പ്രവർത്തനം തുടരുക",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "ഈ കോഴ്‌സിൽ പൂർത്തിയാക്കി ({num})",
+    "otherCoursesSessions": "മറ്റ് കോഴ്‌സുകൾ ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP നേടി",
+    "currentMission": "നിലവിലെ ദൗത്യം"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-16 16:33:11.482189",
+    "@@last_modified": "2026-10-22 09:50:26.698253",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "Faʻamaeʻaina",
     "completedTimes": "Faʻamaeʻaina {count} taimi",
     "classLocation": "Nofoaga o le vasega",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Talanoaga {xp}",
+    "xpIncludingGoals": "e aofia ai le {xp} mai sini",
+    "missionOtherLanguageNotice": "O lenei Misiona e mai se kosi i le {language}. O lau alualu i luma i ai e naʻo le faitau aʻo e aʻoaʻoina le {language}.",
+    "missionLanguageMismatchDesc": "O lenei Misiona e mai se kosi i le {language}. Suia lau gagana autu i le {language}?",
+    "xpBySkillTitle": "E tusa ai ma le tomai",
+    "missionNextActivity": "Gaoioiga e sosoo ai",
+    "missionContinueActivity": "Faʻaauau le gaioiga",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Faʻamaeʻaina i lenei kosi ({num})",
+    "otherCoursesSessions": "Isi kosi ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP maua",
+    "currentMission": "Misiona o loʻo i ai nei"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-16 16:33:15.569490",
+    "@@last_modified": "2026-10-22 09:50:30.890560",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10005,5 +10005,19 @@
     "activityCompleted": "已完成",
     "completedTimes": "已完成 {count} 次",
     "classLocation": "上课地点",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "对话 {xp}",
+    "xpIncludingGoals": "包括来自目标的 {xp}",
+    "missionOtherLanguageNotice": "此任务来自 {language} 课程。只有在学习 {language} 时，您的进度才会计入其中。",
+    "missionLanguageMismatchDesc": "此任务来自 {language} 课程。要将您的目标语言切换到 {language} 吗？",
+    "xpBySkillTitle": "按技能",
+    "missionNextActivity": "下一个活动",
+    "missionContinueActivity": "继续活动",
+    "missionPlayTarget": "{action}：{activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "此课程已完成 ({num})",
+    "otherCoursesSessions": "其他课程 ({num})",
+    "activityXpStamp": "{xp} 经验值",
+    "activityCompletedWithXp": "{completed}，获得 {xp} 经验值",
+    "currentMission": "当前任务"
 }

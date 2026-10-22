@@ -103,13 +103,14 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      // The rings and check are drawn inside the stamp's white disc, never
+      // The rings and check are drawn inside the stamp's gold disc, never
       // past it, so the disc — not the map tile under it — is what they
       // composite on.
       expect(find.byType(CompletedStamp), findsOneWidget);
+      final stampTheme = Theme.of(tester.element(find.byType(CompletedStamp)));
       expectClears(
-        CompletedStamp.ink,
-        CompletedStamp.paper,
+        CompletedStamp.inkOf(stampTheme),
+        CompletedStamp.paperOf(stampTheme),
         '$name completed stamp',
       );
     });

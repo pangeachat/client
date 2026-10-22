@@ -6,14 +6,15 @@ import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dar
 import 'package:fluffychat/routes/world/world_map_card_dismiss_button.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
+import 'package:fluffychat/routes/world/world_map_selection.dart';
 
 /// A large map pin drawn as the activity's own card (under
 /// [kMapActivityCards]): the course plan's [ActivitySuggestionCard] with a
-/// squashed photo, its live state as the frame and corner tab, on a tail that
-/// points at the activity's location. When the learner has a saved session of
-/// it, the tail stops short of the point so the card stands on the completed
-/// stamp — which the map draws on its own layer at the point, so dismissing
-/// the card leaves the stamp where it was.
+/// squashed photo, its live state as the frame and the pill on its photo, on a
+/// tail that points at the activity's location. When the learner has
+/// finished it, the card wears the completed stamp with their XP on its
+/// photo, the same badge in the same place as on the course page's cards
+/// (#9559).
 ///
 /// Pointer-only, like the classic large card: the map is excluded from
 /// semantics, and its pins are reached by keyboard and screen reader through
@@ -23,10 +24,25 @@ class WorldMapActivityCard extends StatelessWidget {
   final QuestActivityCard card;
   final ActivityPinState state;
   final ActivityPlanModel? plan;
-  final int starsEarned;
   final List<String> participants;
   final int openSlots;
-  final bool standsOnStamp;
+
+  /// How many open sessions a joinable card offers, for its "Open (N)".
+  final int openSessions;
+
+  /// The learner has a saved session of this activity.
+  final bool played;
+
+  /// Their total XP from it, for the coin on a [played] card's photo.
+  final int xpEarned;
+
+  /// A coursemate pinged the course to fill its open session.
+  final bool pinged;
+
+  /// The course can't fill this activity's roles yet: the card dims to 50%,
+  /// like its mid pin — purely cosmetic, it still taps and opens the plan
+  /// (world-map.instructions.md, "Understaffed pins").
+  final bool understaffed;
   final bool isFocused;
   final VoidCallback onTap;
   final VoidCallback? onClose;
@@ -35,10 +51,13 @@ class WorldMapActivityCard extends StatelessWidget {
     required this.card,
     required this.state,
     required this.plan,
-    required this.starsEarned,
     required this.participants,
     required this.openSlots,
-    required this.standsOnStamp,
+    this.openSessions = 0,
+    required this.played,
+    this.xpEarned = 0,
+    this.pinged = false,
+    this.understaffed = false,
     required this.onTap,
     this.isFocused = false,
     this.onClose,
@@ -52,15 +71,23 @@ class WorldMapActivityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final tailColor = _live
+    // The pointer continues the card's frame (#9559): the live state's hue,
+    // else the not-started pin's colour a resting map card is outlined in —
+    // the same colour as the mid pin or dot it stands for.
+    final frameColor = _live
         ? state.bodyColor(context)
-        : theme.colorScheme.outlineVariant;
+        : ActivityPinState.available.bodyColor(context);
+    // Focused, the card takes the selected look it shares with the pins
+    // ([WorldMapSelection]): no outline — the frame and pointer darken
+    // slightly and the card glows in its frame's colour.
+    final tailColor = isFocused
+        ? WorldMapSelection.darken(frameColor)
+        : frameColor;
     final plan = this.plan;
     final title = plan?.title ?? card.title;
 
     final body = plan == null
-        ? _PlainCard(title: title)
+        ? _PlainCard(title: title, live: _live, selected: isFocused)
         : ActivitySuggestionCard(
             activity: plan,
             width: PinSize.mapCardWidth,
@@ -69,13 +96,18 @@ class WorldMapActivityCard extends StatelessWidget {
             fontSize: 12.0,
             fontSizeSmall: 9.0,
             iconSize: 9.0,
-            starsEarned: starsEarned,
             pinState: _live ? state : null,
+            openSessions: openSessions,
             participants: participants,
             openSlots: openSlots,
+            pinged: pinged && _live,
+            frameWhenResting: true,
+            selected: isFocused,
+            timesCompleted: played ? 1 : 0,
+            xpEarned: played ? xpEarned : 0,
           );
 
-    return Column(
+    final cardWithTail = Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Stack(
@@ -87,32 +119,25 @@ class WorldMapActivityCard extends StatelessWidget {
               hitTestBehavior: HitTestBehavior.deferToChild,
               child: GestureDetector(
                 onTap: onTap,
-                child: Material(
-                  color: Colors.transparent,
-                  elevation: 3.0,
-                  shadowColor: Colors.black54,
-                  borderRadius: BorderRadius.circular(PinSize.mapCardRadius),
-                  child: body,
-                ),
-              ),
-            ),
-            if (isFocused)
-              Positioned.fill(
-                child: IgnorePointer(
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                        PinSize.mapCardFocusRadius,
-                      ),
-                      border: Border.all(
-                        color: theme.colorScheme.primary,
-                        width: 2.0,
-                        strokeAlign: BorderSide.strokeAlignOutside,
-                      ),
-                    ),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(PinSize.mapCardRadius),
+                    boxShadow: isFocused
+                        ? WorldMapSelection.glow(frameColor)
+                        : null,
+                  ),
+                  child: Material(
+                    color: Colors.transparent,
+                    elevation: 3.0,
+                    shadowColor: Theme.of(
+                      context,
+                    ).colorScheme.shadow.withValues(alpha: 0.54),
+                    borderRadius: BorderRadius.circular(PinSize.mapCardRadius),
+                    child: body,
                   ),
                 ),
               ),
+            ),
             if (onClose case final onClose?)
               Positioned(
                 top: 4.0,
@@ -125,10 +150,11 @@ class WorldMapActivityCard extends StatelessWidget {
           size: const Size(16.0, PinSize.mapCardTail),
           painter: _TailPainter(color: tailColor),
         ),
-        if (standsOnStamp)
-          const SizedBox(height: PinSize.mapCardStampClearance),
       ],
     );
+    return understaffed
+        ? Opacity(opacity: 0.5, child: cardWithTail)
+        : cardWithTail;
   }
 }
 
@@ -136,7 +162,18 @@ class WorldMapActivityCard extends StatelessWidget {
 class _PlainCard extends StatelessWidget {
   final String title;
 
-  const _PlainCard({required this.title});
+  /// A resting card wears the not-started outline, as the card that
+  /// replaces it will.
+  final bool live;
+
+  /// Focused: the outline darkens, as the loaded card's frame does.
+  final bool selected;
+
+  const _PlainCard({
+    required this.title,
+    required this.live,
+    required this.selected,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -147,6 +184,16 @@ class _PlainCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: theme.colorScheme.surfaceContainer,
         borderRadius: BorderRadius.circular(PinSize.mapCardRadius),
+        border: live
+            ? null
+            : Border.all(
+                color: selected
+                    ? WorldMapSelection.darken(
+                        ActivityPinState.available.bodyColor(context),
+                      )
+                    : ActivityPinState.available.bodyColor(context),
+                width: 2.0,
+              ),
       ),
       padding: const EdgeInsets.all(8.0),
       alignment: Alignment.bottomLeft,

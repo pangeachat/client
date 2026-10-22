@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-16 16:32:59.350608",
+    "@@last_modified": "2026-10-22 09:50:14.113700",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "Hoʻopau ʻia",
     "completedTimes": "Hoʻopau ʻia {count} mau manawa",
     "classLocation": "Kahi papa",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Kūkākūkā {xp}",
+    "xpIncludingGoals": "me {xp} mai nā pahuhopu",
+    "missionOtherLanguageNotice": "No kahi papa ma ka ʻōlelo {language} kēia Mikiona. E helu ʻia kou holomua ma luna o ia mea ke aʻo wale ʻoe i ka ʻōlelo {language}.",
+    "missionLanguageMismatchDesc": "No kahi papa ma ka ʻōlelo {language} kēia Mikiona. E hoʻololi i kāu ʻōlelo i manaʻo ʻia i ka ʻōlelo {language}?",
+    "xpBySkillTitle": "Ma ka mākaukau",
+    "missionNextActivity": "Hana aʻe",
+    "missionContinueActivity": "Hoʻomau i ka hana",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Hoʻopau ʻia ma kēia papa ({num})",
+    "otherCoursesSessions": "Nā papa ʻē aʻe ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, loaʻa {xp} XP",
+    "currentMission": "Mikiona o kēia manawa"
 }

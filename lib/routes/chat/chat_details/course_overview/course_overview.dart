@@ -251,13 +251,6 @@ class _CourseOverviewState extends State<CourseOverview> {
                               shrinkWrap: true,
                               suggestedOnly: true,
                               missionId: group?.objective.id,
-                              hasCompletedActivity: (activityId) => widget
-                                  .controller
-                                  .roomSummariesModel
-                                  .hasCompletedActivity(
-                                    room.client.userID,
-                                    activityId,
-                                  ),
                               objectivesProvider: provider,
                             ),
                           ],

@@ -6,6 +6,8 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
+import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/room_summaries/activity_summary_status_enum.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
@@ -16,6 +18,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart'
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/session_last_active_label.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/session_presence_tracker.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/sparkle_xp_text.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivitySessionBottomContent extends StatelessWidget {
@@ -84,7 +87,11 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
                 ? controller.visibleCompletedSessions
                 : controller.activityStatuses.getSessionsByStatus(status);
 
-            if (roomSummaries.isEmpty) {
+            // The finished view also lists the learner's sessions from
+            // other courses, so it has something to show even when this
+            // course lists none.
+            if (roomSummaries.isEmpty &&
+                status != ActivitySummaryStatus.completed) {
               if (status != ActivitySummaryStatus.notStarted) {
                 return const SizedBox.shrink();
               }
@@ -106,12 +113,22 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
               );
             }
 
-            final section = _ActivitySummaryStatusSection(
-              status: status,
-              roomSummaries: roomSummaries,
-              pingedRoomId: pingedRoomId,
-              onTap: controller.joinActivityByRoomId,
-            );
+            final section = status == ActivitySummaryStatus.completed
+                ? ListenableBuilder(
+                    // The XP figures follow the learner's XP as it is read.
+                    listenable: MissionXpCache.instance,
+                    builder: (context, _) => _completedSection(
+                      context,
+                      roomSummaries: roomSummaries,
+                      pingedRoomId: pingedRoomId,
+                    ),
+                  )
+                : _ActivitySummaryStatusSection(
+                    status: status,
+                    roomSummaries: roomSummaries,
+                    pingedRoomId: pingedRoomId,
+                    onTap: controller.joinActivityByRoomId,
+                  );
 
             // Only the joinable (notStarted) section is a tutorial target, and
             // only when it has tiles — the target existing at all is what tells
@@ -129,11 +146,76 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
       ),
     );
   }
+
+  /// The learner's finished sessions of this activity (#9559): this course's
+  /// first, then their saved sessions of it from other courses — or none —
+  /// under "Other courses", so the list holds every session the total over
+  /// the image counts. Each shows what it paid them; a listed session that
+  /// paid them none (another learner's, for a course admin) shows no XP.
+  Widget _completedSection(
+    BuildContext context, {
+    required Map<String, RoomSummaryResponse> roomSummaries,
+    required String? pingedRoomId,
+  }) {
+    final l10n = L10n.of(context);
+    final client = Matrix.of(context).client;
+    final activityId = controller.widget.activityId;
+    final credited = MissionXpCache.instance.creditedXpByRoom;
+    final saved = {
+      for (final room
+          in client.savedSessionsByActivity[activityId] ?? const <Room>[])
+        room.id: room,
+    };
+    final others = controller.otherCompletedSessions;
+    final inCourse = controller.widget.course != null && others.isNotEmpty;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (roomSummaries.isNotEmpty)
+          _ActivitySummaryStatusSection(
+            status: ActivitySummaryStatus.completed,
+            title: inCourse
+                ? l10n.finishedInThisCourse(roomSummaries.length)
+                : null,
+            roomSummaries: roomSummaries,
+            pingedRoomId: pingedRoomId,
+            onTap: controller.joinActivityByRoomId,
+            sessionXpOf: (roomId) =>
+                _sessionXpOf(client, saved[roomId], credited),
+          ),
+        if (others.isNotEmpty)
+          _ActivitySummaryStatusSection(
+            status: ActivitySummaryStatus.completed,
+            title: l10n.otherCoursesSessions(others.length),
+            roomSummaries: others,
+            pingedRoomId: null,
+            onTap: controller.joinActivityByRoomId,
+            sessionXpOf: (roomId) =>
+                _sessionXpOf(client, saved[roomId], credited),
+          ),
+      ],
+    );
+  }
+
+  /// What [session] paid the learner — its credited XP plus its goals — or
+  /// null when it isn't one of their saved sessions.
+  static int? _sessionXpOf(
+    Client client,
+    Room? session,
+    Map<String, int> credited,
+  ) => session == null ? null : client.sessionXp(session, credited);
 }
 
 class _ActivitySummaryStatusSection extends StatefulWidget {
   final ActivitySummaryStatus status;
   final Map<String, RoomSummaryResponse> roomSummaries;
+
+  /// The section's title; null names it by [status] ("Finished (2)").
+  final String? title;
+
+  /// A finished session's XP for the learner, or null when it paid them
+  /// none they can see.
+  final int? Function(String roomId)? sessionXpOf;
 
   /// The session room a course ping pointed at, or null — its tile gets the
   /// bell badge.
@@ -146,6 +228,8 @@ class _ActivitySummaryStatusSection extends StatefulWidget {
     required this.roomSummaries,
     required this.pingedRoomId,
     required this.onTap,
+    this.title,
+    this.sessionXpOf,
   });
 
   @override
@@ -242,15 +326,27 @@ class _ActivitySummaryStatusSectionState
             children: [
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  widget.status.label(L10n.of(context), entries.length),
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                child: Row(
+                  spacing: 8.0,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        widget.title ??
+                            widget.status.label(
+                              L10n.of(context),
+                              entries.length,
+                            ),
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               for (final e in entries)
                 _ActivitySessionDetailsTile(
+                  xp: widget.sessionXpOf?.call(e.key),
                   roomSummary: e.value,
                   pinged: e.key == widget.pingedRoomId,
                   showLastActive: _isOpenList,
@@ -269,6 +365,9 @@ class _ActivitySummaryStatusSectionState
 class _ActivitySessionDetailsTile extends StatelessWidget {
   final RoomSummaryResponse roomSummary;
 
+  /// The learner's XP from this session, or null to show none (#9559).
+  final int? xp;
+
   /// This session is the one a course ping pointed at: badge its corner.
   final bool pinged;
 
@@ -283,6 +382,7 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
 
   const _ActivitySessionDetailsTile({
     required this.roomSummary,
+    this.xp,
     required this.pinged,
     required this.showLastActive,
     required this.lastActive,
@@ -364,36 +464,15 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                                 Row(
                                   spacing: 8.0,
                                   children: [
-                                    Container(
-                                      height: 20.0,
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 8.0,
+                                    // The learner's own XP from the session
+                                    // in the activity's XP look (#9559).
+                                    if (xp case final xp? when xp > 0)
+                                      SparkleXpText(
+                                        text: L10n.of(context).xpAmount(xp),
+                                        semanticsLabel: L10n.of(
+                                          context,
+                                        ).xpAmount(xp),
                                       ),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                          AppConfig.borderRadius,
-                                        ),
-                                        color: theme
-                                            .colorScheme
-                                            .secondaryContainer,
-                                      ),
-                                      child: Row(
-                                        spacing: 4.0,
-                                        children: [
-                                          Text(
-                                            "XP",
-                                            style: TextStyle(
-                                              fontSize: 12.0,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          Text(
-                                            "${analytics.totalXP}",
-                                            style: TextStyle(fontSize: 12.0),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
                                     Container(
                                       height: 20.0,
                                       padding: EdgeInsets.symmetric(

@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-16 16:33:05.244885",
+    "@@last_modified": "2026-10-22 09:50:20.472584",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "Kua oti",
     "completedTimes": "Kua oti {count} wā",
     "classLocation": "Wāhi akomanga",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Kōrerorero {xp}",
+    "xpIncludingGoals": "tae atu ki te {xp} mai i ngā whāinga",
+    "missionOtherLanguageNotice": "Nō tētahi akoranga i te reo {language} tēnei Mihana. Ka tatauria tō ahunga whakamua i runga i tēnei i a koe e ako ana i te reo {language} anake.",
+    "missionLanguageMismatchDesc": "Nō tētahi akoranga i te reo {language} tēnei Mihana. Me huri tō reo whāinga ki te reo {language}?",
+    "xpBySkillTitle": "Mā te pūkenga",
+    "missionNextActivity": "Mahi panuku",
+    "missionContinueActivity": "Haere tonu te mahi",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Kua oti i tēnei akoranga ({num})",
+    "otherCoursesSessions": "Ētahi atu akoranga ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP i whiwhi",
+    "currentMission": "Mihana o nāianei"
 }

@@ -18,6 +18,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
@@ -178,7 +179,8 @@ class _ActivityArchiveState extends State<ActivityArchive> {
   }
 }
 
-/// The page's list: one item per can-do across the learner's joined courses,
+/// The page's list: one item per can-do across the learner's joined courses
+/// in their current language,
 /// in course order — a Mission two courses share is one item, read from the
 /// first — each collapsed to its statement and XP with the saved sessions that
 /// fed it behind a tap; then the sessions no joined course's plan accounts
@@ -208,17 +210,22 @@ class _ObjectiveList extends StatelessWidget {
     final seen = <String>{};
     final children = <Widget>[];
     for (final course in courses) {
+      // Only courses in the learner's current language: their XP is kept
+      // per language, so another language's Missions have nothing to show
+      // here (#9559). Re-read on every resolution, which a language switch
+      // triggers.
+      if (!CourseLanguageScope.courseInTargetLanguage(course.room)) continue;
       final quest = progression.forCourse(course.room.id);
       for (final group in course.groups) {
         final missionId = group.objective.id;
         if (!seen.add(missionId)) continue;
+        // A session whose activity serves a Mission is that Mission's, not
+        // one of the "other activities" below.
         final ids = {for (final a in group.activities) a.activityId};
-        // A session is listed once, under the first Mission its activity
-        // serves — the add returns false for one already placed.
-        final sessions = [
+        placed.addAll([
           for (final room in archive)
-            if (ids.contains(room.activityId) && placed.add(room.id)) room,
-        ];
+            if (ids.contains(room.activityId)) room.id,
+        ]);
         children.add(
           MissionTile(
             group: group,
@@ -227,7 +234,7 @@ class _ObjectiveList extends StatelessWidget {
               group,
               byActivity: xpByActivity,
             ),
-            sessions: sessions,
+            courseId: course.room.id,
             selected: missionId == selectedMissionId,
           ),
         );

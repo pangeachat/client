@@ -39,22 +39,3 @@ class ActivitySessionSummariesModel extends RoomSummariesModel {
     ...previews,
   }, activityId: activityId);
 }
-
-class CourseInfoSummariesModel extends RoomSummariesModel {
-  final int? activitiesToCompleteOverride;
-  CourseInfoSummariesModel(
-    super._roomSummaries, {
-    this.activitiesToCompleteOverride,
-  });
-
-  Set<String> _completedActivities(String userID) => _roomSummaries.values
-      .where((e) => e.isCompleteByUserId(userID))
-      .map((e) => e.activityPlan?.activityId)
-      .whereType<String>()
-      .toSet();
-
-  /// False for a signed-out account (no user id), which is what a course
-  /// page still building through logout asks (#9019).
-  bool hasCompletedActivity(String? userID, String activityID) =>
-      userID != null && _completedActivities(userID).contains(activityID);
-}

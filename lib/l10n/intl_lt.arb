@@ -2956,7 +2956,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-16 16:33:05.410541",
+    "@@last_modified": "2026-10-22 09:50:19.036392",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10783,5 +10783,19 @@
     "activityCompleted": "Atlikta",
     "completedTimes": "Atlikta {count} kartus",
     "classLocation": "Pamokos vieta",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Pokalbis {xp}",
+    "xpIncludingGoals": "įskaitant {xp} iš tikslų",
+    "missionOtherLanguageNotice": "Ši misija yra iš {language} kurso. Jūsų pažanga bus skaičiuojama tik tada, kai mokysitės {language}.",
+    "missionLanguageMismatchDesc": "Ši misija yra iš {language} kurso. Perjungti tikslinę kalbą į {language}?",
+    "xpBySkillTitle": "Pagal įgūdžius",
+    "missionNextActivity": "Kita veikla",
+    "missionContinueActivity": "Tęsti veiklą",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Baigta šiame kurse ({num})",
+    "otherCoursesSessions": "Kiti kursai ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP uždirbta",
+    "currentMission": "Dabartinė misija"
 }

@@ -5,7 +5,6 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
-import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'get_test_client.dart';
@@ -98,11 +97,4 @@ void main() {
       expect(room.canInviteMembers, room.canInvite);
     },
   );
-
-  test('hasCompletedActivity is false without a user id', () {
-    expect(
-      CourseInfoSummariesModel({}).hasCompletedActivity(null, 'a1'),
-      isFalse,
-    );
-  });
 }

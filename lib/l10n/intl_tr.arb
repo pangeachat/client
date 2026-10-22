@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-16 16:33:14.310942",
+    "@@last_modified": "2026-10-22 09:50:28.936997",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10303,5 +10303,19 @@
     "activityCompleted": "Tamamlandı",
     "completedTimes": "{count} kez tamamlandı",
     "classLocation": "Sınıf konumu",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Sohbet {xp}",
+    "xpIncludingGoals": "hedeflerden gelen {xp} dahil",
+    "missionOtherLanguageNotice": "Bu Görev, {language} dilindeki bir kurstan. Bu görevdeki ilerlemeniz yalnızca {language} öğrenirken sayılır.",
+    "missionLanguageMismatchDesc": "Bu Görev, {language} dilindeki bir kurstan. Hedef dilinizi {language} olarak değiştireyim mi?",
+    "xpBySkillTitle": "Becerilere göre",
+    "missionNextActivity": "Sonraki etkinlik",
+    "missionContinueActivity": "Etkinliğe devam et",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Bu kursta tamamlandı ({num})",
+    "otherCoursesSessions": "Diğer kurslar ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP kazanıldı",
+    "currentMission": "Mevcut görev"
 }

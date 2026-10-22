@@ -1355,7 +1355,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-16 16:33:00.979844",
+    "@@last_modified": "2026-10-22 09:50:14.447026",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10938,5 +10938,19 @@
     "activityCompleted": "Completate",
     "completedTimes": "Completate {count} vices",
     "classLocation": "Loco del classe",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Conversation {xp}",
+    "xpIncludingGoals": "includente {xp} de objectivos",
+    "missionOtherLanguageNotice": "Iste mission es de un curso in {language}. Tu progresso in illo conta solmente durante que tu apprende {language}.",
+    "missionLanguageMismatchDesc": "Iste mission es de un curso in {language}. Cambiar tu lingua de apprender a {language}?",
+    "xpBySkillTitle": "Per habilitate",
+    "missionNextActivity": "Proxime activitate",
+    "missionContinueActivity": "Continuar activitate",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Finite in iste curso ({num})",
+    "otherCoursesSessions": "Altere cursos ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP ganiate",
+    "currentMission": "Mission actual"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-16 16:33:08.049275",
+    "@@last_modified": "2026-10-22 09:50:22.617865",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "Fullført",
     "completedTimes": "Fullført {count} ganger",
     "classLocation": "Klassested",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Samtale {xp}",
+    "xpIncludingGoals": "inkludert {xp} fra mål",
+    "missionOtherLanguageNotice": "Dette oppdraget er fra et kurs i {language}. Fremgangen din teller bare når du lærer {language}.",
+    "missionLanguageMismatchDesc": "Dette oppdraget er fra et kurs i {language}. Vil du bytte målspråk til {language}?",
+    "xpBySkillTitle": "Etter ferdighet",
+    "missionNextActivity": "Neste aktivitet",
+    "missionContinueActivity": "Fortsett aktivitet",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Fullført i dette kurset ({num})",
+    "otherCoursesSessions": "Andre kurs ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP opptjent",
+    "currentMission": "Gjeldende oppdrag"
 }

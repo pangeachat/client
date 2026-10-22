@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:32:57.123104",
+    "@@last_modified": "2026-10-22 09:50:09.092898",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10947,5 +10947,19 @@
     "activityCompleted": "Kompletigita",
     "completedTimes": "Kompletigita {count} fojojn",
     "classLocation": "Klasloko",
-    "xpThresholdSuffix": "/ {threshold} SPertoj"
+    "xpThresholdSuffix": "/ {threshold} SPertoj",
+    "xpFromConversation": "Konversacio {xp}",
+    "xpIncludingGoals": "inkluzive {xp} de celoj",
+    "missionOtherLanguageNotice": "Ĉi tiu Misio estas de kurso en {language}. Via progreso pri ĝi validas nur dum vi lernas {language}.",
+    "missionLanguageMismatchDesc": "Ĉi tiu Misio estas de kurso en {language}. Ĉu ŝanĝi vian cellingvon al {language}?",
+    "xpBySkillTitle": "Laŭ kapablo",
+    "missionNextActivity": "Sekva agado",
+    "missionContinueActivity": "Daŭrigi agadon",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Finita en ĉi tiu kurso ({num})",
+    "otherCoursesSessions": "Aliaj kursoj ({num})",
+    "activityXpStamp": "{xp} SPer",
+    "activityCompletedWithXp": "{completed}, {xp} SPer gajnitaj",
+    "currentMission": "Nuna misio"
 }

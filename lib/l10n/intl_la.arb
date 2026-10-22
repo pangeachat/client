@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-16 16:33:03.909892",
+    "@@last_modified": "2026-10-22 09:50:18.415452",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "Perfectum",
     "completedTimes": "Perfectum {count} temporibus",
     "classLocation": "Locus classis",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Colloquium {xp}",
+    "xpIncludingGoals": "includens {xp} ex propositis",
+    "missionOtherLanguageNotice": "Haec Missio ex cursu in {language} est. Progressus tuus in ea tantum valet dum {language} discis.",
+    "missionLanguageMismatchDesc": "Haec Missio ex cursu in {language} est. Mutare linguam tuam ad {language}?",
+    "xpBySkillTitle": "Per peritiam",
+    "missionNextActivity": "Proxima actio",
+    "missionContinueActivity": "Perge actionem",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Perfectum in hoc cursu ({num})",
+    "otherCoursesSessions": "Alii cursus ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP meruit",
+    "currentMission": "Missio praesens"
 }

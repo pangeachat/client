@@ -46,7 +46,7 @@ class ActivityCardGoal {
 /// Beyond the search/relevance fields, the bbox card carries cheap,
 /// **non-localized** structural metadata so the map can rank and show progress
 /// without a full-plan hydration: [roleIds]/[roleCount] (the multi-person
-/// deprioritize, #7435), thin [goals] (per-role progress), [mode], the
+/// deprioritize, #7435), thin [goals] (carried; not drawn), [mode], the
 /// [ratingAverage]/[ratingCount], and [originalL1]. The heavy, localized content
 /// (role personas, goal copy, vocab, media) stays off the pin.
 class QuestActivityCard {
@@ -130,31 +130,6 @@ class QuestActivityCard {
   LatLng? get point => (coordinates != null && coordinates!.length == 2)
       ? LatLng(coordinates![1], coordinates![0])
       : null;
-
-  /// Per-role goal counts from the thin [goals] (a goal shared across roles
-  /// counts once for each). Empty when the card carries no thin goals.
-  Map<String, int> get goalCountByRole {
-    final counts = <String, int>{};
-    for (final g in goals) {
-      for (final r in g.roleIds) {
-        counts[r] = (counts[r] ?? 0) + 1;
-      }
-    }
-    return counts;
-  }
-
-  /// The activity's display star total from the thin [goals] — no plan
-  /// hydration. Generation keeps per-role goal counts uniform; when they
-  /// disagree this falls back to the **min** across roles, mirroring
-  /// [ActivityPlanModel.earnableStars] (decided 2026-07-18 — supersedes the
-  /// "fallback to average/greatest" line in the Figma Pins-v6 annotation; see
-  /// world-map.instructions.md, "Goal Progress"). Null when the card carries
-  /// no thin goals (an older choreo) — callers fall back to the hydrated plan.
-  int? get thinStarsTotal {
-    final counts = goalCountByRole.values;
-    if (counts.isEmpty) return null;
-    return counts.reduce((a, b) => b < a ? b : a);
-  }
 
   factory QuestActivityCard.fromJson(Map<String, dynamic> json) {
     final plan =

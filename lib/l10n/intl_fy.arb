@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-16 16:32:57.909054",
+    "@@last_modified": "2026-10-22 09:50:11.143117",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "Foltôge",
     "completedTimes": "{count} kear foltôge",
     "classLocation": "Lokaasje fan de klasse",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Petear {xp}",
+    "xpIncludingGoals": "ynklusyf {xp} fan doelen",
+    "missionOtherLanguageNotice": "Dizze missy is fan in kursus yn it {language}. Jo foarútgong hjirfan telt allinich mei as jo {language} leare.",
+    "missionLanguageMismatchDesc": "Dizze missy is fan in kursus yn it {language}. Jo doeltaal feroarje nei {language}?",
+    "xpBySkillTitle": "Per feardigens",
+    "missionNextActivity": "Folgjende aktiviteit",
+    "missionContinueActivity": "Folgje aktiviteit",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Ferdige yn dizze kursus ({num})",
+    "otherCoursesSessions": "Oare kursussen ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP fertsjinne",
+    "currentMission": "Aktuele missy"
 }
