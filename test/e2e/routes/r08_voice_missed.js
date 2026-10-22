@@ -40,7 +40,8 @@ async function main() {
   h.check(s, 'the caller is no longer in a call', !(await mx.hasMembership(A.token, roomId, A.userId)), 'caller still holds a membership after the ring ran out');
   const after = await R.dumpLabels(B, 'after-ring');
   const answerNames = R.L('callAnswer');
-  h.check(s, 'the ring is gone from the callee after it ran out', !after.some((l) => /answer/i.test(l) || answerNames.includes(l)), 'answer control still on screen');
+  if (!after.length || String(after[0]).startsWith('<unreadable')) h.skipped(s, 'the ring is gone from the callee after it ran out', 'the callee screen could not be read');
+  else h.check(s, 'the ring is gone from the callee after it ran out', !after.some((l) => /answer/i.test(l) || answerNames.includes(l)), 'answer control still on screen');
   // The caller's device writes an EMPTY half (zero chunks) for a call that never
   // connected; whether it should is not settled by the design docs, so it is
   // recorded as evidence rather than judged. What must not exist is a

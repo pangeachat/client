@@ -87,7 +87,8 @@ async function main() {
   const still1 = liveNow.includes(d1);
   h.check(s, 'device one carries on in the call', still1, 'device one is no longer in the call');
   const after1 = await R.dumpLabels(L1, 'after-leave');
-  h.check(s, "device one's prompt withdrew", !R.anyLabel(after1, 'callDevicesTitle'), 'prompt still up on device one');
+  if (!after1.length || String(after1[0]).startsWith('<unreadable')) h.skipped(s, "device one's prompt withdrew", 'device one could not be read');
+  else h.check(s, "device one's prompt withdrew", !R.anyLabel(after1, 'callDevicesTitle'), 'prompt still up on device one');
   await wait(30000);
   const callSeconds = Math.round((Date.now() - answeredAt) / 1000);
   await R.hangUp(s, L1, roomId);
@@ -95,7 +96,10 @@ async function main() {
   await R.watchLoading(s, P, { doneAlready: async () => (await R.related(P.token, roomId, call.callKey, R.MERGED)).length >= 1 });
   const got = await R.collect(P.token, roomId, call.callKey, { halves: 2, audio: 2, merged: 1, settleS: 300 });
   R.save('events.json', { callKey: call.callKey, d1, d2, transcripts: got.transcripts.map(R.summarise), audio: got.audio.map(R.summarise), merged: got.merged.map(R.summarise) });
-  const fromD2 = [...got.audio, ...got.transcripts].filter((e) => e.sender === LEARNER && e.content?.device_id === d2);
+  const learnerEvents = [...got.audio, ...got.transcripts].filter((e) => e.sender === LEARNER && !e.content?.spoken_by);
+  h.check(s, "every learner recording and half names its device (so device two's silence is checkable)", learnerEvents.every((e) => typeof e.content?.device_id === 'string' && e.content.device_id),
+    `${learnerEvents.filter((e) => !e.content?.device_id).length} learner event(s) without device_id`);
+  const fromD2 = learnerEvents.filter((e) => e.content?.device_id === d2);
   h.check(s, 'the device that left writes no half and no recording', fromD2.length === 0, `${fromD2.length} event(s) from device two: ${fromD2.map((e) => e.type).join(',')}`);
   const merged = R.assertTranscriptCriteria(s, got, [{ p: L1, words: R.WORDS.learner }, { p: P, words: R.WORDS.peer }], { anySubscribed: true });
   await R.assertPlays(s, P.token, merged, callSeconds);

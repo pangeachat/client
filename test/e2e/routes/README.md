@@ -63,3 +63,14 @@ set per route by writing one `manual:routes:<user>` entitlement row in that
 LOCAL database and are confirmed through choreo's `/subscription/status`
 before the call. `run_all.sh` runs routes one at a time and kills every suite
 Chrome between them.
+
+## Known limits of the assertions (accepted, not hidden)
+
+- **Which call a transcript screen shows.** The newest card's transcript is
+  opened (the lowest link), and tied to this call by the full-call length shown
+  on its player. An older call of the same length whose card sits lower could
+  in principle stand in; the route also requires exactly one new card.
+- **Credit counted once.** Call construct uses carry no id on the wire, so a
+  double credit is detected as a second credit moment, every use doubled, or an
+  analytics event repeated exactly. A partial re-send of some uses inside
+  differently split events would not be seen.

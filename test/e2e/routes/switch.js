@@ -125,7 +125,11 @@ async function runSwitch({ id, moveAtS, talkAfterS = 40, sub = { L: true, P: tru
     h.check(s, "the learner's stretch BEFORE the switch is transcribed", pre.length >= 2, `${pre.length} of device one's words`);
     h.check(s, "the learner's stretch AFTER the switch is transcribed (#9173)", post.length >= 2, `${post.length} of device two's words`);
     const peerText = got.transcripts.filter((e) => (e.content?.spoken_by || e.sender) === P.userId).map(R.spoken).join(' ');
-    h.check(s, "the peer's turns are transcribed", R.hitsOf(peerText, R.WORDS.peer).length > 0, 'no peer words');
+    h.check(s, "the peer's turns are transcribed", R.hitsOf(peerText, R.WORDS.peer).length >= 2, 'fewer than two peer words');
+    const crossL = R.hitsOf(learnerText, R.WORDS.peer);
+    const crossP = R.hitsOf(peerText, [...R.WORDS.learner, ...R.WORDS.learner2]);
+    h.check(s, "neither person's half carries the other's words", crossL.length < 2 && crossP.length < 2,
+      `learner half has peer words ${crossL.join(',')}; peer half has learner words ${crossP.join(',')}`);
     const withWords = got.transcripts.filter((e) => R.spoken(e).trim());
     h.check(s, 'the transcript shows punctuation', withWords.length > 0 && withWords.every((e) => /[.?!,;]/.test(R.spoken(e))),
       `${withWords.filter((e) => !/[.?!,;]/.test(R.spoken(e))).length}/${withWords.length} halves without punctuation`);
