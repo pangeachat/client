@@ -461,8 +461,12 @@ async function placeAndAnswer(s, A, B, roomId, { video = false, answer = true } 
 async function cameraOn(s, p) {
   const offLabels = L('callCameraOff');
   let on = false;
-  for (let i = 0; i < 4 && !on; i++) {
-    await ui.clickPanel(p.page, 'camera').catch(() => {});
+  for (let i = 0; i < 6 && !on; i++) {
+    // By its label ONLY. ui.clickPanel falls back to a fixed position, and on
+    // a panel still animating in that position can be the hang-up button --
+    // one run ended its own call two seconds in that way.
+    const r = await ui.findRect(p.page, EN('callCameraOn'), { exact: true, reachable: true }).catch(() => null);
+    if (r) await p.page.mouse.click(r.x, r.y);
     await wait(2500);
     const l = await ui.labels(p.page).catch(() => []);
     on = l.some((x) => offLabels.includes(x) || /camera off/i.test(x));
