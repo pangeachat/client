@@ -56,10 +56,14 @@ async function main() {
   let prompt1 = false;
   let prompt2 = false;
   let left = null;
-  for (let i = 0; i < 12 && !left; i++) {
-    prompt1 = prompt1 || await R.sees(L1, 'callDevicesTitle', `prompt1-${i}`);
-    prompt2 = prompt2 || await R.sees(L2, 'callDevicesTitle', `prompt2-${i}`);
-    if (prompt2) left = await R.clickText(L2, 'callDevicesLeaveHere', `leave-${i}`);
+  // Both devices watched for a few seconds before choosing; a device's own
+  // prompt buttons are part of its prompt.
+  const buttons = [...R.L('callDevicesUseThis'), ...R.L('callDevicesLeaveHere')];
+  const hasButtons = async (p) => (await ui.labels(p.page).catch(() => [])).some((x) => buttons.includes(x));
+  for (let i = 0; i < 15 && !left; i++) {
+    prompt1 = prompt1 || await hasButtons(L1) || await R.sees(L1, 'callDevicesTitle', `prompt1-${i}`);
+    prompt2 = prompt2 || await hasButtons(L2) || await R.sees(L2, 'callDevicesTitle', `prompt2-${i}`);
+    if (prompt2 && (prompt1 || i >= 3)) left = await R.clickText(L2, 'callDevicesLeaveHere', `leave-${i}`);
     if (!left) await wait(1500);
   }
   await R.dumpLabels(L1, 'prompt');

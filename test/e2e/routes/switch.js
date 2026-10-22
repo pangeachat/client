@@ -71,11 +71,25 @@ async function runSwitch({ id, moveAtS, talkAfterS = 40, sub = { L: true, P: tru
     let clicked = null;
     let promptOnTwo = false;
     let promptOnOne = false;
-    for (let i = 0; i < 12 && !clicked; i++) {
-      promptOnTwo = promptOnTwo || await R.sees(L2, 'callDevicesTitle', `prompt2-${i}`);
-      promptOnOne = promptOnOne || await R.sees(L1, 'callDevicesTitle', `prompt1-${i}`);
-      clicked = await R.clickText(L2, 'callDevicesUseThis', `use-this-${i}`);
-      if (!clicked) await wait(1500);
+    // Watch BOTH devices for the prompt for a few seconds before choosing: the
+    // design shows it on both, and device one's copy may land a tick later.
+    // Device two's own "Use this device" button is part of its prompt.
+    const useThis = R.L('callDevicesUseThis');
+    for (let i = 0; i < 15 && !(promptOnTwo && promptOnOne); i++) {
+      const l2 = await ui.labels(L2.page).catch(() => []);
+      promptOnTwo = promptOnTwo || l2.some((x) => useThis.includes(x)) || await R.sees(L2, 'callDevicesTitle', `prompt2-${i}`);
+      promptOnOne = promptOnOne || await R.sees(L1, 'callDevicesTitle', `prompt1-${i}`)
+        || (await ui.labels(L1.page).catch(() => [])).some((x) => useThis.includes(x));
+      if (promptOnTwo && i >= 3) break;
+      await wait(1500);
+    }
+    if (promptOnTwo) clicked = await R.clickText(L2, 'callDevicesUseThis', 'use-this');
+    // Device one's "continuing on your other device" may be brief: watched
+    // from the press, every second, labels then OCR.
+    let elsewhere = false;
+    for (let i = 0; i < 10 && clicked && !elsewhere; i++) {
+      elsewhere = await R.sees(L1, 'callContinuingElsewhere', `elsewhere-${i}`);
+      if (!elsewhere) await wait(800);
     }
     await R.dumpLabels(L2, 'after-use-this');
     h.check(s, 'device two is told the call is open on two devices', promptOnTwo, 'no "This call is open on two of your devices." on device two (labels + OCR)');
@@ -91,10 +105,9 @@ async function runSwitch({ id, moveAtS, talkAfterS = 40, sub = { L: true, P: tru
       return R.finish(s, opened, { moveAtS, callKey: call.callKey, d1, d2, aborted: 'no Use this device' });
     }
     console.log(`   (pressed "Use this device" by ${clicked})`);
-    await wait(8000);
-    const on1 = await R.dumpLabels(L1, 'after-move');
-    h.check(s, 'device one says the call continues on the other device', R.anyLabel(on1, 'callContinuingElsewhere') || R.ocrHas(await R.ocr(L1, 'after-move'), R.EN('callContinuingElsewhere')),
-      'no "This call is continuing on your other device." on device one (labels + OCR)');
+    await R.dumpLabels(L1, 'after-move');
+    h.check(s, 'device one says the call continues on the other device', elsewhere,
+      'no "This call is continuing on your other device." on device one in the 10s after the press (labels + OCR)');
     const peerStill = await mx.liveMembershipDevices(P.token, roomId, P.userId);
     h.check(s, 'the call carried on after the move (the peer is still in it)', peerStill.length === 1, `${peerStill.length}`);
 
