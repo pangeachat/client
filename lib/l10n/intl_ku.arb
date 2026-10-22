@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-16 16:33:05.003406",
+    "@@last_modified": "2026-10-22 09:50:18.767570",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "تەواوکرا",
     "completedTimes": "{count} جار تەواوکرا",
     "classLocation": "شوێنی پۆل",
-    "xpThresholdSuffix": "/ {threshold} خاڵی ئەزموون"
+    "xpThresholdSuffix": "/ {threshold} خاڵی ئەزموون",
+    "xpFromConversation": "گفتوگۆ {xp}",
+    "xpIncludingGoals": "لەگەڵ {xp} لە ئامانجەکانەوە",
+    "missionOtherLanguageNotice": "ئەم ئەرکە لە خولێکی {language}ـەوەیە. پێشکەوتنەکەت تەنها کاتێک هەژمار دەکرێت کە خەریکی فێربوونی {language} بیت.",
+    "missionLanguageMismatchDesc": "ئەم ئەرکە لە خولێکی {language}ـەوەیە. زمانی ئامانجەکەت بگۆڕیت بۆ {language}؟",
+    "xpBySkillTitle": "بەپێی لێهاتوویی",
+    "missionNextActivity": "چالاکی داهاتوو",
+    "missionContinueActivity": "بەردەوامبوون لە چالاکی",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "لەم خولەدا تەواو بوو ({num})",
+    "otherCoursesSessions": "خولەکانی تر ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP بەدەستهات",
+    "currentMission": "ئەرکی ئێستا"
 }

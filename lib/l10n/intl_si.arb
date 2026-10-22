@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-16 16:33:11.809346",
+    "@@last_modified": "2026-10-22 09:50:25.504286",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "සම්පූර්ණයි",
     "completedTimes": "{count} වතාවක් සම්පූර්ණ කර ඇත",
     "classLocation": "පන්ති ස්ථානය",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "සංවාදය {xp}",
+    "xpIncludingGoals": "ඉලක්ක වලින් {xp} ඇතුළුව",
+    "missionOtherLanguageNotice": "මෙම මෙහෙයුම {language} පාඨමාලාවකින්. ඔබ {language} ඉගෙන ගන්නා අතරතුර පමණක් ඔබගේ ප්‍රගතිය ගණනය කෙරේ.",
+    "missionLanguageMismatchDesc": "මෙම මෙහෙයුම {language} පාඨමාලාවකින්. ඔබගේ ඉලක්ක භාෂාව {language} වෙත මාරු කරන්නද?",
+    "xpBySkillTitle": "නිපුණත්වය අනුව",
+    "missionNextActivity": "ඊළඟ ක්‍රියාකාරකම",
+    "missionContinueActivity": "ක්‍රියාකාරකම දිගටම කරගෙන යන්න",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "මෙම පාඨමාලාවේදී අවසන් කරන ලදී ({num})",
+    "otherCoursesSessions": "වෙනත් පාඨමාලා ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP උපයා ඇත",
+    "currentMission": "වත්මන් මෙහෙයුම"
 }

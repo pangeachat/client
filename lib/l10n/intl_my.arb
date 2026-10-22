@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-16 16:33:07.687635",
+    "@@last_modified": "2026-10-22 09:50:21.997212",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "ပြီးစီးခဲ့သည်",
     "completedTimes": "{count} ကြိမ် ပြီးစီးခဲ့သည်",
     "classLocation": "အတန်းတည်နေရာ",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "စကားပြော {xp}",
+    "xpIncludingGoals": "ပန်းတိုင်များမှ {xp} အပါအဝင်",
+    "missionOtherLanguageNotice": "ဤမစ်ရှင်သည် {language} ဘာသာစကားသင်တန်းမှဖြစ်သည်။ သင် {language} ကိုလေ့လာနေချိန်တွင်သာ သင့်တိုးတက်မှုသည် အကျုံးဝင်ပါသည်။",
+    "missionLanguageMismatchDesc": "ဤမစ်ရှင်သည် {language} ဘာသာစကားသင်တန်းမှဖြစ်သည်။ သင်၏ပစ်မှတ်ဘာသာစကားကို {language} သို့ ပြောင်းမလား။",
+    "xpBySkillTitle": "ကျွမ်းကျင်မှုအလိုက်",
+    "missionNextActivity": "နောက်ထပ်လုပ်ဆောင်စရာ",
+    "missionContinueActivity": "လုပ်ဆောင်စရာကို ဆက်လုပ်ရန်",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "ဤသင်တန်းတွင် ပြီးဆုံးသည် ({num})",
+    "otherCoursesSessions": "အခြားသင်တန်းများ ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP ရရှိခဲ့သည်",
+    "currentMission": "လက်ရှိမစ်ရှင်"
 }

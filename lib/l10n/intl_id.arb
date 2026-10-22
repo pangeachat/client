@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:00.988411",
+    "@@last_modified": "2026-10-22 09:50:14.418597",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10078,5 +10078,19 @@
     "activityCompleted": "Selesai",
     "completedTimes": "Selesai {count} kali",
     "classLocation": "Lokasi kelas",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Percakapan {xp}",
+    "xpIncludingGoals": "termasuk {xp} dari sasaran",
+    "missionOtherLanguageNotice": "Misi ini berasal dari kursus dalam bahasa {language}. Kemajuan Anda hanya dihitung saat Anda mempelajari bahasa {language}.",
+    "missionLanguageMismatchDesc": "Misi ini berasal dari kursus dalam bahasa {language}. Ganti bahasa target Anda ke bahasa {language}?",
+    "xpBySkillTitle": "Berdasarkan keahlian",
+    "missionNextActivity": "Aktivitas berikutnya",
+    "missionContinueActivity": "Lanjutkan aktivitas",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Selesai di kursus ini ({num})",
+    "otherCoursesSessions": "Kursus lain ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP diperoleh",
+    "currentMission": "Misi saat ini"
 }

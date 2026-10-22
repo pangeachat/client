@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-16 16:33:01.615392",
+    "@@last_modified": "2026-10-22 09:50:15.442277",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "Emechara",
     "completedTimes": "Emechara {count} ugboro",
     "classLocation": "Ebe klasị",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Nkata {xp}",
+    "xpIncludingGoals": "gụnyere {xp} site na ebumnuche",
+    "missionOtherLanguageNotice": "Ozi a sitere na nkuzi dị na {language}. Ọganihu gị na ya na-agụ naanị mgbe ị na-amụ {language}.",
+    "missionLanguageMismatchDesc": "Ozi a sitere na nkuzi dị na {language}. Gbanwee asụsụ ebumnuche gị gaa na {language}?",
+    "xpBySkillTitle": "Site na nka",
+    "missionNextActivity": "Ọrụ ọzọ",
+    "missionContinueActivity": "Gaa n'ihu na ọrụ",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Emechara na nkuzi a ({num})",
+    "otherCoursesSessions": "Nkuzi ndị ọzọ ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP enwetara",
+    "currentMission": "Ozi dị ugbu a"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-16 16:33:06.714973",
+    "@@last_modified": "2026-10-22 09:50:22.817229",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "লোইশিনখ্রে",
     "completedTimes": "{count} শরুক লোইশিনখ্রে",
     "classLocation": "ক্লাস লম",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "ꯋାରꯤꯁାꯟ {xp}",
+    "xpIncludingGoals": "goalশিংদগী {xp} য়াওনা",
+    "missionOtherLanguageNotice": "ꯁꯤꯡꯁꯤꯡ ꯑꯁꯤ {language}ꯒꯤ course ꯑꯃꯗꯒꯤ ꯂꯧꯕꯅꯤ. ꯅꯍꯥꯛꯅ {language} ꯇꯝꯕꯥ ꯃꯇꯃꯗ ꯈꯛꯇ ꯅꯍꯥꯛꯀꯤ ꯄꯨꯔꯣꯒ꯭ꯔꯦꯁ ꯑꯁꯤ ꯀꯥꯎꯟꯇ ꯑꯣꯏ.",
+    "missionLanguageMismatchDesc": "ꯁꯤꯡꯁꯤꯡ ꯑꯁꯤ {language}ꯒꯤ course ꯑꯃꯗꯒꯤ ꯂꯧꯕꯅꯤ. ꯅꯍꯥꯛꯀꯤ target language ꯑꯁꯤ {language} ꯗ ꯍꯣꯡꯗꯣꯀꯎ?",
+    "xpBySkillTitle": "ꯁꯤꯀꯤꯜ ꯑꯃꯥ ꯑꯃꯥꯒꯤ",
+    "missionNextActivity": "ꯃꯊꯪꯒꯤ ꯑꯦꯛꯇꯤꯚꯤꯇꯤ",
+    "missionContinueActivity": "ꯑꯦꯛꯇꯤꯚꯤꯇꯤ ꯆꯠꯊꯕꯥ",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "ꯁꯤꯡꯁꯤꯡ ꯑꯁꯤꯗ ꯂꯣꯏꯔꯕꯥ ({num})",
+    "otherCoursesSessions": "ꯑꯇꯣꯞꯄꯥ ꯀꯣꯔꯁꯁꯤꯡ ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP ꯐꯪꯈ꯭ꯔꯦ",
+    "currentMission": "ꯍꯧꯖꯤꯛꯀꯤ ꯃꯤꯁꯟ"
 }

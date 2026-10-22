@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-16 16:32:52.970940",
+    "@@last_modified": "2026-10-22 09:50:06.233666",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "Завършено",
     "completedTimes": "Завършени {count} пъти",
     "classLocation": "Местоположение на класа",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Разговор {xp}",
+    "xpIncludingGoals": "включително {xp} от цели",
+    "missionOtherLanguageNotice": "Тази мисия е от курс по {language}. Напредъкът ви по нея се зачита само докато учите {language}.",
+    "missionLanguageMismatchDesc": "Тази мисия е от курс по {language}. Искате ли да смените целевия си език на {language}?",
+    "xpBySkillTitle": "По умение",
+    "missionNextActivity": "Следваща дейност",
+    "missionContinueActivity": "Продължи дейността",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Завършени в този курс ({num})",
+    "otherCoursesSessions": "Други курсове ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, спечелени {xp} XP",
+    "currentMission": "Текуща мисия"
 }

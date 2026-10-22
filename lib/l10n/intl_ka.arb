@@ -1930,7 +1930,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-16 16:33:02.508666",
+    "@@last_modified": "2026-10-22 09:50:17.011323",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10902,5 +10902,19 @@
     "activityCompleted": "დასრულებულია",
     "completedTimes": "დასრულებულია {count} ჯერ",
     "classLocation": "კლასის მდებარეობა",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "საუბარი {xp}",
+    "xpIncludingGoals": "მათ შორის {xp} მიზნებიდან",
+    "missionOtherLanguageNotice": "ეს მისია {language} კურსიდანაა. მასზე თქვენი პროგრესი მხოლოდ მაშინ ჩაითვლება, თუ {language}-ს სწავლობთ.",
+    "missionLanguageMismatchDesc": "ეს მისია {language} კურსიდანაა. გსურთ, სამიზნე ენა {language}-ზე შეცვალოთ?",
+    "xpBySkillTitle": "უნარების მიხედვით",
+    "missionNextActivity": "შემდეგი აქტივობა",
+    "missionContinueActivity": "აქტივობის გაგრძელება",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "დასრულებულია ამ კურსში ({num})",
+    "otherCoursesSessions": "სხვა კურსები ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, მიღებულია {xp} XP",
+    "currentMission": "მიმდინარე მისია"
 }

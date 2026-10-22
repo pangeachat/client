@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-16 16:32:59.958620",
+    "@@last_modified": "2026-10-22 09:50:14.114972",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "Fini",
     "completedTimes": "Fini {count} fwa",
     "classLocation": "Kote klas la",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Konvèsasyon {xp}",
+    "xpIncludingGoals": "ki gen ladan {xp} nan objektif yo",
+    "missionOtherLanguageNotice": "Misyon sa a soti nan yon kou nan {language}. Pwogrè ou sou li konte sèlman pandan w ap aprann {language}.",
+    "missionLanguageMismatchDesc": "Misyon sa a soti nan yon kou nan {language}. Chanje lang sib ou a {language}?",
+    "xpBySkillTitle": "Pa konpetans",
+    "missionNextActivity": "Pwochen aktivite",
+    "missionContinueActivity": "Kontinye aktivite",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Fini nan kou sa a ({num})",
+    "otherCoursesSessions": "Lòt kou ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP touche",
+    "currentMission": "Misyon aktyèl"
 }

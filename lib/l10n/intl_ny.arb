@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-16 16:33:08.382100",
+    "@@last_modified": "2026-10-22 09:50:23.257383",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "Yamalizidwa",
     "completedTimes": "Yamalizidwa {count} nthawi",
     "classLocation": "Malo a kalasi",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Kukambirana {xp}",
+    "xpIncludingGoals": "kuphatikizapo {xp} kuchokera ku zolinga",
+    "missionOtherLanguageNotice": "Ntchito iyi ndi yochokera ku maphunziro a {language}. Kupita patsogolo kwanu kumangowerengedwa mukamaphunzira {language}.",
+    "missionLanguageMismatchDesc": "Ntchito iyi ndi yochokera ku maphunziro a {language}. Sinthani chilankhulo chanu chofuna kuphunzira kukhala {language}?",
+    "xpBySkillTitle": "Malinga ndi luso",
+    "missionNextActivity": "Ntchito yotsatira",
+    "missionContinueActivity": "Pitirizani ntchito",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Zamalizidwa mu maphunziro awa ({num})",
+    "otherCoursesSessions": "Maphunziro ena ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP yapezeka",
+    "currentMission": "Ntchito yapano"
 }

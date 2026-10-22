@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:32:57.179931",
+    "@@last_modified": "2026-10-22 09:50:09.977874",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10093,5 +10093,19 @@
     "activityCompleted": "تکمیل شد",
     "completedTimes": "{count} بار تکمیل شد",
     "classLocation": "مکان کلاس",
-    "xpThresholdSuffix": "/ {threshold} امتیاز"
+    "xpThresholdSuffix": "/ {threshold} امتیاز",
+    "xpFromConversation": "مکالمه {xp}",
+    "xpIncludingGoals": "شامل {xp} از اهداف",
+    "missionOtherLanguageNotice": "این مأموریت از یک دوره در {language} است. پیشرفت شما در آن فقط زمانی محاسبه می‌شود که در حال یادگیری {language} باشید.",
+    "missionLanguageMismatchDesc": "این مأموریت از یک دوره در {language} است. زبان هدف خود را به {language} تغییر دهید؟",
+    "xpBySkillTitle": "بر اساس مهارت",
+    "missionNextActivity": "فعالیت بعدی",
+    "missionContinueActivity": "ادامه فعالیت",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "در این دوره به پایان رسید ({num})",
+    "otherCoursesSessions": "دوره‌های دیگر ({num})",
+    "activityXpStamp": "{xp} امتیاز",
+    "activityCompletedWithXp": "{completed}, {xp} امتیاز کسب شد",
+    "currentMission": "مأموریت فعلی"
 }

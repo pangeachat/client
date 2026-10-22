@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:15.606803",
+    "@@last_modified": "2026-10-22 09:50:30.397031",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7312,5 +7312,19 @@
     "activityCompleted": "Đã hoàn thành",
     "completedTimes": "Đã hoàn thành {count} lần",
     "classLocation": "Địa điểm lớp học",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Trò chuyện {xp}",
+    "xpIncludingGoals": "bao gồm {xp} từ mục tiêu",
+    "missionOtherLanguageNotice": "Nhiệm vụ này thuộc khóa học {language}. Tiến độ của bạn chỉ được tính khi bạn đang học {language}.",
+    "missionLanguageMismatchDesc": "Nhiệm vụ này thuộc khóa học {language}. Chuyển ngôn ngữ mục tiêu của bạn sang {language}?",
+    "xpBySkillTitle": "Theo kỹ năng",
+    "missionNextActivity": "Hoạt động tiếp theo",
+    "missionContinueActivity": "Tiếp tục hoạt động",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Đã hoàn thành trong khóa học này ({num})",
+    "otherCoursesSessions": "Các khóa học khác ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, kiếm được {xp} XP",
+    "currentMission": "Nhiệm vụ hiện tại"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-16 16:33:17.042673",
+    "@@last_modified": "2026-10-22 09:50:31.563725",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "Pari",
     "completedTimes": "Pari nígbà {count}",
     "classLocation": "Ibi tí kíláàsì wà",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Ìjíròrò {xp}",
+    "xpIncludingGoals": "pẹ̀lú {xp} láti inú àwọn àfojúsùn",
+    "missionOtherLanguageNotice": "Iṣẹ́ Àyànfúnni yìí wá láti inú ẹ̀kọ́ kan ní èdè {language}. Ìtẹ̀síwájú rẹ lórí rẹ̀ kà nígbà tí o bá ń kọ́ èdè {language} nìkan.",
+    "missionLanguageMismatchDesc": "Iṣẹ́ Àyànfúnni yìí wá láti inú ẹ̀kọ́ kan ní èdè {language}. Ṣé o fẹ́ yí èdè àfojúsùn rẹ sí èdè {language}?",
+    "xpBySkillTitle": "Nípa ọgbọ́n",
+    "missionNextActivity": "Ìṣe tó kàn",
+    "missionContinueActivity": "Tẹ̀síwájú ìṣe",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Párí nínú ẹ̀kọ́ yìí ({num})",
+    "otherCoursesSessions": "Àwọn ẹ̀kọ́ mìíràn ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP ti gbà",
+    "currentMission": "Iṣẹ́ àyànfúnni lọ́wọ́lọ́wọ́"
 }

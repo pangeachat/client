@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-16 16:32:59.016142",
+    "@@last_modified": "2026-10-22 09:50:12.883561",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "An kammala",
     "completedTimes": "An kammala sau {count}",
     "classLocation": "Wurin aji",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Tattaunawa {xp}",
+    "xpIncludingGoals": "haɗe da {xp} daga manufofi",
+    "missionOtherLanguageNotice": "Wannan manufa ta fito ne daga kwas a cikin {language}. Ci gabanka a kai yana ƙidaya ne kawai yayin da kake koyon {language}.",
+    "missionLanguageMismatchDesc": "Wannan manufa ta fito ne daga kwas a cikin {language}. Canja yarenka zuwa {language}?",
+    "xpBySkillTitle": "Ta fasaha",
+    "missionNextActivity": "Aiki na gaba",
+    "missionContinueActivity": "Ci gaba da aiki",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "An gama a wannan kwas ({num})",
+    "otherCoursesSessions": "Sauran kwasa-kwasai ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, an sami {xp} XP",
+    "currentMission": "Manufa ta yanzu"
 }

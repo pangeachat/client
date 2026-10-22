@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-16 16:33:12.140005",
+    "@@last_modified": "2026-10-22 09:50:27.565896",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2467,5 +2467,19 @@
     "activityCompleted": "La dhammaystiray",
     "completedTimes": "La dhammaystiray {count} jeer",
     "classLocation": "Goobta fasalka",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Wadahadal {xp}",
+    "xpIncludingGoals": "oo ay ku jiraan {xp} oo yimid hadafyada",
+    "missionOtherLanguageNotice": "Hawlgalkani wuxuu ka yimid koorsada {language}. Horumarkaaga wuxuu kaliya tirinayaa inta aad baraneyso {language}.",
+    "missionLanguageMismatchDesc": "Hawlgalkani wuxuu ka yimid koorsada {language}. Ma u beddeshaa luqaddaada bartilmaameedka ah {language}?",
+    "xpBySkillTitle": "Xirfad ahaan",
+    "missionNextActivity": "Hawsha xigta",
+    "missionContinueActivity": "Sii wad hawsha",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Ku dhameeyay koorsadan ({num})",
+    "otherCoursesSessions": "Koorsada kale ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP ayaa la helay",
+    "currentMission": "Hawlgalka hadda jira"
 }

@@ -2552,7 +2552,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-16 16:33:09.043932",
+    "@@last_modified": "2026-10-22 09:50:24.817649",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10919,5 +10919,19 @@
     "activityCompleted": "Concluído",
     "completedTimes": "Concluído {count} vezes",
     "classLocation": "Local da aula",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Conversa {xp}",
+    "xpIncludingGoals": "incluindo {xp} de objetivos",
+    "missionOtherLanguageNotice": "Esta Missão é de um curso em {language}. O seu progresso só conta enquanto estiver a aprender {language}.",
+    "missionLanguageMismatchDesc": "Esta Missão é de um curso em {language}. Mudar a sua língua-alvo para {language}?",
+    "xpBySkillTitle": "Por competência",
+    "missionNextActivity": "Próxima atividade",
+    "missionContinueActivity": "Continuar atividade",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Concluído neste curso ({num})",
+    "otherCoursesSessions": "Outros cursos ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP ganhos",
+    "currentMission": "Missão atual"
 }
