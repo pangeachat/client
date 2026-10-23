@@ -143,6 +143,8 @@ Entering a course — from the rail, a map pin, or a Courses-list tile — sets
 `?c=` and opens the `course` panel. A course room is then an ordinary `room`
 token over the course-scoped map.
 
+**A course the learner is not in cannot be entered.** The course card and the context are for a course in the learner's room list. When a URL names a course that is not in that list once the list is complete (loaded from the store, and past the first sync on a fresh login) — a join-course notice's path or email link, a stale bookmark, a hand-edited id — the `course` token is replaced in place, as one history step so back does not land on it again, by that course's **preview** (`left=addcourse,addcoursepage:browse/<id>`, [course-preview.instructions.md](course-preview.instructions.md)) with the context cleared: the preview is where a learner joins a course they are not in, and a course the preview cannot load fails there, in the preview's own words. Until the list is complete the panel shows its loading state, with its close control. A course the learner has **left** is still in the list and keeps its no-longer-participating state (#8151): leaving was a decision, and the card must not quietly offer to undo it.
+
 **Context persists, and navigation never consumes it.** Opening, closing, and
 switching panels — closing the course card itself, tapping an activity pin,
 moving to Chats or Settings — all leave `?c=` untouched; closing panels is
