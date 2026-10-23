@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-23 13:25:44.160622",
+    "@@last_modified": "2026-10-23 14:59:23.381427",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "{number} ကြိမ်မြောက်",
     "videoWontPlayHere": "ဤဗီဒီယိုကို ဤနေရာတွင် ဖွင့်၍မရပါ။",
     "watchOnYoutube": "YouTube တွင် ကြည့်ရန်",
-    "createMyOwnCourse": "ကိုယ်ပိုင်သင်တန်းဖန်တီးမည်"
+    "createMyOwnCourse": "ကိုယ်ပိုင်သင်တန်းဖန်တီးမည်",
+    "openCourse": "သင်တန်းဖွင့်ပါ",
+    "centralCourseJoinedTitle": "{course} ကို သင်ဝင်ရောက်ပြီးပါပြီ",
+    "centralCourseJoinedBody": "၎င်းသည် {language} သင်ယူသူများအတွက် Pangea ၏ သင်တန်းဖြစ်သည်။ ၎င်း၏အဖွဲ့ဝင်များသည် သင့်အမည်နှင့် ပရိုဖိုင်ကို မြင်နိုင်ပါသည်။",
+    "centralCourseMembersSeeYou": "ဤသင်တန်းမှ အဖွဲ့ဝင်များသည် သင့်အမည်နှင့် ပရိုဖိုင်ကို မြင်နိုင်ပါသည်။"
 }

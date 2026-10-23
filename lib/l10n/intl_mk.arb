@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-23 13:25:42.706058",
+    "@@last_modified": "2026-10-23 14:59:21.947472",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Преземи {number}",
     "videoWontPlayHere": "Ова видео нема да се репродуцира овде.",
     "watchOnYoutube": "Гледајте на YouTube",
-    "createMyOwnCourse": "Креирај мој сопствен курс"
+    "createMyOwnCourse": "Креирај мој сопствен курс",
+    "openCourse": "Отвори курс",
+    "centralCourseJoinedTitle": "Се приклучивте на {course}",
+    "centralCourseJoinedBody": "Ова е курсот на Pangea за ученици по {language}. Неговите членови можат да го видат вашето име и профил.",
+    "centralCourseMembersSeeYou": "Членовите на овој курс можат да го видат вашето име и профил."
 }

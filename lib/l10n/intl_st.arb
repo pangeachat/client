@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-23 13:25:45.699621",
+    "@@last_modified": "2026-10-23 14:59:26.921397",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Nka {number}",
     "videoWontPlayHere": "Video ena e ke ke ea bapala mona.",
     "watchOnYoutube": "Shebella ho YouTube",
-    "createMyOwnCourse": "Etsa thupelo ya ka"
+    "createMyOwnCourse": "Etsa thupelo ya ka",
+    "openCourse": "Bula thupelo",
+    "centralCourseJoinedTitle": "O kene ho {course}",
+    "centralCourseJoinedBody": "Ke thupelo ea Pangea bakeng sa baithuti ba {language}. Litho tsa eona li ka bona lebitso la hau le profileng ea hau.",
+    "centralCourseMembersSeeYou": "Litho tsa thupelo ena li ka bona lebitso la hau le profileng ea hau."
 }

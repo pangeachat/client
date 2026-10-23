@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-23 13:25:38.521851",
+    "@@last_modified": "2026-10-23 14:59:15.519424",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8270,5 +8270,9 @@
     "readAloudTake": "Toma {number}",
     "videoWontPlayHere": "Este video no se puede reproducir aquí.",
     "watchOnYoutube": "Ver en YouTube",
-    "createMyOwnCourse": "Crear mi propio curso"
+    "createMyOwnCourse": "Crear mi propio curso",
+    "openCourse": "Abrir curso",
+    "centralCourseJoinedTitle": "Te has unido a {course}",
+    "centralCourseJoinedBody": "Es el curso de Pangea para estudiantes de {language}. Sus miembros pueden ver tu nombre y perfil.",
+    "centralCourseMembersSeeYou": "Los miembros de este curso pueden ver tu nombre y perfil."
 }

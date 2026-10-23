@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-23 13:25:38.430342",
+    "@@last_modified": "2026-10-23 14:59:15.723015",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Cymryd {number}",
     "videoWontPlayHere": "Ni fydd y fideo hwn yn chwarae yma.",
     "watchOnYoutube": "Gwylio ar YouTube",
-    "createMyOwnCourse": "Creu fy nghwrs fy hun"
+    "createMyOwnCourse": "Creu fy nghwrs fy hun",
+    "openCourse": "Agor cwrs",
+    "centralCourseJoinedTitle": "Rydych chi wedi ymuno â {course}",
+    "centralCourseJoinedBody": "Dyma gwrs Pangea ar gyfer dysgwyr {language}. Gall ei aelodau weld eich enw a'ch proffil.",
+    "centralCourseMembersSeeYou": "Gall aelodau'r cwrs hwn weld eich enw a'ch proffil."
 }

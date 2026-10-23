@@ -3515,7 +3515,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-10-23 13:25:42.463683",
+    "@@last_modified": "2026-10-23 14:59:21.706490",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10041,5 +10041,9 @@
     "readAloudTake": "Paņemiet {number}",
     "videoWontPlayHere": "Šo video šeit nevar atskaņot.",
     "watchOnYoutube": "Skatīties pakalpojumā YouTube",
-    "createMyOwnCourse": "Izveidot savu kursu"
+    "createMyOwnCourse": "Izveidot savu kursu",
+    "openCourse": "Atvērt kursu",
+    "centralCourseJoinedTitle": "Esat pievienojies kursam {course}",
+    "centralCourseJoinedBody": "Tas ir Pangea kurss valodu apguvējiem {language}. Tā dalībnieki var redzēt jūsu vārdu un profilu.",
+    "centralCourseMembersSeeYou": "Šī kursa dalībnieki var redzēt jūsu vārdu un profilu."
 }

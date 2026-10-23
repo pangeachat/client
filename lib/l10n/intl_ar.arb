@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-23 13:25:37.203282",
+    "@@last_modified": "2026-10-23 14:59:13.459232",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10344,5 +10344,9 @@
     "readAloudTake": "خذ {number}",
     "videoWontPlayHere": "لا يمكن تشغيل هذا الفيديو هنا.",
     "watchOnYoutube": "المشاهدة على يوتيوب",
-    "createMyOwnCourse": "إنشاء دورتي التدريبية الخاصة"
+    "createMyOwnCourse": "إنشاء دورتي التدريبية الخاصة",
+    "openCourse": "فتح الدورة",
+    "centralCourseJoinedTitle": "لقد انضممت إلى {course}",
+    "centralCourseJoinedBody": "إنها دورة بانجيا لمتعلمي {language}. يمكن لأعضائها رؤية اسمك وملفك الشخصي.",
+    "centralCourseMembersSeeYou": "يمكن لأعضاء هذه الدورة رؤية اسمك وملفك الشخصي."
 }

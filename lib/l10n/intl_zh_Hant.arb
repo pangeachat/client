@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:47.476336",
+    "@@last_modified": "2026-10-23 14:59:28.933075",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10147,5 +10147,9 @@
     "readAloudTake": "第 {number} 次錄音",
     "videoWontPlayHere": "此處無法播放此影片。",
     "watchOnYoutube": "在 YouTube 上觀看",
-    "createMyOwnCourse": "建立我的課程"
+    "createMyOwnCourse": "建立我的課程",
+    "openCourse": "開啟課程",
+    "centralCourseJoinedTitle": "您已加入 {course}",
+    "centralCourseJoinedBody": "這是 Pangea 專為 {language} 學習者開設的課程。課程成員可以看到您的姓名和個人資料。",
+    "centralCourseMembersSeeYou": "本課程的成員可以看到您的姓名和個人資料。"
 }

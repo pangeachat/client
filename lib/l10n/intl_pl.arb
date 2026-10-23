@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-23 13:25:44.189657",
+    "@@last_modified": "2026-10-23 14:59:24.247885",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10126,5 +10126,9 @@
     "readAloudTake": "Podejście {number}",
     "videoWontPlayHere": "Ten film nie będzie odtwarzany tutaj.",
     "watchOnYoutube": "Obejrzyj na YouTube",
-    "createMyOwnCourse": "Stwórz mój własny kurs"
+    "createMyOwnCourse": "Stwórz mój własny kurs",
+    "openCourse": "Otwórz kurs",
+    "centralCourseJoinedTitle": "Dołączyłeś do kursu {course}",
+    "centralCourseJoinedBody": "To kurs Pangea dla uczących się języka {language}. Członkowie kursu widzą Twoje imię i profil.",
+    "centralCourseMembersSeeYou": "Członkowie tego kursu widzą Twoje imię i profil."
 }

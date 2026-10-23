@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-23 13:25:42.789260",
+    "@@last_modified": "2026-10-23 14:59:22.929101",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "{number} дахь оролдлого",
     "videoWontPlayHere": "Энэ видео энд тоглогдохгүй.",
     "watchOnYoutube": "YouTube дээр үзэх",
-    "createMyOwnCourse": "Өөрийн сургалтыг үүсгэх"
+    "createMyOwnCourse": "Өөрийн сургалтыг үүсгэх",
+    "openCourse": "Хичээл нээх",
+    "centralCourseJoinedTitle": "Та {course} хичээлд нэгдлээ",
+    "centralCourseJoinedBody": "Энэ бол {language} хэл суралцагчдад зориулсан Пангеагийн хичээл юм. Гишүүд таны нэр, профайлыг харах боломжтой.",
+    "centralCourseMembersSeeYou": "Энэ хичээлийн гишүүд таны нэр, профайлыг харах боломжтой."
 }

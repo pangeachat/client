@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-23 13:25:41.283192",
+    "@@last_modified": "2026-10-23 14:59:20.466067",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "ಟೇಕ್ {number}",
     "videoWontPlayHere": "ಈ ವೀಡಿಯೊ ಇಲ್ಲಿ ಪ್ಲೇ ಆಗುವುದಿಲ್ಲ.",
     "watchOnYoutube": "YouTube ನಲ್ಲಿ ವೀಕ್ಷಿಸಿ",
-    "createMyOwnCourse": "ನನ್ನದೇ ಆದ ಕೋರ್ಸ್ ರಚಿಸಿ"
+    "createMyOwnCourse": "ನನ್ನದೇ ಆದ ಕೋರ್ಸ್ ರಚಿಸಿ",
+    "openCourse": "ಕೋರ್ಸ್ ತೆರೆಯಿರಿ",
+    "centralCourseJoinedTitle": "ನೀವು {course} ಸೇರಿಕೊಂಡಿದ್ದೀರಿ",
+    "centralCourseJoinedBody": "ಇದು {language} ಕಲಿಯುವವರಿಗಾಗಿ ಇರುವ ಪ್ಯಾಂಗಿಯಾದ ಕೋರ್ಸ್ ಆಗಿದೆ. ಇದರ ಸದಸ್ಯರು ನಿಮ್ಮ ಹೆಸರು ಮತ್ತು ಪ್ರೊಫೈಲ್ ಅನ್ನು ನೋಡಬಹುದು.",
+    "centralCourseMembersSeeYou": "ಈ ಕೋರ್ಸ್‌ನ ಸದಸ್ಯರು ನಿಮ್ಮ ಹೆಸರು ಮತ್ತು ಪ್ರೊಫೈಲ್ ಅನ್ನು ನೋಡಬಹುದು."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-23 13:25:41.233207",
+    "@@last_modified": "2026-10-23 14:59:20.406221",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "{number} алу",
     "videoWontPlayHere": "Бұл бейне ойнатылмайды.",
     "watchOnYoutube": "YouTube-тан қарау",
-    "createMyOwnCourse": "Өз курсымды жасау"
+    "createMyOwnCourse": "Өз курсымды жасау",
+    "openCourse": "Курсты ашу",
+    "centralCourseJoinedTitle": "Сіз {course} курсына қосылдыңыз",
+    "centralCourseJoinedBody": "Бұл Pangea-ның {language} үйренушілеріне арналған курсы. Оның мүшелері сіздің атыңызды және профиліңізді көре алады.",
+    "centralCourseMembersSeeYou": "Бұл курстың мүшелері сіздің атыңызды және профиліңізді көре алады."
 }

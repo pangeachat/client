@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-23 13:25:45.602121",
+    "@@last_modified": "2026-10-23 14:59:26.927549",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Chukua {number}",
     "videoWontPlayHere": "Video hii haitachezwa hapa.",
     "watchOnYoutube": "Tazama kwenye YouTube",
-    "createMyOwnCourse": "Unda kozi yangu mwenyewe"
+    "createMyOwnCourse": "Unda kozi yangu mwenyewe",
+    "openCourse": "Fungua kozi",
+    "centralCourseJoinedTitle": "Umejiunga na {course}",
+    "centralCourseJoinedBody": "Hii ni kozi ya Pangea kwa wanafunzi wa {language}. Wanachama wake wanaweza kuona jina na wasifu wako.",
+    "centralCourseMembersSeeYou": "Wanachama wa kozi hii wanaweza kuona jina na wasifu wako."
 }

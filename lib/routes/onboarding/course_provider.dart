@@ -1,6 +1,7 @@
 import 'package:async/async.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
+import 'package:fluffychat/features/central_courses/central_course_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
@@ -29,6 +30,9 @@ abstract class CourseProvider {
 
   Future<String> joinSpaceWithCode(String code);
 
+  /// The central course joined for [language], or null when none was joined.
+  Future<String?> joinCentralCourse(String language);
+
   /// The joined course's quest, or null when it cannot be resolved — a space
   /// pointing at a retired plan id, or a content service that didn't answer.
   /// The join still stands, so onboarding continues without the course's
@@ -43,6 +47,10 @@ abstract class CourseProvider {
 class ClientCourseProvider implements CourseProvider {
   final Client client;
   const ClientCourseProvider({required this.client});
+
+  @override
+  Future<String?> joinCentralCourse(String language) =>
+      client.joinCentralCourse(language);
 
   @override
   String? getCachedJoinCode() => SpaceCodeRepo.pendingJoinCode;
@@ -99,6 +107,14 @@ class ClientCourseProvider implements CourseProvider {
 }
 
 class MockCourseProvider implements CourseProvider {
+  final String? centralCourseRoomId;
+
+  MockCourseProvider({this.centralCourseRoomId});
+
+  @override
+  Future<String?> joinCentralCourse(String language) async =>
+      centralCourseRoomId;
+
   @override
   String? getCachedJoinCode() => null;
 

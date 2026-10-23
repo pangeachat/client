@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-23 13:25:44.740904",
+    "@@last_modified": "2026-10-23 14:59:25.550479",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "ورتو {number}",
     "videoWontPlayHere": "هي وڊيو هتي نه هلندي.",
     "watchOnYoutube": "يوٽيوب تي ڏسو",
-    "createMyOwnCourse": "منهنجو پنهنجو ڪورس ٺاهيو"
+    "createMyOwnCourse": "منهنجو پنهنجو ڪورس ٺاهيو",
+    "openCourse": "ڪورس کوليو",
+    "centralCourseJoinedTitle": "توهان {course} ۾ شامل ٿي ويا آهيو",
+    "centralCourseJoinedBody": "هي {language} سکندڙن لاءِ پينگيا جو ڪورس آهي. ان جا ميمبر توهان جو نالو ۽ پروفائيل ڏسي سگهن ٿا.",
+    "centralCourseMembersSeeYou": "هن ڪورس جا ميمبر توهان جو نالو ۽ پروفائيل ڏسي سگهن ٿا."
 }

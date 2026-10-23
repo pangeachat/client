@@ -2908,7 +2908,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-10-23 13:25:37.599895",
+    "@@last_modified": "2026-10-23 14:59:16.617454",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9649,5 +9649,9 @@
     "readAloudTake": "ལེན་ {number}",
     "videoWontPlayHere": "བརྙན་འདི་འདིར་འཁྲབ་མི་ཐུབ།",
     "watchOnYoutube": "YouTube ཐོག་ཏུ་ལྟ་བ།",
-    "createMyOwnCourse": "ངའི་སློབ་ཚན་བཟོ་བ།"
+    "createMyOwnCourse": "ངའི་སློབ་ཚན་བཟོ་བ།",
+    "openCourse": "སློབ་ཚན་ཁ་ཕྱེ།",
+    "centralCourseJoinedTitle": "ཁྱེད་ཀྱིས་{course}ནང་ཞུགས་ཚར།",
+    "centralCourseJoinedBody": "འདི་ནི་Pangeaཡི་{language}སློབ་གཉེར་བར་ཆེད་དུ་བཟོས་པའི་སློབ་ཚན་ཞིག་ཡིན། དེའི་ཁོངས་མི་ཚོས་ཁྱེད་ཀྱི་མིང་དང་མི་སྒེར་གྱི་ཆ་འཕྲིན་མཐོང་ཐུབ།",
+    "centralCourseMembersSeeYou": "སློབ་ཚན་འདིའི་ཁོངས་མི་ཚོས་ཁྱེད་ཀྱི་མིང་དང་མི་སྒེར་གྱི་ཆ་འཕྲིན་མཐོང་ཐུབ།"
 }

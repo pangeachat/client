@@ -201,6 +201,61 @@ void main() {
     },
   );
 
+  // A learner with no class code is joined to their language's central
+  // course after the level step and lands on it (#9591).
+  Future<OnboardingNavigationController> toLevelStep(
+    UserType type, {
+    String? centralCourseRoomId,
+  }) async {
+    final state = OnboardingNavigationController(
+      initialStep: getInitialOnboardingStep(
+        client,
+        centralCourseRoomId: centralCourseRoomId,
+      ),
+    );
+    await state.forward();
+    (state.step as UserTypeOnboardingStep).setUserType(type);
+    await state.forward();
+    state.skip();
+    (state.step as PickLanguageOnboardingStep)
+      ..selectBaseLanguage(
+        LanguageModel(langCode: "en", displayName: "English"),
+      )
+      ..selectTargetLanguage(
+        LanguageModel(langCode: "es", displayName: "Spanish"),
+      );
+    await state.forward();
+    (state.step as PickCefrLevelOnboardingStep).selectCefrLevel(
+      LanguageLevelTypeEnum.a1,
+    );
+    return state;
+  }
+
+  test("A learner without a code joins the central course (#9591)", () async {
+    const central = '!central:staging.pangea.chat';
+    final state = await toLevelStep(
+      UserType.student,
+      centralCourseRoomId: central,
+    );
+
+    expect(await state.forward(), isA<SuccessNavigationResult>());
+    expect(state.step, isA<JoinedCourseOnboardingStep>());
+    expect(state.step.joinedCourseSpaceId, central);
+    expect(state.step.state.joinedCentralCourse, isTrue);
+    expect(await state.forward(), isA<ReachedEndNavigationResult>());
+  });
+
+  test("A teacher without a code is not joined (#9591)", () async {
+    final state = await toLevelStep(
+      UserType.teacher,
+      centralCourseRoomId: '!central:staging.pangea.chat',
+    );
+
+    expect(await state.forward(), isA<SuccessNavigationResult>());
+    expect(state.step, isA<CustomCourseOnboardingStep>());
+    expect(state.step.joinedCourseSpaceId, isNull);
+  });
+
   test("Switching role clears a stale CEFR selection (#7583)", () {
     final state = getInitialOnboardingStep(client).state;
 

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-23 13:25:44.860061",
+    "@@last_modified": "2026-10-23 14:59:25.052017",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10983,5 +10983,9 @@
     "readAloudTake": "Zobrať {number}",
     "videoWontPlayHere": "Toto video sa tu neprehrá.",
     "watchOnYoutube": "Pozrieť na YouTube",
-    "createMyOwnCourse": "Vytvoriť si vlastný kurz"
+    "createMyOwnCourse": "Vytvoriť si vlastný kurz",
+    "openCourse": "Otvoriť kurz",
+    "centralCourseJoinedTitle": "Pripojili ste sa ku kurzu {course}",
+    "centralCourseJoinedBody": "Je to kurz Pangea pre študentov jazyka {language}. Jeho členovia môžu vidieť vaše meno a profil.",
+    "centralCourseMembersSeeYou": "Členovia tohto kurzu môžu vidieť vaše meno a profil."
 }

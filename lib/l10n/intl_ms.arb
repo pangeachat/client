@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-23 13:25:43.110855",
+    "@@last_modified": "2026-10-23 14:59:22.626872",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Ambil {number}",
     "videoWontPlayHere": "Video ini tidak akan dimainkan di sini.",
     "watchOnYoutube": "Tonton di YouTube",
-    "createMyOwnCourse": "Cipta kursus saya sendiri"
+    "createMyOwnCourse": "Cipta kursus saya sendiri",
+    "openCourse": "Buka kursus",
+    "centralCourseJoinedTitle": "Anda telah menyertai {course}",
+    "centralCourseJoinedBody": "Ini ialah kursus Pangea untuk pelajar {language}. Ahli-ahlinya boleh melihat nama dan profil anda.",
+    "centralCourseMembersSeeYou": "Ahli kursus ini boleh melihat nama dan profil anda."
 }

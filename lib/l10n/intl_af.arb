@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-23 13:25:37.105015",
+    "@@last_modified": "2026-10-23 14:59:13.630616",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Neem {number}",
     "videoWontPlayHere": "Hierdie video sal nie hier speel nie.",
     "watchOnYoutube": "Kyk op YouTube",
-    "createMyOwnCourse": "Skep my eie kursus"
+    "createMyOwnCourse": "Skep my eie kursus",
+    "openCourse": "Maak kursus oop",
+    "centralCourseJoinedTitle": "Jy het by {course} aangesluit",
+    "centralCourseJoinedBody": "Dit is Pangea se kursus vir {language}-leerders. Die lede daarvan kan jou naam en profiel sien.",
+    "centralCourseMembersSeeYou": "Lede van hierdie kursus kan jou naam en profiel sien."
 }

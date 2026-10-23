@@ -180,13 +180,17 @@ void main() {
     updatedAt: DateTime.utc(2026, 1, 1),
   );
 
-  Future<void> pumpPage(WidgetTester tester, {CoursePlanModel? course}) async {
+  Future<void> pumpPage(
+    WidgetTester tester, {
+    CoursePlanModel? course,
+    bool central = false,
+  }) async {
     final state = OnboardingStateController(
       accountUpdater: MockAccountUpdater(),
       courseProvider: MockCourseProvider(),
       avatarProvider: MockAvatarProvider(),
       trialInfoProvider: MockTrialInfoProvider(),
-    )..setJoinedRoomId(spaceId);
+    )..setJoinedRoomId(spaceId, central: central);
     if (course != null) state.setJoinedCoursePlan(course);
 
     await tester.pumpWidget(
@@ -236,5 +240,27 @@ void main() {
     expect(find.text('DE'), findsOneWidget);
     expect(find.text('3 activities'), findsOneWidget);
     expect(find.textContaining('module'), findsNothing);
+  });
+
+  // A central course puts the learner in front of strangers, so the page
+  // says so (#9591); a class the learner chose to join does not need it.
+  testWidgets('a central-course join says members can see the learner', (
+    tester,
+  ) async {
+    seedOutline();
+    await pumpPage(tester, course: quest(), central: true);
+    expect(
+      find.text('Members of this course can see your name and profile.'),
+      findsOneWidget,
+    );
+  });
+
+  testWidgets('a class-code join does not', (tester) async {
+    seedOutline();
+    await pumpPage(tester, course: quest());
+    expect(
+      find.text('Members of this course can see your name and profile.'),
+      findsNothing,
+    );
   });
 }

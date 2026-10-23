@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-23 13:25:42.371081",
+    "@@last_modified": "2026-10-23 14:59:20.961078",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Huelt {number}",
     "videoWontPlayHere": "Dëse Video spillt hei net.",
     "watchOnYoutube": "Op YouTube kucken",
-    "createMyOwnCourse": "Mäin eegene Cours erstellen"
+    "createMyOwnCourse": "Mäin eegene Cours erstellen",
+    "openCourse": "Cours opmaachen",
+    "centralCourseJoinedTitle": "Dir sidd dem Cours „{course}“ bäigetrueden",
+    "centralCourseJoinedBody": "Et ass de Pangea-Cours fir {language}-Léierpersonal. D'Membere kënnen Ären Numm an Äre Profil gesinn.",
+    "centralCourseMembersSeeYou": "D'Membere vun dësem Cours kënnen Ären Numm an Äre Profil gesinn."
 }

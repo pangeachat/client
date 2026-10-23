@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-23 13:25:42.208852",
+    "@@last_modified": "2026-10-23 14:59:21.414599",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "وەرگرتنی {number}",
     "videoWontPlayHere": "ئەم ڤیدیۆیە لێرە کارناکات.",
     "watchOnYoutube": "لە یوتیوب سەیری بکە",
-    "createMyOwnCourse": "خولی تایبەت بە خۆم دروست بکە"
+    "createMyOwnCourse": "خولی تایبەت بە خۆم دروست بکە",
+    "openCourse": "کردنەوەی خول",
+    "centralCourseJoinedTitle": "تۆ بەشداریی {course}ت کرد",
+    "centralCourseJoinedBody": "ئەمە خولی پانگایە بۆ فێرخوازانی {language}. ئەندامەکانی دەتوانن ناوی تۆ و پڕۆفایلەکەت ببینن.",
+    "centralCourseMembersSeeYou": "ئەندامانی ئەم خولە دەتوانن ناوی تۆ و پڕۆفایلەکەت ببینن."
 }

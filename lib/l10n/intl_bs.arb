@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-23 13:25:37.231574",
+    "@@last_modified": "2026-10-23 14:59:13.408183",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Uzmite {number}",
     "videoWontPlayHere": "Ovaj videozapis se ne može reproducirati ovdje.",
     "watchOnYoutube": "Gledajte na YouTubeu",
-    "createMyOwnCourse": "Kreiraj moj kurs"
+    "createMyOwnCourse": "Kreiraj moj kurs",
+    "openCourse": "Otvori kurs",
+    "centralCourseJoinedTitle": "Pridružili ste se kursu {course}",
+    "centralCourseJoinedBody": "Ovo je Pangea kurs za učenike {language} jezika. Njegovi članovi mogu vidjeti vaše ime i profil.",
+    "centralCourseMembersSeeYou": "Članovi ovog kursa mogu vidjeti vaše ime i profil."
 }

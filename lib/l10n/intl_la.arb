@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-23 13:25:42.130384",
+    "@@last_modified": "2026-10-23 14:59:20.859612",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Sume {number}",
     "videoWontPlayHere": "Hic video non ludet.",
     "watchOnYoutube": "Specta in YouTube",
-    "createMyOwnCourse": "Curriculum meum crea"
+    "createMyOwnCourse": "Curriculum meum crea",
+    "openCourse": "Aperire cursum",
+    "centralCourseJoinedTitle": "Curriculum {course} coniunxisti",
+    "centralCourseJoinedBody": "Hic est cursus Pangeae pro discentibus {language}. Sodales eius nomen et imaginem tuam videre possunt.",
+    "centralCourseMembersSeeYou": "Sodales huius cursus nomen et imaginem tuam videre possunt."
 }

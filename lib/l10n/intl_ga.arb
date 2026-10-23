@@ -3543,7 +3543,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-23 13:25:39.637105",
+    "@@last_modified": "2026-10-23 14:59:17.451913",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10052,5 +10052,9 @@
     "readAloudTake": "Tóg {number}",
     "videoWontPlayHere": "Ní sheinnfidh an físeán seo anseo.",
     "watchOnYoutube": "Féach ar YouTube",
-    "createMyOwnCourse": "Cruthaigh mo chúrsa féin"
+    "createMyOwnCourse": "Cruthaigh mo chúrsa féin",
+    "openCourse": "Oscail an cúrsa",
+    "centralCourseJoinedTitle": "Tá tú páirteach i {course}",
+    "centralCourseJoinedBody": "Is é seo cúrsa Pangea do fhoghlaimeoirí {language}. Is féidir le baill d'ainm agus do phróifíl a fheiceáil.",
+    "centralCourseMembersSeeYou": "Is féidir le baill an chúrsa seo d'ainm agus do phróifíl a fheiceáil."
 }

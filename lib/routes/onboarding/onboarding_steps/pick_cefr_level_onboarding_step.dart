@@ -40,6 +40,10 @@ class PickCefrLevelOnboardingStep extends OnboardingStep {
       return JoinedCourseOnboardingStep.next(client: client, state: state);
     }
 
+    if (type == UserType.student && await _joinCentralCourse()) {
+      return JoinedCourseOnboardingStep.next(client: client, state: state);
+    }
+
     return switch (type) {
       UserType.student =>
         state.trialInfoProvider.shouldShowTrialPage
@@ -55,6 +59,20 @@ class PickCefrLevelOnboardingStep extends OnboardingStep {
         maxRemainingSteps: 0,
       ),
     };
+  }
+
+  /// A learner who didn't join with a class code joins their language's
+  /// central course here. See joining-courses.instructions.md § The central
+  /// course.
+  Future<bool> _joinCentralCourse() async {
+    final language = state.targetLanguage?.langCodeShort;
+    if (language == null) return false;
+    final roomId = await state.courseProvider.joinCentralCourse(language);
+    if (roomId == null) return false;
+    state.setJoinedRoomId(roomId, central: true);
+    final course = await state.courseProvider.getCourseByRoomId(roomId);
+    if (course != null) state.setJoinedCoursePlan(course);
+    return true;
   }
 
   @override

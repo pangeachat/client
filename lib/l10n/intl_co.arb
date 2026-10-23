@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-23 13:25:37.729644",
+    "@@last_modified": "2026-10-23 14:59:15.087700",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Piglia {number}",
     "videoWontPlayHere": "Stu video ùn pò micca ghjucà quì.",
     "watchOnYoutube": "Fighjà nant'à YouTube",
-    "createMyOwnCourse": "Creà u mo corsu"
+    "createMyOwnCourse": "Creà u mo corsu",
+    "openCourse": "Apri u corsu",
+    "centralCourseJoinedTitle": "Avete raghjuntu {course}",
+    "centralCourseJoinedBody": "Hè u corsu di Pangea per l'amparera di u {language}. I so membri ponu vede u vostru nome è u vostru prufilu.",
+    "centralCourseMembersSeeYou": "I membri di stu corsu ponu vede u vostru nome è u vostru prufilu."
 }

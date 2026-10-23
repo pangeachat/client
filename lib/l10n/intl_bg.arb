@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-23 13:25:36.906895",
+    "@@last_modified": "2026-10-23 14:59:13.838641",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Дубъл {number}",
     "videoWontPlayHere": "Това видео няма да се възпроизвежда тук.",
     "watchOnYoutube": "Гледайте в YouTube",
-    "createMyOwnCourse": "Създаване на собствен курс"
+    "createMyOwnCourse": "Създаване на собствен курс",
+    "openCourse": "Отвори курса",
+    "centralCourseJoinedTitle": "Присъединихте се към {course}",
+    "centralCourseJoinedBody": "Това е курсът на Pangea за изучаващи {language}. Неговите членове могат да виждат вашето име и профил.",
+    "centralCourseMembersSeeYou": "Членовете на този курс могат да виждат вашето име и профил."
 }

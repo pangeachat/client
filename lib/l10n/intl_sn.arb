@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-23 13:25:45.652315",
+    "@@last_modified": "2026-10-23 14:59:26.527039",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Tora {number}",
     "videoWontPlayHere": "Vhidhiyo iyi haitambe pano.",
     "watchOnYoutube": "Tarisa paYouTube",
-    "createMyOwnCourse": "Gadzira kosi yangu"
+    "createMyOwnCourse": "Gadzira kosi yangu",
+    "openCourse": "Vhura kosi",
+    "centralCourseJoinedTitle": "Wabatana ne {course}",
+    "centralCourseJoinedBody": "Iyi ikosi yePangea yevadzidzi ve {language}. Nhengo dzayo dzinogona kuona zita rako neprofile yako.",
+    "centralCourseMembersSeeYou": "Nhengo dzekosi iyi dzinogona kuona zita rako neprofile yako."
 }

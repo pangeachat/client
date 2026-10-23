@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-23 13:25:37.113419",
+    "@@last_modified": "2026-10-23 14:59:13.852710",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Tapşırıq {number}",
     "videoWontPlayHere": "Bu video burada oxunmayacaq.",
     "watchOnYoutube": "YouTube-da izləyin",
-    "createMyOwnCourse": "Öz kursumu yarat"
+    "createMyOwnCourse": "Öz kursumu yarat",
+    "openCourse": "Kursu aç",
+    "centralCourseJoinedTitle": "{course} kursuna qoşuldunuz",
+    "centralCourseJoinedBody": "Bu, Pangea-nın {language} öyrənənlər üçün kursudur. Üzvləri adınızı və profilinizi görə bilər.",
+    "centralCourseMembersSeeYou": "Bu kursun üzvləri adınızı və profilinizi görə bilər."
 }

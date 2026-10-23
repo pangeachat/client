@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-23 13:25:38.863424",
+    "@@last_modified": "2026-10-23 14:59:16.526130",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10041,5 +10041,9 @@
     "readAloudTake": "{number}. saiakera",
     "videoWontPlayHere": "Bideo hau ez da hemen erreproduzituko.",
     "watchOnYoutube": "Ikusi YouTuben",
-    "createMyOwnCourse": "Nire ikastaroa sortu"
+    "createMyOwnCourse": "Nire ikastaroa sortu",
+    "openCourse": "Ikastaroa ireki",
+    "centralCourseJoinedTitle": "{course} ikastaroan sartu zara",
+    "centralCourseJoinedBody": "Pangearen ikastaroa da {language} ikasleentzat. Bertako kideek zure izena eta profila ikus ditzakete.",
+    "centralCourseMembersSeeYou": "Ikastaro honetako kideek zure izena eta profila ikus ditzakete."
 }

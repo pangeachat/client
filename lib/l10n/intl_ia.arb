@@ -1355,7 +1355,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-23 13:25:40.471424",
+    "@@last_modified": "2026-10-23 14:59:19.365025",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10974,5 +10974,9 @@
     "readAloudTake": "Prende {number}",
     "videoWontPlayHere": "Iste video non va reproducer hic.",
     "watchOnYoutube": "Regardar in YouTube",
-    "createMyOwnCourse": "Crear mi proprie curso"
+    "createMyOwnCourse": "Crear mi proprie curso",
+    "openCourse": "Aperi curso",
+    "centralCourseJoinedTitle": "Tu ha juncte {course}",
+    "centralCourseJoinedBody": "Illo es le curso de Pangea pro apprededores de {language}. Su membros pote vider tu nomine e profilo.",
+    "centralCourseMembersSeeYou": "Membros de iste curso pote vider tu nomine e profilo."
 }

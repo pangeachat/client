@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-23 13:25:45.157953",
+    "@@last_modified": "2026-10-23 14:59:26.557877",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Ave {number}",
     "videoWontPlayHere": "E lē ta'alo le vitiō i'i.",
     "watchOnYoutube": "Maimoa i le YouTube",
-    "createMyOwnCourse": "Fausia la'u lava kosi"
+    "createMyOwnCourse": "Fausia la'u lava kosi",
+    "openCourse": "Tatala le kosi",
+    "centralCourseJoinedTitle": "Ua e auai i le {course}",
+    "centralCourseJoinedBody": "O le kosi a Pangea mo tagata aʻoga {language}. E mafai e ona sui ona vaʻai i lou igoa ma lau talaaga.",
+    "centralCourseMembersSeeYou": "E mafai e sui o lenei kosi ona vaʻai i lou igoa ma lau talaaga."
 }

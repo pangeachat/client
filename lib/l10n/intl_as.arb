@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-23 13:25:37.293333",
+    "@@last_modified": "2026-10-23 14:59:14.250722",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "লওক {number}",
     "videoWontPlayHere": "এই ভিডিঅ’টো ইয়াত নচলে।",
     "watchOnYoutube": "ইউটিউবত চাওক",
-    "createMyOwnCourse": "মোৰ নিজা পাঠ্যক্ৰম সৃষ্টি কৰক"
+    "createMyOwnCourse": "মোৰ নিজা পাঠ্যক্ৰম সৃষ্টি কৰক",
+    "openCourse": "কোর্স খোলক",
+    "centralCourseJoinedTitle": "আপুনি {course}ত যোগদান কৰিছে",
+    "centralCourseJoinedBody": "এইটো {language} শিকোৱা সকলৰ বাবে পেংগিয়াৰ এটা পাঠ্যক্ৰম। ইয়াৰ সদস্যসকলে আপোনাৰ নাম আৰু প্ৰফাইল চাব পাৰিব।",
+    "centralCourseMembersSeeYou": "এই পাঠ্যক্ৰমৰ সদস্যসকলে আপোনাৰ নাম আৰু প্ৰফাইল চাব পাৰিব।"
 }

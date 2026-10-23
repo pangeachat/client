@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-23 13:25:41.745043",
+    "@@last_modified": "2026-10-23 14:59:21.724527",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Tek {number}",
     "videoWontPlayHere": "Dis video nor go play ya.",
     "watchOnYoutube": "Go wach na YouTube",
-    "createMyOwnCourse": "Mek mi yon kos"
+    "createMyOwnCourse": "Mek mi yon kos",
+    "openCourse": "Opén kõs",
+    "centralCourseJoinedTitle": "Yu dɔn jɔyn {course}",
+    "centralCourseJoinedBody": "Na Pangea in kõs fɔ {language} lɔna dɛn. In mɛmba dɛn go ebul si yu nem ɛn yu profil.",
+    "centralCourseMembersSeeYou": "Mɛmba dɛn fɔ dis kõs go ebul si yu nem ɛn yu profil."
 }

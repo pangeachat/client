@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-23 13:25:46.542567",
+    "@@last_modified": "2026-10-23 14:59:28.413149",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10045,5 +10045,9 @@
     "readAloudTake": "{number} qabul qiling",
     "videoWontPlayHere": "Bu video bu yerda ijro etilmaydi.",
     "watchOnYoutube": "YouTube'da tomosha qiling",
-    "createMyOwnCourse": "Oʻz kursimni yaratish"
+    "createMyOwnCourse": "Oʻz kursimni yaratish",
+    "openCourse": "Kursni ochish",
+    "centralCourseJoinedTitle": "Siz {course} kursiga qoʻshildingiz",
+    "centralCourseJoinedBody": "Bu Pangeaning {language} oʻrganuvchilari uchun kursi. Uning aʼzolari ismingiz va profilingizni koʻrishlari mumkin.",
+    "centralCourseMembersSeeYou": "Ushbu kurs aʼzolari ismingiz va profilingizni koʻrishlari mumkin."
 }

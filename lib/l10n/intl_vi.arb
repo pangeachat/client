@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:51.408561",
+    "@@last_modified": "2026-10-23 14:59:27.871270",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7348,5 +7348,9 @@
     "readAloudTake": "Lượt {number}",
     "videoWontPlayHere": "Video này sẽ không phát ở đây.",
     "watchOnYoutube": "Xem trên YouTube",
-    "createMyOwnCourse": "Tạo khóa học của riêng tôi"
+    "createMyOwnCourse": "Tạo khóa học của riêng tôi",
+    "openCourse": "Mở khóa học",
+    "centralCourseJoinedTitle": "Bạn đã tham gia {course}",
+    "centralCourseJoinedBody": "Đây là khóa học của Pangea dành cho người học tiếng {language}. Các thành viên có thể xem tên và hồ sơ của bạn.",
+    "centralCourseMembersSeeYou": "Các thành viên của khóa học này có thể xem tên và hồ sơ của bạn."
 }

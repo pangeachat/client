@@ -42,6 +42,10 @@ class UserSettings {
   /// course permissions.
   final UserType? selfIdentifiedRole;
 
+  /// The languages whose central course the learner left, so no device joins
+  /// them to it again (joining-courses.instructions.md § The central course).
+  final List<String> leftCentralCourses;
+
   UserSettings({
     this.dateOfBirth,
     this.createdAt,
@@ -55,6 +59,7 @@ class UserSettings {
     this.cefrLevel = LanguageLevelTypeEnum.a1,
     this.voice,
     this.selfIdentifiedRole,
+    this.leftCentralCourses = const [],
   });
 
   factory UserSettings.fromJson(Map<String, dynamic> json) => UserSettings(
@@ -80,6 +85,11 @@ class UserSettings {
     selfIdentifiedRole: _parseSelfIdentifiedRole(
       json[UserConstants.selfIdentifiedRole],
     ),
+    leftCentralCourses:
+        (json[UserConstants.leftCentralCourses] as List?)
+            ?.whereType<String>()
+            .toList() ??
+        const [],
   );
 
   /// An unrecognized value is reported and read as unspecified, never as
@@ -114,6 +124,9 @@ class UserSettings {
     // "unspecified" every reader of it already handles.
     if (selfIdentifiedRole != null) {
       data[UserConstants.selfIdentifiedRole] = selfIdentifiedRole!.name;
+    }
+    if (leftCentralCourses.isNotEmpty) {
+      data[UserConstants.leftCentralCourses] = leftCentralCourses;
     }
     return data;
   }
@@ -192,6 +205,7 @@ class UserSettings {
     String? voice,
     bool setVoiceNull = false,
     UserType? selfIdentifiedRole,
+    List<String>? leftCentralCourses,
   }) {
     return UserSettings(
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
@@ -206,8 +220,14 @@ class UserSettings {
       cefrLevel: cefrLevel ?? this.cefrLevel,
       voice: setVoiceNull ? null : (voice ?? this.voice),
       selfIdentifiedRole: selfIdentifiedRole ?? this.selfIdentifiedRole,
+      leftCentralCourses: leftCentralCourses ?? this.leftCentralCourses,
     );
   }
+
+  UserSettings withLeftCentralCourse(String language) =>
+      leftCentralCourses.contains(language)
+      ? this
+      : copyWith(leftCentralCourses: [...leftCentralCourses, language]);
 
   @override
   bool operator ==(Object other) {
@@ -225,7 +245,8 @@ class UserSettings {
         other.about == about &&
         other.cefrLevel == cefrLevel &&
         other.voice == voice &&
-        other.selfIdentifiedRole == selfIdentifiedRole;
+        other.selfIdentifiedRole == selfIdentifiedRole &&
+        listEquals(other.leftCentralCourses, leftCentralCourses);
   }
 
   @override
@@ -242,6 +263,7 @@ class UserSettings {
     cefrLevel.hashCode,
     voice.hashCode,
     selfIdentifiedRole.hashCode,
+    Object.hashAll(leftCentralCourses),
   ]);
 }
 

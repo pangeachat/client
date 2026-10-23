@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-23 13:25:45.865265",
+    "@@last_modified": "2026-10-23 14:59:26.807508",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Candak {number}",
     "videoWontPlayHere": "Video ieu moal bisa diputer di dieu.",
     "watchOnYoutube": "Tonton di YouTube",
-    "createMyOwnCourse": "Jieun kursus kuring sorangan"
+    "createMyOwnCourse": "Jieun kursus kuring sorangan",
+    "openCourse": "Buka kursus",
+    "centralCourseJoinedTitle": "Anjeun geus gabung {course}",
+    "centralCourseJoinedBody": "Ieu kursus Pangea pikeun nu diajar basa {language}. Anggotana bisa ningali ngaran jeung profil anjeun.",
+    "centralCourseMembersSeeYou": "Anggota kursus ieu bisa ningali ngaran jeung profil anjeun."
 }

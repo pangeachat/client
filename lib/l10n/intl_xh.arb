@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-23 13:25:47.467791",
+    "@@last_modified": "2026-10-23 14:59:29.562555",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Thatha {number}",
     "videoWontPlayHere": "Le vidiyo ayizukudlala apha.",
     "watchOnYoutube": "Bukela kuYouTube",
-    "createMyOwnCourse": "Yenza eyakho ikhosi"
+    "createMyOwnCourse": "Yenza eyakho ikhosi",
+    "openCourse": "Vula ikhosi",
+    "centralCourseJoinedTitle": "Ujoyine {course}",
+    "centralCourseJoinedBody": "Yikhosi yePangea yabafundi besi-{language}. Amalungu ayo angabona igama lakho neprofayile yakho.",
+    "centralCourseMembersSeeYou": "Amalungu ale khosi angabona igama lakho neprofayile yakho."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-23 13:25:39.383730",
+    "@@last_modified": "2026-10-23 14:59:17.671739",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "ટેક {number}",
     "videoWontPlayHere": "આ વીડિયો અહીં ચાલશે નહીં.",
     "watchOnYoutube": "YouTube પર જુઓ",
-    "createMyOwnCourse": "મારો પોતાનો કોર્સ બનાવો"
+    "createMyOwnCourse": "મારો પોતાનો કોર્સ બનાવો",
+    "openCourse": "કોર્સ ખોલો",
+    "centralCourseJoinedTitle": "તમે {course} માં જોડાયા છો",
+    "centralCourseJoinedBody": "આ {language} શીખનારાઓ માટે પાંગિયાનો કોર્સ છે. તેના સભ્યો તમારું નામ અને પ્રોફાઇલ જોઈ શકે છે.",
+    "centralCourseMembersSeeYou": "આ કોર્સના સભ્યો તમારું નામ અને પ્રોફાઇલ જોઈ શકે છે."
 }

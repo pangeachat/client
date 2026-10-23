@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-23 13:25:44.156224",
+    "@@last_modified": "2026-10-23 14:59:24.012149",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Tenga {number}",
     "videoWontPlayHere": "Vidiyo iyi siyingathe kuseweredwa pano.",
     "watchOnYoutube": "Onerani pa YouTube",
-    "createMyOwnCourse": "Panga maphunziro anga"
+    "createMyOwnCourse": "Panga maphunziro anga",
+    "openCourse": "Tsegulani kosi",
+    "centralCourseJoinedTitle": "Mwalowa mu {course}",
+    "centralCourseJoinedBody": "Ndi kosi ya Pangea kwa ophunzira a {language}. Mamembala ake akhoza kuona dzina lanu ndi mbiri yanu.",
+    "centralCourseMembersSeeYou": "Mamembala a kosiyi akhoza kuona dzina lanu ndi mbiri yanu."
 }

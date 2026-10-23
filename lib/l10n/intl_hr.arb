@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-23 13:25:40.384958",
+    "@@last_modified": "2026-10-23 14:59:18.094307",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10474,5 +10474,9 @@
     "readAloudTake": "Pokušaj {number}",
     "videoWontPlayHere": "Ovaj se videozapis ovdje neće reproducirati.",
     "watchOnYoutube": "Gledaj na YouTubeu",
-    "createMyOwnCourse": "Izradi moj tečaj"
+    "createMyOwnCourse": "Izradi moj tečaj",
+    "openCourse": "Otvori tečaj",
+    "centralCourseJoinedTitle": "Pridružili ste se tečaju {course}",
+    "centralCourseJoinedBody": "Ovo je Pangein tečaj za učenike {language} jezika. Njegovi članovi mogu vidjeti vaše ime i profil.",
+    "centralCourseMembersSeeYou": "Članovi ovog tečaja mogu vidjeti vaše ime i profil."
 }

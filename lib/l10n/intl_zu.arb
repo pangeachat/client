@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-23 13:25:47.761718",
+    "@@last_modified": "2026-10-23 14:59:29.130233",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Thatha {number}",
     "videoWontPlayHere": "Le vidiyo ngeke idlale lapha.",
     "watchOnYoutube": "Buka ku-YouTube",
-    "createMyOwnCourse": "Dala eyami inkambo"
+    "createMyOwnCourse": "Dala eyami inkambo",
+    "openCourse": "Vula ikhosi",
+    "centralCourseJoinedTitle": "Ujoyine {course}",
+    "centralCourseJoinedBody": "Yikhosi yePangea yabafundi besi-{language}. Amalungu ayo angabona igama lakho nephrofayili yakho.",
+    "centralCourseMembersSeeYou": "Amalungu ale khosi angabona igama lakho nephrofayili yakho."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:45.609810",
+    "@@last_modified": "2026-10-23 14:59:26.901246",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10556,5 +10556,9 @@
     "readAloudTake": "Ta {number}",
     "videoWontPlayHere": "Den här videon kan inte spelas upp här.",
     "watchOnYoutube": "Titta på YouTube",
-    "createMyOwnCourse": "Skapa min egen kurs"
+    "createMyOwnCourse": "Skapa min egen kurs",
+    "openCourse": "Öppna kurs",
+    "centralCourseJoinedTitle": "Du har gått med i {course}",
+    "centralCourseJoinedBody": "Det är Pangeas kurs för {language}-elever. Dess medlemmar kan se ditt namn och din profil.",
+    "centralCourseMembersSeeYou": "Medlemmar i den här kursen kan se ditt namn och din profil."
 }

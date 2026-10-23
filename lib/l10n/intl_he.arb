@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:39.931641",
+    "@@last_modified": "2026-10-23 14:59:18.264782",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10952,5 +10952,9 @@
     "readAloudTake": "טייק {number}",
     "videoWontPlayHere": "הסרטון הזה לא יופעל כאן.",
     "watchOnYoutube": "צפה ב-YouTube",
-    "createMyOwnCourse": "צור קורס משלי"
+    "createMyOwnCourse": "צור קורס משלי",
+    "openCourse": "פתח קורס",
+    "centralCourseJoinedTitle": "הצטרפת לקורס {course}",
+    "centralCourseJoinedBody": "זהו הקורס של Pangea ללומדי {language}. חברי הקורס יכולים לראות את שמך ואת הפרופיל שלך.",
+    "centralCourseMembersSeeYou": "חברי הקורס הזה יכולים לראות את שמך ואת הפרופיל שלך."
 }

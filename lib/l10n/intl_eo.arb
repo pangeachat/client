@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:38.200755",
+    "@@last_modified": "2026-10-23 14:59:16.130076",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10983,5 +10983,9 @@
     "readAloudTake": "Provo {number}",
     "videoWontPlayHere": "Ĉi tiu video ne ludos ĉi tie.",
     "watchOnYoutube": "Spektu en YouTube",
-    "createMyOwnCourse": "Krei mian propran kurson"
+    "createMyOwnCourse": "Krei mian propran kurson",
+    "openCourse": "Malfermi kurson",
+    "centralCourseJoinedTitle": "Vi aliĝis al {course}",
+    "centralCourseJoinedBody": "Ĝi estas la kurso de Pangea por lernantoj de la {language} lingvo. Ĝiaj membroj povas vidi vian nomon kaj profilon.",
+    "centralCourseMembersSeeYou": "Membroj de ĉi tiu kurso povas vidi vian nomon kaj profilon."
 }

@@ -3528,7 +3528,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-23 13:25:36.940902",
+    "@@last_modified": "2026-10-23 14:59:13.583524",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10055,5 +10055,9 @@
     "readAloudTake": "Спроба {number}",
     "videoWontPlayHere": "Гэта відэа тут не прайграецца.",
     "watchOnYoutube": "Глядзець на YouTube",
-    "createMyOwnCourse": "Стварыць свой курс"
+    "createMyOwnCourse": "Стварыць свой курс",
+    "openCourse": "Адкрыць курс",
+    "centralCourseJoinedTitle": "Вы далучыліся да {course}",
+    "centralCourseJoinedBody": "Гэта курс Pangea для тых, хто вывучае {language}. Яго ўдзельнікі могуць бачыць ваша імя і профіль.",
+    "centralCourseMembersSeeYou": "Удзельнікі гэтага курса могуць бачыць ваша імя і профіль."
 }

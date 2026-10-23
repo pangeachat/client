@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-23 13:25:41.393165",
+    "@@last_modified": "2026-10-23 14:59:19.542308",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "Taka {number}",
     "videoWontPlayHere": "Þetta myndband spilast ekki hér.",
     "watchOnYoutube": "Horfa á YouTube",
-    "createMyOwnCourse": "Búa til mitt eigið námskeið"
+    "createMyOwnCourse": "Búa til mitt eigið námskeið",
+    "openCourse": "Opna námskeið",
+    "centralCourseJoinedTitle": "Þú hefur gengið í {course}",
+    "centralCourseJoinedBody": "Þetta er námskeið Pangea fyrir {language} nemendur. Meðlimir þess geta séð nafn þitt og prófíl.",
+    "centralCourseMembersSeeYou": "Meðlimir þessa námskeiðs geta séð nafn þitt og prófíl."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:44.520422",
+    "@@last_modified": "2026-10-23 14:59:24.912454",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10770,5 +10770,9 @@
     "readAloudTake": "Preluare {number}",
     "videoWontPlayHere": "Acest videoclip nu va fi redat aici.",
     "watchOnYoutube": "Vizionează pe YouTube",
-    "createMyOwnCourse": "Creează-mi propriul curs"
+    "createMyOwnCourse": "Creează-mi propriul curs",
+    "openCourse": "Deschide cursul",
+    "centralCourseJoinedTitle": "Te-ai alăturat cursului {course}",
+    "centralCourseJoinedBody": "Este cursul Pangea pentru cursanții de {language}. Membrii săi îți pot vedea numele și profilul.",
+    "centralCourseMembersSeeYou": "Membrii acestui curs îți pot vedea numele și profilul."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-23 13:25:43.675232",
+    "@@last_modified": "2026-10-23 14:59:24.164616",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2503,5 +2503,9 @@
     "readAloudTake": "{number} लिनुहोस्",
     "videoWontPlayHere": "यो भिडियो यहाँ चल्दैन।",
     "watchOnYoutube": "YouTube मा हेर्नुहोस्",
-    "createMyOwnCourse": "मेरो आफ्नै कोर्स सिर्जना गर्नुहोस्"
+    "createMyOwnCourse": "मेरो आफ्नै कोर्स सिर्जना गर्नुहोस्",
+    "openCourse": "कोर्स खोल्नुहोस्",
+    "centralCourseJoinedTitle": "तपाईं {course} मा सामेल हुनुभएको छ",
+    "centralCourseJoinedBody": "यो {language} सिक्नेहरूका लागि पाङ्गियाको कोर्स हो। यसका सदस्यहरूले तपाईंको नाम र प्रोफाइल हेर्न सक्छन्।",
+    "centralCourseMembersSeeYou": "यस कोर्सका सदस्यहरूले तपाईंको नाम र प्रोफाइल हेर्न सक्छन्।"
 }

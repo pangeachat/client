@@ -2073,7 +2073,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-23 13:25:39.060799",
+    "@@last_modified": "2026-10-23 14:59:16.564234",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10898,5 +10898,9 @@
     "readAloudTake": "Kumuha ng {number}",
     "videoWontPlayHere": "Hindi puwedeng i-play ang video na ito dito.",
     "watchOnYoutube": "Panoorin sa YouTube",
-    "createMyOwnCourse": "Gumawa ng sarili kong kurso"
+    "createMyOwnCourse": "Gumawa ng sarili kong kurso",
+    "openCourse": "Buksan ang kurso",
+    "centralCourseJoinedTitle": "Sumali ka sa {course}",
+    "centralCourseJoinedBody": "Ito ang kurso ng Pangea para sa mga nag-aaral ng {language}. Makikita ng mga miyembro nito ang iyong pangalan at profile.",
+    "centralCourseMembersSeeYou": "Makikita ng mga miyembro ng kursong ito ang iyong pangalan at profile."
 }

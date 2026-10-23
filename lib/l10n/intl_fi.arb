@@ -3516,7 +3516,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-23 13:25:38.920362",
+    "@@last_modified": "2026-10-23 14:59:16.824651",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10078,5 +10078,9 @@
     "readAloudTake": "Ota {number}",
     "videoWontPlayHere": "Tätä videota ei voi toistaa täällä.",
     "watchOnYoutube": "Katso YouTubessa",
-    "createMyOwnCourse": "Luo oma kurssini"
+    "createMyOwnCourse": "Luo oma kurssini",
+    "openCourse": "Avaa kurssi",
+    "centralCourseJoinedTitle": "Olet liittynyt kurssille {course}",
+    "centralCourseJoinedBody": "Tämä on Pangean kurssi {language}-kielen opiskelijoille. Kurssin jäsenet näkevät nimesi ja profiilisi.",
+    "centralCourseMembersSeeYou": "Tämän kurssin jäsenet näkevät nimesi ja profiilisi."
 }
