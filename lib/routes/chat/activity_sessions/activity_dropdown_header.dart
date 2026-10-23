@@ -119,7 +119,7 @@ class ActivityDropdownHeader extends StatelessWidget {
             // The session's XP at the far left and the chevron at the far
             // right (#9559), each in a slot of the same width so the diamonds
             // stay centred; both line up with the diamonds rather than with
-            // the "+100" line under them.
+            // the "+50" line under them.
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
