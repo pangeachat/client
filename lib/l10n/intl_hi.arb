@@ -1898,7 +1898,7 @@
     "countParticipants": "{count} प्रतिभागी",
     "create": "बनाएँ",
     "createdTheChat": "💬 {username} ने चैट बनाई",
-    "createGroup": "समूह बनाएं",
+    "createGroup": "चैट बनाएँ",
     "currentlyActive": "वर्तमान में सक्रिय",
     "darkTheme": "गहरा",
     "dateAndTimeOfDay": "{date}, {timeOfDay}",
@@ -2240,7 +2240,7 @@
     "noUsersFoundWithQuery": "दुर्भाग्यवश \"{query}\" के साथ कोई उपयोगकर्ता नहीं मिला। कृपया जांचें कि आपने टाइपो तो नहीं किया है।",
     "knocking": " knocking",
     "nothingFound": "कुछ नहीं मिला...",
-    "groupName": "समूह का नाम",
+    "groupName": "चैट का नाम",
     "wrongRecoveryKey": "माफ़ कीजिए... यह सही रिकवरी कुंजी नहीं लगती।",
     "startConversation": "संवाद शुरू करें",
     "commandHint_sendraw": "कच्चा JSON भेजें",
@@ -3082,7 +3082,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-10-22 09:50:12.676544",
+    "@@last_modified": "2026-10-23 10:46:58.477597",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}

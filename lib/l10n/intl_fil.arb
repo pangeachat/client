@@ -520,7 +520,7 @@
             }
         }
     },
-    "createGroup": "Gumawa ng grupo",
+    "createGroup": "Gumawa ng chat",
     "@createGroup": {},
     "currentlyActive": "Kasalukuyang aktibo",
     "@currentlyActive": {
@@ -1220,7 +1220,7 @@
     "noUsersFoundWithQuery": "Sa kasamaang palad, walang user na mahanap gamit ang \"{query}\". Mangyaring suriin kung nagkamali ka sa pag-type.",
     "knocking": "Nagtatanong",
     "nothingFound": "Walang nahanap...",
-    "groupName": "Pangalan ng grupo",
+    "groupName": "Pangalan ng chat",
     "wrongRecoveryKey": "Paumanhin... mukhang hindi ito ang tamang recovery key.",
     "startConversation": "Simulan ang pag-uusap",
     "commandHint_sendraw": "Magpadala ng raw json",
@@ -2073,7 +2073,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-22 09:50:10.847143",
+    "@@last_modified": "2026-10-23 10:46:57.205679",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}

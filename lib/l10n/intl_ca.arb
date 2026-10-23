@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-22 09:50:07.859033",
+    "@@last_modified": "2026-10-23 10:46:56.492310",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -2184,7 +2184,7 @@
     },
     "commandHint_googly": "Envia uns ulls curiosos",
     "@commandHint_googly": {},
-    "createGroup": "Crea un grup",
+    "createGroup": "Crea un xat",
     "@createGroup": {},
     "time": "Temps",
     "@time": {},
@@ -2216,7 +2216,7 @@
     "@blockListDescription": {},
     "pleaseChooseAStrongPassword": "Tria una contrasenya forta",
     "@pleaseChooseAStrongPassword": {},
-    "groupName": "Nom del grup",
+    "groupName": "Nom del xat",
     "@groupName": {},
     "wrongRecoveryKey": "Malauradament, aquesta clau de recuperació no és la correcta.",
     "@wrongRecoveryKey": {},

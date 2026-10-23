@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-22 09:50:10.862856",
+    "@@last_modified": "2026-10-23 10:46:57.228379",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -2171,7 +2171,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "createGroup": "Sortu taldea",
+    "createGroup": "Sortu txata",
     "@createGroup": {},
     "invite": "Gonbidatu",
     "@invite": {},
@@ -2224,7 +2224,7 @@
     "@commandHint_sendraw": {},
     "wrongRecoveryKey": "Barka baina ez dirudi berreskuratze-gako zuzena denik.",
     "@wrongRecoveryKey": {},
-    "groupName": "Taldearen izena",
+    "groupName": "Txataren izena",
     "@groupName": {},
     "blockListDescription": "Gogaitzen zaituzten erabiltzaileak blokeatu ditzakezu. Ez duzu blokeatutakoen zerrendan dituzun erabiltzaileen mezurik edo gelara batzeko gonbidapenik jasoko.",
     "@blockListDescription": {},

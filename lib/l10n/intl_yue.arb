@@ -61,7 +61,7 @@
     "countParticipants": "{count} 位參與者",
     "create": "建立",
     "createdTheChat": "📈 {username} 建立咗對話",
-    "createGroup": "建立群組",
+    "createGroup": "建立聊天室",
     "currentlyActive": "目前活躍",
     "darkTheme": "深色",
     "dateAndTimeOfDay": "{date}，{timeOfDay}",
@@ -403,7 +403,7 @@
     "noUsersFoundWithQuery": "很抱歉，未找到符合 \"{query}\" 的用戶。請檢查是否有打錯字。",
     "knocking": "敲門中",
     "nothingFound": "未找到任何內容...",
-    "groupName": "群組名稱",
+    "groupName": "聊天室名稱",
     "wrongRecoveryKey": "抱歉... 這似乎不是正確的恢復金鑰。",
     "startConversation": "開始對話",
     "commandHint_sendraw": "傳送原始 JSON",
@@ -1256,7 +1256,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-22 09:50:30.546455",
+    "@@last_modified": "2026-10-23 10:47:05.157455",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}

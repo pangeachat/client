@@ -2185,7 +2185,7 @@
     },
     "replace": "Korvaa",
     "@replace": {},
-    "createGroup": "Luo ryhmä",
+    "createGroup": "Luo keskustelu",
     "@createGroup": {},
     "importNow": "Tuo nyt",
     "@importNow": {},
@@ -2357,7 +2357,7 @@
     "@knocking": {},
     "nothingFound": "Mitään ei löytynyt...",
     "@nothingFound": {},
-    "groupName": "Ryhmän nimi",
+    "groupName": "Keskustelun nimi",
     "@groupName": {},
     "wrongRecoveryKey": "Pahoittelut... tämä ei vaikuta olevan oikea palautusavain.",
     "@wrongRecoveryKey": {},
@@ -3516,7 +3516,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-22 09:50:10.376930",
+    "@@last_modified": "2026-10-23 10:46:57.330178",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}

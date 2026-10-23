@@ -2414,7 +2414,7 @@
     "@serverInformation": {},
     "knockRestricted": "Cnoc Mhuire srianta",
     "@knockRestricted": {},
-    "createGroup": "Cruthaigh grúpa",
+    "createGroup": "Cruthaigh comhrá",
     "@createGroup": {},
     "noChatDescriptionYet": "Níl aon chur síos ar an gcomhrá cruthaithe fós.",
     "@noChatDescriptionYet": {},
@@ -2432,7 +2432,7 @@
             }
         }
     },
-    "groupName": "Ainm an ghrúpa",
+    "groupName": "Ainm an chomhrá",
     "@groupName": {},
     "bundleName": "Ainm an bheartáin",
     "@bundleName": {},
@@ -3543,7 +3543,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-22 09:50:12.176214",
+    "@@last_modified": "2026-10-23 10:46:58.170160",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {

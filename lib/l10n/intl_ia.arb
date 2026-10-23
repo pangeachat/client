@@ -171,7 +171,7 @@
     "countParticipants": "{count} participantes",
     "create": "Create",
     "createdTheChat": "💬} {username} create le chat",
-    "createGroup": "Create gruppo",
+    "createGroup": "Crear chat",
     "currentlyActive": "Activa actualmenente",
     "darkTheme": "Dark",
     "dateAndTimeOfDay": "{date}, {timeOfDay}",
@@ -513,7 +513,7 @@
     "noUsersFoundWithQuery": "Infelicemente, nemo usator poteva esser trovate con \"{query}\". Per favor, verifica si tu ha facite un typo.",
     "knocking": "Batte",
     "nothingFound": "Nulle cosa trovate...",
-    "groupName": "Nomen del gruppo",
+    "groupName": "Nomine del chat",
     "wrongRecoveryKey": "Pardon... isto non pare esser le clave de recuperation correcte.",
     "startConversation": "Comenciar conversation",
     "commandHint_sendraw": "Invia JSON brute",
@@ -1355,7 +1355,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-22 09:50:14.447026",
+    "@@last_modified": "2026-10-23 10:46:58.988911",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}

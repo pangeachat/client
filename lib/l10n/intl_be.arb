@@ -673,7 +673,7 @@
             }
         }
     },
-    "createGroup": "Стварыць групу",
+    "createGroup": "Стварыць чат",
     "@createGroup": {},
     "currentlyActive": "Зараз актыўны",
     "@currentlyActive": {
@@ -2425,7 +2425,7 @@
     "@knockRestricted": {},
     "nothingFound": "Нічога не знойдзена...",
     "@nothingFound": {},
-    "groupName": "Назва групы",
+    "groupName": "Назва чата",
     "@groupName": {},
     "startConversation": "Пачаць размову",
     "@startConversation": {},
@@ -3528,7 +3528,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-22 09:50:06.743801",
+    "@@last_modified": "2026-10-23 10:46:55.797068",
     "@ignore": {
         "type": "String",
         "placeholders": {}

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-22 09:50:22.002723",
+    "@@last_modified": "2026-10-23 10:47:01.395549",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -1936,7 +1936,7 @@
     "@user": {},
     "users": "Brukere",
     "@users": {},
-    "createGroup": "Opprett gruppe",
+    "createGroup": "Opprett chat",
     "@createGroup": {},
     "editRoomAliases": "Rediger rom aliaser",
     "@editRoomAliases": {
@@ -1989,7 +1989,7 @@
     "@whyIsThisMessageEncrypted": {},
     "yourGlobalUserIdIs": "Din globale bruker-ID er: ",
     "@yourGlobalUserIdIs": {},
-    "groupName": "Gruppenavn",
+    "groupName": "Chatnavn",
     "@groupName": {},
     "invite": "Inviter",
     "@invite": {},

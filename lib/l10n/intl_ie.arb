@@ -2053,7 +2053,7 @@
     "couldNotDecryptMessage": "Ne poteva decifrar le message: {error}",
     "checkList": "Lista de verification",
     "createdTheChat": "💬 {username} ha create le chat",
-    "createGroup": "Create grupo",
+    "createGroup": "Crear un conversation",
     "deactivateAccountWarning": "Isto disactive tu conto de usator. Isto non pote esser revertite! Es tu secur?",
     "defaultPermissionLevel": "Nivel de permission default pro nove usatores",
     "displaynameHasBeenChanged": "Displayname es stete modifichit",
@@ -2242,7 +2242,7 @@
     "noUsersFoundWithQuery": "Unfortunately no user could be found with \"{query}\". Please check whether you made a typo.",
     "knocking": "Knocking",
     "nothingFound": "Nothing found...",
-    "groupName": "Group name",
+    "groupName": "Nom del conversation",
     "wrongRecoveryKey": "Sorry... this does not seem to be the correct recovery key.",
     "startConversation": "Start conversation",
     "commandHint_sendraw": "Send raw json",
@@ -3082,7 +3082,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-22 09:50:16.381156",
+    "@@last_modified": "2026-10-23 10:46:59.425185",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}

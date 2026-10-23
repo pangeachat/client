@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-22 09:50:23.608725",
+    "@@last_modified": "2026-10-23 10:47:02.128637",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -2173,7 +2173,7 @@
     },
     "replace": "Zastąp",
     "@replace": {},
-    "createGroup": "Utwórz grupę",
+    "createGroup": "Utwórz czat",
     "@createGroup": {},
     "importNow": "Zaimportuj",
     "@importNow": {},
@@ -2195,7 +2195,7 @@
     "@overview": {},
     "learnMore": "Dowiedz się więcej",
     "@learnMore": {},
-    "groupName": "Nazwa grupy",
+    "groupName": "Nazwa czatu",
     "@groupName": {},
     "startConversation": "Rozpocznij rozmowę",
     "@startConversation": {},

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-22 09:50:24.605566",
+    "@@last_modified": "2026-10-23 10:47:02.654518",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -2410,7 +2410,7 @@
     "@pleaseTryAgainLaterOrChooseDifferentServer": {},
     "sendTypingNotifications": "Отправлять уведомления о наборе текста",
     "@sendTypingNotifications": {},
-    "createGroup": "Создать группу",
+    "createGroup": "Создать чат",
     "@createGroup": {},
     "inviteContactToGroupQuestion": "Вы хотите пригласить {contact} в чат \"{groupName}\"?",
     "@inviteContactToGroupQuestion": {},
@@ -2567,7 +2567,7 @@
     "@wrongRecoveryKey": {
         "pangea_override": true
     },
-    "groupName": "Название группы",
+    "groupName": "Название чата",
     "@groupName": {},
     "databaseMigrationTitle": "База данных оптимизированна",
     "@databaseMigrationTitle": {},

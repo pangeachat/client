@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-22 09:50:10.450637",
+    "@@last_modified": "2026-10-23 10:46:56.727513",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -2037,7 +2037,7 @@
     "notAnImage": "Keine Bilddatei.",
     "replace": "Ersetzen",
     "sendTypingNotifications": "Tippbenachrichtigungen senden",
-    "createGroup": "Gruppe erstellen",
+    "createGroup": "Chat erstellen",
     "shareInviteLink": "Einladungslink teilen",
     "tryAgain": "Neuer Versuch",
     "redactMessageDescription": "Die Nachricht wird für alle Teilnehmer dieses Gesprächs gelöscht. Dies kann nicht rückgängig gemacht werden.",
@@ -2123,7 +2123,7 @@
     "commandHint_sendraw": "Rohes JSON senden",
     "wrongRecoveryKey": "Entschuldigung ... das scheint nicht der richtige Wiederherstellungsschlüssel zu sein.",
     "blockUsername": "Blockiere Benutzername",
-    "groupName": "Gruppenname",
+    "groupName": "Chat-Name",
     "databaseMigrationTitle": "Datenbank wird optimiert",
     "databaseMigrationBody": "Bitte warten. Dies kann einen Moment dauern.",
     "thisDevice": "Dieses Gerät:",

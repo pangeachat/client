@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-22 09:50:09.305585",
+    "@@last_modified": "2026-10-23 10:46:57.529263",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -2101,7 +2101,7 @@
     },
     "emojis": "Emojis",
     "@emojis": {},
-    "createGroup": "Crear grupo",
+    "createGroup": "Crear chat",
     "@createGroup": {},
     "custom": "Personalizado",
     "@custom": {},
@@ -2442,7 +2442,7 @@
     "@makeAdminDescription": {},
     "knocking": "Avisando",
     "@knocking": {},
-    "groupName": "Nombre de grupo",
+    "groupName": "Nombre del chat",
     "@groupName": {},
     "databaseMigrationTitle": "La base de datos está optimizada",
     "@databaseMigrationTitle": {},

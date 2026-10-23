@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-22 09:50:30.397031",
+    "@@last_modified": "2026-10-23 10:47:04.450674",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -788,7 +788,7 @@
     "contentHasBeenReported": "Nội dung đã được báo cáo",
     "copiedToClipboard": "Đã sao chép vào khay nhớ tạm",
     "copyToClipboard": "Sao chép vào khay nhớ tạm",
-    "createGroup": "Tạo nhóm",
+    "createGroup": "Tạo cuộc trò chuyện",
     "darkTheme": "Chủ đề tối",
     "defaultPermissionLevel": "Cấp quyền mặc định cho người dùng mới",
     "directChats": "Cuộc trò chuyện trực tiếp",
@@ -1822,7 +1822,7 @@
     "successfullySubscribed": "Bạn đã đăng ký thành công!",
     "clickToManageSubscription": "Nhấp vào đây để quản lý gói đăng ký.",
     "nothingFound": "Không tìm thấy gì...",
-    "groupName": "Tên nhóm",
+    "groupName": "Tên cuộc trò chuyện",
     "wrongRecoveryKey": "Rất tiếc... Đây không phải là khóa khôi phục chính xác.",
     "startConversation": "Bắt đầu hội thoại",
     "commandHint_sendraw": "Gửi JSON dạng thô",

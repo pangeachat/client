@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-22 09:50:27.530524",
+    "@@last_modified": "2026-10-23 10:47:03.775642",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -2198,7 +2198,7 @@
     },
     "replace": "Ersätt",
     "@replace": {},
-    "createGroup": "Skapa grupp",
+    "createGroup": "Skapa chatt",
     "@createGroup": {},
     "kickUserDescription": "Användaren sparkas ut ur chatten men bannlyses inte. I offentliga chattar kan användaren gå med igen när som helst.",
     "@kickUserDescription": {},
@@ -2255,7 +2255,7 @@
     "@pleaseChooseAStrongPassword": {},
     "blockUsername": "Ignorera användarnamn",
     "@blockUsername": {},
-    "groupName": "Gruppnamn",
+    "groupName": "Chattnamn",
     "@groupName": {},
     "leaveEmptyToClearStatus": "Lämna tom för att ta bort din status.",
     "@leaveEmptyToClearStatus": {},

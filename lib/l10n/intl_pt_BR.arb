@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-22 09:50:24.064516",
+    "@@last_modified": "2026-10-23 10:47:02.223820",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -2198,7 +2198,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "createGroup": "Criar grupo",
+    "createGroup": "Criar chat",
     "@createGroup": {},
     "noBackupWarning": "Atenção! Se não ativar o backup de conversas, você perderá acesso a suas mensagens criptografadas. É altamente recomendável ativar o backup antes de sair.",
     "@noBackupWarning": {},
@@ -2253,7 +2253,7 @@
     "@pleaseChooseAStrongPassword": {},
     "blockUsername": "Ignorar nome de usuário",
     "@blockUsername": {},
-    "groupName": "Nome do grupo",
+    "groupName": "Nome do chat",
     "@groupName": {},
     "leaveEmptyToClearStatus": "Deixe em branco para limpar seu estado.",
     "@leaveEmptyToClearStatus": {},

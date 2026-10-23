@@ -1904,7 +1904,7 @@
     "countParticipants": "{count} ผู้เข้าร่วม",
     "create": "สร้าง",
     "createdTheChat": "💬 {username} สร้างแชทแล้ว",
-    "createGroup": "สร้างกลุ่ม",
+    "createGroup": "สร้างแชท",
     "currentlyActive": "กำลังใช้งานอยู่",
     "darkTheme": "มืด",
     "dateAndTimeOfDay": "{date}, {timeOfDay}",
@@ -2240,7 +2240,7 @@
     "noUsersFoundWithQuery": "น่าเสียดาย ไม่พบผู้ใช้ที่ตรงกับ \"{query}\" กรุณาตรวจสอบว่าคุณพิมพ์ผิดหรือไม่",
     "knocking": "เคาะประตู",
     "nothingFound": "ไม่พบอะไร...",
-    "groupName": "ชื่อกลุ่ม",
+    "groupName": "ชื่อแชท",
     "wrongRecoveryKey": "ขออภัย... ดูเหมือนว่าคีย์กู้คืนนี้จะไม่ถูกต้อง",
     "startConversation": "เริ่มการสนทนา",
     "commandHint_sendraw": "ส่ง JSON ดิบ",
@@ -3082,7 +3082,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-22 09:50:28.712927",
+    "@@last_modified": "2026-10-23 10:47:04.424198",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-22 09:50:31.419536",
+    "@@last_modified": "2026-10-23 10:47:04.957175",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -1967,7 +1967,7 @@
     "@pleaseEnterYourCurrentPassword": {},
     "widgetCustom": "自訂",
     "@widgetCustom": {},
-    "createGroup": "建立群組",
+    "createGroup": "建立聊天",
     "@createGroup": {},
     "shareLocation": "分享位置",
     "@shareLocation": {
@@ -2202,7 +2202,7 @@
     },
     "setChatDescription": "設定聊天室描述",
     "@setChatDescription": {},
-    "groupName": "群組名稱",
+    "groupName": "聊天名稱",
     "@groupName": {},
     "searchForUsers": "搜尋 @users...",
     "@searchForUsers": {},

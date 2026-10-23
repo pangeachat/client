@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-22 09:50:15.775418",
+    "@@last_modified": "2026-10-23 10:46:59.525066",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -2033,7 +2033,7 @@
     "commandHint_op": "指定されたユーザーの権限レベルを設定（デフォルト：50）",
     "commandHint_unban": "この部屋から指定されたユーザーの禁止を解除",
     "checkList": "チェックリスト",
-    "createGroup": "グループを作成",
+    "createGroup": "チャットを作成",
     "chatPermissions": "チャット権限",
     "emoteKeyboardNoRecents": "最近使用した絵文字はここに表示されます...",
     "calls": "通話",
@@ -2098,7 +2098,7 @@
     "noUsersFoundWithQuery": "申し訳ありませんが、「{query}」でユーザーが見つかりませんでした。タイプミスがないかご確認ください。",
     "knocking": "ノック中",
     "nothingFound": "何も見つかりませんでした...",
-    "groupName": "グループ名",
+    "groupName": "チャット名",
     "wrongRecoveryKey": "申し訳ありません...これは正しいリカバリーキーではないようです。",
     "startConversation": "会話を開始",
     "commandHint_sendraw": "生のJSONを送信",

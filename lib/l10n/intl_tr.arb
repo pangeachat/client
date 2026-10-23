@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-22 09:50:28.936997",
+    "@@last_modified": "2026-10-23 10:47:04.359772",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -2114,7 +2114,7 @@
     "@sendTypingNotifications": {},
     "messagesStyle": "Mesajlar:",
     "@messagesStyle": {},
-    "createGroup": "Grup oluştur",
+    "createGroup": "Sohbet oluştur",
     "@createGroup": {},
     "shareInviteLink": "Davet bağlantısını paylaş",
     "@shareInviteLink": {},
@@ -2218,7 +2218,7 @@
     },
     "yourGlobalUserIdIs": "Genel kullanıcı kimliğiniz: ",
     "@yourGlobalUserIdIs": {},
-    "groupName": "Grup ismi",
+    "groupName": "Sohbet adı",
     "@groupName": {},
     "blockListDescription": "Sizi rahatsız eden kullanıcıları engelleyebilirsiniz. Kişisel engelleme listenizdeki kullanıcılardan herhangi bir mesaj veya oda daveti alamazsınız.",
     "@blockListDescription": {},
