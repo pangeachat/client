@@ -70,7 +70,7 @@ Learners use panels that open over one world map, on any screen size. Outside li
 
 ### A chat's header actions
 
-- The More menu offers every long-press action, because many learners never discover long-press. Unassigned.
+- The More menu offers every long-press action, because many learners never discover long-press. Gabby.
 
 ### A signed-out visitor's destination
 
