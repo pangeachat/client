@@ -87,10 +87,11 @@ void main() {
           body: SizedBox(
             width: width,
             child: ObjectiveSection(
+              index: 1,
+              missionCount: 1,
               group: objectiveGroup(),
               onTap: onTap ?? (_) {},
-              userStarsByActivity: (_) => 0,
-              hasCompletedActivity: (_) => false,
+              xpByActivity: (_) => 0,
               liveStateByActivity: (_) => (
                 state: null,
                 openSessions: 0,

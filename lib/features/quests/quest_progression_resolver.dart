@@ -5,6 +5,7 @@
 // activity start page). Pure logic — no Matrix or network — so it stays
 // unit-testable. Design: quests.instructions.md, world-map.instructions.md.
 
+import 'package:fluffychat/features/quests/activity_family.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 
 /// How far along a quest the next-Mission gradient reaches before decaying to
@@ -37,18 +38,30 @@ class MissionProgress {
   double get fraction => threshold <= 0 ? 0 : (xp / threshold).clamp(0.0, 1.0);
 }
 
-/// Where a Mission's (or an activity's) XP came from: chat messages, goal
-/// checkmarks, and practice. The three sum to the XP the resolver counts.
+/// Where a Mission's (or an activity's) XP came from: chat messages, voice
+/// messages and calls (speaking), goal checkmarks, and practice. The four sum
+/// to the XP the resolver counts.
 class MissionXpBreakdown {
   final int chat;
+  final int speaking;
   final int goals;
   final int practice;
 
-  const MissionXpBreakdown({this.chat = 0, this.goals = 0, this.practice = 0});
+  const MissionXpBreakdown({
+    this.chat = 0,
+    this.speaking = 0,
+    this.goals = 0,
+    this.practice = 0,
+  });
 
   static const zero = MissionXpBreakdown();
 
-  int get total => chat + goals + practice;
+  int get total => chat + speaking + goals + practice;
+
+  /// Everything earned by talking in an activity: typed messages, voice
+  /// messages and calls, and goals — the "Conversation" share every Mission
+  /// meter shows beside [practice] (#9559).
+  int get conversation => chat + speaking + goals;
 
   /// The practice XP earned outside any session on [lemmas] — a Mission's
   /// word list — read from [practiceXpByLemma]. A word on two Missions' lists
@@ -66,6 +79,7 @@ class MissionXpBreakdown {
 
   MissionXpBreakdown operator +(MissionXpBreakdown other) => MissionXpBreakdown(
     chat: chat + other.chat,
+    speaking: speaking + other.speaking,
     goals: goals + other.goals,
     practice: practice + other.practice,
   );
@@ -108,11 +122,6 @@ class QuestProgress {
 
   final Map<String, int> indexByMission;
 
-  /// Which activities each scored Mission counts, from the outline — what a
-  /// live session uses to find the Mission its XP serves
-  /// ([ProgressionResolution.missionForActivity]).
-  final Map<String, Set<String>> activityIdsByMission;
-
   /// This quest's OWN per-Mission rollup, scoped to the activities its outline
   /// lists — the course's copy, else its pins.
   ///
@@ -136,7 +145,6 @@ class QuestProgress {
     required this.anchorMissionId,
     required this.indexByMission,
     required this.rollup,
-    this.activityIdsByMission = const {},
   });
 
   /// This quest's own next-Mission contribution for an activity carrying
@@ -217,30 +225,6 @@ class ProgressionResolution {
   QuestStarSummary? questStars(String? courseId) =>
       forCourse(courseId)?.starSummary;
 
-  /// The Mission a session of [activityId] serves, with its rollup: a quest's
-  /// anchor Mission when the activity carries it, else the first scored
-  /// Mission listing the activity, searched quest by quest. Null when no
-  /// in-scope quest lists the activity — a session outside every joined
-  /// course has no Mission to fill. The goal header's XP ring reads this.
-  ({MissionProgress progress, String missionId})? missionForActivity(
-    String activityId,
-  ) {
-    for (final quest in quests) {
-      final anchor = quest.anchorMissionId;
-      if (anchor != null &&
-          (quest.activityIdsByMission[anchor]?.contains(activityId) ?? false)) {
-        final progress = quest.rollup[anchor];
-        if (progress != null) return (progress: progress, missionId: anchor);
-      }
-      for (final entry in quest.activityIdsByMission.entries) {
-        if (!entry.value.contains(activityId)) continue;
-        final progress = quest.rollup[entry.key];
-        if (progress != null) return (progress: progress, missionId: entry.key);
-      }
-    }
-    return null;
-  }
-
   /// The learner's stars: every Mission complete in any in-scope quest, by
   /// Mission id — a Mission two courses share is one star, not two, since the
   /// star is the learner's competency and not a course's bookkeeping. The
@@ -315,22 +299,32 @@ ProgressionResolution resolveProgression({
     final seq = outline.orderedLoIds;
     if (seq.isEmpty) continue;
 
+    // XP on any copy of an activity counts toward the one the course shows; a
+    // no-op for a course without a copy (activity_family.dart).
+    final credited = outline.credit.creditedBy(xpByActivity);
+
     final rollup = <String, MissionProgress>{};
     for (final missionId in seq) {
       final activities = outline.activityIdsByLo[missionId] ?? const <String>{};
       // A Mission the outline gives NO activities offers no XP, and the panel
       // doesn't render it (#7114). Leave it out of the rollup entirely rather
       // than scoring it: counting it would add a Mission to the denominator
-      // that no content backs (#7663).
+      // that no content backs (#7663). Its credit is not lost: it is reported
+      // by [creditedByMission] and [creditedCourseTotal], and a Mission that
+      // still shows an activity keeps the XP earned on its hidden ones.
       if (activities.isEmpty) continue;
 
-      // Activity XP summed across the Mission's activities. No ceiling clamp:
-      // XP is unbounded, so every Mission with an activity is completable at
-      // any threshold (quests.instructions.md, "What fills a Mission").
-      var xp = 0;
-      for (final activityId in activities) {
-        xp += xpByActivity[activityId] ?? 0;
-      }
+      // Activity XP summed across the Mission's activities, every member of
+      // an activity's family credited to the one the course shows and hidden
+      // activities included (activity_family.dart). No ceiling clamp: XP is
+      // unbounded, so every Mission with an activity is completable at any
+      // threshold (quests.instructions.md, "What fills a Mission").
+      var xp = creditedForMission(
+        shownIds: activities,
+        loId: missionId,
+        credit: outline.credit,
+        credited: credited,
+      ).toInt();
       xp += MissionXpBreakdown.practiceFor(
         outline.lemmasByLo[missionId] ?? const {},
         practiceXpByLemma,
@@ -352,10 +346,6 @@ ProgressionResolution resolveProgression({
         anchorMissionId: _anchorFor(seq, rollup),
         indexByMission: {for (var i = 0; i < seq.length; i++) seq[i]: i},
         rollup: rollup,
-        activityIdsByMission: {
-          for (final missionId in rollup.keys)
-            missionId: outline.activityIdsByLo[missionId] ?? const {},
-        },
       ),
     );
   }
@@ -380,3 +370,39 @@ String? _anchorFor(List<String> seq, Map<String, MissionProgress> rollup) {
   }
   return null;
 }
+
+/// [outline]'s credited value per Can-Do, from one value per activity
+/// ([perMember], already reduced per member: best session for stars, summed
+/// sessions for XP). The same crediting [resolveProgression] applies to stars,
+/// exposed so the per-Can-Do XP reader (client#9450) shares it.
+///
+/// Includes a Can-Do whose activities are all hidden: nothing shows for it,
+/// but its credit is real and stays reported. (The star rollup above leaves
+/// such a Can-Do out because the panel does not render it, #7114.)
+Map<String, num> creditedByMission(
+  CourseLoOutline outline,
+  Map<String, num> perMember,
+) {
+  final credited = outline.credit.creditedBy(perMember);
+  return {
+    for (final entry in outline.activityIdsByLo.entries)
+      if (entry.value.isNotEmpty ||
+          (outline.credit.removedByLo[entry.key]?.isNotEmpty ?? false))
+        entry.key: creditedForMission(
+          shownIds: entry.value,
+          loId: entry.key,
+          credit: outline.credit,
+          credited: credited,
+        ),
+  };
+}
+
+/// [outline]'s credited value across the whole course, removed Can-Dos
+/// included: the client counterpart of the dashboard's course total. No screen
+/// reads it yet.
+num creditedCourseTotal(CourseLoOutline outline, Map<String, num> perMember) =>
+    creditedForCourse(
+      shownIds: {for (final ids in outline.activityIdsByLo.values) ...ids},
+      credit: outline.credit,
+      credited: outline.credit.creditedBy(perMember),
+    );

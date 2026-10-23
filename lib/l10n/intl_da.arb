@@ -10922,5 +10922,19 @@
     "activityCompleted": "Gennemført",
     "completedTimes": "Gennemført {count} gange",
     "classLocation": "Klasselokation",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Samtale {xp}",
+    "xpIncludingGoals": "inklusive {xp} fra mål",
+    "missionOtherLanguageNotice": "Denne mission er fra et kursus i {language}. Din fremgang tæller kun, når du lærer {language}.",
+    "missionLanguageMismatchDesc": "Denne mission er fra et kursus i {language}. Vil du skifte dit målsprog til {language}?",
+    "xpBySkillTitle": "Efter færdighed",
+    "missionNextActivity": "Næste aktivitet",
+    "missionContinueActivity": "Fortsæt aktivitet",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Færdig i dette kursus ({num})",
+    "otherCoursesSessions": "Andre kurser ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP optjent",
+    "currentMission": "Nuværende mission"
 }

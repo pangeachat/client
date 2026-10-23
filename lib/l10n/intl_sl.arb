@@ -10947,5 +10947,19 @@
     "activityCompleted": "Dokončano",
     "completedTimes": "Dokončano {count}-krat",
     "classLocation": "Lokacija razreda",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Pogovor {xp}",
+    "xpIncludingGoals": "vključno z {xp} iz ciljev",
+    "missionOtherLanguageNotice": "Ta misija je iz tečaja v {language}. Tvoj napredek pri njej šteje le, ko se učiš {language}.",
+    "missionLanguageMismatchDesc": "Ta misija je iz tečaja v {language}. Želiš preklopiti na {language} kot ciljni jezik?",
+    "xpBySkillTitle": "Po spretnostih",
+    "missionNextActivity": "Naslednja aktivnost",
+    "missionContinueActivity": "Nadaljuj aktivnost",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Zaključeno v tem tečaju ({num})",
+    "otherCoursesSessions": "Drugi tečaji ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, pridobljenih {xp} XP",
+    "currentMission": "Trenutna misija"
 }

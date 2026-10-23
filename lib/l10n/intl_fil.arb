@@ -10862,5 +10862,19 @@
     "activityCompleted": "Nakumpleto",
     "completedTimes": "Nakumpleto nang {count} beses",
     "classLocation": "Lokasyon ng klase",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Conversation {xp}",
+    "xpIncludingGoals": "kasama ang {xp} mula sa mga layunin",
+    "missionOtherLanguageNotice": "Ang Misyon na ito ay mula sa kursong nasa {language}. Ang iyong pag-unlad dito ay mabibilang lamang habang ikaw ay nag-aaral ng {language}.",
+    "missionLanguageMismatchDesc": "Ang Misyon na ito ay mula sa kursong nasa {language}. Palitan ang iyong target na wika sa {language}?",
+    "xpBySkillTitle": "Ayon sa kasanayan",
+    "missionNextActivity": "Susunod na aktibidad",
+    "missionContinueActivity": "Ipagpatuloy ang aktibidad",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Tapos na sa kursong ito ({num})",
+    "otherCoursesSessions": "Iba pang kurso ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP nakuha",
+    "currentMission": "Kasalukuyang misyon"
 }

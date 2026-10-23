@@ -4,17 +4,21 @@
 // network. Nothing is locked anymore; progression only ranks (#7186). Design:
 // quests.instructions.md.
 
+import 'package:fluffychat/features/quests/activity_family.dart';
+
 /// The XP a learner must earn under a Mission for it to count as complete
-/// (#9420) when the course sets no override: the Standard preset, sized from
-/// measured sessions as two activities with their goals at typical assistance
-/// use. The instructor picks a preset or a custom value in the admin dashboard
-/// (org quests-and-learning-objectives doc, "XP per objective").
-const int kDefaultXpToCompleteObjective = 1600;
+/// (#9420) when the course sets no override: the Standard preset. Lowered
+/// together with [kGoalXp] (#9601) to stay generally balanced. The instructor
+/// picks a preset or a custom value in the admin dashboard (org
+/// quests-and-learning-objectives doc, "XP per objective").
+const int kDefaultXpToCompleteObjective = 1000;
 
 /// What one awarded activity goal — a checkmark — pays into the session's
 /// activity XP, flat. Goals guide the conversation and reward it; the XP is
-/// what completes the Mission (org activities doc, "Activity XP").
-const int kGoalXp = 100;
+/// what completes the Mission (org activities doc, "Activity XP"). Lowered
+/// together with [kDefaultXpToCompleteObjective] (#9601) to stay generally
+/// balanced.
+const int kGoalXp = 50;
 
 /// One course's ordered objective sequence and the activities that satisfy each
 /// objective, plus the XP threshold that completes an objective. Built from a
@@ -49,6 +53,11 @@ class CourseLoOutline {
   /// setting, or [kDefaultXpToCompleteObjective].
   final int xpToComplete;
 
+  /// What the course credits beyond the shown activities: its hidden and
+  /// removed activities, and each activity's copies. [CourseCredit.none] for
+  /// a course without a copy, where only [activityIdsByLo] counts.
+  final CourseCredit credit;
+
   const CourseLoOutline({
     required this.courseId,
     this.questId,
@@ -56,5 +65,6 @@ class CourseLoOutline {
     required this.activityIdsByLo,
     this.lemmasByLo = const {},
     this.xpToComplete = kDefaultXpToCompleteObjective,
+    this.credit = CourseCredit.none,
   });
 }

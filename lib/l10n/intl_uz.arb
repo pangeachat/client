@@ -10009,5 +10009,19 @@
     "activityCompleted": "Yakunlandi",
     "completedTimes": "{count} marta yakunlandi",
     "classLocation": "Dars joylashuvi",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Suhbatdan {xp}",
+    "xpIncludingGoals": "maqsadlardan {xp} shu jumladan",
+    "missionOtherLanguageNotice": "Bu topshiriq {language} kursidan. Undagi muvaffaqiyatingiz faqat {language} o'rganayotganingizda hisobga olinadi.",
+    "missionLanguageMismatchDesc": "Bu topshiriq {language} kursidan. Maqsadli tilingizni {language} ga o'zgartirasizmi?",
+    "xpBySkillTitle": "Ko'nikma bo'yicha",
+    "missionNextActivity": "Keyingi faoliyat",
+    "missionContinueActivity": "Faoliyatni davom ettirish",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Ushbu kursda yakunlandi ({num})",
+    "otherCoursesSessions": "Boshqa kurslar ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP olindi",
+    "currentMission": "Joriy topshiriq"
 }

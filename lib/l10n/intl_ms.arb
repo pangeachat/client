@@ -2467,5 +2467,19 @@
     "activityCompleted": "Selesai",
     "completedTimes": "Selesai {count} kali",
     "classLocation": "Lokasi kelas",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Perbualan {xp}",
+    "xpIncludingGoals": "termasuk {xp} daripada matlamat",
+    "missionOtherLanguageNotice": "Misi ini adalah daripada kursus dalam {language}. Kemajuan anda hanya dikira semasa anda mempelajari {language}.",
+    "missionLanguageMismatchDesc": "Misi ini adalah daripada kursus dalam {language}. Tukar bahasa sasaran anda kepada {language}?",
+    "xpBySkillTitle": "Mengikut kemahiran",
+    "missionNextActivity": "Aktiviti seterusnya",
+    "missionContinueActivity": "Teruskan aktiviti",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Selesai dalam kursus ini ({num})",
+    "otherCoursesSessions": "Kursus lain ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP diperoleh",
+    "currentMission": "Misi semasa"
 }

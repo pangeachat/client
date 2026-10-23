@@ -17,8 +17,8 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 /// Coverage for #8481: the course-ping bell was pinned to the Open/joinable
 /// green on every surface, so on a Waiting (purple) activity card it read as a
-/// foreign chip. Its fill now follows the badged surface's state hue, and the
-/// course plan's card hands it the very state that colours the card.
+/// foreign chip. Its fill now follows the badged surface's state hue; on the
+/// course plan's card it rides the card's own state pill (#9559).
 void main() {
   setUp(() {
     // The card's image widget reads Environment.cmsApi before deciding whether
@@ -102,6 +102,8 @@ void main() {
         SizedBox(
           width: 400.0,
           child: ObjectiveSection(
+            index: 1,
+            missionCount: 1,
             group: QuestObjectiveGroup(
               objective: LearningObjective(
                 id: 'lo-1',
@@ -110,8 +112,7 @@ void main() {
               activities: [QuestActivity(activityId: activityId, plan: plan())],
             ),
             onTap: (_) {},
-            userStarsByActivity: (_) => 0,
-            hasCompletedActivity: (_) => complete,
+            xpByActivity: (_) => 0,
             liveStateByActivity: (_) => (
               state: state,
               openSessions: state == ActivityPinState.joinable ? 1 : 0,
@@ -132,50 +133,31 @@ void main() {
         .widget<ActivitySuggestionCard>(find.byType(ActivitySuggestionCard))
         .pinState;
 
-    testWidgets("takes the Waiting card's purple, not the joinable green", (
-      tester,
-    ) async {
-      await pump(tester, section(state: ActivityPinState.ongoingPending));
-      expect(cardState(tester), ActivityPinState.ongoingPending);
-      expect(
-        badgeFill(tester),
-        ActivityPinState.ongoingPending.bodyColor(
-          tester.element(find.byType(CoursePingBadge)),
-        ),
-      );
-      expect(
-        badgeFill(tester),
-        isNot(
-          ActivityPinState.joinable.bodyColor(
-            tester.element(find.byType(CoursePingBadge)),
-          ),
-        ),
-      );
-    });
-
-    testWidgets("takes the Ongoing card's purple", (tester) async {
-      await pump(tester, section(state: ActivityPinState.ongoingActive));
-      expect(cardState(tester), ActivityPinState.ongoingActive);
-      expect(
-        badgeFill(tester),
-        ActivityPinState.ongoingActive.bodyColor(
-          tester.element(find.byType(CoursePingBadge)),
-        ),
-      );
-    });
-
-    testWidgets('stays green on an Open card, which is green already', (
-      tester,
-    ) async {
-      await pump(tester, section(state: ActivityPinState.joinable));
-      expect(cardState(tester), ActivityPinState.joinable);
-      expect(
-        badgeFill(tester),
-        ActivityPinState.joinable.bodyColor(
-          tester.element(find.byType(CoursePingBadge)),
-        ),
-      );
-    });
+    // A card with a live state rides the bell in its own state pill
+    // (#9559), so it takes the card's hue by construction and there is no
+    // separate badge to colour.
+    for (final state in [
+      ActivityPinState.ongoingPending,
+      ActivityPinState.ongoingActive,
+      ActivityPinState.joinable,
+    ]) {
+      testWidgets('rides the ${state.name} card\'s own state pill', (
+        tester,
+      ) async {
+        await pump(tester, section(state: state));
+        expect(cardState(tester), state);
+        expect(
+          tester
+              .widget<ActivitySuggestionCard>(
+                find.byType(ActivitySuggestionCard),
+              )
+              .pinged,
+          isTrue,
+        );
+        expect(find.byType(CoursePingBadge), findsNothing);
+        expect(find.byIcon(Icons.notifications_outlined), findsOneWidget);
+      });
+    }
 
     testWidgets('falls back to green on a card with no state fill', (
       tester,
@@ -190,8 +172,8 @@ void main() {
       );
     });
 
-    // A completed activity keeps its live state (#9420): the card frames it
-    // and stamps the completion beside it, so the bell keeps that state's hue.
+    // A completed activity keeps its live state (#9420), so its bell stays
+    // in that state's pill.
     testWidgets('follows a completed card, which keeps its live state', (
       tester,
     ) async {
@@ -200,12 +182,8 @@ void main() {
         section(state: ActivityPinState.ongoingPending, complete: true),
       );
       expect(cardState(tester), ActivityPinState.ongoingPending);
-      expect(
-        badgeFill(tester),
-        ActivityPinState.ongoingPending.bodyColor(
-          tester.element(find.byType(CoursePingBadge)),
-        ),
-      );
+      expect(find.byType(CoursePingBadge), findsNothing);
+      expect(find.byIcon(Icons.notifications_outlined), findsOneWidget);
     });
   });
 }

@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/common/widgets/embed_pointer_shield.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_header_constants.dart';
-import 'package:fluffychat/routes/chat/activity_sessions/goal_header_xp_ring.dart';
 
 /// The floating goal-header card shared by the live session and the start/
-/// summary pages. It crossfades between its [collapsed] face (star summary +
+/// summary pages. It crossfades between its [collapsed] face (goal diamonds +
 /// active goal) and its [expanded] face (goal list + any actions) as it grows.
 /// When [isComplete] the whole card turns gold.
 ///
@@ -22,24 +19,18 @@ class ActivityGoalHeaderCard extends StatelessWidget {
   final bool showDropdown;
   final bool isComplete;
 
-  /// The live session, when the card heads one: it wears the XP ring
-  /// ([GoalHeaderXpRing]). Null on the start and summary pages.
-  final Room? xpRingRoom;
-
   const ActivityGoalHeaderCard({
     super.key,
     required this.collapsed,
     required this.expanded,
     required this.showDropdown,
     this.isComplete = false,
-    this.xpRingRoom,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final gold = theme.pangea.goldFixedDim;
-    final xpRingRoom = this.xpRingRoom;
     final card = AnimatedContainer(
       duration: FluffyThemes.animationDuration,
       curve: Curves.easeInOut,
@@ -105,9 +96,7 @@ class ActivityGoalHeaderCard extends StatelessWidget {
           constraints: const BoxConstraints(
             maxWidth: FluffyThemes.columnWidth * 1.5,
           ),
-          child: xpRingRoom == null
-              ? card
-              : GoalHeaderXpRing(room: xpRingRoom, child: card),
+          child: card,
         ),
       ),
     );

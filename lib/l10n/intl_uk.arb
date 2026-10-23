@@ -10005,5 +10005,19 @@
     "activityCompleted": "Завершено",
     "completedTimes": "Завершено {count} разів",
     "classLocation": "Місце проведення заняття",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Розмова {xp}",
+    "xpIncludingGoals": "включно з {xp} за цілі",
+    "missionOtherLanguageNotice": "Ця місія з курсу {language}. Ваш прогрес зараховується лише під час вивчення {language}.",
+    "missionLanguageMismatchDesc": "Ця місія з курсу {language}. Змінити цільову мову на {language}?",
+    "xpBySkillTitle": "За навичками",
+    "missionNextActivity": "Наступна вправа",
+    "missionContinueActivity": "Продовжити вправу",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Завершено в цьому курсі ({num})",
+    "otherCoursesSessions": "Інші курси ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, зароблено {xp} XP",
+    "currentMission": "Поточна місія"
 }

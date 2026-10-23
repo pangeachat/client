@@ -2467,5 +2467,19 @@
     "activityCompleted": "Rampung",
     "completedTimes": "Rampung {count} kaping",
     "classLocation": "Lokasi kelas",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Pacelathon {xp}",
+    "xpIncludingGoals": "kalebu {xp} saka gol",
+    "missionOtherLanguageNotice": "Misi iki saka kursus ing {language}. Kemajuanmu mung diitung nalika sinau {language}.",
+    "missionLanguageMismatchDesc": "Misi iki saka kursus ing {language}. Ganti basa targetmu menyang {language}?",
+    "xpBySkillTitle": "Miturut katrampilan",
+    "missionNextActivity": "Aktivitas sabanjure",
+    "missionContinueActivity": "Terusake aktivitas",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Rampung ing kursus iki ({num})",
+    "otherCoursesSessions": "Kursus liyane ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP entuk",
+    "currentMission": "Misi saiki"
 }

@@ -2467,5 +2467,19 @@
     "activityCompleted": "Dovršeno",
     "completedTimes": "Dovršeno {count} puta",
     "classLocation": "Lokacija časa",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Razgovor {xp}",
+    "xpIncludingGoals": "uključujući {xp} iz ciljeva",
+    "missionOtherLanguageNotice": "Ova misija je iz kursa na jeziku {language}. Vaš napredak na njoj se računa samo dok učite {language}.",
+    "missionLanguageMismatchDesc": "Ova misija je iz kursa na jeziku {language}. Želite li promijeniti ciljni jezik na {language}?",
+    "xpBySkillTitle": "Po vještini",
+    "missionNextActivity": "Sljedeća aktivnost",
+    "missionContinueActivity": "Nastavi aktivnost",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Završeno u ovom kursu ({num})",
+    "otherCoursesSessions": "Ostali kursevi ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, osvojeno {xp} XP",
+    "currentMission": "Trenutna misija"
 }

@@ -2467,5 +2467,19 @@
     "activityCompleted": "បានបញ្ចប់",
     "completedTimes": "បានបញ្ចប់ {count} ដង",
     "classLocation": "ទីតាំងថ្នាក់រៀន",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "ការសន្ទនា {xp}",
+    "xpIncludingGoals": "រួមទាំង {xp} ពីគោលដៅ",
+    "missionOtherLanguageNotice": "បេសកកម្មនេះគឺមកពីវគ្គសិក្សាមួយជាភាសា{language}។ វឌ្ឍនភាពរបស់អ្នកលើវាត្រូវបានរាប់បញ្ចូលតែនៅពេលអ្នកកំពុងរៀនភាសា{language}ប៉ុណ្ណោះ។",
+    "missionLanguageMismatchDesc": "បេសកកម្មនេះគឺមកពីវគ្គសិក្សាមួយជាភាសា{language}។ ប្ដូរភាសាគោលដៅរបស់អ្នកទៅជាភាសា{language}ដែរឬទេ?",
+    "xpBySkillTitle": "តាមជំនាញ",
+    "missionNextActivity": "សកម្មភាពបន្ទាប់",
+    "missionContinueActivity": "បន្តសកម្មភាព",
+    "missionPlayTarget": "{action}៖ {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "បានបញ្ចប់ក្នុងវគ្គសិក្សានេះ ({num})",
+    "otherCoursesSessions": "វគ្គសិក្សាផ្សេងទៀត ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, ទទួលបាន {xp} XP",
+    "currentMission": "បេសកកម្មបច្ចុប្បន្ន"
 }

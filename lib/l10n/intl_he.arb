@@ -10916,5 +10916,19 @@
     "activityCompleted": "הושלם",
     "completedTimes": "הושלם {count} פעמים",
     "classLocation": "מיקום השיעור",
-    "xpThresholdSuffix": "/ {threshold} נקודות ניסיון"
+    "xpThresholdSuffix": "/ {threshold} נקודות ניסיון",
+    "xpFromConversation": "שיחה {xp}",
+    "xpIncludingGoals": "כולל {xp} מיעדים",
+    "missionOtherLanguageNotice": "המשימה הזו היא מקורס ב{language}. ההתקדמות שלך בה נספרת רק כשאתה לומד {language}.",
+    "missionLanguageMismatchDesc": "המשימה הזו היא מקורס ב{language}. לשנות את שפת היעד שלך ל{language}?",
+    "xpBySkillTitle": "לפי מיומנות",
+    "missionNextActivity": "הפעילות הבאה",
+    "missionContinueActivity": "המשך פעילות",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "הושלם בקורס זה ({num})",
+    "otherCoursesSessions": "קורסים אחרים ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP נצברו",
+    "currentMission": "המשימה הנוכחית"
 }

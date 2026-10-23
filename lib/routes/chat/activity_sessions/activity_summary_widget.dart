@@ -11,6 +11,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_goals_dropdown.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_carousel.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_visibility.dart';
@@ -117,6 +118,9 @@ class ActivitySummary extends StatelessWidget {
                 goals: goals,
                 completedGoalIds: completedGoalIds,
                 startCollapsed: goalsStartCollapsed,
+                showGoalXp:
+                    room == null ||
+                    CourseLanguageScope.sessionInTargetLanguage(room!),
               ),
             mediaVisibility == null
                 ? carousel

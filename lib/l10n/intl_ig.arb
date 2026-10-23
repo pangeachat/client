@@ -2467,5 +2467,19 @@
     "activityCompleted": "Emechara",
     "completedTimes": "Emechara {count} ugboro",
     "classLocation": "Ebe klasị",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Nkata {xp}",
+    "xpIncludingGoals": "gụnyere {xp} site na ebumnuche",
+    "missionOtherLanguageNotice": "Ozi a sitere na nkuzi dị na {language}. Ọganihu gị na ya na-agụ naanị mgbe ị na-amụ {language}.",
+    "missionLanguageMismatchDesc": "Ozi a sitere na nkuzi dị na {language}. Gbanwee asụsụ ebumnuche gị gaa na {language}?",
+    "xpBySkillTitle": "Site na nka",
+    "missionNextActivity": "Ọrụ ọzọ",
+    "missionContinueActivity": "Gaa n'ihu na ọrụ",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Emechara na nkuzi a ({num})",
+    "otherCoursesSessions": "Nkuzi ndị ọzọ ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP enwetara",
+    "currentMission": "Ozi dị ugbu a"
 }

@@ -10111,5 +10111,19 @@
     "activityCompleted": "已完成",
     "completedTimes": "已完成 {count} 次",
     "classLocation": "上課地點",
-    "xpThresholdSuffix": "/ {threshold} 經驗值"
+    "xpThresholdSuffix": "/ {threshold} 經驗值",
+    "xpFromConversation": "對話 {xp}",
+    "xpIncludingGoals": "包含來自目標的 {xp}",
+    "missionOtherLanguageNotice": "此任務來自 {language} 課程。只有在您學習 {language} 時，您的進度才算數。",
+    "missionLanguageMismatchDesc": "此任務來自 {language} 課程。要將您的目標語言切換為 {language} 嗎？",
+    "xpBySkillTitle": "依技能",
+    "missionNextActivity": "下一個活動",
+    "missionContinueActivity": "繼續活動",
+    "missionPlayTarget": "{action}：{activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "已完成此課程 ({num})",
+    "otherCoursesSessions": "其他課程 ({num})",
+    "activityXpStamp": "{xp} 經驗值",
+    "activityCompletedWithXp": "{completed}，獲得 {xp} 經驗值",
+    "currentMission": "目前任務"
 }

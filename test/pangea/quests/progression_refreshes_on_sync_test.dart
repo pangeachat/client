@@ -190,7 +190,7 @@ void main() {
   );
 
   /// The course's one quest outline: a single Mission over the single
-  /// activity, at the default 300 XP threshold.
+  /// activity, at the default threshold.
   void stubOutline() {
     QuestRepo.debugBuildOutline = (id, {courseRoomId}) async => Result.value(
       QuestOutline(
@@ -228,33 +228,35 @@ void main() {
 
     registerCourseSpace();
     final session = registerSession();
-    MissionXpCache.instance.seed(xpByRoom: {sessionId: 1500});
+    // One goal short of the default threshold.
+    const seeded = kDefaultXpToCompleteObjective - kGoalXp;
+    MissionXpCache.instance.seed(xpByRoom: {sessionId: seeded});
 
     final loader = QuestObjectivesLoader(client: client);
     addTearDown(loader.dispose);
     await loader.loadOutline(questId, courseRoomId: courseRoomId);
 
     // The load-time rollup: the session's XP, no sparkles yet.
-    expect(loader.missionProgress(missionId)?.xp, 1500);
+    expect(loader.missionProgress(missionId)?.xp, seeded);
     expect(
       loader.missionProgress(missionId)?.threshold,
       kDefaultXpToCompleteObjective,
     );
     expect(loader.missionProgress(missionId)?.satisfied, isFalse);
-    expect(loader.questStars?.earned, 0);
+    expect(loader.progression.value.questStars(courseRoomId)?.earned, 0);
 
-    // Two sparkles land as room state on the session room (250 × 1.2 = 300),
-    // and the panel stays mounted — this is the moment the count used to
-    // freeze.
+    // Two goals land as room state on the session room, carrying it past the
+    // threshold, and the panel stays mounted — this is the moment the count
+    // used to freeze.
     awardGoals(session, ['g1', 'g2']);
     emitRoomSync();
     // The rate limiter lets the first tick straight through; a microtask hop
     // is all the stream needs to deliver it.
     await Future<void>.delayed(Duration.zero);
 
-    expect(loader.missionProgress(missionId)?.xp, 1700);
+    expect(loader.missionProgress(missionId)?.xp, seeded + 2 * kGoalXp);
     expect(loader.missionProgress(missionId)?.satisfied, isTrue);
-    expect(loader.questStars?.earned, 1);
+    expect(loader.progression.value.questStars(courseRoomId)?.earned, 1);
   });
 
   test(
@@ -293,7 +295,6 @@ void main() {
     await Future<void>.delayed(Duration.zero);
 
     expect(loader.hasResolvedProgress, isFalse);
-    expect(loader.questStars, isNull);
   });
 
   /// #8938 — collapsing the course card swaps it for the context bar (and

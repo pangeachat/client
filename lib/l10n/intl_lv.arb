@@ -10005,5 +10005,19 @@
     "activityCompleted": "Pabeigts",
     "completedTimes": "Pabeigts {count} reizes",
     "classLocation": "Nodarbības vieta",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Saruna {xp}",
+    "xpIncludingGoals": "ieskaitot {xp} no mērķiem",
+    "missionOtherLanguageNotice": "Šī misija ir no kursa valodā {language}. Jūsu progress tajā tiks ieskaitīts tikai tad, ja mācīsities valodu {language}.",
+    "missionLanguageMismatchDesc": "Šī misija ir no kursa valodā {language}. Vai vēlaties mainīt mērķa valodu uz {language}?",
+    "xpBySkillTitle": "Pēc prasmēm",
+    "missionNextActivity": "Nākamā aktivitāte",
+    "missionContinueActivity": "Turpināt aktivitāti",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Pabeigts šajā kursā ({num})",
+    "otherCoursesSessions": "Citi kursi ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, iegūti {xp} XP",
+    "currentMission": "Pašreizējā misija"
 }

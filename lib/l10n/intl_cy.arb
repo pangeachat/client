@@ -2467,5 +2467,19 @@
     "activityCompleted": "Wedi'i chwblhau",
     "completedTimes": "Wedi'i chwblhau {count} gwaith",
     "classLocation": "Lleoliad dosbarth",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Sgwrs {xp}",
+    "xpIncludingGoals": "gan gynnwys {xp} o nodau",
+    "missionOtherLanguageNotice": "Mae'r Genhadaeth hon o gwrs yn {language}. Dim ond tra byddwch chi'n dysgu {language} y bydd eich cynnydd arni'n cyfrif.",
+    "missionLanguageMismatchDesc": "Mae'r Genhadaeth hon o gwrs yn {language}. Newid eich iaith darged i {language}?",
+    "xpBySkillTitle": "Yn ôl sgil",
+    "missionNextActivity": "Gweithgaredd nesaf",
+    "missionContinueActivity": "Parhau â'r gweithgaredd",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Wedi gorffen yn y cwrs hwn ({num})",
+    "otherCoursesSessions": "Cyrsiau eraill ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP wedi'u hennill",
+    "currentMission": "Cenhadaeth gyfredol"
 }

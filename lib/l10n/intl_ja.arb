@@ -10771,5 +10771,19 @@
     "activityCompleted": "完了",
     "completedTimes": "{count}回完了しました",
     "classLocation": "クラスの場所",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "会話 {xp}",
+    "xpIncludingGoals": "目標からの {xp} を含む",
+    "missionOtherLanguageNotice": "このミッションは{language}のコースからのものです。このミッションの進捗は、{language}を学習している間のみカウントされます。",
+    "missionLanguageMismatchDesc": "このミッションは{language}のコースからのものです。目標言語を{language}に切り替えますか？",
+    "xpBySkillTitle": "スキル別",
+    "missionNextActivity": "次のアクティビティ",
+    "missionContinueActivity": "アクティビティを続ける",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "このコースで完了 ({num})",
+    "otherCoursesSessions": "その他のコース ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}、{xp} XP獲得",
+    "currentMission": "現在のミッション"
 }

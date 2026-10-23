@@ -6,6 +6,7 @@ import 'package:badges/badges.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
@@ -97,8 +98,13 @@ class ChatView extends StatelessWidget {
     // In-session activity surfaces read room.activityPlan, which for a v3
     // reference room hydrates asynchronously (ActivityPlanRepo). Rebuild the
     // subtree when the plan lands so it isn't blank until an unrelated sync.
+    // Settings changes rebuild it too: the activity-image background setting
+    // decides whether the wallpaper shows (ChatController.showWallpaper).
     return ListenableBuilder(
-      listenable: ActivityPlanRepo.instance,
+      listenable: Listenable.merge([
+        ActivityPlanRepo.instance,
+        AppSettings.changes,
+      ]),
       builder: (context, _) => _buildContent(context),
     );
   }
@@ -293,7 +299,7 @@ class ChatView extends StatelessWidget {
               body: Stack(
                 // Pangea#
                 children: <Widget>[
-                  if (accountConfig.wallpaperUrl != null)
+                  if (controller.showWallpaper)
                     ExcludeSemantics(
                       // #Pangea: decorative blurred wallpaper, not content. // Pangea#
                       child: Opacity(

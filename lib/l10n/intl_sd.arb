@@ -2467,5 +2467,19 @@
     "activityCompleted": "مڪمل ٿيل",
     "completedTimes": "{count} ڀيرا مڪمل ٿيل",
     "classLocation": "ڪلاس جي جڳھ",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "ڳالهه ٻولهه {xp}",
+    "xpIncludingGoals": "بشمول {xp} مقصدن مان",
+    "missionOtherLanguageNotice": "هي مشن {language} ۾ هڪ ڪورس مان آهي. ان تي توهان جي ترقي صرف تڏهن شمار ٿيندي جڏهن توهان {language} سکي رهيا آهيو.",
+    "missionLanguageMismatchDesc": "هي مشن {language} ۾ هڪ ڪورس مان آهي. ڇا توهان پنهنجي ٽارگيٽ ٻولي {language} ۾ تبديل ڪندا؟",
+    "xpBySkillTitle": "مهارت جي لحاظ کان",
+    "missionNextActivity": "ايندڙ سرگرمي",
+    "missionContinueActivity": "سرگرمي جاري رکو",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "هن ڪورس ۾ مڪمل ٿيو ({num})",
+    "otherCoursesSessions": "ٻيا ڪورس ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP حاصل ڪيا",
+    "currentMission": "موجوده مشن"
 }

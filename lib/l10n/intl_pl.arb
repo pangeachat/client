@@ -10090,5 +10090,19 @@
     "activityCompleted": "Ukończono",
     "completedTimes": "Ukończono {count} razy",
     "classLocation": "Lokalizacja zajęć",
-    "xpThresholdSuffix": "/ {threshold} PD"
+    "xpThresholdSuffix": "/ {threshold} PD",
+    "xpFromConversation": "Rozmowa {xp}",
+    "xpIncludingGoals": "w tym {xp} z celów",
+    "missionOtherLanguageNotice": "Ta misja pochodzi z kursu w języku {language}. Twoje postępy w niej liczą się tylko wtedy, gdy uczysz się języka {language}.",
+    "missionLanguageMismatchDesc": "Ta misja pochodzi z kursu w języku {language}. Czy chcesz zmienić język docelowy na {language}?",
+    "xpBySkillTitle": "Według umiejętności",
+    "missionNextActivity": "Następna aktywność",
+    "missionContinueActivity": "Kontynuuj aktywność",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Ukończono w tym kursie ({num})",
+    "otherCoursesSessions": "Inne kursy ({num})",
+    "activityXpStamp": "{xp} PD",
+    "activityCompletedWithXp": "{completed}, zdobyto {xp} PD",
+    "currentMission": "Obecna misja"
 }

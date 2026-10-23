@@ -2467,5 +2467,19 @@
     "activityCompleted": "Nakompleto",
     "completedTimes": "Nakompleto {count} ka beses",
     "classLocation": "Lokasyon sa klase",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Panaghisgot {xp}",
+    "xpIncludingGoals": "apil ang {xp} gikan sa mga tumong",
+    "missionOtherLanguageNotice": "Kini nga Misyon gikan sa usa ka kurso sa {language}. Ang imong pag-uswag niini maihap lang samtang nagkat-on ka sa {language}.",
+    "missionLanguageMismatchDesc": "Kini nga Misyon gikan sa usa ka kurso sa {language}. Ibalhin ang imong target nga pinulongan ngadto sa {language}?",
+    "xpBySkillTitle": "Pinaagi sa kahanas",
+    "missionNextActivity": "Sunod nga kalihokan",
+    "missionContinueActivity": "Ipadayon ang kalihokan",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Nahuman na niining kursuha ({num})",
+    "otherCoursesSessions": "Ubang mga kurso ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP nakuha",
+    "currentMission": "Karon nga misyon"
 }

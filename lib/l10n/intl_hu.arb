@@ -10108,5 +10108,19 @@
     "activityCompleted": "Elkészült",
     "completedTimes": "{count} alkalommal elvégezve",
     "classLocation": "Az óra helye",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Beszélgetés {xp}",
+    "xpIncludingGoals": "beleértve {xp} a célokból",
+    "missionOtherLanguageNotice": "Ez a küldetés egy {language} nyelvű kurzusból származik. Az ezen elért haladásod csak akkor számít, ha {language} nyelvet tanulsz.",
+    "missionLanguageMismatchDesc": "Ez a küldetés egy {language} nyelvű kurzusból származik. Átváltod a célnyelvedet {language} nyelvre?",
+    "xpBySkillTitle": "Készség szerint",
+    "missionNextActivity": "Következő tevékenység",
+    "missionContinueActivity": "Tevékenység folytatása",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Befejezve ebben a kurzusban ({num})",
+    "otherCoursesSessions": "Egyéb kurzusok ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP szerezve",
+    "currentMission": "Jelenlegi küldetés"
 }

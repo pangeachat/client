@@ -10132,5 +10132,19 @@
     "activityCompleted": "Completada",
     "completedTimes": "Completada {count} vegades",
     "classLocation": "Ubicació de la classe",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Conversa {xp}",
+    "xpIncludingGoals": "incloent {xp} d'objectius",
+    "missionOtherLanguageNotice": "Aquesta missió és d'un curs de {language}. El teu progrés només compta mentre aprens {language}.",
+    "missionLanguageMismatchDesc": "Aquesta missió és d'un curs de {language}. Vols canviar el teu idioma objectiu a {language}?",
+    "xpBySkillTitle": "Per habilitat",
+    "missionNextActivity": "Següent activitat",
+    "missionContinueActivity": "Continuar activitat",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Acabat en aquest curs ({num})",
+    "otherCoursesSessions": "Altres cursos ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP guanyats",
+    "currentMission": "Missió actual"
 }

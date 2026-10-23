@@ -2467,5 +2467,19 @@
     "activityCompleted": "Аяқталды",
     "completedTimes": "{count} рет аяқталды",
     "classLocation": "Сабақ орны",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Әңгіме {xp}",
+    "xpIncludingGoals": "мақсаттардан {xp} қоса алғанда",
+    "missionOtherLanguageNotice": "Бұл миссия {language} тіліндегі курстан. Ондағы ілгерілеуіңізді тек {language} тілін үйреніп жатқанда ғана есептеледі.",
+    "missionLanguageMismatchDesc": "Бұл миссия {language} тіліндегі курстан. Мақсатты тіліңізді {language} тіліне ауыстырасыз ба?",
+    "xpBySkillTitle": "Дағды бойынша",
+    "missionNextActivity": "Келесі әрекет",
+    "missionContinueActivity": "Әрекетті жалғастыру",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Осы курста аяқталды ({num})",
+    "otherCoursesSessions": "Басқа курстар ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP алынды",
+    "currentMission": "Ағымдағы миссия"
 }

@@ -9,6 +9,11 @@ class GoalHeaderConstants {
   /// centered while the chevron sits flush right.
   static const double chevronSlot = 24.0;
 
+  /// The width of each side slot when the header carries the session's XP at
+  /// its left (#9559): the XP's room, mirrored on the chevron's side so the
+  /// diamonds stay centred. A longer total scales down to fit.
+  static const double xpSlot = 64.0;
+
   /// Margin between the card's border and whatever it floats over.
   static double cardMargin(BuildContext context) =>
       FluffyThemes.isColumnMode(context) ? 8.0 : 4.0;
@@ -29,6 +34,11 @@ class GoalHeaderConstants {
   /// pinned top row). Sized to hold ~3 two-line rows, so a 4-goal list — one
   /// pinned plus three here — never scrolls however long each goal is.
   static const double goalsScrollMaxHeight = 190.0;
+
+  /// The same cap when every goal scrolls — the in-session list, whose top
+  /// row is the session's XP rather than the first goal (#9559): one more
+  /// two-line row, so a 4-goal list still never scrolls.
+  static const double allGoalsScrollMaxHeight = 250.0;
 
   /// The emphasized 15px label shared by the goal header's title and its
   /// active-goal subtitle, across both faces and both wrappers.

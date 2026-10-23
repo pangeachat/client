@@ -12,13 +12,14 @@ import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
-import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/course_language_scope.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
@@ -44,6 +45,11 @@ abstract class UserClusterViewModel {
   LanguageModel? get userL2;
 
   int get starsEarned;
+
+  /// The star count is still on its way — the shared progression hasn't
+  /// resolved from loaded outlines, or the XP it counts is being read — so
+  /// the tracker shows a loading state rather than zero (#9559).
+  bool get starsLoading;
 
   int get numVocabConstructs;
 
@@ -100,6 +106,8 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
     // A star is a completed Mission (#9436), read from the shared progression
     // the map and the course panel resolve; recount when it changes.
     QuestObjectivesLoader.sharedProgression.addListener(_onProgression);
+    // The star count shows a loading state while the XP it counts is read.
+    MissionXpCache.instance.addListener(_onProgression);
     // The cluster outlives the profile page that changes the avatar, so it
     // relies on the change being announced: by the page's own write
     // (OwnProfileClientExtension) and by the member events sync raises (#8330).
@@ -126,6 +134,7 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
     _disposed = true;
     ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
     QuestObjectivesLoader.sharedProgression.removeListener(_onProgression);
+    MissionXpCache.instance.removeListener(_onProgression);
     _ownProfileUpdates.cancel();
     _profileRefreshQuietTimer?.cancel();
     _planHydrationStream.close();
@@ -177,22 +186,29 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
       MatrixState.pangeaController.userController.userL2;
 
   /// Stars are completed Missions (#9436), counted once per Mission across
-  /// the joined courses in the learner's target language. A course with no
-  /// language recorded counts, the same fallback the leaderboard uses.
+  /// the JOINED courses in the learner's target language — never a course
+  /// the map is only previewing (#9559). A course with no language recorded
+  /// counts, the same fallback the leaderboard uses.
   @override
   int get starsEarned {
     final userL2 = this.userL2;
     if (userL2 == null) return 0;
     return QuestObjectivesLoader.sharedProgression.value
-        .completedMissionIds(
-          inScope: (courseId) {
-            final courseL2 = client.getRoomById(courseId)?.coursePlan?.l2;
-            return courseL2 == null ||
-                courseL2.split('-').first == userL2.langCodeShort;
-          },
-        )
+        .completedMissionIds(inScope: _joinedInTargetLanguage)
         .length;
   }
+
+  bool _joinedInTargetLanguage(String courseId) {
+    final course = client.getRoomById(courseId);
+    return course != null &&
+        course.membership == Membership.join &&
+        CourseLanguageScope.courseInTargetLanguage(course);
+  }
+
+  @override
+  bool get starsLoading =>
+      !QuestObjectivesLoader.sharedProgressionReady ||
+      MissionXpCache.instance.loading;
 
   @override
   int get numVocabConstructs =>

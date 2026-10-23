@@ -2467,5 +2467,19 @@
     "activityCompleted": "Imekamilika",
     "completedTimes": "Imekamilika mara {count}",
     "classLocation": "Mahali pa darasa",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Mazungumzo {xp}",
+    "xpIncludingGoals": "ikijumuisha {xp} kutoka malengo",
+    "missionOtherLanguageNotice": "Dhamira hii inatoka katika kozi ya {language}. Maendeleo yako juu yake huhesabiwa tu unapojifunza {language}.",
+    "missionLanguageMismatchDesc": "Dhamira hii inatoka katika kozi ya {language}. Badilisha lugha unayolenga iwe {language}?",
+    "xpBySkillTitle": "Kwa ujuzi",
+    "missionNextActivity": "Shughuli inayofuata",
+    "missionContinueActivity": "Endelea na shughuli",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Imekamilika katika kozi hii ({num})",
+    "otherCoursesSessions": "Kozi zingine ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP imepatikana",
+    "currentMission": "Dhamira ya sasa"
 }

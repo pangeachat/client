@@ -13,8 +13,6 @@ import 'package:fluffychat/features/navigation/token_params/course_details_token
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
-import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
-import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -65,7 +63,6 @@ class SpaceDetails extends StatefulWidget {
 }
 
 class SpaceDetailsController extends State<SpaceDetails> {
-  late CourseInfoSummariesModel roomSummariesModel;
   late final QuestObjectivesLoader _objectivesProvider;
 
   /// A ping can land WHILE the course page is open — nothing remounts then,
@@ -96,13 +93,7 @@ class SpaceDetailsController extends State<SpaceDetails> {
       client: Matrix.of(context).client,
     );
 
-    roomSummariesModel = CourseInfoSummariesModel(
-      {},
-      activitiesToCompleteOverride: room.teacherMode.activitiesToUnlockTopic,
-    );
-
     _objectivesProvider.loadOutline(_questId, courseRoomId: room.id);
-    _loadSummaries();
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       _handleCoursePing();
@@ -139,24 +130,11 @@ class SpaceDetailsController extends State<SpaceDetails> {
   void didUpdateWidget(covariant SpaceDetails oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.room.id != widget.room.id) {
-      // Clear the previous course's summaries synchronously so the new
-      // course can't briefly render the old completion marks while
-      // _loadSummaries is in flight.
-      roomSummariesModel = CourseInfoSummariesModel(
-        {},
-        activitiesToCompleteOverride: room.teacherMode.activitiesToUnlockTopic,
-      );
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) SpaceGoneGate.maybeShowDialog(context, room.id);
       });
       _handleCoursePing();
       _objectivesProvider.loadOutline(_questId, courseRoomId: room.id);
-      _loadSummaries();
-    }
-
-    if (widget.activeTab == SpaceSettingsTabs.course &&
-        oldWidget.activeTab != SpaceSettingsTabs.course) {
-      _loadSummaries();
     }
   }
 
@@ -327,38 +305,6 @@ class SpaceDetailsController extends State<SpaceDetails> {
 
     if (resp.isError || resp.result == null || !mounted) return;
     NavigationUtil.goToSpaceRoute(resp.result, ['invite'], context);
-  }
-
-  Future<void> _loadSummaries() async {
-    try {
-      final roomIds = room.spaceChildren
-          .map((c) => c.roomId)
-          .whereType<String>()
-          .toList();
-
-      final roomSummariesResponse = await room.client.loadRoomSummaries(
-        roomIds,
-        l1Code: MatrixState.pangeaController.userController.userL1Code,
-      );
-
-      if (!mounted) return;
-      setState(() {
-        roomSummariesModel = CourseInfoSummariesModel(
-          roomSummariesResponse,
-          activitiesToCompleteOverride:
-              room.teacherMode.activitiesToUnlockTopic,
-        );
-      });
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "message": "Failed to load activity summaries",
-          "roomId": room.id,
-        },
-      );
-    }
   }
 
   @override

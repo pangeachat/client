@@ -2467,5 +2467,19 @@
     "activityCompleted": "Lest",
     "completedTimes": "Lest {count} darbiet",
     "classLocation": "Post tal-klassi",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Konverżazzjoni {xp}",
+    "xpIncludingGoals": "inkluż {xp} mill-miri",
+    "missionOtherLanguageNotice": "Din il-Missjoni hija minn kors f'{language}. Il-progress tiegħek fuqha jgħodd biss waqt li tkun qed titgħallem {language}.",
+    "missionLanguageMismatchDesc": "Din il-Missjoni hija minn kors f'{language}. Tibdel il-lingwa fil-mira tiegħek għal {language}?",
+    "xpBySkillTitle": "Skont il-ħila",
+    "missionNextActivity": "Attività li jmiss",
+    "missionContinueActivity": "Kompli l-attività",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Lest f'dan il-kors ({num})",
+    "otherCoursesSessions": "Korsijiet oħra ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP miksuba",
+    "currentMission": "Missjoni kurrenti"
 }

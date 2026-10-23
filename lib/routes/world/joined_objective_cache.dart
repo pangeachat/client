@@ -100,15 +100,44 @@ class JoinedObjectiveCache {
   /// map ranks toward the viewed course's next Mission even before it's
   /// joined. Pure and cheap; the controller calls it where the inputs change
   /// (course join/leave, an XP update), not per frame.
+  ///
+  /// [inScope] keeps only the courses whose progress counts — the app passes
+  /// [CourseLanguageScope.courseInTargetLanguage], so a course in another
+  /// language resolves no progress at all rather than its goals without its XP
+  /// (#9559). Null resolves every outline.
   ProgressionResolution resolution(
     Map<String, int> xpByActivity, {
     Iterable<CourseLoOutline> extraOutlines = const [],
     Map<String, int> practiceXpByLemma = const {},
+    bool Function(String courseId)? inScope,
   }) => resolveProgression(
-    outlines: [..._outlines, ...extraOutlines],
+    outlines: [
+      for (final outline in [..._outlines, ...extraOutlines])
+        if (inScope?.call(outline.courseId) ?? true) outline,
+    ],
     xpByActivity: xpByActivity,
     practiceXpByLemma: practiceXpByLemma,
   );
+
+  /// [starsByActivity] with each course's shown activities credited across
+  /// their copies, for the pins the map draws by activity id. Raw stars are
+  /// kept for every other activity; a credited one takes the larger of its own
+  /// and the credited sum, across the in-scope courses.
+  Map<String, int> creditedStars(
+    Map<String, int> starsByActivity, {
+    Iterable<CourseLoOutline> extraOutlines = const [],
+  }) {
+    var out = starsByActivity;
+    for (final outline in [..._outlines, ...extraOutlines]) {
+      if (outline.credit.isEmpty) continue;
+      final overlaid = outline.credit.overlayOn(starsByActivity);
+      if (identical(out, starsByActivity)) out = {...starsByActivity};
+      for (final entry in overlaid.entries) {
+        if (entry.value > (out[entry.key] ?? 0)) out[entry.key] = entry.value;
+      }
+    }
+    return out;
+  }
 
   /// Rebuild from the joined courses' quest outlines. [outlineOf] resolves a
   /// course key to its outline (defaults to the v3 quest read layer, which
@@ -146,6 +175,7 @@ class JoinedObjectiveCache {
               lemmasByLo: o.lemmasByLo,
               xpToComplete:
                   xpToCompleteOf?.call(key) ?? kDefaultXpToCompleteObjective,
+              credit: o.credit,
             ),
           );
         } catch (e, s) {
@@ -219,6 +249,8 @@ class JoinedObjectiveCache {
     final outlineResult = await QuestRepo.outline(
       uuid,
       courseRoomId: courseRoomId,
+      courseLoIds: rules.missions?.allLoIds ?? const {},
+      copyRevision: rules.revision,
     );
     final outline = outlineResult.result;
     if (outline == null) {

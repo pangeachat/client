@@ -10005,5 +10005,19 @@
     "activityCompleted": "Osatuta",
     "completedTimes": "{count} aldiz osatuta",
     "classLocation": "Klasearen kokapena",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Elkarrizketa {xp}",
+    "xpIncludingGoals": "helburuetatik {xp} barne",
+    "missionOtherLanguageNotice": "Misio hau {language} ikastaro batekoa da. Bertan egindako aurrerapenak {language} ikasten ari zaren bitartean bakarrik zenbatuko dira.",
+    "missionLanguageMismatchDesc": "Misio hau {language} ikastaro batekoa da. Aldatu zure xede-hizkuntza {language} hizkuntzara?",
+    "xpBySkillTitle": "Trebetasunaren arabera",
+    "missionNextActivity": "Hurrengo jarduera",
+    "missionContinueActivity": "Jarraitu jarduerarekin",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Ikastaro honetan amaituta ({num})",
+    "otherCoursesSessions": "Beste ikastaro batzuk ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP irabazi dira",
+    "currentMission": "Uneko misioa"
 }

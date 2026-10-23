@@ -10977,5 +10977,19 @@
     "activityCompleted": "Выполнено",
     "completedTimes": "Выполнено {count} раз",
     "classLocation": "Место проведения занятия",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Разговор {xp}",
+    "xpIncludingGoals": "включая {xp} за цели",
+    "missionOtherLanguageNotice": "Эта миссия из курса на {language}. Ваш прогресс по ней учитывается только при изучении {language}.",
+    "missionLanguageMismatchDesc": "Эта миссия из курса на {language}. Переключить целевой язык на {language}?",
+    "xpBySkillTitle": "По навыкам",
+    "missionNextActivity": "Следующее задание",
+    "missionContinueActivity": "Продолжить задание",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Завершено в этом курсе ({num})",
+    "otherCoursesSessions": "Другие курсы ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, получено {xp} XP",
+    "currentMission": "Текущая миссия"
 }

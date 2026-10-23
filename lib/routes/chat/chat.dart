@@ -69,6 +69,7 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_background.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_extension.dart';
 import 'package:fluffychat/routes/chat/chat_view.dart';
@@ -118,6 +119,7 @@ import 'package:fluffychat/routes/chat/voice_analytics_feedback.dart';
 import 'package:fluffychat/routes/settings/settings_learning/disable_language_tools_popup.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_repo.dart';
+import 'package:fluffychat/utils/account_config.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
 import 'package:fluffychat/utils/file_selector.dart';
@@ -369,6 +371,12 @@ class ChatController extends State<ChatPageWithRoom>
       _scrolledUp || timeline?.allowNewEvent == false;
 
   bool get selectMode => selectedEvents.isNotEmpty;
+
+  /// Whether the learner's wallpaper is drawn behind this chat: they have one,
+  /// and the activity image isn't replacing it.
+  bool get showWallpaper =>
+      room.client.applicationAccountConfig.wallpaperUrl != null &&
+      !ActivityChatBackground.replacesWallpaper(room.activityPlan?.ownImageURL);
 
   final int _loadHistoryCount = 100;
 

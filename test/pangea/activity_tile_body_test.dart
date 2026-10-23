@@ -16,13 +16,7 @@ void main() {
   // avatar, and an unloaded dotenv throws before it can paint.
   setUpAll(() => dotenv.testLoad(mergeWith: {}));
 
-  Future<void> pump(
-    WidgetTester tester, {
-    Widget? preview,
-    int starsTotal = 0,
-    int starsEarned = 0,
-    bool reserveStarSpace = true,
-  }) async {
+  Future<void> pump(WidgetTester tester, {Widget? preview}) async {
     await tester.pumpWidget(
       MaterialApp(
         localizationsDelegates: L10n.localizationsDelegates,
@@ -31,13 +25,7 @@ void main() {
           body: Center(
             child: SizedBox(
               width: 240,
-              child: ActivityTileBody(
-                room: null,
-                preview: preview,
-                starsTotal: starsTotal,
-                starsEarned: starsEarned,
-                reserveStarSpace: reserveStarSpace,
-              ),
+              child: ActivityTileBody(room: null, preview: preview),
             ),
           ),
         ),
@@ -45,19 +33,6 @@ void main() {
     );
     await tester.pumpAndSettle();
   }
-
-  /// The height the star row is laid out in — what stops a hydrating total from
-  /// resizing the card underneath it.
-  double starRowBoxHeight(WidgetTester tester) => tester
-      .widget<SizedBox>(
-        find
-            .ancestor(
-              of: find.byType(ActivityStarRow),
-              matching: find.byType(SizedBox),
-            )
-            .first,
-      )
-      .height!;
 
   testWidgets('the host supplies the preview text; the body supplies the '
       'sender avatar beside it', (tester) async {
@@ -69,67 +44,16 @@ void main() {
     expect(find.byType(Avatar), findsOneWidget);
   });
 
-  testWidgets('a card with no room and no preview shows no avatar', (
+  testWidgets('a card with no room and no preview draws nothing', (
     tester,
   ) async {
-    await pump(tester, starsTotal: 3);
+    await pump(tester);
     expect(find.byType(Avatar), findsNothing);
-    expect(find.byType(ActivityStarRow), findsOneWidget);
   });
 
-  testWidgets('the star row shows earned of total', (tester) async {
-    await pump(tester, starsTotal: 4, starsEarned: 2);
-    final row = tester.widget<ActivityStarRow>(find.byType(ActivityStarRow));
-    expect(row.total, 4);
-    expect(row.earned, 2);
-  });
-
-  testWidgets('more earned than the current total clamps to the total', (
-    tester,
-  ) async {
-    // An owner edit can drop a goal the learner had already been awarded, so
-    // earned can outrun the total; the row must not draw a 5th of 3 stars.
-    await pump(tester, starsTotal: 3, starsEarned: 5);
-    expect(
-      tester.widget<ActivityStarRow>(find.byType(ActivityStarRow)).earned,
-      3,
-    );
-  });
-
-  testWidgets('a total past the readable count condenses to a "n/m" count', (
-    tester,
-  ) async {
-    await pump(tester, starsTotal: 13, starsEarned: 4);
-    expect(
-      tester.widget<ActivityStarRow>(find.byType(ActivityStarRow)).condensed,
-      isTrue,
-    );
-  });
-
-  group('star-row space', () {
-    testWidgets('the map holds the row height with no stars yet, so a '
-        'hydrating total cannot make the card jump', (tester) async {
-      await pump(tester, starsTotal: 0);
-      expect(find.byType(ActivityStarRow), findsOneWidget);
-      expect(starRowBoxHeight(tester), 16);
-    });
-
-    testWidgets('the chat list drops the row entirely with no stars, rather '
-        'than holding an empty band under the tile', (tester) async {
-      await pump(tester, starsTotal: 0, reserveStarSpace: false);
-      expect(find.byType(ActivityStarRow), findsNothing);
-    });
-
-    testWidgets('the chat list still draws the row once there are stars', (
-      tester,
-    ) async {
-      await pump(
-        tester,
-        starsTotal: 3,
-        starsEarned: 1,
-        reserveStarSpace: false,
-      );
-      expect(find.byType(ActivityStarRow), findsOneWidget);
-    });
+  testWidgets('the body carries no goal row (#9559): goals live in the '
+      "session's own goal header", (tester) async {
+    await pump(tester, preview: const Text('hola'));
+    expect(find.byType(ActivityStarRow), findsNothing);
   });
 }

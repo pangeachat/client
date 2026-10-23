@@ -10078,5 +10078,19 @@
     "activityCompleted": "Completato",
     "completedTimes": "Completato {count} volte",
     "classLocation": "Posizione della classe",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Conversazione {xp}",
+    "xpIncludingGoals": "inclusi {xp} dagli obiettivi",
+    "missionOtherLanguageNotice": "Questa missione proviene da un corso in {language}. I tuoi progressi contano solo mentre stai imparando {language}.",
+    "missionLanguageMismatchDesc": "Questa missione proviene da un corso in {language}. Vuoi cambiare la tua lingua di destinazione in {language}?",
+    "xpBySkillTitle": "Per abilità",
+    "missionNextActivity": "Attività successiva",
+    "missionContinueActivity": "Continua attività",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Completato in questo corso ({num})",
+    "otherCoursesSessions": "Altri corsi ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP guadagnati",
+    "currentMission": "Missione attuale"
 }

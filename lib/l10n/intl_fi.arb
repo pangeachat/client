@@ -10042,5 +10042,19 @@
     "activityCompleted": "Suoritettu",
     "completedTimes": "Suoritettu {count} kertaa",
     "classLocation": "Luokan sijainti",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Keskustelu {xp}",
+    "xpIncludingGoals": "sisältäen {xp} tavoitteista",
+    "missionOtherLanguageNotice": "Tämä tehtävä on kurssilta kielellä {language}. Edistymisesi lasketaan vain, kun opiskelet kieltä {language}.",
+    "missionLanguageMismatchDesc": "Tämä tehtävä on kurssilta kielellä {language}. Vaihdetaanko kohdekieleksi {language}?",
+    "xpBySkillTitle": "Taidon mukaan",
+    "missionNextActivity": "Seuraava tehtävä",
+    "missionContinueActivity": "Jatka tehtävää",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Suoritettu tällä kurssilla ({num})",
+    "otherCoursesSessions": "Muut kurssit ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP ansaittu",
+    "currentMission": "Nykyinen tehtävä"
 }

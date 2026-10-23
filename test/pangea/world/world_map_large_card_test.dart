@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_large_card.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
-import 'package:fluffychat/widgets/activity_star_row.dart';
 
 /// Covers #7207: every map large card gets a dismiss X (wired to the
 /// controller's demote-to-mid dismissal) that fires **without** opening the
@@ -32,7 +32,6 @@ void main() {
     ActivityPinState state = ActivityPinState.available,
     List<String> participants = const [],
     int openSlots = 0,
-    int starsEarned = 0,
     QuestActivityCard? cardOverride,
   }) async {
     await tester.pumpWidget(
@@ -53,7 +52,6 @@ void main() {
               state: state,
               pinged: false,
               plan: null,
-              starsEarned: starsEarned,
               participants: participants,
               openSlots: openSlots,
               onTap: onTap ?? () {},
@@ -147,9 +145,9 @@ void main() {
     // The focused card haloes in its state hue (here `available`) with no
     // outline — the same treatment as a selected pin.
     Color glowColor(WidgetTester tester) => WorldMapSelection.glow(
-      Theme.of(
+      ActivityPinState.available.bodyColor(
         tester.element(find.byType(Scaffold)),
-      ).colorScheme.secondaryContainer,
+      ),
     ).first.color;
 
     testWidgets('a focused card casts the state glow around the balloon', (
@@ -199,55 +197,14 @@ void main() {
       expect(find.byIcon(Icons.meeting_room), findsNothing);
     });
 
-    testWidgets(
-      'ongoingActive shows the star row and no participant row/door/hourglass',
-      (tester) async {
-        await pumpCard(
-          tester,
-          state: ActivityPinState.ongoingActive,
-          starsEarned: 0,
-        );
-        expect(find.byIcon(Icons.meeting_room), findsNothing);
-        expect(find.byIcon(Icons.hourglass_bottom), findsNothing);
-        expect(find.byIcon(Icons.person), findsNothing);
-      },
-    );
-
-    testWidgets(
-      'ongoingActive star row totals from the thin goals with no hydrated plan',
-      (tester) async {
-        // #7602: the star total never waits on the full-plan hydration — with
-        // plan: null (and no live room here), the pin's thin goals supply the
-        // denominator (min across roles), so the row renders complete on
-        // first paint instead of popping 0 → N when the plan lands.
-        await pumpCard(
-          tester,
-          state: ActivityPinState.ongoingActive,
-          starsEarned: 2,
-          cardOverride: const QuestActivityCard(
-            activityId: 'a1',
-            title: 'Test Activity',
-            l2: 'es',
-            coordinates: [0, 0],
-            learningObjectiveRefs: [],
-            roleIds: ['r1', 'r2'],
-            goals: [
-              ActivityCardGoal(goalSlug: 's1', roleIds: ['r1']),
-              ActivityCardGoal(goalSlug: 's2', roleIds: ['r1']),
-              ActivityCardGoal(goalSlug: 's3', roleIds: ['r1']),
-              ActivityCardGoal(goalSlug: 's4', roleIds: ['r2']),
-              ActivityCardGoal(goalSlug: 's5', roleIds: ['r2']),
-              ActivityCardGoal(goalSlug: 's6', roleIds: ['r2']),
-            ],
-          ),
-        );
-        final row = tester.widget<ActivityStarRow>(
-          find.byType(ActivityStarRow),
-        );
-        expect(row.total, 3);
-        expect(row.earned, 2);
-      },
-    );
+    testWidgets('ongoingActive shows no participant row/door/hourglass', (
+      tester,
+    ) async {
+      await pumpCard(tester, state: ActivityPinState.ongoingActive);
+      expect(find.byIcon(Icons.meeting_room), findsNothing);
+      expect(find.byIcon(Icons.hourglass_bottom), findsNothing);
+      expect(find.byIcon(Icons.person), findsNothing);
+    });
 
     testWidgets('available shows the L2 flag, CEFR level, and party size', (
       tester,
@@ -302,19 +259,19 @@ void main() {
     });
 
     testWidgets('in dark mode the available card border maps the mid pin '
-        'colour (the dark secondaryContainer)', (tester) async {
+        'colour (the dark activityAvailable)', (tester) async {
       await pumpCard(
         tester,
         brightness: Brightness.dark,
         state: ActivityPinState.available,
       );
-      // The mid pin fills with the theme's secondaryContainer, deep in dark
-      // mode (#8174); the card's frame must map that same colour.
+      // The mid pin fills with the available role, deep in dark mode (#8174,
+      // #9559); the card's frame must map that same colour.
       expect(
         cardBorderColor(tester),
         Theme.of(
           tester.element(find.byType(Scaffold)),
-        ).colorScheme.secondaryContainer,
+        ).pangea.activityAvailable,
       );
     });
 

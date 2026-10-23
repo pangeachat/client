@@ -10947,5 +10947,19 @@
     "activityCompleted": "Dokončené",
     "completedTimes": "Dokončené {count}-krát",
     "classLocation": "Umiestnenie triedy",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Konverzácia {xp}",
+    "xpIncludingGoals": "vrátane {xp} z cieľov",
+    "missionOtherLanguageNotice": "Táto misia je z kurzu v jazyku {language}. Váš pokrok sa do nej započítava iba vtedy, keď sa učíte jazyk {language}.",
+    "missionLanguageMismatchDesc": "Táto misia je z kurzu v jazyku {language}. Prepnúť cieľový jazyk na {language}?",
+    "xpBySkillTitle": "Podľa zručnosti",
+    "missionNextActivity": "Ďalšia aktivita",
+    "missionContinueActivity": "Pokračovať v aktivite",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Dokončené v tomto kurze ({num})",
+    "otherCoursesSessions": "Iné kurzy ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, získaných {xp} XP",
+    "currentMission": "Aktuálna misia"
 }

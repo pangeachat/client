@@ -2467,5 +2467,19 @@
     "activityCompleted": "Kugqityiwe",
     "completedTimes": "Kugqityiwe {count} amaxesha",
     "classLocation": "Indawo yeklasi",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Incoko {xp}",
+    "xpIncludingGoals": "kubandakanywa {xp} kwiinjongo",
+    "missionOtherLanguageNotice": "Le Njongo ivela kwikhosi ye-{language}. Inkqubela yakho kuyo ibalwa kuphela xa ufunda isi-{language}.",
+    "missionLanguageMismatchDesc": "Le Njongo ivela kwikhosi ye-{language}. Guqula ulwimi ekujoliswe kulo lube sisi-{language}?",
+    "xpBySkillTitle": "Ngesakhono",
+    "missionNextActivity": "Umsebenzi olandelayo",
+    "missionContinueActivity": "Qhubeka nomsebenzi",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Igcwalisiwe kule khosi ({num})",
+    "otherCoursesSessions": "Ezinye iikhosi ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP ifunyenwe",
+    "currentMission": "Injongo yangoku"
 }

@@ -7,7 +7,7 @@ import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 
-/// An activity card's live state: what its frame and corner tab show, how
+/// An activity card's live state: what its frame and state pill show, how
 /// many open sessions a coursemate is waiting in, and the seats of the
 /// learner's own session.
 typedef ActivityLiveState = ({

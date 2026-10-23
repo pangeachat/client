@@ -2467,5 +2467,19 @@
     "activityCompleted": "E phethiloe",
     "completedTimes": "E phethiloe ka makhetlo a {count}",
     "classLocation": "Sebaka sa sehlopha",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Puisano {xp}",
+    "xpIncludingGoals": "ho kenyeletsa {xp} ho tsoa lipakaneng",
+    "missionOtherLanguageNotice": "Thomo ena e tsoa thupelong ea {language}. Tsoelo-pele ea hau ho eona e bala feela ha u ntse u ithuta {language}.",
+    "missionLanguageMismatchDesc": "Thomo ena e tsoa thupelong ea {language}. Fetola puo eo u e batlang ho {language}?",
+    "xpBySkillTitle": "Ka tsebo",
+    "missionNextActivity": "Mosebetsi o latelang",
+    "missionContinueActivity": "Tsoela pele ka mosebetsi",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "E felile thupelong ena ({num})",
+    "otherCoursesSessions": "Lithuto tse ling ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP e fumanoe",
+    "currentMission": "Thomo ea hajoale"
 }

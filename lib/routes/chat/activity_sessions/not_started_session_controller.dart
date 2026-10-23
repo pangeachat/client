@@ -51,6 +51,11 @@ class NotStartedSession extends StatefulWidget {
   final ActivityPlanModel? activity;
   final ActivitySessionSummariesModel summaries;
 
+  /// The learner's saved sessions of this activity outside [course] — in
+  /// another course or none — which the finished view lists under "Other
+  /// courses" (#9559).
+  final Map<String, RoomSummaryResponse> otherCompletedSessions;
+
   /// The open-session summaries are still being fetched (a cache miss), so the
   /// CTA should show a loading indicator rather than the join/start choice.
   final bool summariesLoading;
@@ -63,6 +68,7 @@ class NotStartedSession extends StatefulWidget {
     required this.activityId,
     required this.activity,
     required this.summaries,
+    this.otherCompletedSessions = const {},
     required this.summariesLoading,
     required this.scrollController,
     required this.controller,
@@ -235,9 +241,15 @@ class NotStartedSessionController extends State<NotStartedSession>
     return Map.fromEntries(entries);
   }
 
-  /// Whether [visibleCompletedSessions] has anything — tested cheaply (no build
+  /// The learner's saved sessions of this activity outside the course in
+  /// context, listed after this course's under "Other courses" (#9559).
+  Map<String, RoomSummaryResponse> get otherCompletedSessions =>
+      widget.otherCompletedSessions;
+
+  /// Whether [visibleCompletedSessions] or [otherCompletedSessions] has anything — tested cheaply (no build
   /// or sort of the collection) since it gates several CTAs on every rebuild.
   bool get hasCompletedSessions {
+    if (otherCompletedSessions.isNotEmpty) return true;
     if (isCourseAdmin) return _completedSessions.isNotEmpty;
     final userId = _ownUserId;
     return userId != null &&

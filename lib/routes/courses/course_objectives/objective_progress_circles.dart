@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_circle.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section_scroll_arrow.dart';
 
@@ -18,6 +19,11 @@ class ObjectiveCircleData {
   /// shares with another Mission.
   final double progress;
 
+  /// The XP behind [progress] — XP over threshold — so the circle's
+  /// accessible name says how far along it is (#9559); null before progress
+  /// resolves.
+  final MissionProgress? xp;
+
   /// The Mission on show in the course page's Mission card — marked by a
   /// pointer under the circle, apart from the state's fill, since a learner
   /// can pick a complete or a later Mission to look at.
@@ -32,14 +38,20 @@ class ObjectiveCircleData {
   /// show (#9420).
   final bool pinged;
 
+  /// The course's progress is still on its way: the circle shimmers in
+  /// place of its ring and fill, so it doesn't fill and then jump (#9559).
+  final bool loading;
+
   const ObjectiveCircleData({
     required this.index,
     required this.statement,
     required this.state,
     this.progress = 0.0,
+    this.xp,
     this.selected = false,
     this.classLocation = false,
     this.pinged = false,
+    this.loading = false,
   });
 }
 

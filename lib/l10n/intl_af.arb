@@ -2467,5 +2467,19 @@
     "activityCompleted": "Voltooi",
     "completedTimes": "{count} keer voltooi",
     "classLocation": "Klasligging",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Gesprek {xp}",
+    "xpIncludingGoals": "insluitend {xp} van doelwitte",
+    "missionOtherLanguageNotice": "Hierdie Missie is van 'n kursus in {language}. Jou vordering daarop tel slegs terwyl jy {language} leer.",
+    "missionLanguageMismatchDesc": "Hierdie Missie is van 'n kursus in {language}. Skakel jou teikentaal na {language}?",
+    "xpBySkillTitle": "Volgens vaardigheid",
+    "missionNextActivity": "Volgende aktiwiteit",
+    "missionContinueActivity": "Gaan voort met aktiwiteit",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Voltooi in hierdie kursus ({num})",
+    "otherCoursesSessions": "Ander kursusse ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP verdien",
+    "currentMission": "Huidige missie"
 }

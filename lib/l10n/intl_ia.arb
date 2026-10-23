@@ -10938,5 +10938,19 @@
     "activityCompleted": "Completate",
     "completedTimes": "Completate {count} vices",
     "classLocation": "Loco del classe",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Conversation {xp}",
+    "xpIncludingGoals": "includente {xp} de objectivos",
+    "missionOtherLanguageNotice": "Iste mission es de un curso in {language}. Tu progresso in illo conta solmente durante que tu apprende {language}.",
+    "missionLanguageMismatchDesc": "Iste mission es de un curso in {language}. Cambiar tu lingua de apprender a {language}?",
+    "xpBySkillTitle": "Per habilitate",
+    "missionNextActivity": "Proxime activitate",
+    "missionContinueActivity": "Continuar activitate",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Finite in iste curso ({num})",
+    "otherCoursesSessions": "Altere cursos ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP ganiate",
+    "currentMission": "Mission actual"
 }

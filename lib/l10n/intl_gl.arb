@@ -10005,5 +10005,19 @@
     "activityCompleted": "Completado",
     "completedTimes": "Completado {count} veces",
     "classLocation": "Localización da clase",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Conversa {xp}",
+    "xpIncludingGoals": "incluíndo {xp} de obxectivos",
+    "missionOtherLanguageNotice": "Esta misión é dun curso en {language}. O teu progreso nela só conta mentres esteas a aprender {language}.",
+    "missionLanguageMismatchDesc": "Esta misión é dun curso en {language}. Queres cambiar o teu idioma obxectivo a {language}?",
+    "xpBySkillTitle": "Por habilidade",
+    "missionNextActivity": "Seguinte actividade",
+    "missionContinueActivity": "Continuar actividade",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Rematado neste curso ({num})",
+    "otherCoursesSessions": "Outros cursos ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP gañados",
+    "currentMission": "Misión actual"
 }

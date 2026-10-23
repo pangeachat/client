@@ -2467,5 +2467,19 @@
     "activityCompleted": "تاماملاندى",
     "completedTimes": "{count} قېتىم تاماملىنىدۇ",
     "classLocation": "دەرس ئورنى",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "سۆھبەت {xp}",
+    "xpIncludingGoals": "نىشانلاردىن {xp} نى ئۆز ئىچىگە ئالىدۇ",
+    "missionOtherLanguageNotice": "بۇ ۋەزىپە {language} تىلىدىكى دەرسلىكتىن. ئۇنىڭدىكى ئىلگىرىلىشىڭىز پەقەت {language} ئۆگەنگەندىلا ھېسابلىنىدۇ.",
+    "missionLanguageMismatchDesc": "بۇ ۋەزىپە {language} تىلىدىكى دەرسلىكتىن. نىشان تىلىڭىزنى {language} غا ئالماشتۇرامسىز؟",
+    "xpBySkillTitle": "ماھارەت بويىچە",
+    "missionNextActivity": "كېيىنكى پائالىيەت",
+    "missionContinueActivity": "پائالىيەتنى داۋاملاشتۇرۇڭ",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "بۇ دەرسلىكتە تاماملىنىدۇ ({num})",
+    "otherCoursesSessions": "باشقا دەرسلىكلەر ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP غا ئېرىشتىڭىز",
+    "currentMission": "نۆۋەتتىكى ۋەزىپە"
 }

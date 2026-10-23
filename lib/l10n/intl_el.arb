@@ -10877,5 +10877,19 @@
     "activityCompleted": "Ολοκληρώθηκε",
     "completedTimes": "Ολοκληρώθηκε {count} φορές",
     "classLocation": "Τοποθεσία μαθήματος",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Συνομιλία {xp}",
+    "xpIncludingGoals": "συμπεριλαμβανομένων {xp} από στόχους",
+    "missionOtherLanguageNotice": "Αυτή η αποστολή είναι από ένα μάθημα στα {language}. Η πρόοδός σας σε αυτήν μετράει μόνο όσο μαθαίνετε {language}.",
+    "missionLanguageMismatchDesc": "Αυτή η αποστολή είναι από ένα μάθημα στα {language}. Να αλλάξετε τη γλώσσα-στόχο σας σε {language};",
+    "xpBySkillTitle": "Ανά δεξιότητα",
+    "missionNextActivity": "Επόμενη δραστηριότητα",
+    "missionContinueActivity": "Συνέχιση δραστηριότητας",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Ολοκληρώθηκε σε αυτό το μάθημα ({num})",
+    "otherCoursesSessions": "Άλλα μαθήματα ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, κερδισμένα {xp} XP",
+    "currentMission": "Τρέχουσα αποστολή"
 }

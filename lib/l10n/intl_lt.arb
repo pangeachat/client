@@ -10783,5 +10783,19 @@
     "activityCompleted": "Atlikta",
     "completedTimes": "Atlikta {count} kartus",
     "classLocation": "Pamokos vieta",
-    "xpThresholdSuffix": "/ {threshold} XP"
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Pokalbis {xp}",
+    "xpIncludingGoals": "įskaitant {xp} iš tikslų",
+    "missionOtherLanguageNotice": "Ši misija yra iš {language} kurso. Jūsų pažanga bus skaičiuojama tik tada, kai mokysitės {language}.",
+    "missionLanguageMismatchDesc": "Ši misija yra iš {language} kurso. Perjungti tikslinę kalbą į {language}?",
+    "xpBySkillTitle": "Pagal įgūdžius",
+    "missionNextActivity": "Kita veikla",
+    "missionContinueActivity": "Tęsti veiklą",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Baigta šiame kurse ({num})",
+    "otherCoursesSessions": "Kiti kursai ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP uždirbta",
+    "currentMission": "Dabartinė misija"
 }

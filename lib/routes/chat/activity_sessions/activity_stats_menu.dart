@@ -13,6 +13,7 @@ import 'package:fluffychat/features/activity_sessions/activity_summary_room_exte
 import 'package:fluffychat/features/activity_sessions/bot_activty_role_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/widgets/embed_pointer_shield.dart';
@@ -21,6 +22,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_conte
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_header.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_goal_header_card.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_header_label.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/goal_header_session_xp.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_progress_mixin.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_report_dialog.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_report_repo.dart';
@@ -157,6 +159,8 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
                     activeGoalId: ownRoleDone ? null : active?.id,
                     subtitle: subtitle,
                     contentLanguage: _sessionLanguage,
+                    goalXp: GoalHeaderSessionXp.shows(room) ? kGoalXp : null,
+                    sessionXp: GoalHeaderSessionXp(room: room),
                   );
 
             return Positioned(
@@ -183,7 +187,6 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
                   ActivityGoalHeaderCard(
                     showDropdown: showDropdown,
                     isComplete: allComplete,
-                    xpRingRoom: room,
                     collapsed: collapsed,
                     expanded: ActivityDropdownContent(
                       goals: goals,
@@ -204,6 +207,10 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
                       finishActivityForMe: () => _finishActivityForMe(context),
                       continueActivity: room.continueActivity,
                       onReportStar: _onReportStar(context),
+                      goalXp: GoalHeaderSessionXp.shows(room) ? kGoalXp : null,
+                      sessionXp: goals.isEmpty
+                          ? null
+                          : GoalHeaderSessionXp(room: room),
                     ),
                   ),
                 ],
