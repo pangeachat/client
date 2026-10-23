@@ -2503,5 +2503,6 @@
     "readAloudTake": "Kuha {number}",
     "videoWontPlayHere": "Dili modagan kini nga video dinhi.",
     "watchOnYoutube": "Tan-awa sa YouTube",
-    "createMyOwnCourse": "Paghimo sa akong kaugalingong kurso"
+    "createMyOwnCourse": "Paghimo sa akong kaugalingong kurso",
+    "xpTowardMission": "{xp} XP padulong niini nga Misyon"
 }

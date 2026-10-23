@@ -2503,5 +2503,6 @@
     "readAloudTake": "Siv {number}",
     "videoWontPlayHere": "Daim vis dis aus no yuav tsis ua si ntawm no.",
     "watchOnYoutube": "Saib hauv YouTube",
-    "createMyOwnCourse": "Tsim kuv tus kheej chav kawm"
+    "createMyOwnCourse": "Tsim kuv tus kheej chav kawm",
+    "xpTowardMission": "{xp} XP rau lub Hom Phiaj no"
 }

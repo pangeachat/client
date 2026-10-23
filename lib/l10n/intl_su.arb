@@ -2503,5 +2503,6 @@
     "readAloudTake": "Candak {number}",
     "videoWontPlayHere": "Video ieu moal bisa diputer di dieu.",
     "watchOnYoutube": "Tonton di YouTube",
-    "createMyOwnCourse": "Jieun kursus kuring sorangan"
+    "createMyOwnCourse": "Jieun kursus kuring sorangan",
+    "xpTowardMission": "{xp} XP pikeun Misi ieu"
 }

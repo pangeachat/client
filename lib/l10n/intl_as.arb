@@ -2503,5 +2503,6 @@
     "readAloudTake": "লওক {number}",
     "videoWontPlayHere": "এই ভিডিঅ’টো ইয়াত নচলে।",
     "watchOnYoutube": "ইউটিউবত চাওক",
-    "createMyOwnCourse": "মোৰ নিজা পাঠ্যক্ৰম সৃষ্টি কৰক"
+    "createMyOwnCourse": "মোৰ নিজা পাঠ্যক্ৰম সৃষ্টি কৰক",
+    "xpTowardMission": "এই অভিযানৰ বাবে {xp} XP"
 }

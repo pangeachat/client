@@ -2503,5 +2503,6 @@
     "readAloudTake": "Ya {number}",
     "videoWontPlayHere": "Fidio yii kò ní ṣiṣẹ́ níbí.",
     "watchOnYoutube": "Wò ó lórí YouTube",
-    "createMyOwnCourse": "Ṣẹda iṣẹ ikẹkọ ti ara mi"
+    "createMyOwnCourse": "Ṣẹda iṣẹ ikẹkọ ti ara mi",
+    "xpTowardMission": "{xp} XP si Iṣẹ apinfunni yii"
 }

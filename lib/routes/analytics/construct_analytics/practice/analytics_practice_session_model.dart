@@ -252,7 +252,10 @@ class AnalyticsPracticeSessionModel {
     readAloudSeconds: state.readAloudSeconds + seconds,
   );
 
-  void finishSession() => state = state.copyWith(finished: true);
+  /// Ends the session and fixes its bonus uses, so the ones recorded are the
+  /// ones the completion view measures.
+  void finishSession() =>
+      state = state.copyWith(finished: true, bonusUses: state.earnedBonusUses);
 
   void completeExercise() =>
       state = state.copyWith(currentIndex: state.currentIndex + 1);
@@ -314,6 +317,9 @@ class AnalyticsPracticeSessionState {
   /// Seconds spent on read-aloud items, excluded from the speed bonus.
   final int readAloudSeconds;
 
+  /// The bonus uses recorded when the session finished; empty until then.
+  final List<OneConstructUse> bonusUses;
+
   const AnalyticsPracticeSessionState({
     this.completedUses = const [],
     this.currentIndex = 0,
@@ -322,13 +328,15 @@ class AnalyticsPracticeSessionState {
     this.elapsedSeconds = 0,
     this.skippedActivities = 0,
     this.readAloudSeconds = 0,
+    this.bonusUses = const [],
   });
 
   /// The clock the speed bonus is judged on: elapsed time less the time
   /// read-aloud items were on screen.
   int get bonusClockSeconds => elapsedSeconds - readAloudSeconds;
 
-  int get totalXpGained => completedUses.fold(0, (sum, use) => sum + use.xp);
+  /// Every use the session recorded: its answers, then its bonuses.
+  List<OneConstructUse> get recordedUses => [...completedUses, ...bonusUses];
 
   double get accuracy {
     if (completedUses.isEmpty) return 0.0;
@@ -342,20 +350,18 @@ class AnalyticsPracticeSessionState {
   bool get _giveTimeBonus =>
       bonusClockSeconds <= AnalyticsPracticeConstants.timeForBonus;
 
-  int get bonusXP => accuracyBonusXP + timeBonusXP;
-
   int get accuracyBonusXP => _giveAccuracyBonus ? _bonusXP : 0;
 
   int get timeBonusXP => _giveTimeBonus ? _bonusXP : 0;
 
   int get _bonusXP => _bonusUses.fold(0, (sum, use) => sum + use.xp);
 
-  int get allXPGained => totalXpGained + bonusXP;
-
   List<OneConstructUse> get _bonusUses =>
       completedUses.where((use) => use.xp > 0).map(_bonusUse).toList();
 
-  List<OneConstructUse> get allBonusUses => [
+  /// The bonus uses the answers so far earn, freshly stamped on each read;
+  /// [AnalyticsPracticeSessionModel.finishSession] fixes them as [bonusUses].
+  List<OneConstructUse> get earnedBonusUses => [
     if (_giveAccuracyBonus) ..._bonusUses,
     if (_giveTimeBonus) ..._bonusUses,
   ];
@@ -381,6 +387,7 @@ class AnalyticsPracticeSessionState {
     int? elapsedSeconds,
     int? skippedActivities,
     int? readAloudSeconds,
+    List<OneConstructUse>? bonusUses,
   }) {
     return AnalyticsPracticeSessionState(
       completedUses: completedUses ?? this.completedUses,
@@ -390,6 +397,7 @@ class AnalyticsPracticeSessionState {
       elapsedSeconds: elapsedSeconds ?? this.elapsedSeconds,
       skippedActivities: skippedActivities ?? this.skippedActivities,
       readAloudSeconds: readAloudSeconds ?? this.readAloudSeconds,
+      bonusUses: bonusUses ?? this.bonusUses,
     );
   }
 
@@ -402,23 +410,27 @@ class AnalyticsPracticeSessionState {
       'elapsedSeconds': elapsedSeconds,
       'skippedActivities': skippedActivities,
       'readAloudSeconds': readAloudSeconds,
+      'bonusUses': bonusUses.map((e) => e.toJson()).toList(),
     };
   }
 
   factory AnalyticsPracticeSessionState.fromJson(Map<String, dynamic> json) {
     return AnalyticsPracticeSessionState(
-      completedUses:
-          (json['completedUses'] as List<dynamic>?)
-              ?.map((e) => OneConstructUse.fromJson(e))
-              .whereType<OneConstructUse>()
-              .toList() ??
-          [],
+      completedUses: _usesFromJson(json['completedUses']),
       currentIndex: json['currentIndex'] as int? ?? 0,
       finished: json['finished'] as bool? ?? false,
       hintsUsed: json['hintsUsed'] as int? ?? 0,
       elapsedSeconds: json['elapsedSeconds'] as int? ?? 0,
       skippedActivities: json['skippedActivities'] as int? ?? 0,
       readAloudSeconds: json['readAloudSeconds'] as int? ?? 0,
+      bonusUses: _usesFromJson(json['bonusUses']),
     );
   }
+
+  static List<OneConstructUse> _usesFromJson(Object? json) =>
+      (json as List<dynamic>?)
+          ?.map((e) => OneConstructUse.fromJson(e))
+          .whereType<OneConstructUse>()
+          .toList() ??
+      [];
 }

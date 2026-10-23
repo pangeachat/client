@@ -10819,5 +10819,6 @@
     "readAloudTake": "Paimkite {number}",
     "videoWontPlayHere": "Šis vaizdo įrašas čia nebus leidžiamas.",
     "watchOnYoutube": "Žiūrėti „YouTube“",
-    "createMyOwnCourse": "Sukurti savo kursą"
+    "createMyOwnCourse": "Sukurti savo kursą",
+    "xpTowardMission": "{xp} XP šiai misijai"
 }

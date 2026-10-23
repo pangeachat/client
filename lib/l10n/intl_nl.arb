@@ -10041,5 +10041,6 @@
     "readAloudTake": "Poging {number}",
     "videoWontPlayHere": "Deze video kan hier niet worden afgespeeld.",
     "watchOnYoutube": "Bekijk op YouTube",
-    "createMyOwnCourse": "Mijn eigen cursus maken"
+    "createMyOwnCourse": "Mijn eigen cursus maken",
+    "xpTowardMission": "{xp} XP voor deze missie"
 }

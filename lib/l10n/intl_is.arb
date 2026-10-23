@@ -2503,5 +2503,6 @@
     "readAloudTake": "Taka {number}",
     "videoWontPlayHere": "Þetta myndband spilast ekki hér.",
     "watchOnYoutube": "Horfa á YouTube",
-    "createMyOwnCourse": "Búa til mitt eigið námskeið"
+    "createMyOwnCourse": "Búa til mitt eigið námskeið",
+    "xpTowardMission": "{xp} XP í átt að þessu verkefni"
 }

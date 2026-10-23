@@ -2503,5 +2503,6 @@
     "readAloudTake": "Qaado {number}",
     "videoWontPlayHere": "Muuqaalkan halkan kuma shaqaynayo.",
     "watchOnYoutube": "Ka daawo YouTube",
-    "createMyOwnCourse": "Samee koorsadayda"
+    "createMyOwnCourse": "Samee koorsadayda",
+    "xpTowardMission": "{xp} XP oo ku aaddan Hawshan"
 }

@@ -10958,5 +10958,6 @@
     "readAloudTake": "Tag {number}",
     "videoWontPlayHere": "Denne video kan ikke afspilles her.",
     "watchOnYoutube": "Se på YouTube",
-    "createMyOwnCourse": "Opret mit eget kursus"
+    "createMyOwnCourse": "Opret mit eget kursus",
+    "xpTowardMission": "{xp} XP til denne mission"
 }

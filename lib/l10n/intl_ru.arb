@@ -11013,5 +11013,6 @@
     "readAloudTake": "Попытка {number}",
     "videoWontPlayHere": "Это видео здесь не воспроизводится.",
     "watchOnYoutube": "Смотреть на YouTube",
-    "createMyOwnCourse": "Создать свой курс"
+    "createMyOwnCourse": "Создать свой курс",
+    "xpTowardMission": "{xp} XP для этой миссии"
 }

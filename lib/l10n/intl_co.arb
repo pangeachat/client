@@ -2503,5 +2503,6 @@
     "readAloudTake": "Piglia {number}",
     "videoWontPlayHere": "Stu video ùn pò micca ghjucà quì.",
     "watchOnYoutube": "Fighjà nant'à YouTube",
-    "createMyOwnCourse": "Creà u mo corsu"
+    "createMyOwnCourse": "Creà u mo corsu",
+    "xpTowardMission": "{xp} XP per sta Missione"
 }

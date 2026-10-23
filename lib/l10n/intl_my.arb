@@ -2503,5 +2503,6 @@
     "readAloudTake": "{number} ကြိမ်မြောက်",
     "videoWontPlayHere": "ဤဗီဒီယိုကို ဤနေရာတွင် ဖွင့်၍မရပါ။",
     "watchOnYoutube": "YouTube တွင် ကြည့်ရန်",
-    "createMyOwnCourse": "ကိုယ်ပိုင်သင်တန်းဖန်တီးမည်"
+    "createMyOwnCourse": "ကိုယ်ပိုင်သင်တန်းဖန်တီးမည်",
+    "xpTowardMission": "ဤမစ်ရှင်အတွက် {xp} XP"
 }

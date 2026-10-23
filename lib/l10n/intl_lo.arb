@@ -2503,5 +2503,6 @@
     "readAloudTake": "ຮອບທີ {number}",
     "videoWontPlayHere": "ວິດີໂອນີ້ບໍ່ສາມາດຫຼິ້ນໄດ້ຢູ່ບ່ອນນີ້.",
     "watchOnYoutube": "ເບິ່ງໃນ YouTube",
-    "createMyOwnCourse": "ສ້າງຫຼັກສູດຂອງຂ້ອຍເອງ"
+    "createMyOwnCourse": "ສ້າງຫຼັກສູດຂອງຂ້ອຍເອງ",
+    "xpTowardMission": "{xp} XP ສູ່ພາລະກິດນີ້"
 }

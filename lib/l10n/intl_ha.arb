@@ -2503,5 +2503,6 @@
     "readAloudTake": "Ɗauka ta {number}",
     "videoWontPlayHere": "Wannan bidiyon ba zai yi aiki a nan ba.",
     "watchOnYoutube": "Kalla a YouTube",
-    "createMyOwnCourse": "Ƙirƙiri kwas na da kaina"
+    "createMyOwnCourse": "Ƙirƙiri kwas na da kaina",
+    "xpTowardMission": "{xp} XP zuwa wannan Ofishin Jakadancin"
 }

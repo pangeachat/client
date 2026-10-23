@@ -2503,5 +2503,6 @@
     "readAloudTake": "Ħu {number}",
     "videoWontPlayHere": "Dan il-video mhux se jintlagħab hawn.",
     "watchOnYoutube": "Ara fuq YouTube",
-    "createMyOwnCourse": "Oħloq il-kors tiegħi"
+    "createMyOwnCourse": "Oħloq il-kors tiegħi",
+    "xpTowardMission": "{xp} XP lejn din il-Missjoni"
 }

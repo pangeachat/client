@@ -1,5 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
+import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
@@ -74,6 +77,51 @@ void main() {
     );
     expect(xp.conversation, 400);
     expect(xp.total, xp.conversation + xp.practice);
+  });
+
+  OneConstructUse use(String lemma, int xp, {String? roomId}) =>
+      OneConstructUse(
+        useType: xp > 0
+            ? ConstructUseTypeEnum.corLM
+            : ConstructUseTypeEnum.incLM,
+        lemma: lemma,
+        constructType: ConstructTypeEnum.vocab,
+        metadata: ConstructUseMetaData(
+          roomId: roomId,
+          timeStamp: DateTime(2026, 10, 23),
+        ),
+        category: 'NOUN',
+        form: lemma,
+        xp: xp,
+      );
+
+  test('a word whose practice nets zero or less credits nothing (#9607)', () {
+    expect(
+      MissionXpCache.practiceXpByLemmaOf([
+        use('familia', -1),
+        use('familia', -1),
+        use('casa', 5),
+        use('casa', -1),
+        use('viaje', 5),
+        use('viaje', -5),
+        use('Perro', 5),
+        use('gato', 5, roomId: '!session'),
+      ]),
+      {'casa': 4, 'perro': 5},
+    );
+  });
+
+  test('only wrong answers leave a Mission at zero, not below (#9607)', () {
+    final quest = resolveProgression(
+      outlines: [outline()],
+      xpByActivity: const {},
+      practiceXpByLemma: MissionXpCache.practiceXpByLemmaOf([
+        use('casa', -1),
+        use('casa', -1),
+        use('familia', -1),
+      ]),
+    ).forCourse('course')!;
+    expect(quest.rollup['lo-1']!.xp, 0);
   });
 
   test('the cache publishes room-less practice by word', () {

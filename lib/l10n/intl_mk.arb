@@ -2503,5 +2503,6 @@
     "readAloudTake": "Преземи {number}",
     "videoWontPlayHere": "Ова видео нема да се репродуцира овде.",
     "watchOnYoutube": "Гледајте на YouTube",
-    "createMyOwnCourse": "Креирај мој сопствен курс"
+    "createMyOwnCourse": "Креирај мој сопствен курс",
+    "xpTowardMission": "{xp} XP кон оваа мисија"
 }

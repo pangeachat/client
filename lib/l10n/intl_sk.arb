@@ -10983,5 +10983,6 @@
     "readAloudTake": "Zobrať {number}",
     "videoWontPlayHere": "Toto video sa tu neprehrá.",
     "watchOnYoutube": "Pozrieť na YouTube",
-    "createMyOwnCourse": "Vytvoriť si vlastný kurz"
+    "createMyOwnCourse": "Vytvoriť si vlastný kurz",
+    "xpTowardMission": "{xp} XP k tejto misii"
 }

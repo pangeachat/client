@@ -2503,5 +2503,6 @@
     "readAloudTake": "{number} алу",
     "videoWontPlayHere": "Бұл бейне ойнатылмайды.",
     "watchOnYoutube": "YouTube-тан қарау",
-    "createMyOwnCourse": "Өз курсымды жасау"
+    "createMyOwnCourse": "Өз курсымды жасау",
+    "xpTowardMission": "Осы миссияға {xp} XP"
 }

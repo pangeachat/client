@@ -10807,5 +10807,6 @@
     "readAloudTake": "{number}回目",
     "videoWontPlayHere": "この動画はここでは再生できません。",
     "watchOnYoutube": "YouTubeで視聴",
-    "createMyOwnCourse": "自分のコースを作成"
+    "createMyOwnCourse": "自分のコースを作成",
+    "xpTowardMission": "このミッションまであと {xp} XP"
 }

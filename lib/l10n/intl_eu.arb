@@ -10041,5 +10041,6 @@
     "readAloudTake": "{number}. saiakera",
     "videoWontPlayHere": "Bideo hau ez da hemen erreproduzituko.",
     "watchOnYoutube": "Ikusi YouTuben",
-    "createMyOwnCourse": "Nire ikastaroa sortu"
+    "createMyOwnCourse": "Nire ikastaroa sortu",
+    "xpTowardMission": "{xp} esperientzia puntu misio honetarako"
 }

@@ -2503,5 +2503,6 @@
     "readAloudTake": "Ave {number}",
     "videoWontPlayHere": "E lē ta'alo le vitiō i'i.",
     "watchOnYoutube": "Maimoa i le YouTube",
-    "createMyOwnCourse": "Fausia la'u lava kosi"
+    "createMyOwnCourse": "Fausia la'u lava kosi",
+    "xpTowardMission": "{xp} XP agai i lenei Misiona"
 }

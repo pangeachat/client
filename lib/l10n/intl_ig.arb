@@ -2503,5 +2503,6 @@
     "readAloudTake": "Were {number}",
     "videoWontPlayHere": "Vidiyo a agaghị agba ebe a.",
     "watchOnYoutube": "Lelee na YouTube",
-    "createMyOwnCourse": "Mepụta nkuzi nke m"
+    "createMyOwnCourse": "Mepụta nkuzi nke m",
+    "xpTowardMission": "{xp} XP maka Misionu a"
 }

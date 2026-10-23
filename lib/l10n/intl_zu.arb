@@ -2503,5 +2503,6 @@
     "readAloudTake": "Thatha {number}",
     "videoWontPlayHere": "Le vidiyo ngeke idlale lapha.",
     "watchOnYoutube": "Buka ku-YouTube",
-    "createMyOwnCourse": "Dala eyami inkambo"
+    "createMyOwnCourse": "Dala eyami inkambo",
+    "xpTowardMission": "{xp} XP kule Mishini"
 }

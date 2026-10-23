@@ -2503,5 +2503,6 @@
     "readAloudTake": "Huelt {number}",
     "videoWontPlayHere": "Dëse Video spillt hei net.",
     "watchOnYoutube": "Op YouTube kucken",
-    "createMyOwnCourse": "Mäin eegene Cours erstellen"
+    "createMyOwnCourse": "Mäin eegene Cours erstellen",
+    "xpTowardMission": "{xp} XP fir dës Missioun"
 }

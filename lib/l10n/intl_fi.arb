@@ -10078,5 +10078,6 @@
     "readAloudTake": "Ota {number}",
     "videoWontPlayHere": "Tätä videota ei voi toistaa täällä.",
     "watchOnYoutube": "Katso YouTubessa",
-    "createMyOwnCourse": "Luo oma kurssini"
+    "createMyOwnCourse": "Luo oma kurssini",
+    "xpTowardMission": "{xp} XP tähän tehtävään"
 }

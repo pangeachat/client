@@ -10098,5 +10098,6 @@
     "readAloudTake": "Opptak {number}",
     "videoWontPlayHere": "Denne videoen kan ikke spilles av her.",
     "watchOnYoutube": "Se på YouTube",
-    "createMyOwnCourse": "Lag mitt eget kurs"
+    "createMyOwnCourse": "Lag mitt eget kurs",
+    "xpTowardMission": "{xp} XP mot dette oppdraget"
 }

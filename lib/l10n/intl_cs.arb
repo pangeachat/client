@@ -10532,5 +10532,6 @@
     "readAloudTake": "Pokus {number}",
     "videoWontPlayHere": "Toto video zde nelze přehrát.",
     "watchOnYoutube": "Přehrát na YouTube",
-    "createMyOwnCourse": "Vytvořit vlastní kurz"
+    "createMyOwnCourse": "Vytvořit vlastní kurz",
+    "xpTowardMission": "{xp} XP k této misi"
 }

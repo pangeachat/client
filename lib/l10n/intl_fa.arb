@@ -10129,5 +10129,6 @@
     "readAloudTake": "برداشت {number}",
     "videoWontPlayHere": "این ویدئو اینجا پخش نمی‌شود.",
     "watchOnYoutube": "در یوتیوب تماشا کنید",
-    "createMyOwnCourse": "دوره خودم را بسازم"
+    "createMyOwnCourse": "دوره خودم را بسازم",
+    "xpTowardMission": "{xp} امتیاز تجربه برای این مأموریت"
 }

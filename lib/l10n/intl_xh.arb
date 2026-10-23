@@ -2503,5 +2503,6 @@
     "readAloudTake": "Thatha {number}",
     "videoWontPlayHere": "Le vidiyo ayizukudlala apha.",
     "watchOnYoutube": "Bukela kuYouTube",
-    "createMyOwnCourse": "Yenza eyakho ikhosi"
+    "createMyOwnCourse": "Yenza eyakho ikhosi",
+    "xpTowardMission": "{xp} XP kweli Phulo"
 }

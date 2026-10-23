@@ -10041,5 +10041,6 @@
     "readAloudTake": "Paņemiet {number}",
     "videoWontPlayHere": "Šo video šeit nevar atskaņot.",
     "watchOnYoutube": "Skatīties pakalpojumā YouTube",
-    "createMyOwnCourse": "Izveidot savu kursu"
+    "createMyOwnCourse": "Izveidot savu kursu",
+    "xpTowardMission": "{xp} XP šai misijai"
 }

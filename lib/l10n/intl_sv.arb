@@ -10556,5 +10556,6 @@
     "readAloudTake": "Ta {number}",
     "videoWontPlayHere": "Den här videon kan inte spelas upp här.",
     "watchOnYoutube": "Titta på YouTube",
-    "createMyOwnCourse": "Skapa min egen kurs"
+    "createMyOwnCourse": "Skapa min egen kurs",
+    "xpTowardMission": "{xp} XP mot detta uppdrag"
 }

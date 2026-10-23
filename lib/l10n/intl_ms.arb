@@ -2503,5 +2503,6 @@
     "readAloudTake": "Ambil {number}",
     "videoWontPlayHere": "Video ini tidak akan dimainkan di sini.",
     "watchOnYoutube": "Tonton di YouTube",
-    "createMyOwnCourse": "Cipta kursus saya sendiri"
+    "createMyOwnCourse": "Cipta kursus saya sendiri",
+    "xpTowardMission": "{xp} XP untuk Misi ini"
 }

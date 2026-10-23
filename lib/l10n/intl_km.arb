@@ -2503,5 +2503,6 @@
     "readAloudTake": "យក {number}",
     "videoWontPlayHere": "វីដេអូនេះមិនអាចចាក់នៅទីនេះបានទេ។",
     "watchOnYoutube": "មើលនៅលើ YouTube",
-    "createMyOwnCourse": "បង្កើតវគ្គសិក្សាផ្ទាល់ខ្លួន"
+    "createMyOwnCourse": "បង្កើតវគ្គសិក្សាផ្ទាល់ខ្លួន",
+    "xpTowardMission": "{xp} XP សម្រាប់បេសកកម្មនេះ"
 }

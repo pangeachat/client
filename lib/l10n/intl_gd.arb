@@ -2503,5 +2503,6 @@
     "readAloudTake": "Gabh {number}",
     "videoWontPlayHere": "Cha chluich a’ bhidio seo an-seo.",
     "watchOnYoutube": "Coimhead air YouTube",
-    "createMyOwnCourse": "Cruthaich mo chùrsa fhèin"
+    "createMyOwnCourse": "Cruthaich mo chùrsa fhèin",
+    "xpTowardMission": "{xp} XP a dh'ionnsaigh an Rùin seo"
 }

@@ -2503,5 +2503,6 @@
     "readAloudTake": "Lawe {number}",
     "videoWontPlayHere": "ʻAʻole e pāʻani kēia wikiō ma ʻaneʻi.",
     "watchOnYoutube": "E nānā ma YouTube",
-    "createMyOwnCourse": "Hana i kaʻu papa ponoʻī"
+    "createMyOwnCourse": "Hana i kaʻu papa ponoʻī",
+    "xpTowardMission": "{xp} XP i kēia mikiona"
 }

@@ -2503,5 +2503,6 @@
     "readAloudTake": "ይውሰዱ {number}",
     "videoWontPlayHere": "ይህ ቪዲዮ እዚህ አይጫወትም።",
     "watchOnYoutube": "በYouTube ላይ ይመልከቱ",
-    "createMyOwnCourse": "የራሴን ኮርስ ልፍጠር"
+    "createMyOwnCourse": "የራሴን ኮርስ ልፍጠር",
+    "xpTowardMission": "ለዚህ ተልዕኮ {xp} XP"
 }

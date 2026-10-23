@@ -2503,5 +2503,6 @@
     "readAloudTake": "Tangohia te {number}",
     "videoWontPlayHere": "Kāore tēnei ataata e purei ki konei.",
     "watchOnYoutube": "Mātaki ki YouTube",
-    "createMyOwnCourse": "Waihanga i taku ake akoranga"
+    "createMyOwnCourse": "Waihanga i taku ake akoranga",
+    "xpTowardMission": "{xp} XP ki tēnei Mihana"
 }

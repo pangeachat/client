@@ -2503,5 +2503,6 @@
     "readAloudTake": "Nka {number}",
     "videoWontPlayHere": "Video ena e ke ke ea bapala mona.",
     "watchOnYoutube": "Shebella ho YouTube",
-    "createMyOwnCourse": "Etsa thupelo ya ka"
+    "createMyOwnCourse": "Etsa thupelo ya ka",
+    "xpTowardMission": "{xp} XP ho ea ho Morero ona"
 }

@@ -2503,5 +2503,6 @@
     "readAloudTake": "واخلئ {number}",
     "videoWontPlayHere": "دا ویډیو دلته نه چلیږي.",
     "watchOnYoutube": "په یوټیوب کې وګورئ",
-    "createMyOwnCourse": "زما خپل کورس جوړ کړئ"
+    "createMyOwnCourse": "زما خپل کورس جوړ کړئ",
+    "xpTowardMission": "د دې ماموریت په لور {xp} XP"
 }

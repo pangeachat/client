@@ -2503,5 +2503,6 @@
     "readAloudTake": "ટેક {number}",
     "videoWontPlayHere": "આ વીડિયો અહીં ચાલશે નહીં.",
     "watchOnYoutube": "YouTube પર જુઓ",
-    "createMyOwnCourse": "મારો પોતાનો કોર્સ બનાવો"
+    "createMyOwnCourse": "મારો પોતાનો કોર્સ બનાવો",
+    "xpTowardMission": "આ મિશન માટે {xp} XP"
 }

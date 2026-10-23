@@ -2503,5 +2503,6 @@
     "readAloudTake": "Sume {number}",
     "videoWontPlayHere": "Hic video non ludet.",
     "watchOnYoutube": "Specta in YouTube",
-    "createMyOwnCourse": "Curriculum meum crea"
+    "createMyOwnCourse": "Curriculum meum crea",
+    "xpTowardMission": "{xp} XP ad hanc Missionem"
 }
