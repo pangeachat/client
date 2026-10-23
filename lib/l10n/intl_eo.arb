@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:32:57.123104",
+    "@@last_modified": "2026-10-23 10:46:56.772336",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -1826,7 +1826,7 @@
     "commandHint_discardsession": "Forĵetu sesion",
     "commandHint_dm": "Komencu rektan babilon\nUzu --no-encryption por malaktivigi ĉifron",
     "checkList": "Kontrolu Listo",
-    "createGroup": "Krei grupon",
+    "createGroup": "Krei babilejon",
     "chatPermissions": "Permesoj por babilejo",
     "emoteKeyboardNoRecents": "Lastatempe uzitaj emojoj aperos ĉi tie...",
     "calls": "Vokoj",
@@ -1954,7 +1954,7 @@
     "noUsersFoundWithQuery": "Bedaŭrinde, neniu uzanto povis esti trovita kun \"{query}\". Bonvolu kontroli ĉu vi eraris en tajpado.",
     "knocking": "Knokado",
     "nothingFound": "Neniam trovita...",
-    "groupName": "Grupo nomo",
+    "groupName": "Nomo de la babilejo",
     "wrongRecoveryKey": "Pardonu... ĉi tio ŝajnas ne esti la ĝusta restariga ŝlosilo.",
     "startConversation": "Komenci konversacion",
     "commandHint_sendraw": "Sendu krudan json",

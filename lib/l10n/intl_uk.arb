@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-16 16:33:13.781654",
+    "@@last_modified": "2026-10-23 10:47:04.406320",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -2112,7 +2112,7 @@
     "@exportEmotePack": {},
     "sendTypingNotifications": "Надсилати сповіщення про ввід тексту",
     "@sendTypingNotifications": {},
-    "createGroup": "Створити групу",
+    "createGroup": "Створити чат",
     "@createGroup": {},
     "messagesStyle": "Повідомлення:",
     "@messagesStyle": {},
@@ -2232,7 +2232,7 @@
     "@wrongRecoveryKey": {},
     "blockUsername": "Ігнорувати ім'я користувача",
     "@blockUsername": {},
-    "groupName": "Назва групи",
+    "groupName": "Назва чату",
     "@groupName": {},
     "databaseMigrationTitle": "Базу даних оптимізовано",
     "@databaseMigrationTitle": {},

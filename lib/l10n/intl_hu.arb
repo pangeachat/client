@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-16 16:33:00.272432",
+    "@@last_modified": "2026-10-23 10:46:59.184994",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -2185,7 +2185,7 @@
     "@newSpace": {},
     "emojis": "Hangulatjelek",
     "@emojis": {},
-    "createGroup": "Csoport létrehozása",
+    "createGroup": "Csevegés létrehozása",
     "@createGroup": {},
     "time": "Idő",
     "@time": {},
@@ -2347,7 +2347,7 @@
     "@stickers": {},
     "discover": "Felfedezés",
     "@discover": {},
-    "groupName": "Csoport név",
+    "groupName": "Csevegés neve",
     "@groupName": {},
     "verifyOtherDeviceDescription": "Amikor egy másik eszközt hitelesít, az eszközök kulcsokat cserélnek egymás között, ezáltal növelve az összbiztonságot. 💪 Amikor megkezdődik a folyamat, mind a két eszközön megjelenik egy felugró üzenet. Hangulatjelek és számok sorozata fog megjelenni, amit össze tud hasonlítani a két eszközön. Érdemes tehát mind a két eszközt a közelben tartani. 🤳",
     "@verifyOtherDeviceDescription": {},

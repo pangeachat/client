@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:03.131261",
+    "@@last_modified": "2026-10-23 10:46:59.867435",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -2194,7 +2194,7 @@
     },
     "newSpace": "새 스페이스",
     "@newSpace": {},
-    "createGroup": "새 그룹 채팅",
+    "createGroup": "채팅 만들기",
     "@createGroup": {},
     "custom": "커스텀",
     "@custom": {},
@@ -2212,7 +2212,7 @@
     "@block": {},
     "blockedUsers": "차단된 유저",
     "@blockedUsers": {},
-    "groupName": "그룹 채팅 이름",
+    "groupName": "채팅 이름",
     "@groupName": {},
     "commandHint_sendraw": "raw json 전송",
     "@commandHint_sendraw": {},

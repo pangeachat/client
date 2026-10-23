@@ -1525,7 +1525,7 @@
     "commandHint_markasdm": "Marcar como sala de mensagem direta para o ID Matrix fornecido",
     "commandHint_markasgroup": "Marcar como grupo",
     "checkList": "Lista de verificação",
-    "createGroup": "Criar grupo",
+    "createGroup": "Criar chat",
     "chatPermissions": "Permissões de conversa",
     "emoteKeyboardNoRecents": "Emotes usados recentemente aparecerão aqui...",
     "calls": "Chamadas",
@@ -1701,7 +1701,7 @@
     "noUsersFoundWithQuery": "Infelizmente, não foi possível encontrar nenhum utilizador com \"{query}\". Por favor, verifique se cometeu algum erro de digitação.",
     "knocking": "A tocar",
     "nothingFound": "Nada encontrado...",
-    "groupName": "Nome do grupo",
+    "groupName": "Nome do chat",
     "wrongRecoveryKey": "Desculpe... parece que esta não é a chave de recuperação correta.",
     "startConversation": "Iniciar conversa",
     "commandHint_sendraw": "Enviar JSON bruto",
@@ -2552,7 +2552,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-16 16:33:09.043932",
+    "@@last_modified": "2026-10-23 10:47:02.592785",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}

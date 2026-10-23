@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:00.988411",
+    "@@last_modified": "2026-10-23 10:46:59.016028",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -2111,7 +2111,7 @@
     "@importEmojis": {},
     "sendTypingNotifications": "Kirim notifikasi pengetikan",
     "@sendTypingNotifications": {},
-    "createGroup": "Buat grup",
+    "createGroup": "Buat obrolan",
     "@createGroup": {},
     "tryAgain": "Coba ulang",
     "@tryAgain": {},
@@ -2206,7 +2206,7 @@
     "@pleaseEnterANumber": {},
     "kickUserDescription": "Pengguna ini dikeluarkan dari percakapan tetapi tidak dicekal. Dalam percakapan publik, penggunanya dapat bergabung ulang kapan pun.",
     "@kickUserDescription": {},
-    "groupName": "Nama grup",
+    "groupName": "Nama obrolan",
     "@groupName": {},
     "wrongRecoveryKey": "Maaf... ini sepertinya bukan kunci pemulihan yang benar.",
     "@wrongRecoveryKey": {},

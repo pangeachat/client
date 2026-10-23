@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:33:09.056759",
+    "@@last_modified": "2026-10-23 10:47:02.521550",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -2232,7 +2232,7 @@
     "countParticipants": "{count} participantes",
     "create": "Criar",
     "createdTheChat": "💬 {username} criou o chat",
-    "createGroup": "Criar grupo",
+    "createGroup": "Criar chat",
     "currentlyActive": "Atualmente ativo",
     "darkTheme": "Escuro",
     "deactivateAccountWarning": "Isso desativará sua conta de usuário. Isso não pode ser desfeito! Você tem certeza?",
@@ -2561,7 +2561,7 @@
     "noUsersFoundWithQuery": "Infelizmente, nenhum usuário foi encontrado com \"{query}\". Por favor, verifique se você digitou corretamente.",
     "knocking": "Batendo",
     "nothingFound": "Nada encontrado...",
-    "groupName": "Nome do grupo",
+    "groupName": "Nome do chat",
     "wrongRecoveryKey": "Desculpe... isso não parece ser a chave de recuperação correta.",
     "startConversation": "Iniciar conversa",
     "commandHint_sendraw": "Enviar JSON bruto",

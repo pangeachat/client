@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-16 16:32:55.198985",
+    "@@last_modified": "2026-10-23 10:46:56.633796",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -2041,7 +2041,7 @@
     "@commandHint_markasdm": {},
     "hydrate": "Obnovit ze záložního souboru",
     "@hydrate": {},
-    "createGroup": "Vytvořit skupinu",
+    "createGroup": "Vytvořit chat",
     "@createGroup": {},
     "shareInviteLink": "Sdílet pozvánku",
     "@shareInviteLink": {},
@@ -2293,7 +2293,7 @@
     "@knocking": {},
     "nothingFound": "Nic nenalezeno...",
     "@nothingFound": {},
-    "groupName": "Název skupiny",
+    "groupName": "Název chatu",
     "@groupName": {},
     "startConversation": "Začít konverzaci",
     "@startConversation": {},

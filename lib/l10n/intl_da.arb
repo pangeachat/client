@@ -143,7 +143,7 @@
     "countParticipants": "{count} deltagere",
     "create": "Opret",
     "createdTheChat": "💬 {username} oprettede chatten",
-    "createGroup": "Opret gruppe",
+    "createGroup": "Opret chat",
     "currentlyActive": "Aktivt i øjeblikket",
     "darkTheme": "Mørk",
     "dateAndTimeOfDay": "{date}, {timeOfDay}",
@@ -485,7 +485,7 @@
     "noUsersFoundWithQuery": "Desværre kunne der ikke findes nogen bruger med \"{query}\". Tjek venligst, om du har lavet en stavefejl.",
     "knocking": "Banker på",
     "nothingFound": "Intet fundet...",
-    "groupName": "Gruppenavn",
+    "groupName": "Chatnavn",
     "wrongRecoveryKey": "Beklager... dette ser ikke ud til at være den korrekte gendannelsesnøgle.",
     "startConversation": "Start samtale",
     "commandHint_sendraw": "Send rå json",
@@ -1327,7 +1327,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-16 16:32:55.088386",
+    "@@last_modified": "2026-10-23 10:46:56.427570",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {

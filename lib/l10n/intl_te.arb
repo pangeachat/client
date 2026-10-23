@@ -133,7 +133,7 @@
     "countParticipants": "{count} పాల్గొనేవారు",
     "create": "సృష్టించు",
     "createdTheChat": "💬 {username} చాట్‌ను సృష్టించారు",
-    "createGroup": "గ్రూప్ సృష్టించు",
+    "createGroup": "చాట్ సృష్టించు",
     "currentlyActive": "ప్రస్తుతం క్రియాశీలంగా ఉంది",
     "darkTheme": "అంధకార",
     "dateAndTimeOfDay": "{date}, {timeOfDay}",
@@ -475,7 +475,7 @@
     "noUsersFoundWithQuery": "దురదృష్టవశాత్తూ \"{query}\" తో ఏ యూజర్‌ను కనుగొనలేకపోయాము. దయచేసి టైపో చేయలేదో అని తనిఖీ చేయండి.",
     "knocking": "ముద్దు పెట్టడం",
     "nothingFound": "ఏమీ కనుగొనబడలేదు...",
-    "groupName": "గుంపు పేరు",
+    "groupName": "చాట్ పేరు",
     "wrongRecoveryKey": "క్షమించండి... ఇది సరైన రికవరీ కీ అనిపించడంలేదు.",
     "startConversation": "సంభాషణ ప్రారంభించండి",
     "commandHint_sendraw": "అడిగిన JSON పంపండి",
@@ -1317,7 +1317,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-16 16:33:13.854955",
+    "@@last_modified": "2026-10-23 10:47:03.752973",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}

@@ -671,7 +671,7 @@
             }
         }
     },
-    "createGroup": "Guruh yaratish",
+    "createGroup": "Chat yaratish",
     "@createGroup": {},
     "currentlyActive": "Hozirda faol",
     "@currentlyActive": {
@@ -2260,7 +2260,7 @@
     "@knocking": {},
     "nothingFound": "Hech nima topilmadi...",
     "@nothingFound": {},
-    "groupName": "Guruh nomi",
+    "groupName": "Chat nomi",
     "@groupName": {},
     "wrongRecoveryKey": "Kechirasiz... bu toʻgʻri tiklash kaliti emasga oʻxshaydi.",
     "@wrongRecoveryKey": {},
@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-16 16:33:14.805458",
+    "@@last_modified": "2026-10-23 10:47:04.347411",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",

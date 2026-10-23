@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-16 16:32:59.780997",
+    "@@last_modified": "2026-10-23 10:46:58.711202",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -2164,7 +2164,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "createGroup": "Stvori grupu",
+    "createGroup": "Kreiraj chat",
     "@createGroup": {},
     "invite": "Pozovi",
     "@invite": {},
@@ -2207,7 +2207,7 @@
     "@wrongRecoveryKey": {},
     "blockUsername": "Zanemari korisničko ime",
     "@blockUsername": {},
-    "groupName": "Ime grupe",
+    "groupName": "Naziv chata",
     "@groupName": {},
     "databaseMigrationTitle": "Baza podataka je optimirana",
     "@databaseMigrationTitle": {},

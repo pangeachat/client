@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-16 16:32:53.340392",
+    "@@last_modified": "2026-10-23 10:46:55.738019",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -1920,7 +1920,7 @@
     "checkList": "তালিকা পরীক্ষা করুন",
     "countParticipants": "{count} অংশগ্রহণকারী",
     "createdTheChat": "💬 {username} চ্যাটটি তৈরি করেছেন",
-    "createGroup": "গ্রুপ তৈরি করুন",
+    "createGroup": "চ্যাট তৈরি করুন",
     "currentlyActive": "বর্তমানে সক্রিয়",
     "darkTheme": "অন্ধকার",
     "dateAndTimeOfDay": "{date}, {timeOfDay}",
@@ -2245,7 +2245,7 @@
     "noUsersFoundWithQuery": "দুঃখিত, \"{query}\" এর সাথে কোনও ব্যবহারকারী পাওয়া যায়নি। দয়া করে ভুল টাইপ হয়েছে কি না তা পরীক্ষা করুন।",
     "knocking": "নক করা হচ্ছে",
     "nothingFound": "কিছুই পাওয়া যায়নি...",
-    "groupName": "গ্রুপের নাম",
+    "groupName": "চ্যাটের নাম",
     "wrongRecoveryKey": "দুঃখিত... এটি সঠিক পুনরুদ্ধার কী মনে হচ্ছে না।",
     "startConversation": "আলাপ শুরু করুন",
     "commandHint_sendraw": "কাঁচা JSON পাঠান",

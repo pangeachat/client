@@ -2050,7 +2050,7 @@
     "space": "Vieta",
     "spaces": "Vietos",
     "checkList": "Patikros sąrašas",
-    "createGroup": "Sukurti grupę",
+    "createGroup": "Sukurti pokalbį",
     "chatPermissions": "Pokalbių leidimai",
     "emoteKeyboardNoRecents": "Neseniai naudoti emocai čia pasirodys...",
     "calls": "Skambučiai",
@@ -2116,7 +2116,7 @@
     "noUsersFoundWithQuery": "Deja, su užklausa \"{query}\" nerasta vartotojo. Prašome patikrinti, ar nepadarėte rašybos klaidos.",
     "knocking": "Skambinama",
     "nothingFound": "Nieko nerasta...",
-    "groupName": "Grupės pavadinimas",
+    "groupName": "Pokalbio pavadinimas",
     "wrongRecoveryKey": "Atsiprašome... atrodo, kad tai nėra teisingas atkūrimo raktas.",
     "startConversation": "Pradėti pokalbį",
     "commandHint_sendraw": "Siųsti neapdorotą JSON",
@@ -2956,7 +2956,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-16 16:33:05.410541",
+    "@@last_modified": "2026-10-23 10:47:00.601802",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}

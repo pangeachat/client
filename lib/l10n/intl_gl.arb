@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-16 16:32:58.524346",
+    "@@last_modified": "2026-10-23 10:46:58.131612",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -2112,7 +2112,7 @@
     "@replace": {},
     "sendTypingNotifications": "Permitir ver que estás escribindo",
     "@sendTypingNotifications": {},
-    "createGroup": "Crear grupo",
+    "createGroup": "Crear chat",
     "@createGroup": {},
     "messagesStyle": "Mensaxes:",
     "@messagesStyle": {},
@@ -2218,7 +2218,7 @@
     },
     "yourGlobalUserIdIs": "O teu ID-usuaria global é: ",
     "@yourGlobalUserIdIs": {},
-    "groupName": "Nome do grupo",
+    "groupName": "Nome do chat",
     "@groupName": {},
     "startConversation": "Iniciar conversa",
     "@startConversation": {},
