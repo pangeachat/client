@@ -93,12 +93,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   /// speed bonus when the session moves on.
   DateTime? _readAloudShownAt;
 
-  /// The start page chips the learner just set, shown while the session's
-  /// words are picked again for them; null otherwise.
-  final ValueNotifier<Set<LearningSkillsEnum>?> pendingSkills = ValueNotifier(
-    null,
-  );
-
   @override
   void initState() {
     super.initState();
@@ -128,7 +122,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     PracticeSessionHolder.instance.detachPanel();
     _languageStreamSubscription?.cancel();
     audioPlaybackSpeedController.dispose();
-    pendingSkills.dispose();
     // Session notifiers are holder-owned and intentionally NOT disposed here —
     // the session outlives this panel.
     super.dispose();
@@ -290,13 +283,9 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   /// Pick the session's words and open the start page, generating the first
   /// exercise behind it. [begin] goes straight to that exercise instead, for
-  /// Another round, where the learner has just chosen to go again; with
-  /// [keepCurrent] the start page stays up while its chips re-pick the words.
-  /// See practice-exercises.instructions.md, "Start page".
-  Future<void> startSession({
-    bool begin = false,
-    bool keepCurrent = false,
-  }) async {
+  /// Another round, where the learner has just chosen to go again. See
+  /// practice-exercises.instructions.md, "Start page".
+  Future<void> startSession({bool begin = false}) async {
     // A session starting over a state whose watchdog was already stood down —
     // the Retry after a failed load, a language-change restart — needs the idle
     // clock re-armed from now, or the new session would go unwatched until its
@@ -324,7 +313,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
         skills: widget.type == ConstructTypeEnum.vocab
             ? await PracticeSkillsStore.load()
             : PracticeSkillsStore.vocabSkills,
-        keepCurrent: keepCurrent,
       );
       if (!current) return;
       if (mounted) setState(() {});
@@ -367,14 +355,16 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     await _continueSession();
   }
 
-  /// The start page's chips: keep the choice on this device and pick the
-  /// session's words again for it.
+  /// The start page's chips: deal the same words for the new choice, keep
+  /// the choice on this device, and generate the new first exercise.
   Future<void> setSkills(Set<LearningSkillsEnum> skills) async {
-    pendingSkills.value = skills;
+    PracticeSessionHolder.instance.markInteraction();
+    session.dealSkills(skills);
+    data.clear();
+    progress.value = session.progress;
+    _prefetchFirstExercise();
+    if (mounted) setState(() {});
     await PracticeSkillsStore.save(skills);
-    await startSession(keepCurrent: true);
-    // A later tap may already be picking for its own choice.
-    if (identical(pendingSkills.value, skills)) pendingSkills.value = null;
   }
 
   Future<void> _completeSession() async {

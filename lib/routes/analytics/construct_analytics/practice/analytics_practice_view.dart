@@ -197,25 +197,20 @@ class AnalyticsPracticeView extends StatelessWidget {
 
         final session = controller.session.session;
         if (session != null && controller.awaitingStart) {
-          return ValueListenableBuilder(
-            valueListenable: controller.pendingSkills,
-            builder: (context, pending, _) {
-              final points = session.plannedPoints;
-              return PracticeStartPage(
-                type: session.type,
-                count: points.length,
-                emojis: session.type == ConstructTypeEnum.vocab
-                    ? [
-                        for (final point in points)
-                          ?point.tokens.first.vocabConstructID.userSetEmoji,
-                      ]
-                    : const [],
-                skills: pending ?? session.skills,
-                availableSkills: session.availableSkills,
-                onSkillsChanged: controller.setSkills,
-                onStart: pending == null ? controller.beginSession : null,
-              );
-            },
+          final points = session.plannedPoints;
+          return PracticeStartPage(
+            type: session.type,
+            count: points.length,
+            emojis: session.type == ConstructTypeEnum.vocab
+                ? [
+                    for (final point in points)
+                      ?point.tokens.first.vocabConstructID.userSetEmoji,
+                  ]
+                : const [],
+            skills: session.skills,
+            availableSkills: session.availableSkills,
+            onSkillsChanged: controller.setSkills,
+            onStart: controller.beginSession,
           );
         }
         if (session != null) {

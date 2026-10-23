@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
@@ -8,6 +9,7 @@ import 'package:fluffychat/routes/analytics/construct_analytics/construct_analyt
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart';
+import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_type_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_target.dart';
 
 class ExampleMessageInfo {
@@ -124,6 +126,39 @@ class AnalyticsPracticeTarget {
       );
 }
 
+/// One word a vocab session practices, picked once when its start page opens,
+/// with the exercise types that can be made for it. The start page's chips
+/// only decide which of those it gets (practice-exercises.instructions.md,
+/// "Start page").
+class PracticeWord {
+  final PangeaToken token;
+  final Set<LearningSkillsEnum> skills;
+
+  /// Wrong answers for its meaning exercise, for a word from a Mission plan.
+  final List<ConstructIdentifier> distractorCandidates;
+
+  const PracticeWord({
+    required this.token,
+    required this.skills,
+    this.distractorCandidates = const [],
+  });
+
+  AnalyticsPracticeTarget targetFor(LearningSkillsEnum skill) =>
+      AnalyticsPracticeTarget(
+        target: PracticeTarget(
+          tokens: [token],
+          exerciseType: switch (skill) {
+            LearningSkillsEnum.hearing => PracticeExerciseTypeEnum.lemmaAudio,
+            LearningSkillsEnum.speaking => PracticeExerciseTypeEnum.readAloud,
+            _ => PracticeExerciseTypeEnum.lemmaMeaning,
+          },
+          distractorCandidates: skill == LearningSkillsEnum.reading
+              ? distractorCandidates
+              : const [],
+        ),
+      );
+}
+
 class AnalyticsPracticeSessionModel {
   /// Wall-clock zero, stamped by [markStarted] when the first exercise is on
   /// screen — NOT when the session's targets were picked. Null until then, so
@@ -153,6 +188,14 @@ class AnalyticsPracticeSessionModel {
   final Set<LearningSkillsEnum> skills;
   final Set<LearningSkillsEnum> availableSkills;
 
+  /// A vocab session's words, in the order picked; empty for grammar.
+  final List<PracticeWord> words;
+
+  /// How many exercises the session plans to show, when fewer than
+  /// [AnalyticsPracticeConstants.practiceGroupSize] because some of its words
+  /// have no exercise among the start page's chips.
+  final int? plannedSize;
+
   AnalyticsPracticeSessionState state;
 
   AnalyticsPracticeSessionModel({
@@ -166,18 +209,110 @@ class AnalyticsPracticeSessionModel {
     this.offline = false,
     this.skills = const {},
     this.availableSkills = const {},
+    this.words = const [],
+    this.plannedSize,
     AnalyticsPracticeSessionState? state,
   }) : state = state ?? const AnalyticsPracticeSessionState();
+
+  /// A vocab session over [words]: the first
+  /// [AnalyticsPracticeConstants.practiceGroupSize] are the ones it plans to
+  /// show and the rest are spares. It practices the [skills] its planned
+  /// words can take, or all of those when none of [skills] can be. A word
+  /// left with no exercise drops out, and no spare takes its place.
+  factory AnalyticsPracticeSessionModel.vocab({
+    required List<PracticeWord> words,
+    required Set<LearningSkillsEnum> skills,
+    required String userL1,
+    required String userL2,
+    String? missionId,
+    String? missionLabel,
+    bool offline = false,
+  }) {
+    final groupSize = AnalyticsPracticeConstants.practiceGroupSize;
+    final available = {
+      for (final word in words.take(groupSize)) ...word.skills,
+    };
+    var practiced = skills.intersection(available);
+    if (practiced.isEmpty) practiced = available;
+    final planned = [
+      for (final word in words.take(groupSize))
+        if (word.skills.any(practiced.contains)) word,
+    ];
+    final spares = [
+      for (final word in words.skip(groupSize))
+        if (word.skills.any(practiced.contains)) word,
+    ];
+    return AnalyticsPracticeSessionModel(
+      type: ConstructTypeEnum.vocab,
+      practiceTargets: dealSkills([...planned, ...spares], practiced),
+      userL1: userL1,
+      userL2: userL2,
+      missionId: missionId,
+      missionLabel: missionLabel,
+      offline: offline,
+      skills: practiced,
+      availableSkills: available,
+      words: words,
+      plannedSize: planned.length,
+    );
+  }
+
+  /// The same words dealt for other start page chips.
+  AnalyticsPracticeSessionModel withSkills(Set<LearningSkillsEnum> skills) =>
+      AnalyticsPracticeSessionModel.vocab(
+        words: words,
+        skills: skills,
+        userL1: userL1,
+        userL2: userL2,
+        missionId: missionId,
+        missionLabel: missionLabel,
+        offline: offline,
+      );
+
+  /// Listening first on a tie, then speaking, so the two take turns.
+  static const List<LearningSkillsEnum> _dealOrder = [
+    LearningSkillsEnum.hearing,
+    LearningSkillsEnum.speaking,
+    LearningSkillsEnum.reading,
+  ];
+
+  /// One exercise per word: each gets the type among [skills] it can take
+  /// that has been dealt least so far. An even share keeps speaking in every
+  /// session that has it on without an item that needs a microphone and the
+  /// network dominating it (practice-exercises.instructions.md, "Speaking
+  /// practice").
+  @visibleForTesting
+  static List<AnalyticsPracticeTarget> dealSkills(
+    List<PracticeWord> words,
+    Set<LearningSkillsEnum> skills,
+  ) {
+    final dealt = <LearningSkillsEnum, int>{};
+    final targets = <AnalyticsPracticeTarget>[];
+    for (final word in words) {
+      LearningSkillsEnum? pick;
+      for (final skill in _dealOrder) {
+        if (!skills.contains(skill) || !word.skills.contains(skill)) continue;
+        if (pick == null || (dealt[skill] ?? 0) < (dealt[pick] ?? 0)) {
+          pick = skill;
+        }
+      }
+      if (pick == null) continue;
+      dealt[pick] = (dealt[pick] ?? 0) + 1;
+      targets.add(word.targetFor(pick));
+    }
+    return targets;
+  }
 
   // Maximum activities to attempt (including skips)
   int get _maxAttempts => AnalyticsPracticeConstants.targetsToGenerate
       .clamp(0, practiceTargets.length)
       .toInt();
 
-  int get _completionGoal => AnalyticsPracticeConstants.practiceGroupSize.clamp(
-    0,
-    practiceTargets.length,
-  );
+  int get _completionGoal =>
+      (plannedSize ?? AnalyticsPracticeConstants.practiceGroupSize).clamp(
+        0,
+        practiceTargets.length,
+      );
 
   // Total attempted so far (completed + skipped)
   int get _totalAttempted => state.currentIndex + state.skippedActivities;

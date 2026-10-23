@@ -24,7 +24,6 @@ void main() {
     ConstructTypeEnum type = ConstructTypeEnum.vocab,
     Set<LearningSkillsEnum> skills = PracticeSkillsStore.vocabSkills,
     Set<LearningSkillsEnum> available = PracticeSkillsStore.vocabSkills,
-    bool picking = false,
   }) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -38,7 +37,7 @@ void main() {
             skills: skills,
             availableSkills: available,
             onSkillsChanged: changes.add,
-            onStart: picking ? null : () => starts++,
+            onStart: () => starts++,
           ),
         ),
       ),
@@ -96,15 +95,6 @@ void main() {
     expect(tester.widget<FilterChip>(chip('Speaking')).onSelected, isNull);
     expect(tester.widget<FilterChip>(chip('Listening')).onSelected, isNull);
     expect(tester.widget<FilterChip>(chip('Reading')).onSelected, isNotNull);
-  });
-
-  testWidgets('Start waits while the words are picked again', (tester) async {
-    await pump(tester, picking: true);
-
-    expect(
-      tester.widget<FilledButton>(find.byType(FilledButton)).onPressed,
-      isNull,
-    );
   });
 
   testWidgets('grammar shows its count and no chips', (tester) async {
