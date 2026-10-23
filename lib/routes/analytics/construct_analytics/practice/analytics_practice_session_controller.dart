@@ -85,21 +85,19 @@ class PracticeSessionController {
     session?.submitAnswer(uses);
   }
 
-  /// Pick the session's words. With [keepCurrent] the session already picked
-  /// stays on screen until the new one lands, as when the start page's chips
-  /// change. Returns false when a later pick superseded this one.
+  /// Pick the session's words. Returns false when a later pick superseded
+  /// this one.
   Future<bool> startSession(
     ConstructTypeEnum type, {
     String? missionId,
     Set<LearningSkillsEnum> skills = PracticeSkillsStore.vocabSkills,
-    bool keepCurrent = false,
   }) async {
     clear();
     final generation = _generation;
     try {
       isLoadingSession = true;
       sessionError = null;
-      if (!keepCurrent) session = null;
+      session = null;
       earnedXp = null;
 
       final l1 = MatrixState.pangeaController.userController.userL1;
@@ -126,6 +124,15 @@ class PracticeSessionController {
       if (generation == _generation) isLoadingSession = false;
     }
     return true;
+  }
+
+  /// Deal the session's words for other start page chips. The words stay;
+  /// only their exercises change, so any exercise already loading is dropped.
+  void dealSkills(Set<LearningSkillsEnum> skills) {
+    final current = session;
+    if (current == null) return;
+    clear();
+    session = current.withSkills(skills);
   }
 
   Future<void> completeSession() async {

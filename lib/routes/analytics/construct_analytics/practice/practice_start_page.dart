@@ -18,9 +18,7 @@ class PracticeStartPage extends StatelessWidget {
   final Set<LearningSkillsEnum> skills;
   final Set<LearningSkillsEnum> availableSkills;
   final ValueChanged<Set<LearningSkillsEnum>> onSkillsChanged;
-
-  /// Null while the chips re-pick the session's words.
-  final VoidCallback? onStart;
+  final VoidCallback onStart;
 
   const PracticeStartPage({
     required this.type,
