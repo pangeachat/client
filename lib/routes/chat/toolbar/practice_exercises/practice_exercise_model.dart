@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
@@ -482,6 +484,41 @@ class ReadAloudPracticeExerciseModel
 
   /// The one answer: the target as it appears in the sentence.
   String get heardAnswer => tokens.first.text.content;
+
+  /// The uses one recorded take earns. The target's read-aloud use, correct
+  /// or not, decides the item; every other word heard earns the use a spoken
+  /// word in a voice message earns, vocabulary only, and a word not heard
+  /// earns nothing and is never a miss (practice-exercises.instructions.md,
+  /// "What counts"). [heard] is per [referenceTokens].
+  List<OneConstructUse> takeUses({
+    required bool targetHeard,
+    required List<bool> heard,
+  }) {
+    final uses = constructUses(targetHeard ? heardAnswer : notHeard);
+    final target = tokens.first;
+    final metadata = constructUseMetadata;
+    final words = referenceTokens;
+    const spoken = ConstructUseTypeEnum.pvm;
+    for (var i = 0; i < words.length && i < heard.length; i++) {
+      final token = words[i];
+      final isTarget =
+          token.text.offset == target.text.offset &&
+          token.text.content == target.text.content;
+      if (!heard[i] || isTarget || !token.lemma.saveVocab) continue;
+      uses.add(
+        OneConstructUse(
+          useType: spoken,
+          constructType: ConstructTypeEnum.vocab,
+          metadata: metadata,
+          category: token.pos,
+          lemma: token.lemma.text,
+          form: token.text.content,
+          xp: spoken.pointValue,
+        ),
+      );
+    }
+    return uses;
+  }
 
   /// Submitted for a miss. An empty string is never a spoken word, so it can
   /// never match the answer.

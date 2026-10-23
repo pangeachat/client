@@ -94,7 +94,7 @@ void main() {
                 transcribe: (_) async => const [],
               );
             },
-            onRecorded: (_) {},
+            onRecorded: (_, _) {},
             onMicUnavailable: () {},
           ),
         ),
@@ -143,7 +143,7 @@ void main() {
               captureFactory: _FakeCapture.new,
               transcribe: (_) async => const [],
             ),
-            onRecorded: (_) {},
+            onRecorded: (_, _) {},
             onMicUnavailable: () {},
           ),
         ),

@@ -512,15 +512,16 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   /// Record a read-aloud item's one answer: `corRA` when the target was heard,
   /// `incRA` when the tries ran out. Marks the item answered either way — the
   /// miss is the item's final state, not a wrong pick to try past.
+  /// [targetHeard] decides the item; [heard], per reference word of the
+  /// recorded take, says which other words earn a spoken-word use.
   Future<void> submitReadAloud(
     ReadAloudPracticeExerciseModel exercise, {
-    required bool heard,
+    required bool targetHeard,
+    required List<bool> heard,
   }) async {
     PracticeSessionHolder.instance.markInteraction();
     if (notifier.exerciseComplete(exercise)) return;
-    final uses = exercise.constructUses(
-      heard ? exercise.heardAnswer : ReadAloudPracticeExerciseModel.notHeard,
-    );
+    final uses = exercise.takeUses(targetHeard: targetHeard, heard: heard);
     session.submitAnswer(uses);
     notifier.selectChoice(exercise.heardAnswer);
     await _analyticsController.addCompletedExerciseAnalytics(

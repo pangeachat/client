@@ -19,8 +19,8 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// practice-exercises.instructions.md, "Speaking practice".
 ///
 /// The widget owns the item's [ReadAloudRecorder] and reports upward once:
-/// [onRecorded] with whether the target was heard, on the first full pass or
-/// when the tries run out; [onMicUnavailable] when the microphone is refused
+/// [onRecorded] with whether the target was heard and which words of the
+/// recorded take were, on the first full pass or when the tries run out; [onMicUnavailable] when the microphone is refused
 /// or absent. More takes after that are the learner comparing, not answering.
 class ReadAloudExerciseWidget extends StatefulWidget {
   final ReadAloudPracticeExerciseModel exercise;
@@ -28,7 +28,7 @@ class ReadAloudExerciseWidget extends StatefulWidget {
   final bool hearItFirst;
   final AudioPlaybackSpeedController playbackSpeedController;
   final ReadAloudRecorder Function(List<String> reference) recorderFactory;
-  final void Function(bool heard) onRecorded;
+  final void Function(bool targetHeard, List<bool> heard) onRecorded;
   final VoidCallback onMicUnavailable;
 
   const ReadAloudExerciseWidget({
@@ -86,7 +86,7 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
     if (_recorder.phase == ReadAloudPhase.done && !_recorded) {
       if (_targetHeard || _recorder.triesLeft <= 0) {
         _recorded = true;
-        widget.onRecorded(_targetHeard);
+        widget.onRecorded(_targetHeard, List<bool>.of(_recorder.heard));
       }
     }
     if (_recorder.phase == ReadAloudPhase.micUnavailable && !_micReported) {

@@ -203,9 +203,10 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
                                           reference,
                                           sentence: exercise.referenceText,
                                         ),
-                                    onRecorded: (heard) =>
+                                    onRecorded: (targetHeard, heard) =>
                                         controller.submitReadAloud(
                                           exercise,
+                                          targetHeard: targetHeard,
                                           heard: heard,
                                         ),
                                     onMicUnavailable: () =>
