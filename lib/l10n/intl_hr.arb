@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-21 10:12:49.279198",
+    "@@last_modified": "2026-10-23 12:42:48.832145",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10471,5 +10471,6 @@
     "readAloudStartOver": "Počni ispočetka",
     "readAloudStarting": "Pripremam mikrofon…",
     "readAloudListening": "Slušam…",
-    "readAloudTake": "Pokušaj {number}"
+    "readAloudTake": "Pokušaj {number}",
+    "createMyOwnCourse": "Izradi moj tečaj"
 }

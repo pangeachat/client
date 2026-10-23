@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-21 10:12:53.294769",
+    "@@last_modified": "2026-10-23 12:42:50.372795",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10231,5 +10231,6 @@
     "readAloudStartOver": "다시 시작",
     "readAloudStarting": "마이크 준비 중…",
     "readAloudListening": "듣는 중…",
-    "readAloudTake": "{number}번째 시도"
+    "readAloudTake": "{number}번째 시도",
+    "createMyOwnCourse": "나만의 코스 만들기"
 }

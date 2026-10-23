@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-21 10:12:59.616608",
+    "@@last_modified": "2026-10-23 12:42:52.773250",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10767,5 +10767,6 @@
     "readAloudStartOver": "Ia-o de la capăt",
     "readAloudStarting": "Se pregătește microfonul…",
     "readAloudListening": "Se ascultă…",
-    "readAloudTake": "Preluare {number}"
+    "readAloudTake": "Preluare {number}",
+    "createMyOwnCourse": "Creează-mi propriul curs"
 }

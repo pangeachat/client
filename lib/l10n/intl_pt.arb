@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-21 10:12:59.812550",
+    "@@last_modified": "2026-10-23 12:42:52.778382",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10979,5 +10979,6 @@
     "readAloudStartOver": "Recomeçar",
     "readAloudStarting": "Preparando o microfone…",
     "readAloudListening": "Ouvindo…",
-    "readAloudTake": "Tentativa {number}"
+    "readAloudTake": "Tentativa {number}",
+    "createMyOwnCourse": "Criar meu próprio curso"
 }

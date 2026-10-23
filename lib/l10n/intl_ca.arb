@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-21 10:12:44.739560",
+    "@@last_modified": "2026-10-23 12:42:46.249219",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10165,5 +10165,6 @@
     "readAloudStartOver": "Tornar a començar",
     "readAloudStarting": "Preparant el micròfon…",
     "readAloudListening": "Escolto…",
-    "readAloudTake": "Presa {number}"
+    "readAloudTake": "Presa {number}",
+    "createMyOwnCourse": "Crear el meu propi curs"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-21 10:13:02.058052",
+    "@@last_modified": "2026-10-23 12:42:53.788289",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10553,5 +10553,6 @@
     "readAloudStartOver": "Börja om",
     "readAloudStarting": "Förbereder mikrofonen…",
     "readAloudListening": "Lyssnar…",
-    "readAloudTake": "Ta {number}"
+    "readAloudTake": "Ta {number}",
+    "createMyOwnCourse": "Skapa min egen kurs"
 }

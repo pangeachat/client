@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-10-21 10:12:53.667102",
+    "@@last_modified": "2026-10-23 12:42:49.834687",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2500,5 +2500,6 @@
     "readAloudStartOver": "ចាប់ផ្ដើមឡើងវិញ",
     "readAloudStarting": "កំពុងរៀបចំមីក្រូហ្វូន…",
     "readAloudListening": "កំពុងស្ដាប់…",
-    "readAloudTake": "យក {number}"
+    "readAloudTake": "យក {number}",
+    "createMyOwnCourse": "បង្កើតវគ្គសិក្សាផ្ទាល់ខ្លួន"
 }

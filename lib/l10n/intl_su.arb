@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-21 10:13:02.846939",
+    "@@last_modified": "2026-10-23 12:42:54.102972",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2500,5 +2500,6 @@
     "readAloudStartOver": "Mimitian deui",
     "readAloudStarting": "Nyiapkeun mikropon…",
     "readAloudListening": "Ngaregepkeun…",
-    "readAloudTake": "Candak {number}"
+    "readAloudTake": "Candak {number}",
+    "createMyOwnCourse": "Jieun kursus kuring sorangan"
 }

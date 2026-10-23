@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-21 10:12:45.848609",
+    "@@last_modified": "2026-10-23 12:42:47.161614",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10980,5 +10980,6 @@
     "readAloudStartOver": "Rekomenci",
     "readAloudStarting": "Pretigas la mikrofonon…",
     "readAloudListening": "Aŭskultas…",
-    "readAloudTake": "Provo {number}"
+    "readAloudTake": "Provo {number}",
+    "createMyOwnCourse": "Krei mian propran kurson"
 }

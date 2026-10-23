@@ -1327,7 +1327,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-21 10:12:47.044038",
+    "@@last_modified": "2026-10-23 12:42:47.150977",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10955,5 +10955,6 @@
     "readAloudStartOver": "Start forfra",
     "readAloudStarting": "Forbereder mikrofonen…",
     "readAloudListening": "Lytter…",
-    "readAloudTake": "Tag {number}"
+    "readAloudTake": "Tag {number}",
+    "createMyOwnCourse": "Opret mit eget kursus"
 }

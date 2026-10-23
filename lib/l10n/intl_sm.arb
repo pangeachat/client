@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-21 10:13:01.936761",
+    "@@last_modified": "2026-10-23 12:42:54.150801",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2500,5 +2500,6 @@
     "readAloudStartOver": "Toe amata",
     "readAloudStarting": "Saunia le masini faaleotele leo…",
     "readAloudListening": "Faʻalogo…",
-    "readAloudTake": "Ave {number}"
+    "readAloudTake": "Ave {number}",
+    "createMyOwnCourse": "Fausia la'u lava kosi"
 }

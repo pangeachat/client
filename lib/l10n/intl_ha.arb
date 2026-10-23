@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-21 10:12:48.196415",
+    "@@last_modified": "2026-10-23 12:42:48.272498",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2500,5 +2500,6 @@
     "readAloudStartOver": "Fara daga farko",
     "readAloudStarting": "Ana shirya makirufo…",
     "readAloudListening": "Ina sauraro…",
-    "readAloudTake": "Ɗauka ta {number}"
+    "readAloudTake": "Ɗauka ta {number}",
+    "createMyOwnCourse": "Ƙirƙiri kwas na da kaina"
 }

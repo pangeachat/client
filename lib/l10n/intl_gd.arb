@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-21 10:12:47.504921",
+    "@@last_modified": "2026-10-23 12:42:48.159665",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2500,5 +2500,6 @@
     "readAloudStartOver": "Tòisich a-rithist",
     "readAloudStarting": "Ag ullachadh a’ mhicreofoin…",
     "readAloudListening": "Ag èisteachd…",
-    "readAloudTake": "Gabh {number}"
+    "readAloudTake": "Gabh {number}",
+    "createMyOwnCourse": "Cruthaich mo chùrsa fhèin"
 }

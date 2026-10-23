@@ -3082,7 +3082,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-21 10:12:50.695137",
+    "@@last_modified": "2026-10-23 12:42:49.516832",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10667,5 +10667,6 @@
     "readAloudStartOver": "Tosaigh arís",
     "readAloudStarting": "Ag ullmhú an mhicreafóin…",
     "readAloudListening": "Ag éisteacht…",
-    "readAloudTake": "Glac {number}"
+    "readAloudTake": "Glac {number}",
+    "createMyOwnCourse": "Cruthaigh mo chúrsa féin"
 }

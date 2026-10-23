@@ -22,6 +22,14 @@ A course is offered in either list only when its quest resolves **and** carries 
 - A **"Course preview" pill** ([`CoursePreviewBanner`](../../lib/routes/world/course_preview_banner.dart)) floats top-center over the exposed map — the one label for the mode; tapping it re-runs the fit after the learner pans away. The map search bar/overlay hides while the scope holds.
 - **Pins are inert**: they still promote and demote through the normal dot/mid/large tiers as the learner pans and zooms — that is the preview — but tapping never opens an activity page, which would navigate away from the join decision.
 
+## Start my own and central courses
+
+Picking a quest in Start my own opens the preview of the central course for that quest's language, when Browse marks one as `central` ([central courses](../../../.github/.github/instructions/central-courses.instructions.md)). Otherwise it opens the preview of the public course (join rule `public`) with the most members that already uses that quest. Only when neither exists does it open the quest's own preview with Create course.
+
+- **A private course stays possible from level 10.** On a central or public course's preview, a learner at level 10 or above also gets a secondary "Create my own course" action below Join. It creates a private course on the picked quest, the same way Create course does.
+- **Teachers create directly.** An account that chose teacher in onboarding skips the redirect and the level check, and Start my own creates the course as before.
+- **Adding a quest to an existing course is unchanged.**
+
 ## The page
 
 [`SelectedCourseView`](../../lib/routes/courses/own/selected_course_view.dart) — shared by the browse preview, the start-my-own selection, and add-course-to-space:

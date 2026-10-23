@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-21 10:12:46.862879",
+    "@@last_modified": "2026-10-23 12:42:47.875963",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10390,5 +10390,6 @@
     "readAloudStartOver": "Recommencer",
     "readAloudStarting": "Préparation du microphone…",
     "readAloudListening": "Écoute…",
-    "readAloudTake": "Prendre {number}"
+    "readAloudTake": "Prendre {number}",
+    "createMyOwnCourse": "Créer mon propre cours"
 }

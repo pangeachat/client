@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-21 10:13:06.011762",
+    "@@last_modified": "2026-10-23 12:42:54.939316",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2500,5 +2500,6 @@
     "readAloudStartOver": "قايتا باشلاش",
     "readAloudStarting": "مىكروفون تەييارلىنىۋاتىدۇ…",
     "readAloudListening": "تىڭشاش…",
-    "readAloudTake": "{number}-قېتىملىق سۆزلەش"
+    "readAloudTake": "{number}-قېتىملىق سۆزلەش",
+    "createMyOwnCourse": "ئۆز كۇرسۇمنى قۇرۇش"
 }

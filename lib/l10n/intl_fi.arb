@@ -3516,7 +3516,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-21 10:12:46.560353",
+    "@@last_modified": "2026-10-23 12:42:48.238425",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10075,5 +10075,6 @@
     "readAloudStartOver": "Aloita alusta",
     "readAloudStarting": "Valmistellaan mikrofonia…",
     "readAloudListening": "Kuunnellaan…",
-    "readAloudTake": "Ota {number}"
+    "readAloudTake": "Ota {number}",
+    "createMyOwnCourse": "Luo oma kurssini"
 }

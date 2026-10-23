@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-21 10:12:54.368460",
+    "@@last_modified": "2026-10-23 12:42:51.059178",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2500,5 +2500,6 @@
     "readAloudStartOver": "Nei ufänken",
     "readAloudStarting": "Mikro gëtt prett gemaach…",
     "readAloudListening": "Lauschteren…",
-    "readAloudTake": "Huelt {number}"
+    "readAloudTake": "Huelt {number}",
+    "createMyOwnCourse": "Mäin eegene Cours erstellen"
 }

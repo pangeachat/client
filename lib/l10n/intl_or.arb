@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-10-21 10:12:58.698604",
+    "@@last_modified": "2026-10-23 12:42:52.335028",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2500,5 +2500,6 @@
     "readAloudStartOver": "ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "readAloudStarting": "ମାଇକ୍ରୋଫୋନ୍ ପ୍ରସ୍ତୁତ ହେଉଛି…",
     "readAloudListening": "ଶୁଣୁଛି…",
-    "readAloudTake": "ନିଅନ୍ତୁ {number}"
+    "readAloudTake": "ନିଅନ୍ତୁ {number}",
+    "createMyOwnCourse": "ମୋର ନିଜସ୍ୱ ପାଠ୍ୟକ୍ରମ ତିଆରି କରନ୍ତୁ"
 }

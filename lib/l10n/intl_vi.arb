@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-21 10:13:05.664727",
+    "@@last_modified": "2026-10-23 12:42:55.477798",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7345,5 +7345,6 @@
     "readAloudStartOver": "Bắt đầu lại",
     "readAloudStarting": "Đang chuẩn bị micrô…",
     "readAloudListening": "Đang nghe…",
-    "readAloudTake": "Lượt {number}"
+    "readAloudTake": "Lượt {number}",
+    "createMyOwnCourse": "Tạo khóa học của riêng tôi"
 }

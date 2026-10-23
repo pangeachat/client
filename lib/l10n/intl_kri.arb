@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-21 10:12:52.897113",
+    "@@last_modified": "2026-10-23 12:42:50.074896",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2500,5 +2500,6 @@
     "readAloudStartOver": "Bigin bak",
     "readAloudStarting": "Di microphone de rɛdi…",
     "readAloudListening": "De lisin…",
-    "readAloudTake": "Tek {number}"
+    "readAloudTake": "Tek {number}",
+    "createMyOwnCourse": "Mek mi yon kos"
 }

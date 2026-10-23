@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-21 10:12:45.272877",
+    "@@last_modified": "2026-10-23 12:42:46.404143",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2500,5 +2500,6 @@
     "readAloudStartOver": "Sugdi pag-usab",
     "readAloudStarting": "Giandam ang mikropono…",
     "readAloudListening": "Naminaw…",
-    "readAloudTake": "Kuha {number}"
+    "readAloudTake": "Kuha {number}",
+    "createMyOwnCourse": "Paghimo sa akong kaugalingong kurso"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-21 10:12:59.153291",
+    "@@last_modified": "2026-10-23 12:42:52.463975",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2500,5 +2500,6 @@
     "readAloudStartOver": "بیا پیل کړئ",
     "readAloudStarting": "مایکروفون چمتو کیږي…",
     "readAloudListening": "اوریدل کیږي…",
-    "readAloudTake": "واخلئ {number}"
+    "readAloudTake": "واخلئ {number}",
+    "createMyOwnCourse": "زما خپل کورس جوړ کړئ"
 }

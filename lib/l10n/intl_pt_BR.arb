@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-21 10:13:00.274631",
+    "@@last_modified": "2026-10-23 12:42:52.566088",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -10038,5 +10038,6 @@
     "readAloudStartOver": "Começar de novo",
     "readAloudStarting": "Preparando o microfone…",
     "readAloudListening": "Ouvindo…",
-    "readAloudTake": "Tentativa {number}"
+    "readAloudTake": "Tentativa {number}",
+    "createMyOwnCourse": "Criar meu próprio curso"
 }

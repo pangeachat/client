@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-21 10:12:59.089467",
+    "@@last_modified": "2026-10-23 12:42:52.739279",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2500,5 +2500,6 @@
     "readAloudStartOver": "Yambaninso",
     "readAloudStarting": "Tikukonza maikolofoni…",
     "readAloudListening": "Tikumvetsera…",
-    "readAloudTake": "Tenga {number}"
+    "readAloudTake": "Tenga {number}",
+    "createMyOwnCourse": "Panga maphunziro anga"
 }

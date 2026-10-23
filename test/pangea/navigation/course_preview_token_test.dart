@@ -71,6 +71,40 @@ void main() {
     });
   });
 
+  // Start my own can open a course to join instead of the picked quest
+  // (#9590): the quest and the course both ride the token.
+  group('Start my own with a course to join (#9590)', () {
+    const param = AddCoursePageTokenParam(
+      subpage: AddCourseSubpageEnum.own,
+      createCourseId: 'plan-uuid',
+      previewRoomId: '!room',
+      initialLanguageFilter: 'es',
+    );
+
+    test('round-trips the URL and is a preview', () {
+      final parsed = AddCoursePageTokenParam.parse(param.build());
+      expect(parsed, param);
+      expect(parsed.isCoursePreview, isTrue);
+    });
+
+    test('back returns to the Start my own list', () {
+      final list = param.poppedParam!;
+      expect(list.subpage, AddCourseSubpageEnum.own);
+      expect(list.createCourseId, isNull);
+      expect(list.previewRoomId, isNull);
+      expect(list.initialLanguageFilter, 'es');
+    });
+
+    test('the plain quest preview is unchanged', () {
+      const own = AddCoursePageTokenParam(
+        subpage: AddCourseSubpageEnum.own,
+        createCourseId: 'plan-uuid',
+        initialLanguageFilter: 'es',
+      );
+      expect(own.build(), 'own/plan-uuid.les');
+    });
+  });
+
   // The browse list's access pill rides the token like the language filter,
   // so it survives opening a preview and coming back (#9358).
   group('AddCoursePageTokenParam.accessFilter (#9358)', () {

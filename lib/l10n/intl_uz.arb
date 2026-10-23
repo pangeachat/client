@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-21 10:13:07.849504",
+    "@@last_modified": "2026-10-23 12:42:54.906082",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10042,5 +10042,6 @@
     "readAloudStartOver": "Qaytadan boshlash",
     "readAloudStarting": "Mikrofon tayyorlanmoqda…",
     "readAloudListening": "Tinglanmoqda…",
-    "readAloudTake": "{number} qabul qiling"
+    "readAloudTake": "{number} qabul qiling",
+    "createMyOwnCourse": "Oʻz kursimni yaratish"
 }

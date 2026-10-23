@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-21 10:12:56.799880",
+    "@@last_modified": "2026-10-23 12:42:51.138633",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2500,5 +2500,6 @@
     "readAloudStartOver": "Atomboka indray",
     "readAloudStarting": "Manomana ny mikrô...",
     "readAloudListening": "Mihaino...",
-    "readAloudTake": "Andao {number}"
+    "readAloudTake": "Andao {number}",
+    "createMyOwnCourse": "Mamorona ny taranja manokana"
 }

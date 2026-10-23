@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-21 10:12:46.016397",
+    "@@last_modified": "2026-10-23 12:42:47.176314",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10035,5 +10035,6 @@
     "readAloudStartOver": "Alusta uuesti",
     "readAloudStarting": "Mikrofoni ettevalmistamine…",
     "readAloudListening": "Kuulan…",
-    "readAloudTake": "Võte {number}"
+    "readAloudTake": "Võte {number}",
+    "createMyOwnCourse": "Loo oma kursus"
 }

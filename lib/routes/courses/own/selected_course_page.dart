@@ -108,13 +108,19 @@ class SelectedCourseController extends State<SelectedCourse>
     final course = this.course!;
     switch (widget.mode) {
       case SelectedCourseMode.launch:
-        return launchCourse(widget.courseId, course);
+        return launchCourse(context, course);
       case SelectedCourseMode.addToSpace:
         return addCourseToSpace(course);
     }
   }
 
-  Future<void> launchCourse(String courseId, CoursePlanModel course) async {
+  /// Creates the learner's own course on [course] and opens its invite step.
+  /// Also run by Start my own's course-to-join preview (#9590).
+  static Future<void> launchCourse(
+    BuildContext context,
+    CoursePlanModel course,
+  ) async {
+    final courseId = course.uuid;
     final client = Matrix.of(context).client;
     final Completer<String> completer = Completer<String>();
     // Navigation does not wait: the new-course page shows its own progress
@@ -153,7 +159,7 @@ class SelectedCourseController extends State<SelectedCourse>
       WorkspaceNav.openAddCoursePage(
         GoRouterState.of(context).uri,
         AddCourseSubpageEnum.own,
-        createCourseId: widget.courseId,
+        createCourseId: courseId,
         showNewCourseInvitePage: true,
       ),
       extra: completer,
@@ -163,7 +169,7 @@ class SelectedCourseController extends State<SelectedCourse>
   /// The new course's own copy, from the list its members are shown. Never
   /// fails the creation: an error is logged and the course reads the shared
   /// quest until the Studio's first publish.
-  Future<void> _writeNewCourseCopy(
+  static Future<void> _writeNewCourseCopy(
     sdk.Client client,
     String spaceId,
     String questId,

@@ -2073,7 +2073,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-21 10:13:10.361922",
+    "@@last_modified": "2026-10-23 12:42:48.122426",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10895,5 +10895,6 @@
     "readAloudStartOver": "Magsimula muli",
     "readAloudStarting": "Inihahanda ang mikropono…",
     "readAloudListening": "Nakikinig…",
-    "readAloudTake": "Kumuha ng {number}"
+    "readAloudTake": "Kumuha ng {number}",
+    "createMyOwnCourse": "Gumawa ng sarili kong kurso"
 }

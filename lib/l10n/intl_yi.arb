@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-21 10:13:07.357233",
+    "@@last_modified": "2026-10-23 12:42:55.557311",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2500,5 +2500,6 @@
     "readAloudStartOver": "אָנהייבן פֿון ס׳נײַ",
     "readAloudStarting": "גרייטן דעם מיקראָפֿאָן…",
     "readAloudListening": "הערן…",
-    "readAloudTake": "נעמען {number}"
+    "readAloudTake": "נעמען {number}",
+    "createMyOwnCourse": "שאַפֿן מײַן אײגענעם קורס"
 }

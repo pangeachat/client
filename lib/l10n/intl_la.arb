@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-21 10:12:53.982825",
+    "@@last_modified": "2026-10-23 12:42:50.906549",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2500,5 +2500,6 @@
     "readAloudStartOver": "Iterum incipe",
     "readAloudStarting": "Microphonem paro…",
     "readAloudListening": "Audio…",
-    "readAloudTake": "Sume {number}"
+    "readAloudTake": "Sume {number}",
+    "createMyOwnCourse": "Curriculum meum crea"
 }

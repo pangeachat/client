@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-21 10:13:02.426387",
+    "@@last_modified": "2026-10-23 12:42:54.497573",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2500,5 +2500,6 @@
     "readAloudStartOver": "Anza upya",
     "readAloudStarting": "Inaandaa maikrofoni…",
     "readAloudListening": "Inasikiliza…",
-    "readAloudTake": "Chukua {number}"
+    "readAloudTake": "Chukua {number}",
+    "createMyOwnCourse": "Unda kozi yangu mwenyewe"
 }
