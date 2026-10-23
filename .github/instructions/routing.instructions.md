@@ -66,7 +66,7 @@ The app is a workspace of panels over one world map, for learners on every scree
 
 ### Single-column search bar
 
-- One floating bar searches whatever is open, so two search fields never show; in a course the course bar replaces it. Designer (per the Figma states).
+- One floating bar searches whatever is open, so two search fields never show; in a course the course bar replaces it. Unassigned.
 
 ### A chat's header actions
 
@@ -74,7 +74,7 @@ The app is a workspace of panels over one world map, for learners on every scree
 
 ### A signed-out visitor's destination
 
-- A signed-out visitor's last link survives sign-in once, landing them where it pointed; it expires so a shared browser cannot pass it on. Unassigned.
+- A signed-out visitor's last link survives sign-in once, landing them where it pointed; it expires so a shared browser cannot pass it on. It is never logged or reported. Unassigned.
 
 ## Open questions
 
@@ -83,3 +83,4 @@ The app is a workspace of panels over one world map, for learners on every scree
 - This doc counted four outside link shapes; is the gift link a fifth?
 - This doc derived the two-column breakpoint from panel widths; the code uses a fixed width.
 - Does the phone's search bar shrink while the map scrolls? Only its filter bar does in the code.
+- This doc gave each phone right panel a search bar; settings has none in the code.
