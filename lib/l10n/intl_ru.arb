@@ -2410,7 +2410,7 @@
     "@pleaseTryAgainLaterOrChooseDifferentServer": {},
     "sendTypingNotifications": "Отправлять уведомления о наборе текста",
     "@sendTypingNotifications": {},
-    "createGroup": "Создать группу",
+    "createGroup": "Создать чат",
     "@createGroup": {},
     "inviteContactToGroupQuestion": "Вы хотите пригласить {contact} в чат \"{groupName}\"?",
     "@inviteContactToGroupQuestion": {},
@@ -2567,7 +2567,7 @@
     "@wrongRecoveryKey": {
         "pangea_override": true
     },
-    "groupName": "Название группы",
+    "groupName": "Название чата",
     "@groupName": {},
     "databaseMigrationTitle": "База данных оптимизированна",
     "@databaseMigrationTitle": {},

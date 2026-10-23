@@ -2103,7 +2103,7 @@
     },
     "commandHint_googly": "Nosūtīt izbolītu acu pāri",
     "@commandHint_googly": {},
-    "createGroup": "Izveidot kopu",
+    "createGroup": "Izveidot tērzēšanu",
     "@createGroup": {},
     "privacy": "Privātums",
     "@privacy": {
@@ -2302,7 +2302,7 @@
     "@commandHint_unignore": {},
     "commandHint_ignore": "Neņemt vērā norādīto Matrix Id",
     "@commandHint_ignore": {},
-    "groupName": "Kopas nosaukums",
+    "groupName": "Tērzēšanas nosaukums",
     "@groupName": {},
     "knock": "Pieklauvēt",
     "@knock": {},

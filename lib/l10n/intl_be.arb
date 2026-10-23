@@ -673,7 +673,7 @@
             }
         }
     },
-    "createGroup": "Стварыць групу",
+    "createGroup": "Стварыць чат",
     "@createGroup": {},
     "currentlyActive": "Зараз актыўны",
     "@currentlyActive": {
@@ -2425,7 +2425,7 @@
     "@knockRestricted": {},
     "nothingFound": "Нічога не знойдзена...",
     "@nothingFound": {},
-    "groupName": "Назва групы",
+    "groupName": "Назва чата",
     "@groupName": {},
     "startConversation": "Пачаць размову",
     "@startConversation": {},

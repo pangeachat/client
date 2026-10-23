@@ -2164,7 +2164,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "createGroup": "Stvori grupu",
+    "createGroup": "Kreiraj chat",
     "@createGroup": {},
     "invite": "Pozovi",
     "@invite": {},
@@ -2207,7 +2207,7 @@
     "@wrongRecoveryKey": {},
     "blockUsername": "Zanemari korisničko ime",
     "@blockUsername": {},
-    "groupName": "Ime grupe",
+    "groupName": "Naziv chata",
     "@groupName": {},
     "databaseMigrationTitle": "Baza podataka je optimirana",
     "@databaseMigrationTitle": {},

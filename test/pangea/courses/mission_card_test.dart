@@ -80,7 +80,7 @@ void main() {
             child: MissionCard(
               group: group,
               index: 2,
-              progress: const MissionProgress(xp: 400, threshold: 1600),
+              progress: const MissionProgress(xp: 400, threshold: 1000),
               breakdown: const MissionXpBreakdown(chat: 200, goals: 200),
               onPlay: onPlay,
               onPractice: canPractice ? onPractice ?? () {} : null,
@@ -107,7 +107,7 @@ void main() {
     expect(find.text('MISSION 2'), findsOneWidget);
     expect(find.text('Can greet.'), findsOneWidget);
     expect(
-      find.bySemanticsLabel('400 of 1,600 XP toward this objective'),
+      find.bySemanticsLabel('400 of 1,000 XP toward this objective'),
       findsOneWidget,
     );
   });
@@ -117,7 +117,7 @@ void main() {
     // Conversation is chat, speaking and goals together.
     expect(find.text('Conversation 400'), findsOneWidget);
     expect(find.text('Practice 0'), findsOneWidget);
-    expect(find.text('400 / 1,600 XP'), findsOneWidget);
+    expect(find.text('400 / 1,000 XP'), findsOneWidget);
   });
 
   testWidgets('Play names the activity it opens', (tester) async {
@@ -145,7 +145,7 @@ void main() {
     );
     expect(find.textContaining('Conversation'), findsNothing);
     expect(
-      find.bySemanticsLabel('400 of 1,600 XP toward this objective'),
+      find.bySemanticsLabel('400 of 1,000 XP toward this objective'),
       findsNothing,
     );
     await tester.tap(find.textContaining('French'));

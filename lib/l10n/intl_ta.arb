@@ -658,7 +658,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "createGroup": "குழுவை உருவாக்கவும்",
+    "createGroup": "அரட்டை உருவாக்கு",
     "@createGroup": {},
     "editBundlesForAccount": "இந்த கணக்கிற்கான மூட்டைகளைத் திருத்தவும்",
     "@editBundlesForAccount": {},
@@ -2173,7 +2173,7 @@
     "@knocking": {},
     "nothingFound": "எதுவும் கிடைக்கவில்லை ...",
     "@nothingFound": {},
-    "groupName": "குழு பெயர்",
+    "groupName": "அரட்டைப் பெயர்",
     "@groupName": {},
     "wrongRecoveryKey": "மன்னிக்கவும் ... இது சரியான மீட்பு விசையாகத் தெரியவில்லை.",
     "@wrongRecoveryKey": {},

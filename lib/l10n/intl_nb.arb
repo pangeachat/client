@@ -1936,7 +1936,7 @@
     "@user": {},
     "users": "Brukere",
     "@users": {},
-    "createGroup": "Opprett gruppe",
+    "createGroup": "Opprett chat",
     "@createGroup": {},
     "editRoomAliases": "Rediger rom aliaser",
     "@editRoomAliases": {
@@ -1989,7 +1989,7 @@
     "@whyIsThisMessageEncrypted": {},
     "yourGlobalUserIdIs": "Din globale bruker-ID er: ",
     "@yourGlobalUserIdIs": {},
-    "groupName": "Gruppenavn",
+    "groupName": "Chatnavn",
     "@groupName": {},
     "invite": "Inviter",
     "@invite": {},

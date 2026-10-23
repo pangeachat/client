@@ -2133,7 +2133,7 @@
             }
         }
     },
-    "createGroup": "Groep aanmaken",
+    "createGroup": "Chat aanmaken",
     "@createGroup": {},
     "optionalRedactReason": "(Optioneel) Reden voor aanpassing van dit bericht...",
     "@optionalRedactReason": {},
@@ -2266,7 +2266,7 @@
     "@spaces": {},
     "unread": "Ongelezen",
     "@unread": {},
-    "groupName": "Groepsnaam",
+    "groupName": "Chatnaam",
     "@groupName": {},
     "changeGeneralChatSettings": "Algemene chat instellingen wijzigen",
     "@changeGeneralChatSettings": {},

@@ -822,7 +822,7 @@
             }
         }
     },
-    "createGroup": "Create group",
+    "createGroup": "Create chat",
     "@createGroup": {},
     "currentlyActive": "Currently active",
     "@currentlyActive": {
@@ -2499,7 +2499,7 @@
     "@knocking": {},
     "nothingFound": "Nothing found...",
     "@nothingFound": {},
-    "groupName": "Group name",
+    "groupName": "Chat name",
     "@groupName": {},
     "wrongRecoveryKey": "Sorry... this does not seem to be the correct recovery key.",
     "@wrongRecoveryKey": {},
@@ -5496,6 +5496,7 @@
     "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings.",
     "exitVocabPracticeSession": "Your current vocab practice session progress won't be saved.",
     "exitGrammarPracticeSession": "Your current grammar practice session progress won't be saved.",
+    "learnLanguageWhileTexting": "Learn a language while texting your friends!",
     "explorePlayAndLearn": "Explore, play and learn",
     "conversationFromDayOne": "Conversation from Day One",
     "builtForConnection": "Built for connection",

@@ -182,7 +182,7 @@
             }
         }
     },
-    "createGroup": "ჯგუფის შექმნა",
+    "createGroup": "ჩატის შექმნა",
     "@createGroup": {},
     "deactivateAccountWarning": "ეს გააუქმებს თქვენს ანგარიშს. ამის გაუქმება შეუძლებელია. დარწმუნებული ხართ?",
     "@deactivateAccountWarning": {
@@ -1088,7 +1088,7 @@
     "noUsersFoundWithQuery": "სამწუხაროდ, ვერ მოიძებნა მომხმარებელი \"{query}\"-ით. გთხოვთ, გადაამოწმოთ შეცდომა.",
     "knocking": "საკაკუნო",
     "nothingFound": "არაფერი მოიძებნა...",
-    "groupName": "ჯგუფის სახელი",
+    "groupName": "ჩატის სახელი",
     "wrongRecoveryKey": "უკაცრავად... ეს არ ჩანს სწორი აღდგენის გასაღები.",
     "startConversation": "დაუწყეთ საუბარი",
     "commandHint_sendraw": "გაგზავნეთ ნედლი json",

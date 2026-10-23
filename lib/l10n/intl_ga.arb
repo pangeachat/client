@@ -2414,7 +2414,7 @@
     "@serverInformation": {},
     "knockRestricted": "Cnoc Mhuire srianta",
     "@knockRestricted": {},
-    "createGroup": "Cruthaigh grúpa",
+    "createGroup": "Cruthaigh comhrá",
     "@createGroup": {},
     "noChatDescriptionYet": "Níl aon chur síos ar an gcomhrá cruthaithe fós.",
     "@noChatDescriptionYet": {},
@@ -2432,7 +2432,7 @@
             }
         }
     },
-    "groupName": "Ainm an ghrúpa",
+    "groupName": "Ainm an chomhrá",
     "@groupName": {},
     "bundleName": "Ainm an bheartáin",
     "@bundleName": {},

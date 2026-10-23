@@ -671,7 +671,7 @@
             }
         }
     },
-    "createGroup": "Guruh yaratish",
+    "createGroup": "Chat yaratish",
     "@createGroup": {},
     "currentlyActive": "Hozirda faol",
     "@currentlyActive": {
@@ -2260,7 +2260,7 @@
     "@knocking": {},
     "nothingFound": "Hech nima topilmadi...",
     "@nothingFound": {},
-    "groupName": "Guruh nomi",
+    "groupName": "Chat nomi",
     "@groupName": {},
     "wrongRecoveryKey": "Kechirasiz... bu toʻgʻri tiklash kaliti emasga oʻxshaydi.",
     "@wrongRecoveryKey": {},

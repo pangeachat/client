@@ -2171,7 +2171,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "createGroup": "Sortu taldea",
+    "createGroup": "Sortu txata",
     "@createGroup": {},
     "invite": "Gonbidatu",
     "@invite": {},
@@ -2224,7 +2224,7 @@
     "@commandHint_sendraw": {},
     "wrongRecoveryKey": "Barka baina ez dirudi berreskuratze-gako zuzena denik.",
     "@wrongRecoveryKey": {},
-    "groupName": "Taldearen izena",
+    "groupName": "Txataren izena",
     "@groupName": {},
     "blockListDescription": "Gogaitzen zaituzten erabiltzaileak blokeatu ditzakezu. Ez duzu blokeatutakoen zerrendan dituzun erabiltzaileen mezurik edo gelara batzeko gonbidapenik jasoko.",
     "@blockListDescription": {},
