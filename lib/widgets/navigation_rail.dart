@@ -113,8 +113,9 @@ class SpacesNavigationRail extends StatelessWidget {
                           children: [
                             // 1. World map home — the Pangea brand mark, at the top
                             // of the rail. Chromeless and avatar-sized; the left
-                            // indicator bar conveys selection. Brand purple when
-                            // active, muted when not.
+                            // indicator bar conveys selection. Coloured like the
+                            // Chats and Courses icons: the theme icon colour,
+                            // primary when selected (matching the mobile bar).
                             NaviRailItem(
                               isSelected: isWorld,
                               // Exclude the logo's semanticsLabel so VoiceOver reads
@@ -122,9 +123,7 @@ class SpacesNavigationRail extends StatelessWidget {
                               icon: ExcludeSemantics(
                                 child: PangeaLogoSvg(
                                   width: largeIconWidth,
-                                  forceColor: Theme.of(
-                                    context,
-                                  ).colorScheme.onSurfaceVariant,
+                                  forceColor: Theme.of(context).iconTheme.color,
                                 ),
                               ),
                               selectedIcon: ExcludeSemantics(
@@ -147,7 +146,8 @@ class SpacesNavigationRail extends StatelessWidget {
                             // 2. Chats — the chat list. Chromeless (no box fill) and
                             // icon-sized to match the brand mark / course avatars
                             // (it used to render tiny on the default surface fill);
-                            // the left indicator bar conveys selection.
+                            // the left indicator bar and a primary tint convey
+                            // selection.
                             NaviRailItem(
                               isSelected: isChats,
                               icon: Icon(
@@ -157,6 +157,7 @@ class SpacesNavigationRail extends StatelessWidget {
                               selectedIcon: Icon(
                                 Icons.forum,
                                 size: smallIconWidth,
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                               onTap: () {
                                 // Token-only: the chats list is a left `chats` token
@@ -182,9 +183,10 @@ class SpacesNavigationRail extends StatelessWidget {
                             // 3. Courses — opens the Courses panel (the courses
                             // you're in + add-course options) as a bare `addcourse`
                             // left token. The Material map icon; chromeless, the bar
-                            // conveys selection. keepRoom:false keeps it a focused
-                            // flow with no chat floating over it. (Analytics is not a
-                            // rail section — it opens from the top-right cluster.)
+                            // and a primary tint convey selection. keepRoom:false
+                            // keeps it a focused flow with no chat floating over
+                            // it. (Analytics is not a rail section — it opens from
+                            // the top-right cluster.)
                             NaviRailItem(
                               isSelected: isCourseFind,
                               icon: Icon(
@@ -194,6 +196,7 @@ class SpacesNavigationRail extends StatelessWidget {
                               selectedIcon: Icon(
                                 Icons.map,
                                 size: smallIconWidth,
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                               onTap: () {
                                 context.go(
