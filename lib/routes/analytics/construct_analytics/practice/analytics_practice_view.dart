@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics_data/analytics_init_error_indicator.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
@@ -8,6 +9,7 @@ import 'package:fluffychat/routes/analytics/construct_analytics/practice/analyti
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/completed_analytics_practice_exercises_view.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/insufficient_data_indicator.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/ongoing_analytics_practice_session_view.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_start_page.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_timer_widget.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/unsubscribed_practice_page.dart';
 import 'package:fluffychat/widgets/animated_progress_bar.dart';
@@ -25,11 +27,8 @@ class AnalyticsPracticeView extends StatelessWidget {
   Widget _headerActions(BuildContext context) => ValueListenableBuilder(
     valueListenable: controller.practiceExerciseState,
     builder: (context, state, _) {
-      final session = controller.session.session;
-      final hasUnfinishedSession =
-          session != null &&
-          !session.isComplete &&
-          controller.session.sessionError == null;
+      // A session on its start page is not live yet, so it has nothing to end.
+      final hasUnfinishedSession = controller.isLive;
 
       return ListenableBuilder(
         listenable: controller.notifier,
@@ -152,11 +151,18 @@ class AnalyticsPracticeView extends StatelessWidget {
         showBorder: false,
         padding: EdgeInsets.only(left: 32.0, right: 32.0),
         addVerticalPadding: false,
-        child: Column(
-          children: [
-            _progressAndTimer(context),
-            Expanded(child: _content(context)),
-          ],
+        child: ValueListenableBuilder(
+          valueListenable: controller.practiceExerciseState,
+          builder: (context, _, _) => Column(
+            children: [
+              // No progress bar or timer before Start, including while the
+              // start page's words are still being picked.
+              if (controller.session.session != null &&
+                  !controller.awaitingStart)
+                _progressAndTimer(context),
+              Expanded(child: _content(context)),
+            ],
+          ),
         ),
       ),
     );
@@ -190,12 +196,31 @@ class AnalyticsPracticeView extends StatelessWidget {
         }
 
         final session = controller.session.session;
+        if (session != null && controller.awaitingStart) {
+          final points = session.plannedPoints;
+          return PracticeStartPage(
+            type: session.type,
+            count: points.length,
+            emojis: session.type == ConstructTypeEnum.vocab
+                ? [
+                    for (final point in points)
+                      ?point.tokens.first.vocabConstructID.userSetEmoji,
+                  ]
+                : const [],
+            skills: session.skills,
+            availableSkills: session.availableSkills,
+            onSkillsChanged: controller.setSkills,
+            onStart: controller.beginSession,
+          );
+        }
         if (session != null) {
           return session.isComplete && !session.loadFailed
               ? CompletedAnalyticsPracticeExercisesView(
                   session: session,
                   earnedXp: controller.session.earnedXp,
-                  launchSession: controller.startSession,
+                  // Another round skips the start page: the learner has just
+                  // chosen to go again.
+                  launchSession: () => controller.startSession(begin: true),
                   levelProgress: controller.levelProgress,
                 )
               : OngoingAnalyticsPracticeSessionView(controller);

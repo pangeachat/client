@@ -2508,5 +2508,8 @@
     "openCourse": "පාඨමාලාව විවෘත කරන්න",
     "centralCourseJoinedTitle": "ඔබ {course} හා සම්බන්ධ වී ඇත",
     "centralCourseJoinedBody": "එය {language} ඉගෙන ගන්නන් සඳහා වන Pangea පාඨමාලාවයි. එහි සාමාජිකයින්ට ඔබේ නම සහ පැතිකඩ දැකිය හැක.",
-    "centralCourseMembersSeeYou": "මෙම පාඨමාලාවේ සාමාජිකයින්ට ඔබේ නම සහ පැතිකඩ දැකිය හැක."
+    "centralCourseMembersSeeYou": "මෙම පාඨමාලාවේ සාමාජිකයින්ට ඔබේ නම සහ පැතිකඩ දැකිය හැක.",
+    "practiceStartWordCount": "{count, plural, =1{පුහුණු වීමට වචනයක්} other{පුහුණු වීමට වචන}}",
+    "practiceStartGrammarCount": "{count, plural, =1{පුහුණු වීමට ව්‍යාකරණ කරුණක්} other{පුහුණු වීමට ව්‍යාකරණ කරුණු}}",
+    "practiceStartExerciseTypes": "අභ්‍යාස වර්ග"
 }

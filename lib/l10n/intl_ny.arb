@@ -2508,5 +2508,8 @@
     "openCourse": "Tsegulani kosi",
     "centralCourseJoinedTitle": "Mwalowa mu {course}",
     "centralCourseJoinedBody": "Ndi kosi ya Pangea kwa ophunzira a {language}. Mamembala ake akhoza kuona dzina lanu ndi mbiri yanu.",
-    "centralCourseMembersSeeYou": "Mamembala a kosiyi akhoza kuona dzina lanu ndi mbiri yanu."
+    "centralCourseMembersSeeYou": "Mamembala a kosiyi akhoza kuona dzina lanu ndi mbiri yanu.",
+    "practiceStartWordCount": "{count, plural, =1{mawu oti muchite} other{mawu oti muchite}}",
+    "practiceStartGrammarCount": "{count, plural, =1{mfundo ya galamala yochita} other{mfundo za galamala zochita}}",
+    "practiceStartExerciseTypes": "Mitundu ya zochita"
 }

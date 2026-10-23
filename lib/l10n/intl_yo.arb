@@ -2508,5 +2508,8 @@
     "openCourse": "Ṣí iṣẹ́-ẹ̀kọ́",
     "centralCourseJoinedTitle": "O ti darapọ̀ mọ́ {course}",
     "centralCourseJoinedBody": "Ó jẹ́ iṣẹ́-ẹ̀kọ́ Pangea fún àwọn akẹ́kọ̀ọ́ èdè {language}. Àwọn ọmọ ẹgbẹ́ rẹ̀ lè rí orúkọ àti àkọọ́lẹ̀ rẹ.",
-    "centralCourseMembersSeeYou": "Àwọn ọmọ ẹgbẹ́ iṣẹ́-ẹ̀kọ́ yìí lè rí orúkọ àti àkọọ́lẹ̀ rẹ."
+    "centralCourseMembersSeeYou": "Àwọn ọmọ ẹgbẹ́ iṣẹ́-ẹ̀kọ́ yìí lè rí orúkọ àti àkọọ́lẹ̀ rẹ.",
+    "practiceStartWordCount": "{count, plural, =1{ọrọ lati ṣe adaṣe} other{awọn ọrọ lati ṣe adaṣe}}",
+    "practiceStartGrammarCount": "{count, plural, =1{ọrọ-ọrọ lati ṣe adaṣe} other{awọn ọrọ-ọrọ lati ṣe adaṣe}}",
+    "practiceStartExerciseTypes": "Awọn iru adaṣe"
 }

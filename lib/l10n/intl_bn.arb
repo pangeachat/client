@@ -10671,5 +10671,8 @@
     "openCourse": "কোর্স খুলুন",
     "centralCourseJoinedTitle": "আপনি {course}-এ যোগ দিয়েছেন",
     "centralCourseJoinedBody": "এটি {language} শিক্ষার্থীদের জন্য প্যানজিয়ার কোর্স। এর সদস্যরা আপনার নাম ও প্রোফাইল দেখতে পাবে।",
-    "centralCourseMembersSeeYou": "এই কোর্সের সদস্যরা আপনার নাম ও প্রোফাইল দেখতে পাবে।"
+    "centralCourseMembersSeeYou": "এই কোর্সের সদস্যরা আপনার নাম ও প্রোফাইল দেখতে পাবে।",
+    "practiceStartWordCount": "{count, plural, =1{অনুশীলনের জন্য শব্দ} other{অনুশীলনের জন্য শব্দ}}",
+    "practiceStartGrammarCount": "{count, plural, =1{অনুশীলনের জন্য ব্যাকরণ বিষয়} other{অনুশীলনের জন্য ব্যাকরণ বিষয়}}",
+    "practiceStartExerciseTypes": "অনুশীলনের প্রকারভেদ"
 }

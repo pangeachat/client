@@ -2508,5 +2508,8 @@
     "openCourse": "Hap kursin",
     "centralCourseJoinedTitle": "Je bashkuar me {course}",
     "centralCourseJoinedBody": "Është kursi i Pangeas për nxënësit e gjuhës {language}. Anëtarët e tij mund të shohin emrin dhe profilin tënd.",
-    "centralCourseMembersSeeYou": "Anëtarët e këtij kursi mund të shohin emrin dhe profilin tënd."
+    "centralCourseMembersSeeYou": "Anëtarët e këtij kursi mund të shohin emrin dhe profilin tënd.",
+    "practiceStartWordCount": "{count, plural, =1{fjalë për të praktikuar} other{fjalë për të praktikuar}}",
+    "practiceStartGrammarCount": "{count, plural, =1{pikë gramatikore për të praktikuar} other{pika gramatikore për të praktikuar}}",
+    "practiceStartExerciseTypes": "Llojet e ushtrimeve"
 }

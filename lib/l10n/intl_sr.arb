@@ -10992,5 +10992,8 @@
     "openCourse": "Otvori kurs",
     "centralCourseJoinedTitle": "Pridružili ste se kursu {course}",
     "centralCourseJoinedBody": "Ovo je Pangea kurs za učenike {language} jezika. Njegovi članovi mogu da vide vaše ime i profil.",
-    "centralCourseMembersSeeYou": "Članovi ovog kursa mogu da vide vaše ime i profil."
+    "centralCourseMembersSeeYou": "Članovi ovog kursa mogu da vide vaše ime i profil.",
+    "practiceStartWordCount": "{count, plural, =1{reč za vežbanje} other{reči za vežbanje}}",
+    "practiceStartGrammarCount": "{count, plural, =1{gramatička jedinica za vežbanje} other{gramatičke jedinice za vežbanje}}",
+    "practiceStartExerciseTypes": "Vrste vežbi"
 }

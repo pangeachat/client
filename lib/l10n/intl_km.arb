@@ -2508,5 +2508,8 @@
     "openCourse": "បើកវគ្គសិក្សា",
     "centralCourseJoinedTitle": "អ្នកបានចូលរួម {course}",
     "centralCourseJoinedBody": "នេះជាវគ្គសិក្សារបស់ Pangea សម្រាប់អ្នករៀន {language}។ សមាជិករបស់វគ្គសិក្សានេះអាចមើលឃើញឈ្មោះ និងប្រវត្តិរូបរបស់អ្នក។",
-    "centralCourseMembersSeeYou": "សមាជិកនៃវគ្គសិក្សានេះអាចមើលឃើញឈ្មោះ និងប្រវត្តិរូបរបស់អ្នក។"
+    "centralCourseMembersSeeYou": "សមាជិកនៃវគ្គសិក្សានេះអាចមើលឃើញឈ្មោះ និងប្រវត្តិរូបរបស់អ្នក។",
+    "practiceStartWordCount": "{count, plural, =1{ពាក្យដើម្បីអនុវត្ត} other{ពាក្យដើម្បីអនុវត្ត}}",
+    "practiceStartGrammarCount": "{count, plural, =1{ចំណុចវេយ្យាករណ៍ដើម្បីអនុវត្ត} other{ចំណុចវេយ្យាករណ៍ដើម្បីអនុវត្ត}}",
+    "practiceStartExerciseTypes": "ប្រភេទលំហាត់"
 }

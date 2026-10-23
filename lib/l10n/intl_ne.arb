@@ -2508,5 +2508,8 @@
     "openCourse": "कोर्स खोल्नुहोस्",
     "centralCourseJoinedTitle": "तपाईं {course} मा सामेल हुनुभएको छ",
     "centralCourseJoinedBody": "यो {language} सिक्नेहरूका लागि पाङ्गियाको कोर्स हो। यसका सदस्यहरूले तपाईंको नाम र प्रोफाइल हेर्न सक्छन्।",
-    "centralCourseMembersSeeYou": "यस कोर्सका सदस्यहरूले तपाईंको नाम र प्रोफाइल हेर्न सक्छन्।"
+    "centralCourseMembersSeeYou": "यस कोर्सका सदस्यहरूले तपाईंको नाम र प्रोफाइल हेर्न सक्छन्।",
+    "practiceStartWordCount": "{count, plural, =1{अभ्यास गर्न शब्द} other{अभ्यास गर्न शब्दहरू}}",
+    "practiceStartGrammarCount": "{count, plural, =1{अभ्यास गर्न व्याकरण बिन्दु} other{अभ्यास गर्न व्याकरण बिन्दुहरू}}",
+    "practiceStartExerciseTypes": "अभ्यासका प्रकारहरू"
 }

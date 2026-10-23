@@ -2508,5 +2508,8 @@
     "openCourse": "Fungua kozi",
     "centralCourseJoinedTitle": "Umejiunga na {course}",
     "centralCourseJoinedBody": "Hii ni kozi ya Pangea kwa wanafunzi wa {language}. Wanachama wake wanaweza kuona jina na wasifu wako.",
-    "centralCourseMembersSeeYou": "Wanachama wa kozi hii wanaweza kuona jina na wasifu wako."
+    "centralCourseMembersSeeYou": "Wanachama wa kozi hii wanaweza kuona jina na wasifu wako.",
+    "practiceStartWordCount": "{count, plural, =1{neno la kufanyia mazoezi} other{maneno ya kufanyia mazoezi}}",
+    "practiceStartGrammarCount": "{count, plural, =1{kipengele cha sarufi cha kufanyia mazoezi} other{vipengele vya sarufi vya kufanyia mazoezi}}",
+    "practiceStartExerciseTypes": "Aina za mazoezi"
 }

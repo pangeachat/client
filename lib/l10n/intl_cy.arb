@@ -2508,5 +2508,8 @@
     "openCourse": "Agor cwrs",
     "centralCourseJoinedTitle": "Rydych chi wedi ymuno â {course}",
     "centralCourseJoinedBody": "Dyma gwrs Pangea ar gyfer dysgwyr {language}. Gall ei aelodau weld eich enw a'ch proffil.",
-    "centralCourseMembersSeeYou": "Gall aelodau'r cwrs hwn weld eich enw a'ch proffil."
+    "centralCourseMembersSeeYou": "Gall aelodau'r cwrs hwn weld eich enw a'ch proffil.",
+    "practiceStartWordCount": "{count, plural, =1{gair i ymarfer} other{eiriau i ymarfer}}",
+    "practiceStartGrammarCount": "{count, plural, =1{pwynt gramadeg i ymarfer} other{bwyntiau gramadeg i ymarfer}}",
+    "practiceStartExerciseTypes": "Mathau o ymarferion"
 }

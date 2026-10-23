@@ -10349,5 +10349,8 @@
     "openCourse": "فتح الدورة",
     "centralCourseJoinedTitle": "لقد انضممت إلى {course}",
     "centralCourseJoinedBody": "إنها دورة بانجيا لمتعلمي {language}. يمكن لأعضائها رؤية اسمك وملفك الشخصي.",
-    "centralCourseMembersSeeYou": "يمكن لأعضاء هذه الدورة رؤية اسمك وملفك الشخصي."
+    "centralCourseMembersSeeYou": "يمكن لأعضاء هذه الدورة رؤية اسمك وملفك الشخصي.",
+    "practiceStartWordCount": "{count, plural, =1{كلمة للتدرب} other{كلمات للتدرب}}",
+    "practiceStartGrammarCount": "{count, plural, =1{نقطة نحوية للتدرب} other{نقاط نحوية للتدرب}}",
+    "practiceStartExerciseTypes": "أنواع التمارين"
 }

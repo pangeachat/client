@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/connection_status/connection_status_controller.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
@@ -10,14 +11,16 @@ import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/grammar_error_target_generator.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/grammar_match_target_generator.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_skills_store.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_audio_target_generator.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_meaning_target_generator.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_type_enum.dart';
-import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_target.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class InsufficientDataException implements Exception {
@@ -35,11 +38,16 @@ class AnalyticsPracticeSessionRepo {
   /// from the plan for each word they have never used, so a Mission's words
   /// can be practised before they have come up in a conversation. Grammar
   /// practice has no vocabulary to scope by and ignores the Mission.
+  ///
+  /// A vocab session's words are picked here once, whatever [skills] the
+  /// learner has on at the start page; [skills] only decides which exercise
+  /// each word gets (see [AnalyticsPracticeSessionModel.vocab]).
   static Future<AnalyticsPracticeSessionModel> get(
     ConstructTypeEnum type,
     LanguageModel userL1,
     LanguageModel userL2, {
     String? missionId,
+    Set<LearningSkillsEnum> skills = PracticeSkillsStore.vocabSkills,
   }) async {
     if (!MatrixState
         .pangeaController
@@ -48,7 +56,6 @@ class AnalyticsPracticeSessionRepo {
       throw UnsubscribedException();
     }
 
-    final List<AnalyticsPracticeTarget> targets = [];
     final analytics =
         MatrixState.pangeaController.matrixState.analyticsDataService;
 
@@ -76,98 +83,101 @@ class AnalyticsPracticeSessionRepo {
     // Decided once, at the start: the session keeps this mode if the
     // connection comes or goes while it runs.
     final offline = ConnectionStatusController.instance.cannotReachPangea;
+    final userL1Code =
+        MatrixState.pangeaController.userController.userL1!.langCode;
+    final userL2Code =
+        MatrixState.pangeaController.userController.userL2!.langCode;
 
-    if (offline && type == ConstructTypeEnum.vocab) {
-      await LemmaInfoRepo.instance.cacheReady;
-      targets.addAll(
-        await VocabMeaningTargetGenerator.get(vocabConstructs, offline: true),
-      );
-    } else if (type == ConstructTypeEnum.vocab) {
-      // About a third each of listening, read-aloud and meaning, by count:
-      // speaking is in every session without an item that needs a microphone
-      // and the network dominating it (practice-exercises.instructions.md,
-      // "Speaking practice"). Listening and read-aloud share the one pool of
-      // example-bearing words; meaning fills whatever is left.
-      final totalNeeded = AnalyticsPracticeConstants.targetsToGenerate;
-      final thirdNeeded = (totalNeeded / 3).ceil();
-
-      final exampleTargets = await VocabAudioTargetGenerator.get(
-        vocabConstructs,
-      );
-      final spokenTargets = alternateListeningAndReadAloud(
-        exampleTargets,
-        each: thirdNeeded,
-      );
-
-      final vocabNeeded = totalNeeded - spokenTargets.length;
-      final vocabTargets = await VocabMeaningTargetGenerator.get(
-        vocabConstructs,
-      );
-      final vocabCount = min(vocabTargets.length, vocabNeeded);
-
-      targets.addAll(spokenTargets);
-      targets.addAll(vocabTargets.take(vocabCount));
-
-      if (scope != null) {
-        // The Mission's words the learner has never used — no construct, so
-        // no example message — as meaning exercises from the plan's own
-        // lemma and part of speech. Phrases are skipped: the meaning
-        // generator's distractors are per lemma, not per set phrase.
-        final covered = {
-          for (final target in targets)
-            QuestObjectiveGroup.lemmaKey(target.target.tokens.first.lemma.text),
-        };
-        final words = [
-          for (final word in scope.vocab)
-            if (word.pos != 'phrase') word,
-        ];
-        for (final word in words) {
-          if (targets.length >= totalNeeded) break;
-          final lemma = QuestObjectiveGroup.lemmaKey(word.lemma);
-          if (covered.contains(lemma)) continue;
-          covered.add(lemma);
-          targets.add(
-            AnalyticsPracticeTarget(
-              target: PracticeTarget(
-                tokens: [word.asToken()],
-                exerciseType: PracticeExerciseTypeEnum.lemmaMeaning,
-                // The Mission's other words as wrong answers, so a learner
-                // with little vocabulary of their own still gets a real
-                // multiple choice.
-                distractorCandidates: [
-                  for (final other in words)
-                    if (other.lemma.toLowerCase() != lemma)
-                      other.asToken().vocabConstructID,
-                ],
-              ),
+    if (type == ConstructTypeEnum.vocab) {
+      final words = <PracticeWord>[];
+      if (offline) {
+        await LemmaInfoRepo.instance.cacheReady;
+        // Offline a session has meaning exercises only
+        // (practice-exercises.instructions.md, "Offline Practice").
+        for (final target in await VocabMeaningTargetGenerator.get(
+          vocabConstructs,
+          offline: true,
+        )) {
+          words.add(
+            PracticeWord(
+              token: target.target.tokens.first,
+              skills: {LearningSkillsEnum.reading},
             ),
           );
         }
+      } else {
+        final constructsById = {for (final c in vocabConstructs) c.id: c};
+        words.addAll(
+          rankVocabWords(
+            await VocabMeaningTargetGenerator.get(vocabConstructs),
+            await VocabAudioTargetGenerator.get(vocabConstructs),
+            total: AnalyticsPracticeConstants.targetsToGenerate,
+            // Both rankings hold only words with an example message, so
+            // every word can be read aloud; each type's 24-hour pause
+            // decides the other two.
+            skillsOf: (token) {
+              final construct = constructsById[token.vocabConstructID];
+              return {
+                if (construct?.shouldSkipForRecentPractice(
+                      PracticeExerciseTypeEnum.lemmaMeaning,
+                    ) !=
+                    true)
+                  LearningSkillsEnum.reading,
+                if (construct?.shouldSkipForRecentPractice(
+                      PracticeExerciseTypeEnum.lemmaAudio,
+                    ) !=
+                    true)
+                  LearningSkillsEnum.hearing,
+                LearningSkillsEnum.speaking,
+              };
+            },
+          ),
+        );
+        if (scope != null) _addMissionWords(words, scope);
       }
-    } else {
-      final errorTargets = await GrammarErrorTargetGenerator.get(
-        vocabConstructs,
+
+      if (words.isEmpty) throw InsufficientDataException(offline: offline);
+
+      // The words the session plans to show, and its spares, each in an
+      // order fixed for the session: the chips re-deal their exercises, but
+      // never reorder or replace them.
+      final groupSize = AnalyticsPracticeConstants.practiceGroupSize;
+      final planned = words.take(groupSize).toList()..shuffle();
+      final spares = words.skip(groupSize).toList()..shuffle();
+      // startedAt is deliberately left unset here — selection is not the
+      // start of practice. The clock is stamped when the first exercise
+      // paints.
+      return AnalyticsPracticeSessionModel.vocab(
+        words: [...planned, ...spares],
+        skills: skills,
+        userL1: userL1Code,
+        userL2: userL2Code,
+        missionId: scope?.objective.id,
+        missionLabel: scope?.objective.objective,
         offline: offline,
       );
-      targets.addAll(errorTargets);
+    }
 
-      if (targets.length < AnalyticsPracticeConstants.targetsToGenerate) {
-        final morphConstructs = await analytics
-            .getAggregatedConstructs(
-              ConstructTypeEnum.morph,
-              userL2.langCodeShort,
-            )
-            .then((map) => map.values.toList());
-        final morphs = await GrammarMatchTargetGenerator.get(
-          morphConstructs,
-          offline: offline,
-        );
-        final remainingCount =
-            AnalyticsPracticeConstants.targetsToGenerate - targets.length;
-
-        final morphEntries = morphs.take(remainingCount);
-        targets.addAll(morphEntries);
-      }
+    final targets = <AnalyticsPracticeTarget>[
+      ...await GrammarErrorTargetGenerator.get(
+        vocabConstructs,
+        offline: offline,
+      ),
+    ];
+    if (targets.length < AnalyticsPracticeConstants.targetsToGenerate) {
+      final morphConstructs = await analytics
+          .getAggregatedConstructs(
+            ConstructTypeEnum.morph,
+            userL2.langCodeShort,
+          )
+          .then((map) => map.values.toList());
+      final morphs = await GrammarMatchTargetGenerator.get(
+        morphConstructs,
+        offline: offline,
+      );
+      final remainingCount =
+          AnalyticsPracticeConstants.targetsToGenerate - targets.length;
+      targets.addAll(morphs.take(remainingCount));
     }
 
     if (targets.isEmpty) {
@@ -175,50 +185,72 @@ class AnalyticsPracticeSessionRepo {
     }
 
     targets.shuffle();
-    final session = AnalyticsPracticeSessionModel(
-      userL1: MatrixState.pangeaController.userController.userL1!.langCode,
-      userL2: MatrixState.pangeaController.userController.userL2!.langCode,
-      // startedAt is deliberately left unset here — selection is not the start
-      // of practice. The clock is stamped when the first exercise paints.
+    return AnalyticsPracticeSessionModel(
+      userL1: userL1Code,
+      userL2: userL2Code,
       type: type,
       practiceTargets: targets,
-      missionId: scope?.objective.id,
-      missionLabel: scope?.objective.objective,
       offline: offline,
     );
-    return session;
   }
 
-  /// Listening and read-aloud both need an example-bearing word and the pool
-  /// can be small, so the two take turns down the one priority order,
-  /// listening first, up to [each] apiece. Giving listening its whole share
-  /// first starved read-aloud whenever the pool held [each] words or fewer.
+  /// A vocab session's words, ranked across its exercise types: the meaning
+  /// and listening rankings take turns, each word once, up to [total].
   @visibleForTesting
-  static List<AnalyticsPracticeTarget> alternateListeningAndReadAloud(
-    List<AnalyticsPracticeTarget> exampleTargets, {
-    required int each,
+  static List<PracticeWord> rankVocabWords(
+    List<AnalyticsPracticeTarget> meaningTargets,
+    List<AnalyticsPracticeTarget> listeningTargets, {
+    required Set<LearningSkillsEnum> Function(PangeaToken token) skillsOf,
+    required int total,
   }) {
-    final listening = <AnalyticsPracticeTarget>[];
-    final readAloud = <AnalyticsPracticeTarget>[];
-    for (final target in exampleTargets) {
-      final listeningFull = listening.length >= each;
-      final readAloudFull = readAloud.length >= each;
-      if (listeningFull && readAloudFull) break;
-      if (readAloudFull ||
-          (!listeningFull && listening.length <= readAloud.length)) {
-        listening.add(target);
-      } else {
-        readAloud.add(
-          AnalyticsPracticeTarget(
-            target: PracticeTarget(
-              tokens: target.target.tokens,
-              exerciseType: PracticeExerciseTypeEnum.readAloud,
-            ),
-          ),
-        );
+    final seen = <ConstructIdentifier>{};
+    final words = <PracticeWord>[];
+    final longest = max(meaningTargets.length, listeningTargets.length);
+    for (var i = 0; i < longest && words.length < total; i++) {
+      for (final ranking in [meaningTargets, listeningTargets]) {
+        if (i >= ranking.length || words.length >= total) continue;
+        final token = ranking[i].target.tokens.first;
+        if (!seen.add(token.vocabConstructID)) continue;
+        words.add(PracticeWord(token: token, skills: skillsOf(token)));
       }
     }
-    return [...listening, ...readAloud];
+    return words;
+  }
+
+  /// The Mission's words the learner has never used — no construct, so no
+  /// example message — as meaning-only words from the plan's own lemma and
+  /// part of speech, after the learner's own. Phrases are skipped: the
+  /// meaning generator's distractors are per lemma, not per set phrase.
+  static void _addMissionWords(
+    List<PracticeWord> words,
+    QuestObjectiveGroup scope,
+  ) {
+    final covered = {
+      for (final word in words)
+        QuestObjectiveGroup.lemmaKey(word.token.lemma.text),
+    };
+    final planWords = [
+      for (final word in scope.vocab)
+        if (word.pos != 'phrase') word,
+    ];
+    for (final word in planWords) {
+      if (words.length >= AnalyticsPracticeConstants.targetsToGenerate) break;
+      final lemma = QuestObjectiveGroup.lemmaKey(word.lemma);
+      if (!covered.add(lemma)) continue;
+      words.add(
+        PracticeWord(
+          token: word.asToken(),
+          skills: {LearningSkillsEnum.reading},
+          // The Mission's other words as wrong answers, so a learner with
+          // little vocabulary of their own still gets a real multiple choice.
+          distractorCandidates: [
+            for (final other in planWords)
+              if (other.lemma.toLowerCase() != lemma)
+                other.asToken().vocabConstructID,
+          ],
+        ),
+      );
+    }
   }
 
   /// Whether the connection banner may offer an offline vocab session: the app

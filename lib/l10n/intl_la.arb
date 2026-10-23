@@ -2508,5 +2508,8 @@
     "openCourse": "Aperire cursum",
     "centralCourseJoinedTitle": "Curriculum {course} coniunxisti",
     "centralCourseJoinedBody": "Hic est cursus Pangeae pro discentibus {language}. Sodales eius nomen et imaginem tuam videre possunt.",
-    "centralCourseMembersSeeYou": "Sodales huius cursus nomen et imaginem tuam videre possunt."
+    "centralCourseMembersSeeYou": "Sodales huius cursus nomen et imaginem tuam videre possunt.",
+    "practiceStartWordCount": "{count, plural, =1{verbum exercendum} other{verba exercenda}}",
+    "practiceStartGrammarCount": "{count, plural, =1{grammatica exercenda} other{grammaticae exercendae}}",
+    "practiceStartExerciseTypes": "Genera exercitationum"
 }

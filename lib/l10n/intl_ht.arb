@@ -2508,5 +2508,8 @@
     "openCourse": "Louvri kou a",
     "centralCourseJoinedTitle": "Ou rantre nan {course}",
     "centralCourseJoinedBody": "Se kou Pangea a pou moun k ap aprann {language}. Manm li yo ka wè non w ak pwofil ou.",
-    "centralCourseMembersSeeYou": "Manm kou sa a ka wè non w ak pwofil ou."
+    "centralCourseMembersSeeYou": "Manm kou sa a ka wè non w ak pwofil ou.",
+    "practiceStartWordCount": "{count, plural, =1{mo pou pratike} other{mo pou pratike}}",
+    "practiceStartGrammarCount": "{count, plural, =1{pwen gramè pou pratike} other{pwen gramè pou pratike}}",
+    "practiceStartExerciseTypes": "Tip egzèsis"
 }

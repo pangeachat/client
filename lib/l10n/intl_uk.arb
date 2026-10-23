@@ -10046,5 +10046,8 @@
     "openCourse": "Відкрити курс",
     "centralCourseJoinedTitle": "Ви приєдналися до курсу «{course}»",
     "centralCourseJoinedBody": "Це курс Pangea для тих, хто вивчає {language}. Учасники курсу бачитимуть ваше ім’я та профіль.",
-    "centralCourseMembersSeeYou": "Учасники цього курсу бачитимуть ваше ім’я та профіль."
+    "centralCourseMembersSeeYou": "Учасники цього курсу бачитимуть ваше ім’я та профіль.",
+    "practiceStartWordCount": "{count, plural, =1{слово для практики} other{слів для практики}}",
+    "practiceStartGrammarCount": "{count, plural, =1{граматична тема для практики} other{граматичних тем для практики}}",
+    "practiceStartExerciseTypes": "Типи вправ"
 }
