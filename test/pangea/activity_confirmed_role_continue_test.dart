@@ -10,7 +10,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/confirmed_role_session_
 /// #9532 — a session link opens the start page on a session the learner
 /// already has a role in. Once every seat is filled, the waiting room gives
 /// way to a single Continue into the chat (activity-start-page.instructions.md,
-/// "The waiting room").
+/// "The CTA row").
 class _StartedSessionController extends ConfirmedRoleSessionController {
   var continued = false;
 

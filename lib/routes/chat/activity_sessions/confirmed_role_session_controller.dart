@@ -147,7 +147,8 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   /// Every seat is filled. This page then shows only when a session link
   /// opened it on a session the learner already has a role in, so it offers
   /// Continue into the chat instead of the waiting room
-  /// (activity-start-page.instructions.md, "The waiting room").
+  /// (activity-start-page.instructions.md, "The CTA row": an ongoing session
+  /// the learner is in leads with Continue).
   bool get sessionStarted => widget.room.isActivityStarted;
 
   void continueToChat() =>
