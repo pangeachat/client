@@ -20,7 +20,7 @@ The app is a workspace of panels over one world map, for learners on every scree
 ### Reading a workspace URL
 
 - Only the URL records the scoped course and open panels, so links and refreshes restore them. Unassigned.
-- URLs stay readable to anyone on the team. Only the app writes them, so retired shapes are dead links, a call at current scale ([#7467](https://github.com/pangeachat/client/issues/7467)). Unassigned.
+- URLs stay readable to anyone on the team. Only the app writes them, so retired shapes are dead links, a call at current scale.
 - Only the learner's own moves add a Back step, so Back never undoes an automatic fold. Unassigned.
 
 ### The course context
