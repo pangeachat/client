@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 10:47:01.395549",
+    "@@last_modified": "2026-10-21 10:12:58.337285",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10076,5 +10076,24 @@
     "otherCoursesSessions": "Andre kurs ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP tjent",
-    "currentMission": "Gjeldende oppdrag"
+    "currentMission": "Gjeldende oppdrag",
+    "constructUseCorRADesc": "Lest høyt og hørt",
+    "constructUseIncRADesc": "Lest høyt, ikke hørt",
+    "hearItFirstToolName": "Hør det først",
+    "hearItFirstDescription": "I høytlesingsøvelser kan du spille av setningen før du tar opp.",
+    "readAloudInstruction": "Trykk på mikrofonen og les setningen høyt",
+    "readAloudRecord": "Ta opp",
+    "readAloudMicLabel": "{count, plural, =1{Ta opp, 1 ord ikke hørt ennå} other{Ta opp, {count} ord ikke hørt ennå}}",
+    "readAloudStop": "Stopp opptak",
+    "readAloudHeardAll": "Alle ord hørt!",
+    "readAloudNotHeard": "{count, plural, =1{1 ord ikke hørt} other{{count} ord ikke hørt}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 forsøk igjen} other{{count} forsøk igjen}}",
+    "readAloudHeardTranscript": "Hørt: {transcript}",
+    "readAloudTranscribeFailed": "Kunne ikke transkribere opptaket ditt. Sjekk tilkoblingen din og prøv igjen.",
+    "readAloudMicUnavailable": "Ingen mikrofon er tilgjengelig, så dette ordet er i stedet en betydningsøvelse.",
+    "readAloudExample": "Eksempel",
+    "readAloudStartOver": "Start på nytt",
+    "readAloudStarting": "Klargjør mikrofonen …",
+    "readAloudListening": "Lytter …",
+    "readAloudTake": "Opptak {number}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-23 10:46:58.367257",
+    "@@last_modified": "2026-10-21 10:12:47.504921",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Cùrsaichean eile ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP air a chosnadh",
-    "currentMission": "Rùn làithreach"
+    "currentMission": "Rùn làithreach",
+    "constructUseCorRADesc": "Air a leughadh a-mach 's air a chluinntinn",
+    "constructUseIncRADesc": "Air a leughadh a-mach, gun a chluinntinn",
+    "hearItFirstToolName": "Cluinn an-toiseach e",
+    "hearItFirstDescription": "Ann an cleachdadh leughaidh a-mach, cluich an seantans mus clàraich thu.",
+    "readAloudInstruction": "Tap air a' mhic agus leugh an seantans a-mach",
+    "readAloudRecord": "Clàraich",
+    "readAloudMicLabel": "{count, plural, =1{Clàraich, 1 fhacal nach deach a chluinntinn fhathast} other{Clàraich, {count} facal nach deach a chluinntinn fhathast}}",
+    "readAloudStop": "Stad a chlàradh",
+    "readAloudHeardAll": "Chualas a h-uile facal!",
+    "readAloudNotHeard": "{count, plural, =1{1 fhacal nach deach a chluinntinn} other{{count} facal nach deach a chluinntinn}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 oidhirp air fhàgail} other{{count} oidhirpean air fhàgail}}",
+    "readAloudHeardTranscript": "Air a chluinntinn: {transcript}",
+    "readAloudTranscribeFailed": "Cha b' urrainn dhuinn do chlàradh a thar-sgrìobhadh. Dèan cinnteach gu bheil ceangal agad agus feuch ris a-rithist.",
+    "readAloudMicUnavailable": "Chan eil microfòn ri fhaighinn, agus mar sin tha am facal seo na eacarsaich ciall an àite sin.",
+    "readAloudExample": "Eisimpleir",
+    "readAloudStartOver": "Tòisich a-rithist",
+    "readAloudStarting": "Ag ullachadh a’ mhicreofoin…",
+    "readAloudListening": "Ag èisteachd…",
+    "readAloudTake": "Gabh {number}"
 }

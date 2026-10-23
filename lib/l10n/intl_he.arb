@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 10:46:58.205341",
+    "@@last_modified": "2026-10-21 10:12:48.717543",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10930,5 +10930,24 @@
     "otherCoursesSessions": "קורסים אחרים ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP נצברו",
-    "currentMission": "המשימה הנוכחית"
+    "currentMission": "המשימה הנוכחית",
+    "constructUseCorRADesc": "נקרא בקול ונשמע",
+    "constructUseIncRADesc": "נקרא בקול, לא נשמע",
+    "hearItFirstToolName": "שמע קודם",
+    "hearItFirstDescription": "בתרגול קריאה בקול, השמע את המשפט לפני ההקלטה.",
+    "readAloudInstruction": "הקש על המיקרופון וקרא את המשפט בקול",
+    "readAloudRecord": "הקלט",
+    "readAloudMicLabel": "{count, plural, =1{הקלט, מילה אחת עדיין לא נשמעה} other{הקלט, {count} מילים עדיין לא נשמעו}}",
+    "readAloudStop": "הפסק להקליט",
+    "readAloudHeardAll": "כל מילה נשמעה!",
+    "readAloudNotHeard": "{count, plural, =1{מילה אחת לא נשמעה} other{{count} מילים לא נשמעו}}",
+    "readAloudTriesLeft": "{count, plural, =1{ניסיון אחד נותר} other{{count} ניסיונות נותרו}}",
+    "readAloudHeardTranscript": "נשמע: {transcript}",
+    "readAloudTranscribeFailed": "לא ניתן לתמלל את ההקלטה שלך. בדוק את החיבור שלך ונסה שוב.",
+    "readAloudMicUnavailable": "אין מיקרופון זמין, לכן מילה זו היא תרגיל משמעות במקום זאת.",
+    "readAloudExample": "דוגמה",
+    "readAloudStartOver": "התחל מחדש",
+    "readAloudStarting": "מכין את המיקרופון…",
+    "readAloudListening": "מקשיב…",
+    "readAloudTake": "טייק {number}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 10:47:04.799217",
+    "@@last_modified": "2026-10-21 10:13:07.092545",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10111,5 +10111,24 @@
     "otherCoursesSessions": "பிற பாடத்திட்டங்கள் ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP பெறப்பட்டது",
-    "currentMission": "தற்போதைய மிஷன்"
+    "currentMission": "தற்போதைய மிஷன்",
+    "constructUseCorRADesc": "சத்தமாகப் படித்துக் கேட்கப்பட்டது",
+    "constructUseIncRADesc": "சத்தமாகப் படிக்கப்பட்டது, கேட்கப்படவில்லை",
+    "hearItFirstToolName": "முதலில் கேளுங்கள்",
+    "hearItFirstDescription": "சத்தமாகப் படிக்கும் பயிற்சியில், நீங்கள் பதிவு செய்வதற்கு முன் வாக்கியத்தை இயக்கவும்.",
+    "readAloudInstruction": "மைக்ரோஃபோனைத் தட்டி, வாக்கியத்தை சத்தமாகப் படியுங்கள்",
+    "readAloudRecord": "பதிவுசெய்",
+    "readAloudMicLabel": "{count, plural, =1{பதிவுசெய், 1 வார்த்தை இன்னும் கேட்கப்படவில்லை} other{பதிவுசெய், {count} வார்த்தைகள் இன்னும் கேட்கப்படவில்லை}}",
+    "readAloudStop": "பதிவுசெய்வதை நிறுத்து",
+    "readAloudHeardAll": "ஒவ்வொரு வார்த்தையும் கேட்கப்பட்டது!",
+    "readAloudNotHeard": "{count, plural, =1{1 வார்த்தை கேட்கப்படவில்லை} other{{count} வார்த்தைகள் கேட்கப்படவில்லை}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 முயற்சி மீதமுள்ளது} other{{count} முயற்சிகள் மீதமுள்ளன}}",
+    "readAloudHeardTranscript": "கேட்கப்பட்டது: {transcript}",
+    "readAloudTranscribeFailed": "உங்கள் பதிவை மாற்ற முடியவில்லை. உங்கள் இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.",
+    "readAloudMicUnavailable": "மைக்ரோஃபோன் எதுவும் கிடைக்கவில்லை, எனவே இந்த வார்த்தை அதற்குப் பதிலாக ஒரு அர்த்தப் பயிற்சியாகும்.",
+    "readAloudExample": "உதாரணம்",
+    "readAloudStartOver": "மீண்டும் தொடங்கு",
+    "readAloudStarting": "மைக்ரோஃபோனைத் தயார் செய்கிறது…",
+    "readAloudListening": "கேட்டுக் கொண்டிருக்கிறது…",
+    "readAloudTake": "{number} எடு"
 }

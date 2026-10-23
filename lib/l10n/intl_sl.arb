@@ -1795,7 +1795,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-23 10:47:03.313944",
+    "@@last_modified": "2026-10-21 10:13:00.419692",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10961,5 +10961,24 @@
     "otherCoursesSessions": "Drugi tečaji ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, pridobljenih {xp} XP",
-    "currentMission": "Trenutna misija"
+    "currentMission": "Trenutna misija",
+    "constructUseCorRADesc": "Prebrano na glas in slišano",
+    "constructUseIncRADesc": "Prebrano na glas, ni slišano",
+    "hearItFirstToolName": "Najprej poslušaj",
+    "hearItFirstDescription": "Pri vaji branja na glas pred snemanjem predvajajte stavek.",
+    "readAloudInstruction": "Dotaknite se mikrofona in preberite stavek na glas",
+    "readAloudRecord": "Posnemi",
+    "readAloudMicLabel": "{count, plural, =1{Posnemi, 1 beseda še ni slišana} other{Posnemi, {count} besed še ni slišanih}}",
+    "readAloudStop": "Ustavi snemanje",
+    "readAloudHeardAll": "Vsaka beseda slišana!",
+    "readAloudNotHeard": "{count, plural, =1{1 beseda ni slišana} other{{count} besed ni slišanih}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 poskus ostal} other{{count} poskusov ostalo}}",
+    "readAloudHeardTranscript": "Slišano: {transcript}",
+    "readAloudTranscribeFailed": "Vašega posnetka ni bilo mogoče prepisati. Preverite povezavo in poskusite znova.",
+    "readAloudMicUnavailable": "Mikrofon ni na voljo, zato je ta beseda namesto tega vaja pomena.",
+    "readAloudExample": "Primer",
+    "readAloudStartOver": "Začni znova",
+    "readAloudStarting": "Pripravljam mikrofon…",
+    "readAloudListening": "Poslušam…",
+    "readAloudTake": "Vzemi {number}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-23 10:46:56.727513",
+    "@@last_modified": "2026-10-21 10:12:45.023980",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10006,5 +10006,24 @@
     "otherCoursesSessions": "Andere Kurse ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP verdient",
-    "currentMission": "Aktuelle Mission"
+    "currentMission": "Aktuelle Mission",
+    "constructUseCorRADesc": "Vorgelesen und gehört",
+    "constructUseIncRADesc": "Vorgelesen, nicht gehört",
+    "hearItFirstToolName": "Zuerst anhören",
+    "hearItFirstDescription": "Spiele den Satz in der Vorleseübung ab, bevor du aufnimmst.",
+    "readAloudInstruction": "Tippe auf das Mikrofon und lies den Satz laut vor",
+    "readAloudRecord": "Aufnehmen",
+    "readAloudMicLabel": "{count, plural, =1{Aufnehmen, 1 Wort noch nicht gehört} other{Aufnehmen, {count} Wörter noch nicht gehört}}",
+    "readAloudStop": "Aufnahme stoppen",
+    "readAloudHeardAll": "Alle Wörter gehört!",
+    "readAloudNotHeard": "{count, plural, =1{1 Wort nicht gehört} other{{count} Wörter nicht gehört}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 Versuch übrig} other{{count} Versuche übrig}}",
+    "readAloudHeardTranscript": "Gehört: {transcript}",
+    "readAloudTranscribeFailed": "Deine Aufnahme konnte nicht transkribiert werden. Überprüfe deine Verbindung und versuche es erneut.",
+    "readAloudMicUnavailable": "Es ist kein Mikrofon verfügbar, daher ist dieses Wort stattdessen eine Bedeutungsübung.",
+    "readAloudExample": "Beispiel",
+    "readAloudStartOver": "Von vorne beginnen",
+    "readAloudStarting": "Mikrofon wird vorbereitet…",
+    "readAloudListening": "Höre zu…",
+    "readAloudTake": "Versuch {number}"
 }

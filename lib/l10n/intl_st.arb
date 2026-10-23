@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-23 10:47:03.774430",
+    "@@last_modified": "2026-10-21 10:13:01.933739",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Lithuto tse ling ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP e fumanoe",
-    "currentMission": "Thomo ea hajoale"
+    "currentMission": "Thomo ea hajoale",
+    "constructUseCorRADesc": "Bala ka lentsoe le phahameng 'me u utloe",
+    "constructUseIncRADesc": "Bala ka lentsoe le phahameng, ha ho utluoe",
+    "hearItFirstToolName": "E utloe pele",
+    "hearItFirstDescription": "Boitšupong ba ho bala ka lentsoe le phahameng, bapala polelo pele o rekota.",
+    "readAloudInstruction": "Tlanya maekrofounu 'me u bale polelo ka lentsoe le phahameng",
+    "readAloudRecord": "Rekota",
+    "readAloudMicLabel": "{count, plural, =1{Rekota, lentsoe le le leng le e-s'o utluoe} other{Rekota, mantsoe a {count} a e-s'o utluoe}}",
+    "readAloudStop": "Emisa ho rekota",
+    "readAloudHeardAll": "Lentsoe le leng le le leng le utluoe!",
+    "readAloudNotHeard": "{count, plural, =1{Lentsoe le le leng ha lea utluoa} other{Mantsoe a {count} ha a utluoa}}",
+    "readAloudTriesLeft": "{count, plural, =1{Tebelelo e le 'ngoe e setseng} other{Litebelelo tse {count} li setseng}}",
+    "readAloudHeardTranscript": "Ho utluoe: {transcript}",
+    "readAloudTranscribeFailed": "Ha ke khone ho ngola rekoto ea hau. Lekola khokahano ea hau 'me u leke hape.",
+    "readAloudMicUnavailable": "Ha ho maekrofounu e fumanehang, kahoo lentsoe lena ke boikoetliso ba moelelo ho e-na le hoo.",
+    "readAloudExample": "Mohlala",
+    "readAloudStartOver": "Qala hape",
+    "readAloudStarting": "Ho lokisoa maekrofounu…",
+    "readAloudListening": "Ke mametse…",
+    "readAloudTake": "Nka {number}"
 }

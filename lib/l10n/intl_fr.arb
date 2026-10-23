@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-23 10:46:57.489508",
+    "@@last_modified": "2026-10-21 10:12:46.862879",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10371,5 +10371,24 @@
     "otherCoursesSessions": "Autres cours ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP gagnés",
-    "currentMission": "Mission actuelle"
+    "currentMission": "Mission actuelle",
+    "constructUseCorRADesc": "Lu à voix haute et entendu",
+    "constructUseIncRADesc": "Lu à voix haute, non entendu",
+    "hearItFirstToolName": "Écouter d'abord",
+    "hearItFirstDescription": "Dans la pratique de lecture à voix haute, écoutez la phrase avant d'enregistrer.",
+    "readAloudInstruction": "Appuyez sur le micro et lisez la phrase à voix haute",
+    "readAloudRecord": "Enregistrer",
+    "readAloudMicLabel": "{count, plural, =1{Enregistrer, 1 mot non encore entendu} other{Enregistrer, {count} mots non encore entendus}}",
+    "readAloudStop": "Arrêter l'enregistrement",
+    "readAloudHeardAll": "Tous les mots entendus !",
+    "readAloudNotHeard": "{count, plural, =1{1 mot non entendu} other{{count} mots non entendus}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 essai restant} other{{count} essais restants}}",
+    "readAloudHeardTranscript": "Entendu : {transcript}",
+    "readAloudTranscribeFailed": "Impossible de transcrire votre enregistrement. Vérifiez votre connexion et réessayez.",
+    "readAloudMicUnavailable": "Aucun microphone n'est disponible, cet exercice est donc un exercice de sens à la place.",
+    "readAloudExample": "Exemple",
+    "readAloudStartOver": "Recommencer",
+    "readAloudStarting": "Préparation du microphone…",
+    "readAloudListening": "Écoute…",
+    "readAloudTake": "Prendre {number}"
 }

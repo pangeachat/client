@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-23 10:47:03.115935",
+    "@@last_modified": "2026-10-21 10:13:01.170063",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Kurse të tjera ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP të fituara",
-    "currentMission": "Misioni aktual"
+    "currentMission": "Misioni aktual",
+    "constructUseCorRADesc": "Lexuar me zë të lartë dhe dëgjuar",
+    "constructUseIncRADesc": "Lexuar me zë të lartë, jo dëgjuar",
+    "hearItFirstToolName": "Dëgjoje më parë",
+    "hearItFirstDescription": "Në praktikën e leximit me zë të lartë, luaje fjalinë përpara se ta regjistrosh.",
+    "readAloudInstruction": "Prek mikrofonin dhe lexo fjalinë me zë të lartë",
+    "readAloudRecord": "Regjistro",
+    "readAloudMicLabel": "{count, plural, =1{Regjistro, 1 fjalë ende e padëgjuar} other{Regjistro, {count} fjalë ende të padëgjuara}}",
+    "readAloudStop": "Ndalo regjistrimin",
+    "readAloudHeardAll": "Çdo fjalë u dëgjua!",
+    "readAloudNotHeard": "{count, plural, =1{1 fjalë e padëgjuar} other{{count} fjalë të padëgjuara}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 tentativë e mbetur} other{{count} tentativa të mbetura}}",
+    "readAloudHeardTranscript": "Dëgjuar: {transcript}",
+    "readAloudTranscribeFailed": "Nuk mundëm të transkriptonim regjistrimin tuaj. Kontrolloni lidhjen tuaj dhe provoni përsëri.",
+    "readAloudMicUnavailable": "Nuk ka mikrofon të disponueshëm, kështu që kjo fjalë është një ushtrim kuptimi në vend të kësaj.",
+    "readAloudExample": "Shembull",
+    "readAloudStartOver": "Fillo nga e para",
+    "readAloudStarting": "Po përgatis mikrofonin…",
+    "readAloudListening": "Po dëgjoj…",
+    "readAloudTake": "Marrja {number}"
 }

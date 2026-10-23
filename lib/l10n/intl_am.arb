@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-23 10:46:55.831880",
+    "@@last_modified": "2026-10-21 10:12:44.267251",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "ሌሎች ኮርሶች ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP አግኝቷል",
-    "currentMission": "የአሁኑ ተልዕኮ"
+    "currentMission": "የአሁኑ ተልዕኮ",
+    "constructUseCorRADesc": "ጮክ ብሎ አንብቦ ተሰምቷል",
+    "constructUseIncRADesc": "ጮክ ብሎ አንብቦ አልተሰማም",
+    "hearItFirstToolName": "መጀመሪያ ስማው",
+    "hearItFirstDescription": "ጮክ ብሎ በማንበብ ልምምድ ውስጥ፣ ከመቅረጽዎ በፊት ዓረፍተ ነገሩን ያጫውቱ።",
+    "readAloudInstruction": "ማይኩን መታ ያድርጉ እና ዓረፍተ ነገሩን ጮክ ብለው ያንብቡ",
+    "readAloudRecord": "ይቅረጹ",
+    "readAloudMicLabel": "{count, plural, =1{ይቅረጹ፣ 1 ቃል ገና አልተሰማም} other{ይቅረጹ፣ {count} ቃላት ገና አልተሰሙም}}",
+    "readAloudStop": "ቅጂን አቁም",
+    "readAloudHeardAll": "እያንዳንዱ ቃል ተሰምቷል!",
+    "readAloudNotHeard": "{count, plural, =1{1 ቃል አልተሰማም} other{{count} ቃላት አልተሰሙም}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 ሙከራ ቀርቷል} other{{count} ሙከራዎች ቀርተዋል}}",
+    "readAloudHeardTranscript": "የተሰማው: {transcript}",
+    "readAloudTranscribeFailed": "ቅጂዎን መገልበጥ አልተቻለም። ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ።",
+    "readAloudMicUnavailable": "ምንም ማይክሮፎን የለም፣ ስለዚህ ይህ ቃል የትርጉም ልምምድ ነው።",
+    "readAloudExample": "ምሳሌ",
+    "readAloudStartOver": "እንደገና ጀምር",
+    "readAloudStarting": "ማይክሮፎኑን በማዘጋጀት ላይ…",
+    "readAloudListening": "በማዳመጥ ላይ…",
+    "readAloudTake": "ይውሰዱ {number}"
 }

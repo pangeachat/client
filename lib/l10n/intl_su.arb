@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-23 10:47:03.798293",
+    "@@last_modified": "2026-10-21 10:13:02.846939",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Kursus séjén ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP dimeunangkeun",
-    "currentMission": "Misi ayeuna"
+    "currentMission": "Misi ayeuna",
+    "constructUseCorRADesc": "Dibaca tarik jeung kadéngé",
+    "constructUseIncRADesc": "Dibaca tarik, teu kadéngé",
+    "hearItFirstToolName": "Ngadéngékeun heula",
+    "hearItFirstDescription": "Dina latihan maca tarik, puter kalimahna saacan anjeun ngarékam.",
+    "readAloudInstruction": "Ketok mikropon jeung baca kalimahna tarik",
+    "readAloudRecord": "Rékam",
+    "readAloudMicLabel": "{count, plural, =1{Rékam, 1 kecap can kadéngé} other{Rékam, {count} kecap can kadéngé}}",
+    "readAloudStop": "Eureun ngarékam",
+    "readAloudHeardAll": "Sadaya kecap kadéngé!",
+    "readAloudNotHeard": "{count, plural, =1{1 kecap teu kadéngé} other{{count} kecap teu kadéngé}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 kali deui} other{{count} kali deui}}",
+    "readAloudHeardTranscript": "Kadéngé: {transcript}",
+    "readAloudTranscribeFailed": "Teu tiasa nranskripsi rékaman anjeun. Pariksa sambungan anjeun sareng cobian deui.",
+    "readAloudMicUnavailable": "Teu aya mikropon nu sayogi, janten kecap ieu mangrupikeun latihan harti.",
+    "readAloudExample": "Conto",
+    "readAloudStartOver": "Mimitian deui",
+    "readAloudStarting": "Nyiapkeun mikropon…",
+    "readAloudListening": "Ngaregepkeun…",
+    "readAloudTake": "Candak {number}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-23 10:47:05.170198",
+    "@@last_modified": "2026-10-21 10:13:07.915468",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Ezinye izifundo ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP etholiwe",
-    "currentMission": "I-mission yamanje"
+    "currentMission": "I-mission yamanje",
+    "constructUseCorRADesc": "Funda ngokuzwakalayo futhi wezwe",
+    "constructUseIncRADesc": "Funda ngokuzwakalayo, akuzwakali",
+    "hearItFirstToolName": "Yizwa kuqala",
+    "hearItFirstDescription": "Ekuzilolongeni kokufunda ngokuzwakalayo, dlala umusho ngaphambi kokurekhoda.",
+    "readAloudInstruction": "Thepha imakrofoni bese ufunda umusho ngokuzwakalayo",
+    "readAloudRecord": "Rekhoda",
+    "readAloudMicLabel": "{count, plural, =1{Rekhoda, igama eli-1 elingakazwakali} other{Rekhoda, amagama angu-{count} angakazwakali}}",
+    "readAloudStop": "Misa ukurekhoda",
+    "readAloudHeardAll": "Wonke amagama ezwakale!",
+    "readAloudNotHeard": "{count, plural, =1{Igama eli-1 alizwakali} other{Amagama angu-{count} awazwakali}}",
+    "readAloudTriesLeft": "{count, plural, =1{Kusele umzamo o-1} other{Kusele imizamo engu-{count}}}",
+    "readAloudHeardTranscript": "Kuzwakale: {transcript}",
+    "readAloudTranscribeFailed": "Ayikwazanga ukubhala phansi okurekhodiwe. Hlola uxhumano lwakho bese uzama futhi.",
+    "readAloudMicUnavailable": "Ayikho imakrofoni etholakalayo, ngakho leli gama liwumsebenzi wencazelo esikhundleni salokho.",
+    "readAloudExample": "Isibonelo",
+    "readAloudStartOver": "Qala kabusha",
+    "readAloudStarting": "Ilungiselela imakrofoni…",
+    "readAloudListening": "Iyalalela…",
+    "readAloudTake": "Thatha {number}"
 }

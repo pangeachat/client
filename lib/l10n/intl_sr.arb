@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 10:47:03.193585",
+    "@@last_modified": "2026-10-21 10:13:01.823366",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10965,5 +10965,24 @@
     "otherCoursesSessions": "Drugi kursevi ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, osvojeno {xp} XP",
-    "currentMission": "Trenutna misija"
+    "currentMission": "Trenutna misija",
+    "constructUseCorRADesc": "Pročitano naglas i čuto",
+    "constructUseIncRADesc": "Pročitano naglas, nije čuto",
+    "hearItFirstToolName": "Prvo poslušaj",
+    "hearItFirstDescription": "U vežbi čitanja naglas, pusti rečenicu pre nego što snimiš.",
+    "readAloudInstruction": "Dodirni mikrofon i pročitaj rečenicu naglas",
+    "readAloudRecord": "Snimi",
+    "readAloudMicLabel": "{count, plural, =1{Snimi, 1 reč još nije čuta} other{Snimi, {count} reči još nije čuto}}",
+    "readAloudStop": "Zaustavi snimanje",
+    "readAloudHeardAll": "Svaka reč čuta!",
+    "readAloudNotHeard": "{count, plural, =1{1 reč nije čuta} other{{count} reči nije čuto}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 pokušaj preostao} other{{count} pokušaja preostalo}}",
+    "readAloudHeardTranscript": "Čuto: {transcript}",
+    "readAloudTranscribeFailed": "Nije moguće transkribovati tvoj snimak. Proveri vezu i pokušaj ponovo.",
+    "readAloudMicUnavailable": "Mikrofon nije dostupan, pa je ova reč umesto toga vežba značenja.",
+    "readAloudExample": "Primer",
+    "readAloudStartOver": "Počni ponovo",
+    "readAloudStarting": "Pripremam mikrofon…",
+    "readAloudListening": "Slušam…",
+    "readAloudTake": "Uradi {number}"
 }

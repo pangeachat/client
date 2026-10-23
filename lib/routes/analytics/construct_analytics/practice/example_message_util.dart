@@ -16,6 +16,9 @@ class _ExampleMessageResult {
   final List<PangeaToken> includedTokens;
   final String text;
   final int adjustedTargetIndex;
+
+  /// Message offset of [text]'s first character.
+  final int textOffset;
   final String? eventId;
   final String? roomId;
 
@@ -24,6 +27,7 @@ class _ExampleMessageResult {
     required this.includedTokens,
     required this.text,
     required this.adjustedTargetIndex,
+    required this.textOffset,
     this.eventId,
     this.roomId,
   });
@@ -33,11 +37,25 @@ class _ExampleMessageResult {
     tokens: includedTokens,
     eventId: eventId,
     roomId: roomId,
-    exampleMessage: ExampleMessageInfo(exampleMessage: displaySpans),
+    exampleMessage: ExampleMessageInfo(
+      exampleMessage: displaySpans,
+      textOffset: textOffset,
+    ),
   );
 }
 
 class ExampleMessageUtil {
+  /// The spans that stand for cut text on either side of an example, which
+  /// are not part of the message and are left out of any text that has to
+  /// line up with token offsets.
+  static const String ellipsisBefore = '… ';
+  static const String ellipsisAfter = '…';
+
+  static bool isEllipsisMarker(InlineSpan span) =>
+      span is TextSpan &&
+      span.style == null &&
+      (span.text == ellipsisBefore || span.text == ellipsisAfter);
+
   /// [savedOnly] picks among the messages saved on this device without asking
   /// the server, for an offline practice session.
   static Future<List<InlineSpan>?> getExampleMessage(
@@ -55,15 +73,20 @@ class ExampleMessageUtil {
     return result?.toSpans();
   }
 
+  /// [maxContextChars] is how much of the message around the target to keep;
+  /// the read-aloud exercise asks for more so the target's whole sentence is
+  /// there to cut to.
   static Future<AudioExampleMessage?> getAudioExampleMessage(
     ConstructUses construct, {
     String? form,
     bool noBold = false,
+    int maxContextChars = defaultMaxContextChars,
   }) async {
     final result = await _getExampleMessageResult(
       construct,
       form: form,
       noBold: noBold,
+      maxContextChars: maxContextChars,
     );
     return result?.toAudioExampleMessage();
   }
@@ -88,11 +111,14 @@ class ExampleMessageUtil {
     return allSpans;
   }
 
+  static const int defaultMaxContextChars = 100;
+
   static Future<_ExampleMessageResult?> _getExampleMessageResult(
     ConstructUses construct, {
     String? form,
     bool noBold = false,
     bool savedOnly = false,
+    int maxContextChars = defaultMaxContextChars,
   }) async {
     final uses = List<OneConstructUse>.from(construct.cappedUses);
     uses.shuffle(); // Shuffle to get a random example message each time
@@ -106,7 +132,12 @@ class ExampleMessageUtil {
       );
       if (event == null) continue;
 
-      final result = _buildExampleMessage(use.form, event, noBold: noBold);
+      final result = _buildExampleMessage(
+        use.form,
+        event,
+        noBold: noBold,
+        maxContextChars: maxContextChars,
+      );
       if (result != null) return result;
     }
     return null;
@@ -116,6 +147,7 @@ class ExampleMessageUtil {
     String? form,
     PangeaMessageEvent messageEvent, {
     bool noBold = false,
+    int maxContextChars = defaultMaxContextChars,
   }) {
     String? text;
     List<PangeaToken>? tokens;
@@ -143,8 +175,6 @@ class ExampleMessageUtil {
     }
 
     final targetToken = tokens[targetTokenIndex];
-
-    const maxContextChars = 100;
 
     final targetStart = targetToken.text.offset;
     final targetEnd = targetStart + targetToken.text.content.characters.length;
@@ -219,14 +249,15 @@ class ExampleMessageUtil {
         .trimRight();
 
     final displaySpans = [
-      if (trimmedBefore) const TextSpan(text: '… '),
+      if (trimmedBefore)
+        const TextSpan(text: ExampleMessageUtil.ellipsisBefore),
       TextSpan(text: before),
       TextSpan(
         text: targetToken.text.content,
         style: noBold ? null : const TextStyle(fontWeight: FontWeight.bold),
       ),
       TextSpan(text: after),
-      if (trimmedAfter) const TextSpan(text: '…'),
+      if (trimmedAfter) const TextSpan(text: ExampleMessageUtil.ellipsisAfter),
     ];
 
     // Extract only the tokens that are included in the displayed text
@@ -246,6 +277,7 @@ class ExampleMessageUtil {
           .take(afterEndOffset - beforeStartOffset)
           .toString(),
       adjustedTargetIndex: adjustedTargetIndex,
+      textOffset: beforeStartOffset,
       eventId: messageEvent.eventId,
       roomId: messageEvent.room.id,
     );

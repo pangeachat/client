@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 10:46:56.772336",
+    "@@last_modified": "2026-10-21 10:12:45.848609",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10961,5 +10961,24 @@
     "otherCoursesSessions": "Aliaj kursoj ({num})",
     "activityXpStamp": "{xp} SPer",
     "activityCompletedWithXp": "{completed}, {xp} SPer gajnitaj",
-    "currentMission": "Nuna misio"
+    "currentMission": "Nuna misio",
+    "constructUseCorRADesc": "Laŭtlegita kaj aŭdita",
+    "constructUseIncRADesc": "Laŭtlegita, ne aŭdita",
+    "hearItFirstToolName": "Aŭdu unue",
+    "hearItFirstDescription": "En laŭtlegada ekzercado, ludu la frazon antaŭ ol vi registras.",
+    "readAloudInstruction": "Frapu la mikrofonon kaj laŭtlegu la frazon",
+    "readAloudRecord": "Registri",
+    "readAloudMicLabel": "{count, plural, =1{Registri, 1 vorto ankoraŭ ne aŭdita} other{Registri, {count} vortoj ankoraŭ ne aŭditaj}}",
+    "readAloudStop": "Ĉesigi registradon",
+    "readAloudHeardAll": "Ĉiu vorto aŭdita!",
+    "readAloudNotHeard": "{count, plural, =1{1 vorto ne aŭdita} other{{count} vortoj ne aŭditaj}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 provo restas} other{{count} provoj restas}}",
+    "readAloudHeardTranscript": "Aŭdita: {transcript}",
+    "readAloudTranscribeFailed": "Ne eblis transskribi vian registradon. Kontrolu vian konekton kaj reprovu.",
+    "readAloudMicUnavailable": "Neniu mikrofono disponeblas, do ĉi tiu vorto estas signifo-ekzerco anstataŭe.",
+    "readAloudExample": "Ekzemplo",
+    "readAloudStartOver": "Rekomenci",
+    "readAloudStarting": "Pretigas la mikrofonon…",
+    "readAloudListening": "Aŭskultas…",
+    "readAloudTake": "Provo {number}"
 }

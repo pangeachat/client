@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-23 10:47:01.417378",
+    "@@last_modified": "2026-10-21 10:12:57.920527",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "अन्य कोर्सहरू ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP कमाइयो",
-    "currentMission": "हालको मिसन"
+    "currentMission": "हालको मिसन",
+    "constructUseCorRADesc": "ठूलो स्वरमा पढियो र सुनियो",
+    "constructUseIncRADesc": "ठूलो स्वरमा पढियो, सुनिएन",
+    "hearItFirstToolName": "पहिले सुन्नुहोस्",
+    "hearItFirstDescription": "ठूलो स्वरमा पढ्ने अभ्यासमा, रेकर्ड गर्नु अघि वाक्य बजाउनुहोस्।",
+    "readAloudInstruction": "माइक ट्याप गर्नुहोस् र वाक्य ठूलो स्वरमा पढ्नुहोस्",
+    "readAloudRecord": "रेकर्ड गर्नुहोस्",
+    "readAloudMicLabel": "{count, plural, =1{रेकर्ड गर्नुहोस्, १ शब्द अझै सुनिएको छैन} other{रेकर्ड गर्नुहोस्, {count} शब्दहरू अझै सुनिएका छैनन्}}",
+    "readAloudStop": "रेकर्डिङ रोक्नुहोस्",
+    "readAloudHeardAll": "हरेक शब्द सुनियो!",
+    "readAloudNotHeard": "{count, plural, =1{१ शब्द सुनिएन} other{{count} शब्दहरू सुनिएनन्}}",
+    "readAloudTriesLeft": "{count, plural, =1{१ प्रयास बाँकी} other{{count} प्रयासहरू बाँकी}}",
+    "readAloudHeardTranscript": "सुनियो: {transcript}",
+    "readAloudTranscribeFailed": "तपाईंको रेकर्डिङ ट्रान्सक्राइब गर्न सकिएन। आफ्नो जडान जाँच गर्नुहोस् र फेरि प्रयास गर्नुहोस्।",
+    "readAloudMicUnavailable": "कुनै माइक्रोफोन उपलब्ध छैन, त्यसैले यो शब्द अर्थ अभ्यासको रूपमा छ।",
+    "readAloudExample": "उदाहरण",
+    "readAloudStartOver": "फेरि सुरु गर्नुहोस्",
+    "readAloudStarting": "माइक्रोफोन तयार गर्दै...",
+    "readAloudListening": "सुन्दै...",
+    "readAloudTake": "{number} लिनुहोस्"
 }

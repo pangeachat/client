@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-23 10:47:01.664033",
+    "@@last_modified": "2026-10-21 10:13:01.264865",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Kursus lain ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP diperoleh",
-    "currentMission": "Misi semasa"
+    "currentMission": "Misi semasa",
+    "constructUseCorRADesc": "Dibaca dengan kuat dan didengar",
+    "constructUseIncRADesc": "Dibaca dengan kuat, tidak didengar",
+    "hearItFirstToolName": "Dengar dahulu",
+    "hearItFirstDescription": "Dalam latihan baca dengan kuat, mainkan ayat sebelum anda merakam.",
+    "readAloudInstruction": "Ketik mikrofon dan baca ayat dengan kuat",
+    "readAloudRecord": "Rakam",
+    "readAloudMicLabel": "{count, plural, =1{Rakam, 1 perkataan belum didengar} other{Rakam, {count} perkataan belum didengar}}",
+    "readAloudStop": "Berhenti merakam",
+    "readAloudHeardAll": "Setiap perkataan didengar!",
+    "readAloudNotHeard": "{count, plural, =1{1 perkataan tidak didengar} other{{count} perkataan tidak didengar}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 percubaan tinggal} other{{count} percubaan tinggal}}",
+    "readAloudHeardTranscript": "Didengar: {transcript}",
+    "readAloudTranscribeFailed": "Tidak dapat menyalin rakaman anda. Semak sambungan anda dan cuba lagi.",
+    "readAloudMicUnavailable": "Tiada mikrofon tersedia, jadi perkataan ini adalah latihan makna.",
+    "readAloudExample": "Contoh",
+    "readAloudStartOver": "Mula semula",
+    "readAloudStarting": "Menyediakan mikrofon…",
+    "readAloudListening": "Mendengar…",
+    "readAloudTake": "Ambil {number}"
 }

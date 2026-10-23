@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 10:47:03.775642",
+    "@@last_modified": "2026-10-21 10:13:02.058052",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10534,5 +10534,24 @@
     "otherCoursesSessions": "Andra kurser ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP intjänade",
-    "currentMission": "Nuvarande uppdrag"
+    "currentMission": "Nuvarande uppdrag",
+    "constructUseCorRADesc": "Läste högt och hördes",
+    "constructUseIncRADesc": "Läste högt, hördes inte",
+    "hearItFirstToolName": "Hör det först",
+    "hearItFirstDescription": "I högläsningsövningar, spela upp meningen innan du spelar in.",
+    "readAloudInstruction": "Tryck på mikrofonen och läs meningen högt",
+    "readAloudRecord": "Spela in",
+    "readAloudMicLabel": "{count, plural, =1{Spela in, 1 ord har inte hörts än} other{Spela in, {count} ord har inte hörts än}}",
+    "readAloudStop": "Stoppa inspelningen",
+    "readAloudHeardAll": "Alla ord hörda!",
+    "readAloudNotHeard": "{count, plural, =1{1 ord hördes inte} other{{count} ord hördes inte}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 försök kvar} other{{count} försök kvar}}",
+    "readAloudHeardTranscript": "Hördes: {transcript}",
+    "readAloudTranscribeFailed": "Kunde inte transkribera din inspelning. Kontrollera din anslutning och försök igen.",
+    "readAloudMicUnavailable": "Ingen mikrofon är tillgänglig, så det här ordet är istället en betydelseövning.",
+    "readAloudExample": "Exempel",
+    "readAloudStartOver": "Börja om",
+    "readAloudStarting": "Förbereder mikrofonen…",
+    "readAloudListening": "Lyssnar…",
+    "readAloudTake": "Ta {number}"
 }

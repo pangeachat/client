@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-23 10:47:00.775594",
+    "@@last_modified": "2026-10-21 10:12:56.799880",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Taranja hafa ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP azo",
-    "currentMission": "Iraka ankehitriny"
+    "currentMission": "Iraka ankehitriny",
+    "constructUseCorRADesc": "Vakiana mafy sy re",
+    "constructUseIncRADesc": "Vakiana mafy, tsy re",
+    "hearItFirstToolName": "Henoy aloha",
+    "hearItFirstDescription": "Amin'ny fanazaran-tena mamaky mafy, alefaso ny fehezanteny alohan'ny handraisanao azy.",
+    "readAloudInstruction": "Tsindrio ny mikrô ary vakio mafy ny fehezanteny",
+    "readAloudRecord": "Raketo",
+    "readAloudMicLabel": "{count, plural, =1{Raketo, teny 1 mbola tsy re} other{Raketo, teny {count} mbola tsy re}}",
+    "readAloudStop": "Ajanony ny fandraisana",
+    "readAloudHeardAll": "Teny rehetra re!",
+    "readAloudNotHeard": "{count, plural, =1{Teny 1 tsy re} other{Teny {count} tsy re}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 andrana sisa} other{{count} andrana sisa}}",
+    "readAloudHeardTranscript": "Re: {transcript}",
+    "readAloudTranscribeFailed": "Tsy afaka nandika ny fandraisanao. Hamarino ny fifandraisanao ary andramo indray.",
+    "readAloudMicUnavailable": "Tsy misy mikrô azo ampiasaina, ka fanazaran-tena momba ny dikany ity teny ity.",
+    "readAloudExample": "Ohatra",
+    "readAloudStartOver": "Atomboka indray",
+    "readAloudStarting": "Manomana ny mikrô...",
+    "readAloudListening": "Mihaino...",
+    "readAloudTake": "Andao {number}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-23 10:47:00.453293",
+    "@@last_modified": "2026-10-21 10:12:54.368460",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Aner Coursen ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP verdéngt",
-    "currentMission": "Aktuell Missioun"
+    "currentMission": "Aktuell Missioun",
+    "constructUseCorRADesc": "Virgelies a verstanen",
+    "constructUseIncRADesc": "Virgelies, net verstanen",
+    "hearItFirstToolName": "Als éischt lauschteren",
+    "hearItFirstDescription": "Beim haart liesen, spill de Saz of ier s de ophëls.",
+    "readAloudInstruction": "Tipp op de Mikro a lies de Saz haart vir",
+    "readAloudRecord": "Ophuelen",
+    "readAloudMicLabel": "{count, plural, =1{Ophuelen, 1 Wuert nach net héieren} other{Ophuelen, {count} Wierder nach net héieren}}",
+    "readAloudStop": "Ophuelen stoppen",
+    "readAloudHeardAll": "All Wuert héieren!",
+    "readAloudNotHeard": "{count, plural, =1{1 Wuert net héieren} other{{count} Wierder net héieren}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 Versuch iwwreg} other{{count} Versich iwwreg}}",
+    "readAloudHeardTranscript": "Héieren: {transcript}",
+    "readAloudTranscribeFailed": "Konnt deng Opnam net transkribéieren. Kontrolléier deng Verbindung a probéier et nach eng Kéier.",
+    "readAloudMicUnavailable": "Kee Mikro ass disponibel, dofir ass dëst Wuert amplaz eng Bedeitungsübung.",
+    "readAloudExample": "Beispill",
+    "readAloudStartOver": "Nei ufänken",
+    "readAloudStarting": "Mikro gëtt prett gemaach…",
+    "readAloudListening": "Lauschteren…",
+    "readAloudTake": "Huelt {number}"
 }

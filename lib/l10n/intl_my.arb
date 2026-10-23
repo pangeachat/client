@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-23 10:47:01.632350",
+    "@@last_modified": "2026-10-21 10:12:57.475752",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "အခြားသင်တန်းများ ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP ရရှိခဲ့သည်",
-    "currentMission": "လက်ရှိမစ်ရှင်"
+    "currentMission": "လက်ရှိမစ်ရှင်",
+    "constructUseCorRADesc": "အသံထွက်ဖတ်ပြီး ကြားခဲ့ရ",
+    "constructUseIncRADesc": "အသံထွက်ဖတ်ပြီး မကြားခဲ့ရ",
+    "hearItFirstToolName": "အရင်နားထောင်ပါ",
+    "hearItFirstDescription": "အသံထွက်ဖတ်လေ့ကျင့်ခန်းတွင် သင်မမှတ်တမ်းတင်မီ ဝါကျကို ဖွင့်ပါ။",
+    "readAloudInstruction": "မိုက်ခ်ကို နှိပ်ပြီး ဝါကျကို အသံထွက်ဖတ်ပါ",
+    "readAloudRecord": "မှတ်တမ်းတင်ပါ",
+    "readAloudMicLabel": "{count, plural, =1{မှတ်တမ်းတင်ပါ၊ စကားလုံး ၁ လုံး မကြားရသေးပါ} other{မှတ်တမ်းတင်ပါ၊ စကားလုံး {count} လုံး မကြားရသေးပါ}}",
+    "readAloudStop": "မှတ်တမ်းတင်ခြင်း ရပ်ပါ",
+    "readAloudHeardAll": "စကားလုံးတိုင်း ကြားရပြီ!",
+    "readAloudNotHeard": "{count, plural, =1{စကားလုံး ၁ လုံး မကြားရသေးပါ} other{စကားလုံး {count} လုံး မကြားရသေးပါ}}",
+    "readAloudTriesLeft": "{count, plural, =1{ကြိုးစားခွင့် ၁ ကြိမ် ကျန်ပါသေးသည်} other{ကြိုးစားခွင့် {count} ကြိမ် ကျန်ပါသေးသည်}}",
+    "readAloudHeardTranscript": "ကြားရသည်- {transcript}",
+    "readAloudTranscribeFailed": "သင်၏ မှတ်တမ်းတင်ထားသည်ကို စာသားအဖြစ် ပြောင်းလဲ၍ မရပါ။ သင်၏ ချိတ်ဆက်မှုကို စစ်ဆေးပြီး ထပ်မံကြိုးစားပါ။",
+    "readAloudMicUnavailable": "မိုက်ခရိုဖုန်း မရနိုင်ပါ၊ ထို့ကြောင့် ဤစကားလုံးသည် အဓိပ္ပာယ်လေ့ကျင့်ခန်း ဖြစ်ပါသည်။",
+    "readAloudExample": "ဥပမာ",
+    "readAloudStartOver": "ပြန်စပါ",
+    "readAloudStarting": "မိုက်ခရိုဖုန်း ပြင်ဆင်နေသည်…",
+    "readAloudListening": "နားထောင်နေသည်…",
+    "readAloudTake": "{number} ကြိမ်မြောက်"
 }

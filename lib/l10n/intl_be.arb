@@ -3528,7 +3528,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-23 10:46:55.797068",
+    "@@last_modified": "2026-10-21 10:12:44.259151",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10033,5 +10033,24 @@
     "otherCoursesSessions": "Іншыя курсы ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, атрымана {xp} XP",
-    "currentMission": "Бягучая місія"
+    "currentMission": "Бягучая місія",
+    "constructUseCorRADesc": "Прачытана ўслых і пачута",
+    "constructUseIncRADesc": "Прачытана ўслых, не пачута",
+    "hearItFirstToolName": "Спачатку паслухайце",
+    "hearItFirstDescription": "У практыцы чытання ўслых прайграйце сказ, перш чым запісваць.",
+    "readAloudInstruction": "Націсніце мікрафон і прачытайце сказ услых",
+    "readAloudRecord": "Запісаць",
+    "readAloudMicLabel": "{count, plural, =1{Запіс, 1 слова яшчэ не пачута} other{Запіс, {count} слоў яшчэ не пачута}}",
+    "readAloudStop": "Спыніць запіс",
+    "readAloudHeardAll": "Кожнае слова пачута!",
+    "readAloudNotHeard": "{count, plural, =1{1 слова не пачута} other{{count} слоў не пачута}}",
+    "readAloudTriesLeft": "{count, plural, =1{Засталася 1 спроба} other{Засталося {count} спроб}}",
+    "readAloudHeardTranscript": "Пачута: {transcript}",
+    "readAloudTranscribeFailed": "Не атрымалася расшыфраваць ваш запіс. Праверце злучэнне і паспрабуйце яшчэ раз.",
+    "readAloudMicUnavailable": "Мікрафон недаступны, таму гэтае слова з'яўляецца практыкаваннем на значэнне.",
+    "readAloudExample": "Прыклад",
+    "readAloudStartOver": "Пачаць спачатку",
+    "readAloudStarting": "Падрыхтоўка мікрафона…",
+    "readAloudListening": "Слухаю…",
+    "readAloudTake": "Спроба {number}"
 }

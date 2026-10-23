@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 10:47:04.450674",
+    "@@last_modified": "2026-10-21 10:13:05.664727",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7326,5 +7326,24 @@
     "otherCoursesSessions": "Các khóa học khác ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, kiếm được {xp} XP",
-    "currentMission": "Nhiệm vụ hiện tại"
+    "currentMission": "Nhiệm vụ hiện tại",
+    "constructUseCorRADesc": "Đọc to và đã nghe",
+    "constructUseIncRADesc": "Đọc to, chưa nghe",
+    "hearItFirstToolName": "Nghe trước",
+    "hearItFirstDescription": "Trong phần luyện đọc to, hãy phát câu trước khi bạn ghi âm.",
+    "readAloudInstruction": "Chạm vào micrô và đọc to câu",
+    "readAloudRecord": "Ghi âm",
+    "readAloudMicLabel": "{count, plural, =1{Ghi âm, 1 từ chưa nghe} other{Ghi âm, {count} từ chưa nghe}}",
+    "readAloudStop": "Dừng ghi âm",
+    "readAloudHeardAll": "Đã nghe tất cả các từ!",
+    "readAloudNotHeard": "{count, plural, =1{1 từ chưa nghe} other{{count} từ chưa nghe}}",
+    "readAloudTriesLeft": "{count, plural, =1{Còn 1 lượt thử} other{Còn {count} lượt thử}}",
+    "readAloudHeardTranscript": "Đã nghe: {transcript}",
+    "readAloudTranscribeFailed": "Không thể phiên âm bản ghi âm của bạn. Hãy kiểm tra kết nối và thử lại.",
+    "readAloudMicUnavailable": "Không có micrô, vì vậy từ này sẽ là một bài tập về nghĩa.",
+    "readAloudExample": "Ví dụ",
+    "readAloudStartOver": "Bắt đầu lại",
+    "readAloudStarting": "Đang chuẩn bị micrô…",
+    "readAloudListening": "Đang nghe…",
+    "readAloudTake": "Lượt {number}"
 }

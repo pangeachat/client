@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-23 10:47:00.300900",
+    "@@last_modified": "2026-10-21 10:12:52.897113",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Ɔda kos dɛn ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP gɛt",
-    "currentMission": "Kɔrɛnt mishɔn"
+    "currentMission": "Kɔrɛnt mishɔn",
+    "constructUseCorRADesc": "Rɛd am ɛn dɛn yɛri am",
+    "constructUseIncRADesc": "Rɛd am, bɔt nɔ yɛri am",
+    "hearItFirstToolName": "Yɛri am fɔs",
+    "hearItFirstDescription": "Insay rid-alawd praktis, ple di sɛntɛns bifo yu rikɔd.",
+    "readAloudInstruction": "Tap di mayk ɛn rid di sɛntɛns lawd",
+    "readAloudRecord": "Rikɔd",
+    "readAloudMicLabel": "{count, plural, =1{Rikɔd, 1 wɔd nɔ yɛt yɛri} other{Rikɔd, {count} wɔd dɛn nɔ yɛt yɛri}}",
+    "readAloudStop": "Stɔp rikɔdin",
+    "readAloudHeardAll": "Ɛvri wɔd dɛn yɛri!",
+    "readAloudNotHeard": "{count, plural, =1{1 wɔd nɔ yɛri} other{{count} wɔd dɛn nɔ yɛri}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 tray lɛf} other{{count} tray dɛn lɛf}}",
+    "readAloudHeardTranscript": "Yɛri: {transcript}",
+    "readAloudTranscribeFailed": "Nɔ ebul fɔ transkrayb yu rikɔdin. Chɛk yu kɔnɛkshɔn ɛn tray bak.",
+    "readAloudMicUnavailable": "Nɔ gɛt mayk, so dis wɔd na minin ɛksasayz insay.",
+    "readAloudExample": "Ɛgzampul",
+    "readAloudStartOver": "Bigin bak",
+    "readAloudStarting": "Di microphone de rɛdi…",
+    "readAloudListening": "De lisin…",
+    "readAloudTake": "Tek {number}"
 }

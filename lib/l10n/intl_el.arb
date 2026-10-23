@@ -3389,7 +3389,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-23 10:46:56.666369",
+    "@@last_modified": "2026-10-21 10:12:46.085218",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10891,5 +10891,24 @@
     "otherCoursesSessions": "Άλλα μαθήματα ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, κερδισμένα {xp} XP",
-    "currentMission": "Τρέχουσα αποστολή"
+    "currentMission": "Τρέχουσα αποστολή",
+    "constructUseCorRADesc": "Διαβάστηκε δυνατά και ακούστηκε",
+    "constructUseIncRADesc": "Διαβάστηκε δυνατά, δεν ακούστηκε",
+    "hearItFirstToolName": "Άκουσέ το πρώτα",
+    "hearItFirstDescription": "Στην εξάσκηση δυνατής ανάγνωσης, παίξε την πρόταση πριν ηχογραφήσεις.",
+    "readAloudInstruction": "Πάτησε το μικρόφωνο και διάβασε τη φράση δυνατά",
+    "readAloudRecord": "Εγγραφή",
+    "readAloudMicLabel": "{count, plural, =1{Εγγραφή, 1 λέξη δεν ακούστηκε ακόμα} other{Εγγραφή, {count} λέξεις δεν ακούστηκαν ακόμα}}",
+    "readAloudStop": "Διακοπή εγγραφής",
+    "readAloudHeardAll": "Όλες οι λέξεις ακούστηκαν!",
+    "readAloudNotHeard": "{count, plural, =1{1 λέξη δεν ακούστηκε} other{{count} λέξεις δεν ακούστηκαν}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 προσπάθεια απέμεινε} other{{count} προσπάθειες απέμειναν}}",
+    "readAloudHeardTranscript": "Ακούστηκε: {transcript}",
+    "readAloudTranscribeFailed": "Αδυναμία μεταγραφής της ηχογράφησής σας. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
+    "readAloudMicUnavailable": "Δεν υπάρχει διαθέσιμο μικρόφωνο, οπότε αυτή η λέξη είναι μια άσκηση σημασίας.",
+    "readAloudExample": "Παράδειγμα",
+    "readAloudStartOver": "Ξανά από την αρχή",
+    "readAloudStarting": "Ετοιμάζω το μικρόφωνο…",
+    "readAloudListening": "Ακούω…",
+    "readAloudTake": "Λήψη {number}"
 }

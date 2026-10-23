@@ -1317,7 +1317,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-23 10:47:03.752973",
+    "@@last_modified": "2026-10-21 10:13:05.075270",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10966,5 +10966,24 @@
     "otherCoursesSessions": "ఇతర కోర్సులు ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP సంపాదించారు",
-    "currentMission": "ప్రస్తుత మిషన్"
+    "currentMission": "ప్రస్తుత మిషన్",
+    "constructUseCorRADesc": "బిగ్గరగా చదివి వినిపించింది",
+    "constructUseIncRADesc": "బిగ్గరగా చదివారు, కానీ వినిపించలేదు",
+    "hearItFirstToolName": "ముందు వినండి",
+    "hearItFirstDescription": "బిగ్గరగా చదివే అభ్యాసంలో, మీరు రికార్డ్ చేసే ముందు వాక్యాన్ని ప్లే చేయండి.",
+    "readAloudInstruction": "మైక్‌ను నొక్కి, వాక్యాన్ని బిగ్గరగా చదవండి",
+    "readAloudRecord": "రికార్డ్ చేయండి",
+    "readAloudMicLabel": "{count, plural, =1{రికార్డ్ చేయండి, 1 పదం ఇంకా వినబడలేదు} other{రికార్డ్ చేయండి, {count} పదాలు ఇంకా వినబడలేదు}}",
+    "readAloudStop": "రికార్డింగ్ ఆపండి",
+    "readAloudHeardAll": "ప్రతి పదం వినబడింది!",
+    "readAloudNotHeard": "{count, plural, =1{1 పదం వినబడలేదు} other{{count} పదాలు వినబడలేదు}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 ప్రయత్నం మిగిలి ఉంది} other{{count} ప్రయత్నాలు మిగిలి ఉన్నాయి}}",
+    "readAloudHeardTranscript": "వినబడింది: {transcript}",
+    "readAloudTranscribeFailed": "మీ రికార్డింగ్‌ను ట్రాన్స్‌క్రైబ్ చేయలేకపోయాము. మీ కనెక్షన్‌ని తనిఖీ చేసి, మళ్లీ ప్రయత్నించండి.",
+    "readAloudMicUnavailable": "మైక్రోఫోన్ అందుబాటులో లేదు, కాబట్టి ఈ పదం బదులుగా అర్థం చేసుకునే అభ్యాసం.",
+    "readAloudExample": "ఉదాహరణ",
+    "readAloudStartOver": "మళ్ళీ మొదలుపెట్టు",
+    "readAloudStarting": "మైక్రోఫోన్‌ను సిద్ధం చేస్తున్నాము…",
+    "readAloudListening": "వినడం…",
+    "readAloudTake": "టేక్ {number}"
 }

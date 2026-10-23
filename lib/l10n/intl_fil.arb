@@ -2073,7 +2073,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-23 10:46:57.205679",
+    "@@last_modified": "2026-10-21 10:13:10.361922",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10876,5 +10876,24 @@
     "otherCoursesSessions": "Iba pang kurso ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP nakuha",
-    "currentMission": "Kasalukuyang misyon"
+    "currentMission": "Kasalukuyang misyon",
+    "constructUseCorRADesc": "Binasa nang malakas at narinig",
+    "constructUseIncRADesc": "Binasa nang malakas, hindi narinig",
+    "hearItFirstToolName": "Pakinggan muna",
+    "hearItFirstDescription": "Sa pagsasanay sa pagbasa nang malakas, i-play ang pangungusap bago ka mag-record.",
+    "readAloudInstruction": "I-tap ang mic at basahin nang malakas ang pangungusap",
+    "readAloudRecord": "I-record",
+    "readAloudMicLabel": "{count, plural, =1{I-record, 1 salita ang hindi pa naririnig} other{I-record, {count} salita ang hindi pa naririnig}}",
+    "readAloudStop": "Ihinto ang pagre-record",
+    "readAloudHeardAll": "Narinig ang bawat salita!",
+    "readAloudNotHeard": "{count, plural, =1{1 salita ang hindi narinig} other{{count} salita ang hindi narinig}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 subok na lang} other{{count} subok na lang}}",
+    "readAloudHeardTranscript": "Narinig: {transcript}",
+    "readAloudTranscribeFailed": "Hindi ma-transcribe ang iyong recording. Tingnan ang iyong koneksyon at subukang muli.",
+    "readAloudMicUnavailable": "Walang available na mikropono, kaya ang salitang ito ay isang pagsasanay sa kahulugan sa halip.",
+    "readAloudExample": "Halimbawa",
+    "readAloudStartOver": "Magsimula muli",
+    "readAloudStarting": "Inihahanda ang mikropono…",
+    "readAloudListening": "Nakikinig…",
+    "readAloudTake": "Kumuha ng {number}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-23 10:47:00.431098",
+    "@@last_modified": "2026-10-21 10:12:53.982825",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Alii cursus ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP meruit",
-    "currentMission": "Missio praesens"
+    "currentMission": "Missio praesens",
+    "constructUseCorRADesc": "Clare et audita",
+    "constructUseIncRADesc": "Clare, non audita",
+    "hearItFirstToolName": "Audi primum",
+    "hearItFirstDescription": "In exercitatione clarae lectionis, sententiam audi antequam memoras.",
+    "readAloudInstruction": "Tange microphonum et sententiam clare lege",
+    "readAloudRecord": "Memora",
+    "readAloudMicLabel": "{count, plural, =1{Memora, 1 verbum nondum auditum} other{Memora, {count} verba nondum audita}}",
+    "readAloudStop": "Siste memorare",
+    "readAloudHeardAll": "Omnia verba audita!",
+    "readAloudNotHeard": "{count, plural, =1{1 verbum non auditum} other{{count} verba non audita}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 conatus superest} other{{count} conatus supersunt}}",
+    "readAloudHeardTranscript": "Auditum: {transcript}",
+    "readAloudTranscribeFailed": "Non potuit memoratio tua transcribi. Conexum tuum inspice et iterum conare.",
+    "readAloudMicUnavailable": "Nullum microphonum praesto est, ergo hoc verbum est exercitatio significationis proinde.",
+    "readAloudExample": "Exemplum",
+    "readAloudStartOver": "Iterum incipe",
+    "readAloudStarting": "Microphonem paro…",
+    "readAloudListening": "Audio…",
+    "readAloudTake": "Sume {number}"
 }

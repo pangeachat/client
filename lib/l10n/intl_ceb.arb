@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-23 10:46:56.411613",
+    "@@last_modified": "2026-10-21 10:12:45.272877",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Ubang mga kurso ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP nakuha",
-    "currentMission": "Karon nga misyon"
+    "currentMission": "Karon nga misyon",
+    "constructUseCorRADesc": "Gibasa og nadungog",
+    "constructUseIncRADesc": "Gibasa, wala madungog",
+    "hearItFirstToolName": "Paminaw una",
+    "hearItFirstDescription": "Sa pagbasa og kusog nga praktis, ipatugtog ang sentence sa dili pa ka magrekord.",
+    "readAloudInstruction": "I-tap ang mic ug basaha og kusog ang sentence",
+    "readAloudRecord": "Rekord",
+    "readAloudMicLabel": "{count, plural, =1{Rekord, 1 ka pulong wala pa madungog} other{Rekord, {count} ka pulong wala pa madungog}}",
+    "readAloudStop": "Hunonga ang pagrekord",
+    "readAloudHeardAll": "Ang matag pulong nadungog!",
+    "readAloudNotHeard": "{count, plural, =1{1 ka pulong wala madungog} other{{count} ka pulong wala madungog}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 ka pagsulay nahabilin} other{{count} ka pagsulay nahabilin}}",
+    "readAloudHeardTranscript": "Nadungog: {transcript}",
+    "readAloudTranscribeFailed": "Dili ma-transcribe ang imong recording. Susiha ang imong koneksyon ug sulayi pag-usab.",
+    "readAloudMicUnavailable": "Walay mikropono nga magamit, busa kini nga pulong usa ka ehersisyo sa kahulogan hinuon.",
+    "readAloudExample": "Pananglitan",
+    "readAloudStartOver": "Sugdi pag-usab",
+    "readAloudStarting": "Giandam ang mikropono…",
+    "readAloudListening": "Naminaw…",
+    "readAloudTake": "Kuha {number}"
 }

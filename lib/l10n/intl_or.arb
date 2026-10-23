@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-10-23 10:47:02.402262",
+    "@@last_modified": "2026-10-21 10:12:58.698604",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "ଅନ୍ୟାନ୍ୟ ପାଠ୍ୟକ୍ରମ ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP ଅର୍ଜନ କରାଯାଇଛି",
-    "currentMission": "ବର୍ତ୍ତମାନର ମିଶନ୍"
+    "currentMission": "ବର୍ତ୍ତମାନର ମିଶନ୍",
+    "constructUseCorRADesc": "ପଢ଼ାଗଲା ଓ ଶୁଣାଗଲା",
+    "constructUseIncRADesc": "ପଢ଼ାଗଲା, ଶୁଣାଗଲା ନାହିଁ",
+    "hearItFirstToolName": "ପ୍ରଥମେ ଶୁଣନ୍ତୁ",
+    "hearItFirstDescription": "ପାଟି କରି ପଢ଼ିବା ଅଭ୍ୟାସରେ, ରେକର୍ଡ କରିବା ପୂର୍ବରୁ ବାକ୍ୟଟିକୁ ବଜାନ୍ତୁ।",
+    "readAloudInstruction": "ମାଇକ୍ ଉପରେ ଟ୍ୟାପ୍ କରନ୍ତୁ ଓ ବାକ୍ୟଟିକୁ ପାଟି କରି ପଢ଼ନ୍ତୁ",
+    "readAloudRecord": "ରେକର୍ଡ କରନ୍ତୁ",
+    "readAloudMicLabel": "{count, plural, =1{ରେକର୍ଡ କରନ୍ତୁ, 1ଟି ଶବ୍ଦ ଏପର୍ଯ୍ୟନ୍ତ ଶୁଣାଯାଇ ନାହିଁ} other{ରେକର୍ଡ କରନ୍ତୁ, {count}ଟି ଶବ୍ଦ ଏପର୍ଯ୍ୟନ୍ତ ଶୁଣାଯାଇ ନାହିଁ}}",
+    "readAloudStop": "ରେକର୍ଡିଂ ବନ୍ଦ କରନ୍ତୁ",
+    "readAloudHeardAll": "ପ୍ରତ୍ୟେକ ଶବ୍ଦ ଶୁଣାଗଲା!",
+    "readAloudNotHeard": "{count, plural, =1{1ଟି ଶବ୍ଦ ଶୁଣାଗଲା ନାହିଁ} other{{count}ଟି ଶବ୍ଦ ଶୁଣାଗଲା ନାହିଁ}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 ଥର ବାକି ଅଛି} other{{count} ଥର ବାକି ଅଛି}}",
+    "readAloudHeardTranscript": "ଶୁଣାଗଲା: {transcript}",
+    "readAloudTranscribeFailed": "ଆପଣଙ୍କ ରେକର୍ଡିଂକୁ ଟ୍ରାନ୍ସକ୍ରାଇବ୍ କରିହେଲା ନାହିଁ। ଆପଣଙ୍କ କନେକ୍ସନ୍ ଯାଞ୍ଚ କରନ୍ତୁ ଓ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।",
+    "readAloudMicUnavailable": "କୌଣସି ମାଇକ୍ରୋଫୋନ୍ ଉପଲବ୍ଧ ନାହିଁ, ତେଣୁ ଏହି ଶବ୍ଦଟି ଏକ ଅର୍ଥ ବ୍ୟାୟାମ ଅଟେ।",
+    "readAloudExample": "ଉଦାହରଣ",
+    "readAloudStartOver": "ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
+    "readAloudStarting": "ମାଇକ୍ରୋଫୋନ୍ ପ୍ରସ୍ତୁତ ହେଉଛି…",
+    "readAloudListening": "ଶୁଣୁଛି…",
+    "readAloudTake": "ନିଅନ୍ତୁ {number}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-23 10:46:57.342664",
+    "@@last_modified": "2026-10-21 10:12:49.798682",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10322,5 +10322,24 @@
     "otherCoursesSessions": "دورات أخرى ({num})",
     "activityXpStamp": "{xp} نقطة خبرة",
     "activityCompletedWithXp": "{completed}، تم ربح {xp} نقطة خبرة",
-    "currentMission": "المهمة الحالية"
+    "currentMission": "المهمة الحالية",
+    "constructUseCorRADesc": "قُرِئت بصوت عالٍ وسُمِعت",
+    "constructUseIncRADesc": "قُرِئت بصوت عالٍ ولم تُسمَع",
+    "hearItFirstToolName": "اسمعها أولاً",
+    "hearItFirstDescription": "في تدريب القراءة بصوت عالٍ، شغّل الجملة قبل أن تسجل.",
+    "readAloudInstruction": "اضغط على الميكروفون واقرأ الجملة بصوت عالٍ",
+    "readAloudRecord": "تسجيل",
+    "readAloudMicLabel": "{count, plural, =1{سجل، كلمة واحدة لم تُسمع بعد} other{سجل، {count} كلمات لم تُسمع بعد}}",
+    "readAloudStop": "إيقاف التسجيل",
+    "readAloudHeardAll": "سُمِعت كل الكلمات!",
+    "readAloudNotHeard": "{count, plural, =1{كلمة واحدة لم تُسمع} other{{count} كلمات لم تُسمع}}",
+    "readAloudTriesLeft": "{count, plural, =1{محاولة واحدة متبقية} other{{count} محاولات متبقية}}",
+    "readAloudHeardTranscript": "سُمِع: {transcript}",
+    "readAloudTranscribeFailed": "تعذر نسخ تسجيلك. تحقق من اتصالك وحاول مرة أخرى.",
+    "readAloudMicUnavailable": "لا يتوفر ميكروفون، لذا فإن هذه الكلمة هي تمرين معنى بدلاً من ذلك.",
+    "readAloudExample": "مثال",
+    "readAloudStartOver": "البدء من جديد",
+    "readAloudStarting": "جارٍ تجهيز الميكروفون…",
+    "readAloudListening": "جارٍ الاستماع…",
+    "readAloudTake": "خذ {number}"
 }

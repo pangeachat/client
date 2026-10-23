@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-23 10:47:04.343479",
+    "@@last_modified": "2026-10-21 10:13:02.744339",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Курсҳои дигар ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP ба даст оварда шуд",
-    "currentMission": "Рисолати ҷорӣ"
+    "currentMission": "Рисолати ҷорӣ",
+    "constructUseCorRADesc": "Баланд хонда шуд ва шунида шуд",
+    "constructUseIncRADesc": "Баланд хонда шуд, нашунида шуд",
+    "hearItFirstToolName": "Аввал онро бишнавед",
+    "hearItFirstDescription": "Дар машқи баландхонӣ, пеш аз сабт кардан ҷумларо навозед.",
+    "readAloudInstruction": "Микрофонро пахш кунед ва ҷумларо баланд хонед",
+    "readAloudRecord": "Сабт кунед",
+    "readAloudMicLabel": "{count, plural, =1{Сабт кунед, 1 калима ҳанӯз нашунида} other{Сабт кунед, {count} калима ҳанӯз нашунида}}",
+    "readAloudStop": "Сабтро қатъ кунед",
+    "readAloudHeardAll": "Ҳар як калима шунида шуд!",
+    "readAloudNotHeard": "{count, plural, =1{1 калима нашунида} other{{count} калима нашунида}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 кӯшиш монд} other{{count} кӯшиш монд}}",
+    "readAloudHeardTranscript": "Шунида шуд: {transcript}",
+    "readAloudTranscribeFailed": "Сабти шуморо транскрипт кардан ғайриимкон аст. Пайвасти худро тафтиш кунед ва дубора кӯшиш кунед.",
+    "readAloudMicUnavailable": "Микрофон дастрас нест, аз ин рӯ ин калима ба ҷои он машқи маъноӣ мебошад.",
+    "readAloudExample": "Намуна",
+    "readAloudStartOver": "Аз нав оғоз кунед",
+    "readAloudStarting": "Микрофонро омода мекунад…",
+    "readAloudListening": "Гӯш мекунад…",
+    "readAloudTake": "Гирифтан {number}"
 }

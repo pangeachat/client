@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-23 10:46:58.880613",
+    "@@last_modified": "2026-10-21 10:12:49.433666",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Lwm chav kawm ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, tau {xp} XP",
-    "currentMission": "Txoj haujlwm tam sim no"
+    "currentMission": "Txoj haujlwm tam sim no",
+    "constructUseCorRADesc": "Nyeem nrov nrov thiab hnov",
+    "constructUseIncRADesc": "Nyeem nrov nrov, tsis hnov",
+    "hearItFirstToolName": "Hnov ua ntej",
+    "hearItFirstDescription": "Hauv kev xyaum nyeem nrov nrov, ua si kab lus ua ntej koj kaw.",
+    "readAloudInstruction": "Coj lub mic thiab nyeem kab lus nrov nrov",
+    "readAloudRecord": "Kaw",
+    "readAloudMicLabel": "{count, plural, =1{Kaw, 1 lo lus tseem tsis tau hnov} other{Kaw, {count} lo lus tseem tsis tau hnov}}",
+    "readAloudStop": "Tso tseg kev kaw",
+    "readAloudHeardAll": "Hnov txhua lo lus!",
+    "readAloudNotHeard": "{count, plural, =1{1 lo lus tsis hnov} other{{count} lo lus tsis hnov}}",
+    "readAloudTriesLeft": "{count, plural, =1{Tshuav 1 zaug} other{Tshuav {count} zaug}}",
+    "readAloudHeardTranscript": "Hnov: {transcript}",
+    "readAloudTranscribeFailed": "Tsis tuaj yeem sau koj cov lus kaw. Kuaj xyuas koj qhov kev sib txuas thiab sim dua.",
+    "readAloudMicUnavailable": "Tsis muaj microphone, yog li lo lus no yog kev tawm dag zog txhais lus es tsis yog.",
+    "readAloudExample": "Piv txwv",
+    "readAloudStartOver": "Pib dua",
+    "readAloudStarting": "Npaj lub microphone…",
+    "readAloudListening": "Mloog…",
+    "readAloudTake": "Siv {number}"
 }

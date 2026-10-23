@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-23 10:46:55.776383",
+    "@@last_modified": "2026-10-21 10:12:44.236962",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Digər kurslar ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP qazanıldı",
-    "currentMission": "Cari missiya"
+    "currentMission": "Cari missiya",
+    "constructUseCorRADesc": "Səsləndirildi və eşidildi",
+    "constructUseIncRADesc": "Səsləndirildi, eşidilmədi",
+    "hearItFirstToolName": "Əvvəlcə dinlə",
+    "hearItFirstDescription": "Səsləndirmə təcrübəsində, qeyd etməzdən əvvəl cümləni səsləndirin.",
+    "readAloudInstruction": "Mikrofona toxunun və cümləni ucadan oxuyun",
+    "readAloudRecord": "Qeyd et",
+    "readAloudMicLabel": "{count, plural, =1{Qeyd et, 1 söz hələ eşidilməyib} other{Qeyd et, {count} söz hələ eşidilməyib}}",
+    "readAloudStop": "Qeydi dayandır",
+    "readAloudHeardAll": "Hər söz eşidildi!",
+    "readAloudNotHeard": "{count, plural, =1{1 söz eşidilmədi} other{{count} söz eşidilmədi}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 cəhd qalıb} other{{count} cəhd qalıb}}",
+    "readAloudHeardTranscript": "Eşidildi: {transcript}",
+    "readAloudTranscribeFailed": "Qeydiniz transkripsiya edilə bilmədi. Bağlantınızı yoxlayın və yenidən cəhd edin.",
+    "readAloudMicUnavailable": "Mikrofon mövcud deyil, buna görə bu söz əvəzinə məna məşqi olacaq.",
+    "readAloudExample": "Nümunə",
+    "readAloudStartOver": "Yenidən başla",
+    "readAloudStarting": "Mikrofon hazırlanır…",
+    "readAloudListening": "Dinləyirəm…",
+    "readAloudTake": "Tapşırıq {number}"
 }

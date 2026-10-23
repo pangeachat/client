@@ -3082,7 +3082,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-10-23 10:46:58.477597",
+    "@@last_modified": "2026-10-21 10:12:48.868271",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10648,5 +10648,24 @@
     "otherCoursesSessions": "अन्य कोर्स ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP अर्जित किए",
-    "currentMission": "वर्तमान मिशन"
+    "currentMission": "वर्तमान मिशन",
+    "constructUseCorRADesc": "ज़ोर से पढ़ा और सुना गया",
+    "constructUseIncRADesc": "ज़ोर से पढ़ा, सुना नहीं गया",
+    "hearItFirstToolName": "पहले सुनें",
+    "hearItFirstDescription": "ज़ोर से पढ़ने के अभ्यास में, रिकॉर्ड करने से पहले वाक्य चलाएँ।",
+    "readAloudInstruction": "माइक पर टैप करें और वाक्य ज़ोर से पढ़ें",
+    "readAloudRecord": "रिकॉर्ड करें",
+    "readAloudMicLabel": "{count, plural, =1{रिकॉर्ड करें, 1 शब्द अभी तक नहीं सुना गया} other{रिकॉर्ड करें, {count} शब्द अभी तक नहीं सुने गए}}",
+    "readAloudStop": "रिकॉर्डिंग बंद करें",
+    "readAloudHeardAll": "हर शब्द सुना गया!",
+    "readAloudNotHeard": "{count, plural, =1{1 शब्द नहीं सुना गया} other{{count} शब्द नहीं सुने गए}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 प्रयास बाकी} other{{count} प्रयास बाकी}}",
+    "readAloudHeardTranscript": "सुना गया: {transcript}",
+    "readAloudTranscribeFailed": "आपकी रिकॉर्डिंग को ट्रांसक्राइब नहीं किया जा सका। अपना कनेक्शन जाँचें और फिर से कोशिश करें।",
+    "readAloudMicUnavailable": "कोई माइक्रोफ़ोन उपलब्ध नहीं है, इसलिए यह शब्द अर्थ का अभ्यास है।",
+    "readAloudExample": "उदाहरण",
+    "readAloudStartOver": "फिर से शुरू करें",
+    "readAloudStarting": "माइक्रोफ़ोन तैयार हो रहा है…",
+    "readAloudListening": "सुन रहा है…",
+    "readAloudTake": "टेक {number}"
 }

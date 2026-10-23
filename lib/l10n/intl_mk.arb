@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-23 10:47:01.257445",
+    "@@last_modified": "2026-10-21 10:12:55.606458",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Други курсеви ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, освоени {xp} XP",
-    "currentMission": "Тековна мисија"
+    "currentMission": "Тековна мисија",
+    "constructUseCorRADesc": "Прочитано на глас и слушнато",
+    "constructUseIncRADesc": "Прочитано на глас, не е слушнато",
+    "hearItFirstToolName": "Слушни го прво",
+    "hearItFirstDescription": "Во вежбањето читање на глас, пушти ја реченицата пред да снимиш.",
+    "readAloudInstruction": "Допрете го микрофонот и прочитајте ја реченицата на глас",
+    "readAloudRecord": "Сними",
+    "readAloudMicLabel": "{count, plural, =1{Сними, 1 збор сè уште не е слушнат} other{Сними, {count} зборови сè уште не се слушнати}}",
+    "readAloudStop": "Запри го снимањето",
+    "readAloudHeardAll": "Секој збор е слушнат!",
+    "readAloudNotHeard": "{count, plural, =1{1 збор не е слушнат} other{{count} зборови не се слушнати}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 обид преостанува} other{{count} обиди преостануваат}}",
+    "readAloudHeardTranscript": "Слушнато: {transcript}",
+    "readAloudTranscribeFailed": "Не можевме да го транскрибираме вашето снимање. Проверете ја врската и обидете се повторно.",
+    "readAloudMicUnavailable": "Нема достапен микрофон, па овој збор е вежба за значење наместо тоа.",
+    "readAloudExample": "Пример",
+    "readAloudStartOver": "Почни одново",
+    "readAloudStarting": "Се подготвува микрофонот…",
+    "readAloudListening": "Се слуша…",
+    "readAloudTake": "Преземи {number}"
 }

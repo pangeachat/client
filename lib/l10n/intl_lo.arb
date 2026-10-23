@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-23 10:47:00.636609",
+    "@@last_modified": "2026-10-21 10:12:54.547915",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "ຫຼັກສູດອື່ນໆ ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, ໄດ້ຮັບ {xp} XP",
-    "currentMission": "ພາລະກິດປັດຈຸບັນ"
+    "currentMission": "ພາລະກິດປັດຈຸບັນ",
+    "constructUseCorRADesc": "ອ່ານອອກສຽງ ແລະ ໄດ້ຍິນ",
+    "constructUseIncRADesc": "ອ່ານອອກສຽງ, ບໍ່ໄດ້ຍິນ",
+    "hearItFirstToolName": "ຟັງກ່ອນ",
+    "hearItFirstDescription": "ໃນການຝຶກອ່ານອອກສຽງ, ໃຫ້ຫຼິ້ນປະໂຫຍກກ່ອນທີ່ທ່ານຈະບັນທຶກ.",
+    "readAloudInstruction": "ແຕະໄມໂຄຣໂຟນ ແລະ ອ່ານປະໂຫຍກອອກສຽງ",
+    "readAloudRecord": "ບັນທຶກ",
+    "readAloudMicLabel": "{count, plural, =1{ບັນທຶກ, 1 ຄຳທີ່ຍັງບໍ່ໄດ້ຍິນ} other{ບັນທຶກ, {count} ຄຳທີ່ຍັງບໍ່ໄດ້ຍິນ}}",
+    "readAloudStop": "ຢຸດການບັນທຶກ",
+    "readAloudHeardAll": "ໄດ້ຍິນທຸກຄຳແລ້ວ!",
+    "readAloudNotHeard": "{count, plural, =1{1 ຄຳບໍ່ໄດ້ຍິນ} other{{count} ຄຳບໍ່ໄດ້ຍິນ}}",
+    "readAloudTriesLeft": "{count, plural, =1{ເຫຼືອ 1 ຄັ້ງ} other{ເຫຼືອ {count} ຄັ້ງ}}",
+    "readAloudHeardTranscript": "ໄດ້ຍິນ: {transcript}",
+    "readAloudTranscribeFailed": "ບໍ່ສາມາດຖອດສຽງບັນທຶກຂອງທ່ານໄດ້. ກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ ແລະ ລອງໃໝ່ອີກຄັ້ງ.",
+    "readAloudMicUnavailable": "ບໍ່ມີໄມໂຄຣໂຟນ, ສະນັ້ນຄຳນີ້ຈຶ່ງເປັນການຝຶກຄວາມໝາຍແທນ.",
+    "readAloudExample": "ຕົວຢ່າງ",
+    "readAloudStartOver": "ເລີ່ມຕົ້ນໃໝ່",
+    "readAloudStarting": "ກຳລັງກຽມໄມໂຄຣໂຟນ…",
+    "readAloudListening": "ກຳລັງຟັງ…",
+    "readAloudTake": "ຮອບທີ {number}"
 }

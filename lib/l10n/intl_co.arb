@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-23 10:46:56.966073",
+    "@@last_modified": "2026-10-21 10:12:52.071090",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Altri corsi ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP guadagnati",
-    "currentMission": "Missione attuale"
+    "currentMission": "Missione attuale",
+    "constructUseCorRADesc": "Lettu à voce alta è intesu",
+    "constructUseIncRADesc": "Lettu à voce alta, micca intesu",
+    "hearItFirstToolName": "Ascultalu prima",
+    "hearItFirstDescription": "In a pratica di lettura à voce alta, riproduce a frase prima di arregistrà.",
+    "readAloudInstruction": "Toccate u microfonu è leghjite a frase à voce alta",
+    "readAloudRecord": "Arregistrà",
+    "readAloudMicLabel": "{count, plural, =1{Arregistrà, 1 parolla micca ancu intesa} other{Arregistrà, {count} parolle micca ancu intese}}",
+    "readAloudStop": "Ferma l'arregistramentu",
+    "readAloudHeardAll": "Ogni parolla intesa!",
+    "readAloudNotHeard": "{count, plural, =1{1 parolla micca intesa} other{{count} parolle micca intese}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 tentativu restante} other{{count} tentativi restanti}}",
+    "readAloudHeardTranscript": "Intesu: {transcript}",
+    "readAloudTranscribeFailed": "Ùn hè micca pussibule di trascrive u vostru arregistramentu. Verificate a vostra cunnessione è riprovate.",
+    "readAloudMicUnavailable": "Nisun microfonu hè dispunibule, cusì sta parolla hè un eserciziu di significatu invece.",
+    "readAloudExample": "Esempiu",
+    "readAloudStartOver": "Ricummincià",
+    "readAloudStarting": "Preparazione di u microfonu…",
+    "readAloudListening": "Ascultendu…",
+    "readAloudTake": "Piglia {number}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-23 10:46:59.257534",
+    "@@last_modified": "2026-10-21 10:12:51.164573",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Nkuzi ndị ọzọ ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP enwetara",
-    "currentMission": "Ozi dị ugbu a"
+    "currentMission": "Ozi dị ugbu a",
+    "constructUseCorRADesc": "Gụọ n'olu dara ụda ma nụ ya",
+    "constructUseIncRADesc": "Gụọ n'olu dara ụda, anụghị ya",
+    "hearItFirstToolName": "Nụ ya na mbụ",
+    "hearItFirstDescription": "Na omume ịgụ ihe n'olu dara ụda, kpọọ ahịrịokwu ahụ tupu ịdekọọ.",
+    "readAloudInstruction": "Pịa igwe okwu wee gụọ ahịrịokwu ahụ n'olu dara ụda",
+    "readAloudRecord": "Dekọọ",
+    "readAloudMicLabel": "{count, plural, =1{Dekọọ, otu okwu anụbeghị} other{Dekọọ, {count} okwu anụbeghị}}",
+    "readAloudStop": "Kwụsị idekọ",
+    "readAloudHeardAll": "Anụla okwu niile!",
+    "readAloudNotHeard": "{count, plural, =1{Otu okwu anụghị} other{{count} okwu anụghị}}",
+    "readAloudTriesLeft": "{count, plural, =1{Otu nnwale fọdụrụ} other{{count} nnwale fọdụrụ}}",
+    "readAloudHeardTranscript": "Anụla: {transcript}",
+    "readAloudTranscribeFailed": "Enweghị ike idekọ ihe ị dekọrọ. Lelee njikọ gị wee nwaa ọzọ.",
+    "readAloudMicUnavailable": "Enweghị igwe okwu dị, yabụ okwu a bụ mmega ahụ pụtara ihe kama.",
+    "readAloudExample": "Ihe atụ",
+    "readAloudStartOver": "Bido ọzọ",
+    "readAloudStarting": "Na-edozi igwe okwu…",
+    "readAloudListening": "Na-ege ntị…",
+    "readAloudTake": "Were {number}"
 }

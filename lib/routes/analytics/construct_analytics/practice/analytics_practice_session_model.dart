@@ -12,7 +12,14 @@ import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_targe
 class ExampleMessageInfo {
   final List<InlineSpan> exampleMessage;
 
-  const ExampleMessageInfo({required this.exampleMessage});
+  /// The message offset of the first character of the spans' text (the
+  /// ellipsis markers aside), so a token's offset maps to an index into that
+  /// text as `offset - textOffset`. The slice starts at the message start
+  /// when nothing was trimmed before the target, whatever the first token's
+  /// offset is: a message may open with characters no token covers.
+  final int textOffset;
+
+  const ExampleMessageInfo({required this.exampleMessage, this.textOffset = 0});
 
   Map<String, dynamic> toJson() {
     final segments = <Map<String, dynamic>>[];
@@ -26,7 +33,7 @@ class ExampleMessageInfo {
       }
     }
 
-    return {'segments': segments};
+    return {'segments': segments, 'text_offset': textOffset};
   }
 
   factory ExampleMessageInfo.fromJson(Map<String, dynamic> json) {
@@ -45,7 +52,10 @@ class ExampleMessageInfo {
       );
     }
 
-    return ExampleMessageInfo(exampleMessage: spans);
+    return ExampleMessageInfo(
+      exampleMessage: spans,
+      textOffset: json['text_offset'] as int? ?? 0,
+    );
   }
 }
 
@@ -202,7 +212,7 @@ class AnalyticsPracticeSessionModel {
   /// Returns congratulations message based on performance
   String getCompletionMessage(BuildContext context) {
     final hasTimeBonus =
-        state.elapsedSeconds <= AnalyticsPracticeConstants.timeForBonus;
+        state.bonusClockSeconds <= AnalyticsPracticeConstants.timeForBonus;
     final hintsUsed = state.hintsUsed;
 
     final bool perfectAccuracy = state.accuracy == 100;
@@ -234,6 +244,13 @@ class AnalyticsPracticeSessionModel {
 
   void setElapsedSeconds(int seconds) =>
       state = state.copyWith(elapsedSeconds: seconds);
+
+  /// Time a read-aloud item was on screen. It stays on the displayed clock but
+  /// is taken off the speed bonus, because rushing a read defeats the point
+  /// (practice-exercises.instructions.md, "Scoring").
+  void addReadAloudSeconds(int seconds) => state = state.copyWith(
+    readAloudSeconds: state.readAloudSeconds + seconds,
+  );
 
   void finishSession() => state = state.copyWith(finished: true);
 
@@ -294,6 +311,9 @@ class AnalyticsPracticeSessionState {
   final int elapsedSeconds;
   final int skippedActivities;
 
+  /// Seconds spent on read-aloud items, excluded from the speed bonus.
+  final int readAloudSeconds;
+
   const AnalyticsPracticeSessionState({
     this.completedUses = const [],
     this.currentIndex = 0,
@@ -301,7 +321,12 @@ class AnalyticsPracticeSessionState {
     this.hintsUsed = 0,
     this.elapsedSeconds = 0,
     this.skippedActivities = 0,
+    this.readAloudSeconds = 0,
   });
+
+  /// The clock the speed bonus is judged on: elapsed time less the time
+  /// read-aloud items were on screen.
+  int get bonusClockSeconds => elapsedSeconds - readAloudSeconds;
 
   int get totalXpGained => completedUses.fold(0, (sum, use) => sum + use.xp);
 
@@ -315,7 +340,7 @@ class AnalyticsPracticeSessionState {
   bool get _giveAccuracyBonus => accuracy >= 100.0;
 
   bool get _giveTimeBonus =>
-      elapsedSeconds <= AnalyticsPracticeConstants.timeForBonus;
+      bonusClockSeconds <= AnalyticsPracticeConstants.timeForBonus;
 
   int get bonusXP => accuracyBonusXP + timeBonusXP;
 
@@ -355,6 +380,7 @@ class AnalyticsPracticeSessionState {
     int? hintsUsed,
     int? elapsedSeconds,
     int? skippedActivities,
+    int? readAloudSeconds,
   }) {
     return AnalyticsPracticeSessionState(
       completedUses: completedUses ?? this.completedUses,
@@ -363,6 +389,7 @@ class AnalyticsPracticeSessionState {
       hintsUsed: hintsUsed ?? this.hintsUsed,
       elapsedSeconds: elapsedSeconds ?? this.elapsedSeconds,
       skippedActivities: skippedActivities ?? this.skippedActivities,
+      readAloudSeconds: readAloudSeconds ?? this.readAloudSeconds,
     );
   }
 
@@ -374,6 +401,7 @@ class AnalyticsPracticeSessionState {
       'hintsUsed': hintsUsed,
       'elapsedSeconds': elapsedSeconds,
       'skippedActivities': skippedActivities,
+      'readAloudSeconds': readAloudSeconds,
     };
   }
 
@@ -390,6 +418,7 @@ class AnalyticsPracticeSessionState {
       hintsUsed: json['hintsUsed'] as int? ?? 0,
       elapsedSeconds: json['elapsedSeconds'] as int? ?? 0,
       skippedActivities: json['skippedActivities'] as int? ?? 0,
+      readAloudSeconds: json['readAloudSeconds'] as int? ?? 0,
     );
   }
 }

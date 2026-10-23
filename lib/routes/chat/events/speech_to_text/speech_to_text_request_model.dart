@@ -56,9 +56,11 @@ SpeechToTextRequestModel buildVoiceSttRequest({
   required String userL1,
   required String userL2,
   bool skipTokenize = false,
+  String? expectedText,
 }) => SpeechToTextRequestModel(
   audioContent: audioContent,
   skipTokenize: skipTokenize,
+  expectedText: expectedText,
   config: SpeechToTextAudioConfigModel(
     encoding: mimeTypeToAudioEncoding(mimeType),
     sampleRateHertz: 22050,
@@ -88,6 +90,16 @@ class SpeechToTextRequestModel extends BaseRequest {
   /// slot (see [storageKey]): the two responses differ in shape.
   final bool includeWordTimings;
 
+  /// The sentence the speaker was asked to say (read-aloud practice), sent as
+  /// the choreographer's `expected_text` recognition hint: each provider is
+  /// biased toward it (speech-to-text.instructions.md, Expected-Text Hint).
+  /// Blank is absent. Over [maxExpectedTextChars] the choreographer rejects
+  /// the request, so a caller drops the hint rather than send one that long.
+  /// Part of [storageKey]: a hinted transcript is not the unhinted one.
+  final String? expectedText;
+
+  static const int maxExpectedTextChars = 500;
+
   SpeechToTextRequestModel({
     required this.audioContent,
     required this.config,
@@ -95,7 +107,10 @@ class SpeechToTextRequestModel extends BaseRequest {
     this.mock,
     this.skipTokenize = false,
     this.includeWordTimings = false,
-  });
+    String? expectedText,
+  }) : expectedText = (expectedText?.trim().isEmpty ?? true)
+           ? null
+           : expectedText!.trim();
 
   /// A full sha256 digest of the audio content. The R0 key sampled only the
   /// length + first 10 bytes, which collide across different short recordings
@@ -108,7 +123,8 @@ class SpeechToTextRequestModel extends BaseRequest {
   @override
   String get storageKey =>
       '$_audioDigest|${jsonEncode(config.toJson())}'
-      '|$skipTokenize|$includeWordTimings';
+      '|$skipTokenize|$includeWordTimings'
+      '${expectedText == null ? '' : '|$expectedText'}';
 
   @override
   Map<String, dynamic> toJson() => {
@@ -123,6 +139,7 @@ class SpeechToTextRequestModel extends BaseRequest {
     // false. Still part of storageKey/==/hashCode so the cache never mixes
     // a with-timings response into a without-timings slot.
     if (includeWordTimings) "include_word_timings": true,
+    if (expectedText != null) "expected_text": expectedText,
     if (mock != null) ModelKey.mock: mock,
   };
 
@@ -134,7 +151,8 @@ class SpeechToTextRequestModel extends BaseRequest {
     return listEquals(audioContent, other.audioContent) &&
         config == other.config &&
         skipTokenize == other.skipTokenize &&
-        includeWordTimings == other.includeWordTimings;
+        includeWordTimings == other.includeWordTimings &&
+        expectedText == other.expectedText;
   }
 
   @override
@@ -143,6 +161,7 @@ class SpeechToTextRequestModel extends BaseRequest {
     config.hashCode,
     skipTokenize,
     includeWordTimings,
+    expectedText,
   );
 }
 

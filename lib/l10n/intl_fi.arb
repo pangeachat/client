@@ -3516,7 +3516,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-23 10:46:57.330178",
+    "@@last_modified": "2026-10-21 10:12:46.560353",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10056,5 +10056,24 @@
     "otherCoursesSessions": "Muut kurssit ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP ansaittu",
-    "currentMission": "Nykyinen tehtävä"
+    "currentMission": "Nykyinen tehtävä",
+    "constructUseCorRADesc": "Luettu ääneen ja kuultu",
+    "constructUseIncRADesc": "Luettu ääneen, ei kuultu",
+    "hearItFirstToolName": "Kuule ensin",
+    "hearItFirstDescription": "Toista lause ääneenlukuharjoituksessa ennen kuin nauhoitat.",
+    "readAloudInstruction": "Napauta mikrofonia ja lue lause ääneen",
+    "readAloudRecord": "Nauhoita",
+    "readAloudMicLabel": "{count, plural, =1{Nauhoita, 1 sanaa ei vielä kuultu} other{Nauhoita, {count} sanaa ei vielä kuultu}}",
+    "readAloudStop": "Lopeta nauhoitus",
+    "readAloudHeardAll": "Kaikki sanat kuultu!",
+    "readAloudNotHeard": "{count, plural, =1{1 sanaa ei kuultu} other{{count} sanaa ei kuultu}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 yritys jäljellä} other{{count} yritystä jäljellä}}",
+    "readAloudHeardTranscript": "Kuultu: {transcript}",
+    "readAloudTranscribeFailed": "Nauhoitustasi ei voitu litteroida. Tarkista yhteytesi ja yritä uudelleen.",
+    "readAloudMicUnavailable": "Mikrofonia ei ole saatavilla, joten tämä sana on sen sijaan merkitysharjoitus.",
+    "readAloudExample": "Esimerkki",
+    "readAloudStartOver": "Aloita alusta",
+    "readAloudStarting": "Valmistellaan mikrofonia…",
+    "readAloudListening": "Kuunnellaan…",
+    "readAloudTake": "Ota {number}"
 }

@@ -1,0 +1,224 @@
+import 'dart:async';
+import 'dart:typed_data';
+
+import 'package:flutter/material.dart';
+
+import 'package:flutter_test/flutter_test.dart';
+
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/lemmas/lemma.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/read_aloud_exercise_widget.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/read_aloud_recorder.dart';
+import 'package:fluffychat/routes/chat/events/audio_playback_speed_controller.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/routes/chat/events/streaming_stt/stt_audio_capture.dart';
+import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
+
+class _FakeCapture implements SttAudioCaptureApi {
+  bool started = false;
+
+  @override
+  Future<bool> hasPermission() async => true;
+
+  @override
+  Future<bool> start(
+    void Function(Uint8List frame) onFrame, {
+    void Function(Object error)? onError,
+  }) async {
+    started = true;
+    return true;
+  }
+
+  @override
+  Future<void> stop() async {}
+
+  @override
+  Future<void> dispose() async {}
+}
+
+PangeaToken _token(String text, int offset) => PangeaToken(
+  text: PangeaTokenText(content: text, offset: offset, length: text.length),
+  lemma: Lemma(text: text.toLowerCase(), saveVocab: true, form: text),
+  pos: 'NOUN',
+  morph: const {},
+);
+
+/// "El gato come." with "gato" as the target.
+ReadAloudPracticeExerciseModel _exercise() => ReadAloudPracticeExerciseModel(
+  targetLemma: 'gato',
+  exampleTokens: [
+    _token('El', 0),
+    _token('gato', 3),
+    _token('come', 8),
+    _token('.', 12),
+  ],
+  langCode: 'es',
+  roomId: '!room',
+  eventId: r'$evt',
+  exampleMessage: const ExampleMessageInfo(
+    exampleMessage: [TextSpan(text: 'El gato come.')],
+  ),
+);
+
+/// The read-aloud item before any take: the sentence and the mic; and the
+/// foot row that holds Skip always and Continue once answered. See
+/// practice-exercises.instructions.md, "Speaking practice".
+void main() {
+  testWidgets('renders the sentence and records on the mic tap', (
+    tester,
+  ) async {
+    final capture = _FakeCapture();
+    List<String>? referenceGiven;
+    final speed = AudioPlaybackSpeedController();
+    addTearDown(speed.dispose);
+
+    await tester.pumpWidget(
+      MaterialApp(
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Scaffold(
+          body: ReadAloudExerciseWidget(
+            exercise: _exercise(),
+            referenceAudio: null,
+            hearItFirst: true,
+            playbackSpeedController: speed,
+            recorderFactory: (reference) {
+              referenceGiven = reference;
+              return ReadAloudRecorder(
+                reference: reference,
+                hasMicPermission: () async => true,
+                streamingSessionFactory: null,
+                captureFactory: () => capture,
+                transcribe: (_) async => const [],
+              );
+            },
+            onRecorded: (_, _) {},
+            onMicUnavailable: () {},
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    // The words to read are the sentence without its punctuation.
+    expect(referenceGiven, ['El', 'gato', 'come']);
+    expect(
+      find.text('Tap the mic and read the sentence aloud'),
+      findsOneWidget,
+    );
+    expect(find.byIcon(Icons.mic), findsOneWidget);
+    expect(find.byTooltip('Record'), findsOneWidget);
+
+    await tester.tap(find.byIcon(Icons.mic));
+    await tester.pumpAndSettle();
+
+    expect(capture.started, isTrue);
+    expect(find.byIcon(Icons.stop), findsOneWidget);
+    expect(find.byTooltip('Stop recording'), findsOneWidget);
+    expect(find.text('Listening…'), findsOneWidget);
+  });
+
+  testWidgets('says the mic is getting ready until it is live, and never '
+      'underlines the target', (tester) async {
+    final permission = Completer<bool>();
+    final speed = AudioPlaybackSpeedController();
+    addTearDown(speed.dispose);
+
+    await tester.pumpWidget(
+      MaterialApp(
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Scaffold(
+          body: ReadAloudExerciseWidget(
+            exercise: _exercise(),
+            referenceAudio: null,
+            hearItFirst: true,
+            playbackSpeedController: speed,
+            recorderFactory: (reference) => ReadAloudRecorder(
+              reference: reference,
+              hasMicPermission: () => permission.future,
+              streamingSessionFactory: null,
+              captureFactory: _FakeCapture.new,
+              transcribe: (_) async => const [],
+            ),
+            onRecorded: (_, _) {},
+            onMicUnavailable: () {},
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    // Bold alone marks the target: an underline reads as a link.
+    final sentence = tester.widget<Text>(
+      find.byWidgetPredicate((w) => w is Text && w.textSpan != null),
+    );
+    var underlined = false;
+    sentence.textSpan!.visitChildren((span) {
+      if (span is TextSpan &&
+          span.style?.decoration == TextDecoration.underline) {
+        underlined = true;
+      }
+      return true;
+    });
+    expect(underlined, isFalse);
+
+    // Between the tap and the mic being live the item says so, and the mic
+    // is neither a record nor a stop button.
+    await tester.tap(find.byIcon(Icons.mic));
+    await tester.pump();
+    expect(find.text('Getting the microphone ready…'), findsOneWidget);
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
+    expect(find.byIcon(Icons.stop), findsNothing);
+    expect(
+      tester.widget<IconButton>(find.byType(IconButton)).onPressed,
+      isNull,
+    );
+
+    permission.complete(true);
+    await tester.pumpAndSettle();
+    expect(find.byIcon(Icons.stop), findsOneWidget);
+    expect(find.text('Listening…'), findsOneWidget);
+  });
+
+  testWidgets('the foot row holds Skip always and Continue once answered', (
+    tester,
+  ) async {
+    var skipped = 0;
+    var continued = 0;
+    Future<void> pump(bool complete) => tester.pumpWidget(
+      MaterialApp(
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Scaffold(
+          body: ReadAloudContinueRow(
+            complete: complete,
+            onContinue: () => continued++,
+            onSkip: () => skipped++,
+          ),
+        ),
+      ),
+    );
+
+    await pump(false);
+    await tester.pumpAndSettle();
+    expect(
+      tester
+          .widget<ElevatedButton>(
+            find.widgetWithText(ElevatedButton, 'Continue'),
+          )
+          .onPressed,
+      isNull,
+    );
+    // Skip is there from the start, not only after a failure.
+    await tester.tap(find.widgetWithText(TextButton, 'Skip'));
+    expect(skipped, 1);
+
+    await pump(true);
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(ElevatedButton, 'Continue'));
+    expect(continued, 1);
+  });
+}

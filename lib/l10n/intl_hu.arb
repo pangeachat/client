@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-23 10:46:59.184994",
+    "@@last_modified": "2026-10-21 10:12:50.037206",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10122,5 +10122,24 @@
     "otherCoursesSessions": "Egyéb kurzusok ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP szerezve",
-    "currentMission": "Jelenlegi küldetés"
+    "currentMission": "Jelenlegi küldetés",
+    "constructUseCorRADesc": "Felolvasva és hallva",
+    "constructUseIncRADesc": "Felolvasva, nem hallva",
+    "hearItFirstToolName": "Először hallgasd meg",
+    "hearItFirstDescription": "Felolvasás gyakorlásakor játszd le a mondatot, mielőtt felvennéd.",
+    "readAloudInstruction": "Koppints a mikrofonra, és olvasd fel a mondatot",
+    "readAloudRecord": "Felvétel",
+    "readAloudMicLabel": "{count, plural, =1{Felvétel, 1 szó még nem hallható} other{Felvétel, {count} szó még nem hallható}}",
+    "readAloudStop": "Felvétel leállítása",
+    "readAloudHeardAll": "Minden szó hallható!",
+    "readAloudNotHeard": "{count, plural, =1{1 szó nem hallható} other{{count} szó nem hallható}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 próbálkozás maradt} other{{count} próbálkozás maradt}}",
+    "readAloudHeardTranscript": "Hallható: {transcript}",
+    "readAloudTranscribeFailed": "Nem sikerült átírni a felvételt. Ellenőrizd a kapcsolatot, és próbáld újra.",
+    "readAloudMicUnavailable": "Nincs mikrofon, ezért ez a szó helyett egy jelentésgyakorlat.",
+    "readAloudExample": "Példa",
+    "readAloudStartOver": "Elölről",
+    "readAloudStarting": "Készül a mikrofon…",
+    "readAloudListening": "Hallgatok…",
+    "readAloudTake": "Felvétel {number}"
 }

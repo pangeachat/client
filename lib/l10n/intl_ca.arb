@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 10:46:56.492310",
+    "@@last_modified": "2026-10-21 10:12:44.739560",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10146,5 +10146,24 @@
     "otherCoursesSessions": "Altres cursos ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP guanyats",
-    "currentMission": "Missió actual"
+    "currentMission": "Missió actual",
+    "constructUseCorRADesc": "Llegit en veu alta i escoltat",
+    "constructUseIncRADesc": "Llegit en veu alta, no escoltat",
+    "hearItFirstToolName": "Escolta-ho primer",
+    "hearItFirstDescription": "A la pràctica de lectura en veu alta, reprodueix la frase abans de gravar.",
+    "readAloudInstruction": "Toca el micròfon i llegeix la frase en veu alta",
+    "readAloudRecord": "Gravar",
+    "readAloudMicLabel": "{count, plural, =1{Grava, 1 paraula encara no escoltada} other{Grava, {count} paraules encara no escoltades}}",
+    "readAloudStop": "Atura la gravació",
+    "readAloudHeardAll": "Totes les paraules escoltades!",
+    "readAloudNotHeard": "{count, plural, =1{1 paraula no escoltada} other{{count} paraules no escoltades}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 intent restant} other{{count} intents restants}}",
+    "readAloudHeardTranscript": "Escoltat: {transcript}",
+    "readAloudTranscribeFailed": "No s'ha pogut transcriure la teva gravació. Comprova la teva connexió i torna-ho a provar.",
+    "readAloudMicUnavailable": "No hi ha cap micròfon disponible, així que aquesta paraula és un exercici de significat en el seu lloc.",
+    "readAloudExample": "Exemple",
+    "readAloudStartOver": "Tornar a començar",
+    "readAloudStarting": "Preparant el micròfon…",
+    "readAloudListening": "Escolto…",
+    "readAloudTake": "Presa {number}"
 }

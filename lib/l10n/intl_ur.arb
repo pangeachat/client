@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-23 10:47:04.772991",
+    "@@last_modified": "2026-10-21 10:13:04.791354",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "دیگر کورسز ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}، {xp} XP حاصل کیے",
-    "currentMission": "موجودہ مشن"
+    "currentMission": "موجودہ مشن",
+    "constructUseCorRADesc": "بلند آواز میں پڑھا اور سنا گیا",
+    "constructUseIncRADesc": "بلند آواز میں پڑھا، سنا نہیں گیا",
+    "hearItFirstToolName": "پہلے سنیں",
+    "hearItFirstDescription": "بلند آواز میں پڑھنے کی مشق میں، ریکارڈ کرنے سے پہلے جملہ چلائیں۔",
+    "readAloudInstruction": "مائیک پر ٹیپ کریں اور جملہ بلند آواز میں پڑھیں",
+    "readAloudRecord": "ریکارڈ کریں",
+    "readAloudMicLabel": "{count, plural, =1{ریکارڈ کریں، 1 لفظ ابھی تک سنا نہیں گیا} other{ریکارڈ کریں، {count} الفاظ ابھی تک سنے نہیں گئے}}",
+    "readAloudStop": "ریکارڈنگ بند کریں",
+    "readAloudHeardAll": "ہر لفظ سنا گیا!",
+    "readAloudNotHeard": "{count, plural, =1{1 لفظ سنا نہیں گیا} other{{count} الفاظ سنے نہیں گئے}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 کوشش باقی} other{{count} کوششیں باقی}}",
+    "readAloudHeardTranscript": "سنا گیا: {transcript}",
+    "readAloudTranscribeFailed": "آپ کی ریکارڈنگ کو ٹرانسکرائب نہیں کر سکے۔ اپنا کنکشن چیک کریں اور دوبارہ کوشش کریں۔",
+    "readAloudMicUnavailable": "کوئی مائیکروفون دستیاب نہیں ہے، لہذا یہ لفظ معنی کی مشق ہے۔",
+    "readAloudExample": "مثال",
+    "readAloudStartOver": "دوبارہ شروع کریں",
+    "readAloudStarting": "مائیکروفون تیار ہو رہا ہے…",
+    "readAloudListening": "سن رہا ہے…",
+    "readAloudTake": "ٹیک {number}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-23 10:46:58.255824",
+    "@@last_modified": "2026-10-21 10:12:48.665067",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Nā papa ʻē aʻe ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, loaʻa {xp} XP",
-    "currentMission": "Mikiona o kēia manawa"
+    "currentMission": "Mikiona o kēia manawa",
+    "constructUseCorRADesc": "Heluhelu leo nui a lohe ʻia",
+    "constructUseIncRADesc": "Heluhelu leo nui, ʻaʻole i lohe ʻia",
+    "hearItFirstToolName": "E hoʻolohe mua",
+    "hearItFirstDescription": "Ma ka hoʻomaʻamaʻa heluhelu leo nui, e hoʻokani i ka ʻōlelo ma mua o kou hoʻopaʻa ʻana.",
+    "readAloudInstruction": "E kaomi i ka mic a heluhelu leo nui i ka ʻōlelo",
+    "readAloudRecord": "Hoʻopaʻa",
+    "readAloudMicLabel": "{count, plural, =1{Hoʻopaʻa, 1 huaʻōlelo i lohe ʻole ʻia} other{Hoʻopaʻa, {count} huaʻōlelo i lohe ʻole ʻia}}",
+    "readAloudStop": "Hoʻopau i ka hoʻopaʻa ʻana",
+    "readAloudHeardAll": "Ua lohe ʻia nā huaʻōlelo a pau!",
+    "readAloudNotHeard": "{count, plural, =1{1 huaʻōlelo i lohe ʻole ʻia} other{{count} huaʻōlelo i lohe ʻole ʻia}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 hoʻāʻo i koe} other{{count} hoʻāʻo i koe}}",
+    "readAloudHeardTranscript": "Ua lohe ʻia: {transcript}",
+    "readAloudTranscribeFailed": "ʻAʻole hiki ke kākau i kāu hoʻopaʻa ʻana. E nānā i kāu pili a hoʻāʻo hou.",
+    "readAloudMicUnavailable": "ʻAʻohe microphone i loaʻa, no laila he hoʻomaʻamaʻa manaʻo kēia huaʻōlelo.",
+    "readAloudExample": "Laʻana",
+    "readAloudStartOver": "Hoʻomaka hou",
+    "readAloudStarting": "Ke hoʻomākaukau nei i ka microphone…",
+    "readAloudListening": "Ke hoʻolohe nei…",
+    "readAloudTake": "Lawe {number}"
 }

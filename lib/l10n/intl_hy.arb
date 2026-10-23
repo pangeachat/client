@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-23 10:46:58.905301",
+    "@@last_modified": "2026-10-21 10:12:50.789286",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Այլ դասընթացներ ({num})",
     "activityXpStamp": "{xp} ՄՓ",
     "activityCompletedWithXp": "{completed}, վաստակել եք {xp} ՄՓ",
-    "currentMission": "Ընթացիկ առաքելություն"
+    "currentMission": "Ընթացիկ առաքելություն",
+    "constructUseCorRADesc": "Բարձրաձայն կարդացված և լսված",
+    "constructUseIncRADesc": "Բարձրաձայն կարդացված, չլսված",
+    "hearItFirstToolName": "Նախ լսել",
+    "hearItFirstDescription": "Բարձրաձայն կարդալու պրակտիկայի ժամանակ նախքան ձայնագրելը միացրեք նախադասությունը։",
+    "readAloudInstruction": "Հպեք խոսափողին և բարձրաձայն կարդացեք նախադասությունը",
+    "readAloudRecord": "Ձայնագրել",
+    "readAloudMicLabel": "{count, plural, =1{Ձայնագրել, 1 բառ դեռ չի լսվել} other{Ձայնագրել, {count} բառ դեռ չի լսվել}}",
+    "readAloudStop": "Դադարեցնել ձայնագրումը",
+    "readAloudHeardAll": "Ամեն բառ լսված է։",
+    "readAloudNotHeard": "{count, plural, =1{1 բառ չի լսվել} other{{count} բառ չի լսվել}}",
+    "readAloudTriesLeft": "{count, plural, =1{Մնացել է 1 փորձ} other{Մնացել է {count} փորձ}}",
+    "readAloudHeardTranscript": "Լսված է՝ {transcript}",
+    "readAloudTranscribeFailed": "Հնարավոր չեղավ արտագրել ձեր ձայնագրությունը։ Ստուգեք ձեր կապը և նորից փորձեք։",
+    "readAloudMicUnavailable": "Խոսափող հասանելի չէ, ուստի այս բառը իմաստային վարժություն է։",
+    "readAloudExample": "Օրինակ",
+    "readAloudStartOver": "Սկսել նորից",
+    "readAloudStarting": "Միկրոֆոնը պատրաստվում է…",
+    "readAloudListening": "Լսում եմ…",
+    "readAloudTake": "Կատարել {number}"
 }

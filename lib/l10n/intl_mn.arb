@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-23 10:47:01.426725",
+    "@@last_modified": "2026-10-21 10:12:56.129624",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Бусад сургалтууд ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP цуглуулсан",
-    "currentMission": "Одоогийн даалгавар"
+    "currentMission": "Одоогийн даалгавар",
+    "constructUseCorRADesc": "Чанга уншиж, сонсогдсон",
+    "constructUseIncRADesc": "Чанга уншсан ч сонсогдоогүй",
+    "hearItFirstToolName": "Эхлээд сонсох",
+    "hearItFirstDescription": "Чанга унших дасгал дээр бичихээсээ өмнө өгүүлбэрийг тоглуулна уу.",
+    "readAloudInstruction": "Микрофон дээр товшоод өгүүлбэрийг чанга уншина уу",
+    "readAloudRecord": "Бичих",
+    "readAloudMicLabel": "{count, plural, =1{Бичих, 1 үг сонсогдоогүй байна} other{Бичих, {count} үг сонсогдоогүй байна}}",
+    "readAloudStop": "Бичлэгийг зогсоох",
+    "readAloudHeardAll": "Бүх үг сонсогдлоо!",
+    "readAloudNotHeard": "{count, plural, =1{1 үг сонсогдоогүй} other{{count} үг сонсогдоогүй}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 оролдлого үлдлээ} other{{count} оролдлого үлдлээ}}",
+    "readAloudHeardTranscript": "Сонсогдсон: {transcript}",
+    "readAloudTranscribeFailed": "Таны бичлэгийг хувиргаж чадсангүй. Холболтоо шалгаад дахин оролдоно уу.",
+    "readAloudMicUnavailable": "Микрофон байхгүй тул энэ үгний оронд утгын дасгал хийнэ.",
+    "readAloudExample": "Жишээ",
+    "readAloudStartOver": "Дахин эхлэх",
+    "readAloudStarting": "Микрофоныг бэлдэж байна…",
+    "readAloudListening": "Сонсож байна…",
+    "readAloudTake": "{number} дахь оролдлого"
 }

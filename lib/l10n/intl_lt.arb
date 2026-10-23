@@ -2956,7 +2956,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-23 10:47:00.601802",
+    "@@last_modified": "2026-10-21 10:12:55.526368",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10797,5 +10797,24 @@
     "otherCoursesSessions": "Kiti kursai ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP uždirbta",
-    "currentMission": "Dabartinė misija"
+    "currentMission": "Dabartinė misija",
+    "constructUseCorRADesc": "Perskaityta garsiai ir išgirsta",
+    "constructUseIncRADesc": "Perskaityta garsiai, neišgirsta",
+    "hearItFirstToolName": "Pirmiausia išgirskite",
+    "hearItFirstDescription": "Garsinio skaitymo pratybose paleiskite sakinį prieš įrašydami.",
+    "readAloudInstruction": "Bakstelėkite mikrofoną ir perskaitykite sakinį garsiai",
+    "readAloudRecord": "Įrašyti",
+    "readAloudMicLabel": "{count, plural, =1{Įrašyti, 1 žodis dar neišgirstas} other{Įrašyti, {count} žodžiai dar neišgirsti}}",
+    "readAloudStop": "Stabdyti įrašymą",
+    "readAloudHeardAll": "Kiekvienas žodis išgirstas!",
+    "readAloudNotHeard": "{count, plural, =1{1 žodis neišgirstas} other{{count} žodžiai neišgirsti}}",
+    "readAloudTriesLeft": "{count, plural, =1{Liko 1 bandymas} other{Liko {count} bandymai}}",
+    "readAloudHeardTranscript": "Išgirsta: {transcript}",
+    "readAloudTranscribeFailed": "Nepavyko transkribuoti jūsų įrašo. Patikrinkite ryšį ir bandykite dar kartą.",
+    "readAloudMicUnavailable": "Nėra mikrofono, todėl šis žodis yra reikšmės pratimas.",
+    "readAloudExample": "Pavyzdys",
+    "readAloudStartOver": "Pradėti iš naujo",
+    "readAloudStarting": "Ruošiamas mikrofonas…",
+    "readAloudListening": "Klausausi…",
+    "readAloudTake": "Paimkite {number}"
 }

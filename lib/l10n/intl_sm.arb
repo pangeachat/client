@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-23 10:47:03.261973",
+    "@@last_modified": "2026-10-21 10:13:01.936761",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "Isi kosi ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP maua",
-    "currentMission": "Misiona o loʻo i ai nei"
+    "currentMission": "Misiona o loʻo i ai nei",
+    "constructUseCorRADesc": "Faitau leotele ma faʻalogoina",
+    "constructUseIncRADesc": "Faitau leotele, e leʻi faʻalogoina",
+    "hearItFirstToolName": "Faʻalogo muamua",
+    "hearItFirstDescription": "I le faʻataʻitaʻiga faitau leotele, taʻalo le fuaiupu ae e te leʻi puʻeina.",
+    "readAloudInstruction": "Tapuni le mic ma faitau leotele le fuaiupu",
+    "readAloudRecord": "Puʻeina",
+    "readAloudMicLabel": "{count, plural, =1{Puʻeina, 1 upu e leʻi faʻalogoina} other{Puʻeina, {count} upu e leʻi faʻalogoina}}",
+    "readAloudStop": "Taofi le puʻeina",
+    "readAloudHeardAll": "Ua faʻalogoina upu uma!",
+    "readAloudNotHeard": "{count, plural, =1{1 upu e leʻi faʻalogoina} other{{count} upu e leʻi faʻalogoina}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 taumafaiga o totoe} other{{count} taumafaiga o totoe}}",
+    "readAloudHeardTranscript": "Faʻalogoina: {transcript}",
+    "readAloudTranscribeFailed": "E leʻi mafai ona faʻaliliu lau puʻeina. Siaki lau fesoʻotaʻiga ma toe taumafai.",
+    "readAloudMicUnavailable": "E leai se microphone o avanoa, o lea o lenei upu o se faʻamalositino uiga nai lo lena.",
+    "readAloudExample": "Faʻataʻitaʻiga",
+    "readAloudStartOver": "Toe amata",
+    "readAloudStarting": "Saunia le masini faaleotele leo…",
+    "readAloudListening": "Faʻalogo…",
+    "readAloudTake": "Ave {number}"
 }

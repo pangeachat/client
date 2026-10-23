@@ -1327,7 +1327,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-23 10:46:56.427570",
+    "@@last_modified": "2026-10-21 10:12:47.044038",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10936,5 +10936,24 @@
     "otherCoursesSessions": "Andre kurser ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP optjent",
-    "currentMission": "Nuværende mission"
+    "currentMission": "Nuværende mission",
+    "constructUseCorRADesc": "Læst højt og hørt",
+    "constructUseIncRADesc": "Læst højt, ikke hørt",
+    "hearItFirstToolName": "Hør det først",
+    "hearItFirstDescription": "I læse-højt-øvelser, afspil sætningen før du optager.",
+    "readAloudInstruction": "Tryk på mikrofonen og læs sætningen højt",
+    "readAloudRecord": "Optag",
+    "readAloudMicLabel": "{count, plural, =1{Optag, 1 ord endnu ikke hørt} other{Optag, {count} ord endnu ikke hørt}}",
+    "readAloudStop": "Stop optagelse",
+    "readAloudHeardAll": "Alle ord hørt!",
+    "readAloudNotHeard": "{count, plural, =1{1 ord ikke hørt} other{{count} ord ikke hørt}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 forsøg tilbage} other{{count} forsøg tilbage}}",
+    "readAloudHeardTranscript": "Hørt: {transcript}",
+    "readAloudTranscribeFailed": "Kunne ikke transskribere din optagelse. Tjek din forbindelse og prøv igen.",
+    "readAloudMicUnavailable": "Ingen mikrofon er tilgængelig, så dette ord er i stedet en betydningsøvelse.",
+    "readAloudExample": "Eksempel",
+    "readAloudStartOver": "Start forfra",
+    "readAloudStarting": "Forbereder mikrofonen…",
+    "readAloudListening": "Lytter…",
+    "readAloudTake": "Tag {number}"
 }

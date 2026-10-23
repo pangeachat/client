@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-23 10:47:04.359772",
+    "@@last_modified": "2026-10-21 10:13:03.408067",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10317,5 +10317,24 @@
     "otherCoursesSessions": "Diğer kurslar ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP kazanıldı",
-    "currentMission": "Mevcut görev"
+    "currentMission": "Mevcut görev",
+    "constructUseCorRADesc": "Sesli okundu ve duyuldu",
+    "constructUseIncRADesc": "Sesli okundu, duyulmadı",
+    "hearItFirstToolName": "Önce dinle",
+    "hearItFirstDescription": "Sesli okuma alıştırmasında, kaydetmeden önce cümleyi çal.",
+    "readAloudInstruction": "Mikrofona dokun ve cümleyi sesli oku",
+    "readAloudRecord": "Kaydet",
+    "readAloudMicLabel": "{count, plural, =1{Kaydet, 1 kelime henüz duyulmadı} other{Kaydet, {count} kelime henüz duyulmadı}}",
+    "readAloudStop": "Kaydı durdur",
+    "readAloudHeardAll": "Her kelime duyuldu!",
+    "readAloudNotHeard": "{count, plural, =1{1 kelime duyulmadı} other{{count} kelime duyulmadı}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 deneme kaldı} other{{count} deneme kaldı}}",
+    "readAloudHeardTranscript": "Duyuldu: {transcript}",
+    "readAloudTranscribeFailed": "Kaydınız yazıya dökülemedi. Bağlantınızı kontrol edin ve tekrar deneyin.",
+    "readAloudMicUnavailable": "Mikrofon kullanılamıyor, bu yüzden bu kelime bir anlam alıştırması olacak.",
+    "readAloudExample": "Örnek",
+    "readAloudStartOver": "Baştan başla",
+    "readAloudStarting": "Mikrofon hazırlanıyor…",
+    "readAloudListening": "Dinleniyor…",
+    "readAloudTake": "Alıştırma {number}"
 }

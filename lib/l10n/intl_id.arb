@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 10:46:59.016028",
+    "@@last_modified": "2026-10-21 10:12:54.183989",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10092,5 +10092,24 @@
     "otherCoursesSessions": "Kursus lain ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP diperoleh",
-    "currentMission": "Misi saat ini"
+    "currentMission": "Misi saat ini",
+    "constructUseCorRADesc": "Dibaca nyaring dan terdengar",
+    "constructUseIncRADesc": "Dibaca nyaring, tidak terdengar",
+    "hearItFirstToolName": "Dengar dulu",
+    "hearItFirstDescription": "Dalam latihan membaca nyaring, putar kalimatnya sebelum Anda merekam.",
+    "readAloudInstruction": "Ketuk mikrofon dan baca kalimatnya nyaring",
+    "readAloudRecord": "Rekam",
+    "readAloudMicLabel": "{count, plural, =1{Rekam, 1 kata belum terdengar} other{Rekam, {count} kata belum terdengar}}",
+    "readAloudStop": "Berhenti merekam",
+    "readAloudHeardAll": "Semua kata terdengar!",
+    "readAloudNotHeard": "{count, plural, =1{1 kata tidak terdengar} other{{count} kata tidak terdengar}}",
+    "readAloudTriesLeft": "{count, plural, =1{Sisa 1 kali coba} other{Sisa {count} kali coba}}",
+    "readAloudHeardTranscript": "Terdengar: {transcript}",
+    "readAloudTranscribeFailed": "Tidak dapat menyalin rekaman Anda. Periksa koneksi Anda dan coba lagi.",
+    "readAloudMicUnavailable": "Tidak ada mikrofon yang tersedia, jadi kata ini menjadi latihan makna.",
+    "readAloudExample": "Contoh",
+    "readAloudStartOver": "Mulai lagi",
+    "readAloudStarting": "Menyiapkan mikrofon…",
+    "readAloudListening": "Mendengarkan…",
+    "readAloudTake": "Ambil {number}"
 }

@@ -20,6 +20,22 @@ void main() {
       expect(session().startedAt, isNull);
     });
 
+    test('time on read-aloud items stays on the clock but off the speed '
+        'bonus', () {
+      final model = session();
+      model.setElapsedSeconds(80);
+      model.addReadAloudSeconds(25);
+
+      expect(model.state.elapsedSeconds, 80);
+      expect(model.state.bonusClockSeconds, 55);
+      expect(
+        AnalyticsPracticeSessionState.fromJson(
+          model.state.toJson(),
+        ).readAloudSeconds,
+        25,
+      );
+    });
+
     test('markStarted stamps the clock', () {
       final model = session();
       final before = DateTime.now();

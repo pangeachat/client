@@ -736,6 +736,8 @@ class UserController {
         return profile.toolSettings.audioChoices;
       case ToolSetting.listenFirst:
         return profile.toolSettings.listenFirst;
+      case ToolSetting.hearItFirst:
+        return profile.toolSettings.hearItFirst;
       case ToolSetting.audioOnNewMessage:
         return profile.toolSettings.audioOnNewMessage;
       case ToolSetting.audioOnMessageClick:

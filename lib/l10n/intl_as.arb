@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-23 10:46:55.808905",
+    "@@last_modified": "2026-10-21 10:12:44.278946",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2481,5 +2481,24 @@
     "otherCoursesSessions": "অন্যান্য পাঠ্যক্ৰমসমূহ ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP অৰ্জন কৰা হৈছে",
-    "currentMission": "বৰ্তমানৰ মিছন"
+    "currentMission": "বৰ্তমানৰ মিছন",
+    "constructUseCorRADesc": "উচ্চাৰণ কৰা হৈছে আৰু শুনা হৈছে",
+    "constructUseIncRADesc": "উচ্চাৰণ কৰা হৈছে, শুনা হোৱা নাই",
+    "hearItFirstToolName": "প্ৰথমে শুনক",
+    "hearItFirstDescription": "উচ্চাৰণ অনুশীলনত, আপুনি ৰেকৰ্ড কৰাৰ আগতে বাক্যটো বজাওক।",
+    "readAloudInstruction": "মাইক টেপ কৰক আৰু বাক্যটো উচ্চাৰণ কৰক",
+    "readAloudRecord": "ৰেকৰ্ড কৰক",
+    "readAloudMicLabel": "{count, plural, =1{ৰেকৰ্ড কৰক, 1টা শব্দ এতিয়াও শুনা হোৱা নাই} other{ৰেকৰ্ড কৰক, {count}টা শব্দ এতিয়াও শুনা হোৱা নাই}}",
+    "readAloudStop": "ৰেকৰ্ডিং বন্ধ কৰক",
+    "readAloudHeardAll": "প্ৰতিটো শব্দ শুনা হৈছে!",
+    "readAloudNotHeard": "{count, plural, =1{1টা শব্দ শুনা হোৱা নাই} other{{count}টা শব্দ শুনা হোৱা নাই}}",
+    "readAloudTriesLeft": "{count, plural, =1{1টা চেষ্টা বাকী} other{{count}টা চেষ্টা বাকী}}",
+    "readAloudHeardTranscript": "শুনা হৈছে: {transcript}",
+    "readAloudTranscribeFailed": "আপোনাৰ ৰেকৰ্ডিং ট্ৰেন্সক্ৰাইব কৰিব পৰা নগ'ল। আপোনাৰ সংযোগ পৰীক্ষা কৰক আৰু পুনৰ চেষ্টা কৰক।",
+    "readAloudMicUnavailable": "কোনো মাইক্ৰ'ফোন উপলব্ধ নহয়, সেয়েহে এই শব্দটো ইয়াৰ পৰিৱৰ্তে এটা অৰ্থ অনুশীলন।",
+    "readAloudExample": "উদাহৰণ",
+    "readAloudStartOver": "পুনৰ আৰম্ভ কৰক",
+    "readAloudStarting": "মাইক্ৰ'ফোন সাজু কৰা হৈছে…",
+    "readAloudListening": "শুনি আছোঁ…",
+    "readAloudTake": "লওক {number}"
 }
