@@ -584,6 +584,13 @@ class _ConfirmedRoleSessionCTAButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
+    if (controller.sessionStarted) {
+      return ActivitySessionCTAButton(
+        l10n.continueText,
+        controller.continueToChat,
+        icon: ActivityPinState.ongoingActive.icon,
+      );
+    }
     // Bringing people in leads; the bot is the quieter fallback at the bottom.
     return Column(
       mainAxisSize: .min,
