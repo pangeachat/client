@@ -10973,5 +10973,6 @@
     "otherCoursesSessions": "其他課程 ({num})",
     "activityXpStamp": "{xp} 經驗值",
     "activityCompletedWithXp": "{completed}，獲得 {xp} 經驗值",
-    "currentMission": "目前任務"
+    "currentMission": "目前任務",
+    "xpTowardMission": "此任務可獲 {xp} 經驗值"
 }

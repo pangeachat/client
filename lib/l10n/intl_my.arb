@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "အခြားသင်တန်းများ ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP ရရှိခဲ့သည်",
-    "currentMission": "လက်ရှိမစ်ရှင်"
+    "currentMission": "လက်ရှိမစ်ရှင်",
+    "xpTowardMission": "ဤမစ်ရှင်အတွက် {xp} XP"
 }

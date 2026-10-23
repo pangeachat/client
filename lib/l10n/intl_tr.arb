@@ -10317,5 +10317,6 @@
     "otherCoursesSessions": "Diğer kurslar ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP kazanıldı",
-    "currentMission": "Mevcut görev"
+    "currentMission": "Mevcut görev",
+    "xpTowardMission": "Bu Görev için {xp} XP"
 }

@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Ɔda kos dɛn ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP gɛt",
-    "currentMission": "Kɔrɛnt mishɔn"
+    "currentMission": "Kɔrɛnt mishɔn",
+    "xpTowardMission": "{xp} XP fɔ dis Mishɔn"
 }

@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Курсҳои дигар ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP ба даст оварда шуд",
-    "currentMission": "Рисолати ҷорӣ"
+    "currentMission": "Рисолати ҷорӣ",
+    "xpTowardMission": "{xp} XP ба сӯи ин рисолат"
 }

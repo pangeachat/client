@@ -10019,5 +10019,6 @@
     "otherCoursesSessions": "Beste ikastaro batzuk ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP irabazi dira",
-    "currentMission": "Uneko misioa"
+    "currentMission": "Uneko misioa",
+    "xpTowardMission": "{xp} esperientzia puntu misio honetarako"
 }

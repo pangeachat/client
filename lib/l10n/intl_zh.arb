@@ -10019,5 +10019,6 @@
     "otherCoursesSessions": "其他课程 ({num})",
     "activityXpStamp": "{xp} 经验值",
     "activityCompletedWithXp": "{completed}，获得 {xp} 经验值",
-    "currentMission": "当前任务"
+    "currentMission": "当前任务",
+    "xpTowardMission": "此任务的 {xp} 经验值"
 }

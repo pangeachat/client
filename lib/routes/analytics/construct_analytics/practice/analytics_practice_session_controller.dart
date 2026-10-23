@@ -5,11 +5,14 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_repo.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_xp.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_generation_repo.dart';
@@ -40,7 +43,7 @@ class PracticeSessionController {
   List<MessagePracticeExerciseRequest> get exerciseRequests =>
       session?.exerciseRequests ?? [];
 
-  List<OneConstructUse> get bonusUses => session?.state.allBonusUses ?? [];
+  List<OneConstructUse> get bonusUses => session?.state.bonusUses ?? [];
 
   int get hintsUsed => session?.state.hintsUsed ?? 0;
 
@@ -79,6 +82,7 @@ class PracticeSessionController {
       isLoadingSession = true;
       sessionError = null;
       session = null;
+      earnedXp = null;
 
       final l1 = MatrixState.pangeaController.userController.userL1;
       final l2 = MatrixState.pangeaController.userController.userL2;
@@ -101,6 +105,45 @@ class PracticeSessionController {
 
   Future<void> completeSession() async {
     session?.finishSession();
+  }
+
+  /// What the finished session's XP did; null until [measureEarnedXp] runs.
+  Future<PracticeSessionXp>? earnedXp;
+
+  /// Reads back what the finished session earned. Call once every use it
+  /// recorded, bonuses included, has been written to [analytics].
+  void measureEarnedXp(AnalyticsDataService analytics, String language) {
+    final session = this.session;
+    if (session == null) return;
+    earnedXp = _measureEarnedXp(analytics, language, session);
+  }
+
+  Future<PracticeSessionXp> _measureEarnedXp(
+    AnalyticsDataService analytics,
+    String language,
+    AnalyticsPracticeSessionModel session,
+  ) async {
+    try {
+      final missionId = session.missionId;
+      // A Mission no joined course carries any more (one since left) has no
+      // meter to have moved, so it gets no Mission line.
+      final mission = missionId == null
+          ? null
+          : await MatrixState.pangeaController.matrixState.client
+                .joinedMissionGroup(missionId);
+      return PracticeSessionXp.measure(
+        sessionUses: session.state.recordedUses,
+        learnerUses: await analytics.getUses(language),
+        missionLemmas: mission?.creditedLemmas,
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'language': language, 'missionId': session.missionId},
+      );
+      rethrow;
+    }
   }
 
   Future<MultipleChoicePracticeExerciseModel?> _initExerciseData(

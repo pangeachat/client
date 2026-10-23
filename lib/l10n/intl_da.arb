@@ -10936,5 +10936,6 @@
     "otherCoursesSessions": "Andre kurser ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP optjent",
-    "currentMission": "Nuværende mission"
+    "currentMission": "Nuværende mission",
+    "xpTowardMission": "{xp} XP til denne mission"
 }

@@ -6098,5 +6098,15 @@
     "offlinePracticeNothingSaved": "Not enough is saved on this device to practice offline. Try again when you're back online.",
     "@offlinePracticeNothingSaved": {
         "description": "Shown instead of a practice session when the app has no connection to Pangea Chat and the device has not saved enough words or messages to build one offline."
+    },
+    "xpTowardMission": "{xp} XP toward this Mission",
+    "@xpTowardMission": {
+        "description": "Under the XP total when a Mission's practice session ends: the XP that Mission gained. xp is a signed number such as '+ 65' or '− 3'.",
+        "type": "String",
+        "placeholders": {
+            "xp": {
+                "type": "String"
+            }
+        }
     }
 }

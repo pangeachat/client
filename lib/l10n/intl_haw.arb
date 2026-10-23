@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Nā papa ʻē aʻe ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, loaʻa {xp} XP",
-    "currentMission": "Mikiona o kēia manawa"
+    "currentMission": "Mikiona o kēia manawa",
+    "xpTowardMission": "{xp} XP i kēia mikiona"
 }

@@ -10023,5 +10023,6 @@
     "otherCoursesSessions": "Boshqa kurslar ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP olindi",
-    "currentMission": "Joriy topshiriq"
+    "currentMission": "Joriy topshiriq",
+    "xpTowardMission": "Ushbu missiya uchun {xp} XP"
 }

@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Ezinye izifundo ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP etholiwe",
-    "currentMission": "I-mission yamanje"
+    "currentMission": "I-mission yamanje",
+    "xpTowardMission": "{xp} XP kule Mishini"
 }

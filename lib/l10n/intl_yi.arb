@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "אַנדערע קורסן ({num})",
     "activityXpStamp": "{xp} עקס-פּי",
     "activityCompletedWithXp": "{completed}, {xp} עקס-פּי פֿאַרדינט",
-    "currentMission": "איצטיקע מיסיע"
+    "currentMission": "איצטיקע מיסיע",
+    "xpTowardMission": "{xp} XP צו דער מיסיע"
 }

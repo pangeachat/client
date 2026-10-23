@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Taranja hafa ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP azo",
-    "currentMission": "Iraka ankehitriny"
+    "currentMission": "Iraka ankehitriny",
+    "xpTowardMission": "{xp} XP mankany amin'ity iraka ity"
 }

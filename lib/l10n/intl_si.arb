@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "වෙනත් පාඨමාලා ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP උපයා ඇත",
-    "currentMission": "වත්මන් මෙහෙයුම"
+    "currentMission": "වත්මන් මෙහෙයුම",
+    "xpTowardMission": "මෙම මෙහෙයුම සඳහා {xp} XP"
 }

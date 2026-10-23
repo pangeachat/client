@@ -10212,5 +10212,6 @@
     "otherCoursesSessions": "다른 코스 ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP 획득",
-    "currentMission": "현재 미션"
+    "currentMission": "현재 미션",
+    "xpTowardMission": "이번 미션으로 {xp} XP 획득"
 }

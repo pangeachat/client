@@ -9627,5 +9627,6 @@
     "otherCoursesSessions": "སློབ་ཚན་གཞན་དག ({num})",
     "activityXpStamp": "{xp} ཉམས་མྱོང་།",
     "activityCompletedWithXp": "{completed}, {xp} ཉམས་མྱོང་ཐོབ་པ།",
-    "currentMission": "དམིགས་འབེན་ད་ལྟ་བ།"
+    "currentMission": "དམིགས་འབེན་ད་ལྟ་བ།",
+    "xpTowardMission": "འདིའི་ལས་འགན་ལ་ {xp} ཉམས་མྱོང་"
 }

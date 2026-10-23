@@ -10019,5 +10019,6 @@
     "otherCoursesSessions": "Citi kursi ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, iegūti {xp} XP",
-    "currentMission": "Pašreizējā misija"
+    "currentMission": "Pašreizējā misija",
+    "xpTowardMission": "{xp} XP šai misijai"
 }

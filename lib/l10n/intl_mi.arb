@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Ētahi atu akoranga ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP i whiwhi",
-    "currentMission": "Mihana o nāianei"
+    "currentMission": "Mihana o nāianei",
+    "xpTowardMission": "{xp} XP ki tēnei Mihana"
 }

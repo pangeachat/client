@@ -10748,5 +10748,6 @@
     "otherCoursesSessions": "Alte cursuri ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP câștigate",
-    "currentMission": "Misiune curentă"
+    "currentMission": "Misiune curentă",
+    "xpTowardMission": "{xp} XP pentru această misiune"
 }

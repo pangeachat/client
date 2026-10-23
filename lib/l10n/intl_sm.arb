@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Isi kosi ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP maua",
-    "currentMission": "Misiona o loʻo i ai nei"
+    "currentMission": "Misiona o loʻo i ai nei",
+    "xpTowardMission": "{xp} XP agai i lenei Misiona"
 }

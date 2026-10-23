@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Alii cursus ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP meruit",
-    "currentMission": "Missio praesens"
+    "currentMission": "Missio praesens",
+    "xpTowardMission": "{xp} XP ad hanc Missionem"
 }

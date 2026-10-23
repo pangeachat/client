@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "ٻيا ڪورس ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP حاصل ڪيا",
-    "currentMission": "موجوده مشن"
+    "currentMission": "موجوده مشن",
+    "xpTowardMission": "هن مشن ڏانهن {xp} XP"
 }

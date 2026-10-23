@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Бусад сургалтууд ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP цуглуулсан",
-    "currentMission": "Одоогийн даалгавар"
+    "currentMission": "Одоогийн даалгавар",
+    "xpTowardMission": "Энэхүү даалгаварт {xp} XP"
 }

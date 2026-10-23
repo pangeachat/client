@@ -10961,5 +10961,6 @@
     "otherCoursesSessions": "Iné kurzy ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, získaných {xp} XP",
-    "currentMission": "Aktuálna misia"
+    "currentMission": "Aktuálna misia",
+    "xpTowardMission": "{xp} XP k tejto misii"
 }

@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Kursus liyane ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP entuk",
-    "currentMission": "Misi saiki"
+    "currentMission": "Misi saiki",
+    "xpTowardMission": "{xp} XP kanggo Misi iki"
 }

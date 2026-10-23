@@ -10961,5 +10961,6 @@
     "otherCoursesSessions": "Aliaj kursoj ({num})",
     "activityXpStamp": "{xp} SPer",
     "activityCompletedWithXp": "{completed}, {xp} SPer gajnitaj",
-    "currentMission": "Nuna misio"
+    "currentMission": "Nuna misio",
+    "xpTowardMission": "{xp} XP al ĉi tiu Misio"
 }

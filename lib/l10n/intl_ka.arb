@@ -10916,5 +10916,6 @@
     "otherCoursesSessions": "სხვა კურსები ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, მიღებულია {xp} XP",
-    "currentMission": "მიმდინარე მისია"
+    "currentMission": "მიმდინარე მისია",
+    "xpTowardMission": "{xp} XP ამ მისიისთვის"
 }

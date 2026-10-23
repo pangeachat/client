@@ -10961,5 +10961,6 @@
     "otherCoursesSessions": "Drugi tečaji ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, pridobljenih {xp} XP",
-    "currentMission": "Trenutna misija"
+    "currentMission": "Trenutna misija",
+    "xpTowardMission": "{xp} XP za to misijo"
 }

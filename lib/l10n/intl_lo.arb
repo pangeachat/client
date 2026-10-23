@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "ຫຼັກສູດອື່ນໆ ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, ໄດ້ຮັບ {xp} XP",
-    "currentMission": "ພາລະກິດປັດຈຸບັນ"
+    "currentMission": "ພາລະກິດປັດຈຸບັນ",
+    "xpTowardMission": "{xp} XP ສູ່ພາລະກິດນີ້"
 }

@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Lòt kou ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP touche",
-    "currentMission": "Misyon aktyèl"
+    "currentMission": "Misyon aktyèl",
+    "xpTowardMission": "{xp} XP pou Misyon sa a"
 }

@@ -10016,5 +10016,6 @@
     "otherCoursesSessions": "Muud kursused ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, teenitud {xp} XP",
-    "currentMission": "Praegune missioon"
+    "currentMission": "Praegune missioon",
+    "xpTowardMission": "{xp} XP selle missiooni suunas"
 }

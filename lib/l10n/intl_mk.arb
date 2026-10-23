@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Други курсеви ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, освоени {xp} XP",
-    "currentMission": "Тековна мисија"
+    "currentMission": "Тековна мисија",
+    "xpTowardMission": "{xp} XP кон оваа мисија"
 }

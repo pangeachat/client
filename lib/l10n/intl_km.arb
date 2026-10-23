@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "វគ្គសិក្សាផ្សេងទៀត ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, ទទួលបាន {xp} XP",
-    "currentMission": "បេសកកម្មបច្ចុប្បន្ន"
+    "currentMission": "បេសកកម្មបច្ចុប្បន្ន",
+    "xpTowardMission": "{xp} XP សម្រាប់បេសកកម្មនេះ"
 }

@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Maphunziro ena ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP yapezeka",
-    "currentMission": "Ntchito yapano"
+    "currentMission": "Ntchito yapano",
+    "xpTowardMission": "{xp} XP pa Mission iyi"
 }

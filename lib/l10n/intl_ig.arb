@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Nkuzi ndị ọzọ ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP enwetara",
-    "currentMission": "Ozi dị ugbu a"
+    "currentMission": "Ozi dị ugbu a",
+    "xpTowardMission": "{xp} XP maka Misionu a"
 }

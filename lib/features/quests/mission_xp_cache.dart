@@ -55,7 +55,7 @@ class MissionXpCache extends ChangeNotifier {
   Map<String, int> get practiceXpByRoom => _practiceXpByRoom;
 
   /// Room-less practice XP by lowercased lemma — what a Mission's word list
-  /// is credited from.
+  /// is credited from ([practiceXpByLemmaOf]).
   Map<String, int> get practiceXpByLemma => _practiceXpByLemma;
 
   /// [creditedXpByRoom] split by the skill each use exercises
@@ -194,7 +194,7 @@ class MissionXpCache extends ChangeNotifier {
     final chatByRoom = <String, int>{};
     final speakingByRoom = <String, int>{};
     final practiceByRoom = <String, int>{};
-    final byLemma = <String, int>{};
+    final byLemma = practiceXpByLemmaOf(uses);
     final skillByRoom = <String, Map<LearningSkillsEnum, int>>{};
     final skillByLemma = <String, Map<LearningSkillsEnum, int>>{};
     for (final use in uses) {
@@ -202,8 +202,9 @@ class MissionXpCache extends ChangeNotifier {
       final roomId = use.metadata.roomId;
       if (roomId == null) {
         final lemma = QuestObjectiveGroup.lemmaKey(use.lemma);
-        byLemma[lemma] = (byLemma[lemma] ?? 0) + use.xp;
-        _addSkill(skillByLemma, lemma, use);
+        // A word that credits nothing has no skills to show either, so the
+        // detail page's tiles still sum to its Practice share.
+        if (byLemma.containsKey(lemma)) _addSkill(skillByLemma, lemma, use);
         continue;
       }
       _addSkill(skillByRoom, roomId, use);
@@ -223,6 +224,20 @@ class MissionXpCache extends ChangeNotifier {
       skillByLemma,
     );
     return true;
+  }
+
+  /// [uses]' room-less XP by lowercased lemma, keeping only words that net
+  /// above zero: wrong picks cost XP, and a word that nets nothing or less
+  /// credits a Mission nothing rather than taking XP off it (#9607). [uses]
+  /// are cap-filtered, as `AnalyticsDataService.getUses` returns them.
+  static Map<String, int> practiceXpByLemmaOf(Iterable<OneConstructUse> uses) {
+    final byLemma = <String, int>{};
+    for (final use in uses) {
+      if (use.metadata.roomId != null) continue;
+      final lemma = QuestObjectiveGroup.lemmaKey(use.lemma);
+      byLemma[lemma] = (byLemma[lemma] ?? 0) + use.xp;
+    }
+    return byLemma..removeWhere((_, xp) => xp <= 0);
   }
 
   /// Adds [use]'s XP to its skill under [key] in [into].

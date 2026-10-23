@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Sauran kwasa-kwasai ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, an sami {xp} XP",
-    "currentMission": "Manufa ta yanzu"
+    "currentMission": "Manufa ta yanzu",
+    "xpTowardMission": "{xp} XP zuwa wannan Ofishin Jakadancin"
 }

@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Àwọn ẹ̀kọ́ mìíràn ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP ti gbà",
-    "currentMission": "Iṣẹ́ àyànfúnni lọ́wọ́lọ́wọ́"
+    "currentMission": "Iṣẹ́ àyànfúnni lọ́wọ́lọ́wọ́",
+    "xpTowardMission": "{xp} XP si Iṣẹ apinfunni yii"
 }

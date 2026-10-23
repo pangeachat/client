@@ -194,6 +194,7 @@ class AnalyticsPracticeView extends StatelessWidget {
           return session.isComplete && !session.loadFailed
               ? CompletedAnalyticsPracticeExercisesView(
                   session: session,
+                  earnedXp: controller.session.earnedXp,
                   launchSession: controller.startSession,
                   levelProgress: controller.levelProgress,
                 )

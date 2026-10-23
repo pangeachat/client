@@ -10648,5 +10648,6 @@
     "otherCoursesSessions": "คอร์สอื่น ๆ ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, ได้รับ {xp} XP",
-    "currentMission": "ภารกิจปัจจุบัน"
+    "currentMission": "ภารกิจปัจจุบัน",
+    "xpTowardMission": "{xp} XP สำหรับภารกิจนี้"
 }

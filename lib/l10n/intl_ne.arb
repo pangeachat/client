@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "अन्य कोर्सहरू ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP कमाइयो",
-    "currentMission": "हालको मिसन"
+    "currentMission": "हालको मिसन",
+    "xpTowardMission": "यस मिसनका लागि {xp} XP"
 }

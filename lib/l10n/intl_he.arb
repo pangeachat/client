@@ -10930,5 +10930,6 @@
     "otherCoursesSessions": "קורסים אחרים ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP נצברו",
-    "currentMission": "המשימה הנוכחית"
+    "currentMission": "המשימה הנוכחית",
+    "xpTowardMission": "{xp} XP בדרך למשימה זו"
 }

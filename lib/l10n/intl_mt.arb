@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Korsijiet oħra ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP miksuba",
-    "currentMission": "Missjoni kurrenti"
+    "currentMission": "Missjoni kurrenti",
+    "xpTowardMission": "{xp} XP lejn din il-Missjoni"
 }

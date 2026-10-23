@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Cùrsaichean eile ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP air a chosnadh",
-    "currentMission": "Rùn làithreach"
+    "currentMission": "Rùn làithreach",
+    "xpTowardMission": "{xp} XP a dh'ionnsaigh an Rùin seo"
 }

@@ -10019,5 +10019,6 @@
     "otherCoursesSessions": "Outros cursos ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP ganhos",
-    "currentMission": "Missão atual"
+    "currentMission": "Missão atual",
+    "xpTowardMission": "{xp} XP para esta Missão"
 }

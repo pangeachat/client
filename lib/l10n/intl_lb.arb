@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Aner Coursen ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP verdéngt",
-    "currentMission": "Aktuell Missioun"
+    "currentMission": "Aktuell Missioun",
+    "xpTowardMission": "{xp} XP fir dës Missioun"
 }

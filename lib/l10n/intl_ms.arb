@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Kursus lain ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP diperoleh",
-    "currentMission": "Misi semasa"
+    "currentMission": "Misi semasa",
+    "xpTowardMission": "{xp} XP untuk Misi ini"
 }

@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "نور کورسونه ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP ترلاسه شو",
-    "currentMission": "اوسنی ماموریت"
+    "currentMission": "اوسنی ماموریت",
+    "xpTowardMission": "د دې ماموریت په لور {xp} XP"
 }

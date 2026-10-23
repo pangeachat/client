@@ -10876,5 +10876,6 @@
     "otherCoursesSessions": "Iba pang kurso ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP nakuha",
-    "currentMission": "Kasalukuyang misyon"
+    "currentMission": "Kasalukuyang misyon",
+    "xpTowardMission": "{xp} XP para sa Misyon na ito"
 }

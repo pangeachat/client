@@ -10033,5 +10033,6 @@
     "otherCoursesSessions": "Іншыя курсы ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, атрымана {xp} XP",
-    "currentMission": "Бягучая місія"
+    "currentMission": "Бягучая місія",
+    "xpTowardMission": "{xp} XP да гэтай місіі"
 }

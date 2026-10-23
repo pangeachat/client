@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Kozi zingine ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP imepatikana",
-    "currentMission": "Dhamira ya sasa"
+    "currentMission": "Dhamira ya sasa",
+    "xpTowardMission": "{xp} XP kuelekea Misheni hii"
 }

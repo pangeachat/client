@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Lwm chav kawm ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, tau {xp} XP",
-    "currentMission": "Txoj haujlwm tam sim no"
+    "currentMission": "Txoj haujlwm tam sim no",
+    "xpTowardMission": "{xp} XP rau lub Hom Phiaj no"
 }

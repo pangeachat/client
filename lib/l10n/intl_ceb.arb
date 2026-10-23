@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Ubang mga kurso ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP nakuha",
-    "currentMission": "Karon nga misyon"
+    "currentMission": "Karon nga misyon",
+    "xpTowardMission": "{xp} XP padulong niini nga Misyon"
 }

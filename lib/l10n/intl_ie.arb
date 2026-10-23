@@ -10648,5 +10648,6 @@
     "otherCoursesSessions": "Cúrsaí eile ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP tuillte",
-    "currentMission": "Misean reatha"
+    "currentMission": "Misean reatha",
+    "xpTowardMission": "{xp} XP i dtreo an Mhisiúin seo"
 }

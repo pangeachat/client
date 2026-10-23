@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "ꯑꯇꯣꯞꯄꯥ ꯀꯣꯔꯁꯁꯤꯡ ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP ꯐꯪꯈ꯭ꯔꯦ",
-    "currentMission": "ꯍꯧꯖꯤꯛꯀꯤ ꯃꯤꯁꯟ"
+    "currentMission": "ꯍꯧꯖꯤꯛꯀꯤ ꯃꯤꯁꯟ",
+    "xpTowardMission": "మిషన్ వైపు {xp} XP"
 }

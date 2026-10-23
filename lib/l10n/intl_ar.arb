@@ -10322,5 +10322,6 @@
     "otherCoursesSessions": "دورات أخرى ({num})",
     "activityXpStamp": "{xp} نقطة خبرة",
     "activityCompletedWithXp": "{completed}، تم ربح {xp} نقطة خبرة",
-    "currentMission": "المهمة الحالية"
+    "currentMission": "المهمة الحالية",
+    "xpTowardMission": "{xp} نقطة خبرة نحو هذه المهمة"
 }

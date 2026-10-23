@@ -10122,5 +10122,6 @@
     "otherCoursesSessions": "Egyéb kurzusok ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP szerezve",
-    "currentMission": "Jelenlegi küldetés"
+    "currentMission": "Jelenlegi küldetés",
+    "xpTowardMission": "{xp} XP ehhez a küldetéshez"
 }

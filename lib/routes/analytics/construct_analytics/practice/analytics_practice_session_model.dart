@@ -235,7 +235,10 @@ class AnalyticsPracticeSessionModel {
   void setElapsedSeconds(int seconds) =>
       state = state.copyWith(elapsedSeconds: seconds);
 
-  void finishSession() => state = state.copyWith(finished: true);
+  /// Ends the session and fixes its bonus uses, so the ones recorded are the
+  /// ones the completion view measures.
+  void finishSession() =>
+      state = state.copyWith(finished: true, bonusUses: state.earnedBonusUses);
 
   void completeExercise() =>
       state = state.copyWith(currentIndex: state.currentIndex + 1);
@@ -294,6 +297,9 @@ class AnalyticsPracticeSessionState {
   final int elapsedSeconds;
   final int skippedActivities;
 
+  /// The bonus uses recorded when the session finished; empty until then.
+  final List<OneConstructUse> bonusUses;
+
   const AnalyticsPracticeSessionState({
     this.completedUses = const [],
     this.currentIndex = 0,
@@ -301,9 +307,11 @@ class AnalyticsPracticeSessionState {
     this.hintsUsed = 0,
     this.elapsedSeconds = 0,
     this.skippedActivities = 0,
+    this.bonusUses = const [],
   });
 
-  int get totalXpGained => completedUses.fold(0, (sum, use) => sum + use.xp);
+  /// Every use the session recorded: its answers, then its bonuses.
+  List<OneConstructUse> get recordedUses => [...completedUses, ...bonusUses];
 
   double get accuracy {
     if (completedUses.isEmpty) return 0.0;
@@ -317,20 +325,18 @@ class AnalyticsPracticeSessionState {
   bool get _giveTimeBonus =>
       elapsedSeconds <= AnalyticsPracticeConstants.timeForBonus;
 
-  int get bonusXP => accuracyBonusXP + timeBonusXP;
-
   int get accuracyBonusXP => _giveAccuracyBonus ? _bonusXP : 0;
 
   int get timeBonusXP => _giveTimeBonus ? _bonusXP : 0;
 
   int get _bonusXP => _bonusUses.fold(0, (sum, use) => sum + use.xp);
 
-  int get allXPGained => totalXpGained + bonusXP;
-
   List<OneConstructUse> get _bonusUses =>
       completedUses.where((use) => use.xp > 0).map(_bonusUse).toList();
 
-  List<OneConstructUse> get allBonusUses => [
+  /// The bonus uses the answers so far earn, freshly stamped on each read;
+  /// [AnalyticsPracticeSessionModel.finishSession] fixes them as [bonusUses].
+  List<OneConstructUse> get earnedBonusUses => [
     if (_giveAccuracyBonus) ..._bonusUses,
     if (_giveTimeBonus) ..._bonusUses,
   ];
@@ -355,6 +361,7 @@ class AnalyticsPracticeSessionState {
     int? hintsUsed,
     int? elapsedSeconds,
     int? skippedActivities,
+    List<OneConstructUse>? bonusUses,
   }) {
     return AnalyticsPracticeSessionState(
       completedUses: completedUses ?? this.completedUses,
@@ -363,6 +370,7 @@ class AnalyticsPracticeSessionState {
       hintsUsed: hintsUsed ?? this.hintsUsed,
       elapsedSeconds: elapsedSeconds ?? this.elapsedSeconds,
       skippedActivities: skippedActivities ?? this.skippedActivities,
+      bonusUses: bonusUses ?? this.bonusUses,
     );
   }
 
@@ -374,22 +382,26 @@ class AnalyticsPracticeSessionState {
       'hintsUsed': hintsUsed,
       'elapsedSeconds': elapsedSeconds,
       'skippedActivities': skippedActivities,
+      'bonusUses': bonusUses.map((e) => e.toJson()).toList(),
     };
   }
 
   factory AnalyticsPracticeSessionState.fromJson(Map<String, dynamic> json) {
     return AnalyticsPracticeSessionState(
-      completedUses:
-          (json['completedUses'] as List<dynamic>?)
-              ?.map((e) => OneConstructUse.fromJson(e))
-              .whereType<OneConstructUse>()
-              .toList() ??
-          [],
+      completedUses: _usesFromJson(json['completedUses']),
       currentIndex: json['currentIndex'] as int? ?? 0,
       finished: json['finished'] as bool? ?? false,
       hintsUsed: json['hintsUsed'] as int? ?? 0,
       elapsedSeconds: json['elapsedSeconds'] as int? ?? 0,
       skippedActivities: json['skippedActivities'] as int? ?? 0,
+      bonusUses: _usesFromJson(json['bonusUses']),
     );
   }
+
+  static List<OneConstructUse> _usesFromJson(Object? json) =>
+      (json as List<dynamic>?)
+          ?.map((e) => OneConstructUse.fromJson(e))
+          .whereType<OneConstructUse>()
+          .toList() ??
+      [];
 }

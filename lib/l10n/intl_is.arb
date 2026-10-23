@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Önnur námskeið ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP unnið",
-    "currentMission": "Núverandi verkefni"
+    "currentMission": "Núverandi verkefni",
+    "xpTowardMission": "{xp} XP í átt að þessu verkefni"
 }

@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "മറ്റ് കോഴ്‌സുകൾ ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP നേടി",
-    "currentMission": "നിലവിലെ ദൗത്യം"
+    "currentMission": "നിലവിലെ ദൗത്യം",
+    "xpTowardMission": "ഈ ദൗത്യത്തിലേക്ക് {xp} XP"
 }

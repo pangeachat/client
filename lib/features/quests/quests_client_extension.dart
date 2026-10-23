@@ -195,7 +195,7 @@ extension QuestsClientExtension on Client {
         _addSkills(xp, cache.skillXpByRoom[room.id]);
       }
     }
-    for (final lemma in group.lemmas) {
+    for (final lemma in group.creditedLemmas) {
       _addSkills(xp, cache.skillXpByLemma[lemma]);
     }
     return xp;

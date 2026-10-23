@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "ሌሎች ኮርሶች ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP አግኝቷል",
-    "currentMission": "የአሁኑ ተልዕኮ"
+    "currentMission": "የአሁኑ ተልዕኮ",
+    "xpTowardMission": "ለዚህ ተልዕኮ {xp} XP"
 }

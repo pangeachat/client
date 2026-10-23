@@ -10111,5 +10111,6 @@
     "otherCoursesSessions": "பிற பாடத்திட்டங்கள் ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP பெறப்பட்டது",
-    "currentMission": "தற்போதைய மிஷன்"
+    "currentMission": "தற்போதைய மிஷன்",
+    "xpTowardMission": "இந்த மிஷனை நோக்கி {xp} XP"
 }

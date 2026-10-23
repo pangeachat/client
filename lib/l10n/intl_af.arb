@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Ander kursusse ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP verdien",
-    "currentMission": "Huidige missie"
+    "currentMission": "Huidige missie",
+    "xpTowardMission": "{xp} XP vir hierdie Missie"
 }

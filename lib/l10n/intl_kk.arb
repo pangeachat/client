@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Басқа курстар ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP алынды",
-    "currentMission": "Ағымдағы миссия"
+    "currentMission": "Ағымдағы миссия",
+    "xpTowardMission": "Осы миссияға {xp} XP"
 }

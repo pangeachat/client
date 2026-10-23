@@ -10107,5 +10107,6 @@
     "otherCoursesSessions": "دوره‌های دیگر ({num})",
     "activityXpStamp": "{xp} امتیاز",
     "activityCompletedWithXp": "{completed}, {xp} امتیاز کسب شد",
-    "currentMission": "مأموریت فعلی"
+    "currentMission": "مأموریت فعلی",
+    "xpTowardMission": "{xp} امتیاز تجربه برای این مأموریت"
 }

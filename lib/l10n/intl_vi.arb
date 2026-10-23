@@ -7326,5 +7326,6 @@
     "otherCoursesSessions": "Các khóa học khác ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, kiếm được {xp} XP",
-    "currentMission": "Nhiệm vụ hiện tại"
+    "currentMission": "Nhiệm vụ hiện tại",
+    "xpTowardMission": "{xp} XP cho Nhiệm vụ này"
 }

@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Ezinye iikhosi ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP ifunyenwe",
-    "currentMission": "Injongo yangoku"
+    "currentMission": "Injongo yangoku",
+    "xpTowardMission": "{xp} XP kweli Phulo"
 }

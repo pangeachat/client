@@ -10797,5 +10797,6 @@
     "otherCoursesSessions": "Kiti kursai ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP uždirbta",
-    "currentMission": "Dabartinė misija"
+    "currentMission": "Dabartinė misija",
+    "xpTowardMission": "{xp} XP šiai misijai"
 }

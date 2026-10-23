@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Koorsada kale ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP ayaa la helay",
-    "currentMission": "Hawlgalka hadda jira"
+    "currentMission": "Hawlgalka hadda jira",
+    "xpTowardMission": "{xp} XP oo ku aaddan Hawshan"
 }

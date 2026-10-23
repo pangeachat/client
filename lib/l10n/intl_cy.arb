@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Cyrsiau eraill ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP wedi'u hennill",
-    "currentMission": "Cenhadaeth gyfredol"
+    "currentMission": "Cenhadaeth gyfredol",
+    "xpTowardMission": "{xp} XP tuag at y Genhadaeth hon"
 }

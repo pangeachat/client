@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Lithuto tse ling ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP e fumanoe",
-    "currentMission": "Thomo ea hajoale"
+    "currentMission": "Thomo ea hajoale",
+    "xpTowardMission": "{xp} XP ho ea ho Morero ona"
 }

@@ -10785,5 +10785,6 @@
     "otherCoursesSessions": "その他のコース ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}、{xp} XP獲得",
-    "currentMission": "現在のミッション"
+    "currentMission": "現在のミッション",
+    "xpTowardMission": "このミッションまであと {xp} XP"
 }

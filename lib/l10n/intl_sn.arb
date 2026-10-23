@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Zvimwe zvikoro ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP yawana",
-    "currentMission": "Basa riripo"
+    "currentMission": "Basa riripo",
+    "xpTowardMission": "{xp} XP kuMission iyi"
 }

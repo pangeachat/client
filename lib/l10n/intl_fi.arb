@@ -10056,5 +10056,6 @@
     "otherCoursesSessions": "Muut kurssit ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP ansaittu",
-    "currentMission": "Nykyinen tehtävä"
+    "currentMission": "Nykyinen tehtävä",
+    "xpTowardMission": "{xp} XP tähän tehtävään"
 }

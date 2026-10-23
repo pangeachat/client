@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "خولەکانی تر ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP بەدەستهات",
-    "currentMission": "ئەرکی ئێستا"
+    "currentMission": "ئەرکی ئێستا",
+    "xpTowardMission": "{xp} خاڵی ئەزموون بۆ ئەم ئەرکە"
 }

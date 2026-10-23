@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "باشقا دەرسلىكلەر ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP غا ئېرىشتىڭىز",
-    "currentMission": "نۆۋەتتىكى ۋەزىپە"
+    "currentMission": "نۆۋەتتىكى ۋەزىپە",
+    "xpTowardMission": "بۇ ۋەزىپە ئۈچۈن {xp} XP"
 }

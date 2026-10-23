@@ -10534,5 +10534,6 @@
     "otherCoursesSessions": "Andra kurser ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP intjänade",
-    "currentMission": "Nuvarande uppdrag"
+    "currentMission": "Nuvarande uppdrag",
+    "xpTowardMission": "{xp} XP mot detta uppdrag"
 }

@@ -2481,5 +2481,6 @@
     "otherCoursesSessions": "Այլ դասընթացներ ({num})",
     "activityXpStamp": "{xp} ՄՓ",
     "activityCompletedWithXp": "{completed}, վաստակել եք {xp} ՄՓ",
-    "currentMission": "Ընթացիկ առաքելություն"
+    "currentMission": "Ընթացիկ առաքելություն",
+    "xpTowardMission": "{xp} XP այս առաքելության համար"
 }
