@@ -21,7 +21,7 @@ class GoalHeaderSessionXp extends StatelessWidget {
   const GoalHeaderSessionXp({required this.room, super.key});
 
   /// Whether [room]'s XP is shown to the learner: they hold a role in it,
-  /// and it is in their current language. The goals' "+100" labels follow
+  /// and it is in their current language. The goals' "+50" labels follow
   /// the same rule, so a session never shows goal XP without its total.
   static bool shows(Room room) =>
       room.ownRole != null && CourseLanguageScope.sessionInTargetLanguage(room);
