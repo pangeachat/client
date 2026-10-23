@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-21 10:12:51.356508",
+    "@@last_modified": "2026-10-23 13:25:41.393165",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Byrja upp á nýtt",
     "readAloudStarting": "Undirbý hljóðnemann…",
     "readAloudListening": "Hlusta…",
-    "readAloudTake": "Taka {number}"
+    "readAloudTake": "Taka {number}",
+    "videoWontPlayHere": "Þetta myndband spilast ekki hér.",
+    "watchOnYoutube": "Horfa á YouTube"
 }

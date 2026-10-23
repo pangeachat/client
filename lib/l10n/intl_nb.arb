@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-21 10:12:58.337285",
+    "@@last_modified": "2026-10-23 13:25:43.641136",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10095,5 +10095,7 @@
     "readAloudStartOver": "Start på nytt",
     "readAloudStarting": "Klargjør mikrofonen …",
     "readAloudListening": "Lytter …",
-    "readAloudTake": "Opptak {number}"
+    "readAloudTake": "Opptak {number}",
+    "videoWontPlayHere": "Denne videoen kan ikke spilles av her.",
+    "watchOnYoutube": "Se på YouTube"
 }

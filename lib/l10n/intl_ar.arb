@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-21 10:12:49.798682",
+    "@@last_modified": "2026-10-23 13:25:37.203282",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10341,5 +10341,7 @@
     "readAloudStartOver": "البدء من جديد",
     "readAloudStarting": "جارٍ تجهيز الميكروفون…",
     "readAloudListening": "جارٍ الاستماع…",
-    "readAloudTake": "خذ {number}"
+    "readAloudTake": "خذ {number}",
+    "videoWontPlayHere": "لا يمكن تشغيل هذا الفيديو هنا.",
+    "watchOnYoutube": "المشاهدة على يوتيوب"
 }

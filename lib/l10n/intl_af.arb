@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-21 10:12:44.269844",
+    "@@last_modified": "2026-10-23 13:25:37.105015",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Begin oor",
     "readAloudStarting": "Maak mikrofoon gereed …",
     "readAloudListening": "Luister …",
-    "readAloudTake": "Neem {number}"
+    "readAloudTake": "Neem {number}",
+    "videoWontPlayHere": "Hierdie video sal nie hier speel nie.",
+    "watchOnYoutube": "Kyk op YouTube"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-21 10:13:03.408067",
+    "@@last_modified": "2026-10-23 13:25:46.262586",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10336,5 +10336,7 @@
     "readAloudStartOver": "Baştan başla",
     "readAloudStarting": "Mikrofon hazırlanıyor…",
     "readAloudListening": "Dinleniyor…",
-    "readAloudTake": "Alıştırma {number}"
+    "readAloudTake": "Alıştırma {number}",
+    "videoWontPlayHere": "Bu video burada oynatılamaz.",
+    "watchOnYoutube": "YouTube'da İzle"
 }

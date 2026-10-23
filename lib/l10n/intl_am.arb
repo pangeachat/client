@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-21 10:12:44.267251",
+    "@@last_modified": "2026-10-23 13:25:37.066232",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "እንደገና ጀምር",
     "readAloudStarting": "ማይክሮፎኑን በማዘጋጀት ላይ…",
     "readAloudListening": "በማዳመጥ ላይ…",
-    "readAloudTake": "ይውሰዱ {number}"
+    "readAloudTake": "ይውሰዱ {number}",
+    "videoWontPlayHere": "ይህ ቪዲዮ እዚህ አይጫወትም።",
+    "watchOnYoutube": "በYouTube ላይ ይመልከቱ"
 }

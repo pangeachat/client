@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-21 10:13:01.353483",
+    "@@last_modified": "2026-10-23 13:25:45.752936",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Dib u bilaw",
     "readAloudStarting": "Makarafoonka oo la diyaarinayo…",
     "readAloudListening": "Dhageysiga…",
-    "readAloudTake": "Qaado {number}"
+    "readAloudTake": "Qaado {number}",
+    "videoWontPlayHere": "Muuqaalkan halkan kuma shaqaynayo.",
+    "watchOnYoutube": "Ka daawo YouTube"
 }

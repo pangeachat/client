@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-21 10:12:57.977390",
+    "@@last_modified": "2026-10-23 13:25:42.208852",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "دەستپێکردنەوە",
     "readAloudStarting": "مایکرۆفۆن ئامادە دەکرێت…",
     "readAloudListening": "گوێ دەگیرێت…",
-    "readAloudTake": "وەرگرتنی {number}"
+    "readAloudTake": "وەرگرتنی {number}",
+    "videoWontPlayHere": "ئەم ڤیدیۆیە لێرە کارناکات.",
+    "watchOnYoutube": "لە یوتیوب سەیری بکە"
 }

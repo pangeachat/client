@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-21 10:12:50.789286",
+    "@@last_modified": "2026-10-23 13:25:40.468031",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Սկսել նորից",
     "readAloudStarting": "Միկրոֆոնը պատրաստվում է…",
     "readAloudListening": "Լսում եմ…",
-    "readAloudTake": "Կատարել {number}"
+    "readAloudTake": "Կատարել {number}",
+    "videoWontPlayHere": "Այս տեսանյութն այստեղ չի նվագարկվի։",
+    "watchOnYoutube": "Դիտել YouTube-ում"
 }

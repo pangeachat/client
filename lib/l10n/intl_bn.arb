@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-21 10:12:44.366947",
+    "@@last_modified": "2026-10-23 13:25:36.897672",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10663,5 +10663,7 @@
     "readAloudStartOver": "আবার শুরু করুন",
     "readAloudStarting": "মাইক্রোফোন প্রস্তুত করা হচ্ছে…",
     "readAloudListening": "শুনছি…",
-    "readAloudTake": "নিন {number}"
+    "readAloudTake": "নিন {number}",
+    "videoWontPlayHere": "এই ভিডিওটি এখানে চলবে না।",
+    "watchOnYoutube": "ইউটিউবে দেখুন"
 }

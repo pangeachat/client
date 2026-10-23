@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-21 10:13:07.565667",
+    "@@last_modified": "2026-10-23 13:25:47.476336",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10144,5 +10144,7 @@
     "readAloudStartOver": "重新開始",
     "readAloudStarting": "準備麥克風…",
     "readAloudListening": "正在聆聽…",
-    "readAloudTake": "第 {number} 次錄音"
+    "readAloudTake": "第 {number} 次錄音",
+    "videoWontPlayHere": "此處無法播放此影片。",
+    "watchOnYoutube": "在 YouTube 上觀看"
 }

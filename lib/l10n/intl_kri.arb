@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-21 10:12:52.897113",
+    "@@last_modified": "2026-10-23 13:25:41.745043",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Bigin bak",
     "readAloudStarting": "Di microphone de rɛdi…",
     "readAloudListening": "De lisin…",
-    "readAloudTake": "Tek {number}"
+    "readAloudTake": "Tek {number}",
+    "videoWontPlayHere": "Dis video nor go play ya.",
+    "watchOnYoutube": "Go wach na YouTube"
 }

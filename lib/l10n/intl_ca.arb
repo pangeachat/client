@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-21 10:12:44.739560",
+    "@@last_modified": "2026-10-23 13:25:37.914029",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10165,5 +10165,7 @@
     "readAloudStartOver": "Tornar a començar",
     "readAloudStarting": "Preparant el micròfon…",
     "readAloudListening": "Escolto…",
-    "readAloudTake": "Presa {number}"
+    "readAloudTake": "Presa {number}",
+    "videoWontPlayHere": "Aquest vídeo no es pot reproduir aquí.",
+    "watchOnYoutube": "Mira'l a YouTube"
 }

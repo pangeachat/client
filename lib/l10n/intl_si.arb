@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-21 10:13:00.469247",
+    "@@last_modified": "2026-10-23 13:25:44.824111",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "නැවත අරඹන්න",
     "readAloudStarting": "මයික්‍රෆෝනය සූදානම් කරමින්…",
     "readAloudListening": "සවන් දෙමින්…",
-    "readAloudTake": "{number} ගන්න"
+    "readAloudTake": "{number} ගන්න",
+    "videoWontPlayHere": "මෙම වීඩියෝව මෙහි වාදනය නොවේ.",
+    "watchOnYoutube": "YouTube හි නරඹන්න"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-21 10:12:49.862999",
+    "@@last_modified": "2026-10-23 13:25:40.360643",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Rekòmanse",
     "readAloudStarting": "Ap prepare mikwofòn nan…",
     "readAloudListening": "Ap koute…",
-    "readAloudTake": "Pran {number}"
+    "readAloudTake": "Pran {number}",
+    "videoWontPlayHere": "Videyo sa a pap jwe isit la.",
+    "watchOnYoutube": "Gade sou YouTube"
 }

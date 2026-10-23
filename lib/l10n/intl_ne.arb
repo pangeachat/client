@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-21 10:12:57.920527",
+    "@@last_modified": "2026-10-23 13:25:43.675232",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "फेरि सुरु गर्नुहोस्",
     "readAloudStarting": "माइक्रोफोन तयार गर्दै...",
     "readAloudListening": "सुन्दै...",
-    "readAloudTake": "{number} लिनुहोस्"
+    "readAloudTake": "{number} लिनुहोस्",
+    "videoWontPlayHere": "यो भिडियो यहाँ चल्दैन।",
+    "watchOnYoutube": "YouTube मा हेर्नुहोस्"
 }

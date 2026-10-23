@@ -2073,7 +2073,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-21 10:13:10.361922",
+    "@@last_modified": "2026-10-23 13:25:39.060799",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10895,5 +10895,7 @@
     "readAloudStartOver": "Magsimula muli",
     "readAloudStarting": "Inihahanda ang mikropono…",
     "readAloudListening": "Nakikinig…",
-    "readAloudTake": "Kumuha ng {number}"
+    "readAloudTake": "Kumuha ng {number}",
+    "videoWontPlayHere": "Hindi puwedeng i-play ang video na ito dito.",
+    "watchOnYoutube": "Panoorin sa YouTube"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-21 10:12:44.236962",
+    "@@last_modified": "2026-10-23 13:25:37.113419",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Yenidən başla",
     "readAloudStarting": "Mikrofon hazırlanır…",
     "readAloudListening": "Dinləyirəm…",
-    "readAloudTake": "Tapşırıq {number}"
+    "readAloudTake": "Tapşırıq {number}",
+    "videoWontPlayHere": "Bu video burada oxunmayacaq.",
+    "watchOnYoutube": "YouTube-da izləyin"
 }

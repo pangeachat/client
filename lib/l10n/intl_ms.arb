@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-21 10:13:01.264865",
+    "@@last_modified": "2026-10-23 13:25:43.110855",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Mula semula",
     "readAloudStarting": "Menyediakan mikrofon…",
     "readAloudListening": "Mendengar…",
-    "readAloudTake": "Ambil {number}"
+    "readAloudTake": "Ambil {number}",
+    "videoWontPlayHere": "Video ini tidak akan dimainkan di sini.",
+    "watchOnYoutube": "Tonton di YouTube"
 }

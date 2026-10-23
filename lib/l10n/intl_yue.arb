@@ -1256,7 +1256,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-21 10:13:06.937495",
+    "@@last_modified": "2026-10-23 13:25:47.283384",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10992,5 +10992,7 @@
     "readAloudStartOver": "重新開始",
     "readAloudStarting": "準備咪高峰中…",
     "readAloudListening": "聆聽中…",
-    "readAloudTake": "第 {number} 次錄音"
+    "readAloudTake": "第 {number} 次錄音",
+    "videoWontPlayHere": "此影片無法在此播放。",
+    "watchOnYoutube": "在 YouTube 上觀看"
 }

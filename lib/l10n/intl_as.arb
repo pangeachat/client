@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-21 10:12:44.278946",
+    "@@last_modified": "2026-10-23 13:25:37.293333",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "পুনৰ আৰম্ভ কৰক",
     "readAloudStarting": "মাইক্ৰ'ফোন সাজু কৰা হৈছে…",
     "readAloudListening": "শুনি আছোঁ…",
-    "readAloudTake": "লওক {number}"
+    "readAloudTake": "লওক {number}",
+    "videoWontPlayHere": "এই ভিডিঅ’টো ইয়াত নচলে।",
+    "watchOnYoutube": "ইউটিউবত চাওক"
 }

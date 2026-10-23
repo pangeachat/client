@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-21 10:13:01.933739",
+    "@@last_modified": "2026-10-23 13:25:45.699621",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Qala hape",
     "readAloudStarting": "Ho lokisoa maekrofounu…",
     "readAloudListening": "Ke mametse…",
-    "readAloudTake": "Nka {number}"
+    "readAloudTake": "Nka {number}",
+    "videoWontPlayHere": "Video ena e ke ke ea bapala mona.",
+    "watchOnYoutube": "Shebella ho YouTube"
 }

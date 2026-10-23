@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-21 10:13:07.092545",
+    "@@last_modified": "2026-10-23 13:25:46.409148",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10130,5 +10130,7 @@
     "readAloudStartOver": "மீண்டும் தொடங்கு",
     "readAloudStarting": "மைக்ரோஃபோனைத் தயார் செய்கிறது…",
     "readAloudListening": "கேட்டுக் கொண்டிருக்கிறது…",
-    "readAloudTake": "{number} எடு"
+    "readAloudTake": "{number} எடு",
+    "videoWontPlayHere": "இந்த வீடியோ இங்கே பிளே ஆகாது.",
+    "watchOnYoutube": "YouTube-ல் பாருங்கள்"
 }

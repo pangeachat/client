@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-21 10:13:17.128489",
+    "@@last_modified": "2026-10-23 13:25:44.740904",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "ٻيهر شروع ڪريو",
     "readAloudStarting": "مائڪروفون تيار ڪيو پيو وڃي…",
     "readAloudListening": "ٻڌي رهيو آهيان…",
-    "readAloudTake": "ورتو {number}"
+    "readAloudTake": "ورتو {number}",
+    "videoWontPlayHere": "هي وڊيو هتي نه هلندي.",
+    "watchOnYoutube": "يوٽيوب تي ڏسو"
 }

@@ -1317,7 +1317,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-21 10:13:05.075270",
+    "@@last_modified": "2026-10-23 13:25:46.014065",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10985,5 +10985,7 @@
     "readAloudStartOver": "మళ్ళీ మొదలుపెట్టు",
     "readAloudStarting": "మైక్రోఫోన్‌ను సిద్ధం చేస్తున్నాము…",
     "readAloudListening": "వినడం…",
-    "readAloudTake": "టేక్ {number}"
+    "readAloudTake": "టేక్ {number}",
+    "videoWontPlayHere": "ఈ వీడియో ఇక్కడ ప్లే అవదు.",
+    "watchOnYoutube": "YouTubeలో చూడండి"
 }

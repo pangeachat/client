@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-21 10:13:01.073618",
+    "@@last_modified": "2026-10-23 13:25:45.652315",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Tanga patsva",
     "readAloudStarting": "Kugadzirira maikorofoni…",
     "readAloudListening": "Ndichiteerera…",
-    "readAloudTake": "Tora {number}"
+    "readAloudTake": "Tora {number}",
+    "videoWontPlayHere": "Vhidhiyo iyi haitambe pano.",
+    "watchOnYoutube": "Tarisa paYouTube"
 }

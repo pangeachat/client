@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-21 10:12:53.903930",
+    "@@last_modified": "2026-10-23 13:25:42.069851",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Башынан баштоо",
     "readAloudStarting": "Микрофон даярдалууда…",
     "readAloudListening": "Угулууда…",
-    "readAloudTake": "{number}-чи аракет"
+    "readAloudTake": "{number}-чи аракет",
+    "videoWontPlayHere": "Бул видео бул жерде ойнобойт.",
+    "watchOnYoutube": "YouTube'дан көрүү"
 }

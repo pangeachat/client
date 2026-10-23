@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-21 10:12:54.547915",
+    "@@last_modified": "2026-10-23 13:25:42.769263",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "ເລີ່ມຕົ້ນໃໝ່",
     "readAloudStarting": "ກຳລັງກຽມໄມໂຄຣໂຟນ…",
     "readAloudListening": "ກຳລັງຟັງ…",
-    "readAloudTake": "ຮອບທີ {number}"
+    "readAloudTake": "ຮອບທີ {number}",
+    "videoWontPlayHere": "ວິດີໂອນີ້ບໍ່ສາມາດຫຼິ້ນໄດ້ຢູ່ບ່ອນນີ້.",
+    "watchOnYoutube": "ເບິ່ງໃນ YouTube"
 }

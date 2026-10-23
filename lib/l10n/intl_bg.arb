@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-21 10:12:52.064567",
+    "@@last_modified": "2026-10-23 13:25:36.906895",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Започни отначало",
     "readAloudStarting": "Подготвям микрофона…",
     "readAloudListening": "Слушам…",
-    "readAloudTake": "Дубъл {number}"
+    "readAloudTake": "Дубъл {number}",
+    "videoWontPlayHere": "Това видео няма да се възпроизвежда тук.",
+    "watchOnYoutube": "Гледайте в YouTube"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-21 10:12:55.606458",
+    "@@last_modified": "2026-10-23 13:25:42.706058",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Почни одново",
     "readAloudStarting": "Се подготвува микрофонот…",
     "readAloudListening": "Се слуша…",
-    "readAloudTake": "Преземи {number}"
+    "readAloudTake": "Преземи {number}",
+    "videoWontPlayHere": "Ова видео нема да се репродуцира овде.",
+    "watchOnYoutube": "Гледајте на YouTube"
 }

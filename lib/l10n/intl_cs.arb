@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-21 10:12:45.125615",
+    "@@last_modified": "2026-10-23 13:25:38.186528",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10529,5 +10529,7 @@
     "readAloudStartOver": "Začít znovu",
     "readAloudStarting": "Připravuji mikrofon…",
     "readAloudListening": "Poslouchám…",
-    "readAloudTake": "Pokus {number}"
+    "readAloudTake": "Pokus {number}",
+    "videoWontPlayHere": "Toto video zde nelze přehrát.",
+    "watchOnYoutube": "Přehrát na YouTube"
 }
