@@ -64,6 +64,18 @@ void main() {
     expect(quest.anchorMissionId, 'lo-2');
   });
 
+  test('conversation is chat, speaking and goals; practice stands apart '
+      '(#9559)', () {
+    const xp = MissionXpBreakdown(
+      chat: 120,
+      speaking: 80,
+      goals: 200,
+      practice: 50,
+    );
+    expect(xp.conversation, 400);
+    expect(xp.total, xp.conversation + xp.practice);
+  });
+
   test('the cache publishes room-less practice by word', () {
     final cache = MissionXpCache.instance;
     addTearDown(() => cache.seed());

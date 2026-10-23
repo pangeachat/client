@@ -85,9 +85,14 @@ jobs:
       # downloaded into the build directory rather than resolved by pub, so a
       # fresh checkout has no `librive_native_plugin.so` and any test that
       # loads a .riv fails at `RiveNative.init()`. Same one-time setup the
-      # TestFlight job runs for iOS.
+      # TestFlight job runs for iOS. `--clean`, because setup skips the
+      # download when its marker file exists, and that marker lives in the
+      # rive_native package inside the pub cache the Flutter action restores,
+      # while the library it vouches for lives in the uncached build
+      # directory: once a test shard wins the pub-cache save for a ref, every
+      # later run on it has the marker and no library (PR 9581, 2026-10-21).
       - name: Set up rive_native
-        run: dart run rive_native:setup --platform linux
+        run: dart run rive_native:setup --clean --platform linux
       - run: flutter gen-l10n
       - name: Add Firebase Messaging
         env:

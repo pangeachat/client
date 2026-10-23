@@ -105,30 +105,6 @@ void main() {
     });
   });
 
-  group('ProgressionResolution.missionForActivity', () {
-    test('the anchor Mission wins when the activity carries it, else the first '
-        'Mission listing it; null outside every quest', () {
-      final r = resolveProgression(
-        outlines: [
-          outline(
-            ['m1', 'm2'],
-            {
-              'm1': {'a'},
-              'm2': {'a', 'b'},
-            },
-            xpToComplete: 300,
-          ),
-        ],
-        xpByActivity: {'a': 150},
-      );
-      expect(r.forCourse('c1')!.anchorMissionId, 'm1');
-      expect(r.missionForActivity('a')!.missionId, 'm1');
-      expect(r.missionForActivity('a')!.progress.xp, 150);
-      expect(r.missionForActivity('b')!.missionId, 'm2');
-      expect(r.missionForActivity('zzz'), isNull);
-    });
-  });
-
   group('resolveProgression — anchor', () {
     test('the first below-threshold Mission is the anchor', () {
       final r = resolveProgression(

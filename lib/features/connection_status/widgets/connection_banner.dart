@@ -61,6 +61,8 @@ class _ConnectionBannerState extends State<ConnectionBanner> {
   @override
   void initState() {
     super.initState();
+    // Before sign-in the device's own report is the banner's only signal.
+    ConnectionStatusController.instance.watchDevice();
     ConnectionStatusController.instance.reachability.addListener(
       _checkPracticeOffline,
     );

@@ -81,7 +81,7 @@ class SpaceDetailsContent extends StatelessWidget {
   /// The gap between the card's header and its body. The wide context bar
   /// restates it above its progress bar, so the card's reveal starts
   /// pixel-for-pixel where the bar ends ([CourseContextBar.height], #8866).
-  static const double bodyTopInset = 16.0;
+  static const double bodyTopInset = 8.0;
 
   /// Below this incoming BODY height (the card minus its header) the course
   /// card renders only the Mission circles — the collapsed mobile peek (the
@@ -385,12 +385,9 @@ class _CourseSectionSubpage extends StatelessWidget {
         SpaceSettingsTabs.course => Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Pinned above the plan: the Mission circles say how many
-            // Missions are complete, so the plan carries no bar (#9420).
-            CourseObjectiveCircles(
-              objectivesProvider: controller.objectivesProvider,
-            ),
-            const SizedBox(height: 8.0),
+            // No circle row above the plan (#9559): each Mission's own
+            // header carries its progress, the current Mission and the
+            // class location, and circles here only looked tappable.
             Expanded(
               child: ListenableBuilder(
                 listenable: Listenable.merge([
@@ -400,9 +397,6 @@ class _CourseSectionSubpage extends StatelessWidget {
                 builder: (context, _) => CourseObjectivesList(
                   room: room,
                   collapsibleMissions: true,
-                  hasCompletedActivity: (activityId) => controller
-                      .roomSummariesModel
-                      .hasCompletedActivity(room.client.userID, activityId),
                   objectivesProvider: controller.objectivesProvider,
                 ),
               ),

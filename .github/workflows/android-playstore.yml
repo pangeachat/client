@@ -141,3 +141,20 @@ jobs:
       release_body: ${{ inputs.new_release_notes }}
     secrets:
       aws_role_arn: ${{ secrets.AWS_ROLE_ARN_PROD }}
+
+  notify_failure:
+    needs: deploy_playstore_internal
+    if: failure()
+    permissions:
+      id-token: write
+      contents: read
+    # Same room as the success notice, so a failed run is noticed where the
+    # build was expected to show up instead of only in the Actions tab.
+    uses: ./.github/workflows/notify-matrix-build.yml
+    with:
+      service_name: "Pangea Chat Android"
+      version: ${{ needs.deploy_playstore_internal.outputs.version || github.ref_name }}
+      headline: "(${{ inputs.environment }}) Play Store build FAILED: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+      failed: true
+    secrets:
+      aws_role_arn: ${{ secrets.AWS_ROLE_ARN_PROD }}

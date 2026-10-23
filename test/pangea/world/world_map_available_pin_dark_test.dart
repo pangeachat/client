@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -11,8 +12,8 @@ import 'package:fluffychat/routes/world/world_map_state_dot.dart';
 
 /// Covers #8174: the `available` pin's light-brand fill is near-white, which
 /// over the dark theme's near-black basemap made the map's LEAST urgent state
-/// its loudest mark. In the dark theme it fills darker instead — while every
-/// other state's fill, and the light-theme fill, are untouched.
+/// its loudest mark. In the dark theme it fills darker instead. Since #9559
+/// each state's fill is its own [PangeaColors] activity role.
 ///
 /// Also #8243: the plus glyph is white in the dark theme (the deep fill carries
 /// it) but dark-purple in light mode (the pale light-brand fill is too low
@@ -110,7 +111,7 @@ void main() {
         midFill(tester),
         Theme.of(
           tester.element(find.byType(Scaffold)),
-        ).colorScheme.secondaryContainer,
+        ).pangea.activityAvailable,
       );
 
       await pump(
@@ -123,8 +124,8 @@ void main() {
         smallFill(tester),
         Theme.of(
           tester.element(find.byType(Scaffold)),
-        ).colorScheme.secondaryContainer,
-        reason: 'the light theme is unchanged by #8174',
+        ).pangea.activityAvailable,
+        reason: 'both tiers share the available role',
       );
     });
 
@@ -154,9 +155,8 @@ void main() {
         mid,
         Theme.of(
           tester.element(find.byType(Scaffold)),
-        ).colorScheme.secondaryContainer,
-        reason:
-            'the dark fill is the theme\'s secondaryContainer, deep in dark',
+        ).pangea.activityAvailable,
+        reason: 'the dark fill is the available role, deep in dark (#9559)',
       );
       final ongoing = ActivityPinState.ongoingActive.bodyColor(
         tester.element(find.byType(Scaffold)),
@@ -213,7 +213,9 @@ void main() {
       final icon = tester.widget<Icon>(find.byIcon(Icons.add));
       expect(
         icon.color,
-        themeFor(Brightness.light).colorScheme.primary,
+        Theme.of(
+          tester.element(find.byType(Scaffold)),
+        ).pangea.onActivityAvailable,
         reason:
             'the light-purple fill is too pale for a white plus, so in light '
             'mode the glyph takes the pin\'s dark-purple label colour — which '
@@ -268,31 +270,27 @@ void main() {
       );
     });
 
-    testWidgets(
-      'the ongoing fill is the scheme\'s brand container in each theme',
-      (tester) async {
-        // Ongoing reads the scheme rather than a fixed purple, so it is the
-        // vivid brand purple in light and the scheme's lighter dark-theme cut
-        // of it, each under its own onPrimaryContainer ink.
-        for (final brightness in [Brightness.light, Brightness.dark]) {
-          await pump(
-            tester,
-            brightness: brightness,
-            state: ActivityPinState.ongoingActive,
-            tier: PinTier.mid,
-          );
-          final scheme = Theme.of(
+    testWidgets('the ongoing fill is the activity-ongoing role in each theme', (
+      tester,
+    ) async {
+      // Ongoing reads its own role (#9559), built from a fixed key so it
+      // stays one purple that carries white text in both themes.
+      for (final brightness in [Brightness.light, Brightness.dark]) {
+        await pump(
+          tester,
+          brightness: brightness,
+          state: ActivityPinState.ongoingActive,
+          tier: PinTier.mid,
+        );
+        expect(
+          midFill(tester),
+          Theme.of(
             tester.element(find.byType(Scaffold)),
-          ).colorScheme;
-          expect(
-            midFill(tester),
-            scheme.primaryContainer,
-            reason:
-                'the ongoing body is primaryContainer in ${brightness.name}',
-          );
-        }
-      },
-    );
+          ).pangea.activityOngoing,
+          reason: 'the ongoing body is activityOngoing in ${brightness.name}',
+        );
+      }
+    });
   });
 }
 

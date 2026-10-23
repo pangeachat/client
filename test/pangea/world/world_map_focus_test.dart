@@ -109,9 +109,9 @@ void main() {
     // The focused pin haloes in its state hue (here `available`), not the theme
     // primary — the treatment is state-coloured now, no outline.
     Color glowColor(WidgetTester tester) => WorldMapSelection.glow(
-      Theme.of(
+      ActivityPinState.available.bodyColor(
         tester.element(find.byType(Scaffold)),
-      ).colorScheme.secondaryContainer,
+      ),
     ).first.color;
 
     testWidgets('a focused small dot casts the state glow', (tester) async {

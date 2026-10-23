@@ -8,6 +8,7 @@ import 'package:flutter/rendering.dart';
 
 import 'package:collection/collection.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:intl/intl.dart' show NumberFormat;
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -24,13 +25,13 @@ import 'package:fluffychat/features/connection_status/filtered_network_controlle
 import 'package:fluffychat/features/connection_status/network_host_category.dart';
 import 'package:fluffychat/features/connection_status/widgets/filtered_network_note.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/map_tiles.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
-import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/course_preview_banner.dart';
 import 'package:fluffychat/routes/world/dot_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_large_markers_layer.dart';
@@ -56,7 +57,6 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
-import 'package:fluffychat/widgets/completed_stamp.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
 import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -157,9 +157,14 @@ class LargeCardSnapshot {
   final bool pinged;
   final ActivityPlanModel? plan;
   final Room? liveRoom;
-  final int starsEarned;
+
+  /// The learner's total XP from this activity, for a played card's coin.
+  final int xpEarned;
   final List<String> participants;
   final int openSlots;
+
+  /// How many open sessions a joinable card offers, for its "Open (N)".
+  final int openSessions;
   final ActivityStarLevel starLevel;
 
   /// True when this is an `available` card the course can't currently staff
@@ -175,9 +180,10 @@ class LargeCardSnapshot {
     required this.pinged,
     required this.plan,
     required this.liveRoom,
-    required this.starsEarned,
+    required this.xpEarned,
     required this.participants,
     required this.openSlots,
+    this.openSessions = 0,
     required this.starLevel,
     this.understaffed = false,
   });
@@ -855,6 +861,23 @@ class _WorldMapViewState extends State<WorldMapView>
     }
   }
 
+  /// How many open sessions of [activityId] the learner can join, from the
+  /// same discovery cache — and course scope — the course page counts its
+  /// "Open (N)" from; at least one, since the pin is joinable.
+  int _openSessionCount(String activityId) {
+    final cached = DiscoveredSessionsCache.instance.forActivity(
+      activityId,
+      course: widget.controller.courseRoom,
+    );
+    final open = cached == null
+        ? 0
+        : ActivitySessionSummariesModel(
+            cached,
+            activityId: activityId,
+          ).openSessions.length;
+    return open > 0 ? open : 1;
+  }
+
   /// Resolves everything [WorldMapLargeCard] needs for [card] — hydrates the
   /// plan, and sources participants/seats from the right place per state (a
   /// joinable session's room-preview/room, or the learner's own live room for
@@ -896,16 +919,14 @@ class _WorldMapViewState extends State<WorldMapView>
       pinged: render.pingedOf(card.activityId),
       plan: plan,
       liveRoom: liveRoom,
-      // ongoingActive's star row is the CURRENT session's own progress, not
-      // the all-time/cross-session max (world-map.instructions.md, "Goal
-      // Progress") — every other state keeps the all-time value.
-      starsEarned: state == ActivityPinState.ongoingActive
-          ? (liveRoom?.ownCompletedGoals.length ?? 0)
-          : (widget.controller.activityStarsEarned(card.activityId) ?? 0),
+      xpEarned: widget.controller.activityXpEarned(card.activityId) ?? 0,
       participants: participants,
       openSlots: openSlots,
-      // The completed-activity trail tier (all-time), so a live large card on a
-      // previously-completed activity still shows its star below the caret.
+      openSessions: state == ActivityPinState.joinable
+          ? _openSessionCount(card.activityId)
+          : 0,
+      // Whether the learner has a saved session of it — a played card wears
+      // the coin on its photo.
       starLevel: render.starLevelOf(card.activityId),
       // Dim an available card the course can't yet staff (course-scoped; the
       // renderer only ever flags `available` pins here).
@@ -1044,37 +1065,9 @@ class _WorldMapViewState extends State<WorldMapView>
               // State recreations MarkerLayer causes mid-gesture (#8136).
               animateInOf: _dotExits.markEntered,
             ).layer();
-            // The completed stamps as their own layer (activity-card map
-            // only): one at the point of every saved activity in view that
-            // isn't already drawn AS its stamp, under the pins and cards that
-            // stand on it. Read from the saved set rather than the tiered
-            // pins, so a stamp stays on the map when its card is dismissed or
-            // its pin falls outside the budget.
-            final savedIds = widget.controller.savedActivityIds;
-            final Widget stampLayer = MarkerLayer(
-              markers: [
-                if (kMapActivityCards)
-                  for (final card in render.visible)
-                    if (card.point != null &&
-                        savedIds.contains(card.activityId) &&
-                        !(render.stateOf(card.activityId) ==
-                                ActivityPinState.inProgress &&
-                            render.activityIdToTier.containsKey(
-                              card.activityId,
-                            )))
-                      Marker(
-                        point: card.point!,
-                        width: PinSize.stampMarkerBox,
-                        height: PinSize.stampMarkerBox,
-                        child: IgnorePointer(
-                          key: ValueKey('stamp-${card.activityId}'),
-                          child: const CompletedStamp(
-                            size: PinSize.starDotDiameter,
-                          ),
-                        ),
-                      ),
-              ],
-            );
+            // No stamp layer (#9559): a played activity with nothing live is
+            // drawn AS its stamp by its own pin; a live card shows it on its
+            // photo, and a live mid pin doesn't mark it.
             final Widget largeLayer = LargeMarkersLayer(
               largeCards: render.largeCards,
               currentLarge: currentLarge,
@@ -1187,10 +1180,9 @@ class _WorldMapViewState extends State<WorldMapView>
                         ...render.nonLargeCards,
                         if (!kMapActivityCards) ...render.largeCards,
                       ],
-                      savedActivityIds: savedIds,
+                      savedActivityIds: widget.controller.savedActivityIds,
                       wordsFor: widget.controller.stampWordsFor,
                     ),
-                  stampLayer,
                   _ShimmerLayer(active: warming, child: dotLayer),
                   // Dying pins (a separate layer) so they don't disturb the live pins
                   // while animating out.
@@ -1386,6 +1378,26 @@ class _WorldMapViewState extends State<WorldMapView>
                         return L10n.of(
                           context,
                         ).participantsOfTotal(participants.length, total);
+                      },
+                      markDetailOf: (card) {
+                        final l10n = L10n.of(context);
+                        final xp =
+                            widget.controller.activityXpEarned(
+                              card.activityId,
+                            ) ??
+                            0;
+                        final marks = [
+                          if (render.pingedOf(card.activityId))
+                            l10n.pingedLabel,
+                          if (xp > 0)
+                            l10n.activityCompletedWithXp(
+                              l10n.activityCompleted,
+                              NumberFormat.decimalPattern(
+                                Localizations.localeOf(context).toLanguageTag(),
+                              ).format(xp),
+                            ),
+                        ];
+                        return marks.isEmpty ? null : marks.join(', ');
                       },
                     ),
                   ),

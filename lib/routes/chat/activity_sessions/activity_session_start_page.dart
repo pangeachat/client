@@ -25,6 +25,7 @@ import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/room_summaries/activity_session_previews_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
@@ -149,6 +150,10 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
   ActivityPlanModel? activity;
   late ActivitySessionSummariesModel _roomSummariesModel;
+
+  /// The learner's saved sessions of this activity outside the course in
+  /// context (#9559), for the finished view's "Other courses".
+  Map<String, RoomSummaryResponse> _otherCompletedSessions = const {};
 
   bool showInstructions = false;
 
@@ -392,7 +397,17 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
           .map((r) => r.id),
     };
 
-    if (courseSpaceIds.isEmpty && extraRoomIds.isEmpty) {
+    // The learner's own saved sessions of this activity, in any course or
+    // none: the finished view lists the ones outside the course in context
+    // under "Other courses", since the total over it counts them (#9559).
+    final savedIds = <String>{
+      for (final room
+          in client.savedSessionsByActivity[widget.activityId] ??
+              const <Room>[])
+        room.id,
+    };
+
+    if (courseSpaceIds.isEmpty && extraRoomIds.isEmpty && savedIds.isEmpty) {
       if (mounted) setState(() => _summariesLoading = false);
       return;
     }
@@ -441,11 +456,19 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
                   course: _sessionScope,
                 ) ??
                 const <String, RoomSummaryResponse>{};
+      final otherSaved = await _loadOtherSavedSessions(
+        savedIds: savedIds,
+        known: {...results[0], ...results[1]},
+        inScope: {...courseSessions.keys, ...results[1].keys},
+        l1Code: l1Code,
+      );
+      if (!mounted) return;
       setState(() {
         _roomSummariesModel = ActivitySessionSummariesModel({
           ...courseSessions,
           ...results[1],
         }, activityId: widget.activityId);
+        _otherCompletedSessions = otherSaved;
         _summariesLoading = false;
       });
       // The summaries decide what the join list shows — their arrival is a
@@ -462,6 +485,40 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
       );
       if (mounted) setState(() => _summariesLoading = false);
     }
+  }
+
+  /// The learner's saved sessions of this activity that the page's own
+  /// list leaves out — played in another course, or in none — read from
+  /// [known] where the course read already has them, else in one batched
+  /// read. Best-effort: a failed read lists none of them (the total over the
+  /// view still counts them).
+  Future<Map<String, RoomSummaryResponse>> _loadOtherSavedSessions({
+    required Set<String> savedIds,
+    required Map<String, RoomSummaryResponse> known,
+    required Set<String> inScope,
+    required String? l1Code,
+  }) async {
+    final otherIds = savedIds.difference(inScope);
+    if (otherIds.isEmpty) return const {};
+    final missing = otherIds.difference(known.keys.toSet());
+    var fetched = const <String, RoomSummaryResponse>{};
+    if (missing.isNotEmpty) {
+      try {
+        fetched = await Matrix.of(context).client
+            .loadRoomSummaries(missing.toList(), l1Code: l1Code)
+            .timeoutNamed(
+              const Duration(seconds: 30),
+              'loadRoomSummaries: other courses\' sessions',
+            );
+      } catch (e, s) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {"activityId": widget.activityId},
+        );
+      }
+    }
+    return {for (final id in otherIds) id: ?(known[id] ?? fetched[id])};
   }
 
   Future<void> _loadActivity() async {
@@ -942,6 +999,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
           activity: activity,
           activityId: widget.activityId,
           summaries: _roomSummariesModel,
+          otherCompletedSessions: _otherCompletedSessions,
           summariesLoading: _summariesLoading,
           scrollController: scrollController,
           controller: this,

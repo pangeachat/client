@@ -17,23 +17,23 @@ import 'package:fluffychat/config/pangea_colors.dart';
 class WorldMapPingedBadge extends StatelessWidget {
   const WorldMapPingedBadge({super.key});
 
-  /// The `joinable` state green — the fill the course-plan ping badge and the
-  /// open-session pin both use, which is what makes the three read as one
-  /// signal — with its ink.
+  /// The open-session green ([PangeaColors.activityOpen]) — the fill the
+  /// course-plan ping badge and the open-session pin both use, which is what
+  /// makes the three read as one signal — with its ink.
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).pangea;
     return Container(
       padding: const EdgeInsets.all(3),
       decoration: BoxDecoration(
-        color: colors.joinable,
+        color: colors.activityOpen,
         shape: BoxShape.circle,
-        border: Border.all(color: colors.onJoinable, width: 1.5),
+        border: Border.all(color: colors.onActivityOpen, width: 1.5),
       ),
       child: Icon(
         Icons.notifications_outlined,
         size: 12,
-        color: colors.onJoinable,
+        color: colors.onActivityOpen,
       ),
     );
   }

@@ -275,6 +275,7 @@ class _PowerupsRow extends StatelessWidget {
                                       return ClusterTrackerButton(
                                         indicator: ProgressIndicatorEnum.stars,
                                         count: stars,
+                                        loading: viewModel.starsLoading,
                                         selected:
                                             selectedTab ==
                                             ProgressIndicatorEnum.stars,

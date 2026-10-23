@@ -1,82 +1,135 @@
 import 'package:flutter/material.dart';
 
+import 'package:intl/intl.dart';
+
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
-/// The completed mark: a white disc with a double ring and a check, in the
-/// mark gold — the same symbol on an activity's card and its map pin — with
-/// "×N" hung off it once the learner has finished the activity more than once.
+/// The completed mark: a gold coin with a double ring and a check in dark ink,
+/// in the theme's golds — the same symbol on an activity's card and its map
+/// pin. With a tab — the learner's total XP from the activity when [xp] is
+/// given (#9559), else "×N" once they have finished it more than once — the
+/// coin and the tab's gold text sit on a see-through pill, light or dark with
+/// the theme, for the photo it rides.
 class CompletedStamp extends StatelessWidget {
   final double size;
   final int times;
 
-  const CompletedStamp({required this.size, this.times = 1, super.key});
+  /// The learner's total XP from every finished session of the activity;
+  /// above zero it takes the tab ("450 XP", shortened from five digits).
+  final int xp;
 
-  /// The stamp's disc, under its rings and check — white in both themes.
-  static const Color paper = Colors.white;
+  /// The tab's text size; null sizes it to a card's stamp. A larger badge —
+  /// the start page's total over its image — sets it.
+  final double? labelSize;
 
-  /// The gold of the stamp's rings and check: the mark gold tuned for a light
-  /// surface whatever the theme, because it is always drawn on the white
-  /// [paper]. The dark theme's mark gold is a light tone that would wash out
-  /// there.
-  static Color get ink => PangeaColors.of(Brightness.light).goldGraphic;
+  const CompletedStamp({
+    required this.size,
+    this.times = 1,
+    this.xp = 0,
+    this.labelSize,
+    super.key,
+  });
+
+  /// The XP from which the stamp's pill shortens the number ("12K XP").
+  static const int _compactFrom = 10000;
+
+  /// The coin's disc (#9559): the bright fixed gold in both themes.
+  static Color paperOf(ThemeData theme) => theme.pangea.goldFixedDim;
+
+  /// The coin's rings and check: the fixed gold's own ink, about 10:1 on
+  /// the disc in both themes.
+  static Color inkOf(ThemeData theme) => theme.pangea.onGoldFixed;
+
+  /// The tab's see-through pill, for the photo it rides: the surface in
+  /// light, the scrim in dark. Each alpha is the lightest touch that keeps
+  /// the tab's `gold` text at 4.5:1 over any photo — 90% surface keeps the
+  /// light T40 gold at 5.2:1 over a black photo, 72% scrim the dark T80 gold
+  /// at 5.4:1 over a white one.
+  static Color scrimOf(ThemeData theme) => theme.brightness == Brightness.light
+      ? theme.colorScheme.surface.withValues(alpha: 0.9)
+      : theme.colorScheme.scrim.withValues(alpha: 0.72);
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final label = times > 1
-        ? L10n.of(context).completedTimes(times)
-        : L10n.of(context).activityCompleted;
+    final l10n = L10n.of(context);
+    final completed = times > 1
+        ? l10n.completedTimes(times)
+        : l10n.activityCompleted;
+    final locale = Localizations.localeOf(context).toLanguageTag();
+    final label = xp > 0
+        ? l10n.activityCompletedWithXp(
+            completed,
+            NumberFormat.decimalPattern(locale).format(xp),
+          )
+        : completed;
+    // Locale-formatted like every other XP figure (#9559); only a total too
+    // wide for the stamp's pill is shortened, in the locale's own short form.
+    final tab = xp >= _compactFrom
+        ? l10n.activityXpStamp(NumberFormat.compact(locale: locale).format(xp))
+        : xp > 0
+        ? l10n.xpAmount(xp)
+        : times > 1
+        ? '×${NumberFormat.decimalPattern(locale).format(times)}'
+        : null;
+    final coin = CustomPaint(
+      size: Size.square(size),
+      painter: _CompletedStampPainter(ink: inkOf(theme), paper: paperOf(theme)),
+    );
+    if (tab == null) {
+      return Semantics(
+        label: label,
+        child: ExcludeSemantics(
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: theme.colorScheme.shadow.withValues(alpha: 0.3),
+                  blurRadius: 3.0,
+                  offset: const Offset(0, 1.5),
+                ),
+              ],
+            ),
+            child: coin,
+          ),
+        ),
+      );
+    }
+    // With a tab, the coin and its gold text ride a see-through pill
+    // (#9559), built to sit on a photo: the scrim, not the photo, is what
+    // the gold reads against ([scrimOf]).
     return Semantics(
       label: label,
       child: ExcludeSemantics(
-        child: SizedBox(
-          width: size + (times > 1 ? size * 0.35 : 0),
-          height: size + (times > 1 ? size * 0.3 : 0),
-          child: Stack(
-            clipBehavior: Clip.none,
+        child: Container(
+          padding: EdgeInsetsDirectional.fromSTEB(
+            2.0,
+            2.0,
+            labelSize == null ? 7.0 : 10.0,
+            2.0,
+          ),
+          decoration: BoxDecoration(
+            color: scrimOf(theme),
+            borderRadius: BorderRadius.circular(999.0),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            spacing: 4.0,
             children: [
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.3),
-                      blurRadius: 3.0,
-                      offset: const Offset(0, 1.5),
-                    ),
-                  ],
-                ),
-                child: CustomPaint(
-                  size: Size.square(size),
-                  painter: _CompletedStampPainter(ink: ink, paper: paper),
+              coin,
+              Text(
+                tab,
+                maxLines: 1,
+                softWrap: false,
+                style: TextStyle(
+                  color: theme.pangea.gold,
+                  fontSize: labelSize ?? (size * 0.75).clamp(10.0, 12.0),
+                  fontWeight: FontWeight.w800,
+                  height: 1.1,
                 ),
               ),
-              if (times > 1)
-                Positioned(
-                  right: 0,
-                  bottom: 0,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 4.0,
-                      vertical: 1.0,
-                    ),
-                    decoration: BoxDecoration(
-                      color: theme.pangea.goldFixedDim,
-                      borderRadius: BorderRadius.circular(999.0),
-                      border: Border.all(color: Colors.white, width: 1.5),
-                    ),
-                    child: Text(
-                      '×$times',
-                      style: TextStyle(
-                        color: theme.pangea.onGoldFixed,
-                        fontSize: (size * 0.36).clamp(8.0, 12.0),
-                        fontWeight: FontWeight.w900,
-                        height: 1.1,
-                      ),
-                    ),
-                  ),
-                ),
             ],
           ),
         ),

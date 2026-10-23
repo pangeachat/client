@@ -128,7 +128,6 @@ void main() {
             card: card,
             state: ActivityPinState.available,
             pinged: false,
-            starsEarned: 0,
             participants: const [],
             plan: null,
             openSlots: 2,

@@ -4238,7 +4238,7 @@
     "coursePlan": "Course Plan",
     "upNext": "Up next",
     "@upNext": {
-        "description": "Label on the course plan's next Mission (learning objective) header — the one the learner should work on next."
+        "description": "Label on the course plan's next Mission (learning objective) header — the one the learner should work on next — and above the activity the Mission card's main button opens."
     },
     "missionDueDate": "Due {date}, {time}",
     "@missionDueDate": {
@@ -5724,10 +5724,11 @@
     "analyticsSubscriptionWarningBody": "Without a subscription, your messages don't earn XP or add new words and grammar.",
     "xpAmount": "{count} XP",
     "@xpAmount": {
-        "description": "The XP a learner earned in one activity session, on its row in the Stars list.",
+        "description": "An amount of XP the learner earned: one activity session's on its row in the Stars list, or so far in a running session, at the left of its goal header.",
         "placeholders": {
             "count": {
-                "type": "int"
+                "type": "int",
+                "format": "decimalPattern"
             }
         }
     },
@@ -5839,13 +5840,6 @@
             "language": {}
         }
     },
-    "sessionXpTowardObjective": "{xp} XP this session; {remaining} more completes the objective",
-    "@sessionXpTowardObjective": {
-        "placeholders": {
-            "xp": {},
-            "remaining": {}
-        }
-    },
     "objectiveCircleComplete": "Mission {index}: complete",
     "@objectiveCircleComplete": {
         "placeholders": {
@@ -5944,30 +5938,37 @@
     "@missionStarEarned": {
         "description": "Beside the Mission card's ring once the Mission is complete."
     },
-    "xpFromChats": "Chats {xp}",
-    "@xpFromChats": {
-        "description": "Legend on the Mission card's ring: XP earned from chat messages in this Mission's activities.",
+    "xpFromConversation": "Conversation {xp}",
+    "@xpFromConversation": {
         "placeholders": {
             "xp": {}
         }
     },
-    "xpFromGoals": "Goals {xp}",
-    "@xpFromGoals": {
-        "description": "Legend on the Mission card's ring: XP earned from completed activity goals.",
+    "xpIncludingGoals": "including {xp} from goals",
+    "@xpIncludingGoals": {
         "placeholders": {
             "xp": {}
         }
     },
+    "missionOtherLanguageNotice": "This Mission is from a course in {language}. Your progress on it only counts while you're learning {language}.",
+    "@missionOtherLanguageNotice": {
+        "placeholders": {
+            "language": {}
+        }
+    },
+    "missionLanguageMismatchDesc": "This Mission is from a course in {language}. Switch your target language to {language}?",
+    "@missionLanguageMismatchDesc": {
+        "placeholders": {
+            "language": {}
+        }
+    },
+    "xpBySkillTitle": "By skill",
     "xpFromPractice": "Practice {xp}",
     "@xpFromPractice": {
-        "description": "Legend on the Mission card's ring: XP earned from practice on this Mission's words.",
+        "description": "Legend on a Mission's XP bar or ring: XP earned from practice exercises toward this Mission.",
         "placeholders": {
             "xp": {}
         }
-    },
-    "playMission": "Play",
-    "@playMission": {
-        "description": "Main button on the course page's Mission card; opens the best next activity for this Mission."
     },
     "wordCount": "{count, plural, =1{1 word} other{{count} words}}",
     "@wordCount": {
@@ -5978,9 +5979,52 @@
             }
         }
     },
-    "continueActivity": "Continue",
-    "@continueActivity": {
-        "description": "The Mission card's main button when the learner is already in an unfinished activity session; it reopens that session. The activity's name shows under it."
+    "missionNextActivity": "Next activity",
+    "missionContinueActivity": "Continue activity",
+    "missionPlayTarget": "{action}: {activity}",
+    "@missionPlayTarget": {
+        "placeholders": {
+            "action": {},
+            "activity": {}
+        }
+    },
+    "goalXpGain": "+{xp}",
+    "@goalXpGain": {
+        "placeholders": {
+            "xp": {
+                "type": "int",
+                "format": "decimalPattern"
+            }
+        }
+    },
+    "finishedInThisCourse": "Finished in this course ({num})",
+    "@finishedInThisCourse": {
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "otherCoursesSessions": "Other courses ({num})",
+    "@otherCoursesSessions": {
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "activityXpStamp": "{xp} XP",
+    "@activityXpStamp": {
+        "placeholders": {
+            "xp": {}
+        }
+    },
+    "activityCompletedWithXp": "{completed}, {xp} XP earned",
+    "@activityCompletedWithXp": {
+        "placeholders": {
+            "completed": {},
+            "xp": {}
+        }
     },
     "noObjectiveActivitiesYet": "You haven't completed an activity for this objective yet. Start one from your course.",
     "@noObjectiveActivitiesYet": {
@@ -5989,15 +6033,6 @@
     "objectiveNotInYourCourses": "This objective isn't in any of your courses.",
     "@objectiveNotInYourCourses": {
         "description": "Shown when a Learning Objective's detail page opens for an objective none of the learner's joined courses carries (an old link, or a course they left)."
-    },
-    "objectiveActivityCount": "{count, plural, =0{No activities yet} =1{1 activity played} other{{count} activities played}}",
-    "@objectiveActivityCount": {
-        "description": "Under a Learning Objective in the list: how many of its activities the learner has played.",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "activityCompleted": "Completed",
     "@activityCompleted": {
@@ -6033,6 +6068,7 @@
     "@connectionBackOnline": {
         "description": "Banner shown for a few seconds when the connection to Pangea Chat comes back after being lost."
     },
+    "currentMission": "Current mission",
     "classLocation": "Class location",
     "@classLocation": {
         "description": "Above the Mission circle the teacher's due dates say the class is on now."

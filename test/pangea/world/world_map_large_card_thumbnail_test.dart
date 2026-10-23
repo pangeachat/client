@@ -7,9 +7,9 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
+import 'package:fluffychat/pangea/common/widgets/activity_tile_body.dart';
 import 'package:fluffychat/routes/world/world_map_large_card.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
-import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import '../activity_session_fixtures.dart';
 import '../get_test_client.dart';
@@ -67,7 +67,6 @@ void main() {
               pinged: false,
               plan: null,
               liveRoom: liveRoom,
-              starsEarned: 1,
               openSlots: 1,
               onTap: () {},
               onClose: onClose,
@@ -151,7 +150,7 @@ void main() {
   });
 
   group('one left edge', () {
-    testWidgets('the title sits directly above the stars on a live card', (
+    testWidgets('the title sits directly above the body on a live card', (
       tester,
     ) async {
       await pumpCard(
@@ -163,7 +162,7 @@ void main() {
       expect(
         tester.getTopLeft(find.text(card.title)).dx,
         moreOrLessEquals(
-          tester.getTopLeft(find.byType(ActivityStarRow)).dx,
+          tester.getTopLeft(find.byType(ActivityTileBody)).dx,
           epsilon: 0.5,
         ),
       );

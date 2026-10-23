@@ -66,7 +66,7 @@ class CourseContextBar extends StatefulWidget {
 
   /// The space under the progress bar, closing the card at the height the
   /// track needs to breathe.
-  static const double bottomInset = 12.0;
+  static const double bottomInset = 6.0;
 
   /// The bar's height on wide, stated from its parts: the panel header, the
   /// card body's top inset, the progress track, and [bottomInset]. The course

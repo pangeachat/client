@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_xp_label.dart';
 import 'package:fluffychat/widgets/goal_diamond.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class GoalStatusWidget extends StatelessWidget {
+  /// A bare diamond's box: the 28 icon plus 4 padding a side.
+  static const double diamondBox = 36.0;
+
   final ActivityRoleGoal goal;
   final bool complete;
 
@@ -14,6 +18,12 @@ class GoalStatusWidget extends StatelessWidget {
   final TextStyle textStyle;
   final String? starTarget;
 
+  /// What an earned goal pays, drawn as a small gold "+N" under its diamond
+  /// (#9559). When set, the line is reserved under every diamond, earned or
+  /// not, so earning one never shifts the row. Null draws the diamond alone.
+  /// Only on the bare diamond ([showLabel] false).
+  final int? goalXp;
+
   const GoalStatusWidget({
     required this.goal,
     required this.complete,
@@ -21,6 +31,7 @@ class GoalStatusWidget extends StatelessWidget {
     this.showLabel = true,
     this.textStyle = const TextStyle(fontSize: 15),
     this.starTarget,
+    this.goalXp,
     super.key,
   });
 
@@ -51,6 +62,25 @@ class GoalStatusWidget extends StatelessWidget {
           key: MatrixState.pAnyState.layerLinkAndKey(starTarget).key,
           child: icon,
         ),
+      );
+    }
+
+    final goalXp = this.goalXp;
+    if (!showLabel && goalXp != null) {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          icon,
+          // Held under every diamond, earned or not, at the label's own
+          // height — which follows the text size, so it never clips.
+          Visibility(
+            visible: complete,
+            maintainSize: true,
+            maintainAnimation: true,
+            maintainState: true,
+            child: GoalXpLabel(xp: goalXp),
+          ),
+        ],
       );
     }
 

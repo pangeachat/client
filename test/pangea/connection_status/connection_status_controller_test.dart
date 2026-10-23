@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -15,6 +16,7 @@ import 'package:fluffychat/features/connection_status/filtered_network_controlle
 import 'package:fluffychat/features/connection_status/network_host_category.dart';
 import 'package:fluffychat/features/connection_status/network_probe.dart';
 import 'package:fluffychat/features/connection_status/network_type.dart';
+import 'package:fluffychat/features/connection_status/network_verdict.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 /// #9512 — when the connection to the chat server counts as lost, and why.
@@ -26,7 +28,7 @@ void main() {
   late StreamController<List<ConnectivityResult>> networkChanges;
   late bool resumed;
 
-  TestWidgetsFlutterBinding.ensureInitialized();
+  final binding = TestWidgetsFlutterBinding.ensureInitialized();
 
   setUpAll(() async {
     // A report reads Environment.appConfigOverride from a GetStorage box that
@@ -42,25 +44,24 @@ void main() {
     await GetStorage.init('env_override');
   });
 
-  setUp(() {
-    SharedPreferences.setMockInitialValues({});
-    neutralAnswer = NetworkProbeResult.answered;
-    probes = 0;
-    networkChanges = StreamController.broadcast();
-    resumed = true;
+  /// Fakes the network, leaving the foreground check as it is.
+  void fakeNetwork() {
     controller.probe = (url) async {
       probes++;
       return neutralAnswer;
     };
     controller.onNetworkChanged = () => networkChanges.stream;
     controller.currentNetworkType = () async => NetworkType.wifi;
-    controller.isAppResumed = () => resumed;
-  });
+  }
 
-  tearDown(() async {
-    controller.resetForTest();
-    ErrorHandler.resetReportedOnceKeysForTest();
-    unawaited(networkChanges.close());
+  setUp(() {
+    SharedPreferences.setMockInitialValues({});
+    neutralAnswer = NetworkProbeResult.answered;
+    probes = 0;
+    networkChanges = StreamController.broadcast();
+    resumed = true;
+    fakeNetwork();
+    controller.isAppInForeground = () => resumed;
   });
 
   Future<void> settle() async {
@@ -68,6 +69,15 @@ void main() {
       await Future<void>.delayed(Duration.zero);
     }
   }
+
+  tearDown(() async {
+    // A report in flight must land before the keys are cleared, or it lands
+    // in the next test.
+    await settle();
+    controller.resetForTest();
+    ErrorHandler.resetReportedOnceKeysForTest();
+    unawaited(networkChanges.close());
+  });
 
   SyncStatusUpdate connectionFailure() => SyncStatusUpdate(
     SyncStatus.error,
@@ -151,6 +161,33 @@ void main() {
     expect(controller.status.value, ConnectionStatus.connected);
   });
 
+  group('#9434 the real foreground check', () {
+    setUp(() {
+      // resetForTest puts the real check back; the network stays faked.
+      controller.resetForTest();
+      fakeNetwork();
+    });
+    tearDown(
+      () => binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed),
+    );
+
+    test('counts failures in an unfocused window', () async {
+      binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
+      await fail(2);
+
+      expect(controller.status.value, ConnectionStatus.unreachable);
+    });
+
+    for (final state in [AppLifecycleState.hidden, AppLifecycleState.paused]) {
+      test('ignores failures while ${state.name}', () async {
+        binding.handleAppLifecycleStateChanged(state);
+        await fail(3);
+
+        expect(controller.status.value, ConnectionStatus.connected);
+      });
+    }
+  });
+
   test('a successful sync between failures resets the count', () async {
     await fail(1);
     controller.onSyncStatus(const SyncStatusUpdate(SyncStatus.finished));
@@ -167,6 +204,99 @@ void main() {
     expect(controller.status.value, ConnectionStatus.offline);
     expect(probes, 0);
   });
+
+  // Before sign-in there is no sync loop, so the device's own report is the
+  // only signal. See connection-status.instructions.md, "Before sign-in".
+  group('before any account signs in', () {
+    test('the device reporting no network is offline', () async {
+      controller.watchDevice();
+      networkChanges.add([ConnectivityResult.none]);
+      await settle();
+
+      expect(controller.status.value, ConnectionStatus.offline);
+      expect(probes, 0);
+    });
+
+    test('the device reporting a network again says back online', () async {
+      controller.watchDevice();
+      networkChanges.add([ConnectivityResult.none]);
+      await settle();
+      networkChanges.add([ConnectivityResult.wifi]);
+      await settle();
+
+      expect(controller.status.value, ConnectionStatus.backOnline);
+      expect(probes, 0);
+    });
+
+    test('signing out while the device is offline keeps it offline', () async {
+      controller.onSyncStatus(const SyncStatusUpdate(SyncStatus.finished));
+      networkChanges.add([ConnectivityResult.none]);
+      await settle();
+      expect(controller.status.value, ConnectionStatus.offline);
+
+      controller.reset();
+      expect(controller.status.value, ConnectionStatus.offline);
+
+      // The device's report still reaches the banner on the sign-in page.
+      networkChanges.add([ConnectivityResult.wifi]);
+      await settle();
+      expect(controller.status.value, ConnectionStatus.backOnline);
+    });
+
+    // A failed sign-in request starts the chat-server check; its first
+    // result is the banner's signal, since no sync loop can be.
+    test(
+      'the chat-server check says can\'t reach at once, and reports',
+      () async {
+        controller.onChatServerChecked(NetworkVerdict.filtered);
+
+        expect(controller.status.value, ConnectionStatus.unreachable);
+        await settle();
+        expect(ErrorHandler.reportedOnceKeysForTest, contains(unreachableKey));
+      },
+    );
+
+    test('the chat-server check says offline when nothing answers', () {
+      controller.onChatServerChecked(NetworkVerdict.offline);
+
+      expect(controller.status.value, ConnectionStatus.offline);
+    });
+
+    test('a chat server that answers says back online', () {
+      controller.onChatServerChecked(NetworkVerdict.filtered);
+      controller.onChatServerAnswered();
+      expect(controller.status.value, ConnectionStatus.backOnline);
+
+      controller.onChatServerChecked(NetworkVerdict.filtered);
+      controller.onChatServerChecked(NetworkVerdict.reachable);
+      expect(controller.status.value, ConnectionStatus.backOnline);
+    });
+  });
+
+  test('with an account signed in, the chat-server check says nothing', () {
+    controller.onSyncStatus(const SyncStatusUpdate(SyncStatus.finished));
+    controller.onChatServerChecked(NetworkVerdict.filtered);
+    controller.onChatServerAnswered();
+
+    expect(controller.status.value, ConnectionStatus.connected);
+  });
+
+  test(
+    'with an account signed in, a network again waits for the sync to confirm',
+    () async {
+      controller.onSyncStatus(const SyncStatusUpdate(SyncStatus.finished));
+      networkChanges.add([ConnectivityResult.none]);
+      await settle();
+      expect(controller.status.value, ConnectionStatus.offline);
+
+      networkChanges.add([ConnectivityResult.wifi]);
+      await settle();
+      expect(controller.status.value, ConnectionStatus.offline);
+
+      controller.onSyncStatus(const SyncStatusUpdate(SyncStatus.finished));
+      expect(controller.status.value, ConnectionStatus.backOnline);
+    },
+  );
 
   test(
     'a new network while lost asks again whether the device is online',
