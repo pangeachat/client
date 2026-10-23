@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-23 12:42:48.818953",
+    "@@last_modified": "2026-10-23 13:25:40.191541",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Npaj lub microphone…",
     "readAloudListening": "Mloog…",
     "readAloudTake": "Siv {number}",
+    "videoWontPlayHere": "Daim vis dis aus no yuav tsis ua si ntawm no.",
+    "watchOnYoutube": "Saib hauv YouTube",
     "createMyOwnCourse": "Tsim kuv tus kheej chav kawm"
 }

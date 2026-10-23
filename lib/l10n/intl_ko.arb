@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 12:42:50.372795",
+    "@@last_modified": "2026-10-23 13:25:41.824135",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10232,5 +10232,7 @@
     "readAloudStarting": "마이크 준비 중…",
     "readAloudListening": "듣는 중…",
     "readAloudTake": "{number}번째 시도",
+    "videoWontPlayHere": "이 동영상은 여기에서 재생되지 않습니다.",
+    "watchOnYoutube": "YouTube에서 시청",
     "createMyOwnCourse": "나만의 코스 만들기"
 }

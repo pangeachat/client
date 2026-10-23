@@ -2552,7 +2552,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-23 12:42:53.211889",
+    "@@last_modified": "2026-10-23 13:25:44.238235",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10953,5 +10953,7 @@
     "readAloudStarting": "A preparar o microfone…",
     "readAloudListening": "A ouvir…",
     "readAloudTake": "Tentativa {number}",
+    "videoWontPlayHere": "Este vídeo não será reproduzido aqui.",
+    "watchOnYoutube": "Ver no YouTube",
     "createMyOwnCourse": "Criar o meu próprio curso"
 }

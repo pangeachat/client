@@ -144,8 +144,19 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   bool get enablePlayWithBot =>
       showInviteOptions && !widget.room.botHasActivityRole;
 
+  /// Every seat is filled. This page then shows only when a session link
+  /// opened it on a session the learner already has a role in, so it offers
+  /// Continue into the chat instead of the waiting room
+  /// (activity-start-page.instructions.md, "The CTA row": an ongoing session
+  /// the learner is in leads with Continue).
+  bool get sessionStarted => widget.room.isActivityStarted;
+
+  void continueToChat() =>
+      NavigationUtil.goToSpaceRoute(widget.room.id, [], context);
+
   @override
   String get descriptionText {
+    if (sessionStarted) return L10n.of(context).inOngoingActivity;
     final roles = widget.room.numRemainingRoles;
     return roles > 1
         ? L10n.of(context).waitingToFillRole(roles)

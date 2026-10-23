@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 12:42:45.472370",
+    "@@last_modified": "2026-10-23 13:25:36.897672",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10664,5 +10664,7 @@
     "readAloudStarting": "মাইক্রোফোন প্রস্তুত করা হচ্ছে…",
     "readAloudListening": "শুনছি…",
     "readAloudTake": "নিন {number}",
+    "videoWontPlayHere": "এই ভিডিওটি এখানে চলবে না।",
+    "watchOnYoutube": "ইউটিউবে দেখুন",
     "createMyOwnCourse": "আমার নিজের কোর্স তৈরি করুন"
 }

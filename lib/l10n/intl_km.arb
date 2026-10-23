@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-10-23 12:42:49.834687",
+    "@@last_modified": "2026-10-23 13:25:41.939725",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "កំពុងរៀបចំមីក្រូហ្វូន…",
     "readAloudListening": "កំពុងស្ដាប់…",
     "readAloudTake": "យក {number}",
+    "videoWontPlayHere": "វីដេអូនេះមិនអាចចាក់នៅទីនេះបានទេ។",
+    "watchOnYoutube": "មើលនៅលើ YouTube",
     "createMyOwnCourse": "បង្កើតវគ្គសិក្សាផ្ទាល់ខ្លួន"
 }

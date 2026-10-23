@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-23 12:42:54.939316",
+    "@@last_modified": "2026-10-23 13:25:47.415080",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "مىكروفون تەييارلىنىۋاتىدۇ…",
     "readAloudListening": "تىڭشاش…",
     "readAloudTake": "{number}-قېتىملىق سۆزلەش",
+    "videoWontPlayHere": "بۇ سىن بۇ يەردە قويۇلمايدۇ.",
+    "watchOnYoutube": "YouTube دا كۆرۈڭ",
     "createMyOwnCourse": "ئۆز كۇرسۇمنى قۇرۇش"
 }

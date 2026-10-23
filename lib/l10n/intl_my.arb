@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-23 12:42:52.160156",
+    "@@last_modified": "2026-10-23 13:25:44.160622",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "မိုက်ခရိုဖုန်း ပြင်ဆင်နေသည်…",
     "readAloudListening": "နားထောင်နေသည်…",
     "readAloudTake": "{number} ကြိမ်မြောက်",
+    "videoWontPlayHere": "ဤဗီဒီယိုကို ဤနေရာတွင် ဖွင့်၍မရပါ။",
+    "watchOnYoutube": "YouTube တွင် ကြည့်ရန်",
     "createMyOwnCourse": "ကိုယ်ပိုင်သင်တန်းဖန်တီးမည်"
 }

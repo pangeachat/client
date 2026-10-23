@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-10-23 12:42:51.666700",
+    "@@last_modified": "2026-10-23 13:25:43.051877",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "मायक्रोफोन तयार करत आहे…",
     "readAloudListening": "ऐकत आहे…",
     "readAloudTake": "टेक {number}",
+    "videoWontPlayHere": "हा व्हिडिओ येथे प्ले होणार नाही.",
+    "watchOnYoutube": "YouTube वर पहा",
     "createMyOwnCourse": "माझा स्वतःचा कोर्स तयार करा"
 }

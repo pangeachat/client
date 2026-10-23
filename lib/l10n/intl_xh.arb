@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-23 12:42:55.481411",
+    "@@last_modified": "2026-10-23 13:25:47.467791",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Ndilungiselela imakrofoni…",
     "readAloudListening": "Ndimamele…",
     "readAloudTake": "Thatha {number}",
+    "videoWontPlayHere": "Le vidiyo ayizukudlala apha.",
+    "watchOnYoutube": "Bukela kuYouTube",
     "createMyOwnCourse": "Yenza eyakho ikhosi"
 }

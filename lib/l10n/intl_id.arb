@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 12:42:49.414770",
+    "@@last_modified": "2026-10-23 13:25:41.009002",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10112,5 +10112,7 @@
     "readAloudStarting": "Menyiapkan mikrofon…",
     "readAloudListening": "Mendengarkan…",
     "readAloudTake": "Ambil {number}",
+    "videoWontPlayHere": "Video ini tidak dapat diputar di sini.",
+    "watchOnYoutube": "Tonton di YouTube",
     "createMyOwnCourse": "Buat kursus saya sendiri"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 12:42:52.566088",
+    "@@last_modified": "2026-10-23 13:25:44.538440",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -10039,5 +10039,7 @@
     "readAloudStarting": "Preparando o microfone…",
     "readAloudListening": "Ouvindo…",
     "readAloudTake": "Tentativa {number}",
+    "videoWontPlayHere": "Este vídeo não será reproduzido aqui.",
+    "watchOnYoutube": "Assistir no YouTube",
     "createMyOwnCourse": "Criar meu próprio curso"
 }

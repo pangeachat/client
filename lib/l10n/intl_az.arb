@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-23 12:42:45.828734",
+    "@@last_modified": "2026-10-23 13:25:37.113419",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Mikrofon hazırlanır…",
     "readAloudListening": "Dinləyirəm…",
     "readAloudTake": "Tapşırıq {number}",
+    "videoWontPlayHere": "Bu video burada oxunmayacaq.",
+    "watchOnYoutube": "YouTube-da izləyin",
     "createMyOwnCourse": "Öz kursumu yarat"
 }

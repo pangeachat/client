@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-23 12:42:48.590180",
+    "@@last_modified": "2026-10-23 13:25:40.156873",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Ke hoʻomākaukau nei i ka microphone…",
     "readAloudListening": "Ke hoʻolohe nei…",
     "readAloudTake": "Lawe {number}",
+    "videoWontPlayHere": "ʻAʻole e pāʻani kēia wikiō ma ʻaneʻi.",
+    "watchOnYoutube": "E nānā ma YouTube",
     "createMyOwnCourse": "Hana i kaʻu papa ponoʻī"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-23 12:42:47.752430",
+    "@@last_modified": "2026-10-23 13:25:39.241940",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10039,5 +10039,7 @@
     "readAloudStarting": "Preparando o micrófono…",
     "readAloudListening": "Escoitando…",
     "readAloudTake": "Toma {number}",
+    "videoWontPlayHere": "Este vídeo non se pode reproducir aquí.",
+    "watchOnYoutube": "Ver en YouTube",
     "createMyOwnCourse": "Crear o meu propio curso"
 }

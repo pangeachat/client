@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 12:42:52.773250",
+    "@@last_modified": "2026-10-23 13:25:44.520422",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10768,5 +10768,7 @@
     "readAloudStarting": "Se pregătește microfonul…",
     "readAloudListening": "Se ascultă…",
     "readAloudTake": "Preluare {number}",
+    "videoWontPlayHere": "Acest videoclip nu va fi redat aici.",
+    "watchOnYoutube": "Vizionează pe YouTube",
     "createMyOwnCourse": "Creează-mi propriul curs"
 }

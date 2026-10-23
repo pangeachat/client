@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-23 12:42:54.009523",
+    "@@last_modified": "2026-10-23 13:25:45.752936",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Makarafoonka oo la diyaarinayo…",
     "readAloudListening": "Dhageysiga…",
     "readAloudTake": "Qaado {number}",
+    "videoWontPlayHere": "Muuqaalkan halkan kuma shaqaynayo.",
+    "watchOnYoutube": "Ka daawo YouTube",
     "createMyOwnCourse": "Samee koorsadayda"
 }

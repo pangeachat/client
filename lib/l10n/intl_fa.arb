@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 12:42:47.508336",
+    "@@last_modified": "2026-10-23 13:25:38.723181",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10127,5 +10127,7 @@
     "readAloudStarting": "آماده‌سازی میکروفون…",
     "readAloudListening": "در حال گوش دادن…",
     "readAloudTake": "برداشت {number}",
+    "videoWontPlayHere": "این ویدئو اینجا پخش نمی‌شود.",
+    "watchOnYoutube": "در یوتیوب تماشا کنید",
     "createMyOwnCourse": "دوره خودم را بسازم"
 }

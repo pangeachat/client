@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 12:42:48.740155",
+    "@@last_modified": "2026-10-23 13:25:39.931641",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10950,5 +10950,7 @@
     "readAloudStarting": "מכין את המיקרופון…",
     "readAloudListening": "מקשיב…",
     "readAloudTake": "טייק {number}",
+    "videoWontPlayHere": "הסרטון הזה לא יופעל כאן.",
+    "watchOnYoutube": "צפה ב-YouTube",
     "createMyOwnCourse": "צור קורס משלי"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-23 12:42:46.254303",
+    "@@last_modified": "2026-10-23 13:25:37.231574",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Pripremam mikrofon…",
     "readAloudListening": "Slušam…",
     "readAloudTake": "Uzmite {number}",
+    "videoWontPlayHere": "Ovaj videozapis se ne može reproducirati ovdje.",
+    "watchOnYoutube": "Gledajte na YouTubeu",
     "createMyOwnCourse": "Kreiraj moj kurs"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-23 12:42:49.141128",
+    "@@last_modified": "2026-10-23 13:25:40.773471",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10142,5 +10142,7 @@
     "readAloudStarting": "Készül a mikrofon…",
     "readAloudListening": "Hallgatok…",
     "readAloudTake": "Felvétel {number}",
+    "videoWontPlayHere": "Ez a videó itt nem játszható le.",
+    "watchOnYoutube": "Megtekintés YouTube-on",
     "createMyOwnCourse": "Saját tanfolyam létrehozása"
 }

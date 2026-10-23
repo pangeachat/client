@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-23 12:42:51.849872",
+    "@@last_modified": "2026-10-23 13:25:43.672960",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Qed inħejji l-mikrofonu…",
     "readAloudListening": "Qed nisma’…",
     "readAloudTake": "Ħu {number}",
+    "videoWontPlayHere": "Dan il-video mhux se jintlagħab hawn.",
+    "watchOnYoutube": "Ara fuq YouTube",
     "createMyOwnCourse": "Oħloq il-kors tiegħi"
 }

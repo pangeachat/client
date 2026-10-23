@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-23 12:42:47.899383",
+    "@@last_modified": "2026-10-23 13:25:39.624818",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Mikrofoan wurdt reemakke…",
     "readAloudListening": "Der wurdt lústere…",
     "readAloudTake": "Nim {number}",
+    "videoWontPlayHere": "Dizze fideo spilet hjir net ôf.",
+    "watchOnYoutube": "Besjoch op YouTube",
     "createMyOwnCourse": "Mei eigen kursus oanmeitsje"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-23 12:42:54.102972",
+    "@@last_modified": "2026-10-23 13:25:45.865265",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Nyiapkeun mikropon…",
     "readAloudListening": "Ngaregepkeun…",
     "readAloudTake": "Candak {number}",
+    "videoWontPlayHere": "Video ieu moal bisa diputer di dieu.",
+    "watchOnYoutube": "Tonton di YouTube",
     "createMyOwnCourse": "Jieun kursus kuring sorangan"
 }

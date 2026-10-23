@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-23 12:42:47.181792",
+    "@@last_modified": "2026-10-23 13:25:38.430342",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Yn paratoi'r meicroffon…",
     "readAloudListening": "Yn gwrando…",
     "readAloudTake": "Cymryd {number}",
+    "videoWontPlayHere": "Ni fydd y fideo hwn yn chwarae yma.",
+    "watchOnYoutube": "Gwylio ar YouTube",
     "createMyOwnCourse": "Creu fy nghwrs fy hun"
 }

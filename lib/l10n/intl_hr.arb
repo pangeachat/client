@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-23 12:42:48.832145",
+    "@@last_modified": "2026-10-23 13:25:40.384958",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10472,5 +10472,7 @@
     "readAloudStarting": "Pripremam mikrofon…",
     "readAloudListening": "Slušam…",
     "readAloudTake": "Pokušaj {number}",
+    "videoWontPlayHere": "Ovaj se videozapis ovdje neće reproducirati.",
+    "watchOnYoutube": "Gledaj na YouTubeu",
     "createMyOwnCourse": "Izradi moj tečaj"
 }

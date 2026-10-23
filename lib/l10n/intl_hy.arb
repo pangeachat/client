@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-23 12:42:49.208625",
+    "@@last_modified": "2026-10-23 13:25:40.468031",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Միկրոֆոնը պատրաստվում է…",
     "readAloudListening": "Լսում եմ…",
     "readAloudTake": "Կատարել {number}",
+    "videoWontPlayHere": "Այս տեսանյութն այստեղ չի նվագարկվի։",
+    "watchOnYoutube": "Դիտել YouTube-ում",
     "createMyOwnCourse": "Ստեղծել իմ սեփական դասընթացը"
 }

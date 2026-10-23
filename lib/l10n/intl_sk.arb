@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-23 12:42:53.266868",
+    "@@last_modified": "2026-10-23 13:25:44.860061",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10981,5 +10981,7 @@
     "readAloudStarting": "Pripravujem mikrofón…",
     "readAloudListening": "Počúvam…",
     "readAloudTake": "Zobrať {number}",
+    "videoWontPlayHere": "Toto video sa tu neprehrá.",
+    "watchOnYoutube": "Pozrieť na YouTube",
     "createMyOwnCourse": "Vytvoriť si vlastný kurz"
 }

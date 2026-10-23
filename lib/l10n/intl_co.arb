@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-23 12:42:46.955705",
+    "@@last_modified": "2026-10-23 13:25:37.729644",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Preparazione di u microfonu…",
     "readAloudListening": "Ascultendu…",
     "readAloudTake": "Piglia {number}",
+    "videoWontPlayHere": "Stu video ùn pò micca ghjucà quì.",
+    "watchOnYoutube": "Fighjà nant'à YouTube",
     "createMyOwnCourse": "Creà u mo corsu"
 }

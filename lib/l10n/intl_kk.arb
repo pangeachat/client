@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-23 12:42:49.635196",
+    "@@last_modified": "2026-10-23 13:25:41.233207",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Микрофонды дайындау…",
     "readAloudListening": "Тыңдаудамын…",
     "readAloudTake": "{number} алу",
+    "videoWontPlayHere": "Бұл бейне ойнатылмайды.",
+    "watchOnYoutube": "YouTube-тан қарау",
     "createMyOwnCourse": "Өз курсымды жасау"
 }

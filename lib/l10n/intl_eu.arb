@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-23 12:42:47.059991",
+    "@@last_modified": "2026-10-23 13:25:38.863424",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10039,5 +10039,7 @@
     "readAloudStarting": "Mikrofonoa prestatzen…",
     "readAloudListening": "Entzuten…",
     "readAloudTake": "{number}. saiakera",
+    "videoWontPlayHere": "Bideo hau ez da hemen erreproduzituko.",
+    "watchOnYoutube": "Ikusi YouTuben",
     "createMyOwnCourse": "Nire ikastaroa sortu"
 }

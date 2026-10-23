@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-23 12:42:47.875963",
+    "@@last_modified": "2026-10-23 13:25:39.546160",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10391,5 +10391,7 @@
     "readAloudStarting": "Préparation du microphone…",
     "readAloudListening": "Écoute…",
     "readAloudTake": "Prendre {number}",
+    "videoWontPlayHere": "Cette vidéo ne peut pas être lue ici.",
+    "watchOnYoutube": "Regarder sur YouTube",
     "createMyOwnCourse": "Créer mon propre cours"
 }

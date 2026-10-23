@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-23 12:42:49.953959",
+    "@@last_modified": "2026-10-23 13:25:41.283192",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "ಮೈಕ್ರೊಫೋನ್ ಸಿದ್ಧವಾಗುತ್ತಿದೆ…",
     "readAloudListening": "ಕೇಳಲಾಗುತ್ತಿದೆ…",
     "readAloudTake": "ಟೇಕ್ {number}",
+    "videoWontPlayHere": "ಈ ವೀಡಿಯೊ ಇಲ್ಲಿ ಪ್ಲೇ ಆಗುವುದಿಲ್ಲ.",
+    "watchOnYoutube": "YouTube ನಲ್ಲಿ ವೀಕ್ಷಿಸಿ",
     "createMyOwnCourse": "ನನ್ನದೇ ಆದ ಕೋರ್ಸ್ ರಚಿಸಿ"
 }

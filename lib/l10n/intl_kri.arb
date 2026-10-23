@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-23 12:42:50.074896",
+    "@@last_modified": "2026-10-23 13:25:41.745043",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Di microphone de rɛdi…",
     "readAloudListening": "De lisin…",
     "readAloudTake": "Tek {number}",
+    "videoWontPlayHere": "Dis video nor go play ya.",
+    "watchOnYoutube": "Go wach na YouTube",
     "createMyOwnCourse": "Mek mi yon kos"
 }

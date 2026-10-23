@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-23 12:42:55.702922",
+    "@@last_modified": "2026-10-23 13:25:47.689939",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Maa n murasilẹ gbohungbohun…",
     "readAloudListening": "N tẹtisi…",
     "readAloudTake": "Ya {number}",
+    "videoWontPlayHere": "Fidio yii kò ní ṣiṣẹ́ níbí.",
+    "watchOnYoutube": "Wò ó lórí YouTube",
     "createMyOwnCourse": "Ṣẹda iṣẹ ikẹkọ ti ara mi"
 }

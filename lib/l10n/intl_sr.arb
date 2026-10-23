@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 12:42:53.810702",
+    "@@last_modified": "2026-10-23 13:25:46.132886",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10985,5 +10985,7 @@
     "readAloudStarting": "Pripremam mikrofon…",
     "readAloudListening": "Slušam…",
     "readAloudTake": "Uradi {number}",
+    "videoWontPlayHere": "Ovaj video se ne može reprodukovati ovde.",
+    "watchOnYoutube": "Gledaj na YouTube-u",
     "createMyOwnCourse": "Kreiraj sopstveni kurs"
 }

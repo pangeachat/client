@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-23 12:42:52.312163",
+    "@@last_modified": "2026-10-23 13:25:43.883527",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਤਿਆਰ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…",
     "readAloudListening": "ਸੁਣ ਰਿਹਾ ਹੈ…",
     "readAloudTake": "ਲਓ {number}",
+    "videoWontPlayHere": "ਇਹ ਵੀਡੀਓ ਇੱਥੇ ਨਹੀਂ ਚੱਲੇਗੀ।",
+    "watchOnYoutube": "YouTube 'ਤੇ ਦੇਖੋ",
     "createMyOwnCourse": "ਮੇਰਾ ਆਪਣਾ ਕੋਰਸ ਬਣਾਓ"
 }

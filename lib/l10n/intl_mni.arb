@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-23 12:42:51.946594",
+    "@@last_modified": "2026-10-23 13:25:43.944566",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "মাইক্রোফোন শেম্নরি…",
     "readAloudListening": "তাঞ্জরি…",
     "readAloudTake": "লৌ {number}",
+    "videoWontPlayHere": "ꯁꯤꯗ ꯚꯤꯗꯤꯑꯣ ꯑꯁꯤ ꯆꯠꯇꯦ꯫",
+    "watchOnYoutube": "YouTube ꯗ ꯌꯦꯡꯕꯤꯌꯨ",
     "createMyOwnCourse": "ꯑꯩꯒꯤ ꯑꯣꯟ ꯀꯣꯔꯁ ꯁꯦꯝꯃꯨ"
 }

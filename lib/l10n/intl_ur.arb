@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-23 12:42:54.834984",
+    "@@last_modified": "2026-10-23 13:25:46.537915",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "مائیکروفون تیار ہو رہا ہے…",
     "readAloudListening": "سن رہا ہے…",
     "readAloudTake": "ٹیک {number}",
+    "videoWontPlayHere": "یہ ویڈیو یہاں نہیں چلے گی۔",
+    "watchOnYoutube": "یوٹیوب پر دیکھیں",
     "createMyOwnCourse": "میرا اپنا کورس بنائیں"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-23 12:42:54.579861",
+    "@@last_modified": "2026-10-23 13:25:47.114027",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Микрофонро омода мекунад…",
     "readAloudListening": "Гӯш мекунад…",
     "readAloudTake": "Гирифтан {number}",
+    "videoWontPlayHere": "Ин видео дар ин ҷо намоиш дода намешавад.",
+    "watchOnYoutube": "Дар YouTube тамошо кунед",
     "createMyOwnCourse": "Курси худро эҷод кунед"
 }

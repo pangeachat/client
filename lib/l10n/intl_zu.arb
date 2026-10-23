@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-23 12:42:55.812672",
+    "@@last_modified": "2026-10-23 13:25:47.761718",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Ilungiselela imakrofoni…",
     "readAloudListening": "Iyalalela…",
     "readAloudTake": "Thatha {number}",
+    "videoWontPlayHere": "Le vidiyo ngeke idlale lapha.",
+    "watchOnYoutube": "Buka ku-YouTube",
     "createMyOwnCourse": "Dala eyami inkambo"
 }

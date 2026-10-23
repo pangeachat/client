@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-23 12:42:48.159665",
+    "@@last_modified": "2026-10-23 13:25:39.276600",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Ag ullachadh a’ mhicreofoin…",
     "readAloudListening": "Ag èisteachd…",
     "readAloudTake": "Gabh {number}",
+    "videoWontPlayHere": "Cha chluich a’ bhidio seo an-seo.",
+    "watchOnYoutube": "Coimhead air YouTube",
     "createMyOwnCourse": "Cruthaich mo chùrsa fhèin"
 }

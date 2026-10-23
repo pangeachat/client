@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-23 12:42:54.497573",
+    "@@last_modified": "2026-10-23 13:25:45.602121",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Inaandaa maikrofoni…",
     "readAloudListening": "Inasikiliza…",
     "readAloudTake": "Chukua {number}",
+    "videoWontPlayHere": "Video hii haitachezwa hapa.",
+    "watchOnYoutube": "Tazama kwenye YouTube",
     "createMyOwnCourse": "Unda kozi yangu mwenyewe"
 }

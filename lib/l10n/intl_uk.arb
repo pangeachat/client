@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-23 12:42:55.044757",
+    "@@last_modified": "2026-10-23 13:25:46.420212",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10039,5 +10039,7 @@
     "readAloudStarting": "Готуємо мікрофон…",
     "readAloudListening": "Слухаємо…",
     "readAloudTake": "Спроба {number}",
+    "videoWontPlayHere": "Це відео тут не відтворюватиметься.",
+    "watchOnYoutube": "Дивитися на YouTube",
     "createMyOwnCourse": "Створити власний курс"
 }

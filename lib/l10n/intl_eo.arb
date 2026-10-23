@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 12:42:47.161614",
+    "@@last_modified": "2026-10-23 13:25:38.200755",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10981,5 +10981,7 @@
     "readAloudStarting": "Pretigas la mikrofonon…",
     "readAloudListening": "Aŭskultas…",
     "readAloudTake": "Provo {number}",
+    "videoWontPlayHere": "Ĉi tiu video ne ludos ĉi tie.",
+    "watchOnYoutube": "Spektu en YouTube",
     "createMyOwnCourse": "Krei mian propran kurson"
 }

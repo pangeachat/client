@@ -3389,7 +3389,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-23 12:42:46.684537",
+    "@@last_modified": "2026-10-23 13:25:38.008779",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10911,5 +10911,7 @@
     "readAloudStarting": "Ετοιμάζω το μικρόφωνο…",
     "readAloudListening": "Ακούω…",
     "readAloudTake": "Λήψη {number}",
+    "videoWontPlayHere": "Αυτό το βίντεο δεν θα αναπαραχθεί εδώ.",
+    "watchOnYoutube": "Παρακολουθήστε στο YouTube",
     "createMyOwnCourse": "Δημιουργία δικού μου μαθήματος"
 }

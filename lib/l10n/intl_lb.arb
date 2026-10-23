@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-23 12:42:51.059178",
+    "@@last_modified": "2026-10-23 13:25:42.371081",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Mikro gëtt prett gemaach…",
     "readAloudListening": "Lauschteren…",
     "readAloudTake": "Huelt {number}",
+    "videoWontPlayHere": "Dëse Video spillt hei net.",
+    "watchOnYoutube": "Op YouTube kucken",
     "createMyOwnCourse": "Mäin eegene Cours erstellen"
 }

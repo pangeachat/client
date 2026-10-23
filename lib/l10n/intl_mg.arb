@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-23 12:42:51.138633",
+    "@@last_modified": "2026-10-23 13:25:42.716828",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Manomana ny mikrô...",
     "readAloudListening": "Mihaino...",
     "readAloudTake": "Andao {number}",
+    "videoWontPlayHere": "Tsy afaka milalao eto ity horonantsary ity.",
+    "watchOnYoutube": "Jereo ao amin'ny YouTube",
     "createMyOwnCourse": "Mamorona ny taranja manokana"
 }

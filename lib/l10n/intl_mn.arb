@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-23 12:42:51.157282",
+    "@@last_modified": "2026-10-23 13:25:42.789260",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2501,5 +2501,7 @@
     "readAloudStarting": "Микрофоныг бэлдэж байна…",
     "readAloudListening": "Сонсож байна…",
     "readAloudTake": "{number} дахь оролдлого",
+    "videoWontPlayHere": "Энэ видео энд тоглогдохгүй.",
+    "watchOnYoutube": "YouTube дээр үзэх",
     "createMyOwnCourse": "Өөрийн сургалтыг үүсгэх"
 }
