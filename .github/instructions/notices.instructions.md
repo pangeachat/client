@@ -10,7 +10,7 @@ A notice is a message the engagement runner sends a learner under the bot's iden
 ## Where a notice opens
 
 - **A notice that names a session** opens that session if the learner is still in it. If they have left it, the activity's page opens with that session attached. No course opens, because the notice names no course.
-- **A notice with an app path** opens that path the same way a URL typed in the address bar opens. So a short link such as `/<activityId>` becomes its activity token in the same way. A join-course notice names a course the learner is not in, so its path lands on that course's preview, where the learner joins ([routing.instructions.md § The course context](routing.instructions.md#the-course-context)).
+- **A notice with an app path** opens that path the same way a URL typed in the address bar opens. So a short link such as `/<activityId>` becomes its activity token in the same way.
 - **A notice with neither** has a destination outside the app, so its push opens the bot DM, where the notice shows.
 
 The client follows an app path only from the bot: the notice must be in the learner's bot DM (`isBotDM`), and its sender must be the bot account. This is because some paths do more than open a page (a join-code link submits the join), and any Matrix user can put these keys into an event they send. `isBotDM` alone is not enough. It also accepts a room whose bot settings say direct chat, and any member who can change that room's settings can write that. The client ignores a path from any other sender or room, and the tap opens the room as usual.

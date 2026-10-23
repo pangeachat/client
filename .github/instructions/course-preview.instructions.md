@@ -21,7 +21,6 @@ A course is offered in either list only when its quest resolves **and** carries 
 - The camera **auto-fits all the course's activities** into the exposed map above/beside the page — the deliberate exception to "the camera never moves for a course" ([world-map.instructions.md](world-map.instructions.md), #7616), because previewing is itself the explicit "show me this course" act.
 - A **"Course preview" pill** ([`CoursePreviewBanner`](../../lib/routes/world/course_preview_banner.dart)) floats top-center over the exposed map — the one label for the mode; tapping it re-runs the fit after the learner pans away. The map search bar/overlay hides while the scope holds.
 - **Pins are inert**: they still promote and demote through the normal dot/mid/large tiers as the learner pans and zooms — that is the preview — but tapping never opens an activity page, which would navigate away from the join decision.
-- **Arriving by link.** A link to a course the learner is not in — a join-course notice's push or email, a stale bookmark — lands here too: the `course` token for a course not in the learner's room list is replaced by its preview ([routing.instructions.md § The course context](routing.instructions.md#the-course-context), #9586). The preview is the join decision, so it is the one place such a link can land.
 
 ## The page
 
