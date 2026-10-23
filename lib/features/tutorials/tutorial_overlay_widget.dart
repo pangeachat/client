@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -678,8 +680,10 @@ class _TutorialStepCard extends StatelessWidget {
 
   static const double _tooltipPadding = 8.0;
 
+  /// The card's outer box, as [TutorialTooltipContainerWidget] draws it: the
+  /// padding on both sides of its width, and once on its height.
   Size get _paddedSize => Size(
-    step.style.tooltipSize.width + _tooltipPadding,
+    step.style.tooltipSize.width + _tooltipPadding * 2,
     step.style.tooltipSize.height + _tooltipPadding,
   );
 
@@ -724,11 +728,16 @@ class _TutorialStepCard extends StatelessWidget {
   }
 
   /// Left edge for a tooltip centered on [anchor], nudged back inside the
-  /// screen when centering would push it off either side.
+  /// screen when centering would push it off either side. A screen too narrow
+  /// to pad the card on both sides centres it instead — a 300-wide card on a
+  /// 320-wide phone (#9621) — and one narrower than the card keeps the card's
+  /// left edge on it.
   double _left(BuildContext context, Rect anchor) {
     final screenWidth = MediaQuery.sizeOf(context).width;
     final tip = _paddedSize;
-    if (tip.width >= screenWidth) return 0;
+    if (tip.width + _tooltipPadding * 2 >= screenWidth) {
+      return math.max(0.0, (screenWidth - tip.width) / 2);
+    }
     final centered = anchor.center.dx - tip.width / 2;
     return centered.clamp(
       _tooltipPadding,
